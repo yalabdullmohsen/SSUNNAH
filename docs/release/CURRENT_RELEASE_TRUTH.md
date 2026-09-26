@@ -1,8 +1,8 @@
 # CURRENT RELEASE TRUTH — سُنّة
 
-**Generated:** 2026-09-21  
+**Generated:** 2026-09-26  
 **Program:** SUNNAH FULL PROJECT REMEDIATION (post-audit)  
-**Wave:** Wave 8 — deep links + lessons-guide  
+**Wave:** post–Wave 8 tip sync · cards Emerald Dark on main  
 **Authority:** Measured from `origin/main` + live production — not from stale freeze pins alone.  
 **Canonical status surface:** `docs/release/CURRENT_PROJECT_STATUS.md`
 
@@ -13,8 +13,8 @@
 | Surface | Value | Evidence |
 |---|---|---|
 | Git root | resolve via `git rev-parse --show-toplevel` | command |
-| `origin/main` (Wave 8 base) | `98e29a655bc48a461e469cfc16fe154cc095c28a` | `git rev-parse origin/main` |
-| Production `version.json` | re-check after merge | HTTP 200 |
+| `origin/main` tip | `65b59d534727bd33c5095febc93acae559dfc1cb` | `git rev-parse origin/main` |
+| Production `version.json` | `65b59d53` · HTTP 200 · `builtAt` `2026-09-26T16:31:50.195Z` | curl live |
 | Full project audit | `docs/audit/SUNNAH_FULL_PROJECT_AUDIT.md` · status `PARTIAL` | committed baseline |
 | Library route intent | `docs/content-quality/LIBRARY_ROUTE_INTENT.md` | Wave 8 PRODUCT_INTENT |
 | Store RC pin | **not set by owner** — web tip ≠ automatic Store RC | HOLD |

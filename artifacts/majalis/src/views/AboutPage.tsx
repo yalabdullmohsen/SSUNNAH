@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
 import { ShareButtons } from "@/components/ContentActions";
 import { applyPageSeo } from "@/lib/seo";
-import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site-config";
+import { SITE_DESCRIPTION, SITE_TAGLINE, SITE_URL } from "@/lib/site-config";
 import { UtilityScreen } from "@/components/design-system/screens";
 import "@/styles/pages/learn-legal-v2.css";
 
@@ -62,19 +62,20 @@ export default function AboutPage() {
     <LegalPageLayout eyebrow="التطبيق" title="حول التطبيق">
       <LegalSection title="ماذا يقدّم التطبيق">
         <p>{SITE_DESCRIPTION}</p>
-        <p>تعلّم من العلماء والدروس الموثقة في مكان واحد.</p>
+        <p>{SITE_TAGLINE}</p>
         <p>
-          أكمل رحلتك العلمية بسهولة: دروس العلماء والسلاسل والقرآن والبحث والمفضلة والمراجعة
-          في مكان واحد.
+          رفيقك اليومي لطلب العلم: دروس العلماء والسلاسل والقرآن والمصحف والفقه والحديث
+          والأذكار ومواقيت الصلاة والبحث والمفضلة في تجربة عربية واحدة.
         </p>
       </LegalSection>
 
       <LegalSection title="أبرز ما ستجده">
         <ul>
+          <li><strong>القرآن والمصحف:</strong> قراءة ومتابعة يومية هادئة مع مسار المصحف الرسمي.</li>
           <li><strong>الدروس والسلاسل:</strong> تعلّم من العلماء والدروس الموثقة بترتيب واضح.</li>
-          <li><strong>القرآن:</strong> قراءة ومتابعة ضمن تجربة يومية هادئة.</li>
-          <li><strong>البحث والفوائد:</strong> وصول سريع لما تحتاجه وحفظ ما ينفعك.</li>
-          <li><strong>المفضلة والمراجعة:</strong> ارجع لما حفظت وواصل من حيث توقفت.</li>
+          <li><strong>الفقه والعقيدة والحديث:</strong> أبواب وموضوعات مرتبة لطلب العلم.</li>
+          <li><strong>الأذكار ومواقيت الصلاة:</strong> أذكار يومية ومواقيت مع تنبيهات عند التوفر.</li>
+          <li><strong>البحث والمفضلة:</strong> وصول سريع لما تحتاجه وحفظ ما ينفعك للمراجعة.</li>
           <li><strong>المسارات التعليمية:</strong> خطوات مرتبة لطالب العلم عند توفرها.</li>
         </ul>
       </LegalSection>

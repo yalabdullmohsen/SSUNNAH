@@ -7,6 +7,9 @@ import config from "../../site.config.json";
 export const SITE_NAME = config.siteName;
 export const SITE_SHORT_NAME = config.siteShortName;
 export const SITE_DESCRIPTION = config.siteDescription;
+export const SITE_TAGLINE =
+  (config as { siteTagline?: string }).siteTagline ??
+  "منصة إسلامية تجمع القرآن الكريم، التفسير، الحديث، الفقه، العقيدة، السيرة، والأقسام التعليمية بأسلوب واضح ومرتب.";
 export const SITE_URL = config.siteUrl;
 /** النطاق الحي للـ canonical/sitemap/OG — www.ssunnah.com (بلا redirect) */
 export const CANONICAL_SITE_HOST = "www.ssunnah.com";
