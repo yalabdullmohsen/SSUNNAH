@@ -9,17 +9,23 @@
  */
 
 :root {
-  /* ── Colors (لوحة العلامة الخمسة فقط) ── */
+  /* ── Colors — Warm Ivory canvas · Dark Emerald primary · Gold accent ── */
   --sf-color-warm-ivory: #f7f3eb;
   --sf-color-warm-ivory-surface: #fffcf7;
   --sf-color-warm-ivory-muted: #efe8dc;
-  /* V2 canvas ivory (لوحة Dashboard الحالية — بلا انزياح بصري) */
-  --sf-color-ivory-canvas: #f9f8f4;
-  --sf-color-ivory-raised: #fffcf8;
+  /* Canvas موحّد = Warm Ivory (لا درجة بيج ثانية) */
+  --sf-color-ivory-canvas: #f7f3eb;
+  --sf-color-ivory-raised: #fffcf7;
 
-  --sf-color-deep-emerald: #0f5c45;
-  --sf-color-deep-emerald-deep: #0a3d2e;
-  --sf-color-deep-emerald-soft: #e2efe8;
+  /* Dark Emerald — اللون الأساسي الوحيد */
+  --sf-color-deep-emerald: #0f3d2e;
+  --sf-color-deep-emerald-deep: #0a2f24;
+  /* غسلة هادئة على عاجي — بلا أخضر باهت صلب */
+  --sf-color-deep-emerald-soft: color-mix(
+    in srgb,
+    var(--sf-color-deep-emerald) 10%,
+    var(--sf-color-warm-ivory)
+  );
 
   --sf-color-quran-gold: #c9a82e;
 
@@ -31,7 +37,8 @@
   --sf-color-luxury-night-elevated: #18332a;
   --sf-color-luxury-night-ink: #edf5f0;
   --sf-color-luxury-night-gold: #c4a84a;
-  --sf-color-on-emerald: #ffffff;
+  /* عاجي على الزمرد الداكن — تباين AA */
+  --sf-color-on-emerald: #f7f1e4;
 
   /* ── Typography families (جسر إلى --font-app الموحّد) ── */
   --sf-font-display: var(--font-app, "Amiri", "MajlisAmiriFallback", "Traditional Arabic", serif);
@@ -79,17 +86,18 @@
   --sf-radius-control: 14px;
   --sf-radius-pill: 999px;
 
-  /* ── Shadow (سلم مغلق) ── */
-  --sf-shadow-soft: 0 1px 2px rgba(22, 36, 30, 0.04), 0 2px 8px rgba(22, 36, 30, 0.04);
-  --sf-shadow-card: 0 1px 2px rgba(22, 36, 30, 0.04), 0 4px 14px rgba(22, 36, 30, 0.06);
-  --sf-shadow-elevated: 0 2px 4px rgba(22, 36, 30, 0.05), 0 10px 28px rgba(22, 36, 30, 0.08);
+  /* ── Shadow — خفيف جدًا · بلا ظلال قوية / glow ── */
+  --sf-shadow-soft: none;
+  --sf-shadow-card: none;
+  --sf-shadow-elevated: 0 1px 2px
+    color-mix(in srgb, var(--sf-color-deep-emerald-deep) 10%, transparent);
 
   /* ── Surface ── */
-  --sf-surface-canvas: var(--sf-color-ivory-canvas);
-  --sf-surface-raised: var(--sf-color-ivory-raised);
+  --sf-surface-canvas: var(--sf-color-warm-ivory);
+  --sf-surface-raised: var(--sf-color-warm-ivory-surface);
   --sf-surface-muted: var(--sf-color-warm-ivory-muted);
   --sf-surface-brand: var(--sf-color-deep-emerald);
-  --sf-hairline: color-mix(in srgb, var(--sf-color-rich-ink) 8%, transparent);
+  --sf-hairline: color-mix(in srgb, var(--sf-color-rich-ink) 10%, transparent);
 
   /* ── State ── */
   --sf-state-hover-wash: color-mix(in srgb, var(--sf-color-deep-emerald) 8%, transparent);
@@ -176,9 +184,9 @@ html.dark {
   --sf-surface-raised: var(--sf-color-luxury-night-surface);
   --sf-surface-muted: var(--sf-color-luxury-night-elevated);
   --sf-hairline: color-mix(in srgb, var(--sf-color-luxury-night-ink) 14%, transparent);
-  --sf-shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.2), 0 2px 10px rgba(0, 0, 0, 0.22);
-  --sf-shadow-card: 0 2px 4px rgba(0, 0, 0, 0.22), 0 8px 22px rgba(0, 0, 0, 0.28);
-  --sf-shadow-elevated: 0 4px 8px rgba(0, 0, 0, 0.28), 0 14px 36px rgba(0, 0, 0, 0.36);
+  --sf-shadow-soft: none;
+  --sf-shadow-card: none;
+  --sf-shadow-elevated: 0 1px 2px rgba(0, 0, 0, 0.28);
 }
 
 /* أصناف .sf-type-* مؤجّلة: styles/sunnah-foundation-type.css (ميزانية CSS الحرج) */

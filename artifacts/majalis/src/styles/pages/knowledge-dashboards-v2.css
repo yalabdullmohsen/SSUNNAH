@@ -78,11 +78,7 @@ html[data-v2-knowledge="1"] .topic-page__title::after {
   height: 3px;
   margin-block-start: 0.55rem;
   border-radius: var(--v2-radius-pill, 999px);
-  background: linear-gradient(
-    90deg,
-    var(--v2-color-emerald, #0f5c45),
-    var(--v2-color-gold, #c9a82e)
-  );
+  background: var(--v2-accent-gold, var(--v2-color-gold, #c9a82e));
 }
 
 html[data-v2-knowledge="1"] .section-hero__back,
