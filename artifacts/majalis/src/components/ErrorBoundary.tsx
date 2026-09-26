@@ -4,7 +4,6 @@ import { CONTACT_EMAIL } from "@/lib/site-config";
 import {
   hardRecoverStaleDeploy,
   isChunkLoadError,
-  isChunkRecoveryInFlight,
   tryRecoverFromStaleChunk,
 } from "@/lib/chunk-recovery";
 import { clearChunkReloadGuard } from "@/lib/lazy-with-retry";
@@ -17,7 +16,7 @@ type State = {
   copied: boolean;
   errorId: string;
   componentStack: string | null;
-  /** استعادة chunk جارية — لا تُعرض شاشة الخطأ الصلبة */
+  /** استعادة chunk جارية — لم تعد تُستخدم لواجهة حاجبة */
   recovering: boolean;
 };
 
@@ -62,13 +61,13 @@ export class ErrorBoundary extends Component<Props, State> {
   };
 
   static getDerivedStateFromError(error: Error): Partial<State> {
-    // نقي: واجهة استعادة تفاؤلية لأخطاء chunk؛ الحسم في componentDidCatch.
+    // لا واجهة حاجبة للاستعادة — خطأ قابل للاسترداد فقط
     return {
       error,
       copied: false,
       errorId: createErrorId("MJL"),
       componentStack: null,
-      recovering: isChunkLoadError(error),
+      recovering: false,
     };
   }
 
@@ -92,8 +91,11 @@ export class ErrorBoundary extends Component<Props, State> {
     );
 
     if (isChunkLoadError(error)) {
-      const started = tryRecoverFromStaleChunk("boundary-catch") || isChunkRecoveryInFlight();
-      if (!started) this.setState({ recovering: false });
+      // استعادة هادئة (purge قشرة) — بلا reload تلقائي وبلا UI تحديث
+      void tryRecoverFromStaleChunk("boundary-catch");
+      void import("@/lib/app-update-manager")
+        .then(({ markUpdateFailed }) => markUpdateFailed("chunk-load"))
+        .catch(() => {});
     }
   }
 
@@ -146,44 +148,26 @@ export class ErrorBoundary extends Component<Props, State> {
       const isDev = import.meta.env.DEV;
       const chunkError = isChunkLoadError(this.state.error);
 
-      if (this.state.recovering || (chunkError && isChunkRecoveryInFlight())) {
-        return (
-          <div
-            className="error-boundary-page error-boundary-page--recovering"
-            role="status"
-            aria-live="polite"
-            dir="rtl"
-            data-nosnippet
-          >
-            <p className="error-boundary-page__title">تحديث العرض</p>
-            <p className="error-boundary-page__body">
-              تم تحديث المنصة. يُحدَّث العرض…
-            </p>
-          </div>
-        );
-      }
-
       return (
         <div role="alert" className="error-boundary-page" data-nosnippet dir="rtl" lang="ar">
           <p className="error-boundary-page__title">حدث خلل مؤقت في العرض</p>
           <p className="error-boundary-page__body">
             {chunkError
-              ? "تعذّر التحميل بعد تحديث المنصة. اضغط «تحديث المنصة» ثم أعد المحاولة."
+              ? "تعذّر تحميل جزء من الصفحة. أعد المحاولة أو ارجع للرئيسية. التطبيق يبقى على آخر نسخة صالحة."
               : userFacingBody()}
           </p>
           <p className="error-boundary-page__id">
             رقم التتبع: <code>{this.state.errorId}</code>
           </p>
           <div className="error-boundary-page__actions">
+            <button type="button" onClick={this.reset} className="error-boundary-btn error-boundary-btn--primary">
+              إعادة المحاولة
+            </button>
             {chunkError ? (
-              <button type="button" onClick={this.hardRecover} className="error-boundary-btn error-boundary-btn--primary">
-                تحديث المنصة
+              <button type="button" onClick={this.hardRecover} className="error-boundary-btn error-boundary-btn--secondary">
+                إعادة تشغيل العرض
               </button>
-            ) : (
-              <button type="button" onClick={this.reset} className="error-boundary-btn error-boundary-btn--primary">
-                إعادة المحاولة
-              </button>
-            )}
+            ) : null}
             <button type="button" onClick={this.goHome} className="error-boundary-btn error-boundary-btn--secondary">
               العودة للرئيسية
             </button>
@@ -255,7 +239,7 @@ export class SectionErrorBoundary extends Component<SectionBoundaryProps, Sectio
     return {
       error,
       errorId: createErrorId("SEC"),
-      recovering: isChunkLoadError(error),
+      recovering: false,
     };
   }
 
@@ -270,9 +254,7 @@ export class SectionErrorBoundary extends Component<SectionBoundaryProps, Sectio
     );
 
     if (isChunkLoadError(error)) {
-      const started =
-        tryRecoverFromStaleChunk(`section:${this.props.name}`) || isChunkRecoveryInFlight();
-      if (!started) this.setState({ recovering: false });
+      void tryRecoverFromStaleChunk(`section:${this.props.name}`);
     }
   }
 
@@ -292,28 +274,31 @@ export class SectionErrorBoundary extends Component<SectionBoundaryProps, Sectio
   render() {
     if (this.state.error) {
       const chunkError = isChunkLoadError(this.state.error);
-      if (this.state.recovering || (chunkError && isChunkRecoveryInFlight())) {
-        return (
-          <div className="adv-error-state adv-error-state--section" role="status" aria-live="polite" dir="rtl">
-            <p className="adv-error-state__msg">تم تحديث المنصة. يُحدَّث العرض…</p>
-          </div>
-        );
-      }
       return (
         <div className="adv-error-state adv-error-state--section" role="alert" aria-live="assertive" dir="rtl">
           <p className="adv-error-state__msg">
             {chunkError
-              ? `تعذّر تحميل قسم «${this.props.name}» بعد تحديث المنصة. اضغط لتحديث المنصة.`
+              ? `تعذّر تحميل قسم «${this.props.name}». أعد المحاولة أو أعد تشغيل العرض.`
               : `تعذّر عرض قسم «${this.props.name}». يمكنك إعادة المحاولة.`}
           </p>
           <button
             type="button"
             className="adv-error-state__retry"
-            onClick={chunkError ? this.hardRecover : this.reset}
-            aria-label={chunkError ? "تحديث المنصة" : "إعادة المحاولة"}
+            onClick={this.reset}
+            aria-label="إعادة المحاولة"
           >
-            {chunkError ? "تحديث المنصة" : "إعادة المحاولة"}
+            إعادة المحاولة
           </button>
+          {chunkError ? (
+            <button
+              type="button"
+              className="adv-error-state__retry"
+              onClick={this.hardRecover}
+              aria-label="إعادة تشغيل العرض"
+            >
+              إعادة تشغيل العرض
+            </button>
+          ) : null}
         </div>
       );
     }

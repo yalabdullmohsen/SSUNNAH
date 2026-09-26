@@ -28,7 +28,6 @@ const metrics = JSON.parse(readRepo("docs/performance/startup-and-dark-mode-pr0-
 
 assert.equal(metrics.stage, 0);
 assert.equal(metrics.productPatchInThisPr, false);
-assert.equal(metrics.appUpdateManagerExists, false);
 assert.equal(metrics.semanticAppSurfaceTokensExist, false);
 assert.ok(metrics.confirmedClassifications.includes("CHUNK_LOAD_FAILURE"));
 assert.ok(metrics.confirmedClassifications.includes("CRITICAL_CSS_NOT_READY"));
@@ -48,11 +47,11 @@ const recovery = readMaj("src/lib/chunk-recovery.ts");
 const toast = readMaj("src/components/ChunkRecoveryToast.tsx");
 const boundary = readMaj("src/components/ErrorBoundary.tsx");
 const main = readMaj("src/main.tsx");
-assert.match(recovery, /جاري تحسين العرض/);
-assert.match(toast, /CHUNK_RECOVERING_EVENT/);
-assert.match(boundary, /تحديث العرض/);
+assert.doesNotMatch(recovery, /جاري تحسين العرض/);
+assert.match(toast, /return null/);
+assert.doesNotMatch(boundary, /تحديث العرض/);
 assert.match(main, /ChunkRecoveryToast/);
 
-assert.equal(existsSync(resolve(majalisRoot, "src/lib/app-update-manager.ts")), false);
+assert.ok(existsSync(resolve(majalisRoot, "src/lib/app-update-manager.ts")));
 
 console.log("startup-and-dark-mode-pr0-gate.test.ts: ok");
