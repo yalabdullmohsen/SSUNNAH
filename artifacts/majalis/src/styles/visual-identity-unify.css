@@ -11,33 +11,33 @@
 
 :root {
   /*
-   * لوحة موحّدة (نهاري) — درجتان فقط للبيج:
-   * خلفية عامة + سطح بطاقة. السطح الهادئ = نفس الخلفية بمزج خفيف.
+   * جسر إلى Foundation — Dark Emerald + Warm Ivory + Gold accent.
+   * لا لوحة منافسة · لا أخضر باهت صلب · ظلال خفيفة فقط.
    */
-  --mj-bg: #f7f4ee;
-  --mj-surface: #fffcf8;
-  --mj-surface-2: #f7f4ee;
-  --mj-surface-3: #f7f4ee;
-  --mj-hairline: #d9d3c8;
-  --mj-ink: #16241e;
+  --mj-bg: var(--sf-color-warm-ivory, #f7f3eb);
+  --mj-surface: var(--sf-color-warm-ivory-surface, #fffcf7);
+  --mj-surface-2: var(--sf-color-warm-ivory, #f7f3eb);
+  --mj-surface-3: var(--sf-color-warm-ivory, #f7f3eb);
+  --mj-hairline: var(--sf-hairline, #d9d3c8);
+  --mj-ink: var(--sf-color-rich-ink, #16241e);
   --mj-ink-2: #4f5f58;
-  --mj-muted: #5e6e67;
-  --mj-brand: #146b52;
-  --mj-brand-soft: #e6f2ec;
+  --mj-muted: var(--sf-color-rich-ink-muted, #5e6e67);
+  --mj-brand: var(--sf-color-deep-emerald, #0f3d2e);
+  --mj-brand-soft: var(--sf-color-deep-emerald-soft);
   --mj-brand-tint: color-mix(in srgb, var(--mj-brand) 10%, var(--mj-surface));
-  --mj-brand-deep: #0d4a39;
-  --mj-accent: #b08a3e;
-  --mj-accent-soft: #f3ecdf;
+  --mj-brand-deep: var(--sf-color-deep-emerald-deep, #0a2f24);
+  --mj-accent: var(--sf-color-quran-gold, #c9a82e);
+  --mj-accent-soft: color-mix(in srgb, var(--mj-accent) 14%, var(--mj-surface));
   --mj-warning-soft: #fef3c7;
   --mj-warning: #b45309;
   --mj-danger-soft: #fce8e6;
   --mj-danger: #b54a4a;
   --mj-info: #1a3a5c;
   --mj-info-soft: #e8eef5;
-  --mj-success-soft: #dcfce7;
+  --mj-success-soft: color-mix(in srgb, var(--mj-brand) 12%, var(--mj-surface));
   --mj-white: #ffffff;
-  --mj-on-brand: #ffffff;
-  --mj-sh: 0 3px 12px -10px rgba(10, 61, 46, 0.12);
+  --mj-on-brand: var(--sf-color-on-emerald, #f7f1e4);
+  --mj-sh: var(--sf-shadow-soft, none);
 
   --color-bg: var(--mj-bg);
   --color-surface: var(--mj-surface);
@@ -54,18 +54,18 @@
   --color-text: var(--mj-ink);
   --color-text-muted: var(--mj-ink-2);
   --color-muted: var(--mj-muted);
-  --color-selected: #e8f3ee;
+  --color-selected: color-mix(in srgb, var(--mj-brand) 10%, var(--mj-surface));
   --shadow-soft: var(--mj-sh);
   --surface-app: var(--mj-bg);
 
-  /* حواف ناعمة موحّدة مع soft-cards (لا 18px القديمة) */
+  /* حواف موحّدة مع soft-cards (24) · من سلم Foundation عند التوفر */
   --radius-card: 24px;
   --radius-tile: 24px;
   --radius-button: 18px;
-  --radius-control: 14px;
+  --radius-control: var(--sf-radius-control, 14px);
   --radius-sheet: 28px;
   --radius-nav: 28px;
-  --radius-pill: 999px;
+  --radius-pill: var(--sf-radius-pill, 999px);
 
   --ss-primary-green: var(--mj-brand);
   --ss-deep-green: var(--mj-brand-deep);
@@ -138,9 +138,8 @@ body,
   color: var(--color-text);
 }
 
-/* بطاقات عامة أخف — يشمل بطاقات أقسام المحتوى */
-.soft-card,
-.hub-card,
+/* بطاقات قراءة/مراجع فاتحة — البطاقات الرئيسية (هيرو/أبواب/دروس/مسارات) تبقى زمرد داكن عبر card-system */
+.soft-card:not(.hub-card):not(.lesson-unified-card):not(.lpp-path-card):not(.topic-card):not(.section-entry-card):not(.mk-lane-card):not(.ss-feature-card__inner):not(.kuwait-lesson-card):not(.fiqh-category-card):not(.iman-topic-card):not(.tawheed-type-card):not(.dii-hub-card):not(.kids-hub-card):not(.twh-hub-card):not(.twh-pillar-card):not(.lesson-course-card),
 .section-card,
 .ds-card,
 .mj-card,
@@ -150,7 +149,6 @@ body,
 .akl-card,
 .tarikh-card,
 .mk-card,
-.mk-lane-card,
 .fiqh-book-card,
 .ve-book-card,
 .ve-chapter-card,
@@ -170,8 +168,6 @@ body,
 .uq-fact-item,
 .uq-dalil-box,
 .uq-info-box,
-.tawheed-type-card,
-.dii-hub-card,
 .dii-list-card,
 .dii-block,
 .dii-journey-step,
@@ -183,11 +179,8 @@ body,
 .dii-shubha-text-card,
 .hs-card,
 .hb-hadith-row,
-.lesson-unified-card,
 .fqh-hub-card,
-.twh-hub-card,
 .quran-hub-card,
-.topic-card,
 .hlr__card {
   background: var(--color-surface) !important;
   border: 1px solid color-mix(in srgb, var(--color-border) 88%, transparent) !important;
@@ -229,11 +222,11 @@ button.primary,
 .page-hero .m2030-btn--primary,
 .page-hero-mj__actions .m2030-btn--primary,
 .home-page-hero .m2030-btn--primary {
-  background: var(--mj-brand, #0f5c45) !important;
-  background-color: var(--mj-brand, #0f5c45) !important;
+  background: var(--mj-brand) !important;
+  background-color: var(--mj-brand) !important;
   background-image: none !important;
-  color: #ffffff !important;
-  border: 1px solid var(--mj-brand-deep, #0a3d2e) !important;
+  color: var(--mj-on-brand, #f7f1e4) !important;
+  border: 1px solid var(--mj-brand-deep) !important;
   border-radius: var(--radius-button) !important;
   box-shadow: none !important;
 }
@@ -538,17 +531,15 @@ html.dark .sidebar-item.active {
 }
 
 /* ── فقه ───────────────────────────────────────────────────────────── */
+/* هيرو أقسام — زمرد داكن صلب · بلا تدرّج مزعج */
 .fqh-hub-hero,
 .fiqh-lux-book-hero,
 .page-hero-mj--bleed,
 .mss-hero-surface {
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--color-primary-dark) 88%, #000) 0%,
-    var(--color-primary) 100%
-  ) !important;
-  color: #fffef9 !important;
-  box-shadow: var(--shadow-soft) !important;
+  background: var(--cs-ink-hero, var(--mj-brand-deep, #0a2f24)) !important;
+  background-image: none !important;
+  color: var(--cs-on-ink, #f7f1e4) !important;
+  box-shadow: none !important;
   min-height: 0 !important;
   padding-block: 1.1rem !important;
 }

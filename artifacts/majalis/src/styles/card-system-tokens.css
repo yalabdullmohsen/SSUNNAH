@@ -1,46 +1,47 @@
 /**
  * Card System — رموز أسطح وطبقات سُنّة
- * Surface 1/2/3 · Primary Emerald · Gold · Text
+ * جسر إلى Foundation: Warm Ivory · Dark Emerald · Gold accent
  * Compact (هاتف) · Comfortable (iPad)
- * بلا لمعان · تباين AA
+ * بلا لمعان · بلا ظل قوي · تباين AA
  */
 
 :root {
-  /* طبقات السطح — للقراءة والمراجع (فاتحة) */
-  --cs-surface-1: #f7f4ee;
-  --cs-surface-2: #fffcf7;
+  /* طبقات السطح — للقراءة والمراجع (فاتحة · Warm Ivory) */
+  --cs-surface-1: var(--sf-color-warm-ivory, #f7f3eb);
+  --cs-surface-2: var(--sf-color-warm-ivory-surface, #fffcf7);
   --cs-surface-3: #ffffff;
-  --cs-primary: #1a5c45;
-  --cs-primary-deep: #0f3d2e;
-  --cs-primary-soft: color-mix(in srgb, var(--cs-primary) 12%, var(--cs-surface-2));
-  --cs-gold: #d4b45c;
+  --cs-primary: var(--sf-color-deep-emerald, #0f3d2e);
+  --cs-primary-deep: var(--sf-color-deep-emerald-deep, #0a2f24);
+  --cs-primary-soft: var(
+    --sf-color-deep-emerald-soft,
+    color-mix(in srgb, var(--cs-primary) 10%, var(--cs-surface-1))
+  );
+  --cs-gold: var(--sf-color-quran-gold, #c9a82e);
   --cs-gold-ink: #f0e2b0;
-  --cs-text-primary: #16241c;
+  --cs-text-primary: var(--sf-color-rich-ink, #16241e);
   --cs-text-secondary: #3a4a42;
-  --cs-text-muted: #5c6b63;
-  --cs-border: color-mix(in srgb, var(--cs-primary) 16%, #d7ddd8);
+  --cs-text-muted: var(--sf-color-rich-ink-muted, #5e6e67);
+  --cs-border: var(--sf-hairline, color-mix(in srgb, var(--cs-primary) 16%, #d7ddd8));
   --cs-border-strong: color-mix(in srgb, var(--cs-primary) 28%, #c8d0cb);
-  --cs-shadow: 0 1px 2px color-mix(in srgb, var(--cs-primary-deep) 6%, transparent),
-    0 6px 18px -10px color-mix(in srgb, var(--cs-primary-deep) 14%, transparent);
-  --cs-focus-ring: 2px solid color-mix(in srgb, var(--cs-gold) 70%, var(--cs-primary));
+  --cs-shadow: var(--sf-shadow-soft, none);
+  --cs-focus-ring: var(--sf-focus-ring);
 
   /* أسطح رئيسية — زمرد داكن (Hero / Topic / Lesson / Path) */
-  --cs-ink-hero: #0a2f24;
-  --cs-ink-topic: #0f3d2e;
+  --cs-ink-hero: var(--sf-color-deep-emerald-deep, #0a2f24);
+  --cs-ink-topic: var(--sf-color-deep-emerald, #0f3d2e);
   --cs-ink-lesson: #134a38;
-  --cs-ink-path: #0f3d2e;
-  --cs-ink-border: color-mix(in srgb, #0a2f24 70%, #d4b45c 12%);
-  --cs-on-ink: #f7f1e4;
-  --cs-on-ink-title: #ffffff;
+  --cs-ink-path: var(--sf-color-deep-emerald, #0f3d2e);
+  --cs-ink-border: color-mix(in srgb, var(--cs-ink-hero) 70%, var(--cs-gold) 12%);
+  --cs-on-ink: var(--sf-color-on-emerald, #f7f1e4);
+  --cs-on-ink-title: var(--sf-color-on-emerald, #f7f1e4);
   --cs-on-ink-body: #e4ddd0;
   --cs-on-ink-meta: #c9c0ae;
-  --cs-on-ink-icon-bg: color-mix(in srgb, #ffffff 14%, transparent);
-  --cs-on-ink-icon: #f7f1e4;
-  --cs-ink-shadow: 0 1px 2px rgba(0, 0, 0, 0.22),
-    0 10px 24px -12px rgba(10, 47, 36, 0.55);
+  --cs-on-ink-icon-bg: color-mix(in srgb, var(--cs-on-ink) 14%, transparent);
+  --cs-on-ink-icon: var(--cs-on-ink);
+  --cs-ink-shadow: none;
 
   /* كثافة — هاتف مضغوط */
-  --cs-radius: 16px;
+  --cs-radius: var(--sf-radius-card, 16px);
   --cs-pad-y: 0.7rem;
   --cs-pad-x: 0.85rem;
   --cs-gap: 0.4rem;
@@ -91,26 +92,26 @@
     --cs-meta-size: 0.82rem;
     --cs-icon-size: 2.1rem;
     --cs-hero-pad-block: 1.45rem;
-    --cs-radius: 18px;
+    --cs-radius: var(--sf-radius-card, 18px);
   }
 }
 
 html.dark,
 html[data-theme="dark"] {
-  --cs-surface-1: #101714;
-  --cs-surface-2: #1a2420;
-  --cs-surface-3: #24302b;
+  --cs-surface-1: var(--sf-color-luxury-night, #101714);
+  --cs-surface-2: var(--sf-color-luxury-night-surface, #1a2420);
+  --cs-surface-3: var(--sf-color-luxury-night-elevated, #24302b);
   --cs-primary: #5fb892;
   --cs-primary-deep: #3d8f6c;
   --cs-primary-soft: color-mix(in srgb, var(--cs-primary) 16%, var(--cs-surface-2));
-  --cs-gold: #d4b45c;
+  --cs-gold: var(--sf-color-luxury-night-gold, #c4a84a);
   --cs-gold-ink: #f0e2b0;
-  --cs-text-primary: #eef3f0;
+  --cs-text-primary: var(--sf-color-luxury-night-ink, #eef3f0);
   --cs-text-secondary: #c2d0c9;
   --cs-text-muted: #95a8a0;
-  --cs-border: color-mix(in srgb, var(--cs-primary) 26%, #2a3531);
+  --cs-border: var(--sf-hairline);
   --cs-border-strong: color-mix(in srgb, var(--cs-primary) 40%, #35443f);
-  --cs-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 22px -12px rgba(0, 0, 0, 0.55);
+  --cs-shadow: var(--sf-shadow-soft, none);
   /* الهوية الداكنة تبقى زمردية عميقة فوق سطح التطبيق الليلي */
   --cs-ink-hero: #06241c;
   --cs-ink-topic: #0a2f24;
@@ -118,15 +119,15 @@ html[data-theme="dark"] {
   --cs-ink-path: #0a2f24;
   --cs-ink-border: color-mix(in srgb, var(--cs-gold) 28%, #0a2f24);
   --cs-on-ink: #f7f1e4;
-  --cs-on-ink-title: #ffffff;
+  --cs-on-ink-title: #f7f1e4;
   --cs-on-ink-body: #e4ddd0;
   --cs-on-ink-meta: #c9c0ae;
+  --cs-ink-shadow: none;
   --mj-brand-soft: var(--cs-primary-soft);
   --brand-soft: var(--cs-primary-soft);
   --soft-card-bg: var(--cs-surface-2);
   --soft-card-border: var(--cs-border);
   --soft-tile-bg: var(--cs-surface-3);
-  /* هيرو داكن يبقى عاجيًا فوق الزمرد في الوضع الليلي أيضًا */
   --mss-section-hero-bg: var(--cs-ink-hero);
   --mss-on-hero: var(--cs-on-ink-title);
   --mss-on-hero-muted: var(--cs-on-ink-body);
