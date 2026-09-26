@@ -1,5 +1,4 @@
 import { lazy, type ComponentType, type LazyExoticComponent } from "react";
-import { PAGE_LOAD_TIMEOUT_MS } from "@/lib/request-manager";
 
 /** Unified session key — shared with ErrorBoundary / SectionErrorBoundary. */
 export const CHUNK_RELOAD_KEY = "majalis-chunk-reload";
@@ -47,8 +46,8 @@ export function clearChunkReloadGuard(): void {
 }
 
 /**
- * Lazy load with a single hard reload when a stale post-deploy chunk is requested.
- * Root cause: open tabs keep an old module graph that imports missing /assets/*.js hashes.
+ * Lazy load with a single quiet recovery attempt when a stale post-deploy chunk is requested.
+ * لا reload تلقائي · لا انتظار 20s على شاشة تحديث.
  */
 export function lazyWithRetry<T extends ComponentType<unknown>>(
   factory: () => Promise<{ default: T }>,
@@ -61,13 +60,8 @@ export function lazyWithRetry<T extends ComponentType<unknown>>(
       return mod;
     } catch (error) {
       if (typeof window !== "undefined" && isChunkLoadError(error)) {
-        // استيراد ديناميكي لكسر دورة الاعتماد مع chunk-recovery
         const { tryRecoverFromStaleChunk } = await import("@/lib/chunk-recovery");
-        if (tryRecoverFromStaleChunk(label || "1")) {
-          await new Promise<void>((resolve) => {
-            window.setTimeout(resolve, PAGE_LOAD_TIMEOUT_MS);
-          });
-        }
+        void tryRecoverFromStaleChunk(label || "1");
       }
       throw error;
     }

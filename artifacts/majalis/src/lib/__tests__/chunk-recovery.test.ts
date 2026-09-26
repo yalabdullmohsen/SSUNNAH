@@ -1,5 +1,5 @@
 /**
- * بوابة استعادة chunks بعد النشر.
+ * بوابة استعادة chunks بعد النشر — هادئة بلا reload تلقائي.
  * تشغيل: node --import tsx src/lib/__tests__/chunk-recovery.test.ts
  */
 import assert from "node:assert/strict";
@@ -33,13 +33,17 @@ Object.defineProperty(globalThis, "sessionStorage", {
 });
 
 const reloads: string[] = [];
+const events: unknown[] = [];
 Object.defineProperty(globalThis, "window", {
   value: {
     setTimeout: (fn: () => void) => {
       fn();
       return 0;
     },
-    dispatchEvent: () => true,
+    dispatchEvent: (ev: unknown) => {
+      events.push(ev);
+      return true;
+    },
     location: {
       reload: () => {
         reloads.push("reload");
@@ -58,31 +62,30 @@ assert.equal(isChunkLoadError(new Error("Loading CSS chunk 12 failed")), true);
 
 store.clear();
 reloads.length = 0;
+events.length = 0;
 assert.equal(tryRecoverFromStaleChunk("t1"), true);
-assert.equal(isChunkRecoveryInFlight(), true);
+assert.equal(isChunkRecoveryInFlight(), false, "must not stick in recovering");
 assert.equal(store.get(CHUNK_RELOAD_KEY), "t1");
-assert.ok(reloads.length >= 1, "force reload scheduled");
-assert.equal(tryRecoverFromStaleChunk("t2"), true, "in-flight counts as success");
+assert.equal(reloads.length, 0, "no automatic reload");
+assert.equal(tryRecoverFromStaleChunk("t2"), false, "one attempt per session");
 assert.equal(consumeChunkReloadAllowance("t3"), false);
 
 clearChunkReloadGuard();
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
 const boundary = readFileSync(join(root, "components/ErrorBoundary.tsx"), "utf8");
-assert.match(boundary, /recovering/);
+assert.doesNotMatch(boundary, /تحديث العرض/);
+assert.doesNotMatch(boundary, /تم تحديث المنصة/);
 assert.match(boundary, /hardRecoverStaleDeploy/);
-assert.match(boundary, /تم تحديث المنصة، جاري تحسين العرض/);
-assert.match(boundary, /getDerivedStateFromError[\s\S]*?recovering:\s*isChunkLoadError/);
-assert.match(boundary, /componentDidCatch[\s\S]*?tryRecoverFromStaleChunk/);
+assert.match(boundary, /tryRecoverFromStaleChunk/);
 assert.match(boundary, /noindex,\s*follow/);
 assert.match(boundary, /data-nosnippet/);
 assert.match(boundary, /أقسام مفيدة/);
-assert.doesNotMatch(boundary, /<h1[^>]*>تعذّر عرض هذه الصفحة/);
 
 const main = readFileSync(join(root, "main.tsx"), "utf8");
 assert.match(main, /ChunkRecoveryToast/);
 const toast = readFileSync(join(root, "components/ChunkRecoveryToast.tsx"), "utf8");
-assert.match(toast, /chunk-recovery-toast\.css/);
+assert.match(toast, /return null/);
 
 assert.equal(typeof CHUNK_RECOVERING_EVENT, "string");
 

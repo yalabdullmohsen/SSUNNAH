@@ -1,9 +1,7 @@
 /**
- * استعادة موحّدة بعد نشر جديد: chunk hashes قديمة في تبويب مفتوح.
- * ينسّق بين lazyWithRetry و ErrorBoundary حتى لا تظهر شاشة خطأ صلبة
- * أثناء إعادة التحميل التلقائية.
+ * استعادة هادئة بعد نشر: chunk hashes قديمة في تبويب مفتوح.
+ * بلا واجهة حاجبة · بلا Toast تقني · بلا reload تلقائي.
  */
-import { safeLocationReload } from "@/lib/safe-reload";
 import {
   CHUNK_RELOAD_KEY,
   clearChunkReloadGuard,
@@ -15,24 +13,17 @@ export const CHUNK_RECOVERING_EVENT = "majalis:chunk-recovering";
 export { isChunkLoadError, clearChunkReloadGuard, CHUNK_RELOAD_KEY };
 
 let recoveryInFlight = false;
+let lastRecoveryLabel: string | null = null;
 
 export function isChunkRecoveryInFlight(): boolean {
   return recoveryInFlight;
 }
 
-function announceRecovering(): void {
-  try {
-    window.dispatchEvent(
-      new CustomEvent(CHUNK_RECOVERING_EVENT, {
-        detail: { message: "تم تحديث المنصة، جاري تحسين العرض…" },
-      }),
-    );
-  } catch {
-    /* ignore */
-  }
+export function getLastChunkRecoveryLabel(): string | null {
+  return lastRecoveryLabel;
 }
 
-/** اطلب من SW حذف كاش القشرة/الأصول غير الموثوقة قبل reload. */
+/** اطلب من SW حذف كاش القشرة غير الموثوقة فقط — لا مسح كل Cache. */
 function requestSwShellPurge(): void {
   try {
     const ctrl = navigator.serviceWorker?.controller;
@@ -42,9 +33,18 @@ function requestSwShellPurge(): void {
   }
 }
 
+function markDev(name: string): void {
+  try {
+    if (!(import.meta as ImportMeta & { env?: { DEV?: boolean } }).env?.DEV) return;
+    performance.mark(name);
+  } catch {
+    /* ignore */
+  }
+}
+
 /**
- * محاولة استعادة واحدة لكل جلسة تبويب.
- * تُرجع true إن شُرعت الاستعادة (أو كانت جارية) — لا تعرض خطأً صلبًا.
+ * محاولة استعادة هادئة واحدة لكل جلسة تبويب.
+ * تُرجع true إن شُرعت (أو كانت جارية) — **لا** reload · **لا** رسالة مستخدم.
  */
 export function tryRecoverFromStaleChunk(label = "1"): boolean {
   if (typeof window === "undefined") return false;
@@ -52,42 +52,38 @@ export function tryRecoverFromStaleChunk(label = "1"): boolean {
   if (!consumeChunkReloadAllowance(label)) return false;
 
   recoveryInFlight = true;
-  announceRecovering();
+  lastRecoveryLabel = label || "1";
+  markDev("update:fallback-start");
   requestSwShellPurge();
 
-  // تأخير قصير ليظهر المؤشر قبل reload، وليفوز postMessage إلى SW.
-  window.setTimeout(() => {
-    safeLocationReload({ force: true });
-  }, 80);
+  try {
+    window.dispatchEvent(
+      new CustomEvent(CHUNK_RECOVERING_EVENT, {
+        detail: { quiet: true, label: lastRecoveryLabel },
+      }),
+    );
+  } catch {
+    /* ignore */
+  }
+
+  markDev("update:fallback-complete");
+  // حرّر العلم فور انتهاء الـpurge message — لا تُبقِ UI في recovering أبدًا
+  recoveryInFlight = false;
   return true;
 }
 
 /**
- * استعادة أقوى بعد فشل المحاولة الأولى: مسح Cache Storage + إلغاء SW.
- * يُستدعى من زر المستخدم فقط (لا حلقة تلقائية).
+ * استعادة بمبادرة المستخدم فقط: purge قشرة + reload واحد.
+ * لا تُستدعى تلقائيًا · لا تمسح كل caches.keys().
  */
 export async function hardRecoverStaleDeploy(): Promise<void> {
-  recoveryInFlight = true;
-  announceRecovering();
-  try {
-    if (typeof caches !== "undefined") {
-      const keys = await caches.keys();
-      await Promise.all(keys.map((k) => caches.delete(k)));
-    }
-  } catch {
-    /* ignore */
-  }
-  try {
-    if (navigator.serviceWorker?.getRegistrations) {
-      const regs = await navigator.serviceWorker.getRegistrations();
-      await Promise.all(regs.map((r) => r.unregister()));
-    }
-  } catch {
-    /* ignore */
-  }
+  markDev("update:activation-start");
+  requestSwShellPurge();
   clearChunkReloadGuard();
   try {
     sessionStorage.removeItem("majalis-safe-reload-ts");
+    sessionStorage.removeItem("mj.sw-reload-once.v1");
+    sessionStorage.removeItem("ssunnah-refreshing-version");
   } catch {
     /* ignore */
   }

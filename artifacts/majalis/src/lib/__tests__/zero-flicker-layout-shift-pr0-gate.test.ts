@@ -98,10 +98,11 @@ assert.match(view, /pts-hint--skeleton/);
 assert.match(view, /pts-hero/);
 
 const boundary = readPkg("src/components/ErrorBoundary.tsx");
-assert.match(boundary, /تحديث العرض/);
+assert.doesNotMatch(boundary, /تحديث العرض/);
 
 const chunk = readPkg("src/lib/chunk-recovery.ts");
-assert.match(chunk, /تحسين العرض/);
+assert.doesNotMatch(chunk, /تحسين العرض/);
+assert.doesNotMatch(chunk, /safeLocationReload/);
 
 const app = readPkg("src/App.tsx");
 assert.match(app, /deferMs=\{isHomePath \? 20_000 : 0\}/);
