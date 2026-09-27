@@ -9,26 +9,49 @@ import {
   bookmarkHref,
   exportBookmarksJson,
   getBookmarkStats,
+  getHifzProgress,
+  getKhatmahProgress,
   getLastUsedBookmark,
+  getReadingBookmark,
+  getReviewProgress,
   importBookmarksJson,
   listFilteredBookmarks,
   setLastUsedBookmarkId,
   toggleBookmarkFavorite,
 } from "@/lib/quran-my-bookmarks-ops";
 import {
+  getKhatmahTypeLabel,
   MUSHAF_BOOKMARK_KINDS,
-  MUSHAF_PRODUCT_BOOKMARK_KINDS,
+  MUSHAF_MANAGER_GROUP_ORDER,
   resolveBookmarkColor,
   type MushafBookmarkKind,
 } from "@/lib/quran-bookmark-kinds";
 import { getSurahMeta } from "@/lib/quran-api";
 import { toArabicIndicDigits as toArabicDigits } from "@/lib/numerals";
 import { navigateTo } from "@/lib/navigation-intent";
-import { getHifzProgress, getReadingBookmark } from "@/lib/quran-my-bookmarks-ops";
 import { LastReadingBookmarkCard } from "@/components/quran/LastReadingBookmarkCard";
 import "@/styles/reader-bookmarks-manager.css";
 
 const SURAH_OPTIONS = Array.from({ length: 114 }, (_, i) => i + 1);
+
+function itemProgressLine(b: MyBookmark): string {
+  if (b.kind === "hifz") {
+    const p = getHifzProgress(b);
+    if (!p) return "";
+    return ` · تقدم ${toArabicDigits(p.pct)}٪ (ص ${toArabicDigits(p.current)} → ${toArabicDigits(p.to)})`;
+  }
+  if (b.kind === "review") {
+    const p = getReviewProgress(b);
+    if (!p) return "";
+    return ` · المراجعة الحالية: ص ${toArabicDigits(p.from)} → ص ${toArabicDigits(p.to)}`;
+  }
+  if (b.kind === "khatmah") {
+    const p = getKhatmahProgress(b);
+    if (!p) return "";
+    return ` · ${getKhatmahTypeLabel(b.khatmaType)} · ${toArabicDigits(p.pagesDone)}/${toArabicDigits(p.pagesTotal)}`;
+  }
+  return "";
+}
 
 /**
  * شاشة مدير الفواصل — بحث · تصفية · تجميع · انتقال سريع.
@@ -69,16 +92,11 @@ export default function MushafBookmarksView() {
       list.push(b);
       map.set(b.kind, list);
     }
-    const order = [
-      ...MUSHAF_PRODUCT_BOOKMARK_KINDS,
-      ...MUSHAF_BOOKMARK_KINDS.filter((k) => !k.product),
-    ];
-    return order
-      .map((k) => ({
-        meta: k,
-        items: map.get(k.id) ?? [],
-      }))
-      .filter((g) => g.items.length > 0);
+    const metaById = new Map(MUSHAF_BOOKMARK_KINDS.map((k) => [k.id, k]));
+    return MUSHAF_MANAGER_GROUP_ORDER.map((id) => ({
+      meta: metaById.get(id)!,
+      items: map.get(id) ?? [],
+    })).filter((g) => g.meta && g.items.length > 0);
   }, [items]);
   const reading = useMemo(() => getReadingBookmark(), [tick]);
 
@@ -130,6 +148,10 @@ export default function MushafBookmarksView() {
           <span>مراجعة</span>
         </div>
         <div>
+          <strong>{toArabicDigits(stats.khatmah)}</strong>
+          <span>ختمات</span>
+        </div>
+        <div>
           <strong>{toArabicDigits(stats.custom)}</strong>
           <span>شخصي</span>
         </div>
@@ -157,7 +179,7 @@ export default function MushafBookmarksView() {
         <input
           className="rb-manager__search"
           dir="rtl"
-          placeholder="بحث في الفواصل…"
+          placeholder="بحث… مثال: الحفظ"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           aria-label="بحث"
@@ -244,50 +266,47 @@ export default function MushafBookmarksView() {
                   surahNum >= 1 && surahNum <= 114
                     ? getSurahMeta(surahNum).name.replace(/^سُورَةُ\s*/u, "")
                     : "";
-                const hifz = getHifzProgress(b);
                 const stamp = b.updatedAt || b.createdAt || b.date;
                 return (
-                <li key={b.id} className={b.archived ? "is-archived" : undefined}>
-                  <button
-                    type="button"
-                    className="rb-manager__item"
-                    onClick={() => openBookmark(b)}
-                  >
-                    <span className="rb-manager__item-label">{b.label}</span>
-                    {b.note ? <span className="rb-manager__item-note">{b.note}</span> : null}
-                    <span className="rb-manager__item-meta">
-                      الصفحة {toArabicDigits(b.page)}
-                      {surahName ? ` · سورة ${surahName}` : ""}
-                      {stamp ? ` · ${stamp.slice(0, 10)}` : ""}
-                      {hifz
-                        ? ` · تقدم ${toArabicDigits(hifz.pct)}٪ (${toArabicDigits(hifz.from)}–${toArabicDigits(hifz.to)})`
-                        : ""}
-                    </span>
-                  </button>
-                  <div className="rb-manager__item-actions">
+                  <li key={b.id} className={b.archived ? "is-archived" : undefined}>
                     <button
                       type="button"
-                      aria-label={b.favorite ? "إزالة من المفضلة" : "مفضلة"}
-                      onClick={() => void toggleBookmarkFavorite(b.id).then(refresh)}
+                      className="rb-manager__item"
+                      onClick={() => openBookmark(b)}
                     >
-                      {b.favorite ? "★" : "☆"}
+                      <span className="rb-manager__item-label">{b.label}</span>
+                      {b.note ? <span className="rb-manager__item-note">{b.note}</span> : null}
+                      <span className="rb-manager__item-meta">
+                        الصفحة {toArabicDigits(b.page)}
+                        {surahName ? ` · سورة ${surahName}` : ""}
+                        {stamp ? ` · ${stamp.slice(0, 10)}` : ""}
+                        {itemProgressLine(b)}
+                      </span>
                     </button>
-                    <button
-                      type="button"
-                      aria-label={b.archived ? "استعادة" : "أرشفة"}
-                      onClick={() => void archiveBookmark(b.id, !b.archived).then(refresh)}
-                    >
-                      {b.archived ? "↩" : "أرشيف"}
-                    </button>
-                    <button
-                      type="button"
-                      aria-label="حذف"
-                      onClick={() => void removeMyBookmark(b.id).then(refresh)}
-                    >
-                      حذف
-                    </button>
-                  </div>
-                </li>
+                    <div className="rb-manager__item-actions">
+                      <button
+                        type="button"
+                        aria-label={b.favorite ? "إزالة من المفضلة" : "مفضلة"}
+                        onClick={() => void toggleBookmarkFavorite(b.id).then(refresh)}
+                      >
+                        {b.favorite ? "★" : "☆"}
+                      </button>
+                      <button
+                        type="button"
+                        aria-label={b.archived ? "استعادة" : "أرشفة"}
+                        onClick={() => void archiveBookmark(b.id, !b.archived).then(refresh)}
+                      >
+                        {b.archived ? "↩" : "أرشيف"}
+                      </button>
+                      <button
+                        type="button"
+                        aria-label="حذف"
+                        onClick={() => void removeMyBookmark(b.id).then(refresh)}
+                      >
+                        حذف
+                      </button>
+                    </div>
+                  </li>
                 );
               })}
             </ul>

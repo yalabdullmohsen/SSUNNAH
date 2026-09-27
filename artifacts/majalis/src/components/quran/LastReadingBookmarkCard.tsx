@@ -1,5 +1,5 @@
 /**
- * بطاقة «آخر موضع قراءة» — مصحف / مركز القرآن / متابعة التعلّم.
+ * بطاقة «متابعة القراءة» — مصحف / مركز القرآن / متابعة التعلّم.
  */
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
@@ -14,7 +14,22 @@ type Resume = {
   surahName: string;
   href: string;
   fromBookmark: boolean;
+  savedAtLabel: string | null;
 };
+
+function formatSavedAt(iso: string | undefined): string | null {
+  if (!iso) return null;
+  try {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return null;
+    return d.toLocaleString("ar", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
+  } catch {
+    return null;
+  }
+}
 
 function resolveResume(): Resume | null {
   const bm = getReadingBookmark();
@@ -29,6 +44,7 @@ function resolveResume(): Resume | null {
       surahName: name,
       href: bookmarkHref(bm),
       fromBookmark: true,
+      savedAtLabel: formatSavedAt(bm.updatedAt || bm.createdAt),
     };
   }
   const page = loadPagePosition();
@@ -45,6 +61,7 @@ function resolveResume(): Resume | null {
     surahName: name,
     href: `/mushaf/page/${page}${key ? `?ayah=${key}` : ""}`,
     fromBookmark: false,
+    savedAtLabel: null,
   };
 }
 
@@ -72,10 +89,10 @@ export function LastReadingBookmarkCard({ className = "", compact = false }: Pro
     <section
       className={`lrb-card ${compact ? "lrb-card--compact" : ""} ${className}`.trim()}
       data-testid="last-reading-bookmark-card"
-      aria-label="آخر موضع قراءة"
+      aria-label="متابعة القراءة"
     >
       <div className="lrb-card__body">
-        <p className="lrb-card__eyebrow">آخر موضع قراءة</p>
+        <p className="lrb-card__eyebrow">متابعة القراءة</p>
         <h3 className="lrb-card__title">
           الصفحة {toArabicDigits(resume.page)}
           {resume.surahName ? (
@@ -85,8 +102,10 @@ export function LastReadingBookmarkCard({ className = "", compact = false }: Pro
             </>
           ) : null}
         </h3>
-        {!compact ? (
-          <p className="lrb-card__sub">العودة إلى آخر موضع قراءة</p>
+        {!compact && resume.savedAtLabel ? (
+          <p className="lrb-card__sub">وقت الحفظ: {resume.savedAtLabel}</p>
+        ) : !compact ? (
+          <p className="lrb-card__sub">آخر موضع قراءة</p>
         ) : null}
       </div>
       <Link href={resume.href} className="lrb-card__cta">

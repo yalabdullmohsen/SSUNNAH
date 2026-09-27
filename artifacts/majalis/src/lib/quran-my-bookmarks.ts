@@ -5,7 +5,11 @@
 import { storageGetSync, storageSetSync } from "@/lib/native-storage";
 import { recoverLocalJsonTmp, writeLocalJsonAtomic } from "@/lib/safe-json";
 import { runOptimisticWalPersist } from "@/lib/sovereign/optimistic-wal";
-import type { MushafBookmarkKind, MushafWirdSlot } from "@/lib/quran-bookmark-kinds";
+import type {
+  MushafBookmarkKind,
+  MushafKhatmahType,
+  MushafWirdSlot,
+} from "@/lib/quran-bookmark-kinds";
 import {
   ayahKeyToPage,
   currentPageFirstAyah,
@@ -14,7 +18,7 @@ import {
   clampMushafPageNum as clampPage,
 } from "@/lib/quran-ayah-page";
 
-export type { MushafBookmarkKind, MushafWirdSlot };
+export type { MushafBookmarkKind, MushafKhatmahType, MushafWirdSlot };
 export {
   ayahKeyToPage,
   currentPageFirstAyah,
@@ -32,10 +36,15 @@ function isKind(v: unknown): v is MushafBookmarkKind {
     v === "wird" ||
     v === "hifz" ||
     v === "review" ||
+    v === "khatmah" ||
     v === "tadabbur" ||
     v === "lesson" ||
     v === "custom"
   );
+}
+
+function isKhatmahType(v: unknown): v is MushafKhatmahType {
+  return v === "general" || v === "ramadan" || v === "hifz" || v === "special";
 }
 
 export type MyBookmark = {
@@ -50,9 +59,11 @@ export type MyBookmark = {
   customName?: string;
   wirdSlot?: MushafWirdSlot;
   khatmaId?: string;
-  /** نطاق الحفظ: من صفحة */
+  /** نوع الختمة عند kind=khatmah */
+  khatmaType?: MushafKhatmahType;
+  /** نطاق: بداية (حفظ / مراجعة / ختمة) */
   rangeFromPage?: number;
-  /** نطاق الحفظ: إلى صفحة */
+  /** نطاق: نهاية / هدف */
   rangeToPage?: number;
   archived?: boolean;
   favorite?: boolean;
@@ -144,6 +155,7 @@ function normalizeBookmark(raw: LegacyBookmark): MyBookmark | null {
     customName: str(raw.customName, 48),
     wirdSlot,
     khatmaId: str(raw.khatmaId, 64),
+    khatmaType: isKhatmahType(raw.khatmaType) ? raw.khatmaType : undefined,
     rangeFromPage: rangeFrom,
     rangeToPage: rangeTo,
     archived: raw.archived === true,

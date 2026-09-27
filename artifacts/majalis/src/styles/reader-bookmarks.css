@@ -316,3 +316,60 @@
   color: #8a2f2f;
   font-size: 0.78rem;
 }
+
+.rb-page-sheet__hint {
+  margin: 0;
+  font-size: 0.72rem;
+  opacity: 0.72;
+}
+
+.rb-page-sheet__note {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.rb-page-sheet__note input {
+  width: 100%;
+  min-height: 2.5rem;
+  border-radius: 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 28%, transparent);
+  background: color-mix(in srgb, #fff 55%, transparent);
+  padding: 0.35rem 0.55rem;
+  font: inherit;
+}
+
+.rb-page-sheet__khatmah {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: flex-end;
+}
+
+.rb-page-sheet__chip {
+  appearance: none;
+  border: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 28%, transparent);
+  background: transparent;
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  font: inherit;
+  font-size: 0.75rem;
+  min-height: 2.2rem;
+  cursor: pointer;
+}
+
+.rb-page-sheet__chip.is-active {
+  background: color-mix(in srgb, #6b3d6e 16%, transparent);
+  border-color: color-mix(in srgb, #6b3d6e 45%, transparent);
+  font-weight: 700;
+}
+
+.rb-page-sheet__ghost {
+  min-height: 2.75rem;
+  border: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 28%, transparent);
+  border-radius: 0.7rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
