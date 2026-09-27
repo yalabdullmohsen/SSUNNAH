@@ -20,6 +20,9 @@ const { PROPHETS } = await import("../src/lib/prophets-data.ts");
 const { MUSHAF_TAFSIR_EDITIONS } = await import("../src/lib/quran-data/tafsir-editions.ts");
 const { IA_REDIRECTS } = await import("../src/lib/ia-final-structure.ts");
 const { isHiddenFromNav } = await import("../src/lib/nav-visibility.ts");
+const { SEARCH_INDEX_SCHEMA_VERSION } = await import(
+  "../src/features/search/search-index-version.ts"
+);
 
 const REDIRECT_HREFS = new Set(Object.keys(IA_REDIRECTS));
 /** مسارات بلا صفحة محتوى صالحة في البحث العام */
@@ -378,8 +381,14 @@ try {
     };
     for (const it of items) {
       if (it.section === "quiz") continue;
-      // الأنبياء والأمم: الفهرس المعتمد /prophets و /nations فقط — لا /knowledge/...
-      if (it.section === "prophets" || it.section === "nations") continue;
+      // الأنبياء والأمم والتاريخ: المسارات المعتمدة /prophets و /nations و /tarikh-islami فقط
+      if (
+        it.section === "prophets" ||
+        it.section === "nations" ||
+        it.section === "history"
+      ) {
+        continue;
+      }
       const body = String(it.body || "").trim();
       if (body.length < 40) continue;
       if (it.review_status && it.review_status !== "verified") continue;
@@ -414,7 +423,7 @@ fs.mkdirSync(outDir, { recursive: true });
    ‎actions/checkout‎ ينشئ merge commit بتاريخ *الآن*. من احتاج معرفة نسخة
    الفهرس فـ‎/version.json‎ يحمل الـcommit الفعلي. */
 const payload = {
-  version: 2,
+  version: SEARCH_INDEX_SCHEMA_VERSION,
   count: docs.length,
   docs,
 };

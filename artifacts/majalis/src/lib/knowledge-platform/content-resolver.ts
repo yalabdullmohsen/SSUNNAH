@@ -132,21 +132,28 @@ export function resolveSearchHit(hit: {
 }): ContentEntityCard | null {
   const mapped = SEARCH_KIND_TO_ENTITY[hit.kind];
   const kind = mapped ?? "app_route";
+  /** رابط الفهرس المُتحقَّق وقت البناء — مصدر الحقيقة للتنقّل من البحث. */
+  const indexHref =
+    typeof hit.href === "string" && hit.href.startsWith("/") ? hit.href : "";
   // لـ app_route: استخدم مسار الفهرس إن وُجد — يمنع فتح كيان خاطئ عبر id خام.
-  const id =
-    kind === "app_route" && typeof hit.href === "string" && hit.href.startsWith("/")
-      ? hit.href
-      : hit.id;
+  const id = kind === "app_route" && indexHref ? indexHref : hit.id;
   const resolved =
     resolveContentRef({ kind, id }, hit.title) ??
     card("app_route", hit.href || hit.id, hit.title, hit.href || "/search", {
       shortDescription: hit.summary,
     });
-  // لا تستبدل رابط المحلّل برابط الفهرس للأنواع المعروفة (غير app_route).
-  const withHref =
-    !mapped && hit.href && resolved.href !== hit.href
-      ? { ...resolved, href: hit.href, shortDescription: hit.summary ?? resolved.shortDescription }
-      : { ...resolved, shortDescription: hit.summary ?? resolved.shortDescription };
+  // لا يُعاد بناء المسار من معرّفات الفهرس المركّبة (مثل history:id) —
+  // ذلك كان يفتح /tarikh-islami/history%3A… وصفحات «غير متاح».
+  const withHref = indexHref
+    ? {
+        ...resolved,
+        href: indexHref,
+        shortDescription: hit.summary ?? resolved.shortDescription,
+        provenance: resolved.provenance
+          ? `${resolved.provenance}|nav:index-href`
+          : "nav:index-href",
+      }
+    : { ...resolved, shortDescription: hit.summary ?? resolved.shortDescription };
   return isPubliclyVisible(withHref) ? withHref : null;
 }
 

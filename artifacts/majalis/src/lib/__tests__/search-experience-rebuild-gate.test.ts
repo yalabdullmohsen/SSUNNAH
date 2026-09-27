@@ -37,6 +37,9 @@ assert.equal(knowledgeProphets.length, 0, "لا نتائج أنبياء عبر /
 const knowledgeNations = index.docs.filter((d) => (d.href || "").includes("/knowledge/nations/"));
 assert.equal(knowledgeNations.length, 0, "لا نتائج أمم عبر /knowledge/nations");
 
+const knowledgeHistory = index.docs.filter((d) => (d.href || "").includes("/knowledge/history/"));
+assert.equal(knowledgeHistory.length, 0, "لا نتائج تاريخ عبر /knowledge/history");
+
 assert.equal(
   index.docs.some((d) => (d.href || "").split("?")[0] === "/knowledge/quiz"),
   false,

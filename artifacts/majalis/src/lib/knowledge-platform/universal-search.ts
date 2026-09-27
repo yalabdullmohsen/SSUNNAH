@@ -53,8 +53,8 @@ export async function runKnowledgeSearch(
     });
     return {
       ...item,
-      // Content Resolver هو مصدر الحقيقة للمسار عند توفره
-      href: entity?.href || item.href,
+      // رابط فهرس البحث المُتحقَّق هو مصدر التنقّل؛ المحلّل يُثري البطاقة فقط.
+      href: item.href || entity?.href || "/search",
       entity,
     };
   };

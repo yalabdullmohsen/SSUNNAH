@@ -44,7 +44,8 @@ assert.match(emptyV2, /navPath\?:/);
 assert.match(sectionCard, /count\?:\s*number/);
 assert.match(sectionCard, /countLabel\?:/);
 assert.doesNotMatch(tarikh, /عنصر غير موجود/);
-assert.match(tarikh, /EmptyStateV2/);
+assert.match(tarikh, /tarikh-unavailable/);
+assert.doesNotMatch(tarikh, /EmptyStateV2/);
 
 assert.ok(existsSync(resolve(repoRoot, "docs/design/SUNNAH_UI_REFINEMENT_AUDIT.md")));
 assert.ok(existsSync(resolve(repoRoot, "docs/design/UNIFIED_SEARCH_ARCHITECTURE.md")));

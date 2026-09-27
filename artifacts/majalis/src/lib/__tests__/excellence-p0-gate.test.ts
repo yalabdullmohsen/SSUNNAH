@@ -75,7 +75,8 @@ assert.match(entity, /book:\s*"app_route"/);
 assert.match(entity, /fatwa:\s*"app_route"/);
 
 const resolver = read("src/lib/knowledge-platform/content-resolver.ts");
-assert.match(resolver, /!mapped && hit\.href/);
+assert.match(resolver, /indexHref/);
+assert.match(resolver, /nav:index-href/);
 
 const adhanAudio = read("src/lib/adhan-audio-service.ts");
 assert.match(adhanAudio, /سُنّة — أذان/);

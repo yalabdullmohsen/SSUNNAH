@@ -65,7 +65,16 @@ const globalSearch = read("src/components/GlobalSearchModal.tsx");
 assert.match(globalSearch, /runKnowledgeSearch/);
 const universal = read("src/lib/knowledge-platform/universal-search.ts");
 assert.match(universal, /limit\?:/);
-assert.match(universal, /href:\s*entity\?\.href/);
+assert.match(universal, /item\.href \|\| entity\?\.href/);
+
+const historyNav = resolveSearchHit({
+  id: "history:rashidun-abu-bakr",
+  kind: "history",
+  title: "خلافة أبي بكر الصديق",
+  href: "/tarikh-islami/rashidun-abu-bakr",
+});
+assert.ok(historyNav);
+assert.equal(historyNav.href, "/tarikh-islami/rashidun-abu-bakr");
 
 const clear = read("src/lib/clear-user-local-data.ts");
 assert.match(clear, /majalis-kp-activity-v1/);
