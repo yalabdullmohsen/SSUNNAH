@@ -332,15 +332,22 @@ export default function PrayerTimesPage() {
     </nav>
   );
 
-  // هيكل فوري — بلا شاشة بيضاء؛ إن لم تتوفر مواقيت حقيقية نطلب اختيار المدينة
+  // هيكل فوري — سطح زيتوني محجوز المساحة؛ بلا إطار أبيض أو hint كريمي
   if (!countdown?.next) {
     return (
-      <div className="pts-screen pts-screen--with-nav" dir="rtl">
+      <div className="pts-screen pts-screen--with-nav pts-screen--boot" dir="rtl">
         {headerChrome}
         {toolsBar}
         {locationPanel}
         {loading ? (
-          <div className="pts-hint pts-hint--skeleton" role="status" aria-busy="true" aria-label="تحديث المواقيت" />
+          <div role="status" aria-busy="true" aria-label="تحديث المواقيت">
+            <div className="pts-boot-hero" aria-hidden="true" />
+            <div className="pts-boot-row" aria-hidden="true" />
+            <div className="pts-boot-row" aria-hidden="true" />
+            <div className="pts-boot-row" aria-hidden="true" />
+            <div className="pts-boot-row" aria-hidden="true" />
+            <div className="pts-boot-row" aria-hidden="true" />
+          </div>
         ) : (
           <p className="pts-error" role="alert">
             اختر مدينتك لعرض مواقيت الصلاة بدقة. لا نعرض أوقاتًا تقديرية.

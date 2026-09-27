@@ -57,9 +57,16 @@ assert.ok(
 assert.match(lrf, /lrf-wrap--skel/, "هيكل مسار فوري");
 assert.match(lrf, /lrf-wrap--lessons/, "هيكل دروس فوري");
 assert.match(lrf, /lrf-wrap--prayer/, "هيكل صلاة فوري");
+assert.match(lrf, /lrf-skel--prayer/, "هيكل صلاة بشكل الصفحة لا كريم عام");
 assert.match(lrf, /lrf-wrap--search/, "هيكل بحث فوري");
 assert.match(lrf, /lrf-wrap--settings/, "هيكل إعدادات فوري");
 assert.match(instant, /\.lrf-wrap--skel[\s\S]*background:\s*var\(--mj-bg/, "هيكل المسار يرث سطح الواجهة");
+assert.match(app, /prayer-route-shell\.css/, "صدفة صلاة متزامنة مع App");
+assert.match(
+  app,
+  /useLayoutEffect\(\(\) => \{\s*document\.documentElement\.classList\.toggle\("pts-immersive"/,
+  "pts-immersive قبل الطلاء لا بعد useEffect",
+);
 
 assert.match(splash, /hideNativeSplash|dismissHtmlLaunchSplash/, "إقلاع splash → قشرة التطبيق");
 assert.match(splash, /prefersReducedMotion|prefers-reduced-motion/, "إقلاع يحترم تقليل الحركة");

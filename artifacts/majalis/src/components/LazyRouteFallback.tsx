@@ -57,14 +57,26 @@ export function LazyRouteFallback() {
                     : undefined
       }
     >
-      <div className="lrf-skel lrf-skel--page" aria-hidden="true">
-        <div className="lrf-skel__eyebrow" />
-        <div className="lrf-skel__title" />
-        <div className="lrf-skel__line" />
-        <div className="lrf-skel__line lrf-skel__line--short" />
-        <div className="lrf-skel__block" />
-        <div className="lrf-skel__block lrf-skel__block--short" />
-      </div>
+      {prayerShell ? (
+        <div className="lrf-skel lrf-skel--prayer" aria-hidden="true">
+          <div className="lrf-skel__title" />
+          <div className="lrf-skel__hero" />
+          <div className="lrf-skel__row" />
+          <div className="lrf-skel__row" />
+          <div className="lrf-skel__row" />
+          <div className="lrf-skel__row" />
+          <div className="lrf-skel__row" />
+        </div>
+      ) : (
+        <div className="lrf-skel lrf-skel--page" aria-hidden="true">
+          <div className="lrf-skel__eyebrow" />
+          <div className="lrf-skel__title" />
+          <div className="lrf-skel__line" />
+          <div className="lrf-skel__line lrf-skel__line--short" />
+          <div className="lrf-skel__block" />
+          <div className="lrf-skel__block lrf-skel__block--short" />
+        </div>
+      )}
     </div>
   );
 }
