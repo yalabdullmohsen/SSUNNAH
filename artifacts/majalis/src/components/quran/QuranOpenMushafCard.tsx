@@ -111,6 +111,8 @@ export function QuranOpenMushafCard() {
       dir="rtl"
       data-quran-open-mushaf="1"
       data-sgs="card"
+      data-cs2-card="1"
+      data-cs2-type={info.hasResume ? "continue" : "navigation"}
       aria-label={`المصحف — ${info.resumeLine}`}
     >
       <div className="quran-open-mushaf__accent" aria-hidden="true" />

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
+import { ContinueCardV2 } from "@/components/design-system/CardSystemV2";
 import { applyPageSeo } from "@/lib/seo";
 import {
   buildProgressSnapshot,
@@ -48,17 +49,14 @@ export default function ProgressCenterView() {
 
       <section className="kp-section" aria-labelledby="kp-mushaf">
         <h2 id="kp-mushaf" className="kp-section__title">متابعة القراءة</h2>
-        {snap?.mushaf.lastPage != null ? (
-          <div className="kp-continue">
-            <p>
-              آخر صفحة في المصحف: <strong>{snap.mushaf.lastPage}</strong>
-            </p>
-            {snap.mushaf.href ? (
-              <Link href={snap.mushaf.href} className="kp-btn kp-btn--primary">
-                متابعة القراءة
-              </Link>
-            ) : null}
-          </div>
+        {snap?.mushaf.lastPage != null && snap.mushaf.href ? (
+          <ContinueCardV2
+            href={snap.mushaf.href}
+            title="متابعة القراءة"
+            meta={`آخر صفحة في المصحف: ${snap.mushaf.lastPage}`}
+            actionLabel="متابعة القراءة"
+            className="kp-continue-cs2"
+          />
         ) : (
           <p className="kp-empty">لا موضع محفوظ بعد. افتح المصحف لتبدأ المتابعة.</p>
         )}

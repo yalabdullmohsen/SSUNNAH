@@ -93,6 +93,8 @@ export const SectionEntryCard = memo(function SectionEntryCard({
 
   const classNames = cn(
     "hub-card sec-entry soft-card soft-card--on-light ss-hub-card mj-pressable cs-card",
+    /* Card System V2 — تصنيف Navigation على بطاقة الدخول الموحّدة */
+    "cs2-host",
     `hub-card--${variant}`,
     (featured || variant === "featured") && "hub-card--featured",
     variant === "detailed" && "hub-card--detailed",
@@ -101,7 +103,12 @@ export const SectionEntryCard = memo(function SectionEntryCard({
     loading && "hub-card--loading",
     className,
   );
-  const csAttrs = { "data-cs-card": "1", "data-cs-type": "section" } as const;
+  const csAttrs = {
+    "data-cs-card": "1",
+    "data-cs-type": "section",
+    "data-cs2-card": "1",
+    "data-cs2-type": "navigation",
+  } as const;
 
   const warmRoute = useCallback(() => {
     if (nonInteractive || samePathHash || !safeHref) return;
@@ -136,7 +143,11 @@ export const SectionEntryCard = memo(function SectionEntryCard({
   const body = (
     <>
       <div className="hub-card__top">
-        {iconNode ? <span className="hub-card__icon">{iconNode}</span> : null}
+        {iconNode ? (
+          <span className="hub-card__icon cs2-nav__icon" aria-hidden="true">
+            {iconNode}
+          </span>
+        ) : null}
         <div className="hub-card__top-meta">
           {badge != null ? <span className="hub-card__chip mj-badge">{badge}</span> : null}
           {isCurrent ? (
@@ -148,12 +159,16 @@ export const SectionEntryCard = memo(function SectionEntryCard({
         </div>
       </div>
       <div className="hub-card__body">
-        <CardTitle className="hub-card__title">{title}</CardTitle>
-        {desc ? <SupportingText className="hub-card__desc">{desc}</SupportingText> : null}
+        <CardTitle className="hub-card__title cs2-nav__title">{title}</CardTitle>
+        {desc ? (
+          <SupportingText className="hub-card__desc cs2-nav__desc">{desc}</SupportingText>
+        ) : null}
       </div>
       <div className="hub-card__foot">
         <div className="hub-card__foot-start">
-          {footMeta ? <Caption className="hub-card__meta">{footMeta}</Caption> : null}
+          {footMeta ? (
+            <Caption className="hub-card__meta cs2-nav__meta">{footMeta}</Caption>
+          ) : null}
           {footer}
         </div>
         {!nonInteractive || samePathHash ? (
