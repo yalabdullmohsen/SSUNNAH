@@ -162,7 +162,7 @@ export async function runUniversalSearch(
 
   const jumpHits = jumpToHits(query);
   /* كسول: لا تسحب ops/علامات إلى حزمة إقلاع الرئيسية (TBT LHCI) */
-  let bookmarkHits: UniversalHit[] = [];
+  let bookmarkHits: UniversalHit[];
   try {
     const { searchMushafBookmarksForQuery } = await import("@/lib/quran-my-bookmarks-ops");
     bookmarkHits = searchMushafBookmarksForQuery(query, 6).map((b) => ({
