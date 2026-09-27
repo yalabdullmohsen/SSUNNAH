@@ -39,6 +39,22 @@ console.log("=== لا ألوان تباين ضعيفة صلبة ===");
 assert.doesNotMatch(tawhid, /\.twh-hub-card__desc[\s\S]{0,120}?#4A5C55/);
 assert.doesNotMatch(tawhid, /\.twh-hub-card__desc[\s\S]{0,120}?#A8BDB6/);
 assert.match(tawhid, /\.twh-hub-card__desc[\s\S]{0,160}?--color-text-muted|--mj-ink-2/);
+/* #3a4a42 على سطح داكن #24302B ≈ 1.46 — يجب أن يبقى نهاريًا فقط */
+assert.match(
+  tawhid,
+  /:not\(\.dark\):not\(\[data-theme="dark"\]\).*kx-library-card__desc/,
+  "وصف بطاقة التوحيد مقصور على النهاري عبر :not(.dark)",
+);
+assert.match(
+  tawhid,
+  /html\[data-v2-app="1"\]\.dark[\s\S]*?kx-library-card__desc[\s\S]*?color:\s*#c8d5cf/,
+  "وصف بطاقة التوحيد في الداكن بحبر فاتح كافٍ",
+);
+assert.doesNotMatch(
+  tawhid,
+  /html\[data-v2-app="1"\]\s+\.topic-page--tawhid\s+\.kx-library-card\s+\.kx-library-card__desc\s*\{/,
+  "لا قاعدة #3a4a42 عامة تفوز على الداكن",
+);
 
 console.log("=== بطاقات اكتشف الإسلام فاتحة ===");
 assert.match(discover, /\.dii-hub-card\.hub-card[\s\S]{0,280}?background[\s\S]{0,80}?--mj-surface/);
