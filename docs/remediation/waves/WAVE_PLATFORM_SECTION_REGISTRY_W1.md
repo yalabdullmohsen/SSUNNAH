@@ -25,7 +25,7 @@
 
 ## Next safe waves
 
-1. Close REGISTRY_GAP (adab / institutions / landmarks) in nav registry **or** document intentional exclusion
+1. ~~Close REGISTRY_GAP~~ → see `WAVE_PLATFORM_REGISTRY_GAPS_W1.md`
 2. Kuwait lessons data model (Program 4)
 3. Fold Arabic Grammar W1 (local worktree) then W2 with approved source
 4. Shubuhat dedicated center

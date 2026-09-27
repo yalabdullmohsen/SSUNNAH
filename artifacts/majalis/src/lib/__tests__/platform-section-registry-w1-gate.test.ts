@@ -58,11 +58,30 @@ assert.ok((avail.COMPLETE ?? 0) <= 3, "few COMPLETE — honesty");
 assert.ok((avail.PARTIAL ?? 0) >= 10);
 
 const gaps = listRegistryGaps();
-assert.ok(gaps.some((g) => g.id === "adab-talab-ilm"));
-assert.ok(gaps.some((g) => g.id === "institutions"));
-assert.ok(gaps.some((g) => g.id === "historic-mosques"));
+assert.equal(gaps.length, 0, `REGISTRY_GAP closed; remaining=${JSON.stringify(gaps.map((g) => g.id))}`);
+
+const institutions = SECTION_PRODUCT_CATALOG.find((e) => e.id === "institutions");
+const historic = SECTION_PRODUCT_CATALOG.find((e) => e.id === "historic-mosques");
+const adab = SECTION_PRODUCT_CATALOG.find((e) => e.id === "adab-talab-ilm");
+assert.ok(institutions && historic && adab);
+assert.equal(institutions!.registrySectionId, "islam-guide");
+assert.equal(historic!.registrySectionId, "islam-guide");
+assert.equal(institutions!.canonicalRoute, "/islamic-directory");
+assert.equal(historic!.canonicalRoute, "/islamic-directory");
+assert.equal(adab!.registrySectionId, "adab-talab-ilm");
+assert.equal(adab!.publication, "PUBLISHED");
+
+const adabSeed = SECTIONS.find((s) => s.id === "adab-talab-ilm");
+assert.ok(adabSeed, "adab-talab-ilm must be in sections.registry SEEDS");
+assert.equal(adabSeed!.route, "/adab-talab-ilm");
+assert.equal(adabSeed!.status, "live");
+const islamGuide = SECTIONS.find((s) => s.id === "islam-guide");
+assert.ok(islamGuide);
+assert.equal(islamGuide!.route, "/islamic-directory");
 
 assert.match(readDoc("docs/product/SECTION_COMPLETENESS_AUDIT.md"), /BLOCKED_INCOMPLETE|COMING_SOON/);
 assert.match(readDoc("docs/product/INFORMATION_ARCHITECTURE.md"), /القرآن وعلومه/);
+assert.match(readDoc("docs/product/SECTION_REGISTRY.md"), /REGISTRY_GAP closed|zero REGISTRY_GAP/i);
+assert.ok(existsSync(resolve(repo, "docs/remediation/waves/WAVE_PLATFORM_REGISTRY_GAPS_W1.md")));
 
 console.log("platform-section-registry-w1-gate.test.ts: ok");

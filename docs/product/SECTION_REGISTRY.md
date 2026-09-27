@@ -45,15 +45,15 @@ COMPLETE · PARTIAL · CURATED · LIVE_DATA · OFFLINE_AVAILABLE · NETWORK_REQU
 | `taarif-islam` | التعريف بالإسلام (متعدد اللغات) | `/discover-islam` | PARTIAL | PUBLISHED | discover-islam | PARTIAL | PARTIAL |
 | `tafnid-shubuhat` | تفنيد الشبهات | `/discover-islam` | BLOCKED_INCOMPLETE | INTERNAL | discover-islam | EXCLUDED | UNKNOWN |
 | `nahw-balagha` | النحو والبلاغة | `/arabic-language` | BLOCKED_INCOMPLETE | CURATED_PUBLIC | arabic-language | EXCLUDED | PARTIAL |
-| `institutions` | دليل المؤسسات الإسلامية | `/institutions` | PARTIAL | REGISTRY_GAP | — | UNKNOWN | NETWORK_REQUIRED |
-| `historic-mosques` | دليل المساجد التاريخية | `/islamic-landmarks` | PARTIAL | REGISTRY_GAP | — | UNKNOWN | NETWORK_REQUIRED |
+| `institutions` | دليل المؤسسات الإسلامية | `/islamic-directory` | PARTIAL | PUBLISHED | islam-guide | PARTIAL | NETWORK_REQUIRED |
+| `historic-mosques` | دليل المساجد التاريخية | `/islamic-directory` | PARTIAL | PUBLISHED | islam-guide | PARTIAL | NETWORK_REQUIRED |
 | `research` | الأبحاث العلمية | `/research` | PARTIAL | PUBLISHED | research | PARTIAL | NETWORK_REQUIRED |
 | `universities` | دليل الجامعات والكليات الشرعية | `/universities` | PARTIAL | PUBLISHED | universities | PARTIAL | NETWORK_REQUIRED |
 | `adhkar` | الأذكار | `/adhkar` | CURATED | PUBLISHED | adhkar | INDEXED | OFFLINE_READY |
 | `wasaya` | الوصايا | `/wasaya-nabawiyya` | PARTIAL | PUBLISHED | wasaya-nabawiyya | PARTIAL | PARTIAL |
 | `fadail-aamal` | فضائل الأعمال | `/fadail-aamal` | PARTIAL | PUBLISHED | fadail-aamal | PARTIAL | PARTIAL |
 | `sunan-yawmiyya` | السنن النبوية اليومية | `/sunan-yawmiyya` | PARTIAL | PUBLISHED | sunan-yawmiyya | PARTIAL | PARTIAL |
-| `adab-talab-ilm` | آداب طالب العلم | `/adab-talab-ilm` | PARTIAL | REGISTRY_GAP | — | UNKNOWN | PARTIAL |
+| `adab-talab-ilm` | آداب طالب العلم | `/adab-talab-ilm` | PARTIAL | PUBLISHED | adab-talab-ilm | PARTIAL | PARTIAL |
 | `fawaid` | الفوائد المنتقاة | `/fawaid` | CURATED | PUBLISHED | fawaid | PARTIAL | PARTIAL |
 | `duas` | الأدعية | `/duas` | CURATED | PUBLISHED | duas | PARTIAL | OFFLINE_READY |
 | `tasbih` | التسبيح | `/tasbih` | COMPLETE | PUBLISHED | tasbih | PARTIAL | OFFLINE_READY |
@@ -63,15 +63,17 @@ COMPLETE · PARTIAL · CURATED · LIVE_DATA · OFFLINE_AVAILABLE · NETWORK_REQU
 | `adhan-reminders` | تنبيهات الأذان | `/athan-settings` | PARTIAL | PUBLISHED | athan-settings | EXCLUDED | PARTIAL |
 | `assistant` | المساعد العلمي | `/assistant` | PARTIAL | PUBLISHED | assistant | EXCLUDED | NETWORK_REQUIRED |
 
-## Registry gaps (route exists, not in SECTIONS seeds)
+## Registry gaps
 
-- `institutions` → `/institutions` (دليل المؤسسات الإسلامية)
-- `historic-mosques` → `/islamic-landmarks` (دليل المساجد التاريخية)
-- `adab-talab-ilm` → `/adab-talab-ilm` (آداب طالب العلم)
+**REGISTRY_GAP closed (Wave PLATFORM_REGISTRY_GAPS_W1).** `listRegistryGaps()` = **zero REGISTRY_GAP**.
+
+- `institutions` / `historic-mosques` → nav SSOT `islam-guide` → `/islamic-directory` (child routes stay HIDDEN_FROM_NAV; no parallel seeds)
+- `adab-talab-ilm` → seed in `sections.registry` → `/adab-talab-ilm` (BookUser icon)
 
 ## Validation
 
 `validateSectionProductCatalog()` issues: **0**  
+`listRegistryGaps()` length: **0**
 _green_
 
 ## Non-claims
