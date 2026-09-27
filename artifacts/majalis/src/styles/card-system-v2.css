@@ -8,13 +8,13 @@
   /* كثافة: بلا ارتفاع أدنى زائد */
   min-height: 0;
 }
-.hub-card.cs2-host .cs2-nav__title,
-.hub-card.cs2-host .cs2-nav__desc,
-.hub-card.cs2-host .cs2-nav__meta {
-  /* ترث لون البطاقة المضيفة (حبر/فاتح) */
+/* فاتح فقط: لا تُورَّث ألوان على الوضع الداكن (CI #7500) */
+html:not([data-theme="dark"]):not(.dark) .hub-card.cs2-host .cs2-nav__title,
+html:not([data-theme="dark"]):not(.dark) .hub-card.cs2-host .cs2-nav__desc,
+html:not([data-theme="dark"]):not(.dark) .hub-card.cs2-host .cs2-nav__meta {
   color: inherit;
 }
-.hub-card.cs2-host .cs2-nav__desc {
+html:not([data-theme="dark"]):not(.dark) .hub-card.cs2-host .cs2-nav__desc {
   opacity: 0.92;
 }
 
