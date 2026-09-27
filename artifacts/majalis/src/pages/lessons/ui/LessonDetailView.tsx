@@ -40,7 +40,9 @@ import { applyPageSeo } from "@/lib/seo";
 import { getLessonDeliveryMode } from "@/lib/lessons/lessonNormalize";
 import { peekCachedLessonById, takeStashedLesson } from "@/lib/lessons-service";
 import { mapLessonRow } from "@/lib/kuwait-lessons";
+import { resolveLessonType } from "@/lib/lesson-type";
 import "@/styles/pages/not-found.css";
+import "@/styles/pages/lessons.css";
 import "@/styles/sunnah-identity-detail-reading.css";
 
 function buildMapsEmbed(url?: string, mosque?: string, region?: string) {
@@ -186,6 +188,8 @@ export default function LessonDetailPage({
   const [sheikhBio, setSheikhBio] = useState<string>("");
   const [stats, setStats] = useState<LessonEngagementStats>({ views: 0, saves: 0, shares: 0 });
   const [loading, setLoading] = useState(() => !(bootRef.current));
+  const [mapExpanded, setMapExpanded] = useState(false);
+  const [metaOpen, setMetaOpen] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -334,10 +338,24 @@ export default function LessonDetailPage({
   const deliveryLabel = getLessonDeliveryMode(unified);
   const keywords = unified.keywords || [];
   const level = inferLessonLevel(unified.category);
+  const lessonType = resolveLessonType({
+    category: unified.category,
+    title: unified.title,
+    keywords,
+    activityType: unified.activityType,
+  });
+  const whenLabel = [
+    day,
+    unified.gregorianDate || dateLabel,
+    formatShortLessonTime(time || unified.time) || time || unified.time,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+  const placeLabel = [unified.mosque, unified.region].filter(Boolean).join(" — ");
 
   return (
     <DetailScreen compose="mark">
-    <div className="page-shell narrow lesson-detail-page mj-page" aria-busy={loading}>
+    <div className="page-shell narrow lesson-detail-page lesson-detail-page--redesign mj-page" aria-busy={loading}>
       <AppBackButton
         variant="inline"
         fallbackHref="/lessons"
@@ -355,74 +373,52 @@ export default function LessonDetailPage({
       </nav>
 
       <SectionErrorBoundary name="تفاصيل الدرس">
-      <article className="lesson-detail-card soft-card soft-card--on-light lesson-detail-card--compact">
-        <header className="lesson-detail-head">
-          <h1 className="lesson-detail-title">{unified.title}</h1>
-          {hasValue(sheikhName) && (
-            <div className="lesson-detail-sheikh-row">
-              <p className="lesson-detail-sheikh">
-                المحاضر: {stripSheikhHonorifics(sheikhName) || sheikhName}
-              </p>
-              {lesson?.sheikhs?.id && (
-                <ScholarFollowButton sheikhId={lesson.sheikhs.id} compact />
-              )}
-            </div>
-          )}
-          {hasValue(kuwaitLesson?.organizerName) &&
-            stripSheikhHonorifics(kuwaitLesson?.organizerName || "") !==
-              stripSheikhHonorifics(sheikhName || "") && (
-            <p className="lesson-detail-organizer">تنظيم: {kuwaitLesson?.organizerName}</p>
-          )}
+      <article
+        className="lesson-detail-card soft-card soft-card--on-light lesson-detail-card--compact"
+        data-lesson-type={lessonType.id}
+      >
+        {/* 1) Hero */}
+        <header className="lesson-detail-head lesson-detail-hero">
           <div className="lesson-detail-tags" aria-label="تصنيف الدرس">
+            <span className="lesson-detail-type-pill">{lessonType.label}</span>
             <span className="page-soft-tag">{activityLabel}</span>
             {hasValue(unified.category) && <span className="page-tag">{unified.category}</span>}
-            {deliveryLabel && <span className="page-soft-tag">{deliveryLabel}</span>}
-            <span className="page-soft-tag">المستوى: {level}</span>
             {unified.hasLiveStream && <span className="page-soft-tag">بث مباشر</span>}
-            {unified.hasRecording && <span className="page-soft-tag">تسجيل</span>}
           </div>
+          <h1 className="lesson-detail-title">{unified.title}</h1>
         </header>
 
-        {recordingSrc && (
-          <div className="lesson-detail-body lesson-detail-body--tight">
-            <LessonRecordingPlayer
-              lesson={unified}
-              src={recordingSrc}
-              startAtSeconds={shareStartSeconds}
-            />
+        {/* 2) Scholar */}
+        {hasValue(sheikhName) && (
+          <div className="lesson-detail-sheikh-row lesson-detail-block">
+            <p className="lesson-detail-sheikh">
+              {stripSheikhHonorifics(sheikhName) || sheikhName}
+            </p>
+            {lesson?.sheikhs?.id && (
+              <ScholarFollowButton sheikhId={lesson.sheikhs.id} compact />
+            )}
           </div>
         )}
+        {hasValue(kuwaitLesson?.organizerName) &&
+          stripSheikhHonorifics(kuwaitLesson?.organizerName || "") !==
+            stripSheikhHonorifics(sheikhName || "") && (
+          <p className="lesson-detail-organizer">تنظيم: {kuwaitLesson?.organizerName}</p>
+        )}
 
-        <dl className="lesson-detail-info-grid" aria-label="معلومات الدرس">
-          {hasValue(day) && (
-            <div><dt>اليوم</dt><dd>{day}</dd></div>
-          )}
-          {hasValue(unified.gregorianDate || dateLabel) && (
-            <div><dt>التاريخ</dt><dd>{unified.gregorianDate || dateLabel}</dd></div>
-          )}
-          {hasValue(time || unified.time) && (
-            <div><dt>الوقت</dt><dd>{formatShortLessonTime(time || unified.time)}</dd></div>
-          )}
-          {hasValue(unified.mosque) && (
-            <div><dt>المكان</dt><dd>{unified.mosque}</dd></div>
-          )}
-          {hasValue(unified.region) && (
-            <div><dt>المنطقة</dt><dd>{unified.region}</dd></div>
-          )}
-          {hasValue(unified.governorate) && (
-            <div><dt>المحافظة</dt><dd>{unified.governorate}</dd></div>
-          )}
-          {deliveryLabel && (
+        {/* 3–4) Date/time + attendance */}
+        <dl className="lesson-detail-info-grid lesson-detail-info-grid--priority" aria-label="موعد وحضور">
+          {whenLabel ? (
+            <div><dt>الموعد</dt><dd>{whenLabel}</dd></div>
+          ) : null}
+          {deliveryLabel ? (
             <div><dt>الحضور</dt><dd>{deliveryLabel}</dd></div>
-          )}
-          {hasValue(unified.hijriDate) && (
-            <div><dt>الهجري</dt><dd>{unified.hijriDate}</dd></div>
-          )}
-          {unified.sessionCount != null && unified.sessionCount > 0 && (
-            <div><dt>اللقاءات</dt><dd>{unified.sessionCount.toLocaleString("ar")}</dd></div>
-          )}
+          ) : null}
+          {placeLabel ? (
+            <div><dt>المكان</dt><dd>{placeLabel}</dd></div>
+          ) : null}
         </dl>
 
+        {/* 5) Quick actions */}
         <div className="lesson-detail-actions lesson-detail-actions--row lesson-detail-actions-panel">
           <div className="lesson-detail-actions__primary">
             <FavoriteButton contentType="lesson" contentId={unified.id} />
@@ -431,8 +427,28 @@ export default function LessonDetailPage({
               className="lesson-unified-card__btn lesson-unified-card__btn--secondary"
               onClick={() => downloadUnifiedCalendar(unified)}
             >
-              إضافة للتقويم
+              التقويم
             </button>
+            {unified.streamUrl && (
+              <button
+                type="button"
+                className="lesson-unified-card__btn lesson-unified-card__btn--ghost"
+                onClick={() => openLessonExternalUrl(unified.streamUrl!)}
+              >
+                البث
+              </button>
+            )}
+            {unified.mapsUrl && (
+              <button
+                type="button"
+                className="lesson-unified-card__btn lesson-unified-card__btn--ghost"
+                onClick={() => openLessonExternalUrl(unified.mapsUrl!)}
+              >
+                الاتجاه
+              </button>
+            )}
+          </div>
+          <div className="lesson-detail-actions__links">
             <AdminInlineEdit
               contentType="lesson"
               contentId={unified.id}
@@ -446,33 +462,13 @@ export default function LessonDetailPage({
                 description: unified.description,
               }}
             />
-          </div>
-          <div className="lesson-detail-actions__links">
-            {unified.streamUrl && (
-              <button
-                type="button"
-                className="lesson-unified-card__btn lesson-unified-card__btn--ghost"
-                onClick={() => openLessonExternalUrl(unified.streamUrl!)}
-              >
-                رابط البث
-              </button>
-            )}
-            {unified.mapsUrl && (
-              <button
-                type="button"
-                className="lesson-unified-card__btn lesson-unified-card__btn--ghost"
-                onClick={() => openLessonExternalUrl(unified.mapsUrl!)}
-              >
-                الاتجاه للمسجد
-              </button>
-            )}
             {unified.siteUrl && (
               <button
                 type="button"
                 className="lesson-unified-card__btn lesson-unified-card__btn--ghost"
                 onClick={() => openLessonExternalUrl(unified.siteUrl!)}
               >
-                رابط الموقع
+                الموقع
               </button>
             )}
           </div>
@@ -481,59 +477,107 @@ export default function LessonDetailPage({
           )}
         </div>
 
-        {(unified.note || unified.description) && (
+        {recordingSrc && (
           <div className="lesson-detail-body lesson-detail-body--tight">
-            <h2>عن الدرس</h2>
-            <p>{cleanLessonPublicText(unified.note || unified.description || buildAutoDescription(unified))}</p>
+            <LessonRecordingPlayer
+              lesson={unified}
+              src={recordingSrc}
+              startAtSeconds={shareStartSeconds}
+            />
           </div>
         )}
 
-        {sheikhBio && (
+        {/* 6) Description */}
+        <div className="lesson-detail-body lesson-detail-body--tight">
+          <h2>عن الدرس</h2>
+          <p>
+            {cleanLessonPublicText(
+              unified.note || unified.description || buildAutoDescription(unified),
+            )}
+          </p>
+        </div>
+
+        {sheikhBio ? (
           <div className="lesson-detail-body lesson-detail-body--tight">
             <h2>نبذة المحاضر</h2>
             <p>{cleanDisplayText(sheikhBio)}</p>
           </div>
-        )}
+        ) : null}
 
-        {keywords.length > 0 && (
-          <div className="lesson-detail-body lesson-detail-body--tight">
-            <h2>الكلمات المفتاحية</h2>
+        {/* 7) Compact map — expand on demand */}
+        {mapsEmbed ? (
+          <div className={`lesson-detail-map lesson-detail-map--compact${mapExpanded ? " is-expanded" : ""}`}>
+            <div className="lesson-detail-map__head">
+              <h2>الموقع</h2>
+              <button
+                type="button"
+                className="lesson-detail-map__toggle"
+                aria-expanded={mapExpanded}
+                onClick={() => setMapExpanded((v) => !v)}
+              >
+                {mapExpanded ? "تصغير الخريطة" : "عرض الخريطة"}
+              </button>
+            </div>
+            {!mapExpanded ? (
+              <button
+                type="button"
+                className="lesson-detail-map__preview"
+                onClick={() => setMapExpanded(true)}
+              >
+                <span>{placeLabel || "فتح معاينة الخريطة"}</span>
+                <span className="lesson-detail-map__preview-hint">اضغط للتكبير</span>
+              </button>
+            ) : (
+              <iframe
+                title={`خريطة ${unified.mosque || "الموقع"}`}
+                src={mapsEmbed}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            )}
+          </div>
+        ) : null}
+
+        {/* Progressive disclosure — admin / secondary meta */}
+        <details
+          className="lesson-detail-meta-disclosure"
+          open={metaOpen}
+          onToggle={(e) => setMetaOpen((e.target as HTMLDetailsElement).open)}
+        >
+          <summary>تفاصيل إضافية</summary>
+          <dl className="lesson-detail-info-grid" aria-label="معلومات إضافية">
+            {hasValue(unified.governorate) && (
+              <div><dt>المحافظة</dt><dd>{unified.governorate}</dd></div>
+            )}
+            {hasValue(unified.hijriDate) && (
+              <div><dt>الهجري</dt><dd>{unified.hijriDate}</dd></div>
+            )}
+            {unified.sessionCount != null && unified.sessionCount > 0 && (
+              <div><dt>اللقاءات</dt><dd>{unified.sessionCount.toLocaleString("ar")}</dd></div>
+            )}
+            <div><dt>المستوى</dt><dd>{level}</dd></div>
+            {unified.hasRecording && <div><dt>تسجيل</dt><dd>متاح</dd></div>}
+          </dl>
+          {keywords.length > 0 ? (
             <div className="lesson-detail-tags">
               {keywords.map((kw) => (
                 <span key={kw} className="page-soft-tag">{kw}</span>
               ))}
             </div>
-          </div>
-        )}
-
-        {unified.linkedLessons && unified.linkedLessons.length > 0 && (
-          <div className="lesson-detail-body lesson-detail-body--tight">
-            <h2>الدروس المرتبطة</h2>
+          ) : null}
+          {unified.linkedLessons && unified.linkedLessons.length > 0 ? (
             <ul className="lesson-detail-linked">
               {unified.linkedLessons.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
+          ) : null}
+          <div className="lesson-detail-stats-row" aria-label="إحصاءات">
+            <StatPill label="المشاهدات" value={stats.views} />
+            <StatPill label="الحفظ" value={stats.saves} />
           </div>
-        )}
-
-        {mapsEmbed && (
-          <div className="lesson-detail-map">
-            <h2>الموقع على الخريطة</h2>
-            <iframe
-              title={`خريطة ${unified.mosque}`}
-              src={mapsEmbed}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
-          </div>
-        )}
-
-        <div className="lesson-detail-stats-row" aria-label="إحصاءات">
-          <StatPill label="المشاهدات" value={stats.views} />
-          <StatPill label="الحفظ" value={stats.saves} />
-        </div>
+        </details>
 
         <ShareButtons title={unified.title} />
 
@@ -546,7 +590,7 @@ export default function LessonDetailPage({
       {seriesLessons.length > 0 && (
         <SectionErrorBoundary name="السلسلة المرتبطة">
           <section className="lessons-similar-section" aria-labelledby="series-lessons-heading">
-            <h2 id="series-lessons-heading">السلسلة المرتبطة</h2>
+            <h2 id="series-lessons-heading">نفس الكتاب / السلسلة</h2>
             <div className="page-card-grid lesson-unified-grid">
               {seriesLessons.map((item) => (
                 <UnifiedLessonCard key={item.id} lesson={fromKuwaitLesson(item)} compact />
@@ -559,7 +603,7 @@ export default function LessonDetailPage({
       {sameSheikh.length > 0 && (
         <SectionErrorBoundary name="دروس الشيخ">
           <section className="lessons-similar-section" aria-labelledby="same-sheikh-heading">
-            <h2 id="same-sheikh-heading">دروس الشيخ نفسه</h2>
+            <h2 id="same-sheikh-heading">نفس المحاضر</h2>
             <div className="page-card-grid lesson-unified-grid">
               {sameSheikh.map((item) => (
                 <UnifiedLessonCard key={item.id} lesson={fromKuwaitLesson(item)} compact />
@@ -572,7 +616,7 @@ export default function LessonDetailPage({
       {similar.length > 0 && (
         <SectionErrorBoundary name="دروس مشابهة">
           <section className="lessons-similar-section" aria-labelledby="similar-lessons-heading">
-            <h2 id="similar-lessons-heading">دروس مشابهة</h2>
+            <h2 id="similar-lessons-heading">نفس التصنيف</h2>
             <div className="page-card-grid lesson-unified-grid">
               {similar.map((item) => (
                 <UnifiedLessonCard key={item.id} lesson={fromKuwaitLesson(item)} compact />

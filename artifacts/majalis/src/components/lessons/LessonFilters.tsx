@@ -28,18 +28,18 @@ export const DEFAULT_LESSON_QUICK_FILTERS: LessonQuickFilters = {
   category: "الكل",
 };
 
-/** فلاتر سريعة موحّدة أعلى صفحة الدروس */
+/** فلاتر سريعة — شريط أفقي لاصق: زمن → حضور → نوع */
 const SCHEDULE_CHIPS: Array<{ id: LessonQuickFilterId; label: string }> = [
   { id: "all", label: "الكل" },
-  { id: "lessons", label: "دروس" },
-  { id: "courses", label: "دورات" },
+  { id: "today", label: "اليوم" },
+  { id: "this_week", label: "هذا الأسبوع" },
   { id: "in_person", label: "حضوري" },
   { id: "remote", label: "عن بعد" },
-  { id: "today", label: "اليوم" },
+  { id: "lessons", label: "دروس" },
+  { id: "courses", label: "دورات" },
   { id: "archive", label: "أرشيف" },
 ];
 
-/** مدعوم برمجياً: هذا الأسبوع (غير ظاهر في الشريط المختصر) */
 export const LESSON_WEEK_FILTER_LABEL = "هذا الأسبوع";
 
 function isStandaloneLesson(lesson: KuwaitLessonRecord): boolean {
@@ -90,9 +90,9 @@ type Props = {
 export function LessonFilters({ filters, onChange, searchSlot, filterSlot }: Props) {
   const hasTools = Boolean(searchSlot || filterSlot);
   return (
-    <div className="lesson-filters lesson-filters--compact">
+    <div className="lesson-filters lesson-filters--compact lesson-filters--sticky-rail">
       <div className="lesson-filters__bar" role="toolbar" aria-label="تصفية سريعة">
-        <div className="lesson-filters__chips filter-chips">
+        <div className="lesson-filters__chips filter-chips" data-lesson-filter-rail="1">
           {SCHEDULE_CHIPS.map((chip) => (
             <button
               key={chip.id}
@@ -106,7 +106,7 @@ export function LessonFilters({ filters, onChange, searchSlot, filterSlot }: Pro
           ))}
         </div>
         {hasTools ? (
-          <div className="lesson-filters__tools" aria-label="أدوات التصفية">
+          <div className="lesson-filters__tools" aria-label="حسب الشيخ والفئة والمزيد">
             {searchSlot}
             {filterSlot}
           </div>
