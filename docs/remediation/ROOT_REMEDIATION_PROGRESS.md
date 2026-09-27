@@ -12,13 +12,13 @@ Living tracker for remediation waves. Do not treat as release truth (see `docs/r
 | **WAVE_SEARCH_INTEGRITY** | Search href contract + history destinations + index v3 | **merged (#2303)** | `docs/remediation/waves/WAVE_SEARCH_INTEGRITY.md` |
 | WAVE_HADITH_DATA_TRUTH | Hadith counts, labels, filters, empties | IMPLEMENTED | `docs/remediation/waves/WAVE_HADITH_DATA_TRUTH.md` |
 | **WAVE_HADITH_COMPLETION_P1** | Registry + completeness/license docs + count align | **merged (#2302)** | `docs/remediation/waves/WAVE_HADITH_COMPLETION_P1.md` |
-<<<<<<< HEAD
-| **WAVE_PRODUCT_REDESIGN_W1** | Foundation V2 + Card V2 + states + UX audit | **PR in flight** | `docs/remediation/waves/WAVE_PRODUCT_REDESIGN_W1_FOUNDATION.md` · local verify:ci pass |
-=======
-| **WAVE_SHARED_CONTRAST_FIX** | Tawhid dark library-card desc AA | **merged (#2307)** | `docs/remediation/waves/WAVE_SHARED_CONTRAST_FIX.md` · main `a9e7bf87` green |
+| **WAVE_SHARED_CONTRAST_FIX** | Tawhid dark library-card desc AA | **merged (#2307)** | `docs/remediation/waves/WAVE_SHARED_CONTRAST_FIX.md` |
 | **WAVE_PRAYER_WHITE_FLASH** | Prayer first-frame olive shell | **merged (#2306)** | `docs/remediation/waves/WAVE_PRAYER_WHITE_FLASH.md` · DEVICE_REQUIRED |
-| **WAVE_HOMEPAGE_INTEGRATION** | Homepage redesign + contrast/scroll gate contract | **IN CI (#2304)** | `docs/remediation/waves/WAVE_HOMEPAGE_INTEGRATION.md` |
-| **WAVE_LESSONS_INTEGRATION** | Lessons redesign + HARD_WHITE_BG | **IN CI (#2305)** | `docs/remediation/waves/WAVE_LESSONS_INTEGRATION.md` |
+| **WAVE_HOMEPAGE_INTEGRATION** | Homepage redesign + contrast/scroll gate contract | **merged (#2304)** | `docs/remediation/waves/WAVE_HOMEPAGE_INTEGRATION.md` |
+| **WAVE_LESSONS_INTEGRATION** | Lessons redesign + HARD_WHITE_BG | **merged (#2305)** | `docs/remediation/waves/WAVE_LESSONS_INTEGRATION.md` |
+| **WAVE_ADMIN_W1** | Admin Unicode + 7-center nav | **merged (#2308)** | admin wave docs |
+| **WAVE_PRODUCT_REDESIGN_W1** | Foundation V2 + Card V2 + states + UX audit | **merged (#2309)** | `docs/remediation/waves/WAVE_PRODUCT_REDESIGN_W1_FOUNDATION.md` |
+| **WAVE_PRODUCT_REDESIGN_W2** | Navigation IA + collapsible drawer + canonical href | **in progress** | `docs/remediation/waves/WAVE_PRODUCT_REDESIGN_W2_NAVIGATION.md` |
 
 ## CI / UI recovery docs
 
@@ -29,7 +29,6 @@ Living tracker for remediation waves. Do not treat as release truth (see `docs/r
 | Branch integration plan | `docs/remediation/UI_BRANCH_INTEGRATION_PLAN.md` |
 | Prayer first frame | `docs/remediation/PRAYER_FIRST_FRAME_REPORT.md` |
 | Visual snapshot review | `docs/remediation/VISUAL_SNAPSHOT_REVIEW.md` |
->>>>>>> origin/main
 
 ## Search integrity docs
 

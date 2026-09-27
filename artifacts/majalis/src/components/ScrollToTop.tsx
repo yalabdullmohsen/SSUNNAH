@@ -54,9 +54,15 @@ export function ScrollToTop() {
       type="button"
       className="scroll-to-top"
       data-scroll-to-top="1"
+      data-safe-area="1"
       aria-label="إلى الأعلى"
       title="إلى الأعلى"
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      onClick={() => {
+        const reduce =
+          typeof window !== "undefined" &&
+          window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+      }}
     >
       <ArrowUp size={18} strokeWidth={2.5} aria-hidden="true" className="stt-icon" />
       <span className="stt-label">أعلى</span>

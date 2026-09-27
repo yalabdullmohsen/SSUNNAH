@@ -28,33 +28,50 @@ export type SidebarNavGroup = {
   /** لون عنوان المجموعة والحد الفاصل */
   accent: string;
   items: SidebarNavItem[];
+  /** يُفتح افتراضيًا عند عدم تطابق مسار نشط */
+  defaultOpen?: boolean;
 };
 
-/** مجموعات الدرج المنطقية — ترتيب وفاصل بصري واضح */
+/** مجموعات الدرج — IA المنتج (Wave 2): قابلة للطي في DrawerFromRegistry */
 const DRAWER_BROWSE_GROUPS: ReadonlyArray<{
   id: string;
   title: string;
   accent: string;
   /** معرّفات NavEntry (mushaf ← open-mushaf) */
   navIds: readonly string[];
+  /** مفتوح افتراضيًا إن لم يُطابق مسار نشط مجموعة أخرى */
+  defaultOpen?: boolean;
 }> = [
   {
     id: "quran",
     title: "القرآن والتلاوة",
     accent: "#2A7A6E",
-    navIds: ["mushaf", "quran"],
+    navIds: ["mushaf", "quran", "tafsir", "ulum-quran"],
+    defaultOpen: true,
+  },
+  {
+    id: "learning",
+    title: "التعلم",
+    accent: "#1F5C48",
+    navIds: ["lessons", "progress", "qa"],
   },
   {
     id: "sciences",
-    title: "العلوم والأقسام",
+    title: "العلوم الشرعية",
     accent: BRAND.colorDay,
-    navIds: ["lessons", "fiqh", "fawaid", "miracles", "qa", "sections"],
+    navIds: ["aqidah", "hadith", "fiqh", "seerah", "islamic-history"],
   },
   {
     id: "worship",
     title: "العبادة والأدوات",
-    accent: "#1F5C48",
+    accent: "#2A7A6E",
     navIds: ["prayer", "adhkar", "qibla", "tasbih"],
+  },
+  {
+    id: "knowledge",
+    title: "المعرفة",
+    accent: "#8B6914",
+    navIds: ["fawaid", "miracles", "discover-islam", "glossary", "sections"],
   },
 ];
 
@@ -88,6 +105,7 @@ const browseGroups: SidebarNavGroup[] = DRAWER_BROWSE_GROUPS.map((def) => {
     title: def.title,
     accent: def.accent,
     items: filterNavItems(items),
+    defaultOpen: def.defaultOpen,
   };
 }).filter((g) => g.items.length > 0);
 

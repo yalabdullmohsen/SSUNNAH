@@ -1,24 +1,40 @@
-# Navigation Architecture (target)
+# Navigation Architecture (Wave 2)
 
 ## Canonical destinations (product)
 
-Bottom: الرئيسية · القرآن · الصلاة · الدروس · الأقسام — confirm against live policy before changing labels.
+Bottom (locked order): مركز القرآن · الدروس · الرئيسية · الصلاة · الأقسام  
+Source: `navFor("bottom")` ← `config/navigation.ts` ← section registry.
 
-## Drawer groups (target Wave 2)
+## Drawer groups (implemented)
 
-- القرآن والتلاوة  
-- التعلم  
-- العلوم الشرعية  
-- العبادة والأدوات  
-- المعرفة  
+| Group | Typical destinations |
+|---|---|
+| القرآن والتلاوة | المصحف · مركز القرآن · التفسير · علوم القرآن · اختصار متابعة القراءة |
+| التعلم | الدروس · التقدّم · الأسئلة |
+| العلوم الشرعية | العقيدة · الحديث · الفقه · السيرة · التاريخ |
+| العبادة والأدوات | الصلاة · الأذكار · القبلة · التسبيح |
+| المعرفة | الفوائد · الإعجاز · اكتشف الإسلام · المعجم · الأقسام |
+| الحساب | من سجل `ACCOUNT_DRAWER` |
 
-Collapsible; no duplicate destinations unless explicit shortcut.
+Groups are **collapsible** (`DrawerFromRegistry` + `aria-expanded`). Default open: group matching the active path, else القرآن والتلاوة.
 
 ## Single route source
 
-Must feed: drawer, bottom nav, homepage, search, breadcrumbs, section cards.  
-Today: `routes.ts` + assorted nav configs — unify in Wave 2.
+| Surface | API |
+|---|---|
+| Bottom / drawer / home cards | `navFor(surface)` |
+| Drawer grouping | `SIDEBAR_NAV_GROUPS` (`sidebar-nav.ts`) |
+| Canonical href helper | `buildCanonicalPublicHref(idOrPath)` |
+| Section metadata | `sections.registry.ts` |
+
+Do not invent parallel nav arrays for product destinations.
 
 ## Floating controls
 
-Remove covering side arrows; ScrollToTop only after ≥720px meaningful scroll; safe-area aware.
+- Legacy circular top FAB: `FLOATING_BACK_DISABLED` in `FloatingBackButton.tsx`.
+- Unified back host: bottom-edge, clearance via `--global-back-*`.
+- ScrollToTop: hidden until `scrollY > 720`, modal-aware, reduced-motion, safe-area attributes.
+
+## Safe areas
+
+Bottom nav and FABs use `--inset-bottom` / `--bottom-nav-height`. Content clearance remains on `#main-content` / page shells.

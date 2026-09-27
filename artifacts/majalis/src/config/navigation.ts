@@ -150,19 +150,29 @@ export const NAV_LABEL_CANONICAL: Record<string, string> = {
 
 /** الرئيسية في الوسط (تبويب ثالث من ٥). */
 const BOTTOM_IDS = ["quran", "lessons", "home", "prayer", "sections"] as const;
+/** صفوف الدرج — مجموعات IA في sidebar-nav؛ بلا تكرار مقصد إلا اختصار صريح (متابعة القراءة). */
 const DRAWER_IDS = [
   "open-mushaf",
   "quran",
+  "tafsir",
+  "ulum-quran",
   "lessons",
-  "fiqh",
-  "fawaid",
-  "miracles",
-  "sections",
+  "progress",
   "qa",
+  "aqidah",
+  "hadith",
+  "fiqh",
+  "seerah",
+  "islamic-history",
   "prayer",
   "adhkar",
   "qibla",
   "tasbih",
+  "fawaid",
+  "miracles",
+  "discover-islam",
+  "glossary",
+  "sections",
   "settings",
 ] as const;
 const HOME_IDS = ["quran", "lessons", "fiqh"] as const;
@@ -215,6 +225,27 @@ export function navFor(surface: NavPlacement): NavEntry[] {
   if (surface === "bottom") return pick(BOTTOM_IDS, "bottom");
   if (surface === "home") return pick(HOME_IDS, "home");
   return pick(DRAWER_IDS, "drawer");
+}
+
+/**
+ * مسار عام كانوني من معرّف قسم أو مسار خام — مصدر واحد للبحث/البطاقات/التفتيت.
+ * لا يخترع مسارات؛ يعيد المسار المسجّل أو ينظّف المدخل فقط.
+ */
+export function buildCanonicalPublicHref(sectionIdOrPath: string): string | null {
+  const raw = sectionIdOrPath.trim();
+  if (!raw) return null;
+  if (raw.startsWith("/")) {
+    const clean = raw.split("?")[0].replace(/\/$/, "") || "/";
+    const fromNav = NAV_ITEMS.find((i) => (i.href.replace(/\/$/, "") || "/") === clean);
+    if (fromNav) return fromNav.href;
+    const fromLists = [...primaryNav, ...secondaryNav, ...searchEligibleSections].find(
+      (i) => (i.href.replace(/\/$/, "") || "/") === clean,
+    );
+    return fromLists?.href ?? clean;
+  }
+  const section = getSectionById(raw);
+  if (section) return section.route;
+  return NAV_ITEMS.find((i) => i.id === raw)?.href ?? null;
 }
 
 /** HTML تنقّل الـprerender — يُستهلك من generate-seo.mjs */
