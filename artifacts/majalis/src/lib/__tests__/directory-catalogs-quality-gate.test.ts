@@ -131,6 +131,6 @@ for (const L of ISLAMIC_LANDMARKS) {
 console.log("=== بطاقة الجامعة في الثيم ===");
 assert.match(theme, /\.univ-card/);
 assert.match(theme, /html\.dark \.univ-card|html\[data-theme="dark"\] \.univ-card/);
-assert.match(theme, /border-radius:\s*var\(--radius-card,\s*24px\)/, "حواف الدليل ناعمة 24px");
+assert.match(theme, /border-radius:\s*var\(--radius-card/, "حواف الدليل من سلم البطاقة");
 
 console.log("✓ directory-catalogs-quality-gate");

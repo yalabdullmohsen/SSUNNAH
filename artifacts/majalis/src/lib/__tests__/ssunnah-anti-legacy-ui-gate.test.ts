@@ -65,15 +65,15 @@ const below = readFileSync(resolve(src, "pages/account/ui/HomeBelowFold.tsx"), "
 
 assert.match(
   hub,
-  /border-radius:\s*var\(--radius-card,\s*24px\)/,
-  "HubCard يجب أن يستخدم --radius-card 24px (لا حواف حادة)",
+  /border-radius:\s*var\(--radius-card/,
+  "HubCard يستخدم --radius-card من السلم الموحّد",
 );
 assert.match(
   sectionCards,
-  /border-radius:\s*var\(--radius-tile,\s*24px\)/,
-  "Section .card يجب أن يبقى على --radius-tile 24px",
+  /border-radius:\s*var\(--radius-tile/,
+  "Section .card يستخدم --radius-tile من السلم الموحّد",
 );
-assert.match(soft, /--radius-card:\s*24px/, "soft-cards يثبت radius-card=24");
+assert.match(soft, /--radius-card:\s*var\(--sf-radius-card/, "soft-cards يجسر radius-card إلى Foundation");
 assert.match(polish, /\.ss-feature-grid/, "شبكة الميزات الموحدة مطلوبة");
 assert.match(polish, /prefers-reduced-motion/, "يجب احترام تقليل الحركة");
 

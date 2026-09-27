@@ -26,7 +26,7 @@ assert.match(tokens, /--ss-warm-bg/);
 assert.match(tokens, /--ss-card-bg/);
 assert.match(tokens, /--gold:\s*var\(--ss-soft-gold\)/);
 
-assert.match(unify, /--radius-card:\s*24px/);
+assert.match(unify, /--radius-card:\s*var\(--sf-radius-card/);
 assert.match(main, /ssunnah-ux-polish\.css/);
 
 assert.match(index, /AppCard/);

@@ -231,6 +231,17 @@ html[data-v2-app="1"] .es2__title {
   font-weight: 800;
 }
 
+html[data-v2-app="1"] .es2__next,
+html[data-v2-app="1"] .es2__nav-path {
+  margin: 0.35rem 0 0;
+  font-size: var(--sf-type-metadata, 0.8125rem);
+  line-height: 1.5;
+  color: var(--sf-color-rich-ink-soft, #48645a);
+}
+html[data-v2-app="1"] .es2__nav-path {
+  color: var(--sf-color-deep-emerald, #0f5c3f);
+  font-weight: 600;
+}
 html[data-v2-app="1"] .es2__desc {
   margin: 0;
   max-width: 28rem;

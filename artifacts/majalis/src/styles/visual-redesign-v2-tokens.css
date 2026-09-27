@@ -74,13 +74,14 @@
   --v2-control-h: var(--sf-control-h, 2.75rem);
   --v2-header-h: var(--sf-header-h, 3rem);
 
-  /* ── Radius / Shadow ← Foundation ── */
-  --v2-radius-sm: var(--sf-radius-sm, 12px);
-  --v2-radius-md: var(--sf-radius-md, 16px);
-  --v2-radius-lg: var(--sf-radius-lg, 20px);
-  --v2-radius-xl: var(--sf-radius-xl, 24px);
-  --v2-radius-card: var(--sf-radius-card, var(--v2-radius-lg));
-  --v2-radius-icon: var(--sf-radius-control, 14px);
+  /* ── Radius / Shadow ← Foundation (XS=12 · SM=16 · MD=20 · LG=24) ── */
+  --v2-radius-xs: var(--sf-radius-xs, 12px);
+  --v2-radius-sm: var(--sf-radius-sm, 16px);
+  --v2-radius-md: var(--sf-radius-md, 20px);
+  --v2-radius-lg: var(--sf-radius-lg, 24px);
+  --v2-radius-xl: var(--sf-radius-xl, var(--v2-radius-lg));
+  --v2-radius-card: var(--sf-radius-card, var(--v2-radius-md));
+  --v2-radius-icon: var(--sf-radius-control, var(--sf-radius-xs, 12px));
   --v2-radius-pill: var(--sf-radius-pill, 999px);
 
   --v2-space-1: 0.25rem;

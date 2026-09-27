@@ -163,17 +163,23 @@ export function Empty({
   actionLabel,
   onAction,
   actionHref,
+  nextStep,
+  navPath,
 }: {
   text: string;
   title?: string;
   actionLabel?: string;
   onAction?: () => void;
   actionHref?: string;
+  nextStep?: string;
+  navPath?: string;
 }) {
   return (
     <div className="ds-empty ss-state-card" role="status" aria-live="polite">
       {title ? <h2 className="ss-state-card__title">{title}</h2> : null}
       <p className="ds-empty__text">{text}</p>
+      {nextStep ? <p className="ds-empty__next">{nextStep}</p> : null}
+      {navPath ? <p className="ds-empty__nav-path">{navPath}</p> : null}
       {actionHref ? (
         <a href={actionHref} className="ss-action-btn ss-action-btn--secondary mj-pressable ss-state-card__action">
           {actionLabel || "متابعة"}

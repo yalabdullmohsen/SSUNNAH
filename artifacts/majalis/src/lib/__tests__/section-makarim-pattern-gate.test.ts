@@ -37,7 +37,7 @@ for (const cls of [
 assert.match(pattern, /\.rq-hero[\s\S]*?mj-brand-deep/, "رقائق: هيرو العلامة لا الأسود");
 assert.match(pattern, /\.wn-hero[\s\S]*?mj-brand/, "وصايا: هيرو العلامة لا الذهبي");
 assert.match(pattern, /grid-template-columns:\s*repeat\(2/, "شبكة عمودين كمكارم");
-assert.match(pattern, /--radius-card,\s*24px/);
+assert.match(pattern, /--radius-card/);
 assert.doesNotMatch(pattern, /#7c3aed|#6D28D9/i, "لا بنفسجي");
 
 console.log("=== أمر بالمعروف يستخدم هيكل مكارم ===");

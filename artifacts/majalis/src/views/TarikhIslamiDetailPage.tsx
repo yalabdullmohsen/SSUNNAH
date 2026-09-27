@@ -4,6 +4,7 @@ import { TopicPage } from "@/components/topic/TopicPage";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import { ShareButtons } from "@/components/ContentActions";
+import { EmptyStateV2 } from "@/components/design-system";
 import {
   ReadingBulletList,
   ReadingProse,
@@ -66,8 +67,8 @@ export default function TarikhIslamiDetailPage() {
     if (!item) {
       applyPageSeo({
         path: `/tarikh-islami/${id}`,
-        title: "عنصر غير موجود | التاريخ الإسلامي",
-        description: "هذا العنصر غير متاح في فهرس التاريخ الإسلامي.",
+        title: "موضوع غير متاح | التاريخ الإسلامي",
+        description: "هذا الموضوع غير متاح في فهرس التاريخ الإسلامي المنشور.",
         robots: "noindex, follow",
       });
       return;
@@ -98,15 +99,23 @@ export default function TarikhIslamiDetailPage() {
         breadcrumb={[
           { label: "الرئيسية", href: "/" },
           { label: "التاريخ الإسلامي", href: "/tarikh-islami" },
-          { label: "غير موجود" },
+          { label: "غير متاح" },
         ]}
         eyebrow="التاريخ الإسلامي"
-        title="عنصر غير موجود"
-        subtitle={EMPTY.data}
+        title="هذا الموضوع غير متاح حاليًا"
+        subtitle="قد يكون الرابط قديمًا أو الموضوع لم يُنشر بعد في فهرس التاريخ الإسلامي."
         className="topic-page--tarikh-detail"
       >
-        <Link href="/tarikh-islami" className="tarikh-link">
-          العودة إلى التاريخ الإسلامي
+        <EmptyStateV2
+          title="اختر موضوعًا من فهرس التاريخ"
+          description={EMPTY.data}
+          nextStep="انتقل إلى قائمة التاريخ الإسلامي واختر مرحلة أو حدثًا، أو ابحث عن اسم الحادثة."
+          navPath="الرئيسية ← التاريخ الإسلامي"
+          ctaLabel="فتح التاريخ الإسلامي"
+          href="/tarikh-islami"
+        />
+        <Link href="/search?scope=history" className="tarikh-link">
+          البحث في التاريخ
         </Link>
       </TopicPage>
     );

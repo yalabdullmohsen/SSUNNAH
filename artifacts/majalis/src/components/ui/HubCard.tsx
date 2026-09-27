@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { ChevronLeft, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { prefetchRoute } from "@/lib/prefetch-route";
+import { formatArabicNumber } from "@/lib/numerals";
 import { CardTitle, SupportingText, Caption, LabelText } from "@/components/design-system/text";
 import "@/styles/components/hub-card.css";
 
@@ -14,6 +15,9 @@ export type SectionEntryCardProps = {
   subtitle?: string;
   description?: string;
   meta?: string;
+  /** عدّاد اختياري يظهر تحت الوصف لتحسين المسح البصري */
+  count?: number;
+  countLabel?: string;
   badge?: ReactNode;
   icon?: ReactNode;
   Icon?: LucideIcon;
@@ -52,6 +56,8 @@ export const SectionEntryCard = memo(function SectionEntryCard({
   subtitle,
   description,
   meta,
+  count,
+  countLabel,
   badge,
   icon,
   Icon,
@@ -67,6 +73,11 @@ export const SectionEntryCard = memo(function SectionEntryCard({
   if (soon) return null;
 
   const desc = (subtitle ?? description)?.trim() || undefined;
+  const countMeta =
+    typeof count === "number"
+      ? `${formatArabicNumber(count)}${countLabel ? ` ${countLabel}` : ""}`
+      : undefined;
+  const footMeta = (meta || countMeta || "").trim() || undefined;
   const current = normalizePath(location);
   const safeHref = href?.trim() || "";
   const hashOnly = safeHref.startsWith("#");
@@ -142,7 +153,7 @@ export const SectionEntryCard = memo(function SectionEntryCard({
       </div>
       <div className="hub-card__foot">
         <div className="hub-card__foot-start">
-          {meta ? <Caption className="hub-card__meta">{meta}</Caption> : null}
+          {footMeta ? <Caption className="hub-card__meta">{footMeta}</Caption> : null}
           {footer}
         </div>
         {!nonInteractive || samePathHash ? (

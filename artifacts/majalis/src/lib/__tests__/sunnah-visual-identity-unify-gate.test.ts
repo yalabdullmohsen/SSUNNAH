@@ -44,7 +44,7 @@ assert.match(unify, /--mj-accent:\s*var\(--sf-color-quran-gold/);
 assert.doesNotMatch(unify, /--mj-brand:\s*#146b52/);
 assert.doesNotMatch(unify, /--mj-brand-soft:\s*#e6f2ec/);
 assert.match(unify, /:not\(\.hub-card\)/);
-assert.match(unify, /--radius-card:\s*24px/);
+assert.match(unify, /--radius-card:\s*var\(--sf-radius-card/);
 assert.match(unify, /\.mss-hero-surface[\s\S]{0,280}background-image:\s*none/);
 
 console.log("=== card tokens: سطح أبيض · نص AA · هيرو on-ink ===");

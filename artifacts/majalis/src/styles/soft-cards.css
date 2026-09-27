@@ -4,23 +4,24 @@
  */
 
 :root {
-  --radius-card: 24px;
-  --radius-tile: 24px;
-  --radius-button: 18px;
-  --radius-sheet: 28px;
-  --radius-nav: 28px;
-  --radius-pill: 999px;
+  /* جسر إلى سلم Foundation: XS=12 · SM=16 · MD=20 · LG=24 */
+  --radius-card: var(--sf-radius-card, var(--sf-radius-md, 20px));
+  --radius-tile: var(--sf-radius-md, 20px);
+  --radius-button: var(--sf-radius-sm, 16px);
+  --radius-sheet: var(--sf-radius-sheet, var(--sf-radius-lg, 24px));
+  --radius-nav: var(--sf-radius-lg, 24px);
+  --radius-pill: var(--sf-radius-pill, 999px);
 
-  --soft-card-pad: clamp(1rem, 2.8vw, 1.35rem);
-  --soft-tile-pad: clamp(0.85rem, 2.2vw, 1.1rem);
+  --soft-card-pad: var(--sf-pad-card, 0.85rem);
+  --soft-tile-pad: 0.65rem 0.75rem;
 
-  /* سطح مطفي موحّد — بلا تدرّج زجاجي أبيض ولا highlight داخلي */
+  /* سطح مطفي موحّد — بلا تدرّج زجاجي ولا highlight */
   --soft-card-grad: none;
   --soft-tile-grad: none;
   --soft-card-border: rgba(255, 255, 255, 0.14);
   --soft-tile-border: rgba(255, 255, 255, 0.13);
-  --soft-card-shadow: 0 10px 28px -16px rgba(0, 0, 0, 0.22);
-  --soft-tile-shadow: 0 8px 20px -12px rgba(0, 0, 0, 0.18);
+  --soft-card-shadow: var(--sf-shadow-card, none);
+  --soft-tile-shadow: none;
 }
 
 /* أسطح فاتحة — تدرّج هادئ بلا سطوع زائد */
@@ -30,10 +31,10 @@
   --soft-tile-grad: none;
   --soft-card-bg: color-mix(in srgb, var(--mj-surface, #fff) 96%, #e8f0ec);
   --soft-tile-bg: color-mix(in srgb, var(--mj-surface, #fff) 97%, #eef4f1);
-  --soft-card-border: transparent;
-  --soft-tile-border: transparent;
-  --soft-card-shadow: 0 6px 20px -14px rgba(11, 32, 24, 0.14);
-  --soft-tile-shadow: 0 4px 14px -12px rgba(11, 32, 24, 0.12);
+  --soft-card-border: var(--sf-hairline, rgba(15, 92, 63, 0.12));
+  --soft-tile-border: var(--sf-hairline, rgba(15, 92, 63, 0.12));
+  --soft-card-shadow: var(--sf-shadow-card, none);
+  --soft-tile-shadow: none;
 }
 
 html.dark .soft-card--on-light,
@@ -100,10 +101,10 @@ html[data-theme="dark"] .soft-tile--on-light {
 .lessons-empty-state,
 .search-empty-state,
 .kids-hub-intro {
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, var(--sf-radius-md, 20px));
   border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 16%, var(--mj-hairline, #d5ddd9));
-  background: color-mix(in srgb, var(--mj-surface, #fff) 92%, #eef4f1);
-  box-shadow: 0 10px 22px -14px rgba(11, 32, 24, 0.18);
+  background: var(--sf-surface-raised, var(--mj-surface, #fff));
+  box-shadow: var(--sf-shadow-card, none);
   box-sizing: border-box;
 }
 
@@ -124,7 +125,7 @@ html.dark .kids-hub-intro {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
 }
 
-/* أزرار عائمة — إطار صلب دائمًا (لا border:none بلا بديل) */
+/* أزرار عائمة — ثانوية خفيفة؛ التنقّل الأساسي داخل الصفحة (AppBackButton) */
 .global-back-btn,
 .floating-back-btn,
 .scroll-to-top,
@@ -132,7 +133,8 @@ html.dark .kids-hub-intro {
   border-style: solid !important;
   border-width: 1px !important;
   border-radius: var(--radius-pill, 999px) !important;
-  box-shadow: 0 8px 20px -10px rgba(11, 32, 24, 0.4) !important;
+  box-shadow: var(--sf-shadow-elevated, 0 2px 6px rgba(11, 32, 24, 0.12)) !important;
+  opacity: 0.92;
 }
 
 .scroll-to-top,

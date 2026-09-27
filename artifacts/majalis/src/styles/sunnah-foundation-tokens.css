@@ -79,19 +79,24 @@
   --sf-space-8: 32px;
   --sf-space-12: 48px;
 
-  /* ── Radius (سلم مغلق) ── */
-  --sf-radius-sm: 12px;
-  --sf-radius-md: 16px;
-  --sf-radius-lg: 20px;
-  --sf-radius-xl: 24px;
-  --sf-radius-card: var(--sf-radius-lg);
-  --sf-radius-control: 14px;
+  /* ── Radius (سلم مغلق — UI Refinement) ──
+   * XS=12 · SM=16 · MD=20 · LG=24 — ممنوع قيم عشوائية خارج السلم */
+  --sf-radius-xs: 12px;
+  --sf-radius-sm: 16px;
+  --sf-radius-md: 20px;
+  --sf-radius-lg: 24px;
+  /* توافق خلفي: xl = lg */
+  --sf-radius-xl: var(--sf-radius-lg);
+  --sf-radius-card: var(--sf-radius-md);
+  --sf-radius-control: var(--sf-radius-xs);
+  --sf-radius-sheet: var(--sf-radius-lg);
   --sf-radius-pill: 999px;
 
-  /* ── Shadow — خفيف جدًا · بلا ظلال قوية / glow ── */
+  /* ── Shadow — عمق خفيف · سطح مطفي · بلا لمعان ── */
   --sf-shadow-soft: none;
-  --sf-shadow-card: none;
-  --sf-shadow-elevated: 0 1px 2px
+  --sf-shadow-card: 0 1px 2px
+    color-mix(in srgb, var(--sf-color-deep-emerald-deep) 7%, transparent);
+  --sf-shadow-elevated: 0 2px 6px
     color-mix(in srgb, var(--sf-color-deep-emerald-deep) 10%, transparent);
 
   /* ── Surface ── */
@@ -131,15 +136,16 @@
   --sf-safe-bottom: var(--inset-bottom, 0px);
   --sf-safe-left: var(--inset-left, 0px);
 
-  /* ── Density: STANDARD (افتراضي) ── */
+  /* ── Density: STANDARD (افتراضي — كثافة أعلى، فراغ أقل) ── */
   --sf-density-name: standard;
-  --sf-pad-card: 1rem;
-  --sf-pad-section: 1rem;
-  --sf-gap-stack: 0.75rem;
-  --sf-gap-section: 1rem;
-  --sf-row-min: 2.75rem;
-  --sf-control-h: 2.75rem;
-  --sf-header-h: 3rem;
+  --sf-pad-card: 0.85rem;
+  --sf-pad-section: 0.85rem;
+  --sf-gap-stack: 0.55rem;
+  --sf-gap-section: 0.85rem;
+  --sf-row-min: 2.5rem;
+  --sf-control-h: 2.5rem;
+  --sf-header-h: 2.75rem;
+  --sf-icon-size: 1.65rem;
 }
 
 /* Density: COMPACT — Navigation / Filters / Lists */
