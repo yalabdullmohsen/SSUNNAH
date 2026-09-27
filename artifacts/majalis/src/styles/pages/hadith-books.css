@@ -42,6 +42,20 @@
   touch-action: manipulation; }
 .hb-tab__name { font-size: .82rem; font-weight: 600; }
 .hb-tab__total { font-size: .72rem; color: var(--elite-ink-muted); }
+.hb-tab__access {
+  display: block;
+  font-size: .65rem;
+  font-weight: 600;
+  color: #5F7168;
+  margin-top: .1rem;
+}
+.hb-tab--active .hb-tab__access { color: rgba(255,255,255,.75); }
+.hb-browser__numbering {
+  margin: .35rem 0 0;
+  font-size: .78rem;
+  line-height: 1.45;
+  color: #48645A;
+}
 .hb-tab:hover { background: rgba(23,61,53,.06); border-color: rgba(23,61,53,.3); color: var(--ds-emerald, var(--mj-brand)); }
 .hb-tab--active { background: var(--ds-emerald, var(--mj-brand)); border-color: var(--ds-emerald, var(--mj-brand));
   color: var(--mj-white, #ffffff); }

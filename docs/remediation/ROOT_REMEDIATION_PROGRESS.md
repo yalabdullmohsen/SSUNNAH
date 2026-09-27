@@ -9,6 +9,7 @@ Living tracker for remediation waves. Do not treat as release truth (see `docs/r
 | WAVE4_PUBLICATION_HONESTY | Publication honesty | prior | `docs/remediation/WAVE4_PUBLICATION_HONESTY.md` |
 | WAVE5_ADMIN_V3_SHELL | Admin shell | prior | `docs/remediation/WAVE5_ADMIN_V3_SHELL.md` |
 | WAVE6_ADMIN_V3_CENTERS | Admin centers | prior | `docs/remediation/WAVE6_ADMIN_V3_CENTERS.md` |
+<<<<<<< HEAD
 | **WAVE_SEARCH_INTEGRITY** | Search href contract + history destinations + index v3 | **IN SESSION** | `docs/remediation/waves/WAVE_SEARCH_INTEGRITY.md` |
 
 ## Search integrity docs
@@ -25,3 +26,31 @@ Living tracker for remediation waves. Do not treat as release truth (see `docs/r
 
 - `SUNNAH_FULL_REMEDIATION_COMPLETE` — not declared
 - Physical-device / Capacitor search validation — `DEVICE_REQUIRED`
+=======
+| WAVE_HADITH_DATA_TRUTH | Hadith counts, labels, filters, empties | IMPLEMENTED | `docs/remediation/waves/WAVE_HADITH_DATA_TRUTH.md` |
+| **WAVE_HADITH_COMPLETION_P1** | Registry + completeness/license docs + count align | **IN SESSION** | `docs/remediation/waves/WAVE_HADITH_COMPLETION_P1.md` |
+
+## Hadith program docs
+
+| Doc | Path |
+|---|---|
+| Collection registry | `docs/hadith/HADITH_COLLECTION_REGISTRY.md` |
+| Completeness audit | `docs/hadith/HADITH_COMPLETENESS_AUDIT.md` |
+| Source/license matrix | `docs/hadith/HADITH_SOURCE_LICENSE_MATRIX.md` |
+| Source approvals | `docs/hadith/HADITH_SOURCE_APPROVALS.md` |
+| Global search plan | `docs/remediation/HADITH_GLOBAL_SEARCH_PLAN.md` |
+| View decomposition plan | `docs/remediation/HADITH_VIEW_DECOMPOSITION_PLAN.md` |
+
+## Hadith follow-ups (queued)
+
+1. Full Sahihayn search index + wire `/search`
+2. HadithView decomposition
+3. Owner-approved sunan local import (only after license row)
+4. Optional: local Sahihayn tabs inside `/hadith/books` with numbering labels
+
+## Explicit non-claims
+
+- `HADITH_GLOBAL_SEARCH_COMPLETE` — not declared
+- `HADITH_SECTION_COMPLETE` — not declared
+- `SUNNAH_FULL_REMEDIATION_COMPLETE` — not declared
+>>>>>>> fd64a6922 (صدق بيانات الحديث وسجل المجموعات — أعداد وحالات ترخيص بلا استيراد)

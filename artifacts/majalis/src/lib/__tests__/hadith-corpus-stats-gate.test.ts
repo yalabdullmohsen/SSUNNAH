@@ -26,11 +26,14 @@ const view = read("src/pages/hadith/ui/HadithView.tsx");
 assert.doesNotMatch(view, /HadithStatsPanel/);
 assert.doesNotMatch(view, /الصحيحان بالأرقام المنقولة/);
 assert.doesNotMatch(view, /hadith-hub-stats/);
+/* ملخص مجموعات صادق (أعداد منفصلة) — ليس لوحة إحصاءات مضلّلة */
+assert.match(view, /HadithDatasetSummary/);
 
 const css = read("src/styles/pages/hadith.css");
 assert.doesNotMatch(css, /\.hsp\s*\{/);
 assert.doesNotMatch(css, /hadith-hub-stats/);
 assert.doesNotMatch(css, /الصحيحان بالأرقام/);
+assert.match(css, /hadith-dataset-summary/);
 
 const cdn = read("src/lib/hadith-cdn-service.ts");
 assert.doesNotMatch(cdn, /hadith-stats\/sahihayn/);
