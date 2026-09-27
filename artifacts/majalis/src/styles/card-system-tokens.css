@@ -6,31 +6,31 @@
  */
 
 :root {
-  /* طبقات السطح — للقراءة والمراجع (فاتحة · Warm Ivory) */
-  --cs-surface-1: var(--sf-color-warm-ivory, #f7f3eb);
-  --cs-surface-2: var(--sf-color-warm-ivory-surface, #fffcf7);
+  /* طبقات السطح — صفحة فاتحة · بطاقة بيضاء · تباين AA */
+  --cs-surface-1: var(--sf-color-warm-ivory, #f8f6f1);
+  --cs-surface-2: var(--sf-color-warm-ivory-surface, #ffffff);
   --cs-surface-3: #ffffff;
-  --cs-primary: var(--sf-color-deep-emerald, #0f3d2e);
-  --cs-primary-deep: var(--sf-color-deep-emerald-deep, #0a2f24);
+  --cs-primary: var(--sf-color-deep-emerald, #0f5c3f);
+  --cs-primary-deep: var(--sf-color-deep-emerald-deep, #0a4530);
   --cs-primary-soft: var(
     --sf-color-deep-emerald-soft,
     color-mix(in srgb, var(--cs-primary) 10%, var(--cs-surface-1))
   );
   --cs-gold: var(--sf-color-quran-gold, #c9a82e);
   --cs-gold-ink: #f0e2b0;
-  --cs-text-primary: var(--sf-color-rich-ink, #16241e);
-  --cs-text-secondary: #3a4a42;
-  --cs-text-muted: var(--sf-color-rich-ink-muted, #5e6e67);
-  --cs-border: var(--sf-hairline, color-mix(in srgb, var(--cs-primary) 16%, #d7ddd8));
+  --cs-text-primary: var(--sf-color-rich-ink, #15382d);
+  --cs-text-secondary: var(--sf-color-rich-ink-soft, #48645a);
+  --cs-text-muted: var(--sf-color-rich-ink-muted, #5f7168);
+  --cs-border: var(--sf-hairline, rgba(15, 92, 63, 0.12));
   --cs-border-strong: color-mix(in srgb, var(--cs-primary) 28%, #c8d0cb);
-  --cs-shadow: var(--sf-shadow-soft, none);
+  --cs-shadow: 0 1px 2px color-mix(in srgb, var(--cs-primary-deep) 8%, transparent);
   --cs-focus-ring: var(--sf-focus-ring);
 
-  /* أسطح رئيسية — زمرد داكن (Hero / Topic / Lesson / Path) */
-  --cs-ink-hero: var(--sf-color-deep-emerald-deep, #0a2f24);
-  --cs-ink-topic: var(--sf-color-deep-emerald, #0f3d2e);
+  /* هيرو فقط — زمرد داكن · نص عاجي (لا يُستخدم على بطاقات الأقسام) */
+  --cs-ink-hero: var(--sf-color-deep-emerald-deep, #0a4530);
+  --cs-ink-topic: var(--sf-color-deep-emerald, #0f5c3f);
   --cs-ink-lesson: #134a38;
-  --cs-ink-path: var(--sf-color-deep-emerald, #0f3d2e);
+  --cs-ink-path: var(--sf-color-deep-emerald, #0f5c3f);
   --cs-ink-border: color-mix(in srgb, var(--cs-ink-hero) 70%, var(--cs-gold) 12%);
   --cs-on-ink: var(--sf-color-on-emerald, #f7f1e4);
   --cs-on-ink-title: var(--sf-color-on-emerald, #f7f1e4);

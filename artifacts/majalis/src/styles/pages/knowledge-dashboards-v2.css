@@ -95,7 +95,7 @@ html[data-v2-knowledge="1"] .topic-page__group-title {
   font-weight: 800;
 }
 
-/* ── بطاقات Knowledge Dashboard ── */
+/* ── بطاقات Knowledge Dashboard — أبيض · حبر AA ── */
 html[data-v2-knowledge="1"] .hub-card,
 html[data-v2-knowledge="1"] .section-entry-card,
 html[data-v2-knowledge="1"] .kx-library-card,
@@ -105,12 +105,12 @@ html[data-v2-knowledge="1"] .twh-pillar-card,
 html[data-v2-knowledge="1"] .fiqh-lux-chapter__head,
 html[data-v2-knowledge="1"] .fiqh-lux-lesson-link {
   border-radius: var(--v2-radius-card, 26px);
-  border: 1px solid color-mix(in srgb, #d4b45c 28%, #0f3d2e);
-  background: var(--cs-ink-topic, #0f3d2e) !important;
-  background-color: var(--cs-ink-topic, #0f3d2e) !important;
+  border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
+  background: var(--cs-surface-3, #ffffff) !important;
+  background-color: var(--cs-surface-3, #ffffff) !important;
   background-image: none !important;
-  box-shadow: var(--v2-shadow-soft);
-  color: var(--cs-on-ink, #f7f1e4) !important;
+  box-shadow: var(--cs-shadow, var(--v2-shadow-soft));
+  color: var(--cs-text-primary, #15382d) !important;
 }
 
 html[data-v2-knowledge="1"] .hadith-card,

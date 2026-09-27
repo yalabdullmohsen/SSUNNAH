@@ -16,20 +16,24 @@ const unify = read("src/styles/visual-identity-unify.css");
 const cards = read("src/styles/card-system-tokens.css");
 const shell = read("src/styles/pages/app-shell-v2.css");
 
-console.log("=== Foundation: Warm Ivory + Dark Emerald ===");
-assert.match(sf, /--sf-color-warm-ivory:\s*#f7f3eb/i);
-assert.match(sf, /--sf-color-ivory-canvas:\s*#f7f3eb/i);
-assert.match(sf, /--sf-color-deep-emerald:\s*#0f3d2e/i);
-assert.match(sf, /--sf-color-deep-emerald-deep:\s*#0a2f24/i);
+console.log("=== Foundation: صفحة فاتحة + زمرد + حبر AA ===");
+assert.match(sf, /--sf-color-warm-ivory:\s*#f8f6f1/i);
+assert.match(sf, /--sf-color-ivory-canvas:\s*#f8f6f1/i);
+assert.match(sf, /--sf-color-warm-ivory-surface:\s*#ffffff/i);
+assert.match(sf, /--sf-color-deep-emerald:\s*#0f5c3f/i);
+assert.match(sf, /--sf-color-deep-emerald-deep:\s*#0a4530/i);
+assert.match(sf, /--sf-color-rich-ink:\s*#15382d/i);
+assert.match(sf, /--sf-color-rich-ink-soft:\s*#48645a/i);
 assert.match(sf, /--sf-color-deep-emerald-soft:\s*color-mix/);
 assert.doesNotMatch(sf, /--sf-color-deep-emerald-soft:\s*#e2efe8/i);
 assert.match(sf, /--sf-color-on-emerald:\s*#f7f1e4/i);
 assert.match(sf, /--sf-shadow-soft:\s*none/);
 assert.match(sf, /--sf-shadow-card:\s*none/);
 
-console.log("=== theme: brand Dark Emerald ===");
-assert.match(theme, /--mj-brand:\s*#0F3D2E/i);
-assert.match(theme, /--mj-brand-deep:\s*#0A3D2E/i);
+console.log("=== theme: brand Emerald AA ===");
+assert.match(theme, /--mj-brand:\s*#0F5C3F/i);
+assert.match(theme, /--mj-brand-deep:\s*#0A4530/i);
+assert.match(theme, /--mj-ink:\s*#15382D/i);
 assert.doesNotMatch(theme, /--mj-brand-soft:\s*#E2EFE8/i);
 assert.match(theme, /--sunnah-v2-shadow-card:\s*none/);
 
@@ -43,10 +47,12 @@ assert.match(unify, /:not\(\.hub-card\)/);
 assert.match(unify, /--radius-card:\s*24px/);
 assert.match(unify, /\.mss-hero-surface[\s\S]{0,280}background-image:\s*none/);
 
-console.log("=== card tokens: ink shadow none · ivory title ===");
+console.log("=== card tokens: سطح أبيض · نص AA · هيرو on-ink ===");
 assert.match(cards, /--cs-ink-shadow:\s*none/);
 assert.match(cards, /--cs-on-ink-title:\s*var\(--sf-color-on-emerald|--cs-on-ink/);
 assert.match(cards, /--cs-surface-1:\s*var\(--sf-color-warm-ivory/);
+assert.match(cards, /--cs-text-primary:\s*var\(--sf-color-rich-ink/);
+assert.match(cards, /--cs-text-secondary:\s*var\(--sf-color-rich-ink-soft/);
 
 console.log("=== عناوين: شريط ذهب Accent بلا تدرّج ===");
 assert.match(shell, /\.ph2__title::after[\s\S]{0,220}--v2-accent-gold/);

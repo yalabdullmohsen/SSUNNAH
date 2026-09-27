@@ -9,18 +9,18 @@
  */
 
 :root {
-  /* ── Colors — Warm Ivory canvas · Dark Emerald primary · Gold accent ── */
-  --sf-color-warm-ivory: #f7f3eb;
-  --sf-color-warm-ivory-surface: #fffcf7;
+  /* ── Colors — صفحة فاتحة · بطاقة بيضاء · زمرد · حبر AA ── */
+  --sf-color-warm-ivory: #f8f6f1;
+  --sf-color-warm-ivory-surface: #ffffff;
   --sf-color-warm-ivory-muted: #efe8dc;
-  /* Canvas موحّد = Warm Ivory (لا درجة بيج ثانية) */
-  --sf-color-ivory-canvas: #f7f3eb;
-  --sf-color-ivory-raised: #fffcf7;
+  /* Canvas موحّد = صفحة التطبيق */
+  --sf-color-ivory-canvas: #f8f6f1;
+  --sf-color-ivory-raised: #ffffff;
 
-  /* Dark Emerald — اللون الأساسي الوحيد */
-  --sf-color-deep-emerald: #0f3d2e;
-  --sf-color-deep-emerald-deep: #0a2f24;
-  /* غسلة هادئة على عاجي — بلا أخضر باهت صلب */
+  /* Primary Emerald — اللون الأساسي الوحيد */
+  --sf-color-deep-emerald: #0f5c3f;
+  --sf-color-deep-emerald-deep: #0a4530;
+  /* غسلة هادئة على سطح الصفحة */
   --sf-color-deep-emerald-soft: color-mix(
     in srgb,
     var(--sf-color-deep-emerald) 10%,
@@ -29,8 +29,10 @@
 
   --sf-color-quran-gold: #c9a82e;
 
-  --sf-color-rich-ink: #16241e;
-  --sf-color-rich-ink-muted: #5e6e67;
+  /* تسلسل نص AA على أبيض / #F8F6F1 */
+  --sf-color-rich-ink: #15382d;
+  --sf-color-rich-ink-soft: #48645a;
+  --sf-color-rich-ink-muted: #5f7168;
 
   --sf-color-luxury-night: #0a1612;
   --sf-color-luxury-night-surface: #12261f;
@@ -97,7 +99,7 @@
   --sf-surface-raised: var(--sf-color-warm-ivory-surface);
   --sf-surface-muted: var(--sf-color-warm-ivory-muted);
   --sf-surface-brand: var(--sf-color-deep-emerald);
-  --sf-hairline: color-mix(in srgb, var(--sf-color-rich-ink) 10%, transparent);
+  --sf-hairline: rgba(15, 92, 63, 0.12);
 
   /* ── State ── */
   --sf-state-hover-wash: color-mix(in srgb, var(--sf-color-deep-emerald) 8%, transparent);

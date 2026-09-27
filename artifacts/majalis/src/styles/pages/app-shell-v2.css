@@ -32,13 +32,13 @@ html[data-v2-app="1"] .qzg-section-card,
 html[data-v2-app="1"] .ruling-card {
   border-radius: var(--v2-radius-card, 26px);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8) !important;
-  background-color: var(--v2-color-ivory-surface, #fffcf8) !important;
+  background: var(--cs-surface-3, var(--v2-color-ivory-surface, #ffffff)) !important;
+  background-color: var(--cs-surface-3, var(--v2-color-ivory-surface, #ffffff)) !important;
   box-shadow: var(--v2-shadow-soft);
   color: var(--v2-color-ink, #16241e) !important;
 }
 
-/* ── بطاقات رئيسية — زمرد داكن · نص عاجي ── */
+/* ── بطاقات رئيسية — أبيض · حبر AA (لا عاجي على فاتح) ── */
 html[data-v2-app="1"] .hub-card,
 html[data-v2-app="1"] .section-entry-card,
 html[data-v2-app="1"] .topic-card,
@@ -46,57 +46,59 @@ html[data-v2-app="1"] .ss-feature-card__inner,
 html[data-v2-app="1"] .soft-card.hub-card,
 html[data-v2-app="1"] .hub-card.soft-card--on-light {
   border-radius: var(--v2-radius-card, 26px);
-  border: 1px solid color-mix(in srgb, #d4b45c 28%, #0f3d2e);
-  background: var(--cs-ink-topic, #0f3d2e) !important;
-  background-color: var(--cs-ink-topic, #0f3d2e) !important;
+  border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
+  background: var(--cs-surface-3, #ffffff) !important;
+  background-color: var(--cs-surface-3, #ffffff) !important;
   background-image: none !important;
-  box-shadow: var(--v2-shadow-soft);
-  color: var(--cs-on-ink, #f7f1e4) !important;
+  box-shadow: var(--cs-shadow, var(--v2-shadow-soft));
+  color: var(--cs-text-primary, #15382d) !important;
 }
 
 html[data-v2-app="1"] .hub-card .hub-card__title,
-html[data-v2-app="1"] .section-entry-card__title {
-  color: var(--cs-on-ink-title, #ffffff) !important;
+html[data-v2-app="1"] .section-entry-card__title,
+html[data-v2-app="1"] .card__label {
+  color: var(--cs-text-primary, #15382d) !important;
+  font-weight: 700 !important;
 }
 
 html[data-v2-app="1"] .hub-card .hub-card__desc,
-html[data-v2-app="1"] .hub-card .hub-card__meta,
-html[data-v2-app="1"] .hub-card .hub-card__go,
-html[data-v2-app="1"] .section-entry-card__desc {
-  color: var(--cs-on-ink-body, #e4ddd0) !important;
+html[data-v2-app="1"] .section-entry-card__desc,
+html[data-v2-app="1"] .card__subtitle {
+  color: var(--cs-text-secondary, #48645a) !important;
+  opacity: 1 !important;
 }
 
 html[data-v2-app="1"] .hub-card .hub-card__meta,
 html[data-v2-app="1"] .hub-card .hub-card__go {
-  color: var(--cs-on-ink-meta, #c9c0ae) !important;
+  color: var(--cs-text-muted, #5f7168) !important;
 }
 
 html[data-v2-app="1"] .lesson-unified-card,
 html[data-v2-app="1"] .lesson-unified-card.soft-card,
 html[data-v2-app="1"] .lesson-unified-card.soft-card--on-light {
   border-radius: var(--v2-radius-card, 26px);
-  border: 1px solid color-mix(in srgb, #d4b45c 28%, #134a38);
-  background: var(--cs-ink-lesson, #134a38) !important;
-  background-color: var(--cs-ink-lesson, #134a38) !important;
+  border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
+  background: var(--cs-surface-3, #ffffff) !important;
+  background-color: var(--cs-surface-3, #ffffff) !important;
   background-image: none !important;
-  box-shadow: var(--v2-shadow-soft);
-  color: var(--cs-on-ink, #f7f1e4) !important;
+  box-shadow: var(--cs-shadow, var(--v2-shadow-soft));
+  color: var(--cs-text-primary, #15382d) !important;
 }
 
 html[data-v2-app="1"] .lesson-unified-card__title,
 html[data-v2-app="1"] .lesson-unified-card__sheikh {
-  color: var(--cs-on-ink-title, #ffffff) !important;
+  color: var(--cs-text-primary, #15382d) !important;
 }
 
 html[data-v2-app="1"] .lpp-path-card,
 html[data-v2-app="1"] .lpp-path-card.soft-card--on-light {
   border-radius: var(--v2-radius-card, 26px);
-  border: 1px solid color-mix(in srgb, #d4b45c 28%, #0f3d2e);
-  background: var(--cs-ink-path, #0f3d2e) !important;
-  background-color: var(--cs-ink-path, #0f3d2e) !important;
+  border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
+  background: var(--cs-surface-3, #ffffff) !important;
+  background-color: var(--cs-surface-3, #ffffff) !important;
   background-image: none !important;
-  box-shadow: var(--v2-shadow-soft);
-  color: var(--cs-on-ink, #f7f1e4) !important;
+  box-shadow: var(--cs-shadow, var(--v2-shadow-soft));
+  color: var(--cs-text-primary, #15382d) !important;
 }
 
 /* إزالة عمود أخضر جانبي / شريط زخرفي مزدوج على البطاقات العامة */
@@ -116,14 +118,15 @@ html[data-v2-app="1"] .hub-card--accent {
   border-color: color-mix(in srgb, var(--v2-color-emerald) 28%, transparent);
 }
 
-/* أيقونات فاتحة على البطاقات الرئيسية الداكنة */
+/* أيقونات زمردية على بطاقات بيضاء */
 html[data-v2-app="1"] .hub-card__icon,
-html[data-v2-app="1"] .section-entry-card__icon {
+html[data-v2-app="1"] .section-entry-card__icon,
+html[data-v2-app="1"] .card__icon {
   width: var(--v2-icon-tile, 2.75rem);
   height: var(--v2-icon-tile, 2.75rem);
   border-radius: var(--v2-radius-icon, 16px);
-  background: var(--cs-on-ink-icon-bg, color-mix(in srgb, #ffffff 14%, transparent)) !important;
-  color: var(--cs-on-ink-icon, #f7f1e4) !important;
+  background: var(--cs-primary-soft, var(--v2-color-emerald-soft, #e2efe8)) !important;
+  color: var(--cs-primary-deep, var(--v2-color-emerald-deep, #0a4530)) !important;
   box-shadow: none !important;
 }
 
