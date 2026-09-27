@@ -62,7 +62,7 @@ assert.doesNotMatch(mainSrc, /homePageBoot|await homePageBoot/, "لا انتظا
 assert.doesNotMatch(mainSrc, /mj-app-mount/, "createRoot على #root");
 const heroShell = readFileSync(resolve(root, "src/components/home/HomeHeroLcp.tsx"), "utf8");
 assert.match(heroShell, /mj-home-lcp-ph/, "حجز ارتفاع في هيكل الرئيسية");
-assert.match(home, /HomeSacredOfDaySkeleton|HomeDailyWirdSkeleton|HomeRestShell|HomePrimaryDiscoveryPlaceholder/, "الرئيسية تستخدم هياكل الحجز المشتركة");
+assert.match(home, /HomeRestShell|HomePrimaryDiscoveryPlaceholder/, "الرئيسية تستخدم هياكل الحجز المشتركة");
 assert.match(app, /HomeHeroLcp/, "هيرو LCP ثابت خارج Suspense");
 assert.match(app, /HomeStartHereSection/, "ابدأ من هنا خارج Suspense مع الهيرو");
 assert.match(app, /HomeRestShell/, "fallback بقية الرئيسية بلا استبدال h1");
@@ -70,12 +70,11 @@ assert.doesNotMatch(home, /HomeStartHereGate|2_200/, "لا تأخير اصطنا
 assert.doesNotMatch(app, /HomeInitialShell/, "لا HomeInitialShell بعد فصل الهيرو");
 assert.doesNotMatch(app, /HomeHeroLcp[\s\S]{0,120}aria-hidden/, "هيرو الرئيسية ليس مخفياً عن قارئ الشاشة");
 assert.doesNotMatch(app, /scheduleRemoveHomeLcpStaticShell/, "لا إزالة صدفة HTML");
-assert.match(critical, /\.hsh-steps\s*\{[\s\S]*min-height:\s*22rem/, "حجز CLS لشبكة hsh-steps");
+assert.match(critical, /\.hsh-steps\s*\{[\s\S]*min-height:\s*10rem/, "حجز CLS لشبكة hsh-steps المضغوطة");
 assert.match(critical, /ascent-override/, "size-adjust/override للخط الاحتياطي");
 assert.match(homeCss, /contain:\s*layout style/, "حاوية placeholder بلا min-height مبالغ");
-assert.match(homeCss, /\.mj-home-lcp-ph__start-here\s*\{[\s\S]*min-height:\s*28rem/, "ارتفاع ابدأ من هنا يطابق المحتوى");
-assert.match(critical, /\.mj-home-lcp-ph__start-here\s*\{[\s\S]*min-height:\s*28rem/, "حجز ابدأ من هنا في CSS الحرج");
-assert.match(homeCss, /\.mj-home-lcp-ph__daily-band\s*\{[\s\S]*min-height:\s*28rem/, "ارتفاع الورد اليومي يطابق الحجز الحرج");
+assert.match(critical, /\.home-start-here--slim|\.home-start-here\s*\{[\s\S]*min-height:\s*[78]\.5rem/, "حجز ابدأ من هنا المضغوط");
+assert.match(critical, /\.mj-home-primary-discovery-ph[\s\S]*min-height:\s*22rem/, "حجز الاكتشاف المضغوط");
 assert.doesNotMatch(homeCss, /\.mj-home-lcp-ph\s*\{[\s\S]*min-height:\s*88rem/, "لا min-height مبالغ فيه على الحاوية");
 assert.doesNotMatch(finalCss, /\.hsh-steps[^}]*content-visibility/, "ابدأ من هنا فوق الطية بلا content-visibility");
 assert.doesNotMatch(html, /fonts\.googleapis\.com/, "لا Google Fonts في إقلاع /");

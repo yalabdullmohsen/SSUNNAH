@@ -2,10 +2,7 @@ import { Suspense, useEffect, useState, lazy } from "react";
 import { applyPageSeo } from "@/lib/seo";
 import { defaultSiteJsonLd } from "@/lib/seo-structured-data";
 import { SectionErrorBoundary } from "@/components/ErrorBoundary";
-import { HomeUniversalSearch } from "@/components/home/HomeUniversalSearch";
 import {
-  HomeSacredOfDaySkeleton,
-  HomeDailyWirdSkeleton,
   HomePrimaryDiscoveryPlaceholder,
   HomeLiveNowPlaceholder,
   HomeBelowFoldPlaceholder,
@@ -18,6 +15,9 @@ import { DashboardScreen } from "@/components/design-system/screens";
 import "@/styles/m2030/home.css";
 import "@/styles/pages/home-dashboard-v2.css";
 import "@/styles/components/first-visit-intro.css";
+import "@/styles/components/home-daily-strip.css";
+import "@/styles/components/home-continue-learning.css";
+import "@/styles/components/home-sections-grid.css";
 
 const FirstVisitIntro = lazy(() =>
   import("@/components/onboarding/FirstVisitIntro").then((m) => ({ default: m.FirstVisitIntro })),
@@ -34,36 +34,16 @@ const HomePrimaryDiscovery = lazyWithRetry(
   "HomePrimaryDiscovery",
 );
 
-const HomeDailyWirdBand = lazyWithRetry(
-  () => import("@/components/home/DailyWirdCard").then((m) => ({ default: m.HomeDailyWirdBand })),
-  "HomeDailyWirdBand",
-);
-
-const HomeSacredOfDay = lazyWithRetry(
-  () => import("@/components/home/HomeSacredOfDay").then((m) => ({ default: m.HomeSacredOfDay })),
-  "HomeSacredOfDay",
-);
-
 const HomeLiveNowBanner = lazyWithRetry(
   () =>
     import("@/components/home/HomeLiveNowBanner").then((m) => ({ default: m.HomeLiveNowBanner })),
   "HomeLiveNowBanner",
 );
 
-
 /** تأجيل بـ setTimeout فقط — لا rIC حتى لا يسحب Lighthouse العمل أثناء نافذة TBT */
 function deferAfterPaint(cb: () => void, ms: number): () => void {
   const id = window.setTimeout(cb, ms);
   return () => window.clearTimeout(id);
-}
-
-/** البحث يظهر فور جاهزية HomePage — الفهرس يُحمَّل كسولًا عند التركيز فقط */
-function HomeSearchGate() {
-  return (
-    <SectionErrorBoundary name="HomeUniversalSearch">
-      <HomeUniversalSearch />
-    </SectionErrorBoundary>
-  );
 }
 
 function HomeLiveNowGate() {
@@ -81,9 +61,7 @@ function HomeLiveNowGate() {
   }, []);
 
   if (!show) {
-    return (
-      <HomeLiveNowPlaceholder />
-    );
+    return <HomeLiveNowPlaceholder />;
   }
 
   return (
@@ -95,60 +73,7 @@ function HomeLiveNowGate() {
   );
 }
 
-function HomeSacredOfDayGate() {
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    let cancelled = false;
-    const cancel = deferAfterPaint(() => {
-      if (!cancelled) setShow(true);
-    }, 600);
-    return () => {
-      cancelled = true;
-      cancel();
-    };
-  }, []);
-
-  if (!show) return <HomeSacredOfDaySkeleton />;
-
-  return (
-    <SectionErrorBoundary name="HomeSacredOfDay">
-      <Suspense fallback={<HomeSacredOfDaySkeleton />}>
-        <div className="home-sacred-day-slot">
-          <HomeSacredOfDay />
-        </div>
-      </Suspense>
-    </SectionErrorBoundary>
-  );
-}
-
-function HomeDailyWirdGate() {
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    let cancelled = false;
-    const cancel = deferAfterPaint(() => {
-      if (!cancelled) setShow(true);
-    }, 1_200);
-    return () => {
-      cancelled = true;
-      cancel();
-    };
-  }, []);
-
-  if (!show) return <HomeDailyWirdSkeleton />;
-
-  return (
-    <SectionErrorBoundary name="HomeDailyWird">
-      <Suspense fallback={<HomeDailyWirdSkeleton />}>
-        <HomeDailyWirdBand />
-      </Suspense>
-    </SectionErrorBoundary>
-  );
-}
-
-
-/** بوابات + محتوى أساسي — مبكّر نسبياً لتسريع الوصول للمحتوى */
+/** بوابات + متابعة + يومي — مبكر لتسريع الوصول */
 function HomePrimaryDiscoveryGate() {
   const [show, setShow] = useState(false);
 
@@ -156,7 +81,7 @@ function HomePrimaryDiscoveryGate() {
     let cancelled = false;
     const cancel = deferAfterPaint(() => {
       if (!cancelled) setShow(true);
-    }, 320);
+    }, 280);
     return () => {
       cancelled = true;
       cancel();
@@ -164,19 +89,13 @@ function HomePrimaryDiscoveryGate() {
   }, []);
 
   if (!show) {
-    return (
-      <HomePrimaryDiscoveryPlaceholder id />
-    );
+    return <HomePrimaryDiscoveryPlaceholder id />;
   }
 
   return (
     <div id="mj-home-primary-discovery">
       <SectionErrorBoundary name="HomePrimaryDiscovery">
-        <Suspense
-          fallback={
-            <HomePrimaryDiscoveryPlaceholder />
-          }
-        >
+        <Suspense fallback={<HomePrimaryDiscoveryPlaceholder />}>
           <HomePrimaryDiscovery />
         </Suspense>
       </SectionErrorBoundary>
@@ -212,7 +131,6 @@ function HomeBelowFoldGate() {
         { rootMargin: "480px 0px" },
       );
       io.observe(el);
-      // احتياطي بعيد — لا rIC حتى لا يُحمَّل تحت الطية أثناء قياس Lighthouse
       cancelFallback = deferAfterPaint(reveal, 2_800);
     };
 
@@ -241,7 +159,6 @@ function HomeBelowFoldGate() {
 }
 
 export default function HomePage() {
-  // لا نعرض التعريف في أول commit — كان يسرق LCP قبل الرئيسية
   const [showIntro, setShowIntro] = useState(false);
 
   useEffect(() => {
@@ -250,8 +167,7 @@ export default function HomePage() {
     let cancelDelay: (() => void) | undefined;
     void import("@/lib/app-shell-stability").then(({ whenAppShellStable }) => {
       cancelStable = whenAppShellStable(() => {
-        // بعد استقرار الهيكل فقط — وبدون استبدال الصفحة (overlay فوق الرئيسية)
-        cancelDelay = deferAfterPaint(() => setShowIntro(true), 2_500);
+        cancelDelay = deferAfterPaint(() => setShowIntro(true), 3_200);
       }, 800);
     });
     return () => {
@@ -298,22 +214,15 @@ export default function HomePage() {
     return () => window.cancelAnimationFrame(id);
   }, []);
 
-  // الغلاف + الهيرو في App (HomeHeroLcp خارج Suspense) — هنا بقية الرئيسية فقط
-  // Intro كـ overlay فوق الرئيسية — لا استبدال كامل يسبب قفزة تخطيط
   return (
-    <DashboardScreen compose="mark" density="regular">
+    <DashboardScreen compose="mark" density="compact">
       {isMaintenanceMode() && (
         <div role="status" className="home-maintenance-banner">
           {getSiteSettings().maintenanceMessage}
         </div>
       )}
 
-      <HomeSearchGate />
-
-      {/* «ابدأ من هنا» يُرسم في App خارج Suspense — لا تكرار هنا */}
-      <HomeSacredOfDayGate />
       <HomePrimaryDiscoveryGate />
-      <HomeDailyWirdGate />
       <HomeLiveNowGate />
       <HomeBelowFoldGate />
 

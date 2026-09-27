@@ -41,8 +41,15 @@ import { isAuthStandalonePath, isImmersiveChromePath, isPinnedChromePath, isPray
 import { isHomeChromePath } from "@/lib/ticker-quiet-paths";
 import { isNative, isNativeApp } from "@/lib/capacitor-utils";
 import { isMiniPlayerVisible, subscribeMiniPlayer } from "@/lib/quran-mini-player";
-import { HomeHeroLcp, HomeRestShell } from "@/components/home/HomeHeroLcp";
+import { HomeHeroLcp, HomeRestShell, HomeSearchShell } from "@/components/home/HomeHeroLcp";
 import { HomeStartHereSection } from "@/components/home/HomeStartHereSection";
+const HomeUniversalSearch = lazyWithRetry(
+  () =>
+    import("@/components/home/HomeUniversalSearch").then((m) => ({
+      default: m.HomeUniversalSearch,
+    })),
+  "HomeUniversalSearch",
+);
 /** شريط/كروم ثقيل (lucide + nav-map) — كسول حتى لا يدخل مسار أول زيارة / LCP */
 const SafeAreaDebugOverlay = lazyWithRetry(
   () =>
@@ -501,10 +508,13 @@ function NativeNotificationsBootstrap() {
 function HomeLazyRoute() {
   return (
     <ErrorBoundary>
-      <div className="m2030-home m2030-home--v2" dir="rtl">
-        {/* h1 + «ابدأ من هنا» خارج Suspense — يمنع تأخير 2.2s من سرقة LCP تحت throttling */}
+      <div className="m2030-home m2030-home--v2 m2030-home--redesign" dir="rtl">
+        {/* بحث أولاً بصريًا (هيكل فوري + تحميل كسول) — بلا تضخيم حزمة الإقلاع */}
+        <Suspense fallback={<HomeSearchShell />}>
+          <HomeUniversalSearch />
+        </Suspense>
         <HomeHeroLcp />
-        <section className="m2030-band m2030-band--sage home-start-here-band" aria-label="مدخل المبتدئ">
+        <section className="m2030-band home-start-here-band home-start-here-band--slim" aria-label="مدخل المبتدئ">
           <HomeStartHereSection />
         </section>
         <Suspense fallback={<HomeRestShell />}>

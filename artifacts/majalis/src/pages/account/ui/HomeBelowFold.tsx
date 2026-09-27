@@ -1,37 +1,26 @@
 /**
- * جزيرة تحت الطية — رئيسية مبسّطة بلا «مواسم التعلم».
- * HomePrimaryDiscovery: بوابات + محتوى أساسي (قبل الورد/المباشر في HomeView).
- * الافتراضي: تقدم مختصر → آخر الدروس → متابعة → زرت مؤخراً.
+ * تحت الطية — دروس + مقترحات + تخصيص · بلا تكرار متابعة/بوابات عملاقة.
  */
 import { Suspense, useEffect, useState, type ReactNode } from "react";
 import { Link } from "wouter";
-import {
-  BookMarked,
-  BookOpen,
-  Clock,
-  GraduationCap,
-  LayoutGrid,
-  Scale,
-  Wrench,
-} from "lucide-react";
+import { Wrench } from "lucide-react";
 import contentCounts from "@/data/content-counts.json";
 import { useAuth } from "@/components/AuthProvider";
 import { SectionErrorBoundary } from "@/components/ErrorBoundary";
 import { HomeDailyProgress } from "@/components/home/HomeDailyProgress";
-import { HomeContinueWidget } from "@/components/home/HomeContinueWidget";
-import { HomeLocalResumeCard } from "@/components/home/HomeLocalResumeCard";
 import { FridayBanner } from "@/components/FridayBanner";
 import { toArabicDigits } from "@/lib/utils";
 import { HomeCustomizeSheet } from "@/components/home/HomeCustomizeSheet";
 import { HomeRecentPagesBar } from "@/components/home/HomeRecentPagesBar";
-import { HomeExplorePlatform } from "@/components/home/HomeExplorePlatform";
+import { HomeRecommended } from "@/components/home/HomeRecommended";
 import { HomeContentHub } from "@/components/home/HomeContentHub";
+import { HomeSectionsGrid } from "@/components/home/HomeSectionsGrid";
+import { HomeContinueLearning } from "@/components/home/HomeContinueLearning";
+import { HomeDailyStrip } from "@/components/home/HomeDailyStrip";
 import { lazyWithRetry } from "@/lib/lazy-with-retry";
 import { ShareFaida } from "@/components/ShareFaida";
-import { SunnahCardV2 } from "@/components/design-system";
-import { HomeQuickAccessV2 } from "@/components/home/HomeQuickAccessV2";
-import { IA_HOME_PRIMARY } from "@/lib/ia-final-structure";
 import { prefetchHomeWarmRoutes, prefetchRoute } from "@/lib/prefetch-route";
+import { IA_HOME_PRIMARY } from "@/lib/ia-final-structure";
 import {
   HOME_WIDGET_DEFS,
   getLocalHomepagePrefs,
@@ -41,8 +30,12 @@ import {
   type HomepagePrefs,
   type HomeWidgetId,
 } from "@/lib/homepage-layout";
-/** CSS قديم لأقسام تحت الطية فقط — لا يدخل حزمة فوق الطية / LCP. */
 import "@/styles/pages/home-legacy.css";
+import "@/styles/components/home-daily-strip.css";
+import "@/styles/components/home-continue-learning.css";
+import "@/styles/components/home-sections-grid.css";
+import "@/styles/components/home-recommended.css";
+import "@/styles/components/home-recent-rail.css";
 
 const HomeUpcomingLessons = lazyWithRetry(
   () => import("@/components/home/HomeUpcomingLessons").then((m) => ({ default: m.HomeUpcomingLessons })),
@@ -103,7 +96,6 @@ const OPTIONAL_WIDGET_RENDERERS: Partial<Record<HomeWidgetId, () => ReactNode>> 
   prayer: () => <HomeCompactPrayer />,
   "week-streak": () => <HomeWeekStreak />,
   "sunnah-time": () => <HomeSunnahByTime />,
-  explore: () => <HomeExplorePlatform />,
   occasions: () => <HomeIslamicOccasions />,
   quiz: () => <HomeQuizCard />,
   "daily-benefits": () => <HomeDailyBenefits />,
@@ -117,30 +109,16 @@ const WIDGET_LABEL: Record<string, string> = Object.fromEntries(
   HOME_WIDGET_DEFS.map((w) => [w.id, w.label]),
 );
 
-const HOME_PRIMARY_ICONS = {
-  "/quran-hub": BookMarked,
-  "/lessons": GraduationCap,
-  "/prayer-times": Clock,
-  "/fiqh": Scale,
-  "/adhkar": BookOpen,
-  "/sections": LayoutGrid,
-} as const;
+const PINNED: ReadonlySet<HomeWidgetId> = new Set(["lessons", "daily-progress"]);
 
-const FEATURED_CATS = IA_HOME_PRIMARY.map((item) => ({
-  ...item,
-  Icon: HOME_PRIMARY_ICONS[item.href as keyof typeof HOME_PRIMARY_ICONS] ?? BookOpen,
-}));
-
-const PINNED: ReadonlySet<HomeWidgetId> = new Set(["lessons", "continue", "daily-progress"]);
-
-/** بوابات العلم + المحتوى الأساسي — قبل الورد والدرس المباشر */
+/** اكتشاف أساسي فوق الطية: متابعة → يومي → أقسام → محتوى */
 export function HomePrimaryDiscovery() {
   useEffect(() => {
     let cancelled = false;
     const warm = () => {
       if (cancelled) return;
       prefetchHomeWarmRoutes();
-      for (const { href } of FEATURED_CATS) prefetchRoute(href);
+      for (const { href } of IA_HOME_PRIMARY) prefetchRoute(href);
     };
     const idle =
       typeof window.requestIdleCallback === "function"
@@ -158,30 +136,9 @@ export function HomePrimaryDiscovery() {
 
   return (
     <>
-      <HomeQuickAccessV2 />
-
-      <section
-        className="m2030-band home-primary-portals home-primary-portals--compact"
-        aria-label="الأقسام الرئيسية"
-        data-testid="home-primary-portals"
-      >
-        <div className="m2030-band__head">
-          <h2 className="m2030-band__title">الأقسام الرئيسية</h2>
-        </div>
-        <div className="ss-feature-grid" data-cards-grid="1">
-          {FEATURED_CATS.map(({ href, title, desc, Icon }) => (
-            <SunnahCardV2
-              key={href}
-              href={href}
-              title={title}
-              description={desc}
-              ctaLabel="افتح"
-              icon={<Icon size={18} strokeWidth={1.8} aria-hidden="true" />}
-            />
-          ))}
-        </div>
-      </section>
-
+      <HomeContinueLearning />
+      <HomeDailyStrip />
+      <HomeSectionsGrid />
       <section className="m2030-band" aria-label="المحتوى الأساسي">
         <HomeContentHub />
       </section>
@@ -204,10 +161,15 @@ export default function HomeBelowFold() {
   }, [user?.id]);
 
   const visibleWidgets = visibleWidgetOrder(homePrefs);
-  const optionalWidgets = visibleWidgets.filter((id) => !PINNED.has(id));
+  const optionalWidgets = visibleWidgets.filter(
+    (id) => !PINNED.has(id) && id !== "continue" && id !== "explore",
+  );
 
   return (
     <>
+      <HomeRecentPagesBar />
+      <HomeRecommended />
+
       {visibleWidgets.includes("daily-progress") ? (
         <section
           className="m2030-band home-daily-progress-band home-daily-progress-band--compact"
@@ -228,29 +190,10 @@ export default function HomeBelowFold() {
             </Link>
           </div>
           <SafeHomeSection name="lessons">
-            {/* قسم واحد فقط للدروس — الدورات عبر /lessons لتفادي التكرار */}
             <HomeUpcomingLessons />
           </SafeHomeSection>
         </section>
       ) : null}
-
-      <section className="m2030-band home-resume-v2" aria-label="متابعة من حيث توقفت">
-        <div className="m2030-band__head">
-          <h2 className="m2030-band__title">استكمال الرحلة</h2>
-        </div>
-        <div className="m2030-panel home-resume-v2__panel">
-          <SafeHomeSection name="local-resume">
-            <HomeLocalResumeCard />
-          </SafeHomeSection>
-          {visibleWidgets.includes("continue") ? (
-            <SafeHomeSection name="continue">
-              <HomeContinueWidget />
-            </SafeHomeSection>
-          ) : null}
-        </div>
-      </section>
-
-      <HomeRecentPagesBar />
 
       <div className="m2030-band home-friday-slim">
         <SafeHomeSection name="FridayBanner">
