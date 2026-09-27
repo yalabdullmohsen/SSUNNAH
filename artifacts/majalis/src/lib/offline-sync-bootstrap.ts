@@ -148,6 +148,7 @@ export function startOfflineSync(): void {
   try {
     void import("@/lib/flashcard-service").then((m) => m.ensureFlashcardOutboxHandler());
     void import("@/lib/hybrid-sync-handlers").then((m) => m.ensureHybridSyncOutboxHandlers());
+    void import("@/lib/mushaf-bookmark-cloud-sync").then((m) => m.bootMushafBookmarkCloudSync());
   } catch {
     /* optional */
   }

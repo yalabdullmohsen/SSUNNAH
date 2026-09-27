@@ -28,6 +28,7 @@ export const MY_BOOKMARKS_MAX = 1000;
 
 function isKind(v: unknown): v is MushafBookmarkKind {
   return (
+    v === "reading" ||
     v === "wird" ||
     v === "hifz" ||
     v === "review" ||
@@ -49,6 +50,10 @@ export type MyBookmark = {
   customName?: string;
   wirdSlot?: MushafWirdSlot;
   khatmaId?: string;
+  /** نطاق الحفظ: من صفحة */
+  rangeFromPage?: number;
+  /** نطاق الحفظ: إلى صفحة */
+  rangeToPage?: number;
   archived?: boolean;
   favorite?: boolean;
   createdAt?: string;
@@ -63,6 +68,8 @@ type LegacyBookmark = Partial<MyBookmark> & {
   ayahKey?: string;
   kind?: string;
   wirdSlot?: string;
+  rangeFromPage?: number;
+  rangeToPage?: number;
 };
 
 let memBookmarks: MyBookmark[] | null = null;
@@ -121,6 +128,10 @@ function normalizeBookmark(raw: LegacyBookmark): MyBookmark | null {
     typeof raw.customColor === "string" && /^#[0-9a-fA-F]{6}$/.test(raw.customColor)
       ? raw.customColor
       : undefined;
+  const rangeFrom =
+    typeof raw.rangeFromPage === "number" ? clampPage(raw.rangeFromPage) : undefined;
+  const rangeTo =
+    typeof raw.rangeToPage === "number" ? clampPage(raw.rangeToPage) : undefined;
   return {
     id: raw.id,
     ayahKey,
@@ -133,6 +144,8 @@ function normalizeBookmark(raw: LegacyBookmark): MyBookmark | null {
     customName: str(raw.customName, 48),
     wirdSlot,
     khatmaId: str(raw.khatmaId, 64),
+    rangeFromPage: rangeFrom,
+    rangeToPage: rangeTo,
     archived: raw.archived === true,
     favorite: raw.favorite === true,
     createdAt: str(raw.createdAt, 40),

@@ -3,7 +3,7 @@ import {
   getBookmarksOnPage,
   type MyBookmark,
 } from "@/lib/quran-my-bookmarks";
-import { resolveBookmarkColor } from "@/lib/quran-bookmark-kinds";
+import { getBookmarkKindMeta, resolveBookmarkColor } from "@/lib/quran-bookmark-kinds";
 
 type Props = {
   page: number;
@@ -19,10 +19,11 @@ type Marker = {
   top: number;
   color: string;
   label: string;
+  kindLabel: string;
 };
 
 /**
- * مؤشرات هامش صغيرة — خارج صندوق النص، بلا تغطية للآية.
+ * ألسنة جانبية رفيعة — خارج صندوق النص، بلا تغطية للآية أو تغيير تخطيط المصحف.
  */
 export const MushafBookmarkMarkers = memo(function MushafBookmarkMarkers({
   page,
@@ -46,20 +47,28 @@ export const MushafBookmarkMarkers = memo(function MushafBookmarkMarkers({
     const next: Marker[] = [];
     const seen = new Set<string>();
     for (const b of bookmarks) {
-      if (seen.has(b.ayahKey)) continue;
-      seen.add(b.ayahKey);
+      const dedupe = `${b.kind}:${b.ayahKey}`;
+      if (seen.has(dedupe)) continue;
+      seen.add(dedupe);
       const node = container.querySelector<HTMLElement>(
         `[data-verse="${CSS.escape(b.ayahKey)}"]`,
       );
-      if (!node) continue;
-      const r = node.getBoundingClientRect();
-      if (r.height < 1) continue;
+      /* إن لم تُعثر الآية: ألسنة عند هامش الصفحة حسب الترتيب */
+      let top: number;
+      if (node) {
+        const r = node.getBoundingClientRect();
+        if (r.height < 1) continue;
+        top = r.top - origin.top + r.height / 2;
+      } else {
+        top = 48 + next.length * 28;
+      }
       next.push({
         id: b.id,
         ayahKey: b.ayahKey,
-        top: r.top - origin.top + r.height / 2 - 3,
+        top,
         color: resolveBookmarkColor(b.kind, b.customColor, dark),
         label: b.customName || b.label,
+        kindLabel: getBookmarkKindMeta(b.kind).label,
       });
     }
     setMarkers(next);
@@ -68,17 +77,19 @@ export const MushafBookmarkMarkers = memo(function MushafBookmarkMarkers({
   if (!enabled || markers.length === 0) return null;
 
   return (
-    <div className="rb-markers" data-testid="mushaf-bookmark-markers" aria-hidden="true">
+    <div className="rb-markers" data-testid="mushaf-bookmark-markers" aria-hidden="false">
       {markers.map((m) => (
         <button
           key={`${m.id}-${m.ayahKey}`}
           type="button"
-          className="rb-markers__dot"
-          style={{ top: `${m.top}px`, background: m.color }}
+          className="rb-markers__tab"
+          style={{ top: `${m.top}px`, ["--rb-tab" as string]: m.color }}
           title={m.label}
-          aria-label={m.label}
+          aria-label={`${m.kindLabel}: ${m.label}`}
           onClick={() => onOpenAyah?.(m.ayahKey)}
-        />
+        >
+          <span className="rb-markers__tab-chip" aria-hidden="true" />
+        </button>
       ))}
     </div>
   );

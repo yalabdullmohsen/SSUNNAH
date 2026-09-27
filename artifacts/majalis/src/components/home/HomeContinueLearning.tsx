@@ -3,6 +3,7 @@
  */
 import { Link } from "wouter";
 import { HomeLocalResumeCard } from "@/components/home/HomeLocalResumeCard";
+import { LastReadingBookmarkCard } from "@/components/quran/LastReadingBookmarkCard";
 import "@/styles/components/home-continue-learning.css";
 
 export function HomeContinueLearning() {
@@ -23,6 +24,7 @@ export function HomeContinueLearning() {
           حسابي
         </Link>
       </div>
+      <LastReadingBookmarkCard compact />
       <HomeLocalResumeCard />
     </section>
   );

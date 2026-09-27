@@ -159,22 +159,160 @@
   z-index: 6;
 }
 
-.rb-markers__dot {
+/* توافق البوابة القديمة + ألسنة جانبية جديدة */
+.rb-markers__dot,
+.rb-markers__tab {
   position: absolute;
   inset-inline-start: 0.12rem;
+  padding: 0;
+  pointer-events: auto;
+  appearance: none;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+}
+
+.rb-markers__dot {
   width: 0.42rem;
   height: 0.42rem;
   border-radius: 50%;
   border: 1px solid color-mix(in srgb, #fff 55%, transparent);
   box-shadow: 0 0 0 1px color-mix(in srgb, #000 8%, transparent);
-  padding: 0;
-  pointer-events: auto;
-  appearance: none;
-  transform: translateY(-50%);
+  background: currentColor;
 }
 
-.rb-markers__dot::after {
+.rb-markers__tab {
+  width: 0.72rem;
+  height: 1.35rem;
+  inset-inline-start: 0;
+}
+
+.rb-markers__tab-chip {
+  display: block;
+  width: 0.55rem;
+  height: 1.2rem;
+  border-radius: 0 0.35rem 0.35rem 0;
+  background: var(--rb-tab, #5c564c);
+  box-shadow: 0 1px 2px color-mix(in srgb, #000 12%, transparent);
+  opacity: 0.88;
+}
+
+[dir="rtl"] .rb-markers__tab-chip {
+  border-radius: 0.35rem 0 0 0.35rem;
+}
+
+.rb-markers__dot::after,
+.rb-markers__tab::after {
   content: "";
   position: absolute;
   inset: -1.1rem;
+}
+
+/* ورقة علامة الصفحة */
+.rb-page-sheet {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 53;
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.85rem 0.9rem calc(0.9rem + var(--safe-bottom, 0px));
+  background: var(--nm-paper, #f7f1e3);
+  color: var(--nm-ink, #1c160e);
+  border-top: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 22%, transparent);
+  border-radius: 1rem 1rem 0 0;
+  max-height: min(62%, 24rem);
+  overflow: auto;
+  pointer-events: auto;
+}
+
+.rb-page-sheet__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.rb-page-sheet__eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  opacity: 0.72;
+}
+
+.rb-page-sheet__close {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  min-height: 2.5rem;
+  padding-inline: 0.35rem;
+}
+
+.rb-page-sheet__actions {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.rb-page-sheet__action {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.75rem;
+  border-radius: 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--rb-kind, #5c564c) 35%, transparent);
+  background: color-mix(in srgb, var(--rb-kind, #5c564c) 10%, transparent);
+  color: inherit;
+  font: inherit;
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+  text-align: start;
+}
+
+.rb-page-sheet__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--rb-kind, #5c564c);
+  flex: 0 0 auto;
+}
+
+.rb-page-sheet__range,
+.rb-page-sheet__custom {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.rb-page-sheet__range-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.rb-page-sheet__range input,
+.rb-page-sheet__custom input {
+  width: 100%;
+  min-height: 2.5rem;
+  border-radius: 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 28%, transparent);
+  background: color-mix(in srgb, #fff 55%, transparent);
+  padding: 0.35rem 0.55rem;
+  font: inherit;
+}
+
+.rb-page-sheet__confirm {
+  min-height: 2.75rem;
+  border: 0;
+  border-radius: 0.7rem;
+  background: color-mix(in srgb, var(--nm-gold, #b08d57) 78%, #2a2118);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.rb-page-sheet__error {
+  margin: 0;
+  color: #8a2f2f;
+  font-size: 0.78rem;
 }

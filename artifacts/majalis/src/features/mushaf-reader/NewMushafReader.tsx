@@ -82,7 +82,11 @@ import { MushafControlsLayer, MushafVerseMenu } from "./MushafControlsLayer";
 import { MushafPageArrows } from "./MushafPageArrows";
 import { MushafPageScrubber } from "./MushafPageScrubber";
 import { isMushafNavCapabilityEnabled } from "./mushaf-reader-nav-contract";
-import { MushafBookmarkComposer, MushafBookmarkMarkers } from "@/features/mushaf-bookmarks";
+import {
+  MushafBookmarkComposer,
+  MushafBookmarkMarkers,
+  MushafPageBookmarkSheet,
+} from "@/features/mushaf-bookmarks";
 import {
   loadPageArrowsEnabled,
   savePageArrowsEnabled,
@@ -191,6 +195,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
   const [selectedVerseKey, setSelectedVerseKey] = useState<string | null>(null);
   const [actionsOpen, setActionsOpen] = useState(false);
   const [bookmarkComposerOpen, setBookmarkComposerOpen] = useState(false);
+  const [pageBookmarkSheetOpen, setPageBookmarkSheetOpen] = useState(false);
   const [bookmarkEpoch, setBookmarkEpoch] = useState(0);
   const [tafsirOpen, setTafsirOpen] = useState(false);
   /** آية التفسير معزولة عن التحديد وعن آية الصوت */
@@ -443,6 +448,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
         controlsMoreOpen ||
         actionsOpen ||
         bookmarkComposerOpen ||
+        pageBookmarkSheetOpen ||
         (audioDockOpen && !audioDockMini),
     );
     if (chromeHoldRef.current) {
@@ -458,6 +464,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
   }, [
     actionsOpen,
     bookmarkComposerOpen,
+    pageBookmarkSheetOpen,
     audioDockMini,
     audioDockOpen,
     chromeOpen,
@@ -1009,6 +1016,18 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
     setBookmarkComposerOpen(false);
   }, []);
 
+  const openPageBookmarkSheet = useCallback(() => {
+    if (!isMushafNavCapabilityEnabled("bookmark")) return;
+    setActionsOpen(false);
+    setBookmarkComposerOpen(false);
+    setPageBookmarkSheetOpen(true);
+    setChromeOpen(true);
+  }, []);
+
+  const closePageBookmarkSheet = useCallback(() => {
+    setPageBookmarkSheetOpen(false);
+  }, []);
+
   const onBookmarkSaved = useCallback((message: string) => {
     setStatus(message);
     setBookmarkEpoch((n) => n + 1);
@@ -1061,7 +1080,8 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       (isQpcPageFontReady(page - 1) && Boolean(getCachedMushafPage(page - 1))));
 
   /* شيتات فقط تعطّل السحب — الجيران يُجهَّزان في الخلفية بلا قطع اللمس */
-  const edgesDisabled = tafsirOpen || searchOpen || indexOpen || bookmarkComposerOpen;
+  const edgesDisabled =
+    tafsirOpen || searchOpen || indexOpen || bookmarkComposerOpen || pageBookmarkSheetOpen;
   /* إخفاء الرصيف عند فتح قائمة الآية لتفادي تعارض أزرار التشغيل */
 
   const onPageNumberPressCurrent = useCallback(() => {
@@ -1441,6 +1461,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
         onPlayPage={onControlsPlayPage}
         onIndex={onControlsIndex}
         onSearch={onControlsSearch}
+        onBookmarkPage={openPageBookmarkSheet}
       />
 
       {actionsOpen && selectedVerseKey ? (
@@ -1453,6 +1474,15 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
           onBookmark={onBookmark}
           onClose={closeActions}
           onClearSelection={clearSelection}
+        />
+      ) : null}
+
+      {pageBookmarkSheetOpen ? (
+        <MushafPageBookmarkSheet
+          page={page}
+          ayahKey={selectedVerseKey}
+          onClose={closePageBookmarkSheet}
+          onSaved={onBookmarkSaved}
         />
       ) : null}
 

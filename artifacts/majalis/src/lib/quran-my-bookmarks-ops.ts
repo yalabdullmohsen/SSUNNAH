@@ -3,18 +3,21 @@
  */
 import { storageGetSync, storageSetSync } from "@/lib/native-storage";
 import type { MushafBookmarkKind, MushafWirdSlot } from "@/lib/quran-bookmark-kinds";
+import { getBookmarkKindMeta } from "@/lib/quran-bookmark-kinds";
 import {
   MY_BOOKMARKS_MAX,
   getMyBookmarks,
   saveBookmarks,
   type MyBookmark,
 } from "@/lib/quran-my-bookmarks";
+import { currentPageFirstAyah } from "@/lib/quran-ayah-page";
 
 const LAST_USED_KEY = "myBookmarks:last-used-id";
 
 function defaultLabel(kind: MushafBookmarkKind, ayahKey: string, customName?: string): string {
+  if (kind === "reading") return "آخر موضع قراءة";
   if (kind === "custom" && customName) return customName;
-  return `${kind} · ${ayahKey}`;
+  return `${getBookmarkKindMeta(kind).label} · ${ayahKey}`;
 }
 
 export type AddTypedBookmarkInput = {
@@ -28,6 +31,8 @@ export type AddTypedBookmarkInput = {
   wirdSlot?: MushafWirdSlot;
   khatmaId?: string;
   favorite?: boolean;
+  rangeFromPage?: number;
+  rangeToPage?: number;
 };
 
 export async function addTypedBookmark(
@@ -35,7 +40,7 @@ export async function addTypedBookmark(
 ): Promise<{ ok: true; bookmark: MyBookmark } | { ok: false; error: string }> {
   try {
     const list = getMyBookmarks();
-    if (list.length >= MY_BOOKMARKS_MAX) {
+    if (list.length >= MY_BOOKMARKS_MAX && input.kind !== "reading") {
       return { ok: false, error: `الحد الأقصى ${MY_BOOKMARKS_MAX} فاصل` };
     }
     if (!/^\d{1,3}:\d{1,3}$/.test(input.ayahKey)) {
@@ -43,6 +48,14 @@ export async function addTypedBookmark(
     }
     const page = Math.min(604, Math.max(1, Math.floor(input.page) || 1));
     const now = new Date();
+    const rangeFrom =
+      input.rangeFromPage != null
+        ? Math.min(604, Math.max(1, Math.floor(input.rangeFromPage)))
+        : undefined;
+    const rangeTo =
+      input.rangeToPage != null
+        ? Math.min(604, Math.max(1, Math.floor(input.rangeToPage)))
+        : undefined;
     const bookmark: MyBookmark = {
       id: Date.now(),
       ayahKey: input.ayahKey,
@@ -58,22 +71,76 @@ export async function addTypedBookmark(
       customName: input.customName?.trim().slice(0, 48) || undefined,
       wirdSlot: input.kind === "wird" ? input.wirdSlot ?? "any" : undefined,
       khatmaId: input.khatmaId?.trim().slice(0, 64) || undefined,
+      rangeFromPage: input.kind === "hifz" ? rangeFrom : undefined,
+      rangeToPage: input.kind === "hifz" ? rangeTo : undefined,
       favorite: input.favorite === true,
       archived: false,
       createdAt: now.toISOString(),
       updatedAt: now.toISOString(),
     };
-    const next = [
-      bookmark,
-      ...list.filter((b) => !(b.ayahKey === bookmark.ayahKey && b.kind === bookmark.kind && !b.archived)),
-    ];
+    let next: MyBookmark[];
+    if (input.kind === "reading") {
+      /* موضع قراءة واحد نشط — يستبدل السابق */
+      next = [bookmark, ...list.filter((b) => b.kind !== "reading")];
+    } else {
+      next = [
+        bookmark,
+        ...list.filter(
+          (b) => !(b.ayahKey === bookmark.ayahKey && b.kind === bookmark.kind && !b.archived),
+        ),
+      ];
+    }
     await saveBookmarks(next.slice(0, MY_BOOKMARKS_MAX));
     setLastUsedBookmarkId(bookmark.id);
+    void import("@/lib/mushaf-bookmark-analytics")
+      .then((m) => m.trackBookmarkSaved(bookmark))
+      .catch(() => undefined);
+    void import("@/lib/mushaf-bookmark-cloud-sync")
+      .then((m) => m.scheduleMushafBookmarksSync())
+      .catch(() => undefined);
+    if (input.kind === "reading") {
+      try {
+        const { savePagePosition } = await import("@/lib/quran-api");
+        savePagePosition(page, input.ayahKey);
+      } catch {
+        /* ignore */
+      }
+    }
     return { ok: true, bookmark };
   } catch (e) {
     console.error("خطأ في إضافة الفاصل", e);
     return { ok: false, error: "تعذّر الحفظ" };
   }
+}
+
+/** موضع القراءة الوحيد النشط */
+export function getReadingBookmark(): MyBookmark | null {
+  return getMyBookmarks().find((b) => b.kind === "reading" && !b.archived) ?? null;
+}
+
+export async function setReadingBookmark(page: number, ayahKey?: string): Promise<
+  { ok: true; bookmark: MyBookmark } | { ok: false; error: string }
+> {
+  const p = Math.min(604, Math.max(1, Math.floor(page) || 1));
+  const key = ayahKey && /^\d{1,3}:\d{1,3}$/.test(ayahKey) ? ayahKey : currentPageFirstAyah(p);
+  return addTypedBookmark({
+    page: p,
+    ayahKey: key,
+    kind: "reading",
+    label: "آخر موضع قراءة",
+  });
+}
+
+export function getHifzProgress(b: MyBookmark): { current: number; from: number; to: number; pct: number } | null {
+  if (b.kind !== "hifz") return null;
+  const from = b.rangeFromPage ?? b.page;
+  const to = b.rangeToPage ?? b.page;
+  const lo = Math.min(from, to);
+  const hi = Math.max(from, to);
+  const span = Math.max(1, hi - lo);
+  const current = Math.min(hi, Math.max(lo, b.page));
+  const pct = Math.round(((current - lo) / span) * 100);
+  return { current, from: lo, to: hi, pct };
 }
 
 export type BookmarkListFilter = {
@@ -106,6 +173,7 @@ export function getBookmarkStats(): Record<MushafBookmarkKind, number> & {
   favorites: number;
 } {
   const stats = {
+    reading: 0,
     wird: 0,
     hifz: 0,
     review: 0,

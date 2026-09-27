@@ -17,12 +17,15 @@ import {
 } from "@/lib/quran-my-bookmarks-ops";
 import {
   MUSHAF_BOOKMARK_KINDS,
+  MUSHAF_PRODUCT_BOOKMARK_KINDS,
   resolveBookmarkColor,
   type MushafBookmarkKind,
 } from "@/lib/quran-bookmark-kinds";
 import { getSurahMeta } from "@/lib/quran-api";
 import { toArabicIndicDigits as toArabicDigits } from "@/lib/numerals";
 import { navigateTo } from "@/lib/navigation-intent";
+import { getHifzProgress, getReadingBookmark } from "@/lib/quran-my-bookmarks-ops";
+import { LastReadingBookmarkCard } from "@/components/quran/LastReadingBookmarkCard";
 import "@/styles/reader-bookmarks-manager.css";
 
 const SURAH_OPTIONS = Array.from({ length: 114 }, (_, i) => i + 1);
@@ -66,11 +69,18 @@ export default function MushafBookmarksView() {
       list.push(b);
       map.set(b.kind, list);
     }
-    return MUSHAF_BOOKMARK_KINDS.map((k) => ({
-      meta: k,
-      items: map.get(k.id) ?? [],
-    })).filter((g) => g.items.length > 0);
+    const order = [
+      ...MUSHAF_PRODUCT_BOOKMARK_KINDS,
+      ...MUSHAF_BOOKMARK_KINDS.filter((k) => !k.product),
+    ];
+    return order
+      .map((k) => ({
+        meta: k,
+        items: map.get(k.id) ?? [],
+      }))
+      .filter((g) => g.items.length > 0);
   }, [items]);
+  const reading = useMemo(() => getReadingBookmark(), [tick]);
 
   const openBookmark = (b: MyBookmark) => {
     setLastUsedBookmarkId(b.id);
@@ -100,11 +110,17 @@ export default function MushafBookmarksView() {
         <Link href="/mushaf" className="rb-manager__back">
           المصحف
         </Link>
-        <h1 className="rb-manager__title">الفواصل</h1>
+        <h1 className="rb-manager__title">علامات المصحف</h1>
         <span className="rb-manager__count">{toArabicDigits(stats.total)}</span>
       </header>
 
-      <section className="rb-manager__stats" aria-label="إحصائيات الفواصل">
+      <LastReadingBookmarkCard className="rb-manager__resume" />
+
+      <section className="rb-manager__stats" aria-label="إحصائيات العلامات">
+        <div>
+          <strong>{toArabicDigits(stats.reading)}</strong>
+          <span>قراءة</span>
+        </div>
         <div>
           <strong>{toArabicDigits(stats.hifz)}</strong>
           <span>حفظ</span>
@@ -114,18 +130,26 @@ export default function MushafBookmarksView() {
           <span>مراجعة</span>
         </div>
         <div>
-          <strong>{toArabicDigits(stats.wird)}</strong>
-          <span>ورد</span>
+          <strong>{toArabicDigits(stats.custom)}</strong>
+          <span>شخصي</span>
         </div>
       </section>
 
-      {last ? (
+      {reading ? (
+        <button
+          type="button"
+          className="rb-manager__last"
+          onClick={() => openBookmark(reading)}
+        >
+          العودة إلى آخر موضع قراءة · ص {toArabicDigits(reading.page)}
+        </button>
+      ) : last ? (
         <button
           type="button"
           className="rb-manager__last"
           onClick={() => openBookmark(last)}
         >
-          آخر فاصل: {last.label}
+          آخر علامة: {last.label}
         </button>
       ) : null}
 
@@ -199,7 +223,9 @@ export default function MushafBookmarksView() {
       </div>
 
       {grouped.length === 0 ? (
-        <p className="rb-manager__empty">لا فواصل بعد. اضغط مطولًا على آية في المصحف.</p>
+        <p className="rb-manager__empty" data-testid="mushaf-bookmarks-empty">
+          لم يتم إنشاء أي علامة بعد
+        </p>
       ) : (
         grouped.map((g) => (
           <section key={g.meta.id} className="rb-manager__group">
@@ -212,7 +238,15 @@ export default function MushafBookmarksView() {
               <em>({toArabicDigits(g.items.length)})</em>
             </h2>
             <ul>
-              {g.items.map((b) => (
+              {g.items.map((b) => {
+                const surahNum = Number(b.ayahKey.split(":")[0]);
+                const surahName =
+                  surahNum >= 1 && surahNum <= 114
+                    ? getSurahMeta(surahNum).name.replace(/^سُورَةُ\s*/u, "")
+                    : "";
+                const hifz = getHifzProgress(b);
+                const stamp = b.updatedAt || b.createdAt || b.date;
+                return (
                 <li key={b.id} className={b.archived ? "is-archived" : undefined}>
                   <button
                     type="button"
@@ -222,11 +256,12 @@ export default function MushafBookmarksView() {
                     <span className="rb-manager__item-label">{b.label}</span>
                     {b.note ? <span className="rb-manager__item-note">{b.note}</span> : null}
                     <span className="rb-manager__item-meta">
-                      ص {toArabicDigits(b.page)} · {b.ayahKey}
-                      {b.wirdSlot && b.wirdSlot !== "any"
-                        ? ` · ${b.wirdSlot === "morning" ? "صباحي" : "مسائي"}`
+                      الصفحة {toArabicDigits(b.page)}
+                      {surahName ? ` · سورة ${surahName}` : ""}
+                      {stamp ? ` · ${stamp.slice(0, 10)}` : ""}
+                      {hifz
+                        ? ` · تقدم ${toArabicDigits(hifz.pct)}٪ (${toArabicDigits(hifz.from)}–${toArabicDigits(hifz.to)})`
                         : ""}
-                      {b.khatmaId ? ` · ختمة` : ""}
                     </span>
                   </button>
                   <div className="rb-manager__item-actions">
@@ -253,7 +288,8 @@ export default function MushafBookmarksView() {
                     </button>
                   </div>
                 </li>
-              ))}
+                );
+              })}
             </ul>
           </section>
         ))

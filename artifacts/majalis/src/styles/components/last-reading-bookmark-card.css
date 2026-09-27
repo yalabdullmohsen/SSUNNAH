@@ -1,0 +1,63 @@
+.lrb-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0.9rem;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, #f7f1e3 88%, #c9a82e 12%), #f7f1e3);
+  border: 1px solid color-mix(in srgb, #c9a82e 28%, transparent);
+  color: #1c160e;
+}
+
+.lrb-card--compact {
+  padding: 0.7rem 0.85rem;
+}
+
+.lrb-card__eyebrow {
+  margin: 0 0 0.2rem;
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+
+.lrb-card__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.lrb-card__sub {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.lrb-card__cta {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.6rem;
+  min-width: 5.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 0.7rem;
+  background: #2f6b4f;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+html.dark .lrb-card,
+html[data-theme="dark"] .lrb-card {
+  background: color-mix(in srgb, #1c1810 88%, #8a6b2e 12%);
+  border-color: color-mix(in srgb, #8a6b2e 35%, transparent);
+  color: #f0e6d2;
+}
+
+html.dark .lrb-card__cta,
+html[data-theme="dark"] .lrb-card__cta {
+  background: #6fad8c;
+  color: #102018;
+}
