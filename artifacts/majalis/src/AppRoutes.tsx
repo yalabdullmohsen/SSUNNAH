@@ -236,6 +236,7 @@ const InternalStatusPage = lazyWithRetry(() => import("@/views/internal/Internal
 const MyLearningPage = lazy(() => import("@/pages/lessons/MyLearningPage"));
 const AdhanSettingsPage = lazy(() => import("@/pages/worship/AdhanSettingsPage"));
 const AdhanHelpPage = lazy(() => import("@/pages/worship/AdhanHelpPage"));
+const WidgetSettingsPage = lazy(() => import("@/pages/settings/WidgetSettingsPage"));
 const UploadPage = lazy(() => import("@/views/UploadPage"));
 const MySubmissionsPage = lazy(() => import("@/views/MySubmissionsPage"));
 const UserStatsPage = lazy(() => import("@/views/UserStatsPage"));
@@ -349,6 +350,7 @@ export default function AppRoutes() {
       <Route path="/contact"><SafeLazyRoute component={ContactPage} /></Route>
       <Route path="/support"><SafeLazyRoute component={ContactPage} /></Route>
       <Route path="/settings"><SafeLazyRoute component={SettingsPage} /></Route>
+      <Route path="/widget-settings"><SafeLazyRoute component={WidgetSettingsPage} /></Route>
       <Route path="/feature-tour"><SafeLazyRoute component={FeatureTourPage} /></Route>
       <Route path="/search/:q"><SafeLazyRoute component={SearchPage} /></Route>
       <Route path="/search"><SafeLazyRoute component={SearchPage} /></Route>

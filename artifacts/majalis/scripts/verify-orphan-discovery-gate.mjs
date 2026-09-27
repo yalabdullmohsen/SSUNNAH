@@ -42,6 +42,8 @@ const ENTRY_FILES = [
   "lib/services-center-nav.ts",
   "lib/site-footer-nav.ts",
   "config/navigation.ts",
+  // إعدادات متداخلة (ودجت …) من صفحة الإعدادات
+  "pages/account/ui/SettingsView.tsx",
   // صفحة /sections (+ تحويل /more) + مصدر الأقسام + خريطة الموقع + مركز علوم القرآن
   "pages/account/SectionsPage.tsx",
   "pages/account/MorePage.tsx",

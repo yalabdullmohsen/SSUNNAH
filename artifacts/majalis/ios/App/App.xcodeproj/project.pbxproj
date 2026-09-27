@@ -31,6 +31,10 @@
 		D2B3C4D5E6F708192A3B4C5E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B3C4D5E6F708192A3B4C5D /* NetworkService.swift */; };
 		E5F6071890AB12CD01A2B3C4 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F6071890AB12CD01A2B3C5 /* KeychainStore.swift */; };
 		EFBF4693BAFB4F5B82254F8C /* PrayerLiveActivityPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4816472931E4AB1A0DE1F42 /* PrayerLiveActivityPlugin.swift */; };
+		SW01BF01SUNNAHWIDGET0001 /* SunnahWidgetsPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = SW01FR01SUNNAHWIDGET0001 /* SunnahWidgetsPlugin.swift */; };
+		SW02BF01NEXTPRAYERHOME01 /* NextPrayerHomeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = SW02FR01NEXTPRAYERHOME01 /* NextPrayerHomeWidget.swift */; };
+		SW03BF01NEXTPRAYERLOCK01 /* NextPrayerLockScreenWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = SW03FR01NEXTPRAYERLOCK01 /* NextPrayerLockScreenWidget.swift */; };
+		SW04BF01SNAPSHOTSWIFT001 /* SunnahWidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = SW04FR01SNAPSHOTSWIFT001 /* SunnahWidgetSnapshot.swift */; };
 		AD10BF01A1B2C3D4E5F6071890 /* prayer_quiet.caf in Resources */ = {isa = PBXBuildFile; fileRef = AD10FR01A1B2C3D4E5F6071890 /* prayer_quiet.caf */; };
 		AD10BF02A1B2C3D4E5F6071890 /* prayer_clear.caf in Resources */ = {isa = PBXBuildFile; fileRef = AD10FR02A1B2C3D4E5F6071890 /* prayer_clear.caf */; };
 		AD10BF03A1B2C3D4E5F6071890 /* prayer_soft.caf in Resources */ = {isa = PBXBuildFile; fileRef = AD10FR03A1B2C3D4E5F6071890 /* prayer_soft.caf */; };
@@ -101,6 +105,11 @@
 		E5F6071890AB12CD01A2B3C5 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
 		F40AA07210D9414E9C98BAD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4816472931E4AB1A0DE1F42 /* PrayerLiveActivityPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerLiveActivityPlugin.swift; sourceTree = "<group>"; };
+		SW01FR01SUNNAHWIDGET0001 /* SunnahWidgetsPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahWidgetsPlugin.swift; sourceTree = "<group>"; };
+		SW02FR01NEXTPRAYERHOME01 /* NextPrayerHomeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPrayerHomeWidget.swift; sourceTree = "<group>"; };
+		SW03FR01NEXTPRAYERLOCK01 /* NextPrayerLockScreenWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPrayerLockScreenWidget.swift; sourceTree = "<group>"; };
+		SW04FR01SNAPSHOTSWIFT001 /* SunnahWidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahWidgetSnapshot.swift; sourceTree = "<group>"; };
+		SW05FR01ENTITLEMENTS0001 /* PrayerLiveActivity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrayerLiveActivity.entitlements; sourceTree = "<group>"; };
 		AD10FR01A1B2C3D4E5F6071890 /* prayer_quiet.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = prayer_quiet.caf; path = Sounds/prayer_quiet.caf; sourceTree = "<group>"; };
 		AD10FR02A1B2C3D4E5F6071890 /* prayer_clear.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = prayer_clear.caf; path = Sounds/prayer_clear.caf; sourceTree = "<group>"; };
 		AD10FR03A1B2C3D4E5F6071890 /* prayer_soft.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = prayer_soft.caf; path = Sounds/prayer_soft.caf; sourceTree = "<group>"; };
@@ -174,6 +183,7 @@
 				504EC3071FED79650016851F /* AppDelegate.swift */,
 				20C1C0E442F343FCA02B3616 /* PrayerActivityAttributes.swift */,
 				F4816472931E4AB1A0DE1F42 /* PrayerLiveActivityPlugin.swift */,
+				SW01FR01SUNNAHWIDGET0001 /* SunnahWidgetsPlugin.swift */,
 				B2C3D4E5F6071890AB12CD02 /* MajlisPlaybackAudioPlugin.swift */,
 				C1D2E3F4A5B6071890AB12CD02 /* MajlisOfflineAudioPlugin.swift */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
@@ -216,6 +226,10 @@
 			children = (
 				8D6429A49DB14D2382B4F753 /* PrayerLiveActivityBundle.swift */,
 				51BFB99A02A44271A9C1823F /* PrayerLiveActivityLiveActivity.swift */,
+				SW02FR01NEXTPRAYERHOME01 /* NextPrayerHomeWidget.swift */,
+				SW03FR01NEXTPRAYERLOCK01 /* NextPrayerLockScreenWidget.swift */,
+				SW04FR01SNAPSHOTSWIFT001 /* SunnahWidgetSnapshot.swift */,
+				SW05FR01ENTITLEMENTS0001 /* PrayerLiveActivity.entitlements */,
 				F40AA07210D9414E9C98BAD5 /* Info.plist */,
 			);
 			path = PrayerLiveActivity;
@@ -388,6 +402,7 @@
 				D2B3C4D5E6F708192A3B4C5E /* NetworkService.swift in Sources */,
 				B40A70BD645B44F885C91A9B /* PrayerActivityAttributes.swift in Sources */,
 				EFBF4693BAFB4F5B82254F8C /* PrayerLiveActivityPlugin.swift in Sources */,
+				SW01BF01SUNNAHWIDGET0001 /* SunnahWidgetsPlugin.swift in Sources */,
 				B2C3D4E5F6071890AB12CD01 /* MajlisPlaybackAudioPlugin.swift in Sources */,
 				C1D2E3F4A5B6071890AB12CD01 /* MajlisOfflineAudioPlugin.swift in Sources */,
 			);
@@ -400,6 +415,9 @@
 				18A062D2627A492F88C48C0A /* PrayerActivityAttributes.swift in Sources */,
 				05B0407FBEE74C08BAD75898 /* PrayerLiveActivityBundle.swift in Sources */,
 				364D1D47522246B3A2925CB0 /* PrayerLiveActivityLiveActivity.swift in Sources */,
+				SW02BF01NEXTPRAYERHOME01 /* NextPrayerHomeWidget.swift in Sources */,
+				SW03BF01NEXTPRAYERLOCK01 /* NextPrayerLockScreenWidget.swift in Sources */,
+				SW04BF01SNAPSHOTSWIFT001 /* SunnahWidgetSnapshot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +455,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PrayerLiveActivity/PrayerLiveActivity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 54;
 				DEVELOPMENT_TEAM = 5D8TX37HTS;
@@ -464,6 +483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PrayerLiveActivity/PrayerLiveActivity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 54;
 				DEVELOPMENT_TEAM = 5D8TX37HTS;

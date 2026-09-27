@@ -4,4 +4,11 @@
     <color name="colorPrimaryDark">#0E1A15</color>
     <color name="colorAccent">#B08A3E</color>
     <color name="splash_background">#F7F3EB</color>
+    <!-- ودجت سُنّة — تباين AA على سطح فاتح -->
+    <color name="widget_bg">#F8F6F1</color>
+    <color name="widget_ink">#15382D</color>
+    <color name="widget_secondary">#48645A</color>
+    <color name="widget_muted">#5F7168</color>
+    <color name="widget_emerald">#0F5C3F</color>
+    <color name="widget_emerald_dark">#0A4530</color>
 </resources>

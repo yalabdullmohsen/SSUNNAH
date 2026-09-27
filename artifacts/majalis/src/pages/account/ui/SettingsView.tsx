@@ -563,6 +563,7 @@ export default function SettingsPage() {
               { id: "notif-sound", title: "الإشعارات والصوت", href: "/notifications-and-sound" },
               { id: "notif-detail", title: "الإشعارات", href: "/notification-settings" },
               { id: "adhan", title: "إعدادات الأذان", href: "/adhan-settings" },
+              { id: "widgets", title: "إعدادات الودجت", href: "/widget-settings" },
             ]}
           />
         </LegalSection>

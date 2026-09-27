@@ -45,6 +45,7 @@ function titleFromPath(path: string): string {
   "/tawba": "التوبة والاستغفار",
   "/sins-and-rights": "الذنوب والحقوق",
   "/settings": "الإعدادات",
+  "/widget-settings": "إعدادات الودجت",
   "/internal/status": "حالة المنصة"
 };
   if (known[path]) return known[path];
@@ -359,6 +360,7 @@ const PATHS = [
   "/search/:q",
   "/seerah",
   "/settings",
+  "/widget-settings",
   "/shamael",
   "/sharia-research",
   "/sheikhs",

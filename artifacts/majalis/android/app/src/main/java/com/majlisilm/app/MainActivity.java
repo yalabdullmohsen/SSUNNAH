@@ -15,6 +15,7 @@ public class MainActivity extends BridgeActivity {
         SplashScreen.installSplashScreen(this);
         registerPlugin(MajlisMediaPlaybackPlugin.class);
         registerPlugin(MajlisAdhanAlarmPlugin.class);
+        registerPlugin(SunnahWidgetsPlugin.class);
         super.onCreate(savedInstanceState);
         if (getIntent() != null && getIntent().getBooleanExtra(EXTRA_ADHAN_RESCHEDULE, false)) {
             pendingAdhanReschedule = true;

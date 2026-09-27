@@ -4,4 +4,6 @@
     <string name="title_activity_main">سُنّة</string>
     <string name="package_name">com.majlisilm.app</string>
     <string name="custom_url_scheme">com.majlisilm.app</string>
+    <string name="widget_next_prayer_description">الصلاة القادمة والوقت المتبقي — سُنّة</string>
+    <string name="widget_next_prayer_label">الصلاة القادمة</string>
 </resources>

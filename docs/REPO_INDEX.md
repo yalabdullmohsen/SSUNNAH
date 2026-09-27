@@ -69,6 +69,7 @@
 
 ## تطور المنتج
 
+| `docs/native-widgets/SUNNAH_WIDGET_SYSTEM.md` | **ودجت أصلي Phase 1** — عقود JSON + WidgetKit/AppWidget + `/widget-settings` |
 | `docs/architecture/TECHNOLOGY_INVENTORY.md` | **World-Class Eng PR-0** — جرد تقنيات + قرارات تبعيات + هدف معماري |
 
 | `artifacts/majalis/docs/design/SUNNAH_VISUAL_LANGUAGE.md` | لغة سُنّة البصرية (SVL) — أساس + موجات PR |

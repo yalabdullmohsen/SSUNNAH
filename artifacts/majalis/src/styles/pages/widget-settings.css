@@ -1,0 +1,126 @@
+.widget-settings {
+  --ws-bg: #f8f6f1;
+  --ws-card: #ffffff;
+  --ws-ink: #15382d;
+  --ws-secondary: #48645a;
+  --ws-muted: #5f7168;
+  --ws-emerald: #0f5c3f;
+  --ws-border: rgba(15, 92, 63, 0.12);
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 5rem;
+  background: var(--ws-bg);
+  color: var(--ws-ink);
+}
+
+.widget-settings__eyebrow {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ws-emerald);
+}
+
+.widget-settings__title {
+  margin: 0.35rem 0 0.4rem;
+  font-size: clamp(1.45rem, 5vw, 1.85rem);
+  font-weight: 800;
+  color: var(--ws-ink);
+}
+
+.widget-settings__sub {
+  margin: 0 0 1.25rem;
+  color: var(--ws-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.widget-settings__card {
+  background: var(--ws-card);
+  border: 1px solid var(--ws-border);
+  border-radius: 18px;
+  padding: 1rem 1.05rem;
+  margin-block-end: 0.85rem;
+  box-shadow: 0 1px 2px rgba(10, 69, 48, 0.06);
+}
+
+.widget-settings__card h2 {
+  margin: 0 0 0.65rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ws-ink);
+}
+
+.widget-settings__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.widget-settings__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  color: var(--ws-ink);
+  font-weight: 600;
+}
+
+.widget-settings__row small {
+  display: block;
+  margin-top: 0.15rem;
+  font-weight: 500;
+  color: var(--ws-muted);
+}
+
+.widget-settings__row a {
+  color: var(--ws-emerald);
+}
+
+.widget-settings__field {
+  display: grid;
+  gap: 0.35rem;
+  margin-block-end: 0.75rem;
+  font-weight: 700;
+  color: var(--ws-ink);
+}
+
+.widget-settings__field input,
+.widget-settings__field select {
+  min-height: 2.75rem;
+  border-radius: 12px;
+  border: 1px solid var(--ws-border);
+  padding: 0.5rem 0.75rem;
+  background: #fff;
+  color: var(--ws-ink);
+  font: inherit;
+}
+
+.widget-settings__btn {
+  min-height: 2.75rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.55rem 1.2rem;
+  background: var(--ws-emerald);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.widget-settings__btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.widget-settings__status,
+.widget-settings__hint {
+  margin: 0.65rem 0 0;
+  color: var(--ws-secondary);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.widget-settings__hint a {
+  color: var(--ws-emerald);
+  font-weight: 700;
+}

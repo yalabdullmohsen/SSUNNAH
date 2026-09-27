@@ -5,5 +5,7 @@ import SwiftUI
 struct PrayerLiveActivityBundle: WidgetBundle {
     var body: some Widget {
         PrayerLiveActivityWidget()
+        NextPrayerHomeWidget()
+        NextPrayerLockScreenWidget()
     }
 }
