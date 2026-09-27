@@ -1813,7 +1813,7 @@ html[data-theme="dark"] .section-lobby.lessons-page-v3 .lesson-unified-card__tit
   min-width: 9.5rem;
   padding: 0.35rem;
   border-radius: 12px;
-  background: #fff;
+  background: var(--surface-card, var(--mj-surface));
   border: 1px solid color-mix(in srgb, #0f5c3f 14%, #e8ebe9);
   box-shadow: 0 8px 24px color-mix(in srgb, #15382d 12%, transparent);
   display: flex;
@@ -1906,7 +1906,7 @@ html[data-theme="dark"] .section-lobby.lessons-page-v3 .lesson-unified-card__tit
   padding: 0.3rem 0.7rem;
   border-radius: 999px;
   border: 1px solid color-mix(in srgb, #0f5c3f 22%, transparent);
-  background: #fff;
+  background: var(--surface-card, var(--mj-surface));
   color: #0a4530;
   font-size: 0.78rem;
   font-weight: 700;
@@ -1948,7 +1948,7 @@ html[data-theme="dark"] .section-lobby.lessons-page-v3 .lesson-unified-card__tit
   border-radius: 12px;
   border: 1px solid color-mix(in srgb, #0f5c3f 12%, #e8ebe9);
   padding: 0.55rem 0.75rem;
-  background: #fff;
+  background: var(--surface-card, var(--mj-surface));
 }
 .lesson-detail-meta-disclosure > summary {
   cursor: pointer;
