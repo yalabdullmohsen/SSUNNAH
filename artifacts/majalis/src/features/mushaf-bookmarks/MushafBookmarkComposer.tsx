@@ -1,9 +1,11 @@
 import { memo, useCallback, useMemo, useState } from "react";
 import {
   getBookmarkKindMeta,
-  MUSHAF_BOOKMARK_KINDS,
+  MUSHAF_KHATMAH_TYPES,
+  MUSHAF_PRODUCT_BOOKMARK_KINDS,
+  kindSupportsPageRange,
   type MushafBookmarkKind,
-  type MushafWirdSlot,
+  type MushafKhatmahType,
 } from "@/lib/quran-bookmark-kinds";
 import { addTypedBookmark } from "@/lib/quran-my-bookmarks-ops";
 import { haptics } from "@/lib/haptics";
@@ -29,11 +31,13 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
   onClose,
   onSaved,
 }: Props) {
-  const [kind, setKind] = useState<MushafBookmarkKind>("hifz");
+  const [kind, setKind] = useState<MushafBookmarkKind>("reading");
   const [note, setNote] = useState("");
   const [customName, setCustomName] = useState("");
   const [customColor, setCustomColor] = useState<string>(CUSTOM_SWATCHES[0]!);
-  const [wirdSlot, setWirdSlot] = useState<MushafWirdSlot>("any");
+  const [rangeFrom, setRangeFrom] = useState(String(page));
+  const [rangeTo, setRangeTo] = useState(String(page));
+  const [khatmaType, setKhatmaType] = useState<MushafKhatmahType>("general");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -48,18 +52,38 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
     setBusy(true);
     setError(null);
     const meta = getBookmarkKindMeta(kind);
+    const from = Number(rangeFrom) || page;
+    const to = Number(rangeTo) || page;
     const result = await addTypedBookmark({
       ayahKey: verseKey,
       page,
       kind,
       label:
-        kind === "custom" && customName.trim()
-          ? customName.trim()
-          : `${meta.label} · ${heading}`,
+        kind === "reading"
+          ? "آخر موضع قراءة"
+          : kind === "khatmah"
+            ? undefined
+            : kind === "custom" && customName.trim()
+              ? customName.trim()
+              : kind === "hifz"
+                ? `حفظ · ص ${from}–${to}`
+                : kind === "review"
+                  ? `مراجعة · ص ${from} → ${to}`
+                  : `${meta.label} · ${heading}`,
       note: note.trim() || undefined,
       customName: kind === "custom" ? customName.trim() || undefined : undefined,
       customColor: kind === "custom" ? customColor : undefined,
-      wirdSlot: kind === "wird" ? wirdSlot : undefined,
+      khatmaType: kind === "khatmah" ? khatmaType : undefined,
+      rangeFromPage: kindSupportsPageRange(kind)
+        ? kind === "khatmah"
+          ? 1
+          : from
+        : undefined,
+      rangeToPage: kindSupportsPageRange(kind)
+        ? kind === "khatmah"
+          ? 604
+          : to
+        : undefined,
     });
     setBusy(false);
     if (!result.ok) {
@@ -68,9 +92,23 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
       return;
     }
     haptics.success();
-    onSaved?.("تم حفظ الفاصل");
+    onSaved?.(kind === "reading" ? "تم حفظ موضع القراءة" : "تم حفظ العلامة");
     onClose();
-  }, [busy, verseKey, page, kind, note, customName, customColor, wirdSlot, onClose, onSaved]);
+  }, [
+    busy,
+    verseKey,
+    page,
+    kind,
+    note,
+    customName,
+    customColor,
+    rangeFrom,
+    rangeTo,
+    khatmaType,
+    heading,
+    onClose,
+    onSaved,
+  ]);
 
   return (
     <div
@@ -89,8 +127,8 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
         </div>
       </div>
 
-      <div className="rb-composer__kinds" role="listbox" aria-label="نوع الفاصل">
-        {MUSHAF_BOOKMARK_KINDS.map((k) => (
+      <div className="rb-composer__kinds" role="listbox" aria-label="نوع العلامة">
+        {MUSHAF_PRODUCT_BOOKMARK_KINDS.map((k) => (
           <button
             key={k.id}
             type="button"
@@ -101,27 +139,47 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
             onClick={() => setKind(k.id)}
           >
             <span className="rb-composer__kind-dot" aria-hidden="true" />
-            {k.label}
+            {k.actionLabel}
           </button>
         ))}
       </div>
 
-      {kind === "wird" ? (
-        <div className="rb-composer__slots" role="group" aria-label="وقت الورد">
-          {(
-            [
-              ["any", "عام"],
-              ["morning", "صباحي"],
-              ["evening", "مسائي"],
-            ] as const
-          ).map(([id, label]) => (
+      {kind === "hifz" || kind === "review" ? (
+        <div className="rb-composer__slots" role="group" aria-label="نطاق الصفحات">
+          <label className="rb-composer__note">
+            <span>{kind === "hifz" ? "بداية الحفظ" : "بداية المراجعة"}</span>
+            <input
+              className="rb-composer__input"
+              inputMode="numeric"
+              value={rangeFrom}
+              onChange={(e) => setRangeFrom(e.target.value)}
+              aria-label="من صفحة"
+            />
+          </label>
+          <label className="rb-composer__note">
+            <span>{kind === "hifz" ? "الهدف القادم" : "نهاية المراجعة"}</span>
+            <input
+              className="rb-composer__input"
+              inputMode="numeric"
+              value={rangeTo}
+              onChange={(e) => setRangeTo(e.target.value)}
+              aria-label="إلى صفحة"
+            />
+          </label>
+        </div>
+      ) : null}
+
+      {kind === "khatmah" ? (
+        <div className="rb-composer__slots" role="group" aria-label="نوع الختمة">
+          {MUSHAF_KHATMAH_TYPES.map((t) => (
             <button
-              key={id}
+              key={t.id}
               type="button"
-              className={`rb-composer__slot${wirdSlot === id ? " is-active" : ""}`}
-              onClick={() => setWirdSlot(id)}
+              className={`rb-composer__slot${khatmaType === t.id ? " is-active" : ""}`}
+              aria-pressed={khatmaType === t.id}
+              onClick={() => setKhatmaType(t.id)}
             >
-              {label}
+              {t.label}
             </button>
           ))}
         </div>
@@ -160,7 +218,13 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
           dir="rtl"
           rows={2}
           maxLength={240}
-          placeholder="مثال: مراجعة سورة البقرة"
+          placeholder={
+            kind === "hifz"
+              ? "هنا بداية الحفظ"
+              : kind === "review"
+                ? "مراجعة الأسبوع القادم"
+                : "ملاحظة قصيرة"
+          }
           value={note}
           onChange={(e) => setNote(e.target.value)}
         />

@@ -161,6 +161,21 @@ export async function runUniversalSearch(
   }
 
   const jumpHits = jumpToHits(query);
+  /* كسول: لا تسحب ops/علامات إلى حزمة إقلاع الرئيسية (TBT LHCI) */
+  let bookmarkHits: UniversalHit[];
+  try {
+    const { searchMushafBookmarksForQuery } = await import("@/lib/quran-my-bookmarks-ops");
+    bookmarkHits = searchMushafBookmarksForQuery(query, 6).map((b) => ({
+      id: b.id,
+      kind: "surah",
+      section: "quran" as const,
+      title: b.title,
+      href: b.href,
+      summary: b.summary,
+    }));
+  } catch {
+    bookmarkHits = [];
+  }
   const { docs: allDocs } = await loadUnifiedSearchIndex();
   if (opts.signal?.aborted) throw new DOMException("Aborted", "AbortError");
 
@@ -196,7 +211,7 @@ export async function runUniversalSearch(
 
   const seen = new Set<string>();
   const hits: UniversalHit[] = [];
-  for (const h of [...jumpHits, ...mapped]) {
+  for (const h of [...jumpHits, ...bookmarkHits, ...mapped]) {
     const key = h.href || h.id;
     if (seen.has(key)) continue;
     seen.add(key);

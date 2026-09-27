@@ -65,6 +65,8 @@ type ControlsProps = {
   onPageArrowsEnabledChange?: (enabled: boolean) => void;
   moreOpen?: boolean;
   onMoreOpenChange?: (open: boolean) => void;
+  /** فتح ورقة علامة الصفحة */
+  onBookmarkPage?: () => void;
 };
 
 /** طبقة أدوات القراءة — شريط مضغوط فوق المصحف (خارج Geometry) */
@@ -84,6 +86,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
   onPageArrowsEnabledChange,
   moreOpen = false,
   onMoreOpenChange,
+  onBookmarkPage,
 }: ControlsProps) {
   const [draft, setDraft] = useState(String(pageNumber));
   const [gotoError, setGotoError] = useState<string | null>(null);
@@ -245,6 +248,21 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
           <button type="button" className="nm-controls__btn" aria-label="فهرس السور" onClick={onIndex}>
             فهرس
           </button>
+          {onBookmarkPage ? (
+            <button
+              type="button"
+              className="nm-controls__btn"
+              data-testid="mushaf-page-bookmark-btn"
+              aria-label="حفظ علامة في الصفحة"
+              title="علامة"
+              onClick={(e) => {
+                e.stopPropagation();
+                onBookmarkPage();
+              }}
+            >
+              علامة
+            </button>
+          ) : null}
           {onPlayPage ? (
             <button type="button" className="nm-controls__btn" aria-label="تشغيل الصفحة" onClick={onPlayPage}>
               تشغيل
@@ -305,7 +323,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
             data-testid="mushaf-bookmarks-manager-link"
             onClick={() => onMoreOpenChange?.(false)}
           >
-            إدارة الفواصل
+            علامات المصحف
           </a>
           <button
             type="button"

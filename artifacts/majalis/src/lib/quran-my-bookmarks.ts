@@ -5,7 +5,11 @@
 import { storageGetSync, storageSetSync } from "@/lib/native-storage";
 import { recoverLocalJsonTmp, writeLocalJsonAtomic } from "@/lib/safe-json";
 import { runOptimisticWalPersist } from "@/lib/sovereign/optimistic-wal";
-import type { MushafBookmarkKind, MushafWirdSlot } from "@/lib/quran-bookmark-kinds";
+import type {
+  MushafBookmarkKind,
+  MushafKhatmahType,
+  MushafWirdSlot,
+} from "@/lib/quran-bookmark-kinds";
 import {
   ayahKeyToPage,
   currentPageFirstAyah,
@@ -14,7 +18,7 @@ import {
   clampMushafPageNum as clampPage,
 } from "@/lib/quran-ayah-page";
 
-export type { MushafBookmarkKind, MushafWirdSlot };
+export type { MushafBookmarkKind, MushafKhatmahType, MushafWirdSlot };
 export {
   ayahKeyToPage,
   currentPageFirstAyah,
@@ -28,13 +32,19 @@ export const MY_BOOKMARKS_MAX = 1000;
 
 function isKind(v: unknown): v is MushafBookmarkKind {
   return (
+    v === "reading" ||
     v === "wird" ||
     v === "hifz" ||
     v === "review" ||
+    v === "khatmah" ||
     v === "tadabbur" ||
     v === "lesson" ||
     v === "custom"
   );
+}
+
+function isKhatmahType(v: unknown): v is MushafKhatmahType {
+  return v === "general" || v === "ramadan" || v === "hifz" || v === "special";
 }
 
 export type MyBookmark = {
@@ -49,6 +59,12 @@ export type MyBookmark = {
   customName?: string;
   wirdSlot?: MushafWirdSlot;
   khatmaId?: string;
+  /** نوع الختمة عند kind=khatmah */
+  khatmaType?: MushafKhatmahType;
+  /** نطاق: بداية (حفظ / مراجعة / ختمة) */
+  rangeFromPage?: number;
+  /** نطاق: نهاية / هدف */
+  rangeToPage?: number;
   archived?: boolean;
   favorite?: boolean;
   createdAt?: string;
@@ -63,6 +79,8 @@ type LegacyBookmark = Partial<MyBookmark> & {
   ayahKey?: string;
   kind?: string;
   wirdSlot?: string;
+  rangeFromPage?: number;
+  rangeToPage?: number;
 };
 
 let memBookmarks: MyBookmark[] | null = null;
@@ -121,6 +139,10 @@ function normalizeBookmark(raw: LegacyBookmark): MyBookmark | null {
     typeof raw.customColor === "string" && /^#[0-9a-fA-F]{6}$/.test(raw.customColor)
       ? raw.customColor
       : undefined;
+  const rangeFrom =
+    typeof raw.rangeFromPage === "number" ? clampPage(raw.rangeFromPage) : undefined;
+  const rangeTo =
+    typeof raw.rangeToPage === "number" ? clampPage(raw.rangeToPage) : undefined;
   return {
     id: raw.id,
     ayahKey,
@@ -133,6 +155,9 @@ function normalizeBookmark(raw: LegacyBookmark): MyBookmark | null {
     customName: str(raw.customName, 48),
     wirdSlot,
     khatmaId: str(raw.khatmaId, 64),
+    khatmaType: isKhatmahType(raw.khatmaType) ? raw.khatmaType : undefined,
+    rangeFromPage: rangeFrom,
+    rangeToPage: rangeTo,
     archived: raw.archived === true,
     favorite: raw.favorite === true,
     createdAt: str(raw.createdAt, 40),

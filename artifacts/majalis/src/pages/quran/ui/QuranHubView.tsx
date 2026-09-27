@@ -2,6 +2,7 @@ import { useEffect, useMemo } from "react";
 import { applyPageSeo } from "@/lib/seo";
 import { SectionLobby } from "@/components/lobby/SectionLobby";
 import { QuranOpenMushafCard } from "@/components/quran/QuranOpenMushafCard";
+import { LastReadingBookmarkCard } from "@/components/quran/LastReadingBookmarkCard";
 import { getLobby } from "@/config/section-lobbies";
 import { DashboardScreen } from "@/components/design-system/screens";
 import "@/components/sections/section-cards.css";
@@ -26,7 +27,12 @@ export default function QuranHubPage() {
       <SectionLobby
         lobbyId="quran"
         title={lobby.title}
-        primarySlot={<QuranOpenMushafCard />}
+        primarySlot={
+          <div className="quran-hub-v2__primary">
+            <QuranOpenMushafCard />
+            <LastReadingBookmarkCard />
+          </div>
+        }
         groups={lobby.groups}
       />
     </DashboardScreen>
