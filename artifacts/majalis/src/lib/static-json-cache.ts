@@ -3,7 +3,7 @@
  * مع الشبكة: يفضّل الجلب الحي (no-store) ثم يحدّث الكاش.
  * بدون شبكة: يعيد آخر نسخة محفوظة إن وُجدت.
  */
-import { idbGetValue, idbPut, OFFLINE_STORES } from "@/lib/offline-db";
+import { idbDelete, idbGetValue, idbPut, OFFLINE_STORES } from "@/lib/offline-db";
 import { pooledFetch, type PooledFetchInit } from "@/lib/fetch-pool";
 
 const TTL_MS = 7 * 24 * 60 * 60 * 1000;
@@ -86,4 +86,10 @@ async function revalidate(url: string, key: string, init?: RequestInit): Promise
   } catch {
     /* ignore */
   }
+}
+
+/** يحذف إدخال كاش JSON ثابت (مثل فهرس بحث بإصدار قديم). لا يمس بيانات المستخدم الأخرى. */
+export async function purgeStaticJsonCache(url: string): Promise<void> {
+  if (!isDataUrl(url)) return;
+  await idbDelete(OFFLINE_STORES.meta, cacheKey(url));
 }

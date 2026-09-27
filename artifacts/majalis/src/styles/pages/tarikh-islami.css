@@ -784,6 +784,52 @@
   text-decoration: none;
 }
 
+/* حالة رابط قديم خارج فهرس البحث — مضغوطة بلا بطاقة فارغة كبيرة */
+.tarikh-unavailable {
+  padding-block: 1.25rem 2rem;
+  max-width: 28rem;
+}
+.tarikh-unavailable__eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #5f7168;
+}
+.tarikh-unavailable__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #15382d;
+  line-height: 1.35;
+}
+.tarikh-unavailable__desc {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #48645a;
+}
+.tarikh-unavailable__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: center;
+}
+.tarikh-unavailable__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
+  border-radius: 0.65rem;
+  background: #0f5c3f;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+.tarikh-unavailable__cta:hover {
+  background: #0a4530;
+}
+
 /* detail (TopicPage children) */
 .topic-page--tarikh-detail .tarikh-detail-reading {
   display: flex;

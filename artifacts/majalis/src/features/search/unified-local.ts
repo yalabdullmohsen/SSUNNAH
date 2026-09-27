@@ -5,6 +5,7 @@ import {
   type TolerantMatch,
 } from "@/features/search/tolerant-match";
 import { kindPriority } from "@/features/search/kind-priority";
+import { SEARCH_INDEX_SCHEMA_VERSION } from "@/features/search/search-index-version";
 import { yieldToMain } from "@/lib/yield-to-main";
 
 export type UnifiedSearchDoc = {
@@ -33,6 +34,15 @@ type IndexPayload = {
 
 let cache: IndexPayload | null = null;
 
+function isCompatibleSearchIndex(json: IndexPayload | null | undefined): json is IndexPayload {
+  return Boolean(
+    json &&
+      Array.isArray(json.docs) &&
+      json.docs.length > 0 &&
+      Number(json.version) >= SEARCH_INDEX_SCHEMA_VERSION,
+  );
+}
+
 /** للاختبارات أو الحقن المسبق دون شبكة. */
 export function primeUnifiedSearchIndex(payload: IndexPayload): void {
   cache = payload;
@@ -43,18 +53,21 @@ export function clearUnifiedSearchIndexCache(): void {
 }
 
 export async function loadUnifiedSearchIndex(): Promise<IndexPayload> {
-  if (cache) return cache;
+  if (isCompatibleSearchIndex(cache)) return cache;
+  cache = null;
   const empty: IndexPayload = { version: 0, docs: [] };
   const url = "/data/search/index.json";
   const fromWorker = await loadIndexViaWorker(url);
-  if (fromWorker) {
+  if (isCompatibleSearchIndex(fromWorker)) {
     cache = fromWorker;
     return cache;
   }
-  const { fetchStaticJsonCached } = await import("@/lib/static-json-cache");
+  const { fetchStaticJsonCached, purgeStaticJsonCache } = await import("@/lib/static-json-cache");
   const json = await fetchStaticJsonCached<IndexPayload>(url, empty, { timeoutMs: 8_000 });
-  if (!Array.isArray(json.docs) || json.docs.length === 0) {
-    throw new Error("search index unavailable");
+  if (!isCompatibleSearchIndex(json)) {
+    // فهرس قديم في IndexedDB — امسحه حتى لا يُعاد تقديم نتائج بروابط مكسورة.
+    await purgeStaticJsonCache(url).catch(() => undefined);
+    throw new Error("search index unavailable or incompatible version");
   }
   cache = json;
   return cache;

@@ -61,7 +61,7 @@ const index = JSON.parse(readFileSync(resolve(appRoot, "public/data/search/index
   docs: UnifiedSearchDoc[];
 };
 clearUnifiedSearchIndexCache();
-primeUnifiedSearchIndex({ version: 2, docs: index.docs });
+primeUnifiedSearchIndex({ version: index.version, docs: index.docs });
 
 const tafsirBrowse = await runAppSearch("", { scope: "tafsir", limit: 20 });
 assert.ok(tafsirBrowse.results.length >= 1, `تصفح التفسير يعيد نتائج (حصل ${tafsirBrowse.results.length})`);

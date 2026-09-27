@@ -4,7 +4,6 @@ import { TopicPage } from "@/components/topic/TopicPage";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import { ShareButtons } from "@/components/ContentActions";
-import { EmptyStateV2 } from "@/components/design-system";
 import {
   ReadingBulletList,
   ReadingProse,
@@ -93,31 +92,23 @@ export default function TarikhIslamiDetailPage() {
 
   if (!item) {
     return (
-      <TopicPage
-        themeId="history"
-        sectionRoute="/tarikh-islami"
-        breadcrumb={[
-          { label: "الرئيسية", href: "/" },
-          { label: "التاريخ الإسلامي", href: "/tarikh-islami" },
-          { label: "غير متاح" },
-        ]}
-        eyebrow="التاريخ الإسلامي"
-        title="هذا الموضوع غير متاح حاليًا"
-        subtitle="قد يكون الرابط قديمًا أو الموضوع لم يُنشر بعد في فهرس التاريخ الإسلامي."
-        className="topic-page--tarikh-detail"
-      >
-        <EmptyStateV2
-          title="اختر موضوعًا من فهرس التاريخ"
-          description={EMPTY.data}
-          nextStep="انتقل إلى قائمة التاريخ الإسلامي واختر مرحلة أو حدثًا، أو ابحث عن اسم الحادثة."
-          navPath="الرئيسية ← التاريخ الإسلامي"
-          ctaLabel="فتح التاريخ الإسلامي"
-          href="/tarikh-islami"
-        />
-        <Link href="/search?scope=history" className="tarikh-link">
-          البحث في التاريخ
-        </Link>
-      </TopicPage>
+      <UtilityScreen compose="mark">
+        <div className="page-shell narrow tarikh-unavailable" dir="rtl">
+          <p className="tarikh-unavailable__eyebrow">التاريخ الإسلامي</p>
+          <h1 className="tarikh-unavailable__title">موضوع غير متاح</h1>
+          <p className="tarikh-unavailable__desc">
+            الرابط قديم أو الموضوع غير منشور في فهرس التاريخ الإسلامي. {EMPTY.data}
+          </p>
+          <div className="tarikh-unavailable__actions">
+            <Link href="/tarikh-islami" className="tarikh-unavailable__cta">
+              فهرس التاريخ الإسلامي
+            </Link>
+            <Link href="/search?scope=history" className="tarikh-link">
+              البحث في التاريخ
+            </Link>
+          </div>
+        </div>
+      </UtilityScreen>
     );
   }
 
