@@ -24,7 +24,8 @@ assert.deepEqual(
 );
 assert.equal(bottomNavSections()[0]?.navLabel, "القرآن");
 assert.equal(bottomNavSections()[2]?.label, "الرئيسية");
-assert.equal(bottomNavSections()[4]?.label, "الأقسام");
+assert.equal(bottomNavSections()[4]?.navLabel ?? bottomNavSections()[4]?.label, "الأقسام");
+assert.equal(bottomNavSections()[4]?.label, "جميع الأقسام");
 assert.ok(quranHubSections().some((s) => s.id === "open-mushaf" && s.label === "فتح المصحف"));
 assert.ok(quranHubSections().some((s) => s.id === "quran-numbers"));
 assert.ok(quranHubSections().some((s) => s.id === "quran-tajweed"));

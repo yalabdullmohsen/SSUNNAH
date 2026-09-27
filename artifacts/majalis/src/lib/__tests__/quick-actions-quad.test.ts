@@ -41,7 +41,7 @@ assert.equal(pluralArBucket(97, NOUN_DURUS), "٩٠+ درساً");
 assert.equal(pluralArBucket(28, NOUN_HALAQAT), "٢٠+ حلقة");
 
 const lessons = getLobby("lessons");
-assert.equal(lessons.quad?.[0]?.label, "الدروس");
+assert.equal(lessons.quad?.[0]?.label, "الدروس العلمية");
 assert.equal(lessons.quad?.[1]?.label, "الحلقات");
 assert.equal(lessons.quad?.[2]?.label, "المسابقات");
 assert.equal(lessons.quad?.[3]?.label, "التقويم");

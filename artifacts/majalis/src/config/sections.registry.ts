@@ -270,7 +270,8 @@ const SECTION_SEEDS: SectionSeed[] = [
   },
   {
     id: "lessons",
-    label: "الدروس",
+    label: "الدروس العلمية",
+    navLabel: "الدروس",
     subtitle: "دروس علمية مرتّبة للحضور أو المتابعة لاحقًا",
     route: "/lessons",
     icon: GraduationCap,
@@ -279,6 +280,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     surfaces: ["bottomNav", "home", "search"],
     status: "live",
     keywords: ["دروس", "شروح"],
+    aliases: ["الدروس"],
   },
   {
     id: "prayer",
@@ -294,16 +296,17 @@ const SECTION_SEEDS: SectionSeed[] = [
   },
   {
     id: "sections",
-    label: "الأقسام",
-    subtitle: "عقيدة وحديث وسيرة ومكتبة وأدوات طالب العلم",
+    label: "جميع الأقسام",
+    navLabel: "الأقسام",
+    subtitle: "دليل كامل لمجالات العلم والتعليم والأدوات",
     route: "/sections",
     icon: Layers,
     group: "account",
     order: -5,
     surfaces: ["bottomNav", "drawer"],
     status: "live",
-    keywords: ["أقسام", "sections"],
-    aliases: ["المزيد"],
+    keywords: ["أقسام", "sections", "دليل"],
+    aliases: ["المزيد", "الأقسام"],
   },
 
   // —— مركز القرآن الكريم (hub: quran) ——
@@ -485,7 +488,8 @@ const SECTION_SEEDS: SectionSeed[] = [
   },
   {
     id: "flashcards",
-    label: "بطاقات حفظ القرآن",
+    label: "المحفوظات",
+    navLabel: "المحفوظات",
     subtitle: "حفظ ومراجعة آيات القرآن",
     route: "/flashcards",
     icon: Bookmark,
@@ -494,7 +498,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     surfaces: SEARCH_ONLY,
     status: "live",
     keywords: ["بطاقات", "حفظ", "مراجعة", "محفوظات", "حفظ قرآن"],
-    aliases: ["بطاقات المراجعة", "المحفوظات", "بطاقات حفظ القرآن", "بطاقات الحفظ والمراجعة"],
+    aliases: ["المحفوظات", "بطاقات المراجعة", "بطاقات حفظ القرآن", "بطاقات الحفظ والمراجعة"],
     hub: "quran",
   },
   {
@@ -651,8 +655,8 @@ const SECTION_SEEDS: SectionSeed[] = [
   },
   {
     id: "fawaid",
-    label: "الفوائد الشرعية",
-    navLabel: "الفوائد",
+    label: "الفوائد العلمية",
+    navLabel: "الفوائد العلمية",
     subtitle: "فوائد قرآنية وحديثية منتقاة وموثّقة",
     route: "/fawaid",
     icon: Lightbulb,
@@ -667,7 +671,7 @@ const SECTION_SEEDS: SectionSeed[] = [
   {
     id: "miracles",
     label: "الإعجاز العلمي",
-    navLabel: "الإعجاز",
+    navLabel: "الإعجاز العلمي",
     subtitle: "تأملات علمية منضبطة في إشارات الوحي",
     route: "/miracles",
     icon: Microscope,
@@ -681,8 +685,8 @@ const SECTION_SEEDS: SectionSeed[] = [
   },
   {
     id: "fiqh",
-    label: "الفقه والأحكام",
-    navLabel: "الفقه",
+    label: "الفقه الإسلامي",
+    navLabel: "الفقه الإسلامي",
     subtitle: "أحكام العبادات والمعاملات بأدلتها",
     route: "/fiqh",
     icon: Scale,
@@ -854,7 +858,8 @@ const SECTION_SEEDS: SectionSeed[] = [
   // —— ٣. الدعوة والتعريف ——
   {
     id: "discover-islam",
-    label: "اكتشف الإسلام",
+    label: "التعريف بالإسلام",
+    navLabel: "التعريف بالإسلام",
     subtitle: "مدخل تعريفي لغير المسلمين",
     route: "/discover-islam",
     icon: HandHeart,
@@ -863,6 +868,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     surfaces: NAV,
     status: "live",
     keywords: ["اكتشف", "تعريف", "غير المسلمين"],
+    aliases: ["اكتشف الإسلام"],
   },
   {
     id: "new-muslim",
@@ -919,7 +925,8 @@ const SECTION_SEEDS: SectionSeed[] = [
   },
   {
     id: "glossary",
-    label: "المعجم الشرعي",
+    label: "المصطلحات",
+    navLabel: "المصطلحات",
     subtitle: "تعريفات دقيقة لأهم المصطلحات الشرعية",
     route: "/islamic-glossary",
     icon: BookText,
@@ -1087,7 +1094,8 @@ const SECTION_SEEDS: SectionSeed[] = [
   },
   {
     id: "progress",
-    label: "متابعة التقدّم",
+    label: "التقدم",
+    navLabel: "التقدم",
     subtitle: "تتبع إنجازك العلمي",
     route: "/stats",
     icon: Award,

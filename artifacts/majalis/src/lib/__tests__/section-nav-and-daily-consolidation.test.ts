@@ -119,9 +119,11 @@ console.log("\n=== PRIMARY_NAV ===");
 
 console.log("\n=== nav-visibility تنظيف ===");
 {
-  for (const p of ["/flashcards", "/ulum-quran", "/occasions", "/institutions", "/rulings", "/fiqh-council"]) {
+  for (const p of ["/occasions", "/institutions", "/rulings", "/fiqh-council"]) {
     assert(HIDDEN_FROM_NAV_PATHS.has(p), `${p} مخفي من الاكتشاف العام`);
   }
+  assert(!HIDDEN_FROM_NAV_PATHS.has("/flashcards"), "المحفوظات ظاهرة في الدرج");
+  assert(!HIDDEN_FROM_NAV_PATHS.has("/ulum-quran"), "علوم القرآن ظاهرة في الدرج");
   assert(HIDDEN_FROM_NAV_PATHS.has("/library") || resolveMergedPath("/library") === "/search", "المكتبة خارج الاكتشاف العام أو محوّلة");
   assert(resolveMergedPath("/library") === "/search", "library → /search");
   assert(resolveMergedPath("/quran-index") === "/quran-knowledge", "quran-index → hub");

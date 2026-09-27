@@ -42,7 +42,7 @@ assert.equal(titles.length, 7);
 for (const t of [
   "العقيدة",
   "الحديث وعلومه",
-  "الفقه والأحكام",
+  "الفقه الإسلامي",
   "السيرة النبوية",
   "التاريخ الإسلامي",
   "قصص الأنبياء",
@@ -58,8 +58,8 @@ assert.ok(
   "المزيد يتضمن الأذكار/الأدعية",
 );
 assert.ok(
-  secondary.includes("المعجم الشرعي"),
-  "المعجم الشرعي ظاهر في الاكتشاف العام",
+  secondary.includes("المصطلحات") || secondary.includes("المعجم الشرعي"),
+  "المصطلحات ظاهرة في الاكتشاف العام",
 );
 assert.equal(secondary.includes("الموضوعات"), false, "لا قسم الموضوعات في المزيد");
 assert.equal(secondary.includes("البحث"), false, "لا بطاقة بحث في المزيد");

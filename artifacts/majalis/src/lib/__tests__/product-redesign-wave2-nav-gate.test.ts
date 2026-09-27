@@ -13,7 +13,13 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
 const titles = SIDEBAR_NAV_GROUPS.map((g) => g.title);
-for (const t of ["القرآن والتلاوة", "التعلم", "العلوم الشرعية", "العبادة والأدوات", "المعرفة"]) {
+for (const t of [
+  "القرآن الكريم والتلاوة",
+  "التعلم والدروس",
+  "العلوم الشرعية",
+  "العبادة والأدوات",
+  "المعرفة والموسوعات",
+]) {
   assert.ok(titles.includes(t), `مجموعة الدرج: ${t}`);
 }
 
@@ -21,7 +27,17 @@ const hrefs = SIDEBAR_NAV_GROUPS.flatMap((g) => g.items.map((i) => i.href));
 assert.ok(hrefs.includes("/mushaf"));
 assert.ok(hrefs.includes("/hadith"));
 assert.ok(hrefs.includes("/tawhid") || hrefs.includes("/aqidah"));
+assert.ok(hrefs.includes("/sections"));
+assert.ok(hrefs.includes("/flashcards"));
+assert.ok(hrefs.includes("/duas"));
 assert.ok(hrefs.length < 40, `صفوف الدرج ${hrefs.length} < 40`);
+
+const labels = SIDEBAR_NAV_GROUPS.flatMap((g) => g.items.map((i) => i.label));
+assert.ok(labels.includes("الدروس العلمية"));
+assert.ok(labels.includes("الفقه الإسلامي"));
+assert.ok(labels.includes("الفوائد العلمية"));
+assert.ok(labels.includes("جميع الأقسام"));
+assert.ok(labels.includes("المحفوظات"));
 
 const uniqueHrefs = new Set(hrefs);
 assert.equal(uniqueHrefs.size, hrefs.length, "بلا تكرار مقصد في مجموعات الدرج");
@@ -30,6 +46,7 @@ const drawer = navFor("drawer");
 assert.equal(drawer[0]?.href, "/mushaf");
 assert.ok(drawer.some((i) => i.id === "hadith"));
 assert.ok(drawer.some((i) => i.id === "tafsir"));
+assert.ok(drawer.some((i) => i.id === "quran-tilawa"));
 
 assert.equal(buildCanonicalPublicHref("hadith"), "/hadith");
 assert.equal(buildCanonicalPublicHref("/mushaf/"), "/mushaf");

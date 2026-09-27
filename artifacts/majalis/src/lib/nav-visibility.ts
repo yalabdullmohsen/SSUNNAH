@@ -52,12 +52,11 @@ export const HIDDEN_FROM_NAV_PATHS = new Set<string>([
   "/madhahib",
   "/quran-knowledge", // تحت مركز القرآن الكريم
   "/knowledge-graph",
-  "/flashcards",
+  // /flashcards و /ulum-quran ظاهرة في درج التسميات الكاملة (IA)
   "/occasions",
   "/calendar",
   "/institutions",
   "/islamic-landmarks",
-  "/ulum-quran",
   "/quran/surahs",
   "/quran-memorization",
   "/quran/memorization-plans",

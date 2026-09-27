@@ -61,7 +61,7 @@ assert.deepEqual(
 assert.equal(MORE_FEATURED_SECTIONS.length, 7);
 assert.deepEqual(
   MORE_FEATURED_SECTIONS.map((s) => s.title),
-  ["العقيدة", "الحديث وعلومه", "الفقه والأحكام", "السيرة النبوية", "التاريخ الإسلامي", "قصص الأنبياء", "الأمم السابقة"],
+  ["العقيدة", "الحديث وعلومه", "الفقه الإسلامي", "السيرة النبوية", "التاريخ الإسلامي", "قصص الأنبياء", "الأمم السابقة"],
 );
 
 const hubSrc = SERVICES_CENTER_GROUPS[0]!.items.map((i) => i.label).join("|");

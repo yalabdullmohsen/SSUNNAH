@@ -1,6 +1,7 @@
 import { BRAND } from "@/shared/config/brand";
 /**
- * القائمة الجانبية — مجموعات بعناوين وألوان مميزة + صفوف الحساب من السجل.
+ * القائمة الجانبية — مجموعات بعناوين كاملة + صفوف الحساب من السجل.
+ * التسميات الكاملة هنا فقط (الشريط السفلي يبقى مختصرًا حيث لزم).
  */
 import type { LucideIcon } from "lucide-react";
 import { navFor } from "@/config/navigation";
@@ -32,28 +33,54 @@ export type SidebarNavGroup = {
   defaultOpen?: boolean;
 };
 
-/** مجموعات الدرج — IA المنتج (Wave 2): قابلة للطي في DrawerFromRegistry */
+/** تسميات درج كاملة — لا تغيّر الشريط السفلي */
+const DRAWER_FULL_LABEL: Readonly<Record<string, string>> = {
+  mushaf: "المصحف",
+  quran: "القرآن الكريم",
+  tafsir: "التفسير",
+  "quran-tilawa": "التلاوة",
+  "ulum-quran": "علوم القرآن",
+  lessons: "الدروس العلمية",
+  flashcards: "المحفوظات",
+  progress: "التقدم",
+  aqidah: "العقيدة",
+  hadith: "الحديث",
+  fiqh: "الفقه الإسلامي",
+  seerah: "السيرة النبوية",
+  "islamic-history": "التاريخ الإسلامي",
+  prayer: "الصلاة",
+  adhkar: "الأذكار",
+  duas: "الأدعية",
+  qibla: "القبلة",
+  fawaid: "الفوائد العلمية",
+  miracles: "الإعجاز العلمي",
+  "discover-islam": "التعريف بالإسلام",
+  glossary: "المصطلحات",
+  sources: "المراجع",
+  sections: "جميع الأقسام",
+};
+
+/** مجموعات الدرج — IA بتسميات كاملة */
 const DRAWER_BROWSE_GROUPS: ReadonlyArray<{
   id: string;
   title: string;
   accent: string;
   /** معرّفات NavEntry (mushaf ← open-mushaf) */
   navIds: readonly string[];
-  /** مفتوح افتراضيًا إن لم يُطابق مسار نشط مجموعة أخرى */
   defaultOpen?: boolean;
 }> = [
   {
     id: "quran",
-    title: "القرآن والتلاوة",
+    title: "القرآن الكريم والتلاوة",
     accent: "#2A7A6E",
-    navIds: ["mushaf", "quran", "tafsir", "ulum-quran"],
+    navIds: ["mushaf", "quran", "tafsir", "quran-tilawa", "ulum-quran"],
     defaultOpen: true,
   },
   {
     id: "learning",
-    title: "التعلم",
+    title: "التعلم والدروس",
     accent: "#1F5C48",
-    navIds: ["lessons", "progress", "qa"],
+    navIds: ["lessons", "flashcards", "progress"],
   },
   {
     id: "sciences",
@@ -65,13 +92,13 @@ const DRAWER_BROWSE_GROUPS: ReadonlyArray<{
     id: "worship",
     title: "العبادة والأدوات",
     accent: "#2A7A6E",
-    navIds: ["prayer", "adhkar", "qibla", "tasbih"],
+    navIds: ["prayer", "adhkar", "duas", "qibla"],
   },
   {
     id: "knowledge",
-    title: "المعرفة",
+    title: "المعرفة والموسوعات",
     accent: "#8B6914",
-    navIds: ["fawaid", "miracles", "discover-islam", "glossary", "sections"],
+    navIds: ["fawaid", "miracles", "discover-islam", "glossary", "sources", "sections"],
   },
 ];
 
@@ -95,7 +122,7 @@ const browseGroups: SidebarNavGroup[] = DRAWER_BROWSE_GROUPS.map((def) => {
     if (!e) continue;
     items.push({
       href: e.href,
-      label: e.label,
+      label: DRAWER_FULL_LABEL[navId] ?? e.label,
       Icon: e.icon,
       accent: accentForNavId(navId, def.accent),
     });
