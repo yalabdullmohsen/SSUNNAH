@@ -62,9 +62,9 @@ assert.match(css, /--mm-ref-ink-x-end:\s*98\.4%/);
 assert.doesNotMatch(css, /\[data-page="247"\]|\[data-page="248"\]|\[data-page="249"\]/);
 assert.doesNotMatch(pageComp, /margin-inline:\s*-/);
 
-assert.match(pager, /dx > 0/);
-assert.match(pager, /go\(page \+ 1\)/);
-assert.match(pager, /go\(page - 1\)/);
+assert.match(pager, /dx > 0|mushafSwipePageDelta/);
+assert.match(pager, /goToNextMushafPage|resolveNextMushafPage/);
+assert.match(pager, /goToPreviousMushafPage|resolvePreviousMushafPage/);
 assert.doesNotMatch(pager, /go\(page \+ 2\)/);
 assert.match(readerPage, /loadReadingAyahKey/);
 assert.match(readerPage, /ayahKeyToPage/);

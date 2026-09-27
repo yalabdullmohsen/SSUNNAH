@@ -580,13 +580,26 @@ html[data-theme="dark"] .mm-tafsir__ed-btn {
 }
 
 .nm-root[data-chrome="1"] .nm-page-arrows[data-visible="1"] button.nm-page-arrow {
-  width: var(--nm-chrome-arrow-size) !important;
-  height: var(--nm-chrome-arrow-size) !important;
-  min-width: var(--nm-chrome-arrow-size) !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: var(--nm-chrome-arrow-touch) !important;
   min-height: var(--nm-chrome-arrow-size) !important;
-  max-width: var(--nm-chrome-arrow-size) !important;
-  max-height: var(--nm-chrome-arrow-size) !important;
+  max-width: none !important;
+  max-height: none !important;
+  padding: 0.12rem 0.4rem !important;
   box-sizing: border-box !important;
+}
+
+.nm-root[data-chrome="1"] .nm-page-arrows[data-visible="1"] .nm-page-arrow__label {
+  font-size: 0.58rem;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.nm-root[data-chrome="1"] .nm-page-arrows[data-visible="1"] .nm-page-arrow:disabled {
+  opacity: 0.32 !important;
+  visibility: visible !important;
+  pointer-events: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

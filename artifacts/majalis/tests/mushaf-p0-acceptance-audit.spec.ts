@@ -205,8 +205,8 @@ for (const device of DEVICES) {
       const bodyH0 = before.bodyHeight;
 
       for (const target of [28, 29, 30]) {
-        /* ArrowRight = الصفحة التالية في useMushafPager (موثوق أكثر من زر شفاف opacity:0) */
-        await page.keyboard.press("ArrowRight");
+        /* ArrowLeft = الصفحة التالية (مصحف: جهة التقليب يساراً) */
+        await page.keyboard.press("ArrowLeft");
         await page.waitForFunction(
           (pageNo) => {
             const el = document.querySelector<HTMLElement>(

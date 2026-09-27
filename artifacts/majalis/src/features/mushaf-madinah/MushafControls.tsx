@@ -1,6 +1,11 @@
 import { BookOpen, List, Search, Settings2 } from "lucide-react";
 import { useEffect, useId, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import { MUSHAF_PAGE_MAX, MUSHAF_PAGE_MIN, parseMushafPageQuery } from "@/lib/quran-last-page";
+import {
+  canGoToNextMushafPage,
+  canGoToPreviousMushafPage,
+  MUSHAF_NAV_LABEL,
+} from "@/features/mushaf-reader/mushaf-page-navigation";
 
 type Props = {
   open: boolean;
@@ -160,19 +165,19 @@ export function MushafControls({
             type="button"
             className="mm-controls__btn"
             onClick={onPrev}
-            disabled={pageNumber <= MUSHAF_PAGE_MIN}
-            aria-label="الصفحة السابقة"
+            disabled={!canGoToPreviousMushafPage(pageNumber)}
+            aria-label={MUSHAF_NAV_LABEL.previous}
           >
-            السابق
+            {MUSHAF_NAV_LABEL.previousShort}
           </button>
           <button
             type="button"
             className="mm-controls__btn"
             onClick={onNext}
-            disabled={pageNumber >= MUSHAF_PAGE_MAX}
-            aria-label="الصفحة التالية"
+            disabled={!canGoToNextMushafPage(pageNumber)}
+            aria-label={MUSHAF_NAV_LABEL.next}
           >
-            التالي
+            {MUSHAF_NAV_LABEL.nextShort}
           </button>
         </div>
       </div>

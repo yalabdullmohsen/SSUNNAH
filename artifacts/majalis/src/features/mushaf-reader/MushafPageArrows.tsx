@@ -1,5 +1,11 @@
 import { memo, useCallback, useRef } from "react";
-import { MUSHAF_PAGE_MAX, MUSHAF_PAGE_MIN } from "@/lib/quran-last-page";
+import {
+  canGoToNextMushafPage,
+  canGoToPreviousMushafPage,
+  goToNextMushafPage,
+  goToPreviousMushafPage,
+  MUSHAF_NAV_LABEL,
+} from "@/features/mushaf-reader/mushaf-page-navigation";
 
 type Props = {
   page: number;
@@ -9,47 +15,47 @@ type Props = {
   enabled: boolean;
   /**
    * انشغال مؤقت (تسوية/جوار) — لا يخفي السهم؛ يمنع الضغط فقط.
-   * كان ربط ذلك بـ disabled + CSS opacity:0 يجعل الأسهم «غير موجودة».
    */
   busy?: boolean;
   /**
-   * RTL: next = page+1 (حافة inline-start / يمين الشاشة).
-   * prev = page-1 (حافة inline-end / يسار الشاشة).
+   * التزام الصفحة — يستقبل رقم الصفحة المطلق من الخدمة المركزية.
    */
-  onNext: () => void;
-  onPrev: () => void;
+  go: (page: number) => void;
 };
 
 /**
- * أسهم تقليب المصحف — طبقة فوق الصفحة خارج Text Flow / Geometry.
- * لا Haptic · لا Loading · خطوة واحدة مع قفل ضغط مزدوج محلي إضافي.
+ * أسهم تقليب المصحف — دلالة مصحف (ليس RTL عام).
+ * التالية على يسار الشاشة (جهة تقليب الورقة)؛ السابقة على اليمين.
+ * الحدود: معطّلة ظاهرة لا مخفية.
  */
 export const MushafPageArrows = memo(function MushafPageArrows({
   page,
   visible,
   enabled,
   busy = false,
-  onNext,
-  onPrev,
+  go,
 }: Props) {
   const guardRef = useRef(false);
 
-  const runOnce = useCallback((fn: () => void) => {
-    if (guardRef.current || busy) return;
-    guardRef.current = true;
-    try {
-      fn();
-    } finally {
-      window.setTimeout(() => {
-        guardRef.current = false;
-      }, 240);
-    }
-  }, [busy]);
+  const runOnce = useCallback(
+    (fn: () => void) => {
+      if (guardRef.current || busy) return;
+      guardRef.current = true;
+      try {
+        fn();
+      } finally {
+        window.setTimeout(() => {
+          guardRef.current = false;
+        }, 240);
+      }
+    },
+    [busy],
+  );
 
   if (!enabled) return null;
 
-  const atFirst = page <= MUSHAF_PAGE_MIN;
-  const atLast = page >= MUSHAF_PAGE_MAX;
+  const atFirst = !canGoToPreviousMushafPage(page);
+  const atLast = !canGoToNextMushafPage(page);
   const show = visible;
 
   return (
@@ -61,13 +67,13 @@ export const MushafPageArrows = memo(function MushafPageArrows({
       data-page={page}
       aria-hidden={!show}
     >
-      {/* RTL: التالية أسفل يمين الشاشة (inline-start) */}
+      {/* مصحف: التالية يسار الشاشة (جهة التقليب) */}
       <button
         type="button"
         className="nm-page-arrow nm-page-arrow--next"
         data-testid="mushaf-page-arrow-next"
-        aria-label="الصفحة التالية"
-        title="الصفحة التالية"
+        aria-label={MUSHAF_NAV_LABEL.next}
+        title={MUSHAF_NAV_LABEL.next}
         tabIndex={show && !atLast ? 0 : -1}
         disabled={atLast}
         aria-disabled={busy || !show || atLast ? true : undefined}
@@ -75,7 +81,9 @@ export const MushafPageArrows = memo(function MushafPageArrows({
           e.preventDefault();
           e.stopPropagation();
           if (atLast || !show || busy) return;
-          runOnce(onNext);
+          runOnce(() => {
+            goToNextMushafPage(page, go);
+          });
         }}
         onPointerDown={(e) => e.stopPropagation()}
       >
@@ -83,14 +91,15 @@ export const MushafPageArrows = memo(function MushafPageArrows({
         <span className="nm-page-arrow__icon" aria-hidden="true" data-dir="next">
           ‹
         </span>
+        <span className="nm-page-arrow__label">{MUSHAF_NAV_LABEL.nextShort}</span>
       </button>
-      {/* RTL: السابقة أسفل يسار الشاشة (inline-end) */}
+      {/* مصحف: السابقة يمين الشاشة */}
       <button
         type="button"
         className="nm-page-arrow nm-page-arrow--prev"
         data-testid="mushaf-page-arrow-prev"
-        aria-label="الصفحة السابقة"
-        title="الصفحة السابقة"
+        aria-label={MUSHAF_NAV_LABEL.previous}
+        title={MUSHAF_NAV_LABEL.previous}
         tabIndex={show && !atFirst ? 0 : -1}
         disabled={atFirst}
         aria-disabled={busy || !show || atFirst ? true : undefined}
@@ -98,7 +107,9 @@ export const MushafPageArrows = memo(function MushafPageArrows({
           e.preventDefault();
           e.stopPropagation();
           if (atFirst || !show || busy) return;
-          runOnce(onPrev);
+          runOnce(() => {
+            goToPreviousMushafPage(page, go);
+          });
         }}
         onPointerDown={(e) => e.stopPropagation()}
       >
@@ -106,6 +117,7 @@ export const MushafPageArrows = memo(function MushafPageArrows({
         <span className="nm-page-arrow__icon" aria-hidden="true" data-dir="prev">
           ›
         </span>
+        <span className="nm-page-arrow__label">{MUSHAF_NAV_LABEL.previousShort}</span>
       </button>
     </div>
   );

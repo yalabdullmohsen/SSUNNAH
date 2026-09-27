@@ -131,13 +131,14 @@ async function main() {
     await page.waitForSelector('[data-testid="mushaf-page"]');
     await page.waitForTimeout(600);
     await page.screenshot({ path: join(outDir, "26-nav-p10.png") });
-    await page.keyboard.press("ArrowRight");
+    /* ArrowLeft = الصفحة التالية (مصحف) */
+    await page.keyboard.press("ArrowLeft");
     await page.waitForTimeout(500);
     await page.screenshot({ path: join(outDir, "27-nav-p11.png") });
-    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("ArrowLeft");
     await page.waitForTimeout(500);
     await page.screenshot({ path: join(outDir, "28-nav-p12.png") });
-    await page.keyboard.press("ArrowLeft");
+    await page.keyboard.press("ArrowRight");
     await page.waitForTimeout(500);
     await page.screenshot({ path: join(outDir, "29-nav-back-p11.png") });
 
