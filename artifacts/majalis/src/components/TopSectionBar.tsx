@@ -23,7 +23,11 @@ const PREFETCH_BY_HREF: Record<string, () => void> = {
   "/quran-hub": () => { void import("@/pages/quran/QuranHubPage"); },
   "/mushaf": () => { void import("@/pages/quran/MushafReaderPage"); },
   "/lessons": () => { void import("@/pages/lessons/LessonsPage"); },
-  "/prayer-times": () => { void import("@/pages/worship/PrayerTimesPage"); },
+  "/prayer-times": () => {
+    document.documentElement.classList.add("pts-immersive");
+    void import("@/styles/pages/prayer-times.css");
+    void import("@/pages/worship/PrayerTimesPage");
+  },
   "/fiqh": () => { void import("@/pages/fiqh/FiqhPage"); },
   "/sections": () => { void import("@/pages/account/SectionsPage"); },
 };

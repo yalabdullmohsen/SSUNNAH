@@ -1,0 +1,96 @@
+/**
+ * صدفة مسار الصلاة — تُحمَّل مع App (ليست مؤجّلة).
+ * تمنع الإطار الأبيض قبل وصول prayer-times.css / m2030/pages.css.
+ */
+html.pts-immersive,
+html.pts-immersive body,
+html.pts-immersive #root,
+html.pts-immersive .app-shell,
+html.pts-immersive .app-main,
+html.pts-immersive .majlisilm-app {
+  --pts-shell-bg0: var(--brand-olive-deep, #2a4030);
+  --pts-shell-bg1: var(--brand-olive, #3d5c45);
+  background-color: var(--pts-shell-bg0) !important;
+  background-image: linear-gradient(
+    180deg,
+    var(--pts-shell-bg1) 0%,
+    color-mix(in srgb, var(--pts-shell-bg0) 88%, #083528) 55%,
+    var(--pts-shell-bg0) 100%
+  ) !important;
+  background-attachment: fixed;
+  min-height: 100svh;
+  min-height: 100dvh;
+}
+
+html.pts-immersive .bottom-nav,
+html.pts-immersive .bottom-nav--v2,
+html.pts-immersive .bottom-nav--m2030 {
+  background: var(--mj-brand-deep, #12362c) !important;
+  background-image: none !important;
+  border-block-start-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* هيكل Suspense — نفس سطح الصلاة لا كريم الرئيسية */
+.lrf-wrap--prayer.lrf-wrap--skel {
+  background: transparent;
+  color: #fafaf8;
+  min-height: min(88dvh, 40rem);
+  padding-block-start: max(12px, var(--inset-top, 0px));
+}
+.lrf-wrap--prayer .lrf-skel--prayer {
+  width: min(100%, 26rem);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.lrf-wrap--prayer .lrf-skel__title {
+  width: 5.5rem;
+  height: 1.35rem;
+  background: rgba(255, 255, 255, 0.14);
+}
+.lrf-wrap--prayer .lrf-skel__hero {
+  display: block;
+  height: 8.5rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.lrf-wrap--prayer .lrf-skel__row {
+  height: 3.1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.lrf-wrap--prayer .lrf-skel__eyebrow,
+.lrf-wrap--prayer .lrf-skel__line,
+.lrf-wrap--prayer .lrf-skel__block {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* حجز أول إطار لصفحة المواقيت قبل اكتمال البيانات */
+.pts-screen--boot {
+  min-height: 100svh;
+  min-height: 100dvh;
+  width: 100%;
+  box-sizing: border-box;
+  padding-inline: 16px;
+  padding-block-start: max(12px, var(--inset-top, 0px));
+  padding-bottom: calc(var(--bottom-nav-height, 64px) + var(--inset-bottom, 0px) + 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  color: #fafaf8;
+}
+.pts-boot-hero {
+  min-height: 8.5rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.pts-boot-row {
+  min-height: 3.1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

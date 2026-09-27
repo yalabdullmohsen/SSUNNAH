@@ -45,6 +45,11 @@ export function BottomNavBar({ isHidden = false }: { isHidden?: boolean } = {}) 
 
   function triggerPrefetch(href: string) {
     prefetchAppRoutesShell();
+    if (href === "/prayer-times") {
+      /* نية تنقّل — سطح زيتوني قبل commit حتى لا يُطلى إطار كريمي */
+      document.documentElement.classList.add("pts-immersive");
+      void import("@/styles/pages/prayer-times.css").catch(() => undefined);
+    }
     const load = TAB_PREFETCH[href];
     if (!load || prefetched.current.has(href)) return;
     prefetched.current.add(href);

@@ -54,6 +54,10 @@ export function prefetchRoute(href: string): void {
   seen.add(path);
   const load = CHUNK[path];
   if (load) void load().catch(() => undefined);
+  /* تسخين CSS الصلاة مع الحزمة — يمنع أول إطار بلا تدرّج زيتوني */
+  if (path === "/prayer-times" || path.startsWith("/prayer-times/")) {
+    void import("@/styles/pages/prayer-times.css").catch(() => undefined);
+  }
   // بادئات شائعة: /hadith/* → صفحة الحديث إن لم تُسجَّل حرفيًا
   if (!load) {
     const prefix = Object.keys(CHUNK)

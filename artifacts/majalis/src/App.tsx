@@ -17,6 +17,8 @@ import { BOTTOM_NAV_TABS } from "@/lib/nav-map";
 import { isComingSoonPath } from "@/lib/nav-visibility";
 import { ErrorBoundary, SectionErrorBoundary } from "@/components/ErrorBoundary";
 import "@/styles/components/chrome-boot-ph.css";
+/** صدفة مسار الصلاة — متزامنة مع App حتى لا يظهر إطار كريمي قبل prayer-times.css */
+import "@/styles/prayer-route-shell.css";
 import { usePageSeo } from "@/lib/seo";
 import { lazyWithRetry } from "@/lib/lazy-with-retry";
 import { useSharedPrayerData } from "@/components/prayer/PrayerCountdownProvider";
@@ -707,7 +709,8 @@ function AppShellInner() {
     ensureChromeMeta(undefined, { skipThemeColor: true });
   }, []);
 
-  useEffect(() => {
+  /* قبل الطلاء — لا useEffect؛ وإلا يظهر إطار كريمي/أبيض إطارًا واحدًا */
+  useLayoutEffect(() => {
     document.documentElement.classList.toggle("pts-immersive", onPrayer);
     document.documentElement.classList.toggle("chrome-immersive", immersive);
     return () => {
