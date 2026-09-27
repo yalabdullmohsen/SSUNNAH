@@ -1,0 +1,117 @@
+/**
+ * Card System V2 — أصناف تصنيف البطاقات فوق Card System الحالي.
+ * Wave 1: تعريف العقود البصرية؛ الترحيل الكامل للصفحات في موجات لاحقة.
+ */
+
+.cs2-nav,
+.cs2-content,
+.cs2-continue,
+.cs2-reference,
+.cs2-evidence,
+.cs2-warning,
+.cs2-summary,
+.cs2-action {
+  background: var(--sf2-card-bg, var(--cs-surface-2, #fff));
+  color: var(--sf2-text-primary, var(--cs-text-primary, #15382d));
+  border: 1px solid var(--sf2-border-subtle, var(--cs-border));
+  border-radius: var(--sf2-radius-card, var(--cs-radius, 20px));
+  box-shadow: var(--sf2-shadow-card, var(--cs-shadow, none));
+  padding: var(--sf2-space-3, 12px) var(--sf2-space-4, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf2-space-2, 8px);
+  text-decoration: none;
+  min-height: 0;
+}
+
+.cs2-nav {
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.cs2-nav:hover,
+.cs2-nav:focus-visible {
+  background: var(--sf2-selected-bg, #e8f2ec);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--sf2-focus-ring, #0f5c3f);
+}
+.cs2-nav__title,
+.cs2-content__title,
+.cs2-continue__title {
+  margin: 0;
+  font-size: var(--sf2-type-card-title, 1rem);
+  font-weight: 700;
+  color: var(--sf2-text-primary, #15382d);
+  line-height: 1.35;
+}
+.cs2-nav__desc,
+.cs2-content__excerpt {
+  margin: 0;
+  font-size: var(--sf2-type-supporting, 0.9375rem);
+  color: var(--sf2-text-secondary, #48645a);
+  line-height: 1.5;
+  /* معاينة فقط — التفاصيل الكاملة في الصفحة */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.cs2-nav__meta,
+.cs2-content__meta,
+.cs2-continue__meta {
+  margin: 0;
+  font-size: var(--sf2-type-metadata, 0.8125rem);
+  color: var(--sf2-text-muted, #5f7168);
+}
+
+.cs2-evidence {
+  border-inline-start: 3px solid var(--sf2-action-primary, #0f5c3f);
+  background: color-mix(in srgb, var(--sf2-action-primary, #0f5c3f) 5%, var(--sf2-card-bg, #fff));
+}
+.cs2-evidence__label {
+  font-size: var(--sf2-type-badge, 0.75rem);
+  font-weight: 700;
+  color: var(--sf2-action-primary-deep, #0a4530);
+}
+.cs2-evidence__body {
+  font-size: var(--sf2-type-body, 1rem);
+  line-height: 1.75;
+  color: var(--sf2-text-primary, #15382d);
+}
+.cs2-evidence__cite {
+  font-size: var(--sf2-type-citation, 0.8125rem);
+  color: var(--sf2-text-muted, #5f7168);
+}
+
+.cs2-warning {
+  border-color: color-mix(in srgb, var(--sf2-warning, #8a6a12) 35%, transparent);
+  background: var(--sf2-warning-soft, #f7f1e0);
+}
+.cs2-warning__title {
+  margin: 0;
+  font-size: var(--sf2-type-warning, 0.9375rem);
+  font-weight: 700;
+  color: var(--sf2-warning, #8a6a12);
+}
+
+.cs2-summary {
+  background: var(--sf2-elevated-bg, #efe8dc);
+  box-shadow: var(--sf2-shadow-none, none);
+}
+
+.cs2-continue__progress {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--sf2-skeleton, #e6ebe8);
+  overflow: hidden;
+}
+.cs2-continue__progress > span {
+  display: block;
+  height: 100%;
+  background: var(--sf2-action-primary, #0f5c3f);
+}
+
+/* منع تداخل بطاقة داخل بطاقة بنفس الطبقة دون سبب */
+[data-cs2-card] [data-cs2-card] {
+  box-shadow: none;
+  border-style: dashed;
+}

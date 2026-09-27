@@ -1,0 +1,98 @@
+/**
+ * Sunnah Foundation V2 — أدوار دلالية فوق Foundation PR-1 (--sf-*).
+ * لا يستبدل --sf-*؛ يوفّر أسماء منتج (--sf2-*) للهجرة المرحلية.
+ * قيم AA على الأسطح الفاتحة موثّقة في docs/design/SUNNAH_FOUNDATION_V2.md
+ */
+
+:root {
+  /* ── Surfaces ── */
+  --sf2-page-bg: var(--sf-color-warm-ivory, #f8f6f1);
+  --sf2-elevated-bg: var(--sf-color-warm-ivory-muted, #efe8dc);
+  --sf2-card-bg: var(--sf-color-warm-ivory-surface, #ffffff);
+  --sf2-overlay: color-mix(in srgb, var(--sf-color-luxury-night, #0a1612) 48%, transparent);
+  --sf2-skeleton: color-mix(in srgb, var(--sf-color-deep-emerald, #0f5c3f) 8%, var(--sf2-page-bg));
+
+  /* ── Text (light surfaces) — contrast ≥ 4.5:1 vs #F8F6F1 / #FFF ── */
+  --sf2-text-primary: var(--sf-color-rich-ink, #15382d);
+  --sf2-text-secondary: var(--sf-color-rich-ink-soft, #48645a);
+  --sf2-text-muted: var(--sf-color-rich-ink-muted, #5f7168);
+  --sf2-text-on-brand: var(--sf-color-on-emerald, #f7f1e4);
+  --sf2-text-disabled: color-mix(in srgb, var(--sf2-text-muted) 55%, var(--sf2-card-bg));
+
+  /* ── Brand / actions ── */
+  --sf2-action-primary: var(--sf-color-deep-emerald, #0f5c3f);
+  --sf2-action-primary-deep: var(--sf-color-deep-emerald-deep, #0a4530);
+  --sf2-action-secondary: transparent;
+  --sf2-action-secondary-border: color-mix(in srgb, var(--sf2-action-primary) 22%, #c8d0cb);
+  --sf2-border-subtle: var(--sf-hairline, rgba(15, 92, 63, 0.12));
+  --sf2-focus-ring: var(--sf-focus-ring, #0f5c3f);
+  --sf2-selected-bg: color-mix(in srgb, var(--sf2-action-primary) 12%, var(--sf2-card-bg));
+  --sf2-disabled-bg: color-mix(in srgb, var(--sf2-text-muted) 10%, var(--sf2-card-bg));
+
+  /* ── Status ── */
+  --sf2-success: #1f6b45;
+  --sf2-success-soft: color-mix(in srgb, var(--sf2-success) 12%, var(--sf2-card-bg));
+  --sf2-warning: #8a6a12;
+  --sf2-warning-soft: color-mix(in srgb, var(--sf2-warning) 14%, var(--sf2-card-bg));
+  --sf2-error: #9b2c2c;
+  --sf2-error-soft: color-mix(in srgb, var(--sf2-error) 12%, var(--sf2-card-bg));
+  --sf2-info: #2c5f7a;
+  --sf2-info-soft: color-mix(in srgb, var(--sf2-info) 12%, var(--sf2-card-bg));
+
+  /* ── Type roles (bridge) ── */
+  --sf2-type-display: var(--sf-type-display);
+  --sf2-type-page-title: var(--sf-type-page-title);
+  --sf2-type-section-title: var(--sf-type-section-title);
+  --sf2-type-card-title: var(--sf-type-card-title);
+  --sf2-type-body: var(--sf-type-body);
+  --sf2-type-supporting: var(--sf-type-supporting);
+  --sf2-type-metadata: var(--sf-type-metadata);
+  --sf2-type-badge: var(--sf-type-caption);
+  --sf2-type-button: var(--sf-type-supporting);
+  --sf2-type-citation: var(--sf-type-metadata);
+  --sf2-type-warning: var(--sf-type-supporting);
+
+  /* ── Radius ── */
+  --sf2-radius-control: var(--sf-radius-sm, 16px);
+  --sf2-radius-card: var(--sf-radius-md, 20px);
+  --sf2-radius-feature: var(--sf-radius-lg, 24px);
+  --sf2-radius-sheet: var(--sf-radius-lg, 24px);
+
+  /* ── Spacing ── */
+  --sf2-space-1: var(--sf-space-1);
+  --sf2-space-2: var(--sf-space-2);
+  --sf2-space-3: var(--sf-space-3);
+  --sf2-space-4: var(--sf-space-4);
+  --sf2-space-5: var(--sf-space-5);
+  --sf2-space-6: var(--sf-space-6);
+  --sf2-space-8: var(--sf-space-8);
+
+  /* ── Elevation (subtle only) ── */
+  --sf2-shadow-card: 0 1px 2px color-mix(in srgb, var(--sf2-action-primary-deep) 8%, transparent);
+  --sf2-shadow-none: none;
+}
+
+html[data-theme="dark"],
+html.dark {
+  --sf2-page-bg: var(--sf-color-luxury-night, #0a1612);
+  --sf2-elevated-bg: var(--sf-color-luxury-night-surface, #12261f);
+  --sf2-card-bg: var(--sf-color-luxury-night-elevated, #18332a);
+  --sf2-text-primary: var(--sf-color-luxury-night-ink, #edf5f0);
+  --sf2-text-secondary: color-mix(in srgb, var(--sf2-text-primary) 82%, transparent);
+  --sf2-text-muted: color-mix(in srgb, var(--sf2-text-primary) 68%, transparent);
+  --sf2-border-subtle: rgba(237, 245, 240, 0.12);
+  --sf2-skeleton: color-mix(in srgb, var(--sf2-text-primary) 8%, var(--sf2-page-bg));
+}
+
+/* Utility hooks — opt-in; لا تُفرَض على كل الصفحة في Wave 1 */
+.sf2-page {
+  background: var(--sf2-page-bg);
+  color: var(--sf2-text-primary);
+}
+.sf2-card-surface {
+  background: var(--sf2-card-bg);
+  color: var(--sf2-text-primary);
+  border: 1px solid var(--sf2-border-subtle);
+  border-radius: var(--sf2-radius-card);
+  box-shadow: var(--sf2-shadow-card);
+}
