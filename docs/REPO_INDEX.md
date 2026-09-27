@@ -95,6 +95,7 @@
 | `docs/lessons-guide/` | دليل الدروس — عقد + Migration مقترحة (Feature Flag OFF) |
 | `docs/memorization-research/` | **مسار الحفظ + البحوث الشرعية** — PR-0…PR-5 (تفاصيل + مصدر أصلي آمن) · `test:memorization-research-pr5` |
 
+| `docs/product/` | سجل أقسام المنتج (39) + تدقيق اكتمال + IA intent groups · `lib/product/` |
 | `docs/product-evolution/` | خط أساس برنامج التطوير + تقرير المراحل (P0+) |
 | `docs/content-quality/TOTAL_TRUST_*` + `reports/total-trust/` | برنامج TOTAL TRUST (تحقق محتوى/مسارات؛ لا حكم شرعي آلي) |
 | `docs/content-quality/islamic-sects-*` + `ISLAMIC_SECTS_*` | جرد/قرارات بشرية/حراسة نشر الفرق (لا PUBLISHED آلي) |
