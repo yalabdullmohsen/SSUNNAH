@@ -64,7 +64,7 @@
 1. **النحو والبلاغة:** 95 public accordion lessons, **0** COMPLETE (`BLOCKED_INCOMPLETE` / MISSING_SOURCE).
 2. **الفرق الإسلامية:** forced `COMING_SOON` — do not expose as complete encyclopedia.
 3. **تفنيد الشبهات:** hub-embedded only — needs dedicated provenance center (Program 13).
-4. **Registry gaps:** institutions, historic-mosques, adab-talab-ilm missing from `sections.registry` seeds while routes exist.
+4. **Registry gaps:** closed in PLATFORM_REGISTRY_GAPS_W1 — directories map to `islam-guide`/`/islamic-directory`; `adab-talab-ilm` seeded in nav registry.
 5. **No curriculum section marked COMPLETE** in this wave (tools only: تسبيح / قبلة).
 
 ## Empty / decorative risk
@@ -82,8 +82,9 @@ Any section with availability `PARTIAL` or `BLOCKED_INCOMPLETE` must **not** be 
 
 ## Next bounded waves (recommended order)
 
-1. Register REGISTRY_GAP destinations into `sections.registry` (or document intentional exclusion)
+1. ~~Register REGISTRY_GAP destinations~~ → done (PLATFORM_REGISTRY_GAPS_W1)
 2. Kuwait lessons data model (Program 4)
 3. Arabic grammar Wave 2 — only with approved source
 4. Shubuhat center provenance
 5. Search: exclude COMING_SOON / BLOCKED from public grammar/sects destinations
+6. Align drawer/homepage to IA groups in a single bounded PR
