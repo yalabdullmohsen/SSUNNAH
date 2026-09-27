@@ -1963,14 +1963,19 @@ html[data-theme="dark"] .nm-exit-control {
   top: 50%;
   transform: translateY(-50%);
   z-index: 29;
-  display: grid;
-  place-items: center;
-  width: var(--touch-comfortable, 48px);
-  height: var(--touch-comfortable, 48px);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.05rem;
+  width: auto;
+  min-width: var(--touch-comfortable, 48px);
+  height: auto;
+  min-height: var(--touch-comfortable, 48px);
   margin: 0;
-  padding: 0;
+  padding: 0.2rem 0.4rem;
   border: 0;
-  border-radius: 999px;
+  border-radius: 0.7rem;
   background: color-mix(in srgb, var(--nm-paper, #f7f1e3) 55%, transparent);
   color: color-mix(in srgb, var(--nm-gold, #b08d57) 75%, var(--nm-meta, #5c4a32));
   box-shadow: none;
@@ -1993,19 +1998,31 @@ html[data-theme="dark"] .nm-exit-control {
   background: color-mix(in srgb, var(--nm-paper, #f7f1e3) 78%, var(--nm-gold, #b08d57) 12%);
 }
 
-.nm-page-arrow:disabled {
-  opacity: 0;
-  visibility: hidden;
+/* الحدود: ظاهرة ومعطّلة — لا إخفاء */
+.nm-page-arrows[data-visible="1"] .nm-page-arrow:disabled {
+  opacity: 0.3;
+  visibility: visible;
   pointer-events: none;
+  cursor: not-allowed;
 }
 
-/* RTL: التالية = يمين الشاشة (inline-start) — يطابق mm-page-edge--next */
+.nm-page-arrow:disabled {
+  opacity: 0.3;
+  visibility: visible;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/*
+ * مصحف مجلّد يميناً: التالية على يسار الشاشة (جهة التقليب) = inline-end في RTL.
+ * السابقة على اليمين = inline-start — يطابق السحب والحافة ولوحة المفاتيح.
+ */
 .nm-page-arrow--next {
-  inset-inline-start: max(0.35rem, var(--inset-left, 0px));
+  inset-inline-end: max(0.35rem, var(--inset-right, 0px));
 }
 
 .nm-page-arrow--prev {
-  inset-inline-end: max(0.35rem, var(--inset-right, 0px));
+  inset-inline-start: max(0.35rem, var(--inset-left, 0px));
 }
 
 .nm-page-arrow__hit {
@@ -2015,11 +2032,20 @@ html[data-theme="dark"] .nm-exit-control {
 }
 
 .nm-page-arrow__icon {
-  font-size: 1.55rem;
+  font-size: 1.35rem;
   line-height: 1;
   font-weight: 600;
   opacity: 0.9;
   pointer-events: none;
+}
+
+.nm-page-arrow__label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1.05;
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0;
 }
 
 .nm-root[data-mushaf-panning="1"] .nm-page-arrows {

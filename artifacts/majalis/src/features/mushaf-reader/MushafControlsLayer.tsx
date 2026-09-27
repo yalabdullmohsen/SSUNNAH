@@ -12,6 +12,9 @@ import { getSurahMeta } from "@/lib/quran-api";
 import { toArabicDigits } from "@/lib/utils";
 import { parseVerseKey } from "@/features/mushaf-madinah/mushaf-page-for-ayah";
 import {
+  MUSHAF_NAV_LABEL,
+} from "@/features/mushaf-reader/mushaf-page-navigation";
+import {
   MUSHAF_PAGE_MAX,
   MUSHAF_PAGE_MIN,
   clampMushafPage,
@@ -333,7 +336,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
               type="button"
               className="nm-goto__nudge"
               data-testid="mushaf-goto-prev"
-              aria-label="الصفحة السابقة"
+              aria-label={MUSHAF_NAV_LABEL.previous}
               disabled={pageNumber <= MUSHAF_PAGE_MIN}
               onClick={(e) => {
                 e.preventDefault();
@@ -349,7 +352,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
               type="button"
               className="nm-goto__nudge"
               data-testid="mushaf-goto-next"
-              aria-label="الصفحة التالية"
+              aria-label={MUSHAF_NAV_LABEL.next}
               disabled={pageNumber >= MUSHAF_PAGE_MAX}
               onClick={(e) => {
                 e.preventDefault();

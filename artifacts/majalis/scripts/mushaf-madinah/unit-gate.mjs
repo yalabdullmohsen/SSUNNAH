@@ -98,13 +98,17 @@ assert.match(viewport, /MUSHAF_CHROME_HIDE_MS|3200/);
 assert.doesNotMatch(viewport, /تعذّرت المشاركة/);
 
 const pager = read("src/features/mushaf-reader/useMushafPager.ts") + read("src/features/mushaf-reader/MushafPager.tsx");
-assert.match(pager, /dx > 0/);
-assert.match(pager, /go\(page \+ 1\)/);
+const pageNav = read("src/features/mushaf-reader/mushaf-page-navigation.ts");
+assert.match(pager, /dx > 0|mushafSwipePageDelta/);
+assert.match(pager, /goToNextMushafPage|resolveNextMushafPage/);
+assert.match(pager, /goToPreviousMushafPage|resolvePreviousMushafPage/);
 assert.match(pager, /SWIPE_MIN_PX\s*=\s*40/);
 assert.match(pager, /SETTLE_MS\s*=\s*220/);
 assert.match(pager, /prefers-reduced-motion/);
 assert.match(pager, /scroll-snap|data-snap/);
 assert.doesNotMatch(pager, /rotateY/);
+assert.match(pageNav, /goToNextMushafPage/);
+assert.match(pageNav, /mushafKeyboardPageDelta/);
 
 const controls = read("src/features/mushaf-madinah/MushafControls.tsx");
 assert.match(controls, /exitAlwaysVisible/);
@@ -116,7 +120,8 @@ assert.match(controls, /\{pageNumber\} \/ \{MUSHAF_PAGE_MAX\}/);
 assert.match(controls, /onSearch|بحث/);
 assert.match(controls, /فهرس/);
 
-assert.match(pager, /ArrowRight|ArrowLeft/, "أسهم لوحة المفاتيح");
+assert.match(pageNav, /ArrowLeft|ArrowRight/, "أسهم لوحة المفاتيح عبر خدمة المصحف");
+assert.match(pager, /mushafKeyboardPageDelta/, "لوحة المفاتيح تمر عبر الخدمة المركزية");
 
 const actions = read("src/features/mushaf-madinah/AyahActionSheet.tsx");
 assert.match(actions, /mm-reciter-sheet/);

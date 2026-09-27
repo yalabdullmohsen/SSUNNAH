@@ -1337,16 +1337,16 @@ html.dark .mm-viewport .mm-page-footer__badge,
 }
 
 .mm-page-edge--next {
-  /* يمين الشاشة في RTL = inline-start = الصفحة التالية */
-  inset-inline-start: 0;
+  /* مصحف: يسار الشاشة (جهة التقليب) = inline-end في RTL = الصفحة التالية */
+  inset-inline-end: 0;
   /* ضيّق النطاق حتى لا يسرق ضغط علامات الآيات قرب الحافة */
   width: 8%;
   max-width: 2.5rem;
 }
 
 .mm-page-edge--prev {
-  /* يسار الشاشة = inline-end = الصفحة السابقة */
-  inset-inline-end: 0;
+  /* يمين الشاشة = inline-start = الصفحة السابقة */
+  inset-inline-start: 0;
   width: 8%;
   max-width: 2.5rem;
 }

@@ -12,6 +12,14 @@ import {
   MUSHAF_PAGE_MIN,
 } from "@/lib/quran-last-page";
 import { MUSHAF_SETTLE_MS } from "@/features/mushaf-madinah/layout-bands";
+import {
+  goToMushafPageDelta,
+  mushafEdgeTapPageDelta,
+  mushafKeyboardPageDelta,
+  mushafSwipePageDelta,
+  resolveNextMushafPage,
+  resolvePreviousMushafPage,
+} from "@/features/mushaf-reader/mushaf-page-navigation";
 
 /** عتبة السحب الأفقي — من أي مكان في الصفحة */
 export const SWIPE_MIN_PX = 40;
@@ -245,15 +253,10 @@ export function useMushafPager({
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement | null;
       if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
-      if (e.key === "ArrowRight" || e.key === "PageDown") {
-        e.preventDefault();
-        const page = pageRef.current;
-        go(page + 1);
-      } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
-        e.preventDefault();
-        const page = pageRef.current;
-        go(page - 1);
-      }
+      const delta = mushafKeyboardPageDelta(e.key);
+      if (!delta) return;
+      e.preventDefault();
+      goToMushafPageDelta(pageRef.current, delta, go);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -369,27 +372,30 @@ export function useMushafPager({
     const pageNow = pageRef.current;
 
     if (panning.current && (passSwipe || passFlick)) {
-      if (dx > 0) {
-        if (pageNow >= MUSHAF_PAGE_MAX) {
+      const swipeDelta = mushafSwipePageDelta(dx);
+      if (swipeDelta === 1) {
+        const next = resolveNextMushafPage(pageNow);
+        if (next == null) {
           locking.current = true;
           pendingCommit.current = null;
           resetToCurrent(true);
           return;
         }
         locking.current = true;
-        pendingCommit.current = pageNow + 1;
+        pendingCommit.current = next;
         setTrackX(0, true);
         return;
       }
-      if (dx < 0) {
-        if (pageNow <= MUSHAF_PAGE_MIN) {
+      if (swipeDelta === -1) {
+        const prev = resolvePreviousMushafPage(pageNow);
+        if (prev == null) {
           locking.current = true;
           pendingCommit.current = null;
           resetToCurrent(true);
           return;
         }
         locking.current = true;
-        pendingCommit.current = pageNow - 1;
+        pendingCommit.current = prev;
         setTrackX(-2 * w, true);
         return;
       }
@@ -411,12 +417,9 @@ export function useMushafPager({
         return;
       }
       const relX = (clientX - rect.left) / Math.max(1, rect.width);
-      if (relX >= 0.85) {
-        go(pageNow + 1);
-        return;
-      }
-      if (relX <= 0.15) {
-        go(pageNow - 1);
+      const edgeDelta = mushafEdgeTapPageDelta(relX);
+      if (edgeDelta) {
+        goToMushafPageDelta(pageNow, edgeDelta, go);
         return;
       }
       onTapEmpty?.();
