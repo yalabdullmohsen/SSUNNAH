@@ -97,6 +97,13 @@
   /* ── Icon container (لا يطغى على المحتوى) ── */
   --sf2-icon-box: 2.25rem;
   --sf2-icon-box-sm: 1.85rem;
+
+  /* ── Safe content inset (مصدر واحد لنهاية الصفحة) ── */
+  --sf2-content-bottom-inset: var(
+    --content-pb,
+    calc(var(--bottom-nav-height, 64px) + var(--inset-bottom, 0px) + 24px)
+  );
+  --sf2-page-end-gap: var(--sf-space-6, 24px);
 }
 
 html[data-theme="dark"],
@@ -147,4 +154,24 @@ html.dark {
 }
 .sf2-text-accent {
   color: var(--sf2-text-accent);
+}
+
+/* نهاية صفحة مقصودة — مسافة آمنة فوق الشريط السفلي */
+.sf2-page-end {
+  display: grid;
+  gap: var(--sf2-space-3, 12px);
+  margin-block-start: var(--sf2-page-end-gap);
+  padding-block-end: 0;
+  text-align: start;
+}
+.sf2-page-end__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sf2-space-3, 12px);
+  justify-content: space-between;
+  align-items: center;
+}
+.sf2-page-end__meta {
+  font-size: var(--sf2-type-metadata);
+  color: var(--sf2-text-muted);
 }
