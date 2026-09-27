@@ -495,14 +495,7 @@
 
 .hadith-section-sep {
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(23, 61, 53, 0.12) 18%,
-    rgba(184, 150, 63, 0.35) 50%,
-    rgba(23, 61, 53, 0.12) 82%,
-    transparent
-  );
+  background: color-mix(in srgb, #15382D 12%, transparent);
   margin: 2rem 0;
   border: 0;
   opacity: 1;
@@ -1872,4 +1865,117 @@ html.dark .hadith-browse-cta__desc {
   padding-bottom: calc(
     var(--bottom-nav-total, 5rem) + var(--inset-bottom, 0px) + 1.5rem
   );
+}
+
+/* ─── Dataset summary (hub) — أعداد منفصلة بلا مجموع مضلّل ─── */
+.hadith-dataset-summary {
+  margin: 0 0 1.25rem;
+  padding: 1rem 0 0.25rem;
+  color: #15382D;
+}
+.hadith-dataset-summary__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0A4530;
+}
+.hadith-dataset-summary__lead {
+  margin: 0 0 0.85rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #48645A;
+}
+.hadith-dataset-summary__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+@media (min-width: 720px) {
+  .hadith-dataset-summary__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.hadith-dataset-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--radius-card, 16px);
+  background: #FFFFFF;
+  border: 1px solid color-mix(in srgb, #0F5C3F 14%, transparent);
+  color: inherit;
+  text-decoration: none;
+  min-height: 0;
+  box-shadow: none;
+}
+.hadith-dataset-card:hover {
+  border-color: color-mix(in srgb, #0F5C3F 32%, transparent);
+}
+.hadith-dataset-card__avail {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #0F5C3F;
+}
+.hadith-dataset-card__title {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #15382D;
+}
+.hadith-dataset-card__count {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0A4530;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.hadith-dataset-card__count--note {
+  font-size: 1rem;
+}
+.hadith-dataset-card__desc,
+.hadith-dataset-card__break {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: #5F7168;
+}
+.hadith-filter-avail-note {
+  margin: 0.5rem 0 0.75rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #48645A;
+}
+.hadith-auth-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15em 0.55em;
+  border-radius: var(--radius-sm, 0.4rem);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.hadith-auth-badge--membership {
+  background: color-mix(in srgb, #0F5C3F 12%, #FFFFFF);
+  color: #0A4530;
+}
+.hadith-auth-badge--curated {
+  background: color-mix(in srgb, #48645A 12%, #FFFFFF);
+  color: #15382D;
+}
+.hdl-card__auth-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 55%;
+}
+.hadith-modal__auth-help {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #5F7168;
+}
+.hdl-discover__book.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }

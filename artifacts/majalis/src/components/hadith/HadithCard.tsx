@@ -15,6 +15,8 @@ import {
   type HadithBookCode,
 } from "@/lib/hadith-corpus/ids";
 import { HadithGradeBadge } from "./HadithGradeBadge";
+import { presentHadithAuthenticity } from "@/lib/hadith/hadith-authenticity-label";
+import { collectionFilterLabel } from "@/lib/hadith/hadith-collection-availability";
 
 const COLLECTION_LABELS: Record<string, string> = {
   mutafaq: "متفق عليه",
@@ -45,7 +47,7 @@ const COLLECTION_TO_BOOK: Record<string, HadithBookCode> = {
 
 function collectionLabel(key: string | null): string {
   if (!key) return "";
-  return COLLECTION_LABELS[key] ?? key;
+  return collectionFilterLabel(key, COLLECTION_LABELS[key] ?? key);
 }
 
 /** رابط تفاصيل ثابت إن وُجد معرّف كتاب:رقم قابل للتحليل */
@@ -83,7 +85,7 @@ export function HadithCard({ item: h, onExpand, detailHref }: Props) {
   const preview = summarizeHadithMatn(h, 220);
   const source = normalizeHadithSource(h.source_name, h.grade);
   const bookName =
-    sanitizeHadithDisplay(h.collection ? collectionLabel(h.collection) : "") ||
+    sanitizeHadithDisplay(h.collection ? COLLECTION_LABELS[h.collection] ?? collectionLabel(h.collection) : "") ||
     sanitizeHadithDisplay(h.source_name) ||
     "حديث نبوي";
   const takhrijShort = h.metadata?.takhrij ? String(h.metadata.takhrij) : null;
@@ -91,6 +93,7 @@ export function HadithCard({ item: h, onExpand, detailHref }: Props) {
   const narrator = sanitizeHadithDisplay(h.narrator ?? String(compRef ?? ""));
   const href = detailHref ?? resolveHadithDetailHref(h);
   const ariaLabel = `قراءة المزيد: ${h.title ?? preview.slice(0, 48)}`;
+  const authenticity = presentHadithAuthenticity(h);
 
   function handleSave(e: React.MouseEvent) {
     e.stopPropagation();
@@ -142,7 +145,26 @@ export function HadithCard({ item: h, onExpand, detailHref }: Props) {
             <span className="hdl-card__num">#{h.hadith_number}</span>
           ) : null}
         </div>
-        <HadithGradeBadge grade={h.grade} />
+        <div className="hdl-card__auth-badges">
+          {authenticity.membershipLabel ? (
+            <span
+              className="hadith-auth-badge hadith-auth-badge--membership"
+              title={authenticity.helpText ?? undefined}
+            >
+              {authenticity.membershipLabel}
+            </span>
+          ) : null}
+          {authenticity.curatedLabel ? (
+            <span
+              className="hadith-auth-badge hadith-auth-badge--curated"
+              title={authenticity.helpText ?? undefined}
+            >
+              {authenticity.curatedLabel}
+            </span>
+          ) : null}
+          {/* عضوية الصحيحين: لا نعرض «الحكم: صحيح» كحكم مستقل مخزّن لكل سند */}
+          {!authenticity.gradeIsMembershipOnly ? <HadithGradeBadge grade={h.grade} /> : null}
+        </div>
       </header>
 
       {h.title && h.title !== "حديث" ? (

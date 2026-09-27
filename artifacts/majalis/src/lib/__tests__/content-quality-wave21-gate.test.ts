@@ -20,7 +20,6 @@ const pages: Array<[string, RegExp]> = [
   ["src/pages/quran/ui/SurahIndexView.tsx", /STATUS\.networkError/],
   ["src/views/IslamicStoriesPage.tsx", /STATUS\.loadError/],
   ["src/pages/fiqh/ui/RulingsView.tsx", /STATUS\.loadError/],
-  ["src/pages/hadith/ui/HadithBooksView.tsx", /STATUS\.networkError/],
   ["src/pages/quran/ui/QuranSearchView.tsx", /STATUS\.loadError/],
 ];
 
@@ -31,6 +30,17 @@ for (const [rel, re] of pages) {
   assert.doesNotMatch(src, /description:\s*"لم يُعثر/, `${rel} بلا وصف SEO يدوي لـ لم يُعثر`);
   assert.ok(!src.includes("الباب غير موجود."), `${rel} بلا باب تجويد يدوي`);
   assert.ok(!src.includes("لم يُعثر على الحديث في المصادر"), `${rel} بلا حديث يدوي`);
+}
+
+/* كتب الحديث: حالة الشبكة عبر HadithEmptyState (يلفّ EmptyStateV2) بدل STATUS الخام */
+{
+  const books = read("src/pages/hadith/ui/HadithBooksView.tsx");
+  assert.match(books, /HadithEmptyState/, "HadithBooksView يستخدم HadithEmptyState");
+  assert.match(books, /network_failed|network_required/, "HadithBooksView يغطي فشل/متطلّب الشبكة");
+  assert.doesNotMatch(books, /description:\s*"لم يُعثر/);
+  assert.ok(!books.includes("لم يُعثر على الحديث في المصادر"));
+  const empty = read("src/components/hadith/HadithEmptyState.tsx");
+  assert.match(empty, /EmptyStateV2/);
 }
 
 console.log("content-quality-wave21-gate.test.ts: ok");

@@ -336,7 +336,9 @@ console.log("=== Expansion PR-C Knowledge Dashboards ===");
   assert.match(fiqh, /knowledge-dashboards-v2\.css/);
   assert.match(fiqh, /EmptyStateV2/);
   assert.match(hadith, /knowledge-dashboards-v2\.css/);
-  assert.match(hadith, /EmptyStateV2/);
+  /* HadithEmptyState wraps EmptyStateV2 — keep V2 contract via the shared component */
+  assert.match(hadith, /HadithEmptyState/);
+  assert.match(read("src/components/hadith/HadithEmptyState.tsx"), /EmptyStateV2/);
   assert.match(tawhid, /knowledge-dashboards-v2\.css/);
   const css = read("src/styles/pages/knowledge-dashboards-v2.css");
   assert.match(css, /data-v2-knowledge/);

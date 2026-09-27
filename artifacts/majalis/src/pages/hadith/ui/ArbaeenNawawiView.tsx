@@ -185,9 +185,9 @@ export default function ArbaeenNawawiPage() {
           </div>
 
           <header className="an-summary" data-an-summary="1">
-            <p className="an-summary__eyebrow">السنة النبوية</p>
+            <p className="an-summary__eyebrow">السنة النبوية · مسار تعليمي</p>
             <p className="an-summary__lead">
-              أربعون حديثاً جامعاً مع شرح موجز وفوائد، مرجع مختصر لطالب العلم.
+              {ARBAEEN_NAWAWI.length.toLocaleString("ar-EG")} حديثًا جامعًا مع شرح موجز وفوائد — مسار تعلّم مستقل عن عدّ الصحيحين.
             </p>
             <div className="an-summary__progress" aria-label={progressLabel}>
               <div className="an-prog" aria-hidden="true">

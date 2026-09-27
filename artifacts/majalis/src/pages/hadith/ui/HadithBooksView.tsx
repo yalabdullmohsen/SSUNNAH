@@ -3,7 +3,6 @@ import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import { Link } from "wouter";
 import { ArrowRight, BookOpen, ChevronRight, Search, X, AlertTriangle } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
-import { STATUS } from "@/lib/ui-copy";
 import {
   HADITH_COLLECTIONS,
   fetchAllHadiths,
@@ -20,6 +19,9 @@ import "@/styles/pages/hadith-books.css";
 import "@/styles/pages/hadith.css";
 import { ListScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
+import { HadithEmptyState } from "@/components/hadith/HadithEmptyState";
+import { numberingConflictNoteAr } from "@/lib/hadith/hadith-collection-availability";
+import { SAHIHAYN_LOCAL } from "@/lib/hadith/hadith-dataset-stats";
 
 // ─── Chapter index built from hadith data ─────────────────────────────────────
 
@@ -62,7 +64,10 @@ function CollectionTab({
       className={`hb-tab hdl-chip${active ? " hb-tab--active" : ""}`}
     >
       <span className="hb-tab__name">{meta.name}</span>
-      <span className="hb-tab__total">{meta.totalHadiths.toLocaleString("ar-EG")}</span>
+      <span className="hb-tab__total" title={meta.numberingNoteAr}>
+        {meta.totalHadiths.toLocaleString("ar-EG")}
+      </span>
+      <span className="hb-tab__access">{meta.access === "network" ? "يتطلب اتصالًا" : "محلي"}</span>
     </button>
   );
 }
@@ -240,6 +245,7 @@ function CollectionBrowser({ meta }: { meta: CdnCollectionMeta }) {
   const [hadiths, setHadiths]     = useState<CdnHadith[]>([]);
   const [loading, setLoading]     = useState(true);
   const [error, setError]         = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
   const [chapters, setChapters]   = useState<Chapter[]>([]);
   const [activeChapter, setActiveChapter] = useState<number | null>(null);
   const [search, setSearch]       = useState("");
@@ -278,7 +284,7 @@ function CollectionBrowser({ meta }: { meta: CdnCollectionMeta }) {
     return () => {
       cancelled = true;
     };
-  }, [meta.id]);
+  }, [meta.id, reloadKey]);
 
   const displayHadiths = useMemo(() => {
     if (search.trim()) return hadiths;
@@ -299,13 +305,21 @@ function CollectionBrowser({ meta }: { meta: CdnCollectionMeta }) {
     );
   }
 
-  if (error || hadiths.length === 0) {
+  if (error) {
     return (
-      <div className="hb-error" role="alert">
-        <AlertTriangle size={22} className="inline ms-2" />
-        {STATUS.networkError}
-      </div>
+      <HadithEmptyState
+        kind="network_failed"
+        onRetry={() => {
+          setError(false);
+          setLoading(true);
+          setReloadKey((k) => k + 1);
+        }}
+      />
     );
+  }
+
+  if (!loading && hadiths.length === 0) {
+    return <HadithEmptyState kind="network_required" />;
   }
 
   return (
@@ -315,9 +329,12 @@ function CollectionBrowser({ meta }: { meta: CdnCollectionMeta }) {
         <div>
           <h2 className="hb-browser__title">{meta.name}</h2>
           <p className="hb-browser__author">{meta.arabicName}</p>
+          <p className="hb-browser__numbering" role="note">
+            {meta.numberingNoteAr}
+          </p>
         </div>
         <div className="hb-browser__stats">
-          <span>{hadiths.length.toLocaleString("ar-EG")} حديث</span>
+          <span>{hadiths.length.toLocaleString("ar-EG")} حديث · بحسب ترقيم المصدر</span>
           {chapters.length > 1 && <span>{chapters.length} كتاباً</span>}
         </div>
       </div>
@@ -408,21 +425,21 @@ export default function HadithBooksPage() {
   useEffect(() => {
     applyPageSeo({
       path: "/hadith/books",
-      title: "الكتب الحديثية الكاملة — البخاري ومسلم وغيرهما | سُنّة",
+      title: "كتب الحديث — كتالوج شبكي | سُنّة",
       description:
-        "تصفّح الكتب الحديثية الكاملة: صحيح البخاري (7563 حديثاً)، صحيح مسلم (3033)، الأربعون النووية، الأحاديث القدسية، والسنن الأربعة — مع البحث",
-      keywords: ["صحيح البخاري كامل", "صحيح مسلم كامل", "الأربعون النووية", "أحاديث قدسية", "سنن أبي داود", "سنن الترمذي"],
+        `كتالوج كتب حديثية عبر الشبكة بحسب ترقيم المصدر. المرآة المحلية للصحيحين: ${SAHIHAYN_LOCAL.total} حديثًا في قسم الأحاديث الصحيحة.`,
+      keywords: ["صحيح البخاري", "صحيح مسلم", "الأربعون النووية", "أحاديث قدسية", "سنن أبي داود", "سنن الترمذي"],
       jsonLd: [
         {
           "@context": "https://schema.org",
           "@type": "DataCatalog",
-          name: "الكتب الحديثية الكاملة",
-          description: "فهرس الأحاديث النبوية الكاملة من المصادر الموثوقة",
+          name: "كتب الحديث (كتالوج شبكي)",
+          description: "كتالوج أحاديث بحسب ترقيم المصدر — يتطلب اتصالًا؛ ليس مكافئًا للعدّ المحلي",
           url: "https://www.ssunnah.com/hadith/books",
           dataset: HADITH_COLLECTIONS.map((c) => ({
             "@type": "Dataset",
             name: c.name,
-            description: "${c.totalHadiths} حديث — ${c.arabicName}",
+            description: `${c.totalHadiths} حديث بحسب ترقيم المصدر — ${c.arabicName}`,
           })),
         },
       ],
@@ -438,15 +455,20 @@ export default function HadithBooksPage() {
           الأحاديث النبوية
         </Link>
         <ArrowRight size={12} className="hb-breadcrumb__sep" aria-hidden="true" />
-        <span>الكتب الكاملة</span>
+        <span>كتب الحديث</span>
       </nav>
 
       {/* الرأس */}
       <header className="hb-header">
         <BookOpen size={28} className="hb-header__icon" aria-hidden="true" />
-        <h1 className="hb-header__title">الكتب الحديثية الكاملة</h1>
+        <h1 className="hb-header__title">كتب الحديث</h1>
         <p className="hb-header__subtitle">
-          تصفّح صحيح البخاري وصحيح مسلم والسنن الأربعة والأربعين النووية بأكملها — مع البحث والتصفح بالكتاب والباب.
+          كتالوج شبكي للبخاري ومسلم والسنن والأربعين — يتطلب اتصالًا، والأعداد بحسب ترقيم المصدر.
+          للمرآة المحلية الكاملة للصحيحين ({SAHIHAYN_LOCAL.total.toLocaleString("ar-EG")} حديثًا) راجع{" "}
+          <Link href="/hadith/sahih">الأحاديث الصحيحة</Link>.
+        </p>
+        <p className="hb-header__source" role="note">
+          {numberingConflictNoteAr()}
         </p>
         <p className="hb-header__source">
           المصدر:{" "}
@@ -457,7 +479,7 @@ export default function HadithBooksPage() {
           >
             fawazahmed0/hadith-api
           </a>{" "}
-          — مرخّص MIT، نصوص عربية موثوقة
+          — مرخّص MIT
         </p>
       </header>
 

@@ -64,21 +64,25 @@ export interface CdnCollectionMeta {
   name: string;
   arabicName: string;
   authenticityClass: "sahih" | "daif" | "hasan";
+  /** عدّ الكتالوج بحسب ترقيم المصدر الشبكي — ليس مكافئًا للعدّ المحلي */
   totalHadiths: number;
+  /** وصول المجموعة: شبكة أو تفضيل محلي عند التوفّر */
+  access: "network" | "local_preferred";
+  numberingNoteAr: string;
 }
 
 export const HADITH_COLLECTIONS: CdnCollectionMeta[] = [
-  // totalHadiths هنا = عدّ مرآة التحميل للكتالوج فقط — ليست بطاقة إحصاءات واجهة.
-  { id: "mutafaq",      name: "الصحيحان",           arabicName: "صحيح البخاري + صحيح مسلم (مرآة)", authenticityClass: "sahih", totalHadiths: 7563 + 3033 },
-  { id: "ara-bukhari",  name: "صحيح البخاري",       arabicName: "الإمام محمد بن إسماعيل البخاري", authenticityClass: "sahih", totalHadiths: 7563 },
-  { id: "ara-muslim",   name: "صحيح مسلم",          arabicName: "الإمام مسلم بن الحجاج",          authenticityClass: "sahih", totalHadiths: 3033 },
-  { id: "nawawi",       name: "الأربعون النووية",   arabicName: "الإمام يحيى بن شرف النووي",      authenticityClass: "sahih", totalHadiths: 42   },
-  { id: "qudsi",        name: "الأحاديث القدسية",   arabicName: "أحاديث عن الله تعالى",           authenticityClass: "sahih", totalHadiths: 40   },
-  { id: "ara-abudawud", name: "سنن أبي داود",       arabicName: "الإمام أبو داود السجستاني",      authenticityClass: "hasan", totalHadiths: 5274 },
-  { id: "ara-tirmidhi", name: "جامع الترمذي",       arabicName: "الإمام محمد بن عيسى الترمذي",   authenticityClass: "hasan", totalHadiths: 3956 },
-  { id: "ara-nasai",    name: "سنن النسائي",        arabicName: "الإمام أحمد بن شعيب النسائي",   authenticityClass: "hasan", totalHadiths: 5761 },
-  { id: "ara-ibnmajah", name: "سنن ابن ماجه",       arabicName: "الإمام محمد بن يزيد ابن ماجه",  authenticityClass: "hasan", totalHadiths: 4341 },
-  { id: "ara-malik",    name: "موطأ الإمام مالك",   arabicName: "الإمام مالك بن أنس",             authenticityClass: "sahih", totalHadiths: 1832 },
+  // totalHadiths = عدّ كتالوج CDN بحسب ترقيم المصدر — لا تُعرَض كعدّ محلي.
+  { id: "mutafaq",      name: "الصحيحان",           arabicName: "صحيح البخاري + صحيح مسلم (كتالوج شبكي)", authenticityClass: "sahih", totalHadiths: 7563 + 3033, access: "network", numberingNoteAr: "بحسب ترقيم المصدر · يتطلب اتصالًا" },
+  { id: "ara-bukhari",  name: "صحيح البخاري",       arabicName: "الإمام محمد بن إسماعيل البخاري", authenticityClass: "sahih", totalHadiths: 7563, access: "network", numberingNoteAr: "بحسب ترقيم المصدر · يتطلب اتصالًا" },
+  { id: "ara-muslim",   name: "صحيح مسلم",          arabicName: "الإمام مسلم بن الحجاج",          authenticityClass: "sahih", totalHadiths: 3033, access: "network", numberingNoteAr: "بحسب ترقيم المصدر · يختلف عن الترقيم المحلي" },
+  { id: "nawawi",       name: "الأربعون النووية",   arabicName: "الإمام يحيى بن شرف النووي",      authenticityClass: "sahih", totalHadiths: 42,   access: "network", numberingNoteAr: "بحسب ترقيم المصدر · يتطلب اتصالًا" },
+  { id: "qudsi",        name: "الأحاديث القدسية",   arabicName: "أحاديث عن الله تعالى",           authenticityClass: "sahih", totalHadiths: 40,   access: "network", numberingNoteAr: "بحسب ترقيم المصدر · يتطلب اتصالًا" },
+  { id: "ara-abudawud", name: "سنن أبي داود",       arabicName: "الإمام أبو داود السجستاني",      authenticityClass: "hasan", totalHadiths: 5274, access: "network", numberingNoteAr: "بحسب ترقيم المصدر · يتطلب اتصالًا" },
+  { id: "ara-tirmidhi", name: "جامع الترمذي",       arabicName: "الإمام محمد بن عيسى الترمذي",   authenticityClass: "hasan", totalHadiths: 3956, access: "network", numberingNoteAr: "بحسب ترقيم المصدر · يتطلب اتصالًا" },
+  { id: "ara-nasai",    name: "سنن النسائي",        arabicName: "الإمام أحمد بن شعيب النسائي",   authenticityClass: "hasan", totalHadiths: 5761, access: "network", numberingNoteAr: "بحسب ترقيم المصدر · يتطلب اتصالًا" },
+  { id: "ara-ibnmajah", name: "سنن ابن ماجه",       arabicName: "الإمام محمد بن يزيد ابن ماجه",  authenticityClass: "hasan", totalHadiths: 4341, access: "network", numberingNoteAr: "بحسب ترقيم المصدر · يتطلب اتصالًا" },
+  { id: "ara-malik",    name: "موطأ الإمام مالك",   arabicName: "الإمام مالك بن أنس",             authenticityClass: "sahih", totalHadiths: 1832, access: "network", numberingNoteAr: "بحسب ترقيم المصدر · يتطلب اتصالًا" },
 ];
 
 /** جلب مجموعة المتفق عليه: البخاري + مسلم معاً (مُوسَّمة بـ source) */
