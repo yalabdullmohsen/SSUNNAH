@@ -11,7 +11,8 @@ Living tracker for remediation waves. Do not treat as release truth (see `docs/r
 | WAVE6_ADMIN_V3_CENTERS | Admin centers | prior | `docs/remediation/WAVE6_ADMIN_V3_CENTERS.md` |
 | **WAVE_SEARCH_INTEGRITY** | Search href contract + history destinations + index v3 | **merged (#2303)** | `docs/remediation/waves/WAVE_SEARCH_INTEGRITY.md` |
 | WAVE_HADITH_DATA_TRUTH | Hadith counts, labels, filters, empties | IMPLEMENTED | `docs/remediation/waves/WAVE_HADITH_DATA_TRUTH.md` |
-| **WAVE_HADITH_COMPLETION_P1** | Registry + completeness/license docs + count align | **IN SESSION** | `docs/remediation/waves/WAVE_HADITH_COMPLETION_P1.md` |
+| **WAVE_HADITH_COMPLETION_P1** | Registry + completeness/license docs + count align | **merged (#2302)** | `docs/remediation/waves/WAVE_HADITH_COMPLETION_P1.md` |
+| **WAVE_PRODUCT_REDESIGN_W1** | Foundation V2 + Card V2 + states + UX audit | **PR in flight** | `docs/remediation/waves/WAVE_PRODUCT_REDESIGN_W1_FOUNDATION.md` · local verify:ci pass |
 
 ## Search integrity docs
 

@@ -37,6 +37,8 @@ import "./styles/fonts-ui.css";
 import "./app/styles/theme.css";
 // Foundation Reset PR-1 — مصدر الحقيقة (--sf-*) قبل الطبقات القديمة
 import "./styles/sunnah-foundation-tokens.css";
+// Foundation V2 — أدوار دلالية (--sf2-*) فوق --sf-* (موجة إعادة التصميم)
+import "./styles/sunnah-foundation-v2.css";
 // واجهة استهلاك سُنّة (--ss-*) + أصناف .ss-text — جسر فقط بلا قيم حرفية جديدة
 import "./styles/ssunnah-theme-api.css";
 import "./styles/ssunnah-screen-patterns.css";
@@ -150,6 +152,9 @@ function loadNonCriticalCss() {
       void import("./styles/modern-islamic-editorial.css").then(() => {
         /* Card System بعد كل الطبقات حتى تفوز هوية الزمرد الداكن على soft/hub */
         void import("./styles/card-system.css").then(() => {
+          /* Card System V2 + حالات التطبيق — بعد النظام الحالي */
+          void import("./styles/card-system-v2.css");
+          void import("./styles/app-state-v2.css");
           /* تجربة التعريف بالإسلام — بعد card-system حتى يفوز النطاق الفاتح/AA */
           void import("./styles/islam-intro-experience.css");
         });

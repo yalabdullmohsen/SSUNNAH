@@ -1,0 +1,104 @@
+/**
+ * App State V2 — تحميل / فارغ / خطأ / إعادة محاولة (Wave 1).
+ */
+
+.app-state-v2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sf2-space-3, 12px);
+  padding: var(--sf2-space-6, 24px) var(--sf2-space-4, 16px);
+  text-align: center;
+  background: var(--sf2-page-bg, #f8f6f1);
+  color: var(--sf2-text-primary, #15382d);
+  border-radius: var(--sf2-radius-card, 20px);
+  min-height: 8rem;
+}
+
+.app-state-v2__title {
+  margin: 0;
+  font-size: var(--sf2-type-section-title, 1.125rem);
+  font-weight: 700;
+  color: var(--sf2-text-primary, #15382d);
+}
+
+.app-state-v2__body {
+  margin: 0;
+  max-width: 28rem;
+  font-size: var(--sf2-type-supporting, 0.9375rem);
+  color: var(--sf2-text-secondary, #48645a);
+  line-height: 1.55;
+}
+
+.app-state-v2__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sf2-space-2, 8px);
+  justify-content: center;
+  margin-block-start: var(--sf2-space-2, 8px);
+}
+
+.app-state-v2__btn {
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border-radius: var(--sf2-radius-control, 16px);
+  border: 1px solid var(--sf2-border-subtle, rgba(15, 92, 63, 0.12));
+  background: var(--sf2-card-bg, #fff);
+  color: var(--sf2-text-primary, #15382d);
+  font-weight: 650;
+  cursor: pointer;
+}
+.app-state-v2__btn--primary {
+  background: var(--sf2-action-primary, #0f5c3f);
+  border-color: transparent;
+  color: var(--sf2-text-on-brand, #f7f1e4);
+}
+.app-state-v2__btn:focus-visible {
+  outline: 2px solid var(--sf2-focus-ring, #0f5c3f);
+  outline-offset: 2px;
+}
+
+.app-state-v2--loading .app-state-v2__skeleton {
+  width: min(100%, 16rem);
+  height: 0.75rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--sf2-skeleton, #e6ebe8) 0%,
+    color-mix(in srgb, var(--sf2-skeleton, #e6ebe8) 40%, #fff) 50%,
+    var(--sf2-skeleton, #e6ebe8) 100%
+  );
+  background-size: 200% 100%;
+  animation: app-state-v2-shimmer 1.2s ease-in-out infinite;
+}
+.app-state-v2__skeleton + .app-state-v2__skeleton {
+  width: min(100%, 11rem);
+  margin-block-start: 0.5rem;
+}
+
+@keyframes app-state-v2-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-state-v2--loading .app-state-v2__skeleton {
+    animation: none;
+  }
+}
+
+.app-state-v2--error {
+  border: 1px solid color-mix(in srgb, var(--sf2-error, #9b2c2c) 28%, transparent);
+  background: var(--sf2-error-soft, #f8eaea);
+}
+
+.app-route-shell {
+  min-height: 40vh;
+  background: var(--sf2-page-bg, #f8f6f1);
+  color: var(--sf2-text-primary, #15382d);
+}
