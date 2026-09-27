@@ -2,44 +2,54 @@
  * بطاقات قراءة موحّدة لتفاصيل الأقسام النصية (تاريخ / قصص / محتوى تفصيلي).
  */
 .rsc {
-  --rsc-bg: var(--ss-card-bg, var(--color-surface, #fffcf7));
-  --rsc-border: var(--soft-tile-border, color-mix(in srgb, var(--mj-brand, #1f6b56) 16%, transparent));
-  --rsc-ink: var(--mj-ink, var(--elite-ink, #12241d));
-  --rsc-muted: var(--mj-ink-2, var(--majalis-ink-soft, #3d5349));
-  --rsc-title: var(--brand-on-light, var(--mj-brand-deep, #0d4a39));
-  margin: 0 0 0.85rem;
-  padding: var(--read-card-pad-block, 1.15rem) var(--read-card-pad-inline, 1.2rem);
+  --rsc-bg: var(--ss-card-bg, var(--sf-surface-raised, #ffffff));
+  --rsc-border: var(--sf-hairline, color-mix(in srgb, var(--mj-brand, #1f6b56) 16%, transparent));
+  --rsc-ink: var(--sf-color-rich-ink, var(--mj-ink, #15382d));
+  --rsc-muted: var(--sf-color-rich-ink-soft, var(--mj-ink-2, #48645a));
+  --rsc-title: var(--sf-color-deep-emerald-deep, var(--mj-brand-deep, #0a4530));
+  margin: 0 0 var(--sf-space-3, 0.75rem);
+  padding: var(--sf-pad-card, 0.85rem) var(--sf-space-4, 1rem);
   max-width: var(--read-measure, 38rem);
   width: 100%;
   margin-inline: auto;
   box-sizing: border-box;
   background: var(--rsc-bg);
   border: 1px solid var(--rsc-border);
-  border-radius: var(--radius-card, 24px);
-  box-shadow: 0 10px 26px -20px color-mix(in srgb, var(--mj-brand, #1f6b56) 35%, transparent);
+  border-radius: var(--sf-radius-md, var(--radius-card, 20px));
+  box-shadow: var(--sf-shadow-card, none);
 }
 
 .rsc--summary,
 .rsc--definition {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 6%, var(--rsc-bg));
-  border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 20%, transparent);
+  background: color-mix(in srgb, var(--sf-color-deep-emerald, #0f5c3f) 5%, var(--rsc-bg));
+  border-color: color-mix(in srgb, var(--sf-color-deep-emerald, #0f5c3f) 18%, transparent);
+  border-inline-start: 3px solid var(--sf-color-deep-emerald, #0f5c3f);
+}
+
+.rsc--warning,
+.rsc--notes {
+  background: color-mix(in srgb, #b45309 6%, var(--rsc-bg));
+  border-color: color-mix(in srgb, #b45309 22%, transparent);
+  border-inline-start: 3px solid #b45309;
 }
 
 .rsc--evidence,
 .rsc--quote {
-  background: color-mix(in srgb, var(--mj-accent, #b8963f) 7%, var(--rsc-bg));
-  border-color: color-mix(in srgb, var(--mj-accent, #b8963f) 22%, transparent);
+  background: color-mix(in srgb, var(--sf-color-quran-gold, #c9a82e) 8%, var(--rsc-bg));
+  border-color: color-mix(in srgb, var(--sf-color-quran-gold, #c9a82e) 28%, transparent);
+  border-inline-start: 3px solid var(--sf-color-quran-gold, #c9a82e);
 }
 
 .rsc--faq,
-.rsc--lessons {
-  background: color-mix(in srgb, #15803d 5%, var(--rsc-bg));
-  border-color: color-mix(in srgb, #15803d 18%, transparent);
+.rsc--lessons,
+.rsc--outcomes {
+  background: color-mix(in srgb, var(--sf-color-deep-emerald, #0f5c3f) 4%, var(--rsc-bg));
+  border-color: color-mix(in srgb, var(--sf-color-deep-emerald, #0f5c3f) 16%, transparent);
 }
 
 .rsc--sources {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 7%, var(--rsc-bg));
-  border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 22%, transparent);
+  background: color-mix(in srgb, var(--sf-color-deep-emerald, #0f5c3f) 6%, var(--rsc-bg));
+  border-color: color-mix(in srgb, var(--sf-color-deep-emerald, #0f5c3f) 20%, transparent);
 }
 
 .rsc--related {

@@ -4,12 +4,15 @@ import {
   BookMarked,
   BookOpen,
   Clock3,
+  Compass,
   Flame,
   GraduationCap,
   Heart,
   Landmark,
   LayoutGrid,
+  Library,
   Lightbulb,
+  BookText,
   Scale,
   Scroll,
   Search,
@@ -61,13 +64,19 @@ const PAGE_SIZE = 40;
 const POPULAR_FALLBACK = ["التوحيد", "صحيح البخاري", "السيرة", "الوضوء", "الفاتحة", "الأذكار"];
 const SECTION_CHIPS = [
   { href: "/mushaf", label: "القرآن" },
-  { href: "/hadith", label: "الحديث" },
-  { href: "/lessons", label: "الدروس" },
-  { href: "/tarikh-islami", label: "التاريخ" },
-  { href: "/seerah", label: "السيرة" },
-  { href: "/prophets", label: "الأنبياء" },
-  { href: "/adhkar", label: "الأذكار" },
   { href: "/tafsir", label: "التفسير" },
+  { href: "/hadith", label: "الحديث" },
+  { href: "/fiqh", label: "الفقه" },
+  { href: "/adhkar", label: "الأذكار" },
+  { href: "/lessons", label: "الدروس" },
+  { href: "/fawaid", label: "الفوائد" },
+  { href: "/seerah", label: "السيرة" },
+  { href: "/tarikh-islami", label: "التاريخ" },
+  { href: "/prophets", label: "الأنبياء" },
+  { href: "/discover-islam", label: "تعرّف" },
+  { href: "/knowledge", label: "المعرفة" },
+  { href: "/islamic-glossary", label: "المعجم" },
+  { href: "/sources", label: "المراجع" },
 ] as const;
 
 const SCOPE_ICONS = {
@@ -81,6 +90,10 @@ const SCOPE_ICONS = {
   adhkar: Heart,
   lesson: GraduationCap,
   fawaid: Lightbulb,
+  discover: Compass,
+  knowledge: Library,
+  glossary: BookText,
+  reference: BookMarked,
 } as const;
 
 function resultHref(item: AppSearchResult): string {
@@ -138,7 +151,7 @@ const ScopeCard = memo(function ScopeCard({
   active: boolean;
   onSelect: (id: Exclude<SearchScopeId, "all">) => void;
 }) {
-  const Icon = SCOPE_ICONS[id];
+  const Icon = SCOPE_ICONS[id] ?? LayoutGrid;
   return (
     <button
       type="button"

@@ -49,9 +49,9 @@
   --mj-chip-active-fg: #ffffff;
 
   /* مطابقة soft-cards / visual-identity-unify — لا 18px القديمة */
-  --radius-card: 24px;
-  --radius-tile: 24px;
-  --radius-button: 18px;
+  --radius-card: var(--sf-radius-md, 20px);
+  --radius-tile: var(--sf-radius-md, 20px);
+  --radius-button: var(--sf-radius-sm, 16px);
   --radius-control: 14px;
   --radius-chip: 999px;
   --radius-icon: 12px;

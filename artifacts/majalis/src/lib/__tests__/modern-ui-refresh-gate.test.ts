@@ -27,7 +27,7 @@ assert.match(mur, /prefers-reduced-motion/, "احترام تقليل الحرك�
 assert.match(mur, /Design System Adoption/, "طبقة تبني عالمي");
 assert.match(unify, /border:\s*1px solid var\(--surface-feature-border/, "حد خفيف موحّد بلا شريط جانبي");
 assert.doesNotMatch(unify, /border-inline-start:\s*[2345]px/, "لا شريط زخرفي في card-unify");
-assert.match(soft, /--soft-card-border:\s*transparent/, "soft-card فاتح بلا إطار");
+assert.match(soft, /--soft-card-border:\s*var\(--sf-hairline/, "soft-card فاتح بحدّ hairline AA");
 assert.match(index, /SettingsList/, "تصدير SettingsList");
 assert.match(settingsList, /mur-settings-row/, "صفوف SettingsList");
 assert.match(actionBtn, /destructive/, "زر Destructive موحّد");

@@ -29,7 +29,7 @@ assert.match(card, /aria-hidden="true"/, "السهم زخرفي غير تفاع�
 assert.match(css, /\.hub-card__go[\s\S]*?pointer-events:\s*none/, "السهم بلا أحداث مؤشر");
 
 console.log("=== الشكل ===");
-assert.match(css, /border-radius:\s*var\(--radius-card,\s*24px\)/, "حواف ناعمة 24px");
+assert.match(css, /border-radius:\s*var\(--(?:sf-)?radius-(?:card|md)/, "حواف ناعمة من سلم MD");
 assert.match(css, /\.hub-card__top/, "رأس أيقونة");
 assert.match(css, /\.hub-card__foot/, "تذييل مع سهم مدمج");
 assert.doesNotMatch(css, /\.hub-card__go\s*\{[^}]*position:\s*absolute/, "السهم ليس منفصلًا مطلقًا");

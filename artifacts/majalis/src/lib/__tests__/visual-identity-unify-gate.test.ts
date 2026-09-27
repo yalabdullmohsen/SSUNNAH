@@ -18,13 +18,13 @@ const miracles = read("src/styles/pages/miracles.css");
 const rsc = read("src/styles/components/reading-section-card.css");
 const filters = read("src/styles/components/filters.css");
 
-console.log("=== نصف قطر البطاقة موحّد 24px ===");
-assert.match(soft, /--radius-card:\s*24px/);
-assert.match(unify, /--radius-card:\s*24px/);
-assert.match(calm, /--radius-card:\s*24px/, "calm-polish يجب ألا يخفض إلى 18px");
+console.log("=== نصف قطر البطاقة موحّد (MD=20 / Foundation) ===");
+assert.match(soft, /--radius-card:\s*var\(--sf-radius-card/);
+assert.match(unify, /--radius-card:\s*var\(--sf-radius-card/);
+assert.match(calm, /--radius-card:\s*var\(--sf-radius-md/, "calm-polish على سلم MD/Foundation");
 assert.doesNotMatch(calm, /--radius-card:\s*18px/, "لا تعارض 18px في calm-polish");
-assert.match(calm, /--radius-tile:\s*24px/);
-assert.match(calm, /--radius-button:\s*18px/);
+assert.match(calm, /--radius-tile:\s*var\(--sf-radius-md/);
+assert.match(calm, /--radius-button:\s*var\(--sf-radius-sm/);
 
 console.log("=== بطاقات الأقسام ضمن طبقة التوحيد ===");
 for (const cls of [

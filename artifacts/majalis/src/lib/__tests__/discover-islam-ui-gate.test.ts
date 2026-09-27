@@ -29,7 +29,7 @@ assert.match(shell, /dii-page/);
 assert.match(shell, /dii-page--detail/);
 assert.match(css, /\.dii-block\b/);
 assert.match(css, /\.dii-page--detail/);
-assert.match(css, /border-radius:\s*var\(--radius-card,\s*24px\)/);
+assert.match(css, /border-radius:\s*var\(--radius-card/);
 
 assert.match(hub, /eyebrow="التعريف بالإسلام"/);
 assert.match(hub, /HubCard/);

@@ -72,14 +72,24 @@ export const SF_SPACE = {
   12: "var(--sf-space-12)",
 } as const;
 
+/** سلم الحواف المغلق: XS=12 · SM=16 · MD=20 · LG=24 */
 export const SF_RADIUS = {
+  xs: "var(--sf-radius-xs)",
   sm: "var(--sf-radius-sm)",
   md: "var(--sf-radius-md)",
   lg: "var(--sf-radius-lg)",
   xl: "var(--sf-radius-xl)",
   card: "var(--sf-radius-card)",
   control: "var(--sf-radius-control)",
+  sheet: "var(--sf-radius-sheet)",
   pill: "var(--sf-radius-pill)",
+} as const;
+
+export const SF_RADIUS_SCALE = {
+  xs: 12,
+  sm: 16,
+  md: 20,
+  lg: 24,
 } as const;
 
 export const SF_SHADOW = {

@@ -85,8 +85,8 @@ assert.doesNotMatch(css, /filter:\s*drop-shadow/);
 
 console.log("=== كثافة هاتف / iPad ===");
 assert.match(css, /@media \(min-width:\s*768px\)/);
-assert.match(tokens, /--cs-pad-y:\s*0\.7rem/);
-assert.match(tokens, /--cs-pad-y:\s*0\.95rem/);
+assert.match(tokens, /--cs-pad-y:\s*0\.6rem/);
+assert.match(tokens, /--cs-pad-y:\s*0\.8rem/);
 
 console.log("=== تفاعل بلا glow ===");
 assert.match(css, /\.cs-card:hover/);

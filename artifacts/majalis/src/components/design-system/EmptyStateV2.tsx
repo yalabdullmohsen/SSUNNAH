@@ -9,6 +9,10 @@ import { cn } from "@/lib/utils";
 export type EmptyStateV2Props = HTMLAttributes<HTMLDivElement> & {
   title: string;
   description?: string;
+  /** خطوة تالية واضحة للمستخدم */
+  nextStep?: string;
+  /** مسار تنقّل نصي (مثل: الرئيسية ← التاريخ) */
+  navPath?: string;
   icon?: ReactNode;
   ctaLabel?: string;
   href?: string;
@@ -18,6 +22,8 @@ export type EmptyStateV2Props = HTMLAttributes<HTMLDivElement> & {
 export function EmptyStateV2({
   title,
   description,
+  nextStep,
+  navPath,
   icon,
   ctaLabel,
   href,
@@ -55,6 +61,8 @@ export function EmptyStateV2({
       )}
       <p className="es2__title">{title}</p>
       {description ? <p className="es2__desc">{description}</p> : null}
+      {nextStep ? <p className="es2__next">{nextStep}</p> : null}
+      {navPath ? <p className="es2__nav-path">{navPath}</p> : null}
       {cta}
     </div>
   );

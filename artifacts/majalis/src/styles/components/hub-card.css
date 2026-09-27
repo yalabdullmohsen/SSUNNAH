@@ -2,8 +2,23 @@
  * HubCard / SectionGatewayCard — بطاقات الأقسام الموحّدة
  */
 
+.hub-card,
+.sec-entry {
+  --sec-entry-min-h: 0;
+  border-radius: var(--sf-radius-md, 20px);
+  padding: var(--cs-pad-y, 0.6rem) var(--cs-pad-x, 0.75rem);
+  gap: var(--cs-gap, 0.35rem);
+  box-shadow: var(--sf-shadow-card, none);
+}
+
+.hub-card__icon {
+  width: var(--cs-icon-size, 1.65rem);
+  height: var(--cs-icon-size, 1.65rem);
+  border-radius: var(--sf-radius-xs, 12px);
+}
+
 .hub-card-grid {
-  --hub-grid-gap: var(--mj-s3, 0.75rem);
+  --hub-grid-gap: var(--sf-space-3, 0.75rem);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--hub-grid-gap);

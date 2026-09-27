@@ -42,8 +42,8 @@ assert.match(
 );
 
 // 3) زوايا ناعمة — رموز
-assert.match(theme, /--radius-card:\s*24px/);
-assert.match(theme, /--radius-button:\s*18px/);
+assert.match(theme, /--radius-card:\s*20px/);
+assert.match(theme, /--radius-button:\s*16px/);
 assert.match(theme, /--radius-pill:\s*999px/);
 assert.match(soft, /\.soft-card\s*\{/);
 assert.match(

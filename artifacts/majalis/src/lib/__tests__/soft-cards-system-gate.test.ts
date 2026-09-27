@@ -16,14 +16,14 @@ const main = read("src/main.tsx");
 const prayer = read("src/styles/pages/prayer-times.css");
 const prophets = read("src/styles/pages/prophet-stories.css");
 
-assert.match(theme, /--radius-card:\s*24px/, "رمز radius-card");
-assert.match(theme, /--radius-tile:\s*24px/, "رمز radius-tile");
-assert.match(theme, /--radius-button:\s*18px/, "رمز radius-button");
-assert.match(theme, /--radius-sheet:\s*28px/, "رمز radius-sheet");
-assert.match(theme, /--radius-nav:\s*28px/, "رمز radius-nav");
+assert.match(theme, /--radius-card:\s*20px/, "رمز radius-card = MD");
+assert.match(theme, /--radius-tile:\s*20px/, "رمز radius-tile = MD");
+assert.match(theme, /--radius-button:\s*16px/, "رمز radius-button = SM");
+assert.match(theme, /--radius-sheet:\s*24px/, "رمز radius-sheet = LG");
+assert.match(theme, /--radius-nav:\s*24px/, "رمز radius-nav = LG");
 assert.match(theme, /--radius-pill:\s*999px/, "رمز radius-pill");
-assert.match(soft, /--radius-button:\s*18px/, "soft-cards يحمل radius-button");
-assert.match(soft, /--radius-card:\s*24px/, "soft-cards يحمل radius-card 24");
+assert.match(soft, /--radius-button:\s*var\(--sf-radius-sm/, "soft-cards يجسر radius-button");
+assert.match(soft, /--radius-card:\s*var\(--sf-radius-card/, "soft-cards يجسر radius-card إلى Foundation");
 assert.match(soft, /\.soft-card\s*\{/, "فئة soft-card");
 assert.match(soft, /\.soft-tile\s*\{/, "فئة soft-tile");
 assert.doesNotMatch(
@@ -57,8 +57,8 @@ assert.doesNotMatch(finalRelease, /^\s*button\s*\{/m, "لا قاعدة button ع
 
 assert.match(
   prayer,
-  /--pts-radius:\s*var\(--mie-radius-card,\s*var\(--radius-card,\s*24px\)\)/,
-  "الصلاة تستخدم نصف قطر Editorial/البطاقة الناعمة 24px",
+  /--pts-radius:\s*var\(--mie-radius-card,\s*var\(--radius-card,\s*(?:20|24)px\)\)/,
+  "الصلاة تستخدم نصف قطر البطاقة (سلم MD/LG)",
 );
 assert.doesNotMatch(
   prayer,
