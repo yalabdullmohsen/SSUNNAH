@@ -43,7 +43,7 @@ const matteIdx = main.indexOf("card-matte-unify.css");
 const editorialIdx = main.indexOf("modern-islamic-editorial.css");
 const csIdx = main.lastIndexOf("card-system.css");
 assert.ok(csIdx > matteIdx, "card-system بعد card-matte-unify");
-assert.ok(csIdx > editorialIdx, "card-system بعد editorial حتى تفوز الهوية الداكنة");
+assert.ok(csIdx > editorialIdx, "card-system بعد editorial حتى تفوز هوية البطاقات");
 
 console.log("=== أنوع Card System العشرة ===");
 const required = [
@@ -94,21 +94,17 @@ assert.match(css, /filter:\s*none/);
 assert.match(css, /\.cs-card:active/);
 assert.match(css, /aria-pressed="true"/);
 
-console.log("=== زمرد داكن للعناصر الرئيسية · قراءة فاتحة ===");
+console.log("=== بطاقات أقسام بيضاء AA · هيرو زمردي داكن فقط ===");
 assert.match(css, /--cs-ink-hero/);
-assert.match(css, /--cs-ink-topic/);
-assert.match(css, /--cs-ink-lesson/);
-assert.match(css, /--cs-ink-path/);
 assert.match(css, /--cs-on-ink-title/);
-assert.match(css, /\.hub-card:not\(\[data-scripture\]\)[\s\S]*?--cs-ink-topic/);
-assert.match(css, /\.lesson-unified-card[\s\S]*?--cs-ink-lesson/);
-assert.match(css, /\.lpp-path-card[\s\S]*?--cs-ink-path/);
+assert.match(css, /\.hub-card:not\(\[data-scripture\]\)[\s\S]*?--cs-surface-3/);
+assert.match(css, /\.lesson-unified-card[\s\S]*?--cs-surface-3/);
+assert.match(css, /\.lpp-path-card[\s\S]*?--cs-surface-3/);
 assert.match(css, /\.cs-hero[\s\S]*?--cs-ink-hero/);
 assert.match(css, /\.topic-page__hero \.topic-page__title/);
-assert.match(css, /--cs-on-ink-title/);
-assert.match(css, /\.hub-card\.soft-card--on-light|--cs-ink-topic/);
-assert.match(css, /background-color:\s*var\(--cs-ink-topic\)/);
-assert.match(css, /background-color:\s*var\(--cs-ink-lesson\)/);
+assert.match(css, /\.card__label[\s\S]*?--cs-text-primary/);
+assert.match(css, /\.card__subtitle[\s\S]*?--cs-text-secondary/);
+assert.match(css, /background-color:\s*var\(--cs-surface-3\)/);
 assert.match(css, /\.hadith-card:not\(\[data-scripture\]\)[\s\S]*?--cs-surface-2/);
 assert.match(css, /\.rsc[\s\S]*?--cs-surface-2/);
 assert.match(css, /\[data-cs-type="reference"\][\s\S]*?--cs-surface-2/);
@@ -116,6 +112,11 @@ assert.doesNotMatch(
   css,
   /\.hadith-card:not\(\[data-scripture\]\)[\s\S]{0,200}--cs-ink-/,
   "حديث ليس على زمرد داكن",
+);
+assert.doesNotMatch(
+  css,
+  /\.hub-card:not\(\[data-scripture\]\)[\s\S]{0,500}?background(?:-color)?:\s*var\(--cs-ink-topic\)/,
+  "أقسام ليست زمرد داكن",
 );
 
 console.log("card-system-gate.test.ts: ok");

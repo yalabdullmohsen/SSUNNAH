@@ -14,18 +14,18 @@
    * جسر إلى Foundation — Dark Emerald + Warm Ivory + Gold accent.
    * لا لوحة منافسة · لا أخضر باهت صلب · ظلال خفيفة فقط.
    */
-  --mj-bg: var(--sf-color-warm-ivory, #f7f3eb);
-  --mj-surface: var(--sf-color-warm-ivory-surface, #fffcf7);
-  --mj-surface-2: var(--sf-color-warm-ivory, #f7f3eb);
-  --mj-surface-3: var(--sf-color-warm-ivory, #f7f3eb);
-  --mj-hairline: var(--sf-hairline, #d9d3c8);
-  --mj-ink: var(--sf-color-rich-ink, #16241e);
-  --mj-ink-2: #4f5f58;
-  --mj-muted: var(--sf-color-rich-ink-muted, #5e6e67);
-  --mj-brand: var(--sf-color-deep-emerald, #0f3d2e);
+  --mj-bg: var(--sf-color-warm-ivory, #f8f6f1);
+  --mj-surface: var(--sf-color-warm-ivory-surface, #ffffff);
+  --mj-surface-2: var(--sf-color-warm-ivory, #f8f6f1);
+  --mj-surface-3: var(--sf-color-warm-ivory-surface, #ffffff);
+  --mj-hairline: var(--sf-hairline, rgba(15, 92, 63, 0.12));
+  --mj-ink: var(--sf-color-rich-ink, #15382d);
+  --mj-ink-2: var(--sf-color-rich-ink-soft, #48645a);
+  --mj-muted: var(--sf-color-rich-ink-muted, #5f7168);
+  --mj-brand: var(--sf-color-deep-emerald, #0f5c3f);
   --mj-brand-soft: var(--sf-color-deep-emerald-soft);
   --mj-brand-tint: color-mix(in srgb, var(--mj-brand) 10%, var(--mj-surface));
-  --mj-brand-deep: var(--sf-color-deep-emerald-deep, #0a2f24);
+  --mj-brand-deep: var(--sf-color-deep-emerald-deep, #0a4530);
   --mj-accent: var(--sf-color-quran-gold, #c9a82e);
   --mj-accent-soft: color-mix(in srgb, var(--mj-accent) 14%, var(--mj-surface));
   --mj-warning-soft: #fef3c7;

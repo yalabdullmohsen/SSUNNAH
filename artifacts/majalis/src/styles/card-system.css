@@ -313,13 +313,13 @@ html[data-v2-app="1"] .topic-page__hero .topic-page__quote-ref {
 .card__label {
   font-size: var(--cs-title-size) !important;
   font-weight: 700 !important;
-  color: inherit !important;
+  color: var(--cs-text-primary) !important;
 }
 
 .card__subtitle {
   font-size: var(--cs-body-size) !important;
-  color: inherit !important;
-  opacity: 0.88;
+  color: var(--cs-text-secondary) !important;
+  opacity: 1;
   min-height: 0 !important;
 }
 
@@ -354,11 +354,11 @@ html[data-v2-app="1"] .topic-page__hero .topic-page__quote-ref {
 }
 
 /* ══════════════════════════════════════════
-   بطاقات رئيسية — زمرد داكن (هوية سُنّة)
-   Hero / Topic·Section / Lesson / Path
+   بطاقات أقسام/موضوعات/دروس/مسارات — سطح أبيض · حبر AA
+   (عاجي على فاتح = عيب إنتاج؛ الهيرو فقط يبقى زمرديًا داكنًا)
    ══════════════════════════════════════════ */
 
-/* Topic + Section + Hub */
+/* Topic + Section + Hub + Category */
 .hub-card:not([data-scripture]),
 .cs-section,
 .cs-topic,
@@ -374,14 +374,15 @@ html[data-v2-app="1"] .topic-page__hero .topic-page__quote-ref {
 .mk-lane-card,
 .kids-hub-card,
 .ss-feature-card__inner,
+.section-entry-card,
 .soft-card.hub-card,
 .hub-card.soft-card--on-light {
-  background: var(--cs-ink-topic) !important;
-  background-color: var(--cs-ink-topic) !important;
+  background: var(--cs-surface-3) !important;
+  background-color: var(--cs-surface-3) !important;
   background-image: none !important;
-  border-color: var(--cs-ink-border) !important;
-  box-shadow: var(--cs-ink-shadow) !important;
-  color: var(--cs-on-ink) !important;
+  border-color: var(--cs-border) !important;
+  box-shadow: var(--cs-shadow) !important;
+  color: var(--cs-text-primary) !important;
 }
 
 .hub-card__title,
@@ -394,10 +395,12 @@ html[data-v2-app="1"] .topic-page__hero .topic-page__quote-ref {
 .topic-card .cs-card__title,
 .card__label,
 .ss-feature-card__title,
+.section-entry-card__title,
 .twh-hub-card .hub-card__title,
 .iman-topic-card .cs-card__title {
-  color: var(--cs-on-ink-title) !important;
+  color: var(--cs-text-primary) !important;
   background: transparent !important;
+  font-weight: 700 !important;
 }
 
 .hub-card__desc,
@@ -405,26 +408,29 @@ html[data-v2-app="1"] .topic-page__hero .topic-page__quote-ref {
 .cs-section .cs-card__desc,
 .topic-card .ss-content-card__excerpt,
 .card__subtitle,
-.ss-feature-card__desc {
-  color: var(--cs-on-ink-body) !important;
+.ss-feature-card__desc,
+.section-entry-card__desc {
+  color: var(--cs-text-secondary) !important;
+  opacity: 1 !important;
 }
 
 .hub-card__meta,
 .hub-card__chip,
 .hub-card__soon,
 .hub-card__go {
-  color: var(--cs-on-ink-meta) !important;
+  color: var(--cs-text-muted) !important;
 }
 
 .hub-card__icon,
 .card__icon,
 .cs-card__icon,
 .ss-feature-card__icon,
+.section-entry-card__icon,
 .quran-hub-card__icon,
 .fqh-hub-card__emoji,
 .twh-hub-card__emoji {
-  background: var(--cs-on-ink-icon-bg) !important;
-  color: var(--cs-on-ink-icon) !important;
+  background: var(--cs-primary-soft) !important;
+  color: var(--cs-primary-deep) !important;
   box-shadow: none !important;
 }
 
@@ -432,34 +438,34 @@ html.dark .hub-card__icon,
 html[data-theme="dark"] .hub-card__icon,
 html.dark .sc2-icon,
 html[data-theme="dark"] .sc2-icon {
-  background: var(--cs-on-ink-icon-bg) !important;
-  color: var(--cs-on-ink-icon) !important;
+  background: var(--cs-primary-soft) !important;
+  color: var(--cs-primary) !important;
 }
 
-/* Lesson — أخضر داكن متوسط · metadata أوضح */
+/* Lesson — سطح أبيض · نص AA */
 .lesson-unified-card,
 .kuwait-lesson-card,
 [data-cs-type="lesson"],
 .lesson-unified-card.soft-card,
 .lesson-unified-card.soft-card--on-light {
-  background: var(--cs-ink-lesson) !important;
-  background-color: var(--cs-ink-lesson) !important;
+  background: var(--cs-surface-3) !important;
+  background-color: var(--cs-surface-3) !important;
   background-image: none !important;
-  border-color: var(--cs-ink-border) !important;
-  box-shadow: var(--cs-ink-shadow) !important;
-  color: var(--cs-on-ink) !important;
+  border-color: var(--cs-border) !important;
+  box-shadow: var(--cs-shadow) !important;
+  color: var(--cs-text-primary) !important;
 }
 
 .lesson-unified-card__title,
 .lesson-unified-card__sheikh {
-  color: var(--cs-on-ink-title) !important;
+  color: var(--cs-text-primary) !important;
 }
 
 .lesson-unified-card__desc,
 .lesson-unified-card__organizer,
 .lesson-unified-card__fact-value,
 .lesson-unified-card__meta-cell strong {
-  color: var(--cs-on-ink-body) !important;
+  color: var(--cs-text-secondary) !important;
 }
 
 .lesson-unified-card__fact-label,
@@ -468,7 +474,7 @@ html[data-theme="dark"] .sc2-icon {
 .lesson-unified-card__category,
 .lesson-unified-card__delivery,
 .lesson-unified-card__today-flag {
-  color: var(--cs-on-ink-meta) !important;
+  color: var(--cs-text-muted) !important;
   opacity: 1 !important;
   font-weight: 650 !important;
 }
@@ -476,83 +482,84 @@ html[data-theme="dark"] .sc2-icon {
 .lesson-unified-card__category,
 .lesson-unified-card__delivery,
 .lesson-unified-card__today-flag {
-  background: var(--cs-on-ink-icon-bg) !important;
-  border: 1px solid color-mix(in srgb, var(--cs-gold) 40%, transparent) !important;
+  background: var(--cs-primary-soft) !important;
+  border: 1px solid var(--cs-border) !important;
+  color: var(--cs-primary-deep) !important;
 }
 
 .lesson-unified-card__btn--primary {
-  background: var(--cs-gold) !important;
-  color: var(--cs-ink-hero) !important;
-  border-color: var(--cs-gold) !important;
+  background: var(--cs-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--cs-primary) !important;
 }
 
 .lesson-unified-card__btn--secondary,
 .lesson-unified-card__btn--ghost {
-  background: var(--cs-on-ink-icon-bg) !important;
-  color: var(--cs-on-ink-title) !important;
-  border-color: color-mix(in srgb, var(--cs-on-ink) 28%, transparent) !important;
+  background: var(--cs-primary-soft) !important;
+  color: var(--cs-primary-deep) !important;
+  border-color: var(--cs-border) !important;
 }
 
-/* Path / Course — زمرد داكن · أيقونة فاتحة · مؤشرات واضحة */
+/* Path / Course — سطح أبيض */
 .lpp-path-card,
 .lesson-course-card,
 .cs-course,
 [data-cs-type="course"],
 .lpp-path-card.soft-card,
 .lpp-path-card.soft-card--on-light {
-  background: var(--cs-ink-path) !important;
-  background-color: var(--cs-ink-path) !important;
+  background: var(--cs-surface-3) !important;
+  background-color: var(--cs-surface-3) !important;
   background-image: none !important;
-  border-color: var(--cs-ink-border) !important;
-  box-shadow: var(--cs-ink-shadow) !important;
-  color: var(--cs-on-ink) !important;
+  border-color: var(--cs-border) !important;
+  box-shadow: var(--cs-shadow) !important;
+  color: var(--cs-text-primary) !important;
 }
 
 .lpp-path-card__title,
 .cs-course .cs-card__title,
 .lesson-course-card__title {
-  color: var(--cs-on-ink-title) !important;
+  color: var(--cs-text-primary) !important;
 }
 
 .lpp-path-card__desc,
 .cs-course .cs-card__desc {
-  color: var(--cs-on-ink-body) !important;
+  color: var(--cs-text-secondary) !important;
 }
 
 .lpp-path-card__badge,
 .lpp-path-level-icon,
 .cs-course .cs-card__meta {
-  color: var(--cs-on-ink-meta) !important;
-  background: var(--cs-on-ink-icon-bg) !important;
-  border: 1px solid color-mix(in srgb, var(--cs-gold) 32%, transparent);
+  color: var(--cs-primary-deep) !important;
+  background: var(--cs-primary-soft) !important;
+  border: 1px solid var(--cs-border);
 }
 
 .lpp-path-card__badge--progress {
-  color: var(--cs-ink-hero) !important;
-  background: var(--cs-gold) !important;
-  border-color: var(--cs-gold) !important;
+  color: #ffffff !important;
+  background: var(--cs-primary) !important;
+  border-color: var(--cs-primary) !important;
   font-weight: 700;
 }
 
 .lpp-path-level-icon {
-  color: var(--cs-on-ink-icon) !important;
+  color: var(--cs-primary-deep) !important;
 }
 
-/* Action — تمييز ذهبي على زمرد */
+/* Action — سطح أبيض مع حد زمردي */
 .cs-action,
 .soft-card--accent,
 [data-cs-type="action"] {
-  background: var(--cs-ink-topic) !important;
-  border-color: color-mix(in srgb, var(--cs-gold) 45%, var(--cs-ink-topic)) !important;
-  color: var(--cs-on-ink) !important;
+  background: var(--cs-surface-3) !important;
+  border-color: color-mix(in srgb, var(--cs-primary) 35%, var(--cs-border)) !important;
+  color: var(--cs-text-primary) !important;
 }
 
 .cs-action .cs-card__title {
-  color: var(--cs-on-ink-title) !important;
+  color: var(--cs-text-primary) !important;
 }
 
 .cs-action .cs-card__desc {
-  color: var(--cs-on-ink-body) !important;
+  color: var(--cs-text-secondary) !important;
 }
 
 /* ── قراءة طويلة — أسطح فاتحة إلزامية ── */

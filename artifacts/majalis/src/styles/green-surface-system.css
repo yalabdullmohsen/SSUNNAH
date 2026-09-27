@@ -69,6 +69,7 @@ html.dark,
   --surface-highlighted-accent: #6fd0a8;
 
   --surface-feature-ink: #f3efe6;
+  /* عاجي ثانوي على سطح ليلي عميق — لا حبر نهاري */
   --surface-feature-ink-muted: #d8d0c4;
   --mss-on-hero: #ffffff;
   --mss-on-hero-muted: #e4ddd0;
@@ -127,23 +128,23 @@ html.dark,
 .tawheed-type-card,
 .dii-hub-card,
 .card--featured:not([data-scripture]) {
-  background: var(--cs-ink-topic, #0f3d2e) !important;
+  background: var(--cs-surface-3, #ffffff) !important;
   background-image: none !important;
-  border: 1px solid var(--cs-ink-border, color-mix(in srgb, #d4b45c 28%, #0f3d2e)) !important;
+  border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12)) !important;
   border-radius: var(--surface-feature-radius) !important;
-  box-shadow: var(--cs-ink-shadow, var(--surface-feature-shadow)) !important;
-  color: var(--cs-on-ink, #f7f1e4) !important;
+  box-shadow: var(--cs-shadow, var(--surface-feature-shadow)) !important;
+  color: var(--cs-text-primary, #15382d) !important;
 }
 
 .lesson-unified-card,
 .kuwait-lesson-card {
-  background: var(--cs-ink-lesson, #134a38) !important;
-  background-color: var(--cs-ink-lesson, #134a38) !important;
+  background: var(--cs-surface-3, #ffffff) !important;
+  background-color: var(--cs-surface-3, #ffffff) !important;
 }
 
 .lpp-path-card {
-  background: var(--cs-ink-path, #0f3d2e) !important;
-  background-color: var(--cs-ink-path, #0f3d2e) !important;
+  background: var(--cs-surface-3, #ffffff) !important;
+  background-color: var(--cs-surface-3, #ffffff) !important;
 }
 
 .hub-card__title,
@@ -151,7 +152,7 @@ html.dark,
 .lesson-card__title,
 .topic-card__title,
 .lesson-unified-card__title {
-  color: var(--cs-on-ink-title, #ffffff) !important;
+  color: var(--cs-text-primary, #15382d) !important;
   font-weight: 800;
 }
 
@@ -161,7 +162,7 @@ html.dark,
 .topic-card__meta,
 .lesson-unified-card__sheikh,
 .lesson-unified-card__desc {
-  color: var(--cs-on-ink-body, #e4ddd0) !important;
+  color: var(--cs-text-secondary, #48645a) !important;
 }
 
 /* قراءة طويلة تبقى فاتحة */
@@ -296,9 +297,9 @@ html.dark,
 .mk-lane-card,
 .section-lobby__featured,
 .card--featured:not([data-scripture]) {
-  background: var(--cs-ink-topic, #0f3d2e) !important;
-  border-color: var(--cs-ink-border, color-mix(in srgb, #d4b45c 28%, #0f3d2e)) !important;
-  color: var(--cs-on-ink, #f7f1e4) !important;
+  background: var(--cs-surface-3, #ffffff) !important;
+  border-color: var(--cs-border, rgba(15, 92, 63, 0.12)) !important;
+  color: var(--cs-text-primary, #15382d) !important;
 }
 
 /* تنبيه حذر — حد موحّد دافئ (بلا شريط جانبي زخرفي) */
@@ -308,13 +309,13 @@ html.dark,
   color: var(--surface-feature-ink) !important;
 }
 
-/* عناوين فوق الزمرد الداكن (بطاقات رئيسية) */
+/* عناوين/أوصاف بطاقات الأقسام — حبر AA على أبيض */
 .hub-card__title,
 .section-card__title,
 .lesson-card__title,
 .topic-card__title,
 .lesson-unified-card__title {
-  color: var(--cs-on-ink-title, #ffffff) !important;
+  color: var(--cs-text-primary, #15382d) !important;
   font-weight: 800;
 }
 
@@ -326,7 +327,7 @@ html.dark,
 .lesson-unified-card__desc,
 .hub-card__meta,
 .hub-card__go {
-  color: var(--cs-on-ink-body, #e4ddd0) !important;
+  color: var(--cs-text-secondary, #48645a) !important;
 }
 
 /* عناوين أسطح القراءة الفاتحة */
@@ -363,10 +364,10 @@ html.dark,
 .soft-card--on-light.lpp-path-card,
 .soft-card--on-light.topic-card,
 .soft-card--on-light.section-entry-card {
-  --soft-card-bg: var(--cs-ink-topic, #0f3d2e);
-  --soft-card-border: var(--cs-ink-border, transparent);
-  --soft-card-shadow: var(--cs-ink-shadow, none);
-  color: var(--cs-on-ink, #f7f1e4);
+  --soft-card-bg: var(--cs-surface-3, #ffffff);
+  --soft-card-border: var(--cs-border, rgba(15, 92, 63, 0.12));
+  --soft-card-shadow: var(--cs-shadow, none);
+  color: var(--cs-text-primary, #15382d);
 }
 
 html[data-theme="dark"] .soft-card--on-light:not(.hub-card):not(.lesson-unified-card):not(.lpp-path-card):not(.topic-card):not(.section-entry-card),

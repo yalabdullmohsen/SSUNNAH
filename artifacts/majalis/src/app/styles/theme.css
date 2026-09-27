@@ -6,42 +6,43 @@
 
 @theme {
   /* سطح التطبيق الواحد — الأسطح المتلاصقة ترجع إليه لا إلى هكس مستقل */
+  /* إقلاع/PWA يبقى #F7F3EB · لوحة المحتوى عبر Foundation (#F8F6F1 / أبيض) */
   --surface-app: #F7F3EB;
   --color-bg: #F7F3EB;
-  --color-surface: #FFFCF7;
+  --color-surface: #FFFFFF;
   --color-surface-2: #EFE8DC;
-  --color-hairline: #D9D2C6;
-  --color-ink: #16241E;
-  --color-ink-2: #4A5A53;
-  --color-muted: #5E6E67;
-  --color-brand: #0F5C45;
+  --color-hairline: rgba(15, 92, 63, 0.12);
+  --color-ink: #15382D;
+  --color-ink-2: #48645A;
+  --color-muted: #5F7168;
+  --color-brand: #0F5C3F;
   --color-brand-soft: #E2EFE8;
-  --color-brand-deep: #0A3D2E;
+  --color-brand-deep: #0A4530;
   --color-on-brand: #FFFFFF;
   --color-secondary: #5C6B4A;
   --color-secondary-soft: #E8EBE3;
   /* أزواج تباين معتمدة (WCAG AA) — القيم من لوحة العلامة لا لون جديد.
    * CONTRAST_PAIRS_BEGIN
-   * --on-surface|#16241E|#FFFCF7|4.5
-   * --on-surface|#16241E|#F7F3EB|4.5
-   * --on-surface-muted|#4A5A53|#FFFCF7|4.5
-   * --on-surface-muted|#4A5A53|#F7F3EB|4.5
+   * --on-surface|#15382D|#FFFFFF|4.5
+   * --on-surface|#15382D|#F8F6F1|4.5
+   * --on-surface-muted|#48645A|#FFFFFF|4.5
+   * --on-surface-muted|#48645A|#F8F6F1|4.5
    * --brand-on-white|#0C4F3A|#FFFFFF|4.5
-   * --brand-on-white|#0C4F3A|#F7F3EB|4.5
+   * --brand-on-white|#0C4F3A|#F8F6F1|4.5
    * --brand-on-white|#0C4F3A|#E2EFE8|4.5
-   * --chip-fg|#0A3D2E|#E2EFE8|4.5
-   * --on-brand|#FFFFFF|#0F5C45|4.5
-   * --on-brand-muted|#E8F3EE|#0F5C45|4.5
-   * --color-muted|#5E6E67|#F7F3EB|4.5
+   * --chip-fg|#0A4530|#E2EFE8|4.5
+   * --on-brand|#FFFFFF|#0F5C3F|4.5
+   * --on-brand-muted|#E8F3EE|#0F5C3F|4.5
+   * --color-muted|#5F7168|#F8F6F1|4.5
    * CONTRAST_PAIRS_END
    */
-  --on-surface: #16241E;           /* على #FFFCF7 · على #F7F3EB ≈14.5:1 */
-  --on-surface-muted: #4A5A53;     /* على #FFFCF7 · على #F7F3EB ≈6.6:1 */
-  --brand-on-white: #0C4F3A;       /* أخضر غامق للنص على الأبيض/العاجي */
+  --on-surface: #15382D;           /* على #FFFFFF · على #F8F6F1 ≈12:1 */
+  --on-surface-muted: #48645A;     /* على #FFFFFF · على #F8F6F1 ≈6:1 */
+  --brand-on-white: #0C4F3A;       /* أخضر غامق للنص على الأبيض */
   --chip-bg: #E2EFE8;
-  --chip-fg: #0A3D2E;              /* على --chip-bg ≈10.3:1 */
-  --on-brand: #FFFFFF;             /* على #0F5C45 ≈8:1 */
-  --on-brand-muted: #E8F3EE;       /* على #0F5C45 ≈7:1 — نص ثانوي فوق زمرد */
+  --chip-fg: #0A4530;              /* على --chip-bg ≈10:1 */
+  --on-brand: #FFFFFF;             /* على #0F5C3F ≈8:1 */
+  --on-brand-muted: #E8F3EE;       /* على #0F5C3F ≈7:1 — نص ثانوي فوق زمرد */
   --color-accent: #B08A3E;
   --color-accent-soft: #F5EEDF;
   /* مصحف نمط «آية» / ورق المدينة */
@@ -180,9 +181,9 @@
   --edge-deadzone: 20px;
 
   --surface-app: #F7F3EB;
-  --mj-bg: var(--surface-app);
+  --mj-bg: var(--sf-color-warm-ivory, #F8F6F1);
   --mj-more-sheet: var(--surface-app);
-  --mj-surface: #FFFCF7;
+  --mj-surface: #FFFFFF;
   --on-green: var(--mj-brand);
   --on-surface: var(--mj-ink);
   --on-surface-muted: var(--mj-ink-2);
@@ -190,14 +191,14 @@
   --on-dark-body: #F8FAFC;
   --on-dark-secondary: #E8EEEC;
   --mj-surface-2: #EFE8DC;
-  --mj-surface-3: #E8E1D4;
-  --mj-hairline: #D9D2C6;
-  --mj-ink: #16241E;
-  --mj-ink-2: #4A5A53;
-  --mj-muted: #5E6E67;
-  --mj-brand: #0F3D2E;
-  --mj-brand-soft: color-mix(in srgb, #0F3D2E 10%, #F7F3EB);
-  --mj-brand-deep: #0A3D2E;
+  --mj-surface-3: #FFFFFF;
+  --mj-hairline: rgba(15, 92, 63, 0.12);
+  --mj-ink: #15382D;
+  --mj-ink-2: #48645A;
+  --mj-muted: #5F7168;
+  --mj-brand: #0F5C3F;
+  --mj-brand-soft: color-mix(in srgb, #0F5C3F 10%, #F8F6F1);
+  --mj-brand-deep: #0A4530;
   /* Sunnah Design System — أسماء استقرار (مصدر حرفي؛ الاستهلاك عبر --ss-*) */
   --sunnah-ivory: var(--surface-app);
   --sunnah-ivory-surface: var(--mj-surface);
@@ -217,11 +218,11 @@
   --color-primary-dark: var(--mj-brand-deep);
   --color-active-tab-bg: color-mix(in srgb, var(--mj-brand-deep) 12%, transparent);
   --mj-on-brand: #FFFFFF;
-  --on-surface: #16241E;
-  --on-surface-muted: #4A5A53;
+  --on-surface: #15382D;
+  --on-surface-muted: #48645A;
   --brand-on-white: #0C4F3A;
   --chip-bg: #E2EFE8;
-  --chip-fg: #0A3D2E;
+  --chip-fg: #0A4530;
   --on-brand: #FFFFFF;
   --on-brand-muted: #E8F3EE;
   --mj-accent: #B08A3E;

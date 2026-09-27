@@ -7,15 +7,15 @@
  */
 :root {
   /* ── لوحة V2 ← Foundation ── */
-  --v2-color-ivory: var(--sf-color-ivory-canvas, #f9f8f4);
-  --v2-color-ivory-surface: var(--sf-color-ivory-raised, #fffcf8);
+  --v2-color-ivory: var(--sf-color-ivory-canvas, #f8f6f1);
+  --v2-color-ivory-surface: var(--sf-color-ivory-raised, #ffffff);
   --v2-color-ivory-muted: var(--sf-color-warm-ivory-muted, #efe8dc);
-  --v2-color-emerald: var(--sf-color-deep-emerald, var(--sunnah-emerald, #0f5c45));
-  --v2-color-emerald-deep: var(--sf-color-deep-emerald-deep, var(--sunnah-emerald-deep, #0a3d2e));
+  --v2-color-emerald: var(--sf-color-deep-emerald, var(--sunnah-emerald, #0f5c3f));
+  --v2-color-emerald-deep: var(--sf-color-deep-emerald-deep, var(--sunnah-emerald-deep, #0a4530));
   --v2-color-emerald-soft: var(--sf-color-deep-emerald-soft, var(--mj-brand-soft, #e2efe8));
   --v2-color-gold: var(--sf-color-quran-gold, var(--sunnah-quran-gold, #c9a82e));
-  --v2-color-ink: var(--sf-color-rich-ink, var(--sunnah-ink, #16241e));
-  --v2-color-ink-muted: var(--sf-color-rich-ink-muted, var(--sunnah-ink-muted, #5e6e67));
+  --v2-color-ink: var(--sf-color-rich-ink, var(--sunnah-ink, #15382d));
+  --v2-color-ink-muted: var(--sf-color-rich-ink-muted, var(--sunnah-ink-muted, #5f7168));
   --v2-color-on-emerald: var(--sf-color-on-emerald, #ffffff);
 
   /* Luxury Night ← Foundation */

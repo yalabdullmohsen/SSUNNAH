@@ -61,18 +61,19 @@ assert.match(tokens, /--color-primary-contrast:/, "عقد --color-primary-contra
 assert.match(tokens, /--color-border:/, "عقد --color-border");
 assert.match(tokens, /--brand-on-light:/, "أخضر للنص على فاتح");
 
-assert.match(theme, /--mj-brand:\s*#0F3D2E/, "زمرد داكن — العلامة النهارية");
+assert.match(theme, /--mj-brand:\s*#0F5C3F/, "زمرد — العلامة النهارية");
 assert.match(theme, /--mj-on-brand:\s*#FFFFFF/, "نص أبيض فوق الأخضر");
 assert.match(theme, /--brand-on-white:\s*#0C4F3A/, "أخضر غامق على أبيض");
-assert.match(theme, /--mj-muted:\s*#5E6E67/, "رمادي مكتوم نهاري");
-assert.match(theme, /--mj-ink:\s*#16241E/, "حبر نهاري");
+assert.match(theme, /--mj-muted:\s*#5F7168/, "رمادي مكتوم نهاري");
+assert.match(theme, /--mj-ink:\s*#15382D/, "حبر نهاري");
 
-assertAA("نص على خلفية عاجية", "#16241E", "#F7F3EB");
-assertAA("نص مكتوم على خلفية", "#5E6E67", "#F7F3EB");
-assertAA("أبيض على primary Dark Emerald", "#FFFFFF", "#0F3D2E");
-assertAA("عاجي على primary Dark Emerald", "#F7F1E4", "#0F3D2E");
+assertAA("نص على خلفية الصفحة", "#15382D", "#F8F6F1");
+assertAA("وصف على بطاقة بيضاء", "#48645A", "#FFFFFF");
+assertAA("نص مكتوم على خلفية", "#5F7168", "#F8F6F1");
+assertAA("أبيض على primary Emerald", "#FFFFFF", "#0F5C3F");
+assertAA("عاجي على primary Emerald (هيرو)", "#F7F1E4", "#0F5C3F");
 assertAA("brand-on-light على أبيض", "#0C4F3A", "#FFFFFF");
-assertAA("brand-on-light على عاجي", "#0C4F3A", "#F7F3EB");
+assertAA("brand-on-light على صفحة", "#0C4F3A", "#F8F6F1");
 
 assertAA("نص ليلي على سطح", "#F8FAFC", "#1B2421");
 assertAA("مكتوم ليلي على سطح", "#C5D0CB", "#1B2421");
