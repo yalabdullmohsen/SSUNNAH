@@ -55,6 +55,46 @@
   color: var(--rsc-title);
 }
 
+/* أكورديون تفاصيل — حالة فتح/إغلاق ظاهرة */
+.rsc.rsc--accordion {
+  padding: 0;
+  overflow: hidden;
+}
+.rsc.rsc--accordion > .rsc__summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 44px;
+  margin: 0;
+  padding: 0.75rem 0.95rem;
+}
+.rsc.rsc--accordion > .rsc__summary::-webkit-details-marker {
+  display: none;
+}
+.rsc.rsc--accordion > .rsc__summary::after {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-inline-end: 2px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 55%, transparent);
+  border-block-end: 2px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 55%, transparent);
+  transform: rotate(45deg);
+  transition: transform 160ms ease;
+  flex-shrink: 0;
+}
+.rsc.rsc--accordion[open] {
+  border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 28%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 5%, var(--rsc-bg));
+}
+.rsc.rsc--accordion[open] > .rsc__summary::after {
+  transform: rotate(-135deg);
+}
+.rsc.rsc--accordion > .rsc__body {
+  padding: 0 0.95rem 0.85rem;
+}
+
 .rsc__body {
   margin: 0;
   font-size: var(--type-body-lg, 0.95rem);

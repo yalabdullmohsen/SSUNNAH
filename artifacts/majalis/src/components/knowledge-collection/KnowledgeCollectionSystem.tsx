@@ -9,6 +9,7 @@ import { CategoryCard } from "./CategoryCard";
 import { TopicListItem } from "./TopicListItem";
 import { TopicReaderPage } from "./TopicReaderPage";
 import "@/styles/pages/knowledge-collection.css";
+import "@/styles/islam-intro-experience.css";
 import "@/styles/prophets-semantic-tokens.css";
 
 type Props = {

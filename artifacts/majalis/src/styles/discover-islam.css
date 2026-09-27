@@ -120,43 +120,71 @@ html.dark .dii-block {
   }
 }
 
+/* يفوز على card-system / app-shell-v2 (حبر داكن) بفضل تخصيص أعلى */
+html[data-v2-app="1"] .dii-page .hub-card.dii-hub-card.soft-card--on-light,
+html[data-v2-app="1"] .dii-page .hub-card.soft-card--on-light,
+html[data-v2-app="1"] .dii-page .hub-card.dii-hub-card,
+html[data-v2-app="1"] .dii-page .dii-hub-card.hub-card,
 .dii-hub-card.hub-card,
 .dii-page .hub-card {
   min-height: 0;
-  border-radius: var(--radius-card, 24px) !important;
-  box-shadow: none;
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #146b52) 16%, var(--mj-hairline, #d9d3c8));
-  background: var(--color-surface, var(--mj-surface, #fffcf8));
-  padding: 0.85rem 0.95rem;
-  padding-inline-end: 2.5rem;
+  border-radius: var(--radius-card, 18px) !important;
+  box-shadow: none !important;
+  border: 1px solid color-mix(in srgb, var(--mj-brand, #146b52) 18%, var(--mj-hairline, #d9d3c8)) !important;
+  background: var(--color-surface, var(--mj-surface, #fffcf8)) !important;
+  background-color: var(--color-surface, var(--mj-surface, #fffcf8)) !important;
+  background-image: none !important;
+  color: var(--color-text, var(--mj-ink, #16241e)) !important;
+  padding: 0.8rem 0.9rem;
+  padding-inline-end: 0.9rem;
 }
 
+html[data-v2-app="1"] .dii-page .hub-card:hover,
 .dii-hub-card.hub-card:hover,
 .dii-page .hub-card:hover {
-  box-shadow: none;
-  border-color: color-mix(in srgb, var(--mj-brand, #146b52) 36%, var(--mj-hairline));
+  box-shadow: none !important;
+  border-color: color-mix(in srgb, var(--mj-brand, #146b52) 36%, var(--mj-hairline)) !important;
   transform: none;
 }
 
+html[data-v2-app="1"] .dii-page .hub-card .hub-card__title,
 .dii-hub-card .hub-card__title {
-  font-size: 0.98rem;
-  font-weight: 800;
-  color: var(--color-text, var(--mj-ink));
+  font-size: 1.05rem;
+  font-weight: 850;
+  color: var(--color-primary-dark, var(--mj-brand-deep, #0d4a39)) !important;
 }
 
+html[data-v2-app="1"] .dii-page .hub-card .hub-card__desc,
 .dii-hub-card .hub-card__desc {
-  font-size: 0.84rem;
+  font-size: 0.86rem;
   line-height: 1.55;
-  color: var(--color-text-muted, var(--mj-ink-2));
+  color: #3a4a42 !important;
+}
+
+html[data-v2-app="1"] .dii-page .hub-card .hub-card__meta,
+html[data-v2-app="1"] .dii-page .hub-card .hub-card__go,
+.dii-hub-card .hub-card__chip,
+.dii-hub-card .mj-badge {
+  color: var(--color-primary-dark, var(--mj-brand-deep)) !important;
 }
 
 .dii-hub-card .hub-card__chip,
 .dii-hub-card .mj-badge {
   font-size: 0.7rem;
   border-radius: var(--radius-control, 12px);
-  background: var(--color-primary-soft, var(--mj-brand-soft));
-  color: var(--color-primary-dark, var(--mj-brand-deep));
+  background: var(--color-primary-soft, var(--mj-brand-soft)) !important;
   border: 0;
+}
+
+html[data-v2-app="1"] .dii-page .hub-card .hub-card__go,
+.dii-hub-card .hub-card__go {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: var(--color-primary-soft, var(--mj-brand-soft)) !important;
+  color: var(--color-primary-dark, var(--mj-brand-deep)) !important;
+  opacity: 1 !important;
+  border: 1px solid color-mix(in srgb, var(--mj-brand) 22%, transparent) !important;
 }
 
 /* توافق قديم إن وُجدت بطاقات dii-* */

@@ -15,6 +15,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, SEARCH } from "@/lib/ui-copy";
 import { truncateAtWord } from "@/lib/utils";
 import "@/styles/pages/knowledge.css";
+import "@/styles/islam-intro-experience.css";
 import { UtilityScreen } from "@/components/design-system/screens";
 
 const SECTION_TITLE: Record<string, string> = {

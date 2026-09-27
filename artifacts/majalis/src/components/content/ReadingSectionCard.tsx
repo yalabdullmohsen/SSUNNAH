@@ -1,4 +1,4 @@
-import { useId, type ReactNode } from "react";
+import { useId, useState, type ReactNode, type ToggleEvent } from "react";
 import "@/styles/components/reading-section-card.css";
 import "@/styles/knowledge-experience.css";
 
@@ -25,6 +25,9 @@ type ReadingSectionCardProps = {
   variant?: ReadingSectionVariant;
   className?: string;
   as?: "section" | "div";
+  /** أقسام التفاصيل الطويلة — أكورديون مع حالة فتح/إغلاق ظاهرة */
+  collapsible?: boolean;
+  defaultOpen?: boolean;
 };
 
 /**
@@ -36,12 +39,38 @@ export function ReadingSectionCard({
   variant = "default",
   className = "",
   as: Tag = "section",
+  collapsible = false,
+  defaultOpen = false,
 }: ReadingSectionCardProps) {
   const uid = useId();
   const titleId = `rsc-title-${uid.replace(/:/g, "")}`;
+  const [open, setOpen] = useState(defaultOpen);
+  const classes = `rsc soft-card soft-card--on-light rsc--${variant}${
+    collapsible ? " rsc--accordion" : ""
+  }${className ? ` ${className}` : ""}`;
+
+  if (collapsible) {
+    return (
+      <details
+        className={classes}
+        data-kx-block={variant}
+        data-rsc-accordion="1"
+        open={open}
+        onToggle={(event: ToggleEvent<HTMLDetailsElement>) => {
+          setOpen(event.currentTarget.open);
+        }}
+      >
+        <summary id={titleId} className="rsc__title rsc__summary">
+          {title}
+        </summary>
+        <div className="rsc__body">{children}</div>
+      </details>
+    );
+  }
+
   return (
     <Tag
-      className={`rsc soft-card soft-card--on-light rsc--${variant}${className ? ` ${className}` : ""}`}
+      className={classes}
       data-kx-block={variant}
       aria-labelledby={titleId}
     >

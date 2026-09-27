@@ -1,0 +1,662 @@
+/**
+ * تجربة «التعريف بالإسلام» — تباين AA · هرمية · كثافة · أكورديون · أسهم مدمجة.
+ * يُحمَّل بعد card-system حتى يفوز على بطاقات الحبر الداكنة داخل نطاق المقدمة فقط.
+ */
+
+:is(
+  .dii-page,
+  .topic-page--tawhid,
+  .topic-page--tawhid-topic,
+  .topic-page--sects,
+  .topic-page--sects-detail,
+  .gl-page,
+  .kc-root,
+  .topic-page--dalail,
+  [data-page="dalail-nubuwwah"]
+) {
+  --ii-surface: var(--color-surface, var(--mj-surface, #fffcf8));
+  --ii-surface-soft: color-mix(in srgb, var(--mj-brand, #1f6b56) 6%, var(--ii-surface));
+  --ii-ink: var(--color-text, var(--mj-ink, #16241e));
+  --ii-ink-soft: #3a4a42;
+  --ii-brand: var(--mj-brand-deep, #0d4a39);
+  --ii-brand-soft: var(--mj-brand-soft, #e2efe8);
+  --ii-border: color-mix(in srgb, var(--mj-brand, #1f6b56) 20%, var(--mj-hairline, #d9d3c8));
+  --ii-border-strong: color-mix(in srgb, var(--mj-brand, #1f6b56) 38%, var(--mj-hairline, #d9d3c8));
+  --ii-gap: 0.55rem;
+  --ii-pad: 0.8rem 0.9rem;
+}
+
+/* ——— بطاقات المسارات/الأبواب: سطح فاتح قابل للمسح ——— */
+html[data-v2-app="1"] .dii-page .hub-card.dii-hub-card.soft-card--on-light,
+html[data-v2-app="1"] .dii-page .hub-card.soft-card--on-light,
+html[data-v2-app="1"] .dii-page .hub-card.dii-hub-card,
+html[data-v2-app="1"] .dii-page .hub-card,
+html[data-v2-app="1"] .dii-page .dii-hub-card,
+.dii-page .hub-card,
+.dii-page .dii-hub-card,
+html[data-v2-app="1"] .topic-page--tawhid .kx-library-card.hub-card.soft-card--on-light,
+html[data-v2-app="1"] .topic-page--tawhid .kx-library-card.hub-card,
+html[data-v2-app="1"] .topic-page--tawhid .hub-card.soft-card--on-light,
+html[data-v2-app="1"] .topic-page--tawhid .hub-card,
+html[data-v2-app="1"] .topic-page--tawhid .twh-hub-card,
+.topic-page--tawhid .kx-library-card.hub-card,
+.topic-page--tawhid .hub-card,
+.topic-page--tawhid .twh-hub-card,
+.topic-page--tawhid-topic .twh-hub-card,
+.topic-page--tawhid .tawheed-type-card {
+  background: var(--ii-surface) !important;
+  background-color: var(--ii-surface) !important;
+  background-image: none !important;
+  color: var(--ii-ink) !important;
+  border: 1px solid var(--ii-border) !important;
+  box-shadow: none !important;
+  border-radius: var(--radius-card, 18px) !important;
+  padding: var(--ii-pad) !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  gap: 0.4rem !important;
+}
+
+html[data-v2-app="1"] .dii-page .hub-card:hover,
+.dii-page .hub-card:hover,
+.topic-page--tawhid .kx-library-card.hub-card:hover,
+.topic-page--tawhid .hub-card:hover,
+.topic-page--tawhid .twh-hub-card:hover {
+  border-color: var(--ii-border-strong) !important;
+  box-shadow: 0 4px 14px -10px color-mix(in srgb, var(--mj-brand) 35%, transparent) !important;
+  transform: none !important;
+}
+
+/* عناوين بارزة + أوصاف AA */
+html[data-v2-app="1"] .dii-page .hub-card .hub-card__title,
+.dii-page .hub-card .hub-card__title,
+html[data-v2-app="1"] .topic-page--tawhid .kx-library-card .kx-library-card__title,
+html[data-v2-app="1"] .topic-page--tawhid .hub-card .hub-card__title,
+html[data-v2-app="1"] .topic-page--tawhid .hub-card .kx-library-card__title,
+.topic-page--tawhid .kx-library-card__title,
+.topic-page--tawhid .hub-card__title,
+.topic-page--tawhid .twh-hub-card__title,
+.topic-page--tawhid .tawheed-type-card__title {
+  color: var(--ii-brand) !important;
+  font-weight: 800 !important;
+  font-size: clamp(1.02rem, 3.4vw, 1.18rem) !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0 !important;
+}
+
+html[data-v2-app="1"] .dii-page .hub-card .hub-card__desc,
+.dii-page .hub-card .hub-card__desc,
+html[data-v2-app="1"] .topic-page--tawhid .kx-library-card .kx-library-card__desc,
+html[data-v2-app="1"] .topic-page--tawhid .hub-card .hub-card__desc,
+html[data-v2-app="1"] .topic-page--tawhid .hub-card .kx-library-card__desc,
+.topic-page--tawhid .kx-library-card__desc,
+.topic-page--tawhid .hub-card__desc,
+.topic-page--tawhid .twh-hub-card__desc,
+.topic-page--tawhid .tawheed-type-card__desc {
+  color: var(--ii-ink-soft) !important;
+  font-size: 0.86rem !important;
+  font-weight: 500 !important;
+  line-height: 1.55 !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+}
+
+html[data-v2-app="1"] .dii-page .hub-card__meta,
+.dii-page .hub-card__meta,
+.topic-page--tawhid .kx-library-card__meta,
+.topic-page--tawhid .hub-card__meta {
+  color: var(--ii-brand) !important;
+  font-weight: 700 !important;
+}
+
+html[data-v2-app="1"] .dii-page .hub-card__chip,
+html[data-v2-app="1"] .dii-page .hub-card .mj-badge,
+.dii-page .hub-card__chip,
+.dii-page .hub-card .mj-badge {
+  background: var(--ii-brand-soft) !important;
+  color: var(--ii-brand) !important;
+  border: 0 !important;
+  font-weight: 750 !important;
+}
+
+html[data-v2-app="1"] .dii-page .hub-card__icon,
+.dii-page .hub-card__icon,
+.topic-page--tawhid .twh-hub-card__emoji,
+.topic-page--tawhid .hub-card__icon {
+  background: var(--ii-brand-soft) !important;
+  color: var(--ii-brand) !important;
+  box-shadow: none !important;
+}
+
+/* سهم التنقل مدمج في تذييل البطاقة — لا يطفو منفصلًا */
+html[data-v2-app="1"] .dii-page .hub-card__go,
+.dii-page .hub-card__go,
+.topic-page--tawhid .hub-card__go,
+.topic-page--tawhid .kx-library-card__action {
+  width: 2rem !important;
+  height: 2rem !important;
+  min-width: 2rem;
+  border-radius: 999px !important;
+  background: var(--ii-brand-soft) !important;
+  color: var(--ii-brand) !important;
+  border: 1px solid color-mix(in srgb, var(--mj-brand) 22%, transparent) !important;
+  opacity: 1 !important;
+  align-self: center;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.dii-page .hub-card__foot,
+.topic-page--tawhid .hub-card__foot {
+  margin-block-start: 0.35rem !important;
+  align-items: center;
+  min-height: 2rem;
+}
+
+/* شبكة كثيفة قابلة للمسح */
+.dii-page .hub-card-grid,
+.dii-page .dii-hub-grid,
+.dii-page .dii-list-grid,
+.topic-page--tawhid .twh-hub-grid,
+.topic-page--tawhid .twh-hub-grid--kx {
+  gap: var(--ii-gap) !important;
+  padding-inline: 0 !important;
+  padding-bottom: 0.35rem !important;
+  max-width: none !important;
+}
+
+.dii-section {
+  margin-block: 1.15rem 0.35rem !important;
+}
+
+.dii-page .page-section-title,
+.topic-page--tawhid .page-section-title,
+.topic-page--sects .page-section-title,
+.gl-page .page-section-title {
+  font-size: clamp(1.05rem, 3.6vw, 1.25rem);
+  font-weight: 850;
+  color: var(--ii-brand);
+  margin: 0 0 0.65rem;
+  letter-spacing: 0;
+}
+
+/* مسار الرحلة — صفوف مضغوطة واضحة */
+.dii-journey {
+  gap: 0.4rem !important;
+}
+
+.dii-journey-step {
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 14px !important;
+  background: var(--ii-surface) !important;
+  border: 1px solid var(--ii-border) !important;
+  color: var(--ii-ink) !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+}
+
+.dii-journey-num {
+  width: 1.65rem !important;
+  height: 1.65rem !important;
+  font-size: 0.78rem !important;
+}
+
+.dii-block,
+.dii-contact-cta {
+  padding: 0.9rem 1rem !important;
+  border-radius: 16px !important;
+}
+
+.dii-evidence-list {
+  gap: 0.4rem !important;
+}
+
+.dii-evidence-item {
+  padding: 0.65rem 0.8rem !important;
+  border-radius: 14px !important;
+}
+
+/* ——— العقيدة: بطاقات أعمدة/أركان ——— */
+.topic-page--tawhid .twh-pillar-card,
+.topic-page--tawhid .twh-asma-card,
+.topic-page--tawhid .twh-book-card {
+  background: var(--ii-surface) !important;
+  border: 1px solid var(--ii-border) !important;
+  color: var(--ii-ink) !important;
+  padding: 0.75rem 0.85rem !important;
+  box-shadow: none !important;
+}
+
+.topic-page--tawhid .twh-pillar-title,
+.topic-page--tawhid .twh-asma-name,
+.topic-page--tawhid .twh-book-title {
+  color: var(--ii-brand) !important;
+  font-weight: 800 !important;
+}
+
+.topic-page--tawhid .twh-pillar-desc,
+.topic-page--tawhid .twh-asma-meaning,
+.topic-page--tawhid .twh-book-desc {
+  color: var(--ii-ink-soft) !important;
+}
+
+.topic-page--tawhid .twh-section {
+  margin-bottom: 1.1rem !important;
+}
+
+.topic-page--tawhid .twh-section-intro {
+  color: var(--ii-ink) !important;
+  padding: 0.55rem 0.85rem !important;
+  margin-bottom: 0.85rem !important;
+}
+
+/* ——— الفرق: بطاقات معرفة أوضح ——— */
+.topic-page--sects .kx-summary-card,
+.topic-page--sects .sect-card {
+  border-color: var(--ii-border) !important;
+  box-shadow: none !important;
+}
+
+.topic-page--sects .kx-summary-card__link,
+.topic-page--sects .sect-card {
+  padding: 0.85rem 0.95rem !important;
+  gap: 0.5rem !important;
+}
+
+.topic-page--sects .kx-summary-card__title,
+.topic-page--sects .sect-card__title {
+  font-size: 1.08rem !important;
+  font-weight: 850 !important;
+  color: var(--ii-brand) !important;
+}
+
+.topic-page--sects .kx-summary-card__summary,
+.topic-page--sects .sect-card__desc {
+  color: var(--ii-ink-soft) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.6 !important;
+  -webkit-line-clamp: 3 !important;
+  line-clamp: 3 !important;
+}
+
+.topic-page--sects .kx-summary-card__cta,
+.topic-page--sects .sect-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.2rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: var(--ii-brand-soft);
+  color: var(--ii-brand) !important;
+  font-size: 0.78rem !important;
+  width: fit-content;
+}
+
+.topic-page--sects .sect-hub,
+.topic-page--sects .sect-hub__grid {
+  gap: 0.65rem !important;
+}
+
+.topic-page--sects .sect-hub__note {
+  padding: 0.7rem 0.85rem !important;
+  font-size: 0.86rem !important;
+  color: var(--ii-ink) !important;
+}
+
+/* ——— المعجم: أكورديون بحالة واضحة ——— */
+.gl-page .gl-list {
+  gap: 0.45rem !important;
+}
+
+.gl-page .gl-term {
+  border: 1px solid var(--ii-border) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+  background: var(--ii-surface) !important;
+}
+
+.gl-page .gl-term__head {
+  padding: 0.8rem 0.95rem !important;
+  min-height: 44px;
+}
+
+.gl-page .gl-term__arabic {
+  font-size: 1.12rem !important;
+  font-weight: 850 !important;
+  color: var(--ii-brand) !important;
+}
+
+.gl-page .gl-term__def-preview {
+  color: var(--ii-ink-soft) !important;
+  font-size: 0.84rem !important;
+}
+
+.gl-page .gl-term__chevron {
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 999px;
+  background: var(--ii-brand-soft);
+  color: var(--ii-brand) !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.gl-page .gl-term--open {
+  border-color: var(--ii-border-strong) !important;
+  background: var(--ii-surface-soft) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--mj-brand) 18%, transparent) !important;
+}
+
+.gl-page .gl-term--open .gl-term__chevron {
+  transform: rotate(-90deg);
+  background: color-mix(in srgb, var(--mj-brand) 18%, var(--ii-surface));
+}
+
+.gl-page .gl-term__body {
+  padding: 0 0.95rem 0.85rem !important;
+  gap: 0.65rem !important;
+}
+
+.gl-page .gl-term__detail p,
+.gl-page .gl-term__body {
+  color: var(--ii-ink) !important;
+}
+
+.gl-page .gl-cat {
+  color: var(--ii-brand) !important;
+  border-color: var(--ii-border) !important;
+}
+
+.gl-page .gl-cat--active {
+  background: var(--mj-brand-deep, #12362c) !important;
+  color: #ffffff !important;
+}
+
+/* ——— مجموعات المعرفة (تعرف/دلائل) ——— */
+.kc-root .kc-category-card {
+  min-height: 0 !important;
+  padding: 0.9rem 1rem !important;
+  gap: 0.35rem !important;
+  border-color: var(--ii-border) !important;
+  background: var(--ii-surface) !important;
+}
+
+.kc-root .kc-category-card__title {
+  font-size: 1.15rem !important;
+  font-weight: 800 !important;
+  color: var(--ii-brand) !important;
+}
+
+.kc-root .kc-category-card__kicker,
+.kc-root .kc-category-card__meta {
+  color: var(--ii-ink-soft) !important;
+}
+
+.kc-root .kc-category-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: var(--ii-brand-soft);
+  color: var(--ii-brand) !important;
+  width: fit-content;
+}
+
+.kc-root .kc-topic-item {
+  padding: 0.8rem 0.95rem !important;
+}
+
+.kc-root .kc-topic-item__title {
+  color: var(--ii-brand) !important;
+  font-weight: 800 !important;
+}
+
+.kc-root .kc-topic-item__summary {
+  color: var(--ii-ink-soft) !important;
+}
+
+.kc-root .kc-nav {
+  margin-top: 1.15rem !important;
+  gap: 0.5rem !important;
+}
+
+.kc-root .kc-nav a {
+  padding: 0.7rem 0.85rem !important;
+  min-height: 0 !important;
+  border-color: var(--ii-border) !important;
+  background: var(--ii-surface) !important;
+}
+
+.kc-root .kc-nav__dir {
+  color: var(--ii-brand) !important;
+}
+
+.kc-root .kc-nav__title {
+  color: var(--ii-ink) !important;
+}
+
+/* فهرس التعريف بالإسلام */
+.knowledge-index-link.soft-card {
+  background: var(--ii-surface, #fffcf8) !important;
+  color: var(--ii-ink, #16241e) !important;
+  border: 1px solid var(--ii-border, #d0ddd6) !important;
+  box-shadow: none !important;
+  padding: 0.7rem 0.9rem !important;
+  font-weight: 700;
+}
+
+.knowledge-index-list {
+  gap: 0.4rem !important;
+}
+
+.knowledge-article .knowledge-article-body + section,
+.knowledge-article section {
+  margin-top: 0.85rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--mj-accent, #b8963f) 8%, var(--mj-surface, #fffcf8));
+  border: 1px solid color-mix(in srgb, var(--mj-accent, #b8963f) 22%, transparent);
+}
+
+.knowledge-article section h2 {
+  margin-top: 0 !important;
+  font-size: 0.95rem !important;
+  color: var(--ii-brand, #0d4a39) !important;
+}
+
+.knowledge-article section ul {
+  margin: 0.35rem 0 0;
+  padding-inline-start: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.knowledge-article section li {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--ii-ink, #16241e);
+}
+
+/* ——— أدلة/مراجع: كثافة أعلى ——— */
+.kx-block--evidence,
+.rsc--evidence,
+.rsc--quote,
+[data-kx-kind="evidence"] {
+  padding: 0.55rem 0.75rem !important;
+  border-radius: 12px !important;
+  margin: 0 !important;
+}
+
+.kx-block--evidence .kx-block__body,
+.rsc--evidence .rsc__body,
+.rsc--evidence .rsc__prose {
+  font-size: 0.92rem !important;
+  line-height: 1.7 !important;
+}
+
+.kx-block--sources,
+.rsc--sources,
+[data-kx-kind="sources"] {
+  padding-block: 0.45rem 0.2rem !important;
+}
+
+.kx-sources {
+  gap: 0.2rem !important;
+}
+
+.kx-sources__item {
+  padding-block: 0.15rem !important;
+  font-size: 0.84rem !important;
+}
+
+/* ——— تفاصيل أقسام: أكورديون بحالة ظاهرة ——— */
+.kx-detail-surface {
+  gap: 0.55rem !important;
+}
+
+.kx-detail-surface .rsc.rsc--accordion,
+.kx-detail-accordion {
+  border: 1px solid var(--ii-border) !important;
+  border-radius: 14px !important;
+  background: var(--ii-surface) !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.kx-detail-surface .rsc.rsc--accordion .rsc__summary,
+.kx-detail-accordion > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 44px;
+  margin: 0 !important;
+  padding: 0.75rem 0.9rem !important;
+  font-size: 0.95rem !important;
+  font-weight: 800 !important;
+  color: var(--ii-brand) !important;
+  background: transparent;
+}
+
+.kx-detail-surface .rsc.rsc--accordion .rsc__summary::-webkit-details-marker,
+.kx-detail-accordion > summary::-webkit-details-marker {
+  display: none;
+}
+
+.kx-detail-surface .rsc.rsc--accordion .rsc__summary::after,
+.kx-detail-accordion > summary::after {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-inline-end: 2px solid color-mix(in srgb, var(--mj-brand) 60%, transparent);
+  border-block-end: 2px solid color-mix(in srgb, var(--mj-brand) 60%, transparent);
+  transform: rotate(45deg);
+  transition: transform 160ms ease;
+  flex-shrink: 0;
+}
+
+.kx-detail-surface .rsc.rsc--accordion[open],
+.kx-detail-accordion[open] {
+  background: var(--ii-surface-soft) !important;
+  border-color: var(--ii-border-strong) !important;
+}
+
+.kx-detail-surface .rsc.rsc--accordion[open] .rsc__summary::after,
+.kx-detail-accordion[open] > summary::after {
+  transform: rotate(-135deg);
+}
+
+.kx-detail-surface .rsc.rsc--accordion .rsc__body,
+.kx-detail-accordion .rsc__body {
+  padding: 0 0.9rem 0.85rem !important;
+  max-width: none !important;
+}
+
+.kx-detail-surface .rsc.rsc--accordion .rsc__title {
+  /* عند استخدام summary بدل h2 المنفصل */
+  display: contents;
+}
+
+/* رجوع عام داخل صفحات المقدمة — أقل طفوًا */
+html[data-global-back-visible="1"]:has(.dii-page) .app-back-btn--bar.fixed-back-bar,
+html[data-global-back-visible="1"]:has(.topic-page--tawhid) .app-back-btn--bar.fixed-back-bar,
+html[data-global-back-visible="1"]:has(.topic-page--sects) .app-back-btn--bar.fixed-back-bar,
+html[data-global-back-visible="1"]:has(.gl-page) .app-back-btn--bar.fixed-back-bar,
+html[data-global-back-visible="1"]:has(.kc-root) .app-back-btn--bar.fixed-back-bar {
+  border-color: color-mix(in srgb, var(--mj-brand) 28%, var(--mj-hairline)) !important;
+  background: var(--ii-surface, #fffcf8) !important;
+  box-shadow: 0 2px 10px rgba(11, 32, 24, 0.12) !important;
+  color: var(--ii-brand, #0d4a39) !important;
+}
+
+/* ——— Dark mode: نص فاتح كافٍ على سطح داكن ——— */
+html.dark :is(.dii-page, .topic-page--tawhid, .topic-page--sects, .gl-page, .kc-root),
+html[data-theme="dark"] :is(.dii-page, .topic-page--tawhid, .topic-page--sects, .gl-page, .kc-root) {
+  --ii-surface: var(--mj-surface, #1b2421);
+  --ii-surface-soft: color-mix(in srgb, var(--mj-brand, #5cc095) 12%, #1b2421);
+  --ii-ink: var(--mj-ink, #eef4f0);
+  --ii-ink-soft: #c5d2cb;
+  --ii-brand: color-mix(in srgb, var(--mj-brand, #5cc095) 70%, #eef4f0);
+  --ii-brand-soft: color-mix(in srgb, var(--mj-brand, #5cc095) 18%, #15201c);
+  --ii-border: color-mix(in srgb, var(--mj-brand, #5cc095) 28%, #2a3a34);
+  --ii-border-strong: color-mix(in srgb, var(--mj-brand, #5cc095) 45%, #2a3a34);
+}
+
+html.dark .dii-page .hub-card__title,
+html[data-theme="dark"] .dii-page .hub-card__title,
+html.dark .topic-page--tawhid .hub-card__title,
+html[data-theme="dark"] .topic-page--tawhid .hub-card__title,
+html.dark .topic-page--tawhid .kx-library-card__title,
+html[data-theme="dark"] .topic-page--tawhid .kx-library-card__title,
+html.dark .topic-page--tawhid .twh-hub-card__title,
+html[data-theme="dark"] .topic-page--tawhid .twh-hub-card__title {
+  color: #f4f7f5 !important;
+}
+
+html.dark .dii-page .hub-card__desc,
+html[data-theme="dark"] .dii-page .hub-card__desc,
+html.dark .topic-page--tawhid .hub-card__desc,
+html[data-theme="dark"] .topic-page--tawhid .hub-card__desc,
+html.dark .topic-page--tawhid .kx-library-card__desc,
+html[data-theme="dark"] .topic-page--tawhid .kx-library-card__desc,
+html.dark .topic-page--tawhid .twh-hub-card__desc,
+html[data-theme="dark"] .topic-page--tawhid .twh-hub-card__desc {
+  color: #c8d5cf !important;
+}
+
+html.dark .gl-page .gl-term--open,
+html[data-theme="dark"] .gl-page .gl-term--open,
+html.dark .kx-detail-surface .rsc.rsc--accordion[open],
+html[data-theme="dark"] .kx-detail-surface .rsc.rsc--accordion[open] {
+  background: var(--ii-surface-soft) !important;
+}
+
+@media (max-width: 430px) {
+  .dii-page .hub-card,
+  .topic-page--tawhid .kx-library-card.hub-card {
+    padding: 0.7rem 0.8rem !important;
+  }
+
+  .dii-lang-row,
+  .dii-cta-row {
+    margin-block: 0.35rem 0.55rem !important;
+    gap: 0.4rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gl-page .gl-term__chevron,
+  .kx-detail-surface .rsc.rsc--accordion .rsc__summary::after,
+  .kx-detail-accordion > summary::after {
+    transition: none !important;
+  }
+}

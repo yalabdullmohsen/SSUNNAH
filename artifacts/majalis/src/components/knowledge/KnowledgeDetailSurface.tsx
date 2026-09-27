@@ -34,7 +34,7 @@ export function KnowledgeDetailSurface({
       className={`kx-detail-surface${className ? ` ${className}` : ""}`}
       data-content-type="directory-detail"
     >
-      {visible.map((section) => {
+      {visible.map((section, index) => {
         const variant =
           section.variant === "quote"
             ? "quote"
@@ -49,6 +49,8 @@ export function KnowledgeDetailSurface({
             title={section.title}
             variant={variant}
             className="kx-detail-surface__section"
+            collapsible
+            defaultOpen={index === 0}
           >
             {section.prose ? <ReadingProse text={section.prose} /> : null}
             {section.fields && section.fields.length > 0 ? (

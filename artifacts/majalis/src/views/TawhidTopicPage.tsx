@@ -6,6 +6,7 @@ import { getTawhidTopic } from "@/lib/tawhid-topics";
 import { TopicPage } from "@/components/topic/TopicPage";
 import { KnowledgeLayout } from "@/components/knowledge";
 import "@/styles/pages/tawhid.css";
+import "@/styles/islam-intro-experience.css";
 import { UtilityScreen } from "@/components/design-system/screens";
 
 /**

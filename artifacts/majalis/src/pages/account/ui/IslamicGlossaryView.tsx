@@ -10,6 +10,7 @@ import { Card, Badge } from "@/components/ui-common";
 import { EmptyStateV2 } from "@/components/design-system";
 import { formatArabicNumber } from "@/lib/numerals";
 import "@/styles/pages/glossary.css";
+import "@/styles/islam-intro-experience.css";
 import "@/styles/pages/worship-history-v2.css";
 import { ListScreen } from "@/components/design-system/screens";
 

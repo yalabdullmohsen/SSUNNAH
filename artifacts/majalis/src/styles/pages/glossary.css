@@ -141,6 +141,20 @@
 .gl-term--open {
   border-color: color-mix(in srgb, var(--mj-brand-deep) 50%, var(--ss-border));
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--mj-brand) 25%, transparent);
+  background: color-mix(in srgb, var(--mj-brand) 5%, var(--ss-card-bg, var(--mj-surface)));
+}
+.gl-term--open .gl-term__chevron {
+  transform: rotate(-90deg);
+}
+.gl-term__chevron {
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--mj-brand) 12%, transparent);
+  transition: transform 160ms ease;
+}
+.gl-term__head[aria-expanded="true"] .gl-term__chevron {
+  transform: rotate(-90deg);
 }
 
 .gl-term__head {
