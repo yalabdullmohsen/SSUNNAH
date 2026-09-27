@@ -19,7 +19,8 @@ Living tracker for remediation waves. Do not treat as release truth (see `docs/r
 | **WAVE_ADMIN_W1** | Admin Unicode + 7-center nav | **merged (#2308)** | admin wave docs |
 | **WAVE_PRODUCT_REDESIGN_W1** | Foundation V2 + Card V2 + states + UX audit | **merged (#2309)** | `docs/remediation/waves/WAVE_PRODUCT_REDESIGN_W1_FOUNDATION.md` |
 | **WAVE_PRODUCT_REDESIGN_W2** | Navigation IA + collapsible drawer + canonical href | **merged (#2310)** | `docs/remediation/waves/WAVE_PRODUCT_REDESIGN_W2_NAVIGATION.md` |
-| **WAVE_PRODUCT_REDESIGN_W3** | Card System V2 adoption on shared entry/continue | **in progress** | `docs/remediation/waves/WAVE_PRODUCT_REDESIGN_W3_CARDS.md` |
+| **WAVE_PRODUCT_REDESIGN_W3** | Card System V2 adoption on shared entry/continue | **merged (#2311)** | `docs/remediation/waves/WAVE_PRODUCT_REDESIGN_W3_CARDS.md` |
+| **CI_7500_HUB_CARD_DARK** | HubCard dark title AA on elevated night surface | **merged (#2312)** · main CI #7508 green | `docs/remediation/CI_7500_CONTRAST_ROOT_CAUSE.md` |
 
 ## CI / UI recovery docs
 
