@@ -5,7 +5,6 @@ import { LogIn, LogOut, Settings, UserPlus, X } from "lucide-react";
 import { useAuth } from "./AuthProvider";
 import { usePageSwipe } from "@/hooks/usePageSwipe";
 import { isNavHrefActive } from "@/lib/nav-active";
-import { SIDEBAR_NAV_GROUPS } from "@/lib/sidebar-nav";
 import { DrawerFromRegistry } from "@/components/layout/DrawerFromRegistry";
 import "@/styles/components/sidebar-redesign.css";
 import "@/styles/sunnah-identity-chrome-nav.css";
@@ -134,7 +133,7 @@ export const SideNavDrawer = memo(function SideNavDrawer({
         </header>
 
         <div className="sidebar-body">
-          <DrawerFromRegistry onNavigate={onClose} />
+          <DrawerFromRegistry onNavigate={onClose} active={open} />
 
           <section className="sidebar-section" aria-labelledby="sidebar-sec-session">
             <h2 id="sidebar-sec-session" className="sidebar-section-title">
@@ -210,10 +209,6 @@ export const SideNavDrawer = memo(function SideNavDrawer({
               )}
             </nav>
           </section>
-
-          <div hidden aria-hidden="true">
-            {SIDEBAR_NAV_GROUPS.map((g) => g.id).join(",")}
-          </div>
         </div>
       </aside>
     </div>

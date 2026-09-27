@@ -52,12 +52,12 @@ export const HIDDEN_FROM_NAV_PATHS = new Set<string>([
   "/madhahib",
   "/quran-knowledge", // تحت مركز القرآن الكريم
   "/knowledge-graph",
-  "/flashcards",
+  "/flashcards", // ظاهرة في الدرج عبر allowlist؛ مخفية من الاكتشاف العام
   "/occasions",
   "/calendar",
   "/institutions",
   "/islamic-landmarks",
-  "/ulum-quran",
+  "/ulum-quran", // ظاهرة في الدرج عبر allowlist؛ مخفية من الاكتشاف العام
   "/quran/surahs",
   "/quran-memorization",
   "/quran/memorization-plans",

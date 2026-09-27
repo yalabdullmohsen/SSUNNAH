@@ -73,9 +73,16 @@ console.log("\n=== NavBar.tsx / App.tsx — نقطة دخول البحث موح�
   assert(!appSrc.includes("onTouchStart={onTouchStart}"), "سحب الصفحة لا يفتح البحث من جذر التطبيق");
 
   const sideNavSrc = readFileSync(resolve(appRoot, "src/components/SideNavDrawer.tsx"), "utf-8");
+  const drawerRegistrySrc = readFileSync(
+    resolve(appRoot, "src/components/layout/DrawerFromRegistry.tsx"),
+    "utf-8",
+  );
   const sidebarNavSrc = readFileSync(resolve(appRoot, "src/lib/sidebar-nav.ts"), "utf-8");
   const navigationSrc = readFileSync(resolve(appRoot, "src/lib/navigation.ts"), "utf-8");
-  assert(sideNavSrc.includes("SIDEBAR_NAV_GROUPS"), "القائمة الجانبية مربوطة بالمصدر الموحّد");
+  assert(
+    sideNavSrc.includes("DrawerFromRegistry") && drawerRegistrySrc.includes("SIDEBAR_NAV_GROUPS"),
+    "القائمة الجانبية مربوطة بالمصدر الموحّد",
+  );
   assert(
     sidebarNavSrc.includes("sectionsForSurface") ||
       sidebarNavSrc.includes("/my-learning") ||

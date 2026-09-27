@@ -29,8 +29,10 @@ assert.match(sectionsPage, /MoreHubFromRegistry|SectionsHubFromRegistry/);
 assert.match(sectionsPage, /الأقسام/);
 
 const drawer = readFileSync(join(root, "components/SideNavDrawer.tsx"), "utf8");
-assert.match(drawer, /SIDEBAR_NAV_GROUPS/);
+assert.match(drawer, /DrawerFromRegistry/);
 assert.match(drawer, /sidebar-panel/);
+const drawerRegistry = readFileSync(join(root, "components/layout/DrawerFromRegistry.tsx"), "utf8");
+assert.match(drawerRegistry, /SIDEBAR_NAV_GROUPS/);
 
 const sidebarNav = readFileSync(join(root, "lib/sidebar-nav.ts"), "utf8");
 assert.match(sidebarNav, /getSidebarGroupsFromNavMap|SIDEBAR_NAV_GROUPS/);

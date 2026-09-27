@@ -61,11 +61,11 @@ assert.match(lockSrc, /scrollTo/, "استعادة التمرير");
 assert.match(lockSrc, /#drawer-root/, "لا حذف drawer-root عند التطهير");
 
 const drawerHrefs = SIDEBAR_NAV_GROUPS.flatMap((g) => g.items.map((i) => i.href));
-for (const href of ["/mushaf", "/quran-hub", "/lessons", "/fiqh", "/fawaid", "/miracles", "/sections", "/prayer-times", "/qibla", "/tasbih", "/settings"]) {
+for (const href of ["/mushaf", "/quran-hub", "/lessons", "/fiqh", "/fawaid", "/miracles", "/sections", "/prayer-times", "/qibla", "/duas", "/flashcards", "/settings"]) {
   assert.ok(drawerHrefs.includes(href), `الدرج يشمل ${href}`);
 }
 assert.ok(
-  drawerHrefs.some((h) => h === "/duas" || h === "/adhkar"),
+  drawerHrefs.includes("/adhkar"),
   "الأذكار في الدرج",
 );
 assert.match(registrySrc, /متابعة القراءة/, "متابعة القراءة في الدرج");
