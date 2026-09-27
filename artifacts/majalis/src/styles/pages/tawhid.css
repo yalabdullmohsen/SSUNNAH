@@ -154,12 +154,25 @@ html[data-v2-app="1"] .topic-page--tawhid .tawheed-type-card__title {
   color: var(--mj-brand-deep, #0d4a39) !important;
   font-weight: 800 !important;
 }
-html[data-v2-app="1"] .topic-page--tawhid .kx-library-card .kx-library-card__desc,
-html[data-v2-app="1"] .topic-page--tawhid .hub-card .hub-card__desc,
-html[data-v2-app="1"] .topic-page--tawhid .hub-card .kx-library-card__desc,
-html[data-v2-app="1"] .topic-page--tawhid .twh-hub-card__desc,
-html[data-v2-app="1"] .topic-page--tawhid .tawheed-type-card__desc {
+/* نهاري فقط — لا تُطبَّق على الداكن (كانت تفوز على قواعد dark وتُسقط التباين إلى ~1.46) */
+html[data-v2-app="1"]:not(.dark):not([data-theme="dark"]) .topic-page--tawhid .kx-library-card .kx-library-card__desc,
+html[data-v2-app="1"]:not(.dark):not([data-theme="dark"]) .topic-page--tawhid .hub-card .hub-card__desc,
+html[data-v2-app="1"]:not(.dark):not([data-theme="dark"]) .topic-page--tawhid .hub-card .kx-library-card__desc,
+html[data-v2-app="1"]:not(.dark):not([data-theme="dark"]) .topic-page--tawhid .twh-hub-card__desc,
+html[data-v2-app="1"]:not(.dark):not([data-theme="dark"]) .topic-page--tawhid .tawheed-type-card__desc {
   color: #3a4a42 !important;
+}
+html[data-v2-app="1"].dark .topic-page--tawhid .kx-library-card .kx-library-card__desc,
+html[data-v2-app="1"].dark .topic-page--tawhid .hub-card .hub-card__desc,
+html[data-v2-app="1"].dark .topic-page--tawhid .hub-card .kx-library-card__desc,
+html[data-v2-app="1"].dark .topic-page--tawhid .twh-hub-card__desc,
+html[data-v2-app="1"].dark .topic-page--tawhid .tawheed-type-card__desc,
+html[data-v2-app="1"][data-theme="dark"] .topic-page--tawhid .kx-library-card .kx-library-card__desc,
+html[data-v2-app="1"][data-theme="dark"] .topic-page--tawhid .hub-card .hub-card__desc,
+html[data-v2-app="1"][data-theme="dark"] .topic-page--tawhid .hub-card .kx-library-card__desc,
+html[data-v2-app="1"][data-theme="dark"] .topic-page--tawhid .twh-hub-card__desc,
+html[data-v2-app="1"][data-theme="dark"] .topic-page--tawhid .tawheed-type-card__desc {
+  color: #c8d5cf !important;
 }
 html[data-v2-app="1"] .topic-page--tawhid .hub-card .hub-card__go,
 html[data-v2-app="1"] .topic-page--tawhid .kx-library-card .kx-library-card__action {
