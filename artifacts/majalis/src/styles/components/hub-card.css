@@ -404,19 +404,34 @@ html.dark .hub-card:hover {
   border-color: color-mix(in srgb, var(--mj-brand, #5cc095) 55%, var(--mj-accent, #c4a24a) 15%);
 }
 
-html[data-theme="dark"] .hub-card__title,
-html.dark .hub-card__title {
-  color: var(--text-primary, var(--mj-ink, #ecf2ef));
+/*
+ * CI #7500: لا تستخدم --text-primary/--mj-ink هنا إن أشارت لحبر غني فاتح (#15382D)
+ * على سطح ليلي مرتفع (#24302B) — ثبّت حبر الليل صراحة (AA).
+ */
+html[data-theme="dark"] .hub-card .hub-card__title,
+html.dark .hub-card .hub-card__title,
+html[data-theme="dark"] .hub-card .ss-text--card-title,
+html.dark .hub-card .ss-text--card-title,
+html[data-theme="dark"] .hub-card .cs2-nav__title,
+html.dark .hub-card .cs2-nav__title {
+  color: var(--sf2-text-primary, var(--sf-color-luxury-night-ink, #edf5f0));
 }
 
-html[data-theme="dark"] .hub-card__desc,
-html.dark .hub-card__desc {
-  color: var(--text-secondary, var(--mj-ink-2, #c2cfca));
+html[data-theme="dark"] .hub-card .hub-card__desc,
+html.dark .hub-card .hub-card__desc,
+html[data-theme="dark"] .hub-card .ss-text--supporting,
+html.dark .hub-card .ss-text--supporting,
+html[data-theme="dark"] .hub-card .cs2-nav__desc,
+html.dark .hub-card .cs2-nav__desc {
+  color: var(--mj-ink-2, #c2cfca);
+  opacity: 1;
 }
 
-html[data-theme="dark"] .hub-card__meta,
-html.dark .hub-card__meta {
-  color: color-mix(in srgb, var(--mj-brand, #5cc095) 70%, #ecf2ef);
+html[data-theme="dark"] .hub-card .hub-card__meta,
+html.dark .hub-card .hub-card__meta,
+html[data-theme="dark"] .hub-card .cs2-nav__meta,
+html.dark .hub-card .cs2-nav__meta {
+  color: color-mix(in srgb, var(--mj-brand, #5cc095) 70%, #edf5f0);
 }
 
 html[data-theme="dark"] .hub-card__icon,
