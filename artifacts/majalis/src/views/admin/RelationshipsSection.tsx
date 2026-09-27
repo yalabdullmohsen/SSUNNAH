@@ -12,20 +12,20 @@ import {
 import { useAdminShell } from "./AdminShell";
 
 const SOURCE_TYPES: { value: KnowledgeSourceType; label: string }[] = [
-  { value: "scholar", label: "\u0639\u0627\u0644\u0645 / \u0634\u064a\u062e" },
-  { value: "lesson",  label: "\u062f\u0631\u0633" },
-  { value: "book",    label: "\u0643\u062a\u0627\u0628" },
-  { value: "fawaid",  label: "\u0641\u0627\u0626\u062f\u0629" },
-  { value: "question",label: "\u0633\u0624\u0627\u0644" },
+  { value: "scholar", label: "عالم / شيخ" },
+  { value: "lesson",  label: "درس" },
+  { value: "book",    label: "كتاب" },
+  { value: "fawaid",  label: "فائدة" },
+  { value: "question",label: "سؤال" },
 ];
 
 const REL_TYPES: { value: KnowledgeRelType; label: string }[] = [
-  { value: "\u0634\u064a\u062e_\u062a\u0644\u0645\u064a\u0630",   label: "\u0634\u064a\u062e \u2192 \u062a\u0644\u0645\u064a\u0630" },
-  { value: "\u0645\u0624\u0644\u0641_\u0643\u062a\u0627\u0628",   label: "\u0645\u0624\u0644\u0641 \u2192 \u0643\u062a\u0627\u0628" },
-  { value: "\u0634\u0631\u062d_\u0644\u0643\u062a\u0627\u0628",   label: "\u0634\u0631\u062d \u2192 \u0643\u062a\u0627\u0628" },
-  { value: "\u0641\u062a\u0648\u0649_\u0641\u064a_\u0628\u0627\u0628", label: "\u0641\u062a\u0648\u0649 \u0641\u064a \u0628\u0627\u0628 \u0641\u0642\u0647\u064a" },
-  { value: "\u062f\u0631\u0633_\u0639\u0646_\u0643\u062a\u0627\u0628", label: "\u062f\u0631\u0633 \u0639\u0646 \u0643\u062a\u0627\u0628" },
-  { value: "\u0645\u0631\u062a\u0628\u0637",       label: "\u0645\u0631\u062a\u0628\u0637 \u0639\u0645\u0648\u0645\u064b\u0627" },
+  { value: "شيخ_تلميذ",   label: "شيخ → تلميذ" },
+  { value: "مؤلف_كتاب",   label: "مؤلف → كتاب" },
+  { value: "شرح_لكتاب",   label: "شرح → كتاب" },
+  { value: "فتوى_في_باب", label: "فتوى في باب فقهي" },
+  { value: "درس_عن_كتاب", label: "درس عن كتاب" },
+  { value: "مرتبط",       label: "مرتبط عمومًا" },
 ];
 
 const EMPTY_FORM = {
@@ -33,7 +33,7 @@ const EMPTY_FORM = {
   source_id: "",
   target_type: "lesson" as KnowledgeSourceType,
   target_id: "",
-  relationship_type: "\u0645\u0631\u062a\u0628\u0637" as KnowledgeRelType,
+  relationship_type: "مرتبط" as KnowledgeRelType,
   label: "",
   is_verified: false,
   source_reference: "",
@@ -85,7 +85,7 @@ export function RelationshipsSection() {
 
   async function handleSave() {
     if (!form.source_id.trim() || !form.target_id.trim()) {
-      showError("\u064a\u062c\u0628 \u0625\u062f\u062e\u0627\u0644 \u0645\u0639\u0631\u0651\u0641 \u0627\u0644\u0645\u0635\u062f\u0631 \u0648\u0627\u0644\u0647\u062f\u0641");
+      showError("يجب إدخال معرّف المصدر والهدف");
       return;
     }
     setSaving(true);
@@ -101,29 +101,29 @@ export function RelationshipsSection() {
     });
     setSaving(false);
     if (result.ok) {
-      showSuccess(editId ? "\u062a\u0645 \u062a\u062d\u062f\u064a\u062b \u0627\u0644\u0639\u0644\u0627\u0642\u0629" : "\u062a\u0645 \u0625\u0636\u0627\u0641\u0629 \u0627\u0644\u0639\u0644\u0627\u0642\u0629");
+      showSuccess(editId ? "تم تحديث العلاقة" : "تم إضافة العلاقة");
       resetForm();
       await load();
     } else {
-      showError(`\u0641\u0634\u0644 \u0627\u0644\u062d\u0641\u0638: ${result.error ?? "\u062e\u0637\u0623 \u063a\u064a\u0631 \u0645\u0639\u0631\u0648\u0641"}`);
+      showError(`فشل الحفظ: ${result.error ?? "خطأ غير معروف"}`);
     }
   }
 
   async function handleToggleVerified(r: KnowledgeRelationship) {
     const ok = await setKnowledgeRelVerified(r.id, !r.is_verified);
     if (ok) {
-      showSuccess(r.is_verified ? "\u062a\u0645 \u0625\u0644\u063a\u0627\u0621 \u0627\u0644\u062a\u062d\u0642\u0642" : "\u062a\u0645 \u0627\u0644\u062a\u062d\u0642\u0642 \u0645\u0646 \u0627\u0644\u0639\u0644\u0627\u0642\u0629");
+      showSuccess(r.is_verified ? "تم إلغاء التحقق" : "تم التحقق من العلاقة");
       await load();
     } else {
-      showError("\u0641\u0634\u0644 \u062a\u063a\u064a\u064a\u0631 \u062d\u0627\u0644\u0629 \u0627\u0644\u062a\u062d\u0642\u0642");
+      showError("فشل تغيير حالة التحقق");
     }
   }
 
   async function handleDelete(r: KnowledgeRelationship) {
-    if (!window.confirm(`\u062d\u0630\u0641 \u0627\u0644\u0639\u0644\u0627\u0642\u0629: ${r.source_id} \u2192 ${r.target_id}?`)) return;
+    if (!window.confirm(`حذف العلاقة: ${r.source_id} → ${r.target_id}?`)) return;
     const ok = await deleteKnowledgeRelationship(r.id);
-    if (ok) { showSuccess("\u062a\u0645 \u0627\u0644\u062d\u0630\u0641"); await load(); }
-    else showError("\u0641\u0634\u0644 \u0627\u0644\u062d\u0630\u0641");
+    if (ok) { showSuccess("تم الحذف"); await load(); }
+    else showError("فشل الحذف");
   }
 
   const filtered = rows.filter((r) => {
@@ -146,14 +146,14 @@ export function RelationshipsSection() {
   return (
     <div className="rel-page">
       <h2 className="rel-title">
-        \u0627\u0644\u0631\u0633\u0645 \u0627\u0644\u0628\u064a\u0627\u0646\u064a \u0627\u0644\u0645\u0639\u0631\u0641\u064a \u2014 \u0627\u0644\u0639\u0644\u0627\u0642\u0627\u062a
+        الرسم البياني المعرفي — العلاقات
       </h2>
 
       <div className="rel-stats-row">
         {[
-          { label: "\u0627\u0644\u0625\u062c\u0645\u0627\u0644\u064a", value: stats.total },
-          { label: "\u0645\u062d\u0642\u0642\u0629", value: stats.verified },
-          { label: "\u0642\u064a\u062f \u0627\u0644\u0645\u0631\u0627\u062c\u0639\u0629", value: stats.pending },
+          { label: "الإجمالي", value: stats.total },
+          { label: "محققة", value: stats.verified },
+          { label: "قيد المراجعة", value: stats.pending },
         ].map((s) => (
           <div key={s.label} className="rel-stat">
             <div className="rel-stat__value">{s.value}</div>
@@ -164,89 +164,89 @@ export function RelationshipsSection() {
 
       <div className="rel-form">
         <h3 className="rel-form-h3">
-          {editId ? "\u062a\u0639\u062f\u064a\u0644 \u0627\u0644\u0639\u0644\u0627\u0642\u0629" : "\u0625\u0636\u0627\u0641\u0629 \u0639\u0644\u0627\u0642\u0629 \u062c\u062f\u064a\u062f\u0629"}
+          {editId ? "تعديل العلاقة" : "إضافة علاقة جديدة"}
         </h3>
         <div className="rel-form-grid">
           <div className="rel-field">
-            <label className="rel-label" htmlFor="rel-source-type">\u0646\u0648\u0639 \u0627\u0644\u0645\u0635\u062f\u0631</label>
+            <label className="rel-label" htmlFor="rel-source-type">نوع المصدر</label>
             <select id="rel-source-type" className="rel-select" value={F.source_type}
               onChange={(e) => setForm((p) => ({ ...p, source_type: e.target.value as KnowledgeSourceType }))}>
               {SOURCE_TYPES.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
             </select>
           </div>
           <div className="rel-field">
-            <label className="rel-label" htmlFor="rel-source-id">\u0645\u0639\u0631\u0651\u0641 \u0627\u0644\u0645\u0635\u062f\u0631 (ID)</label>
-            <input id="rel-source-id" className="rel-input" value={F.source_id} placeholder="uuid \u0623\u0648 external_key..."
+            <label className="rel-label" htmlFor="rel-source-id">معرّف المصدر (ID)</label>
+            <input id="rel-source-id" className="rel-input" value={F.source_id} placeholder="uuid أو external_key..."
               onChange={(e) => setForm((p) => ({ ...p, source_id: e.target.value }))} />
           </div>
           <div className="rel-field">
-            <label className="rel-label" htmlFor="rel-target-type">\u0646\u0648\u0639 \u0627\u0644\u0647\u062f\u0641</label>
+            <label className="rel-label" htmlFor="rel-target-type">نوع الهدف</label>
             <select id="rel-target-type" className="rel-select" value={F.target_type}
               onChange={(e) => setForm((p) => ({ ...p, target_type: e.target.value as KnowledgeSourceType }))}>
               {SOURCE_TYPES.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
             </select>
           </div>
           <div className="rel-field">
-            <label className="rel-label" htmlFor="rel-target-id">\u0645\u0639\u0631\u0651\u0641 \u0627\u0644\u0647\u062f\u0641 (ID)</label>
-            <input id="rel-target-id" className="rel-input" value={F.target_id} placeholder="uuid \u0623\u0648 external_key..."
+            <label className="rel-label" htmlFor="rel-target-id">معرّف الهدف (ID)</label>
+            <input id="rel-target-id" className="rel-input" value={F.target_id} placeholder="uuid أو external_key..."
               onChange={(e) => setForm((p) => ({ ...p, target_id: e.target.value }))} />
           </div>
           <div className="rel-field">
-            <label className="rel-label" htmlFor="rel-relationship-type">\u0646\u0648\u0639 \u0627\u0644\u0639\u0644\u0627\u0642\u0629</label>
+            <label className="rel-label" htmlFor="rel-relationship-type">نوع العلاقة</label>
             <select id="rel-relationship-type" className="rel-select" value={F.relationship_type}
               onChange={(e) => setForm((p) => ({ ...p, relationship_type: e.target.value as KnowledgeRelType }))}>
               {REL_TYPES.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
             </select>
           </div>
           <div className="rel-field">
-            <label className="rel-label" htmlFor="rel-label-input">\u062a\u0633\u0645\u064a\u0629 \u0645\u062e\u062a\u0635\u0631\u0629 (\u0627\u062e\u062a\u064a\u0627\u0631\u064a)</label>
-            <input id="rel-label-input" className="rel-input" value={F.label} placeholder="\u0634\u0631\u062d \u0627\u0628\u0646 \u0639\u062b\u064a\u0645\u064a\u0646..."
+            <label className="rel-label" htmlFor="rel-label-input">تسمية مختصرة (اختياري)</label>
+            <input id="rel-label-input" className="rel-input" value={F.label} placeholder="شرح ابن عثيمين..."
               onChange={(e) => setForm((p) => ({ ...p, label: e.target.value }))} />
           </div>
           <div className="rel-field rel-full-col">
-            <label className="rel-label" htmlFor="rel-source-reference">\u0627\u0644\u0645\u0635\u062f\u0631 \u0648\u0627\u0644\u0645\u0631\u062c\u0639 (\u0627\u062e\u062a\u064a\u0627\u0631\u064a)</label>
-            <input id="rel-source-reference" className="rel-input" value={F.source_reference} placeholder="\u0643\u062a\u0627\u0628 \u0627\u0644\u0633\u064a\u0631 / \u0627\u0644\u0637\u0628\u0642\u0627\u062a \u0627\u0644\u0643\u0628\u0631\u0649..."
+            <label className="rel-label" htmlFor="rel-source-reference">المصدر والمرجع (اختياري)</label>
+            <input id="rel-source-reference" className="rel-input" value={F.source_reference} placeholder="كتاب السير / الطبقات الكبرى..."
               onChange={(e) => setForm((p) => ({ ...p, source_reference: e.target.value }))} />
           </div>
           <div className="rel-verified-row">
             <input type="checkbox" id="is_verified_chk" checked={F.is_verified}
               onChange={(e) => setForm((p) => ({ ...p, is_verified: e.target.checked }))} />
             <label htmlFor="is_verified_chk" className="rel-verified-lbl">
-              \u0645\u062d\u0642\u0642\u0629 \u0648\u0645\u0639\u062a\u0645\u062f\u0629
+              محققة ومعتمدة
             </label>
           </div>
         </div>
         <div className="rel-form-actions">
           <button type="button" disabled={saving} onClick={handleSave} className="rel-save-btn">
-            {saving ? "\u062c\u0627\u0631\u0650 \u0627\u0644\u062d\u0641\u0638..." : editId ? "\u062a\u062d\u062f\u064a\u062b" : "\u0625\u0636\u0627\u0641\u0629"}
+            {saving ? "جارِ الحفظ..." : editId ? "تحديث" : "إضافة"}
           </button>
           {editId && (
             <button type="button" onClick={resetForm} className="rel-cancel-btn">
-              \u0625\u0644\u063a\u0627\u0621
+              إلغاء
             </button>
           )}
         </div>
       </div>
 
       <div className="rel-filters">
-        <input className="rel-search" value={search} placeholder="\u0628\u062d\u062b \u0628\u0627\u0644\u0645\u0639\u0631\u0651\u0641 \u0623\u0648 \u0627\u0644\u062a\u0633\u0645\u064a\u0629..."
+        <input className="rel-search" value={search} placeholder="بحث بالمعرّف أو التسمية..."
           onChange={(e) => setSearch(e.target.value)} />
         {(["all", "verified", "pending"] as const).map((v) => (
           <button key={v} type="button" onClick={() => setFilterVerified(v)}
             className="rel-filter-btn"
             style={filterVerified === v ? { "--rel-fb-bg": "var(--mj-brand)", "--rel-fb-color": "#fff" } as React.CSSProperties : undefined}>
-            {v === "all" ? "\u0627\u0644\u0643\u0644" : v === "verified" ? "\u0645\u062d\u0642\u0642\u0629" : "\u0642\u064a\u062f \u0627\u0644\u0645\u0631\u0627\u062c\u0639\u0629"}
+            {v === "all" ? "الكل" : v === "verified" ? "محققة" : "قيد المراجعة"}
           </button>
         ))}
       </div>
 
       {loading ? (
-        <p className="rel-empty">\u062c\u0627\u0631\u0650 \u0627\u0644\u062a\u062d\u0645\u064a\u0644...</p>
+        <p className="rel-empty">جارِ التحميل...</p>
       ) : filtered.length === 0 ? (
         <p className="rel-empty">
           {rows.length === 0
-            ? "\u0644\u0627 \u062a\u0648\u062c\u062f \u0639\u0644\u0627\u0642\u0627\u062a \u0628\u0639\u062f \u2014 \u0623\u0636\u0641 \u0623\u0648\u0644 \u0639\u0644\u0627\u0642\u0629 \u0623\u0639\u0644\u0627\u0647."
-            : "\u0644\u0627 \u0646\u062a\u0627\u0626\u062c \u0644\u0644\u0641\u0644\u062a\u0631 \u0627\u0644\u0645\u062d\u062f\u062f."}
+            ? "لا توجد علاقات بعد — أضف أول علاقة أعلاه."
+            : "لا نتائج للفلتر المحدد."}
         </p>
       ) : (
         <div className="rel-list">
@@ -258,17 +258,17 @@ export function RelationshipsSection() {
                     <span className="rel-source-tag">
                       {SOURCE_TYPES.find((t) => t.value === r.source_type)?.label ?? r.source_type}
                     </span>
-                    <code className="rel-code">{r.source_id.slice(0, 20)}{r.source_id.length > 20 ? "\u2026" : ""}</code>
+                    <code className="rel-code">{r.source_id.slice(0, 20)}{r.source_id.length > 20 ? "…" : ""}</code>
                     <span className="rel-rel-type">
                       {REL_TYPES.find((t) => t.value === r.relationship_type)?.label ?? r.relationship_type}
                     </span>
                     <span className="rel-target-tag">
                       {SOURCE_TYPES.find((t) => t.value === r.target_type)?.label ?? r.target_type}
                     </span>
-                    <code className="rel-code">{r.target_id.slice(0, 20)}{r.target_id.length > 20 ? "\u2026" : ""}</code>
+                    <code className="rel-code">{r.target_id.slice(0, 20)}{r.target_id.length > 20 ? "…" : ""}</code>
                   </div>
                   {r.label && <span className="rel-label-text">{r.label}</span>}
-                  {r.source_reference && <span className="rel-ref-text">\u0627\u0644\u0645\u0631\u062c\u0639: {r.source_reference}</span>}
+                  {r.source_reference && <span className="rel-ref-text">المرجع: {r.source_reference}</span>}
                 </div>
                 <div className="rel-card-actions">
                   <span
@@ -278,18 +278,18 @@ export function RelationshipsSection() {
                       "--rel-vb-color": r.is_verified ? "var(--mj-brand)" : "var(--mj-brand-deep)",
                     } as React.CSSProperties}
                   >
-                    {r.is_verified ? "\u0645\u062d\u0642\u0642\u0629" : "\u0642\u064a\u062f \u0627\u0644\u0645\u0631\u0627\u062c\u0639\u0629"}
+                    {r.is_verified ? "محققة" : "قيد المراجعة"}
                   </span>
                   <button type="button" onClick={() => handleToggleVerified(r)}
                     className="rel-toggle-btn"
                     style={{ "--rel-tb-bg": r.is_verified ? "rgba(23,61,53,0.08)" : "#d1fae5" } as React.CSSProperties}>
-                    {r.is_verified ? "\u0625\u0644\u063a\u0627\u0621 \u0627\u0644\u062a\u062d\u0642\u0642" : "\u062a\u062d\u0642\u0642"}
+                    {r.is_verified ? "إلغاء التحقق" : "تحقق"}
                   </button>
                   <button type="button" onClick={() => startEdit(r)} className="rel-edit-btn">
-                    \u062a\u0639\u062f\u064a\u0644
+                    تعديل
                   </button>
                   <button type="button" onClick={() => handleDelete(r)} className="rel-del-btn">
-                    \u062d\u0630\u0641
+                    حذف
                   </button>
                 </div>
               </div>

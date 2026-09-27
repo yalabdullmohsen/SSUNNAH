@@ -57,7 +57,7 @@ function AuditCenter() {
           أحداث واجهة Admin v3 المحلية. لا يغيّر الصلاحيات أو RLS.
         </p>
         <p className="av3-perm" aria-label="الصلاحيات المطلوبة">
-          صلاحيات: {ADMIN_V3_CENTERS.audit.permissions.join(" · ")}
+          صلاحيات: admin.read · audit.read
         </p>
       </header>
       {events.length === 0 ? (
@@ -82,7 +82,9 @@ export function AdminV3CenterWorkspace() {
   const centerMeta = resolveAdminV3Center(location);
   const centerId = centerMeta.id as AdminV3CenterId;
   const def =
-    centerId !== "home" ? ADMIN_V3_CENTERS[centerId as Exclude<AdminV3CenterId, "home">] : null;
+    centerId !== "overview"
+      ? ADMIN_V3_CENTERS[centerId as Exclude<AdminV3CenterId, "overview">]
+      : null;
 
   const [query, setQuery] = useState("");
   const [tag, setTag] = useState("الكل");
@@ -111,8 +113,11 @@ export function AdminV3CenterWorkspace() {
     return () => window.clearTimeout(t);
   }, [location, centerId]);
 
-  if (centerId === "home") return null;
-  if (centerId === "audit") return <AuditCenter />;
+  if (centerId === "overview") return null;
+  const wantsAudit =
+    /\/admin\/v3\/audit(?:\/|$)/.test(location.split("?")[0] || "") ||
+    /(?:^|[?&])view=audit(?:&|$)/.test(location.includes("?") ? location.slice(location.indexOf("?")) : "");
+  if (wantsAudit) return <AuditCenter />;
   if (!def) return <AdminV3ErrorState message="مركز غير معروف." />;
   if (status === "loading") return <AdminV3Loading />;
   if (status === "error") {

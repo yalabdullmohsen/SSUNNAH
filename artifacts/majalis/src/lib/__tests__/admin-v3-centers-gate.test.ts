@@ -1,5 +1,5 @@
 /**
- * Wave 6 — Admin v3 Centers gate.
+ * Wave 1 — Admin v3 Centers gate (IA: 7 وجهات).
  * تشغيل: node --import tsx src/lib/__tests__/admin-v3-centers-gate.test.ts
  */
 import assert from "node:assert/strict";
@@ -17,15 +17,12 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
 const required = [
+  "reviews",
   "content",
-  "review",
-  "users",
-  "notifications",
+  "taxonomy",
   "analytics",
-  "automation",
-  "system",
+  "community",
   "settings",
-  "audit",
 ] as const;
 
 for (const id of required) {
@@ -35,9 +32,10 @@ for (const id of required) {
 }
 
 assert.ok(listCenterTools("content").length >= 10);
-assert.ok(listCenterTools("review").length >= 4);
-assert.ok(listCenterTools("automation").length >= 6);
-assert.equal(listCenterTools("audit").length, 0);
+assert.ok(listCenterTools("reviews").length >= 4);
+assert.ok(listCenterTools("taxonomy").length >= 1);
+assert.ok(listCenterTools("settings").length >= 6);
+assert.ok(listCenterTools("community").length >= 3);
 
 const tools = listCenterTools("content");
 assert.ok(filterCenterTools(tools, "درس", "الكل").length > 0);

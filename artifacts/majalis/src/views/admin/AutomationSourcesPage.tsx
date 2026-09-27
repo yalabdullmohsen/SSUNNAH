@@ -21,14 +21,14 @@ const EMPTY: TrustedLessonSource = {
   source_type: "website",
   trust_level: "unknown",
   auto_publish_allowed: false,
-  country: "\u0627\u0644\u0643\u0648\u064a\u062a",
-  city: "\u0627\u0644\u0639\u0627\u0635\u0645\u0629",
-  category: "\u062f\u0631\u0648\u0633",
+  country: "الكويت",
+  city: "العاصمة",
+  category: "دروس",
   active: true,
 };
 
 function formatDt(iso?: string) {
-  if (!iso) return "\u2014";
+  if (!iso) return "—";
   try {
     return new Intl.DateTimeFormat("ar", { dateStyle: "short", timeStyle: "short" }).format(new Date(iso));
   } catch {
@@ -65,7 +65,7 @@ function AutomationSourcesContent() {
       setForm({ ...EMPTY });
       load();
     } catch (e) {
-      showError(e instanceof Error ? e.message : "\u062a\u0639\u0630\u0631 \u062d\u0641\u0638 \u0627\u0644\u0645\u0635\u062f\u0631.");
+      showError(e instanceof Error ? e.message : "تعذر حفظ المصدر.");
     } finally {
       setBusy(false);
     }
@@ -85,45 +85,45 @@ function AutomationSourcesContent() {
     <div>
       <div className="asp-header">
         <div>
-          <h2 className="asp-title">\u0645\u0635\u0627\u062f\u0631 \u0627\u0644\u0645\u062d\u062a\u0648\u0649 \u2014 \u0623\u0636\u0641 \u0648\u0627\u0646\u0633\u064e</h2>
+          <h2 className="asp-title">مصادر المحتوى — أضف وانسَ</h2>
           <p className="asp-subtitle">
-            \u0623\u0636\u0641 \u0645\u0635\u062f\u0631\u064b\u0627 \u0648\u0627\u062d\u062f\u064b\u0627 (\u0625\u0646\u0633\u062a\u063a\u0631\u0627\u0645\u060c \u0645\u0648\u0642\u0639\u060c RSS\u060c \u062a\u064a\u0644\u064a\u062c\u0631\u0627\u0645\u060c \u064a\u0648\u062a\u064a\u0648\u0628\u060c X\u2026) \u2014 \u0627\u0644\u0646\u0638\u0627\u0645 \u064a\u062a\u0627\u0628\u0639\u0647 \u0643\u0644 15 \u062f\u0642\u064a\u0642\u0629 \u0648\u064a\u0633\u062a\u062e\u0631\u062c \u0648\u064a\u0646\u0634\u0631 \u062a\u0644\u0642\u0627\u0626\u064a\u064b\u0627.
+            أضف مصدرًا واحدًا (إنستغرام، موقع، RSS، تيليجرام، يوتيوب، X…) — النظام يتابعه كل 15 دقيقة ويستخرج وينشر تلقائيًا.
           </p>
         </div>
         <div className="asp-links">
           <Link href="/admin/integrations/instagram" className="asp-link">Instagram API</Link>
           <Link href="/admin/automation/center" className="asp-link">Automation Center</Link>
-          <Link href="/admin/automation/dashboard" className="asp-link">\u0644\u0648\u062d\u0629 \u0627\u0644\u0645\u0631\u0627\u0642\u0628\u0629</Link>
-          <Link href="/admin/review-center" className="asp-link">\u0645\u0631\u0643\u0632 \u0627\u0644\u0645\u0631\u0627\u062c\u0639\u0629</Link>
-          <Link href="/admin" className="asp-link">\u2190 \u0644\u0648\u062d\u0629 \u0627\u0644\u0625\u062f\u0627\u0631\u0629</Link>
+          <Link href="/admin/automation/dashboard" className="asp-link">لوحة المراقبة</Link>
+          <Link href="/admin/review-center" className="asp-link">مركز المراجعة</Link>
+          <Link href="/admin" className="asp-link">← لوحة الإدارة</Link>
         </div>
       </div>
 
       <div className="asp-notice">
-        <strong>Phase 5:</strong> \u0628\u0639\u062f \u0627\u0644\u062d\u0641\u0638 \u064a\u064f\u0646\u0634\u0623 Job \u062a\u0644\u0642\u0627\u0626\u064a (\u0643\u0644 15 \u062f\u0642\u064a\u0642\u0629) \u2014 Vision AI + Matching + SEO \u0628\u062f\u0648\u0646 build \u062c\u062f\u064a\u062f.{" "}
-        <strong>Instagram:</strong> \u064a\u062a\u0637\u0644\u0628 Graph API \u0644\u0644\u062c\u0644\u0628 \u0627\u0644\u0643\u0627\u0645\u0644\u061b \u0628\u062f\u0648\u0646\u0647 \u062a\u064f\u0646\u0634\u0623 \u0645\u0633\u0648\u062f\u0627\u062a \u0644\u0644\u0645\u0631\u0627\u062c\u0639\u0629.
+        <strong>Phase 5:</strong> بعد الحفظ يُنشأ Job تلقائي (كل 15 دقيقة) — Vision AI + Matching + SEO بدون build جديد.{" "}
+        <strong>Instagram:</strong> يتطلب Graph API للجلب الكامل؛ بدونه تُنشأ مسودات للمراجعة.
       </div>
 
       <div className="asp-actions">
         <button type="button" disabled={busy} onClick={() => { setForm({ ...EMPTY }); setShowForm(true); }} className="asp-add-btn">
-          + \u0625\u0636\u0627\u0641\u0629 \u0645\u0635\u062f\u0631
+          + إضافة مصدر
         </button>
         <button type="button" disabled={busy} onClick={() => onRunMonitor()} className="asp-run-btn">
-          \u0641\u062d\u0635 \u0627\u0644\u0622\u0646 (\u0643\u0644 \u0627\u0644\u0645\u0635\u0627\u062f\u0631)
+          فحص الآن (كل المصادر)
         </button>
       </div>
 
       {showForm && (
         <section className="asp-form">
-          <h3 className="asp-form-h3">{form.id ? "\u062a\u0639\u062f\u064a\u0644 \u0645\u0635\u062f\u0631" : "\u0645\u0635\u062f\u0631 \u062c\u062f\u064a\u062f"}</h3>
+          <h3 className="asp-form-h3">{form.id ? "تعديل مصدر" : "مصدر جديد"}</h3>
           <div className="asp-form-grid">
-            <input placeholder="\u0627\u0633\u0645 \u0627\u0644\u0645\u0635\u062f\u0631" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="adm-input" />
-            <input placeholder="\u0627\u0644\u0631\u0627\u0628\u0637" value={form.url} onChange={(e) => setForm({ ...form, url: e.target.value })} className="adm-input" dir="ltr" />
+            <input placeholder="اسم المصدر" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="adm-input" />
+            <input placeholder="الرابط" value={form.url} onChange={(e) => setForm({ ...form, url: e.target.value })} className="adm-input" dir="ltr" />
             <select value={form.source_type} onChange={(e) => setForm({ ...form, source_type: e.target.value, platform: e.target.value })} className="adm-input">
               {SOURCE_TYPES.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
             </select>
-            <input placeholder="\u0627\u0644\u062f\u0648\u0644\u0629" value={form.country || ""} onChange={(e) => setForm({ ...form, country: e.target.value })} className="adm-input" />
-            <input placeholder="\u0627\u0644\u0645\u062f\u064a\u0646\u0629" value={form.city || ""} onChange={(e) => setForm({ ...form, city: e.target.value })} className="adm-input" />
+            <input placeholder="الدولة" value={form.country || ""} onChange={(e) => setForm({ ...form, country: e.target.value })} className="adm-input" />
+            <input placeholder="المدينة" value={form.city || ""} onChange={(e) => setForm({ ...form, city: e.target.value })} className="adm-input" />
             <select value={form.trust_level} onChange={(e) => setForm({ ...form, trust_level: e.target.value })} className="adm-input">
               {TRUST_LEVELS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
             </select>
@@ -134,12 +134,12 @@ function AutomationSourcesContent() {
             </label>
             <label className="asp-checkbox-label">
               <input type="checkbox" checked={form.active} onChange={(e) => setForm({ ...form, active: e.target.checked })} />
-              \u0646\u0634\u0637
+              نشط
             </label>
           </div>
           <div className="asp-form-actions">
-            <button type="button" disabled={busy} onClick={onSave} className="asp-save-btn">\u062d\u0641\u0638</button>
-            <button type="button" onClick={() => setShowForm(false)} className="asp-cancel-btn">\u0625\u0644\u063a\u0627\u0621</button>
+            <button type="button" disabled={busy} onClick={onSave} className="asp-save-btn">حفظ</button>
+            <button type="button" onClick={() => setShowForm(false)} className="asp-cancel-btn">إلغاء</button>
           </div>
         </section>
       )}
@@ -153,15 +153,15 @@ function AutomationSourcesContent() {
                   <strong className="asp-card-name">{s.name}</strong>
                   <p className="asp-card-meta">
                     {(s as TrustedLessonSource & { config?: { source_subtype?: string; handle?: string } }).config?.handle || s.source_type}
-                    {" \u00b7 "}
+                    {" · "}
                     {(s as TrustedLessonSource & { config?: { source_subtype?: string } }).config?.source_subtype || s.category}
-                    {" \u00b7 "}
-                    {s.trust_level} \u00b7 {s.active ? "\u0646\u0634\u0637" : "\u0645\u0639\u0637\u0651\u0644"}
-                    {s.auto_publish_allowed ? " \u00b7 Auto-Publish \u2713" : ""}
+                    {" · "}
+                    {s.trust_level} · {s.active ? "نشط" : "معطّل"}
+                    {s.auto_publish_allowed ? " · Auto-Publish ✓" : ""}
                   </p>
                   <a href={s.url} target="_blank" rel="noopener noreferrer" className="asp-card-url">{s.url}</a>
                   <p className="asp-card-dates">
-                    \u0622\u062e\u0631 \u0641\u062d\u0635: {formatDt(s.last_checked_at)} \u00b7 \u0646\u062c\u0627\u062d: {formatDt(s.last_success_at)} \u00b7 \u0623\u062e\u0637\u0627\u0621: {s.failure_count ?? 0}
+                    آخر فحص: {formatDt(s.last_checked_at)} · نجاح: {formatDt(s.last_success_at)} · أخطاء: {s.failure_count ?? 0}
                   </p>
                   {s.last_error && <p className="asp-card-error">{s.last_error}</p>}
                   {Boolean(s.content_types_allowed?.length) && (
@@ -174,15 +174,15 @@ function AutomationSourcesContent() {
                   <InstagramManualAssistPanel source={s} onDone={load} />
                 </div>
                 <div className="asp-card-actions">
-                  <button type="button" disabled={busy} onClick={() => toggleTrustedSource(s.id!, !s.active).then(load).catch(() => showError("\u062a\u0639\u0630\u0631 \u062a\u062d\u062f\u064a\u062b \u062d\u0627\u0644\u0629 \u0627\u0644\u0645\u0635\u062f\u0631."))} className="asp-small-btn">
-                    {s.active ? "\u062a\u0639\u0637\u064a\u0644" : "\u062a\u0641\u0639\u064a\u0644"}
+                  <button type="button" disabled={busy} onClick={() => toggleTrustedSource(s.id!, !s.active).then(load).catch(() => showError("تعذر تحديث حالة المصدر."))} className="asp-small-btn">
+                    {s.active ? "تعطيل" : "تفعيل"}
                   </button>
-                  <button type="button" disabled={busy} onClick={() => toggleAutoPublish(s.id!).then(load).catch(() => showError("\u062a\u0639\u0630\u0631 \u062a\u062d\u062f\u064a\u062b \u0627\u0644\u0646\u0634\u0631 \u0627\u0644\u062a\u0644\u0642\u0627\u0626\u064a."))} className="asp-small-btn">
+                  <button type="button" disabled={busy} onClick={() => toggleAutoPublish(s.id!).then(load).catch(() => showError("تعذر تحديث النشر التلقائي."))} className="asp-small-btn">
                     Auto-Publish
                   </button>
-                  <button type="button" disabled={busy} onClick={() => { setForm(s); setShowForm(true); }} className="asp-small-btn">\u062a\u0639\u062f\u064a\u0644</button>
+                  <button type="button" disabled={busy} onClick={() => { setForm(s); setShowForm(true); }} className="asp-small-btn">تعديل</button>
                   <button type="button" disabled={busy} onClick={() => onRunMonitor(s.id)} className="asp-small-btn asp-small-btn--accent">
-                    \u0641\u062d\u0635 \u0627\u0644\u0622\u0646
+                    فحص الآن
                   </button>
                 </div>
               </div>

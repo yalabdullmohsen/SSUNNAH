@@ -1,24 +1,31 @@
 /**
- * تنقّل Admin v3 — مراكز Wave 5/6.
- * Legacy يبقى على /admin حتى Wave 7.
+ * تنقّل Admin v3 — بنية معلومات موجة 1 (7 وجهات فقط).
+ * Legacy CRUD يبقى على /admin?section= حتى موجات لاحقة.
  */
 export type AdminV3CenterId =
-  | "home"
+  | "overview"
+  | "reviews"
   | "content"
+  | "taxonomy"
+  | "analytics"
+  | "community"
+  | "settings";
+
+/** معرفات قديمة — تُحوَّل إلى المراكز الجديدة */
+export type AdminV3LegacyCenterId =
+  | "home"
   | "review"
   | "users"
   | "notifications"
-  | "analytics"
   | "automation"
   | "system"
-  | "settings"
   | "audit";
 
 export type AdminV3NavItem = {
   id: AdminV3CenterId;
   label: string;
   path: string;
-  /** عنصر Bottom Nav للهاتف (5 فقط) */
+  /** عنصر Bottom Nav للهاتف */
   mobilePrimary?: boolean;
   /** يظهر تحت «المزيد» على الهاتف */
   mobileMore?: boolean;
@@ -31,95 +38,86 @@ export const ADMIN_V3_BASE = "/admin/v3";
 
 export const ADMIN_V3_NAV: readonly AdminV3NavItem[] = [
   {
-    id: "home",
-    label: "الرئيسية",
+    id: "overview",
+    label: "نظرة عامة",
     path: ADMIN_V3_BASE,
     mobilePrimary: true,
-    description: "نظرة اليوم والمهام السريعة",
+    description: "تشغيل اليوم: مراجعات، نشر، تنبيهات، إجراءات سريعة",
+  },
+  {
+    id: "reviews",
+    label: "المراجعات",
+    path: `${ADMIN_V3_BASE}/reviews`,
+    mobilePrimary: true,
+    description: "صندوق وارد تحريري للمراجعة والاعتدال",
+    legacyHref: "/admin/review-hub",
   },
   {
     id: "content",
     label: "المحتوى",
     path: `${ADMIN_V3_BASE}/content`,
     mobilePrimary: true,
-    description: "إدارة المحتوى الموحّدة",
+    description: "مساحة محتوى موحّدة: دروس، مشايخ، فوائد، أسئلة",
     legacyHref: "/admin?section=lessons",
   },
   {
-    id: "review",
-    label: "المراجعة",
-    path: `${ADMIN_V3_BASE}/review`,
+    id: "taxonomy",
+    label: "التصنيف",
+    path: `${ADMIN_V3_BASE}/taxonomy`,
     mobilePrimary: true,
-    description: "طابور المراجعة الموحّد",
-    legacyHref: "/admin/review-hub",
+    description: "شجرة أبواب العلم والترتيب والإحصاءات",
+    legacyHref: "/admin?section=categories",
   },
   {
     id: "analytics",
     label: "التحليلات",
     path: `${ADMIN_V3_BASE}/analytics`,
-    mobilePrimary: true,
-    description: "مساحة التحليلات",
+    mobileMore: true,
+    description: "اتجاهات الأداء والنشر والاعتدال",
     legacyHref: "/admin?section=search-analytics",
   },
   {
-    id: "users",
-    label: "المستخدمون",
-    path: `${ADMIN_V3_BASE}/users`,
+    id: "community",
+    label: "المجتمع",
+    path: `${ADMIN_V3_BASE}/community`,
     mobileMore: true,
-    description: "المستخدمون والأدوار",
+    description: "مستخدمون، بلاغات، مساهمات",
     legacyHref: "/admin?section=users",
-  },
-  {
-    id: "notifications",
-    label: "الإشعارات",
-    path: `${ADMIN_V3_BASE}/notifications`,
-    mobileMore: true,
-    description: "قنوات الإشعار والسياسات",
-    legacyHref: "/admin?section=telegram",
-  },
-  {
-    id: "automation",
-    label: "الأتمتة",
-    path: `${ADMIN_V3_BASE}/automation`,
-    mobileMore: true,
-    description: "الأتمتة والطوابير",
-    legacyHref: "/admin/automation/center",
-  },
-  {
-    id: "system",
-    label: "النظام",
-    path: `${ADMIN_V3_BASE}/system`,
-    mobileMore: true,
-    description: "المراقبة والوظائف",
-    legacyHref: "/admin/feature-status",
   },
   {
     id: "settings",
     label: "الإعدادات",
     path: `${ADMIN_V3_BASE}/settings`,
     mobileMore: true,
-    description: "إعدادات لوحة التحكم",
+    description: "إعدادات اللوحة، الأتمتة، النظام، التدقيق",
     legacyHref: "/admin?section=settings",
-  },
-  {
-    id: "audit",
-    label: "سجل التدقيق",
-    path: `${ADMIN_V3_BASE}/audit`,
-    mobileMore: true,
-    description: "أحداث التدقيق المحلية",
   },
 ] as const;
 
 export const ADMIN_V3_MOBILE_PRIMARY = ADMIN_V3_NAV.filter((n) => n.mobilePrimary);
 export const ADMIN_V3_MOBILE_MORE = ADMIN_V3_NAV.filter((n) => n.mobileMore);
 
+const LEGACY_PATH_ALIASES: Record<string, AdminV3CenterId> = {
+  [`${ADMIN_V3_BASE}/review`]: "reviews",
+  [`${ADMIN_V3_BASE}/users`]: "community",
+  [`${ADMIN_V3_BASE}/notifications`]: "settings",
+  [`${ADMIN_V3_BASE}/automation`]: "settings",
+  [`${ADMIN_V3_BASE}/system`]: "settings",
+  [`${ADMIN_V3_BASE}/audit`]: "settings",
+  [`${ADMIN_V3_BASE}/home`]: "overview",
+};
+
 export function resolveAdminV3Center(pathname: string): AdminV3NavItem {
   const clean = pathname.split("?")[0] || ADMIN_V3_BASE;
   if (clean === ADMIN_V3_BASE || clean === `${ADMIN_V3_BASE}/`) {
     return ADMIN_V3_NAV[0]!;
   }
+  const aliased = LEGACY_PATH_ALIASES[clean];
+  if (aliased) {
+    return ADMIN_V3_NAV.find((n) => n.id === aliased) ?? ADMIN_V3_NAV[0]!;
+  }
   const hit = ADMIN_V3_NAV.find(
-    (n) => n.id !== "home" && (clean === n.path || clean.startsWith(`${n.path}/`)),
+    (n) => n.id !== "overview" && (clean === n.path || clean.startsWith(`${n.path}/`)),
   );
   return hit ?? ADMIN_V3_NAV[0]!;
 }
