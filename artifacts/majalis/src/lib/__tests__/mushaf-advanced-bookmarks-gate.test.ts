@@ -129,6 +129,11 @@ assert.match(resumeCard, /متابعة/);
 assert.match(hub, /LastReadingBookmarkCard/);
 assert.match(home, /LastReadingBookmarkCard/);
 assert.match(search, /searchMushafBookmarksForQuery/);
+assert.match(search, /import\(\s*["']@\/lib\/quran-my-bookmarks-ops["']\s*\)/);
+assert.doesNotMatch(
+  search,
+  /import\s+\{[^}]*searchMushafBookmarksForQuery[^}]*\}\s+from\s+["']@\/lib\/quran-my-bookmarks-ops["']/,
+);
 
 assert.match(doc, /Data model/);
 assert.match(doc, /Sync architecture|Sync design/);

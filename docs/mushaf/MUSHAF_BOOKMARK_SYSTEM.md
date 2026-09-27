@@ -99,7 +99,7 @@ mushaf-bookmark-analytics  → streak / pages / khatma %
 ## 9. Search integration
 
 - `searchMushafBookmarksForQuery` يطابق التسمية/الملاحظة/aliases (مثل «الحفظ»).
-- مدمج في `runUniversalSearch` كنتائج قسم القرآن قبل فهرس المحتوى.
+- مدمج في `runUniversalSearch` كنتائج قسم القرآن قبل فهرس المحتوى عبر **dynamic import** (لا استيراد ساكن حتى لا يرتفع TBT الرئيسية).
 - مدير العلامات يعرض نفس المرشّحات محليًا.
 
 ## 10. UI mockups
