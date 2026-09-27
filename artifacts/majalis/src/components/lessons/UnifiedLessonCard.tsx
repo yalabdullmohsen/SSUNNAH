@@ -1,5 +1,6 @@
 import { memo, useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
+import { MoreHorizontal } from "lucide-react";
 import { AdminInlineEdit } from "@/components/AdminInlineEdit";
 import {
   downloadUnifiedCalendar,
@@ -22,6 +23,7 @@ import { looksLikePersonSpeaker } from "@/lib/lesson-speaker-guard";
 import { FavoriteButton } from "@/components/FavoriteButton";
 import { stashLessonForNavigation } from "@/lib/lessons-service";
 import type { KuwaitLessonRecord } from "@/lib/kuwait-lessons";
+import { resolveLessonType } from "@/lib/lesson-type";
 
 type Props = {
   lesson: UnifiedLesson;
@@ -74,24 +76,6 @@ function FactRow({ label, value }: { label: string; value?: string | null }) {
   );
 }
 
-function MetaCell({ label, value }: { label: string; value?: string | number }) {
-  const text = value != null && value !== "" ? cleanDisplayText(String(value)) : "";
-  if (!text) return null;
-  return (
-    <div className="lesson-unified-card__meta-cell">
-      <span className="lesson-unified-card__meta-label">{label}</span>
-      <strong>{text}</strong>
-    </div>
-  );
-}
-
-function kindBadge(lesson: UnifiedLesson): string {
-  if (lesson.activityType === "دورة" || (lesson.sessionCount && lesson.sessionCount > 1)) {
-    return "دورة";
-  }
-  return "درس";
-}
-
 export const UnifiedLessonCard = memo(function UnifiedLessonCard({
   lesson,
   compact = false,
@@ -108,6 +92,7 @@ export const UnifiedLessonCard = memo(function UnifiedLessonCard({
   const [isToday, setIsToday] = useState(() =>
     isSameKuwaitDay(lesson.nextOccurrenceMs || lesson.sortKey || Date.now()),
   );
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (lesson.featuredHomeStatus === "مستمر") {
@@ -151,7 +136,17 @@ export const UnifiedLessonCard = memo(function UnifiedLessonCard({
     };
   }, [lesson.day, scheduleTime, lesson.featuredHomeStatus, scheduleConfirmed]);
 
-  const typeKind = kindBadge(lesson);
+  const lessonType = useMemo(
+    () =>
+      resolveLessonType({
+        category: lesson.category,
+        title: lesson.title,
+        keywords: lesson.keywords,
+        activityType: lesson.activityType,
+      }),
+    [lesson.category, lesson.title, lesson.keywords, lesson.activityType],
+  );
+
   const delivery = useMemo(
     () =>
       getLessonDeliveryMode({
@@ -162,9 +157,7 @@ export const UnifiedLessonCard = memo(function UnifiedLessonCard({
       }),
     [lesson.mosque, lesson.region, lesson.hasLiveStream, lesson.streamUrl],
   );
-  const shortDescription = cleanDisplayText(
-    lesson.description || lesson.note || lesson.linkedLessons?.[0] || "",
-  );
+
   const displayDay = cleanDisplayText(lesson.day || "");
   const displayDate = cleanDisplayText(lesson.gregorianDate || "");
   const displayTime = scheduleConfirmed
@@ -173,24 +166,37 @@ export const UnifiedLessonCard = memo(function UnifiedLessonCard({
   const displayPlace = cleanDisplayText(
     [lesson.mosque, lesson.region].filter(Boolean).join(" — "),
   );
-  // موعد مختصر بلا تكرار تاريخ+وقت
   const scheduleValue = scheduleConfirmed
     ? [displayDay || displayDate, displayTime].filter(Boolean).join(" · ")
     : [displayDay || displayDate, "قيد التأكيد"].filter(Boolean).join(" · ");
+
+  const sheikhLabel =
+    lesson.sheikhName && looksLikePersonSpeaker(lesson.sheikhName)
+      ? lesson.sheikhName.replace(/^الشيخ(?:ة)?:\s*/u, "")
+      : lesson.mosque
+        ? `محاضرو ${lesson.mosque}`
+        : "المحاضر غير مذكور";
 
   const prominence = prominenceClass(lesson.sortKey, lesson.archived);
   const todayClass =
     isToday || nowLive || prominence.includes("--today") ? " lesson-unified-card--today" : "";
 
+  const hasOverflow =
+    Boolean(lesson.streamUrl) ||
+    Boolean(lesson.mapsUrl) ||
+    Boolean(showRegister && onToggleRegister) ||
+    !compact;
+
   return (
     <article
       data-cs-card="1"
       data-cs-type="lesson"
-      className={`lesson-unified-card soft-card soft-card--on-light cs-card card-v2${compact ? " lesson-unified-card--compact" : ""}${todayClass} ${prominence}`.trim()}
+      data-lesson-type={lessonType.id}
+      className={`lesson-unified-card soft-card soft-card--on-light cs-card card-v2 lesson-unified-card--dense${compact ? " lesson-unified-card--compact" : ""}${todayClass} ${prominence}`.trim()}
     >
       <header className="lesson-unified-card__header">
         <div className="lesson-unified-card__badges">
-          <span className="lesson-unified-card__category">{typeKind}</span>
+          <span className="lesson-unified-card__type">{lessonType.label}</span>
           {delivery ? <span className="lesson-unified-card__delivery">{delivery}</span> : null}
           {isToday || nowLive ? (
             <span className="lesson-unified-card__today-flag" aria-label="موعده اليوم">
@@ -209,42 +215,12 @@ export const UnifiedLessonCard = memo(function UnifiedLessonCard({
 
       <div className="lesson-unified-card__body">
         <h3 className="lesson-unified-card__title">{lesson.title}</h3>
-        <p className="lesson-unified-card__sheikh">
-          {lesson.sheikhName && looksLikePersonSpeaker(lesson.sheikhName)
-            ? lesson.sheikhName.replace(/^الشيخ(?:ة)?:\s*/u, "")
-            : lesson.mosque
-              ? `محاضرو ${lesson.mosque}`
-              : "المحاضر غير مذكور"}
-        </p>
-        {!compact && shortDescription ? (
-          <p className="lesson-unified-card__desc">{shortDescription}</p>
-        ) : null}
-
-        {lesson.organizerName &&
-          lesson.organizerName.replace(/^الشيخ(?:ة)?:\s*/u, "") !==
-            (lesson.sheikhName || "").replace(/^الشيخ(?:ة)?:\s*/u, "") && (
-            <p className="lesson-unified-card__organizer">تنظيم: {lesson.organizerName}</p>
-          )}
+        <p className="lesson-unified-card__sheikh">{sheikhLabel}</p>
 
         <div className="lesson-unified-card__facts" aria-label="معلومات الدرس">
           <FactRow label="الموعد" value={scheduleValue || undefined} />
           <FactRow label="المكان" value={displayPlace || undefined} />
-          <FactRow label="الحضور" value={delivery || undefined} />
-          {!compact && lesson.womenAttendance === "متاح" ? (
-            <FactRow label="حضور النساء" value={lesson.womenAttendanceNote || "متاح"} />
-          ) : null}
         </div>
-
-        {!compact ? (
-          <div className="lesson-unified-card__meta">
-            <MetaCell label="نوع النشاط" value={lesson.activityType} />
-            <MetaCell label="المنطقة" value={lesson.region} />
-            <MetaCell label="المحافظة" value={lesson.governorate} />
-            {lesson.linkedLessons && lesson.linkedLessons.length > 0 ? (
-              <MetaCell label="الجلسات" value={lesson.linkedLessons.join(" · ")} />
-            ) : null}
-          </div>
-        ) : null}
 
         <div
           className={`lesson-unified-card__actions${compact ? " lesson-unified-card__actions--compact" : ""}`}
@@ -257,9 +233,11 @@ export const UnifiedLessonCard = memo(function UnifiedLessonCard({
               onPointerEnter={() => {
                 void import("@/pages/lessons/LessonDetailPage").catch(() => undefined);
               }}
-            >              التفاصيل
+            >
+              التفاصيل
             </Link>
           ) : null}
+
           <div className="lesson-unified-card__actions-secondary">
             <FavoriteButton
               contentType="lesson"
@@ -267,61 +245,99 @@ export const UnifiedLessonCard = memo(function UnifiedLessonCard({
               compact
               className="lesson-unified-card__btn lesson-unified-card__btn--secondary"
             />
-            <button
-              type="button"
-              className="lesson-unified-card__btn lesson-unified-card__btn--secondary"
-              onClick={() => downloadUnifiedCalendar(lesson)}
-            >
-              التقويم
-            </button>
-          </div>
-
-          {!compact && (
-            <>
-              <AdminInlineEdit
-                contentType="lesson"
-                contentId={lesson.id}
-                initialData={{
-                  title: lesson.title,
-                  category: lesson.category,
-                  mosque: lesson.mosque,
-                  region: lesson.region,
-                  day_of_week: lesson.day,
-                  lesson_time: lesson.time,
-                  description: lesson.description,
-                }}
+            {hasOverflow ? (
+              <div className="lesson-unified-card__overflow">
+                <button
+                  type="button"
+                  className="lesson-unified-card__btn lesson-unified-card__btn--secondary lesson-unified-card__more"
+                  aria-expanded={menuOpen}
+                  aria-haspopup="menu"
+                  aria-label="المزيد من الإجراءات"
+                  onClick={() => setMenuOpen((v) => !v)}
+                >
+                  <MoreHorizontal size={18} strokeWidth={2} aria-hidden="true" />
+                </button>
+                {menuOpen ? (
+                  <div className="lesson-unified-card__menu" role="menu">
+                    <button
+                      type="button"
+                      role="menuitem"
+                      className="lesson-unified-card__menu-item"
+                      onClick={() => {
+                        downloadUnifiedCalendar(lesson);
+                        setMenuOpen(false);
+                      }}
+                    >
+                      التقويم
+                    </button>
+                    {lesson.streamUrl ? (
+                      <button
+                        type="button"
+                        role="menuitem"
+                        className="lesson-unified-card__menu-item"
+                        onClick={() => {
+                          openLessonExternalUrl(lesson.streamUrl!);
+                          setMenuOpen(false);
+                        }}
+                      >
+                        رابط البث
+                      </button>
+                    ) : null}
+                    {lesson.mapsUrl ? (
+                      <button
+                        type="button"
+                        role="menuitem"
+                        className="lesson-unified-card__menu-item"
+                        onClick={() => {
+                          openLessonExternalUrl(lesson.mapsUrl!);
+                          setMenuOpen(false);
+                        }}
+                      >
+                        الموقع
+                      </button>
+                    ) : null}
+                    {showRegister && onToggleRegister ? (
+                      <button
+                        type="button"
+                        role="menuitem"
+                        className="lesson-unified-card__menu-item"
+                        onClick={() => {
+                          onToggleRegister();
+                          setMenuOpen(false);
+                        }}
+                      >
+                        {registered ? "إلغاء التسجيل" : "سجّل حضوري"}
+                      </button>
+                    ) : null}
+                    {!compact ? (
+                      <AdminInlineEdit
+                        contentType="lesson"
+                        contentId={lesson.id}
+                        initialData={{
+                          title: lesson.title,
+                          category: lesson.category,
+                          mosque: lesson.mosque,
+                          region: lesson.region,
+                          day_of_week: lesson.day,
+                          lesson_time: lesson.time,
+                          description: lesson.description,
+                        }}
+                        className="lesson-unified-card__menu-item"
+                      />
+                    ) : null}
+                  </div>
+                ) : null}
+              </div>
+            ) : (
+              <button
+                type="button"
                 className="lesson-unified-card__btn lesson-unified-card__btn--secondary"
-              />
-              {lesson.streamUrl ? (
-                <button
-                  type="button"
-                  className="lesson-unified-card__btn lesson-unified-card__btn--ghost"
-                  onClick={() => openLessonExternalUrl(lesson.streamUrl!)}
-                >
-                  رابط البث
-                </button>
-              ) : null}
-              {lesson.mapsUrl ? (
-                <button
-                  type="button"
-                  className="lesson-unified-card__btn lesson-unified-card__btn--ghost"
-                  onClick={() => openLessonExternalUrl(lesson.mapsUrl!)}
-                >
-                  الموقع
-                </button>
-              ) : null}
-            </>
-          )}
-
-          {showRegister && onToggleRegister ? (
-            <button
-              type="button"
-              className="lesson-unified-card__btn lesson-unified-card__btn--ghost"
-              onClick={onToggleRegister}
-            >
-              {registered ? (compact ? "مسجل" : "إلغاء التسجيل") : compact ? "حضور" : "سجّل حضوري"}
-            </button>
-          ) : null}
+                onClick={() => downloadUnifiedCalendar(lesson)}
+              >
+                التقويم
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </article>

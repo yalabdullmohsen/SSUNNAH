@@ -1752,3 +1752,232 @@ html[data-theme="dark"] .section-lobby.lessons-page-v3 .lesson-unified-card__tit
 .lesson-unified-card__actions--compact {
   gap: 0.35rem;
 }
+
+/* ═══ Lessons experience redesign — dense + type accents ═══ */
+.lesson-unified-card--dense {
+  border-inline-start: 3px solid color-mix(in srgb, var(--lesson-type-accent, var(--lesson-green, #0f5c3f)) 70%, transparent);
+}
+.lesson-unified-card--dense .lesson-unified-card__header {
+  padding: 0.4rem 0.7rem;
+}
+.lesson-unified-card--dense .lesson-unified-card__body {
+  padding: 0.55rem 0.7rem 0.65rem;
+  gap: 0.28rem;
+}
+.lesson-unified-card--dense .lesson-unified-card__title {
+  font-size: 0.95rem;
+  line-height: 1.35;
+  -webkit-line-clamp: 2;
+}
+.lesson-unified-card--dense .lesson-unified-card__sheikh {
+  font-size: 0.8rem;
+}
+.lesson-unified-card--dense .lesson-unified-card__facts {
+  gap: 0.12rem;
+}
+.lesson-unified-card--dense .lesson-unified-card__fact {
+  font-size: 0.78rem;
+}
+.lesson-unified-card__type {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.66rem;
+  font-weight: 750;
+  color: var(--lesson-type-ink, var(--lesson-green-deep, #12362c));
+  background: color-mix(in srgb, var(--lesson-type-accent, var(--lesson-green)) 14%, #fff);
+  border: 1px solid color-mix(in srgb, var(--lesson-type-accent, var(--lesson-green)) 28%, transparent);
+}
+
+[data-lesson-type="quran"] { --lesson-type-accent: #2f6b4f; --lesson-type-ink: #16382a; }
+[data-lesson-type="tafsir"] { --lesson-type-accent: #3d6b5c; --lesson-type-ink: #1a3a30; }
+[data-lesson-type="hadith"] { --lesson-type-accent: #6a5a3a; --lesson-type-ink: #3a3018; }
+[data-lesson-type="aqeedah"] { --lesson-type-accent: #4a5e78; --lesson-type-ink: #243246; }
+[data-lesson-type="fiqh"] { --lesson-type-accent: #5a6a48; --lesson-type-ink: #2c3820; }
+[data-lesson-type="seerah"] { --lesson-type-accent: #8a6a42; --lesson-type-ink: #3e2e18; }
+[data-lesson-type="general"] { --lesson-type-accent: #0f5c3f; --lesson-type-ink: #12362c; }
+
+.lesson-unified-card__overflow {
+  position: relative;
+}
+.lesson-unified-card__more {
+  min-width: 2.75rem !important;
+  padding-inline: 0.45rem !important;
+}
+.lesson-unified-card__menu {
+  position: absolute;
+  inset-inline-end: 0;
+  bottom: calc(100% + 0.25rem);
+  z-index: 8;
+  min-width: 9.5rem;
+  padding: 0.35rem;
+  border-radius: 12px;
+  background: var(--surface-card, var(--mj-surface));
+  border: 1px solid color-mix(in srgb, #0f5c3f 14%, #e8ebe9);
+  box-shadow: 0 8px 24px color-mix(in srgb, #15382d 12%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.lesson-unified-card__menu-item {
+  display: block;
+  width: 100%;
+  text-align: start;
+  min-height: 40px;
+  padding: 0.4rem 0.65rem;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #15382d;
+  font-size: 0.84rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+.lesson-unified-card__menu-item:hover,
+.lesson-unified-card__menu-item:focus-visible {
+  background: color-mix(in srgb, #0f5c3f 8%, transparent);
+}
+
+.lesson-filters--sticky-rail .lesson-filters__chips {
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  padding-block: 0.15rem;
+}
+.lesson-filters--sticky-rail .filter-chips__chip {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  min-height: 40px;
+}
+.lesson-filters--sticky-rail .filter-chips__chip.is-active {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mj-brand, #0f5c3f) 35%, transparent);
+}
+
+.lesson-detail-page--redesign .lesson-detail-hero {
+  gap: 0.45rem;
+  margin-bottom: 0.35rem;
+}
+.lesson-detail-page--redesign .lesson-detail-title {
+  font-size: clamp(1.2rem, 4.5vw, 1.55rem);
+  line-height: 1.4;
+  margin: 0;
+}
+.lesson-detail-type-pill {
+  display: inline-flex;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--lesson-type-ink, #12362c);
+  background: color-mix(in srgb, var(--lesson-type-accent, #0f5c3f) 16%, #fff);
+  border: 1px solid color-mix(in srgb, var(--lesson-type-accent, #0f5c3f) 30%, transparent);
+}
+.lesson-detail-info-grid--priority {
+  grid-template-columns: 1fr;
+  gap: 0.35rem;
+  padding-block: 0.35rem;
+}
+.lesson-detail-block {
+  margin-block: 0.25rem 0.45rem;
+}
+.lesson-detail-map--compact {
+  margin-top: 0.75rem;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, #0f5c3f 12%, #e8ebe9);
+  overflow: hidden;
+  background: color-mix(in srgb, #0f5c3f 4%, #f8f6f1);
+}
+.lesson-detail-map--compact .lesson-detail-map__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.55rem 0.75rem;
+}
+.lesson-detail-map--compact h2 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.lesson-detail-map__toggle {
+  min-height: 36px;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, #0f5c3f 22%, transparent);
+  background: var(--surface-card, var(--mj-surface));
+  color: #0a4530;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.lesson-detail-map__preview {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  width: 100%;
+  min-height: 5.5rem;
+  padding: 0.85rem 0.9rem;
+  border: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, #0f5c3f 8%, transparent),
+    color-mix(in srgb, #0f5c3f 3%, #f3f1ea)
+  );
+  color: #15382d;
+  text-align: start;
+  cursor: pointer;
+}
+.lesson-detail-map__preview-hint {
+  font-size: 0.72rem;
+  color: #5f7168;
+}
+.lesson-detail-map--compact iframe {
+  display: block;
+  width: 100%;
+  height: 12rem;
+  border: 0;
+}
+.lesson-detail-map--compact.is-expanded iframe {
+  height: 16rem;
+}
+.lesson-detail-meta-disclosure {
+  margin-top: 0.85rem;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, #0f5c3f 12%, #e8ebe9);
+  padding: 0.55rem 0.75rem;
+  background: var(--surface-card, var(--mj-surface));
+}
+.lesson-detail-meta-disclosure > summary {
+  cursor: pointer;
+  font-weight: 750;
+  color: #0a4530;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
+.lesson-detail-meta-disclosure[open] > summary {
+  margin-bottom: 0.55rem;
+}
+
+.lessons-page-v3 .lesson-unified-grid,
+.section-lobby.lessons-page-v3 .lesson-unified-grid {
+  gap: 0.55rem;
+}
+
+html.dark .lesson-unified-card__menu,
+html[data-theme="dark"] .lesson-unified-card__menu,
+html.dark .lesson-detail-meta-disclosure,
+html[data-theme="dark"] .lesson-detail-meta-disclosure,
+html.dark .lesson-detail-map__toggle,
+html[data-theme="dark"] .lesson-detail-map__toggle {
+  background: var(--dm-surface-elevated, #24302b);
+  border-color: var(--dm-border-subtle, #35443f);
+  color: var(--dm-text-primary, #ede8df);
+}
+html.dark .lesson-unified-card__menu-item,
+html[data-theme="dark"] .lesson-unified-card__menu-item {
+  color: var(--dm-text-primary, #ede8df);
+}
