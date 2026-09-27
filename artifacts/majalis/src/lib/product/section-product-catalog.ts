@@ -110,7 +110,8 @@ export const SECTION_PRODUCT_CATALOG: readonly SectionProductEntry[] = [
     notificationSupport: true,
     multilingualSupport: false,
     interactiveFeatureSupport: true,
-    auditNotes: "Needs governorate/source/last-verified contract (Program 4).",
+    auditNotes:
+      "Program 4 W1: contract docs + attendance/cancel/provenance fields. Seed still EVENT_SOURCES_PARTIAL (no lastVerifiedAt invented).",
   },
   {
     id: "sin-jeem",
