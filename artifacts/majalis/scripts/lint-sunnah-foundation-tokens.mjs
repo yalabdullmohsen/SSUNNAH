@@ -26,6 +26,14 @@ const ALLOWED_TYPE_ROLES = new Set([
   "supporting",
   "metadata",
   "caption",
+  /* Calm Wave 1 — أدوار إضافية بلا سلم منافس */
+  "badge",
+  "button",
+  "breadcrumb",
+  "citation",
+  "warning",
+  "quran",
+  "hadith",
 ]);
 
 function walk(dir, out = []) {

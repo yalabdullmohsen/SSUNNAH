@@ -23,6 +23,8 @@ V2 **does not** invent a competing emerald palette. It maps:
 
 Added in V2: overlay, skeleton, focus, selected, disabled, success/warning/error/info, citation/warning type roles, radius/space aliases.
 
+**Calm Wave 1 additions:** emerald scale aliases (`--sf-emerald-*`), sage subtle surface, full text hierarchy (`on-dark`, `accent`=emerald, `warning`), sparse gold tokens + policy, control/feature radius roles, Card V2 quieter borders. See `docs/design/CALM_COLOR_SYSTEM.md`.
+
 ## Contrast policy
 
 - Normal text ≥ 4.5:1; large ≥ 3:1; project Playwright gate remains authoritative.  
