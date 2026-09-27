@@ -14,22 +14,22 @@ import { resolveAdminV3Center } from "./nav";
 export default function AdminV3App() {
   const [location] = useLocation();
   const center = resolveAdminV3Center(location);
-  const isHome = center.id === "home";
+  const isOverview = center.id === "overview";
 
   useEffect(() => {
     applyPageSeo({
       path: location.split("?")[0] || "/admin/v3",
-      title: isHome
-        ? "لوحة التحكم v3 | سُنّة"
-        : `${center.label} — لوحة التحكم v3 | سُنّة`,
-      description: "لوحة تحكم سُنّة — Admin v3 (خاصة بالمشرفين).",
+      title: isOverview
+        ? "لوحة التحكم | سُنّة"
+        : `${center.label} — لوحة التحكم | سُنّة`,
+      description: "لوحة تحكم سُنّة — خاصة بالمشرفين.",
       robots: "noindex, nofollow",
     });
-  }, [location, center.label, isHome]);
+  }, [location, center.label, isOverview]);
 
   return (
     <AdminV3ErrorBoundary>
-      <AdminV3Shell>{isHome ? <AdminV3Dashboard /> : <AdminV3CenterWorkspace />}</AdminV3Shell>
+      <AdminV3Shell>{isOverview ? <AdminV3Dashboard /> : <AdminV3CenterWorkspace />}</AdminV3Shell>
     </AdminV3ErrorBoundary>
   );
 }

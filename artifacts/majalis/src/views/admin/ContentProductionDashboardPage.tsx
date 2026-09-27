@@ -42,7 +42,7 @@ function ContentProductionDashboardContent() {
       await runContentProductionJob(jobId);
       load();
     } catch {
-      setJobError("\u062a\u0639\u0630\u0651\u0631 \u062a\u0634\u063a\u064a\u0644 \u0627\u0644\u0645\u0647\u0645\u0629.");
+      setJobError("تعذّر تشغيل المهمة.");
     } finally {
       setRunningJob(null);
     }
@@ -56,15 +56,15 @@ function ContentProductionDashboardContent() {
     <div>
       <div className="cpd-header">
         <div>
-          <h2 className="cpd-title">\u0625\u0646\u062a\u0627\u062c \u0627\u0644\u0645\u062d\u062a\u0648\u0649 \u0627\u0644\u0630\u0627\u062a\u064a \u2014 Phase 4</h2>
+          <h2 className="cpd-title">إنتاج المحتوى الذاتي — Phase 4</h2>
           <p className="cpd-subtitle">
-            Source \u2192 Validation \u2192 Dedup \u2192 Classification \u2192 Quality \u2192 Publishing \u2192 Indexing \u2192 Search \u2192 Statistics
+            Source → Validation → Dedup → Classification → Quality → Publishing → Indexing → Search → Statistics
           </p>
         </div>
         <div className="cpd-links">
-          <Link href="/admin/automation/review" className="cpd-link">\u0645\u0631\u0643\u0632 \u0627\u0644\u0645\u0631\u0627\u062c\u0639\u0629</Link>
-          <Link href="/admin/automation/dashboard" className="cpd-link">\u0623\u062a\u0645\u062a\u0629 \u0627\u0644\u062f\u0631\u0648\u0633</Link>
-          <Link href="/admin/auto-content" className="cpd-link">\u0627\u0644\u0645\u0642\u0627\u0644\u0627\u062a RSS</Link>
+          <Link href="/admin/automation/review" className="cpd-link">مركز المراجعة</Link>
+          <Link href="/admin/automation/dashboard" className="cpd-link">أتمتة الدروس</Link>
+          <Link href="/admin/auto-content" className="cpd-link">المقالات RSS</Link>
         </div>
       </div>
 
@@ -77,14 +77,14 @@ function ContentProductionDashboardContent() {
       ) : (
         <>
           <div className="cpd-stats-row">
-            <StatCard label="\u062c\u0627\u0647\u0632\u064a\u0629 \u0627\u0644\u0646\u0638\u0627\u0645" value={`${data?.readiness?.score ?? 0}%`} />
-            <StatCard label="\u0625\u0646\u062a\u0627\u062c \u0627\u0644\u064a\u0648\u0645" value={prod?.today?.published ?? 0} />
-            <StatCard label="\u0625\u0646\u062a\u0627\u062c \u0627\u0644\u0623\u0633\u0628\u0648\u0639" value={prod?.week?.published ?? 0} />
-            <StatCard label="\u0625\u0646\u062a\u0627\u062c \u0627\u0644\u0634\u0647\u0631" value={prod?.month?.published ?? 0} />
-            <StatCard label="\u0645\u0631\u0641\u0648\u0636 \u0627\u0644\u064a\u0648\u0645" value={prod?.today?.rejected ?? 0} color="var(--mj-brand-deep)" />
-            <StatCard label="\u0645\u0643\u0631\u0631 \u0627\u0644\u064a\u0648\u0645" value={prod?.today?.duplicate ?? 0} />
-            <StatCard label="\u0645\u0635\u0627\u062f\u0631 \u0646\u0634\u0637\u0629" value={data?.readiness?.activeSources ?? 0} />
-            <StatCard label="\u062a\u0646\u0628\u064a\u0647\u0627\u062a" value={data?.readiness?.openAlerts ?? 0} color="#991B1B" />
+            <StatCard label="جاهزية النظام" value={`${data?.readiness?.score ?? 0}%`} />
+            <StatCard label="إنتاج اليوم" value={prod?.today?.published ?? 0} />
+            <StatCard label="إنتاج الأسبوع" value={prod?.week?.published ?? 0} />
+            <StatCard label="إنتاج الشهر" value={prod?.month?.published ?? 0} />
+            <StatCard label="مرفوض اليوم" value={prod?.today?.rejected ?? 0} color="var(--mj-brand-deep)" />
+            <StatCard label="مكرر اليوم" value={prod?.today?.duplicate ?? 0} />
+            <StatCard label="مصادر نشطة" value={data?.readiness?.activeSources ?? 0} />
+            <StatCard label="تنبيهات" value={data?.readiness?.openAlerts ?? 0} color="#991B1B" />
           </div>
 
           <section className="cpd-section">
@@ -93,11 +93,11 @@ function ContentProductionDashboardContent() {
               {(data?.jobs || []).map((job: NonNullable<ContentProductionDashboard["jobs"]>[number]) => (
                 <div key={job.id} className="cpd-job-row">
                   <div>
-                    <strong>{job.name_ar}</strong> \u00b7 {job.interval_label}
+                    <strong>{job.name_ar}</strong> · {job.interval_label}
                     {job.last_run_at && (
                       <span className="cpd-job-time">
                         {" "}
-                        \u2014 \u0622\u062e\u0631 \u062a\u0634\u063a\u064a\u0644: {new Date(job.last_run_at).toLocaleString("ar-EG")}
+                        — آخر تشغيل: {new Date(job.last_run_at).toLocaleString("ar-EG")}
                         {job.last_duration_ms ? ` (${job.last_duration_ms}ms)` : ""}
                       </span>
                     )}
@@ -108,7 +108,7 @@ function ContentProductionDashboardContent() {
                     onClick={() => triggerJob(job.id)}
                     className="cpd-job-btn"
                   >
-                    {runningJob === job.id ? "..." : "\u062a\u0634\u063a\u064a\u0644"}
+                    {runningJob === job.id ? "..." : "تشغيل"}
                   </button>
                 </div>
               ))}
@@ -123,8 +123,8 @@ function ContentProductionDashboardContent() {
                 return (
                   <span key={id} className="cpd-pipeline-tag">
                     {pipe.labelAr || id}
-                    {pipe.dailyQuota ? ` \u00b7 ${pipe.dailyQuota}/\u064a\u0648\u0645` : ""}
-                    {pipe.weeklyQuota ? ` \u00b7 ${pipe.weeklyQuota}/\u0623\u0633\u0628\u0648\u0639` : ""}
+                    {pipe.dailyQuota ? ` · ${pipe.dailyQuota}/يوم` : ""}
+                    {pipe.weeklyQuota ? ` · ${pipe.weeklyQuota}/أسبوع` : ""}
                   </span>
                 );
               })}
@@ -136,11 +136,11 @@ function ContentProductionDashboardContent() {
             <div className="cpd-monitor-row">
               <StatCard label="Retry Queue" value={obs?.retries?.length ?? 0} />
               <StatCard label="Dead Letter" value={obs?.dlq?.length ?? 0} />
-              <StatCard label="\u0633\u062c\u0644\u0627\u062a" value={obs?.logs?.length ?? 0} />
+              <StatCard label="سجلات" value={obs?.logs?.length ?? 0} />
             </div>
             {lastRun && (
               <p className="cpd-last-run">
-                \u0622\u062e\u0631 Cron: {lastRun.job_id} \u2014 {lastRun.status} \u2014 {lastRun.duration_ms ?? "?"}ms
+                آخر Cron: {lastRun.job_id} — {lastRun.status} — {lastRun.duration_ms ?? "?"}ms
               </p>
             )}
             <div className="cpd-logs-list">
@@ -153,12 +153,12 @@ function ContentProductionDashboardContent() {
           </section>
 
           <section className="cpd-section">
-            <h3 className="cpd-section-h3">\u0627\u0644\u0645\u0635\u0627\u062f\u0631 \u0627\u0644\u0645\u0648\u062b\u0642\u0629 ({data?.sources?.length ?? 0})</h3>
+            <h3 className="cpd-section-h3">المصادر الموثقة ({data?.sources?.length ?? 0})</h3>
             <div className="cpd-sources-list">
               {(data?.sources || []).map((s: NonNullable<ContentProductionDashboard["sources"]>[number]) => (
                 <div key={s.slug} className="cpd-source-item">
-                  <strong>{s.name}</strong> \u00b7 {s.pipeline} \u00b7 \u062b\u0642\u0629 {s.trust_level}%
-                  {!s.active && " (\u0645\u0639\u0637\u0651\u0644)"}
+                  <strong>{s.name}</strong> · {s.pipeline} · ثقة {s.trust_level}%
+                  {!s.active && " (معطّل)"}
                 </div>
               ))}
             </div>

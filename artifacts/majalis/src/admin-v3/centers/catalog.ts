@@ -1,5 +1,6 @@
 /**
- * كتالوج مراكز Admin v3 — روابط Legacy موثّقة فقط (لا CRUD جديد في Wave 6).
+ * كتالوج مراكز Admin v3 — IA موجة 1 (7 وجهات).
+ * الروابط تشير لمسارات Legacy؛ لا CRUD جديد ولا تغيير صلاحيات خادم.
  */
 import type { AdminV3CenterId } from "../nav";
 
@@ -29,7 +30,7 @@ export type AdminV3ToolItem = {
 };
 
 export type AdminV3CenterDef = {
-  id: Exclude<AdminV3CenterId, "home">;
+  id: Exclude<AdminV3CenterId, "overview">;
   title: string;
   summary: string;
   permissions: readonly AdminV3Permission[];
@@ -37,126 +38,111 @@ export type AdminV3CenterDef = {
 };
 
 export const ADMIN_V3_CENTERS: Record<
-  Exclude<AdminV3CenterId, "home">,
+  Exclude<AdminV3CenterId, "overview">,
   AdminV3CenterDef
 > = {
+  reviews: {
+    id: "reviews",
+    title: "المراجعات",
+    summary: "صندوق وارد تحريري — الوجهات السابقة مجمّعة دون دمج منطق CRUD.",
+    permissions: ["admin.read", "review.read", "review.decide"],
+    tools: [
+      { id: "review-hub", title: "مركز المراجعة", description: "مساحة المراجعة الرئيسية", href: "/admin/review-hub", tags: ["مراجعة"], legacySource: "ReviewHubPage" },
+      { id: "review-center", title: "مراجعة الأتمتة", description: "طابور مراجعة الأتمتة", href: "/admin/review-center", tags: ["أتمتة", "مراجعة"], legacySource: "AutomationReviewPage" },
+      { id: "submissions", title: "مقترحات المجتمع", description: "مراجعة المساهمات", href: "/admin?section=submissions", tags: ["مجتمع"], legacySource: "AdminShell#submissions" },
+      { id: "scholarly", title: "التوثيق العلمي", description: "مراجعة علمية", href: "/admin?section=scholarly-verification", tags: ["توثيق"], legacySource: "AdminShell#scholarly-verification" },
+      { id: "calendar-review", title: "مراجعة التقويم الشرعي", description: "مراجعة مناسبات التقويم", href: "/admin?section=religious-calendar-review", tags: ["تقويم"], legacySource: "AdminShell#religious-calendar-review" },
+      { id: "reports", title: "البلاغات", description: "بلاغات المستخدمين", href: "/admin?section=reports", tags: ["بلاغات"], legacySource: "AdminShell#reports" },
+    ],
+  },
   content: {
     id: "content",
     title: "مركز المحتوى",
-    summary: "إدارة موحّدة للمحتوى والاستيراد — العمليات عبر المسارات السابقة حتى Wave 7.",
+    summary: "مساحة محتوى موحّدة — التحرير والسياق عبر المسارات السابقة حتى اكتمال الموجات.",
     permissions: ["admin.read", "content.read", "content.write"],
     tools: [
       { id: "lessons", title: "الدروس", description: "إدارة الدروس والجداول", href: "/admin?section=lessons", tags: ["دروس"], legacySource: "AdminShell#lessons" },
       { id: "sheikhs", title: "المشايخ", description: "ملفات المشايخ", href: "/admin?section=sheikhs", tags: ["مشايخ"], legacySource: "AdminShell#sheikhs" },
       { id: "library", title: "المكتبة", description: "كتب ومراجع", href: "/admin?section=library", tags: ["مكتبة"], legacySource: "AdminShell#library" },
-      { id: "categories", title: "التصنيفات", description: "أبواب العلم", href: "/admin?section=categories", tags: ["تصنيف"], legacySource: "AdminShell#categories" },
       { id: "fawaid", title: "الفوائد", description: "فوائد مختصرة", href: "/admin?section=fawaid", tags: ["فوائد"], legacySource: "AdminShell#fawaid" },
       { id: "adhkar", title: "الأذكار", description: "أذكار وأوراد", href: "/admin?section=adhkar", tags: ["أذكار"], legacySource: "AdminShell#adhkar" },
       { id: "qa", title: "الأسئلة والأجوبة", description: "بنك الأسئلة", href: "/admin?section=qa", tags: ["أسئلة"], legacySource: "AdminShell#qa" },
       { id: "quiz", title: "المسابقة", description: "أسئلة التحدي", href: "/admin?section=quiz", tags: ["تحدي"], legacySource: "AdminShell#quiz" },
       { id: "miracles", title: "إشارات كونية", description: "محتوى الإعجاز", href: "/admin?section=miracles", tags: ["إشارات"], legacySource: "AdminShell#miracles" },
-      { id: "rulings", title: "الأحكام", description: "موسوعة الأحكام (أرشيف/إدارة)", href: "/admin?section=rulings", tags: ["فقه"], legacySource: "AdminShell#rulings" },
-      { id: "import-url", title: "استيراد برابط", description: "استيراد درس عبر URL", href: "/admin/content-import/url", tags: ["استيراد"], legacySource: "LessonImportUrlPage" },
+      { id: "rulings", title: "الأحكام", description: "موسوعة الأحكام", href: "/admin?section=rulings", tags: ["فقه"], legacySource: "AdminShell#rulings" },
+      { id: "import-url", title: "استيراد برابط", description: "استيراد درس عبر رابط", href: "/admin/content-import/url", tags: ["استيراد"], legacySource: "LessonImportUrlPage" },
       { id: "import-image", title: "استيراد بصورة", description: "استخلاص من صورة", href: "/admin/content-import/image", tags: ["استيراد"], legacySource: "LessonImportImagePage" },
-      { id: "universities", title: "الجامعات", description: "إدارة الجامعات", href: "/admin/universities", tags: ["جامعات"], legacySource: "UniversitiesAdminPage" },
       { id: "prophet-stories", title: "قصص الأنبياء", description: "إدارة قصص الأنبياء", href: "/admin?section=prophet-stories", tags: ["قصص"], legacySource: "AdminShell#prophet-stories" },
       { id: "islamic-stories", title: "القصص الإسلامية", description: "إدارة القصص", href: "/admin?section=islamic-stories", tags: ["قصص"], legacySource: "AdminShell#islamic-stories" },
+      { id: "universities", title: "الجامعات", description: "إدارة الجامعات", href: "/admin/universities", tags: ["جامعات"], legacySource: "UniversitiesAdminPage" },
     ],
   },
-  review: {
-    id: "review",
-    title: "مركز المراجعة",
-    summary: "طابور مراجعة موحّد — الوجهات السابقة مجمّعة هنا دون دمج منطق CRUD.",
-    permissions: ["admin.read", "review.read", "review.decide"],
+  taxonomy: {
+    id: "taxonomy",
+    title: "مركز التصنيف",
+    summary: "شجرة أبواب العلم أولًا — دون بطاقات مكررة كواجهة أساسية.",
+    permissions: ["admin.read", "content.read", "content.write"],
     tools: [
-      { id: "review-hub", title: "مركز المراجعة (Hub)", description: "مساحة المراجعة الرئيسية", href: "/admin/review-hub", tags: ["مراجعة"], legacySource: "ReviewHubPage" },
-      { id: "review-center", title: "مراجعة الأتمتة", description: "طابور مراجعة الأتمتة", href: "/admin/review-center", tags: ["أتمتة", "مراجعة"], legacySource: "AutomationReviewPage" },
-      { id: "submissions", title: "مقترحات المجتمع", description: "مراجعة المساهمات", href: "/admin?section=submissions", tags: ["مجتمع"], legacySource: "AdminShell#submissions" },
-      { id: "scholarly", title: "التوثيق العلمي", description: "مراجعة علمية", href: "/admin?section=scholarly-verification", tags: ["توثيق"], legacySource: "AdminShell#scholarly-verification" },
-      { id: "calendar-review", title: "مراجعة التقويم الشرعي", description: "مراجعة مناسبات التقويم", href: "/admin?section=religious-calendar-review", tags: ["تقويم"], legacySource: "AdminShell#religious-calendar-review" },
-      { id: "reports", title: "التقارير", description: "بلاغات المستخدمين", href: "/admin?section=reports", tags: ["بلاغات"], legacySource: "AdminShell#reports" },
-    ],
-  },
-  users: {
-    id: "users",
-    title: "المستخدمون والأدوار",
-    summary: "عرض المستخدمين والأدوار عبر الواجهة السابقة — بلا تغيير صلاحيات/RLS.",
-    permissions: ["admin.read", "users.read", "users.roles"],
-    tools: [
-      { id: "users", title: "المستخدمون", description: "قائمة الحسابات", href: "/admin?section=users", tags: ["مستخدمون"], legacySource: "AdminShell#users" },
-      { id: "governance", title: "الحوكمة", description: "سياسات الحوكمة (عرض)", href: "/admin?section=governance", tags: ["حوكمة"], legacySource: "AdminShell#governance" },
-    ],
-  },
-  notifications: {
-    id: "notifications",
-    title: "الإشعارات",
-    summary: "قنوات الإشعار والتكاملات — مجمّعة من المسارات السابقة.",
-    permissions: ["admin.read", "notifications.read"],
-    tools: [
-      { id: "telegram", title: "Telegram", description: "تكامل تيليجرام", href: "/admin?section=telegram", tags: ["إشعار"], legacySource: "AdminShell#telegram" },
-      { id: "instagram", title: "إنستغرام", description: "تكامل إنستغرام", href: "/admin/integrations/instagram", tags: ["إشعار", "تكامل"], legacySource: "InstagramIntegrationPage" },
+      { id: "categories", title: "أبواب العلم", description: "شجرة التصنيفات والترتيب", href: "/admin?section=categories", tags: ["تصنيف", "شجرة"], legacySource: "AdminShell#categories" },
+      { id: "knowledge-graph", title: "الرسم البياني", description: "علاقات المعرفة (عرض)", href: "/admin?section=knowledge-graph", tags: ["علاقات"], legacySource: "AdminShell#knowledge-graph" },
+      { id: "relationships", title: "العلاقات", description: "ربط الكيانات", href: "/admin?section=knowledge-graph", tags: ["علاقات"], legacySource: "RelationshipsSection" },
     ],
   },
   analytics: {
     id: "analytics",
     title: "التحليلات",
-    summary: "مساحة تحليلات موحّدة فوق الأدوات السابقة.",
+    summary: "ملخصات واتجاهات فوق الأدوات السابقة — بلا عدّادات خام وحدها.",
     permissions: ["admin.read", "analytics.read"],
     tools: [
       { id: "search-analytics", title: "تحليلات البحث", description: "إحصاءات البحث", href: "/admin?section=search-analytics", tags: ["بحث"], legacySource: "AdminShell#search-analytics" },
-      { id: "feature-status", title: "حالة الميزات", description: "لوحة حالة الميزات", href: "/admin/feature-status", tags: ["ميزات"], legacySource: "FeatureStatusPage" },
-      { id: "dashboard-legacy", title: "لوحة التحكم المتقدمة", description: "لوحة review/dashboard السابقة", href: "/admin/dashboard", tags: ["لوحة"], legacySource: "AdminDashboardPage" },
+      { id: "feature-status", title: "صحة المحتوى", description: "حالة الميزات والنشر", href: "/admin/feature-status", tags: ["صحة"], legacySource: "FeatureStatusPage" },
+      { id: "dashboard-legacy", title: "لوحة التشغيل السابقة", description: "لوحة review/dashboard", href: "/admin/dashboard", tags: ["لوحة"], legacySource: "AdminDashboardPage" },
+      { id: "verified-knowledge", title: "المعرفة الموثقة", description: "مؤشرات التوثيق", href: "/admin?section=verified-knowledge", tags: ["توثيق"], legacySource: "AdminShell#verified-knowledge" },
     ],
   },
-  automation: {
-    id: "automation",
-    title: "الأتمتة",
-    summary: "مراكز الأتمتة والـCMS والذكاء — مجمّعة بلا تكرار واجهات جديدة CRUD.",
-    permissions: ["admin.read", "automation.read"],
+  community: {
+    id: "community",
+    title: "المجتمع",
+    summary: "مستخدمون وأدوار وبلاغات — بلا تغيير RLS/صلاحيات خادم.",
+    permissions: ["admin.read", "users.read", "users.roles", "review.read"],
     tools: [
-      { id: "auto-center", title: "مركز الأتمتة", description: "المركز الرئيسي", href: "/admin/automation/center", tags: ["أتمتة"], legacySource: "AutomationCenterPage" },
-      { id: "auto-dashboard", title: "لوحة الأتمتة", description: "لوحة تشغيل", href: "/admin/automation/dashboard", tags: ["أتمتة"], legacySource: "AutomationDashboardPage" },
-      { id: "auto-content", title: "المحتوى الآلي", description: "إنتاج محتوى آلي", href: "/admin/auto-content", tags: ["محتوى"], legacySource: "AutoContentPage" },
-      { id: "content-production", title: "إنتاج المحتوى", description: "خط إنتاج المحتوى", href: "/admin/content-production", tags: ["إنتاج"], legacySource: "ContentProductionDashboardPage" },
-      { id: "sources", title: "مصادر الاستيراد", description: "مصادر الأتمتة", href: "/admin/sources", tags: ["مصادر"], legacySource: "AutomationSourcesPage" },
-      { id: "platform", title: "منصة المعرفة", description: "محرك المعرفة", href: "/admin/automation/platform", tags: ["معرفة"], legacySource: "MajlisKnowledgeEnginePage" },
-      { id: "autonomous", title: "المنصة الذاتية", description: "المنصة الذاتية", href: "/admin/autonomous-platform", tags: ["AI"], legacySource: "AutonomousPlatformPage" },
-      { id: "smart-cms", title: "CMS الذكي", description: "إدارة CMS", href: "/admin?section=smart-cms", tags: ["CMS"], legacySource: "AdminShell#smart-cms" },
-      { id: "aggregator", title: "محرك التجميع", description: "تجميع المحتوى", href: "/admin?section=aggregator", tags: ["تجميع"], legacySource: "AdminShell#aggregator" },
-      { id: "knowledge-engine", title: "Auto Knowledge", description: "محرك المعرفة الآلي", href: "/admin?section=knowledge-engine", tags: ["معرفة"], legacySource: "AdminShell#knowledge-engine" },
-    ],
-  },
-  system: {
-    id: "system",
-    title: "النظام",
-    summary: "مراقبة وأخطاء وحالة المنصة — عرض فقط عبر المسارات السابقة.",
-    permissions: ["admin.read", "system.read"],
-    tools: [
-      { id: "error-logs", title: "سجل الأخطاء", description: "أخطاء العميل", href: "/admin?section=error-logs", tags: ["أخطاء"], legacySource: "AdminShell#error-logs" },
-      { id: "feature-status", title: "حالة الميزات", description: "مراقبة الميزات", href: "/admin/feature-status", tags: ["مراقبة"], legacySource: "FeatureStatusPage" },
-      { id: "internal-status", title: "الحالة الداخلية", description: "صفحة الحالة الداخلية", href: "/internal/status", tags: ["مراقبة"], legacySource: "InternalStatusPage" },
+      { id: "users", title: "المستخدمون", description: "قائمة الحسابات والأدوار", href: "/admin?section=users", tags: ["مستخدمون"], legacySource: "AdminShell#users" },
+      { id: "reports", title: "البلاغات", description: "بلاغات المجتمع", href: "/admin?section=reports", tags: ["بلاغات"], legacySource: "AdminShell#reports" },
+      { id: "submissions", title: "المساهمات", description: "مقترحات بانتظار المراجعة", href: "/admin?section=submissions", tags: ["مساهمات"], legacySource: "AdminShell#submissions" },
+      { id: "governance", title: "الحوكمة", description: "سياسات الحوكمة (عرض)", href: "/admin?section=governance", tags: ["حوكمة"], legacySource: "AdminShell#governance" },
     ],
   },
   settings: {
     id: "settings",
     title: "الإعدادات",
-    summary: "إعدادات مجمّعة — بدون تغيير سياسات الخادم في هذه الموجة.",
-    permissions: ["admin.read", "settings.read"],
+    summary: "إعدادات اللوحة والأتمتة والنظام والتدقيق — مجمّعة دون تشتيت الوجهات.",
+    permissions: [
+      "admin.read",
+      "settings.read",
+      "notifications.read",
+      "automation.read",
+      "system.read",
+      "audit.read",
+    ],
     tools: [
       { id: "settings", title: "إعدادات اللوحة", description: "إعدادات عامة", href: "/admin?section=settings", tags: ["إعدادات"], legacySource: "AdminShell#settings" },
-      { id: "governance", title: "سياسات الحوكمة", description: "عرض السياسات", href: "/admin?section=governance", tags: ["حوكمة"], legacySource: "AdminShell#governance" },
+      { id: "telegram", title: "Telegram", description: "تكامل تيليجرام", href: "/admin?section=telegram", tags: ["إشعار"], legacySource: "AdminShell#telegram" },
+      { id: "instagram", title: "إنستغرام", description: "تكامل إنستغرام", href: "/admin/integrations/instagram", tags: ["تكامل"], legacySource: "InstagramIntegrationPage" },
+      { id: "auto-center", title: "مركز الأتمتة", description: "المركز الرئيسي", href: "/admin/automation/center", tags: ["أتمتة"], legacySource: "AutomationCenterPage" },
+      { id: "auto-dashboard", title: "لوحة الأتمتة", description: "لوحة تشغيل", href: "/admin/automation/dashboard", tags: ["أتمتة"], legacySource: "AutomationDashboardPage" },
+      { id: "auto-content", title: "المحتوى الآلي", description: "إنتاج محتوى آلي", href: "/admin/auto-content", tags: ["أتمتة"], legacySource: "AutoContentPage" },
+      { id: "content-production", title: "إنتاج المحتوى", description: "خط إنتاج المحتوى", href: "/admin/content-production", tags: ["إنتاج"], legacySource: "ContentProductionDashboardPage" },
+      { id: "sources", title: "مصادر الاستيراد", description: "مصادر الأتمتة", href: "/admin/sources", tags: ["مصادر"], legacySource: "AutomationSourcesPage" },
+      { id: "smart-cms", title: "CMS الذكي", description: "إدارة CMS", href: "/admin?section=smart-cms", tags: ["CMS"], legacySource: "AdminShell#smart-cms" },
+      { id: "error-logs", title: "سجل الأخطاء", description: "أخطاء العميل", href: "/admin?section=error-logs", tags: ["أخطاء"], legacySource: "AdminShell#error-logs" },
+      { id: "feature-status", title: "مراقبة الميزات", description: "حالة المنصة", href: "/admin/feature-status", tags: ["مراقبة"], legacySource: "FeatureStatusPage" },
+      { id: "internal-status", title: "الحالة الداخلية", description: "تشخيص للمطورين", href: "/internal/status", tags: ["تشخيص"], legacySource: "InternalStatusPage" },
+      { id: "audit", title: "سجل التدقيق", description: "أحداث واجهة اللوحة المحلية", href: "/admin/v3/settings?view=audit", tags: ["تدقيق"], legacySource: "admin-v3/audit-events" },
     ],
-  },
-  audit: {
-    id: "audit",
-    title: "سجل التدقيق",
-    summary: "أحداث واجهة Admin v3 المحلية — لا يغيّر RLS.",
-    permissions: ["admin.read", "audit.read"],
-    tools: [],
   },
 };
 
-export function listCenterTools(centerId: Exclude<AdminV3CenterId, "home">): readonly AdminV3ToolItem[] {
+export function listCenterTools(centerId: Exclude<AdminV3CenterId, "overview">): readonly AdminV3ToolItem[] {
   return ADMIN_V3_CENTERS[centerId]?.tools ?? [];
 }
 

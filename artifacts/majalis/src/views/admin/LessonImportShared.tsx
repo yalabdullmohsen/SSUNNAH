@@ -2,9 +2,9 @@ import { useState } from "react";
 import { GOVERNORATES } from "@/lib/theme";
 import { FIELD_LABELS, EMPTY_PARSED, type DebugLog, type ParsedLessonFields } from "@/lib/lesson-import-api";
 
-export const CATEGORIES = ["\u062a\u0641\u0633\u064a\u0631", "\u0641\u0642\u0647", "\u0639\u0642\u064a\u062f\u0629", "\u062d\u062f\u064a\u062b", "\u0633\u064a\u0631\u0629", "\u062a\u062c\u0648\u064a\u062f", "\u0623\u062e\u0631\u0649"];
-export const VENUE_TYPES = ["\u0645\u0633\u062c\u062f", "\u0645\u062c\u0644\u0633", "\u062f\u064a\u0648\u0627\u0646", "\u0645\u0632\u0631\u0639\u0629", "\u0627\u0633\u062a\u0631\u0627\u062d\u0629", "\u0645\u0631\u0643\u0632", "\u062c\u0627\u0645\u0639\u0629", "\u0623\u062e\u0631\u0649"] as const;
-export const WEEK_DAYS = ["\u0627\u0644\u0633\u0628\u062a", "\u0627\u0644\u0623\u062d\u062f", "\u0627\u0644\u0627\u062b\u0646\u064a\u0646", "\u0627\u0644\u062b\u0644\u0627\u062b\u0627\u0621", "\u0627\u0644\u0623\u0631\u0628\u0639\u0627\u0621", "\u0627\u0644\u062e\u0645\u064a\u0633", "\u0627\u0644\u062c\u0645\u0639\u0629"] as const;
+export const CATEGORIES = ["تفسير", "فقه", "عقيدة", "حديث", "سيرة", "تجويد", "أخرى"];
+export const VENUE_TYPES = ["مسجد", "مجلس", "ديوان", "مزرعة", "استراحة", "مركز", "جامعة", "أخرى"] as const;
+export const WEEK_DAYS = ["السبت", "الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة"] as const;
 
 export const inputStyle: React.CSSProperties = {};
 export const labelStyle: React.CSSProperties = {};
@@ -14,7 +14,7 @@ export function ConfidenceBadge({ score }: { score: number }) {
   const mod = pct >= 75 ? " lis-conf-badge--high" : pct >= 45 ? " lis-conf-badge--mid" : "";
   return (
     <span className={`lis-conf-badge${mod}`}>
-      \u062b\u0642\u0629 \u0627\u0644\u0627\u0633\u062a\u062e\u0631\u0627\u062c: {pct}%
+      ثقة الاستخراج: {pct}%
     </span>
   );
 }
@@ -23,13 +23,13 @@ export function MissingBadge({ fields }: { fields: string[] }) {
   if (!fields.length) {
     return (
       <span className="lis-missing-badge lis-missing-badge--ok">
-        \u2713 \u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u0623\u0633\u0627\u0633\u064a\u0629 \u0645\u0643\u062a\u0645\u0644\u0629
+        ✓ البيانات الأساسية مكتملة
       </span>
     );
   }
   return (
     <span className="lis-missing-badge">
-      \u2717 \u062a\u062d\u062a\u0627\u062c \u0645\u0631\u0627\u062c\u0639\u0629: {fields.map((f) => FIELD_LABELS[f] || f).join("\u060c ")}
+      ✗ تحتاج مراجعة: {fields.map((f) => FIELD_LABELS[f] || f).join("، ")}
     </span>
   );
 }
@@ -55,16 +55,16 @@ export function FieldStatusGrid({
         const isWarn = val && conf < 0.5;
         const isMissing = !val;
         const cellMod = isOk ? " lis-field-cell--ok" : isWarn ? " lis-field-cell--warn" : " lis-field-cell--missing";
-        const icon = isOk ? "\u2713" : isWarn ? "\u26a0" : "\u2717";
+        const icon = isOk ? "✓" : isWarn ? "⚠" : "✗";
         return (
           <div
             key={field}
             className={`lis-field-cell${cellMod}`}
-            title={reason || val || "\u063a\u064a\u0631 \u0645\u0648\u062c\u0648\u062f"}
+            title={reason || val || "غير موجود"}
           >
             <div className="lis-field-icon">{icon} {FIELD_LABELS[field] || field}</div>
             <div className="lis-field-value">
-              {isMissing ? (reason || "\u0644\u0645 \u064a\u064f\u0633\u062a\u062e\u0631\u062c") : val}
+              {isMissing ? (reason || "لم يُستخرج") : val}
             </div>
           </div>
         );
@@ -78,8 +78,8 @@ export function DebugLogPanel({ log }: { log: DebugLog }) {
   return (
     <div className="lis-debug-panel">
       <button type="button" onClick={() => setOpen((o) => !o)} className="lis-debug-btn">
-        <span>\u062a\u0641\u0627\u0635\u064a\u0644 \u0627\u0644\u0627\u0633\u062a\u062e\u0631\u0627\u062c (Debug) \u2014 {log.total_ms ?? 0} ms</span>
-        <span>{open ? "\u25b2" : "\u25bc"}</span>
+        <span>تفاصيل الاستخراج (Debug) — {log.total_ms ?? 0} ms</span>
+        <span>{open ? "▲" : "▼"}</span>
       </button>
       {open && (
         <div className="lis-debug-content">
@@ -90,10 +90,10 @@ export function DebugLogPanel({ log }: { log: DebugLog }) {
             >
               <strong>{s.stage}</strong>
               {s.ms != null && <span className="lis-debug-ms">({s.ms}ms)</span>}
-              {s.error && <span className="lis-debug-err"> \u2717 {s.error}</span>}
-              {s.fields_found?.length ? <div className="lis-debug-found">\u2713 {s.fields_found.join(", ")}</div> : null}
-              {s.fields_missing?.length ? <div className="lis-debug-missing">\u2717 missing: {s.fields_missing.join(", ")}</div> : null}
-              {s.fields_recovered?.length ? <div className="lis-debug-recovered">\u2191 recovered: {s.fields_recovered.join(", ")}</div> : null}
+              {s.error && <span className="lis-debug-err"> ✗ {s.error}</span>}
+              {s.fields_found?.length ? <div className="lis-debug-found">✓ {s.fields_found.join(", ")}</div> : null}
+              {s.fields_missing?.length ? <div className="lis-debug-missing">✗ missing: {s.fields_missing.join(", ")}</div> : null}
+              {s.fields_recovered?.length ? <div className="lis-debug-recovered">↑ recovered: {s.fields_recovered.join(", ")}</div> : null}
               {s.fields_filled?.length ? <div className="lis-debug-filled">DB: {s.fields_filled.join(", ")}</div> : null}
               {s.raw_confidence != null && <div className="lis-debug-conf">confidence: {Math.round(s.raw_confidence * 100)}%</div>}
             </div>
@@ -147,10 +147,10 @@ export function LessonImportForm({
         <input type="date" className="lis-input" value={parsed.gregorian_date || parsed.start_date || ""} disabled={disabled} onChange={(e) => { set("gregorian_date", e.target.value); set("start_date", e.target.value); }} />
       </div>
       <div className="lis-full-col">
-        <label className="lis-label">{FIELD_LABELS.day_of_week} (\u0627\u062e\u062a\u0631 \u064a\u0648\u0645\u064b\u0627 \u0623\u0648 \u0623\u0643\u062b\u0631)</label>
+        <label className="lis-label">{FIELD_LABELS.day_of_week} (اختر يومًا أو أكثر)</label>
         <div className="lis-days-row">
           {WEEK_DAYS.map(d => {
-            const selected = (parsed.day_of_week || "").split("\u060c").map(x => x.trim()).includes(d);
+            const selected = (parsed.day_of_week || "").split("،").map(x => x.trim()).includes(d);
             return (
               <label
                 key={d}
@@ -161,9 +161,9 @@ export function LessonImportForm({
                   disabled={disabled}
                   checked={selected}
                   onChange={e => {
-                    const cur = (parsed.day_of_week || "").split("\u060c").map(x => x.trim()).filter(Boolean);
+                    const cur = (parsed.day_of_week || "").split("،").map(x => x.trim()).filter(Boolean);
                     const next = e.target.checked ? [...cur, d] : cur.filter(x => x !== d);
-                    set("day_of_week", next.join("\u060c"));
+                    set("day_of_week", next.join("،"));
                   }}
                   className="lis-day-checkbox"
                 />
@@ -172,25 +172,25 @@ export function LessonImportForm({
             );
           })}
         </div>
-        {(parsed.day_of_week || "").includes("\u060c") && (
+        {(parsed.day_of_week || "").includes("،") && (
           <div className="lis-days-note">
-            \u064a\u062a\u0643\u0631\u0631 \u0643\u0644: {(parsed.day_of_week || "").split("\u060c").join(" \u0648")}
+            يتكرر كل: {(parsed.day_of_week || "").split("،").join(" و")}
           </div>
         )}
       </div>
       <div>
         <label className="lis-label">{FIELD_LABELS.lesson_time}</label>
-        <input className="lis-input" value={parsed.lesson_time || ""} disabled={disabled} onChange={(e) => set("lesson_time", e.target.value)} placeholder="\u0645\u062b\u0644: \u0628\u0639\u062f \u0627\u0644\u0639\u0634\u0627\u0621" />
+        <input className="lis-input" value={parsed.lesson_time || ""} disabled={disabled} onChange={(e) => set("lesson_time", e.target.value)} placeholder="مثل: بعد العشاء" />
       </div>
       <div>
         <label className="lis-label">{FIELD_LABELS.venue_type}</label>
-        <select className="lis-select" value={parsed.venue_type || "\u0645\u0633\u062c\u062f"} disabled={disabled} onChange={(e) => set("venue_type", e.target.value)}>
+        <select className="lis-select" value={parsed.venue_type || "مسجد"} disabled={disabled} onChange={(e) => set("venue_type", e.target.value)}>
           {VENUE_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
         </select>
       </div>
       <div>
         <label className="lis-label">{FIELD_LABELS.mosque}</label>
-        <input className="lis-input" value={parsed.mosque || ""} disabled={disabled} onChange={(e) => set("mosque", e.target.value)} placeholder={parsed.venue_type === "\u062f\u064a\u0648\u0627\u0646" ? "\u062f\u064a\u0648\u0627\u0646 \u0622\u0644 \u0641\u0644\u0627\u0646" : parsed.venue_type === "\u0645\u062c\u0644\u0633" ? "\u0645\u062c\u0644\u0633 \u0627\u0644\u0634\u064a\u062e \u0641\u0644\u0627\u0646" : "\u0627\u0633\u0645 \u0627\u0644\u0645\u0643\u0627\u0646"} />
+        <input className="lis-input" value={parsed.mosque || ""} disabled={disabled} onChange={(e) => set("mosque", e.target.value)} placeholder={parsed.venue_type === "ديوان" ? "ديوان آل فلان" : parsed.venue_type === "مجلس" ? "مجلس الشيخ فلان" : "اسم المكان"} />
       </div>
       <div>
         <label className="lis-label">{FIELD_LABELS.region}</label>
@@ -198,18 +198,18 @@ export function LessonImportForm({
       </div>
       <div>
         <label className="lis-label">{FIELD_LABELS.city}</label>
-        <select className="lis-select" value={parsed.city || "\u0627\u0644\u0639\u0627\u0635\u0645\u0629"} disabled={disabled} onChange={(e) => set("city", e.target.value)}>
+        <select className="lis-select" value={parsed.city || "العاصمة"} disabled={disabled} onChange={(e) => set("city", e.target.value)}>
           {GOVERNORATES.map((g) => <option key={g} value={g}>{g}</option>)}
         </select>
       </div>
       <div>
         <label className="lis-label">{FIELD_LABELS.country}</label>
-        <input className="lis-input" value={parsed.country || "\u0627\u0644\u0643\u0648\u064a\u062a"} disabled={disabled} onChange={(e) => set("country", e.target.value)} />
+        <input className="lis-input" value={parsed.country || "الكويت"} disabled={disabled} onChange={(e) => set("country", e.target.value)} />
       </div>
       <div>
         <label className="lis-label">{FIELD_LABELS.category}</label>
         <select className="lis-select" value={parsed.category || ""} disabled={disabled} onChange={(e) => set("category", e.target.value)}>
-          <option value="">\u2014</option>
+          <option value="">—</option>
           {CATEGORIES.map((c) => <option key={c} value={c}>{c}</option>)}
         </select>
       </div>
@@ -253,10 +253,10 @@ export function LessonImportForm({
         <label className="lis-label">{FIELD_LABELS.keywords}</label>
         <input
           className="lis-input"
-          value={(parsed.keywords || []).join("\u060c ")}
+          value={(parsed.keywords || []).join("، ")}
           disabled={disabled}
-          onChange={(e) => set("keywords", e.target.value.split(/[\u060c,]/).map((s) => s.trim()).filter(Boolean))}
-          placeholder="\u0643\u0644\u0645\u0627\u062a \u0645\u0641\u062a\u0627\u062d\u064a\u0629 \u0645\u0641\u0635\u0648\u0644\u0629 \u0628\u0641\u0627\u0635\u0644\u0629"
+          onChange={(e) => set("keywords", e.target.value.split(/[،,]/).map((s) => s.trim()).filter(Boolean))}
+          placeholder="كلمات مفتاحية مفصولة بفاصلة"
         />
       </div>
       <div className="lis-full-col">
@@ -317,7 +317,7 @@ export function LessonImportReviewPanel({
   onSaveDraft,
   onReject,
   onReExtract,
-  reExtractLabel = "\u0625\u0639\u0627\u062f\u0629 \u0627\u0633\u062a\u062e\u0631\u0627\u062c",
+  reExtractLabel = "إعادة استخراج",
 }: LessonImportReviewProps) {
   return (
     <>
@@ -334,7 +334,7 @@ export function LessonImportReviewPanel({
 
       <div className="lis-review-grid">
         <section className="lis-panel">
-          <h3 className="lis-panel-h3">\u0627\u0644\u0645\u0635\u062f\u0631</h3>
+          <h3 className="lis-panel-h3">المصدر</h3>
           {sourceUrl && (
             <a href={sourceUrl} target="_blank" rel="noopener noreferrer" className="lis-source-link">
               {sourceUrl}
@@ -342,14 +342,14 @@ export function LessonImportReviewPanel({
           )}
           {imageUrl ? (
             <>
-              <h3 className="lis-panel-h3--sm">\u0635\u0648\u0631\u0629 \u0627\u0644\u0625\u0639\u0644\u0627\u0646</h3>
-              <img src={imageUrl} alt="\u0625\u0639\u0644\u0627\u0646 \u0627\u0644\u062f\u0631\u0633" className="lis-preview-img" />
+              <h3 className="lis-panel-h3--sm">صورة الإعلان</h3>
+              <img src={imageUrl} alt="إعلان الدرس" className="lis-preview-img" />
             </>
           ) : (
-            <p className="lis-no-image">\u0644\u0627 \u062a\u0648\u062c\u062f \u0635\u0648\u0631\u0629 \u0645\u0633\u062a\u062e\u0631\u062c\u0629 \u0645\u0646 \u0627\u0644\u0631\u0627\u0628\u0637</p>
+            <p className="lis-no-image">لا توجد صورة مستخرجة من الرابط</p>
           )}
-          <h3 className="lis-panel-h3--sm">\u0627\u0644\u0646\u0635 \u0627\u0644\u0645\u0633\u062a\u062e\u0631\u062c</h3>
-          <pre className="lis-ocr-pre">{extractedText || "\u2014"}</pre>
+          <h3 className="lis-panel-h3--sm">النص المستخرج</h3>
+          <pre className="lis-ocr-pre">{extractedText || "—"}</pre>
           {warnings.length > 0 && (
             <ul className="lis-warnings">
               {warnings.map((w, i) => (
@@ -360,17 +360,17 @@ export function LessonImportReviewPanel({
         </section>
 
         <section className="lis-panel">
-          <h3 className="lis-panel-h3">\u0645\u0631\u0627\u062c\u0639\u0629 \u0648\u062a\u0639\u062f\u064a\u0644 \u0627\u0644\u062d\u0642\u0648\u0644</h3>
+          <h3 className="lis-panel-h3">مراجعة وتعديل الحقول</h3>
           <LessonImportForm parsed={parsed} onChange={onParsedChange} disabled={busy} />
         </section>
       </div>
 
       <div className="lis-review-actions">
         <button type="button" disabled={busy} onClick={onApprove} className="lis-approve-btn">
-          \u0627\u0639\u062a\u0645\u0627\u062f \u0648\u0646\u0634\u0631
+          اعتماد ونشر
         </button>
         <button type="button" disabled={busy} onClick={onSaveDraft} className="lis-draft-btn">
-          \u062d\u0641\u0638 \u0643\u0645\u0633\u0648\u062f\u0629
+          حفظ كمسودة
         </button>
         {onReExtract && (
           <button type="button" disabled={busy} onClick={onReExtract} className="lis-extract-btn">
@@ -378,7 +378,7 @@ export function LessonImportReviewPanel({
           </button>
         )}
         <button type="button" disabled={busy || !draftId} onClick={onReject} className="lis-reject-btn">
-          \u0631\u0641\u0636
+          رفض
         </button>
       </div>
     </>

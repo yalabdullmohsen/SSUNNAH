@@ -21,8 +21,8 @@ function StatCard({ label, value, sub }: { label: string; value: string | number
 }
 
 function gapLabel(reason: string) {
-  if (reason === "empty_section") return "\u0642\u0633\u0645 \u0641\u0627\u0631\u063a";
-  if (reason === "unverified_content") return "\u0645\u062d\u062a\u0648\u0649 \u063a\u064a\u0631 \u0645\u0648\u062b\u0651\u0642";
+  if (reason === "empty_section") return "قسم فارغ";
+  if (reason === "unverified_content") return "محتوى غير موثّق";
   return reason;
 }
 
@@ -48,7 +48,7 @@ export function VerifiedKnowledgeSection() {
       const result = await fetchVerifiedKnowledgeDashboard();
       setData(result);
     } catch {
-      showError("\u062a\u0639\u0630\u0631 \u062a\u062d\u0645\u064a\u0644 \u0644\u0648\u062d\u0629 \u0627\u0644\u0645\u0639\u0631\u0641\u0629 \u0627\u0644\u0645\u0648\u062b\u0642\u0629.");
+      showError("تعذر تحميل لوحة المعرفة الموثقة.");
     } finally {
       setLoading(false);
     }
@@ -62,10 +62,10 @@ export function VerifiedKnowledgeSection() {
     setRunning(true);
     try {
       await runVerifiedKnowledgeCycle({ checkLinks, persistVerification: true });
-      showSuccess("\u0627\u0643\u062a\u0645\u0644\u062a \u062f\u0648\u0631\u0629 \u0627\u0644\u0627\u0633\u062a\u064a\u0631\u0627\u062f \u0648\u0627\u0644\u062a\u062d\u0642\u0642.");
+      showSuccess("اكتملت دورة الاستيراد والتحقق.");
       await load();
     } catch {
-      showError("\u0641\u0634\u0644\u062a \u062f\u0648\u0631\u0629 \u0627\u0644\u0645\u0639\u0631\u0641\u0629 \u0627\u0644\u0645\u0648\u062b\u0642\u0629.");
+      showError("فشلت دورة المعرفة الموثقة.");
     } finally {
       setRunning(false);
     }
@@ -75,10 +75,10 @@ export function VerifiedKnowledgeSection() {
     setBootstrapping(true);
     try {
       await bootstrapVerifiedKnowledge({ persistProvenance: true });
-      showSuccess("\u0627\u0643\u062a\u0645\u0644\u062a \u062a\u0647\u064a\u0626\u0629 \u0627\u0644\u0623\u0630\u0643\u0627\u0631 \u0648\u0627\u0644\u0623\u062d\u0627\u062f\u064a\u062b.");
+      showSuccess("اكتملت تهيئة الأذكار والأحاديث.");
       await load();
     } catch {
-      showError("\u0641\u0634\u0644\u062a \u062a\u0647\u064a\u0626\u0629 \u0627\u0644\u0645\u062d\u062a\u0648\u0649 \u0627\u0644\u0645\u0648\u062b\u0642.");
+      showError("فشلت تهيئة المحتوى الموثق.");
     } finally {
       setBootstrapping(false);
     }
@@ -94,36 +94,36 @@ export function VerifiedKnowledgeSection() {
     <div>
       <div className="svs-header">
         <div>
-          <h2 className="svs-title">\u0642\u0627\u0639\u062f\u0629 \u0627\u0644\u0645\u0639\u0631\u0641\u0629 \u0627\u0644\u0645\u0648\u062b\u0642\u0629</h2>
+          <h2 className="svs-title">قاعدة المعرفة الموثقة</h2>
           <p className="svs-subtitle">
-            \u0627\u0633\u062a\u064a\u0631\u0627\u062f \u0630\u0643\u064a \u2014 \u0645\u0635\u0627\u062f\u0631 \u0631\u0633\u0645\u064a\u0629 \u2014 \u0646\u0634\u0631 \u062a\u0644\u0642\u0627\u0626\u064a \u0639\u0646\u062f \u062b\u0642\u0629 \u2265 90%
+            استيراد ذكي — مصادر رسمية — نشر تلقائي عند ثقة ≥ 90%
           </p>
         </div>
         <div className="svs-btn-group">
           <button type="button" disabled={running} onClick={() => handleRun(false)} className="svs-btn--primary">
-            {running ? "\u062c\u0627\u0631\u064a \u0627\u0644\u062a\u0634\u063a\u064a\u0644\u2026" : "\u062a\u0634\u063a\u064a\u0644 \u0627\u0644\u062f\u0648\u0631\u0629"}
+            {running ? "جاري التشغيل…" : "تشغيل الدورة"}
           </button>
           <button type="button" disabled={running} onClick={() => handleRun(true)} className="svs-btn">
-            \u062f\u0648\u0631\u0629 + \u0641\u062d\u0635 \u0631\u0648\u0627\u0628\u0637
+            دورة + فحص روابط
           </button>
           <button type="button" disabled={bootstrapping} onClick={handleBootstrap} className="svs-btn">
-            {bootstrapping ? "\u062c\u0627\u0631\u064a \u0627\u0644\u062a\u0647\u064a\u0626\u0629\u2026" : "\u062a\u0647\u064a\u0626\u0629 \u0627\u0644\u0623\u0630\u0643\u0627\u0631/\u0627\u0644\u0623\u062d\u0627\u062f\u064a\u062b"}
+            {bootstrapping ? "جاري التهيئة…" : "تهيئة الأذكار/الأحاديث"}
           </button>
         </div>
       </div>
 
       <div className="svs-stats-grid">
-        <StatCard label="\u0627\u0644\u0645\u0635\u0627\u062f\u0631" value={sources?.total ?? totals.sources_total ?? 0} sub={`${sources?.active ?? totals.sources_active ?? 0} \u0646\u0634\u0637`} />
-        <StatCard label="\u0623\u0630\u0643\u0627\u0631 \u0645\u0648\u062b\u0651\u0642\u0629" value={totals.verified_adhkar ?? 0} />
-        <StatCard label="\u0623\u062d\u0627\u062f\u064a\u062b \u0645\u0648\u062b\u0651\u0642\u0629" value={totals.verified_hadith ?? 0} />
-        <StatCard label="\u0633\u062c\u0644 \u0627\u0644\u0645\u0635\u0627\u062f\u0631" value={totals.provenance_verified ?? 0} />
-        <StatCard label="\u0641\u062c\u0648\u0627\u062a" value={totals.gaps_count ?? gaps.length} />
+        <StatCard label="المصادر" value={sources?.total ?? totals.sources_total ?? 0} sub={`${sources?.active ?? totals.sources_active ?? 0} نشط`} />
+        <StatCard label="أذكار موثّقة" value={totals.verified_adhkar ?? 0} />
+        <StatCard label="أحاديث موثّقة" value={totals.verified_hadith ?? 0} />
+        <StatCard label="سجل المصادر" value={totals.provenance_verified ?? 0} />
+        <StatCard label="فجوات" value={totals.gaps_count ?? gaps.length} />
         <StatCard label="Seed corpus" value={totals.seed_corpus_total ?? 0} />
       </div>
 
       {(report?.recommendations?.length ?? 0) > 0 && (
         <div className="vks-recs">
-          <p className="vks-recs-title">\u062a\u0648\u0635\u064a\u0627\u062a</p>
+          <p className="vks-recs-title">توصيات</p>
           <ul className="vks-recs-list">
             {report?.recommendations?.map((rec) => (
               <li key={rec}>{rec}</li>
@@ -132,21 +132,21 @@ export function VerifiedKnowledgeSection() {
         </div>
       )}
 
-      <h3 className="svs-section-h3">\u0641\u062c\u0648\u0627\u062a \u0627\u0644\u0645\u062d\u062a\u0648\u0649</h3>
+      <h3 className="svs-section-h3">فجوات المحتوى</h3>
       <div className="svs-table-wrap">
         <table className="svs-table">
           <thead>
             <tr className="svs-thead-row">
-              <th className="svs-th">\u0627\u0644\u0642\u0633\u0645</th>
-              <th className="svs-th">\u0627\u0644\u0633\u0628\u0628</th>
-              <th className="svs-th">\u0627\u0644\u0623\u0648\u0644\u0648\u064a\u0629</th>
+              <th className="svs-th">القسم</th>
+              <th className="svs-th">السبب</th>
+              <th className="svs-th">الأولوية</th>
             </tr>
           </thead>
           <tbody>
             {gaps.length === 0 ? (
               <tr>
                 <td colSpan={3} className="svs-td svs-td--center">
-                  \u0644\u0627 \u062a\u0648\u062c\u062f \u0641\u062c\u0648\u0627\u062a \u2014 \u062c\u0645\u064a\u0639 \u0627\u0644\u0623\u0642\u0633\u0627\u0645 \u062a\u062d\u062a\u0648\u064a \u0639\u0644\u0649 \u0645\u062d\u062a\u0648\u0649
+                  لا توجد فجوات — جميع الأقسام تحتوي على محتوى
                 </td>
               </tr>
             ) : (
@@ -167,15 +167,15 @@ export function VerifiedKnowledgeSection() {
         </table>
       </div>
 
-      <h3 className="svs-section-h3">\u062c\u0648\u062f\u0629 \u0627\u0644\u0623\u0642\u0633\u0627\u0645</h3>
+      <h3 className="svs-section-h3">جودة الأقسام</h3>
       <div className="svs-table-wrap">
         <table className="svs-table">
           <thead>
             <tr className="svs-thead-row">
-              <th className="svs-th">\u0627\u0644\u0642\u0633\u0645</th>
+              <th className="svs-th">القسم</th>
               <th className="svs-th">Seed</th>
               <th className="svs-th">DB</th>
-              <th className="svs-th">\u0645\u0648\u062b\u0651\u0642</th>
+              <th className="svs-th">موثّق</th>
             </tr>
           </thead>
           <tbody>
@@ -183,7 +183,7 @@ export function VerifiedKnowledgeSection() {
               <tr key={key}>
                 <td className="svs-td">{key}</td>
                 <td className="svs-td">
-                  {stats.seed ?? stats.seed_items ?? stats.seed_categories ?? "\u2014"}
+                  {stats.seed ?? stats.seed_items ?? stats.seed_categories ?? "—"}
                 </td>
                 <td className="svs-td">{stats.db?.total ?? 0}</td>
                 <td className="svs-td svs-td--accent">{stats.db?.verified ?? 0}</td>
@@ -193,15 +193,15 @@ export function VerifiedKnowledgeSection() {
         </table>
       </div>
 
-      <h3 className="svs-section-h3">\u0633\u062c\u0644 \u0627\u0644\u0645\u0635\u0627\u062f\u0631 \u0627\u0644\u0631\u0633\u0645\u064a\u0629</h3>
+      <h3 className="svs-section-h3">سجل المصادر الرسمية</h3>
       <div className="svs-table-wrap">
         <table className="svs-table">
           <thead>
             <tr className="svs-thead-row">
-              <th className="svs-th">\u0627\u0644\u0645\u0635\u062f\u0631</th>
-              <th className="svs-th">\u0627\u0644\u0646\u0648\u0639</th>
-              <th className="svs-th">\u0627\u0644\u062b\u0642\u0629</th>
-              <th className="svs-th">\u0627\u0644\u062d\u0627\u0644\u0629</th>
+              <th className="svs-th">المصدر</th>
+              <th className="svs-th">النوع</th>
+              <th className="svs-th">الثقة</th>
+              <th className="svs-th">الحالة</th>
             </tr>
           </thead>
           <tbody>
@@ -214,7 +214,7 @@ export function VerifiedKnowledgeSection() {
                   className="vks-td--active"
                   style={{ "--vks-src-color": src.is_active ? "var(--majalis-emerald-deep)" : "var(--majalis-ink-soft)" } as React.CSSProperties}
                 >
-                  {src.is_active ? "\u0646\u0634\u0637" : "\u0645\u0639\u0637\u0651\u0644"}
+                  {src.is_active ? "نشط" : "معطّل"}
                 </td>
               </tr>
             ))}
