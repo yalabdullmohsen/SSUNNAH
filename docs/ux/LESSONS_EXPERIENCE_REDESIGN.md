@@ -43,8 +43,8 @@
 
 ## 5) لقطات
 
-- `docs/ux/lessons-redesign/after-list.png`
-- `docs/ux/lessons-redesign/after-detail.png`
+<img alt="قائمة الدروس بعد إعادة التصميم" src="/Users/alabdullmohsen/majlis-app/docs/ux/lessons-redesign/after-list.png" />
+<img alt="تفصيل الدرس بعد إعادة التصميم" src="/Users/alabdullmohsen/majlis-app/docs/ux/lessons-redesign/after-detail.png" />
 
 ## 6) الوصول
 
