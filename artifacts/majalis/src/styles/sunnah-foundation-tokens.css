@@ -17,7 +17,7 @@
   --sf-color-ivory-canvas: #f8f6f1;
   --sf-color-ivory-raised: #ffffff;
 
-  /* Primary Emerald — اللون الأساسي الوحيد */
+  /* Primary Emerald — عائلة واحدة فقط (لا لوحات page-specific) */
   --sf-color-deep-emerald: #0f5c3f;
   --sf-color-deep-emerald-deep: #0a4530;
   /* غسلة هادئة على سطح الصفحة */
@@ -27,7 +27,23 @@
     var(--sf-color-warm-ivory)
   );
 
+  /*
+   * سلم زمرد كانوني (Calm Wave 1) — مشتق من #0F5C3F / #0A4530
+   * لا يغيّر SoT الأساسي أعلاه؛ يوفّر مستويات دلالية بدل --em-* المتنافسة.
+   */
+  --sf-emerald-50: color-mix(in srgb, var(--sf-color-deep-emerald) 6%, #ffffff);
+  --sf-emerald-100: color-mix(in srgb, var(--sf-color-deep-emerald) 12%, #ffffff);
+  --sf-emerald-200: color-mix(in srgb, var(--sf-color-deep-emerald) 22%, #ffffff);
+  --sf-emerald-700: #0c4f3a; /* brand-on-light / تفاعل */
+  --sf-emerald-800: var(--sf-color-deep-emerald-deep);
+  --sf-emerald-900: #083828;
+  --sf-emerald-950: #06281c;
+  --sf-emerald-600: var(--sf-color-deep-emerald);
+  --sf-emerald-primary: var(--sf-emerald-600);
+
+  /* ذهب — زخرفة نادرة فقط (ليس نص/روابط/حالات مختارة عامة) */
   --sf-color-quran-gold: #c9a82e;
+  --sf-gold-emphasis: var(--sf-color-quran-gold);
 
   /* تسلسل نص AA على أبيض / #F8F6F1 */
   --sf-color-rich-ink: #15382d;
@@ -39,6 +55,7 @@
   --sf-color-luxury-night-elevated: #18332a;
   --sf-color-luxury-night-ink: #edf5f0;
   --sf-color-luxury-night-gold: #c4a84a;
+  --sf-gold-on-dark: var(--sf-color-luxury-night-gold);
   /* عاجي على الزمرد الداكن — تباين AA */
   --sf-color-on-emerald: #f7f1e4;
 
@@ -57,12 +74,21 @@
   --sf-type-supporting: 0.9375rem;
   --sf-type-metadata: 0.8125rem;
   --sf-type-caption: 0.75rem;
+  --sf-type-badge: 0.75rem;
+  --sf-type-button: 0.9375rem;
+  --sf-type-breadcrumb: 0.8125rem;
+  --sf-type-citation: 0.8125rem;
+  --sf-type-warning: 0.9375rem;
+  /* أدوار نص شرعي — لا تُخفَّض إلى muted */
+  --sf-type-quran: clamp(1.125rem, 3.2vw, 1.35rem);
+  --sf-type-hadith: 1.0625rem;
 
   --sf-lh-display: 1.25;
   --sf-lh-title: 1.35;
   --sf-lh-ui: 1.45;
   --sf-lh-body: 1.7;
   --sf-lh-reading: 1.8;
+  --sf-lh-scripture: 1.85;
 
   --sf-fw-regular: 400;
   --sf-fw-medium: 500;
@@ -79,8 +105,8 @@
   --sf-space-8: 32px;
   --sf-space-12: 48px;
 
-  /* ── Radius (سلم مغلق — UI Refinement) ──
-   * XS=12 · SM=16 · MD=20 · LG=24 — ممنوع قيم عشوائية خارج السلم */
+  /* ── Radius (سلم مغلق — Calm Wave 1) ──
+   * control=XS · card=MD · feature/sheet=LG · pill فقط لشارات/فلاتر قصيرة */
   --sf-radius-xs: 12px;
   --sf-radius-sm: 16px;
   --sf-radius-md: 20px;
@@ -89,6 +115,7 @@
   --sf-radius-xl: var(--sf-radius-lg);
   --sf-radius-card: var(--sf-radius-md);
   --sf-radius-control: var(--sf-radius-xs);
+  --sf-radius-feature: var(--sf-radius-lg);
   --sf-radius-sheet: var(--sf-radius-lg);
   --sf-radius-pill: 999px;
 
@@ -99,12 +126,15 @@
   --sf-shadow-elevated: 0 2px 6px
     color-mix(in srgb, var(--sf-color-deep-emerald-deep) 10%, transparent);
 
-  /* ── Surface ── */
+  /* ── Surface — عاجي واحد + أبيض مرفوع + سيج هادئ ── */
   --sf-surface-canvas: var(--sf-color-warm-ivory);
   --sf-surface-raised: var(--sf-color-warm-ivory-surface);
   --sf-surface-muted: var(--sf-color-warm-ivory-muted);
+  --sf-surface-sage: var(--sf-emerald-50);
   --sf-surface-brand: var(--sf-color-deep-emerald);
   --sf-hairline: rgba(15, 92, 63, 0.12);
+  --sf-border-subtle: var(--sf-hairline);
+  --sf-border-strong: color-mix(in srgb, var(--sf-color-deep-emerald) 22%, transparent);
 
   /* ── State ── */
   --sf-state-hover-wash: color-mix(in srgb, var(--sf-color-deep-emerald) 8%, transparent);

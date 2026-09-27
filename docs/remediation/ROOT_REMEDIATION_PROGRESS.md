@@ -21,6 +21,7 @@ Living tracker for remediation waves. Do not treat as release truth (see `docs/r
 | **WAVE_PRODUCT_REDESIGN_W2** | Navigation IA + collapsible drawer + canonical href | **merged (#2310)** | `docs/remediation/waves/WAVE_PRODUCT_REDESIGN_W2_NAVIGATION.md` |
 | **WAVE_PRODUCT_REDESIGN_W3** | Card System V2 adoption on shared entry/continue | **merged (#2311)** | `docs/remediation/waves/WAVE_PRODUCT_REDESIGN_W3_CARDS.md` |
 | **CI_7500_HUB_CARD_DARK** | HubCard dark title AA on elevated night surface | **merged (#2312)** · main CI #7508 green | `docs/remediation/CI_7500_CONTRAST_ROOT_CAUSE.md` |
+| **WAVE_VISUAL_HARMONIZATION_W1** | Calm palette + type/radius + Card V2 polish | **local · no push (await auth)** | `docs/remediation/waves/WAVE_VISUAL_HARMONIZATION_W1.md` · `docs/design/CALM_COLOR_SYSTEM.md` |
 
 ## CI / UI recovery docs
 
