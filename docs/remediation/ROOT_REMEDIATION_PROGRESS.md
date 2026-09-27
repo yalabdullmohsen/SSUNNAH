@@ -11,7 +11,21 @@ Living tracker for remediation waves. Do not treat as release truth (see `docs/r
 | WAVE6_ADMIN_V3_CENTERS | Admin centers | prior | `docs/remediation/WAVE6_ADMIN_V3_CENTERS.md` |
 | **WAVE_SEARCH_INTEGRITY** | Search href contract + history destinations + index v3 | **merged (#2303)** | `docs/remediation/waves/WAVE_SEARCH_INTEGRITY.md` |
 | WAVE_HADITH_DATA_TRUTH | Hadith counts, labels, filters, empties | IMPLEMENTED | `docs/remediation/waves/WAVE_HADITH_DATA_TRUTH.md` |
-| **WAVE_HADITH_COMPLETION_P1** | Registry + completeness/license docs + count align | **IN SESSION** | `docs/remediation/waves/WAVE_HADITH_COMPLETION_P1.md` |
+| **WAVE_HADITH_COMPLETION_P1** | Registry + completeness/license docs + count align | **merged (#2302)** | `docs/remediation/waves/WAVE_HADITH_COMPLETION_P1.md` |
+| **WAVE_SHARED_CONTRAST_FIX** | Tawhid dark library-card desc AA | **merged (#2307)** | `docs/remediation/waves/WAVE_SHARED_CONTRAST_FIX.md` · main `a9e7bf87` green |
+| **WAVE_PRAYER_WHITE_FLASH** | Prayer first-frame olive shell | **merged (#2306)** | `docs/remediation/waves/WAVE_PRAYER_WHITE_FLASH.md` · DEVICE_REQUIRED |
+| **WAVE_HOMEPAGE_INTEGRATION** | Homepage redesign + contrast/scroll gate contract | **IN CI (#2304)** | `docs/remediation/waves/WAVE_HOMEPAGE_INTEGRATION.md` |
+| **WAVE_LESSONS_INTEGRATION** | Lessons redesign + HARD_WHITE_BG | **IN CI (#2305)** | `docs/remediation/waves/WAVE_LESSONS_INTEGRATION.md` |
+
+## CI / UI recovery docs
+
+| Doc | Path |
+|---|---|
+| Contrast root cause | `docs/remediation/CI_CONTRAST_ROOT_CAUSE.md` |
+| Required gates audit | `docs/remediation/CI_REQUIRED_GATES_AUDIT.md` |
+| Branch integration plan | `docs/remediation/UI_BRANCH_INTEGRATION_PLAN.md` |
+| Prayer first frame | `docs/remediation/PRAYER_FIRST_FRAME_REPORT.md` |
+| Visual snapshot review | `docs/remediation/VISUAL_SNAPSHOT_REVIEW.md` |
 
 ## Search integrity docs
 
