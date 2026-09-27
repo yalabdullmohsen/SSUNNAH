@@ -177,11 +177,26 @@ html[dir="rtl"] .sidebar-panel {
   background: color-mix(in srgb, var(--sidebar-group-accent, var(--mj-brand)) 12%, transparent);
 }
 
-.sidebar-section-toggle__label {
+.sidebar-section-toggle__text {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.sidebar-section-toggle__label {
+  min-width: 0;
   overflow-wrap: anywhere;
-  text-wrap: pretty;
+}
+
+.sidebar-section-toggle__sub {
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text-muted, #4f5f58);
+  opacity: 0.92;
 }
 
 .sidebar-section-toggle:focus-visible {
@@ -290,11 +305,10 @@ html[dir="rtl"] .sidebar-panel {
 .sidebar-item-title {
   font-weight: 750;
   font-size: clamp(0.92rem, 0.86rem + 0.3vw, 1.02rem);
-  line-height: 1.4;
+  line-height: 1.35;
   display: block;
   color: inherit;
   overflow-wrap: anywhere;
-  text-wrap: pretty;
   white-space: normal;
   hyphens: none;
 }
@@ -383,6 +397,10 @@ html[data-theme="dark"] .sidebar-item.active {
 
 html[data-theme="dark"] .sidebar-section-toggle {
   color: #c5d4ce;
+}
+
+html[data-theme="dark"] .sidebar-section-toggle__sub {
+  color: #a8b6af;
 }
 
 html[data-theme="dark"] .sidebar-item-icon {

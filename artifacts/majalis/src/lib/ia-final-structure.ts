@@ -61,6 +61,7 @@ export const IA_FORBIDDEN_PUBLIC_LABELS = [
  * (تُخفى من القوائم العامة عبر HIDDEN_FROM_NAV).
  */
 export const IA_NESTED_ONLY_PATHS = [
+  "/ulum-quran",
   "/quran-studies",
   "/quran/tajweed",
   "/quran/memorization-plans",
@@ -74,7 +75,7 @@ export const IA_NESTED_ONLY_PATHS = [
   "/hadith/arbaeen",
   "/fiqh-qawaid",
   "/madhahib",
-  // /ulum-quran و /flashcards ظاهرة في درج التسميات الكاملة
+  "/flashcards",
 ] as const;
 
 /** آباء فتات الخبز للأبواب الفرعية. */

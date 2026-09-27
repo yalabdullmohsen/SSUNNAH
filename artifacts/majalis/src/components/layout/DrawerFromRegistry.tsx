@@ -1,6 +1,7 @@
 /**
  * صفوف الدرج من مصدر التنقّل الموحّد — مجموعات قابلة للطي بعناوين مميزة.
  * لا تحميل لخطوط المصحف من هنا — الرابط فقط.
+ * لا تُرسم صفوف المجموعات المطوية (تكلفة DOM/أيقونات على الجوال).
  */
 import { memo, useEffect, useMemo, useState, type CSSProperties } from "react";
 import { Link, useLocation } from "wouter";
@@ -11,6 +12,8 @@ import { loadLastPageSync } from "@/lib/quran-last-page";
 type Props = {
   onNavigate?: () => void;
   className?: string;
+  /** لا تُحمَّل متابعة القراءة إلا والدرج مفتوح */
+  active?: boolean;
 };
 
 type Resume = { page: number; surah?: string };
@@ -25,14 +28,15 @@ function groupContainsPath(
 export const DrawerFromRegistry = memo(function DrawerFromRegistry({
   onNavigate,
   className,
+  active = true,
 }: Props) {
-  const groups = useMemo(() => SIDEBAR_NAV_GROUPS, []);
+  const groups = SIDEBAR_NAV_GROUPS;
   const [pathname] = useLocation();
   const [resume, setResume] = useState<Resume | null>(null);
 
   const initialOpen = useMemo(() => {
-    const active = groups.find((g) => groupContainsPath(g.items, pathname));
-    if (active) return new Set([active.id]);
+    const activeGroup = groups.find((g) => groupContainsPath(g.items, pathname));
+    if (activeGroup) return new Set([activeGroup.id]);
     const preferred = groups.find((g) => g.defaultOpen) ?? groups[0];
     return new Set(preferred ? [preferred.id] : []);
   }, [groups, pathname]);
@@ -44,6 +48,7 @@ export const DrawerFromRegistry = memo(function DrawerFromRegistry({
   }, [initialOpen]);
 
   useEffect(() => {
+    if (!active) return;
     const page = loadLastPageSync();
     if (!page) {
       setResume(null);
@@ -62,7 +67,7 @@ export const DrawerFromRegistry = memo(function DrawerFromRegistry({
         setResume({ page, surah: name });
       })
       .catch(() => undefined);
-  }, []);
+  }, [active]);
 
   function toggleGroup(id: string) {
     setOpenIds((prev) => {
@@ -98,7 +103,12 @@ export const DrawerFromRegistry = memo(function DrawerFromRegistry({
                 aria-controls={panelId}
                 onClick={() => toggleGroup(group.id)}
               >
-                <span className="sidebar-section-toggle__label">{group.title}</span>
+                <span className="sidebar-section-toggle__text">
+                  <span className="sidebar-section-toggle__label">{group.title}</span>
+                  {group.subtitle ? (
+                    <span className="sidebar-section-toggle__sub">{group.subtitle}</span>
+                  ) : null}
+                </span>
                 <span
                   className={`sidebar-section-toggle__chevron${expanded ? " is-open" : ""}`}
                   aria-hidden="true"
@@ -111,54 +121,63 @@ export const DrawerFromRegistry = memo(function DrawerFromRegistry({
               hidden={!expanded}
               className="sidebar-section-panel"
             >
-              {group.items.map((item) => {
-                const active = isNavHrefActive(pathname, item.href);
-                const itemStyle = {
-                  "--sidebar-item-accent": item.accent,
-                } as CSSProperties;
-                const row = (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={onNavigate}
-                    className={`sidebar-item${active ? " active" : ""}`}
-                    aria-current={active ? "page" : undefined}
-                    aria-label={item.label}
-                    style={itemStyle}
-                  >
-                    <span className="sidebar-item-icon" aria-hidden="true">
-                      <item.Icon size={18} strokeWidth={1.8} />
-                    </span>
-                    <span className="sidebar-item-text">
-                      <span className="sidebar-item-title">{item.label}</span>
-                    </span>
-                  </Link>
-                );
-                if (item.href !== "/mushaf" || !resume) return row;
-                return (
-                  <div key={`${item.href}-resume`}>
-                    {row}
-                    <Link
-                      href={`/mushaf?page=${resume.page}`}
-                      onClick={onNavigate}
-                      className="sidebar-item"
-                      aria-label={`متابعة القراءة — صفحة ${resume.page}${resume.surah ? ` — ${resume.surah}` : ""}`}
-                      style={itemStyle}
-                    >
-                      <span className="sidebar-item-icon" aria-hidden="true">
-                        <item.Icon size={18} strokeWidth={1.8} />
-                      </span>
-                      <span className="sidebar-item-text">
-                        <span className="sidebar-item-title">متابعة القراءة</span>
-                        <span className="sidebar-item-sub">
-                          صفحة {resume.page}
-                          {resume.surah ? ` — ${resume.surah}` : ""}
+              {expanded
+                ? group.items.map((item) => {
+                    const itemActive = isNavHrefActive(pathname, item.href);
+                    const itemStyle = {
+                      "--sidebar-item-accent": item.accent,
+                    } as CSSProperties;
+                    const aria =
+                      item.description != null && item.description !== ""
+                        ? `${item.label} — ${item.description}`
+                        : item.label;
+                    const row = (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={onNavigate}
+                        className={`sidebar-item${itemActive ? " active" : ""}`}
+                        aria-current={itemActive ? "page" : undefined}
+                        aria-label={aria}
+                        style={itemStyle}
+                      >
+                        <span className="sidebar-item-icon" aria-hidden="true">
+                          <item.Icon size={18} strokeWidth={1.8} />
                         </span>
-                      </span>
-                    </Link>
-                  </div>
-                );
-              })}
+                        <span className="sidebar-item-text">
+                          <span className="sidebar-item-title">{item.label}</span>
+                          {item.description ? (
+                            <span className="sidebar-item-sub">{item.description}</span>
+                          ) : null}
+                        </span>
+                      </Link>
+                    );
+                    if (item.href !== "/mushaf" || !resume) return row;
+                    return (
+                      <div key={`${item.href}-resume`}>
+                        {row}
+                        <Link
+                          href={`/mushaf?page=${resume.page}`}
+                          onClick={onNavigate}
+                          className="sidebar-item"
+                          aria-label={`متابعة القراءة — صفحة ${resume.page}${resume.surah ? ` — ${resume.surah}` : ""}`}
+                          style={itemStyle}
+                        >
+                          <span className="sidebar-item-icon" aria-hidden="true">
+                            <item.Icon size={18} strokeWidth={1.8} />
+                          </span>
+                          <span className="sidebar-item-text">
+                            <span className="sidebar-item-title">متابعة القراءة</span>
+                            <span className="sidebar-item-sub">
+                              صفحة {resume.page}
+                              {resume.surah ? ` — ${resume.surah}` : ""}
+                            </span>
+                          </span>
+                        </Link>
+                      </div>
+                    );
+                  })
+                : null}
             </nav>
           </section>
         );

@@ -140,7 +140,7 @@ export const NAV_LABEL_CANONICAL: Record<string, string> = {
   "/mushaf": "المصحف",
   "/prayer-times": "الصلاة",
   "/hadith": "الحديث وعلومه",
-  "/fiqh": "الفقه الإسلامي",
+  "/fiqh": "الفقه",
   "/adhkar": "الأذكار",
   "/lessons": "الدروس",
   "/sections": "جميع الأقسام",

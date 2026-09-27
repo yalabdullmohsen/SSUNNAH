@@ -18,6 +18,7 @@ import {
 import { FEATURE_CATS } from "../home-feature-catalog";
 import { PRIMARY_NAV_ITEMS } from "../navigation";
 import { SERVICES_CENTER_GROUPS } from "../services-center-nav";
+import { SIDEBAR_NAV_GROUPS } from "../sidebar-nav";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const appRoot = resolve(__dirname, "../../..");
@@ -122,8 +123,11 @@ console.log("\n=== nav-visibility تنظيف ===");
   for (const p of ["/occasions", "/institutions", "/rulings", "/fiqh-council"]) {
     assert(HIDDEN_FROM_NAV_PATHS.has(p), `${p} مخفي من الاكتشاف العام`);
   }
-  assert(!HIDDEN_FROM_NAV_PATHS.has("/flashcards"), "المحفوظات ظاهرة في الدرج");
-  assert(!HIDDEN_FROM_NAV_PATHS.has("/ulum-quran"), "علوم القرآن ظاهرة في الدرج");
+  assert(HIDDEN_FROM_NAV_PATHS.has("/flashcards"), "المحفوظات خارج الاكتشاف العام");
+  assert(HIDDEN_FROM_NAV_PATHS.has("/ulum-quran"), "علوم القرآن خارج الاكتشاف العام");
+  const drawerHrefs = SIDEBAR_NAV_GROUPS.flatMap((g) => g.items.map((i) => i.href));
+  assert(drawerHrefs.includes("/flashcards"), "المحفوظات ظاهرة في الدرج عبر allowlist");
+  assert(drawerHrefs.includes("/ulum-quran"), "علوم القرآن ظاهرة في الدرج عبر allowlist");
   assert(HIDDEN_FROM_NAV_PATHS.has("/library") || resolveMergedPath("/library") === "/search", "المكتبة خارج الاكتشاف العام أو محوّلة");
   assert(resolveMergedPath("/library") === "/search", "library → /search");
   assert(resolveMergedPath("/quran-index") === "/quran-knowledge", "quran-index → hub");
@@ -214,7 +218,16 @@ console.log("\n=== القوائم بلا أقسام محذوفة — عن الم
     sidebarNavSrc.includes("sections.registry") || sidebarNavSrc.includes("config/navigation"),
     "الجانبية تشتق من السجل أو nav-map",
   );
-  assert(sideSrc.includes("SIDEBAR_NAV_GROUPS") && sideSrc.includes("sidebar-panel"), "القائمة تستخدم التصميم الموحّد");
+  const drawerRegistrySrc = readFileSync(
+    resolve(appRoot, "src/components/layout/DrawerFromRegistry.tsx"),
+    "utf-8",
+  );
+  assert(
+    sideSrc.includes("DrawerFromRegistry") &&
+      sideSrc.includes("sidebar-panel") &&
+      drawerRegistrySrc.includes("SIDEBAR_NAV_GROUPS"),
+    "القائمة تستخدم التصميم الموحّد",
+  );
   assert(!sideSrc.includes("منصة علمية منظمة"), "لا وصف ترويجي في رأس القائمة");
   assert(!HIDDEN_FROM_NAV_PATHS.has("/about"), "about ظاهر للاكتشاف عبر عن المجلس");
 }
