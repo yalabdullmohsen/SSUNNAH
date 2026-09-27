@@ -60,10 +60,15 @@ export function ReadingSectionCard({
           setOpen(event.currentTarget.open);
         }}
       >
-        <summary id={titleId} className="rsc__title rsc__summary">
-          {title}
+        <summary id={titleId} className="rsc__summary">
+          <span className="rsc__summary-title">{title}</span>
+          <span className="rsc__summary-hint" aria-hidden="true">
+            {open ? "▲ إخفاء التفصيل" : "▼ عرض التفصيل الكامل"}
+          </span>
         </summary>
-        <div className="rsc__body">{children}</div>
+        <div className="rsc__body" data-detail-full="1">
+          {children}
+        </div>
       </details>
     );
   }
@@ -77,7 +82,9 @@ export function ReadingSectionCard({
       <h2 id={titleId} className="rsc__title">
         {title}
       </h2>
-      <div className="rsc__body">{children}</div>
+      <div className="rsc__body" data-detail-full="1">
+        {children}
+      </div>
     </Tag>
   );
 }

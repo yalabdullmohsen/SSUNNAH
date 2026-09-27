@@ -20,7 +20,8 @@ type KnowledgeDetailSurfaceProps = {
 };
 
 /**
- * سطح تفاصيل واحد — أقسام قراءة بلا Card داخل Card وبلا توسعة قائمة.
+ * سطح تفاصيل واحد — أقسام قراءة كاملة بلا طيّ وبلا قصّ للنص.
+ * القوائم تستخدم KnowledgeSummaryCard (معاينة)؛ صفحات التفاصيل تعرض الجسم كاملًا.
  */
 export function KnowledgeDetailSurface({
   sections,
@@ -33,8 +34,9 @@ export function KnowledgeDetailSurface({
     <div
       className={`kx-detail-surface${className ? ` ${className}` : ""}`}
       data-content-type="directory-detail"
+      data-detail-full="1"
     >
-      {visible.map((section, index) => {
+      {visible.map((section) => {
         const variant =
           section.variant === "quote"
             ? "quote"
@@ -49,8 +51,6 @@ export function KnowledgeDetailSurface({
             title={section.title}
             variant={variant}
             className="kx-detail-surface__section"
-            collapsible
-            defaultOpen={index === 0}
           >
             {section.prose ? <ReadingProse text={section.prose} /> : null}
             {section.fields && section.fields.length > 0 ? (

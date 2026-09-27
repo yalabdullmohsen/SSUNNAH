@@ -52,12 +52,14 @@ assert.match(css, /hub-card__go[\s\S]{0,200}?border-radius:\s*999px/);
 assert.match(css, /\.gl-term--open/);
 assert.match(css, /\.kc-category-card__title/);
 
-console.log("=== أكورديون التفاصيل ===");
+console.log("=== تفاصيل كاملة بلا قصّ ===");
 assert.match(reading, /collapsible/);
 assert.match(reading, /rsc--accordion/);
-assert.match(reading, /<details/);
-assert.match(surface, /collapsible/);
-assert.match(css, /\.rsc--accordion/);
+assert.match(reading, /عرض التفصيل الكامل/);
+assert.match(surface, /data-detail-full="1"/);
+assert.doesNotMatch(surface, /collapsible/);
+assert.doesNotMatch(css, /display:\s*contents\s*;/);
+assert.match(css, /kx-detail-surface[\s\S]{0,500}?line-clamp:\s*unset/);
 
 console.log("=== أدلة مضغوطة ===");
 assert.match(css, /\.kx-block--evidence|\.rsc--evidence/);

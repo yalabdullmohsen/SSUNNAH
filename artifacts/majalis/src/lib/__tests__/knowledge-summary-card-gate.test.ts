@@ -34,8 +34,9 @@ assert.match(card, /عرض التفاصيل/);
 assert.doesNotMatch(card, /aria-expanded/);
 assert.match(surface, /KnowledgeDetailSurface/);
 assert.match(surface, /hasKnowledgeDetailContent/);
-assert.match(surface, /collapsible/);
-assert.match(surface, /defaultOpen=\{index === 0\}/);
+assert.match(surface, /data-detail-full="1"/);
+assert.doesNotMatch(surface, /collapsible/);
+assert.doesNotMatch(surface, /defaultOpen=\{index === 0\}/);
 
 assert.match(css, /\.kx-summary-card\s*\{/);
 assert.doesNotMatch(css, /border-inline-start:\s*[34]px/);

@@ -72,6 +72,14 @@
   outline: none;
 }
 
+/* مصطلح مفتوح / سطح تفاصيل قراءة — لا تُقصّ الفقرات بـ overflow:hidden */
+.gl-term.gl-term--open,
+.kx-detail-surface .rsc,
+.rsc[data-rsc-accordion="1"][open],
+.rsc.soft-card {
+  overflow: visible !important;
+}
+
 /* منع بطاقة داخل بطاقة تُضاعف الحد */
 .cs-card .cs-card,
 .soft-card .soft-card:not([data-scripture]),
