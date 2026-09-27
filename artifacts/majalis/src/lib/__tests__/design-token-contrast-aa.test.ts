@@ -79,7 +79,7 @@ assertAA("نص ليلي على سطح", "#F8FAFC", "#1B2421");
 assertAA("مكتوم ليلي على سطح", "#C5D0CB", "#1B2421");
 assertAA("حبر داكن على نعناعي ليلي", "#06231A", "#4FB48B");
 
-assert.match(gate, /\.home-page-hero \.m2030-btn--ghost/, "نفحص زر الهيرو الشبح فوق الطية");
+assert.match(gate, /\.home-page-hero \.hw3-chip--lead/, "نفحص شريحة المتابعة الدائمة في الهيرو");
 assert.doesNotMatch(gate, /selector:\s*"\.m2030-customize"/, "ممنوع تأكيد customize الكسول كـ NOT_FOUND");
 assert.match(gate, /bottom-nav__tab\.is-active/, "فحص شريط سفلي نشط");
 assert.match(gate, /contrastAudit|data-contrast-audit/, "وضع تدقيق بدون حركات");
