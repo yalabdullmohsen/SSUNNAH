@@ -12,6 +12,7 @@ import { getPublishedIslamicSectById } from "@/lib/islamic-sects";
 import { getIslamicSectById } from "@/data/islamic-sects";
 import { UtilityScreen } from "@/components/design-system/screens";
 import "@/styles/pages/islamic-sects.css";
+import "@/styles/islam-intro-experience.css";
 
 const LIST_PATH = "/islamic-sects";
 

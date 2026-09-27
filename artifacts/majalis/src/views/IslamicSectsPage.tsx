@@ -19,6 +19,7 @@ import {
   saveKnowledgeListState,
 } from "@/lib/knowledge-list-scroll";
 import "@/styles/pages/islamic-sects.css";
+import "@/styles/islam-intro-experience.css";
 import { UtilityScreen } from "@/components/design-system/screens";
 
 const LIST_PATH = "/islamic-sects";

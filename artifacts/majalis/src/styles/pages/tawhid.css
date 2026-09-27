@@ -132,6 +132,42 @@
   max-width: 100%;
   box-sizing: border-box;
 }
+
+/* يفوز على card-system للحبر الداكن داخل صفحة العقيدة */
+html[data-v2-app="1"] .topic-page--tawhid .kx-library-card.hub-card,
+html[data-v2-app="1"] .topic-page--tawhid .hub-card.soft-card--on-light,
+html[data-v2-app="1"] .topic-page--tawhid .hub-card,
+html[data-v2-app="1"] .topic-page--tawhid .twh-hub-card,
+html[data-v2-app="1"] .topic-page--tawhid .tawheed-type-card {
+  background: var(--ss-card-bg, var(--mj-surface, #fffcf8)) !important;
+  background-color: var(--ss-card-bg, var(--mj-surface, #fffcf8)) !important;
+  background-image: none !important;
+  color: var(--color-text, var(--mj-ink, #16241e)) !important;
+  border-color: color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, var(--mj-hairline))) !important;
+  box-shadow: none !important;
+}
+html[data-v2-app="1"] .topic-page--tawhid .kx-library-card .kx-library-card__title,
+html[data-v2-app="1"] .topic-page--tawhid .hub-card .hub-card__title,
+html[data-v2-app="1"] .topic-page--tawhid .hub-card .kx-library-card__title,
+html[data-v2-app="1"] .topic-page--tawhid .twh-hub-card__title,
+html[data-v2-app="1"] .topic-page--tawhid .tawheed-type-card__title {
+  color: var(--mj-brand-deep, #0d4a39) !important;
+  font-weight: 800 !important;
+}
+html[data-v2-app="1"] .topic-page--tawhid .kx-library-card .kx-library-card__desc,
+html[data-v2-app="1"] .topic-page--tawhid .hub-card .hub-card__desc,
+html[data-v2-app="1"] .topic-page--tawhid .hub-card .kx-library-card__desc,
+html[data-v2-app="1"] .topic-page--tawhid .twh-hub-card__desc,
+html[data-v2-app="1"] .topic-page--tawhid .tawheed-type-card__desc {
+  color: #3a4a42 !important;
+}
+html[data-v2-app="1"] .topic-page--tawhid .hub-card .hub-card__go,
+html[data-v2-app="1"] .topic-page--tawhid .kx-library-card .kx-library-card__action {
+  background: var(--mj-brand-soft, #e2efe8) !important;
+  color: var(--mj-brand-deep, #0d4a39) !important;
+  border-radius: 999px !important;
+  opacity: 1 !important;
+}
 .twh-hub-card:hover {
   border-color: var(--twh-hub-clr, var(--mj-brand));
   box-shadow: 0 4px 16px rgba(0,0,0,0.10);
@@ -169,7 +205,7 @@
 .twh-hub-card:hover .twh-hub-card__title { color: var(--twh-hub-clr, var(--mj-brand)); }
 .twh-hub-card__desc {
   font-size: clamp(0.875rem, 3vw, 1rem);
-  color: #4A5C55;
+  color: var(--color-text-muted, var(--mj-ink-2, #3a4a42));
   line-height: 1.9;
   letter-spacing: 0;
   margin: 0;
@@ -206,7 +242,7 @@ html[data-theme="dark"] .twh-hub-card__current-tag {
   color: var(--mj-brand, #7ed4b5) !important;
 }
 html[data-theme="dark"] .twh-hub-card__desc {
-  color: #A8BDB6;
+  color: var(--text-secondary, var(--mj-ink-2, #c8d5cf));
 }
 
 /* Jump nav */

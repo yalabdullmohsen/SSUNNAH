@@ -149,7 +149,10 @@ function loadNonCriticalCss() {
       void import("./styles/modern-islamic-editorial-tokens.css");
       void import("./styles/modern-islamic-editorial.css").then(() => {
         /* Card System بعد كل الطبقات حتى تفوز هوية الزمرد الداكن على soft/hub */
-        void import("./styles/card-system.css");
+        void import("./styles/card-system.css").then(() => {
+          /* تجربة التعريف بالإسلام — بعد card-system حتى يفوز النطاق الفاتح/AA */
+          void import("./styles/islam-intro-experience.css");
+        });
       });
     });
   });
