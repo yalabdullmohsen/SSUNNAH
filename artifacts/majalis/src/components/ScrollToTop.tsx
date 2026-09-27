@@ -24,9 +24,8 @@ export function ScrollToTop() {
 
   useEffect(() => {
     const update = () => {
-      // يظهر بعد تمرير ملحوظ فقط — لا يزاحم المحتوى في أول الشاشة
-      const threshold = Math.max(720, Math.round(window.innerHeight * 0.85));
-      const scrolled = window.scrollY > threshold;
+      // يظهر بعد تمرير ملحوظ فقط (≥720px) — لا يزاحم المحتوى في أول الشاشة
+      const scrolled = window.scrollY > 720;
       setVisible(scrolled && !isModalOverlayOpen());
     };
     update();
