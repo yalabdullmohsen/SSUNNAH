@@ -1,8 +1,7 @@
 /**
- * هيرو الرئيسية خارج Suspense — يبقى h1 «سُنّة» في DOM من أول رسم App
- * حتى لا يُعاد قياس LCP عند استبدال HomePage الكسول.
- * V3: Welcome Experience — متابعة / قراءة / ورد / تقدم / إجراءات سريعة.
- * Startup PR-5: لا تُعرض نسبة ٠٪ قبل استعادة التخزين؛ شرائح primary/meta بهندسة ثابتة.
+ * هوية الرئيسية خارج Suspense — h1 «سُنّة» ثابت لـ LCP.
+ * مضغوط: CTA أساسي واحد + ملخص متابعة — بلا شريط إجراءات سريعة مكرر.
+ * Startup PR-5: لا تُعرض نسبة ٠٪ قبل استعادة التخزين.
  */
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
@@ -161,7 +160,7 @@ export function HomeHeroLcp() {
 
   return (
     <PageHero
-      className="m2030-hero home-page-hero home-page-hero--eyebrow-ready home-page-hero--actions-ready home-welcome-premium home-welcome-v3 sgs-hero-geometry"
+      className="m2030-hero home-page-hero home-page-hero--compact home-page-hero--eyebrow-ready home-page-hero--actions-ready home-welcome-premium home-welcome-v3"
       fullBleed={false}
       withPattern={false}
       withCornerMotif={false}
@@ -171,14 +170,9 @@ export function HomeHeroLcp() {
       title="سُنّة"
       description="رفيقك اليومي في العلم والعبادة"
       actions={
-        <>
-          <Link href={continueHref} className="mj-btn m2030-btn m2030-btn--primary mj-home-lcp-ph__hero-cta">
-            {isFirstVisit ? "ابدأ الآن" : "تابع التعلم"}
-          </Link>
-          <Link href="/sections" className="mj-btn m2030-btn m2030-btn--ghost">
-            تصفح الأقسام
-          </Link>
-        </>
+        <Link href={continueHref} className="mj-btn m2030-btn m2030-btn--primary mj-home-lcp-ph__hero-cta">
+          {isFirstVisit ? "ابدأ الآن" : "تابع التعلم"}
+        </Link>
       }
     >
       <nav className="hw3 hw3--identity" aria-label="متابعة سريعة" data-hero-ready={pending ? "0" : "1"}>
@@ -267,20 +261,6 @@ export function HomeHeroLcp() {
             </Link>
           )}
         </div>
-        <div className="hw3-actions" role="list" aria-label="إجراءات سريعة">
-          <Link href="/quran-hub" className="hw3-action" role="listitem">
-            القرآن
-          </Link>
-          <Link href="/adhkar" className="hw3-action" role="listitem">
-            الأذكار
-          </Link>
-          <Link href="/lessons" className="hw3-action" role="listitem">
-            الدروس
-          </Link>
-          <Link href="/prayer-times" className="hw3-action" role="listitem">
-            الصلاة
-          </Link>
-        </div>
       </nav>
     </PageHero>
   );
@@ -299,7 +279,7 @@ export function HomeSearchShell() {
   );
 }
 
-/** هيكل يحجز ارتفاع بطاقة آية/حديث اليوم */
+/** هيكل يحجز ارتفاع بطاقة آية/حديث اليوم (توافق بوابات CLS) */
 export function HomeSacredOfDaySkeleton() {
   return (
     <div
@@ -311,16 +291,29 @@ export function HomeSacredOfDaySkeleton() {
   );
 }
 
+/** هيكل شريط محتوى اليوم المضغوط */
+export function HomeDailyStripSkeleton() {
+  return (
+    <div
+      className="home-daily-strip--ph"
+      aria-busy="true"
+      aria-label="محتوى اليوم"
+      data-testid="home-daily-strip"
+    />
+  );
+}
+
 export function HomePrimaryDiscoveryPlaceholder({ id = false }: { id?: boolean } = {}) {
   return (
     <div
-      className="mj-home-primary-discovery-ph"
+      className="mj-home-primary-discovery-ph mj-home-primary-discovery-ph--v2"
       id={id ? "mj-home-primary-discovery" : undefined}
       aria-hidden="true"
     />
   );
 }
 
+/** يُبقى للتوافق مع بوابات CLS التي تفحص وجود الصنف في CSS الحرج */
 export function HomeDailyWirdSkeleton() {
   return (
     <section
@@ -328,6 +321,7 @@ export function HomeDailyWirdSkeleton() {
       aria-label="ورد اليوم"
       aria-busy="true"
       data-testid="daily-wird-card"
+      hidden
     />
   );
 }
@@ -353,10 +347,7 @@ export function HomeBelowFoldPlaceholder({ withId = false }: { withId?: boolean 
 export function HomeRestShell() {
   return (
     <>
-      <HomeSearchShell />
-      <HomeSacredOfDaySkeleton />
       <HomePrimaryDiscoveryPlaceholder id />
-      <HomeDailyWirdSkeleton />
       <HomeLiveNowPlaceholder />
       <HomeBelowFoldPlaceholder withId />
     </>

@@ -11,6 +11,7 @@ import {
   Target, Unlock, User, Users,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { normalizeAdminDisplayText } from "@/lib/admin-display-text";
 
 const AdminSiteEditBar = lazy(() =>
   import("@/components/AdminSiteEditBar").then((m) => ({ default: m.AdminSiteEditBar })),
@@ -200,13 +201,13 @@ export function AdminShell({ section, onSectionChange, children }: AdminShellPro
 
   const showSuccess = useCallback((message: string) => {
     if (flashTimerRef.current) clearTimeout(flashTimerRef.current);
-    setFlash({ type: "success", message });
+    setFlash({ type: "success", message: normalizeAdminDisplayText(message) });
     flashTimerRef.current = setTimeout(() => setFlash(null), 5000);
   }, []);
 
   const showError = useCallback((message: string) => {
     if (flashTimerRef.current) clearTimeout(flashTimerRef.current);
-    setFlash({ type: "error", message });
+    setFlash({ type: "error", message: normalizeAdminDisplayText(message) });
     flashTimerRef.current = setTimeout(() => setFlash(null), 7000);
   }, []);
 

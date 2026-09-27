@@ -77,7 +77,7 @@ function StatusBadge({ ok, label }: { ok: boolean; label: string }) {
         "--mke-sb-color": ok ? "var(--majalis-emerald-deep)" : "#991B1B",
       } as React.CSSProperties}
     >
-      {label}: {ok ? "\u2713" : "\u2717"}
+      {label}: {ok ? "✓" : "✗"}
     </span>
   );
 }
@@ -116,11 +116,11 @@ function MajlisKnowledgeEngineContent() {
     try {
       const r = await runMkeEngine("full");
       setRunResult(r.ok
-        ? `\u2713 ${r.published ?? 0} \u0645\u0646\u0634\u0648\u0631 \u00b7 ${r.pendingReview ?? 0} \u0645\u0631\u0627\u062c\u0639\u0629 \u00b7 ${r.duplicates ?? 0} \u0645\u0643\u0631\u0631`
-        : `\u2717 ${r.error || "\u0641\u0634\u0644"}`);
+        ? `✓ ${r.published ?? 0} منشور · ${r.pendingReview ?? 0} مراجعة · ${r.duplicates ?? 0} مكرر`
+        : `✗ ${r.error || "فشل"}`);
       load();
     } catch {
-      setRunResult("\u2717 \u062e\u0637\u0623 \u0641\u064a \u0627\u0644\u062a\u0634\u063a\u064a\u0644");
+      setRunResult("✗ خطأ في التشغيل");
     } finally {
       setRunning(false);
     }
@@ -134,15 +134,15 @@ function MajlisKnowledgeEngineContent() {
             Majlis Autonomous Platform v{engineVersion}
           </h2>
           <p className="mke-subtitle">
-            \u0646\u0638\u0627\u0645 \u062a\u0634\u063a\u064a\u0644 \u0630\u0627\u062a\u064a 24/7 \u2014 \u0627\u0643\u062a\u0634\u0627\u0641 \u00b7 \u062c\u0648\u062f\u0629 \u00b7 \u0642\u0631\u0627\u0631 \u00b7 \u0646\u0634\u0631 \u00b7 \u0634\u0641\u0627\u0621 \u00b7 \u062a\u0639\u0644\u0645
+            نظام تشغيل ذاتي 24/7 — اكتشاف · جودة · قرار · نشر · شفاء · تعلم
           </p>
         </div>
         <div className="mke-actions">
           <Link href="/admin/automation/dashboard" className="mke-link">Phase 5</Link>
           <Link href="/admin/automation/center" className="mke-link">Phase 6</Link>
-          <Link href="/admin/sources" className="mke-link">\u0627\u0644\u0645\u0635\u0627\u062f\u0631</Link>
+          <Link href="/admin/sources" className="mke-link">المصادر</Link>
           <button type="button" onClick={handleRun} disabled={running} className="mke-run-btn">
-            {running ? "\u062c\u0627\u0631\u064a \u0627\u0644\u062a\u0634\u063a\u064a\u0644\u2026" : "\u062a\u0634\u063a\u064a\u0644 \u0627\u0644\u0645\u062d\u0631\u0643"}
+            {running ? "جاري التشغيل…" : "تشغيل المحرك"}
           </button>
         </div>
       </div>
@@ -152,49 +152,49 @@ function MajlisKnowledgeEngineContent() {
       {loading ? <SkeletonCardGrid count={6} /> : (
         <>
           <div className="mke-stats-row">
-            <StatCard label="\u0635\u062d\u0629 \u0627\u0644\u0646\u0638\u0627\u0645" value={stats?.health?.score ?? "\u2014"} color={stats?.health?.status === "healthy" ? "var(--majalis-emerald-deep)" : "var(--mj-brand-deep)"} />
-            <StatCard label="\u0627\u0644\u0645\u0635\u0627\u062f\u0631" value={stats?.counts?.sources ?? (stats?.subsystems as { sources?: { total?: number } } | undefined)?.sources?.total ?? stats?.sourcesTotal ?? 0} />
-            <StatCard label="\u0627\u0644\u0645\u0646\u0635\u0627\u062a" value={stats?.platformsSupported ?? platforms.length} />
-            <StatCard label="\u0645\u0633\u0648\u062f\u0627\u062a" value={stats?.counts?.drafts ?? stats?.drafts ?? 0} />
-            <StatCard label="\u0628\u0627\u0646\u062a\u0638\u0627\u0631 \u0627\u0644\u0645\u0631\u0627\u062c\u0639\u0629" value={stats?.counts?.pendingReview ?? stats?.pendingReview ?? 0} color="var(--mj-brand-deep)" />
-            <StatCard label="\u0645\u0646\u0634\u0648\u0631 \u0627\u0644\u064a\u0648\u0645" value={stats?.counts?.publishedToday ?? stats?.publishedToday ?? 0} />
+            <StatCard label="صحة النظام" value={stats?.health?.score ?? "—"} color={stats?.health?.status === "healthy" ? "var(--majalis-emerald-deep)" : "var(--mj-brand-deep)"} />
+            <StatCard label="المصادر" value={stats?.counts?.sources ?? (stats?.subsystems as { sources?: { total?: number } } | undefined)?.sources?.total ?? stats?.sourcesTotal ?? 0} />
+            <StatCard label="المنصات" value={stats?.platformsSupported ?? platforms.length} />
+            <StatCard label="مسودات" value={stats?.counts?.drafts ?? stats?.drafts ?? 0} />
+            <StatCard label="بانتظار المراجعة" value={stats?.counts?.pendingReview ?? stats?.pendingReview ?? 0} color="var(--mj-brand-deep)" />
+            <StatCard label="منشور اليوم" value={stats?.counts?.publishedToday ?? stats?.publishedToday ?? 0} />
             <StatCard label="Queue" value={stats?.subsystems?.queue ? (stats.subsystems.queue as { pending?: number }).pending ?? 0 : stats?.queue?.pending ?? 0} />
-            <StatCard label="Self-Heal" value={stats?.counts?.self_heal_log ?? "\u2014"} />
+            <StatCard label="Self-Heal" value={stats?.counts?.self_heal_log ?? "—"} />
             {akp && (
               <>
-                <StatCard label="AKP \u062c\u0627\u0647\u0632\u064a\u0629 %" value={akp.readinessPct ?? "\u2014"} />
-                <StatCard label="\u0645\u0646\u0634\u0648\u0631 AKP \u0627\u0644\u064a\u0648\u0645" value={akp.counts?.published ?? akp.productionVelocity?.itemsToday ?? 0} />
+                <StatCard label="AKP جاهزية %" value={akp.readinessPct ?? "—"} />
+                <StatCard label="منشور AKP اليوم" value={akp.counts?.published ?? akp.productionVelocity?.itemsToday ?? 0} />
                 <StatCard label="DLQ" value={akp.counts?.dlq ?? 0} color="#991B1B" />
-                <StatCard label="\u0645\u0631\u0627\u062c\u0639\u0629 AKP" value={akp.counts?.reviewPending ?? 0} color="var(--mj-brand-deep)" />
+                <StatCard label="مراجعة AKP" value={akp.counts?.reviewPending ?? 0} color="var(--mj-brand-deep)" />
               </>
             )}
           </div>
 
           {akp?.pipelines && (
             <section className="mke-section">
-              <h3 className="mke-section-h3">\u062e\u0637\u0648\u0637 \u0627\u0644\u0625\u0646\u062a\u0627\u062c (Phase 2)</h3>
+              <h3 className="mke-section-h3">خطوط الإنتاج (Phase 2)</h3>
               <div className="mke-row-wrap">
                 {Object.entries(akp.pipelines).map(([key, p]) => (
                   <StatCard
                     key={key}
-                    label={`${p.label || key} (${p.publishedToday ?? 0}/${p.quota ?? "\u2014"})`}
+                    label={`${p.label || key} (${p.publishedToday ?? 0}/${p.quota ?? "—"})`}
                     value={p.publishedToday ?? 0}
                   />
                 ))}
               </div>
               {akp.lastRun && (
                 <p className="mke-small-info">
-                  \u0622\u062e\u0631 Run: {akp.lastRun.status} \u2014 {akp.lastRun.started_at ? new Date(akp.lastRun.started_at).toLocaleString("ar-KW") : "\u2014"}
+                  آخر Run: {akp.lastRun.status} — {akp.lastRun.started_at ? new Date(akp.lastRun.started_at).toLocaleString("ar-KW") : "—"}
                 </p>
               )}
               {akp.lastError && (
                 <p className="mke-small-err">
-                  \u0622\u062e\u0631 \u062e\u0637\u0623: {akp.lastError.message}
+                  آخر خطأ: {akp.lastError.message}
                 </p>
               )}
               {akp.health?.score != null && (
                 <p className="mke-small-info">
-                  Health Score: {akp.health.score}% \u00b7 \u0645\u062a\u0648\u0633\u0637 \u0627\u0644\u062a\u0646\u0641\u064a\u0630: {akp.avgDurationMs ?? "\u2014"}ms \u00b7 Retry Queue: {akp.retryQueue?.total ?? akp.counts?.retryQueue ?? 0}
+                  Health Score: {akp.health.score}% · متوسط التنفيذ: {akp.avgDurationMs ?? "—"}ms · Retry Queue: {akp.retryQueue?.total ?? akp.counts?.retryQueue ?? 0}
                 </p>
               )}
               {akp.sourceStatuses && akp.sourceStatuses.length > 0 && (
@@ -229,7 +229,7 @@ function MajlisKnowledgeEngineContent() {
           )}
 
           <section className="mke-section">
-            <h3 className="mke-section-h3">\u062d\u0627\u0644\u0629 \u0627\u0644\u062e\u062f\u0645\u0627\u062a</h3>
+            <h3 className="mke-section-h3">حالة الخدمات</h3>
             <div className="mke-service-badges">
               <StatusBadge ok={stats?.vision?.visionEnabled ?? false} label="Vision AI" />
               <StatusBadge ok={(stats?.subsystems?.vision as { visionEnabled?: boolean })?.visionEnabled ?? stats?.vision?.visionEnabled ?? false} label="Vision AI v2" />
@@ -241,33 +241,33 @@ function MajlisKnowledgeEngineContent() {
 
           {stats?.extractionMetrics && (
             <section className="mke-section">
-              <h3 className="mke-section-h3">\u062f\u0642\u0629 \u0627\u0644\u0627\u0633\u062a\u062e\u0631\u0627\u062c</h3>
+              <h3 className="mke-section-h3">دقة الاستخراج</h3>
               <div className="mke-row-wrap">
-                <StatCard label="Vision AI %" value={stats.extractionMetrics.visionAccuracy ?? "\u2014"} />
-                <StatCard label="\u0643\u0634\u0641 \u0627\u0644\u062a\u0643\u0631\u0627\u0631 %" value={stats.extractionMetrics.duplicateDetectionRate ?? "\u2014"} />
-                <StatCard label="\u0631\u0628\u0637 \u0627\u0644\u0634\u064a\u0648\u062e %" value={stats.extractionMetrics.sheikhMatchRate ?? "\u2014"} />
+                <StatCard label="Vision AI %" value={stats.extractionMetrics.visionAccuracy ?? "—"} />
+                <StatCard label="كشف التكرار %" value={stats.extractionMetrics.duplicateDetectionRate ?? "—"} />
+                <StatCard label="ربط الشيوخ %" value={stats.extractionMetrics.sheikhMatchRate ?? "—"} />
               </div>
             </section>
           )}
 
           <section className="mke-section">
-            <h3 className="mke-section-h3">Pipeline ({pipelineStages.length} \u0645\u0631\u0627\u062d\u0644)</h3>
+            <h3 className="mke-section-h3">Pipeline ({pipelineStages.length} مراحل)</h3>
             <p className="mke-pipeline-text">
-              {pipelineStages.map((s) => s.label).join(" \u2192 ")}
+              {pipelineStages.map((s) => s.label).join(" → ")}
             </p>
           </section>
 
           <section className="mke-section">
-            <h3 className="mke-section-h3">\u0627\u0644\u0645\u0646\u0635\u0627\u062a \u0627\u0644\u0645\u062f\u0639\u0648\u0645\u0629 ({platforms.length})</h3>
+            <h3 className="mke-section-h3">المنصات المدعومة ({platforms.length})</h3>
             <p className="mke-pipeline-text mke-pipeline-text--spaced">
-              {platforms.slice(0, 30).map((p) => p.type).join(" \u00b7 ")}
-              {platforms.length > 30 ? " \u2026" : ""}
+              {platforms.slice(0, 30).map((p) => p.type).join(" · ")}
+              {platforms.length > 30 ? " …" : ""}
             </p>
           </section>
 
           {stats?.sourcesByType && Object.keys(stats.sourcesByType).length > 0 && (
             <section className="mke-section">
-              <h3 className="mke-section-h3">\u0627\u0644\u0645\u0635\u0627\u062f\u0631 \u062d\u0633\u0628 \u0627\u0644\u0646\u0648\u0639</h3>
+              <h3 className="mke-section-h3">المصادر حسب النوع</h3>
               <div className="mke-row-wrap">
                 {Object.entries(stats.sourcesByType).map(([type, count]) => (
                   <span key={type} className="mke-tag-tiny">

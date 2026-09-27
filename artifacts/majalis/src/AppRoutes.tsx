@@ -767,13 +767,17 @@ export default function AppRoutes() {
       <Route path="/admin/users"><Redirect to="/admin?section=users" /></Route>
       <Route path="/admin/universities"><AdminLazyRoute component={UniversitiesAdminPage} /></Route>
       <Route path="/admin/v3/content"><AdminLazyRoute component={AdminV3App} /></Route>
-      <Route path="/admin/v3/review"><AdminLazyRoute component={AdminV3App} /></Route>
-      <Route path="/admin/v3/users"><AdminLazyRoute component={AdminV3App} /></Route>
-      <Route path="/admin/v3/notifications"><AdminLazyRoute component={AdminV3App} /></Route>
+      <Route path="/admin/v3/reviews"><AdminLazyRoute component={AdminV3App} /></Route>
+      <Route path="/admin/v3/taxonomy"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3/analytics"><AdminLazyRoute component={AdminV3App} /></Route>
-      <Route path="/admin/v3/automation"><AdminLazyRoute component={AdminV3App} /></Route>
-      <Route path="/admin/v3/system"><AdminLazyRoute component={AdminV3App} /></Route>
+      <Route path="/admin/v3/community"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3/settings"><AdminLazyRoute component={AdminV3App} /></Route>
+      {/* aliases — موجة 1 IA */}
+      <Route path="/admin/v3/review"><Redirect to="/admin/v3/reviews" /></Route>
+      <Route path="/admin/v3/users"><Redirect to="/admin/v3/community" /></Route>
+      <Route path="/admin/v3/notifications"><Redirect to="/admin/v3/settings" /></Route>
+      <Route path="/admin/v3/automation"><Redirect to="/admin/v3/settings" /></Route>
+      <Route path="/admin/v3/system"><Redirect to="/admin/v3/settings" /></Route>
       <Route path="/admin/v3/audit"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/legacy"><AdminLazyRoute component={AdminPage} /></Route>

@@ -351,6 +351,73 @@ html.dark .daily-content-banner::after {
   box-shadow: none !important;
 }
 
+/* ═══ الرئيسية المعاد تصميمها — بطاقات مضغوطة ═══ */
+html[data-theme="dark"] .hcl,
+html[data-theme="dark"] .hds__card,
+html[data-theme="dark"] .hsg__card,
+html[data-theme="dark"] .hrr__chip,
+html[data-theme="dark"] .hrc__chip,
+html[data-theme="dark"] .home-start-here--slim,
+html.dark .hcl,
+html.dark .hds__card,
+html.dark .hsg__card,
+html.dark .hrr__chip,
+html.dark .hrc__chip,
+html.dark .home-start-here--slim {
+  background: var(--dm-surface-elevated) !important;
+  border-color: var(--dm-border-subtle) !important;
+  box-shadow: none !important;
+  color: var(--dm-text-primary) !important;
+}
+
+html[data-theme="dark"] .hcl__title,
+html[data-theme="dark"] .hds__title,
+html[data-theme="dark"] .hsg__heading,
+html[data-theme="dark"] .hsg__title,
+html[data-theme="dark"] .hrr__title,
+html[data-theme="dark"] .hrc__title,
+html[data-theme="dark"] .hds__text,
+html[data-theme="dark"] .hrr__chip-title,
+html[data-theme="dark"] .hrc__chip-title,
+html.dark .hcl__title,
+html.dark .hds__title,
+html.dark .hsg__heading,
+html.dark .hsg__title,
+html.dark .hds__text,
+html.dark .hrr__title,
+html.dark .hrc__title,
+html.dark .hrr__chip-title,
+html.dark .hrc__chip-title {
+  color: var(--dm-text-primary) !important;
+}
+
+html[data-theme="dark"] .hcl__sub,
+html[data-theme="dark"] .hds__meta,
+html[data-theme="dark"] .hsg__desc,
+html[data-theme="dark"] .hrr__chip-meta,
+html[data-theme="dark"] .hrc__chip-meta,
+html[data-theme="dark"] .home-start-here--slim .hsh-lead,
+html.dark .hcl__sub,
+html.dark .hds__meta,
+html.dark .hsg__desc,
+html.dark .hrr__chip-meta,
+html.dark .hrc__chip-meta,
+html.dark .home-start-here--slim .hsh-lead {
+  color: var(--dm-text-muted) !important;
+}
+
+html[data-theme="dark"] .hds__kicker,
+html[data-theme="dark"] .hsg__icon,
+html.dark .hds__kicker,
+html.dark .hsg__icon {
+  color: var(--dm-accent-gold, #d4b87a) !important;
+}
+
+html[data-theme="dark"] .hsg__icon,
+html.dark .hsg__icon {
+  background: color-mix(in srgb, var(--dm-primary, #4fb48b) 18%, transparent) !important;
+}
+
 /* ═══ Hero / Welcome — إزالة الشرائط السوداء ═══ */
 html[data-theme="dark"] .page-hero-mj,
 html[data-theme="dark"] .home-page-hero,
@@ -629,6 +696,25 @@ html.dark .home-progress-compact__meta {
 }
 
 /* ═══ تخطيط بطاقة الزائر — صفوف بلا تداخل ═══ */
+.home-start-here--slim {
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid color-mix(in srgb, #0f5c3f 12%, #e8ebe9);
+}
+.home-start-here--slim .hsh-lead {
+  margin: 0.25rem 0 0;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: #48645a;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.home-start-here--slim .hsh-actions {
+  margin-block: 0.55rem 0;
+}
 .home-start-here--compact {
   padding: 1rem 1rem 0.75rem;
   border-radius: 16px;

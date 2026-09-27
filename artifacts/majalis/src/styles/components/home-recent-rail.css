@@ -1,0 +1,70 @@
+.hrr {
+  margin: 0.45rem 0 0.85rem;
+}
+
+.hrr__head {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.45rem;
+  color: #0a4530;
+}
+
+.hrr__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #15382d;
+}
+
+.hrr__rail {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.hrr__rail::-webkit-scrollbar {
+  height: 0;
+}
+
+.hrr__chip {
+  flex: 0 0 auto;
+  min-width: 8.5rem;
+  max-width: 12rem;
+  scroll-snap-align: start;
+  padding: 0.6rem 0.75rem;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid color-mix(in srgb, #0f5c3f 12%, #e8ebe9);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.hrr__chip-title {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #15382d;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.hrr__chip-meta {
+  font-size: 0.7rem;
+  color: #5f7168;
+}
+
+/* توافق مع الأنماط القديمة إن وُجدت */
+.hp-recent-bar {
+  display: none;
+}

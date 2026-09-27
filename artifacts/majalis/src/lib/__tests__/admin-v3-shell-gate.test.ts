@@ -1,5 +1,5 @@
 /**
- * Wave 5 — Admin v3 Shell gate.
+ * Wave 1 — Admin v3 Shell gate (IA: 7 وجهات).
  * تشغيل: node --import tsx src/lib/__tests__/admin-v3-shell-gate.test.ts
  */
 import assert from "node:assert/strict";
@@ -26,11 +26,17 @@ assert.ok(existsSync(resolve(root, "src/admin-v3/AdminV3App.tsx")));
 assert.ok(existsSync(resolve(root, "src/styles/pages/admin-v3-shell.css")));
 
 assert.equal(isAdminPath("/admin/v3"), true);
-assert.equal(isAdminPath("/admin/v3/review"), true);
-assert.equal(resolveAdminV3Center("/admin/v3").id, "home");
+assert.equal(isAdminPath("/admin/v3/reviews"), true);
+assert.equal(resolveAdminV3Center("/admin/v3").id, "overview");
 assert.equal(resolveAdminV3Center("/admin/v3/content").id, "content");
+assert.equal(resolveAdminV3Center("/admin/v3/reviews").id, "reviews");
+assert.equal(resolveAdminV3Center("/admin/v3/taxonomy").id, "taxonomy");
+assert.equal(resolveAdminV3Center("/admin/v3/community").id, "community");
+assert.equal(resolveAdminV3Center("/admin/v3/review").id, "reviews");
+assert.equal(resolveAdminV3Center("/admin/v3/users").id, "community");
 
-assert.ok(ADMIN_V3_NAV.some((n) => n.id === "home"));
+assert.ok(ADMIN_V3_NAV.some((n) => n.id === "overview"));
+assert.equal(ADMIN_V3_NAV.length, 7);
 assert.ok(ADMIN_V3_NAV.filter((n) => n.mobilePrimary).length === 4);
 assert.ok(ADMIN_V3_AUDIT_EVENT_TYPES.includes("admin.shell.open"));
 assert.equal(typeof emitAdminV3AuditEvent, "function");
@@ -46,7 +52,11 @@ assert.doesNotMatch(app, /admin-v3|AdminV3App/, "لا Admin v3 في الهيكل
 assert.match(routes, /AdminV3App/);
 assert.match(routes, /AdminLazyRoute component=\{AdminV3App\}/);
 assert.match(routes, /lazyWithRetry\(\(\) => import\("@\/admin-v3\/AdminV3App"\)/);
+assert.match(routes, /\/admin\/v3\/reviews/);
+assert.match(routes, /\/admin\/v3\/taxonomy/);
+assert.match(routes, /\/admin\/v3\/community/);
 assert.match(catalog, /"\/admin\/v3"/);
+assert.match(catalog, /"\/admin\/v3\/taxonomy"/);
 
 assert.match(shell, /av3-sidebar/);
 assert.match(shell, /av3-bottom/);

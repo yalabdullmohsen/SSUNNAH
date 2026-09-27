@@ -67,7 +67,7 @@ export function AdminV3Shell({ children }: Props) {
       <aside className="av3-sidebar" aria-label="تنقّل لوحة التحكم">
         <div className="av3-brand">
           <span className="av3-brand__mark">سُنّة</span>
-          <span className="av3-brand__sub">Admin v3</span>
+          <span className="av3-brand__sub">لوحة التحكم</span>
         </div>
         <nav className="av3-sidebar__nav">
           {ADMIN_V3_NAV.map((item) => (
@@ -172,10 +172,10 @@ export function AdminV3Shell({ children }: Props) {
             <li>
               <Link href="/admin/v3">لوحة التحكم</Link>
             </li>
-            {center.id !== "home" ? (
+            {center.id !== "overview" ? (
               <li aria-current="page">{center.label}</li>
             ) : (
-              <li aria-current="page">الرئيسية</li>
+              <li aria-current="page">نظرة عامة</li>
             )}
           </ol>
         </nav>
