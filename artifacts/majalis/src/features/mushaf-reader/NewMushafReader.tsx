@@ -1393,13 +1393,9 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
         enabled={pageArrowsEnabled}
         /* busy يخفّف التفاعل دون إخفاء السهم (كان :disabled يصفّر opacity) */
         busy={edgesDisabled || !pagerSettled}
-        onNext={() => {
+        go={(n) => {
           if (edgesDisabled || !pagerSettled || !neighborsReady) return;
-          go(page + 1);
-        }}
-        onPrev={() => {
-          if (edgesDisabled || !pagerSettled || !neighborsReady) return;
-          go(page - 1);
+          go(n);
         }}
       />
 

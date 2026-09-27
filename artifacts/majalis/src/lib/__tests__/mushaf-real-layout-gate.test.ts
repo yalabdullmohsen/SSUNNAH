@@ -93,10 +93,10 @@ assert.match(actions, /aria-modal="true"/);
 assert.match(actions, /createPortal/);
 assert.match(actions, /focusables|Tab/);
 
-// RTL: سحب لليمين (dx>0) = التالية
-assert.match(pager, /dx > 0/);
-assert.match(pager, /go\(page \+ 1\)/);
-assert.match(pager, /go\(page - 1\)/);
+// مصحف: سحب لليمين (dx>0) = التالية عبر الخدمة المركزية
+assert.match(pager, /dx > 0|mushafSwipePageDelta/);
+assert.match(pager, /goToNextMushafPage|resolveNextMushafPage/);
+assert.match(pager, /goToPreviousMushafPage|resolvePreviousMushafPage/);
 assert.match(pager, /SWIPE_MIN_PX\s*=\s*40/);
 assert.match(pager, /SETTLE_MS\s*=\s*220/);
 assert.doesNotMatch(pager, /rotateY/);
@@ -116,7 +116,8 @@ assert.match(css, /فوق مناطق قلب الصفحة/);
 assert.match(css, /data-ayah-bar="1"\]\s*\.mm-page-edge/);
 assert.match(css, /scroll-margin-bottom/);
 assert.match(css, /scrollbar-width:\s*none/);
-assert.match(css, /\.mm-page-edge--next\s*\{[^}]*inset-inline-start:\s*0/);
+assert.match(css, /\.mm-page-edge--next\s*\{[^}]*inset-inline-end:\s*0/);
+assert.match(css, /\.mm-page-edge--prev\s*\{[^}]*inset-inline-start:\s*0/);
 
 assert.match(actions, /تجهيز…|تجهيز الصوت|جاري تحميل التلاوة/);
 assert.match(actions, /تعذر تشغيل هذه الآية لهذا القارئ/);

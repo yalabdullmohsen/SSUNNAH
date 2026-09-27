@@ -38,6 +38,10 @@ import { STATUS } from "@/lib/ui-copy";
 import { AyahActionSheet } from "./AyahActionSheet";
 import { MushafControls } from "./MushafControls";
 import { MushafPage } from "./MushafPage";
+import {
+  goToNextMushafPage,
+  goToPreviousMushafPage,
+} from "@/features/mushaf-reader/mushaf-page-navigation";
 import { MushafPager, SWIPE_MIN_PX } from "./MushafPager";
 import { MushafSettingsSheet, type MushafHideLevel, type MushafThemeChoice } from "./MushafSettingsSheet";
 import {
@@ -942,8 +946,12 @@ export function VerifiedMushafReader({ pageNumber, onPageChange, onExit, onIndex
           setSearchOpen(false);
           setSettingsOpen(false);
         }}
-        onPrev={() => go(page - 1)}
-        onNext={() => go(page + 1)}
+        onPrev={() => {
+          goToPreviousMushafPage(page, go);
+        }}
+        onNext={() => {
+          goToNextMushafPage(page, go);
+        }}
         onGoto={go}
         onSearch={() => {
           setSearchOpen(true);
