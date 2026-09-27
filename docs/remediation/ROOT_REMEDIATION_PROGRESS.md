@@ -18,7 +18,8 @@ Living tracker for remediation waves. Do not treat as release truth (see `docs/r
 | **WAVE_LESSONS_INTEGRATION** | Lessons redesign + HARD_WHITE_BG | **merged (#2305)** | `docs/remediation/waves/WAVE_LESSONS_INTEGRATION.md` |
 | **WAVE_ADMIN_W1** | Admin Unicode + 7-center nav | **merged (#2308)** | admin wave docs |
 | **WAVE_PRODUCT_REDESIGN_W1** | Foundation V2 + Card V2 + states + UX audit | **merged (#2309)** | `docs/remediation/waves/WAVE_PRODUCT_REDESIGN_W1_FOUNDATION.md` |
-| **WAVE_PRODUCT_REDESIGN_W2** | Navigation IA + collapsible drawer + canonical href | **in progress** | `docs/remediation/waves/WAVE_PRODUCT_REDESIGN_W2_NAVIGATION.md` |
+| **WAVE_PRODUCT_REDESIGN_W2** | Navigation IA + collapsible drawer + canonical href | **merged (#2310)** | `docs/remediation/waves/WAVE_PRODUCT_REDESIGN_W2_NAVIGATION.md` |
+| **WAVE_PRODUCT_REDESIGN_W3** | Card System V2 adoption on shared entry/continue | **in progress** | `docs/remediation/waves/WAVE_PRODUCT_REDESIGN_W3_CARDS.md` |
 
 ## CI / UI recovery docs
 

@@ -1,7 +1,22 @@
 /**
  * Card System V2 — أصناف تصنيف البطاقات فوق Card System الحالي.
- * Wave 1: تعريف العقود البصرية؛ الترحيل الكامل للصفحات في موجات لاحقة.
+ * Wave 3: جسر SectionEntryCard (data-cs2-type=navigation) + Continue في مركز التقدّم.
  */
+
+/* لا تفرض ألوان cs2-nav البيضاء على بطاقات الحبر الداكنة — التصنيف عبر data-* فقط */
+.hub-card.cs2-host[data-cs2-type="navigation"] {
+  /* كثافة: بلا ارتفاع أدنى زائد */
+  min-height: 0;
+}
+.hub-card.cs2-host .cs2-nav__title,
+.hub-card.cs2-host .cs2-nav__desc,
+.hub-card.cs2-host .cs2-nav__meta {
+  /* ترث لون البطاقة المضيفة (حبر/فاتح) */
+  color: inherit;
+}
+.hub-card.cs2-host .cs2-nav__desc {
+  opacity: 0.92;
+}
 
 .cs2-nav,
 .cs2-content,
