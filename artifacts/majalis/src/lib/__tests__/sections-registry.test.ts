@@ -12,6 +12,7 @@ import {
   lessonsHubSections,
   sectionsForSurface,
   SECTION_MERGE_REDIRECTS,
+  isSectionComingSoon,
 } from "@/config/sections.registry";
 
 assert.equal(SECTION_GROUP_ORDER.length, 7);
@@ -80,5 +81,11 @@ assert.ok(SECTION_MERGE_REDIRECTS.some((r) => r.from === "/more" && r.to === "/s
 assert.ok(SECTIONS.some((s) => s.id === "flashcards" && s.aliases?.includes("المحفوظات")));
 assert.ok(SECTIONS.some((s) => s.id === "sections" && s.aliases?.includes("المزيد")));
 assert.ok(SECTIONS.some((s) => s.id === "quran" && s.aliases?.includes("قرآن")));
+
+const sects = SECTIONS.find((s) => s.id === "islamic-sects");
+assert.ok(sects, "قسم الفرق موجود");
+assert.equal(sects?.comingSoon, true);
+assert.ok(isSectionComingSoon(sects!));
+assert.match(sects!.subtitle, /قريبًا/);
 
 console.log(`sections-registry.test: OK (${SECTIONS.length} sections)`);

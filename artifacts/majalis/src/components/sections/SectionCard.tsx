@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { useLocation } from "wouter";
-import type { SectionDef } from "@/config/sections.registry";
+import { isSectionComingSoon, type SectionDef } from "@/config/sections.registry";
+import { COMING_SOON_LABEL } from "@/lib/ui-copy";
 import { prefetchRoute } from "@/lib/prefetch-route";
 import { cn } from "@/lib/utils";
 
@@ -28,7 +29,12 @@ export const SectionCard = memo(function SectionCard({ section, className, onNav
   const [, setLocation] = useLocation();
   const Icon = section.icon;
   const subtitle = section.subtitle?.trim();
-  const aria = subtitle ? `${section.label} — ${subtitle}` : section.label;
+  const soon = isSectionComingSoon(section);
+  const aria = soon
+    ? `${section.label} — ${COMING_SOON_LABEL}`
+    : subtitle
+      ? `${section.label} — ${subtitle}`
+      : section.label;
 
   return (
     <button
@@ -36,10 +42,15 @@ export const SectionCard = memo(function SectionCard({ section, className, onNav
       dir="rtl"
       data-section-card="1"
       data-section-id={section.id}
+      data-coming-soon={soon ? "1" : undefined}
       aria-label={aria}
       data-cs-card="1"
       data-cs-type="section"
-      className={cn("card cs-card cs-section soft-card soft-card--on-light", className)}
+      className={cn(
+        "card cs-card cs-section soft-card soft-card--on-light",
+        soon && "card--coming-soon",
+        className,
+      )}
       onPointerDown={() => prefetchRoute(section.route)}
       onClick={() => {
         go(section.route, setLocation);
@@ -49,7 +60,14 @@ export const SectionCard = memo(function SectionCard({ section, className, onNav
       <span className="card__icon" aria-hidden>
         <Icon strokeWidth={1.75} aria-hidden />
       </span>
-      <span className="card__label">{section.label}</span>
+      <span className="card__label-row">
+        <span className="card__label">{section.label}</span>
+        {soon ? (
+          <span className="card__soon-badge" aria-hidden="true">
+            {COMING_SOON_LABEL}
+          </span>
+        ) : null}
+      </span>
       {subtitle ? <span className="card__subtitle">{subtitle}</span> : null}
     </button>
   );

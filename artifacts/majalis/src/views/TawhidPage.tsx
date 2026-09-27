@@ -9,6 +9,7 @@ import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { KnowledgeLibraryCard, KnowledgeLayout } from "@/components/knowledge";
 import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { SEARCH_INPUT_ATTRS, handleSearchEnterKey } from "@/lib/search-input";
+import { COMING_SOON_LABEL } from "@/lib/ui-copy";
 import "@/styles/pages/tawhid.css";
 import "@/styles/islam-intro-experience.css";
 import "@/styles/pages/knowledge-dashboards-v2.css";
@@ -98,7 +99,7 @@ const AQEEDA_SECTIONS: AqeedaSection[] = [
     id: "islamic-sects",
     emoji: "", title: "الفرق والمذاهب",
     desc: "عرض تاريخي للفرق مع بيان موقف أهل السنة",
-    href: "/islamic-sects", badge: "موسوعة", color: "var(--mj-brand-deep, #0B3D2E)",
+    href: "/islamic-sects", badge: COMING_SOON_LABEL, color: "var(--mj-brand-deep, #0B3D2E)",
   },
 ];
 

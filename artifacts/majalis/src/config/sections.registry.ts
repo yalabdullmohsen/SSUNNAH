@@ -121,6 +121,8 @@ export interface SectionDef {
   hub: SectionHub;
   /** لون العلامة — يُحقَن على الحاوية كـ --section-accent */
   accent?: string;
+  /** قسم غير مكتمل للعامة — تُعرض شارة «قريبًا» دون إخفاء المسار */
+  comingSoon?: boolean;
 }
 
 /** لون العلامة الافتراضي لكل مجموعة أقسام */
@@ -593,7 +595,7 @@ const SECTION_SEEDS: SectionSeed[] = [
   {
     id: "islamic-sects",
     label: "الفرق الإسلامية",
-    subtitle: "نشأة الفرق وعقائدها — عرض تاريخي",
+    subtitle: "قريبًا — عرض تاريخي بعد المراجعة",
     route: "/islamic-sects",
     // أيقونة فريدة — Users محجوزة لـ quran-figures (بوابة verify-sections-registry)
     icon: GitFork,
@@ -601,6 +603,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     order: 12,
     surfaces: NAV,
     status: "live",
+    comingSoon: true,
     keywords: ["فرق", "مذاهب", "ملل", "نحل", "عقائد الفرق"],
     aliases: ["الفرق والمذاهب", "الفرق", "المذاهب العقدية", "أهل السنة والفرق"],
     accent: "#0B3D2E",
@@ -1305,6 +1308,11 @@ function visible(s: SectionDef): boolean {
 /** لا يظهر في الاكتشاف العام إن كان مخفياً من التنقل أو غير معتمد. */
 function discoverable(s: SectionDef): boolean {
   return visible(s) && !isHiddenFromNav(s.route);
+}
+
+/** أقسام غير مكتملة للعامة — شارة «قريبًا» */
+export function isSectionComingSoon(section: Pick<SectionDef, "comingSoon" | "id" | "route">): boolean {
+  return Boolean(section.comingSoon);
 }
 
 export function sectionsForSurface(surface: Surface): SectionDef[] {

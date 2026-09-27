@@ -12,7 +12,9 @@ const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
 const uiCopy = read("src/lib/ui-copy.ts");
 assert.match(uiCopy, /EMPTY\s*=/, "مصدر نصوص الفراغ");
-assert.doesNotMatch(uiCopy, /قريبًا/, "ui-copy بلا «قريبًا»");
+/* طلب المالك: «قريبًا» مسموحة كشارة/فراغ أقسام غير مكتملة */
+assert.match(uiCopy, /COMING_SOON_LABEL\s*=\s*"قريبًا"/);
+assert.match(uiCopy, /sectionPreparing:[\s\S]*?قريبًا/);
 assert.doesNotMatch(uiCopy, /continueWhereLeft/, "ACTION بلا مفاتيح ميتة");
 
 const pages: Array<[string, RegExp]> = [

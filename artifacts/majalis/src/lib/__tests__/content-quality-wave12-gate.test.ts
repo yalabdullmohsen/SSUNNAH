@@ -27,6 +27,8 @@ assert.match(home, /أذكار، درس قريب/, "مقدمة الرئيسية 
 
 const uiCopy = read("src/lib/ui-copy.ts");
 assert.match(uiCopy, /EMPTY\s*=/, "مصدر نصوص الفراغ");
-assert.doesNotMatch(uiCopy, /قريبًا/, "ui-copy بلا «قريبًا»");
+/* طلب المالك: شارة/فراغ «قريبًا» للأقسام غير المكتملة فقط */
+assert.match(uiCopy, /COMING_SOON_LABEL\s*=\s*"قريبًا"/);
+assert.match(uiCopy, /sectionPreparing:[\s\S]*?قريبًا/);
 
 console.log("content-quality-wave12-gate.test.ts: ok");

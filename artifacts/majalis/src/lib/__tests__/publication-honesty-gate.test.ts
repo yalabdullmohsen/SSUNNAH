@@ -23,12 +23,14 @@ assert.equal(countPublishedIslamicSectsFromMeta(), 0, "الفرق: المنشو�
 assert.equal(getPublishedQuestionCount(), 0, "بنك الأسئلة المحلي المنشور = 0");
 
 assert.ok(EMPTY.sectionPreparing.length > 10);
+assert.match(EMPTY.sectionPreparing, /قريبًا/);
 assert.ok(EMPTY.recordNotPublic.length > 10);
 assert.doesNotMatch(EMPTY.sectionPreparing, /PUBLISHED|DRAFT|REVIEW_REQUIRED/);
 assert.doesNotMatch(EMPTY.recordNotPublic, /PUBLISHED|DRAFT|REVIEW_REQUIRED/);
 
 assert.match(listSrc, /hasPublished/);
 assert.match(listSrc, /EMPTY\.sectionPreparing/);
+assert.match(listSrc, /قريبًا/);
 assert.doesNotMatch(listSrc, /0 سجل منشور/);
 assert.doesNotMatch(listSrc, /<code>PUBLISHED<\/code>/);
 assert.doesNotMatch(listSrc, /طابور المراجعة/);
