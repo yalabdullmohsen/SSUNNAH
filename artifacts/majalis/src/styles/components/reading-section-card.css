@@ -55,41 +55,42 @@
   color: var(--rsc-title);
 }
 
-/* أكورديون تفاصيل — حالة فتح/إغلاق ظاهرة */
+/* أكورديون اختياري — نص الجسم كامل عند الفتح؛ بلا display:contents على summary */
 .rsc.rsc--accordion {
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 .rsc.rsc--accordion > .rsc__summary {
   list-style: none;
   cursor: pointer;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
   min-height: 44px;
   margin: 0;
   padding: 0.75rem 0.95rem;
+  font-size: var(--type-section, 0.95rem);
+  font-weight: 800;
+  line-height: var(--lh-reading-section, 1.35);
+  color: var(--rsc-title);
 }
 .rsc.rsc--accordion > .rsc__summary::-webkit-details-marker {
   display: none;
 }
-.rsc.rsc--accordion > .rsc__summary::after {
-  content: "";
-  width: 0.45rem;
-  height: 0.45rem;
-  border-inline-end: 2px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 55%, transparent);
-  border-block-end: 2px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 55%, transparent);
-  transform: rotate(45deg);
-  transition: transform 160ms ease;
-  flex-shrink: 0;
+.rsc__summary-title {
+  display: block;
+  width: 100%;
+}
+.rsc__summary-hint {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--mj-brand, #1f6b56) 75%, var(--rsc-muted));
 }
 .rsc.rsc--accordion[open] {
   border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 28%, transparent);
   background: color-mix(in srgb, var(--mj-brand, #1f6b56) 5%, var(--rsc-bg));
-}
-.rsc.rsc--accordion[open] > .rsc__summary::after {
-  transform: rotate(-135deg);
 }
 .rsc.rsc--accordion > .rsc__body {
   padding: 0 0.95rem 0.85rem;
@@ -118,6 +119,27 @@
   font-size: inherit;
   line-height: inherit;
   color: inherit;
+  display: block;
+  overflow: visible;
+  max-height: none;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+}
+
+/* أجسام التفاصيل — لا قصّ ولا clamp */
+.rsc__body[data-detail-full="1"],
+.rsc__body[data-detail-full="1"] .rsc__prose,
+.rsc__body[data-detail-full="1"] p {
+  overflow: visible !important;
+  max-height: none !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  text-overflow: clip !important;
+  white-space: pre-wrap;
+}
+
+.rsc.soft-card {
+  overflow: visible;
 }
 
 .rsc-list {

@@ -196,6 +196,23 @@
   font-weight: 400;
   line-height: 1.85;
   max-width: min(36rem, 100%);
+  display: block;
+  overflow: visible;
+  max-height: none;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+}
+
+.kx-detail-surface[data-detail-full="1"] .rsc,
+.kx-detail-surface[data-detail-full="1"] .rsc__body,
+.kx-detail-surface[data-detail-full="1"] .rsc__prose,
+.kx-detail-surface[data-detail-full="1"] .kx-detail-quote,
+.kx-detail-surface[data-detail-full="1"] .rsc-list__item {
+  overflow: visible !important;
+  max-height: none !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  text-overflow: clip !important;
 }
 
 .kx-detail-surface .rsc {

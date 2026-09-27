@@ -331,6 +331,29 @@ html[data-v2-app="1"] .dii-page .hub-card__go,
 .gl-page .gl-term__def-preview {
   color: var(--ii-ink-soft) !important;
   font-size: 0.84rem !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+  overflow: hidden !important;
+}
+
+.gl-page .gl-term__def-preview--hint {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  overflow: visible !important;
+  color: var(--ii-brand) !important;
+  font-weight: 700 !important;
+}
+
+.gl-page .gl-term--open,
+.gl-page .gl-term__body[data-detail-full="1"],
+.gl-page .gl-term__body[data-detail-full="1"] .gl-term__detail p {
+  overflow: visible !important;
+  max-height: none !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
 }
 
 .gl-page .gl-term__chevron {
@@ -520,70 +543,39 @@ html[data-v2-app="1"] .dii-page .hub-card__go,
   gap: 0.55rem !important;
 }
 
-.kx-detail-surface .rsc.rsc--accordion,
-.kx-detail-accordion {
+/* سطح تفاصيل التعريف بالإسلام — نص كامل بلا طيّ وبلا تفكيك صندوق العنوان */
+.kx-detail-surface .rsc,
+.kx-detail-surface .rsc.rsc--accordion {
   border: 1px solid var(--ii-border) !important;
   border-radius: 14px !important;
   background: var(--ii-surface) !important;
   box-shadow: none !important;
-  padding: 0 !important;
-  overflow: hidden;
+  overflow: visible !important;
 }
 
-.kx-detail-surface .rsc.rsc--accordion .rsc__summary,
-.kx-detail-accordion > summary {
-  list-style: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  min-height: 44px;
-  margin: 0 !important;
-  padding: 0.75rem 0.9rem !important;
-  font-size: 0.95rem !important;
-  font-weight: 800 !important;
+.kx-detail-surface .rsc__title {
   color: var(--ii-brand) !important;
-  background: transparent;
+  font-weight: 800 !important;
 }
 
-.kx-detail-surface .rsc.rsc--accordion .rsc__summary::-webkit-details-marker,
-.kx-detail-accordion > summary::-webkit-details-marker {
-  display: none;
+.kx-detail-surface .rsc__body,
+.kx-detail-surface .rsc__prose,
+.kx-detail-surface .rsc__body p {
+  max-width: none !important;
+  overflow: visible !important;
+  max-height: none !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  color: var(--ii-ink, #16241e) !important;
 }
 
-.kx-detail-surface .rsc.rsc--accordion .rsc__summary::after,
-.kx-detail-accordion > summary::after {
-  content: "";
-  width: 0.45rem;
-  height: 0.45rem;
-  border-inline-end: 2px solid color-mix(in srgb, var(--mj-brand) 60%, transparent);
-  border-block-end: 2px solid color-mix(in srgb, var(--mj-brand) 60%, transparent);
-  transform: rotate(45deg);
-  transition: transform 160ms ease;
-  flex-shrink: 0;
+.kx-detail-surface .rsc.rsc--accordion .rsc__summary {
+  color: var(--ii-brand) !important;
 }
 
-.kx-detail-surface .rsc.rsc--accordion[open],
-.kx-detail-accordion[open] {
+.kx-detail-surface .rsc.rsc--accordion[open] {
   background: var(--ii-surface-soft) !important;
   border-color: var(--ii-border-strong) !important;
-}
-
-.kx-detail-surface .rsc.rsc--accordion[open] .rsc__summary::after,
-.kx-detail-accordion[open] > summary::after {
-  transform: rotate(-135deg);
-}
-
-.kx-detail-surface .rsc.rsc--accordion .rsc__body,
-.kx-detail-accordion .rsc__body {
-  padding: 0 0.9rem 0.85rem !important;
-  max-width: none !important;
-}
-
-.kx-detail-surface .rsc.rsc--accordion .rsc__title {
-  /* عند استخدام summary بدل h2 المنفصل */
-  display: contents;
 }
 
 /* رجوع عام داخل صفحات المقدمة — أقل طفوًا */
@@ -654,9 +646,7 @@ html[data-theme="dark"] .kx-detail-surface .rsc.rsc--accordion[open] {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gl-page .gl-term__chevron,
-  .kx-detail-surface .rsc.rsc--accordion .rsc__summary::after,
-  .kx-detail-accordion > summary::after {
+  .gl-page .gl-term__chevron {
     transition: none !important;
   }
 }

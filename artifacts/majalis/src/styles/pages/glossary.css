@@ -194,6 +194,30 @@
 .gl-term__def-preview {
   font-size: .82rem; color: var(--color-text-muted, var(--mj-ink-2)); margin: 0; line-height: 1.6;
   grid-column: 1; grid-row: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+.gl-term__def-preview--hint {
+  display: block;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  overflow: visible;
+  font-weight: 700;
+  color: var(--mj-brand);
+}
+.gl-term--open {
+  overflow: visible;
+}
+.gl-term__body[data-detail-full="1"],
+.gl-term__body[data-detail-full="1"] .gl-term__detail p {
+  overflow: visible !important;
+  max-height: none !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  white-space: normal;
 }
 .gl-term__chevron {
   grid-column: 2; grid-row: 1 / 3;

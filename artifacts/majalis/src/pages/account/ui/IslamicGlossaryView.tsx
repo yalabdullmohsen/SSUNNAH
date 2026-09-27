@@ -1911,20 +1911,28 @@ export default function IslamicGlossaryPage({ lockedCategory }: IslamicGlossaryP
                     {term.plural && <span className="gl-term__plural">(ج: {term.plural})</span>}
                     <Badge tone="brand">{cat.label}</Badge>
                   </div>
-                  <p className="gl-term__def-preview">{term.definition}</p>
+                  {!isOpen ? (
+                    <p className="gl-term__def-preview">{term.definition}</p>
+                  ) : (
+                    <p className="gl-term__def-preview gl-term__def-preview--hint">▲ إخفاء التفصيل</p>
+                  )}
                   <span className="gl-term__chevron" aria-hidden="true">
                     {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                   </span>
                 </button>
 
                 {isOpen && (
-                  <div className="gl-term__body">
-                    {term.detail && (
+                  <div className="gl-term__body" data-detail-full="1">
+                    <div className="gl-term__detail">
+                      <span className="gl-label">التعريف</span>
+                      <p>{term.definition}</p>
+                    </div>
+                    {term.detail ? (
                       <div className="gl-term__detail">
-                        <span className="gl-label">تفصيل</span>
+                        <span className="gl-label">التفصيل</span>
                         <p>{term.detail}</p>
                       </div>
-                    )}
+                    ) : null}
                     {term.source && (
                       <div className="gl-term__source">
                         <BookOpen size={12} aria-hidden="true" />
