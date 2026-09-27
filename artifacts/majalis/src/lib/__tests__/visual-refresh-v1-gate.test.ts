@@ -49,7 +49,8 @@ console.log("=== Wiring ===");
 assert.match(main, /sunnah-geometry-system\.css/);
 assert.match(main, /visual-refresh-v1\.css/);
 assert.match(hero, /home-welcome-premium/);
-assert.match(hero, /sgs-hero-geometry/);
+assert.match(hero, /home-page-hero--compact/);
+assert.doesNotMatch(hero, /sgs-hero-geometry/, "بلا شبكة هندسية زخرفية على الرئيسية");
 assert.match(hero, /title="سُنّة"/);
 
 console.log("visual-refresh-v1-gate: ok");

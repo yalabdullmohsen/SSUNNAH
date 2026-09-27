@@ -51,7 +51,7 @@ assert.match(polish, /transform:\s*none\s*!important/);
 assert.doesNotMatch(registry, /#4A5590/i);
 assert.match(registry, /discover-islam":\s*"#1F5C48/);
 
-assert.match(home, /HomeSacredOfDay/);
+assert.match(home, /HomePrimaryDiscovery|HomeDailyStrip|home-daily-strip/);
 assert.match(sacred, /getDailyAyah|getDailyHadith/);
 assert.doesNotMatch(sacred, /scale\(|transform:\s*scale/);
 

@@ -27,6 +27,20 @@
     0 18px 42px -26px color-mix(in srgb, var(--mj-brand-deep, #123f2e) 22%, transparent);
 }
 
+.home-page-hero.home-page-hero--compact.page-hero-mj {
+  padding-block: 0.85rem 1rem;
+  box-shadow:
+    0 1px 0 color-mix(in srgb, #fff 40%, transparent),
+    0 10px 28px -22px color-mix(in srgb, var(--mj-brand-deep, #123f2e) 18%, transparent);
+}
+.home-page-hero.home-page-hero--compact.page-hero-mj::before,
+.home-page-hero.home-page-hero--compact.page-hero-mj::after {
+  opacity: 0.4;
+}
+.home-page-hero.home-page-hero--compact .pattern-backdrop {
+  display: none;
+}
+
 .home-page-hero.page-hero-mj::before {
   content: "";
   position: absolute;

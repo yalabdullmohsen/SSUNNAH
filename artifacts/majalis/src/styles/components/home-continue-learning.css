@@ -1,0 +1,62 @@
+.hcl {
+  margin: 0.25rem 0 0.75rem;
+  padding: 0.85rem 0.9rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid color-mix(in srgb, #0f5c3f 12%, #e8ebe9);
+  box-shadow: 0 1px 3px color-mix(in srgb, #15382d 5%, transparent);
+}
+
+.hcl__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+
+.hcl__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #15382d;
+}
+
+.hcl__sub {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #48645a;
+}
+
+.hcl__cta {
+  flex-shrink: 0;
+  min-height: 40px;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: #0f5c3f;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.hcl__cta:hover {
+  background: #0a4530;
+}
+
+.hcl .hlr {
+  margin: 0;
+}
+
+.hcl .hlr__cta {
+  display: none; /* CTA واحد أعلى القسم */
+}
+
+.home-continue-learning--ph {
+  min-height: 7.5rem;
+  border-radius: 16px;
+  background: color-mix(in srgb, #0f5c3f 4%, #f8f6f1);
+}

@@ -267,118 +267,26 @@ html.app-booting .hus-field {
 }
 
 .mj-home-lcp-ph__start-here {
-  min-height: 28rem;
-}
-
-.mj-home-lcp-ph__daily-band,
-.daily-wird-card,
-[data-testid="daily-wird-card"] {
-  min-height: 28rem;
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 3%, var(--surface, #fff));
-  border-radius: 1rem;
-}
-
-/* CLS: حجز أقسام الرئيسية قبل swap من HomeRestShell — يطابق Compact Sacred */
-.home-sacred-day-slot,
-.home-sacred-day--ph {
-  min-height: 6.25rem;
-  box-sizing: border-box;
-}
-
-.mj-home-primary-discovery-ph {
-  min-height: 12rem;
-  box-sizing: border-box;
-}
-
-.home-live-now-ph {
-  min-height: 3.25rem;
-  box-sizing: border-box;
-}
-
-.mj-home-below-fold-ph {
   min-height: 8rem;
-  border-radius: 1rem;
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 2.5%, transparent);
 }
 
-.mj-home-lcp-ph__search .hus-field,
-.hus-field {
-  min-height: 52px;
-  box-sizing: border-box;
-}
-
-@media (min-width: 880px) {
-  #main-content.app-main {
-    padding-block-end: 2rem;
-  }
-
-  .bottom-nav,
-  .bottom-nav--v2 {
-    display: none;
-  }
-}
-
-@media (min-width: 720px) {
-  .mj-home-lcp-ph__start-here {
-    min-height: 20rem;
-  }
-
-  .mj-home-lcp-ph__daily-band {
-    min-height: 28rem;
-  }
-}
-
-/* CLS: حجز شبكة hsh-steps — كان يُسبب 0.012–0.013 إزاحة عند الرسم */
-.hsh-steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 0.75rem;
-  min-height: 22rem;
-  list-style: none;
-  margin: 0.75rem 0 0;
-  padding: 0;
-}
-
-.hsh-step {
-  min-height: 6.25rem;
-  box-sizing: border-box;
-}
-
-.home-start-here {
-  min-height: 28rem;
-}
-
-@media (min-width: 720px) {
-  .hsh-steps {
-    min-height: 14rem;
-  }
-
-  .home-start-here {
-    min-height: 20rem;
-  }
-}
-
-.mj-home-lcp-ph__hero-cta{display:inline-flex;align-items:center;justify-content:center;min-width:9.5rem;min-height:2.65rem;}
-.home-page-hero .page-hero-mj__eyebrow,
-.home-page-hero .m2030-hero__eyebrow{min-height:1.35rem;}
-.home-page-hero .page-hero-mj__actions{min-height:2.85rem;}
-
-/* لا انتقالات هيكل حتى اكتمال أول رسم — يمنع وميض/قفز عند أول دخول */
-html:not(.app-hydrated) .app-shell,
-html:not(.app-hydrated) .app-top-chrome,
-html:not(.app-hydrated) .bottom-nav,
-html:not(.app-hydrated) .bottom-nav--v2,
-html:not(.app-hydrated) .app-main,
-html:not(.app-hydrated) #main-content {
-  transition: none !important;
-  animation: none !important;
-}
-
-/* ارتفاع بصري ثابت: svh/dvh مع متغير visualViewport عند التوفر */
-#root,
-.app-shell {
-  min-height: 100svh;
-  min-height: 100dvh;
-  min-height: var(--app-vvh, 100dvh);
-}
+.mj-home-lcp-ph__daily-band,.daily-wird-card,[data-testid="daily-wird-card"]{min-height:28rem;border-radius:1rem}
+.home-sacred-day-slot,.home-sacred-day--ph{min-height:6.25rem;box-sizing:border-box}
+.mj-home-primary-discovery-ph{min-height:22rem;box-sizing:border-box}
+.mj-home-primary-discovery-ph--v2{min-height:26rem}
+.home-live-now-ph{min-height:3.25rem;box-sizing:border-box}
+.mj-home-below-fold-ph{min-height:8rem}
+.mj-home-lcp-ph__search .hus-field,.hus-field{min-height:52px;box-sizing:border-box}
+@media (min-width:880px){#main-content.app-main{padding-block-end:2rem}.bottom-nav,.bottom-nav--v2{display:none}}
+@media (min-width:720px){.mj-home-lcp-ph__start-here{min-height:7.5rem}.mj-home-lcp-ph__daily-band{min-height:15rem}}
+.hsh-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;min-height:10rem;list-style:none;margin:.75rem 0 0;padding:0}
+.hsh-step{min-height:3.5rem;box-sizing:border-box}
+.home-start-here{min-height:8.5rem}
+.home-start-here--slim{min-height:7.5rem}
+@media (min-width:720px){.hsh-steps{min-height:8rem}.home-start-here{min-height:7.5rem}}
+.mj-home-lcp-ph__hero-cta{display:inline-flex;align-items:center;justify-content:center;min-width:9.5rem;min-height:2.65rem}
+.home-page-hero .page-hero-mj__eyebrow,.home-page-hero .m2030-hero__eyebrow{min-height:1.35rem}
+.home-page-hero .page-hero-mj__actions{min-height:2.85rem}
+html:not(.app-hydrated) .app-shell,html:not(.app-hydrated) .app-top-chrome,html:not(.app-hydrated) .bottom-nav,html:not(.app-hydrated) .bottom-nav--v2,html:not(.app-hydrated) .app-main,html:not(.app-hydrated) #main-content{transition:none!important;animation:none!important}
+#root,.app-shell{min-height:100svh;min-height:100dvh;min-height:var(--app-vvh,100dvh)}
 

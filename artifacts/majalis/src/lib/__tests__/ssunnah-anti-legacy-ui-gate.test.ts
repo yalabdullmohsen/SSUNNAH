@@ -90,8 +90,15 @@ for (const name of [
   assert.match(dsIndex, new RegExp(name), `المكوّن الموحّد ناقص من الفهرس: ${name}`);
 }
 
-assert.match(below, /SunnahCardV2/, "الرئيسية تستخدم SunnahCardV2 للبوابات (Visual Redesign V2)");
-assert.match(below, /home-primary-portals/, "بوابات العلم أعلى تحت الطية");
-assert.match(below, /HomeQuickAccessV2/, "الوصول السريع V2 على الرئيسية");
+assert.match(below, /HomeSectionsGrid/, "شبكة أقسام مضغوطة على الرئيسية");
+assert.match(below, /HomeDailyStrip/, "شريط محتوى اليوم الموحّد");
+assert.match(below, /HomeContinueLearning/, "متابعة التعلّم أولوية عليا");
+assert.doesNotMatch(below, /SunnahCardV2/, "لا بطاقات أقسام عملاقة بـ CTA منفصل");
+{
+  const sections = readFileSync(resolve(src, "components/home/HomeSectionsGrid.tsx"), "utf8");
+  assert.match(sections, /home-primary-portals/, "بوابات العلم في شبكة الأقسام");
+  assert.match(sections, /ss-feature-grid/, "شبكة الميزات الموحدة");
+  assert.doesNotMatch(sections, /ctaLabel|"افتح"|'افتح'|`افتح`/, "بلا زر افتح منفصل");
+}
 
 console.log("ssunnah-anti-legacy-ui-gate.test.ts: ok");
