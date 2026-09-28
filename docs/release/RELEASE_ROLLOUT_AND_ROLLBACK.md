@@ -1,20 +1,22 @@
-# Release Rollout and Rollback — Phase 6
+# Release Rollout and Rollback — Phase 6/7
 
 | Field | Value |
 |---|---|
 | Date | 2026-09-28 |
-| Execution | **NOT executed** by this phase |
+| Execution | **NOT executed** by Phase 7 (web/native) |
 | Store | HOLD |
+| Web | NOT_DEPLOYED (gate BLOCKED — see PHASE_7_FINAL_REPORT) |
 
 ## Pin
 
 | Item | Value |
 |---|---|
-| RC branch | `cursor/release-rc-stabilization-p6` |
-| Commit | fill from `release:verify` report |
-| Build id | `dist/version.json` |
-| Schema compatibility | no hosted SQL applied in this phase |
+| RC branch | `release/sunnah-final-integration` |
+| Commit | fill from `release:verify` report after Phase 7 regenerate |
+| Build id | `dist/version.json` · `reports/release-candidate/build-manifest.json` |
+| Schema compatibility | no hosted SQL applied in Phase 6/7 RC delta |
 | Content compatibility | Phase 4 manifests/shards |
+| Production baseline | live `2e008c8d` on `main` |
 
 ## Pre-release (owner)
 
