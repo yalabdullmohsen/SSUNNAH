@@ -68,10 +68,10 @@ assert.doesNotMatch(arrows, /disabled=\{disabled/);
 assert.match(arrows, /if \(!enabled\) return null/);
 assert.match(controls, /mushaf-focus-reading-toggle/);
 assert.match(controls, /nm-controls--compact/);
-assert.match(controls, /إخفاء أدوات المصحف|وضع القراءة|قراءة/);
+assert.match(controls, /وضع قراءة هادئ|إظهار الأدوات عند اللمس/);
 assert.match(controls, /إظهار أسهم تقليب الصفحات/);
 assert.match(controls, /mushaf-page-arrows-toggle/);
-assert.match(controls, /MUSHAF_NAV_LABEL/);
+assert.match(arrows, /MUSHAF_NAV_LABEL/);
 
 assert.match(prefs, /sunnah\.mushaf\.pageArrowsEnabled/);
 assert.match(prefs, /loadPageArrowsEnabled/);

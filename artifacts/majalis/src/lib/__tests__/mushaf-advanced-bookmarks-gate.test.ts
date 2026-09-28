@@ -108,7 +108,7 @@ assert.doesNotMatch(reader, /reader-bookmarks-manager\.css/);
 assert.match(controls, /إضافة فاصل|علامة/);
 assert.match(controls, /mushaf-page-bookmark-btn/);
 assert.match(controls, /mushaf-bookmarks-manager-link/);
-assert.match(controls, /علامات المصحف/);
+assert.match(controls, /العلامات|إدارة العلامات/);
 assert.match(nav, /id:\s*"bookmark",\s*enabled:\s*true/);
 
 assert.match(routes, /\/mushaf\/bookmarks/);

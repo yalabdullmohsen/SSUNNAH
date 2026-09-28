@@ -1,30 +1,38 @@
 {
-  "generatedAt": "2026-09-24T22:16:33.298Z",
+  "generatedAt": "2026-09-28T02:34:31.247Z",
   "paths": [
+    "artifacts/majalis/docs/qa/MUSHAF_CONTROLS_INVENTORY.md",
     "artifacts/majalis/package.json",
-    "artifacts/majalis/scripts/interaction-touch-static-audit.mjs",
+    "artifacts/majalis/scripts/mushaf-controls-inventory.mjs",
+    "artifacts/majalis/src/features/mushaf-madinah/MushafAudioDock.tsx",
+    "artifacts/majalis/src/features/mushaf-reader/MushafControlsLayer.tsx",
     "artifacts/majalis/src/features/mushaf-reader/NewMushafReader.tsx",
     "artifacts/majalis/src/features/mushaf-reader/mushaf-reader.css",
-    "artifacts/majalis/src/features/mushaf-reader/page-goto-dial.css",
-    "artifacts/majalis/src/index.css",
-    "artifacts/majalis/src/lib/__tests__/touch-interaction-system-gate.test.ts",
-    "artifacts/majalis/src/styles/breakpoints.css",
-    "artifacts/majalis/src/styles/components/native-feel.css",
-    "artifacts/majalis/src/styles/critical-first-paint.css",
-    "docs/qa/INTERACTION_AUDIT.md",
-    "docs/qa/interaction-touch-under44-static.json"
+    "artifacts/majalis/src/lib/__tests__/mushaf-advanced-bookmarks-gate.test.ts",
+    "artifacts/majalis/src/lib/__tests__/mushaf-appearance-ayah-interaction-gate.test.ts",
+    "artifacts/majalis/src/lib/__tests__/mushaf-controls-inventory-gate.test.ts",
+    "artifacts/majalis/src/lib/__tests__/mushaf-dual-appearance-theme-gate.test.ts",
+    "artifacts/majalis/src/lib/__tests__/mushaf-immersive-reader-chrome-gate.test.ts",
+    "artifacts/majalis/src/lib/__tests__/mushaf-nextgen-baseline-gate.test.ts",
+    "artifacts/majalis/src/lib/__tests__/mushaf-page-arrows-focus-mode-gate.test.ts",
+    "artifacts/majalis/src/lib/__tests__/mushaf-pages-1-2-layout-gold-gate.test.ts",
+    "artifacts/majalis/src/lib/__tests__/mushaf-signature-p0-baseline-gate.test.ts",
+    "artifacts/majalis/src/lib/prefetch-route.ts",
+    "artifacts/majalis/src/styles/components/quran-audio-chrome.css",
+    "docs/qa/MUSHAF_CONTROLS_INVENTORY.md",
+    "docs/qa/mushaf-controls-inventory.json"
   ],
   "scopes": [
+    "docs",
     "other",
     "quran/mushaf",
-    "ui/layout",
-    "docs"
+    "ui/layout"
   ],
   "scopeIds": [
+    "docs",
     "other",
     "quran_mushaf",
-    "ui_layout",
-    "docs"
+    "ui_layout"
   ],
   "checks": {
     "ui": true,
@@ -42,7 +50,7 @@
     "data_audit": false
   },
   "outputs": {
-    "scopes": "other,quran/mushaf,ui/layout,docs",
+    "scopes": "docs,other,quran/mushaf,ui/layout",
     "scope_need_build": "true",
     "scope_need_mushaf": "true",
     "scope_need_color_contrast": "true",

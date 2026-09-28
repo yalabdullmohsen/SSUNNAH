@@ -72,10 +72,10 @@ for (const mark of [
 
 const controls = readMaj("src/features/mushaf-reader/MushafControlsLayer.tsx");
 assert.match(controls, /nm-controls__exit/);
-assert.match(controls, /بحث في القرآن/);
-assert.match(controls, /فهرس السور/);
-assert.match(controls, /المزيد من إعدادات المصحف/);
-assert.match(controls, /تشغيل الصفحة/);
+assert.match(controls, /البحث/);
+assert.match(controls, /الفهرس/);
+assert.match(controls, /mushaf-controls-more/);
+assert.match(controls, /التلاوة|mushaf-play-page/);
 
 const chromeCss = readMaj("src/styles/reader-page-chrome.css");
 assert.match(chromeCss, /--nm-chrome-exit-min:\s*2\.75rem/);

@@ -1202,6 +1202,61 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
     void playPage();
   }, [playPage]);
 
+  const onControlsTafsir = useCallback(() => {
+    if (!selectedVerseKey) {
+      setStatus("اختر آية للتفسير");
+      bumpChrome();
+      return;
+    }
+    openTafsir();
+  }, [bumpChrome, openTafsir, selectedVerseKey]);
+
+  const onControlsNotes = useCallback(() => {
+    if (selectedVerseKey && isMushafNavCapabilityEnabled("bookmark")) {
+      setActionsOpen(false);
+      setBookmarkComposerOpen(true);
+      setControlsMoreOpen(false);
+      return;
+    }
+    if (typeof window !== "undefined") {
+      window.location.assign("/mushaf/bookmarks");
+    }
+  }, [selectedVerseKey]);
+
+  const mushafPageShareUrl = useCallback(() => {
+    const origin =
+      typeof window !== "undefined" && window.location?.origin
+        ? window.location.origin
+        : "https://www.ssunnah.com";
+    return `${origin}/mushaf?page=${page}`;
+  }, [page]);
+
+  const onControlsCopyLink = useCallback(() => {
+    const url = mushafPageShareUrl();
+    void navigator.clipboard.writeText(url).then(
+      () => setStatus("تم نسخ رابط الصفحة"),
+      () => setStatus(STATUS.loadError),
+    );
+  }, [mushafPageShareUrl]);
+
+  const onControlsSharePage = useCallback(() => {
+    const url = mushafPageShareUrl();
+    const title = `المصحف — صفحة ${page}`;
+    if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
+      void navigator.share({ title, url }).catch(() => {
+        void navigator.clipboard.writeText(url).then(
+          () => setStatus("تم نسخ رابط الصفحة"),
+          () => setStatus(STATUS.loadError),
+        );
+      });
+      return;
+    }
+    void navigator.clipboard.writeText(url).then(
+      () => setStatus("تم نسخ رابط الصفحة"),
+      () => setStatus(STATUS.loadError),
+    );
+  }, [mushafPageShareUrl, page]);
+
   const audioDockVisible =
     !actionsOpen &&
     audioDockOpen &&
@@ -1457,6 +1512,10 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
         onPlayPage={onControlsPlayPage}
         onIndex={onControlsIndex}
         onSearch={onControlsSearch}
+        onTafsir={onControlsTafsir}
+        onNotes={onControlsNotes}
+        onSharePage={onControlsSharePage}
+        onCopyLink={onControlsCopyLink}
         onBookmarkPage={openPageBookmarkSheet}
       />
 

@@ -75,7 +75,9 @@ const metaStart = tafsir.indexOf("mm-tafsir__meta");
 const metaEnd = tafsir.indexOf("mm-tafsir__toolbar");
 assert.ok(metaStart >= 0 && metaEnd > metaStart);
 assert.doesNotMatch(tafsir.slice(metaStart, metaEnd), /سورة \$\{surahName\}، الآية/);
-assert.match(css, /border-radius:\s*0\.35em/);
+assert.match(css, /border-radius:\s*0\.55em/);
+assert.match(css, /#E4DAB6/);
+assert.match(css, /--mushaf-reading-gold:\s*#B8942E/);
 
 console.log("=== Mini player compact ===");
 const dock = read("src/features/mushaf-madinah/MushafAudioDock.tsx");
@@ -83,6 +85,22 @@ assert.match(dock, /data-mini/);
 assert.match(dock, /SkipBack/);
 assert.match(dock, /SkipForward/);
 assert.match(dock, /mm-audio-dock__advanced/);
+assert.match(dock, /mushaf-dock-sheet-open/);
+assert.match(dock, /data-section="progress"/);
+assert.doesNotMatch(dock, /<details className="mm-audio-dock__advanced"/);
+
+console.log("=== Reading chrome triad ===");
+assert.match(controls, /data-testid="mushaf-toolbar-exit"/);
+assert.match(controls, /data-testid="mushaf-goto-page-btn"/);
+assert.match(controls, /data-testid="mushaf-controls-more"/);
+assert.doesNotMatch(controls, />\s*بحث\s*</);
+assert.doesNotMatch(controls, />\s*فهرس\s*</);
+assert.doesNotMatch(controls, />\s*تشغيل\s*</);
+assert.doesNotMatch(controls, />\s*قراءة\s*</);
+assert.doesNotMatch(controls, />\s*علامة\s*</);
+assert.match(controls, /الفهرس/);
+assert.match(controls, /البحث/);
+assert.match(controls, /التلاوة/);
 
 console.log("=== setup-workspace smoke ===");
 const activate = readFileSync(resolve(repoRoot, ".github/actions/setup-workspace/activate-pnpm.sh"), "utf8");
