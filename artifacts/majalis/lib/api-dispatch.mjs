@@ -275,7 +275,15 @@ export const API_ROUTES = [
   { prefix: "/api/cron/researches-daily-import", module: "./api-handlers/cron/researches-daily-import.js", allowGet: true, exact: true },
   { prefix: "/api/admin/submissions", module: "./api-handlers/admin/submissions.js", allowGet: true },
   { prefix: "/api/admin/v3", module: "./api-handlers/admin/v3.js", allowGet: true },
-  { prefix: "/api/account/delete", module: "./api-handlers/account/delete.js", exact: true, rateLimit: accountDeleteRateLimit },
+  {
+    prefix: "/api/account/delete",
+    module: "./api-handlers/account/delete.js",
+    exact: true,
+    allowGet: false,
+    // GET غير مدعوم — Method Guard قبل AUTHENTICATED_USER حتى لا يُخفى 405 خلف 401.
+    methods: ["POST", "DELETE", "OPTIONS"],
+    rateLimit: accountDeleteRateLimit,
+  },
   { prefix: "/api/account/export", module: "./api-handlers/account/export.js", exact: true, allowGet: true, rateLimit: accountExportRateLimit },
   // ── الباحث الشرعي (RAG) ────────────────────────────────────────────────────
   { prefix: "/api/rag", module: "./api-handlers/rag-research.js", allowGet: true, rateLimit: ragRateLimit },
