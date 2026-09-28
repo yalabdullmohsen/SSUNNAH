@@ -39,7 +39,9 @@
 .myl2-hero__name {
   margin: 0;
   font-size: 1.15rem; font-weight: 800;
-  /* soft ink */ line-height: 1.2;
+  line-height: 1.2;
+  /* هيرو حبر داكن (MSS/card-system) — on-ink لا rich-ink */
+  color: var(--cs-on-ink-title, var(--mss-on-hero, #f7f1e4)) !important;
 }
 
 .myl2-hero__email {
