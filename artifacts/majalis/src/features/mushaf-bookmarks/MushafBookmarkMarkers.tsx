@@ -4,6 +4,7 @@ import {
   type MyBookmark,
 } from "@/lib/quran-my-bookmarks";
 import { getBookmarkKindMeta, resolveBookmarkColor } from "@/lib/quran-bookmark-kinds";
+import "@/styles/reader-bookmarks.css";
 
 type Props = {
   page: number;

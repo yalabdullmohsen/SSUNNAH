@@ -9,12 +9,13 @@ import {
   useRef,
   useState,
 } from "react";
-import { getAudioEngine, type PlayerState } from "@/core/audio/AudioEngine";
+import type { PlayerState } from "@/core/audio/AudioEngine";
 import {
-  getQuranRecitationService,
-  QuranRecitationService,
-  unlockAudioOnUserGesture,
-} from "@/lib/quran/quranRecitationService";
+  ensureMushafAudioSession,
+  getMushafAudioSessionOrNull,
+  isMushafAudioSessionReady,
+} from "./mushaf-audio-session";
+import { MUSHAF_BOOT_STAGES } from "./mushaf-staged-boot";
 import { getSurahMeta, savePagePosition } from "@/lib/quran-api";
 import {
   getReciter,
@@ -75,18 +76,12 @@ import {
   useQpcPageFont,
 } from "@/features/mushaf-madinah/useQpcPageFont";
 import { useMushafResourceGate } from "@/features/mushaf-madinah/useMushafResourceGate";
-import { prefetchAdjacentPageAudio } from "@/features/mushaf-madinah/prefetch-adjacent-audio";
 import { MUSHAF_CHROME_HIDE_MS } from "@/features/mushaf-madinah/layout-bands";
 import { MushafPage } from "./MushafPage";
 import { MushafControlsLayer, MushafVerseMenu } from "./MushafControlsLayer";
 import { MushafPageArrows } from "./MushafPageArrows";
 import { MushafPageScrubber } from "./MushafPageScrubber";
 import { isMushafNavCapabilityEnabled } from "./mushaf-reader-nav-contract";
-import {
-  MushafBookmarkComposer,
-  MushafBookmarkMarkers,
-  MushafPageBookmarkSheet,
-} from "@/features/mushaf-bookmarks";
 import {
   loadPageArrowsEnabled,
   savePageArrowsEnabled,
@@ -126,8 +121,22 @@ import "@/styles/ayah-nav-selection.css";
 import "@/features/mushaf-madinah/mushaf-madinah.css";
 /* صقل Chrome الخروج/الأسهم — بعد mushaf-reader حتى يفوز بدون لمس Geometry */
 import "@/styles/reader-page-chrome.css";
-import "@/styles/reader-bookmarks.css";
-import "@/styles/components/quran-audio-chrome.css";
+
+const MushafBookmarkComposer = lazy(() =>
+  import("@/features/mushaf-bookmarks").then((m) => ({
+    default: m.MushafBookmarkComposer,
+  })),
+);
+const MushafBookmarkMarkers = lazy(() =>
+  import("@/features/mushaf-bookmarks").then((m) => ({
+    default: m.MushafBookmarkMarkers,
+  })),
+);
+const MushafPageBookmarkSheet = lazy(() =>
+  import("@/features/mushaf-bookmarks").then((m) => ({
+    default: m.MushafPageBookmarkSheet,
+  })),
+);
 
 const MushafTafsirSheet = lazy(() =>
   import("@/features/mushaf-madinah/MushafTafsirSheet").then((m) => ({
@@ -144,6 +153,8 @@ const QuranAudioPlayer = lazy(() =>
     default: m.QuranAudioPlayer,
   })),
 );
+
+void MUSHAF_BOOT_STAGES; /* عقد المراحل — يُقفَل عبر بوابة staged-loading */
 
 type Props = {
   pageNumber: number;
@@ -285,8 +296,15 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
   const revealedNavIntentRef = useRef<string | null>(null);
   const actionsOpenRef = useRef(false);
   actionsOpenRef.current = actionsOpen;
-  const audio = useMemo(() => getAudioEngine(), []);
-  const recitation = useMemo(() => getQuranRecitationService(), []);
+  const [audioArmed, setAudioArmed] = useState(false);
+  const audioSessionRef = useRef<Awaited<ReturnType<typeof ensureMushafAudioSession>> | null>(null);
+
+  const armAudioSession = useCallback(async () => {
+    const s = await ensureMushafAudioSession();
+    audioSessionRef.current = s;
+    setAudioArmed(true);
+    return s;
+  }, []);
 
   useEffect(() => {
     beginPowerSaverSession();
@@ -330,14 +348,14 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       endPowerSaverSession();
       readerControllerRef.current?.dispose();
       readerControllerRef.current = null;
-      recitation.stop();
+      getMushafAudioSessionOrNull()?.recitation.stop();
       const resolved =
         document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
       void import("@/lib/apply-page-chrome").then(({ reapplyPageChromeFromLocation }) =>
         reapplyPageChromeFromLocation(resolved),
       );
     };
-  }, [recitation]);
+  }, []);
 
   useLayoutEffect(() => {
     /* قبل أول paint: طبّق كاش الصفحة الجديدة حتى لا يُرسم خط الصفحة الجديدة على بيانات قديمة */
@@ -388,7 +406,10 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
         prefetchMushafPage(page - 2);
         prefetchMushafPage(page + 2);
         scheduleNonCriticalWork(() => {
-          if (!cancelled) void prefetchAdjacentPageAudio(page, loadReciterId());
+          if (cancelled || !isMushafAudioSessionReady()) return;
+          void import("@/features/mushaf-madinah/prefetch-adjacent-audio").then((m) =>
+            m.prefetchAdjacentPageAudio(page, loadReciterId()),
+          );
         });
       }
     }
@@ -526,61 +547,67 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
   }, []);
 
   useEffect(() => {
-    audio.setReciter(loadReciterId());
-    const syncPageIfAllowed = (surah: number, ayah: number) => {
-      if (suppressPageSyncRef.current) return;
-      if (actionsOpenRef.current) return;
-      const targetPage = findMushafPageForAyah(surah, ayah);
-      if (targetPage !== pageRef.current) onPageChangeRef.current(targetPage);
-    };
-    const unSnap = audio.onSnapshot((snap) => {
-      setPlayerState((prev) => (prev === snap.playerState ? prev : snap.playerState));
-      setReciterId((prev) => (prev === snap.reciterId ? prev : snap.reciterId));
-      setMushafAudioClock({
-        currentTime: snap.currentTime,
-        duration: snap.duration,
-        playbackRate: snap.playbackRate,
-      });
-      if (snap.playerState === "error") {
-        setAudioError(
-          QuranRecitationService.userErrorMessage(snap.errorMessage || "تعذر تشغيل التلاوة الآن"),
-        );
-        setAudioStatus("تعذر التشغيل");
-        if (recitation.getPlaybackState().iosNeedsForeground) {
-          setIosAudioHint(QuranRecitationService.IOS_FOREGROUND_HINT);
+    if (!audioArmed) return;
+    let cancelled = false;
+    let unSnap: (() => void) | undefined;
+    let unAyah: (() => void) | undefined;
+    void armAudioSession().then((session) => {
+      if (cancelled) return;
+      const { audio, recitation, QuranRecitationService } = session;
+      audio.setReciter(loadReciterId());
+      const syncPageIfAllowed = (surah: number, ayah: number) => {
+        if (suppressPageSyncRef.current) return;
+        if (actionsOpenRef.current) return;
+        const targetPage = findMushafPageForAyah(surah, ayah);
+        if (targetPage !== pageRef.current) onPageChangeRef.current(targetPage);
+      };
+      unSnap = audio.onSnapshot((snap) => {
+        setPlayerState((prev) => (prev === snap.playerState ? prev : snap.playerState));
+        setReciterId((prev) => (prev === snap.reciterId ? prev : snap.reciterId));
+        setMushafAudioClock({
+          currentTime: snap.currentTime,
+          duration: snap.duration,
+          playbackRate: snap.playbackRate,
+        });
+        if (snap.playerState === "error") {
+          setAudioError(
+            QuranRecitationService.userErrorMessage(snap.errorMessage || "تعذر تشغيل التلاوة الآن"),
+          );
+          setAudioStatus("تعذر التشغيل");
+          if (recitation.getPlaybackState().iosNeedsForeground) {
+            setIosAudioHint(QuranRecitationService.IOS_FOREGROUND_HINT);
+          }
+        } else if (snap.playerState === "loading" || snap.playerState === "buffering") {
+          setAudioError(null);
+          setIosAudioHint(null);
+          setAudioStatus("تجهيز الصوت");
+        } else if (snap.playerState === "playing") {
+          setAudioError(null);
+          setIosAudioHint(null);
+          setAudioStatus("يعمل الآن");
+        } else if (snap.playerState === "paused") {
+          setAudioStatus("متوقف");
+        } else if (snap.playerState === "idle") {
+          setPlayingVerseKey(null);
+          setAudioStatus("جاهز");
         }
-      } else if (snap.playerState === "loading" || snap.playerState === "buffering") {
-        setAudioError(null);
-        setIosAudioHint(null);
-        setAudioStatus("تجهيز الصوت");
-      } else if (snap.playerState === "playing") {
-        setAudioError(null);
-        setIosAudioHint(null);
-        setAudioStatus("يعمل الآن");
-      } else if (snap.playerState === "paused") {
-        setAudioStatus("متوقف");
-      } else if (snap.playerState === "idle") {
-        setPlayingVerseKey(null);
-        setAudioStatus("جاهز");
-      }
-      if (snap.surah != null && snap.ayah != null) {
-        const key = `${snap.surah}:${snap.ayah}`;
+        if (snap.surah != null && snap.ayah != null) {
+          const key = `${snap.surah}:${snap.ayah}`;
+          setPlayingVerseKey(key);
+        }
+      });
+      unAyah = audio.onAyahChange(({ surah, ayah }) => {
+        const key = `${surah}:${ayah}`;
         setPlayingVerseKey(key);
-        /* لا تُفتح رصيف التلاوة من اللقطة — فقط من تشغيل صريح للمستخدم.
-           فتحها هنا كان يُظهر الشريط تلقائيًا عند التقليب/تقدّم الآية. */
-      }
-    });
-    const unAyah = audio.onAyahChange(({ surah, ayah }) => {
-      const key = `${surah}:${ayah}`;
-      /* الصوت يحدّث playing فقط — لا يمس selected ولا يفتح/يغيّر التفسير */
-      setPlayingVerseKey(key);
-      if (!suppressPageSyncRef.current) syncPageIfAllowed(surah, ayah);
+        if (!suppressPageSyncRef.current) syncPageIfAllowed(surah, ayah);
+      });
     });
     return () => {
-      unSnap();
-      unAyah();
+      cancelled = true;
+      unSnap?.();
+      unAyah?.();
     };
-  }, [audio, recitation]);
+  }, [audioArmed, armAudioSession]);
 
   const [pagerSettled, setPagerSettled] = useState(true);
   /** تجميد حجز الأسفل أثناء القلب حتى لا يتغيّر ارتفاع شبكة الآيات لحظةً */
@@ -852,6 +879,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
     const parsed = parseVerseKey(selectedVerseKey);
     if (!parsed) return;
     const ayahKey = `${parsed.surah}:${parsed.ayah}`;
+    const { recitation, unlockAudioOnUserGesture } = await armAudioSession();
     unlockAudioOnUserGesture();
     setAudioError(null);
     setIosAudioHint(null);
@@ -873,17 +901,18 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
     setAudioStatus("تجهيز التلاوة…");
     setStatus("جاري التلاوة…");
     await recitation.playAyah(parsed.surah, parsed.ayah, reciterId);
-  }, [bumpChrome, playerState, playingVerseKey, recitation, reciterId, selectedVerseKey]);
+  }, [armAudioSession, bumpChrome, playerState, playingVerseKey, reciterId, selectedVerseKey]);
 
   const togglePlay = useCallback(async () => {
     const key = selectedVerseKey ?? playingVerseKey;
     if (!key) return;
     const parsed = parseVerseKey(key);
     if (!parsed) return;
+    const { recitation, unlockAudioOnUserGesture } = await armAudioSession();
     unlockAudioOnUserGesture();
     suppressPageSyncRef.current = true;
     await recitation.togglePlay(parsed.surah, parsed.ayah);
-  }, [playingVerseKey, recitation, selectedVerseKey]);
+  }, [armAudioSession, playingVerseKey, selectedVerseKey]);
 
   const pageVerseKeys = useMemo(
     () => (layout ? uniqueVerseKeysFromRows(layout.rows) : []),
@@ -909,6 +938,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
         getSurahMeta(parsed.surah).ayahs,
       );
       const repeat = repeatCount <= 0 ? Number.POSITIVE_INFINITY : repeatCount;
+      const { audio } = await armAudioSession();
       setAudioError(null);
       setAudioDockOpen(true);
       setAudioDockMini(false);
@@ -924,7 +954,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       setAudioStatus("تجهيز التلاوة…");
       await audio.playAyah(loop.surah, start, reciterId);
     },
-    [audio, bumpChrome, pageVerseKeys, playingVerseKey, reciterId, selectedVerseKey],
+    [armAudioSession, bumpChrome, pageVerseKeys, playingVerseKey, reciterId, selectedVerseKey],
   );
 
   const playPage = useCallback(async () => {
@@ -932,6 +962,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       setAudioError("لا توجد آيات على هذه الصفحة");
       return;
     }
+    const { recitation, unlockAudioOnUserGesture } = await armAudioSession();
     unlockAudioOnUserGesture();
     setAudioError(null);
     setIosAudioHint(null);
@@ -941,26 +972,28 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
     suppressPageSyncRef.current = true;
     setAudioStatus("جاري تشغيل الصفحة…");
     await recitation.playPage(pageVerseKeys, reciterId);
-  }, [bumpChrome, pageVerseKeys, recitation, reciterId]);
+  }, [armAudioSession, bumpChrome, pageVerseKeys, reciterId]);
 
   const retryPlayback = useCallback(async () => {
     const key = playingVerseKey ?? selectedVerseKey;
     if (!key) return;
     const parsed = parseVerseKey(key);
     if (!parsed) return;
+    const { recitation, unlockAudioOnUserGesture } = await armAudioSession();
     unlockAudioOnUserGesture();
     setAudioError(null);
     setIosAudioHint(null);
     await recitation.playAyah(parsed.surah, parsed.ayah, reciterId);
-  }, [playingVerseKey, recitation, reciterId, selectedVerseKey]);
+  }, [armAudioSession, playingVerseKey, reciterId, selectedVerseKey]);
 
   const onReciterChange = useCallback(
     async (id: string) => {
       saveReciterId(id);
       setReciterId(id);
+      const { recitation } = await armAudioSession();
       await recitation.changeReciter(id);
     },
-    [recitation],
+    [armAudioSession],
   );
 
   const onPlayReciter = useCallback(
@@ -977,6 +1010,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
         setAudioError("اختر آية أولاً");
         return;
       }
+      const { recitation, unlockAudioOnUserGesture } = await armAudioSession();
       unlockAudioOnUserGesture();
       setAudioError(null);
       setIosAudioHint(null);
@@ -986,7 +1020,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       setAudioStatus("تجهيز التلاوة…");
       await recitation.playAyah(parsed.surah, parsed.ayah, id);
     },
-    [playingVerseKey, recitation, selectedVerseKey],
+    [armAudioSession, playingVerseKey, selectedVerseKey],
   );
 
   const onCopy = useCallback(async () => {
@@ -1178,9 +1212,9 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
     setControlsMoreOpen(false);
     setGotoOpen(false);
     setAudioDockOpen(false);
-    recitation.stop();
+    getMushafAudioSessionOrNull()?.recitation.stop();
     onExit();
-  }, [onExit, recitation]);
+  }, [onExit]);
 
   const onControlsIndex = useCallback(() => {
     setIndexOpen(true);
@@ -1396,64 +1430,70 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
           {(() => { const L = mushafPerfSnapshot(); return `p=${page} settled=${pagerSettled ? 1 : 0} nbr=${neighborsReady ? 1 : 0}\ngeo=${getMushafGeometryKey()}\nrM=${L.readerMountCount} pM=${L.pagerMountCount} fL=${L.fontLoadCount} gC=${L.geometryChangeCount}`; })()}
         </div>
       ) : null}
-      <MediaBridge
-        active={Boolean(playingVerseKey || playerState === "paused" || mediaPlaying)}
-        title={verseLabel}
-        artist={getReciter(reciterId).nameAr}
-        playing={mediaPlaying}
-        onPlay={() => void togglePlay()}
-        onPause={() => audio.pause()}
-        onStop={() => audio.stop()}
-        onNext={() => {
-          suppressPageSyncRef.current = false;
-          audio.setReciter(reciterId);
-          void audio.skipNext();
-        }}
-        onPrevious={() => {
-          suppressPageSyncRef.current = false;
-          audio.setReciter(reciterId);
-          void audio.skipPrev();
-        }}
-      />
-
-      <Suspense fallback={null}>
-        <QuranAudioPlayer
-          open={audioDockVisible}
-          verseLabel={verseLabel}
-          playerState={playerState}
-          reciterId={reciterId}
-          audioError={audioError}
-          audioStatus={audioStatus}
-          iosHint={iosAudioHint}
-          mini={audioDockMini}
-          onMiniChange={setAudioDockMini}
-          onTogglePlay={() => void togglePlay()}
-          onPrev={() => {
-            suppressPageSyncRef.current = false;
-            void recitation.previousAyah();
-          }}
+      {audioArmed ? (
+        <MediaBridge
+          active={Boolean(playingVerseKey || playerState === "paused" || mediaPlaying)}
+          title={verseLabel}
+          artist={getReciter(reciterId).nameAr}
+          playing={mediaPlaying}
+          onPlay={() => void togglePlay()}
+          onPause={() => getMushafAudioSessionOrNull()?.audio.pause()}
+          onStop={() => getMushafAudioSessionOrNull()?.audio.stop()}
           onNext={() => {
             suppressPageSyncRef.current = false;
-            void recitation.nextAyah();
+            const a = getMushafAudioSessionOrNull()?.audio;
+            if (!a) return;
+            a.setReciter(reciterId);
+            void a.skipNext();
           }}
-          onReciterChange={(id) => void onReciterChange(id)}
-          onPlayReciter={(id) => void onPlayReciter(id)}
-          onRetry={() => void retryPlayback()}
-          onSeek={(seconds) => audio.seek(seconds)}
-          onSpeed={(rate) => audio.setPlaybackRate(rate)}
-          onPlayRange={(range, repeat, delayMs) => void playRange(range, repeat, delayMs)}
-          onClose={() => {
-            /* إغلاق صريح: يخفي الرصيف ويوقف التلاوة */
-            setAudioDockOpen(false);
-            setAudioDockMini(true);
-            recitation.stop();
-          }}
-          onStop={() => {
-            /* إيقاف منفصل عن الطي/الإغلاق — الموضع يبقى عبر المحرّك حتى إعادة التشغيل */
-            recitation.stop();
+          onPrevious={() => {
+            suppressPageSyncRef.current = false;
+            const a = getMushafAudioSessionOrNull()?.audio;
+            if (!a) return;
+            a.setReciter(reciterId);
+            void a.skipPrev();
           }}
         />
-      </Suspense>
+      ) : null}
+
+      {audioDockOpen || audioArmed ? (
+        <Suspense fallback={null}>
+          <QuranAudioPlayer
+            open={audioDockVisible}
+            verseLabel={verseLabel}
+            playerState={playerState}
+            reciterId={reciterId}
+            audioError={audioError}
+            audioStatus={audioStatus}
+            iosHint={iosAudioHint}
+            mini={audioDockMini}
+            onMiniChange={setAudioDockMini}
+            onTogglePlay={() => void togglePlay()}
+            onPrev={() => {
+              suppressPageSyncRef.current = false;
+              void getMushafAudioSessionOrNull()?.recitation.previousAyah();
+            }}
+            onNext={() => {
+              suppressPageSyncRef.current = false;
+              void getMushafAudioSessionOrNull()?.recitation.nextAyah();
+            }}
+            onReciterChange={(id) => void onReciterChange(id)}
+            onPlayReciter={(id) => void onPlayReciter(id)}
+            onRetry={() => void retryPlayback()}
+            onSeek={(seconds) => getMushafAudioSessionOrNull()?.audio.seek(seconds)}
+            onSpeed={(rate) => getMushafAudioSessionOrNull()?.audio.setPlaybackRate(rate)}
+            onPlayRange={(range, repeat, delayMs) => void playRange(range, repeat, delayMs)}
+            onClose={() => {
+              setAudioDockOpen(false);
+              setAudioDockMini(true);
+              getMushafAudioSessionOrNull()?.recitation.stop();
+            }}
+            onStop={() => {
+              getMushafAudioSessionOrNull()?.recitation.stop();
+            }}
+          />
+        </Suspense>
+      ) : null}
       <MushafPageArrows
         page={page}
         /* التفعيل مستقل عن Chrome — الإخفاء فقط عند الشيتات/القوائم المتداخلة */
@@ -1533,21 +1573,25 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       ) : null}
 
       {pageBookmarkSheetOpen ? (
+        <Suspense fallback={null}>
         <MushafPageBookmarkSheet
           page={page}
           ayahKey={selectedVerseKey}
           onClose={closePageBookmarkSheet}
           onSaved={onBookmarkSaved}
         />
+        </Suspense>
       ) : null}
 
       {bookmarkComposerOpen && selectedVerseKey ? (
+        <Suspense fallback={null}>
         <MushafBookmarkComposer
           verseKey={selectedVerseKey}
           page={page}
           onClose={closeBookmarkComposer}
           onSaved={onBookmarkSaved}
         />
+        </Suspense>
       ) : null}
 
       {tafsirVerseKey ? (
@@ -1681,13 +1725,15 @@ const PrefetchPage = memo(function PrefetchPage({
         />
       )}
       {showBookmarkMarkers && canPaint ? (
-        <MushafBookmarkMarkers
-          key={bookmarkEpoch}
-          page={pageNumber}
-          container={shellEl}
-          enabled={selectionEnabled}
-          onOpenAyah={onBookmarkMarkerOpen}
-        />
+        <Suspense fallback={null}>
+          <MushafBookmarkMarkers
+            key={bookmarkEpoch}
+            page={pageNumber}
+            container={shellEl}
+            enabled={selectionEnabled}
+            onOpenAyah={onBookmarkMarkerOpen}
+          />
+        </Suspense>
       ) : null}
     </div>
   );

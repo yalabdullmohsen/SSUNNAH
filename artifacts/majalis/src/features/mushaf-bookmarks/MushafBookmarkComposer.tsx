@@ -12,6 +12,7 @@ import { haptics } from "@/lib/haptics";
 import { getSurahMeta } from "@/lib/quran-api";
 import { toArabicIndicDigits as toArabicDigits } from "@/lib/numerals";
 import { parseVerseKey } from "@/features/mushaf-madinah/mushaf-page-for-ayah";
+import "@/styles/reader-bookmarks.css";
 
 type Props = {
   verseKey: string;
