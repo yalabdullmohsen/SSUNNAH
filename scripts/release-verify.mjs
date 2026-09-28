@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * release:verify — بوابة Release Candidate محلية (Phase 6).
+ * release:verify — بوابة Release Candidate محلية (Phase 6 + Phase 7).
  * لا تنشر · لا ترفع للمتجر · لا توقيع.
  *
  * Usage: node scripts/release-verify.mjs
@@ -57,7 +57,7 @@ function assert(name, cond, detail = "") {
   return cond;
 }
 
-console.log("release:verify — Phase 6 Release Candidate gate");
+console.log("release:verify — Phase 7 Release Candidate gate");
 console.log(`root: ${root}`);
 
 const commit = spawnSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).stdout.trim();
@@ -66,7 +66,12 @@ const nodeV = process.version;
 const pnpmV = spawnSync("pnpm", ["-v"], { cwd: root, encoding: "utf8" }).stdout.trim();
 
 assert("git commit readable", /^[0-9a-f]{40}$/i.test(commit), commit);
-assert("branch is phase-6 RC branch or documented", Boolean(branch), branch || "detached");
+const allowedBranch =
+  Boolean(branch) &&
+  (/release\/sunnah-final-integration/.test(branch) ||
+    /release-rc-stabilization-p6/.test(branch) ||
+    /cursor\//.test(branch));
+assert("branch is Phase 7 integration or documented RC branch", allowedBranch, branch || "detached");
 
 // Clean tree preferred; allow documented exceptions via env
 const dirty = spawnSync("git", ["status", "--porcelain"], { cwd: root, encoding: "utf8" }).stdout.trim();
@@ -108,7 +113,7 @@ assert(
     (routes.includes("/dev/design-system") && routes.includes("import.meta.env.DEV")),
 );
 
-// Required docs for Phase 6
+// Required docs for Phase 6 + Phase 7
 for (const doc of [
   "docs/release/RELEASE_READINESS_TRUTH.md",
   "docs/remediation/PHASE_6_RELEASE_BASELINE.md",
@@ -124,6 +129,10 @@ for (const doc of [
   "docs/store-release/STORE_METADATA_TECHNICAL_GAP_REPORT.md",
   "docs/release/RELEASE_ROLLOUT_AND_ROLLBACK.md",
   "docs/release/PHASE_6_OWNER_ACTIONS.md",
+  "docs/release/PHASE_7_INTEGRATION_BASELINE.md",
+  "docs/release/PHASE_7_BLOCKER_REGISTER.md",
+  "docs/release/PHASE_7_ENVIRONMENT_CHANGESET.md",
+  "docs/operations/PHASE_7_RELEASE_MONITORING_PLAN.md",
 ]) {
   assert(`doc exists ${doc}`, existsSync(join(root, doc)));
 }
@@ -146,6 +155,16 @@ run("phase5-design-ux-gate", "node", [
   "--import",
   "tsx",
   "src/lib/__tests__/phase5-design-ux-gate.test.ts",
+], { cwd: majalis });
+run("phase7-cross-phase-consistency-gate", "node", [
+  "--import",
+  "tsx",
+  "src/lib/__tests__/phase7-cross-phase-consistency-gate.test.ts",
+], { cwd: majalis });
+run("phase7-backward-compat-gate", "node", [
+  "--import",
+  "tsx",
+  "src/lib/__tests__/phase7-backward-compat-gate.test.ts",
 ], { cwd: majalis });
 run("test:prayer-engine-p0", "pnpm", ["--filter", "@workspace/majalis", "run", "test:prayer-engine-p0"]);
 run("test:ios-gates", "pnpm", ["--filter", "@workspace/majalis", "run", "test:ios-gates"]);

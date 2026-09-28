@@ -1,41 +1,43 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-09-26  
-**Canonical pins:** `docs/release/CURRENT_RELEASE_TRUTH.md`  
+**Updated:** 2026-09-28 (Phase 7)  
+**Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
+**Blockers:** `docs/release/PHASE_7_BLOCKER_REGISTER.md`  
 **Library route intent:** `docs/content-quality/LIBRARY_ROUTE_INTENT.md`
 
-## Repository tip
+## Repository tips (measured)
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `65b59d534727bd33c5095febc93acae559dfc1cb` |
-| Production `version.json` | `65b59d53` · HTTP 200 · `builtAt` `2026-09-26T16:31:50.195Z` · `ref` `main` |
+| `origin/main` tip | `2e008c8d5` — P1 squash `#2328` |
+| Integration branch | `release/sunnah-final-integration` (from P6 `c935dab07` + Phase 7 commits) |
+| Production `version.json` | `2e008c8d` · HTTP 200 · `builtAt` `2026-09-28T13:00:10.787Z` · `ref` `main` |
 | About surface | `/about` — حول التطبيق |
 
-## Recent product (web)
+## Remediation program (Phases 1–7)
 
-| Item | Evidence |
-|---|---|
-| نظام بطاقات موحّد | #2291 |
-| بطاقات رئيسية Emerald Dark · أسطح قراءة فاتحة | #2292 |
-| إزالة اللمعان / توحيد هوية البطاقات | prior main commits |
-
-## Program progress
-
-| Wave | Focus | State |
+| Phase | Tip / state | On main? |
 |---|---|---|
-| 1–7 | Truth → Legacy Admin entry | **MERGED** (#2192–#2198) |
-| 8 | Deep links + lessons-guide honesty | **MERGED base** · re-verify remaining honesty items |
-| 9–14 | Mushaf → store closure | QUEUED |
+| P1 Startup/Mushaf | `1ba918c50` (tree = main squash) | **yes** (squash) |
+| P2 API security | `45d432a62` | no |
+| P3 Admin v3 | `3b5ef4ae6` | no |
+| P4 Content/perf | `b64319d06` | no |
+| P5 Design/UX | `7716977d7` | no |
+| P6 RC readiness | `c935dab07` | no |
+| P7 Integration | this branch | **not merged** |
 
 ## Store readiness
 
 **HOLD**
 
+Allowed project statuses: `HOLD` · `TECHNICALLY_VERIFIED_WITH_EXTERNAL_BLOCKERS` · `READY_FOR_OWNER_GO` · `WEB_RELEASED_NATIVE_HOLD` · `RELEASE_BLOCKED`
+
+Current agent decision target after green `release:verify`: **TECHNICALLY_VERIFIED_WITH_EXTERNAL_BLOCKERS**
+
 ## Remaining blocker classes
 
-OWNER_ACTION · DEVICE_REQUIRED · BLOCKED_LICENSE · BLOCKED_SOURCE · Legacy CRUD delete BLOCKED
+OWNER_ACTION · DEVICE_REQUIRED · BLOCKED_LICENSE · BLOCKED_SOURCE · BLOCKED_CREDENTIAL · BLOCKED_ENVIRONMENT
 
 ## Explicit non-claims
 
-`SUNNAH_FULL_REMEDIATION_COMPLETE` · `STORE GO` — **not** declared.
+`SUNNAH_FULL_REMEDIATION_COMPLETE` · `STORE GO` · `100% READY` · `FULLY COMPLETE` — **not** declared.
