@@ -11,6 +11,7 @@ import {
 } from "@/lib/supabase";
 import { preloadRoute } from "@/lib/lazy-with-retry";
 import { Loading } from "@/components/ui-common";
+import { Button } from "@/components/ui/button";
 import { applyPageSeo } from "@/lib/seo";
 import { canSubmitForm } from "@/lib/form-rate-limit";
 import { sanitizeAuthNext } from "@/lib/auth-redirect";
@@ -287,24 +288,28 @@ export default function LoginPage() {
 
         {!adminLogin && tab !== "forgot" ? (
           <div className="login-tabs" role="tablist" aria-label="وضع الحساب">
-            <button
+            <Button
               type="button"
+              variant="ghost"
+              size="small"
               role="tab"
               aria-selected={tab === "login"}
               className={`login-tab${tab === "login" ? " is-active" : ""}`}
               onClick={() => switchTab("login")}
             >
               تسجيل الدخول
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="ghost"
+              size="small"
               role="tab"
               aria-selected={tab === "register"}
               className={`login-tab${tab === "register" ? " is-active" : ""}`}
               onClick={() => switchTab("register")}
             >
               إنشاء حساب
-            </button>
+            </Button>
           </div>
         ) : null}
 
@@ -404,36 +409,38 @@ export default function LoginPage() {
               </div>
             ) : null}
 
-            <button type="submit" className="login-submit" disabled={loading || !authEnabled}>
-              {loading
-                ? tab === "register"
-                  ? "يُنشأ…"
-                  : tab === "forgot"
-                    ? "يُرسل…"
-                    : "يُتحقق…"
-                : tab === "register"
-                  ? "إنشاء حساب"
-                  : tab === "forgot"
-                    ? "إرسال رابط الاستعادة"
-                    : "تسجيل الدخول"}
-            </button>
+            <Button
+              type="submit"
+              variant="primary"
+              className="login-submit"
+              loading={loading}
+              disabled={loading || !authEnabled}
+            >
+              {tab === "register"
+                ? "إنشاء حساب"
+                : tab === "forgot"
+                  ? "إرسال رابط الاستعادة"
+                  : "تسجيل الدخول"}
+            </Button>
           </form>
         )}
 
         {!adminLogin && tab === "login" && authEnabled ? (
-          <button
+          <Button
             type="button"
+            variant="ghost"
+            size="small"
             className="login-text-btn"
             onClick={() => switchTab("forgot")}
           >
             نسيت كلمة المرور؟
-          </button>
+          </Button>
         ) : null}
 
         {tab === "forgot" ? (
-          <button type="button" className="login-text-btn" onClick={() => switchTab("login")}>
+          <Button type="button" variant="ghost" size="small" className="login-text-btn" onClick={() => switchTab("login")}>
             العودة لتسجيل الدخول
-          </button>
+          </Button>
         ) : null}
 
         {!adminLogin ? (
@@ -442,15 +449,18 @@ export default function LoginPage() {
               المتابعة كزائر
             </Link>
             {tab === "login" ? (
-              <button
+              <Button
                 type="button"
+                variant="ghost"
+                size="small"
                 className="login-text-btn"
                 data-testid="app-store-review-login"
+                loading={loading}
                 disabled={loading}
                 onClick={() => void enterAppStoreReviewMode()}
               >
                 وضع مراجعة App Store
-              </button>
+              </Button>
             ) : null}
           </div>
         ) : (

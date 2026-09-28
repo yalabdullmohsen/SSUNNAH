@@ -21,6 +21,8 @@ import {
   UNIVERSAL_SECTION_ORDER,
 } from "@/features/search/universal-home-search";
 import { EMPTY } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import "@/styles/components/home-universal-search.css";
 
 const FOCUS_SUGGESTIONS = [
@@ -156,17 +158,17 @@ export function HomeUniversalSearch() {
           }}
         />
         {raw ? (
-          <button
+          <IconButton
             type="button"
             className="hus-clear"
-            aria-label="مسح"
+            label="مسح"
             onClick={() => {
               setRaw("");
               setPayload(null);
             }}
           >
             <X size={16} />
-          </button>
+          </IconButton>
         ) : null}
       </div>
 
@@ -180,9 +182,9 @@ export function HomeUniversalSearch() {
                   <ul className="hus-chips">
                     {history.map((q) => (
                       <li key={q}>
-                        <button type="button" onClick={() => setRaw(q)}>
+                        <Button type="button" variant="ghost" size="small" onClick={() => setRaw(q)}>
                           {q}
-                        </button>
+                        </Button>
                       </li>
                     ))}
                   </ul>
@@ -193,9 +195,9 @@ export function HomeUniversalSearch() {
                 <ul className="hus-chips">
                   {FOCUS_SUGGESTIONS.map((q) => (
                     <li key={q}>
-                      <button type="button" onClick={() => setRaw(q)}>
+                      <Button type="button" variant="ghost" size="small" onClick={() => setRaw(q)}>
                         {q}
-                      </button>
+                      </Button>
                     </li>
                   ))}
                 </ul>
@@ -206,29 +208,33 @@ export function HomeUniversalSearch() {
           {showResults ? (
             <>
               <div className="hus-filters" role="tablist" aria-label="تصفية الأقسام">
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
+                  size="small"
                   role="tab"
                   aria-selected={filter === "all"}
                   className={filter === "all" ? "is-active" : undefined}
                   onClick={() => setFilter("all")}
                 >
                   الكل
-                </button>
+                </Button>
                 {UNIVERSAL_SECTION_ORDER.map((id) => {
                   const n = payload!.counts[id];
                   if (!n) return null;
                   return (
-                    <button
+                    <Button
                       key={id}
                       type="button"
+                      variant="ghost"
+                      size="small"
                       role="tab"
                       aria-selected={filter === id}
                       className={filter === id ? "is-active" : undefined}
                       onClick={() => setFilter(id)}
                     >
                       {UNIVERSAL_SECTION_LABELS[id]} ({toArabicDigits(n)})
-                    </button>
+                    </Button>
                   );
                 })}
               </div>
@@ -257,7 +263,7 @@ export function HomeUniversalSearch() {
                       <ul className="hus-hits">
                         {rows.map((hit) => (
                           <li key={hit.id}>
-                            <button type="button" className="hus-hit" onClick={() => openHit(hit)}>
+                            <Button type="button" variant="ghost" size="small" className="hus-hit" onClick={() => openHit(hit)}>
                               <strong>
                                 <Highlight text={hit.title} query={debounced} />
                               </strong>
@@ -266,20 +272,22 @@ export function HomeUniversalSearch() {
                                   <Highlight text={hit.summary} query={debounced} />
                                 </span>
                               ) : null}
-                            </button>
+                            </Button>
                           </li>
                         ))}
                       </ul>
                       {sec.total > sec.preview.length ? (
-                        <button
+                        <Button
                           type="button"
+                          variant="ghost"
+                          size="small"
                           className="hus-more"
                           onClick={() =>
                             setExpanded((prev) => ({ ...prev, [sec.id]: !open }))
                           }
                         >
                           {open ? "عرض أقل" : "عرض الكل"}
-                        </button>
+                        </Button>
                       ) : null}
                     </section>
                   );

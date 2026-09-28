@@ -8,6 +8,7 @@ import {
   type SearchSuggestion,
 } from "@/lib/search-suggestions";
 import { getSearchHistory, clearSearchHistory } from "@/lib/search-history";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   value: string;
@@ -158,9 +159,11 @@ export function SearchSuggestions({
           <div className="search-suggestions-group">
             <p className="search-suggestions-group-label">بحثت سابقًا</p>
             {history.map((item) => (
-              <button
+              <Button
                 key={item}
                 type="button"
+                variant="ghost"
+                size="small"
                 className="search-suggestion-item"
                 onClick={() => {
                   onChange(item);
@@ -169,11 +172,11 @@ export function SearchSuggestions({
                 }}
               >
                 <span className="search-suggestion-label">{item}</span>
-              </button>
+              </Button>
             ))}
-            <button type="button" className="search-suggestions-clear" onClick={() => { clearSearchHistory(); setOpen(false); }}>
+            <Button type="button" variant="ghost" size="small" className="search-suggestions-clear" onClick={() => { clearSearchHistory(); setOpen(false); }}>
               مسح السجل
-            </button>
+            </Button>
           </div>
         </div>
       )}

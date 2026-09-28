@@ -21,6 +21,8 @@ import {
   Trash2,
 } from "lucide-react";
 import { PageHeader } from "@/components/ui-common";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import { hapticTap, isNative } from "@/lib/capacitor-utils";
 import { toArabicDigits } from "@/lib/utils";
 import {
@@ -158,18 +160,18 @@ function NotifRow({
 
   return (
     <div className="nh-row-wrap">
-      <button
+      <IconButton
         type="button"
         className="nh-row__swipe-del"
         onClick={() => {
           setDragX(0);
           onDelete();
         }}
-        aria-label={`حذف: ${rec.title}`}
+        label={`حذف: ${rec.title}`}
         tabIndex={dragX <= -SWIPE_REVEAL / 2 ? 0 : -1}
       >
         <Trash2 size={18} strokeWidth={2} aria-hidden="true" />
-      </button>
+      </IconButton>
       <div
         className={`nh-row${rec.isRead ? " nh-row--read" : ""}`}
         style={
@@ -200,13 +202,13 @@ function NotifRow({
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
         <div className="nh-row__actions" onClick={(e) => e.stopPropagation()}>
           {!rec.isArchived && (
-            <button type="button" className="nh-action" onClick={onArchive} aria-label="أرشفة">
+            <IconButton type="button" className="nh-action" onClick={onArchive} label="أرشفة">
               <Archive size={14} strokeWidth={2} aria-hidden="true" />
-            </button>
+            </IconButton>
           )}
-          <button type="button" className="nh-action nh-action--del" onClick={onDelete} aria-label="حذف">
+          <IconButton type="button" className="nh-action nh-action--del" onClick={onDelete} label="حذف">
             <Trash2 size={14} strokeWidth={2} aria-hidden="true" />
-          </button>
+          </IconButton>
         </div>
       </div>
     </div>
@@ -268,9 +270,9 @@ function SectionDetailPanel({
   return (
     <div className="soft-card soft-card--on-light notif-card nsp-detail" dir="rtl">
       <div className="nsp-detail__head">
-        <button type="button" className="nh-btn" onClick={onClose}>
+        <Button type="button" variant="ghost" size="small" className="nh-btn" onClick={onClose}>
           رجوع
-        </button>
+        </Button>
         <h2 className="notif-card__title" style={{ margin: 0 }}>
           {meta.title}
         </h2>
@@ -325,15 +327,17 @@ function SectionDetailPanel({
         {meta.countPresets ? (
           <div className="nsp-chip-row" role="group" aria-label="عدد التذكيرات">
             {meta.countPresets.map((n) => (
-              <button
+              <Button
                 key={n}
                 type="button"
+                variant="ghost"
+                size="small"
                 className={`ads-chip${sectionPrefs.dailyCount === n ? " is-active" : ""}`}
                 disabled={!canToggle || !sectionPrefs.enabled}
                 onClick={() => onPatchSection({ dailyCount: n })}
               >
                 {toArabicDigits(n)}
-              </button>
+              </Button>
             ))}
             <label className="nsp-custom-count">
               <span>مخصص</span>
@@ -419,15 +423,17 @@ function SectionDetailPanel({
           {([0, 1, 2, 3, 4, 5, 6] as Weekday[]).map((day) => {
             const active = sectionPrefs.weekdays.includes(day);
             return (
-              <button
+              <Button
                 key={day}
                 type="button"
+                variant="ghost"
+                size="small"
                 className={`ads-chip${active ? " is-active" : ""}`}
                 disabled={!canToggle || !sectionPrefs.enabled}
                 onClick={() => toggleWeekday(day)}
               >
                 {WEEKDAY_LABELS[day]}
-              </button>
+              </Button>
             );
           })}
         </div>
@@ -676,9 +682,9 @@ export default function NotificationSettingsPage() {
 
         {isGranted && (
           <div className="soft-card soft-card--on-light notif-card">
-            <button type="button" className="notif-test-btn" onClick={() => void handleTestTrigger()}>
+            <Button type="button" variant="outline" size="small" className="notif-test-btn" onClick={() => void handleTestTrigger()}>
               إرسال إشعار اختباري
-            </button>
+            </Button>
             {testStatus && (
               <p className="notif-row__sub" style={{ marginTop: "0.5rem" }}>
                 {testStatus}
@@ -693,9 +699,9 @@ export default function NotificationSettingsPage() {
             <p className="notif-row__sub" style={{ marginBottom: "0.75rem" }}>
               منصة: {isNative ? "Capacitor أصلي" : "ويب"} · الإذن: {permission}
             </p>
-            <button type="button" className="notif-test-btn" onClick={() => void handleTestTrigger()}>
+            <Button type="button" variant="outline" size="small" className="notif-test-btn" onClick={() => void handleTestTrigger()}>
               Test Notification Trigger
-            </button>
+            </Button>
           </div>
         )}
 
@@ -709,24 +715,24 @@ export default function NotificationSettingsPage() {
             </h2>
             <div className="nh-header__actions">
               {unread > 0 && (
-                <button type="button" className="nh-btn nh-btn--mark-all" onClick={handleMarkAll}>
+                <Button type="button" variant="ghost" size="small" className="nh-btn nh-btn--mark-all" onClick={handleMarkAll}>
                   <CheckCheck size={14} strokeWidth={2} aria-hidden="true" />
                   تعليم الكل مقروءًا
-                </button>
+                </Button>
               )}
               {!confirmClear ? (
-                <button type="button" className="nh-btn nh-btn--danger" onClick={() => setConfirmClear(true)}>
+                <Button type="button" variant="destructive" size="small" className="nh-btn nh-btn--danger" onClick={() => setConfirmClear(true)}>
                   حذف الكل
-                </button>
+                </Button>
               ) : (
                 <span className="nsp-confirm-row">
                   <span className="nsp-confirm-label">تأكيد؟</span>
-                  <button type="button" className="nh-btn nh-btn--danger" onClick={handleClearAll}>
+                  <Button type="button" variant="destructive" size="small" className="nh-btn nh-btn--danger" onClick={handleClearAll}>
                     نعم
-                  </button>
-                  <button type="button" className="nh-btn" onClick={() => setConfirmClear(false)}>
+                  </Button>
+                  <Button type="button" variant="ghost" size="small" className="nh-btn" onClick={() => setConfirmClear(false)}>
                     إلغاء
-                  </button>
+                  </Button>
                 </span>
               )}
             </div>
@@ -742,36 +748,40 @@ export default function NotificationSettingsPage() {
               aria-label="بحث في الإشعارات"
             />
             {searchQ && (
-              <button
+              <IconButton
                 type="button"
-                aria-label="مسح البحث"
+                label="مسح البحث"
                 className="nh-search-clear"
                 onClick={() => setSearchQ("")}
               >
                 ✕
-              </button>
+              </IconButton>
             )}
           </div>
 
           <div className="nh-tabs" role="tablist" aria-label="تبويبات الإشعارات">
-            <button
+            <Button
               role="tab"
               type="button"
+              variant="ghost"
+              size="small"
               className={`nh-tab${histTab === "inbox" ? " nh-tab--active" : ""}`}
               onClick={() => setHistTab("inbox")}
               aria-selected={histTab === "inbox"}
             >
               الصندوق {unread > 0 && `(${toArabicDigits(unread)})`}
-            </button>
-            <button
+            </Button>
+            <Button
               role="tab"
               type="button"
+              variant="ghost"
+              size="small"
               className={`nh-tab${histTab === "archived" ? " nh-tab--active" : ""}`}
               onClick={() => setHistTab("archived")}
               aria-selected={histTab === "archived"}
             >
               المؤرشف
-            </button>
+            </Button>
           </div>
 
           <div className="nh-list">

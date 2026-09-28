@@ -59,6 +59,8 @@ import "@/styles/pages/search.css";
 import "@/styles/pages/library-search-v2.css";
 import { ACTION, EMPTY, SEARCH, STATUS } from "@/lib/ui-copy";
 import { ListScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 
 const PAGE_SIZE = 40;
 const POPULAR_FALLBACK = ["التوحيد", "صحيح البخاري", "السيرة", "الوضوء", "الفاتحة", "الأذكار"];
@@ -153,8 +155,9 @@ const ScopeCard = memo(function ScopeCard({
 }) {
   const Icon = SCOPE_ICONS[id] ?? LayoutGrid;
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
       className={`srch-scope-card${active ? " is-active" : ""}`}
       aria-pressed={active}
       onClick={() => onSelect(id)}
@@ -166,7 +169,7 @@ const ScopeCard = memo(function ScopeCard({
         <strong>{title}</strong>
         <span>{desc}</span>
       </span>
-    </button>
+    </Button>
   );
 });
 
@@ -371,10 +374,10 @@ export default function SearchPage() {
             onKeyDown={(e) => handleSearchEnterKey(e, { onSearch: () => submit(term) })}
           />
           {term ? (
-            <button
+            <IconButton
               type="button"
               className="srch-home-clear"
-              aria-label="مسح البحث"
+              label="مسح البحث"
               onClick={() => {
                 setTerm("");
                 setScope("all");
@@ -384,12 +387,12 @@ export default function SearchPage() {
               }}
             >
               <X size={16} strokeWidth={2} aria-hidden="true" />
-            </button>
+            </IconButton>
           ) : null}
         </label>
-        <button type="submit" className="srch-home-submit">
+        <Button type="submit" variant="primary" className="srch-home-submit">
           بحث
-        </button>
+        </Button>
       </form>
 
       <div className="srch-scope-wrap">
@@ -406,23 +409,25 @@ export default function SearchPage() {
           ))}
         </div>
         {extraScopes.length > 0 ? (
-          <button
+          <Button
             type="button"
+            variant="ghost"
+            size="small"
             className="srch-scope-more"
             aria-expanded={moreOpen}
             onClick={() => setMoreOpen((v) => !v)}
           >
             {moreOpen ? "أقل" : "المزيد"}
-          </button>
+          </Button>
         ) : null}
       </div>
 
       {scope !== "all" ? (
         <div className="srch-scope-bar" role="status">
           <span>النطاق: {SEARCH_SCOPE_LABELS[scope]}</span>
-          <button type="button" onClick={() => setScope("all")}>
+          <Button type="button" variant="ghost" size="small" onClick={() => setScope("all")}>
             ابحث في الكل
-          </button>
+          </Button>
         </div>
       ) : null}
 
@@ -434,8 +439,10 @@ export default function SearchPage() {
                 <h2 id="srch-hist" className="srch-idle__title">
                   <Clock3 size={14} aria-hidden /> عمليات البحث الأخيرة
                 </h2>
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
+                  size="small"
                   className="srch-idle__clear"
                   onClick={() => {
                     clearSearchHistory();
@@ -443,13 +450,13 @@ export default function SearchPage() {
                   }}
                 >
                   {ACTION.clearSearchHistory}
-                </button>
+                </Button>
               </div>
               <div className="srch-idle__chips">
                 {recent.map((s) => (
-                  <button key={s} type="button" className="srch-chip" onClick={() => submit(s)}>
+                  <Button key={s} type="button" variant="ghost" size="small" className="srch-chip" onClick={() => submit(s)}>
                     {s}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </section>
@@ -461,9 +468,9 @@ export default function SearchPage() {
             </h2>
             <div className="srch-idle__chips">
               {popular.map((s) => (
-                <button key={s} type="button" className="srch-chip" onClick={() => submit(s)}>
+                <Button key={s} type="button" variant="ghost" size="small" className="srch-chip" onClick={() => submit(s)}>
                   {s}
-                </button>
+                </Button>
               ))}
             </div>
           </section>
@@ -490,9 +497,9 @@ export default function SearchPage() {
             <p className="srch-error-inline__title">{STATUS.loadError}</p>
             <p className="srch-error-inline__reason">{error}</p>
             <div className="srch-error-inline__actions">
-              <button type="button" className="srch-error-inline__retry" onClick={() => void run(term, scope)}>
+              <Button type="button" variant="outline" size="small" className="srch-error-inline__retry" onClick={() => void run(term, scope)}>
                 {ACTION.retry}
-              </button>
+              </Button>
               <Link href="/mushaf" className="srch-error-inline__alt">المصحف</Link>
               <Link href="/hadith" className="srch-error-inline__alt">الحديث</Link>
             </div>
@@ -511,12 +518,13 @@ export default function SearchPage() {
           </p>
           <p className="search-no-results__hint-copy">{EMPTY.search}</p>
           {scope !== "all" ? (
-            <button type="button" className="srch-home-submit ss-action-btn ss-action-btn--primary mj-pressable" onClick={() => setScope("all")}>
+            <Button type="button" variant="primary" className="srch-home-submit ss-action-btn ss-action-btn--primary mj-pressable" onClick={() => setScope("all")}>
               ابحث في الكل
-            </button>
+            </Button>
           ) : (
-            <button
+            <Button
               type="button"
+              variant="secondary"
               className="srch-home-submit ss-action-btn ss-action-btn--secondary mj-pressable"
               onClick={() => {
                 setTerm("");
@@ -524,7 +532,7 @@ export default function SearchPage() {
               }}
             >
               {ACTION.clearSearch}
-            </button>
+            </Button>
           )}
           {suggestions.length > 0 ? (
             <p className="search-no-results__hint">
@@ -532,9 +540,9 @@ export default function SearchPage() {
               {suggestions.map((s, i) => (
                 <span key={s}>
                   {i > 0 ? " · " : ""}
-                  <button type="button" className="search-suggestion-chip mj-pressable" onClick={() => submit(s)}>
+                  <Button type="button" variant="ghost" size="small" className="search-suggestion-chip mj-pressable" onClick={() => submit(s)}>
                     {s}
-                  </button>
+                  </Button>
                 </span>
               ))}
               ؟
@@ -542,9 +550,9 @@ export default function SearchPage() {
           ) : (
             <div className="srch-idle__chips srch-idle__chips--suggest">
               {popular.slice(0, 4).map((s) => (
-                <button key={s} type="button" className="srch-chip" onClick={() => submit(s)}>
+                <Button key={s} type="button" variant="ghost" size="small" className="srch-chip" onClick={() => submit(s)}>
                   {s}
-                </button>
+                </Button>
               ))}
             </div>
           )}
@@ -591,9 +599,9 @@ export default function SearchPage() {
           </div>
           {hasMore ? (
             <div className="srch-more">
-              <button type="button" className="srch-more__btn" onClick={() => setPage((p) => p + 1)}>
+              <Button type="button" variant="outline" size="small" className="srch-more__btn" onClick={() => setPage((p) => p + 1)}>
                 عرض المزيد
-              </button>
+              </Button>
             </div>
           ) : null}
         </div>

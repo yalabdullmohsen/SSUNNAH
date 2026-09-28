@@ -5,6 +5,7 @@ import { STATUS } from "@/lib/ui-copy";
 import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
 import { UtilityScreen } from "@/components/design-system/screens";
 import { SettingsList, SettingsToggleRow } from "@/components/design-system/SettingsList";
+import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/AuthProvider";
 import { useFontPreference } from "@/components/FontPreferenceProvider";
 import { useThemePreference } from "@/components/ThemePreferenceProvider";
@@ -254,8 +255,9 @@ export default function SettingsPage() {
             autoComplete="off"
           />
         </label>
-        <button
+        <Button
           type="button"
+          variant="secondary"
           className="page-action-btn page-action-btn--secondary"
           onClick={() => {
             restoreDefaultAppSettings(updatePreferences);
@@ -267,7 +269,7 @@ export default function SettingsPage() {
           }}
         >
           استعادة الإعدادات الافتراضية
-        </button>
+        </Button>
       </div>
 
       {visible(sections[0]!) && (
@@ -338,13 +340,14 @@ export default function SettingsPage() {
                   >
                     المتابعة إلى الحذف النهائي
                   </Link>
-                  <button
+                  <Button
                     type="button"
+                    variant="secondary"
                     className="page-action-btn page-action-btn--secondary"
                     onClick={() => setDeleteDialogOpen(false)}
                   >
                     إلغاء
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -455,12 +458,12 @@ export default function SettingsPage() {
             </select>
           </label>
           <div className="settings-actions">
-            <button type="button" className="ds-btn ds-btn--ghost" onClick={() => bumpFont(2)}>
+            <Button type="button" variant="ghost" size="small" className="ds-btn ds-btn--ghost" onClick={() => bumpFont(2)}>
               {t("settings_quran_font_up")}
-            </button>
-            <button type="button" className="ds-btn ds-btn--ghost" onClick={() => bumpFont(-2)}>
+            </Button>
+            <Button type="button" variant="ghost" size="small" className="ds-btn ds-btn--ghost" onClick={() => bumpFont(-2)}>
               {t("settings_quran_font_down")}
-            </button>
+            </Button>
           </div>
         </LegalSection>
       )}

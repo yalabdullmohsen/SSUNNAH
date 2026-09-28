@@ -2,31 +2,33 @@
 
 | Field | Value |
 |---|---|
-| Captured | 2026-09-28T21:05Z |
+| Captured | 2026-09-28T22:05Z |
 | Source | `gh` + live `version.json` |
 
 ## Tips
 
 | Item | Value |
 |---|---|
-| `origin/main` | `58891c65b` — Interaction System PR-1 `#2337` |
-| Production `version.json` | `58891c65` · **MATCH** · `builtAt=2026-09-28T21:00:26.580Z` |
+| `origin/main` | `22f1a78f9` — account-deletion method guard `#2338` |
+| Production `version.json` | `22f1a78f` · **MATCH** · `builtAt=2026-09-28T21:50:03.502Z` |
 | Decision | **WEB_RELEASED_NATIVE_HOLD** · Store **HOLD** |
 
 ## PRs
 
 | PR | Role | State | Notes |
 |---|---|---|---|
-| #2336 | Visual System PR-1 | **MERGED** | On main before `#2337` |
-| #2337 | Interaction System PR-1 | **MERGED** | Tip on main + production |
-| next | account-deletion method guard | IN_PROGRESS | Independent of button waves |
+| #2336 | Visual System PR-1 | **MERGED** | Token authority + debt budgets |
+| #2337 | Interaction System PR-1 | **MERGED** | Canonical Button + façades |
+| #2338 | account-deletion method guard | **MERGED** | Live probe: GET→405 + `Allow: POST, DELETE`; POST/DELETE→401 |
+| next | Interaction PR-2 Home/Search/Account | IN_PROGRESS | Branch `cursor/interaction-pr2-home-search-account` |
 
-## Next sequence (locked)
+## Debt (interaction, after PR-2 local)
 
-1. ~~Merge #2337~~ → Auto Deploy + `version.json` verified
-2. Independent PR: account-deletion GET → 405 before auth (`AUTHENTICATED_USER` method allowlist)
-3. Interaction PR-2: Home / Search / Account
-4. Further waves per program plan
+| Metric | Ceiling / Floor |
+|---|---|
+| rawButtonFiles | ≤ 339 |
+| rawButtonElements | ≤ 1290 |
+| officialButtonImportFiles | ≥ 21 |
 
 ## Explicit non-claims
 

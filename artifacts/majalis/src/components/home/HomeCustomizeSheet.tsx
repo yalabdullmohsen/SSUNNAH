@@ -2,6 +2,8 @@ import { createPortal } from "react-dom";
 import { useEffect, useState } from "react";
 import { ArrowDown, ArrowUp, Eye, EyeOff, RotateCcw, X } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import {
   HOME_WIDGET_DEFS,
   getLocalHomepagePrefs,
@@ -82,9 +84,9 @@ export function HomeCustomizeSheet({
         <div className="bottom-sheet__handle" />
         <div className="bottom-sheet__head">
           <span>تخصيص الصفحة الرئيسية</span>
-          <button type="button" onClick={onClose} className="bottom-sheet__close-btn" aria-label="إغلاق">
+          <IconButton type="button" onClick={onClose} className="bottom-sheet__close-btn" label="إغلاق">
             <X size={18} strokeWidth={1.8} aria-hidden="true" />
-          </button>
+          </IconButton>
         </div>
 
         <div className="bottom-sheet__body">
@@ -95,32 +97,32 @@ export function HomeCustomizeSheet({
               const isHidden = prefs.hidden.includes(id as never);
               return (
                 <div key={id} className={`hcz-row${isHidden ? " hcz-row--hidden" : ""}`}>
-                  <button
+                  <IconButton
                     type="button"
                     className="hcz-row__visibility"
                     onClick={() => toggleHidden(id)}
                     aria-pressed={!isHidden}
-                    aria-label={isHidden ? `إظهار ${LABELS[id]}` : `إخفاء ${LABELS[id]}`}
+                    label={isHidden ? `إظهار ${LABELS[id]}` : `إخفاء ${LABELS[id]}`}
                   >
                     {isHidden ? <EyeOff size={16} strokeWidth={1.8} /> : <Eye size={16} strokeWidth={1.8} />}
-                  </button>
+                  </IconButton>
                   <span className="hcz-row__label">{LABELS[id]}</span>
                   <div className="hcz-row__move">
-                    <button type="button" onClick={() => move(id, -1)} disabled={idx === 0} aria-label={`تحريك ${LABELS[id]} للأعلى`}>
+                    <IconButton type="button" onClick={() => move(id, -1)} disabled={idx === 0} label={`تحريك ${LABELS[id]} للأعلى`}>
                       <ArrowUp size={15} strokeWidth={2} />
-                    </button>
-                    <button type="button" onClick={() => move(id, 1)} disabled={idx === prefs.order.length - 1} aria-label={`تحريك ${LABELS[id]} للأسفل`}>
+                    </IconButton>
+                    <IconButton type="button" onClick={() => move(id, 1)} disabled={idx === prefs.order.length - 1} label={`تحريك ${LABELS[id]} للأسفل`}>
                       <ArrowDown size={15} strokeWidth={2} />
-                    </button>
+                    </IconButton>
                   </div>
                 </div>
               );
             })}
           </div>
 
-          <button type="button" className="hcz-reset" onClick={handleReset}>
+          <Button type="button" variant="ghost" size="small" className="hcz-reset" onClick={handleReset}>
             <RotateCcw size={14} strokeWidth={2} aria-hidden="true" /> استعادة الترتيب الافتراضي
-          </button>
+          </Button>
         </div>
       </div>
     </div>,

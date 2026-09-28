@@ -12,6 +12,7 @@ import { getVerifiedReciters, getVerifiedRecitersSyncFallback } from "@/lib/audi
 import { toArabicDigits } from "@/lib/utils";
 import type { BookmarkRecord, ReadingProgress } from "@/core/quran/DatabaseManager";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
 import "@/styles/quran-engine-ui.css";
 
 export type HomeDashboardProps = {
@@ -110,8 +111,10 @@ export function HomeDashboard({ onContinue, onOpenViewer }: HomeDashboardProps) 
           <h1>لوحة القراءة</h1>
           <p>{hydrating ? "استعادة موضعك…" : "تابع من حيث توقفت."}</p>
         </div>
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="small"
           className="qe-dash__theme"
           onClick={toggleDark}
           aria-pressed={isDark}
@@ -119,7 +122,7 @@ export function HomeDashboard({ onContinue, onOpenViewer }: HomeDashboardProps) 
         >
           {isDark ? <Sun size={16} aria-hidden="true" /> : <Moon size={16} aria-hidden="true" />}
           <span>{isDark ? "نهاري" : "ليلي"}</span>
-        </button>
+        </Button>
       </header>
 
       {loadError ? (
@@ -144,10 +147,10 @@ export function HomeDashboard({ onContinue, onOpenViewer }: HomeDashboardProps) 
             </span>
           </div>
         </div>
-        <button type="button" className="qe-dash__cta" onClick={continueReading}>
+        <Button type="button" variant="primary" className="qe-dash__cta" onClick={continueReading}>
           <Play size={16} aria-hidden="true" />
           متابعة القراءة
-        </button>
+        </Button>
       </section>
 
       <section className="qe-dash__card">
@@ -160,27 +163,31 @@ export function HomeDashboard({ onContinue, onOpenViewer }: HomeDashboardProps) 
         </header>
         <div className="qe-reciter-grid" role="listbox" aria-label="أشهر القراء">
           {listedReciters.map((r) => (
-            <button
+            <Button
               key={r.id}
               type="button"
+              variant="ghost"
+              size="small"
               role="option"
               aria-selected={r.id === activeReciter.id}
               className={`qe-reciter-chip${r.id === activeReciter.id ? " is-on" : ""}`}
               onClick={() => pickReciter(r.id)}
             >
               {r.nameAr}
-            </button>
+            </Button>
           ))}
         </div>
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="small"
           className="qe-dash__more-reciters"
           onClick={() => setShowAllReciters((v) => !v)}
         >
           {showAllReciters
             ? "عرض أشهر القراء فقط"
             : `عرض جميع القراء المعتمدين (${toArabicDigits(verifiedReciters.length)})`}
-        </button>
+        </Button>
       </section>
 
       <section className="qe-dash__card">
@@ -212,8 +219,10 @@ export function HomeDashboard({ onContinue, onOpenViewer }: HomeDashboardProps) 
               const ref = normalizeSurahAyah(b.surahId, b.ayahId);
               return (
               <li key={b.verseKey}>
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
+                  size="small"
                   className="qe-dash__note"
                   onClick={() => onOpenViewer?.(ref.surah, ref.ayah)}
                 >
@@ -222,7 +231,7 @@ export function HomeDashboard({ onContinue, onOpenViewer }: HomeDashboardProps) 
                     {getSurahMeta(ref.surah).name} · {toArabicDigits(ref.ayah)}
                   </span>
                   <em>{(b.note || "إشارة بلا ملاحظة").slice(0, 80)}</em>
-                </button>
+                </Button>
               </li>
               );
             })}

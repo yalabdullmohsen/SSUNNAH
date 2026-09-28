@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   computePrayerCountdown,
   fetchPrayerTimes,
@@ -167,9 +168,11 @@ export function HomeCompactPrayer() {
       </div>
       <div className="hcp-strip__prayers">
         {obligatory.map((p: PrayerSlot) => (
-          <button
+          <Button
             key={p.key}
             type="button"
+            variant="ghost"
+            size="small"
             className={[
               "hcp-prayer-cell",
               p.key === nextKey ? "hcp-prayer-cell--next" : "",
@@ -183,7 +186,7 @@ export function HomeCompactPrayer() {
           >
             <span className="hcp-prayer-cell__name">{p.name}</span>
             <span className="hcp-prayer-cell__time">{p.time}</span>
-          </button>
+          </Button>
         ))}
       </div>
     </div>

@@ -29,6 +29,8 @@ import {
 import { afterNextPaint, yieldToMain } from "@/lib/yield-to-main";
 import { TEXT_API_ORIGINS, useResourcePrewarm } from "@/lib/resource-prewarm";
 import { ACTION, EMPTY, STATUS } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import "@/styles/components/global-search-modal.css";
 
 // ── ثوابت ───────────────────────────────────────────────────────────────────
@@ -146,8 +148,9 @@ function ResultCard({
   const meta = KIND_META[result.kind] ?? { label: searchKindLabelAr(result.kind), Icon: FileText, color: "var(--mj-brand, #1e5f4b)" };
   const reason = resolveSearchMatchReason(result, query);
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
       onClick={() => onSelect(result)}
       className="gsm-result-btn"
     >
@@ -172,7 +175,7 @@ function ResultCard({
       >
         {meta.label}
       </span>
-    </button>
+    </Button>
   );
 }
 
@@ -353,14 +356,14 @@ export function GlobalSearchModal({ onClose }: Props) {
 
         {/* ── شريط البحث ─────────────────────────────────────────────── */}
         <div className={`gsm-topbar${isMobile ? " gsm-topbar--mobile" : ""}`}>
-          <button
+          <IconButton
             type="button"
             onClick={onClose}
-            aria-label="إغلاق البحث"
+            label="إغلاق البحث"
             className="gsm-close-btn"
           >
             {isMobile ? "→" : "✕"}
-          </button>
+          </IconButton>
 
           <input
             ref={inputRef}
@@ -389,14 +392,14 @@ export function GlobalSearchModal({ onClose }: Props) {
           />
 
           {query && (
-            <button
+            <IconButton
               type="button"
               onClick={() => setQuery("")}
-              aria-label="مسح النص"
+              label="مسح النص"
               className="gsm-clear-btn"
             >
               ✕
-            </button>
+            </IconButton>
           )}
 
           {loading && <span className="gsm-loading-dot">○</span>}
@@ -407,16 +410,18 @@ export function GlobalSearchModal({ onClose }: Props) {
           {FILTER_CHIPS.map((chip) => {
             const active = activeFilter === chip.key;
             return (
-              <button
+              <Button
                 key={chip.key}
                 role="tab"
                 type="button"
+                variant="ghost"
+                size="small"
                 onClick={() => setActiveFilter(chip.key)}
                 className={`gsm-chip${active ? " gsm-chip--active" : ""}`}
                 aria-selected={active}
               >
                 {chip.label}
-              </button>
+              </Button>
             );
           })}
         </div>
@@ -431,15 +436,16 @@ export function GlobalSearchModal({ onClose }: Props) {
                 <p className="gsm-section__label">أقسام مقترحة</p>
                 <div className="gsm-scope-grid">
                   {SCOPE_SUGGESTIONS.map((scope) => (
-                    <button
+                    <Button
                       key={scope.id}
                       type="button"
+                      variant="ghost"
                       className="gsm-scope-card"
                       onClick={() => setActiveFilter(scope.id)}
                     >
                       <strong className="gsm-scope-card__title">{scope.title}</strong>
                       <span className="gsm-scope-card__desc">{scope.desc}</span>
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </section>
@@ -448,20 +454,22 @@ export function GlobalSearchModal({ onClose }: Props) {
                 <section className="gsm-section">
                   <div className="gsm-section__head">
                     <p className="gsm-section__label">بحثت سابقاً</p>
-                    <button type="button" onClick={handleClearHistory} className="gsm-clear-hist-btn">
+                    <Button type="button" variant="ghost" size="small" onClick={handleClearHistory} className="gsm-clear-hist-btn">
                       مسح
-                    </button>
+                    </Button>
                   </div>
                   <div className="gsm-pills">
                     {history.slice(0, 8).map((q) => (
-                      <button
+                      <Button
                         key={q}
                         type="button"
+                        variant="ghost"
+                        size="small"
                         onClick={() => handleQuickQuery(q)}
                         className="gsm-pill"
                       >
                         <Clock size={12} className="inline ms-1" />{q}
-                      </button>
+                      </Button>
                     ))}
                   </div>
                 </section>
@@ -472,14 +480,16 @@ export function GlobalSearchModal({ onClose }: Props) {
                   <p className="gsm-section__label">الأكثر بحثاً لديك</p>
                   <div className="gsm-pills">
                     {topLocal.map((q) => (
-                      <button
+                      <Button
                         key={q}
                         type="button"
+                        variant="ghost"
+                        size="small"
                         onClick={() => handleQuickQuery(q)}
                         className="gsm-pill gsm-pill--trend"
                       >
                         <Flame size={12} className="inline ms-1" />{q}
-                      </button>
+                      </Button>
                     ))}
                   </div>
                 </section>
@@ -497,15 +507,17 @@ export function GlobalSearchModal({ onClose }: Props) {
                     { href: "/fawaid", label: "الفوائد", Icon: Lightbulb },
                     { href: "/seerah", label: "السيرة", Icon: Star },
                   ].map((l) => (
-                    <button
+                    <Button
                       key={l.href}
                       type="button"
+                      variant="ghost"
+                      size="small"
                       onClick={() => { onClose(); navigate(l.href); }}
                       className="gsm-quicklink-btn"
                     >
                       <l.Icon size={14} strokeWidth={1.8} aria-hidden="true" />
                       {l.label}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </section>
@@ -519,9 +531,9 @@ export function GlobalSearchModal({ onClose }: Props) {
               <p className="gsm-state-icon"><AlertTriangle size={32} strokeWidth={1.5} aria-hidden="true" /></p>
               <p className="gsm-state-title">{STATUS.loadError}</p>
               <p className="gsm-state-hint">{STATUS.networkError}</p>
-              <button type="button" onClick={() => doSearch(query, activeFilter)} className="gsm-retry-btn">
+              <Button type="button" variant="outline" size="small" onClick={() => doSearch(query, activeFilter)} className="gsm-retry-btn">
                 {ACTION.retry}
-              </button>
+              </Button>
             </div>
           )}
 
@@ -533,8 +545,10 @@ export function GlobalSearchModal({ onClose }: Props) {
                   ? `${EMPTY.searchShort} «${query.trim()}»`
                   : EMPTY.search}
               </p>
-              <button
+              <Button
                 type="button"
+                variant="outline"
+                size="small"
                 className="gsm-retry-btn"
                 onClick={() => {
                   setQuery("");
@@ -542,26 +556,28 @@ export function GlobalSearchModal({ onClose }: Props) {
                 }}
               >
                 {query.trim() ? ACTION.clearSearch : "عرض الأقسام"}
-              </button>
+              </Button>
               {suggestion && (
                 <p className="gsm-state-hint">
                   هل تقصد{" "}
-                  <button type="button" className="gsm-pill" onClick={() => handleQuickQuery(suggestion)}>
+                  <Button type="button" variant="ghost" size="small" className="gsm-pill" onClick={() => handleQuickQuery(suggestion)}>
                     {suggestion}
-                  </button>
+                  </Button>
                   ؟
                 </p>
               )}
               <div className="gsm-pills gsm-pills--center">
                 {POPULAR_QUERIES.slice(0, 4).map((q) => (
-                  <button
+                  <Button
                     key={q}
                     type="button"
+                    variant="ghost"
+                    size="small"
                     onClick={() => handleQuickQuery(q)}
                     className="gsm-pill"
                   >
                     {q}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -594,9 +610,9 @@ export function GlobalSearchModal({ onClose }: Props) {
             : <span />
           }
           {query.trim() && (
-            <button type="button" onClick={handleSubmitSearch} className="gsm-footer__all-btn">
+            <Button type="button" variant="primary" size="small" onClick={handleSubmitSearch} className="gsm-footer__all-btn">
               عرض كل النتائج →
-            </button>
+            </Button>
           )}
         </div>
 
