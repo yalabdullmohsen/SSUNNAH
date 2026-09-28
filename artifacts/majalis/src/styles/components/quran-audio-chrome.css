@@ -13,13 +13,14 @@
 
 /* ── رصيف التلاوة: ارتفاع تكيّفي + طبقات z ── */
 .nm-root .mm-audio-dock {
-  background: var(--nm-paper) !important;
+  background: var(--mushaf-reading-surface, #FFFDF9) !important;
   background-image: none !important;
   min-height: calc(var(--audio-player-height, 6.5rem) + var(--safe-bottom, 0px));
-  max-height: min(42dvh, calc(14rem + var(--safe-bottom, 0px)));
+  max-height: min(42dvh, calc(20rem + var(--safe-bottom, 0px)));
   padding: 0.45rem 0.85rem calc(0.45rem + var(--safe-bottom, 0px));
   z-index: var(--z-audio-expanded, 230);
   gap: 0.3rem;
+  border-top-color: color-mix(in srgb, var(--mushaf-reading-gold-soft, #E4DAB6) 72%, transparent);
 }
 
 .nm-root .mm-audio-dock[data-mini="1"] {
@@ -27,8 +28,8 @@
   min-height: calc(var(--audio-player-height, 3.75rem) + var(--safe-bottom, 0px));
   max-height: calc(var(--audio-player-height, 4.25rem) + var(--safe-bottom, 0px));
   padding: 0.35rem 0.75rem calc(0.35rem + max(var(--safe-bottom, 0px), var(--inset-bottom, 0px)));
-  background: #FFFDF9 !important;
-  border-top: 1px solid color-mix(in srgb, #E4DAB6 70%, transparent);
+  background: var(--mushaf-reading-surface, #FFFDF9) !important;
+  border-top: 1px solid color-mix(in srgb, var(--mushaf-reading-gold-soft, #E4DAB6) 70%, transparent);
 }
 
 .mm-audio-dock__section {
@@ -49,13 +50,17 @@
   align-items: center;
   gap: 0.35rem;
   min-height: 44px;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, #B8942E 35%, transparent);
-  background: color-mix(in srgb, #E4DAB6 45%, #FFFDF9);
-  color: #111111;
+  padding: 0.35rem 0.8rem;
+  border-radius: 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--mushaf-reading-gold, #B8942E) 32%, transparent);
+  background: color-mix(in srgb, var(--mushaf-reading-gold-soft, #E4DAB6) 42%, var(--mushaf-reading-surface, #FFFDF9));
+  color: var(--mushaf-reading-ink, #111111);
   font-size: 0.82rem;
   font-weight: 650;
+}
+
+.mm-audio-dock[data-mini="1"] .mm-audio-dock__section-label {
+  display: none;
 }
 
 .mm-audio-dock__controls button span {
@@ -159,7 +164,7 @@
 .mm-settings-sheet .quran-sheet__close {
   width: 44px;
   height: 44px;
-  border: 1px solid color-mix(in srgb, var(--mm-gold, #a68b67) 36%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mushaf-reading-gold, var(--mm-gold, #B8942E)) 36%, transparent);
   background: color-mix(in srgb, var(--mm-paper, #fdf9f3) 92%, #fff);
 }
 

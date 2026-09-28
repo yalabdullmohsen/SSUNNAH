@@ -180,9 +180,11 @@ export function MushafAudioDock({
                 setReadersOpen(true);
               }}
             >
-              <span className="mm-audio-dock__section-label" data-section="reciter">
-                القارئ
-              </span>
+              {!mini ? (
+                <span className="mm-audio-dock__section-label" data-section="reciter">
+                  القارئ
+                </span>
+              ) : null}
               <span className="mm-audio-dock__reciter-btn-name" data-testid="mushaf-dock-reciter">
                 {reciterLabel}
               </span>
@@ -256,7 +258,7 @@ export function MushafAudioDock({
 
         {mini ? null : (
           <section className="mm-audio-dock__section" data-section="transport" aria-label="التنقل">
-            <h3 className="mm-audio-dock__section-label">السابق · تشغيل · التالي</h3>
+            <h3 className="mm-audio-dock__section-label sr-only">السابق · تشغيل · التالي</h3>
             <div className="mm-audio-dock__controls">
               <button type="button" onClick={onPrev} aria-label="الآية السابقة">
                 <SkipBack size={16} aria-hidden="true" />
@@ -380,9 +382,9 @@ export function MushafAudioDock({
             ) : null}
 
             <div className="mm-audio-dock__extras" data-section="extras" aria-label="خيارات إضافية">
-              <p className="mm-audio-dock__section-label">الجودة · المؤقت · التشغيل التلقائي · تنزيل التلاوة</p>
+              <h3 className="mm-audio-dock__section-label">الجودة · المؤقت · التشغيل التلقائي · تنزيل التلاوة</h3>
               <p className="mm-audio-dock__extras-hint">
-                الجودة من اختيار القارئ · باقي الخيارات تُضبط من إعدادات التلاوة عند التوفر.
+                الجودة عبر اختيار القارئ. المؤقت والتشغيل التلقائي والتنزيل من إعدادات التلاوة.
               </p>
             </div>
           </section>

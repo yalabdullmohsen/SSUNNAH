@@ -29,6 +29,12 @@ assert.doesNotMatch(controls, />\s*تشغيل\s*</);
 assert.doesNotMatch(controls, />\s*علامة\s*</);
 assert.doesNotMatch(controls, />\s*قراءة\s*</);
 
+console.log("=== More menu a11y ===");
+assert.match(controls, /mushaf-controls-more-scrim/);
+assert.match(controls, /morePanelId/);
+assert.match(controls, /Escape/);
+assert.match(css, /nm-controls-more__scrim/);
+
 console.log("=== More menu capabilities ===");
 for (const label of [
   "الفهرس",
@@ -59,6 +65,10 @@ assert.match(css, /--mushaf-reading-gold-deep:\s*#8F6D17/);
 assert.match(css, /--mushaf-reading-gold-soft:\s*#E4DAB6/);
 assert.match(css, /\.nm-ayah-sel__band--selected[\s\S]*#E4DAB6/);
 assert.match(css, /\.nm-controls--compact \.nm-controls__page[\s\S]*mushaf-reading-gold/);
+
+console.log("=== Reading chrome palette (no brand-green dock) ===");
+assert.doesNotMatch(css, /\.nm-root \.mm-audio-dock[\s\S]{0,400}--mj-brand/);
+assert.match(css, /mushaf-reading-surface/);
 
 console.log("=== Audio mini + sheet (not route) ===");
 assert.match(dock, /data-mini/);

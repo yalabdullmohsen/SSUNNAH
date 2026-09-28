@@ -804,14 +804,14 @@ html[data-theme="dark"] .nm-basmala.is-search-hit {
   position: absolute;
   pointer-events: none;
   border-radius: 0.55em;
-  background: color-mix(in srgb, #E4DAB6 42%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, #B8942E 10%, transparent);
+  background: color-mix(in srgb, #E4DAB6 36%, transparent);
+  box-shadow: none;
   border: none;
 }
 
 .nm-ayah-sel__band--playing {
-  background: color-mix(in srgb, #E4DAB6 55%, transparent);
-  box-shadow: inset 0 0 12px color-mix(in srgb, #B8942E 14%, transparent);
+  background: color-mix(in srgb, #E4DAB6 48%, transparent);
+  box-shadow: inset 0 0 10px color-mix(in srgb, #B8942E 10%, transparent);
 }
 
 .nm-ayah-sel__band--navigation {
@@ -827,8 +827,8 @@ html[data-theme="dark"] .nm-ayah-sel__band--navigation {
 }
 
 .nm-ayah-sel__band--selected {
-  background: color-mix(in srgb, #E4DAB6 58%, transparent);
-  box-shadow: inset 0 0 14px color-mix(in srgb, #B8942E 16%, transparent);
+  background: color-mix(in srgb, #E4DAB6 50%, transparent);
+  box-shadow: inset 0 0 12px color-mix(in srgb, #B8942E 12%, transparent);
 }
 
 /*
@@ -1262,23 +1262,18 @@ html[data-theme="dark"] .nm-ayah-sel__band--navigation {
   width: 100%;
   max-width: none;
   transform: none;
-  border-radius: 1.25rem 1.25rem 0 0;
+  border-radius: 1rem 1rem 0 0;
   border: 0;
-  border-top: 1px solid color-mix(in srgb, var(--mj-brand, #146b52) 18%, transparent);
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--mj-brand-soft, #e2efe8) 55%, var(--nm-paper)) 0%,
-      var(--nm-paper) 42%
-    );
-  color: var(--nm-ink);
+  border-top: 1px solid color-mix(in srgb, var(--mushaf-reading-gold-soft, #E4DAB6) 72%, transparent);
+  background: var(--mushaf-reading-surface, #FFFDF9);
+  color: var(--mushaf-reading-ink, var(--nm-ink));
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   /* الارتفاع يشمل safe-area حتى لا يُقص المحتوى خلف Home Indicator */
   min-height: calc(var(--audio-player-height, 7.5rem) + var(--safe-bottom, 0px));
-  max-height: calc(var(--audio-player-height, 7.5rem) + var(--safe-bottom, 0px) + 2.5rem);
+  max-height: min(42dvh, calc(20rem + var(--safe-bottom, 0px)));
   padding: 0.55rem 0.85rem calc(0.55rem + var(--safe-bottom, 0px));
-  box-shadow: 0 -8px 28px -18px color-mix(in srgb, var(--mj-brand-deep, #0d4a39) 35%, transparent);
+  box-shadow: 0 -6px 22px -18px color-mix(in srgb, #111111 16%, transparent);
   gap: 0.35rem;
   z-index: 35;
   overflow-x: hidden;
@@ -1289,9 +1284,11 @@ html[data-theme="dark"] .nm-ayah-sel__band--navigation {
 
 .nm-root .mm-audio-dock[data-mini="1"] {
   overflow: hidden;
+  border-radius: 0;
   min-height: calc(var(--audio-player-height, 3.75rem) + var(--safe-bottom, 0px));
   max-height: calc(var(--audio-player-height, 3.75rem) + var(--safe-bottom, 0px));
   padding: 0.35rem 0.75rem calc(0.35rem + var(--safe-bottom, 0px));
+  background: var(--mushaf-reading-surface, #FFFDF9);
 }
 
 .nm-root .mm-audio-dock[data-open="1"] {
@@ -1841,6 +1838,19 @@ html[data-theme="dark"] .nm-exit-control {
   display: none;
 }
 
+.nm-controls-more__scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: color-mix(in srgb, #111111 18%, transparent);
+  pointer-events: auto;
+  cursor: default;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .nm-controls-more {
   position: absolute;
   inset-inline: 0.55rem 0.55rem;
@@ -1851,14 +1861,14 @@ html[data-theme="dark"] .nm-exit-control {
   max-height: min(70dvh, 28rem);
   overflow: auto;
   overscroll-behavior: contain;
-  padding: 0.75rem 0.85rem;
-  border-radius: 0.85rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: 0.75rem;
   border: 1px solid color-mix(in srgb, var(--mushaf-reading-gold-soft) 70%, transparent);
   background: var(--mushaf-reading-surface);
   color: var(--mushaf-reading-ink);
-  box-shadow: 0 10px 28px color-mix(in srgb, #111111 10%, transparent);
+  box-shadow: 0 8px 22px color-mix(in srgb, #111111 8%, transparent);
   display: grid;
-  gap: 0.55rem;
+  gap: 0.5rem;
   /* الأب .nm-controls pointer-events:none لتمرير لمسات الصفحة —
      يجب إعادة تفعيل اللوحة وإلا تُبتلع نقرات SYSTEM/LIGHT/DARK */
   pointer-events: auto;
@@ -1917,84 +1927,9 @@ html[data-theme="dark"] .nm-exit-control {
 
 .nm-controls-more__title {
   margin: 0;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--nm-meta, #5c4a32);
-}
-
-.nm-controls-more__legend {
-  margin: 0 0 0.35rem;
-  padding: 0;
-  font-size: 0.78rem;
+  font-size: 0.84rem;
   font-weight: 650;
-  color: var(--nm-meta, #5c4a32);
-}
-
-.nm-controls-more__accent {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  min-width: 0;
-}
-
-.nm-controls-more__accent-options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.45rem;
-}
-
-.nm-controls-more__accent-option {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.35rem;
-  min-height: 4.25rem;
-  padding: 0.45rem 0.35rem;
-  border-radius: 0.55rem;
-  border: 1.5px solid color-mix(in srgb, var(--nm-meta) 22%, transparent);
-  background: color-mix(in srgb, var(--nm-paper) 94%, transparent);
-  color: var(--nm-ink);
-  cursor: pointer;
-}
-
-.nm-controls-more__accent-option.is-selected {
-  border-color: var(--mushaf-accent-primary, var(--nm-gold));
-  box-shadow: 0 0 0 2px var(--mushaf-focus-ring, color-mix(in srgb, var(--nm-gold) 35%, transparent));
-}
-
-.nm-controls-more__accent-swatch {
-  width: 1.55rem;
-  height: 1.55rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  border: 1px solid transparent;
-  font-size: 0.72rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.nm-controls-more__accent-swatch[data-accent="emerald"] {
-  background: #0e7a6b;
-  border-color: #b89620;
-  color: #f7f3e8;
-}
-
-.nm-controls-more__accent-swatch[data-accent="gold"] {
-  background: #c9a82e;
-  border-color: #b89620;
-  color: #5f4814;
-}
-
-.nm-controls-more__accent-label {
-  font-size: 0.78rem;
-  font-weight: 650;
-}
-
-.nm-controls-more__accent-check {
-  font-size: 0.75rem;
-  color: var(--mushaf-accent-primary, var(--nm-gold-deep));
+  color: var(--mushaf-reading-gold-deep, #8F6D17);
 }
 
 .nm-controls-more__row {
@@ -2010,16 +1945,51 @@ html[data-theme="dark"] .nm-exit-control {
 .nm-controls-more__row input {
   width: 1.15rem;
   height: 1.15rem;
-  accent-color: var(--nm-gold, #b08d57);
+  accent-color: var(--mushaf-reading-gold, #B8942E);
 }
 
 .nm-controls-more__close {
-  min-height: 2.25rem;
+  min-height: 2.5rem;
   border: 0;
-  border-radius: 0.45rem;
-  background: color-mix(in srgb, var(--nm-gold) 14%, var(--nm-paper));
-  color: var(--nm-meta, #5c4a32);
-  font-size: 0.78rem;
+  border-radius: 0.55rem;
+  background: color-mix(in srgb, var(--mushaf-reading-gold-soft, #E4DAB6) 55%, var(--mushaf-reading-surface, #FFFDF9));
+  color: var(--mushaf-reading-gold-deep, #8F6D17);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.nm-controls-more__item:focus-visible,
+.nm-controls-more__close:focus-visible,
+.nm-controls--compact .nm-controls__page:focus-visible,
+.nm-controls-more__scrim:focus-visible {
+  outline: 2px solid var(--mushaf-reading-gold, #B8942E);
+  outline-offset: 2px;
+}
+
+/* ليل المصحف — لوحة المزيد والشريط تبقى مقروءة بلا لهجة خضراء */
+html[data-mushaf-appearance="night"] .nm-controls--compact .nm-controls__bar,
+.nm-root[data-mushaf-appearance="night"] .nm-controls--compact .nm-controls__bar {
+  background: color-mix(in srgb, var(--mushaf-paper-warm-yellow-dark, #2a2418) 92%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--mushaf-printed-gold-dark, #a8881a) 40%, transparent);
+}
+
+html[data-mushaf-appearance="night"] .nm-controls-more,
+.nm-root[data-mushaf-appearance="night"] .nm-controls-more {
+  background: var(--mushaf-paper-warm-yellow-dark, #2a2418);
+  color: var(--mushaf-ink-dark, #f5eed8);
+  border-color: color-mix(in srgb, var(--mushaf-printed-gold-dark, #a8881a) 45%, transparent);
+}
+
+html[data-mushaf-appearance="night"] .nm-controls-more__item,
+.nm-root[data-mushaf-appearance="night"] .nm-controls-more__item,
+html[data-mushaf-appearance="night"] .nm-controls-more__row,
+.nm-root[data-mushaf-appearance="night"] .nm-controls-more__row {
+  color: var(--mushaf-ink-dark, #f5eed8);
+}
+
+html[data-mushaf-appearance="night"] .nm-controls-more__scrim,
+.nm-root[data-mushaf-appearance="night"] .nm-controls-more__scrim {
+  background: color-mix(in srgb, #000 45%, transparent);
 }
 
 /* وضع التركيز: أخفِ الطبقات العائمة دون display:none على صفحة المصحف */
@@ -2177,7 +2147,9 @@ html[data-theme="dark"] .nm-page-arrow {
 @media (prefers-reduced-motion: reduce) {
   .nm-page-arrows,
   .nm-page-arrow,
-  .nm-controls--compact .nm-controls__bar {
+  .nm-controls--compact .nm-controls__bar,
+  .nm-ayah-sel__band--navigation,
+  .nm-root .mm-audio-dock {
     transition: none;
   }
 }

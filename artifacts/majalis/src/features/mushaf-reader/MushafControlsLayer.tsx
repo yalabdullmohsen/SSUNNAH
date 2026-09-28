@@ -105,6 +105,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
   );
   const titleId = useId();
   const moreTitleId = useId();
+  const morePanelId = useId();
   const dialId = useId();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dialRef = useRef<HTMLDivElement | null>(null);
@@ -136,6 +137,18 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
     window.addEventListener(MUSHAF_APPEARANCE_CHANGE_EVENT, onChange);
     return () => window.removeEventListener(MUSHAF_APPEARANCE_CHANGE_EVENT, onChange);
   }, []);
+
+  useEffect(() => {
+    if (!moreOpen || !onMoreOpenChange) return;
+    const onKey = (e: globalThis.KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        onMoreOpenChange(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [moreOpen, onMoreOpenChange]);
 
   useEffect(() => {
     if (!gotoOpen) return;
@@ -242,7 +255,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
             data-testid="mushaf-controls-more"
             aria-label="المزيد"
             aria-expanded={moreOpen}
-            aria-controls={moreOpen ? moreTitleId : undefined}
+            aria-controls={moreOpen ? morePanelId : undefined}
             onClick={(e) => {
               e.stopPropagation();
               onMoreOpenChange(!moreOpen);
@@ -256,7 +269,16 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
       </div>
 
       {moreOpen && onMoreOpenChange ? (
+        <>
+        <button
+          type="button"
+          className="nm-controls-more__scrim"
+          data-testid="mushaf-controls-more-scrim"
+          aria-label="إغلاق المزيد"
+          onClick={() => onMoreOpenChange(false)}
+        />
         <div
+          id={morePanelId}
           className="nm-controls-more"
           data-testid="mushaf-controls-more-panel"
           role="dialog"
@@ -439,6 +461,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
             إغلاق
           </button>
         </div>
+        </>
       ) : null}
 
       {gotoOpen ? (
