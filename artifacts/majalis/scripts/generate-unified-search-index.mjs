@@ -23,6 +23,9 @@ const { isHiddenFromNav } = await import("../src/lib/nav-visibility.ts");
 const { SEARCH_INDEX_SCHEMA_VERSION } = await import(
   "../src/features/search/search-index-version.ts"
 );
+const { isBlockedPublicSearchHref } = await import(
+  "../src/features/search/public-search-blocklist.ts"
+);
 
 const REDIRECT_HREFS = new Set(Object.keys(IA_REDIRECTS));
 /** مسارات بلا صفحة محتوى صالحة في البحث العام */
@@ -56,6 +59,8 @@ function pushDoc(id, kind, titleAr, href, parts = [], meta) {
   const clean = String(href || "").split("?")[0].split("#")[0];
   if (REDIRECT_HREFS.has(clean) || clean === "/qa" || clean.startsWith("/qa/")) return;
   if (BLOCKED_SEARCH_HREFS.has(clean)) return;
+  // COMING_SOON / product EXCLUDED (مثلاً الفرق الإسلامية قريبًا)
+  if (isBlockedPublicSearchHref(clean)) return;
   // لا تُفهرس أقسام مخفية من الاكتشاف العام أو مساراتها الفرعية
   if (isHiddenFromNav(clean)) return;
   if (!String(titleAr || "").trim()) return;
@@ -280,7 +285,7 @@ const APP_PAGES = [
   ["app:updates", "news", "آخر المستجدات", "/updates", ["مستجدات", "تحديثات"]],
   ["app:privacy-center", "settings", "مركز الخصوصية", "/privacy-center", ["خصوصية", "بيانات"]],
   ["app:madhahib", "fiqh", "المذاهب الفقهية", "/madhahib", ["مذاهب", "فقه"]],
-  ["app:sects", "aqidah", "الفرق والمذاهب", "/islamic-sects", ["فرق", "عقيدة"]],
+  // app:sects /islamic-sects intentionally omitted — COMING_SOON (Program 10 / search integrity)
 ];
 
 for (const [id, kind, title, href, parts] of APP_PAGES) {

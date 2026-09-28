@@ -114,7 +114,6 @@ export function docMatchesScope(doc: ScopeableDoc, scope: SearchScopeId): boolea
       return (
         href.startsWith("/knowledge") ||
         href.startsWith("/madhahib") ||
-        href.startsWith("/islamic-sects") ||
         href.startsWith("/islam-intro")
       );
     case "glossary":
