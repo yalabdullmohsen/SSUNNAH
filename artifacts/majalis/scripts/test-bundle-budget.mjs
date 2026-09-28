@@ -98,6 +98,7 @@ for (const banned of [
   "node:fs/promises",
   "node:path",
   "json-seed-disk.node",
+  "fiqh-catalog-disk.node",
 ]) {
   assert.ok(!entryBuf.includes(banned), `entry must not embed ${banned}`);
 }
@@ -109,5 +110,29 @@ const oversized = rows
 for (const r of oversized) {
   console.warn(`  ⚠ chunk gzip>${CHUNK_GZIP_SOFT / 1024}KiB (content/vendor): ${r.f} ${(r.gz / 1024).toFixed(1)}KiB`);
 }
+
+/** Phase 4: كتب الفقه تُحمَّل من /data/fiqh — ممنوع إعادة تضمين corpus في JS */
+const FIQH_BOOKS_JS_RAW_BUDGET = 400 * 1024; /* كان ~4.3MB قبل النقل */
+const fiqhBooksChunks = rows.filter((r) => /fiqh-books/i.test(r.f) && r.f.endsWith(".js"));
+for (const r of fiqhBooksChunks) {
+  console.log(`  fiqh-books ${r.f}: raw=${(r.raw / 1024).toFixed(1)} KiB gzip=${(r.gz / 1024).toFixed(1)} KiB`);
+  assert.ok(
+    r.raw <= FIQH_BOOKS_JS_RAW_BUDGET,
+    `fiqh-books chunk ${(r.raw / 1024).toFixed(1)} KiB exceeds ${FIQH_BOOKS_JS_RAW_BUDGET / 1024} KiB — corpus must stay in /data/fiqh`,
+  );
+}
+console.log("  ✓ fiqh-books JS chunk ≤ 400 KiB raw (JSON asset delivery)");
+
+const megaJs = rows.filter((r) => r.f.endsWith(".js") && r.raw > 2 * 1024 * 1024);
+assert.equal(
+  megaJs.length,
+  0,
+  `no JS chunk may exceed 2 MiB raw after content extraction: ${megaJs.map((r) => r.f).join(", ")}`,
+);
+console.log("  ✓ no JS chunk > 2 MiB raw");
+
+const adminInEntry = /AdminV3App|admin-v3\/AdminV3App/.test(entryBuf);
+assert.ok(!adminInEntry, "entry must not reference AdminV3App");
+console.log("  ✓ entry does not reference AdminV3App");
 
 console.log("\nBundle budget gates passed.\n");

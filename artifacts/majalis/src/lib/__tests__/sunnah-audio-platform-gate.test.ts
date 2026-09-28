@@ -86,8 +86,9 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
   assert.match(page, /ساعات الهدوء/);
   assert.doesNotMatch(page, /from "@\/lib\/adhan-audio"/);
   const routes = readFileSync(resolve(root, "src/AppRoutes.tsx"), "utf8");
+  const accountLazy = readFileSync(resolve(root, "src/app/routes/lazy/account.ts"), "utf8");
   assert.match(routes, /notifications-and-sound/);
-  assert.match(routes, /lazy\(/);
+  assert.match(accountLazy, /NotificationsAndSoundPage[\s\S]*lazy\(/);
   console.log("  ✓ settings page lazy-wired");
 }
 

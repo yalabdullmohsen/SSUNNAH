@@ -1,276 +1,257 @@
 /**
  * مسارات خارج الرئيسية — تحميل كسول. الرئيسية في App.tsx.
  */
-import { Suspense, useEffect, useMemo, type ComponentType } from "react";
-import { Redirect, Route, Switch, useParams, useSearch } from "wouter";
-import { AdminRouteGuard } from "@/components/AdminRouteGuard";
+import { Suspense, useEffect, useMemo } from "react";
+import { Redirect, Route, Switch, useSearch } from "wouter";
+import { AdminLazyRoute, SafeLazyRoute } from "@/app/routes/safe-lazy-route";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { LazyRouteFallback } from "@/components/LazyRouteFallback";
-import { lazyWithRetry } from "@/lib/lazy-with-retry";
 import { buildLegacyLearnTarget } from "@/lib/legacy-learn-redirect";
 import {
   resolveLegacyMushafSurahRedirect,
   stashPendingNavigationHighlight,
 } from "@/lib/quran-navigation";
 
-const lazy = lazyWithRetry;
 
-const NotFound = lazy(() => import("@/views/not-found"));
-const QuranEnginePage = lazy(() => import("@/pages/quran/QuranEnginePage"));
-const AboutPage = lazy(() => import("@/views/AboutPage"));
-const SourcesLicensesPage = lazy(() => import("@/views/SourcesLicensesPage"));
-const SourcesDirectoryPage = lazy(() => import("@/pages/sources/SourcesDirectoryPage"));
-const SourceDetailPage = lazy(() => import("@/pages/sources/SourceDetailPage"));
-const SiteMapPage = lazy(() => import("@/pages/account/SiteMapPage"));
-const PrivacyPage = lazy(() => import("@/views/PrivacyPage"));
-const PrivacyCenterPage = lazy(() => import("@/views/PrivacyCenterPage"));
-const TermsPage = lazy(() => import("@/views/TermsPage"));
-const ContactPage = lazy(() => import("@/views/ContactPage"));
-const FatwaPolicyPage = lazy(() => import("@/pages/fiqh/FatwaPolicyPage"));
+import {
+  SiteMapPage,
+  FawaidPage,
+  QuizPage,
+  LoginPage,
+  RegisterPage,
+  SettingsPage,
+  FeatureTourPage,
+  AccountDeletionPage,
+  SectionsPage,
+  IslamicGlossaryPage,
+  FlashCardsPage,
+  NotificationSettingsPage,
+  NotificationsAndSoundPage,
+  ProgressCenterPage,
+  OfflineCenterPage,
+  AutoContentDetailPage,
+  AdminPage,
+  AdminV3App,
+  AdminEntryBridge,
+  LessonImportImagePage,
+  LessonImportUrlPage,
+  AutomationSourcesPage,
+  AutomationReviewPage,
+  ReviewHubPage,
+  AutomationDashboardPage,
+  AutomationCenterPage,
+  AutonomousPlatformPage,
+  InstagramIntegrationPage,
+  MajlisKnowledgeEnginePage,
+  AdminDashboardPage,
+  AutoContentPage,
+  ContentProductionDashboardPage,
+  FeatureStatusPage,
+  InternalStatusPage,
+  UniversitiesAdminPage,
+  NotFound,
+  CalendarPage,
+  ScholarProfilePage,
+  ScientificAnnouncementDetailPage,
+  MiraclesPage,
+  PropheticMedicinePage,
+  TawhidPage,
+  TawhidTopicPage,
+  DiscoverIslamPage,
+  DiscoverIslamQuestionsPage,
+  DiscoverIslamQuestionDetailPage,
+  DiscoverIslamDoubtsPage,
+  DiscoverIslamDoubtDetailPage,
+  DiscoverIslamArticleDetailPage,
+  HowToBecomeMuslimPage,
+  NewMuslimPathPage,
+  NewMuslimDayDetailPage,
+  DiscoverIslamContactPage,
+  KnowledgeSectionPage,
+  SubmitContentPage,
+  TranscribePage,
+  AssistantGate,
+  CardsPage,
+  OccasionsPage,
+  SujoodSahwPage,
+  AmradQalbiyyaPage,
+  DurusImaniyyaPage,
+  DurusMutanawwiaPage,
+  ImanTopicsPage,
+  TazkiyaTopicsPage,
+  TarikhIslamiPage,
+  UsraMujtamaPage,
+  FikrWaqiaPage,
+  MawsuaatPage,
+  ArabicLanguagePage,
+  DalailNubuwwahPage,
+  SeerahPage,
+  UpdatesPage,
+  KnowledgeGraphPage,
+  MindMapPage,
+  IslamicLandmarksPage,
+  IslamicLandmarkDetailPage,
+  IslamicLandmarksMapExplorerPage,
+  MutashabihatPage,
+  TarikhIslamiDetailPage,
+  AsmaaHusnaPage,
+  AkhlaqPage,
+  ArkanIslamPage,
+  ArkanImanPage,
+  IslamicSectsPage,
+  IslamicSectsDetailPage,
+  ShimaelPage,
+  IslamStatsPage,
+  AdabTalabIlmPage,
+  JannaNaarPage,
+  AlamatSaahPage,
+  MalaikaPage,
+  WasayaNabawiyyaPage,
+  RaqaiqPage,
+  SunanYawmiyyaPage,
+  HikamSalafPage,
+  SawmPage,
+  TaharaPage,
+  FadailAamalPage,
+  SahabahPage,
+  TawbaPage,
+  SinsAndRightsPage,
+  SinsAndRightsDetailPage,
+  TazkiyaHubPage,
+  AmrBilMarufPage,
+  IslamicDirectoryHubPage,
+  RibaPage,
+  UdhiyaPage,
+  RuqyaPage,
+  JumuahPage,
+  WaqfPage,
+  SadaqaPage,
+  UploadPage,
+  MySubmissionsPage,
+  UserStatsPage,
+  CarModePage,
+  MosqueModePage,
+  StudyRoomPage,
+  FamilyModePage,
+  VaultPage,
+  ResearcherProfilePage,
+  InstitutionsPage,
+  AuthCallbackPage,
+  UpdatePasswordPage,
+  ProphetStoriesPage,
+  NationsPage,
+  NationDetailPage,
+  ProphetsFamilyTreePage,
+  IslamicStoriesPage,
+  CitationPublicPage,
+  ResearchAssistantPage,
+  AcademicResearchPage,
+  ResearchDetailPage,
+  ResearchSubmitPage,
+  UniversitiesPage,
+  UniversityDetailPage,
+  UniversitiesComparePage,
+  FatwaPolicyPage,
+  MaqasidShariaPage,
+  FiqhPage,
+  FiqhBookPage,
+  FiqhChapterPage,
+  FiqhLessonPage,
+  FiqhUsulPage,
+  FiqhTopicPage,
+  MadhahibPage,
+  MadhahibDetailPage,
+  FiqhQawaidPage,
+  ZakatPage,
+  HajjPage,
+  JanazaPage,
+  MawarithPage,
+  MawarithCalculatorPage,
+  SalahGuidePage,
+  NikahPage,
+  TalaqPage,
+  HadithPage,
+  HadithByIdPage,
+  HadithSahihPage,
+  HadithDaifPage,
+  HadithMawduPage,
+  HadithBooksPage,
+  HadithBooksAndRulingsPage,
+  ArbaeenLovePage,
+  ArbaeenNawawiPage,
+  ArbaeenHadithDetailPage,
+  SunnahStudiesPage,
+  HadithSciencePage,
+  AboutPage,
+  SourcesLicensesPage,
+  SourcesDirectoryPage,
+  SourceDetailPage,
+  PrivacyPage,
+  PrivacyCenterPage,
+  TermsPage,
+  ContactPage,
+  MethodologyPage,
+  LessonsPage,
+  CompetitionsPage,
+  CompetitionDetailPage,
+  TeachersIndexPage,
+  TeacherDetailPage,
+  LessonsArchivePage,
+  LessonDetailPage,
+  KuwaitLessonsPage,
+  AnnualCourseDetailPage,
+  OccasionsLessonsHubPage,
+  MyLearningPage,
+  QuranEnginePage,
+  QuranCirclesPage,
+  SurahIndexPage,
+  QuranSearchPage,
+  RevelationOrderPage,
+  MakkiMadaniPage,
+  MushafReaderPage,
+  MushafBookmarksPage,
+  QuranHubPage,
+  QuranNumbersPage,
+  QuranPeoplePage,
+  QuranPersonDetailPage,
+  SurahStoriesPage,
+  QuranTajweedPage,
+  TajweedChapterPage,
+  QuranQiraatPage,
+  QuranSevenAhrufPage,
+  QuranTilawaPage,
+  QuranUlumTermsPage,
+  SurahStoryDetailRoute,
+  QuranMemorizationPage,
+  QuranMemorizationPlansPage,
+  QuranHifzLoopPage,
+  QuranWorshipHubPage,
+  QuranOfflinePlayerPage,
+  UlumQuranPage,
+  QuranKnowledgeHubPage,
+  MemorizationHubPage,
+  HifzPathPage,
+  HifzPathMyPage,
+  HifzPathCategoryPage,
+  HifzPathDetailPage,
+  HifzPathUnitPage,
+  TafsirPage,
+  DuasQuranPage,
+  SearchPage,
+  ReadingPlansPage,
+  AdhkarPage,
+  PrayerTimesPage,
+  PrayerRanksPage,
+  QiblaPage,
+  TasbihPage,
+  DailyWirdPage,
+  DuasPage,
+  AdhanSettingsPage,
+  AdhanHelpPage,
+} from "@/app/routes/lazy";
 
-const CalendarPage = lazy(() => import("@/views/CalendarPage"));
-const SearchPage = lazy(() => import("@/pages/account/SearchPage"));
-const LessonsPage = lazy(() => import("@/pages/lessons/LessonsPage"));
-const CompetitionsPage = lazy(() => import("@/pages/competitions/CompetitionsPage"));
-const CompetitionDetailPage = lazy(() => import("@/pages/competitions/CompetitionDetailPage"));
-const TeachersIndexPage = lazy(() => import("@/pages/lessons/TeachersIndexPage"));
-const ScholarProfilePage = lazy(() => import("@/pages/scholars/ScholarProfilePage"));
-const TeacherDetailPage = lazy(() => import("@/pages/lessons/TeacherDetailPage"));
-const LessonsArchivePage = lazy(() => import("@/pages/lessons/LessonsArchivePage"));
-const LessonDetailPage = lazy(() => import("@/pages/lessons/LessonDetailPage"));
-const ScientificAnnouncementDetailPage = lazy(() => import("@/views/ScientificAnnouncementDetailPage"));
-const MiraclesPage = lazy(() => import("@/views/MiraclesPage"));
-const FawaidPage = lazy(() => import("@/pages/account/FawaidPage"));
-const PropheticMedicinePage = lazy(() => import("@/views/PropheticMedicinePage"));
-const HadithPage = lazy(() => import("@/pages/hadith/HadithPage"));
-const HadithByIdPage = lazy(() => import("@/pages/hadith/HadithByIdPage"));
-const HadithSahihPage = lazy(() => import("@/pages/hadith/HadithSahihPage"));
-const HadithDaifPage = lazy(() => import("@/pages/hadith/HadithDaifPage"));
-const HadithMawduPage = lazy(() => import("@/pages/hadith/HadithMawduPage"));
-const HadithBooksPage = lazy(() => import("@/pages/hadith/HadithBooksPage"));
-const HadithBooksAndRulingsPage = lazy(() => import("@/pages/hadith/HadithBooksAndRulingsPage"));
-const ArbaeenLovePage = lazy(() => import("@/views/ArbaeenLovePage"));
-const QuranCirclesPage = lazy(() => import("@/pages/quran/QuranCirclesPage"));
-const SurahIndexPage = lazy(() => import("@/pages/quran/SurahIndexPage"));
-const QuranSearchPage = lazy(() => import("@/pages/quran/QuranSearchPage"));
-const RevelationOrderPage = lazy(() => import("@/pages/quran/RevelationOrderPage"));
-const MakkiMadaniPage = lazy(() => import("@/pages/quran/MakkiMadaniPage"));
-const MushafReaderPage = lazy(() => import("@/pages/quran/MushafReaderPage"));
-const MushafBookmarksPage = lazy(() => import("@/pages/quran/MushafBookmarksPage"));
-const QuranHubPage = lazy(() => import("@/pages/quran/QuranHubPage"));
-const QuranNumbersPage = lazy(() => import("@/pages/quran/QuranNumbersPage"));
-const QuranPeoplePage = lazy(() => import("@/pages/quran/QuranPeoplePage"));
-const QuranPersonDetailPage = lazy(() => import("@/pages/quran/QuranPersonDetailPage"));
-const SurahStoriesPage = lazy(() => import("@/pages/quran/SurahStoriesPage"));
-const QuranTajweedPage = lazy(() => import("@/pages/quran/QuranTajweedPage"));
-const TajweedChapterPage = lazy(() => import("@/pages/quran/TajweedChapterPage"));
-const QuranQiraatPage = lazy(() => import("@/pages/quran/QuranQiraatPage"));
-const QuranSevenAhrufPage = lazy(() => import("@/pages/quran/QuranSevenAhrufPage"));
-const QuranTilawaPage = lazy(() => import("@/pages/quran/QuranTilawaPage"));
-const QuranUlumTermsPage = lazy(() => import("@/pages/quran/QuranUlumTermsPage"));
-const SurahStoryDetailRoute = lazy(() =>
-  import("@/pages/quran/SurahStoriesPage").then(m => ({
-    default: ({ params }: { params?: Record<string, string> }) => {
-      const n = parseInt(params?.number ?? "1", 10);
-      return <m.SurahStoryDetailPage surahNumber={Number.isNaN(n) ? 1 : n} />;
-    },
-  }))
-);
-const TawhidPage = lazy(() => import("@/views/TawhidPage"));
-const TawhidTopicPage = lazy(() => import("@/views/TawhidTopicPage"));
-const DiscoverIslamPage = lazy(() => import("@/views/DiscoverIslamPage"));
-const DiscoverIslamQuestionsPage = lazy(() => import("@/views/DiscoverIslamQuestionsPage"));
-const DiscoverIslamQuestionDetailPage = lazy(() => import("@/views/DiscoverIslamQuestionDetailPage"));
-const DiscoverIslamDoubtsPage = lazy(() => import("@/views/DiscoverIslamDoubtsPage"));
-const DiscoverIslamDoubtDetailPage = lazy(() => import("@/views/DiscoverIslamDoubtDetailPage"));
-const DiscoverIslamArticleDetailPage = lazy(() => import("@/views/DiscoverIslamArticleDetailPage"));
-const HowToBecomeMuslimPage = lazy(() => import("@/views/HowToBecomeMuslimPage"));
-const NewMuslimPathPage = lazy(() => import("@/views/NewMuslimPathPage"));
-const NewMuslimDayDetailPage = lazy(() => import("@/views/NewMuslimDayDetailPage"));
-const DiscoverIslamContactPage = lazy(() => import("@/views/DiscoverIslamContactPage"));
-const KnowledgeSectionPage = lazy(() => import("@/views/KnowledgeSectionPage"));
-const AdhkarPage = lazy(() => import("@/pages/worship/AdhkarPage"));
-const QuizPage = lazy(() => import("@/pages/account/QuizPage"));
-const SubmitContentPage = lazy(() => import("@/views/SubmitContentPage"));
-const LoginPage = lazyWithRetry(() => import("@/pages/account/LoginPage"), "LoginPage");
-const RegisterPage = lazyWithRetry(() => import("@/pages/account/RegisterPage"), "RegisterPage");
-const TranscribePage = lazy(() => import("@/views/TranscribePage"));
-const AssistantGate = lazy(() => import("@/pages/assistant/AssistantGate"));
-const KuwaitLessonsPage = lazy(() => import("@/pages/lessons/KuwaitLessonsPage"));
-const CardsPage = lazy(() => import("@/views/CardsPage"));
-const PrayerTimesPage = lazy(() => import("@/pages/worship/PrayerTimesPage"));
-const PrayerRanksPage = lazy(() => import("@/pages/worship/PrayerRanksPage"));
-const QiblaPage = lazy(() => import("@/pages/worship/QiblaPage"));
-const TasbihPage = lazy(() => import("@/pages/worship/TasbihPage"));
-const DailyWirdPage = lazy(() => import("@/pages/worship/DailyWirdPage"));
-const OccasionsPage = lazy(() => import("@/views/OccasionsPage"));
-const ArbaeenNawawiPage = lazy(() => import("@/pages/hadith/ArbaeenNawawiPage"));
-const ArbaeenHadithDetailPage = lazy(() => import("@/pages/hadith/ArbaeenHadithDetailPage"));
-const SujoodSahwPage = lazy(() => import("@/views/SujoodSahwPage"));
-const AmradQalbiyyaPage = lazy(() => import("@/views/AmradQalbiyyaPage"));
-const DurusImaniyyaPage = lazy(() => import("@/views/DurusImaniyyaPage"));
-const DurusMutanawwiaPage = lazy(() => import("@/views/DurusMutanawwiaPage"));
-const ImanTopicsPage = lazy(() => import("@/views/ImanTopicsPage"));
-const SunnahStudiesPage = lazy(() => import("@/pages/hadith/SunnahStudiesPage"));
-const TazkiyaTopicsPage = lazy(() => import("@/views/TazkiyaTopicsPage"));
-const TarikhIslamiPage = lazy(() => import("@/views/TarikhIslamiPage"));
-const UsraMujtamaPage = lazy(() => import("@/views/UsraMujtamaPage"));
-const FikrWaqiaPage = lazy(() => import("@/views/FikrWaqiaPage"));
-const MawsuaatPage = lazy(() => import("@/views/MawsuaatPage"));
-const ArabicLanguagePage = lazy(() => import("@/views/ArabicLanguagePage"));
-const MaqasidShariaPage = lazy(() => import("@/views/MaqasidShariaPage"));
-const DalailNubuwwahPage = lazy(() => import("@/views/DalailNubuwwahPage"));
-const SettingsPage = lazy(() => import("@/pages/account/SettingsPage"));
-const FeatureTourPage = lazy(() => import("@/pages/account/FeatureTourPage"));
-const AccountDeletionPage = lazy(() => import("@/pages/account/AccountDeletionPage"));
-const AnnualCourseDetailPage = lazy(() => import("@/pages/lessons/AnnualCourseDetailPage"));
-const FiqhPage = lazy(() => import("@/pages/fiqh/FiqhPage"));
-const FiqhBookPage = lazy(() => import("@/pages/fiqh/FiqhBookPage"));
-const FiqhChapterPage = lazy(() => import("@/pages/fiqh/FiqhChapterPage"));
-const FiqhLessonPage = lazy(() => import("@/pages/fiqh/FiqhLessonPage"));
-const FiqhUsulPage = lazy(() => import("@/pages/fiqh/FiqhUsulPage"));
-const FiqhTopicPage = lazy(() => import("@/pages/fiqh/FiqhTopicPage"));
-const SeerahPage = lazy(() => import("@/views/SeerahPage"));
-const UpdatesPage = lazy(() => import("@/views/UpdatesPage"));
-const AutoContentDetailPage = lazy(() => import("@/views/AutoContentDetailPage"));
-const KnowledgeGraphPage = lazy(() => import("@/views/KnowledgeGraphPage"));
-const SectionsPage = lazy(() => import("@/pages/account/SectionsPage"));
-const MindMapPage = lazy(() => import("@/views/MindMapPage"));
-const IslamicLandmarksPage = lazy(() => import("@/views/IslamicLandmarksPage"));
-const IslamicLandmarkDetailPage = lazy(() => import("@/views/IslamicLandmarkDetailPage"));
-const IslamicLandmarksMapExplorerPage = lazy(
-  () => import("@/views/IslamicLandmarksMapExplorerPage"),
-);
-const MutashabihatPage = lazy(() => import("@/views/MutashabihatPage"));
-const QuranMemorizationPage = lazy(() => import("@/pages/quran/QuranMemorizationPage"));
-const QuranMemorizationPlansPage = lazy(() => import("@/pages/quran/QuranMemorizationPlansPage"));
-const QuranHifzLoopPage = lazy(() => import("@/pages/quran/QuranHifzLoopPage"));
-const QuranWorshipHubPage = lazy(() => import("@/pages/quran/QuranWorshipHubPage"));
-const QuranOfflinePlayerPage = lazy(() => import("@/pages/quran/QuranOfflinePlayerPage"));
-const TarikhIslamiDetailPage = lazy(() => import("@/views/TarikhIslamiDetailPage"));
-const AsmaaHusnaPage = lazy(() => import("@/views/AsmaaHusnaPage"));
-const AkhlaqPage = lazy(() => import("@/views/AkhlaqPage"));
-const DuasPage = lazy(() => import("@/pages/worship/DuasPage"));
-const ArkanIslamPage = lazy(() => import("@/views/ArkanIslamPage"));
-const ArkanImanPage = lazy(() => import("@/views/ArkanImanPage"));
-const HadithSciencePage = lazy(() => import("@/pages/hadith/HadithSciencePage"));
-const MadhahibPage = lazy(() => import("@/views/MadhahibPage"));
-const IslamicSectsPage = lazy(() => import("@/views/IslamicSectsPage"));
-const IslamicSectsDetailPage = lazy(() => import("@/views/IslamicSectsDetailPage"));
-const MadhahibDetailPage = lazy(() => import("@/views/MadhahibDetailPage"));
-const FiqhQawaidPage = lazy(() => import("@/pages/fiqh/FiqhQawaidPage"));
-const ShimaelPage = lazy(() => import("@/views/ShimaelPage"));
-const IslamStatsPage = lazy(() => import("@/views/IslamStatsPage"));
-const IslamicGlossaryPage = lazy(() => import("@/pages/account/IslamicGlossaryPage"));
-const AdabTalabIlmPage = lazy(() => import("@/views/AdabTalabIlmPage"));
-const JannaNaarPage = lazy(() => import("@/views/JannaNaarPage"));
-const AlamatSaahPage = lazy(() => import("@/views/AlamatSaahPage"));
-const MalaikaPage = lazy(() => import("@/views/MalaikaPage"));
-const WasayaNabawiyyaPage = lazy(() => import("@/views/WasayaNabawiyyaPage"));
-const RaqaiqPage = lazy(() => import("@/views/RaqaiqPage"));
-const SunanYawmiyyaPage = lazy(() => import("@/views/SunanYawmiyyaPage"));
-const HikamSalafPage = lazy(() => import("@/views/HikamSalafPage"));
-const ZakatPage = lazy(() => import("@/pages/fiqh/ZakatPage"));
-const SawmPage = lazy(() => import("@/views/SawmPage"));
-const HajjPage = lazy(() => import("@/pages/fiqh/HajjPage"));
-const TaharaPage = lazy(() => import("@/views/TaharaPage"));
-const FadailAamalPage = lazy(() => import("@/views/FadailAamalPage"));
-const JanazaPage = lazy(() => import("@/pages/fiqh/JanazaPage"));
-const SahabahPage = lazy(() => import("@/views/SahabahPage"));
-const TawbaPage = lazy(() => import("@/views/TawbaPage"));
-const SinsAndRightsPage = lazy(() => import("@/views/SinsAndRightsPage"));
-const SinsAndRightsDetailPage = lazy(() => import("@/views/SinsAndRightsDetailPage"));
-const TazkiyaHubPage = lazy(() => import("@/pages/tazkiya/TazkiyaHubPage"));
-const AmrBilMarufPage = lazy(() => import("@/views/AmrBilMarufPage"));
-const UlumQuranPage = lazy(() => import("@/pages/quran/UlumQuranPage"));
-const QuranKnowledgeHubPage = lazy(() => import("@/pages/quran/QuranKnowledgeHubPage"));
-const MemorizationHubPage = lazy(() => import("@/views/MemorizationHubPage"));
-const HifzPathPage = lazy(() => import("@/pages/hifz-path/HifzPathPage"));
-const HifzPathMyPage = lazy(() => import("@/pages/hifz-path/HifzPathMyPage"));
-const HifzPathCategoryPage = lazy(
-  () => import("@/pages/hifz-path/HifzPathCategoryPage"),
-);
-const HifzPathDetailPage = lazy(
-  () => import("@/pages/hifz-path/HifzPathDetailPage"),
-);
-const HifzPathUnitPage = lazy(() => import("@/pages/hifz-path/HifzPathUnitPage"));
-const OccasionsLessonsHubPage = lazy(() => import("@/pages/lessons/OccasionsLessonsHubPage"));
-const IslamicDirectoryHubPage = lazy(() => import("@/views/IslamicDirectoryHubPage"));
-const TafsirPage = lazy(() => import("@/pages/quran/TafsirPage"));
-const MawarithPage = lazy(() => import("@/pages/fiqh/MawarithPage"));
-const MawarithCalculatorPage = lazy(() => import("@/pages/fiqh/MawarithCalculatorPage"));
-const SalahGuidePage = lazy(() => import("@/pages/fiqh/SalahGuidePage"));
-const DuasQuranPage = lazy(() => import("@/pages/quran/DuasQuranPage"));
-const RibaPage = lazy(() => import("@/views/RibaPage"));
-const NikahPage = lazy(() => import("@/pages/fiqh/NikahPage"));
-const TalaqPage = lazy(() => import("@/pages/fiqh/TalaqPage"));
-const UdhiyaPage = lazy(() => import("@/views/UdhiyaPage"));
-const RuqyaPage = lazy(() => import("@/views/RuqyaPage"));
-const JumuahPage = lazy(() => import("@/views/JumuahPage"));
-const WaqfPage = lazy(() => import("@/views/WaqfPage"));
-const SadaqaPage = lazy(() => import("@/views/SadaqaPage"));
-const AdminPage = lazyWithRetry(() => import("@/views/AdminPage"), "AdminPage");
-const AdminV3App = lazyWithRetry(() => import("@/admin-v3/AdminV3App"), "AdminV3App");
-const AdminEntryBridge = lazyWithRetry(
-  () => import("@/admin-v3/AdminEntryBridge"),
-  "AdminEntryBridge",
-);
-const LessonImportImagePage = lazyWithRetry(() => import("@/views/admin/LessonImportImagePage"), "LessonImportImagePage");
-const LessonImportUrlPage = lazyWithRetry(() => import("@/views/admin/LessonImportUrlPage"), "LessonImportUrlPage");
-const AutomationSourcesPage = lazyWithRetry(() => import("@/views/admin/AutomationSourcesPage"), "AutomationSourcesPage");
-const AutomationReviewPage = lazyWithRetry(() => import("@/views/admin/AutomationReviewPage"), "AutomationReviewPage");
-const ReviewHubPage = lazyWithRetry(() => import("@/views/admin/ReviewHubPage"), "ReviewHubPage");
-const AutomationDashboardPage = lazyWithRetry(() => import("@/views/admin/AutomationDashboardPage"), "AutomationDashboardPage");
-const AutomationCenterPage = lazyWithRetry(() => import("@/views/admin/AutomationCenterPage"), "AutomationCenterPage");
-const AutonomousPlatformPage = lazyWithRetry(() => import("@/views/admin/AutonomousPlatformPage"), "AutonomousPlatformPage");
-const InstagramIntegrationPage = lazyWithRetry(() => import("@/views/admin/InstagramIntegrationPage"), "InstagramIntegrationPage");
-const MajlisKnowledgeEnginePage = lazyWithRetry(() => import("@/views/admin/MajlisKnowledgeEnginePage"), "MajlisKnowledgeEnginePage");
-const AdminDashboardPage = lazyWithRetry(() => import("@/views/admin/AdminDashboardPage"), "AdminDashboardPage");
-const AutoContentPage = lazyWithRetry(() => import("@/views/admin/AutoContentPage"), "AutoContentPage");
-const ContentProductionDashboardPage = lazyWithRetry(
-  () => import("@/views/admin/ContentProductionDashboardPage"),
-  "ContentProductionDashboardPage",
-);
-const FeatureStatusPage = lazyWithRetry(() => import("@/views/admin/FeatureStatusPage"), "FeatureStatusPage");
-const InternalStatusPage = lazyWithRetry(() => import("@/views/internal/InternalStatusPage"), "InternalStatusPage");
-const MyLearningPage = lazy(() => import("@/pages/lessons/MyLearningPage"));
-const AdhanSettingsPage = lazy(() => import("@/pages/worship/AdhanSettingsPage"));
-const AdhanHelpPage = lazy(() => import("@/pages/worship/AdhanHelpPage"));
-const UploadPage = lazy(() => import("@/views/UploadPage"));
-const MySubmissionsPage = lazy(() => import("@/views/MySubmissionsPage"));
-const UserStatsPage = lazy(() => import("@/views/UserStatsPage"));
-const ReadingPlansPage = lazy(() => import("@/pages/library/ReadingPlansPage"));
-const FlashCardsPage = lazy(() => import("@/pages/account/FlashCardsPage"));
-const CarModePage = lazy(() => import("@/views/CarModePage"));
-const MosqueModePage = lazy(() => import("@/views/MosqueModePage"));
-const NotificationSettingsPage = lazy(() => import("@/pages/account/NotificationSettingsPage"));
-const NotificationsAndSoundPage = lazy(() => import("@/pages/account/NotificationsAndSoundPage"));
-const StudyRoomPage = lazy(() => import("@/views/StudyRoomPage"));
-const FamilyModePage = lazy(() => import("@/views/FamilyModePage"));
-const VaultPage = lazy(() => import("@/views/VaultPage"));
-const ProgressCenterPage = lazy(() => import("@/pages/account/ProgressCenterPage"));
-const OfflineCenterPage = lazy(() => import("@/pages/account/OfflineCenterPage"));
-const ResearcherProfilePage = lazy(() => import("@/views/ResearcherProfilePage"));
-const InstitutionsPage = lazy(() => import("@/views/InstitutionsPage"));
-const AuthCallbackPage = lazy(() => import("@/views/AuthCallbackPage"));
-const UpdatePasswordPage = lazy(() => import("@/views/UpdatePasswordPage"));
-const ProphetStoriesPage = lazy(() => import("@/views/ProphetStoriesPage"));
-const NationsPage = lazy(() => import("@/views/NationsPage"));
-const NationDetailPage = lazy(() => import("@/views/NationDetailPage"));
-const ProphetsFamilyTreePage = lazy(() => import("@/views/ProphetsFamilyTreePage"));
-const IslamicStoriesPage = lazy(() => import("@/views/IslamicStoriesPage"));
-const CitationPublicPage = lazy(() => import("@/views/CitationPublicPage"));
-const MethodologyPage = lazy(() => import("@/views/MethodologyPage"));
 // ScholarlyResearchPage عُطِّلت 2026-07-23 — الاستيراد الكسول أُزيل (لم يعد
 // يُستهلَك)؛ ملف المكوّن نفسه باقٍ بلا حذف (راجع feature-registry.ts).
-const AcademicResearchPage  = lazy(() => import("@/views/AcademicResearchPage"));
-const ResearchDetailPage    = lazy(() => import("@/views/ResearchDetailPage"));
-const ResearchSubmitPage    = lazy(() => import("@/views/ResearchSubmitPage"));
-const ResearchAssistantPage = lazy(() => import("@/views/ResearchAssistantPage"));
-const UniversitiesPage = lazy(() => import("@/views/UniversitiesPage"));
-const UniversityDetailPage = lazy(() => import("@/views/UniversityDetailPage"));
-const UniversitiesComparePage = lazy(() => import("@/views/UniversitiesComparePage"));
-const UniversitiesAdminPage = lazyWithRetry(() => import("@/views/admin/UniversitiesAdminPage"), "UniversitiesAdminPage");
 
 /** تحويل `/mushaf/:surah?ayah=` إلى العقد الموحّد مع stash للتحديد. */
 function LegacyMushafSurahRedirect({ surahParam }: { surahParam: string }) {
@@ -295,32 +276,6 @@ function LegacyLearnIdRedirect({ id }: { id: string }) {
   const href = useMemo(() => buildLegacyLearnTarget(id, search), [id, search]);
   return <Redirect to={href} />;
 }
-
-function SafeLazyRoute({ component: Component }: { component: ComponentType<any> }) {
-  // useParams يُعيد params المسار الحالي (مثل { id } أو { slug })
-  // ويُمرَّر كـ prop "params" لجميع صفحات التفاصيل
-  const params = useParams();
-  return (
-    <ErrorBoundary>
-      <Suspense fallback={<LazyRouteFallback />}>
-        <Component params={params} />
-      </Suspense>
-    </ErrorBoundary>
-  );
-}
-
-function AdminLazyRoute({ component: Component }: { component: ComponentType }) {
-  return (
-    <AdminRouteGuard>
-      <ErrorBoundary>
-        <Suspense fallback={<LazyRouteFallback />}>
-          <Component />
-        </Suspense>
-      </ErrorBoundary>
-    </AdminRouteGuard>
-  );
-}
-
 
 export default function AppRoutes() {
   return (

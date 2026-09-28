@@ -14,6 +14,8 @@ import {
   FIQH_CATEGORY_ORDER,
   FIQH_SUPPORTING_TOPICS,
   chapterHref,
+  ensureFiqhCatalogLoaded,
+  isFiqhCatalogReady,
   publishedBooks,
   searchFiqhCatalog,
   type FiqhBook,
@@ -180,18 +182,44 @@ function SearchHitList({
 function FiqhBooksBody() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<FiqhBookCategory | "all">("all");
+  const [ready, setReady] = useState(() => isFiqhCatalogReady());
+  const [loadError, setLoadError] = useState<string | null>(null);
   const debouncedQuery = useDebouncedValue(query, 280);
 
+  useEffect(() => {
+    let cancelled = false;
+    void ensureFiqhCatalogLoaded()
+      .then(() => {
+        if (!cancelled) setReady(true);
+      })
+      .catch(() => {
+        if (!cancelled) setLoadError("تعذّر تحميل كتب الفقه. أعد المحاولة لاحقًا.");
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const books = useMemo(() => {
+    if (!ready) return [];
     const all = publishedBooks();
     if (category === "all") return all;
     return all.filter((book) => book.category === category);
-  }, [category]);
+  }, [category, ready]);
 
   const searchResults = useMemo(
-    () => (debouncedQuery.trim() ? searchFiqhCatalog(debouncedQuery) : null),
-    [debouncedQuery],
+    () => (ready && debouncedQuery.trim() ? searchFiqhCatalog(debouncedQuery) : null),
+    [debouncedQuery, ready],
   );
+
+  if (loadError) {
+    return (
+      <EmptyStateV2 title="تعذّر التحميل" description={loadError} />
+    );
+  }
+  if (!ready) {
+    return <div className="fiqh-hub-edu-note" role="status" aria-busy="true" />;
+  }
 
   return (
     <KnowledgeLayout kind="fiqh" className="fiqh-lux-page fiqh-hub-layout" data-kx="1">
@@ -290,6 +318,7 @@ function FiqhBooksBody() {
 
 export default function FiqhPage() {
   usePageView("fiqh", null);
+  const [statsTick, setStatsTick] = useState(0);
 
   useEffect(() => {
     applyPageSeo({
@@ -312,13 +341,17 @@ export default function FiqhPage() {
     });
   }, []);
 
+  useEffect(() => {
+    void ensureFiqhCatalogLoaded().then(() => setStatsTick((n) => n + 1));
+  }, []);
+
   const headerStats = useMemo(
     () => [
       { id: "books", label: `${FIQH_HUB_STATS.books} كتاب` },
       { id: "chapters", label: formatAbwabCount(FIQH_HUB_STATS.chapters) },
       { id: "lessons", label: formatMasailCount(FIQH_HUB_STATS.lessons) },
     ],
-    [],
+    [statsTick],
   );
 
   return (

@@ -5,6 +5,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -432,9 +433,50 @@ const payload = {
   count: docs.length,
   docs,
 };
-fs.writeFileSync(path.join(outDir, "index.json"), JSON.stringify(payload));
+const indexRaw = JSON.stringify(payload);
+fs.writeFileSync(path.join(outDir, "index.json"), indexRaw);
 
 const byKind = {};
 for (const d of docs) byKind[d.kind] = (byKind[d.kind] ?? 0) + 1;
+
+/* شظايا حسب المجال — تحميل اختياري عند تضييق النطاق؛ الفهرس الكامل يبقى للبحث الشامل */
+const shardsDir = path.join(outDir, "shards");
+fs.mkdirSync(shardsDir, { recursive: true });
+const indexChecksum = createHash("sha256").update(indexRaw).digest("hex");
+const shardFiles = [];
+for (const [kind, count] of Object.entries(byKind).sort()) {
+  const shardDocs = docs.filter((d) => d.kind === kind);
+  const shardPayload = {
+    version: SEARCH_INDEX_SCHEMA_VERSION,
+    kind,
+    count: shardDocs.length,
+    docs: shardDocs,
+  };
+  const file = `shards/${kind}.json`;
+  const raw = JSON.stringify(shardPayload);
+  fs.writeFileSync(path.join(outDir, file), raw);
+  shardFiles.push({
+    file,
+    kind,
+    bytes: Buffer.byteLength(raw),
+    itemCount: count,
+    checksum: `sha256:${createHash("sha256").update(raw).digest("hex")}`,
+  });
+}
+const manifest = {
+  version: SEARCH_INDEX_SCHEMA_VERSION,
+  contentType: "search.unified",
+  checksum: `sha256:${indexChecksum}`,
+  count: docs.length,
+  files: [
+    { file: "index.json", bytes: Buffer.byteLength(indexRaw), itemCount: docs.length },
+    ...shardFiles,
+  ],
+  offlineEligible: true,
+  note: "Universal search loads index.json; scoped adapters may load shards/<kind>.json",
+};
+fs.writeFileSync(path.join(outDir, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
+
 console.log(`generate-unified-search-index: ${docs.length} docs`);
 console.log(JSON.stringify(byKind, null, 0));
+console.log(`search manifest: ${manifest.checksum} shards=${shardFiles.length}`);

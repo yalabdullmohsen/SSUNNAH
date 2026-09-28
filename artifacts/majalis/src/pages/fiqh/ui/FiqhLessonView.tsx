@@ -3,11 +3,14 @@ import { useEffect, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
 import { usePageView } from "@/hooks/usePageView";
+import { LazyRouteFallback } from "@/components/LazyRouteFallback";
 import { Empty } from "@/components/ui-common";
 import {
   adjacentFiqhLessons,
+  ensureFiqhCatalogLoaded,
   getFiqhLesson,
   getFiqhLessonAny,
+  isFiqhCatalogReady,
 } from "@/lib/fiqh-books";
 import { ShareButtons } from "@/components/ContentActions";
 import { cn, truncateAtWord } from "@/lib/utils";
@@ -86,8 +89,16 @@ function ListBlock({ items }: { items: string[] }) {
 
 export default function FiqhLessonPage() {
   const params = useParams<{ bookId: string; lessonId: string }>();
-  const publishedHit = getFiqhLesson(params.bookId ?? "", params.lessonId ?? "");
-  const anyHit = getFiqhLessonAny(params.bookId ?? "", params.lessonId ?? "");
+  const [ready, setReady] = useState(() => isFiqhCatalogReady());
+  useEffect(() => {
+    void ensureFiqhCatalogLoaded().then(() => setReady(true));
+  }, []);
+  const publishedHit = ready
+    ? getFiqhLesson(params.bookId ?? "", params.lessonId ?? "")
+    : undefined;
+  const anyHit = ready
+    ? getFiqhLessonAny(params.bookId ?? "", params.lessonId ?? "")
+    : undefined;
   const hit =
     publishedHit ??
     (anyHit && anyHit.lesson.needsReview !== true && anyHit.lesson.status === "published"
@@ -135,6 +146,10 @@ export default function FiqhLessonPage() {
           ],
     });
   }, [hit]);
+
+  if (!ready) {
+    return <LazyRouteFallback />;
+  }
 
   if (!hit) {
     return (

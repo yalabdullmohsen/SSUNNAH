@@ -1,14 +1,17 @@
 import { Link, useParams } from "wouter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { InternalLinkCard } from "@/components/ui/InternalCards";
 import { applyPageSeo } from "@/lib/seo";
 import { breadcrumbJsonLd, bookJsonLd } from "@/lib/seo-structured-data";
 import { usePageView } from "@/hooks/usePageView";
+import { LazyRouteFallback } from "@/components/LazyRouteFallback";
 import { Empty } from "@/components/ui-common";
 import {
   chapterHref,
+  ensureFiqhCatalogLoaded,
   fiqhBookApproxLevel,
   getVisibleFiqhBook,
+  isFiqhCatalogReady,
   publishedChapters,
   publishedLessonsInChapter,
   resolveFiqhAliasTarget,
@@ -23,8 +26,14 @@ import { truncateAtWord } from "@/lib/utils";
 export default function FiqhBookPage() {
   const params = useParams<{ bookId: string }>();
   const bookId = params.bookId ?? "";
-  const alias = resolveFiqhAliasTarget(bookId);
-  const book = getVisibleFiqhBook(bookId);
+  const [ready, setReady] = useState(() => isFiqhCatalogReady());
+
+  useEffect(() => {
+    void ensureFiqhCatalogLoaded().then(() => setReady(true));
+  }, []);
+
+  const alias = ready ? resolveFiqhAliasTarget(bookId) : undefined;
+  const book = ready ? getVisibleFiqhBook(bookId) : undefined;
 
   usePageView("fiqh-book", bookId || null);
 
@@ -56,6 +65,10 @@ export default function FiqhBookPage() {
       ],
     });
   }, [book, alias]);
+
+  if (!ready) {
+    return <LazyRouteFallback />;
+  }
 
   if (!book) {
     return (
