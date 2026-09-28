@@ -294,6 +294,7 @@ export function stopAdhan(opts?: { force?: boolean }) {
   if (_sessionProtected && !opts?.force) {
     return;
   }
+  const hadAudio = Boolean(_current);
   _sessionProtected = false;
   clearStopTimer();
   clearFade();
@@ -309,6 +310,11 @@ export function stopAdhan(opts?: { force?: boolean }) {
     _current = null;
   }
   revokeObjectUrl();
+  if (hadAudio) {
+    void import("./adhan-diagnostics").then(({ adhanDiag }) => {
+      adhanDiag("ADHAN_STOP", { source: "stopAdhan", force: Boolean(opts?.force) });
+    });
+  }
   try {
     if (typeof window !== "undefined") {
       window.dispatchEvent(new CustomEvent("majalis:adhan-stopped"));

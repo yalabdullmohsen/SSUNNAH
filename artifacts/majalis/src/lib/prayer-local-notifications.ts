@@ -595,10 +595,15 @@ export async function cancelPrayerNativeNotificationsExcept(
         friendlyKey?: string;
         prayerKey?: string;
       };
+      /**
+       * مقاطع الأذان (`adhanSegment`) ملك `adhan-ios-segments` / smart-cancel /
+       * `cancelAllPrayerNativeNotifications` — لا تُلغَ عند إعادة جدولة pre/enter/post
+       * وإلا يُقطع السلسلة عند enter-time reschedule (انظر ADHAN_PIPELINE_MAP).
+       */
+      if (extra.adhanSegment === true) continue;
       const pk = String(extra.prayerKey || "").toLowerCase();
       const isPrayer =
         String(extra.kind || "").startsWith("prayer-") ||
-        extra.adhanSegment === true ||
         String(extra.friendlyKey || "").startsWith("adhan-") ||
         (PRAYER_ORDER as readonly string[]).includes(pk);
       if (isPrayer) toCancel.push({ id: n.id });

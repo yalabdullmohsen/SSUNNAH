@@ -34,6 +34,7 @@ const adhanSched = read("src/lib/adhan-scheduler.ts");
 const idsSrc = read("src/lib/prayer-notification-ids.ts");
 
 assert.match(localNotif, /cancelPrayerNativeNotificationsExcept/);
+assert.match(localNotif, /if\s*\(\s*extra\.adhanSegment\s*===\s*true\s*\)\s*continue/);
 assert.match(scheduler, /keepIds/);
 assert.match(scheduler, /cancelPrayerNativeNotificationsExcept/);
 

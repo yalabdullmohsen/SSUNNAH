@@ -421,6 +421,14 @@ export async function startPrayerAlertScheduler(
   if (enterDelay > 0) {
     const t = setTimeout(() => {
       if (Date.now() - prayerEpoch > 5 * 60_000) return; // حارس: لا enter متأخر >5د
+      void import("./adhan-diagnostics").then(({ adhanDiag }) => {
+        adhanDiag("ADHAN_START", {
+          source: "prayer-alert-enter-reschedule",
+          prayerKey,
+          prayerEpoch,
+          note: "enter timer → startPrayerAlertScheduler (must not cancel adhanSegment)",
+        });
+      });
       dispatchAlert({ ...fireEvent, type: "entered" });
       void fireLiveActivityEnter();
       _lastScheduleSig = null;
