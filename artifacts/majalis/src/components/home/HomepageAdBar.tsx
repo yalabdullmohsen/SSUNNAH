@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { homepageAdConfig } from "@/config/homepage-ad";
 import { dismissHomepageAd, isHomepageAdDismissed } from "@/lib/homepage-ad-dismiss";
+import { IconButton } from "@/components/design-system/Buttons";
 
 /**
  * شريط إعلاني/رعاية أعلى الهيدر — الصفحة الرئيسية فقط (يُستدعى من AppShell).
@@ -68,14 +69,14 @@ export function HomepageAdBar() {
           {cfg.ctaLabel}
         </a>
 
-        <button
+        <IconButton
           type="button"
           className="homepage-ad-bar__close"
           onClick={close}
-          aria-label="إغلاق شريط الإعلان لمدة 24 ساعة"
+          label="إغلاق شريط الإعلان لمدة 24 ساعة"
         >
           <X size={16} strokeWidth={2} aria-hidden="true" />
-        </button>
+        </IconButton>
       </div>
     </aside>
   );

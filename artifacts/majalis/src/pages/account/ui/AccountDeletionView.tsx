@@ -4,6 +4,7 @@ import { AlertTriangle, Trash2, ShieldOff, CheckCircle } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
 import { useAuth } from "@/components/AuthProvider";
 import { supabase } from "@/lib/supabase";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/account-deletion.css";
 
 export default function AccountDeletionPage() {
@@ -150,9 +151,9 @@ export default function AccountDeletionPage() {
           <p className="accd-actions__email">
             تسجيل الدخول الحالي: <strong>{user?.email}</strong>
           </p>
-          <button type="button" className="btn-danger" onClick={() => setStep("confirm")}>
+          <Button type="button" variant="destructive" className="btn-danger" onClick={() => setStep("confirm")}>
             <Trash2 size={16} /> أريد حذف حسابي
-          </button>
+          </Button>
           <Link href="/settings" className="btn-secondary">
             إلغاء
           </Link>
@@ -192,16 +193,18 @@ export default function AccountDeletionPage() {
             </p>
           )}
           <div className="accd-confirm__btns">
-            <button
+            <Button
               type="button"
+              variant="destructive"
               className="btn-danger"
               disabled={confirmWord !== "حذف"}
               onClick={handleDelete}
             >
               <Trash2 size={16} /> حذف حسابي نهائياً
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="secondary"
               className="btn-secondary"
               onClick={() => {
                 setStep("info");
@@ -210,7 +213,7 @@ export default function AccountDeletionPage() {
               }}
             >
               إلغاء
-            </button>
+            </Button>
           </div>
         </div>
       )}

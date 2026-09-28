@@ -5,6 +5,7 @@ import { Suspense, useEffect, useState, type ReactNode } from "react";
 import { Link } from "wouter";
 import { Wrench } from "lucide-react";
 import contentCounts from "@/data/content-counts.json";
+import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/AuthProvider";
 import { SectionErrorBoundary } from "@/components/ErrorBoundary";
 import { HomeDailyProgress } from "@/components/home/HomeDailyProgress";
@@ -206,9 +207,9 @@ export default function HomeBelowFold() {
       </section>
 
       <div className="m2030-band" style={{ textAlign: "center" }}>
-        <button type="button" className="m2030-customize" onClick={() => setCustomizeOpen(true)}>
+        <Button type="button" variant="ghost" size="small" className="m2030-customize" onClick={() => setCustomizeOpen(true)}>
           <Wrench size={13} strokeWidth={2} aria-hidden="true" /> تخصيص الصفحة
-        </button>
+        </Button>
       </div>
 
       {optionalWidgets.length > 0 ? (
