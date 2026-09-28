@@ -23,13 +23,17 @@ html[data-v2-app="1"] .utility-screen {
   color: var(--v2-color-ink, #16241e);
 }
 
-/* ── قراءة طويلة / مصادر / مراجع — أسطح فاتحة ── */
-html[data-v2-app="1"] .soft-card:not(.hub-card):not(.lesson-unified-card):not(.lpp-path-card):not(.topic-card):not(.section-entry-card):not(.ss-feature-card__inner),
-html[data-v2-app="1"] .soft-card--on-light:not(.hub-card):not(.lesson-unified-card):not(.lpp-path-card):not(.topic-card):not(.section-entry-card),
-html[data-v2-app="1"] .mj-card,
-html[data-v2-app="1"] .ss-app-card,
-html[data-v2-app="1"] .qzg-section-card,
-html[data-v2-app="1"] .ruling-card {
+/*
+ * أسطح/حبر البطاقات الفاتحة — مقيّدة بالوضع الفاتح فقط.
+ * CI #7500/#7543: دبابيس !important العامة كانت تثبت #15382D فوق سطح ليلي (#24302B)
+ * وتغلب على hub-card.css الداكن → ~1.07:1. لا تُطبَّق هنا في dark.
+ */
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .soft-card:not(.hub-card):not(.lesson-unified-card):not(.lpp-path-card):not(.topic-card):not(.section-entry-card):not(.ss-feature-card__inner),
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .soft-card--on-light:not(.hub-card):not(.lesson-unified-card):not(.lpp-path-card):not(.topic-card):not(.section-entry-card),
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .mj-card,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .ss-app-card,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .qzg-section-card,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .ruling-card {
   border-radius: var(--v2-radius-card, 26px);
   border: 1px solid var(--v2-hairline);
   background: var(--cs-surface-3, var(--v2-color-ivory-surface, #ffffff)) !important;
@@ -39,12 +43,12 @@ html[data-v2-app="1"] .ruling-card {
 }
 
 /* ── بطاقات رئيسية — أبيض · حبر AA (لا عاجي على فاتح) ── */
-html[data-v2-app="1"] .hub-card,
-html[data-v2-app="1"] .section-entry-card,
-html[data-v2-app="1"] .topic-card,
-html[data-v2-app="1"] .ss-feature-card__inner,
-html[data-v2-app="1"] .soft-card.hub-card,
-html[data-v2-app="1"] .hub-card.soft-card--on-light {
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .hub-card,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .section-entry-card,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .topic-card,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .ss-feature-card__inner,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .soft-card.hub-card,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .hub-card.soft-card--on-light {
   border-radius: var(--v2-radius-card, 26px);
   border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
   background: var(--cs-surface-3, #ffffff) !important;
@@ -54,28 +58,28 @@ html[data-v2-app="1"] .hub-card.soft-card--on-light {
   color: var(--cs-text-primary, #15382d) !important;
 }
 
-html[data-v2-app="1"] .hub-card .hub-card__title,
-html[data-v2-app="1"] .section-entry-card__title,
-html[data-v2-app="1"] .card__label {
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .hub-card .hub-card__title,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .section-entry-card__title,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .card__label {
   color: var(--cs-text-primary, #15382d) !important;
   font-weight: 700 !important;
 }
 
-html[data-v2-app="1"] .hub-card .hub-card__desc,
-html[data-v2-app="1"] .section-entry-card__desc,
-html[data-v2-app="1"] .card__subtitle {
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .hub-card .hub-card__desc,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .section-entry-card__desc,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .card__subtitle {
   color: var(--cs-text-secondary, #48645a) !important;
   opacity: 1 !important;
 }
 
-html[data-v2-app="1"] .hub-card .hub-card__meta,
-html[data-v2-app="1"] .hub-card .hub-card__go {
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .hub-card .hub-card__meta,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .hub-card .hub-card__go {
   color: var(--cs-text-muted, #5f7168) !important;
 }
 
-html[data-v2-app="1"] .lesson-unified-card,
-html[data-v2-app="1"] .lesson-unified-card.soft-card,
-html[data-v2-app="1"] .lesson-unified-card.soft-card--on-light {
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .lesson-unified-card,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .lesson-unified-card.soft-card,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .lesson-unified-card.soft-card--on-light {
   border-radius: var(--v2-radius-card, 26px);
   border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
   background: var(--cs-surface-3, #ffffff) !important;
@@ -85,13 +89,13 @@ html[data-v2-app="1"] .lesson-unified-card.soft-card--on-light {
   color: var(--cs-text-primary, #15382d) !important;
 }
 
-html[data-v2-app="1"] .lesson-unified-card__title,
-html[data-v2-app="1"] .lesson-unified-card__sheikh {
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .lesson-unified-card__title,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .lesson-unified-card__sheikh {
   color: var(--cs-text-primary, #15382d) !important;
 }
 
-html[data-v2-app="1"] .lpp-path-card,
-html[data-v2-app="1"] .lpp-path-card.soft-card--on-light {
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .lpp-path-card,
+html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .lpp-path-card.soft-card--on-light {
   border-radius: var(--v2-radius-card, 26px);
   border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
   background: var(--cs-surface-3, #ffffff) !important;
@@ -305,15 +309,60 @@ html[data-theme="dark"][data-v2-app="1"] .soft-card,
 html.dark[data-v2-app="1"] .soft-card,
 html[data-theme="dark"][data-v2-app="1"] .hub-card,
 html.dark[data-v2-app="1"] .hub-card,
+html[data-theme="dark"][data-v2-app="1"] .section-entry-card,
+html.dark[data-v2-app="1"] .section-entry-card,
+html[data-theme="dark"][data-v2-app="1"] .topic-card,
+html.dark[data-v2-app="1"] .topic-card,
+html[data-theme="dark"][data-v2-app="1"] .lesson-unified-card,
+html.dark[data-v2-app="1"] .lesson-unified-card,
 html[data-theme="dark"][data-v2-app="1"] .mj-card,
 html.dark[data-v2-app="1"] .mj-card,
 html[data-theme="dark"][data-v2-app="1"] .mj-empty,
 html.dark[data-v2-app="1"] .mj-empty,
 html[data-theme="dark"][data-v2-app="1"] .es2,
 html.dark[data-v2-app="1"] .es2 {
-  background: var(--v2-color-night-surface, #12261f);
+  /* !important لازم لمطابقة دبابيس السطح الفاتح السابقة في نفس الملف / طبقات أخرى */
+  background: var(--surface-elevated, var(--v2-color-night-surface, #24302b)) !important;
+  background-color: var(--surface-elevated, var(--v2-color-night-surface, #24302b)) !important;
+  background-image: none !important;
   border-color: var(--v2-color-night-hairline);
-  color: var(--v2-color-night-ink, #edf5f0);
+  color: var(--v2-color-night-ink, #edf5f0) !important;
+}
+
+/* CI #7543 — عناوين HubCard ليلية تغلب أي حبر غني متبقٍ من طبقات فاتحة */
+html[data-theme="dark"][data-v2-app="1"] .hub-card .hub-card__title,
+html.dark[data-v2-app="1"] .hub-card .hub-card__title,
+html[data-theme="dark"][data-v2-app="1"] .hub-card .cs2-nav__title,
+html.dark[data-v2-app="1"] .hub-card .cs2-nav__title,
+html[data-theme="dark"][data-v2-app="1"] .hub-card .ss-text--card-title,
+html.dark[data-v2-app="1"] .hub-card .ss-text--card-title,
+html[data-theme="dark"][data-v2-app="1"] .section-entry-card__title,
+html.dark[data-v2-app="1"] .section-entry-card__title,
+html[data-theme="dark"][data-v2-app="1"] .lesson-unified-card__title,
+html.dark[data-v2-app="1"] .lesson-unified-card__title,
+html[data-theme="dark"][data-v2-app="1"] .lesson-unified-card__sheikh,
+html.dark[data-v2-app="1"] .lesson-unified-card__sheikh {
+  color: var(--sf2-text-primary, var(--sf-color-luxury-night-ink, #edf5f0)) !important;
+  font-weight: 700 !important;
+}
+
+html[data-theme="dark"][data-v2-app="1"] .hub-card .hub-card__desc,
+html.dark[data-v2-app="1"] .hub-card .hub-card__desc,
+html[data-theme="dark"][data-v2-app="1"] .hub-card .cs2-nav__desc,
+html.dark[data-v2-app="1"] .hub-card .cs2-nav__desc,
+html[data-theme="dark"][data-v2-app="1"] .section-entry-card__desc,
+html.dark[data-v2-app="1"] .section-entry-card__desc {
+  color: var(--v2-color-night-muted, #b3c9bd) !important;
+  opacity: 1 !important;
+}
+
+html[data-theme="dark"][data-v2-app="1"] .hub-card .hub-card__meta,
+html.dark[data-v2-app="1"] .hub-card .hub-card__meta,
+html[data-theme="dark"][data-v2-app="1"] .hub-card .hub-card__go,
+html.dark[data-v2-app="1"] .hub-card .hub-card__go,
+html[data-theme="dark"][data-v2-app="1"] .hub-card .cs2-nav__meta,
+html.dark[data-v2-app="1"] .hub-card .cs2-nav__meta {
+  color: color-mix(in srgb, var(--mj-brand, #5cc095) 70%, #edf5f0) !important;
 }
 
 html[data-theme="dark"][data-v2-app="1"] .ph2__title,
