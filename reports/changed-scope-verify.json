@@ -1,31 +1,38 @@
 {
-  "generatedAt": "2026-09-28T15:05:17.161Z",
+  "generatedAt": "2026-09-28T02:34:31.247Z",
   "paths": [
+    "artifacts/majalis/docs/qa/MUSHAF_CONTROLS_INVENTORY.md",
     "artifacts/majalis/package.json",
-    "artifacts/majalis/src/features/mushaf-bookmarks/MushafBookmarkComposer.tsx",
-    "artifacts/majalis/src/features/mushaf-bookmarks/MushafBookmarkEditorShell.tsx",
-    "artifacts/majalis/src/features/mushaf-bookmarks/MushafPageBookmarkSheet.tsx",
-    "artifacts/majalis/src/features/mushaf-bookmarks/index.ts",
+    "artifacts/majalis/scripts/mushaf-controls-inventory.mjs",
+    "artifacts/majalis/src/features/mushaf-madinah/MushafAudioDock.tsx",
+    "artifacts/majalis/src/features/mushaf-reader/MushafControlsLayer.tsx",
     "artifacts/majalis/src/features/mushaf-reader/NewMushafReader.tsx",
-    "artifacts/majalis/src/features/mushaf-reader/useStableMushafLayout.ts",
-    "artifacts/majalis/src/hooks/useInputSheetViewport.ts",
+    "artifacts/majalis/src/features/mushaf-reader/mushaf-reader.css",
     "artifacts/majalis/src/lib/__tests__/mushaf-advanced-bookmarks-gate.test.ts",
-    "artifacts/majalis/src/lib/__tests__/mushaf-bookmark-editor-viewport-gate.test.ts",
-    "artifacts/majalis/src/styles/reader-bookmarks.css",
-    "docs/qa/MUSHAF_BOOKMARK_EDITOR_DEVICE_MATRIX.md",
-    "docs/remediation/MUSHAF_BOOKMARK_EDITOR_LAYOUT_ROOT_CAUSE.md"
+    "artifacts/majalis/src/lib/__tests__/mushaf-appearance-ayah-interaction-gate.test.ts",
+    "artifacts/majalis/src/lib/__tests__/mushaf-controls-inventory-gate.test.ts",
+    "artifacts/majalis/src/lib/__tests__/mushaf-dual-appearance-theme-gate.test.ts",
+    "artifacts/majalis/src/lib/__tests__/mushaf-immersive-reader-chrome-gate.test.ts",
+    "artifacts/majalis/src/lib/__tests__/mushaf-nextgen-baseline-gate.test.ts",
+    "artifacts/majalis/src/lib/__tests__/mushaf-page-arrows-focus-mode-gate.test.ts",
+    "artifacts/majalis/src/lib/__tests__/mushaf-pages-1-2-layout-gold-gate.test.ts",
+    "artifacts/majalis/src/lib/__tests__/mushaf-signature-p0-baseline-gate.test.ts",
+    "artifacts/majalis/src/lib/prefetch-route.ts",
+    "artifacts/majalis/src/styles/components/quran-audio-chrome.css",
+    "docs/qa/MUSHAF_CONTROLS_INVENTORY.md",
+    "docs/qa/mushaf-controls-inventory.json"
   ],
   "scopes": [
+    "docs",
     "other",
     "quran/mushaf",
-    "ui/layout",
-    "docs"
+    "ui/layout"
   ],
   "scopeIds": [
+    "docs",
     "other",
     "quran_mushaf",
-    "ui_layout",
-    "docs"
+    "ui_layout"
   ],
   "checks": {
     "ui": true,
@@ -43,7 +50,7 @@
     "data_audit": false
   },
   "outputs": {
-    "scopes": "other,quran/mushaf,ui/layout,docs",
+    "scopes": "docs,other,quran/mushaf,ui/layout",
     "scope_need_build": "true",
     "scope_need_mushaf": "true",
     "scope_need_color_contrast": "true",
