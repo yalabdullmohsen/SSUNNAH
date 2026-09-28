@@ -3,13 +3,13 @@
 | Field | Value |
 |---|---|
 | Generated | 2026-09-28 |
-| Branch | `main` @ `cc1f48356` (#2333 squash) |
-| Production tip | `cc1f4835` — matches `origin/main` |
+| Branch | `main` @ `ed0cbd387` (#2334 squash) |
+| Production tip | `ed0cbd38` — matches `origin/main` |
 | Authority | Measured gates + live GitHub/Vercel status — not marketing claims |
 | **STORE STATUS** | **HOLD** |
 | Final decision | **`WEB_RELEASED_NATIVE_HOLD`** |
-| Web deployment | **PASS** — Vercel Production SUCCESS; live `version.json` = `cc1f4835` |
-| Merge to main | **DONE** (#2329 · #2330 · #2331 · #2332 · #2333) |
+| Web deployment | **PASS** — Vercel Production SUCCESS; live `version.json` = `ed0cbd38` |
+| Merge to main | **DONE** (#2329 · #2330 · #2331 · #2332 · #2333 · #2334) |
 
 STORE STATUS: HOLD
 
@@ -64,7 +64,7 @@ Allowed statuses only: `PASS` · `FAIL` · `PARTIAL` · `NOT_RUN` · `DEVICE_REQ
 | Android applicationId | OWNER_ACTION | `com.majlisilm.app` ≠ Capacitor/iOS — reconcile before store |
 | production localhost | PASS | absent in capacitor configs |
 | DEV gallery in prod nav | PASS | `import.meta.env.DEV` gated |
-| production web commit | PASS (measured) | live `version.json` = `cc1f4835` (= `origin/main` #2333) |
+| production web commit | PASS (measured) | live `version.json` = `ed0cbd38` (= `origin/main` #2334) |
 
 ## Identity pins (do not mutate without owner)
 

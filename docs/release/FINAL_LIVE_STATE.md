@@ -2,16 +2,16 @@
 
 | Field | Value |
 |---|---|
-| Captured | 2026-09-28T19:20Z |
+| Captured | 2026-09-28T19:55Z |
 | Source | GitHub CLI + live `version.json` + HTTP smoke (not prior reports) |
 
 ## Truth (live)
 
 | Item | Value |
 |---|---|
-| `origin/main` | `cc1f48356` — squash of #2333 (Vercel API surface fix) |
-| Prior failing tips | `2478ebd7a` (#2331) · `0269e1401` (#2332 docs) — deploy FAILED |
-| Production `version.json` | **`cc1f4835`** · HTTP 200 · `builtAt=2026-09-28T19:19:10.514Z` |
+| `origin/main` | `ed0cbd387` — squash of #2334 (WEB_RELEASED_NATIVE_HOLD docs) |
+| Prior production tip | `cc1f48356` (#2333 Vercel API fix) — first healthy tip after deploy failure |
+| Production `version.json` | **`ed0cbd38`** · HTTP 200 · `builtAt=2026-09-28T19:26:29.804Z` |
 | Production vs main | **MATCH** |
 | Store | **HOLD** |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
@@ -25,6 +25,7 @@
 | #2331 | P2–P7 integration | **MERGED** | `2478ebd7a` | Code on main; initial Vercel deploy FAILED |
 | #2332 | Post-merge release docs | **MERGED** | `0269e1401` | Docs only; Vercel still failed |
 | #2333 | Restore single-dispatch API | **MERGED** | `cc1f48356` | Root cause fix → Production SUCCESS |
+| #2334 | WEB_RELEASED_NATIVE_HOLD docs | **MERGED** | `ed0cbd387` | Status docs; Production tip advanced with merge |
 
 ## Deployment
 
@@ -32,8 +33,8 @@
 |---|---|
 | Method | Official Vercel Auto Deploy on `main` (`majalis-majalis`) |
 | Commit status | `Vercel – majalis-majalis` = **success** (“Deployment has completed”) |
-| Live tip | `https://www.ssunnah.com/version.json` → `cc1f4835` |
-| Health | `GET /api/healthz` → `{"ok":true,"service":"ssunnah","commit":"cc1f4835",...}` |
+| Live tip | `https://www.ssunnah.com/version.json` → `ed0cbd38` |
+| Health | `GET /api/healthz` includes production commit tip |
 | Rollback | Not required — Production tip healthy |
 
 ## Production smoke (unauthenticated)
