@@ -43,7 +43,7 @@ COMPLETE · PARTIAL · CURATED · LIVE_DATA · OFFLINE_AVAILABLE · NETWORK_REQU
 | `makarim-akhlaq` | مكارم الأخلاق | `/akhlaq` | PARTIAL | PUBLISHED | akhlaq | PARTIAL | PARTIAL |
 | `dalail-nubuwwah` | دلائل النبوة | `/dalail-nubuwwah` | PARTIAL | PUBLISHED | dalail-nubuwwah | PARTIAL | PARTIAL |
 | `taarif-islam` | التعريف بالإسلام (متعدد اللغات) | `/discover-islam` | PARTIAL | PUBLISHED | discover-islam | PARTIAL | PARTIAL |
-| `tafnid-shubuhat` | تفنيد الشبهات | `/discover-islam` | BLOCKED_INCOMPLETE | INTERNAL | discover-islam | EXCLUDED | UNKNOWN |
+| `tafnid-shubuhat` | تفنيد الشبهات | `/discover-islam/doubts` | PARTIAL | CURATED_PUBLIC | shubuhat | EXCLUDED | PARTIAL |
 | `nahw-balagha` | النحو والبلاغة | `/arabic-language` | BLOCKED_INCOMPLETE | CURATED_PUBLIC | arabic-language | EXCLUDED | PARTIAL |
 | `institutions` | دليل المؤسسات الإسلامية | `/islamic-directory` | PARTIAL | PUBLISHED | islam-guide | PARTIAL | NETWORK_REQUIRED |
 | `historic-mosques` | دليل المساجد التاريخية | `/islamic-directory` | PARTIAL | PUBLISHED | islam-guide | PARTIAL | NETWORK_REQUIRED |

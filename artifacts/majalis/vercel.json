@@ -569,6 +569,16 @@
       "permanent": true
     },
     {
+      "source": "/shubuhat",
+      "destination": "/discover-islam/doubts",
+      "permanent": true
+    },
+    {
+      "source": "/shubuhat/:path*",
+      "destination": "/discover-islam/doubts",
+      "permanent": false
+    },
+    {
       "source": "/mosques",
       "destination": "/islamic-directory",
       "permanent": true
