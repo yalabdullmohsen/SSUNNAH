@@ -4,9 +4,10 @@
 |---|---|
 | Generated | 2026-09-28 |
 | Integration branch | `release/sunnah-final-integration-ready` |
-| Tip | `d8c2df3eb` |
+| Tip | `65d5438d5` |
 | Base `origin/main` | `dba87a606` |
-| Decision (pre-merge) | Pending full gates · target **WEB_RELEASED_NATIVE_HOLD** after green CI + Auto Deploy + smoke |
+| Local gates | `verify:preflight` PASS · `verify:ci` PASS (393.3s) · `release:verify` PASS (46/0) · color-contrast PASS (128 asserts) |
+| Decision (pre-merge) | Local gates green · target **WEB_RELEASED_NATIVE_HOLD** after PR CI + Auto Deploy + smoke |
 | STORE STATUS | **HOLD** |
 | STORE GO | **not declared** |
 
@@ -66,15 +67,15 @@ See `docs/release/FINAL_ENVIRONMENT_CHANGESET.md`. Sensitive features fail-close
 | Admin | v3 + legacy paths; unauthorized denied |
 | Native IDs | Unchanged |
 
-## Gates (filled after local verify)
+## Gates (local — 2026-09-28)
 
 | Command | Result | Notes |
 |---|---|---|
-| `pnpm run verify:preflight` | PENDING | |
-| `pnpm run verify:ci` | PENDING | |
-| `pnpm run release:verify` | PENDING | |
-| Color contrast (post P5) | PENDING | Must stay green |
-| Mushaf gates / editor | PENDING | |
+| `pnpm run verify:preflight` | PASS | 0.7s |
+| `pnpm run verify:ci` | PASS | 393.3s · mushaf measure+unit PASS |
+| `pnpm run release:verify` | PASS | 46 PASS · 0 FAIL · verdict TECHNICALLY_VERIFIED_WITH_EXTERNAL_BLOCKERS · STORE HOLD |
+| Color contrast (post P5) | PASS | 128 regression asserts · 189 public routes · min night title 9.63:1 |
+| Mushaf gates / editor | PASS | via verify:ci mushaf measure+assert + unit |
 | CI on integration PR | PENDING | |
 | Auto Deploy | PENDING | Official path only |
 | Production smoke | PENDING | |
