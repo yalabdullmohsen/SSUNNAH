@@ -1,52 +1,40 @@
-# Release Rollout and Rollback — Phase 6/7
+# Release Rollout and Rollback — Phase 6/7 / final remediation
 
 | Field | Value |
 |---|---|
 | Date | 2026-09-28 |
-| Execution | **NOT executed** by Phase 7 (web/native) |
-| Store | HOLD |
-| Web | NOT_DEPLOYED (gate BLOCKED — see PHASE_7_FINAL_REPORT) |
+| Store | **HOLD** |
+| Web code on `main` | `2478ebd7a` (#2331) |
+| Web Production tip | `dba87a60` (last successful Auto Deploy) |
+| Web tip match | **NO** — Vercel deploy for `2478ebd7` failed |
 
 ## Pin
 
 | Item | Value |
 |---|---|
-| RC branch | `release/sunnah-final-integration` |
-| Commit | fill from `release:verify` report after Phase 7 regenerate |
-| Build id | `dist/version.json` · `reports/release-candidate/build-manifest.json` |
-| Schema compatibility | no hosted SQL applied in Phase 6/7 RC delta |
-| Content compatibility | Phase 4 manifests/shards |
-| Production baseline | live `2e008c8d` on `main` |
+| Intended Production SHA | `2478ebd7a7e7e91d96b6bd27df28138e15236bed` |
+| Last good Production SHA | `dba87a606c321437a79acb01b4203f56480d50db` |
+| Failed deployment | `dpl_FMaX3KQwHGVdkdzEHy17FkfgbcEj` |
+| Schema compatibility | no hosted SQL applied in P2–P7 delta |
+| Content compatibility | Phase 4 manifests/shards · fail-closed APIs |
 
-## Pre-release (owner)
+## Rollback status
 
-1. `pnpm run release:verify` PASS  
-2. License matrix no BLOCKED_LICENSE for store flavor  
-3. Device matrices signed  
-4. Signing + ASC/Play ready  
+| Item | Value |
+|---|---|
+| Rollback executed? | **No** — Production never advanced to failed tip |
+| Effective state | Production remains last good (`dba87a60`) |
+| Re-deploy path | Official Vercel Auto Deploy on next successful `main` build / dashboard Redeploy |
+| Forbidden | Parallel unofficial Vercel project · admin bypass · force push |
 
-## Staged rollout
-
-Use platform defaults (TestFlight → phased / Play staged) — **no invented percentages**. Watch: crash-free, chunk recovery, prayer schedule failures, API 5xx, blank screen reports.
-
-## Stop / rollback triggers
+## Stop / rollback triggers (if tip advances)
 
 - Critical mushaf/text integrity issue  
-- Prayer schedule mass failure  
+- Blank screen / reload loop  
 - Secret exposure  
-- Auth lockout  
+- Auth lockout / Admin exposure  
 - Uncaught error spike correlated to build id  
 
-## Rollback capabilities
+## Store
 
-| Layer | Method | Limitation |
-|---|---|---|
-| Web | redeploy previous commit on Vercel | OWNER / EXTERNAL |
-| Content | pin previous manifests/checksums | |
-| API | keep backward compatible handlers | never delete needed binary APIs |
-| Feature kill switches | only if implemented & tested | |
-| Native binary | **cannot** remove from devices | ship fixed build |
-
-## Communication
-
-Template: build id · impact · mitigation · next update — no user PII.
+**HOLD** — no TestFlight / Play upload in this task.
