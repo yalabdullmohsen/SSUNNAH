@@ -7,6 +7,7 @@ import {
   whatsappShareUrl,
 } from "@/lib/share-faida";
 import { openExternalUrl } from "@/lib/capacitor-utils";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/share-faida.css";
 
 interface ShareButtonProps {
@@ -81,37 +82,45 @@ export function ShareButton({
       dir="rtl"
     >
       <div className="share-faida__actions">
-        <button
+        <Button
           type="button"
+          variant="primary"
+          size={size === "sm" ? "small" : "medium"}
           className="share-faida__btn share-faida__btn--primary"
           onClick={handleNative}
-          disabled={busy}
+          loading={busy}
           aria-label="مشاركة"
+          iconStart={<Share2 size={size === "sm" ? 14 : 16} strokeWidth={2} aria-hidden="true" />}
         >
-          <Share2 size={size === "sm" ? 14 : 16} strokeWidth={2} aria-hidden="true" />
           {label ?? "مشاركة"}
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
+          variant="secondary"
+          size={size === "sm" ? "small" : "medium"}
           className="share-faida__btn"
           onClick={handleWhatsApp}
           aria-label="مشاركة عبر واتساب"
         >
           واتساب
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
+          variant="ghost"
+          size={size === "sm" ? "small" : "medium"}
           className="share-faida__btn"
           onClick={handleCopy}
           aria-label={copied ? "تم نسخ الرابط" : "نسخ الرابط"}
+          iconStart={
+            copied ? (
+              <Check size={14} strokeWidth={2.2} aria-hidden="true" />
+            ) : (
+              <Copy size={14} strokeWidth={2} aria-hidden="true" />
+            )
+          }
         >
-          {copied ? (
-            <Check size={14} strokeWidth={2.2} aria-hidden="true" />
-          ) : (
-            <Copy size={14} strokeWidth={2} aria-hidden="true" />
-          )}
           {copied ? "تم" : "نسخ"}
-        </button>
+        </Button>
       </div>
     </div>
   );

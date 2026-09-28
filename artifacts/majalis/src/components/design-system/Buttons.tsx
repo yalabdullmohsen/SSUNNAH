@@ -1,13 +1,14 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { ActionButton, type ActionButtonProps } from "./ActionButton";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-/** زر أساسي — أخضر عميق / نعناعي ليلي. */
+/** زر أساسي — يمر عبر ActionButton → Button الرسمي. */
 export function PrimaryButton(props: ActionButtonProps) {
   return <ActionButton {...props} variant="primary" />;
 }
 
-/** زر ثانوي — سطح + حد أخضر. */
+/** زر ثانوي — سطح + حد. */
 export function SecondaryButton(props: ActionButtonProps) {
   return <ActionButton {...props} variant="secondary" />;
 }
@@ -16,20 +17,25 @@ type IconButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   label: string;
   children: ReactNode;
   tone?: "brand" | "muted" | "gold";
+  loading?: boolean;
 };
 
-/** زر أيقونة دائري — للرجوع/إغلاق/إجراء سريع. */
+/** زر أيقونة — يتطلب `label` لاسم وصول؛ يمر عبر Button size=icon. */
 export function IconButton({
   label,
   children,
   tone = "brand",
   className,
   type = "button",
+  loading = false,
   ...rest
 }: IconButtonProps) {
   return (
-    <button
+    <Button
       type={type}
+      variant="ghost"
+      size="icon"
+      loading={loading}
       aria-label={label}
       title={label}
       className={cn(
@@ -42,6 +48,6 @@ export function IconButton({
       {...rest}
     >
       {children}
-    </button>
+    </Button>
   );
 }

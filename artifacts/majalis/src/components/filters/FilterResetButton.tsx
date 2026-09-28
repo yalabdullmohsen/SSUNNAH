@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -14,14 +15,16 @@ export function FilterResetButton({
   disabled = false,
 }: Props) {
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
+      size="small"
       className={cn("mj-filter-reset", className)}
       onClick={onClick}
       disabled={disabled}
       aria-label={label}
     >
       {label}
-    </button>
+    </Button>
   );
 }
