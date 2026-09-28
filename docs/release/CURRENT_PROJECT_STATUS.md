@@ -1,6 +1,6 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-09-28 (post #2333 Production deploy)  
+**Updated:** 2026-09-28 (post #2334 tip sync)  
 **Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
 **Live state:** `docs/release/FINAL_LIVE_STATE.md`  
 **Blockers:** `docs/release/PHASE_7_BLOCKER_REGISTER.md`
@@ -9,8 +9,8 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `cc1f48356` — fix Vercel API surface `#2333` |
-| Production `version.json` | `cc1f4835` · HTTP 200 · **matches main** · `builtAt=2026-09-28T19:19:10.514Z` |
+| `origin/main` tip | `ed0cbd387` — docs `WEB_RELEASED_NATIVE_HOLD` `#2334` |
+| Production `version.json` | `ed0cbd38` · HTTP 200 · **matches main** · `builtAt=2026-09-28T19:26:29.804Z` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
 
