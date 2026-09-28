@@ -66,3 +66,27 @@ Measured source inventory (2026-09-28, worktree): **347** CSS files under `artif
 3. Move to SAFE_REMOVE only after (1)+(2); delete in a dedicated PR.
 
 Phase 5 **does not** delete SAFE_REMOVE_CANDIDATE entries.
+
+---
+
+## Visual System Program — PR-1 update (2026-09-28)
+
+| Field | Value |
+|---|---|
+| Full-tree CSS files (`src/**/*.css`) | **361** (inventory script) |
+| Policy | No mass delete · port → parity → drop import → SAFE_REMOVE |
+| Debt gate | `test:visual-system-debt-budget` (ceilings must not rise) |
+
+### Additional classifications (program waves)
+
+| Path / layer | Status | Next wave |
+|---|---|---|
+| `styles/visual-identity-unify.css` | OVERRIDE_PATCH / KEEP | Absorb → retire PR-10/11 |
+| `styles/sections-calm-polish.css` | OVERRIDE_PATCH / KEEP | Absorb → retire |
+| `styles/soft-cards.css` | MIGRATION_CANDIDATE | Cards PR-3 |
+| `styles/pages/*-legacy.css` | MIGRATION_CANDIDATE | PR-10/11 |
+| `styles/m2030/*` | KEEP (ACTIVE_LEGACY) | Port home/nav then retire |
+| `features/mushaf-*/*.css` | BLOCKED | Phase 11 / PR-12 only |
+| Admin CSS | BLOCKED | After Admin visual PR-9 |
+
+PR mapping: PR-6 dark · PR-10/11 legacy retirement · PR-12 mushaf boundary · PR-13 compatibility reduction.

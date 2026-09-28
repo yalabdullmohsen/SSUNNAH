@@ -1,5 +1,7 @@
 # Design Token Migration — toward Foundation V2
 
+**Authority lock:** `docs/design/DESIGN_TOKEN_AUTHORITY.md` · Baseline: `docs/design/SUNNAH_VISUAL_SYSTEM_BASELINE.md` · Debt gate: `pnpm --filter @workspace/majalis run test:visual-system-debt-budget`
+
 ## Current stack (runtime order, simplified)
 
 1. `theme.css` / identity  
