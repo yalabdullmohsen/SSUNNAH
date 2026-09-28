@@ -1,8 +1,8 @@
 # تقرير نطاق التغييرات
 
-**التاريخ:** 2026-09-28T15:05:17.162Z
-**عدد الملفات:** 13
-**النطاقات:** other، quran/mushaf، ui/layout، docs
+**التاريخ:** 2026-09-28T02:34:31.248Z
+**عدد الملفات:** 20
+**النطاقات:** docs، other، quran/mushaf، ui/layout
 **docs-only:** لا
 
 ## البوابات المقترحة
@@ -25,19 +25,26 @@
 
 ## الملفات المتغيرة (أول 40)
 
+- `artifacts/majalis/docs/qa/MUSHAF_CONTROLS_INVENTORY.md` → docs
 - `artifacts/majalis/package.json` → other
-- `artifacts/majalis/src/features/mushaf-bookmarks/MushafBookmarkComposer.tsx` → quran_mushaf
-- `artifacts/majalis/src/features/mushaf-bookmarks/MushafBookmarkEditorShell.tsx` → quran_mushaf
-- `artifacts/majalis/src/features/mushaf-bookmarks/MushafPageBookmarkSheet.tsx` → quran_mushaf
-- `artifacts/majalis/src/features/mushaf-bookmarks/index.ts` → quran_mushaf
+- `artifacts/majalis/scripts/mushaf-controls-inventory.mjs` → quran_mushaf
+- `artifacts/majalis/src/features/mushaf-madinah/MushafAudioDock.tsx` → quran_mushaf
+- `artifacts/majalis/src/features/mushaf-reader/MushafControlsLayer.tsx` → quran_mushaf
 - `artifacts/majalis/src/features/mushaf-reader/NewMushafReader.tsx` → quran_mushaf
-- `artifacts/majalis/src/features/mushaf-reader/useStableMushafLayout.ts` → quran_mushaf
-- `artifacts/majalis/src/hooks/useInputSheetViewport.ts` → ui_layout
+- `artifacts/majalis/src/features/mushaf-reader/mushaf-reader.css` → quran_mushaf
 - `artifacts/majalis/src/lib/__tests__/mushaf-advanced-bookmarks-gate.test.ts` → quran_mushaf
-- `artifacts/majalis/src/lib/__tests__/mushaf-bookmark-editor-viewport-gate.test.ts` → quran_mushaf
-- `artifacts/majalis/src/styles/reader-bookmarks.css` → ui_layout
-- `docs/qa/MUSHAF_BOOKMARK_EDITOR_DEVICE_MATRIX.md` → docs
-- `docs/remediation/MUSHAF_BOOKMARK_EDITOR_LAYOUT_ROOT_CAUSE.md` → docs
+- `artifacts/majalis/src/lib/__tests__/mushaf-appearance-ayah-interaction-gate.test.ts` → quran_mushaf
+- `artifacts/majalis/src/lib/__tests__/mushaf-controls-inventory-gate.test.ts` → quran_mushaf
+- `artifacts/majalis/src/lib/__tests__/mushaf-dual-appearance-theme-gate.test.ts` → quran_mushaf
+- `artifacts/majalis/src/lib/__tests__/mushaf-immersive-reader-chrome-gate.test.ts` → quran_mushaf
+- `artifacts/majalis/src/lib/__tests__/mushaf-nextgen-baseline-gate.test.ts` → quran_mushaf
+- `artifacts/majalis/src/lib/__tests__/mushaf-page-arrows-focus-mode-gate.test.ts` → quran_mushaf
+- `artifacts/majalis/src/lib/__tests__/mushaf-pages-1-2-layout-gold-gate.test.ts` → quran_mushaf
+- `artifacts/majalis/src/lib/__tests__/mushaf-signature-p0-baseline-gate.test.ts` → quran_mushaf
+- `artifacts/majalis/src/lib/prefetch-route.ts` → ui_layout
+- `artifacts/majalis/src/styles/components/quran-audio-chrome.css` → ui_layout
+- `docs/qa/MUSHAF_CONTROLS_INVENTORY.md` → docs
+- `docs/qa/mushaf-controls-inventory.json` → docs
 
 
 ## سياسات
