@@ -1,1 +1,1 @@
-export { default } from "../../artifacts/majalis/api/assistant/health.js";
+export { default } from "../../artifacts/majalis/lib/api-handlers/assistant/health.js";

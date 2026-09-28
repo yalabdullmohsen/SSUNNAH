@@ -45,7 +45,8 @@ function titleFromPath(path: string): string {
   "/tawba": "التوبة والاستغفار",
   "/sins-and-rights": "الذنوب والحقوق",
   "/settings": "الإعدادات",
-  "/internal/status": "حالة المنصة"
+  "/internal/status": "حالة المنصة",
+  "/dev/design-system": "معرض نظام التصميم",
 };
   if (known[path]) return known[path];
   const leaf = path.split("/").filter(Boolean).pop() ?? path;
@@ -70,6 +71,9 @@ const PATHS = [
   "/admin/legacy",
   "/admin/v3",
   "/admin/v3/content",
+  "/admin/v3/content/lessons",
+  "/admin/v3/content/sheikhs",
+  "/admin/v3/content/fawaid",
   "/admin/v3/reviews",
   "/admin/v3/taxonomy",
   "/admin/v3/analytics",
@@ -140,6 +144,7 @@ const PATHS = [
   "/dalail-nubuwwah/:categoryId",
   "/dalail-nubuwwah/:categoryId/:topicId",
   "/delete-account",
+  "/dev/design-system",
   "/discover-islam",
   "/discover-islam/articles/:slug",
   "/discover-islam/contact",
@@ -485,7 +490,7 @@ function inferSection(path: string): AppRouteSection {
 }
 
 const SITEMAP_EXCLUDED =
-  /^\/(admin|dashboard|login|register|api|search|settings|account|auth|internal|hifz-path)(\/|$)/;
+  /^\/(admin|dashboard|login|register|api|search|settings|account|auth|internal|hifz-path|dev)(\/|$)/;
 
 export const ROUTE_REGISTRY: readonly AppRoute[] = PATHS.map((path) => ({
   path,

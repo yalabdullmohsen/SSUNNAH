@@ -4,6 +4,7 @@
  */
 import type { HTMLAttributes, ReactNode } from "react";
 import { Link } from "wouter";
+import { SectionTitle } from "@/components/design-system/text";
 import { cn } from "@/lib/utils";
 
 export type EmptyStateV2Props = HTMLAttributes<HTMLDivElement> & {
@@ -59,7 +60,9 @@ export function EmptyStateV2({
           <span className="es2__mark">س</span>
         </div>
       )}
-      <p className="es2__title">{title}</p>
+      <SectionTitle as="h2" className="es2__title">
+        {title}
+      </SectionTitle>
       {description ? <p className="es2__desc">{description}</p> : null}
       {nextStep ? <p className="es2__next">{nextStep}</p> : null}
       {navPath ? <p className="es2__nav-path">{navPath}</p> : null}

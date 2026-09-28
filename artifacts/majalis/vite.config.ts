@@ -71,6 +71,14 @@ export default defineConfig({
         ) {
           return path.resolve(import.meta.dirname, "src/lib/json-seed-disk.browser-stub.ts");
         }
+        if (
+          source === "./fiqh-catalog-disk.node" ||
+          source.endsWith("/fiqh-catalog-disk.node") ||
+          source.endsWith("/fiqh-catalog-disk.node.ts") ||
+          source.includes("fiqh-catalog-disk.node")
+        ) {
+          return path.resolve(import.meta.dirname, "src/lib/fiqh-catalog-disk.browser-stub.ts");
+        }
         return null;
       },
     },

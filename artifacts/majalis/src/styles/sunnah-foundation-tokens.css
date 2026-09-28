@@ -166,6 +166,11 @@
   --sf-safe-bottom: var(--inset-bottom, 0px);
   --sf-safe-left: var(--inset-left, 0px);
 
+  /* ── Content widths (PageContainer / public shells) ── */
+  --sf-content-narrow: 40rem;
+  --sf-content-default: 48rem;
+  --sf-content-wide: 72rem;
+
   /* ── Density: STANDARD (افتراضي — كثافة أعلى، فراغ أقل) ── */
   --sf-density-name: standard;
   --sf-pad-card: 0.85rem;

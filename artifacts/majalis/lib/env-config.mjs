@@ -90,7 +90,8 @@ export function getEnvConfig() {
   const isProd = process.env.NODE_ENV === "production" || process.env.VERCEL_ENV === "production";
   const cronSecret = pick("CRON_SECRET", ...(isProd ? [] : ["VITE_CRON_SECRET"]));
   const cronSecretPrevious = pick("CRON_SECRET_PREVIOUS");
-  const adminSecret = pick("ADMIN_API_SECRET", "CRON_SECRET", ...(isProd ? [] : ["VITE_CRON_SECRET"]));
+  // لا fallback إلى CRON_SECRET — عزل صلاحيات Admin عن Cron
+  const adminSecret = pick("ADMIN_API_SECRET", ...(isProd ? [] : ["VITE_ADMIN_API_SECRET"]));
   const openaiKey = pick("OPENAI_API_KEY");
   const anthropicKey = pick("ANTHROPIC_API_KEY");
   const databaseUrl = pick(
@@ -231,12 +232,7 @@ export function validateCronAuth(req) {
 }
 
 export function validateAdminAuth(req) {
-  if (req.headers?.["x-vercel-cron"] === "1") {
-    const secrets = getCronSecrets();
-    const provided = extractCronSecretFromRequest(req);
-    if (provided && secrets.some((s) => safeEqual(provided, s))) return true;
-  }
-
+  // لا قبول x-vercel-cron / CRON_SECRET كبديل لمصادقة Admin
   const env = getEnvConfig();
   const configured = env.adminSecret;
 

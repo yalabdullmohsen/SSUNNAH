@@ -1,0 +1,18 @@
+{
+  "version.json": {
+    "bytes": 204,
+    "sha256": "423a3208698395eca77adaee3b5ae3076d4fa9f5e858b3f487db479872fa0c9c"
+  },
+  "index.html": {
+    "bytes": 37026,
+    "sha256": "355403fb31e96426b29b1b2eb3660b608171d0ed1cfff15bafbf2f62b25980e1"
+  },
+  "assets/index-B2XvHXHT.js": {
+    "bytes": 390668,
+    "sha256": "1ecb70c0f8927d92e6c3bf76677130d3fbcb2156f8a8efc623ae23173a985264"
+  },
+  "assets/index-CTtqHtHH.css": {
+    "bytes": 336465,
+    "sha256": "4c81017f306a8b359a143d1b555ff7766ad8942bbde876120bbf95d3c2cceefa"
+  }
+}

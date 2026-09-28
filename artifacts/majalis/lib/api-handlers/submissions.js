@@ -47,7 +47,8 @@ export default async function handler(req, res) {
 
   const { error } = await admin.from("submissions").insert(row);
   if (error) {
-    sendJson(res, 500, { ok: false, error: error.message });
+    console.error("[submissions] insert failed", error.code || "db_error");
+    sendJson(res, 500, { ok: false, error: "save_failed", message: "تعذر حفظ المقترح. حاول لاحقًا." });
     return;
   }
 

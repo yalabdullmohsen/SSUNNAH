@@ -73,6 +73,34 @@ export async function loadUnifiedSearchIndex(): Promise<IndexPayload> {
   return cache;
 }
 
+const shardCache = new Map<string, IndexPayload>();
+
+/**
+ * تحميل شظية مجال واحد من /data/search/shards/<kind>.json
+ * للبحث المضيّق — البحث الشامل يبقى على index.json.
+ */
+export async function loadUnifiedSearchShard(kind: string): Promise<IndexPayload> {
+  const key = kind.trim();
+  if (!key) return { version: 0, docs: [] };
+  const hit = shardCache.get(key);
+  if (isCompatibleSearchIndex(hit)) return hit!;
+  const url = `/data/search/shards/${encodeURIComponent(key)}.json`;
+  const fromWorker = await loadIndexViaWorker(url);
+  if (isCompatibleSearchIndex(fromWorker)) {
+    shardCache.set(key, fromWorker);
+    return fromWorker;
+  }
+  const { fetchStaticJsonCached, purgeStaticJsonCache } = await import("@/lib/static-json-cache");
+  const empty: IndexPayload = { version: 0, docs: [] };
+  const json = await fetchStaticJsonCached<IndexPayload>(url, empty, { timeoutMs: 8_000 });
+  if (!isCompatibleSearchIndex(json)) {
+    await purgeStaticJsonCache(url).catch(() => undefined);
+    throw new Error(`search shard unavailable: ${key}`);
+  }
+  shardCache.set(key, json);
+  return json;
+}
+
 function loadIndexViaWorker(url: string): Promise<IndexPayload | null> {
   if (typeof window === "undefined" || typeof Worker === "undefined") {
     return Promise.resolve(null);

@@ -1,4 +1,11 @@
 import { createRateLimiter } from "./rate-limit.mjs";
+import { ROUTE_SECURITY_CLASS } from "./api-security-registry.mjs";
+import {
+  enforceApiSecurity,
+  readJsonBodyLimited,
+} from "./api-security-guard.mjs";
+import { trackApiSecurityEvent } from "./api-security-telemetry.mjs";
+import { isCostSensitivePath } from "./api-security-policy.mjs";
 
 const lessonFromImageRateLimit = createRateLimiter({
   windowMs: 60_000,
@@ -267,6 +274,7 @@ export const API_ROUTES = [
   { prefix: "/api/researches/submit", module: "./api-handlers/researches-submit.js", exact: true, rateLimit: submissionsRateLimit },
   { prefix: "/api/cron/researches-daily-import", module: "./api-handlers/cron/researches-daily-import.js", allowGet: true, exact: true },
   { prefix: "/api/admin/submissions", module: "./api-handlers/admin/submissions.js", allowGet: true },
+  { prefix: "/api/admin/v3", module: "./api-handlers/admin/v3.js", allowGet: true },
   { prefix: "/api/account/delete", module: "./api-handlers/account/delete.js", exact: true, rateLimit: accountDeleteRateLimit },
   { prefix: "/api/account/export", module: "./api-handlers/account/export.js", exact: true, allowGet: true, rateLimit: accountExportRateLimit },
   // ── الباحث الشرعي (RAG) ────────────────────────────────────────────────────
@@ -290,7 +298,10 @@ export const API_ROUTES = [
   { prefix: "/api/admin/faqs",         module: "./api-handlers/universities-vercel.js", allowGet: true, rateLimit: universitiesWriteRateLimit },
   { prefix: "/api/admin/universities", module: "./api-handlers/universities-vercel.js", allowGet: true, rateLimit: universitiesWriteRateLimit },
   { prefix: "/api/universities",       module: "./api-handlers/universities-vercel.js", allowGet: true },
-];
+].map((route) => ({
+  ...route,
+  securityClass: route.securityClass || ROUTE_SECURITY_CLASS[route.prefix] || null,
+}));
 
 const handlerCache = new Map();
 
@@ -343,23 +354,6 @@ export function matchApiRoute(urlOrReq) {
   return findApiRouteForPath(resolveRequestPath(urlOrReq));
 }
 
-async function readJsonBody(req) {
-  if (req.body && typeof req.body === "object") return req.body;
-  if (typeof req.on !== "function") return {};
-
-  const chunks = [];
-  for await (const chunk of req) {
-    chunks.push(chunk);
-  }
-  const raw = Buffer.concat(chunks).toString("utf8");
-  if (!raw) return {};
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return null;
-  }
-}
-
 export { sendJson, endEmpty, isResponseClosed, applyHandlerResult } from "./api/_http.mjs";
 import { sendJson } from "./api/_http.mjs";
 
@@ -390,9 +384,9 @@ async function invokeHandler(handler, req, res, routePrefix, routeOpts = {}) {
 }
 
 export async function dispatchApiRequest(req, res) {
+  const started = Date.now();
   const route = matchApiRoute(req);
   if (!route) {
-    // متصفح/فحص بصري يتوقع صفحة 404 لا JSON عارياً من 40 حرفاً
     const { wantsHtml, sendNotFoundHtml } = await import("./not-found-html.mjs");
     if (req.method === "GET" && wantsHtml(req)) {
       sendNotFoundHtml(res);
@@ -402,75 +396,78 @@ export async function dispatchApiRequest(req, res) {
     return;
   }
 
+  const gate = await enforceApiSecurity(req, res, route);
+  if (!gate.ok) return;
+
   const handler = await loadHandler(route);
+  const maxBody = gate.policy?.maxBodyBytes ?? 32_768;
 
-  if (req.method === "OPTIONS") {
-    if (route.corsPreflightOrigins) {
-      const origin = String(req.headers?.origin || "");
-      if (route.corsPreflightOrigins.has(origin)) {
-        res.setHeader("Access-Control-Allow-Origin", origin);
-        res.setHeader("Vary", "Origin");
-      }
-      res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-      res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    }
-    res.statusCode = 204;
-    res.end();
-    return;
-  }
-
-  if (req.method === "GET" && route.allowGet) {
-    req.body = {};
-    const runGet = async () => {
-      try {
-        await invokeHandler(handler, req, res, route.prefix, route);
-      } catch (error) {
-        console.error(`${route.prefix} GET handler failed`, error);
-        if (!res.headersSent) {
-          sendJson(res, 500, { ok: false, message: "تعذر تنفيذ الطلب.", fallback: true });
-        }
-      }
-    };
-    if (route.rateLimit) {
-      await route.rateLimit(req, res, runGet);
+  const run = async () => {
+    if (req.method === "GET" || req.method === "HEAD" || req.method === "DELETE") {
+      req.body = {};
     } else {
-      await runGet();
-    }
-    return;
-  }
-
-  const MUTATION_METHODS = ["POST", "PUT", "DELETE", "PATCH"];
-  if (!MUTATION_METHODS.includes(req.method)) {
-    sendJson(res, 405, { ok: false, message: "الطريقة غير مدعومة." });
-    return;
-  }
-
-  const runMutation = async () => {
-    // DELETE usually has no body; read body for POST/PUT/PATCH only
-    if (req.method !== "DELETE") {
-      const body = await readJsonBody(req);
-      if (body === null && route.prefix !== "/api/test-anthropic") {
-        sendJson(res, 400, { ok: false, message: "اكتب سؤالك أولًا." });
+      const parsed = await readJsonBodyLimited(req, maxBody);
+      if (!parsed.ok) {
+        const status = parsed.error === "payload_too_large" ? 413 : 400;
+        sendJson(res, status, {
+          ok: false,
+          message:
+            parsed.error === "payload_too_large"
+              ? "الطلب أكبر من الحد المسموح."
+              : "طلب غير صالح.",
+          requestId: gate.correlationId,
+        });
         return;
       }
-      req.body = body ?? {};
-    } else {
-      req.body = {};
+      req.body = parsed.body ?? {};
     }
+
+    // Cost-sensitive POST — central quota/kill-switch before handler
+    if (
+      isCostSensitivePath(route.prefix) &&
+      (req.method === "POST" || req.method === "PUT")
+    ) {
+      const { enforceAiCostGate } = await import("./api-cost-guard.mjs");
+      const cost = await enforceAiCostGate(req, res, {
+        routeId: route.prefix,
+        tts: route.prefix.includes("/tts"),
+      });
+      if (!cost) return;
+      req.aiAuthType = cost.authType;
+    }
+
     try {
-      await invokeHandler(handler, req, res, route.prefix, route);
+      await invokeHandler(handler, req, res, route.prefix, {
+        ...route,
+        timeoutMs: route.timeoutMs ?? gate.policy?.timeoutMs,
+      });
     } catch (error) {
       console.error(`${route.prefix} ${req.method} handler failed`, error);
       if (!res.headersSent) {
-        sendJson(res, 500, { ok: false, message: "تعذر تنفيذ الطلب.", fallback: true });
+        sendJson(res, 500, {
+          ok: false,
+          message: "تعذر تنفيذ الطلب.",
+          requestId: gate.correlationId,
+        });
       }
+    } finally {
+      trackApiSecurityEvent({
+        routeId: route.prefix,
+        securityClass: gate.securityClass,
+        method: req.method,
+        status: res.statusCode || 200,
+        durationMs: Date.now() - started,
+        authType: req.authType || req.aiAuthType || "none",
+        correlationId: gate.correlationId,
+        providerCategory: isCostSensitivePath(route.prefix) ? "ai" : undefined,
+      });
     }
   };
 
   if (route.rateLimit) {
-    await route.rateLimit(req, res, runMutation);
+    await route.rateLimit(req, res, run);
   } else {
-    await runMutation();
+    await run();
   }
 }
 

@@ -1,7 +1,7 @@
 # نية مسار المكتبة — PRODUCT_INTENT
 
-**Updated:** 2026-09-21 · Full Remediation Wave 8  
-**Status:** intentional redirect (not a regression)
+**Updated:** 2026-09-28 · Phase 4 content delivery  
+**Status:** intentional redirect (not a regression) — see `docs/remediation/PHASE_4_LIBRARY_DECISION.md` (REDIRECT_RETAINED / BLOCKED_SOURCE)
 
 ## Behavior
 

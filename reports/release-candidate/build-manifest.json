@@ -1,0 +1,19 @@
+{
+  "kind": "sunnah-release-candidate",
+  "generatedAt": "2026-09-28T14:49:15.117Z",
+  "commit": "dd1cb859b58e1d4476345a5100a558060a373cde",
+  "branch": "release/sunnah-final-integration",
+  "channel": "rc-local",
+  "environment": "production-web-build",
+  "appVersion": "1.0.0",
+  "buildId": "dd1cb859",
+  "node": "v24.17.0",
+  "pnpm": "10.34.4",
+  "capacitorAppId": "com.yousef.majlisilm",
+  "notes": [
+    "Unsigned / unpublished artifact metadata only",
+    "No IPA/AAB generated",
+    "Store status remains HOLD until OWNER_ACTION + DEVICE_REQUIRED close"
+  ],
+  "fileCount": 3863
+}

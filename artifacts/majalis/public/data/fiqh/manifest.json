@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "contentType": "fiqh.books",
+  "checksum": "sha256:cfc4e5e9916b4c4112c050460507beeef1a0f7f22fc88f7a02edefd27c920d51",
+  "files": [
+    {
+      "file": "books.json",
+      "bytes": 5433089,
+      "bookCount": 19
+    },
+    {
+      "file": "book-aliases.json",
+      "bytes": 7115,
+      "aliasCount": 47
+    }
+  ],
+  "offlineEligible": true
+}

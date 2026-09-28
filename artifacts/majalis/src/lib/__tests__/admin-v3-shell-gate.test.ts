@@ -44,6 +44,7 @@ assert.equal(listAdminV3AuditEvents().length, 0);
 
 const app = read("src/App.tsx");
 const routes = read("src/AppRoutes.tsx");
+const adminLazy = read("src/app/routes/lazy/admin.ts");
 const shell = read("src/admin-v3/AdminV3Shell.tsx");
 const v3app = read("src/admin-v3/AdminV3App.tsx");
 const catalog = read("src/app/router/routes.ts");
@@ -51,7 +52,7 @@ const catalog = read("src/app/router/routes.ts");
 assert.doesNotMatch(app, /admin-v3|AdminV3App/, "لا Admin v3 في الهيكل العام");
 assert.match(routes, /AdminV3App/);
 assert.match(routes, /AdminLazyRoute component=\{AdminV3App\}/);
-assert.match(routes, /lazyWithRetry\(\(\) => import\("@\/admin-v3\/AdminV3App"\)/);
+assert.match(adminLazy, /lazyWithRetry\(\(\) => import\("@\/admin-v3\/AdminV3App"\)/);
 assert.match(routes, /\/admin\/v3\/reviews/);
 assert.match(routes, /\/admin\/v3\/taxonomy/);
 assert.match(routes, /\/admin\/v3\/community/);

@@ -68,6 +68,15 @@ export function AdminV3Shell({ children }: Props) {
         <div className="av3-brand">
           <span className="av3-brand__mark">سُنّة</span>
           <span className="av3-brand__sub">لوحة التحكم</span>
+          {import.meta.env.DEV || import.meta.env.MODE === "development" ? (
+            <span className="av3-env-badge" title="بيئة التطوير">
+              development
+            </span>
+          ) : import.meta.env.MODE === "preview" ? (
+            <span className="av3-env-badge av3-env-badge--preview" title="معاينة">
+              preview
+            </span>
+          ) : null}
         </div>
         <nav className="av3-sidebar__nav">
           {ADMIN_V3_NAV.map((item) => (

@@ -36,7 +36,8 @@ for (const name of [
 
 const shell = read("src/components/design-system/screens/ScreenShell.tsx");
 assert.match(shell, /data-ss-screen-pattern/);
-assert.match(shell, /EmptyState/);
+assert.match(shell, /EmptyStateV2|EmptyState/);
+assert.match(shell, /LoadingStateV2|OfflineStateV2|ErrorStateV2/);
 assert.match(shell, /loading|empty|error/);
 
 const css = read("src/styles/ssunnah-screen-patterns.css");

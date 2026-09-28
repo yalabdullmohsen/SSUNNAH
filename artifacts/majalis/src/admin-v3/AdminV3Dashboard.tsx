@@ -11,8 +11,8 @@ export function AdminV3Dashboard() {
       <header className="av3-dash__hero">
         <h1 className="av3-dash__title">لوحة التحكم</h1>
         <p className="av3-dash__sub">
-          سبعة مراكز تشغيلية فوق المسارات السابقة. لا حذف لـ Legacy في هذه الموجة،
-          ولا تغيير صلاحيات أو منطق الأعمال.
+          مراكز تشغيلية مع CRUD أصلي للمراجعات والدروس والمشايخ والفوائد والتصنيف
+          والمستخدمين. Legacy يبقى مسار توافق — بلا حذف في هذه المرحلة.
         </p>
       </header>
 

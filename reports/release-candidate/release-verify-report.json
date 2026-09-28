@@ -1,0 +1,270 @@
+{
+  "generatedAt": "2026-09-28T14:48:19.566Z",
+  "commit": "dd1cb859b58e1d4476345a5100a558060a373cde",
+  "branch": "release/sunnah-final-integration",
+  "node": "v24.17.0",
+  "pnpm": "10.34.4",
+  "failures": [],
+  "warnings": [
+    "working tree dirty — set RELEASE_VERIFY_ALLOW_DIRTY=1 to allow",
+    "Android applicationId (com.majlisilm.app) ≠ Capacitor appId (com.yousef.majlisilm) — OWNER_ACTION before store"
+  ],
+  "results": [
+    {
+      "name": "git commit readable",
+      "status": "PASS",
+      "detail": "dd1cb859b58e1d4476345a5100a558060a373cde"
+    },
+    {
+      "name": "branch is Phase 7 integration or documented RC branch",
+      "status": "PASS",
+      "detail": "release/sunnah-final-integration"
+    },
+    {
+      "name": "capacitor appId expected",
+      "status": "PASS",
+      "detail": "com.yousef.majlisilm"
+    },
+    {
+      "name": "capacitor appName سُنّة",
+      "status": "PASS",
+      "detail": "سُنّة"
+    },
+    {
+      "name": "capacitor webDir dist",
+      "status": "PASS",
+      "detail": "dist"
+    },
+    {
+      "name": "no cleartext",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "server.url is www.ssunnah.com",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "no localhost in capacitor.config.ts",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "no http:// cleartext server",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "android applicationId present",
+      "status": "PASS",
+      "detail": "com.majlisilm.app"
+    },
+    {
+      "name": "iOS PRODUCT_BUNDLE_IDENTIFIER includes com.yousef.majlisilm",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "dev design-system route is DEV-gated",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/release/RELEASE_READINESS_TRUTH.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/remediation/PHASE_6_RELEASE_BASELINE.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/qa/MUSHAF_REAL_DEVICE_RELEASE_MATRIX.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/qa/PRAYER_ADHAN_REAL_DEVICE_MATRIX.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/qa/IOS_RELEASE_CHECKLIST.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/qa/ANDROID_RELEASE_CHECKLIST.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/operations/OBSERVABILITY_CONTRACT.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/operations/INCIDENT_RESPONSE_RUNBOOK.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/privacy/PRIVACY_IMPLEMENTATION_GAP_REPORT.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/legal/RELEASE_ASSET_LICENSE_MATRIX.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/security/RELEASE_SUPPLY_CHAIN_REPORT.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/store-release/STORE_METADATA_TECHNICAL_GAP_REPORT.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/release/RELEASE_ROLLOUT_AND_ROLLBACK.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/release/PHASE_6_OWNER_ACTIONS.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/release/PHASE_7_INTEGRATION_BASELINE.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/release/PHASE_7_BLOCKER_REGISTER.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/release/PHASE_7_ENVIRONMENT_CHANGESET.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/operations/PHASE_7_RELEASE_MONITORING_PLAN.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "verify:preflight",
+      "command": "pnpm run verify:preflight",
+      "status": "PASS",
+      "ms": 403,
+      "exit": 0
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm run typecheck",
+      "status": "PASS",
+      "ms": 4344,
+      "exit": 0
+    },
+    {
+      "name": "verify:store-assets",
+      "command": "pnpm run verify:store-assets",
+      "status": "PASS",
+      "ms": 277,
+      "exit": 0
+    },
+    {
+      "name": "phase6-release-readiness-gate",
+      "command": "node --import tsx src/lib/__tests__/phase6-release-readiness-gate.test.ts",
+      "status": "PASS",
+      "ms": 277,
+      "exit": 0
+    },
+    {
+      "name": "phase6-soak-prep-gate",
+      "command": "node --import tsx src/lib/__tests__/phase6-soak-prep-gate.test.ts",
+      "status": "PASS",
+      "ms": 151,
+      "exit": 0
+    },
+    {
+      "name": "phase5-design-ux-gate",
+      "command": "node --import tsx src/lib/__tests__/phase5-design-ux-gate.test.ts",
+      "status": "PASS",
+      "ms": 154,
+      "exit": 0
+    },
+    {
+      "name": "phase7-cross-phase-consistency-gate",
+      "command": "node --import tsx src/lib/__tests__/phase7-cross-phase-consistency-gate.test.ts",
+      "status": "PASS",
+      "ms": 154,
+      "exit": 0
+    },
+    {
+      "name": "phase7-backward-compat-gate",
+      "command": "node --import tsx src/lib/__tests__/phase7-backward-compat-gate.test.ts",
+      "status": "PASS",
+      "ms": 149,
+      "exit": 0
+    },
+    {
+      "name": "test:prayer-engine-p0",
+      "command": "pnpm --filter @workspace/majalis run test:prayer-engine-p0",
+      "status": "PASS",
+      "ms": 972,
+      "exit": 0
+    },
+    {
+      "name": "test:ios-gates",
+      "command": "pnpm --filter @workspace/majalis run test:ios-gates",
+      "status": "PASS",
+      "ms": 1042,
+      "exit": 0
+    },
+    {
+      "name": "test:licenses",
+      "command": "pnpm --filter @workspace/majalis run test:licenses",
+      "status": "PASS",
+      "ms": 1151,
+      "exit": 0
+    },
+    {
+      "name": "verify:ci",
+      "command": "pnpm run verify:ci",
+      "status": "PASS",
+      "ms": 294623,
+      "exit": 0
+    },
+    {
+      "name": "dist/version.json exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "version.json has commit",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "no obvious secrets in dist assets",
+      "status": "PASS",
+      "detail": "hits=0"
+    },
+    {
+      "name": "dist built",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "storeStatus": "HOLD",
+  "verdict": "TECHNICALLY_VERIFIED_WITH_EXTERNAL_BLOCKERS"
+}

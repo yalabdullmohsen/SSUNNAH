@@ -67,7 +67,9 @@ assert.doesNotMatch(warm, /^\s*"\/mushaf"\s*,/m);
 assert.doesNotMatch(mainTsx, /mushaf-reader\.css/);
 assert.doesNotMatch(mainTsx, /mushaf-madinah\.css/);
 assert.doesNotMatch(mainTsx, /NewMushafReader/);
-assert.match(appRoutes, /lazy\(\(\)\s*=>\s*import\("@\/pages\/quran\/MushafReaderPage"\)\)/);
+const quranLazy = read("src/app/routes/lazy/quran.tsx");
+assert.match(appRoutes, /MushafReaderPage/);
+assert.match(quranLazy, /lazy\(\(\)\s*=>\s*import\("@\/pages\/quran\/MushafReaderPage"\)\)/);
 
 console.log("=== Budget doc ===");
 const doc = readRepo("docs/mushaf/MUSHAF_STAGED_LOADING.md");
