@@ -11,6 +11,7 @@ import { resolveSearchHit } from "@/lib/knowledge-platform/content-resolver";
 import { SEARCH_INDEX_SCHEMA_VERSION } from "@/features/search/search-index-version";
 import { runKnowledgeSearch } from "@/lib/knowledge-platform/universal-search";
 import { primeUnifiedSearchIndex, clearUnifiedSearchIndexCache } from "@/features/search/unified-local";
+import { isBlockedPublicSearchHref } from "@/features/search/public-search-blocklist";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
@@ -30,8 +31,14 @@ assert.ok(
 const histIds = new Set(ISLAMIC_HISTORY_ITEMS.map((i) => i.id));
 let invalidPublicSearchDestinations = 0;
 
+assert.equal(isBlockedPublicSearchHref("/islamic-sects"), true, "sects blocked");
+assert.equal(isBlockedPublicSearchHref("/arabic-language"), true, "arabic EXCLUDED blocked");
+
 for (const d of index.docs) {
   const href = (d.href || "").split("?")[0].split("#")[0];
+  if (isBlockedPublicSearchHref(href)) {
+    invalidPublicSearchDestinations += 1;
+  }
   if (href.includes("/knowledge/history/")) {
     invalidPublicSearchDestinations += 1;
   }

@@ -15,6 +15,7 @@
 - Public history = `/tarikh-islami` registry only (no `/knowledge/history` in index).
 - Schema version: see `SEARCH_INDEX_VERSIONING.md`.
 - Gate: `validate:search-routes` → `invalidPublicSearchDestinations = 0`.
+- COMING_SOON / product EXCLUDED hubs blocked via `public-search-blocklist.ts` (e.g. `/islamic-sects`) — see `waves/WAVE_SEARCH_BLOCKED_EXCLUDE_W1.md`.
 
 ## Related docs
 
@@ -22,3 +23,4 @@
 - `SEARCH_ROUTE_VALIDATION.md`
 - `SEARCH_INDEX_EXCLUSIONS.json`
 - `waves/WAVE_SEARCH_INTEGRITY.md`
+- `waves/WAVE_SEARCH_BLOCKED_EXCLUDE_W1.md`

@@ -86,5 +86,5 @@ Any section with availability `PARTIAL` or `BLOCKED_INCOMPLETE` must **not** be 
 2. ~~Kuwait lessons data model (Program 4)~~ → KUWAIT_LESSONS_MODEL_W1 (import provenance follow-up)
 3. Arabic grammar Wave 2 — only with approved source
 4. Shubuhat center provenance
-5. Search: exclude COMING_SOON / BLOCKED from public grammar/sects destinations
+5. ~~Search: exclude COMING_SOON / BLOCKED~~ → SEARCH_BLOCKED_EXCLUDE_W1
 6. Align drawer/homepage to IA groups in a single bounded PR

@@ -20,6 +20,9 @@ const { ISLAMIC_HISTORY_ITEMS } = await import("../src/data/islamic-history/inde
 const { PROPHETS } = await import("../src/lib/prophets-data.ts");
 const { NATIONS } = await import("../src/lib/nations-seed.ts");
 const { resolveSearchHit } = await import("../src/lib/knowledge-platform/content-resolver.ts");
+const { isBlockedPublicSearchHref } = await import(
+  "../src/features/search/public-search-blocklist.ts"
+);
 
 const indexPath = path.join(appRoot, "public/data/search/index.json");
 const idx = JSON.parse(fs.readFileSync(indexPath, "utf8"));
@@ -52,6 +55,10 @@ for (const d of idx.docs) {
   const href = String(d.href || "").split("?")[0].split("#")[0];
   if (!href || !d.titleAr?.trim()) {
     exclude(d, "MISSING_TITLE_OR_HREF", "عنوان أو مسار فارغ");
+    continue;
+  }
+  if (isBlockedPublicSearchHref(href)) {
+    exclude(d, "COMING_SOON_OR_EXCLUDED", "وجهة قريبًا / مستبعدة من البحث العام");
     continue;
   }
   if (href.includes("/knowledge/history/")) {
