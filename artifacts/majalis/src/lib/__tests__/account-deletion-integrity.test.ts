@@ -44,13 +44,19 @@ assert.match(privacy, /التسجيلات الصوتية: لا تُخزَّن ع
 assert.match(privacy, /الموقع الجغرافي/);
 assert.match(privacy, /سجل الاستخدام المرتبط بالحساب: يُحذف مع حذف الحساب/);
 
-const liveHttp = process.env.MAJLIS_AUDIT_LIVE === "1" || process.env.CI !== "true";
+/**
+ * Live HTTP ضد الإنتاج اختياري صراحةً (MAJLIS_AUDIT_LIVE=1).
+ * عقد Method Guard قبل النشر يثبته account-delete-method-guard.test.ts محليًا —
+ * حتى لا تفشل البوابة على طرف إنتاج لم يُنشَر عليه الإصلاح بعد.
+ */
+const liveHttp = process.env.MAJLIS_AUDIT_LIVE === "1";
 const proven = [
   "deleteUser via Admin API (code)",
   "JWT required",
   "local clear + logout on success (code)",
   "rate limit wired (code)",
   "privacy claims present in PrivacyPage (text)",
+  "method guard unit (account-delete-method-guard)",
 ];
 
 if (liveHttp) {
@@ -102,7 +108,7 @@ if (liveHttp) {
     }
   }
 } else {
-  proven.push("live HTTP skipped in CI (set MAJLIS_AUDIT_LIVE=1)");
+  proven.push("live HTTP opt-in only (set MAJLIS_AUDIT_LIVE=1 after deploy)");
 }
 
 console.log(
