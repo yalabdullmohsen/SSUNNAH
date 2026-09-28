@@ -98,6 +98,7 @@ function skipPath(p, redirects) {
     p === "/404" ||
     p.startsWith("/admin") ||
     p.startsWith("/auth") ||
+    p.startsWith("/dev") ||
     redirects.has(p)
   );
 }

@@ -97,6 +97,19 @@
   background: var(--sf2-error-soft, #f8eaea);
 }
 
+.app-state-v2--offline {
+  border: 1px solid color-mix(in srgb, var(--sf2-text-secondary, #48645a) 22%, transparent);
+  background: color-mix(in srgb, var(--sf2-page-bg, #f8f6f1) 88%, var(--sf2-card-bg, #fff));
+}
+
+.app-state-v2__meta {
+  margin: 0;
+  font-size: var(--sf2-type-caption, 0.8125rem);
+  color: var(--sf2-text-secondary, #48645a);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  word-break: break-all;
+}
+
 .app-route-shell {
   min-height: 40vh;
   background: var(--sf2-page-bg, #f8f6f1);

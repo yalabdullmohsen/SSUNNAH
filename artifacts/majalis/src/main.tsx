@@ -39,6 +39,7 @@ import "./app/styles/theme.css";
 import "./styles/sunnah-foundation-tokens.css";
 // Foundation V2 — أدوار دلالية (--sf2-*) فوق --sf-* (موجة إعادة التصميم)
 import "./styles/sunnah-foundation-v2.css";
+// z-index-layers + motion-policy — مؤجّلة تحت ميزانية CSS الحرج (انظر loadNonCriticalCss)
 // واجهة استهلاك سُنّة (--ss-*) + أصناف .ss-text — جسر فقط بلا قيم حرفية جديدة
 import "./styles/ssunnah-theme-api.css";
 import "./styles/ssunnah-screen-patterns.css";
@@ -117,6 +118,9 @@ if (
 
 // طبقات مظهر غير حرجة — بعد load + idle حتى لا تنافس LCP (كانت void import فوريًا)
 function loadNonCriticalCss() {
+  /* Phase 5 — طبقات z-index + سياسة الحركة (ليست حرجة لأول طلاء) */
+  void import("./styles/z-index-layers.css");
+  void import("./styles/motion-policy.css");
   /* طبقات تحديث الواجهة + رموز ds-* — مؤجّلة تحت ميزانية CSS الحرج (<60KiB gzip) */
   void import("./styles/components/modern-section-shell.css");
   void import("./styles/section-cards-theme.css");
