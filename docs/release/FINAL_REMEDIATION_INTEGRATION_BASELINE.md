@@ -6,8 +6,10 @@
 | Git root (delivery WT) | `/Users/alabdullmohsen/wt-final-remediation-ready` |
 | Common git dir | `/Users/alabdullmohsen/majlis-app/.git` |
 | Delivery branch (Phase 1 start) | `cursor/fix-contrast-ci-7543-ready` |
-| Base | `origin/main` @ `2e008c8d552252e7a817e0c33ac071af064dc6ce` |
-| Production `version.json` | `2e008c8d` · HTTP 200 · `builtAt=2026-09-28T13:00:10.787Z` · `ref=main` |
+| Base (Phase 0) | `origin/main` @ `2e008c8d552252e7a817e0c33ac071af064dc6ce` |
+| Base (Phase 3 start) | `origin/main` @ `dba87a606` (after #2329 contrast + #2330 mushaf editor) |
+| Production tip (Phase 0) | `2e008c8d` · HTTP 200 · `builtAt=2026-09-28T13:00:10.787Z` · `ref=main` |
+| Integration tip | `d8c2df3eb` on `release/sunnah-final-integration-ready` |
 | Store | **HOLD** (unchanged) |
 | Merge policy | PR → main · squash auto-merge after Verify build (`.github/workflows/auto-merge-to-main.yml`) |
 | Deploy policy | Vercel on `main` (`artifacts/majalis/vercel.json`) + `.github/workflows/auto-deploy.yml` verify |
