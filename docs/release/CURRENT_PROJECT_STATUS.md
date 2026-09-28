@@ -1,42 +1,41 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-09-28 (Phase 7)  
+**Updated:** 2026-09-28 (post #2331 merge)  
 **Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
-**Blockers:** `docs/release/PHASE_7_BLOCKER_REGISTER.md`  
-**Library route intent:** `docs/content-quality/LIBRARY_ROUTE_INTENT.md`
+**Live state:** `docs/release/FINAL_LIVE_STATE.md`  
+**Blockers:** `docs/release/PHASE_7_BLOCKER_REGISTER.md`
 
 ## Repository tips (measured)
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `2e008c8d5` — P1 squash `#2328` |
-| Integration branch | `release/sunnah-final-integration` (from P6 `c935dab07` + Phase 7 commits) |
-| Production `version.json` | `2e008c8d` · HTTP 200 · `builtAt` `2026-09-28T13:00:10.787Z` · `ref` `main` |
+| `origin/main` tip | `2478ebd7a` — release P2–P7 `#2331` |
+| Production `version.json` | `dba87a60` · HTTP 200 · **behind main** (Vercel deploy failed for `2478ebd7`) |
 | About surface | `/about` — حول التطبيق |
+| Decision | **PARTIAL / RELEASE_BLOCKED** until Production tip matches main |
 
 ## Remediation program (Phases 1–7)
 
-| Phase | Tip / state | On main? |
-|---|---|---|
-| P1 Startup/Mushaf | `1ba918c50` (tree = main squash) | **yes** (squash) |
-| P2 API security | `45d432a62` | no |
-| P3 Admin v3 | `3b5ef4ae6` | no |
-| P4 Content/perf | `b64319d06` | no |
-| P5 Design/UX | `7716977d7` | no |
-| P6 RC readiness | `c935dab07` | no |
-| P7 Integration | this branch | **not merged** |
+| Phase | On main? |
+|---|---|
+| P1 Startup/Mushaf | **yes** (#2328) |
+| Contrast a11y | **yes** (#2329) |
+| Mushaf bookmark editor | **yes** (#2330) |
+| P2 API security | **yes** (#2331) |
+| P3 Admin v3 | **yes** (#2331) |
+| P4 Content/perf | **yes** (#2331) |
+| P5 Design/UX | **yes** (#2331) |
+| P6/P7 release gates | **yes** (#2331) |
 
 ## Store readiness
 
 **HOLD**
 
-Allowed project statuses: `HOLD` · `TECHNICALLY_VERIFIED_WITH_EXTERNAL_BLOCKERS` · `READY_FOR_OWNER_GO` · `WEB_RELEASED_NATIVE_HOLD` · `RELEASE_BLOCKED`
-
-Current agent decision target after green `release:verify`: **TECHNICALLY_VERIFIED_WITH_EXTERNAL_BLOCKERS**
+Allowed: `HOLD` · `TECHNICALLY_VERIFIED_WITH_EXTERNAL_BLOCKERS` · `READY_FOR_OWNER_GO` · `WEB_RELEASED_NATIVE_HOLD` · `RELEASE_BLOCKED`
 
 ## Remaining blocker classes
 
-OWNER_ACTION · DEVICE_REQUIRED · BLOCKED_LICENSE · BLOCKED_SOURCE · BLOCKED_CREDENTIAL · BLOCKED_ENVIRONMENT
+BLOCKED_ENVIRONMENT (Vercel Production tip) · OWNER_ACTION · DEVICE_REQUIRED · BLOCKED_LICENSE · BLOCKED_SOURCE · BLOCKED_CREDENTIAL
 
 ## Explicit non-claims
 

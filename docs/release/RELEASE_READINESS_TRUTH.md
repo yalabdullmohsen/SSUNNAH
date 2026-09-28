@@ -1,16 +1,15 @@
-# RELEASE READINESS TRUTH — سُنّة (Phase 7)
+# RELEASE READINESS TRUTH — سُنّة (Phase 7 / final remediation)
 
 | Field | Value |
 |---|---|
 | Generated | 2026-09-28 |
-| Branch | `release/sunnah-final-integration` |
-| Integration tip (pre-verify) | `c935dab07` + Phase 7 docs/gates |
-| Prior Phase 6 tip | `c935dab07` |
-| Authority | Measured gates + repository inspection — not marketing claims |
+| Branch | `main` @ `2478ebd7a` (#2331 squash) |
+| Prior production tip | `dba87a60` (#2330) — still live |
+| Authority | Measured gates + live GitHub/Vercel status — not marketing claims |
 | **STORE STATUS** | **HOLD** |
-| Final decision (repo) | `TECHNICALLY_VERIFIED_WITH_EXTERNAL_BLOCKERS` only after `pnpm run release:verify` PASS |
-| Web deployment | **BLOCKED** until web gate conditions (secrets attestation, owner confirm, merge policy) — merge to `main` auto-deploys |
-| Merge to main | **NOT executed** in Phase 7 (MERGE_READY technical / WEB gate incomplete) |
+| Final decision (repo code) | `TECHNICALLY_VERIFIED_WITH_EXTERNAL_BLOCKERS` (local `release:verify` + main CI PASS) |
+| Web deployment | **BLOCKED** — Vercel Production deploy for `2478ebd7` **FAILED**; live `version.json` still `dba87a60` |
+| Merge to main | **DONE** (#2329 · #2330 · #2331) |
 
 STORE STATUS: HOLD
 

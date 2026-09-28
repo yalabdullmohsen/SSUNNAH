@@ -3,7 +3,8 @@
 | Field | Value |
 |---|---|
 | Generated | 2026-09-28 |
-| Authority | Phase 1–6 reports + live production `version.json` + code gates |
+| Updated | 2026-09-28 post `#2331` |
+| Authority | Phase 1–6 reports + live production `version.json` + GitHub/Vercel status |
 | Store | **HOLD** |
 | Rule | Documentation ≠ fix · CI green ≠ license/signing/device PASS · Simulator ≠ device |
 
@@ -12,6 +13,22 @@ Classifications: `FIXABLE_IN_REPOSITORY` · `TEST_REQUIRED` · `DEVICE_REQUIRED`
 Critical/High may **not** use `ACCEPTED_RISK`.
 
 ---
+
+## P7-020 — Vercel Production deploy failed for main tip `2478ebd7`
+
+| Field | Value |
+|---|---|
+| Source | GitHub commit status `Vercel – majalis-majalis` + live `version.json` |
+| Severity | Critical (web ship) |
+| Platform | Web |
+| Module | Official project `majalis-majalis` Auto Deploy on `main` |
+| Evidence | `dpl_FMaX3KQwHGVdkdzEHy17FkfgbcEj` FAILURE · production still `dba87a60` · main CI SUCCESS |
+| Classification | `BLOCKED_ENVIRONMENT` (+ `OWNER_ACTION` for log access without `VERCEL_TOKEN`) |
+| Owner | Release eng + Vercel project owner |
+| Required action | Read build logs · fix root cause if in repo · redeploy until `version.json` matches `2478ebd7` |
+| Verification | `https://www.ssunnah.com/version.json` commit == `2478ebd7` |
+| Release impact | Blocks declaring `WEB_RELEASED_NATIVE_HOLD` |
+| Status | **OPEN** |
 
 ## P7-001 — Android applicationId ≠ Capacitor/iOS appId
 
