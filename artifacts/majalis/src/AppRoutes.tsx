@@ -652,6 +652,7 @@ export default function AppRoutes() {
       <Route path="/discover-islam"><SafeLazyRoute component={DiscoverIslamPage} /></Route>
       <Route path="/discover-islam/questions"><SafeLazyRoute component={DiscoverIslamQuestionsPage} /></Route>
       <Route path="/discover-islam/questions/:slug"><SafeLazyRoute component={DiscoverIslamQuestionDetailPage} /></Route>
+      <Route path="/shubuhat"><Redirect to="/discover-islam/doubts" /></Route>
       <Route path="/discover-islam/doubts"><SafeLazyRoute component={DiscoverIslamDoubtsPage} /></Route>
       <Route path="/discover-islam/doubts/:slug"><SafeLazyRoute component={DiscoverIslamDoubtDetailPage} /></Route>
       <Route path="/discover-islam/articles/:slug"><SafeLazyRoute component={DiscoverIslamArticleDetailPage} /></Route>

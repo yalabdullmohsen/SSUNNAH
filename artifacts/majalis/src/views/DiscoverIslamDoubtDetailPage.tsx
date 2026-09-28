@@ -5,8 +5,19 @@ import { ShareButtons } from "@/components/ContentActions";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import { getShubhaBySlug, type DawahShubha } from "@/lib/dawah-service";
+import { shubuhatCompletenessTier } from "@/lib/shubuhat-contract";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
 import { UtilityScreen } from "@/components/design-system/screens";
+
+function formatUpdatedAt(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  try {
+    return new Intl.DateTimeFormat("ar", { dateStyle: "medium" }).format(d);
+  } catch {
+    return iso.slice(0, 10);
+  }
+}
 
 export default function DiscoverIslamDoubtDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -45,7 +56,19 @@ export default function DiscoverIslamDoubtDetailPage() {
   return (
     <UtilityScreen compose="mark">
     <DiscoverIslamShell detail>
-      <PageHeader eyebrow="التعريف بالإسلام" title={item.title} />
+      <PageHeader eyebrow="تفنيد الشبهات" title={item.title} />
+
+      <p className="page-desc dii-shubha-meta" style={{ marginBottom: "0.75rem" }}>
+        <span>اللغة: العربية</span>
+        {" · "}
+        <span>آخر تحديث: {formatUpdatedAt(item.updated_at)}</span>
+        {item.complexity_level ? (
+          <>
+            {" · "}
+            <span>المستوى: {item.complexity_level === "basic" ? "مبتدئ" : item.complexity_level === "advanced" ? "متقدم" : "متوسط"}</span>
+          </>
+        ) : null}
+      </p>
 
       <div className="dii-block dii-block--muted dii-shubha-text-card">
         <span className="page-tag">نص الشبهة</span>
@@ -119,7 +142,7 @@ export default function DiscoverIslamDoubtDetailPage() {
         </div>
       )}
 
-      {item.sources?.length > 0 && (
+      {item.sources?.length > 0 ? (
         <section className="dii-section">
           <h2 className="page-section-title">المصادر</h2>
           <ul className="dii-sources-list">
@@ -128,11 +151,21 @@ export default function DiscoverIslamDoubtDetailPage() {
             ))}
           </ul>
         </section>
+      ) : (
+        <div className="dii-block dii-block--muted dii-section" role="note">
+          <span className="page-tag">حدود العرض</span>
+          <p className="page-desc">
+            قائمة المصادر المرجعية لهذه الشبهة قيد الإكمال. الجواب التعليمي يعتمد على الأدلة المذكورة أعلاه، ولا يُقدَّم كفتوى شخصية ولا كردّ مولَّد بالذكاء الاصطناعي بلا مصدر معتمد.
+            {shubuhatCompletenessTier(item) === "PROVENANCE_PARTIAL" ? " (حالة المصدر: جزئية)" : null}
+          </p>
+        </div>
       )}
 
       <div className="twh-share dii-section">
         <ShareButtons title={item.title} url={`https://www.ssunnah.com/discover-islam/doubts/${item.slug}`} />
-        <Link href="/discover-islam/contact" className="page-link-inline">لديك اعتراض آخر؟ تحدّث مع داعية ←</Link>
+        <Link href="/discover-islam/doubts" className="page-link-inline">كل الشبهات ←</Link>
+        {" · "}
+        <Link href="/discover-islam/contact" className="page-link-inline">الإبلاغ عن خطأ أو اقتراح مصدر ←</Link>
       </div>
     </DiscoverIslamShell>
   

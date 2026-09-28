@@ -39,7 +39,7 @@
 | 18 | مكارم الأخلاق | PARTIAL | Needs structured lesson contract. |
 | 19 | دلائل النبوة | PARTIAL | Accordion depth gates exist; still not COMPLETE. |
 | 20 | التعريف بالإسلام (متعدد اللغات) | PARTIAL | Machine translation must not be final authority. |
-| 21 | تفنيد الشبهات | BLOCKED_INCOMPLETE | Embedded in discover-islam; needs dedicated center + provenance. |
+| 21 | تفنيد الشبهات | PARTIAL | Center at `/discover-islam/doubts` (Program 13 W1); 12 structured / ~1 provenance-complete; search EXCLUDED. |
 | 22 | النحو والبلاغة | BLOCKED_INCOMPLETE | Arabic Grammar W1 audit local; Wave 2 needs approved source for الإِعراب والبناء. |
 | 23 | دليل المؤسسات الإسلامية | PARTIAL | Route/view exist; missing from sections.registry SEEDS. |
 | 24 | دليل المساجد التاريخية | PARTIAL | Route exists; /mosques redirects to islamic-directory. |
@@ -63,7 +63,7 @@
 
 1. **النحو والبلاغة:** 95 public accordion lessons, **0** COMPLETE (`BLOCKED_INCOMPLETE` / MISSING_SOURCE).
 2. **الفرق الإسلامية:** forced `COMING_SOON` — do not expose as complete encyclopedia.
-3. **تفنيد الشبهات:** hub-embedded only — needs dedicated provenance center (Program 13).
+3. **تفنيد الشبهات:** center live (W1); most rows still `PROVENANCE_PARTIAL` (empty `sources[]`) — enrich before search indexing.
 4. **Registry gaps:** closed in PLATFORM_REGISTRY_GAPS_W1 — directories map to `islam-guide`/`/islamic-directory`; `adab-talab-ilm` seeded in nav registry.
 5. **No curriculum section marked COMPLETE** in this wave (tools only: تسبيح / قبلة).
 
@@ -85,6 +85,6 @@ Any section with availability `PARTIAL` or `BLOCKED_INCOMPLETE` must **not** be 
 1. ~~Register REGISTRY_GAP destinations~~ → done (PLATFORM_REGISTRY_GAPS_W1)
 2. ~~Kuwait lessons data model (Program 4)~~ → KUWAIT_LESSONS_MODEL_W1 (import provenance follow-up)
 3. Arabic grammar Wave 2 — only with approved source
-4. Shubuhat center provenance
+4. ~~Shubuhat center provenance~~ → SHUBUHAT_CENTER_W1 (source enrichment follow-up)
 5. ~~Search: exclude COMING_SOON / BLOCKED~~ → SEARCH_BLOCKED_EXCLUDE_W1
 6. Align drawer/homepage to IA groups in a single bounded PR

@@ -144,6 +144,7 @@ const PATHS = [
   "/discover-islam/articles/:slug",
   "/discover-islam/contact",
   "/discover-islam/doubts",
+  "/shubuhat",
   "/discover-islam/doubts/:slug",
   "/discover-islam/how-to-convert",
   "/discover-islam/new-muslim",
