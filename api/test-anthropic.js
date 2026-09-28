@@ -1,1 +1,1 @@
-export { default, maxDuration } from "../artifacts/majalis/api/test-anthropic.js";
+export { default, maxDuration } from "../artifacts/majalis/lib/api-handlers/test-anthropic.js";

@@ -1,10 +1,13 @@
 /**
- * Web Push subscription endpoint.
- * Stores VAPID push subscriptions for later send (FCM/OneSignal-compatible payload shape).
- * Secrets: never accepts or returns VAPID_PRIVATE_KEY — server-only.
+ * Web Push + Capacitor token registration.
+ * - Guest OK (installation-scoped)
+ * - user_id فقط من JWT موثّق — لا من body
+ * - unsubscribe لا يحذف توكنات مستخدم آخر
  */
 import { sendJson } from "../api/_http.mjs";
 import { getSupabaseAdmin } from "../supabase-admin.mjs";
+import { extractBearer, validateUserSession } from "../user-auth.mjs";
+import { hashOpaqueId } from "../api-security-policy.mjs";
 
 const MAX_BODY = 8_000;
 const ENDPOINT_MAX = 2_048;
@@ -28,7 +31,6 @@ async function parseBody(req) {
 function sanitizeSubscription(body) {
   if (!body || typeof body !== "object") return null;
 
-  // Capacitor native device token (APNs / FCM) — separate from Web Push VAPID.
   const nativeToken = String(body.token || "").trim();
   const platform = String(body.platform || "").trim().toLowerCase();
   if (nativeToken && (platform === "ios" || platform === "android")) {
@@ -37,10 +39,10 @@ function sanitizeSubscription(body) {
     return {
       endpoint,
       expirationTime: null,
-      keys: { p256dh: "native", auth: nativeToken.slice(0, 64) },
+      keys: { p256dh: "native", auth: hashOpaqueId(nativeToken) },
       platform,
-      token: nativeToken,
       kind: "capacitor",
+      tokenFingerprint: hashOpaqueId(nativeToken),
     };
   }
 
@@ -52,7 +54,6 @@ function sanitizeSubscription(body) {
   const auth = String(keys.auth || "").trim();
   if (!p256dh || !auth || p256dh.length > 512 || auth.length > 256) return null;
 
-  // Reject accidental private-key leakage in payload
   const serialized = JSON.stringify(body).toLowerCase();
   if (serialized.includes("vapid_private") || serialized.includes("private_key")) return null;
 
@@ -61,6 +62,7 @@ function sanitizeSubscription(body) {
     expirationTime: body.expirationTime ?? null,
     keys: { p256dh, auth },
     kind: "webpush",
+    platform: "web",
   };
 }
 
@@ -80,37 +82,59 @@ export default async function handler(req, res) {
   const body = await parseBody(req);
   if (body === null) return sendJson(res, 413, { ok: false, error: "payload_too_large" });
 
+  // رفض انتحال الملكية عبر body
+  if (body.userId != null || body.user_id != null || body.role != null) {
+    return sendJson(res, 400, { ok: false, error: "invalid_fields" });
+  }
+
   const sub = sanitizeSubscription(body);
   if (!sub) return sendJson(res, 400, { ok: false, error: "invalid_subscription" });
 
+  let userId = null;
+  if (extractBearer(req)) {
+    const session = await validateUserSession(req);
+    if (!session.ok) {
+      return sendJson(res, session.status || 401, { ok: false, error: "unauthorized" });
+    }
+    userId = session.user.id;
+  }
+
+  const admin = getSupabaseAdmin();
+
   if (body.unsubscribe === true) {
-    const admin = getSupabaseAdmin();
     if (admin) {
       try {
-        await admin.from("push_subscriptions").delete().eq("endpoint", sub.endpoint);
+        let q = admin.from("push_subscriptions").delete().eq("endpoint", sub.endpoint);
+        if (userId) {
+          q = q.eq("user_id", userId);
+        } else {
+          // ضيف: احذف فقط الصفوف بلا user_id
+          q = q.is("user_id", null);
+        }
+        await q;
       } catch {
-        /* table may not exist yet — still acknowledge client unsubscribe */
+        /* table may not exist */
       }
     }
     return sendJson(res, 200, { ok: true, removed: true });
   }
 
-  const admin = getSupabaseAdmin();
   if (admin) {
     try {
-      await admin.from("push_subscriptions").upsert(
-        {
-          endpoint: sub.endpoint,
-          p256dh: sub.keys.p256dh,
-          auth: sub.keys.auth,
-          expiration_time: sub.expirationTime,
-          user_agent: String(req.headers?.["user-agent"] || "").slice(0, 300),
-          updated_at: new Date().toISOString(),
-        },
-        { onConflict: "endpoint" },
-      );
+      const row = {
+        endpoint: sub.endpoint,
+        p256dh: sub.keys.p256dh,
+        auth: sub.keys.auth,
+        expiration_time: sub.expirationTime,
+        user_agent: String(req.headers?.["user-agent"] || "").slice(0, 300),
+        platform: sub.platform || null,
+        app_version: String(body.appVersion || body.app_version || "").slice(0, 32) || null,
+        updated_at: new Date().toISOString(),
+      };
+      if (userId) row.user_id = userId;
+      await admin.from("push_subscriptions").upsert(row, { onConflict: "endpoint" });
     } catch {
-      /* Persist best-effort — client already holds the subscription locally */
+      /* best-effort */
     }
   }
 

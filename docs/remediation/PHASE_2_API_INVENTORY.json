@@ -1,0 +1,2295 @@
+{
+  "generatedAt": "2026-09-28T11:37:27.566Z",
+  "tip": "1ba918c50",
+  "branch": "cursor/api-security-hardening-p2",
+  "routeCount": 135,
+  "routes": [
+    {
+      "endpoint": "/api/healthz",
+      "module": "api-handlers/healthz.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/readyz",
+      "module": "api-handlers/readyz.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/deep-health",
+      "module": "api-handlers/deep-health.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/public-config",
+      "module": "api-handlers/public-config.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/assistant/health",
+      "module": "api-handlers/assistant/health.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "COST_SENSITIVE",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/prayer-times",
+      "module": "api-handlers/prayer-times.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/content-delta",
+      "module": "api-handlers/content-delta.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/reading-sync",
+      "module": "api-handlers/reading-sync.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_WRITE_OR_AUTH",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/sync-data",
+      "module": "api-handlers/cron/sync-data.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/knowledge-sync",
+      "module": "api-handlers/cron/knowledge-sync.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/sync-fiqh-council",
+      "module": "api-handlers/cron/sync-fiqh-council.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/check-fiqh-links",
+      "module": "api-handlers/cron/check-fiqh-links.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/scholarly-verification",
+      "module": "api-handlers/cron/scholarly-verification.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/knowledge-pipeline",
+      "module": "api-handlers/admin/knowledge-pipeline.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/feature-health",
+      "module": "api-handlers/admin/feature-health.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/internal/status",
+      "module": "api-handlers/internal/status.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "INTERNAL_ONLY",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/production-activate",
+      "module": "api-handlers/admin/production-activate.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/bootstrap-owner",
+      "module": "api-handlers/admin/bootstrap-owner.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/platform-bootstrap",
+      "module": "api-handlers/admin/platform-bootstrap.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/auth-context",
+      "module": "api-handlers/admin/auth-context.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/check-fiqh-links",
+      "module": "api-handlers/admin/check-fiqh-links.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/sync-fiqh-council",
+      "module": "api-handlers/admin/sync-fiqh-council.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/scholarly-verification",
+      "module": "api-handlers/admin/scholarly-verification.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/knowledge-search",
+      "module": "api-handlers/knowledge-search.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/auto-content-sync",
+      "module": "api-handlers/cron/auto-content-sync.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/auto-content-health",
+      "module": "api-handlers/cron/auto-content-health.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/daily-benefit-rotation",
+      "module": "api-handlers/cron/daily-benefit-rotation.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/system-health",
+      "module": "api-handlers/cron/system-health.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/apply-migrations",
+      "module": "api-handlers/cron/apply-migrations.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/bootstrap-database",
+      "module": "api-handlers/cron/bootstrap-database.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/bootstrap-owner",
+      "module": "api-handlers/cron/bootstrap-owner.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/platform-bootstrap",
+      "module": "api-handlers/cron/platform-bootstrap.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/auto-knowledge-sync",
+      "module": "api-handlers/cron/auto-knowledge-sync.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/connector-health",
+      "module": "api-handlers/cron/connector-health.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/auto-content",
+      "module": "api-handlers/auto-content.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/knowledge-recommendations",
+      "module": "api-handlers/knowledge-recommendations.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/intelligent-search",
+      "module": "api-handlers/intelligent-search.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/search",
+      "module": "api-handlers/search.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/topic-content",
+      "module": "api-handlers/topic-content.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/content-relations",
+      "module": "api-handlers/content-relations.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/scholarly-search",
+      "module": "api-handlers/scholarly-search.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/search-analytics",
+      "module": "api-handlers/admin/search-analytics.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/digital-learning",
+      "module": "api-handlers/digital-learning.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "COST_SENSITIVE",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-orchestrator",
+      "module": "api-handlers/cron/autonomous-orchestrator.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/autonomous-ai",
+      "module": "api-handlers/admin/autonomous-ai.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/autonomous-platform",
+      "module": "api-handlers/admin/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/daily-content",
+      "module": "api-handlers/daily-content.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/global-reference",
+      "module": "api-handlers/global-reference.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "COST_SENSITIVE",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/global-reference",
+      "module": "api-handlers/admin/global-reference.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/global-reference-review",
+      "module": "api-handlers/cron/global-reference-review.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/islamic-intelligence",
+      "module": "api-handlers/cron/islamic-intelligence.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/islamic-intelligence",
+      "module": "api-handlers/admin/islamic-intelligence.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/v1",
+      "module": "api-handlers/v1.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/v2",
+      "module": "api-handlers/v2.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/v3",
+      "module": "api-handlers/v3.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/open-platform",
+      "module": "api-handlers/admin/open-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/governance",
+      "module": "api-handlers/admin/governance.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/governance-backup",
+      "module": "api-handlers/cron/governance-backup.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/ai-agents",
+      "module": "api-handlers/admin/ai-agents.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/sitemap",
+      "module": "api-handlers/sitemap.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/feed",
+      "module": "api-handlers/feed.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/updates",
+      "module": "api-handlers/updates.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/lessons",
+      "module": "api-handlers/lesson-page.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/lessons",
+      "module": "api-handlers/lesson-page.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/smart-cms",
+      "module": "api-handlers/admin/smart-cms.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/lesson-from-image",
+      "module": "api-handlers/admin/lesson-from-image.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/lesson-from-url",
+      "module": "api-handlers/admin/lesson-from-url.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/lesson-automation",
+      "module": "api-handlers/admin/lesson-automation.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/instagram-integration",
+      "module": "api-handlers/admin/instagram-integration.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/telegram",
+      "module": "api-handlers/admin/telegram.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/webhook/telegram",
+      "module": "api-handlers/webhook/telegram.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "WEBHOOK",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/telegram-processor",
+      "module": "api-handlers/cron/telegram-processor.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/majlis-knowledge-engine",
+      "module": "api-handlers/admin/majlis-knowledge-engine.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/source-monitor",
+      "module": "api-handlers/admin/source-monitor.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/monitor-sources",
+      "module": "api-handlers/cron/monitor-sources.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/lesson-source-monitor",
+      "module": "api-handlers/cron/lesson-source-monitor.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/lesson-intelligence",
+      "module": "api-handlers/cron/lesson-intelligence.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/majlis-knowledge-engine",
+      "module": "api-handlers/cron/majlis-knowledge-engine.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-fetch",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-validate",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-questions",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-benefits",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-reindex",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-audit",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-cleanup",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-bootstrap",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-monitor",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-recovery",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/source-monitor",
+      "module": "api-handlers/cron/source-monitor.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/job-worker",
+      "module": "api-handlers/cron/job-worker.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/content-import",
+      "module": "api-handlers/admin/content-import.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/process-import-jobs",
+      "module": "api-handlers/cron/process-import-jobs.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/import-phase2-trial",
+      "module": "api-handlers/cron/import-phase2-trial.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/ai-agents",
+      "module": "api-handlers/cron/ai-agents.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/verified-knowledge",
+      "module": "api-handlers/cron/verified-knowledge.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/verified-knowledge",
+      "module": "api-handlers/admin/verified-knowledge.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/knowledge-reasoning",
+      "module": "api-handlers/knowledge-reasoning.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/knowledge-reasoning",
+      "module": "api-handlers/admin/knowledge-reasoning.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/content-scheduler",
+      "module": "api-handlers/cron/content-scheduler.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/content-production",
+      "module": "api-handlers/admin/content-production.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/knowledge-reasoning",
+      "module": "api-handlers/cron/knowledge-reasoning.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/auto-content",
+      "module": "api-handlers/admin/auto-content.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/auto-knowledge-engine",
+      "module": "api-handlers/admin/auto-knowledge-engine.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/fiqh-research-assistant",
+      "module": "api-handlers/fiqh-research-assistant.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "COST_SENSITIVE",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/assistant",
+      "module": "api-handlers/assistant.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "COST_SENSITIVE",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/client-error-log",
+      "module": "api-handlers/client-error-log.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_WRITE_OR_AUTH",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/client-error",
+      "module": "api-handlers/client-error-log.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": true,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_WRITE_OR_AUTH",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/rum",
+      "module": "rum-http.mjs",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_WRITE_OR_AUTH",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/web-vitals",
+      "module": "rum-http.mjs",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_WRITE_OR_AUTH",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/push/subscribe",
+      "module": "api-handlers/push-subscribe.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_WRITE_OR_AUTH",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/test-anthropic",
+      "module": "api-handlers/test-anthropic.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "DISABLED_IN_PRODUCTION",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/transcribe",
+      "module": "api-handlers/transcribe.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "COST_SENSITIVE",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/narration/tts",
+      "module": "api-handlers/narration-tts.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": true,
+      "inferredClass": "COST_SENSITIVE",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/submissions",
+      "module": "api-handlers/submissions.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": true,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_WRITE_OR_AUTH",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/researches/submit",
+      "module": "api-handlers/researches-submit.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": true,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_WRITE_OR_AUTH",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/researches-daily-import",
+      "module": "api-handlers/cron/researches-daily-import.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/submissions",
+      "module": "api-handlers/admin/submissions.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/account/delete",
+      "module": "api-handlers/account/delete.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": true,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_WRITE_OR_AUTH",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/account/export",
+      "module": "api-handlers/account/export.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_WRITE_OR_AUTH",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/rag",
+      "module": "api-handlers/rag-research.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "COST_SENSITIVE",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/user/citations",
+      "module": "api-handlers/citations.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_WRITE_OR_AUTH",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/citations",
+      "module": "api-handlers/citations.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_WRITE_OR_AUTH",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/learning-assessment",
+      "module": "api-handlers/learning-assessment.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/knowledge-graph",
+      "module": "api-handlers/knowledge-graph.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/recommendations",
+      "module": "api-handlers/recommendations.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/learning-path",
+      "module": "api-handlers/learning-path.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/universities-review",
+      "module": "api-handlers/cron/universities-review.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/content-scoring",
+      "module": "api-handlers/cron/content-scoring.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/reminders",
+      "module": "api-handlers/universities-vercel.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/programs",
+      "module": "api-handlers/universities-vercel.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/requirements",
+      "module": "api-handlers/universities-vercel.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/faqs",
+      "module": "api-handlers/universities-vercel.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/universities",
+      "module": "api-handlers/universities-vercel.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": true,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/universities",
+      "module": "api-handlers/universities-vercel.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_READ",
+      "securityClassExplicit": "no"
+    }
+  ],
+  "missingHandlers": [],
+  "withoutRateLimit": [
+    {
+      "endpoint": "/api/assistant/health",
+      "module": "api-handlers/assistant/health.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "COST_SENSITIVE",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/reading-sync",
+      "module": "api-handlers/reading-sync.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "PUBLIC_WRITE_OR_AUTH",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/sync-data",
+      "module": "api-handlers/cron/sync-data.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/knowledge-sync",
+      "module": "api-handlers/cron/knowledge-sync.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/sync-fiqh-council",
+      "module": "api-handlers/cron/sync-fiqh-council.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/check-fiqh-links",
+      "module": "api-handlers/cron/check-fiqh-links.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/scholarly-verification",
+      "module": "api-handlers/cron/scholarly-verification.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/knowledge-pipeline",
+      "module": "api-handlers/admin/knowledge-pipeline.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/feature-health",
+      "module": "api-handlers/admin/feature-health.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/production-activate",
+      "module": "api-handlers/admin/production-activate.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/bootstrap-owner",
+      "module": "api-handlers/admin/bootstrap-owner.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/platform-bootstrap",
+      "module": "api-handlers/admin/platform-bootstrap.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/auth-context",
+      "module": "api-handlers/admin/auth-context.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/check-fiqh-links",
+      "module": "api-handlers/admin/check-fiqh-links.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/sync-fiqh-council",
+      "module": "api-handlers/admin/sync-fiqh-council.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/scholarly-verification",
+      "module": "api-handlers/admin/scholarly-verification.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/auto-content-sync",
+      "module": "api-handlers/cron/auto-content-sync.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/auto-content-health",
+      "module": "api-handlers/cron/auto-content-health.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/daily-benefit-rotation",
+      "module": "api-handlers/cron/daily-benefit-rotation.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/system-health",
+      "module": "api-handlers/cron/system-health.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/apply-migrations",
+      "module": "api-handlers/cron/apply-migrations.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/bootstrap-database",
+      "module": "api-handlers/cron/bootstrap-database.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/bootstrap-owner",
+      "module": "api-handlers/cron/bootstrap-owner.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/platform-bootstrap",
+      "module": "api-handlers/cron/platform-bootstrap.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/auto-knowledge-sync",
+      "module": "api-handlers/cron/auto-knowledge-sync.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/connector-health",
+      "module": "api-handlers/cron/connector-health.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/search-analytics",
+      "module": "api-handlers/admin/search-analytics.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-orchestrator",
+      "module": "api-handlers/cron/autonomous-orchestrator.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/autonomous-ai",
+      "module": "api-handlers/admin/autonomous-ai.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/autonomous-platform",
+      "module": "api-handlers/admin/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/global-reference",
+      "module": "api-handlers/admin/global-reference.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/global-reference-review",
+      "module": "api-handlers/cron/global-reference-review.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/islamic-intelligence",
+      "module": "api-handlers/cron/islamic-intelligence.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/islamic-intelligence",
+      "module": "api-handlers/admin/islamic-intelligence.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/open-platform",
+      "module": "api-handlers/admin/open-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/governance",
+      "module": "api-handlers/admin/governance.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/governance-backup",
+      "module": "api-handlers/cron/governance-backup.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/ai-agents",
+      "module": "api-handlers/admin/ai-agents.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/smart-cms",
+      "module": "api-handlers/admin/smart-cms.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/lesson-automation",
+      "module": "api-handlers/admin/lesson-automation.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/instagram-integration",
+      "module": "api-handlers/admin/instagram-integration.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/telegram",
+      "module": "api-handlers/admin/telegram.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/webhook/telegram",
+      "module": "api-handlers/webhook/telegram.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "WEBHOOK",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/telegram-processor",
+      "module": "api-handlers/cron/telegram-processor.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/majlis-knowledge-engine",
+      "module": "api-handlers/admin/majlis-knowledge-engine.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/source-monitor",
+      "module": "api-handlers/admin/source-monitor.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/monitor-sources",
+      "module": "api-handlers/cron/monitor-sources.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/lesson-source-monitor",
+      "module": "api-handlers/cron/lesson-source-monitor.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/lesson-intelligence",
+      "module": "api-handlers/cron/lesson-intelligence.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/majlis-knowledge-engine",
+      "module": "api-handlers/cron/majlis-knowledge-engine.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-fetch",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-validate",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-questions",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-benefits",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-reindex",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-audit",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-cleanup",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-bootstrap",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-monitor",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/autonomous-platform-recovery",
+      "module": "api-handlers/cron/autonomous-platform.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/source-monitor",
+      "module": "api-handlers/cron/source-monitor.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/job-worker",
+      "module": "api-handlers/cron/job-worker.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/content-import",
+      "module": "api-handlers/admin/content-import.js",
+      "handlerExists": true,
+      "allowGet": false,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/process-import-jobs",
+      "module": "api-handlers/cron/process-import-jobs.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/import-phase2-trial",
+      "module": "api-handlers/cron/import-phase2-trial.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/ai-agents",
+      "module": "api-handlers/cron/ai-agents.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/verified-knowledge",
+      "module": "api-handlers/cron/verified-knowledge.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/verified-knowledge",
+      "module": "api-handlers/admin/verified-knowledge.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/knowledge-reasoning",
+      "module": "api-handlers/admin/knowledge-reasoning.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/content-scheduler",
+      "module": "api-handlers/cron/content-scheduler.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/content-production",
+      "module": "api-handlers/admin/content-production.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/knowledge-reasoning",
+      "module": "api-handlers/cron/knowledge-reasoning.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/auto-content",
+      "module": "api-handlers/admin/auto-content.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/auto-knowledge-engine",
+      "module": "api-handlers/admin/auto-knowledge-engine.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/researches-daily-import",
+      "module": "api-handlers/cron/researches-daily-import.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/admin/submissions",
+      "module": "api-handlers/admin/submissions.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": false,
+      "hasRateLimit": false,
+      "inferredClass": "ADMIN",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/universities-review",
+      "module": "api-handlers/cron/universities-review.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    },
+    {
+      "endpoint": "/api/cron/content-scoring",
+      "module": "api-handlers/cron/content-scoring.js",
+      "handlerExists": true,
+      "allowGet": true,
+      "exact": true,
+      "hasRateLimit": false,
+      "inferredClass": "CRON",
+      "securityClassExplicit": "no"
+    }
+  ],
+  "rootApiReexports": [
+    {
+      "file": "api/assistant/health.js",
+      "reexport": "../../artifacts/majalis/api/assistant/health.js",
+      "targetExists": false
+    },
+    {
+      "file": "api/assistant.js",
+      "reexport": "../artifacts/majalis/api/assistant.js",
+      "targetExists": false
+    },
+    {
+      "file": "api/cron/sync-data.js",
+      "reexport": "../../artifacts/majalis/api/cron/sync-data.js",
+      "targetExists": false
+    },
+    {
+      "file": "api/healthz.js",
+      "reexport": "../artifacts/majalis/api/healthz.js",
+      "targetExists": false
+    },
+    {
+      "file": "api/prayer-times.js",
+      "reexport": "../artifacts/majalis/api/prayer-times.js",
+      "targetExists": false
+    },
+    {
+      "file": "api/test-anthropic.js",
+      "reexport": "../artifacts/majalis/api/test-anthropic.js",
+      "targetExists": false
+    }
+  ],
+  "brokenRootApi": [
+    {
+      "file": "api/assistant/health.js",
+      "reexport": "../../artifacts/majalis/api/assistant/health.js",
+      "targetExists": false
+    },
+    {
+      "file": "api/assistant.js",
+      "reexport": "../artifacts/majalis/api/assistant.js",
+      "targetExists": false
+    },
+    {
+      "file": "api/cron/sync-data.js",
+      "reexport": "../../artifacts/majalis/api/cron/sync-data.js",
+      "targetExists": false
+    },
+    {
+      "file": "api/healthz.js",
+      "reexport": "../artifacts/majalis/api/healthz.js",
+      "targetExists": false
+    },
+    {
+      "file": "api/prayer-times.js",
+      "reexport": "../artifacts/majalis/api/prayer-times.js",
+      "targetExists": false
+    },
+    {
+      "file": "api/test-anthropic.js",
+      "reexport": "../artifacts/majalis/api/test-anthropic.js",
+      "targetExists": false
+    }
+  ],
+  "clientCallHits": {
+    "/api/admin/governance": 9,
+    "/api/admin/open-platform": 8,
+    "/api/admin/islamic-intelligence": 7,
+    "/api/admin/global-reference": 5,
+    "/api/admin/content-import": 5,
+    "/api/admin/auto-content": 4,
+    "/api/admin/content-production": 4,
+    "/api/push/subscribe": 3,
+    "/api/auto-content": 2,
+    "/api/user/citations": 2,
+    "/api/global-reference": 2,
+    "/api/learning-assessment": 2,
+    "/api/intelligent-search": 2,
+    "/api/topic-content": 2,
+    "/api/admin/search-analytics": 2,
+    "/api/admin/programs/*": 2,
+    "/api/admin/faqs/*": 2,
+    "/api/account/export": 2,
+    "/api/admin/submissions": 2,
+    "/api/cron/researches-daily-import": 1,
+    "/api/researches/submit": 1,
+    "/api/narration/tts": 1,
+    "/api/assistant": 1,
+    "/api/assistant/health": 1,
+    "/api/admin/autonomous-ai": 1,
+    "/api/daily-content": 1,
+    "/api/citations": 1,
+    "/api/content-delta": 1,
+    "/api/digital-learning": 1,
+    "/api/client-error": 1,
+    "/api/admin/instagram-integration": 1,
+    "/api/admin/auto-knowledge-engine": 1,
+    "/api/admin/knowledge-pipeline": 1,
+    "/api/knowledge-search": 1,
+    "/api/knowledge-recommendations": 1,
+    "/api/knowledge-graph*": 1,
+    "/api/knowledge-graph/relationship": 1,
+    "/api/admin/lesson-automation": 1,
+    "/api/admin/lesson-from-image": 1,
+    "/api/admin/lesson-from-url": 1,
+    "/api/admin/majlis-knowledge-engine": 1,
+    "/api/reading-sync": 1,
+    "/api/rag": 1,
+    "/api/admin/knowledge-reasoning": 1,
+    "/api/knowledge-reasoning": 1,
+    "/api/recommendations": 1,
+    "/api/web-vitals": 1,
+    "/api/rum": 1,
+    "/api/content-relations": 1,
+    "/api/admin/scholarly-verification": 1,
+    "/api/scholarly-search": 1,
+    "/api/admin/smart-cms": 1,
+    "/api/public-config": 1,
+    "/api/healthz": 1,
+    "/api/universities": 1,
+    "/api/admin/universities": 1,
+    "/api/admin/requirements/*": 1,
+    "/api/admin/reminders": 1,
+    "/api/admin/reminders/*": 1,
+    "/api/admin/verified-knowledge": 1,
+    "/api/account/delete": 1,
+    "/api/submissions": 1,
+    "/api/transcribe": 1,
+    "/api/admin/autonomous-platform": 1,
+    "/api/admin/feature-health": 1,
+    "/api/admin/platform-bootstrap": 1,
+    "/api/admin/production-activate": 1,
+    "/api/v1/docs": 1,
+    "/api/*/docs": 1,
+    "/api/cron/bootstrap-database": 1,
+    "/api/admin/telegram": 1,
+    "/api/internal/status": 1
+  },
+  "notes": {
+    "adminSecretFallbackToCron": true,
+    "telegramOpenWhenSecretMissing": true,
+    "rateLimitFailClosedInProduction": true,
+    "centralSecurityClass": false
+  }
+}

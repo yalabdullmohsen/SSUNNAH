@@ -1,1 +1,1 @@
-export { default, maxDuration } from "../artifacts/majalis/api/assistant.js";
+export { default, maxDuration } from "../artifacts/majalis/lib/api-handlers/assistant.js";

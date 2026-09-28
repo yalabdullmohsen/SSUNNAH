@@ -181,6 +181,7 @@
     "test:dep0169-api": "node scripts/test-dep0169-api.mjs",
     "test:html-asset-cache": "node scripts/test-html-asset-cache-headers.mjs",
     "test:lazy-chunk": "node --import tsx src/lib/__tests__/lazy-with-retry.test.ts",
+    "test:api-security-p2": "node lib/__tests__/api-security-policy.test.mjs && node lib/__tests__/api-security-abuse.test.mjs",
     "test:chunk-recovery": "node --import tsx src/lib/__tests__/chunk-recovery.test.ts && node --import tsx src/lib/__tests__/ops-telemetry.test.ts && node --import tsx src/lib/__tests__/update-no-fullscreen-ui-gate.test.ts",
     "test:phase5-audio-offline-seo": "node --import tsx src/lib/__tests__/phase5-audio-offline-seo.test.ts",
     "test:runtime-followup": "node scripts/test-runtime-followup-contracts.mjs && node scripts/test-router-same-origin.mjs && node lib/__tests__/job-worker-budget.test.mjs && node --import tsx src/lib/__tests__/to-app-path.test.ts",
