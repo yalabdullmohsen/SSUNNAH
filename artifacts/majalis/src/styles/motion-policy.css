@@ -1,0 +1,37 @@
+/**
+ * سياسة حركة محافظة (Phase 5) — CSS فقط، بلا Framer Motion.
+ * لا حركات زخرفية مستمرة؛ احترام prefers-reduced-motion.
+ */
+:root {
+  --motion-duration-instant: 0ms;
+  --motion-duration-fast: 120ms;
+  --motion-duration-base: 180ms;
+  --motion-duration-slow: 280ms;
+  --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-fast: 0ms;
+    --motion-duration-base: 0ms;
+    --motion-duration-slow: 0ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .app-state-v2--loading .app-state-v2__skeleton,
+  .ss-screen__skeleton,
+  .ss-screen__skeleton--short {
+    animation: none;
+  }
+
+  .mj-pressable:active,
+  .bottom-nav__tab:active,
+  .ss-icon-btn:active {
+    transform: none;
+  }
+}

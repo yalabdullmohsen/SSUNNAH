@@ -1,0 +1,40 @@
+/**
+ * PageContainer — تخطيط عام (Phase 5).
+ * يعتمد tokens المسافات/العرض من Foundation؛ لا يمس المصحف.
+ * Safe area عبر var(--inset-*) فقط (بوابة iOS edge).
+ */
+
+.ss-page-container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: max(var(--sf2-space-4, 1rem), var(--inset-left, 0px))
+    max(var(--sf2-space-4, 1rem), var(--inset-right, 0px));
+  padding-block-start: max(0.5rem, var(--inset-top, 0px));
+  box-sizing: border-box;
+}
+
+.ss-page-container--narrow {
+  max-width: var(--sf-content-narrow, 40rem);
+}
+.ss-page-container--default {
+  max-width: var(--sf-content-default, 48rem);
+}
+.ss-page-container--wide {
+  max-width: var(--sf-content-wide, 72rem);
+}
+.ss-page-container--full {
+  max-width: none;
+}
+
+.ss-page-container--bottom-nav {
+  padding-block-end: calc(
+    var(--bottom-nav-height, 4.25rem) + var(--inset-bottom, 0px) + var(--sf2-space-3, 0.75rem)
+  );
+}
+
+@media (min-width: 880px) {
+  .ss-page-container--bottom-nav {
+    /* الشريط السفلي مخفي على الشاشات العريضة */
+    padding-block-end: var(--sf2-space-6, 1.5rem);
+  }
+}

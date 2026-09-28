@@ -6,6 +6,7 @@ import { Redirect, Route, Switch, useSearch } from "wouter";
 import { AdminLazyRoute, SafeLazyRoute } from "@/app/routes/safe-lazy-route";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { LazyRouteFallback } from "@/components/LazyRouteFallback";
+import { lazyWithRetry } from "@/lib/lazy-with-retry";
 import { buildLegacyLearnTarget } from "@/lib/legacy-learn-redirect";
 import {
   resolveLegacyMushafSurahRedirect,
@@ -304,6 +305,16 @@ export default function AppRoutes() {
       <Route path="/contact"><SafeLazyRoute component={ContactPage} /></Route>
       <Route path="/support"><SafeLazyRoute component={ContactPage} /></Route>
       <Route path="/settings"><SafeLazyRoute component={SettingsPage} /></Route>
+      {import.meta.env.DEV ? (
+        <Route path="/dev/design-system">
+          <SafeLazyRoute
+            component={lazyWithRetry(
+              () => import("@/pages/dev/DesignSystemGalleryPage"),
+              "DesignSystemGalleryPage",
+            )}
+          />
+        </Route>
+      ) : null}
       <Route path="/feature-tour"><SafeLazyRoute component={FeatureTourPage} /></Route>
       <Route path="/search/:q"><SafeLazyRoute component={SearchPage} /></Route>
       <Route path="/search"><SafeLazyRoute component={SearchPage} /></Route>

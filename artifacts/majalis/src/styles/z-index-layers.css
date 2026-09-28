@@ -1,0 +1,20 @@
+/**
+ * طبقات z-index المعتمدة (Phase 5) — استخدم var(--z-*) فقط في CSS الجديد.
+ * لا تُنشئ أرقامًا عشوائية في المكوّنات العامة.
+ */
+:root {
+  --z-base: 0;
+  --z-raised: 1;
+  --z-sticky: 100;
+  --z-chrome: 150;
+  --z-fab: 220;
+  --z-audio-mini: 210;
+  --z-audio-expanded: 230;
+  --z-sheet-backdrop: 240;
+  --z-sheet: 250;
+  --z-dropdown: 300;
+  --z-critical-dialog: 400;
+  --z-toast: 500;
+  --z-overlay-drawer: 10040;
+  --z-skip-link: 10050;
+}

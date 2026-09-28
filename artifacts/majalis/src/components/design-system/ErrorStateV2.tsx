@@ -1,5 +1,6 @@
 import type { HTMLAttributes } from "react";
 import { Link } from "wouter";
+import { SectionTitle } from "@/components/design-system/text";
 import { cn } from "@/lib/utils";
 
 export type ErrorStateV2Props = HTMLAttributes<HTMLDivElement> & {
@@ -9,6 +10,8 @@ export type ErrorStateV2Props = HTMLAttributes<HTMLDivElement> & {
   onRetry?: () => void;
   homeHref?: string;
   homeLabel?: string;
+  /** معرّف تشغيلي قابل للنسخ — لا تفاصيل مزوّد خام */
+  correlationId?: string;
 };
 
 export function ErrorStateV2({
@@ -18,6 +21,7 @@ export function ErrorStateV2({
   onRetry,
   homeHref = "/",
   homeLabel = "الرئيسية",
+  correlationId,
   className,
   ...rest
 }: ErrorStateV2Props) {
@@ -28,8 +32,15 @@ export function ErrorStateV2({
       data-app-state="error"
       {...rest}
     >
-      <p className="app-state-v2__title">{title}</p>
+      <SectionTitle as="h2" className="app-state-v2__title">
+        {title}
+      </SectionTitle>
       <p className="app-state-v2__body">{description}</p>
+      {correlationId ? (
+        <p className="app-state-v2__meta" dir="ltr">
+          ref: {correlationId}
+        </p>
+      ) : null}
       <div className="app-state-v2__actions">
         {onRetry ? (
           <button type="button" className="app-state-v2__btn app-state-v2__btn--primary" onClick={onRetry}>
