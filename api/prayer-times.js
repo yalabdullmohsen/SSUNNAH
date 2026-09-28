@@ -1,1 +1,1 @@
-export { default } from "../artifacts/majalis/api/prayer-times.js";
+export { default } from "../artifacts/majalis/lib/api-handlers/prayer-times.js";

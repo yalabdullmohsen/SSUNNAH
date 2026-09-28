@@ -1,1 +1,1 @@
-export { default } from "../../artifacts/majalis/api/cron/sync-data.js";
+export { default } from "../../artifacts/majalis/lib/api-handlers/cron/sync-data.js";

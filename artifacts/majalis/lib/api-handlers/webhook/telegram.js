@@ -1,13 +1,12 @@
 /**
  * Telegram Webhook — receives updates from Telegram Bot API.
- * Handles:
- *   - Direct messages: /start /stop /help
- *   - Channel posts: stores to tg_raw_messages for AI extraction
+ * Production: TELEGRAM_WEBHOOK_SECRET required (fail-closed).
  */
 import { sendJson, endEmpty } from "../../api/_http.mjs";
 import { addSubscriber, removeSubscriber } from "../../telegram/subscriber-service.mjs";
 import { sendMessage } from "../../telegram/bot.mjs";
 import { storeRawMessage } from "../../telegram/channel-monitor.mjs";
+import { isProductionEnv, safeSecretEqual } from "../../api-security-policy.mjs";
 
 const WELCOME = `🕌 <b>أهلاً بك في سُنّة!</b>
 
@@ -25,11 +24,31 @@ const HELP = `🕌 <b>سُنّة — تطبيق العلم الشرعي</b>
 /stop — إلغاء الاشتراك
 /help — عرض هذه الرسالة`;
 
-export default async function handler(req, res) {
-  const secretHeader = String(req.headers?.["x-telegram-bot-api-secret-token"] || "").trim();
-  const expectedSecret = String(process.env.TELEGRAM_WEBHOOK_SECRET || "").trim();
+const seenUpdateIds = new Map();
+const DEDUPE_TTL_MS = 10 * 60_000;
 
-  if (expectedSecret && secretHeader !== expectedSecret) {
+function rememberUpdate(id) {
+  if (id == null) return false;
+  const key = String(id);
+  const now = Date.now();
+  for (const [k, ts] of seenUpdateIds) {
+    if (now - ts > DEDUPE_TTL_MS) seenUpdateIds.delete(k);
+  }
+  if (seenUpdateIds.has(key)) return true;
+  seenUpdateIds.set(key, now);
+  return false;
+}
+
+export default async function handler(req, res) {
+  const expectedSecret = String(process.env.TELEGRAM_WEBHOOK_SECRET || "").trim();
+  const secretHeader = String(req.headers?.["x-telegram-bot-api-secret-token"] || "").trim();
+
+  if (!expectedSecret) {
+    if (isProductionEnv()) {
+      sendJson(res, 503, { ok: false });
+      return;
+    }
+  } else if (!safeSecretEqual(secretHeader, expectedSecret)) {
     sendJson(res, 403, { ok: false });
     return;
   }
@@ -40,20 +59,22 @@ export default async function handler(req, res) {
   }
 
   const update = req.body;
+  if (rememberUpdate(update?.update_id)) {
+    endEmpty(res, 200);
+    return;
+  }
 
-  // ── Channel post → store for AI extraction ──────────────────────────────
   const channelPost = update?.channel_post || update?.edited_channel_post;
   if (channelPost) {
     try {
       await storeRawMessage(channelPost);
     } catch (err) {
-      console.error("[telegram-webhook] storeRawMessage error:", err.message);
+      console.error("[telegram-webhook] storeRawMessage error:", err?.code || "err");
     }
     endEmpty(res, 200);
     return;
   }
 
-  // ── Direct message → command handling ───────────────────────────────────
   const msg = update?.message || update?.edited_message;
 
   if (!msg) {
@@ -83,7 +104,7 @@ export default async function handler(req, res) {
       await sendMessage(chatId, "أرسل /help لعرض الأوامر المتاحة.");
     }
   } catch (err) {
-    console.error("[telegram-webhook] command error:", err.message);
+    console.error("[telegram-webhook] command error:", err?.code || "err");
   }
 
   endEmpty(res, 200);
