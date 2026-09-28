@@ -18,8 +18,20 @@ import { canonicalizeLessonPublicId } from "@/lib/lesson-id-aliases";
 import { classifyWomenAttendance } from "@/lib/lesson-women-attendance";
 import { dedupeLessons } from "@/lib/lessons/lessonDeduper";
 import { resolveSafeSpeaker, dedupeLessonTitleSegments, looksLikePersonSpeaker } from "@/lib/lesson-speaker-guard";
+import {
+  inferCadenceKind,
+  normalizeAttendanceMode,
+  type LessonAttendanceMode,
+  type LessonCadenceKind,
+  type LessonEventPipelineStatus,
+} from "@/lib/kuwait-lesson-contract";
 
 export type ActivityType = "درس" | "دورة";
+export type {
+  LessonAttendanceMode,
+  LessonCadenceKind,
+  LessonEventPipelineStatus,
+} from "@/lib/kuwait-lesson-contract";
 
 export type KuwaitLessonRecord = {
   id: string;
@@ -68,6 +80,17 @@ export type KuwaitLessonRecord = {
   archivedAt?: string | null;
   completeness?: number;
   missingFields?: string[];
+  /** Program 4 — attendance / provenance (optional; never invented). */
+  attendanceMode?: LessonAttendanceMode;
+  cadenceKind?: LessonCadenceKind;
+  lastVerifiedAt?: string | null;
+  sourceId?: string | null;
+  sourceUrl?: string | null;
+  cancelledAt?: string | null;
+  scheduleChangeNote?: string | null;
+  bookTitle?: string | null;
+  subject?: string | null;
+  pipelineStatus?: LessonEventPipelineStatus | null;
 };
 
 export type KuwaitLessonFilters = {
@@ -232,6 +255,22 @@ export function mapLessonRow(row: any): KuwaitLessonRecord {
     { venue: row.mosque, venueType: row.venue_type },
   );
 
+  const mosque = row.mosque || "";
+  const attendanceMode = normalizeAttendanceMode(delivery, {
+    hasLiveStream,
+    hasMosque: Boolean(String(mosque).trim()),
+  });
+  const cadenceKind = inferCadenceKind(row);
+  const cancelledAt = row.cancelled_at || row.canceled_at || null;
+  const lastVerifiedAt = row.last_verified_at || row.last_verified || null;
+  const scheduleChangeNote = row.schedule_change_note || row.schedule_change || null;
+  const pipelineStatus =
+    cancelledAt
+      ? ("CANCELLED" as const)
+      : scheduleChangeNote
+        ? ("SCHEDULE_CHANGED" as const)
+        : row.pipeline_status || (row.status === "approved" ? ("PUBLISHED" as const) : null);
+
   const partialLesson = enrichScheduleFields({
     id,
     title: cleanLessonDisplayTitle(row.title, linkedLessons),
@@ -241,7 +280,7 @@ export function mapLessonRow(row: any): KuwaitLessonRecord {
     lessonImage: resolveLessonPosterUrl(row.poster_image_url),
     governorate,
     region,
-    mosque: row.mosque || "",
+    mosque,
     day,
     time: row.lesson_time || row.schedule || "",
     category: row.category || "أخرى",
@@ -267,6 +306,16 @@ export function mapLessonRow(row: any): KuwaitLessonRecord {
     courseId: row.course_id,
     recurring: row.is_recurring !== false && !row.end_date,
     archivedAt: row.archived_at || null,
+    attendanceMode,
+    cadenceKind,
+    lastVerifiedAt,
+    sourceId: row.source_id || null,
+    sourceUrl: row.source_url || null,
+    cancelledAt,
+    scheduleChangeNote,
+    bookTitle: row.book_title || null,
+    subject: row.subject || row.category || null,
+    pipelineStatus,
   });
   const { score, missing } = computeCompleteness(partialLesson);
   partialLesson.completeness = row.completeness_score != null ? Number(row.completeness_score) : score;
@@ -275,6 +324,7 @@ export function mapLessonRow(row: any): KuwaitLessonRecord {
 }
 
 function isExpired(lesson: KuwaitLessonRecord, nowMs = Date.now()): boolean {
+  if (lesson.cancelledAt) return true;
   if (lesson.archivedAt) return true;
   // فقط تواريخ صريحة (endDate / startDate) — لا نُفسّر تواريخ العناوين
   if (lesson.endDate) {

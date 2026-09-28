@@ -83,7 +83,7 @@ Any section with availability `PARTIAL` or `BLOCKED_INCOMPLETE` must **not** be 
 ## Next bounded waves (recommended order)
 
 1. ~~Register REGISTRY_GAP destinations~~ → done (PLATFORM_REGISTRY_GAPS_W1)
-2. Kuwait lessons data model (Program 4)
+2. ~~Kuwait lessons data model (Program 4)~~ → KUWAIT_LESSONS_MODEL_W1 (import provenance follow-up)
 3. Arabic grammar Wave 2 — only with approved source
 4. Shubuhat center provenance
 5. Search: exclude COMING_SOON / BLOCKED from public grammar/sects destinations
