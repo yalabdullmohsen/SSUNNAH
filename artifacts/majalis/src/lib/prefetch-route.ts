@@ -80,7 +80,7 @@ export function prefetchRoute(href: string): void {
 /** مسارات أساسية من الرئيسية — للتسخين الجماعي */
 export const HOME_WARM_ROUTES = [
   "/quran-hub",
-  "/mushaf",
+  /* لا تُسخَّن /mushaf من الرئيسية — يمنع TBT/CSS المصحف على Home */
   "/prayer-times",
   "/lessons",
   "/sections",

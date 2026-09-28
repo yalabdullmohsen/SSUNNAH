@@ -45,7 +45,7 @@ const reader = read("src/features/mushaf-reader/NewMushafReader.tsx");
 const css = read("src/features/mushaf-reader/mushaf-reader.css");
 assert.match(reader, /data-mushaf-appearance=\{mushafAppearanceResolved\}/);
 assert.match(css, /--mushaf-ayah-mark-size:\s*1\.15em/);
-assert.match(css, /--mushaf-ayah-mark-number-size:\s*1\.52em/);
+assert.match(css, /--mushaf-ayah-mark-number-size:\s*1(?:\.0)?em/);
 assert.match(css, /html\[data-mushaf-appearance="light"\] \.nm-root/);
 
 console.log(

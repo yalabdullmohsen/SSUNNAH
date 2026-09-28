@@ -791,7 +791,7 @@ html[data-theme="dark"] .nm-basmala.is-search-hit {
   outline-offset: 1px;
 }
 
-/* طبقة تحديد آية كاملة — شرائط سطرية أوضح بلا قفزة تخطيط */
+/* طبقة تحديد آية — إضاءة مخطوطة دافئة (بلا صندوق تقني) */
 .nm-ayah-sel {
   position: absolute;
   inset: 0;
@@ -803,18 +803,19 @@ html[data-theme="dark"] .nm-basmala.is-search-hit {
 .nm-ayah-sel__band {
   position: absolute;
   pointer-events: none;
-  border-radius: 0.35em;
-  background: color-mix(in srgb, #c4a574 18%, transparent);
-  box-shadow: none;
+  border-radius: 0.55em;
+  background: color-mix(in srgb, #E4DAB6 42%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, #B8942E 10%, transparent);
   border: none;
 }
 
 .nm-ayah-sel__band--playing {
-  background: rgba(147, 121, 82, 0.12);
+  background: color-mix(in srgb, #E4DAB6 55%, transparent);
+  box-shadow: inset 0 0 12px color-mix(in srgb, #B8942E 14%, transparent);
 }
 
 .nm-ayah-sel__band--navigation {
-  background: color-mix(in srgb, #c4a35a 22%, transparent);
+  background: color-mix(in srgb, #E4DAB6 48%, transparent);
   transition: opacity 600ms ease;
 }
 .nm-ayah-sel__band--navigation.is-fading {
@@ -822,12 +823,12 @@ html[data-theme="dark"] .nm-basmala.is-search-hit {
 }
 html.dark .nm-ayah-sel__band--navigation,
 html[data-theme="dark"] .nm-ayah-sel__band--navigation {
-  background: color-mix(in srgb, #8a6b2e 38%, transparent);
+  background: color-mix(in srgb, #8F6D17 34%, transparent);
 }
 
 .nm-ayah-sel__band--selected {
-  background: color-mix(in srgb, #d4b483 22%, transparent);
-  box-shadow: none;
+  background: color-mix(in srgb, #E4DAB6 58%, transparent);
+  box-shadow: inset 0 0 14px color-mix(in srgb, #B8942E 16%, transparent);
 }
 
 /*
@@ -1759,14 +1760,24 @@ html[data-theme="dark"] .nm-exit-control {
 /* —— Compact Reader Toolbar + Page Arrows + Focus Mode (خارج Geometry) —— */
 .nm-root {
   --nm-chrome-h: 2.35rem;
+  --mushaf-reading-bg: #FCFBF7;
+  --mushaf-reading-surface: #FFFDF9;
+  --mushaf-reading-gold: #B8942E;
+  --mushaf-reading-gold-deep: #8F6D17;
+  --mushaf-reading-gold-soft: #E4DAB6;
+  --mushaf-reading-ink: #111111;
 }
 
 .nm-controls--compact .nm-controls__bar {
   min-height: calc(var(--nm-chrome-h) + var(--inset-top, 0px));
-  padding: calc(0.22rem + var(--inset-top, 0px)) 0.55rem 0.22rem;
-  gap: 0.35rem;
-  background: color-mix(in srgb, var(--nm-paper) 88%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--nm-gold) 14%, transparent);
+  padding: calc(0.18rem + var(--inset-top, 0px)) 0.65rem 0.18rem;
+  gap: 0.25rem;
+  display: grid;
+  grid-template-columns: 2.75rem 1fr 2.75rem;
+  align-items: center;
+  justify-content: space-between;
+  background: color-mix(in srgb, var(--mushaf-reading-bg) 92%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--mushaf-reading-gold-soft) 55%, transparent);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
@@ -1774,46 +1785,124 @@ html[data-theme="dark"] .nm-exit-control {
 .nm-controls--compact .nm-controls__btn {
   min-height: var(--touch-comfortable, 48px);
   min-width: var(--touch-comfortable, 48px);
-  padding: 0.25rem 0.55rem;
-  font-size: 0.78rem;
+  padding: 0.2rem;
+  font-size: 1.05rem;
   border-radius: 0.45rem;
+  border: 0;
+  background: transparent;
+  color: var(--mushaf-reading-ink);
+}
+
+.nm-controls--compact .nm-controls__exit {
+  justify-self: start;
+}
+
+.nm-controls--compact .nm-controls__more {
+  justify-self: end;
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  color: var(--mushaf-reading-gold-deep);
+}
+
+.nm-controls__more-spacer {
+  width: 2.75rem;
+  height: 1px;
 }
 
 .nm-controls--compact .nm-controls__page {
+  justify-self: center;
   min-height: var(--touch-comfortable, 48px);
-  min-width: var(--touch-comfortable, 48px);
-  font-size: 0.88rem;
-  padding: 0.2rem 0.45rem;
+  min-width: 3.5rem;
+  font-family: "Amiri", "Traditional Arabic", serif;
+  font-size: 1.28rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.55rem;
+  color: var(--mushaf-reading-gold);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.nm-controls--compact .nm-controls__page:active {
+  background: color-mix(in srgb, var(--mushaf-reading-gold-soft) 35%, transparent);
+  color: var(--mushaf-reading-gold-deep);
 }
 
 .nm-controls__actions {
-  display: flex;
-  gap: 0.3rem;
-  align-items: center;
-  margin-inline-start: auto;
+  display: none;
 }
 
 .nm-controls__focus[aria-pressed="true"] {
-  background: color-mix(in srgb, var(--nm-gold) 22%, var(--nm-paper));
+  background: color-mix(in srgb, var(--mushaf-reading-gold) 16%, var(--mushaf-reading-surface));
+}
+
+.nm-controls__exit-label {
+  display: none;
 }
 
 .nm-controls-more {
   position: absolute;
-  inset-inline: 0.55rem auto;
+  inset-inline: 0.55rem 0.55rem;
+  inset-inline-start: auto;
   top: calc(var(--nm-chrome-h) + var(--inset-top, 0px) + 0.35rem);
   z-index: 36;
-  min-width: min(16.5rem, calc(100% - 1.1rem));
-  padding: 0.65rem 0.75rem;
-  border-radius: 0.65rem;
-  border: 1px solid color-mix(in srgb, var(--nm-gold) 22%, transparent);
-  background: color-mix(in srgb, var(--nm-paper) 94%, transparent);
-  box-shadow: none;
+  width: min(19rem, calc(100% - 1.1rem));
+  max-height: min(70dvh, 28rem);
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--mushaf-reading-gold-soft) 70%, transparent);
+  background: var(--mushaf-reading-surface);
+  color: var(--mushaf-reading-ink);
+  box-shadow: 0 10px 28px color-mix(in srgb, #111111 10%, transparent);
   display: grid;
   gap: 0.55rem;
   /* الأب .nm-controls pointer-events:none لتمرير لمسات الصفحة —
      يجب إعادة تفعيل اللوحة وإلا تُبتلع نقرات SYSTEM/LIGHT/DARK */
   pointer-events: auto;
   touch-action: manipulation;
+}
+
+.nm-controls-more__nav {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.nm-controls-more__item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 2.75rem;
+  padding: 0.45rem 0.55rem;
+  border: 0;
+  border-radius: 0.55rem;
+  background: transparent;
+  color: var(--mushaf-reading-ink);
+  font: inherit;
+  font-size: 0.92rem;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: start;
+}
+
+.nm-controls-more__item:active {
+  background: color-mix(in srgb, var(--mushaf-reading-gold-soft) 40%, transparent);
+}
+
+.nm-controls-more__settings {
+  display: grid;
+  gap: 0.45rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid color-mix(in srgb, var(--mushaf-reading-gold-soft) 65%, transparent);
+}
+
+.nm-controls-more__subtitle {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: var(--mushaf-reading-gold-deep);
 }
 
 .nm-controls-more button,

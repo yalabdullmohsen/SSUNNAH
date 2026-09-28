@@ -57,6 +57,10 @@ type ControlsProps = {
   onSearch: () => void;
   onIndex: () => void;
   onPlayPage?: () => void;
+  onTafsir?: () => void;
+  onNotes?: () => void;
+  onSharePage?: () => void;
+  onCopyLink?: () => void;
   /** وضع القراءة الكامل — يخفي كل الـchrome عدا المصحف */
   focusReadingMode?: boolean;
   onToggleFocusReadingMode?: () => void;
@@ -80,6 +84,10 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
   onSearch,
   onIndex,
   onPlayPage,
+  onTafsir,
+  onNotes,
+  onSharePage,
+  onCopyLink,
   focusReadingMode = false,
   onToggleFocusReadingMode,
   pageArrowsEnabled = true,
@@ -198,7 +206,8 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
       data-focus-reading={focusReadingMode ? "1" : "0"}
       aria-hidden={!chromeOpen && !gotoOpen}
     >
-      <div className="nm-controls__bar" data-testid="nm-controls-bar" role="toolbar" aria-label="أدوات المصحف">
+      {/* شريط قراءة: ← · رقم الصفحة · ⋯ فقط — بلا أدوات دائمة */}
+      <div className="nm-controls__bar" data-testid="nm-controls-bar" role="toolbar" aria-label="قراءة المصحف">
         <button
           type="button"
           className="nm-controls__btn nm-controls__exit"
@@ -215,79 +224,38 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
           <span className="nm-controls__exit-icon" aria-hidden="true">
             ←
           </span>
-          <span className="nm-controls__exit-label">إغلاق</span>
         </button>
-        {onToggleFocusReadingMode ? (
-          <button
-            type="button"
-            className="nm-controls__btn nm-controls__focus"
-            data-testid="mushaf-focus-reading-toggle"
-            aria-label={focusReadingMode ? "إظهار أدوات المصحف" : "إخفاء أدوات المصحف"}
-            aria-pressed={focusReadingMode}
-            onClick={(e) => {
-              e.stopPropagation();
-              onToggleFocusReadingMode();
-            }}
-          >
-            {focusReadingMode ? "إظهار" : "قراءة"}
-          </button>
-        ) : null}
         <button
           type="button"
           className="nm-controls__page"
+          data-testid="mushaf-goto-page-btn"
           onClick={() => onGotoOpenChange(true)}
           aria-label={`الصفحة ${pageNumber} من ${MUSHAF_PAGE_MAX} — انتقال`}
           dir="ltr"
         >
           {toArabicDigits(pageNumber)}
         </button>
-        <div className="nm-controls__actions">
-          <button type="button" className="nm-controls__btn" aria-label="بحث في القرآن" onClick={onSearch}>
-            بحث
+        {onMoreOpenChange ? (
+          <button
+            type="button"
+            className="nm-controls__btn nm-controls__more"
+            data-testid="mushaf-controls-more"
+            aria-label="المزيد"
+            aria-expanded={moreOpen}
+            aria-controls={moreOpen ? moreTitleId : undefined}
+            onClick={(e) => {
+              e.stopPropagation();
+              onMoreOpenChange(!moreOpen);
+            }}
+          >
+            <span aria-hidden="true">⋯</span>
           </button>
-          <button type="button" className="nm-controls__btn" aria-label="فهرس السور" onClick={onIndex}>
-            فهرس
-          </button>
-          {onBookmarkPage ? (
-            <button
-              type="button"
-              className="nm-controls__btn"
-              data-testid="mushaf-page-bookmark-btn"
-              aria-label="حفظ علامة في الصفحة"
-              title="علامة"
-              onClick={(e) => {
-                e.stopPropagation();
-                onBookmarkPage();
-              }}
-            >
-              علامة
-            </button>
-          ) : null}
-          {onPlayPage ? (
-            <button type="button" className="nm-controls__btn" aria-label="تشغيل الصفحة" onClick={onPlayPage}>
-              تشغيل
-            </button>
-          ) : null}
-          {onPageArrowsEnabledChange && onMoreOpenChange ? (
-            <button
-              type="button"
-              className="nm-controls__btn nm-controls__more"
-              data-testid="mushaf-controls-more"
-              aria-label="المزيد من إعدادات المصحف"
-              aria-expanded={moreOpen}
-              aria-controls={moreOpen ? moreTitleId : undefined}
-              onClick={(e) => {
-                e.stopPropagation();
-                onMoreOpenChange(!moreOpen);
-              }}
-            >
-              المزيد
-            </button>
-          ) : null}
-        </div>
+        ) : (
+          <span className="nm-controls__more-spacer" aria-hidden="true" />
+        )}
       </div>
 
-      {moreOpen && onPageArrowsEnabledChange ? (
+      {moreOpen && onMoreOpenChange ? (
         <div
           className="nm-controls-more"
           data-testid="mushaf-controls-more-panel"
@@ -296,39 +264,177 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
           aria-labelledby={moreTitleId}
         >
           <h2 id={moreTitleId} className="nm-controls-more__title">
-            إعدادات المصحف
+            المزيد
           </h2>
-          <MushafDisplayModeControl
-            value={displayMode}
-            onChange={(mode) => {
-              QuranSettingsRepository.setAppearanceMode(mode);
-              QuranSettingsRepository.applyAppearance(mode);
-              setDisplayMode(mode);
-            }}
-            className="nm-controls-more__display-mode"
-          />
-          <label className="nm-controls-more__row">
-            <span>إظهار أسهم تقليب الصفحات</span>
-            <input
-              type="checkbox"
-              data-testid="mushaf-page-arrows-toggle"
-              checked={pageArrowsEnabled}
-              aria-label="إظهار أسهم تقليب الصفحات"
-              onChange={(e) => onPageArrowsEnabledChange?.(e.target.checked)}
+          <nav className="nm-controls-more__nav" aria-label="إجراءات المصحف">
+            <button
+              type="button"
+              className="nm-controls-more__item"
+              data-testid="mushaf-index"
+              onClick={() => {
+                onIndex();
+                onMoreOpenChange(false);
+              }}
+            >
+              الفهرس
+            </button>
+            <button
+              type="button"
+              className="nm-controls-more__item"
+              data-testid="mushaf-search"
+              onClick={() => {
+                onSearch();
+                onMoreOpenChange(false);
+              }}
+            >
+              البحث
+            </button>
+            {onBookmarkPage ? (
+              <button
+                type="button"
+                className="nm-controls-more__item"
+                data-testid="mushaf-page-bookmark-btn"
+                onClick={() => {
+                  onBookmarkPage();
+                  onMoreOpenChange(false);
+                }}
+              >
+                العلامات
+              </button>
+            ) : (
+              <a
+                className="nm-controls-more__item"
+                href="/mushaf/bookmarks"
+                data-testid="mushaf-bookmarks-manager-link"
+                onClick={() => onMoreOpenChange(false)}
+              >
+                العلامات
+              </a>
+            )}
+            {onPlayPage ? (
+              <button
+                type="button"
+                className="nm-controls-more__item"
+                data-testid="mushaf-play-page"
+                onClick={() => {
+                  onPlayPage();
+                  onMoreOpenChange(false);
+                }}
+              >
+                التلاوة
+              </button>
+            ) : null}
+            {onTafsir ? (
+              <button
+                type="button"
+                className="nm-controls-more__item"
+                data-testid="mushaf-more-tafsir"
+                onClick={() => {
+                  onTafsir();
+                  onMoreOpenChange(false);
+                }}
+              >
+                التفسير
+              </button>
+            ) : null}
+            {onNotes ? (
+              <button
+                type="button"
+                className="nm-controls-more__item"
+                data-testid="mushaf-more-notes"
+                onClick={() => {
+                  onNotes();
+                  onMoreOpenChange(false);
+                }}
+              >
+                الملاحظات
+              </button>
+            ) : (
+              <a
+                className="nm-controls-more__item"
+                href="/mushaf/bookmarks"
+                data-testid="mushaf-more-notes"
+                onClick={() => onMoreOpenChange(false)}
+              >
+                الملاحظات
+              </a>
+            )}
+            {onSharePage ? (
+              <button
+                type="button"
+                className="nm-controls-more__item"
+                data-testid="mushaf-more-share"
+                onClick={() => {
+                  onSharePage();
+                  onMoreOpenChange(false);
+                }}
+              >
+                مشاركة الصفحة
+              </button>
+            ) : null}
+            {onCopyLink ? (
+              <button
+                type="button"
+                className="nm-controls-more__item"
+                data-testid="mushaf-more-copy-link"
+                onClick={() => {
+                  onCopyLink();
+                  onMoreOpenChange(false);
+                }}
+              >
+                نسخ الرابط
+              </button>
+            ) : null}
+          </nav>
+
+          <div className="nm-controls-more__settings" data-testid="mushaf-more-settings">
+            <h3 className="nm-controls-more__subtitle">إعدادات المصحف</h3>
+            {onToggleFocusReadingMode ? (
+              <button
+                type="button"
+                className="nm-controls-more__row nm-controls-more__item"
+                data-testid="mushaf-focus-reading-toggle"
+                aria-pressed={focusReadingMode}
+                onClick={() => onToggleFocusReadingMode()}
+              >
+                {focusReadingMode ? "إظهار الأدوات عند اللمس" : "وضع قراءة هادئ"}
+              </button>
+            ) : null}
+            <MushafDisplayModeControl
+              value={displayMode}
+              onChange={(mode) => {
+                QuranSettingsRepository.setAppearanceMode(mode);
+                QuranSettingsRepository.applyAppearance(mode);
+                setDisplayMode(mode);
+              }}
+              className="nm-controls-more__display-mode"
             />
-          </label>
-          <a
-            className="nm-controls-more__row"
-            href="/mushaf/bookmarks"
-            data-testid="mushaf-bookmarks-manager-link"
-            onClick={() => onMoreOpenChange?.(false)}
-          >
-            علامات المصحف
-          </a>
+            {onPageArrowsEnabledChange ? (
+              <label className="nm-controls-more__row">
+                <span>إظهار أسهم تقليب الصفحات</span>
+                <input
+                  type="checkbox"
+                  data-testid="mushaf-page-arrows-toggle"
+                  checked={pageArrowsEnabled}
+                  aria-label="إظهار أسهم تقليب الصفحات"
+                  onChange={(e) => onPageArrowsEnabledChange(e.target.checked)}
+                />
+              </label>
+            ) : null}
+            <a
+              className="nm-controls-more__item"
+              href="/mushaf/bookmarks"
+              data-testid="mushaf-bookmarks-settings-link"
+              onClick={() => onMoreOpenChange(false)}
+            >
+              إدارة العلامات
+            </a>
+          </div>
           <button
             type="button"
             className="nm-controls-more__close"
-            onClick={() => onMoreOpenChange?.(false)}
+            data-testid="mushaf-controls-more-close"
+            onClick={() => onMoreOpenChange(false)}
           >
             إغلاق
           </button>

@@ -66,7 +66,7 @@ assert.doesNotMatch(reader, /MushafExitControl/);
 assert.match(reader, /MushafControlsLayer/);
 
 const controls = read("src/features/mushaf-reader/MushafControlsLayer.tsx");
-assert.match(controls, /بحث في القرآن/);
+assert.match(controls, /البحث/);
 assert.match(controls, /الخروج من المصحف/);
 
 console.log("=== بلا Haptic في تقليب الصفحة ===");

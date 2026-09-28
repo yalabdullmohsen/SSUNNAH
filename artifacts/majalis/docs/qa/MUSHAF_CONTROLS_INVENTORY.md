@@ -1,15 +1,15 @@
 # جرد أزرار المصحف — Controls Inventory
 
-**Generated:** 2026-09-25T09:54:31.435Z  
+**Generated:** 2026-09-28T02:23:33.597Z  
 **Method:** static source inventory (exact counts from `CONTROLS` list; not estimates)
 
 ## Summary
 
 | Metric | Count |
 |---|---:|
-| Total interactive mushaf controls audited | **30** |
-| PASS | 23 |
-| FIXED (this PR) | 7 |
+| Total interactive mushaf controls audited | **31** |
+| PASS | 19 |
+| FIXED (this PR) | 12 |
 | BROKEN remaining | 0 |
 | NO_OP remaining | 0 |
 | REMOVED | 0 |
@@ -40,19 +40,20 @@
 | ID | Label | Status | Handler |
 |---|---|---|---|
 | `mushaf-toolbar-exit` | خروج | PASS | onExit |
-| `mushaf-focus-reading-toggle` | إخفاء/إظهار أدوات | PASS | onToggleFocusReadingMode |
+| `mushaf-focus-reading-toggle` | وضع قراءة هادئ | FIXED | onToggleFocusReadingMode |
 | `mushaf-goto-page-btn` | رقم الصفحة | PASS | onGotoOpenChange(true) |
-| `mushaf-search` | بحث | PASS | onSearch |
-| `mushaf-index` | فهرس | PASS | onIndex |
-| `mushaf-play-page` | تشغيل | PASS | onPlayPage |
-| `mushaf-controls-more` | المزيد | PASS | onMoreOpenChange |
+| `mushaf-search` | البحث | FIXED | onSearch |
+| `mushaf-index` | الفهرس | FIXED | onIndex |
+| `mushaf-play-page` | التلاوة | FIXED | onPlayPage |
+| `mushaf-controls-more` | ⋯ | PASS | onMoreOpenChange |
 | `mushaf-display-mode-SYSTEM` | تلقائي | FIXED | onChange(SYSTEM) |
 | `mushaf-display-mode-LIGHT` | نهاري | FIXED | onChange(LIGHT) |
 | `mushaf-display-mode-DARK` | ليلي | FIXED | onChange(DARK) |
 | `mushaf-page-arrows-toggle` | إظهار أسهم تقليب الصفحات | FIXED | onPageArrowsEnabledChange |
 | `mushaf-page-arrow-next` | الصفحة التالية | FIXED | onNext |
 | `mushaf-page-arrow-prev` | الصفحة السابقة | FIXED | onPrev |
-| `mushaf-bookmarks-manager-link` | إدارة الفواصل | PASS | href |
+| `mushaf-bookmarks-settings-link` | إدارة العلامات | PASS | href |
+| `mushaf-page-bookmark-btn` | العلامات | FIXED | onBookmarkPage |
 | `mushaf-controls-more-close` | إغلاق | PASS | onMoreOpenChange(false) |
 | `mushaf-goto-prev` | السابق (انتقال) | PASS | onClick stepper |
 | `mushaf-goto-next` | التالي (انتقال) | PASS | onClick stepper |

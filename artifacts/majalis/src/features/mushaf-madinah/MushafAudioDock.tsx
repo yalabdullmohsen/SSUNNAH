@@ -168,11 +168,21 @@ export function MushafAudioDock({
             <button
               type="button"
               className="mm-audio-dock__reciter-btn"
-              aria-label="اختيار القارئ"
+              aria-label={mini ? "فتح ورقة التلاوة" : "اختيار القارئ"}
               aria-haspopup="dialog"
-              aria-expanded={readersOpen}
-              onClick={() => setReadersOpen(true)}
+              aria-expanded={mini ? !mini : readersOpen}
+              data-testid="mushaf-dock-sheet-open"
+              onClick={() => {
+                if (mini && onMiniChange) {
+                  onMiniChange(false);
+                  return;
+                }
+                setReadersOpen(true);
+              }}
             >
+              <span className="mm-audio-dock__section-label" data-section="reciter">
+                القارئ
+              </span>
               <span className="mm-audio-dock__reciter-btn-name" data-testid="mushaf-dock-reciter">
                 {reciterLabel}
               </span>
@@ -186,6 +196,18 @@ export function MushafAudioDock({
             </p>
           </div>
           <div className="mm-audio-dock__head-actions">
+            {mini ? (
+              <button
+                type="button"
+                className="mm-audio-dock__play mm-audio-dock__play--mini-cta"
+                onClick={onTogglePlay}
+                aria-label={playing ? "إيقاف مؤقت" : "تشغيل"}
+                data-testid="mushaf-dock-play"
+              >
+                {playing ? <Pause size={18} aria-hidden="true" /> : <Play size={18} aria-hidden="true" />}
+                <span>{playing ? "إيقاف" : "تشغيل"}</span>
+              </button>
+            ) : null}
             {onMiniChange ? (
               <button
                 type="button"
@@ -213,56 +235,71 @@ export function MushafAudioDock({
         </div>
 
         {mini ? null : (
-          <label className="mm-audio-dock__seek">
-            <span className="sr-only">تقدم التلاوة</span>
-            <input
-              type="range"
-              className="mm-audio-dock__progress"
-              min={0}
-              max={progressMax}
-              step={0.1}
-              value={progressVal}
-              disabled={duration <= 0 || !onSeek}
-              onChange={(e) => onSeek?.(Number(e.target.value))}
-              aria-label="تقدم التلاوة"
-            />
-          </label>
+          <section className="mm-audio-dock__section" data-section="progress" aria-label="التقدم">
+            <h3 className="mm-audio-dock__section-label">التقدم</h3>
+            <label className="mm-audio-dock__seek">
+              <span className="sr-only">تقدم التلاوة</span>
+              <input
+                type="range"
+                className="mm-audio-dock__progress"
+                min={0}
+                max={progressMax}
+                step={0.1}
+                value={progressVal}
+                disabled={duration <= 0 || !onSeek}
+                onChange={(e) => onSeek?.(Number(e.target.value))}
+                aria-label="تقدم التلاوة"
+              />
+            </label>
+          </section>
         )}
 
-        <div className="mm-audio-dock__controls">
-          <button type="button" onClick={onPrev} aria-label="الآية السابقة">
-            <SkipBack size={16} aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            className="mm-audio-dock__play"
-            onClick={onTogglePlay}
-            aria-label={playing ? "إيقاف مؤقت" : "تشغيل"}
-            data-testid="mushaf-dock-play"
-          >
-            {playing ? <Pause size={20} aria-hidden="true" /> : <Play size={20} aria-hidden="true" />}
-          </button>
-          {onStop ? (
-            <button
-              type="button"
-              className="mm-audio-dock__stop"
-              onClick={onStop}
-              aria-label="إيقاف التلاوة"
-              data-testid="mushaf-dock-stop"
-              disabled={!playing && playerState !== "paused"}
-            >
-              <Square size={14} aria-hidden="true" fill="currentColor" />
-            </button>
-          ) : null}
-          <button type="button" onClick={onNext} aria-label="الآية التالية">
-            <SkipForward size={16} aria-hidden="true" />
-          </button>
-        </div>
+        {mini ? null : (
+          <section className="mm-audio-dock__section" data-section="transport" aria-label="التنقل">
+            <h3 className="mm-audio-dock__section-label">السابق · تشغيل · التالي</h3>
+            <div className="mm-audio-dock__controls">
+              <button type="button" onClick={onPrev} aria-label="الآية السابقة">
+                <SkipBack size={16} aria-hidden="true" />
+                <span>السابق</span>
+              </button>
+              <button
+                type="button"
+                className="mm-audio-dock__play"
+                onClick={onTogglePlay}
+                aria-label={playing ? "إيقاف مؤقت" : "تشغيل"}
+                data-testid="mushaf-dock-play"
+              >
+                {playing ? <Pause size={20} aria-hidden="true" /> : <Play size={20} aria-hidden="true" />}
+                <span>{playing ? "إيقاف" : "تشغيل"}</span>
+              </button>
+              {onStop ? (
+                <button
+                  type="button"
+                  className="mm-audio-dock__stop"
+                  onClick={onStop}
+                  aria-label="إيقاف التلاوة"
+                  data-testid="mushaf-dock-stop"
+                  disabled={!playing && playerState !== "paused"}
+                >
+                  <Square size={14} aria-hidden="true" fill="currentColor" />
+                </button>
+              ) : null}
+              <button type="button" onClick={onNext} aria-label="الآية التالية">
+                <SkipForward size={16} aria-hidden="true" />
+                <span>التالي</span>
+              </button>
+            </div>
+          </section>
+        )}
 
         {mini ? null : (
-          <>
-            <details className="mm-audio-dock__advanced" data-testid="mushaf-dock-advanced">
-              <summary>خيارات التلاوة</summary>
+          <section
+            className="mm-audio-dock__section mm-audio-dock__advanced"
+            data-section="practice"
+            data-testid="mushaf-dock-advanced"
+            aria-label="خيارات التلاوة"
+          >
+            <h3 className="mm-audio-dock__section-label">التكرار · السرعة · وضع الحفظ</h3>
             {onSpeed ? (
               <div className="mm-audio-dock__rates" role="group" aria-label="سرعة التلاوة">
                 {([0.75, 1, 1.25] as const).map((rate) => (
@@ -341,8 +378,14 @@ export function MushafAudioDock({
                 الحفظ: يكرّر النطاق المختار مع فاصل قصير بين التكرارات.
               </p>
             ) : null}
-            </details>
-          </>
+
+            <div className="mm-audio-dock__extras" data-section="extras" aria-label="خيارات إضافية">
+              <p className="mm-audio-dock__section-label">الجودة · المؤقت · التشغيل التلقائي · تنزيل التلاوة</p>
+              <p className="mm-audio-dock__extras-hint">
+                الجودة من اختيار القارئ · باقي الخيارات تُضبط من إعدادات التلاوة عند التوفر.
+              </p>
+            </div>
+          </section>
         )}
 
         <p className="mm-audio-dock__status" role="status">
