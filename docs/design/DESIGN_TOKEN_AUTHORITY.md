@@ -106,3 +106,38 @@ New CSS must use `var(--z-*)`. Random integers in new public components are a ga
 - New UI library or Framer Motion
 - Changing mushaf page map, adhan, or religious text
 - Claiming formal WCAG certification
+
+---
+
+## Visual System Program — PR-1 (2026-09-28)
+
+| Field | Value |
+|---|---|
+| Goal | Lock authority + **decreasing debt budgets** with **no visual remapping** |
+| Baseline | `docs/design/SUNNAH_VISUAL_SYSTEM_BASELINE.md` |
+| Machine metrics | `artifacts/majalis/reports/visual-system-baseline.json` |
+| Debt budget | `artifacts/majalis/reports/visual-system-debt-budget.json` |
+| Inventory tool | `artifacts/majalis/scripts/visual-system-inventory.mjs` |
+
+### Prevention gates (PR-1)
+
+| Check | Command | Policy |
+|---|---|---|
+| Debt ceilings | `pnpm --filter @workspace/majalis run test:visual-system-debt-budget` | Ceilings must not rise; floors for `--sf-*` / `--ss-*` / Button imports must not fall |
+| Authority wiring | `pnpm --filter @workspace/majalis run test:visual-system-authority` | Docs + budget artifacts present |
+| Foundation lint | `pnpm --filter @workspace/majalis run lint:sunnah-foundation-tokens` | Existing |
+
+Ceilings frozen at PR-1 measure include: `!important`, hex/rgb/hsl, `--mj-*` decls (esp. outside allowlist), raw z-index integers, px radii, box-shadow decls, inline color styles, raw `<button>` files.
+
+### Compatibility note
+
+- `--sf-layer-*` remain Foundation layer aliases.
+- Runtime elevation for product chrome continues via **`--z-*`** (`z-index-layers.css`) — canonical for new CSS.
+- Do not add a fourth palette. Prefer `--sf2-*` / `--sf-*` / `--z-*` / `--motion-*` per Phase 5 order above.
+
+### Non-goals (PR-1 only)
+
+- No visual remapping of `--ss-*` → `--sf-*` yet
+- No Button mass migration (PR-2)
+- No mushaf CSS edits
+- No legacy file deletions
