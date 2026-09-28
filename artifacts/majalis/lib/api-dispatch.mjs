@@ -274,6 +274,7 @@ export const API_ROUTES = [
   { prefix: "/api/researches/submit", module: "./api-handlers/researches-submit.js", exact: true, rateLimit: submissionsRateLimit },
   { prefix: "/api/cron/researches-daily-import", module: "./api-handlers/cron/researches-daily-import.js", allowGet: true, exact: true },
   { prefix: "/api/admin/submissions", module: "./api-handlers/admin/submissions.js", allowGet: true },
+  { prefix: "/api/admin/v3", module: "./api-handlers/admin/v3.js", allowGet: true },
   { prefix: "/api/account/delete", module: "./api-handlers/account/delete.js", exact: true, rateLimit: accountDeleteRateLimit },
   { prefix: "/api/account/export", module: "./api-handlers/account/export.js", exact: true, allowGet: true, rateLimit: accountExportRateLimit },
   // ── الباحث الشرعي (RAG) ────────────────────────────────────────────────────

@@ -767,6 +767,9 @@ export default function AppRoutes() {
       <Route path="/admin/dashboard"><AdminLazyRoute component={AdminDashboardPage} /></Route>
       <Route path="/admin/users"><Redirect to="/admin?section=users" /></Route>
       <Route path="/admin/universities"><AdminLazyRoute component={UniversitiesAdminPage} /></Route>
+      <Route path="/admin/v3/content/lessons"><AdminLazyRoute component={AdminV3App} /></Route>
+      <Route path="/admin/v3/content/sheikhs"><AdminLazyRoute component={AdminV3App} /></Route>
+      <Route path="/admin/v3/content/fawaid"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3/content"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3/reviews"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3/taxonomy"><AdminLazyRoute component={AdminV3App} /></Route>

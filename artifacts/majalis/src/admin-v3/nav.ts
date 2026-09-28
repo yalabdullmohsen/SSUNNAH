@@ -1,6 +1,6 @@
 /**
  * تنقّل Admin v3 — بنية معلومات موجة 1 (7 وجهات فقط).
- * Legacy CRUD يبقى على /admin?section= حتى موجات لاحقة.
+ * P3: مراجعات/محتوى أساسي/تصنيف/مجتمع أصلية؛ Legacy للتوافق.
  */
 export type AdminV3CenterId =
   | "overview"

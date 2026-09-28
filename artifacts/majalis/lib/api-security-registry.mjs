@@ -118,6 +118,7 @@ export const ROUTE_SECURITY_CLASS = Object.freeze({
   "/api/researches/submit": "PUBLIC_WRITE",
   "/api/cron/researches-daily-import": "CRON",
   "/api/admin/submissions": "ADMIN",
+  "/api/admin/v3": "ADMIN",
   "/api/account/delete": "AUTHENTICATED_USER",
   "/api/account/export": "AUTHENTICATED_USER",
   "/api/rag": "PUBLIC_WRITE",

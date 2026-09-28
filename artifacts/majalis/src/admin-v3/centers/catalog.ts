@@ -1,6 +1,7 @@
 /**
  * كتالوج مراكز Admin v3 — IA موجة 1 (7 وجهات).
- * الروابط تشير لمسارات Legacy؛ لا CRUD جديد ولا تغيير صلاحيات خادم.
+ * Wave P3: الدروس/المشايخ/الفوائد/المراجعات تشير لمسارات v3 الأصلية؛
+ * بقية الأدوات تبقى روابط توافق Legacy بوسم واضح.
  */
 import type { AdminV3CenterId } from "../nav";
 
@@ -49,7 +50,7 @@ export const ADMIN_V3_CENTERS: Record<
     tools: [
       { id: "review-hub", title: "مركز المراجعة", description: "مساحة المراجعة الرئيسية", href: "/admin/review-hub", tags: ["مراجعة"], legacySource: "ReviewHubPage" },
       { id: "review-center", title: "مراجعة الأتمتة", description: "طابور مراجعة الأتمتة", href: "/admin/review-center", tags: ["أتمتة", "مراجعة"], legacySource: "AutomationReviewPage" },
-      { id: "submissions", title: "مقترحات المجتمع", description: "مراجعة المساهمات", href: "/admin?section=submissions", tags: ["مجتمع"], legacySource: "AdminShell#submissions" },
+      { id: "submissions", title: "مقترحات المجتمع", description: "مراجعة المساهمات (أصلي)", href: "/admin/v3/reviews", tags: ["مجتمع", "أصلي"], legacySource: "admin-v3/ReviewInboxPage" },
       { id: "scholarly", title: "التوثيق العلمي", description: "مراجعة علمية", href: "/admin?section=scholarly-verification", tags: ["توثيق"], legacySource: "AdminShell#scholarly-verification" },
       { id: "calendar-review", title: "مراجعة التقويم الشرعي", description: "مراجعة مناسبات التقويم", href: "/admin?section=religious-calendar-review", tags: ["تقويم"], legacySource: "AdminShell#religious-calendar-review" },
       { id: "reports", title: "البلاغات", description: "بلاغات المستخدمين", href: "/admin?section=reports", tags: ["بلاغات"], legacySource: "AdminShell#reports" },
@@ -61,10 +62,10 @@ export const ADMIN_V3_CENTERS: Record<
     summary: "مساحة محتوى موحّدة — التحرير والسياق عبر المسارات السابقة حتى اكتمال الموجات.",
     permissions: ["admin.read", "content.read", "content.write"],
     tools: [
-      { id: "lessons", title: "الدروس", description: "إدارة الدروس والجداول", href: "/admin?section=lessons", tags: ["دروس"], legacySource: "AdminShell#lessons" },
-      { id: "sheikhs", title: "المشايخ", description: "ملفات المشايخ", href: "/admin?section=sheikhs", tags: ["مشايخ"], legacySource: "AdminShell#sheikhs" },
+      { id: "lessons", title: "الدروس", description: "إدارة الدروس (أصلي)", href: "/admin/v3/content/lessons", tags: ["دروس", "أصلي"], legacySource: "admin-v3/EntityCrudPage#lessons" },
+      { id: "sheikhs", title: "المشايخ", description: "ملفات المشايخ (أصلي)", href: "/admin/v3/content/sheikhs", tags: ["مشايخ", "أصلي"], legacySource: "admin-v3/EntityCrudPage#sheikhs" },
       { id: "library", title: "المكتبة", description: "كتب ومراجع", href: "/admin?section=library", tags: ["مكتبة"], legacySource: "AdminShell#library" },
-      { id: "fawaid", title: "الفوائد", description: "فوائد مختصرة", href: "/admin?section=fawaid", tags: ["فوائد"], legacySource: "AdminShell#fawaid" },
+      { id: "fawaid", title: "الفوائد", description: "فوائد مختصرة (أصلي)", href: "/admin/v3/content/fawaid", tags: ["فوائد", "أصلي"], legacySource: "admin-v3/EntityCrudPage#fawaid" },
       { id: "adhkar", title: "الأذكار", description: "أذكار وأوراد", href: "/admin?section=adhkar", tags: ["أذكار"], legacySource: "AdminShell#adhkar" },
       { id: "qa", title: "الأسئلة والأجوبة", description: "بنك الأسئلة", href: "/admin?section=qa", tags: ["أسئلة"], legacySource: "AdminShell#qa" },
       { id: "quiz", title: "المسابقة", description: "أسئلة التحدي", href: "/admin?section=quiz", tags: ["تحدي"], legacySource: "AdminShell#quiz" },
@@ -83,7 +84,7 @@ export const ADMIN_V3_CENTERS: Record<
     summary: "شجرة أبواب العلم أولًا — دون بطاقات مكررة كواجهة أساسية.",
     permissions: ["admin.read", "content.read", "content.write"],
     tools: [
-      { id: "categories", title: "أبواب العلم", description: "شجرة التصنيفات والترتيب", href: "/admin?section=categories", tags: ["تصنيف", "شجرة"], legacySource: "AdminShell#categories" },
+      { id: "categories", title: "أبواب العلم", description: "شجرة التصنيفات (أصلي)", href: "/admin/v3/taxonomy", tags: ["تصنيف", "شجرة", "أصلي"], legacySource: "admin-v3/TaxonomyPage" },
       { id: "knowledge-graph", title: "الرسم البياني", description: "علاقات المعرفة (عرض)", href: "/admin?section=knowledge-graph", tags: ["علاقات"], legacySource: "AdminShell#knowledge-graph" },
       { id: "relationships", title: "العلاقات", description: "ربط الكيانات", href: "/admin?section=knowledge-graph", tags: ["علاقات"], legacySource: "RelationshipsSection" },
     ],
@@ -106,9 +107,9 @@ export const ADMIN_V3_CENTERS: Record<
     summary: "مستخدمون وأدوار وبلاغات — بلا تغيير RLS/صلاحيات خادم.",
     permissions: ["admin.read", "users.read", "users.roles", "review.read"],
     tools: [
-      { id: "users", title: "المستخدمون", description: "قائمة الحسابات والأدوار", href: "/admin?section=users", tags: ["مستخدمون"], legacySource: "AdminShell#users" },
+      { id: "users", title: "المستخدمون", description: "قائمة الحسابات والأدوار (أصلي)", href: "/admin/v3/community", tags: ["مستخدمون", "أصلي"], legacySource: "admin-v3/UsersPage" },
       { id: "reports", title: "البلاغات", description: "بلاغات المجتمع", href: "/admin?section=reports", tags: ["بلاغات"], legacySource: "AdminShell#reports" },
-      { id: "submissions", title: "المساهمات", description: "مقترحات بانتظار المراجعة", href: "/admin?section=submissions", tags: ["مساهمات"], legacySource: "AdminShell#submissions" },
+      { id: "submissions", title: "المساهمات", description: "مقترحات بانتظار المراجعة", href: "/admin/v3/reviews", tags: ["مساهمات", "أصلي"], legacySource: "admin-v3/ReviewInboxPage" },
       { id: "governance", title: "الحوكمة", description: "سياسات الحوكمة (عرض)", href: "/admin?section=governance", tags: ["حوكمة"], legacySource: "AdminShell#governance" },
     ],
   },

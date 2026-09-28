@@ -44,6 +44,11 @@
 
 Follow-up: dedicated delete PR only after CRUD migration (post Wave 7 scope).
 
+## Phase 3 update (2026-09-28)
+
+Native v3 CRUD landed for Review Inbox, Lessons, Sheikhs, Fawaid, Taxonomy, Users (+ server `/api/admin/v3/*`).  
+See `docs/admin/ADMIN_V3_RETIREMENT_MATRIX.md` for parity/retirement status. **Legacy delete still NOT READY.**
+
 ## Explicit non-actions this wave
 
 - No deletion of `views/admin/**`
