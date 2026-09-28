@@ -14,13 +14,13 @@ const read = (p) => readFileSync(resolve(root, p), "utf8");
 const css = read("src/features/mushaf-madinah/mushaf-madinah.css");
 const pager = read("src/features/mushaf-reader/useMushafPager.ts") + read("src/features/mushaf-reader/MushafPager.tsx");
 const fit = read("src/features/mushaf-madinah/useMushafPageFontFit.ts");
-const font = read("src/features/mushaf-madinah/useQpcPageFont.ts");
+const font = read("src/features/mushaf-shared/useQpcPageFont.ts");
 const page = read("src/features/mushaf-madinah/MushafPage.tsx");
 const footer = read("src/features/mushaf-madinah/MushafPageFooter.tsx");
 const viewport = read("src/features/mushaf-madinah/VerifiedMushafReader.tsx");
 const ornament = read("src/features/mushaf-madinah/MushafSurahOrnament.tsx");
 const actions = read("src/features/mushaf-madinah/AyahActionSheet.tsx");
-const bands = read("src/features/mushaf-madinah/layout-bands.ts");
+const bands = read("src/features/mushaf-shared/layout-bands.ts");
 const spec = read("docs/MUSHAF_SPEC.md");
 
 assert.match(bands, /MUSHAF_HEADER_Y = 0\.083/);
@@ -109,7 +109,7 @@ for (const n of snapPages) {
   assert.ok(existsSync(resolve(pagesDir, `page-${String(n).padStart(3, "0")}.json`)));
 }
 
-assert.ok(existsSync(resolve(root, "src/features/mushaf-madinah/layout-bands.ts")));
+assert.ok(existsSync(resolve(root, "src/features/mushaf-shared/layout-bands.ts")));
 const license = readFileSync(resolve(root, "../../LICENSE_RISKS.md"), "utf8");
 assert.match(license, /QCF_BSML/);
 

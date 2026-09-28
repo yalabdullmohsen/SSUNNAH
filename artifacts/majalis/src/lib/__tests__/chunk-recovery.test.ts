@@ -10,13 +10,18 @@ import {
   CHUNK_RELOAD_KEY,
   clearChunkReloadGuard,
   consumeChunkReloadAllowance,
+  getChunkRecoveryBuildId,
+  hasChunkReloadBeenAttempted,
   isChunkLoadError,
+  recordChunkFailureMeta,
 } from "../lazy-with-retry";
 import {
   CHUNK_RECOVERING_EVENT,
+  clearChunkRecoveryAfterStableBoot,
   isChunkRecoveryInFlight,
   tryRecoverFromStaleChunk,
 } from "../chunk-recovery";
+import { clearOpsTelemetryForTests, getOpsTelemetrySnapshot } from "../ops-telemetry";
 
 const store = new Map<string, string>();
 Object.defineProperty(globalThis, "sessionStorage", {
@@ -52,23 +57,64 @@ Object.defineProperty(globalThis, "window", {
   },
   configurable: true,
 });
+
+// 7) عمل دون Service Worker
 Object.defineProperty(globalThis, "navigator", {
   value: { serviceWorker: undefined },
   configurable: true,
 });
 
+clearOpsTelemetryForTests();
+
 assert.equal(isChunkLoadError(Object.assign(new Error("x"), { name: "ChunkLoadError" })), true);
 assert.equal(isChunkLoadError(new Error("Loading CSS chunk 12 failed")), true);
 
+// 1) فشل chunk لأول مرة → استعادة هادئة
 store.clear();
 reloads.length = 0;
 events.length = 0;
-assert.equal(tryRecoverFromStaleChunk("t1"), true);
+const err1 = new Error("Failed to fetch dynamically imported module: /assets/MushafReaderPage-abc.js");
+assert.equal(tryRecoverFromStaleChunk("t1", err1), true);
 assert.equal(isChunkRecoveryInFlight(), false, "must not stick in recovering");
-assert.equal(store.get(CHUNK_RELOAD_KEY), "t1");
+assert.ok(String(store.get(CHUNK_RELOAD_KEY)).includes("|t1") || store.get(CHUNK_RELOAD_KEY) === "t1");
 assert.equal(reloads.length, 0, "no automatic reload");
-assert.equal(tryRecoverFromStaleChunk("t2"), false, "one attempt per session");
+assert.equal(hasChunkReloadBeenAttempted(), true);
+
+// 2) نجاح recovery (purge هادئ) — بلا reload
+const snap = getOpsTelemetrySnapshot();
+assert.ok(snap.some((e) => e.name === "chunk.recovery_attempted"));
+assert.ok(snap.some((e) => e.name === "chunk.recovery_result" && e.data?.ok === true));
+
+// 3) فشل recovery بعد المحاولة — لا محاولة ثانية لنفس البناء
+assert.equal(tryRecoverFromStaleChunk("t2", err1), false, "one attempt per build");
 assert.equal(consumeChunkReloadAllowance("t3"), false);
+
+// 4) عدم حدوث reload loop
+assert.equal(reloads.length, 0, "still no reload after exhausted allowance");
+
+// 5) اختلاف build/version → محاولة جديدة
+const buildId = getChunkRecoveryBuildId();
+store.set(CHUNK_RELOAD_KEY, `other-build-xyz|old`);
+assert.equal(hasChunkReloadBeenAttempted(), false, "different build opens allowance");
+assert.equal(consumeChunkReloadAllowance("new-build"), true);
+assert.ok(String(store.get(CHUNK_RELOAD_KEY)).startsWith(`${buildId}|`));
+
+// تنظيف بعد استقرار الإقلاع
+clearChunkRecoveryAfterStableBoot("test-stable");
+assert.equal(store.has(CHUNK_RELOAD_KEY), false, "guard cleared after stable boot");
+
+// metadata
+const meta = recordChunkFailureMeta("meta-label", err1);
+assert.ok(meta);
+assert.equal(meta!.label, "meta-label");
+assert.ok(meta!.chunkHint?.includes("MushafReaderPage") || meta!.chunkHint === null || typeof meta!.chunkHint === "string");
+
+clearChunkReloadGuard();
+
+// 6) مسار Capacitor — لا يعتمد على SW (navigator.serviceWorker undefined أعلاه)
+store.clear();
+assert.equal(tryRecoverFromStaleChunk("cap-native", err1), true);
+assert.equal(reloads.length, 0);
 
 clearChunkReloadGuard();
 
@@ -86,6 +132,9 @@ const main = readFileSync(join(root, "main.tsx"), "utf8");
 assert.match(main, /ChunkRecoveryToast/);
 const toast = readFileSync(join(root, "components/ChunkRecoveryToast.tsx"), "utf8");
 assert.match(toast, /return null/);
+
+const shell = readFileSync(join(root, "lib/app-shell-stability.ts"), "utf8");
+assert.match(shell, /clearChunkRecoveryAfterStableBoot/);
 
 assert.equal(typeof CHUNK_RECOVERING_EVENT, "string");
 

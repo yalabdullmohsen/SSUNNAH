@@ -32,7 +32,7 @@ assert.match(hl, /getCachedTextBands/);
 assert.match(hl, /requestAnimationFrame/);
 assert.match(hl, /shouldThrottleUiRender/);
 
-const sync = read("features/mushaf-madinah/mushaf-ayah-sync-store.ts");
+const sync = read("features/mushaf-shared/mushaf-ayah-sync-store.ts");
 assert.match(sync, /useSyncExternalStore/);
 assert.match(sync, /useMushafAyahWordSelected/);
 

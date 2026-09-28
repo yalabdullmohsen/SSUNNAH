@@ -13,7 +13,7 @@ const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 const reader = read("src/features/mushaf-reader/NewMushafReader.tsx");
 const css = read("src/features/mushaf-reader/mushaf-reader.css");
 const page = read("src/features/mushaf-reader/MushafPage.tsx");
-const qpc = read("src/features/mushaf-madinah/useQpcPageFont.ts");
+const qpc = read("src/features/mushaf-shared/useQpcPageFont.ts");
 const pager = read("src/features/mushaf-reader/useMushafPager.ts");
 const metrics = read("src/features/mushaf-reader/useStableMushafLayout.ts");
 const miniBar = read("src/components/quran/QuranMiniPlayerBar.tsx");

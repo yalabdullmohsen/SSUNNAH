@@ -14,7 +14,7 @@ const pager = read("src/features/mushaf-reader/MushafPager.tsx");
 const reader = read("src/features/mushaf-reader/NewMushafReader.tsx");
 const metrics = read("src/features/mushaf-reader/useStableMushafLayout.ts");
 const cache = read("src/features/mushaf-reader/mushaf-page-render-cache.ts");
-const font = read("src/features/mushaf-madinah/useQpcPageFont.ts");
+const font = read("src/features/mushaf-shared/useQpcPageFont.ts");
 const css = read("src/features/mushaf-reader/mushaf-reader.css");
 
 assert.match(pager, /key=\{pageNumber\}/, "لوحات التقليب تُفتاح برقم الصفحة");

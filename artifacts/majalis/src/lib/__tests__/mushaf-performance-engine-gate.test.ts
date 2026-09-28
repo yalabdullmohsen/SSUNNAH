@@ -14,7 +14,7 @@ const reader = read("src/features/mushaf-madinah/VerifiedMushafReader.tsx");
 const line = read("src/features/mushaf-madinah/MushafAyahLine.tsx");
 const settings = read("src/features/mushaf-madinah/MushafSettingsSheet.tsx");
 const css = read("src/features/mushaf-madinah/mushaf-madinah.css");
-const prefetch = read("src/features/mushaf-madinah/prefetch-adjacent-audio.ts");
+const prefetch = read("src/features/mushaf-shared/prefetch-adjacent-audio.ts");
 const share = read("src/lib/share-ayah.ts");
 const tafsir = read("src/features/mushaf-madinah/TafsirTabPanel.tsx");
 

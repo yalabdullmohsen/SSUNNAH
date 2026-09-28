@@ -58,6 +58,9 @@ async function prefsApi() {
 export const NATIVE_PROGRESS_KEYS = [
   "lastPage",
   "myBookmarks",
+  "myBookmarks:ayah-migrated-v1",
+  "ssunnah-mushaf-ayah-marks-v1",
+  "majalis-khatmah-tracker-v1",
   "majalis-continue-reading-v1",
   /** تقدم مهام اليوم — لهيرو الرئيسية (ورد/نسبة) بعد استعادة Preferences */
   "majalis-daily-progress-v1",
@@ -71,6 +74,15 @@ export const NATIVE_PROGRESS_KEYS = [
   "majalis.onboarding.storage_notice_seen",
   "majalis.onboarding.onboarding_major_version",
 ] as const;
+
+/** مفاتيح المصحف الحي — resolve تفضّل Preferences عند التعارض على native. */
+const MUSHAF_PREFER_NATIVE_KEYS = new Set([
+  "lastPage",
+  "myBookmarks",
+  "myBookmarks:ayah-migrated-v1",
+  "ssunnah-mushaf-ayah-marks-v1",
+  "majalis-khatmah-tracker-v1",
+]);
 
 export function storageGetSync(key: string): string | null {
   if (typeof localStorage === "undefined") return null;
@@ -122,20 +134,46 @@ async function removeFromPreferences(key: string): Promise<void> {
 }
 
 /**
- * يستورد قيم Preferences إلى localStorage عند الإقلاع (لا يستبدل قيمة موجودة
- * أحدث في LS إلا إذا كانت فارغة).
+ * يستورد قيم Preferences إلى localStorage عند الإقلاع.
+ * - مفاتيح عامة: empty-only (لا تستبدل LS غير الفارغ).
+ * - مفاتيح المصحف الحي: prefer-native عند التعارض + backup لـ LS القديم.
  * يفشل بهدوء خلال HYDRATE_BUDGET_MS — لا يعلّق واجهة الإقلاع.
  */
 export async function hydrateNativeStorage(
   keys: readonly string[] = NATIVE_PROGRESS_KEYS,
 ): Promise<void> {
-  if (!isNative()) return;
+  // ترحيل مفاتيح المصحف يعمل على الويب والأصلي (idempotent)
+  try {
+    const { runMushafPersistenceMigration } = await import("@/lib/mushaf-persistence");
+    runMushafPersistenceMigration();
+  } catch {
+    /* ignore */
+  }
+
+  if (!isNative()) {
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new Event("mj:feature-cloud-storage-ready"));
+    }
+    return;
+  }
 
   const work = (async () => {
     const Preferences = await prefsApi();
-    if (!Preferences) return;
+    if (!Preferences) {
+      try {
+        const { trackOps } = await import("@/lib/ops-telemetry");
+        trackOps("storage.hydrate", { result: "prefs-unavailable", conflict: false });
+      } catch {
+        /* ignore */
+      }
+      return;
+    }
 
-    // دفعة متوازية لمفاتيح التقدّم — أسرع من حلقة get متسلسلة
+    const { resolveMushafStorageValue, MUSHAF_HYDRATE_BACKUP_PREFIX } = await import(
+      "@/lib/mushaf-persistence"
+    );
+    const { trackOps } = await import("@/lib/ops-telemetry");
+
     const results = await Promise.all(
       keys.map(async (key) => {
         try {
@@ -146,9 +184,41 @@ export async function hydrateNativeStorage(
         }
       }),
     );
+
     for (const { key, value } of results) {
-      if (value == null || value === "") continue;
       const existing = storageGetSync(key);
+      const preferNative = MUSHAF_PREFER_NATIVE_KEYS.has(key);
+      if (preferNative) {
+        const resolved = resolveMushafStorageValue({
+          localValue: existing,
+          prefsValue: value,
+          preferNative: true,
+        });
+        if (resolved.value == null) continue;
+        if (resolved.conflict && resolved.backedUp && existing != null && existing !== "") {
+          try {
+            localStorage.setItem(`${MUSHAF_HYDRATE_BACKUP_PREFIX}${key}`, existing);
+          } catch {
+            /* ignore */
+          }
+        }
+        if (existing !== resolved.value) {
+          try {
+            localStorage.setItem(key, resolved.value);
+          } catch {
+            /* ignore */
+          }
+        }
+        trackOps("storage.hydrate", {
+          key,
+          source: resolved.source,
+          conflict: resolved.conflict,
+          result: "ok",
+        });
+        continue;
+      }
+      // empty-only لغير المصحف
+      if (value == null || value === "") continue;
       if (existing == null || existing === "") {
         try {
           localStorage.setItem(key, value);
@@ -186,7 +256,15 @@ export async function hydrateNativeStorage(
     }
   })();
 
-  await withTimeout(work, HYDRATE_BUDGET_MS);
+  const timed = await withTimeout(work, HYDRATE_BUDGET_MS);
+  if (timed == null) {
+    try {
+      const { trackOps } = await import("@/lib/ops-telemetry");
+      trackOps("storage.hydrate", { result: "timeout", conflict: false });
+    } catch {
+      /* ignore */
+    }
+  }
 
   try {
     const { invalidateLastPageMemCache } = await import("@/lib/quran-last-page");
@@ -196,7 +274,7 @@ export async function hydrateNativeStorage(
   }
 
   if (typeof window !== "undefined") {
-    window.dispatchEvent(new Event("mj:feature-tour-storage-ready"));
+    window.dispatchEvent(new Event("mj:feature-cloud-storage-ready"));
   }
 }
 

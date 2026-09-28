@@ -10,7 +10,7 @@ import { fileURLToPath } from "node:url";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
-const gate = read("src/features/mushaf-madinah/useMushafResourceGate.ts");
+const gate = read("src/features/mushaf-shared/useMushafResourceGate.ts");
 const reader = read("src/features/mushaf-madinah/VerifiedMushafReader.tsx");
 const fit = read("src/features/mushaf-madinah/useMushafPageFontFit.ts");
 const safe = read("src/lib/safe-json.ts");

@@ -82,7 +82,7 @@ assert.match(chromeCss, /--nm-chrome-exit-min:\s*2\.75rem/);
 assert.match(chromeCss, /--nm-chrome-arrow-size:\s*2\.5rem/);
 assert.match(chromeCss, /--nm-chrome-arrow-touch:\s*2\.75rem/);
 
-const bands = readMaj("src/features/mushaf-madinah/layout-bands.ts");
+const bands = readMaj("src/features/mushaf-shared/layout-bands.ts");
 assert.match(bands, /MUSHAF_CHROME_HIDE_MS\s*=\s*4000/);
 
 const pkg = JSON.parse(readMaj("package.json")) as { scripts: Record<string, string> };

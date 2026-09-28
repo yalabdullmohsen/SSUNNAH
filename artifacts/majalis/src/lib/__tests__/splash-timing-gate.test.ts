@@ -23,7 +23,7 @@ assert.match(splash, /SPLASH_MAX_VISIBLE_MS/);
 assert.match(splash, /SPLASH_FADE_OUT_MS/);
 assert.match(splash, /mj:shell-stable/);
 assert.match(splash, /hideCapacitorSplash\(true\)/, "Capacitor يُخفى فورًا — دخولية HTML وحدها");
-assert.match(splash, /hideNativeSplash\(false\)/, "السقف الزمني بتلاشي لا فوري");
+assert.match(splash, /hideNativeSplash\(false(?:,\s*["']timeout["'])?\)/, "السقف الزمني بتلاشي لا فوري");
 assert.doesNotMatch(splash, /SplashScreen\.show\s*\(/, "بلا إعادة إظهار على Resume");
 assert.doesNotMatch(
   splash,

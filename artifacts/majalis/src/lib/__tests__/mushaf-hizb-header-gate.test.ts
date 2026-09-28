@@ -14,7 +14,7 @@ const page = read("src/features/mushaf-reader/MushafPage.tsx");
 const banner = read("src/features/mushaf-reader/MushafSurahBanner.tsx");
 const data = read("src/lib/quran-data/qpc-page-data.ts");
 const css = read("src/features/mushaf-reader/mushaf-reader.css");
-const font = read("src/features/mushaf-madinah/useQpcPageFont.ts");
+const font = read("src/features/mushaf-shared/useQpcPageFont.ts");
 const reader = read("src/features/mushaf-reader/NewMushafReader.tsx");
 const tele = read("src/features/mushaf-reader/mushaf-turn-telemetry.ts");
 

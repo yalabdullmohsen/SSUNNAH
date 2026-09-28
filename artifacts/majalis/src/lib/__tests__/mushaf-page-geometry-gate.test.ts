@@ -11,7 +11,7 @@ const pagesDir = resolve(root, "public/data/quran-v2/pages");
 const css = readFileSync(resolve(root, "src/features/mushaf-madinah/mushaf-madinah.css"), "utf8");
 const page = readFileSync(resolve(root, "src/features/mushaf-madinah/MushafPage.tsx"), "utf8");
 const footer = readFileSync(resolve(root, "src/features/mushaf-madinah/MushafPageFooter.tsx"), "utf8");
-const bands = readFileSync(resolve(root, "src/features/mushaf-madinah/layout-bands.ts"), "utf8");
+const bands = readFileSync(resolve(root, "src/features/mushaf-shared/layout-bands.ts"), "utf8");
 const spec = readFileSync(resolve(root, "docs/MUSHAF_SPEC.md"), "utf8");
 const ornament = readFileSync(resolve(root, "src/features/mushaf-madinah/MushafSurahOrnament.tsx"), "utf8");
 
