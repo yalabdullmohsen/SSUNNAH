@@ -15,7 +15,7 @@ import { getSurahMeta } from "@/lib/quran-api";
 import { toArabicIndicDigits as toArabicDigits } from "@/lib/numerals";
 import { haptics } from "@/lib/haptics";
 import { parseVerseKey } from "@/features/mushaf-madinah/mushaf-page-for-ayah";
-import "@/styles/reader-bookmarks.css";
+import { MushafBookmarkEditorShell } from "./MushafBookmarkEditorShell";
 
 type Props = {
   page: number;
@@ -28,7 +28,7 @@ type Props = {
 type DetailKind = "hifz" | "review" | "custom" | "khatmah";
 
 /**
- * ورقة حفظ علامة الصفحة — أنواع المنتج V2، بلا تغطية لنص المصحف.
+ * ورقة حفظ علامة الصفحة — Portal مرتبط بالـviewport.
  */
 export const MushafPageBookmarkSheet = memo(function MushafPageBookmarkSheet({
   page,
@@ -51,6 +51,8 @@ export const MushafPageBookmarkSheet = memo(function MushafPageBookmarkSheet({
     if (!parsed) return "";
     return getSurahMeta(parsed.surah).name.replace(/^سُورَةُ\s*/u, "");
   }, [parsed]);
+
+  const subtitle = `الصفحة ${toArabicDigits(page)}${surahName ? ` · ${surahName}` : ""}`;
 
   const finishOk = useCallback(
     (message: string) => {
@@ -146,157 +148,18 @@ export const MushafPageBookmarkSheet = memo(function MushafPageBookmarkSheet({
   ]);
 
   return (
-    <div
-      className="rb-page-sheet"
-      data-testid="mushaf-page-bookmark-sheet"
-      role="dialog"
-      aria-modal="true"
-      aria-label="حفظ علامة في المصحف"
-    >
-      <div className="rb-page-sheet__head">
-        <button type="button" className="rb-page-sheet__close" onClick={onClose} aria-label="إغلاق">
-          إغلاق
-        </button>
-        <div>
-          <p className="rb-page-sheet__eyebrow">علامة مصحف</p>
-          <strong>
-            الصفحة {toArabicDigits(page)}
-            {surahName ? ` · ${surahName}` : ""}
-          </strong>
-        </div>
-      </div>
-
-      {!detail ? (
-        <div className="rb-page-sheet__actions" role="group" aria-label="نوع العلامة">
-          {MUSHAF_PRODUCT_BOOKMARK_KINDS.map((k) => (
-            <button
-              key={k.id}
-              type="button"
-              className="rb-page-sheet__action"
-              style={{ ["--rb-kind" as string]: k.color }}
-              disabled={busy}
-              aria-label={k.actionLabel}
-              onClick={() => {
-                const productKind = k.id as MushafBookmarkProductKind;
-                if (productKind === "reading") {
-                  void saveReading();
-                  return;
-                }
-                setDetail(productKind);
-                setFromPage(String(page));
-                setToPage(String(page));
-              }}
-            >
-              <span className="rb-page-sheet__dot" aria-hidden="true" />
-              {k.actionLabel}
-            </button>
-          ))}
-        </div>
-      ) : (
-        <div className="rb-page-sheet__range" aria-label="تفاصيل العلامة">
-          {detail === "hifz" ? (
-            <>
-              <p>بداية الحفظ · الموضع الحالي · الهدف القادم</p>
-              <div className="rb-page-sheet__range-row">
-                <label>
-                  من
-                  <input
-                    inputMode="numeric"
-                    value={fromPage}
-                    onChange={(e) => setFromPage(e.target.value)}
-                    aria-label="بداية الحفظ"
-                  />
-                </label>
-                <label>
-                  الهدف
-                  <input
-                    inputMode="numeric"
-                    value={toPage}
-                    onChange={(e) => setToPage(e.target.value)}
-                    aria-label="هدف الحفظ"
-                  />
-                </label>
-              </div>
-              <p className="rb-page-sheet__hint">الموضع الحالي: ص {toArabicDigits(page)}</p>
-            </>
-          ) : null}
-
-          {detail === "review" ? (
-            <>
-              <p>نطاق المراجعة</p>
-              <div className="rb-page-sheet__range-row">
-                <label>
-                  من
-                  <input
-                    inputMode="numeric"
-                    value={fromPage}
-                    onChange={(e) => setFromPage(e.target.value)}
-                    aria-label="بداية المراجعة"
-                  />
-                </label>
-                <label>
-                  إلى
-                  <input
-                    inputMode="numeric"
-                    value={toPage}
-                    onChange={(e) => setToPage(e.target.value)}
-                    aria-label="نهاية المراجعة"
-                  />
-                </label>
-              </div>
-            </>
-          ) : null}
-
-          {detail === "khatmah" ? (
-            <div className="rb-page-sheet__khatmah" role="group" aria-label="نوع الختمة">
-              {MUSHAF_KHATMAH_TYPES.map((t) => (
-                <button
-                  key={t.id}
-                  type="button"
-                  className={`rb-page-sheet__chip${khatmaType === t.id ? " is-active" : ""}`}
-                  aria-pressed={khatmaType === t.id}
-                  onClick={() => setKhatmaType(t.id)}
-                >
-                  {t.label}
-                </button>
-              ))}
-              <p className="rb-page-sheet__hint">تتبع التقدم على ٦٠٤ صفحة</p>
-            </div>
-          ) : null}
-
-          {detail === "custom" ? (
-            <input
-              dir="rtl"
-              maxLength={48}
-              placeholder="مثال: صفحة أحب العودة إليها"
-              value={customName}
-              onChange={(e) => setCustomName(e.target.value)}
-              aria-label="اسم العلامة الشخصية"
-            />
-          ) : null}
-
-          <label className="rb-page-sheet__note">
-            <span>ملاحظة اختيارية</span>
-            <input
-              dir="rtl"
-              maxLength={240}
-              placeholder={
-                detail === "hifz"
-                  ? "هنا بداية الحفظ"
-                  : detail === "review"
-                    ? "مراجعة الأسبوع القادم"
-                    : "ملاحظة قصيرة"
-              }
-              value={note}
-              onChange={(e) => setNote(e.target.value)}
-              aria-label="ملاحظة اختيارية"
-            />
-          </label>
-
-          <div className="rb-page-sheet__range-row">
+    <MushafBookmarkEditorShell
+      title="إضافة علامة"
+      subtitle={subtitle}
+      ariaLabel="حفظ علامة في المصحف"
+      testId="mushaf-page-bookmark-sheet"
+      onClose={onClose}
+      footer={
+        detail ? (
+          <>
             <button
               type="button"
-              className="rb-page-sheet__ghost"
+              className="rb-page-sheet__ghost rb-editor-shell__secondary"
               disabled={busy}
               onClick={() => setDetail(null)}
             >
@@ -304,21 +167,161 @@ export const MushafPageBookmarkSheet = memo(function MushafPageBookmarkSheet({
             </button>
             <button
               type="button"
-              className="rb-page-sheet__confirm"
+              className="rb-page-sheet__confirm rb-editor-shell__primary"
               disabled={busy}
               onClick={() => void saveDetail()}
             >
-              حفظ
+              {busy ? "جاري الحفظ…" : "حفظ"}
             </button>
+          </>
+        ) : (
+          <button
+            type="button"
+            className="rb-page-sheet__ghost rb-editor-shell__secondary"
+            disabled={busy}
+            onClick={onClose}
+          >
+            إلغاء
+          </button>
+        )
+      }
+    >
+      <div className="rb-page-sheet" data-rb-page-sheet="1">
+        {!detail ? (
+          <div className="rb-page-sheet__actions" role="group" aria-label="نوع العلامة">
+            {MUSHAF_PRODUCT_BOOKMARK_KINDS.map((k) => (
+              <button
+                key={k.id}
+                type="button"
+                className="rb-page-sheet__action"
+                style={{ ["--rb-kind" as string]: k.color }}
+                disabled={busy}
+                aria-label={k.actionLabel}
+                onClick={() => {
+                  const productKind = k.id as MushafBookmarkProductKind;
+                  if (productKind === "reading") {
+                    void saveReading();
+                    return;
+                  }
+                  setDetail(productKind);
+                  setFromPage(String(page));
+                  setToPage(String(page));
+                }}
+              >
+                <span className="rb-page-sheet__dot" aria-hidden="true" />
+                {k.actionLabel}
+              </button>
+            ))}
           </div>
-        </div>
-      )}
+        ) : (
+          <div className="rb-page-sheet__range" aria-label="تفاصيل العلامة">
+            {detail === "hifz" ? (
+              <>
+                <p>بداية الحفظ · الموضع الحالي · الهدف القادم</p>
+                <div className="rb-page-sheet__range-row">
+                  <label>
+                    من
+                    <input
+                      inputMode="numeric"
+                      value={fromPage}
+                      onChange={(e) => setFromPage(e.target.value)}
+                      aria-label="بداية الحفظ"
+                    />
+                  </label>
+                  <label>
+                    الهدف
+                    <input
+                      inputMode="numeric"
+                      value={toPage}
+                      onChange={(e) => setToPage(e.target.value)}
+                      aria-label="هدف الحفظ"
+                    />
+                  </label>
+                </div>
+                <p className="rb-page-sheet__hint">الموضع الحالي: ص {toArabicDigits(page)}</p>
+              </>
+            ) : null}
 
-      {error ? (
-        <p className="rb-page-sheet__error" role="alert">
-          {error}
-        </p>
-      ) : null}
-    </div>
+            {detail === "review" ? (
+              <>
+                <p>نطاق المراجعة</p>
+                <div className="rb-page-sheet__range-row">
+                  <label>
+                    من
+                    <input
+                      inputMode="numeric"
+                      value={fromPage}
+                      onChange={(e) => setFromPage(e.target.value)}
+                      aria-label="بداية المراجعة"
+                    />
+                  </label>
+                  <label>
+                    إلى
+                    <input
+                      inputMode="numeric"
+                      value={toPage}
+                      onChange={(e) => setToPage(e.target.value)}
+                      aria-label="نهاية المراجعة"
+                    />
+                  </label>
+                </div>
+              </>
+            ) : null}
+
+            {detail === "khatmah" ? (
+              <div className="rb-page-sheet__khatmah" role="group" aria-label="نوع الختمة">
+                {MUSHAF_KHATMAH_TYPES.map((t) => (
+                  <button
+                    key={t.id}
+                    type="button"
+                    className={`rb-page-sheet__chip${khatmaType === t.id ? " is-active" : ""}`}
+                    aria-pressed={khatmaType === t.id}
+                    onClick={() => setKhatmaType(t.id)}
+                  >
+                    {t.label}
+                  </button>
+                ))}
+                <p className="rb-page-sheet__hint">تتبع التقدم على ٦٠٤ صفحة</p>
+              </div>
+            ) : null}
+
+            {detail === "custom" ? (
+              <input
+                dir="rtl"
+                maxLength={48}
+                placeholder="مثال: صفحة أحب العودة إليها"
+                value={customName}
+                onChange={(e) => setCustomName(e.target.value)}
+                aria-label="اسم العلامة الشخصية"
+              />
+            ) : null}
+
+            <label className="rb-page-sheet__note">
+              <span>ملاحظة اختيارية</span>
+              <input
+                dir="rtl"
+                maxLength={240}
+                placeholder={
+                  detail === "hifz"
+                    ? "هنا بداية الحفظ"
+                    : detail === "review"
+                      ? "مراجعة الأسبوع القادم"
+                      : "ملاحظة قصيرة"
+                }
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+                aria-label="ملاحظة اختيارية"
+              />
+            </label>
+          </div>
+        )}
+
+        {error ? (
+          <p className="rb-page-sheet__error" role="alert">
+            {error}
+          </p>
+        ) : null}
+      </div>
+    </MushafBookmarkEditorShell>
   );
 });

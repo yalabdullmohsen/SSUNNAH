@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef, type RefObject } from "react";
+import { MUSHAF_BOOKMARK_EDITOR_OPEN_ATTR } from "@/hooks/useInputSheetViewport";
 import { mushafPerfInc } from "./mushaf-turn-telemetry";
 import {
   resolveSunnahMushafSignaturePreset,
@@ -133,6 +134,10 @@ export function useStableMushafLayout(
     };
 
     const apply = () => {
+      /* أثناء محرر الفاصل/العلامة: لا تُعاد هندسة المصحف عند فتح الكيبورد */
+      if (document.documentElement.hasAttribute(MUSHAF_BOOKMARK_EDITOR_OPEN_ATTR)) {
+        return;
+      }
       const w = Math.round(root.clientWidth || 0);
       const h = Math.round(root.clientHeight || 0);
       if (w < 80 || h < 120) return;

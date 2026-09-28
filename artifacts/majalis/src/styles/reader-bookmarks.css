@@ -1,52 +1,137 @@
 /**
- * فواصل المصحف — مؤشر وملحن فقط (لا مدير).
+ * فواصل المصحف — مؤشر وملحن + محرر مرتبط بالـviewport (Portal).
  * بلا mushaf*.css لتجنّب قفل سياسة خط/مقياس.
+ * بلا transform: scale على المحرر أو المصحف.
  */
 
-.rb-composer {
-  position: absolute;
+/* ─── غلاف المحرر (document.body) ─── */
+.rb-editor-shell {
+  position: fixed;
   inset-inline: 0;
-  bottom: 0;
-  z-index: 52;
+  /* مستطيل VisualViewport — fallback عبر dvh/svh لا وحدة vh القديمة */
+  top: var(--rb-vv-offset-top, 0px);
+  block-size: var(--rb-vv-height, 100dvh);
+  block-size: var(--rb-vv-height, 100svh);
+  z-index: 12050;
   display: grid;
-  gap: 0.55rem;
-  padding: 0.75rem 0.85rem calc(0.85rem + var(--safe-bottom, 0px));
-  background: var(--nm-paper, #f7f1e3);
-  color: var(--nm-ink, #1c160e);
-  border-top: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 22%, transparent);
-  border-radius: 1rem 1rem 0 0;
-  max-height: min(58%, 22rem);
-  overflow: auto;
-  pointer-events: auto;
+  align-items: end;
+  justify-items: center;
+  padding-inline: max(0.5rem, var(--inset-left, 0px)) max(0.5rem, var(--inset-right, 0px));
+  padding-block-end: max(0.35rem, var(--inset-bottom, 0px));
+  box-sizing: border-box;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-.rb-composer__head {
+.rb-editor-shell__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: color-mix(in srgb, #1c160e 38%, transparent);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.rb-editor-shell__panel {
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  inline-size: min(100%, 28rem);
+  max-inline-size: calc(100vw - 1rem);
+  max-inline-size: min(28rem, calc(100% - 0px));
+  /* ارتفاع مرئي فوق الكيبورد مع هامش آمن */
+  max-block-size: min(
+    var(--rb-vv-height, 100dvh),
+    calc(var(--rb-vv-height, 100dvh) - 0.25rem)
+  );
+  min-block-size: 0;
+  margin-inline: auto;
+  background: var(--nm-paper, #f7f1e3);
+  color: var(--nm-ink, #1c160e);
+  border: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 22%, transparent);
+  border-radius: 1rem 1rem 0.35rem 0.35rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+.rb-editor-shell__head {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 0.5rem;
+  padding: 0.7rem 0.85rem 0.45rem;
+  border-block-end: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 16%, transparent);
+  flex-shrink: 0;
+  background: inherit;
 }
 
-.rb-composer__title {
+.rb-editor-shell__titles {
   display: grid;
   gap: 0.15rem;
   text-align: end;
+  min-inline-size: 0;
+  flex: 1;
 }
 
-.rb-composer__eyebrow {
-  font-size: 0.7rem;
+.rb-editor-shell__eyebrow {
+  font-size: 0.78rem;
   color: var(--nm-meta, #5f4814);
 }
 
-.rb-composer__close {
+.rb-editor-shell__subtitle {
+  font-size: 0.95rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.rb-editor-shell__close {
   appearance: none;
   border: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 28%, transparent);
   background: color-mix(in srgb, var(--nm-paper, #f7f1e3) 90%, var(--nm-gold, #b08d57) 8%);
   border-radius: 0.45rem;
-  min-height: 2.4rem;
+  min-height: 2.5rem;
   min-width: 2.75rem;
   padding: 0.25rem 0.55rem;
-  font-size: 0.78rem;
+  font-size: 0.85rem;
+  color: inherit;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
+.rb-editor-shell__body {
+  min-block-size: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.65rem 0.85rem;
+  display: grid;
+  gap: 0.55rem;
+  align-content: start;
+}
+
+.rb-editor-shell__footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem;
+  padding: 0.55rem 0.85rem calc(0.65rem + var(--inset-bottom, 0px));
+  border-block-start: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 16%, transparent);
+  flex-shrink: 0;
+  background: inherit;
+}
+
+.rb-editor-shell__footer:has(> :only-child) {
+  grid-template-columns: 1fr;
+}
+
+/* توافق أسماء قديمة — المحتوى داخل الغلاف */
+.rb-composer,
+.rb-page-sheet {
+  display: contents;
 }
 
 .rb-composer__kinds {
@@ -54,6 +139,7 @@
   flex-wrap: wrap;
   gap: 0.35rem;
   justify-content: flex-end;
+  max-inline-size: 100%;
 }
 
 .rb-composer__kind {
@@ -66,8 +152,10 @@
   color: var(--nm-ink, #1c160e);
   border-radius: 999px;
   padding: 0.28rem 0.55rem;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   min-height: 2.2rem;
+  max-inline-size: 100%;
+  cursor: pointer;
 }
 
 .rb-composer__kind.is-active {
@@ -81,6 +169,7 @@
   height: 0.45rem;
   border-radius: 50%;
   background: var(--rb-kind, #5c564c);
+  flex: 0 0 auto;
 }
 
 .rb-composer__slots,
@@ -89,6 +178,7 @@
   flex-wrap: wrap;
   gap: 0.35rem;
   justify-content: flex-end;
+  max-inline-size: 100%;
 }
 
 .rb-composer__slot {
@@ -97,8 +187,10 @@
   background: transparent;
   border-radius: 0.4rem;
   padding: 0.25rem 0.5rem;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   min-height: 2.2rem;
+  cursor: pointer;
+  color: inherit;
 }
 
 .rb-composer__slot.is-active {
@@ -106,22 +198,53 @@
   font-weight: 700;
 }
 
+.rb-composer__custom {
+  display: grid;
+  gap: 0.45rem;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+/* ≥16px يمنع تكبير iOS WebView عند التركيز — لا ترث 0.75rem من التسمية */
 .rb-composer__input,
-.rb-composer__note textarea {
+.rb-composer__note textarea,
+.rb-page-sheet__note input,
+.rb-page-sheet__note textarea,
+.rb-page-sheet__range input,
+.rb-page-sheet__custom input,
+.rb-editor-shell input,
+.rb-editor-shell textarea {
   width: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  box-sizing: border-box;
   border: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 22%, transparent);
   border-radius: 0.45rem;
   background: color-mix(in srgb, var(--nm-paper, #f7f1e3) 96%, #fff);
   color: inherit;
-  padding: 0.45rem 0.55rem;
-  font: inherit;
+  padding: 0.5rem 0.55rem;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+  direction: rtl;
+  text-align: start;
 }
 
-.rb-composer__note {
+.rb-composer__note textarea {
+  max-block-size: 8rem;
+  min-block-size: 3.25rem;
+  resize: vertical;
+  overflow: auto;
+}
+
+.rb-composer__note,
+.rb-page-sheet__note {
   display: grid;
   gap: 0.25rem;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: var(--nm-meta, #5f4814);
+  min-inline-size: 0;
+  max-inline-size: 100%;
 }
 
 .rb-composer__swatch {
@@ -130,13 +253,17 @@
   border-radius: 50%;
   border: 2px solid transparent;
   appearance: none;
+  cursor: pointer;
+  flex: 0 0 auto;
 }
 
 .rb-composer__swatch.is-active {
   border-color: var(--nm-ink, #1c160e);
 }
 
-.rb-composer__save {
+.rb-composer__save,
+.rb-page-sheet__confirm,
+.rb-editor-shell__primary {
   appearance: none;
   border: 0;
   border-radius: 0.55rem;
@@ -144,14 +271,123 @@
   background: color-mix(in srgb, var(--nm-gold, #b08d57) 28%, var(--nm-paper, #f7f1e3));
   color: var(--nm-ink, #1c160e);
   font-weight: 700;
+  font: inherit;
+  cursor: pointer;
 }
 
-.rb-composer__error {
+.rb-page-sheet__confirm,
+.rb-editor-shell__primary {
+  background: color-mix(in srgb, var(--nm-gold, #b08d57) 78%, #2a2118);
+  color: #fff;
+}
+
+.rb-composer__cancel,
+.rb-page-sheet__ghost,
+.rb-editor-shell__secondary {
+  appearance: none;
+  min-height: 2.75rem;
+  border: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 28%, transparent);
+  border-radius: 0.55rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.rb-composer__error,
+.rb-page-sheet__error {
   margin: 0;
   color: #8a2f2f;
-  font-size: 0.78rem;
+  font-size: 0.85rem;
 }
 
+.rb-page-sheet__actions {
+  display: grid;
+  gap: 0.4rem;
+  max-inline-size: 100%;
+}
+
+.rb-page-sheet__action {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.75rem;
+  border-radius: 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--rb-kind, #5c564c) 35%, transparent);
+  background: color-mix(in srgb, var(--rb-kind, #5c564c) 10%, transparent);
+  color: inherit;
+  font: inherit;
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+  text-align: start;
+  max-inline-size: 100%;
+  box-sizing: border-box;
+}
+
+.rb-page-sheet__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--rb-kind, #5c564c);
+  flex: 0 0 auto;
+}
+
+.rb-page-sheet__range,
+.rb-page-sheet__custom {
+  display: grid;
+  gap: 0.45rem;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.rb-page-sheet__range-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.5rem;
+  max-inline-size: 100%;
+}
+
+.rb-page-sheet__range-row label {
+  display: grid;
+  gap: 0.2rem;
+  font-size: 0.78rem;
+  min-inline-size: 0;
+}
+
+.rb-page-sheet__hint {
+  margin: 0;
+  font-size: 0.78rem;
+  opacity: 0.72;
+}
+
+.rb-page-sheet__khatmah {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: flex-end;
+  max-inline-size: 100%;
+}
+
+.rb-page-sheet__chip {
+  appearance: none;
+  border: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 28%, transparent);
+  background: transparent;
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  font: inherit;
+  font-size: 0.78rem;
+  min-height: 2.2rem;
+  cursor: pointer;
+  color: inherit;
+}
+
+.rb-page-sheet__chip.is-active {
+  background: color-mix(in srgb, #6b3d6e 16%, transparent);
+  border-color: color-mix(in srgb, #6b3d6e 45%, transparent);
+  font-weight: 700;
+}
+
+/* ─── ألسنة/نقاط العلامات على الصفحة ─── */
 .rb-markers {
   position: absolute;
   inset: 0;
@@ -159,7 +395,6 @@
   z-index: 6;
 }
 
-/* توافق البوابة القديمة + ألسنة جانبية جديدة */
 .rb-markers__dot,
 .rb-markers__tab {
   position: absolute;
@@ -206,170 +441,4 @@
   content: "";
   position: absolute;
   inset: -1.1rem;
-}
-
-/* ورقة علامة الصفحة */
-.rb-page-sheet {
-  position: absolute;
-  inset-inline: 0;
-  bottom: 0;
-  z-index: 53;
-  display: grid;
-  gap: 0.65rem;
-  padding: 0.85rem 0.9rem calc(0.9rem + var(--safe-bottom, 0px));
-  background: var(--nm-paper, #f7f1e3);
-  color: var(--nm-ink, #1c160e);
-  border-top: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 22%, transparent);
-  border-radius: 1rem 1rem 0 0;
-  max-height: min(62%, 24rem);
-  overflow: auto;
-  pointer-events: auto;
-}
-
-.rb-page-sheet__head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.rb-page-sheet__eyebrow {
-  margin: 0;
-  font-size: 0.72rem;
-  opacity: 0.72;
-}
-
-.rb-page-sheet__close {
-  border: 0;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-  min-height: 2.5rem;
-  padding-inline: 0.35rem;
-}
-
-.rb-page-sheet__actions {
-  display: grid;
-  gap: 0.4rem;
-}
-
-.rb-page-sheet__action {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  min-height: 2.75rem;
-  border-radius: 0.7rem;
-  border: 1px solid color-mix(in srgb, var(--rb-kind, #5c564c) 35%, transparent);
-  background: color-mix(in srgb, var(--rb-kind, #5c564c) 10%, transparent);
-  color: inherit;
-  font: inherit;
-  padding: 0.45rem 0.7rem;
-  cursor: pointer;
-  text-align: start;
-}
-
-.rb-page-sheet__dot {
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 50%;
-  background: var(--rb-kind, #5c564c);
-  flex: 0 0 auto;
-}
-
-.rb-page-sheet__range,
-.rb-page-sheet__custom {
-  display: grid;
-  gap: 0.45rem;
-}
-
-.rb-page-sheet__range-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-}
-
-.rb-page-sheet__range input,
-.rb-page-sheet__custom input {
-  width: 100%;
-  min-height: 2.5rem;
-  border-radius: 0.55rem;
-  border: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 28%, transparent);
-  background: color-mix(in srgb, #fff 55%, transparent);
-  padding: 0.35rem 0.55rem;
-  font: inherit;
-}
-
-.rb-page-sheet__confirm {
-  min-height: 2.75rem;
-  border: 0;
-  border-radius: 0.7rem;
-  background: color-mix(in srgb, var(--nm-gold, #b08d57) 78%, #2a2118);
-  color: #fff;
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.rb-page-sheet__error {
-  margin: 0;
-  color: #8a2f2f;
-  font-size: 0.78rem;
-}
-
-.rb-page-sheet__hint {
-  margin: 0;
-  font-size: 0.72rem;
-  opacity: 0.72;
-}
-
-.rb-page-sheet__note {
-  display: grid;
-  gap: 0.25rem;
-  font-size: 0.75rem;
-}
-
-.rb-page-sheet__note input {
-  width: 100%;
-  min-height: 2.5rem;
-  border-radius: 0.55rem;
-  border: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 28%, transparent);
-  background: color-mix(in srgb, #fff 55%, transparent);
-  padding: 0.35rem 0.55rem;
-  font: inherit;
-}
-
-.rb-page-sheet__khatmah {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  justify-content: flex-end;
-}
-
-.rb-page-sheet__chip {
-  appearance: none;
-  border: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 28%, transparent);
-  background: transparent;
-  border-radius: 999px;
-  padding: 0.3rem 0.65rem;
-  font: inherit;
-  font-size: 0.75rem;
-  min-height: 2.2rem;
-  cursor: pointer;
-}
-
-.rb-page-sheet__chip.is-active {
-  background: color-mix(in srgb, #6b3d6e 16%, transparent);
-  border-color: color-mix(in srgb, #6b3d6e 45%, transparent);
-  font-weight: 700;
-}
-
-.rb-page-sheet__ghost {
-  min-height: 2.75rem;
-  border: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 28%, transparent);
-  border-radius: 0.7rem;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
 }
