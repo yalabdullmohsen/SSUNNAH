@@ -1,23 +1,24 @@
 {
-  "generatedAt": "2026-09-28T14:30:27.957Z",
-  "commit": "7716977d79b487182029eec4a00ce1487f80b04a",
-  "branch": "cursor/release-rc-stabilization-p6",
+  "generatedAt": "2026-09-28T14:48:19.566Z",
+  "commit": "dd1cb859b58e1d4476345a5100a558060a373cde",
+  "branch": "release/sunnah-final-integration",
   "node": "v24.17.0",
   "pnpm": "10.34.4",
   "failures": [],
   "warnings": [
+    "working tree dirty — set RELEASE_VERIFY_ALLOW_DIRTY=1 to allow",
     "Android applicationId (com.majlisilm.app) ≠ Capacitor appId (com.yousef.majlisilm) — OWNER_ACTION before store"
   ],
   "results": [
     {
       "name": "git commit readable",
       "status": "PASS",
-      "detail": "7716977d79b487182029eec4a00ce1487f80b04a"
+      "detail": "dd1cb859b58e1d4476345a5100a558060a373cde"
     },
     {
-      "name": "branch is phase-6 RC branch or documented",
+      "name": "branch is Phase 7 integration or documented RC branch",
       "status": "PASS",
-      "detail": "cursor/release-rc-stabilization-p6"
+      "detail": "release/sunnah-final-integration"
     },
     {
       "name": "capacitor appId expected",
@@ -140,38 +141,58 @@
       "detail": ""
     },
     {
+      "name": "doc exists docs/release/PHASE_7_INTEGRATION_BASELINE.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/release/PHASE_7_BLOCKER_REGISTER.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/release/PHASE_7_ENVIRONMENT_CHANGESET.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "doc exists docs/operations/PHASE_7_RELEASE_MONITORING_PLAN.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
       "name": "verify:preflight",
       "command": "pnpm run verify:preflight",
       "status": "PASS",
-      "ms": 1147,
+      "ms": 403,
       "exit": 0
     },
     {
       "name": "typecheck",
       "command": "pnpm run typecheck",
       "status": "PASS",
-      "ms": 3494,
+      "ms": 4344,
       "exit": 0
     },
     {
       "name": "verify:store-assets",
       "command": "pnpm run verify:store-assets",
       "status": "PASS",
-      "ms": 273,
+      "ms": 277,
       "exit": 0
     },
     {
       "name": "phase6-release-readiness-gate",
       "command": "node --import tsx src/lib/__tests__/phase6-release-readiness-gate.test.ts",
       "status": "PASS",
-      "ms": 151,
+      "ms": 277,
       "exit": 0
     },
     {
       "name": "phase6-soak-prep-gate",
       "command": "node --import tsx src/lib/__tests__/phase6-soak-prep-gate.test.ts",
       "status": "PASS",
-      "ms": 153,
+      "ms": 151,
       "exit": 0
     },
     {
@@ -182,31 +203,45 @@
       "exit": 0
     },
     {
+      "name": "phase7-cross-phase-consistency-gate",
+      "command": "node --import tsx src/lib/__tests__/phase7-cross-phase-consistency-gate.test.ts",
+      "status": "PASS",
+      "ms": 154,
+      "exit": 0
+    },
+    {
+      "name": "phase7-backward-compat-gate",
+      "command": "node --import tsx src/lib/__tests__/phase7-backward-compat-gate.test.ts",
+      "status": "PASS",
+      "ms": 149,
+      "exit": 0
+    },
+    {
       "name": "test:prayer-engine-p0",
       "command": "pnpm --filter @workspace/majalis run test:prayer-engine-p0",
       "status": "PASS",
-      "ms": 997,
+      "ms": 972,
       "exit": 0
     },
     {
       "name": "test:ios-gates",
       "command": "pnpm --filter @workspace/majalis run test:ios-gates",
       "status": "PASS",
-      "ms": 1071,
+      "ms": 1042,
       "exit": 0
     },
     {
       "name": "test:licenses",
       "command": "pnpm --filter @workspace/majalis run test:licenses",
       "status": "PASS",
-      "ms": 1178,
+      "ms": 1151,
       "exit": 0
     },
     {
       "name": "verify:ci",
       "command": "pnpm run verify:ci",
       "status": "PASS",
-      "ms": 480,
+      "ms": 294623,
       "exit": 0
     },
     {

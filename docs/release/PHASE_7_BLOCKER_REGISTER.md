@@ -299,7 +299,7 @@ Critical/High may **not** use `ACCEPTED_RISK`.
 | Required action | Re-run `pnpm run release:verify` + RC build on integration tip |
 | Verification | Report commit == `git rev-parse HEAD` |
 | Release impact | Unreproducible RC attestation |
-| Status | **IN_PROGRESS** → closed after green regenerate |
+| Status | **RESOLVED** — `release:verify` regenerated at `dd1cb859` (`reports/release-candidate/release-verify-report.json`) |
 
 ## P7-019 — Dedicated Phase 1–5 FINAL reports missing
 

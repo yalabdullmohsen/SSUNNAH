@@ -1,35 +1,19 @@
 {
   "kind": "sunnah-release-candidate",
-  "generatedAt": "2026-09-28T14:30:46.051559Z",
-  "baseCommit": "7716977d79b487182029eec4a00ce1487f80b04a",
+  "generatedAt": "2026-09-28T14:49:15.117Z",
+  "commit": "dd1cb859b58e1d4476345a5100a558060a373cde",
+  "branch": "release/sunnah-final-integration",
   "channel": "rc-local",
   "environment": "production-web-build",
-  "buildId": "7716977d",
   "appVersion": "1.0.0",
+  "buildId": "dd1cb859",
   "node": "v24.17.0",
   "pnpm": "10.34.4",
   "capacitorAppId": "com.yousef.majlisilm",
   "notes": [
-    "No IPA/AAB",
-    "STORE HOLD",
-    "key asset checksums only"
+    "Unsigned / unpublished artifact metadata only",
+    "No IPA/AAB generated",
+    "Store status remains HOLD until OWNER_ACTION + DEVICE_REQUIRED close"
   ],
-  "keyAssets": {
-    "version.json": {
-      "bytes": 204,
-      "sha256": "423a3208698395eca77adaee3b5ae3076d4fa9f5e858b3f487db479872fa0c9c"
-    },
-    "index.html": {
-      "bytes": 37026,
-      "sha256": "355403fb31e96426b29b1b2eb3660b608171d0ed1cfff15bafbf2f62b25980e1"
-    },
-    "assets/index-B2XvHXHT.js": {
-      "bytes": 390668,
-      "sha256": "1ecb70c0f8927d92e6c3bf76677130d3fbcb2156f8a8efc623ae23173a985264"
-    },
-    "assets/index-CTtqHtHH.css": {
-      "bytes": 336465,
-      "sha256": "4c81017f306a8b359a143d1b555ff7766ad8942bbde876120bbf95d3c2cceefa"
-    }
-  }
+  "fileCount": 3863
 }
