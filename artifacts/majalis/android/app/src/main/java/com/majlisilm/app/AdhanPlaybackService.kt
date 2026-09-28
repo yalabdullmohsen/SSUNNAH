@@ -11,6 +11,7 @@ import android.media.MediaPlayer
 import android.os.Build
 import android.os.IBinder
 import android.os.PowerManager
+import android.util.Log
 import androidx.core.app.NotificationCompat
 
 /**
@@ -26,6 +27,7 @@ class AdhanPlaybackService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         when (intent?.action) {
             ACTION_STOP -> {
+                Log.i(DIAG_TAG, "ADHAN_STOP source=ACTION_STOP")
                 stopPlayback()
                 return START_NOT_STICKY
             }
@@ -34,9 +36,11 @@ class AdhanPlaybackService : Service() {
                 val prayerKey = intent?.getStringExtra(EXTRA_PRAYER_KEY) ?: "adhan"
                 val url = intent?.getStringExtra(EXTRA_URL)
                 if (url.isNullOrBlank()) {
+                    Log.i(DIAG_TAG, "ADHAN_STOP source=missing_url prayerKey=$prayerKey")
                     stopSelf()
                     return START_NOT_STICKY
                 }
+                Log.i(DIAG_TAG, "ADHAN_START source=AdhanPlaybackService prayerKey=$prayerKey")
                 startForeground(NOTIFICATION_ID, buildNotification(title, prayerKey))
                 acquireWakeLock()
                 startPlayer(url)
@@ -56,9 +60,16 @@ class AdhanPlaybackService : Service() {
                         .build(),
                 )
                 setDataSource(url)
-                setOnPreparedListener { it.start() }
-                setOnCompletionListener { stopPlayback() }
-                setOnErrorListener { _, _, _ ->
+                setOnPreparedListener {
+                    Log.i(DIAG_TAG, "SEGMENT_START source=MediaPlayer prepared")
+                    it.start()
+                }
+                setOnCompletionListener {
+                    Log.i(DIAG_TAG, "ADHAN_COMPLETE source=MediaPlayer")
+                    stopPlayback()
+                }
+                setOnErrorListener { _, what, extra ->
+                    Log.i(DIAG_TAG, "ADHAN_STOP source=MediaPlayerError what=$what extra=$extra")
                     stopPlayback()
                     true
                 }
@@ -152,6 +163,7 @@ class AdhanPlaybackService : Service() {
     }
 
     companion object {
+        private const val DIAG_TAG = "ADHAN_DIAG"
         const val NOTIFICATION_ID = 42027
         const val ACTION_STOP = "com.majlisilm.app.STOP_ADHAN_PLAYBACK"
         const val ACTION_PLAY = "com.majlisilm.app.PLAY_ADHAN"

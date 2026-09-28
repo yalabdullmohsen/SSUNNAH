@@ -167,6 +167,13 @@ export async function cancelAdhanIosSegmentChain(prayerKey?: string): Promise<nu
   for (const [key] of toCancel) delete map[key];
   writeChainMap(map);
   if (!ids.length) return [];
+  void import("./adhan-diagnostics").then(({ adhanDiag }) => {
+    adhanDiag("ADHAN_STOP", {
+      source: "cancelAdhanIosSegmentChain",
+      prayerKey: pk ?? "all",
+      cancelledIds: ids,
+    });
+  });
   if (!isAdhanIosSegmentsAvailable()) return ids;
   try {
     await LocalNotifications.cancel({
@@ -242,6 +249,16 @@ export async function scheduleAdhanIosSegmentChain(
   }));
 
   await LocalNotifications.schedule({ notifications });
+  void import("./adhan-diagnostics").then(({ adhanDiag }) => {
+    adhanDiag("ADHAN_START", {
+      source: "scheduleAdhanIosSegmentChain",
+      prayerKey,
+      dayKey,
+      segmentCount: plan.length,
+      ids: rec.ids,
+      sounds: plan.map((p) => p.sound),
+    });
+  });
   if (import.meta.env?.DEV) {
     for (const p of plan) {
       console.info("[adhan-schedule]", {

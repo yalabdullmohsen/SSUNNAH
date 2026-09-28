@@ -182,6 +182,14 @@ export async function resumeAdhanInternally(opts?: {
     /* ويب أو فشل الجلسة — نكمل بـ HTMLAudio */
   }
 
+  void import("./adhan-diagnostics").then(({ adhanDiag }) => {
+    adhanDiag("ADHAN_START", {
+      source: "resumeAdhanInternally",
+      prayerKey,
+      muezzinId,
+      cancelledAtSegment: ctx?.cancelledAtSegment ?? opts?.cancelledAtSegment ?? 0,
+    });
+  });
   const audio = playPrayerAthanSync(muezzin, isFajr, "full", prefs.volume ?? 1);
   if (audio && typeof window !== "undefined") {
     const event: AdhanEvent = {
@@ -190,6 +198,15 @@ export async function resumeAdhanInternally(opts?: {
       prayerName: PRAYER_ARABIC[prayerKey] ?? prayerKey,
     };
     window.dispatchEvent(new CustomEvent(ADHAN_EVENT_NAME, { detail: event }));
+    audio.addEventListener(
+      "ended",
+      () => {
+        void import("./adhan-diagnostics").then(({ adhanDiag }) => {
+          adhanDiag("ADHAN_COMPLETE", { source: "resumeAdhanInternally", prayerKey });
+        });
+      },
+      { once: true },
+    );
   }
   clearAdhanResumeContext();
   return Boolean(audio);
@@ -242,19 +259,42 @@ export async function attachAdhanSmartCancelListeners(): Promise<void> {
   try {
     const { LocalNotifications } = await import("@capacitor/local-notifications");
     await LocalNotifications.addListener("localNotificationReceived", (n) => {
-      const extra = n.extra as { adhanSegment?: boolean; prayerKey?: string } | undefined;
+      const extra = n.extra as {
+        adhanSegment?: boolean;
+        prayerKey?: string;
+        segmentIndex?: number;
+      } | undefined;
       const key = String(extra?.prayerKey || "").toLowerCase();
       if (!extra?.adhanSegment || !["fajr", "dhuhr", "asr", "maghrib", "isha"].includes(key)) {
         return;
       }
       const prayerKey = key as PrayerKey;
+      const segmentIndex =
+        typeof extra.segmentIndex === "number" && Number.isFinite(extra.segmentIndex)
+          ? extra.segmentIndex
+          : 0;
+      void import("./adhan-diagnostics").then(({ adhanDiag }) => {
+        adhanDiag("SEGMENT_START", {
+          source: "localNotificationReceived",
+          prayerKey,
+          segmentIndex,
+          notificationId: n.id,
+        });
+      });
       rememberAdhanResumeContext({
         prayerKey,
         muezzinId: getEffectiveMuezzinId(loadAdhanPrefs(), prayerKey),
         isFajr: prayerKey === "fajr",
+        cancelledAtSegment: segmentIndex,
       });
     });
     await LocalNotifications.addListener("localNotificationActionPerformed", (event) => {
+      void import("./adhan-diagnostics").then(({ adhanDiag }) => {
+        adhanDiag("NOTIFICATION_DISMISSED", {
+          source: "localNotificationActionPerformed",
+          extra: event.notification?.extra ?? null,
+        });
+      });
       void onAdhanSegmentNotificationInteraction(event.notification?.extra);
     });
   } catch {

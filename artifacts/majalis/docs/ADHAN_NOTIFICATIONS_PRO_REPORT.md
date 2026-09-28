@@ -7,7 +7,7 @@
 
 ## ما أُصلح في الجدولة
 - معرّفات ثابتة منطقيًا لكل صلاة: `fajr` / `dhuhr` / `asr` / `maghrib` / `isha` (مع hash رقمي مستقر لـ Capacitor + `friendlyKey`).
-- قبل إعادة الجدولة: حذف معلّقات الصلاة فقط (ومقاطع الأذان) عبر مسح pending ذات `prayer-*` / `adhanSegment`.
+- قبل إعادة الجدولة: حذف معلّقات الصلاة (`prayer-*`) عبر `cancelPrayerNativeNotificationsExcept` — **بدون** إلغاء `adhanSegment` (ملك سلسلة iOS؛ إلغاؤها عند enter كان يقطع الأذان).
 - على iOS في الوضع الكامل: مقاطع الأذان هي إشعار الدخول — لا يُجدول enter مكرر من `prayer-local-notifications`.
 - سجل تشخيص `[adhan/debug] pending after reschedule` يعرض العدد والعينة.
 

@@ -241,7 +241,28 @@ function scheduleForPrayer(
         typeof document !== "undefined" && document.visibilityState === "visible";
       if (inForeground) {
         void import("./adhan-ios-segments").then((m) => m.cancelAdhanIosSegmentChain(key));
+        void import("./adhan-diagnostics").then(({ adhanDiag }) => {
+          adhanDiag("ADHAN_START", {
+            source: "adhan-scheduler-foreground-full",
+            prayerKey: key,
+            muezzinId,
+          });
+        });
         const audio = playPrayerAthanSync(muezzin, isFajr, "full", fresh.volume ?? 1);
+        if (audio) {
+          audio.addEventListener(
+            "ended",
+            () => {
+              void import("./adhan-diagnostics").then(({ adhanDiag }) => {
+                adhanDiag("ADHAN_COMPLETE", {
+                  source: "adhan-scheduler-foreground-full",
+                  prayerKey: key,
+                });
+              });
+            },
+            { once: true },
+          );
+        }
         if (!audio && isFajr) return;
       }
       if (fresh.vibrateEnabled) void hapticTap("medium");

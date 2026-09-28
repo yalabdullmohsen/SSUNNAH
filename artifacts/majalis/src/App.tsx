@@ -451,11 +451,23 @@ function PrayerAlertSchedulerBootstrap() {
       void import("@capacitor/app").then(({ App: CapApp }) => {
         const sub = CapApp.addListener("appStateChange", ({ isActive }) => {
           if (isActive) {
-            // إلغاء ذكي: فتح التطبيق يلغي بقية مقاطع الأذان ويستأنف المُشغّل الداخلي
-            void import("@/lib/adhan-smart-cancel").then(({ cancelAdhanNotificationChain, getAdhanResumeContext }) =>
-              cancelAdhanNotificationChain({ resumeInternal: Boolean(getAdhanResumeContext()) }),
+            void import("@/lib/adhan-diagnostics").then(({ adhanDiag }) =>
+              adhanDiag("APP_FOREGROUND", { source: "appStateChange" }),
             );
+            // إلغاء ذكي فقط عند وجود سياق استئناف — وإلا يُمسح كل سلاسل المقاطع بلا تشغيل داخلي
+            void import("@/lib/adhan-smart-cancel").then(({ cancelAdhanNotificationChain, getAdhanResumeContext }) => {
+              const ctx = getAdhanResumeContext();
+              if (!ctx) return;
+              void cancelAdhanNotificationChain({
+                resumeInternal: true,
+                prayerKey: ctx.prayerKey,
+              });
+            });
             rescheduleOnForeground();
+          } else {
+            void import("@/lib/adhan-diagnostics").then(({ adhanDiag }) =>
+              adhanDiag("APP_BACKGROUND", { source: "appStateChange" }),
+            );
           }
         });
         void Promise.resolve(sub).then((handle) => {
