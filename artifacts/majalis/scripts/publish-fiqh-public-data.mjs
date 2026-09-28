@@ -20,6 +20,8 @@ const aliasesRaw = readFileSync(resolve(outDir, "book-aliases.json"));
 const books = JSON.parse(booksRaw.toString("utf8"));
 const aliases = JSON.parse(aliasesRaw.toString("utf8"));
 const checksum = createHash("sha256").update(booksRaw).digest("hex");
+/* حتمية البناء: لا generatedAt — كان يوسّخ manifest.json في كل CI
+   ويفشل git diff --exit-code بعد build (نفس عطل فهرس البحث السابق). */
 const manifest = {
   version: 1,
   contentType: "fiqh.books",
@@ -28,7 +30,6 @@ const manifest = {
     { file: "books.json", bytes: booksRaw.length, bookCount: (books.books || []).length },
     { file: "book-aliases.json", bytes: aliasesRaw.length, aliasCount: (aliases.aliases || []).length },
   ],
-  generatedAt: new Date().toISOString(),
   offlineEligible: true,
 };
 writeFileSync(resolve(outDir, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
