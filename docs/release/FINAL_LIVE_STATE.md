@@ -2,52 +2,60 @@
 
 | Field | Value |
 |---|---|
-| Captured | 2026-09-28T18:32Z |
-| Source | GitHub CLI + live `version.json` (not prior reports) |
+| Captured | 2026-09-28T19:20Z |
+| Source | GitHub CLI + live `version.json` + HTTP smoke (not prior reports) |
 
 ## Truth (live)
 
 | Item | Value |
 |---|---|
-| `origin/main` | `2478ebd7a` — squash of #2331 (P2–P7) |
-| Prior main | `dba87a606` (#2330 mushaf editor) |
-| Production `version.json` | **`dba87a60`** (still) · HTTP 200 · `builtAt=2026-09-28T17:40:07.818Z` |
-| Production vs main | **MISMATCH** — main ahead; production not updated |
+| `origin/main` | `cc1f48356` — squash of #2333 (Vercel API surface fix) |
+| Prior failing tips | `2478ebd7a` (#2331) · `0269e1401` (#2332 docs) — deploy FAILED |
+| Production `version.json` | **`cc1f4835`** · HTTP 200 · `builtAt=2026-09-28T19:19:10.514Z` |
+| Production vs main | **MATCH** |
 | Store | **HOLD** |
+| Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
 
 ## PRs
 
 | PR | Role | State | Merge SHA | Notes |
 |---|---|---|---|---|
-| #2329 | Color contrast | **MERGED** | `eef706670` | RESOLVED · main CI was 31/31 PASS |
-| #2330 | Mushaf bookmark editor | **MERGED** | `dba87a606` | RESOLVED · was production tip |
-| #2331 | P2–P7 integration | **MERGED** | `2478ebd7a` | All required checks SUCCESS before squash merge |
+| #2329 | Color contrast | **MERGED** | `eef706670` | |
+| #2330 | Mushaf bookmark editor | **MERGED** | `dba87a606` | Was last good tip before #2331 fail |
+| #2331 | P2–P7 integration | **MERGED** | `2478ebd7a` | Code on main; initial Vercel deploy FAILED |
+| #2332 | Post-merge release docs | **MERGED** | `0269e1401` | Docs only; Vercel still failed |
+| #2333 | Restore single-dispatch API | **MERGED** | `cc1f48356` | Root cause fix → Production SUCCESS |
 
 ## Deployment
 
 | Item | Value |
 |---|---|
 | Method | Official Vercel Auto Deploy on `main` (`majalis-majalis`) |
-| Deployment id | `dpl_FMaX3KQwHGVdkdzEHy17FkfgbcEj` / GH deployment `6717296674` |
-| Status | **FAILURE** (GitHub commit status `Vercel – majalis-majalis`) |
-| Auto Deploy GHA | Soft-success with `rate_limited` / SHA mismatch (does not prove Production tip) |
-| Logs | Not readable without `VERCEL_TOKEN` (OWNER_ACTION / BLOCKED_ENVIRONMENT) |
-| Rollback | Not required — production remains last good tip `dba87a60` |
+| Commit status | `Vercel – majalis-majalis` = **success** (“Deployment has completed”) |
+| Live tip | `https://www.ssunnah.com/version.json` → `cc1f4835` |
+| Health | `GET /api/healthz` → `{"ok":true,"service":"ssunnah","commit":"cc1f4835",...}` |
+| Rollback | Not required — Production tip healthy |
+
+## Production smoke (unauthenticated)
+
+| Path | HTTP |
+|---|---|
+| `/` `/quran-hub` `/mushaf` `/search` `/hadith` `/lessons` `/prayer-times` `/study-room` `/quran-knowledge` `/my-learning` | **200** |
+| `/version.json` `/api/healthz` `/api/prayer-times` | **200** |
+| `/admin` `/admin/v3` | **404** (expected — middleware blocks public/unauthenticated admin) |
 
 ## Stale claims
 
 | Claim | Status |
 |---|---|
-| Production at `2e008c8d` | STALE |
-| #2330 waiting checks | STALE — MERGED |
-| #2331 waiting CI | STALE — MERGED after green required checks |
-| WEB_RELEASED for P2–P7 | **NOT YET** — code on main, Production tip not `2478ebd7` |
+| Production stuck on `dba87a60` | **STALE** — now `cc1f4835` |
+| WEB deploy BLOCKED | **STALE** — Production tip matches main |
+| `STORE GO` | Still **forbidden** — native HOLD |
 
-## Active blockers
+## Active blockers (native / external only)
 
 | Class | Item |
 |---|---|
-| BLOCKED_ENVIRONMENT | Vercel Production deploy failed for `2478ebd7`; no token to read logs |
-| OWNER_ACTION | Provide/inspect Vercel build logs or redeploy from dashboard if retry fails |
 | DEVICE_REQUIRED | Real iPhone/iPad matrices |
 | BLOCKED_LICENSE / BLOCKED_CREDENTIAL | Store signing & asset licenses |
+| OWNER_ACTION | ASC/Play, Android appId reconcile, secrets attestation |

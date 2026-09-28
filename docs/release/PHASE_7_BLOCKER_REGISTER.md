@@ -3,9 +3,10 @@
 | Field | Value |
 |---|---|
 | Generated | 2026-09-28 |
-| Updated | 2026-09-28 post `#2331` |
+| Updated | 2026-09-28 post `#2333` Production SUCCESS |
 | Authority | Phase 1–6 reports + live production `version.json` + GitHub/Vercel status |
 | Store | **HOLD** |
+| Web decision | **`WEB_RELEASED_NATIVE_HOLD`** |
 | Rule | Documentation ≠ fix · CI green ≠ license/signing/device PASS · Simulator ≠ device |
 
 Classifications: `FIXABLE_IN_REPOSITORY` · `TEST_REQUIRED` · `DEVICE_REQUIRED` · `OWNER_ACTION` · `EXTERNAL_ACTION` · `BLOCKED_LICENSE` · `BLOCKED_SOURCE` · `BLOCKED_CREDENTIAL` · `BLOCKED_ENVIRONMENT` · `PRE_EXISTING` · `ACCEPTED_RISK` · `RESOLVED` · `NOT_APPLICABLE` · `MISSING_EVIDENCE`
@@ -22,13 +23,12 @@ Critical/High may **not** use `ACCEPTED_RISK`.
 | Severity | Critical (web ship) |
 | Platform | Web |
 | Module | Official project `majalis-majalis` Auto Deploy on `main` |
-| Evidence | `dpl_FMaX3KQwHGVdkdzEHy17FkfgbcEj` FAILURE · production still `dba87a60` · main CI SUCCESS |
-| Classification | `BLOCKED_ENVIRONMENT` (+ `OWNER_ACTION` for log access without `VERCEL_TOKEN`) |
-| Owner | Release eng + Vercel project owner |
-| Required action | Read build logs · fix root cause if in repo · redeploy until `version.json` matches `2478ebd7` |
-| Verification | `https://www.ssunnah.com/version.json` commit == `2478ebd7` |
-| Release impact | Blocks declaring `WEB_RELEASED_NATIVE_HOLD` |
-| Status | **OPEN** |
+| Evidence (failure) | `dpl_FMaX3KQwHGVdkdzEHy17FkfgbcEj` FAILURE · production stayed `dba87a60` |
+| Root cause | Extra Serverless entrypoints under `artifacts/majalis/api/` — see `docs/release/VERCEL_DEPLOYMENT_ROOT_CAUSE.md` |
+| Fix | #2333 removed redundant entrypoints; routes via `api/index.js` → `api-dispatch.mjs` |
+| Verification | live `version.json` = `cc1f4835` · `/api/healthz` ok · Vercel status SUCCESS |
+| Release impact | Unblocked `WEB_RELEASED_NATIVE_HOLD` |
+| Status | **RESOLVED** (2026-09-28) |
 
 ## P7-001 — Android applicationId ≠ Capacitor/iOS appId
 

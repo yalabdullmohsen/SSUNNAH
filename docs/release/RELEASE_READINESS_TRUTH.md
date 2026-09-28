@@ -3,13 +3,13 @@
 | Field | Value |
 |---|---|
 | Generated | 2026-09-28 |
-| Branch | `main` @ `2478ebd7a` (#2331 squash) |
-| Prior production tip | `dba87a60` (#2330) — still live |
+| Branch | `main` @ `cc1f48356` (#2333 squash) |
+| Production tip | `cc1f4835` — matches `origin/main` |
 | Authority | Measured gates + live GitHub/Vercel status — not marketing claims |
 | **STORE STATUS** | **HOLD** |
-| Final decision (repo code) | `TECHNICALLY_VERIFIED_WITH_EXTERNAL_BLOCKERS` (local `release:verify` + main CI PASS) |
-| Web deployment | **BLOCKED** — Vercel Production deploy for `2478ebd7` **FAILED**; live `version.json` still `dba87a60` |
-| Merge to main | **DONE** (#2329 · #2330 · #2331) |
+| Final decision | **`WEB_RELEASED_NATIVE_HOLD`** |
+| Web deployment | **PASS** — Vercel Production SUCCESS; live `version.json` = `cc1f4835` |
+| Merge to main | **DONE** (#2329 · #2330 · #2331 · #2332 · #2333) |
 
 STORE STATUS: HOLD
 
@@ -64,7 +64,7 @@ Allowed statuses only: `PASS` · `FAIL` · `PARTIAL` · `NOT_RUN` · `DEVICE_REQ
 | Android applicationId | OWNER_ACTION | `com.majlisilm.app` ≠ Capacitor/iOS — reconcile before store |
 | production localhost | PASS | absent in capacitor configs |
 | DEV gallery in prod nav | PASS | `import.meta.env.DEV` gated |
-| production web commit | PASS (measured) | live `version.json` = `2e008c8d` (= `origin/main` P1 squash) |
+| production web commit | PASS (measured) | live `version.json` = `cc1f4835` (= `origin/main` #2333) |
 
 ## Identity pins (do not mutate without owner)
 
@@ -77,13 +77,14 @@ Allowed statuses only: `PASS` · `FAIL` · `PARTIAL` · `NOT_RUN` · `DEVICE_REQ
 | App version (package) | `1.0.0` |
 | Android `versionCode` | `1` |
 
-## Critical HOLD reasons
+## Critical HOLD reasons (native / store only)
 
 1. BLOCKED_LICENSE / UNKNOWN assets for store binary (QPC fonts, Hisn, adhan packs, offline audio).  
 2. DEVICE_REQUIRED: Mushaf + Prayer/Adhan real-device matrices incomplete.  
 3. OWNER_ACTION: signing, ASC/Play, Supabase MFA, secrets attestation, appId Android reconcile.  
 4. BLOCKED_CREDENTIAL: no production signing material in environment.  
-5. WEB deploy not executed: secrets attestation + merge=deploy coupling + license caution for bundled assets.
+
+Web Production tip mismatch (**RESOLVED** via #2333 — see `VERCEL_DEPLOYMENT_ROOT_CAUSE.md`).
 
 ## Update rule
 
