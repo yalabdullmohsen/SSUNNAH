@@ -74,13 +74,15 @@ assert.match(ops, /importBookmarksJson/);
 assert.match(ops, /archiveBookmark/);
 assert.match(ops, /MUSHAF_TOTAL_PAGES\s*=\s*604/);
 
-assert.match(composer, /data-testid="mushaf-bookmark-composer"/);
+assert.match(composer, /testId="mushaf-bookmark-composer"/);
 assert.match(composer, /MUSHAF_PRODUCT_BOOKMARK_KINDS/);
 assert.match(composer, /MUSHAF_KHATMAH_TYPES/);
 assert.match(composer, /quran-my-bookmarks-ops/);
-assert.match(sheet, /data-testid="mushaf-page-bookmark-sheet"/);
+assert.match(composer, /MushafBookmarkEditorShell/);
+assert.match(sheet, /testId="mushaf-page-bookmark-sheet"/);
 assert.match(sheet, /حفظ آخر موضع قراءة|actionLabel/);
 assert.match(sheet, /startKhatmah/);
+assert.match(sheet, /MushafBookmarkEditorShell/);
 assert.match(markers, /data-testid="mushaf-bookmark-markers"/);
 assert.match(markers, /rb-markers__tab/);
 assert.match(manager, /data-testid="mushaf-bookmarks-manager"/);
@@ -94,6 +96,8 @@ assert.match(manager, /استيراد/);
 assert.match(css, /\.rb-markers__dot/);
 assert.match(css, /\.rb-markers__tab/);
 assert.match(css, /\.rb-page-sheet/);
+assert.match(css, /\.rb-editor-shell\b/);
+assert.match(css, /font-size:\s*16px/);
 assert.doesNotMatch(css, /transform:\s*scale\(/);
 assert.match(css, /inset-inline-start:\s*0\.12rem/);
 assert.doesNotMatch(css, /\.rb-manager\b/);
@@ -105,7 +109,11 @@ assert.match(reader, /MushafPageBookmarkSheet/);
 assert.match(reader, /MushafBookmarkMarkers/);
 assert.match(reader, /lazy\([\s\S]*mushaf-bookmarks/);
 assert.doesNotMatch(reader, /reader-bookmarks\.css/);
-assert.match(composer, /reader-bookmarks\.css/);
+/* CSS يُحمَّل من الغلاف الـPortal */
+assert.match(
+  read("src/features/mushaf-bookmarks/MushafBookmarkEditorShell.tsx"),
+  /reader-bookmarks\.css/,
+);
 assert.match(markers, /reader-bookmarks\.css/);
 assert.doesNotMatch(reader, /reader-bookmarks-manager\.css/);
 assert.match(controls, /إضافة فاصل|علامة/);
