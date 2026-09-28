@@ -77,6 +77,8 @@
 | `docs/design/SUNNAH_FOUNDATION_RESET_PR0_BASELINE.md` | Foundation Reset PR-0 — خريطة اعتماديات + Baseline |
 | `docs/design/SUNNAH_FOUNDATION_RESET_PR1_TOKENS.md` | Foundation Reset PR-1 — Tokens + Typography + Density |
 | `docs/design/SUNNAH_UI_REFINEMENT_AUDIT.md` | **UI Refinement** — تدقيق + سلم XS/SM/MD/LG + بطاقات أكثف |
+| `docs/design/INTERACTION_COMPONENT_AUTHORITY.md` | **Interaction PR-1** — عقد Button/Link/IconButton/FAB/Back |
+| `docs/design/SUNNAH_INTERACTION_SYSTEM_BASELINE.md` | خط أساس مقاييس الأزرار + ميزانيات متناقصة |
 | `docs/design/UNIFIED_SEARCH_ARCHITECTURE.md` | بحث موحّد `/search` — نطاقات كاملة |
 | `docs/design/PROPHETS_STORIES_REBUILD_BASELINE.md` | **قصص الأنبياء PR-0** — جرد Routes/ألوان كحلية/كروم (بلا إصلاح منتج) |
 | `docs/qa/MUSHAF_CONTROLS_INVENTORY.md` | جرد أزرار المصحف + إصلاح SYSTEM/LIGHT/DARK والأسهم والفاصل |
