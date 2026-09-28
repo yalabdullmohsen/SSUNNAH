@@ -52,7 +52,7 @@ async function wipeOwnedUserData(admin, userId) {
 
 export default async function deleteAccountHandler(req, res) {
   if (req.method !== "POST" && req.method !== "DELETE") {
-    return sendJson(res, 405, { ok: false, error: "الطريقة غير مدعومة" });
+    return sendJson(res, 405, { ok: false, error: "الطريقة غير مدعومة" }, { Allow: "POST, DELETE" });
   }
 
   const auth = await requireUser(req, res, sendJson);

@@ -80,8 +80,11 @@ if (liveHttp) {
       assert.equal(badBody.ok, false);
 
       const getMethod = await fetch(`${base}/api/account/delete`, { method: "GET" });
-      assert.equal(getMethod.status, 405, "GET → 405");
-      proven.push("failure paths 401/405 (live HTTP)");
+      assert.equal(getMethod.status, 405, "GET → 405 قبل المصادقة");
+      const allow = getMethod.headers.get("allow") || "";
+      assert.match(allow, /POST/i, "Allow يتضمن POST");
+      assert.match(allow, /DELETE/i, "Allow يتضمن DELETE");
+      proven.push("failure paths 401/405 + Allow (live HTTP)");
     }
   } catch (err) {
     const cause = err && typeof err === "object" && "cause" in err ? err.cause : null;
