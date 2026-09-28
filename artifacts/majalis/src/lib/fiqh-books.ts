@@ -1,11 +1,18 @@
 /**
- * مصدر الفقه: content/fiqh/books.json — كتاب ← باب ← مسألة.
+ * مصدر الفقه: content/fiqh/books.json (SSOT تحريري) → يُنشر إلى /data/fiqh عبر
+ * scripts/publish-fiqh-public-data.mjs. لا يُضمَّن JSON في حزمة JS.
  * المذهب المعتمد في العرض: الحنبلي (زاد / روض / كشاف / مغني / ممتعم).
  * لا تُعرض إلا المسائل المنشورة الموثَّقة، ولا يُخلط بالدروس العامة.
  */
-import booksJson from "../../content/fiqh/books.json";
-import aliasesJson from "../../content/fiqh/book-aliases.json";
 import { normalizeArabic } from "@/shared/arabic-normalize";
+import { pooledFetch } from "@/lib/fetch-pool";
+/* Vite يستبدل .node بـ browser-stub؛ Node/tsx يقرأ الملف الحقيقي */
+import { readFiqhJsonSync } from "./fiqh-catalog-disk.node";
+
+const FIQH_DATA_BASE = "/data/fiqh";
+/** مسار SSOT للhydrate في Node/اختبارات قبل/بدون نشر public */
+const FIQH_CONTENT_BOOKS = "content/fiqh/books.json";
+const FIQH_CONTENT_ALIASES = "content/fiqh/book-aliases.json";
 
 export type FiqhBookCategory = "ibadat" | "muamalat" | "usrah" | "jinayat" | "qada";
 export type FiqhLessonLevel = "مبتدئ" | "متوسط" | "متقدم";
@@ -151,26 +158,117 @@ export const FIQH_SUPPORTING_TOPICS: FiqhSupportingTopic[] = [
   },
 ];
 
-const CATALOG = booksJson as { books: FiqhBook[] };
-const ALIASES = (aliasesJson as { aliases: FiqhBookAlias[] }).aliases ?? [];
+type FiqhCatalog = { books: FiqhBook[] };
+
+let CATALOG: FiqhCatalog | null = null;
+let ALIASES: FiqhBookAlias[] = [];
+let loadPromise: Promise<void> | null = null;
+let catalogChecksum: string | null = null;
+
+function hydrateSyncFromDisk(): boolean {
+  if (CATALOG?.books?.length) return true;
+  if (typeof window !== "undefined") return false;
+  const booksJson = readFiqhJsonSync(FIQH_CONTENT_BOOKS) as FiqhCatalog | null;
+  const aliasesJson = readFiqhJsonSync(FIQH_CONTENT_ALIASES) as { aliases?: FiqhBookAlias[] } | null;
+  if (!booksJson?.books?.length) return false;
+  CATALOG = { books: booksJson.books };
+  ALIASES = aliasesJson?.aliases ?? [];
+  return true;
+}
+
+function requireCatalog(): FiqhCatalog {
+  if (!CATALOG?.books?.length) {
+    hydrateSyncFromDisk();
+  }
+  if (!CATALOG?.books?.length) {
+    return { books: [] };
+  }
+  return CATALOG;
+}
+
+/** تحميل كتالوج الفقه من /data/fiqh (المتصفح) أو القرص (Node). */
+export async function ensureFiqhCatalogLoaded(): Promise<void> {
+  if (CATALOG?.books?.length) return;
+  if (hydrateSyncFromDisk()) return;
+  if (loadPromise) return loadPromise;
+
+  loadPromise = (async () => {
+    const [booksRes, aliasesRes] = await Promise.all([
+      pooledFetch(`${FIQH_DATA_BASE}/books.json`, {
+        dedupeKey: "fiqh-books-json",
+        timeoutMs: 45_000,
+      }),
+      pooledFetch(`${FIQH_DATA_BASE}/book-aliases.json`, {
+        dedupeKey: "fiqh-aliases-json",
+        timeoutMs: 15_000,
+      }),
+    ]);
+    if (!booksRes.ok) {
+      throw new Error(`تعذّر تحميل كتب الفقه (${booksRes.status})`);
+    }
+    const booksJson = (await booksRes.json()) as FiqhCatalog;
+    const aliasesJson = aliasesRes.ok
+      ? ((await aliasesRes.json()) as { aliases?: FiqhBookAlias[] })
+      : { aliases: [] };
+    if (!Array.isArray(booksJson?.books)) {
+      throw new Error("مخطط كتب الفقه غير صالح");
+    }
+    CATALOG = { books: booksJson.books };
+    ALIASES = aliasesJson.aliases ?? [];
+    try {
+      const man = await pooledFetch(`${FIQH_DATA_BASE}/manifest.json`, {
+        dedupeKey: "fiqh-manifest",
+        timeoutMs: 8_000,
+      });
+      if (man.ok) {
+        const m = (await man.json()) as { checksum?: string };
+        catalogChecksum = m.checksum || null;
+      }
+    } catch {
+      /* manifest optional at runtime */
+    }
+  })()
+    .catch((err) => {
+      loadPromise = null;
+      throw err;
+    })
+    .then(() => {
+      loadPromise = null;
+    });
+
+  return loadPromise;
+}
+
+export function getFiqhCatalogChecksum(): string | null {
+  return catalogChecksum;
+}
+
+export function isFiqhCatalogReady(): boolean {
+  return Boolean(CATALOG?.books?.length) || hydrateSyncFromDisk();
+}
 
 export function getFiqhBookAliases(): FiqhBookAlias[] {
+  requireCatalog();
   return ALIASES.slice();
 }
 
 export function resolveFiqhBookId(bookIdOrAlias: string): string {
-  if (CATALOG.books.some((b) => b.id === bookIdOrAlias)) return bookIdOrAlias;
+  const catalog = requireCatalog();
+  if (catalog.books.some((b) => b.id === bookIdOrAlias)) return bookIdOrAlias;
   const hit = ALIASES.find((a) => a.aliasId === bookIdOrAlias);
   return hit?.targetBookId ?? bookIdOrAlias;
 }
 
 export function resolveFiqhAliasTarget(bookIdOrAlias: string): FiqhBookAlias | undefined {
-  if (CATALOG.books.some((b) => b.id === bookIdOrAlias)) return undefined;
+  const catalog = requireCatalog();
+  if (catalog.books.some((b) => b.id === bookIdOrAlias)) return undefined;
   return ALIASES.find((a) => a.aliasId === bookIdOrAlias);
 }
 
 export function getAllFiqhBooks(): FiqhBook[] {
-  return CATALOG.books.slice().sort((a, b) => a.order - b.order);
+  return requireCatalog()
+    .books.slice()
+    .sort((a, b) => a.order - b.order);
 }
 
 function sourcesComplete(sources: FiqhSource[] | undefined): boolean {
@@ -217,6 +315,7 @@ export function isPublishedChapter(chapter: FiqhChapter): boolean {
 }
 
 export function publishedChapters(book: FiqhBook): FiqhChapter[] {
+  if (!book?.chapters?.length) return [];
   return book.chapters.filter(isPublishedChapter).sort((a, b) => a.order - b.order);
 }
 

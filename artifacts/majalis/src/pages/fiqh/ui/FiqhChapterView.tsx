@@ -4,11 +4,14 @@ import { InternalLinkCard } from "@/components/ui/InternalCards";
 import { applyPageSeo } from "@/lib/seo";
 import { breadcrumbJsonLd } from "@/lib/seo-structured-data";
 import { usePageView } from "@/hooks/usePageView";
+import { LazyRouteFallback } from "@/components/LazyRouteFallback";
 import { Empty } from "@/components/ui-common";
 import {
   adjacentFiqhChapters,
   chapterHref,
+  ensureFiqhCatalogLoaded,
   getFiqhChapter,
+  isFiqhCatalogReady,
   lessonHref,
   publishedLessonsInChapter,
   type FiqhChapterHit,
@@ -26,8 +29,13 @@ export default function FiqhChapterPage() {
   const params = useParams<{ bookId: string; chapterId: string }>();
   const bookId = params.bookId ?? "";
   const chapterId = params.chapterId ?? "";
-  const hit = getFiqhChapter(bookId, chapterId);
+  const [ready, setReady] = useState(() => isFiqhCatalogReady());
+  const hit = ready ? getFiqhChapter(bookId, chapterId) : undefined;
   const [activeToc, setActiveToc] = useState<string>("");
+
+  useEffect(() => {
+    void ensureFiqhCatalogLoaded().then(() => setReady(true));
+  }, []);
 
   usePageView("fiqh-chapter", chapterId || null);
 
@@ -89,6 +97,10 @@ export default function FiqhChapterPage() {
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, [tocItems]);
+
+  if (!ready) {
+    return <LazyRouteFallback />;
+  }
 
   if (!hit || !editorial) {
     return (

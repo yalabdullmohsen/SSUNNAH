@@ -1,0 +1,225 @@
+{
+  "version": 3,
+  "contentType": "search.unified",
+  "checksum": "sha256:1f4c51eed088fcd9d3d7aa3e07145d127b2bbb358428cefbed8fb18cabe0b71e",
+  "count": 4650,
+  "files": [
+    {
+      "file": "index.json",
+      "bytes": 1856232,
+      "itemCount": 4650
+    },
+    {
+      "file": "shards/adhkar.json",
+      "kind": "adhkar",
+      "bytes": 107737,
+      "itemCount": 303,
+      "checksum": "sha256:2c8f7e99341b5b213e36f4c6086d761189fd11b82ef447692fc72b97ef58eefe"
+    },
+    {
+      "file": "shards/akhlaq.json",
+      "kind": "akhlaq",
+      "bytes": 214,
+      "itemCount": 1,
+      "checksum": "sha256:5a3ca886486b544a2456ca5e23d04ab4625cf53cdc4fd174b4b571f2f3f475b3"
+    },
+    {
+      "file": "shards/app.json",
+      "kind": "app",
+      "bytes": 653,
+      "itemCount": 4,
+      "checksum": "sha256:a23d08122df6216efc2267c09caf8687d6b72c11e34b0f5bd7335068f6b8b866"
+    },
+    {
+      "file": "shards/aqidah.json",
+      "kind": "aqidah",
+      "bytes": 571,
+      "itemCount": 3,
+      "checksum": "sha256:4bcc5e99309f8668df88cd1f28dca9c73dd8a6af69b25a2487411693d822ee41"
+    },
+    {
+      "file": "shards/discover-islam.json",
+      "kind": "discover-islam",
+      "bytes": 50826,
+      "itemCount": 172,
+      "checksum": "sha256:6c14bcdd4df961dcc548bbf663483e0108eddc458cca1e01377d8518a846c3e9"
+    },
+    {
+      "file": "shards/dua.json",
+      "kind": "dua",
+      "bytes": 206,
+      "itemCount": 1,
+      "checksum": "sha256:2927c4459f936b711de26b504d6393cefd5077ee64cd7531b2e50ba579e79e2e"
+    },
+    {
+      "file": "shards/fawaid.json",
+      "kind": "fawaid",
+      "bytes": 181,
+      "itemCount": 1,
+      "checksum": "sha256:fc34b29701d2307bc54e5df4fc3add7b78563c31cbbeb2c0ff79941ae57fb9f4"
+    },
+    {
+      "file": "shards/fiqh.json",
+      "kind": "fiqh",
+      "bytes": 206,
+      "itemCount": 1,
+      "checksum": "sha256:12ede133c10fe95b572bb82ffa7d3ae89a8ec01bf87fb49d050c4de45f87b980"
+    },
+    {
+      "file": "shards/hadith.json",
+      "kind": "hadith",
+      "bytes": 1054,
+      "itemCount": 6,
+      "checksum": "sha256:f5176f3c4fc69f2d2c1dd75bd0b60051f349f4af9519e87be4e0e867abed3d60"
+    },
+    {
+      "file": "shards/history.json",
+      "kind": "history",
+      "bytes": 106545,
+      "itemCount": 218,
+      "checksum": "sha256:713081f2026a21f30dbc9fe73527442dfc912ab2c9d67774dfaa4b2bb87c290b"
+    },
+    {
+      "file": "shards/intro-islam.json",
+      "kind": "intro-islam",
+      "bytes": 4202,
+      "itemCount": 16,
+      "checksum": "sha256:b6977ad2d556c2621773cdafdca33ca896c6d33a5efde9f0fbcc4bac74fced55"
+    },
+    {
+      "file": "shards/lesson.json",
+      "kind": "lesson",
+      "bytes": 51521,
+      "itemCount": 83,
+      "checksum": "sha256:ffc1fb8629cace70519faa9b5fb24a60dd8267dd12bbdc624c82a716728d7e61"
+    },
+    {
+      "file": "shards/medicine.json",
+      "kind": "medicine",
+      "bytes": 228,
+      "itemCount": 1,
+      "checksum": "sha256:387176575ecf072b5bec807330fe56f30e173e9d137f431e9155002cf26cc673"
+    },
+    {
+      "file": "shards/miracles.json",
+      "kind": "miracles",
+      "bytes": 222,
+      "itemCount": 1,
+      "checksum": "sha256:bd421496c31335514d430a232519643111dd9e9a66bcb2c4a7fd6fecefd7a286"
+    },
+    {
+      "file": "shards/nation.json",
+      "kind": "nation",
+      "bytes": 5055,
+      "itemCount": 22,
+      "checksum": "sha256:3e6687101ca3653bca70eab78c74669217ca69cc3ae9faeb54f15cdc094a680c"
+    },
+    {
+      "file": "shards/news.json",
+      "kind": "news",
+      "bytes": 220,
+      "itemCount": 1,
+      "checksum": "sha256:207a7314972589a1489ac9b5bd8e7acd9f9364e446807dc4fcd68d2196a7fb3d"
+    },
+    {
+      "file": "shards/person.json",
+      "kind": "person",
+      "bytes": 43839,
+      "itemCount": 75,
+      "checksum": "sha256:a6e80e9394901933fb037dba5b85c91fc218945f3e13e8a213821ec0d3ad9f71"
+    },
+    {
+      "file": "shards/prophet.json",
+      "kind": "prophet",
+      "bytes": 9483,
+      "itemCount": 27,
+      "checksum": "sha256:097c8d86f2e5aa6e3a2d501fe2d0471f234d4defe3ef14603d997baa359033c5"
+    },
+    {
+      "file": "shards/qa.json",
+      "kind": "qa",
+      "bytes": 1141628,
+      "itemCount": 2295,
+      "checksum": "sha256:9bdab4cf011d907e515a55bea57741d98a6fd265dd9395d957b386c2c912652d"
+    },
+    {
+      "file": "shards/quran.json",
+      "kind": "quran",
+      "bytes": 1292,
+      "itemCount": 6,
+      "checksum": "sha256:5787fa8e2b05d89cc011c6ba33606eec09bc50f8213bb95b9de91a5489b3d260"
+    },
+    {
+      "file": "shards/quran-people.json",
+      "kind": "quran-people",
+      "bytes": 24807,
+      "itemCount": 102,
+      "checksum": "sha256:0462b4184c3a4ff3c3f74406be75eefeeccd91808c0d614cda4d2a1ef573c6a7"
+    },
+    {
+      "file": "shards/raqaiq.json",
+      "kind": "raqaiq",
+      "bytes": 370,
+      "itemCount": 2,
+      "checksum": "sha256:f037688e72270ba8b536d1ac7ae9311a3cfd4eff4190d65b628fda462c0b097f"
+    },
+    {
+      "file": "shards/scholar.json",
+      "kind": "scholar",
+      "bytes": 4827,
+      "itemCount": 10,
+      "checksum": "sha256:995d98007ffe53cd038c123e60cd03697e75bc487f54e6ee9dd94dacfc2510e8"
+    },
+    {
+      "file": "shards/seerah.json",
+      "kind": "seerah",
+      "bytes": 205,
+      "itemCount": 1,
+      "checksum": "sha256:30d2e6c0a47447f44898d54dfa37a5b83edb356ccb36737fe9f26c0c4904005a"
+    },
+    {
+      "file": "shards/settings.json",
+      "kind": "settings",
+      "bytes": 789,
+      "itemCount": 4,
+      "checksum": "sha256:4989ab7f7caa124361f06a95d8b9bda1550e552b813a2933d95cb1697f9a659a"
+    },
+    {
+      "file": "shards/story.json",
+      "kind": "story",
+      "bytes": 207,
+      "itemCount": 1,
+      "checksum": "sha256:887337b1a4c88daaf38f7887da8d278e28efda8d719fc1bc6330ca8d2e43926e"
+    },
+    {
+      "file": "shards/surah.json",
+      "kind": "surah",
+      "bytes": 19772,
+      "itemCount": 114,
+      "checksum": "sha256:881d27a47aaa69d630bf60716bf56e59d0912ff6d7744cc6868646499838e0f9"
+    },
+    {
+      "file": "shards/tafsir.json",
+      "kind": "tafsir",
+      "bytes": 280339,
+      "itemCount": 1177,
+      "checksum": "sha256:57da25c8ff1695e3cf9a70cc43aa5f244f19a8e9fabd051e5a71526697f2df82"
+    },
+    {
+      "file": "shards/tafsir-audio.json",
+      "kind": "tafsir-audio",
+      "bytes": 258,
+      "itemCount": 1,
+      "checksum": "sha256:2f174e1a5ad474848179c2877a6445bfb8017443914eb81ef232fcd526abefd3"
+    },
+    {
+      "file": "shards/tajweed.json",
+      "kind": "tajweed",
+      "bytes": 220,
+      "itemCount": 1,
+      "checksum": "sha256:cb1ea371a31ec08fe051e3879a62841e177b8142dded5072381eaf55b6fd562c"
+    }
+  ],
+  "offlineEligible": true,
+  "note": "Universal search loads index.json; scoped adapters may load shards/<kind>.json"
+}

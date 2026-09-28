@@ -19,11 +19,16 @@ export type SearchUxPayload = {
   resultCount?: number;
   empty?: boolean;
   scope?: string;
+  /** لا تُمرَّر الاستعلامات الخام افتراضيًا — سياسة Phase 4 */
   query?: string;
   kind?: string;
   href?: string;
   message?: string;
   value?: string;
+  domain?: string;
+  indexVersion?: number;
+  path?: "local" | "server" | "worker" | "shard";
+  errorCategory?: string;
 };
 
 function read(): Bucket {
