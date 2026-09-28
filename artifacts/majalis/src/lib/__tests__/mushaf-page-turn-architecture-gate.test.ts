@@ -13,10 +13,10 @@ const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 const page = read("src/pages/quran/MushafReaderPage.tsx");
 const reader = read("src/features/mushaf-reader/NewMushafReader.tsx");
 const pager = read("src/features/mushaf-reader/useMushafPager.ts");
-const gate = read("src/features/mushaf-madinah/useMushafResourceGate.ts");
+const gate = read("src/features/mushaf-shared/useMushafResourceGate.ts");
 const cache = read("src/features/mushaf-reader/mushaf-page-render-cache.ts");
 const tele = read("src/features/mushaf-reader/mushaf-turn-telemetry.ts");
-const font = read("src/features/mushaf-madinah/useQpcPageFont.ts");
+const font = read("src/features/mushaf-shared/useQpcPageFont.ts");
 const metrics = read("src/features/mushaf-reader/useStableMushafLayout.ts");
 
 /* 1) لا Navigation لكل صفحة — حالة داخلية + replaceState هادئ */

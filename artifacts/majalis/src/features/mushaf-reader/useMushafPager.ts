@@ -11,7 +11,7 @@ import {
   MUSHAF_PAGE_MAX,
   MUSHAF_PAGE_MIN,
 } from "@/lib/quran-last-page";
-import { MUSHAF_SETTLE_MS } from "@/features/mushaf-madinah/layout-bands";
+import { MUSHAF_SETTLE_MS } from "@/features/mushaf-shared/layout-bands";
 import {
   goToMushafPageDelta,
   mushafEdgeTapPageDelta,

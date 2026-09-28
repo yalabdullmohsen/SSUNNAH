@@ -51,13 +51,13 @@ import { MushafPager } from "./MushafPager";
 import {
   setMushafAudioClock,
   useMushafAudioClock,
-} from "@/features/mushaf-madinah/mushaf-audio-clock-store";
+} from "@/features/mushaf-shared/mushaf-audio-clock-store";
 import {
   setMushafAyahSearchHighlight,
   setMushafAyahSyncKeys,
   setNavigationHighlightedAyahId,
   useMushafAyahNavigationKey,
-} from "@/features/mushaf-madinah/mushaf-ayah-sync-store";
+} from "@/features/mushaf-shared/mushaf-ayah-sync-store";
 import {
   clearPendingNavigationHighlight,
   peekPendingNavigationHighlight,
@@ -69,14 +69,14 @@ import {
   resolveRecitationLoop,
   uniqueVerseKeysFromRows,
   type RecitationRange,
-} from "@/features/mushaf-madinah/mushaf-page-for-ayah";
+} from "@/features/mushaf-shared/mushaf-page-for-ayah";
 import {
   ensureQpcPageFont,
   isQpcPageFontReady,
   useQpcPageFont,
-} from "@/features/mushaf-madinah/useQpcPageFont";
-import { useMushafResourceGate } from "@/features/mushaf-madinah/useMushafResourceGate";
-import { MUSHAF_CHROME_HIDE_MS } from "@/features/mushaf-madinah/layout-bands";
+} from "@/features/mushaf-shared/useQpcPageFont";
+import { useMushafResourceGate } from "@/features/mushaf-shared/useMushafResourceGate";
+import { MUSHAF_CHROME_HIDE_MS } from "@/features/mushaf-shared/layout-bands";
 import { MushafPage } from "./MushafPage";
 import { MushafControlsLayer, MushafVerseMenu } from "./MushafControlsLayer";
 import { MushafPageArrows } from "./MushafPageArrows";
@@ -117,7 +117,11 @@ import { migrateLegacyMushafReaderPrefs } from "./sunnah-mushaf-classic-preset";
 import { migrateToSunnahMushafSignature } from "./sunnah-mushaf-signature-preset";
 import "./mushaf-reader.css";
 import "@/styles/ayah-nav-selection.css";
-/* شيتات التلاوة/البحث/التفسير — فئات مشتركة */
+/*
+ * CSS archived reader — مطلوب حاليًا لفئات mm-* في القشرة الحية.
+ * BLOCKED: إزالة كاملة حتى استخراج shell CSS إلى mushaf-shared (انظر PHASE_1 docs).
+ * الشيتات (تفسير/بحث) تبقى lazy من mushaf-madinah فقط.
+ */
 import "@/features/mushaf-madinah/mushaf-madinah.css";
 /* صقل Chrome الخروج/الأسهم — بعد mushaf-reader حتى يفوز بدون لمس Geometry */
 import "@/styles/reader-page-chrome.css";
@@ -407,7 +411,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
         prefetchMushafPage(page + 2);
         scheduleNonCriticalWork(() => {
           if (cancelled || !isMushafAudioSessionReady()) return;
-          void import("@/features/mushaf-madinah/prefetch-adjacent-audio").then((m) =>
+          void import("@/features/mushaf-shared/prefetch-adjacent-audio").then((m) =>
             m.prefetchAdjacentPageAudio(page, loadReciterId()),
           );
         });

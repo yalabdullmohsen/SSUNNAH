@@ -1,19 +1,7 @@
 /**
- * Web port of RN AsyncStorage `storageService`:
- *
- * ```ts
- * export const storageService = {
- *   saveLastPage: async (page) => await AsyncStorage.setItem('lastPage', page.toString()),
- *   getLastPage: async () => await AsyncStorage.getItem('lastPage'),
- *   saveBookmarks: async (bookmarks) => await AsyncStorage.setItem('bookmarks', JSON.stringify(bookmarks)),
- *   getBookmarks: async () => {
- *     const data = await AsyncStorage.getItem('bookmarks');
- *     return data ? JSON.parse(data) : [];
- *   },
- * };
- * ```
- *
- * Web: `localStorage` with live keys `lastPage` + `myBookmarks` (not a second store).
+ * Façade توافقية لـ RN AsyncStorage `storageService`.
+ * السلطة الرسمية لـ `/mushaf`: `@/lib/mushaf-persistence` (MushafPersistenceRepository).
+ * Web: مفاتيح حية `lastPage` + `myBookmarks` عبر native-storage — ليست متجرًا ثانيًا.
  */
 
 import {

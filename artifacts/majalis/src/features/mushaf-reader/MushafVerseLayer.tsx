@@ -13,7 +13,7 @@ import {
   useMushafAyahWordPlaying,
   useMushafAyahWordSearchHighlight,
   useMushafAyahWordSelected,
-} from "@/features/mushaf-madinah/mushaf-ayah-sync-store";
+} from "@/features/mushaf-shared/mushaf-ayah-sync-store";
 import { MushafAyahMarker } from "./MushafAyahMarker";
 
 type LineProps = {

@@ -15,7 +15,7 @@ const shell = read("src/features/mushaf-reader/MushafPager.tsx");
 const reader = read("src/features/mushaf-reader/NewMushafReader.tsx");
 const css = read("src/features/mushaf-reader/mushaf-reader.css");
 const tele = read("src/features/mushaf-reader/mushaf-turn-telemetry.ts");
-const bands = read("src/features/mushaf-madinah/layout-bands.ts");
+const bands = read("src/features/mushaf-shared/layout-bands.ts");
 
 /* 1) settle ورقي هادئ */
 assert.match(pager, /SETTLE_MS\s*=\s*220/);

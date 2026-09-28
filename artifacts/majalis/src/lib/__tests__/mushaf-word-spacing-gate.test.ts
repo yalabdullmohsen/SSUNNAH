@@ -13,7 +13,7 @@ const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 const css = read("src/features/mushaf-madinah/mushaf-madinah.css");
 const line = read("src/features/mushaf-madinah/MushafAyahLine.tsx");
 const fit = read("src/features/mushaf-madinah/useMushafPageFontFit.ts");
-const bands = read("src/features/mushaf-madinah/layout-bands.ts");
+const bands = read("src/features/mushaf-shared/layout-bands.ts");
 const sheet = read("src/features/mushaf-madinah/AyahActionSheet.tsx");
 
 const ayahBlock = css.match(/\.mm-ayah-line\s*\{[^}]+\}/)?.[0] ?? "";

@@ -12,7 +12,7 @@ const read = (rel) => readFileSync(resolve(root, rel), "utf8");
 
 const reader = read("src/features/mushaf-reader/NewMushafReader.tsx");
 const pager = read("src/features/mushaf-reader/MushafPager.tsx");
-const font = read("src/features/mushaf-madinah/useQpcPageFont.ts");
+const font = read("src/features/mushaf-shared/useQpcPageFont.ts");
 const tele = read("src/features/mushaf-reader/mushaf-turn-telemetry.ts");
 
 assert.match(reader, /mushafPerfInc\("readerMount"\)/);

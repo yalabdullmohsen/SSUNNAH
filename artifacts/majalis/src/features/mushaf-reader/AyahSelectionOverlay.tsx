@@ -4,7 +4,7 @@ import {
   useMushafAyahNavigationKey,
   useMushafAyahPlayingKey,
   useMushafAyahSelectedKey,
-} from "@/features/mushaf-madinah/mushaf-ayah-sync-store";
+} from "@/features/mushaf-shared/mushaf-ayah-sync-store";
 
 type Props = {
   container: HTMLElement | null;

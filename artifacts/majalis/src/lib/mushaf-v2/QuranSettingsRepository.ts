@@ -15,6 +15,7 @@ import { applyMushafAccentTheme, migrateMushafAccentStorageOnce } from "./accent
 import { QURAN_EXPERIENCE_NEXT } from "./flags";
 import type { MushafAppearanceTheme } from "./mushaf-appearance-theme";
 import { MUSHAF_ACCENT_DEFAULT } from "./mushaf-appearance-theme";
+import { MushafPersistenceRepository } from "@/lib/mushaf-persistence";
 
 const KEYS = {
   restoreLastPage: "ssunnah-mushaf-restore-last-page-v1",
@@ -147,11 +148,11 @@ export const QuranSettingsRepository = {
   },
 
   getAyahMarks(): boolean {
-    return readBool(KEYS.ayahMarks, true);
+    return MushafPersistenceRepository.getAyahMarksSync();
   },
 
   setAyahMarks(on: boolean): void {
-    writeBool(KEYS.ayahMarks, on);
+    MushafPersistenceRepository.setAyahMarks(on);
   },
 
   snapshot(): QuranReadingPrefs {

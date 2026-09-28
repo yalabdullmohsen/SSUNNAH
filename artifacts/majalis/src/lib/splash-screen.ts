@@ -17,6 +17,7 @@ import {
 } from "@/lib/majlis-splash";
 import { notifyNativeLaunchEnded } from "@/lib/app-startup-controller";
 import { markStartup } from "@/lib/startup-performance-marks";
+import { trackOps } from "@/lib/ops-telemetry";
 
 export {
   SPLASH_FADE_OUT_MS,
@@ -37,7 +38,7 @@ function prefersReducedMotion(): boolean {
 }
 
 /** يزيل #mj-launch-splash حتى لو حُظر سكربت الإقلاع بـ CSP. */
-export function dismissHtmlLaunchSplash(immediate = false): void {
+export function dismissHtmlLaunchSplash(immediate = false, reason = "dismiss"): void {
   if (htmlDismissed) return;
   htmlDismissed = true;
   try {
@@ -45,6 +46,7 @@ export function dismissHtmlLaunchSplash(immediate = false): void {
   } catch {
     /* ignore */
   }
+  trackOps("splash.cleared", { reason, immediate: Boolean(immediate) });
   const el = document.getElementById(LAUNCH_SPLASH_ID);
   if (!el) return;
   const remove = () => {
@@ -78,8 +80,8 @@ async function hideCapacitorSplash(immediate = false): Promise<void> {
 }
 
 /** يخفي دخولية HTML + Capacitor معًا (بعد استقرار الهيكل أو السقف). */
-export async function hideNativeSplash(immediate = false): Promise<void> {
-  dismissHtmlLaunchSplash(immediate);
+export async function hideNativeSplash(immediate = false, reason = "hide-native"): Promise<void> {
+  dismissHtmlLaunchSplash(immediate, reason);
   await hideCapacitorSplash(immediate);
 }
 
@@ -116,13 +118,13 @@ export function armNativeSplashController(): void {
   });
 
   const deadline = window.setTimeout(() => {
-    void hideNativeSplash(false);
+    void hideNativeSplash(false, "timeout");
   }, SPLASH_MAX_VISIBLE_MS);
 
   const hideHtmlWhenReady = () => {
     window.clearTimeout(deadline);
     scheduleAfterMinVisible(() => {
-      dismissHtmlLaunchSplash(false);
+      dismissHtmlLaunchSplash(false, "shell-stable");
       void hideCapacitorSplash(true);
     });
   };

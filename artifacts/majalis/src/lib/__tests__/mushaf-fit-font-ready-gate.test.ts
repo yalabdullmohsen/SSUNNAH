@@ -20,7 +20,7 @@ const read = (p: string) => readFileSync(resolve(root, p), "utf8");
 
 const fit = read("src/features/mushaf-madinah/fitPageFontSize.ts");
 const hook = read("src/features/mushaf-madinah/useMushafPageFontFit.ts");
-const qpc = read("src/features/mushaf-madinah/useQpcPageFont.ts");
+const qpc = read("src/features/mushaf-shared/useQpcPageFont.ts");
 
 assert.equal(normalizeMushafFontFamily('"qpc-v2-p2"'), "qpc-v2-p2");
 assert.equal(mushafFontCheckSpec('"qpc-v2-p5"'), '16px "qpc-v2-p5"');

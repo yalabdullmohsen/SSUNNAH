@@ -45,7 +45,7 @@ assert.match(settings, /mj-bidi-isolate/);
 const fit = read("features/mushaf-madinah/fitPageFontSize.ts");
 assert.match(fit, /releaseCanvasResources/);
 
-const qpcHook = read("features/mushaf-madinah/useQpcPageFont.ts");
+const qpcHook = read("features/mushaf-shared/useQpcPageFont.ts");
 assert.match(qpcHook, /FontFace/);
 assert.match(qpcHook, /display:\s*"block"/);
 assert.match(qpcHook, /getPowerSaverState/);

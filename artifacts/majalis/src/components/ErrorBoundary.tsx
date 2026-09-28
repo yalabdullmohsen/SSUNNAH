@@ -92,7 +92,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
     if (isChunkLoadError(error)) {
       // استعادة هادئة (purge قشرة) — بلا reload تلقائي وبلا UI تحديث
-      void tryRecoverFromStaleChunk("boundary-catch");
+      void tryRecoverFromStaleChunk("boundary-catch", error);
       void import("@/lib/app-update-manager")
         .then(({ markUpdateFailed }) => markUpdateFailed("chunk-load"))
         .catch(() => {});
@@ -254,7 +254,7 @@ export class SectionErrorBoundary extends Component<SectionBoundaryProps, Sectio
     );
 
     if (isChunkLoadError(error)) {
-      void tryRecoverFromStaleChunk(`section:${this.props.name}`);
+      void tryRecoverFromStaleChunk(`section:${this.props.name}`, error);
     }
   }
 

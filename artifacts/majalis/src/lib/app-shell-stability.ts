@@ -5,6 +5,7 @@
 
 import { notifyInteractive } from "@/lib/app-startup-controller";
 import { markStartup } from "@/lib/startup-performance-marks";
+import { trackOps } from "@/lib/ops-telemetry";
 
 export const SHELL_STABLE_EVENT = "mj:shell-stable";
 export const BOOT_READY_EVENT = "mj:boot-ready";
@@ -45,6 +46,13 @@ export function markAppShellStable(): void {
   markStartup("startup:shell-ready");
   markStartup("startup:stable");
   notifyInteractive("mark-app-shell-stable");
+  // نجاح إقلاع مستقر → حرّر حارس الاستعادة (محاولة واحدة لكل build فقط أثناء الفشل)
+  void import("@/lib/chunk-recovery")
+    .then(({ clearChunkRecoveryAfterStableBoot }) => {
+      clearChunkRecoveryAfterStableBoot("shell-stable");
+    })
+    .catch(() => {});
+  trackOps("startup.phase", { phase: "INTERACTIVE", reason: "mark-app-shell-stable" });
   if (typeof document === "undefined") return;
   if (!shellStableAt) shellStableAt = Date.now();
   try {

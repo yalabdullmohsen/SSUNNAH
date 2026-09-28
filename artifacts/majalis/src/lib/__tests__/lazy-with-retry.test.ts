@@ -36,7 +36,10 @@ assert.equal(isChunkLoadError(new Error("random")), false);
 
 store.clear();
 assert.equal(consumeChunkReloadAllowance("HomeUpcomingLessons"), true);
-assert.equal(store.get(CHUNK_RELOAD_KEY), "HomeUpcomingLessons");
+assert.ok(
+  String(store.get(CHUNK_RELOAD_KEY)).endsWith("|HomeUpcomingLessons") ||
+    store.get(CHUNK_RELOAD_KEY) === "HomeUpcomingLessons",
+);
 assert.equal(consumeChunkReloadAllowance("again"), false, "second reload blocked — no loop");
 clearChunkReloadGuard();
 assert.equal(store.has(CHUNK_RELOAD_KEY), false);

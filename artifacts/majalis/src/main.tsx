@@ -88,11 +88,11 @@ import "./styles/dark-mode-recovery.css";
     document.documentElement.dataset.theme === "dark";
   if (bootDark) {
     /* متوازٍ: لا تنتظر انتهاء surfaces قبل design-system — يقلّل وميض البطاقات */
+    /* interaction-states محمّل متزامن أعلاه — لا تكرار في مسار الإقلاع الداكن */
     void Promise.all([
       import("./styles/dark-mode-surfaces.css"),
       import("./styles/dark-design-system.css"),
       import("./styles/premium-dark-refine.css"),
-      import("./styles/interaction-states.css"),
       import("./styles/pages/luxury-night-v2.css"),
     ]);
   }

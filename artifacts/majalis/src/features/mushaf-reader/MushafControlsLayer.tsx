@@ -10,7 +10,7 @@ import {
 } from "react";
 import { getSurahMeta } from "@/lib/quran-api";
 import { toArabicDigits } from "@/lib/utils";
-import { parseVerseKey } from "@/features/mushaf-madinah/mushaf-page-for-ayah";
+import { parseVerseKey } from "@/features/mushaf-shared/mushaf-page-for-ayah";
 import {
   MUSHAF_NAV_LABEL,
 } from "@/features/mushaf-reader/mushaf-page-navigation";
