@@ -3060,7 +3060,7 @@
       "rtl": "COMPLETE",
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
-      "auditNote": "Final Internal Closure PR1 — guest empty, skeleton loading, ErrorState+retry+offline, dark CSS, dir=rtl, h1/h2+aria-busy; gate my-learning-route-quality-gate.test.ts"
+      "auditNote": "Final Internal Closure PR1+PR3 confirm — guest empty, skeleton loading, ErrorState+retry+offline, dark CSS, dir=rtl, h1/h2+aria-busy, login Link, max-width layout; gate my-learning-route-quality-gate.test.ts"
     },
     {
       "route": "/my-submissions",
