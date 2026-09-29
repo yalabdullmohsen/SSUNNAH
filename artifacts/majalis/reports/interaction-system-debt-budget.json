@@ -4,7 +4,7 @@
   "note": "Ceilings must not rise; floors (canonical adoption) must not fall without documented exception.",
   "ceilings": {
     "rawButtonFiles": 212,
-    "rawButtonElements": 917,
+    "rawButtonElements": 912,
     "divSpanOnClick": 59,
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
@@ -12,8 +12,8 @@
     "buttonRelatedHexApprox": 1743
   },
   "floors": {
-    "officialButtonImportFiles": 151,
+    "officialButtonImportFiles": 152,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-09-29T21:55:14.506Z"
+  "updatedAt": "2026-09-29T22:20:14.733Z"
 }

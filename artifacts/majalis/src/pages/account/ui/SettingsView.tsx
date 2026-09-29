@@ -6,8 +6,15 @@ import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
 import { UtilityScreen } from "@/components/design-system/screens";
 import { SettingsList, SettingsToggleRow } from "@/components/design-system/SettingsList";
 import { AppCard } from "@/components/design-system/AppCard";
-import { FormLabel, SearchInput } from "@/components/design-system";
+import { FieldLabel, FormLabel, SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useAuth } from "@/components/AuthProvider";
 import { useFontPreference } from "@/components/FontPreferenceProvider";
 import { useThemePreference } from "@/components/ThemePreferenceProvider";
@@ -397,18 +404,27 @@ export default function SettingsPage() {
             checked={preferences.highContrast}
             onChange={(value) => update("highContrast", value)}
           />
-          <label className="settings-field">
-            <span>{t("settings_font_size")}</span>
-            <select
-              name="interface-font-size"
+          <div className="settings-field">
+            <FieldLabel htmlFor="interface-font-size">{t("settings_font_size")}</FieldLabel>
+            <Select
               value={preferences.fontSize}
-              onChange={(e) => update("fontSize", e.target.value as UserPreferences["fontSize"])}
+              onValueChange={(v) => update("fontSize", v as UserPreferences["fontSize"])}
             >
-              <option>صغير</option>
-              <option>متوسط</option>
-              <option>كبير</option>
-            </select>
-          </label>
+              <SelectTrigger
+                id="interface-font-size"
+                name="interface-font-size"
+                className="min-h-11 text-base"
+                aria-label={t("settings_font_size")}
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="صغير">صغير</SelectItem>
+                <SelectItem value="متوسط">متوسط</SelectItem>
+                <SelectItem value="كبير">كبير</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </LegalSection>
       )}
 
@@ -455,17 +471,26 @@ export default function SettingsPage() {
             />
             <strong className="mj-bidi-isolate">{draftQuranScale}px</strong>
           </label>
-          <label className="settings-field">
-            <span>{t("settings_quran_font")}</span>
-            <select
+          <div className="settings-field">
+            <FieldLabel htmlFor="settings-quran-font">{t("settings_quran_font")}</FieldLabel>
+            <Select
               value={quranPrefs.fontId}
-              onChange={(e) => setQuranPref("fontId", e.target.value as QuranFontId)}
+              onValueChange={(v) => setQuranPref("fontId", v as QuranFontId)}
             >
-              <option value="uthmani">شهرزاد (Scheherazade)</option>
-              <option value="naskh">نسخ (Traditional Arabic)</option>
-              <option value="amiri">أميري (Amiri)</option>
-            </select>
-          </label>
+              <SelectTrigger
+                id="settings-quran-font"
+                className="min-h-11 text-base"
+                aria-label={t("settings_quran_font")}
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="uthmani">شهرزاد (Scheherazade)</SelectItem>
+                <SelectItem value="naskh">نسخ (Traditional Arabic)</SelectItem>
+                <SelectItem value="amiri">أميري (Amiri)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
           <div className="settings-actions">
             <Button type="button" variant="ghost" size="small" className="ds-btn ds-btn--ghost" onClick={() => bumpFont(2)}>
               {t("settings_quran_font_up")}
@@ -512,23 +537,32 @@ export default function SettingsPage() {
               ))}
             </select>
           </label>
-          <label className="settings-field">
-            <span>سرعة التشغيل</span>
-            <select
+          <div className="settings-field">
+            <FieldLabel htmlFor="settings-playback-rate">سرعة التشغيل</FieldLabel>
+            <Select
               value={String(playbackRate)}
-              onChange={(e) => {
-                const rate = Number(e.target.value);
+              onValueChange={(v) => {
+                const rate = Number(v);
                 savePlaybackRate(rate);
                 setPlaybackRateState(rate);
               }}
             >
-              {VALID_PLAYBACK_RATES.map((rate) => (
-                <option key={rate} value={String(rate)}>
-                  {rate}×
-                </option>
-              ))}
-            </select>
-          </label>
+              <SelectTrigger
+                id="settings-playback-rate"
+                className="min-h-11 text-base"
+                aria-label="سرعة التشغيل"
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {VALID_PLAYBACK_RATES.map((rate) => (
+                  <SelectItem key={rate} value={String(rate)}>
+                    {rate}×
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
           <ToggleRow
             label="التشغيل في الخلفية"
             description="تفضيل محلي لإبقاء التلاوة عند مغادرة الشاشة (حسب دعم الجهاز)"

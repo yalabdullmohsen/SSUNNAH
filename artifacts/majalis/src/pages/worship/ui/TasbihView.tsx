@@ -41,6 +41,7 @@ export default function TasbihPage() {
   const [newPhrase, setNewPhrase] = useState("");
   const [newTarget, setNewTarget] = useState(33);
   const [syncNote, setSyncNote] = useState<string | null>(null);
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   const active = items.find((item) => item.id === activeId) || items[0];
 
@@ -127,10 +128,10 @@ export default function TasbihPage() {
 
   const deleteActive = () => {
     if (!active || items.length <= 1) return;
-    if (!window.confirm("هل تريد حذف هذا الورد نهائيًا؟")) return;
     const next = items.filter((item) => item.id !== active.id);
     updateItems(next);
     setActiveId(next[0].id);
+    setConfirmDelete(false);
   };
 
   const activeStats = active ? computeTasbeehStats(active) : null;
@@ -206,14 +207,29 @@ export default function TasbihPage() {
             </p>
           )}
           <div className="tasbih-actions-grid">
-            <ActionButton
-              type="button"
-              variant="destructive"
-              onClick={deleteActive}
-              disabled={items.length <= 1}
-            >
-              حذف الورد
-            </ActionButton>
+            {confirmDelete ? (
+              <div className="tasbih-confirm" role="alertdialog" aria-labelledby="tasbih-delete-title" aria-describedby="tasbih-delete-desc">
+                <p id="tasbih-delete-title" className="tasbih-confirm__title">تأكيد الحذف</p>
+                <p id="tasbih-delete-desc" className="tasbih-confirm__desc">هل تريد حذف هذا الورد نهائيًا؟</p>
+                <div className="tasbih-confirm__actions">
+                  <Button type="button" variant="destructive" onClick={deleteActive}>
+                    تأكيد الحذف
+                  </Button>
+                  <Button type="button" variant="secondary" onClick={() => setConfirmDelete(false)}>
+                    إلغاء
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              <ActionButton
+                type="button"
+                variant="destructive"
+                onClick={() => setConfirmDelete(true)}
+                disabled={items.length <= 1}
+              >
+                حذف الورد
+              </ActionButton>
+            )}
           </div>
         </section>
       )}

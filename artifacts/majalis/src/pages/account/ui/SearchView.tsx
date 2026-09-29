@@ -288,9 +288,9 @@ export default function SearchPage() {
     } catch (err) {
       if (seq !== requestSeqRef.current) return;
       if ((err as Error)?.name === "AbortError") return;
-      const msg = err instanceof Error ? err.message : STATUS.loadError;
-      setError(msg);
-      trackSearchUx("search_failed", { query: q, scope: nextScope, message: msg });
+      const technical = err instanceof Error ? err.message : "unknown";
+      setError(STATUS.loadError);
+      trackSearchUx("search_failed", { query: q, scope: nextScope, message: technical });
     } finally {
       if (!ctrl.signal.aborted && seq === requestSeqRef.current) setLoading(false);
     }
@@ -495,8 +495,8 @@ export default function SearchPage() {
         <div className="srch-error-inline" role="alert">
           <AlertCircle size={16} strokeWidth={2} aria-hidden />
           <div className="srch-error-inline__body">
-            <p className="srch-error-inline__title">{STATUS.loadError}</p>
-            <p className="srch-error-inline__reason">{error}</p>
+            <p className="srch-error-inline__title">{error || STATUS.loadError}</p>
+            <p className="srch-error-inline__reason">تعذّر تحديث النتائج. أعد المحاولة أو انتقل إلى قسم آخر.</p>
             <div className="srch-error-inline__actions">
               <Button type="button" variant="outline" size="small" className="srch-error-inline__retry" onClick={() => void run(term, scope)}>
                 {ACTION.retry}
