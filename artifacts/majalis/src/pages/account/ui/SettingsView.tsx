@@ -5,6 +5,7 @@ import { STATUS } from "@/lib/ui-copy";
 import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
 import { UtilityScreen } from "@/components/design-system/screens";
 import { SettingsList, SettingsToggleRow } from "@/components/design-system/SettingsList";
+import { AppCard } from "@/components/design-system/AppCard";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/AuthProvider";
 import { useFontPreference } from "@/components/FontPreferenceProvider";
@@ -274,7 +275,7 @@ export default function SettingsPage() {
 
       {visible(sections[0]!) && (
         <LegalSection title={sections[0]!.title}>
-          <div className="soft-card soft-card--on-light settings-account-card">
+          <AppCard as="section" className="settings-account-card" data-ss-surface="inset">
             <div className="settings-avatar" aria-hidden="true">
               {(user?.profile?.full_name || user?.email || "م").slice(0, 1)}
             </div>
@@ -288,7 +289,7 @@ export default function SettingsPage() {
                 {user?.email || t("settings_not_logged_in")}
               </p>
             </div>
-          </div>
+          </AppCard>
           {authLoading ? (
             <p className="settings-auth-pending" aria-busy="true" aria-label="تحديث الحساب">
               …

@@ -6,6 +6,7 @@ import type { HTMLAttributes, ReactNode } from "react";
 import { Link } from "wouter";
 import { cn } from "@/lib/utils";
 import { CardTitle, SupportingText } from "@/components/design-system/text";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/sunnah-card-v2.css";
 
 export type SunnahCardV2Props = HTMLAttributes<HTMLElement> & {
@@ -41,9 +42,9 @@ export function SunnahCardV2({
         {ctaLabel}
       </Link>
     ) : (
-      <button type="button" className="sc2-cta" onClick={onCtaClick}>
+      <Button type="button" variant="ghost" size="small" className="sc2-cta" onClick={onCtaClick}>
         {ctaLabel}
-      </button>
+      </Button>
     ));
 
   return (

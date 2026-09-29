@@ -59,6 +59,7 @@ import "@/styles/pages/search.css";
 import "@/styles/pages/library-search-v2.css";
 import { ACTION, EMPTY, SEARCH, STATUS } from "@/lib/ui-copy";
 import { ListScreen } from "@/components/design-system/screens";
+import { StatusCard } from "@/components/design-system/SurfacePrimitives";
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/design-system/Buttons";
 
@@ -512,7 +513,7 @@ export default function SearchPage() {
           <SearchSkeleton />
         </div>
       ) : showEmpty ? (
-        <div className="search-no-results ss-state-card" role="status">
+        <StatusCard className="search-no-results ss-state-card" role="status">
           <p className="search-no-results__msg ss-state-card__title">
             {EMPTY.searchShort}
           </p>
@@ -563,7 +564,7 @@ export default function SearchPage() {
               </Link>
             ))}
           </div>
-        </div>
+        </StatusCard>
       ) : results.length > 0 ? (
         <div className="srch-results" aria-live="polite" aria-busy={loading || undefined}>
           <p className="search-page-summary" role="status">

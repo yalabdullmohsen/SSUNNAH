@@ -2,7 +2,7 @@ import type { HTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 export type AppCardProps = HTMLAttributes<HTMLElement> & {
-  as?: "article" | "section" | "div";
+  as?: "article" | "section" | "div" | "aside";
   /** سطح فاتح (افتراضي) أو تمييز ذهبي ناعم */
   tone?: "default" | "accent" | "muted";
   padding?: "md" | "sm" | "none";

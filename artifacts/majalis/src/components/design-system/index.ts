@@ -3,6 +3,14 @@
  * SectionCard / LessonCard / FloatingBack موجودة مسبقًا وتُعاد تصديرها هنا.
  */
 export { AppCard, type AppCardProps } from "./AppCard";
+export {
+  InteractiveCard,
+  StatusCard,
+  InsetSurface,
+  ElevatedSurface,
+  type InteractiveCardProps,
+  type StatusCardProps,
+} from "./SurfacePrimitives";
 export { SunnahCardV2, type SunnahCardV2Props } from "./SunnahCardV2";
 export { PageHeaderV2, type PageHeaderV2Props } from "./PageHeaderV2";
 export { EmptyStateV2, type EmptyStateV2Props } from "./EmptyStateV2";
