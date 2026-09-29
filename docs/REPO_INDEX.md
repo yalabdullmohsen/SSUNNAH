@@ -88,6 +88,8 @@
 | `docs/design/CARD_SURFACE_AUTHORITY.md` | **Interaction PR-5** — سلطة AppCard / InteractiveCard / StatusCard / Surfaces |
 | `docs/audit/SUNNAH_FINAL_COMPLETION_AUDIT.md` | تدقيق إغلاق Visual+Interaction (#2336–#2346) — أرقام حية + PARTIAL |
 | `docs/audit/SUNNAH_FINAL_COMPLETION_LIVE_STATE.md` | حالة حية tip/prod/PR train للتدقيق النهائي |
+| `docs/audit/FINAL_REMEDIATION_LIVE_STATE.md` | **Final Remediation PHASE 0** — tip/prod/موجات حية (2026-09-29) |
+| `docs/remediation/ROUTE_THEME_OWNERSHIP.md` | مالك سطح المسار (`commitRouteSurface`) — بلا تسرّب pts-immersive |
 | `docs/design/FORM_FEEDBACK_AUTHORITY.md` | **Interaction PR-6** — سلطة النماذج + FormFields + Empty/Loading/Error/Offline |
 | `docs/design/ADMIN_V3_INTERACTION_AUTHORITY.md` | **Interaction PR-7** — سلطة تفاعل Admin v3 (Button/AppCard/FormFields/States) |
 | `docs/design/DARK_MODE_AUTHORITY.md` | **Interaction PR-8** — سلطة الوضع الليلي (`--sf-*`/`--ss-*`/`--mj-*` · مفتاح `data-theme` واحد) |

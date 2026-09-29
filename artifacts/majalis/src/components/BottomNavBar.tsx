@@ -12,6 +12,7 @@ import { getActiveTab, type BottomTabId } from "@/lib/get-active-tab";
 import { haptics } from "@/lib/haptics";
 import { prefetchAppRoutesShell } from "@/lib/prefetch-app-routes";
 import { shouldAllowNavigation } from "@/lib/nav-click-guard";
+import { prefetchPrayerRouteAssets } from "@/lib/route-surface";
 import "@/styles/pages/profile-hub-v2.css";
 import "@/styles/sunnah-identity-chrome-nav.css";
 
@@ -45,10 +46,9 @@ export function BottomNavBar({ isHidden = false }: { isHidden?: boolean } = {}) 
 
   function triggerPrefetch(href: string) {
     prefetchAppRoutesShell();
+    /* سطح الصلاة يُلتزَم فقط من App عبر commitRouteSurface — ممنوع classList هنا (تسرّب بعد warm/hover) */
     if (href === "/prayer-times") {
-      /* نية تنقّل — سطح زيتوني قبل commit حتى لا يُطلى إطار كريمي */
-      document.documentElement.classList.add("pts-immersive");
-      void import("@/styles/pages/prayer-times.css").catch(() => undefined);
+      prefetchPrayerRouteAssets();
     }
     const load = TAB_PREFETCH[href];
     if (!load || prefetched.current.has(href)) return;
