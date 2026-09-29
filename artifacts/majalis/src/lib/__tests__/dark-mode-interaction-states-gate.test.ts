@@ -11,12 +11,14 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
 const states = read("src/styles/interaction-states.css");
+const topicPage = read("src/styles/components/topic-page.css");
 const theme = read("src/app/styles/theme.css");
 const main = read("src/main.tsx");
 const quranHub = read("src/styles/pages/quran-hub.css");
 const darkSurfaces = read("src/styles/dark-mode-surfaces.css");
-const topicPage = read("src/styles/components/topic-page.css");
 const refine = read("src/styles/premium-dark-refine.css");
+const breadcrumbsHost = read("src/components/platform/Breadcrumbs.tsx");
+const sectionHero = read("src/components/topic/SectionHero.tsx");
 
 for (const token of [
   "--state-default-bg",
@@ -33,7 +35,31 @@ for (const token of [
 }
 
 assert.match(states, /::selection/, "defines ::selection");
-assert.match(states, /\.topic-page__crumb[\s\S]*?background:\s*transparent/, "crumb transparent");
+assert.match(
+  topicPage,
+  /\.topic-page__crumb[\s\S]*?background:\s*transparent/,
+  "crumb transparent in topic-page (route chrome)",
+);
+assert.match(
+  topicPage,
+  /\.hb-breadcrumb[\s\S]*?background:\s*transparent/,
+  "hb-breadcrumb chrome in topic-page",
+);
+assert.match(
+  breadcrumbsHost,
+  /topic-page\.css/,
+  "Breadcrumbs يستورد chrome المسار",
+);
+assert.match(
+  sectionHero,
+  /topic-page\.css/,
+  "SectionHero يستورد chrome المسار",
+);
+assert.doesNotMatch(
+  states,
+  /\.breadcrumbs\s*,/,
+  "لا تكرار breadcrumbs داخل interaction-states الحرج",
+);
 assert.match(
   states,
   /منع Highlight وهمي[\s\S]*?\.quran-open-mushaf__resume[\s\S]*?background:\s*transparent/,

@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-29T16:39:56.342Z",
-  "commit": "c698068c3d98991439c71af7291bccbfc2713350",
-  "branch": "cursor/debt-reduction-w2",
+  "generatedAt": "2026-09-29T19:32:00.533Z",
+  "commit": "23f62fd128bfc663bbacabfa6bc3578560c92204",
+  "branch": "cursor/critical-css-60k-margin",
   "node": "v26.8.1",
   "pnpm": "10.34.4",
   "failures": [],
@@ -13,12 +13,12 @@
     {
       "name": "git commit readable",
       "status": "PASS",
-      "detail": "c698068c3d98991439c71af7291bccbfc2713350"
+      "detail": "23f62fd128bfc663bbacabfa6bc3578560c92204"
     },
     {
       "name": "branch is Phase 7 integration or documented RC branch",
       "status": "PASS",
-      "detail": "cursor/debt-reduction-w2"
+      "detail": "cursor/critical-css-60k-margin"
     },
     {
       "name": "capacitor appId expected",
@@ -164,84 +164,84 @@
       "name": "verify:preflight",
       "command": "pnpm run verify:preflight",
       "status": "PASS",
-      "ms": 1193,
+      "ms": 1117,
       "exit": 0
     },
     {
       "name": "typecheck",
       "command": "pnpm run typecheck",
       "status": "PASS",
-      "ms": 3503,
+      "ms": 3636,
       "exit": 0
     },
     {
       "name": "verify:store-assets",
       "command": "pnpm run verify:store-assets",
       "status": "PASS",
-      "ms": 250,
+      "ms": 232,
       "exit": 0
     },
     {
       "name": "phase6-release-readiness-gate",
       "command": "node --import tsx src/lib/__tests__/phase6-release-readiness-gate.test.ts",
       "status": "PASS",
-      "ms": 203,
+      "ms": 193,
       "exit": 0
     },
     {
       "name": "phase6-soak-prep-gate",
       "command": "node --import tsx src/lib/__tests__/phase6-soak-prep-gate.test.ts",
       "status": "PASS",
-      "ms": 194,
+      "ms": 197,
       "exit": 0
     },
     {
       "name": "phase5-design-ux-gate",
       "command": "node --import tsx src/lib/__tests__/phase5-design-ux-gate.test.ts",
       "status": "PASS",
-      "ms": 197,
+      "ms": 196,
       "exit": 0
     },
     {
       "name": "phase7-cross-phase-consistency-gate",
       "command": "node --import tsx src/lib/__tests__/phase7-cross-phase-consistency-gate.test.ts",
       "status": "PASS",
-      "ms": 192,
+      "ms": 195,
       "exit": 0
     },
     {
       "name": "phase7-backward-compat-gate",
       "command": "node --import tsx src/lib/__tests__/phase7-backward-compat-gate.test.ts",
       "status": "PASS",
-      "ms": 194,
+      "ms": 193,
       "exit": 0
     },
     {
       "name": "test:prayer-engine-p0",
       "command": "pnpm --filter @workspace/majalis run test:prayer-engine-p0",
       "status": "PASS",
-      "ms": 1070,
+      "ms": 1044,
       "exit": 0
     },
     {
       "name": "test:ios-gates",
       "command": "pnpm --filter @workspace/majalis run test:ios-gates",
       "status": "PASS",
-      "ms": 1040,
+      "ms": 1037,
       "exit": 0
     },
     {
       "name": "test:licenses",
       "command": "pnpm --filter @workspace/majalis run test:licenses",
       "status": "PASS",
-      "ms": 992,
+      "ms": 1002,
       "exit": 0
     },
     {
       "name": "verify:ci",
       "command": "pnpm run verify:ci",
       "status": "PASS",
-      "ms": 313953,
+      "ms": 597,
       "exit": 0
     },
     {

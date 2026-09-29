@@ -78,7 +78,7 @@ import "./styles/sections-calm-polish.css";
 import "./styles/ssunnah-ux-polish.css";
 /* semantic-tokens + card-unify مؤجّلان — ميزانية CSS الحرج ≤60KiB gzip */
 /* Green Surface System — مؤجّل تحت الميزانية (انظر loadNonCriticalCss) */
-/* حالات تفاعل متمايزة + ::selection + breadcrumbs — بعد الأسطح الخضراء */
+/* حالات تفاعل متمايزة + ::selection — breadcrumbs مع مكوّنات المسار */
 import "./styles/interaction-states.css";
 /* استرداد ليلي P0 — متزامن؛ القواعد مقيّدة بـ html.dark لتقليل theme flash */
 import "./styles/dark-mode-recovery.css";
