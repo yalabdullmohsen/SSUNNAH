@@ -3,6 +3,8 @@
  */
 import { useEffect, useState } from "react";
 import { BookOpen, Bookmark, ChevronDown, Mic2, Pause, Play, Repeat, Share2, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import { getAudioEngine, type RepeatMode } from "@/core/audio/AudioEngine";
 import { getTafseerService } from "@/core/tafseer/TafseerService";
 import { useQuranEngine } from "@/hooks/useQuranEngine";
@@ -224,16 +226,17 @@ export function QuranActionBar({ ayah, onClose }: QuranActionBarProps) {
           {surahName} · {toArabicDigits(ayah.ayah)}
         </strong>
         {onClose ? (
-          <button type="button" className="qe-icon-btn" onClick={onClose} aria-label="إغلاق">
+          <IconButton type="button" className="qe-icon-btn" onClick={onClose} label="إغلاق">
             <X size={18} />
-          </button>
+          </IconButton>
         ) : null}
       </header>
 
       <p className="qe-abar__preview">{truncateAtWord(ayah.text, 140)}</p>
 
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className={`qe-abar__reciter-toggle${reciterOpen ? " is-on" : ""}`}
         onClick={() => setReciterOpen((v) => !v)}
         aria-expanded={reciterOpen}
@@ -241,37 +244,40 @@ export function QuranActionBar({ ayah, onClose }: QuranActionBarProps) {
         <Mic2 size={14} aria-hidden="true" />
         <span>{activeReciter.nameAr}</span>
         <ChevronDown size={14} aria-hidden="true" className={reciterOpen ? "is-open" : undefined} />
-      </button>
+      </Button>
 
       {reciterOpen ? (
         <div className="qe-abar__reciter-list" role="listbox" aria-label="أشهر القراء">
           {listedReciters.map((r) => (
-            <button
+            <Button
               key={r.id}
               type="button"
+              variant="ghost"
               role="option"
               aria-selected={r.id === activeReciter.id}
               className={`qe-abar__reciter-item${r.id === activeReciter.id ? " is-on" : ""}`}
               onClick={() => pickReciter(r.id)}
             >
               {r.nameAr}
-            </button>
+            </Button>
           ))}
-          <button
+          <Button
             type="button"
+            variant="ghost"
             className="qe-abar__reciter-more"
             onClick={() => setShowAllReciters((v) => !v)}
           >
             {showAllReciters
               ? "أشهر القراء فقط"
               : `جميع القراء المعتمدين (${toArabicDigits(verifiedReciters.length)})`}
-          </button>
+          </Button>
         </div>
       ) : null}
 
       <div className="qe-abar__actions" role="toolbar" aria-label="إجراءات سريعة">
-        <button
+        <Button
           type="button"
+          variant="ghost"
           className={`qe-abar__btn${playing ? " is-on" : ""}`}
           onClick={() => void togglePlay()}
           disabled={audioBusy}
@@ -279,28 +285,29 @@ export function QuranActionBar({ ayah, onClose }: QuranActionBarProps) {
         >
           {playing ? <Pause size={18} /> : <Play size={18} />}
           <span>{playing ? "إيقاف" : "تلاوة"}</span>
-        </button>
-        <button type="button" className={`qe-abar__btn${tafsirOpen ? " is-on" : ""}`} onClick={() => void openTafsir()}>
+        </Button>
+        <Button type="button" variant="ghost" className={`qe-abar__btn${tafsirOpen ? " is-on" : ""}`} onClick={() => void openTafsir()}>
           <BookOpen size={18} />
           <span>تفسير</span>
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
+          variant="ghost"
           className={`qe-abar__btn${bookmarked ? " is-on" : ""}`}
           onClick={() => void toggleBookmark()}
           aria-pressed={bookmarked}
         >
           <Bookmark size={18} fill={bookmarked ? "currentColor" : "none"} />
           <span>إشارة</span>
-        </button>
-        <button type="button" className={`qe-abar__btn${repeatMode !== "off" ? " is-on" : ""}`} onClick={toggleRepeat}>
+        </Button>
+        <Button type="button" variant="ghost" className={`qe-abar__btn${repeatMode !== "off" ? " is-on" : ""}`} onClick={toggleRepeat}>
           <Repeat size={18} />
           <span>تكرار</span>
-        </button>
-        <button type="button" className="qe-abar__btn" onClick={() => void share()}>
+        </Button>
+        <Button type="button" variant="ghost" className="qe-abar__btn" onClick={() => void share()}>
           <Share2 size={18} />
           <span>مشاركة</span>
-        </button>
+        </Button>
       </div>
 
       {status ? (

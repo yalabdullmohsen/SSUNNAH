@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState, lazy, Suspense } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, Moon, Search, Sun, User, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import { useAuth } from "./AuthProvider";
 import { useLanguage } from "./LanguageProvider";
 import { useThemePreference } from "./ThemePreferenceProvider";
@@ -261,9 +263,9 @@ export default function NavBar() {
           {t("nav_admin_panel")}
         </Link>
       )}
-      <button type="button" onClick={handleLogout} className="navbar-logout">
+      <Button type="button" variant="ghost" onClick={handleLogout} className="navbar-logout">
         {t("nav_logout")}
-      </button>
+      </Button>
     </div>
   ) : (
     <div className="navbar-auth navbar-auth--guest">
@@ -287,8 +289,9 @@ export default function NavBar() {
         <div className="navbar-v3__inner">
           <div className="navbar-v3__start">
             {/* Hamburger — always visible, opens SideNavDrawer */}
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className={`navbar-menu-btn navbar-menu-btn--drawer${isMenuOpen ? " navbar-menu-btn--open" : ""}`}
               onClick={toggleMenu}
               aria-expanded={isMenuOpen}
@@ -301,7 +304,7 @@ export default function NavBar() {
                 : <Menu className="navbar-menu-btn__icon" size={16} strokeWidth={1.7} aria-hidden="true" />
               }
               <span className="navbar-menu-btn__label">{isMenuOpen ? "إغلاق" : "القائمة"}</span>
-            </button>
+            </Button>
           </div>
 
           {/* منتصف الهيدر: إعلان مدمج (جوال/سطح مكتب) أو تبويبات سطح المكتب */}
@@ -330,29 +333,27 @@ export default function NavBar() {
               <PrayerChip compact={isCompactChrome} />
             )}
             {/* زر الوضع الليلي */}
-            <button
+            <IconButton
               type="button"
               onClick={toggleDark}
-              aria-label={resolvedTheme === "dark" ? "التحويل إلى الوضع النهاري" : "التحويل إلى الوضع الليلي"}
-              title={resolvedTheme === "dark" ? "وضع نهاري" : "وضع ليلي"}
+              label={resolvedTheme === "dark" ? "التحويل إلى الوضع النهاري" : "التحويل إلى الوضع الليلي"}
               className="navbar-theme-toggle"
             >
               {resolvedTheme === "dark"
                 ? <Sun size={17} strokeWidth={1.6} aria-hidden="true" />
                 : <Moon size={17} strokeWidth={1.6} aria-hidden="true" />
               }
-            </button>
+            </IconButton>
             {/* بحث أيقوني — الصفحات الداخلية؛ الرئيسية تستخدم HUS */}
             {!showFullSearchRow && (
-              <button
+              <IconButton
                 type="button"
                 onClick={openSearch}
-                aria-label="فتح البحث"
-                title="البحث"
+                label="فتح البحث"
                 className="navbar-theme-toggle navbar-search-toggle"
               >
                 <Search size={17} strokeWidth={1.8} aria-hidden="true" />
-              </button>
+              </IconButton>
             )}
             {tickerInHeaderEnd && <DeferredHeaderTicker />}
             {/* سطح مكتب عريض: روابط حساب كاملة · لوحية: أيقونة كالجوال */}
@@ -405,15 +406,16 @@ export default function NavBar() {
         {/* صف بحث كامل — معطّل في Identity Reset (HUS + أيقونة) */}
         {showFullSearchRow && useStackedChrome && (
           <div className="navbar-v3__search-row">
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className="navbar-v3__search-btn"
               onClick={openSearch}
               aria-label="فتح البحث"
             >
               <Search size={16} strokeWidth={1.8} aria-hidden="true" />
               <span>ابحث في المحتوى…</span>
-            </button>
+            </Button>
           </div>
         )}
 

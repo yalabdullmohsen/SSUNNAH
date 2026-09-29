@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Pencil, X, Check, ChevronDown, RefreshCw } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import { useAuth } from "@/components/AuthProvider";
 import { safeLocationReload } from "@/lib/safe-reload";
 import { isImmersiveChromePath } from "@/lib/immersive-chrome";
@@ -100,8 +102,9 @@ function EditDialog({ el, path, onDone }: EditDialogProps) {
         <div className="ase-dialog__head">
           <span className="ase-dialog__tag">{el.tagName.toLowerCase()}</span>
           <p className="ase-dialog__title">تعديل النص</p>
-          <button
-            type="button" className="ase-dialog__close" onClick={onDone} aria-label="إغلاق"><X size={14} /></button>
+          <IconButton type="button" className="ase-dialog__close" onClick={onDone} label="إغلاق">
+            <X size={14} />
+          </IconButton>
         </div>
         <textarea
           ref={ta}
@@ -113,14 +116,14 @@ function EditDialog({ el, path, onDone }: EditDialogProps) {
         />
         <p className="ase-dialog__hint">Ctrl+Enter للحفظ • Esc للإلغاء</p>
         <div className="ase-dialog__footer">
-          <button
-            type="button" className="ase-btn ase-btn--ghost" onClick={reset} aria-label="استعادة النص الأصلي">
+          <Button
+            type="button" variant="ghost" className="ase-btn ase-btn--ghost" onClick={reset} aria-label="استعادة النص الأصلي">
             <RefreshCw size={13} /> استعادة
-          </button>
-          <button
-            type="button" className="ase-btn ase-btn--primary" onClick={save}>
+          </Button>
+          <Button
+            type="button" variant="primary" className="ase-btn ase-btn--primary" onClick={save}>
             <Check size={14} /> حفظ
-          </button>
+          </Button>
         </div>
       </div>
     </div>
@@ -423,19 +426,20 @@ export function AdminSiteEditBar() {
               ) : "لا توجد تعديلات محفوظة"}
             </p>
             {editCount > 0 && (
-              <button
-                type="button" className="ase-bar__clear" onClick={clearAll}>
+              <Button
+                type="button" variant="ghost" className="ase-bar__clear" onClick={clearAll}>
                 <RefreshCw size={11} style={{ display: "inline", marginLeft: 3 }} />
                 استعادة النصوص الأصلية
-              </button>
+              </Button>
             )}
           </div>
         )}
 
         <div style={{ display: "flex", gap: "0.4rem" }}>
           {!editMode && (
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className="ase-bar__toggle ase-bar__toggle--off"
               onClick={() => { setExpanded((v) => !v); }}
               aria-label="أدوات المشرف"
@@ -443,16 +447,17 @@ export function AdminSiteEditBar() {
               <Pencil size={13} />
               مشرف
               <ChevronDown size={12} style={{ transform: expanded ? "rotate(180deg)" : undefined, transition: "transform 0.2s" }} />
-            </button>
+            </Button>
           )}
-          <button
+          <Button
             type="button"
+            variant="ghost"
             className={`ase-bar__toggle ${editMode ? "ase-bar__toggle--on" : "ase-bar__toggle--off"}`}
             onClick={() => { setEditMode((v) => !v); setExpanded(false); }}
             title={editMode ? "إيقاف وضع التحرير" : "تفعيل وضع تحرير الصفحة"}
           >
             {editMode ? <><X size={13} /> إيقاف التحرير</> : <><Pencil size={13} /> تحرير الصفحة</>}
-          </button>
+          </Button>
         </div>
       </div>
 
