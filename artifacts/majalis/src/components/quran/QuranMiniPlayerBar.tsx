@@ -15,6 +15,7 @@ import {
   subscribeMiniPlayer,
 } from "@/lib/quran-mini-player";
 import { isImmersiveChromePath } from "@/lib/immersive-chrome";
+import { applyFloatingLayerCssVars } from "@/lib/floating-layer-manager";
 import { useMediaSession } from "@/hooks/useMediaSession";
 import { BUTTON, STATUS } from "@/lib/ui-copy";
 import {
@@ -79,10 +80,15 @@ export function QuranMiniPlayerBar() {
     const root = document.documentElement;
     if (!visible || immersive) {
       root.removeAttribute("data-quran-mini-player");
+      applyFloatingLayerCssVars();
       return;
     }
     root.setAttribute("data-quran-mini-player", expanded ? "expanded" : "mini");
-    return () => root.removeAttribute("data-quran-mini-player");
+    applyFloatingLayerCssVars();
+    return () => {
+      root.removeAttribute("data-quran-mini-player");
+      applyFloatingLayerCssVars();
+    };
   }, [visible, expanded, immersive]);
 
   useEffect(() => {

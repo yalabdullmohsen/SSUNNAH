@@ -3193,9 +3193,12 @@ body.assistant-panel-open {
 
 .assistant-fab {
   position: fixed;
-  z-index: 45;
+  z-index: var(--z-fab, 220);
   inset-inline-end: calc(1rem + var(--inset-right));
-  bottom: calc(1rem + var(--inset-bottom) + var(--bottom-nav-height, 64px));
+  bottom: var(
+    --assistant-fab-bottom,
+    calc(1rem + var(--inset-bottom) + var(--bottom-nav-height, 64px))
+  );
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;

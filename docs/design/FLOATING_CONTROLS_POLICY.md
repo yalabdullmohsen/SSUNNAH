@@ -2,10 +2,11 @@
 
 | Field | Value |
 |---|---|
-| Status | **AUTHORITY (Interaction PR-4)** |
-| Owner | Navigation / FAB cleanup |
-| Related | `INTERACTION_COMPONENT_AUTHORITY.md` · `NAVIGATION_AND_SAFE_AREA.md` |
+| Status | **AUTHORITY (Final Closure PR7)** |
+| Owner | `lib/floating-layer-manager.ts` + `FloatingLayerSync` |
+| Related | `INTERACTION_COMPONENT_AUTHORITY.md` · `NAVIGATION_AND_SAFE_AREA.md` · `docs/mushaf/PR7_MUSHAF_FLOATING_UI_CLOSURE_REPORT.md` |
 | Back preference | In-page `AppBackButton` over floating host |
+| Operational SoT | `FloatingLayerManager` — offsets, z tokens, keyboard, modal suppress |
 
 ## Inventory
 
@@ -20,7 +21,8 @@
 | `AssistantFloatingWidget` | Global FAB (hidden assistant page, admin, path allowlist) | Open scientific assistant | `--z-fab` | `--z-fab` (220) | Bottom inset + chrome CSS | Shares FAB lane; must clear BottomNav | **Product-proven** — at most one primary FAB with assistant as candidate |
 | `AdminSiteEditBar` | Admin sessions only; hidden immersive | Local page text edit FAB | Inline ~9990 / dialog 10001 | Prefer migrate to `--z-overlay-*` later | Bottom `90px` offset (legacy) | Potentially conflicts with assistant/back — admin-only | **Admin-only** floating OK |
 | `QuranActionBar` | Non-mushaf ayah chrome (engine UI) | Ayah play/tafsir/bookmark/share | Engine CSS (sheet-like) | Align with `--z-sheet` / audio chrome when shared | Must clear mini-player + nav | Must not cover BottomNav | **Contextual** sheet, not global primary FAB |
-| Mushaf reader chrome | `/mushaf` etc. | Immersive controls | MUSHAF_SPECIAL | — | Own chrome | BottomNav hidden | **Out of scope** this wave |
+| Mushaf reader chrome | `/mushaf` etc. | Immersive controls | MUSHAF_SPECIAL | `--z-chrome` via manager slot `mushaf-controls` | Own chrome + VV | BottomNav hidden | **PR7 UI-only** — bookmark editor suppresses background FABs |
+| Bookmark editor shell | Mushaf sheets | Portal + VV keyboard | overlay | yields via `data-mushaf-bookmark-editor` | `--rb-*` + `--keyboard-inset` | Suppresses ScrollToTop / FloatingBack / Assistant | **Required** while open |
 
 ## 13 policy rules
 
