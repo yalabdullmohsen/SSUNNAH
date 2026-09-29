@@ -15,6 +15,7 @@ import "@/styles/pages/arbaeen-detail.css";
 import { DetailScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
 
+import { Button } from "@/components/ui/button";
 /**
  * صفحة تعلّم كاملة لحديث واحد من الأربعين النووية (المرحلة 11) — نص/شرح/فائدة/
  * مصدر، ثم "اختبر نفسك" (أنواع أسئلة من src/lib/arbaeen-quiz.ts، كلها مُشتقّة من
@@ -136,9 +137,9 @@ export default function ArbaeenHadithDetailPage() {
       </section>
 
       {!quizOpen ? (
-        <button type="button" className="ahd-quiz-cta" onClick={startQuiz}>
+        <Button type="button" className="ahd-quiz-cta" onClick={startQuiz} variant="ghost">
           اختبر نفسك في هذا الحديث ({questions.length} أسئلة)
-        </button>
+        </Button>
       ) : quizDone ? (
         <div className="ahd-quiz-result">
           <p className="ahd-quiz-result__score">{quizScore.correct} / {quizScore.total} صحيحة</p>
@@ -149,16 +150,15 @@ export default function ArbaeenHadithDetailPage() {
               <p className="ahd-quiz-result__prompt">كيف كان مستوى تذكّرك لهذا الحديث؟</p>
               <div className="ahd-quiz-result__buttons">
                 {QUALITY_OPTIONS.map((opt) => (
-                  <button
+                  <Button
                     key={opt.value}
                     type="button"
                     className="ahd-quiz-result__btn"
                     style={{ borderColor: opt.color, color: opt.color }}
                     disabled={savingReview}
-                    onClick={() => rate(opt.value)}
-                  >
+                    onClick={() => rate(opt.value)} variant="ghost">
                     {opt.label}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </>
@@ -177,22 +177,21 @@ export default function ArbaeenHadithDetailPage() {
               const isCorrectOpt = revealed && isMcqAnswerCorrect(questions[quizIdx].correctAnswer, opt);
               const isWrongSelected = revealed && selected === opt && !isCorrectOpt;
               return (
-                <button
+                <Button
                   key={opt}
                   type="button"
                   className={`ahd-quiz__opt${isCorrectOpt ? " ahd-quiz__opt--correct" : ""}${isWrongSelected ? " ahd-quiz__opt--wrong" : ""}`}
                   onClick={() => answer(opt)}
-                  disabled={revealed}
-                >
+                  disabled={revealed} variant="ghost">
                   {opt}
-                </button>
+                </Button>
               );
             })}
           </div>
           {revealed && (
-            <button type="button" className="ahd-quiz__next" onClick={nextQuestion}>
+            <Button type="button" className="ahd-quiz__next" onClick={nextQuestion} variant="ghost">
               {quizIdx + 1 < questions.length ? "السؤال التالي" : "عرض النتيجة"}
-            </button>
+            </Button>
           )}
         </div>
       )}

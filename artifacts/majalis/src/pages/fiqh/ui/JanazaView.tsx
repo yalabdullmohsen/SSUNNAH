@@ -7,6 +7,7 @@ import { SectionIcon } from "@/components/ui/SectionIcon";
 import "@/styles/pages/janaza.css";
 import { UtilityScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
+import { Button } from "@/components/ui/button";
 
 
 type JanazaTab = "ghusl" | "takfin" | "salah" | "dafn" | "aadab";
@@ -213,11 +214,12 @@ export default function JanazaPage() {
 
         <div className="jnz-tabs" aria-label="أقسام الجنائز" role="tablist">
           {TABS.map((t) => (
-            <button
+            <Button
               key={t.id}
               id={`jnz-tab-${t.id}`}
               type="button"
               role="tab"
+              variant="ghost"
               className={`jnz-tab${tab === t.id ? " jnz-tab--active" : ""}`}
               onClick={() => setTab(t.id)}
               aria-selected={tab === t.id}
@@ -225,7 +227,7 @@ export default function JanazaPage() {
             >
               <span className="jnz-tab__icon"><SectionIcon name={t.icon} size={24} /></span>
               <span className="jnz-tab__label">{t.label}</span>
-            </button>
+            </Button>
           ))}
         </div>
       </section>

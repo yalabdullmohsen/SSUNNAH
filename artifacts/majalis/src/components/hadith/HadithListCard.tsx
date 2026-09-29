@@ -1,5 +1,6 @@
 import { memo, type ReactNode } from "react";
 import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import "@/styles/components/hadith-list-card.css";
 
@@ -69,14 +70,15 @@ export const HadithListCard = memo(function HadithListCard({
   }
 
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
       className={cls}
       data-testid={testId}
       onClick={onClick}
       aria-label={`${title} — حديث ${number}`}
     >
       {body}
-    </button>
+    </Button>
   );
 });

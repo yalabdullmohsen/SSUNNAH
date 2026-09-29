@@ -17,6 +17,7 @@ import "@/styles/pages/arbaeen-nawawi.css";
 import "@/styles/pages/hadith-design-language.css";
 import "@/styles/components/hadith-list-card.css";
 
+import { Button } from "@/components/ui/button";
 type Category = "الكل" | "العقيدة والأصول" | "الأخلاق والمعاملات" | "الزهد والآخرة";
 
 const CATEGORY_MAP: Record<number, Category> = {
@@ -165,20 +166,19 @@ export default function ArbaeenNawawiPage() {
             <AppBackButton variant="inline" fallbackHref="/hadith" label="رجوع" />
             <h1 className="an-toolbar__title">الأربعون النووية</h1>
             <div className="an-toolbar__menu">
-              <button
+              <Button
                 type="button"
                 className="an-toolbar__more"
                 aria-label="المزيد"
                 aria-expanded={menuOpen}
-                onClick={() => setMenuOpen((v) => !v)}
-              >
+                onClick={() => setMenuOpen((v) => !v)} variant="ghost">
                 <MoreHorizontal size={18} strokeWidth={2} aria-hidden />
-              </button>
+              </Button>
               {menuOpen ? (
                 <div className="an-toolbar__dropdown" role="menu">
-                  <button type="button" role="menuitem" onClick={resetProgress}>
+                  <Button type="button" role="menuitem" onClick={resetProgress} variant="ghost">
                     إعادة تعيين التقدم
-                  </button>
+                  </Button>
                 </div>
               ) : null}
             </div>
@@ -221,26 +221,24 @@ export default function ArbaeenNawawiPage() {
 
             <div className="an-cats" role="tablist" aria-label="تصفية الأربعين النووية">
               {PRIMARY_CATS.map((c) => (
-                <button
+                <Button
                   key={c}
                   role="tab"
                   type="button"
                   className={`an-cat${category === c ? " an-cat--active" : ""}`}
                   onClick={() => setCategory(c)}
-                  aria-selected={category === c}
-                >
+                  aria-selected={category === c} variant="ghost">
                   {c}
-                </button>
+                </Button>
               ))}
-              <button
+              <Button
                 type="button"
                 className={`an-cat an-cat--more${MORE_CATS.includes(category) ? " an-cat--active" : ""}`}
                 onClick={() => setMoreFiltersOpen(true)}
-                aria-haspopup="dialog"
-              >
+                aria-haspopup="dialog" variant="ghost">
                 المزيد
                 {MORE_CATS.includes(category) ? " · 1" : ""}
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -251,32 +249,30 @@ export default function ArbaeenNawawiPage() {
               aria-modal="true"
               aria-label="تصنيفات إضافية"
             >
-              <button
+              <Button
                 type="button"
                 className="an-filter-sheet__backdrop"
                 aria-label="إغلاق"
-                onClick={() => setMoreFiltersOpen(false)}
-              />
+                onClick={() => setMoreFiltersOpen(false)} variant="ghost" />
               <div className="an-filter-sheet__panel">
                 <header className="an-filter-sheet__head">
                   <h2>التصنيفات</h2>
-                  <button type="button" onClick={() => setMoreFiltersOpen(false)}>
+                  <Button type="button" onClick={() => setMoreFiltersOpen(false)} variant="ghost">
                     إغلاق
-                  </button>
+                  </Button>
                 </header>
                 <div className="an-filter-sheet__list">
                   {[...PRIMARY_CATS, ...MORE_CATS].map((c) => (
-                    <button
+                    <Button
                       key={c}
                       type="button"
                       className={`an-cat${category === c ? " an-cat--active" : ""}`}
                       onClick={() => {
                         setCategory(c);
                         setMoreFiltersOpen(false);
-                      }}
-                    >
+                      }} variant="ghost">
                       {c}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>

@@ -18,6 +18,8 @@ import {
 import "@/styles/components/muezzin-picker.css";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 function previewSourceId(muezzinId: string): string {
   return `muezzin-picker-${muezzinId}`;
 }
@@ -190,27 +192,23 @@ export function MuezzinPicker({ selected, onSelect, onClose, requireFajr = false
         key={m.id}
         className={`mzp-item${isSelected ? " mzp-item--selected" : ""}${offline ? " mzp-item--offline" : ""}`}
       >
-        <button
+        <IconButton
           type="button"
           onClick={() => handlePreview(m)}
-          className={`mzp-preview-btn${isPlaying ? " mzp-preview-btn--playing" : ""}`}
-          aria-label={isPlaying ? "إيقاف الاستماع" : "استماع للتجربة"}
-        >
+          className={`mzp-preview-btn${isPlaying ? " mzp-preview-btn--playing" : ""}`} label={isPlaying ? "إيقاف الاستماع" : "استماع للتجربة"}>
           <span className="mzp-preview-btn__icon" aria-hidden="true">
             {isPlaying ? "■" : "▶"}
           </span>
           <span className="mzp-preview-btn__label">
             {isPlaying ? "إيقاف" : "تجربة الصوت"}
           </span>
-        </button>
+        </IconButton>
 
-        <button
+        <Button
           type="button"
           className="mzp-info"
           onClick={() => handleSelect(m.id)}
-          aria-pressed={isSelected}
-          aria-label={`اختيار ${m.name}`}
-        >
+          aria-pressed={isSelected} aria-label={`اختيار ${m.name}`} variant="ghost">
           <span className="mzp-name">
             {m.name}
             {offline ? <span className="mzp-offline-badge">أوفلاين</span> : null}
@@ -219,17 +217,15 @@ export function MuezzinPicker({ selected, onSelect, onClose, requireFajr = false
             {meta ? `${meta} · ` : ""}
             <span className="mzp-style-badge">{m.style}</span>
           </span>
-        </button>
+        </Button>
 
-        <button
+        <IconButton
           type="button"
           className={`mzp-radio${isSelected ? " mzp-radio--selected" : ""}`}
           onClick={() => handleSelect(m.id)}
-          aria-label={isSelected ? `مختار: ${m.name}` : `اختيار ${m.name}`}
-          aria-pressed={isSelected}
-        >
+          aria-pressed={isSelected} label={isSelected ? `مختار: ${m.name}` : `اختيار ${m.name}`}>
           {isSelected ? <span className="mzp-check">✓</span> : null}
-        </button>
+        </IconButton>
       </div>
     );
   }
@@ -306,9 +302,9 @@ export function MuezzinPicker({ selected, onSelect, onClose, requireFajr = false
         </div>
 
         <div className="mzp-footer">
-          <button type="button" className="mzp-close" onClick={onClose}>
+          <Button type="button" className="mzp-close" onClick={onClose} variant="secondary">
             إغلاق
-          </button>
+          </Button>
         </div>
       </div>
     </div>

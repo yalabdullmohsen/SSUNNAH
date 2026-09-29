@@ -19,6 +19,7 @@ import {
 } from "@/components/knowledge";
 import "@/styles/knowledge-experience.css";
 
+import { Button } from "@/components/ui/button";
 const PHASES: { id: string; num: number; title: string; year: string; Icon: LucideIcon; color: string; desc: string; topics: string[]; keyEvents: string[] }[] = [
   {
     id: "lineage-birth",
@@ -354,14 +355,13 @@ export default function SeerahPage() {
                 {EMPTY.search}
               </p>
             ) : PHASES.map(phase => (
-              <button
+              <Button
                 key={phase.id} id={phase.id}
                 type="button"
                 className={`seerah-timeline__item seerah-phase--${phase.id}${activeId === phase.id ? " seerah-timeline__item--active" : ""}`}
                 onClick={() => goTo(phase.id)}
                 aria-current={activeId === phase.id ? "true" : undefined}
-                aria-label={`المرحلة ${phase.num}: ${phase.title}`}
-              >
+                aria-label={`المرحلة ${phase.num}: ${phase.title}`} variant="ghost">
                 <span className="seerah-timeline__dot">
                   {phase.num}
                 </span>
@@ -369,7 +369,7 @@ export default function SeerahPage() {
                   <span className="seerah-timeline__title">{phase.title}</span>
                   <span className="seerah-timeline__year">{phase.year.split("—")[0].trim()}</span>
                 </span>
-              </button>
+              </Button>
             ))}
           </nav>
 
@@ -413,22 +413,20 @@ export default function SeerahPage() {
             {/* Navigation */}
             <div className="seerah-panel__nav">
               {activeIdx > 0 && (
-                <button
+                <Button
                   type="button"
                   className="seerah-panel__nav-btn"
-                  onClick={() => goTo(PHASES[activeIdx - 1].id)}
-                >
+                  onClick={() => goTo(PHASES[activeIdx - 1].id)} variant="ghost">
                   ← {PHASES[activeIdx - 1].title}
-                </button>
+                </Button>
               )}
               {activeIdx < PHASES.length - 1 && (
-                <button
+                <Button
                   type="button"
                   className="seerah-panel__nav-btn seerah-panel__nav-btn--next"
-                  onClick={() => goTo(PHASES[activeIdx + 1].id)}
-                >
+                  onClick={() => goTo(PHASES[activeIdx + 1].id)} variant="ghost">
                   {PHASES[activeIdx + 1].title} →
-                </button>
+                </Button>
               )}
             </div>
           </div>

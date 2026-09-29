@@ -23,6 +23,7 @@ import { FiqhRelatedIssues } from "@/components/fiqh/FiqhRelatedIssues";
 import { FiqhReportError } from "@/components/fiqh/FiqhReportError";
 import { isSeverelyIncompleteLesson } from "@/lib/fiqh/fiqhNormalize";
 import { relatedFiqhIssues, fiqhDoorBackHref } from "@/lib/fiqh/fiqhRelated";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/fiqh-hub.css";
 import { DetailScreen } from "@/components/design-system/screens";
 import { AppBackButton } from "@/components/common/AppBackButton";
@@ -259,14 +260,15 @@ export default function FiqhLessonPage() {
         {sections
           .filter((s) => s.show)
           .map((s) => (
-            <button
+            <Button
               key={s.id}
               type="button"
+              variant="ghost"
               className={cn("fiqh-lux-section-nav__chip", activeSection === s.id && "is-active")}
               onClick={() => scrollToSection(s.id)}
             >
               {s.label}
-            </button>
+            </Button>
           ))}
       </nav>
 

@@ -7,6 +7,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import type { FiqhGuideSection } from "@/lib/fiqh-guides/types";
 import "@/styles/pages/fiqh-guide.css";
 import { UtilityScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 import { EMPTY } from "@/lib/ui-copy";
 
 type Props = { section: FiqhGuideSection };
@@ -63,16 +64,18 @@ export function FiqhGuidePage({ section }: Props) {
 
       <div className="fg-tabs" role="tablist" aria-label={`أبواب ${section.title}`}>
         {section.tabs.map((tab) => (
-          <button
+          <Button
             key={tab.id}
             type="button"
+            variant="ghost"
+            size="small"
             role="tab"
             aria-selected={tab.id === activeTab?.id}
             className={`fg-tab${tab.id === activeTab?.id ? " fg-tab--active" : ""}`}
             onClick={() => setTabId(tab.id)}
           >
             {tab.label}
-          </button>
+          </Button>
         ))}
       </div>
 

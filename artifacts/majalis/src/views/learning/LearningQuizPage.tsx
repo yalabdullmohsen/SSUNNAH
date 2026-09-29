@@ -11,6 +11,7 @@ import {
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/learning-quiz.css";
 
+import { Button } from "@/components/ui/button";
 type Phase = "loading" | "playing" | "done" | "error";
 
 // ── Ring Progress ─────────────────────────────────────────────────────────────
@@ -114,9 +115,9 @@ function DoneScreen({
       )}
 
       <div className="lqp2-done__actions">
-        <button type="button" onClick={onRetry} className="lqp2-btn lqp2-btn--outline">
+        <Button type="button" onClick={onRetry} className="lqp2-btn lqp2-btn--outline" variant="outline">
           <RotateCw size={15} aria-hidden="true" /> إعادة الاختبار
-        </button>
+        </Button>
         <Link href={`/learning/paths/${slug}`} className="lqp2-btn lqp2-btn--primary">
           <ArrowRight size={15} aria-hidden="true" /> العودة للمسار
         </Link>
@@ -263,19 +264,18 @@ export default function LearningQuizPage() {
       {current.question_type === "multiple_choice" && current.options && (
         <div className="lqp2-mc-grid" role="radiogroup" aria-label="اختر الإجابة">
           {current.options.map((opt, i) => (
-            <button
+            <Button
               key={opt}
               type="button"
               role="radio"
               aria-checked={selected === i}
               onClick={() => setSelected(i)}
-              className={`lqp2-mc-option${selected === i ? " lqp2-mc-option--selected" : ""}`}
-            >
+              className={`lqp2-mc-option${selected === i ? " lqp2-mc-option--selected" : ""}`} variant="ghost">
               <span className="lqp2-mc-letter" aria-hidden="true">
                 {["أ", "ب", "ج", "د"][i] ?? String(i + 1)}
               </span>
               <span>{opt}</span>
-            </button>
+            </Button>
           ))}
         </div>
       )}
@@ -284,16 +284,15 @@ export default function LearningQuizPage() {
       {current.question_type === "true_false" && (
         <div className="lqp2-tf-row" role="radiogroup" aria-label="اختر الإجابة">
           {[{ label: "صح", val: true }, { label: "خطأ", val: false }].map(({ label, val }) => (
-            <button
+            <Button
               key={label}
               type="button"
               role="radio"
               aria-checked={selected === val}
               onClick={() => setSelected(val)}
-              className={`lqp2-tf-btn${selected === val ? " lqp2-tf-btn--selected" : ""}`}
-            >
+              className={`lqp2-tf-btn${selected === val ? " lqp2-tf-btn--selected" : ""}`} variant="ghost">
               {label}
-            </button>
+            </Button>
           ))}
         </div>
       )}
@@ -311,16 +310,15 @@ export default function LearningQuizPage() {
         />
       )}
 
-      <button
+      <Button
         type="button"
         onClick={goNext}
         disabled={isNextDisabled}
         className="lqp2-btn lqp2-btn--primary lqp2-next-btn"
-        aria-disabled={isNextDisabled}
-      >
+        aria-disabled={isNextDisabled} variant="primary">
         {index + 1 >= total ? "إنهاء الاختبار" : "التالي"}
         <ArrowRight size={15} aria-hidden="true" />
-      </button>
+      </Button>
 
       <div className="twh-share">
         <ShareButtons title="اختبار المسار التعليمي — سُنّة" url="https://www.ssunnah.com/learning/quiz" />

@@ -13,7 +13,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import "@/styles/pages/learning-paths.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
-
+import { Button } from "@/components/ui/button";
 const CATEGORY_META: Record<string, { label: string; Icon: LucideIcon }> = {
   aqeedah:  { label: "العقيدة",  Icon: Moon       },
   fiqh:     { label: "الفقه",    Icon: Scale      },
@@ -150,24 +150,24 @@ export default function LearningPathsPage() {
 
       {/* Category filter */}
       <div className="lpp-cat-bar">
-        <button
+        <Button
           type="button"
           className={activeCategory === ALL_CAT ? "lpp-cat-btn lpp-cat-btn--active" : "lpp-cat-btn"}
           onClick={() => setActiveCategory(ALL_CAT)}
-        >
+         variant="ghost">
           الكل
-        </button>
+        </Button>
         {allCategories.map((cat) => {
           const meta = CATEGORY_META[cat] ?? CATEGORY_META.other;
           return (
-            <button
+            <Button
               key={cat}
               type="button"
               className={activeCategory === cat ? "lpp-cat-btn lpp-cat-btn--active" : "lpp-cat-btn"}
               onClick={() => setActiveCategory(cat)}
-            >
+             variant="ghost">
               {(() => { const I = meta.Icon; return <I size={13} className="inline ms-1" />; })()} {meta.label}
-            </button>
+            </Button>
           );
         })}
       </div>

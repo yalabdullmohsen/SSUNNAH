@@ -30,6 +30,8 @@ import { RANKS } from "@/lib/prayer-ranks-data";
 import "@/styles/pages/prayer-times.css";
 import "@/styles/pages/worship-history-v2.css";
 
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 const PrayerAnnualTimetable = lazy(() =>
   import("@/components/prayer/PrayerAnnualTimetable").then((m) => ({
     default: m.PrayerAnnualTimetable,
@@ -225,24 +227,23 @@ export default function PrayerTimesPage() {
 
   const toolsBar = (
     <div className="pts-toolbar" role="group" aria-label="أدوات الصفحة">
-      <button
+      <Button
         type="button"
         className="pts-location pts-location--chip"
         onClick={() => setGovOpen((v) => !v)}
         aria-expanded={govOpen}
-        aria-controls="pts-gov-panel"
-      >
+        aria-controls="pts-gov-panel" variant="ghost">
         <MapPin size={15} strokeWidth={2} aria-hidden="true" />
         <span>{locLabel}</span>
-      </button>
+      </Button>
       <Link href="/adhan-settings" className="pts-settings" aria-label="إعدادات الصلاة والأذان">
         <Settings2 size={16} strokeWidth={2} aria-hidden="true" />
         <span>إعدادات</span>
       </Link>
-      <button type="button" className="pts-back" onClick={handleBack} aria-label="رجوع">
+      <IconButton type="button" className="pts-back" onClick={handleBack} label="رجوع">
         <ArrowRight size={16} strokeWidth={2.2} aria-hidden="true" />
         <span>رجوع</span>
-      </button>
+      </IconButton>
     </div>
   );
 
@@ -354,18 +355,17 @@ export default function PrayerTimesPage() {
           </p>
         )}
         {!govOpen && (
-          <button
+          <Button
             type="button"
             className="pts-retry"
             onClick={() => setGovOpen(true)}
-            aria-label="اختيار المدينة"
-          >
+            aria-label="اختيار المدينة" variant="primary">
             اختيار المدينة
-          </button>
+          </Button>
         )}
-        <button type="button" className="pts-retry pts-retry--ghost" onClick={reload} aria-label="إعادة محاولة تحميل المواقيت">
+        <Button type="button" className="pts-retry pts-retry--ghost" onClick={reload} aria-label="إعادة محاولة تحميل المواقيت" variant="ghost">
           إعادة المحاولة
-        </button>
+        </Button>
         {shortcuts}
       </div>
     );
@@ -450,9 +450,9 @@ export default function PrayerTimesPage() {
             <p className="pts-hero__hint">حتى مرور ٣٥ دقيقة ثم الانتقال للصلاة التالية</p>
           )}
           {pinnedKey && pinnedKey !== countdown.next.key && (
-            <button type="button" className="pts-hero__reset" onClick={() => setPinnedKey(null)}>
+            <Button type="button" className="pts-hero__reset" onClick={() => setPinnedKey(null)} variant="ghost">
               العودة للصلاة القادمة
-            </button>
+            </Button>
           )}
         </div>
       </section>
@@ -480,14 +480,13 @@ export default function PrayerTimesPage() {
           ))}
         </ol>
         {RANKS.length > 2 && (
-          <button
+          <Button
             type="button"
             className="pts-ranks__toggle"
             onClick={() => setRanksOpen((v) => !v)}
-            aria-expanded={ranksOpen}
-          >
+            aria-expanded={ranksOpen} variant="ghost">
             {ranksOpen ? "طيّ القائمة" : "عرض الكل"}
-          </button>
+          </Button>
         )}
       </section>
 
@@ -499,7 +498,7 @@ export default function PrayerTimesPage() {
             const past = isPast(p);
             const status = rowStatusLabel(p.key, countdown.next?.key, inGrace, ranKey, past);
             return (
-              <button
+              <Button
                 key={p.key}
                 type="button"
                 className={[
@@ -510,8 +509,7 @@ export default function PrayerTimesPage() {
                 ].filter(Boolean).join(" ")}
                 onClick={() => setPinnedKey(p.key === pinnedKey ? null : p.key)}
                 aria-pressed={pinned}
-                aria-label={`${PRAYER_AR[p.key] ?? p.name}، ${displayTime12(p)}، ${status}`}
-              >
+                aria-label={`${PRAYER_AR[p.key] ?? p.name}، ${displayTime12(p)}، ${status}`} variant="ghost">
                 <span className="pts-row__meta">
                   <span className="pts-row__name">{PRAYER_AR[p.key] ?? p.name}</span>
                   <span className="pts-row__status">{status}</span>
@@ -520,7 +518,7 @@ export default function PrayerTimesPage() {
                   <span className="pts-row__mark" aria-hidden="true" />
                 ) : null}
                 <span className="pts-row__time" dir="ltr">{displayTime12(p)}</span>
-              </button>
+              </Button>
             );
           })}
         </nav>

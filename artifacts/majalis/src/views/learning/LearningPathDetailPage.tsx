@@ -36,6 +36,7 @@ import {
   BarChart3, UserPlus, Award, type LucideProps,
 } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 type LucideIcon = React.ComponentType<Omit<LucideProps, "ref">>;
 
 const ITEM_ICONS: Record<string, LucideIcon> = {
@@ -94,7 +95,7 @@ function CourseCard({
 
   return (
     <div className={`lpd2-course-card${unlocked ? "" : " lpd2-course-card--locked"}`}>
-      <button type="button" className="lpd2-course-card__head" onClick={() => unlocked && setOpen((v) => !v)} disabled={!unlocked}>
+      <Button type="button" className="lpd2-course-card__head" onClick={() => unlocked && setOpen((v) => !v)} disabled={!unlocked} variant="ghost">
         <div className="lpd2-course-card__head-main">
           {!unlocked ? <Lock size={16} aria-hidden="true" /> : complete ? <CheckCircle2 size={16} className="lpd2-module__check" aria-hidden="true" /> : null}
           <span className="lpd2-course-card__title">{course.title}</span>
@@ -104,7 +105,7 @@ function CourseCard({
           <span>{LEVEL_LABEL[course.level] ?? course.level}</span>
           {unlocked && <ChevronDown size={16} className={open ? "lpd2-chevron--open" : ""} aria-hidden="true" />}
         </div>
-      </button>
+      </Button>
 
       {unlocked && (
         <div className="lpd2-course-card__bar" aria-hidden="true">
@@ -150,13 +151,13 @@ function CourseCard({
                       ) : !userId ? (
                         <Link href="/login" className="lpd2-complete-btn">سجّل الدخول</Link>
                       ) : item.itemType === "assessment" && item.assessmentId ? (
-                        <button type="button" onClick={() => onStartAssessment(item.assessmentId!, item.id)} className="lpd2-quiz-btn">
+                        <Button type="button" onClick={() => onStartAssessment(item.assessmentId!, item.id)} className="lpd2-quiz-btn" variant="primary">
                           ابدأ الاختبار
-                        </button>
+                        </Button>
                       ) : (
-                        <button type="button" onClick={() => onCompleteItem(item.id, item.completionMethod)} className="lpd2-complete-btn">
+                        <Button type="button" onClick={() => onCompleteItem(item.id, item.completionMethod)} className="lpd2-complete-btn" variant="primary">
                           إكمال
-                        </button>
+                        </Button>
                       )}
                     </div>
                   </div>
@@ -350,10 +351,10 @@ export default function LearningPathDetailPage() {
       )}
 
       {!enrolled && user?.id && (
-        <button type="button" onClick={handleEnroll} disabled={enrolling} className="lpd2-enroll-btn" aria-busy={enrolling}>
+        <Button type="button" onClick={handleEnroll} disabled={enrolling} className="lpd2-enroll-btn" aria-busy={enrolling} variant="primary" loading={enrolling}>
           <UserPlus size={16} aria-hidden="true" />
           {enrolling ? "تسجيل…" : "سجّل في المسار مجاناً"}
-        </button>
+        </Button>
       )}
       {!user?.id && (
         <Link href="/login" className="lpd2-enroll-btn">
@@ -367,7 +368,7 @@ export default function LearningPathDetailPage() {
         </Link>
       )}
       {!certificateCode && certificateEligible && user?.id && (
-        <button
+        <Button
           type="button"
           className="lpd2-enroll-btn lpd2-enroll-btn--cert"
           disabled={issuingCert}
@@ -378,10 +379,9 @@ export default function LearningPathDetailPage() {
             const result = await issueCertificate(user.id, { id: path.id, title: path.title, level: path.level }, totalSessions);
             setIssuingCert(false);
             if (result) setCertificateCode(result.certificateCode);
-          }}
-        >
+          }} variant="primary" loading={issuingCert}>
           <Award size={16} aria-hidden="true" /> {issuingCert ? "إصدار…" : "احصل على شهادتك"}
-        </button>
+        </Button>
       )}
 
       <h2 className="lpd2-section-title">خطة المسار</h2>

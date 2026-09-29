@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 import type { KuwaitLessonRecord } from "@/lib/kuwait-lessons";
 import { formatSheikhName } from "@/lib/sheikh-name";
 import { isOnlineVenue } from "@/lib/lessons/lessonNormalize";
@@ -94,15 +95,16 @@ export function LessonFilters({ filters, onChange, searchSlot, filterSlot }: Pro
       <div className="lesson-filters__bar" role="toolbar" aria-label="تصفية سريعة">
         <div className="lesson-filters__chips filter-chips" data-lesson-filter-rail="1">
           {SCHEDULE_CHIPS.map((chip) => (
-            <button
+            <Button
               key={chip.id}
               type="button"
+              variant="ghost"
               className={`filter-chips__chip${filters.schedule === chip.id ? " is-active" : ""}`}
               aria-pressed={filters.schedule === chip.id}
               onClick={() => onChange({ ...filters, schedule: chip.id })}
             >
               <span className="filter-chips__label">{chip.label}</span>
-            </button>
+            </Button>
           ))}
         </div>
         {hasTools ? (

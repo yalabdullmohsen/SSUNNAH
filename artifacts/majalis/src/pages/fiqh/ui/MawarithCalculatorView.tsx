@@ -23,6 +23,8 @@ import { UtilityScreen } from "@/components/design-system/screens";
 import { ActionButton } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 type WizardStep = "heirs" | "estate" | "result";
 
 const HEIR_LABELS: Record<HeirKey, string> = {
@@ -66,9 +68,9 @@ function CounterRow({ label, value, onChange, max = 20 }: { label: string; value
     <div className="mwc-counter-row">
       <span className="mwc-counter-row__label">{label}</span>
       <div className="mwc-counter-row__control">
-        <button type="button" className="mwc-counter-row__btn" onClick={() => onChange(Math.max(0, value - 1))} disabled={value <= 0} aria-label={`إنقاص عدد ${label}`}>−</button>
+        <IconButton type="button" className="mwc-counter-row__btn" onClick={() => onChange(Math.max(0, value - 1))} disabled={value <= 0} label={`إنقاص عدد ${label}`}>−</IconButton>
         <span className="mwc-counter-row__value">{value}</span>
-        <button type="button" className="mwc-counter-row__btn" onClick={() => onChange(Math.min(max, value + 1))} disabled={value >= max} aria-label={`زيادة عدد ${label}`}>+</button>
+        <IconButton type="button" className="mwc-counter-row__btn" onClick={() => onChange(Math.min(max, value + 1))} disabled={value >= max} label={`زيادة عدد ${label}`}>+</IconButton>
       </div>
     </div>
   );
@@ -213,9 +215,9 @@ export default function MawarithCalculatorPage() {
             <span className="mwc-presets__label">أمثلة جاهزة للتجربة:</span>
             <div className="mwc-presets__scroll">
               {INHERITANCE_PRESETS.map((p) => (
-                <button key={p.id} type="button" className="mwc-preset-chip" onClick={() => applyPreset(p)} title={p.description}>
+                <Button key={p.id} type="button" className="mwc-preset-chip" onClick={() => applyPreset(p)} title={p.description} variant="ghost">
                   {p.title}
-                </button>
+                </Button>
               ))}
             </div>
           </div>
@@ -226,8 +228,8 @@ export default function MawarithCalculatorPage() {
               <ul className="mwc-saved__list">
                 {savedCases.map((c) => (
                   <li key={c.id} className="mwc-saved__item">
-                    <button type="button" className="mwc-saved__open" onClick={() => loadSavedCase(c)}>{c.title}</button>
-                    <button type="button" className="mwc-saved__delete" onClick={() => removeSavedCase(c.id)} aria-label={`حذف ${c.title}`}>✕</button>
+                    <Button type="button" className="mwc-saved__open" onClick={() => loadSavedCase(c)} variant="ghost">{c.title}</Button>
+                    <IconButton type="button" className="mwc-saved__delete" onClick={() => removeSavedCase(c.id)} label={`حذف ${c.title}`}>✕</IconButton>
                   </li>
                 ))}
               </ul>
@@ -237,23 +239,23 @@ export default function MawarithCalculatorPage() {
           <div className="lp-wizard__step">
             <h2 className="lp-wizard__step-title">الزوجية</h2>
             <div className="lp-wizard__options">
-              <button type="button" className={`lp-wizard__option${spouseType === "none" ? " lp-wizard__option--selected" : ""}`} onClick={() => setSpouseType("none")}>
+              <Button type="button" className={`lp-wizard__option${spouseType === "none" ? " lp-wizard__option--selected" : ""}`} onClick={() => setSpouseType("none")} variant="ghost">
                 <span className="lp-wizard__option-label">لا يوجد</span>
-              </button>
-              <button type="button" className={`lp-wizard__option${spouseType === "husband" ? " lp-wizard__option--selected" : ""}`} onClick={() => setSpouseType("husband")}>
+              </Button>
+              <Button type="button" className={`lp-wizard__option${spouseType === "husband" ? " lp-wizard__option--selected" : ""}`} onClick={() => setSpouseType("husband")} variant="ghost">
                 <span className="lp-wizard__option-label">زوج</span>
-              </button>
-              <button type="button" className={`lp-wizard__option${spouseType === "wife" ? " lp-wizard__option--selected" : ""}`} onClick={() => setSpouseType("wife")}>
+              </Button>
+              <Button type="button" className={`lp-wizard__option${spouseType === "wife" ? " lp-wizard__option--selected" : ""}`} onClick={() => setSpouseType("wife")} variant="ghost">
                 <span className="lp-wizard__option-label">زوجة/زوجات</span>
-              </button>
+              </Button>
             </div>
             {spouseType === "wife" && (
               <div className="mwc-counter-row">
                 <span className="mwc-counter-row__label">عدد الزوجات</span>
                 <div className="mwc-counter-row__control">
-                  <button type="button" className="mwc-counter-row__btn" onClick={() => setWifeCount((heirs.wife ?? 1) - 1)} disabled={(heirs.wife ?? 1) <= 1}>−</button>
+                  <IconButton type="button" className="mwc-counter-row__btn" onClick={() => setWifeCount((heirs.wife ?? 1) - 1)} disabled={(heirs.wife ?? 1) <= 1} label="إنقاص عدد الزوجات">−</IconButton>
                   <span className="mwc-counter-row__value">{heirs.wife ?? 1}</span>
-                  <button type="button" className="mwc-counter-row__btn" onClick={() => setWifeCount((heirs.wife ?? 1) + 1)} disabled={(heirs.wife ?? 1) >= 4}>+</button>
+                  <IconButton type="button" className="mwc-counter-row__btn" onClick={() => setWifeCount((heirs.wife ?? 1) + 1)} disabled={(heirs.wife ?? 1) >= 4} label="زيادة عدد الزوجات">+</IconButton>
                 </div>
               </div>
             )}
@@ -269,9 +271,9 @@ export default function MawarithCalculatorPage() {
           ))}
 
           <div className="lp-wizard__nav">
-            <button type="button" className="lp-wizard__next" disabled={totalHeirsCount === 0} onClick={() => setStep("estate")}>
+            <Button type="button" className="lp-wizard__next" disabled={totalHeirsCount === 0} onClick={() => setStep("estate")} variant="primary">
               التالي →
-            </button>
+            </Button>
           </div>
           {totalHeirsCount === 0 && <p className="mwc-hint">حدّد وارثًا واحدًا على الأقل للمتابعة.</p>}
         </>
@@ -303,11 +305,11 @@ export default function MawarithCalculatorPage() {
                     aria-label="قيمة الأصل"
                   />
                   {assets.length > 1 && (
-                    <button type="button" className="mwc-asset-row__remove" onClick={() => removeAsset(a.id)} aria-label="حذف الأصل">✕</button>
+                    <IconButton type="button" className="mwc-asset-row__remove" onClick={() => removeAsset(a.id)} label="حذف الأصل">✕</IconButton>
                   )}
                 </div>
               ))}
-              <button type="button" className="mwc-add-asset" onClick={addAsset}>+ إضافة أصل آخر</button>
+              <Button type="button" className="mwc-add-asset" onClick={addAsset} variant="ghost">+ إضافة أصل آخر</Button>
             </div>
 
             <div className="mwc-field">
@@ -329,9 +331,9 @@ export default function MawarithCalculatorPage() {
               </label>
             )}
 
-            <button type="button" className="mwc-advanced-toggle" onClick={() => setShowAdvanced((v) => !v)}>
+            <Button type="button" className="mwc-advanced-toggle" onClick={() => setShowAdvanced((v) => !v)} variant="ghost">
               {showAdvanced ? "إخفاء" : "عرض"} الخيارات الفقهية المتقدّمة (مسائل خلافية) ▾
-            </button>
+            </Button>
             {showAdvanced && (
               <div className="mwc-advanced">
                 <div className="mwc-field">
@@ -361,8 +363,8 @@ export default function MawarithCalculatorPage() {
           {calcError && <div className="mwc-error" role="alert">{calcError}</div>}
 
           <div className="lp-wizard__nav">
-            <button type="button" className="lp-wizard__back" onClick={() => setStep("heirs")}>← رجوع</button>
-            <button type="button" className="lp-wizard__next" onClick={runCalculation}>احسب النتيجة</button>
+            <Button type="button" className="lp-wizard__back" onClick={() => setStep("heirs")} variant="ghost">← رجوع</Button>
+            <Button type="button" className="lp-wizard__next" onClick={runCalculation} variant="primary">احسب النتيجة</Button>
           </div>
         </>
       )}
@@ -442,8 +444,8 @@ export default function MawarithCalculatorPage() {
 
           <div className="mwc-result-actions no-print">
             <ActionButton type="button" variant="secondary" onClick={() => window.print()}>طباعة / PDF</ActionButton>
-            <button type="button" className="lp-wizard__back" onClick={() => setStep("estate")}>← تعديل البيانات</button>
-            <button type="button" className="lp-wizard__back" onClick={resetAll}>مسألة جديدة</button>
+            <Button type="button" className="lp-wizard__back" onClick={() => setStep("estate")} variant="ghost">← تعديل البيانات</Button>
+            <Button type="button" className="lp-wizard__back" onClick={resetAll} variant="ghost">مسألة جديدة</Button>
           </div>
 
           <div className="mwc-save-row no-print">
@@ -455,7 +457,7 @@ export default function MawarithCalculatorPage() {
               className="mwc-save-row__input"
               aria-label="اسم المسألة للحفظ"
             />
-            <button type="button" className="mwc-save-row__btn" disabled={!saveTitle.trim()} onClick={handleSaveCurrent}>حفظ</button>
+            <Button type="button" className="mwc-save-row__btn" disabled={!saveTitle.trim()} onClick={handleSaveCurrent} variant="primary">حفظ</Button>
           </div>
 
           <div className="maw-disclaimer no-print" role="note">

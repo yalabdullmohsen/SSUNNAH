@@ -50,6 +50,7 @@ import { useDebouncedValue } from "@/hooks/useDebouncedValue";
 import { isWomenFriendlyLesson } from "@/lib/lesson-women-attendance";
 import { SITE_URL } from "@/lib/site-config";
 
+import { Button } from "@/components/ui/button";
 type TabId = "all" | "men" | "women" | "courses";
 
 /** أول دفعة بطاقات — الباقي بـ «عرض المزيد» لتجنّب رسم مئات البطاقات دفعة واحدة */
@@ -553,43 +554,40 @@ export default function LessonsPage({
                     dir="rtl"
                     enterKeyHint="search"
                   />
-                  <button
+                  <Button
                     type="button"
                     className="lesson-filters__icon-btn"
                     aria-label="إغلاق البحث"
                     onClick={() => {
                       setSearchDraft("");
                       setSearchOpen(false);
-                    }}
-                  >
+                    }} variant="ghost">
                     <X size={16} strokeWidth={2} aria-hidden="true" />
-                  </button>
+                  </Button>
                 </label>
               ) : (
-                <button
+                <Button
                   type="button"
                   className="lesson-filters__icon-btn"
                   aria-label="بحث"
-                  onClick={() => setSearchOpen(true)}
-                >
+                  onClick={() => setSearchOpen(true)} variant="ghost">
                   <Search size={16} strokeWidth={2} aria-hidden="true" />
-                </button>
+                </Button>
               )
             }
             filterSlot={
-              <button
+              <Button
                 type="button"
                 className="lesson-filters__icon-btn"
                 aria-label="تصفية"
                 aria-expanded={filtersOpen}
                 aria-haspopup="dialog"
-                onClick={() => setFiltersOpen(true)}
-              >
+                onClick={() => setFiltersOpen(true)} variant="ghost">
                 <SlidersHorizontal size={16} strokeWidth={2} aria-hidden="true" />
                 {activeFilterCount > 0 ? (
                   <span className="lesson-filters__badge">{activeFilterCount}</span>
                 ) : null}
-              </button>
+              </Button>
             }
           />
           <ActiveFilters
@@ -632,15 +630,14 @@ export default function LessonsPage({
                     )}
                     {hasMoreLessons ? (
                       <div className="lessons-v2-more">
-                        <button
+                        <Button
                           type="button"
                           className="mj-btn mj-btn--ghost"
                           onClick={() =>
                             setVisibleCount((n) => Math.min(n + LESSONS_PAGE_SIZE, listLessons.length))
-                          }
-                        >
+                          } variant="ghost">
                           عرض المزيد ({listLessons.length - visibleCount})
-                        </button>
+                        </Button>
                       </div>
                     ) : null}
                   </>

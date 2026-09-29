@@ -10,7 +10,7 @@ import {
 import { getActivePrayerLocation } from "@/lib/prayer-location-prefs";
 import { toArabicIndicDigits } from "@/lib/numerals";
 import { STATUS } from "@/lib/ui-copy";
-
+import { Button } from "@/components/ui/button";
 const MONTHS_AR = [
   "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو",
   "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر",
@@ -92,25 +92,25 @@ export function PrayerAnnualTimetable() {
             </select>
           </label>
         )}
-        <button
+        <Button
           type="button"
           className="pts-annual__gen"
           onClick={() => void generate()}
           disabled={busy}
           aria-busy={busy}
           aria-label={busy ? "تحديث الجدول" : "توليد الجدول"}
-        >
+         variant="primary" loading={busy}>
           توليد الجدول
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
           className="pts-annual__export"
           onClick={exportCsv}
           disabled={!rows.length}
-        >
+         variant="secondary">
           <Download size={14} aria-hidden />
           تصدير CSV
-        </button>
+        </Button>
       </div>
 
       {error && <p className="pts-loc__err" role="alert">{error}</p>}

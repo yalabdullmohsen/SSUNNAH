@@ -22,6 +22,7 @@ import { KUWAIT_GOVERNORATES, setSelectedGovernorate } from "@/lib/prayer-kuwait
 import { suggestMethodForRegion } from "@/lib/prayer-calc-prefs";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 
+import { Button } from "@/components/ui/button";
 type Props = {
   onChanged: (loc: PrayerActiveLocation) => void;
 };
@@ -133,33 +134,31 @@ export function PrayerLocationPicker({ onChanged }: Props) {
       </p>
 
       <div className="pts-loc__modes">
-        <button
+        <Button
           type="button"
           className="pts-loc__gps"
           onClick={useGps}
           disabled={gpsBusy}
           aria-busy={gpsBusy}
-          aria-label={gpsBusy ? "تحديث الموقع" : "استخدم موقعي"}
-        >
+          aria-label={gpsBusy ? "تحديث الموقع" : "استخدم موقعي"} variant="secondary" loading={gpsBusy}>
           <Crosshair size={14} aria-hidden />
           استخدم موقعي
-        </button>
+        </Button>
         {gpsError && <p className="pts-loc__err" role="alert">{gpsError}</p>}
       </div>
 
       <p className="pts-loc__section">اختصارات الكويت</p>
       <div className="pts-gov" role="tablist" aria-label="محافظات الكويت">
         {KUWAIT_GOVERNORATES.map((g) => (
-          <button
+          <Button
             key={g.id}
             type="button"
             role="tab"
             className={`pts-gov__chip${loc.kuwaitGovId === g.id ? " pts-gov__chip--active" : ""}`}
             onClick={() => applyKuwaitGov(g.id)}
-            aria-selected={loc.kuwaitGovId === g.id}
-          >
+            aria-selected={loc.kuwaitGovId === g.id} variant="ghost">
             {g.name}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -215,14 +214,13 @@ export function PrayerLocationPicker({ onChanged }: Props) {
       <ul className="pts-loc__hits" role="listbox" aria-label="نتائج المدن">
         {hits.map((c) => (
           <li key={c.id}>
-            <button
+            <Button
               type="button"
               className={`pts-loc__hit${loc.cityId === c.id ? " is-active" : ""}`}
-              onClick={() => applyCity(c)}
-            >
+              onClick={() => applyCity(c)} variant="ghost">
               <span>{formatCityLabel(c)}</span>
               <span className="pts-loc__hit-meta">{c.timeZone}</span>
-            </button>
+            </Button>
           </li>
         ))}
         {ready && hits.length === 0 && (

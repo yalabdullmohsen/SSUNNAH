@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/ui-common";
 import { PageShell } from "@/components/layout/PageShell";
 import { UtilityScreen } from "@/components/design-system/screens";
 import { ActionButton } from "@/components/design-system";
+import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/AuthProvider";
 import { TasbeehCounter } from "@/components/reading/TasbeehCounter";
 import { setTaskProgress } from "@/lib/daily-progress";
@@ -170,10 +171,11 @@ export default function TasbihPage() {
         {items.map((item) => {
           const s = computeTasbeehStats(item);
           return (
-            <button
+            <Button
               key={item.id}
               type="button"
               role="tab"
+              variant="ghost"
               aria-selected={item.id === active?.id}
               className={`tasbih-wird-pill${item.id === active?.id ? " is-active" : ""}`}
               onClick={() => setActiveId(item.id)}
@@ -182,7 +184,7 @@ export default function TasbihPage() {
               {s.today > 0 && (
                 <span className="tasbih-pill-badge">{s.today}</span>
               )}
-            </button>
+            </Button>
           );
         })}
       </div>

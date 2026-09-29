@@ -45,6 +45,7 @@ import "@/styles/pages/not-found.css";
 import "@/styles/pages/lessons.css";
 import "@/styles/sunnah-identity-detail-reading.css";
 
+import { Button } from "@/components/ui/button";
 function buildMapsEmbed(url?: string, mosque?: string, region?: string) {
   if (url?.includes("google.com/maps") || url?.includes("goo.gl/maps") || url?.includes("maps.app")) {
     const query = encodeURIComponent(`${mosque || ""} ${region || ""} الكويت`.trim());
@@ -422,30 +423,27 @@ export default function LessonDetailPage({
         <div className="lesson-detail-actions lesson-detail-actions--row lesson-detail-actions-panel">
           <div className="lesson-detail-actions__primary">
             <FavoriteButton contentType="lesson" contentId={unified.id} />
-            <button
+            <Button
               type="button"
               className="lesson-unified-card__btn lesson-unified-card__btn--secondary"
-              onClick={() => downloadUnifiedCalendar(unified)}
-            >
+              onClick={() => downloadUnifiedCalendar(unified)} variant="secondary">
               التقويم
-            </button>
+            </Button>
             {unified.streamUrl && (
-              <button
+              <Button
                 type="button"
                 className="lesson-unified-card__btn lesson-unified-card__btn--ghost"
-                onClick={() => openLessonExternalUrl(unified.streamUrl!)}
-              >
+                onClick={() => openLessonExternalUrl(unified.streamUrl!)} variant="ghost">
                 البث
-              </button>
+              </Button>
             )}
             {unified.mapsUrl && (
-              <button
+              <Button
                 type="button"
                 className="lesson-unified-card__btn lesson-unified-card__btn--ghost"
-                onClick={() => openLessonExternalUrl(unified.mapsUrl!)}
-              >
+                onClick={() => openLessonExternalUrl(unified.mapsUrl!)} variant="ghost">
                 الاتجاه
-              </button>
+              </Button>
             )}
           </div>
           <div className="lesson-detail-actions__links">
@@ -463,13 +461,12 @@ export default function LessonDetailPage({
               }}
             />
             {unified.siteUrl && (
-              <button
+              <Button
                 type="button"
                 className="lesson-unified-card__btn lesson-unified-card__btn--ghost"
-                onClick={() => openLessonExternalUrl(unified.siteUrl!)}
-              >
+                onClick={() => openLessonExternalUrl(unified.siteUrl!)} variant="ghost">
                 الموقع
-              </button>
+              </Button>
             )}
           </div>
           {!isDemoId(unified.id) && !unified.id.startsWith("kw-") && (
@@ -509,24 +506,22 @@ export default function LessonDetailPage({
           <div className={`lesson-detail-map lesson-detail-map--compact${mapExpanded ? " is-expanded" : ""}`}>
             <div className="lesson-detail-map__head">
               <h2>الموقع</h2>
-              <button
+              <Button
                 type="button"
                 className="lesson-detail-map__toggle"
                 aria-expanded={mapExpanded}
-                onClick={() => setMapExpanded((v) => !v)}
-              >
+                onClick={() => setMapExpanded((v) => !v)} variant="ghost">
                 {mapExpanded ? "تصغير الخريطة" : "عرض الخريطة"}
-              </button>
+              </Button>
             </div>
             {!mapExpanded ? (
-              <button
+              <Button
                 type="button"
                 className="lesson-detail-map__preview"
-                onClick={() => setMapExpanded(true)}
-              >
+                onClick={() => setMapExpanded(true)} variant="ghost">
                 <span>{placeLabel || "فتح معاينة الخريطة"}</span>
                 <span className="lesson-detail-map__preview-hint">اضغط للتكبير</span>
-              </button>
+              </Button>
             ) : (
               <iframe
                 title={`خريطة ${unified.mosque || "الموقع"}`}

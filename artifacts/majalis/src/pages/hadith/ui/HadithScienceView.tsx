@@ -16,6 +16,8 @@ import { UnifiedPrimaryFilters } from "@/components/filters/UnifiedPrimaryFilter
 import "@/styles/knowledge-experience.css";
 import { truncateAtWord } from "@/lib/utils";
 
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 /* ─── أنواع البيانات ─── */
 type HadithTerm = {
   id: string;
@@ -1061,9 +1063,9 @@ export default function HadithSciencePage() {
             aria-label="بحث في مصطلح الحديث"
           />
           {query && (
-            <button type="button" className="hs-search-clear" onClick={() => setQuery("")} aria-label="مسح البحث">
+            <IconButton type="button" className="hs-search-clear" onClick={() => setQuery("")} label="مسح البحث">
               <X size={14} />
-            </button>
+            </IconButton>
           )}
         </div>
         <UnifiedPrimaryFilters
@@ -1089,12 +1091,12 @@ export default function HadithSciencePage() {
             const isOpen = openId === t.id;
             return (
               <article key={t.id} className={`hs-card hdl-entry-card${gradeClass(t.grade)}${isOpen ? " hs-card--open" : ""}`}>
-                <button
+                <Button
                   type="button"
                   className="hs-card__header"
                   onClick={() => setOpenId((prev) => (prev === t.id ? null : t.id))}
                   aria-expanded={isOpen}
-                >
+                 variant="ghost">
                   <div className="hs-card__header-main">
                     <div className="hs-card__cat">{t.category}</div>
                     <div className="hs-card__term">{t.term}</div>
@@ -1102,7 +1104,7 @@ export default function HadithSciencePage() {
                   {t.grade && (
                     <span className={`hs-grade hs-grade--${t.grade}`}>{gradeLabel(t.grade)}</span>
                   )}
-                </button>
+                </Button>
                 {isOpen && (
                   <div className="hs-card__body" data-knowledge-reader="term" data-kx-kind="definition">
                     <p className="hs-card__def" data-hdl="definition" data-kx-kind="definition">

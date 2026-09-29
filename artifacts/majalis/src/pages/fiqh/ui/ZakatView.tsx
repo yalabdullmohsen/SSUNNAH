@@ -11,6 +11,7 @@ import "@/styles/pages/zakat.css";
 import { UtilityScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
 
+import { Button } from "@/components/ui/button";
 /* ─── بيانات الأصناف ─── */
 type ZakatKind = {
   id: string;
@@ -267,7 +268,7 @@ function ZakatCalc() {
           <input type="number" min="0" value={cash} onChange={(e) => setCash(e.target.value)} aria-label="0" placeholder="0" className="zk-calc__input" />
         </label>
       </div>
-      <button type="button" className="zk-calc__btn" onClick={calculate}>احسب الزكاة</button>
+      <Button type="button" className="zk-calc__btn" onClick={calculate} variant="primary">احسب الزكاة</Button>
       {result !== null && (
         <div className={`zk-calc__result${result === 0 ? " zk-calc__result--no" : ""}`}>
           {result === 0
@@ -394,19 +395,19 @@ export default function ZakatPage() {
             const isOpen = openId === k.id;
             return (
               <article key={k.id} className={`zk-card${isOpen ? " zk-card--open" : ""}`}>
-                <button
+                <Button
                   type="button"
                   className="zk-card__header"
                   onClick={() => toggle(k.id)}
                   aria-expanded={isOpen}
-                >
+                 variant="ghost">
                   <span className="zk-card__icon"><SectionIcon name={k.icon} size={24} /></span>
                   <div className="zk-card__header-text">
                     <div className="zk-card__title">{k.title}</div>
                     <div className="zk-card__rate">{k.rate}</div>
                   </div>
                   {isOpen ? <ChevronUp size={18} className="zk-card__chevron" /> : <ChevronDown size={18} className="zk-card__chevron" />}
-                </button>
+                </Button>
                 {isOpen && (
                   <div className="zk-card__body">
                     <div className="zk-row"><span className="zk-label">النصاب:</span><span>{k.nisab}</span></div>
