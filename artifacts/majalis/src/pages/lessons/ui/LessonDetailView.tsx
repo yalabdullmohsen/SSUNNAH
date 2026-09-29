@@ -375,7 +375,7 @@ export default function LessonDetailPage({
 
       <SectionErrorBoundary name="تفاصيل الدرس">
       <article
-        className="lesson-detail-card soft-card soft-card--on-light lesson-detail-card--compact"
+        className="lesson-detail-card lesson-detail-card--compact"
         data-lesson-type={lessonType.id}
       >
         {/* 1) Hero */}
@@ -503,7 +503,7 @@ export default function LessonDetailPage({
 
         {/* 7) Compact map — expand on demand */}
         {mapsEmbed ? (
-          <div className={`lesson-detail-map lesson-detail-map--compact${mapExpanded ? " is-expanded" : ""}`}>
+          <div className={`lesson-detail-map lesson-detail-map--compact${mapExpanded ? "is-expanded" : ""}`}>
             <div className="lesson-detail-map__head">
               <h2>الموقع</h2>
               <Button

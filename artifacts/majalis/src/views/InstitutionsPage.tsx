@@ -11,6 +11,15 @@ import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { AppPage, PageHeaderV2, EmptyStateV2 } from "@/components/design-system";
 import { SectionTitle, SupportingText } from "@/components/design-system/text";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { FilterBottomSheet, FilterToggle } from "@/components/layout/FilterBottomSheet";
 import { InstitutionDiscoverCard } from "@/components/institutions/InstitutionDiscoverCard";
 import {
@@ -188,45 +197,47 @@ export default function InstitutionsPage() {
             title="تصفية المؤسسات"
           >
             <div className="ilm-sheet-filters">
-              <label className="ilm-sheet-field">
-                <span>الدولة</span>
-                <select
-                  className="ilm-select"
-                  value={activeCountry}
-                  onChange={(e) => setActiveCountry(e.target.value)}
-                  aria-label="فلترة حسب الدولة"
-                >
-                  {INSTITUTION_COUNTRIES.map((country) => (
-                    <option key={country} value={country}>
-                      {country === "الكل" ? "كل الدول" : country}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label className="ilm-sheet-field">
-                <span>النوع</span>
-                <select
-                  className="ilm-select"
+              <div className="ilm-sheet-field">
+                <FieldLabel>الدولة</FieldLabel>
+                <Select value={activeCountry} onValueChange={setActiveCountry}>
+                  <SelectTrigger className="ilm-select min-h-11 text-base" aria-label="فلترة حسب الدولة">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {INSTITUTION_COUNTRIES.map((country) => (
+                      <SelectItem key={country} value={country}>
+                        {country === "الكل" ? "كل الدول" : country}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="ilm-sheet-field">
+                <FieldLabel>النوع</FieldLabel>
+                <Select
                   value={activeType}
-                  onChange={(e) =>
-                    setActiveType(e.target.value as Institution["type"] | "الكل")
-                  }
-                  aria-label="فلترة حسب النوع"
+                  onValueChange={(v) => setActiveType(v as Institution["type"] | "الكل")}
                 >
-                  {TYPE_FILTERS.map((f) => (
-                    <option key={f.key} value={f.key}>
-                      {f.label}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <button
+                  <SelectTrigger className="ilm-select min-h-11 text-base" aria-label="فلترة حسب النوع">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {TYPE_FILTERS.map((f) => (
+                      <SelectItem key={f.key} value={f.key}>
+                        {f.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <Button
                 type="button"
+                variant="primary"
                 className="ilm-sheet-apply"
                 onClick={() => setFiltersOpen(false)}
               >
                 عرض النتائج ({filtered.length})
-              </button>
+              </Button>
             </div>
           </FilterBottomSheet>
 

@@ -33,6 +33,14 @@ import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { useAuth } from "@/components/AuthProvider";
 import "@/styles/pages/knowledge-graph.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -518,20 +526,28 @@ export default function KnowledgeGraphPage() {
                 <div className="kng-panel__actions">
                   {source === "new" && (
                     <>
-                      <select value={expandDepth} onChange={(e) => setExpandDepth(Number(e.target.value))} className="kng-expand-select" aria-label="عمق التوسيع">
-                        <option value={1}>عمق 1</option>
-                        <option value={2}>عمق 2</option>
-                        <option value={3}>عمق 3</option>
-                      </select>
-                      <button type="button" onClick={() => expandFromNode(selected.id, expandDepth)} className="kng-expand-btn">
+                      <Select
+                        value={String(expandDepth)}
+                        onValueChange={(v) => setExpandDepth(Number(v))}
+                      >
+                        <SelectTrigger className="kng-expand-select min-h-11 text-base" aria-label="عمق التوسيع">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="1">عمق 1</SelectItem>
+                          <SelectItem value="2">عمق 2</SelectItem>
+                          <SelectItem value="3">عمق 3</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <Button type="button" variant="outline" onClick={() => expandFromNode(selected.id, expandDepth)} className="kng-expand-btn">
                         توسيع
-                      </button>
+                      </Button>
                     </>
                   )}
                   {selected.href && (
                     <Link href={selected.href} className="kng-view-link">عرض المحتوى</Link>
                   )}
-                  <button type="button" onClick={() => setSelected(null)} className="kng-close-btn" aria-label="إغلاق">×</button>
+                  <Button type="button" variant="ghost" onClick={() => setSelected(null)} className="kng-close-btn" aria-label="إغلاق">×</Button>
                 </div>
               </div>
 

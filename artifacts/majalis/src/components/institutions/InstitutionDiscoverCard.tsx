@@ -23,8 +23,8 @@ export function InstitutionDiscoverCard({ institution, variant = "grid" }: Props
   return (
     <article
       id={variant === "grid" ? institution.id : undefined}
-      className={`ilm-card inst-card soft-card soft-card--on-light mj-pressable${
-        variant === "featured" ? " ilm-card--featured" : ""
+      className={`ilm-card inst-card   mj-pressable${
+        variant === "featured" ? "ilm-card--featured" : ""
       }`}
       data-institution-id={institution.id}
       data-testid="inst-discover-card"

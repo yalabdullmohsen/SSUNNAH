@@ -33,7 +33,7 @@ assert.match(page, /AppPage/);
 assert.doesNotMatch(page, /SectionTemplatePage/);
 assert.doesNotMatch(page, /vault-tab|vault-search/);
 assert.match(card, /ilm-card/);
-assert.match(card, /soft-card/);
+assert.doesNotMatch(card, /\bsoft-card\b/, "InstitutionDiscoverCard بلا soft-card مباشر");
 assert.match(card, /DirectoryMedia/);
 assert.match(css, /html\.dark \.inst-card|html\[data-theme="dark"\] \.inst-card/);
 

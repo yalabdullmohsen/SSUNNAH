@@ -648,7 +648,7 @@ export default function LessonsPage({
                 <section className="lessons-past-section" aria-labelledby="past-lessons-heading">
                   <h2 id="past-lessons-heading" className="lessons-past-section__title">الدروس السابقة</h2>
                   <p className="lessons-empty-state">
-                    الدروس المنتهية في{" "}
+                    الدروس المنتهية في{""}
                     <Link href="/lessons/archive">الأرشيف</Link>
                     {archivedLessons.length > 0 ? ` (${archivedLessons.length})` : ` — ${EMPTY.data}`}
                     .
@@ -662,7 +662,7 @@ export default function LessonsPage({
         </main>
 
         <aside className="lessons-v2-sidebar" aria-label="تصفية سطح المكتب">
-          <div className="lessons-v2-filters soft-card soft-card--on-light">
+          <div className="lessons-v2-filters">
             <div className="lessons-v2-filters__head">
               <h2>تصفية الدروس</h2>
             </div>

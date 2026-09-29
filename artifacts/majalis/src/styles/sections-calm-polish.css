@@ -466,8 +466,7 @@ html.dark .sidebar-item[aria-current="page"] {
   font-size: 0.72rem !important;
 }
 
-/* ── عناصر عائمة: رجوع عام أسفل اليمين + صعود بعد التمرير ───────── */
-/* إخفاء أي رجوع داخلي متبقٍ — العائم العام هو المصدر الوحيد */
+/* رجوع داخلي مخفي — العائم العام المصدر الوحيد */
 .section-lobby__back,
 .section-lobby__back-inline,
 .section-hero__back,
@@ -486,7 +485,7 @@ html.dark .sidebar-item[aria-current="page"] {
 
 .floating-back-btn,.global-back-btn.floating-back-btn,button.floating-back-btn[data-floating-back="1"]{display:none!important;pointer-events:none!important}
 
-/* هيدر إعدادات الأذان — رجوع مدمج في الشريط (بدل العائم الذي يغطي المحتوى) */
+/* أذان: رجوع مدمج في الشريط */
 .ads-toolbar .app-back-btn--inline,
 [data-app-back-chrome="1"] .app-back-btn--inline {
   display: inline-flex !important;

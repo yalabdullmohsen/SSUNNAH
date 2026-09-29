@@ -9,6 +9,14 @@ import { DetailScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function DiscoverIslamContactPage() {
   const { lang } = useLanguage();
@@ -91,27 +99,33 @@ export default function DiscoverIslamContactPage() {
           />
         )}
 
-        <select
-          value={gender}
-          onChange={(e) => setGender(e.target.value as typeof gender)}
-          className="adm-input text-base"
-          aria-label="تفضيل جنس الداعية"
-        >
-          <option value="no_preference">لا تفضيل لجنس الداعية</option>
-          <option value="male">أفضّل التحدث مع داعية</option>
-          <option value="female">أفضّل التحدث مع داعية (امرأة)</option>
-        </select>
+        <div>
+          <FieldLabel>تفضيل جنس الداعية</FieldLabel>
+          <Select value={gender} onValueChange={(v) => setGender(v as typeof gender)}>
+            <SelectTrigger className="adm-input min-h-11 text-base" aria-label="تفضيل جنس الداعية">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="no_preference">لا تفضيل لجنس الداعية</SelectItem>
+              <SelectItem value="male">أفضّل التحدث مع داعية</SelectItem>
+              <SelectItem value="female">أفضّل التحدث مع داعية (امرأة)</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
 
-        <select
-          value={religion}
-          onChange={(e) => setReligion(e.target.value as typeof religion)}
-          className="adm-input text-base"
-          aria-label="الخلفية الدينية"
-        >
-          {CONTACT_RELIGIONS.map((r) => (
-            <option key={r.code} value={r.code}>{r.label}</option>
-          ))}
-        </select>
+        <div>
+          <FieldLabel>الخلفية الدينية</FieldLabel>
+          <Select value={religion} onValueChange={(v) => setReligion(v as typeof religion)}>
+            <SelectTrigger className="adm-input min-h-11 text-base" aria-label="الخلفية الدينية">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {CONTACT_RELIGIONS.map((r) => (
+                <SelectItem key={r.code} value={r.code}>{r.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
         <Input
           value={country}
@@ -131,16 +145,19 @@ export default function DiscoverIslamContactPage() {
         />
 
         <div className="dii-contact-method-row">
-          <select
-            value={contactMethod}
-            onChange={(e) => setContactMethod(e.target.value)}
-            className="adm-input text-base"
-            aria-label="وسيلة التواصل"
-          >
-            <option value="email">البريد الإلكتروني</option>
-            <option value="whatsapp">واتساب</option>
-            <option value="phone">هاتف</option>
-          </select>
+          <div>
+            <FieldLabel>وسيلة التواصل</FieldLabel>
+            <Select value={contactMethod} onValueChange={setContactMethod}>
+              <SelectTrigger className="adm-input min-h-11 text-base" aria-label="وسيلة التواصل">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="email">البريد الإلكتروني</SelectItem>
+                <SelectItem value="whatsapp">واتساب</SelectItem>
+                <SelectItem value="phone">هاتف</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
           <Input
             value={contactValue}
             onChange={(e) => setContactValue(e.target.value)}

@@ -50,7 +50,7 @@ export function SkeletonTable({ rows = 5, cols = 4 }: { rows?: number; cols?: nu
         {Array.from({ length: rows }).map((_, r) => (
           <div key={r} className="sk-table__row">
             {Array.from({ length: cols }).map((_, c) => (
-              <div key={c} className={`ds-skeleton sk-table__cell${c === 0 ? " sk-table__cell--wide" : ""}`} />
+              <div key={c} className={`ds-skeleton sk-table__cell${c === 0 ? "sk-table__cell--wide" : ""}`} />
             ))}
           </div>
         ))}
@@ -109,7 +109,7 @@ export function Loading({ title }: { label?: string; title?: string } = {}) {
 export function PageStatusShell({
   title,
   children,
-  className = "page-shell narrow",
+  className="page-shell narrow",
 }: {
   title: string;
   children: React.ReactNode;
@@ -230,7 +230,7 @@ export function Chip({
   active,
   children,
   onClick,
-  className = "",
+  className="",
   role,
 }: {
   active?: boolean;
@@ -260,7 +260,7 @@ export function Chip({
 
 /** فاصل زخرفي موحّد — وضع CSS (افتراضي) أو SVG بعرض صريح */
 export function IslamicDivider({
-  className = "",
+  className="",
   size = 28,
   width,
   color = "currentColor",
@@ -284,8 +284,8 @@ export function IslamicDivider({
       return [
         `${cx + r * Math.cos(outerA)},${cy + r * Math.sin(outerA)}`,
         `${cx + ri * Math.cos(innerA)},${cy + ri * Math.sin(innerA)}`,
-      ].join(" ");
-    }).join(" ");
+      ].join("");
+    }).join("");
     return (
       <svg
         width={width}
@@ -343,7 +343,7 @@ export function IslamicDivider({
 /** بطاقة حكم شرعي — مصدر الحقيقة لقوائم الموسوعة */
 export function RulingCard({ ruling }: { ruling: ShariaRulingExtended }) {
   return (
-    <Link href={`/rulings/${ruling.id}`} className="ruling-card soft-card soft-card--on-light">
+    <Link href={`/rulings/${ruling.id}`} className="ruling-card">
       <div className="ruling-card__head">
         <span className="ruling-card__category">{ruling.category}</span>
         {ruling.subcategory && <span className="ruling-card__sub">{ruling.subcategory}</span>}

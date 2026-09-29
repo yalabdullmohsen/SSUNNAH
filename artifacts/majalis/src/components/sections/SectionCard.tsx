@@ -47,8 +47,7 @@ export const SectionCard = memo(function SectionCard({ section, className, onNav
       aria-label={aria}
       data-cs-card="1"
       data-cs-type="section"
-      className={cn(
-        "card cs-card cs-section soft-card soft-card--on-light",
+      className={cn("card cs-card cs-section",
         soon && "card--coming-soon",
         className,
       )}

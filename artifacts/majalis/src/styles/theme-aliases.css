@@ -1,15 +1,6 @@
-/* ═══════════ جسر الهوية — aliases فقط ═══════════
- * يُحمَّل آخر شيء في main.tsx بعد brand-v4 / m2030 / index.css
- * يعيد توجيه الرموز القديمة (--bg/--brand/--msk-*) إلى لوحة --mj-*.
- * --background / --primary / --font-display مصدرها app/styles/theme.css فقط.
- *
- * TOKEN ABSORB (Debt Reduction): تعريفات --mj-* كانت خارج allowlist في
- * visual-identity-unify / sections-calm-polish — نُقلت إلى هنا (مسموح).
- * Consumers: unify/calm يستهلكان var(--mj-*) فقط · بلا لوحة منافسة.
- */
+/* جسر aliases: --mj-* SoT هنا؛ unify/calm يستهلكان var(--mj-*) فقط. */
 
 :root {
-  /* TOKEN ABSORB — Foundation → --mj-* (+ chips / type) داخل نفس :root الأول */
   --mj-bg: var(--sf-color-warm-ivory, #f8f6f1);
   --mj-surface: var(--sf-color-warm-ivory-surface, #ffffff);
   --mj-surface-2: var(--sf-color-warm-ivory, #f8f6f1);

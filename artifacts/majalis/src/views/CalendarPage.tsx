@@ -55,7 +55,7 @@ function EventModal({ event, onClose }: { event: CalendarEvent; onClose: () => v
     <div className="cal-modal-backdrop" onClick={onClose} role="presentation">
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
       <div
-        className="cal-modal soft-card soft-card--on-light"
+        className="cal-modal"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
@@ -129,7 +129,7 @@ function downloadIcs(content: string, filename: string) {
 
 function CalendarGridSkeleton() {
   return (
-    <div className="cal-month soft-card soft-card--on-light" aria-busy="true" aria-label="تحديث التقويم">
+    <div className="cal-month" aria-busy="true" aria-label="تحديث التقويم">
       <div className="cal-weekdays">
         {CALENDAR_WEEKDAY_LABELS.map((d) => (
           <span key={d}>{d}</span>
@@ -212,7 +212,7 @@ export default function CalendarPage() {
         subtitle="عرض شهري وأسبوعي ويومي للدروس والدورات."
       />
 
-      <div className="cal-toolbar soft-card soft-card--on-light">
+      <div className="cal-toolbar">
         <div className="cal-nav">
           <button type="button" className="cal-nav-btn" onClick={() => setCursor(subMonths(cursor, 1))} aria-label="الشهر السابق">‹</button>
           <div className="cal-nav-label">
@@ -231,7 +231,7 @@ export default function CalendarPage() {
             <button
               key={v}
               type="button"
-              className={`cal-view-tab${view === v ? " is-active" : ""}`}
+              className={`cal-view-tab${view === v ? "is-active" : ""}`}
               onClick={() => setView(v)}
             >
               {v === "month" ? "شهري" : v === "week" ? "أسبوعي" : "يومي"}
@@ -256,7 +256,7 @@ export default function CalendarPage() {
       ) : (
         <div aria-busy={loading}>
           {view === "month" && (
-            <div className="cal-month soft-card soft-card--on-light">
+            <div className="cal-month">
               {!monthHasEvents ? (
                 <p className="cal-empty cal-empty--banner">لا دروس في هذا الشهر.</p>
               ) : null}
@@ -290,13 +290,13 @@ export default function CalendarPage() {
           )}
 
           {view === "week" && (
-            <div className="cal-week soft-card soft-card--on-light">
+            <div className="cal-week">
               <div className="cal-week-grid">
                 {weekDays.map((day) => (
                   <div key={day.toISOString()} className="cal-week-col">
                     <button
                       type="button"
-                      className={`cal-week-head${isSameDay(day, selected) ? " is-selected" : ""}${isSameDay(day, today) ? " is-today" : ""}`}
+                      className={`cal-week-head${isSameDay(day, selected) ? "is-selected" : ""}${isSameDay(day, today) ? "is-today" : ""}`}
                       onClick={() => setSelected(day)}
                     >
                       {format(day, "EEE d", { locale: arSA })}
@@ -317,7 +317,7 @@ export default function CalendarPage() {
           )}
 
           {view === "day" && (
-            <div className="cal-day soft-card soft-card--on-light">
+            <div className="cal-day">
               <CalendarDayCell
                 date={selected}
                 events={eventsForDate(selected, events)}

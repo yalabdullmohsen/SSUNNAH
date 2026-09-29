@@ -70,7 +70,7 @@ export default function TeachersIndexPage() {
 
       <p className="tch-notice">
         هذا الفهرس للمشايخ الذين تظهر دروسهم في جدول الكويت. لسِيَر علماء التراث والأئمة عبر القرون،
-        {" "}
+        {""}
         <Link href="/tarikh-islami">راجع قسم التاريخ الإسلامي</Link>.
       </p>
 
@@ -96,7 +96,7 @@ export default function TeachersIndexPage() {
             <Link
               key={teacher.slug}
               href={hrefTeachers(teacher.slug)}
-              className="tch-card soft-card soft-card--on-light"
+              className="tch-card"
               role="listitem"
             >
               <span className="tch-card__name">{teacher.name}</span>

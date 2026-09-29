@@ -149,7 +149,7 @@ export const SearchResultCard = memo(function SearchResultCard({
 
   return (
     <article
-      className={`srch-result-card soft-card soft-card--on-light srch-result-card--${family}`}
+      className={`srch-result-card   srch-result-card--${family}`}
       data-kind-family={family}
       data-kind={item.kind}
     >

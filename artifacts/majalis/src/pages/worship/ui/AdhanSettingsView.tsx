@@ -209,7 +209,7 @@ function PrayerScheduleHealthCard({ onRepair }: { onRepair: () => void }) {
   }, [refresh]);
 
   return (
-    <section className="soft-card soft-card--on-light ads-card" aria-labelledby="ads-health-head">
+    <section className="ads-card" aria-labelledby="ads-health-head">
       <div className="ads-card__head" id="ads-health-head">
         <Bell size={15} strokeWidth={2} aria-hidden="true" />
         <span>حالة الجدولة</span>
@@ -301,7 +301,7 @@ function AndroidAdhanNativeCard({
   }
 
   return (
-    <section className="soft-card soft-card--on-light ads-card" aria-labelledby="ads-android-native-head">
+    <section className="ads-card" aria-labelledby="ads-android-native-head">
       <div className="ads-card__head" id="ads-android-native-head">
         <Bell size={15} strokeWidth={2} aria-hidden="true" />
         <span>حماية تشغيل الخلفية (أندroid)</span>
@@ -374,7 +374,7 @@ function SoundOptionCard({
   onListen: () => void;
 }) {
   return (
-    <div className={`ads-style-card ads-style-card--compact${selected ? " is-selected" : ""}`}>
+    <div className={`ads-style-card ads-style-card--compact${selected ? "is-selected" : ""}`}>
       <Button
         type="button"
         role="radio"
@@ -388,7 +388,7 @@ function SoundOptionCard({
         <Button
           type="button"
           variant="ghost"
-          className={`ads-style-card__preview${playing ? " is-playing" : ""}`}
+          className={`ads-style-card__preview${playing ? "is-playing" : ""}`}
           onClick={onListen}
           aria-label={`معاينة — ${opt.label}`}
         >
@@ -703,7 +703,7 @@ export default function AdhanSettingsPage() {
       </div>
       <p className="ads-subtitle">
         فعّل التنبيهات واختر صوتًا جاهزًا.
-        {" "}
+        {""}
         <a href="/adhan-help" className="ads-help-link">مساعدة</a>
       </p>
 
@@ -718,7 +718,7 @@ export default function AdhanSettingsPage() {
 
       <PrayerAlertSettingsCard />
 
-      <section className="soft-card soft-card--on-light ads-card" aria-labelledby="ads-loc-head">
+      <section className="ads-card" aria-labelledby="ads-loc-head">
         <div className="ads-card__head" id="ads-loc-head">
           <MapPin size={15} strokeWidth={2} aria-hidden="true" />
           <span>الموقع</span>
@@ -741,7 +741,7 @@ export default function AdhanSettingsPage() {
       </section>
 
       <p className="ads-section-label" id="ads-sec-sounds">الأصوات</p>
-      <section className="soft-card soft-card--on-light ads-card" aria-labelledby="ads-sound-head">
+      <section className="ads-card" aria-labelledby="ads-sound-head">
         <div className="ads-card__head" id="ads-sound-head">
           <Music size={15} strokeWidth={2} aria-hidden="true" />
           <span>أصوات الصلاة</span>
@@ -832,7 +832,7 @@ export default function AdhanSettingsPage() {
       <AudioPromptsSettingsCard />
 
       <p className="ads-section-label" id="ads-sec-adhkar">الأذكار والصلوات</p>
-      <section className="soft-card soft-card--on-light ads-card" aria-labelledby="ads-faith-head">
+      <section className="ads-card" aria-labelledby="ads-faith-head">
         <div className="ads-card__head" id="ads-faith-head">
           <Bell size={15} strokeWidth={2} aria-hidden="true" />
           <span>تذكيرات إضافية</span>
@@ -851,7 +851,7 @@ export default function AdhanSettingsPage() {
                   key={min}
                   type="button"
                   onClick={() => setIqamahDelay(min)}
-                  className={`ads-chip${prefs.iqamahDelayMinutes === min ? " is-active" : ""}`} variant="ghost">
+                  className={`ads-chip${prefs.iqamahDelayMinutes === min ? "is-active" : ""}`} variant="ghost">
                   {min === 0 ? "مع الأذان" : `${min} د`}
                 </Button>
               ))}
@@ -893,7 +893,7 @@ export default function AdhanSettingsPage() {
         </div>
       </section>
 
-      <section className="soft-card soft-card--on-light ads-card" aria-labelledby="ads-prayers-head">
+      <section className="ads-card" aria-labelledby="ads-prayers-head">
         <div className="ads-card__head" id="ads-prayers-head">
           <Bell size={15} strokeWidth={2} aria-hidden="true" />
           <span>صلوات اليوم</span>
@@ -904,7 +904,7 @@ export default function AdhanSettingsPage() {
             const p = prefs.prayers[key];
             const expanded = openPrayer === key;
             return (
-              <div key={key} className={`ads-prayer-row${expanded ? " is-open" : ""}`}>
+              <div key={key} className={`ads-prayer-row${expanded ? "is-open" : ""}`}>
                 <Button
                   type="button"
                   className="ads-prayer-row__head ads-prayer-row__top"
@@ -938,7 +938,7 @@ export default function AdhanSettingsPage() {
                           type="button"
                           disabled={!p.enabled}
                           onClick={() => setPrayerAdvance(key, min)}
-                          className={`ads-chip${p.advanceMinutes === min ? " is-active" : ""}`} variant="ghost">
+                          className={`ads-chip${p.advanceMinutes === min ? "is-active" : ""}`} variant="ghost">
                           {min === 0 ? "بدون" : `${min} د`}
                         </Button>
                       ))}
@@ -953,7 +953,7 @@ export default function AdhanSettingsPage() {
 
       <AndroidAdhanNativeCard selectedMuezzinId={prefs.defaultMuezzinId} />
 
-      <section className="soft-card soft-card--on-light ads-card" aria-labelledby="ads-test-head">
+      <section className="ads-card" aria-labelledby="ads-test-head">
         <div className="ads-card__head" id="ads-test-head">
           <Bell size={15} strokeWidth={2} aria-hidden="true" />
           <span>اختبار التنبيهات</span>

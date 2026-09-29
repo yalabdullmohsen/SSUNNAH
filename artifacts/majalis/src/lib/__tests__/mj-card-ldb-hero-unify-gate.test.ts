@@ -10,7 +10,8 @@ import { fileURLToPath } from "node:url";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 
 const mj = readFileSync(resolve(root, "src/components/ui/mj.tsx"), "utf8");
-assert.match(mj, /function Card[\s\S]*?soft-card soft-card--on-light/, "Card الأساسي soft-card");
+assert.match(mj, /function Card[\s\S]*?AppCard/, "Card الأساسي عبر AppCard");
+assert.doesNotMatch(mj, /function Card[\s\S]*?\bsoft-card\b/, "Card بلا soft-card مباشر");
 
 const shell = readFileSync(resolve(root, "src/styles/components/modern-section-shell.css"), "utf8");
 assert.match(shell, /\.ldb-hero\s*[,{]/, "ldb-hero ضمن سطح soft hero");
@@ -24,14 +25,12 @@ assert.doesNotMatch(
 );
 
 const quiz = readFileSync(resolve(root, "src/components/quiz-game/DailyChallengeQuiz.tsx"), "utf8");
-assert.match(quiz, /soft-card soft-card--on-light/, "DailyChallengeQuiz soft-card");
+assert.doesNotMatch(quiz, /\bsoft-card\b/, "DailyChallengeQuiz بلا soft-card مباشر");
 assert.doesNotMatch(quiz, /\bmj-card\b/, "DailyChallengeQuiz بلا mj-card عاري");
 
 const dailyWird = readFileSync(resolve(root, "src/components/home/DailyWirdCard.tsx"), "utf8");
-assert.match(
-  dailyWird,
-  /home-daily-wird__card soft-card soft-card--on-light/,
-  "هيكل الورود اليومي soft-card",
-);
+assert.match(dailyWird, /AppCard/, "هيكل الورود اليومي عبر AppCard");
+assert.match(dailyWird, /home-daily-wird__card/, "صنف الدومين home-daily-wird__card");
+assert.doesNotMatch(dailyWird, /\bsoft-card\b/, "DailyWirdCard بلا soft-card مباشر");
 
 console.log("mj-card-ldb-hero-unify-gate.test.ts: ok");

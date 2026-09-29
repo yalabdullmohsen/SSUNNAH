@@ -341,7 +341,7 @@ function ScoreBar({ teams, activeTeamId }: { teams: Team[]; activeTeamId: TeamId
         return (
           <div
             key={t.id}
-            className={`qzg-team-card${active ? " qzg-team-card--active" : ""}`}
+            className={`qzg-team-card${active ? "qzg-team-card--active" : ""}`}
             style={{
               "--qzg-team-bg": active ? activeBg : S.cardAlt,
               "--qzg-team-border": active ? "var(--majalis-brass)" : "var(--ds-line-color)",
@@ -495,7 +495,7 @@ function SetupPhase({
           : "البنك المحلي قيد التوثيق والمراجعة. تُعرض للعامة الأسئلة المعتمدة فقط؛ قد تُحمَّل أسئلة موثّقة من الخادم عند توفرها."}
       </p>
 
-      <section className="qzg-section-card soft-card soft-card--on-light" aria-label="نمط التحدي">
+      <section className="qzg-section-card" aria-label="نمط التحدي">
         <h2 className="qzg-section-h2">اختر النمط</h2>
         <div className="qzg-play-modes" role="group" aria-label="أنماط التحدي">
           {PLAY_MODES.map((m) => (
@@ -504,7 +504,7 @@ function SetupPhase({
               type="button"
               aria-pressed={playMode === m.id}
               onClick={() => setPlayMode(m.id)}
-              className={`qzg-play-mode${playMode === m.id ? " qzg-play-mode--on" : ""}`}
+              className={`qzg-play-mode${playMode === m.id ? "qzg-play-mode--on" : ""}`}
             >
               <span className="qzg-play-mode__label">{m.label}</span>
               <span className="qzg-play-mode__desc">{m.desc}</span>
@@ -514,7 +514,7 @@ function SetupPhase({
       </section>
 
       {playMode === "quick" || playMode === "random" ? (
-        <section className="qzg-section-card soft-card soft-card--on-light" aria-label="عدد الفئات">
+        <section className="qzg-section-card" aria-label="عدد الفئات">
           <h2 className="qzg-section-h2">عدد الفئات في الجولة</h2>
           <div className="qzg-play-modes" role="group" aria-label="عدد الفئات">
             {([5, 10, 15] as const).map((n) => (
@@ -522,7 +522,7 @@ function SetupPhase({
                 key={n}
                 type="button"
                 aria-pressed={questionCount === n}
-                className={`qzg-play-mode${questionCount === n ? " qzg-play-mode--on" : ""}`}
+                className={`qzg-play-mode${questionCount === n ? "qzg-play-mode--on" : ""}`}
                 onClick={() => setQuestionCount(n)}
               >
                 <span className="qzg-play-mode__label">{n}</span>
@@ -537,7 +537,7 @@ function SetupPhase({
         <p className="qzg-daily-hint">سؤال واحد يتجدّد يوميًا لكل المستخدمين.</p>
       ) : (
         <>
-          <section className="qzg-section-card soft-card soft-card--on-light" aria-label="عدد اللاعبين">
+          <section className="qzg-section-card" aria-label="عدد اللاعبين">
             <h2 className="qzg-section-h2"><Users size={18} className="inline ms-1" />عدد اللاعبين</h2>
             <div className="qzg-team-count-row" role="group" aria-label="اختر عدد اللاعبين">
               {([1, 2, 3, 4] as const).map((n) => (
@@ -546,7 +546,7 @@ function SetupPhase({
                   type="button"
                   aria-pressed={playerCount === n}
                   onClick={() => changePlayerCount(n)}
-                  className={`qzg-count-btn${playerCount === n ? " qzg-count-btn--on" : ""}`}
+                  className={`qzg-count-btn${playerCount === n ? "qzg-count-btn--on" : ""}`}
                 >
                   {n === 1 ? "1 لاعب" : `${n} لاعبين`}
                 </button>
@@ -589,7 +589,7 @@ function SetupPhase({
           </section>
 
           {playMode !== "random" ? (
-            <section className="qzg-section-card soft-card soft-card--on-light">
+            <section className="qzg-section-card">
               <div className="qzg-cats-head">
                 <h2 className="qzg-section-h2 qzg-section-h2--flush">
                   <Library size={16} className="inline ms-1" />الفئات
@@ -609,7 +609,7 @@ function SetupPhase({
                       type="button"
                       onClick={() => toggle(cat.id)}
                       aria-pressed={on}
-                      className={`qzg-cat-btn${on ? " qzg-cat-btn--on" : ""}`}
+                      className={`qzg-cat-btn${on ? "qzg-cat-btn--on" : ""}`}
                     >
                       <div className="qzg-cat-btn__icon">
                         <CategoryIcon name={cat.icon} size={18} />
@@ -636,7 +636,7 @@ function SetupPhase({
         type="button"
         onClick={handleStart}
         disabled={!canStart}
-        className={`qzg-btn-primary qzg-btn-primary--wide${canStart ? "" : " qzg-btn-primary--disabled"}`}
+        className={`qzg-btn-primary qzg-btn-primary--wide${canStart ? "" : "qzg-btn-primary--disabled"}`}
       >
         {playMode === "daily"
           ? "افتح تحدي اليوم"
@@ -698,7 +698,7 @@ function BoardPhase({
                   type="button"
                   disabled={cell.used}
                   onClick={() => dispatch({ type: "SELECT_CELL", cell, pool: poolRef.current ?? ALL_QUESTIONS, persistedUsedIds })}
-                  className={`qzg-board-cell${cell.used ? " qzg-board-cell--used" : ""}`}
+                  className={`qzg-board-cell${cell.used ? "qzg-board-cell--used" : ""}`}
                 >
                   {cell.used ? "—" : pts}
                 </button>
@@ -784,7 +784,7 @@ function QuestionPhase({
 
       <TimerBar seconds={timerSec} maxSeconds={maxTimerSec} />
 
-      <div className="qzg-section-card soft-card soft-card--on-light qzg-section-card--brass qzg-section-card--mb-sm">
+      <div className="qzg-section-card qzg-section-card--brass qzg-section-card--mb-sm">
         <div className="qzg-q-header">
           <span className="qzg-q-cat-label"><CategoryIcon name={cat?.icon ?? ""} size={14} /> {cat?.name}</span>
           <span className="qzg-q-points-badge">{activeCell.points} نقطة</span>
@@ -810,7 +810,7 @@ function QuestionPhase({
                 type="button"
                 role="option"
                 aria-selected={pickedChoice === idx}
-                className={`qzg-choice${pickedChoice === idx ? " qzg-choice--on" : ""}`}
+                className={`qzg-choice${pickedChoice === idx ? "qzg-choice--on" : ""}`}
                 onClick={() => setPickedChoice(idx)}
               >
                 {choice}
@@ -872,7 +872,7 @@ function QuestionPhase({
 
       {revealed && !(hasChoices && pickedChoice != null && activeQuestion?.correctIndex != null) && (
         <>
-          <div className="qzg-section-card soft-card soft-card--on-light qzg-section-card--mb-sm">
+          <div className="qzg-section-card qzg-section-card--mb-sm">
             <p className="qzg-answer-label">الإجابة الصحيحة:</p>
             <p className="qzg-answer-text">{activeQuestion?.a ?? "—"}</p>
             {showHint && (
@@ -896,7 +896,7 @@ function QuestionPhase({
         </>
       )}
 
-      <div className="qzg-section-card soft-card soft-card--on-light">
+      <div className="qzg-section-card">
         <p className="qzg-lifelines-label"><Zap size={14} className="inline ms-1" />وسائل المساعدة — {activeTeamObj.name}</p>
 
         {eliminateBanner && (
@@ -981,10 +981,10 @@ function WinnerPhase({ teams, mode, onReset }: { teams: Team[]; mode: GameMode; 
       <div className="qzg-winner-grid" data-team-count={sorted.length}>
         {sorted.map((team, i) => (
           <div key={team.id}
-            className={`qzg-section-card soft-card soft-card--on-light qzg-winner-card${i === 0 ? " qzg-winner-card--first" : ""}`}>
+            className={`qzg-section-card   qzg-winner-card${i === 0 ? "qzg-winner-card--first" : ""}`}>
             <div className="qzg-winner-rank">{i === 0 ? (isDraw ? <Handshake size={24} /> : <Trophy size={24} />) : <Award size={24} />}</div>
             <p className="qzg-winner-name">{team.name}</p>
-            <p className={`qzg-winner-score${i === 0 ? " qzg-winner-score--first" : ""}`}>
+            <p className={`qzg-winner-score${i === 0 ? "qzg-winner-score--first" : ""}`}>
               {team.score.toLocaleString("ar-EG")}
             </p>
             <p className="qzg-winner-unit">نقطة</p>

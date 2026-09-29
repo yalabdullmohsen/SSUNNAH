@@ -3,7 +3,7 @@
   "policy": "decreasing-ceilings",
   "note": "Ceilings must not rise. Lower intentionally in later waves; never raise without documented exception.",
   "floors": {
-    "officialButtonImportFiles": 127,
+    "officialButtonImportFiles": 133,
     "sfTokenRefs": 689,
     "ssTokenRefs": 722
   },
@@ -18,7 +18,7 @@
     "zIndexRawDecls": 276,
     "borderRadiusPxDecls": 1327,
     "inlineColorStyleMatches": 89,
-    "rawButtonFiles": 230
+    "rawButtonFiles": 229
   },
-  "updatedAt": "2026-09-29T14:51:27.681Z"
+  "updatedAt": "2026-09-29T16:34:32.555Z"
 }

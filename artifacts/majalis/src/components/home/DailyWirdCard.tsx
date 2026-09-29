@@ -76,7 +76,7 @@ export function DailyWirdCard() {
 
   return (
     <section
-      className={`m2030-band m2030-band--sage home-daily-wird daily-wird-card${done ? " daily-wird-card--done" : ""}`}
+      className={`m2030-band m2030-band--sage home-daily-wird daily-wird-card${done ? "daily-wird-card--done" : ""}`}
       aria-label="ورد اليوم"
       data-testid="daily-wird-card"
     >
@@ -85,7 +85,7 @@ export function DailyWirdCard() {
         <div className="daily-wird-card__actions">
           <Button
             type="button"
-            className={`daily-wird-card__done-btn${done ? " is-done" : ""}`}
+            className={`daily-wird-card__done-btn${done ? "is-done" : ""}`}
             onClick={toggleDone}
             aria-pressed={done}
           >
@@ -99,7 +99,7 @@ export function DailyWirdCard() {
       </div>
 
       <div className="home-daily-wird__grid">
-        <AppCard padding="none" className="home-daily-wird__card soft-card soft-card--on-light">
+        <AppCard padding="none" className="home-daily-wird__card">
           <header className="home-daily-wird__card-head">
             <BookOpen size={16} aria-hidden="true" />
             <span>آية</span>
@@ -113,7 +113,7 @@ export function DailyWirdCard() {
           </Link>
         </AppCard>
 
-        <AppCard padding="none" className="home-daily-wird__card soft-card soft-card--on-light">
+        <AppCard padding="none" className="home-daily-wird__card">
           <header className="home-daily-wird__card-head">
             <Heart size={16} aria-hidden="true" />
             <span>ذكر</span>
@@ -126,7 +126,7 @@ export function DailyWirdCard() {
         </AppCard>
 
         {hadithOk ? (
-          <AppCard padding="none" className="home-daily-wird__card soft-card soft-card--on-light">
+          <AppCard padding="none" className="home-daily-wird__card">
             <header className="home-daily-wird__card-head">
               <MessageCircle size={16} aria-hidden="true" />
               <span>حديث</span>
@@ -139,7 +139,7 @@ export function DailyWirdCard() {
           </AppCard>
         ) : null}
 
-        <AppCard padding="none" className="home-daily-wird__card soft-card soft-card--on-light">
+        <AppCard padding="none" className="home-daily-wird__card">
           <header className="home-daily-wird__card-head">
             <Sparkles size={16} aria-hidden="true" />
             <span>فائدة</span>

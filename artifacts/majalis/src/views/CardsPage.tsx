@@ -161,7 +161,7 @@ export default function CardsPage() {
 
         <div className="cards-layout">
           <div className="cards-controls">
-            <div className="soft-card soft-card--on-light cards-panel">
+            <div className="cards-panel">
               <h2>المحتوى</h2>
               <textarea
                 value={quote}
@@ -178,7 +178,7 @@ export default function CardsPage() {
               />
             </div>
 
-            <div className="soft-card soft-card--on-light cards-panel">
+            <div className="cards-panel">
               <h2>القالب</h2>
               <div className="cards-template-grid">
                 {TEMPLATES.map((t) => (
@@ -186,7 +186,7 @@ export default function CardsPage() {
                     key={t.id}
                     type="button"
                     onClick={() => setSelectedTemplate(t)}
-                    className={`cards-template-btn${selectedTemplate.id === t.id ? " is-active" : ""}`}
+                    className={`cards-template-btn${selectedTemplate.id === t.id ? "is-active" : ""}`}
                   >
                     <span className="cards-template-swatch" style={{ "--swatch-bg": t.swatch } as React.CSSProperties} />
                     {t.name}
@@ -195,7 +195,7 @@ export default function CardsPage() {
               </div>
             </div>
 
-            <div className="soft-card soft-card--on-light cards-panel">
+            <div className="cards-panel">
               <h2>الحجم</h2>
               <div className="cards-size-row">
                 {(Object.keys(SIZE_MAP) as SizeKey[]).map((s) => (
@@ -203,7 +203,7 @@ export default function CardsPage() {
                     key={s}
                     type="button"
                     onClick={() => setSize(s)}
-                    className={`cards-size-btn${size === s ? " is-active" : ""}`}
+                    className={`cards-size-btn${size === s ? "is-active" : ""}`}
                   >
                     {SIZE_MAP[s].label}
                   </button>
