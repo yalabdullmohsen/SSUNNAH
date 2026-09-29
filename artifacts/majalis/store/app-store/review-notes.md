@@ -15,12 +15,11 @@
 | Email | `apple.review@ssunnah.com` |
 | Password | `SunnahReview-2026!` |
 
-**How to sign in (any of these):**
+**How to sign in:**
 
 1. Open **تسجيل الدخول** (`/login`).
-2. Enter the email and password above → Sign in.  
-   **OR** tap **«وضع مراجعة App Store»** (App Store Review Mode) under the guest link — one tap, no network auth required.
-3. You land on Home as a signed-in review user (local demonstration session). Logged-in surfaces (settings account, vault/progress affordances, etc.) become available. **No admin privileges.**
+2. Enter the email and password above → Sign in.
+3. You land on Home as a signed-in review user (local demonstration session; does not depend on email confirmation). Logged-in surfaces (settings account, vault/progress affordances, etc.) become available. **No admin privileges.**
 
 ### Guest access (no account required)
 

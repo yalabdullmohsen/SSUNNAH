@@ -16,10 +16,6 @@ import { FormLabel, FieldError } from "@/components/design-system";
 import { applyPageSeo } from "@/lib/seo";
 import { canSubmitForm } from "@/lib/form-rate-limit";
 import { sanitizeAuthNext } from "@/lib/auth-redirect";
-import {
-  APP_STORE_REVIEW_EMAIL,
-  APP_STORE_REVIEW_PASSWORD,
-} from "@/lib/app-store-review-auth";
 import "@/styles/pages/auth.css";
 import "@/styles/sunnah-identity-forms-filters.css";
 
@@ -224,27 +220,6 @@ export default function LoginPage() {
       }
 
       navigate(nextPath);
-    } catch (err) {
-      setError(mapAuthError(err));
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const enterAppStoreReviewMode = async () => {
-    setError("");
-    setSuccess("");
-    setDenied(false);
-    setLoading(true);
-    setEmail(APP_STORE_REVIEW_EMAIL);
-    setPassword(APP_STORE_REVIEW_PASSWORD);
-    try {
-      const { error: signInError } = await login(
-        APP_STORE_REVIEW_EMAIL,
-        APP_STORE_REVIEW_PASSWORD,
-      );
-      if (signInError) throw signInError;
-      navigate(nextPath || "/");
     } catch (err) {
       setError(mapAuthError(err));
     } finally {
@@ -459,20 +434,6 @@ export default function LoginPage() {
             <Link href="/" className="login-guest-link">
               المتابعة كزائر
             </Link>
-            {tab === "login" ? (
-              <Button
-                type="button"
-                variant="ghost"
-                size="small"
-                className="login-text-btn"
-                data-testid="app-store-review-login"
-                loading={loading}
-                disabled={loading}
-                onClick={() => void enterAppStoreReviewMode()}
-              >
-                وضع مراجعة App Store
-              </Button>
-            ) : null}
           </div>
         ) : (
           <div className="login-actions">

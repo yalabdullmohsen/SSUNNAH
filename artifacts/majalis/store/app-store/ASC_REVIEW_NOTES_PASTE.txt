@@ -8,7 +8,7 @@ App: سُنّة (Sunnah)
 Email: apple.review@ssunnah.com
 Password: SunnahReview-2026!
 
-OR on the Login screen tap: «وضع مراجعة App Store» (one-tap local review session; no email confirmation).
+On Login (/login): enter the credentials above → Sign in (local demonstration session; no email confirmation required).
 
 Guest path: «المتابعة كزائر» — Quran, adhkar, prayer times, hadith, lessons work without login.
 
