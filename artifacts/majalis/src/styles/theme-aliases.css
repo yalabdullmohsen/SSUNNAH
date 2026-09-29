@@ -200,20 +200,28 @@ html[data-theme="dark"],
 html.dark,
 [data-theme="dark"],
 .dark {
-  /* TOKEN ABSORB — night --mj-* (سابقًا visual-identity-unify / calm) */
-  --mj-bg: #121816;
-  --mj-surface: #1b2421;
-  --mj-surface-2: #121816;
-  --mj-surface-3: #121816;
-  --mj-hairline: #3a4641;
-  --mj-ink: #f3f7f5;
-  --mj-ink-2: #c5d0cb;
-  --mj-muted: #c5d0cb;
-  --mj-brand: #5fbf98;
-  --mj-brand-soft: rgba(95, 191, 152, 0.16);
+  /*
+   * Final Internal Closure PR2 — TOKEN ABSORB (night --mj-*).
+   * Winning values = Dark System Contract in theme.css (+ premium --pd-* parity).
+   * Live-bind canvas to --surface-app so recovery/refine can deepen without redeclaring --mj-*.
+   * Foundation --sf-color-luxury-night* / --sf2-* remain SoT for their consumers (no second dark authority).
+   */
+  --mj-bg: var(--surface-app, #0F1613);
+  --mj-splash: var(--surface-app, #0F1613);
+  --mj-surface: #1B2421;
+  --mj-surface-2: #222D29;
+  --mj-surface-3: #2A3733;
+  --mj-hairline: var(--dark-border-subtle, #35443F);
+  --mj-ink: #EDE8DF;
+  --mj-ink-2: #D8D0C4;
+  --mj-muted: #B5ADA0;
+  --mj-brand: #4FB48B;
+  --mj-brand-soft: #16261F;
   --mj-brand-tint: color-mix(in srgb, var(--mj-brand) 14%, var(--mj-surface));
-  --mj-brand-deep: #8fd4b0;
-  --mj-accent: #d9b871;
+  --mj-brand-deep: var(--elite-forest, #8FD4B0);
+  --mj-brand-deep-ink: #EDE8DF;
+  --mj-brand-deep-surface: #0E1C17;
+  --mj-accent: #C9A86C;
   --mj-accent-soft: color-mix(in srgb, var(--mj-accent) 18%, var(--mj-surface));
   --mj-accent-wash: color-mix(in srgb, var(--mj-accent) 16%, transparent);
   --mj-warning-soft: rgba(217, 119, 6, 0.16);
@@ -225,12 +233,34 @@ html.dark,
   --mj-success-soft: rgba(126, 214, 168, 0.16);
   --mj-white: #ffffff;
   --mj-on-brand: #06231a;
-  --mj-sh: 0 6px 18px -12px rgba(0, 0, 0, 0.55);
+  --mj-elev-1: var(--dark-elev-1);
+  --mj-elev-2: var(--dark-elev-2);
+  --mj-elev-3: var(--dark-elev-3);
+  --mj-sh: var(--mj-elev-1);
   --mj-chip-bg: #222c28;
-  --mj-chip-fg: #f3f7f5;
-  --mj-chip-border: #3a4641;
-  --mj-chip-active-bg: #5fbf98;
+  --mj-chip-fg: #EDE8DF;
+  --mj-chip-border: #35443F;
+  --mj-chip-active-bg: #4FB48B;
   --mj-chip-active-fg: #06231a;
+}
+
+/* OLED / HDR — deepen canvas without bridge --mj-* redeclarations */
+@media (dynamic-range: high) {
+  html[data-theme="dark"],
+  html.dark,
+  [data-theme="dark"],
+  .dark {
+    --surface-app: #0c1210;
+    --mj-bg: var(--surface-app);
+    --mj-splash: var(--surface-app);
+  }
+}
+
+html[data-theme="dark"],
+html.dark,
+[data-theme="dark"],
+.dark {
+  /* Compat aliases — consume absorbed --mj-* (no competing night palette) */
 
   --bg: var(--surface-app, var(--mj-bg));
   --bg-elevated: var(--mj-surface);

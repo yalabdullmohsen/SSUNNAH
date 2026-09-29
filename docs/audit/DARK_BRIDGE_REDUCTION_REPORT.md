@@ -1,48 +1,50 @@
-# DARK BRIDGE REDUCTION REPORT — Wave 3
+# DARK BRIDGE REDUCTION REPORT — PR2 (Token Absorb)
 
 | Field | Value |
 |---|---|
 | Date | 2026-09-29 |
-| Branch | `cursor/debt-reduction-w3` |
-| Status | **IMPROVED** (classify + absorb non-dark outside decls) |
+| Branch | `cursor/final-internal-closure-pr2` |
+| Status | **IMPROVED** — `--mj-*` remaps absorbed; imports KEEP |
+
+Companion: `docs/audit/SUNNAH_FINAL_INTERNAL_CLOSURE_PR2.md` · authority `docs/design/DARK_MODE_AUTHORITY.md`.
 
 ## Classification
 
 | File | Class | `--mj-*` decls outside allowlist | Action |
 |---|---|---:|---|
-| `dark-mode-recovery.css` | **ACTIVE** | 7 | KEEP import · `--dm-*` → `--mj-*` remaps |
-| `dark-mode-surfaces.css` | **ACTIVE** | 0 | KEEP · surface rules |
-| `dark-design-system.css` | **COMPATIBILITY** | 8 | KEEP · superseded by recovery/premium when loaded |
-| `premium-dark-refine.css` | **ACTIVE** | 15 | KEEP · winning night `--mj-*` via `--pd-*` |
+| `dark-mode-recovery.css` | **ACTIVE** | **0** (was 7) | KEEP import · `--dm-*` + chrome · no `--mj-*` |
+| `dark-mode-surfaces.css` | **ACTIVE** | 0 | KEEP |
+| `dark-design-system.css` | **COMPATIBILITY** | **0** (was 8) | KEEP · consumer patches only |
+| `premium-dark-refine.css` | **ACTIVE** | **0** (was 15) | KEEP · `--pd-*` polish only |
 | `pages/luxury-night-v2.css` | **COMPATIBILITY** | 0 | KEEP deferred |
-| `sunnah-identity-luxury-night.css` | **COMPATIBILITY** | — | KEEP identity polish |
-| `dark-emerald` (legacy name) | **COMPATIBILITY** | via design-system | No standalone delete |
+| `sunnah-identity-luxury-night.css` | **COMPATIBILITY** | — | KEEP |
+| `components/dark-emerald-menus.css` | **COMPATIBILITY** | 0 | KEEP menus |
 
-**REMOVE_CANDIDATE:** none with proven parity.
+**REMOVE_CANDIDATE:** none. **BLOCKED:** mushaf reader · admin · prayer calc.
 
-## Absorbed this wave (non-dark outside → theme-aliases / theme)
+## Absorb (PR2)
 
-| Former file | Decls removed | Destination |
+| Former site | Decls removed | Destination |
 |---|---:|---|
-| `page-shell.css` compact density | 4 | `theme-aliases` compact block |
-| `native-feel.css` nav sign | 2 | `theme-aliases` |
-| `thumb-zone.css` | 1 | `theme-aliases` |
-| `interaction-states.css` | 1 | use aliases `--mj-brand-soft` |
-| `card-system-tokens.css` | 2 | aliases owns `--mj-brand-soft` |
+| `premium-dark-refine.css` | 15 | `theme.css` contract + `theme-aliases` night + HDR |
+| `dark-design-system.css` | 8 | aliases (HDR `@media`) · no bridge `--mj-*` |
+| `dark-mode-recovery.css` | 7 | aliases live-bind `--mj-bg` ← `--surface-app` (recovery still sets `--surface-app`) |
 
-**mjDeclOutsideAllowlist:** 40 → **30** (only dark bridge remaps remain).
+**mjDeclOutsideAllowlist:** 30 → **0**.
 
 ## Import removal
 
-**Not done** for recovery / surfaces / refine / design-system — Home/Search/Prayer/Quran/Settings dark parity still depends on deferred cascade. Follow-up: port `--pd-*`/`--dm-*` winners into allowlisted authority then drop one file at a time.
+**Not done** — recovery / surfaces / refine / design-system still required for `--dm-*` / `--pd-*` and selector leak-fixes. File delete deferred until REMOVE_CANDIDATE with proof.
 
 ## Smoke (authority)
 
-| Route | Light | Dark | Notes |
+| Route | Light | Dark | System |
 |---|---|---|---|
-| Home / Search / Prayer / Quran / Settings | OK | OK (bridges ACTIVE) | No import strip |
-| Learning | OK | OK | Route matrix closed W3 |
+| Home / Search / Prayer / Quran Hub / Hadith / Lessons / Settings | OK | OK (aliases = contract) | OK via `auto` |
+| Mushaf | OK | MUSHAF_SPECIAL appearance | OK |
+
+No FOUC intent: competing `#121816` aliases night canvas removed; `--mj-bg` tracks `--surface-app`.
 
 ## Verdict
 
-IMPROVED · outside decls −10 · dark imports KEEP pending parity.
+IMPROVED · outside decls −30 · bridge **imports** KEEP · ceilings lowered via `--write-budget`.

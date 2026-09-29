@@ -85,10 +85,10 @@ Phase 5 **does not** delete SAFE_REMOVE_CANDIDATE entries.
 | `styles/sections-calm-polish.css` | OVERRIDE_PATCH / KEEP | **TOKEN ABSORB done** (competing hex removed; chips → aliases) |
 | `styles/typography-scale.css` | COMPATIBILITY | **TOKEN ABSORB** `--mj-fs-*` → theme-aliases |
 | `styles/soft-cards.css` | **REMOVED (Wave 3)** | consumers=0 · AppCard on `cs-card`/`ss-app-card` · import deleted |
-| `styles/dark-mode-recovery.css` | ACTIVE | Classify only — import KEEP (parity incomplete) |
+| `styles/dark-mode-recovery.css` | ACTIVE | PR2: `--mj-*` absorbed; KEEP `--dm-*` + chrome |
 | `styles/dark-mode-surfaces.css` | ACTIVE | KEEP |
-| `styles/dark-design-system.css` | COMPATIBILITY | `--mj-*` remaps remain; absorb later |
-| `styles/premium-dark-refine.css` | ACTIVE | KEEP — winning night `--mj-*` |
+| `styles/dark-design-system.css` | COMPATIBILITY | PR2: `--mj-*` absorbed; KEEP consumer patches |
+| `styles/premium-dark-refine.css` | ACTIVE | PR2: `--mj-*` absorbed; KEEP `--pd-*` polish |
 | `styles/pages/luxury-night-v2.css` | COMPATIBILITY | Deferred import KEEP |
 | `styles/sunnah-identity-luxury-night.css` | COMPATIBILITY | Identity night polish KEEP |
 | `styles/pages/*-legacy.css` | MIGRATION_CANDIDATE | PR-10/11 |

@@ -55,8 +55,8 @@ assert.match(refine, /--pd-elevated:/, "توكن سطح مرتفع تفاعلي"
 assert.match(refine, /--pd-emerald:/, "زمرد أساسي");
 assert.match(refine, /--pd-gold:/, "ذهب ناعم");
 assert.match(refine, /--pd-ink:/, "حبر دافئ");
-assert.match(refine, /--mj-brand-deep-ink:/, "حبر brand-deep مقروء");
-assert.match(refine, /--mj-brand-deep:\s*var\(--elite-forest/, "brand-deep ليلي = غابة مقروءة لا #0E1C17");
+/* PR2: --mj-brand-deep* absorbed into theme.css / theme-aliases */
+assert.doesNotMatch(refine, /--mj-[\w-]+\s*:/, "refine لا يعيد إعلان --mj-* (TOKEN ABSORB)");
 assert.match(refine, /\[class\$="__glow"\]/, "قمع الوهج الزخرفي");
 assert.match(refine, /--pd-elev-1:/, "ارتفاع سطح L1");
 assert.match(refine, /--pd-elev-2:/, "ارتفاع مميز L2");
@@ -73,6 +73,13 @@ assert.match(theme, /--surface-elevated:\s*#24302[Bb]/, "سطح مرتفع مق�
 assert.match(theme, /--mj-ink:\s*#EDE8DF/, "حبر ليلي دافئ");
 assert.match(theme, /--surface-app:\s*#0F1613/, "غابة عميقة");
 assert.match(theme, /--mj-accent:\s*#C9A86C/, "ذهب ناعم");
+assert.match(theme, /--mj-brand-deep-ink:\s*#EDE8DF/, "حبر brand-deep مقروء (authority)");
+assert.match(theme, /--mj-brand-deep:\s*#8FD4B0/, "brand-deep ليلي = غابة مقروءة لا #0E1C17");
+
+const aliases = read("src/styles/theme-aliases.css");
+assert.match(aliases, /--mj-bg:\s*var\(--surface-app/, "aliases: --mj-bg يتبع --surface-app");
+assert.match(aliases, /--mj-brand-deep:\s*var\(--elite-forest/, "aliases: brand-deep ليلي");
+assert.match(aliases, /dynamic-range:\s*high/, "OLED/HDR في aliases لا في الجسور");
 
 const recovery = read("src/styles/dark-mode-recovery.css");
 assert.match(recovery, /--dm-bg:\s*#0f1613/, "خلفية استرداد عميقة");
