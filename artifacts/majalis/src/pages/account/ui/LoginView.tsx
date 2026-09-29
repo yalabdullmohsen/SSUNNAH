@@ -7,15 +7,24 @@ import { isSupabaseConfigured } from "@/lib/supabase-config";
 import { bootstrapSupabaseFromServer } from "@/lib/supabase-bootstrap";
 import {
   resetPasswordForEmail,
+  resendSignupConfirmation,
   supabase,
 } from "@/lib/supabase";
+import { logSupabaseError } from "@/lib/supabase-config";
 import { preloadRoute } from "@/lib/lazy-with-retry";
 import { Loading } from "@/components/ui-common";
 import { Button } from "@/components/ui/button";
 import { FormLabel, FieldError } from "@/components/design-system";
+import { PasswordPolicyChecklist } from "@/components/auth/PasswordPolicyChecklist";
 import { applyPageSeo } from "@/lib/seo";
 import { canSubmitForm } from "@/lib/form-rate-limit";
 import { sanitizeAuthNext } from "@/lib/auth-redirect";
+import {
+  PASSWORD_MIN_LENGTH,
+  PASSWORD_MISMATCH_AR,
+  PASSWORD_POLICY_HINT_AR,
+  validatePassword,
+} from "@/lib/password-policy";
 import "@/styles/pages/auth.css";
 import "@/styles/sunnah-identity-forms-filters.css";
 
@@ -72,6 +81,10 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [authReady, setAuthReady] = useState(isSupabaseConfigured());
   const [resetSent, setResetSent] = useState(false);
+  /** بريد بانتظار التأكيد بعد signup بلا session */
+  const [pendingConfirmEmail, setPendingConfirmEmail] = useState<string | null>(null);
+  const [resendLoading, setResendLoading] = useState(false);
+  const [resendNote, setResendNote] = useState("");
 
   const { login, register, logout, refreshUser, isAdmin, isLoggedIn, loading: authLoading } = useAuth();
   const nextPath = useMemo(() => getNextPath(), [location]);
@@ -108,18 +121,21 @@ export default function LoginPage() {
   useEffect(() => {
     if (authLoading) return;
     if (!isLoggedIn) return;
+    if (pendingConfirmEmail) return;
     if (adminLogin && isAdmin) {
       navigate(nextPath);
       return;
     }
     if (!adminLogin) navigate(nextPath);
-  }, [authLoading, isLoggedIn, isAdmin, navigate, nextPath, adminLogin]);
+  }, [authLoading, isLoggedIn, isAdmin, navigate, nextPath, adminLogin, pendingConfirmEmail]);
 
   const switchTab = (next: AuthTab) => {
     setError("");
     setSuccess("");
     setDenied(false);
     setResetSent(false);
+    setPendingConfirmEmail(null);
+    setResendNote("");
     setTab(next);
     if (adminLogin) return;
     if (next === "register") {
@@ -132,8 +148,9 @@ export default function LoginPage() {
   const validateRegister = (): string | null => {
     if (fullName.trim().length < 2) return "يرجى إدخال الاسم (حرفان على الأقل).";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) return "البريد غير صحيح";
-    if (password.length < 8) return "كلمة المرور قصيرة";
-    if (password !== confirmPassword) return "كلمة المرور غير متطابقة";
+    const policyError = validatePassword(password);
+    if (policyError) return policyError;
+    if (password !== confirmPassword) return PASSWORD_MISMATCH_AR;
     return null;
   };
 
@@ -141,6 +158,26 @@ export default function LoginPage() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) return "البريد غير صحيح";
     if (!password) return "أدخل كلمة المرور";
     return null;
+  };
+
+  const handleResendConfirmation = async () => {
+    if (!pendingConfirmEmail) return;
+    if (!canSubmitForm("auth-resend-confirm", 8000)) {
+      setResendNote("انتظر لحظات ثم أعد المحاولة.");
+      return;
+    }
+    setResendLoading(true);
+    setResendNote("");
+    setError("");
+    try {
+      const { error: resendError } = await resendSignupConfirmation(pendingConfirmEmail);
+      if (resendError) throw resendError;
+      setResendNote("أُعيد إرسال رسالة التأكيد. راجع بريدك.");
+    } catch (err) {
+      setError(mapAuthError(err));
+    } finally {
+      setResendLoading(false);
+    }
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -182,10 +219,13 @@ export default function LoginPage() {
 
         const userId = data?.user?.id;
         if (userId) {
-          await supabase.from("profiles").upsert(
+          const { error: profileError } = await supabase.from("profiles").upsert(
             { id: userId, full_name: fullName.trim(), email: email.trim(), role: "user" },
             { onConflict: "id" },
           );
+          if (profileError) {
+            logSupabaseError("auth:register-profile-upsert", profileError, { userId });
+          }
         }
 
         if (data?.session) {
@@ -193,7 +233,7 @@ export default function LoginPage() {
           navigate(nextPath || "/");
           return;
         }
-        setSuccess("تم إنشاء حسابك. راجع بريدك لتأكيد الحساب ثم سجّل الدخول.");
+        setPendingConfirmEmail(email.trim());
         return;
       }
 
@@ -241,6 +281,80 @@ export default function LoginPage() {
       : adminLogin
         ? "دخول المسؤول"
         : null;
+
+  if (pendingConfirmEmail) {
+    return (
+      <div className="login-page" dir="rtl">
+        <div className="login-card" data-testid="signup-confirm-pending">
+          <header className="login-card__header">
+            <div className="login-app-icon" aria-hidden="true">
+              <img
+                src="/brand/icon-1024.png"
+                alt=""
+                className="login-app-icon__img"
+                loading="eager"
+                decoding="async"
+                width={56}
+                height={56}
+              />
+            </div>
+            <p className="login-card__brand">سُنّة</p>
+            <h1 className="login-card__title">تم إنشاء الحساب</h1>
+          </header>
+
+          {error ? (
+            <FieldError id="auth-form-error" className="login-alert login-alert--error">
+              {error}
+            </FieldError>
+          ) : null}
+
+          <div className="signup-confirm" role="status">
+            <p className="signup-confirm__lead">✅ تم إنشاء الحساب</p>
+            <p className="signup-confirm__mail">
+              📩 تم إرسال رسالة تأكيد إلى{" "}
+              <strong dir="ltr">{pendingConfirmEmail}</strong>
+            </p>
+            <ol className="signup-confirm__steps">
+              <li>افتح البريد</li>
+              <li>اضغط رابط التفعيل</li>
+              <li>ثم سجّل الدخول</li>
+            </ol>
+            {resendNote ? (
+              <p className="login-alert login-alert--success" role="status">
+                {resendNote}
+              </p>
+            ) : null}
+            <Button
+              type="button"
+              variant="primary"
+              className="login-submit"
+              loading={resendLoading}
+              disabled={resendLoading}
+              onClick={() => void handleResendConfirmation()}
+              data-testid="signup-resend-confirmation"
+            >
+              إعادة إرسال بريد التفعيل
+            </Button>
+            <Button
+              type="button"
+              variant="ghost"
+              size="small"
+              className="login-text-btn"
+              onClick={() => switchTab("login")}
+            >
+              الانتقال لتسجيل الدخول
+            </Button>
+          </div>
+
+          <div className="login-actions">
+            <Link href="/" className="login-guest-link">
+              المتابعة كزائر
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="login-page" dir="rtl">
@@ -366,14 +480,15 @@ export default function LoginPage() {
                   id="auth-password"
                   type="password"
                   autoComplete={tab === "register" ? "new-password" : "current-password"}
-                  placeholder={tab === "register" ? "٨ أحرف على الأقل" : "••••••••"}
+                  placeholder={tab === "register" ? PASSWORD_POLICY_HINT_AR : "••••••••"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  minLength={tab === "register" ? 8 : undefined}
+                  minLength={tab === "register" ? PASSWORD_MIN_LENGTH : undefined}
                   disabled={loading || !authEnabled}
                   className="text-base"
                 />
+                {tab === "register" ? <PasswordPolicyChecklist password={password} /> : null}
               </div>
             ) : null}
 
@@ -388,7 +503,7 @@ export default function LoginPage() {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
-                  minLength={8}
+                  minLength={PASSWORD_MIN_LENGTH}
                   disabled={loading || !authEnabled}
                   className="text-base"
                 />

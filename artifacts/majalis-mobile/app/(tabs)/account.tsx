@@ -18,6 +18,11 @@ import * as Haptics from "expo-haptics";
 import { useAuth } from "@/context/AuthContext";
 import { useColors } from "@/hooks/useColors";
 import { signIn, signUp } from "@/lib/supabase";
+import {
+  mapPasswordPolicyServerError,
+  PASSWORD_POLICY_ERROR_AR,
+  validatePassword,
+} from "@/lib/password-policy";
 
 type Mode = "login" | "register";
 
@@ -48,13 +53,30 @@ export default function AccountScreen() {
           setLoading(false);
           return;
         }
-        const { error } = await signUp(email.trim(), password.trim(), fullName.trim());
+        const policyError = validatePassword(password.trim());
+        if (policyError) {
+          Alert.alert("خطأ", policyError);
+          setLoading(false);
+          return;
+        }
+        const { data, error } = await signUp(email.trim(), password.trim(), fullName.trim());
         if (error) throw error;
         Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-        Alert.alert("تم التسجيل", "تم إنشاء حسابك بنجاح");
+        if (data?.session) {
+          Alert.alert("تم التسجيل", "تم إنشاء حسابك بنجاح");
+        } else {
+          Alert.alert(
+            "تم إنشاء الحساب",
+            "تم إرسال رسالة تأكيد إلى بريدك. افتح الرابط ثم سجّل الدخول.",
+          );
+        }
       }
     } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "حدث خطأ";
+      const mapped = mapPasswordPolicyServerError(err);
+      const message =
+        mapped ||
+        (err instanceof Error ? err.message : null) ||
+        PASSWORD_POLICY_ERROR_AR;
       Alert.alert("خطأ", message);
     } finally {
       setLoading(false);

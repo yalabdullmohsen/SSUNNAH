@@ -52,9 +52,10 @@ assert.doesNotMatch(css, /login-highlights/);
 assert.doesNotMatch(css, /linear-gradient\(160deg,\s*var\(--mj-brand-deep\)/);
 
 assert.match(msgs, /البريد غير صحيح/);
-assert.match(msgs, /كلمة المرور قصيرة/);
-assert.match(msgs, /كلمة المرور غير متطابقة/);
+assert.match(msgs, /mapPasswordPolicyServerError|PASSWORD_POLICY|password-policy/);
 assert.match(msgs, /الحساب غير موجود/);
+assert.match(login, /validatePassword|PASSWORD_MIN_LENGTH|PasswordPolicyChecklist/);
+assert.doesNotMatch(login, /٨ أحرف على الأقل/);
 
 assert.match(register, /LoginView/);
 

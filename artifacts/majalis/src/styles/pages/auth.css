@@ -326,3 +326,92 @@ html[data-theme="dark"] .login-text-btn {
 .login-back-link--primary {
   color: var(--auth-green);
 }
+
+/* سياسة كلمة المرور — قائمة تحقق حية */
+.password-policy {
+  margin-block-start: 0.45rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.password-policy__hint {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--auth-muted);
+}
+
+.password-policy__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.22rem;
+}
+
+.password-policy__item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--auth-muted);
+}
+
+.password-policy__item.is-ok {
+  color: var(--auth-green-deep);
+}
+
+.password-policy__mark {
+  inline-size: 1.1rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.password-policy__label {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: baseline;
+}
+
+.password-policy__label-en {
+  opacity: 0.72;
+  font-size: 0.72rem;
+}
+
+.signup-confirm {
+  display: grid;
+  gap: 0.65rem;
+  text-align: center;
+  padding-block: 0.35rem 0.5rem;
+}
+
+.signup-confirm__lead {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--auth-green-deep);
+}
+
+.signup-confirm__mail {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--auth-ink);
+}
+
+.signup-confirm__steps {
+  margin: 0;
+  padding-inline-start: 1.25rem;
+  text-align: start;
+  color: var(--auth-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+html.dark .password-policy__item.is-ok,
+html[data-theme="dark"] .password-policy__item.is-ok,
+html.dark .signup-confirm__lead,
+html[data-theme="dark"] .signup-confirm__lead {
+  color: var(--auth-green);
+}
