@@ -7,6 +7,7 @@ import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { ShareButtons } from "@/components/ContentActions";
 import { fetchPublishedArbaeenLove, type ArbaeenHadith } from "@/lib/arbaeen-love-service";
 import { DetailScreen } from "@/components/design-system/screens";
+import "@/styles/components/topic-page.css";
 
 export default function ArbaeenLovePage() {
   const [items, setItems] = useState<ArbaeenHadith[]>([]);

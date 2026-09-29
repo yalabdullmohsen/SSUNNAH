@@ -9,6 +9,7 @@ import { supabase } from "@/lib/supabase";
 import { readCookieConsent, writeCookieConsent } from "@/lib/cookie-consent";
 import { DetailScreen } from "@/components/design-system/screens";
 import "@/styles/pages/learn-legal-v2.css";
+import "@/styles/pages/settings.css";
 
 /**
  * Interactive privacy hub — rights + consent + export/delete links.

@@ -1,4 +1,5 @@
 import "@/styles/pages/hadith-design-language.css";
+import "@/styles/components/topic-page.css";
 import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import { Link } from "wouter";
 import { ArrowRight, BookOpen, ChevronRight, Search, X, AlertTriangle } from "lucide-react";

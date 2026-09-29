@@ -44,6 +44,7 @@ import { resolveLessonType } from "@/lib/lesson-type";
 import "@/styles/pages/not-found.css";
 import "@/styles/pages/lessons.css";
 import "@/styles/sunnah-identity-detail-reading.css";
+import "@/styles/components/topic-page.css";
 
 import { Button } from "@/components/ui/button";
 function buildMapsEmbed(url?: string, mosque?: string, region?: string) {

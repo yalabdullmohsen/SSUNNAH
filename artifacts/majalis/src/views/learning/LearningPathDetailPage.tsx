@@ -30,6 +30,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import { breadcrumbJsonLd } from "@/lib/seo-structured-data";
 import "@/styles/pages/learning-path-detail.css";
+import "@/styles/components/topic-page.css";
 import {
   BookOpen, FileQuestion, BookMarked, CheckSquare,
   CheckCircle2, ChevronLeft, ChevronDown, Clock, Lock,
