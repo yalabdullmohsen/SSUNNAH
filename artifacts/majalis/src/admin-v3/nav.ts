@@ -73,7 +73,7 @@ export const ADMIN_V3_NAV: readonly AdminV3NavItem[] = [
     label: "التحليلات",
     path: `${ADMIN_V3_BASE}/analytics`,
     mobileMore: true,
-    description: "اتجاهات الأداء والنشر والاعتدال",
+    description: "منصة التحليلات الرسمية — Admin / Super Admin",
     legacyHref: "/admin?section=search-analytics",
   },
   {

@@ -92,12 +92,12 @@ export const ADMIN_V3_CENTERS: Record<
   analytics: {
     id: "analytics",
     title: "التحليلات",
-    summary: "ملخصات واتجاهات فوق الأدوات السابقة — بلا عدّادات خام وحدها.",
+    summary: "منصة التحليلات الرسمية — بيانات حقيقية / NO DATA، Admin وSuper Admin فقط.",
     permissions: ["admin.read", "analytics.read"],
     tools: [
-      { id: "search-analytics", title: "تحليلات البحث", description: "إحصاءات البحث", href: "/admin?section=search-analytics", tags: ["بحث"], legacySource: "AdminShell#search-analytics" },
+      { id: "analytics-platform", title: "منصة التحليلات", description: "المرجع الرسمي لإحصاءات سُنّة (أصلي)", href: "/admin/v3/analytics", tags: ["منصة", "أصلي"], legacySource: "admin-v3/AnalyticsPlatformPage" },
+      { id: "search-analytics", title: "تحليلات البحث (Legacy)", description: "إحصاءات البحث السابقة", href: "/admin?section=search-analytics", tags: ["بحث"], legacySource: "AdminShell#search-analytics" },
       { id: "feature-status", title: "صحة المحتوى", description: "حالة الميزات والنشر", href: "/admin/feature-status", tags: ["صحة"], legacySource: "FeatureStatusPage" },
-      { id: "dashboard-legacy", title: "لوحة التشغيل السابقة", description: "لوحة review/dashboard", href: "/admin/dashboard", tags: ["لوحة"], legacySource: "AdminDashboardPage" },
       { id: "verified-knowledge", title: "المعرفة الموثقة", description: "مؤشرات التوثيق", href: "/admin?section=verified-knowledge", tags: ["توثيق"], legacySource: "AdminShell#verified-knowledge" },
     ],
   },

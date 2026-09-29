@@ -28,6 +28,7 @@ import intelligentSearchHandler from "../lib/api-handlers/intelligent-search.js"
 import topicContentHandler from "../lib/api-handlers/topic-content.js";
 import contentRelationsHandler from "../lib/api-handlers/content-relations.js";
 import searchAnalyticsHandler from "../lib/api-handlers/admin/search-analytics.js";
+import analyticsPlatformHandler from "../lib/api-handlers/admin/analytics-platform.js";
 import digitalLearningHandler from "../lib/api-handlers/digital-learning.js";
 import digitalLearningAdminHandler from "../lib/api-handlers/admin/digital-learning.js";
 import autonomousOrchestratorHandler from "../lib/api-handlers/cron/autonomous-orchestrator.js";
@@ -203,6 +204,8 @@ app.post("/api/content-relations", express.json({ limit: "8kb" }), runHandler(co
 app.get("/api/scholarly-search", runHandler(scholarlySearchHandler, "scholarly-search"));
 app.get("/api/admin/search-analytics", runHandler(searchAnalyticsHandler, "search-analytics"));
 app.post("/api/admin/search-analytics", express.json({ limit: "8kb" }), runHandler(searchAnalyticsHandler, "search-analytics"));
+app.get("/api/admin/analytics-platform", runHandler(analyticsPlatformHandler, "analytics-platform"));
+app.post("/api/admin/analytics-platform", express.json({ limit: "8kb" }), runHandler(analyticsPlatformHandler, "analytics-platform"));
 app.get("/api/digital-learning", runHandler(digitalLearningHandler, "digital-learning"));
 app.post("/api/digital-learning", express.json({ limit: "32kb" }), runHandler(digitalLearningHandler, "digital-learning"));
 app.get("/api/admin/digital-learning", runHandler(digitalLearningAdminHandler, "digital-learning-admin"));

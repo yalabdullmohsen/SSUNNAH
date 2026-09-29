@@ -100,6 +100,7 @@
 | `docs/audit/SUNNAH_REPOSITORY_CLOSURE_REPORT.md` | إغلاق المستودع موجة 1 — WEB_RELEASED_NATIVE_HOLD |
 | `docs/remediation/ROUTE_THEME_OWNERSHIP.md` | مالك سطح المسار (`commitRouteSurface`) — بلا تسرّب pts-immersive |
 | `docs/design/FORM_FEEDBACK_AUTHORITY.md` | **Interaction PR-6** — سلطة النماذج + FormFields + Empty/Loading/Error/Offline |
+| `docs/admin/ANALYTICS_PLATFORM_REPORT.md` | منصة تحليلات Admin v3 — `/admin/v3/analytics` · PARTIAL · بلا mock |
 | `docs/design/ADMIN_V3_INTERACTION_AUTHORITY.md` | **Interaction PR-7** — سلطة تفاعل Admin v3 (Button/AppCard/FormFields/States) |
 | `docs/design/DARK_MODE_AUTHORITY.md` | **Interaction PR-8** — سلطة الوضع الليلي (`--sf-*`/`--ss-*`/`--mj-*` · مفتاح `data-theme` واحد) |
 | `docs/design/SUNNAH_INTERACTION_SYSTEM_BASELINE.md` | خط أساس مقاييس الأزرار + ميزانيات متناقصة |

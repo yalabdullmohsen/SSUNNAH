@@ -185,6 +185,7 @@ export const API_ROUTES = [
   { prefix: "/api/content-relations", module: "./api-handlers/content-relations.js", allowGet: true },
   { prefix: "/api/scholarly-search", module: "./api-handlers/scholarly-search.js", allowGet: true, rateLimit: searchRateLimit },
   { prefix: "/api/admin/search-analytics", module: "./api-handlers/admin/search-analytics.js", allowGet: true },
+  { prefix: "/api/admin/analytics-platform", module: "./api-handlers/admin/analytics-platform.js", allowGet: true, exact: true },
   { prefix: "/api/digital-learning", module: "./api-handlers/digital-learning.js", allowGet: true, rateLimit: digitalLearningRateLimit },
   { prefix: "/api/cron/autonomous-orchestrator", module: "./api-handlers/cron/autonomous-orchestrator.js", allowGet: true, exact: true },
   { prefix: "/api/admin/autonomous-ai", module: "./api-handlers/admin/autonomous-ai.js", allowGet: true },

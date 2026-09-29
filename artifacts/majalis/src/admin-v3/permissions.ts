@@ -98,6 +98,18 @@ export function can(role: string, permission: AdminServerPermission): boolean {
   return false;
 }
 
+/** Analytics Platform (/admin/v3/analytics) — Admin + Super Admin only (not analytics_viewer / content_manager). */
+export function canAccessAnalyticsPlatform(
+  role: string,
+  user?: {
+    is_owner?: boolean;
+    profile?: { is_owner?: boolean | null; is_super_admin?: boolean | null } | null;
+  } | null,
+): boolean {
+  if (user?.is_owner || user?.profile?.is_owner || user?.profile?.is_super_admin) return true;
+  return role === "super_admin" || role === "system_admin";
+}
+
 /** Map old catalog labels → server checks (compat) */
 export function catalogLabelToServer(label: string): AdminServerPermission | null {
   const map: Record<string, AdminServerPermission> = {

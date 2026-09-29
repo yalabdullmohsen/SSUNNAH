@@ -14,39 +14,8 @@ import {
 } from "../../ui/primitives";
 import { listCenterTools } from "../../centers/catalog";
 
-export function AnalyticsPage() {
-  const { user } = useAuth();
-  const role = resolveGovernanceRole(user);
-  if (!can(role, "analytics.read") && !can(role, "content.read") && !can(role, "*")) {
-    return <AdminPermissionDenied permission="analytics.read" />;
-  }
-  const tools = listCenterTools("analytics");
-  return (
-    <div className="av3-domain">
-      <AdminPageHeader
-        title="التحليلات"
-        description="مؤشرات موجودة فعليًا — بلا إحصاءات مصطنعة."
-        crumbs={[
-          { label: "لوحة التحكم", href: "/admin/v3" },
-          { label: "التحليلات" },
-        ]}
-      />
-      <div className="av3-tool-grid">
-        {tools.map((t) => (
-          <AppCard key={t.id} className="av3-tool-card" data-ss-surface="admin-tool">
-            <h3 className="av3-tool-card__title">
-              {t.title} <AdminLegacyChip />
-            </h3>
-            <p className="av3-tool-card__desc">{t.description}</p>
-            <Button asChild variant="primary">
-              <Link href={t.href}>فتح</Link>
-            </Button>
-          </AppCard>
-        ))}
-      </div>
-    </div>
-  );
-}
+/** @deprecated Use AnalyticsPlatformPage — kept for any residual imports. */
+export { AnalyticsPlatformPage as AnalyticsPage } from "../analytics/AnalyticsPlatformPage";
 
 export function SettingsOpsPage() {
   const [status, setStatus] = useState<Record<string, unknown> | null>(null);
