@@ -82,6 +82,7 @@ body,
 }
 
 /* بطاقات قراءة/مراجع فاتحة — البطاقات الرئيسية عبر card-system؛ soft-card متقاعد */
+.soft-card:not(.hub-card),
 .section-card,
 .ds-card,
 .mj-card,
