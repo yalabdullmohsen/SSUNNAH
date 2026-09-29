@@ -86,6 +86,8 @@
 | `docs/design/SUNNAH_VISUAL_INTERACTION_FINAL_REPORT.md` | تقرير Visual+Interaction (#2336–#2345) · PARTIAL · HOLD |
 | `docs/design/INTERACTION_COMPONENT_AUTHORITY.md` | **Interaction PR-1** — عقد Button/Link/IconButton/FAB/Back |
 | `docs/design/CARD_SURFACE_AUTHORITY.md` | **Interaction PR-5** — سلطة AppCard / InteractiveCard / StatusCard / Surfaces |
+| `docs/audit/SUNNAH_FINAL_COMPLETION_AUDIT.md` | تدقيق إغلاق Visual+Interaction (#2336–#2346) — أرقام حية + PARTIAL |
+| `docs/audit/SUNNAH_FINAL_COMPLETION_LIVE_STATE.md` | حالة حية tip/prod/PR train للتدقيق النهائي |
 | `docs/design/FORM_FEEDBACK_AUTHORITY.md` | **Interaction PR-6** — سلطة النماذج + FormFields + Empty/Loading/Error/Offline |
 | `docs/design/ADMIN_V3_INTERACTION_AUTHORITY.md` | **Interaction PR-7** — سلطة تفاعل Admin v3 (Button/AppCard/FormFields/States) |
 | `docs/design/DARK_MODE_AUTHORITY.md` | **Interaction PR-8** — سلطة الوضع الليلي (`--sf-*`/`--ss-*`/`--mj-*` · مفتاح `data-theme` واحد) |

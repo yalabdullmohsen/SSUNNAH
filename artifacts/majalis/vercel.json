@@ -723,6 +723,14 @@
       "destination": "/index.html"
     },
     {
+      "source": "/offline",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/offline/:path*",
+      "destination": "/index.html"
+    },
+    {
       "source": "/dashboard",
       "destination": "/index.html"
     },
