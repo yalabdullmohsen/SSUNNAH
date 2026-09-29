@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useLocation } from "wouter";
 import { useAuth } from "@/components/AuthProvider";
+import { Button } from "@/components/ui/button";
+import { FormLabel, SearchInput } from "@/components/design-system/FormFields";
 import {
   ADMIN_V3_MOBILE_MORE,
   ADMIN_V3_MOBILE_PRIMARY,
@@ -80,15 +82,16 @@ export function AdminV3Shell({ children }: Props) {
         </div>
         <nav className="av3-sidebar__nav">
           {ADMIN_V3_NAV.map((item) => (
-            <button
+            <Button
               type="button"
               key={item.id}
+              variant={center.id === item.id ? "primary" : "ghost"}
               className={`av3-nav-item${center.id === item.id ? " is-active" : ""}`}
               aria-current={center.id === item.id ? "page" : undefined}
               onClick={() => go(item)}
             >
               {item.label}
-            </button>
+            </Button>
           ))}
         </nav>
         <Link
@@ -105,23 +108,24 @@ export function AdminV3Shell({ children }: Props) {
       <div className="av3-main-col">
         <header className="av3-topbar">
           <form className="av3-search" onSubmit={onSearch} role="search">
-            <label className="av3-sr-only" htmlFor="av3-search-input">
+            <FormLabel className="av3-sr-only" htmlFor="av3-search-input">
               بحث في لوحة التحكم
-            </label>
-            <input
+            </FormLabel>
+            <SearchInput
               id="av3-search-input"
-              type="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="بحث…"
               autoComplete="off"
+              onClear={search ? () => setSearch("") : undefined}
             />
           </form>
 
           <div className="av3-topbar__actions">
             <div className="av3-menu">
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 className="av3-icon-btn"
                 aria-expanded={notifOpen}
                 aria-haspopup="true"
@@ -132,7 +136,7 @@ export function AdminV3Shell({ children }: Props) {
                 }}
               >
                 إشعارات
-              </button>
+              </Button>
               {notifOpen ? (
                 <div className="av3-menu__panel" role="dialog" aria-label="الإشعارات">
                   <p className="av3-menu__empty">لا إشعارات جديدة.</p>
@@ -141,8 +145,9 @@ export function AdminV3Shell({ children }: Props) {
             </div>
 
             <div className="av3-menu">
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 className="av3-icon-btn"
                 aria-expanded={accountOpen}
                 aria-haspopup="true"
@@ -153,7 +158,7 @@ export function AdminV3Shell({ children }: Props) {
                 }}
               >
                 {displayName}
-              </button>
+              </Button>
               {accountOpen ? (
                 <div className="av3-menu__panel" role="menu">
                   <Link href="/" className="av3-menu__item" role="menuitem">
@@ -162,14 +167,15 @@ export function AdminV3Shell({ children }: Props) {
                   <Link href="/admin/legacy" className="av3-menu__item" role="menuitem">
                     اللوحة السابقة
                   </Link>
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
                     className="av3-menu__item"
                     role="menuitem"
                     onClick={() => void logout()}
                   >
                     خروج
-                  </button>
+                  </Button>
                 </div>
               ) : null}
             </div>
@@ -196,24 +202,26 @@ export function AdminV3Shell({ children }: Props) {
 
       <nav className="av3-bottom" aria-label="تنقّل سريع">
         {ADMIN_V3_MOBILE_PRIMARY.map((item) => (
-          <button
+          <Button
             type="button"
             key={item.id}
+            variant="ghost"
             className={`av3-bottom__item${center.id === item.id ? " is-active" : ""}`}
             aria-current={center.id === item.id ? "page" : undefined}
             onClick={() => go(item)}
           >
             {item.label}
-          </button>
+          </Button>
         ))}
-        <button
+        <Button
           type="button"
+          variant="ghost"
           className={`av3-bottom__item${moreOpen || ADMIN_V3_MOBILE_MORE.some((m) => m.id === center.id) ? " is-active" : ""}`}
           aria-expanded={moreOpen}
           onClick={() => setMoreOpen((v) => !v)}
         >
           المزيد
-        </button>
+        </Button>
       </nav>
 
       {moreOpen ? (
@@ -221,15 +229,15 @@ export function AdminV3Shell({ children }: Props) {
           <ul>
             {ADMIN_V3_MOBILE_MORE.map((item) => (
               <li key={item.id}>
-                <button type="button" onClick={() => go(item)}>
+                <Button type="button" variant="ghost" onClick={() => go(item)}>
                   {item.label}
-                </button>
+                </Button>
               </li>
             ))}
           </ul>
-          <button type="button" className="av3-btn" onClick={() => setMoreOpen(false)}>
+          <Button type="button" variant="secondary" onClick={() => setMoreOpen(false)}>
             إغلاق
-          </button>
+          </Button>
         </div>
       ) : null}
     </div>

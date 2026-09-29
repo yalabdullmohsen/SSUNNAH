@@ -1,10 +1,18 @@
 import type { ReactNode } from "react";
+import {
+  EmptyStateV2,
+  ErrorStateV2,
+  LoadingStateV2,
+  OfflineStateV2,
+} from "@/components/design-system";
 
 export function AdminV3Loading({ label = "تجهيز…" }: { label?: string }) {
   return (
-    <div className="av3-state av3-state--loading" role="status" aria-live="polite" aria-busy="true">
-      <p>{label}</p>
-    </div>
+    <LoadingStateV2
+      title={label}
+      className="av3-state av3-state--loading"
+      skeletonLines={2}
+    />
   );
 }
 
@@ -12,15 +20,27 @@ export function AdminV3Empty({
   title = "لا يوجد محتوى هنا بعد",
   body = "سيُبنى هذا المركز في موجة لاحقة. يمكنك فتح اللوحة السابقة إن لزم.",
   action,
+  ctaLabel,
+  onCtaClick,
+  href,
 }: {
   title?: string;
   body?: string;
+  /** Prefer ctaLabel / onCtaClick / href — kept for rare custom slots */
   action?: ReactNode;
+  ctaLabel?: string;
+  onCtaClick?: () => void;
+  href?: string;
 }) {
   return (
-    <div className="av3-state av3-state--empty" role="status">
-      <h2 className="av3-state__title">{title}</h2>
-      <p className="av3-state__body">{body}</p>
+    <div className="av3-state av3-state--empty" data-admin-state="empty">
+      <EmptyStateV2
+        title={title}
+        description={body}
+        ctaLabel={ctaLabel}
+        onCtaClick={onCtaClick}
+        href={href}
+      />
       {action ? <div className="av3-state__action">{action}</div> : null}
     </div>
   );
@@ -28,10 +48,14 @@ export function AdminV3Empty({
 
 export function AdminV3Offline() {
   return (
-    <div className="av3-state av3-state--offline" role="status">
-      <h2 className="av3-state__title">أنت غير متصل</h2>
-      <p className="av3-state__body">تحقق من الشبكة ثم أعد المحاولة.</p>
-    </div>
+    <OfflineStateV2
+      title="أنت غير متصل"
+      description="تحقق من الشبكة ثم أعد المحاولة."
+      availableHint="قد لا تعمل أدوات اللوحة دون اتصال."
+      offlineCenterHref="/admin/v3"
+      offlineCenterLabel="لوحة التحكم"
+      className="av3-state av3-state--offline"
+    />
   );
 }
 
@@ -43,14 +67,13 @@ export function AdminV3ErrorState({
   onRetry?: () => void;
 }) {
   return (
-    <div className="av3-state av3-state--error" role="alert">
-      <h2 className="av3-state__title">حدث خطأ</h2>
-      <p className="av3-state__body">{message}</p>
-      {onRetry ? (
-        <button type="button" className="av3-btn" onClick={onRetry}>
-          إعادة المحاولة
-        </button>
-      ) : null}
-    </div>
+    <ErrorStateV2
+      title="حدث خطأ"
+      description={message}
+      onRetry={onRetry}
+      homeHref="/admin/v3"
+      homeLabel="لوحة التحكم"
+      className="av3-state av3-state--error"
+    />
   );
 }

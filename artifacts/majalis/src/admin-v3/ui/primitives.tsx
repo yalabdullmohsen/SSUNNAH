@@ -1,5 +1,14 @@
 import { type FormEvent, type ReactNode, useEffect, useId, useRef, useState } from "react";
 import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
+import {
+  FieldError,
+  FormActions,
+  FormLabel,
+  SearchInput,
+} from "@/components/design-system/FormFields";
+import { StatusCard } from "@/components/design-system/SurfacePrimitives";
+import { ErrorStateV2 } from "@/components/design-system";
 import { AdminV3Empty, AdminV3ErrorState, AdminV3Loading } from "../states";
 
 export function AdminPageHeader({
@@ -44,13 +53,17 @@ export function AdminPageHeader({
 
 export function AdminPermissionDenied({ permission }: { permission?: string }) {
   return (
-    <div className="av3-state av3-state--error" role="alert">
-      <h2 className="av3-state__title">غير مصرّح</h2>
-      <p className="av3-state__body">
-        ليس لديك صلاحية عرض هذه الصفحة.
-        {permission ? ` (مطلوب: ${permission})` : null}
-      </p>
-    </div>
+    <ErrorStateV2
+      title="غير مصرّح"
+      description={
+        permission
+          ? `ليس لديك صلاحية عرض هذه الصفحة. (مطلوب: ${permission})`
+          : "ليس لديك صلاحية عرض هذه الصفحة."
+      }
+      homeHref="/admin/v3"
+      homeLabel="لوحة التحكم"
+      className="av3-state av3-state--error"
+    />
   );
 }
 
@@ -100,17 +113,17 @@ export function AdminSearchInput({
   const inputId = id || autoId;
   return (
     <div className="av3-field">
-      <label htmlFor={inputId} className="av3-sr-only">
+      <FormLabel htmlFor={inputId} className="av3-sr-only">
         {label}
-      </label>
-      <input
+      </FormLabel>
+      <SearchInput
         id={inputId}
-        type="search"
-        className="av3-center__search"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={label}
         autoComplete="off"
+        onClear={value ? () => onChange("") : undefined}
+        className="av3-center__search"
       />
     </div>
   );
@@ -128,20 +141,20 @@ export function AdminPagination({
   if (pageCount <= 1) return null;
   return (
     <div className="av3-pager" role="navigation" aria-label="تصفح الصفحات">
-      <button type="button" className="av3-btn" disabled={page <= 1} onClick={() => onChange(page - 1)}>
+      <Button type="button" variant="secondary" disabled={page <= 1} onClick={() => onChange(page - 1)}>
         السابق
-      </button>
+      </Button>
       <span aria-live="polite">
         {page} / {pageCount}
       </span>
-      <button
+      <Button
         type="button"
-        className="av3-btn"
+        variant="secondary"
         disabled={page >= pageCount}
         onClick={() => onChange(page + 1)}
       >
         التالي
-      </button>
+      </Button>
     </div>
   );
 }
@@ -217,19 +230,20 @@ export function AdminConfirmDialog({
       <div className="av3-dialog" role="alertdialog" aria-modal="true" aria-labelledby="av3-dialog-title">
         <h2 id="av3-dialog-title">{title}</h2>
         <p>{body}</p>
-        <div className="av3-dialog__actions">
-          <button type="button" className="av3-btn" ref={cancelRef} onClick={onCancel} disabled={busy}>
+        <FormActions className="av3-dialog__actions">
+          <Button type="button" variant="secondary" ref={cancelRef} onClick={onCancel} disabled={busy}>
             إلغاء
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
-            className={`av3-btn ${danger ? "av3-btn--danger" : "av3-btn--primary"}`}
+            variant={danger ? "destructive" : "primary"}
             onClick={onConfirm}
             disabled={busy}
+            loading={busy}
           >
-            {busy ? "…" : confirmLabel}
-          </button>
-        </div>
+            {confirmLabel}
+          </Button>
+        </FormActions>
       </div>
     </div>
   );
@@ -247,7 +261,7 @@ export function AdminFormLayout({
   return (
     <form className="av3-form" onSubmit={onSubmit} noValidate>
       <div className="av3-form__fields">{children}</div>
-      <div className="av3-form__actions">{actions}</div>
+      <FormActions className="av3-form__actions">{actions}</FormActions>
     </form>
   );
 }
@@ -263,16 +277,21 @@ export function AdminFormField({
   children: ReactNode;
   error?: string;
 }) {
+  const errorId = `${id}-error`;
   return (
     <div className="av3-field">
-      <label htmlFor={id}>{label}</label>
+      <FormLabel htmlFor={id}>{label}</FormLabel>
       {children}
-      {error ? (
-        <p className="av3-field__error" role="alert">
-          {error}
-        </p>
-      ) : null}
+      <FieldError id={errorId}>{error}</FieldError>
     </div>
+  );
+}
+
+export function AdminFlash({ children }: { children: ReactNode }) {
+  return (
+    <StatusCard className="av3-success" role="status">
+      {children}
+    </StatusCard>
   );
 }
 

@@ -1,5 +1,6 @@
 import { type FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/AuthProvider";
 import { v3List, v3Mutate } from "../../data/admin-v3-api";
 import { can, resolveGovernanceRole } from "../../permissions";
@@ -8,6 +9,7 @@ import {
   AdminConfirmDialog,
   AdminDataTable,
   AdminFilterBar,
+  AdminFlash,
   AdminFormField,
   AdminFormLayout,
   AdminLoadGate,
@@ -69,6 +71,7 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
   const [dirty, setDirty] = useState(false);
   const [busy, setBusy] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState<Record<string, unknown> | null>(null);
+  const [confirmDiscard, setConfirmDiscard] = useState(false);
   const [flash, setFlash] = useState<string | null>(null);
 
   useUnsavedWarning(dirty);
@@ -126,6 +129,20 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
     }
     setDraft(next);
     setDirty(false);
+  };
+
+  const closeEditor = () => {
+    setEditing(null);
+    setDirty(false);
+    setConfirmDiscard(false);
+  };
+
+  const requestCloseEditor = () => {
+    if (dirty) {
+      setConfirmDiscard(true);
+      return;
+    }
+    closeEditor();
   };
 
   const onField = (key: string, value: string) => {
@@ -229,23 +246,19 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
         ]}
         actions={
           <>
-            <Link href={meta.legacy} className="av3-btn">
-              Legacy
-            </Link>
+            <Button asChild variant="secondary">
+              <Link href={meta.legacy}>Legacy</Link>
+            </Button>
             {canWrite ? (
-              <button type="button" className="av3-btn av3-btn--primary" onClick={openCreate}>
+              <Button type="button" variant="primary" onClick={openCreate}>
                 {meta.createLabel}
-              </button>
+              </Button>
             ) : null}
           </>
         }
       />
 
-      {flash ? (
-        <p className="av3-success" role="status">
-          {flash}
-        </p>
-      ) : null}
+      {flash ? <AdminFlash>{flash}</AdminFlash> : null}
 
       <AdminFilterBar
         onSubmit={(e) => {
@@ -268,18 +281,18 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
               render: (r) => (
                 <div className="av3-row-actions">
                   {canWrite ? (
-                    <button type="button" className="av3-btn" onClick={() => openEdit(r)}>
+                    <Button type="button" variant="secondary" onClick={() => openEdit(r)}>
                       تعديل
-                    </button>
+                    </Button>
                   ) : null}
                   {canArchive ? (
-                    <button
+                    <Button
                       type="button"
-                      className="av3-btn av3-btn--danger"
+                      variant="destructive"
                       onClick={() => setConfirmDelete(r)}
                     >
                       أرشفة
-                    </button>
+                    </Button>
                   ) : null}
                 </div>
               ),
@@ -295,20 +308,12 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
             onSubmit={onSave}
             actions={
               <>
-                <button
-                  type="button"
-                  className="av3-btn"
-                  onClick={() => {
-                    if (dirty && !window.confirm("هناك تغييرات غير محفوظة. إغلاق؟")) return;
-                    setEditing(null);
-                    setDirty(false);
-                  }}
-                >
+                <Button type="button" variant="secondary" onClick={requestCloseEditor}>
                   إلغاء
-                </button>
-                <button type="submit" className="av3-btn av3-btn--primary" disabled={busy || !canWrite}>
-                  {busy ? "…" : "حفظ"}
-                </button>
+                </Button>
+                <Button type="submit" variant="primary" disabled={!canWrite} loading={busy}>
+                  حفظ
+                </Button>
               </>
             }
           >
@@ -421,6 +426,16 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
         busy={busy}
         onCancel={() => setConfirmDelete(null)}
         onConfirm={() => void onArchive()}
+      />
+
+      <AdminConfirmDialog
+        open={confirmDiscard}
+        title="تغييرات غير محفوظة"
+        body="هناك تغييرات غير محفوظة. هل تريد الإغلاق دون حفظ؟"
+        confirmLabel="إغلاق دون حفظ"
+        danger
+        onCancel={() => setConfirmDiscard(false)}
+        onConfirm={closeEditor}
       />
     </div>
   );

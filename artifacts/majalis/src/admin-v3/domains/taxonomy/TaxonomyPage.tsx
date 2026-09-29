@@ -1,5 +1,6 @@
 import { type FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/AuthProvider";
 import { v3List, v3Mutate } from "../../data/admin-v3-api";
 import { can, resolveGovernanceRole } from "../../permissions";
@@ -91,9 +92,9 @@ export function TaxonomyPage() {
           { label: "التصنيف" },
         ]}
         actions={
-          <Link href="/admin?section=categories" className="av3-btn">
-            Legacy
-          </Link>
+          <Button asChild variant="secondary">
+            <Link href="/admin?section=categories">Legacy</Link>
+          </Button>
         }
       />
 
@@ -120,9 +121,9 @@ export function TaxonomyPage() {
               render: (r) => (
                 <div className="av3-row-actions">
                   {canWrite ? (
-                    <button
+                    <Button
                       type="button"
-                      className="av3-btn"
+                      variant="secondary"
                       onClick={() =>
                         setDraft({
                           id: String(r.id),
@@ -134,16 +135,16 @@ export function TaxonomyPage() {
                       }
                     >
                       تعديل
-                    </button>
+                    </Button>
                   ) : null}
                   {canWrite ? (
-                    <button
+                    <Button
                       type="button"
-                      className="av3-btn av3-btn--danger"
+                      variant="destructive"
                       onClick={() => setArchiveTarget(r as unknown as Cat)}
                     >
                       أرشفة
-                    </button>
+                    </Button>
                   ) : null}
                 </div>
               ),
@@ -158,9 +159,9 @@ export function TaxonomyPage() {
           <AdminFormLayout
             onSubmit={onSave}
             actions={
-              <button type="submit" className="av3-btn av3-btn--primary" disabled={busy}>
+              <Button type="submit" variant="primary" loading={busy}>
                 حفظ
-              </button>
+              </Button>
             }
           >
             <AdminFormField label="الاسم" id="cat-name">

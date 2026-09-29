@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
+import { AppCard } from "@/components/design-system/AppCard";
 import { useAuth } from "@/components/AuthProvider";
 import { v3Get, v3List } from "../../data/admin-v3-api";
 import { can, resolveGovernanceRole } from "../../permissions";
@@ -31,15 +33,15 @@ export function AnalyticsPage() {
       />
       <div className="av3-tool-grid">
         {tools.map((t) => (
-          <article key={t.id} className="av3-tool-card">
+          <AppCard key={t.id} className="av3-tool-card" data-ss-surface="admin-tool">
             <h3 className="av3-tool-card__title">
               {t.title} <AdminLegacyChip />
             </h3>
             <p className="av3-tool-card__desc">{t.description}</p>
-            <Link href={t.href} className="av3-btn av3-btn--primary">
-              فتح
-            </Link>
-          </article>
+            <Button asChild variant="primary">
+              <Link href={t.href}>فتح</Link>
+            </Button>
+          </AppCard>
         ))}
       </div>
     </div>
@@ -113,13 +115,13 @@ export function SettingsOpsPage() {
         </h3>
         <div className="av3-tool-grid">
           {listCenterTools("settings").map((t) => (
-            <article key={t.id} className="av3-tool-card">
+            <AppCard key={t.id} className="av3-tool-card" data-ss-surface="admin-tool">
               <h3 className="av3-tool-card__title">{t.title}</h3>
               <p className="av3-tool-card__desc">{t.description}</p>
-              <Link href={t.href} className="av3-btn">
-                فتح
-              </Link>
-            </article>
+              <Button asChild variant="secondary">
+                <Link href={t.href}>فتح</Link>
+              </Button>
+            </AppCard>
           ))}
         </div>
       </section>

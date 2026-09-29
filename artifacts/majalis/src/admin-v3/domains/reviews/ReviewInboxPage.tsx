@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
+import { FormLabel, FieldError, FormActions } from "@/components/design-system/FormFields";
 import { useAuth } from "@/components/AuthProvider";
 import { decideSubmission, listSubmissions } from "../../data/admin-v3-api";
 import { can, resolveGovernanceRole } from "../../permissions";
@@ -7,6 +9,7 @@ import { emitAdminV3AuditEvent } from "../../audit-events";
 import {
   AdminDataTable,
   AdminFilterBar,
+  AdminFlash,
   AdminLoadGate,
   AdminPageHeader,
   AdminPagination,
@@ -46,6 +49,7 @@ export function ReviewInboxPage() {
   const [selected, setSelected] = useState<Row | null>(null);
   const [rejectOpen, setRejectOpen] = useState(false);
   const [rejectReason, setRejectReason] = useState("");
+  const [rejectError, setRejectError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [flash, setFlash] = useState<string | null>(null);
 
@@ -108,6 +112,11 @@ export function ReviewInboxPage() {
 
   const runReject = async () => {
     if (!selected || !canReject || busy) return;
+    if (rejectReason.trim().length < 3) {
+      setRejectError("سبب الرفض مطلوب (٣ أحرف على الأقل).");
+      return;
+    }
+    setRejectError(null);
     setBusy(true);
     try {
       await decideSubmission({
@@ -140,17 +149,13 @@ export function ReviewInboxPage() {
           { label: "المراجعات" },
         ]}
         actions={
-          <Link href="/admin?section=submissions" className="av3-btn">
-            المسار السابق
-          </Link>
+          <Button asChild variant="secondary">
+            <Link href="/admin?section=submissions">المسار السابق</Link>
+          </Button>
         }
       />
 
-      {flash ? (
-        <p className="av3-success" role="status">
-          {flash}
-        </p>
-      ) : null}
+      {flash ? <AdminFlash>{flash}</AdminFlash> : null}
 
       <AdminFilterBar
         onSubmit={(e) => {
@@ -217,13 +222,13 @@ export function ReviewInboxPage() {
                 key: "actions",
                 label: "عرض",
                 render: (r) => (
-                  <button
+                  <Button
                     type="button"
-                    className="av3-btn av3-btn--primary"
+                    variant="primary"
                     onClick={() => setSelected(r as unknown as Row)}
                   >
                     تفاصيل
-                  </button>
+                  </Button>
                 ),
               },
             ]}
@@ -238,33 +243,34 @@ export function ReviewInboxPage() {
                 <AdminStatusBadge status={selected.status} />
               </p>
               <pre className="av3-detail__body">{selected.content || "—"}</pre>
-              <div className="av3-form__actions av3-form__actions--split">
-                <button type="button" className="av3-btn" onClick={() => setSelected(null)}>
+              <FormActions className="av3-form__actions av3-form__actions--split">
+                <Button type="button" variant="secondary" onClick={() => setSelected(null)}>
                   إغلاق
-                </button>
+                </Button>
                 <div className="av3-form__actions-danger">
                   {canReject && selected.status === "pending" ? (
-                    <button
+                    <Button
                       type="button"
-                      className="av3-btn av3-btn--danger"
+                      variant="destructive"
                       disabled={busy}
                       onClick={() => setRejectOpen(true)}
                     >
                       رفض
-                    </button>
+                    </Button>
                   ) : null}
                   {canApprove && selected.status === "pending" ? (
-                    <button
+                    <Button
                       type="button"
-                      className="av3-btn av3-btn--primary"
+                      variant="primary"
                       disabled={busy}
+                      loading={busy}
                       onClick={() => void runApprove()}
                     >
                       موافقة ونشر
-                    </button>
+                    </Button>
                   ) : null}
                 </div>
-              </div>
+              </FormActions>
             </aside>
           ) : null}
         </div>
@@ -275,27 +281,42 @@ export function ReviewInboxPage() {
           <div className="av3-dialog" role="alertdialog" aria-modal="true" aria-labelledby="reject-title">
             <h2 id="reject-title">رفض المقترح</h2>
             <p>أدخل سبب الرفض لـ «{selected?.title || ""}».</p>
-            <label htmlFor="reject-reason">سبب الرفض</label>
+            <FormLabel htmlFor="reject-reason">سبب الرفض</FormLabel>
             <textarea
               id="reject-reason"
               value={rejectReason}
-              onChange={(e) => setRejectReason(e.target.value)}
+              onChange={(e) => {
+                setRejectReason(e.target.value);
+                if (rejectError) setRejectError(null);
+              }}
               rows={3}
               required
+              aria-invalid={Boolean(rejectError) || undefined}
+              aria-describedby={rejectError ? "reject-reason-error" : undefined}
             />
-            <div className="av3-dialog__actions">
-              <button type="button" className="av3-btn" disabled={busy} onClick={() => setRejectOpen(false)}>
-                إلغاء
-              </button>
-              <button
+            <FieldError id="reject-reason-error">{rejectError}</FieldError>
+            <FormActions className="av3-dialog__actions">
+              <Button
                 type="button"
-                className="av3-btn av3-btn--danger"
-                disabled={busy || rejectReason.trim().length < 3}
+                variant="secondary"
+                disabled={busy}
+                onClick={() => {
+                  setRejectOpen(false);
+                  setRejectError(null);
+                }}
+              >
+                إلغاء
+              </Button>
+              <Button
+                type="button"
+                variant="destructive"
+                disabled={busy}
+                loading={busy}
                 onClick={() => void runReject()}
               >
-                {busy ? "…" : "تأكيد الرفض"}
-              </button>
-            </div>
+                تأكيد الرفض
+              </Button>
+            </FormActions>
           </div>
         </div>
       ) : null}

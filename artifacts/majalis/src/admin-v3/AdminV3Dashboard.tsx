@@ -1,4 +1,7 @@
 import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
+import { AppCard } from "@/components/design-system/AppCard";
+import { StatusCard } from "@/components/design-system/SurfacePrimitives";
 import { ADMIN_V3_NAV } from "./nav";
 import { emitAdminV3AuditEvent, listAdminV3AuditEvents } from "./audit-events";
 import { ADMIN_V3_CENTERS } from "./centers/catalog";
@@ -21,22 +24,23 @@ export function AdminV3Dashboard() {
           const tools =
             ADMIN_V3_CENTERS[item.id as keyof typeof ADMIN_V3_CENTERS]?.tools.length ?? 0;
           return (
-            <article key={item.id} className="av3-dash__card">
+            <AppCard key={item.id} className="av3-dash__card" data-ss-surface="admin-hub">
               <h2>{item.label}</h2>
               <p>{item.description}</p>
               <p className="av3-dash__meta">{tools} أداة موثّقة</p>
               <div className="av3-dash__card-actions">
-                <Link
-                  href={item.path}
-                  className="av3-btn av3-btn--primary"
-                  onClick={() =>
-                    emitAdminV3AuditEvent("admin.center.view", item.path, { center: item.id })
-                  }
-                >
-                  فتح
-                </Link>
+                <Button asChild variant="primary">
+                  <Link
+                    href={item.path}
+                    onClick={() =>
+                      emitAdminV3AuditEvent("admin.center.view", item.path, { center: item.id })
+                    }
+                  >
+                    فتح
+                  </Link>
+                </Button>
               </div>
-            </article>
+            </AppCard>
           );
         })}
       </section>
@@ -44,7 +48,9 @@ export function AdminV3Dashboard() {
       <section className="av3-dash__audit" aria-label="آخر أحداث التدقيق">
         <h2>آخر أحداث التدقيق (محلي)</h2>
         {recent.length === 0 ? (
-          <p className="av3-state__body">لا أحداث بعد في هذه الجلسة.</p>
+          <StatusCard className="av3-state__body" role="status">
+            لا أحداث بعد في هذه الجلسة.
+          </StatusCard>
         ) : (
           <ul>
             {recent.map((e) => (
