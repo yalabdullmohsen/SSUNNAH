@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/app-bottom-sheet.css";
 
 type Props = {
@@ -222,8 +223,9 @@ export function AppBottomSheet({
       onPointerUp={onEdgePointerUp}
       onPointerCancel={onEdgePointerUp}
     >
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className="app-sheet-overlay__scrim"
         aria-label={dismissible ? "إغلاق" : undefined}
         aria-hidden={dismissible ? undefined : true}
@@ -265,9 +267,9 @@ export function AppBottomSheet({
           <>
             {footer ? <div className="app-sheet__footer-slot">{footer}</div> : null}
             <div className="app-sheet__footer">
-              <button type="button" className="app-sheet__close" onClick={requestClose}>
+              <Button type="button" variant="secondary" className="app-sheet__close" onClick={requestClose}>
                 {closeLabel}
-              </button>
+              </Button>
             </div>
           </>
         ) : footer ? (
