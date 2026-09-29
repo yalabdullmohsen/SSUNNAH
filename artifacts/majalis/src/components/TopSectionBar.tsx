@@ -24,7 +24,7 @@ const PREFETCH_BY_HREF: Record<string, () => void> = {
   "/mushaf": () => { void import("@/pages/quran/MushafReaderPage"); },
   "/lessons": () => { void import("@/pages/lessons/LessonsPage"); },
   "/prayer-times": () => {
-    document.documentElement.classList.add("pts-immersive");
+    /* بلا pts-immersive — المالك: commitRouteSurface من App */
     void import("@/styles/pages/prayer-times.css");
     void import("@/pages/worship/PrayerTimesPage");
   },

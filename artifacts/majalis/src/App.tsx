@@ -38,6 +38,7 @@ import { trackContinueReading } from "@/lib/continue-reading";
 import { setPrayerTimesCache } from "@/lib/lesson-time";
 import { recordNavigationVisit } from "@/lib/navigation-back";
 import { isAuthStandalonePath, isImmersiveChromePath, isPinnedChromePath, isPrayerTimesPath } from "@/lib/immersive-chrome";
+import { commitRouteSurface } from "@/lib/route-surface";
 import { isHomeChromePath } from "@/lib/ticker-quiet-paths";
 import { isNative, isNativeApp } from "@/lib/capacitor-utils";
 import { isMiniPlayerVisible, subscribeMiniPlayer } from "@/lib/quran-mini-player";
@@ -731,15 +732,10 @@ function AppShellInner() {
     ensureChromeMeta(undefined, { skipThemeColor: true });
   }, []);
 
-  /* قبل الطلاء — لا useEffect؛ وإلا يظهر إطار كريمي/أبيض إطارًا واحدًا */
+  /* قبل الطلاء — مالك وحيد لـ pts-immersive (لا Prefetch/warm) */
   useLayoutEffect(() => {
-    document.documentElement.classList.toggle("pts-immersive", onPrayer);
-    document.documentElement.classList.toggle("chrome-immersive", immersive);
-    return () => {
-      document.documentElement.classList.remove("pts-immersive");
-      document.documentElement.classList.remove("chrome-immersive");
-    };
-  }, [onPrayer, immersive]);
+    commitRouteSurface(location);
+  }, [location]);
 
   const isAdminPath =
     location === "/admin" ||

@@ -19,11 +19,8 @@ const bottom = read("src/components/BottomNavBar.tsx");
 const top = read("src/components/TopSectionBar.tsx");
 
 assert.match(app, /prayer-route-shell\.css/, "صدفة الصلاة تُحمَّل مع App");
-assert.match(
-  app,
-  /useLayoutEffect\(\(\) => \{\s*document\.documentElement\.classList\.toggle\("pts-immersive"/,
-  "pts-immersive عبر useLayoutEffect قبل الطلاء",
-);
+assert.match(app, /commitRouteSurface\(location\)/, "سطح الصلاة عبر المالك الوحيد");
+assert.match(app, /useLayoutEffect/, "التزام السطح قبل الطلاء");
 assert.doesNotMatch(
   app,
   /useEffect\(\(\) => \{\s*document\.documentElement\.classList\.toggle\("pts-immersive"/,
@@ -48,9 +45,9 @@ assert.doesNotMatch(
 );
 
 assert.match(prefetch, /prayer-times\.css/, "تسخين CSS الصلاة مع المسار");
-assert.match(bottom, /classList\.add\("pts-immersive"\)/, "نية الشريط السفلي تطلي السطح فورًا");
-assert.match(bottom, /prayer-times\.css/);
-assert.match(top, /classList\.add\("pts-immersive"\)/, "نية الشريط العلوي تطلي السطح فورًا");
+assert.doesNotMatch(bottom, /classList\.add\(\s*["']pts-immersive["']\s*\)/, "الشريط لا يطلي السطح عالميًا");
+assert.match(bottom, /prefetchPrayerRouteAssets|prayer-times\.css/);
+assert.doesNotMatch(top, /classList\.add\(\s*["']pts-immersive["']\s*\)/, "العلوي لا يطلي السطح عالميًا");
 assert.match(top, /prayer-times\.css/);
 
 console.log("prayer-page-flash-gate.test.ts: ok");
