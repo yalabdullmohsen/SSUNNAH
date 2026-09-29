@@ -12,7 +12,7 @@ import {
   computeBackControlBottomOffset,
   computeContentBottomInsetForBack,
 } from "@/lib/global-back-layout";
-import { isImmersiveChromePath } from "@/lib/immersive-chrome";
+import { hasInPageBackChrome, isImmersiveChromePath } from "@/lib/immersive-chrome";
 import { normalizeNavPath } from "@/lib/navigation-back";
 import "@/styles/sunnah-identity-chrome-nav.css";
 
@@ -72,7 +72,9 @@ export function GlobalBackControlHost() {
   const hideOnMushaf = isImmersiveChromePath(path);
   const hideOnAdhanSettings =
     path === "/adhan-settings" || path.startsWith("/adhan-settings/");
-  const hideBack = hideOnHome || hideOnMushaf || hideOnAdhanSettings;
+  /** Rule 6: prefer in-page AppBackButton — suppress unified floating host when page chrome owns back */
+  const hideOnInPageAppBack = hasInPageBackChrome(path);
+  const hideBack = hideOnHome || hideOnMushaf || hideOnAdhanSettings || hideOnInPageAppBack;
 
   useLayoutEffect(() => {
     if (hideBack) {

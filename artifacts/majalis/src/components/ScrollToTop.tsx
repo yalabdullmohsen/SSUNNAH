@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 function isModalOverlayOpen(): boolean {
   if (typeof document === "undefined") return false;
@@ -50,8 +51,9 @@ export function ScrollToTop() {
   if (!visible) return null;
 
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
       className="scroll-to-top"
       data-scroll-to-top="1"
       data-safe-area="1"
@@ -66,6 +68,6 @@ export function ScrollToTop() {
     >
       <ArrowUp size={18} strokeWidth={2.5} aria-hidden="true" className="stt-icon" />
       <span className="stt-label">أعلى</span>
-    </button>
+    </Button>
   );
 }

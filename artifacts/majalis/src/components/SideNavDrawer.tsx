@@ -2,6 +2,8 @@ import { createPortal } from "react-dom";
 import { memo, useCallback, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { LogIn, LogOut, Settings, UserPlus, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import { useAuth } from "./AuthProvider";
 import { usePageSwipe } from "@/hooks/usePageSwipe";
 import { isNavHrefActive } from "@/lib/nav-active";
@@ -105,8 +107,9 @@ export const SideNavDrawer = memo(function SideNavDrawer({
       aria-hidden={open ? undefined : true}
       inert={!open}
     >
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className="drawer-scrim"
         tabIndex={open ? 0 : -1}
         aria-label="إغلاق القائمة"
@@ -127,9 +130,9 @@ export const SideNavDrawer = memo(function SideNavDrawer({
           <div className="sidebar-brand">
             <p className="sidebar-title">القائمة</p>
           </div>
-          <button type="button" onClick={onClose} aria-label="إغلاق القائمة" className="sidebar-close">
+          <IconButton type="button" onClick={onClose} label="إغلاق القائمة" className="sidebar-close">
             <X size={20} strokeWidth={2} aria-hidden="true" />
-          </button>
+          </IconButton>
         </header>
 
         <div className="sidebar-body">
@@ -192,8 +195,9 @@ export const SideNavDrawer = memo(function SideNavDrawer({
                       </span>
                     </Link>
                   ) : null}
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
                     className="sidebar-item sidebar-item--danger"
                     onClick={handleLogout}
                     aria-label="تسجيل الخروج"
@@ -204,7 +208,7 @@ export const SideNavDrawer = memo(function SideNavDrawer({
                     <span className="sidebar-item-text">
                       <span className="sidebar-item-title">تسجيل الخروج</span>
                     </span>
-                  </button>
+                  </Button>
                 </>
               )}
             </nav>

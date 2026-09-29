@@ -1,5 +1,6 @@
 import { AlertTriangle, RefreshCw } from "lucide-react";
 import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 import { C } from "@/lib/theme";
 import type { ShariaRulingExtended } from "@/lib/rulings-types";
 import { ACTION, BUTTON, STATUS } from "@/lib/ui-copy";
@@ -143,15 +144,16 @@ export function ErrorState({ text, onRetry }: { text: string; onRetry?: () => vo
       <AlertTriangle size={28} strokeWidth={1.5} className="adv-error-state__icon" aria-hidden="true" />
       <p className="adv-error-state__msg">{safe}</p>
       {onRetry && (
-        <button
+        <Button
           type="button"
+          variant="primary"
           className="adv-error-state__retry ss-action-btn ss-action-btn--primary mj-pressable"
           onClick={onRetry}
           aria-label={ACTION.retry}
         >
           <RefreshCw size={14} aria-hidden="true" />
           {BUTTON.retry}
-        </button>
+        </Button>
       )}
     </div>
   );
@@ -185,13 +187,14 @@ export function Empty({
           {actionLabel || "متابعة"}
         </a>
       ) : actionLabel && onAction ? (
-        <button
+        <Button
           type="button"
+          variant="secondary"
           className="ss-action-btn ss-action-btn--secondary mj-pressable ss-state-card__action"
           onClick={onAction}
         >
           {actionLabel}
-        </button>
+        </Button>
       ) : null}
     </div>
   );
@@ -239,8 +242,10 @@ export function Chip({
   const isTab = role === "tab";
   const isRadio = role === "radio";
   return (
-    <button
+    <Button
       type="button"
+      variant={active ? "primary" : "ghost"}
+      size="small"
       role={role}
       onClick={onClick}
       className={`ds-btn ds-btn--sm ${active ? "ds-btn--primary" : "ds-btn--ghost"} ${className}`.trim()}
@@ -249,7 +254,7 @@ export function Chip({
       aria-checked={isRadio ? Boolean(active) : undefined}
     >
       {children}
-    </button>
+    </Button>
   );
 }
 

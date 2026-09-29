@@ -1,6 +1,7 @@
 import { useRef, type ButtonHTMLAttributes, type ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { DirectionalIcon } from "@/components/DirectionalIcon";
+import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
 import { hasInPageBackChrome, isAuthStandalonePath, isImmersiveChromePath, isPrayerTimesPath } from "@/lib/immersive-chrome";
 import {
@@ -92,8 +93,9 @@ export function AppBackButton({
     variant === "bar";
 
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
       className={cn(VARIANT_CLASS[variant], className)}
       data-app-back="1"
       data-back-variant={variant}
@@ -118,6 +120,6 @@ export function AppBackButton({
       {showText ? (
         <span>{label ?? (variant === "hero" || variant === "legal" ? "→ رجوع" : "رجوع")}</span>
       ) : null}
-    </button>
+    </Button>
   );
 }

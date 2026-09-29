@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { BUTTON } from "@/lib/ui-copy";
 import { Link, useLocation } from "wouter";
 import { Sparkles, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useAssistantChat } from "@/hooks/useAssistantChat";
 import { AssistantChatView } from "./AssistantChatView";
 import { isAssistantFabHiddenPath } from "@/lib/assistant-fab-paths";
@@ -53,8 +54,9 @@ export function AssistantFloatingWidget() {
   return (
     <>
       {!open && (
-        <button
+        <Button
           type="button"
+          variant="ghost"
           className="assistant-fab"
           onClick={() => setOpen(true)}
           aria-label="فتح المساعد العلمي"
@@ -62,13 +64,14 @@ export function AssistantFloatingWidget() {
         >
           <Sparkles size={22} strokeWidth={2} aria-hidden="true" />
           <span className="assistant-fab__label">{BUTTON.askAssistant}</span>
-        </button>
+        </Button>
       )}
 
       {open && (
         <div className="assistant-panel-root" role="presentation">
-          <button
+          <Button
             type="button"
+            variant="ghost"
             className="assistant-panel-backdrop"
             aria-label="إغلاق المساعد"
             onClick={() => setOpen(false)}
@@ -97,15 +100,17 @@ export function AssistantFloatingWidget() {
                 >
                   صفحة كاملة
                 </Link>
-                <button
+                <Button
                   ref={closeRef}
                   type="button"
+                  variant="ghost"
+                  size="icon"
                   className="assistant-panel__close"
                   onClick={() => setOpen(false)}
                   aria-label="إغلاق"
                 >
                   <X size={20} aria-hidden="true" />
-                </button>
+                </Button>
               </div>
             </header>
             <AssistantChatView
