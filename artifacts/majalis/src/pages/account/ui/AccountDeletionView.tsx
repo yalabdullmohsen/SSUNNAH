@@ -1,11 +1,30 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Link, useSearch } from "wouter";
 import { AlertTriangle, Trash2, ShieldOff, CheckCircle } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
 import { useAuth } from "@/components/AuthProvider";
 import { supabase } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  FormLabel,
+  FieldError,
+  FormActions,
+  LoadingStateV2,
+} from "@/components/design-system";
 import "@/styles/pages/account-deletion.css";
+
+function friendlyDeleteError(err: unknown): string {
+  if (!(err instanceof Error)) return "تعذّر حذف الحساب. أعد المحاولة لاحقًا.";
+  const msg = err.message;
+  if (/JWT|جلسة|تسجيل الدخول/i.test(msg)) {
+    return "انتهت جلستك. سجّل الدخول ثم أعد المحاولة.";
+  }
+  if (/شبكة|network|fetch|Failed to fetch/i.test(msg)) {
+    return "تعذّر الاتصال. تحقق من الشبكة ثم أعد المحاولة.";
+  }
+  return "تعذّر حذف الحساب. أعد المحاولة لاحقًا.";
+}
 
 export default function AccountDeletionPage() {
   const { user, isLoggedIn, logout, loading: authLoading } = useAuth();
@@ -17,6 +36,8 @@ export default function AccountDeletionPage() {
   const [confirmWord, setConfirmWord] = useState("");
   const [error, setError] = useState("");
   const heroRef = useRef<HTMLElement>(null);
+  const confirmErrorId = useId();
+  const confirmInputId = useId();
 
   useEffect(() => {
     applyPageSeo({
@@ -57,14 +78,13 @@ export default function AccountDeletionPage() {
         data: { session },
       } = await supabase.auth.getSession();
       const token = session?.access_token;
-      if (!token) throw new Error("لا يوجد JWT صالح");
+      if (!token) throw new Error("SESSION_EXPIRED");
       const res = await fetch("/api/account/delete", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
       });
       if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(body.error ?? "فشل حذف الحساب");
+        throw new Error("DELETE_FAILED");
       }
       try {
         const { clearLocalBookmarks } = await import("@/lib/local-bookmarks");
@@ -79,7 +99,7 @@ export default function AccountDeletionPage() {
       await logout();
       setStep("done");
     } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : "حدث خطأ غير متوقع");
+      setError(friendlyDeleteError(e));
       setStep("typing");
     }
   }
@@ -142,7 +162,7 @@ export default function AccountDeletionPage() {
 
       {authLoading && (
         <div className="accd-login-prompt" aria-busy="true" aria-label="تحديث الحساب">
-          <p aria-busy="true" aria-label="تحديث الحساب">…</p>
+          <LoadingStateV2 title="تحديث الحساب" skeletonLines={1} />
         </div>
       )}
 
@@ -151,12 +171,14 @@ export default function AccountDeletionPage() {
           <p className="accd-actions__email">
             تسجيل الدخول الحالي: <strong>{user?.email}</strong>
           </p>
-          <Button type="button" variant="destructive" className="btn-danger" onClick={() => setStep("confirm")}>
-            <Trash2 size={16} /> أريد حذف حسابي
-          </Button>
-          <Link href="/settings" className="btn-secondary">
-            إلغاء
-          </Link>
+          <FormActions>
+            <Button type="button" variant="destructive" className="btn-danger" onClick={() => setStep("confirm")}>
+              <Trash2 size={16} /> أريد حذف حسابي
+            </Button>
+            <Link href="/settings" className="btn-secondary">
+              إلغاء
+            </Link>
+          </FormActions>
         </div>
       )}
 
@@ -173,9 +195,13 @@ export default function AccountDeletionPage() {
           <p id="accd-confirm-desc" className="accd-confirm__warning">
             لتأكيد الحذف النهائي، اكتب كلمة <strong>«حذف»</strong> في الحقل أدناه:
           </p>
-          <input
+          <FormLabel htmlFor={confirmInputId} className="accd-confirm__label">
+            كلمة التأكيد
+          </FormLabel>
+          <Input
+            id={confirmInputId}
             type="text"
-            className="accd-confirm__input"
+            className="accd-confirm__input min-h-11 text-base"
             placeholder="اكتب: حذف"
             value={confirmWord}
             onChange={(e) => {
@@ -185,14 +211,13 @@ export default function AccountDeletionPage() {
             }}
             dir="rtl"
             autoComplete="off"
-            aria-label="كلمة التأكيد"
+            aria-invalid={error ? true : undefined}
+            aria-describedby={error ? confirmErrorId : undefined}
           />
-          {error && (
-            <p className="accd-confirm__error" role="alert">
-              {error}
-            </p>
-          )}
-          <div className="accd-confirm__btns">
+          <FieldError id={confirmErrorId} className="accd-confirm__error">
+            {error}
+          </FieldError>
+          <FormActions className="accd-confirm__btns">
             <Button
               type="button"
               variant="destructive"
@@ -214,15 +239,17 @@ export default function AccountDeletionPage() {
             >
               إلغاء
             </Button>
-          </div>
+          </FormActions>
         </div>
       )}
 
       {step === "deleting" && (
-        <div className="accd-deleting" role="status" aria-live="polite">
-          <div className="accd-deleting__spinner" aria-hidden="true" />
-          <p role="status" aria-busy="true">يُحذف الحساب…</p>
-        </div>
+        <LoadingStateV2
+          className="accd-deleting"
+          title="يُحذف الحساب…"
+          description="يرجى الانتظار دون إغلاق الصفحة."
+          skeletonLines={2}
+        />
       )}
 
       <div className="accd-footer">
