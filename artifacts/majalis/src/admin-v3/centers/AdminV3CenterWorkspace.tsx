@@ -1,5 +1,9 @@
 import { useEffect, useMemo, useState, startTransition } from "react";
 import { Link, useLocation } from "wouter";
+import { Button } from "@/components/ui/button";
+import { AppCard } from "@/components/design-system/AppCard";
+import { FormLabel, SearchInput } from "@/components/design-system/FormFields";
+import { StatusCard } from "@/components/design-system/SurfacePrimitives";
 import { emitAdminV3AuditEvent, listAdminV3AuditEvents } from "../audit-events";
 import { resolveAdminV3Center, type AdminV3CenterId } from "../nav";
 import { AdminV3Empty, AdminV3ErrorState, AdminV3Loading } from "../states";
@@ -20,7 +24,7 @@ function ToolCard({
   onOpen: (tool: AdminV3ToolItem) => void;
 }) {
   return (
-    <article className="av3-tool-card">
+    <AppCard className="av3-tool-card" data-ss-surface="admin-tool">
       <h3 className="av3-tool-card__title">{tool.title}</h3>
       <p className="av3-tool-card__desc">{tool.description}</p>
       <div className="av3-tool-card__tags">
@@ -30,14 +34,12 @@ function ToolCard({
           </span>
         ))}
       </div>
-      <Link
-        href={tool.href}
-        className="av3-btn av3-btn--primary"
-        onClick={() => onOpen(tool)}
-      >
-        فتح
-      </Link>
-    </article>
+      <Button asChild variant="primary">
+        <Link href={tool.href} onClick={() => onOpen(tool)}>
+          فتح
+        </Link>
+      </Button>
+    </AppCard>
   );
 }
 
@@ -143,21 +145,26 @@ export function AdminV3CenterWorkspace() {
       </header>
 
       {successMsg ? (
-        <p className="av3-success" role="status">
+        <StatusCard className="av3-success" role="status">
           {successMsg}
-        </p>
+        </StatusCard>
       ) : null}
 
       <div className="av3-center__toolbar">
-        <label className="av3-sr-only" htmlFor="av3-center-search">
+        <FormLabel className="av3-sr-only" htmlFor="av3-center-search">
           بحث في أدوات المركز
-        </label>
-        <input
+        </FormLabel>
+        <SearchInput
           id="av3-center-search"
           className="av3-center__search"
-          type="search"
           value={query}
           placeholder="بحث في الأدوات…"
+          onClear={query ? () => {
+            startTransition(() => {
+              setQuery("");
+              setPage(1);
+            });
+          } : undefined}
           onChange={(e) => {
             const v = e.target.value;
             startTransition(() => {
@@ -168,9 +175,11 @@ export function AdminV3CenterWorkspace() {
         />
         <div className="av3-center__filters" role="group" aria-label="تصفية الوسوم">
           {tags.map((t) => (
-            <button
+            <Button
               type="button"
               key={t}
+              variant={tag === t ? "primary" : "secondary"}
+              size="small"
               className={`av3-chip-btn${tag === t ? " is-active" : ""}`}
               onClick={() => {
                 startTransition(() => {
@@ -180,7 +189,7 @@ export function AdminV3CenterWorkspace() {
               }}
             >
               {t}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -195,19 +204,12 @@ export function AdminV3CenterWorkspace() {
         <AdminV3Empty
           title="لا أدوات مطابقة"
           body="عدّل البحث أو امسح التصفية."
-          action={
-            <button
-              type="button"
-              className="av3-btn"
-              onClick={() => {
-                setQuery("");
-                setTag("الكل");
-                setPage(1);
-              }}
-            >
-              مسح التصفية
-            </button>
-          }
+          ctaLabel="مسح التصفية"
+          onCtaClick={() => {
+            setQuery("");
+            setTag("الكل");
+            setPage(1);
+          }}
         />
       ) : (
         <div className="av3-tool-grid">
@@ -219,22 +221,22 @@ export function AdminV3CenterWorkspace() {
 
       {pageCount > 1 ? (
         <nav className="av3-pager" aria-label="تصفح الصفحات">
-          <button
+          <Button
             type="button"
-            className="av3-btn"
+            variant="secondary"
             disabled={safePage <= 1}
             onClick={() => setPage((p) => Math.max(1, p - 1))}
           >
             السابق
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
-            className="av3-btn"
+            variant="secondary"
             disabled={safePage >= pageCount}
             onClick={() => setPage((p) => Math.min(pageCount, p + 1))}
           >
             التالي
-          </button>
+          </Button>
         </nav>
       ) : null}
 

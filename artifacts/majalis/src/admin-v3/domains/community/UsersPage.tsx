@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/AuthProvider";
 import { v3List, v3Mutate } from "../../data/admin-v3-api";
 import { can, resolveGovernanceRole } from "../../permissions";
@@ -80,9 +81,9 @@ export function UsersPage() {
           { label: "المجتمع" },
         ]}
         actions={
-          <Link href="/admin?section=users" className="av3-btn">
-            Legacy
-          </Link>
+          <Button asChild variant="secondary">
+            <Link href="/admin?section=users">Legacy</Link>
+          </Button>
         }
       />
 
