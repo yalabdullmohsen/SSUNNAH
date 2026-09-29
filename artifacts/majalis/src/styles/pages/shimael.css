@@ -265,7 +265,7 @@
 
 /* sh Dark DS */
 
-:is(html[data-theme="dark"], html.dark) .sh-page { background: var(--surface-app, #131a18) !important; }
+:is(html[data-theme="dark"], html.dark) .sh-page { background: var(--surface-app, var(--mj-bg, #0F1613)) !important; }
 :is(html[data-theme="dark"], html.dark) .sh-bab,
 :is(html[data-theme="dark"], html.dark) .prophet-fact-card {
   background: var(--surface-elevated, #24302b) !important;
