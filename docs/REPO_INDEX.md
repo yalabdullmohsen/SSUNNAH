@@ -84,6 +84,7 @@
 | `docs/design/CARD_SURFACE_AUTHORITY.md` | **Interaction PR-5** — سلطة AppCard / InteractiveCard / StatusCard / Surfaces |
 | `docs/design/FORM_FEEDBACK_AUTHORITY.md` | **Interaction PR-6** — سلطة النماذج + FormFields + Empty/Loading/Error/Offline |
 | `docs/design/ADMIN_V3_INTERACTION_AUTHORITY.md` | **Interaction PR-7** — سلطة تفاعل Admin v3 (Button/AppCard/FormFields/States) |
+| `docs/design/DARK_MODE_AUTHORITY.md` | **Interaction PR-8** — سلطة الوضع الليلي (`--sf-*`/`--ss-*`/`--mj-*` · مفتاح `data-theme` واحد) |
 | `docs/design/SUNNAH_INTERACTION_SYSTEM_BASELINE.md` | خط أساس مقاييس الأزرار + ميزانيات متناقصة |
 | `docs/design/UNIFIED_SEARCH_ARCHITECTURE.md` | بحث موحّد `/search` — نطاقات كاملة |
 | `docs/design/PROPHETS_STORIES_REBUILD_BASELINE.md` | **قصص الأنبياء PR-0** — جرد Routes/ألوان كحلية/كروم (بلا إصلاح منتج) |

@@ -7,7 +7,7 @@
    ══════════════════════════════════════════════════════════ */
 
 .hj-page { min-height: 100svh; background: var(--mj-bg); padding-bottom: 4rem; }
-html[data-theme="dark"] .hj-page { background: #111714 !important; }
+/* ليلي: يرث --mj-bg / --surface-app من theme — بلا هكس صفحة محلي */
 
 /* of-the-day card */
 

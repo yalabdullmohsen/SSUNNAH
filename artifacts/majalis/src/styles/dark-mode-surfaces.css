@@ -827,12 +827,12 @@ html.dark .srch-result-card {
   box-shadow: 0 4px 14px -14px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Bottom nav — قاعدة داكنة موحّدة بلا وعاء نعناعي */
+/* Bottom nav — قاعدة داكنة موحّدة بلا وعاء نعناعي (عقد --dm-bottom-nav) */
 html[data-theme="dark"] .bottom-nav,
 html[data-theme="dark"] .bottom-nav--v2,
 html.dark .bottom-nav,
 html.dark .bottom-nav--v2 {
-  background: #131a18 !important;
+  background: var(--dm-bottom-nav, var(--surface-app, #0c1210)) !important;
   background-image: none !important;
   border-block-start: 1px solid #2a3832 !important;
   box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.04) !important;
