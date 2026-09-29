@@ -1,9 +1,10 @@
 /**
  * توافق: إعلان داخل الهيدر — لا HomepageAdBar ولا TopSponsorBanner.
+ * Interaction PR-9: cluster HomepageAdBar محذوف (SAFE_REMOVE مثبت).
  * تشغيل: node --import tsx src/lib/__tests__/homepage-ad-bar-gate.test.ts
  */
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "../../..");
@@ -22,5 +23,13 @@ assert.match(cfg, /enabled:\s*false/);
 assert.match(cfg, /placement:\s*"header"/);
 assert.match(cfg, /شركة العبد المحسن للحج/);
 assert.match(cfg, /الثقة/);
+
+for (const rel of [
+  "src/styles/components/homepage-ad-bar.css",
+  "src/components/home/HomepageAdBar.tsx",
+  "src/config/homepage-ad.ts",
+] as const) {
+  assert.equal(existsSync(resolve(root, rel)), false, `PR-9: ${rel} must stay removed`);
+}
 
 console.log("\nhomepage-ad-bar-gate.test.ts: ok (header ad in navbar)");

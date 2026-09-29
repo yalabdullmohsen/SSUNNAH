@@ -1,16 +1,17 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-09-28 (post #2334 tip sync)  
+**Updated:** 2026-09-29 (post #2345 tip · Interaction PR-9 worktree pending)  
 **Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
 **Live state:** `docs/release/FINAL_LIVE_STATE.md`  
+**Visual+Interaction report:** `docs/design/SUNNAH_VISUAL_INTERACTION_FINAL_REPORT.md`  
 **Blockers:** `docs/release/PHASE_7_BLOCKER_REGISTER.md`
 
 ## Repository tips (measured)
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `ed0cbd387` — docs `WEB_RELEASED_NATIVE_HOLD` `#2334` |
-| Production `version.json` | `ed0cbd38` · HTTP 200 · **matches main** · `builtAt=2026-09-28T19:26:29.804Z` |
+| `origin/main` tip | `0b84c40bc` — Interaction PR-8 `#2345` |
+| Production `version.json` | `0b84c40b` · HTTP 200 · **matches main** · `builtAt=2026-09-29T08:47:58.047Z` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
 
@@ -27,6 +28,8 @@
 | P5 Design/UX | **yes** (#2331) |
 | P6/P7 release gates | **yes** (#2331) |
 | Vercel Production tip | **yes** (#2333) |
+| Visual + Interaction PR-1…PR-8 | **yes** (#2336–#2345) |
+| Interaction PR-9 (legacy CSS / mushaf boundary / report) | **pending** (worktree) |
 
 ## Store readiness
 
@@ -37,8 +40,6 @@ Allowed: `HOLD` · `TECHNICALLY_VERIFIED_WITH_EXTERNAL_BLOCKERS` · `READY_FOR_O
 ## Remaining blocker classes
 
 OWNER_ACTION · DEVICE_REQUIRED · BLOCKED_LICENSE · BLOCKED_SOURCE · BLOCKED_CREDENTIAL
-
-(Vercel Production tip mismatch — **RESOLVED** via #2333)
 
 ## Explicit non-claims
 

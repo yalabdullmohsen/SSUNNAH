@@ -43,8 +43,10 @@
 
 `app/styles/theme.css` · `brand-v4.css` · `tokens.css` · `index.css` · `design-system.css` · `instant-interaction.css` · `native-feel.css` · `chunk-recovery-toast.css` · `final-release.css` · `brand-v4-components.css` · `brand-v4-contrast-fixes.css` · `a11y-release-gate.css` · `capacitor-native-ux.css` · `m2030/{foundation,navigation,pages,interactions}.css` · `theme-aliases.css` · `ios-edge.css` · `sunnah-visual-language.css` (مؤجّل) · `m2030/home.css` (مع الرئيسية)
 
-`brand-v4` / `m2030` / `final-release` / SVL = **KEEP** وقت التشغيل حتى هجرة مرحلية — التصنيف الكامل: `docs/release/LEGACY_CLEANUP_REPORT.md` (PR-7).  
-`styles/pages/*-legacy.css` = مستوردة كسولًا (ليست SAFE_REMOVE بالاسم). قبل أي حذف CSS: `rg -n "filename.css" artifacts/majalis`.
+`brand-v4` / `m2030` / `final-release` / SVL = **KEEP** وقت التشغيل حتى هجرة مرحلية — التصنيف الكامل: `docs/design/LEGACY_CSS_RETIREMENT_MATRIX.md` (+ `docs/release/LEGACY_CLEANUP_REPORT.md`).  
+`styles/pages/*-legacy.css` = مستوردة كسولًا (ليست SAFE_REMOVE بالاسم). قبل أي حذف CSS: `rg -n "filename.css" artifacts/majalis`.  
+حدود المصحف: `docs/design/MUSHAF_CSS_BOUNDARY.md` · بوابات `test:legacy-css-retirement` + `test:mushaf-css-boundary`.  
+تقرير Visual+Interaction: `docs/design/SUNNAH_VISUAL_INTERACTION_FINAL_REPORT.md` (PARTIAL · WEB_RELEASED_NATIVE_HOLD).
 
 ## رموز / تعارضات شائعة
 
@@ -79,7 +81,9 @@
 | `docs/design/SUNNAH_UI_REFINEMENT_AUDIT.md` | **UI Refinement** — تدقيق + سلم XS/SM/MD/LG + بطاقات أكثف |
 | `docs/design/DESIGN_TOKEN_AUTHORITY.md` | **Visual System PR-1** — سلطة التوكنات `--sf-*` / `--ss-*` / توافق `--mj-*` |
 | `docs/design/SUNNAH_VISUAL_SYSTEM_BASELINE.md` | خط أساس مقاييس الدين البصري + ميزانيات متناقصة |
-| `docs/design/LEGACY_CSS_RETIREMENT_MATRIX.md` | مصفوفة تفكيك CSS القديمة (KEEP/LEGACY/BLOCKED) |
+| `docs/design/LEGACY_CSS_RETIREMENT_MATRIX.md` | مصفوفة تفكيك CSS القديمة (KEEP/LEGACY/BLOCKED) + موجة PR-9 SAFE_REMOVE |
+| `docs/design/MUSHAF_CSS_BOUNDARY.md` | **Interaction PR-9** — حدود CSS المصحف الحي vs Madinah المؤرشف |
+| `docs/design/SUNNAH_VISUAL_INTERACTION_FINAL_REPORT.md` | تقرير Visual+Interaction (#2336–#2345) · PARTIAL · HOLD |
 | `docs/design/INTERACTION_COMPONENT_AUTHORITY.md` | **Interaction PR-1** — عقد Button/Link/IconButton/FAB/Back |
 | `docs/design/CARD_SURFACE_AUTHORITY.md` | **Interaction PR-5** — سلطة AppCard / InteractiveCard / StatusCard / Surfaces |
 | `docs/design/FORM_FEEDBACK_AUTHORITY.md` | **Interaction PR-6** — سلطة النماذج + FormFields + Empty/Loading/Error/Offline |

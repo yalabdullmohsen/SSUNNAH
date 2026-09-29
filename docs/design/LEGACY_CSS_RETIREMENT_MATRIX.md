@@ -90,3 +90,38 @@ Phase 5 **does not** delete SAFE_REMOVE_CANDIDATE entries.
 | Admin CSS | BLOCKED | After Admin visual PR-9 |
 
 PR mapping: PR-6 dark · PR-10/11 legacy retirement · PR-12 mushaf boundary · PR-13 compatibility reduction.
+
+---
+
+## Interaction PR-9 update (2026-09-29) — safe retirement wave
+
+| Field | Value |
+|---|---|
+| Tip base | after Interaction PR-8 `0b84c40bc` (#2345) |
+| Policy | Prefer document + gate · delete only proven-unused · **0–3 files max** |
+| Gate | `test:legacy-css-retirement` · companion `test:mushaf-css-boundary` |
+| Mushaf | See `docs/design/MUSHAF_CSS_BOUNDARY.md` — **BLOCKED** for mass delete |
+| Store | **HOLD** · not FULLY COMPLETE · not STORE GO |
+| CSS file count (debt) | **360** after SAFE_REMOVE (−1); visual `--write-budget` applied |
+
+### Retire-safe vs keep (concise)
+
+| Class | Examples | Action |
+|---|---|---|
+| **KEEP (runtime)** | `brand-v4*` · `m2030/*` · `final-release` · SVL · Foundation `--sf-*` | Keep until ported |
+| **COMPATIBILITY** | `design-tokens` · dark recovery/surfaces · `design-system.css` | Bridge only; no mass delete |
+| **NEEDS_PORT / MIGRATION** | `pages/*-legacy.css` (still imported) · soft-cards | Port classes then drop import |
+| **BLOCKED** | `features/mushaf-*/*.css` · `fonts-quran.css` · Admin CSS · prayer/adhan | Boundary / route ownership |
+| **SAFE_REMOVE (executed PR-9)** | `homepage-ad-bar.css` · `HomepageAdBar.tsx` · `homepage-ad.ts` | Proven zero product import; header ad = `HeaderAdSlot` |
+| **SAFE_REMOVE (deferred)** | `homepage-ad-dismiss.ts` (+ test) | Harmless; purge key strings remain |
+
+### Executed deletes (this wave)
+
+| # | Path | Proof |
+|---|---|---|
+| 1 | `styles/components/homepage-ad-bar.css` | Only loaded from unused `HomepageAdBar`; App/Nav use `HeaderAdSlot` |
+| 2 | `components/home/HomepageAdBar.tsx` | `header-ad-gate` / `homepage-ad-bar-gate` assert absent from App |
+| 3 | `config/homepage-ad.ts` | Sole consumer was HomepageAdBar (`@deprecated`) |
+
+**Not deleted:** `brand-v4` / `m2030` / `final-release` / `*-legacy.css` / mushaf CSS / `modern-ui-refresh.css` / `design-system.css`.
+

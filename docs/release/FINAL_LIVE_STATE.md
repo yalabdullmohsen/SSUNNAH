@@ -2,56 +2,42 @@
 
 | Field | Value |
 |---|---|
-| Captured | 2026-09-28T19:55Z |
-| Source | GitHub CLI + live `version.json` + HTTP smoke (not prior reports) |
+| Captured | 2026-09-29T08:47Z+ (post Interaction PR-8 #2345) |
+| Source | Git tip + live `version.json` HTTP smoke |
 
 ## Truth (live)
 
 | Item | Value |
 |---|---|
-| `origin/main` | `ed0cbd387` — squash of #2334 (WEB_RELEASED_NATIVE_HOLD docs) |
-| Prior production tip | `cc1f48356` (#2333 Vercel API fix) — first healthy tip after deploy failure |
-| Production `version.json` | **`ed0cbd38`** · HTTP 200 · `builtAt=2026-09-28T19:26:29.804Z` |
+| `origin/main` tip | `0b84c40bc` — Interaction PR-8 dark mode (#2345) |
+| Production `version.json` | **`0b84c40b`** · HTTP 200 · `builtAt=2026-09-29T08:47:58.047Z` |
 | Production vs main | **MATCH** |
 | Store | **HOLD** |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
 
-## PRs
+## Interaction / Visual PR train (measured on tip)
 
-| PR | Role | State | Merge SHA | Notes |
-|---|---|---|---|---|
-| #2329 | Color contrast | **MERGED** | `eef706670` | |
-| #2330 | Mushaf bookmark editor | **MERGED** | `dba87a606` | Was last good tip before #2331 fail |
-| #2331 | P2–P7 integration | **MERGED** | `2478ebd7a` | Code on main; initial Vercel deploy FAILED |
-| #2332 | Post-merge release docs | **MERGED** | `0269e1401` | Docs only; Vercel still failed |
-| #2333 | Restore single-dispatch API | **MERGED** | `cc1f48356` | Root cause fix → Production SUCCESS |
-| #2334 | WEB_RELEASED_NATIVE_HOLD docs | **MERGED** | `ed0cbd387` | Status docs; Production tip advanced with merge |
+| PR | Role | State | Merge SHA |
+|---|---|---|---|
+| #2336 | Visual System PR-1 | **MERGED** | `665436f85` |
+| #2337 | Interaction PR-1 | **MERGED** | `58891c65b` |
+| #2338 | account-deletion method guard | **MERGED** | `22f1a78f9` |
+| #2339…#2343 | Interaction PR-2…PR-6 | **MERGED** | see Final Report |
+| #2344 | Interaction PR-7 Admin v3 | **MERGED** | `42fde445a` |
+| #2345 | Interaction PR-8 Dark | **MERGED** | `0b84c40bc` |
+| PR-9 | Legacy CSS + Mushaf boundary + report | **NOT MERGED** (this worktree) | — |
 
 ## Deployment
 
 | Item | Value |
 |---|---|
-| Method | Official Vercel Auto Deploy on `main` (`majalis-majalis`) |
-| Commit status | `Vercel – majalis-majalis` = **success** (“Deployment has completed”) |
-| Live tip | `https://www.ssunnah.com/version.json` → `ed0cbd38` |
-| Health | `GET /api/healthz` includes production commit tip |
-| Rollback | Not required — Production tip healthy |
+| Method | Official Vercel Auto Deploy on `main` |
+| Live tip | `https://www.ssunnah.com/version.json` → `0b84c40b` |
+| Health | Production tip healthy · MATCH main |
 
-## Production smoke (unauthenticated)
+## Explicit non-claims
 
-| Path | HTTP |
-|---|---|
-| `/` `/quran-hub` `/mushaf` `/search` `/hadith` `/lessons` `/prayer-times` `/study-room` `/quran-knowledge` `/my-learning` | **200** |
-| `/version.json` `/api/healthz` `/api/prayer-times` | **200** |
-| `/admin` `/admin/v3` | **404** (expected — middleware blocks public/unauthenticated admin) |
-
-## Stale claims
-
-| Claim | Status |
-|---|---|
-| Production stuck on `dba87a60` | **STALE** — now `cc1f4835` |
-| WEB deploy BLOCKED | **STALE** — Production tip matches main |
-| `STORE GO` | Still **forbidden** — native HOLD |
+`FULLY COMPLETE` · `STORE GO` · `SUNNAH_FULL_REMEDIATION_COMPLETE` · `100% READY` — **not** declared.
 
 ## Active blockers (native / external only)
 
