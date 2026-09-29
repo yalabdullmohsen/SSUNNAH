@@ -7,6 +7,7 @@ import {
   tryRecoverFromStaleChunk,
 } from "@/lib/chunk-recovery";
 import { clearChunkReloadGuard } from "@/lib/lazy-with-retry";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/error-boundary.css";
 import "@/styles/pages/learn-legal-v2.css";
 
@@ -160,23 +161,23 @@ export class ErrorBoundary extends Component<Props, State> {
             رقم التتبع: <code>{this.state.errorId}</code>
           </p>
           <div className="error-boundary-page__actions">
-            <button type="button" onClick={this.reset} className="error-boundary-btn error-boundary-btn--primary">
+            <Button type="button" variant="primary" onClick={this.reset} className="error-boundary-btn error-boundary-btn--primary">
               إعادة المحاولة
-            </button>
+            </Button>
             {chunkError ? (
-              <button type="button" onClick={this.hardRecover} className="error-boundary-btn error-boundary-btn--secondary">
+              <Button type="button" variant="secondary" onClick={this.hardRecover} className="error-boundary-btn error-boundary-btn--secondary">
                 إعادة تشغيل العرض
-              </button>
+              </Button>
             ) : null}
-            <button type="button" onClick={this.goHome} className="error-boundary-btn error-boundary-btn--secondary">
+            <Button type="button" variant="secondary" onClick={this.goHome} className="error-boundary-btn error-boundary-btn--secondary">
               العودة للرئيسية
-            </button>
-            <button type="button" onClick={this.copyId} className="error-boundary-btn error-boundary-btn--ghost">
+            </Button>
+            <Button type="button" variant="ghost" onClick={this.copyId} className="error-boundary-btn error-boundary-btn--ghost">
               {this.state.copied ? "تم النسخ" : "نسخ رقم الخطأ"}
-            </button>
-            <button type="button" onClick={this.report} className="error-boundary-btn error-boundary-btn--ghost">
+            </Button>
+            <Button type="button" variant="ghost" onClick={this.report} className="error-boundary-btn error-boundary-btn--ghost">
               الإبلاغ عن الخطأ
-            </button>
+            </Button>
           </div>
 
           <nav className="error-boundary-page__nav" aria-label="أقسام مفيدة">
@@ -184,13 +185,16 @@ export class ErrorBoundary extends Component<Props, State> {
             <ul className="error-boundary-page__nav-list">
               {ERROR_ESCAPE_LINKS.map((item) => (
                 <li key={item.href}>
-                  <button
-                    type="button"
+                  <a
+                    href={item.href}
                     className="error-boundary-btn error-boundary-btn--ghost"
-                    onClick={() => this.goTo(item.href)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      this.goTo(item.href);
+                    }}
                   >
                     {item.label}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -281,23 +285,25 @@ export class SectionErrorBoundary extends Component<SectionBoundaryProps, Sectio
               ? `تعذّر تحميل قسم «${this.props.name}». أعد المحاولة أو أعد تشغيل العرض.`
               : `تعذّر عرض قسم «${this.props.name}». يمكنك إعادة المحاولة.`}
           </p>
-          <button
+          <Button
             type="button"
+            variant="secondary"
             className="adv-error-state__retry"
             onClick={this.reset}
             aria-label="إعادة المحاولة"
           >
             إعادة المحاولة
-          </button>
+          </Button>
           {chunkError ? (
-            <button
+            <Button
               type="button"
+              variant="secondary"
               className="adv-error-state__retry"
               onClick={this.hardRecover}
               aria-label="إعادة تشغيل العرض"
             >
               إعادة تشغيل العرض
-            </button>
+            </Button>
           ) : null}
         </div>
       );

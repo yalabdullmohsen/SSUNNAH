@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toPng } from "html-to-image";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import "@/styles/components/faida-image-card.css";
 
 type Props = {
@@ -47,7 +49,9 @@ export function FaidaImageCardModal({ text, source, category, onClose }: Props) 
       dir="rtl"
     >
       <div className="fic-shell">
-        <button type="button" className="fic-close" onClick={onClose} aria-label="إغلاق">✕</button>
+        <IconButton label="إغلاق" className="fic-close" onClick={onClose}>
+          ✕
+        </IconButton>
 
         {/* البطاقة المُصدَرة كصورة */}
         <div
@@ -74,14 +78,17 @@ export function FaidaImageCardModal({ text, source, category, onClose }: Props) 
         </div>
 
         <div className="fic-actions">
-          <button
+          <Button
             type="button"
+            variant="primary"
             className="fic-btn fic-btn--primary"
             onClick={handleDownload}
             disabled={status === "generating"}
+            loading={status === "generating"}
+            aria-busy={status === "generating"}
           >
             {status === "generating" ? "تحضير…" : "تنزيل PNG"}
-          </button>
+          </Button>
         </div>
 
         {status === "done" && (

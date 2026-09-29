@@ -8,6 +8,8 @@ import {
   whatsappShareUrl,
 } from "@/lib/share-faida";
 import { openExternalUrl } from "@/lib/capacitor-utils";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import "@/styles/components/share-faida.css";
 
 type Props = {
@@ -55,29 +57,26 @@ export function ShareFaida({ title, url, className = "", variant = "default" }: 
   if (variant === "icons") {
     return (
       <div className={`share-faida share-faida--icons ${className}`.trim()} dir="rtl">
-        <button
-          type="button"
+        <IconButton
+          label={copied ? "تم النسخ" : "نسخ"}
           className="share-faida__icon-btn"
           onClick={handleCopy}
-          aria-label={copied ? "تم النسخ" : "نسخ"}
-          title={copied ? "تم النسخ" : "نسخ"}
         >
           {copied ? (
             <Check size={15} strokeWidth={2.2} aria-hidden="true" />
           ) : (
             <Copy size={15} strokeWidth={2} aria-hidden="true" />
           )}
-        </button>
-        <button
-          type="button"
+        </IconButton>
+        <IconButton
+          label="مشاركة"
           className="share-faida__icon-btn share-faida__icon-btn--primary"
           onClick={handleNative}
           disabled={busy}
-          aria-label="مشاركة"
-          title="مشاركة"
+          loading={busy}
         >
           <Share2 size={15} strokeWidth={2} aria-hidden="true" />
-        </button>
+        </IconButton>
       </div>
     );
   }
@@ -86,37 +85,46 @@ export function ShareFaida({ title, url, className = "", variant = "default" }: 
     <div className={`share-faida ${className}`.trim()} dir="rtl">
       <p className="share-faida__label">شارك الفائدة</p>
       <div className="share-faida__actions">
-        <button
+        <Button
           type="button"
+          variant="primary"
+          size="small"
           className="share-faida__btn share-faida__btn--primary"
           onClick={handleNative}
           disabled={busy}
+          loading={busy}
           aria-label="مشاركة الصفحة"
+          iconStart={<Share2 size={16} strokeWidth={2} aria-hidden="true" />}
         >
-          <Share2 size={16} strokeWidth={2} aria-hidden="true" />
           مشاركة
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
+          variant="secondary"
+          size="small"
           className="share-faida__btn"
           onClick={handleWhatsApp}
           aria-label="مشاركة عبر واتساب"
         >
           واتساب
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
+          variant="ghost"
+          size="small"
           className="share-faida__btn"
           onClick={handleCopy}
           aria-label={copied ? "تم النسخ" : "نسخ"}
+          iconStart={
+            copied ? (
+              <Check size={15} strokeWidth={2.2} aria-hidden="true" />
+            ) : (
+              <Copy size={15} strokeWidth={2} aria-hidden="true" />
+            )
+          }
         >
-          {copied ? (
-            <Check size={15} strokeWidth={2.2} aria-hidden="true" />
-          ) : (
-            <Copy size={15} strokeWidth={2} aria-hidden="true" />
-          )}
           {copied ? "تم" : "نسخ"}
-        </button>
+        </Button>
       </div>
     </div>
   );
