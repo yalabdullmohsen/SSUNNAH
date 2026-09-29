@@ -60,17 +60,28 @@
 .qp-people__filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  align-items: flex-end;
 }
 
-.qp-people__filters select {
-  min-height: 2.5rem;
+.qp-people__filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: min(100%, 10rem);
+  flex: 1 1 9rem;
+}
+
+.qp-people__filters select,
+.qp-people__filter-field [data-slot="select-trigger"],
+.qp-people__filter-field button[role="combobox"] {
+  min-height: 2.75rem;
   padding: 0.45rem 0.75rem;
   border-radius: 12px;
   border: 1px solid var(--qp-line);
   background: var(--qp-surface);
   color: var(--qp-ink);
-  font-size: 0.88rem;
+  font-size: 1rem;
 }
 
 .qp-people__status {
