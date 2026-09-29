@@ -16,6 +16,14 @@ import {
 import "@/styles/pages/quran-hub.css";
 import "@/styles/pages/quran-people.css";
 import { DashboardScreen } from "@/components/design-system/screens";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 type SortMode = "alpha" | "mentions";
 
@@ -82,33 +90,54 @@ export default function QuranPeopleView() {
 
         <div className="qp-people__toolbar">
           <div className="qp-people__filters">
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value as PersonCategory | "all")}
-              aria-label="التصنيف"
-            >
-              <option value="all">كل التصنيفات</option>
-              {LISTABLE_PERSON_CATEGORIES.map((c) => (
-                <option key={c} value={c}>{PERSON_CATEGORY_LABEL[c]}</option>
-              ))}
-            </select>
-            <select
-              value={mention}
-              onChange={(e) => setMention(e.target.value as typeof mention)}
-              aria-label="نوع الذكر"
-            >
-              <option value="all">كل أنواع الذكر</option>
-              <option value="name">{MENTION_TYPE_LABEL.name}</option>
-              <option value="description">{MENTION_TYPE_LABEL.description}</option>
-            </select>
-            <select
-              value={sort}
-              onChange={(e) => setSort(e.target.value as SortMode)}
-              aria-label="الترتيب"
-            >
-              <option value="alpha">أبجدي</option>
-              <option value="mentions">الأكثر ذكراً</option>
-            </select>
+            <div className="qp-people__filter-field">
+              <FieldLabel>التصنيف</FieldLabel>
+              <Select
+                value={category}
+                onValueChange={(v) => setCategory(v as PersonCategory | "all")}
+              >
+                <SelectTrigger className="min-h-11 text-base" aria-label="التصنيف">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">كل التصنيفات</SelectItem>
+                  {LISTABLE_PERSON_CATEGORIES.map((c) => (
+                    <SelectItem key={c} value={c}>{PERSON_CATEGORY_LABEL[c]}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="qp-people__filter-field">
+              <FieldLabel>نوع الذكر</FieldLabel>
+              <Select
+                value={mention}
+                onValueChange={(v) => setMention(v as typeof mention)}
+              >
+                <SelectTrigger className="min-h-11 text-base" aria-label="نوع الذكر">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">كل أنواع الذكر</SelectItem>
+                  <SelectItem value="name">{MENTION_TYPE_LABEL.name}</SelectItem>
+                  <SelectItem value="description">{MENTION_TYPE_LABEL.description}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="qp-people__filter-field">
+              <FieldLabel>الترتيب</FieldLabel>
+              <Select
+                value={sort}
+                onValueChange={(v) => setSort(v as SortMode)}
+              >
+                <SelectTrigger className="min-h-11 text-base" aria-label="الترتيب">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="alpha">أبجدي</SelectItem>
+                  <SelectItem value="mentions">الأكثر ذكراً</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
 

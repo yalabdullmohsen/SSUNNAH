@@ -21,6 +21,14 @@ import {
   updateSunnahChannel,
   type SunnahNotificationPrefs,
 } from "@/lib/sunnah-notifications";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const CADENCE_LABELS: Record<ChannelCadence, string> = {
   immediate: "فوري",
@@ -124,26 +132,33 @@ export function SunnahChannelsPanel() {
                 ) : null}
               </span>
               {policy.supportedCadences.length > 1 && ch.enabled ? (
-                <label className="notif-row__sub" style={{ display: "block", marginTop: 6 }}>
-                  التكرار:{""}
-                  <select
+                <div className="notif-row__sub" style={{ display: "block", marginTop: 6 }}>
+                  <FieldLabel>التكرار</FieldLabel>
+                  <Select
                     value={ch.cadence}
-                    onChange={(e) =>
+                    onValueChange={(v) =>
                       setPrefs(
                         updateSunnahChannel(channel, {
-                          cadence: e.target.value as ChannelCadence,
+                          cadence: v as ChannelCadence,
                         }),
                       )
                     }
-                    aria-label={`تكرار ${policy.labelAr}`}
                   >
-                    {policy.supportedCadences.map((c) => (
-                      <option key={c} value={c}>
-                        {CADENCE_LABELS[c]}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+                    <SelectTrigger
+                      className="min-h-11 text-base"
+                      aria-label={`تكرار ${policy.labelAr}`}
+                    >
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {policy.supportedCadences.map((c) => (
+                        <SelectItem key={c} value={c}>
+                          {CADENCE_LABELS[c]}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
               ) : null}
               {!effective && ch.enabled ? (
                 <span className="notif-row__sub">يتطلب تشغيل المفتاح العام لغير الضروري.</span>

@@ -21,7 +21,8 @@ import {
   type RealUserLearningStats,
 } from "@/lib/learning-paths-service";
 import { DashboardScreen } from "@/components/design-system/screens";
-import { EMPTY } from "@/lib/ui-copy";
+import { ErrorState } from "@/components/ui-common";
+import { EMPTY, STATUS } from "@/lib/ui-copy";
 
 /* ── أيقونات المحتوى ────────────────────────────────────────────────────── */
 const CONTENT_ICONS: Record<string, React.ComponentType<{ size?: number }>> = {
@@ -74,6 +75,8 @@ export default function MyLearningPage() {
   const [library,      setLibrary]      = useState<Array<{ title: string; content_url?: string; content_id?: string }>>([]);
   const [notes,        setNotes]        = useState<Array<{ title?: string; body?: string }>>([]);
   const [loading,      setLoading]      = useState(true);
+  const [loadError,    setLoadError]    = useState<string | null>(null);
+  const [retryTick,    setRetryTick]    = useState(0);
 
   useEffect(() => {
     applyPageSeo({
@@ -86,7 +89,13 @@ export default function MyLearningPage() {
   }, []);
 
   useEffect(() => {
-    if (!user?.id) { setLoading(false); return; }
+    if (!user?.id) {
+      setLoading(false);
+      setLoadError(null);
+      return;
+    }
+    setLoading(true);
+    setLoadError(null);
     Promise.all([
       fetchRealUserLearningStats(user.id),
       fetchUserCertificatesList(user.id),
@@ -98,12 +107,15 @@ export default function MyLearningPage() {
         setCertificates(c);
         setLibrary(l ?? []);
         setNotes(n ?? []);
+        setLoadError(null);
       })
       .catch(() => {
         // أبقِ البيانات السابقة عند فشل إعادة الجلب (بلا وميض فراغ)
+        const offline = typeof navigator !== "undefined" && navigator.onLine === false;
+        setLoadError(offline ? STATUS.networkError : STATUS.loadError);
       })
       .finally(() => setLoading(false));
-  }, [user?.id]);
+  }, [user?.id, retryTick]);
 
   /* اسم العرض */
   const rawProfile = user?.profile as Record<string, unknown> | null | undefined;
@@ -164,8 +176,28 @@ export default function MyLearningPage() {
       {/* ══════════ Body ══════════ */}
       <div className="myl2-body">
 
+        {!user ? (
+          <section className="myl2-card" aria-labelledby="myl2-guest-hd">
+            <div className="myl2-card__head">
+              <h2 className="myl2-card__title" id="myl2-guest-hd">حساب التعلّم</h2>
+            </div>
+            <div className="myl2-empty" role="status">
+              <User size={32} strokeWidth={1} aria-hidden="true" />
+              <p>سجّل الدخول لمتابعة تقدّمك ومكتبتك الشخصية وشهاداتك.</p>
+              <Link href="/login" className="myl2-empty__cta">دخول</Link>
+            </div>
+          </section>
+        ) : null}
+
+        {user && loadError && !loading ? (
+          <ErrorState
+            text={loadError}
+            onRetry={() => setRetryTick((n) => n + 1)}
+          />
+        ) : null}
+
         {/* أكمل من حيث توقفت */}
-        {(resumeLoading || resumeItems.length > 0) && (
+        {user && (resumeLoading || resumeItems.length > 0) && (
           <section className="myl2-card" aria-labelledby="myl2-resume-hd">
             <div className="myl2-card__head">
               <h2 className="myl2-card__title" id="myl2-resume-hd">
@@ -268,40 +300,42 @@ export default function MyLearningPage() {
         </section>
 
         {/* المكتبة الشخصية */}
-        <section className="myl2-card" aria-labelledby="myl2-lib-hd">
-          <div className="myl2-card__head">
-            <h2 className="myl2-card__title" id="myl2-lib-hd">
-              <BookMarked size={16} aria-hidden="true" />
-              مكتبتي الشخصية
-            </h2>
-          </div>
+        {user ? (
+          <section className="myl2-card" aria-labelledby="myl2-lib-hd">
+            <div className="myl2-card__head">
+              <h2 className="myl2-card__title" id="myl2-lib-hd">
+                <BookMarked size={16} aria-hidden="true" />
+                مكتبتي الشخصية
+              </h2>
+            </div>
 
-          {loading && library.length === 0 ? (
-            <div className="myl2-skeletons" aria-busy="true">
-              {[0, 1, 2].map((i) => (
-                <div key={i} className="myl2-skel myl2-skel--sm" aria-hidden="true" />
-              ))}
-            </div>
-          ) : library.length > 0 ? (
-            <div className="myl2-lib-grid">
-              {library.slice(0, 6).map((item, i) => (
-                <Link
-                  key={i}
-                  href={item.content_url ?? "/my-learning"}
-                  className="myl2-lib-item"
-                >
-                  <BookOpen size={13} aria-hidden="true" className="myl2-lib-item__icon" />
-                  <span className="myl2-lib-item__title">{item.title}</span>
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <div className="myl2-empty">
-              <BookOpen size={32} strokeWidth={1} aria-hidden="true" />
-              <p>{EMPTY.bookmarks}</p>
-            </div>
-          )}
-        </section>
+            {loading && library.length === 0 ? (
+              <div className="myl2-skeletons" aria-busy="true" role="status" aria-label={STATUS.contentLoading}>
+                {[0, 1, 2].map((i) => (
+                  <div key={i} className="myl2-skel myl2-skel--sm" aria-hidden="true" />
+                ))}
+              </div>
+            ) : library.length > 0 ? (
+              <div className="myl2-lib-grid">
+                {library.slice(0, 6).map((item, i) => (
+                  <Link
+                    key={i}
+                    href={item.content_url ?? "/my-learning"}
+                    className="myl2-lib-item"
+                  >
+                    <BookOpen size={13} aria-hidden="true" className="myl2-lib-item__icon" />
+                    <span className="myl2-lib-item__title">{item.title}</span>
+                  </Link>
+                ))}
+              </div>
+            ) : !loadError ? (
+              <div className="myl2-empty" role="status">
+                <BookOpen size={32} strokeWidth={1} aria-hidden="true" />
+                <p>{EMPTY.bookmarks}</p>
+              </div>
+            ) : null}
+          </section>
+        ) : null}
 
         {/* الملاحظات */}
         {notes.length > 0 && (

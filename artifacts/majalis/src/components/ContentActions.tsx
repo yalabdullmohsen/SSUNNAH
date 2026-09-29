@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { supabase } from "@/lib/supabase";
 import "@/styles/components/content-actions-rag.css";
 import { SectionShareActions } from "@/components/common/SectionShareActions";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   contentType: string;
@@ -119,33 +120,37 @@ export default function ContentActions({ contentType, contentId }: Props) {
       <div className="ca-actions-row">
         <div className="ca-stars" role="group" aria-label="تقييم المحتوى">
           {[1, 2, 3, 4, 5].map((star) => (
-            <button
+            <Button
               key={star}
               type="button"
+              variant="ghost"
+              size="icon"
               onClick={() => handleRating(star)}
               className={`ca-star${rating >= star ? " ca-star--active" : ""}`}
               aria-label={`تقييم ${star} من 5`}
             >
               ★
-            </button>
+            </Button>
           ))}
         </div>
 
-        <button
+        <Button
           type="button"
+          variant="secondary"
           onClick={handleBookmark}
           className={`ca-bookmark-btn${bookmarked ? " ca-bookmark-btn--saved" : ""}`}
         >
           {bookmarked ? "محفوظ ✓" : "احفظ"}
-        </button>
+        </Button>
 
-        <button
+        <Button
           type="button"
+          variant="ghost"
           onClick={() => setShowReport(!showReport)}
           className="ca-report-btn"
         >
           ⚑ إبلاغ عن خطأ
-        </button>
+        </Button>
       </div>
 
       {showReport && (
@@ -153,14 +158,16 @@ export default function ContentActions({ contentType, contentId }: Props) {
           <h4 className="ca-report-title">نوع الخطأ</h4>
           <div className="ca-report-types">
             {REPORT_TYPES.map((type) => (
-              <button
+              <Button
                 key={type}
                 type="button"
+                variant={reportType === type ? "primary" : "outline"}
+                size="small"
                 onClick={() => setReportType(type)}
                 className={`ca-report-chip${reportType === type ? " ca-report-chip--active" : ""}`}
               >
                 {type.replace(/_/g, " ")}
-              </button>
+              </Button>
             ))}
           </div>
           <textarea
@@ -170,14 +177,16 @@ export default function ContentActions({ contentType, contentId }: Props) {
             aria-label="تفاصيل إضافية (اختياري)" placeholder="تفاصيل إضافية (اختياري)..."
             className="ca-report-textarea"
           />
-          <button
+          <Button
             type="button"
+            variant="primary"
             onClick={submitReport}
             disabled={!reportType || submitting}
+            loading={submitting}
             className="ca-report-submit"
           >
             {submitting ? "إرسال…" : "إرسال البلاغ"}
-          </button>
+          </Button>
         </div>
       )}
     </div>

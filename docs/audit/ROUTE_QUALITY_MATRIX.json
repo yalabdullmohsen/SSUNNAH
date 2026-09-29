@@ -3051,15 +3051,16 @@
     },
     {
       "route": "/my-learning",
-      "componentHint": null,
+      "componentHint": "MyLearningView",
       "public": true,
-      "loading": "PENDING",
-      "empty": "PENDING",
-      "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
-      "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "loading": "COMPLETE",
+      "empty": "COMPLETE",
+      "error": "COMPLETE",
+      "dark": "COMPLETE",
+      "rtl": "COMPLETE",
+      "accessibility": "COMPLETE",
+      "visualSystem": "COMPLETE",
+      "auditNote": "Final Internal Closure PR1 — guest empty, skeleton loading, ErrorState+retry+offline, dark CSS, dir=rtl, h1/h2+aria-busy; gate my-learning-route-quality-gate.test.ts"
     },
     {
       "route": "/my-submissions",
