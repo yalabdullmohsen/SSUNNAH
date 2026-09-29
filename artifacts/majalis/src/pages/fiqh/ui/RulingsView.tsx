@@ -16,6 +16,7 @@ import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { ExploreAlsoNav } from "@/components/ExploreAlsoNav";
 
+import { Button } from "@/components/ui/button";
 const RULINGS_ICON_MAP: Record<string, LucideIcon> = {
   Landmark, Droplets, Banknote, Moon, MapPin, Handshake, Utensils, Shirt, Users,
   ScrollText, Scale, FileSignature, Shield, Heart, BookOpen, GraduationCap, FlaskConical, Flame,
@@ -202,20 +203,19 @@ export default function RulingsPage() {
         />
       ) : (
         <div className="content-hub-chips ruling-quick-chips" role="tablist" aria-label="تصفية الأحكام">
-          <button
+          <Button
             role="tab"
             type="button"
             className={category === "الكل" ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"}
             onClick={() => handleCategorySelect("الكل")}
-            aria-selected={category === "الكل"}
-          >
+            aria-selected={category === "الكل"} variant="ghost">
             {isAdmin ? `الكل (${encyclopediaTotal || total})` : "الكل"}
-          </button>
+          </Button>
           {RULINGS_CATEGORY_TREE.slice(0, 8).map((cat) => {
             const count = stats.filter((s) => s.category === cat.name).reduce((n, s) => n + s.count, 0);
             if (!count) return null;
             return (
-              <button
+              <Button
                 key={cat.slug}
                 role="tab"
                 type="button"
@@ -223,15 +223,14 @@ export default function RulingsPage() {
                   category === cat.name ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"
                 }
                 onClick={() => handleCategorySelect(cat.name)}
-                aria-selected={category === cat.name}
-              >
+                aria-selected={category === cat.name} variant="ghost">
                 <CatIcon name={cat.icon} />{cat.name}{isAdmin ? ` (${count})` : ""}
-              </button>
+              </Button>
             );
           })}
-          <button type="button" className="content-hub-chip" onClick={() => setShowAdvanced(true)}>
+          <Button type="button" className="content-hub-chip" onClick={() => setShowAdvanced(true)} variant="ghost">
             كل الأبواب...
-          </button>
+          </Button>
         </div>
       )}
     </>
@@ -299,23 +298,21 @@ export default function RulingsPage() {
 
           {totalPages > 1 && (
             <nav className="ruling-pagination" aria-label="ترقيم الصفحات">
-              <button
+              <Button
                 type="button"
                 disabled={page <= 1}
-                onClick={() => setPage((p) => Math.max(1, p - 1))}
-              >
+                onClick={() => setPage((p) => Math.max(1, p - 1))} variant="ghost">
                 السابق
-              </button>
+              </Button>
               <span>
                 صفحة {page} من {totalPages}{isAdmin ? ` (${total} حكم)` : ""}
               </span>
-              <button
+              <Button
                 type="button"
                 disabled={page >= totalPages}
-                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-              >
+                onClick={() => setPage((p) => Math.min(totalPages, p + 1))} variant="ghost">
                 التالي
-              </button>
+              </Button>
             </nav>
           )}
         </>

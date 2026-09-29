@@ -29,6 +29,7 @@ import {
   type AdvanceMinutes,
 } from "@/lib/adhan-preferences";
 
+import { Button } from "@/components/ui/button";
 /**
  * بطاقة إشعارات الصلاة: تفعيل، تنبيه قبل، مدة، دخول الوقت.
  * تغيير التفضيلات يطلق majalis:prayer-alert-prefs-changed فيعيد App الجدولة.
@@ -142,7 +143,7 @@ export function PrayerAlertSettingsCard() {
                   : "في المتصفح تعمل التنبيهات أثناء فتح التطبيق؛ على التطبيق الأصلي تُجدول عبر إشعارات الجهاز بعد منح الإذن."}
               </p>
               <div className="pasc-explainer__actions">
-                <button
+                <Button
                   type="button"
                   className="ads-pill-btn"
                   onClick={() => {
@@ -151,17 +152,15 @@ export function PrayerAlertSettingsCard() {
                         patch({ alertsEnabled: true });
                       }
                     });
-                  }}
-                >
+                  }} variant="primary">
                   تفعيل الإشعارات
-                </button>
-                <button
+                </Button>
+                <Button
                   type="button"
                   className="ads-pill-btn-ghost"
-                  onClick={() => setShowExplainer(false)}
-                >
+                  onClick={() => setShowExplainer(false)} variant="ghost">
                   لاحقًا
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -198,14 +197,13 @@ export function PrayerAlertSettingsCard() {
             </div>
             <div className="ads-chip-scroll" role="group" aria-label="مدة التنبيه قبل الصلاة">
               {PRE_ALERT_MINUTE_OPTIONS.map((m) => (
-                <button
+                <Button
                   key={m}
                   type="button"
                   onClick={() => applyGlobalMinutes(m)}
-                  className={`ads-chip${prefs.preAlertMinutes === m ? " is-active" : ""}`}
-                >
+                  className={`ads-chip${prefs.preAlertMinutes === m ? " is-active" : ""}`} variant="ghost">
                   {m === 0 ? "بدون" : `${m} د`}
-                </button>
+                </Button>
               ))}
             </div>
           </div>

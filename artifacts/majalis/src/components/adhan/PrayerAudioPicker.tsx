@@ -4,6 +4,8 @@ import type { SettingsSoundOption } from "@/lib/adhan-settings-sound-catalog";
 import { listProductionApprovedAudio } from "@/lib/prayer-audio-rights-registry";
 import { EMPTY } from "@/lib/ui-copy";
 
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 type Props = {
   open: boolean;
   options: SettingsSoundOption[];
@@ -56,13 +58,13 @@ export function PrayerAudioPicker({
 
   return (
     <div className="prayer-audio-picker" role="dialog" aria-modal="true" aria-label={title}>
-      <button type="button" className="prayer-audio-picker__backdrop" aria-label="إغلاق" onClick={onClose} />
+      <Button type="button" className="prayer-audio-picker__backdrop" aria-label="إغلاق" onClick={onClose} variant="ghost" />
       <div className="prayer-audio-picker__sheet">
         <header className="prayer-audio-picker__head">
           <h2>{title}</h2>
-          <button type="button" className="prayer-audio-picker__close" onClick={onClose} aria-label="إغلاق">
+          <IconButton type="button" className="prayer-audio-picker__close" onClick={onClose} label="إغلاق">
             <X size={18} strokeWidth={2} aria-hidden />
-          </button>
+          </IconButton>
         </header>
 
         <label className="prayer-audio-picker__search">
@@ -85,16 +87,15 @@ export function PrayerAudioPicker({
               ["adhan", "أذان"],
             ] as const
           ).map(([id, label]) => (
-            <button
+            <Button
               key={id}
               type="button"
               role="tab"
               aria-selected={filter === id}
               className={`prayer-audio-picker__chip${filter === id ? " is-active" : ""}`}
-              onClick={() => setFilter(id)}
-            >
+              onClick={() => setFilter(id)} variant="ghost">
               {label}
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -110,28 +111,25 @@ export function PrayerAudioPicker({
               opt.id === "kuwait";
             return (
               <li key={opt.id} className={`prayer-audio-picker__row${selected ? " is-selected" : ""}`}>
-                <button
+                <Button
                   type="button"
                   role="option"
                   aria-selected={selected}
                   className="prayer-audio-picker__select"
-                  onClick={() => onSelect(opt)}
-                >
+                  onClick={() => onSelect(opt)} variant="ghost">
                   <span className="prayer-audio-picker__name">{opt.label}</span>
                   <span className="prayer-audio-picker__meta">
                     {opt.group === "adhan" ? "أذان داخل التطبيق" : "صوت إشعار"}
                     {!productionOk ? " · قيد المراجعة الحقوقية" : ""}
                   </span>
-                </button>
-                <button
+                </Button>
+                <IconButton
                   type="button"
                   className={`prayer-audio-picker__preview${playing ? " is-playing" : ""}`}
-                  aria-label={playing ? `إيقاف ${opt.label}` : `معاينة ${opt.label}`}
                   onClick={() => onPreview(opt)}
-                  disabled={opt.playbackMode === "silent"}
-                >
+                  disabled={opt.playbackMode === "silent"} label={playing ? `إيقاف ${opt.label}` : `معاينة ${opt.label}`}>
                   <Volume2 size={16} strokeWidth={2} aria-hidden />
-                </button>
+                </IconButton>
                 {selected ? (
                   <span className="prayer-audio-picker__check" aria-hidden>
                     <Check size={16} strokeWidth={2.4} />

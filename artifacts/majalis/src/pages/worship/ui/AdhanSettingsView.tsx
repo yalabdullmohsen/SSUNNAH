@@ -6,6 +6,7 @@ import {
   CloudMoon, CloudSun, MapPin, Moon, Music, Bell, Sun, Sunset, Volume2,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   loadAdhanPrefs,
   patchAdhanPrefs,
@@ -224,16 +225,15 @@ function PrayerScheduleHealthCard({ onRepair }: { onRepair: () => void }) {
         ) : null}
         {needsRepair ? (
           <div className="ads-prayer-muezzin-btns ads-sound-test-row">
-            <button
+            <Button
               type="button"
               className="ads-pill-btn"
               onClick={() => {
                 onRepair();
                 window.setTimeout(() => void refresh(), 800);
-              }}
-            >
+              }} variant="primary">
               إصلاح وإعادة الجدولة
-            </button>
+            </Button>
           </div>
         ) : null}
       </div>
@@ -326,30 +326,27 @@ function AndroidAdhanNativeCard({
         <div className="ads-prayer-muezzin-btns ads-sound-test-row">
           {showDeveloperTools ? (
             <>
-            <button
+            <Button
             type="button"
             className="ads-pill-btn"
             disabled={permBusy}
-            onClick={() => void handleExactAlarmCheck()}
-          >
+            onClick={() => void handleExactAlarmCheck()} variant="primary">
             فحص المنبه الدقيق
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             className="ads-pill-btn"
             disabled={permBusy}
-            onClick={() => void handleBatteryCheck()}
-          >
+            onClick={() => void handleBatteryCheck()} variant="primary">
             فحص حماية البطارية
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             className="ads-pill-btn"
             disabled={fgsBusy}
-            onClick={() => void handleFgsTest()}
-          >
+            onClick={() => void handleFgsTest()} variant="primary">
             {fgsBusy ? "…" : "تجربة خدمة الأذان"}
-          </button>
+          </Button>
             </>
           ) : null}
         </div>
@@ -378,26 +375,26 @@ function SoundOptionCard({
 }) {
   return (
     <div className={`ads-style-card ads-style-card--compact${selected ? " is-selected" : ""}`}>
-      <button
+      <Button
         type="button"
         role="radio"
         aria-checked={selected}
         className="ads-style-card__select"
-        onClick={onSelect}
-      >
+        onClick={onSelect} variant="ghost">
         <span className="ads-style-card__name">{opt.label}</span>
         {selected ? <span className="ads-style-card__badge" data-selected="1">مختار</span> : null}
-      </button>
+      </Button>
       {opt.playbackMode !== "silent" ? (
-        <button
+        <Button
           type="button"
+          variant="ghost"
           className={`ads-style-card__preview${playing ? " is-playing" : ""}`}
           onClick={onListen}
           aria-label={`معاينة — ${opt.label}`}
         >
           <Volume2 size={14} aria-hidden="true" />
           {playing ? "إيقاف" : "معاينة"}
-        </button>
+        </Button>
       ) : null}
     </div>
   );
@@ -757,26 +754,24 @@ export default function AdhanSettingsPage() {
               <span>إشعار قصير</span>
             </div>
             <div className="ads-sound-summary__actions">
-              <button
+              <Button
                 type="button"
                 className="ads-pill-btn"
                 onClick={() => {
                   const opt = getSettingsSoundOption(selectedToneSoundId);
                   if (opt) void listenToSound(opt);
-                }}
-              >
+                }} variant="primary">
                 {playingId === selectedToneSoundId ? "إيقاف" : "معاينة"}
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
                 className="ads-pill-btn"
                 onClick={() => {
                   setPickerGroup("tone");
                   setPickerOpen(true);
-                }}
-              >
+                }} variant="primary">
                 تغيير
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -787,26 +782,24 @@ export default function AdhanSettingsPage() {
               <span>معاينة داخل التطبيق</span>
             </div>
             <div className="ads-sound-summary__actions">
-              <button
+              <Button
                 type="button"
                 className="ads-pill-btn"
                 onClick={() => {
                   const opt = getSettingsSoundOption(selectedAdhanSoundId);
                   if (opt) void listenToSound(opt);
-                }}
-              >
+                }} variant="primary">
                 {playingId === selectedAdhanSoundId ? "إيقاف" : "معاينة"}
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
                 className="ads-pill-btn"
                 onClick={() => {
                   setPickerGroup("adhan");
                   setPickerOpen(true);
-                }}
-              >
+                }} variant="primary">
                 تغيير
-              </button>
+              </Button>
             </div>
           </div>
           {soundMsg ? <p className="ads-adhan-desc" role="status">{soundMsg}</p> : null}
@@ -854,14 +847,13 @@ export default function AdhanSettingsPage() {
           {prefs.iqamahEnabled ? (
             <div className="ads-chip-scroll" role="group" aria-label="دقائق بعد الأذان للإقامة">
               {([0, 5, 10, 15] as const).map((min) => (
-                <button
+                <Button
                   key={min}
                   type="button"
                   onClick={() => setIqamahDelay(min)}
-                  className={`ads-chip${prefs.iqamahDelayMinutes === min ? " is-active" : ""}`}
-                >
+                  className={`ads-chip${prefs.iqamahDelayMinutes === min ? " is-active" : ""}`} variant="ghost">
                   {min === 0 ? "مع الأذان" : `${min} د`}
-                </button>
+                </Button>
               ))}
             </div>
           ) : null}
@@ -913,18 +905,17 @@ export default function AdhanSettingsPage() {
             const expanded = openPrayer === key;
             return (
               <div key={key} className={`ads-prayer-row${expanded ? " is-open" : ""}`}>
-                <button
+                <Button
                   type="button"
                   className="ads-prayer-row__head ads-prayer-row__top"
                   aria-expanded={expanded}
-                  onClick={() => setOpenPrayer((cur) => (cur === key ? null : key))}
-                >
+                  onClick={() => setOpenPrayer((cur) => (cur === key ? null : key))} variant="ghost">
                   <Icon size={16} strokeWidth={2} aria-hidden="true" />
                   <span className="ads-prayer-row__name">{PRAYER_ARABIC[key]}</span>
                   <span className="ads-prayer-row__summary">
                     {p.enabled ? (p.advanceMinutes ? `قبل ${p.advanceMinutes} د` : "عند الأذان") : "متوقف"}
                   </span>
-                </button>
+                </Button>
                 {expanded ? (
                   <div className="ads-prayer-row__body">
                     <SettingsToggleRow
@@ -942,15 +933,14 @@ export default function AdhanSettingsPage() {
                     />
                     <div className="ads-chip-scroll" role="group" aria-label={`تنبيه قبل ${PRAYER_ARABIC[key]}`}>
                       {ADVANCE_OPTIONS.map((min) => (
-                        <button
+                        <Button
                           key={min}
                           type="button"
                           disabled={!p.enabled}
                           onClick={() => setPrayerAdvance(key, min)}
-                          className={`ads-chip${p.advanceMinutes === min ? " is-active" : ""}`}
-                        >
+                          className={`ads-chip${p.advanceMinutes === min ? " is-active" : ""}`} variant="ghost">
                           {min === 0 ? "بدون" : `${min} د`}
-                        </button>
+                        </Button>
                       ))}
                     </div>
                   </div>
@@ -978,38 +968,35 @@ export default function AdhanSettingsPage() {
             <LocationPermBadge />
           </div>
           <div className="ads-prayer-muezzin-btns ads-sound-test-row">
-            <button type="button" className="ads-pill-btn" onClick={() => void runSoundTest()}>
+            <Button type="button" className="ads-pill-btn" onClick={() => void runSoundTest()} variant="primary">
               {playingId ? "إيقاف الصوت" : "معاينة الصوت"}
-            </button>
-            <button type="button" className="ads-pill-btn" onClick={() => void runNotifSoundTest()}>
+            </Button>
+            <Button type="button" className="ads-pill-btn" onClick={() => void runNotifSoundTest()} variant="primary">
               اختبار إشعار خلال ١٠ ثوانٍ
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
               className="ads-pill-btn ads-reschedule-btn"
               disabled={rescheduleBusy}
-              onClick={() => void runRescheduleAlerts()}
-            >
+              onClick={() => void runRescheduleAlerts()} variant="primary">
               {rescheduleBusy ? "…" : "إعادة جدولة التنبيهات"}
-            </button>
+            </Button>
             {showDeveloperTools ? (
               <>
-                <button
+                <Button
                   type="button"
                   className="ads-pill-btn"
                   disabled={statusBusy}
-                  onClick={() => void runAdhanStatusCheck()}
-                >
+                  onClick={() => void runAdhanStatusCheck()} variant="primary">
                   {statusBusy ? "…" : "فحص حالة الأذان"}
-                </button>
-                <button
+                </Button>
+                <Button
                   type="button"
                   className="ads-pill-btn"
                   disabled={rescheduleBusy}
-                  onClick={() => void runPurgeAndReschedule()}
-                >
+                  onClick={() => void runPurgeAndReschedule()} variant="primary">
                   حذف القديمة وإعادة الضبط
-                </button>
+                </Button>
               </>
             ) : null}
           </div>

@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 /**
  * بطاقة إعدادات مقاطع اقتراب الصلاة + الأذكار الصوتية.
  * يعرض فقط الأصوات الجاهزة للتشغيل — بلا خيارات بانتظار ترخيص.
@@ -138,16 +139,16 @@ export function AudioPromptsSettingsCard() {
                     ))}
                   </select>
                 </label>
-                <button
+                <Button
                   type="button"
                   className="mj-btn mj-btn--ghost"
                   disabled={!canPreview}
                   aria-pressed={isPlaying}
                   onClick={() => void onPreviewPrompt(prayerId)}
-                >
+                 variant="ghost">
                   <Volume2 size={16} aria-hidden="true" />
                   {isPlaying ? "إيقاف" : "معاينة"}
-                </button>
+                </Button>
               </li>
             );
           })}
@@ -169,14 +170,14 @@ export function AudioPromptsSettingsCard() {
                   <div>
                     <strong>{clip.transcript}</strong>
                   </div>
-                  <button
+                  <Button
                     type="button"
                     className="mj-btn mj-btn--ghost"
                     aria-pressed={isPlaying}
                     onClick={() => void onPreviewDhikr(clip.id)}
-                  >
+                   variant="ghost">
                     {isPlaying ? "إيقاف" : "معاينة"}
-                  </button>
+                  </Button>
                 </li>
               );
             })}

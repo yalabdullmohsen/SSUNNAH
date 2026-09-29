@@ -25,6 +25,8 @@ import { stashLessonForNavigation } from "@/lib/lessons-service";
 import type { KuwaitLessonRecord } from "@/lib/kuwait-lessons";
 import { resolveLessonType } from "@/lib/lesson-type";
 
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 type Props = {
   lesson: UnifiedLesson;
   compact?: boolean;
@@ -247,67 +249,61 @@ export const UnifiedLessonCard = memo(function UnifiedLessonCard({
             />
             {hasOverflow ? (
               <div className="lesson-unified-card__overflow">
-                <button
+                <IconButton
                   type="button"
                   className="lesson-unified-card__btn lesson-unified-card__btn--secondary lesson-unified-card__more"
                   aria-expanded={menuOpen}
                   aria-haspopup="menu"
-                  aria-label="المزيد من الإجراءات"
-                  onClick={() => setMenuOpen((v) => !v)}
-                >
+                  onClick={() => setMenuOpen((v) => !v)} label="المزيد من الإجراءات">
                   <MoreHorizontal size={18} strokeWidth={2} aria-hidden="true" />
-                </button>
+                </IconButton>
                 {menuOpen ? (
                   <div className="lesson-unified-card__menu" role="menu">
-                    <button
+                    <Button
                       type="button"
                       role="menuitem"
                       className="lesson-unified-card__menu-item"
                       onClick={() => {
                         downloadUnifiedCalendar(lesson);
                         setMenuOpen(false);
-                      }}
-                    >
+                      }} variant="ghost">
                       التقويم
-                    </button>
+                    </Button>
                     {lesson.streamUrl ? (
-                      <button
+                      <Button
                         type="button"
                         role="menuitem"
                         className="lesson-unified-card__menu-item"
                         onClick={() => {
                           openLessonExternalUrl(lesson.streamUrl!);
                           setMenuOpen(false);
-                        }}
-                      >
+                        }} variant="ghost">
                         رابط البث
-                      </button>
+                      </Button>
                     ) : null}
                     {lesson.mapsUrl ? (
-                      <button
+                      <Button
                         type="button"
                         role="menuitem"
                         className="lesson-unified-card__menu-item"
                         onClick={() => {
                           openLessonExternalUrl(lesson.mapsUrl!);
                           setMenuOpen(false);
-                        }}
-                      >
+                        }} variant="ghost">
                         الموقع
-                      </button>
+                      </Button>
                     ) : null}
                     {showRegister && onToggleRegister ? (
-                      <button
+                      <Button
                         type="button"
                         role="menuitem"
                         className="lesson-unified-card__menu-item"
                         onClick={() => {
                           onToggleRegister();
                           setMenuOpen(false);
-                        }}
-                      >
+                        }} variant="ghost">
                         {registered ? "إلغاء التسجيل" : "سجّل حضوري"}
-                      </button>
+                      </Button>
                     ) : null}
                     {!compact ? (
                       <AdminInlineEdit
@@ -329,13 +325,12 @@ export const UnifiedLessonCard = memo(function UnifiedLessonCard({
                 ) : null}
               </div>
             ) : (
-              <button
+              <Button
                 type="button"
                 className="lesson-unified-card__btn lesson-unified-card__btn--secondary"
-                onClick={() => downloadUnifiedCalendar(lesson)}
-              >
+                onClick={() => downloadUnifiedCalendar(lesson)} variant="secondary">
                 التقويم
-              </button>
+              </Button>
             )}
           </div>
         </div>

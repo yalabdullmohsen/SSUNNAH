@@ -18,6 +18,7 @@ import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import "@/styles/pages/daily-wird.css";
 import { UtilityScreen } from "@/components/design-system/screens";
 
+import { Button } from "@/components/ui/button";
 const QURAN_PAGES = 604;
 
 function toAr(n: number): string {
@@ -222,16 +223,15 @@ export default function DailyWirdPage() {
 
         <div className="wird-count-btns" role="group" aria-label="إضافة صفحات">
           {[1, 2, 5].map((n) => (
-            <button
+            <Button
               key={n}
               type="button"
               className="wird-count-btn"
               onClick={() => addPage(n)}
               disabled={done}
-              aria-label={`أضف ${n} ${n === 1 ? "صفحة" : "صفحات"}`}
-            >
+              aria-label={`أضف ${n} ${n === 1 ? "صفحة" : "صفحات"}`} variant="secondary">
               +{toAr(n)}
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -244,9 +244,9 @@ export default function DailyWirdPage() {
         )}
 
         {todayCompleted > 0 && (
-          <button type="button" className="wird-reset-btn" onClick={resetToday}>
+          <Button type="button" className="wird-reset-btn" onClick={resetToday} variant="ghost">
             إعادة ضبط اليوم
-          </button>
+          </Button>
         )}
 
         {/* إحصائيات */}
@@ -362,7 +362,7 @@ export default function DailyWirdPage() {
           <BookOpen size={15} strokeWidth={1.8} aria-hidden="true" /> فتح المصحف من هذا الموضع
         </Link>
 
-        <button
+        <Button
           type="button"
           className="wird-quran-link"
           style={{ border: "none", cursor: "pointer", font: "inherit", width: "100%", textAlign: "start" }}
@@ -377,10 +377,9 @@ export default function DailyWirdPage() {
                     : STATUS.loadError,
               );
             });
-          }}
-        >
+          }} variant="primary">
           تفعيل تذكير الورد الساعة 5 مساءً
-        </button>
+        </Button>
         {reminderStatus ? (
           <p className="wird-streak-msg" role="status" aria-live="polite">{reminderStatus}</p>
         ) : null}

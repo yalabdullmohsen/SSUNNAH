@@ -11,6 +11,7 @@ import { UtilityScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 
+import { Button } from "@/components/ui/button";
 type SalahTab = "shurut" | "wajibaat" | "kayfiyya" | "mubtilatat" | "khushuu" | "fawaid" | "maratib" | "suwar";
 
 const TABS: { id: SalahTab; label: string; icon: string }[] = [
@@ -382,7 +383,7 @@ export default function SalahGuidePage() {
       {/* tabs */}
       <div className="sg-tabs-bar" role="tablist" aria-label="أقسام دليل الصلاة">
         {TABS.map((t) => (
-          <button
+          <Button
             key={t.id}
             id={`sgp-tab-${t.id}`}
             type="button"
@@ -391,10 +392,10 @@ export default function SalahGuidePage() {
             onClick={() => setTab(t.id)}
             aria-selected={tab === t.id}
               aria-controls={`sgp-panel-${t.id}`}
-          >
+           variant="ghost">
             <span><SectionIcon name={t.icon} size={22} /></span>
             <span>{t.label}</span>
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -494,15 +495,15 @@ export default function SalahGuidePage() {
                 const isOpen = openStep === s.num;
                 return (
                   <div key={s.num} className={`sg-step-card${isOpen ? " sg-step-card--open" : ""}`}>
-                    <button
+                    <Button
                       type="button"
                       className="sg-step-head"
                       onClick={() => setOpenStep(isOpen ? null : s.num)}
-                    >
+                     variant="ghost">
                       <span className="sg-step-num">{s.num}</span>
                       <span className="sg-step-action">{s.action}</span>
                       <span className={`sg-chevron${isOpen ? " sg-chevron--open" : ""}`}>▾</span>
-                    </button>
+                    </Button>
                     {isOpen && (
                       <div className="sg-step-body">
                         {s.dhikr && (

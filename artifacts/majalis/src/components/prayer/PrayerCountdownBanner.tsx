@@ -11,6 +11,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useSharedPrayerCountdown } from "@/components/prayer/PrayerCountdownProvider";
+import { IconButton } from "@/components/design-system/Buttons";
 import { PRE_ALERT_MINUTES, isBannerDismissedFor, dismissBannerFor, loadPrayerAlertPrefs } from "@/lib/prayer-alert-preferences";
 import { formatAdhanRemainingPhrase } from "@/lib/prayer-ticker-copy";
 import "@/styles/components/prayer-countdown-banner.css";
@@ -111,14 +112,14 @@ export function PrayerCountdownBanner() {
             ) : null}
           </span>
         </Link>
-        <button
+        <IconButton
           type="button"
           className="pcb-card__close"
           onClick={handleDismiss}
-          aria-label="إخفاء تنبيه الصلاة"
+          label="إخفاء تنبيه الصلاة"
         >
           <X size={16} strokeWidth={2.5} />
-        </button>
+        </IconButton>
       </div>
     </div>
   );

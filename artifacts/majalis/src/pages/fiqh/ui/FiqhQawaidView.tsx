@@ -10,6 +10,7 @@ import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import "@/styles/pages/fiqh-qawaid.css";
 import { ListScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
+import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
    §239، القواعد الفقهية الكبرى  (.fq-*)
@@ -448,18 +449,19 @@ export default function FiqhQawaidPage() {
       <div className="fq-container">
         <div className="fq-tabs" role="tablist" aria-label="تبويبات القواعد الفقهية">
           {TABS.map(t => (
-            <button
+            <Button
               key={t.id}
               id={`fq-tab-${t.id}`}
               role="tab"
               type="button"
+              variant="ghost"
               className={`fq-tab${activeTab === t.id ? " fq-tab--active" : ""}`}
               onClick={() => setActiveTab(t.id)}
               aria-selected={activeTab === t.id}
               aria-controls={`fq-panel-${t.id}`}
             >
               {t.label}
-            </button>
+            </Button>
           ))}
         </div>
 

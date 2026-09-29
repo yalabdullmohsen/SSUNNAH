@@ -4,6 +4,8 @@ import { fetchAssessment, submitAssessment, type AssessmentQuestion } from "@/li
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import "@/styles/pages/mawarith.css";
 
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 export function AssessmentModal({
   assessmentId,
   learningItemId,
@@ -65,7 +67,7 @@ export function AssessmentModal({
       <div className="am-modal" role="dialog" aria-modal="true" aria-label={title || "التقييم"} onClick={(e) => e.stopPropagation()}>
         <div className="am-modal__head">
           <span>{title || "التقييم"}</span>
-          <button type="button" onClick={onClose} className="am-modal__close" aria-label="إغلاق"><X size={18} aria-hidden="true" /></button>
+          <IconButton type="button" onClick={onClose} className="am-modal__close" label="إغلاق"><X size={18} aria-hidden="true" /></IconButton>
         </div>
 
         <div className="am-modal__body">
@@ -124,9 +126,9 @@ export function AssessmentModal({
                   )}
                 </div>
               ))}
-              <button type="button" className="am-submit-btn" disabled={!allAnswered || submitting} onClick={handleSubmit}>
+              <Button type="button" className="am-submit-btn" disabled={!allAnswered || submitting} onClick={handleSubmit} variant="primary" loading={submitting}>
                 {submitting ? "تصحيح…" : "إرسال الإجابات"}
-              </button>
+              </Button>
             </>
           )}
 
@@ -137,7 +139,7 @@ export function AssessmentModal({
               <p className="am-result__msg">
                 {result.passed ? "اجتزت التقييم بنجاح" : `لم تبلغ نسبة النجاح المطلوبة (${passPercentage}%)`}
               </p>
-              <button type="button" className="am-submit-btn" onClick={onClose}>إغلاق</button>
+              <Button type="button" className="am-submit-btn" onClick={onClose} variant="secondary">إغلاق</Button>
             </div>
           )}
         </div>

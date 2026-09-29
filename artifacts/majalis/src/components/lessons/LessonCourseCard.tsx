@@ -1,5 +1,6 @@
 import { memo, useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import type { LessonCourseGroup } from "@/lib/lessons/lessonGrouping";
 import { cleanDisplayText } from "@/lib/display-text";
 import { formatRelativeTimeDetailed } from "@/lib/lesson-time";
@@ -24,8 +25,9 @@ export const LessonCourseCard = memo(function LessonCourseCard({ course }: Props
 
   return (
     <article className="lesson-course-card card-v2">
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className="lesson-course-card__toggle"
         onClick={() => setExpanded((v) => !v)}
         aria-expanded={expanded}
@@ -73,7 +75,7 @@ export const LessonCourseCard = memo(function LessonCourseCard({ course }: Props
           <LessonStatusBadge label={nearestLabel} variant={resolveStatusVariant(nearestLabel)} />
           {course.hasWomenSection ? <WomenAttendanceBadge note="متاح" /> : null}
         </div>
-      </button>
+      </Button>
       {expanded ? (
         <div className="lesson-course-card__sessions" role="list">
           {course.sessions.map((session) => (

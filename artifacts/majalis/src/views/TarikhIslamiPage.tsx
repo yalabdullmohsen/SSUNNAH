@@ -29,6 +29,7 @@ import { DashboardScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
 import { EmptyStateV2 } from "@/components/design-system";
 
+import { Button } from "@/components/ui/button";
 type FilterId = HistoryCategory | "all";
 
 const RELATED_HISTORY = [
@@ -114,13 +115,12 @@ function EraPanel({
       data-era={meta.id}
       data-stage={stageIndex}
     >
-      <button
+      <Button
         type="button"
         className="tarikh-era__head"
         aria-expanded={open}
         aria-controls={panelId}
-        onClick={onToggle}
-      >
+        onClick={onToggle} variant="ghost">
         <span className="tarikh-era__index" aria-hidden="true">
           {stageIndex}
         </span>
@@ -132,7 +132,7 @@ function EraPanel({
         </span>
         <span className="tarikh-era__count">{events.length} حدثًا</span>
         <span className="tarikh-era__chevron" aria-hidden="true" />
-      </button>
+      </Button>
       <div className="tarikh-era__body" id={panelId} hidden={!open}>
         <ol className="tarikh-era__events">
           {events.map((item, index) => (
@@ -281,29 +281,27 @@ export default function TarikhIslamiPage() {
     >
       <KnowledgeLayout kind="timeline" className="tarikh-hub" data-kx="1">
         <nav className="tarikh-rail" aria-label="مسار العصور الإسلامية">
-          <button
+          <Button
             type="button"
             className={`tarikh-rail__chip${filter === "all" ? " is-active" : ""}`}
-            onClick={showFullPath}
-          >
+            onClick={showFullPath} variant="ghost">
             <span className="tarikh-rail__label">المسار كاملاً</span>
             <span className="tarikh-rail__period">كل المراحل</span>
-          </button>
+          </Button>
           {HISTORY_CATEGORY_ORDER.map((id, i) => {
             const meta = HISTORY_ERA_META[id];
             return (
-              <button
+              <Button
                 key={id}
                 id={`tarikh-rail-${id}`}
                 type="button"
                 className={`tarikh-rail__chip${filter === id ? " is-active" : ""}`}
                 style={{ ["--tarikh-accent" as string]: meta.accent }}
-                onClick={() => focusEra(id)}
-              >
+                onClick={() => focusEra(id)} variant="ghost">
                 <span className="tarikh-rail__n">{i + 1}</span>
                 <span className="tarikh-rail__label">{meta.title}</span>
                 <span className="tarikh-rail__period">{meta.period}</span>
-              </button>
+              </Button>
             );
           })}
         </nav>
@@ -354,15 +352,15 @@ export default function TarikhIslamiPage() {
           {!query ? (
             <div className="tarikh-era-actions">
               <div className="tarikh-era-actions__row">
-                <button type="button" className="tarikh-text-btn" onClick={expandAll}>
+                <Button type="button" className="tarikh-text-btn" onClick={expandAll} variant="ghost">
                   فتح كل المراحل
-                </button>
-                <button type="button" className="tarikh-text-btn" onClick={collapseAll}>
+                </Button>
+                <Button type="button" className="tarikh-text-btn" onClick={collapseAll} variant="ghost">
                   طي الكل
-                </button>
-                <button type="button" className="tarikh-text-btn" onClick={showFullPath}>
+                </Button>
+                <Button type="button" className="tarikh-text-btn" onClick={showFullPath} variant="ghost">
                   عرض الكل
-                </button>
+                </Button>
               </div>
             </div>
           ) : null}

@@ -18,6 +18,8 @@ import { HadithGradeBadge } from "./HadithGradeBadge";
 import { presentHadithAuthenticity } from "@/lib/hadith/hadith-authenticity-label";
 import { collectionFilterLabel } from "@/lib/hadith/hadith-collection-availability";
 
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 const COLLECTION_LABELS: Record<string, string> = {
   mutafaq: "متفق عليه",
   nawawi40: "الأربعون النووية",
@@ -214,50 +216,45 @@ export function HadithCard({ item: h, onExpand, detailHref }: Props) {
           {body}
         </Link>
       ) : (
-        <button
+        <Button
           type="button"
           className="hadith-card__hit hdl-card__hit"
           aria-label={ariaLabel}
-          onClick={() => onExpand(h)}
-        >
+          onClick={() => onExpand(h)} variant="ghost">
           {body}
-        </button>
+        </Button>
       )}
 
       <footer className="hdl-card__footer">
         <div className="hdl-card__footer-actions">
-          <button
+          <IconButton
             type="button"
             className={`hadith-action-btn ${saved ? "hadith-action-btn--active" : ""}`}
             onClick={handleSave}
-            aria-label={saved ? "إزالة من المحفوظات" : "حفظ"}
-            title={saved ? "محفوظ" : "حفظ"}
-          >
+            title={saved ? "محفوظ" : "حفظ"} label={saved ? "إزالة من المحفوظات" : "حفظ"}>
             <Bookmark
               size={16}
               strokeWidth={2}
               fill={saved ? "currentColor" : "none"}
               aria-hidden="true"
             />
-          </button>
-          <button
+          </IconButton>
+          <IconButton
             type="button"
             className="hadith-action-btn"
             onClick={handleShare}
-            aria-label="مشاركة"
-            title="مشاركة"
-          >
+            title="مشاركة" label="مشاركة">
             <Share2 size={16} strokeWidth={2} aria-hidden="true" />
-          </button>
+          </IconButton>
         </div>
         {href ? (
           <Link href={href} className="hdl-card__cta">
             قراءة المزيد
           </Link>
         ) : (
-          <button type="button" className="hdl-card__cta" onClick={() => onExpand(h)}>
+          <Button type="button" className="hdl-card__cta" onClick={() => onExpand(h)} variant="ghost">
             قراءة المزيد
-          </button>
+          </Button>
         )}
       </footer>
     </article>

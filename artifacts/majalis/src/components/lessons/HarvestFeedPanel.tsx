@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 import { SourceItemCard } from "@/components/lessons/SourceItemCard";
 import {
   isThisWeek,
@@ -100,14 +101,15 @@ export function HarvestFeedPanel() {
       </header>
       <nav className="harvest-panel__tabs" aria-label="تصفية المنشورات">
         {TABS.map((t) => (
-          <button
+          <Button
             key={t.id}
             type="button"
+            variant="ghost"
             className={tab === t.id ? "is-active" : undefined}
             onClick={() => setTab(t.id)}
           >
             {t.label}
-          </button>
+          </Button>
         ))}
       </nav>
       <div className="harvest-panel__grid">

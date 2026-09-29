@@ -26,6 +26,7 @@ import "@/styles/pages/tasbih.css";
 import "@/styles/components/thumb-zone.css";
 import "@/styles/pages/worship-history-v2.css";
 
+import { Button } from "@/components/ui/button";
 const AdhkarDhikrSheet = lazy(() =>
   import("./AdhkarDhikrSheet").then((m) => ({ default: m.AdhkarDhikrSheet })),
 );
@@ -266,30 +267,27 @@ export default function AdhkarPage() {
     <PageShell variant="narrow" className="content-hub-page adhkar-page adhkar-page--focus adhkar-page--embedded">
       {/* شريط التصنيفات */}
       <div className="content-hub-chips adhkar-chips" role="tablist" aria-label="تصفية الأذكار">
-        <button
+        <Button
           role="tab"
           type="button"
           className={`content-hub-chip${category === "all" ? " content-hub-chip--active" : ""}`}
           onClick={() => changeCategory("all")}
-          aria-selected={category === "all"}
-        >الكل</button>
+          aria-selected={category === "all"} variant="ghost">الكل</Button>
         {FEATURED_CATEGORIES.map((cat) => (
-          <button
+          <Button
             key={cat.id} role="tab" type="button"
             className={`content-hub-chip${category === cat.id ? " content-hub-chip--active" : ""}`}
             onClick={() => changeCategory(cat.id)}
-            aria-selected={category === cat.id}
-          >{cat.name}</button>
+            aria-selected={category === cat.id} variant="ghost">{cat.name}</Button>
         ))}
-        <button
+        <Button
           role="tab"
           type="button"
           className={`content-hub-chip${category === "adh-unverified" ? " content-hub-chip--active" : ""}`}
           onClick={() => changeCategory("adh-unverified")}
-          aria-selected={category === "adh-unverified"}
-        >
+          aria-selected={category === "adh-unverified"} variant="ghost">
           تنبيه وتمييز
-        </button>
+        </Button>
       </div>
 
       {category === "adh-unverified" && (
@@ -334,12 +332,11 @@ export default function AdhkarPage() {
           <div className="adhkar-tapper-zone">
             {target > 1 ? (
               <div className="adhkar-tapper-wrap">
-                <button
+                <Button
                   type="button"
                   className={`adhkar-tapper${done ? " adhkar-tapper--done" : ""}`}
                   onClick={handleTap}
-                  aria-label={done ? "اكتمل الذكر" : `اضغط للعدّ، ${toAr(tapCount)} من ${toAr(target)}`}
-                >
+                  aria-label={done ? "اكتمل الذكر" : `اضغط للعدّ، ${toAr(tapCount)} من ${toAr(target)}`} variant="ghost">
                   <RingProgress pct={ringPct} />
                   <div className="adhkar-tapper__inner">
                     {done ? (
@@ -352,20 +349,19 @@ export default function AdhkarPage() {
                       </>
                     )}
                   </div>
-                </button>
+                </Button>
                 <div className="adhkar-tapper-status" aria-live="polite">
                   {done ? (
                     <>
-                      <button
+                      <Button
                         type="button"
                         className="adhkar-focus-btn adhkar-focus-btn--reset"
                         onClick={() => {
                           resetCounter();
                           ssSave(category, currentIndex, 0);
-                        }}
-                      >
+                        }} variant="secondary">
                         إعادة ضبط
-                      </button>
+                      </Button>
                       {isLast ? (
                         <p className="adhkar-tapper__complete">
                           <Leaf size={15} strokeWidth={1.8} aria-hidden="true" /> أكملت جميع الأذكار
@@ -380,7 +376,7 @@ export default function AdhkarPage() {
             ) : (
               /* ذكر مرة واحدة — زر تم واضح */
               <div className="adhkar-once">
-                <button
+                <Button
                   type="button"
                   className={`adhkar-focus-btn adhkar-focus-btn--done${done ? " is-done" : ""}`}
                   onClick={() => {
@@ -392,10 +388,9 @@ export default function AdhkarPage() {
                     setDone(true);
                     setTapCount(1);
                     hapticsComplete();
-                  }}
-                >
+                  }} variant="secondary">
                   {done ? "أُنجز — إعادة ضبط" : "تم"}
-                </button>
+                </Button>
               </div>
             )}
           </div>

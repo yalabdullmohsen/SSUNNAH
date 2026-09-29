@@ -8,6 +8,7 @@ import {
   type MouseEvent,
 } from "react";
 import { AppBottomSheet } from "@/components/ui/AppBottomSheet";
+import { Button } from "@/components/ui/button";
 import { useSharedPrayerCountdownLive, useSharedPrayerData } from "@/components/prayer/PrayerCountdownProvider";
 import { buildPrayerChipCopy } from "@/lib/prayer-ticker-copy";
 import { formatTime12, type PrayerSlot } from "@/lib/prayer-times";
@@ -73,8 +74,9 @@ function PrayerCountdownChipInner() {
 
   return (
     <>
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className="prayer-countdown-chip__hit"
         aria-labelledby={titleId}
         aria-haspopup="dialog"
@@ -99,7 +101,7 @@ function PrayerCountdownChipInner() {
             <span className="prayer-countdown-chip__now-text">{copy.text}</span>
           </span>
         </span>
-      </button>
+      </Button>
 
       <AppBottomSheet
         open={sheetOpen}

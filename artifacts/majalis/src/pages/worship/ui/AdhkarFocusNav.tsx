@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 
+import { Button } from "@/components/ui/button";
 /**
  * شريط تنقّل الأذكار الموحّد — ارتفاع/موضع ثابت عبر CSS (.adhkar-focus-controls).
  */
@@ -28,43 +29,39 @@ export function AdhkarFocusNav({
   return (
     <div className="adhkar-focus-controls" data-adhkar-controls="1">
       <div className="adhkar-focus-nav" role="group" aria-label="تنقل الأذكار">
-        <button
+        <Button
           type="button"
           className="adhkar-focus-btn adhkar-focus-btn--prev"
           onClick={onPrev}
           disabled={!canPrev}
-          aria-label="الذكر السابق"
-        >
+          aria-label="الذكر السابق" variant="secondary">
           ← السابق
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
           className="adhkar-focus-btn adhkar-focus-btn--details"
           onClick={onDetails}
-          aria-label="عرض تفاصيل الذكر"
-        >
+          aria-label="عرض تفاصيل الذكر" variant="secondary">
           التفاصيل
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
           className="adhkar-focus-btn adhkar-focus-btn--next"
           onClick={onNext}
           disabled={!canNext}
           aria-label="الذكر التالي"
-          data-adhkar-next="1"
-        >
+          data-adhkar-next="1" variant="secondary">
           التالي →
-        </button>
+        </Button>
       </div>
 
       <div className="adhkar-focus-nav adhkar-focus-nav--reset">
-        <button
+        <Button
           type="button"
           className="adhkar-focus-btn adhkar-focus-btn--ghost"
-          onClick={onResetProgress}
-        >
+          onClick={onResetProgress} variant="ghost">
           إعادة ضبط التقدّم
-        </button>
+        </Button>
       </div>
 
       <div

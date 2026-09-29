@@ -73,6 +73,8 @@ import "@/styles/pages/hadith-design-language.css";
 import "@/styles/pages/knowledge-dashboards-v2.css";
 import "@/styles/sunnah-identity-sections.css";
 
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type HadithItem = HadithRecord & { created_at: string };
@@ -301,14 +303,12 @@ function HadithDetailModal({ h, onClose }: { h: HadithItem; onClose: () => void 
               <HadithGradeBadge grade={h.grade} />
             ) : null}
           </div>
-          <button
+          <IconButton
             type="button"
             className="hadith-modal__close"
-            onClick={onClose}
-            aria-label="إغلاق"
-          >
+            onClick={onClose} label="إغلاق">
             ✕
-          </button>
+          </IconButton>
         </div>
 
         {h.title && h.title !== "حديث" && (
@@ -323,14 +323,13 @@ function HadithDetailModal({ h, onClose }: { h: HadithItem; onClose: () => void 
 
         {hasIsnad && isnad && (
           <section className="hadith-modal__isnad-block" aria-label="سند الحديث">
-            <button
+            <Button
               type="button"
               className="hadith-modal__isnad-toggle"
               aria-expanded={showIsnad}
-              onClick={() => setShowIsnad((v) => !v)}
-            >
+              onClick={() => setShowIsnad((v) => !v)} variant="ghost">
               {showIsnad ? "إخفاء السند" : "عرض السند"}
-            </button>
+            </Button>
             {showIsnad && (
               <p className="hadith-modal__isnad">{isnad}</p>
             )}
@@ -418,20 +417,18 @@ function HadithDetailModal({ h, onClose }: { h: HadithItem; onClose: () => void 
         )}
 
         <div className="hadith-modal__actions">
-          <button
+          <Button
             type="button"
             className="hadith-modal-btn"
-            onClick={handleCopyMatn}
-          >
+            onClick={handleCopyMatn} variant="ghost">
             {copied ? "✓ تم نسخ المتن" : "⎘ نسخ المتن"}
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             className="hadith-modal-btn hadith-modal-btn--ghost"
-            onClick={handleCopyFull}
-          >
+            onClick={handleCopyFull} variant="ghost">
             {copiedFull ? "✓ تم نسخ السند+المتن" : "⎘ نسخ كاملاً (سند+متن)"}
-          </button>
+          </Button>
         </div>
 
         <IsnadAttributionBar
@@ -827,13 +824,12 @@ export function HadithSection({
         </div>
       ) : null}
       <div className="hadith-filter-section">
-        <button
+        <Button
           type="button"
           className="hadith-clear-search"
-          onClick={clearAllFilters}
-        >
+          onClick={clearAllFilters} variant="ghost">
           مسح عوامل التصفية
-        </button>
+        </Button>
       </div>
     </div>
   );
@@ -884,13 +880,12 @@ export function HadithSection({
             </span>
           )}
           {(debouncedSearch || debouncedNumber || debouncedBook || debouncedInBook || activeCategory !== "الكل" || activeCollection !== "الكل") && (
-            <button
+            <Button
               type="button"
               className="hadith-clear-search"
-              onClick={clearAllFilters}
-            >
+              onClick={clearAllFilters} variant="ghost">
               مسح عوامل التصفية
-            </button>
+            </Button>
           )}
         </div>
       </div>
@@ -911,7 +906,7 @@ export function HadithSection({
           {collections.slice(4).map((c) => {
             const selectable = isFilterSelectable(c);
             return (
-              <button
+              <Button
                 key={c}
                 type="button"
                 role="radio"
@@ -921,10 +916,9 @@ export function HadithSection({
                 className={`hdl-discover__book${activeCollection === c ? " is-active" : ""}${!selectable ? " is-disabled" : ""}`}
                 onClick={() => {
                   if (selectable) setActiveCollection(c);
-                }}
-              >
+                }} variant="ghost">
                 {collectionLabel(c)}
-              </button>
+              </Button>
             );
           })}
         </div>
@@ -978,25 +972,23 @@ export function HadithSection({
           </div>
           {totalPages > 1 && (
             <div className="hadith-pagination" role="navigation" aria-label="صفحات الأحاديث">
-              <button
+              <Button
                 type="button"
                 className="hadith-pagination__btn"
                 disabled={safePage <= 1}
-                onClick={() => setPage((p) => Math.max(1, p - 1))}
-              >
+                onClick={() => setPage((p) => Math.max(1, p - 1))} variant="ghost">
                 السابق
-              </button>
+              </Button>
               <span className="hadith-pagination__info">
                 صفحة {safePage.toLocaleString("ar-EG")} من {totalPages.toLocaleString("ar-EG")}
               </span>
-              <button
+              <Button
                 type="button"
                 className="hadith-pagination__btn"
                 disabled={safePage >= totalPages}
-                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-              >
+                onClick={() => setPage((p) => Math.min(totalPages, p + 1))} variant="ghost">
                 التالي
-              </button>
+              </Button>
             </div>
           )}
         </>

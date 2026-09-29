@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 const REPORT_KINDS = [
   { id: "lang", label: "خطأ لغوي" },
@@ -40,27 +41,29 @@ export function FiqhReportError({ lessonTitle, lessonHref, bookTitle }: Props) {
 
   return (
     <div className="fiqh-report">
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className="fiqh-report__toggle mj-pressable"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
       >
         إبلاغ عن خطأ
-      </button>
+      </Button>
       {open ? (
         <div className="fiqh-report__panel">
           <p className="fiqh-report__hint">اختر نوع البلاغ، ثم أرسل عبر بريدك.</p>
           <div className="fiqh-report__kinds" role="group" aria-label="نوع البلاغ">
             {REPORT_KINDS.map((k) => (
-              <button
+              <Button
                 key={k.id}
                 type="button"
+                variant="ghost"
                 className={`fiqh-report__chip${kind === k.id ? " is-active" : ""}`}
                 onClick={() => setKind(k.id)}
               >
                 {k.label}
-              </button>
+              </Button>
             ))}
           </div>
           <label className="fiqh-report__note">

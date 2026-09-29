@@ -3,6 +3,7 @@ import { GraduationCap } from "lucide-react";
 import { useParams, Link } from "wouter";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
+import { Button } from "@/components/ui/button";
 import { verifyCertificate } from "@/lib/learning-paths-service";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/certificate-verify.css";
@@ -97,9 +98,9 @@ export default function CertificateVerifyPage() {
             dir="ltr"
             aria-label="رمز الشهادة"
           />
-          <button type="submit" className="cvp-submit-btn">
+          <Button type="submit" variant="primary" className="cvp-submit-btn" loading={loading}>
             تحقق
-          </button>
+          </Button>
         </div>
         <p className="cvp-input-hint">الرمز مكوّن من حروف وأرقام، مثال: ABC-12345</p>
       </form>

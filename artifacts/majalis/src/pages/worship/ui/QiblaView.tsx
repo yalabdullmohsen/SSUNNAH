@@ -21,6 +21,7 @@ import { toArabicDigits } from "@/lib/utils";
 import "@/styles/pages/qibla.css";
 import { UtilityScreen } from "@/components/design-system/screens";
 
+import { Button } from "@/components/ui/button";
 function QiblaCompass({
   bearing,
   heading,
@@ -293,21 +294,19 @@ export default function QiblaPage() {
                   </option>
                 ))}
               </select>
-              <button
+              <Button
                 type="button"
                 className="qibla-manual-btn"
-                onClick={() => applyManualCity(selectedCity)}
-              >
+                onClick={() => applyManualCity(selectedCity)} variant="primary">
                 احسب القبلة
-              </button>
+              </Button>
               {typeof navigator !== "undefined" && navigator.geolocation ? (
-                <button
+                <Button
                   type="button"
                   className="qibla-manual-btn qibla-manual-btn--gps"
-                  onClick={() => requestDeviceLocation()}
-                >
+                  onClick={() => requestDeviceLocation()} variant="secondary">
                   استخدم موقعي
-                </button>
+                </Button>
               ) : null}
             </div>
           </div>
@@ -316,9 +315,9 @@ export default function QiblaPage() {
         {!manualMode && bearing == null && (
           <div className="qibla-loading-wrap">
             <p className="qibla-loading">حدد موقعك لحساب اتجاه القبلة.</p>
-            <button type="button" className="qibla-permit-btn" onClick={() => requestDeviceLocation()}>
+            <Button type="button" className="qibla-permit-btn" onClick={() => requestDeviceLocation()} variant="secondary">
               استخدم موقعي
-            </button>
+            </Button>
           </div>
         )}
 
@@ -370,9 +369,9 @@ export default function QiblaPage() {
             )}
 
             {permission === "needed" && (
-              <button type="button" className="qibla-permit-btn" onClick={() => void requestPermission()}>
+              <Button type="button" className="qibla-permit-btn" onClick={() => void requestPermission()} variant="secondary">
                 تفعيل مستشعر الاتجاه
-              </button>
+              </Button>
             )}
 
             {heading == null && permission !== "needed" && (
@@ -403,13 +402,12 @@ export default function QiblaPage() {
               دقة المستشعر منخفضة. حرّك الهاتف على شكل الرقم «٨» في الهواء عدة مرات بعيداً عن المعادن
               والمغناطيس، ثم أعد المحاولة.
             </p>
-            <button
+            <Button
               type="button"
               className="qibla-permit-btn"
-              onClick={() => setCalibDismissed(true)}
-            >
+              onClick={() => setCalibDismissed(true)} variant="secondary">
               حسناً
-            </button>
+            </Button>
           </div>
         </div>
       )}

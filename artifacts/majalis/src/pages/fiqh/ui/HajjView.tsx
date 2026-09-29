@@ -9,6 +9,7 @@ import { UtilityScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 
+import { Button } from "@/components/ui/button";
 /* ────── types ────── */
 type HajjTab = "overview" | "arkan" | "wajibat" | "mashaer" | "umra";
 
@@ -390,7 +391,7 @@ export default function HajjPage() {
         {/* tabs */}
         <div className="hj-tabs" role="tablist" aria-label="أقسام الحج">
           {TABS.map((t) => (
-            <button
+            <Button
               key={t.id}
               id={`hjp-tab-${t.id}`}
               role="tab"
@@ -399,10 +400,10 @@ export default function HajjPage() {
               onClick={() => setTab(t.id)}
               aria-selected={tab === t.id}
               aria-controls={`hjp-panel-${t.id}`}
-            >
+             variant="ghost">
               <span className="hj-tab__icon"><SectionIcon name={t.icon} size={24} /></span>
               <span className="hj-tab__label">{t.label}</span>
-            </button>
+            </Button>
           ))}
         </div>
       </section>
@@ -486,12 +487,12 @@ export default function HajjPage() {
               const isOpen = openRukn === rk.id;
               return (
                 <article key={rk.id} className={`hj-card${isOpen ? " hj-card--open" : ""}`}>
-                  <button
+                  <Button
                     type="button"
                     className="hj-card__head"
                     onClick={() => setOpenRukn(isOpen ? null : rk.id)}
                     aria-expanded={isOpen}
-                  >
+                   variant="ghost">
                     <span className="hj-card__num">{rk.num}</span>
                     <span className="hj-card__icon"><SectionIcon name={rk.icon} size={24} /></span>
                     <div className="hj-card__info">
@@ -500,7 +501,7 @@ export default function HajjPage() {
                     </div>
                     <span className="hj-card__badge">ركن</span>
                     <span className={`hj-card__chevron${isOpen ? " hj-card__chevron--open" : ""}`}>▾</span>
-                  </button>
+                  </Button>
                   {isOpen && (
                     <div className="hj-card__body">
                       <blockquote className="hj-dalil">

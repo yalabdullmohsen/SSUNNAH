@@ -10,6 +10,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import "@/styles/pages/duas.css";
 import { UtilityScreen } from "@/components/design-system/screens";
 
+import { Button } from "@/components/ui/button";
 /* ─── بيانات الأدعية ─── */
 type DuaEntry = {
   id: string;
@@ -1072,16 +1073,16 @@ export default function DuasPage() {
         </div>
         <div className="duas-cats" role="tablist" aria-label="تصفية الأدعية">
           {CATEGORIES.map((c) => (
-            <button
+            <Button
               key={c}
               role="tab"
               type="button"
               className={`duas-cat${category === c ? " duas-cat--active" : ""}`}
               onClick={() => setCategory(c)}
               aria-selected={category === c}
-            >
+             variant="ghost">
               {c}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -1105,16 +1106,16 @@ export default function DuasPage() {
             return (
               <article key={dua.id} className={`dua-card${open ? " dua-card--open" : ""}`}>
                 <div className="dua-card__head">
-                  <button
+                  <Button
                     type="button"
                     className="dua-card__title-btn"
                     onClick={() => setExpanded(open ? null : dua.id)}
                     aria-expanded={open}
-                  >
+                   variant="ghost">
                     <BookOpen size={14} className="dua-card__icon" aria-hidden="true" />
                     <span className="dua-card__title">{dua.title}</span>
                     <span className="dua-card__cat">{dua.category}</span>
-                  </button>
+                  </Button>
                 </div>
 
                 <p className="dua-card__arabic">{dua.arabic}</p>

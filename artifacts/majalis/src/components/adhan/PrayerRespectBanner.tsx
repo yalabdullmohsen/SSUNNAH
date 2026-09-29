@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { VolumeX, X } from "lucide-react";
 import { useSharedPrayerCountdown } from "@/components/prayer/PrayerCountdownProvider";
+import { IconButton } from "@/components/design-system/Buttons";
 import { ADHAN_EVENT_NAME, type AdhanEvent } from "@/lib/adhan-events";
 import { PRAYER_ALERT_EVENT_NAME, type PrayerAlertEvent } from "@/lib/prayer-alert-events";
 import {
@@ -131,7 +132,7 @@ export function PrayerRespectBanner() {
           <p className="anb-toast__sub">{message.body}</p>
         </div>
         <div className="anb-toast__actions">
-          <button
+          <IconButton
             type="button"
             onClick={() => {
               dismissRespectReminder(activeKey);
@@ -139,10 +140,10 @@ export function PrayerRespectBanner() {
               setForcedAt(null);
             }}
             className="anb-btn anb-btn--close"
-            aria-label="إغلاق التذكير"
+            label="إغلاق التذكير"
           >
             <X size={15} strokeWidth={2.5} />
-          </button>
+          </IconButton>
         </div>
       </div>
     </div>

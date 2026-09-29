@@ -23,6 +23,7 @@ import { HadithEmptyState } from "@/components/hadith/HadithEmptyState";
 import { numberingConflictNoteAr } from "@/lib/hadith/hadith-collection-availability";
 import { SAHIHAYN_LOCAL } from "@/lib/hadith/hadith-dataset-stats";
 
+import { Button } from "@/components/ui/button";
 // ─── Chapter index built from hadith data ─────────────────────────────────────
 
 interface Chapter {
@@ -54,21 +55,20 @@ function CollectionTab({
   onClick: () => void;
 }) {
   return (
-    <button
+    <Button
       type="button"
       role="tab"
       id={`hb-tab-${meta.id}`}
       aria-selected={active}
       aria-controls={`hb-panel-${meta.id}`}
       onClick={onClick}
-      className={`hb-tab hdl-chip${active ? " hb-tab--active" : ""}`}
-    >
+      className={`hb-tab hdl-chip${active ? " hb-tab--active" : ""}`} variant="ghost">
       <span className="hb-tab__name">{meta.name}</span>
       <span className="hb-tab__total" title={meta.numberingNoteAr}>
         {meta.totalHadiths.toLocaleString("ar-EG")}
       </span>
       <span className="hb-tab__access">{meta.access === "network" ? "يتطلب اتصالًا" : "محلي"}</span>
-    </button>
+    </Button>
   );
 }
 
@@ -89,14 +89,13 @@ function ChapterList({
         virtualizeAbove={30}
         getItemKey={(ch) => ch.no}
         renderItem={(ch) => (
-          <button
+          <Button
             type="button"
             className={`hb-chapter-item${activeNo === ch.no ? " hb-chapter-item--active" : ""}`}
-            onClick={() => onSelect(ch.no)}
-          >
+            onClick={() => onSelect(ch.no)} variant="ghost">
             <span className="hb-chapter-item__name">{ch.name}</span>
             <span className="hb-chapter-item__count">{ch.hadiths.length}</span>
-          </button>
+          </Button>
         )}
       />
     </nav>
@@ -162,14 +161,13 @@ function HadithRow({ h, index }: { h: CdnHadith; index: number }) {
               <p>{isnad}</p>
             </details>
           )}
-          <button
+          <Button
             type="button"
             className="hb-hadith-row__copy"
             onClick={handleCopy}
-            aria-label="نسخ متن الحديث"
-          >
+            aria-label="نسخ متن الحديث" variant="ghost">
             {copied ? "✓ تم النسخ" : "⎘ نسخ المتن"}
-          </button>
+          </Button>
         </div>
       )}
     </div>
@@ -214,25 +212,23 @@ function HadithViewer({
       </div>
       {totalPages > 1 && (
         <div className="hb-pagination" role="navigation" aria-label="التنقل بين الصفحات">
-          <button
+          <Button
             type="button"
             className="hb-pagination__btn"
             disabled={page <= 1}
-            onClick={() => setPage((p) => Math.max(1, p - 1))}
-          >
+            onClick={() => setPage((p) => Math.max(1, p - 1))} variant="ghost">
             السابق
-          </button>
+          </Button>
           <span className="hb-pagination__info">
             {page.toLocaleString("ar-EG")} / {totalPages.toLocaleString("ar-EG")}
           </span>
-          <button
+          <Button
             type="button"
             className="hb-pagination__btn"
             disabled={page >= totalPages}
-            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-          >
+            onClick={() => setPage((p) => Math.min(totalPages, p + 1))} variant="ghost">
             التالي
-          </button>
+          </Button>
         </div>
       )}
     </div>
@@ -363,14 +359,13 @@ function CollectionBrowser({ meta }: { meta: CdnCollectionMeta }) {
           aria-label={`بحث في ${meta.name}`}
         />
         {search && (
-          <button
+          <Button
             type="button"
             className="hb-search__clear"
             onClick={() => setSearch("")}
-            aria-label="مسح البحث"
-          >
+            aria-label="مسح البحث" variant="ghost">
             <X size={13} />
-          </button>
+          </Button>
         )}
       </div>
 
@@ -385,13 +380,12 @@ function CollectionBrowser({ meta }: { meta: CdnCollectionMeta }) {
               onSelect={setActiveChapter}
             />
             {chapters.length > 30 && (
-              <button
+              <Button
                 type="button"
                 className="hb-sidebar__more"
-                onClick={() => setShowAllChapters((x) => !x)}
-              >
+                onClick={() => setShowAllChapters((x) => !x)} variant="ghost">
                 {showAllChapters ? "عرض أقل" : `عرض الكل (${chapters.length})`}
-              </button>
+              </Button>
             )}
           </aside>
         )}

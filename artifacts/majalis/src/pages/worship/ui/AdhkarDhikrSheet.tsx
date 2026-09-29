@@ -3,7 +3,8 @@ import { X } from "lucide-react";
 import type { AdhkarItem } from "@/lib/adhkar-seed";
 import { formatPublicGrade, normalizePublicSource } from "@/lib/content-display-zones";
 import { IsnadAttributionBar } from "@/components/IsnadAttributionBar";
-
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 function toAr(n: number): string {
   return n.toLocaleString("ar-EG", { useGrouping: false });
 }
@@ -41,9 +42,9 @@ export function AdhkarDhikrSheet({ item, onClose }: Props) {
     >
       <div className="adhkar-sheet">
         <div className="adhkar-sheet-handle" aria-hidden="true" />
-        <button type="button" className="adhkar-sheet-close" onClick={onClose} aria-label="إغلاق">
+        <IconButton type="button" className="adhkar-sheet-close" onClick={onClose} label="إغلاق">
           <X size={18} strokeWidth={1.8} aria-hidden="true" />
-        </button>
+        </IconButton>
         <h2 className="adhkar-sheet-title">تفاصيل الذكر</h2>
         <div className="adhkar-sheet-text">{item.text}</div>
         <dl className="adhkar-sheet-details">
@@ -62,9 +63,9 @@ export function AdhkarDhikrSheet({ item, onClose }: Props) {
             reportContentId: item.id,
           }}
         />
-        <button type="button" className="adhkar-sheet-dismiss" onClick={onClose}>
+        <Button type="button" className="adhkar-sheet-dismiss" onClick={onClose} variant="ghost">
           إغلاق
-        </button>
+        </Button>
       </div>
     </div>
   );

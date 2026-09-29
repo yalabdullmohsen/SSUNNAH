@@ -10,6 +10,7 @@ import {
 import { loadLessonAudioResume, saveLessonAudioResume } from "@/lib/lesson-audio-resume";
 import { claimAudio, registerAudioStopper, releaseAudio } from "@/lib/exclusive-audio-bus";
 import { recordUserActivity } from "@/lib/user-streak";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   lesson: UnifiedLesson;
@@ -132,14 +133,15 @@ export function LessonRecordingPlayer({ lesson, src, startAtSeconds }: Props) {
         }}
       />
       <div className="lesson-recording-player__actions">
-        <button
+        <Button
           type="button"
+          variant="secondary"
           className="lesson-unified-card__btn lesson-unified-card__btn--secondary"
           onClick={() => void handleShareAt()}
           disabled={!duration && currentTime <= 0}
         >
           مشاركة من {formatLessonTimestampLabel(currentTime)}
-        </button>
+        </Button>
         {shareHint && (
           <span className="lesson-recording-player__hint" role="status">
             {shareHint}

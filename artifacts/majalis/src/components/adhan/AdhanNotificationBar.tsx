@@ -8,6 +8,7 @@ import {
 } from "@/lib/prayer-notification-copy";
 import "@/styles/components/adhan-notification.css";
 
+import { IconButton } from "@/components/design-system/Buttons";
 type ActiveEvent = AdhanEvent & { id: number };
 
 export function AdhanNotificationBar() {
@@ -95,26 +96,24 @@ function AdhanToast({ event, onDismiss }: { event: ActiveEvent; onDismiss: () =>
 
       <div className="anb-toast__actions">
         {isAdhan && playing && (
-          <button
+          <IconButton
             type="button"
             onClick={handleStop}
             className="anb-btn anb-btn--mute"
-            aria-label="إيقاف صوت الأذان"
-          >
+           label="إيقاف صوت الأذان">
             <Volume2 size={15} strokeWidth={2} />
-          </button>
+          </IconButton>
         )}
         {isAdhan && !playing && (
           <span className="anb-muted-tag" aria-label="الأذان صامت">صامت</span>
         )}
-        <button
+        <IconButton
           type="button"
           onClick={onDismiss}
           className="anb-btn anb-btn--close"
-          aria-label="إغلاق الإشعار"
-        >
+         label="إغلاق الإشعار">
           <X size={15} strokeWidth={2.5} />
-        </button>
+        </IconButton>
       </div>
     </div>
   );

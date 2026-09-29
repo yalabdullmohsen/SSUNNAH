@@ -37,6 +37,7 @@ import "@/styles/components/hub-card.css";
 import "@/styles/pages/knowledge-dashboards-v2.css";
 import "@/styles/sunnah-identity-sections.css";
 
+import { IconButton } from "@/components/design-system/Buttons";
 function FiqhHubSearch({
   query,
   onQueryChange,
@@ -61,27 +62,25 @@ function FiqhHubSearch({
             autoComplete="off"
             enterKeyHint="search"
           />
-          <button
+          <IconButton
             type="button"
             className="fiqh-hub-search__icon-btn"
-            aria-label="إغلاق البحث"
             onClick={() => {
               onQueryChange("");
               setOpen(false);
             }}
-          >
+           label="إغلاق البحث">
             <X size={16} strokeWidth={2} aria-hidden="true" />
-          </button>
+          </IconButton>
         </label>
       ) : (
-        <button
+        <IconButton
           type="button"
           className="fiqh-hub-search__icon-btn"
-          aria-label="بحث"
           onClick={() => setOpen(true)}
-        >
+         label="بحث">
           <Search size={16} strokeWidth={2} aria-hidden="true" />
-        </button>
+        </IconButton>
       )}
     </div>
   );

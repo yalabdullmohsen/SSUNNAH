@@ -17,21 +17,22 @@ import { KnowledgeLayout } from "@/components/knowledge";
 import "@/styles/pages/hadith.css";
 import "@/styles/sunnah-identity-detail-reading.css";
 
+import { Button } from "@/components/ui/button";
 function ShareBlock({ hadith }: { hadith: HadithRecord }) {
   const warning = hadith.isMawdu
     ? `${hadith.mawduWarning || "حديث موضوع لا يصحّ"} — `
     : "";
   const text = `${warning}${hadith.matn}\n— ${hadith.id}${hadith.grade ? ` · ${hadith.grade.quote}` : ""}`;
   return (
-    <button
+    <Button
       type="button"
       className="hadith-id-copy"
       onClick={() => {
         void navigator.clipboard?.writeText(text);
       }}
-    >
+     variant="ghost">
       نسخ للمشاركة
-    </button>
+    </Button>
   );
 }
 
@@ -130,7 +131,7 @@ export default function HadithByIdView() {
           <p className="hadith-by-id__meta">{hadith.chapter}</p>
         ) : null}
         <p className="hadith-by-id__id-row">
-          <button
+          <Button
             type="button"
             className="hadith-id-chip"
             title="نسخ المرجع الداخلي للفريق"
@@ -140,9 +141,9 @@ export default function HadithByIdView() {
                 window.setTimeout(() => setCopied(false), 1500);
               });
             }}
-          >
+           variant="ghost">
             مرجع النسخ
-          </button>
+          </Button>
           {copied ? <span className="hadith-id-copied">تم النسخ</span> : null}
         </p>
       </header>

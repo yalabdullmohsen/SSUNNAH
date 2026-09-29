@@ -16,6 +16,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/study-room.css";
 import { UtilityScreen } from "@/components/design-system/screens";
 
+import { Button } from "@/components/ui/button";
 // ─── Pomodoro config ──────────────────────────────────────────────────────────
 
 const PRESETS = [
@@ -237,17 +238,16 @@ export default function StudyRoomPage() {
       {/* Preset selector */}
       <div className="sr-presets" role="tablist" aria-label="إعدادات مسبقة للجلسة">
         {PRESETS.map((p, i) => (
-          <button
+          <Button
             key={p.label}
             role="tab"
             type="button"
             className={`sr-preset${presetIdx === i ? " sr-preset--active" : ""}`}
             onClick={() => { setPresetIdx(i); reset(); }}
             aria-selected={presetIdx === i}
-            disabled={phase !== "idle"}
-          >
+            disabled={phase !== "idle"} variant="ghost">
             {p.label}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -284,17 +284,17 @@ export default function StudyRoomPage() {
       {/* Controls */}
       <div className="sr-controls">
         {phase === "idle" ? (
-          <button type="button" className="sr-btn sr-btn--start" onClick={startWork}>
+          <Button type="button" className="sr-btn sr-btn--start" onClick={startWork} variant="primary">
             ▶ ابدأ الجلسة
-          </button>
+          </Button>
         ) : (
           <>
-            <button type="button" className="sr-btn sr-btn--pause" onClick={pause}>
+            <Button type="button" className="sr-btn sr-btn--pause" onClick={pause} variant="secondary">
               <Pause size={14} strokeWidth={2} aria-hidden="true" /> إيقاف
-            </button>
-            <button type="button" className="sr-btn sr-btn--reset" onClick={reset}>
+            </Button>
+            <Button type="button" className="sr-btn sr-btn--reset" onClick={reset} variant="ghost">
               ↺ إعادة
-            </button>
+            </Button>
           </>
         )}
       </div>

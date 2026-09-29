@@ -12,6 +12,7 @@ import { UtilityScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 
+import { Button } from "@/components/ui/button";
 type MawTab = "varasa" | "huquq" | "asab" | "hajb" | "masail";
 
 const TABS: { id: MawTab; label: string; icon: string }[] = [
@@ -318,7 +319,7 @@ export default function MawarithPage() {
       {/* tabs */}
       <div className="mw-tabs-bar" role="tablist" aria-label="أقسام المواريث">
         {TABS.map((t) => (
-          <button
+          <Button
             key={t.id}
             id={`mwr-tab-${t.id}`}
             type="button"
@@ -327,10 +328,10 @@ export default function MawarithPage() {
             onClick={() => setTab(t.id)}
             aria-selected={tab === t.id}
               aria-controls={`mwr-panel-${t.id}`}
-          >
+           variant="ghost">
             <span><SectionIcon name={t.icon} size={22} /></span>
             <span>{t.label}</span>
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -352,12 +353,12 @@ export default function MawarithPage() {
                 const isOpen = openWarith === w.name;
                 return (
                   <article key={w.name} className={`mw-warith-card${isOpen ? " mw-warith-card--open" : ""}`}>
-                    <button
+                    <Button
                       type="button"
                       className="mw-warith-head"
                       onClick={() => setOpenWarith(isOpen ? null : w.name)}
                       aria-expanded={isOpen}
-                    >
+                     variant="ghost">
                       <span className={`mw-gender-badge mw-gender-badge--${w.gender === "ذكر" ? "m" : "f"}`}>
                         {w.gender === "ذكر" ? "♂" : "♀"}
                       </span>
@@ -368,7 +369,7 @@ export default function MawarithPage() {
                         ))}
                       </div>
                       <span className={`mw-chevron${isOpen ? " mw-chevron--open" : ""}`}>▾</span>
-                    </button>
+                    </Button>
 
                     {isOpen && (
                       <div className="mw-warith-body">
