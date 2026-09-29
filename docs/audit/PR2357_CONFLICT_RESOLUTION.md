@@ -106,23 +106,23 @@ Live re-measure on `origin/main` @ `c52bbbfd` (2026-09-29T17:55Z):
 
 ## VERIFY RESULTS
 
-Run on `origin/main` tip after this audit (docs-only follow-up commit may accompany this report):
-
 | Gate | Result |
 |---|---|
-| Prior #2357 CI | **34/34 PASS** (pre-merge) |
-| Local `verify:preflight` / `verify:ci` / `release:verify` at merge | **PASS** (merge session) |
+| Prior #2357 CI | **34/34 PASS** (pre-merge) · auto-squash done |
+| Local `verify:preflight` | **PASS** |
+| Local `verify:ci` (clean `dist`) | **PASS** |
+| Local `release:verify` | **FAIL (1)** — `critical-css-gzip-gate` on `index-Byoj7yxl.css` gzip≈61808–61904 > 61440 |
+| Build raw CSS budget | **PASS** (338428 ≤ 505000) |
 | Production `version.json` | `c52bbbfd` MATCH |
+
+**Class B (outside conflict scope):** gzip overage on tip bundle; do not raise budget. Follow-up trim only. Hygiene: #2356/#2354 closed; report #2359 merged.
 
 ## SUCCESS CRITERIA
 
 | Criterion | Status |
 |---|---|
 | PR #2357 mergeable / merged | **MERGED** (`c52bbbfd`) |
-| CI PASS | **Yes** (at merge) |
-| Auto-merge completed | **Yes** (squash) |
-| No metric regression | **Yes** (live re-measure) |
-
-### Follow-up hygiene
-
-Close obsolete CONFLICTING PRs **#2356** and **#2354** with comment: superseded by #2357. Do not resolve their conflicts by merging them.
+| CI PASS (#2357) | **Yes** |
+| Auto-merge completed | **Yes** |
+| No metric regression | **Yes** |
+| Wave 1/2 conflict merge avoided | **Yes** (PRs closed) |
