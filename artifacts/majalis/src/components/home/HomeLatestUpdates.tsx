@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "wouter";
 import { fetchLiveAutoContent, autoContentToUpdateItem } from "@/lib/auto-content-service";
 import type { MergedUpdateItem } from "@/lib/auto-content/auto-content-utils";
 import { displayText } from "@/lib/display-text";
 import { truncateAtWord } from "@/lib/utils";
 import { Widget } from "@/components/widgets/Widget";
+import { InteractiveCard } from "@/components/design-system/SurfacePrimitives";
 
 const UpdatesIcon = () => (
   <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16">
@@ -72,10 +72,11 @@ export function HomeLatestUpdates() {
     >
       <div className="home-more-grid" aria-busy={loading}>
         {items.map((item) => (
-          <Link
+          <InteractiveCard
             key={item.id}
             href={item.source_url || `/updates/auto/${item.slug}`}
-            className="home-more-card soft-card soft-card--on-light"
+            title={displayText(item.title)}
+            className="home-more-card"
           >
             <span className="page-tag">{TYPE_LABELS[item.update_type] || "تحديث"}</span>
             <strong>{displayText(item.title)}</strong>
@@ -84,7 +85,7 @@ export function HomeLatestUpdates() {
               {item.source_name && <span>{item.source_name}</span>}
               {item.published_at && <span>{formatDate(item.published_at)}</span>}
             </span>
-          </Link>
+          </InteractiveCard>
         ))}
       </div>
     </Widget>

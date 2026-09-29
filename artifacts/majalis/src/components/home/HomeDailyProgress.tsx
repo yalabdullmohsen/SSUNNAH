@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { Link } from "wouter";
+import { useEffect, useState, type CSSProperties } from "react";
 import {
   getTaskStats,
   getTodayProgress,
   PROGRESS_TASKS,
 } from "@/lib/daily-progress";
 import { Widget } from "@/components/widgets/Widget";
+import { InteractiveCard } from "@/components/design-system/SurfacePrimitives";
 import { toArabicDigits } from "@/lib/utils";
 
 const ProgressIcon = () => (
@@ -33,10 +33,10 @@ export function HomeDailyProgress({ compact = false }: { compact?: boolean } = {
 
   if (compact) {
     return (
-      <Link
+      <InteractiveCard
         href="/daily-wird"
-        className="home-progress-compact soft-card soft-card--on-light"
-        aria-label={`تقدمك اليومي ${toArabicDigits(overall)}٪`}
+        title={`تقدمك اليومي ${toArabicDigits(overall)}٪`}
+        className="home-progress-compact"
       >
         <div className="home-progress-compact__row">
           <strong className="home-progress-compact__title">تقدمك اليومي</strong>
@@ -48,7 +48,7 @@ export function HomeDailyProgress({ compact = false }: { compact?: boolean } = {
         <p className="home-progress-compact__meta">
           {toArabicDigits(doneCount)} من {toArabicDigits(total)} مهام مكتملة · اضغط للورد
         </p>
-      </Link>
+      </InteractiveCard>
     );
   }
 
@@ -67,19 +67,19 @@ export function HomeDailyProgress({ compact = false }: { compact?: boolean } = {
         {PROGRESS_TASKS.map((task) => {
           const stats = getTaskStats(task, progress);
           return (
-            <Link key={task.id} href={task.href} className="home-progress-card soft-card soft-card--on-light">
+            <InteractiveCard key={task.id} href={task.href} title={task.label} className="home-progress-card">
               <div className="home-progress-card__head">
                 <strong>{task.label}</strong>
                 <span>{stats.percent}%</span>
               </div>
               <div className="home-progress-card__bar" aria-hidden="true">
-                <span style={{ "--hdp-pct": `${stats.percent}%` } as React.CSSProperties} />
+                <span style={{ "--hdp-pct": `${stats.percent}%` } as CSSProperties} />
               </div>
               <p className="home-progress-card__meta">
                 {stats.done} من {stats.target}
                 {stats.remaining > 0 ? ` · متبقٍ ${stats.remaining}` : " · مكتمل"}
               </p>
-            </Link>
+            </InteractiveCard>
           );
         })}
       </div>
