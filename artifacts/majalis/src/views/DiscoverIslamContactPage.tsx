@@ -5,7 +5,10 @@ import { STATUS } from "@/lib/ui-copy";
 import { useLanguage } from "@/components/LanguageProvider";
 import { submitDawahContactRequest, CONTACT_RELIGIONS, type ReligionCode } from "@/lib/dawah-service";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function DiscoverIslamContactPage() {
   const { lang } = useLanguage();
@@ -68,7 +71,7 @@ export default function DiscoverIslamContactPage() {
   }
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <DiscoverIslamShell detail>
       <PageHeader eyebrow="التعريف بالإسلام" title="تواصل سرّي مع داعية" subtitle="بياناتك تُستخدَم فقط للتواصل معك، ولا تُعرض لأي طرف آخر أبدًا." />
 
@@ -79,32 +82,74 @@ export default function DiscoverIslamContactPage() {
         </label>
 
         {!isAnonymous && (
-          <input value={name} onChange={(e) => setName(e.target.value)} placeholder="الاسم (اختياري)" className="adm-input" />
+          <Input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="الاسم (اختياري)"
+            className="adm-input text-base"
+            autoComplete="name"
+          />
         )}
 
-        <select value={gender} onChange={(e) => setGender(e.target.value as typeof gender)} className="adm-input">
+        <select
+          value={gender}
+          onChange={(e) => setGender(e.target.value as typeof gender)}
+          className="adm-input text-base"
+          aria-label="تفضيل جنس الداعية"
+        >
           <option value="no_preference">لا تفضيل لجنس الداعية</option>
           <option value="male">أفضّل التحدث مع داعية</option>
           <option value="female">أفضّل التحدث مع داعية (امرأة)</option>
         </select>
 
-        <select value={religion} onChange={(e) => setReligion(e.target.value as typeof religion)} className="adm-input">
+        <select
+          value={religion}
+          onChange={(e) => setReligion(e.target.value as typeof religion)}
+          className="adm-input text-base"
+          aria-label="الخلفية الدينية"
+        >
           {CONTACT_RELIGIONS.map((r) => (
             <option key={r.code} value={r.code}>{r.label}</option>
           ))}
         </select>
 
-        <input value={country} onChange={(e) => setCountry(e.target.value)} placeholder="الدولة (اختياري)" className="adm-input" />
+        <Input
+          value={country}
+          onChange={(e) => setCountry(e.target.value)}
+          placeholder="الدولة (اختياري)"
+          className="adm-input text-base"
+          autoComplete="country-name"
+        />
 
-        <textarea value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="ما الذي تودّ التحدث عنه؟" required rows={4} className="adm-input" />
+        <Textarea
+          value={topic}
+          onChange={(e) => setTopic(e.target.value)}
+          placeholder="ما الذي تودّ التحدث عنه؟"
+          required
+          rows={4}
+          className="adm-input text-base"
+        />
 
         <div className="dii-contact-method-row">
-          <select value={contactMethod} onChange={(e) => setContactMethod(e.target.value)} className="adm-input">
+          <select
+            value={contactMethod}
+            onChange={(e) => setContactMethod(e.target.value)}
+            className="adm-input text-base"
+            aria-label="وسيلة التواصل"
+          >
             <option value="email">البريد الإلكتروني</option>
             <option value="whatsapp">واتساب</option>
             <option value="phone">هاتف</option>
           </select>
-          <input value={contactValue} onChange={(e) => setContactValue(e.target.value)} placeholder="بيانات التواصل" required dir="ltr" className="adm-input" />
+          <Input
+            value={contactValue}
+            onChange={(e) => setContactValue(e.target.value)}
+            placeholder="بيانات التواصل"
+            required
+            dir="ltr"
+            className="adm-input text-base"
+            autoComplete="email"
+          />
         </div>
 
         <label className="dii-checkbox-label">
@@ -114,10 +159,12 @@ export default function DiscoverIslamContactPage() {
 
         {result && !result.ok && <p className="dii-form-error">{result.error === "consent_required" ? "الموافقة على سياسة الخصوصية مطلوبة." : STATUS.networkError}</p>}
 
-        <button type="submit" disabled={busy} className="asp-run-btn" aria-busy={busy}>{busy ? "إرسال…" : "إرسال الطلب"}</button>
+        <Button type="submit" disabled={busy} className="asp-run-btn" aria-busy={busy} variant="primary">
+          {busy ? "إرسال…" : "إرسال الطلب"}
+        </Button>
       </form>
     </DiscoverIslamShell>
   
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

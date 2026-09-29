@@ -19,7 +19,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { truncateAtWord } from "@/lib/utils";
 import "@/styles/pages/citation-public.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 export default function CitationPublicPage() {
   const [, params] = useRoute("/c/:slug");
@@ -123,7 +123,7 @@ export default function CitationPublicPage() {
   const sourceHref = src?.source_url || (src?.reference_id ? `/${src.content_type.replace("_", "-")}/${src.reference_id}` : "/");
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <div className="cpp-root">
       {/* شريط التنقل */}
       <nav aria-label="تنقل الصفحة" className="cpp-nav">
@@ -235,6 +235,6 @@ export default function CitationPublicPage() {
         </div>
       </main>
     </div>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

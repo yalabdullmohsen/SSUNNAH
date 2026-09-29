@@ -6,8 +6,6 @@ import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { SectionEntryCard } from "@/components/ui/HubCard";
 import { sectionTemplateChrome } from "@/config/section-template";
 import "@/components/sections/section-cards.css";
-import { UtilityScreen } from "@/components/design-system/screens";
-
 export type HubCardItem = {
   href: string;
   title: string;
@@ -48,7 +46,6 @@ export default function MergedSectionHubPage({ path, title, description, cards, 
   );
 
   return (
-    <UtilityScreen compose="mark">
     <SectionTemplatePage
       route={path}
       title={chrome.title}
@@ -71,7 +68,5 @@ export default function MergedSectionHubPage({ path, title, description, cards, 
       </div>
       <ShareButtons title={`${title} — سُنّة`} url={`https://www.ssunnah.com${path}`} />
     </SectionTemplatePage>
-  
-    </UtilityScreen>
   );
 }

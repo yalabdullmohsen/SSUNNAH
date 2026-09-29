@@ -10,7 +10,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/hadith-mustalah.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
 import { UnifiedPrimaryFilters } from "@/components/filters/UnifiedPrimaryFilters";
 import "@/styles/knowledge-experience.css";
@@ -1031,7 +1031,7 @@ export default function HadithSciencePage() {
   }
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <KnowledgeLayout kind="hadith" className="hs-page" data-kx="1">
       {/* هيرو */}
       <section className="hs-hero hdl-info-hero">
@@ -1187,6 +1187,6 @@ export default function HadithSciencePage() {
         <SectionQuiz sectionId="hadith" title="اختبر معلوماتك في علوم الحديث" count={4} />
       </div>
     </KnowledgeLayout>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

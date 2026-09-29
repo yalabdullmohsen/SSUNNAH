@@ -18,7 +18,6 @@ import {
 } from "@/lib/islamic-landmarks-data";
 import { ShareButtons } from "@/components/ContentActions";
 import { AppPage, PageHeaderV2, EmptyStateV2 } from "@/components/design-system";
-import { UtilityScreen } from "@/components/design-system/screens";
 import { SectionTitle, SupportingText } from "@/components/design-system/text";
 import { LandmarkDiscoverCard } from "@/components/landmarks/LandmarkDiscoverCard";
 import { FilterBottomSheet, FilterToggle } from "@/components/layout/FilterBottomSheet";
@@ -85,8 +84,7 @@ export default function IslamicLandmarksPage() {
   ].filter(Boolean).length;
 
   return (
-    <UtilityScreen compose="mark">
-      <AppPage
+    <AppPage
         themeId="history"
         sectionRoute="/islamic-landmarks"
         title="المشاهد الإسلامية والمساجد التاريخية"
@@ -284,6 +282,5 @@ export default function IslamicLandmarksPage() {
           </div>
         </div>
       </AppPage>
-    </UtilityScreen>
   );
 }

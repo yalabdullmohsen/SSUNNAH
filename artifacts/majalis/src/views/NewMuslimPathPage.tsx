@@ -6,7 +6,7 @@ import { STATUS } from "@/lib/ui-copy";
 import { useAuth } from "@/components/AuthProvider";
 import { getNewMuslimPath, getNewMuslimProgress, type NewMuslimDay } from "@/lib/dawah-service";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 export default function NewMuslimPathPage() {
   const { user } = useAuth();
@@ -27,7 +27,7 @@ export default function NewMuslimPathPage() {
   }, [user?.id]);
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <DiscoverIslamShell>
       <PageHeader eyebrow="التعريف بالإسلام" title="مسار الثلاثين يومًا" subtitle="لا سباق ولا حساب للتأخر — أكمل بالسرعة التي تناسبك، وارجع إلى أي يوم متى شئت." />
 
@@ -57,6 +57,6 @@ export default function NewMuslimPathPage() {
       )}
     </DiscoverIslamShell>
   
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

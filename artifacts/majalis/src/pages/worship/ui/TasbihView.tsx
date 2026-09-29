@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Flame } from "lucide-react";
 import { PageHeader } from "@/components/ui-common";
 import { PageShell } from "@/components/layout/PageShell";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 import { ActionButton } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/AuthProvider";
@@ -136,7 +136,7 @@ export default function TasbihPage() {
   const activeStats = active ? computeTasbeehStats(active) : null;
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <PageShell variant="narrow" className="tasbih-pro-page tasbih-pro-page--v2">
       <PageHeader
         eyebrow="الأذكار"
@@ -258,6 +258,6 @@ export default function TasbihPage() {
         <SectionQuiz sectionId="akhlaq" title="اختبر معلوماتك في الأذكار والأخلاق" count={4} />
       </div>
     </PageShell>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

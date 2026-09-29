@@ -8,7 +8,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/hikam-salaf.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 import { truncateAtWord } from "@/lib/utils";
 
 /* ─── أنواع البيانات ─── */
@@ -1568,7 +1568,7 @@ export default function HikamSalafPage() {
   }, [query, category, showFavsOnly, favorites]);
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <main className="hk-page" dir="rtl">
       {/* هيرو */}
       <section className="hk-hero">
@@ -1721,6 +1721,6 @@ export default function HikamSalafPage() {
         <SectionQuiz route="/hikam-salaf" title="اختبر معلوماتك في الحكم والتاريخ" count={4} />
       </div>
     </main>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

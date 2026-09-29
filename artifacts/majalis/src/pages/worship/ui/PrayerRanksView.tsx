@@ -5,7 +5,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { RANKS } from "@/lib/prayer-ranks-data";
 import "@/styles/pages/prayer-ranks.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 import { ActionButton } from "@/components/design-system";
 
 export { RANKS } from "@/lib/prayer-ranks-data";
@@ -245,7 +245,7 @@ export default function PrayerRanksPage() {
   }, []);
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <div className="page-shell prayer-ranks-page">
       <PageHeader
         eyebrow="الصلاة"
@@ -254,6 +254,6 @@ export default function PrayerRanksPage() {
       />
       <PrayerRanksContent />
     </div>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

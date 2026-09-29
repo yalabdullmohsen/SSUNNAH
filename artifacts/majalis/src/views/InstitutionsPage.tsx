@@ -10,7 +10,6 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { AppPage, PageHeaderV2, EmptyStateV2 } from "@/components/design-system";
-import { UtilityScreen } from "@/components/design-system/screens";
 import { SectionTitle, SupportingText } from "@/components/design-system/text";
 import { FilterBottomSheet, FilterToggle } from "@/components/layout/FilterBottomSheet";
 import { InstitutionDiscoverCard } from "@/components/institutions/InstitutionDiscoverCard";
@@ -98,8 +97,7 @@ export default function InstitutionsPage() {
   ].filter(Boolean).length;
 
   return (
-    <UtilityScreen compose="mark">
-      <AppPage
+    <AppPage
         themeId="history"
         sectionRoute="/institutions"
         title="دليل المؤسسات الإسلامية"
@@ -275,6 +273,5 @@ export default function InstitutionsPage() {
           </div>
         </div>
       </AppPage>
-    </UtilityScreen>
   );
 }

@@ -12,7 +12,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SEARCH_INPUT_ATTRS, handleSearchEnterKey } from "@/lib/search-input";
 import "@/styles/pages/topics-index.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 // ── Static fallback topics per category ──────────────────────────────────────
 
@@ -136,7 +136,7 @@ export default function TopicsIndexPage() {
   }, [topics, activeCategory, search]);
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <PageShell variant="narrow" className="tip-page">
       <PageHeader
         eyebrow="المحتوى الشرعي الموضوعاتي"
@@ -225,6 +225,6 @@ export default function TopicsIndexPage() {
       </div>
     </PageShell>
   
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

@@ -14,7 +14,7 @@ import {
 import { applyPageSeo } from "@/lib/seo";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/study-room.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 import { Button } from "@/components/ui/button";
 // ─── Pomodoro config ──────────────────────────────────────────────────────────
@@ -227,7 +227,7 @@ export default function StudyRoomPage() {
     : Math.round(((preset.rest * 60 - secondsLeft) / (preset.rest * 60)) * 100);
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <div className="page-shell narrow sr-page" dir="rtl">
       <PageHeader
         eyebrow="التعلّم الذكي"
@@ -322,6 +322,6 @@ export default function StudyRoomPage() {
         <SectionQuiz route="/study-room" title="اختبر معلوماتك أثناء الدراسة" count={4} />
       </div>
     </div>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

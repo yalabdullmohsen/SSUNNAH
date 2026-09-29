@@ -27,8 +27,6 @@ import { getFeaturedQuestions, getFeaturedShubuhat, getDawahCategories, getArtic
 import "@/styles/discover-islam.css";
 import "@/styles/islam-intro-experience.css";
 import "@/styles/sunnah-identity-sections.css";
-import { UtilityScreen } from "@/components/design-system/screens";
-
 /** Allowlist — avoids `import * as LucideIcons` pulling the entire icon set into this route. */
 const CATEGORY_ICONS: Record<string, LucideIcon> = {
   BookOpen,
@@ -106,7 +104,6 @@ export default function DiscoverIslamPage() {
   }, []);
 
   return (
-    <UtilityScreen compose="mark">
     <SectionTemplatePage
       route="/discover-islam"
       eyebrow="التعريف بالإسلام"
@@ -265,7 +262,5 @@ export default function DiscoverIslamPage() {
       </section>
     </div>
     </SectionTemplatePage>
-  
-    </UtilityScreen>
   );
 }

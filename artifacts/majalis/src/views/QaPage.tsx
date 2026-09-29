@@ -58,7 +58,7 @@ import {
   sortQaItems,
   type QaSortMode,
 } from "@/lib/qa-utils";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 function Disclaimer() {
   return (
@@ -319,7 +319,7 @@ export default function QaPage({
   );
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <div className="page-shell narrow content-hub-page qa-page qa-page-v2 ds-page">
       <PageHeader
         eyebrow=""
@@ -394,6 +394,6 @@ export default function QaPage({
         <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في الفقه والأحكام" count={4} />
       </div>
     </div>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

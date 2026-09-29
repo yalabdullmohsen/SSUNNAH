@@ -18,7 +18,7 @@ import {
   type ResearchSubmissionInput,
 } from "@/lib/researches";
 import "@/styles/pages/researches.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 const initial: ResearchSubmissionInput = {
   title: "",
@@ -67,7 +67,7 @@ export default function ResearchSubmitPage() {
   };
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <div className="sr-page">
       <p><Link href="/academic-research" className="sr-section__link">← الأبحاث الشرعية</Link></p>
       <h1 className="sr-detail__h1">أضف بحثًا</h1>
@@ -224,6 +224,6 @@ export default function ResearchSubmitPage() {
         </section>
       )}
     </div>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

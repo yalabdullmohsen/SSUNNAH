@@ -18,7 +18,7 @@ import { EMPTY } from "@/lib/ui-copy";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import "@/styles/pages/occasions.css";
 import "@/styles/components/home/home-learning-seasons.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 function CountdownBadge({ days }: { days: number | null | undefined }) {
   if (days == null) return <span className="occasion-detail__countdown">موسمية</span>;
@@ -95,7 +95,7 @@ export default function OccasionsPage() {
   }, [occasions, monthFilter, search]);
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <div className="page-shell occasions-page">
       <CompactSectionHeader
         eyebrow="المناسبات والدروس"
@@ -208,6 +208,6 @@ export default function OccasionsPage() {
         <SectionQuiz sectionId="islamic-history" title="اختبر معلوماتك في المناسبات الإسلامية" count={4} />
       </div>
     </div>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

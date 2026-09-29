@@ -16,7 +16,7 @@ import {
 } from "@/lib/quran-stats/types";
 import { formatArabicNumber } from "@/lib/numerals";
 import "@/styles/pages/islam-stats.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 const QURAN_STATS_CATALOG = buildQuranStatsCatalog();
 const QURAN_STAT_GROUPS: QuranStatGroup[] = ["bunya", "alfaz", "mawdoo", "suwar", "ajaib"];
@@ -364,7 +364,7 @@ export default function IslamStatsPage() {
   }, []);
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <div className="is-page" dir="rtl">
       {/* ══ Hero ══ */}
       <section className="is-hero">
@@ -586,6 +586,6 @@ export default function IslamStatsPage() {
         <SectionQuiz sectionId="islamic-history" title="اختبر معلوماتك في الإسلام والتاريخ" count={4} />
       </div>
     </div>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

@@ -37,8 +37,6 @@ import {
 } from "@/lib/scholarly-research";
 import { BookOpen, GraduationCap, Plus, Search, Sparkles, Shield } from "lucide-react";
 import "@/styles/pages/researches.css";
-import { UtilityScreen } from "@/components/design-system/screens";
-
 const CATEGORY_PREVIEW = 8;
 
 function useQueryParams(): URLSearchParams {
@@ -605,8 +603,7 @@ function Rail({
 }) {
   if (items.length === 0) return null;
   return (
-    <UtilityScreen compose="mark">
-      <section className="sr-section">
+    <section className="sr-section">
         <div className="sr-section__head">
           <h2 className="sr-section__title">
             {icon} {title}
@@ -618,6 +615,5 @@ function Rail({
           ))}
         </div>
       </section>
-    </UtilityScreen>
   );
 }

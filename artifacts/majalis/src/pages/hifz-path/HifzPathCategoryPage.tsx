@@ -4,7 +4,7 @@
 import { useEffect, useMemo } from "react";
 import { Link, Redirect, useParams } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 import { EmptyStateV2, PageHeaderV2 } from "@/components/design-system";
 import {
   HIFZ_PATH_USER_TAGLINE,
@@ -47,7 +47,7 @@ function HifzPathCategoryShell() {
 
   if (!valid) {
     return (
-      <UtilityScreen compose="mark">
+      <DetailScreen compose="mark">
         <main className="mx-auto w-full max-w-3xl px-4 py-4" dir="rtl">
           <EmptyStateV2
             title="تصنيف غير معروف"
@@ -56,12 +56,12 @@ function HifzPathCategoryShell() {
             href={PATH}
           />
         </main>
-      </UtilityScreen>
+      </DetailScreen>
     );
   }
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
       <main className="mx-auto w-full max-w-3xl px-4 py-4" dir="rtl">
         <PageHeaderV2
           className="mb-4"
@@ -89,6 +89,6 @@ function HifzPathCategoryShell() {
           </Link>
         </p>
       </main>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

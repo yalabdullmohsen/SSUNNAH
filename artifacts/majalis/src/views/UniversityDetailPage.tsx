@@ -18,7 +18,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import "@/styles/pages/university-detail.css";
 import "@/styles/pages/learning-path-dashboard.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 function ProgramCard({ program: p }: { program: UniversityProgram }) {
   const [open, setOpen] = useState(false);
@@ -346,10 +346,10 @@ export default function UniversityDetailPage() {
   }
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <CompareProvider>
       <DetailContent university={university} />
     </CompareProvider>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

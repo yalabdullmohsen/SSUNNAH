@@ -14,7 +14,7 @@ import {
 } from "@/lib/researcher-profile-service";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/researcher-profile.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 // ─── Interest Tag Toggle ───────────────────────────────────────────────────────
 
@@ -195,7 +195,7 @@ export default function ResearcherProfilePage() {
   }
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <div className="page-shell narrow rp-page" dir="rtl">
       <PageHeader
         eyebrow="البحث العلمي"
@@ -332,6 +332,6 @@ export default function ResearcherProfilePage() {
         <SectionQuiz route="/research" title="اختبر معلوماتك في العلوم الشرعية" count={4} />
       </div>
     </div>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

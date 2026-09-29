@@ -13,7 +13,7 @@ import {
 import { AppPage, PageHeaderV2, DetailSection, ActionButton } from "@/components/design-system";
 import { DirectoryMedia } from "@/components/directory/DirectoryMedia";
 import { LandmarkDiscoverCard } from "@/components/landmarks/LandmarkDiscoverCard";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 import { BodyText, Caption, SectionTitle } from "@/components/design-system/text";
 import { EMPTY } from "@/lib/ui-copy";
 import "@/styles/islamic-landmarks.css";
@@ -61,7 +61,7 @@ export default function IslamicLandmarkDetailPage() {
 
   if (!landmark) {
     return (
-      <UtilityScreen compose="mark">
+      <DetailScreen compose="mark">
         <AppPage
           themeId="history"
           sectionRoute="/islamic-landmarks"
@@ -78,14 +78,14 @@ export default function IslamicLandmarkDetailPage() {
             العودة للمشاهد
           </Link>
         </AppPage>
-      </UtilityScreen>
+      </DetailScreen>
     );
   }
 
   const mapsUrl = landmarkMapsUrl(landmark);
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
       <AppPage
         themeId="history"
         sectionRoute="/islamic-landmarks"
@@ -200,6 +200,6 @@ export default function IslamicLandmarkDetailPage() {
           ) : null}
         </article>
       </AppPage>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

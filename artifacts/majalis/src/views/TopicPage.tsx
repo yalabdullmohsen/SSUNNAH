@@ -13,8 +13,6 @@ import {
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/topic.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
-import { UtilityScreen } from "@/components/design-system/screens";
-
 function SectionGroup({
   title,
   items,
@@ -104,7 +102,6 @@ export default function TopicPage() {
   }
 
   return (
-    <UtilityScreen compose="mark">
     <div className="page-shell narrow search-page">
       <nav className="tpc-breadcrumb" aria-label="مسار التنقل">
         <Link href="/sections">الموضوعات العلمية</Link>
@@ -152,6 +149,5 @@ export default function TopicPage() {
         <SectionQuiz route="/topics" title="اختبر معلوماتك في هذا الموضوع" count={4} />
       </div>
     </div>
-    </UtilityScreen>
   );
 }

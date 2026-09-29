@@ -94,6 +94,10 @@
 | `docs/audit/DEVICE_QA_REGISTER.md` | سجل DEVICE_REQUIRED — بلا أرقام ملفّقة |
 | `docs/design/TOKEN_MIGRATION_MATRIX.md` | مصفوفة هجرة الطبقات → `--sf-*`/`--sf2-*` |
 | `docs/design/PAGE_CONTRACT_MATRIX.md` | عقد AppPage/PageHeader vs UtilityScreen |
+| `docs/design/UTILITYSCREEN_MIGRATION_MATRIX.md` | تقاعد UtilityScreen — 128→9 KEEP |
+| `docs/design/CARD_MIGRATION_STATUS.md` | حالة هجرة soft-cards → سلطة البطاقات |
+| `docs/design/DARK_MODE_BRIDGE_INVENTORY.md` | جرد جسور الليل (بدون حذف جماعي) |
+| `docs/audit/SUNNAH_REPOSITORY_CLOSURE_REPORT.md` | إغلاق المستودع موجة 1 — WEB_RELEASED_NATIVE_HOLD |
 | `docs/remediation/ROUTE_THEME_OWNERSHIP.md` | مالك سطح المسار (`commitRouteSurface`) — بلا تسرّب pts-immersive |
 | `docs/design/FORM_FEEDBACK_AUTHORITY.md` | **Interaction PR-6** — سلطة النماذج + FormFields + Empty/Loading/Error/Offline |
 | `docs/design/ADMIN_V3_INTERACTION_AUTHORITY.md` | **Interaction PR-7** — سلطة تفاعل Admin v3 (Button/AppCard/FormFields/States) |

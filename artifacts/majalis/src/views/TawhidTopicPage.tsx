@@ -7,8 +7,6 @@ import { TopicPage } from "@/components/topic/TopicPage";
 import { KnowledgeLayout } from "@/components/knowledge";
 import "@/styles/pages/tawhid.css";
 import "@/styles/islam-intro-experience.css";
-import { UtilityScreen } from "@/components/design-system/screens";
-
 /**
  * صفحة موضوع فرعي تحت بوابة التوحيد — مسار مستقل /tawhid/:slug
  */
@@ -32,7 +30,6 @@ export default function TawhidTopicPage() {
   }
 
   return (
-    <UtilityScreen compose="mark">
     <TopicPage
       themeId="aqeedah"
       sectionRoute="/tawhid"
@@ -90,6 +87,5 @@ export default function TawhidTopicPage() {
         </div>
       </KnowledgeLayout>
     </TopicPage>
-    </UtilityScreen>
   );
 }

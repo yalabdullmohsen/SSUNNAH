@@ -6,7 +6,7 @@ import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { useAuth } from "@/components/AuthProvider";
 import { getNewMuslimPath, getNewMuslimProgress, markNewMuslimDayComplete, type NewMuslimDay } from "@/lib/dawah-service";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 export default function NewMuslimDayDetailPage() {
   const { day } = useParams<{ day: string }>();
@@ -63,7 +63,7 @@ export default function NewMuslimDayDetailPage() {
   const prev = days.find((d) => d.day_number === dayNum - 1);
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <DiscoverIslamShell detail>
       <PageHeader eyebrow={`التعريف بالإسلام · اليوم ${dayNum} من ${days.length}`} title={item.title} />
       <div className="dii-block dii-block--muted">
@@ -85,6 +85,6 @@ export default function NewMuslimDayDetailPage() {
       </div>
     </DiscoverIslamShell>
   
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

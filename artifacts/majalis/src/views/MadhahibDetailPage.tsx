@@ -8,7 +8,7 @@ import { KnowledgeLayout } from "@/components/knowledge";
 import { KnowledgeDetailSurface } from "@/components/knowledge/KnowledgeDetailSurface";
 import type { KnowledgeDetailSurfaceSection } from "@/components/knowledge/KnowledgeDetailSurface";
 import { getMadhhabById } from "@/data/madhahib";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 import "@/styles/pages/madhahib.css";
 
 const LIST_PATH = "/madhahib";
@@ -94,7 +94,7 @@ export default function MadhahibDetailPage() {
 
   if (!madhhab) {
     return (
-      <UtilityScreen compose="mark">
+      <DetailScreen compose="mark">
         <TopicPage
           themeId="fiqh"
           sectionRoute={LIST_PATH}
@@ -109,12 +109,12 @@ export default function MadhahibDetailPage() {
         >
           <Link href={LIST_PATH}>العودة إلى المذاهب</Link>
         </TopicPage>
-      </UtilityScreen>
+      </DetailScreen>
     );
   }
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
       <TopicPage
         themeId="fiqh"
         sectionRoute={LIST_PATH}
@@ -136,6 +136,6 @@ export default function MadhahibDetailPage() {
           />
         </KnowledgeLayout>
       </TopicPage>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

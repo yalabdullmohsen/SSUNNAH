@@ -8,7 +8,7 @@ import { KnowledgeSummaryCard } from "@/components/knowledge/KnowledgeSummaryCar
 import { MADHAHIB } from "@/data/madhahib";
 import { saveKnowledgeListState } from "@/lib/knowledge-list-scroll";
 import "@/styles/pages/madhahib.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 const LIST_PATH = "/madhahib";
 
@@ -46,7 +46,7 @@ export default function MadhahibPage() {
   };
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
       <main className="mdb-page" dir="rtl">
         <section className="mdb-hero">
           <div className="mdb-hero__badge">الفقه الإسلامي</div>
@@ -110,6 +110,6 @@ export default function MadhahibPage() {
           <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في المذاهب الفقهية" count={4} />
         </div>
       </main>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }
