@@ -112,7 +112,15 @@ Home · Search · Prayer · Quran Hub · Hadith · Lessons · Settings · Mushaf
 - No new token family / `!important` / raw color systems.  
 - Closed programs not reopened.
 
-Verification: `verify:preflight` · `verify:ci` · `release:verify` (recorded at Delivery).
+Verification (tip `cdb624779`, local):
+
+| Step | Result |
+|---|---|
+| `verify:preflight` | PASS |
+| `verify:ci` | PASS (~308s; mushaf measure+gates PASS) |
+| `release:verify` | PASS (`TECHNICALLY_VERIFIED_WITH_EXTERNAL_BLOCKERS`) |
+| Prayer P0 (release:verify) | PASS |
+
 
 ## REMAINING_DEBT
 
