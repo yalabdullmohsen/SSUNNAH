@@ -5,6 +5,7 @@
 import type { HTMLAttributes, ReactNode } from "react";
 import { Link } from "wouter";
 import { SectionTitle } from "@/components/design-system/text";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export type EmptyStateV2Props = HTMLAttributes<HTMLDivElement> & {
@@ -39,9 +40,9 @@ export function EmptyStateV2({
         {ctaLabel}
       </Link>
     ) : onCtaClick ? (
-      <button type="button" className="es2__cta" onClick={onCtaClick}>
+      <Button type="button" variant="ghost" className="es2__cta" onClick={onCtaClick}>
         {ctaLabel}
-      </button>
+      </Button>
     ) : null);
 
   return (

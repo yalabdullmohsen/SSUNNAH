@@ -82,6 +82,7 @@
 | `docs/design/LEGACY_CSS_RETIREMENT_MATRIX.md` | مصفوفة تفكيك CSS القديمة (KEEP/LEGACY/BLOCKED) |
 | `docs/design/INTERACTION_COMPONENT_AUTHORITY.md` | **Interaction PR-1** — عقد Button/Link/IconButton/FAB/Back |
 | `docs/design/CARD_SURFACE_AUTHORITY.md` | **Interaction PR-5** — سلطة AppCard / InteractiveCard / StatusCard / Surfaces |
+| `docs/design/FORM_FEEDBACK_AUTHORITY.md` | **Interaction PR-6** — سلطة النماذج + FormFields + Empty/Loading/Error/Offline |
 | `docs/design/SUNNAH_INTERACTION_SYSTEM_BASELINE.md` | خط أساس مقاييس الأزرار + ميزانيات متناقصة |
 | `docs/design/UNIFIED_SEARCH_ARCHITECTURE.md` | بحث موحّد `/search` — نطاقات كاملة |
 | `docs/design/PROPHETS_STORIES_REBUILD_BASELINE.md` | **قصص الأنبياء PR-0** — جرد Routes/ألوان كحلية/كروم (بلا إصلاح منتج) |

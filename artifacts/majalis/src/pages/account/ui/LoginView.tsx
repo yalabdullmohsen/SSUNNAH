@@ -12,6 +12,7 @@ import {
 import { preloadRoute } from "@/lib/lazy-with-retry";
 import { Loading } from "@/components/ui-common";
 import { Button } from "@/components/ui/button";
+import { FormLabel, FieldError } from "@/components/design-system";
 import { applyPageSeo } from "@/lib/seo";
 import { canSubmitForm } from "@/lib/form-rate-limit";
 import { sanitizeAuthNext } from "@/lib/auth-redirect";
@@ -314,15 +315,15 @@ export default function LoginPage() {
         ) : null}
 
         {!authEnabled && (
-          <p className="login-alert login-alert--error" role="alert">
+          <FieldError id="auth-form-config-error" className="login-alert login-alert--error">
             {mapAuthError(null)}
-          </p>
+          </FieldError>
         )}
 
         {error ? (
-          <p className="login-alert login-alert--error" role="alert">
+          <FieldError id="auth-form-error" className="login-alert login-alert--error">
             {error}
-          </p>
+          </FieldError>
         ) : null}
 
         {denied ? (
@@ -342,10 +343,15 @@ export default function LoginPage() {
             إن وُجد حساب بهذا البريد فستصلك رسالة لإعادة تعيين كلمة المرور.
           </p>
         ) : (
-          <form onSubmit={handleSubmit} className="login-form" noValidate>
+          <form
+            onSubmit={handleSubmit}
+            className="login-form"
+            noValidate
+            aria-describedby={error ? "auth-form-error" : !authEnabled ? "auth-form-config-error" : undefined}
+          >
             {tab === "register" ? (
               <div className="login-field">
-                <label htmlFor="auth-name">الاسم</label>
+                <FormLabel htmlFor="auth-name">الاسم</FormLabel>
                 <input
                   id="auth-name"
                   type="text"
@@ -356,12 +362,13 @@ export default function LoginPage() {
                   required
                   minLength={2}
                   disabled={loading || !authEnabled}
+                  className="text-base"
                 />
               </div>
             ) : null}
 
             <div className="login-field">
-              <label htmlFor="auth-email">البريد الإلكتروني</label>
+              <FormLabel htmlFor="auth-email">البريد الإلكتروني</FormLabel>
               <input
                 id="auth-email"
                 type="email"
@@ -372,12 +379,14 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 disabled={loading || !authEnabled}
+                className="text-base"
+                aria-invalid={error ? true : undefined}
               />
             </div>
 
             {tab !== "forgot" ? (
               <div className="login-field">
-                <label htmlFor="auth-password">كلمة المرور</label>
+                <FormLabel htmlFor="auth-password">كلمة المرور</FormLabel>
                 <input
                   id="auth-password"
                   type="password"
@@ -388,13 +397,14 @@ export default function LoginPage() {
                   required
                   minLength={tab === "register" ? 8 : undefined}
                   disabled={loading || !authEnabled}
+                  className="text-base"
                 />
               </div>
             ) : null}
 
             {tab === "register" ? (
               <div className="login-field">
-                <label htmlFor="auth-confirm">تأكيد كلمة المرور</label>
+                <FormLabel htmlFor="auth-confirm">تأكيد كلمة المرور</FormLabel>
                 <input
                   id="auth-confirm"
                   type="password"
@@ -405,6 +415,7 @@ export default function LoginPage() {
                   required
                   minLength={8}
                   disabled={loading || !authEnabled}
+                  className="text-base"
                 />
               </div>
             ) : null}

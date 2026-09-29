@@ -4,6 +4,7 @@
 import type { HTMLAttributes } from "react";
 import { Link } from "wouter";
 import { SectionTitle } from "@/components/design-system/text";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export type OfflineStateV2Props = HTMLAttributes<HTMLDivElement> & {
@@ -42,9 +43,14 @@ export function OfflineStateV2({
       {availableHint ? <p className="app-state-v2__body">{availableHint}</p> : null}
       <div className="app-state-v2__actions">
         {onRetry ? (
-          <button type="button" className="app-state-v2__btn app-state-v2__btn--primary" onClick={onRetry}>
+          <Button
+            type="button"
+            variant="primary"
+            className="app-state-v2__btn app-state-v2__btn--primary"
+            onClick={onRetry}
+          >
             {retryLabel}
-          </button>
+          </Button>
         ) : null}
         <Link href={offlineCenterHref} className="app-state-v2__btn">
           {offlineCenterLabel}

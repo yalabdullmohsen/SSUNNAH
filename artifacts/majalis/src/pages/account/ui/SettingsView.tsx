@@ -6,6 +6,7 @@ import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
 import { UtilityScreen } from "@/components/design-system/screens";
 import { SettingsList, SettingsToggleRow } from "@/components/design-system/SettingsList";
 import { AppCard } from "@/components/design-system/AppCard";
+import { FormLabel, SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/AuthProvider";
 import { useFontPreference } from "@/components/FontPreferenceProvider";
@@ -245,17 +246,20 @@ export default function SettingsPage() {
       className="settings-page"
     >
       <div className="settings-search-wrap">
-        <label className="settings-search-field">
-          <span className="sr-only">بحث في الإعدادات</span>
-          <input
-            type="search"
+        <div className="settings-search-field">
+          <FormLabel htmlFor="settings-search" className="sr-only">
+            بحث في الإعدادات
+          </FormLabel>
+          <SearchInput
+            id="settings-search"
             name="settings-search"
             placeholder="ابحث في الإعدادات…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            onClear={() => setQuery("")}
             autoComplete="off"
           />
-        </label>
+        </div>
         <Button
           type="button"
           variant="secondary"
