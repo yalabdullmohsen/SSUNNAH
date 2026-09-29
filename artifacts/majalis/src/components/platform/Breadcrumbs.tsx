@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import "@/styles/components/topic-page.css";
 
 type Crumb = { label: string; href?: string };
 

@@ -1,33 +1,10 @@
 
 
 :root {
-  /* Semantic local aliases — تستهلك --mj-* من theme-aliases (TOKEN ABSORB) */
-  --background: var(--mj-bg);
-  --surface: var(--mj-surface);
-  --surface-muted: var(--mj-surface-2);
-  --surface-soft: var(--surface-muted);
-  --primary: var(--mj-brand);
-  --primary-soft: var(--mj-brand-soft);
-  --border: var(--mj-hairline);
-  --text: var(--mj-ink);
-  --text-muted: var(--mj-ink-2);
-  --accent-gold: var(--mj-accent);
+  /* ألوان --color-* / --background / --primary مكررة مع unify + theme — محذوفة (DUPLICATED).
+   * تبقى محليًا فقط رموز يستهلكها هذا الملف مباشرة. */
+  --surface-soft: var(--mj-surface-2);
   --shadow: var(--mj-sh, 0 3px 12px -10px rgba(10, 61, 46, 0.12));
-
-  --color-bg: var(--background);
-  --color-surface: var(--surface);
-  --color-surface-soft: var(--surface-soft);
-  --color-surface-muted: var(--surface-muted);
-  --color-primary: var(--primary);
-  --color-primary-soft: var(--primary-soft);
-  --color-primary-dark: var(--mj-brand-deep);
-  --color-border: var(--border);
-  --color-text: var(--text);
-  --color-text-muted: var(--text-muted);
-  --color-muted: var(--text-muted);
-  --color-accent-gold: var(--accent-gold);
-  --color-selected: color-mix(in srgb, var(--mj-brand) 10%, var(--mj-surface));
-  --shadow-soft: var(--shadow);
 
   /* مطابقة soft-cards / visual-identity-unify — لا 18px القديمة */
   --radius-card: var(--sf-radius-md, 20px);
@@ -42,30 +19,8 @@
 
 html[data-theme="dark"],
 html.dark {
-  --background: var(--mj-bg);
-  --surface: var(--mj-surface);
-  --surface-muted: var(--mj-surface-2);
   --surface-soft: var(--mj-surface-2);
-  --primary: var(--mj-brand);
-  --primary-soft: var(--mj-brand-soft);
-  --border: var(--mj-hairline);
-  --text: var(--mj-ink);
-  --text-muted: var(--mj-ink-2);
-  --accent-gold: var(--mj-accent);
   --shadow: var(--mj-sh);
-
-  --color-bg: var(--background);
-  --color-surface: var(--surface);
-  --color-surface-soft: var(--surface-soft);
-  --color-surface-muted: var(--surface-muted);
-  --color-primary: var(--primary);
-  --color-primary-soft: var(--primary-soft);
-  --color-primary-dark: var(--mj-brand-deep);
-  --color-border: var(--border);
-  --color-text: var(--text);
-  --color-muted: var(--text-muted);
-  --color-selected: var(--state-current-bg, color-mix(in srgb, var(--mj-brand) 12%, var(--mj-surface)));
-  --shadow-soft: var(--shadow);
 }
 
 /* ── بطاقات موحّدة (أقسام المحتوى + الهيكل) ─────────────────────────── */
