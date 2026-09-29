@@ -146,7 +146,7 @@ export function PrayerRanksContent() {
         </ActionButton>
       </div>
 
-      <section className="soft-card soft-card--on-light prayer-ranks-source">
+      <section className="prayer-ranks-source">
         <strong>المصدر:</strong>
         <p>
           هذا العرض مستند إلى المعنى المشهور عن الإمام ابن القيم في مراتب الناس في الصلاة،
@@ -167,7 +167,7 @@ export function PrayerRanksContent() {
 
       <div className="prayer-ranks-timeline">
         {filteredRanks.map((rank, index) => (
-          <article key={rank.title} className="soft-card soft-card--on-light prayer-rank-card">
+          <article key={rank.title} className="prayer-rank-card">
             <span className="prayer-rank-card__num">{index + 1}</span>
             <div>
               <p className="prayer-rank-card__eyebrow">{rank.title}</p>
@@ -187,7 +187,7 @@ export function PrayerRanksContent() {
         <h2 id="virtues-heading" className="prv-section-title">فضائل الصلاة</h2>
         <div className="prv-virtues-grid">
           {filteredVirtues.map((v) => (
-            <div key={v.title} className="prv-virtue-card soft-card soft-card--on-light">
+            <div key={v.title} className="prv-virtue-card">
               <p className="prv-virtue-title">{v.title}</p>
               <p className="prv-virtue-text">
                 {v.source.startsWith("الع") || v.source.startsWith("سبأ") || v.grade === "قرآن"
@@ -217,7 +217,7 @@ export function PrayerRanksContent() {
         </div>
       </section>
 
-      <section className="soft-card soft-card--on-light prayer-ranks-notes">
+      <section className="prayer-ranks-notes">
         <h2>تنبيهات وفوائد</h2>
         <ul>
           <li>الخشوع ثمرة العلم بالله ومجاهدة النفس، ولا يعني ورود الخاطر بطلان الصلاة.</li>

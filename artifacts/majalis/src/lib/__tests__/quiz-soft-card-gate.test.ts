@@ -1,5 +1,5 @@
 /**
- * بوابة: لوحات الاختبار الإسلامي على soft-card.
+ * بوابة: لوحات الاختبار الإسلامي على سلطة الأسطح (qzg-section-card + card-system).
  * node --import tsx src/lib/__tests__/quiz-soft-card-gate.test.ts
  */
 import assert from "node:assert/strict";
@@ -12,7 +12,7 @@ const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
 const css = read("src/styles/components/islamic-quiz-game.css");
 const tsx = read("src/components/quiz-game/IslamicQuizGame.tsx");
-const bridge = read("src/styles/ssunnah-card-unify.css");
+const cards = read("src/styles/card-system.css");
 
 assert.match(css, /\.qzg-section-card[\s\S]{0,220}?--radius-card/, "qzg-section-card يستخدم --radius-card");
 assert.doesNotMatch(
@@ -20,7 +20,8 @@ assert.doesNotMatch(
   /\.qzg-section-card\s*\{[\s\S]{0,160}?border-radius:\s*var\(--ds-radius-lg,\s*0\.625rem\)/,
   "لا radius لوحي 0.625rem على جذر البطاقة",
 );
-assert.match(tsx, /qzg-section-card soft-card soft-card--on-light/, "JSX يركّب soft-card");
-assert.match(bridge, /\.qzg-section-card\.soft-card/, "جسر التوحيد يشمل الاختبار");
+assert.match(tsx, /qzg-section-card/, "JSX يركّب qzg-section-card");
+assert.doesNotMatch(tsx, /\bsoft-card\b/, "لا soft-card مباشر في الاختبار");
+assert.match(cards, /\.qzg-section-card\b/, "card-system يشمل الاختبار بلا اشتراط soft-card");
 
 console.log("quiz-soft-card-gate.test.ts: ok");

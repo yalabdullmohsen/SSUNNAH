@@ -12,7 +12,9 @@ const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
 const sf = read("src/styles/sunnah-foundation-tokens.css");
 const theme = read("src/app/styles/theme.css");
+const aliases = read("src/styles/theme-aliases.css");
 const unify = read("src/styles/visual-identity-unify.css");
+const calm = read("src/styles/sections-calm-polish.css");
 const cards = read("src/styles/card-system-tokens.css");
 const shell = read("src/styles/pages/app-shell-v2.css");
 
@@ -37,12 +39,16 @@ assert.match(theme, /--mj-ink:\s*#15382D/i);
 assert.doesNotMatch(theme, /--mj-brand-soft:\s*#E2EFE8/i);
 assert.match(theme, /--sunnah-v2-shadow-card:\s*none/);
 
-console.log("=== unify: جسر Foundation · بلا لوحة منافسة ===");
-assert.match(unify, /--mj-brand:\s*var\(--sf-color-deep-emerald/);
-assert.match(unify, /--mj-bg:\s*var\(--sf-color-warm-ivory/);
-assert.match(unify, /--mj-accent:\s*var\(--sf-color-quran-gold/);
+console.log("=== theme-aliases: جسر Foundation (TOKEN ABSORB) · بلا لوحة منافسة في unify/calm ===");
+assert.match(aliases, /--mj-brand:\s*var\(--sf-color-deep-emerald/);
+assert.match(aliases, /--mj-bg:\s*var\(--sf-color-warm-ivory/);
+assert.match(aliases, /--mj-accent:\s*var\(--sf-color-quran-gold/);
+assert.match(aliases, /--mj-chip-active-bg:/);
+assert.doesNotMatch(unify, /--mj-[\w-]+\s*:/);
+assert.doesNotMatch(calm, /--mj-[\w-]+\s*:/);
 assert.doesNotMatch(unify, /--mj-brand:\s*#146b52/);
 assert.doesNotMatch(unify, /--mj-brand-soft:\s*#e6f2ec/);
+assert.doesNotMatch(calm, /--mj-brand:\s*#146b52/);
 assert.match(unify, /:not\(\.hub-card\)/);
 assert.match(unify, /--radius-card:\s*var\(--sf-radius-card/);
 assert.match(unify, /\.mss-hero-surface[\s\S]{0,280}background-image:\s*none/);

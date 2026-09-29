@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 import { cn, toArabicDigits } from "@/lib/utils";
 import { FilterResetButton } from "./FilterResetButton";
 import { EMPTY } from "@/lib/ui-copy";
@@ -40,7 +41,7 @@ export function ActiveFilters({
             {items.map((item) => (
               <li key={item.id}>
                 {item.onRemove ? (
-                  <button
+                  <Button
                     type="button"
                     className="mj-active-filters__pill"
                     onClick={item.onRemove}
@@ -48,7 +49,7 @@ export function ActiveFilters({
                   >
                     <span>{item.label}</span>
                     <span aria-hidden="true">×</span>
-                  </button>
+                  </Button>
                 ) : (
                   <span className="mj-active-filters__pill is-static">{item.label}</span>
                 )}

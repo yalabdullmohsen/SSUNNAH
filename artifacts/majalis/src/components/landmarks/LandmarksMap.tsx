@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
 import type { IslamicLandmark } from "@/lib/islamic-landmarks-data";
 import { ACTION, EMPTY, STATUS } from "@/lib/ui-copy";
 
@@ -177,13 +178,13 @@ export default function LandmarksMap({ landmarks, onSelect }: Props) {
       {status === "error" && (
         <div className="ilm-map-state ilm-map-state--error" role="alert">
           <p>{STATUS.loadError}</p>
-          <button
+          <Button
             type="button"
             className="ilm-map-retry"
             onClick={() => window.location.reload()}
           >
             {ACTION.retry}
-          </button>
+          </Button>
         </div>
       )}
     </div>

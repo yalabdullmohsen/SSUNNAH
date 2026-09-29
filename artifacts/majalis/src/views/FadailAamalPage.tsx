@@ -1,4 +1,5 @@
 import { SectionIcon } from "@/components/ui/SectionIcon";
+import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { applyPageSeo } from "../lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
@@ -1103,7 +1104,7 @@ export default function FadailAamalPage() {
         {/* categories */}
         <div className="fa-cats" role="tablist" aria-label="تصفية حسب الموضوع">
           {CATEGORIES.map((cat) => (
-            <button
+            <Button
               key={cat}
               type="button"
               role="tab"
@@ -1112,7 +1113,7 @@ export default function FadailAamalPage() {
               onClick={() => setActiveCategory(cat)}
             >
               {cat}
-            </button>
+            </Button>
           ))}
         </div>
 

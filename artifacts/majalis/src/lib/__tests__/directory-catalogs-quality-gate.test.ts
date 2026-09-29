@@ -107,15 +107,16 @@ assert.doesNotMatch(ilmCss, /\.ilm-map-wrap\s*\{/, "لا حاوية خريطة �
 assert.match(instCss, /html\.dark \.inst-card|html\[data-theme="dark"\] \.inst-card/);
 assert.match(theme, /\.ilm-card/);
 assert.match(theme, /\.inst-card/);
-assert.match(instPage, /soft-card|InstitutionDiscoverCard/, "بطاقات المؤسسات soft/discover");
-assert.match(ilmPage, /soft-card|LandmarkDiscoverCard/, "بطاقات المعالم soft/discover");
+assert.match(instPage, /InstitutionDiscoverCard/, "بطاقات المؤسسات discover");
+assert.match(ilmPage, /LandmarkDiscoverCard/, "بطاقات المعالم discover");
 assert.match(instPage, /mj-pressable|InstitutionDiscoverCard/, "مؤسسات قابلة للضغط بصريًا");
 assert.match(ilmPage, /mj-pressable|LandmarkDiscoverCard/, "معالم قابلة للضغط");
 assert.match(instPage, /AppPage|ilm-discover|inst-discover/, "المؤسسات على Discover/AppPage");
 assert.match(ilmPage, /AppPage|SectionTemplatePage/, "المعالم على قالب AppPage");
 assert.doesNotMatch(ilmPage, /FloatingBackButton|position:\s*fixed[\s\S]{0,80}fab/i, "لا عناصر عائمة قديمة في الصفحة");
 assert.match(univCard, /univ-card/, "بطاقة الجامعة موحّدة");
-assert.match(univCard, /soft-card|mj-pressable/, "جامعة soft/pressable");
+assert.match(univCard, /mj-pressable/, "جامعة pressable");
+assert.doesNotMatch(univCard, /\bsoft-card\b/, "جامعة بلا soft-card مباشر");
 
 console.log("=== روابط المؤسسات والمسافات ===");
 for (const I of INSTITUTIONS) {

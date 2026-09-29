@@ -37,7 +37,7 @@ export function ReadingSectionCard({
   title,
   children,
   variant = "default",
-  className = "",
+  className="",
   as: Tag = "section",
   collapsible = false,
   defaultOpen = false,
@@ -45,7 +45,7 @@ export function ReadingSectionCard({
   const uid = useId();
   const titleId = `rsc-title-${uid.replace(/:/g, "")}`;
   const [open, setOpen] = useState(defaultOpen);
-  const classes = `rsc soft-card soft-card--on-light rsc--${variant}${
+  const classes = `rsc rsc--${variant}${
     collapsible ? " rsc--accordion" : ""
   }${className ? ` ${className}` : ""}`;
 
@@ -95,7 +95,7 @@ type ReadingProseProps = {
 };
 
 /** فقرة/نص طويل مع الحفاظ على فواصل الأسطر في البيانات. */
-export function ReadingProse({ text, className = "" }: ReadingProseProps) {
+export function ReadingProse({ text, className="" }: ReadingProseProps) {
   return (
     <p className={`rsc__prose${className ? ` ${className}` : ""}`}>{text}</p>
   );
@@ -106,7 +106,7 @@ type ReadingBulletListProps = {
   className?: string;
 };
 
-export function ReadingBulletList({ items, className = "" }: ReadingBulletListProps) {
+export function ReadingBulletList({ items, className="" }: ReadingBulletListProps) {
   if (!items.length) return null;
   return (
     <ul className={`rsc-list${className ? ` ${className}` : ""}`}>

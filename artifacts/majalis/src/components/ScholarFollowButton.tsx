@@ -7,6 +7,7 @@ import {
   isFollowingSheikh,
   getFollowerCount,
 } from "@/lib/scholar-follow-service";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   sheikhId: string;
@@ -50,17 +51,20 @@ export function ScholarFollowButton({ sheikhId, compact = false }: Props) {
   };
 
   return (
-    <button
+    <Button
       type="button"
+      variant={following ? "secondary" : "outline"}
+      size="small"
       className={`scholar-follow-btn${following ? " scholar-follow-btn--following" : ""}${compact ? " scholar-follow-btn--compact" : ""}`}
       onClick={toggle}
       disabled={loading}
+      loading={loading}
       aria-label={following ? "إلغاء المتابعة" : "تابع هذا الشيخ"}
     >
       {following ? "✓ تتابعه" : "＋ تابع"}
       {count !== null && !compact && (
         <span className="scholar-follow-btn__count">{count}</span>
       )}
-    </button>
+    </Button>
   );
 }

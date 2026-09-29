@@ -5,6 +5,7 @@ import {
   type KeyboardEvent,
   type ReactNode,
 } from "react";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export type ExclusiveChoiceItem = {
@@ -88,7 +89,7 @@ export function ExclusiveChoiceGroup({
       {items.map((item, i) => {
         const checked = value === item.id;
         return (
-          <button
+          <Button
             key={item.id}
             ref={(el) => {
               btnRefs.current[i] = el;
@@ -109,7 +110,7 @@ export function ExclusiveChoiceGroup({
               <span className="exclusive-choice__box" aria-hidden="true" data-checked={checked} />
             ) : null}
             <span className="exclusive-choice__label">{item.label}</span>
-          </button>
+          </Button>
         );
       })}
     </div>

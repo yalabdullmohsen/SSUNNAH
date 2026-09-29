@@ -56,7 +56,7 @@ export default function KnowledgeSectionPage() {
           if (one) {
             const path = `/knowledge/${section}/${id}`;
             const desc = truncateAtWord(
-              one.body.replace(/##[^\n]*/g, " ").replace(/\s+/g, " ").trim(),
+              one.body.replace(/##[^\n]*/g, "").replace(/\s+/g, "").trim(),
               160,
             );
             applyPageSeo({
@@ -199,7 +199,7 @@ export default function KnowledgeSectionPage() {
         <ul className="knowledge-index-list">
           {visible.slice(0, 200).map((it) => (
             <li key={it.id}>
-              <Link href={`/knowledge/${section}/${it.id}`} className="knowledge-index-link soft-card soft-card--on-light">
+              <Link href={`/knowledge/${section}/${it.id}`} className="knowledge-index-link">
                 <span>{it.title}</span>
               </Link>
             </li>

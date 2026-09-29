@@ -157,7 +157,7 @@ export default function TasbihPage() {
           </>
         )}
         {aggregateStats.streak > 0 && (
-          <div className="soft-card soft-card--on-light tasbih-stat tasbih-stat--streak">
+          <div className="tasbih-stat tasbih-stat--streak">
             <span>التتابع</span>
             <strong>{aggregateStats.streak} <Flame size={14} strokeWidth={2} aria-hidden="true" /></strong>
           </div>
@@ -177,7 +177,7 @@ export default function TasbihPage() {
               role="tab"
               variant="ghost"
               aria-selected={item.id === active?.id}
-              className={`tasbih-wird-pill${item.id === active?.id ? " is-active" : ""}`}
+              className={`tasbih-wird-pill${item.id === active?.id ? "is-active" : ""}`}
               onClick={() => setActiveId(item.id)}
             >
               <span className="tasbih-pill-phrase">{item.phrase}</span>
@@ -191,7 +191,7 @@ export default function TasbihPage() {
 
       {/* Active wird counter */}
       {active && (
-        <section className="soft-card soft-card--on-light tasbih-page-card tasbih-pro-card tasbih-pro-card--v2">
+        <section className="tasbih-page-card tasbih-pro-card tasbih-pro-card--v2">
           <p className="tasbih-phrase">{active.phrase}</p>
           <TasbeehCounter
             storageId={`wird-${active.id}`}
@@ -219,7 +219,7 @@ export default function TasbihPage() {
       )}
 
       {/* Add wird form */}
-      <section className="soft-card soft-card--on-light tasbih-add-card">
+      <section className="tasbih-add-card">
         <h2>إضافة ورد جديد</h2>
         <div className="tasbih-add-row">
           <input

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import {
   BookOpen,
@@ -117,14 +118,14 @@ export default function DiscoverIslamPage() {
         <span className="dii-lang-label">اختر لغتك:</span>
         <div className="dii-lang-chips">
           {LANG_META.map((m) => (
-            <button
+            <Button
               key={m.code}
               type="button"
               onClick={() => setLang(m.code)}
-              className={`content-hub-chip${lang === m.code ? " content-hub-chip--active" : ""}`}
+              className={`content-hub-chip${lang === m.code ? "content-hub-chip--active" : ""}`}
             >
               {m.nativeName}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -147,7 +148,7 @@ export default function DiscoverIslamPage() {
               title={p.label}
               description={p.desc}
               badge="مسار"
-              className="dii-hub-card soft-card soft-card--on-light"
+              className="dii-hub-card"
             />
           ))}
         </div>
@@ -173,7 +174,7 @@ export default function DiscoverIslamPage() {
                 title={a.title_ar}
                 description={a.summary_ar || undefined}
                 badge="مقال"
-                className="dii-hub-card dii-list-card soft-card soft-card--on-light"
+                className="dii-hub-card dii-list-card"
               />
             ))}
           </div>
@@ -192,7 +193,7 @@ export default function DiscoverIslamPage() {
                 description={c.description_ar || undefined}
                 icon={<CategoryIcon name={c.icon} />}
                 badge="موضوع"
-                className="dii-hub-card soft-card soft-card--on-light"
+                className="dii-hub-card"
               />
             ))}
           </div>
@@ -213,7 +214,7 @@ export default function DiscoverIslamPage() {
                 title={q.title}
                 description={q.short_answer}
                 badge="سؤال"
-                className="dii-hub-card dii-list-card soft-card soft-card--on-light"
+                className="dii-hub-card dii-list-card"
               />
             ))}
           </div>
@@ -234,7 +235,7 @@ export default function DiscoverIslamPage() {
                 title={s.title}
                 description={s.short_answer}
                 badge="شبهة"
-                className="dii-hub-card dii-list-card soft-card soft-card--on-light"
+                className="dii-hub-card dii-list-card"
               />
             ))}
           </div>

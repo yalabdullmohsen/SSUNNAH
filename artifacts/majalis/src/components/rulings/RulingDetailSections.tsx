@@ -37,7 +37,7 @@ export function RulingDetailSections({ ruling, relations }: Props) {
       </div>
 
       {(ruling.quran_evidence?.length ?? 0) > 0 && (
-        <section className="ruling-detail-block soft-card soft-card--on-light">
+        <section className="ruling-detail-block">
           <h2>الدليل من القرآن</h2>
           <ul>
             {ruling.quran_evidence!.map((ev, i) => {
@@ -59,7 +59,7 @@ export function RulingDetailSections({ ruling, relations }: Props) {
       )}
 
       {(ruling.sunnah_evidence?.length ?? 0) > 0 && (
-        <section className="ruling-detail-block soft-card soft-card--on-light">
+        <section className="ruling-detail-block">
           <h2>الدليل من السنة</h2>
           <ul>
             {ruling.sunnah_evidence!.map((ev, i) => {
@@ -82,7 +82,7 @@ export function RulingDetailSections({ ruling, relations }: Props) {
       )}
 
       {(ruling.scholar_opinions?.length ?? 0) > 0 && (
-        <section className="ruling-detail-block soft-card soft-card--on-light">
+        <section className="ruling-detail-block">
           <h2>أقوال العلماء</h2>
           <ul>
             {ruling.scholar_opinions!.map((op, i) => {
@@ -91,7 +91,7 @@ export function RulingDetailSections({ ruling, relations }: Props) {
                 <li key={i}>
                   <strong>
                     {sch.href ? <Link href={sch.href}>{op.scholar}</Link> : op.scholar}:
-                  </strong>{" "}
+                  </strong>{""}
                   {op.opinion}
                   {op.isPrevailing && <span className="ruling-card__badge"> الراجح</span>}
                 </li>
@@ -102,14 +102,14 @@ export function RulingDetailSections({ ruling, relations }: Props) {
       )}
 
       {ruling.prevailing_view && (
-        <section className="ruling-detail-block soft-card soft-card--on-light ruling-prevailing">
+        <section className="ruling-detail-block ruling-prevailing">
           <h2>الراجح</h2>
           <p>{ruling.prevailing_view}</p>
         </section>
       )}
 
       {(ruling.benefits?.length ?? 0) > 0 && (
-        <section className="ruling-detail-block soft-card soft-card--on-light">
+        <section className="ruling-detail-block">
           <h2>الفوائد</h2>
           <ul>
             {ruling.benefits!.map((b, i) => (
@@ -135,7 +135,7 @@ export function RulingDetailSections({ ruling, relations }: Props) {
       )}
 
       {relations.length > 0 && (
-        <section className="ruling-detail-block soft-card soft-card--on-light">
+        <section className="ruling-detail-block">
           <h2>الربط الذكي</h2>
           {Object.entries(
             relations.reduce<Record<string, RulingRelationLink[]>>((acc, link) => {

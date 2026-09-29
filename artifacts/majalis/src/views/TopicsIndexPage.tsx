@@ -202,7 +202,7 @@ export default function TopicsIndexPage() {
             </div>
             <div className="tip-grid">
               {items.map((t) => (
-                <Link key={t.slug} href={`/topics/${t.slug}`} className="tip-link soft-card soft-card--on-light">
+                <Link key={t.slug} href={`/topics/${t.slug}`} className="tip-link">
                   {t.title}
                 </Link>
               ))}

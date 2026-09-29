@@ -19,6 +19,15 @@ import {
 import { ShareButtons } from "@/components/ContentActions";
 import { AppPage, PageHeaderV2, EmptyStateV2 } from "@/components/design-system";
 import { SectionTitle, SupportingText } from "@/components/design-system/text";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { LandmarkDiscoverCard } from "@/components/landmarks/LandmarkDiscoverCard";
 import { FilterBottomSheet, FilterToggle } from "@/components/layout/FilterBottomSheet";
 import "@/styles/islamic-landmarks.css";
@@ -192,59 +201,64 @@ export default function IslamicLandmarksPage() {
             title="تصفية المشاهد"
           >
             <div className="ilm-sheet-filters">
-              <label className="ilm-sheet-field">
-                <span>الدولة</span>
-                <select
-                  className="ilm-select"
-                  value={activeCountry}
-                  onChange={(e) => setActiveCountry(e.target.value)}
-                >
-                  {LANDMARK_COUNTRIES.map((country) => (
-                    <option key={country} value={country}>
-                      {country}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label className="ilm-sheet-field">
-                <span>الحقبة</span>
-                <select
-                  className="ilm-select"
-                  value={activeEra}
-                  onChange={(e) => setActiveEra(e.target.value)}
-                  aria-label="فلترة حسب الحقبة"
-                >
-                  <option value="الكل">كل الحقب</option>
-                  {LANDMARK_ERAS.map((era) => (
-                    <option key={era} value={era}>
-                      {era}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label className="ilm-sheet-field">
-                <span>النوع</span>
-                <select
-                  className="ilm-select"
+              <div className="ilm-sheet-field">
+                <FieldLabel>الدولة</FieldLabel>
+                <Select value={activeCountry} onValueChange={setActiveCountry}>
+                  <SelectTrigger className="ilm-select min-h-11 text-base" aria-label="فلترة حسب الدولة">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {LANDMARK_COUNTRIES.map((country) => (
+                      <SelectItem key={country} value={country}>
+                        {country}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="ilm-sheet-field">
+                <FieldLabel>الحقبة</FieldLabel>
+                <Select value={activeEra} onValueChange={setActiveEra}>
+                  <SelectTrigger className="ilm-select min-h-11 text-base" aria-label="فلترة حسب الحقبة">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="الكل">كل الحقب</SelectItem>
+                    {LANDMARK_ERAS.map((era) => (
+                      <SelectItem key={era} value={era}>
+                        {era}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="ilm-sheet-field">
+                <FieldLabel>النوع</FieldLabel>
+                <Select
                   value={activeType}
-                  onChange={(e) => setActiveType(e.target.value as LandmarkType | "الكل")}
-                  aria-label="فلترة حسب النوع"
+                  onValueChange={(v) => setActiveType(v as LandmarkType | "الكل")}
                 >
-                  <option value="الكل">كل الأنواع</option>
-                  {LANDMARK_TYPES.map((type) => (
-                    <option key={type} value={type}>
-                      {type}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <button
+                  <SelectTrigger className="ilm-select min-h-11 text-base" aria-label="فلترة حسب النوع">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="الكل">كل الأنواع</SelectItem>
+                    {LANDMARK_TYPES.map((type) => (
+                      <SelectItem key={type} value={type}>
+                        {type}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <Button
                 type="button"
+                variant="primary"
                 className="ilm-sheet-apply"
                 onClick={() => setFiltersOpen(false)}
               >
                 عرض النتائج ({filtered.length})
-              </button>
+              </Button>
             </div>
           </FilterBottomSheet>
 

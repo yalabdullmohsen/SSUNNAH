@@ -6,6 +6,7 @@ import {
   unsubscribeFromPush,
   type PushPermissionState,
 } from "@/lib/push-notifications";
+import { Button } from "@/components/ui/button";
 
 export function PushPrompt() {
   const [state, setState] = useState<PushPermissionState>("unsupported");
@@ -64,14 +65,17 @@ export function PushPrompt() {
         <strong>إشعارات الدروس</strong>
         <span>{subscribed ? "مفعّلة، ستصلك تذكيرات بمواعيد الدروس" : "غير مفعّلة"}</span>
       </div>
-      <button
+      <Button
         type="button"
+        variant={subscribed ? "secondary" : "primary"}
+        size="small"
         className={`push-prompt__btn${subscribed ? " push-prompt__btn--off" : ""}`}
         onClick={handleToggle}
         disabled={loading}
+        loading={loading}
       >
-        {loading ? "…" : subscribed ? "إيقاف" : "تفعيل"}
-      </button>
+        {subscribed ? "إيقاف" : "تفعيل"}
+      </Button>
     </div>
   );
 }

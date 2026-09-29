@@ -1,5 +1,5 @@
 /**
- * بوابة: بطاقات الدروس على soft-card بلا ui-card/mj-card حي.
+ * بوابة: بطاقات الدروس على سلطة الأسطح (بلا ui-card/mj-card حي، بلا soft-card مباشر).
  * node --import tsx src/lib/__tests__/lesson-cards-soft-gate.test.ts
  */
 import assert from "node:assert/strict";
@@ -15,21 +15,25 @@ const annual = readFileSync(resolve(root, "src/pages/lessons/ui/AnnualCourseDeta
 const css = readFileSync(resolve(root, "src/styles/pages/lessons.css"), "utf8");
 const mur = readFileSync(resolve(root, "src/styles/modern-ui-refresh.css"), "utf8");
 
-assert.match(unified, /lesson-unified-card soft-card soft-card--on-light/, "UnifiedLessonCard على soft-card");
+assert.match(unified, /lesson-unified-card/, "UnifiedLessonCard على صنف الدومين");
 assert.doesNotMatch(unified, /\bui-card\b/, "UnifiedLessonCard بلا ui-card");
 assert.doesNotMatch(unified, /\bmj-card\b/, "UnifiedLessonCard بلا mj-card");
+assert.doesNotMatch(unified, /\bsoft-card\b/, "لا soft-card مباشر");
 
-assert.match(detail, /lesson-detail-card soft-card soft-card--on-light/, "تفاصيل الدرس على soft-card");
+assert.match(detail, /lesson-detail-card|content-detail|AppCard/, "تفاصيل الدرس على سطح سلطة");
 assert.doesNotMatch(detail, /\bui-card\b/, "LessonDetailView بلا ui-card");
 assert.doesNotMatch(detail, /\bmj-card\b/, "LessonDetailView بلا mj-card");
+assert.doesNotMatch(detail, /\bsoft-card\b/, "LessonDetailView بلا soft-card مباشر");
 
-assert.match(list, /lessons-v2-filters soft-card soft-card--on-light/, "فلاتر الدروس على soft-card");
+assert.match(list, /lessons-v2-filters|lesson-filters|AppCard/, "فلاتر الدروس موجودة");
 assert.doesNotMatch(list, /lessons-v2-filters[^"]*\bui-card\b/, "فلاتر بلا ui-card");
+assert.doesNotMatch(list, /\bsoft-card\b/, "LessonsView بلا soft-card مباشر");
 
-assert.match(annual, /content-detail-section soft-card soft-card--on-light/, "مسار سنوي على soft-card");
+assert.match(annual, /content-detail-section|AppCard/, "مسار سنوي على سطح سلطة");
 assert.doesNotMatch(annual, /\bui-card\b/, "AnnualCourseDetailView بلا ui-card");
+assert.doesNotMatch(annual, /\bsoft-card\b/, "AnnualCourseDetailView بلا soft-card مباشر");
 
-assert.match(css, /\.lesson-unified-card\.soft-card/, "CSS تخطيط مربوط بـ soft-card");
+assert.match(css, /\.lesson-unified-card\b/, "CSS تخطيط مربوط بـ lesson-unified-card");
 assert.doesNotMatch(mur, /\.lesson-unified-card\s*,/, "modern-ui-refresh لا يفرض سطحًا منفصلًا");
 
 console.log("lesson-cards-soft-gate.test.ts: ok");

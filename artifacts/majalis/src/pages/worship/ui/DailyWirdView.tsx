@@ -218,7 +218,7 @@ export default function DailyWirdPage() {
       />
 
       {/* البطاقة الرئيسية، الحلقة والأزرار */}
-      <div className="wird-hero soft-card soft-card--on-light">
+      <div className="wird-hero">
         <WirdRing pct={pct} pages={todayCompleted} target={state.pagesPerDay} />
 
         <div className="wird-count-btns" role="group" aria-label="إضافة صفحات">
@@ -267,7 +267,7 @@ export default function DailyWirdPage() {
       </div>
 
       {/* بطاقة السلسلة */}
-      <div className="wird-streak-card soft-card soft-card--on-light">
+      <div className="wird-streak-card">
         <div className="wird-streak-row">
           <div className="wird-streak-num">
             <Flame size={18} strokeWidth={1.8} className="wird-streak-icon" aria-hidden="true" />
@@ -300,7 +300,7 @@ export default function DailyWirdPage() {
           </div>
         </div>
       )}
-      <div className="khatma-progress-card soft-card soft-card--on-light">
+      <div className="khatma-progress-card">
         <h2 className="wird-settings__title">تقدم الختمة</h2>
         <div className="khatma-progress-body">
           <KhatmaRing pagesInKhatma={pagesInCurrentKhatma} khatmasCompleted={khatmasCompleted} />
@@ -325,7 +325,7 @@ export default function DailyWirdPage() {
       </div>
 
       {/* ضبط الورد */}
-      <div className="wird-settings soft-card soft-card--on-light">
+      <div className="wird-settings">
         <h2 className="wird-settings__title">ضبط الورد</h2>
 
         <label className="wird-field">

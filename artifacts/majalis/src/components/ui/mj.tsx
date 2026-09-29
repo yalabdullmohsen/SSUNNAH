@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { PageHero } from "./PageHero";
+import { AppCard } from "@/components/design-system/AppCard";
 
 export function PageHeader({
   eyebrow,
@@ -38,15 +39,17 @@ export function Card({
   onClick?: () => void;
 }) {
   return (
-    <div
-      className={cn("mj-card soft-card soft-card--on-light", link && "mj-card--link", raised && "mj-card--raised", className)}
+    <AppCard
+      as="div"
+      padding="md"
+      className={cn("mj-card", link && "mj-card--link", raised && "mj-card--raised", className)}
       onClick={onClick}
       onKeyDown={onClick ? (e) => { if (e.key === "Enter" || e.key === " ") onClick(); } : undefined}
       role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
     >
       {children}
-    </div>
+    </AppCard>
   );
 }
 

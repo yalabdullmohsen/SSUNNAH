@@ -69,7 +69,7 @@ async function measureView(page, viewLabel, clickTab) {
 
   const card = page
     .locator(
-      ".cal-month.soft-card, .cal-week.soft-card, .cal-day.soft-card, .cal-month.ui-card, .cal-week.ui-card, .cal-day.ui-card",
+      ".cal-month, .cal-week, .cal-day, .cal-month.ui-card, .cal-week.ui-card, .cal-day.ui-card",
     )
     .first();
   const cardBox = await card.boundingBox();
@@ -108,7 +108,7 @@ async function measureView(page, viewLabel, clickTab) {
     return { horiz, linkBlue };
   }, {
     cardSel:
-      ".cal-month.soft-card, .cal-week.soft-card, .cal-day.soft-card, .cal-month.ui-card, .cal-week.ui-card, .cal-day.ui-card",
+      ".cal-month, .cal-week, .cal-day, .cal-month.ui-card, .cal-week.ui-card, .cal-day.ui-card",
   });
 
   await page.screenshot({ path: join(outDir, `calendar-${viewLabel}.png`), fullPage: false });

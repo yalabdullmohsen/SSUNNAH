@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { Button } from "@/components/ui/button";
 import { Globe, GraduationCap, MapPin } from "lucide-react";
 import { Link } from "wouter";
 import type { University } from "@/lib/universities-service";
@@ -22,7 +23,7 @@ export const UniversityCard = memo(function UniversityCard({ university: u, comp
   const accMod = `univ-acc--${u.accreditation_status}`;
 
   return (
-    <div dir="rtl" className="univ-card univ-card--pressable soft-card soft-card--on-light mj-pressable">
+    <div dir="rtl" className="univ-card univ-card--pressable mj-pressable">
       <Link href={`/universities/${u.slug}`} className="univ-card__hit" aria-label={`تفاصيل ${u.name_ar}`}>
       {/* رأس البطاقة */}
       <div className="univ-card__head">
@@ -107,7 +108,7 @@ export const UniversityCard = memo(function UniversityCard({ university: u, comp
           </a>
         )}
 
-        <button
+        <Button
           type="button"
           aria-label={inCompare ? "إزالة من المقارنة" : canAdd ? "أضف للمقارنة" : "تعبأت المقارنة (4 بحد أقصى)"}
           onClick={() => inCompare ? removeFromCompare(u.slug) : addToCompare(u)}
@@ -115,7 +116,7 @@ export const UniversityCard = memo(function UniversityCard({ university: u, comp
           disabled={!inCompare && !canAdd}
         >
           {inCompare ? "✓ مقارنة" : "⇔"}
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { AlertTriangle, BarChart3, BookOpen, Globe, Heart, Star, TrendingUp, Users } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
@@ -389,7 +390,7 @@ export default function IslamStatsPage() {
         {/* ══ التبويبات ══ */}
         <div className="is-tabs" role="tablist" aria-label="تبويبات إحصائيات الإسلام">
           {TABS.map(t => (
-            <button
+            <Button
               key={t.id}
               id={`is-tab-${t.id}`}
               type="button"
@@ -401,7 +402,7 @@ export default function IslamStatsPage() {
             >
               <t.icon size={15} aria-hidden="true" />
               <span>{t.label}</span>
-            </button>
+            </Button>
           ))}
         </div>
 

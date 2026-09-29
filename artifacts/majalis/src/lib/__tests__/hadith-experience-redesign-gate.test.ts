@@ -26,8 +26,8 @@ assert.match(css, /hdl-role--matn/);
 assert.match(card, /hdl-card/);
 assert.match(card, /hdl-role--matn|hdl-card__matn/);
 assert.match(card, /قراءة المزيد/);
-assert.match(card, /soft-card/);
-assert.match(card, /soft-card--on-light/);
+assert.match(card, /AppCard/, "السطح عبر AppCard");
+assert.doesNotMatch(card, /\bsoft-card\b/, "لا soft-card مباشر في HadithCard");
 assert.match(card, /hdl-card__footer/);
 
 console.log("=== Discover: تبسيط الفلاتر ===");

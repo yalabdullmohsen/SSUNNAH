@@ -1,4 +1,5 @@
 import { useLocation } from "wouter";
+import { Button } from "@/components/ui/button";
 import type { SectionDef } from "@/config/sections.registry";
 import { cn } from "@/lib/utils";
 
@@ -18,7 +19,7 @@ export function SectionRow({ section, className, onNavigate }: Props) {
   const aria = subtitle ? `${section.label} — ${subtitle}` : section.label;
 
   return (
-    <button
+    <Button
       type="button"
       dir="rtl"
       data-section-card="compact"
@@ -36,6 +37,6 @@ export function SectionRow({ section, className, onNavigate }: Props) {
         <Icon strokeWidth={1.75} aria-hidden />
       </span>
       <span className="card__label">{section.label}</span>
-    </button>
+    </Button>
   );
 }

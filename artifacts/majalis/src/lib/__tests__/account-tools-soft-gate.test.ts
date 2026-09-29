@@ -1,5 +1,5 @@
 /**
- * بوابة: صفحات الحساب/الأدوات بلا ui-card (مع السماح بآثار أزرار مُرحَّلة).
+ * بوابة: صفحات الحساب/الأدوات بلا ui-card وبلا soft-card مباشر.
  * node --import tsx src/lib/__tests__/account-tools-soft-gate.test.ts
  */
 import assert from "node:assert/strict";
@@ -27,10 +27,7 @@ for (const rel of files) {
   const src = readFileSync(resolve(root, rel), "utf8");
   assert.doesNotMatch(src, uiCard, `${rel} بلا ui-card`);
   assert.doesNotMatch(src, /\bui-card-btn\b/, `${rel} بلا ui-card-btn`);
+  assert.doesNotMatch(src, /\bsoft-card\b/, `${rel} بلا soft-card مباشر`);
 }
-
-const cards = readFileSync(resolve(root, "src/views/CardsPage.tsx"), "utf8");
-assert.match(cards, /soft-card/, "CardsPage يستخدم soft-card");
-assert.match(cards, /soft-card--on-light/, "CardsPage على سطح فاتح");
 
 console.log(`account-tools-soft-gate.test.ts: ok · ${files.length}`);

@@ -23,7 +23,7 @@ const SunnahIcon = (
  *    (HomePage.tsx، بلا شرط)، فهذا التجاوز نشط في كل تحميل حقيقي للصفحة، لا
  *    حالة نادرة. استخدام description العام كان سيُفقد هذا اللون فعليًا، فأُبقي
  *    كعنصر مستقل داخل children بنفس الـclass الأصلي.
- * السطح عبر soft-card (هوية البطاقات الموحّدة) مع الإبقاء على home-sunnah-card للتخطيط.
+ * السطح عبر سلطة الأسطح (هوية البطاقات الموحّدة) مع الإبقاء على home-sunnah-card للتخطيط.
  */
 export function HomeSunnahByTime() {
   const [period, setPeriod] = useState<SunnahPeriod>(getLocalSunnahPeriod());
@@ -38,7 +38,7 @@ export function HomeSunnahByTime() {
   return (
     <Widget
       id="sunnah-time"
-      className="soft-card soft-card--on-light home-sunnah-card"
+      className="home-sunnah-card"
       icon={SunnahIcon}
       eyebrow="حسب وقتك"
       title="سنن الوقت الحالي"

@@ -21,8 +21,8 @@ import {
   strongestCategories,
   type CategoryPerformance,
 } from "@/lib/quiz-performance-service";
+import { AppCard } from "@/components/design-system";
 import "@/styles/pages/user-stats.css";
-import { UtilityScreen } from "@/components/design-system/screens";
 
 const BADGE_ICON_MAP: Record<string, LucideIcon> = {
   Flame, Moon, Star, BookOpen, Library, GraduationCap, BookMarked, Repeat2, Sparkles,
@@ -376,7 +376,6 @@ export default function UserStatsPage() {
     user?.profile?.full_name || user?.email?.split("@")[0] || "المستخدم";
 
   return (
-    <UtilityScreen compose="mark">
     <div className="page-shell narrow profile-page" dir="rtl">
       <NewBadgesFlash keys={newBadges} />
 
@@ -388,7 +387,11 @@ export default function UserStatsPage() {
 
       {/* ── بطاقة الهوية ── */}
       {stats && (
-        <div className="profile-identity soft-card soft-card--on-light" style={{ "--level-color": stats.level.color } as React.CSSProperties}>
+        <AppCard
+          as="div"
+          className="profile-identity"
+          style={{ "--level-color": stats.level.color } as React.CSSProperties}
+        >
           <div className="profile-identity__left">
             <div className="profile-identity__avatar">
               {displayName.slice(0, 1)}
@@ -404,7 +407,7 @@ export default function UserStatsPage() {
             <span className="profile-identity__streak-num">{stats.streakDays}</span>
             <span className="profile-identity__streak-label"><Flame size={14} strokeWidth={2} aria-hidden="true" /> يوم متواصل</span>
           </div>
-        </div>
+        </AppCard>
       )}
 
       {/* ── شريط المستوى ── */}
@@ -469,6 +472,5 @@ export default function UserStatsPage() {
         <ShareButtons title="إحصاءات التعلم — سُنّة" url="https://www.ssunnah.com/my-stats" />
       </div>
     </div>
-    </UtilityScreen>
   );
 }

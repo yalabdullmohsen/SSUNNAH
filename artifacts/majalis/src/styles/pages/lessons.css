@@ -725,9 +725,9 @@ html.dark .lesson-detail-info-grid dd,
 }
 
 /* السطح من soft-card؛ هنا تخطيط الدومين فقط */
-.lessons-page-v2 .lesson-unified-card.soft-card,
-.lesson-detail-page .lesson-unified-card.soft-card,
-.lessons-similar-section .lesson-unified-card.soft-card {
+.lessons-page-v2 .lesson-unified-card,
+.lesson-detail-page .lesson-unified-card,
+.lessons-similar-section .lesson-unified-card {
   --lesson-green: var(--color-primary, var(--mj-brand, #5fbf98));
   --lesson-green-deep: var(--color-primary-dark, var(--mj-brand-deep, #12362c));
   --lesson-green-soft: var(--color-primary-soft, var(--mj-brand-soft, var(--mj-brand-soft)));
@@ -741,9 +741,9 @@ html.dark .lesson-detail-info-grid dd,
   min-width: 0;
 }
 
-.lessons-page-v2 .lesson-unified-card--today.soft-card,
-.lesson-detail-page .lesson-unified-card--today.soft-card,
-.lessons-similar-section .lesson-unified-card--today.soft-card {
+.lessons-page-v2 .lesson-unified-card--today,
+.lesson-detail-page .lesson-unified-card--today,
+.lessons-similar-section .lesson-unified-card--today {
   /* تمييز «اليوم» عبر أصناف الدومين دون سطح منافس */
   outline: 1px solid color-mix(in srgb, var(--lesson-green) 40%, transparent);
   outline-offset: 0;

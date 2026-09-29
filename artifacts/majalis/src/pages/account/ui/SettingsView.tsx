@@ -281,7 +281,7 @@ export default function SettingsPage() {
         <LegalSection title={sections[0]!.title}>
           <AppCard
             as="section"
-            className="soft-card soft-card--on-light settings-account-card"
+            className="settings-account-card"
             data-ss-surface="inset"
           >
             <div className="settings-avatar" aria-hidden="true">

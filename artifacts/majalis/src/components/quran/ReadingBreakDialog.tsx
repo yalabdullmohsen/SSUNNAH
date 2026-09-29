@@ -2,6 +2,7 @@
  * Web equivalent of RN `Alert.alert("استراحة قصيرة", …, [{ text: "موافق" }])`.
  */
 import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
 import { Coffee } from "lucide-react";
 import "@/styles/components/reading-break.css";
 
@@ -44,9 +45,9 @@ export function ReadingBreakDialog({ open, title, message, onDismiss }: ReadingB
         <p id="qe-break-msg" className="qe-break-dialog__msg">
           {message}
         </p>
-        <button type="button" className="qe-break-dialog__ok" onClick={onDismiss}>
+        <Button type="button" className="qe-break-dialog__ok" onClick={onDismiss}>
           موافق
-        </button>
+        </Button>
       </div>
     </div>
   );

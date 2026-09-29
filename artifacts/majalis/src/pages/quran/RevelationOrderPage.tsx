@@ -65,20 +65,20 @@ export default function RevelationOrderPage() {
           <Info size={15} strokeWidth={1.8} aria-hidden="true" />
           <span>
             ترتيب توقيفي للمصحف يبقى كما هو دومًا في كل صفحات الموقع؛ هذا عرض تاريخي إضافي فقط.
-            راجع <Link href="/quran/surahs">فهرس السور</Link> للترتيب المعتاد، أو{" "}
+            راجع <Link href="/quran/surahs">فهرس السور</Link> للترتيب المعتاد، أو{""}
             <a href="#revord-source">مصدر هذه البيانات أدناه</a>.
           </span>
         </div>
       </header>
 
       <div className="revord-filters" role="tablist" aria-label="فلترة حسب مكان النزول">
-        <button type="button" role="tab" aria-selected={filter === "all"} className={`revord-chip${filter === "all" ? " is-active" : ""}`} onClick={() => setFilter("all")}>
+        <button type="button" role="tab" aria-selected={filter === "all"} className={`revord-chip${filter === "all" ? "is-active" : ""}`} onClick={() => setFilter("all")}>
           الكل
         </button>
-        <button type="button" role="tab" aria-selected={filter === "meccan"} className={`revord-chip revord-chip--meccan${filter === "meccan" ? " is-active" : ""}`} onClick={() => setFilter("meccan")}>
+        <button type="button" role="tab" aria-selected={filter === "meccan"} className={`revord-chip revord-chip--meccan${filter === "meccan" ? "is-active" : ""}`} onClick={() => setFilter("meccan")}>
           <span className="revord-dot revord-dot--meccan" aria-hidden="true" /> مكية
         </button>
-        <button type="button" role="tab" aria-selected={filter === "medinan"} className={`revord-chip revord-chip--medinan${filter === "medinan" ? " is-active" : ""}`} onClick={() => setFilter("medinan")}>
+        <button type="button" role="tab" aria-selected={filter === "medinan"} className={`revord-chip revord-chip--medinan${filter === "medinan" ? "is-active" : ""}`} onClick={() => setFilter("medinan")}>
           <span className="revord-dot revord-dot--medinan" aria-hidden="true" /> مدنية
         </button>
       </div>
@@ -97,10 +97,10 @@ export default function RevelationOrderPage() {
           {ordered.map((s) => (
             <li key={s.number} className="revord-event">
               <span
-                className={`revord-marker${s.revelationType === "Medinan" ? " revord-marker--medinan" : ""}`}
+                className={`revord-marker${s.revelationType === "Medinan" ? "revord-marker--medinan" : ""}`}
                 aria-hidden="true"
               />
-              <Link href={`/mushaf/${s.number}`} className="revord-card soft-card soft-card--on-light">
+              <Link href={`/mushaf/${s.number}`} className="revord-card">
                 <span className="revord-card__order" aria-hidden="true">{s.revelationOrder}</span>
                 <span className="revord-card__body">
                   <span className="revord-card__name" style={{ fontFamily: "var(--font-quran)" }}>{s.name}</span>

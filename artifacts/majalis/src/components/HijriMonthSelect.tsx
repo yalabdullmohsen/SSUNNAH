@@ -1,3 +1,11 @@
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { FieldLabel } from "@/components/design-system/FormFields";
 import { HIJRI_MONTHS } from "@/lib/hijri-utils";
 
 export type HijriMonthSelectProps = {
@@ -15,11 +23,14 @@ export type HijriMonthSelectProps = {
   style?: React.CSSProperties;
   "aria-label"?: string;
   disabled?: boolean;
+  /** تسمية مرئية اختيارية */
+  label?: string;
 };
 
 /**
  * قائمة اختيار الأشهر الهجرية — مرتّبة حسب ترتيبها الصحيح (1..12) لا أبجدياً،
  * مع مؤشر للأشهر الحُرُم. مصدر موحّد للنماذج والفلاتر والجداول.
+ * يستخدم Select الرسمي (لا native select).
  */
 export function HijriMonthSelect({
   value,
@@ -32,29 +43,40 @@ export function HijriMonthSelect({
   className,
   style,
   disabled,
+  label,
   ...rest
 }: HijriMonthSelectProps) {
+  const strValue = value === "" ? (includeAll ? "all" : undefined) : String(value);
+  const aria = rest["aria-label"] ?? "اختر الشهر الهجري";
+
   return (
-    <select
-      id={id}
-      name={name}
-      className={className}
-      style={style}
-      disabled={disabled}
-      aria-label={rest["aria-label"] ?? "اختر الشهر الهجري"}
-      value={value === "" ? "" : String(value)}
-      onChange={(e) => {
-        const v = e.target.value;
-        onChange(v === "" ? "" : Number(v));
-      }}
-    >
-      {includeAll && <option value="">{allLabel}</option>}
-      {HIJRI_MONTHS.map((m) => (
-        <option key={m.number} value={m.number}>
-          {markSacred && m.sacred ? `${m.name} ★` : m.name}
-        </option>
-      ))}
-    </select>
+    <div className={className} style={style}>
+      {label ? (
+        <FieldLabel htmlFor={id} className="mb-1.5 block">
+          {label}
+        </FieldLabel>
+      ) : null}
+      {name ? <input type="hidden" name={name} value={value === "" ? "" : String(value)} /> : null}
+      <Select
+        disabled={disabled}
+        value={strValue}
+        onValueChange={(v) => {
+          onChange(v === "all" || v === "" ? "" : Number(v));
+        }}
+      >
+        <SelectTrigger id={id} aria-label={aria} className="min-h-11 w-full">
+          <SelectValue placeholder={includeAll ? allLabel : "الشهر الهجري"} />
+        </SelectTrigger>
+        <SelectContent>
+          {includeAll ? <SelectItem value="all">{allLabel}</SelectItem> : null}
+          {HIJRI_MONTHS.map((m) => (
+            <SelectItem key={m.number} value={String(m.number)}>
+              {markSacred && m.sacred ? `${m.name} ★` : m.name}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
   );
 }
 

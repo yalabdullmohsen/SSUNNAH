@@ -31,7 +31,8 @@ assert.match(
   /loading\s*&&\s*!hasMatchingItem\s*&&\s*!hasMatchingList/,
   "Knowledge: هيكل فقط بلا عنصر/قائمة مطابقة",
 );
-assert.match(knowledge, /soft-card soft-card--on-light/, "Knowledge: فهرس soft-card");
+assert.match(knowledge, /knowledge-index-link/, "Knowledge: فهرس روابط");
+assert.doesNotMatch(knowledge, /\bsoft-card\b/, "Knowledge بلا soft-card مباشر");
 
 const topics = read("src/views/TopicsIndexPage.tsx");
 assert.match(
@@ -39,7 +40,7 @@ assert.match(
   /loading\s*&&\s*Object\.keys\(displayed\)\.length\s*===\s*0/,
   "Topics: هيكل فقط بلا موضوعات معروضة",
 );
-assert.match(topics, /soft-card soft-card--on-light/, "Topics: روابط soft-card");
+assert.doesNotMatch(topics, /\bsoft-card\b/, "Topics بلا soft-card مباشر");
 
 const paths = read("src/views/learning/LearningPathsPage.tsx");
 assert.match(
@@ -52,7 +53,7 @@ assert.doesNotMatch(
   /\.catch\(\(\)\s*=>\s*\{\s*setPaths\(\[\]\)/,
   "LearningPaths: لا تفرّغ المسارات عند فشل إعادة الجلب",
 );
-assert.match(paths, /soft-card soft-card--on-light/, "LearningPaths: بطاقات soft-card");
+assert.doesNotMatch(paths, /\bsoft-card\b/, "LearningPaths بلا soft-card مباشر");
 
 const pathDetail = read("src/views/learning/LearningPathDetailPage.tsx");
 assert.match(
@@ -67,7 +68,8 @@ assert.match(
   /loading\s*&&\s*teachers\.length\s*===\s*0/,
   "TeachersIndex: هيكل فقط بلا مشايخ سابقة",
 );
-assert.match(teachers, /soft-card soft-card--on-light/, "TeachersIndex: بطاقات soft-card");
+assert.match(teachers, /tch-card/, "TeachersIndex: بطاقات المشايخ");
+assert.doesNotMatch(teachers, /\bsoft-card\b/, "TeachersIndex بلا soft-card مباشر");
 
 const teacherDetail = read("src/pages/lessons/TeacherDetailPage.tsx");
 assert.match(

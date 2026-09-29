@@ -4,6 +4,7 @@
  * بلا استماع ولا تكبير/تصغير خط (PR-1 إعادة التصميم).
  */
 import type { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   title: string;
@@ -20,7 +21,7 @@ export function ProphetStoryReaderHeader({ title, onBack, actions }: Props) {
       data-testid="prophet-reader-header"
       data-has-actions={actions ? "1" : "0"}
     >
-      <button
+      <Button
         type="button"
         className="prophet-reader-header__back mj-pressable"
         onClick={onBack}
@@ -28,7 +29,7 @@ export function ProphetStoryReaderHeader({ title, onBack, actions }: Props) {
         data-testid="prophet-reader-back"
       >
         رجوع
-      </button>
+      </Button>
       <h1 className="prophet-reader-header__title">{title}</h1>
       {actions ? <div className="prophet-reader-header__actions">{actions}</div> : null}
     </header>

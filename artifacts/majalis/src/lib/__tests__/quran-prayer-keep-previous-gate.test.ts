@@ -17,7 +17,8 @@ assert.match(
   "RevelationOrder: هيكل فقط بلا سور سابقة",
 );
 assert.match(revelation, /aria-busy=\{loading\}/, "RevelationOrder: aria-busy");
-assert.match(revelation, /soft-card soft-card--on-light/, "RevelationOrder: soft-card");
+assert.match(revelation, /revord-card/, "RevelationOrder: بطاقة ترتيب النزول");
+assert.doesNotMatch(revelation, /\bsoft-card\b/, "RevelationOrder بلا soft-card مباشر");
 
 const circles = read("src/pages/quran/ui/QuranCirclesView.tsx");
 assert.match(circles, /awaitingFilterResults/, "QuranCircles: تمييز مفتاح الفلتر");

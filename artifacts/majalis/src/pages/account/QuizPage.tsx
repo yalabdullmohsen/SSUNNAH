@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { DailyChallengeQuiz } from "@/components/quiz-game/DailyChallengeQuiz";
 import { IslamicQuizGame } from "@/components/quiz-game/IslamicQuizGame";
 import { ShareButtons } from "@/components/ContentActions";
@@ -43,9 +44,9 @@ export default function QuizPage() {
       {showDaily ? (
         <div className="qzg-root qzg-root--embedded">
           <div className="qzg-inner">
-            <button type="button" className="qzg-back-setup" onClick={() => setShowDaily(false)}>
+            <Button type="button" className="qzg-back-setup" onClick={() => setShowDaily(false)}>
               ← العودة لتحدي الأسئلة
-            </button>
+            </Button>
             <DailyChallengeQuiz />
           </div>
         </div>

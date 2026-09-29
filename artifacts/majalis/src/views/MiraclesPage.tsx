@@ -1,4 +1,5 @@
 import { Link, useLocation, useRoute } from "wouter";
+import { Button } from "@/components/ui/button";
 import { useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
@@ -330,7 +331,7 @@ function MiraclesListPage({
               const sourcesOpen = Boolean(openSources[item.id]);
 
               return (
-                <article key={item.id} className={`mk-card mk-card--${lane} soft-card soft-card--on-light`}>
+                <article key={item.id} className={`mk-card mk-card--${lane}  `}>
                   <Link
                     href={`/miracles/topic/${encodeURIComponent(item.slug)}`}
                     className="mk-card__hit mj-pressable"
@@ -375,7 +376,7 @@ function MiraclesListPage({
 
                   {shortSrc ? (
                     <div className="mk-card__sources">
-                      <button
+                      <Button
                         type="button"
                         className="mk-sources-toggle"
                         aria-expanded={sourcesOpen}
@@ -386,7 +387,7 @@ function MiraclesListPage({
                         }}
                       >
                         {sourcesOpen ? "إخفاء المصادر" : "إظهار المصادر"}
-                      </button>
+                      </Button>
                       {sourcesOpen ? (
                         <p className="mk-card__source-line">{item.scholarly_source}</p>
                       ) : null}

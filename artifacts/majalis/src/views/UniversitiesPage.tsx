@@ -8,6 +8,14 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { FilterBottomSheet, FilterToggle } from "@/components/layout/FilterBottomSheet";
 import { usePersistedState } from "@/hooks/usePersistedState";
 import {
@@ -70,18 +78,27 @@ function FilterSelect({
   options: string[];
   placeholder?: string;
 }) {
+  const selectValue = value || "__all__";
   return (
-    <label className="flex flex-col gap-1 min-w-0">
-      <span className="up-filter-label">{label}</span>
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="up-filter-select"
+    <div className="flex flex-col gap-1 min-w-0">
+      <FieldLabel className="up-filter-label">{label}</FieldLabel>
+      <Select
+        value={selectValue}
+        onValueChange={(v) => onChange(v === "__all__" ? "" : v)}
       >
-        <option value="">{placeholder}</option>
-        {options.map((o) => <option key={o} value={o}>{o}</option>)}
-      </select>
-    </label>
+        <SelectTrigger className="up-filter-select min-h-11 text-base" aria-label={label}>
+          <SelectValue placeholder={placeholder} />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="__all__">{placeholder}</SelectItem>
+          {options.map((o) => (
+            <SelectItem key={o} value={o}>
+              {o}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
   );
 }
 

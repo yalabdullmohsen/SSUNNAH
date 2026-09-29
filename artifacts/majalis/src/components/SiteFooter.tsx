@@ -7,6 +7,7 @@ import {
   SITE_FOOTER_TAGLINE,
   type FooterGroup,
 } from "@/lib/site-footer-nav";
+import { Button } from "@/components/ui/button";
 /** دعوة المتجر: اربط Slot بعد تعيين رابط App Store الإنتاجي. */
 
 function FooterGroupBlock({
@@ -42,8 +43,9 @@ function FooterGroupBlock({
 
   return (
     <div className="site-footer-group site-footer-group--accordion">
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className="site-footer-accordion__btn"
         aria-expanded={open}
         aria-controls={panelId}
@@ -56,7 +58,7 @@ function FooterGroupBlock({
           aria-hidden="true"
           className={open ? "site-footer-accordion__chevron is-open" : "site-footer-accordion__chevron"}
         />
-      </button>
+      </Button>
       <nav
         id={panelId}
         className="site-footer-accordion__panel"

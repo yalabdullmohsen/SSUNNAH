@@ -91,8 +91,7 @@ export const SectionEntryCard = memo(function SectionEntryCard({
     icon ??
     (Icon ? <Icon size={20} strokeWidth={1.85} aria-hidden="true" /> : null);
 
-  const classNames = cn(
-    "hub-card sec-entry soft-card soft-card--on-light ss-hub-card mj-pressable cs-card",
+  const classNames = cn("hub-card sec-entry ss-hub-card mj-pressable cs-card",
     /* Card System V2 — تصنيف Navigation على بطاقة الدخول الموحّدة */
     "cs2-host",
     `hub-card--${variant}`,

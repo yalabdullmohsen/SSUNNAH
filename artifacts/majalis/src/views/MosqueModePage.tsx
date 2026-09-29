@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { BookMarked, Building2, Compass, Lightbulb, RotateCw, ScrollText, VolumeX } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Link } from "wouter";
@@ -73,14 +74,14 @@ export default function MosqueModePage() {
         <div className="mosque-mode__silence-alert">
           <VolumeX size={18} strokeWidth={1.8} aria-hidden="true" />
           <span>تذكّر إيقاف صوت هاتفك داخل المسجد</span>
-          <button
+          <Button
             type="button"
             className="mosque-mode__silence-dismiss"
             onClick={() => setSilenceAlerted(false)}
             aria-label="إغلاق التنبيه"
           >
             ✓
-          </button>
+          </Button>
         </div>
       )}
 

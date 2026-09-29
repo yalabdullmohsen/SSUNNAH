@@ -1,5 +1,5 @@
 /**
- * بوابة: بطاقات العبادة (تسبيح / ورد / مراتب) على soft-card بلا ui-card.
+ * بوابة: بطاقات العبادة بلا ui-card وبلا soft-card مباشر.
  * node --import tsx src/lib/__tests__/worship-cards-soft-gate.test.ts
  */
 import assert from "node:assert/strict";
@@ -19,8 +19,7 @@ for (const rel of files) {
   assert.doesNotMatch(src, /\bui-card\b/, `${rel} بلا ui-card`);
   assert.doesNotMatch(src, /\bmj-card\b/, `${rel} بلا mj-card`);
   assert.doesNotMatch(src, /\bui-card-btn\b/, `${rel} بلا ui-card-btn`);
-  assert.match(src, /soft-card/, `${rel} يستخدم soft-card`);
-  assert.match(src, /soft-card--on-light/, `${rel} على سطح فاتح موحّد`);
+  assert.doesNotMatch(src, /\bsoft-card\b/, `${rel} بلا soft-card مباشر`);
 }
 
 console.log("worship-cards-soft-gate.test.ts: ok");

@@ -93,7 +93,7 @@ export function AudioPromptsSettingsCard() {
   }
 
   return (
-    <section className="soft-card soft-card--on-light audio-prompts-settings" aria-labelledby="audio-prompts-title">
+    <section className="audio-prompts-settings" aria-labelledby="audio-prompts-title">
       <header className="audio-prompts-settings__head">
         <Bell size={18} aria-hidden="true" />
         <div>

@@ -95,6 +95,7 @@
 | `docs/design/TOKEN_MIGRATION_MATRIX.md` | مصفوفة هجرة الطبقات → `--sf-*`/`--sf2-*` |
 | `docs/design/PAGE_CONTRACT_MATRIX.md` | عقد AppPage/PageHeader vs UtilityScreen |
 | `docs/design/UTILITYSCREEN_MIGRATION_MATRIX.md` | تقاعد UtilityScreen — 128→9 KEEP |
+| `docs/audit/SUNNAH_DEBT_REDUCTION_WAVE_2_REPORT.md` | Debt Reduction Wave 2 — soft-card consumers=0 · PARTIAL |
 | `docs/design/CARD_MIGRATION_STATUS.md` | حالة هجرة soft-cards → سلطة البطاقات |
 | `docs/design/DARK_MODE_BRIDGE_INVENTORY.md` | جرد جسور الليل (بدون حذف جماعي) |
 | `docs/audit/SUNNAH_REPOSITORY_CLOSURE_REPORT.md` | إغلاق المستودع موجة 1 — WEB_RELEASED_NATIVE_HOLD |

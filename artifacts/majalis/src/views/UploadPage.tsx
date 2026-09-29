@@ -2,6 +2,14 @@ import { useEffect, useState, useRef, type ChangeEvent, type DragEvent, type For
 import { AlertTriangle, CheckCircle2, FolderOpen, GraduationCap, Loader2, ScrollText, Upload, XCircle } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
 import { submitLesson } from "@/lib/user-submissions-service";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import "@/styles/pages/upload.css";
 
 type UploadState = "idle" | "uploading" | "success" | "error";
@@ -172,9 +180,17 @@ function LessonForm() {
 
       <div className="ulp-row2">
         <Field label="الموضوع *">
-          <select value={topic} onChange={(e) => setTopic(e.target.value)} className="ulp-inp">
-            {LESSON_TOPICS.map((t) => <option key={t} value={t}>{t}</option>)}
-          </select>
+          <FieldLabel className="sr-only">الموضوع</FieldLabel>
+          <Select value={topic} onValueChange={setTopic}>
+            <SelectTrigger className="ulp-inp min-h-11 text-base" aria-label="الموضوع">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {LESSON_TOPICS.map((t) => (
+                <SelectItem key={t} value={t}>{t}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </Field>
         <Field label="رابط المصدر (اختياري)">
           <input type="url" value={sourceUrl} onChange={(e) => setSourceUrl(e.target.value)} className="ulp-inp" aria-label="https://" placeholder="https://..." />
