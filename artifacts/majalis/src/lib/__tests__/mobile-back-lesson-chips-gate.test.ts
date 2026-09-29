@@ -31,8 +31,9 @@ assert.match(aliases, /--mj-chip-bg:/);
 assert.match(aliases, /--mj-chip-fg:/);
 assert.match(aliases, /--mj-chip-active-bg:/);
 assert.match(aliases, /--mj-chip-active-fg:/);
-assert.match(aliases, /html\.dark[\s\S]*?--mj-chip-active-fg:\s*#06231a/);
-assert.match(aliases, /html\.dark[\s\S]*?--mj-chip-fg:\s*#f3f7f5/);
+assert.match(aliases, /html\.dark[\s\S]*?--mj-chip-active-fg:\s*#06231a/i);
+/* PR2 absorb: warm night ink contract (#EDE8DF) بدل cool #f3f7f5 */
+assert.match(aliases, /html\.dark[\s\S]*?--mj-chip-fg:\s*#EDE8DF/i);
 
 const lessonsCss = read("src/styles/pages/lessons.css");
 assert.match(lessonsCss, /--mj-chip-active-fg/);
