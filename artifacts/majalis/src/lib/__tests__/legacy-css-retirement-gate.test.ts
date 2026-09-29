@@ -56,15 +56,22 @@ assert.doesNotMatch(appGraph, /HomepageAdBar|homepage-ad-bar\.css|config\/homepa
 assert.match(read("src/main.tsx"), /brand-v4\.css/);
 assert.match(read("src/main.tsx"), /final-release\.css/);
 
-/* *-legacy.css still have at least one consumer — not SAFE_REMOVE by name */
+/* Remaining *-legacy.css still present with consumers — not SAFE_REMOVE by name */
 for (const name of [
   "home-legacy.css",
   "lessons-legacy.css",
-  "search-legacy.css",
   "misc-page-legacy.css",
 ] as const) {
   const path = resolve(majalisRoot, "src/styles/pages", name);
   assert.ok(existsSync(path), `legacy page CSS present: ${name}`);
+}
+
+/* PR6 SAFE_REMOVE — proven zero product import / zero TSX class usage */
+for (const rel of [
+  "src/styles/pages/search-legacy.css",
+  "src/styles/pages/section-hub.css",
+] as const) {
+  assert.equal(existsSync(resolve(majalisRoot, rel)), false, `PR6 SAFE_REMOVE must stay gone: ${rel}`);
 }
 
 function collectTsSources(dir: string, acc: string[] = []): string[] {
