@@ -141,7 +141,21 @@ Product TSX soft-card **consumers = 0**. `styles/soft-cards.css` remains **KEEP*
 | Item | Status |
 |---|---|
 | `soft-cards.css` | **SAFE_REMOVE executed** (file deleted · main import gone) |
-| `pages/*-legacy.css` (4) | Still imported — **MIGRATION_CANDIDATE** (home/lessons/search/misc) |
+| `pages/*-legacy.css` (3) | home/lessons/misc still imported — **MIGRATION_CANDIDATE** |
+| `search-legacy.css` | **REMOVED (PR6)** — 0 product imports |
+| `section-hub.css` | **REMOVED (PR6)** — 0 imports · 0 TSX class usage |
 | `brand-v4*` / `m2030/*` / `final-release` | KEEP consumers > 0 |
 | Dark bridges | See `DARK_BRIDGE_REDUCTION_REPORT.md` — ACTIVE/COMPATIBILITY · no delete |
-| cssFiles ceiling | **359** (−1 from soft-cards) |
+| cssFiles ceiling | **357** (PR6 −2) |
+
+---
+
+## PR6 note (2026-09-29)
+
+| Item | Status |
+|---|---|
+| `search-legacy.css` | SAFE_REMOVE executed |
+| `section-hub.css` | SAFE_REMOVE executed |
+| Page adapters | Detail/List/… = ScreenShell · SectionTemplatePage = TopicPage |
+| UtilityScreen | KEEP = 3 |
+| Report | `docs/design/PR6_PAGE_LEGACY_CLOSURE_REPORT.md` |
