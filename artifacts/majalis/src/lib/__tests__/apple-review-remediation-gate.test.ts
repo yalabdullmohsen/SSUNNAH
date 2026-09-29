@@ -26,23 +26,28 @@ assert.equal(u.profile.role, "user");
 assert.equal(u.is_owner, false);
 assert.equal(u.profile.is_admin, false);
 
-console.log("=== AuthProvider + LoginView wire ===");
+console.log("=== AuthProvider credential path (no review-mode UI) ===");
 const auth = read("src/components/AuthProvider.tsx");
 const login = read("src/pages/account/ui/LoginView.tsx");
 assert.match(auth, /matchesAppStoreReviewCredentials/);
 assert.match(auth, /persistAppStoreReviewSession/);
 assert.match(auth, /clearAppStoreReviewSession/);
 assert.match(auth, /hasAppStoreReviewSession/);
-assert.match(login, /app-store-review-login/);
-assert.match(login, /وضع مراجعة App Store/);
-assert.match(login, /enterAppStoreReviewMode|APP_STORE_REVIEW_EMAIL/);
+/* واجهة «وضع مراجعة App Store» أُزيلت — الدخول عبر البريد/كلمة المرور فقط */
+assert.doesNotMatch(login, /app-store-review-login/);
+assert.doesNotMatch(login, /وضع مراجعة App Store/);
+assert.doesNotMatch(login, /enterAppStoreReviewMode/);
+assert.doesNotMatch(login, /APP_STORE_REVIEW_EMAIL|app-store-review-auth/);
+assert.match(login, /المتابعة كزائر/);
+assert.match(login, /نسيت كلمة المرور/);
 
 console.log("=== Review notes + ASC paste ===");
 const notes = read("store/app-store/review-notes.md");
 const paste = read("store/app-store/ASC_REVIEW_NOTES_PASTE.txt");
 assert.match(notes, /apple\.review@ssunnah\.com/);
 assert.match(notes, /SunnahReview-2026!/);
-assert.match(notes, /وضع مراجعة App Store/);
+assert.doesNotMatch(notes, /وضع مراجعة App Store/);
+assert.doesNotMatch(paste, /وضع مراجعة App Store/);
 assert.match(notes, /Guideline 2\.5\.4|Background Audio/i);
 assert.match(notes, /\/mushaf/);
 assert.match(notes, /Now Playing|Control Center/i);
