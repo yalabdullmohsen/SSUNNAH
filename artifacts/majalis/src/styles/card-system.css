@@ -25,7 +25,7 @@
 .rcc,
 .rsc,
 .sc2,
-.qzg-section-card.soft-card,
+.qzg-section-card,
 .ilm-card,
 .inst-card,
 .tarikh-card,
@@ -76,7 +76,7 @@
 .gl-term.gl-term--open,
 .kx-detail-surface .rsc,
 .rsc[data-rsc-accordion="1"][open],
-.rsc.soft-card {
+.rsc {
   overflow: visible !important;
 }
 

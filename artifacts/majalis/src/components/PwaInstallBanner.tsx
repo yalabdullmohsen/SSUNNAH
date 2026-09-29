@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 type BeforeInstallPromptEvent = Event & {
   prompt: () => Promise<void>;
@@ -67,12 +68,12 @@ export function PwaInstallBanner() {
         <strong>ثبّت سُنّة</strong>
         <span>تجربة أسرع كتطبيق على جهازك</span>
       </div>
-      <button type="button" className="pwa-soft-banner__btn" onClick={() => void install()}>
+      <Button type="button" variant="primary" className="pwa-soft-banner__btn" onClick={() => void install()}>
         تثبيت
-      </button>
-      <button type="button" className="pwa-soft-banner__dismiss" onClick={dismiss} aria-label="إغلاق">
+      </Button>
+      <Button type="button" variant="ghost" className="pwa-soft-banner__dismiss" onClick={dismiss} aria-label="إغلاق">
         ×
-      </button>
+      </Button>
     </div>
   );
 }

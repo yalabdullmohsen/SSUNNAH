@@ -173,7 +173,7 @@ function NotifRow({
         <Trash2 size={18} strokeWidth={2} aria-hidden="true" />
       </IconButton>
       <div
-        className={`nh-row${rec.isRead ? " nh-row--read" : ""}`}
+        className={`nh-row${rec.isRead ? "nh-row--read" : ""}`}
         style={
           dragX !== 0 || dragging
             ? { transform: `translateX(${dragX}px)`, transition: dragging ? "none" : undefined }
@@ -188,7 +188,7 @@ function NotifRow({
         }}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onRead()}
+        onKeyDown={(e) => (e.key === "Enter" || e.key === "") && onRead()}
       >
         <div className="nh-row__icon" aria-hidden="true">
           <Bell size={16} strokeWidth={1.8} />
@@ -268,7 +268,7 @@ function SectionDetailPanel({
   };
 
   return (
-    <div className="soft-card soft-card--on-light notif-card nsp-detail" dir="rtl">
+    <div className="notif-card nsp-detail" dir="rtl">
       <div className="nsp-detail__head">
         <Button type="button" variant="ghost" size="small" className="nh-btn" onClick={onClose}>
           رجوع
@@ -332,7 +332,7 @@ function SectionDetailPanel({
                 type="button"
                 variant="ghost"
                 size="small"
-                className={`ads-chip${sectionPrefs.dailyCount === n ? " is-active" : ""}`}
+                className={`ads-chip${sectionPrefs.dailyCount === n ? "is-active" : ""}`}
                 disabled={!canToggle || !sectionPrefs.enabled}
                 onClick={() => onPatchSection({ dailyCount: n })}
               >
@@ -428,7 +428,7 @@ function SectionDetailPanel({
                 type="button"
                 variant="ghost"
                 size="small"
-                className={`ads-chip${active ? " is-active" : ""}`}
+                className={`ads-chip${active ? "is-active" : ""}`}
                 disabled={!canToggle || !sectionPrefs.enabled}
                 onClick={() => toggleWeekday(day)}
               >
@@ -584,7 +584,7 @@ export default function NotificationSettingsPage() {
         <SunnahChannelsPanel />
 
         {!isNative && (
-          <section className="soft-card soft-card--on-light notif-card" aria-label="إشعارات الدفع عبر الويب">
+          <section className="notif-card" aria-label="إشعارات الدفع عبر الويب">
             <h2 className="notif-card__title">إشعارات الدفع (PWA)</h2>
             <p className="notif-row__sub" style={{ marginBottom: "0.75rem" }}>
               تُرسل عبر متصفحك عند تثبيت التطبيق أو السماح بالإشعارات.
@@ -594,7 +594,7 @@ export default function NotificationSettingsPage() {
         )}
 
         {isNative && (
-          <section className="soft-card soft-card--on-light notif-card" aria-label="إشعارات التطبيق">
+          <section className="notif-card" aria-label="إشعارات التطبيق">
             <h2 className="notif-card__title">إشعارات التطبيق</h2>
             <p className="notif-row__sub">
               على iOS تُستخدم الإشعارات المحلية لأوقات الصلاة وورد القرآن والتذكيرات اليومية.
@@ -622,7 +622,7 @@ export default function NotificationSettingsPage() {
           </div>
         )}
 
-        <div className="soft-card soft-card--on-light notif-card">
+        <div className="notif-card">
           <SettingsToggleRow
             id="notif-enabled"
             title="تفعيل الإشعارات"
@@ -656,7 +656,7 @@ export default function NotificationSettingsPage() {
             onDhikrPhrase={(v) => update({ dhikrPhraseReminder: v })}
           />
         ) : (
-          <div className="soft-card soft-card--on-light notif-card">
+          <div className="notif-card">
             <SettingsList
               title="الإشعارات"
               rows={NOTIF_SECTIONS.map((section) => {
@@ -668,7 +668,7 @@ export default function NotificationSettingsPage() {
                   icon: SECTION_ICONS[section.id],
                   value: (
                     <span className="nsp-row-status">
-                      <span className={`nsp-dot${sectionPrefs.enabled ? " is-on" : ""}`} aria-hidden />
+                      <span className={`nsp-dot${sectionPrefs.enabled ? "is-on" : ""}`} aria-hidden />
                       {formatSectionStatus(sectionPrefs)}
                     </span>
                   ),
@@ -681,7 +681,7 @@ export default function NotificationSettingsPage() {
         )}
 
         {isGranted && (
-          <div className="soft-card soft-card--on-light notif-card">
+          <div className="notif-card">
             <Button type="button" variant="outline" size="small" className="notif-test-btn" onClick={() => void handleTestTrigger()}>
               إرسال إشعار اختباري
             </Button>
@@ -694,7 +694,7 @@ export default function NotificationSettingsPage() {
         )}
 
         {showDevTools && (
-          <div className="soft-card soft-card--on-light notif-card" aria-label="أدوات مطوّر الإشعارات">
+          <div className="notif-card" aria-label="أدوات مطوّر الإشعارات">
             <h3 className="notif-card__title">تشخيص الإشعارات (مطوّر)</h3>
             <p className="notif-row__sub" style={{ marginBottom: "0.75rem" }}>
               منصة: {isNative ? "Capacitor أصلي" : "ويب"} · الإذن: {permission}
@@ -765,7 +765,7 @@ export default function NotificationSettingsPage() {
               type="button"
               variant="ghost"
               size="small"
-              className={`nh-tab${histTab === "inbox" ? " nh-tab--active" : ""}`}
+              className={`nh-tab${histTab === "inbox" ? "nh-tab--active" : ""}`}
               onClick={() => setHistTab("inbox")}
               aria-selected={histTab === "inbox"}
             >
@@ -776,7 +776,7 @@ export default function NotificationSettingsPage() {
               type="button"
               variant="ghost"
               size="small"
-              className={`nh-tab${histTab === "archived" ? " nh-tab--active" : ""}`}
+              className={`nh-tab${histTab === "archived" ? "nh-tab--active" : ""}`}
               onClick={() => setHistTab("archived")}
               aria-selected={histTab === "archived"}
             >

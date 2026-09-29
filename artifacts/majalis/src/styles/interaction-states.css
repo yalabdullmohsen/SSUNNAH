@@ -106,9 +106,8 @@ html.dark,
   --focus-ring: var(--state-focus-ring);
   --focus-color: #c9a86c;
 
-  /* فصل soft عن selected — soft للزخرفة فقط */
+  /* فصل soft عن selected — soft للزخرفة فقط؛ --mj-brand-soft من theme-aliases */
   --primary-soft: color-mix(in srgb, #5fbf98 10%, transparent);
-  --mj-brand-soft: color-mix(in srgb, #5fbf98 10%, #1b2421);
   --color-primary-soft: var(--mj-brand-soft);
 }
 

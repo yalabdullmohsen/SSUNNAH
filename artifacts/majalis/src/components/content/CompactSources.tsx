@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/compact-sources.css";
 
 export type CompactSourceItem = {
@@ -50,14 +51,14 @@ function CompactSourceRow({ item }: { item: CompactSourceItem }) {
     <li className="compact-sources__item">
       <span className="compact-sources__text">{open && expand ? full : item.summary}</span>
       {expand ? (
-        <button
+        <Button
           type="button"
           className="compact-sources__more"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
           {open ? "إخفاء التفاصيل" : "عرض التفاصيل"}
-        </button>
+        </Button>
       ) : null}
     </li>
   );

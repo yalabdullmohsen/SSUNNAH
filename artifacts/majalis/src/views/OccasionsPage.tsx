@@ -149,7 +149,7 @@ export default function OccasionsPage() {
       ) : (
         <div className="occasions-list">
           {filtered.map((occasion) => (
-            <article key={occasion.id} className="occasion-detail soft-card soft-card--on-light">
+            <article key={occasion.id} className="occasion-detail">
               <div className="occasion-detail__head">
                 <h2>
                   {occasion.name}

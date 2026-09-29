@@ -69,13 +69,7 @@
   display: none;
 }
 
-/* —— انتقالات مكانية بهدوء Apple (استمرارية · بلا شاشة جديدة) —— */
-html {
-  --mj-nav-sign: -1; /* RTL أولاً: الدفع يدخل من البداية */
-}
-html[dir="ltr"] {
-  --mj-nav-sign: 1;
-}
+/* —— انتقالات مكانية بهدوء Apple — --mj-nav-sign عبر theme-aliases —— */
 
 @keyframes mj-route-push-in {
   from {

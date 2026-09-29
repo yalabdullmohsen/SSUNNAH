@@ -10,7 +10,8 @@ export type AppCardProps = HTMLAttributes<HTMLElement> & {
 };
 
 /**
- * بطاقة تطبيق موحّدة — soft-card على سطح فاتح، حواف 24px، ظل خفيف.
+ * بطاقة تطبيق موحّدة — سطح عبر cs-card / ss-app-card (سلطة البطاقات).
+ * الطبقة القديمة للأسطح متقاعدة؛ لا class legacy على الجذر.
  */
 export function AppCard({
   as: Tag = "article",
@@ -25,8 +26,8 @@ export function AppCard({
       data-app-card="1"
       data-cs-card="1"
       className={cn(
-        "cs-card soft-card soft-card--on-light ss-app-card",
-        tone === "accent" && "soft-card--accent cs-action",
+        "cs-card ss-app-card",
+        tone === "accent" && "ss-app-card--accent cs-action",
         tone === "muted" && "ss-app-card--muted",
         padding === "sm" && "ss-app-card--pad-sm",
         padding === "none" && "ss-app-card--pad-none",

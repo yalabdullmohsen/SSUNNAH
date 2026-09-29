@@ -1,6 +1,6 @@
 /**
  * Surface primitives — طبقة رفيعة فوق AppCard (سلطة البطاقات).
- * لا تضف hex / shadow / radius خامًا هنا؛ اعتمد tokens عبر AppCard / soft-card.
+ * لا تضف hex / shadow / radius خامًا هنا؛ اعتمد tokens عبر AppCard.
  */
 import type { HTMLAttributes, ReactNode } from "react";
 import { Link } from "wouter";
@@ -35,7 +35,7 @@ export function ElevatedSurface({ className, children, ...rest }: SurfaceBase) {
       tone="default"
       padding="md"
       data-ss-surface="elevated"
-      className={cn("ss-surface ss-surface--elevated soft-card soft-card--on-light", className)}
+      className={cn("ss-surface ss-surface--elevated", className)}
       {...rest}
     >
       {children}

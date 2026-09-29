@@ -59,8 +59,8 @@ function HistoryCard({
   const dateLabel = [item.hijriDate, item.gregorianDate].filter(Boolean).join(" / ");
   return (
     <article
-      className={`tarikh-card soft-card soft-card--on-light${item.featured ? " tarikh-card--featured" : ""}${
-        isSeerahPortal ? " tarikh-card--portal" : ""
+      className={`tarikh-card  ${item.featured ? "tarikh-card--featured" : ""}${
+        isSeerahPortal ? "tarikh-card--portal" : ""
       }`}
     >
       <Link href={detailHref(item)} className="tarikh-card__hit" aria-label={item.title}>
@@ -110,7 +110,7 @@ function EraPanel({
   const panelId = `tarikh-era-${meta.id}`;
   return (
     <article
-      className={`tarikh-era${open ? " is-open" : ""}`}
+      className={`tarikh-era${open ? "is-open" : ""}`}
       style={{ ["--tarikh-accent" as string]: meta.accent }}
       data-era={meta.id}
       data-stage={stageIndex}
@@ -283,7 +283,7 @@ export default function TarikhIslamiPage() {
         <nav className="tarikh-rail" aria-label="مسار العصور الإسلامية">
           <Button
             type="button"
-            className={`tarikh-rail__chip${filter === "all" ? " is-active" : ""}`}
+            className={`tarikh-rail__chip${filter === "all" ? "is-active" : ""}`}
             onClick={showFullPath} variant="ghost">
             <span className="tarikh-rail__label">المسار كاملاً</span>
             <span className="tarikh-rail__period">كل المراحل</span>
@@ -295,7 +295,7 @@ export default function TarikhIslamiPage() {
                 key={id}
                 id={`tarikh-rail-${id}`}
                 type="button"
-                className={`tarikh-rail__chip${filter === id ? " is-active" : ""}`}
+                className={`tarikh-rail__chip${filter === id ? "is-active" : ""}`}
                 style={{ ["--tarikh-accent" as string]: meta.accent }}
                 onClick={() => focusEra(id)} variant="ghost">
                 <span className="tarikh-rail__n">{i + 1}</span>

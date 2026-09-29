@@ -81,7 +81,7 @@ export function SunnahChannelsPanel() {
   };
 
   return (
-    <section className="soft-card soft-card--on-light notif-card" aria-label="قنوات إشعارات سُنّة">
+    <section className="notif-card" aria-label="قنوات إشعارات سُنّة">
       <h2 className="notif-card__title">قنوات سُنّة</h2>
       <p className="notif-row__sub" style={{ marginBottom: "0.75rem" }}>
         إشعارات اختيارية ومفيدة وقابلة للتحكم. تنبيهات الصلاة مستقلة ولا تُوقف مع المحتوى.
@@ -125,7 +125,7 @@ export function SunnahChannelsPanel() {
               </span>
               {policy.supportedCadences.length > 1 && ch.enabled ? (
                 <label className="notif-row__sub" style={{ display: "block", marginTop: 6 }}>
-                  التكرار:{" "}
+                  التكرار:{""}
                   <select
                     value={ch.cadence}
                     onChange={(e) =>

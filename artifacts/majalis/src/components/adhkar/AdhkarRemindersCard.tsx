@@ -53,7 +53,7 @@ export function AdhkarRemindersCard() {
   }, []);
 
   return (
-    <section className="soft-card soft-card--on-light" aria-labelledby="adhkar-reminders-title">
+    <section className="" aria-labelledby="adhkar-reminders-title">
       <h2 id="adhkar-reminders-title" className="text-base font-semibold mb-1">
         تذكيرات الأذكار
       </h2>

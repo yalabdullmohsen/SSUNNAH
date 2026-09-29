@@ -42,8 +42,9 @@
   /* تظليل آية محددة — خلف النص بشفافية عالية */
   --mm-ayah-select: #e8d4b0;
   --mm-ayah-play: #f0e0c8;
-  --mm-ui-accent: #135034;
-  --mm-ui-accent-deep: #0e3d27;
+  /* Chrome UI فقط — لا يمس حبر/ورق النص القرآني */
+  --mm-ui-accent: var(--mj-brand, #135034);
+  --mm-ui-accent-deep: var(--mj-brand-deep, #0e3d27);
   /* إطار زخرفي موحّد (سورة + فاصلة آية) — هوية المجلس: أخضر + ذهب المصحف */
   --mm-ornament-ring: color-mix(in srgb, var(--mm-ui-accent) 46%, var(--mm-gold) 54%);
   --mm-ornament-ring-outer: color-mix(in srgb, var(--mm-gold-deep) 62%, var(--mm-ui-accent) 38%);
@@ -173,8 +174,8 @@ html[data-mushaf-appearance="night"] .mm-viewport,
   --mm-banner-name-bg: #152028;
   --mm-ayah-select: rgba(45, 38, 30, 0.72);
   --mm-ayah-play: rgba(45, 38, 30, 0.55);
-  --mm-ui-accent: #5ec49a;
-  --mm-ui-accent-deep: #3da87a;
+  --mm-ui-accent: var(--mj-brand, #5ec49a);
+  --mm-ui-accent-deep: var(--mj-brand-deep, #3da87a);
   --mm-ornament-ring: color-mix(in srgb, var(--mm-ui-accent) 42%, var(--mm-gold) 58%);
   --mm-ornament-ring-outer: color-mix(in srgb, var(--mm-gold-soft) 55%, var(--mm-ui-accent) 45%);
   --mm-ornament-inset: color-mix(in srgb, var(--mm-gold) 50%, var(--mm-ui-accent) 25%);

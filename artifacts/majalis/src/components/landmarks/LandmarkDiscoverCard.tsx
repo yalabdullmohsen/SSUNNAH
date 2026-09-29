@@ -17,7 +17,7 @@ export function LandmarkDiscoverCard({ landmark, variant = "grid" }: Props) {
   return (
     <Link
       href={href}
-      className={`ilm-card soft-card soft-card--on-light mj-pressable${variant === "featured" ? " ilm-card--featured" : ""}`}
+      className={`ilm-card   mj-pressable${variant === "featured" ? "ilm-card--featured" : ""}`}
       aria-label={`تفاصيل ${landmark.name}`}
       data-landmark-id={landmark.id}
     >

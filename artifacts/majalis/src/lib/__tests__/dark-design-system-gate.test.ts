@@ -42,8 +42,9 @@ assert.match(provider, /Promise\.all\(\[\s*import\("@\/styles\/dark-mode-surface
 
 assert.match(ds, /--soft-card-bg:\s*var\(--surface-elevated\)/);
 
-const soft = read("src/styles/soft-cards.css");
-assert.match(soft, /background-color:\s*var\(--soft-card-bg/);
+const aliases = read("src/styles/theme-aliases.css");
+assert.match(aliases, /--soft-card-bg:/);
+assert.match(read("src/styles/ssunnah-ux-polish.css"), /\.ss-app-card/);
 
 const html = read("index.html");
 assert.match(html, /mj-dark-elevated-boot/);

@@ -13,13 +13,7 @@
   --text-label: var(--sf-type-metadata, var(--font-sm, 1rem));
   --text-caption: var(--sf-type-caption, var(--font-xs, 0.875rem));
   --text-nav: var(--sf-type-caption, var(--font-xs, 0.875rem));
-  --mj-fs-display: var(--text-display);
-  --mj-fs-h1: var(--text-h1);
-  --mj-fs-h2: var(--text-h2);
-  --mj-fs-body: var(--text-body);
-  --mj-fs-small: var(--text-label);
-  --mj-fs-tiny: var(--text-caption);
-  --mj-fs-btn: var(--text-label);
+  /* --mj-fs-* absorbed into theme-aliases.css (TOKEN ABSORB) */
   --ds-text-2xs: var(--text-caption);
   --ds-text-xs: var(--text-caption);
   --ds-text-sm: var(--text-label);

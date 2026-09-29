@@ -1,5 +1,5 @@
 /**
- * بوابة: قصص السور / الأربعين / بطاقة التمييز / زر الميراث على soft-card / ActionButton.
+ * بوابة: قصص السور / الأربعين / التمييز — بلا soft-card مباشر؛ الميراث ActionButton.
  * node --import tsx src/lib/__tests__/stories-mawarith-soft-gate.test.ts
  */
 import assert from "node:assert/strict";
@@ -19,8 +19,7 @@ const softFiles = [
 for (const rel of softFiles) {
   const src = readFileSync(resolve(root, rel), "utf8");
   assert.doesNotMatch(src, /(?<![\w-])ui-card(?!-btn)(?![\w-])/, `${rel} بلا ui-card`);
-  assert.match(src, /soft-card/, `${rel} يستخدم soft-card`);
-  assert.match(src, /soft-card--on-light/, `${rel} على سطح فاتح موحّد`);
+  assert.doesNotMatch(src, /\bsoft-card\b/, `${rel} بلا soft-card مباشر`);
 }
 
 const mawarith = readFileSync(resolve(root, "src/pages/fiqh/ui/MawarithCalculatorView.tsx"), "utf8");

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
@@ -61,7 +62,7 @@ export function SettingsList({ title, rows, className }: SettingsListProps) {
           }
 
           return (
-            <button
+            <Button
               key={row.id}
               type="button"
               className="mur-settings-row"
@@ -70,7 +71,7 @@ export function SettingsList({ title, rows, className }: SettingsListProps) {
               data-testid={row.testId}
             >
               {body}
-            </button>
+            </Button>
           );
         })}
       </div>

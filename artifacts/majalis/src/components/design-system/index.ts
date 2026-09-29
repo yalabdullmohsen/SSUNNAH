@@ -76,6 +76,7 @@ export { PrimaryButton, SecondaryButton, IconButton } from "./Buttons";
 export { SettingsList, type SettingsListRow } from "./SettingsList";
 export {
   FormLabel,
+  FieldLabel,
   FieldDescription,
   FieldError,
   FormActions,
@@ -109,7 +110,7 @@ export {
 
 export { SectionCard } from "@/components/sections/SectionCard";
 export { FeaturedSectionCard } from "@/components/sections/FeaturedSectionCard";
-/** بطاقة شبكة الأقسام — نفس نظام الحواف/الألوان عبر soft-card */
+/** بطاقة شبكة الأقسام — سطح عبر سلطة البطاقات (AppCard / cs-card) */
 export { SectionEntryCard, HubCard as SectionHubCard, HubCard as NavigationCard } from "@/components/ui/HubCard";
 export type { SectionEntryCardProps, SectionEntryVariant } from "@/components/ui/HubCard";
 export { UnifiedLessonCard as LessonCard } from "@/components/lessons/UnifiedLessonCard";

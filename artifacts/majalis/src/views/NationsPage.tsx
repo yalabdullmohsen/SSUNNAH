@@ -15,6 +15,15 @@ import {
   type PunishmentType,
 } from "@/lib/nations-seed";
 import { PunishmentIcon } from "@/components/nations/PunishmentIcon";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import "@/styles/nations.css";
 type Stance = "all" | "believed" | "rejected";
 type View = "grid" | "timeline";
@@ -103,57 +112,72 @@ export default function NationsPage() {
 
       {view === "grid" && (
         <div className="nations-filters">
-          <select
-            className="nations-select"
-            value={prophet}
-            onChange={(e) => setProphet(e.target.value)}
-            aria-label="تصفية حسب النبي"
-          >
-            <option value="الكل">كل الأنبياء</option>
-            {options.prophets.map((p) => (
-              <option key={p} value={p}>{p}</option>
-            ))}
-          </select>
+          <div className="nations-filter-field">
+            <FieldLabel>النبي</FieldLabel>
+            <Select value={prophet} onValueChange={setProphet}>
+              <SelectTrigger className="nations-select min-h-11 text-base" aria-label="تصفية حسب النبي">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="الكل">كل الأنبياء</SelectItem>
+                {options.prophets.map((p) => (
+                  <SelectItem key={p} value={p}>{p}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
-          <select
-            className="nations-select"
-            value={punishment}
-            onChange={(e) => setPunishment(e.target.value as PunishmentType | "الكل")}
-            aria-label="تصفية حسب نوع العقوبة"
-          >
-            <option value="الكل">كل أنواع العقوبة</option>
-            {options.punishments.map((p) => (
-              <option key={p} value={p}>{p}</option>
-            ))}
-          </select>
+          <div className="nations-filter-field">
+            <FieldLabel>نوع العقوبة</FieldLabel>
+            <Select
+              value={punishment}
+              onValueChange={(v) => setPunishment(v as PunishmentType | "الكل")}
+            >
+              <SelectTrigger className="nations-select min-h-11 text-base" aria-label="تصفية حسب نوع العقوبة">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="الكل">كل أنواع العقوبة</SelectItem>
+                {options.punishments.map((p) => (
+                  <SelectItem key={p} value={p}>{p}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
-          <select
-            className="nations-select"
-            value={stance}
-            onChange={(e) => setStance(e.target.value as Stance)}
-            aria-label="تصفية حسب موقفهم من الدعوة"
-          >
-            <option value="all">آمنوا وكذّبوا</option>
-            <option value="believed">من آمن منهم</option>
-            <option value="rejected">من كذّب</option>
-          </select>
+          <div className="nations-filter-field">
+            <FieldLabel>موقفهم من الدعوة</FieldLabel>
+            <Select value={stance} onValueChange={(v) => setStance(v as Stance)}>
+              <SelectTrigger className="nations-select min-h-11 text-base" aria-label="تصفية حسب موقفهم من الدعوة">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">آمنوا وكذّبوا</SelectItem>
+                <SelectItem value="believed">من آمن منهم</SelectItem>
+                <SelectItem value="rejected">من كذّب</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
 
-          <select
-            className="nations-select"
-            value={tag}
-            onChange={(e) => setTag(e.target.value)}
-            aria-label="تصفية حسب الوسم"
-          >
-            <option value="الكل">كل التصنيفات</option>
-            {options.tags.map((t) => (
-              <option key={t} value={t}>{t}</option>
-            ))}
-          </select>
+          <div className="nations-filter-field">
+            <FieldLabel>التصنيف</FieldLabel>
+            <Select value={tag} onValueChange={setTag}>
+              <SelectTrigger className="nations-select min-h-11 text-base" aria-label="تصفية حسب الوسم">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="الكل">كل التصنيفات</SelectItem>
+                {options.tags.map((t) => (
+                  <SelectItem key={t} value={t}>{t}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
           {hasFilters && (
-            <button type="button" className="nations-reset" onClick={resetFilters}>
+            <Button type="button" variant="outline" className="nations-reset" onClick={resetFilters}>
               إعادة الضبط
-            </button>
+            </Button>
           )}
         </div>
       )}

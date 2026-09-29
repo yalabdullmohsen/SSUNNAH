@@ -11,7 +11,7 @@
 
 | Shell / state | Files | Status |
 |---|---:|---|
-| `UtilityScreen` product consumers | **9** (was 128) | **KEEP** settings/tools only |
+| `UtilityScreen` product consumers | **5** (was 128→9→5) | **KEEP** settings/tools only (≤5) |
 | `DetailScreen` mark shells | many (migrated from Utility) | Interim content shell |
 | `AppPage` / `SectionTemplatePage` | growing | Preferred for hubs/discover |
 | Feedback V2 | Authority present | Use on migrated pages |
@@ -26,7 +26,7 @@
 
 ## Gate
 
-`no-new-utility-screen-gate.test.ts` — ceiling **9** product consumers.
+`no-new-utility-screen-gate.test.ts` — ceiling **5** product consumers.
 
 ## Explicit non-claim
 

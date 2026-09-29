@@ -70,7 +70,7 @@ export function HighlightedContentCard({
   imageCardCategory,
   imageCardSource,
   trackProgress = true,
-  className = "",
+  className="",
   adminEditType,
   adminEditData,
 }: HighlightedContentCardProps) {
@@ -120,7 +120,7 @@ export function HighlightedContentCard({
     <article
       ref={ref}
       id={`content-${id}`}
-      className={`soft-card soft-card--on-light highlighted-content-card${open ? " highlighted-content-card--open" : ""}${readingActive ? " highlighted-content-card--reading" : ""} ${className}`.trim()}
+      className={` highlighted-content-card${open ? "highlighted-content-card--open" : ""}${readingActive ? "highlighted-content-card--reading" : ""} ${className}`.trim()}
       data-content-id={id}
     >
       {collapsible && headerAsButton ? (
@@ -146,7 +146,7 @@ export function HighlightedContentCard({
             href={typeof window !== "undefined" ? window.location.pathname : undefined}
           >
             <div
-              className={`highlighted-card__highlight${readingActive ? " highlighted-card__highlight--quiet" : ""}`}
+              className={`highlighted-card__highlight${readingActive ? "highlighted-card__highlight--quiet" : ""}`}
             >
               {collapsible && headerAsButton ? (
                 secondaryText && <ReadingText className="highlighted-card__answer">{secondaryText}</ReadingText>

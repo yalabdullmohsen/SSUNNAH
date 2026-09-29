@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import "@/styles/sunnah-identity-forms-filters.css";
 
 export type FilterChipProps = {
@@ -24,8 +25,10 @@ export function FilterChip({
 }: FilterChipProps) {
   if (soon) return null;
   return (
-    <button
+    <Button
       type="button"
+      variant={active ? "secondary" : "ghost"}
+      size="small"
       aria-pressed={active}
       aria-label={ariaLabel}
       disabled={disabled}
@@ -34,6 +37,6 @@ export function FilterChip({
     >
       <span className="mj-filter-chip__label">{label}</span>
       {active ? <span className="mj-filter-chip__mark" aria-hidden="true">●</span> : null}
-    </button>
+    </Button>
   );
 }

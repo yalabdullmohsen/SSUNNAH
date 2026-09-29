@@ -1,10 +1,47 @@
-/* ═══════════ جسر الهوية — aliases فقط ═══════════
- * يُحمَّل آخر شيء في main.tsx بعد brand-v4 / m2030 / index.css
- * يعيد توجيه الرموز القديمة (--bg/--brand/--msk-*) إلى لوحة --mj-*.
- * --background / --primary / --font-display مصدرها app/styles/theme.css فقط.
- */
+/* جسر aliases: --mj-* SoT هنا؛ unify/calm يستهلكان var(--mj-*) فقط. */
 
 :root {
+  --mj-bg: var(--sf-color-warm-ivory, #f8f6f1);
+  --mj-surface: var(--sf-color-warm-ivory-surface, #ffffff);
+  --mj-surface-2: var(--sf-color-warm-ivory, #f8f6f1);
+  --mj-surface-3: var(--sf-color-warm-ivory-surface, #ffffff);
+  --mj-hairline: var(--sf-hairline, rgba(15, 92, 63, 0.12));
+  --mj-ink: var(--sf-color-rich-ink, #15382d);
+  --mj-ink-2: var(--sf-color-rich-ink-soft, #48645a);
+  --mj-muted: var(--sf-color-rich-ink-muted, #5f7168);
+  --mj-brand: var(--sf-color-deep-emerald, #0f5c3f);
+  --mj-brand-soft: var(--sf-color-deep-emerald-soft);
+  --mj-brand-tint: color-mix(in srgb, var(--mj-brand) 10%, var(--mj-surface));
+  --mj-brand-deep: var(--sf-color-deep-emerald-deep, #0a4530);
+  --mj-accent: var(--sf-color-quran-gold, #c9a82e);
+  --mj-accent-soft: color-mix(in srgb, var(--mj-accent) 14%, var(--mj-surface));
+  --mj-warning-soft: #fef3c7;
+  --mj-warning: #b45309;
+  --mj-danger-soft: #fce8e6;
+  --mj-danger: #b54a4a;
+  --mj-info: #1a3a5c;
+  --mj-info-soft: #e8eef5;
+  --mj-success-soft: color-mix(in srgb, var(--mj-brand) 12%, var(--mj-surface));
+  --mj-white: #ffffff;
+  --mj-on-brand: var(--sf-color-on-emerald, #f7f1e4);
+  --mj-sh: var(--sf-shadow-soft, none);
+  --mj-chip-bg: var(--mj-surface);
+  --mj-chip-fg: var(--mj-ink);
+  --mj-chip-border: var(--mj-hairline);
+  --mj-chip-active-bg: var(--mj-brand-deep, #0d4a39);
+  --mj-chip-active-fg: #ffffff;
+  --mj-fs-display: var(--text-display, var(--sf-type-display, 1.75rem));
+  --mj-fs-h1: var(--text-h1, var(--sf-type-page-title, 1.5rem));
+  --mj-fs-h2: var(--text-h2, var(--sf-type-section-title, 1.3125rem));
+  --mj-fs-body: var(--text-body, var(--sf-type-body, 1.0625rem));
+  --mj-fs-small: var(--text-label, var(--sf-type-metadata, 1rem));
+  --mj-fs-tiny: var(--text-caption, var(--sf-type-caption, 0.875rem));
+  --mj-fs-btn: var(--text-label, var(--sf-type-metadata, 1rem));
+
+  /* TOKEN ABSORB Wave 3 — nav / thumb (spacing --mj-s* من theme.css) */
+  --mj-nav-sign: -1;
+  --mj-thumb-zone: 220px;
+
   /* أسطح ونصوص */
   --bg: var(--surface-app, var(--mj-bg));
   --bg-elevated: var(--mj-surface);
@@ -148,10 +185,53 @@
   --msk-border: var(--mj-hairline);
 }
 
+html[dir="ltr"] {
+  --mj-nav-sign: 1;
+}
+
+html[data-ui-density="compact"] .page-shell {
+  --mj-s3: 10px;
+  --mj-s4: 12px;
+  --mj-s6: 18px;
+  --mj-s8: 24px;
+}
+
 html[data-theme="dark"],
 html.dark,
 [data-theme="dark"],
 .dark {
+  /* TOKEN ABSORB — night --mj-* (سابقًا visual-identity-unify / calm) */
+  --mj-bg: #121816;
+  --mj-surface: #1b2421;
+  --mj-surface-2: #121816;
+  --mj-surface-3: #121816;
+  --mj-hairline: #3a4641;
+  --mj-ink: #f3f7f5;
+  --mj-ink-2: #c5d0cb;
+  --mj-muted: #c5d0cb;
+  --mj-brand: #5fbf98;
+  --mj-brand-soft: rgba(95, 191, 152, 0.16);
+  --mj-brand-tint: color-mix(in srgb, var(--mj-brand) 14%, var(--mj-surface));
+  --mj-brand-deep: #8fd4b0;
+  --mj-accent: #d9b871;
+  --mj-accent-soft: color-mix(in srgb, var(--mj-accent) 18%, var(--mj-surface));
+  --mj-accent-wash: color-mix(in srgb, var(--mj-accent) 16%, transparent);
+  --mj-warning-soft: rgba(217, 119, 6, 0.16);
+  --mj-warning: #d97706;
+  --mj-danger-soft: rgba(240, 113, 120, 0.18);
+  --mj-danger: #f07178;
+  --mj-info: #7dd3fc;
+  --mj-info-soft: rgba(125, 211, 252, 0.14);
+  --mj-success-soft: rgba(126, 214, 168, 0.16);
+  --mj-white: #ffffff;
+  --mj-on-brand: #06231a;
+  --mj-sh: 0 6px 18px -12px rgba(0, 0, 0, 0.55);
+  --mj-chip-bg: #222c28;
+  --mj-chip-fg: #f3f7f5;
+  --mj-chip-border: #3a4641;
+  --mj-chip-active-bg: #5fbf98;
+  --mj-chip-active-fg: #06231a;
+
   --bg: var(--surface-app, var(--mj-bg));
   --bg-elevated: var(--mj-surface);
   --bg-base: var(--mj-bg);
@@ -510,4 +590,23 @@ html[data-theme="dark"] .ds-stat span {
 html[data-theme="dark"] .gl-cat--active,
 html.dark .gl-cat--active {
   color: var(--mj-brand-deep) !important;
+}
+
+/* Soft-card retirement — surface vars for dark/compat consumers (no .soft-card class). */
+:root {
+  --soft-card-grad: none;
+  --soft-tile-grad: none;
+  --soft-card-border: var(--sf-hairline, rgba(15, 92, 63, 0.12));
+  --soft-tile-border: var(--sf-hairline, rgba(15, 92, 63, 0.12));
+  --soft-card-shadow: var(--sf-shadow-card, none);
+  --soft-tile-shadow: none;
+  --soft-card-bg: color-mix(in srgb, var(--mj-surface, #fff) 96%, #e8f0ec);
+  --soft-tile-bg: color-mix(in srgb, var(--mj-surface, #fff) 97%, #eef4f1);
+  --soft-card-pad: var(--sf-pad-card, 0.85rem);
+  --radius-card: var(--sf-radius-card, var(--sf-radius-md, 20px));
+  --radius-tile: var(--sf-radius-md, 20px);
+  --radius-button: var(--sf-radius-sm, 16px);
+  --radius-sheet: var(--sf-radius-sheet, var(--sf-radius-lg, 24px));
+  --radius-nav: var(--sf-radius-lg, 24px);
+  --radius-pill: var(--sf-radius-pill, 999px);
 }

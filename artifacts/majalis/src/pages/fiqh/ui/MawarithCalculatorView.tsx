@@ -25,6 +25,14 @@ import { KnowledgeLayout } from "@/components/knowledge";
 
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/design-system/Buttons";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 type WizardStep = "heirs" | "estate" | "result";
 
 const HEIR_LABELS: Record<HeirKey, string> = {
@@ -337,16 +345,32 @@ export default function MawarithCalculatorPage() {
             {showAdvanced && (
               <div className="mwc-advanced">
                 <div className="mwc-field">
-                  <label className="mwc-field__label" htmlFor="mwc-grandfather">الجدّ مع الإخوة</label>
-                  <select
-                    id="mwc-grandfather"
-                    className="mwc-field__input"
+                  <FieldLabel className="mwc-field__label" htmlFor="mwc-grandfather">
+                    الجدّ مع الإخوة
+                  </FieldLabel>
+                  <Select
                     value={fiqhConfig.grandfatherWithSiblings}
-                    onChange={(e) => setFiqhConfig((prev) => ({ ...prev, grandfatherWithSiblings: e.target.value as FiqhConfig["grandfatherWithSiblings"] }))}
+                    onValueChange={(v) =>
+                      setFiqhConfig((prev) => ({
+                        ...prev,
+                        grandfatherWithSiblings: v as FiqhConfig["grandfatherWithSiblings"],
+                      }))
+                    }
                   >
-                    <option value="muqasama">مقاسمة الإخوة (قول الجمهور)</option>
-                    <option value="grandfatherExcludes">الجدّ يُسقط الإخوة (قول أبي بكر وابن عباس)</option>
-                  </select>
+                    <SelectTrigger
+                      id="mwc-grandfather"
+                      className="mwc-field__input min-h-11 text-base"
+                      aria-label="الجدّ مع الإخوة"
+                    >
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="muqasama">مقاسمة الإخوة (قول الجمهور)</SelectItem>
+                      <SelectItem value="grandfatherExcludes">
+                        الجدّ يُسقط الإخوة (قول أبي بكر وابن عباس)
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
                 <label className="mwc-checkbox">
                   <input type="checkbox" checked={fiqhConfig.raddToSpouse} onChange={(e) => setFiqhConfig((prev) => ({ ...prev, raddToSpouse: e.target.checked }))} />

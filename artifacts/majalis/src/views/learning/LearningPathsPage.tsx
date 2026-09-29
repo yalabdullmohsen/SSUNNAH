@@ -197,7 +197,7 @@ export default function LearningPathsPage() {
                     <article
                       data-cs-card="1"
                       data-cs-type="course"
-                      className={`lpp-path-card cs-course soft-card soft-card--on-light${hasContent ? "" : " lpp-path-card--pending"}`}
+                      className={`lpp-path-card cs-course  ${hasContent ? "" : "lpp-path-card--pending"}`}
                     >
                       <div className="lpp-path-card__top">
                         <h3 className="lpp-path-card__title">{path.title}</h3>

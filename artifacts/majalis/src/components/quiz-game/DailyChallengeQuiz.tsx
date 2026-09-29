@@ -187,7 +187,7 @@ export function DailyChallengeQuiz() {
           النقاط اليوم: <strong>{toArabicDigits(score)}</strong>
           {best > 0 ? (
             <>
-              {" "}
+              {""}
               · أفضل يوم: <strong>{toArabicDigits(best)}</strong>
             </>
           ) : null}
@@ -199,7 +199,7 @@ export function DailyChallengeQuiz() {
           <button
             key={c.id}
             type="button"
-            className={`dcq__chip${categoryId === c.id ? " is-active" : ""}`}
+            className={`dcq__chip${categoryId === c.id ? "is-active" : ""}`}
             disabled={locked}
             onClick={() => setCategoryId(c.id)}
           >
@@ -213,7 +213,7 @@ export function DailyChallengeQuiz() {
           <button
             key={l.id}
             type="button"
-            className={`dcq__chip${level === l.id ? " is-active" : ""}`}
+            className={`dcq__chip${level === l.id ? "is-active" : ""}`}
             disabled={locked}
             onClick={() => setLevel(l.id)}
           >
@@ -225,14 +225,14 @@ export function DailyChallengeQuiz() {
       {!question ? (
         <p className="dcq__empty">{EMPTY.data}</p>
       ) : (
-        <article className="dcq__card soft-card soft-card--on-light">
+        <article className="dcq__card">
           <p className="dcq__question">{question.q}</p>
           <ul className="dcq__choices">
             {choices.map((c) => {
               let cls = "dcq__choice";
               if (answered) {
-                if (c === question.a) cls += " is-correct";
-                else if (c === picked) cls += " is-wrong";
+                if (c === question.a) cls += "is-correct";
+                else if (c === picked) cls += "is-wrong";
               }
               return (
                 <li key={c}>

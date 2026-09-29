@@ -140,7 +140,7 @@ export default function UpdatesPage() {
       ) : (
         <div className="updates-timeline" aria-busy={loading}>
           {filtered.map((item) => (
-            <article key={`${item.isAuto ? "auto" : "platform"}-${item.id}`} className="updates-timeline-item soft-card soft-card--on-light">
+            <article key={`${item.isAuto ? "auto" : "platform"}-${item.id}`} className="updates-timeline-item">
               <div className="updates-timeline-meta">
                 <span
                   className="updates-type-badge"

@@ -24,6 +24,9 @@ export function FormLabel({ className, ...props }: FormLabelProps) {
   );
 }
 
+/** Alias — تفاعل النماذج يستخدم FieldLabel في العقود. */
+export const FieldLabel = FormLabel;
+
 export type FieldDescriptionProps = HTMLAttributes<HTMLParagraphElement>;
 
 /** Supporting hint under a control. */

@@ -1,10 +1,7 @@
 /**
  * منطقة الإبهام — الإجراءات المتكررة في أسفل الشاشة فوق BottomNav.
- * الرموز من theme.css: --mj-touch-min, --mj-elev-*, --bottom-nav-*.
+ * --mj-thumb-zone عبر theme-aliases؛ --mj-touch-min / --mj-elev-* من theme.
  */
-:root {
-  --mj-thumb-zone: 220px;
-}
 
 .mj-thumb-zone {
   position: sticky;

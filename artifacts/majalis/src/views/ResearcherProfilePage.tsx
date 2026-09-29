@@ -15,6 +15,16 @@ import {
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/researcher-profile.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+const SPEC_NONE = "__none__";
 
 // ─── Interest Tag Toggle ───────────────────────────────────────────────────────
 
@@ -241,18 +251,27 @@ export default function ResearcherProfilePage() {
             onChange={(e) => setProfile((p) => ({ ...p, institution: e.target.value }))}
           />
 
-          <label htmlFor="rp-specialization" className="rp-label">التخصص</label>
-          <select
-            id="rp-specialization"
-            className="rp-input rp-select"
-            value={profile.specialization ?? ""}
-            onChange={(e) => setProfile((p) => ({ ...p, specialization: e.target.value }))}
+          <FieldLabel htmlFor="rp-specialization" className="rp-label">التخصص</FieldLabel>
+          <Select
+            value={profile.specialization || SPEC_NONE}
+            onValueChange={(v) =>
+              setProfile((p) => ({ ...p, specialization: v === SPEC_NONE ? "" : v }))
+            }
           >
-            <option value="">اختر تخصصك…</option>
-            {SPECIALIZATION_OPTIONS.map((opt) => (
-              <option key={opt} value={opt}>{opt}</option>
-            ))}
-          </select>
+            <SelectTrigger
+              id="rp-specialization"
+              className="rp-input rp-select min-h-11 text-base"
+              aria-label="التخصص"
+            >
+              <SelectValue placeholder="اختر تخصصك…" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value={SPEC_NONE}>اختر تخصصك…</SelectItem>
+              {SPECIALIZATION_OPTIONS.map((opt) => (
+                <SelectItem key={opt} value={opt}>{opt}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
 
           <label htmlFor="rp-bio" className="rp-label">نبذة بحثية</label>
           <textarea

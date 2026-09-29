@@ -20,8 +20,15 @@ import {
 import { toArabicDigits } from "@/lib/utils";
 import "@/styles/pages/qibla.css";
 import { DetailScreen } from "@/components/design-system/screens";
-
+import { FieldLabel } from "@/components/design-system/FormFields";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 function QiblaCompass({
   bearing,
   heading,
@@ -277,23 +284,27 @@ export default function QiblaPage() {
         {manualMode && (
           <div className="qibla-manual" role="region" aria-label="اختيار المدينة يدوياً">
             {error && <p className="qibla-error">{error}</p>}
-            <label htmlFor="qibla-city-select" className="qibla-manual-label">
+            <FieldLabel htmlFor="qibla-city-select" className="qibla-manual-label">
               اختر مدينتك:
-            </label>
+            </FieldLabel>
             <div className="qibla-manual-row">
-              <select
-                id="qibla-city-select"
-                className="qibla-city-select"
-                value={selectedCity}
-                onChange={(e) => setSelectedCity(e.target.value)}
-                dir="rtl"
-              >
-                {QIBLA_CITIES.map((c) => (
-                  <option key={c.name} value={c.name}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
+              <Select value={selectedCity} onValueChange={setSelectedCity}>
+                <SelectTrigger
+                  id="qibla-city-select"
+                  className="qibla-city-select min-h-11 text-base"
+                  aria-label="اختر مدينتك"
+                  dir="rtl"
+                >
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {QIBLA_CITIES.map((c) => (
+                    <SelectItem key={c.name} value={c.name}>
+                      {c.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <Button
                 type="button"
                 className="qibla-manual-btn"

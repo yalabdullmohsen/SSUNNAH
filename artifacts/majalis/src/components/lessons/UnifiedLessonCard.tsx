@@ -181,7 +181,7 @@ export const UnifiedLessonCard = memo(function UnifiedLessonCard({
 
   const prominence = prominenceClass(lesson.sortKey, lesson.archived);
   const todayClass =
-    isToday || nowLive || prominence.includes("--today") ? " lesson-unified-card--today" : "";
+    isToday || nowLive || prominence.includes("--today") ? "lesson-unified-card--today" : "";
 
   const hasOverflow =
     Boolean(lesson.streamUrl) ||
@@ -194,7 +194,7 @@ export const UnifiedLessonCard = memo(function UnifiedLessonCard({
       data-cs-card="1"
       data-cs-type="lesson"
       data-lesson-type={lessonType.id}
-      className={`lesson-unified-card soft-card soft-card--on-light cs-card card-v2 lesson-unified-card--dense${compact ? " lesson-unified-card--compact" : ""}${todayClass} ${prominence}`.trim()}
+      className={`lesson-unified-card   cs-card card-v2 lesson-unified-card--dense${compact ? "lesson-unified-card--compact" : ""}${todayClass} ${prominence}`.trim()}
     >
       <header className="lesson-unified-card__header">
         <div className="lesson-unified-card__badges">
@@ -225,7 +225,7 @@ export const UnifiedLessonCard = memo(function UnifiedLessonCard({
         </div>
 
         <div
-          className={`lesson-unified-card__actions${compact ? " lesson-unified-card__actions--compact" : ""}`}
+          className={`lesson-unified-card__actions${compact ? "lesson-unified-card__actions--compact" : ""}`}
         >
           {lesson.detailsHref ? (
             <Link

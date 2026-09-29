@@ -1,5 +1,5 @@
 /**
- * بوابة: شاشات الإعدادات (عامة / إشعارات / أذان) على soft-card وصفوف SettingsList.
+ * بوابة: شاشات الإعدادات (عامة / إشعارات / أذان) على سلطة الأسطح وصفوف SettingsList.
  * node --import tsx src/lib/__tests__/settings-rows-unify-gate.test.ts
  */
 import assert from "node:assert/strict";
@@ -29,18 +29,19 @@ assert.doesNotMatch(settings, /المظهر والقراءة والمصحف/, "�
 assert.match(settings, /id:\s*"feature-tour"/, "جولة المزايا ضمن SettingsList");
 assert.match(settings, /id:\s*"clear-local"/, "مسح المحلي ضمن SettingsList");
 assert.match(settings, /id:\s*"refresh-version"/, "تحديث النسخة ضمن SettingsList");
-assert.match(settings, /soft-card soft-card--on-light settings-account-card/, "بطاقة الحساب soft-card");
+assert.match(settings, /AppCard[\s\S]{0,120}settings-account-card/, "بطاقة الحساب عبر AppCard (soft-card داخلي)");
 
 const notif = readFileSync(resolve(root, "src/pages/account/ui/NotificationSettingsView.tsx"), "utf8");
-assert.match(notif, /soft-card soft-card--on-light notif-card/, "إشعارات: soft-card");
-assert.equal((notif.match(/className="notif-card"/g) || []).length, 0, "لا notif-card بلا soft-card");
+assert.match(notif, /notif-card/, "إشعارات: notif-card");
+assert.doesNotMatch(notif, /\bsoft-card\b/, "إشعارات بلا soft-card مباشر");
 
 const adhan = readFileSync(resolve(root, "src/pages/worship/ui/AdhanSettingsView.tsx"), "utf8");
-assert.match(adhan, /soft-card soft-card--on-light ads-card/, "أذان: soft-card");
-assert.equal((adhan.match(/className="ads-card"/g) || []).length, 0, "لا ads-card بلا soft-card");
+assert.match(adhan, /ads-card/, "أذان: ads-card");
+assert.doesNotMatch(adhan, /\bsoft-card\b/, "أذان بلا soft-card مباشر");
 
 const prayer = readFileSync(resolve(root, "src/components/adhan/PrayerAlertSettingsCard.tsx"), "utf8");
-assert.match(prayer, /soft-card soft-card--on-light ads-card/, "تنبيه الصلاة: soft-card");
+assert.match(prayer, /ads-card/, "تنبيه الصلاة: ads-card");
+assert.doesNotMatch(prayer, /\bsoft-card\b/, "تنبيه الصلاة بلا soft-card مباشر");
 
 assert.match(settings, /SettingsToggleRow|SettingsList/, "صفوف التبديل/القائمة من design-system");
 assert.match(settings, /id:\s*`theme-\$\{option\.id\}`|id:\s*"theme-/, "اختيار السمة عبر SettingsList");

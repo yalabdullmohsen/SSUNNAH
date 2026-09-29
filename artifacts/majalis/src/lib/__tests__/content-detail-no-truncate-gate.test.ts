@@ -33,7 +33,7 @@ assert.doesNotMatch(reading, /className="rsc__title rsc__summary"/);
 
 console.log("=== CSS: لا clamp على جسم التفاصيل ===");
 assert.match(rscCss, /rsc__body\[data-detail-full="1"\][\s\S]{0,200}?line-clamp:\s*unset/);
-assert.match(rscCss, /\.rsc\.soft-card[\s\S]{0,80}?overflow:\s*visible/);
+assert.match(rscCss, /\.rsc[\s\S]{0,120}?overflow:\s*visible/, "rsc overflow visible");
 assert.match(kxCss, /data-detail-full="1"[\s\S]{0,220}?line-clamp:\s*unset/);
 assert.doesNotMatch(introCss, /\.rsc__title[\s\S]{0,40}?display:\s*contents/);
 assert.match(introCss, /kx-detail-surface[\s\S]{0,500}?line-clamp:\s*unset/);

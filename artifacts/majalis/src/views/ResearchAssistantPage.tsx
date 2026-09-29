@@ -14,6 +14,14 @@ import {
 } from "@/lib/researches";
 import "@/styles/pages/researches.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function ResearchAssistantPage() {
   const [interest, setInterest] = useState("");
@@ -120,9 +128,19 @@ export default function ResearchAssistantPage() {
             placeholder="أدخل عنوانًا"
             style={{ flex: 1, minHeight: 40, padding: "0.4rem 0.6rem" }}
           />
-          <select value={catId} onChange={(e) => setCatId(e.target.value)} aria-label="تصنيف">
-            {RESEARCH_CATEGORIES.map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}
-          </select>
+          <div className="sr-form__field">
+            <FieldLabel className="sr-only">تصنيف</FieldLabel>
+            <Select value={catId} onValueChange={setCatId}>
+              <SelectTrigger className="min-h-11 text-base" aria-label="تصنيف">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {RESEARCH_CATEGORIES.map((c) => (
+                  <SelectItem key={c.id} value={c.id}>{c.label}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
         <pre className="sr-cite-box">{outline}</pre>
         <p className="sr-notice">{ANTI_CHEATING_NOTICE}</p>

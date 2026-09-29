@@ -126,7 +126,7 @@ export function PrayerAlertSettingsCard() {
           : "جدولة تنبيهات المواقيت";
 
   return (
-    <div className="soft-card soft-card--on-light ads-card">
+    <div className="ads-card">
         <div className="ads-card__head">
         <BellRing size={15} strokeWidth={2} />
         <span>تنبيهات الصلاة</span>
@@ -201,7 +201,7 @@ export function PrayerAlertSettingsCard() {
                   key={m}
                   type="button"
                   onClick={() => applyGlobalMinutes(m)}
-                  className={`ads-chip${prefs.preAlertMinutes === m ? " is-active" : ""}`} variant="ghost">
+                  className={`ads-chip${prefs.preAlertMinutes === m ? "is-active" : ""}`} variant="ghost">
                   {m === 0 ? "بدون" : `${m} د`}
                 </Button>
               ))}

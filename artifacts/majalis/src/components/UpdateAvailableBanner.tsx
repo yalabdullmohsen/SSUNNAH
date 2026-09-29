@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { AppBottomSheet } from "@/components/ui/AppBottomSheet";
 import { clearUserRefreshFlag, useVersionCheck } from "@/hooks/useVersionCheck";
 
@@ -84,7 +85,7 @@ export function UpdateAvailableBanner() {
       elevated
       className="update-available-sheet"
       footer={
-        <button
+        <Button
           type="button"
           className="app-sheet__close app-sheet__close--primary update-available-sheet__update-btn"
           onClick={onUpdate}
@@ -97,7 +98,7 @@ export function UpdateAvailableBanner() {
           data-testid="update-available-apply"
         >
           {busy ? "يُحدَّث…" : "تحديث النسخة"}
-        </button>
+        </Button>
       }
     >
       <p className="update-available-sheet__copy">

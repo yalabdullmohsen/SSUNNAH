@@ -27,7 +27,7 @@ export function InformationCard({
   const Icon = IconProp ?? (tone === "caution" ? AlertTriangle : Info);
   return (
     <aside
-      className={cn("info-card soft-card soft-card--on-light", `info-card--${tone}`, className)}
+      className={cn("info-card", `info-card--${tone}`, className)}
       role="note"
       data-information-card="1"
     >

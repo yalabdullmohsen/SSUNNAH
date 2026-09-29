@@ -23,6 +23,17 @@ import { suggestMethodForRegion } from "@/lib/prayer-calc-prefs";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 
 import { Button } from "@/components/ui/button";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+const ADMIN_ALL = "__all__";
+
 type Props = {
   onChanged: (loc: PrayerActiveLocation) => void;
 };
@@ -164,39 +175,47 @@ export function PrayerLocationPicker({ onChanged }: Props) {
 
       <p className="pts-loc__section">الاختيار اليدوي — دولة / منطقة / مدينة</p>
       <div className="pts-loc__filters">
-        <label className="pts-loc__field">
-          <span>الدولة</span>
-          <select
+        <div className="pts-loc__field">
+          <FieldLabel>الدولة</FieldLabel>
+          <Select
             value={country}
-            onChange={(e) => {
-              setCountry(e.target.value);
+            onValueChange={(v) => {
+              setCountry(v);
               setAdmin("");
               setQuery("");
             }}
-            dir="rtl"
           >
-            {countries.map((c) => (
-              <option key={c.code} value={c.code}>
-                {c.nameAr}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="pts-loc__field">
-          <span>المنطقة</span>
-          <select
-            value={admin}
-            onChange={(e) => setAdmin(e.target.value)}
-            dir="rtl"
+            <SelectTrigger className="min-h-11 text-base" aria-label="الدولة" dir="rtl">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {countries.map((c) => (
+                <SelectItem key={c.code} value={c.code}>
+                  {c.nameAr}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="pts-loc__field">
+          <FieldLabel>المنطقة</FieldLabel>
+          <Select
+            value={admin || ADMIN_ALL}
+            onValueChange={(v) => setAdmin(v === ADMIN_ALL ? "" : v)}
           >
-            <option value="">الكل</option>
-            {admins.map((a) => (
-              <option key={a} value={a}>
-                {a}
-              </option>
-            ))}
-          </select>
-        </label>
+            <SelectTrigger className="min-h-11 text-base" aria-label="المنطقة" dir="rtl">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value={ADMIN_ALL}>الكل</SelectItem>
+              {admins.map((a) => (
+                <SelectItem key={a} value={a}>
+                  {a}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
       <label className="pts-loc__search">

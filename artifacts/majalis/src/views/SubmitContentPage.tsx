@@ -2,6 +2,14 @@ import { useEffect, useState, type FormEvent } from "react";
 import { GraduationCap } from "lucide-react";
 import { Link } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import "@/styles/pages/submit-content.css";
 
 const CONTENT_TYPES = ["درس", "فائدة", "معلومة", "سؤال لعبة", "فكرة"] as const;
@@ -96,20 +104,26 @@ export default function SubmitContentPage() {
       )}
 
       <form onSubmit={handleSubmit}>
-        <label className="scp-label">
-          نوع المحتوى
-          <select
-            name="content-type"
+        <div className="scp-label">
+          <FieldLabel>نوع المحتوى</FieldLabel>
+          <Select
             value={contentType}
-            onChange={(e) => setContentType(e.target.value as ContentType)}
-            required
-            className="scp-input"
+            onValueChange={(v) => setContentType(v as ContentType)}
           >
-            {CONTENT_TYPES.map((t) => (
-              <option key={t} value={t}>{t}</option>
-            ))}
-          </select>
-        </label>
+            <SelectTrigger
+              name="content-type"
+              className="scp-input min-h-11 text-base"
+              aria-label="نوع المحتوى"
+            >
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {CONTENT_TYPES.map((t) => (
+                <SelectItem key={t} value={t}>{t}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
         <label className="scp-label scp-label--mt">
           عنوان الموضوع

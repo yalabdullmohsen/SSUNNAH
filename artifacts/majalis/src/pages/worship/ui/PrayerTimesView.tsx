@@ -32,6 +32,14 @@ import "@/styles/pages/worship-history-v2.css";
 
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/design-system/Buttons";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 const PrayerAnnualTimetable = lazy(() =>
   import("@/components/prayer/PrayerAnnualTimetable").then((m) => ({
     default: m.PrayerAnnualTimetable,
@@ -260,50 +268,71 @@ export default function PrayerTimesPage() {
       <details className="pts-more">
         <summary>خيارات متقدمة</summary>
         <div className="pts-more__body">
-          <label className="pts-method" htmlFor="pts-calc-method">
-            <span className="pts-method__label">طريقة الحساب</span>
-            <select
-              id="pts-calc-method"
-              className="pts-method__select"
+          <div className="pts-method">
+            <FieldLabel htmlFor="pts-calc-method" className="pts-method__label">
+              طريقة الحساب
+            </FieldLabel>
+            <Select
               value={calcMethod}
-              onChange={(e) => handleCalcMethod(e.target.value as PrayerCalcMethodId)}
-              dir="rtl"
+              onValueChange={(v) => handleCalcMethod(v as PrayerCalcMethodId)}
             >
-              {PRAYER_CALC_METHODS.map((m) => (
-                <option key={m.id} value={m.id}>
-                  {m.labelAr}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="pts-method" htmlFor="pts-madhab">
-            <span className="pts-method__label">مذهب العصر</span>
-            <select
-              id="pts-madhab"
-              className="pts-method__select"
-              value={madhab}
-              onChange={(e) => handleMadhab(e.target.value as PrayerMadhabId)}
-              dir="rtl"
-            >
-              <option value="Shafi">شافعي / مالكي / حنبلي</option>
-              <option value="Hanafi">حنفي</option>
-            </select>
-          </label>
-          <label className="pts-method" htmlFor="pts-highlat">
-            <span className="pts-method__label">مناطق خطوط العرض العالية</span>
-            <select
-              id="pts-highlat"
-              className="pts-method__select"
-              value={highLat}
-              onChange={(e) => handleHighLat(e.target.value as HighLatitudeRuleId)}
-              dir="rtl"
-            >
-              <option value="auto">تلقائي موصى به</option>
-              <option value="MiddleOfTheNight">منتصف الليل</option>
-              <option value="SeventhOfTheNight">سُبع الليل</option>
-              <option value="TwilightAngle">زاوية الشفق</option>
-            </select>
-          </label>
+              <SelectTrigger
+                id="pts-calc-method"
+                className="pts-method__select min-h-11 text-base"
+                aria-label="طريقة الحساب"
+                dir="rtl"
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {PRAYER_CALC_METHODS.map((m) => (
+                  <SelectItem key={m.id} value={m.id}>
+                    {m.labelAr}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="pts-method">
+            <FieldLabel htmlFor="pts-madhab" className="pts-method__label">
+              مذهب العصر
+            </FieldLabel>
+            <Select value={madhab} onValueChange={(v) => handleMadhab(v as PrayerMadhabId)}>
+              <SelectTrigger
+                id="pts-madhab"
+                className="pts-method__select min-h-11 text-base"
+                aria-label="مذهب العصر"
+                dir="rtl"
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Shafi">شافعي / مالكي / حنبلي</SelectItem>
+                <SelectItem value="Hanafi">حنفي</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="pts-method">
+            <FieldLabel htmlFor="pts-highlat" className="pts-method__label">
+              مناطق خطوط العرض العالية
+            </FieldLabel>
+            <Select value={highLat} onValueChange={(v) => handleHighLat(v as HighLatitudeRuleId)}>
+              <SelectTrigger
+                id="pts-highlat"
+                className="pts-method__select min-h-11 text-base"
+                aria-label="مناطق خطوط العرض العالية"
+                dir="rtl"
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="auto">تلقائي موصى به</SelectItem>
+                <SelectItem value="MiddleOfTheNight">منتصف الليل</SelectItem>
+                <SelectItem value="SeventhOfTheNight">سُبع الليل</SelectItem>
+                <SelectItem value="TwilightAngle">زاوية الشفق</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
           <Suspense fallback={<div className="pts-timetable-skel" aria-hidden="true" />}>
             <PrayerAnnualTimetable />
           </Suspense>

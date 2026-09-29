@@ -20,6 +20,7 @@ import { collectionFilterLabel } from "@/lib/hadith/hadith-collection-availabili
 
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/design-system/Buttons";
+import { AppCard } from "@/components/design-system/AppCard";
 const COLLECTION_LABELS: Record<string, string> = {
   mutafaq: "متفق عليه",
   nawawi40: "الأربعون النووية",
@@ -203,9 +204,11 @@ export function HadithCard({ item: h, onExpand, detailHref }: Props) {
   );
 
   return (
-    <article
+    <AppCard
+      as="article"
+      padding="none"
       id={h.id}
-      className="hadith-card cs-card soft-card soft-card--on-light hadith-card--pressable hdl-card"
+      className="hadith-card cs-card hadith-card--pressable hdl-card"
       data-testid="hadith-card"
       data-hdl="card"
       data-cs-card="1"
@@ -229,7 +232,7 @@ export function HadithCard({ item: h, onExpand, detailHref }: Props) {
         <div className="hdl-card__footer-actions">
           <IconButton
             type="button"
-            className={`hadith-action-btn ${saved ? "hadith-action-btn--active" : ""}`}
+            className={`hadith-action-btn${saved ? "hadith-action-btn--active" : ""}`}
             onClick={handleSave}
             title={saved ? "محفوظ" : "حفظ"} label={saved ? "إزالة من المحفوظات" : "حفظ"}>
             <Bookmark
@@ -257,6 +260,6 @@ export function HadithCard({ item: h, onExpand, detailHref }: Props) {
           </Button>
         )}
       </footer>
-    </article>
+    </AppCard>
   );
 }

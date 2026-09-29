@@ -43,7 +43,7 @@ import "./styles/sunnah-foundation-v2.css";
 // واجهة استهلاك سُنّة (--ss-*) + أصناف .ss-text — جسر فقط بلا قيم حرفية جديدة
 import "./styles/ssunnah-theme-api.css";
 import "./styles/ssunnah-screen-patterns.css";
-/* soft-cards مؤجّل تحت ميزانية CSS الحرج */
+/* طبقة الأسطح القديمة متقاعدة — السطح عبر AppCard / cs-card / ss-app-card */
 // visual-enrichment مؤجَّل — ليس حرجًا لأول طلاء (ميزانية CSS الحرج ≤60KiB gzip)
 // page-hero / filters / hub-card تُحمَّل مع مكوّناتها (خارج CSS الحرج)
 // طبقات الأساس m2030 — foundation/navigation مؤجّلة (ليست حرجة لأول شاشة)
@@ -126,7 +126,6 @@ function loadNonCriticalCss() {
   void import("./styles/section-cards-theme.css");
   void import("./styles/sunnah-foundation-type.css");
   void import("./styles/green-surface-system.css");
-  void import("./styles/soft-cards.css");
   void import("./styles/ssunnah-semantic-tokens.css");
   void import("./styles/ssunnah-card-unify.css");
   void import("./styles/card-matte-unify.css");

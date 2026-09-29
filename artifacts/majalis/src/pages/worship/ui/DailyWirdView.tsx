@@ -17,8 +17,15 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import "@/styles/pages/daily-wird.css";
 import { DetailScreen } from "@/components/design-system/screens";
-
+import { FieldLabel } from "@/components/design-system/FormFields";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 const QURAN_PAGES = 604;
 
 function toAr(n: number): string {
@@ -218,7 +225,7 @@ export default function DailyWirdPage() {
       />
 
       {/* البطاقة الرئيسية، الحلقة والأزرار */}
-      <div className="wird-hero soft-card soft-card--on-light">
+      <div className="wird-hero">
         <WirdRing pct={pct} pages={todayCompleted} target={state.pagesPerDay} />
 
         <div className="wird-count-btns" role="group" aria-label="إضافة صفحات">
@@ -267,7 +274,7 @@ export default function DailyWirdPage() {
       </div>
 
       {/* بطاقة السلسلة */}
-      <div className="wird-streak-card soft-card soft-card--on-light">
+      <div className="wird-streak-card">
         <div className="wird-streak-row">
           <div className="wird-streak-num">
             <Flame size={18} strokeWidth={1.8} className="wird-streak-icon" aria-hidden="true" />
@@ -300,7 +307,7 @@ export default function DailyWirdPage() {
           </div>
         </div>
       )}
-      <div className="khatma-progress-card soft-card soft-card--on-light">
+      <div className="khatma-progress-card">
         <h2 className="wird-settings__title">تقدم الختمة</h2>
         <div className="khatma-progress-body">
           <KhatmaRing pagesInKhatma={pagesInCurrentKhatma} khatmasCompleted={khatmasCompleted} />
@@ -325,7 +332,7 @@ export default function DailyWirdPage() {
       </div>
 
       {/* ضبط الورد */}
-      <div className="wird-settings soft-card soft-card--on-light">
+      <div className="wird-settings">
         <h2 className="wird-settings__title">ضبط الورد</h2>
 
         <label className="wird-field">
@@ -337,17 +344,22 @@ export default function DailyWirdPage() {
           />
         </label>
 
-        <label className="wird-field">
-          <span>السورة الحالية</span>
-          <select
-            value={state.currentSurah}
-            onChange={(e) => update({ currentSurah: Number(e.target.value) })}
+        <div className="wird-field">
+          <FieldLabel>السورة الحالية</FieldLabel>
+          <Select
+            value={String(state.currentSurah)}
+            onValueChange={(v) => update({ currentSurah: Number(v) })}
           >
-            {surahs.map((s) => (
-              <option key={s.number} value={s.number}>{s.name}</option>
-            ))}
-          </select>
-        </label>
+            <SelectTrigger className="min-h-11 text-base" aria-label="السورة الحالية">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {surahs.map((s) => (
+                <SelectItem key={s.number} value={String(s.number)}>{s.name}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
         <label className="wird-field">
           <span>رقم الآية</span>

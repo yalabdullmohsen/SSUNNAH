@@ -53,12 +53,13 @@ assert.doesNotMatch(
   "pts-gold لا يرث accent-soft الشفاف",
 );
 const unify = read("src/styles/visual-identity-unify.css");
+const aliases = read("src/styles/theme-aliases.css");
 assert.doesNotMatch(
   unify,
   /--mj-accent-soft:\s*rgba\(\s*217\s*,\s*184\s*,\s*113\s*,\s*0\.16\s*\)/,
   "accent-soft الليلي ليس طبقة 0.16 شفافة",
 );
-assert.match(unify, /--mj-accent-wash:/, "غسلة شفافة منفصلة للـoverlay");
+assert.match(aliases, /--mj-accent-wash:/, "غسلة شفافة منفصلة للـoverlay (TOKEN ABSORB → theme-aliases)");
 assert.match(
   prayerCss,
   /\.pts-screen(?:\.pts-screen)?--with-nav[\s\S]*?padding-bottom:\s*calc\(\s*var\(--bottom-nav-height/,

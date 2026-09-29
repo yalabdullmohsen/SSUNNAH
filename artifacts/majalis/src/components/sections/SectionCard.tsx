@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
 import { isSectionComingSoon, type SectionDef } from "@/config/sections.registry";
 import { COMING_SOON_LABEL } from "@/lib/ui-copy";
@@ -37,7 +38,7 @@ export const SectionCard = memo(function SectionCard({ section, className, onNav
       : section.label;
 
   return (
-    <button
+    <Button
       type="button"
       dir="rtl"
       data-section-card="1"
@@ -46,8 +47,7 @@ export const SectionCard = memo(function SectionCard({ section, className, onNav
       aria-label={aria}
       data-cs-card="1"
       data-cs-type="section"
-      className={cn(
-        "card cs-card cs-section soft-card soft-card--on-light",
+      className={cn("card cs-card cs-section",
         soon && "card--coming-soon",
         className,
       )}
@@ -69,6 +69,6 @@ export const SectionCard = memo(function SectionCard({ section, className, onNav
         ) : null}
       </span>
       {subtitle ? <span className="card__subtitle">{subtitle}</span> : null}
-    </button>
+    </Button>
   );
 });

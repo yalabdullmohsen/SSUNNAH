@@ -36,8 +36,19 @@ import {
   searchPublishedScholarlyResearch,
 } from "@/lib/scholarly-research";
 import { BookOpen, GraduationCap, Plus, Search, Sparkles, Shield } from "lucide-react";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import "@/styles/pages/researches.css";
 const CATEGORY_PREVIEW = 8;
+const FILTER_ALL = "__all__";
+
 
 function useQueryParams(): URLSearchParams {
   const [loc] = useLocation();
@@ -362,17 +373,19 @@ export default function AcademicResearchPage() {
             </span>
           </div>
           <div className="sr-filters">
-            <select
-              value={sort}
-              onChange={(e) => setSort(e.target.value as ResearchSort)}
-              aria-label="الترتيب"
-            >
-              <option value="relevance">الأكثر صلة</option>
-              <option value="newest">الأحدث</option>
-              <option value="oldest">الأقدم</option>
-              <option value="most_viewed">الأكثر قراءة</option>
-              <option value="theses">الرسائل الجامعية</option>
-            </select>
+            <FieldLabel className="sr-only">الترتيب</FieldLabel>
+            <Select value={sort} onValueChange={(v) => setSort(v as ResearchSort)}>
+              <SelectTrigger className="min-h-11 text-base" aria-label="الترتيب">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="relevance">الأكثر صلة</SelectItem>
+                <SelectItem value="newest">الأحدث</SelectItem>
+                <SelectItem value="oldest">الأقدم</SelectItem>
+                <SelectItem value="most_viewed">الأكثر قراءة</SelectItem>
+                <SelectItem value="theses">الرسائل الجامعية</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           {pending && (
@@ -437,81 +450,96 @@ export default function AcademicResearchPage() {
         title="تصفية البحوث"
       >
         <div className="flex flex-col gap-3 p-1 text-sm" dir="rtl">
-          <label className="flex flex-col gap-1">
-            التخصص
-            <select
-              value={categoryId}
-              onChange={(e) => setCategoryId(e.target.value)}
+          <div className="flex flex-col gap-1">
+            <FieldLabel>التخصص</FieldLabel>
+            <Select
+              value={categoryId || FILTER_ALL}
+              onValueChange={(v) => setCategoryId(v === FILTER_ALL ? "" : v)}
             >
-              <option value="">الكل</option>
-              {RESEARCH_CATEGORIES.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="flex flex-col gap-1">
-            نوع الدرجة / البحث
-            <select
-              value={kind}
-              onChange={(e) => setKind(e.target.value as ResearchKind | "")}
-            >
-              <option value="">الكل</option>
-              {Object.entries(RESEARCH_KIND_LABELS).map(([k, label]) => (
-                <option key={k} value={k}>
-                  {label}
-                </option>
-              ))}
-            </select>
-          </label>
-          {facets.universities.length > 0 ? (
-            <label className="flex flex-col gap-1">
-              الجامعة
-              <select
-                value={university}
-                onChange={(e) => setUniversity(e.target.value)}
-              >
-                <option value="">الكل</option>
-                {facets.universities.map((u) => (
-                  <option key={u} value={u}>
-                    {u}
-                  </option>
+              <SelectTrigger className="min-h-11 text-base" aria-label="التخصص">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value={FILTER_ALL}>الكل</SelectItem>
+                {RESEARCH_CATEGORIES.map((c) => (
+                  <SelectItem key={c.id} value={c.id}>{c.label}</SelectItem>
                 ))}
-              </select>
-            </label>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-col gap-1">
+            <FieldLabel>نوع الدرجة / البحث</FieldLabel>
+            <Select
+              value={kind || FILTER_ALL}
+              onValueChange={(v) => setKind(v === FILTER_ALL ? "" : (v as ResearchKind))}
+            >
+              <SelectTrigger className="min-h-11 text-base" aria-label="نوع الدرجة / البحث">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value={FILTER_ALL}>الكل</SelectItem>
+                {Object.entries(RESEARCH_KIND_LABELS).map(([k, label]) => (
+                  <SelectItem key={k} value={k}>{label}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          {facets.universities.length > 0 ? (
+            <div className="flex flex-col gap-1">
+              <FieldLabel>الجامعة</FieldLabel>
+              <Select
+                value={university || FILTER_ALL}
+                onValueChange={(v) => setUniversity(v === FILTER_ALL ? "" : v)}
+              >
+                <SelectTrigger className="min-h-11 text-base" aria-label="الجامعة">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value={FILTER_ALL}>الكل</SelectItem>
+                  {facets.universities.map((u) => (
+                    <SelectItem key={u} value={u}>{u}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           ) : null}
           {facets.countries.length > 0 ? (
-            <label className="flex flex-col gap-1">
-              الدولة
-              <select
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
+            <div className="flex flex-col gap-1">
+              <FieldLabel>الدولة</FieldLabel>
+              <Select
+                value={country || FILTER_ALL}
+                onValueChange={(v) => setCountry(v === FILTER_ALL ? "" : v)}
               >
-                <option value="">الكل</option>
-                {facets.countries.map((c) => (
-                  <option key={c} value={c}>
-                    {c}
-                  </option>
-                ))}
-              </select>
-            </label>
+                <SelectTrigger className="min-h-11 text-base" aria-label="الدولة">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value={FILTER_ALL}>الكل</SelectItem>
+                  {facets.countries.map((c) => (
+                    <SelectItem key={c} value={c}>{c}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           ) : null}
           {facets.languages.length > 0 ? (
-            <label className="flex flex-col gap-1">
-              اللغة
-              <select
-                value={language}
-                onChange={(e) => setLanguage(e.target.value)}
+            <div className="flex flex-col gap-1">
+              <FieldLabel>اللغة</FieldLabel>
+              <Select
+                value={language || FILTER_ALL}
+                onValueChange={(v) => setLanguage(v === FILTER_ALL ? "" : v)}
               >
-                <option value="">الكل</option>
-                {facets.languages.map((l) => (
-                  <option key={l} value={l}>
-                    {l}
-                  </option>
-                ))}
-              </select>
-            </label>
+                <SelectTrigger className="min-h-11 text-base" aria-label="اللغة">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value={FILTER_ALL}>الكل</SelectItem>
+                  {facets.languages.map((l) => (
+                    <SelectItem key={l} value={l}>{l}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           ) : null}
           <div className="flex gap-2">
             <label className="flex flex-1 flex-col gap-1">
@@ -521,6 +549,7 @@ export default function AcademicResearchPage() {
                 inputMode="numeric"
                 value={yearFrom}
                 onChange={(e) => setYearFrom(e.target.value)}
+                className="min-h-11 text-base"
               />
             </label>
             <label className="flex flex-1 flex-col gap-1">
@@ -530,42 +559,48 @@ export default function AcademicResearchPage() {
                 inputMode="numeric"
                 value={yearTo}
                 onChange={(e) => setYearTo(e.target.value)}
+                className="min-h-11 text-base"
               />
             </label>
           </div>
           {facets.accessTypes.length > 0 ? (
-            <label className="flex flex-col gap-1">
-              الوصول للنص الكامل
-              <select
-                value={accessType}
-                onChange={(e) =>
-                  setAccessType(e.target.value as AccessType | "")
+            <div className="flex flex-col gap-1">
+              <FieldLabel>الوصول للنص الكامل</FieldLabel>
+              <Select
+                value={accessType || FILTER_ALL}
+                onValueChange={(v) =>
+                  setAccessType(v === FILTER_ALL ? "" : (v as AccessType))
                 }
               >
-                <option value="">الكل</option>
-                {facets.accessTypes.map((a) => (
-                  <option key={a} value={a}>
-                    {RESEARCH_ACCESS_LABELS[a]}
-                  </option>
-                ))}
-              </select>
-            </label>
+                <SelectTrigger className="min-h-11 text-base" aria-label="الوصول للنص الكامل">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value={FILTER_ALL}>الكل</SelectItem>
+                  {facets.accessTypes.map((a) => (
+                    <SelectItem key={a} value={a}>{RESEARCH_ACCESS_LABELS[a]}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           ) : null}
           <div className="mt-2 flex gap-2">
-            <button
+            <Button
               type="button"
+              variant="primary"
               className="sr-btn sr-btn--primary"
               onClick={() => setFiltersOpen(false)}
             >
               تطبيق
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="ghost"
               className="sr-btn sr-btn--ghost"
               onClick={resetFilters}
             >
               مسح الفلاتر
-            </button>
+            </Button>
           </div>
         </div>
       </FilterSheet>

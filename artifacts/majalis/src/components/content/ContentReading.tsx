@@ -35,7 +35,7 @@ export function ContentSection({
   children,
   paragraphs,
   variant = "default",
-  className = "",
+  className="",
   id,
 }: ContentSectionProps) {
   return (
@@ -67,7 +67,7 @@ export function QuotePanel(props: Omit<ContentSectionProps, "variant">) {
 export function FAQBox({
   title = "أسئلة مختصرة",
   items,
-  className = "",
+  className="",
 }: {
   title?: string;
   items: { q: string; a: ReactNode }[];
@@ -91,7 +91,7 @@ export function FAQBox({
 export function SourceBox({
   title = "المصادر",
   sources,
-  className = "",
+  className="",
 }: {
   title?: string;
   sources: string[] | CompactSourceItem[];
@@ -111,7 +111,7 @@ export function SourceBox({
 export function RelatedLinksBox({
   title = "تصفّح صفحاتًا أخرى",
   links,
-  className = "",
+  className="",
 }: {
   title?: string;
   links: { href: string; title: string; description?: string }[];
@@ -145,7 +145,7 @@ export function RelatedLinksBox({
 export function ContentDetailReadingShell({
   note,
   children,
-  className = "",
+  className="",
 }: {
   note?: ReactNode;
   children: ReactNode;
@@ -154,7 +154,7 @@ export function ContentDetailReadingShell({
   return (
     <div className={`cr-shell rsc-stack${className ? ` ${className}` : ""}`} dir="rtl" data-content-reading="1">
       {note ? (
-        <aside className="cr-note soft-card soft-card--on-light" role="note">
+        <aside className="cr-note" role="note">
           {note}
         </aside>
       ) : null}

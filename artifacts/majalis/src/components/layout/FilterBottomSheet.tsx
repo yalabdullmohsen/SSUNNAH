@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 import { AppBottomSheet } from "@/components/ui/AppBottomSheet";
 
 type Props = {
@@ -27,7 +28,7 @@ export function FilterToggle({
   expanded?: boolean;
 }) {
   return (
-    <button
+    <Button
       type="button"
       className="ds-filter-toggle"
       onClick={onClick}
@@ -35,6 +36,6 @@ export function FilterToggle({
       aria-haspopup="dialog"
     >
       {label}
-    </button>
+    </Button>
   );
 }

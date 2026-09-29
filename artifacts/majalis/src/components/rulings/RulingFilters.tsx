@@ -1,4 +1,5 @@
 import type { RulingSortMode } from "@/lib/rulings-types";
+import { Button } from "@/components/ui/button";
 import { RULING_SORT_LABELS } from "@/lib/rulings-types";
 import { ExclusiveChoiceGroup } from "@/components/ui/ExclusiveChoiceGroup";
 
@@ -22,9 +23,9 @@ export function RulingFilters({ sort, onSortChange, showAdvanced, onToggleAdvanc
           label: RULING_SORT_LABELS[mode],
         }))}
       />
-      <button type="button" className="ruling-advanced-toggle" onClick={onToggleAdvanced}>
+      <Button type="button" className="ruling-advanced-toggle" onClick={onToggleAdvanced}>
         {showAdvanced ? "إخفاء التصفية المتقدمة" : "تصفية متقدمة"}
-      </button>
+      </Button>
     </div>
   );
 }

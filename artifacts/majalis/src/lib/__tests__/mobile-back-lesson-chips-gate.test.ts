@@ -23,13 +23,16 @@ assert.match(lobby, /AppBackButton|data-section-back/, "رجوع هيدري في
 assert.match(lobby, /data-section-back/);
 
 const polish = read("src/styles/sections-calm-polish.css");
-assert.match(polish, /--mj-chip-bg:/);
-assert.match(polish, /--mj-chip-fg:/);
-assert.match(polish, /--mj-chip-active-bg:/);
-assert.match(polish, /--mj-chip-active-fg:/);
-assert.match(polish, /html\.dark[\s\S]*?--mj-chip-active-fg:\s*#06231a/);
-assert.match(polish, /html\.dark[\s\S]*?--mj-chip-fg:\s*#f3f7f5/);
 assert.match(polish, /\.floating-back-btn[\s\S]*?display:\s*none/);
+
+/* TOKEN ABSORB: --mj-chip-* lives in theme-aliases (not sections-calm-polish). */
+const aliases = read("src/styles/theme-aliases.css");
+assert.match(aliases, /--mj-chip-bg:/);
+assert.match(aliases, /--mj-chip-fg:/);
+assert.match(aliases, /--mj-chip-active-bg:/);
+assert.match(aliases, /--mj-chip-active-fg:/);
+assert.match(aliases, /html\.dark[\s\S]*?--mj-chip-active-fg:\s*#06231a/);
+assert.match(aliases, /html\.dark[\s\S]*?--mj-chip-fg:\s*#f3f7f5/);
 
 const lessonsCss = read("src/styles/pages/lessons.css");
 assert.match(lessonsCss, /--mj-chip-active-fg/);
