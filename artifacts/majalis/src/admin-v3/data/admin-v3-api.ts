@@ -111,6 +111,20 @@ export async function decideSubmission(input: {
   return parseJson(res);
 }
 
+export async function fetchAnalyticsPlatform(
+  params: { days?: number; force?: boolean } = {},
+  signal?: AbortSignal,
+): Promise<import("../domains/analytics/types").AnalyticsPlatformPayload> {
+  const res = await adminFetch(
+    `/api/admin/analytics-platform${qs({
+      days: params.days ?? 30,
+      force: params.force ? "1" : undefined,
+    })}`,
+    { method: "GET", signal },
+  );
+  return parseJson(res);
+}
+
 export const adminV3QueryKeys = {
   lessons: (p: object) => ["admin-v3", "lessons", p] as const,
   sheikhs: (p: object) => ["admin-v3", "sheikhs", p] as const,
@@ -120,4 +134,5 @@ export const adminV3QueryKeys = {
   submissions: (p: object) => ["admin-v3", "submissions", p] as const,
   audit: () => ["admin-v3", "audit"] as const,
   status: () => ["admin-v3", "status"] as const,
+  analyticsPlatform: (days: number) => ["admin-v3", "analytics-platform", days] as const,
 };

@@ -42,6 +42,7 @@ export const ROUTE_SECURITY_CLASS = Object.freeze({
   "/api/content-relations": "PUBLIC_READ",
   "/api/scholarly-search": "PUBLIC_READ",
   "/api/admin/search-analytics": "ADMIN",
+  "/api/admin/analytics-platform": "ADMIN",
   "/api/digital-learning": "PUBLIC_WRITE",
   "/api/cron/autonomous-orchestrator": "CRON",
   "/api/admin/autonomous-ai": "ADMIN",
