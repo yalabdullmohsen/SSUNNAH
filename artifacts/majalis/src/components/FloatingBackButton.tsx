@@ -1,56 +1,28 @@
 /**
  * GlobalBackControlHost — مصدر حقيقة واحد لزر الرجوع العام في سُنّة.
- * يُركَّب مرة واحدة في جذر التطبيق.
- * FLOATING_BACK_DISABLED = لا FAB دائري علوي قديم.
- * UNIFIED_BACK_FAB = زر رجوع موحّد أسفل يمين (فوق Bottom Nav) ظاهر دائمًا خارج الرئيسية/المصحف.
+ * الإزاحات/الكيبورد/المشغّل من FloatingLayerManager فقط.
  */
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { AppBackButton } from "@/components/common/AppBackButton";
+import { BACK_CONTROL_SIZE_PX, BACK_CONTROL_GAP_PX } from "@/lib/global-back-layout";
 import {
-  BACK_CONTROL_SIZE_PX,
-  computeBackControlBottomOffset,
-  computeContentBottomInsetForBack,
-} from "@/lib/global-back-layout";
+  applyFloatingLayerCssVars,
+  getFloatingBottomOffset,
+  installFloatingLayerSync,
+  shouldSuppressBackgroundFloating,
+} from "@/lib/floating-layer-manager";
 import { hasInPageBackChrome, isImmersiveChromePath } from "@/lib/immersive-chrome";
 import { normalizeNavPath } from "@/lib/navigation-back";
 import "@/styles/sunnah-identity-chrome-nav.css";
 
-function readCssPx(varName: string, fallback: number): number {
-  if (typeof window === "undefined") return fallback;
-  const raw = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
-  const n = Number.parseFloat(raw);
-  return Number.isFinite(n) ? n : fallback;
-}
-
 function syncBackLayoutVars(host: HTMLElement | null) {
   if (typeof window === "undefined") return;
-  const safeBottom =
-    readCssPx("--inset-bottom", 0) || readCssPx("--safe-area-inset-bottom", 0);
-  const bottomNav =
-    readCssPx("--bottom-nav-height", 64) ||
-    readCssPx("--bottom-nav-h", 64) ||
-    64;
-  const miniPlayer =
-    document.documentElement.getAttribute("data-quran-mini-player") === "mini" ||
-    document.documentElement.getAttribute("data-quran-mini-player") === "expanded" ||
-    document.documentElement.classList.contains("audio-dock-open") ||
-    document.documentElement.getAttribute("data-audio-dock") === "1"
-      ? readCssPx("--quran-mini-player-offset", 0) ||
-        readCssPx("--audio-dock-h", 72) ||
-        52
-      : readCssPx("--quran-mini-player-offset", 0);
-  const insets = {
-    safeAreaBottom: safeBottom,
-    bottomNavigationHeight: bottomNav,
-    miniPlayerHeight: Math.max(0, miniPlayer),
-    keyboardHeight: 0,
-    activeSheetHeight: document.body.classList.contains("filter-sheet-open") ? 120 : 0,
-  };
-  const bottom = computeBackControlBottomOffset(insets);
-  const clearance = computeContentBottomInsetForBack(insets);
+  applyFloatingLayerCssVars();
+  const bottom = getFloatingBottomOffset("floating-back");
+  const contentClearance = bottom + BACK_CONTROL_SIZE_PX + BACK_CONTROL_GAP_PX;
   document.documentElement.style.setProperty("--global-back-bottom", `${bottom}px`);
-  document.documentElement.style.setProperty("--global-back-clearance", `${clearance}px`);
+  document.documentElement.style.setProperty("--global-back-clearance", `${contentClearance}px`);
   document.documentElement.style.setProperty("--global-back-top", `0px`);
   document.documentElement.style.setProperty("--global-back-top-clearance", `0px`);
   document.documentElement.style.setProperty("--global-back-size", `${BACK_CONTROL_SIZE_PX}px`);
@@ -74,22 +46,40 @@ export function GlobalBackControlHost() {
     path === "/adhan-settings" || path.startsWith("/adhan-settings/");
   /** Rule 6: prefer in-page AppBackButton — suppress unified floating host when page chrome owns back */
   const hideOnInPageAppBack = hasInPageBackChrome(path);
-  const hideBack = hideOnHome || hideOnMushaf || hideOnAdhanSettings || hideOnInPageAppBack;
+  const routeHide = hideOnHome || hideOnMushaf || hideOnAdhanSettings || hideOnInPageAppBack;
+  const [modalHide, setModalHide] = useState(false);
+  const hideBack = routeHide || modalHide;
+
+  useEffect(() => installFloatingLayerSync(), []);
 
   useLayoutEffect(() => {
-    if (hideBack) {
+    if (routeHide) {
       document.documentElement.style.setProperty("--global-back-clearance", `0px`);
       document.documentElement.removeAttribute("data-global-back-visible");
       return;
     }
-    const sync = () => syncBackLayoutVars(hostRef.current);
+    const sync = () => {
+      const suppress = shouldSuppressBackgroundFloating();
+      setModalHide(suppress);
+      if (suppress) {
+        document.documentElement.removeAttribute("data-global-back-visible");
+        return;
+      }
+      syncBackLayoutVars(hostRef.current);
+    };
     sync();
     window.addEventListener("resize", sync);
     window.visualViewport?.addEventListener("resize", sync);
     const mo = new MutationObserver(sync);
     mo.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["class", "data-audio-dock", "data-quran-mini-player", "data-theme"],
+      attributeFilter: [
+        "class",
+        "data-audio-dock",
+        "data-quran-mini-player",
+        "data-floating-suppress",
+        "style",
+      ],
     });
     mo.observe(document.body, { attributes: true, attributeFilter: ["class"] });
     return () => {
@@ -97,7 +87,7 @@ export function GlobalBackControlHost() {
       window.visualViewport?.removeEventListener("resize", sync);
       mo.disconnect();
     };
-  }, [hideBack]);
+  }, [routeHide]);
 
   useEffect(() => {
     if (hideBack) {

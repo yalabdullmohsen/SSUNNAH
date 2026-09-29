@@ -8,10 +8,16 @@ import { AssistantChatView } from "./AssistantChatView";
 import { isAssistantFabHiddenPath } from "@/lib/assistant-fab-paths";
 import "@/styles/sunnah-identity-chrome-nav.css";
 import { isAssistantFeatureEnabled } from "@/lib/assistant-feature-flag";
+import {
+  applyFloatingLayerCssVars,
+  installFloatingLayerSync,
+  shouldSuppressBackgroundFloating,
+} from "@/lib/floating-layer-manager";
 
 export function AssistantFloatingWidget() {
   const [location] = useLocation();
   const [open, setOpen] = useState(false);
+  const [layerHidden, setLayerHidden] = useState(false);
   const chat = useAssistantChat();
   const closeRef = useRef<HTMLButtonElement>(null);
 
@@ -21,6 +27,8 @@ export function AssistantFloatingWidget() {
     location === "/assistant" ||
     location.startsWith("/admin") ||
     isAssistantFabHiddenPath(location);
+
+  useEffect(() => installFloatingLayerSync(), []);
 
   useEffect(() => {
     setOpen(false);
@@ -32,8 +40,32 @@ export function AssistantFloatingWidget() {
       return;
     }
     document.body.classList.add("has-assistant-fab");
+    applyFloatingLayerCssVars();
     return () => document.body.classList.remove("has-assistant-fab");
   }, [hiddenOnPage]);
+
+  useEffect(() => {
+    if (hiddenOnPage || open) {
+      setLayerHidden(false);
+      return;
+    }
+    const sync = () => {
+      applyFloatingLayerCssVars();
+      setLayerHidden(shouldSuppressBackgroundFloating());
+    };
+    sync();
+    const mo = new MutationObserver(sync);
+    mo.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-floating-suppress", "data-audio-dock", "data-quran-mini-player", "style"],
+    });
+    mo.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    window.visualViewport?.addEventListener("resize", sync);
+    return () => {
+      mo.disconnect();
+      window.visualViewport?.removeEventListener("resize", sync);
+    };
+  }, [hiddenOnPage, open]);
 
   useEffect(() => {
     if (!open) return;
@@ -53,7 +85,7 @@ export function AssistantFloatingWidget() {
 
   return (
     <>
-      {!open && (
+      {!open && !layerHidden && (
         <Button
           type="button"
           variant="ghost"

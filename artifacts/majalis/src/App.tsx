@@ -9,6 +9,7 @@ import { PrayerCountdownProvider } from "@/components/prayer/PrayerCountdownProv
 import { NavigationBinder } from "@/components/NavigationBinder";
 import { NativeBackButtonListener } from "@/components/NativeBackButtonListener";
 import { VisualViewportKeyboardBridge } from "@/hooks/useVisualViewportOffset";
+import { FloatingLayerSync } from "@/components/FloatingLayerSync";
 import { ensureChromeMeta } from "@/lib/ensure-chrome-meta";
 import { PageChromeSync } from "@/components/PageChromeSync";
 import { useAutoHideBottomNav } from "@/hooks/useAutoHideBottomNav";
@@ -1246,6 +1247,7 @@ function AppShellInner() {
         </Suspense>
       )}
       {!onAuthStandalone ? <DeferredQuranMiniPlayer /> : null}
+      <FloatingLayerSync />
       <VisualViewportKeyboardBridge />
       <Suspense fallback={null}>
         <SafeAreaDebugOverlay />

@@ -1,21 +1,10 @@
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { applyFloatingLayerCssVars } from "@/lib/floating-layer-manager";
-
-function isModalOverlayOpen(): boolean {
-  if (typeof document === "undefined") return false;
-  return Boolean(
-    document.querySelector(
-      [
-        '[role="dialog"][data-state="open"]',
-        '[data-state="open"][data-radix-dialog-content]',
-        '[data-state="open"][data-radix-alert-dialog-content]',
-        '[aria-modal="true"]',
-      ].join(","),
-    ),
-  );
-}
+import {
+  applyFloatingLayerCssVars,
+  shouldSuppressBackgroundFloating,
+} from "@/lib/floating-layer-manager";
 
 /**
  * زر صعود صغير واضح المعنى.
@@ -26,26 +15,29 @@ export function ScrollToTop() {
 
   useEffect(() => {
     const update = () => {
-      // يظهر بعد تمرير ملحوظ فقط (≥720px) — لا يزاحم المحتوى في أول الشاشة
       const scrolled = window.scrollY > 720;
-      setVisible(scrolled && !isModalOverlayOpen());
+      setVisible(scrolled && !shouldSuppressBackgroundFloating());
       applyFloatingLayerCssVars();
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update, { passive: true });
+    window.visualViewport?.addEventListener("resize", update);
 
     const mo = new MutationObserver(update);
-    mo.observe(document.body, {
-      subtree: true,
-      childList: true,
+    mo.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["data-state", "aria-modal", "open"],
+      attributeFilter: ["data-floating-suppress", "data-audio-dock", "data-quran-mini-player"],
+    });
+    mo.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class", "data-state", "aria-modal", "open"],
     });
 
     return () => {
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
+      window.visualViewport?.removeEventListener("resize", update);
       mo.disconnect();
     };
   }, []);

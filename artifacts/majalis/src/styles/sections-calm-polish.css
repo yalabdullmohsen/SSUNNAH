@@ -454,7 +454,10 @@ html.dark .sidebar-item[aria-current="page"] {
 }
 
 .scroll-to-top {
-  bottom: calc(var(--bottom-nav-height, 64px) + var(--inset-bottom, 0px) + 14px) !important;
+  bottom: var(
+    --scroll-to-top-bottom,
+    calc(var(--bottom-nav-height, 64px) + var(--inset-bottom, 0px) + 14px)
+  ) !important;
   /* مقابل زر الرجوع السفلي: في RTL يصبح يسارًا فلا يتداخل */
   inset-inline-end: max(14px, var(--inset-right, 0px)) !important;
   inset-inline-start: auto !important;
@@ -467,7 +470,7 @@ html.dark .sidebar-item[aria-current="page"] {
   gap: 0.25rem !important;
   border-radius: var(--radius-button, 14px) !important;
   box-shadow: var(--shadow) !important;
-  z-index: 180 !important;
+  z-index: var(--z-fab, 220) !important;
   background: var(--primary) !important;
   color: var(--mj-on-brand, #fff) !important;
   border: 1px solid var(--mj-brand-deep, transparent) !important;

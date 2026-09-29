@@ -7,12 +7,14 @@ import {
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
+import { Button } from "@/components/ui/button";
 import {
   blurActiveTextField,
   ensureFieldVisibleInSheet,
   lockDocumentScrollForSheet,
   useInputSheetViewport,
 } from "@/hooks/useInputSheetViewport";
+import { applyFloatingLayerCssVars } from "@/lib/floating-layer-manager";
 import "@/styles/reader-bookmarks.css";
 
 type Props = {
@@ -62,6 +64,8 @@ export const MushafBookmarkEditorShell = memo(function MushafBookmarkEditorShell
   useEffect(() => {
     const unlock = lockDocumentScrollForSheet();
     const previouslyFocused = document.activeElement as HTMLElement | null;
+    document.documentElement.setAttribute("data-mushaf-bookmark-editor", "1");
+    applyFloatingLayerCssVars();
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -95,6 +99,8 @@ export const MushafBookmarkEditorShell = memo(function MushafBookmarkEditorShell
       window.cancelAnimationFrame(frame);
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("popstate", onPop);
+      document.documentElement.removeAttribute("data-mushaf-bookmark-editor");
+      applyFloatingLayerCssVars();
       if (historyPushed.current) {
         historyPushed.current = false;
         if (window.history.state?.mushafBookmarkEditor) {
@@ -144,8 +150,9 @@ export const MushafBookmarkEditorShell = memo(function MushafBookmarkEditorShell
       data-testid={`${testId}-shell`}
       data-rb-editor-shell="1"
     >
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className="rb-editor-shell__backdrop"
         aria-label="إغلاق"
         tabIndex={-1}
@@ -163,15 +170,16 @@ export const MushafBookmarkEditorShell = memo(function MushafBookmarkEditorShell
         tabIndex={-1}
       >
         <header className="rb-editor-shell__head">
-          <button
+          <Button
             type="button"
+            variant="ghost"
             className="rb-editor-shell__close"
             onClick={requestClose}
             aria-label="إغلاق"
             data-testid={`${testId}-close`}
           >
             إغلاق
-          </button>
+          </Button>
           <div className="rb-editor-shell__titles">
             <span className="rb-editor-shell__eyebrow" id={titleId}>
               {title}
