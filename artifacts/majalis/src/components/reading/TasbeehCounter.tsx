@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTasbeehCounter } from "@/hooks/useTasbeehCounter";
 import { TASBEEH_PRESETS, type TasbeehWird } from "@/lib/tasbeeh-storage";
+import { Button } from "@/components/ui/button";
 
 // ─── SVG Progress Ring ─────────────────────────────────────────────────────
 
@@ -95,6 +96,7 @@ export function TasbeehCounter({
     setTarget,
     canUndo,
   } = useTasbeehCounter({ storageId, initialTarget: target, wird, onWirdChange });
+  const [confirmReset, setConfirmReset] = useState(false);
 
   // Keyboard support (Space/Enter = +1, Backspace = undo)
   useEffect(() => {
@@ -129,11 +131,18 @@ export function TasbeehCounter({
           </div>
         )}
         <div className="tasbeeh-counter__actions">
-          <button type="button" className="tasbeeh-counter__btn tasbeeh-counter__btn--primary" onClick={() => increment(1)} aria-label="إضافة ذكر واحد">
+          <Button type="button" variant="primary" size="small" className="tasbeeh-counter__btn tasbeeh-counter__btn--primary" onClick={() => increment(1)} aria-label="إضافة ذكر واحد">
             +1
-          </button>
-          <button type="button" className="tasbeeh-counter__btn" disabled={!canUndo} onClick={undo}>تراجع</button>
-          <button type="button" className="tasbeeh-counter__btn tasbeeh-counter__btn--ghost" onClick={() => { if (window.confirm("هل تريد تصفير العداد لهذا الورد؟")) reset(); }}>تصفير</button>
+          </Button>
+          <Button type="button" variant="secondary" size="small" className="tasbeeh-counter__btn" disabled={!canUndo} onClick={undo}>تراجع</Button>
+          {confirmReset ? (
+            <div className="tasbeeh-counter__confirm" role="alertdialog" aria-label="تأكيد التصفير">
+              <Button type="button" variant="destructive" size="small" onClick={() => { reset(); setConfirmReset(false); }}>تأكيد</Button>
+              <Button type="button" variant="ghost" size="small" onClick={() => setConfirmReset(false)}>إلغاء</Button>
+            </div>
+          ) : (
+            <Button type="button" variant="ghost" size="small" className="tasbeeh-counter__btn tasbeeh-counter__btn--ghost" onClick={() => setConfirmReset(true)}>تصفير</Button>
+          )}
         </div>
       </div>
     );
@@ -201,18 +210,29 @@ export function TasbeehCounter({
 
       {/* Actions */}
       <div className="tasbeeh-counter__actions">
-        <button type="button" className="tasbeeh-counter__btn" disabled={!canUndo} onClick={undo}>
+        <Button type="button" variant="secondary" size="small" className="tasbeeh-counter__btn" disabled={!canUndo} onClick={undo}>
           تراجع
-        </button>
-        <button
-          type="button"
-          className="tasbeeh-counter__btn tasbeeh-counter__btn--ghost"
-          onClick={() => {
-            if (window.confirm("هل تريد تصفير العداد لهذا الورد؟")) reset();
-          }}
-        >
-          تصفير
-        </button>
+        </Button>
+        {confirmReset ? (
+          <div className="tasbeeh-counter__confirm" role="alertdialog" aria-label="تأكيد التصفير">
+            <Button type="button" variant="destructive" size="small" onClick={() => { reset(); setConfirmReset(false); }}>
+              تأكيد التصفير
+            </Button>
+            <Button type="button" variant="ghost" size="small" onClick={() => setConfirmReset(false)}>
+              إلغاء
+            </Button>
+          </div>
+        ) : (
+          <Button
+            type="button"
+            variant="ghost"
+            size="small"
+            className="tasbeeh-counter__btn tasbeeh-counter__btn--ghost"
+            onClick={() => setConfirmReset(true)}
+          >
+            تصفير
+          </Button>
+        )}
       </div>
 
       <p className="tc-keyboard-hint" aria-hidden="true">

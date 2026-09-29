@@ -14,6 +14,7 @@ import { logSupabaseError } from "@/lib/supabase-config";
 import { preloadRoute } from "@/lib/lazy-with-retry";
 import { Loading } from "@/components/ui-common";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { FormLabel, FieldError } from "@/components/design-system";
 import { PasswordPolicyChecklist } from "@/components/auth/PasswordPolicyChecklist";
 import { applyPageSeo } from "@/lib/seo";
@@ -441,7 +442,7 @@ export default function LoginPage() {
             {tab === "register" ? (
               <div className="login-field">
                 <FormLabel htmlFor="auth-name">الاسم</FormLabel>
-                <input
+                <Input
                   id="auth-name"
                   type="text"
                   autoComplete="name"
@@ -451,14 +452,15 @@ export default function LoginPage() {
                   required
                   minLength={2}
                   disabled={loading || !authEnabled}
-                  className="text-base"
+                  className="min-h-11 text-base"
+                  aria-describedby={error ? "auth-form-error" : undefined}
                 />
               </div>
             ) : null}
 
             <div className="login-field">
               <FormLabel htmlFor="auth-email">البريد الإلكتروني</FormLabel>
-              <input
+              <Input
                 id="auth-email"
                 type="email"
                 inputMode="email"
@@ -468,15 +470,16 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 disabled={loading || !authEnabled}
-                className="text-base"
+                className="min-h-11 text-base"
                 aria-invalid={error ? true : undefined}
+                aria-describedby={error ? "auth-form-error" : !authEnabled ? "auth-form-config-error" : undefined}
               />
             </div>
 
             {tab !== "forgot" ? (
               <div className="login-field">
                 <FormLabel htmlFor="auth-password">كلمة المرور</FormLabel>
-                <input
+                <Input
                   id="auth-password"
                   type="password"
                   autoComplete={tab === "register" ? "new-password" : "current-password"}
@@ -486,7 +489,8 @@ export default function LoginPage() {
                   required
                   minLength={tab === "register" ? PASSWORD_MIN_LENGTH : undefined}
                   disabled={loading || !authEnabled}
-                  className="text-base"
+                  className="min-h-11 text-base"
+                  aria-describedby={error ? "auth-form-error" : undefined}
                 />
                 {tab === "register" ? <PasswordPolicyChecklist password={password} /> : null}
               </div>
@@ -495,7 +499,7 @@ export default function LoginPage() {
             {tab === "register" ? (
               <div className="login-field">
                 <FormLabel htmlFor="auth-confirm">تأكيد كلمة المرور</FormLabel>
-                <input
+                <Input
                   id="auth-confirm"
                   type="password"
                   autoComplete="new-password"
@@ -505,7 +509,8 @@ export default function LoginPage() {
                   required
                   minLength={PASSWORD_MIN_LENGTH}
                   disabled={loading || !authEnabled}
-                  className="text-base"
+                  className="min-h-11 text-base"
+                  aria-describedby={error ? "auth-form-error" : undefined}
                 />
               </div>
             ) : null}

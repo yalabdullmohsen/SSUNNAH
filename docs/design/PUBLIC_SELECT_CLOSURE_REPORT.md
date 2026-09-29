@@ -23,7 +23,7 @@
 | `components/adhan/AudioPromptsSettingsCard.tsx` | **PRAYER_SPECIAL** | |
 | `pages/account/ui/NotificationsAndSoundView.tsx` | **PRAYER_SPECIAL** (alert/voice) | do not regress adhan |
 | `pages/account/ui/NotificationSettingsView.tsx` | **NATIVE_JUSTIFIED** | 24h window hours ×2 |
-| `pages/account/ui/SettingsView.tsx` | **MIXED** · MUSHAF_SPECIAL (font/reciter/tafsir/rate) · MIGRATE_NOW deferred (fontSize UI) | split carefully later |
+| `pages/account/ui/SettingsView.tsx` | **MIXED** · MIGRATE_NOW done (fontSize · quran font · playback) · MUSHAF_SPECIAL remains (reciter/tafsir) | PR5 |
 | Admin `views/admin/*` · `admin-v3/*` | **ADMIN_ONLY** | out of scope |
 
 Prior PR1 done: `SunnahChannelsPanel`, `QuranPeopleView`.
@@ -50,6 +50,12 @@ Prior PR1 done: `SunnahChannelsPanel`, `QuranPeopleView`.
 
 **publicNative = 12** (14 − 2). Gate `public-select-pr3-gate.test.ts` enforces ≤ 12.
 
+## PR5 (forms wave) select notes
+
+- Migrated Settings **fontSize**, **quran font**, **playback rate** → Select + FieldLabel.
+- File-level publicNative remains **12** because Settings still hosts reciter/tafsir natives (MUSHAF_SPECIAL) and other justified files unchanged.
+- See `docs/design/PR5_FORMS_FEEDBACK_CLOSURE_REPORT.md`.
+
 ## Deferred justified
 
-PRAYER_SPECIAL · MUSHAF_SPECIAL · long lists · hour windows · Settings mixed — documented above; no forced migrate.
+PRAYER_SPECIAL · MUSHAF_SPECIAL · long lists · hour windows · Settings reciter/tafsir — documented above; no forced migrate.

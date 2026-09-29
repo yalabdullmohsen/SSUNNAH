@@ -30,7 +30,7 @@ import { getSurahMeta } from "@/lib/quran-api";
 import { toArabicIndicDigits as toArabicDigits } from "@/lib/numerals";
 import { navigateTo } from "@/lib/navigation-intent";
 import { LastReadingBookmarkCard } from "@/components/quran/LastReadingBookmarkCard";
-import { FieldLabel } from "@/components/design-system/FormFields";
+import { FieldError, FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
   SelectContent,
@@ -70,6 +70,7 @@ export default function MushafBookmarksView() {
   const [query, setQuery] = useState("");
   const [includeArchived, setIncludeArchived] = useState(false);
   const [tick, setTick] = useState(0);
+  const [importError, setImportError] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const refresh = useCallback(() => setTick((t) => t + 1), []);
@@ -126,8 +127,16 @@ export default function MushafBookmarksView() {
   const onImportFile = async (file: File) => {
     const text = await file.text();
     const result = await importBookmarksJson(text);
-    if (result.ok) refresh();
-    else window.alert(result.error);
+    if (result.ok) {
+      setImportError(null);
+      refresh();
+      return;
+    }
+    setImportError(
+      typeof result.error === "string" && result.error.trim()
+        ? "تعذّر استيراد الملف. تحقّق من صيغة JSON ثم أعد المحاولة."
+        : "تعذّر استيراد الملف.",
+    );
   };
 
   return (
@@ -139,6 +148,12 @@ export default function MushafBookmarksView() {
         <h1 className="rb-manager__title">علامات المصحف</h1>
         <span className="rb-manager__count">{toArabicDigits(stats.total)}</span>
       </header>
+
+      {importError ? (
+        <FieldError id="rb-import-error" className="rb-manager__import-error">
+          {importError}
+        </FieldError>
+      ) : null}
 
       <LastReadingBookmarkCard className="rb-manager__resume" />
 

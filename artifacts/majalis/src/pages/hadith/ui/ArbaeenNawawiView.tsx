@@ -105,6 +105,7 @@ export default function ArbaeenNawawiPage() {
   );
   const [menuOpen, setMenuOpen] = useState(false);
   const [moreFiltersOpen, setMoreFiltersOpen] = useState(false);
+  const [confirmReset, setConfirmReset] = useState(false);
 
   useEffect(() => {
     applyPageSeo({
@@ -147,9 +148,9 @@ export default function ArbaeenNawawiPage() {
       : `${read.size} من ${ARBAEEN_NAWAWI.length} • ${pct}٪`;
 
   const resetProgress = () => {
-    if (!window.confirm("هل تريد إعادة تعيين تقدم القراءة؟")) return;
     setRead(new Set());
     saveRead(new Set());
+    setConfirmReset(false);
     setMenuOpen(false);
   };
 
@@ -176,9 +177,21 @@ export default function ArbaeenNawawiPage() {
               </Button>
               {menuOpen ? (
                 <div className="an-toolbar__dropdown" role="menu">
-                  <Button type="button" role="menuitem" onClick={resetProgress} variant="ghost">
-                    إعادة تعيين التقدم
-                  </Button>
+                  {confirmReset ? (
+                    <div className="an-toolbar__confirm" role="alertdialog" aria-label="تأكيد إعادة التعيين">
+                      <p>هل تريد إعادة تعيين تقدم القراءة؟</p>
+                      <Button type="button" variant="destructive" size="small" onClick={resetProgress}>
+                        تأكيد
+                      </Button>
+                      <Button type="button" variant="ghost" size="small" onClick={() => setConfirmReset(false)}>
+                        إلغاء
+                      </Button>
+                    </div>
+                  ) : (
+                    <Button type="button" role="menuitem" onClick={() => setConfirmReset(true)} variant="ghost">
+                      إعادة تعيين التقدم
+                    </Button>
+                  )}
                 </div>
               ) : null}
             </div>
