@@ -21,6 +21,14 @@ import {
 import "@/styles/components/filters.css";
 import "@/styles/pages/quran-circles.css";
 import { ListScreen } from "@/components/design-system/screens";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const LEVELS = ["الكل", "مبتدئ", "متوسط", "متقدم"] as const;
 const TRACKS = ["الكل", "رجال", "نساء", "أطفال", "عام"] as const;
@@ -364,45 +372,65 @@ export default function QuranCirclesPage() {
 
       <FilterSheet open={filtersOpen} onClose={() => setFiltersOpen(false)} title="تصفية الحلقات">
         <div className="mj-filter-fields">
-          <label>
-            المستوى
-            <select value={level} onChange={(e) => setLevel(e.target.value)}>
-              {LEVELS.map((x) => (
-                <option key={x} value={x}>
-                  {x}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            المسار
-            <select value={track} onChange={(e) => setTrack(e.target.value)}>
-              {TRACKS.map((x) => (
-                <option key={x} value={x}>
-                  {x}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            نوع الحضور
-            <select value={mode} onChange={(e) => setMode(e.target.value)}>
-              <option value="الكل">الكل</option>
-              <option value="حضوري">حضوري</option>
-              <option value="عن بُعد">عن بعد</option>
-              <option value="هجين">هجين</option>
-            </select>
-          </label>
-          <label>
-            المحافظة / المنطقة
-            <select value={governorate} onChange={(e) => setGovernorate(e.target.value)}>
-              {governorateOptions.map((x) => (
-                <option key={x} value={x}>
-                  {x}
-                </option>
-              ))}
-            </select>
-          </label>
+          <div className="qc-filter-field">
+            <FieldLabel>المستوى</FieldLabel>
+            <Select value={level} onValueChange={setLevel}>
+              <SelectTrigger className="min-h-11 text-base" aria-label="المستوى">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {LEVELS.map((x) => (
+                  <SelectItem key={x} value={x}>
+                    {x}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="qc-filter-field">
+            <FieldLabel>المسار</FieldLabel>
+            <Select value={track} onValueChange={setTrack}>
+              <SelectTrigger className="min-h-11 text-base" aria-label="المسار">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {TRACKS.map((x) => (
+                  <SelectItem key={x} value={x}>
+                    {x}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="qc-filter-field">
+            <FieldLabel>نوع الحضور</FieldLabel>
+            <Select value={mode} onValueChange={setMode}>
+              <SelectTrigger className="min-h-11 text-base" aria-label="نوع الحضور">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="الكل">الكل</SelectItem>
+                <SelectItem value="حضوري">حضوري</SelectItem>
+                <SelectItem value="عن بُعد">عن بعد</SelectItem>
+                <SelectItem value="هجين">هجين</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="qc-filter-field">
+            <FieldLabel>المحافظة / المنطقة</FieldLabel>
+            <Select value={governorate} onValueChange={setGovernorate}>
+              <SelectTrigger className="min-h-11 text-base" aria-label="المحافظة / المنطقة">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {governorateOptions.map((x) => (
+                  <SelectItem key={x} value={x}>
+                    {x}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
           <label className="qc-sheet-check">
             <input
               type="checkbox"

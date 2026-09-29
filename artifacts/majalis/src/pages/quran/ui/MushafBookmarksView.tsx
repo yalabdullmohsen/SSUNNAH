@@ -30,6 +30,14 @@ import { getSurahMeta } from "@/lib/quran-api";
 import { toArabicIndicDigits as toArabicDigits } from "@/lib/numerals";
 import { navigateTo } from "@/lib/navigation-intent";
 import { LastReadingBookmarkCard } from "@/components/quran/LastReadingBookmarkCard";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import "@/styles/reader-bookmarks-manager.css";
 
 const SURAH_OPTIONS = Array.from({ length: 114 }, (_, i) => i + 1);
@@ -184,32 +192,44 @@ export default function MushafBookmarksView() {
           onChange={(e) => setQuery(e.target.value)}
           aria-label="بحث"
         />
-        <select
-          className="rb-manager__select"
-          value={kind}
-          onChange={(e) => setKind(e.target.value as MushafBookmarkKind | "all")}
-          aria-label="تصفية النوع"
-        >
-          <option value="all">كل الأنواع</option>
-          {MUSHAF_BOOKMARK_KINDS.map((k) => (
-            <option key={k.id} value={k.id}>
-              {k.label}
-            </option>
-          ))}
-        </select>
-        <select
-          className="rb-manager__select"
-          value={surah ?? ""}
-          onChange={(e) => setSurah(e.target.value ? Number(e.target.value) : null)}
-          aria-label="تصفية السورة"
-        >
-          <option value="">كل السور</option>
-          {SURAH_OPTIONS.map((n) => (
-            <option key={n} value={n}>
-              {getSurahMeta(n).name}
-            </option>
-          ))}
-        </select>
+        <div className="rb-manager__select-field">
+          <FieldLabel className="sr-only">تصفية النوع</FieldLabel>
+          <Select
+            value={kind}
+            onValueChange={(v) => setKind(v as MushafBookmarkKind | "all")}
+          >
+            <SelectTrigger className="rb-manager__select min-h-11 text-base" aria-label="تصفية النوع">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">كل الأنواع</SelectItem>
+              {MUSHAF_BOOKMARK_KINDS.map((k) => (
+                <SelectItem key={k.id} value={k.id}>
+                  {k.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="rb-manager__select-field">
+          <FieldLabel className="sr-only">تصفية السورة</FieldLabel>
+          <Select
+            value={surah == null ? "all" : String(surah)}
+            onValueChange={(v) => setSurah(v === "all" ? null : Number(v))}
+          >
+            <SelectTrigger className="rb-manager__select min-h-11 text-base" aria-label="تصفية السورة">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">كل السور</SelectItem>
+              {SURAH_OPTIONS.map((n) => (
+                <SelectItem key={n} value={String(n)}>
+                  {getSurahMeta(n).name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
       <div className="rb-manager__actions">

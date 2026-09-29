@@ -60,5 +60,6 @@ assert.match(view, /aria-label="إعدادات الحساب"/, "اسم وصول 
 assert.match(view, /role="progressbar"/, "شريط تقدّم دلالي");
 assert.match(css, /html\[data-theme="dark"\]\s*\.myl2-page/, "أنماط Dark Mode");
 assert.match(css, /\.myl2-page\s*\{/, "سطح الصفحة");
+assert.match(css, /max-width:\s*700px/, "قيد عرض المحتوى (تقليل overflow)");
 
 console.log("my-learning-route-quality-gate.test.ts: ok");

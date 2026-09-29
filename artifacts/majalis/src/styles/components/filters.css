@@ -295,7 +295,8 @@ html.dark .mj-active-filters__count,
   gap: 0.65rem;
 }
 
-.mj-filter-fields label {
+.mj-filter-fields label,
+.mj-filter-fields .qc-filter-field {
   display: grid;
   gap: 0.3rem;
   font-size: 0.85rem;
@@ -304,7 +305,9 @@ html.dark .mj-active-filters__count,
 }
 
 html.dark .mj-filter-fields label,
-[data-theme="dark"] .mj-filter-fields label {
+html.dark .mj-filter-fields .qc-filter-field,
+[data-theme="dark"] .mj-filter-fields label,
+[data-theme="dark"] .mj-filter-fields .qc-filter-field {
   color: var(--mj-ink, #f2f7f4);
 }
 
