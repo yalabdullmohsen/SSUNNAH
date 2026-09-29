@@ -101,7 +101,13 @@ Individual gates:
 - No new token systems, `!important`, or raw color additions in touched files.
 - Closed program items **not** reopened (Critical CSS, soft-cards, Nav×Prayer, etc.).
 
-Verification run on branch (post-freeze): `verify:preflight`, `verify:ci`, `release:verify` — see CI / local logs at merge time.
+Verification (branch tip `28f6c30d2`, local):
+
+| Step | Result |
+|---|---|
+| `verify:preflight` | PASS |
+| `verify:ci` | PASS (~322s) |
+| `release:verify` | PASS (`TECHNICALLY_VERIFIED_WITH_EXTERNAL_BLOCKERS`, store HOLD) |
 
 ## REMAINING_DEBT
 
