@@ -81,8 +81,8 @@ body,
   color: var(--color-text);
 }
 
-/* بطاقات قراءة/مراجع فاتحة — البطاقات الرئيسية (هيرو/أبواب/دروس/مسارات) تبقى زمرد داكن عبر card-system */
-.soft-card:not(.hub-card):not(.lesson-unified-card):not(.lpp-path-card):not(.topic-card):not(.section-entry-card):not(.mk-lane-card):not(.ss-feature-card__inner):not(.kuwait-lesson-card):not(.fiqh-category-card):not(.iman-topic-card):not(.tawheed-type-card):not(.dii-hub-card):not(.kids-hub-card):not(.twh-hub-card):not(.twh-pillar-card):not(.lesson-course-card),
+/* بطاقات قراءة/مراجع فاتحة — البطاقات الرئيسية عبر card-system؛ soft-card متقاعد */
+.soft-card:not(.hub-card),
 .section-card,
 .ds-card,
 .mj-card,
@@ -92,6 +92,7 @@ body,
 .akl-card,
 .tarikh-card,
 .mk-card,
+.mk-lane-card,
 .fiqh-book-card,
 .ve-book-card,
 .ve-chapter-card,
@@ -111,6 +112,7 @@ body,
 .uq-fact-item,
 .uq-dalil-box,
 .uq-info-box,
+.dii-hub-card,
 .dii-list-card,
 .dii-block,
 .dii-journey-step,
@@ -124,6 +126,8 @@ body,
 .hb-hadith-row,
 .fqh-hub-card,
 .quran-hub-card,
+.twh-hub-card,
+.tawheed-type-card,
 .hlr__card {
   background: var(--color-surface) !important;
   border: 1px solid color-mix(in srgb, var(--color-border) 88%, transparent) !important;
@@ -449,8 +453,7 @@ html.dark .sidebar-item.active {
   color: var(--color-text) !important;
 }
 
-.lesson-unified-card,
-.lessons-page .soft-card {
+.lesson-unified-card {
   background: var(--color-surface) !important;
   border: 1px solid var(--color-border) !important;
   box-shadow: var(--shadow-soft) !important;
@@ -518,8 +521,7 @@ html.dark .sidebar-item.active {
   margin-bottom: 0.85rem;
 }
 
-.fqh-hub-card,
-.fiqh-hub .soft-card {
+.fqh-hub-card {
   background: var(--color-surface) !important;
   border: 1px solid var(--color-border) !important;
   box-shadow: var(--shadow-soft) !important;
@@ -565,7 +567,6 @@ html.dark .sidebar-item.active {
 /* أيقونات موحّدة الحجم/اللون في البطاقات */
 .hub-card svg,
 .section-card svg,
-.soft-card svg,
 .sidebar-item-icon svg {
   width: 1.15rem;
   height: 1.15rem;

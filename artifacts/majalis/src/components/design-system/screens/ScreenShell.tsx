@@ -10,6 +10,7 @@ import { LoadingStateV2 } from "@/components/design-system/LoadingStateV2";
 import { OfflineStateV2 } from "@/components/design-system/OfflineStateV2";
 import type { SsScreenDensity, SsScreenPattern } from "@/lib/ssunnah-screen-patterns";
 import { ACTION, EMPTY, STATUS } from "@/lib/ui-copy";
+import "@/styles/ssunnah-screen-patterns.css";
 import "@/styles/app-state-v2.css";
 
 export type ScreenShellStatus = "ready" | "loading" | "empty" | "error" | "offline";

@@ -110,10 +110,6 @@ html.dark .app-main {
 }
 
 /* منع أسطح نهارية شائعة */
-html[data-theme="dark"] .soft-card--on-light,
-html.dark .soft-card--on-light,
-html[data-theme="dark"] .soft-card,
-html.dark .soft-card,
 html[data-theme="dark"] .mj-card,
 html.dark .mj-card,
 html[data-theme="dark"] .ss-card,

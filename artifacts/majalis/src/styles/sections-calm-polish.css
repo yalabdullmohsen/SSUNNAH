@@ -69,7 +69,6 @@ html.dark {
 }
 
 /* ── بطاقات موحّدة (أقسام المحتوى + الهيكل) ─────────────────────────── */
-.soft-card,
 .hub-card,
 .section-card,
 .section-hub__card,
@@ -150,7 +149,6 @@ html.dark {
   border-radius: var(--radius-button, 18px) !important;
 }
 
-.soft-card:hover,
 .hub-card:hover,
 .section-hub__card:hover,
 .lesson-unified-card:hover {
@@ -591,7 +589,6 @@ button:not([disabled]),
 a.mj-btn,
 a.m2030-btn,
 .hub-card,
-.soft-card.mj-pressable,
 .hs-cat-chip,
 .hb-tab,
 .ds-filter-toggle,

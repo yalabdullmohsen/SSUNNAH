@@ -45,8 +45,17 @@ assert.doesNotMatch(css, /#[0-9A-Fa-f]{3,8}\b/, "CSS الأنماط بلا هك�
 assert.match(css, /--ss-space-|--spacing-mj-/);
 assert.match(css, /ss-screen-grid--2/);
 
-const main = read("src/main.tsx");
-assert.match(main, /ssunnah-screen-patterns\.css/);
+const shellSrc = read("src/components/design-system/screens/ScreenShell.tsx");
+assert.match(
+  shellSrc,
+  /ssunnah-screen-patterns\.css/,
+  "أنماط الشاشات تُحمَّل مع ScreenShell (خارج CSS الحرج)",
+);
+assert.doesNotMatch(
+  read("src/main.tsx"),
+  /^import\s+["']\.\/styles\/ssunnah-screen-patterns\.css["']/m,
+  "لا استيراد متزامن لـ screen-patterns من main (ميزانية الحرج)",
+);
 
 const dsIndex = read("src/components/design-system/index.ts");
 assert.match(dsIndex, /GridScreen|DashboardScreen/);
