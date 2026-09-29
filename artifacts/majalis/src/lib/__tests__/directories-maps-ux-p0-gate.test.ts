@@ -67,11 +67,13 @@ assert.match(explorerPage, /ilm-explorer|data-testid="ilm-map-explorer"/, "مس�
 const tasbeeh = read("src/components/reading/TasbeehCounter.tsx");
 assert.match(tasbeeh, /isCustomTarget/, "هدف مخصص منفصل");
 assert.match(tasbeeh, /tasbeeh-counter__custom-target--row/, "صف هدف مخصص مستقل");
-assert.match(tasbeeh, /window\.confirm\([\s\S]*تصفير/, "تصفير يحتاج تأكيدًا");
+assert.match(tasbeeh, /alertdialog/, "تصفير يحتاج تأكيدًا داخل الصفحة");
+assert.doesNotMatch(tasbeeh, /window\.confirm/, "لا window.confirm للتصفير");
 
 const tasbihView = read("src/pages/worship/ui/TasbihView.tsx");
 assert.match(tasbihView, /tasbeeh-stats-strip/, "ملخص إحصاء مضغوط");
-assert.match(tasbihView, /confirm\([\s\S]*حذف/, "حذف الورد يحتاج تأكيدًا");
+assert.match(tasbihView, /alertdialog/, "حذف الورد يحتاج تأكيدًا داخل الصفحة");
+assert.doesNotMatch(tasbihView, /window\.confirm/, "لا window.confirm لحذف الورد");
 assert.doesNotMatch(tasbihView, /FloatingBackButton/, "لا زر رجوع عائم في التسبيح");
 
 // ── Universities ──────────────────────────────────────────────────
@@ -123,6 +125,7 @@ const fabWidget = read("src/components/assistant/AssistantFloatingWidget.tsx");
 assert.match(fabWidget, /isAssistantFeatureEnabled/, "FAB المساعد يحترم علم المنتج");
 assert.match(read("src/index.css"), /assistant-fab[\s\S]{0,220}bottom-nav-height/, "FAB فوق الشريط السفلي");
 assert.match(read("src/styles/pages/tasbih.css"), /bottom-nav-height/, "inset التسبيح");
-assert.match(tasbeeh, /window\.confirm\([\s\S]*تصفير/, "تصفير (كل الأوضاع) يحتاج تأكيدًا");
+assert.match(tasbeeh, /alertdialog/, "تصفير (كل الأوضاع) يحتاج تأكيدًا داخل الصفحة");
+assert.doesNotMatch(tasbeeh, /window\.confirm/, "لا window.confirm في عدّاد التسبيح");
 
 console.log("directories-maps-ux-p0-gate.test.ts: ok");
