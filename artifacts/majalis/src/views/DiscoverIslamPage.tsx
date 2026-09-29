@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import {
   BookOpen,
@@ -117,14 +118,14 @@ export default function DiscoverIslamPage() {
         <span className="dii-lang-label">اختر لغتك:</span>
         <div className="dii-lang-chips">
           {LANG_META.map((m) => (
-            <button
+            <Button
               key={m.code}
               type="button"
               onClick={() => setLang(m.code)}
               className={`content-hub-chip${lang === m.code ? " content-hub-chip--active" : ""}`}
             >
               {m.nativeName}
-            </button>
+            </Button>
           ))}
         </div>
       </div>

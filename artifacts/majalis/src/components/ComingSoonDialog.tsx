@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   open: boolean;
@@ -45,15 +46,17 @@ export function ComingSoonDialog({ open, title, onClose }: Props) {
         <div className="bottom-sheet__handle" />
         <div className="bottom-sheet__head">
           <span>قسم غير متاح</span>
-          <button
+          <Button
             ref={closeRef}
             type="button"
+            variant="ghost"
+            size="icon"
             onClick={onClose}
             className="bottom-sheet__close-btn"
             aria-label="إغلاق"
           >
             <X size={18} strokeWidth={1.8} aria-hidden="true" />
-          </button>
+          </Button>
         </div>
         <div className="bottom-sheet__body">
           <div className="coming-soon-dialog__body">

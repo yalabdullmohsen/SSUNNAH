@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { ExternalLink, MapPin, Trophy } from "lucide-react";
 import { SectionLobby } from "@/components/lobby/SectionLobby";
@@ -104,7 +105,7 @@ export default function CompetitionsHubView() {
 
         <div className="cmp-filters" role="toolbar" aria-label="تصفية المسابقات" hidden={all.length === 0}>
           {COMPETITION_FILTERS.map((f) => (
-            <button
+            <Button
               key={f.id}
               type="button"
               className={filter === f.id ? "cmp-filter cmp-filter--active" : "cmp-filter"}
@@ -112,7 +113,7 @@ export default function CompetitionsHubView() {
               onClick={() => setFilter(f.id)}
             >
               {f.label}
-            </button>
+            </Button>
           ))}
         </div>
 

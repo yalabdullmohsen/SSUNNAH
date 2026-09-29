@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
+import { Button } from "@/components/ui/button";
 import { applyPageSeo } from "../lib/seo";
 import "@/styles/pages/tahara.css";
 import { ShareButtons } from "@/components/ContentActions";
@@ -205,7 +206,7 @@ export default function TaharaPage() {
 
         <div className="th-tabs" aria-label="أقسام الطهارة" role="tablist">
           {TABS.map((t) => (
-            <button
+            <Button
               key={t.id}
               id={`thr-tab-${t.id}`}
               type="button"
@@ -217,7 +218,7 @@ export default function TaharaPage() {
             >
               <span className="th-tab__icon"><SectionIcon name={t.icon} size={24} /></span>
               <span className="th-tab__label">{t.label}</span>
-            </button>
+            </Button>
           ))}
         </div>
       </section>

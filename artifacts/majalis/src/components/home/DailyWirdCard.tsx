@@ -2,6 +2,7 @@
  * DailyWirdCard — ورد اليوم: آية + حديث بمصدر + ذكر + فائدة + «تم اليوم».
  */
 import { useCallback, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { BookOpen, Check, Heart, MessageCircle, Sparkles } from "lucide-react";
 import { AppCard } from "@/components/design-system/AppCard";
@@ -82,7 +83,7 @@ export function DailyWirdCard() {
       <div className="m2030-band__head">
         <h2 className="m2030-band__title">ورد اليوم</h2>
         <div className="daily-wird-card__actions">
-          <button
+          <Button
             type="button"
             className={`daily-wird-card__done-btn${done ? " is-done" : ""}`}
             onClick={toggleDone}
@@ -90,7 +91,7 @@ export function DailyWirdCard() {
           >
             <Check size={16} aria-hidden="true" />
             {done ? "أُنجز" : "تم"}
-          </button>
+          </Button>
           <Link href="/daily-wird" className="m2030-band__link">
             الورد الكامل
           </Link>

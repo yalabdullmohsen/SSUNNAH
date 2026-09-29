@@ -29,7 +29,7 @@ assert.doesNotMatch(settings, /المظهر والقراءة والمصحف/, "�
 assert.match(settings, /id:\s*"feature-tour"/, "جولة المزايا ضمن SettingsList");
 assert.match(settings, /id:\s*"clear-local"/, "مسح المحلي ضمن SettingsList");
 assert.match(settings, /id:\s*"refresh-version"/, "تحديث النسخة ضمن SettingsList");
-assert.match(settings, /soft-card soft-card--on-light settings-account-card/, "بطاقة الحساب soft-card");
+assert.match(settings, /AppCard[\s\S]{0,120}settings-account-card/, "بطاقة الحساب عبر AppCard (soft-card داخلي)");
 
 const notif = readFileSync(resolve(root, "src/pages/account/ui/NotificationSettingsView.tsx"), "utf8");
 assert.match(notif, /soft-card soft-card--on-light notif-card/, "إشعارات: soft-card");

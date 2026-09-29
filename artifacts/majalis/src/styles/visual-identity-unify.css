@@ -1,7 +1,7 @@
 /**
  * LEGACY_NON_SOT (Foundation Reset PR-1)
  * ليس مصدر حقيقة للوحة — المصدر: sunnah-foundation-tokens.css (--sf-*).
- * يبقى للتشغيل حتى PR-13 — لا تعرّف --mj-brand / radius سلم جديد هنا.
+ * جسر --mj-* نُقل إلى theme-aliases.css (TOKEN ABSORB) — هنا استهلاك + قواعد UI فقط.
  *
  * visual-identity-unify.css
  * طبقة توحيد الهوية البصرية — مصحف هادئ (عاجي + أخضر عميق + ذهبي).
@@ -10,35 +10,7 @@
  */
 
 :root {
-  /*
-   * جسر إلى Foundation — Dark Emerald + Warm Ivory + Gold accent.
-   * لا لوحة منافسة · لا أخضر باهت صلب · ظلال خفيفة فقط.
-   */
-  --mj-bg: var(--sf-color-warm-ivory, #f8f6f1);
-  --mj-surface: var(--sf-color-warm-ivory-surface, #ffffff);
-  --mj-surface-2: var(--sf-color-warm-ivory, #f8f6f1);
-  --mj-surface-3: var(--sf-color-warm-ivory-surface, #ffffff);
-  --mj-hairline: var(--sf-hairline, rgba(15, 92, 63, 0.12));
-  --mj-ink: var(--sf-color-rich-ink, #15382d);
-  --mj-ink-2: var(--sf-color-rich-ink-soft, #48645a);
-  --mj-muted: var(--sf-color-rich-ink-muted, #5f7168);
-  --mj-brand: var(--sf-color-deep-emerald, #0f5c3f);
-  --mj-brand-soft: var(--sf-color-deep-emerald-soft);
-  --mj-brand-tint: color-mix(in srgb, var(--mj-brand) 10%, var(--mj-surface));
-  --mj-brand-deep: var(--sf-color-deep-emerald-deep, #0a4530);
-  --mj-accent: var(--sf-color-quran-gold, #c9a82e);
-  --mj-accent-soft: color-mix(in srgb, var(--mj-accent) 14%, var(--mj-surface));
-  --mj-warning-soft: #fef3c7;
-  --mj-warning: #b45309;
-  --mj-danger-soft: #fce8e6;
-  --mj-danger: #b54a4a;
-  --mj-info: #1a3a5c;
-  --mj-info-soft: #e8eef5;
-  --mj-success-soft: color-mix(in srgb, var(--mj-brand) 12%, var(--mj-surface));
-  --mj-white: #ffffff;
-  --mj-on-brand: var(--sf-color-on-emerald, #f7f1e4);
-  --mj-sh: var(--sf-shadow-soft, none);
-
+  /* Semantic color aliases — تستهلك --mj-* من theme-aliases (لا تعيد تعريف اللوحة) */
   --color-bg: var(--mj-bg);
   --color-surface: var(--mj-surface);
   --color-surface-soft: var(--mj-surface-2);
@@ -80,35 +52,6 @@
 
 html[data-theme="dark"],
 html.dark {
-  --mj-bg: #121816;
-  --mj-surface: #1b2421;
-  --mj-surface-2: #121816;
-  --mj-surface-3: #121816;
-  --mj-hairline: #3a4641;
-  --mj-ink: #f3f7f5;
-  --mj-ink-2: #c5d0cb;
-  --mj-muted: #c5d0cb;
-  --mj-brand: #5fbf98;
-  --mj-brand-soft: rgba(95, 191, 152, 0.16);
-  --mj-brand-tint: color-mix(in srgb, var(--mj-brand) 14%, var(--mj-surface));
-  --mj-brand-deep: #8fd4b0;
-  --mj-accent: #d9b871;
-  /* سطح ذهبي هادئ صلب (خلفيات/حاويات) — ليس طبقة شفافة للنص */
-  --mj-accent-soft: color-mix(in srgb, var(--mj-accent) 18%, var(--mj-surface));
-  /* غسلة شفافة اختيارية للـoverlay فقط — لا تُستخدم كلون نص */
-  --mj-accent-wash: color-mix(in srgb, var(--mj-accent) 16%, transparent);
-  --mj-warning-soft: rgba(217,119,6,0.16);
-  --mj-warning: #d97706;
-  --mj-danger-soft: rgba(240,113,120,0.18);
-  --mj-danger: #f07178;
-  --mj-info: #7dd3fc;
-  --mj-info-soft: rgba(125,211,252,0.14);
-  --mj-success-soft: rgba(126,214,168,0.16);
-  --mj-white: #ffffff;
-  /* على أخضر فاتح ليلي: حبر داكن واضح (AA) */
-  --mj-on-brand: #06231a;
-  --mj-sh: 0 6px 18px -12px rgba(0, 0, 0, 0.55);
-
   --color-bg: var(--mj-bg);
   --color-surface: var(--mj-surface);
   --color-surface-soft: var(--mj-surface-2);

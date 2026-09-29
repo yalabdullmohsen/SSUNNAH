@@ -4,6 +4,7 @@ import {
   isLocalBookmarked,
   toggleLocalBookmark,
 } from "@/lib/local-bookmarks";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   contentType: string;
@@ -105,17 +106,20 @@ export function FavoriteButton({
   };
 
   return (
-    <button
+    <Button
       type="button"
+      variant={bookmarked ? "secondary" : "outline"}
+      size="small"
       onClick={toggle}
       disabled={busy}
+      loading={busy}
       className={`favorite-btn mj-pressable${bookmarked ? " favorite-btn--active" : ""}${compact ? " favorite-btn--compact" : ""} ${className}`.trim()}
       aria-pressed={bookmarked}
       aria-label={bookmarked ? "إزالة من المفضلة" : "إضافة للمفضلة"}
       title={mode === "local" ? "يُحفظ على هذا الجهاز" : "يُحفظ في حسابك"}
     >
       {bookmarked ? (compact ? "محفوظ" : "في المفضلة") : compact ? "حفظ" : "إضافة للمفضلة"}
-    </button>
+    </Button>
   );
 }
 

@@ -76,6 +76,7 @@ export { PrimaryButton, SecondaryButton, IconButton } from "./Buttons";
 export { SettingsList, type SettingsListRow } from "./SettingsList";
 export {
   FormLabel,
+  FieldLabel,
   FieldDescription,
   FieldError,
   FormActions,

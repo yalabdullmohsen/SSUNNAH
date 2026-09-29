@@ -81,9 +81,16 @@ Phase 5 **does not** delete SAFE_REMOVE_CANDIDATE entries.
 
 | Path / layer | Status | Next wave |
 |---|---|---|
-| `styles/visual-identity-unify.css` | OVERRIDE_PATCH / KEEP | Absorb → retire PR-10/11 |
-| `styles/sections-calm-polish.css` | OVERRIDE_PATCH / KEEP | Absorb → retire |
-| `styles/soft-cards.css` | MIGRATION_CANDIDATE | Cards PR-3 |
+| `styles/visual-identity-unify.css` | OVERRIDE_PATCH / KEEP | **TOKEN ABSORB done** (`--mj-*` → theme-aliases); consumer rules remain |
+| `styles/sections-calm-polish.css` | OVERRIDE_PATCH / KEEP | **TOKEN ABSORB done** (competing hex removed; chips → aliases) |
+| `styles/typography-scale.css` | COMPATIBILITY | **TOKEN ABSORB** `--mj-fs-*` → theme-aliases |
+| `styles/soft-cards.css` | MIGRATION_CANDIDATE | Soft-card inventory + AppCard ports in progress |
+| `styles/dark-mode-recovery.css` | ACTIVE | Classify only — import KEEP (parity incomplete) |
+| `styles/dark-mode-surfaces.css` | ACTIVE | KEEP |
+| `styles/dark-design-system.css` | COMPATIBILITY | `--mj-*` remaps remain; absorb later |
+| `styles/premium-dark-refine.css` | ACTIVE | KEEP — winning night `--mj-*` |
+| `styles/pages/luxury-night-v2.css` | COMPATIBILITY | Deferred import KEEP |
+| `styles/sunnah-identity-luxury-night.css` | COMPATIBILITY | Identity night polish KEEP |
 | `styles/pages/*-legacy.css` | MIGRATION_CANDIDATE | PR-10/11 |
 | `styles/m2030/*` | KEEP (ACTIVE_LEGACY) | Port home/nav then retire |
 | `features/mushaf-*/*.css` | BLOCKED | Phase 11 / PR-12 only |

@@ -5,25 +5,30 @@
 | Captured | 2026-09-29T14:16Z |
 | Base tip | `68e42f8f` + this wave |
 | Before (tsx consumers excl. definition) | **128** |
-| After | **9** (KEEP only) |
-| Delta | **−119** |
+| After | **5** (KEEP only) |
+| Delta | **−123** (128→5) |
 | Canonical replacements | `AppPage`/`SectionTemplatePage` unwrap · `DetailScreen` for mark shells |
 | Forbidden | New UtilityScreen imports outside allowlist |
 | Gate | `no-new-utility-screen-gate.test.ts` |
 
-## KEEP (utility pattern — settings/tools)
+## KEEP (utility pattern — settings/tools) ≤ 5
 
 | File | Reason |
 |---|---|
 | `pages/account/ui/NotificationSettingsView.tsx` | Settings / account / tools |
 | `pages/account/ui/NotificationsAndSoundView.tsx` | Settings / account / tools |
 | `pages/account/ui/SettingsView.tsx` | Settings / account / tools |
-| `pages/account/ui/SiteMapView.tsx` | Settings / account / tools |
 | `pages/worship/ui/AdhanSettingsView.tsx` | Settings / account / tools |
-| `views/FamilyModePage.tsx` | Settings / account / tools |
 | `views/UpdatePasswordPage.tsx` | Settings / account / tools |
-| `views/UserStatsPage.tsx` | Settings / account / tools |
-| `views/VaultPage.tsx` | Settings / account / tools |
+
+## Migrated this debt wave (UNWRAP → PageHeader / page-shell)
+
+| File | Action |
+|---|---|
+| `pages/account/ui/SiteMapView.tsx` | UNWRAP |
+| `views/FamilyModePage.tsx` | UNWRAP |
+| `views/UserStatsPage.tsx` | UNWRAP (+ AppCard) |
+| `views/VaultPage.tsx` | UNWRAP |
 
 ## BLOCKED this wave
 

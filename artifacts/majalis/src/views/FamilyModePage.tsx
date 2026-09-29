@@ -6,7 +6,6 @@ import { PageHeader, PageStatusShell } from "@/components/ui-common";
 import { supabase } from "@/lib/supabase";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/family-mode.css";
-import { UtilityScreen } from "@/components/design-system/screens";
 import { EMPTY } from "@/lib/ui-copy";
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
@@ -345,7 +344,6 @@ export default function FamilyModePage() {
   }
 
   return (
-    <UtilityScreen compose="mark">
     <div className="page-shell narrow fm-page" dir="rtl">
       <PageHeader
         eyebrow="المجتمع"
@@ -389,6 +387,5 @@ export default function FamilyModePage() {
         </button>
       )}
     </div>
-    </UtilityScreen>
   );
 }

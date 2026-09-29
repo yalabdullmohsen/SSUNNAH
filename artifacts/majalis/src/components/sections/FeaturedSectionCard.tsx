@@ -1,4 +1,5 @@
 import { useLocation } from "wouter";
+import { Button } from "@/components/ui/button";
 import type { SectionDef } from "@/config/sections.registry";
 import { prefetchRoute } from "@/lib/prefetch-route";
 import { cn } from "@/lib/utils";
@@ -22,7 +23,7 @@ export function HeroActionCard({ section, className, onNavigate, resolveRoute }:
   const aria = subtitle ? `${section.label} — ${subtitle}` : section.label;
 
   return (
-    <button
+    <Button
       type="button"
       dir="rtl"
       data-section-card="featured"
@@ -49,7 +50,7 @@ export function HeroActionCard({ section, className, onNavigate, resolveRoute }:
       </span>
       <span className="card__label">{section.label}</span>
       {subtitle ? <span className="card__subtitle">{subtitle}</span> : null}
-    </button>
+    </Button>
   );
 }
 

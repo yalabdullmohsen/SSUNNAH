@@ -7,8 +7,6 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/sitemap.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { filterNavItems, isComingSoonPath } from "@/lib/nav-visibility";
-import { UtilityScreen } from "@/components/design-system/screens";
-
 const SECTIONS = [
   {
     title: "القرآن الكريم",
@@ -190,7 +188,6 @@ export default function SiteMapPage() {
   }, []);
 
   return (
-    <UtilityScreen compose="mark">
     <div className="page-shell sm-page">
       {/* Hero */}
       <header className="sm-hero">
@@ -231,6 +228,5 @@ export default function SiteMapPage() {
         <SectionQuiz route="/site-map" title="اختبر معلوماتك في العلوم الإسلامية" count={4} />
       </div>
     </div>
-    </UtilityScreen>
   );
 }

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Globe, Check, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { LANG_META, type Lang } from "@/lib/language-preference";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/language-offline.css";
 
 export function LanguageSwitcher() {
@@ -35,8 +36,10 @@ export function LanguageSwitcher() {
 
   return (
     <div className="lsw-wrap" ref={containerRef} dir={dir}>
-      <button
+      <Button
         type="button"
+        variant="ghost"
+        size="small"
         className="lsw-trigger"
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="listbox"
@@ -50,7 +53,7 @@ export function LanguageSwitcher() {
           aria-hidden="true"
           className={`lsw-trigger__chevron${open ? " lsw-trigger__chevron--open" : ""}`}
         />
-      </button>
+      </Button>
 
       {/* لا aria-activedescendant على القائمة أدناه عمدًا (أُزيل — راجع
           jsx-a11y/aria-activedescendant-has-tabindex): كل خيار <li> أدناه له

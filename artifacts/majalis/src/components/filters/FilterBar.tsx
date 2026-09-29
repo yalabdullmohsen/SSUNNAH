@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 import { cn, toArabicDigits } from "@/lib/utils";
 import { FilterToggle } from "./FilterSheet";
 import { FilterResetButton } from "./FilterResetButton";
@@ -77,7 +78,7 @@ export function FilterBar({
           <ul id={listboxId} className="mj-filter-bar__suggestions" role="listbox" aria-label="اقتراحات البحث">
             {suggestions.map((item) => (
               <li key={item} role="option" aria-selected={false}>
-                <button
+                <Button
                   type="button"
                   onMouseDown={(e) => {
                     e.preventDefault();
@@ -86,7 +87,7 @@ export function FilterBar({
                   }}
                 >
                   {item}
-                </button>
+                </Button>
               </li>
             ))}
           </ul>

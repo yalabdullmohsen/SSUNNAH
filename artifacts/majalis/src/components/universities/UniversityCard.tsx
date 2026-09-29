@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { Button } from "@/components/ui/button";
 import { Globe, GraduationCap, MapPin } from "lucide-react";
 import { Link } from "wouter";
 import type { University } from "@/lib/universities-service";
@@ -107,7 +108,7 @@ export const UniversityCard = memo(function UniversityCard({ university: u, comp
           </a>
         )}
 
-        <button
+        <Button
           type="button"
           aria-label={inCompare ? "إزالة من المقارنة" : canAdd ? "أضف للمقارنة" : "تعبأت المقارنة (4 بحد أقصى)"}
           onClick={() => inCompare ? removeFromCompare(u.slug) : addToCompare(u)}
@@ -115,7 +116,7 @@ export const UniversityCard = memo(function UniversityCard({ university: u, comp
           disabled={!inCompare && !canAdd}
         >
           {inCompare ? "✓ مقارنة" : "⇔"}
-        </button>
+        </Button>
       </div>
     </div>
   );
