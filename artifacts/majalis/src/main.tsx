@@ -42,7 +42,7 @@ import "./styles/sunnah-foundation-v2.css";
 // z-index-layers + motion-policy — مؤجّلة تحت ميزانية CSS الحرج (انظر loadNonCriticalCss)
 // واجهة استهلاك سُنّة (--ss-*) + أصناف .ss-text — جسر فقط بلا قيم حرفية جديدة
 import "./styles/ssunnah-theme-api.css";
-import "./styles/ssunnah-screen-patterns.css";
+/* ssunnah-screen-patterns — مع ScreenShell (مسارات كسولة) لا داخل CSS الحرج */
 /* طبقة الأسطح القديمة متقاعدة — السطح عبر AppCard / cs-card / ss-app-card */
 // visual-enrichment مؤجَّل — ليس حرجًا لأول طلاء (ميزانية CSS الحرج ≤60KiB gzip)
 // page-hero / filters / hub-card تُحمَّل مع مكوّناتها (خارج CSS الحرج)

@@ -322,7 +322,6 @@ html[data-theme="dark"] :is(
   .section-hub__chip,
   .section-lobby__chip,
   .hub-card,
-  .soft-card,
   .bottom-nav__tab,
   a,
   button
@@ -334,7 +333,6 @@ html.dark :is(
   .section-hub__chip,
   .section-lobby__chip,
   .hub-card,
-  .soft-card,
   .bottom-nav__tab,
   a,
   button
@@ -363,7 +361,6 @@ html.dark :is(
 /* ═══ بطاقات ليلاً: تمايز سطح/حد عن الخلفية ═══ */
 html[data-theme="dark"] :is(
   .hub-card,
-  .soft-card,
   .section-hub__card,
   .quran-hub-card,
   .lesson-unified-card,
@@ -372,7 +369,6 @@ html[data-theme="dark"] :is(
 ):not([data-scripture]):not(.mushaf-page),
 html.dark :is(
   .hub-card,
-  .soft-card,
   .section-hub__card,
   .quran-hub-card,
   .lesson-unified-card,

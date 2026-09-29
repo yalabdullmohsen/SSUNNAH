@@ -674,7 +674,6 @@ html[data-audio-dock="1"] .floating-back-btn {
 .hub-card:active,
 .card:active,
 .ss-feature-card:active .ss-feature-card__inner,
-.soft-card.mj-pressable:active,
 .m2030-tile:active,
 .bottom-nav__tab:active {
   box-shadow: var(--ss-shadow-soft, 0 1px 2px rgba(11, 32, 24, 0.08));
@@ -824,8 +823,6 @@ html[data-theme="dark"] .hub-card,
 html.dark .hub-card,
 html[data-theme="dark"] .ss-feature-card,
 html.dark .ss-feature-card,
-html[data-theme="dark"] .soft-card,
-html.dark .soft-card,
 html[data-theme="dark"] .isp-card,
 html.dark .isp-card,
 html[data-theme="dark"] .sect-hub__card,
