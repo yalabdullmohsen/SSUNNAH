@@ -20,8 +20,6 @@ import {
 } from "@/lib/knowledge-list-scroll";
 import "@/styles/pages/islamic-sects.css";
 import "@/styles/islam-intro-experience.css";
-import { UtilityScreen } from "@/components/design-system/screens";
-
 const LIST_PATH = "/islamic-sects";
 
 export default function IslamicSectsPage() {
@@ -140,8 +138,7 @@ export default function IslamicSectsPage() {
   };
 
   return (
-    <UtilityScreen compose="mark">
-      <SectionTemplatePage
+    <SectionTemplatePage
         route={LIST_PATH}
         title="الفرق الإسلامية"
         subtitle={
@@ -316,6 +313,5 @@ export default function IslamicSectsPage() {
           )}
         </div>
       </SectionTemplatePage>
-    </UtilityScreen>
   );
 }

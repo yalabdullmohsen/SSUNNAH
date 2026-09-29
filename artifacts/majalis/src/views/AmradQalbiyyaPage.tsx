@@ -1,6 +1,6 @@
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import { PageHeader } from "@/components/ui-common";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 type Disease = {
   id: string;
@@ -148,7 +148,7 @@ const DISEASES: Disease[] = [
 
 export default function AmradQalbiyyaPage() {
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <div className="page-shell" dir="rtl">
       <PageHeader
         eyebrow="التزكية والأخلاق"
@@ -255,6 +255,6 @@ export default function AmradQalbiyyaPage() {
         </div>
       </div>
     </div>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

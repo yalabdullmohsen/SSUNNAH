@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T13:10Z",
+  "generatedAt": "2026-09-29T14:18Z",
   "source": "artifacts/majalis/src/AppRoutes.tsx",
   "mainTip": "ff77a662",
   "totalRoutes": 414,
@@ -1691,13 +1691,14 @@
       "route": "/hadith",
       "componentHint": null,
       "public": true,
-      "loading": "PENDING",
-      "empty": "PENDING",
-      "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
+      "loading": "SHELL",
+      "empty": "EMPTY_V2",
+      "error": "BOUNDARY",
+      "dark": "AUTHORITY",
+      "rtl": "PASS",
       "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "visualSystem": "MIXED",
+      "a11y": "PARTIAL"
     },
     {
       "route": "/hadith-science",
@@ -2231,13 +2232,14 @@
       "route": "/learn",
       "componentHint": null,
       "public": true,
-      "loading": "PENDING",
-      "empty": "PENDING",
-      "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
+      "loading": "SHELL",
+      "empty": "EMPTY_V2",
+      "error": "BOUNDARY",
+      "dark": "AUTHORITY",
+      "rtl": "PASS",
       "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "visualSystem": "MIXED",
+      "a11y": "PARTIAL"
     },
     {
       "route": "/learn/:slug",
@@ -2459,13 +2461,14 @@
       "route": "/lessons",
       "componentHint": null,
       "public": true,
-      "loading": "PENDING",
-      "empty": "PENDING",
-      "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
+      "loading": "SHELL",
+      "empty": "EMPTY_V2",
+      "error": "BOUNDARY",
+      "dark": "AUTHORITY",
+      "rtl": "PASS",
       "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "visualSystem": "MIXED",
+      "a11y": "PARTIAL"
     },
     {
       "route": "/lessons/:id",
@@ -2855,13 +2858,15 @@
       "route": "/more",
       "componentHint": null,
       "public": true,
-      "loading": "PENDING",
-      "empty": "PENDING",
-      "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
+      "loading": "N/A",
+      "empty": "N/A",
+      "error": "BOUNDARY",
+      "dark": "AUTHORITY",
+      "rtl": "PASS",
       "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "visualSystem": "UTILITY_KEEP",
+      "a11y": "PARTIAL",
+      "note": "alias→/settings"
     },
     {
       "route": "/mosque-mode",
@@ -2915,13 +2920,14 @@
       "route": "/mushaf",
       "componentHint": null,
       "public": true,
-      "loading": "PENDING",
-      "empty": "PENDING",
-      "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
+      "loading": "READER",
+      "empty": "N/A",
+      "error": "BOUNDARY",
+      "dark": "MUSHAF_SPECIAL",
+      "rtl": "PASS",
       "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "visualSystem": "MUSHAF_BOUNDARY",
+      "a11y": "PARTIAL"
     },
     {
       "route": "/mushaf-v2-preview",
@@ -3203,13 +3209,14 @@
       "route": "/prayer-times",
       "componentHint": null,
       "public": true,
-      "loading": "PENDING",
-      "empty": "PENDING",
-      "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
+      "loading": "PRAYER_BOOT",
+      "empty": "CITY_PICKER",
+      "error": "ALERT",
+      "dark": "ROUTE_PRAYER",
+      "rtl": "PASS",
       "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "visualSystem": "DASHBOARD",
+      "a11y": "PARTIAL"
     },
     {
       "route": "/privacy",
@@ -3491,13 +3498,15 @@
       "route": "/quran",
       "componentHint": null,
       "public": true,
-      "loading": "PENDING",
-      "empty": "PENDING",
-      "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
+      "loading": "SHELL",
+      "empty": "N/A",
+      "error": "BOUNDARY",
+      "dark": "AUTHORITY",
+      "rtl": "PASS",
       "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "visualSystem": "DASHBOARD",
+      "a11y": "PARTIAL",
+      "note": "alias→/quran-hub"
     },
     {
       "route": "/quran-circles",
@@ -3539,13 +3548,14 @@
       "route": "/quran-hub",
       "componentHint": null,
       "public": true,
-      "loading": "PENDING",
-      "empty": "PENDING",
-      "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
+      "loading": "SHELL",
+      "empty": "N/A",
+      "error": "BOUNDARY",
+      "dark": "AUTHORITY",
+      "rtl": "PASS",
       "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "visualSystem": "DASHBOARD",
+      "a11y": "PARTIAL"
     },
     {
       "route": "/quran-hub/numbers",
@@ -4175,13 +4185,14 @@
       "route": "/search",
       "componentHint": null,
       "public": true,
-      "loading": "PENDING",
-      "empty": "PENDING",
-      "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
+      "loading": "SHELL",
+      "empty": "NO_RESULTS",
+      "error": "BOUNDARY",
+      "dark": "AUTHORITY",
+      "rtl": "PASS",
       "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "visualSystem": "MIXED",
+      "a11y": "PARTIAL"
     },
     {
       "route": "/search/:q",
@@ -4223,13 +4234,14 @@
       "route": "/settings",
       "componentHint": null,
       "public": true,
-      "loading": "PENDING",
-      "empty": "PENDING",
-      "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
+      "loading": "N/A",
+      "empty": "N/A",
+      "error": "BOUNDARY",
+      "dark": "AUTHORITY",
+      "rtl": "PASS",
       "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "visualSystem": "UTILITY_KEEP",
+      "a11y": "PARTIAL"
     },
     {
       "route": "/shamael",
@@ -4975,5 +4987,8 @@
       "accessibility": "PENDING",
       "visualSystem": "MIXED_PENDING"
     }
-  ]
+  ],
+  "criticalRoutesUpdated": 10,
+  "utilityScreenConsumers": 9,
+  "note": "Critical routes filled in repo-closure-w1; others may remain PENDING."
 }

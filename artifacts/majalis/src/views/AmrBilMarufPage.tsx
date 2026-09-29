@@ -11,8 +11,6 @@ import {
   MAJOR_MAARUF,
 } from "@/lib/amr-bil-maruf-seed";
 import "@/styles/section-makarim-pattern.css";
-import { UtilityScreen } from "@/components/design-system/screens";
-
 export default function AmrBilMarufPage() {
   useEffect(() => {
     applyPageSeo({
@@ -37,7 +35,6 @@ export default function AmrBilMarufPage() {
   }, []);
 
   return (
-    <UtilityScreen compose="mark">
     <SectionTemplatePage
       route="/amr-bil-maruf"
       title="الأمر بالمعروف والنهي عن المنكر"
@@ -193,7 +190,5 @@ export default function AmrBilMarufPage() {
         </div>
       </div>
     </SectionTemplatePage>
-  
-    </UtilityScreen>
   );
 }

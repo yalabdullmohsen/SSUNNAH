@@ -9,7 +9,7 @@ import {
   type MutashabihatPair,
 } from "@/lib/mutashabihat-data";
 import { ChevronDown, Eye, EyeOff, BookOpen } from "lucide-react";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 /* ─── CSS داخلي — يستخدم design-system المتاح ─────────────────── */
 const S = {
@@ -255,7 +255,7 @@ export default function MutashabihatPage() {
   }, [activeCategory, search]);
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <div style={S.page}>
       {/* Hero */}
       <div style={S.hero}>
@@ -364,6 +364,6 @@ export default function MutashabihatPage() {
         )}
       </div>
     </div>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

@@ -19,7 +19,7 @@ import {
   type ShareBasis,
 } from "@/lib/inheritance/types";
 import "@/styles/pages/mawarith.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 import { ActionButton } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 
@@ -185,7 +185,7 @@ export default function MawarithCalculatorPage() {
   const currentStepNum = STEP_NUMBERS[step];
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <KnowledgeLayout kind="fiqh" className="page-shell narrow mwc-page" data-kx="1">
       <PageHeader
         eyebrow="الفقه والأحكام"
@@ -477,6 +477,6 @@ export default function MawarithCalculatorPage() {
         </div>
       </nav>
     </KnowledgeLayout>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

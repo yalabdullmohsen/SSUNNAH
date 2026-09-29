@@ -16,7 +16,7 @@ import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import "@/styles/pages/daily-wird.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 import { Button } from "@/components/ui/button";
 const QURAN_PAGES = 604;
@@ -209,7 +209,7 @@ export default function DailyWirdPage() {
   const khatmDays = state.pagesPerDay > 0 ? Math.ceil(remainingInKhatma / state.pagesPerDay) : null;
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <div className="page-shell narrow wird-page">
       <PageHeader
         eyebrow="القرآن"
@@ -393,6 +393,6 @@ export default function DailyWirdPage() {
         <SectionQuiz route="/daily-wird" title="اختبر معلوماتك في الورد القرآني" count={4} />
       </div>
     </div>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

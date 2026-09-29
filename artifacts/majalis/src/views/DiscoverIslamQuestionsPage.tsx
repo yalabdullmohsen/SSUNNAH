@@ -6,7 +6,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import { getDawahCategories, getQuestionsByCategory, getQuestionsByReligion, searchDawahQuestions, RELIGIONS, type DawahCategory, type DawahQuestion, type ReligionCode } from "@/lib/dawah-service";
 import { STATIC_DAWAH_QUESTIONS } from "@/lib/dawah-static-fallback";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 function useDebounced<T>(value: T, ms = 350): T {
   const [d, setD] = useState(value);
@@ -71,7 +71,7 @@ export default function DiscoverIslamQuestionsPage() {
   };
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <DiscoverIslamShell>
       <PageHeader eyebrow="التعريف بالإسلام" title="أسئلة وأجوبة" subtitle="إجابات موثّقة، مختصرة ومفصّلة، عن أهم الأسئلة حول الإسلام." />
 
@@ -123,6 +123,6 @@ export default function DiscoverIslamQuestionsPage() {
       )}
     </DiscoverIslamShell>
   
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

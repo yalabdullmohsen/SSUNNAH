@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { applyFloatingLayerCssVars } from "@/lib/floating-layer-manager";
 
 function isModalOverlayOpen(): boolean {
   if (typeof document === "undefined") return false;
@@ -28,6 +29,7 @@ export function ScrollToTop() {
       // يظهر بعد تمرير ملحوظ فقط (≥720px) — لا يزاحم المحتوى في أول الشاشة
       const scrolled = window.scrollY > 720;
       setVisible(scrolled && !isModalOverlayOpen());
+      applyFloatingLayerCssVars();
     };
     update();
     window.addEventListener("scroll", update, { passive: true });

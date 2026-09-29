@@ -7,7 +7,7 @@ import { EMPTY } from "@/lib/ui-copy";
 import { getShubhaBySlug, type DawahShubha } from "@/lib/dawah-service";
 import { shubuhatCompletenessTier } from "@/lib/shubuhat-contract";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 function formatUpdatedAt(iso: string): string {
   const d = new Date(iso);
@@ -54,7 +54,7 @@ export default function DiscoverIslamDoubtDetailPage() {
   }
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <DiscoverIslamShell detail>
       <PageHeader eyebrow="تفنيد الشبهات" title={item.title} />
 
@@ -169,6 +169,6 @@ export default function DiscoverIslamDoubtDetailPage() {
       </div>
     </DiscoverIslamShell>
   
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

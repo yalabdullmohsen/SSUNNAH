@@ -21,8 +21,6 @@ import {
   ReadingSectionCard,
 } from "@/components/content/ReadingSectionCard";
 import "@/styles/pages/islamic-stories.css";
-import { UtilityScreen } from "@/components/design-system/screens";
-
 const STORY_ICON_MAP: Record<string, LucideIcon> = {
   Star, Scale, Sword, Landmark, Bird, Compass, Gem, BookOpen, Moon, Castle,
   Sun, Sailboat, Flower2, MapIcon, Ruler, Leaf, Shield,
@@ -302,7 +300,6 @@ export default function IslamicStoriesPage() {
   }
 
   return (
-    <UtilityScreen compose="mark">
     <SectionTemplatePage
       route="/stories"
       title="القصص الإسلامية"
@@ -412,7 +409,5 @@ export default function IslamicStoriesPage() {
       )}
       </div>
     </SectionTemplatePage>
-  
-    </UtilityScreen>
   );
 }

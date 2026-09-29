@@ -18,7 +18,6 @@ import { goBackOrFallback } from "@/lib/navigation-back";
 import "@/styles/prophets-semantic-tokens.css";
 import "@/styles/pages/prophet-stories.css";
 import "@/styles/pages/stories-seerah-v2.css";
-import { UtilityScreen } from "@/components/design-system/screens";
 import { ProphetIdentityHero } from "@/components/prophets/ProphetIdentityHero";
 import { ProphetMushafMentions } from "@/components/prophets/ProphetMushafMentions";
 import { ProphetQuickFacts, type ProphetQuickFact } from "@/components/prophets/ProphetQuickFacts";
@@ -1071,7 +1070,6 @@ export default function ProphetStoriesPage({
   }
 
   return (
-    <UtilityScreen compose="mark">
     <SectionTemplatePage
       route="/prophets"
       className="topic-page--prophets"
@@ -1240,7 +1238,5 @@ export default function ProphetStoriesPage({
       </div>
     </div>
     </SectionTemplatePage>
-  
-    </UtilityScreen>
   );
 }

@@ -7,7 +7,6 @@ import { usePublishedAdhkarItems, isPublishableAdhkar, getUnverifiedAdhkarItems 
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { EmptyStateV2 } from "@/components/design-system";
 import { PageShell } from "@/components/layout/PageShell";
-import { UtilityScreen } from "@/components/design-system/screens";
 import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { adhkarCatRedirectPath, hrefAdhkar, resolveAdhkarCategory } from "@/lib/content-href";
 import { applyPageSeo } from "@/lib/seo";
@@ -256,7 +255,6 @@ export default function AdhkarPage() {
   const isLast  = currentIndex === total - 1;
 
   return (
-    <UtilityScreen compose="mark">
     <SectionTemplatePage
       route="/adhkar"
       title="الأذكار"
@@ -432,6 +430,5 @@ export default function AdhkarPage() {
       </div>
     </PageShell>
     </SectionTemplatePage>
-    </UtilityScreen>
   );
 }

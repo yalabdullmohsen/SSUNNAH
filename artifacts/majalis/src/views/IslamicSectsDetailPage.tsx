@@ -10,7 +10,7 @@ import { KnowledgeDetailSurface } from "@/components/knowledge/KnowledgeDetailSu
 import type { KnowledgeDetailSurfaceSection } from "@/components/knowledge/KnowledgeDetailSurface";
 import { getPublishedIslamicSectById } from "@/lib/islamic-sects";
 import { getIslamicSectById } from "@/data/islamic-sects";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 import "@/styles/pages/islamic-sects.css";
 import "@/styles/islam-intro-experience.css";
 
@@ -182,7 +182,7 @@ export default function IslamicSectsDetailPage() {
 
   if (!sect) {
     return (
-      <UtilityScreen compose="mark">
+      <DetailScreen compose="mark">
         <TopicPage
           themeId="aqeedah"
           sectionRoute={LIST_PATH}
@@ -200,12 +200,12 @@ export default function IslamicSectsDetailPage() {
             العودة إلى القائمة
           </Link>
         </TopicPage>
-      </UtilityScreen>
+      </DetailScreen>
     );
   }
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
       <TopicPage
         themeId="aqeedah"
         sectionRoute={LIST_PATH}
@@ -243,6 +243,6 @@ export default function IslamicSectsDetailPage() {
           </div>
         </KnowledgeLayout>
       </TopicPage>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

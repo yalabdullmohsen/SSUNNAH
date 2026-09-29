@@ -4,7 +4,7 @@ import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
 import { ShareButtons } from "@/components/ContentActions";
 import { applyPageSeo } from "@/lib/seo";
 import { SITE_DESCRIPTION, SITE_TAGLINE, SITE_URL } from "@/lib/site-config";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 import "@/styles/pages/learn-legal-v2.css";
 
 type VersionInfo = {
@@ -58,7 +58,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <LegalPageLayout eyebrow="التطبيق" title="حول التطبيق">
       <LegalSection title="ماذا يقدّم التطبيق">
         <p>{SITE_DESCRIPTION}</p>
@@ -124,6 +124,6 @@ export default function AboutPage() {
       </LegalSection>
 <ShareButtons title="حول التطبيق — سُنّة" url="https://www.ssunnah.com/about" />
     </LegalPageLayout>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

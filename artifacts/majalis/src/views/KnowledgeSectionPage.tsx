@@ -16,7 +16,7 @@ import { EMPTY, SEARCH } from "@/lib/ui-copy";
 import { truncateAtWord } from "@/lib/utils";
 import "@/styles/pages/knowledge.css";
 import "@/styles/islam-intro-experience.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 const SECTION_TITLE: Record<string, string> = {
   prophets: "قصص الأنبياء",
@@ -183,7 +183,7 @@ export default function KnowledgeSectionPage() {
   }
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <div className="page-shell narrow" dir="rtl">
       <PageHeader eyebrow="معرفة" title={SECTION_TITLE[section] || "معرفة"} />
       <label className="knowledge-filter">
@@ -208,6 +208,6 @@ export default function KnowledgeSectionPage() {
       )}
       {visible.length > 200 && <p className="page-meta">يُعرض أول 200 نتيجة — ضيّق التصفية.</p>}
     </div>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

@@ -8,7 +8,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { toWesternDigits } from "@/shared/arabic-normalize";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/zakat.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 import { Button } from "@/components/ui/button";
@@ -317,7 +317,7 @@ export default function ZakatPage() {
   }
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <KnowledgeLayout kind="fiqh" className="zk-page" data-kx="1">
       {/* هيرو */}
       <section className="zk-hero">
@@ -453,6 +453,6 @@ export default function ZakatPage() {
         <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في الفقه" count={4} />
       </div>
     </KnowledgeLayout>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

@@ -7,7 +7,7 @@ import { ShareButtons } from "@/components/ContentActions";
 import { RANKS } from "@/pages/worship/PrayerRanksPage";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 
@@ -355,7 +355,7 @@ export default function SalahGuidePage() {
   [search]);
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <KnowledgeLayout kind="fiqh" className="sg-page" data-kx="1">
       {/* hero */}
       <section className="sg-hero">
@@ -722,6 +722,6 @@ export default function SalahGuidePage() {
         <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في الفقه" count={4} />
       </div>
     </KnowledgeLayout>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

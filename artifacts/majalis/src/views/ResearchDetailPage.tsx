@@ -35,7 +35,7 @@ import {
   safeOriginalSourceHref,
 } from "@/lib/scholarly-research";
 import "@/styles/pages/researches.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 export default function ResearchDetailPage() {
   const params = useParams<{ id?: string }>();
@@ -98,7 +98,7 @@ export default function ResearchDetailPage() {
 
   if (!research) {
     return (
-      <UtilityScreen compose="mark">
+      <DetailScreen compose="mark">
         <div className="sr-page">
           <div className="sr-empty">
             <p>
@@ -110,13 +110,13 @@ export default function ResearchDetailPage() {
             </Link>
           </div>
         </div>
-      </UtilityScreen>
+      </DetailScreen>
     );
   }
 
   if (research.isPersonal && research.reviewStatus !== "published") {
     return (
-      <UtilityScreen compose="mark">
+      <DetailScreen compose="mark">
         <div className="sr-page">
           <div className="sr-empty">
             <p>
@@ -128,7 +128,7 @@ export default function ResearchDetailPage() {
             </Link>
           </div>
         </div>
-      </UtilityScreen>
+      </DetailScreen>
     );
   }
 
@@ -153,7 +153,7 @@ export default function ResearchDetailPage() {
   };
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
       <div className="sr-page">
         <p style={{ marginBottom: "0.75rem" }}>
           <Link href="/academic-research" className="sr-section__link">
@@ -507,6 +507,6 @@ export default function ResearchDetailPage() {
           url={`https://www.ssunnah.com/academic-research/${research.slug}`}
         />
       </div>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

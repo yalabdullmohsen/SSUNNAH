@@ -1,9 +1,6 @@
 import { LazySectionAccordionPage } from "@/components/LazySectionAccordionPage";
-import { UtilityScreen } from "@/components/design-system/screens";
-
 export default function FikrWaqiaPage() {
   return (
-    <UtilityScreen compose="mark">
     <LazySectionAccordionPage
       eyebrow="الفكر والواقع"
       title="الشباب والعمل والتقنية والقرارات"
@@ -12,6 +9,5 @@ export default function FikrWaqiaPage() {
       relatedKey="fikr"
       load={() => import("@/lib/fikr-waqia-data")}
     />
-    </UtilityScreen>
   );
 }

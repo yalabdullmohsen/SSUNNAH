@@ -7,7 +7,7 @@ import { STATUS } from "@/lib/ui-copy";
 import { useAuth } from "@/components/AuthProvider";
 import { supabase } from "@/lib/supabase";
 import { readCookieConsent, writeCookieConsent } from "@/lib/cookie-consent";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 import "@/styles/pages/learn-legal-v2.css";
 
 /**
@@ -67,7 +67,7 @@ export default function PrivacyCenterPage() {
   }
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <LegalPageLayout eyebrow="الخصوصية" title="مركز الخصوصية" updatedAt="2026-08-07">
       <LegalSection title="حقوقك باختصار">
         <ul>
@@ -142,6 +142,6 @@ export default function PrivacyCenterPage() {
         </div>
       </LegalSection>
 </LegalPageLayout>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

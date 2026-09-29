@@ -8,7 +8,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { PageShell } from "@/components/layout/PageShell";
 import "@/styles/pages/duas.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 import { Button } from "@/components/ui/button";
 /* ─── بيانات الأدعية ─── */
@@ -1040,7 +1040,7 @@ export default function DuasPage() {
   }, [category, search]);
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <PageShell className="duas-page">
       {/* ═══ Hero ═══ */}
       <div className="duas-hero">
@@ -1160,6 +1160,6 @@ export default function DuasPage() {
         <ShareButtons title="الأدعية الشرعية — سُنّة" url="https://www.ssunnah.com/duas" />
       </div>
     </PageShell>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

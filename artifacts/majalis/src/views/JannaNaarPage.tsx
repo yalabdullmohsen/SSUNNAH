@@ -7,8 +7,6 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { TopicPage } from "@/components/topic/TopicPage";
 import type { TopicThemeId } from "@/config/topic-themes";
-import { UtilityScreen } from "@/components/design-system/screens";
-
 /* ══════════════════════════════════════════════════════════════════
    §245، صفة الجنة والنار  (.jn-*)
    ══════════════════════════════════════════════════════════════════ */
@@ -344,7 +342,6 @@ export default function JannaNaarPage() {
             </div>
           </div>
         )}
-
       </div>
 
       <div className="twh-share">
@@ -360,7 +357,6 @@ export default function JannaNaarPage() {
 
 function Section({ title, cards, tabId }: { title: string; cards: DescCard[]; tabId: Tab }) {
   return (
-    <UtilityScreen compose="mark">
     <div className={`jn-section jn-section--${tabId}`}>
       <h2 className="jn-section__title">{title}</h2>
       <div className="jn-cards-grid">
@@ -373,6 +369,5 @@ function Section({ title, cards, tabId }: { title: string; cards: DescCard[]; ta
         ))}
       </div>
     </div>
-    </UtilityScreen>
   );
 }

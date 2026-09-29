@@ -13,8 +13,6 @@ import { COMING_SOON_LABEL } from "@/lib/ui-copy";
 import "@/styles/pages/tawhid.css";
 import "@/styles/islam-intro-experience.css";
 import "@/styles/pages/knowledge-dashboards-v2.css";
-import { UtilityScreen } from "@/components/design-system/screens";
-
 // ─── أقسام العقيدة والتوحيد ──────────────────────────────────────────────────
 
 type AqeedaSection = {
@@ -408,7 +406,6 @@ export default function TawhidPage() {
   }, []);
 
   return (
-    <UtilityScreen compose="mark">
     <SectionTemplatePage
       route="/tawhid"
       title="العقيدة والتوحيد"
@@ -620,6 +617,5 @@ export default function TawhidPage() {
       </div>
       </div>
     </SectionTemplatePage>
-    </UtilityScreen>
   );
 }

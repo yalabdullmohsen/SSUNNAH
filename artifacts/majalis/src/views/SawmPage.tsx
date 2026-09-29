@@ -5,7 +5,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import "@/styles/pages/sawm.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 
 /* ───────── types ───────── */
@@ -600,7 +600,7 @@ export default function SawmPage() {
   [search]);
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <main className="sw-page" dir="rtl">
       {/* hero */}
       <section className="sw-hero">
@@ -829,6 +829,6 @@ export default function SawmPage() {
         <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في الفقه" count={4} />
       </div>
     </main>
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

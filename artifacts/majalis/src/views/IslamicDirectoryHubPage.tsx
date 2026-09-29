@@ -2,7 +2,7 @@ import { Landmark, MapPin, GraduationCap } from "lucide-react";
 import MergedSectionHubPage from "@/views/MergedSectionHubPage";
 import contentCounts from "@/data/content-counts.json";
 import { toArabicDigits } from "@/lib/utils";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { DetailScreen } from "@/components/design-system/screens";
 
 export default function IslamicDirectoryHubPage() {
   const universities = toArabicDigits(contentCounts.universities ?? 0);
@@ -10,7 +10,7 @@ export default function IslamicDirectoryHubPage() {
   const landmarks = toArabicDigits(contentCounts.landmarks ?? 0);
 
   return (
-    <UtilityScreen compose="mark">
+    <DetailScreen compose="mark">
     <MergedSectionHubPage
       path="/islamic-directory"
       title="الدليل الإسلامي"
@@ -36,6 +36,6 @@ export default function IslamicDirectoryHubPage() {
         },
       ]}
     />
-    </UtilityScreen>
+    </DetailScreen>
   );
 }

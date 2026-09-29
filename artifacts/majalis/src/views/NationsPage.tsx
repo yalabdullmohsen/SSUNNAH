@@ -16,8 +16,6 @@ import {
 } from "@/lib/nations-seed";
 import { PunishmentIcon } from "@/components/nations/PunishmentIcon";
 import "@/styles/nations.css";
-import { UtilityScreen } from "@/components/design-system/screens";
-
 type Stance = "all" | "believed" | "rejected";
 type View = "grid" | "timeline";
 
@@ -213,7 +211,6 @@ function NationCard({ nation }: { nation: Nation }) {
 
 function TimelineView({ dated, undated }: { dated: Nation[]; undated: Nation[] }) {
   return (
-    <UtilityScreen compose="mark">
     <div className="nations-timeline">
       <p className="nations-timeline__note">
         الترتيب تقريبي مبني على ما دلّ عليه ظاهر النصوص (مثل ﴿مِن بَعْدِ قَوْمِ نُوحٍ﴾)، ولا يُجزم
@@ -244,7 +241,5 @@ function TimelineView({ dated, undated }: { dated: Nation[]; undated: Nation[] }
         </div>
       )}
     </div>
-  
-    </UtilityScreen>
   );
 }
