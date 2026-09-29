@@ -19,6 +19,17 @@ import {
 } from "@/lib/researches";
 import "@/styles/pages/researches.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+const NONE = "__none__";
 
 const initial: ResearchSubmissionInput = {
   title: "",
@@ -92,38 +103,74 @@ export default function ResearchSubmitPage() {
         <label>العنوان بالإنجليزية
           <input value={form.titleEn || ""} onChange={(e) => set("titleEn", e.target.value)} />
         </label>
-        <label>نوع البحث *
-          <select value={form.kind} onChange={(e) => set("kind", e.target.value as ResearchKind)}>
-            {Object.entries(RESEARCH_KIND_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-          </select>
-        </label>
-        <label>التخصص الرئيسي *
-          <select value={form.categoryId} onChange={(e) => set("categoryId", e.target.value)}>
-            {RESEARCH_CATEGORIES.map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}
-          </select>
-        </label>
-        <label>التخصص الفرعي
-          <select value={form.subcategoryId || ""} onChange={(e) => set("subcategoryId", e.target.value || undefined)}>
-            <option value="">—</option>
-            {RESEARCH_CATEGORIES.map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}
-          </select>
-        </label>
+        <div className="sr-form__field">
+          <FieldLabel>نوع البحث *</FieldLabel>
+          <Select value={form.kind} onValueChange={(v) => set("kind", v as ResearchKind)}>
+            <SelectTrigger className="min-h-11 text-base" aria-label="نوع البحث">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {Object.entries(RESEARCH_KIND_LABELS).map(([k, v]) => (
+                <SelectItem key={k} value={k}>{v}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="sr-form__field">
+          <FieldLabel>التخصص الرئيسي *</FieldLabel>
+          <Select value={form.categoryId} onValueChange={(v) => set("categoryId", v)}>
+            <SelectTrigger className="min-h-11 text-base" aria-label="التخصص الرئيسي">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {RESEARCH_CATEGORIES.map((c) => (
+                <SelectItem key={c.id} value={c.id}>{c.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="sr-form__field">
+          <FieldLabel>التخصص الفرعي</FieldLabel>
+          <Select
+            value={form.subcategoryId || NONE}
+            onValueChange={(v) => set("subcategoryId", v === NONE ? undefined : v)}
+          >
+            <SelectTrigger className="min-h-11 text-base" aria-label="التخصص الفرعي">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value={NONE}>—</SelectItem>
+              {RESEARCH_CATEGORIES.map((c) => (
+                <SelectItem key={c.id} value={c.id}>{c.label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
         <label>اسم الباحث *
           <input required value={form.authorName} onChange={(e) => set("authorName", e.target.value)} />
         </label>
         <label>البريد الإلكتروني (لا يُعرض للعامة) *
           <input required type="email" value={form.authorEmail} onChange={(e) => set("authorEmail", e.target.value)} />
         </label>
-        <label>صفتك
-          <select value={form.submitterRole} onChange={(e) => set("submitterRole", e.target.value as SubmitterRole)}>
-            <option value="author">الباحث نفسه</option>
-            <option value="coauthor">مؤلف مشارك</option>
-            <option value="supervisor">مشرف</option>
-            <option value="university">جامعة</option>
-            <option value="publisher">ناشر</option>
-            <option value="aggregator">ناقل / مفهرس</option>
-          </select>
-        </label>
+        <div className="sr-form__field">
+          <FieldLabel>صفتك</FieldLabel>
+          <Select
+            value={form.submitterRole}
+            onValueChange={(v) => set("submitterRole", v as SubmitterRole)}
+          >
+            <SelectTrigger className="min-h-11 text-base" aria-label="صفتك">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="author">الباحث نفسه</SelectItem>
+              <SelectItem value="coauthor">مؤلف مشارك</SelectItem>
+              <SelectItem value="supervisor">مشرف</SelectItem>
+              <SelectItem value="university">جامعة</SelectItem>
+              <SelectItem value="publisher">ناشر</SelectItem>
+              <SelectItem value="aggregator">ناقل / مفهرس</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
         <label>الباحثون المشاركون
           <input value={form.coauthors || ""} onChange={(e) => set("coauthors", e.target.value)} />
         </label>
@@ -139,25 +186,45 @@ export default function ResearchSubmitPage() {
         <label>القسم
           <input value={form.department || ""} onChange={(e) => set("department", e.target.value)} />
         </label>
-        <label>الدرجة العلمية
-          <select value={form.academicLevel || ""} onChange={(e) => set("academicLevel", (e.target.value || undefined) as AcademicLevel | undefined)}>
-            <option value="">—</option>
-            {Object.entries(ACADEMIC_LEVEL_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-          </select>
-        </label>
+        <div className="sr-form__field">
+          <FieldLabel>الدرجة العلمية</FieldLabel>
+          <Select
+            value={form.academicLevel || NONE}
+            onValueChange={(v) => set("academicLevel", (v === NONE ? undefined : v) as AcademicLevel | undefined)}
+          >
+            <SelectTrigger className="min-h-11 text-base" aria-label="الدرجة العلمية">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value={NONE}>—</SelectItem>
+              {Object.entries(ACADEMIC_LEVEL_LABELS).map(([k, v]) => (
+                <SelectItem key={k} value={k}>{v}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
         <label>الدولة
           <input value={form.country || ""} onChange={(e) => set("country", e.target.value)} />
         </label>
         <label>سنة الإنجاز / النشر
           <input type="number" value={form.year || ""} onChange={(e) => set("year", e.target.value ? Number(e.target.value) : undefined)} />
         </label>
-        <label>اللغة
-          <select value={form.language} onChange={(e) => set("language", e.target.value as "ar" | "en" | "other")}>
-            <option value="ar">العربية</option>
-            <option value="en">الإنجليزية</option>
-            <option value="other">أخرى</option>
-          </select>
-        </label>
+        <div className="sr-form__field">
+          <FieldLabel>اللغة</FieldLabel>
+          <Select
+            value={form.language}
+            onValueChange={(v) => set("language", v as "ar" | "en" | "other")}
+          >
+            <SelectTrigger className="min-h-11 text-base" aria-label="اللغة">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="ar">العربية</SelectItem>
+              <SelectItem value="en">الإنجليزية</SelectItem>
+              <SelectItem value="other">أخرى</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
         <label>الملخص *
           <textarea required value={form.abstract} onChange={(e) => set("abstract", e.target.value)} />
         </label>
@@ -182,11 +249,19 @@ export default function ResearchSubmitPage() {
         <label>DOI
           <input value={form.doi || ""} onChange={(e) => set("doi", e.target.value)} />
         </label>
-        <label>نوع الترخيص
-          <select value={form.license} onChange={(e) => set("license", e.target.value as LicenseType)}>
-            {Object.entries(LICENSE_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-          </select>
-        </label>
+        <div className="sr-form__field">
+          <FieldLabel>نوع الترخيص</FieldLabel>
+          <Select value={form.license} onValueChange={(v) => set("license", v as LicenseType)}>
+            <SelectTrigger className="min-h-11 text-base" aria-label="نوع الترخيص">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {Object.entries(LICENSE_LABELS).map(([k, v]) => (
+                <SelectItem key={k} value={k}>{v}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
         <label>بيانات حقوق النشر
           <textarea value={form.copyrightNote || ""} onChange={(e) => set("copyrightNote", e.target.value)} />
         </label>
@@ -202,7 +277,9 @@ export default function ResearchSubmitPage() {
           <input type="checkbox" checked={form.attestOwnership} onChange={(e) => set("attestOwnership", e.target.checked)} />
           أُقرّ بصحة المعلومات وعدم الاعتداء على حقوق الآخرين، وأنني مخوّل بتقديم هذا العمل.
         </label>
-        <button type="submit" className="sr-btn sr-btn--outline">إرسال للمراجعة</button>
+        <Button type="submit" variant="outline" className="sr-btn sr-btn--outline">
+          إرسال للمراجعة
+        </Button>
       </form>
 
       {mine.length > 0 && (

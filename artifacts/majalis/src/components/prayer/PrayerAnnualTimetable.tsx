@@ -11,6 +11,15 @@ import { getActivePrayerLocation } from "@/lib/prayer-location-prefs";
 import { toArabicIndicDigits } from "@/lib/numerals";
 import { STATUS } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 const MONTHS_AR = [
   "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو",
   "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر",
@@ -73,24 +82,34 @@ export function PrayerAnnualTimetable() {
             onChange={(e) => setYear(Number(e.target.value) || now.getFullYear())}
           />
         </label>
-        <label>
-          <span>النطاق</span>
-          <select value={mode} onChange={(e) => setMode(e.target.value as "month" | "year")}>
-            <option value="month">شهر</option>
-            <option value="year">سنة كاملة</option>
-          </select>
-        </label>
+        <div>
+          <FieldLabel>النطاق</FieldLabel>
+          <Select value={mode} onValueChange={(v) => setMode(v as "month" | "year")}>
+            <SelectTrigger className="min-h-11 text-base" aria-label="نطاق الجدول">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="month">شهر</SelectItem>
+              <SelectItem value="year">سنة كاملة</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
         {mode === "month" && (
-          <label>
-            <span>الشهر</span>
-            <select value={month} onChange={(e) => setMonth(Number(e.target.value))}>
-              {MONTHS_AR.map((name, i) => (
-                <option key={name} value={i + 1}>
-                  {name}
-                </option>
-              ))}
-            </select>
-          </label>
+          <div>
+            <FieldLabel>الشهر</FieldLabel>
+            <Select value={String(month)} onValueChange={(v) => setMonth(Number(v))}>
+              <SelectTrigger className="min-h-11 text-base" aria-label="الشهر">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {MONTHS_AR.map((name, i) => (
+                  <SelectItem key={name} value={String(i + 1)}>
+                    {name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         )}
         <Button
           type="button"

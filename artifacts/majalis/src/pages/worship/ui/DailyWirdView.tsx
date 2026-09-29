@@ -17,8 +17,15 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import "@/styles/pages/daily-wird.css";
 import { DetailScreen } from "@/components/design-system/screens";
-
+import { FieldLabel } from "@/components/design-system/FormFields";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 const QURAN_PAGES = 604;
 
 function toAr(n: number): string {
@@ -337,17 +344,22 @@ export default function DailyWirdPage() {
           />
         </label>
 
-        <label className="wird-field">
-          <span>السورة الحالية</span>
-          <select
-            value={state.currentSurah}
-            onChange={(e) => update({ currentSurah: Number(e.target.value) })}
+        <div className="wird-field">
+          <FieldLabel>السورة الحالية</FieldLabel>
+          <Select
+            value={String(state.currentSurah)}
+            onValueChange={(v) => update({ currentSurah: Number(v) })}
           >
-            {surahs.map((s) => (
-              <option key={s.number} value={s.number}>{s.name}</option>
-            ))}
-          </select>
-        </label>
+            <SelectTrigger className="min-h-11 text-base" aria-label="السورة الحالية">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {surahs.map((s) => (
+                <SelectItem key={s.number} value={String(s.number)}>{s.name}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
         <label className="wird-field">
           <span>رقم الآية</span>

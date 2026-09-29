@@ -12,7 +12,7 @@ const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
 const calm = read("src/styles/sections-calm-polish.css");
 const unify = read("src/styles/visual-identity-unify.css");
-const soft = read("src/styles/soft-cards.css");
+const soft = read("src/styles/theme-aliases.css");
 const ds = read("src/styles/design-system.css");
 const miracles = read("src/styles/pages/miracles.css");
 const rsc = read("src/styles/components/reading-section-card.css");

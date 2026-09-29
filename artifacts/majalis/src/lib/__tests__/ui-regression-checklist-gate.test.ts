@@ -17,7 +17,7 @@ const critical = read("src/styles/critical-first-paint.css");
 const offline = read("src/styles/components/language-offline.css");
 const pcb = read("src/styles/components/prayer-countdown-banner.css");
 const chunkToast = read("src/styles/components/chunk-recovery-toast.css");
-const soft = read("src/styles/soft-cards.css");
+const soft = read("src/styles/theme-aliases.css");
 const adCss = read("src/styles/components/header-ad-slot.css");
 
 // 1) لا تداخل مع BottomNav — حجز سفلي على #main-content
@@ -45,7 +45,8 @@ assert.match(
 assert.match(theme, /--radius-card:\s*20px/);
 assert.match(theme, /--radius-button:\s*16px/);
 assert.match(theme, /--radius-pill:\s*999px/);
-assert.match(soft, /\.soft-card\s*\{/);
+assert.match(soft, /--soft-card-grad:\s*none/);
+assert.match(read("src/components/design-system/AppCard.tsx"), /ss-app-card/);
 assert.match(
   finalCss,
   /\.global-back-btn[\s\S]{0,120}?border-radius:\s*var\(--radius-pill,\s*999px\)\s*!important/,
@@ -64,8 +65,7 @@ assert.doesNotMatch(pcb, /backdrop-filter:\s*blur/);
 assert.match(chunkToast, /\.chunk-recovery-toast\s*\{[\s\S]*?background:\s*var\(--mj-ink/);
 assert.match(chunkToast, /opacity:\s*1/);
 
-// 6) لا CSS عام button في final-release / soft-cards
+// 6) لا CSS عام button في final-release
 assert.doesNotMatch(finalCss, /^\s*button\s*\{/m);
-assert.doesNotMatch(soft, /\bbutton\s*\{/);
 
 console.log("ui-regression-checklist-gate.test.ts: ok");

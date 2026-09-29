@@ -12,7 +12,7 @@ import {
   validatePassword,
 } from "@/lib/password-policy";
 import "@/styles/pages/auth.css";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 /**
  * تحديث كلمة المرور بعد رابط الاستعادة (جلسة PASSWORD_RECOVERY).
@@ -92,59 +92,57 @@ export default function UpdatePasswordPage() {
   }
 
   return (
-    <UtilityScreen compose="mark">
-      <div className="login-page" dir="rtl">
-        <div className="login-card">
-          <div className="login-card__header">
-            <h1 className="login-card__title">كلمة مرور جديدة</h1>
-            <p className="login-card__subtitle">{PASSWORD_POLICY_HINT_AR}</p>
-          </div>
-          {error ? (
-            <p className="login-alert login-alert--error" role="alert">
-              {error}
-            </p>
-          ) : null}
-          {ok ? (
-            <p className="login-alert" role="status">
-              تم تحديث كلمة المرور. سيتم التحويل…
-            </p>
-          ) : (
-            <form onSubmit={handleSubmit} className="login-form" noValidate>
-              <div className="login-field">
-                <label htmlFor="new-password">كلمة المرور الجديدة</label>
-                <input
-                  id="new-password"
-                  type="password"
-                  autoComplete="new-password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  minLength={PASSWORD_MIN_LENGTH}
-                  disabled={loading}
-                  placeholder={PASSWORD_POLICY_HINT_AR}
-                />
-                <PasswordPolicyChecklist password={password} />
-              </div>
-              <div className="login-field">
-                <label htmlFor="confirm-password">تأكيد كلمة المرور</label>
-                <input
-                  id="confirm-password"
-                  type="password"
-                  autoComplete="new-password"
-                  value={confirm}
-                  onChange={(e) => setConfirm(e.target.value)}
-                  required
-                  minLength={PASSWORD_MIN_LENGTH}
-                  disabled={loading}
-                />
-              </div>
-              <button type="submit" className="login-submit" disabled={loading}>
-                {loading ? "حفظ…" : "حفظ كلمة المرور"}
-              </button>
-            </form>
-          )}
+    <div className="login-page" dir="rtl">
+      <div className="login-card">
+        <div className="login-card__header">
+          <h1 className="login-card__title">كلمة مرور جديدة</h1>
+          <p className="login-card__subtitle">{PASSWORD_POLICY_HINT_AR}</p>
         </div>
+        {error ? (
+          <p className="login-alert login-alert--error" role="alert">
+            {error}
+          </p>
+        ) : null}
+        {ok ? (
+          <p className="login-alert" role="status">
+            تم تحديث كلمة المرور. سيتم التحويل…
+          </p>
+        ) : (
+          <form onSubmit={handleSubmit} className="login-form" noValidate>
+            <div className="login-field">
+              <label htmlFor="new-password">كلمة المرور الجديدة</label>
+              <input
+                id="new-password"
+                type="password"
+                autoComplete="new-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                minLength={PASSWORD_MIN_LENGTH}
+                disabled={loading}
+                placeholder={PASSWORD_POLICY_HINT_AR}
+              />
+              <PasswordPolicyChecklist password={password} />
+            </div>
+            <div className="login-field">
+              <label htmlFor="confirm-password">تأكيد كلمة المرور</label>
+              <input
+                id="confirm-password"
+                type="password"
+                autoComplete="new-password"
+                value={confirm}
+                onChange={(e) => setConfirm(e.target.value)}
+                required
+                minLength={PASSWORD_MIN_LENGTH}
+                disabled={loading}
+              />
+            </div>
+            <Button type="submit" className="login-submit" disabled={loading}>
+              {loading ? "حفظ…" : "حفظ كلمة المرور"}
+            </Button>
+          </form>
+        )}
       </div>
-    </UtilityScreen>
+    </div>
   );
 }

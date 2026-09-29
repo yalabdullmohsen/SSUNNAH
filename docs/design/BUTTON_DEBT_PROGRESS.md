@@ -5,6 +5,7 @@
 | Pre-#2354 (main) | 265 | — | Baseline docs |
 | #2354 W1 tip | 230 | 992 | Interaction debt cut |
 | Wave 2 (measured) | **229** | **983** | Careful conversions only (PWA banner, Nations reset, AcademicResearch filters, KnowledgeGraph actions). Blind batch reverted (semantics). |
+| Wave 3 (measured) | **227** | **978** | ResearchSubmit submit · UpdatePassword submit · CitationModal actions. No blind batch. |
 
 ## Rules
 
@@ -22,3 +23,11 @@
 | `NationsPage.tsx` | Filter reset → `Button` |
 | `AcademicResearchPage.tsx` | Filter apply/clear → `Button` |
 | `KnowledgeGraphPage.tsx` | Expand + close → `Button` |
+
+## Wave 3 conversions (intentional)
+
+| File | Change |
+|---|---|
+| `ResearchSubmitPage.tsx` | Submit → `Button` |
+| `UpdatePasswordPage.tsx` | Submit → `Button` |
+| `CitationModal.tsx` | Copy / download / copy-link → `Button` |

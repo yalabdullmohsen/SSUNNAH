@@ -1,18 +1,20 @@
 /**
- * بوابة — نظام soft-card: رموز الحواف + فئات موحّدة للصلاة/الداكن.
+ * بوابة — تقاعد soft-cards: AppCard بلا soft-card class · لا استيراد soft-cards.css.
  * Run: node --import tsx src/lib/__tests__/soft-cards-system-gate.test.ts
  */
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (p: string) => readFileSync(resolve(root, p), "utf8");
 
-const soft = read("src/styles/soft-cards.css");
 const theme = read("src/app/styles/theme.css");
 const main = read("src/main.tsx");
+const appCard = read("src/components/design-system/AppCard.tsx");
+const aliases = read("src/styles/theme-aliases.css");
+const polish = read("src/styles/ssunnah-ux-polish.css");
 const prayer = read("src/styles/pages/prayer-times.css");
 const prophets = read("src/styles/pages/prophet-stories.css");
 
@@ -22,21 +24,17 @@ assert.match(theme, /--radius-button:\s*16px/, "رمز radius-button = SM");
 assert.match(theme, /--radius-sheet:\s*24px/, "رمز radius-sheet = LG");
 assert.match(theme, /--radius-nav:\s*24px/, "رمز radius-nav = LG");
 assert.match(theme, /--radius-pill:\s*999px/, "رمز radius-pill");
-assert.match(soft, /--radius-button:\s*var\(--sf-radius-sm/, "soft-cards يجسر radius-button");
-assert.match(soft, /--radius-card:\s*var\(--sf-radius-card/, "soft-cards يجسر radius-card إلى Foundation");
-assert.match(soft, /\.soft-card\s*\{/, "فئة soft-card");
-assert.match(soft, /\.soft-tile\s*\{/, "فئة soft-tile");
-assert.doesNotMatch(
-  soft,
-  /--soft-card-shadow:[\s\S]*?inset 0 1px 0 rgba\(255,\s*255,\s*255/,
-  "لا highlight أبيض داخلي على ظل soft-card",
-);
-assert.doesNotMatch(
-  soft,
-  /\.soft-pill\s*\{[\s\S]*?inset 0 1px 0 rgba\(255,\s*255,\s*255/,
-  "لا لمعان داخلي على soft-pill",
-);
-assert.match(main, /soft-cards\.css/, "استيراد soft-cards في main");
+
+assert.match(aliases, /--radius-card:\s*var\(--sf-radius-card/, "aliases يجسر radius-card إلى Foundation");
+assert.match(aliases, /--soft-card-grad:\s*none/, "aliases يحتفظ بمتغيرات السطح للتوافق");
+assert.match(polish, /\.ss-app-card--accent/, "تمييز AppCard عبر ss-app-card--accent");
+assert.match(polish, /\.mj-framed/, "حاويات framed بعد التقاعد");
+
+assert.match(appCard, /ss-app-card/, "AppCard يستخدم ss-app-card");
+assert.doesNotMatch(appCard, /\bsoft-card\b/, "AppCard بلا soft-card class");
+assert.doesNotMatch(main, /soft-cards\.css/, "لا استيراد soft-cards.css");
+assert.ok(!existsSync(resolve(root, "src/styles/soft-cards.css")), "soft-cards.css محذوف");
+
 assert.match(main, /card-matte-unify\.css/, "استيراد طبقة البطاقات المطفية");
 assert.match(main, /card-system\.css/, "استيراد نظام البطاقات الموحّد");
 
@@ -52,7 +50,6 @@ assert.match(
   "الرجوع العائم فوق الشريط السفلي بـ16px",
 );
 assert.match(finalRelease, /\.hub-card\s*,/, "HubCard ضمن polish الحواف الناعمة");
-assert.doesNotMatch(soft, /\bbutton\s*\{/, "لا قاعدة button عامة في soft-cards");
 assert.doesNotMatch(finalRelease, /^\s*button\s*\{/m, "لا قاعدة button عامة في final-release");
 
 assert.match(
@@ -82,4 +79,4 @@ const contact = read("src/styles/pages/contact.css");
 assert.match(contact, /\.contact-faq__trigger\s*\{[\s\S]*?border-radius:\s*var\(--radius-button/, "أسئلة التواصل بحواف ناعمة");
 assert.match(contact, /appearance:\s*none/, "لا مظهر زر المتصفح الافتراضي في FAQ");
 
-console.log("soft-cards-system-gate.test.ts: ok");
+console.log("soft-cards-system-gate.test.ts: ok (retired)");

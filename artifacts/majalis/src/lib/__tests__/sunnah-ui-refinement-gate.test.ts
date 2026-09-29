@@ -14,7 +14,7 @@ const repoRoot = resolve(majalisRoot, "../..");
 const read = (rel: string) => readFileSync(resolve(majalisRoot, rel), "utf8");
 
 const css = read("src/styles/sunnah-foundation-tokens.css");
-const soft = read("src/styles/soft-cards.css");
+const soft = read("src/styles/theme-aliases.css");
 const scopes = read("src/features/search/search-scopes.ts");
 const searchView = read("src/pages/account/ui/SearchView.tsx");
 const emptyV2 = read("src/components/design-system/EmptyStateV2.tsx");

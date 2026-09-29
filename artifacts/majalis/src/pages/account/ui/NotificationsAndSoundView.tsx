@@ -5,7 +5,6 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
 import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
-import { UtilityScreen } from "@/components/design-system/screens";
 import { SettingsList, SettingsToggleRow } from "@/components/design-system/SettingsList";
 import {
   PRAYER_ALERT_STYLE_AR,
@@ -59,8 +58,7 @@ export default function NotificationsAndSoundView() {
   const reciters = listMurattalReciters();
 
   return (
-    <UtilityScreen>
-      <LegalPageLayout eyebrow="الإعدادات" title="الإشعارات والصوت">
+    <LegalPageLayout eyebrow="الإعدادات" title="الإشعارات والصوت">
         <LegalSection title="الحالة">
           <ul className="settings-note" style={{ listStyle: "none", padding: 0, margin: 0 }}>
             <li>تنبيهات الصلاة: {status.prayerMasterEnabled ? "مفعّلة" : "متوقفة"}</li>
@@ -285,6 +283,5 @@ export default function NotificationsAndSoundView() {
           </p>
         </LegalSection>
       </LegalPageLayout>
-    </UtilityScreen>
   );
 }

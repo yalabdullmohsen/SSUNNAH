@@ -25,7 +25,7 @@
   padding: 0;
 }
 
-.ss-app-card.soft-card--accent {
+.ss-app-card--accent {
   background-color: color-mix(in srgb, var(--ss-soft-gold, #b08a3e) 10%, var(--ss-card-bg, #fffcf7));
   background-image: linear-gradient(
     160deg,
@@ -37,8 +37,8 @@
   box-shadow: var(--ss-shadow-soft, 0 1px 2px rgba(11, 32, 24, 0.06));
 }
 
-html[data-theme="dark"] .ss-app-card.soft-card--accent,
-html.dark .ss-app-card.soft-card--accent {
+html[data-theme="dark"] .ss-app-card--accent,
+html.dark .ss-app-card--accent {
   background-color: color-mix(in srgb, var(--ss-soft-gold, #d9b871) 12%, var(--ss-card-bg, #1b2421));
   color: var(--mj-ink, #f8fafc);
   border-color: color-mix(in srgb, var(--ss-soft-gold, #d9b871) 28%, var(--ss-border, #35443f));
@@ -1065,4 +1065,55 @@ html.dark .search-page .search-page-form {
 }
 .home-optional-widgets {
   margin-top: 0.5rem;
+}
+
+/* Soft-card retirement absorb — framed empties + secondary fabs (parity). */
+.mj-framed,
+.m2030-band,
+.ds-empty,
+.lessons-empty-state,
+.search-empty-state,
+.kids-hub-intro {
+  border-radius: var(--radius-card, var(--sf-radius-md, 20px));
+  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 16%, var(--mj-hairline, #d5ddd9));
+  background: var(--sf-surface-raised, var(--mj-surface, #fff));
+  box-shadow: var(--sf-shadow-card, none);
+  box-sizing: border-box;
+}
+
+html[data-theme="dark"] .mj-framed,
+html.dark .mj-framed,
+html[data-theme="dark"] .m2030-band,
+html.dark .m2030-band,
+html[data-theme="dark"] .ds-empty,
+html.dark .ds-empty,
+html[data-theme="dark"] .lessons-empty-state,
+html.dark .lessons-empty-state,
+html[data-theme="dark"] .search-empty-state,
+html.dark .search-empty-state,
+html[data-theme="dark"] .kids-hub-intro,
+html.dark .kids-hub-intro {
+  background: color-mix(in srgb, var(--mj-surface, #15201c) 88%, #0d1412);
+  border-color: color-mix(in srgb, var(--mj-brand, #1e5f4b) 22%, rgba(255, 255, 255, 0.1));
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.global-back-btn,
+.floating-back-btn,
+.scroll-to-top,
+.assistant-fab {
+  border-style: solid !important;
+  border-width: 1px !important;
+  border-radius: var(--radius-pill, 999px) !important;
+  box-shadow: var(--sf-shadow-elevated, 0 2px 6px rgba(11, 32, 24, 0.12)) !important;
+  opacity: 0.92;
+}
+
+.scroll-to-top,
+.floating-back-btn--top {
+  border-color: color-mix(in srgb, var(--mj-brand-deep, #155a42) 35%, transparent) !important;
+}
+
+.assistant-fab {
+  border-color: rgba(31, 77, 58, 0.35) !important;
 }

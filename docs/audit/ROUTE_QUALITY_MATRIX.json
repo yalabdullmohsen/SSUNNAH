@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-29T16:13:30Z",
+  "generatedAt": "2026-09-29T17:25:00Z",
   "source": "artifacts/majalis/src/AppRoutes.tsx",
-  "mainTip": "debt-reduction-w1",
+  "mainTip": "debt-reduction-w3",
   "totalRoutes": 415,
   "publicRoutes": 372,
   "adminRoutes": 42,
@@ -2295,15 +2295,16 @@
     },
     {
       "route": "/learning",
-      "componentHint": null,
+      "componentHint": "Learning",
       "public": true,
-      "loading": "PENDING",
-      "empty": "PENDING",
-      "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
-      "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "loading": "COMPLETE",
+      "empty": "COMPLETE",
+      "error": "COMPLETE",
+      "dark": "COMPLETE",
+      "rtl": "COMPLETE",
+      "accessibility": "COMPLETE",
+      "visualSystem": "COMPLETE",
+      "auditNote": "Debt Reduction Wave 3 — Learning hub critical closure (paths shell + Feedback + RTL/dark)."
     },
     {
       "route": "/learning-path",

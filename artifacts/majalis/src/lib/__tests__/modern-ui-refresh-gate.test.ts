@@ -13,7 +13,7 @@ const read = (p: string) => readFileSync(resolve(root, p), "utf8");
 const main = read("src/main.tsx");
 const mur = read("src/styles/modern-ui-refresh.css");
 const unify = read("src/styles/ssunnah-card-unify.css");
-const soft = read("src/styles/soft-cards.css");
+const soft = read("src/styles/theme-aliases.css");
 const index = read("src/components/design-system/index.ts");
 const settingsList = read("src/components/design-system/SettingsList.tsx");
 const actionBtn = read("src/components/design-system/ActionButton.tsx");
@@ -27,7 +27,7 @@ assert.match(mur, /prefers-reduced-motion/, "احترام تقليل الحرك�
 assert.match(mur, /Design System Adoption/, "طبقة تبني عالمي");
 assert.match(unify, /border:\s*1px solid var\(--surface-feature-border/, "حد خفيف موحّد بلا شريط جانبي");
 assert.doesNotMatch(unify, /border-inline-start:\s*[2345]px/, "لا شريط زخرفي في card-unify");
-assert.match(soft, /--soft-card-border:\s*var\(--sf-hairline/, "soft-card فاتح بحدّ hairline AA");
+assert.match(soft, /--soft-card-border:\s*var\(--sf-hairline/, "سطح البطاقة بحدّ hairline AA");
 assert.match(index, /SettingsList/, "تصدير SettingsList");
 assert.match(settingsList, /mur-settings-row/, "صفوف SettingsList");
 assert.match(actionBtn, /destructive/, "زر Destructive موحّد");

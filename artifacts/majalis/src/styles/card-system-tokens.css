@@ -63,7 +63,7 @@
   --surface-feature-ink: var(--cs-text-primary);
   --surface-feature-radius: var(--cs-radius);
   --ss-card-bg: var(--cs-surface-2);
-  --mj-brand-soft: var(--cs-primary-soft);
+  /* --mj-brand-soft عبر theme-aliases؛ brand-soft محلي للبطاقات */
   --brand-soft: var(--cs-primary-soft);
   --soft-card-bg: var(--cs-surface-2);
   --soft-card-border: var(--cs-border);
@@ -123,7 +123,6 @@ html[data-theme="dark"] {
   --cs-on-ink-body: #e4ddd0;
   --cs-on-ink-meta: #c9c0ae;
   --cs-ink-shadow: none;
-  --mj-brand-soft: var(--cs-primary-soft);
   --brand-soft: var(--cs-primary-soft);
   --soft-card-bg: var(--cs-surface-2);
   --soft-card-border: var(--cs-border);

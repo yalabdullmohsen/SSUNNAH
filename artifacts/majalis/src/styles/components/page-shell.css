@@ -89,13 +89,7 @@
   line-height: 2;
 }
 
-/* تفضيل كثافة المستخدم على html */
-html[data-ui-density="compact"] .page-shell {
-  --mj-s3: 10px;
-  --mj-s4: 12px;
-  --mj-s6: 18px;
-  --mj-s8: 24px;
-}
+/* كثافة compact: --mj-s* عبر theme-aliases */
 html[data-ui-density="compact"] .page-shell__intro h1,
 html[data-ui-density="compact"] .page-shell__intro .page-shell__title {
   font-size: 1.35rem;

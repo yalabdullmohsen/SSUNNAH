@@ -5,21 +5,26 @@
 | Captured | 2026-09-29T14:16Z |
 | Base tip | `68e42f8f` + this wave |
 | Before (tsx consumers excl. definition) | **128** |
-| After | **5** (KEEP only) |
-| Delta | **−123** (128→5) |
+| After | **3** (KEEP only · Wave 3) |
+| Delta | **−125** (128→3) |
 | Canonical replacements | `AppPage`/`SectionTemplatePage` unwrap · `DetailScreen` for mark shells |
 | Forbidden | New UtilityScreen imports outside allowlist |
 | Gate | `no-new-utility-screen-gate.test.ts` |
 
-## KEEP (utility pattern — settings/tools) ≤ 5
+## KEEP (utility pattern — settings/tools) ≤ 3
 
 | File | Reason |
 |---|---|
 | `pages/account/ui/NotificationSettingsView.tsx` | Settings / account / tools |
-| `pages/account/ui/NotificationsAndSoundView.tsx` | Settings / account / tools |
 | `pages/account/ui/SettingsView.tsx` | Settings / account / tools |
 | `pages/worship/ui/AdhanSettingsView.tsx` | Settings / account / tools |
-| `views/UpdatePasswordPage.tsx` | Settings / account / tools |
+
+## Wave 3 UNWRAP (KEEP 5→3)
+
+| File | Action |
+|---|---|
+| `views/UpdatePasswordPage.tsx` | UNWRAP → login-page shell + App auth layout |
+| `pages/account/ui/NotificationsAndSoundView.tsx` | UNWRAP → LegalPageLayout only |
 
 ## Migrated this debt wave (UNWRAP → PageHeader / page-shell)
 

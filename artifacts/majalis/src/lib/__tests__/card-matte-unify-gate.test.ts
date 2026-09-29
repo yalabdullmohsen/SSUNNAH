@@ -12,7 +12,7 @@ const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
 const main = read("src/main.tsx");
 const matte = read("src/styles/card-matte-unify.css");
-const soft = read("src/styles/soft-cards.css");
+const soft = read("src/styles/theme-aliases.css");
 const sc2 = read("src/styles/components/sunnah-card-v2.css");
 const hub = read("src/styles/components/hub-card.css");
 const prophets = read("src/styles/pages/prophet-stories.css");
@@ -26,8 +26,9 @@ assert.match(matte, /\.soft-card \[class\*="__glow"\]/);
 
 console.log("=== soft-cards مطفي ===");
 assert.match(soft, /--soft-card-grad:\s*none/);
+assert.match(read("src/styles/ssunnah-ux-polish.css"), /\.ss-app-card--accent/);
 assert.doesNotMatch(soft, /--soft-card-shadow:[\s\S]*?inset 0 1px 0 rgba\(255/);
-assert.doesNotMatch(soft, /\.soft-card--accent[\s\S]*?inset 0 1px 0 rgba\(255/);
+assert.doesNotMatch(read("src/styles/ssunnah-ux-polish.css"), /\.ss-app-card--accent[\s\S]*?inset 0 1px 0 rgba\(255/);
 
 console.log("=== sc2 بلا highlight أبيض / وهج ذهبي ===");
 assert.doesNotMatch(sc2, /0 1px 0 color-mix\(in srgb,\s*#fff/);

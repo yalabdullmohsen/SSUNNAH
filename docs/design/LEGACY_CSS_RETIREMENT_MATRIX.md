@@ -84,7 +84,7 @@ Phase 5 **does not** delete SAFE_REMOVE_CANDIDATE entries.
 | `styles/visual-identity-unify.css` | OVERRIDE_PATCH / KEEP | **TOKEN ABSORB done** (`--mj-*` → theme-aliases); consumer rules remain |
 | `styles/sections-calm-polish.css` | OVERRIDE_PATCH / KEEP | **TOKEN ABSORB done** (competing hex removed; chips → aliases) |
 | `styles/typography-scale.css` | COMPATIBILITY | **TOKEN ABSORB** `--mj-fs-*` → theme-aliases |
-| `styles/soft-cards.css` | KEEP (AppCard bridge) | Wave 2: product TSX consumers=0; import KEEP until AppCard leaves bridge |
+| `styles/soft-cards.css` | **REMOVED (Wave 3)** | consumers=0 · AppCard on `cs-card`/`ss-app-card` · import deleted |
 | `styles/dark-mode-recovery.css` | ACTIVE | Classify only — import KEEP (parity incomplete) |
 | `styles/dark-mode-surfaces.css` | ACTIVE | KEEP |
 | `styles/dark-design-system.css` | COMPATIBILITY | `--mj-*` remaps remain; absorb later |
@@ -135,3 +135,13 @@ PR mapping: PR-6 dark · PR-10/11 legacy retirement · PR-12 mushaf boundary · 
 ## Wave 2 note (2026-09-29)
 
 Product TSX soft-card **consumers = 0**. `styles/soft-cards.css` remains **KEEP** while `AppCard` bridges classes. Compound selectors (`.qzg-section-card.soft-card`, `.lesson-unified-card.soft-card`) relaxed to domain classes in `card-system` / `lessons.css`. Calendar render gate no longer requires `.cal-*.soft-card`.
+
+## Wave 3 note (2026-09-29)
+
+| Item | Status |
+|---|---|
+| `soft-cards.css` | **SAFE_REMOVE executed** (file deleted · main import gone) |
+| `pages/*-legacy.css` (4) | Still imported — **MIGRATION_CANDIDATE** (home/lessons/search/misc) |
+| `brand-v4*` / `m2030/*` / `final-release` | KEEP consumers > 0 |
+| Dark bridges | See `DARK_BRIDGE_REDUCTION_REPORT.md` — ACTIVE/COMPATIBILITY · no delete |
+| cssFiles ceiling | **359** (−1 from soft-cards) |

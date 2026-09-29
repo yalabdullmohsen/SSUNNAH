@@ -17,6 +17,15 @@ import {
   saveCitationToLibrary,
 } from "@/lib/citation-service";
 import "@/styles/components/citation-modal.css";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface Props {
   source: CitationSource;
@@ -206,17 +215,23 @@ export function CitationModal({ source, initialText = "", startOffset, endOffset
               {/* أسلوب التوثيق (للأبحاث والمقالات فقط) */}
               {["article", "research"].includes(source.content_type) && (
                 <div>
-                  <label htmlFor="cm-citation-style" className="block text-xs font-medium mb-1 cm-label">أسلوب التوثيق</label>
-                  <select
-                    id="cm-citation-style"
-                    value={style}
-                    onChange={(e) => setStyle(e.target.value as CitationStyle)}
-                    className="w-full rounded-lg px-3 py-2 text-sm outline-none cm-field"
-                  >
-                    {(Object.keys(STYLE_LABEL) as CitationStyle[]).map((s) => (
-                      <option key={s} value={s}>{STYLE_LABEL[s]}</option>
-                    ))}
-                  </select>
+                  <FieldLabel htmlFor="cm-citation-style" className="block text-xs font-medium mb-1 cm-label">
+                    أسلوب التوثيق
+                  </FieldLabel>
+                  <Select value={style} onValueChange={(v) => setStyle(v as CitationStyle)}>
+                    <SelectTrigger
+                      id="cm-citation-style"
+                      className="w-full rounded-lg px-3 py-2 text-sm outline-none cm-field min-h-11 text-base"
+                      aria-label="أسلوب التوثيق"
+                    >
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {(Object.keys(STYLE_LABEL) as CitationStyle[]).map((s) => (
+                        <SelectItem key={s} value={s}>{STYLE_LABEL[s]}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
               )}
 
@@ -233,20 +248,22 @@ export function CitationModal({ source, initialText = "", startOffset, endOffset
 
               {/* أزرار الإجراءات */}
               <div className="flex flex-wrap gap-2">
-                <button
+                <Button
                   type="button"
                   onClick={copyTextAndRef}
                   className="citation-btn citation-btn--primary"
+                  variant="primary"
                 >
                   <ClipboardCopy size={14} className="inline ms-1" />نسخ النص والمصدر
-                </button>
-                <button
+                </Button>
+                <Button
                   type="button"
                   onClick={downloadCardPng}
                   className="citation-btn citation-btn--secondary"
+                  variant="secondary"
                 >
                   <ImageDown size={14} className="inline ms-1" />تحميل صورة
-                </button>
+                </Button>
               </div>
             </>
           )}
@@ -266,13 +283,14 @@ export function CitationModal({ source, initialText = "", startOffset, endOffset
                         className="flex-1 rounded-lg px-3 py-2 text-sm text-left font-mono outline-none cm-field cm-field--readonly"
                         dir="ltr"
                       />
-                      <button
+                      <Button
                         type="button"
                         onClick={copyLink}
                         className="citation-btn citation-btn--primary"
+                        variant="primary"
                       >
                         نسخ
-                      </button>
+                      </Button>
                     </div>
                   </div>
 

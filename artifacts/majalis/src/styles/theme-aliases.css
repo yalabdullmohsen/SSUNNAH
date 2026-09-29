@@ -38,6 +38,10 @@
   --mj-fs-tiny: var(--text-caption, var(--sf-type-caption, 0.875rem));
   --mj-fs-btn: var(--text-label, var(--sf-type-metadata, 1rem));
 
+  /* TOKEN ABSORB Wave 3 — nav / thumb (spacing --mj-s* من theme.css) */
+  --mj-nav-sign: -1;
+  --mj-thumb-zone: 220px;
+
   /* أسطح ونصوص */
   --bg: var(--surface-app, var(--mj-bg));
   --bg-elevated: var(--mj-surface);
@@ -179,6 +183,17 @@
   --msk-text-2: var(--mj-ink-2);
   --msk-text-3: var(--mj-muted);
   --msk-border: var(--mj-hairline);
+}
+
+html[dir="ltr"] {
+  --mj-nav-sign: 1;
+}
+
+html[data-ui-density="compact"] .page-shell {
+  --mj-s3: 10px;
+  --mj-s4: 12px;
+  --mj-s6: 18px;
+  --mj-s8: 24px;
 }
 
 html[data-theme="dark"],
@@ -575,4 +590,23 @@ html[data-theme="dark"] .ds-stat span {
 html[data-theme="dark"] .gl-cat--active,
 html.dark .gl-cat--active {
   color: var(--mj-brand-deep) !important;
+}
+
+/* Soft-card retirement — surface vars for dark/compat consumers (no .soft-card class). */
+:root {
+  --soft-card-grad: none;
+  --soft-tile-grad: none;
+  --soft-card-border: var(--sf-hairline, rgba(15, 92, 63, 0.12));
+  --soft-tile-border: var(--sf-hairline, rgba(15, 92, 63, 0.12));
+  --soft-card-shadow: var(--sf-shadow-card, none);
+  --soft-tile-shadow: none;
+  --soft-card-bg: color-mix(in srgb, var(--mj-surface, #fff) 96%, #e8f0ec);
+  --soft-tile-bg: color-mix(in srgb, var(--mj-surface, #fff) 97%, #eef4f1);
+  --soft-card-pad: var(--sf-pad-card, 0.85rem);
+  --radius-card: var(--sf-radius-card, var(--sf-radius-md, 20px));
+  --radius-tile: var(--sf-radius-md, 20px);
+  --radius-button: var(--sf-radius-sm, 16px);
+  --radius-sheet: var(--sf-radius-sheet, var(--sf-radius-lg, 24px));
+  --radius-nav: var(--sf-radius-lg, 24px);
+  --radius-pill: var(--sf-radius-pill, 999px);
 }

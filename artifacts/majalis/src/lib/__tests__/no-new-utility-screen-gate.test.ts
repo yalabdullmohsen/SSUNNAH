@@ -10,17 +10,15 @@ import { fileURLToPath } from "node:url";
 const majalisRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const srcRoot = resolve(majalisRoot, "src");
 
-/** المستهلكون المسموحون — إعدادات/أدوات فقط + تعريف النمط (KEEP ≤ 5) */
+/** المستهلكون المسموحون — إعدادات/أدوات فقط + تعريف النمط (KEEP ≤ 3) */
 const ALLOWLIST = new Set([
   "components/design-system/screens/patterns.tsx",
   "pages/account/ui/SettingsView.tsx",
   "pages/account/ui/NotificationSettingsView.tsx",
-  "pages/account/ui/NotificationsAndSoundView.tsx",
   "pages/worship/ui/AdhanSettingsView.tsx",
-  "views/UpdatePasswordPage.tsx",
 ]);
 
-const MAX_CONSUMERS = 5;
+const MAX_CONSUMERS = 3;
 
 function walkTsx(dir: string, out: string[] = []): string[] {
   for (const name of readdirSync(dir)) {

@@ -12,7 +12,7 @@ const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
 const theme = read("src/styles/section-cards-theme.css");
 const glossary = read("src/styles/pages/glossary.css");
-const soft = read("src/styles/soft-cards.css");
+const soft = read("src/styles/dark-design-system.css");
 const main = read("src/main.tsx");
 const glossaryView = read("src/pages/account/ui/IslamicGlossaryView.tsx");
 const arkanIman = read("src/styles/pages/arkan-iman.css");
@@ -51,8 +51,8 @@ assert.match(theme, /html\.dark[\s\S]*?\.jn-desc-card[\s\S]*?--mj-surface/);
 assert.match(theme, /html\.dark[\s\S]*?\.hs-card[\s\S]*?--mj-surface/);
 assert.doesNotMatch(theme, /text-white\/[45]0|opacity:\s*0\.[345]\s*!important/);
 
-console.log("=== soft-card--on-light ليلي ===");
-assert.match(soft, /html\.dark\s+\.soft-card--on-light/);
+console.log("=== أسطح ليلي elevated ===");
+assert.match(soft, /--soft-card-bg:\s*var\(--surface-elevated\)/);
 
 console.log("=== مصادر العقيدة/علوم القرآن بدون #FFFFFF على البطاقة ===");
 assert.doesNotMatch(arkanIman, /\.ai-card\s*\{[^}]*background:\s*#FFFFFF/i);

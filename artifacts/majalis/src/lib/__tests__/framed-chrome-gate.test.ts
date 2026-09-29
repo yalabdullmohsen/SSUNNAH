@@ -10,7 +10,7 @@ import { fileURLToPath } from "node:url";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
-const soft = read("src/styles/soft-cards.css");
+const soft = read("src/styles/ssunnah-ux-polish.css");
 const fabCss = read("src/index.css") + "\n" + read("src/styles/final-release.css");
 const m2030 = read("src/styles/m2030/pages.css");
 

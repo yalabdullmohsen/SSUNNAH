@@ -55,9 +55,14 @@ if (adhkarCss) {
 
 /* ── 1) عقد منطقة الإبهام ── */
 const thumb = read("src/styles/components/thumb-zone.css");
+const aliasesForThumb = read("src/styles/theme-aliases.css");
 if (thumb) {
-  if (!/--mj-thumb-zone:\s*220px/.test(thumb)) {
-    issues.push("thumb-zone.css: المتغير --mj-thumb-zone: 220px مطلوب");
+  // Wave 3: الرمز في theme-aliases (سلطة --mj-*)؛ الملف يستهلكه فقط
+  if (
+    !/--mj-thumb-zone:\s*220px/.test(thumb) &&
+    !/--mj-thumb-zone:\s*220px/.test(aliasesForThumb)
+  ) {
+    issues.push("theme-aliases/thumb-zone: المتغير --mj-thumb-zone: 220px مطلوب");
   }
   if (!/\.mj-thumb-zone__actions[\s\S]{0,280}min-block-size:\s*48px/.test(thumb)) {
     issues.push("thumb-zone.css: أهداف اللمس في .mj-thumb-zone__actions يجب ≥ 48px");

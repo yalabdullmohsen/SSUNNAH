@@ -6,6 +6,14 @@ import { navigateTo } from "@/lib/navigation-intent";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { ErrorState } from "@/components/ui-common";
 import { EmptyStateV2 } from "@/components/design-system";
+import { FieldLabel } from "@/components/design-system/FormFields";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { HarvestFeedPanel } from "@/components/lessons/HarvestFeedPanel";
 import { SectionLobby } from "@/components/lobby/SectionLobby";
 import { ListScreen } from "@/components/design-system/screens";
@@ -137,80 +145,118 @@ function LessonsFilterFields({
   options: ReturnType<typeof extractFilterOptions>;
   regionOptions: string[];
 }) {
+  const liveValue = filters.hasLiveStream === null ? "الكل" : filters.hasLiveStream ? "نعم" : "لا";
   return (
     <div className="mj-filter-fields">
-      <label>
-        المحافظة
-        <select value={filters.governorate} onChange={(e) => setFilter("governorate", e.target.value)}>
-          {options.governorates.map((v) => (
-            <option key={v} value={v}>{v}</option>
-          ))}
-        </select>
-      </label>
-      <label>
-        المنطقة
-        <select value={filters.region} onChange={(e) => setFilter("region", e.target.value)}>
-          {regionOptions.map((v) => (
-            <option key={v} value={v}>{v}</option>
-          ))}
-        </select>
-      </label>
-      <label>
-        الشيخ
-        <select value={filters.sheikh} onChange={(e) => setFilter("sheikh", e.target.value)}>
-          {options.sheikhs.map((v) => (
-            <option key={v} value={v}>
-              {v === "كل المشايخ" ? v : (formatSheikhName(v) || v)}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label>
-        التصنيف
-        <select value={filters.category} onChange={(e) => setFilter("category", e.target.value)}>
-          {options.categories.map((v) => (
-            <option key={v} value={v}>{v}</option>
-          ))}
-        </select>
-      </label>
-      <label>
-        اليوم
-        <select value={filters.day} onChange={(e) => setFilter("day", e.target.value)}>
-          {options.days.map((v) => (
-            <option key={v} value={v}>{v}</option>
-          ))}
-        </select>
-      </label>
-      <label>
-        الوقت
-        <select value={filters.timeSlot} onChange={(e) => setFilter("timeSlot", e.target.value)}>
-          {options.timeSlots.map((v) => (
-            <option key={v} value={v}>{v}</option>
-          ))}
-        </select>
-      </label>
-      <label>
-        نوع النشاط
-        <select value={filters.activityType} onChange={(e) => setFilter("activityType", e.target.value)}>
-          {options.activityTypes.map((v) => (
-            <option key={v} value={v}>{v}</option>
-          ))}
-        </select>
-      </label>
-      <label>
-        بث مباشر
-        <select
-          value={filters.hasLiveStream === null ? "الكل" : filters.hasLiveStream ? "نعم" : "لا"}
-          onChange={(e) => {
-            const v = e.target.value;
-            setFilter("hasLiveStream", v === "الكل" ? null : v === "نعم");
-          }}
+      <div className="mj-filter-field">
+        <FieldLabel>المحافظة</FieldLabel>
+        <Select value={filters.governorate} onValueChange={(v) => setFilter("governorate", v)}>
+          <SelectTrigger className="min-h-11 text-base" aria-label="تصفية حسب المحافظة">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {options.governorates.map((v) => (
+              <SelectItem key={v} value={v}>{v}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="mj-filter-field">
+        <FieldLabel>المنطقة</FieldLabel>
+        <Select value={filters.region} onValueChange={(v) => setFilter("region", v)}>
+          <SelectTrigger className="min-h-11 text-base" aria-label="تصفية حسب المنطقة">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {regionOptions.map((v) => (
+              <SelectItem key={v} value={v}>{v}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="mj-filter-field">
+        <FieldLabel>الشيخ</FieldLabel>
+        <Select value={filters.sheikh} onValueChange={(v) => setFilter("sheikh", v)}>
+          <SelectTrigger className="min-h-11 text-base" aria-label="تصفية حسب الشيخ">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {options.sheikhs.map((v) => (
+              <SelectItem key={v} value={v}>
+                {v === "كل المشايخ" ? v : (formatSheikhName(v) || v)}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="mj-filter-field">
+        <FieldLabel>التصنيف</FieldLabel>
+        <Select value={filters.category} onValueChange={(v) => setFilter("category", v)}>
+          <SelectTrigger className="min-h-11 text-base" aria-label="تصفية حسب التصنيف">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {options.categories.map((v) => (
+              <SelectItem key={v} value={v}>{v}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="mj-filter-field">
+        <FieldLabel>اليوم</FieldLabel>
+        <Select value={filters.day} onValueChange={(v) => setFilter("day", v)}>
+          <SelectTrigger className="min-h-11 text-base" aria-label="تصفية حسب اليوم">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {options.days.map((v) => (
+              <SelectItem key={v} value={v}>{v}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="mj-filter-field">
+        <FieldLabel>الوقت</FieldLabel>
+        <Select value={filters.timeSlot} onValueChange={(v) => setFilter("timeSlot", v)}>
+          <SelectTrigger className="min-h-11 text-base" aria-label="تصفية حسب الوقت">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {options.timeSlots.map((v) => (
+              <SelectItem key={v} value={v}>{v}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="mj-filter-field">
+        <FieldLabel>نوع النشاط</FieldLabel>
+        <Select value={filters.activityType} onValueChange={(v) => setFilter("activityType", v)}>
+          <SelectTrigger className="min-h-11 text-base" aria-label="تصفية حسب نوع النشاط">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {options.activityTypes.map((v) => (
+              <SelectItem key={v} value={v}>{v}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="mj-filter-field">
+        <FieldLabel>بث مباشر</FieldLabel>
+        <Select
+          value={liveValue}
+          onValueChange={(v) => setFilter("hasLiveStream", v === "الكل" ? null : v === "نعم")}
         >
-          <option value="الكل">الكل</option>
-          <option value="نعم">يوجد بث</option>
-          <option value="لا">بدون بث</option>
-        </select>
-      </label>
+          <SelectTrigger className="min-h-11 text-base" aria-label="تصفية حسب البث المباشر">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="الكل">الكل</SelectItem>
+            <SelectItem value="نعم">يوجد بث</SelectItem>
+            <SelectItem value="لا">بدون بث</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
     </div>
   );
 }

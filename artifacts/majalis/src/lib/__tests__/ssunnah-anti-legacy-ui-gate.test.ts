@@ -58,7 +58,7 @@ assert.equal(
 
 const hub = readFileSync(resolve(src, "styles/components/hub-card.css"), "utf8");
 const sectionCards = readFileSync(resolve(src, "components/sections/section-cards.css"), "utf8");
-const soft = readFileSync(resolve(src, "styles/soft-cards.css"), "utf8");
+const soft = readFileSync(resolve(src, "styles/theme-aliases.css"), "utf8");
 const polish = readFileSync(resolve(src, "styles/ssunnah-ux-polish.css"), "utf8");
 const dsIndex = readFileSync(resolve(src, "components/design-system/index.ts"), "utf8");
 const below = readFileSync(resolve(src, "pages/account/ui/HomeBelowFold.tsx"), "utf8");
@@ -73,7 +73,7 @@ assert.match(
   /border-radius:\s*var\(--radius-tile/,
   "Section .card يستخدم --radius-tile من السلم الموحّد",
 );
-assert.match(soft, /--radius-card:\s*var\(--sf-radius-card/, "soft-cards يجسر radius-card إلى Foundation");
+assert.match(soft, /--radius-card:\s*var\(--sf-radius-card/, "aliases يجسر radius-card إلى Foundation");
 assert.match(polish, /\.ss-feature-grid/, "شبكة الميزات الموحدة مطلوبة");
 assert.match(polish, /prefers-reduced-motion/, "يجب احترام تقليل الحركة");
 

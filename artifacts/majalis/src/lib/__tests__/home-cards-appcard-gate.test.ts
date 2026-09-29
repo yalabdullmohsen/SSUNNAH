@@ -1,5 +1,5 @@
 /**
- * بوابة: مكوّنات الرئيسية بلا ui-card/mj-card — AppCard أو soft-card.
+ * بوابة: مكوّنات الرئيسية بلا ui-card/mj-card — AppCard / ss-app-card.
  * node --import tsx src/lib/__tests__/home-cards-appcard-gate.test.ts
  */
 import assert from "node:assert/strict";
@@ -29,6 +29,7 @@ for (const f of files) {
 assert.deepEqual(offenders, [], `بطاقات رئيسية ما زالت على ui-card/mj-card: ${offenders.join(", ")}`);
 
 const appCard = readFileSync(resolve(root, "src/components/design-system/AppCard.tsx"), "utf8");
-assert.match(appCard, /soft-card--on-light/, "AppCard يستخدم soft-card");
+assert.match(appCard, /ss-app-card/, "AppCard يستخدم ss-app-card");
+assert.doesNotMatch(appCard, /\bsoft-card\b/, "AppCard بلا soft-card");
 
 console.log(`home-cards-appcard-gate.test.ts: ok · ${files.length} ملفًا بلا ui-card/mj-card حي`);
