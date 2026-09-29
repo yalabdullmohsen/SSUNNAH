@@ -34,7 +34,7 @@
 |---|---|
 | **#2350** | Password Policy P0 — **MERGED** `2026-09-29T12:42:32Z` → `abd0ac4f3` · on production |
 
-No open PR yet for Navigation × Prayer stability.
+Navigation × Prayer stability: **PR #2351** `cursor/final-remediation-p0-p1` (Ready) — awaiting Verify build + auto-merge.
 
 ---
 
