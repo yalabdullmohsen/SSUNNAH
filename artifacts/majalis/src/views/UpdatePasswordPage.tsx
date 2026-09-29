@@ -4,6 +4,13 @@ import { supabase, updatePassword } from "@/lib/supabase";
 import { mapAuthError } from "@/lib/auth-messages";
 import { Loading } from "@/components/ui-common";
 import { applyPageSeo } from "@/lib/seo";
+import { PasswordPolicyChecklist } from "@/components/auth/PasswordPolicyChecklist";
+import {
+  PASSWORD_MIN_LENGTH,
+  PASSWORD_MISMATCH_AR,
+  PASSWORD_POLICY_HINT_AR,
+  validatePassword,
+} from "@/lib/password-policy";
 import "@/styles/pages/auth.css";
 import { UtilityScreen } from "@/components/design-system/screens";
 
@@ -40,12 +47,13 @@ export default function UpdatePasswordPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    if (password.length < 8) {
-      setError("كلمة المرور يجب أن تكون 8 أحرف على الأقل.");
+    const policyError = validatePassword(password);
+    if (policyError) {
+      setError(policyError);
       return;
     }
     if (password !== confirm) {
-      setError("كلمتا المرور غير متطابقتين.");
+      setError(PASSWORD_MISMATCH_AR);
       return;
     }
     setLoading(true);
@@ -63,7 +71,7 @@ export default function UpdatePasswordPage() {
 
   if (checking) {
     return (
-      <div className="login-page">
+      <div className="login-page" dir="rtl">
         <Loading />
       </div>
     );
@@ -71,7 +79,7 @@ export default function UpdatePasswordPage() {
 
   if (!hasSession) {
     return (
-      <div className="login-page">
+      <div className="login-page" dir="rtl">
         <div className="login-card">
           <h1 className="login-card__title">انتهت صلاحية الرابط</h1>
           <p className="login-card__subtitle">اطلب رابط استعادة جديدًا من صفحة الدخول.</p>
@@ -85,56 +93,58 @@ export default function UpdatePasswordPage() {
 
   return (
     <UtilityScreen compose="mark">
-    <div className="login-page">
-      <div className="login-card">
-        <div className="login-card__header">
-          <h1 className="login-card__title">كلمة مرور جديدة</h1>
-          <p className="login-card__subtitle">أدخل كلمة المرور الجديدة لحسابك</p>
+      <div className="login-page" dir="rtl">
+        <div className="login-card">
+          <div className="login-card__header">
+            <h1 className="login-card__title">كلمة مرور جديدة</h1>
+            <p className="login-card__subtitle">{PASSWORD_POLICY_HINT_AR}</p>
+          </div>
+          {error ? (
+            <p className="login-alert login-alert--error" role="alert">
+              {error}
+            </p>
+          ) : null}
+          {ok ? (
+            <p className="login-alert" role="status">
+              تم تحديث كلمة المرور. سيتم التحويل…
+            </p>
+          ) : (
+            <form onSubmit={handleSubmit} className="login-form" noValidate>
+              <div className="login-field">
+                <label htmlFor="new-password">كلمة المرور الجديدة</label>
+                <input
+                  id="new-password"
+                  type="password"
+                  autoComplete="new-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  minLength={PASSWORD_MIN_LENGTH}
+                  disabled={loading}
+                  placeholder={PASSWORD_POLICY_HINT_AR}
+                />
+                <PasswordPolicyChecklist password={password} />
+              </div>
+              <div className="login-field">
+                <label htmlFor="confirm-password">تأكيد كلمة المرور</label>
+                <input
+                  id="confirm-password"
+                  type="password"
+                  autoComplete="new-password"
+                  value={confirm}
+                  onChange={(e) => setConfirm(e.target.value)}
+                  required
+                  minLength={PASSWORD_MIN_LENGTH}
+                  disabled={loading}
+                />
+              </div>
+              <button type="submit" className="login-submit" disabled={loading}>
+                {loading ? "حفظ…" : "حفظ كلمة المرور"}
+              </button>
+            </form>
+          )}
         </div>
-        {error ? (
-          <p className="login-alert login-alert--error" role="alert">
-            {error}
-          </p>
-        ) : null}
-        {ok ? (
-          <p className="login-alert" role="status">
-            تم تحديث كلمة المرور. سيتم التحويل…
-          </p>
-        ) : (
-          <form onSubmit={handleSubmit} className="login-form">
-            <div className="login-field">
-              <label htmlFor="new-password">كلمة المرور الجديدة</label>
-              <input
-                id="new-password"
-                type="password"
-                autoComplete="new-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                minLength={8}
-                disabled={loading}
-              />
-            </div>
-            <div className="login-field">
-              <label htmlFor="confirm-password">تأكيد كلمة المرور</label>
-              <input
-                id="confirm-password"
-                type="password"
-                autoComplete="new-password"
-                value={confirm}
-                onChange={(e) => setConfirm(e.target.value)}
-                required
-                minLength={8}
-                disabled={loading}
-              />
-            </div>
-            <button type="submit" className="login-submit" disabled={loading}>
-              {loading ? "حفظ…" : "حفظ كلمة المرور"}
-            </button>
-          </form>
-        )}
       </div>
-    </div>
     </UtilityScreen>
   );
 }

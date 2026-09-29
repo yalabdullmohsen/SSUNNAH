@@ -110,6 +110,16 @@ export async function signUp(email: string, password: string, fullName: string) 
   });
 }
 
+/** إعادة إرسال بريد تأكيد التسجيل. */
+export async function resendSignupConfirmation(email: string) {
+  const { getAuthEmailRedirectUrl } = await import("@/lib/auth-redirect");
+  return await supabase.auth.resend({
+    type: "signup",
+    email,
+    options: { emailRedirectTo: getAuthEmailRedirectUrl() },
+  });
+}
+
 export async function signIn(email: string, password: string) {
   return await supabase.auth.signInWithPassword({ email, password });
 }
