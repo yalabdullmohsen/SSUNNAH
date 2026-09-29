@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ClipboardCopy, Printer, Quote, Star } from "lucide-react";
 import { CitationModal } from "./CitationModal";
 import { type CitationSource, type CitationContentType, citTypeClass } from "@/lib/citation-service";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/islamic-geometric.css";
 
 interface Props {
@@ -71,22 +72,28 @@ function SelectionTooltip({
       className="cab-tooltip"
       style={{ "--cab-top": `${pos.top}px`, "--cab-left": `${pos.left}px` } as React.CSSProperties}
     >
-      <button
+      <Button
         type="button"
+        variant="ghost"
+        size="small"
         onMouseDown={(e) => { e.preventDefault(); onCite(selText, selStart, selEnd); setPos(null); }}
         className="cab-tooltip-btn"
         aria-label="اقتبس"
+        iconStart={<Quote size={13} className="inline ms-1" aria-hidden="true" />}
       >
-        <Quote size={13} className="inline ms-1" />اقتباس
-      </button>
-      <button
+        اقتباس
+      </Button>
+      <Button
         type="button"
+        variant="ghost"
+        size="small"
         onMouseDown={(e) => { e.preventDefault(); onCopy(selText); setPos(null); }}
         className="cab-tooltip-btn"
         aria-label="نسخ"
+        iconStart={<ClipboardCopy size={13} className="inline ms-1" aria-hidden="true" />}
       >
-        <ClipboardCopy size={13} className="inline ms-1" />نسخ
-      </button>
+        نسخ
+      </Button>
     </div>
   );
 }
@@ -163,41 +170,53 @@ export function CitationActionBar({
           <span className={`w-1 h-6 rounded-full ms-1 self-center cab-type-bar ${typeMod}`} />
         )}
 
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="small"
           onClick={handleCiteBtn}
           className={btnClass}
           aria-label="اقتباس"
+          iconStart={<Quote size={13} className="inline ms-1" aria-hidden="true" />}
         >
-          <Quote size={13} className="inline ms-1" />{!compact && "اقتباس"}
-        </button>
+          {!compact && "اقتباس"}
+        </Button>
 
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="small"
           onClick={() => { /* الحفظ يتم عبر Modal */ setShowModal(true); }}
           className={btnClass}
           aria-label="حفظ"
+          iconStart={<Star size={13} className="inline ms-1" aria-hidden="true" />}
         >
-          <Star size={13} className="inline ms-1" />{!compact && "حفظ"}
-        </button>
+          {!compact && "حفظ"}
+        </Button>
 
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="small"
           onClick={() => handleCopy()}
           className={btnClass}
           aria-label="نسخ"
+          iconStart={<ClipboardCopy size={13} className="inline ms-1" aria-hidden="true" />}
         >
-          <ClipboardCopy size={13} className="inline ms-1" />{!compact && (copied ? "تم النسخ" : "نسخ")}
-        </button>
+          {!compact && (copied ? "تم النسخ" : "نسخ")}
+        </Button>
 
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="small"
           onClick={handlePrint}
           className={btnClass}
           aria-label="طباعة"
+          iconStart={<Printer size={13} className="inline ms-1" aria-hidden="true" />}
         >
-          <Printer size={13} className="inline ms-1" />{!compact && "طباعة"}
-        </button>
+          {!compact && "طباعة"}
+        </Button>
       </div>
 
       {/* نافذة الاقتباس */}

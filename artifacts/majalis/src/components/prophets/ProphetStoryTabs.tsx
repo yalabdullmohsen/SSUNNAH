@@ -2,6 +2,8 @@
  * تبويبات قراءة قصة النبي — RTL · قابل للتمرير · هدف لمس ≥44×44.
  * الحالة المختارة: لون + حد + مؤشر — لا تعتمد على اللون وحده.
  */
+import { Button } from "@/components/ui/button";
+
 export type ProphetStoryTab = {
   id: string;
   label: string;
@@ -27,9 +29,11 @@ export function ProphetStoryTabs({ tabs, activeId, onSelect }: Props) {
         {tabs.map((tab) => {
           const active = activeId === tab.id;
           return (
-            <button
+            <Button
               key={tab.id}
               type="button"
+              variant="ghost"
+              size="small"
               role="tab"
               id={`prophet-tab-${tab.id}`}
               className={`prophet-story-tabs__btn prophet-detail-toc__btn${active ? " prophet-story-tabs__btn--active prophet-detail-toc__btn--active" : ""}`}
@@ -44,7 +48,7 @@ export function ProphetStoryTabs({ tabs, activeId, onSelect }: Props) {
               {active ? (
                 <span className="prophet-story-tabs__marker" aria-hidden="true" />
               ) : null}
-            </button>
+            </Button>
           );
         })}
       </div>

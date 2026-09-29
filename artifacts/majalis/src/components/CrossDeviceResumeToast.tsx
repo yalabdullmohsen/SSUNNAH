@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { useAuth } from "@/components/AuthProvider";
 import { loadLastPageSync } from "@/lib/quran-last-page";
+import { Button } from "@/components/ui/button";
 
 type ResumeHint = {
   page: number;
@@ -104,40 +105,23 @@ export function CrossDeviceResumeToast() {
       <p style={{ margin: 0 }}>
         متابعة القراءة من {hint.deviceLabel} (صفحة {hint.page}) — اضغط للانتقال
       </p>
-      <div style={{ display: "flex", gap: "0.5rem" }}>
-        <button
+      <div className="cross-device-resume-toast__actions" style={{ display: "flex", gap: "0.5rem" }}>
+        <Button
           type="button"
+          variant="secondary"
+          size="small"
+          className="cross-device-resume-toast__go"
+          style={{ flex: 1 }}
           onClick={() => {
             dismiss();
             navigate(hint.href);
           }}
-          style={{
-            flex: 1,
-            border: "none",
-            borderRadius: "0.55rem",
-            padding: "0.45rem 0.6rem",
-            background: "#fff",
-            color: "var(--mj-brand-deep, #173d35)",
-            fontWeight: 700,
-            cursor: "pointer",
-          }}
         >
           الانتقال
-        </button>
-        <button
-          type="button"
-          onClick={dismiss}
-          style={{
-            border: "1px solid rgba(255,255,255,0.35)",
-            borderRadius: "0.55rem",
-            padding: "0.45rem 0.6rem",
-            background: "transparent",
-            color: "#fff",
-            cursor: "pointer",
-          }}
-        >
+        </Button>
+        <Button type="button" variant="ghost" size="small" className="cross-device-resume-toast__later" onClick={dismiss}>
           لاحقاً
-        </button>
+        </Button>
       </div>
     </div>
   );

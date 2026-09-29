@@ -18,6 +18,7 @@ import {
 } from "@/lib/citation-service";
 import "@/styles/components/citation-modal.css";
 import { FieldLabel } from "@/components/design-system/FormFields";
+import { IconButton } from "@/components/design-system/Buttons";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -167,27 +168,26 @@ export function CitationModal({ source, initialText = "", startOffset, endOffset
               {source.title_ar}
             </span>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="text-xl leading-none transition-colors cm-close"
-            aria-label="إغلاق"
-          >
+          <IconButton label="إغلاق" onClick={onClose} className="text-xl leading-none transition-colors cm-close">
             ×
-          </button>
+          </IconButton>
         </div>
 
         {/* التبويبات */}
-        <div className="flex cm-tabs">
+        <div className="flex cm-tabs" role="tablist" aria-label="أقسام الاقتباس">
           {(["preview", "share", "save"] as const).map((t) => (
-            <button
+            <Button
               key={t}
               type="button"
+              variant="ghost"
+              size="small"
+              role="tab"
+              aria-selected={tab === t}
               onClick={() => handleTabChange(t)}
               className={`flex-1 py-2.5 text-sm font-medium transition-colors ${tab === t ? "cm-tab--active" : "cm-tab"}`}
             >
               {t === "preview" ? "معاينة" : t === "share" ? "مشاركة" : "حفظ"}
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -296,13 +296,16 @@ export function CitationModal({ source, initialText = "", startOffset, endOffset
 
                   {/* QR Code */}
                   <div className="text-center">
-                    <button
+                    <Button
                       type="button"
+                      variant="link"
+                      size="small"
                       onClick={() => setShowQr(!showQr)}
                       className="text-sm hover:underline transition-colors cm-qr-btn"
+                      aria-expanded={showQr}
                     >
                       {showQr ? "إخفاء QR Code" : "عرض QR Code"}
-                    </button>
+                    </Button>
                     {showQr && citation && (
                       <div className="mt-3 flex flex-col items-center gap-2">
                         <img
@@ -328,13 +331,15 @@ export function CitationModal({ source, initialText = "", startOffset, endOffset
                   {/* بطاقة SVG */}
                   {citation && (
                     <div className="flex justify-center">
-                      <button
+                      <Button
                         type="button"
+                        variant="secondary"
                         onClick={downloadImage}
                         className="citation-btn citation-btn--brass"
+                        iconStart={<ImageDown size={14} className="inline ms-1" aria-hidden="true" />}
                       >
-                        <ImageDown size={14} className="inline ms-1" />تحميل بطاقة الاقتباس (SVG)
-                      </button>
+                        تحميل بطاقة الاقتباس (SVG)
+                      </Button>
                     </div>
                   )}
                 </>
@@ -364,14 +369,18 @@ export function CitationModal({ source, initialText = "", startOffset, endOffset
                   dir="rtl"
                 />
               </div>
-              <button
+              <Button
                 type="button"
+                variant="primary"
                 onClick={handleSave}
                 disabled={loading}
-                className="citation-btn citation-btn--primary w-full disabled:opacity-50"
+                loading={loading}
+                fullWidth
+                className="citation-btn citation-btn--primary w-full"
+                aria-busy={loading}
               >
                 {loading ? "حفظ…" : "حفظ في مكتبتي"}
-              </button>
+              </Button>
             </div>
           )}
 

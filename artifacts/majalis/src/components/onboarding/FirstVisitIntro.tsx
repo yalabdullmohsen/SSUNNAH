@@ -8,6 +8,7 @@ import { firstVisitIntroConfig } from "@/config/first-visit-intro";
 import { markFirstVisitIntroSeen } from "@/lib/first-visit-intro-state";
 import { loadLastPageSync } from "@/lib/quran-last-page";
 import { navigateTo } from "@/lib/navigation-intent";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/first-visit-intro.css";
 
 type Props = {
@@ -211,9 +212,9 @@ export function FirstVisitIntro({ onContinue }: Props) {
       <div className="first-visit-intro__inner">
         <header className="first-visit-intro__hero">
           <div className="first-visit-intro__top-actions">
-            <button type="button" className="first-visit-intro__skip" onClick={() => finish()}>
+            <Button type="button" variant="ghost" size="small" className="first-visit-intro__skip" onClick={() => finish()}>
               تخطي
-            </button>
+            </Button>
           </div>
           <p className="first-visit-intro__badge">سُنّة</p>
           <h1 className="first-visit-intro__title">مرحبًا بك في سُنّة</h1>
@@ -221,13 +222,14 @@ export function FirstVisitIntro({ onContinue }: Props) {
             المصحف، الدروس، ومواقيت الصلاة — ابدأ من هنا.
           </p>
           <div className="first-visit-intro__hero-actions">
-            <button
+            <Button
               type="button"
+              variant="primary"
               className="first-visit-intro__btn first-visit-intro__btn--primary"
               onClick={() => finish(resolveStartHref())}
             >
               ابدأ الآن
-            </button>
+            </Button>
           </div>
         </header>
 
@@ -238,8 +240,9 @@ export function FirstVisitIntro({ onContinue }: Props) {
           <ul className="first-visit-intro__quick">
             {QUICK.map((tile) => (
               <li key={tile.id}>
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
                   className={`first-visit-intro__tile first-visit-intro__tile--${tile.tone}`}
                   onClick={() => goQuick(tile)}
                 >
@@ -248,7 +251,7 @@ export function FirstVisitIntro({ onContinue }: Props) {
                   </span>
                   <span className="first-visit-intro__tile-title">{tile.title}</span>
                   <span className="first-visit-intro__tile-desc">{tile.desc}</span>
-                </button>
+                </Button>
               </li>
             ))}
           </ul>
@@ -262,14 +265,15 @@ export function FirstVisitIntro({ onContinue }: Props) {
             <ul className="first-visit-intro__resume">
               {resume.map((item) => (
                 <li key={item.id}>
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
                     className="first-visit-intro__resume-card"
                     onClick={() => finish(item.href)}
                   >
                     <span className="first-visit-intro__resume-label">متابعة</span>
                     <span className="first-visit-intro__resume-title">{item.title}</span>
-                  </button>
+                  </Button>
                 </li>
               ))}
             </ul>

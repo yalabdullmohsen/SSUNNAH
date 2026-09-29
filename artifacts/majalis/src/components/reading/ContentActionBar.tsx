@@ -2,6 +2,7 @@ import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react"
 import { Link } from "wouter";
 import { FavoriteButton } from "@/components/FavoriteButton";
 import { SectionIcon } from "@/components/ui/SectionIcon";
+import { Button } from "@/components/ui/button";
 import {
   readPreferences,
   writePreferences,
@@ -139,14 +140,16 @@ export function ContentActionBar({
 
   return (
     <div className="content-action-bar" role="toolbar" aria-label="إجراءات المحتوى">
-      <button
+      <Button
         type="button"
+        variant="ghost"
+        size="small"
         className={`content-action-bar__btn${copied ? " content-action-bar__btn--copied" : ""}`}
         onClick={handleCopy}
         aria-live="polite"
       >
         {copied ? "✓ تم النسخ" : "نسخ"}
-      </button>
+      </Button>
 
       {adminEdit && contentId && (
         <AdminInlineEdit
@@ -160,71 +163,81 @@ export function ContentActionBar({
         <FavoriteButton contentType={contentType} contentId={contentId} title={title} compact />
       )}
       {showOfflineSave && text.trim().length > 0 && (
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="small"
           className={`content-action-bar__btn${offlineSaved ? " content-action-bar__btn--active" : ""}`}
           onClick={toggleOffline}
           aria-pressed={offlineSaved}
           title="حفظ النص للقراءة لاحقًا على هذا الجهاز"
         >
           {offlineSaved ? "محفوظ لاحقًا" : "قراءة لاحقًا"}
-        </button>
+        </Button>
       )}
       {showReadingMode && (
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="small"
           className={`content-action-bar__btn${readingMode ? " content-action-bar__btn--active" : ""}`}
           onClick={toggleReadingMode}
           aria-pressed={readingMode}
         >
           وضع القراءة
-        </button>
+        </Button>
       )}
       {showReadingMode && readingMode && (
         <div className="content-action-bar__reading-tools" role="group" aria-label="ضبط القراءة">
-          <button type="button" className="content-action-bar__btn" onClick={() => bumpFont(-1)} aria-label="تصغير الخط">
+          <Button type="button" variant="ghost" size="small" className="content-action-bar__btn" onClick={() => bumpFont(-1)} aria-label="تصغير الخط">
             أ−
-          </button>
+          </Button>
           <span className="content-action-bar__size" aria-live="polite">
             {readingSize}px
           </span>
-          <button type="button" className="content-action-bar__btn" onClick={() => bumpFont(1)} aria-label="تكبير الخط">
+          <Button type="button" variant="ghost" size="small" className="content-action-bar__btn" onClick={() => bumpFont(1)} aria-label="تكبير الخط">
             أ+
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
+            variant="ghost"
+            size="small"
             className="content-action-bar__btn"
             onClick={cycleTheme}
             aria-label={`ثيم القراءة: ${themeLabel}`}
             title={`ثيم القراءة: ${themeLabel}`}
           >
             {themeLabel}
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
+            variant="ghost"
+            size="small"
             className="content-action-bar__btn"
             onClick={cycleWidth}
             aria-label={`عرض النص: ${readingWidth}`}
             title={`عرض النص: ${readingWidth}`}
           >
             عرض
-          </button>
+          </Button>
         </div>
       )}
       {showImageCard && (
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="small"
           className="content-action-bar__btn content-action-bar__btn--card"
           onClick={() => setShowCardModal(true)}
           title="تنزيل كبطاقة صورة"
         >
           <SectionIcon name="🖼" size={16} /> بطاقة
-        </button>
+        </Button>
       )}
       {showPrint && (
-        <button type="button" className="content-action-bar__btn" onClick={() => window.print()}>
+        <Button type="button" variant="ghost" size="small" className="content-action-bar__btn" onClick={() => window.print()}>
           طباعة
-        </button>
+        </Button>
       )}
       <Link href="/settings" className="content-action-bar__btn content-action-bar__link">
         إعدادات

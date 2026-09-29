@@ -5,6 +5,7 @@ import { ContentActionBar } from "@/components/reading/ContentActionBar";
 import { markReadingProgress, type ReadingSection } from "@/lib/reading-progress";
 import { readPreferences } from "@/lib/user-preferences";
 import type { InlineEditContentType } from "@/components/AdminInlineEdit";
+import { Button } from "@/components/ui/button";
 import "@/styles/highlighted-content.css";
 
 export type ContentMetaItem = {
@@ -124,15 +125,16 @@ export function HighlightedContentCard({
       data-content-id={id}
     >
       {collapsible && headerAsButton ? (
-        <button
+        <Button
           type="button"
+          variant="ghost"
           className="highlighted-card__head-btn"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
         >
           <ReadingText className="highlighted-card__question">{primaryText}</ReadingText>
           <div className="highlighted-card__head-meta">{headerContent}</div>
-        </button>
+        </Button>
       ) : (
         <header className="highlighted-card__head">{headerContent}</header>
       )}
@@ -187,21 +189,23 @@ export function HighlightedContentCard({
             adminEdit={adminEditType && contentId ? { contentType: adminEditType, initialData: adminEditData } : undefined}
           />
 
-          <button
+          <Button
             type="button"
+            variant="ghost"
+            size="small"
             className="highlighted-card__local-reading"
             onClick={() => setLocalReading((v) => !v)}
             aria-pressed={localReading}
           >
             {localReading ? "إيقاف وضع القراءة للبطاقة" : "تفعيل وضع القراءة للبطاقة"}
-          </button>
+          </Button>
         </div>
       )}
 
       {collapsible && !headerAsButton && (
-        <button type="button" className="highlighted-card__toggle" onClick={() => setOpen((v) => !v)}>
+        <Button type="button" variant="ghost" size="small" className="highlighted-card__toggle" onClick={() => setOpen((v) => !v)}>
           {open ? "إخفاء" : "عرض"}
-        </button>
+        </Button>
       )}
     </article>
   );

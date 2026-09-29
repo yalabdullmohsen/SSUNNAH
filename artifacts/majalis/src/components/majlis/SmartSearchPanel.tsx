@@ -10,6 +10,8 @@ import {
   type SmartSearchItem,
 } from "@/lib/smart-search-engine";
 import { EMPTY } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import "@/styles/majlisilm-shell.css";
 
 export type SmartSearchPanelProps = {
@@ -45,9 +47,9 @@ export function SmartSearchPanel({ open, onClose, onSelect }: SmartSearchPanelPr
   return (
     <div className="smart-search" role="dialog" aria-modal="true" aria-label="بحث ذكي" dir="rtl">
       <div className="smart-search__bar">
-        <button type="button" className="smart-search__back" onClick={onClose} aria-label="رجوع">
+        <IconButton label="رجوع" className="smart-search__back" onClick={onClose}>
           <ArrowRight size={20} aria-hidden="true" />
-        </button>
+        </IconButton>
         <div className="smart-search__input-wrap">
           <Search size={16} aria-hidden="true" />
           <input
@@ -58,33 +60,36 @@ export function SmartSearchPanel({ open, onClose, onSelect }: SmartSearchPanelPr
             aria-label="نص البحث"
           />
           {query ? (
-            <button type="button" onClick={() => setQuery("")} aria-label="مسح">
+            <IconButton label="مسح" onClick={() => setQuery("")}>
               <X size={16} aria-hidden="true" />
-            </button>
+            </IconButton>
           ) : null}
         </div>
       </div>
 
       <div className="smart-search__chips" role="tablist" aria-label="تصنيف البحث">
         {(Object.keys(SEARCH_CATEGORY_LABELS) as SearchCategory[]).map((cat) => (
-          <button
+          <Button
             key={cat}
             type="button"
+            variant="ghost"
+            size="small"
             role="tab"
             aria-selected={category === cat}
             className={`smart-search__chip${category === cat ? " is-on" : ""}`}
             onClick={() => setCategory(cat)}
           >
             {SEARCH_CATEGORY_LABELS[cat]}
-          </button>
+          </Button>
         ))}
       </div>
 
       <ul className="smart-search__results">
         {results.map((item) => (
           <li key={`${item.category}-${item.title}`}>
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className="smart-search__row"
               onClick={() => {
                 onSelect?.(item);
@@ -98,7 +103,7 @@ export function SmartSearchPanel({ open, onClose, onSelect }: SmartSearchPanelPr
                 <strong>{item.title}</strong>
                 <small>{item.sub}</small>
               </span>
-            </button>
+            </Button>
           </li>
         ))}
         {results.length === 0 ? (

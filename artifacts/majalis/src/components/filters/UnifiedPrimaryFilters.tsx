@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import "@/styles/knowledge-experience.css";
 
 export type UnifiedFilterOption = {
@@ -34,21 +35,23 @@ export function UnifiedPrimaryFilters({
   return (
     <div className={cn("kx-filter-row", className)} role="toolbar" aria-label="تصفية">
       {primary.map((opt) => (
-        <button
+        <Button
           key={opt.id}
           type="button"
+          variant="ghost"
+          size="small"
           className={cn("mj-filter-chip", opt.active && "is-active")}
           aria-pressed={Boolean(opt.active)}
           onClick={opt.onSelect}
         >
           {opt.label}
-        </button>
+        </Button>
       ))}
       {onOpenMore ? (
-        <button type="button" className="kx-filter-row__more" onClick={onOpenMore}>
+        <Button type="button" variant="ghost" size="small" className="kx-filter-row__more" onClick={onOpenMore}>
           {moreLabel}
           {moreActiveCount > 0 ? ` (${moreActiveCount})` : ""}
-        </button>
+        </Button>
       ) : null}
       {trailing}
     </div>
