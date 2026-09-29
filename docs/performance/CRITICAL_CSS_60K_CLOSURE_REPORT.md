@@ -2,7 +2,9 @@
 
 ## STATUS
 
-**COMPLETE** (gate PASS on clean production build) — `CRITICAL_CSS_CLOSED` pending `release:verify` on PR tip after merge.
+**COMPLETE** — `CRITICAL_CSS_CLOSED`
+
+Evidence: clean build critical-css-gzip-gate PASS · `verify:preflight` PASS · `verify:ci` PASS · `release:verify` PASS (`TECHNICALLY_VERIFIED_WITH_EXTERNAL_BLOCKERS`, store HOLD).
 
 ## ROOT CAUSE
 
@@ -89,7 +91,11 @@ None observed in focused gates. No snapshot updates. No `!important` / raw color
 
 ## PR
 
-(filled at delivery)
+| | |
+|---|---|
+| Branch | `cursor/critical-css-60k` |
+| Tip | `c7c548f8b` (+ follow-up commits on push) |
+| Title | perf(css): خفض CSS الحرج تحت 60KiB دون FOUC |
 
 ## PRODUCTION
 
