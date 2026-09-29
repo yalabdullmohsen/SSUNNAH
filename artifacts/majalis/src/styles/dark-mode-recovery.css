@@ -69,25 +69,18 @@ html.dark {
   --dm-skeleton-base: #2a3733;
   --dm-skeleton-highlight: #35443f;
 
-  /* إعادة ربط الرموز الشائعة حتى لا تفوز fallbacks نهارية */
+  /* إعادة ربط الرموز الشائعة — --mj-* absorbed → theme-aliases (PR2); canvas via --surface-app */
   --surface-app: var(--dm-bg);
-  --mj-bg: var(--dm-bg);
   --bg: var(--dm-bg);
   --app-bg: var(--dm-bg);
   --surface: var(--dm-surface);
   --surface-2: var(--dm-surface-2);
   --surface-1: var(--dm-surface);
-  --mj-surface: var(--dm-surface);
-  --mj-surface-2: var(--dm-surface-2);
-  --mj-ink: var(--dm-text-primary);
-  --mj-ink-2: var(--dm-text-secondary);
-  --mj-muted: var(--dm-text-muted);
   --text: var(--dm-text-primary);
   --text-2: var(--dm-text-secondary);
   --text-meta: var(--dm-text-muted);
   --text-title: var(--dm-text-primary);
   --border: var(--dm-border-subtle);
-  --mj-hairline: var(--dm-border-subtle);
   --brand-on-light: var(--dm-primary);
   --brand-on-surface: var(--dm-primary);
   --brand-on-white: var(--dm-primary);

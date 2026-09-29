@@ -23,14 +23,7 @@
   --border-elevated: var(--dark-border, color-mix(in srgb, #c9a86c 10%, #35443f));
   --card-separator: color-mix(in srgb, #8fd4b0 12%, #2a3733);
 
-  /* جسر للمكوّنات القديمة */
-  --mj-bg: var(--surface-app, #0f1613);
-  --mj-surface: var(--surface-secondary);
-  --mj-surface-2: var(--surface-elevated);
-  --mj-surface-3: var(--surface-interactive);
-  --mj-ink: var(--text-primary);
-  --mj-ink-2: var(--text-secondary);
-  --mj-muted: var(--text-muted);
+  /* جسر للمكوّنات القديمة — --mj-* absorbed → theme-aliases (PR2) */
   --ss-card-bg: var(--dark-card, var(--surface-elevated));
   --ss-card-border: var(--dark-border, var(--border-elevated));
   --bg-elevated: var(--surface-elevated);
@@ -410,13 +403,7 @@
   border: 1px solid var(--border-elevated) !important;
 }
 
-/* —— OLED: خلفية أعمق مع الإبقاء على طبقات مرتفعة —— */
-@media (dynamic-range: high) {
-  :is(html[data-theme="dark"], html.dark) {
-    --surface-app: #0c1210;
-    --mj-bg: #0c1210;
-  }
-}
+/* OLED / HDR canvas deepen — --mj-bg absorbed in theme-aliases @media (dynamic-range: high) */
 
 /* Dynamic Type: لا تكسر التسلسل اللوني عند تكبير النص */
 :is(html[data-theme="dark"], html.dark) .hub-card__title,

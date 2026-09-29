@@ -22,10 +22,7 @@
   --pd-ink: #ede8df;
   --pd-ink-2: #d8d0c4;
   --pd-ink-muted: #b5ada0;
-  /* حبر مقروء بدل الأخضر الداكن (#0E1C17) على البطاقات */
-  --mj-brand-deep-ink: var(--pd-ink);
-  --mj-brand-deep-surface: #0e1c17;
-  --mj-brand-deep: var(--elite-forest, #8fd4b0);
+  /* --mj-brand-deep* absorbed → theme.css / theme-aliases (PR2) */
   /* حدود زمردية خفيفة — تدعم المحتوى بلا منافسة */
   --pd-border: color-mix(in srgb, var(--pd-emerald) 11%, #35443f);
   --pd-border-subtle: color-mix(in srgb, var(--pd-emerald) 8%, #35443f);
@@ -62,16 +59,14 @@
   --surface-overlay: color-mix(in srgb, #0a1210 72%, transparent);
   --dark-overlay: var(--surface-overlay);
   --dm-bg: var(--pd-bg-1);
-  --mj-bg: var(--pd-bg-1);
+  /* --mj-bg / --mj-splash absorbed → theme-aliases (live via --surface-app) */
   --bg: var(--pd-bg-1);
   --app-bg: var(--pd-bg-1);
   --bg-base: var(--pd-bg-1);
-  --mj-splash: var(--pd-bg-1);
 
   --dm-bg-subtle: #141c19;
   --dm-surface: var(--pd-bg-2);
   --surface-1: var(--pd-bg-2);
-  --mj-surface: var(--pd-bg-2);
 
   --dm-card: var(--pd-card);
   --dm-surface-elevated: var(--pd-card);
@@ -79,14 +74,11 @@
 
   --dm-surface-interactive: var(--pd-elevated);
   --surface-interactive: var(--pd-elevated);
-  --mj-surface-3: var(--pd-elevated);
 
   --dm-text-primary: var(--pd-ink);
   --dm-text-secondary: var(--pd-ink-2);
   --dm-text-muted: var(--pd-ink-muted);
-  --mj-ink: var(--pd-ink);
-  --mj-ink-2: var(--pd-ink-2);
-  --mj-muted: var(--pd-ink-muted);
+  /* --mj-ink* absorbed → theme-aliases */
   --text: var(--pd-ink);
   --text-2: var(--pd-ink-2);
   --text-meta: var(--pd-ink-muted);
@@ -109,13 +101,11 @@
   --dm-primary-hover: var(--pd-emerald-soft);
   --dm-accent-gold: var(--pd-gold);
   --dm-accent-gold-subtle: var(--pd-gold-soft);
-  --mj-accent: var(--pd-gold);
   --gold: var(--pd-gold);
   --color-accent: var(--pd-gold);
 
   --dm-border-subtle: var(--pd-border-subtle);
   --border: var(--pd-border-subtle);
-  --mj-hairline: var(--pd-border-subtle);
   --border-elevated: var(--pd-border);
 
   --dm-bottom-nav: #0c1210;
@@ -132,9 +122,7 @@
   --pd-border-token: var(--pd-border-subtle);
 
   --shadow-mj: var(--pd-elev-1);
-  --mj-elev-1: var(--pd-elev-1);
-  --mj-elev-2: var(--pd-elev-2);
-  --mj-elev-3: var(--pd-elev-3);
+  /* --mj-elev-* absorbed → theme.css / theme-aliases */
   --mss-shadow-card: var(--pd-elev-1);
   --mss-hero-glow: transparent;
   --mss-hero-glow-strong: transparent;
