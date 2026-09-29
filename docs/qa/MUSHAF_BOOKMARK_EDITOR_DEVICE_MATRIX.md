@@ -12,6 +12,7 @@
 | Check | Status |
 |---|---|
 | Viewport portal gate (`mushaf-bookmark-editor-viewport-gate`) | PASS when green |
+| Input-sheet VV metrics unit (`input-sheet-viewport-metrics`) — 375×667 / 390×844 / 430×932 | PASS when green |
 | Advanced bookmarks gate | PASS when green |
 | Responsive CSS (16px inputs, max-inline-size, VV vars) | PASS (static) |
 | Browser responsive emulation (DevTools sizes below) | see table |

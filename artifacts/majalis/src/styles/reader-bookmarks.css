@@ -8,19 +8,26 @@
 .rb-editor-shell {
   position: fixed;
   inset-inline: 0;
-  /* مستطيل VisualViewport — fallback عبر dvh/svh لا وحدة vh القديمة */
+  /* مستطيل VisualViewport الحقيقي — يُحدَّث من useInputSheetViewport (لا وحدة vh ثابتة) */
   top: var(--rb-vv-offset-top, 0px);
+  bottom: auto;
   block-size: var(--rb-vv-height, 100dvh);
   block-size: var(--rb-vv-height, 100svh);
+  max-block-size: var(--rb-vv-height, 100dvh);
+  inline-size: 100%;
+  max-inline-size: 100%;
   z-index: 12050;
   display: grid;
   align-items: end;
   justify-items: center;
   padding-inline: max(0.5rem, var(--inset-left, 0px)) max(0.5rem, var(--inset-right, 0px));
+  /* inset سفلي من theme — ارتفاع الكيبورد مخصوم أصلًا من --rb-vv-height */
   padding-block-end: max(0.35rem, var(--inset-bottom, 0px));
   box-sizing: border-box;
   pointer-events: none;
-  overflow: hidden;
+  /* احتواء الغلاف داخل VV — ليس لإخفاء عيب تخطيط */
+  overflow-x: clip;
+  overflow-y: clip;
 }
 
 .rb-editor-shell__backdrop {
@@ -41,13 +48,9 @@
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
   inline-size: min(100%, 28rem);
-  max-inline-size: calc(100vw - 1rem);
-  max-inline-size: min(28rem, calc(100% - 0px));
-  /* ارتفاع مرئي فوق الكيبورد مع هامش آمن */
-  max-block-size: min(
-    var(--rb-vv-height, 100dvh),
-    calc(var(--rb-vv-height, 100dvh) - 0.25rem)
-  );
+  max-inline-size: min(28rem, 100%);
+  /* لا يتجاوز صندوق الغلاف (بعد padding) — يمنع قص الـfooter خلف الكيبورد */
+  max-block-size: 100%;
   min-block-size: 0;
   margin-inline: auto;
   background: var(--nm-paper, #f7f1e3);
@@ -118,10 +121,15 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.45rem;
-  padding: 0.55rem 0.85rem calc(0.65rem + var(--inset-bottom, 0px));
+  /* صف شبكة ثالث (auto) — يبقى فوق الكيبورد لأن الغلاف = VV */
+  padding: 0.55rem 0.85rem 0.65rem;
   border-block-start: 1px solid color-mix(in srgb, var(--nm-gold, #b08d57) 16%, transparent);
   flex-shrink: 0;
+  position: sticky;
+  bottom: 0;
   background: inherit;
+  /* يبقى داخل اللوحة — لا ينزل خلف الكيبورد */
+  align-self: end;
 }
 
 .rb-editor-shell__footer:has(> :only-child) {

@@ -9,6 +9,7 @@ import {
 import { createPortal } from "react-dom";
 import {
   blurActiveTextField,
+  ensureFieldVisibleInSheet,
   lockDocumentScrollForSheet,
   useInputSheetViewport,
 } from "@/hooks/useInputSheetViewport";
@@ -43,6 +44,7 @@ export const MushafBookmarkEditorShell = memo(function MushafBookmarkEditorShell
   const titleId = useId();
   const shellRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLElement>(null);
   const onCloseRef = useRef(onClose);
   onCloseRef.current = onClose;
   const closingRef = useRef(false);
@@ -110,18 +112,24 @@ export const MushafBookmarkEditorShell = memo(function MushafBookmarkEditorShell
     };
   }, [requestClose]);
 
-  /* إبقاء الحقل المرئي داخل جسم الشيت فقط — لا تمرير للمستند/المصحف */
+  /* إبقاء الحقل + شريط الإجراءات مرئيين داخل VisualViewport — لا تمرير للمستند/المصحف */
   useEffect(() => {
     const body = bodyRef.current;
     if (!body) return;
+    const reveal = (target: HTMLElement) => {
+      window.requestAnimationFrame(() => {
+        ensureFieldVisibleInSheet(target, body, footerRef.current);
+        window.setTimeout(() => {
+          ensureFieldVisibleInSheet(target, body, footerRef.current);
+        }, 280);
+      });
+    };
     const onFocusIn = (e: FocusEvent) => {
       const target = e.target;
       if (!(target instanceof HTMLElement)) return;
       if (!body.contains(target)) return;
       if (!(target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement)) return;
-      window.requestAnimationFrame(() => {
-        target.scrollIntoView({ block: "nearest", inline: "nearest" });
-      });
+      reveal(target);
     };
     body.addEventListener("focusin", onFocusIn);
     return () => body.removeEventListener("focusin", onFocusIn);
@@ -174,7 +182,9 @@ export const MushafBookmarkEditorShell = memo(function MushafBookmarkEditorShell
         <div ref={bodyRef} className="rb-editor-shell__body">
           {children}
         </div>
-        <footer className="rb-editor-shell__footer">{footer}</footer>
+        <footer ref={footerRef} className="rb-editor-shell__footer" data-rb-editor-footer="1">
+          {footer}
+        </footer>
       </div>
     </div>,
     document.body,
