@@ -102,9 +102,10 @@ None known in this diff. Prayer/Mushaf untouched. No new `!important`, hex famil
 
 | | |
 |---|---|
-| Branch | `cursor/critical-css-60k` |
-| PR | #2361 |
-| Merge status | (delivery) |
+| Branch | `cursor/critical-css-60k-margin` |
+| Commit | `08c04c706` |
+| PR | #2362 (follows merged #2361) |
+| Merge status | OPEN · auto-merge squash enabled · awaiting required checks |
 
 ## PRODUCTION
 
