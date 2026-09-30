@@ -18,6 +18,26 @@ export const MUSHAF_TURN_MARKS = [
 
 export type MushafTurnMarkName = (typeof MUSHAF_TURN_MARKS)[number];
 
+/** مقاييس WAVE6 — تُصدَّر يدويًا عند تفعيل التليمتري فقط */
+export const MUSHAF_WAVE6_METRIC_KEYS = [
+  "touchToFirstTranslateMs",
+  "pointerUpToTransitionStartMs",
+  "transitionDurationMs",
+  "transitionEndToCommitMs",
+  "commitToUnlockMs",
+  "totalTurnMs",
+  "fontWaitMs",
+  "layoutWaitMs",
+  "rejectedGestureCount",
+  "selectionMeasureCount",
+  "frameDropEstimate",
+  "fontCacheHit",
+  "pageDataCacheHit",
+] as const;
+
+/** سقف prefetch بعيد (±2) — لا تحميل 604 */
+export const MUSHAF_FAR_FONT_PREFETCH_CAP = 4;
+
 export const MUSHAF_RENDER_CACHE_MAX_ENTRIES = 16;
 export const MUSHAF_LAYOUT_CACHE_MAX_ENTRIES = 12;
 
