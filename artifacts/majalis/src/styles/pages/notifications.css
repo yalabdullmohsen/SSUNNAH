@@ -647,7 +647,7 @@ html.dark .notif-row__label {
   font-weight: 700;
   box-shadow: 0 4px 16px rgba(0,0,0,0.2);
   animation: slideInUp 0.25s ease;
-  z-index: 200;
+  z-index: var(--z-nav);
 }
 
 

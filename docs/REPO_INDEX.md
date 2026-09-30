@@ -121,6 +121,9 @@
 | `docs/mushaf/WAVE6_SCOPE_MANIFEST.md` | **WAVE6** — نطاق وتجميد التنفيذ |
 | `docs/mushaf/WAVE6_REAL_DEVICE_TEST_MATRIX.md` | **WAVE6** — مصفوفة أجهزة (DEVICE_REQUIRED) |
 | `docs/mushaf/SUNNAH_WAVE6_MUSHAF_FLUIDITY_CLOSURE_REPORT.md` | **WAVE6** — إغلاق سلاسة المصحف / تأخير التقليب |
+| `docs/audit/SUNNAH_POST_WAVE6_FINAL_BASELINE.md` | **Phase0** — خط أساس حي بعد WAVE6 قبل WAVE7→13 |
+| `docs/design/WAVE7_IDENTITY_CASCADE_ABSORPTION_REPORT.md` | **WAVE7** — امتصاص طبقات الهوية / إزالة reload-to-win |
+| `docs/design/WAVE8_CARD_SURFACE_VALUE_ABSORPTION_REPORT.md` | **WAVE8** — امتصاص inline/radii/z-index إلى توكنات السطح |
 | `docs/audit/SUNNAH_REMAINING_PROBLEMS_MASTER_COPYABLE.md` | جرد المشاكل المتبقية الكامل (قابل للنسخ) بعد WAVE5 |
 | `docs/performance/startup-pr0-baseline-metrics.json` | مقاييس/جرد Startup PR-0 (NOT MEASURED للجهاز) |
 | `artifacts/majalis/src/lib/app-startup-controller.ts` | **Startup PR-1** — AppStartupController (آلة حالات الإقلاع مصدر حقيقة واحد) |

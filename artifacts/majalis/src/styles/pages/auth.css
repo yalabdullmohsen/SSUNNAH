@@ -140,7 +140,7 @@ html[data-theme="dark"] .login-card__brand {
 .login-alert {
   margin: 0 0 0.65rem;
   padding: 0.55rem 0.65rem;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   font-size: 0.85rem;
   font-weight: 600;
   line-height: 1.45;
@@ -197,7 +197,7 @@ html[data-theme="dark"] .login-alert--success {
   box-sizing: border-box;
   min-height: 2.65rem;
   padding: 0.55rem 0.75rem;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   border: 1px solid var(--auth-line);
   background: var(--auth-field);
   color: var(--auth-ink);
@@ -221,7 +221,7 @@ html[data-theme="dark"] .login-alert--success {
   min-height: 2.75rem;
   margin-top: 0.1rem;
   border: none;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   background: var(--auth-green);
   color: var(--mj-white, #ffffff);
   font: inherit;

@@ -1,8 +1,10 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-09-29 (Final Completion Audit)  
+**Updated:** 2026-09-30 (post-WAVE7 · WAVE8 in delivery)  
 **Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
-**Live state:** `docs/release/FINAL_LIVE_STATE.md`  
+**Post-WAVE6 baseline:** `docs/audit/SUNNAH_POST_WAVE6_FINAL_BASELINE.md`  
+**WAVE7 report:** `docs/design/WAVE7_IDENTITY_CASCADE_ABSORPTION_REPORT.md`  
+**WAVE8 report:** `docs/design/WAVE8_CARD_SURFACE_VALUE_ABSORPTION_REPORT.md`  
 **Visual+Interaction report:** `docs/design/SUNNAH_VISUAL_INTERACTION_FINAL_REPORT.md`  
 **Final audit:** `docs/audit/SUNNAH_FINAL_COMPLETION_AUDIT.md`  
 **Blockers:** `docs/release/PHASE_7_BLOCKER_REGISTER.md`
@@ -11,10 +13,11 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `24a5193ae` — Interaction PR-9 `#2346` |
-| Production `version.json` | `24a5193a` · HTTP 200 · **matches main** · `builtAt=2026-09-29T09:16:05.254Z` |
+| `origin/main` tip (WAVE7 base) | `ae78fe56` — identity cascade absorption `#2385` |
+| Production `version.json` | match main after each wave deploy · HTTP 200 |
 | About surface | `/about` — حول التطبيق |
-| Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
+| Decision | **`WEB_RELEASED_NATIVE_HOLD`** · internal program WAVE7→13 |
+| Explicit non-claims | no `STORE GO` · no `INTERNAL_CLOSURE_COMPLETE` until WAVE13+final audit |
 
 ## Visual + Interaction PR train
 

@@ -76,7 +76,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 200;
+    z-index: var(--z-nav);
     height: 100dvh;
     transform: translateX(100%);
     transition: transform .25s ease;
@@ -3246,4 +3246,182 @@ html[data-theme="dark"] .quran-shell--ayah:not(.quran-shell--warm):not(.quran-sh
 @media (min-width: 640px) {
   .mpv-settings-sheet, .aas-sheet { align-items: center; justify-content: center; }
   .mpv-settings-panel, .aas-panel { max-width: 460px; border-radius: 1.1rem; max-height: 85dvh; }
+}
+
+/* WAVE8 — متشابهات القرآن: أصناف بدل inline colors (صفحة /mutashabihat) */
+.mutash-page { padding: 0 0 5rem; }
+.mutash-hero {
+  padding: 2.5rem 1.25rem 2rem;
+  text-align: center;
+  background: linear-gradient(160deg, var(--mj-brand-deep) 0%, var(--mj-brand) 60%, var(--mj-brand-deep) 100%);
+  color: var(--mj-on-brand);
+}
+.mutash-hero__icon { font-size: 2.5rem; display: block; margin-bottom: 0.6rem; }
+.mutash-hero__title {
+  font-size: clamp(1.4rem, 4vw, 2.1rem);
+  font-weight: 700;
+  color: var(--mj-on-brand);
+  margin: 0 0 0.4rem;
+}
+.mutash-hero__sub {
+  font-size: var(--ss-type-supporting);
+  color: color-mix(in srgb, var(--mj-on-brand) 65%, transparent);
+  max-width: 500px;
+  margin: 0 auto;
+}
+.mutash-body { max-width: 860px; margin: 0 auto; padding: 1.25rem 1rem; }
+.mutash-source {
+  padding: 0.75rem 1rem;
+  border-radius: var(--sf-radius-xs);
+  background: color-mix(in srgb, var(--mj-brand) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-brand) 15%, var(--mj-hairline));
+  font-size: var(--ss-type-label);
+  color: var(--mj-brand-deep);
+  margin-bottom: 1.25rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+.mutash-tabs {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.mutash-tab {
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--sf-radius-pill);
+  border: 1.5px solid var(--mj-hairline);
+  background: transparent;
+  color: var(--mj-ink-2);
+  font-size: var(--ss-type-label);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.mutash-tab[aria-selected="true"] {
+  border-color: var(--mj-brand);
+  background: var(--mj-brand);
+  color: var(--mj-on-brand);
+}
+.mutash-search {
+  width: 100%;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--sf-radius-xs);
+  border: 1.5px solid var(--mj-hairline);
+  background: var(--mj-surface);
+  color: var(--mj-ink);
+  font-family: inherit;
+  margin-bottom: 0.75rem;
+}
+.mutash-meta { font-size: var(--ss-type-label); color: var(--mj-muted); margin-bottom: 0.75rem; }
+.mutash-empty { text-align: center; padding: 2rem; color: var(--mj-muted); }
+.mutash-card {
+  border-radius: var(--sf-radius-control);
+  border: 1.5px solid var(--mj-hairline);
+  background: var(--mj-surface);
+  margin-bottom: 0.85rem;
+  overflow: visible;
+}
+.mutash-card[data-open="1"] {
+  border-color: color-mix(in srgb, var(--mj-brand) 35%, var(--mj-hairline));
+}
+.mutash-card__head {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: start;
+  font-family: inherit;
+}
+.mutash-card__head-main { flex: 1; }
+.mutash-card__chips {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+.mutash-card__cat {
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--sf-radius-xs);
+  background: color-mix(in srgb, var(--mj-brand) 10%, transparent);
+  color: var(--mj-brand);
+  font-size: var(--ss-type-label);
+  font-weight: 700;
+}
+.mutash-card__count { font-size: var(--ss-type-caption); color: var(--mj-muted); }
+.mutash-card__title {
+  font-size: var(--ss-type-body);
+  font-weight: 700;
+  color: var(--mj-ink);
+  margin: 0;
+}
+.mutash-card__desc {
+  font-size: var(--ss-type-label);
+  color: var(--mj-muted);
+  margin: 0.2rem 0 0;
+  line-height: 1.5;
+}
+.mutash-card__chevron { color: var(--mj-muted); flex-shrink: 0; }
+.mutash-card__body {
+  padding: 0 1.25rem 1.25rem;
+  border-top: 1px solid var(--mj-hairline);
+}
+.mutash-ayah-block { margin-top: 1rem; }
+.mutash-ayah-label {
+  font-size: var(--ss-type-caption);
+  font-weight: 700;
+  color: var(--mj-brand);
+  margin-bottom: 0.3rem;
+}
+.mutash-ayah {
+  font-family: "Amiri Quran", "Scheherazade New", serif;
+  font-size: var(--ss-type-scripture);
+  line-height: 2.2;
+  direction: rtl;
+  padding: 0.75rem 1rem;
+  background: color-mix(in srgb, var(--mj-brand) 5%, transparent);
+  border-inline-start: 3px solid var(--mj-brand);
+  border-start-end-radius: var(--sf-radius-xs);
+  border-end-end-radius: var(--sf-radius-xs);
+  color: var(--mj-ink);
+  margin-bottom: 0.5rem;
+}
+.mutash-ayah__loading { color: var(--mj-muted); font-size: var(--ss-type-supporting); }
+.mutash-ayah__ref {
+  font-size: var(--ss-type-caption);
+  color: var(--mj-muted);
+  margin-inline-start: 0.5rem;
+  font-family: inherit;
+}
+.mutash-hint-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--sf-radius-xs);
+  border: 1.5px solid var(--mj-hairline);
+  background: none;
+  cursor: pointer;
+  font-size: var(--ss-type-label);
+  font-weight: 700;
+  color: var(--mj-muted);
+  font-family: inherit;
+}
+.mutash-hint {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--sf-radius-xs);
+  background: color-mix(in srgb, var(--mj-info, var(--mj-brand)) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-info, var(--mj-brand)) 20%, transparent);
+  font-size: var(--ss-type-supporting);
+  color: var(--mj-info, var(--mj-brand-deep));
+  line-height: 1.6;
 }

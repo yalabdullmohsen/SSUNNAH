@@ -1655,12 +1655,87 @@ hr.decorative,
 .home-about__body {
   font-size: 0.9rem;
   line-height: 1.9;
-  color: #5C5C56;
+  color: var(--mj-ink-2);
   max-width: 700px;
 }
 
 .home-about__body p { margin: 0 0 0.8rem; }
 .home-about__body p:last-child { margin-bottom: 0; }
+
+/* WAVE8 — أعمدة/CTAs عن سُنّة: توكنات بدل inline colors */
+.home-about__head-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.home-about__pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+.home-about__pillar {
+  background: color-mix(in srgb, var(--mj-brand) 6%, var(--mj-surface));
+  border: 1px solid color-mix(in srgb, var(--mj-brand) 18%, var(--mj-hairline));
+  border-radius: var(--sf-radius-sm);
+  padding: 0.95rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  overflow: visible;
+}
+.home-about__pillar-deco {
+  position: absolute;
+  bottom: -12px;
+  left: -12px;
+  opacity: 0.06;
+  pointer-events: none;
+}
+.home-about__pillar-icon {
+  background: var(--mj-brand-deep);
+  color: var(--mj-on-brand);
+  padding: 0.4rem;
+  border-radius: var(--sf-radius-xs);
+  display: inline-flex;
+  width: fit-content;
+}
+.home-about__pillar-title {
+  font-size: var(--ss-type-label);
+  font-weight: 700;
+  color: var(--mj-ink);
+  line-height: 1.35;
+}
+.home-about__pillar-desc {
+  font-size: var(--ss-type-supporting);
+  color: var(--mj-ink-2);
+  line-height: 1.5;
+}
+.home-about__actions {
+  display: flex;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+.home-about__cta {
+  padding: 0.55rem 1.2rem;
+  border-radius: var(--sf-radius-xs);
+  font-weight: 700;
+  font-size: 0.83rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.home-about__cta--primary {
+  background: var(--mj-brand-deep);
+  color: var(--mj-on-brand);
+}
+.home-about__cta--secondary {
+  background: var(--surface-brand, var(--mj-brand-soft));
+  color: var(--text-brand-deep, var(--mj-brand-deep));
+  border: 1px solid var(--border-brand, var(--mj-hairline));
+}
 
 /* ── Footer email link ───────────────────────────────────── */
 .site-footer-email {

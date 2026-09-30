@@ -28,7 +28,7 @@ export function HomeAboutSection() {
   return (
     <section className="home-about home-section" aria-labelledby="about-home-heading" dir="rtl">
       <div className="home-section-head">
-        <div style={{ display: "flex", alignItems: "center", gap: "0.55rem" }}>
+        <div className="home-about__head-row">
           <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20">
             <polygon points="10,1 13,7 20,7 15,12 17,19 10,15 3,19 5,12 0,7 7,7" fill="var(--mj-brand-deep)"/>
             <polygon points="10,4 12.5,8.5 17.5,8.5 13.5,12 15,17 10,14 5,17 6.5,12 2.5,8.5 7.5,8.5" fill="var(--mj-brand-deep)" opacity="0.5"/>
@@ -54,55 +54,33 @@ export function HomeAboutSection() {
         </p>
       </div>
 
-      {/* أعمدة المنصة */}
-      <div style={{
-        display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(170px,1fr))",
-        gap: "0.65rem", marginTop: "1.25rem",
-      }}>
+      <div className="home-about__pillars">
         {PILLARS.map(({ Icon, title, desc }) => (
-          <div key={title} style={{
-            background: "linear-gradient(145deg,#f5fbf8,#edf7f2)",
-            border: "1px solid #cce8d8",
-            borderRadius: "0.85rem", padding: "0.95rem 0.9rem",
-            display: "flex", flexDirection: "column", gap: "0.5rem",
-            position: "relative", overflow: "hidden",
-          }}>
-            <svg aria-hidden="true" style={{
-              position: "absolute", bottom: "-12px", left: "-12px", opacity: 0.06, pointerEvents: "none",
-            }} width="60" height="60" viewBox="0 0 60 60">
+          <div key={title} className="home-about__pillar">
+            <svg
+              aria-hidden="true"
+              className="home-about__pillar-deco"
+              width="60"
+              height="60"
+              viewBox="0 0 60 60"
+            >
               <polygon points="30,3 40,20 57,20 45,33 50,50 30,41 10,50 15,33 3,20 20,20" fill="var(--mj-brand-deep)"/>
             </svg>
-            <span style={{
-              background: "linear-gradient(135deg,var(--mj-brand-deep),var(--mj-brand-deep))", color: "#FAFAF8",
-              padding: "0.4rem", borderRadius: "0.45rem",
-              display: "inline-flex", width: "fit-content",
-              boxShadow: "0 2px 6px rgba(15,50,30,0.2)",
-            }}>
+            <span className="home-about__pillar-icon">
               <Icon size={15} strokeWidth={2} />
             </span>
-            <strong style={{ fontSize: "0.83rem", fontWeight: 700, color: "#1a1a1a", lineHeight: 1.35 }}>{title}</strong>
-            <span style={{ fontSize: "0.8rem", color: "#5a6b63", lineHeight: 1.5 }}>{desc}</span>
+            <strong className="home-about__pillar-title">{title}</strong>
+            <span className="home-about__pillar-desc">{desc}</span>
           </div>
         ))}
       </div>
 
-      <div style={{ display: "flex", gap: "0.65rem", marginTop: "1.25rem", flexWrap: "wrap" }}>
-        <Link href="/lessons" style={{
-          background: "linear-gradient(135deg,var(--mj-brand-deep),var(--mj-brand-deep))", color: "#FAFAF8",
-          padding: "0.55rem 1.2rem", borderRadius: "0.55rem",
-          fontWeight: 700, fontSize: "0.83rem", textDecoration: "none",
-          display: "inline-flex", alignItems: "center", gap: "0.3rem",
-          boxShadow: "0 2px 8px rgba(15,50,30,0.22)",
-        }}>
+      <div className="home-about__actions">
+        <Link href="/lessons" className="home-about__cta home-about__cta--primary">
           <svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 3 1 7l8 4 8-4-8-4z"/><path d="M5 9.5v3.5a4 4 0 0 0 8 0V9.5"/></svg>
           ابدأ من هنا ←
         </Link>
-        <Link href="/sitemap" style={{
-          background: "var(--surface-brand)", color: "var(--text-brand-deep)",
-          padding: "0.55rem 1.1rem", borderRadius: "0.55rem",
-          fontWeight: 700, fontSize: "0.83rem", textDecoration: "none",
-          border: "1px solid var(--border-brand)",
-        }}>
+        <Link href="/sitemap" className="home-about__cta home-about__cta--secondary">
           كل الأقسام
         </Link>
       </div>
