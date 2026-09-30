@@ -120,6 +120,10 @@
 | `docs/mushaf/WAVE6_MUSHAF_FLUIDITY_BASELINE.md` | **WAVE6** — خط أساس سلاسة المصحف / تقليب الصفحات |
 | `docs/mushaf/WAVE6_SCOPE_MANIFEST.md` | **WAVE6** — نطاق وتجميد التنفيذ |
 | `docs/mushaf/WAVE6_REAL_DEVICE_TEST_MATRIX.md` | **WAVE6** — مصفوفة أجهزة (DEVICE_REQUIRED) |
+| `docs/mushaf/MUSHAF_FINAL_CLOSURE_LIVE_STATE.md` | حالة إغلاق المصحف الحية |
+| `docs/mushaf/MUSHAF_PROTECTED_ASSET_MANIFEST.md` | أصول القرآن المحمية · BLOCKED_QURAN_INTEGRITY |
+| `docs/mushaf/MUSHAF_CONTROL_SEMANTIC_MATRIX.md` | مصفوفة دلالات أدوات المصحف |
+| `docs/mushaf/MUSHAF_COMPLETE_EXPERIENCE_BASELINE.md` | خط أساس تجربة المصحف |
 | `docs/mushaf/SUNNAH_WAVE6_MUSHAF_FLUIDITY_CLOSURE_REPORT.md` | **WAVE6** — إغلاق سلاسة المصحف / تأخير التقليب |
 | `docs/audit/SUNNAH_POST_WAVE6_FINAL_BASELINE.md` | **Phase0** — خط أساس حي بعد WAVE6 قبل WAVE7→13 |
 | `docs/design/WAVE7_IDENTITY_CASCADE_ABSORPTION_REPORT.md` | **WAVE7** — امتصاص طبقات الهوية / إزالة reload-to-win |

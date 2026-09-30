@@ -2173,3 +2173,57 @@ html[data-theme="dark"] .nm-page-arrow {
   --mm-ui-accent: var(--mushaf-accent-fill);
   --mm-ui-accent-deep: var(--mushaf-accent-fill-strong);
 }
+
+/* First-open reading coach — chrome only; does not cover page geometry */
+.nm-reading-coach {
+  position: absolute;
+  inset-inline: max(0.75rem, var(--inset-inline-start, 0px))
+    max(0.75rem, var(--inset-inline-end, 0px));
+  bottom: max(4.5rem, calc(var(--inset-bottom, 0px) + 3.75rem));
+  z-index: var(--z-overlay, 40);
+  max-width: 22rem;
+  margin-inline: auto;
+  padding: 0.85rem 1rem 0.75rem;
+  border-radius: var(--radius-lg, 0.75rem);
+  background: color-mix(in srgb, var(--mushaf-chrome-bg, var(--sf-surface-elevated)) 94%, transparent);
+  color: var(--mushaf-chrome-fg, var(--sf-text-primary));
+  border: 1px solid color-mix(in srgb, var(--nm-gold, var(--mushaf-printed-gold)) 45%, transparent);
+  pointer-events: auto;
+}
+
+.nm-reading-coach__eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  opacity: 0.75;
+}
+
+.nm-reading-coach__title {
+  margin: 0.2rem 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.nm-reading-coach__body {
+  margin: 0 0 0.7rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.nm-reading-coach__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
+.nm-reading-coach__progress {
+  margin: 0.35rem 0 0;
+  text-align: end;
+  font-size: 0.7rem;
+  opacity: 0.65;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nm-reading-coach {
+    transition: none;
+  }
+}

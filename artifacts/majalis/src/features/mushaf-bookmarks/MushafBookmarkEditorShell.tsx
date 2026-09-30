@@ -92,7 +92,16 @@ export const MushafBookmarkEditorShell = memo(function MushafBookmarkEditorShell
     window.addEventListener("popstate", onPop);
 
     const frame = window.requestAnimationFrame(() => {
-      shellRef.current?.focus({ preventScroll: true });
+      const body = bodyRef.current;
+      const firstField = body?.querySelector<HTMLElement>(
+        "textarea, input:not([type='hidden']), select",
+      );
+      if (firstField && body) {
+        firstField.focus({ preventScroll: true });
+        ensureFieldVisibleInSheet(firstField, body, footerRef.current);
+      } else {
+        shellRef.current?.focus({ preventScroll: true });
+      }
     });
 
     return () => {
