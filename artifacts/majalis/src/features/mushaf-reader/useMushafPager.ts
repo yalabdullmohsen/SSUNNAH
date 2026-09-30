@@ -448,10 +448,13 @@ export function useMushafPager({
     scrollerRef.current?.classList.remove("is-panning");
     shellRef.current?.removeAttribute("data-mushaf-panning");
     cancelPendingMove();
-    if (panning.current) {
+    const wasPanning = panning.current;
+    if (wasPanning) {
       locking.current = true;
       pendingCommit.current = null;
       resetToCurrent(true);
+      /* إلغاء السحب دون commit — أعد قفل المنتج إن وُجد */
+      onNavigateCancel?.();
     }
     panning.current = false;
   };
