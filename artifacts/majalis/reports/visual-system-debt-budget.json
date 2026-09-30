@@ -1,24 +1,24 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Ceilings must not rise. Lower intentionally in later waves; never raise without documented exception. Wave1 identity cascade: hex 9044\u21929042; deferred imports 58\u219253.",
+  "note": "Ceilings must not rise. Lower intentionally in later waves; never raise without documented exception.",
   "floors": {
     "officialButtonImportFiles": 153,
     "sfTokenRefs": 688,
     "ssTokenRefs": 722
   },
   "ceilings": {
-    "cssFiles": 357,
-    "important": 4798,
-    "hexInCss": 9042,
-    "rgbHslInCss": 2205,
+    "cssFiles": 356,
+    "important": 4788,
+    "hexInCss": 9023,
+    "rgbHslInCss": 2149,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
-    "boxShadowDecls": 1134,
-    "zIndexRawDecls": 273,
-    "borderRadiusPxDecls": 1316,
+    "boxShadowDecls": 1119,
+    "zIndexRawDecls": 271,
+    "borderRadiusPxDecls": 1309,
     "inlineColorStyleMatches": 87,
     "rawButtonFiles": 211
   },
-  "updatedAt": "2026-09-30T03:32:19.953Z"
+  "updatedAt": "2026-09-30T06:47:29.429Z"
 }

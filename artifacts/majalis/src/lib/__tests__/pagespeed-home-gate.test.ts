@@ -55,7 +55,12 @@ assert.doesNotMatch(
 );
 
 assert.doesNotMatch(home, /home-legacy\.css/, "لا CSS قديم فوق الطية");
-assert.match(below, /home-legacy\.css/, "CSS قديم تحت الطية فقط");
+assert.doesNotMatch(below, /home-legacy\.css/, "WAVE2: home-legacy متقاعد");
+assert.match(
+  read("src/components/widgets/Widget.tsx"),
+  /home-widget-chrome\.css/,
+  "كروم ودجات الرئيسية من سلطة المكوّن",
+);
 assert.doesNotMatch(home, /mushaf-madinah|VerifiedMushaf|tafsir-data|fiqh-issues-seed/, "لا حزم مصحف/تفسير/فقه في الرئيسية");
 
 assert.doesNotMatch(intro, /from ["']lucide-react["']/, "مقدمة بلا lucide — LCP");

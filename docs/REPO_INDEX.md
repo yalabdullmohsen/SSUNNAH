@@ -44,7 +44,7 @@
 `app/styles/theme.css` · `brand-v4.css` · `tokens.css` · `index.css` · `design-system.css` · `instant-interaction.css` · `native-feel.css` · `chunk-recovery-toast.css` · `final-release.css` · `brand-v4-components.css` · `brand-v4-contrast-fixes.css` · `a11y-release-gate.css` · `capacitor-native-ux.css` · `m2030/{foundation,navigation,pages,interactions}.css` · `theme-aliases.css` · `ios-edge.css` · `sunnah-visual-language.css` (مؤجّل) · `m2030/home.css` (مع الرئيسية)
 
 `brand-v4` / `m2030` / `final-release` / SVL = **KEEP** وقت التشغيل حتى هجرة مرحلية — التصنيف الكامل: `docs/design/LEGACY_CSS_RETIREMENT_MATRIX.md` (+ `docs/release/LEGACY_CLEANUP_REPORT.md`).  
-`styles/pages/*-legacy.css` = مستوردة كسولًا (ليست SAFE_REMOVE بالاسم). قبل أي حذف CSS: `rg -n "filename.css" artifacts/majalis`.  
+`styles/pages/*-legacy.css` = **REMOVED (WAVE2)** — القواعد الحيّة في `lessons.css` / `optimized-sheikh-image.css` / `home-widget-chrome.css` / `content-reading-shell` / `topic-page`. قبل أي حذف CSS: `rg -n "filename.css" artifacts/majalis`.  
 حدود المصحف: `docs/design/MUSHAF_CSS_BOUNDARY.md` · بوابات `test:legacy-css-retirement` + `test:mushaf-css-boundary`.  
 تقرير Visual+Interaction: `docs/design/SUNNAH_VISUAL_INTERACTION_FINAL_REPORT.md` (PARTIAL · WEB_RELEASED_NATIVE_HOLD).
 

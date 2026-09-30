@@ -672,7 +672,7 @@
     "test:admin-v3-interaction-authority": "node --import tsx src/lib/__tests__/admin-v3-interaction-authority-gate.test.ts",
     "test:dark-mode-authority": "node --import tsx src/lib/__tests__/dark-mode-authority-gate.test.ts",
     "test:final-internal-closure-pr2": "node --import tsx src/lib/__tests__/closure-pr2-dark-token-absorb-gate.test.ts",
-    "test:legacy-css-retirement": "node --import tsx src/lib/__tests__/legacy-css-retirement-gate.test.ts",
+    "test:legacy-css-retirement": "node --import tsx src/lib/__tests__/legacy-css-retirement-gate.test.ts && node --import tsx src/lib/__tests__/wave2-legacy-page-css-retirement-gate.test.ts",
     "test:mushaf-css-boundary": "node --import tsx src/lib/__tests__/mushaf-css-boundary-gate.test.ts",
     "inventory:interaction-system": "node scripts/interaction-system-inventory.mjs",
     "test:modern-islamic-editorial": "node --import tsx src/lib/__tests__/modern-islamic-editorial-gate.test.ts",

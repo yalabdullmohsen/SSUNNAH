@@ -56,14 +56,13 @@ assert.doesNotMatch(appGraph, /HomepageAdBar|homepage-ad-bar\.css|config\/homepa
 assert.match(read("src/main.tsx"), /brand-v4\.css/);
 assert.match(read("src/main.tsx"), /final-release\.css/);
 
-/* Remaining *-legacy.css still present with consumers — not SAFE_REMOVE by name */
-for (const name of [
-  "home-legacy.css",
-  "lessons-legacy.css",
-  "misc-page-legacy.css",
+/* WAVE2 SAFE_REMOVE — page legacy CSS retired after port to authorities */
+for (const rel of [
+  "src/styles/pages/home-legacy.css",
+  "src/styles/pages/lessons-legacy.css",
+  "src/styles/pages/misc-page-legacy.css",
 ] as const) {
-  const path = resolve(majalisRoot, "src/styles/pages", name);
-  assert.ok(existsSync(path), `legacy page CSS present: ${name}`);
+  assert.equal(existsSync(resolve(majalisRoot, rel)), false, `WAVE2 SAFE_REMOVE must stay gone: ${rel}`);
 }
 
 /* PR6 SAFE_REMOVE — proven zero product import / zero TSX class usage */

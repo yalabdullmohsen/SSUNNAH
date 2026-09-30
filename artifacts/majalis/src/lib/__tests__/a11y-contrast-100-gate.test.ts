@@ -10,7 +10,7 @@ import { fileURLToPath } from "node:url";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const aliases = readFileSync(resolve(root, "src/styles/theme-aliases.css"), "utf8");
 const theme = readFileSync(resolve(root, "src/app/styles/theme.css"), "utf8");
-const statusCss = readFileSync(resolve(root, "src/styles/pages/lessons-legacy.css"), "utf8");
+const statusCss = readFileSync(resolve(root, "src/styles/pages/lessons.css"), "utf8");
 
 const rootBlock = aliases.match(/:root \{[\s\S]*?\n\}/);
 assert.ok(rootBlock, "كتلة :root في theme-aliases");

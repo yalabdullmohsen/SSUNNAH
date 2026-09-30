@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Link } from "wouter";
 import { LogIn, type LucideIcon } from "lucide-react";
 import { EMPTY, ACTION } from "@/lib/ui-copy";
+import "@/styles/components/home/home-widget-chrome.css";
 
 /**
  * غلاف موحّد لودجات الرئيسية (المرحلة 7) — أربع حالات إلزامية: تحميل/فارغ/

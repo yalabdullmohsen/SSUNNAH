@@ -1,0 +1,123 @@
+/* Home widget chrome — WAVE2 port from home-legacy (Widget / prayer ranks / daily meta) */
+
+.home-section-head p,
+.home-library-card p,
+.home-miracle-card p,
+.home-empty-card p {
+  color: var(--msk-text-2, var(--mj-muted));
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.home-section {
+  margin-bottom: clamp(2.8rem, 6vw, 4.75rem);
+}
+
+.home-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--ds-space-4);
+  margin-bottom: 1.5rem;
+}
+
+.home-section-head h2 {
+  color: var(--msk-gold);
+  font-family: var(--font-body);
+  font-size: clamp(1.08rem, 2.24vw, 1.48rem);
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.home-section-head p {
+  max-width: 40rem;
+  color: var(--msk-text-2);
+}
+
+.home-section-link {
+  flex-shrink: 0;
+  color: var(--msk-gold);
+  border: 1px solid var(--msk-gold-border);
+  border-radius: 999px;
+  padding: 0.48rem 0.95rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  background: var(--msk-gold-dim);
+  transition: background var(--motion-fast), border-color var(--motion-fast);
+}
+
+.home-section-link:hover {
+  background: rgba(217,174,92,.18);
+  border-color: var(--msk-gold);
+}
+
+.home-section {
+  margin-bottom: clamp(2rem, 5vw, 2.75rem);
+}
+
+.home-section-head {
+  margin-bottom: 1rem;
+}
+
+.home-prayer-ranks-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2);
+}
+
+.home-prayer-rank-row {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-3);
+  padding: 0.75rem 1rem;
+}
+
+.home-prayer-rank-num {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--majalis-emerald, var(--mj-brand));
+  color: var(--mj-white, #ffffff);
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.home-prayer-rank-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.home-prayer-rank-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--majalis-ink, #0d1b2a);
+  margin: 0 0 0.15rem;
+}
+
+.home-prayer-rank-ruling {
+  font-size: 0.78rem;
+  color: var(--majalis-ink-soft, var(--mj-muted));
+  margin: 0;
+}
+
+.home-daily-meta {
+  color: var(--msk-text-2, var(--mj-muted));
+  font-size: 0.88rem;
+  margin-bottom: 0.35rem;
+}
+
+
+.home-daily-meta {
+  font-size: 0.78rem;
+  color: var(--msk-text-2, var(--mj-muted));
+  margin: 0.2rem 0;
+}
+
+.home-daily-meta strong {
+  color: var(--majalis-brass-deep, #7A5214);
+}

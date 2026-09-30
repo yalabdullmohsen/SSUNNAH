@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { AdminModal, Field } from "./AdminModal";
 import { sanitizeText } from "@/lib/sanitize";
+import "@/styles/components/topic-page.css";
 import {
   adminFetchAllWeekDayFacts, adminCreateWeekDayFact, adminUpdateWeekDayFact,
   adminSetWeekDayReviewStatus, adminDeleteWeekDayFact,

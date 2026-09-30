@@ -4,6 +4,7 @@ import {
   fetchRecentErrorLogs, groupErrorsByRoute,
   type ClientErrorLogRow,
 } from "@/lib/client-error-logs-service";
+import "@/styles/components/topic-page.css";
 
 export function ClientErrorLogsSection() {
   const [logs, setLogs] = useState<ClientErrorLogRow[]>([]);
