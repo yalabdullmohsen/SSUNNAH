@@ -1,11 +1,11 @@
 {
-  "measuredAt": "2026-09-30T00:07:15.654Z",
+  "measuredAt": "2026-09-30T03:34:05.794Z",
   "scope": "artifacts/majalis/src",
   "cssFiles": 357,
   "tsxFiles": 825,
   "ruleBlocksApprox": 20908,
   "important": 4798,
-  "hexInCss": 9044,
+  "hexInCss": 9042,
   "rgbHslInCss": 2205,
   "mjTokenRefs": 9908,
   "sfTokenRefs": 688,
@@ -21,7 +21,7 @@
   "officialButtonImportFiles": 153,
   "rawButtonFiles": 211,
   "mainSyncCssImports": 22,
-  "mainDeferredCssImports": 58,
+  "mainDeferredCssImports": 53,
   "foundationFilePresent": true,
   "themeApiFilePresent": true
 }

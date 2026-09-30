@@ -1,7 +1,7 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Ceilings must not rise. Lower intentionally in later waves; never raise without documented exception.",
+  "note": "Ceilings must not rise. Lower intentionally in later waves; never raise without documented exception. Wave1 identity cascade: hex 9044\u21929042; deferred imports 58\u219253.",
   "floors": {
     "officialButtonImportFiles": 153,
     "sfTokenRefs": 688,
@@ -10,7 +10,7 @@
   "ceilings": {
     "cssFiles": 357,
     "important": 4798,
-    "hexInCss": 9044,
+    "hexInCss": 9042,
     "rgbHslInCss": 2205,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
@@ -20,5 +20,5 @@
     "inlineColorStyleMatches": 87,
     "rawButtonFiles": 211
   },
-  "updatedAt": "2026-09-29T23:57:28.642Z"
+  "updatedAt": "2026-09-30T03:32:19.953Z"
 }
