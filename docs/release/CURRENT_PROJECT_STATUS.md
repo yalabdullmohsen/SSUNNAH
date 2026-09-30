@@ -1,6 +1,6 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-09-30 (ADMIN-FINAL-1 MERGED_AND_DEPLOYED)  
+**Updated:** 2026-09-30 (Startup Typography FOUC P2 in flight after ADMIN-FINAL-1 MATCH)  
 **Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
 **Final boundary:** `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md`  
 **Live program state:** `docs/audit/SUNNAH_FINAL_QUALITY_PROGRAM_LIVE_STATE.md`  
@@ -8,6 +8,8 @@
 **Admin final program:** `docs/admin/ADMIN_FINAL_MIGRATION_AND_SECURITY_BASELINE.md`  
 **Admin FINAL-1 closure:** `docs/admin/ADMIN_FINAL_1_CLOSURE_REPORT.md`  
 **Startup typography FOUC:** `docs/performance/STARTUP_TYPOGRAPHY_FOUC_LIVE_BASELINE.md`  
+**Startup FOUC P2 scope:** `docs/performance/STARTUP_TYPOGRAPHY_FOUC_PHASE2_SCOPE.md`  
+**FINAL program resume:** `docs/performance/SUNNAH_FINAL_PROGRAM_PHASE0_LIVE_TRUTH.md`  
 **Post-WAVE6 baseline:** `docs/audit/SUNNAH_POST_WAVE6_FINAL_BASELINE.md`  
 **Authority map:** `docs/design/SUNNAH_AUTHORITY_UNIFICATION_FINAL_MAP.md`  
 **Device runbook:** `docs/audit/WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md`  
@@ -25,7 +27,7 @@
 | Web visual/interaction | **`VISUAL_INTERACTION_COMPLETE_WEB`** |
 | Mushaf polish | **COMPLETE_DEVICE_HOLD** (residual lag DEVICE_REQUIRED) |
 | Admin program | **ADMIN-FINAL-1** `MERGED_AND_DEPLOYED` · FINAL-2+ allowed next |
-| Startup Typography FOUC | **P1 MERGED** on tip · P2 size-adjust open |
+| Startup Typography FOUC | **P2 size-adjust 97%** · measurement locked · Delivery pending |
 | Explicit non-claims | no `STORE GO` · no `DEVICE_TESTED` · no `MUSHAF_SILKY` · no `WCAG CERTIFIED` · no `FULLY COMPLETE` · no `ADMIN_FULLY_SECURE` |
 
 ## Closure program WAVE7→13 (merged + deployed)

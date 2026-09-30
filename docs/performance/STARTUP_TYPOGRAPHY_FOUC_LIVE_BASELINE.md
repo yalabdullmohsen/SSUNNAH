@@ -161,3 +161,20 @@ Device frame timestamps: **NOT MEASURED** this session (no TestFlight / local br
 
 `--ds-base: 16px` remains for component-level uses only — not applied to `html`.  
 Gate: `test:startup-typography-fouc-p1` (same file as P0 script, closure assertions).
+
+
+---
+
+## Phase 2 size-adjust (additive — 2026-09-30)
+
+| Field | Value |
+|---|---|
+| Tip at P2 start | `93136b271` MATCH production |
+| P0 | MERGED `#2406` `a688c5fa` |
+| P1 | MERGED `#2407` `c22a3aa2` — `html{font-size:calc(100%*var(--ui-font-scale,1))}` held |
+| Measurement | `artifacts/majalis/reports/ui-fallback-metrics.json` · Playwright HeadlessChrome |
+| Best `size-adjust` | **97%** (sumAbsWidthΔ **13.83**) vs 105% (**32.97**) |
+| Surfaces synced | `fonts-ui.css` · `critical-first-paint.css` · `index.html` `#mj-lcp-critical` MajlisAmiriFallback |
+| Quran / prayer | Untouched |
+
+P1 closed the rem authority jump. P2 reduces fallback↔Amiri metric jump when Amiri is not yet applied / optional swap.
