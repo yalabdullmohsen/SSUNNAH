@@ -146,3 +146,18 @@ Device frame timestamps: **NOT MEASURED** this session (no TestFlight / local br
 **Phase 0 verdict:** `BASELINE_LOCKED` · ready for Phase 1 typography authority unification after this PR merges + MATCH.
 
 **Forbidden until Phase 1:** leaving dual competing root font-size definitions.
+
+---
+
+## Phase 1 addendum (post-MATCH `a688c5fa9`)
+
+**Status:** product fix landed on branch `cursor/startup-typography-fouc-p1`.
+
+| Before | After |
+|---|---|
+| `index.css` `html { font-size: 16px }` wins sync | `html { font-size: calc(100% * var(--ui-font-scale, 1)) }` |
+| Deferred `design-system.css` `html { font-size: var(--ds-base) }` | same calc formula |
+| Competing absolute base | Single scale formula critical→sync→deferred |
+
+`--ds-base: 16px` remains for component-level uses only — not applied to `html`.  
+Gate: `test:startup-typography-fouc-p1` (same file as P0 script, closure assertions).
