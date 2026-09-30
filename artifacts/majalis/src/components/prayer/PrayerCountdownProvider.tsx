@@ -1,4 +1,11 @@
-import { createContext, useContext, useMemo, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
 import {
   usePrayerCountdownState,
   type PrayerCountdownValue,
@@ -11,14 +18,37 @@ type PrayerDataValue = {
   reload: () => void;
 };
 
+/** هوية الصلاة القادمة / فترة السماح — تتغير نادرًا (ليس كل ثانية). */
+export type PrayerSlotIdentity = {
+  nextKey: string;
+  nextName: string;
+  inGrace: boolean;
+};
+
 const PrayerDataContext = createContext<PrayerDataValue | null>(null);
 const PrayerCountdownLiveContext = createContext<PrayerCountdown | null>(null);
+const PrayerSlotContext = createContext<PrayerSlotIdentity | null>(null);
 
 const EMPTY_DATA: PrayerDataValue = {
   data: null,
   loading: false,
   reload: () => {},
 };
+
+function deriveSlot(cd: PrayerCountdown | null): PrayerSlotIdentity | null {
+  if (!cd?.next) return null;
+  return {
+    nextKey: cd.next.key,
+    nextName: cd.next.name,
+    inGrace: cd.sinceSeconds != null,
+  };
+}
+
+function sameSlot(a: PrayerSlotIdentity | null, b: PrayerSlotIdentity | null): boolean {
+  if (a === b) return true;
+  if (!a || !b) return false;
+  return a.nextKey === b.nextKey && a.nextName === b.nextName && a.inGrace === b.inGrace;
+}
 
 export function PrayerCountdownProvider({
   children,
@@ -35,12 +65,20 @@ export function PrayerCountdownProvider({
     () => ({ data, loading, reload }),
     [data, loading, reload],
   );
+  const [slot, setSlot] = useState<PrayerSlotIdentity | null>(() => deriveSlot(countdown));
+
+  useEffect(() => {
+    const next = deriveSlot(countdown);
+    setSlot((prev) => (sameSlot(prev, next) ? prev : next));
+  }, [countdown]);
 
   return (
     <PrayerDataContext.Provider value={dataValue}>
-      <PrayerCountdownLiveContext.Provider value={countdown}>
-        {children}
-      </PrayerCountdownLiveContext.Provider>
+      <PrayerSlotContext.Provider value={slot}>
+        <PrayerCountdownLiveContext.Provider value={countdown}>
+          {children}
+        </PrayerCountdownLiveContext.Provider>
+      </PrayerSlotContext.Provider>
     </PrayerDataContext.Provider>
   );
 }
@@ -50,7 +88,12 @@ export function useSharedPrayerData(): PrayerDataValue {
   return useContext(PrayerDataContext) ?? EMPTY_DATA;
 }
 
-/** العدّ التنازلي الحي — للشريحة/البانر فقط. */
+/** هوية القادمة/السماح — بلا نص العدّ التنازلي. */
+export function useSharedPrayerSlot(): PrayerSlotIdentity | null {
+  return useContext(PrayerSlotContext);
+}
+
+/** العدّ التنازلي الحي — للشريحة/قيمة العدّ فقط. */
 export function useSharedPrayerCountdownLive(): PrayerCountdown | null {
   return useContext(PrayerCountdownLiveContext);
 }

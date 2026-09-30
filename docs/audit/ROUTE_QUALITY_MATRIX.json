@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-29T17:25:00Z",
+  "generatedAt": "2026-09-29T23:57:51Z",
   "source": "artifacts/majalis/src/AppRoutes.tsx",
-  "mainTip": "debt-reduction-w3",
+  "mainTip": "final-internal-closure-pr8",
   "totalRoutes": 415,
   "publicRoutes": 372,
   "adminRoutes": 42,
@@ -16,9 +16,17 @@
       "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
-      "accessibility": "COMPLETE",
+      "accessibility": "PARTIAL",
       "visualSystem": "COMPLETE",
-      "auditNote": "Debt Reduction Wave — Home critical closure (shell + Feedback V2 + dark authority)."
+      "auditNote": "PR8 final: smoke 200 + visual-snapshot + Home closure gates. a11y DEVICE_REQUIRED residual.",
+      "offline": "PARTIAL",
+      "light": "COMPLETE",
+      "system": "COMPLETE",
+      "mobile": "COMPLETE",
+      "tablet": "PARTIAL",
+      "desktop": "COMPLETE",
+      "largeText": "PARTIAL",
+      "zoom200": "PARTIAL"
     },
     {
       "route": "/about",
@@ -163,7 +171,8 @@
       "rtl": "COMPLETE",
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
-      "auditNote": "Debt Reduction Wave 2 — critical route matrix closure (shared shell + Feedback/dark/RTL authority)."
+      "auditNote": "PR8 smoke 200.",
+      "mobile": "COMPLETE"
     },
     {
       "route": "/adhkar/:slug",
@@ -493,13 +502,14 @@
       "route": "/admin/v3",
       "componentHint": null,
       "public": false,
-      "loading": "PENDING",
+      "loading": "N/A",
       "empty": "PENDING",
-      "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
-      "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "error": "COMPLETE",
+      "dark": "PARTIAL",
+      "rtl": "COMPLETE",
+      "accessibility": "PARTIAL",
+      "visualSystem": "PARTIAL",
+      "auditNote": "Public edge middleware returns 404 «غير متاح» (access control). Not a blank SPA shell."
     },
     {
       "route": "/admin/v3/analytics",
@@ -1574,13 +1584,15 @@
       "route": "/fiqh",
       "componentHint": null,
       "public": true,
-      "loading": "PENDING",
+      "loading": "COMPLETE",
       "empty": "PENDING",
       "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
+      "dark": "COMPLETE",
+      "rtl": "COMPLETE",
       "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "visualSystem": "COMPLETE",
+      "mobile": "COMPLETE",
+      "auditNote": "PR8 smoke 200."
     },
     {
       "route": "/fiqh-council",
@@ -1714,7 +1726,8 @@
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
       "a11y": "PARTIAL",
-      "auditNote": "Debt Reduction Wave 2 — critical route matrix closure (shared shell + Feedback/dark/RTL authority)."
+      "auditNote": "PR8 smoke 200.",
+      "mobile": "COMPLETE"
     },
     {
       "route": "/hadith-science",
@@ -2479,14 +2492,15 @@
       "componentHint": null,
       "public": true,
       "loading": "COMPLETE",
-      "empty": "COMPLETE",
+      "empty": "PARTIAL",
       "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
       "a11y": "PARTIAL",
-      "auditNote": "Debt Reduction Wave 2 — critical route matrix closure (shared shell + Feedback/dark/RTL authority)."
+      "auditNote": "PR8 smoke 200 + lessons list gates; empty partial.",
+      "mobile": "COMPLETE"
     },
     {
       "route": "/lessons/:id",
@@ -2576,13 +2590,15 @@
       "route": "/login",
       "componentHint": null,
       "public": true,
-      "loading": "PENDING",
+      "loading": "COMPLETE",
       "empty": "PENDING",
-      "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
+      "error": "COMPLETE",
+      "dark": "COMPLETE",
+      "rtl": "COMPLETE",
       "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "visualSystem": "COMPLETE",
+      "mobile": "COMPLETE",
+      "auditNote": "PR5 Input/FieldLabel; smoke 200."
     },
     {
       "route": "/madhahib",
@@ -2943,10 +2959,11 @@
       "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
-      "accessibility": "COMPLETE",
+      "accessibility": "PARTIAL",
       "visualSystem": "COMPLETE",
       "a11y": "PARTIAL",
-      "auditNote": "Debt Reduction Wave — critical route closure from shell/Feedback V2/dark authority + existing gates (nav-prayer, page-transitions, dark-mode-authority, a11y)."
+      "auditNote": "PR7 UI chrome + mushaf gates PASS. Quran immutable. DEVICE_REQUIRED physical.",
+      "mobile": "COMPLETE"
     },
     {
       "route": "/mushaf-v2-preview",
@@ -2997,7 +3014,8 @@
       "rtl": "COMPLETE",
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
-      "auditNote": "Debt Reduction Wave 2 — critical route matrix closure (shared shell + Feedback/dark/RTL authority)."
+      "auditNote": "PR3 Select migrate + PR7 editor shell; smoke 200.",
+      "mobile": "COMPLETE"
     },
     {
       "route": "/mushaf/page",
@@ -3060,7 +3078,8 @@
       "rtl": "COMPLETE",
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
-      "auditNote": "Final Internal Closure PR1+PR3 confirm — guest empty, skeleton loading, ErrorState+retry+offline, dark CSS, dir=rtl, h1/h2+aria-busy, login Link, max-width layout; gate my-learning-route-quality-gate.test.ts"
+      "auditNote": "PR3 COMPLETE confirmed; smoke 200.",
+      "mobile": "COMPLETE"
     },
     {
       "route": "/my-submissions",
@@ -3243,7 +3262,8 @@
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
       "a11y": "PARTIAL",
-      "auditNote": "Debt Reduction Wave — critical route closure from shell/Feedback V2/dark authority + existing gates (nav-prayer, page-transitions, dark-mode-authority, a11y)."
+      "auditNote": "PR8 tick isolation (slot vs live HMS); prayer flash gates; smoke 200.",
+      "mobile": "COMPLETE"
     },
     {
       "route": "/privacy",
@@ -3578,14 +3598,15 @@
       "componentHint": null,
       "public": true,
       "loading": "COMPLETE",
-      "empty": "COMPLETE",
-      "error": "COMPLETE",
+      "empty": "PARTIAL",
+      "error": "PARTIAL",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
       "a11y": "PARTIAL",
-      "auditNote": "Debt Reduction Wave — critical route closure from shell/Feedback V2/dark authority + existing gates (nav-prayer, page-transitions, dark-mode-authority, a11y)."
+      "auditNote": "PR8 smoke 200 + mushaf/quran gates; empty/error partial.",
+      "mobile": "COMPLETE"
     },
     {
       "route": "/quran-hub/numbers",
@@ -3981,13 +4002,15 @@
       "route": "/register",
       "componentHint": null,
       "public": true,
-      "loading": "PENDING",
+      "loading": "COMPLETE",
       "empty": "PENDING",
-      "error": "PENDING",
-      "dark": "PENDING",
-      "rtl": "ASSUMED_RTL",
+      "error": "COMPLETE",
+      "dark": "COMPLETE",
+      "rtl": "COMPLETE",
       "accessibility": "PENDING",
-      "visualSystem": "MIXED_PENDING"
+      "visualSystem": "COMPLETE",
+      "mobile": "COMPLETE",
+      "auditNote": "PR5 forms wave; smoke 200. PasswordPolicyAuthority unchanged."
     },
     {
       "route": "/research",
@@ -4226,10 +4249,13 @@
       "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
-      "accessibility": "COMPLETE",
+      "accessibility": "PARTIAL",
       "visualSystem": "COMPLETE",
       "a11y": "PARTIAL",
-      "auditNote": "Debt Reduction Wave — critical route closure from shell/Feedback V2/dark authority + existing gates (nav-prayer, page-transitions, dark-mode-authority, a11y)."
+      "auditNote": "PR5/PR8: SearchInput + no raw API errors; smoke 200.",
+      "noResults": "COMPLETE",
+      "light": "COMPLETE",
+      "mobile": "COMPLETE"
     },
     {
       "route": "/search/:q",
@@ -4274,13 +4300,14 @@
       "public": true,
       "loading": "COMPLETE",
       "empty": "COMPLETE",
-      "error": "COMPLETE",
+      "error": "PARTIAL",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
       "a11y": "PARTIAL",
-      "auditNote": "Debt Reduction Wave — critical route closure from shell/Feedback V2/dark authority + existing gates (nav-prayer, page-transitions, dark-mode-authority, a11y)."
+      "auditNote": "PR5 Select migrate (font/playback); smoke 200.",
+      "mobile": "COMPLETE"
     },
     {
       "route": "/shamael",
@@ -5031,5 +5058,6 @@
   "criticalRoutesUpdated": 28,
   "utilityScreenConsumers": 9,
   "note": "Critical routes closed through Wave 2 for Home/Prayer/Search/Mushaf/Quran hubs + worship companions; long-tail routes may remain PENDING.",
-  "criticalClosureWave": "SUNNAH_DEBT_REDUCTION_WAVE_2"
+  "criticalClosureWave": "SUNNAH_DEBT_REDUCTION_WAVE_2",
+  "programNote": "PR8 updates priority public routes only; PENDING remains honest default elsewhere. No DEVICE_REQUIRED→PASS."
 }

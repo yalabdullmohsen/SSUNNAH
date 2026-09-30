@@ -95,7 +95,14 @@ assert.match(page, /pts-location--chip/, "الموقع شريحة مضغوطة")
 assert.doesNotMatch(page, /pts-header__top/, "لا صف مزدحم أعلى الصفحة");
 assert.doesNotMatch(page, /pts-chrome/, "لا شريط عائم سفلي");
 assert.match(page, /عرض الكل/, "مراتب قابلة للتوسيع");
-assert.match(page, /useSharedPrayerCountdown/, "مشاركة العدّاد مع المزوّد");
+assert.match(page, /useSharedPrayerData/, "بيانات المواقيت بلا عدّ كل ثانية");
+assert.match(page, /useSharedPrayerSlot/, "هوية القادمة/السماح فقط");
+assert.match(page, /PrayerHeroCountdownValue|useSharedPrayerCountdownLive/, "قيمة العدّ في ورقة حية");
+assert.doesNotMatch(
+  page,
+  /useSharedPrayerCountdown\s*\(/,
+  "صفحة المواقيت لا تشترك في السياق الحي الكامل",
+);
 assert.match(css, /\.pts-toolbar\s*\{/, "أنماط شريط الأدوات");
 assert.match(css, /\.pts-header__top\s*\{[\s\S]*?display:\s*none/, "إخفاء الصف العلوي المزدحم");
 
