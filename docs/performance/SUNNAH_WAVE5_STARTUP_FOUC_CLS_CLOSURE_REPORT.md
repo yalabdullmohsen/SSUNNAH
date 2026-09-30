@@ -2,7 +2,7 @@
 
 ## STATUS
 
-**COMPLETE** (pending merge/deploy seal → then `WAVE5_MERGED_AND_DEPLOYED`)
+**COMPLETE**
 
 ## LIVE BASELINE
 
@@ -109,7 +109,12 @@ Branch `cursor/final-repo-closure-wave5` → PR title `perf(startup): close crit
 
 ## PRODUCTION SMOKE TESTS
 
-After merge + Auto Deploy + version.json MATCH.
+PASS (non-destructive):
+- `/` `/search` `/quran-hub` `/mushaf` `/prayer-times` `/lessons` `/hadith` `/settings` `/my-learning` `/login` `/register` `/api/healthz` `/version.json` → HTTP 200
+- Home: RTL · `mj-theme-boot` · `#root` · title سُنّة
+- Critical CSS asset `index-ZphkCCU5.css` HTTP 200 · 311081 bytes
+- `version.json` commit `40548c89` MATCH origin/main
+- `/admin/v3` → HTTP 404 short HTML (edge; documented)
 
 ## REGRESSIONS
 
@@ -139,4 +144,11 @@ WAVE6 only after `WAVE5_MERGED_AND_DEPLOYED` + production MATCH + smoke PASS.
 
 ## FINAL DECISION
 
-**WAVE5_COMPLETE** (local closure). Seal **WAVE5_MERGED_AND_DEPLOYED** after production MATCH.
+**WAVE5_MERGED_AND_DEPLOYED**
+
+- PR #2381 merged → `40548c89` on `main`
+- Auto Deploy success
+- production `version.json` MATCH `40548c89`
+- main CI 35/35 SUCCESS after LHCI rerun (class C flake cleared)
+- Production smoke: public routes HTTP 200 · CSS `index-ZphkCCU5.css` 200 · Home RTL/theme-boot OK
+- `/admin/v3` returns short HTML 404 on edge (documented; not a WAVE5 regression)
