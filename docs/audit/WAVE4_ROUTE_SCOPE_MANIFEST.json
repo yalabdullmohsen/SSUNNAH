@@ -1,0 +1,149 @@
+{
+  "wave": "WAVE4",
+  "branch": "cursor/final-repo-closure-wave4",
+  "baseCommit": "f40756564",
+  "capturedAt": "2026-09-30T08:10:08.892594+00:00",
+  "gate": {
+    "WAVE2": "WAVE2_MERGED_AND_DEPLOYED",
+    "WAVE3": "WAVE3_MERGED_AND_DEPLOYED",
+    "prodMatchAtStart": "f4075656"
+  },
+  "priorityPublic": [
+    {
+      "route": "/",
+      "class": "PRIORITY_PUBLIC",
+      "work": [
+        "stale-indicator-home-dashboard"
+      ]
+    },
+    {
+      "route": "/search",
+      "class": "PRIORITY_PUBLIC",
+      "work": [
+        "no-results",
+        "offline"
+      ]
+    },
+    {
+      "route": "/lessons",
+      "class": "PRIORITY_PUBLIC",
+      "work": [
+        "empty-vs-no-results",
+        "error-retry-inplace"
+      ]
+    },
+    {
+      "route": "/fiqh",
+      "class": "PRIORITY_PUBLIC",
+      "work": [
+        "empty-vs-no-results",
+        "error-v2"
+      ]
+    },
+    {
+      "route": "/my-learning",
+      "class": "PRIORITY_PUBLIC",
+      "work": [
+        "error-v2"
+      ]
+    },
+    {
+      "route": "/hadith",
+      "class": "PRIORITY_PUBLIC",
+      "work": [
+        "matrix-confirm"
+      ]
+    },
+    {
+      "route": "/adhkar",
+      "class": "PRIORITY_PUBLIC",
+      "work": [
+        "matrix-confirm"
+      ]
+    },
+    {
+      "route": "/prayer-times",
+      "class": "PRAYER_SPECIAL",
+      "work": [
+        "matrix-confirm-no-calc-change"
+      ]
+    },
+    {
+      "route": "/mushaf",
+      "class": "MUSHAF_SPECIAL",
+      "work": [
+        "matrix-confirm-no-content-change"
+      ]
+    },
+    {
+      "route": "/mushaf/bookmarks",
+      "class": "MUSHAF_SPECIAL",
+      "work": [
+        "matrix-confirm"
+      ]
+    },
+    {
+      "route": "/quran-hub",
+      "class": "PRIORITY_PUBLIC",
+      "work": [
+        "matrix-partial-hold"
+      ]
+    },
+    {
+      "route": "/settings",
+      "class": "PRIORITY_PUBLIC",
+      "work": [
+        "matrix-confirm"
+      ]
+    },
+    {
+      "route": "/login",
+      "class": "AUTH_ROUTE",
+      "work": [
+        "empty-N/A",
+        "a11y-confirm"
+      ]
+    },
+    {
+      "route": "/register",
+      "class": "AUTH_ROUTE",
+      "work": [
+        "empty-N/A",
+        "a11y-confirm"
+      ]
+    },
+    {
+      "route": "/admin/v3",
+      "class": "ADMIN_ACCESS_ONLY",
+      "work": [
+        "access-denial-only"
+      ]
+    }
+  ],
+  "sharedComponents": [
+    "EmptyStateV2",
+    "NoResultsState",
+    "LoadingStateV2",
+    "ErrorStateV2",
+    "OfflineStateV2",
+    "StaleDataIndicator",
+    "PermissionDeniedState",
+    "RateLimitedState"
+  ],
+  "excluded": [
+    "WAVE5_critical_css",
+    "Admin_CRUD",
+    "Mushaf_internals",
+    "Prayer_calc",
+    "Auth_policy",
+    "SQL_RLS"
+  ],
+  "tests": [
+    "test:form-feedback-authority",
+    "closure-wave4-route-feedback-gate.test.ts",
+    "verify:preflight",
+    "verify:ci",
+    "release:verify"
+  ],
+  "IMPLEMENTATION_FROZEN": true
+}

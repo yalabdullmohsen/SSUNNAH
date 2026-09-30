@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T23:57:51Z",
+  "generatedAt": "2026-09-30T08:10:08.894650+00:00",
   "source": "artifacts/majalis/src/AppRoutes.tsx",
   "mainTip": "final-internal-closure-pr8",
   "totalRoutes": 415,
@@ -18,7 +18,7 @@
       "rtl": "COMPLETE",
       "accessibility": "PARTIAL",
       "visualSystem": "COMPLETE",
-      "auditNote": "PR8 final: smoke 200 + visual-snapshot + Home closure gates. a11y DEVICE_REQUIRED residual.",
+      "auditNote": "WAVE4 feedback closure · tested commit pending PR tip · Empty≠NoResults · in-place retry",
       "offline": "PARTIAL",
       "light": "COMPLETE",
       "system": "COMPLETE",
@@ -26,7 +26,11 @@
       "tablet": "PARTIAL",
       "desktop": "COMPLETE",
       "largeText": "PARTIAL",
-      "zoom200": "PARTIAL"
+      "zoom200": "PARTIAL",
+      "noResults": "NOT_APPLICABLE",
+      "stale": "PARTIAL",
+      "wave4TestRef": "closure-wave4-route-feedback-gate.test.ts",
+      "wave4TestedAt": "2026-09-30"
     },
     {
       "route": "/about",
@@ -171,8 +175,12 @@
       "rtl": "COMPLETE",
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
-      "auditNote": "PR8 smoke 200.",
-      "mobile": "COMPLETE"
+      "auditNote": "WAVE4 feedback closure · tested commit pending PR tip · Empty≠NoResults · in-place retry",
+      "mobile": "COMPLETE",
+      "noResults": "NOT_APPLICABLE",
+      "offline": "PARTIAL",
+      "wave4TestRef": "closure-wave4-route-feedback-gate.test.ts",
+      "wave4TestedAt": "2026-09-30"
     },
     {
       "route": "/adhkar/:slug",
@@ -502,14 +510,18 @@
       "route": "/admin/v3",
       "componentHint": null,
       "public": false,
-      "loading": "N/A",
-      "empty": "PENDING",
+      "loading": "NOT_APPLICABLE",
+      "empty": "NOT_APPLICABLE",
       "error": "COMPLETE",
       "dark": "PARTIAL",
       "rtl": "COMPLETE",
       "accessibility": "PARTIAL",
       "visualSystem": "PARTIAL",
-      "auditNote": "Public edge middleware returns 404 «غير متاح» (access control). Not a blank SPA shell."
+      "auditNote": "WAVE4 feedback closure · tested commit pending PR tip · Empty≠NoResults · in-place retry",
+      "noResults": "NOT_APPLICABLE",
+      "offline": "NOT_APPLICABLE",
+      "wave4TestRef": "closure-wave4-route-feedback-gate.test.ts",
+      "wave4TestedAt": "2026-09-30"
     },
     {
       "route": "/admin/v3/analytics",
@@ -1585,14 +1597,18 @@
       "componentHint": null,
       "public": true,
       "loading": "COMPLETE",
-      "empty": "PENDING",
-      "error": "PENDING",
+      "empty": "COMPLETE",
+      "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
-      "accessibility": "PENDING",
+      "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
       "mobile": "COMPLETE",
-      "auditNote": "PR8 smoke 200."
+      "auditNote": "WAVE4 feedback closure · tested commit pending PR tip · Empty≠NoResults · in-place retry",
+      "noResults": "COMPLETE",
+      "offline": "PARTIAL",
+      "wave4TestRef": "closure-wave4-route-feedback-gate.test.ts",
+      "wave4TestedAt": "2026-09-30"
     },
     {
       "route": "/fiqh-council",
@@ -1726,8 +1742,12 @@
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
       "a11y": "PARTIAL",
-      "auditNote": "PR8 smoke 200.",
-      "mobile": "COMPLETE"
+      "auditNote": "WAVE4 feedback closure · tested commit pending PR tip · Empty≠NoResults · in-place retry",
+      "mobile": "COMPLETE",
+      "noResults": "COMPLETE",
+      "offline": "PARTIAL",
+      "wave4TestRef": "closure-wave4-route-feedback-gate.test.ts",
+      "wave4TestedAt": "2026-09-30"
     },
     {
       "route": "/hadith-science",
@@ -2492,15 +2512,19 @@
       "componentHint": null,
       "public": true,
       "loading": "COMPLETE",
-      "empty": "PARTIAL",
+      "empty": "COMPLETE",
       "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
       "a11y": "PARTIAL",
-      "auditNote": "PR8 smoke 200 + lessons list gates; empty partial.",
-      "mobile": "COMPLETE"
+      "auditNote": "WAVE4 feedback closure · tested commit pending PR tip · Empty≠NoResults · in-place retry",
+      "mobile": "COMPLETE",
+      "noResults": "COMPLETE",
+      "offline": "PARTIAL",
+      "wave4TestRef": "closure-wave4-route-feedback-gate.test.ts",
+      "wave4TestedAt": "2026-09-30"
     },
     {
       "route": "/lessons/:id",
@@ -2591,14 +2615,18 @@
       "componentHint": null,
       "public": true,
       "loading": "COMPLETE",
-      "empty": "PENDING",
+      "empty": "NOT_APPLICABLE",
       "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
-      "accessibility": "PENDING",
+      "accessibility": "PARTIAL",
       "visualSystem": "COMPLETE",
       "mobile": "COMPLETE",
-      "auditNote": "PR5 Input/FieldLabel; smoke 200."
+      "auditNote": "WAVE4 feedback closure · tested commit pending PR tip · Empty≠NoResults · in-place retry",
+      "noResults": "NOT_APPLICABLE",
+      "offline": "PARTIAL",
+      "wave4TestRef": "closure-wave4-route-feedback-gate.test.ts",
+      "wave4TestedAt": "2026-09-30"
     },
     {
       "route": "/madhahib",
@@ -2962,8 +2990,12 @@
       "accessibility": "PARTIAL",
       "visualSystem": "COMPLETE",
       "a11y": "PARTIAL",
-      "auditNote": "PR7 UI chrome + mushaf gates PASS. Quran immutable. DEVICE_REQUIRED physical.",
-      "mobile": "COMPLETE"
+      "auditNote": "WAVE4 feedback closure · tested commit pending PR tip · Empty≠NoResults · in-place retry",
+      "mobile": "COMPLETE",
+      "noResults": "NOT_APPLICABLE",
+      "offline": "PARTIAL",
+      "wave4TestRef": "closure-wave4-route-feedback-gate.test.ts",
+      "wave4TestedAt": "2026-09-30"
     },
     {
       "route": "/mushaf-v2-preview",
@@ -3014,8 +3046,12 @@
       "rtl": "COMPLETE",
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
-      "auditNote": "PR3 Select migrate + PR7 editor shell; smoke 200.",
-      "mobile": "COMPLETE"
+      "auditNote": "WAVE4 feedback closure · tested commit pending PR tip · Empty≠NoResults · in-place retry",
+      "mobile": "COMPLETE",
+      "noResults": "NOT_APPLICABLE",
+      "offline": "PARTIAL",
+      "wave4TestRef": "closure-wave4-route-feedback-gate.test.ts",
+      "wave4TestedAt": "2026-09-30"
     },
     {
       "route": "/mushaf/page",
@@ -3078,8 +3114,12 @@
       "rtl": "COMPLETE",
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
-      "auditNote": "PR3 COMPLETE confirmed; smoke 200.",
-      "mobile": "COMPLETE"
+      "auditNote": "WAVE4 feedback closure · tested commit pending PR tip · Empty≠NoResults · in-place retry",
+      "mobile": "COMPLETE",
+      "noResults": "NOT_APPLICABLE",
+      "offline": "PARTIAL",
+      "wave4TestRef": "closure-wave4-route-feedback-gate.test.ts",
+      "wave4TestedAt": "2026-09-30"
     },
     {
       "route": "/my-submissions",
@@ -3262,8 +3302,12 @@
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
       "a11y": "PARTIAL",
-      "auditNote": "PR8 tick isolation (slot vs live HMS); prayer flash gates; smoke 200.",
-      "mobile": "COMPLETE"
+      "auditNote": "WAVE4 feedback closure · tested commit pending PR tip · Empty≠NoResults · in-place retry",
+      "mobile": "COMPLETE",
+      "noResults": "NOT_APPLICABLE",
+      "offline": "PARTIAL",
+      "wave4TestRef": "closure-wave4-route-feedback-gate.test.ts",
+      "wave4TestedAt": "2026-09-30"
     },
     {
       "route": "/privacy",
@@ -3605,8 +3649,12 @@
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
       "a11y": "PARTIAL",
-      "auditNote": "PR8 smoke 200 + mushaf/quran gates; empty/error partial.",
-      "mobile": "COMPLETE"
+      "auditNote": "WAVE4 feedback closure · tested commit pending PR tip · Empty≠NoResults · in-place retry",
+      "mobile": "COMPLETE",
+      "noResults": "PARTIAL",
+      "offline": "PARTIAL",
+      "wave4TestRef": "closure-wave4-route-feedback-gate.test.ts",
+      "wave4TestedAt": "2026-09-30"
     },
     {
       "route": "/quran-hub/numbers",
@@ -4003,14 +4051,18 @@
       "componentHint": null,
       "public": true,
       "loading": "COMPLETE",
-      "empty": "PENDING",
+      "empty": "NOT_APPLICABLE",
       "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
-      "accessibility": "PENDING",
+      "accessibility": "PARTIAL",
       "visualSystem": "COMPLETE",
       "mobile": "COMPLETE",
-      "auditNote": "PR5 forms wave; smoke 200. PasswordPolicyAuthority unchanged."
+      "auditNote": "WAVE4 feedback closure · tested commit pending PR tip · Empty≠NoResults · in-place retry",
+      "noResults": "NOT_APPLICABLE",
+      "offline": "PARTIAL",
+      "wave4TestRef": "closure-wave4-route-feedback-gate.test.ts",
+      "wave4TestedAt": "2026-09-30"
     },
     {
       "route": "/research",
@@ -4245,17 +4297,20 @@
       "componentHint": null,
       "public": true,
       "loading": "COMPLETE",
-      "empty": "COMPLETE",
+      "empty": "NOT_APPLICABLE",
       "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
       "accessibility": "PARTIAL",
       "visualSystem": "COMPLETE",
       "a11y": "PARTIAL",
-      "auditNote": "PR5/PR8: SearchInput + no raw API errors; smoke 200.",
+      "auditNote": "WAVE4 feedback closure · tested commit pending PR tip · Empty≠NoResults · in-place retry",
       "noResults": "COMPLETE",
       "light": "COMPLETE",
-      "mobile": "COMPLETE"
+      "mobile": "COMPLETE",
+      "offline": "COMPLETE",
+      "wave4TestRef": "closure-wave4-route-feedback-gate.test.ts",
+      "wave4TestedAt": "2026-09-30"
     },
     {
       "route": "/search/:q",
@@ -4299,15 +4354,19 @@
       "componentHint": null,
       "public": true,
       "loading": "COMPLETE",
-      "empty": "COMPLETE",
+      "empty": "NOT_APPLICABLE",
       "error": "PARTIAL",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
       "a11y": "PARTIAL",
-      "auditNote": "PR5 Select migrate (font/playback); smoke 200.",
-      "mobile": "COMPLETE"
+      "auditNote": "WAVE4 feedback closure · tested commit pending PR tip · Empty≠NoResults · in-place retry",
+      "mobile": "COMPLETE",
+      "noResults": "NOT_APPLICABLE",
+      "offline": "PARTIAL",
+      "wave4TestRef": "closure-wave4-route-feedback-gate.test.ts",
+      "wave4TestedAt": "2026-09-30"
     },
     {
       "route": "/shamael",
@@ -5058,6 +5117,7 @@
   "criticalRoutesUpdated": 28,
   "utilityScreenConsumers": 9,
   "note": "Critical routes closed through Wave 2 for Home/Prayer/Search/Mushaf/Quran hubs + worship companions; long-tail routes may remain PENDING.",
-  "criticalClosureWave": "SUNNAH_DEBT_REDUCTION_WAVE_2",
-  "programNote": "PR8 updates priority public routes only; PENDING remains honest default elsewhere. No DEVICE_REQUIRED→PASS."
+  "criticalClosureWave": "WAVE4_ROUTE_FEEDBACK",
+  "programNote": "PR8 updates priority public routes only; PENDING remains honest default elsewhere. No DEVICE_REQUIRED→PASS.",
+  "wave4Note": "Priority public feedback states closed; long-tail routes may remain PENDING."
 }
