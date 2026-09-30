@@ -17,9 +17,9 @@ No STORE GO · no WCAG CERTIFIED · no FULLY COMPLETE claim.
 
 | Tip | SHA |
 |---|---|
-| `origin/main` at PR7 merge | `9697c1db728ebcfef3b5457e31d17f6a38ea4924` |
-| Production `version.json` after PR7 | `9697c1db` **MATCH** · `builtAt=2026-09-29T23:50:32.949Z` |
-| PR8 tip (this delivery) | see merge commit after #PR8 |
+| `origin/main` after PR8 | `52c1b479d344d91108785606e93780ce02374c38` |
+| Production `version.json` | `52c1b479` **MATCH** · `builtAt=2026-09-30T00:28:39.427Z` |
+| Second consistency | main tip = production commit · smoke HTTP 200 on priority public routes |
 
 ## PR4 TO PR8 DELIVERY MATRIX
 
@@ -27,9 +27,9 @@ No STORE GO · no WCAG CERTIFIED · no FULLY COMPLETE claim.
 |---|---|---|---|---|
 | PR4 | Buttons + semantic interactions | #2367 | MERGED | DEPLOYED |
 | PR5 | Forms + feedback + selects | #2368 | MERGED | DEPLOYED |
-| PR6 | Page authority + legacy CSS | #2369 | MERGED | DEPLOYED (`5d998dbe` then superseded by PR7) |
+| PR6 | Page authority + legacy CSS | #2369 | MERGED | DEPLOYED |
 | PR7 | FloatingLayer + Mushaf UI | #2370 | MERGED | DEPLOYED `9697c1db` |
-| PR8 | Startup / CLS / audit | (this) | — | — |
+| PR8 | Startup / CLS / audit | #2371 | MERGED `52c1b479` | DEPLOYED **MATCH** |
 
 ## BEFORE VS AFTER
 
