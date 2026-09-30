@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTasbeehCounter } from "@/hooks/useTasbeehCounter";
 import { TASBEEH_PRESETS, type TasbeehWird } from "@/lib/tasbeeh-storage";
 import { Button } from "@/components/ui/button";
@@ -97,11 +97,34 @@ export function TasbeehCounter({
     canUndo,
   } = useTasbeehCounter({ storageId, initialTarget: target, wird, onWirdChange });
   const [confirmReset, setConfirmReset] = useState(false);
+  const resetTriggerRef = useRef<HTMLButtonElement>(null);
+  const confirmActionRef = useRef<HTMLButtonElement>(null);
 
-  // Keyboard support (Space/Enter = +1, Backspace = undo)
+  const openResetConfirm = () => setConfirmReset(true);
+  const cancelResetConfirm = () => {
+    setConfirmReset(false);
+    window.requestAnimationFrame(() => {
+      resetTriggerRef.current?.focus({ preventScroll: true });
+    });
+  };
+  const confirmAndReset = () => {
+    reset();
+    setConfirmReset(false);
+    window.requestAnimationFrame(() => {
+      resetTriggerRef.current?.focus({ preventScroll: true });
+    });
+  };
+
+  // Escape يلغي التأكيد؛ Space/Enter للتسبيح فقط خارج حالة التأكيد
   useEffect(() => {
-    if (compact) return;
+    if (compact && !confirmReset) return;
     const onKey = (e: KeyboardEvent) => {
+      if (confirmReset && e.code === "Escape") {
+        e.preventDefault();
+        cancelResetConfirm();
+        return;
+      }
+      if (compact || confirmReset) return;
       const tag = (e.target as Element)?.tagName;
       if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
       if (e.code === "Space" || e.code === "Enter") {
@@ -115,7 +138,14 @@ export function TasbeehCounter({
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [compact, increment, undo]);
+  }, [compact, confirmReset, increment, undo]);
+
+  useEffect(() => {
+    if (!confirmReset) return;
+    window.requestAnimationFrame(() => {
+      confirmActionRef.current?.focus({ preventScroll: true });
+    });
+  }, [confirmReset]);
 
   // ── Compact mode ──────────────────────────────────────────────────────────
   if (compact) {
@@ -136,12 +166,22 @@ export function TasbeehCounter({
           </Button>
           <Button type="button" variant="secondary" size="small" className="tasbeeh-counter__btn" disabled={!canUndo} onClick={undo}>تراجع</Button>
           {confirmReset ? (
-            <div className="tasbeeh-counter__confirm" role="alertdialog" aria-label="تأكيد التصفير">
-              <Button type="button" variant="destructive" size="small" onClick={() => { reset(); setConfirmReset(false); }}>تأكيد</Button>
-              <Button type="button" variant="ghost" size="small" onClick={() => setConfirmReset(false)}>إلغاء</Button>
+            <div className="tasbeeh-counter__confirm" role="alertdialog" aria-label="تأكيد التصفير" aria-modal="true">
+              <Button ref={confirmActionRef} type="button" variant="destructive" size="small" onClick={confirmAndReset}>تأكيد</Button>
+              <Button type="button" variant="ghost" size="small" onClick={cancelResetConfirm}>إلغاء</Button>
             </div>
           ) : (
-            <Button type="button" variant="ghost" size="small" className="tasbeeh-counter__btn tasbeeh-counter__btn--ghost" onClick={() => setConfirmReset(true)}>تصفير</Button>
+            <Button
+              ref={resetTriggerRef}
+              type="button"
+              variant="ghost"
+              size="small"
+              className="tasbeeh-counter__btn tasbeeh-counter__btn--ghost"
+              onClick={openResetConfirm}
+              aria-label="تصفير العداد"
+            >
+              تصفير
+            </Button>
           )}
         </div>
       </div>
@@ -214,21 +254,23 @@ export function TasbeehCounter({
           تراجع
         </Button>
         {confirmReset ? (
-          <div className="tasbeeh-counter__confirm" role="alertdialog" aria-label="تأكيد التصفير">
-            <Button type="button" variant="destructive" size="small" onClick={() => { reset(); setConfirmReset(false); }}>
+          <div className="tasbeeh-counter__confirm" role="alertdialog" aria-label="تأكيد التصفير" aria-modal="true">
+            <Button ref={confirmActionRef} type="button" variant="destructive" size="small" onClick={confirmAndReset}>
               تأكيد التصفير
             </Button>
-            <Button type="button" variant="ghost" size="small" onClick={() => setConfirmReset(false)}>
+            <Button type="button" variant="ghost" size="small" onClick={cancelResetConfirm}>
               إلغاء
             </Button>
           </div>
         ) : (
           <Button
+            ref={resetTriggerRef}
             type="button"
             variant="ghost"
             size="small"
             className="tasbeeh-counter__btn tasbeeh-counter__btn--ghost"
-            onClick={() => setConfirmReset(true)}
+            onClick={openResetConfirm}
+            aria-label="تصفير العداد"
           >
             تصفير
           </Button>
@@ -236,7 +278,9 @@ export function TasbeehCounter({
       </div>
 
       <p className="tc-keyboard-hint" aria-hidden="true">
-        مفتاح المسافة أو Enter للتسبيح · Backspace للتراجع
+        {confirmReset
+          ? "Escape لإلغاء التأكيد"
+          : "مفتاح المسافة أو Enter للتسبيح · Backspace للتراجع"}
       </p>
     </div>
   );

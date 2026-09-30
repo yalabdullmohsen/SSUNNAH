@@ -69,6 +69,15 @@ assert.match(tasbeeh, /isCustomTarget/, "هدف مخصص منفصل");
 assert.match(tasbeeh, /tasbeeh-counter__custom-target--row/, "صف هدف مخصص مستقل");
 assert.match(tasbeeh, /alertdialog/, "تصفير يحتاج تأكيدًا داخل الصفحة");
 assert.doesNotMatch(tasbeeh, /window\.confirm/, "لا window.confirm للتصفير");
+assert.match(tasbeeh, /confirmReset|openResetConfirm/, "حالة تأكيد قبل التصفير");
+assert.match(tasbeeh, /confirmAndReset/, "تأكيد نهائي يستدعي reset");
+assert.match(tasbeeh, /cancelResetConfirm/, "إلغاء يعيد الحالة دون reset");
+assert.match(tasbeeh, /Escape/, "Escape يلغي التأكيد");
+assert.match(tasbeeh, /confirmActionRef|resetTriggerRef/, "إدارة التركيز بين التصفير والتأكيد");
+assert.match(tasbeeh, /from ["']@\/components\/ui\/button["']/, "Button الرسمي");
+assert.match(tasbeeh, /تأكيد التصفير|تأكيد/, "زر تأكيد صريح");
+assert.match(tasbeeh, /إلغاء/, "زر إلغاء صريح");
+assert.match(tasbeeh, /aria-label="تصفير العداد"|تصفير/, "اسم وصول لزر التصفير");
 
 const tasbihView = read("src/pages/worship/ui/TasbihView.tsx");
 assert.match(tasbihView, /tasbeeh-stats-strip/, "ملخص إحصاء مضغوط");
