@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useMemo, useRef, useState } from "react";
 import {
   MUSHAF_KHATMAH_TYPES,
   MUSHAF_PRODUCT_BOOKMARK_KINDS,
@@ -38,6 +38,7 @@ export const MushafPageBookmarkSheet = memo(function MushafPageBookmarkSheet({
   onSaved,
 }: Props) {
   const [busy, setBusy] = useState(false);
+  const busyRef = useRef(false);
   const [error, setError] = useState<string | null>(null);
   const [detail, setDetail] = useState<DetailKind | null>(null);
   const [customName, setCustomName] = useState("");
@@ -65,23 +66,30 @@ export const MushafPageBookmarkSheet = memo(function MushafPageBookmarkSheet({
   );
 
   const saveReading = useCallback(async () => {
-    if (busy) return;
+    if (busyRef.current) return;
+    busyRef.current = true;
     setBusy(true);
     setError(null);
-    const result = await setReadingBookmark(page, key);
-    setBusy(false);
-    if (!result.ok) {
-      haptics.error();
-      setError(result.error);
-      return;
+    try {
+      const result = await setReadingBookmark(page, key);
+      if (!result.ok) {
+        haptics.error();
+        setError(result.error || "تعذّر حفظ موضع القراءة.");
+        return;
+      }
+      finishOk("تم حفظ موضع القراءة");
+    } finally {
+      busyRef.current = false;
+      setBusy(false);
     }
-    finishOk("تم حفظ موضع القراءة");
-  }, [busy, page, key, finishOk]);
+  }, [page, key, finishOk]);
 
   const saveDetail = useCallback(async () => {
-    if (busy || !detail) return;
+    if (busyRef.current || !detail) return;
+    busyRef.current = true;
     setBusy(true);
     setError(null);
+    try {
     const from = Math.min(604, Math.max(1, Number(fromPage) || page));
     const to = Math.min(604, Math.max(1, Number(toPage) || page));
     const noteTrim = note.trim() || undefined;
@@ -120,10 +128,9 @@ export const MushafPageBookmarkSheet = memo(function MushafPageBookmarkSheet({
       });
     }
 
-    setBusy(false);
     if (!result.ok) {
       haptics.error();
-      setError(result.error);
+      setError(result.error || "تعذّر الحفظ. بقيت ملاحظتك كما هي.");
       return;
     }
     finishOk(
@@ -135,8 +142,11 @@ export const MushafPageBookmarkSheet = memo(function MushafPageBookmarkSheet({
             ? "تم حفظ علامة المراجعة"
             : "تم حفظ العلامة الشخصية",
     );
+    } finally {
+      busyRef.current = false;
+      setBusy(false);
+    }
   }, [
-    busy,
     detail,
     fromPage,
     toPage,
@@ -170,6 +180,7 @@ export const MushafPageBookmarkSheet = memo(function MushafPageBookmarkSheet({
               type="button"
               className="rb-page-sheet__confirm rb-editor-shell__primary"
               disabled={busy}
+              aria-busy={busy}
               onClick={() => void saveDetail()}
             >
               {busy ? "جاري الحفظ…" : "حفظ"}

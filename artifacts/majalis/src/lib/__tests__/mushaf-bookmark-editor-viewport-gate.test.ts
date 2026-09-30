@@ -115,3 +115,13 @@ assert.doesNotMatch(sheet, /pageMapping|PAGE_MAP|qpc-v2-pages/);
 assert.doesNotMatch(shell, /pageMapping|PAGE_MAP/);
 
 console.log("mushaf-bookmark-editor-viewport-gate.test.ts: ok");
+
+console.log("=== FINAL-2 double-save + a11y ===");
+assert.match(composer, /busyRef/);
+assert.match(sheet, /busyRef/);
+assert.match(composer, /aria-busy/);
+assert.match(sheet, /aria-busy/);
+assert.match(composer, /aria-label="ملاحظة اختيارية"/);
+assert.match(composer, /الحفظ محلي على هذا الجهاز/);
+assert.match(shell, /firstField/);
+console.log("mushaf-bookmark-editor-viewport-gate.test.ts: FINAL-2 ok");

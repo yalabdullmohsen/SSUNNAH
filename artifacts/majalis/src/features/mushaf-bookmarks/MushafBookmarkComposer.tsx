@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useMemo, useRef, useState } from "react";
 import {
   getBookmarkKindMeta,
   MUSHAF_KHATMAH_TYPES,
@@ -41,7 +41,10 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
   const [rangeTo, setRangeTo] = useState(String(page));
   const [khatmaType, setKhatmaType] = useState<MushafKhatmahType>("general");
   const [busy, setBusy] = useState(false);
+  const busyRef = useRef(false);
   const [error, setError] = useState<string | null>(null);
+  const offline =
+    typeof navigator !== "undefined" && navigator.onLine === false;
 
   const parsed = parseVerseKey(verseKey);
   const heading = useMemo(() => {
@@ -50,54 +53,58 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
   }, [parsed, verseKey]);
 
   const save = useCallback(async () => {
-    if (busy) return;
+    if (busyRef.current) return;
+    busyRef.current = true;
     setBusy(true);
     setError(null);
-    const meta = getBookmarkKindMeta(kind);
-    const from = Number(rangeFrom) || page;
-    const to = Number(rangeTo) || page;
-    const result = await addTypedBookmark({
-      ayahKey: verseKey,
-      page,
-      kind,
-      label:
-        kind === "reading"
-          ? "آخر موضع قراءة"
-          : kind === "khatmah"
-            ? undefined
-            : kind === "custom" && customName.trim()
-              ? customName.trim()
-              : kind === "hifz"
-                ? `حفظ · ص ${from}–${to}`
-                : kind === "review"
-                  ? `مراجعة · ص ${from} → ${to}`
-                  : `${meta.label} · ${heading}`,
-      note: note.trim() || undefined,
-      customName: kind === "custom" ? customName.trim() || undefined : undefined,
-      customColor: kind === "custom" ? customColor : undefined,
-      khatmaType: kind === "khatmah" ? khatmaType : undefined,
-      rangeFromPage: kindSupportsPageRange(kind)
-        ? kind === "khatmah"
-          ? 1
-          : from
-        : undefined,
-      rangeToPage: kindSupportsPageRange(kind)
-        ? kind === "khatmah"
-          ? 604
-          : to
-        : undefined,
-    });
-    setBusy(false);
-    if (!result.ok) {
-      haptics.error();
-      setError(result.error);
-      return;
+    try {
+      const meta = getBookmarkKindMeta(kind);
+      const from = Number(rangeFrom) || page;
+      const to = Number(rangeTo) || page;
+      const result = await addTypedBookmark({
+        ayahKey: verseKey,
+        page,
+        kind,
+        label:
+          kind === "reading"
+            ? "آخر موضع قراءة"
+            : kind === "khatmah"
+              ? undefined
+              : kind === "custom" && customName.trim()
+                ? customName.trim()
+                : kind === "hifz"
+                  ? `حفظ · ص ${from}–${to}`
+                  : kind === "review"
+                    ? `مراجعة · ص ${from} → ${to}`
+                    : `${meta.label} · ${heading}`,
+        note: note.trim() || undefined,
+        customName: kind === "custom" ? customName.trim() || undefined : undefined,
+        customColor: kind === "custom" ? customColor : undefined,
+        khatmaType: kind === "khatmah" ? khatmaType : undefined,
+        rangeFromPage: kindSupportsPageRange(kind)
+          ? kind === "khatmah"
+            ? 1
+            : from
+          : undefined,
+        rangeToPage: kindSupportsPageRange(kind)
+          ? kind === "khatmah"
+            ? 604
+            : to
+          : undefined,
+      });
+      if (!result.ok) {
+        haptics.error();
+        setError(result.error || "تعذّر الحفظ. بقيت ملاحظتك كما هي.");
+        return;
+      }
+      haptics.success();
+      onSaved?.(kind === "reading" ? "تم حفظ موضع القراءة" : "تم حفظ العلامة");
+      onClose();
+    } finally {
+      busyRef.current = false;
+      setBusy(false);
     }
-    haptics.success();
-    onSaved?.(kind === "reading" ? "تم حفظ موضع القراءة" : "تم حفظ العلامة");
-    onClose();
   }, [
-    busy,
     verseKey,
     page,
     kind,
@@ -133,6 +140,7 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
             type="button"
             className="rb-composer__save rb-editor-shell__primary"
             disabled={busy}
+            aria-busy={busy}
             onClick={() => void save()}
           >
             {busy ? "جاري الحفظ…" : "حفظ الفاصل"}
@@ -232,6 +240,7 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
             dir="rtl"
             rows={2}
             maxLength={240}
+            aria-label="ملاحظة اختيارية"
             placeholder={
               kind === "hifz"
                 ? "هنا بداية الحفظ"
@@ -243,6 +252,12 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
             onChange={(e) => setNote(e.target.value)}
           />
         </label>
+
+        {offline ? (
+          <p className="rb-composer__offline" role="status">
+            الحفظ محلي على هذا الجهاز — يعمل دون اتصال.
+          </p>
+        ) : null}
 
         {error ? (
           <p className="rb-composer__error" role="alert">
