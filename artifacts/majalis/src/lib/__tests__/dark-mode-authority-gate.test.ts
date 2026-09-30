@@ -32,10 +32,13 @@ assert.doesNotMatch(themePref, /filter:\s*invert/);
 
 const provider = read("src/components/ThemePreferenceProvider.tsx");
 assert.match(provider, /applyThemePreference/);
-assert.match(provider, /dark-mode-surfaces\.css/);
-assert.match(provider, /dark-design-system\.css/);
-assert.match(provider, /premium-dark-refine\.css/);
+assert.match(provider, /ensureDarkLayersForThemeSwitch/);
 assert.match(provider, /setPreference/);
+
+const ensure = read("src/lib/ensure-dark-layers.ts");
+assert.match(ensure, /dark-mode-surfaces\.css/);
+assert.match(ensure, /dark-design-system\.css/);
+assert.match(ensure, /premium-dark-refine\.css/);
 
 const app = read("src/App.tsx");
 assert.match(app, /ThemePreferenceProvider/);

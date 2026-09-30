@@ -21,14 +21,17 @@ const baseline = readFileSync(
 const stripImports = main.match(/card-decorative-strip-cleanup\.css/g) || [];
 assert.equal(stripImports.length, 1, "كنس الشريط الزخرفي مرة واحدة فقط في main");
 
+/* Phase 3: interaction-states متزامن فقط — لا إعادة idle بعد طبقات الليل */
+assert.match(main, /import\s+["']\.\/styles\/interaction-states\.css["']/);
 const deferredInteraction = [
   ...main.matchAll(/import\(\s*["']\.\/styles\/interaction-states\.css["']\s*\)/g),
 ];
 assert.equal(
   deferredInteraction.length,
-  1,
-  "interaction-states مؤجّل مرة واحدة بعد طبقات الليل",
+  0,
+  "Phase 3: لا import مؤجّل لـ interaction-states (متزامن يكفي)",
 );
+assert.match(main, /ensureDarkCoreLayers|ensureDarkLayersForBoot/);
 /* WAVE7: sync only — deferred reload-to-win removed after CASCADE SEAL absorb */
 assert.match(main, /import\s+["']\.\/styles\/visual-identity-unify\.css["']/);
 assert.match(main, /import\s+["']\.\/styles\/dark-mode-recovery\.css["']/);

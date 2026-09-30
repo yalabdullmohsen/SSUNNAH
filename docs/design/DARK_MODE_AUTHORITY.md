@@ -17,7 +17,8 @@ Companion: `docs/design/DESIGN_TOKEN_AUTHORITY.md` (token stack) · `artifacts/m
 | Early boot (`index.html` inline) | First paint only — sets `data-theme` + `dark` from `localStorage` |
 | `lib/boot-sequence.ts` | Pre-mount sync of `data-theme` / `theme-dark` |
 | `lib/theme-preference.ts` → `applyThemePreference` | **Canonical runtime writer** |
-| `ThemePreferenceProvider` | React preference (`light` / `dark` / `auto`) · loads dark CSS layers |
+| `ThemePreferenceProvider` | React preference (`light` / `dark` / `auto`) · loads dark CSS via `ensure-dark-layers` |
+| `lib/ensure-dark-layers.ts` | **Single idempotent loader** for surfaces / dark-design-system / premium / luxury (Phase 3) |
 
 **Rule:** do not invent a second product theme switch (no page-local `dataset.theme` writers, no parallel `prefers-color-scheme` CSS as the product SoT). System preference is resolved only through `auto` in `theme-preference.ts`.
 

@@ -1,6 +1,6 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-09-30 (Startup Typography FOUC P2 in flight after ADMIN-FINAL-1 MATCH)  
+**Updated:** 2026-09-30 (Dark deferred absorb Phase 3 after Startup Typography FOUC P2 MATCH)  
 **Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
 **Final boundary:** `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md`  
 **Live program state:** `docs/audit/SUNNAH_FINAL_QUALITY_PROGRAM_LIVE_STATE.md`  
@@ -10,6 +10,7 @@
 **Startup typography FOUC:** `docs/performance/STARTUP_TYPOGRAPHY_FOUC_LIVE_BASELINE.md`  
 **Startup FOUC P2 scope:** `docs/performance/STARTUP_TYPOGRAPHY_FOUC_PHASE2_SCOPE.md`  
 **FINAL program resume:** `docs/performance/SUNNAH_FINAL_PROGRAM_PHASE0_LIVE_TRUTH.md`  
+**Dark deferred absorb Phase 3:** `docs/performance/SUNNAH_FINAL_PROGRAM_PHASE3_DARK_DEFERRED_ABSORB.md`  
 **Post-WAVE6 baseline:** `docs/audit/SUNNAH_POST_WAVE6_FINAL_BASELINE.md`  
 **Authority map:** `docs/design/SUNNAH_AUTHORITY_UNIFICATION_FINAL_MAP.md`  
 **Device runbook:** `docs/audit/WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md`  
@@ -19,16 +20,17 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `eaf3a3eaa` — ADMIN-FINAL-1 baseline (#2405) |
-| Production `version.json` | `eaf3a3ea` **MATCH** · `builtAt=2026-09-30T21:25:20.814Z` |
+| `origin/main` tip | `6a2a3697` — Startup Typography FOUC P2 |
+| Production `version.json` | `6a2a3697` **MATCH** · `builtAt=2026-09-30T22:11:11.726Z` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
 | Internal | **`INTERNAL_CLOSURE_COMPLETE`** |
 | Web visual/interaction | **`VISUAL_INTERACTION_COMPLETE_WEB`** |
 | Mushaf polish | **COMPLETE_DEVICE_HOLD** (residual lag DEVICE_REQUIRED) |
 | Admin program | **ADMIN-FINAL-1** `MERGED_AND_DEPLOYED` · FINAL-2+ allowed next |
-| Startup Typography FOUC | **P2 size-adjust 97%** · measurement locked · Delivery pending |
-| Explicit non-claims | no `STORE GO` · no `DEVICE_TESTED` · no `MUSHAF_SILKY` · no `WCAG CERTIFIED` · no `FULLY COMPLETE` · no `ADMIN_FULLY_SECURE` |
+| Startup Typography FOUC | **P2 size-adjust 97%** · `MERGED_AND_DEPLOYED` · MATCH |
+| Dark deferred absorb | **Phase 3** · single `ensure-dark-layers` · Delivery pending |
+| Explicit non-claims | no `STORE GO` · no `DEVICE_TESTED` · no `MUSHAF_SILKY` · no `WCAG CERTIFIED` · no `FULLY COMPLETE` · no `ADMIN_FULLY_SECURE` · no `ZERO_FLICKER_COMPLETE` |
 
 ## Closure program WAVE7→13 (merged + deployed)
 

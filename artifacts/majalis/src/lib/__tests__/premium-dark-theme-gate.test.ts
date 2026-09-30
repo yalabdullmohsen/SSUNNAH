@@ -100,11 +100,15 @@ assert.match(
 );
 assert.match(ds, /background-image:\s*none\s*!important/, "هيرو بلا وهج شعاعي");
 
+const ensure = read("src/lib/ensure-dark-layers.ts");
+assert.match(ensure, /premium-dark-refine\.css/, "الصقل في محمّل الليل الواحد");
+
 const main = read("src/main.tsx");
-assert.match(main, /premium-dark-refine\.css/, "الصقل محمّل من main");
+assert.match(main, /premium-dark-refine\.css/, "الصقل موثّق/مربوط من main");
+assert.match(main, /ensureDarkLayersForBoot|ensureDarkCoreLayers/, "main يستخدم ensure");
 
 const provider = read("src/components/ThemePreferenceProvider.tsx");
-assert.match(provider, /premium-dark-refine\.css/, "الصقل محمّل عند التبديل لليلي");
+assert.match(provider, /ensureDarkLayersForThemeSwitch/, "الصقل عند التبديل عبر ensure");
 
 const docs = read("docs/PREMIUM_DARK_THEME.md");
 assert.match(docs, /Before \/ After/, "قائمة مقارنة لقطات");

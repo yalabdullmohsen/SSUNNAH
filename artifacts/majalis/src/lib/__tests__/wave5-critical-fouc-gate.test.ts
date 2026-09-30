@@ -21,11 +21,10 @@ const deferredSet = new Set(deferred);
 const dups = [...syncSet].filter((f) => deferredSet.has(f)).sort();
 
 /**
- * WAVE7: unify + dark-mode-recovery no longer re-imported after final-release
- * (winners absorbed into final-release CASCADE SEAL). Only interaction-states
- * remains as intentional sync∩deferred after the dark deferred stack.
+ * WAVE7: unify + dark-mode-recovery no longer re-imported after final-release.
+ * Phase 3: interaction-states sync-only (no idle reimport); dark core via ensure-dark-layers.
  */
-const ALLOWED_SYNC_DEFERRED_DUP = ["./styles/interaction-states.css"];
+const ALLOWED_SYNC_DEFERRED_DUP: string[] = [];
 
 assert.deepEqual(
   dups,
@@ -48,8 +47,9 @@ assert.doesNotMatch(
 );
 
 assert.ok(sync.length === 22, `sync CSS imports expected 22 (got ${sync.length})`);
-assert.ok(deferred.length >= 48, `deferred call sites expected ≥48 (got ${deferred.length})`);
-assert.ok(deferred.length <= 51, `deferred call sites expected ≤51 after WAVE7 (got ${deferred.length})`);
+assert.ok(deferred.length >= 42, `deferred call sites expected ≥42 after Phase 3 (got ${deferred.length})`);
+assert.ok(deferred.length <= 45, `deferred call sites expected ≤45 after Phase 3 (got ${deferred.length})`);
+assert.match(main, /ensure-dark-layers|ensureDarkCoreLayers/, "Phase 3 dark loader wired");
 
 /** Proven-dead classes must not return to critical index.css. */
 const FORBIDDEN_IN_INDEX = [

@@ -16,8 +16,10 @@ console.log("=== App night wiring ===");
 {
   const app = read("src/App.tsx");
   assert.match(app, /data-v2-night/);
-  assert.match(app, /sunnah-identity-luxury-night\.css/);
-  assert.match(app, /luxury-night-v2\.css/);
+  assert.match(app, /ensureDarkLuxuryBundle/);
+  const ensure = read("src/lib/ensure-dark-layers.ts");
+  assert.match(ensure, /sunnah-identity-luxury-night\.css/);
+  assert.match(ensure, /luxury-night-v2\.css/);
   assert.doesNotMatch(app, /AdminV3|qpc-v2/);
 }
 
