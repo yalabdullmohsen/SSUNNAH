@@ -10,6 +10,7 @@ import type { University, UniversityProgram } from "@/lib/universities-service";
 import "@/styles/pages/universities-compare.css";
 import "@/styles/pages/learning-path-dashboard.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 function lowestFee(programs: UniversityProgram[]): string {
   const fees = programs
@@ -114,8 +115,8 @@ function CompareContent() {
                           التفاصيل
                         </a>
                         <span className="ucp-sep">|</span>
-                        <button type="button" onClick={() => removeFromCompare(u.slug)}
-                          className="ucp-danger-btn">إزالة</button>
+                        <Button type="button" variant="destructive" onClick={() => removeFromCompare(u.slug)}
+                          className="ucp-danger-btn">إزالة</Button>
                       </div>
                     </div>
                   </th>

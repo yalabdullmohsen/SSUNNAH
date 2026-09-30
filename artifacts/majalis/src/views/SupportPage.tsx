@@ -5,6 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { DetailScreen } from "@/components/design-system/screens";
 import { applyPageSeo } from "@/lib/seo";
 import { CONTACT_EMAIL, mailtoWithSubject, absoluteUrl } from "@/lib/site-config";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/contact.css";
 import "@/styles/pages/support.css";
 import "@/styles/pages/learn-legal-v2.css";
@@ -128,14 +129,21 @@ export default function SupportPage() {
                 >
                   إرسال بريد
                 </a>
-                <button type="button" className="contact-btn contact-btn--ghost" onClick={copyEmail}>
-                  {copied ? (
-                    <Check size={15} strokeWidth={2} aria-hidden="true" />
-                  ) : (
-                    <Copy size={15} strokeWidth={2} aria-hidden="true" />
-                  )}
+                <Button
+                  type="button"
+                  variant="ghost"
+                  className="contact-btn contact-btn--ghost"
+                  onClick={copyEmail}
+                  iconStart={
+                    copied ? (
+                      <Check size={15} strokeWidth={2} aria-hidden="true" />
+                    ) : (
+                      <Copy size={15} strokeWidth={2} aria-hidden="true" />
+                    )
+                  }
+                >
                   {copied ? "تم النسخ" : "نسخ"}
-                </button>
+                </Button>
               </div>
             </div>
           </div>

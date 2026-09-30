@@ -21,7 +21,7 @@ import {
   strongestCategories,
   type CategoryPerformance,
 } from "@/lib/quiz-performance-service";
-import { AppCard } from "@/components/design-system";
+import { AppCard, IconButton } from "@/components/design-system";
 import "@/styles/pages/user-stats.css";
 
 const BADGE_ICON_MAP: Record<string, LucideIcon> = {
@@ -233,17 +233,17 @@ function ResumeList({
             {typeof item.position?.pct === "number" && (
               <span className="profile-resume__pct">{item.position.pct}٪</span>
             )}
-            <button
+            <IconButton
               type="button"
+              label="إزالة"
               className="profile-resume__del"
-              aria-label="إزالة"
               onClick={() => {
                 deleteResumeItem(userId, item.content_type, item.content_id);
                 onDelete(item.content_type, item.content_id);
               }}
             >
               ✕
-            </button>
+            </IconButton>
           </div>
         ))}
       </div>

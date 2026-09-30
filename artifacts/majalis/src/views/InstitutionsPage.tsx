@@ -162,16 +162,18 @@ export default function InstitutionsPage() {
 
             <div className="ilm-chips" role="tablist" aria-label="تصفية حسب نوع المؤسسة">
               {TYPE_FILTERS.map((f) => (
-                <button
+                <Button
                   key={f.key}
                   type="button"
+                  variant="ghost"
+                  size="small"
                   role="tab"
                   aria-selected={activeType === f.key}
                   className={`ilm-chip${activeType === f.key ? " ilm-chip--active" : ""}`}
                   onClick={() => setActiveType(f.key)}
                 >
                   {f.label}
-                </button>
+                </Button>
               ))}
             </div>
 

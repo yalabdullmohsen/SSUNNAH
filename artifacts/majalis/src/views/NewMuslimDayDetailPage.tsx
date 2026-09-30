@@ -7,6 +7,7 @@ import { useAuth } from "@/components/AuthProvider";
 import { getNewMuslimPath, getNewMuslimProgress, markNewMuslimDayComplete, type NewMuslimDay } from "@/lib/dawah-service";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 export default function NewMuslimDayDetailPage() {
   const { day } = useParams<{ day: string }>();
@@ -71,9 +72,9 @@ export default function NewMuslimDayDetailPage() {
       </div>
 
       {user ? (
-        <button type="button" disabled={busy || isDone} onClick={onComplete} className="asp-run-btn" style={{ marginTop: "1rem" }}>
+        <Button type="button" variant="primary" disabled={busy || isDone} onClick={onComplete} className="asp-run-btn" style={{ marginTop: "1rem" }}>
           {isDone ? "✓ تم إنجاز هذا اليوم" : "وضع علامة إنجاز"}
-        </button>
+        </Button>
       ) : (
         <p className="dii-path-day-title" style={{ marginTop: "1rem" }}>سجّل الدخول لحفظ تقدّمك في مسار الأيام.</p>
       )}

@@ -11,6 +11,7 @@ import type { KnowledgeDetailSurfaceSection } from "@/components/knowledge/Knowl
 import { getPublishedIslamicSectById } from "@/lib/islamic-sects";
 import { getIslamicSectById } from "@/data/islamic-sects";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/islamic-sects.css";
 import "@/styles/islam-intro-experience.css";
 
@@ -226,13 +227,14 @@ export default function IslamicSectsDetailPage() {
           </p>
           <KnowledgeDetailSurface sections={sections} />
           {!loadHeavy ? (
-            <button
+            <Button
               type="button"
+              variant="secondary"
               className="sect-hub__chip is-active"
               onClick={() => setLoadHeavy(true)}
             >
               عرض المراجع والنصوص المنقولة
-            </button>
+            </Button>
           ) : null}
           <div className="sect-hub__share">
             <p className="sect-hub__share-title">شارك الفائدة</p>

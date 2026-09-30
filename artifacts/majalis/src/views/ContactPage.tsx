@@ -9,6 +9,7 @@ import { CONTACT_EMAIL, mailtoWithSubject } from "@/lib/site-config";
 import "@/styles/pages/contact.css";
 import "@/styles/pages/learn-legal-v2.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 import SupportPage from "@/views/SupportPage";
 
 const FAQ = [
@@ -118,10 +119,21 @@ function ContactPageBody() {
               <a href={mailtoWithSubject(mailtoSubject)} className="contact-btn contact-btn--primary">
                 إرسال بريد
               </a>
-              <button type="button" className="contact-btn contact-btn--ghost" onClick={copyEmail}>
-                {copied ? <Check size={15} strokeWidth={2} aria-hidden="true" /> : <Copy size={15} strokeWidth={2} aria-hidden="true" />}
+              <Button
+                type="button"
+                variant="ghost"
+                className="contact-btn contact-btn--ghost"
+                onClick={copyEmail}
+                iconStart={
+                  copied ? (
+                    <Check size={15} strokeWidth={2} aria-hidden="true" />
+                  ) : (
+                    <Copy size={15} strokeWidth={2} aria-hidden="true" />
+                  )
+                }
+              >
                 {copied ? "تم النسخ" : "نسخ"}
-              </button>
+              </Button>
             </div>
           </div>
         </div>

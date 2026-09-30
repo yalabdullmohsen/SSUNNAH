@@ -1,19 +1,19 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "WAVE12: lowered buttonRelatedHexApprox after token fallback absorption in index.css.",
+  "note": "PHASE6: Buttons residual absorb — Privacy/Progress/Glossary/Circles/Updates/Upload/Contact/Support/Submit/UserStats/Alamat/Institutions/NewMuslim/Sects/UniCompare → Button/IconButton.",
   "ceilings": {
-    "rawButtonFiles": 183,
-    "rawButtonElements": 672,
+    "rawButtonFiles": 168,
+    "rawButtonElements": 650,
     "divSpanOnClick": 59,
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
     "buttonRelatedImportantApprox": 1262,
-    "buttonRelatedHexApprox": 1709
+    "buttonRelatedHexApprox": 1708
   },
   "floors": {
-    "officialButtonImportFiles": 186,
+    "officialButtonImportFiles": 202,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-09-30T13:28:46.554Z"
+  "updatedAt": "2026-09-30T23:45:00.000Z"
 }

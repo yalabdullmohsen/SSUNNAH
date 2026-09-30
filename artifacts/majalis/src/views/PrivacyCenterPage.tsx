@@ -8,6 +8,7 @@ import { useAuth } from "@/components/AuthProvider";
 import { supabase } from "@/lib/supabase";
 import { readCookieConsent, writeCookieConsent } from "@/lib/cookie-consent";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/learn-legal-v2.css";
 import "@/styles/pages/settings.css";
 
@@ -85,35 +86,39 @@ export default function PrivacyCenterPage() {
           <strong>{consent.analytics ? "مفعّلة" : "غير مفعّلة"}</strong>.
         </p>
         <div className="settings-actions" style={{ marginTop: "0.75rem" }}>
-          <button
+          <Button
             type="button"
+            variant="secondary"
             className="ss-action-btn ss-action-btn--secondary"
+            iconStart={<Cookie size={16} aria-hidden="true" />}
             onClick={() => setConsent(writeCookieConsent({ preferences: true, analytics: true }))}
           >
-            <Cookie size={16} aria-hidden="true" /> تفعيل التحليلات الاختيارية
-          </button>
-          <button
+            تفعيل التحليلات الاختيارية
+          </Button>
+          <Button
             type="button"
+            variant="secondary"
             className="ss-action-btn ss-action-btn--secondary"
             onClick={() => setConsent(writeCookieConsent({ preferences: true, analytics: false }))}
           >
             إيقاف التحليلات
-          </button>
+          </Button>
         </div>
       </LegalSection>
 
       <LegalSection title="تصدير البيانات">
         <p>احصل على ملف JSON يتضمن بيانات حسابك المرتبطة في المنصة (أفضل جهد للجداول المتاحة).</p>
-        <button
+        <Button
           type="button"
+          variant="secondary"
           className="ss-action-btn ss-action-btn--secondary"
           disabled={exporting || authLoading}
+          loading={exporting}
           onClick={() => void handleServerExport()}
-          aria-busy={authLoading || exporting}
+          iconStart={<Download size={16} aria-hidden="true" />}
         >
-          <Download size={16} aria-hidden="true" />{" "}
           {authLoading ? "…" : exporting ? "يُصدَّر…" : "تصدير بيانات الحساب"}
-        </button>
+        </Button>
         {exportMsg && <p className="settings-note">{exportMsg}</p>}
         <p className="settings-note">
           لتصدير تفضيلات الجهاز فقط استخدم زر التنزيل في{" "}

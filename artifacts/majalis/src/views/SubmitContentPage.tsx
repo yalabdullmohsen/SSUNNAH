@@ -10,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/submit-content.css";
 
 const CONTENT_TYPES = ["درس", "فائدة", "معلومة", "سؤال لعبة", "فكرة"] as const;
@@ -165,13 +166,15 @@ export default function SubmitContentPage() {
           />
         </label>
 
-        <button
+        <Button
           type="submit"
+          variant="primary"
+          loading={status === "loading"}
           disabled={status === "loading"}
           className={`scp-submit-btn${status === "loading" ? " is-loading" : ""}`}
         >
           {status === "loading" ? "إرسال…" : "إرسال المقترح"}
-        </button>
+        </Button>
       </form>
     </div>
   );
