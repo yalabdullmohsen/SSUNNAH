@@ -32,6 +32,7 @@ import {
   eventsFromLessons,
   type CalendarEvent,
 } from "@/lib/calendar-events";
+import { Button } from "@/components/ui/button";
 
 type ViewMode = "month" | "week" | "day";
 
@@ -214,31 +215,31 @@ export default function CalendarPage() {
 
       <div className="cal-toolbar">
         <div className="cal-nav">
-          <button type="button" className="cal-nav-btn" onClick={() => setCursor(subMonths(cursor, 1))} aria-label="الشهر السابق">‹</button>
+          <Button variant="ghost" type="button" className="cal-nav-btn" onClick={() => setCursor(subMonths(cursor, 1))} aria-label="الشهر السابق">‹</Button>
           <div className="cal-nav-label">
             <strong>{format(cursor, "MMMM yyyy", { locale: arSA })}</strong>
             {hijriLabel ? <span className="cal-nav-hijri">{hijriLabel}</span> : null}
           </div>
-          <button type="button" className="cal-nav-btn" onClick={() => setCursor(addMonths(cursor, 1))} aria-label="الشهر التالي">›</button>
+          <Button variant="ghost" type="button" className="cal-nav-btn" onClick={() => setCursor(addMonths(cursor, 1))} aria-label="الشهر التالي">›</Button>
           {!isViewingCurrentMonth ? (
-            <button type="button" className="cal-today-btn" onClick={goToday} aria-label="انتقل لليوم">
+            <Button variant="ghost" type="button" className="cal-today-btn" onClick={goToday} aria-label="انتقل لليوم">
               اليوم
-            </button>
+            </Button>
           ) : null}
         </div>
         <div className="cal-view-tabs">
           {(["month", "week", "day"] as ViewMode[]).map((v) => (
-            <button
+            <Button variant="ghost"
               key={v}
               type="button"
               className={`cal-view-tab${view === v ? "is-active" : ""}`}
               onClick={() => setView(v)}
             >
               {v === "month" ? "شهري" : v === "week" ? "أسبوعي" : "يومي"}
-            </button>
+            </Button>
           ))}
         </div>
-        <button
+        <Button variant="ghost"
           type="button"
           className="cal-ics-btn"
           onClick={handleIcsExport}
@@ -246,7 +247,7 @@ export default function CalendarPage() {
         >
           <Download size={16} aria-hidden="true" />
           <span>ICS</span>
-        </button>
+        </Button>
       </div>
 
       {loading && events.length === 0 ? (
@@ -294,13 +295,13 @@ export default function CalendarPage() {
               <div className="cal-week-grid">
                 {weekDays.map((day) => (
                   <div key={day.toISOString()} className="cal-week-col">
-                    <button
+                    <Button variant="ghost"
                       type="button"
                       className={`cal-week-head${isSameDay(day, selected) ? "is-selected" : ""}${isSameDay(day, today) ? "is-today" : ""}`}
                       onClick={() => setSelected(day)}
                     >
                       {format(day, "EEE d", { locale: arSA })}
-                    </button>
+                    </Button>
                     <CalendarDayCell
                       date={day}
                       events={eventsForDate(day, events)}

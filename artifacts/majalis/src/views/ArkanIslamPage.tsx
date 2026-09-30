@@ -8,6 +8,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/arkan-islam.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 /* ─── بيانات أركان الإسلام ─── */
 type Rukn = {
@@ -188,7 +189,7 @@ export default function ArkanIslamPage() {
         </p>
         <div className="arkan-hero__icons">
           {ARKAN.map((r) => (
-            <button
+            <Button variant="ghost"
               key={r.num}
               type="button"
               className={`arkan-hero__icon-btn${expanded === r.num ? "is-active" : ""}`}
@@ -197,7 +198,7 @@ export default function ArkanIslamPage() {
             >
               <span className="arkan-hero__icon-emoji"><SectionIcon name={r.icon} size={28} /></span>
               <span className="arkan-hero__icon-num">{r.numAr}</span>
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -208,7 +209,7 @@ export default function ArkanIslamPage() {
           const open = expanded === r.num;
           return (
             <article key={r.num} className={`arkan-card${open ? "arkan-card--open" : ""}`}>
-              <button
+              <Button variant="ghost"
                 type="button"
                 className="arkan-card__header"
                 onClick={() => setExpanded(open ? null : r.num)}
@@ -223,7 +224,7 @@ export default function ArkanIslamPage() {
                 <span className="arkan-card__chevron" aria-hidden="true">
                   {open ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                 </span>
-              </button>
+              </Button>
 
               <p className="arkan-card__summary">{r.summary}</p>
 

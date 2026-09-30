@@ -6,6 +6,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/raqaiq.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { ListScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
    §249، الرقائق والزهد  (.rq-*)
@@ -461,7 +462,7 @@ export default function RaqaiqPage() {
       {/* Tabs */}
       <div className="rq-tabs" role="tablist" aria-label="أقسام الرقائق">
         {TABS.map(t => (
-          <button
+          <Button variant="ghost"
             key={t.id}
             id={`raq-tab-${t.id}`}
             type="button"
@@ -470,7 +471,7 @@ export default function RaqaiqPage() {
             onClick={() => { setActiveTab(t.id); setOpenIdx(null); }}
             aria-selected={activeTab === t.id}
               aria-controls={`raq-panel-${t.id}`}
-          >{t.label}</button>
+          >{t.label}</Button>
         ))}
       </div>
 
@@ -495,11 +496,11 @@ export default function RaqaiqPage() {
             <div className="rq-list">
               {filteredRaqaiq.map((r, i) => (
                 <div key={i} className="rq-card">
-                  <button type="button" className="rq-card__head" onClick={() => toggle(i)} aria-expanded={openIdx === i}>
+                  <Button variant="ghost" type="button" className="rq-card__head" onClick={() => toggle(i)} aria-expanded={openIdx === i}>
                     <span className="rq-card__dot" />
                     <span className="rq-card__title">{r.title}</span>
                     <span className="rq-chevron">{openIdx === i ? "▲" : "▼"}</span>
-                  </button>
+                  </Button>
                   {openIdx === i && (
                     <div className="rq-card__body">
                       <p className="rq-card__text">{r.text}</p>

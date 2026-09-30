@@ -16,6 +16,7 @@ import { PunishmentIcon } from "@/components/nations/PunishmentIcon";
 import "@/styles/nations.css";
 import { DetailScreen } from "@/components/design-system/screens";
 import { EMPTY } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
 
 const READ_POS_KEY = "nations:last-chapter";
 const FAV_KEY = "nations:favorites";
@@ -141,19 +142,19 @@ export default function NationDetailPage() {
       <PageHeader eyebrow="الأمم السابقة" title={nation.name} subtitle={nation.summary} />
 
       <div className="nation-actions">
-        <button
+        <Button variant="ghost"
           type="button"
           className={`nation-action${fav ? " is-active" : ""}`}
           onClick={toggleFav}
           aria-pressed={fav}
         >
           <Heart size={16} aria-hidden="true" /> {fav ? "في المفضلة" : "أضف للمفضلة"}
-        </button>
+        </Button>
         <span className="nation-action nation-action--static">
           <Clock size={16} aria-hidden="true" /> {minutes} دقيقة
         </span>
         <div className="nation-mode" role="tablist" aria-label="وضع القراءة">
-          <button
+          <Button variant="ghost"
             type="button"
             role="tab"
             aria-selected={mode === "summary"}
@@ -161,8 +162,8 @@ export default function NationDetailPage() {
             onClick={() => setMode("summary")}
           >
             مختصر
-          </button>
-          <button
+          </Button>
+          <Button variant="ghost"
             type="button"
             role="tab"
             aria-selected={mode === "full"}
@@ -170,7 +171,7 @@ export default function NationDetailPage() {
             onClick={() => setMode("full")}
           >
             كامل
-          </button>
+          </Button>
         </div>
       </div>
 

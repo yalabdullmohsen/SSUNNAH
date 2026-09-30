@@ -7,6 +7,7 @@ import { EMPTY } from "@/lib/ui-copy";
 import { getDawahCategories, getQuestionsByCategory, getQuestionsByReligion, searchDawahQuestions, RELIGIONS, type DawahCategory, type DawahQuestion, type ReligionCode } from "@/lib/dawah-service";
 import { STATIC_DAWAH_QUESTIONS } from "@/lib/dawah-static-fallback";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 function useDebounced<T>(value: T, ms = 350): T {
   const [d, setD] = useState(value);
@@ -84,11 +85,11 @@ export default function DiscoverIslamQuestionsPage() {
       />
 
       <div className="content-hub-chips" role="tablist" aria-label="تصفية حسب التصنيف">
-        <button type="button" onClick={() => selectCategory(undefined)} className={!categorySlug && !religion ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"}>الكل</button>
+        <Button variant="ghost" type="button" onClick={() => selectCategory(undefined)} className={!categorySlug && !religion ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"}>الكل</Button>
         {categories.map((c) => (
-          <button key={c.id} type="button" onClick={() => selectCategory(c.slug)} className={categorySlug === c.slug ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"}>
+          <Button variant="ghost" key={c.id} type="button" onClick={() => selectCategory(c.slug)} className={categorySlug === c.slug ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"}>
             {c.name_ar}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -96,9 +97,9 @@ export default function DiscoverIslamQuestionsPage() {
         <span className="dii-lang-label">أسئلة موجَّهة حسب ديانتك السابقة:</span>
         <div className="content-hub-chips" role="tablist" aria-label="تصفية حسب الديانة">
           {RELIGIONS.map((r) => (
-            <button key={r.code} type="button" onClick={() => selectReligion(religion === r.code ? undefined : r.code)} className={religion === r.code ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"}>
+            <Button variant="ghost" key={r.code} type="button" onClick={() => selectReligion(religion === r.code ? undefined : r.code)} className={religion === r.code ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"}>
               {r.label}
-            </button>
+            </Button>
           ))}
         </div>
       </div>

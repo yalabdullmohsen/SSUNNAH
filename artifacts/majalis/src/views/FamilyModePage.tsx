@@ -7,6 +7,7 @@ import { supabase } from "@/lib/supabase";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/family-mode.css";
 import { EMPTY } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
 
@@ -144,14 +145,14 @@ function ParentView({ userId }: { userId: string }) {
     <div className="fm-parent">
       <div className="fm-section-head">
         <h2 className="fm-section-title">أبناؤك المرتبطون</h2>
-        <button
+        <Button variant="ghost"
           type="button"
           className="fm-btn fm-btn--primary"
           onClick={createInvite}
           disabled={creating}
         >
           {creating ? "…" : "＋ دعوة ابن جديد"}
-        </button>
+        </Button>
       </div>
 
       {links.length === 0 && (
@@ -167,20 +168,20 @@ function ParentView({ userId }: { userId: string }) {
             <span className="fm-invite-card__hint">في انتظار الانضمام</span>
           </div>
           <div className="fm-invite-card__actions">
-            <button
+            <Button variant="ghost"
               type="button"
               className="fm-btn fm-btn--sm"
               onClick={() => copyCode(link.invite_code)}
             >
               {copied === link.invite_code ? "✓ تم النسخ" : "نسخ"}
-            </button>
-            <button
+            </Button>
+            <Button variant="ghost"
               type="button"
               className="fm-btn fm-btn--sm fm-btn--danger"
               onClick={() => revokeLink(link.id)}
             >
               إلغاء
-            </button>
+            </Button>
           </div>
         </div>
       ))}
@@ -197,7 +198,7 @@ function ParentView({ userId }: { userId: string }) {
               <span><Award size={12} strokeWidth={1.8} aria-hidden="true" /> {child.badgesCount} شارة</span>
             </div>
           </div>
-          <button
+          <Button variant="ghost"
             type="button"
             className="fm-btn fm-btn--sm fm-btn--danger"
             onClick={() => {
@@ -206,7 +207,7 @@ function ParentView({ userId }: { userId: string }) {
             }}
           >
             إزالة
-          </button>
+          </Button>
         </div>
       ))}
     </div>
@@ -291,14 +292,14 @@ function ChildView({ userId }: { userId: string }) {
           maxLength={6}
           dir="ltr"
         />
-        <button
+        <Button variant="ghost"
           type="button"
           className="fm-btn fm-btn--primary"
           onClick={joinFamily}
           disabled={loading || code.trim().length !== 6}
         >
           {loading ? "…" : "انضم"}
-        </button>
+        </Button>
       </div>
       {error && <p className="fm-child__error">{error}</p>}
     </div>
@@ -353,7 +354,7 @@ export default function FamilyModePage() {
 
       {!role && (
         <div className="fm-role-picker">
-          <button
+          <Button variant="ghost"
             type="button"
             className="fm-role-btn"
             onClick={() => setRole("parent")}
@@ -361,8 +362,8 @@ export default function FamilyModePage() {
             <span className="fm-role-btn__icon"><Users size={28} strokeWidth={1.4} /></span>
             <span className="fm-role-btn__label">أنا ولي الأمر</span>
             <span className="fm-role-btn__sub">أتابع إنجازات أبنائي</span>
-          </button>
-          <button
+          </Button>
+          <Button variant="ghost"
             type="button"
             className="fm-role-btn"
             onClick={() => setRole("child")}
@@ -370,7 +371,7 @@ export default function FamilyModePage() {
             <span className="fm-role-btn__icon"><Baby size={28} strokeWidth={1.4} /></span>
             <span className="fm-role-btn__label">أنا الابن/البنت</span>
             <span className="fm-role-btn__sub">أدخل رمز ولي أمري</span>
-          </button>
+          </Button>
         </div>
       )}
 
@@ -378,13 +379,13 @@ export default function FamilyModePage() {
       {role === "child" && user?.id && <ChildView userId={user.id} />}
 
       {role && (
-        <button
+        <Button variant="ghost"
           type="button"
           className="fm-btn fm-btn--back"
           onClick={() => setRole(null)}
         >
           ← رجوع
-        </button>
+        </Button>
       )}
     </div>
   );

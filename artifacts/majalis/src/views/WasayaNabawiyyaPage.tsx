@@ -6,6 +6,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/wasaya.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
    §248، الوصايا النبوية  (.wn-*)
@@ -633,7 +634,7 @@ export default function WasayaNabawiyyaPage() {
       {/* Tabs */}
       <div className="wn-tabs" role="tablist" aria-label="أقسام الوصايا النبوية">
         {TABS.map(t => (
-          <button
+          <Button variant="ghost"
             key={t.id}
             id={`wsy-tab-${t.id}`}
             type="button"
@@ -642,7 +643,7 @@ export default function WasayaNabawiyyaPage() {
             onClick={() => { setActiveTab(t.id); setOpenIdx(null); }}
             aria-selected={activeTab === t.id}
               aria-controls={`wsy-panel-${t.id}`}
-          >{t.label}</button>
+          >{t.label}</Button>
         ))}
       </div>
 
@@ -670,7 +671,7 @@ export default function WasayaNabawiyyaPage() {
             <div className="wn-list">
               {filteredKabira.map((w, i) => (
                 <div key={w.id} className="wn-card">
-                  <button
+                  <Button variant="ghost"
                     type="button"
                     className="wn-card__head"
                     onClick={() => toggleItem(i)}
@@ -688,7 +689,7 @@ export default function WasayaNabawiyyaPage() {
                       )}
                       <span className="wn-chevron">{openIdx === i ? "▲" : "▼"}</span>
                     </div>
-                  </button>
+                  </Button>
                   {openIdx === i && (
                     <div className="wn-card__body">
                       <blockquote className="wn-hadith">{w.text}</blockquote>

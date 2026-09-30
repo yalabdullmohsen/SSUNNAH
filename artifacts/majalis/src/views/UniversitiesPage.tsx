@@ -29,6 +29,7 @@ import {
 import "@/styles/pages/universities.css";
 import "@/styles/pages/learning-path-dashboard.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
+import { Button } from "@/components/ui/button";
 const COUNTRIES = [
   "المملكة العربية السعودية",
   "مصر",
@@ -193,10 +194,10 @@ function UniversitiesContent() {
               aria-label="بحث عن جامعة أو تخصص"
               className="flex-1 px-4 py-2.5 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-white/50 up-search-input"
             />
-            <button type="submit"
+            <Button variant="ghost" type="submit"
               className="px-4 py-2.5 bg-white/20 hover:bg-white/30 text-[color:var(--mj-on-brand)] text-sm rounded-xl font-medium transition-colors">
               بحث
-            </button>
+            </Button>
           </form>
 
       <div className="max-w-5xl mx-auto px-4 py-6 space-y-6">
@@ -226,17 +227,17 @@ function UniversitiesContent() {
         {/* رقائق الدولة السريعة + زر التصفية المتقدمة */}
         <div className="up-quick-filters">
           <div className="content-hub-chips up-country-chips" role="tablist" aria-label="تصفية حسب الدولة">
-            <button
+            <Button variant="ghost"
               type="button" role="tab" aria-selected={!filters.country}
               className={!filters.country ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"}
               onClick={() => setFilter("country", undefined)}
-            >كل الدول</button>
+            >كل الدول</Button>
             {COUNTRIES.map((c) => (
-              <button
+              <Button variant="ghost"
                 key={c} type="button" role="tab" aria-selected={filters.country === c}
                 className={filters.country === c ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"}
                 onClick={() => setFilter("country", filters.country === c ? undefined : c)}
-              >{c}</button>
+              >{c}</Button>
             ))}
           </div>
           <FilterToggle expanded={filtersOpen} onClick={() => setFiltersOpen(true)} label={`تصفية متقدمة${activeFilterCount ? ` (${activeFilterCount})` : ""}`} />
@@ -249,11 +250,11 @@ function UniversitiesContent() {
             {search && `، نتائج "${search}"`}
           </p>
           {Object.values(filters).some(Boolean) || search ? (
-            <button type="button"
+            <Button variant="ghost" type="button"
               onClick={() => { setFilters({}); setSearch(""); setSearchInput(""); }}
               className="up-clear-btn">
               مسح الفلاتر
-            </button>
+            </Button>
           ) : null}
         </div>
 
@@ -320,9 +321,9 @@ function UniversitiesContent() {
               <span className="up-filter-opt-label">موثقة فقط</span>
             </label>
           </div>
-          <button type="button" className="up-clear-btn" onClick={() => setFiltersOpen(false)}>
+          <Button variant="ghost" type="button" className="up-clear-btn" onClick={() => setFiltersOpen(false)}>
             تطبيق
-          </button>
+          </Button>
         </div>
       </FilterBottomSheet>
     </div>

@@ -18,6 +18,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import "@/styles/pages/my-citations.css";
 import { ListScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 const TABS = ["الكل", "المجلدات", "المفضلة", "الأكثر استخداماً"] as const;
 type Tab = (typeof TABS)[number];
@@ -192,16 +193,16 @@ export default function MyCitationsPage() {
             </div>
             <div className="flex items-center gap-2">
               <div className="relative group">
-                <button type="button" className="mcp-export-btn">
+                <Button variant="ghost" type="button" className="mcp-export-btn">
                   <Download size={13} /> تصدير
-                </button>
+                </Button>
                 <div className="mcp-dropdown">
-                  <button type="button" onClick={() => handleExport("markdown")} className="mcp-dropdown-item">
+                  <Button variant="ghost" type="button" onClick={() => handleExport("markdown")} className="mcp-dropdown-item">
                     <FileText size={13} strokeWidth={1.8} aria-hidden="true" /> Markdown
-                  </button>
-                  <button type="button" onClick={() => handleExport("pdf")} className="mcp-dropdown-item">
+                  </Button>
+                  <Button variant="ghost" type="button" onClick={() => handleExport("pdf")} className="mcp-dropdown-item">
                     <Printer size={13} className="inline ms-1" /> PDF (طباعة)
-                  </button>
+                  </Button>
                 </div>
               </div>
               {exportStatus && <span className="mcp-export-status">{exportStatus}</span>}
@@ -226,7 +227,7 @@ export default function MyCitationsPage() {
         <aside className="lg:w-56 print:hidden space-y-3">
           <nav aria-label="تصنيفات الاقتباسات" className="mcp-sidebar-nav">
             {TABS.map((t) => (
-              <button
+              <Button variant="ghost"
                 key={t}
                 type="button"
                 onClick={() => handleTabChange(t)}
@@ -237,16 +238,16 @@ export default function MyCitationsPage() {
                 {t === "المفضلة" && <Star size={13} strokeWidth={1.8} aria-hidden="true" />}{" "}
                 {t === "الأكثر استخداماً" && <Flame size={13} strokeWidth={1.8} aria-hidden="true" />}{" "}
                 {t}
-              </button>
+              </Button>
             ))}
           </nav>
 
           <div className="mcp-folders-panel">
             <div className="mcp-folders-header">
               <span className="mcp-folders-label">المجلدات</span>
-              <button type="button" onClick={() => setShowNewFolder(!showNewFolder)} className="mcp-add-folder-btn" title="مجلد جديد">
+              <Button variant="ghost" type="button" onClick={() => setShowNewFolder(!showNewFolder)} className="mcp-add-folder-btn" title="مجلد جديد">
                 +
-              </button>
+              </Button>
             </div>
 
             {showNewFolder && (
@@ -262,7 +263,7 @@ export default function MyCitationsPage() {
                 />
                 <div className="flex flex-wrap gap-1">
                   {FOLDER_COLORS.map((c) => (
-                    <button
+                    <Button variant="ghost"
                       key={c}
                       type="button"
                       onClick={() => setNewFolderColor(c)}
@@ -271,9 +272,9 @@ export default function MyCitationsPage() {
                     />
                   ))}
                 </div>
-                <button type="button" onClick={handleCreateFolder} className="w-full py-1.5 text-xs citation-btn citation-btn--primary">
+                <Button variant="ghost" type="button" onClick={handleCreateFolder} className="w-full py-1.5 text-xs citation-btn citation-btn--primary">
                   إنشاء
-                </button>
+                </Button>
               </div>
             )}
 
@@ -281,7 +282,7 @@ export default function MyCitationsPage() {
               <p className="mcp-no-folders">{EMPTY.data}</p>
             ) : (
               folders.map((f) => (
-                <button
+                <Button variant="ghost"
                   key={f.id}
                   type="button"
                   onClick={() => handleFolderClick(f.id)}
@@ -289,7 +290,7 @@ export default function MyCitationsPage() {
                 >
                   <span className="w-2.5 h-2.5 rounded-full flex-shrink-0 cit-folder-dot" style={{ "--folder-dot-bg": f.color } as React.CSSProperties} />
                   <span className="mcp-folder-name">{f.folder_name}</span>
-                </button>
+                </Button>
               ))
             )}
           </div>
@@ -335,14 +336,14 @@ export default function MyCitationsPage() {
                           )}
                           <span className="mcp-cit-title">{src?.title_ar || "اقتباس"}</span>
                         </div>
-                        <button
+                        <Button variant="ghost"
                           type="button"
                           onClick={() => handleToggleFavorite(item)}
                           className={`mcp-fav-btn${item.is_favorite ? " mcp-fav-btn--active" : ""}`}
                           title={item.is_favorite ? "إزالة من المفضلة" : "إضافة للمفضلة"}
                         >
                           <Star size={16} strokeWidth={2} aria-hidden="true" />
-                        </button>
+                        </Button>
                       </div>
 
                       <blockquote className="mcp-blockquote">
@@ -366,21 +367,21 @@ export default function MyCitationsPage() {
                             dir="rtl"
                           />
                           <div className="flex gap-2">
-                            <button type="button" onClick={() => handleSaveNote(item)} className="text-xs px-3 py-1 citation-btn citation-btn--primary">حفظ</button>
-                            <button type="button" onClick={() => setEditNoteId(null)} className="mcp-cancel-btn">إلغاء</button>
+                            <Button variant="ghost" type="button" onClick={() => handleSaveNote(item)} className="text-xs px-3 py-1 citation-btn citation-btn--primary">حفظ</Button>
+                            <Button variant="ghost" type="button" onClick={() => setEditNoteId(null)} className="mcp-cancel-btn">إلغاء</Button>
                           </div>
                         </div>
                       ) : item.personal_note ? (
                         <div className="flex items-start gap-1.5">
                           <span className="mcp-note-icon" aria-hidden="true"><FileText size={12} strokeWidth={1.8} /></span>
                           <p className="mcp-note-text">{item.personal_note}</p>
-                          <button
+                          <Button variant="ghost"
                             type="button"
                             onClick={() => { setEditNoteId(item.id); setEditNoteText(item.personal_note || ""); }}
                             className="mcp-edit-note-btn"
                           >
                             <Pencil size={12} strokeWidth={1.8} aria-hidden="true" />
-                          </button>
+                          </Button>
                         </div>
                       ) : null}
 
@@ -390,13 +391,13 @@ export default function MyCitationsPage() {
                             <Link2 size={12} className="inline ms-1" /> عرض الاقتباس
                           </Link>
                         )}
-                        <button
+                        <Button variant="ghost"
                           type="button"
                           onClick={() => { setEditNoteId(item.id); setEditNoteText(item.personal_note || ""); }}
                           className="mcp-note-action"
                         >
                           {item.personal_note ? "تعديل الملاحظة" : "إضافة ملاحظة"}
-                        </button>
+                        </Button>
                         <span className="mcp-usage-count">استُخدم {item.usage_count} مرة</span>
                       </div>
                     </div>
