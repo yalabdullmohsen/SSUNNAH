@@ -11,8 +11,8 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `aa94c759` — WAVE13 device evidence `#2391` |
-| Production `version.json` | **MATCH** `aa94c759` · HTTP 200 · `builtAt` `2026-09-30T14:17:06.261Z` |
+| `origin/main` tip | `b8fc9dbf` — WAVE13 device evidence `#2391` |
+| Production `version.json` | **MATCH** `b8fc9dbf` · HTTP 200 · `builtAt` `2026-09-30T14:17:06.261Z` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
 | Internal | **`INTERNAL_CLOSURE_COMPLETE`** |
@@ -29,7 +29,7 @@
 | 10 Mushaf controls | #2388 | `2aa5dc8a` |
 | 11 Route quality | #2389 | `12fba46c` |
 | 12 Index CSS | #2390 | `e29f2cb0` |
-| 13 Device evidence prep | #2391 | `aa94c759` |
+| 13 Device evidence prep | #2391 | `b8fc9dbf` |
 
 ## Store readiness
 
