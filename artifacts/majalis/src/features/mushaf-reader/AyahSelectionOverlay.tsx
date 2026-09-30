@@ -5,6 +5,7 @@ import {
   useMushafAyahPlayingKey,
   useMushafAyahSelectedKey,
 } from "@/features/mushaf-shared/mushaf-ayah-sync-store";
+import { mushafTurnInc } from "./mushaf-turn-telemetry";
 
 type Props = {
   container: HTMLElement | null;
@@ -26,6 +27,7 @@ function collectBands(root: HTMLElement, verseKey: string): TextBand[] {
   const maxH = Math.max(14, fontPx * MAX_BAND_EM);
   const cacheKey = `nm-sel|${verseKey}|${root.clientWidth}|${root.clientHeight}|${Math.round(maxH)}`;
   return getCachedTextBands(cacheKey, scrollLeft, scrollTop, () => {
+    mushafTurnInc("selectionMeasure");
     const nodes = root.querySelectorAll<HTMLElement>(
       `[data-verse="${CSS.escape(verseKey)}"]`,
     );
@@ -80,9 +82,13 @@ export const AyahSelectionOverlay = memo(function AyahSelectionOverlay({
   const [navigation, setNavigation] = useState<TextBand[]>([]);
   const rafRef = useRef<number | null>(null);
 
+  /* إبطال الكاش عند تغيّر الحاوية/التفعيل فقط — لا عند كل تبديل آية */
+  useLayoutEffect(() => {
+    clearTextMeasureCache();
+  }, [container, enabled]);
+
   useLayoutEffect(() => {
     if (!container || !enabled) {
-      clearTextMeasureCache();
       setSelected([]);
       setPlaying([]);
       setNavigation([]);
@@ -107,30 +113,33 @@ export const AyahSelectionOverlay = memo(function AyahSelectionOverlay({
     };
 
     const schedule = () => {
+      /* resize/orientation — أبطل ثم قِس في إطار واحد */
+      clearTextMeasureCache();
       if (rafRef.current != null) return;
       rafRef.current = window.requestAnimationFrame(measureNow);
     };
 
-    /* أعد القياس بعد تبديل الصفحة/الخط دون الاعتماد على كاش قديم */
-    clearTextMeasureCache();
     measureNow();
 
     const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(schedule) : null;
     ro?.observe(container);
     window.addEventListener("resize", schedule);
+    window.addEventListener("orientationchange", schedule);
 
     return () => {
       if (rafRef.current != null) window.cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
       ro?.disconnect();
       window.removeEventListener("resize", schedule);
+      window.removeEventListener("orientationchange", schedule);
     };
   }, [container, enabled, playingKey, selectedKey, navigationKey]);
 
   useLayoutEffect(() => {
     return () => {
-      if (!container) clearTextMeasureCache();
+      clearTextMeasureCache();
     };
-  }, [container]);
+  }, []);
 
   if (!selected.length && !playing.length && !navigation.length) return null;
 

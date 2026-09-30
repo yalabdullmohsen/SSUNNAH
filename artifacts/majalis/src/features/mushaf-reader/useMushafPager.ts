@@ -20,6 +20,7 @@ import {
   resolveNextMushafPage,
   resolvePreviousMushafPage,
 } from "@/features/mushaf-reader/mushaf-page-navigation";
+import { mushafTurnInc } from "@/features/mushaf-reader/mushaf-turn-telemetry";
 
 /** عتبة السحب الأفقي — من أي مكان في الصفحة */
 export const SWIPE_MIN_PX = 40;
@@ -286,6 +287,7 @@ export function useMushafPager({
 
   const onPointerDown = (e: ReactPointerEvent) => {
     if (disabled || locking.current) {
+      if (locking.current) mushafTurnInc("rejectedGesture");
       touchRef.current = null;
       return;
     }

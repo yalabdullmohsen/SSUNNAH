@@ -29,8 +29,10 @@ assert.match(bands, /MUSHAF_SETTLE_MS = 220/);
 assert.match(bands, /MUSHAF_HIZB_START_PAGES = 60/);
 assert.match(bands, /MUSHAF_WORD_COUNT = 83665/);
 
+/* WAVE6: جاهزية خط الصفحة فقط — لا await FontFaceSet العام (كان يجمّد التقليب) */
 assert.match(font, /document\.fonts\.load/);
-assert.match(font, /document\.fonts\.ready/);
+assert.match(font, /document\.fonts\.check/);
+assert.doesNotMatch(font, /await\s+document\.fonts\.ready/);
 assert.match(fit, /document\.fonts\.load/);
 assert.match(fit, /document\.fonts\.ready/);
 assert.match(fit, /resolveUniformMushafFontSize/);

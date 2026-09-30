@@ -99,9 +99,14 @@ import {
   mushafTurnInc,
   mushafTurnMark,
   mushafTurnFlush,
+  mushafTurnResetSession,
   mushafPerfInc,
   mushafPerfSnapshot,
 } from "./mushaf-turn-telemetry";
+import {
+  resolvePageTurnPhase,
+  type MushafPageTurnPhase,
+} from "./mushaf-page-turn-phase";
 import { mushafExperienceMark } from "./mushaf-experience-perf";
 import {
   clearAyahSelection,
@@ -621,6 +626,11 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
   const pageTurnSafetyTimerRef = useRef<number | null>(null);
   /** الصفحة المستهدفة بعد beginPageTurn — لا تُزلّ التجميد قبل وصولها */
   const pendingPageRef = useRef<number | null>(null);
+  /** نية تقليب واحدة كحد أقصى أثناء انتظار font/layout بعد استقرار الصفحة */
+  const queuedPageRef = useRef<number | null>(null);
+  const goRef = useRef<(next: number) => void>(() => undefined);
+  const [pageTurnPhase, setPageTurnPhase] = useState<MushafPageTurnPhase>("IDLE");
+  const [pageTurnRecovering, setPageTurnRecovering] = useState(false);
 
   const clearPageChrome = useCallback(() => {
     bumpTafsirGeneration();
@@ -660,6 +670,8 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
     mushafTurnMark("transitionStart", pageRef.current);
     if (pageTurnLockRef.current) return;
     pageTurnLockRef.current = true;
+    setPageTurnRecovering(false);
+    setPageTurnPhase("COMMITTING");
     if (v2Enabled) readerControllerRef.current?.beginNavigation();
     /* جمّد ارتفاع شريط الآية إن كان مفتوحًا — يمنع قفزة الشبكة عند المسح أثناء القلب */
     const ayahWasOpen = actionsOpenRef.current;
@@ -695,11 +707,16 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       pageTurnSafetyTimerRef.current = null;
       if (!pageTurnLockRef.current) return;
       if (pendingPageRef.current != null && pendingPageRef.current !== pageRef.current) return;
+      setPageTurnRecovering(true);
+      setPageTurnPhase("RECOVERING");
       pageTurnLockRef.current = false;
       pendingPageRef.current = null;
+      queuedPageRef.current = null;
       setPagerSettled(true);
       setBottomStackFrozen(false);
       setFreezeStackMode("none");
+      setPageTurnPhase("READY");
+      setPageTurnRecovering(false);
     }, 2800);
   }, [audioDockOpen, chromeOpen, clearPageChrome, playerState, v2Enabled]);
 
@@ -716,19 +733,39 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
     setFreezeStackMode("none");
     pageTurnLockRef.current = false;
     pendingPageRef.current = null;
+    setPageTurnPhase("READY");
+    setPageTurnRecovering(false);
     if (v2Enabled) readerControllerRef.current?.endNavigation(pageRef.current);
+    const queued = queuedPageRef.current;
+    queuedPageRef.current = null;
+    if (queued != null && queued !== pageRef.current) {
+      window.requestAnimationFrame(() => {
+        goRef.current(queued);
+      });
+    }
   }, [v2Enabled]);
 
   const go = useCallback(
     (next: number) => {
       const clamped = clampMushafPage(next);
-      if (clamped === pageRef.current) return;
+      if (clamped === pageRef.current && pendingPageRef.current == null) return;
       /*
        * قفل القفزة المزدوجة فقط بعد تعيين هدف معلّق.
        * لا تُرجع مبكرًا عند pageTurnLock وحده: onNavigateStart يستدعي beginPageTurn
        * ثم onPageChange→go؛ إرجاع مبكر هنا كان يجمّد التقليب نهائيًا.
+       * WAVE6: نية واحدة آمنة بعد وصول React للصفحة المستهدفة (انتظار font/layout).
        */
-      if (pageTurnLockRef.current && pendingPageRef.current != null) return;
+      if (pageTurnLockRef.current && pendingPageRef.current != null) {
+        if (
+          pageRef.current === pendingPageRef.current &&
+          clamped !== pendingPageRef.current
+        ) {
+          queuedPageRef.current = clamped;
+          return;
+        }
+        mushafTurnInc("rejectedGesture");
+        return;
+      }
       /* قلب يدوي: لا نوقف التلاوة — نمنع مزامنة الصفحة من الصوت حتى لا تُرجع المستخدم */
       suppressPageSyncRef.current = true;
       if (!pageTurnLockRef.current) beginPageTurn();
@@ -736,21 +773,36 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       const commitNav = () => onPageChange(clamped);
       /* إن كان الخط جاهزًا (prefetch) — حدّث الصفحة في نفس الإطار بلا انتظار */
       if (isQpcPageFontReady(clamped)) {
+        mushafTurnMark("fontReady", clamped);
         commitNav();
         return;
       }
-      void ensureQpcPageFont(clamped).finally(commitNav);
+      setPageTurnPhase("WAITING_FOR_FONT");
+      void ensureQpcPageFont(clamped).finally(() => {
+        mushafTurnMark("fontReady", clamped);
+        commitNav();
+      });
     },
     [beginPageTurn, onPageChange],
   );
+  goRef.current = go;
 
   /** ارتفاع الحاوية ثابت أثناء القلب — لا تُزلّ التجميد قبل جاهزية الخط+بيانات الصفحة */
   useLayoutEffect(() => {
     const pending = pendingPageRef.current;
-    if (pending == null || page !== pending) return;
-    if (!fontReady || !layoutMatchesPage) return;
-    /* لا نُنهِ القلب قبل تثبيت العرض المستقر للصفحة الجديدة */
-    if (!displayView || displayView.page !== page) return;
+    if (pending == null) return;
+    if (page !== pending) {
+      setPageTurnPhase("COMMITTING");
+      return;
+    }
+    if (!fontReady) {
+      setPageTurnPhase("WAITING_FOR_FONT");
+      return;
+    }
+    if (!layoutMatchesPage || !displayView || displayView.page !== page) {
+      setPageTurnPhase("WAITING_FOR_LAYOUT");
+      return;
+    }
 
     const shell = metricsRootRef.current?.querySelector<HTMLElement>(
       '[data-pane="current"] .nm-shell, [data-pane="current"] .mm-page-shell',
@@ -760,6 +812,30 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
 
     finishPageTurn();
   }, [page, fontReady, layoutMatchesPage, displayView, finishPageTurn]);
+
+  useEffect(() => {
+    if (pageTurnLockRef.current) return;
+    setPageTurnPhase(
+      resolvePageTurnPhase({
+        productLocked: false,
+        pendingPage: null,
+        currentPage: page,
+        fontReady,
+        layoutReady: layoutMatchesPage && Boolean(displayView),
+        recovering: pageTurnRecovering,
+      }),
+    );
+  }, [page, fontReady, layoutMatchesPage, displayView, pageTurnRecovering]);
+
+  useEffect(() => {
+    return () => {
+      mushafTurnResetSession();
+      if (pageTurnSafetyTimerRef.current != null) {
+        window.clearTimeout(pageTurnSafetyTimerRef.current);
+        pageTurnSafetyTimerRef.current = null;
+      }
+    };
+  }, []);
 
   useLayoutEffect(() => {
     if (error && (bottomStackFrozen || !pagerSettled)) finishPageTurn();
@@ -1082,32 +1158,59 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
   const mediaPlaying =
     playerState === "playing" || playerState === "buffering" || playerState === "loading";
 
-  /** لا يُسمح بالسحب قبل جاهزية خط±١ — يمنع ظهور placeholder ثم قفزة التفاف */
+  /** ±1 فوري · ±2 على idle — يمنع تنافس أول طلاء مع prefetch بعيد */
   const [neighborEpoch, setNeighborEpoch] = useState(0);
   useEffect(() => {
     let cancelled = false;
-    const tasks: Promise<unknown>[] = [];
+    let idleHandle: number | null = null;
+    let idleTimer: number | null = null;
+    const near: Promise<unknown>[] = [];
     if (page < MUSHAF_PAGE_MAX) {
-      tasks.push(ensureQpcPageFont(page + 1));
-      tasks.push(loadMushafPage(page + 1).catch(() => null));
-    }
-    if (page < MUSHAF_PAGE_MAX - 1) {
-      tasks.push(ensureQpcPageFont(page + 2));
-      tasks.push(loadMushafPage(page + 2).catch(() => null));
+      near.push(ensureQpcPageFont(page + 1));
+      near.push(loadMushafPage(page + 1).catch(() => null));
     }
     if (page > 1) {
-      tasks.push(ensureQpcPageFont(page - 1));
-      tasks.push(loadMushafPage(page - 1).catch(() => null));
+      near.push(ensureQpcPageFont(page - 1));
+      near.push(loadMushafPage(page - 1).catch(() => null));
     }
-    if (page > 2) {
-      tasks.push(ensureQpcPageFont(page - 2));
-      tasks.push(loadMushafPage(page - 2).catch(() => null));
-    }
-    void Promise.all(tasks).then(() => {
+    void Promise.all(near).then(() => {
       if (!cancelled) setNeighborEpoch((n) => n + 1);
     });
+    const prefetchFar = () => {
+      if (cancelled) return;
+      const far: Promise<unknown>[] = [];
+      if (page < MUSHAF_PAGE_MAX - 1) {
+        far.push(ensureQpcPageFont(page + 2));
+        far.push(loadMushafPage(page + 2).catch(() => null));
+      }
+      if (page > 2) {
+        far.push(ensureQpcPageFont(page - 2));
+        far.push(loadMushafPage(page - 2).catch(() => null));
+      }
+      if (far.length === 0) return;
+      void Promise.all(far).then(() => {
+        if (!cancelled) setNeighborEpoch((n) => n + 1);
+      });
+    };
+    const ric = (
+      window as Window & {
+        requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+        cancelIdleCallback?: (id: number) => void;
+      }
+    ).requestIdleCallback;
+    if (typeof ric === "function") {
+      idleHandle = ric(prefetchFar, { timeout: 1400 });
+    } else {
+      idleTimer = window.setTimeout(prefetchFar, 220);
+    }
     return () => {
       cancelled = true;
+      if (idleHandle != null) {
+        (
+          window as Window & { cancelIdleCallback?: (id: number) => void }
+        ).cancelIdleCallback?.(idleHandle);
+      }
+      if (idleTimer != null) window.clearTimeout(idleTimer);
     };
   }, [page]);
   void neighborEpoch; /* يعيد تقييم الجيران عند اكتمال التحميل */
@@ -1333,7 +1436,8 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
         mushafTurnMark("touchStart", page);
       }}
       onNavigateCancel={cancelPageTurnFreeze}
-      ignoreSelector=".nm-controls, .nm-verse-menu, .nm-page-arrows, .nm-page-arrow, .nm-page-scrubber, .mm-audio-dock, .mm-ayah-bar, .ayah-action-sheet, .mm-search-sheet, .rb-composer, .rb-page-sheet, .rb-editor-shell, .rb-markers, .nm-nav-highlight-chip, [data-testid='mushaf-ayah-hit'], [data-testid='mushaf-basmala'], .nm-word, .nm-basmala, input, textarea, select, button"
+      /* WAVE6: النص قابل للسحب عبر panSlopFor(onAyah) — لا تُتجاهل .nm-word / ayah-hit */
+      ignoreSelector=".nm-controls, .nm-verse-menu, .nm-page-arrows, .nm-page-arrow, .nm-page-scrubber, .mm-audio-dock, .mm-ayah-bar, .ayah-action-sheet, .mm-search-sheet, .rb-composer, .rb-page-sheet, .rb-editor-shell, .rb-markers, .nm-nav-highlight-chip, input, textarea, select, button"
       onTapEmpty={() => {
         if (actionsOpen) {
           closeActions();
@@ -1355,6 +1459,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       data-audio-dock={audioDockVisible ? "1" : "0"}
       data-audio-mini={audioDockVisible && audioDockMini ? "1" : "0"}
       data-pager-settled={pagerSettled ? "1" : "0"}
+      data-page-turn-phase={pageTurnPhase}
       data-ultra-smooth="1"
       data-bottom-freeze={bottomStackFrozen ? "1" : "0"}
       data-freeze-stack={freezeStackMode}

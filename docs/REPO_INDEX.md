@@ -117,6 +117,10 @@
 | `docs/performance/WAVE5_CSS_IMPORT_GRAPH.md` | **WAVE5** — رسم استيرادات CSS sync/deferred + تصنيفات |
 | `docs/performance/WAVE5_SCOPE_MANIFEST.md` | **WAVE5** — نطاق وتجميد التنفيذ |
 | `docs/performance/SUNNAH_WAVE5_STARTUP_FOUC_CLS_CLOSURE_REPORT.md` | **WAVE5** — إغلاق Critical CSS / FOUC / CLS / startup |
+| `docs/mushaf/WAVE6_MUSHAF_FLUIDITY_BASELINE.md` | **WAVE6** — خط أساس سلاسة المصحف / تقليب الصفحات |
+| `docs/mushaf/WAVE6_SCOPE_MANIFEST.md` | **WAVE6** — نطاق وتجميد التنفيذ |
+| `docs/mushaf/WAVE6_REAL_DEVICE_TEST_MATRIX.md` | **WAVE6** — مصفوفة أجهزة (DEVICE_REQUIRED) |
+| `docs/mushaf/SUNNAH_WAVE6_MUSHAF_FLUIDITY_CLOSURE_REPORT.md` | **WAVE6** — إغلاق سلاسة المصحف / تأخير التقليب |
 | `docs/audit/SUNNAH_REMAINING_PROBLEMS_MASTER_COPYABLE.md` | جرد المشاكل المتبقية الكامل (قابل للنسخ) بعد WAVE5 |
 | `docs/performance/startup-pr0-baseline-metrics.json` | مقاييس/جرد Startup PR-0 (NOT MEASURED للجهاز) |
 | `artifacts/majalis/src/lib/app-startup-controller.ts` | **Startup PR-1** — AppStartupController (آلة حالات الإقلاع مصدر حقيقة واحد) |
