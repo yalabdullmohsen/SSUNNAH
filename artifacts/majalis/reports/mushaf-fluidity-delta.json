@@ -1,0 +1,107 @@
+{
+  "capturedAt": "2026-09-30T19:26:32.847Z",
+  "delta": [
+    {
+      "metric": "verseWordSyncSubscriptionsPerWord",
+      "before": 6,
+      "after": 6,
+      "delta": "0"
+    },
+    {
+      "metric": "adjacentPaneSyncFrozen",
+      "before": false,
+      "after": true,
+      "delta": "improved"
+    },
+    {
+      "metric": "oppositeNearPrefetchOnIdle",
+      "before": false,
+      "after": true,
+      "delta": "improved"
+    },
+    {
+      "metric": "directionAwareNearOrder",
+      "before": true,
+      "after": true,
+      "delta": "same"
+    },
+    {
+      "metric": "clearPageChromeGuarded",
+      "before": false,
+      "after": true,
+      "delta": "improved"
+    },
+    {
+      "metric": "neighborEpochRerender",
+      "before": true,
+      "after": false,
+      "delta": "regressed"
+    },
+    {
+      "metric": "arrowsWaitNeighborsReady",
+      "before": false,
+      "after": false,
+      "delta": "same"
+    },
+    {
+      "metric": "scrubberWaitNeighborsReady",
+      "before": false,
+      "after": false,
+      "delta": "same"
+    },
+    {
+      "metric": "selectionFrozenWhileTurning",
+      "before": true,
+      "after": true,
+      "delta": "same"
+    },
+    {
+      "metric": "bookmarkMarkersFrozenWhileTurning",
+      "before": true,
+      "after": true,
+      "delta": "same"
+    },
+    {
+      "metric": "telemetryPointerUp",
+      "before": false,
+      "after": true,
+      "delta": "improved"
+    },
+    {
+      "metric": "telemetryVisualTransitionEnd",
+      "before": false,
+      "after": true,
+      "delta": "improved"
+    },
+    {
+      "metric": "telemetryProductUnlock",
+      "before": false,
+      "after": true,
+      "delta": "improved"
+    },
+    {
+      "metric": "fontCacheHitSyncUsP50",
+      "before": 0.006,
+      "after": 0.014,
+      "delta": "+0.008"
+    },
+    {
+      "metric": "fontCacheHitSyncUsP95",
+      "before": 0.015,
+      "after": 0.062,
+      "delta": "+0.047"
+    },
+    {
+      "metric": "fontCacheHitSamples",
+      "before": 80,
+      "after": 80,
+      "delta": "0"
+    },
+    {
+      "metric": "estimatedTurnRenderHotspots",
+      "before": 64,
+      "after": 0,
+      "delta": "-64"
+    }
+  ]
+}

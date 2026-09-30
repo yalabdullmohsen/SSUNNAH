@@ -7,13 +7,16 @@
 export const MUSHAF_TURN_MARKS = [
   "touchStart",
   "firstPageMovement",
+  "pointerUp",
   "pageDataReady",
   "fontReady",
   "layoutStart",
   "layoutComplete",
   "transitionStart",
+  "visualTransitionEnd",
   "transitionSettled",
   "activePageCommit",
+  "productUnlock",
 ] as const;
 
 export type MushafTurnMarkName = (typeof MUSHAF_TURN_MARKS)[number];
@@ -33,6 +36,9 @@ export const MUSHAF_WAVE6_METRIC_KEYS = [
   "frameDropEstimate",
   "fontCacheHit",
   "pageDataCacheHit",
+  "pointerUpToVisualSettleMs",
+  "visualSettleToUnlockMs",
+  "renderCount",
 ] as const;
 
 /** سقف prefetch بعيد (±2) — لا تحميل 604 */

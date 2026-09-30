@@ -30,6 +30,8 @@ type Props = {
   onLongPressVerse?: (verseKey: string) => void;
   /** قياس التحديد بعد استقرار القلب فقط */
   selectionEnabled?: boolean;
+  /** اشتراك تمييز الآية — يُطفأ أثناء القلب وعلى ألواح الجار */
+  syncHighlights?: boolean;
   /** فتح انتقال الصفحة عند الضغط على رقم الصفحة */
   onPageNumberPress?: () => void;
 };
@@ -81,6 +83,7 @@ function mushafPagePropsEqual(prev: Props, next: Props): boolean {
     prev.fontFamily === next.fontFamily &&
     prev.displayPageNumber === next.displayPageNumber &&
     prev.selectionEnabled === next.selectionEnabled &&
+    prev.syncHighlights === next.syncHighlights &&
     prev.onSelectVerse === next.onSelectVerse &&
     prev.onLongPressVerse === next.onLongPressVerse &&
     prev.onPageNumberPress === next.onPageNumberPress
@@ -94,6 +97,7 @@ export const MushafPage = memo(function MushafPage({
   onSelectVerse,
   onLongPressVerse,
   selectionEnabled = true,
+  syncHighlights = selectionEnabled,
   onPageNumberPress,
 }: Props) {
   const bodyRef = useRef<HTMLDivElement | null>(null);
@@ -190,7 +194,9 @@ export const MushafPage = memo(function MushafPage({
                   <MushafSurahBanner nameArabic={cell.nameArabic} />
                 </div>
               ) : null}
-              {cell?.kind === "basmala" ? <MushafBasmalaView /> : null}
+              {cell?.kind === "basmala" ? (
+                <MushafBasmalaView syncHighlights={syncHighlights} />
+              ) : null}
               {cell?.kind === "line" ? (
                 cell.words.length > 0 && cell.words.every((w) => w.verseKey === "1:1") ? (
                   <MushafBasmalaView
@@ -198,6 +204,7 @@ export const MushafPage = memo(function MushafPage({
                     numbered
                     onSelect={onSelectFatiha}
                     onLongPress={onLongPressFatiha}
+                    syncHighlights={syncHighlights}
                   />
                 ) : (
                   <MushafVerseLayer
@@ -205,6 +212,7 @@ export const MushafPage = memo(function MushafPage({
                     centered={isOpeningP1 || isLeadP2 || isLastSurahLine(cell.words, layout)}
                     onSelectVerse={onSelectVerse}
                     onLongPressVerse={onLongPressVerse}
+                    syncHighlights={syncHighlights}
                   />
                 )
               ) : null}

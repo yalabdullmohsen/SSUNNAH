@@ -12,13 +12,16 @@ import { mushafExperienceOnTurnMark } from "./mushaf-experience-perf";
 type MushafTurnMark =
   | "touchStart"
   | "firstPageMovement"
+  | "pointerUp"
   | "pageDataReady"
   | "fontReady"
   | "layoutStart"
   | "layoutComplete"
   | "transitionStart"
+  | "visualTransitionEnd"
   | "transitionSettled"
-  | "activePageCommit";
+  | "activePageCommit"
+  | "productUnlock";
 
 export type MushafFrameStats = {
   samples: number;
@@ -47,6 +50,10 @@ export type MushafWave6TurnMetrics = {
   frameDropEstimate: number | null;
   fontCacheHit: number;
   pageDataCacheHit: number;
+  /** Fluidity program — أدق من WAVE6 إن وُجدت العلامات */
+  pointerUpToVisualSettleMs: number | null;
+  visualSettleToUnlockMs: number | null;
+  renderCount: number;
 };
 
 export type MushafPerfLifetime = {
@@ -149,15 +156,25 @@ function markDelta(
 
 function computeWave6Metrics(s: Session, frames: MushafFrameStats): MushafWave6TurnMetrics {
   const m = s.marks;
+  const visualEnd = m.visualTransitionEnd ?? m.transitionStart;
+  const unlock = m.productUnlock ?? m.transitionSettled;
   return {
     touchToFirstTranslateMs: frames.touchToMoveMs,
-    pointerUpToTransitionStartMs: markDelta(m, "firstPageMovement", "transitionStart"),
-    transitionDurationMs: markDelta(m, "transitionStart", "transitionSettled"),
-    transitionEndToCommitMs: markDelta(m, "transitionSettled", "activePageCommit"),
-    commitToUnlockMs: markDelta(m, "activePageCommit", "transitionSettled"),
+    pointerUpToTransitionStartMs:
+      markDelta(m, "pointerUp", "transitionStart") ??
+      markDelta(m, "firstPageMovement", "transitionStart"),
+    transitionDurationMs:
+      markDelta(m, "pointerUp", "visualTransitionEnd") ??
+      markDelta(m, "transitionStart", "transitionSettled"),
+    transitionEndToCommitMs:
+      markDelta(m, "visualTransitionEnd", "activePageCommit") ??
+      markDelta(m, "transitionSettled", "activePageCommit"),
+    commitToUnlockMs:
+      markDelta(m, "activePageCommit", "productUnlock") ??
+      markDelta(m, "activePageCommit", "transitionSettled"),
     totalTurnMs:
-      m.touchStart != null && m.transitionSettled != null
-        ? Math.max(0, m.transitionSettled - m.touchStart)
+      m.touchStart != null && unlock != null
+        ? Math.max(0, unlock - m.touchStart)
         : m.transitionSettled ?? null,
     fontWaitMs: markDelta(m, "transitionStart", "fontReady"),
     layoutWaitMs: markDelta(m, "fontReady", "layoutComplete"),
@@ -166,6 +183,11 @@ function computeWave6Metrics(s: Session, frames: MushafFrameStats): MushafWave6T
     frameDropEstimate: frames.samples > 0 ? frames.droppedFrames : null,
     fontCacheHit: s.cacheHits,
     pageDataCacheHit: s.cacheHits,
+    pointerUpToVisualSettleMs:
+      m.pointerUp != null && visualEnd != null ? Math.max(0, visualEnd - m.pointerUp) : null,
+    visualSettleToUnlockMs:
+      visualEnd != null && unlock != null ? Math.max(0, unlock - visualEnd) : null,
+    renderCount: s.renderCount,
   };
 }
 

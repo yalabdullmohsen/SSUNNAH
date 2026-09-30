@@ -22,6 +22,8 @@ type LineProps = {
   onSelectVerse?: (verseKey: string) => void;
   /** ضغط مطوّل → قائمة الآية (ليس فتح التفسير مباشرة) */
   onLongPressVerse?: (verseKey: string) => void;
+  /** false أثناء القلب / ألواح الجار — بلا اشتراك sync-store */
+  syncHighlights?: boolean;
 };
 
 /** أفقياً أضيق من عتبة Pan على الآية حتى لا يُسجَّل Long Press أثناء السحب */
@@ -73,6 +75,7 @@ const VerseWord = memo(function VerseWord({
   movePress,
   endPress,
   clearPress,
+  syncHighlights = true,
 }: {
   word: QpcWord;
   onSelectVerse?: (verseKey: string) => void;
@@ -80,10 +83,11 @@ const VerseWord = memo(function VerseWord({
   movePress: (e: ReactPointerEvent<HTMLElement>) => void;
   endPress: (verseKey: string) => void;
   clearPress: () => void;
+  syncHighlights?: boolean;
 }) {
-  const selected = useMushafAyahWordSelected(word.verseKey);
-  const playing = useMushafAyahWordPlaying(word.verseKey);
-  const searchHit = useMushafAyahWordSearchHighlight(word.verseKey);
+  const selected = useMushafAyahWordSelected(word.verseKey, syncHighlights);
+  const playing = useMushafAyahWordPlaying(word.verseKey, syncHighlights);
+  const searchHit = useMushafAyahWordSearchHighlight(word.verseKey, syncHighlights);
   const isEnd = word.charType === "end";
   const state = [
     selected ? "is-selected" : "",
@@ -197,6 +201,7 @@ export const MushafVerseLayer = memo(function MushafVerseLayer({
   centered = false,
   onSelectVerse,
   onLongPressVerse,
+  syncHighlights = true,
 }: LineProps) {
   const pressRef = useRef<PressState | null>(null);
 
@@ -273,6 +278,7 @@ export const MushafVerseLayer = memo(function MushafVerseLayer({
           movePress={movePress}
           endPress={endPress}
           clearPress={clearPress}
+          syncHighlights={syncHighlights}
         />
       ))}
     </div>
@@ -284,6 +290,7 @@ type BasmalaProps = {
   numbered?: boolean;
   onSelect?: () => void;
   onLongPress?: () => void;
+  syncHighlights?: boolean;
 };
 
 export const MushafBasmalaView = memo(function MushafBasmalaView({
@@ -291,13 +298,14 @@ export const MushafBasmalaView = memo(function MushafBasmalaView({
   numbered = false,
   onSelect,
   onLongPress,
+  syncHighlights = true,
 }: BasmalaProps) {
   const qpc = words && words.length > 0 ? words : BASMALA_QPC_WORDS;
   const body = qpc.filter((w) => w.charType !== "end");
   const end = numbered ? qpc.find((w) => w.charType === "end") : null;
-  const selected = useMushafAyahWordSelected("1:1");
-  const playing = useMushafAyahWordPlaying("1:1");
-  const searchHit = useMushafAyahWordSearchHighlight("1:1");
+  const selected = useMushafAyahWordSelected("1:1", syncHighlights);
+  const playing = useMushafAyahWordPlaying("1:1", syncHighlights);
+  const searchHit = useMushafAyahWordSearchHighlight("1:1", syncHighlights);
   const state = [selected ? "is-selected" : "", playing ? "is-playing" : "", searchHit ? "is-search-hit" : ""].filter(Boolean).join(" ");
   const pressRef = useRef<{ x: number; y: number; longTimer: number; longFired: boolean } | null>(
     null,

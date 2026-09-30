@@ -639,7 +639,22 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
   const [pageTurnPhase, setPageTurnPhase] = useState<MushafPageTurnPhase>("IDLE");
   const [pageTurnRecovering, setPageTurnRecovering] = useState(false);
 
+  const selectedVerseKeyRef = useRef<string | null>(null);
+  selectedVerseKeyRef.current = selectedVerseKey;
+  const chromeOpenRef = useRef(chromeOpen);
+  chromeOpenRef.current = chromeOpen;
+  const controlsMoreOpenRef = useRef(controlsMoreOpen);
+  controlsMoreOpenRef.current = controlsMoreOpen;
+
   const clearPageChrome = useCallback(() => {
+    /* لا عاصفة setState إن كان الكروم/التحديد/التفسير مغلقة أصلًا */
+    const needsClear =
+      tafsirOpenRef.current ||
+      actionsOpenRef.current ||
+      Boolean(selectedVerseKeyRef.current) ||
+      controlsMoreOpenRef.current ||
+      chromeOpenRef.current;
+    if (!needsClear) return;
     bumpTafsirGeneration();
     tafsirIntentRef.current = null;
     tafsirOpenRef.current = false;
@@ -674,7 +689,6 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
   }, []);
 
   const beginPageTurn = useCallback(() => {
-    mushafTurnMark("transitionStart", pageRef.current);
     if (pageTurnLockRef.current) return;
     pageTurnLockRef.current = true;
     setPageTurnRecovering(false);
@@ -729,8 +743,6 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
 
   const finishPageTurn = useCallback(() => {
     mushafTurnMark("activePageCommit", pageRef.current);
-    mushafTurnMark("transitionSettled", pageRef.current);
-    mushafTurnFlush();
     if (pageTurnSafetyTimerRef.current != null) {
       window.clearTimeout(pageTurnSafetyTimerRef.current);
       pageTurnSafetyTimerRef.current = null;
@@ -742,6 +754,9 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
     pendingPageRef.current = null;
     setPageTurnPhase("READY");
     setPageTurnRecovering(false);
+    mushafTurnMark("productUnlock", pageRef.current);
+    mushafTurnMark("transitionSettled", pageRef.current);
+    mushafTurnFlush();
     if (v2Enabled) readerControllerRef.current?.endNavigation(pageRef.current);
     const queued = queuedPageRef.current;
     queuedPageRef.current = null;
@@ -778,7 +793,14 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       }
       /* قلب يدوي: لا نوقف التلاوة — نمنع مزامنة الصفحة من الصوت حتى لا تُرجع المستخدم */
       suppressPageSyncRef.current = true;
-      if (!pageTurnLockRef.current) beginPageTurn();
+      /*
+       * أسهم/انتقال مباشر: علّم transitionStart هنا.
+       * مسار السحب: pager يعلّمها عند بدء CSS — لا تُكتب فوقها بعد visualTransitionEnd.
+       */
+      if (!pageTurnLockRef.current) {
+        mushafTurnMark("transitionStart", clamped);
+        beginPageTurn();
+      }
       pendingPageRef.current = clamped;
       const commitNav = () => onPageChange(clamped);
       /* إن كان الخط جاهزًا (prefetch) — حدّث الصفحة في نفس الإطار بلا انتظار */
@@ -1195,38 +1217,30 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
   const mediaPlaying =
     playerState === "playing" || playerState === "buffering" || playerState === "loading";
 
-  /** ±1 فوري · ±2 على idle — ترجيح اتجاه آخر تقليبة دون تحميل 604 */
-  const [neighborEpoch, setNeighborEpoch] = useState(0);
+  /**
+   * اتجاه واعٍ: ±1 في اتجاه آخر تقليبة فوري · الاتجاه المعاكس (±1) و±2 على idle.
+   * fluidity: opposite-near-idle — يقلّل تنافس تنزيل الخط مع الصفحة الهدف.
+   */
   useEffect(() => {
     let cancelled = false;
     let idleHandle: number | null = null;
     let idleTimer: number | null = null;
-    /* preferNext: اتجاه آخر تقليبة — يبقي استدعاءات ensureQpcPageFont(page±1/±2) حيّة للعقود */
     const preferNext = lastTurnDeltaRef.current >= 0;
-    const near: Promise<unknown>[] = [];
-    const enqueueNear = (delta: 1 | -1) => {
+    const preferredDelta: 1 | -1 = preferNext ? 1 : -1;
+    const oppositeDelta: 1 | -1 = preferNext ? -1 : 1;
+    const enqueueNear = (delta: 1 | -1): Promise<unknown>[] => {
       const target = page + delta;
-      if (target < 1 || target > MUSHAF_PAGE_MAX) return;
+      if (target < 1 || target > MUSHAF_PAGE_MAX) return [];
       if (delta === 1) {
-        near.push(ensureQpcPageFont(page + 1));
-        near.push(loadMushafPage(page + 1).catch(() => null));
-      } else {
-        near.push(ensureQpcPageFont(page - 1));
-        near.push(loadMushafPage(page - 1).catch(() => null));
+        return [ensureQpcPageFont(page + 1), loadMushafPage(page + 1).catch(() => null)];
       }
+      return [ensureQpcPageFont(page - 1), loadMushafPage(page - 1).catch(() => null)];
     };
-    if (preferNext) {
-      enqueueNear(1);
-      enqueueNear(-1);
-    } else {
-      enqueueNear(-1);
-      enqueueNear(1);
-    }
-    void Promise.all(near).then(() => {
-      if (!cancelled) setNeighborEpoch((n) => n + 1);
-    });
-    const prefetchFar = () => {
+    void Promise.all(enqueueNear(preferredDelta));
+    const prefetchIdle = () => {
       if (cancelled) return;
+      /* opposite near on idle */
+      void Promise.all(enqueueNear(oppositeDelta));
       const far: Promise<unknown>[] = [];
       const enqueueFar = (delta: 2 | -2) => {
         const target = page + delta;
@@ -1246,10 +1260,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
         enqueueFar(-2);
         enqueueFar(2);
       }
-      if (far.length === 0) return;
-      void Promise.all(far).then(() => {
-        if (!cancelled) setNeighborEpoch((n) => n + 1);
-      });
+      if (far.length) void Promise.all(far);
     };
     const ric = (
       window as Window & {
@@ -1258,9 +1269,9 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       }
     ).requestIdleCallback;
     if (typeof ric === "function") {
-      idleHandle = ric(prefetchFar, { timeout: 1400 });
+      idleHandle = ric(prefetchIdle, { timeout: 1400 });
     } else {
-      idleTimer = window.setTimeout(prefetchFar, 220);
+      idleTimer = window.setTimeout(prefetchIdle, 220);
     }
     return () => {
       cancelled = true;
@@ -1272,7 +1283,6 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       if (idleTimer != null) window.clearTimeout(idleTimer);
     };
   }, [page]);
-  void neighborEpoch; /* يعيد تقييم الجيران عند اكتمال التحميل */
   const neighborsReady =
     (page >= MUSHAF_PAGE_MAX ||
       (isQpcPageFontReady(page + 1) && Boolean(getCachedMushafPage(page + 1)))) &&
@@ -1302,6 +1312,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
         pageNumber={pageNumber}
         active={role === "current"}
         selectionEnabled={pagerSettled && role === "current"}
+        syncHighlights={pagerSettled && role === "current"}
         onSelectVerse={role === "current" && pagerSettled ? onSelectVerse : undefined}
         onLongPressVerse={role === "current" && pagerSettled ? onLongPressVerse : undefined}
         onPageNumberPress={role === "current" ? onPageNumberPressCurrent : undefined}
@@ -1475,22 +1486,11 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       disabled={edgesDisabled}
       onNavigateStart={() => {
         /* يُستدعى عند الالتزام فقط (go) — ليس عند أول بكسل سحب */
-        mushafTurnMark("transitionStart", page);
         beginPageTurn();
       }}
       onPanVisualStart={() => {
-        /* telemetry أولاً؛ إغلاق التفسير + مسح التحديد إن كان مفتوحًا */
+        /* بصري فقط — لا setState هنا (كان يسبب jank على touch→translate) */
         mushafTurnMark("firstPageMovement", page);
-        if (tafsirOpenRef.current) {
-          bumpTafsirGeneration();
-          tafsirIntentRef.current = null;
-          tafsirOpenRef.current = false;
-          setTafsirOpen(false);
-          setTafsirVerseKey(null);
-          clearAyahSelection();
-          setSelectedVerseKey(null);
-          setActionsOpen(false);
-        }
       }}
       onGestureArm={() => {
         mushafTurnMark("touchStart", page);
@@ -1824,6 +1824,7 @@ const PrefetchPage = memo(function PrefetchPage({
   pageNumber,
   active = false,
   selectionEnabled = false,
+  syncHighlights = false,
   onSelectVerse,
   onLongPressVerse,
   onPageNumberPress,
@@ -1835,6 +1836,7 @@ const PrefetchPage = memo(function PrefetchPage({
   pageNumber: number;
   active?: boolean;
   selectionEnabled?: boolean;
+  syncHighlights?: boolean;
   onSelectVerse?: (verseKey: string) => void;
   onLongPressVerse?: (verseKey: string) => void;
   onPageNumberPress?: () => void;
@@ -1906,6 +1908,7 @@ const PrefetchPage = memo(function PrefetchPage({
           onSelectVerse={selectionEnabled ? onSelectVerse : undefined}
           onLongPressVerse={selectionEnabled ? onLongPressVerse : undefined}
           selectionEnabled={selectionEnabled}
+          syncHighlights={syncHighlights}
           onPageNumberPress={onPageNumberPress}
         />
       )}

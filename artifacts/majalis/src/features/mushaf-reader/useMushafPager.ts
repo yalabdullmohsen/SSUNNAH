@@ -20,7 +20,7 @@ import {
   resolveNextMushafPage,
   resolvePreviousMushafPage,
 } from "@/features/mushaf-reader/mushaf-page-navigation";
-import { mushafTurnInc } from "@/features/mushaf-reader/mushaf-turn-telemetry";
+import { mushafTurnInc, mushafTurnMark } from "@/features/mushaf-reader/mushaf-turn-telemetry";
 
 /** عتبة السحب الأفقي — من أي مكان في الصفحة */
 export const SWIPE_MIN_PX = 40;
@@ -279,6 +279,7 @@ export function useMushafPager({
         return;
       }
       pendingCommit.current = null;
+      mushafTurnMark("visualTransitionEnd", commit);
       go(commit);
     };
     track.addEventListener("transitionend", onEnd);
@@ -374,6 +375,7 @@ export function useMushafPager({
     const pageNow = pageRef.current;
 
     if (panning.current && (passSwipe || passFlick)) {
+      mushafTurnMark("pointerUp", pageNow);
       const swipeDelta = mushafSwipePageDelta(dx);
       if (swipeDelta === 1) {
         const next = resolveNextMushafPage(pageNow);
@@ -385,6 +387,7 @@ export function useMushafPager({
         }
         locking.current = true;
         pendingCommit.current = next;
+        mushafTurnMark("transitionStart", next);
         setTrackX(0, true);
         return;
       }
@@ -398,6 +401,7 @@ export function useMushafPager({
         }
         locking.current = true;
         pendingCommit.current = prev;
+        mushafTurnMark("transitionStart", prev);
         setTrackX(-2 * w, true);
         return;
       }
