@@ -182,6 +182,11 @@ export function MushafSearchSheet({ open, mode = "search", onClose, onGotoPage }
 
   if (!open) return null;
 
+  const appearanceAttr =
+    typeof document !== "undefined"
+      ? document.documentElement.getAttribute("data-mushaf-appearance") || undefined
+      : undefined;
+
   return createPortal(
     <div
       className="mm-search-sheet quran-sheet"
@@ -190,6 +195,7 @@ export function MushafSearchSheet({ open, mode = "search", onClose, onGotoPage }
       aria-labelledby={titleId}
       data-testid="mushaf-search-sheet"
       data-mode={mode}
+      data-mushaf-appearance={appearanceAttr}
     >
       <button
         type="button"
