@@ -35,7 +35,7 @@
 
 .qr-note {
   padding: 10px 12px;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   background: color-mix(in srgb, var(--mj-brand, #1e5f4b) 10%, transparent);
   font-size: 13px;
 }
@@ -101,7 +101,7 @@
 
 .qr-diff-list li {
   border: 1px solid var(--mj-hairline, var(--mj-hairline, #e3e8e6));
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   padding: 12px;
 }
 

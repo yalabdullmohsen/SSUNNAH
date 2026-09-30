@@ -80,7 +80,7 @@
   margin-bottom: 1rem;
   padding: 0.65rem 0.75rem;
   border: 1px solid var(--majalis-line, #e8e4dc);
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   background: color-mix(in srgb, var(--majalis-parchment, var(--mj-surface)) 94%, var(--mj-white, var(--mj-white, #ffffff)));
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -153,7 +153,7 @@
 
 .qc-card {
   border: 1px solid var(--majalis-line, #e8e4dc);
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   padding: 0.85rem 0.95rem 0.95rem;
   background: var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff)));
   display: flex;

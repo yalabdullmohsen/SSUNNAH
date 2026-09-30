@@ -1324,7 +1324,7 @@ html.dark .top-section-bar__tab.is-active {
   color: var(--mj-brand-deep, #0d4a39);
   border: 1px solid color-mix(in srgb, var(--mj-brand, #146b52) 28%, transparent);
   opacity: 1;
-  z-index: 200;
+  z-index: var(--z-nav);
   border-radius: 999px;
   box-shadow:
     0 8px 22px -12px rgba(11, 32, 24, 0.42),
@@ -1339,7 +1339,7 @@ html.dark .top-section-bar__tab.is-active {
 .scroll-to-top {
   inset-inline-end: 1rem;
   overflow: hidden;
-  z-index: 200;
+  z-index: var(--z-nav);
   background: var(--color-primary, var(--mj-brand));
   color: var(--text-on-primary, #fff);
   opacity: .92;

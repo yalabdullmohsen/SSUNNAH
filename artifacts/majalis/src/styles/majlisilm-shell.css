@@ -127,7 +127,7 @@
 .edu-courses__card {
   margin-bottom: 0.65rem;
   padding: 0.85rem 1rem;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   background: rgba(121, 85, 72, 0.05);
 }
 
@@ -189,7 +189,7 @@
 .ai-recitation {
   margin-top: 1.5rem;
   padding: 1rem;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   background: rgba(121, 85, 72, 0.06);
 }
 

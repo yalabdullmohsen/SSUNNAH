@@ -53,7 +53,7 @@
 .tj-flag-note {
   margin-top: 12px;
   padding: 10px 12px;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   background: color-mix(in srgb, var(--mj-brand, #1e5f4b) 10%, transparent);
   font-size: 13px;
   line-height: 1.55;
@@ -119,7 +119,7 @@
 
 .tj-examples li {
   padding: 12px;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   border: 1px solid var(--mj-hairline, var(--mj-hairline, #e3e8e6));
   display: flex;
   flex-direction: column;

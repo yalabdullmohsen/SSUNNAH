@@ -74,7 +74,7 @@
 .hdl-role--notice {
   color: var(--hdl-notice);
   background: var(--hdl-notice-bg);
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   padding: 0.75rem 1rem;
   display: flex;
   gap: 0.5rem;
@@ -442,7 +442,7 @@
   height: 2.5rem;
   display: grid;
   place-items: center;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   background: color-mix(in srgb, var(--mj-brand, #1f4d3a) 12%, transparent);
   color: var(--mj-brand-deep, #163828);
 }
@@ -501,19 +501,19 @@
   font-size: var(--hdl-matn-size);
   line-height: var(--hdl-matn-lh);
   padding: 0.85rem 1rem;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
 }
 .an-row.hdl-hadith-row .an-row__expl {
   color: var(--hdl-sharh);
   background: var(--hdl-sharh-bg);
   padding: 0.75rem 0.9rem;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
 }
 .an-row.hdl-hadith-row .an-row__benefit {
   color: var(--hdl-fawaid);
   background: var(--hdl-fawaid-bg);
   padding: 0.75rem 0.9rem;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
 }
 .an-row.hdl-hadith-row .an-row__cta {
   font-size: 0.84rem;
@@ -594,7 +594,7 @@
 }
 .hdl-card__meta-row {
   padding: 0.45rem 0.65rem;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   background: color-mix(in srgb, var(--mj-brand, #1f4d3a) 5%, transparent);
 }
 .hdl-card__meta-label {
@@ -663,14 +663,14 @@
 .hs-card__note {
   color: var(--hdl-notice);
   background: var(--hdl-notice-bg);
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   padding: 0.7rem 0.85rem;
   line-height: 1.65;
 }
 .hs-card__example {
   color: var(--hdl-sharh);
   background: var(--hdl-sharh-bg);
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   padding: 0.7rem 0.85rem;
   line-height: 1.65;
 }

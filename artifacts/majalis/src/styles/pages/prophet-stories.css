@@ -3290,3 +3290,127 @@ html.dark .prophet-fact-card__value,html[data-theme=dark] .prophet-fact-card__va
 html.dark .prophet-detail-toc__btn--active,html[data-theme=dark] .prophet-detail-toc__btn--active{background:color-mix(in srgb,var(--prophets-accent) 18%,transparent);border-color:var(--prophets-accent);color:var(--prophets-accent);box-shadow:inset 0 -2px 0 var(--prophets-accent)}
 @media (min-width:768px){.prophet-facts-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.prophet-detail-toc{flex-wrap:wrap;overflow-x:visible}}
 @media (min-width:1024px){.prophet-detail-lux--reader{display:grid;grid-template-columns:minmax(11rem,14rem) minmax(0,1fr);grid-template-rows:auto auto 1fr;column-gap:1rem}.prophet-detail-lux--reader>.prophet-detail-lux__progress,.prophet-detail-lux--reader>.prophet-reader-header{grid-column:1/-1}.prophet-detail-lux--reader>.prophet-detail-toc,.prophet-detail-lux--reader>.prophet-story-tabs{grid-column:1;grid-row:3;position:sticky;top:5.5rem;flex-direction:column;align-items:stretch;overflow:visible;height:fit-content;border-bottom:0;border-inline-end:1px solid var(--prophets-line);background:transparent;padding-inline:.75rem}.prophet-detail-lux--reader>.prophet-detail-toc .prophet-detail-toc__btn,.prophet-detail-lux--reader>.prophet-story-tabs .prophet-story-tabs__track{width:100%;flex-direction:column;align-items:stretch;overflow:visible}.prophet-detail-lux--reader>.prophet-detail-toc .prophet-detail-toc__btn,.prophet-detail-lux--reader>.prophet-story-tabs .prophet-story-tabs__btn{width:100%;justify-content:flex-start}.prophet-detail-lux--reader>.prophet-detail-lux__hero,.prophet-detail-lux--reader>.prophet-identity-hero,.prophet-detail-lux--reader>.prophet-facts-grid,.prophet-detail-lux--reader>.prophet-quick-facts,.prophet-detail-lux--reader>.prophet-story-lux,.prophet-detail-lux--reader>.prophet-nav-lux{grid-column:2}}
+
+/* WAVE8 — شجرة أنساب الأنبياء: أصناف بدل inline colors */
+.pft-page {
+  min-height: 100svh;
+  background: var(--mj-brand-soft);
+  font-family: var(--font-app);
+}
+.pft-header {
+  background: linear-gradient(135deg, var(--mj-brand-deep), var(--mj-brand));
+  color: var(--mj-on-brand);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.pft-header__back {
+  color: color-mix(in srgb, var(--mj-on-brand) 70%, transparent);
+  text-decoration: none;
+  font-size: var(--ss-type-supporting);
+}
+.pft-header__mid { flex: 1; }
+.pft-header__title {
+  margin: 0;
+  font-size: var(--ss-type-section-title);
+  font-weight: 800;
+  color: var(--mj-on-brand);
+}
+.pft-header__lead {
+  margin: 0;
+  font-size: var(--ss-type-caption);
+  color: color-mix(in srgb, var(--mj-on-brand) 60%, transparent);
+}
+.pft-header__tools { display: flex; gap: 0.4rem; }
+.pft-tool-btn {
+  background: color-mix(in srgb, var(--mj-on-brand) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-on-brand) 25%, transparent);
+  color: var(--mj-on-brand);
+  border-radius: var(--sf-radius-xs);
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.pft-legend {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.6rem 1.25rem;
+  background: var(--mj-surface);
+  border-bottom: 1px solid var(--mj-hairline);
+  font-size: var(--ss-type-caption);
+}
+.pft-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.pft-legend__swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--sf-radius-xs);
+}
+.pft-legend__label { color: var(--mj-muted); }
+.pft-detail {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  left: 1rem;
+  max-width: 420px;
+  margin: 0 auto;
+  background: var(--mj-surface);
+  border-radius: var(--sf-radius-md);
+  border: 2px solid var(--mj-brand);
+  padding: 1rem 1.25rem;
+  z-index: var(--z-sticky);
+}
+.pft-detail__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+.pft-detail__title {
+  margin: 0;
+  color: var(--mj-brand);
+  font-size: var(--ss-type-section-title);
+  font-weight: 800;
+}
+.pft-detail__badge {
+  font-size: var(--ss-type-caption);
+  margin-right: 0.5rem;
+  background: var(--mj-warning-soft);
+  color: var(--mj-warning-deep, var(--mj-warning));
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--sf-radius-xs);
+}
+.pft-detail__close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--ss-type-section-title);
+  color: var(--mj-muted);
+}
+.pft-detail__row {
+  margin: 0.25rem 0;
+  color: var(--mj-muted);
+  font-size: var(--ss-type-supporting);
+}
+.pft-detail__note {
+  margin: 0.25rem 0;
+  color: var(--mj-muted);
+  font-size: var(--ss-type-label);
+}
+.pft-detail__link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  background: var(--mj-brand);
+  color: var(--mj-on-brand);
+  text-decoration: none;
+  padding: 0.4rem 1rem;
+  border-radius: var(--sf-radius-xs);
+  font-size: var(--ss-type-label);
+  font-weight: 700;
+}

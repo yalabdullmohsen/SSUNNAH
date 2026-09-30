@@ -4,21 +4,21 @@
   "note": "Ceilings must not rise. Lower intentionally in later waves; never raise without documented exception.",
   "floors": {
     "officialButtonImportFiles": 176,
-    "sfTokenRefs": 688,
+    "sfTokenRefs": 738,
     "ssTokenRefs": 722
   },
   "ceilings": {
     "cssFiles": 356,
     "important": 4787,
-    "hexInCss": 8979,
+    "hexInCss": 8978,
     "rgbHslInCss": 2129,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
     "boxShadowDecls": 1113,
-    "zIndexRawDecls": 265,
-    "borderRadiusPxDecls": 1303,
-    "inlineColorStyleMatches": 87,
+    "zIndexRawDecls": 258,
+    "borderRadiusPxDecls": 1270,
+    "inlineColorStyleMatches": 48,
     "rawButtonFiles": 192
   },
-  "updatedAt": "2026-09-30T11:18:58.416Z"
+  "updatedAt": "2026-09-30T11:45:41.044Z"
 }

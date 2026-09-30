@@ -44,7 +44,7 @@
   gap: 12px;
   min-height: 48px;
   padding: 12px 14px;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   border: 1px solid var(--mj-hairline, var(--mj-hairline, #e3e8e6));
   background: var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff)));
   color: inherit;

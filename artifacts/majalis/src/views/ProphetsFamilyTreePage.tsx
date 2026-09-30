@@ -5,6 +5,7 @@ import { PROPHETS_LINEAGE, type LineageNode } from "@/lib/prophets-lineage";
 import { ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
 import { truncateAtWord } from "@/lib/utils";
 import { DetailScreen } from "@/components/design-system/screens";
+import "@/styles/pages/prophet-stories.css";
 
 // ── ثوابت التخطيط ──────────────────────────────────────────────────────────
 const NODE_W  = 110;
@@ -221,57 +222,50 @@ export default function ProphetsFamilyTreePage() {
 
   return (
     <DetailScreen compose="mark">
-    <div dir="rtl" style={{ minHeight: "100svh", background: "var(--mj-brand-soft)", fontFamily: "var(--font-app)" }}>
+    <div dir="rtl" className="pft-page">
       {/* Header */}
-      <header style={{
-        background: "linear-gradient(135deg,#0c2318,#1a3d2b)",
-        color: "var(--mj-on-brand)", padding: "1rem 1.25rem",
-        display: "flex", alignItems: "center", gap: "1rem",
-      }}>
-        <Link href="/prophets" style={{ color: "color-mix(in srgb, var(--mj-on-brand) 70%, transparent)", textDecoration: "none", fontSize: "var(--ss-type-supporting)" }}>
+      <header className="pft-header">
+        <Link href="/prophets" className="pft-header__back">
           ← الأنبياء
         </Link>
-        <div style={{ flex: 1 }}>
-          <h1 className="pft-hero__title" style={{ margin: 0, fontSize: "var(--ss-type-section-title)", fontWeight: 800, color: "var(--mj-on-brand)" }}>شجرة أنساب الأنبياء</h1>
-          <p style={{ margin: 0, fontSize: "var(--ss-type-caption)", color: "color-mix(in srgb, var(--mj-on-brand) 60%, transparent)" }}>
+        <div className="pft-header__mid">
+          <h1 className="pft-hero__title pft-header__title">شجرة أنساب الأنبياء</h1>
+          <p className="pft-header__lead">
             ٢٥ نبياً مذكورًا بالاسم في القرآن، من آدم إلى محمد ﷺ — اسحب للتنقل، اضغط على نبي للتفاصيل
           </p>
         </div>
-        {/* أزرار التحكم */}
-        <div style={{ display: "flex", gap: "0.4rem" }}>
+        <div className="pft-header__tools">
           {[
             { icon: <ZoomIn size={16}/>, fn: () => zoom(1),  title: "تكبير" },
             { icon: <ZoomOut size={16}/>, fn: () => zoom(-1), title: "تصغير" },
             { icon: <RotateCcw size={16}/>, fn: reset,         title: "إعادة تعيين" },
           ].map(({ icon, fn, title }) => (
-            <button key={title} type="button" onClick={fn} aria-label={title} style={{
-              background: "color-mix(in srgb, var(--mj-on-brand) 15%, transparent)", border: "1px solid color-mix(in srgb, var(--mj-on-brand) 25%, transparent)",
-              color: "var(--mj-on-brand)", borderRadius: "0.5rem", padding: "0.4rem 0.6rem",
-              cursor: "pointer", display: "flex", alignItems: "center",
-            }}>{icon}</button>
+            <button key={title} type="button" onClick={fn} aria-label={title} className="pft-tool-btn">{icon}</button>
           ))}
         </div>
       </header>
 
-      {/* أسطورة الألوان */}
-      <div style={{
-        display: "flex", gap: "1rem", flexWrap: "wrap",
-        padding: "0.6rem 1.25rem", background: "var(--mj-surface)",
-        borderBottom: "1px solid var(--mj-hairline)", fontSize: "var(--ss-type-caption)",
-      }}>
+      {/* أسطورة الألوان — swatches ديناميكية تبقى عبر CSS variables */}
+      <div className="pft-legend">
         {[
-          { color: EMERALD,       label: "خاتم الأنبياء ﷺ" },
-          { color: "#D97706",     label: "أولو العزم", border: true },
-          { color: "var(--mj-muted)",     label: "حلقة وصل" },
-          { color: "#FFFFFF",     label: "سائر الأنبياء", border2: true },
+          { color: EMERALD, label: "خاتم الأنبياء ﷺ" },
+          { color: "var(--mj-warning)", label: "أولو العزم", border: true },
+          { color: "var(--mj-muted)", label: "حلقة وصل" },
+          { color: "var(--mj-surface)", label: "سائر الأنبياء", border2: true },
         ].map(({ color, label, border, border2 }) => (
-          <div key={label} style={{ display: "flex", alignItems: "center", gap: "0.35rem" }}>
-            <div style={{
-              width: 14, height: 14, borderRadius: 4,
-              background: color,
-              border: border ? "2px solid #D97706" : border2 ? "1.5px solid var(--mj-brand)" : "none",
-            }}/>
-            <span style={{ color: "var(--mj-muted)" }}>{label}</span>
+          <div key={label} className="pft-legend__item">
+            <div
+              className="pft-legend__swatch"
+              style={{
+                background: color,
+                border: border
+                  ? "2px solid var(--mj-warning)"
+                  : border2
+                    ? "1.5px solid var(--mj-brand)"
+                    : "none",
+              }}
+            />
+            <span className="pft-legend__label">{label}</span>
           </div>
         ))}
       </div>
@@ -367,51 +361,31 @@ export default function ProphetsFamilyTreePage() {
 
       {/* بطاقة التفاصيل */}
       {selectedNode && !selectedNode.isAncestor && (
-        <div style={{
-          position: "fixed", bottom: "1rem", right: "1rem", left: "1rem",
-          maxWidth: 420, margin: "0 auto",
-          background: "var(--mj-surface)", borderRadius: "1rem",
-          border: `2px solid ${EMERALD}`,
-          padding: "1rem 1.25rem",
-          boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
-          zIndex: 100,
-        }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "0.5rem" }}>
-            <h2 style={{ margin: 0, color: EMERALD, fontSize: "var(--ss-type-section-title)", fontWeight: 800 }}>
+        <div className="pft-detail">
+          <div className="pft-detail__head">
+            <h2 className="pft-detail__title">
               {selectedNode.name}
               {selectedNode.isUlulAzm && (
-                <span style={{ fontSize: "var(--ss-type-caption)", marginRight: "0.5rem", background: "var(--mj-warning-soft)", color: "var(--mj-warning-deep, var(--mj-warning))", padding: "0.1rem 0.4rem", borderRadius: 4 }}>
-                  أولو العزم
-                </span>
+                <span className="pft-detail__badge">أولو العزم</span>
               )}
             </h2>
-            <button type="button" onClick={() => setSelected(null)} aria-label="إغلاق" style={{ background: "none", border: "none", cursor: "pointer", fontSize: "var(--ss-type-section-title)", color: "var(--mj-muted)" }}>×</button>
+            <button type="button" onClick={() => setSelected(null)} aria-label="إغلاق" className="pft-detail__close">×</button>
           </div>
           {selectedNode.era && (
-            <p style={{ margin: "0.25rem 0", color: "var(--mj-muted)", fontSize: "var(--ss-type-supporting)" }}>
+            <p className="pft-detail__row">
               <strong>الحقبة: </strong>{selectedNode.era}
             </p>
           )}
           {selectedNode.people && (
-            <p style={{ margin: "0.25rem 0", color: "var(--mj-muted)", fontSize: "var(--ss-type-supporting)" }}>
+            <p className="pft-detail__row">
               <strong>القوم أو المكان: </strong>{selectedNode.people}
             </p>
           )}
           {selectedNode.linkNote && (
-            <p style={{ margin: "0.25rem 0", color: "var(--mj-muted)", fontSize: "var(--ss-type-label)", fontStyle: "normal" }}>
-              {selectedNode.linkNote}
-            </p>
+            <p className="pft-detail__note">{selectedNode.linkNote}</p>
           )}
           {selectedNode.slug && selectedNode.id !== "muhammad" && (
-            <Link
-              href={`/prophets/${selectedNode.slug}`}
-              style={{
-                display: "inline-block", marginTop: "0.6rem",
-                background: EMERALD, color: "var(--mj-on-brand)", textDecoration: "none",
-                padding: "0.4rem 1rem", borderRadius: "0.5rem",
-                fontSize: "var(--ss-type-label)", fontWeight: 700,
-              }}
-            >
+            <Link href={`/prophets/${selectedNode.slug}`} className="pft-detail__link">
               تفاصيل {selectedNode.name}
             </Link>
           )}

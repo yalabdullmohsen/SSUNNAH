@@ -68,7 +68,7 @@
   place-items: center;
   width: 2.35rem;
   height: 2.35rem;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   background: color-mix(in srgb, var(--mj-brand, #1e5f4b) 14%, transparent);
   color: var(--mj-brand-deep, #12362a);
 }

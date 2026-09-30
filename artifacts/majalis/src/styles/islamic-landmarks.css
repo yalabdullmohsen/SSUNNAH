@@ -183,7 +183,7 @@ html[data-theme="dark"] .ilm-chip--active {
 
 .ilm-select {
   min-height: 44px;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   border: 1px solid var(--mj-hairline, #d9d3c8);
   background: var(--mj-surface, #fff);
   color: inherit;
@@ -193,7 +193,7 @@ html[data-theme="dark"] .ilm-chip--active {
 
 .ilm-sheet-apply {
   min-height: 46px;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   border: none;
   background: var(--mj-brand, #146b52);
   color: #fff;
@@ -434,7 +434,7 @@ html[data-theme="dark"] .ilm-badge--era {
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   border: 1px solid var(--mj-hairline, #d9d3c8);
   background: var(--mj-surface, #fff);
   color: inherit;
@@ -534,7 +534,7 @@ html[data-theme="dark"] .ilm-badge--era {
   z-index: 500;
   margin: 0;
   padding: 0.65rem 0.85rem;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   background: color-mix(in srgb, var(--mj-surface, #fff) 92%, transparent);
   border: 1px solid var(--mj-hairline, #d9d3c8);
   color: var(--mj-ink, #16241e);
