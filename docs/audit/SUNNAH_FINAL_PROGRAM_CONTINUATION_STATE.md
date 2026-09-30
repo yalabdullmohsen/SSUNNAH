@@ -3,8 +3,8 @@
 | Field | Value |
 |---|---|
 | Captured | 2026-09-30T14:37Z |
-| `origin/main` | `74a38cac4df4808940e6041a8f21e5c7dcc98855` |
-| Production `version.json` | `74a38cac` · `builtAt` `2026-09-30T14:32:07.741Z` |
+| `origin/main` | `ba139bb1ec753f2b6731e1018887e89897575988` |
+| Production `version.json` | `ba139bb1` · `builtAt` `2026-09-30T14:58:51.872Z` |
 | Match | **MATCH** |
 | Decision | Continue from incomplete Phase 0/1 docs + authority seal only — **do not re-run WAVE7–13** |
 
@@ -13,7 +13,7 @@
 | Stale signal | Live truth |
 |---|---|
 | CI subscription failure on `cursor/final-repo-closure-wave12` @ `b3cc8504` (LHCI TBT) | PR **#2390** merged after one Class-C `rerun --failed`; tip advanced past WAVE12 |
-| Status docs mentioning tip `b8fc9dbf` | Superseded; live tip/prod = **`74a38cac`** (#2392) |
+| Status docs mentioning tip `b8fc9dbf` | Superseded; live tip/prod = **`ba139bb1`** (#2392) |
 | Historical inventories (hex≈8988, inline≈87) | Live: hex **8931**, inline **48**, radii **1265**, btnHex **1709** |
 
 Do not rewrite historical wave reports; update current status surfaces only.
@@ -30,7 +30,8 @@ Do not rewrite historical wave reports; update current status surfaces only.
 | WAVE11 Route quality | #2389 | `12fba46c` | **COMPLETE** |
 | WAVE12 Index CSS | #2390 | `e29f2cb0` | **COMPLETE** |
 | WAVE13 Device evidence prep | #2391 | `aa94c759` | **COMPLETE** (execution still DEVICE_REQUIRED) |
-| FINAL boundary docs | #2392 | `74a38cac` | **MERGED+DEPLOYED** · tip sync needed for authority map |
+| FINAL boundary docs | #2392 | (merged) | **COMPLETE** |
+| Authority seal | #2393 | `ba139bb1` | map + gate | **COMPLETE** · MATCH |
 
 ## Open PRs (out of scope)
 

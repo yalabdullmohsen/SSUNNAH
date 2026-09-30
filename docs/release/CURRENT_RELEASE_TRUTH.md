@@ -13,8 +13,8 @@
 | Surface | Value | Evidence |
 |---|---|---|
 | Git root | `git rev-parse --show-toplevel` | command |
-| `origin/main` tip | `74a38cac4df4808940e6041a8f21e5c7dcc98855` | `gh api …/commits/main` |
-| Production `version.json` | `74a38cac` · HTTP 200 · `builtAt` `2026-09-30T14:32:07.741Z` | curl live |
+| `origin/main` tip | `ba139bb1ec753f2b6731e1018887e89897575988` | `gh api …/commits/main` |
+| Production `version.json` | `ba139bb1` · HTTP 200 · `builtAt` `2026-09-30T14:58:51.872Z` | curl live |
 | Match | **MATCH** | capture-build-context |
 | Internal status | **INTERNAL_CLOSURE_COMPLETE** | boundary report |
 | General status | **WEB_RELEASED_NATIVE_HOLD** | boundary report |
