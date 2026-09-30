@@ -31,7 +31,6 @@ import {
   type HomepagePrefs,
   type HomeWidgetId,
 } from "@/lib/homepage-layout";
-import "@/styles/pages/home-legacy.css";
 import "@/styles/components/home-daily-strip.css";
 import "@/styles/components/home-continue-learning.css";
 import "@/styles/components/home-sections-grid.css";

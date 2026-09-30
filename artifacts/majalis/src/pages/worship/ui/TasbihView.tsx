@@ -12,7 +12,6 @@ import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/tasbih.css";
-import "@/styles/pages/misc-page-legacy.css";
 import {
   computeStreakDays,
   computeTasbeehStats,

@@ -6,7 +6,7 @@ import {
   processSheikhImage,
   type SheikhImageVariant,
 } from "@/lib/sheikh-image-process";
-import "@/styles/pages/misc-page-legacy.css";
+import "@/styles/components/optimized-sheikh-image.css";
 
 const LEGACY_SIZE: Record<string, number> = {
   sm: 72,

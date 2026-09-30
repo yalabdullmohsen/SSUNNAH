@@ -341,3 +341,113 @@ html.dark .seerah-page blockquote {
   color: var(--txt-primary, #ecf2ef);
   border-inline-start-color: color-mix(in srgb, #5fbf98 45%, transparent);
 }
+
+/* ==== WAVE2: content-detail chrome from misc-page-legacy ==== */
+.content-detail-header {
+  margin-bottom: 1.5rem;
+}
+
+.content-detail-meta {
+  font-size: var(--ds-text-sm);
+  color: var(--ink-soft, var(--mj-muted));
+  margin-bottom: 0.5rem;
+}
+
+.content-detail-title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--emerald-deep, var(--mj-brand-deep));
+  line-height: 1.35;
+  margin: 0 0 0.75rem;
+}
+
+.content-detail-subtitle {
+  color: var(--ink-soft, var(--mj-muted));
+  line-height: 1.7;
+  margin: 0 0 1rem;
+}
+
+.content-detail-body {
+  line-height: 1.85;
+  margin-bottom: 1.25rem;
+}
+
+.content-detail-body p {
+  margin: 0 0 0.75rem;
+}
+
+.content-detail-heading {
+  font-size: var(--ds-text-md);
+  color: var(--emerald-deep, var(--mj-brand-deep));
+  margin: 1rem 0 0.5rem;
+}
+
+.content-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-space-2);
+  margin-top: 1rem;
+}
+
+.content-detail-actions .share-btns {
+  display: contents;
+}
+
+.content-detail-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  height: 44px;
+  padding: .4rem .875rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--majalis-emerald, var(--mj-brand));
+  background: transparent;
+  color: var(--majalis-emerald, var(--mj-brand));
+  cursor: pointer;
+  font-family: inherit;
+  font-size: .8125rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background .15s, color .15s;
+}
+
+.content-detail-action-btn:hover {
+  background: var(--majalis-emerald, var(--mj-brand));
+  color: var(--mj-white, #ffffff);
+}
+
+.content-detail-evidence ul,
+.content-detail-sources ul {
+  padding-right: 1.25rem;
+  line-height: 1.8;
+}
+
+.content-detail-related {
+  margin-top: 2rem;
+}
+
+.content-detail-related h2,
+.content-detail-evidence h2,
+.content-detail-sources h2 {
+  font-size: var(--ds-text-lg);
+  color: var(--emerald-deep, var(--mj-brand-deep));
+  margin-bottom: 0.75rem;
+}
+
+.content-detail-section {
+  margin-bottom: 1rem;
+}
+
+.content-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--ds-text-sm);
+}
+
+.content-detail-table th,
+.content-detail-table td {
+  border: 1px solid var(--line, #ddd5c8);
+  padding: 0.5rem 0.75rem;
+  text-align: right;
+}

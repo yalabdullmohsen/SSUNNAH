@@ -465,3 +465,104 @@ html.dark .topic-page__crumb [aria-hidden] {
   color: var(--txt-muted, #b5ada0) !important;
   opacity: 0.7;
 }
+
+/* ==== WAVE2: review-list surfaces from misc-page-legacy ==== */
+.fiqh-review-filters {
+  display: flex;
+  gap: var(--ds-space-2);
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.fiqh-review-filters button {
+  border: 1px solid var(--mn-border-default);
+  background: transparent;
+  border-radius: var(--mn-chip-radius);
+  padding: var(--mn-chip-py) var(--mn-chip-px);
+  font-size: var(--mn-chip-font);
+  font-family: inherit;
+  color: var(--mn-text-default);
+  cursor: pointer;
+  transition: background var(--mn-transition), border-color var(--mn-transition), color var(--mn-transition);
+  min-height: var(--mn-item-h);
+}
+
+.fiqh-review-filters button:hover {
+  background: var(--mn-surface-hover);
+  border-color: var(--mn-border-active);
+  color: var(--mn-text-active);
+}
+
+.fiqh-review-filter--active {
+  background: var(--mn-surface-active) !important;
+  border-color: var(--mn-border-active) !important;
+  color: var(--mn-text-active) !important;
+  font-weight: 700;
+}
+
+.fiqh-review-list {
+  display: grid;
+  gap: var(--ds-space-4);
+}
+
+.fiqh-review-card {
+  padding: var(--ds-space-4);
+}
+
+.fiqh-review-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--ds-space-4);
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.fiqh-review-card h2 {
+  margin: 0 0 0.35rem;
+  font-size: var(--ds-text-base);
+}
+
+.fiqh-review-meta {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--ink-soft, var(--mj-muted));
+}
+
+.fiqh-review-tags {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin: 0.75rem 0;
+}
+
+.fiqh-review-tag {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(180, 83, 9, 0.12);
+  color: var(--majalis-emerald);
+}
+
+.fiqh-review-issues {
+  margin: 0.5rem 0 0.75rem;
+  padding-inline-start: 1.1rem;
+  font-size: 0.8125rem;
+  color: var(--ink-soft, var(--mj-muted));
+}
+
+.fiqh-review-issue--error {
+  color: var(--mj-danger);
+}
+
+.fiqh-review-actions {
+  display: flex;
+  gap: var(--ds-space-2);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.fiqh-review-actions button,
+.fiqh-review-actions a {
+  font-size: var(--ds-text-xs);
+  cursor: pointer;
+}

@@ -46,7 +46,6 @@ import { beginAbortScope, abortScope } from "@/lib/route-abort";
 import { regionsForGovernorate } from "@/lib/kuwait-regions";
 import { fromKuwaitLesson } from "@/lib/unified-lesson-card";
 import "@/styles/pages/lessons.css";
-import "@/styles/pages/lessons-legacy.css";
 import "@/styles/pages/lessons-sections-v2.css";
 import "@/components/sections/section-cards.css";
 import { registerForLesson, unregisterFromLesson, getMyRegistrations } from "@/lib/supabase";

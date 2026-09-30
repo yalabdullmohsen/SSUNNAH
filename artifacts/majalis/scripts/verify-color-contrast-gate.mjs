@@ -787,7 +787,6 @@ async function main() {
     "src/styles/pages/tahara.css",
     "src/styles/pages/sawm.css",
     "src/styles/pages/lessons.css",
-    "src/styles/pages/lessons-legacy.css",
     "src/styles/dark-mode-surfaces.css",
   ];
   const hardBg = /(?:^|[;{\s])background(?:-color)?\s*:\s*#(?:fff|ffffff)\b/i;

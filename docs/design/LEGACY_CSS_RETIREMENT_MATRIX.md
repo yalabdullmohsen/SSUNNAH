@@ -130,7 +130,7 @@ PR mapping: PR-6 dark · PR-10/11 legacy retirement · PR-12 mushaf boundary · 
 | 2 | `components/home/HomepageAdBar.tsx` | `header-ad-gate` / `homepage-ad-bar-gate` assert absent from App |
 | 3 | `config/homepage-ad.ts` | Sole consumer was HomepageAdBar (`@deprecated`) |
 
-**Not deleted:** `brand-v4` / `m2030` / `final-release` / `*-legacy.css` / mushaf CSS / `modern-ui-refresh.css` / `design-system.css`.
+**Not deleted (PR-9):** `brand-v4` / `m2030` / `final-release` / mushaf CSS / `modern-ui-refresh.css` / `design-system.css`. Page `*-legacy.css` removed in WAVE2.
 
 ## Wave 2 note (2026-09-29)
 
@@ -141,7 +141,7 @@ Product TSX soft-card **consumers = 0**. `styles/soft-cards.css` remains **KEEP*
 | Item | Status |
 |---|---|
 | `soft-cards.css` | **SAFE_REMOVE executed** (file deleted · main import gone) |
-| `pages/*-legacy.css` (3) | home/lessons/misc still imported — **MIGRATION_CANDIDATE** |
+| `pages/*-legacy.css` (3) | **REMOVED (WAVE2)** — ported to authorities · consumer=0 |
 | `search-legacy.css` | **REMOVED (PR6)** — 0 product imports |
 | `section-hub.css` | **REMOVED (PR6)** — 0 imports · 0 TSX class usage |
 | `brand-v4*` / `m2030/*` / `final-release` | KEEP consumers > 0 |
@@ -159,3 +159,28 @@ Product TSX soft-card **consumers = 0**. `styles/soft-cards.css` remains **KEEP*
 | Page adapters | Detail/List/… = ScreenShell · SectionTemplatePage = TopicPage |
 | UtilityScreen | KEEP = 3 |
 | Report | `docs/design/PR6_PAGE_LEGACY_CLOSURE_REPORT.md` |
+
+---
+
+## WAVE2 note (2026-09-30) — page legacy retirement
+
+| Field | Value |
+|---|---|
+| Tip base | after WAVE1 `2ffa67984` |
+| Status | **SAFE_REMOVE executed** for `home-legacy` · `lessons-legacy` · `misc-page-legacy` |
+| Policy | Port live selectors → authorities · drop dead (sheikh-detail · lesson-card-pro) · no legacy-v2 dump |
+| Gate | `test:legacy-css-retirement` + `wave2-legacy-page-css-retirement-gate` |
+| Debt | cssFiles expected **356** (357−3+2) · ceilings decrease-only |
+| Store | **HOLD** · not FULLY COMPLETE · not STORE GO · NEEDS_PORT remains for brand-v4/m2030/final-release |
+
+### Ports
+
+| From | Authority |
+|---|---|
+| `.optimized-sheikh-image*` | `styles/components/optimized-sheikh-image.css` |
+| `.home-section*` / prayer ranks / daily-meta | `styles/components/home/home-widget-chrome.css` via `Widget.tsx` |
+| lessons-legacy live rules | appended into `styles/pages/lessons.css` |
+| `.content-detail-*` | `content-reading-shell.css` via `ContentDetailLayout` |
+| `.fiqh-review-*` | `topic-page.css` (+ admin section imports) |
+
+Baseline: `docs/audit/WAVE2_LEGACY_PAGE_CSS_BASELINE.md`

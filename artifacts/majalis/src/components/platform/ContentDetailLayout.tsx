@@ -10,6 +10,7 @@ import { dedupeLinksByHref } from "@/lib/link-dedupe";
 import { CompactSources } from "@/components/content/CompactSources";
 import { ReadingSectionCard } from "@/components/content/ReadingSectionCard";
 import { RelatedContentCard } from "@/components/content/RelatedContentCard";
+import "@/styles/components/content-reading-shell.css";
 
 function estimateReadMinutes(text?: string): number | null {
   if (!text || text.length < 200) return null;
