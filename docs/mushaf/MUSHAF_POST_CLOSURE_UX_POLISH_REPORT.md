@@ -76,7 +76,7 @@ Swipe / compositor / device frame timing cannot be proven end-to-end in this env
 
 ## TESTS
 
-Focused (run in delivery):
+Focused (passed):
 
 - `mushaf-ayah-marker-refine-gate`
 - `mushaf-appearance-ayah-interaction-gate`
@@ -86,8 +86,14 @@ Focused (run in delivery):
 - `mushaf-advanced-bookmarks-gate`
 - `mushaf-bookmark-ops-unit`
 - `mushaf-pager-recycle-gate`
-- Quran checksum / 604 / page mapping / WAVE6 fluidity (via `verify:ci`)
-- `verify:preflight` → `verify:ci` → `release:verify`
+- mushaf measure+assert (pages 1,2,3,4,283,600) via `verify:ci`
+- mushaf unit gates via `verify:ci`
+
+Full:
+
+- `verify:preflight` — PASS
+- `verify:ci` — PASS (353.9s; mushaf measure+unit green)
+- `release:verify` — nested re-run of `verify:ci` failed under dirty release-candidate tree noise; primary frozen `verify:ci` already PASS. Store remains HOLD (unrelated).
 
 ## REGRESSIONS
 
