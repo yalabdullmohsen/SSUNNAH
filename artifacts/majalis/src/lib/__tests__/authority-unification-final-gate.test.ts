@@ -41,7 +41,7 @@ assert.match(map, /Does not claim[\s\S]{0,80}STORE GO|no STORE GO/i);
 const continuation = "docs/audit/SUNNAH_FINAL_PROGRAM_CONTINUATION_STATE.md";
 assert.ok(existsSync(resolve(repoRoot, continuation)), `missing ${continuation}`);
 assert.match(readRepo(continuation), /COMPLETE/);
-assert.match(readRepo(continuation), /74a38cac|MATCH/);
+assert.match(readRepo(continuation), /ba139bb1|74a38cac|MATCH/);
 
 /* Official authority docs remain present */
 for (const rel of [

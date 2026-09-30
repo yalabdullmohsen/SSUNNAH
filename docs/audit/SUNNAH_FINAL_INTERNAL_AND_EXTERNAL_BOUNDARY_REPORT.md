@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Date | 2026-09-30 |
-| Tip | `74a38cac` (`origin/main` = production MATCH) |
+| Tip | `ba139bb1` (`origin/main` = production MATCH) |
 | Host | `https://www.ssunnah.com` |
 | Internal status | **INTERNAL_CLOSURE_COMPLETE** |
 | Web visual/interaction | **VISUAL_INTERACTION_COMPLETE_WEB** |
@@ -12,7 +12,7 @@
 
 ## EXECUTIVE VERDICT
 
-The post-WAVE6 internal closure program (WAVE7→WAVE13) is delivered, merged, and deployed. Production matches `main` at `74a38cac` (live). Public smoke routes return HTTP 200. Remaining gaps are honestly classified as DEVICE_REQUIRED, OWNER_ACTION, BLOCKED_*, KEEP_JUSTIFIED, or MUSHAF/PRAYER/ADMIN special — not undeclared FIXABLE_IN_REPOSITORY P0/P1.
+The post-WAVE6 internal closure program (WAVE7→WAVE13) is delivered, merged, and deployed. Production matches `main` at `ba139bb1` (live). Public smoke routes return HTTP 200. Remaining gaps are honestly classified as DEVICE_REQUIRED, OWNER_ACTION, BLOCKED_*, KEEP_JUSTIFIED, or MUSHAF/PRAYER/ADMIN special — not undeclared FIXABLE_IN_REPOSITORY P0/P1.
 
 This report does **not** claim STORE GO, FULLY COMPLETE, ZERO_INTERNAL_DEBT, WCAG CERTIFIED, DEVICE_TESTED, or MUSHAF_SILKY.
 
@@ -21,7 +21,7 @@ This report does **not** claim STORE GO, FULLY COMPLETE, ZERO_INTERNAL_DEBT, WCA
 | Surface | Value | Evidence |
 |---|---|---|
 | `origin/main` | `aa94c75975d87a99c8aa02bbde44ba90a131c079` (pre-FINAL-docs) · advances on merge | `gh api …/commits/main` |
-| Production `version.json` | `74a38cac` · `builtAt` `2026-09-30T14:32:07.741Z` | live curl |
+| Production `version.json` | `ba139bb1` · `builtAt` `2026-09-30T14:58:51.872Z` | live curl |
 | Match | **MATCH** | `scripts/device-evidence/capture-build-context.mjs` |
 | Public smoke | `/` `/search` `/quran-hub` `/mushaf` `/prayer-times` `/lessons` `/hadith` `/fiqh` `/adhkar` `/settings` `/my-learning` `/login` `/register` `/api/healthz` `/version.json` → **200** | curl |
 | `/admin/v3` | HTTP **404** “غير متاح” for anonymous public | intentional edge isolation (ADMIN_ACCESS) |
@@ -54,7 +54,7 @@ Gate: `test:authority-unification-final`. No parallel Design/Token/Card/Button/F
 | 11 | #2389 | `12fba46c` | route quality expansion | yes |
 | 12 | #2390 | `e29f2cb0` | index.css decomposition | yes |
 | 13 | #2391 | `aa94c759` | device evidence runbooks | yes |
-| FINAL | #2392 | `74a38cac` | boundary + status sync | yes |
+| FINAL | #2392 | `ba139bb1` | boundary + status sync | yes |
 
 ## BEFORE VS AFTER
 
