@@ -110,6 +110,8 @@
 | `docs/qa/MUSHAF_CONTROLS_INVENTORY.md` | جرد أزرار المصحف + إصلاح SYSTEM/LIGHT/DARK والأسهم والفاصل |
 
 | `docs/performance/SUNNAH_WORLD_CLASS_BASELINE.md` | خط أساس برنامج World-Class Product Polish (PR-1) |
+| `docs/performance/STARTUP_TYPOGRAPHY_FOUC_LIVE_BASELINE.md` | **Startup Typography FOUC P0** — خط أساس حي + إثبات قفزة `--ui-font-scale` |
+| `docs/performance/STARTUP_TYPOGRAPHY_FOUC_SCOPE_MANIFEST.md` | **Startup Typography FOUC P0** — نطاق + `IMPLEMENTATION_FROZEN` |
 | `docs/performance/STARTUP_ROOT_CAUSE_REPORT.md` | **Startup PR-0** — Timeline + جرد مصادر الجاهزية + أسباب جذرية (بلا إصلاح منتج) |
 | `docs/performance/ZERO_FLICKER_LAYOUT_SHIFT_ROOT_CAUSE_PR0.md` | **Zero Flicker PR-0** — جذر القفزات/الوميض + خط أساس صلاة (بلا إصلاح منتج) |
 | `docs/performance/PRAYER_PAGE_FLASH_FIX.md` | إصلاح وميض صفحة الصلاة — صدفة متزامنة + useLayoutEffect + هيكل صلاة |
