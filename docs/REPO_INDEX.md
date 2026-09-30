@@ -116,8 +116,10 @@
 
 | `docs/performance/SUNNAH_WORLD_CLASS_BASELINE.md` | خط أساس برنامج World-Class Product Polish (PR-1) |
 | `docs/performance/STARTUP_TYPOGRAPHY_FOUC_LIVE_BASELINE.md` | **Startup Typography FOUC P0/P1** — خط أساس + إضافة إصلاح سلطة `html` font-size |
+| `docs/performance/SUNNAH_FINAL_PROGRAM_PHASE0_LIVE_TRUTH.md` | **FINAL PROGRAM P0** — حالة حية للاستئناف |
 | `docs/performance/STARTUP_TYPOGRAPHY_FOUC_SCOPE_MANIFEST.md` | **Startup Typography FOUC P0** — نطاق + `IMPLEMENTATION_FROZEN` |
 | `docs/performance/STARTUP_TYPOGRAPHY_FOUC_PHASE1_SCOPE.md` | **Startup Typography FOUC P1** — توحيد سلطة مقياس الخط |
+| `docs/performance/STARTUP_TYPOGRAPHY_FOUC_PHASE2_SCOPE.md` | **Startup Typography FOUC P2** — size-adjust 97% + gate |
 | `docs/performance/STARTUP_ROOT_CAUSE_REPORT.md` | **Startup PR-0** — Timeline + جرد مصادر الجاهزية + أسباب جذرية (بلا إصلاح منتج) |
 | `docs/performance/ZERO_FLICKER_LAYOUT_SHIFT_ROOT_CAUSE_PR0.md` | **Zero Flicker PR-0** — جذر القفزات/الوميض + خط أساس صلاة (بلا إصلاح منتج) |
 | `docs/performance/PRAYER_PAGE_FLASH_FIX.md` | إصلاح وميض صفحة الصلاة — صدفة متزامنة + useLayoutEffect + هيكل صلاة |

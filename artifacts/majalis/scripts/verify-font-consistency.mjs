@@ -110,9 +110,11 @@ function isAllowed(rawValue) {
   return false;
 }
 
-// ملفات مستثناة كليًا من الفحص (سكربتات بناء توليدية تحتاج مراجعة يدوية منفصلة)
+// ملفات مستثناة كليًا من الفحص (سكربتات بناء/قياس توليدية — ليست سطح منتج)
 const FILE_EXCLUDES = [
   "scripts/verify-font-consistency.mjs",
+  // قياس مقاييس MajlisAmiriFallback vs Amiri (Startup FOUC P2) — يستدعي FontFace محليًا فقط
+  "scripts/measure-ui-fallback-metrics.mjs",
 ];
 
 function isTestPath(rel) {

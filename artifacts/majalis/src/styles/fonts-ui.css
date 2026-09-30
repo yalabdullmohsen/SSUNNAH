@@ -101,7 +101,8 @@
 @font-face {
   font-family: "MajlisFallback";
   src: local("Geeza Pro"), local("Traditional Arabic");
-  size-adjust: 105%;
+  /* Calibrated vs Amiri 400 (Playwright width Δ) — reports/ui-fallback-metrics.json */
+  size-adjust: 97%;
   ascent-override: 95%;
   descent-override: 25%;
   line-gap-override: 0%;
@@ -109,7 +110,7 @@
 @font-face {
   font-family: "MajlisAmiriFallback";
   src: local("Noto Naskh Arabic"), local("Geeza Pro"), local("Traditional Arabic");
-  size-adjust: 105%;
+  size-adjust: 97%;
   ascent-override: 95%;
   descent-override: 25%;
   line-gap-override: 0%;
