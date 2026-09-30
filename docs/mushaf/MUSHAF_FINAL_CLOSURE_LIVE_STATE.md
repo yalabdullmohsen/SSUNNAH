@@ -3,8 +3,8 @@
 | Field | Value |
 |---|---|
 | Captured | 2026-09-30T15:20Z |
-| `origin/main` | `ada1f8af681de390283891da2727708276d0f5f6` |
-| Production `version.json` | `ada1f8af` · MATCH |
+| `origin/main` | `209f7bfc508dbbf4283fa2c8dd98d5675eb63665` |
+| Production `version.json` | `209f7bfc` · MATCH |
 | WAVE6 | #2383 / seal #2384 · **COMPLETE** · DEVICE_HOLD |
 | WAVE10 controls | #2388 · **COMPLETE** |
 | Open mushaf PRs | none (unrelated: #2299 native widgets, #1791 mobile offline) |
@@ -34,7 +34,18 @@
 | Stale | Live |
 |---|---|
 | WAVE6 gate fail on report mentioning `MUSHAF_SILKY` as never | Class A gate false-positive · fixed in FINAL-1 without rewriting history claims |
-| Docs tip `74a38cac` | superseded by `ada1f8af` MATCH |
+| Docs tip `74a38cac` | superseded by `209f7bfc` MATCH |
+
+## Delivery after discovery tip
+
+| PR | Wave |
+|---|---|
+| #2395 | FINAL-1 |
+| #2396 | FINAL-2 |
+| #2397 | FINAL-3 |
+| #2398 | FINAL-4 |
+| #2399 | FINAL-5 |
+| #2400 | FINAL-6 |
 
 ## Next PR after this tip
 

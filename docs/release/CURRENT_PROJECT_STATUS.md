@@ -13,7 +13,7 @@
 | Field | Value |
 |---|---|
 | `origin/main` tip | `ba139bb1` — FINAL boundary `#2392` · authority seal follow-up |
-| Production `version.json` | **MATCH** `ba139bb1` · HTTP 200 · `builtAt` `2026-09-30T14:17:06.261Z` |
+| Production `version.json` | **MATCH** `209f7bfc` · HTTP 200 · `builtAt` `2026-09-30T14:17:06.261Z` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
 | Internal | **`INTERNAL_CLOSURE_COMPLETE`** |

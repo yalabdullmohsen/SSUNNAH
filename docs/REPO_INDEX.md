@@ -120,6 +120,8 @@
 | `docs/mushaf/WAVE6_MUSHAF_FLUIDITY_BASELINE.md` | **WAVE6** — خط أساس سلاسة المصحف / تقليب الصفحات |
 | `docs/mushaf/WAVE6_SCOPE_MANIFEST.md` | **WAVE6** — نطاق وتجميد التنفيذ |
 | `docs/mushaf/WAVE6_REAL_DEVICE_TEST_MATRIX.md` | **WAVE6** — مصفوفة أجهزة (DEVICE_REQUIRED) |
+| `docs/mushaf/SUNNAH_MUSHAF_FINAL_COMPLETE_CLOSURE_REPORT.md` | إغلاق المصحف النهائي · DEVICE_HOLD |
+| `docs/mushaf/SUNNAH_MUSHAF_COMPLETE_EXPERIENCE_ENHANCEMENT_REPORT.md` | تحسين تجربة المصحف · DEVICE_HOLD |
 | `docs/mushaf/MUSHAF_FINAL_CLOSURE_LIVE_STATE.md` | حالة إغلاق المصحف الحية |
 | `docs/mushaf/MUSHAF_PROTECTED_ASSET_MANIFEST.md` | أصول القرآن المحمية · BLOCKED_QURAN_INTEGRITY |
 | `docs/mushaf/MUSHAF_CONTROL_SEMANTIC_MATRIX.md` | مصفوفة دلالات أدوات المصحف |
