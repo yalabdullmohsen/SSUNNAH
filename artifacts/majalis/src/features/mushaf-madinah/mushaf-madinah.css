@@ -3372,7 +3372,10 @@ html.dark .mm-goto__actions button[data-primary="1"] {
   border: 1px solid color-mix(in srgb, var(--mm-gold) 45%, #ccc);
   border-radius: 0.65rem;
   padding: 0.75rem 0.85rem;
-  font: inherit;
+  /* 16px يمنع تكبير iOS عند التركيز — لا يمس نص المصحف */
+  font-family: inherit;
+  font-size: 16px;
+  line-height: inherit;
   font-size: 1.05rem;
   background: color-mix(in srgb, var(--mm-paper) 92%, #fff);
   color: var(--mm-ink);
@@ -3519,7 +3522,9 @@ html.dark .mm-goto__actions button[data-primary="1"] {
   border: 1px solid color-mix(in srgb, var(--mm-gold) 45%, #ccc);
   border-radius: 0.5rem;
   padding: 0.55rem 0.65rem;
-  font: inherit;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: inherit;
   background: color-mix(in srgb, var(--mm-paper) 92%, #fff);
   color: var(--mm-ink);
 }
