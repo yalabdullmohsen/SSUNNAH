@@ -38,6 +38,8 @@ import {
 } from "@/lib/category-tree";
 import "@/styles/pages/admin-categories.css";
 
+import { Button } from "@/components/ui/button";
+import { useAdminConfirm } from "@/components/admin/AdminConfirmDialog";
 type StatusTab = "all" | CategoryStatus | "needs_fix";
 
 function slugify(text: string): string {
@@ -73,6 +75,7 @@ function CategoryTreeItem({
 }) {
   const { showSuccess, showError } = useAdminShell();
   const { user } = useAuth();
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
   const [expanded, setExpanded] = useState(expandAll || depth < 1);
   const [open, setOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -103,7 +106,17 @@ function CategoryTreeItem({
 
   const changeStatus = async (next: CategoryStatus, reason?: string) => {
     const sensitive = next === "published" || next === "archived" || next === "rejected";
-    if (sensitive && !confirm(`تأكيد تغيير حالة «${node.name}» إلى «${CATEGORY_STATUS_META[next].label}»؟`)) return;
+    if (
+      sensitive &&
+      !(await confirm({
+        title: "تأكيد تغيير الحالة",
+        body: `تأكيد تغيير حالة «${node.name}» إلى «${CATEGORY_STATUS_META[next].label}»؟`,
+        danger: next === "archived" || next === "rejected",
+        confirmLabel: "تأكيد",
+      }))
+    ) {
+      return;
+    }
     const { error } = await adminChangeCategoryStatus({
       category: node, next, reason: reason ?? null, actorId: user?.id ?? null, cascadeAncestors: next === "published",
     });
@@ -114,7 +127,16 @@ function CategoryTreeItem({
   };
 
   const del = async () => {
-    if (!confirm(`حذف تصنيف «${node.name}» وكل تصنيفاته الفرعية؟`)) return;
+    if (
+      !(await confirm({
+        title: "حذف التصنيف",
+        body: `حذف تصنيف «${node.name}» وكل تصنيفاته الفرعية؟ لا يمكن التراجع.`,
+        danger: true,
+        confirmLabel: "حذف",
+      }))
+    ) {
+      return;
+    }
     const { error } = await adminDeleteCategory(node.id);
     if (error) return showError(error.message);
     onReload();
@@ -138,9 +160,9 @@ function CategoryTreeItem({
           <input type="checkbox" checked={selected} onChange={() => onToggleSelect(node.id)} aria-label={`تحديد ${node.name}`} />
         </label>
         {node.children.length > 0 ? (
-          <button type="button" className="adm-btn-sm cat-node__expand" onClick={() => setExpanded((v) => !v)} aria-expanded={expanded}>
+          <Button type="button" className="adm-btn-sm cat-node__expand" onClick={() => setExpanded((v) => !v)} aria-expanded={expanded}>
             {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-          </button>
+          </Button>
         ) : <span className="cat-node__expand-spacer" aria-hidden="true" />}
 
         <div className="cat-node__main">
@@ -156,32 +178,32 @@ function CategoryTreeItem({
         </div>
 
         <div className="cat-node__actions-desktop adm-item-actions">
-          <button type="button" className="adm-btn-sm" disabled={index === 0} onClick={() => onMove(-1)}>↑</button>
-          <button type="button" className="adm-btn-sm" disabled={index === total - 1} onClick={() => onMove(1)}>↓</button>
-          <button type="button" className="adm-btn-sm" onClick={addChild}><Plus size={13} /> فرعي</button>
-          <button type="button" className="adm-btn-sm" onClick={() => { setForm(node); setOpen(true); }}>تعديل</button>
-          {st !== "published" && <button type="button" className="adm-btn-sm" onClick={() => changeStatus("published")}><CheckCircle2 size={13} /> نشر</button>}
-          {st === "published" && <button type="button" className="adm-btn-sm" onClick={() => changeStatus("hidden")}><EyeOff size={13} /> إخفاء</button>}
-          <button type="button" className="adm-btn-del" onClick={del}><Trash2 size={13} /></button>
+          <Button type="button" className="adm-btn-sm" disabled={index === 0} onClick={() => onMove(-1)}>↑</Button>
+          <Button type="button" className="adm-btn-sm" disabled={index === total - 1} onClick={() => onMove(1)}>↓</Button>
+          <Button type="button" className="adm-btn-sm" onClick={addChild}><Plus size={13} /> فرعي</Button>
+          <Button type="button" className="adm-btn-sm" onClick={() => { setForm(node); setOpen(true); }}>تعديل</Button>
+          {st !== "published" && <Button type="button" className="adm-btn-sm" onClick={() => changeStatus("published")}><CheckCircle2 size={13} /> نشر</Button>}
+          {st === "published" && <Button type="button" className="adm-btn-sm" onClick={() => changeStatus("hidden")}><EyeOff size={13} /> إخفاء</Button>}
+          <Button type="button" className="adm-btn-del" onClick={del}><Trash2 size={13} /></Button>
         </div>
 
         <div className="cat-node__actions-mobile">
-          <button type="button" className="adm-btn-sm" aria-haspopup="menu" aria-expanded={menuOpen} onClick={() => setMenuOpen((v) => !v)}>
+          <Button type="button" className="adm-btn-sm" aria-haspopup="menu" aria-expanded={menuOpen} onClick={() => setMenuOpen((v) => !v)}>
             <MoreVertical size={16} />
-          </button>
+          </Button>
           {menuOpen && (
             <div className="cat-node__menu" role="menu">
-              <button type="button" role="menuitem" onClick={() => { setForm(node); setOpen(true); setMenuOpen(false); }}>تعديل</button>
-              <button type="button" role="menuitem" onClick={addChild}>إضافة فرعي</button>
-              <button type="button" role="menuitem" onClick={() => changeStatus("pending_review")}><Send size={13} /> إرسال للمراجعة</button>
-              <button type="button" role="menuitem" onClick={() => changeStatus("published")}><CheckCircle2 size={13} /> اعتماد ونشر</button>
-              <button type="button" role="menuitem" onClick={() => changeStatus("draft")}><RotateCcw size={13} /> إرجاع لمسودة</button>
-              <button type="button" role="menuitem" onClick={() => changeStatus(st === "hidden" ? "draft" : "hidden")}>
+              <Button type="button" role="menuitem" onClick={() => { setForm(node); setOpen(true); setMenuOpen(false); }}>تعديل</Button>
+              <Button type="button" role="menuitem" onClick={addChild}>إضافة فرعي</Button>
+              <Button type="button" role="menuitem" onClick={() => changeStatus("pending_review")}><Send size={13} /> إرسال للمراجعة</Button>
+              <Button type="button" role="menuitem" onClick={() => changeStatus("published")}><CheckCircle2 size={13} /> اعتماد ونشر</Button>
+              <Button type="button" role="menuitem" onClick={() => changeStatus("draft")}><RotateCcw size={13} /> إرجاع لمسودة</Button>
+              <Button type="button" role="menuitem" onClick={() => changeStatus(st === "hidden" ? "draft" : "hidden")}>
                 {st === "hidden" ? "إلغاء الإخفاء" : "إخفاء"}
-              </button>
-              <button type="button" role="menuitem" onClick={() => changeStatus("archived")}><Archive size={13} /> أرشفة</button>
-              <button type="button" role="menuitem" onClick={() => { setRejectOpen(true); setMenuOpen(false); }}>رفض…</button>
-              <button type="button" role="menuitem" className="is-danger" onClick={del}>حذف</button>
+              </Button>
+              <Button type="button" role="menuitem" onClick={() => changeStatus("archived")}><Archive size={13} /> أرشفة</Button>
+              <Button type="button" role="menuitem" onClick={() => { setRejectOpen(true); setMenuOpen(false); }}>رفض…</Button>
+              <Button type="button" role="menuitem" className="is-danger" onClick={del}>حذف</Button>
             </div>
           )}
         </div>
@@ -241,6 +263,7 @@ function CategoryTreeItem({
           <textarea className="adm-textarea" rows={3} value={rejectReason} onChange={(e) => setRejectReason(e.target.value)} />
         </Field>
       </AdminModal>
+      {confirmDialog}
     </div>
   );
 }
@@ -248,6 +271,7 @@ function CategoryTreeItem({
 export function CategoriesSection() {
   const { showError, showSuccess } = useAdminShell();
   const { user } = useAuth();
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
   const [flat, setFlat] = useState<AdminCategory[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -332,7 +356,15 @@ export function CategoriesSection() {
 
   const bulkPublish = async () => {
     if (selectedCats.length === 0) return showError("حدّد عناصر أولًا");
-    if (!confirm(`اعتماد ونشر ${selectedCats.length} عنصرًا محددًا؟ لن تُنشر العناصر الناقصة.`)) return;
+    if (
+      !(await confirm({
+        title: "اعتماد ونشر جماعي",
+        body: `اعتماد ونشر ${selectedCats.length} عنصرًا محددًا؟ لن تُنشر العناصر الناقصة.`,
+        confirmLabel: "نشر",
+      }))
+    ) {
+      return;
+    }
     const result = await adminBulkPublishCategories(selectedCats, user?.id ?? null);
     showSuccess(`نُشر ${result.published} من ${result.attempted}. تخطّي ${result.skipped.length}.`);
     if (result.skipped.length) {
@@ -355,7 +387,15 @@ export function CategoriesSection() {
 
   const fixIssue = async (issue: StructuralIssue<AdminCategory>) => {
     if (issue.kind === "missing_parent" || issue.kind === "orphan") {
-      if (!confirm("جعل العنصر جذرًا (فصل الأب المفقود)؟")) return;
+      if (
+        !(await confirm({
+          title: "فصل الأب المفقود",
+          body: "جعل العنصر جذرًا (فصل الأب المفقود)؟",
+          confirmLabel: "متابعة",
+        }))
+      ) {
+        return;
+      }
       const { error } = await adminDetachOrphanParent(issue.category);
       if (error) return showError(error.message);
       showSuccess("تم فصل الأب المفقود");
@@ -389,7 +429,7 @@ export function CategoriesSection() {
         searchPlaceholder="ابحث بالاسم أو slug أو المعرّف أو الحالة أو اسم الأب…"
         actions={
           <>
-            <button
+            <Button
               type="button"
               className="adm-btn-add"
               onClick={async () => {
@@ -403,7 +443,7 @@ export function CategoriesSection() {
               }}
             >
               <Plus size={14} /> باب رئيسي
-            </button>
+            </Button>
           </>
         }
       />
@@ -427,17 +467,17 @@ export function CategoriesSection() {
           />
           إظهار جميع الحالات
         </label>
-        <button type="button" className="adm-btn-sm" onClick={() => setExpandAll((v) => !v)}>
+        <Button type="button" className="adm-btn-sm" onClick={() => setExpandAll((v) => !v)}>
           <FolderTree size={14} /> {expandAll ? "إغلاق الكل" : "فتح الكل"}
-        </button>
-        <button type="button" className="adm-btn-sm" disabled={selectedIds.size === 0} onClick={bulkPublish}>
+        </Button>
+        <Button type="button" className="adm-btn-sm" disabled={selectedIds.size === 0} onClick={bulkPublish}>
           <CheckCircle2 size={14} /> اعتماد ونشر جماعي ({selectedIds.size})
-        </button>
+        </Button>
       </div>
 
       <div className="cat-admin__tabs" role="tablist" aria-label="تصفية حسب الحالة">
         {tabs.map((t) => (
-          <button
+          <Button
             key={t.key}
             type="button"
             role="tab"
@@ -446,7 +486,7 @@ export function CategoriesSection() {
             onClick={() => { setTab(t.key); setPageSize(80); }}
           >
             {t.label} <span className="cat-admin__tab-count">{t.count}</span>
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -465,7 +505,7 @@ export function CategoriesSection() {
                     <p>{issue.message}</p>
                     <p className="cat-admin__hint">مقترح: {issue.suggestedAction}</p>
                   </div>
-                  <button type="button" className="adm-btn-sm" onClick={() => fixIssue(issue)}>إصلاح</button>
+                  <Button type="button" className="adm-btn-sm" onClick={() => fixIssue(issue)}>إصلاح</Button>
                 </li>
               ))}
             </ul>
@@ -502,13 +542,14 @@ export function CategoriesSection() {
           <div className="cat-admin__pager">
             <span>المعروض: {Math.min(pageSize, visibleIds.length)} / الإجمالي المطابق: {visibleIds.length} (من أصل {counts.total} في قاعدة البيانات)</span>
             {pageSize < visibleIds.length && (
-              <button type="button" className="adm-btn-sm" onClick={() => setPageSize((n) => n + 80)}>
+              <Button type="button" className="adm-btn-sm" onClick={() => setPageSize((n) => n + 80)}>
                 تحميل المزيد
-              </button>
+              </Button>
             )}
           </div>
         </>
       )}
+      {confirmDialog}
     </div>
   );
 }

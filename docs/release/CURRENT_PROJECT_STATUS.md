@@ -1,10 +1,11 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-09-30 (post-WAVE7 · WAVE8 in delivery)  
+**Updated:** 2026-09-30 (post-WAVE8 · WAVE9 in delivery)  
 **Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
 **Post-WAVE6 baseline:** `docs/audit/SUNNAH_POST_WAVE6_FINAL_BASELINE.md`  
 **WAVE7 report:** `docs/design/WAVE7_IDENTITY_CASCADE_ABSORPTION_REPORT.md`  
 **WAVE8 report:** `docs/design/WAVE8_CARD_SURFACE_VALUE_ABSORPTION_REPORT.md`  
+**WAVE9 report:** `docs/admin/WAVE9_ADMIN_INTERACTION_CLOSURE_REPORT.md`  
 **Visual+Interaction report:** `docs/design/SUNNAH_VISUAL_INTERACTION_FINAL_REPORT.md`  
 **Final audit:** `docs/audit/SUNNAH_FINAL_COMPLETION_AUDIT.md`  
 **Blockers:** `docs/release/PHASE_7_BLOCKER_REGISTER.md`
@@ -13,7 +14,7 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip (WAVE7 base) | `ae78fe56` — identity cascade absorption `#2385` |
+| `origin/main` tip (WAVE8 base) | `77ae6759` — card surface absorption `#2386` |
 | Production `version.json` | match main after each wave deploy · HTTP 200 |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** · internal program WAVE7→13 |
