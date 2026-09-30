@@ -1,10 +1,10 @@
 # CURRENT RELEASE TRUTH — سُنّة
 
-**Generated:** 2026-09-26  
-**Program:** SUNNAH FULL PROJECT REMEDIATION (post-audit)  
-**Wave:** post–Wave 8 tip sync · cards Emerald Dark on main  
-**Authority:** Measured from `origin/main` + live production — not from stale freeze pins alone.  
-**Canonical status surface:** `docs/release/CURRENT_PROJECT_STATUS.md`
+**Generated:** 2026-09-30  
+**Program:** Post-WAVE6 final internal closure (WAVE7→13)  
+**Authority:** Measured from `origin/main` + live production  
+**Canonical status surface:** `docs/release/CURRENT_PROJECT_STATUS.md`  
+**Boundary report:** `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md`
 
 ---
 
@@ -12,72 +12,28 @@
 
 | Surface | Value | Evidence |
 |---|---|---|
-| Git root | resolve via `git rev-parse --show-toplevel` | command |
-| `origin/main` tip | `65b59d534727bd33c5095febc93acae559dfc1cb` | `git rev-parse origin/main` |
-| Production `version.json` | `65b59d53` · HTTP 200 · `builtAt` `2026-09-26T16:31:50.195Z` | curl live |
-| Full project audit | `docs/audit/SUNNAH_FULL_PROJECT_AUDIT.md` · status `PARTIAL` | committed baseline |
-| Library route intent | `docs/content-quality/LIBRARY_ROUTE_INTENT.md` | Wave 8 PRODUCT_INTENT |
-| Store RC pin | **not set by owner** — web tip ≠ automatic Store RC | HOLD |
-| Historical tip (STALE) | `5e99cd7c` (audit/Wave1) · `168e2155f` (Wave 7 base) | superseded |
+| Git root | `git rev-parse --show-toplevel` | command |
+| `origin/main` tip | `aa94c75975d87a99c8aa02bbde44ba90a131c079` | `gh api …/commits/main` |
+| Production `version.json` | `aa94c759` · HTTP 200 · `builtAt` `2026-09-30T14:17:06.261Z` | curl live |
+| Match | **MATCH** | capture-build-context |
+| Internal status | **INTERNAL_CLOSURE_COMPLETE** | boundary report |
+| General status | **WEB_RELEASED_NATIVE_HOLD** | boundary report |
+| Store RC pin | **not set by owner** | HOLD |
 
-**Smoke:** Store remains **HOLD**. Deep-link series slug preserve gated in this wave.
+**Smoke (public):** HTTP 200 on primary routes. `/admin*` anonymous → intentional 404.
 
 ---
 
-## Classification matrix (2026-09-21 · post-audit recount)
+## Status vocabulary (allowed)
 
-### ALREADY_FIXED (evidence on main)
-
-| Item | Evidence |
+| Status | Meaning |
 |---|---|
-| Stabilization PR-1…PR-7 | Merged #2181–#2187 |
-| Dual splash / tagline «رفيقك في العلم والعمل» | #2188 |
-| CC0 field / field-full adhan | #2189 |
-| Prior remediation truth sync | #2190 |
-| Store/license asset guards | #2191 |
-| Admin tools isolated from public chrome | #2182 |
-| Full Remediation Waves 1–7 | #2192–#2198 |
-
-### STALE_REPORT (corrected in earlier waves)
-
-| Report | Stale claim | Actual |
-|---|---|---|
-| Prior `CURRENT_RELEASE_TRUTH` / Stabilization / Store readiness pins | tip `3ba020f2` | tip + prod advanced past audit SHA |
-| `AGENTS.md` hard-coded root | `/Users/alabdullmohsen/majalis-correct/` | use `git rev-parse --show-toplevel` |
-| Audit snapshot numbers | freeze at audit SHA | re-verify each remediation wave |
-
-### CONFIRMED_OPEN → Full Remediation waves (14)
-
-| Item | Severity | Target wave |
-|---|---|---|
-| Deep links `/learn/series/:slug` (+ `/library` intent) | P0/P1 | **Wave 8 (this PR)** |
-| Mushaf UI 34 no-op scripts + device prep | P0/P1 | Wave 9 |
-| Prayer / adhan / audio reliability | P1 | Wave 10 |
-| Entry JS margin · fiqh-books soft | P1 | Wave 11 |
-| Responsive / a11y / visual sweep | P1/P2 | Wave 12 |
-| Legacy CSS SAFE_REMOVE · close #1791 | P2 | Wave 13 |
-| Store/production closure docs | P1 | Wave 14 |
-
-### OWNER_ONLY
-
-See `docs/release/OWNER_ACTIONS_CURRENT.md`.
-
-### DEVICE_REQUIRED
-
-- iOS/Android prayer notification delivery matrix  
-- Verified adhan/notification sound on physical device  
-- Mushaf geometry/gesture/FPS on SE / Pro Max / iPad (+ Split View)  
-
-### BLOCKED_LICENSE / BLOCKED_SOURCE
-
-Unchanged policy: QPC · Hisn · everyayah/mp3quran offline · madinah uncertain · qatami rejected · library `source_missing` (public hidden Wave 3) · sects unpublished.
-
----
+| INTERNAL_CLOSURE_COMPLETE | FIXABLE_IN_REPOSITORY P0/P1 for this program closed or classified |
+| VISUAL_INTERACTION_COMPLETE_WEB | Web visual/interaction authorities applied; device gaps remain |
+| WEB_RELEASED_NATIVE_HOLD | Web released; native/store hold |
+| DEVICE_REQUIRED | Needs real-device evidence (WAVE13 runbook) |
+| OWNER_ACTION / BLOCKED_* | Outside pure repo fix |
 
 ## Explicit non-claims
 
-- Store readiness is still **HOLD**.  
-- `SUNNAH_STABILIZATION_COMPLETE` is **not** declared.  
-- `SUNNAH_FULL_REMEDIATION_COMPLETE` is **not** declared.  
-- `SUNNAH_FULL_AUDIT_COMPLETE` is **not** declared (audit = `PARTIAL`).  
-- Green CI ≠ scholarly verification ≠ device verification ≠ license clearance.
+`STORE GO` · `FULLY COMPLETE` · `ZERO_INTERNAL_DEBT` · `WCAG CERTIFIED` · `DEVICE_TESTED` · `MUSHAF_SILKY`

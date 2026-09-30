@@ -1,31 +1,35 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-09-30 (post-WAVE8 · WAVE9 in delivery)  
+**Updated:** 2026-09-30 (post-WAVE13 · FINAL boundary)  
 **Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
+**Final boundary:** `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md`  
 **Post-WAVE6 baseline:** `docs/audit/SUNNAH_POST_WAVE6_FINAL_BASELINE.md`  
-**WAVE7 report:** `docs/design/WAVE7_IDENTITY_CASCADE_ABSORPTION_REPORT.md`  
-**WAVE8 report:** `docs/design/WAVE8_CARD_SURFACE_VALUE_ABSORPTION_REPORT.md`  
-**WAVE9 report:** `docs/admin/WAVE9_ADMIN_INTERACTION_CLOSURE_REPORT.md`  
-**Visual+Interaction report:** `docs/design/SUNNAH_VISUAL_INTERACTION_FINAL_REPORT.md`  
-**Final audit:** `docs/audit/SUNNAH_FINAL_COMPLETION_AUDIT.md`  
+**Device runbook:** `docs/audit/WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md`  
 **Blockers:** `docs/release/PHASE_7_BLOCKER_REGISTER.md`
 
 ## Repository tips (measured)
 
 | Field | Value |
 |---|---|
-| `origin/main` tip (WAVE8 base) | `77ae6759` — card surface absorption `#2386` |
-| Production `version.json` | match main after each wave deploy · HTTP 200 |
+| `origin/main` tip | `aa94c759` — WAVE13 device evidence `#2391` (FINAL docs PR sync follows) |
+| Production `version.json` | **MATCH** `aa94c759` · HTTP 200 · `builtAt` `2026-09-30T14:17:06.261Z` |
 | About surface | `/about` — حول التطبيق |
-| Decision | **`WEB_RELEASED_NATIVE_HOLD`** · internal program WAVE7→13 |
-| Explicit non-claims | no `STORE GO` · no `INTERNAL_CLOSURE_COMPLETE` until WAVE13+final audit |
+| Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
+| Internal | **`INTERNAL_CLOSURE_COMPLETE`** |
+| Web visual/interaction | **`VISUAL_INTERACTION_COMPLETE_WEB`** |
+| Explicit non-claims | no `STORE GO` · no `DEVICE_TESTED` · no `MUSHAF_SILKY` · no `WCAG CERTIFIED` · no `FULLY COMPLETE` |
 
-## Visual + Interaction PR train
+## Closure program WAVE7→13 (merged + deployed)
 
-| PR | Role | On main? |
+| Wave | PR | SHA |
 |---|---|---|
-| #2336–#2345 | Visual + Interaction PR-1…PR-8 + account-deletion | **yes** |
-| #2346 | Legacy CSS + Mushaf boundary + report | **yes** |
+| 7 Identity | #2385 | `ae78fe56` |
+| 8 Cards | #2386 | `77ae6759` |
+| 9 Admin | #2387 | `7304cbeb` |
+| 10 Mushaf controls | #2388 | `2aa5dc8a` |
+| 11 Route quality | #2389 | `12fba46c` |
+| 12 Index CSS | #2390 | `e29f2cb0` |
+| 13 Device evidence prep | #2391 | `aa94c759` |
 
 ## Store readiness
 
@@ -33,8 +37,4 @@
 
 ## Remaining blocker classes
 
-OWNER_ACTION · DEVICE_REQUIRED · BLOCKED_LICENSE · BLOCKED_SOURCE · BLOCKED_CREDENTIAL · Mushaf Madinah CSS bridge · Screenshot matrix NOT_RUN
-
-## Explicit non-claims
-
-`SUNNAH_FULL_REMEDIATION_COMPLETE` · `STORE GO` · `100% READY` · `FULLY COMPLETE` — **not** declared.
+DEVICE_REQUIRED · OWNER_ACTION · BLOCKED_LICENSE · BLOCKED_SOURCE · BLOCKED_CREDENTIAL · KEEP_JUSTIFIED · MUSHAF_SPECIAL · PRAYER_SPECIAL · ADMIN_ONLY

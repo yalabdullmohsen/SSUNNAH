@@ -1,7 +1,8 @@
 # OWNER ACTIONS CURRENT — سُنّة
 
-**Updated:** 2026-09-21 (Full Remediation Wave 1)  
-**Live web tip (not Store RC):** `5e99cd7c` — see `CURRENT_PROJECT_STATUS.md`  
+**Updated:** 2026-09-30 (post-WAVE13 tip sync)  
+**Live web tip (not Store RC):** `aa94c759` — see `CURRENT_PROJECT_STATUS.md`  
+**Device evidence procedure:** `docs/audit/WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md`  
 **Rule:** Agents must **not** execute these. Record only.
 
 | action | why | evidence | exact system | consequence if not done | safe rollback |
@@ -20,7 +21,7 @@
 | Enable leaked-password protection | Auth hardening | same | Supabase Auth dashboard | Weaker password policy | Toggle off in dashboard |
 | Confirm Vercel production secrets set | Assistant/API server needs | Vercel project settings | Vercel | Feature degradation, not silent license bypass | Rotate/remove secrets |
 | Pin Store RC commit for Archive/AAB | Tip `5e99cd7c` ≠ automatic store pin | `CURRENT_PROJECT_STATUS.md` + store readiness | Release process | Wrong binary shipped | Rebuild from recorded pin only |
-| Device matrix sign-off (prayer + mushaf) | Cannot be simulated fully | Device runbooks (later waves) | Physical devices | DEVICE_REQUIRED rows stay open | Re-test after fixes |
+| Device matrix sign-off (prayer + mushaf) | Cannot be simulated fully | `WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md` + `DEVICE_QA_REGISTER.md` | Physical devices | DEVICE_REQUIRED rows stay open | Re-test after fixes |
 | Final App Store GO / WITHDRAW | Legal+product authority | Store readiness | Owner | No submission | Withdraw build in ASC |
 
 ## Not owner-blocked (agents may continue)
