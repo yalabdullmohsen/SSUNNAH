@@ -5,12 +5,14 @@
 | Captured | 2026-09-30 |
 | PR | https://github.com/yalabdullmohsen/majalis/pull/2375 |
 | Branch | `cursor/final-repo-closure-wave2` |
-| Implementation commit | `56897ae58` |
+| Implementation commit | `56897ae58` / docs `397dcd70d` |
+| Merge commit on main | `cfca1a68f` (#2375) |
+| Production | `cfca1a68` **MATCH** · builtAt=2026-09-30T07:16:09.787Z |
 | Pre-WAVE2 main/prod | `2ffa67984` / `2ffa6798` **MATCH** |
 
 ## STATUS
 
-**PARTIAL** — implementation + local `verify:ci` green + PR Ready open; awaiting required GitHub checks → merge → production MATCH → smoke.
+**COMPLETE** — merged to main, production `version.json` MATCH, smoke HTTP 200 on critical routes.
 
 (Final decision updated after deploy.)
 
@@ -147,7 +149,7 @@ Local PASS:
 - `pnpm run verify:preflight`
 - `pnpm run verify:ci` (~340s)
 
-GitHub: PR #2375 required checks — see PR Delivery.
+GitHub PR #2375: Verify build ✅ · ci-required ✅ · visual-snapshot ✅ · Color contrast ✅ · LHCI home ✅ · static/build/repo-gates ✅.
 
 ## PR DELIVERY
 
@@ -160,11 +162,24 @@ GitHub: PR #2375 required checks — see PR Delivery.
 
 ## PRODUCTION SMOKE TESTS
 
-Pending until `version.json` MATCH post-merge. Planned routes: `/` · `/lessons` · `/tasbih` · sheikh image surfaces · `/mushaf` · `/prayer-times` · `/settings` · `/api/healthz` · `/version.json`.
+| Route | HTTP | Notes |
+|---|---:|---|
+| `/version.json` | 200 | `cfca1a68` MATCH |
+| `/` | 200 | html present · no legacy CSS filenames in HTML |
+| `/lessons` | 200 | same |
+| `/tasbih` | 200 | same |
+| `/mushaf` | 200 | OK |
+| `/prayer-times` | 200 | OK |
+| `/settings` | 200 | OK |
+| `/search` | 200 | OK |
+| `/quran-hub` | 200 | OK |
+| `/api/healthz` | 200 | OK |
+
+No blank screens in HTML samples. No `home-legacy` / `lessons-legacy` / `misc-page-legacy` strings in served HTML.
 
 ## REGRESSIONS
 
-None observed in local verify:ci. GitHub CI pending at report draft time.
+None observed. Local verify:ci PASS · GitHub required checks PASS · production smoke PASS.
 
 ## ROLLBACK EVENTS
 
@@ -176,8 +191,8 @@ Page `*-legacy.css` trio = **0**. Remaining KEEP/COMPATIBILITY (out of WAVE2): `
 
 ## NEXT WAVE READINESS
 
-WAVE3 (raw buttons) **blocked** until this PR merges, deploys, and production MATCH + smoke PASS.
+WAVE3 (raw buttons) may start from latest `origin/main`=`cfca1a68f` after this seal.
 
 ## FINAL DECISION
 
-**WAVE2_PARTIAL** — code complete on PR #2375; merge/deploy/smoke not yet sealed.
+**WAVE2_MERGED_AND_DEPLOYED**
