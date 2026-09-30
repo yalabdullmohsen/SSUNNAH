@@ -6,6 +6,7 @@ import {
 import { getBookmarkKindMeta, resolveBookmarkColor } from "@/lib/quran-bookmark-kinds";
 import "@/styles/reader-bookmarks.css";
 
+import { Button } from "@/components/ui/button";
 type Props = {
   page: number;
   container: HTMLElement | null;
@@ -80,7 +81,7 @@ export const MushafBookmarkMarkers = memo(function MushafBookmarkMarkers({
   return (
     <div className="rb-markers" data-testid="mushaf-bookmark-markers" aria-hidden="false">
       {markers.map((m) => (
-        <button
+        <Button
           key={`${m.id}-${m.ayahKey}`}
           type="button"
           className="rb-markers__tab"
@@ -90,7 +91,7 @@ export const MushafBookmarkMarkers = memo(function MushafBookmarkMarkers({
           onClick={() => onOpenAyah?.(m.ayahKey)}
         >
           <span className="rb-markers__tab-chip" aria-hidden="true" />
-        </button>
+        </Button>
       ))}
     </div>
   );

@@ -125,6 +125,7 @@
 | `docs/design/WAVE7_IDENTITY_CASCADE_ABSORPTION_REPORT.md` | **WAVE7** — امتصاص طبقات الهوية / إزالة reload-to-win |
 | `docs/design/WAVE8_CARD_SURFACE_VALUE_ABSORPTION_REPORT.md` | **WAVE8** — امتصاص inline/radii/z-index إلى توكنات السطح |
 | `docs/admin/WAVE9_ADMIN_INTERACTION_CLOSURE_REPORT.md` | **WAVE9** — إغلاق دين تفاعل/نماذج Admin + AdminConfirmDialog |
+| `docs/mushaf/WAVE10_MUSHAF_CONTROL_SEMANTIC_CLOSURE_REPORT.md` | **WAVE10** — ضوابط المصحف الدلالية (بدون إعادة فتح WAVE6) |
 | `docs/audit/SUNNAH_REMAINING_PROBLEMS_MASTER_COPYABLE.md` | جرد المشاكل المتبقية الكامل (قابل للنسخ) بعد WAVE5 |
 | `docs/performance/startup-pr0-baseline-metrics.json` | مقاييس/جرد Startup PR-0 (NOT MEASURED للجهاز) |
 | `artifacts/majalis/src/lib/app-startup-controller.ts` | **Startup PR-1** — AppStartupController (آلة حالات الإقلاع مصدر حقيقة واحد) |
