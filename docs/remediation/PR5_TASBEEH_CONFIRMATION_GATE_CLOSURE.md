@@ -2,9 +2,9 @@
 
 ## STATUS
 
-- PARTIAL — hardening committed locally; awaiting CI green + merge/deploy of follow-up branch
-  (`cursor/pr5-tasbeeh-confirm-gate-closure`). Original CI failure on PR5 (#2368 / `2424334`)
-  was already fixed in-PR (`f985a069`) and merged as `109b8d961`.
+- PARTIAL — local `verify:preflight` + `verify:ci` PASS; awaiting GitHub CI + merge/deploy of
+  follow-up branch `cursor/pr5-tasbeeh-confirm-gate-closure`. Original CI failure on PR5
+  (#2368 / `2424334`) was already fixed in-PR (`f985a069`) and merged as `109b8d961`.
 
 ## ROOT CAUSE
 
@@ -63,9 +63,9 @@ In-page alertdialog is the Forms/Feedback authority after PR5. Gate must assert 
 | Color contrast | deferred to CI (unchanged scope) |
 | Verify build | deferred to CI |
 | ci-required | deferred to CI |
-| verify:preflight | pending |
-| verify:ci | pending |
-| release:verify | pending if required |
+| verify:preflight | PASS (local) |
+| verify:ci | PASS (local, 309.8s) |
+| release:verify | deferred to CI/auto-merge path |
 
 ## DEBT CHECK
 
