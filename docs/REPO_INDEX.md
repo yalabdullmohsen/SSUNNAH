@@ -148,6 +148,8 @@
 | `docs/release/CURRENT_RELEASE_TRUTH.md` | حقيقة main/إنتاج/تصنيف البنود — مصدر مزامنة التقارير |
 | `docs/release/OWNER_ACTIONS_CURRENT.md` | قرارات المالك فقط (لا ينفّذها الوكيل) |
 | `docs/release/RELEASE_FREEZE.md` | تجميد Store RC مفصول عن دمج main للإصلاح |
+| `docs/design/SUNNAH_AUTHORITY_UNIFICATION_FINAL_MAP.md` | خريطة توحيد السلطات · يمنع أنظمة موازية |
+| `docs/audit/SUNNAH_FINAL_PROGRAM_CONTINUATION_STATE.md` | حالة متابعة البرنامج الحيّة |
 | `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md` | إغلاق داخلي نهائي WAVE7→13 · INTERNAL_CLOSURE_COMPLETE · WEB_RELEASED_NATIVE_HOLD |
 | `docs/audit/WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md` | Runbook أدلة أجهزة · كل صف غير منفَّذ = DEVICE_REQUIRED |
 | `docs/audit/SUNNAH_FULL_PROJECT_AUDIT.md` | تدقيق شامل 2026-09-21 (`PARTIAL`) — خط أساس Remediation |

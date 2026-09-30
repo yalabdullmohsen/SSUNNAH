@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Date | 2026-09-30 |
-| Tip | Feature tip `aa94c759` (WAVE13) · this docs PR syncs status; MATCH re-verified after merge |
+| Tip | `74a38cac` (`origin/main` = production MATCH) |
 | Host | `https://www.ssunnah.com` |
 | Internal status | **INTERNAL_CLOSURE_COMPLETE** |
 | Web visual/interaction | **VISUAL_INTERACTION_COMPLETE_WEB** |
@@ -12,7 +12,7 @@
 
 ## EXECUTIVE VERDICT
 
-The post-WAVE6 internal closure program (WAVE7→WAVE13) is delivered, merged, and deployed. Production matches `main` at `b8fc9dbf`. Public smoke routes return HTTP 200. Remaining gaps are honestly classified as DEVICE_REQUIRED, OWNER_ACTION, BLOCKED_*, KEEP_JUSTIFIED, or MUSHAF/PRAYER/ADMIN special — not undeclared FIXABLE_IN_REPOSITORY P0/P1.
+The post-WAVE6 internal closure program (WAVE7→WAVE13) is delivered, merged, and deployed. Production matches `main` at `74a38cac` (live). Public smoke routes return HTTP 200. Remaining gaps are honestly classified as DEVICE_REQUIRED, OWNER_ACTION, BLOCKED_*, KEEP_JUSTIFIED, or MUSHAF/PRAYER/ADMIN special — not undeclared FIXABLE_IN_REPOSITORY P0/P1.
 
 This report does **not** claim STORE GO, FULLY COMPLETE, ZERO_INTERNAL_DEBT, WCAG CERTIFIED, DEVICE_TESTED, or MUSHAF_SILKY.
 
@@ -21,10 +21,27 @@ This report does **not** claim STORE GO, FULLY COMPLETE, ZERO_INTERNAL_DEBT, WCA
 | Surface | Value | Evidence |
 |---|---|---|
 | `origin/main` | `aa94c75975d87a99c8aa02bbde44ba90a131c079` (pre-FINAL-docs) · advances on merge | `gh api …/commits/main` |
-| Production `version.json` | `aa94c759` · `builtAt` `2026-09-30T14:17:06.261Z` (pre-FINAL-docs) | live curl |
+| Production `version.json` | `74a38cac` · `builtAt` `2026-09-30T14:32:07.741Z` | live curl |
 | Match | **MATCH** | `scripts/device-evidence/capture-build-context.mjs` |
 | Public smoke | `/` `/search` `/quran-hub` `/mushaf` `/prayer-times` `/lessons` `/hadith` `/fiqh` `/adhkar` `/settings` `/my-learning` `/login` `/register` `/api/healthz` `/version.json` → **200** | curl |
 | `/admin/v3` | HTTP **404** “غير متاح” for anonymous public | intentional edge isolation (ADMIN_ACCESS) |
+
+## AUTHORITY UNIFICATION
+
+Canonical map: `docs/design/SUNNAH_AUTHORITY_UNIFICATION_FINAL_MAP.md`.
+
+| Authority | Canonical | Status |
+|---|---|---|
+| Tokens | Foundation `--sf-*` / `--sf2-*` + Theme Aliases / Theme API | CANONICAL |
+| Dark mode | Light / Dark / System on semantic keys | CANONICAL + ACTIVE_COMPATIBILITY bridges |
+| Interaction | Button · Link · IconButton · Toggle · MenuTrigger · InteractiveCard | CANONICAL |
+| Cards | AppCard family + Card Surface Authority | CANONICAL |
+| Forms / Feedback | Feedback V2 + form primitives | CANONICAL |
+| Pages | AppPage / PageHeader / Screen adapters | CANONICAL |
+| Floating | FloatingLayerManager | CANONICAL |
+| Identity reload-to-win | Deferred unify/recovery after final-release | **REMOVED** (WAVE7) |
+
+Gate: `test:authority-unification-final`. No parallel Design/Token/Card/Button/Form system allowed.
 
 ## WAVE7 TO WAVE13 DELIVERY MATRIX
 
@@ -37,6 +54,7 @@ This report does **not** claim STORE GO, FULLY COMPLETE, ZERO_INTERNAL_DEBT, WCA
 | 11 | #2389 | `12fba46c` | route quality expansion | yes |
 | 12 | #2390 | `e29f2cb0` | index.css decomposition | yes |
 | 13 | #2391 | `aa94c759` | device evidence runbooks | yes |
+| FINAL | #2392 | `74a38cac` | boundary + status sync | yes |
 
 ## BEFORE VS AFTER
 

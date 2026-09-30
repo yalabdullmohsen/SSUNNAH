@@ -4,6 +4,7 @@
 **Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
 **Final boundary:** `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md`  
 **Post-WAVE6 baseline:** `docs/audit/SUNNAH_POST_WAVE6_FINAL_BASELINE.md`  
+**Authority map:** `docs/design/SUNNAH_AUTHORITY_UNIFICATION_FINAL_MAP.md`  
 **Device runbook:** `docs/audit/WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md`  
 **Blockers:** `docs/release/PHASE_7_BLOCKER_REGISTER.md`
 
@@ -11,8 +12,8 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `aa94c759` — WAVE13 device evidence `#2391` (FINAL docs PR sync follows) |
-| Production `version.json` | **MATCH** `aa94c759` · HTTP 200 · `builtAt` `2026-09-30T14:17:06.261Z` |
+| `origin/main` tip | `74a38cac` — FINAL boundary `#2392` · authority seal follow-up |
+| Production `version.json` | **MATCH** `74a38cac` · HTTP 200 · `builtAt` `2026-09-30T14:17:06.261Z` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
 | Internal | **`INTERNAL_CLOSURE_COMPLETE`** |
