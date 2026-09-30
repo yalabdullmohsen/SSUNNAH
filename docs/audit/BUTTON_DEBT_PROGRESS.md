@@ -28,3 +28,8 @@ Skipped / careful: `Pressable` (primitive) · Mushaf/Admin · multi-button dense
 ## Next wave
 
 Continue 20–40 file ports; prefer IconButton for dismiss/close; Link+asChild for navigation; lower ceilings after each measured drop.
+
+## WAVE3 (2026-09-30)
+
+- rawButtonFiles **211→192** · rawButtonElements **910→774** · officialButtonImportFiles **153→172**
+- PR #2377 · prod MATCH `1075efb0` · **WAVE3_MERGED_AND_DEPLOYED**
