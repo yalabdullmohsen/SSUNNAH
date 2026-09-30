@@ -59,7 +59,7 @@ import "@/styles/pages/search.css";
 import "@/styles/pages/library-search-v2.css";
 import { ACTION, EMPTY, SEARCH, STATUS } from "@/lib/ui-copy";
 import { ListScreen } from "@/components/design-system/screens";
-import { StatusCard } from "@/components/design-system/SurfacePrimitives";
+import { NoResultsState, OfflineStateV2 } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/design-system/Buttons";
 
@@ -492,20 +492,27 @@ export default function SearchPage() {
       ) : null}
 
       {error ? (
-        <div className="srch-error-inline" role="alert">
-          <AlertCircle size={16} strokeWidth={2} aria-hidden />
-          <div className="srch-error-inline__body">
-            <p className="srch-error-inline__title">{error || STATUS.loadError}</p>
-            <p className="srch-error-inline__reason">تعذّر تحديث النتائج. أعد المحاولة أو انتقل إلى قسم آخر.</p>
-            <div className="srch-error-inline__actions">
-              <Button type="button" variant="outline" size="small" className="srch-error-inline__retry" onClick={() => void run(term, scope)}>
-                {ACTION.retry}
-              </Button>
-              <Link href="/mushaf" className="srch-error-inline__alt">المصحف</Link>
-              <Link href="/hadith" className="srch-error-inline__alt">الحديث</Link>
+        typeof navigator !== "undefined" && navigator.onLine === false ? (
+          <OfflineStateV2
+            availableHint="إن وُجدت نتائج محفوظة سابقًا فقد تبقى ظاهرة أعلاه."
+            onRetry={() => void run(term, scope)}
+          />
+        ) : (
+          <div className="srch-error-inline" role="alert">
+            <AlertCircle size={16} strokeWidth={2} aria-hidden />
+            <div className="srch-error-inline__body">
+              <p className="srch-error-inline__title">{STATUS.loadError}</p>
+              <p className="srch-error-inline__reason">تعذّر تحديث النتائج. أعد المحاولة أو انتقل إلى قسم آخر.</p>
+              <div className="srch-error-inline__actions">
+                <Button type="button" variant="outline" size="small" className="srch-error-inline__retry" onClick={() => void run(term, scope)}>
+                  {ACTION.retry}
+                </Button>
+                <Link href="/mushaf" className="srch-error-inline__alt">المصحف</Link>
+                <Link href="/hadith" className="srch-error-inline__alt">الحديث</Link>
+              </div>
             </div>
           </div>
-        </div>
+        )
       ) : null}
 
       {!showHome && loading && results.length === 0 && !error ? (
@@ -513,28 +520,20 @@ export default function SearchPage() {
           <SearchSkeleton />
         </div>
       ) : showEmpty ? (
-        <StatusCard className="search-no-results ss-state-card" role="status">
-          <p className="search-no-results__msg ss-state-card__title">
-            {EMPTY.searchShort}
-          </p>
-          <p className="search-no-results__hint-copy">{EMPTY.search}</p>
-          {scope !== "all" ? (
-            <Button type="button" variant="primary" className="srch-home-submit ss-action-btn ss-action-btn--primary mj-pressable" onClick={() => setScope("all")}>
-              ابحث في الكل
-            </Button>
-          ) : (
-            <Button
-              type="button"
-              variant="secondary"
-              className="srch-home-submit ss-action-btn ss-action-btn--secondary mj-pressable"
-              onClick={() => {
+        <div className="search-no-results">
+          <NoResultsState
+            title={EMPTY.searchShort}
+            description={EMPTY.search}
+            queryHint={term.trim() ? `البحث: ${term.trim()}` : undefined}
+            clearLabel={scope !== "all" ? "ابحث في الكل" : ACTION.clearSearch}
+            onClear={() => {
+              if (scope !== "all") setScope("all");
+              else {
                 setTerm("");
                 inputRef.current?.focus();
-              }}
-            >
-              {ACTION.clearSearch}
-            </Button>
-          )}
+              }
+            }}
+          />
           {suggestions.length > 0 ? (
             <p className="search-no-results__hint">
               هل تقصد{" "}
@@ -564,7 +563,7 @@ export default function SearchPage() {
               </Link>
             ))}
           </div>
-        </StatusCard>
+        </div>
       ) : results.length > 0 ? (
         <div className="srch-results" aria-live="polite" aria-busy={loading || undefined}>
           <p className="search-page-summary" role="status">

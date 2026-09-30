@@ -9,7 +9,8 @@ import type { LucideIcon } from "lucide-react";
 import { Link, useSearch } from "wouter";
 import { ShareButtons } from "@/components/ContentActions";
 import { useAuth } from "@/components/AuthProvider";
-import { PageHeader, SkeletonCardGrid, Empty, ErrorState } from "@/components/ui-common";
+import { PageHeader, SkeletonCardGrid } from "@/components/ui-common";
+import { EmptyStateV2, ErrorStateV2, NoResultsState } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
@@ -261,33 +262,45 @@ export default function RulingsPage() {
       {loading && items.length === 0 ? (
         <SkeletonCardGrid />
       ) : !loading && dbState.dbError && !dbState.needsSeed ? (
-        <ErrorState
-          text={
+        <ErrorStateV2
+          title="تعذّر تحميل الأحكام"
+          description={
             isAdmin
               ? dbState.dbError === "table_missing"
                 ? "جدول sharia_rulings غير موجود، طبّق migrations التفعيل أولاً."
-                : `تعذّر تحميل الأحكام: ${dbState.dbError}`
+                : STATUS.loadError
               : STATUS.loadError
           }
           onRetry={loadRulings}
         />
       ) : items.length === 0 ? (
-        <Empty
-          title={
-            !debouncedSearch.trim() && category === "الكل" && !subcategory
-              ? "لا أحكام منشورة بعد"
-              : undefined
-          }
-          text={
-            dbState.needsSeed
-              ? isAdmin
-                ? "قاعدة البيانات جاهزة لكن لم تُستورد الأحكام بعد. شغّل Production Activation من لوحة الإدارة."
-                : "لم تُنشر أحكام في الموسوعة بعد. يمكنك تصفح الأسئلة والأجوبة أو بوابة الفقه في الأثناء."
-              : !debouncedSearch.trim() && category === "الكل" && !subcategory
-                ? EMPTY.data
-                : EMPTY.search
-          }
-        />
+        !debouncedSearch.trim() && category === "الكل" && !subcategory ? (
+          <EmptyStateV2
+            title="لا أحكام منشورة بعد"
+            description={
+              dbState.needsSeed
+                ? isAdmin
+                  ? "قاعدة البيانات جاهزة لكن لم تُستورد الأحكام بعد. شغّل Production Activation من لوحة الإدارة."
+                  : "لم تُنشر أحكام في الموسوعة بعد. يمكنك تصفح الأسئلة والأجوبة أو بوابة الفقه في الأثناء."
+                : EMPTY.data
+            }
+            href="/fiqh"
+            ctaLabel="بوابة الفقه"
+          />
+        ) : (
+          <NoResultsState
+            title="لا أحكام مطابقة"
+            description={EMPTY.search}
+            queryHint={debouncedSearch.trim() ? `البحث: ${debouncedSearch.trim()}` : undefined}
+            clearLabel="مسح البحث والتصفية"
+            onClear={() => {
+              setSearch("");
+              setCategory("الكل");
+              setSubcategory(undefined);
+              setPage(1);
+            }}
+          />
+        )
       ) : (
         <>
           <div className="ruling-card-grid">
