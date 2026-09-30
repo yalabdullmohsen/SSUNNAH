@@ -1,11 +1,12 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-09-30 (ADMIN-FINAL-1 conflict resolution on tip after Startup Typography FOUC P1)  
+**Updated:** 2026-09-30 (ADMIN-FINAL-1 MERGED_AND_DEPLOYED)  
 **Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
 **Final boundary:** `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md`  
 **Live program state:** `docs/audit/SUNNAH_FINAL_QUALITY_PROGRAM_LIVE_STATE.md`  
 **Mushaf polish seal:** `docs/mushaf/MUSHAF_POST_CLOSURE_POLISH_FINAL_REPORT.md`  
 **Admin final program:** `docs/admin/ADMIN_FINAL_MIGRATION_AND_SECURITY_BASELINE.md`  
+**Admin FINAL-1 closure:** `docs/admin/ADMIN_FINAL_1_CLOSURE_REPORT.md`  
 **Startup typography FOUC:** `docs/performance/STARTUP_TYPOGRAPHY_FOUC_LIVE_BASELINE.md`  
 **Post-WAVE6 baseline:** `docs/audit/SUNNAH_POST_WAVE6_FINAL_BASELINE.md`  
 **Authority map:** `docs/design/SUNNAH_AUTHORITY_UNIFICATION_FINAL_MAP.md`  
@@ -16,14 +17,14 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `c22a3aa2b` — Startup Typography FOUC P1 (`html` font-size authority) |
-| Production `version.json` | `c22a3aa2` **MATCH** · `builtAt=2026-09-30T20:52:54.857Z` |
+| `origin/main` tip | `eaf3a3eaa` — ADMIN-FINAL-1 baseline (#2405) |
+| Production `version.json` | `eaf3a3ea` **MATCH** · `builtAt=2026-09-30T21:25:20.814Z` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
 | Internal | **`INTERNAL_CLOSURE_COMPLETE`** |
 | Web visual/interaction | **`VISUAL_INTERACTION_COMPLETE_WEB`** |
 | Mushaf polish | **COMPLETE_DEVICE_HOLD** (residual lag DEVICE_REQUIRED) |
-| Admin program | **ADMIN-FINAL-1** baseline · sequential FINAL-2+ after MATCH |
+| Admin program | **ADMIN-FINAL-1** `MERGED_AND_DEPLOYED` · FINAL-2+ allowed next |
 | Startup Typography FOUC | **P1 MERGED** on tip · P2 size-adjust open |
 | Explicit non-claims | no `STORE GO` · no `DEVICE_TESTED` · no `MUSHAF_SILKY` · no `WCAG CERTIFIED` · no `FULLY COMPLETE` · no `ADMIN_FULLY_SECURE` |
 
