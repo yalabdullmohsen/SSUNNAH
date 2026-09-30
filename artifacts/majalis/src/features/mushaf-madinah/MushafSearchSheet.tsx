@@ -62,6 +62,8 @@ export function MushafSearchSheet({ open, mode = "search", onClose, onGotoPage }
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const typingRef = useRef(false);
+  const offline =
+    typeof navigator !== "undefined" && navigator.onLine === false;
 
   useEffect(() => {
     if (!open) return;
@@ -348,6 +350,11 @@ export function MushafSearchSheet({ open, mode = "search", onClose, onGotoPage }
           </div>
         ) : (
           <>
+            {offline ? (
+              <p className="mm-search-sheet__status" role="status">
+                أنت دون اتصال — النتائج المخزّنة فقط إن توفّرت.
+              </p>
+            ) : null}
             {loading ? <p className="mm-search-sheet__status" role="status" aria-busy="true" aria-label="تحديث النتائج" /> : null}
             {error && !loading ? (
               <p className="mm-search-sheet__status" role="alert">
