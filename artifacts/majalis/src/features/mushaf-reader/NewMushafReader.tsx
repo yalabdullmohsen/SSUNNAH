@@ -79,6 +79,7 @@ import { useMushafResourceGate } from "@/features/mushaf-shared/useMushafResourc
 import { MUSHAF_CHROME_HIDE_MS } from "@/features/mushaf-shared/layout-bands";
 import { MushafPage } from "./MushafPage";
 import { MushafControlsLayer, MushafVerseMenu } from "./MushafControlsLayer";
+import { MushafReadingCoach } from "./MushafReadingCoach";
 import { MushafPageArrows } from "./MushafPageArrows";
 import { MushafPageScrubber } from "./MushafPageScrubber";
 import { isMushafNavCapabilityEnabled } from "./mushaf-reader-nav-contract";
@@ -297,6 +298,8 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
   const hideTimer = useRef<number | null>(null);
   const pageRef = useRef(page);
   pageRef.current = page;
+  /** اتجاه آخر تقليبة (+1/-1) لترجيح prefetch الجار الأقرب */
+  const lastTurnDeltaRef = useRef(0);
   const onPageChangeRef = useRef(onPageChange);
   onPageChangeRef.current = onPageChange;
   const suppressPageSyncRef = useRef(false);
@@ -749,6 +752,9 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
     (next: number) => {
       const clamped = clampMushafPage(next);
       if (clamped === pageRef.current && pendingPageRef.current == null) return;
+      if (clamped !== pageRef.current) {
+        lastTurnDeltaRef.current = Math.sign(clamped - pageRef.current);
+      }
       /*
        * قفل القفزة المزدوجة فقط بعد تعيين هدف معلّق.
        * لا تُرجع مبكرًا عند pageTurnLock وحده: onNavigateStart يستدعي beginPageTurn
@@ -1158,20 +1164,32 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
   const mediaPlaying =
     playerState === "playing" || playerState === "buffering" || playerState === "loading";
 
-  /** ±1 فوري · ±2 على idle — يمنع تنافس أول طلاء مع prefetch بعيد */
+  /** ±1 فوري · ±2 على idle — ترجيح اتجاه آخر تقليبة دون تحميل 604 */
   const [neighborEpoch, setNeighborEpoch] = useState(0);
   useEffect(() => {
     let cancelled = false;
     let idleHandle: number | null = null;
     let idleTimer: number | null = null;
+    /* preferNext: اتجاه آخر تقليبة — يبقي استدعاءات ensureQpcPageFont(page±1/±2) حيّة للعقود */
+    const preferNext = lastTurnDeltaRef.current >= 0;
     const near: Promise<unknown>[] = [];
-    if (page < MUSHAF_PAGE_MAX) {
-      near.push(ensureQpcPageFont(page + 1));
-      near.push(loadMushafPage(page + 1).catch(() => null));
-    }
-    if (page > 1) {
-      near.push(ensureQpcPageFont(page - 1));
-      near.push(loadMushafPage(page - 1).catch(() => null));
+    const enqueueNear = (delta: 1 | -1) => {
+      const target = page + delta;
+      if (target < 1 || target > MUSHAF_PAGE_MAX) return;
+      if (delta === 1) {
+        near.push(ensureQpcPageFont(page + 1));
+        near.push(loadMushafPage(page + 1).catch(() => null));
+      } else {
+        near.push(ensureQpcPageFont(page - 1));
+        near.push(loadMushafPage(page - 1).catch(() => null));
+      }
+    };
+    if (preferNext) {
+      enqueueNear(1);
+      enqueueNear(-1);
+    } else {
+      enqueueNear(-1);
+      enqueueNear(1);
     }
     void Promise.all(near).then(() => {
       if (!cancelled) setNeighborEpoch((n) => n + 1);
@@ -1179,13 +1197,23 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
     const prefetchFar = () => {
       if (cancelled) return;
       const far: Promise<unknown>[] = [];
-      if (page < MUSHAF_PAGE_MAX - 1) {
-        far.push(ensureQpcPageFont(page + 2));
-        far.push(loadMushafPage(page + 2).catch(() => null));
-      }
-      if (page > 2) {
-        far.push(ensureQpcPageFont(page - 2));
-        far.push(loadMushafPage(page - 2).catch(() => null));
+      const enqueueFar = (delta: 2 | -2) => {
+        const target = page + delta;
+        if (target < 1 || target > MUSHAF_PAGE_MAX) return;
+        if (delta === 2) {
+          far.push(ensureQpcPageFont(page + 2));
+          far.push(loadMushafPage(page + 2).catch(() => null));
+        } else {
+          far.push(ensureQpcPageFont(page - 2));
+          far.push(loadMushafPage(page - 2).catch(() => null));
+        }
+      };
+      if (preferNext) {
+        enqueueFar(2);
+        enqueueFar(-2);
+      } else {
+        enqueueFar(-2);
+        enqueueFar(2);
       }
       if (far.length === 0) return;
       void Promise.all(far).then(() => {
@@ -1740,6 +1768,19 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
           />
         </Suspense>
       ) : null}
+      <MushafReadingCoach
+        blocked={
+          actionsOpen ||
+          gotoOpen ||
+          tafsirOpen ||
+          searchOpen ||
+          indexOpen ||
+          controlsMoreOpen ||
+          bookmarkComposerOpen ||
+          pageBookmarkSheetOpen ||
+          !pagerSettled
+        }
+      />
     </MushafPager>
   );
 }
