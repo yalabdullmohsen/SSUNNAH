@@ -1504,8 +1504,8 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       renderPage={renderPage}
     >
       <h1 className="sr-only">المصحف الشريف</h1>
-      <div className="sr-only" aria-live="polite" data-testid="mushaf-page-live">
-        {`الصفحة ${page}`}
+      <div className="sr-only" aria-live="polite" aria-atomic="true" data-testid="mushaf-page-live">
+        {`الصفحة ${toArabicDigits(page)} من ${toArabicDigits(MUSHAF_PAGE_MAX)}`}
       </div>
       <NavigationHighlightChip
         onDismiss={() => {
