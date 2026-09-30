@@ -1,0 +1,18 @@
+{
+  "caseId": "ST-COLD-HOME",
+  "deviceId": "D-IP14",
+  "deviceModel": "",
+  "osVersion": "",
+  "runtime": "safari",
+  "buildCommit": "",
+  "mode": ["L", "COLD", "RTL"],
+  "steps": "",
+  "expected": "",
+  "actual": "",
+  "artifactPath": "",
+  "result": "DEVICE_REQUIRED",
+  "failureClass": "",
+  "tester": "",
+  "testedAt": "",
+  "notes": ""
+}

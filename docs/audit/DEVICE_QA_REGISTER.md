@@ -2,7 +2,8 @@
 
 | Field | Value |
 |---|---|
-| Captured | 2026-09-29 |
+| Captured | 2026-09-30 |
+| Runbook | [`WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md`](./WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md) |
 | Rule | No invented device numbers · no STORE GO from web-only evidence |
 | Classification | Remaining items = **DEVICE_REQUIRED** unless proven in repo |
 
@@ -22,6 +23,9 @@
 | Prayer background / adhan | DEVICE_REQUIRED | — | DEVICE_REQUIRED | — | — | — | — | + OWNER_ACTION / LICENSE |
 
 ## How to close a DEVICE_REQUIRED row
+
+Primary procedure: **WAVE13 runbook** (`docs/audit/WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md`) + `scripts/device-evidence/`.
+
 
 1. Record device model + OS + build (`version.json` commit).  
 2. Attach screenshot or screen recording path under `/opt/cursor/artifacts` or release evidence.  
