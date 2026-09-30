@@ -1,6 +1,6 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-09-30 (Identity bridges absorb Phase 4 after Dark deferred Phase 3 MATCH)  
+**Updated:** 2026-09-30 (Cards residual absorb Phase 5 after Identity Phase 4 MATCH)  
 **Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
 **Final boundary:** `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md`  
 **Live program state:** `docs/audit/SUNNAH_FINAL_QUALITY_PROGRAM_LIVE_STATE.md`  
@@ -12,6 +12,7 @@
 **FINAL program resume:** `docs/performance/SUNNAH_FINAL_PROGRAM_PHASE0_LIVE_TRUTH.md`  
 **Dark deferred absorb Phase 3:** `docs/performance/SUNNAH_FINAL_PROGRAM_PHASE3_DARK_DEFERRED_ABSORB.md`  
 **Identity bridges absorb Phase 4:** `docs/performance/SUNNAH_FINAL_PROGRAM_PHASE4_IDENTITY_BRIDGES_ABSORB.md`  
+**Cards residual absorb Phase 5:** `docs/performance/SUNNAH_FINAL_PROGRAM_PHASE5_CARDS_RESIDUAL_ABSORB.md`  
 **Post-WAVE6 baseline:** `docs/audit/SUNNAH_POST_WAVE6_FINAL_BASELINE.md`  
 **Authority map:** `docs/design/SUNNAH_AUTHORITY_UNIFICATION_FINAL_MAP.md`  
 **Device runbook:** `docs/audit/WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md`  
@@ -21,17 +22,18 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `ac0218d87` — Dark deferred absorb Phase 3 (#2410) |
-| Production `version.json` | `ac0218d8` **MATCH** · `builtAt=2026-09-30T22:41:05.590Z` |
+| `origin/main` tip | `032ad8db` — Identity bridges absorb Phase 4 (#2411) |
+| Production `version.json` | `032ad8db` **MATCH** · `builtAt=2026-09-30T23:10:47.134Z` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
 | Internal | **`INTERNAL_CLOSURE_COMPLETE`** |
 | Web visual/interaction | **`VISUAL_INTERACTION_COMPLETE_WEB`** |
 | Mushaf polish | **COMPLETE_DEVICE_HOLD** (residual lag DEVICE_REQUIRED) |
 | Admin program | **ADMIN-FINAL-1** `MERGED_AND_DEPLOYED` · FINAL-2+ allowed next |
-| Startup Typography FOUC | **P2 size-adjust 97%** · `MERGED_AND_DEPLOYED` · MATCH |
-| Dark deferred absorb | **Phase 3** · `MERGED_AND_DEPLOYED` · MATCH `ac0218d8` |
-| Identity bridges absorb | **Phase 4** · brand-v4/design-tokens → theme · Delivery pending |
+| Startup Typography FOUC | **P2** · MATCH |
+| Dark deferred absorb | **Phase 3** · MATCH `ac0218d8` |
+| Identity bridges absorb | **Phase 4** · MATCH `032ad8db` · hex 8905 |
+| Cards residual absorb | **Phase 5** · radius 1258 · Delivery pending |
 | Explicit non-claims | no `STORE GO` · no `DEVICE_TESTED` · no `MUSHAF_SILKY` · no `WCAG CERTIFIED` · no `FULLY COMPLETE` · no `ADMIN_FULLY_SECURE` · no `ZERO_FLICKER_COMPLETE` · no `ZERO_INTERNAL_DEBT` |
 
 ## Closure program WAVE7→13 (merged + deployed)

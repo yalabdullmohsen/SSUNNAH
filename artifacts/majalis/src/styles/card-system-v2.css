@@ -137,7 +137,7 @@ html:not([data-theme="dark"]):not(.dark) .hub-card.cs2-host .cs2-nav__desc {
 
 .cs2-continue__progress {
   height: 4px;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   background: var(--sf2-skeleton, #e6ebe8);
   overflow: hidden;
 }
