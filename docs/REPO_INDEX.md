@@ -117,6 +117,7 @@
 | `docs/performance/WAVE5_CSS_IMPORT_GRAPH.md` | **WAVE5** — رسم استيرادات CSS sync/deferred + تصنيفات |
 | `docs/performance/WAVE5_SCOPE_MANIFEST.md` | **WAVE5** — نطاق وتجميد التنفيذ |
 | `docs/performance/SUNNAH_WAVE5_STARTUP_FOUC_CLS_CLOSURE_REPORT.md` | **WAVE5** — إغلاق Critical CSS / FOUC / CLS / startup |
+| `docs/audit/SUNNAH_REMAINING_PROBLEMS_MASTER_COPYABLE.md` | جرد المشاكل المتبقية الكامل (قابل للنسخ) بعد WAVE5 |
 | `docs/performance/startup-pr0-baseline-metrics.json` | مقاييس/جرد Startup PR-0 (NOT MEASURED للجهاز) |
 | `artifacts/majalis/src/lib/app-startup-controller.ts` | **Startup PR-1** — AppStartupController (آلة حالات الإقلاع مصدر حقيقة واحد) |
 | `artifacts/majalis/src/lib/background-ui-fonts.ts` | **Startup PR-2** — تسخين خطوط اختيارية بعد INTERACTIVE بلا UI |
