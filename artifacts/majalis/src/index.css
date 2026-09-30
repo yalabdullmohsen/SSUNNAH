@@ -28,7 +28,9 @@ body {
 }
 
 html {
-  font-size: 16px;
+  /* CANONICAL root scale — must match typography-app / #mj-lcp-critical.
+     Absolute 16px here previously nullified --ui-font-scale after sync CSS. */
+  font-size: calc(100% * var(--ui-font-scale, 1));
   text-size-adjust: 100%;
   overflow-x: clip;
   overscroll-behavior-y: contain;

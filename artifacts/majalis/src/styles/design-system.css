@@ -9,7 +9,9 @@
  */
 
 html {
-  font-size: var(--ds-base);
+  /* Keep root scale aligned with typography authority (--ui-font-scale).
+     Do not re-apply absolute --ds-base (16px) on html after deferred load. */
+  font-size: calc(100% * var(--ui-font-scale, 1));
 }
 
 :root {
