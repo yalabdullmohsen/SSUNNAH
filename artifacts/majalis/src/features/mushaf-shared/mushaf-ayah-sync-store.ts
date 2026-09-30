@@ -64,35 +64,43 @@ function subscribe(listener: SyncListener): () => void {
   return () => listeners.delete(listener);
 }
 
-/** اشتراك محلي — تحديد يدوي فقط (التنقّل عبر overlay بلا تغيير لون الحبر) */
-export function useMushafAyahWordSelected(verseKey: string): boolean {
+/** لا اشتراك — ألواح غير مستقرة/غير حالية أثناء التقليب (يمنع fan-out ×3) */
+function subscribeNoop(_listener: SyncListener): () => void {
+  return () => undefined;
+}
+
+/**
+ * اشتراك محلي — تحديد يدوي فقط (التنقّل عبر overlay بلا تغيير لون الحبر).
+ * `enabled=false` → subscribeNoop (لا إعادة رسم عند تغيّر التحديد/التلاوة/البحث).
+ */
+export function useMushafAyahWordSelected(verseKey: string, enabled = true): boolean {
   return useSyncExternalStore(
-    subscribe,
-    () => manuallySelectedVerseKey === verseKey,
+    enabled ? subscribe : subscribeNoop,
+    () => (enabled ? manuallySelectedVerseKey === verseKey : false),
     () => false,
   );
 }
 
-export function useMushafAyahWordPlaying(verseKey: string): boolean {
+export function useMushafAyahWordPlaying(verseKey: string, enabled = true): boolean {
   return useSyncExternalStore(
-    subscribe,
-    () => audioHighlightedVerseKey === verseKey,
+    enabled ? subscribe : subscribeNoop,
+    () => (enabled ? audioHighlightedVerseKey === verseKey : false),
     () => false,
   );
 }
 
-export function useMushafAyahWordNavigation(verseKey: string): boolean {
+export function useMushafAyahWordNavigation(verseKey: string, enabled = true): boolean {
   return useSyncExternalStore(
-    subscribe,
-    () => navigationHighlightedVerseKey === verseKey,
+    enabled ? subscribe : subscribeNoop,
+    () => (enabled ? navigationHighlightedVerseKey === verseKey : false),
     () => false,
   );
 }
 
-export function useMushafAyahWordSearchHighlight(verseKey: string): boolean {
+export function useMushafAyahWordSearchHighlight(verseKey: string, enabled = true): boolean {
   return useSyncExternalStore(
-    subscribe,
-    () => searchHighlightVerseKey === verseKey,
+    enabled ? subscribe : subscribeNoop,
+    () => (enabled ? searchHighlightVerseKey === verseKey : false),
     () => false,
   );
 }

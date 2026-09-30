@@ -1,0 +1,85 @@
+{
+  "capturedAt": "2026-09-30T19:22:29.709Z",
+  "phase": "BEFORE",
+  "topDelays": [
+    {
+      "id": "PRODUCT_LOCK_FONT_LAYOUT",
+      "severity": 10,
+      "evidence": "finishPageTurn waits fontReady+layout+displayView",
+      "class": "MUSHAF_SPECIAL"
+    },
+    {
+      "id": "VISUAL_SETTLE_220MS",
+      "severity": 9,
+      "evidence": "SETTLE_MS=220 CSS transition before go()",
+      "class": "KEEP_JUSTIFIED"
+    },
+    {
+      "id": "WORD_SYNC_FANOUT_X3_SHEETS",
+      "severity": 9,
+      "evidence": "each word subscribes selected/playing/search on all sheets",
+      "class": "FIXABLE_IN_REPOSITORY"
+    },
+    {
+      "id": "FONT_MISS_ON_TARGET",
+      "severity": 8,
+      "evidence": "ensureQpcPageFont before commitNav when cache miss",
+      "class": "MUSHAF_SPECIAL"
+    },
+    {
+      "id": "BIDIRECTIONAL_NEAR_PREFETCH_CONTENTION",
+      "severity": 7,
+      "evidence": "both ±1 eager compete with target font",
+      "class": "FIXABLE_IN_REPOSITORY"
+    },
+    {
+      "id": "DOM_WORDS_X3_COMPOSITE",
+      "severity": 7,
+      "evidence": "three interactive QPC sheets during pan",
+      "class": "MUSHAF_SPECIAL"
+    },
+    {
+      "id": "CLEAR_CHROME_SETSTATE_STORM",
+      "severity": 6,
+      "evidence": "beginPageTurn→clearPageChrome multi setState",
+      "class": "FIXABLE_IN_REPOSITORY"
+    },
+    {
+      "id": "DEVICE_MAIN_THREAD_UNKNOWN",
+      "severity": 6,
+      "evidence": "long tasks / FPS not measured in CI",
+      "class": "DEVICE_REQUIRED"
+    },
+    {
+      "id": "NEIGHBOR_EPOCH_RERENDER",
+      "severity": 5,
+      "evidence": "setNeighborEpoch after prefetch completes",
+      "class": "FIXABLE_IN_REPOSITORY"
+    },
+    {
+      "id": "SELECTION_GETCLIENTRECTS",
+      "severity": 2,
+      "evidence": "AyahSelectionOverlay measure path",
+      "class": "PARTIAL"
+    }
+  ],
+  "metrics": {
+    "verseWordSyncSubscriptionsPerWord": 6,
+    "adjacentPaneSyncFrozen": false,
+    "oppositeNearPrefetchOnIdle": false,
+    "directionAwareNearOrder": true,
+    "clearPageChromeGuarded": false,
+    "neighborEpochRerender": true,
+    "arrowsWaitNeighborsReady": false,
+    "scrubberWaitNeighborsReady": false,
+    "selectionFrozenWhileTurning": true,
+    "bookmarkMarkersFrozenWhileTurning": true,
+    "telemetryPointerUp": false,
+    "telemetryVisualTransitionEnd": false,
+    "telemetryProductUnlock": false,
+    "fontCacheHitSyncUsP50": 0.006,
+    "fontCacheHitSyncUsP95": 0.015,
+    "fontCacheHitSamples": 80,
+    "estimatedTurnRenderHotspots": 64
+  }
+}
