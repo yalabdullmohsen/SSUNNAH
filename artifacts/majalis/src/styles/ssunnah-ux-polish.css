@@ -836,7 +836,7 @@ html[data-theme="dark"] .srch-home-form,
 html.dark .srch-home-form,
 html[data-theme="dark"] .search-page .search-page-form,
 html.dark .search-page .search-page-form {
-  background: var(--surface-app, #131A18);
+  background: var(--surface-app);
 }
 
 .scroll-to-top {

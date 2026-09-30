@@ -241,15 +241,16 @@
    ونصوص مخفّفة (#EDF2F0 لا أبيض نقي) لتقليل الوهج على OLED.
    ══════════════════════════════════════════════════════════════ */
 html[data-theme="dark"] {
-  --bg:              #131A18;
-  --bg-elevated:     #1B2421;
-  --surface:         #1B2421;
-  --surface-2:       #222D29;
-  --surface-3:       #2A3733;
-  --surface-muted:   #222D29;
+  /* Phase 4 identity absorb — canvas/surfaces → product night contract (theme.css) */
+  --bg:              var(--surface-app);
+  --bg-elevated:     var(--mj-surface);
+  --surface:         var(--mj-surface);
+  --surface-2:       var(--mj-surface-2);
+  --surface-3:       var(--mj-surface-3);
+  --surface-muted:   var(--mj-surface-2);
   --surface-brand:   #16261F;
   --surface-inverse: #ECF2EF;
-  --surface-elevated: #222D29;
+  --surface-elevated: var(--mj-surface-2);
 
   --text-title:      #F8FAFC;
   --text:            #F8FAFC;
@@ -260,7 +261,7 @@ html[data-theme="dark"] {
   --text-brand:      #7BD6AE;
   --text-brand-deep: #A7E4C8;
 
-  --border:             #35443F;
+  --border:             var(--mj-hairline);
   --border-strong:      #445651;
   --border-interactive: #5CC095;
   --border-brand:       #445651;
@@ -269,11 +270,11 @@ html[data-theme="dark"] {
   --brand-hover:  #7BD6AE;
   --brand-active: #4AA882;
   --brand-soft:   #16261F;
-  --brand-deep:   #0E1C17;
+  --brand-deep:   var(--mj-brand-deep);
   --text-on-brand: #06231A;
-  --accent:       #D9B871;
-  --accent-soft:  #2A3733;
-  --accent-deep:  #D9B871;
+  --accent:       var(--mj-accent);
+  --accent-soft:  var(--mj-surface-3);
+  --accent-deep:  var(--mj-accent);
 
   --color-bg:                var(--surface-1, var(--bg));
   --color-bg-soft:           var(--surface-2);

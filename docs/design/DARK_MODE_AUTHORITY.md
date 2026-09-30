@@ -80,6 +80,12 @@ Small, safe hotspots only — **no** full CSS rewrite:
 3. `styles/dark-mode-surfaces.css` — bottom nav uses `--dm-bottom-nav` instead of hard `#131a18`.
 4. `styles/pages/shimael.css` — page canvas fallback aligned to product night (`--surface-app` / `#0F1613`).
 
+## Phase 4 identity absorb (FINAL program)
+
+5. `styles/brand-v4.css` dark — `--bg` / surfaces / `--brand-deep` / accent → `--surface-app` / `--mj-*` (no `#131A18` / `#0E1C17` fork).
+6. `styles/design-tokens.css` dark — surfaces/borders/`--ss-card-*` → theme contract vars.
+7. Gate: `test:identity-bridges-absorb` · debt `hexInCss` ceiling lowered.
+
 ## Gates
 
 ```bash
