@@ -2,7 +2,8 @@
 
 **PR:** `ADMIN-FINAL-1`  
 **Branch:** `cursor/admin-final-1-baseline`  
-**Base:** latest `origin/main` at start (`369d8b17e`)  
+**Base (at PR open):** `369d8b17e`  
+**Conflict-resolved onto:** `c22a3aa2b` (Startup Typography FOUC P1) — latest `origin/main` at conflict resolution  
 **Goal:** Live baseline + route/ownership truth + authorization inventory matrix + initial prevention gates.  
 **Posture:** `WEB_RELEASED_NATIVE_HOLD`
 

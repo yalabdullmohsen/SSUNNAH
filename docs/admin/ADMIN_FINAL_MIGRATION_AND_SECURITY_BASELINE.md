@@ -4,6 +4,7 @@
 **PR train:** `ADMIN-FINAL-1`  
 **Branch:** `cursor/admin-final-1-baseline`  
 **Measured tip:** `369d8b17e` (`origin/main` at measurement)  
+**Conflict-resolved tip:** `c22a3aa2b` (main after Startup Typography FOUC P1; Admin/API/Routes inventory unchanged by that tip — counts below remain valid)  
 **Product root:** `artifacts/majalis`  
 **Release posture:** `WEB_RELEASED_NATIVE_HOLD`  
 **Program target:** `ADMIN_V3_OPERATIONALLY_COMPLETE` (not claimed here)  

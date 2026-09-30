@@ -1,6 +1,6 @@
 # Admin Final Route & Ownership Matrix — ADMIN-FINAL-1
 
-**Measured tip:** `369d8b17e`  
+**Measured tip:** `369d8b17e` (measurement) · conflict-resolved onto `c22a3aa2b`  
 **Source of route truth:** `artifacts/majalis/src/AppRoutes.tsx` + `AdminEntryBridge` + Legacy `?section=`  
 **Edge:** unauthenticated public → HTTP 404 «غير متاح» + noindex (`middleware.js` + `vercel.json`)  
 **Rule:** one Canonical function owner; aliases tested; no Home redirect as public hide; no unclassified Legacy.

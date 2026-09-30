@@ -2,7 +2,7 @@
 
 **Phase:** ADMIN-FINAL-1 (authorization matrix start)  
 **Status:** `AUTH_INVENTORY_BASELINED` — **not** `ADMIN_FULLY_SECURE`  
-**Tip:** `369d8b17e`  
+**Tip:** `369d8b17e` (measurement) · conflict-resolved onto `c22a3aa2b`  
 **Authority:** Server (`lib/admin-auth.mjs` + `lib/governance/*`). UI `permissions.ts` is non-authoritative.
 
 ---
