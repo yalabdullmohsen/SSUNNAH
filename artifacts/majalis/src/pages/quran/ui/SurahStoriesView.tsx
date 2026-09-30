@@ -10,6 +10,7 @@ import { SectionErrorBoundary } from "@/components/ErrorBoundary";
 import { truncateAtWord } from "@/lib/utils";
 import { ExploreAlsoNav } from "@/components/ExploreAlsoNav";
 import { DetailScreen } from "@/components/design-system/screens";
+import "@/styles/pages/ulum-quran.css";
 
 export default function SurahStoriesPage() {
   useEffect(() => {

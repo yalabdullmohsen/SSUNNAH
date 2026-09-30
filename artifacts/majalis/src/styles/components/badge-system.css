@@ -220,3 +220,16 @@
     font-size: 1rem;
   }
 }
+
+/* WAVE12: from index.css — UnsourcedBadge (token-only; no raw hex) */
+.unsourced-badge {
+  display: inline-block;
+  margin-inline-start: 0.35rem;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--badge-warning-soft-fg);
+  background: var(--badge-warning-soft-bg);
+  border: 1px solid var(--badge-warning-border);
+  border-radius: var(--badge-radius);
+}

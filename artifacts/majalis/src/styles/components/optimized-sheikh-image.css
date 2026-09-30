@@ -97,3 +97,10 @@
     transition: none;
   }
 }
+
+/* WAVE12: desktop width was only in index.css */
+@media (min-width: 768px) {
+  .optimized-sheikh-image--responsive {
+    width: 7.75rem;
+  }
+}
