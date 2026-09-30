@@ -3,13 +3,13 @@
 | Field | Value |
 |---|---|
 | Generated | 2026-09-30 (tip sync after WAVE13) |
-| Branch | `main` @ `b8fc9dbf` (#2391) |
-| Production tip | `b8fc9dbf` — matches `origin/main` |
+| Branch | `main` @ `aa94c759` (#2391) |
+| Production tip | `aa94c759` — matches `origin/main` |
 | Authority | Measured gates + live GitHub/Vercel status — not marketing claims |
 | **STORE STATUS** | **HOLD** |
 | Final decision | **`WEB_RELEASED_NATIVE_HOLD`** |
 | Internal | **`INTERNAL_CLOSURE_COMPLETE`** (see boundary report) |
-| Web deployment | **PASS** — Vercel Production SUCCESS; live `version.json` = `b8fc9dbf` |
+| Web deployment | **PASS** — Vercel Production SUCCESS; live `version.json` = `aa94c759` |
 | Boundary report | `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md` |
 | Historical Phase-7 merges | #2329–#2334 (superseded tip; kept for ancestry) |
 

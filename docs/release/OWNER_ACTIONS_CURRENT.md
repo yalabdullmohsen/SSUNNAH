@@ -1,7 +1,7 @@
 # OWNER ACTIONS CURRENT — سُنّة
 
 **Updated:** 2026-09-30 (post-WAVE13 tip sync)  
-**Live web tip (not Store RC):** `b8fc9dbf` — see `CURRENT_PROJECT_STATUS.md`  
+**Live web tip (not Store RC):** `aa94c759` — see `CURRENT_PROJECT_STATUS.md`  
 **Device evidence procedure:** `docs/audit/WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md`  
 **Rule:** Agents must **not** execute these. Record only.
 
