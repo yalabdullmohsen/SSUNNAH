@@ -14,6 +14,7 @@ import { toArabicIndicDigits as toArabicDigits } from "@/lib/numerals";
 import { parseVerseKey } from "@/features/mushaf-madinah/mushaf-page-for-ayah";
 import { MushafBookmarkEditorShell } from "./MushafBookmarkEditorShell";
 
+import { Button } from "@/components/ui/button";
 type Props = {
   verseKey: string;
   page: number;
@@ -120,29 +121,29 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
       onClose={onClose}
       footer={
         <>
-          <button
+          <Button
             type="button"
             className="rb-composer__cancel rb-editor-shell__secondary"
             disabled={busy}
             onClick={onClose}
           >
             إلغاء
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             className="rb-composer__save rb-editor-shell__primary"
             disabled={busy}
             onClick={() => void save()}
           >
             {busy ? "جاري الحفظ…" : "حفظ الفاصل"}
-          </button>
+          </Button>
         </>
       }
     >
       <div className="rb-composer" data-rb-composer="1">
         <div className="rb-composer__kinds" role="listbox" aria-label="نوع العلامة">
           {MUSHAF_PRODUCT_BOOKMARK_KINDS.map((k) => (
-            <button
+            <Button
               key={k.id}
               type="button"
               role="option"
@@ -153,7 +154,7 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
             >
               <span className="rb-composer__kind-dot" aria-hidden="true" />
               {k.actionLabel}
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -185,7 +186,7 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
         {kind === "khatmah" ? (
           <div className="rb-composer__slots" role="group" aria-label="نوع الختمة">
             {MUSHAF_KHATMAH_TYPES.map((t) => (
-              <button
+              <Button
                 key={t.id}
                 type="button"
                 className={`rb-composer__slot${khatmaType === t.id ? " is-active" : ""}`}
@@ -193,7 +194,7 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
                 onClick={() => setKhatmaType(t.id)}
               >
                 {t.label}
-              </button>
+              </Button>
             ))}
           </div>
         ) : null}
@@ -211,7 +212,7 @@ export const MushafBookmarkComposer = memo(function MushafBookmarkComposer({
             />
             <div className="rb-composer__swatches" role="group" aria-label="لون مخصص">
               {CUSTOM_SWATCHES.map((c) => (
-                <button
+                <Button
                   key={c}
                   type="button"
                   className={`rb-composer__swatch${customColor === c ? " is-active" : ""}`}

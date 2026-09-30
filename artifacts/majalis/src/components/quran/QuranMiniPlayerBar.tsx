@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 /**
  * شريط تلاوة مصغّر ثابت فوق شريط التنقّل — توسعة Sheet منظمة + إغلاق صريح.
  * COLLAPSE = طي مع استمرار التلاوة · CLOSE = إيقاف + إزالة من الشاشة.
@@ -210,16 +211,16 @@ export function QuranMiniPlayerBar() {
 
       {expanded ? (
         <div className="quran-mini-player__head">
-          <button
+          <Button
             type="button"
             className="quran-mini-player__collapse"
             aria-label="طي المشغل"
             onClick={collapse}
           >
             <ChevronDown size={18} aria-hidden="true" />
-          </button>
+          </Button>
           <h2 className="quran-mini-player__title">التلاوة</h2>
-          <button
+          <Button
             type="button"
             className="quran-mini-player__close"
             aria-label="إغلاق مشغل التلاوة"
@@ -227,14 +228,14 @@ export function QuranMiniPlayerBar() {
             onClick={closePlayer}
           >
             <X size={18} aria-hidden="true" />
-          </button>
+          </Button>
         </div>
       ) : null}
 
       {isError && (
         <div className="quran-mini-player__error" role="alert">
           <span>{snap.errorMessage || STATUS.networkError}</span>
-          <button
+          <Button
             type="button"
             className="quran-mini-player__retry"
             onClick={() => {
@@ -244,12 +245,12 @@ export function QuranMiniPlayerBar() {
             }}
           >
             {BUTTON.retry}
-          </button>
+          </Button>
         </div>
       )}
 
       <div className="quran-mini-player__bar">
-        <button
+        <Button
           type="button"
           className="quran-mini-player__meta"
           onClick={() => navigate(`/mushaf/page/${page}?ayah=${snap.surah}:${snap.ayah}`)}
@@ -259,18 +260,18 @@ export function QuranMiniPlayerBar() {
             {surahName} · آية {toArabicDigits(snap.ayah)}
             {isLoading ? " · تجهيز…" : ""}
           </span>
-        </button>
+        </Button>
 
         <div className="quran-mini-player__controls">
-          <button
+          <Button
             type="button"
             className="quran-mini-player__btn"
             aria-label="الآية السابقة"
             onClick={() => void engine.skipPrev()}
           >
             <SkipBack size={18} />
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             className="quran-mini-player__toggle"
             aria-label={playing ? "إيقاف مؤقت" : "تشغيل"}
@@ -281,28 +282,28 @@ export function QuranMiniPlayerBar() {
             }}
           >
             {playing ? <Pause size={18} /> : <Play size={18} />}
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             className="quran-mini-player__btn"
             aria-label="الآية التالية"
             onClick={() => void engine.skipNext()}
           >
             <SkipForward size={18} />
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             className="quran-mini-player__rate"
             aria-label={`سرعة التشغيل ${rateLabel(snap.playbackRate)}`}
             onClick={() => engine.cycleMiniPlayerRate()}
           >
             {rateLabel(snap.playbackRate)}
-          </button>
+          </Button>
         </div>
 
         {!expanded ? (
           <>
-            <button
+            <Button
               type="button"
               className="quran-mini-player__expand"
               aria-label="توسيع المشغل"
@@ -310,8 +311,8 @@ export function QuranMiniPlayerBar() {
               onClick={expand}
             >
               <ChevronUp size={18} />
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
               className="quran-mini-player__close"
               aria-label="إغلاق مشغل التلاوة"
@@ -319,7 +320,7 @@ export function QuranMiniPlayerBar() {
               onClick={closePlayer}
             >
               <X size={18} />
-            </button>
+            </Button>
           </>
         ) : null}
       </div>
@@ -427,13 +428,13 @@ export function QuranMiniPlayerBar() {
                 </select>
               </label>
               <div className="quran-mini-player__hifz-actions">
-                <button type="button" className="quran-mini-player__hifz-apply" onClick={applyHifz}>
+                <Button type="button" className="quran-mini-player__hifz-apply" onClick={applyHifz}>
                   بدء التكرار
-                </button>
+                </Button>
                 {loopActive ? (
-                  <button type="button" className="quran-mini-player__hifz-clear" onClick={clearHifz}>
+                  <Button type="button" className="quran-mini-player__hifz-clear" onClick={clearHifz}>
                     إيقاف التكرار
-                  </button>
+                  </Button>
                 ) : null}
               </div>
             </div>

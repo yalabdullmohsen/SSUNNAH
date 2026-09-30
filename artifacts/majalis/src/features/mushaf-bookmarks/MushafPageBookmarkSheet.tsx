@@ -17,6 +17,7 @@ import { haptics } from "@/lib/haptics";
 import { parseVerseKey } from "@/features/mushaf-madinah/mushaf-page-for-ayah";
 import { MushafBookmarkEditorShell } from "./MushafBookmarkEditorShell";
 
+import { Button } from "@/components/ui/button";
 type Props = {
   page: number;
   /** أول آية ظاهرة — إن وُجدت */
@@ -157,32 +158,32 @@ export const MushafPageBookmarkSheet = memo(function MushafPageBookmarkSheet({
       footer={
         detail ? (
           <>
-            <button
+            <Button
               type="button"
               className="rb-page-sheet__ghost rb-editor-shell__secondary"
               disabled={busy}
               onClick={() => setDetail(null)}
             >
               رجوع
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
               className="rb-page-sheet__confirm rb-editor-shell__primary"
               disabled={busy}
               onClick={() => void saveDetail()}
             >
               {busy ? "جاري الحفظ…" : "حفظ"}
-            </button>
+            </Button>
           </>
         ) : (
-          <button
+          <Button
             type="button"
             className="rb-page-sheet__ghost rb-editor-shell__secondary"
             disabled={busy}
             onClick={onClose}
           >
             إلغاء
-          </button>
+          </Button>
         )
       }
     >
@@ -190,7 +191,7 @@ export const MushafPageBookmarkSheet = memo(function MushafPageBookmarkSheet({
         {!detail ? (
           <div className="rb-page-sheet__actions" role="group" aria-label="نوع العلامة">
             {MUSHAF_PRODUCT_BOOKMARK_KINDS.map((k) => (
-              <button
+              <Button
                 key={k.id}
                 type="button"
                 className="rb-page-sheet__action"
@@ -210,7 +211,7 @@ export const MushafPageBookmarkSheet = memo(function MushafPageBookmarkSheet({
               >
                 <span className="rb-page-sheet__dot" aria-hidden="true" />
                 {k.actionLabel}
-              </button>
+              </Button>
             ))}
           </div>
         ) : (
@@ -271,7 +272,7 @@ export const MushafPageBookmarkSheet = memo(function MushafPageBookmarkSheet({
             {detail === "khatmah" ? (
               <div className="rb-page-sheet__khatmah" role="group" aria-label="نوع الختمة">
                 {MUSHAF_KHATMAH_TYPES.map((t) => (
-                  <button
+                  <Button
                     key={t.id}
                     type="button"
                     className={`rb-page-sheet__chip${khatmaType === t.id ? " is-active" : ""}`}
@@ -279,7 +280,7 @@ export const MushafPageBookmarkSheet = memo(function MushafPageBookmarkSheet({
                     onClick={() => setKhatmaType(t.id)}
                   >
                     {t.label}
-                  </button>
+                  </Button>
                 ))}
                 <p className="rb-page-sheet__hint">تتبع التقدم على ٦٠٤ صفحة</p>
               </div>
