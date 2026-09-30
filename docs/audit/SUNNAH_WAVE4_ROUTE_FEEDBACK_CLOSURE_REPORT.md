@@ -2,7 +2,8 @@
 
 ## STATUS
 
-- **COMPLETE** (product + gates) — seal to **WAVE4_MERGED_AND_DEPLOYED** after merge/deploy
+- **COMPLETE**
+- Production: **MATCH** `6d17607a` · Auto Deploy · Smoke PASS
 
 ## LIVE BASELINE
 
@@ -93,12 +94,20 @@ DEVICE_REQUIRED للمسّ الفيزيائي/VoiceOver واسع. RTL + Dark ع�
 
 ## PR DELIVERY
 
-- Branch: `cursor/final-repo-closure-wave4`  
-- Title: `refactor(ux): complete public feedback and route-quality states`
+- PR: https://github.com/yalabdullmohsen/majalis/pull/2379
+- Merge: `6d17607a0a3590cf14900fa1edea7b44ae49714b`
+- Required checks PASS (Verify build · repo-gates · static-checks · visual-snapshot · Color contrast · LHCI · ci-required)
+
 
 ## PRODUCTION SMOKE TESTS
 
-(بعد الدمج) `/` search lessons fiqh my-learning login mushaf prayer version.json MATCH.
+| Check | Result |
+|---|---|
+| `version.json` | `6d17607a` = `origin/main` **MATCH** · `builtAt=2026-09-30T08:37:59.589Z` |
+| `/api/healthz` | HTTP 200 · commit `6d17607a` |
+| Core | `/` search quran-hub mushaf prayer lessons hadith fiqh adhkar settings my-learning login register → 200 |
+| `/admin/v3` | HTTP 404 «غير متاح» (access control — expected) |
+
 
 ## REGRESSIONS
 
@@ -126,4 +135,4 @@ WAVE5 فقط بعد **WAVE4_MERGED_AND_DEPLOYED** + prod MATCH + smoke.
 
 ## FINAL DECISION
 
-**WAVE4_COMPLETE** — pending merge/deploy → **WAVE4_MERGED_AND_DEPLOYED**.
+**WAVE4_MERGED_AND_DEPLOYED**
