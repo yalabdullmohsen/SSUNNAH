@@ -20,6 +20,7 @@ import { getPublishedQuestionCount } from "@/data/quiz-bank";
 import { getQuizQuestions, getLocalUsedQuizIds, markQuizQuestionUsed } from "@/lib/supabase";
 import { recordQuizAttempt } from "@/lib/quiz-performance-service";
 import { hapticNotify } from "@/lib/capacitor-utils";
+import { Button } from "@/components/ui/button";
 
 // ─── Icon renderer ─────────────────────────────────────────────────────────
 
@@ -499,7 +500,7 @@ function SetupPhase({
         <h2 className="qzg-section-h2">اختر النمط</h2>
         <div className="qzg-play-modes" role="group" aria-label="أنماط التحدي">
           {PLAY_MODES.map((m) => (
-            <button
+            <Button variant="ghost"
               key={m.id}
               type="button"
               aria-pressed={playMode === m.id}
@@ -508,7 +509,7 @@ function SetupPhase({
             >
               <span className="qzg-play-mode__label">{m.label}</span>
               <span className="qzg-play-mode__desc">{m.desc}</span>
-            </button>
+            </Button>
           ))}
         </div>
       </section>
@@ -518,7 +519,7 @@ function SetupPhase({
           <h2 className="qzg-section-h2">عدد الفئات في الجولة</h2>
           <div className="qzg-play-modes" role="group" aria-label="عدد الفئات">
             {([5, 10, 15] as const).map((n) => (
-              <button
+              <Button variant="ghost"
                 key={n}
                 type="button"
                 aria-pressed={questionCount === n}
@@ -527,7 +528,7 @@ function SetupPhase({
               >
                 <span className="qzg-play-mode__label">{n}</span>
                 <span className="qzg-play-mode__desc">فئات</span>
-              </button>
+              </Button>
             ))}
           </div>
         </section>
@@ -541,7 +542,7 @@ function SetupPhase({
             <h2 className="qzg-section-h2"><Users size={18} className="inline ms-1" />عدد اللاعبين</h2>
             <div className="qzg-team-count-row" role="group" aria-label="اختر عدد اللاعبين">
               {([1, 2, 3, 4] as const).map((n) => (
-                <button
+                <Button variant="ghost"
                   key={n}
                   type="button"
                   aria-pressed={playerCount === n}
@@ -549,7 +550,7 @@ function SetupPhase({
                   className={`qzg-count-btn${playerCount === n ? "qzg-count-btn--on" : ""}`}
                 >
                   {n === 1 ? "1 لاعب" : `${n} لاعبين`}
-                </button>
+                </Button>
               ))}
             </div>
             {playerCount === 1 ? (
@@ -597,14 +598,14 @@ function SetupPhase({
                 <span className="qzg-cats-count">{selected.length} · {GAME_CATEGORIES.length}</span>
               </div>
               <div className="qzg-cats-actions">
-                <button type="button" className="qzg-chip-btn" onClick={selectAll}>تحديد الكل</button>
-                <button type="button" className="qzg-chip-btn" onClick={clearAll}>مسح</button>
+                <Button variant="ghost" type="button" className="qzg-chip-btn" onClick={selectAll}>تحديد الكل</Button>
+                <Button variant="ghost" type="button" className="qzg-chip-btn" onClick={clearAll}>مسح</Button>
               </div>
               <div className="qzg-cats-grid qzg-cats-grid--dynamic" role="group" aria-label="فئات التحدي">
                 {GAME_CATEGORIES.map((cat) => {
                   const on = selected.includes(cat.id);
                   return (
-                    <button
+                    <Button variant="ghost"
                       key={cat.id}
                       type="button"
                       onClick={() => toggle(cat.id)}
@@ -615,7 +616,7 @@ function SetupPhase({
                         <CategoryIcon name={cat.icon} size={18} />
                       </div>
                       {cat.name}
-                    </button>
+                    </Button>
                   );
                 })}
               </div>
@@ -632,7 +633,7 @@ function SetupPhase({
         </>
       )}
 
-      <button
+      <Button variant="ghost"
         type="button"
         onClick={handleStart}
         disabled={!canStart}
@@ -643,7 +644,7 @@ function SetupPhase({
           : canStart
             ? "ابدأ التحدي"
             : `اختر ${minCategories} فئة على الأقل`}
-      </button>
+      </Button>
     </div>
   );
 }
@@ -693,7 +694,7 @@ function BoardPhase({
               const cell = getCellFromBoard(cat.id, pts);
               if (!cell) return <div key={`${cat.id}-${pts}`} />;
               return (
-                <button
+                <Button variant="ghost"
                   key={`${cat.id}-${pts}`}
                   type="button"
                   disabled={cell.used}
@@ -701,7 +702,7 @@ function BoardPhase({
                   className={`qzg-board-cell${cell.used ? "qzg-board-cell--used" : ""}`}
                 >
                   {cell.used ? "—" : pts}
-                </button>
+                </Button>
               );
             }),
           )}
@@ -709,9 +710,9 @@ function BoardPhase({
       </div>
 
       <div className="qzg-board-reset-row">
-        <button type="button" onClick={() => dispatch({ type: "RESET" })} className="qzg-btn-ghost">
+        <Button variant="ghost" type="button" onClick={() => dispatch({ type: "RESET" })} className="qzg-btn-ghost">
           ← إعادة الإعداد
-        </button>
+        </Button>
       </div>
     </div>
   );
@@ -805,7 +806,7 @@ function QuestionPhase({
         {hasChoices && !revealed ? (
           <div className="qzg-choices" role="listbox" aria-label="الخيارات">
             {activeQuestion!.choices!.map((choice, idx) => (
-              <button
+              <Button variant="ghost"
                 key={`${activeQuestion!.id}-${idx}`}
                 type="button"
                 role="option"
@@ -814,7 +815,7 @@ function QuestionPhase({
                 onClick={() => setPickedChoice(idx)}
               >
                 {choice}
-              </button>
+              </Button>
             ))}
           </div>
         ) : null}
@@ -845,15 +846,15 @@ function QuestionPhase({
 
         {mode === "team" && !passedToTeamId && (
           <div className="qzg-q-transfer-row">
-            <button type="button" onClick={() => requestTeamAction("transfer")} className="qzg-btn-transfer">
+            <Button variant="ghost" type="button" onClick={() => requestTeamAction("transfer")} className="qzg-btn-transfer">
               <Send size={14} className="inline ms-1" />أرسل لفريق آخر
-            </button>
+            </Button>
           </div>
         )}
       </div>
 
       {!revealed && (
-        <button
+        <Button variant="ghost"
           type="button"
           onClick={() => {
             setRevealed(true);
@@ -867,7 +868,7 @@ function QuestionPhase({
         >
           <Search size={14} className="inline ms-1" />
           {hasChoices ? "تأكيد الإجابة" : "كشف الإجابة"}
-        </button>
+        </Button>
       )}
 
       {revealed && !(hasChoices && pickedChoice != null && activeQuestion?.correctIndex != null) && (
@@ -879,19 +880,19 @@ function QuestionPhase({
               <p className="qzg-hint-text"><Lightbulb size={13} className="inline ms-1" />{activeQuestion?.hint}</p>
             )}
             {!showHint && activeQuestion?.hint && (
-              <button type="button" onClick={() => dispatch({ type: "REVEAL_HINT" })} className="qzg-btn-ghost qzg-btn-ghost--mt">
+              <Button variant="ghost" type="button" onClick={() => dispatch({ type: "REVEAL_HINT" })} className="qzg-btn-ghost qzg-btn-ghost--mt">
                 عرض الشرح
-              </button>
+              </Button>
             )}
           </div>
 
           <div className="qzg-result-grid">
-            <button type="button" onClick={onMarkCorrect} className="qzg-btn-correct">
+            <Button variant="ghost" type="button" onClick={onMarkCorrect} className="qzg-btn-correct">
               <CheckCircle2 size={14} className="inline ms-1" />صحيح +{activeCell.points}
-            </button>
-            <button type="button" onClick={onMarkWrong} className="qzg-btn-wrong">
+            </Button>
+            <Button variant="ghost" type="button" onClick={onMarkWrong} className="qzg-btn-wrong">
               <XCircle size={14} className="inline ms-1" />خطأ
-            </button>
+            </Button>
           </div>
         </>
       )}
@@ -907,32 +908,32 @@ function QuestionPhase({
           {mode === "solo" ? (
             <>
               {activeTeamObj.lifelines.pass && (
-                <button type="button" onClick={() => dispatch({ type: "SOLO_SKIP" })}
+                <Button variant="ghost" type="button" onClick={() => dispatch({ type: "SOLO_SKIP" })}
                   className="qzg-ll-btn qzg-ll-btn--pass">
                   مساعدة إضافية (تخطَّ السؤال)
-                </button>
+                </Button>
               )}
               {noLifelinesLeft && <span className="qzg-no-lifelines">لا وسائل متبقية</span>}
             </>
           ) : (
             <>
               {activeTeamObj.lifelines.penalize && (
-                <button type="button" onClick={() => requestTeamAction("penalize")}
+                <Button variant="ghost" type="button" onClick={() => requestTeamAction("penalize")}
                   className="qzg-ll-btn qzg-ll-btn--penalize">
                   خصم {activeCell.points} من فريق منافس
-                </button>
+                </Button>
               )}
               {activeTeamObj.lifelines.eliminate && (
-                <button type="button" onClick={() => requestTeamAction("eliminate")}
+                <Button variant="ghost" type="button" onClick={() => requestTeamAction("eliminate")}
                   className="qzg-ll-btn qzg-ll-btn--eliminate">
                   استبعاد لاعب
-                </button>
+                </Button>
               )}
               {activeTeamObj.lifelines.pass && !passedToTeamId && (
-                <button type="button" onClick={() => requestTeamAction("pass")}
+                <Button variant="ghost" type="button" onClick={() => requestTeamAction("pass")}
                   className="qzg-ll-btn qzg-ll-btn--pass">
                   تمرير لفريق آخر (وسيلة)
-                </button>
+                </Button>
               )}
               {noLifelinesLeft && <span className="qzg-no-lifelines">لا وسائل متبقية</span>}
             </>
@@ -944,11 +945,11 @@ function QuestionPhase({
             <p className="qzg-target-picker__label">اختر الفريق المستهدَف:</p>
             <div className="qzg-target-picker__list">
               {otherTeams.map((t) => (
-                <button key={t.id} type="button" onClick={() => applyTeamAction(pendingTarget, t.id)} className="qzg-target-btn">
+                <Button variant="ghost" key={t.id} type="button" onClick={() => applyTeamAction(pendingTarget, t.id)} className="qzg-target-btn">
                   {t.name}
-                </button>
+                </Button>
               ))}
-              <button type="button" onClick={() => setPendingTarget(null)} className="qzg-btn-ghost">إلغاء</button>
+              <Button variant="ghost" type="button" onClick={() => setPendingTarget(null)} className="qzg-btn-ghost">إلغاء</Button>
             </div>
           </div>
         )}
@@ -992,9 +993,9 @@ function WinnerPhase({ teams, mode, onReset }: { teams: Team[]; mode: GameMode; 
         ))}
       </div>
 
-      <button type="button" onClick={onReset} className="qzg-btn-gold qzg-btn-gold--px">
+      <Button variant="ghost" type="button" onClick={onReset} className="qzg-btn-gold qzg-btn-gold--px">
         <RefreshCw size={14} className="inline ms-1" />لعبة جديدة
-      </button>
+      </Button>
     </div>
   );
 }

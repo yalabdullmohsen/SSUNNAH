@@ -27,6 +27,7 @@ import { ProphetStorySectionHeader } from "@/components/prophets/ProphetStorySec
 import { ProphetStorySourcesBlock } from "@/components/prophets/ProphetStorySourcesBlock";
 import { ProphetStoryTabs } from "@/components/prophets/ProphetStoryTabs";
 import { PROPHET_MUSHAF_MENTIONS, PROPHET_MUSHAF_NAV_SOURCE } from "@/lib/prophet-mushaf-mentions";
+import { Button } from "@/components/ui/button";
 
 function knowledgeBodyBlocks(body: string): { title?: string; paragraphs: string[] }[] {
   const chunks = body.split(/\n(?=##\s)/);
@@ -629,7 +630,7 @@ function ProphetDetailView({
             <ProphetStorySectionHeader title="أبرز السور القرآنية" />
             <div className="prophet-chips-lux">
               {p.mainSurahs.map((s) => (
-                <button
+                <Button variant="ghost"
                   key={s}
                   type="button"
                   className="prophet-chip-lux prophet-chip-lux--interactive"
@@ -637,7 +638,7 @@ function ProphetDetailView({
                   title="الانتقال إلى الاستشهادات إن وُجدت"
                 >
                   سورة {s}
-                </button>
+                </Button>
               ))}
             </div>
           </section>
@@ -732,16 +733,16 @@ function ProphetDetailView({
 
         <div className="prophet-nav-lux">
           {prevProphet ? (
-            <button type="button" className="prophet-nav-lux__btn" onClick={() => onNavigate(prevProphet.slug)}>
+            <Button variant="ghost" type="button" className="prophet-nav-lux__btn" onClick={() => onNavigate(prevProphet.slug)}>
               <span className="prophet-nav-lux__dir"><ChevronRight size={14} aria-hidden="true" /> السابق</span>
               <span className="prophet-nav-lux__pname">{prevProphet.arabicName}</span>
-            </button>
+            </Button>
           ) : <span />}
           {nextProphet ? (
-            <button type="button" className="prophet-nav-lux__btn prophet-nav-lux__btn--next" onClick={() => onNavigate(nextProphet.slug)}>
+            <Button variant="ghost" type="button" className="prophet-nav-lux__btn prophet-nav-lux__btn--next" onClick={() => onNavigate(nextProphet.slug)}>
               <span className="prophet-nav-lux__dir">التالي <ChevronLeft size={14} aria-hidden="true" /></span>
               <span className="prophet-nav-lux__pname">{nextProphet.arabicName}</span>
-            </button>
+            </Button>
           ) : <span />}
         </div>
       </div>
@@ -765,14 +766,14 @@ function TimelineView({ onSelect }: { onSelect: (slug: string) => void }) {
             className={`prophet-timeline__item prophet-timeline__item--${side}`}
             style={{ "--item-color": color, "--prophet-accent": accent, "--card-i": idx } as React.CSSProperties}
           >
-            <button
+            <Button variant="ghost"
               type="button"
               className="prophet-timeline__dot"
               onClick={() => onSelect(p.slug)}
               aria-label={`قصة ${p.arabicName}`}
             >
               <IslamicStar size={16} color="#fff" />
-            </button>
+            </Button>
             <div
               className="prophet-timeline__card"
               onClick={() => onSelect(p.slug)}
@@ -807,7 +808,7 @@ function UlulAzmView({ onSelect }: { onSelect: (slug: string) => void }) {
           const color = prophetColor(p.slug);
           const accent = prophetAccent(p.slug);
           return (
-            <button
+            <Button variant="ghost"
               type="button"
               key={p.slug}
               className="nb-azm-card"
@@ -833,7 +834,7 @@ function UlulAzmView({ onSelect }: { onSelect: (slug: string) => void }) {
                 <div className="nb-azm-mentions">ذُكر في القرآن {sup.mentioned} مرة</div>
               )}
               <span className="nb-azm-cta" aria-hidden="true">اقرأ القصة <ChevronLeft size={14} aria-hidden="true" /></span>
-            </button>
+            </Button>
           );
         })}
       </div>
@@ -851,7 +852,7 @@ function MiraclesView({ onSelect }: { onSelect: (slug: string) => void }) {
       </div>
       <div className="nb-miracles-grid">
         {MIRACLES_LIST.map((m, i) => (
-          <button
+          <Button variant="ghost"
             key={m.slug + m.ayah}
             type="button"
             className="nb-miracle-card"
@@ -867,7 +868,7 @@ function MiraclesView({ onSelect }: { onSelect: (slug: string) => void }) {
             <p className="nb-miracle-text">{m.miracle}</p>
             <div className="nb-miracle-ref">{m.ayah}</div>
             <span className="nb-miracle-cta">عرض القصة <ChevronLeft size={13} aria-hidden="true" /></span>
-          </button>
+          </Button>
         ))}
       </div>
     </div>
@@ -963,7 +964,7 @@ function QuizView({ onClose }: { onClose: () => void }) {
           <p className="prophet-quiz__remark">
             {pct >= 80 ? "ممتاز! أنت عارف بقصص الأنبياء ✦" : pct >= 60 ? "جيد! استمر في التعلم" : "واصل القراءة لتتعلم أكثر"}
           </p>
-          <button type="button" className="prophet-quiz__btn" onClick={onClose}>العودة للقائمة</button>
+          <Button variant="ghost" type="button" className="prophet-quiz__btn" onClick={onClose}>العودة للقائمة</Button>
         </div>
       </div>
     );
@@ -976,7 +977,7 @@ function QuizView({ onClose }: { onClose: () => void }) {
         <div className="prophet-quiz__progress">
           <div className="prophet-quiz__progress-bar" style={{ "--quiz-pct": `${(idx / QUIZ_QUESTIONS.length) * 100}%` } as React.CSSProperties} />
         </div>
-        <button type="button" aria-label="إغلاق الاختبار" className="prophet-quiz__close" onClick={onClose}>✕</button>
+        <Button variant="ghost" type="button" aria-label="إغلاق الاختبار" className="prophet-quiz__close" onClick={onClose}>✕</Button>
       </div>
       <div className="prophet-quiz__body">
         <IslamicStar size={36} color={IVORY} />
@@ -989,7 +990,7 @@ function QuizView({ onClose }: { onClose: () => void }) {
               else if (opt === answered) cls += " prophet-quiz__opt--wrong";
             }
             return (
-              <button type="button" key={opt} className={cls} onClick={() => answer(opt)}>{opt}</button>
+              <Button variant="ghost" type="button" key={opt} className={cls} onClick={() => answer(opt)}>{opt}</Button>
             );
           })}
         </div>
@@ -1088,7 +1089,7 @@ export default function ProphetStoriesPage({
       <div className="prophets-light-section">
         <div className="prophets-lux-tabs" role="tablist" aria-label="طريقة عرض قصص الأنبياء">
           {TABS.map(t => (
-            <button
+            <Button variant="ghost"
               key={t.id}
               id={`pst-tab-${t.id}`}
               type="button"
@@ -1102,7 +1103,7 @@ export default function ProphetStoriesPage({
               {t.id === "timeline"  && <><CalendarDays size={14} strokeWidth={1.8} aria-hidden="true" /> {t.label}</>}
               {t.id === "quiz"      && <><HelpCircle size={14} strokeWidth={1.8} aria-hidden="true" /> {t.label}</>}
               {!["grid","timeline","quiz"].includes(t.id) && t.label}
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -1147,7 +1148,7 @@ export default function ProphetStoriesPage({
                 aria-label="بحث في قصص الأنبياء"
               />
               {search && (
-                <button type="button" aria-label="مسح البحث" className="prophets-lux-search-clear" onClick={() => setSearch("")}>✕</button>
+                <Button variant="ghost" type="button" aria-label="مسح البحث" className="prophets-lux-search-clear" onClick={() => setSearch("")}>✕</Button>
               )}
             </div>
 

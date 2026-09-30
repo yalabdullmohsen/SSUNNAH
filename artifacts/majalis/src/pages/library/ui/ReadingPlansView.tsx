@@ -12,6 +12,7 @@ import {
   computePlanMetrics, estimatePlanFeasibility,
   type BookReadingPlan, type DayCode, type PaceLevel,
 } from "@/lib/book-reading-plan-service";
+import { Button } from "@/components/ui/button";
 
 const DAY_LABELS: Record<DayCode, string> = {
   sat: "سبت", sun: "أحد", mon: "اثنين", tue: "ثلاثاء", wed: "أربعاء", thu: "خميس", fri: "جمعة",
@@ -75,24 +76,24 @@ function PlanCard({ plan, onChanged }: { plan: BookReadingPlan; onChanged: () =>
             className="rp-log-input"
             aria-label="الصفحة التي وصلت إليها اليوم"
           />
-          <button type="button" onClick={handleLog} className="rp-log-btn">تسجيل</button>
+          <Button variant="ghost" type="button" onClick={handleLog} className="rp-log-btn">تسجيل</Button>
         </div>
       )}
 
       <div className="rp-plan-card__actions">
         {plan.status === "paused" ? (
-          <button type="button" onClick={() => resumePlan(plan.id).then(onChanged)} className="rp-action-btn">
+          <Button variant="ghost" type="button" onClick={() => resumePlan(plan.id).then(onChanged)} className="rp-action-btn">
             <Play size={13} /> استئناف
-          </button>
+          </Button>
         ) : plan.status !== "completed" && plan.status !== "cancelled" ? (
-          <button type="button" onClick={() => pausePlan(plan.id).then(onChanged)} className="rp-action-btn">
+          <Button variant="ghost" type="button" onClick={() => pausePlan(plan.id).then(onChanged)} className="rp-action-btn">
             <Pause size={13} /> إيقاف مؤقت
-          </button>
+          </Button>
         ) : null}
         {plan.status !== "completed" && plan.status !== "cancelled" && (
-          <button type="button" onClick={() => cancelPlan(plan.id).then(onChanged)} className="rp-action-btn rp-action-btn--danger">
+          <Button variant="ghost" type="button" onClick={() => cancelPlan(plan.id).then(onChanged)} className="rp-action-btn rp-action-btn--danger">
             <X size={13} /> إلغاء
-          </button>
+          </Button>
         )}
       </div>
     </Card>
@@ -159,7 +160,7 @@ function NewPlanForm({ userId, onCreated, onClose }: { userId: string; onCreated
     <Card className="rp-new-plan">
       <div className="rp-new-plan__head">
         <h3>خطة قراءة جديدة</h3>
-        <button type="button" onClick={onClose} aria-label="إغلاق" className="rp-close-btn"><X size={16} /></button>
+        <Button variant="ghost" type="button" onClick={onClose} aria-label="إغلاق" className="rp-close-btn"><X size={16} /></Button>
       </div>
 
       <label className="rp-field">
@@ -174,9 +175,9 @@ function NewPlanForm({ userId, onCreated, onClose }: { userId: string; onCreated
           <ul className="rp-suggestions">
             {matches.map((b) => (
               <li key={b.slug}>
-                <button type="button" onClick={() => { setSelectedSlug(b.slug); setQuery(""); }}>
+                <Button variant="ghost" type="button" onClick={() => { setSelectedSlug(b.slug); setQuery(""); }}>
                   {b.titleAr} <span>— {b.authorAr}</span>
-                </button>
+                </Button>
               </li>
             ))}
           </ul>
@@ -209,14 +210,14 @@ function NewPlanForm({ userId, onCreated, onClose }: { userId: string; onCreated
         <span>أيام القراءة</span>
         <div className="rp-days-grid">
           {ALL_DAYS.map((d) => (
-            <button
+            <Button variant="ghost"
               key={d}
               type="button"
               className={`rp-day-chip${readingDays.includes(d) ? " is-active" : ""}`}
               onClick={() => toggleDay(d)}
             >
               {DAY_LABELS[d]}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -225,9 +226,9 @@ function NewPlanForm({ userId, onCreated, onClose }: { userId: string; onCreated
         <span>مستوى الخطة</span>
         <div className="rp-days-grid">
           {(["easy", "medium", "intensive"] as PaceLevel[]).map((p) => (
-            <button key={p} type="button" className={`rp-day-chip${pace === p ? " is-active" : ""}`} onClick={() => setPace(p)}>
+            <Button variant="ghost" key={p} type="button" className={`rp-day-chip${pace === p ? " is-active" : ""}`} onClick={() => setPace(p)}>
               {PACE_LABELS[p]}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -243,14 +244,14 @@ function NewPlanForm({ userId, onCreated, onClose }: { userId: string; onCreated
         </p>
       )}
 
-      <button
+      <Button variant="ghost"
         type="button"
         onClick={handleSubmit}
         disabled={saving || !selectedBook || !Number(totalPages) || readingDays.length === 0}
         className="rp-submit-btn"
       >
         {saving ? "يُحفظ…" : "إنشاء الخطة"}
-      </button>
+      </Button>
     </Card>
   );
 }
@@ -294,9 +295,9 @@ export default function ReadingPlansPage() {
       ) : (
         <>
           <div className="rp-toolbar">
-            <button type="button" onClick={() => setShowForm((v) => !v)} className="rp-new-btn">
+            <Button variant="ghost" type="button" onClick={() => setShowForm((v) => !v)} className="rp-new-btn">
               <Plus size={15} /> خطة جديدة
-            </button>
+            </Button>
           </div>
 
           {showForm && user?.id && (

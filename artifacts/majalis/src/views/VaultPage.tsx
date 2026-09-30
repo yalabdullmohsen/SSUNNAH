@@ -42,6 +42,7 @@ import {
 import "@/styles/pages/vault.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { ACTION, EMPTY } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
 const SECTION_HREF: Record<ReadingSection, string> = {
   adhkar: "/adhkar",
   qa: "/quiz",
@@ -66,6 +67,7 @@ type Tab = "bookmarks" | "resume" | "notes" | "highlights";
 
 function HighlightsLibrary({ query }: { query: string }) {
   const [items, setItems] = useState<TextHighlight[]>(() => listTextHighlights());
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
   useEffect(() => {
     setItems(query.trim() ? searchTextHighlights(query) : listTextHighlights());
@@ -73,6 +75,7 @@ function HighlightsLibrary({ query }: { query: string }) {
 
   const remove = (id: string) => {
     removeTextHighlight(id);
+    setConfirmDeleteId(null);
     setItems(query.trim() ? searchTextHighlights(query) : listTextHighlights());
   };
 
@@ -109,13 +112,25 @@ function HighlightsLibrary({ query }: { query: string }) {
                 {h.href ? (
                   <Link href={h.href} className="vault-note-card__action">فتح</Link>
                 ) : null}
-                <button
-                  type="button"
-                  className="vault-note-card__action vault-note-card__action--danger"
-                  onClick={() => remove(h.id)}
-                >
-                  حذف
-                </button>
+                {confirmDeleteId === h.id ? (
+                  <div className="vault-note-card__confirm" role="alertdialog" aria-label="تأكيد حذف التظليل">
+                    <Button type="button" variant="destructive" size="small" onClick={() => remove(h.id)}>
+                      تأكيد الحذف
+                    </Button>
+                    <Button type="button" variant="ghost" size="small" onClick={() => setConfirmDeleteId(null)}>
+                      إلغاء
+                    </Button>
+                  </div>
+                ) : (
+                  <Button
+                    variant="ghost"
+                    type="button"
+                    className="vault-note-card__action vault-note-card__action--danger"
+                    onClick={() => setConfirmDeleteId(h.id)}
+                  >
+                    حذف
+                  </Button>
+                )}
               </div>
             </div>
           </article>
@@ -171,7 +186,7 @@ function AddNoteModal({
       <div className="vault-modal" role="dialog" aria-modal="true" aria-label="إضافة ملاحظة" onClick={(e) => e.stopPropagation()}>
         <div className="vault-modal__head">
           <h3 className="vault-modal__title">إضافة ملاحظة</h3>
-          <button type="button" className="vault-modal__close" onClick={onClose} aria-label="إغلاق">✕</button>
+          <Button variant="ghost" type="button" className="vault-modal__close" onClick={onClose} aria-label="إغلاق">✕</Button>
         </div>
         <textarea
           ref={textareaRef}
@@ -182,15 +197,15 @@ function AddNoteModal({
           rows={5}
         />
         <div className="vault-modal__foot">
-          <button type="button" className="vault-btn vault-btn--ghost" onClick={onClose}>إلغاء</button>
-          <button
+          <Button variant="ghost" type="button" className="vault-btn vault-btn--ghost" onClick={onClose}>إلغاء</Button>
+          <Button variant="ghost"
             type="button"
             className="vault-btn vault-btn--primary"
             onClick={handleSave}
             disabled={saving || !text.trim()}
           >
             {saving ? "…" : "حفظ"}
-          </button>
+          </Button>
         </div>
       </div>
     </div>
@@ -212,11 +227,13 @@ function NotesTab({
 }) {
   const [editing, setEditing] = useState<string | null>(null);
   const [editText, setEditText] = useState("");
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
   const editTextareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const startEdit = (note: VaultNote) => {
     setEditing(note.id);
     setEditText(note.note_text);
+    setConfirmDeleteId(null);
   };
 
   const saveEdit = (note: VaultNote) => {
@@ -229,9 +246,9 @@ function NotesTab({
   return (
     <div className="vault-notes">
       <div className="vault-notes__toolbar">
-        <button type="button" className="vault-btn vault-btn--primary" onClick={onAdd}>
+        <Button variant="ghost" type="button" className="vault-btn vault-btn--primary" onClick={onAdd}>
           ＋ ملاحظة جديدة
-        </button>
+        </Button>
         <span className="vault-count">{notes.length} ملاحظة</span>
       </div>
 
@@ -256,8 +273,8 @@ function NotesTab({
                   rows={4}
                 />
                 <div className="vault-note-card__edit-actions">
-                  <button type="button" className="vault-btn vault-btn--sm vault-btn--primary" onClick={() => saveEdit(note)}>حفظ</button>
-                  <button type="button" className="vault-btn vault-btn--sm vault-btn--ghost" onClick={() => setEditing(null)}>إلغاء</button>
+                  <Button variant="ghost" type="button" className="vault-btn vault-btn--sm vault-btn--primary" onClick={() => saveEdit(note)}>حفظ</Button>
+                  <Button variant="ghost" type="button" className="vault-btn vault-btn--sm vault-btn--ghost" onClick={() => setEditing(null)}>إلغاء</Button>
                 </div>
               </div>
             ) : (
@@ -272,8 +289,34 @@ function NotesTab({
                     })}
                   </span>
                   <div className="vault-note-card__actions">
-                    <button type="button" className="vault-note-card__action" onClick={() => startEdit(note)}>تعديل</button>
-                    <button type="button" className="vault-note-card__action vault-note-card__action--danger" onClick={() => onDelete(note.id)}>حذف</button>
+                    <Button variant="ghost" type="button" className="vault-note-card__action" onClick={() => startEdit(note)}>تعديل</Button>
+                    {confirmDeleteId === note.id ? (
+                      <div className="vault-note-card__confirm" role="alertdialog" aria-label="تأكيد حذف الملاحظة">
+                        <Button
+                          type="button"
+                          variant="destructive"
+                          size="small"
+                          onClick={() => {
+                            onDelete(note.id);
+                            setConfirmDeleteId(null);
+                          }}
+                        >
+                          تأكيد الحذف
+                        </Button>
+                        <Button type="button" variant="ghost" size="small" onClick={() => setConfirmDeleteId(null)}>
+                          إلغاء
+                        </Button>
+                      </div>
+                    ) : (
+                      <Button
+                        variant="ghost"
+                        type="button"
+                        className="vault-note-card__action vault-note-card__action--danger"
+                        onClick={() => setConfirmDeleteId(note.id)}
+                      >
+                        حذف
+                      </Button>
+                    )}
                   </div>
                 </div>
               </>
@@ -292,6 +335,7 @@ function GuestVault() {
   const [offline, setOffline] = useState<OfflineReadingItem[]>(() => listOfflineReading());
   const [openOfflineId, setOpenOfflineId] = useState<string | null>(null);
   const [search, setSearch] = useState("");
+  const [confirmRemoveId, setConfirmRemoveId] = useState<string | null>(null);
   const highlightCount = listTextHighlights().length;
 
   const progressStore = getAllReadingProgress();
@@ -314,6 +358,7 @@ function GuestVault() {
 
   const removeBookmark = (b: LocalBookmark) => {
     removeLocalBookmark(b.contentType, b.contentId);
+    setConfirmRemoveId(null);
     setBookmarks(listLocalBookmarks());
   };
 
@@ -350,7 +395,7 @@ function GuestVault() {
       </div>
 
       <div className="vault-tabs" role="tablist" aria-label="تبويبات المحفظة المحلية">
-        <button
+        <Button variant="ghost"
           type="button"
           role="tab"
           aria-selected={tab === "bookmarks"}
@@ -359,8 +404,8 @@ function GuestVault() {
         >
           المحفوظات
           <span className="vault-tab__count">{bookmarks.length}</span>
-        </button>
-        <button
+        </Button>
+        <Button variant="ghost"
           type="button"
           role="tab"
           aria-selected={tab === "resume"}
@@ -369,8 +414,8 @@ function GuestVault() {
         >
           قيد القراءة
           <span className="vault-tab__count">{resume.length}</span>
-        </button>
-        <button
+        </Button>
+        <Button variant="ghost"
           type="button"
           role="tab"
           aria-selected={tab === "offline"}
@@ -379,8 +424,8 @@ function GuestVault() {
         >
           قراءة لاحقًا
           <span className="vault-tab__count">{offline.length}</span>
-        </button>
-        <button
+        </Button>
+        <Button variant="ghost"
           type="button"
           role="tab"
           aria-selected={tab === "highlights"}
@@ -389,7 +434,7 @@ function GuestVault() {
         >
           مكتبة الفوائد
           <span className="vault-tab__count">{highlightCount}</span>
-        </button>
+        </Button>
       </div>
 
       {tab === "bookmarks" && (
@@ -414,9 +459,25 @@ function GuestVault() {
                 <span className="vault-item-card__date">
                   {new Date(b.savedAt).toLocaleDateString("ar-SA", { day: "numeric", month: "short" })}
                 </span>
-                <button type="button" className="vault-item-card__link" onClick={() => removeBookmark(b)}>
-                  إزالة
-                </button>
+                {confirmRemoveId === b.id ? (
+                  <div className="vault-item-card__confirm" role="alertdialog" aria-label="تأكيد إزالة المحفوظ">
+                    <Button type="button" variant="destructive" size="small" onClick={() => removeBookmark(b)}>
+                      تأكيد
+                    </Button>
+                    <Button type="button" variant="ghost" size="small" onClick={() => setConfirmRemoveId(null)}>
+                      إلغاء
+                    </Button>
+                  </div>
+                ) : (
+                  <Button
+                    variant="ghost"
+                    type="button"
+                    className="vault-item-card__link"
+                    onClick={() => setConfirmRemoveId(b.id)}
+                  >
+                    إزالة
+                  </Button>
+                )}
               </div>
             </div>
           ))}
@@ -463,13 +524,13 @@ function GuestVault() {
             <article key={o.id} className="vault-item-card vault-item-card--offline">
               <span className="vault-item-card__icon"><VaultIcon type={o.contentType || "article"} /></span>
               <div className="vault-item-card__body">
-                <button
+                <Button variant="ghost"
                   type="button"
                   className="vault-item-card__title"
                   onClick={() => setOpenOfflineId((id) => (id === o.id ? null : o.id))}
                 >
                   {o.title}
-                </button>
+                </Button>
                 <span className="vault-item-card__type">نص محفوظ على الجهاز</span>
                 {openOfflineId === o.id && (
                   <p className="vault-offline-text" dir="rtl">{o.text}</p>
@@ -479,9 +540,9 @@ function GuestVault() {
                 <span className="vault-item-card__date">
                   {new Date(o.savedAt).toLocaleDateString("ar-SA", { day: "numeric", month: "short" })}
                 </span>
-                <button type="button" className="vault-item-card__link" onClick={() => removeOffline(o.id)}>
+                <Button variant="ghost" type="button" className="vault-item-card__link" onClick={() => removeOffline(o.id)}>
                   إزالة
-                </button>
+                </Button>
               </div>
             </article>
           ))}
@@ -608,14 +669,14 @@ export default function VaultPage() {
           dir="rtl"
         />
         {search && (
-          <button type="button" className="vault-search-clear" onClick={() => setSearch("")} aria-label="مسح البحث">✕</button>
+          <Button variant="ghost" type="button" className="vault-search-clear" onClick={() => setSearch("")} aria-label="مسح البحث">✕</Button>
         )}
       </div>
 
       {/* Tabs */}
       <div className="vault-tabs" role="tablist" aria-label="تبويبات مستودع المعرفة">
         {tabs.map((t) => (
-          <button
+          <Button variant="ghost"
             key={t.key}
             type="button"
             role="tab"
@@ -626,7 +687,7 @@ export default function VaultPage() {
           >
             {t.label}
             <span className="vault-tab__count">{t.count}</span>
-          </button>
+          </Button>
         ))}
       </div>
 

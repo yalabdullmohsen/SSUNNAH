@@ -22,6 +22,7 @@ import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/scholarly-research.css";
 import { ListScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 type View = "search" | "library";
 
@@ -245,7 +246,7 @@ export default function ScholarlyResearchPage() {
       <div className="srp-subnav" role="tablist" aria-label="تبويبات البحث العلمي">
         <div className="srp-subnav__inner">
           {(["search", "library"] as View[]).map((v) => (
-            <button
+            <Button variant="ghost"
               key={v}
               id={`srp-tab-${v}`}
               type="button"
@@ -259,7 +260,7 @@ export default function ScholarlyResearchPage() {
                 ? <><Search  size={13} aria-hidden="true" /> البحث</>
                 : <><BookOpen size={13} aria-hidden="true" /> مكتبتي</>
               }
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -297,21 +298,21 @@ export default function ScholarlyResearchPage() {
               </div>
 
               <div className="srp-form-actions">
-                <button
+                <Button variant="ghost"
                   type="submit"
                   disabled={loading || !query.trim()}
                   className="citation-btn citation-btn--primary srp-submit-btn disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? "يبحث…" : <><Search size={14} aria-hidden="true" /> بحث</>}
-                </button>
+                </Button>
                 {result && (
                   <>
-                    <button type="button" onClick={handleSave} aria-label="حفظ في مكتبتي" className="srp-action-btn">
+                    <Button variant="ghost" type="button" onClick={handleSave} aria-label="حفظ في مكتبتي" className="srp-action-btn">
                       <Save size={15} aria-hidden="true" />
-                    </button>
-                    <button type="button" onClick={handleExportMd} aria-label="تصدير Markdown" className="srp-action-btn">
+                    </Button>
+                    <Button variant="ghost" type="button" onClick={handleExportMd} aria-label="تصدير Markdown" className="srp-action-btn">
                       <Download size={15} aria-hidden="true" />
-                    </button>
+                    </Button>
                   </>
                 )}
                 {saveMsg && <span className="srp-save-msg" role="status">{saveMsg}</span>}
@@ -325,17 +326,17 @@ export default function ScholarlyResearchPage() {
                   <span className="srp-history__label">
                     <Clock size={13} aria-hidden="true" /> أسئلة سابقة
                   </span>
-                  <button
+                  <Button variant="ghost"
                     type="button"
                     className="srp-history__clear"
                     onClick={() => { clearSrpHistory(); setHistory([]); }}
                   >
                     مسح الكل
-                  </button>
+                  </Button>
                 </div>
                 <div className="srp-history__chips">
                   {history.map((h) => (
-                    <button
+                    <Button variant="ghost"
                       key={h}
                       type="button"
                       className="srp-history__chip"
@@ -343,7 +344,7 @@ export default function ScholarlyResearchPage() {
                     >
                       <Clock size={11} aria-hidden="true" />
                       <span className="srp-history__chip-text">{h}</span>
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>
@@ -354,7 +355,7 @@ export default function ScholarlyResearchPage() {
               <div className="srp-suggestions">
                 <div className="srp-intent-row" role="tablist" aria-label="تصفية الأسئلة">
                   {INTENTS.map((it) => (
-                    <button
+                    <Button variant="ghost"
                       key={it}
                       role="tab"
                       type="button"
@@ -363,19 +364,19 @@ export default function ScholarlyResearchPage() {
                       aria-selected={intent === it}
                     >
                       {INTENT_LABELS[it]}
-                    </button>
+                    </Button>
                   ))}
                 </div>
                 <div className="srp-prompts">
                   {filteredPrompts.map((p) => (
-                    <button
+                    <Button variant="ghost"
                       key={p.text}
                       type="button"
                       onClick={() => handleSearch(p.text)}
                       className="srp-prompt-btn"
                     >
                       {p.text}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>
@@ -431,9 +432,9 @@ export default function ScholarlyResearchPage() {
               <div className="srp-empty">
                 <Inbox size={40} strokeWidth={1.3} aria-hidden="true" className="srp-empty__icon" />
                 <p>لم تحفظ أي بحث بعد.</p>
-                <button type="button" onClick={() => setView("search")} className="srp-start-search">
+                <Button variant="ghost" type="button" onClick={() => setView("search")} className="srp-start-search">
                   ابدأ بحثاً الآن ←
-                </button>
+                </Button>
               </div>
             )}
 
@@ -441,7 +442,7 @@ export default function ScholarlyResearchPage() {
               <div key={item.id} className="srp-lib-item">
                 <div className="srp-lib-item__head">
                   <h3 className="srp-lib-title">{item.title || item.query_text}</h3>
-                  <button
+                  <Button variant="ghost"
                     type="button"
                     onClick={() => handleDelete(item.id)}
                     className="srp-lib-del"
@@ -449,7 +450,7 @@ export default function ScholarlyResearchPage() {
                     aria-label="حذف هذا البحث"
                   >
                     <X size={14} aria-hidden="true" />
-                  </button>
+                  </Button>
                 </div>
 
                 <div
@@ -479,7 +480,7 @@ export default function ScholarlyResearchPage() {
                   </span>
                 </div>
 
-                <button
+                <Button variant="ghost"
                   type="button"
                   onClick={() => {
                     setView("search");
@@ -489,7 +490,7 @@ export default function ScholarlyResearchPage() {
                   className="srp-lib-search-btn"
                 >
                   إعادة البحث ←
-                </button>
+                </Button>
               </div>
             ))}
           </div>
