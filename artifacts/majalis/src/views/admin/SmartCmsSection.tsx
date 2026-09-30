@@ -12,6 +12,7 @@ import {
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { useAdminShell } from "./AdminShell";
 
+import { Button } from "@/components/ui/button";
 const ERROR_MESSAGES: Record<string, string> = {
   unknown_action:    "تعذّر تحليل المحتوى، يُرجى المحاولة مرة أخرى.",
   missing_text:      "يُرجى إدخال نص قبل التحليل.",
@@ -160,14 +161,14 @@ export function SmartCmsSection() {
 
       <div className="scm-tabs">
         {(["text", "url", "image"] as InputMode[]).map((m) => (
-          <button
+          <Button
             type="button"
             key={m}
             className={`scm-tab${mode === m ? " scm-tab--active" : ""}`}
             onClick={() => setMode(m)}
           >
             {TAB_LABELS[m]}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -184,14 +185,14 @@ export function SmartCmsSection() {
               </span>
               <div className="scm-hints-row" role="group" aria-labelledby="scm-content-hint-label">
                 {CONTENT_HINTS.map((h) => (
-                  <button
+                  <Button
                     key={h}
                     type="button"
                     onClick={() => setHint(hint === h ? "" : h)}
                     className={`scm-hint-btn${hint === h ? " scm-hint-btn--active" : ""}`}
                   >
                     {h}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -212,18 +213,18 @@ export function SmartCmsSection() {
                 <span className="scm-char-count">{rawText.length} حرف</span>
                 <div className="scm-textarea-actions">
                   {rawText && (
-                    <button type="button" onClick={() => setRawText("")} className="scm-clear-btn">
+                    <Button type="button" onClick={() => setRawText("")} className="scm-clear-btn">
                       مسح
-                    </button>
+                    </Button>
                   )}
-                  <button
+                  <Button
                     type="button"
                     onClick={onTextAnalyze}
                     disabled={busy || !rawText.trim()}
                     className="scm-analyze-btn"
                   >
                     {busy ? "جارٍ التحليل…" : "تحليل بالذكاء الاصطناعي"}
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -244,14 +245,14 @@ export function SmartCmsSection() {
                 dir="ltr"
                 className="scm-url-input"
               />
-              <button
+              <Button
                 type="button"
                 onClick={onUrlImport}
                 disabled={busy || !url.trim()}
                 className="scm-url-btn"
               >
                 {busy ? "جارٍ الاستيراد…" : "استيراد"}
-              </button>
+              </Button>
             </div>
             <div className="scm-url-links">
               <Link href="/admin/automation/sources" className="scm-url-link scm-url-link--automation">
@@ -293,13 +294,13 @@ export function SmartCmsSection() {
         <section className="scm-preview">
           <div className="scm-preview-header">
             <h3 className="scm-preview-h3">معاينة المسودة</h3>
-            <button
+            <Button
               type="button"
               onClick={() => { setPreviewEditing(!previewEditing); if (!previewEditing) setPreviewJson(JSON.stringify(preview, null, 2)); }}
               className="scm-preview-toggle"
             >
               {previewEditing ? "إلغاء التعديل" : "تعديل"}
-            </button>
+            </Button>
           </div>
 
           {previewEditing ? (
@@ -325,29 +326,29 @@ export function SmartCmsSection() {
 
           {previewDraftId && (
             <div className="scm-preview-actions">
-              <button
+              <Button
                 type="button"
                 disabled={busy}
                 onClick={() => onApprove(previewDraftId)}
                 className="scm-preview-approve"
               >
                 {busy ? "جارٍ النشر…" : "اعتماد ونشر"}
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
                 disabled={busy}
                 onClick={() => onReject(previewDraftId)}
                 className="scm-preview-reject"
               >
                 رفض
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
                 onClick={() => { setPreview(null); setPreviewDraftId(null); }}
                 className="scm-preview-close"
               >
                 إغلاق
-              </button>
+              </Button>
             </div>
           )}
         </section>
@@ -357,9 +358,9 @@ export function SmartCmsSection() {
         <h3 className="scm-drafts-h3">
           مسودات بانتظار المراجعة ({drafts.length})
         </h3>
-        <button type="button" onClick={load} className="scm-refresh-btn">
+        <Button type="button" onClick={load} className="scm-refresh-btn">
           تحديث
-        </button>
+        </Button>
       </div>
 
       {loading ? (
@@ -380,29 +381,29 @@ export function SmartCmsSection() {
                 </ul>
               )}
               <div className="scm-draft-actions">
-                <button
+                <Button
                   type="button"
                   onClick={() => { setPreview(d.extracted_data); setPreviewJson(JSON.stringify(d.extracted_data, null, 2)); setPreviewDraftId(d.id); }}
                   className="scm-draft-preview-btn"
                 >
                   معاينة وتعديل
-                </button>
-                <button
+                </Button>
+                <Button
                   type="button"
                   disabled={busy}
                   onClick={() => onApprove(d.id)}
                   className="scm-draft-approve-btn"
                 >
                   اعتماد
-                </button>
-                <button
+                </Button>
+                <Button
                   type="button"
                   disabled={busy}
                   onClick={() => onReject(d.id)}
                   className="scm-draft-reject-btn"
                 >
                   رفض
-                </button>
+                </Button>
               </div>
             </article>
           ))}

@@ -167,6 +167,7 @@ export function ReviewInboxPage() {
         <label className="av3-field">
           <span className="av3-sr-only">الحالة</span>
           <select
+            aria-label="الحالة"
             value={status}
             onChange={(e) => {
               setStatus(e.target.value);
@@ -181,6 +182,7 @@ export function ReviewInboxPage() {
         <label className="av3-field">
           <span className="av3-sr-only">النوع</span>
           <select
+            aria-label="النوع"
             value={type}
             onChange={(e) => {
               setType(e.target.value);

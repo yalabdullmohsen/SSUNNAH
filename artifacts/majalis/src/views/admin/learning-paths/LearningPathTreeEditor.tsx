@@ -15,6 +15,8 @@ import {
   type AdminStage, type AdminCourse, type AdminUnit, type AdminItem, type AdminBook, type AdminPrerequisite, type AdminAssessment,
 } from "@/lib/learning-paths-admin-service";
 
+import { Button } from "@/components/ui/button";
+import { useAdminConfirm } from "@/components/admin/AdminConfirmDialog";
 function slugify(text: string): string {
   return text
     .trim()
@@ -33,6 +35,7 @@ function StageCard({
   onMove: (dir: -1 | 1) => void; onReload: () => void;
 }) {
   const { showSuccess, showError } = useAdminShell();
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
   const [expanded, setExpanded] = useState(false);
   const [courses, setCourses] = useState<AdminCourse[]>([]);
   const [loading, setLoading] = useState(false);
@@ -65,7 +68,7 @@ function StageCard({
   };
 
   const deleteStage = async () => {
-    if (!confirm(`حذف مرحلة «${stage.title}» وكل مقرراتها؟ لا يمكن التراجع.`)) return;
+    if (!(await confirm({ title: "حذف المرحلة", body: `حذف مرحلة «${stage.title}» وكل مقرراتها؟ لا يمكن التراجع.`, danger: true, confirmLabel: "حذف" }))) return;
     const { error } = await adminDeleteStage(stage.id);
     if (error) return showError(error.message);
     onReload();
@@ -74,17 +77,17 @@ function StageCard({
   return (
     <div className="adm-item-card">
       <div className="adm-section-hdr">
-        <button type="button" className="adm-btn-sm" onClick={() => setExpanded((v) => !v)}>
+        <Button type="button" className="adm-btn-sm" onClick={() => setExpanded((v) => !v)}>
           {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-        </button>
+        </Button>
         <div style={{ flex: 1 }}>
           <strong>{stage.title}</strong> <StatusBadge status={stage.status} />
         </div>
         <div className="adm-item-actions">
-          <button type="button" className="adm-btn-sm" disabled={index === 0} onClick={() => onMove(-1)}><ArrowUp size={13} /></button>
-          <button type="button" className="adm-btn-sm" disabled={index === total - 1} onClick={() => onMove(1)}><ArrowDown size={13} /></button>
-          <button type="button" className="adm-btn-sm" onClick={() => { setForm(stage); setOpen(true); }}><Pencil size={13} /> تعديل</button>
-          <button type="button" className="adm-btn-del" onClick={deleteStage}><Trash2 size={13} /> حذف</button>
+          <Button type="button" className="adm-btn-sm" disabled={index === 0} onClick={() => onMove(-1)}><ArrowUp size={13} /></Button>
+          <Button type="button" className="adm-btn-sm" disabled={index === total - 1} onClick={() => onMove(1)}><ArrowDown size={13} /></Button>
+          <Button type="button" className="adm-btn-sm" onClick={() => { setForm(stage); setOpen(true); }}><Pencil size={13} /> تعديل</Button>
+          <Button type="button" className="adm-btn-del" onClick={deleteStage}><Trash2 size={13} /> حذف</Button>
         </div>
       </div>
 
@@ -111,7 +114,7 @@ function StageCard({
                     onReload={loadCourses}
                   />
                 ))}
-              <button
+              <Button
                 type="button"
                 className="adm-btn-add"
                 onClick={async () => {
@@ -132,7 +135,7 @@ function StageCard({
                 }}
               >
                 <Plus size={14} /> إضافة مقرر
-              </button>
+              </Button>
             </>
           )}
         </div>
@@ -149,6 +152,7 @@ function StageCard({
           </select>
         </Field>
       </AdminModal>
+    {confirmDialog}
     </div>
   );
 }
@@ -162,6 +166,7 @@ function CourseCard({
   onMove: (dir: -1 | 1) => void; onReload: () => void;
 }) {
   const { showSuccess, showError } = useAdminShell();
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
   const [expanded, setExpanded] = useState(false);
   const [units, setUnits] = useState<AdminUnit[]>([]);
   const [loading, setLoading] = useState(false);
@@ -207,7 +212,7 @@ function CourseCard({
   };
 
   const deleteCourse = async () => {
-    if (!confirm(`حذف مقرر «${course.title}» وكل وحداته وعناصره؟ لا يمكن التراجع.`)) return;
+    if (!(await confirm({ title: "حذف المقرر", body: `حذف مقرر «${course.title}» وكل وحداته وعناصره؟ لا يمكن التراجع.`, danger: true, confirmLabel: "حذف" }))) return;
     const { error } = await adminDeleteCourse(course.id);
     if (error) return showError(error.message);
     onReload();
@@ -229,18 +234,18 @@ function CourseCard({
   return (
     <div className="adm-item-card">
       <div className="adm-section-hdr">
-        <button type="button" className="adm-btn-sm" onClick={() => setExpanded((v) => !v)}>
+        <Button type="button" className="adm-btn-sm" onClick={() => setExpanded((v) => !v)}>
           {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-        </button>
+        </Button>
         <div style={{ flex: 1 }}>
           <strong>{course.title}</strong> <StatusBadge status={course.status} />{" "}
           <span className="adm-type-badge">{course.level}</span>
         </div>
         <div className="adm-item-actions">
-          <button type="button" className="adm-btn-sm" disabled={index === 0} onClick={() => onMove(-1)}><ArrowUp size={13} /></button>
-          <button type="button" className="adm-btn-sm" disabled={index === total - 1} onClick={() => onMove(1)}><ArrowDown size={13} /></button>
-          <button type="button" className="adm-btn-sm" onClick={() => { setForm(course); setOpen(true); }}><Pencil size={13} /> تعديل</button>
-          <button type="button" className="adm-btn-del" onClick={deleteCourse}><Trash2 size={13} /> حذف</button>
+          <Button type="button" className="adm-btn-sm" disabled={index === 0} onClick={() => onMove(-1)}><ArrowUp size={13} /></Button>
+          <Button type="button" className="adm-btn-sm" disabled={index === total - 1} onClick={() => onMove(1)}><ArrowDown size={13} /></Button>
+          <Button type="button" className="adm-btn-sm" onClick={() => { setForm(course); setOpen(true); }}><Pencil size={13} /> تعديل</Button>
+          <Button type="button" className="adm-btn-del" onClick={deleteCourse}><Trash2 size={13} /> حذف</Button>
         </div>
       </div>
 
@@ -253,7 +258,7 @@ function CourseCard({
               return (
                 <span key={p.id} className="adm-type-badge">
                   {c?.title ?? p.requires_course_id}
-                  <button type="button" onClick={() => removePrereq(p.id)} aria-label="إزالة" style={{ marginInlineStart: 4 }}><X size={11} /></button>
+                  <Button type="button" onClick={() => removePrereq(p.id)} aria-label="إزالة" style={{ marginInlineStart: 4 }}><X size={11} /></Button>
                 </span>
               );
             })}
@@ -288,7 +293,7 @@ function CourseCard({
                     onReload={loadUnits}
                   />
                 ))}
-              <button
+              <Button
                 type="button"
                 className="adm-btn-add"
                 onClick={async () => {
@@ -300,7 +305,7 @@ function CourseCard({
                 }}
               >
                 <Plus size={14} /> إضافة وحدة
-              </button>
+              </Button>
             </>
           )}
 
@@ -336,6 +341,7 @@ function CourseCard({
         </Field>
         <p className="adm-empty-msg">النشر مقفل تلقائيًا إن لم يوجد محتوى إلزامي كافٍ، أو اختبار إلزامي بلا أسئلة معتمدة.</p>
       </AdminModal>
+    {confirmDialog}
     </div>
   );
 }
@@ -357,6 +363,7 @@ function UnitCard({
   onMove: (dir: -1 | 1) => void; onReload: () => void;
 }) {
   const { showError } = useAdminShell();
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
   const [expanded, setExpanded] = useState(false);
   const [items, setItems] = useState<AdminItem[]>([]);
   const [loading, setLoading] = useState(false);
@@ -373,7 +380,7 @@ function UnitCard({
   useEffect(() => { if (expanded) loadItems(); }, [expanded]);
 
   const deleteUnit = async () => {
-    if (!confirm(`حذف وحدة «${unit.title}» وكل عناصرها؟`)) return;
+    if (!(await confirm({ title: "حذف الوحدة", body: `حذف وحدة «${unit.title}» وكل عناصرها؟`, danger: true, confirmLabel: "حذف" }))) return;
     const { error } = await adminDeleteUnit(unit.id);
     if (error) return showError(error.message);
     onReload();
@@ -390,22 +397,22 @@ function UnitCard({
   return (
     <div className="adm-item-card">
       <div className="adm-section-hdr">
-        <button type="button" className="adm-btn-sm" onClick={() => setExpanded((v) => !v)}>
+        <Button type="button" className="adm-btn-sm" onClick={() => setExpanded((v) => !v)}>
           {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-        </button>
+        </Button>
         {titleEdit ? (
           <FieldRow>
             <input className="adm-input" value={titleDraft} onChange={(e) => setTitleDraft(e.target.value)} />
-            <button type="button" className="adm-btn-sm" onClick={saveTitle}>حفظ</button>
+            <Button type="button" className="adm-btn-sm" onClick={saveTitle}>حفظ</Button>
           </FieldRow>
         ) : (
           <strong style={{ flex: 1 }}>{unit.title}</strong>
         )}
         <div className="adm-item-actions">
-          <button type="button" className="adm-btn-sm" disabled={index === 0} onClick={() => onMove(-1)}><ArrowUp size={13} /></button>
-          <button type="button" className="adm-btn-sm" disabled={index === total - 1} onClick={() => onMove(1)}><ArrowDown size={13} /></button>
-          <button type="button" className="adm-btn-sm" onClick={() => setTitleEdit((v) => !v)}><Pencil size={13} /> تعديل</button>
-          <button type="button" className="adm-btn-del" onClick={deleteUnit}><Trash2 size={13} /> حذف</button>
+          <Button type="button" className="adm-btn-sm" disabled={index === 0} onClick={() => onMove(-1)}><ArrowUp size={13} /></Button>
+          <Button type="button" className="adm-btn-sm" disabled={index === total - 1} onClick={() => onMove(1)}><ArrowDown size={13} /></Button>
+          <Button type="button" className="adm-btn-sm" onClick={() => setTitleEdit((v) => !v)}><Pencil size={13} /> تعديل</Button>
+          <Button type="button" className="adm-btn-del" onClick={deleteUnit}><Trash2 size={13} /> حذف</Button>
         </div>
       </div>
 
@@ -432,7 +439,7 @@ function UnitCard({
                     onReload={loadItems}
                   />
                 ))}
-              <button
+              <Button
                 type="button"
                 className="adm-btn-add"
                 onClick={async () => {
@@ -455,11 +462,12 @@ function UnitCard({
                 }}
               >
                 <Plus size={14} /> إضافة عنصر
-              </button>
+              </Button>
             </>
           )}
         </div>
       )}
+      {confirmDialog}
     </div>
   );
 }
@@ -473,6 +481,7 @@ function ItemCard({
   onMove: (dir: -1 | 1) => void; onReload: () => void;
 }) {
   const { showSuccess, showError } = useAdminShell();
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState<Partial<AdminItem>>(item);
   const [saving, setSaving] = useState(false);
@@ -491,7 +500,7 @@ function ItemCard({
   };
 
   const deleteItem = async () => {
-    if (!confirm(`حذف عنصر «${item.title}»؟`)) return;
+    if (!(await confirm({ title: "حذف العنصر", body: `حذف عنصر «${item.title}»؟`, danger: true, confirmLabel: "حذف" }))) return;
     const { error } = await adminDeleteItem(item.id);
     if (error) return showError(error.message);
     onReload();
@@ -509,13 +518,13 @@ function ItemCard({
           <span className="adm-type-badge">{item.session_estimate} جلسة · وزن {item.weight}</span>
         </div>
         <div className="adm-item-actions">
-          <button type="button" className="adm-btn-sm" disabled={index === 0} onClick={() => onMove(-1)}><ArrowUp size={13} /></button>
-          <button type="button" className="adm-btn-sm" disabled={index === total - 1} onClick={() => onMove(1)}><ArrowDown size={13} /></button>
+          <Button type="button" className="adm-btn-sm" disabled={index === 0} onClick={() => onMove(-1)}><ArrowUp size={13} /></Button>
+          <Button type="button" className="adm-btn-sm" disabled={index === total - 1} onClick={() => onMove(1)}><ArrowDown size={13} /></Button>
           {item.item_type === "book" && (
-            <button type="button" className="adm-btn-sm" onClick={() => setBookOpen((v) => !v)}>الكتاب</button>
+            <Button type="button" className="adm-btn-sm" onClick={() => setBookOpen((v) => !v)}>الكتاب</Button>
           )}
-          <button type="button" className="adm-btn-sm" onClick={() => { setForm(item); setOpen(true); }}><Pencil size={13} /> تعديل</button>
-          <button type="button" className="adm-btn-del" onClick={deleteItem}><Trash2 size={13} /> حذف</button>
+          <Button type="button" className="adm-btn-sm" onClick={() => { setForm(item); setOpen(true); }}><Pencil size={13} /> تعديل</Button>
+          <Button type="button" className="adm-btn-del" onClick={deleteItem}><Trash2 size={13} /> حذف</Button>
         </div>
       </div>
 
@@ -605,6 +614,7 @@ function ItemCard({
           </Field>
         </FieldRow>
       </AdminModal>
+    {confirmDialog}
     </div>
   );
 }
@@ -617,6 +627,7 @@ const MATERIAL_ROLES: AdminBook["material_role"][] = [
 
 function BookEditor({ learningItemId }: { learningItemId: string }) {
   const { showSuccess, showError } = useAdminShell();
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
   const [books, setBooks] = useState<AdminBook[]>([]);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
@@ -643,7 +654,7 @@ function BookEditor({ learningItemId }: { learningItemId: string }) {
   };
 
   const remove = async (id: string) => {
-    if (!confirm("حذف بيانات هذا الكتاب؟")) return;
+    if (!(await confirm({ title: "حذف الكتاب", body: "حذف بيانات هذا الكتاب؟", danger: true, confirmLabel: "حذف" }))) return;
     const { error } = await adminDeleteBook(id);
     if (error) return showError(error.message);
     load();
@@ -661,15 +672,15 @@ function BookEditor({ learningItemId }: { learningItemId: string }) {
                   <span className="adm-type-badge">{b.material_role}</span>
                 </div>
                 <div className="adm-item-actions">
-                  <button type="button" className="adm-btn-sm" onClick={() => { setForm(b); setOpen(true); }}><Pencil size={13} /> تعديل</button>
-                  <button type="button" className="adm-btn-del" onClick={() => remove(b.id)}><Trash2 size={13} /> حذف</button>
+                  <Button type="button" className="adm-btn-sm" onClick={() => { setForm(b); setOpen(true); }}><Pencil size={13} /> تعديل</Button>
+                  <Button type="button" className="adm-btn-del" onClick={() => remove(b.id)}><Trash2 size={13} /> حذف</Button>
                 </div>
               </div>
             </div>
           ))}
-          <button type="button" className="adm-btn-add" onClick={() => { setForm({ material_role: "أساسية إلزامية" }); setOpen(true); }}>
+          <Button type="button" className="adm-btn-add" onClick={() => { setForm({ material_role: "أساسية إلزامية" }); setOpen(true); }}>
             <Plus size={14} /> إضافة بيانات كتاب
-          </button>
+          </Button>
         </>
       )}
 
@@ -689,6 +700,7 @@ function BookEditor({ learningItemId }: { learningItemId: string }) {
         </FieldRow>
         <Field label="ملاحظة الترخيص"><input className="adm-input" value={form.license_note ?? ""} onChange={(e) => setForm((f) => ({ ...f, license_note: e.target.value }))} /></Field>
       </AdminModal>
+    {confirmDialog}
     </div>
   );
 }
@@ -733,7 +745,7 @@ export function LearningPathTreeEditor({ pathId }: { pathId: string }) {
           onReload={load}
         />
       ))}
-      <button
+      <Button
         type="button"
         className="adm-btn-add"
         onClick={async () => {
@@ -751,7 +763,7 @@ export function LearningPathTreeEditor({ pathId }: { pathId: string }) {
         }}
       >
         <Plus size={14} /> إضافة مرحلة
-      </button>
+      </Button>
     </div>
   );
 }

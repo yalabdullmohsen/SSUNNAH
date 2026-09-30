@@ -23,6 +23,7 @@ import {
   type ReminderStatus,
 } from "@/lib/universities-service";
 
+import { Button } from "@/components/ui/button";
 type Section = "list" | "add" | "edit" | "reminders";
 
 function UniversityForm({
@@ -126,10 +127,10 @@ function UniversityForm({
       </div>
 
       <div className="flex gap-2">
-        <button type="submit" disabled={loading} className="uap-save-btn">
+        <Button type="submit" disabled={loading} className="uap-save-btn">
           {loading ? "جارٍ الحفظ…" : "حفظ"}
-        </button>
-        <button type="button" onClick={onCancel} className="uap-cancel-btn">إلغاء</button>
+        </Button>
+        <Button type="button" onClick={onCancel} className="uap-cancel-btn">إلغاء</Button>
       </div>
     </form>
   );
@@ -211,10 +212,10 @@ function ProgramForm({
         </div>
       </div>
       <div className="flex gap-2">
-        <button type="submit" disabled={loading} className="uap-save-btn">
+        <Button type="submit" disabled={loading} className="uap-save-btn">
           {loading ? "جارٍ الحفظ…" : "إضافة البرنامج"}
-        </button>
-        <button type="button" onClick={onCancel} className="uap-text-cancel">إلغاء</button>
+        </Button>
+        <Button type="button" onClick={onCancel} className="uap-text-cancel">إلغاء</Button>
       </div>
     </form>
   );
@@ -281,10 +282,10 @@ function AdminContent() {
       {/* Subnav */}
       <div className="uap-subnav">
         {(["list","add","reminders"] as Section[]).map((s) => (
-          <button key={s} type="button" onClick={() => { setSection(s); setEditTarget(null); }}
+          <Button key={s} type="button" onClick={() => { setSection(s); setEditTarget(null); }}
             className={`uap-tab${section === s ? " uap-tab--active" : ""}`}>
             {s === "list" ? "قائمة الجامعات" : s === "add" ? "+ إضافة جامعة" : <><Bell size={13} className="inline ml-1" />التذكيرات ({reminders.length})</>}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -303,7 +304,7 @@ function AdminContent() {
           {!loading && universities.length === 0 && (
             <div className="uap-empty">
               <p>لا توجد جامعات بعد.</p>
-              <button type="button" onClick={() => setSection("add")} className="uap-add-link">+ إضافة جامعة</button>
+              <Button type="button" onClick={() => setSection("add")} className="uap-add-link">+ إضافة جامعة</Button>
             </div>
           )}
 
@@ -321,9 +322,9 @@ function AdminContent() {
                 </div>
                 <div className="flex gap-1.5 flex-shrink-0">
                   <Link href={`/universities/${u.slug}`} className="uap-view-btn">عرض</Link>
-                  <button type="button" onClick={() => { setEditTarget(u); setSection("edit"); }} className="uap-edit-btn">
+                  <Button type="button" onClick={() => { setEditTarget(u); setSection("edit"); }} className="uap-edit-btn">
                     تعديل
-                  </button>
+                  </Button>
                 </div>
               </div>
 
@@ -343,9 +344,9 @@ function AdminContent() {
               {showProgForm === u.id ? (
                 <ProgramForm universityId={u.id} onSave={(d) => handleAddProgram(u.id, d)} onCancel={() => setShowProgForm(null)} />
               ) : (
-                <button type="button" onClick={() => setShowProgForm(u.id)} className="uap-add-prog-btn">
+                <Button type="button" onClick={() => setShowProgForm(u.id)} className="uap-add-prog-btn">
                   + إضافة برنامج
-                </button>
+                </Button>
               )}
             </div>
           ))}
@@ -386,12 +387,12 @@ function AdminContent() {
                   )}
                 </div>
                 <div className="flex gap-1.5 flex-shrink-0">
-                  <button type="button" onClick={() => handleReminderStatus(r.id, "reviewed")} className="uap-edit-btn">
+                  <Button type="button" onClick={() => handleReminderStatus(r.id, "reviewed")} className="uap-edit-btn">
                     تمت المراجعة
-                  </button>
-                  <button type="button" onClick={() => handleReminderStatus(r.id, "dismissed")} className="uap-view-btn">
+                  </Button>
+                  <Button type="button" onClick={() => handleReminderStatus(r.id, "dismissed")} className="uap-view-btn">
                     تجاهل
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

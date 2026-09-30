@@ -345,6 +345,7 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
                 <AdminFormField label="الحالة" id="lesson-status">
                   <select
                     id="lesson-status"
+                    aria-label="حالة الدرس"
                     value={draft.status || "draft"}
                     onChange={(e) => onField("status", e.target.value)}
                   >
@@ -403,6 +404,7 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
                 <AdminFormField label="الحالة" id="fawaid-status">
                   <select
                     id="fawaid-status"
+                    aria-label="حالة الفائدة"
                     value={draft.status || "draft"}
                     onChange={(e) => onField("status", e.target.value)}
                   >
