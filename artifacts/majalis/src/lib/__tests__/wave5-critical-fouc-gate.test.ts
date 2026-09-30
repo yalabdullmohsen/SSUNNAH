@@ -62,6 +62,21 @@ const FORBIDDEN_IN_INDEX = [
   /\.prayer-countdown-hms\b/,
   /\.site-footer-brand\b(?!-name)/,
   /\.mobile-nav-layer--drawer\b/,
+  // WAVE12 DEAD_PROVEN / ownership moves — must not return to critical index.css
+  /\.sheikh-series-grid\b/,
+  /\.qibla-panel\b/,
+  /\.quran-toolbar\b/,
+  /\.radio-player\b/,
+  /\.nawawi-card\b/,
+  /\.share-btn\b/,
+  /\.prophets-lux-tabs\b/,
+  /\.bottom-nav__prayer-float\b/,
+  /\.la-card\b/,
+  /\.islamic-ornament-strip\b/,
+  /\.unsourced-badge\b/,
+  /\.tasbih-page-card\b/,
+  /\.quran-source-note\b/,
+  /\.fatwa-card\b/,
 ];
 for (const re of FORBIDDEN_IN_INDEX) {
   assert.doesNotMatch(indexCss, re, `dead selector ${re} must stay out of index.css`);

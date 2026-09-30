@@ -1,7 +1,7 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Ceilings must not rise; floors (canonical adoption) must not fall without documented exception.",
+  "note": "WAVE12: lowered buttonRelatedHexApprox after token fallback absorption in index.css.",
   "ceilings": {
     "rawButtonFiles": 183,
     "rawButtonElements": 672,
@@ -9,11 +9,11 @@
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
     "buttonRelatedImportantApprox": 1262,
-    "buttonRelatedHexApprox": 1723
+    "buttonRelatedHexApprox": 1709
   },
   "floors": {
     "officialButtonImportFiles": 186,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-09-30T12:41:12.304Z"
+  "updatedAt": "2026-09-30T13:28:46.554Z"
 }

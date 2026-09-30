@@ -257,3 +257,18 @@ html.dark .adhkar-tapper__tot {
   color: var(--majalis-emerald, var(--mj-brand));
   margin: 0; text-align: center;
 }
+
+/* WAVE12: from index.css */
+.tasbih-page-card { padding: var(--ds-space-5); text-align: center; }
+.tasbih-phrase { font-size: 1.2rem; font-weight: 700; color: var(--majalis-emerald-deep); }
+
+@media (max-width: 879px) {
+  .tasbih-layout { grid-template-columns: 1fr; }
+  .tasbih-wird-list {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(12rem, 75%);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tasbih-main-button { width: min(100%, 16rem); }
+}
