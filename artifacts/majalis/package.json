@@ -667,7 +667,7 @@
     "test:wave3-button-semantic": "node --import tsx src/lib/__tests__/closure-wave3-button-semantic-gate.test.ts",
     "test:wave4-route-feedback": "node --import tsx src/lib/__tests__/closure-wave4-route-feedback-gate.test.ts",
     "test:wave9-admin-interaction": "node --import tsx src/lib/__tests__/closure-wave9-admin-interaction-gate.test.ts",
-    "test:sunnah-ui-refinement": "node --import tsx src/lib/__tests__/sunnah-ui-refinement-gate.test.ts && pnpm run test:interaction-system-debt-budget && pnpm run test:interaction-system-authority && pnpm run test:card-surface-authority && pnpm run test:form-feedback-authority && pnpm run test:admin-v3-interaction-authority && pnpm run test:dark-mode-authority && pnpm run test:legacy-css-retirement && pnpm run test:mushaf-css-boundary && pnpm run test:offline-spa-rewrite && pnpm run test:final-internal-closure-pr1 && pnpm run test:final-internal-closure-pr2 && pnpm run test:final-internal-closure-pr3 && pnpm run test:final-internal-closure-pr4 && pnpm run test:final-internal-closure-pr5 && pnpm run test:final-internal-closure-pr6 && pnpm run test:wave3-button-semantic && pnpm run test:wave4-route-feedback && pnpm run test:wave9-admin-interaction && pnpm run test:wave10-mushaf-controls",
+    "test:sunnah-ui-refinement": "node --import tsx src/lib/__tests__/sunnah-ui-refinement-gate.test.ts && pnpm run test:interaction-system-debt-budget && pnpm run test:interaction-system-authority && pnpm run test:card-surface-authority && pnpm run test:form-feedback-authority && pnpm run test:admin-v3-interaction-authority && pnpm run test:dark-mode-authority && pnpm run test:legacy-css-retirement && pnpm run test:mushaf-css-boundary && pnpm run test:offline-spa-rewrite && pnpm run test:final-internal-closure-pr1 && pnpm run test:final-internal-closure-pr2 && pnpm run test:final-internal-closure-pr3 && pnpm run test:final-internal-closure-pr4 && pnpm run test:final-internal-closure-pr5 && pnpm run test:final-internal-closure-pr6 && pnpm run test:wave3-button-semantic && pnpm run test:wave4-route-feedback && pnpm run test:wave9-admin-interaction && pnpm run test:wave10-mushaf-controls && pnpm run test:wave11-route-quality",
     "test:offline-spa-rewrite": "node --import tsx src/lib/__tests__/offline-spa-rewrite-gate.test.ts",
     "test:interaction-system-debt-budget": "node scripts/interaction-system-inventory.mjs --check",
     "test:interaction-system-authority": "node --import tsx src/lib/__tests__/interaction-system-authority-gate.test.ts",
@@ -735,7 +735,8 @@
     "validate:search-routes": "node --import tsx scripts/validate-search-route-integrity.mjs",
     "test:search-route-integrity": "node --import tsx src/lib/__tests__/search-route-integrity-gate.test.ts",
     "test:admin-v3-analytics-platform": "node --import tsx src/lib/__tests__/admin-v3-analytics-platform-gate.test.ts",
-    "test:wave10-mushaf-controls": "node --import tsx src/lib/__tests__/closure-wave10-mushaf-controls-gate.test.ts"
+    "test:wave10-mushaf-controls": "node --import tsx src/lib/__tests__/closure-wave10-mushaf-controls-gate.test.ts",
+    "test:wave11-route-quality": "node --import tsx src/lib/__tests__/closure-wave11-route-quality-gate.test.ts"
   },
   "devDependencies": {
     "@capacitor/assets": "^3.0.5",
