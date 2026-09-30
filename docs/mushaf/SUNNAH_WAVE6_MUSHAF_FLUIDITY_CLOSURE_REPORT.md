@@ -128,11 +128,13 @@ Then: verify:preflight · verify:ci · release:verify · visual-snapshot · cont
 ## PR DELIVERY
 
 Branch: `cursor/final-repo-closure-wave6`  
-Single PR to `main` (Ready + auto-merge). Update after merge SHA + deploy MATCH.
+PR: https://github.com/yalabdullmohsen/majalis/pull/2383  
+Merge squash: `b38e51775` on `main`  
+Production `version.json`: `b38e5177` **MATCH**
 
 ## PRODUCTION SMOKE TESTS
 
-Pending post-deploy: `/` · `/quran-hub` · `/mushaf` · bookmarks · search · prayer · `/api/healthz` · `/version.json`.
+All HTTP 200 (non-destructive): `/` · `/quran-hub` · `/mushaf` · `/mushaf/bookmarks` · `/search` · `/prayer-times` · `/api/healthz` · `/version.json`.
 
 ## REGRESSIONS
 
