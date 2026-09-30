@@ -27,6 +27,7 @@ import {
   type MushafAppearanceMode,
 } from "@/lib/mushaf-v2/appearance-prefs";
 import { QuranSettingsRepository } from "@/lib/mushaf-v2/QuranSettingsRepository";
+import { Button } from "@/components/ui/button";
 import "./page-goto-dial.css";
 import "@/styles/components/page-goto-visibility.css";
 
@@ -597,22 +598,26 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
 type MenuProps = {
   verseKey: string;
   status: string | null;
+  hasBookmark?: boolean;
   onPlay: () => void;
   onTafsir: () => void;
   onCopy: () => void;
   onBookmark: () => void;
+  onDeleteBookmark?: () => void | Promise<void>;
   onClose: () => void;
   onClearSelection: () => void;
 };
 
-/** قائمة آية: تفسير · استماع · نسخ · فاصل · إلغاء التحديد */
+/** قائمة آية: تفسير · استماع · نسخ · فاصل · حذف الفاصل · إلغاء التحديد */
 export const MushafVerseMenu = memo(function MushafVerseMenu({
   verseKey,
   status,
+  hasBookmark = false,
   onPlay,
   onTafsir,
   onCopy,
   onBookmark,
+  onDeleteBookmark,
   onClose,
   onClearSelection,
 }: MenuProps) {
@@ -620,6 +625,30 @@ export const MushafVerseMenu = memo(function MushafVerseMenu({
   const label = parsed
     ? `${getSurahMeta(parsed.surah).name} · آية ${toArabicDigits(parsed.ayah)}`
     : verseKey;
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const deletingRef = useRef(false);
+  const offline =
+    typeof navigator !== "undefined" && navigator.onLine === false;
+
+  useEffect(() => {
+    setConfirmDelete(false);
+    setDeleting(false);
+    deletingRef.current = false;
+  }, [verseKey]);
+
+  const runDelete = async () => {
+    if (!onDeleteBookmark || deletingRef.current) return;
+    deletingRef.current = true;
+    setDeleting(true);
+    try {
+      await onDeleteBookmark();
+      setConfirmDelete(false);
+    } finally {
+      deletingRef.current = false;
+      setDeleting(false);
+    }
+  };
 
   return (
     <div
@@ -649,10 +678,63 @@ export const MushafVerseMenu = memo(function MushafVerseMenu({
         <button type="button" className="nm-verse-menu__action" onClick={onCopy}>
           نسخ
         </button>
-        <button type="button" className="nm-verse-menu__action" onClick={onBookmark}>
+        <button
+          type="button"
+          className="nm-verse-menu__action"
+          data-testid="nm-verse-menu-bookmark"
+          onClick={onBookmark}
+        >
           إضافة فاصل
         </button>
       </div>
+      {hasBookmark && onDeleteBookmark ? (
+        confirmDelete ? (
+          <div
+            className="nm-verse-menu__delete-confirm"
+            role="alertdialog"
+            aria-labelledby="nm-verse-delete-title"
+            aria-describedby="nm-verse-delete-desc"
+            data-testid="nm-verse-delete-confirm"
+          >
+            <p id="nm-verse-delete-title">تأكيد حذف الفاصل</p>
+            <p id="nm-verse-delete-desc">هل تريد حذف الفاصل من هذه الآية نهائيًا؟</p>
+            {offline ? (
+              <p role="status">الحذف محلي على هذا الجهاز — يعمل دون اتصال.</p>
+            ) : null}
+            <div className="nm-verse-menu__delete-confirm-actions">
+              <Button
+                type="button"
+                className="nm-verse-menu__action nm-verse-menu__action--danger"
+                data-testid="nm-verse-delete-confirm-yes"
+                disabled={deleting}
+                aria-busy={deleting}
+                onClick={() => void runDelete()}
+              >
+                {deleting ? "جاري الحذف…" : "حذف الفاصل"}
+              </Button>
+              <Button
+                type="button"
+                className="nm-verse-menu__action"
+                data-testid="nm-verse-delete-confirm-no"
+                disabled={deleting}
+                onClick={() => setConfirmDelete(false)}
+              >
+                إلغاء
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <Button
+            type="button"
+            className="nm-verse-menu__action nm-verse-menu__action--danger"
+            data-testid="nm-verse-menu-delete-bookmark"
+            aria-label="حذف الفاصل"
+            onClick={() => setConfirmDelete(true)}
+          >
+            حذف الفاصل
+          </Button>
+        )
+      ) : null}
       <button
         type="button"
         className="nm-verse-menu__clear"

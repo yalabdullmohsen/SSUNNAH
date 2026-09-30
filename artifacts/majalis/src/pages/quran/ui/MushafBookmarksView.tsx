@@ -38,6 +38,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 import "@/styles/reader-bookmarks-manager.css";
 
 const SURAH_OPTIONS = Array.from({ length: 114 }, (_, i) => i + 1);
@@ -71,9 +72,30 @@ export default function MushafBookmarksView() {
   const [includeArchived, setIncludeArchived] = useState(false);
   const [tick, setTick] = useState(0);
   const [importError, setImportError] = useState<string | null>(null);
+  const [pendingDeleteId, setPendingDeleteId] = useState<number | null>(null);
+  const [deleteBusy, setDeleteBusy] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+  const deleteBusyRef = useRef(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const refresh = useCallback(() => setTick((t) => t + 1), []);
+
+  const confirmDeleteBookmark = useCallback(async () => {
+    if (pendingDeleteId == null || deleteBusyRef.current) return;
+    deleteBusyRef.current = true;
+    setDeleteBusy(true);
+    setDeleteError(null);
+    try {
+      await removeMyBookmark(pendingDeleteId);
+      setPendingDeleteId(null);
+      refresh();
+    } catch {
+      setDeleteError("تعذّر حذف الفاصل. أعد المحاولة.");
+    } finally {
+      deleteBusyRef.current = false;
+      setDeleteBusy(false);
+    }
+  }, [pendingDeleteId, refresh]);
 
   const items = useMemo(
     () =>
@@ -333,13 +355,61 @@ export default function MushafBookmarksView() {
                       >
                         {b.archived ? "↩" : "أرشيف"}
                       </button>
-                      <button
-                        type="button"
-                        aria-label="حذف"
-                        onClick={() => void removeMyBookmark(b.id).then(refresh)}
-                      >
-                        حذف
-                      </button>
+                      {pendingDeleteId === b.id ? (
+                        <div
+                          className="rb-manager__delete-confirm"
+                          role="alertdialog"
+                          aria-labelledby={`rb-del-title-${b.id}`}
+                          aria-describedby={`rb-del-desc-${b.id}`}
+                          data-testid="mushaf-bookmark-delete-confirm"
+                        >
+                          <p id={`rb-del-title-${b.id}`}>تأكيد حذف الفاصل</p>
+                          <p id={`rb-del-desc-${b.id}`}>هل تريد حذف هذا الفاصل نهائيًا؟</p>
+                          {typeof navigator !== "undefined" && navigator.onLine === false ? (
+                            <p role="status">الحذف محلي على هذا الجهاز — يعمل دون اتصال.</p>
+                          ) : null}
+                          {deleteError ? (
+                            <p role="alert">{deleteError}</p>
+                          ) : null}
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            aria-label="تأكيد حذف الفاصل"
+                            data-testid="mushaf-bookmark-delete-yes"
+                            disabled={deleteBusy}
+                            aria-busy={deleteBusy}
+                            onClick={() => void confirmDeleteBookmark()}
+                          >
+                            {deleteBusy ? "جاري الحذف…" : "حذف الفاصل"}
+                          </Button>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            aria-label="إلغاء حذف الفاصل"
+                            data-testid="mushaf-bookmark-delete-no"
+                            disabled={deleteBusy}
+                            onClick={() => {
+                              setPendingDeleteId(null);
+                              setDeleteError(null);
+                            }}
+                          >
+                            إلغاء
+                          </Button>
+                        </div>
+                      ) : (
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          aria-label="حذف الفاصل"
+                          data-testid="mushaf-bookmark-delete"
+                          onClick={() => {
+                            setDeleteError(null);
+                            setPendingDeleteId(b.id);
+                          }}
+                        >
+                          حذف الفاصل
+                        </Button>
+                      )}
                     </div>
                   </li>
                 );

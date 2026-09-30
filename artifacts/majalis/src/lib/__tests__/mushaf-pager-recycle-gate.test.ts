@@ -47,8 +47,14 @@ assert.match(css, /\.nm-pager-scroller/);
 assert.match(css, /--nm-pager-w/);
 assert.doesNotMatch(css, /\.nm-page-text[^{]*\{[^}]*transition:\s*[^;]*(font-size|line-height)/s);
 
-assert.match(reader, /neighborsReady/, "لا سحب قبل جاهزية الجيران");
+assert.match(reader, /neighborsReady/, "تتبع جاهزية الجيران للprefetch");
 assert.match(reader, /loadMushafPage\(page \+ 1\)/);
 assert.match(reader, /isQpcPageFontReady\(page \+ 1\)/);
+/* الأسهم/الشريط لا ينتظران neighborsReady — go() ينتظر خط الهدف فقط */
+assert.doesNotMatch(
+  reader,
+  /if \(edgesDisabled \|\| !pagerSettled \|\| !neighborsReady\) return/,
+  "لا تعطيل أسهم/شريط بانتظار جيران prefetch",
+);
 
 console.log("mushaf-pager-recycle-gate.test.ts: ok");

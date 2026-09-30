@@ -101,10 +101,10 @@
   /*
    * رقم الآية = مجسم QPC مركّب (زخرفة+رقم PUA). تكبيره إلى 1.52em + وزن 700
    * داخل وردة clip-path يقصّ الرقم ويُفسِد الوجه أحادي الوزن — فيبدو الفاصل فارغًا.
-   * الصندوق الخارجي ثابت (1.15em × 0.62em) · الرقم يُرسم بوزن 400 وبحجم يلائم المركز.
+   * الصندوق الخارجي ثابت (1.15em × 0.62em) · الرقم على الـglyph فقط (+10٪ → 1.10em).
    */
   --mushaf-ayah-mark-font-size: 0.62em;
-  --mushaf-ayah-mark-number-size: 1em;
+  --mushaf-ayah-mark-number-size: 1.10em;
   /* aliases لعقد الفاصل (Fill/Stroke/Number من Quran Gold Tokens) */
   --mushaf-ayah-marker-fill: var(--mushaf-verse-marker-fill);
   --mushaf-ayah-marker-stroke: var(--mushaf-verse-marker-border);
@@ -885,13 +885,15 @@ html[data-theme="dark"] .nm-ayah-sel__band--navigation {
   display: block;
   line-height: 1;
   text-align: center;
-  font-size: var(--mushaf-ayah-mark-number-size, 1em);
+  font-size: var(--mushaf-ayah-mark-number-size, 1.10em);
   font-weight: 400;
   color: inherit;
   font-variant-numeric: tabular-nums;
   transform: none;
   /* لا synthetic bold — وجه QPC أحادي الوزن */
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
 }
 
 .nm-basmala__num-hit {
@@ -2119,29 +2121,54 @@ html[data-theme="dark"] .nm-page-arrow {
   color: color-mix(in srgb, #d4b483 70%, #f0e6d2);
 }
 
-/* قائمة الآية — أكثر انخفاضاً */
+/* قائمة الآية — أهداف لمس ≥44px · مساحة لتأكيد حذف الفاصل */
 .nm-verse-menu {
-  gap: 0.3rem;
+  gap: 0.35rem;
   min-height: 0;
-  max-height: min(36%, 13.5rem);
-  padding: 0.5rem 0.7rem calc(0.55rem + var(--safe-bottom, 0px));
+  max-height: min(48%, 18rem);
+  padding: 0.55rem 0.75rem calc(0.65rem + var(--safe-bottom, 0px));
 }
 
 .nm-verse-menu__head {
-  min-height: 2.1rem;
+  min-height: 2.75rem;
 }
 
 .nm-verse-menu__close {
-  min-width: 2.25rem;
-  min-height: 2.25rem;
-  padding: 0 0.5rem;
-  font-size: 0.75rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0 0.65rem;
+  font-size: 0.82rem;
 }
 
 .nm-verse-menu__action {
-  min-height: 2.35rem;
-  padding: 0.35rem 0.45rem;
+  min-height: 2.75rem;
+  padding: 0.4rem 0.35rem;
   font-size: 0.82rem;
+}
+
+.nm-verse-menu__action--danger {
+  border-color: color-mix(in srgb, var(--nm-ink) 42%, transparent);
+  color: var(--nm-ink);
+  font-weight: 700;
+}
+
+.nm-verse-menu__delete-confirm {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.35rem 0.15rem;
+}
+
+.nm-verse-menu__delete-confirm p {
+  margin: 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--nm-ink);
+}
+
+.nm-verse-menu__delete-confirm-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

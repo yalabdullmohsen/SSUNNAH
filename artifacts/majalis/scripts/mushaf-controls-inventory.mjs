@@ -295,7 +295,7 @@ const contracts = {
   singleAyahMarker: (read("src/features/mushaf-reader/MushafAyahMarker.tsx").match(/MushafAyahMarker/g) || [])
     .length > 0,
   externalMarkSize115: /--mushaf-ayah-mark-size:\s*1\.15em/.test(css),
-  numberSize152: /--mushaf-ayah-mark-number-size:\s*1(?:\.0)?em/.test(css),
+  numberSize152: /--mushaf-ayah-mark-number-size:\s*1\.10em/.test(css),
 };
 
 const summary = {

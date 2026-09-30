@@ -214,7 +214,8 @@ html[data-theme="dark"] .rb-manager__group li {
 .rb-manager__item-actions {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.2rem;
+  min-width: 5.5rem;
 }
 
 .rb-manager__item-actions button {
@@ -222,8 +223,27 @@ html[data-theme="dark"] .rb-manager__group li {
   border: 0;
   background: transparent;
   color: inherit;
-  font-size: 0.68rem;
-  min-height: 1.7rem;
-  padding: 0 0.35rem;
-  opacity: 0.75;
+  font-size: 0.78rem;
+  min-height: 2.75rem;
+  padding: 0 0.45rem;
+  opacity: 0.85;
+  cursor: pointer;
+}
+
+.rb-manager__delete-confirm {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.25rem 0;
+  max-width: 9rem;
+}
+
+.rb-manager__delete-confirm p {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  opacity: 0.9;
+}
+
+.rb-manager__delete-confirm button {
+  min-height: 2.75rem;
 }

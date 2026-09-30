@@ -29,7 +29,9 @@ Object.defineProperty(globalThis, "window", {
 });
 
 const {
+  getBookmarksForAyah,
   getMyBookmarks,
+  removeMyBookmark,
   resetMyBookmarksCacheForTests,
   saveBookmarks,
 } = await import("@/lib/quran-my-bookmarks");
@@ -125,5 +127,26 @@ assert.ok(stats.review >= 1);
 assert.ok(stats.custom >= 1);
 assert.ok(stats.khatmah >= 1);
 assert.ok(stats.total >= 5);
+
+/* حذف فاصل — إزالة فورية من التخزين بلا refresh يدوي */
+const doomed = await addTypedBookmark({
+  page: 10,
+  ayahKey: "2:255",
+  kind: "custom",
+  label: "آية الكرسي",
+  customName: "آية الكرسي",
+});
+assert.equal(doomed.ok, true);
+if (doomed.ok) {
+  assert.ok(getBookmarksForAyah("2:255").some((b) => b.id === doomed.bookmark.id));
+  await removeMyBookmark(doomed.bookmark.id);
+  assert.equal(
+    getBookmarksForAyah("2:255").some((b) => b.id === doomed.bookmark.id),
+    false,
+    "الحذف يزيل الفاصل فورًا",
+  );
+  /* حذف متكرر لا يفشل */
+  await removeMyBookmark(doomed.bookmark.id);
+}
 
 console.log("mushaf-bookmark-ops-unit.test.ts: ok");
