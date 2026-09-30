@@ -1,8 +1,10 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-09-30 (post-WAVE13 · FINAL boundary)  
+**Updated:** 2026-09-30 (post-MUSHAF polish `#2402` · Final Quality Program Phase 0/1)  
 **Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
 **Final boundary:** `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md`  
+**Live program state:** `docs/audit/SUNNAH_FINAL_QUALITY_PROGRAM_LIVE_STATE.md`  
+**Mushaf polish seal:** `docs/mushaf/MUSHAF_POST_CLOSURE_POLISH_FINAL_REPORT.md`  
 **Post-WAVE6 baseline:** `docs/audit/SUNNAH_POST_WAVE6_FINAL_BASELINE.md`  
 **Authority map:** `docs/design/SUNNAH_AUTHORITY_UNIFICATION_FINAL_MAP.md`  
 **Device runbook:** `docs/audit/WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md`  
@@ -12,12 +14,14 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `ba139bb1` — FINAL boundary `#2392` · authority seal follow-up |
-| Production `version.json` | **MATCH** `209f7bfc` · HTTP 200 · `builtAt` `2026-09-30T14:17:06.261Z` |
+| `origin/main` tip | `37257cd19` — mushaf post-closure polish `#2402` |
+| Production `version.json` | **MATCH** `37257cd1` · HTTP 200 · `builtAt` `2026-09-30T18:55:06.963Z` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
 | Internal | **`INTERNAL_CLOSURE_COMPLETE`** |
 | Web visual/interaction | **`VISUAL_INTERACTION_COMPLETE_WEB`** |
+| Mushaf polish | **COMPLETE_DEVICE_HOLD** (residual lag DEVICE_REQUIRED) |
+| Final Quality Program | Phase 0/1 seal · Phase 2+ sequential |
 | Explicit non-claims | no `STORE GO` · no `DEVICE_TESTED` · no `MUSHAF_SILKY` · no `WCAG CERTIFIED` · no `FULLY COMPLETE` |
 
 ## Closure program WAVE7→13 (merged + deployed)
