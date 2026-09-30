@@ -1,10 +1,11 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-09-30 (Startup Typography FOUC Phase 0 baseline)  
+**Updated:** 2026-09-30 (ADMIN-FINAL-1 conflict resolution on tip after Startup Typography FOUC P1)  
 **Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
 **Final boundary:** `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md`  
 **Live program state:** `docs/audit/SUNNAH_FINAL_QUALITY_PROGRAM_LIVE_STATE.md`  
 **Mushaf polish seal:** `docs/mushaf/MUSHAF_POST_CLOSURE_POLISH_FINAL_REPORT.md`  
+**Admin final program:** `docs/admin/ADMIN_FINAL_MIGRATION_AND_SECURITY_BASELINE.md`  
 **Startup typography FOUC:** `docs/performance/STARTUP_TYPOGRAPHY_FOUC_LIVE_BASELINE.md`  
 **Post-WAVE6 baseline:** `docs/audit/SUNNAH_POST_WAVE6_FINAL_BASELINE.md`  
 **Authority map:** `docs/design/SUNNAH_AUTHORITY_UNIFICATION_FINAL_MAP.md`  
@@ -15,15 +16,16 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `369d8b17e` — Mushaf Fluidity Optimization |
-| Production `version.json` | MATCH at Delivery (agent egress HTTP 441) |
+| `origin/main` tip | `c22a3aa2b` — Startup Typography FOUC P1 (`html` font-size authority) |
+| Production `version.json` | `c22a3aa2` **MATCH** · `builtAt=2026-09-30T20:52:54.857Z` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
 | Internal | **`INTERNAL_CLOSURE_COMPLETE`** |
 | Web visual/interaction | **`VISUAL_INTERACTION_COMPLETE_WEB`** |
 | Mushaf polish | **COMPLETE_DEVICE_HOLD** (residual lag DEVICE_REQUIRED) |
-| Startup Typography FOUC | **P0 BASELINE_LOCKED** · Phase 1 after MATCH |
-| Explicit non-claims | no `STORE GO` · no `DEVICE_TESTED` · no `MUSHAF_SILKY` · no `WCAG CERTIFIED` · no `FULLY COMPLETE` |
+| Admin program | **ADMIN-FINAL-1** baseline · sequential FINAL-2+ after MATCH |
+| Startup Typography FOUC | **P1 MERGED** on tip · P2 size-adjust open |
+| Explicit non-claims | no `STORE GO` · no `DEVICE_TESTED` · no `MUSHAF_SILKY` · no `WCAG CERTIFIED` · no `FULLY COMPLETE` · no `ADMIN_FULLY_SECURE` |
 
 ## Closure program WAVE7→13 (merged + deployed)
 

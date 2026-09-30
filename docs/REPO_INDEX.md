@@ -101,6 +101,10 @@
 | `docs/audit/SUNNAH_REPOSITORY_CLOSURE_REPORT.md` | إغلاق المستودع موجة 1 — WEB_RELEASED_NATIVE_HOLD |
 | `docs/remediation/ROUTE_THEME_OWNERSHIP.md` | مالك سطح المسار (`commitRouteSurface`) — بلا تسرّب pts-immersive |
 | `docs/design/FORM_FEEDBACK_AUTHORITY.md` | **Interaction PR-6** — سلطة النماذج + FormFields + Empty/Loading/Error/Offline |
+| `docs/admin/ADMIN_FINAL_MIGRATION_AND_SECURITY_BASELINE.md` | **ADMIN-FINAL-1** — خط أساس حي للترحيل والأمن |
+| `docs/admin/ADMIN_FINAL_SCOPE_MANIFEST.md` | **ADMIN-FINAL-1** — نطاق + `IMPLEMENTATION_FROZEN` |
+| `docs/admin/ADMIN_FINAL_ROUTE_AND_OWNERSHIP_MATRIX.md` | **ADMIN-FINAL-1** — مصفوفة مسارات/ملكية/تصنيف |
+| `docs/security/ADMIN_SERVER_AUTHORIZATION_CLOSURE_REPORT.md` | جرد تفويض خادم Admin · `AUTH_INVENTORY_BASELINED` |
 | `docs/admin/ANALYTICS_PLATFORM_REPORT.md` | منصة تحليلات Admin v3 — `/admin/v3/analytics` · PARTIAL · بلا mock |
 | `docs/design/ADMIN_V3_INTERACTION_AUTHORITY.md` | **Interaction PR-7** — سلطة تفاعل Admin v3 (Button/AppCard/FormFields/States) |
 | `docs/design/DARK_MODE_AUTHORITY.md` | **Interaction PR-8** — سلطة الوضع الليلي (`--sf-*`/`--ss-*`/`--mj-*` · مفتاح `data-theme` واحد) |
