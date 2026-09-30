@@ -30,7 +30,7 @@ assert.doesNotMatch(marker, /scale\(/);
 assert.match(css, /--mushaf-ayah-mark-size:\s*1\.15em/);
 assert.match(css, /--mushaf-ayah-mark-font-size:\s*0\.62em/);
 /* مجسم QPC مركّب — لا يُكبَّر فوق الصندوق وإلا يُقصّ الرقم */
-assert.match(css, /--mushaf-ayah-mark-number-size:\s*1em/);
+assert.match(css, /--mushaf-ayah-mark-number-size:\s*1\.10em/);
 
 /* Tokens الفاصل */
 assert.match(css, /--mushaf-ayah-marker-fill:\s*var\(--mushaf-verse-marker-fill\)/);

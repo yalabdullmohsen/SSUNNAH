@@ -117,9 +117,15 @@ assert.match(
 assert.match(markers, /reader-bookmarks\.css/);
 assert.doesNotMatch(reader, /reader-bookmarks-manager\.css/);
 assert.match(controls, /إضافة فاصل|علامة/);
+assert.match(controls, /حذف الفاصل/);
+assert.match(controls, /nm-verse-menu-delete-bookmark|alertdialog/);
 assert.match(controls, /mushaf-page-bookmark-btn/);
 assert.match(controls, /mushaf-bookmarks-manager-link/);
 assert.match(controls, /العلامات|إدارة العلامات/);
+assert.match(manager, /حذف الفاصل/);
+assert.match(manager, /alertdialog/);
+assert.match(manager, /mushaf-bookmark-delete-confirm/);
+assert.doesNotMatch(manager, /window\.confirm/);
 assert.match(nav, /id:\s*"bookmark",\s*enabled:\s*true/);
 
 assert.match(routes, /\/mushaf\/bookmarks/);

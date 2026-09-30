@@ -1,6 +1,6 @@
 # جرد أزرار المصحف — Controls Inventory
 
-**Generated:** 2026-09-28T02:23:33.597Z  
+**Generated:** 2026-09-30T18:23:50.947Z  
 **Method:** static source inventory (exact counts from `CONTROLS` list; not estimates)
 
 ## Summary

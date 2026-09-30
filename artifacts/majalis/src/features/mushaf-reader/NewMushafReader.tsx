@@ -47,6 +47,10 @@ import {
 } from "@/lib/mushaf-v2";
 import { useMediaSession } from "@/hooks/useMediaSession";
 import { STATUS } from "@/lib/ui-copy";
+import {
+  getBookmarksForAyah,
+  removeMyBookmark,
+} from "@/lib/quran-my-bookmarks";
 import { MushafPager } from "./MushafPager";
 import {
   setMushafAudioClock,
@@ -1132,6 +1136,33 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
     setChromeOpen(false);
   }, [selectedVerseKey]);
 
+  const selectedVerseHasBookmark = useMemo(() => {
+    if (!selectedVerseKey) return false;
+    void bookmarkEpoch;
+    return getBookmarksForAyah(selectedVerseKey).length > 0;
+  }, [selectedVerseKey, bookmarkEpoch]);
+
+  const onDeleteBookmark = useCallback(async () => {
+    if (!selectedVerseKey) return;
+    if (!isMushafNavCapabilityEnabled("bookmark")) return;
+    const list = getBookmarksForAyah(selectedVerseKey);
+    if (list.length === 0) {
+      setStatus("لا يوجد فاصل لهذه الآية");
+      return;
+    }
+    try {
+      for (const b of list) {
+        await removeMyBookmark(b.id);
+      }
+      setBookmarkEpoch((n) => n + 1);
+      setStatus("تم حذف الفاصل");
+      haptics.success();
+    } catch {
+      setStatus("تعذّر حذف الفاصل");
+      haptics.error();
+    }
+  }, [selectedVerseKey]);
+
   const closeBookmarkComposer = useCallback(() => {
     setBookmarkComposerOpen(false);
   }, []);
@@ -1299,11 +1330,12 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
 
   const onScrubberGoto = useCallback(
     (n: number) => {
-      if (edgesDisabled || !pagerSettled || !neighborsReady) return;
+      /* go() ينتظر خط الصفحة الهدف — لا نعطّل الانتقال لانتظار جيران prefetch */
+      if (edgesDisabled || !pagerSettled) return;
       go(n);
       bumpChrome();
     },
-    [edgesDisabled, pagerSettled, neighborsReady, go, bumpChrome],
+    [edgesDisabled, pagerSettled, go, bumpChrome],
   );
 
   const onControlsMoreOpenChange = useCallback(
@@ -1646,7 +1678,8 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
         /* busy يخفّف التفاعل دون إخفاء السهم (كان :disabled يصفّر opacity) */
         busy={edgesDisabled || !pagerSettled}
         go={(n) => {
-          if (edgesDisabled || !pagerSettled || !neighborsReady) return;
+          /* go() ينتظر خط الصفحة الهدف — لا نعطّل الأسهم لانتظار جيران prefetch */
+          if (edgesDisabled || !pagerSettled) return;
           go(n);
         }}
       />
@@ -1700,10 +1733,12 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
         <MushafVerseMenu
           verseKey={selectedVerseKey}
           status={status}
+          hasBookmark={selectedVerseHasBookmark}
           onPlay={() => void playSelected()}
           onTafsir={openTafsir}
           onCopy={() => void onCopy()}
           onBookmark={onBookmark}
+          onDeleteBookmark={onDeleteBookmark}
           onClose={closeActions}
           onClearSelection={clearSelection}
         />
