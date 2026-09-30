@@ -368,7 +368,7 @@ html.dark .fiqh-hub-strip__tab--active {
 .login-field input::placeholder,
 .login-page input::placeholder,
 .login-page .login-input::placeholder {
-  color: var(--mj-ink-2, #4a5a53) !important;
+  color: var(--mj-ink-2, var(--color-muted)) !important;
   opacity: 1 !important;
 }
 
@@ -609,7 +609,7 @@ input[type="search"] {
 .global-search input::placeholder,
 .search-input::placeholder,
 input[type="search"]::placeholder {
-  color: var(--mj-ink-2, #4a5a53) !important;
+  color: var(--mj-ink-2, var(--color-muted)) !important;
   opacity: 1 !important;
 }
 

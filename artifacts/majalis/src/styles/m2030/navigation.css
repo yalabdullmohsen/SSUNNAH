@@ -105,8 +105,8 @@ header.navbar-v3,
 }
 
 .bottom-nav__tab.is-active {
-  /* مختار نهاري = سطح + نص زمردي — بلا حد يزيح التخطيط */
-  color: var(--sf2-action-primary, var(--brand-on-light, #0f5c3f)) !important;
+  /* مختار = سطح + نص زمردي؛ brand-on-surface يفوز ليليًا عبر dark-mode-recovery */
+  color: var(--sf2-action-primary, var(--brand-on-surface, var(--brand-on-light, #0f5c3f))) !important;
   background: var(--sf2-selected-bg, color-mix(in srgb, var(--mj-brand-deep, #0a4530) 8%, transparent)) !important;
 }
 

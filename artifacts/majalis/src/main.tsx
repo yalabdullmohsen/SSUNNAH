@@ -148,7 +148,7 @@ function loadNonCriticalCss() {
       void import("./styles/visual-identity-unify.css");
       // إعادة طبقة الاسترداد الليلي آخرًا حتى تفوز على final-release
       void import("./styles/dark-mode-recovery.css");
-      // كنس الشريط الزخرفي بعد الطبقات المتأخرة
+      // كنس الشريط الزخرفي مرة واحدة بعد الطبقات المتأخرة (لا تكرار import)
       void import("./styles/card-decorative-strip-cleanup.css");
       /* Editorial أخيرًا حتى تفوز رموز الورق/الزيتون على الطبقات المتأخرة */
       void import("./styles/modern-islamic-editorial-tokens.css");
@@ -175,26 +175,15 @@ function loadNonCriticalCss() {
   void import("./styles/components/native-feel.css");
   void import("./styles/m2030/interactions.css");
   void import("./styles/m2030/pages.css");
-  /* SVL PR-2: بعد طبقات الصفحات — إلغاء الشرائط الزخرفية 3–4px */
-  void import("./styles/card-decorative-strip-cleanup.css");
   // final-release يُحمَّل بعد design-system أعلاه — لا تحميل متوازٍ
-  const isDark =
-    document.documentElement.classList.contains("dark") ||
-    document.documentElement.dataset.theme === "dark";
-  if (isDark) {
-    void Promise.all([
-      import("./styles/dark-mode-surfaces.css"),
-      import("./styles/dark-design-system.css"),
-      import("./styles/premium-dark-refine.css"),
-      import("./styles/interaction-states.css"),
-    ]);
-  } else {
-    // تحميل مسبق لتمكين التبديل بدون وميض
-    void import("./styles/dark-mode-surfaces.css");
-    void import("./styles/dark-design-system.css");
-    void import("./styles/premium-dark-refine.css");
+  // طبقات الليل + حالات التفاعل: مسار مؤجّل واحد (بلا تكرار if/else)
+  void Promise.all([
+    import("./styles/dark-mode-surfaces.css"),
+    import("./styles/dark-design-system.css"),
+    import("./styles/premium-dark-refine.css"),
+  ]).then(() => {
     void import("./styles/interaction-states.css");
-  }
+  });
 }
 function scheduleNonCriticalCss() {
   scheduleOnIdle(loadNonCriticalCss, 2500);
