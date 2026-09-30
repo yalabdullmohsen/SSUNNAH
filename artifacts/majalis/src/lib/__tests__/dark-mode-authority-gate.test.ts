@@ -70,6 +70,23 @@ assert.doesNotMatch(
   "no competing #131A18 canvas in design-tokens dark block",
 );
 
+const brandV4 = read("src/styles/brand-v4.css");
+assert.match(
+  brandV4,
+  /html\[data-theme="dark"\][\s\S]{0,200}--bg:\s*var\(--surface-app\)/,
+  "brand-v4 dark --bg inherits product night canvas",
+);
+assert.doesNotMatch(
+  brandV4.replace(/\/\*[\s\S]*?\*\//g, ""),
+  /html\[data-theme="dark"\][\s\S]{0,200}--bg:\s*#131A18/i,
+  "no competing #131A18 canvas in brand-v4 dark block",
+);
+assert.match(
+  brandV4,
+  /--brand-deep:\s*var\(--mj-brand-deep\)/,
+  "brand-v4 dark brand-deep follows readable contract",
+);
+
 const hajj = read("src/styles/pages/hajj.css");
 assert.doesNotMatch(
   hajj,

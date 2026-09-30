@@ -1,16 +1,16 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "WAVE12: lowered after index dead-removal + token fallback absorption (hex/radii/rgb).",
+  "note": "Ceilings must not rise. Lower intentionally in later waves; never raise without documented exception.",
   "floors": {
-    "officialButtonImportFiles": 176,
-    "sfTokenRefs": 738,
-    "ssTokenRefs": 722
+    "officialButtonImportFiles": 189,
+    "sfTokenRefs": 741,
+    "ssTokenRefs": 724
   },
   "ceilings": {
     "cssFiles": 356,
     "important": 4787,
-    "hexInCss": 8931,
+    "hexInCss": 8905,
     "rgbHslInCss": 2125,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
@@ -20,5 +20,5 @@
     "inlineColorStyleMatches": 48,
     "rawButtonFiles": 183
   },
-  "updatedAt": "2026-09-30T13:28:46.554Z"
+  "updatedAt": "2026-09-30T22:52:08.718Z"
 }
