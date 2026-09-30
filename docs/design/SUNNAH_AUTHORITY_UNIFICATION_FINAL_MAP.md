@@ -1,0 +1,100 @@
+# سُنّة — Authority Unification Final Map
+
+| Field | Value |
+|---|---|
+| Date | 2026-09-30 |
+| Tip | `74a38cac` |
+| Rule | One authority per concern · adapters OK · parallel systems forbidden |
+
+## Token Authority
+
+| Role | Canonical files | Forbidden alternatives |
+|---|---|---|
+| Foundation SoT | `sunnah-foundation-tokens.css` (`--sf-*`), `sunnah-foundation-v2.css` (`--sf2-*`) | New `--sf3-*` / new token family CSS |
+| Theme API / aliases | `ssunnah-theme-api.css`, `theme-aliases.css`, `app/styles/theme.css` | Page-local palette redefinition |
+| Compatibility bridges | `design-tokens.css` (`--ss-*`), `tokens.css`, `brand-v4.css`, `visual-redesign-v2-tokens.css` | Treating bridges as SoT for new work |
+| Motion / z-index | `motion-policy.css`, `z-index-layers.css` | Raw z-index in official components |
+
+**Consumers:** sync graph in `main.tsx` (Foundation before aliases before polish).  
+**Retirement:** bridges only after consumer count = 0 + parity + contrast PASS.
+
+## Dark Mode Authority
+
+| Role | Canonical | Notes |
+|---|---|---|
+| Mode keys | `html[data-theme=light\|dark]` + System via preference | No third palette |
+| Semantic remap | Theme aliases + Dark Mode Authority doc | |
+| Compatibility | `dark-mode-recovery.css` (sync), deferred `dark-mode-surfaces` / `dark-design-system` / `premium-dark-refine` | ACTIVE_COMPATIBILITY — not a second design system |
+| Forbidden | Independent “night kit” tokens for new UI | |
+
+## Interaction Authority
+
+| Intent | Canonical | Forbidden |
+|---|---|---|
+| Action | `Button` | Clickable `div`/`span` when semantic control fits |
+| Navigate | `Link` / wouter Link | Button-as-link without href semantics |
+| Icon-only | `IconButton` | Unnamed icon `<button>` |
+| Binary state | Toggle / Switch | Fake button toggles without state a11y |
+| Menu | MenuTrigger | Ad-hoc absolute menus without focus trap policy |
+| Interactive surface | `InteractiveCard` | Hover on non-interactive cards |
+
+Docs/gates: `INTERACTION_COMPONENT_AUTHORITY.md` · `test:interaction-system-authority`.
+
+## Card Authority
+
+| Surface | Canonical |
+|---|---|
+| Default | `AppCard` |
+| Interactive | `InteractiveCard` |
+| Status / entry / nav | `StatusCard` · `SectionEntryCard` · `NavigationCard` |
+| Elevation | `ElevatedSurface` · `InsetSurface` |
+| Tokens | Card Surface Authority + Foundation |
+
+Forbidden: new Card System v3 CSS/package. Gates: `test:card-surface-authority`.
+
+## Form & Feedback Authority
+
+Canonical: Input · Textarea · Select · Checkbox · Radio · Switch · FormLabel · FieldDescription · FieldError · Loading · Skeleton · Empty · NoResults · Error · Offline · Stale · PermissionDenied · RateLimited (Feedback V2).
+
+Forbidden: Feedback V3 / parallel form kits. Gate: `test:form-feedback-authority`.
+
+## Page Authority
+
+Canonical: `AppPage` · `PageHeader` · Screen adapters (`DetailScreen`, …) per `PAGE_CONTRACT_MATRIX.md`.
+
+Forbidden: new page shell framework. UtilityScreen: KEEP_JUSTIFIED allowlist only.
+
+## Floating Authority
+
+Canonical: `FloatingLayerManager` + `FLOATING_CONTROLS_POLICY.md`.
+
+Forbidden: ad-hoc fixed FAB stacks outside manager policy.
+
+## Identity cascade (post-WAVE7)
+
+| File | Classification | Condition to retire |
+|---|---|---|
+| `visual-identity-unify.css` | ACTIVE_COMPATIBILITY (sync) | consumer rules absorbed + gate green |
+| `dark-mode-recovery.css` | ACTIVE_COMPATIBILITY (sync) | same |
+| Deferred reload-to-win of unify/recovery after `final-release` | **REMOVED** (WAVE7) | must not return — gated |
+| `final-release.css` | KEEP / release overrides | shrink via absorption only |
+| `design-system.css` | SAFE_REMOVE_CANDIDATE | unused proof + screenshots |
+| `m2030/*` | KEEP campaign layer | migrate consumers first |
+| `index.css` | CANONICAL shell + residual | further WAVE12-style batches |
+
+## Import graph contract (`main.tsx`)
+
+1. Foundation + Theme API (sync).  
+2. Compatibility tokens / identity reset / typography / `index.css`.  
+3. Theme aliases + sync polish (unify, calm, ux-polish, interaction-states, dark-mode-recovery).  
+4. Deferred: z-index, motion, cards, brand contrast, final-release **without** re-import unify/recovery.  
+5. Route/page CSS via route imports or `index-deferred-pages.css`.
+
+## Gate
+
+`artifacts/majalis/src/lib/__tests__/authority-unification-final-gate.test.ts`  
+Wired as `test:authority-unification-final` → `test:sunnah-ui-refinement`.
+
+## Non-claims
+
+Does not claim zero CSS debt · no STORE GO · DEVICE_TESTED.
