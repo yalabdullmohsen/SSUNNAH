@@ -309,6 +309,13 @@
   font-size: 0.85rem;
 }
 
+.rb-composer__offline {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--sf-text-secondary, inherit);
+  opacity: 0.85;
+}
+
 .rb-page-sheet__actions {
   display: grid;
   gap: 0.4rem;
