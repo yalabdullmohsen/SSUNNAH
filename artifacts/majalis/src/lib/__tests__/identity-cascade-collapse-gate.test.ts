@@ -29,10 +29,19 @@ assert.equal(
   1,
   "interaction-states مؤجّل مرة واحدة بعد طبقات الليل",
 );
-assert.match(main, /import\(\s*["']\.\/styles\/visual-identity-unify\.css["']\s*\)/);
-assert.match(main, /import\(\s*["']\.\/styles\/dark-mode-recovery\.css["']\s*\)/);
+/* WAVE7: sync only — deferred reload-to-win removed after CASCADE SEAL absorb */
 assert.match(main, /import\s+["']\.\/styles\/visual-identity-unify\.css["']/);
 assert.match(main, /import\s+["']\.\/styles\/dark-mode-recovery\.css["']/);
+assert.doesNotMatch(
+  main,
+  /import\(\s*["']\.\/styles\/visual-identity-unify\.css["']\s*\)/,
+  "WAVE7: no deferred unify reimport",
+);
+assert.doesNotMatch(
+  main,
+  /import\(\s*["']\.\/styles\/dark-mode-recovery\.css["']\s*\)/,
+  "WAVE7: no deferred recovery reimport",
+);
 
 assert.match(report, /IMPLEMENTATION_FROZEN/);
 assert.match(report, /ACTIVE_COMPATIBILITY/);

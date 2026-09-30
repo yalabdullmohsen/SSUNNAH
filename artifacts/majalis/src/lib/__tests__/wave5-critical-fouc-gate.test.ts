@@ -20,12 +20,12 @@ const syncSet = new Set(sync);
 const deferredSet = new Set(deferred);
 const dups = [...syncSet].filter((f) => deferredSet.has(f)).sort();
 
-/** Cascade reimports required after final-release / dark deferred stack — not accidental bloat of critical CSS. */
-const ALLOWED_SYNC_DEFERRED_DUP = [
-  "./styles/visual-identity-unify.css",
-  "./styles/dark-mode-recovery.css",
-  "./styles/interaction-states.css",
-];
+/**
+ * WAVE7: unify + dark-mode-recovery no longer re-imported after final-release
+ * (winners absorbed into final-release CASCADE SEAL). Only interaction-states
+ * remains as intentional sync∩deferred after the dark deferred stack.
+ */
+const ALLOWED_SYNC_DEFERRED_DUP = ["./styles/interaction-states.css"];
 
 assert.deepEqual(
   dups,
@@ -34,11 +34,22 @@ assert.deepEqual(
 );
 
 assert.match(main, /void import\("\.\/styles\/final-release\.css"\)/);
-assert.match(main, /void import\("\.\/styles\/visual-identity-unify\.css"\)/);
-assert.match(main, /void import\("\.\/styles\/dark-mode-recovery\.css"\)/);
+assert.match(main, /^\s*import\s+"\.\/styles\/visual-identity-unify\.css"/m);
+assert.match(main, /^\s*import\s+"\.\/styles\/dark-mode-recovery\.css"/m);
+assert.doesNotMatch(
+  main,
+  /final-release\.css"[\s\S]{0,500}visual-identity-unify\.css/,
+  "WAVE7: no unify reload-to-win after final-release",
+);
+assert.doesNotMatch(
+  main,
+  /final-release\.css"[\s\S]{0,500}dark-mode-recovery\.css/,
+  "WAVE7: no recovery reload-to-win after final-release",
+);
 
 assert.ok(sync.length === 22, `sync CSS imports expected 22 (got ${sync.length})`);
-assert.ok(deferred.length >= 50, `deferred call sites expected ≥50 (got ${deferred.length})`);
+assert.ok(deferred.length >= 48, `deferred call sites expected ≥48 (got ${deferred.length})`);
+assert.ok(deferred.length <= 51, `deferred call sites expected ≤51 after WAVE7 (got ${deferred.length})`);
 
 /** Proven-dead classes must not return to critical index.css. */
 const FORBIDDEN_IN_INDEX = [
