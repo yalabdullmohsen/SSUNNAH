@@ -51,17 +51,12 @@
 }
 
 @media (max-width: 980px) {
-  .prayer-status-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .kuwait-filters-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 560px) {
-  .prayer-status-grid,
   .kuwait-filters-grid {
     grid-template-columns: 1fr;
   }

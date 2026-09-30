@@ -143,10 +143,10 @@ function loadNonCriticalCss() {
     void import("./styles/brand-v4-components.css");
     // بعد design-system حتمًا حتى لا يفوز blur(20px) على final-release
     void import("./styles/final-release.css").then(() => {
-      // إعادة طبقة الهوية فقط بعد final-release (أزرار/بانر) —
-      // بلا إعادة تحميل ثيم البطاقات/التهدئة (كانت تسبب وميض هوية بعد أول طلاء).
+      // ALLOWED_CASCADE_REIMPORT: الهوية بعد final-release (أزرار/بانر) —
+      // بلا إعادة تحميل ثيم البطاقات/التهدئة (وميض هوية). انظر WAVE5_CSS_IMPORT_GRAPH.
       void import("./styles/visual-identity-unify.css");
-      // إعادة طبقة الاسترداد الليلي آخرًا حتى تفوز على final-release
+      // ALLOWED_CASCADE_REIMPORT: الاسترداد الليلي آخرًا حتى يفوز على final-release
       void import("./styles/dark-mode-recovery.css");
       // كنس الشريط الزخرفي مرة واحدة بعد الطبقات المتأخرة (لا تكرار import)
       void import("./styles/card-decorative-strip-cleanup.css");
