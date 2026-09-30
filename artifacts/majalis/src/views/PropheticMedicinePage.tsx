@@ -14,6 +14,7 @@ import type {
 import "@/styles/pages/prophetic-medicine.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 const PM_ICON_MAP: Record<string, LucideIcon> = {
   Leaf, Moon, BookOpen, CalendarDays, Utensils, Sunrise, FlaskConical, Stethoscope,
@@ -188,13 +189,13 @@ export default function PropheticMedicinePage() {
                   </>
                 )}
 
-                <button
+                <Button variant="ghost"
                   type="button"
                   onClick={() => setExpanded(isOpen ? null : item.id)}
                   className="pmp-toggle-btn"
                 >
                   {isOpen ? "▲ إخفاء الوصفة" : "▼ عرض الوصفة والاستخدامات"}
-                </button>
+                </Button>
               </div>
             </article>
           );

@@ -8,6 +8,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { PAGE_EXPLORE_LINKS } from "@/lib/explore-links";
 import "@/styles/pages/adab-talab-ilm.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
    §243، آداب طالب العلم  (.atl-*)
@@ -529,7 +530,7 @@ export default function AdabTalabIlmPage() {
       {/* Tabs */}
       <div className="atl-tabs-bar">
         {TABS.map(({ id, label, Icon }) => (
-          <button
+          <Button variant="ghost"
             key={id}
             type="button"
             className={`atl-tab${activeTab === id ? " atl-tab--active" : ""}`}
@@ -538,7 +539,7 @@ export default function AdabTalabIlmPage() {
           >
             <Icon size={14} aria-hidden="true" />
             {label}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -588,7 +589,7 @@ export default function AdabTalabIlmPage() {
             <div className="atl-accordion">
               {filteredAdabNafs.map((item, i) => (
                 <div key={i} className={`atl-acc-item${openIdx === i ? " atl-acc-item--open" : ""}`}>
-                  <button
+                  <Button variant="ghost"
                     type="button"
                     className="atl-acc-head"
                     onClick={() => setOpenIdx(openIdx === i ? null : i)}
@@ -597,7 +598,7 @@ export default function AdabTalabIlmPage() {
                     <span className="atl-acc-num">{String(i + 1).padStart(2, "0")}</span>
                     <span className="atl-acc-title">{item.title}</span>
                     {openIdx === i ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                  </button>
+                  </Button>
                   {openIdx === i && (
                     <div className="atl-acc-body">
                       <p>{item.text}</p>
@@ -622,7 +623,7 @@ export default function AdabTalabIlmPage() {
             <div className="atl-accordion">
               {filteredAdabSheikh.map((item, i) => (
                 <div key={i} className={`atl-acc-item${openIdx === i ? " atl-acc-item--open" : ""}`}>
-                  <button
+                  <Button variant="ghost"
                     type="button"
                     className="atl-acc-head"
                     onClick={() => setOpenIdx(openIdx === i ? null : i)}
@@ -631,7 +632,7 @@ export default function AdabTalabIlmPage() {
                     <span className="atl-acc-num">{String(i + 1).padStart(2, "0")}</span>
                     <span className="atl-acc-title">{item.title}</span>
                     {openIdx === i ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                  </button>
+                  </Button>
                   {openIdx === i && (
                     <div className="atl-acc-body">
                       <p>{item.text}</p>
@@ -656,7 +657,7 @@ export default function AdabTalabIlmPage() {
             <div className="atl-accordion">
               {filteredAdabDars.map((item, i) => (
                 <div key={i} className={`atl-acc-item${openIdx === i ? " atl-acc-item--open" : ""}`}>
-                  <button
+                  <Button variant="ghost"
                     type="button"
                     className="atl-acc-head"
                     onClick={() => setOpenIdx(openIdx === i ? null : i)}
@@ -665,7 +666,7 @@ export default function AdabTalabIlmPage() {
                     <span className="atl-acc-num">{String(i + 1).padStart(2, "0")}</span>
                     <span className="atl-acc-title">{item.title}</span>
                     {openIdx === i ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                  </button>
+                  </Button>
                   {openIdx === i && (
                     <div className="atl-acc-body">
                       <p>{item.text}</p>

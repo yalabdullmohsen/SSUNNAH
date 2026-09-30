@@ -11,6 +11,7 @@ import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/cards.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 type SizeKey = "square" | "story" | "wide";
 
@@ -182,7 +183,7 @@ export default function CardsPage() {
               <h2>القالب</h2>
               <div className="cards-template-grid">
                 {TEMPLATES.map((t) => (
-                  <button
+                  <Button variant="ghost"
                     key={t.id}
                     type="button"
                     onClick={() => setSelectedTemplate(t)}
@@ -190,7 +191,7 @@ export default function CardsPage() {
                   >
                     <span className="cards-template-swatch" style={{ "--swatch-bg": t.swatch } as React.CSSProperties} />
                     {t.name}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -199,14 +200,14 @@ export default function CardsPage() {
               <h2>الحجم</h2>
               <div className="cards-size-row">
                 {(Object.keys(SIZE_MAP) as SizeKey[]).map((s) => (
-                  <button
+                  <Button variant="ghost"
                     key={s}
                     type="button"
                     onClick={() => setSize(s)}
                     className={`cards-size-btn${size === s ? "is-active" : ""}`}
                   >
                     {SIZE_MAP[s].label}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -217,15 +218,15 @@ export default function CardsPage() {
             </label>
 
             <div className="template-action-row">
-              <button type="button" className="ss-action-btn ss-action-btn--secondary template-btn template-btn--ghost" onClick={resetForm}>
+              <Button variant="ghost" type="button" className="ss-action-btn ss-action-btn--secondary template-btn template-btn--ghost" onClick={resetForm}>
                 إعادة ضبط
-              </button>
-              <button type="button" onClick={() => void shareCard()} disabled={isGenerating} className="ss-action-btn ss-action-btn--secondary template-btn template-btn--ghost">
+              </Button>
+              <Button variant="ghost" type="button" onClick={() => void shareCard()} disabled={isGenerating} className="ss-action-btn ss-action-btn--secondary template-btn template-btn--ghost">
                 {isGenerating ? "مشاركة…" : "مشاركة"}
-              </button>
-              <button type="button" onClick={() => void downloadCard()} disabled={isGenerating} className="ss-action-btn ss-action-btn--secondary template-btn template-btn--primary">
+              </Button>
+              <Button variant="ghost" type="button" onClick={() => void downloadCard()} disabled={isGenerating} className="ss-action-btn ss-action-btn--secondary template-btn template-btn--primary">
                 {isGenerating ? "تحميل…" : "تحميل الصورة"}
-              </button>
+              </Button>
             </div>
           </div>
 

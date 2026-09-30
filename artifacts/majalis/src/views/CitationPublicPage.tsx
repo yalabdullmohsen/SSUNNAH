@@ -20,6 +20,7 @@ import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { truncateAtWord } from "@/lib/utils";
 import "@/styles/pages/citation-public.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 export default function CitationPublicPage() {
   const [, params] = useRoute("/c/:slug");
@@ -173,14 +174,14 @@ export default function CitationPublicPage() {
 
           {/* أزرار الإجراءات */}
           <div className="cpp-actions">
-            <button type="button" onClick={copyLink} className="cpp-action-btn">
+            <Button variant="ghost" type="button" onClick={copyLink} className="cpp-action-btn">
               <Link2 size={14} strokeWidth={2} aria-hidden="true" />
               {copied ? "تم النسخ ✓" : "نسخ الرابط"}
-            </button>
+            </Button>
 
-            <button type="button" onClick={() => setShowQr(!showQr)} className="cpp-action-btn">
+            <Button variant="ghost" type="button" onClick={() => setShowQr(!showQr)} className="cpp-action-btn">
               <QrCode size={14} strokeWidth={2} aria-hidden="true" /> QR Code
-            </button>
+            </Button>
 
             <a
               href={getCitationImageUrl(slug)}
@@ -191,7 +192,7 @@ export default function CitationPublicPage() {
             </a>
 
             {user && (
-              <button
+              <Button variant="ghost"
                 type="button"
                 onClick={handleSave}
                 disabled={saved}
@@ -199,7 +200,7 @@ export default function CitationPublicPage() {
               >
                 <Star size={14} strokeWidth={2} aria-hidden="true" />
                 {saved ? "محفوظ" : "احفظ في مكتبتي"}
-              </button>
+              </Button>
             )}
           </div>
 

@@ -10,6 +10,7 @@ import { MIND_MAPS, MIND_MAP_CATEGORIES, type MindMap, type MindMapNode } from "
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { MindMapCanvas } from "@/components/mind-map/MindMapCanvas";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 type ViewMode = "canvas" | "list";
 
@@ -37,7 +38,7 @@ function MindNode({
       className={`mm-node mm-node--d${Math.min(depth, 4)}`}
       style={depth === 0 ? {} : { marginInlineStart: `${Math.min(depth, 3) * 1.1}rem` }}
     >
-      <button
+      <Button variant="ghost"
         type="button"
         className={`mm-node__label${!hasChildren ? " mm-node__label--leaf" : ""}${open ? " mm-node__label--open" : ""}`}
         onClick={toggle}
@@ -59,7 +60,7 @@ function MindNode({
             <ExternalLink size={11} strokeWidth={2} />
           </Link>
         )}
-      </button>
+      </Button>
 
       {hasChildren && open && (
         <div className="mm-node__children">
@@ -111,7 +112,7 @@ function MindMapCard({
 
   return (
     <div className={`mm-card${isOpen ? " mm-card--open" : ""}`}>
-      <button
+      <Button variant="ghost"
         type="button"
         className="mm-card__head"
         onClick={toggle}
@@ -130,7 +131,7 @@ function MindMapCard({
         <span className="mm-card__toggle" aria-hidden="true">
           {isOpen ? <X size={18} strokeWidth={2} /> : <ChevronDown size={18} strokeWidth={2} />}
         </span>
-      </button>
+      </Button>
 
       {isOpen && (
         <div className="mm-card__body">
@@ -200,7 +201,7 @@ export default function MindMapPage() {
 
       {/* تبديل نمط العرض: خريطة بصرية تفاعلية (افتراضي) أو قائمة نصية قابلة للطيّ */}
       <div className="mmv-view-toggle" role="tablist" aria-label="نمط عرض الخريطة الذهنية">
-        <button
+        <Button variant="ghost"
           type="button"
           role="tab"
           aria-selected={viewMode === "canvas"}
@@ -209,8 +210,8 @@ export default function MindMapPage() {
         >
           <Waypoints size={14} strokeWidth={2.4} />
           خريطة بصرية
-        </button>
-        <button
+        </Button>
+        <Button variant="ghost"
           type="button"
           role="tab"
           aria-selected={viewMode === "list"}
@@ -219,13 +220,13 @@ export default function MindMapPage() {
         >
           <List size={14} strokeWidth={2.4} />
           قائمة نصية
-        </button>
+        </Button>
       </div>
 
       {/* فلتر الفئات */}
       <div className="mm-filters" role="tablist" aria-label="تصفية الخرائط">
         {MIND_MAP_CATEGORIES.map(cat => (
-          <button
+          <Button variant="ghost"
             key={cat}
             type="button"
             role="tab"
@@ -234,7 +235,7 @@ export default function MindMapPage() {
             onClick={() => setActiveCategory(cat)}
           >
             {cat}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -253,7 +254,7 @@ export default function MindMapPage() {
       {/* أزرار التوسيع والطيّ */}
       {filtered.length > 0 && (
         <div className="mm-batch-btns">
-          <button
+          <Button variant="ghost"
             type="button"
             className={`mm-batch-btn${expandAll === true ? " mm-batch-btn--active" : ""}`}
             onClick={() => setExpandAll(true)}
@@ -261,8 +262,8 @@ export default function MindMapPage() {
           >
             <ChevronDown size={14} strokeWidth={2.5} />
             توسيع الكل
-          </button>
-          <button
+          </Button>
+          <Button variant="ghost"
             type="button"
             className={`mm-batch-btn${expandAll === false ? " mm-batch-btn--active" : ""}`}
             onClick={() => setExpandAll(false)}
@@ -270,7 +271,7 @@ export default function MindMapPage() {
           >
             <ChevronLeft size={14} strokeWidth={2.5} />
             طيّ الكل
-          </button>
+          </Button>
         </div>
       )}
 
