@@ -102,6 +102,21 @@
   background: color-mix(in srgb, var(--sf2-page-bg, #f8f6f1) 88%, var(--sf2-card-bg, #fff));
 }
 
+.app-state-v2--stale {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--sf2-text-secondary, #48645a) 18%, transparent);
+  background: color-mix(in srgb, var(--sf2-page-bg, #f8f6f1) 92%, var(--sf2-card-bg, #fff));
+  padding: 0.65rem 0.85rem;
+}
+
+.app-state-v2--stale .app-state-v2__body {
+  margin: 0;
+  flex: 1 1 12rem;
+}
+
 .app-state-v2__meta {
   margin: 0;
   font-size: var(--sf2-type-caption, 0.8125rem);

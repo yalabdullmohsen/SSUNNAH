@@ -6,7 +6,7 @@
 | Controls | `components/ui` — `Input` · `Textarea` · `Select` · `Toggle` (Switch-like) · Checkbox via native/`SettingsToggleRow` |
 | Field helpers | `design-system/FormFields.tsx` — `FormLabel` · `FieldDescription` · `FieldError` · `FormActions` · `SearchInput` |
 | Actions | `FormActions` + `Button` `primary` / `secondary` (see Interaction PR-1) |
-| Feedback | `EmptyStateV2` · `LoadingStateV2` · `ErrorStateV2` · `OfflineStateV2` · `StatusCard` |
+| Feedback | `EmptyStateV2` · `NoResultsState` · `LoadingStateV2` · `ErrorStateV2` · `OfflineStateV2` · `StaleDataIndicator` · `PermissionDeniedState` · `RateLimitedState` · `StatusCard` |
 | Mushaf | **MUSHAF_SPECIAL** — لا ترحيل عام لنماذج المصحف |
 | Store | HOLD · Web `WEB_RELEASED_NATIVE_HOLD` |
 
@@ -31,13 +31,26 @@ Do **not** invent parallel form kits or page-local hex/`!important` for controls
 
 | State | Component | Notes |
 |---|---|---|
-| Empty | `EmptyStateV2` | Meaningful title + description + path forward |
-| Loading | `LoadingStateV2` | Skeleton-first; no banned busy copy |
-| Error (page) | `ErrorStateV2` | Friendly copy; optional `correlationId` only — never raw provider payloads |
-| Offline | `OfflineStateV2` | Honest about stale cache |
+| Empty | `EmptyStateV2` | Request succeeded and there is **no source data** — not a filter miss |
+| No results | `NoResultsState` | Index/data exists but search/filters returned nothing — keep query; offer clear |
+| Loading | `LoadingStateV2` | Skeleton-first; reserve geometry; no banned busy copy; bounded by error path |
+| Error (page) | `ErrorStateV2` | Friendly Arabic copy; optional `correlationId` only — never raw provider payloads |
+| Offline | `OfflineStateV2` | Honest about stale cache; do not treat cached content as Error |
+| Stale | `StaleDataIndicator` | Keep content visible; quiet refresh; no layout wipe |
+| Permission denied | `PermissionDeniedState` | 401/403 — login/home actions; no admin internals |
+| Rate limited | `RateLimitedState` | 429 — cooldown before retry; no retry storm |
 | Inline status strip | `StatusCard` | Non-navigation status surface |
 
 Field-level validation → `FieldError` linked with `aria-describedby`. Page/section failure → `ErrorStateV2` (or `StatusCard` when strip-sized).
+
+### Contract rules (WAVE4)
+
+1. **Empty ≠ NoResults** — never show “لا محتوى في النظام” when filters/search are the cause.
+2. **Offline ≠ Error** — show `OfflineStateV2` (and cached content when available).
+3. **Retry** — in-place refetch via canonical `Button`; no full `location.reload` unless proven necessary; cancel in-flight on unmount/route change.
+4. **No raw API / stack / provider strings** in UI.
+5. **Skeletons** match final card/list geometry to limit CLS.
+6. **Admin access denial** for public → `PermissionDeniedState` or product 404 copy — never leak admin surfaces.
 
 ## Rules
 

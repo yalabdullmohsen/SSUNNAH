@@ -21,7 +21,7 @@ import {
   type RealUserLearningStats,
 } from "@/lib/learning-paths-service";
 import { DashboardScreen } from "@/components/design-system/screens";
-import { ErrorState } from "@/components/ui-common";
+import { ErrorStateV2 } from "@/components/design-system";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 
 /* ── أيقونات المحتوى ────────────────────────────────────────────────────── */
@@ -190,8 +190,9 @@ export default function MyLearningPage() {
         ) : null}
 
         {user && loadError && !loading ? (
-          <ErrorState
-            text={loadError}
+          <ErrorStateV2
+            title="تعذّر تحميل تعلّمي"
+            description={loadError}
             onRetry={() => setRetryTick((n) => n + 1)}
           />
         ) : null}

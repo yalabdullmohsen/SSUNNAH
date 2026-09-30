@@ -13,6 +13,7 @@ import { toArabicDigits } from "@/lib/utils";
 import type { BookmarkRecord, ReadingProgress } from "@/core/quran/DatabaseManager";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
+import { StaleDataIndicator } from "@/components/design-system";
 import "@/styles/quran-engine-ui.css";
 
 export type HomeDashboardProps = {
@@ -126,9 +127,15 @@ export function HomeDashboard({ onContinue, onOpenViewer }: HomeDashboardProps) 
       </header>
 
       {loadError ? (
-        <p className="qe-dash__load-err" role="alert">
-          {loadError}
-        </p>
+        <StaleDataIndicator
+          className="qe-dash__load-err"
+          message={loadError}
+          refreshLabel="إعادة المحاولة"
+          onRefresh={() => {
+            setLoadError(null);
+            void loadLastReadingProgress().catch(() => setLoadError(STATUS.loadError));
+          }}
+        />
       ) : null}
 
       <section className="qe-dash__card">

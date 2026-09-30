@@ -4,8 +4,7 @@ import { ShareButtons } from "@/components/ContentActions";
 import { Link } from "wouter";
 import { navigateTo } from "@/lib/navigation-intent";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { ErrorState } from "@/components/ui-common";
-import { EmptyStateV2 } from "@/components/design-system";
+import { EmptyStateV2, ErrorStateV2, NoResultsState } from "@/components/design-system";
 import { FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
@@ -31,7 +30,6 @@ import {
   applyLessonQuickFilters,
   type LessonQuickFilters,
 } from "@/components/lessons/LessonFilters";
-import { safeLocationReload } from "@/lib/safe-reload";
 import {
   DEFAULT_KUWAIT_FILTERS,
   extractFilterOptions,
@@ -50,7 +48,7 @@ import "@/styles/pages/lessons-sections-v2.css";
 import "@/components/sections/section-cards.css";
 import { registerForLesson, unregisterFromLesson, getMyRegistrations } from "@/lib/supabase";
 import { applyPageSeo } from "@/lib/seo";
-import { EMPTY } from "@/lib/ui-copy";
+import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { ExploreAlsoNav } from "@/components/ExploreAlsoNav";
 import { formatSheikhName } from "@/lib/sheikh-name";
 import { useDebouncedValue } from "@/hooks/useDebouncedValue";
@@ -271,6 +269,7 @@ export default function LessonsPage({
   const [archivedLessons, setArchivedLessons] = useState<KuwaitLessonRecord[]>(initialArchived ?? []);
   const [loading, setLoading] = useState(!initialActive);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const [reloadKey, setReloadKey] = useState(0);
   const [filters, setFilters] = useState<KuwaitLessonFilters>(() => {
     const base = { ...DEFAULT_KUWAIT_FILTERS };
     if (typeof window !== "undefined") {
@@ -334,7 +333,7 @@ export default function LessonsPage({
   }, [activeLessons.length]);
 
   useEffect(() => {
-    if (initialActive) return;
+    if (initialActive && reloadKey === 0) return;
     let cancelled = false;
     const signal = beginAbortScope("lessons:page");
     setLoading(true);
@@ -348,10 +347,12 @@ export default function LessonsPage({
         if (cancelled) return;
         setActiveLessons(active);
         setArchivedLessons(archived);
+        setLoadError(null);
       })
       .catch((err) => {
         if (cancelled || (err as Error)?.name === "AbortError") return;
-        setLoadError(String((err as Error)?.message || err));
+        const offline = typeof navigator !== "undefined" && navigator.onLine === false;
+        setLoadError(offline ? STATUS.networkError : STATUS.loadError);
         // أبقِ الدروس السابقة إن وُجدت (بلا وميض فراغ)
       })
       .finally(() => {
@@ -362,7 +363,7 @@ export default function LessonsPage({
       abortScope("lessons:page");
       RequestManager.cancel("lessons:unified-split");
     };
-  }, [initialActive]);
+  }, [initialActive, reloadKey]);
 
   useEffect(() => {
     if (authLoading) return;
@@ -645,27 +646,40 @@ export default function LessonsPage({
     >
       <div className="lessons-v2-layout lessons-v3-layout">
         <main className="lessons-v2-main" id="lessons-list" aria-busy={loading}>
-          {loadError && !loading ? (
-            <ErrorState text={loadError} onRetry={() => safeLocationReload()} />
+          {loadError && !loading && activeLessons.length === 0 && archivedLessons.length === 0 ? (
+            <ErrorStateV2
+              title="تعذّر تحميل الدروس"
+              description={loadError}
+              onRetry={() => setReloadKey((k) => k + 1)}
+            />
           ) : null}
 
-          {!loadError ? (
+          {!(loadError && activeLessons.length === 0 && archivedLessons.length === 0) ? (
           <PageLoadingGuard
             loading={loading}
             error={null}
-            empty={!loading && quickFiltered.length === 0}
-            emptyText={EMPTY.search}
-            onRetry={() => safeLocationReload()}
+            empty={false}
+            onRetry={() => setReloadKey((k) => k + 1)}
           >
             <>
               <section className="lessons-v2-section lessons-v2-section--first">
                 {listLessons.length === 0 ? (
-                  <EmptyStateV2
-                    title="لا دروس مطابقة"
-                    description={EMPTY.search}
-                    ctaLabel="مسح التصفية"
-                    onCtaClick={clearAllFilters}
-                  />
+                  activeFilterCount > 0 || Boolean(filters.search.trim()) ? (
+                    <NoResultsState
+                      title="لا دروس مطابقة"
+                      description={EMPTY.search}
+                      queryHint={filters.search.trim() ? `البحث: ${filters.search.trim()}` : undefined}
+                      clearLabel="مسح التصفية"
+                      onClear={clearAllFilters}
+                    />
+                  ) : (
+                    <EmptyStateV2
+                      title="لا دروس منشورة بعد"
+                      description={EMPTY.data}
+                      href="/"
+                      ctaLabel="الرئيسية"
+                    />
+                  )
                 ) : (
                   <>
                     {renderGrid(

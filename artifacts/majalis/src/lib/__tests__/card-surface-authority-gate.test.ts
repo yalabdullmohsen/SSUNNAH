@@ -41,7 +41,11 @@ assert.match(read("src/pages/account/ui/SettingsView.tsx"), /AppCard/);
 assert.match(read("src/components/home/HomeDailyProgress.tsx"), /InteractiveCard/);
 assert.match(read("src/components/home/HomeLatestUpdates.tsx"), /InteractiveCard/);
 assert.match(read("src/components/home/HomePrayerRanks.tsx"), /InsetSurface/);
-assert.match(read("src/pages/account/ui/SearchView.tsx"), /StatusCard/);
+assert.match(
+  read("src/pages/account/ui/SearchView.tsx"),
+  /NoResultsState|StatusCard/,
+  "Search: سطح حالة رسمي (NoResults أو StatusCard)",
+);
 assert.match(read("src/components/design-system/SunnahCardV2.tsx"), /from "@\/components\/ui\/button"/);
 
 const pkg = JSON.parse(read("package.json"));
