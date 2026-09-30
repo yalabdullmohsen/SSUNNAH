@@ -1,8 +1,12 @@
-import { useEffect, useState, lazy, Suspense } from "react";
+import { memo, useEffect, useState, lazy, Suspense } from "react";
 import { applyPageSeo } from "@/lib/seo";
 import { Link, useLocation } from "wouter";
 import { ArrowRight, Bell, Compass, HandHeart, MapPin, CircleDot, Settings2 } from "lucide-react";
-import { useSharedPrayerCountdown } from "@/components/prayer/PrayerCountdownProvider";
+import {
+  useSharedPrayerData,
+  useSharedPrayerSlot,
+  useSharedPrayerCountdownLive,
+} from "@/components/prayer/PrayerCountdownProvider";
 import { markPrayer } from "@/lib/prayer-performance-marks";
 import { recordDevMount, recordDevRender } from "@/lib/dev-mount-counters";
 import {
@@ -141,6 +145,30 @@ function rowStatusLabel(
   return "قادمة";
 }
 
+/** قيمة العدّ فقط — تشترك في السياق الحي دون إعادة رسم صفحة المواقيت. */
+const PrayerHeroCountdownValue = memo(function PrayerHeroCountdownValue({
+  pinnedKey,
+  displayMinutes,
+  timeZone,
+  inGrace,
+  nextKey,
+}: {
+  pinnedKey: string | null;
+  displayMinutes: number | null;
+  timeZone: string;
+  inGrace: boolean;
+  nextKey: string;
+}) {
+  const countdown = useSharedPrayerCountdownLive();
+  const displayHms =
+    pinnedKey && pinnedKey !== nextKey
+      ? formatHms(secondsUntilPrayer(displayMinutes, timeZone).seconds)
+      : inGrace && countdown?.sinceHms
+        ? countdown.sinceHms
+        : (countdown?.remainingHms ?? "--:--:--");
+  return <span className="pts-hero__countdown-value">{displayHms}</span>;
+});
+
 export default function PrayerTimesPage() {
   const [location] = useLocation();
   const [locLabel, setLocLabel] = useState(() => getActivePrayerLocation().label);
@@ -194,7 +222,8 @@ export default function PrayerTimesPage() {
     });
   }, []);
 
-  const { data, countdown, loading, reload } = useSharedPrayerCountdown();
+  const { data, loading, reload } = useSharedPrayerData();
+  const slot = useSharedPrayerSlot();
   const [pinnedKey, setPinnedKey] = useState<string | null>(null);
   const timeZone = data?.timezone || getActivePrayerLocation().timeZone;
 
@@ -363,7 +392,8 @@ export default function PrayerTimesPage() {
   );
 
   // هيكل فوري — سطح زيتوني محجوز المساحة؛ بلا إطار أبيض أو hint كريمي
-  if (!countdown?.next) {
+  // slot يتغير عند تبديل الصلاة/السماح فقط — لا كل ثانية
+  if (!slot) {
     return (
       <div className="pts-screen pts-screen--with-nav pts-screen--boot" dir="rtl">
         {headerChrome}
@@ -402,38 +432,31 @@ export default function PrayerTimesPage() {
 
   const prayers: PrayerSlot[] = (data?.prayers ?? []).filter((p) => p.time);
   const nowInfo = zoneNowSeconds(timeZone);
-  const inGrace = !pinnedKey && countdown.sinceSeconds != null;
-  const ranKey = countdown.next.key;
-  const displayKey = pinnedKey ?? (inGrace ? ranKey : countdown.next.key);
+  const inGrace = !pinnedKey && slot.inGrace;
+  const ranKey = slot.nextKey;
+  const displayKey = pinnedKey ?? (inGrace ? ranKey : slot.nextKey);
   const displayItem = prayers.find((p) => p.key === displayKey);
-  const displayName = PRAYER_AR[displayKey] ?? countdown.next.name;
+  const displayName = PRAYER_AR[displayKey] ?? slot.nextName;
   const hijriStr = formatHijri(data?.date?.hijri ?? null);
 
-  let displayHms: string;
   let isTomorrow = false;
-  if (pinnedKey && pinnedKey !== countdown.next.key) {
-    const { seconds, isTomorrow: tmrw } = secondsUntilPrayer(displayItem?.minutes ?? null, timeZone);
-    displayHms = formatHms(seconds);
-    isTomorrow = tmrw;
-  } else if (inGrace && countdown.sinceHms) {
-    displayHms = countdown.sinceHms;
-  } else {
-    displayHms = countdown.remainingHms ?? "--:--:--";
+  if (pinnedKey && pinnedKey !== slot.nextKey) {
+    isTomorrow = secondsUntilPrayer(displayItem?.minutes ?? null, timeZone).isTomorrow;
   }
 
-  const heroStatus = pinnedKey && pinnedKey !== countdown.next.key
+  const heroStatus = pinnedKey && pinnedKey !== slot.nextKey
     ? (isTomorrow ? "غداً" : "قادمة")
     : inGrace
       ? "انتهت"
       : "قادمة";
 
-  const heroLabel = pinnedKey && pinnedKey !== countdown.next.key
+  const heroLabel = pinnedKey && pinnedKey !== slot.nextKey
     ? "الوقت المتبقي لـ"
     : inGrace
       ? "مضى على الأذان"
       : "الصلاة القادمة";
 
-  const isNext = (key: string) => key === countdown.next?.key;
+  const isNext = (key: string) => key === slot.nextKey;
   const isPinned = (key: string) => key === displayKey;
   const isPast = (p: PrayerSlot) =>
     p.minutes != null && p.minutes < nowInfo.totalMinutes && !isNext(p.key) && !(inGrace && p.key === ranKey);
@@ -468,17 +491,23 @@ export default function PrayerTimesPage() {
             dir="ltr"
             aria-live="polite"
             aria-atomic="true"
-            aria-label={`${inGrace && !pinnedKey ? "مضى" : "متبقي"} ${displayHms}`}
+            aria-label={inGrace && !pinnedKey ? "مضى على الأذان" : "الوقت المتبقي"}
           >
             <span className="pts-hero__countdown-label">
               {inGrace && !pinnedKey ? "مضى" : "متبقي"}
             </span>
-            <span className="pts-hero__countdown-value">{displayHms}</span>
+            <PrayerHeroCountdownValue
+              pinnedKey={pinnedKey}
+              displayMinutes={displayItem?.minutes ?? null}
+              timeZone={timeZone}
+              inGrace={inGrace}
+              nextKey={slot.nextKey}
+            />
           </div>
           {inGrace && !pinnedKey && (
             <p className="pts-hero__hint">حتى مرور ٣٥ دقيقة ثم الانتقال للصلاة التالية</p>
           )}
-          {pinnedKey && pinnedKey !== countdown.next.key && (
+          {pinnedKey && pinnedKey !== slot.nextKey && (
             <Button type="button" className="pts-hero__reset" onClick={() => setPinnedKey(null)} variant="ghost">
               العودة للصلاة القادمة
             </Button>
@@ -525,7 +554,7 @@ export default function PrayerTimesPage() {
             const next = isNext(p.key);
             const pinned = isPinned(p.key);
             const past = isPast(p);
-            const status = rowStatusLabel(p.key, countdown.next?.key, inGrace, ranKey, past);
+            const status = rowStatusLabel(p.key, slot.nextKey, inGrace, ranKey, past);
             return (
               <Button
                 key={p.key}
