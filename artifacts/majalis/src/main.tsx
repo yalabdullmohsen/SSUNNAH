@@ -143,11 +143,8 @@ function loadNonCriticalCss() {
     void import("./styles/brand-v4-components.css");
     // بعد design-system حتمًا حتى لا يفوز blur(20px) على final-release
     void import("./styles/final-release.css").then(() => {
-      // ALLOWED_CASCADE_REIMPORT: الهوية بعد final-release (أزرار/بانر) —
-      // بلا إعادة تحميل ثيم البطاقات/التهدئة (وميض هوية). انظر WAVE5_CSS_IMPORT_GRAPH.
-      void import("./styles/visual-identity-unify.css");
-      // ALLOWED_CASCADE_REIMPORT: الاسترداد الليلي آخرًا حتى يفوز على final-release
-      void import("./styles/dark-mode-recovery.css");
+      // WAVE7: لا إعادة استيراد unify/recovery بعد final-release —
+      // فوز الهوية/الليل مُمتص في WAVE7 CASCADE SEAL داخل final-release.css.
       // كنس الشريط الزخرفي مرة واحدة بعد الطبقات المتأخرة (لا تكرار import)
       void import("./styles/card-decorative-strip-cleanup.css");
       /* Editorial أخيرًا حتى تفوز رموز الورق/الزيتون على الطبقات المتأخرة */

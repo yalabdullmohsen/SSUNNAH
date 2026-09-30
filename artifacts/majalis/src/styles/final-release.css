@@ -22,12 +22,14 @@
   --color-primary-contrast: var(--mj-on-brand);
   --color-accent: var(--mj-accent);
   --color-text: var(--mj-ink);
-  --color-text-muted: var(--mj-muted);
+  /* WAVE7: unify winner — كان reload-to-win يعيد --mj-ink-2 بعد هذه الطبقة */
+  --color-text-muted: var(--mj-ink-2);
   --color-border: var(--mj-hairline);
   --color-success: var(--ok-fg);
   --color-warning: var(--warn-fg);
   --color-error: var(--danger-fg);
-  --shadow-soft: var(--e-2);
+  /* WAVE7: unify winner — --e-2 كان جسرًا إلى --mj-sh؛ ثبّت المصدر مباشرة */
+  --shadow-soft: var(--mj-sh);
   /* أبعاد الهيكل الموحّدة — الإنسِت من theme (--inset-*) مرة واحدة */
   --header-height: var(--header-chrome, 56px);
   --bottom-nav-height: var(--nav-chrome, 64px);
@@ -51,7 +53,9 @@
 
 html[data-theme="dark"] {
   /* --mj-* تتبدّل في theme.css؛ لا تُعاد color-primary إلى مسار brand-v4 */
-  --shadow-soft: var(--e-2);
+  /* WAVE7: unify/recovery winners — بلا إعادة استيراد كاملة بعد هذه الطبقة */
+  --shadow-soft: var(--mj-sh);
+  --color-text-muted: var(--mj-ink-2);
   --color-button-secondary-bg: #222D29;
   --color-button-secondary-text: #F8FAFC;
   --color-button-secondary-border: #445651;
@@ -902,9 +906,12 @@ html.dark .navbar-menu-btn--drawer {
 
 html[data-theme="dark"] .bottom-nav,
 html[data-theme="dark"] .bottom-nav--v2,
+html[data-theme="dark"] .bottom-nav--m2030,
 html.dark .bottom-nav,
-html.dark .bottom-nav--v2 {
-  background-color: var(--surface-app, #131A18) !important;
+html.dark .bottom-nav--v2,
+html.dark .bottom-nav--m2030 {
+  /* WAVE7: recovery winner — خلفية dm-bottom-nav دون خصائص جديدة */
+  background-color: var(--dm-bottom-nav, var(--surface-app)) !important;
   background-image: none !important;
   opacity: 1 !important;
   backdrop-filter: none !important;
@@ -915,7 +922,7 @@ html[data-theme="dark"] .navbar-v3,
 html[data-theme="dark"] .top-section-bar,
 html.dark .navbar-v3,
 html.dark .top-section-bar {
-  background: var(--surface-app, #131A18) !important;
+  background: var(--dm-bg, var(--surface-app)) !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   opacity: 1 !important;
@@ -1217,28 +1224,32 @@ html.dark .top-section-bar {
 }
 
 html[data-theme="dark"] .bottom-nav,
-html[data-theme="dark"] .bottom-nav--v2 {
-  background-color: var(--surface-app, var(--mj-bg)) !important;
+html[data-theme="dark"] .bottom-nav--v2,
+html[data-theme="dark"] .bottom-nav--m2030,
+html.dark .bottom-nav,
+html.dark .bottom-nav--v2,
+html.dark .bottom-nav--m2030 {
+  background-color: var(--dm-bottom-nav, var(--surface-app, var(--mj-bg))) !important;
   background-image: none !important;
-  border-block-start-color: var(--color-border) !important;
-  border-top-color: var(--color-border) !important;
-  box-shadow: 0 -1px 0 color-mix(in srgb, #fff 8%, transparent) !important;
+  border-block-start-color: var(--dm-border-subtle, var(--color-border)) !important;
+  border-top-color: var(--dm-border-subtle, var(--color-border)) !important;
+  box-shadow: 0 -1px 0 var(--dm-divider, transparent) !important;
 }
 @media (max-width: 879px) {
   html[data-theme="dark"] .bottom-nav--v2 .bottom-nav__tab,
   html[data-theme="dark"] .bottom-nav .bottom-nav__tab,
   html.dark .bottom-nav--v2 .bottom-nav__tab,
   html.dark .bottom-nav .bottom-nav__tab {
-    /* نص خامل مقروء على شريط ليلي — لا --color-primary-dark (سطح غامق) */
-    color: var(--color-text-muted, var(--on-dark-secondary, #d8d0c4)) !important;
+    /* نص خامل مقروء — recovery winner عبر --dm-text-secondary */
+    color: var(--dm-text-secondary, var(--color-text-muted, var(--on-dark-secondary))) !important;
     border-radius: var(--radius-nav, var(--mj-r-md, 28px)) !important;
   }
   html[data-theme="dark"] .bottom-nav--v2 .bottom-nav__tab.is-active,
   html[data-theme="dark"] .bottom-nav .bottom-nav__tab.is-active,
   html.dark .bottom-nav--v2 .bottom-nav__tab.is-active,
   html.dark .bottom-nav .bottom-nav__tab.is-active {
-    color: var(--mj-accent, #c4a35a) !important;
-    background: color-mix(in srgb, var(--mj-brand, #1f6b56) 18%, transparent) !important;
+    color: var(--dm-accent-gold, var(--mj-accent)) !important;
+    background: color-mix(in srgb, var(--dm-primary, var(--mj-brand)) 8%, transparent) !important;
   }
   html[data-theme="dark"] .bottom-nav--v2 .bottom-nav__tab-label,
   html[data-theme="dark"] .bottom-nav .bottom-nav__tab-label,
@@ -1252,11 +1263,11 @@ html[data-theme="dark"] .bottom-nav--v2 {
 /* شريط الأقسام العلوي ليلاً — نفس عقد النص المقروء */
 html[data-theme="dark"] .top-section-bar__tab,
 html.dark .top-section-bar__tab {
-  color: var(--color-text-muted, var(--on-dark-secondary, #d8d0c4)) !important;
+  color: var(--dm-text-secondary, var(--color-text-muted, var(--on-dark-secondary))) !important;
 }
 html[data-theme="dark"] .top-section-bar__tab.is-active,
 html.dark .top-section-bar__tab.is-active {
-  color: var(--mj-brand, var(--brand-on-surface, #8fd4b0)) !important;
+  color: var(--dm-text-link, var(--mj-brand, var(--brand-on-surface))) !important;
 }
 
 /* أزرار رجوع/أعلى العامة (App.tsx) — كانت محصورة بـupdates.css الكسول */
@@ -2213,10 +2224,27 @@ header.navbar-v3,
 }
 html[data-theme="dark"] .bottom-nav,
 html[data-theme="dark"] .bottom-nav--v2,
+html[data-theme="dark"] .bottom-nav--m2030,
 html.dark .bottom-nav,
-html.dark .bottom-nav--v2 {
-  background-color: var(--surface-app, #131A18) !important;
+html.dark .bottom-nav--v2,
+html.dark .bottom-nav--m2030 {
+  background-color: var(--dm-bottom-nav, var(--surface-app)) !important;
   opacity: 1 !important;
+}
+
+/*
+ * WAVE7 CASCADE SEAL — رموز فقط (بلا تصريحات ظل/أولوية جديدة).
+ * فوز unify للرموز + قيم chrome عُدّلت في القواعد الموجودة أعلاه.
+ * الملفات unify/recovery تبقى sync لأول طلاء؛ بلا deferred reload.
+ */
+:root {
+  --color-text-muted: var(--mj-ink-2);
+  --shadow-soft: var(--mj-sh);
+}
+html[data-theme="dark"],
+html.dark {
+  --color-text-muted: var(--mj-ink-2);
+  --shadow-soft: var(--mj-sh);
 }
 
 

@@ -24,11 +24,11 @@
 | `theme-aliases.css` | REQUIRED_THEME_BOOT |
 | `semantic-layer-tokens.css` | REQUIRED_THEME_BOOT |
 | `visual-layer-contrast-fix.css` | REQUIRED_THEME_BOOT / a11y |
-| `visual-identity-unify.css` | REQUIRED_FIRST_PAINT (+ ALLOWED_CASCADE_REIMPORT deferred) |
+| `visual-identity-unify.css` | REQUIRED_FIRST_PAINT (**WAVE7:** sync only; deferred reload removed — seal in `final-release`) |
 | `sections-calm-polish.css` | SHARED_RUNTIME |
 | `ssunnah-ux-polish.css` | SHARED_RUNTIME |
 | `interaction-states.css` | REQUIRED_FOCUS (+ ALLOWED_CASCADE_REIMPORT deferred) |
-| `dark-mode-recovery.css` | REQUIRED_THEME_BOOT (+ ALLOWED_CASCADE_REIMPORT deferred) |
+| `dark-mode-recovery.css` | REQUIRED_THEME_BOOT (**WAVE7:** sync only; deferred reload removed — seal in `final-release`) |
 
 ## Conditional boot (dark only, before idle)
 
@@ -44,8 +44,8 @@
 | Group | Class |
 |---|---|
 | z-index / motion / m2030 / green-surface / card systems / editorial / design-system / final-release | DEFER_SAFE / SHARED_RUNTIME |
-| `visual-identity-unify` · `dark-mode-recovery` after `final-release` | DUPLICATED / ALLOWED_CASCADE_REIMPORT (identity win) |
-| `interaction-states` after dark deferred stack | DUPLICATED / ALLOWED_CASCADE_REIMPORT |
+| ~~`visual-identity-unify` · `dark-mode-recovery` after `final-release`~~ | **WAVE7 REMOVED** — winners in `final-release` CASCADE SEAL |
+| `interaction-states` after dark deferred stack | DUPLICATED / ALLOWED_CASCADE_REIMPORT (sole remaining) |
 | `fonts-ui-bold` (20s) · capacitor / ios-edge | DEFER_SAFE |
 
 ## WAVE5 removal from critical `index.css`

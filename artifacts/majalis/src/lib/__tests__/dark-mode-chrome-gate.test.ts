@@ -46,17 +46,17 @@ assert.doesNotMatch(
 );
 assert.match(
   finalCss,
-  /@media\s*\(\s*max-width:\s*879px\s*\)\s*\{[\s\S]*?html\[data-theme="dark"\]\s+\.bottom-nav(?:--v2)?\s+\.bottom-nav__tab[\s\S]*?color:\s*var\(--color-text-muted/,
+  /@media\s*\(\s*max-width:\s*879px\s*\)\s*\{[\s\S]*?html\[data-theme="dark"\]\s+\.bottom-nav(?:--v2)?\s+\.bottom-nav__tab[\s\S]*?color:\s*var\(--(?:dm-text-secondary|color-text-muted)/,
   "تبويبات الشريط السفلي ليلاً بلون نص مقروء",
 );
 assert.match(
   finalCss,
-  /html\[data-theme="dark"\]\s+\.bottom-nav(?:--v2)?\s+\.bottom-nav__tab\.is-active[\s\S]*?color:\s*var\(--mj-accent/,
+  /html\[data-theme="dark"\]\s+\.bottom-nav(?:--v2)?\s+\.bottom-nav__tab\.is-active[\s\S]*?color:\s*var\(--(?:dm-accent-gold|mj-accent)/,
   "التبويب النشط ليلاً بلون accent لا سطح غامق",
 );
 assert.match(
   finalCss,
-  /html\[data-theme="dark"\]\s+\.top-section-bar__tab[\s\S]*?color:\s*var\(--color-text-muted/,
+  /html\[data-theme="dark"\]\s+\.top-section-bar__tab[\s\S]*?color:\s*var\(--(?:dm-text-secondary|color-text-muted)/,
   "شريط الأقسام العلوي ليلاً مقروء",
 );
 
