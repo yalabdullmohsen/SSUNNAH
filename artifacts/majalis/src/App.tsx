@@ -11,6 +11,7 @@ import { NativeBackButtonListener } from "@/components/NativeBackButtonListener"
 import { VisualViewportKeyboardBridge } from "@/hooks/useVisualViewportOffset";
 import { FloatingLayerSync } from "@/components/FloatingLayerSync";
 import { ensureChromeMeta } from "@/lib/ensure-chrome-meta";
+import { ensureDarkLuxuryBundle } from "@/lib/ensure-dark-layers";
 import { PageChromeSync } from "@/components/PageChromeSync";
 import { useAutoHideBottomNav } from "@/hooks/useAutoHideBottomNav";
 import { getActiveTab, type BottomTabId } from "@/lib/get-active-tab";
@@ -1125,8 +1126,7 @@ function AppShellInner() {
     const loadNightCss = () => {
       if (nightCssLoaded) return;
       nightCssLoaded = true;
-      void import("@/styles/pages/luxury-night-v2.css");
-      void import("@/styles/sunnah-identity-luxury-night.css");
+      void ensureDarkLuxuryBundle();
     };
     const syncNight = () => {
       const dark =

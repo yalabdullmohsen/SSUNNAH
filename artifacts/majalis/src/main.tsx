@@ -31,6 +31,11 @@ import { prefetchTopRoutesOnIdle } from "./lib/prefetch-top-routes";
 import { initOnboardingState } from "./lib/onboarding-state";
 import { scheduleOnIdle } from "./lib/yield-to-main";
 import { logLcpCandidateHint } from "./lib/home-lcp-static-shell";
+import {
+  ensureDarkCoreLayers,
+  ensureDarkLayersForBoot,
+  isDarkCoreLoadStarted,
+} from "./lib/ensure-dark-layers";
 // خطوط الواجهة المحلية قبل أي طبقة تستخدم --font-app
 import "./styles/fonts-ui.css";
 // هوية identity-v2 — الرموز أولاً (@theme + --mj-*) قبل أي طبقة قديمة
@@ -82,20 +87,15 @@ import "./styles/ssunnah-ux-polish.css";
 import "./styles/interaction-states.css";
 /* استرداد ليلي P0 — متزامن؛ القواعد مقيّدة بـ html.dark لتقليل theme flash */
 import "./styles/dark-mode-recovery.css";
-// dark-mode-surfaces (~24KB) — فوري فقط إن كان الثيم داكنًا عند الإقلاع؛ وإلا بعد load
+// dark-mode-surfaces.css / dark-design-system.css / premium-dark-refine.css / luxury-night-v2.css
+// — محمّل واحد عبر ensure-dark-layers (Phase 3: لا إعادة idle لنفس الوحدات)
 {
   const bootDark =
     document.documentElement.classList.contains("dark") ||
     document.documentElement.dataset.theme === "dark";
   if (bootDark) {
-    /* متوازٍ: لا تنتظر انتهاء surfaces قبل design-system — يقلّل وميض البطاقات */
-    /* interaction-states محمّل متزامن أعلاه — لا تكرار في مسار الإقلاع الداكن */
-    void Promise.all([
-      import("./styles/dark-mode-surfaces.css"),
-      import("./styles/dark-design-system.css"),
-      import("./styles/premium-dark-refine.css"),
-      import("./styles/pages/luxury-night-v2.css"),
-    ]);
+    /* متوازٍ عبر ensureDarkLayersForBoot — يقلّل وميض البطاقات بلا تكرار لاحق */
+    void ensureDarkLayersForBoot();
   }
 }
 
@@ -173,14 +173,11 @@ function loadNonCriticalCss() {
   void import("./styles/m2030/interactions.css");
   void import("./styles/m2030/pages.css");
   // final-release يُحمَّل بعد design-system أعلاه — لا تحميل متوازٍ
-  // طبقات الليل + حالات التفاعل: مسار مؤجّل واحد (بلا تكرار if/else)
-  void Promise.all([
-    import("./styles/dark-mode-surfaces.css"),
-    import("./styles/dark-design-system.css"),
-    import("./styles/premium-dark-refine.css"),
-  ]).then(() => {
-    void import("./styles/interaction-states.css");
-  });
+  // طبقات الليل: محمّل idempotent واحد — لا تكرار interaction-states (متزامن أعلاه)
+  // ولا إعادة surfaces/premium إن حُمِّلت عند الإقلاع الداكن
+  if (!isDarkCoreLoadStarted()) {
+    void ensureDarkCoreLayers();
+  }
 }
 function scheduleNonCriticalCss() {
   scheduleOnIdle(loadNonCriticalCss, 2500);

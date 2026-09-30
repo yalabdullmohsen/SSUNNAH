@@ -7,6 +7,7 @@ import {
   type ThemePreference,
 } from "@/lib/theme-preference";
 import { reapplyPageChromeFromLocation } from "@/lib/apply-page-chrome";
+import { ensureDarkLayersForThemeSwitch } from "@/lib/ensure-dark-layers";
 
 type ThemePreferenceContextValue = {
   preference: ThemePreference;
@@ -27,14 +28,10 @@ export function ThemePreferenceProvider({ children }: { children: ReactNode }) {
     setResolvedTheme(resolveTheme(preference));
   }, [preference]);
 
-  // طبقات الوضع الداكن — تُحمَّل عند الحاجة حتى لا تُضخَّم CSS الحرج للوضع الفاتح
+  // طبقات الوضع الداكن — محمّل واحد (ensure-dark-layers) بلا تكرار مع إقلاع/idle
   useEffect(() => {
     if (resolvedTheme === "dark") {
-      void Promise.all([
-        import("@/styles/dark-mode-surfaces.css"),
-        import("@/styles/dark-design-system.css"),
-        import("@/styles/premium-dark-refine.css"),
-      ]);
+      void ensureDarkLayersForThemeSwitch();
     }
   }, [resolvedTheme]);
 

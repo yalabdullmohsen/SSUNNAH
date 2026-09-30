@@ -28,17 +28,24 @@ assert.match(ds, /\.tarikh-card/);
 assert.match(ds, /\.update-available-sheet/);
 assert.doesNotMatch(ds, /filter:\s*invert/);
 
+const ensure = read("src/lib/ensure-dark-layers.ts");
+assert.match(ensure, /dark-design-system\.css/);
+assert.match(
+  ensure,
+  /Promise\.all\(\[\s*import\("\.\.\/styles\/dark-mode-surfaces\.css"\)/,
+  "محمّل واحد يستورد surfaces",
+);
+
 const main = read("src/main.tsx");
 assert.match(main, /dark-design-system\.css/);
-assert.match(main, /Promise\.all\(\[\s*import\("\.\/styles\/dark-mode-surfaces\.css"\)/);
+assert.match(main, /ensureDarkLayersForBoot/, "إقلاع داكن عبر ensure");
 
 const sheet = read("src/styles/components/app-bottom-sheet.css");
 assert.doesNotMatch(sheet, /background:\s*#0f2f28/);
 assert.match(sheet, /--surface-elevated/);
 
 const provider = read("src/components/ThemePreferenceProvider.tsx");
-assert.match(provider, /dark-design-system\.css/);
-assert.match(provider, /Promise\.all\(\[\s*import\("@\/styles\/dark-mode-surfaces\.css"\)/);
+assert.match(provider, /ensureDarkLayersForThemeSwitch/, "تبديل ليلي عبر ensure");
 
 assert.match(ds, /--soft-card-bg:\s*var\(--surface-elevated\)/);
 
