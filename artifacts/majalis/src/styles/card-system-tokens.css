@@ -40,8 +40,10 @@
   --cs-on-ink-icon: var(--cs-on-ink);
   --cs-ink-shadow: none;
 
-  /* كثافة — هاتف مضغوط · نصف قطر MD=20 */
+  /* كثافة — هاتف مضغوط · نصف قطر MD=20 · أيقونة/تحكم على سلم Foundation */
   --cs-radius: var(--sf-radius-card, var(--sf-radius-md, 20px));
+  --cs-radius-icon: var(--sf-radius-xs);
+  --cs-radius-control: var(--sf-radius-control, var(--sf-radius-xs));
   --cs-pad-y: 0.6rem;
   --cs-pad-x: 0.75rem;
   --cs-gap: 0.35rem;

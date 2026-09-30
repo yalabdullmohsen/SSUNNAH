@@ -718,7 +718,7 @@ html[data-audio-dock="1"] .floating-back-btn {
   );
   background-size: 180% 100%;
   animation: ss-skel-shimmer 1.35s ease-in-out infinite;
-  border-radius: 10px;
+  border-radius: var(--sf-radius-xs);
 }
 
 @keyframes ss-skel-shimmer {
@@ -987,7 +987,7 @@ html.dark .search-page .search-page-form {
 }
 .home-progress-compact__bar {
   height: 8px;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   background: color-mix(in srgb, var(--mj-brand, #1f6b4a) 12%, #e8ebe7);
   overflow: hidden;
 }
@@ -1040,7 +1040,7 @@ html.dark .search-page .search-page-form {
   display: block;
   width: 100%;
   padding: 0.55rem 0.7rem;
-  border-radius: 10px;
+  border-radius: var(--sf-radius-xs);
   text-decoration: none;
   color: inherit;
   background: color-mix(in srgb, #fff 80%, var(--msk-canvas-1, #f4f4f1));
@@ -1092,7 +1092,7 @@ html[data-theme="dark"] .kids-hub-intro,
 html.dark .kids-hub-intro {
   background: color-mix(in srgb, var(--mj-surface, #15201c) 88%, #0d1412);
   border-color: color-mix(in srgb, var(--mj-brand, #1e5f4b) 22%, rgba(255, 255, 255, 0.1));
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  box-shadow: var(--sf-shadow-elevated);
 }
 
 .global-back-btn,
