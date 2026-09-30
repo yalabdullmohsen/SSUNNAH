@@ -2,7 +2,8 @@
 
 ## STATUS
 
-- **COMPLETE** (product migration + gates + budgets) — delivery state finalized after merge/deploy
+- **COMPLETE**
+- Production: **MATCH** `1075efb0` · Auto Deploy SUCCESS · Smoke PASS
 
 ## LIVE BASELINE
 
@@ -139,7 +140,14 @@ No new dependencies. Bundle delta expected negligible (shared Button already in 
 
 ## PRODUCTION SMOKE TESTS
 
-(Filled after deploy) `/` · migrated routes · `/mushaf` · `/prayer-times` · `/version.json` MATCH.
+| Check | Result |
+|---|---|
+| `version.json` | `1075efb0` = `origin/main` **MATCH** · `builtAt=2026-09-30T07:53:17.119Z` |
+| `/api/healthz` | HTTP 200 · `ok:true` · commit `1075efb0` |
+| Core routes | `/` `/search` `/quran-hub` `/lessons` `/hadith` `/fiqh` `/adhkar` `/settings` `/my-learning` `/mushaf` `/prayer-times` → 200 |
+| Migrated | `/quiz` `/vault` `/my-citations` `/prophets` `/family` `/mind-map` `/calendar` `/cards` `/universities` `/arkan` `/discover-islam/questions` `/prophetic-medicine` `/adab-talab-ilm` `/wasaya-nabawiyya` `/raqaiq` `/scholarly-research` `/research` → 200 |
+| Destructive prod ops | none executed |
+
 
 ## REGRESSIONS
 
@@ -165,4 +173,4 @@ WAVE4 only after: this PR merged · Auto Deploy · `version.json` MATCH · smoke
 
 ## FINAL DECISION
 
-**WAVE3_COMPLETE** — pending merge/deploy seal → then **WAVE3_MERGED_AND_DEPLOYED**.
+**WAVE3_MERGED_AND_DEPLOYED**
