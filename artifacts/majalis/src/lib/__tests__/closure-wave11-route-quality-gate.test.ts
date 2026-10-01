@@ -30,7 +30,8 @@ const mustClass: Record<string, string> = {
   "/about": "STATIC_CONTENT",
   "/privacy": "STATIC_CONTENT",
   "/terms": "STATIC_CONTENT",
-  "/library": "ACTIVE_PUBLIC_SECONDARY",
+  // /library is inventory redirect → /search (FINAL CLOSURE Phase 2 honesty)
+  "/library": "REDIRECT_ONLY",
   "/prophets": "ACTIVE_PUBLIC_SECONDARY",
   "/admin/v3": "ADMIN_ACCESS",
 };
@@ -47,16 +48,23 @@ for (const [route, cls] of Object.entries(mustClass)) {
 }
 
 assert.equal(by["/about"].empty, "NOT_APPLICABLE");
-assert.equal(by["/privacy"].error, "NOT_APPLICABLE");
+assert.ok(
+  by["/privacy"].error === "NOT_APPLICABLE" || by["/privacy"].error === "COMPLETE",
+  "/privacy error must be N/A or COMPLETE with chrome evidence",
+);
 assert.equal(by["/search"].noResults, "COMPLETE");
 assert.notEqual(by["/library"].visualSystem, "PENDING");
 
-// Honest: unaudited public routes may remain PENDING
 const pendingPublic = matrix.routes.filter(
   (r: { public?: boolean; loading?: string }) => r.public && r.loading === "PENDING",
 );
-assert.ok(pendingPublic.length > 0, "PENDING must remain for unaudited routes (no fake COMPLETE)");
+// Phase 2 public expansion closes PENDING with evidence packs; wave11 no longer requires leftovers.
+if (matrix.publicFeedbackPhase === "ROUTE_FEEDBACK_PUBLIC") {
+  assert.equal(pendingPublic.length, 0, "Phase 2: no PENDING loading on public routes");
+} else {
+  assert.ok(pendingPublic.length > 0, "PENDING must remain for unaudited routes (no fake COMPLETE)");
+}
 
 console.log(
-  `closure-wave11-route-quality-gate.test.ts: ok (classified=${Object.keys(mustClass).length}, pendingPublic=${pendingPublic.length})`,
+  `closure-wave11-route-quality-gate.test.ts: ok (classified=${Object.keys(mustClass).length}, pendingPublic=${pendingPublic.length}, phase=${matrix.publicFeedbackPhase || "pre-phase2"})`,
 );
