@@ -6,7 +6,7 @@ import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
 import { UtilityScreen } from "@/components/design-system/screens";
 import { SettingsList, SettingsToggleRow } from "@/components/design-system/SettingsList";
 import { AppCard } from "@/components/design-system/AppCard";
-import { FieldLabel, FormLabel, SearchInput } from "@/components/design-system";
+import { FieldError, FieldLabel, FormLabel, SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -658,7 +658,15 @@ export default function SettingsPage() {
               النسخة الحالية: {displayedAppVersion}
             </p>
           ) : null}
-          {cacheRefreshNote ? <p className="settings-note">{cacheRefreshNote}</p> : null}
+          {cacheRefreshNote === STATUS.loadError ? (
+            <FieldError id="settings-cache-refresh-error" className="settings-note">
+              {cacheRefreshNote}
+            </FieldError>
+          ) : cacheRefreshNote ? (
+            <p className="settings-note" role="status">
+              {cacheRefreshNote}
+            </p>
+          ) : null}
           <p className="settings-note">
             تنزيل تلاوة السور كاملة للقرّاء المُحقَّقين QA — للاستماع دون اتصال.
           </p>

@@ -5,7 +5,7 @@
 | Captured | 2026-10-01T02:26Z |
 | Live baseline | [`FINAL_CLOSURE_LIVE_BASELINE.md`](./FINAL_CLOSURE_LIVE_BASELINE.md) · **LIVE_BASELINE_LOCKED** |
 | SoT tip (live) | `14b30de60` (#2416 seal after Back P7 `2a4e3985`) |
-| Active phase | **PHASE 0 → seal then PHASE 1 Route Feedback Priority** |
+| Active phase | **PHASE 1 Route Feedback Priority** (after Phase 0 MATCH `cfcc6e7f`) |
 | Rule | مرحلة واحدة · PR واحد · MATCH قبل التالي |
 
 ## الحالة الحالية (عند القفل الحي)
