@@ -35,8 +35,14 @@ export function commitRouteSurface(pathname: string): RouteSurfaceMode {
   return mode;
 }
 
+/** صدفة مسار الصلاة — خارج Home sync graph (Out-of-Scope على /) */
+export function ensurePrayerRouteShellCss(): void {
+  void import("@/styles/prayer-route-shell.css").catch(() => undefined);
+}
+
 /** Prefetch: حمّل أصول الصلاة بلا طلاء سطح عالمي */
 export function prefetchPrayerRouteAssets(): void {
+  ensurePrayerRouteShellCss();
   void import("@/styles/pages/prayer-times.css").catch(() => undefined);
   void import("@/pages/worship/PrayerTimesPage").catch(() => undefined);
 }

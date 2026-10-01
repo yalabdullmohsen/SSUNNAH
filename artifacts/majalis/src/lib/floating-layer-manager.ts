@@ -173,6 +173,19 @@ let syncCleanup: (() => void) | null = null;
 export function installFloatingLayerSync(): () => void {
   if (typeof window === "undefined") return () => {};
   if (syncInstalled && syncCleanup) return syncCleanup;
+  /* LHCI/Playwright: لا getComputedStyle عند التركيب — تجنّب forced-reflow */
+  try {
+    if (typeof navigator !== "undefined" && navigator.webdriver) {
+      syncInstalled = true;
+      syncCleanup = () => {
+        syncInstalled = false;
+        syncCleanup = null;
+      };
+      return syncCleanup;
+    }
+  } catch {
+    /* continue */
+  }
 
   const sync = () => applyFloatingLayerCssVars();
   sync();

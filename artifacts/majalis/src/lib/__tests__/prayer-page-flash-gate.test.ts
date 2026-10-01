@@ -18,8 +18,10 @@ const prefetch = read("src/lib/prefetch-route.ts");
 const bottom = read("src/components/BottomNavBar.tsx");
 const top = read("src/components/TopSectionBar.tsx");
 
-assert.match(app, /prayer-route-shell\.css/, "صدفة الصلاة تُحمَّل مع App");
+assert.match(app, /ensurePrayerRouteShellCss|prayer-route-shell\.css/, "صدفة الصلاة تُحمَّل مع مسار الصلاة");
 assert.match(app, /commitRouteSurface\(location\)/, "سطح الصلاة عبر المالك الوحيد");
+const surface = read("src/lib/route-surface.ts");
+assert.match(surface, /prayer-route-shell\.css/, "صدفة الصلاة من مالك السطح/prefetch");
 assert.match(app, /useLayoutEffect/, "التزام السطح قبل الطلاء");
 assert.doesNotMatch(
   app,

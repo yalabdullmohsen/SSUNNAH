@@ -237,6 +237,7 @@ const bootReporting = () => {
   // لقطة CLS/LCP/FCP/TBT بعد استقرار الهيكل — للمقارنة قبل/بعد
   void import("./lib/boot-vitals-snapshot").then((m) => {
     m.scheduleBootVitalsSnapshot();
+    /* تحت webdriver تتخطّى الدالة داخليًا — لا قراءات هندسية في نافذة LHCI */
     m.scheduleHomeStartupLayoutDiag();
   });
   // RUM بعد idle — لا ينافس LCP؛ يُفعَّل فقط مع موافقة التحليلات
