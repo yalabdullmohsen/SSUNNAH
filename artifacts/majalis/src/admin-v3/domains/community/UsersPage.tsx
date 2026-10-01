@@ -1,13 +1,15 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/AuthProvider";
 import { v3List, v3Mutate } from "../../data/admin-v3-api";
 import { can, resolveGovernanceRole } from "../../permissions";
+import { emitAdminV3AuditEvent } from "../../audit-events";
 import {
   AdminConfirmDialog,
   AdminDataTable,
   AdminFilterBar,
+  AdminFlash,
   AdminLoadGate,
   AdminPageHeader,
   AdminPagination,
@@ -33,11 +35,13 @@ export function UsersPage() {
 
   const [q, setQ] = useState("");
   const dq = useDebouncedValue(q);
+  const [roleFilter, setRoleFilter] = useState("");
   const [page, setPage] = useState(1);
   const [rows, setRows] = useState<UserRow[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [flash, setFlash] = useState<string | null>(null);
   const [pendingRole, setPendingRole] = useState<{ id: string; role: string; name: string } | null>(
     null,
   );
@@ -48,7 +52,11 @@ export function UsersPage() {
       setLoading(true);
       setError(null);
       try {
-        const res = await v3List<UserRow>("users", { q: dq || undefined, page, pageSize: 20 }, signal);
+        const res = await v3List<UserRow>(
+          "users",
+          { q: dq || undefined, page, pageSize: 20 },
+          signal,
+        );
         setRows(res.data || []);
         setTotal(res.total || 0);
       } catch (e) {
@@ -61,31 +69,44 @@ export function UsersPage() {
     [dq, page],
   );
 
+  const visibleRows = useMemo(
+    () => (roleFilter ? rows.filter((r) => String(r.role || "") === roleFilter) : rows),
+    [rows, roleFilter],
+  );
+
   useEffect(() => {
     if (!canRead) return;
     const ac = new AbortController();
     void load(ac.signal);
+    emitAdminV3AuditEvent("admin.center.view", "/admin/v3/community", { center: "community" });
     return () => ac.abort();
   }, [canRead, load]);
 
   if (!canRead) return <AdminPermissionDenied permission="users.read" />;
 
   return (
-    <div className="av3-domain">
+    <div className="av3-domain" data-testid="admin-v3-users">
       <AdminPageHeader
         title="المستخدمون"
-        description="قائمة آمنة للأدوار — تغيير الدور عبر users.manage فقط، دون تعديل الذات أو المالك."
-        badge="أصلي"
+        description="قائمة آمنة — تغيير الدور عبر users.manage فقط، دون تعديل الذات أو المالك. إنشاء/حذف الحسابات: OWNER_ACTION."
+        badge="FINAL-3"
         crumbs={[
           { label: "لوحة التحكم", href: "/admin/v3" },
           { label: "المجتمع" },
         ]}
         actions={
-          <Button asChild variant="secondary">
-            <Link href="/admin?section=users">Legacy</Link>
-          </Button>
+          <>
+            <Button asChild variant="secondary">
+              <Link href="/admin/v3/community/roles">كتالوج الأدوار</Link>
+            </Button>
+            <Button asChild variant="secondary">
+              <Link href="/admin?section=users">Legacy</Link>
+            </Button>
+          </>
         }
       />
+
+      {flash ? <AdminFlash>{flash}</AdminFlash> : null}
 
       <AdminFilterBar
         onSubmit={(e) => {
@@ -94,12 +115,29 @@ export function UsersPage() {
         }}
       >
         <AdminSearchInput value={q} onChange={setQ} label="بحث بالاسم" />
+        <label className="av3-field">
+          <span className="av3-sr-only">الدور</span>
+          <select
+            aria-label="تصفية الدور"
+            value={roleFilter}
+            onChange={(e) => {
+              setRoleFilter(e.target.value);
+              setPage(1);
+            }}
+          >
+            <option value="">كل الأدوار</option>
+            <option value="user">user</option>
+            <option value="sheikh">sheikh</option>
+            <option value="admin">admin</option>
+          </select>
+        </label>
       </AdminFilterBar>
 
       <AdminLoadGate loading={loading} error={error} onRetry={() => void load()}>
         <AdminDataTable
-          rows={rows as unknown as Record<string, unknown>[]}
+          rows={visibleRows as unknown as Record<string, unknown>[]}
           rowKey={(r) => String(r.id)}
+          emptyTitle={dq || roleFilter ? "لا نتائج مطابقة" : "لا مستخدمين"}
           columns={[
             { key: "full_name", label: "الاسم" },
             { key: "role", label: "الدور (legacy)" },
@@ -138,6 +176,11 @@ export function UsersPage() {
         />
       </AdminLoadGate>
 
+      <p className="av3-muted" role="note">
+        Create/Delete للمستخدمين عبر Supabase Auth = <strong>OWNER_ACTION</strong> · Roles catalog ={" "}
+        <Link href="/admin/v3/community/roles">/admin/v3/community/roles</Link>
+      </p>
+
       <AdminConfirmDialog
         open={!!pendingRole}
         title="تغيير دور المستخدم"
@@ -150,6 +193,11 @@ export function UsersPage() {
           setBusy(true);
           try {
             await v3Mutate("users", "PUT", { id: pendingRole.id, role: pendingRole.role });
+            emitAdminV3AuditEvent("admin.users.role_update", "/admin/v3/community", {
+              id: pendingRole.id,
+              role: pendingRole.role,
+            });
+            setFlash(`تم تحديث دور «${pendingRole.name}».`);
             setPendingRole(null);
             await load();
           } catch (err) {

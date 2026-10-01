@@ -740,6 +740,7 @@ export default function AppRoutes() {
       <Route path="/admin/v3/reviews"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3/taxonomy"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3/analytics"><AdminLazyRoute component={AdminV3App} /></Route>
+      <Route path="/admin/v3/community/roles"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3/community"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3/settings"><AdminLazyRoute component={AdminV3App} /></Route>
       {/* aliases — موجة 1 IA */}

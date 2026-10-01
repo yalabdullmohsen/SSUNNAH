@@ -6,6 +6,7 @@ import { ContentHubPage } from "./domains/content/ContentHubPage";
 import { EntityCrudPage } from "./domains/content/EntityCrudPage";
 import { TaxonomyPage } from "./domains/taxonomy/TaxonomyPage";
 import { UsersPage } from "./domains/community/UsersPage";
+import { RolesPage } from "./domains/community/RolesPage";
 import { AnalyticsPlatformPage } from "./domains/analytics/AnalyticsPlatformPage";
 import { AuditPage, SettingsOpsPage } from "./domains/ops/OpsPages";
 import { resolveAdminV3Center } from "./nav";
@@ -27,6 +28,7 @@ export function AdminV3Router() {
   if (path === "/admin/v3/content") return <ContentHubPage />;
 
   if (path === "/admin/v3/taxonomy") return <TaxonomyPage />;
+  if (path === "/admin/v3/community/roles") return <RolesPage />;
   if (path === "/admin/v3/community") return <UsersPage />;
   if (path === "/admin/v3/analytics") return <AnalyticsPlatformPage />;
   if (path === "/admin/v3/settings") return <SettingsOpsPage />;

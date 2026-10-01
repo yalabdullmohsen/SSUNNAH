@@ -10,6 +10,15 @@ export const ADMIN_V3_AUDIT_EVENT_TYPES = [
   "admin.notifications.open",
   "admin.center.view",
   "admin.legacy.open",
+  "admin.content.create",
+  "admin.content.update",
+  "admin.content.archive",
+  "admin.content.restore",
+  "admin.taxonomy.create",
+  "admin.taxonomy.update",
+  "admin.taxonomy.archive",
+  "admin.taxonomy.restore",
+  "admin.users.role_update",
 ] as const;
 
 export type AdminV3AuditEventType = (typeof ADMIN_V3_AUDIT_EVENT_TYPES)[number];
