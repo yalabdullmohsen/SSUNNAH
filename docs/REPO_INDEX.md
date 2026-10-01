@@ -186,6 +186,20 @@
 | `docs/audit/WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md` | Runbook أدلة أجهزة · كل صف غير منفَّذ = DEVICE_REQUIRED |
 | `docs/audit/SUNNAH_FULL_PROJECT_AUDIT.md` | تدقيق شامل 2026-09-21 (`PARTIAL`) — خط أساس Remediation |
 
+## MRMP — قطار جاهزية التطبيق (مستقل عن UNIFIED)
+
+قطار **موازٍ** لـ U0–U13؛ لا يتبع unused-css/LHCI. هدف: `IOS_RELEASE_CANDIDATE_READY` → `ANDROID_RELEASE_CANDIDATE_READY` → `STORE_SUBMISSION_READY` → `STORE_GO`.
+
+| مسار | دور |
+|---|---|
+| `docs/mobile/MRMP_V1_MASTER_PROGRAM.md` | **MRMP v1** — ميثاق البرنامج · M1–M14 · ترتيب P0 عند أولوية التطبيق |
+| `docs/mobile/MOBILE_SUCCESS_CONTRACT.md` | عقد نجاح التطبيق (21 بندًا) — كل ☐ يمنع `STORE_GO` إن كان P0 |
+| `docs/mobile/MRMP_V1_TRACKER.md` | لوحة حية للمراحل + blockers |
+| `docs/mobile/SUNNAH_MOBILE_READINESS_FINAL_REPORT.md` | تقرير جاهزية التطبيق (M14 living) · حكم حالي `MOBILE_PARTIALLY_READY` |
+| `docs/mobile/phases/M01_*.md` … `M13_*.md` | one-pagers للمراحل |
+| `docs/qa/IOS_RELEASE_CHECKLIST.md` / `ANDROID_RELEASE_CHECKLIST.md` | قوائم إطلاق أصلية يُعاد استخدامها |
+| `docs/store-release/STORE_100_PERCENT_READINESS.md` | جاهزية المتجر 100% (HOLD حتى أدلة) |
+
 ## حوكمة الوكيل
 
 | ملف | دور |
