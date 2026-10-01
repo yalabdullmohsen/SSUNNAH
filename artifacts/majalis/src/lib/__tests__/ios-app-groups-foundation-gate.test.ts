@@ -53,7 +53,11 @@ for (const ent of [
   );
 }
 
-assert.ok(!existsSync(resolve(iosApp, "SunnahWidget")), "Widget extension must not be created in T-028");
-assert.ok(!existsSync(resolve(iosApp, "SunnahWatch")), "Watch app must not be created in T-028");
+// T-029 may add PrayerWidget; Watch remains forbidden until a later phase.
+assert.ok(!existsSync(resolve(iosApp, "SunnahWatch")), "Watch app must not be created yet");
+assert.ok(
+  existsSync(resolve(iosApp, "PrayerWidget")) || !existsSync(resolve(iosApp, "SunnahWidget")),
+  "only PrayerWidget (or no widget) allowed — not a rogue SunnahWidget folder without PrayerWidget",
+);
 
 console.log("ios-app-groups-foundation-gate.test.ts: ok", { appGroup: APP_GROUP });
