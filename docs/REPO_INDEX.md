@@ -130,6 +130,8 @@
 | `docs/performance/STARTUP_TYPOGRAPHY_FOUC_PHASE1_SCOPE.md` | **Startup Typography FOUC P1** — توحيد سلطة مقياس الخط |
 | `docs/performance/STARTUP_TYPOGRAPHY_FOUC_PHASE2_SCOPE.md` | **Startup Typography FOUC P2** — size-adjust 97% + gate |
 | `docs/performance/STARTUP_ROOT_CAUSE_REPORT.md` | **Startup PR-0** — Timeline + جرد مصادر الجاهزية + أسباب جذرية (بلا إصلاح منتج) |
+| `docs/performance/REAL_STARTUP_FLICKER_ROOT_CAUSE_REPORT.md` | **قياس حي d4445a6a** — FOUC/CLS/هوية بعد First Paint على `/` وsearch/quran-hub/mushaf/prayer · حكم **C** |
+| `docs/performance/evidence/real-startup-flicker-d4445a6a/` | أدلة CDP + لقطات + metrics لتقرير الوميض الحي |
 | `docs/performance/ZERO_FLICKER_LAYOUT_SHIFT_ROOT_CAUSE_PR0.md` | **Zero Flicker PR-0** — جذر القفزات/الوميض + خط أساس صلاة (بلا إصلاح منتج) |
 | `docs/performance/PRAYER_PAGE_FLASH_FIX.md` | إصلاح وميض صفحة الصلاة — صدفة متزامنة + useLayoutEffect + هيكل صلاة |
 | `docs/performance/WAVE5_CRITICAL_FOUC_BASELINE.md` | **WAVE5** — خط أساس Critical CSS / FOUC على tip بعد WAVE4 |
