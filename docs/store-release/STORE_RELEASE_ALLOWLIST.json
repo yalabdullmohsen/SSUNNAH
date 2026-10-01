@@ -1,0 +1,162 @@
+{
+  "$schema_note": "T-026 Store Release Allowlist — SoT for Release Candidate binary boundary. Classes: APPROVED_FOR_RELEASE | STRIP_FROM_RELEASE | STREAM_ONLY | OWNER_DECISION_REQUIRED | BLOCKED_LICENSE | CC0_APPROVED | OFL_APPROVED | CC0_CANDIDATE | INTERNAL | UNKNOWN | EXCLUDED | METADATA_ONLY.",
+  "version": 1,
+  "phase": "T-026",
+  "lockedAtUtc": "2026-10-01T20:40:00Z",
+  "claims": {
+    "AUDIO_CERTIFIED": false,
+    "CONTENT_CERTIFIED": false,
+    "RELEASE_BINARY_HAS_ZERO_UNKNOWN_ASSETS": "gated",
+    "AUDIO_RELEASE_ALLOWLIST_LOCKED": true,
+    "STORE_RELEASE_CONTENT_CLEARED": "gated"
+  },
+  "releaseBinaryAllowedClasses": [
+    "APPROVED_FOR_RELEASE",
+    "CC0_APPROVED",
+    "OFL_APPROVED"
+  ],
+  "releaseBinaryForbiddenClasses": [
+    "UNKNOWN",
+    "MISSING_EVIDENCE",
+    "INTERNAL",
+    "INTERNAL_PENDING_OWNER",
+    "CC0_CANDIDATE",
+    "BLOCKED_LICENSE",
+    "OWNER_DECISION_REQUIRED",
+    "EXCLUDED",
+    "STREAM_ONLY"
+  ],
+  "audioAllowlist": {
+    "locked": true,
+    "inReleaseBinary": [
+      {
+        "id": "system-default",
+        "class": "APPROVED_FOR_RELEASE",
+        "files": [],
+        "note": "OS notification sound — no app media file"
+      },
+      {
+        "id": "field",
+        "class": "CC0_APPROVED",
+        "files": [
+          "public/audio/adhan/adhan-field.m4a",
+          "public/audio/adhan/adhan-field-short.m4a",
+          "ios/App/App/Sounds/adhan-short-field.caf"
+        ],
+        "evidence": "docs/audio-rights/evidence/wikimedia-adhan-ogg-2026-09-13.html · prayer-audio-rights-registry"
+      },
+      {
+        "id": "field-full",
+        "class": "CC0_APPROVED",
+        "files": [
+          "public/audio/adhan/adhan-field-full.m4a",
+          "ios/App/App/Sounds/adhan-short-field-full.caf"
+        ],
+        "evidence": "docs/audio-rights/evidence/wikimedia-beautiful-adhan-2026-09-13.html · prayer-audio-rights-registry"
+      }
+    ],
+    "candidatesNotInBinary": [
+      {
+        "id": "istanbul",
+        "class": "CC0_CANDIDATE",
+        "status": "CC0_ADHAN_CANDIDATE",
+        "inBinary": false,
+        "humanQa": "pending",
+        "evidence": "docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/",
+        "note": "Do not promote to CC0_APPROVED without Human QA"
+      }
+    ],
+    "strippedFromRelease": [
+      { "id": "makkah", "class": "INTERNAL", "pattern": "**/adhan-makkah*" },
+      { "id": "egypt", "class": "INTERNAL", "pattern": "**/adhan-egypt*" },
+      { "id": "aqsa", "class": "INTERNAL", "pattern": "**/adhan-aqsa*" },
+      { "id": "gulf", "class": "INTERNAL", "pattern": "**/adhan-gulf*" },
+      { "id": "takbeerat", "class": "INTERNAL", "pattern": "**/adhan-takbeerat*|**/takbeerat*" },
+      { "id": "haram-full", "class": "UNKNOWN", "pattern": "**/adhan-haram*" },
+      { "id": "soft-alert", "class": "UNKNOWN", "pattern": "**/adhan-soft-alert*" },
+      { "id": "madinah", "class": "EXCLUDED", "pattern": "**/adhan-madinah*|**/madinah-general*" },
+      { "id": "qatami", "class": "EXCLUDED", "pattern": "**/qatami*" },
+      { "id": "ios-seq-makkah", "class": "UNKNOWN", "pattern": "**/adhan-seq-makkah*.caf" },
+      { "id": "ios-short-non-cc0", "class": "UNKNOWN", "pattern": "**/adhan-short-{makkah,egypt,aqsa,takbeerat}*.caf" },
+      { "id": "ios-prayer-named", "class": "UNKNOWN", "pattern": "**/prayer_{aqsa,egypt,makkah}.caf" },
+      { "id": "ios-provisional-tones", "class": "STRIP_FROM_RELEASE", "pattern": "**/prayer-alert.caf|**/prayer_{default,clear,quiet,soft,takbeerat}.caf|**/*-ring.caf|**/alarm-clear.caf", "note": "Prefer OS default until OWNER_APPROVED" }
+    ]
+  },
+  "qpc": {
+    "class": "OWNER_DECISION_REQUIRED",
+    "licensedClaimForbidden": true,
+    "grantPath": {
+      "required": "Written QUL/KFGQPC redistribute grant for App Store binary",
+      "evidenceDir": "docs/store-release/license-evidence/",
+      "decisionId": "LIC-01",
+      "then": "Owner flips class to APPROVED_FOR_RELEASE with dated evidence; remove strip"
+    },
+    "stripPath": {
+      "activeForReleaseCandidate": true,
+      "tools": [
+        "scripts/store-strip-unresolved-assets.mjs → dist/fonts/qpc-v2",
+        "artifacts/majalis/scripts/native-strip-qpc-fonts.mjs → ios public fonts"
+      ],
+      "classInReleaseFlavor": "STRIP_FROM_RELEASE"
+    }
+  },
+  "recitations": {
+    "class": "STREAM_ONLY",
+    "sources": ["everyayah.com", "mp3quran.net", "quran.com CDN", "AlQuran Cloud"],
+    "forbidden": [
+      "binary packaging",
+      "offline bundle",
+      "watch distribution",
+      "widget distribution"
+    ]
+  },
+  "contentCorpora": {
+    "lessons": { "class": "METADATA_ONLY", "fullBody": "STRIP_FROM_RELEASE", "offlinePackage": false, "watch": false, "widget": false },
+    "books": { "class": "METADATA_ONLY", "fullBody": "STRIP_FROM_RELEASE", "offlinePackage": false, "watch": false, "widget": false, "publicUi": "verified-source-only" },
+    "fatwa": { "class": "METADATA_ONLY", "fullBody": "STRIP_FROM_RELEASE", "offlinePackage": false, "watch": false, "widget": false },
+    "hisn": { "class": "OWNER_DECISION_REQUIRED", "decisionId": "LIC-06", "releaseAction": "STRIP_FROM_RELEASE" },
+    "quranTextOffline": { "class": "OWNER_DECISION_REQUIRED", "note": "Tanzil redistribute not certified — no offline store package claim", "releaseAction": "STRIP_FROM_RELEASE" }
+  },
+  "fonts": {
+    "uiOfl": {
+      "class": "OFL_APPROVED",
+      "paths": ["public/fonts/ui/**"],
+      "licenseFile": "public/fonts/ui/OFL.txt",
+      "families": ["Amiri", "Aref Ruqaa", "Noto Naskh", "Scheherazade"]
+    },
+    "qpcV2": { "class": "OWNER_DECISION_REQUIRED", "releaseAction": "STRIP_FROM_RELEASE" }
+  },
+  "images": {
+    "approvedProductOwned": [
+      "public/brand/**",
+      "public/logo*.png",
+      "public/logo*.webp",
+      "public/favicon*",
+      "public/icon-*.png",
+      "public/icon-*.webp",
+      "public/apple-touch-icon.png",
+      "public/og-image.png",
+      "public/corner-ornament.svg",
+      "public/images/live/**",
+      "public/images/posters/**",
+      "ios/App/App/Assets.xcassets/**"
+    ],
+    "unknownStripFromRelease": [
+      "public/sheikhs/**/*.jpg",
+      "public/sheikhs/**/*.jpeg",
+      "public/sheikhs/**/*.webp",
+      "public/sheikhs/**/*.png"
+    ],
+    "productSvgAvatarsKeep": [
+      "public/sheikhs/**/*.svg"
+    ],
+    "note": "Raster sheikh photos = UNKNOWN until clearance; SVG avatars treated product-owned illustrations"
+  },
+  "productOwned": [
+    { "id": "prayer-calculation-engine", "class": "APPROVED_FOR_RELEASE", "note": "App-authored schedule math — not third-party corpus" },
+    { "id": "original-ui-assets", "class": "APPROVED_FOR_RELEASE" },
+    { "id": "original-mind-map-ui", "class": "APPROVED_FOR_RELEASE", "note": "UI/code owned; external datasets not certified — no Watch/Widget redistribute" },
+    { "id": "original-summaries", "class": "APPROVED_FOR_RELEASE", "note": "Product-authored copy only" },
+    { "id": "npm-mit-apache", "class": "APPROVED_FOR_RELEASE", "gate": "test:licenses" }
+  ]
+}

@@ -2,9 +2,11 @@
  * verify:store-assets — Store Release asset / license gate.
  * Usage: node scripts/verify-store-assets.mjs
  * Dist media: STORE_CHECK_DIST=1 after pnpm run store:strip-unresolved-assets
+ * Inventory: always runs build-store-asset-inventory --check-release
  */
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
+import { spawnSync } from "node:child_process";
 
 const root = resolve(import.meta.dirname, "..");
 const majalis = join(root, "artifacts/majalis");
@@ -37,8 +39,19 @@ for (const f of [
   "STORE_LICENSE_DECISIONS.md",
   "STORE_EXCLUSION_REPORT.md",
   "excluded-asset-globs.json",
+  "STORE_RELEASE_ALLOWLIST.json",
 ]) {
   if (!existsSync(join(storeDir, f))) fail(`missing docs/store-release/${f}`);
+}
+
+const allowlist = JSON.parse(readFileSync(join(storeDir, "STORE_RELEASE_ALLOWLIST.json"), "utf8"));
+if (!allowlist.audioAllowlist?.locked) fail("STORE_RELEASE_ALLOWLIST audioAllowlist.locked must be true");
+if (allowlist.qpc?.class !== "OWNER_DECISION_REQUIRED") {
+  fail("QPC must be OWNER_DECISION_REQUIRED (no Licensed claim)");
+}
+if (allowlist.recitations?.class !== "STREAM_ONLY") fail("recitations must be STREAM_ONLY");
+if (!existsSync(join(majalis, "scripts/native-strip-store-release-audio.mjs"))) {
+  fail("native-strip-store-release-audio.mjs missing — required for Store Archive audio boundary");
 }
 
 const commit = readFileSync(join(storeDir, "STORE_SOURCE_COMMIT.txt"), "utf8").trim();
@@ -121,20 +134,39 @@ if (!existsSync(join(majalis, "scripts/native-strip-qpc-fonts.mjs"))) {
 
 const dist = join(majalis, "dist");
 const checkDist = process.env.STORE_CHECK_DIST === "1" || process.argv.includes("--check-dist");
+const cc0Keep =
+  /(?:^|\/)adhan-field(?:-short|-full)?\.(?:m4a|mp3)$|(?:^|\/)adhan-short-field(?:-full)?\.caf$/i;
 if (checkDist && existsSync(dist)) {
-  for (const dir of [
-    join(dist, "sounds/adhan"),
-    join(dist, "audio/adhan"),
-    join(dist, "fonts/qpc-v2"),
-  ]) {
-    for (const f of walkFiles(dir).filter(
-      (p) => isExcludedMediaName(p) || /qpc-v2|\.(woff2?|ttf|otf)$/i.test(p),
-    )) {
-      fail(`store-forbidden asset in dist: ${relative(majalis, f)}`);
+  for (const dir of [join(dist, "sounds/adhan"), join(dist, "audio/adhan")]) {
+    for (const f of walkFiles(dir).filter((p) => isExcludedMediaName(p))) {
+      if (cc0Keep.test(f)) continue;
+      fail(`store-forbidden adhan media in dist: ${relative(majalis, f)}`);
     }
+  }
+  if (existsSync(join(dist, "fonts/qpc-v2"))) {
+    for (const f of walkFiles(join(dist, "fonts/qpc-v2")).filter((p) =>
+      /\.(woff2?|ttf|otf)$/i.test(p),
+    )) {
+      fail(`store-forbidden QPC font in dist: ${relative(majalis, f)}`);
+    }
+  }
+  for (const f of walkFiles(join(dist, "sheikhs")).filter((p) =>
+    /\.(png|jpe?g|webp|gif)$/i.test(p),
+  )) {
+    fail(`store-forbidden UNKNOWN sheikh raster in dist: ${relative(majalis, f)}`);
   }
 } else if (existsSync(dist)) {
   console.log("  note: dist present — skipped media/QPC scan (use --check-dist after strip)");
+}
+
+const inv = spawnSync(process.execPath, [join(root, "scripts/build-store-asset-inventory.mjs"), "--check-release"], {
+  cwd: root,
+  encoding: "utf8",
+});
+if (inv.status !== 0) {
+  fail("build-store-asset-inventory --check-release failed");
+  if (inv.stdout) console.error(inv.stdout);
+  if (inv.stderr) console.error(inv.stderr);
 }
 
 if (failures.length) {
@@ -145,4 +177,5 @@ if (failures.length) {
 
 console.log("verify:store-assets OK");
 console.log(`  STORE_SOURCE_COMMIT=${commit}`);
-console.log("  policy: store RC strips all dist adhan media until OWNER allowlist");
+console.log("  policy: Store RC keeps CC0_APPROVED field packs only; strips INTERNAL/UNKNOWN/QPC/rasters");
+if (inv.stdout) console.log(inv.stdout.trim().split("\n").map((l) => `  ${l}`).join("\n"));

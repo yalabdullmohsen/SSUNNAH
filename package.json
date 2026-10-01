@@ -24,6 +24,8 @@
     "verify:preflight": "node scripts/verify-preflight.mjs",
     "verify:store-assets": "node scripts/verify-store-assets.mjs",
     "store:strip-unresolved-assets": "node scripts/store-strip-unresolved-assets.mjs",
+    "store:inventory": "node scripts/build-store-asset-inventory.mjs --check-release",
+    "store:prepare-release-binary": "node scripts/store-strip-unresolved-assets.mjs && STORE_CHECK_DIST=1 node scripts/verify-store-assets.mjs --check-dist && node artifacts/majalis/scripts/native-strip-qpc-fonts.mjs && node artifacts/majalis/scripts/native-strip-store-release-audio.mjs",
     "verify:ci-fast": "pnpm run verify:preflight && node scripts/verify-ci.mjs -- --changed",
     "verify:ci-full": "node scripts/verify-ci.mjs && pnpm --filter @workspace/majalis run test:regression",
     "audit:ci-queue": "node scripts/ci-queue-health.mjs",
