@@ -65,10 +65,12 @@ export function applyPageChromeDom(chrome: PageChromeDef, key?: string) {
   root.style.setProperty("--app-status-fg-mode", chrome.statusBarStyle);
   root.dataset.pageChrome = key || "";
   root.dataset.statusFg = chrome.statusBarStyle;
-  // خلفية الجذر = لون الشريط حتى يمتد تحت الساعة عند overlay
-  root.style.backgroundColor = chrome.statusBarColorHex;
+  /* ZERO FLICKER: لا تدهن html/body بـ statusBarColorHex (splash-beige) —
+     ذلك كان يعيد طلاء اللوحة فوق --mj-bg (canvas) بعد First Paint.
+     لون الشريط عبر --app-status-bg؛ لوحة الصفحة من CSS فقط. */
+  root.style.removeProperty("background-color");
   if (document.body) {
-    document.body.style.backgroundColor = chrome.statusBarColorHex;
+    document.body.style.removeProperty("background-color");
   }
   upsertViewport();
   upsertThemeColor(chrome.statusBarColorHex);

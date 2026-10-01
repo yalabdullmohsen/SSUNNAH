@@ -71,6 +71,7 @@ assert.match(prayerCss, /backdrop-filter:\s*none/);
 
 assert.match(finalCss, /padding-bottom:\s*var\(--inset-bottom\)/);
 assert.match(finalCss, /backdrop-filter:\s*none/);
-assert.match(finalCss, /\.bottom-nav[\s\S]*?background-color:\s*var\(--surface-app/);
+/* ZERO FLICKER: شريط سفلي = لوحة المحتوى (--mj-bg) لا splash beige */
+assert.match(finalCss, /\.bottom-nav[\s\S]*?background-color:\s*var\(--mj-bg/);
 
 console.log("lessons-prayer-mobile-ui-gate.test.ts: ok");

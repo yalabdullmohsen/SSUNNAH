@@ -73,6 +73,7 @@ html.app-booting *::after {
 
 body {
   font-family: "Amiri", "MajlisAmiriFallback", "Noto Naskh Arabic", serif;
+  font-size: 1.0625rem;
 }
 
 /* هيكل كروم الإقلاع — يبقى بعد زوال app-booting حتى يصل NavBar الحقيقي */
@@ -244,7 +245,7 @@ html.app-booting .hus-field {
   padding-bottom: var(--inset-bottom, 0px);
   min-height: calc(var(--bottom-nav-height) + var(--inset-bottom, 0px));
   z-index: var(--z-nav);
-  background-color: var(--surface-app, #F7F3EB);
+  background-color: var(--mj-bg);
   background-image: none;
   opacity: 1;
   backdrop-filter: none;

@@ -7,14 +7,21 @@ html.pts-immersive body,
 html.pts-immersive #root,
 html.pts-immersive .app-shell,
 html.pts-immersive .app-main {
-  background-color: #06271f !important;
-  background-image: linear-gradient(180deg, #0f4a38 0%, #083528 55%, #06271f 100%) !important;
+  /* يطابق #mj-lcp-critical + prayer-times.css — لا قفزة #06271f بعد First Paint */
+  background-color: var(--brand-olive-deep) !important;
+  background-image: linear-gradient(
+    180deg,
+    var(--brand-olive) 0%,
+    color-mix(in srgb, var(--brand-olive-deep) 88%, var(--mj-brand-deep)) 55%,
+    var(--brand-olive-deep) 100%
+  ) !important;
+  color: var(--on-dark-body, var(--mj-on-brand));
 }
 
 .pts-screen {
-  --pts-bg-0: #06271f;
+  --pts-bg-0: #2a4030;
   --pts-bg-1: #083528;
-  --pts-bg-2: #0f4a38;
+  --pts-bg-2: #3d5c45;
   --pts-gold: #E3CB8C;
   --pts-gold-soft: color-mix(in srgb, var(--em-400) 20%, transparent);
   --pts-gold-line: color-mix(in srgb, #D2B063 45%, transparent);

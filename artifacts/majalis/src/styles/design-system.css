@@ -1188,10 +1188,9 @@ p, li {
   --ds-transition-slow: 350ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* ZERO FLICKER: لا تعيد تعريف body font-size/background بعد First Paint —
+   المالك: #mj-lcp-critical + typography-scale + index.css (--text-body / --mj-bg). */
 body {
-  background: var(--msk-canvas, var(--ds-parchment));
-  color: var(--msk-text, var(--ds-ink));
-  font-size: var(--ds-text-base);
   line-height: 1.55;
 }
 
@@ -2476,7 +2475,7 @@ hr.decorative,
   margin: 0;
   font-size: 0.83rem;
   line-height: 1.75;
-  color: var(--text-body, #5C5C56);
+  color: var(--color-text-body, var(--msk-text-2, #5C5C56));
 }
 
 /* ── صفحة التوحيد المستقلة (/tawhid) ── */
@@ -2586,11 +2585,8 @@ hr.decorative,
    Apple/Linear quality UI inspired by Islamic architecture.
    ════════════════════════════════════════════════════════════════════ */
 
-/* ── 1. إعادة ضبط الخلفية والنص ── */
+/* ── 1. إيقاع سطر فقط — بلا إعادة طلاء هوية body بعد First Paint ── */
 body {
-  background: var(--ds-parchment);
-  color: var(--ds-ink);
-  font-size: var(--ds-text-base);
   line-height: var(--ds-line);
 }
 

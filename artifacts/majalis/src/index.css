@@ -34,8 +34,8 @@ html {
   text-size-adjust: 100%;
   overflow-x: clip;
   overscroll-behavior-y: contain;
-  /* سطح التطبيق حتى الحافة — يمنع شريطًا أسود تحت الشريط السفلي */
-  background-color: var(--surface-app, var(--mj-bg, #F7F3EB));
+  /* لوحة المحتوى النهائية منذ أول طلاء — تطابق critical / --mj-bg */
+  background-color: var(--mj-bg);
   /* احتياط ارتفاع iOS — svh أولاً ثم fill-available */
   min-height: 100%;
   min-height: 100svh;
@@ -44,19 +44,30 @@ html {
 
 html[data-theme="dark"],
 html.dark {
-  background-color: var(--surface-app, var(--mj-bg, #101614));
+  background-color: var(--mj-bg);
 }
 
 body {
   min-height: 100%;
   min-height: 100svh;
   min-height: -webkit-fill-available;
-  background-color: var(--surface-app, var(--mj-bg, #F7F3EB));
+  background-color: var(--mj-bg);
+  /* Font Authority — مطلق 17px؛ --text-body محجوز للحجم في typography-scale فقط */
+  font-size: 1.0625rem;
+  color: var(--mj-ink);
 }
 
 html[data-theme="dark"] body,
 html.dark body {
-  background-color: var(--surface-app, var(--mj-bg, #101614));
+  background-color: var(--mj-bg);
+}
+
+/* Prayer chrome — يطابق critical قبل وصول prayer-times.css */
+html.pts-immersive,
+html.pts-immersive body,
+html.pts-immersive #root {
+  background-color: var(--brand-olive-deep);
+  color: var(--on-dark-body, var(--mj-on-brand));
 }
 
 :root {
@@ -253,11 +264,12 @@ html.dark body {
   --majalis-gold-light:    rgba(184,148,82,.18);
   --majalis-ivory:         var(--msk-canvas-1);
 
-  /* ── جسر إرثي: متغيرات design-system.css القديمة ── */
+  /* ── جسر إرثي: متغيرات design-system.css القديمة ──
+     ممنوع إعادة تعريف --text-body كلون — هو رمز حجم في typography-scale (17px). */
   --bg-card:             var(--msk-canvas,   #FFFFFF);
   --bg-base:             var(--msk-canvas-1, #FAFAF8);
   --text-base:           var(--msk-text,     #1A1A18);
-  --text-body:           var(--msk-text-2,   #5C5C56);
+  --color-text-body:     var(--msk-text-2,   #5C5C56);
   --text-muted:          var(--msk-text-3,   #5C5C56);
   --majalis-accent:      var(--msk-gold,     var(--mj-brand-deep));
   --majalis-surface-2:   var(--msk-canvas-1, #FAFAF8);
@@ -490,7 +502,7 @@ html[data-theme="dark"] {
   --bg-card:   #1B2421;
   --bg-base:   #131A18;
   --text-base: #F8FAFC;
-  --text-body: #E2E8F0;
+  --color-text-body: #E2E8F0;
   --text-muted:#C5D0CB;
 
   --v2-green:        #5CC095;
@@ -594,8 +606,9 @@ body {
   font-family: var(--font-body-ui, var(--font-ui, var(--font-app, var(--font-body))));
   font-weight: var(--font-weight-regular, 400);
   font-synthesis: none;
-  background: var(--msk-canvas);
-  color: var(--msk-text);
+  /* Canvas Authority — لا --msk-canvas/ivory التي تختلف عن critical */
+  background: var(--mj-bg);
+  color: var(--mj-ink, var(--msk-text));
   line-height: var(--lh-body, 1.75);
   letter-spacing: 0;
   text-rendering: optimizeLegibility;

@@ -1,5 +1,5 @@
 /**
- * بوابة: الشريط السفلي يطابق لون الصفحة (--surface-app) لا أسود/أخضر داكن.
+ * بوابة: الشريط السفلي يطابق لوحة المحتوى (--mj-bg) لا أسود/أخضر داكن ولا splash beige.
  * node --import tsx src/lib/__tests__/bottom-nav-safe-area-green.test.ts
  */
 import assert from "node:assert/strict";
@@ -22,8 +22,8 @@ assert.match(
 assert.match(finalCss, /backdrop-filter:\s*none/);
 assert.match(
   finalCss,
-  /\.bottom-nav[\s\S]*?background-color:\s*var\(--surface-app/,
-  "خلفية الشريط السفلي تطابق --surface-app",
+  /\.bottom-nav[\s\S]*?background-color:\s*var\(--mj-bg/,
+  "خلفية الشريط السفلي تطابق --mj-bg (لوحة المحتوى)",
 );
 assert.doesNotMatch(
   finalCss,
@@ -38,12 +38,12 @@ assert.doesNotMatch(
 assert.match(finalCss, /#root,\s*\n\.app-shell/);
 assert.match(
   finalCss,
-  /html\s*\{[\s\S]*?background:\s*var\(--surface-app/,
-  "html بسطح التطبيق لا mj-splash",
+  /html\s*\{[\s\S]*?background:\s*var\(--mj-bg/,
+  "html بلوحة المحتوى (--mj-bg) لا mj-splash",
 );
 
 const foundation = read("src/styles/m2030/foundation.css");
-assert.match(foundation, /background-color:\s*var\(--surface-app/);
+assert.match(foundation, /background-color:\s*var\(--mj-bg/);
 assert.doesNotMatch(
   foundation,
   /body\s*\{[\s\S]*?--mj-splash,\s*#0E1A15/,
@@ -51,7 +51,7 @@ assert.doesNotMatch(
 );
 
 const nav = read("src/styles/m2030/navigation.css");
-assert.match(nav, /\.bottom-nav[\s\S]*?background-color:\s*var\(--surface-app/);
+assert.match(nav, /\.bottom-nav[\s\S]*?background-color:\s*var\(--mj-bg/);
 assert.doesNotMatch(
   nav,
   /\.bottom-nav[\s\S]{0,500}?--mj-splash,\s*#0E1A15/,

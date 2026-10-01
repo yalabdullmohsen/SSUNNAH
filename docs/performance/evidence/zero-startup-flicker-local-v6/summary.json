@@ -1,0 +1,329 @@
+{
+  "measuredAt": "2026-10-01T07:43:23.506Z",
+  "production": {
+    "commit": "217ed817",
+    "shortCommit": "217ed817",
+    "commitSha": "217ed817",
+    "builtAt": "2026-10-01T07:42:07.396Z",
+    "buildTime": "2026-10-01T07:42:07.396Z",
+    "ref": "main",
+    "branch": "main"
+  },
+  "base": "http://127.0.0.1:24216",
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "deviceScaleFactor": 2,
+    "isMobile": true,
+    "hasTouch": true
+  },
+  "results": [
+    {
+      "route": "home",
+      "path": "/",
+      "fp": 68,
+      "fcp": 68,
+      "clsTotal": 0.004402416836998271,
+      "clsAfterFcp": 0.004402416836998271,
+      "clsEntryCount": 1,
+      "topCls": [
+        {
+          "value": 0.004402416836998271,
+          "startTime": 635.6000000238419,
+          "sources": [
+            "main#main-content.app-main",
+            "div.navbar-ticker-row"
+          ]
+        }
+      ],
+      "themeChangeCount": 1,
+      "visualChangeCount": 8,
+      "visualChanges": [
+        {
+          "key": "theme.bgToken",
+          "early": "",
+          "final": "#f8f6f1"
+        },
+        {
+          "key": "theme.backgroundToken",
+          "early": "",
+          "final": "#f8f6f1"
+        },
+        {
+          "key": "theme.fontApp",
+          "early": "\"Amiri\",\"MajlisAmiriFallback\",\"MajlisFallback\",\"Traditional Arabic\",serif",
+          "final": "\"Amiri\", \"MajlisAmiriFallback\", \"MajlisFallback\", \"Traditional Arabic\", serif"
+        },
+        {
+          "key": "bodyFont",
+          "early": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+          "final": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif"
+        },
+        {
+          "key": "sheetCount",
+          "early": 4,
+          "final": 111
+        },
+        {
+          "key": "header.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "bottom.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "hero.presence",
+          "early": false,
+          "final": true
+        }
+      ],
+      "sheets": [
+        4,
+        111
+      ],
+      "networkCss": 108,
+      "networkFonts": 4,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "fp": 60,
+      "fcp": 60,
+      "clsTotal": 0,
+      "clsAfterFcp": 0,
+      "clsEntryCount": 0,
+      "topCls": [],
+      "themeChangeCount": 1,
+      "visualChangeCount": 4,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 4,
+          "final": 74
+        },
+        {
+          "key": "header.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "bottom.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "hero.presence",
+          "early": false,
+          "final": true
+        }
+      ],
+      "sheets": [
+        4,
+        74
+      ],
+      "networkCss": 71,
+      "networkFonts": 4,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      }
+    },
+    {
+      "route": "quran-hub",
+      "path": "/quran-hub",
+      "fp": 60,
+      "fcp": 60,
+      "clsTotal": 0,
+      "clsAfterFcp": 0,
+      "clsEntryCount": 0,
+      "topCls": [],
+      "themeChangeCount": 1,
+      "visualChangeCount": 4,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 4,
+          "final": 78
+        },
+        {
+          "key": "header.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "bottom.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "hero.presence",
+          "early": false,
+          "final": true
+        }
+      ],
+      "sheets": [
+        4,
+        78
+      ],
+      "networkCss": 75,
+      "networkFonts": 4,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      }
+    },
+    {
+      "route": "mushaf",
+      "path": "/mushaf",
+      "fp": 60,
+      "fcp": 60,
+      "clsTotal": 0,
+      "clsAfterFcp": 0,
+      "clsEntryCount": 0,
+      "topCls": [],
+      "themeChangeCount": 1,
+      "visualChangeCount": 3,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 4,
+          "final": 58
+        },
+        {
+          "key": "header.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "hero.presence",
+          "early": false,
+          "final": true
+        }
+      ],
+      "sheets": [
+        4,
+        58
+      ],
+      "networkCss": 55,
+      "networkFonts": 8,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      }
+    },
+    {
+      "route": "prayer-times",
+      "path": "/prayer-times",
+      "fp": 60,
+      "fcp": 60,
+      "clsTotal": 0,
+      "clsAfterFcp": 0,
+      "clsEntryCount": 0,
+      "topCls": [],
+      "themeChangeCount": 1,
+      "visualChangeCount": 4,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 4,
+          "final": 59
+        },
+        {
+          "key": "header.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "bottom.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "hero.presence",
+          "early": false,
+          "final": true
+        }
+      ],
+      "sheets": [
+        4,
+        59
+      ],
+      "networkCss": 56,
+      "networkFonts": 4,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(250, 250, 248)",
+        "bg": "rgb(42, 64, 48)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(250, 250, 248)",
+        "bg": "rgb(42, 64, 48)"
+      }
+    },
+    {
+      "route": "home-dark",
+      "path": "/",
+      "fp": 44,
+      "fcp": 44,
+      "clsTotal": 0.004402416836998271,
+      "clsEntryCount": 1,
+      "topCls": [
+        {
+          "value": 0.004402416836998271,
+          "startTime": 557,
+          "sources": [
+            "main#main-content.app-main",
+            "div.navbar-ticker-row"
+          ]
+        }
+      ],
+      "themeChangeCount": 1,
+      "sheets": [
+        3,
+        111
+      ]
+    }
+  ]
+}

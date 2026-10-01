@@ -38,23 +38,42 @@ export function applyThemePreference(preference: ThemePreference) {
   if (typeof document === "undefined") return;
   const resolved = resolveTheme(preference);
   const root = document.documentElement;
-  // لا تعِد الكتابة إن طابق سكربت الإقلاع — يمنع إعادة طلاء بلا قيمة
+  const wantDark = resolved === "dark";
+  const already =
+    root.dataset.theme === resolved &&
+    root.classList.contains(wantDark ? "dark" : "light") &&
+    root.classList.contains(wantDark ? "theme-dark" : "theme-light") &&
+    !root.classList.contains(wantDark ? "light" : "dark") &&
+    !root.classList.contains(wantDark ? "theme-light" : "theme-dark") &&
+    root.style.colorScheme === (wantDark ? "dark" : "light");
+  // لا تعِد الكتابة إن طابق سكربت الإقلاع — يمنع theme repaint بعد FP
+  if (already) {
+    void BRAND_THEME_COLOR;
+    void BRAND_THEME_COLOR_DARK;
+    return;
+  }
   if (root.dataset.theme !== resolved) {
     root.dataset.theme = resolved;
-  try {
-    performance.mark("mj:theme-applied");
-  } catch {
-    /* ignore */
+    try {
+      performance.mark("mj:theme-applied");
+    } catch {
+      /* ignore */
+    }
   }
-  }
-  if (resolved === "dark") {
-    root.classList.add("dark", "theme-dark");
-    root.classList.remove("light", "theme-light");
+  if (wantDark) {
+    if (!root.classList.contains("dark")) root.classList.add("dark");
+    if (!root.classList.contains("theme-dark")) root.classList.add("theme-dark");
+    if (root.classList.contains("light")) root.classList.remove("light");
+    if (root.classList.contains("theme-light")) root.classList.remove("theme-light");
   } else {
-    root.classList.add("light", "theme-light");
-    root.classList.remove("dark", "theme-dark");
+    if (!root.classList.contains("light")) root.classList.add("light");
+    if (!root.classList.contains("theme-light")) root.classList.add("theme-light");
+    if (root.classList.contains("dark")) root.classList.remove("dark");
+    if (root.classList.contains("theme-dark")) root.classList.remove("theme-dark");
   }
-  root.style.colorScheme = resolved === "dark" ? "dark" : "light";
+  if (root.style.colorScheme !== (wantDark ? "dark" : "light")) {
+    root.style.colorScheme = wantDark ? "dark" : "light";
+  }
   // light/dark يفرضان لون السطح؛ auto يتبع الجهاز عبر resolveTheme فقط
   ensureChromeMeta(preference === "auto" ? undefined : resolved);
   // إبقاء الاستيراد ظاهرًا لبوابة meta-consistency

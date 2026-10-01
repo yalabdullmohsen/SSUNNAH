@@ -30,9 +30,10 @@ assert.match(theme, /--content-pb:\s*calc\(var\(--bottom-nav-height\)/);
 
 /* Bottom nav: calmer chrome, no drop shadow, emerald selected (light) */
 assert.match(nav, /\.bottom-nav[\s\S]{0,400}?box-shadow:\s*none\s*!important/);
-assert.match(nav, /\.bottom-nav[\s\S]{0,400}?background-color:\s*var\(--surface-app/);
-assert.match(nav, /\.bottom-nav__tab\.is-active[\s\S]{0,200}?--sf2-action-primary/);
-assert.match(nav, /\.bottom-nav__tab\.is-active[\s\S]{0,200}?--sf2-selected-bg/);
+/* ZERO FLICKER: شريط سفلي = لوحة المحتوى (--mj-bg) لا splash beige */
+assert.match(nav, /\.bottom-nav[\s\S]{0,400}?background-color:\s*var\(--mj-bg/);
+assert.match(nav, /\.bottom-nav__tab\.is-active[\s\S]{0,400}?--sf2-action-primary/);
+assert.match(nav, /\.bottom-nav__tab\.is-active[\s\S]{0,400}?--sf2-selected-bg/);
 assert.match(nav, /min-height:\s*2\.75rem/);
 
 /* surface-app splash contract preserved; mj-bg already Foundation ivory */

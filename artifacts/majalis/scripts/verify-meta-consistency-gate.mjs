@@ -47,7 +47,7 @@ if (!indexHtml.includes(`content="${theme}"`)) {
   issues.push(`index.html: theme-color السطح يجب أن يطابق ${theme}`);
 }
 if (!indexHtml.includes('content="#F7F3EB"')) {
-  issues.push("index.html: theme-color الإقلاع يجب #F7F3EB مع خلفية السطح");
+  issues.push("index.html: theme-color الإقلاع يجب #F7F3EB (شريط المتصفح/PWA) مع لوحة محتوى #F8F6F1");
 }
 /* اللون الداكن يُضبط من سكربت الإقلاع حسب اختيار المستخدم — لا meta بـ prefers-color-scheme */
 if (

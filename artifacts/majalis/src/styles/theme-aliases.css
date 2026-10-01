@@ -33,7 +33,8 @@
   --mj-fs-display: var(--text-display, var(--sf-type-display, 1.75rem));
   --mj-fs-h1: var(--text-h1, var(--sf-type-page-title, 1.5rem));
   --mj-fs-h2: var(--text-h2, var(--sf-type-section-title, 1.3125rem));
-  --mj-fs-body: var(--text-body, var(--sf-type-body, 1.0625rem));
+  /* Font Authority — عبر --sf-type-body؛ body يستخدم 1.0625rem مطلقًا */
+  --mj-fs-body: var(--sf-type-body, 1.0625rem);
   --mj-fs-small: var(--text-label, var(--sf-type-metadata, 1rem));
   --mj-fs-tiny: var(--text-caption, var(--sf-type-caption, 0.875rem));
   --mj-fs-btn: var(--text-label, var(--sf-type-metadata, 1rem));
@@ -338,7 +339,8 @@ html.dark,
   --color-background: var(--mj-bg);
   --color-border: var(--mj-hairline);
   --color-primary-foreground: #06231A;
-  --color-bg: var(--surface-app, var(--mj-bg));
+  /* Canvas Authority — لا تربط --color-bg بـ splash beige */
+  --color-bg: var(--mj-bg);
   --color-surface-elevated: var(--mj-surface-2);
   --color-text: var(--mj-ink);
   --color-text-muted: var(--mj-muted);
@@ -378,8 +380,8 @@ html.dark,
 
 .bottom-nav--m2030,
 .bottom-nav {
-  /* سطح صلب يطابق لون الصفحة — بلا شفافية مطلقًا */
-  background-color: var(--surface-app, #F7F3EB) !important;
+  /* سطح صلب = لوحة المحتوى (--mj-bg) منذ أول طلاء */
+  background-color: var(--mj-bg) !important;
   background-image: none !important;
   opacity: 1 !important;
   border-top-color: var(--mj-hairline) !important;
@@ -394,7 +396,7 @@ html.dark,
 .top-section-bar,
 .navbar-v3,
 .nav-bar {
-  background: var(--surface-app, var(--mj-surface)) !important;
+  background: var(--mj-bg) !important;
   border-color: var(--mj-hairline) !important;
   color: var(--mj-ink) !important;
   box-shadow: none !important;

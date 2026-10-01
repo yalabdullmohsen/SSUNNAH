@@ -19,7 +19,8 @@ const sectsPage = read("src/views/IslamicSectsPage.tsx");
 
 assert.match(indexHtml, /id="mj-launch-splash"/);
 assert.match(indexHtml, /رفيقك في العلم والعمل/);
-assert.match(indexHtml, /#F7F3EB|#f7f3eb/i);
+/* لوحة الإقلاع = لوحة المحتوى النهائية (ZERO FLICKER) */
+assert.match(indexHtml, /#F8F6F1|#f8f6f1/i);
 assert.match(splashBoot, /mj-launch-splash/);
 
 /* مسار الخطأ الأصلي: نفس خلفية الدخولية + شعار — بلا شاشة رمادية ثانية */

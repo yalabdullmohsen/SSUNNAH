@@ -9,7 +9,10 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "../../..");
+/** PWA / Capacitor / theme-color — شريط المتصفح */
 const BG = "#F7F3EB";
+/** لوحة المحتوى من أول طلاء (ZERO FLICKER = critical canvas) */
+const CANVAS = "#F8F6F1";
 
 const indexHtml = readFileSync(resolve(root, "index.html"), "utf8");
 assert.match(indexHtml, /id="mj-launch-splash"/, "دخولية MajlisSplash في HTML الحرج");
@@ -42,10 +45,11 @@ assert.doesNotMatch(indexHtml, /id="mj-boot-skeleton"/, "بلا هيكل تحم�
 }
 assert.match(
   indexHtml,
-  new RegExp(`background-color:\\s*(${BG}|var\\(--mj-splash-bg\\)|#F7F3EB)`),
-  "خلفية html/body",
+  new RegExp(`background-color:\\s*(${CANVAS}|var\\(--mj-splash-bg\\)|#F8F6F1)`, "i"),
+  "خلفية html/body = لوحة المحتوى النهائية",
 );
-assert.match(indexHtml, new RegExp(`theme-color" content="${BG}"`), "theme-color الإقلاع مطابق");
+assert.match(indexHtml, new RegExp(`theme-color" content="${BG}"`), "theme-color المتصفح/PWA يبقى #F7F3EB");
+assert.match(indexHtml, /--mj-splash-bg-light:\s*#F8F6F1/i, "دخولية الويب تطابق لوحة المحتوى");
 assert.match(indexHtml, /--mj-splash-bg:\s*var\(--mj-splash-bg-light\)/, "الدخول الافتراضي فاتح");
 assert.doesNotMatch(indexHtml, /apple-touch-startup-image/, "لا صور إقلاع PWA");
 assert.doesNotMatch(indexHtml, /splash-boot\.css/, "لا splash-boot.css");
