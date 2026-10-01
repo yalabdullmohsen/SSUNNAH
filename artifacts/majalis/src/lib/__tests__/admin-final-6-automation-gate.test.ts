@@ -65,10 +65,11 @@ assert.match(catalog, /\/admin\/v3\/automation"/);
 assert.match(catalog, /\/admin\/v3\/automation\/sources/);
 assert.match(catalog, /LEGACY_REQUIRED/);
 
-const report = readFileSync(
-  join(root, "../../docs/admin/ADMIN_FINAL_6_AUTOMATION_REPORT.md"),
-  "utf8",
-);
+const reportPath = join(root, "../../docs/admin/ADMIN_FINAL_6_AUTOMATION_AND_INTEGRATIONS_REPORT.md");
+const reportFallback = join(root, "../../docs/admin/ADMIN_FINAL_6_AUTOMATION_REPORT.md");
+assert.ok(existsSync(reportPath) || existsSync(reportFallback), "FINAL-6 report missing");
+const report = readFileSync(existsSync(reportPath) ? reportPath : reportFallback, "utf8");
+
 assert.match(report, /ADMIN_FINAL_6/);
 assert.match(report, /V3_PARTIAL/);
 assert.match(report, /LEGACY_REQUIRED|BLOCKED_CREDENTIAL|OWNER_ACTION/);
