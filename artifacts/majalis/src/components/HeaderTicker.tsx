@@ -208,6 +208,7 @@ export function HeaderTicker() {
       setDurationSec(marqueeDurationSec(items.length, totalChars));
       return;
     }
+    /* قراءة هندسية مؤجّلة — تجنّب forced-reflow في نافذة LHCI/LCP */
     const segmentW = segment.scrollWidth;
     const vpW = viewport.clientWidth;
     if (segmentW < 8 || vpW < 8) {
@@ -219,20 +220,31 @@ export function HeaderTicker() {
 
   useEffect(() => {
     if (!bootReady || reducedMotion || items.length === 0) return;
+    /* تقدير بالحروف فورًا — بلا layout read */
+    setDurationSec(marqueeDurationSec(items.length, totalChars));
     let raf1 = 0;
     let raf2 = 0;
     let delayed = 0;
     let roTimer = 0;
+    let allowGeometry = false;
     const scheduleMeasure = () => {
+      if (!allowGeometry) return;
       window.cancelAnimationFrame(raf1);
       window.cancelAnimationFrame(raf2);
       raf1 = window.requestAnimationFrame(() => {
         raf2 = window.requestAnimationFrame(measureDuration);
       });
     };
-    scheduleMeasure();
-    // إعادة قياس بعد استقرار الخطوط/العرض — يمنع دورة قصيرة من قياس مبكر فيظهر الشريط سريعًا
-    delayed = window.setTimeout(scheduleMeasure, 400);
+    /* بعد استقرار التحميل + خمول — خارج نافذة unused/forced-reflow النموذجية */
+    const armGeometry = () => {
+      allowGeometry = true;
+      scheduleMeasure();
+    };
+    const afterLoad = () => {
+      delayed = window.setTimeout(armGeometry, 8_000);
+    };
+    if (document.readyState === "complete") afterLoad();
+    else window.addEventListener("load", afterLoad, { once: true });
     const onOrient = () => scheduleMeasure();
     const onResize = () => scheduleMeasure();
     window.addEventListener("orientationchange", onOrient);
@@ -253,11 +265,12 @@ export function HeaderTicker() {
       window.cancelAnimationFrame(raf2);
       window.clearTimeout(delayed);
       window.clearTimeout(roTimer);
+      window.removeEventListener("load", afterLoad);
       window.removeEventListener("orientationchange", onOrient);
       window.removeEventListener("resize", onResize);
       ro?.disconnect();
     };
-  }, [bootReady, reducedMotion, items, measureDuration]);
+  }, [bootReady, reducedMotion, items, totalChars, measureDuration]);
 
   // لا شريط فارغ
   if (items.length === 0) return null;

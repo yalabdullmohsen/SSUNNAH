@@ -46,10 +46,28 @@ assert.doesNotMatch(
   "WAVE7: no recovery reload-to-win after final-release",
 );
 
-assert.ok(sync.length === 22, `sync CSS imports expected 22 (got ${sync.length})`);
+/**
+ * U1 LHCI Home graph: tokens / identity-reset / v2-tokens / contrast-fix /
+ * sections-calm-polish / ssunnah-ux-polish move sync→idle (Home ATF keeps
+ * foundation + theme + unify + interaction-states + dark-mode-recovery).
+ * Evidence: unused-css selected ≤80 · unused-js ≤500 · forced-reflow=1.
+ */
+assert.ok(sync.length === 16, `sync CSS imports expected 16 after U1 (got ${sync.length})`);
 assert.ok(deferred.length >= 42, `deferred call sites expected ≥42 after Phase 3 (got ${deferred.length})`);
-assert.ok(deferred.length <= 45, `deferred call sites expected ≤45 after Phase 3 (got ${deferred.length})`);
+assert.ok(deferred.length <= 49, `deferred call sites expected ≤49 after U1 idle absorb (got ${deferred.length})`);
 assert.match(main, /ensure-dark-layers|ensureDarkCoreLayers/, "Phase 3 dark loader wired");
+/* U1: listed polish/token sheets must not return to sync entry */
+for (const f of [
+  "./styles/tokens.css",
+  "./styles/sunnah-identity-reset.css",
+  "./styles/visual-redesign-v2-tokens.css",
+  "./styles/visual-layer-contrast-fix.css",
+  "./styles/sections-calm-polish.css",
+  "./styles/ssunnah-ux-polish.css",
+]) {
+  assert.ok(deferredSet.has(f), `U1: ${f} stays deferred`);
+  assert.ok(!syncSet.has(f), `U1: ${f} must not be sync`);
+}
 
 /** Proven-dead classes must not return to critical index.css. */
 const FORBIDDEN_IN_INDEX = [

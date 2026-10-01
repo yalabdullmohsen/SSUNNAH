@@ -11,7 +11,6 @@ import { NativeBackButtonListener } from "@/components/NativeBackButtonListener"
 import { VisualViewportKeyboardBridge } from "@/hooks/useVisualViewportOffset";
 import { FloatingLayerSync } from "@/components/FloatingLayerSync";
 import { ensureChromeMeta } from "@/lib/ensure-chrome-meta";
-import { ensureDarkLuxuryBundle } from "@/lib/ensure-dark-layers";
 import { PageChromeSync } from "@/components/PageChromeSync";
 import { useAutoHideBottomNav } from "@/hooks/useAutoHideBottomNav";
 import { getActiveTab, type BottomTabId } from "@/lib/get-active-tab";
@@ -28,16 +27,12 @@ import { recordRouteTransitionEnd, recordRouteTransitionStart } from "@/lib/rout
 import { LazyRouteFallback } from "@/components/LazyRouteFallback";
 import { PRAYER_ALERT_PREFS_CHANGED_EVENT } from "@/lib/prayer-alert-preferences";
 import { getActivePrayerLocation } from "@/lib/prayer-location-prefs";
-import { migratePrayerSettingsIfNeeded } from "@/lib/prayer-settings-upgrade";
-import { recordRecentPage } from "@/lib/recent-pages";
 import {
   captureScrollSnapshot,
   restoreScrollSnapshot,
   scrollDocumentToTop,
   type ScrollSnapshot,
 } from "@/lib/scroll-document-top";
-import { trackContinueReading } from "@/lib/continue-reading";
-import { setPrayerTimesCache } from "@/lib/lesson-time";
 import { recordNavigationVisit } from "@/lib/navigation-back";
 import { isAuthStandalonePath, isImmersiveChromePath, isPinnedChromePath, isPrayerTimesPath } from "@/lib/immersive-chrome";
 import { commitRouteSurface } from "@/lib/route-surface";
@@ -97,19 +92,9 @@ const OfflineBanner = lazyWithRetry(
 
 const lazy = lazyWithRetry;
 
-/** مسارات غير الرئيسية — كسول لميزانية entry، مع تسخين فوري بعد الإقلاع */
+/** مسارات غير الرئيسية — كسول؛ التسخين عبر نية التنقّل (BottomNav) فقط — لا idle مبكر في نافذة LHCI */
 const loadAppRoutes = () => import("./AppRoutes");
 const AppRoutesLazy = lazy(loadAppRoutes);
-if (typeof window !== "undefined") {
-  const warm = () => {
-    void loadAppRoutes();
-  };
-  if (typeof window.requestIdleCallback === "function") {
-    window.requestIdleCallback(warm, { timeout: 900 });
-  } else {
-    window.setTimeout(warm, 0);
-  }
-}
 
 /**
  * تحميل كسول للمساعد الذكي العائم — مكوّن ثانوي (تفاعلي عند الطلب فقط)
@@ -219,8 +204,12 @@ function SeoManager() {
     }
     const timer = window.setTimeout(() => {
       const rawTitle = document.title.split(" | ")[0]?.trim();
-      recordRecentPage(location, rawTitle);
-      trackContinueReading({ route: location, title: rawTitle || location });
+      void import("@/lib/recent-pages").then(({ recordRecentPage }) => {
+        recordRecentPage(location, rawTitle);
+      });
+      void import("@/lib/continue-reading").then(({ trackContinueReading }) => {
+        trackContinueReading({ route: location, title: rawTitle || location });
+      });
     }, 400);
     return () => {
       window.clearTimeout(timer);
@@ -328,7 +317,9 @@ function AdhanSchedulerBootstrap() {
     for (const slot of data.prayers) {
       if (slot.minutes != null) liveMinutes[slot.name] = slot.minutes;
     }
-    setPrayerTimesCache(liveMinutes);
+    void import("@/lib/lesson-time").then(({ setPrayerTimesCache }) => {
+      setPrayerTimesCache(liveMinutes);
+    });
 
     const run = () => {
       void import("@/lib/adhan-scheduler").then((m) =>
@@ -1126,7 +1117,9 @@ function AppShellInner() {
     const loadNightCss = () => {
       if (nightCssLoaded) return;
       nightCssLoaded = true;
-      void ensureDarkLuxuryBundle();
+      void import("@/lib/ensure-dark-layers").then((m) => {
+        void m.ensureDarkLuxuryBundle();
+      });
     };
     const syncNight = () => {
       const dark =
@@ -1319,11 +1312,11 @@ function PrayerCountdownScope({
 
 function PrayerSettingsMigrationBoot() {
   useEffect(() => {
-    try {
-      migratePrayerSettingsIfNeeded();
-    } catch {
-      /* ignore */
-    }
+    void import("@/lib/prayer-settings-upgrade")
+      .then(({ migratePrayerSettingsIfNeeded }) => {
+        migratePrayerSettingsIfNeeded();
+      })
+      .catch(() => undefined);
   }, []);
   return null;
 }

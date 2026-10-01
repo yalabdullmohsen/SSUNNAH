@@ -295,6 +295,25 @@ Hotfix: إعادة الإزالة الفورية عند أول commit لـ`#root
 4. Deferred sheets ما زالت مرتفعة (~3→107).
 5. Token `--color-brand-deep` الليلي (سطح vs حبر) — موجة توكن منفصلة.
 
+## LHCI FINAL CLOSURE
+
+| Field | Value |
+|-------|-------|
+| Audit report | `docs/performance/LHCI_HOME_RESOURCE_AUDIT.md` |
+| Third audit id | `forced-reflow-insight` (extracted from LHCI JSON) |
+| Local LHCI (post-U1 graph) | unused-css selected **≤80** · unused-js selected **≤500** · forced-reflow **score=1** · only `categories:performance` warn |
+| Aggregation | LHCI optimistic (min for maxNumericValue) — same as CI `lighthouserc.cjs` |
+| Status | **LHCI_HOME_MOBILE_CLOSED** (local evidence on `d9822935` + U1 graph) — pending graph PR Merge + Deploy + MATCH + Smoke |
+| Baseline main/prod | `d9822935` MATCH after #2434; unused CSS/JS/forced-reflow still above contract until this PR |
+
+### U1 graph fixes (this train)
+
+- Remove AppRoutes idle warm; home bulk prefetch uses `setTimeout(25s)` + `warmAppRoutes:false`
+- Break `manualChunks` supabase hoist into radix/entry
+- FavoriteButton / lessons-service: no sync supabase on Home guest path
+- Defer non-ATF sync CSS; absorb into `index-deferred-pages.css` with HomeView sync import (not idle-only)
+- HeaderTicker: char-based duration until post-load geometry
+
 ## FINAL VERDICT
 
 ### **STARTUP_FLICKER_PARTIALLY_FIXED**

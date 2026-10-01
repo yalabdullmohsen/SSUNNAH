@@ -4,11 +4,11 @@
  * 2. دمج صفوف catalog/seed غير الموجودة في Supabase (بدون تكرار)
  * 3. Fallback كامل للـ seed عند فراغ الجدول
  */
-import { fetchApprovedLessonsFromDb } from "@/lib/supabase";
 import { loadLessonsSeed, findSeedLessonById, findSeedLessonByIdAsync } from "@/lib/lessons-seed";
 import type { KuwaitLessonRecord } from "@/lib/kuwait-lessons";
 import { filterKuwaitOnlyForDisplay } from "@/lib/lesson-kuwait-scope";
 import { sheikhNameKey } from "@/lib/sheikh-name";
+import { isSupabaseConfigured } from "@/lib/supabase-config";
 import {
   dedupeKuwaitLessons,
   isLessonComplete,
@@ -96,29 +96,44 @@ export async function fetchLessons(options?: { bypassCache?: boolean }): Promise
   }
 
   const run = async (): Promise<FetchLessonsResult> => {
-    try {
-      const { data } = await fetchApprovedLessonsFromDb();
-      if (data.length > 0) {
-        const dbMapped = dedupeKuwaitLessons(
-          data.map((row) => mapLessonRow({ ...row, source: "supabase" })).filter(isLessonComplete),
-        );
-        const lessons = sortKuwaitLessons(await mergeDbWithSeed(dbMapped));
-        const source: LessonsSource = lessons.length > dbMapped.length ? "merged" : "supabase";
-        cachedResult = { lessons, source };
-        cacheTs = Date.now();
-        writePersistedLessons(cachedResult);
-        return cachedResult;
-      }
-    } catch {
-      /* fallback below */
-    }
-
+    /* Seed فوري — دمج Supabase مؤجّل حتى لا يدخل supabase-js رسم Home/LHCI */
     const seed = await loadLessonsSeed();
-    const lessons = dedupeKuwaitLessons(seed.map((row) => mapLessonRow({ ...row, source: "seed" })));
-    cachedResult = { lessons: sortKuwaitLessons(lessons), source: "seed" };
+    const seedLessons = dedupeKuwaitLessons(
+      seed.map((row) => mapLessonRow({ ...row, source: "seed" })),
+    );
+    const seedResult: FetchLessonsResult = {
+      lessons: sortKuwaitLessons(seedLessons),
+      source: "seed",
+    };
+    cachedResult = seedResult;
     cacheTs = Date.now();
     writePersistedLessons(cachedResult);
-    return cachedResult;
+
+    if (isSupabaseConfigured()) {
+      const mergeFromDb = () => {
+        void import("@/lib/supabase")
+          .then(({ fetchApprovedLessonsFromDb }) => fetchApprovedLessonsFromDb())
+          .then(async ({ data }) => {
+            if (!data.length) return;
+            const dbMapped = dedupeKuwaitLessons(
+              data.map((row) => mapLessonRow({ ...row, source: "supabase" })).filter(isLessonComplete),
+            );
+            const lessons = sortKuwaitLessons(await mergeDbWithSeed(dbMapped));
+            const source: LessonsSource = lessons.length > dbMapped.length ? "merged" : "supabase";
+            cachedResult = { lessons, source };
+            cacheTs = Date.now();
+            writePersistedLessons(cachedResult);
+          })
+          .catch(() => undefined);
+      };
+      if (typeof window !== "undefined") {
+        window.setTimeout(mergeFromDb, 20_000);
+      } else {
+        mergeFromDb();
+      }
+    }
+
+    return seedResult;
   };
 
   const promise = run();

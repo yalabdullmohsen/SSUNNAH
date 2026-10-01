@@ -74,6 +74,11 @@ assert.doesNotMatch(
   /from\s*["']\.\/supabase-/,
   "entry must not statically import the supabase chunk (TBT)",
 );
+assert.doesNotMatch(
+  entryBuf,
+  /import\s*["']\.\/supabase-/,
+  "entry must not side-import supabase-* (forces Home Unused JS)",
+);
 console.log("  ✓ entry does not statically import supabase-*");
 
 const reactDomChunk = rows.find((r) => /^react-dom-.*\.js$/.test(r.f));

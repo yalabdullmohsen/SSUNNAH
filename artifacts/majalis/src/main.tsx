@@ -54,13 +54,10 @@ import "./styles/ssunnah-theme-api.css";
 // طبقات الأساس m2030 — foundation/navigation مؤجّلة (ليست حرجة لأول شاشة)
 /* LEGACY_NON_SOT — brand-v4 / green-surface / final-release / unify حتى PR-13 */
 import "./styles/brand-v4.css";
-// أزواج (سطح ← لون فوقه) — يشتق من brand-v4 ويجب أن يليه مباشرة
-import "./styles/tokens.css";
-// رموز دلالية موحّدة (سطح/نص/حد/خطوط) — بعد tokens وقبل الطبقات القديمة
+/* tokens.css + sunnah-identity-reset — مؤجّلان بعد الهوية الحرجة (ميزانية unused-css) */
+// رموز دلالية موحّدة (سطح/نص/حد/خطوط) — بعد brand وقبل الطبقات القديمة
 import "./styles/design-tokens.css";
-/* Visual Redesign V2 — رموز Dashboard الفاخرة (متغيرات فقط · خفيفة) */
-import "./styles/visual-redesign-v2-tokens.css";
-import "./styles/sunnah-identity-reset.css";
+  /* visual-redesign-v2-tokens — مؤجّل مع loadNonCriticalCss (رموز dashboard؛ ليس ATF Home) */
 import "./styles/breakpoints.css";
 import "./styles/typography-scale.css";
 import "./styles/typography-app.css";
@@ -69,21 +66,18 @@ import "./index.css";
 // contrast/a11y الثقيلة + صفحات متخصصة — بعد load (انظر loadNonCriticalCss)
 // جسر aliases: يوجّه --brand/--em-* /shadcn إلى لوحة --mj-* (آخر شيء)
 import "./styles/theme-aliases.css";
-/* طبقة ألوان دلالية + إصلاح تباين/طبقات (بعد الجسور حتى تفوز) */
+/* طبقة ألوان دلالية (بعد الجسور حتى تفوز) */
 import "./styles/semantic-layer-tokens.css";
-import "./styles/visual-layer-contrast-fix.css";
-/* توحيد الهوية البصرية (مصحف هادئ) — بعد الجسور وإصلاح التباين */
+/* visual-layer-contrast-fix — مؤجّل في loadNonCriticalCss قبل final-release */
+/* توحيد الهوية البصرية (مصحف هادئ) — بعد الجسور */
 import "./styles/visual-identity-unify.css";
-/* تلميع الأقسام: بطاقات/فلاتر/قائمة/عائم — بعد طبقة التوحيد */
-import "./styles/sections-calm-polish.css";
+/* sections-calm-polish + ssunnah-ux-polish — مؤجّلة في loadNonCriticalCss قبل final-release */
 /* نمط مكارم الأخلاق — مؤجَّل (زينة أقسام، ليس أول طلاء) */
 /* تباين بطاقات الأقسام/المعجم/العقيدة — مؤجّل تحت ميزانية الحرج */
 /* Modern Islamic Editorial — مؤجّل (انظر loadNonCriticalCss) حتى لا يتجاوز ميزانية الحرج */
-/* صقل منتج سُنّة — توكنات/بطاقات/درج/بحث/ليلي */
-import "./styles/ssunnah-ux-polish.css";
 /* semantic-tokens + card-unify مؤجّلان — ميزانية CSS الحرج ≤60KiB gzip */
 /* Green Surface System — مؤجّل تحت الميزانية (انظر loadNonCriticalCss) */
-/* حالات تفاعل متمايزة + ::selection — breadcrumbs مع مكوّنات المسار */
+/* حالات تفاعل متمايزة + ::selection — متزامن (عقد identity-cascade / dark-deferred) */
 import "./styles/interaction-states.css";
 /* استرداد ليلي P0 — متزامن؛ القواعد مقيّدة بـ html.dark لتقليل theme flash */
 import "./styles/dark-mode-recovery.css";
@@ -134,6 +128,13 @@ function loadNonCriticalCss() {
     path.startsWith("/adhkar");
   void import("./styles/z-index-layers.css");
   void import("./styles/motion-policy.css");
+  /* صقل/تفاعل/رموز v2 + طبقات كانت متزامنة — قبل design-system/final-release */
+  void import("./styles/tokens.css");
+  void import("./styles/sunnah-identity-reset.css");
+  void import("./styles/visual-layer-contrast-fix.css");
+  void import("./styles/visual-redesign-v2-tokens.css");
+  void import("./styles/sections-calm-polish.css");
+  void import("./styles/ssunnah-ux-polish.css");
   void import("./styles/components/modern-section-shell.css");
   void import("./styles/section-cards-theme.css");
   void import("./styles/sunnah-foundation-type.css");
@@ -187,7 +188,7 @@ function loadNonCriticalCss() {
     void import("./styles/components/reading-section-card.css");
   }
 
-  /* طبقات الليل على idle دائمًا — contrast/Playwright يطبّق dark بعد load بلا ThemeProvider */
+  /* طبقات الليل على idle — contrast/Playwright قد يطبّق dark بعد load بلا ThemeProvider */
   if (!isDarkCoreLoadStarted()) {
     void ensureDarkCoreLayers();
   }

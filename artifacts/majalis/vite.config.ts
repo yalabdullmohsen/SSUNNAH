@@ -162,7 +162,12 @@ export default defineConfig({
             return;
           }
 
-          if (id.includes("@supabase")) return "supabase";
+          /*
+           * لا تُفرَض حزمة `supabase` يدويًا: إخراج @supabase إلى chunk مسمّى كان
+           * يمتص commons مشتركة مع @radix-ui فيجبر entry/radix على
+           * `import"./supabase-*.js"` → Unused JS ~52KiB على Home.
+           * اترك Rollup يضع @supabase مع مستهلكيه الكسولين فقط.
+           */
           if (id.includes("html-to-image")) return "html-export";
           if (id.includes("date-fns")) return "date-fns";
           if (id.includes("lucide-react")) return "icons";

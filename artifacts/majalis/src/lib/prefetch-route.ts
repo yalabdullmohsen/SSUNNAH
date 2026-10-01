@@ -47,8 +47,11 @@ const CHUNK: Record<string, () => Promise<unknown>> = {
   "/quran-circles": () => import("@/pages/quran/QuranCirclesPage"),
 };
 
-export function prefetchRoute(href: string): void {
-  prefetchAppRoutesShell();
+export function prefetchRoute(href: string, opts?: { warmAppRoutes?: boolean }): void {
+  /* افتراضي: سخّن AppRoutes مع نية بطاقة. التسخين الجماعي للرئيسية يمرّر false */
+  if (opts?.warmAppRoutes ?? true) {
+    prefetchAppRoutesShell();
+  }
   const path = (href.split("?")[0] || "/").split("#")[0] || "/";
   if (!path || path === "/" || seen.has(path)) return;
   seen.add(path);
@@ -95,5 +98,5 @@ export const HOME_WARM_ROUTES = [
 ] as const;
 
 export function prefetchHomeWarmRoutes(): void {
-  for (const href of HOME_WARM_ROUTES) prefetchRoute(href);
+  for (const href of HOME_WARM_ROUTES) prefetchRoute(href, { warmAppRoutes: false });
 }
