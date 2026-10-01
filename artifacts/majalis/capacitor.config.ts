@@ -47,18 +47,6 @@ const config: CapacitorConfig = {
       presentationOptions: ["badge", "sound", "banner", "list"],
     },
   },
-  android: {
-    buildOptions: {
-      keystorePath: "majalisilm-release.keystore",
-      keystorePassword: "${KEYSTORE_PASSWORD}",
-      keystoreAlias: "majalisilm",
-      keystoreAliasPassword: "${KEYSTORE_ALIAS_PASSWORD}",
-      releaseType: "APK",
-    },
-    allowMixedContent: false,
-    captureInput: true,
-    webContentsDebuggingEnabled: false,
-  },
   ios: {
     // Safe areas are owned by the shared CSS shell via env(safe-area-inset-*).
     // UIKit adjustment here would apply a second inset around the WKWebView.

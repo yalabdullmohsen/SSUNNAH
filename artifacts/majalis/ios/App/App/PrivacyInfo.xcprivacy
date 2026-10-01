@@ -45,19 +45,7 @@
         <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
       </array>
     </dict>
-    <!-- الصوت/الميكروفون — اختياري لاختبار التلاوة — لا يُخزَّن افتراضيًا -->
-    <dict>
-      <key>NSPrivacyCollectedDataType</key>
-      <string>NSPrivacyCollectedDataTypeAudioData</string>
-      <key>NSPrivacyCollectedDataTypeLinked</key>
-      <false/>
-      <key>NSPrivacyCollectedDataTypeTracking</key>
-      <false/>
-      <key>NSPrivacyCollectedDataTypePurposes</key>
-      <array>
-        <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
-      </array>
-    </dict>
+    <!-- لا AudioData: ميزة التسميع بالذكاء الاصطناعي أُزيلت؛ لا ميكروفون في Info.plist -->
   </array>
 
   <!-- NSPrivacyTracking: لا يوجد تتبع إعلاني -->

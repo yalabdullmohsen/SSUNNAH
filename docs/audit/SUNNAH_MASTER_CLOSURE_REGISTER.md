@@ -2,27 +2,28 @@
 
 | Field | Value |
 |-------|-------|
-| Locked at (UTC) | `2026-10-01T15:55:00Z` |
-| Tip (post U3) | `origin/main` / production **MATCH** `52aa7b2f` (pre iOS-only PR) |
+| Locked at (UTC) | `2026-10-01T17:16:00Z` |
+| Tip (pre iOS-only merge) | `origin/main` / production **MATCH** `f62ae86e` |
 | Program | **IOS-ONLY** COMPLETE PRODUCT · LICENSE · APPLE STORE CLOSURE |
-| Status | **`MASTER_CLOSURE_REGISTER_LOCKED`** · **`LIVE_TRUTH_LOCKED_IOS_ONLY`** |
-| Policy | PEOP/CEP · serial execution · UNKNOWN job = temporary HARD_BLOCKER · Android **RETIRED** |
+| Status | **`LIVE_TRUTH_LOCKED_IOS_ONLY`** · **`ANDROID_PRODUCT_RETIRED`** · **`IOS_NATIVE_ARCHITECTURE_CERTIFIED`** |
+| Policy | PEOP/CEP · serial execution · UNKNOWN job = temporary HARD_BLOCKER · Android **RETIRED** (tag `android-last-supported-state`) |
 
 ## Live truth (lock)
 
 | Item | Value |
 |------|-------|
-| `origin/main` | `52aa7b2f` (U3 squash #2442) |
-| Production `version.json` | `52aa7b2f` MATCH |
-| Open PRs | `#2299` native widgets CONFLICTING · `#1791` offline draft |
-| Recent merges | `#2442` U3 · `#2441` Track 0 · `#2440` license · `#2439` MF0 · `#2438` MRMP · `#2437` U1n · `#2436` U2 |
+| `origin/main` / production | `f62ae86e` **MATCH** |
+| Open PRs | `#2299` widgets CONFLICTING · `#1791` offline draft · iOS-only train (this) |
+| Recent merges | `#2442` U3 · `#2441` Track 0 · `#2440` license |
 | U2 | MERGED_AND_DEPLOYED · MATCH |
-| U3 | **`DARK_LIGHT_UNIFIED`** · MERGED_AND_DEPLOYED · MATCH · gate `test:u3-theme-pipeline` |
-| U4 | Ready Pack IN_PROGRESS (~70%) · **EXECUTION_UNLOCKED** (next serial code) |
-| MRMP | Chartered · `MOBILE_PARTIALLY_READY` |
+| U3 | **`DARK_LIGHT_UNIFIED`** · MATCH · gate `test:u3-theme-pipeline` |
+| U4 | **EXECUTION_UNLOCKED** after this PR MATCH+Smoke |
+| Android | **`ANDROID_PRODUCT_RETIRED`** · tree deleted · gates prevent return |
+| iOS identity | **`IOS_NATIVE_ARCHITECTURE_CERTIFIED`** · `com.yousef.majlisilm` |
+| MRMP | Chartered · iOS Readiness · `MOBILE_PARTIALLY_READY` |
 | License | `LICENSE_CERTIFICATION_REQUIRED` (#2440) |
-| Store | HOLD · `WEB_RELEASED_NATIVE_HOLD` |
-| Recitations policy | **STREAM_ONLY** (no binary / no offline package) |
+| Store | HOLD · Apple-only · `WEB_RELEASED_NATIVE_HOLD` |
+| Recitations policy | **STREAM_ONLY** |
 | Adhan Istanbul CC0 | `CC0_ADHAN_CANDIDATE` (not APPROVED) |
 
 ---
@@ -42,18 +43,18 @@
 | A8 | A | U9 Route matrices | FIXABLE | Agent | 8 admin v3 missing | Y | N | N | N | N | `ROUTES_CLASSIFIED_AND_CLOSED` |
 | A9 | A | U10 Mushaf boundary | FIXABLE+DEVICE | Agent | integrity PASS · device hold | soft | Y | Y | Y | Y | `MUSHAF_BOUNDARY_CERTIFIED` |
 | A10 | A | U11–U13 final web | FIXABLE | Agent | UNIFIED_PARTIAL | Y | N | N | N | N | `UNIFIED_100` or honest PARTIAL |
-| B1 | B | M1 Native architecture iOS | FIXABLE+OWNER | Agent+Owner | Bundle `com.yousef.majlisilm` · Android retired | N | Y | N/A | Y | Y | `IOS_NATIVE_ARCHITECTURE_CERTIFIED` |
-| B2 | B | M2 App shell device | DEVICE | Agent+Tester | DEVICE_QA_REGISTER | N | Y | Y | Y | Y | `APP_SHELL_STABLE` |
-| B3 | B | M3 Deep links | DEVICE | Agent+Tester | MRMP M3 | N | Y | Y | Y | Y | `DEEP_LINKS_CERTIFIED` |
-| B4 | B | M4 Auth mobile | DEVICE | Agent+Tester | MRMP M4 | N | Y | Y | soft | Y | `AUTH_MOBILE_CERTIFIED` |
-| B5 | B | M5 Offline + license boundary | DEVICE+LICENSE | Agent | STREAM_ONLY / no uncertified pack | N | Y | Y | Y | Y | `OFFLINE_READY_WITH_LICENSE_BOUNDARY` |
-| B6 | B | M6 Mushaf devices | DEVICE | Tester | WAVE6 matrix | N | Y | Y | Y | Y | `MUSHAF_MOBILE_CERTIFIED` |
-| B7 | B | M7 Prayer/Adhan | DEVICE+AUDIO | Tester | needs CC0 APPROVED | N | Y | Y | Y | Y | `PRAYER_ADHAN_CERTIFIED` |
-| B8 | B | M8 Push | DEVICE | Tester | MRMP M8 | N | Y | Y | Y | Y | `PUSH_CERTIFIED` |
-| B9 | B | M9 Accessibility | DEVICE | Tester | VO/TB | N | Y | Y | Y | Y | `MOBILE_ACCESSIBILITY_CERTIFIED` |
-| B10 | B | M10 Device matrix | DEVICE | Tester | empty rows | N | Y | Y | Y | Y | `DEVICE_MATRIX_COMPLETE` |
-| B11 | B | M11 Performance | DEVICE | Tester | MRMP M11 | N | Y | Y | Y | Y | `MOBILE_PERFORMANCE_CERTIFIED` |
-| C1 | C | Watch/Widget prayer-only surfaces | FIXABLE+LICENSE | Agent | Expansion masterplan | N | Y | Y | Y | Y | `WATCH_WIDGET_PRAYER_SURFACES_CERTIFIED` |
+| B1 | B | M1 Native architecture iOS | FIXABLE+OWNER | Agent+Owner | `IOS_NATIVE_ARCHITECTURE_CERTIFICATION.md` | N | Y | RETIRED | Y | Y | `IOS_NATIVE_ARCHITECTURE_CERTIFIED` ✅ |
+| B2 | B | M2 App shell device | DEVICE | Agent+Tester | DEVICE_QA_REGISTER | N | Y | RETIRED | Y | Y | `IOS_APP_SHELL_STABLE` |
+| B3 | B | M3 Deep links | DEVICE | Agent+Tester | MRMP M3 · AASA live | N | Y | RETIRED | Y | Y | `IOS_DEEP_LINKS_CERTIFIED` |
+| B4 | B | M4 Auth mobile | DEVICE | Agent+Tester | MRMP M4 | N | Y | RETIRED | soft | Y | `IOS_AUTH_CERTIFIED` |
+| B5 | B | M5 Offline + license boundary | DEVICE+LICENSE | Agent | STREAM_ONLY / no uncertified pack | N | Y | RETIRED | Y | Y | `IOS_OFFLINE_READY_WITH_LICENSE_BOUNDARY` |
+| B6 | B | M6 Mushaf devices | DEVICE | Tester | WAVE6 matrix | N | Y | RETIRED | Y | Y | `MUSHAF_IOS_CERTIFIED` |
+| B7 | B | M7 Prayer/Adhan | DEVICE+AUDIO | Tester | needs CC0 APPROVED | N | Y | RETIRED | Y | Y | `IOS_PRAYER_ADHAN_CERTIFIED` |
+| B8 | B | M8 Push | DEVICE | Tester | MRMP M8 | N | Y | RETIRED | Y | Y | `IOS_PUSH_CERTIFIED` |
+| B9 | B | M9 Accessibility | DEVICE | Tester | VO/TB | N | Y | RETIRED | Y | Y | `IOS_ACCESSIBILITY_CERTIFIED` |
+| B10 | B | M10 Device matrix | DEVICE | Tester | empty rows | N | Y | RETIRED | Y | Y | `IOS_DEVICE_MATRIX_COMPLETE` |
+| B11 | B | M11 Performance | DEVICE | Tester | MRMP M11 | N | Y | RETIRED | Y | Y | `MOBILE_PERFORMANCE_CERTIFIED` |
+| C1 | C | Watch/Widget prayer-only surfaces | FIXABLE+LICENSE | Agent | App Groups pending | N | Y | RETIRED | Y | Y | `WATCH_WIDGET_PRAYER_SURFACES_CERTIFIED` |
 | D1 | D | Quran redistribute grant | OWNER/LICENSE | Owner | LICENSE cert A | soft | Y | Y | Y | Y | `CLEARED_WITH_EVIDENCE` or permanent limit |
 | D2 | D | QPC grant or permanent strip | OWNER/LICENSE | Owner | LIC-01 | soft | Y | Y | Y | Y | Written grant **or** strip policy sealed |
 | D3 | D | Recitations STREAM_ONLY enforce | POLICY | Agent | Kill switch · no bundle | soft | Y | Y | Y | Y | Policy gate + attribution |
@@ -62,8 +63,8 @@
 | D6 | D | Fonts/images catalog | LICENSE | Agent | OFL OK · QPC blocked | soft | Y | Y | Y | Y | No UNKNOWN images |
 | D7 | D | Attributions complete | LICENSE | Agent | CREDITS · /sources | soft | soft | soft | Y | Y | `ATTRIBUTIONS_COMPLETE` |
 | E1 | E | Apple store readiness | OWNER | Owner | STORE_100 | N | Y | N | Y | Y | ASC metadata+signing |
-| E2 | E | Google store readiness | OWNER | Owner | STORE_100 | N | N | Y | Y | Y | Play Data Safety+signing |
-| E3 | E | RC TF/Play Internal | OWNER+DEVICE | Owner | MRMP M12–M13 | N | Y | Y | Y | Y | both RC ready |
+| E2 | E | Google store readiness | OUT_OF_SCOPE | — | Android retired | N | N | RETIRED | N | N | `ANDROID_PRODUCT_RETIRED` ✅ |
+| E3 | E | RC TestFlight Internal | OWNER+DEVICE | Owner | MRMP M12–M13 | N | Y | RETIRED | Y | Y | `TESTFLIGHT_INTERNAL_CERTIFIED` |
 
 Legend: Web/iOS/Android/Store Sub/Store Go = blocks that surface if open (Y/N/soft).
 
@@ -72,11 +73,12 @@ Legend: Web/iOS/Android/Store Sub/Store Go = blocks that surface if open (Y/N/so
 ## Serial code order (next unlock)
 
 ```text
-1. A1 U3  ✅ DARK_LIGHT_UNIFIED · MATCH 52aa7b2f
-2. A2 U4  ← NEXT EXECUTION
-3. A3 U1 numeric closure proof on tip
-4. B1 M1
-… (see program priority list)
+1. A1 U3  ✅ DARK_LIGHT_UNIFIED
+2. Android retirement ✅ ANDROID_PRODUCT_RETIRED
+3. B1 M1 ✅ IOS_NATIVE_ARCHITECTURE_CERTIFIED (signing OWNER)
+4. A2 U4  ← NEXT EXECUTION after MATCH+Smoke
+5. A3 U1 numeric closure proof on tip
+… (see IOS_ONLY_CLOSURE_BOARD.md)
 ```
 
 ## Forbidden claims until contracts pass

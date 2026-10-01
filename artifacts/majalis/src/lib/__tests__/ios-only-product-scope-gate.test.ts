@@ -24,8 +24,13 @@ assert.doesNotMatch(pkg.scripts?.["mobile:sync"] || "", /cap sync android/);
 assert.match(pkg.scripts?.["mobile:sync"] || "", /cap sync ios/);
 assert.match(pkg.scripts?.["mobile:android"] || "", /Android retired/);
 
-const cap = JSON.parse(readMaj("capacitor.config.json")) as { appId: string };
+const cap = JSON.parse(readMaj("capacitor.config.json")) as {
+  appId: string;
+  android?: unknown;
+};
 assert.equal(cap.appId, "com.yousef.majlisilm");
+assert.equal(cap.android, undefined, "capacitor.config.json must not declare android block");
+assert.doesNotMatch(readMaj("capacitor.config.ts"), /^\s*android\s*:/m, "capacitor.config.ts must not declare android block");
 
 const board = readRepo("docs/audit/IOS_ONLY_CLOSURE_BOARD.md");
 assert.match(board, /LIVE_TRUTH_LOCKED_IOS_ONLY/);
