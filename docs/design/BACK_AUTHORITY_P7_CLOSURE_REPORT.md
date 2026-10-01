@@ -5,11 +5,11 @@
 | Captured | 2026-10-01T01:55Z |
 | Branch | `cursor/back-authority-unify-p7` |
 | Base tip | `3b3498301` |
-| Status | **BACK_P7_PARTIAL** (pre-merge; update to MERGED_AND_DEPLOYED after MATCH) |
+| Status | **BACK_P7_MERGED_AND_DEPLOYED** |
 
 ## STATUS
 
-Implementation frozen. Focused gates green. Awaiting verify:ci → PR → merge → prod MATCH.
+Merged #2415 · prod MATCH `2a4e3985` · smoke PASS · Route Feedback may start.
 
 ## LIVE BASELINE
 
@@ -91,15 +91,20 @@ AppBack retains aria-label «رجوع»; host button labeled.
 
 ## PR DELIVERY
 
-(filled after open)
+- PR: https://github.com/yalabdullmohsen/majalis/pull/2415
+- Ready + auto-merge squash
+- Required checks: Verify build · ci-required · repo-gates · build · static-checks · visual-snapshot · Color contrast · LHCI home
 
 ## PRODUCTION MATCH
 
-(pending)
+- merge SHA: `2a4e3985ed50952aef8964f9aa15befbc677faf7` (#2415)
+- production `version.json`: `2a4e3985` · builtAt=2026-10-01T02:08:54.186Z
+- main = prod **MATCH**
 
 ## SMOKE TESTS
 
-(pending)
+HTTP 200: `/` `/quran-hub` `/lessons` `/hadith` `/fiqh` `/sources` `/competitions` `/support` `/contact` `/settings` `/my-learning` `/login` `/register` `/mushaf` `/prayer-times` `/api/healthz` `/version.json`  
+HTTP 404 expected: `/admin` `/admin/v3` (anonymous)
 
 ## REGRESSIONS
 
@@ -128,4 +133,4 @@ Route Feedback only after **BACK_P7_MERGED_AND_DEPLOYED**.
 
 ## FINAL DECISION
 
-**BACK_P7_PARTIAL**
+**BACK_P7_MERGED_AND_DEPLOYED**
