@@ -10,17 +10,18 @@
 
 Companion: `docs/design/DESIGN_TOKEN_AUTHORITY.md` (token stack) · `artifacts/majalis/docs/PREMIUM_DARK_THEME.md` (premium refine notes).
 
-## Single switch
+## Single switch (U3 pipeline)
 
 | Layer | Role |
 |---|---|
-| Early boot (`index.html` inline) | First paint only — sets `data-theme` + `dark` from `localStorage` |
-| `lib/boot-sequence.ts` | Pre-mount sync of `data-theme` / `theme-dark` |
-| `lib/theme-preference.ts` → `applyThemePreference` | **Canonical runtime writer** |
-| `ThemePreferenceProvider` | React preference (`light` / `dark` / `auto`) · loads dark CSS via `ensure-dark-layers` |
-| `lib/ensure-dark-layers.ts` | **Single idempotent loader** for surfaces / dark-design-system / premium / luxury (Phase 3) |
+| Early boot (`index.html` `#mj-theme-boot`) | First paint only — sets `data-theme` + `dark`/`light` from `localStorage` |
+| `lib/theme-preference.ts` → `applyThemePreference` | **Sole JS writer** of `dataset.theme` / dark|light classes (idempotent) |
+| `lib/boot-sequence.ts` | Pre-mount calls `applyThemePreference` only — no direct `dataset.theme` assign |
+| `ThemePreferenceProvider` | React preference (`light` / `dark` / `auto`) via `useLayoutEffect` · CSS via `ensure-dark-layers` |
+| `lib/ensure-dark-layers.ts` | **CSS load only** — must never mutate `data-theme` / `dark` classes |
+| Route / prayer / mushaf | `route-surface` / immersive classes — **not** product theme |
 
-**Rule:** do not invent a second product theme switch (no page-local `dataset.theme` writers, no parallel `prefers-color-scheme` CSS as the product SoT). System preference is resolved only through `auto` in `theme-preference.ts`.
+**Rule:** do not invent a second product theme switch (no page-local `dataset.theme` writers, no parallel `prefers-color-scheme` CSS as the product SoT). System preference is resolved only through `auto` in `theme-preference.ts`. Gate: `test:u3-theme-pipeline`.
 
 Selectors for dark remaps: `html[data-theme="dark"]` and `html.dark` (keep both — boot and class consumers).
 

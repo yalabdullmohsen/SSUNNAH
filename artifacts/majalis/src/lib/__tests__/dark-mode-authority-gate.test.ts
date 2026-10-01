@@ -43,14 +43,17 @@ assert.match(ensure, /premium-dark-refine\.css/);
 const app = read("src/App.tsx");
 assert.match(app, /ThemePreferenceProvider/);
 
-// Single product switch: only theme-preference + boot may assign dataset.theme
-const writers = [
-  "src/lib/theme-preference.ts",
-  "src/lib/boot-sequence.ts",
-].map((rel) => read(rel));
-for (const src of writers) {
-  assert.match(src, /dataset\.theme\s*=/);
-}
+// U3: كاتب JS وحيد لـ dataset.theme = theme-preference.ts
+// boot-sequence يستدعي applyThemePreference فقط (لا يكتب dataset.theme مباشرة)
+const themeWriter = read("src/lib/theme-preference.ts");
+assert.match(themeWriter, /dataset\.theme\s*=/);
+const bootSeq = read("src/lib/boot-sequence.ts");
+assert.match(bootSeq, /applyThemePreference/);
+assert.doesNotMatch(
+  bootSeq,
+  /dataset\.theme\s*=/,
+  "boot-sequence must not assign dataset.theme directly (U3 single writer)",
+);
 
 const themeCss = read("src/app/styles/theme.css");
 assert.match(themeCss, /html\[data-theme="dark"\]/);
