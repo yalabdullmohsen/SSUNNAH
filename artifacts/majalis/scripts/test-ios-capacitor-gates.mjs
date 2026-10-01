@@ -132,8 +132,13 @@ const live = readFileSync(
   join(iosApp, "PrayerLiveActivity", "PrayerLiveActivityLiveActivity.swift"),
   "utf8",
 );
+const prayerDeepLink = readFileSync(join(iosApp, "Shared", "SunnahPrayerDeepLink.swift"), "utf8");
 ok(
-  live.includes("https://www.ssunnah.com/prayer-times"),
+  prayerDeepLink.includes("https://www.ssunnah.com/prayer-times"),
+  "shared SunnahPrayerDeepLink uses https universal link on www.ssunnah.com",
+);
+ok(
+  live.includes("SunnahPrayerDeepLink.prayerTimes") || live.includes("https://www.ssunnah.com/prayer-times"),
   "Live Activity widgetURL uses https universal link on www.ssunnah.com",
 );
 
@@ -481,6 +486,21 @@ ok(
   livePlugin.includes("SunnahSharedStore.publishLiveActivityState"),
   "PrayerLiveActivityPlugin mirrors state into App Group",
 );
+ok(livePlugin.includes("syncFromSharedSnapshot"), "LA plugin can sync from App Group snapshot");
+ok(!/URLSession/i.test(livePlugin), "LA plugin has no network requests");
+const liveUi = readFileSync(join(iosApp, "PrayerLiveActivity", "PrayerLiveActivityLiveActivity.swift"), "utf8");
+ok(/compactLeading/.test(liveUi) && /compactTrailing/.test(liveUi), "Dynamic Island compact regions present");
+ok(/minimal:/.test(liveUi), "Dynamic Island minimal present");
+ok(liveUi.includes("SunnahPrayerDeepLink.prayerTimes"), "LA uses shared prayer deep link");
+ok(liveUi.includes("widgetURL"), "LA attaches widgetURL");
+const liveAttrs = readFileSync(join(iosApp, "App", "PrayerActivityAttributes.swift"), "utf8");
+ok(
+  /case upcoming/.test(liveAttrs) &&
+    /case active/.test(liveAttrs) &&
+    /case completed/.test(liveAttrs) &&
+    /case appLaunch/.test(liveAttrs),
+  "LA ContentState phases upcoming/active/completed/appLaunch",
+);
 if (existsSync(widgetMain)) {
   const w = readFileSync(widgetMain, "utf8");
   ok(w.includes("systemSmall") && w.includes("accessoryInline"), "widget supports home + lock families");
@@ -489,7 +509,10 @@ if (existsSync(widgetMain)) {
   const entry = readFileSync(entryPath, "utf8");
   ok(entry.includes("SunnahSharedStore.loadPrayer"), "widget timeline reads App Group prayer snapshot");
   ok(!/URLSession|http:\/\/|https:\/\/api/i.test(entry), "widget timeline has no API calls");
-  ok(entry.includes("www.ssunnah.com/prayer-times"), "widget deep link to prayer screen");
+  ok(
+    entry.includes("SunnahPrayerDeepLink") || entry.includes("www.ssunnah.com/prayer-times"),
+    "widget deep link to prayer screen",
+  );
   const views = readFileSync(join(iosApp, "PrayerWidget", "PrayerWidgetViews.swift"), "utf8");
   ok(views.includes("widgetURL"), "views attach widgetURL");
   ok(views.includes("accessibilityLabel"), "VoiceOver labels present");

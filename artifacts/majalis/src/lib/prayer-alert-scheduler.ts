@@ -36,7 +36,13 @@ import {
   hashPrayerNotificationId,
   type PrayerNotifIdKind,
 } from "./prayer-notification-ids";
-import { startPrayerLiveActivity, markPrayerLiveActivityEntered, endPrayerLiveActivity } from "./plugins/prayer-live-activity";
+import {
+  startPrayerLiveActivity,
+  markPrayerLiveActivityEntered,
+  markPrayerLiveActivityCompleted,
+  endPrayerLiveActivity,
+  presentPrayerLiveActivityAppLaunch,
+} from "./plugins/prayer-live-activity";
 import { publishSharedPrayerSnapshot } from "./plugins/sunnah-shared-data";
 import type { PrayerSoundProfile } from "./prayer-notification-sounds";
 import { PRAYER_ALERT_EVENT_NAME, type PrayerAlertEvent } from "./prayer-alert-events";
@@ -160,17 +166,41 @@ async function fireLiveActivityStart(slot: PrayerSlot, prayerEpoch: number, loca
     prayerName: KEY_TO_ARABIC[slot.key] ?? slot.name,
     prayerTimeIso: new Date(prayerEpoch).toISOString(),
     locationLabel,
+    phase: "upcoming",
+    statusLabel: "قادمة",
   });
   if (started) _liveActivityActiveForKey = slot.key;
 }
 
-async function fireLiveActivityEnter() {
+/** بعد نافذة active: completed (الصلاة التالية من الجدول) ثم إنهاء — بلا إعادة حساب مواقيت. */
+async function fireLiveActivityEnter(
+  current: PrayerSlot,
+  following: { slot: PrayerSlot; epoch: number } | null,
+  locationLabel?: string,
+) {
   const prefs = loadPrayerAlertPrefs();
   if (!prefs.liveActivitiesEnabled) return;
   await markPrayerLiveActivityEntered();
   const t = setTimeout(() => {
-    endPrayerLiveActivity();
-    _liveActivityActiveForKey = null;
+    void (async () => {
+      if (following) {
+        await markPrayerLiveActivityCompleted({
+          completedPrayerName: KEY_TO_ARABIC[current.key] ?? current.name,
+          nextPrayerKey: following.slot.key.toLowerCase(),
+          nextPrayerName: KEY_TO_ARABIC[following.slot.key] ?? following.slot.name,
+          nextPrayerTimeIso: new Date(following.epoch).toISOString(),
+          locationLabel,
+        });
+        const t2 = setTimeout(() => {
+          void endPrayerLiveActivity();
+          _liveActivityActiveForKey = null;
+        }, Math.min(LIVE_ACTIVITY_LINGER_MINUTES, 3) * 60_000);
+        _timers.push(t2);
+      } else {
+        void endPrayerLiveActivity();
+        _liveActivityActiveForKey = null;
+      }
+    })();
   }, LIVE_ACTIVITY_LINGER_MINUTES * 60_000);
   _timers.push(t);
 }
@@ -386,14 +416,22 @@ export async function startPrayerAlertScheduler(
     }
   }
 
-  const next =
-    slots.find((s) => resolveSlotAlertOpts(s.slot.key, prefs).prayerEnabled)?.slot ?? null;
-  if (!next) return;
+  const enabledSlots = slots.filter((s) => resolveSlotAlertOpts(s.slot.key, prefs).prayerEnabled);
+  const next = enabledSlots[0]?.slot ?? null;
+  if (!next) {
+    if (prefs.liveActivitiesEnabled && isNative && isIOS) {
+      void presentPrayerLiveActivityAppLaunch(payload.city);
+    }
+    return;
+  }
 
   const prayerEpoch = epochForSlot(next, tz);
   const prayerName = KEY_TO_ARABIC[next.key] ?? next.name;
   const prayerKey = next.key.toLowerCase();
-  /* App Group snapshot — غير سرّي؛ يغذّي LA الحالي وWidget/Watch لاحقاً */
+  const following =
+    enabledSlots.find((s) => s.epoch > prayerEpoch) ??
+    null;
+  /* App Group snapshot — غير سرّي؛ يغذّي LA / Widget / Watch */
   if (isNative && isIOS) {
     const timesEpochMs: Record<string, number> = {};
     for (const { slot, epoch } of slots) {
@@ -448,7 +486,11 @@ export async function startPrayerAlertScheduler(
         });
       });
       dispatchAlert({ ...fireEvent, type: "entered" });
-      void fireLiveActivityEnter();
+      void fireLiveActivityEnter(
+        next,
+        following ? { slot: following.slot, epoch: following.epoch } : null,
+        payload.city,
+      );
       _lastScheduleSig = null;
       import("./prayer-times").then(({ fetchPrayerTimes }) => {
         fetchPrayerTimes().then((p) => startPrayerAlertScheduler(p));

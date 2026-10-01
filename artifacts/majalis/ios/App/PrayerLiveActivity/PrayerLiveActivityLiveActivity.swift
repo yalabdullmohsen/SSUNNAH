@@ -2,8 +2,8 @@ import ActivityKit
 import WidgetKit
 import SwiftUI
 
-/// ألوان هوية سُنّة — من Shared/SunnahBrandColors (لا ثيم منفصل).
-private typealias MajalisColor = SunnahBrandColors
+/// ألوان هوية سُنّة — Shared/SunnahBrandColors (لا ثيم Live Activity منفصل).
+private typealias Brand = SunnahBrandColors
 
 private func prayerSymbol(for key: String) -> String {
     switch key.lowercased() {
@@ -16,80 +16,192 @@ private func prayerSymbol(for key: String) -> String {
     }
 }
 
-struct PrayerLiveActivityWidget: Widget {
-    var body: some WidgetConfiguration {
-        ActivityConfiguration(for: PrayerActivityAttributes.self) { context in
-            // ── شاشة القفل ──
-            LockScreenPrayerView(attributes: context.attributes, state: context.state)
-                .activityBackgroundTint(MajalisColor.emeraldDark)
-                .activitySystemActionForegroundColor(.white)
-        } dynamicIsland: { context in
-            DynamicIsland {
-                DynamicIslandExpandedRegion(.leading) {
-                    Image(systemName: prayerSymbol(for: context.attributes.prayerKey))
-                        .font(.title3)
-                        .foregroundStyle(MajalisColor.gold)
-                }
-                DynamicIslandExpandedRegion(.trailing) {
-                    if context.state.hasStarted {
-                        Text("الآن")
-                            .font(.headline)
-                            .foregroundStyle(.white)
-                    } else {
-                        Text(timerInterval: Date.now...context.state.prayerTime, countsDown: true)
-                            .font(.headline.monospacedDigit())
-                            .foregroundStyle(.white)
-                            .frame(maxWidth: 64)
-                    }
-                }
-                DynamicIslandExpandedRegion(.center) {
-                    Text(context.state.prayerName)
-                        .font(.subheadline.bold())
-                        .foregroundStyle(.white)
-                }
-                DynamicIslandExpandedRegion(.bottom) {
-                    HStack {
-                        Text(context.state.hasStarted
-                             ? "حان الآن وقت صلاة \(context.state.prayerName)"
-                             : "أذان \(context.state.prayerName) — \(context.state.prayerTime.formatted(date: .omitted, time: .shortened))")
-                            .font(.caption)
-                            .foregroundStyle(.white.opacity(0.85))
-                        Spacer()
-                        if !context.state.locationLabel.isEmpty {
-                            Text(context.state.locationLabel)
-                                .font(.caption2)
-                                .foregroundStyle(.white.opacity(0.6))
-                        }
-                    }
-                }
-            } compactLeading: {
-                Image(systemName: prayerSymbol(for: context.attributes.prayerKey))
-                    .foregroundStyle(MajalisColor.gold)
-            } compactTrailing: {
-                if context.state.hasStarted {
-                    Text("الآن")
-                        .font(.caption2.bold())
-                        .foregroundStyle(.white)
-                } else {
-                    Text(timerInterval: Date.now...context.state.prayerTime, countsDown: true)
-                        .font(.caption2.monospacedDigit())
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: 44)
-                }
-            } minimal: {
-                Image(systemName: prayerSymbol(for: context.attributes.prayerKey))
-                    .foregroundStyle(MajalisColor.gold)
-            }
-            // Universal Link — opens app via associated domains (applinks:www.ssunnah.com).
-            // Prefer https over custom scheme so CapApp appUrlOpen always gets a pathname.
-            .widgetURL(URL(string: "https://www.ssunnah.com/prayer-times"))
-            .keylineTint(MajalisColor.emerald)
-        }
+private func symbolKey(attributes: PrayerActivityAttributes, state: PrayerActivityAttributes.ContentState) -> String {
+    switch state.phase {
+    case .completed:
+        return state.nextPrayerKey ?? attributes.prayerKey
+    case .appLaunch:
+        return "launch"
+    default:
+        return attributes.prayerKey
     }
 }
 
-/// بطاقة شاشة القفل — واضحة في الوضعين الفاتح والداكن (خلفية داكنة ثابتة
-/// عبر activityBackgroundTint، فلا تتأثر بوضع النظام، مطابقة لهوية سُنّة).
+struct PrayerLiveActivityWidget: Widget {
+    var body: some WidgetConfiguration {
+        ActivityConfiguration(for: PrayerActivityAttributes.self) { context in
+            LockScreenPrayerView(attributes: context.attributes, state: context.state)
+                .activityBackgroundTint(Brand.emeraldDark)
+                .activitySystemActionForegroundColor(.white)
+                .widgetURL(SunnahPrayerDeepLink.prayerTimes)
+        } dynamicIsland: { context in
+            let state = context.state
+            let attrs = context.attributes
+            let key = symbolKey(attributes: attrs, state: state)
+
+            return DynamicIsland {
+                DynamicIslandExpandedRegion(.leading) {
+                    Image(systemName: prayerSymbol(for: key))
+                        .font(.title3)
+                        .foregroundStyle(Brand.gold)
+                        .accessibilityLabel(expandedA11yTitle(state: state))
+                }
+                DynamicIslandExpandedRegion(.trailing) {
+                    trailingExpanded(state: state)
+                }
+                DynamicIslandExpandedRegion(.center) {
+                    Text(centerTitle(state: state))
+                        .font(.subheadline.bold())
+                        .foregroundStyle(.white)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
+                }
+                DynamicIslandExpandedRegion(.bottom) {
+                    bottomExpanded(state: state)
+                }
+            } compactLeading: {
+                Image(systemName: prayerSymbol(for: key))
+                    .foregroundStyle(Brand.gold)
+                    .accessibilityLabel(compactA11y(state: state))
+            } compactTrailing: {
+                compactTrailing(state: state)
+            } minimal: {
+                Image(systemName: prayerSymbol(for: key))
+                    .foregroundStyle(Brand.gold)
+                    .accessibilityLabel(compactA11y(state: state))
+            }
+            .widgetURL(SunnahPrayerDeepLink.prayerTimes)
+            .keylineTint(Brand.emerald)
+        }
+    }
+
+    @ViewBuilder
+    private func trailingExpanded(state: PrayerActivityAttributes.ContentState) -> some View {
+        switch state.phase {
+        case .upcoming:
+            Text(timerInterval: Date.now...state.prayerTime, countsDown: true)
+                .font(.headline.monospacedDigit())
+                .foregroundStyle(.white)
+                .frame(maxWidth: 72)
+                .accessibilityLabel("العد التنازلي للصلاة القادمة")
+        case .active:
+            Text(state.statusLabel)
+                .font(.headline)
+                .foregroundStyle(Brand.gold)
+                .accessibilityLabel(state.statusLabel)
+        case .completed:
+            if let end = state.nextPrayerTime, end > Date() {
+                Text(timerInterval: Date.now...end, countsDown: true)
+                    .font(.headline.monospacedDigit())
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: 72)
+                    .accessibilityLabel("العد التنازلي للصلاة التالية")
+            } else {
+                Text(state.statusLabel)
+                    .font(.headline)
+                    .foregroundStyle(.white)
+            }
+        case .appLaunch:
+            Image(systemName: "arrow.up.forward.app")
+                .foregroundStyle(Brand.gold)
+                .accessibilityLabel("افتح مواقيت الصلاة")
+        }
+    }
+
+    @ViewBuilder
+    private func compactTrailing(state: PrayerActivityAttributes.ContentState) -> some View {
+        switch state.phase {
+        case .upcoming:
+            Text(timerInterval: Date.now...state.prayerTime, countsDown: true)
+                .font(.caption2.monospacedDigit())
+                .foregroundStyle(.white)
+                .frame(maxWidth: 44)
+                .accessibilityLabel("العد التنازلي")
+        case .active:
+            Text("الآن")
+                .font(.caption2.bold())
+                .foregroundStyle(Brand.gold)
+                .accessibilityLabel("حان الآن")
+        case .completed:
+            if let end = state.nextPrayerTime, end > Date() {
+                Text(timerInterval: Date.now...end, countsDown: true)
+                    .font(.caption2.monospacedDigit())
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: 44)
+            } else {
+                Text("✓")
+                    .font(.caption2.bold())
+                    .foregroundStyle(Brand.gold)
+            }
+        case .appLaunch:
+            Text("افتح")
+                .font(.caption2.bold())
+                .foregroundStyle(Brand.gold)
+                .accessibilityLabel("افتح مواقيت الصلاة")
+        }
+    }
+
+    private func centerTitle(state: PrayerActivityAttributes.ContentState) -> String {
+        switch state.phase {
+        case .upcoming, .active:
+            return state.prayerName
+        case .completed:
+            return state.nextPrayerName ?? state.prayerName
+        case .appLaunch:
+            return "سُنّة"
+        }
+    }
+
+    @ViewBuilder
+    private func bottomExpanded(state: PrayerActivityAttributes.ContentState) -> some View {
+        HStack {
+            Text(bottomCopy(state: state))
+                .font(.caption)
+                .foregroundStyle(.white.opacity(0.85))
+                .lineLimit(2)
+                .minimumScaleFactor(0.85)
+            Spacer()
+            if !state.locationLabel.isEmpty && state.phase != .appLaunch {
+                Text(state.locationLabel)
+                    .font(.caption2)
+                    .foregroundStyle(.white.opacity(0.6))
+                    .lineLimit(1)
+            }
+        }
+        .environment(\.layoutDirection, .rightToLeft)
+        .environment(\.locale, Locale(identifier: "ar"))
+    }
+
+    private func bottomCopy(state: PrayerActivityAttributes.ContentState) -> String {
+        switch state.phase {
+        case .upcoming:
+            return "أذان \(state.prayerName) — \(state.prayerTime.formatted(date: .omitted, time: .shortened))"
+        case .active:
+            return "\(state.statusLabel) · صلاة \(state.prayerName)"
+        case .completed:
+            if let next = state.nextPrayerName {
+                return "اكتملت \(state.prayerName) · التالية \(next)"
+            }
+            return "اكتملت صلاة \(state.prayerName)"
+        case .appLaunch:
+            return "افتح مواقيت الصلاة"
+        }
+    }
+
+    private func expandedA11yTitle(state: PrayerActivityAttributes.ContentState) -> String {
+        switch state.phase {
+        case .upcoming: return "الصلاة القادمة \(state.prayerName)"
+        case .active: return "الصلاة الحالية \(state.prayerName)"
+        case .completed: return "الصلاة التالية \(state.nextPrayerName ?? "")"
+        case .appLaunch: return "افتح مواقيت الصلاة"
+        }
+    }
+
+    private func compactA11y(state: PrayerActivityAttributes.ContentState) -> String {
+        expandedA11yTitle(state: state)
+    }
+}
+
 private struct LockScreenPrayerView: View {
     let attributes: PrayerActivityAttributes
     let state: PrayerActivityAttributes.ContentState
@@ -98,44 +210,109 @@ private struct LockScreenPrayerView: View {
         HStack(spacing: 14) {
             ZStack {
                 Circle()
-                    .fill(MajalisColor.emerald.opacity(0.35))
+                    .fill(Brand.emerald.opacity(0.35))
                     .frame(width: 44, height: 44)
-                Image(systemName: prayerSymbol(for: attributes.prayerKey))
+                Image(systemName: prayerSymbol(for: symbolKey(attributes: attributes, state: state)))
                     .font(.title3)
-                    .foregroundStyle(MajalisColor.gold)
+                    .foregroundStyle(Brand.gold)
             }
 
             VStack(alignment: .leading, spacing: 3) {
-                Text(state.hasStarted ? "حان الآن وقت صلاة \(state.prayerName)" : "صلاة \(state.prayerName) القادمة")
+                Text(lockTitle)
                     .font(.subheadline.bold())
                     .foregroundStyle(.white)
-                    .lineLimit(1)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.85)
+                    .accessibilityLabel(lockTitle)
 
                 HStack(spacing: 6) {
-                    Text(state.prayerTime.formatted(date: .omitted, time: .shortened))
-                        .font(.caption)
-                        .foregroundStyle(.white.opacity(0.75))
-                    if !state.locationLabel.isEmpty {
+                    Text(state.statusLabel)
+                        .font(.caption.bold())
+                        .foregroundStyle(Brand.gold)
+                    if state.phase != .appLaunch {
+                        Text(lockTimeText)
+                            .font(.caption)
+                            .foregroundStyle(.white.opacity(0.75))
+                    }
+                    if !state.locationLabel.isEmpty && state.phase != .appLaunch {
                         Text("•")
                             .foregroundStyle(.white.opacity(0.4))
                         Text(state.locationLabel)
                             .font(.caption)
                             .foregroundStyle(.white.opacity(0.75))
+                            .lineLimit(1)
                     }
                 }
             }
 
             Spacer(minLength: 8)
 
-            if !state.hasStarted {
-                Text(timerInterval: Date.now...state.prayerTime, countsDown: true)
-                    .font(.title3.monospacedDigit().bold())
-                    .foregroundStyle(.white)
-                    .frame(minWidth: 64, alignment: .trailing)
-            }
+            lockTrailing
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
         .environment(\.layoutDirection, .rightToLeft)
+        .environment(\.locale, Locale(identifier: "ar"))
+    }
+
+    private var lockTitle: String {
+        switch state.phase {
+        case .upcoming:
+            return "صلاة \(state.prayerName) القادمة"
+        case .active:
+            return "صلاة \(state.prayerName) · \(state.statusLabel)"
+        case .completed:
+            if let next = state.nextPrayerName {
+                return "التالية: \(next)"
+            }
+            return "اكتملت صلاة \(state.prayerName)"
+        case .appLaunch:
+            return "افتح مواقيت الصلاة"
+        }
+    }
+
+    private var lockTimeText: String {
+        switch state.phase {
+        case .completed:
+            if let t = state.nextPrayerTime {
+                return t.formatted(date: .omitted, time: .shortened)
+            }
+            return state.prayerTime.formatted(date: .omitted, time: .shortened)
+        default:
+            return state.prayerTime.formatted(date: .omitted, time: .shortened)
+        }
+    }
+
+    @ViewBuilder
+    private var lockTrailing: some View {
+        switch state.phase {
+        case .upcoming:
+            Text(timerInterval: Date.now...state.prayerTime, countsDown: true)
+                .font(.title3.monospacedDigit().bold())
+                .foregroundStyle(.white)
+                .frame(minWidth: 64, alignment: .trailing)
+                .accessibilityLabel("العد التنازلي")
+        case .active:
+            Text(state.statusLabel)
+                .font(.subheadline.bold())
+                .foregroundStyle(Brand.gold)
+        case .completed:
+            if let end = state.nextPrayerTime, end > Date() {
+                Text(timerInterval: Date.now...end, countsDown: true)
+                    .font(.title3.monospacedDigit().bold())
+                    .foregroundStyle(.white)
+                    .frame(minWidth: 64, alignment: .trailing)
+                    .accessibilityLabel("العد التنازلي للصلاة التالية")
+            } else {
+                Text(state.statusLabel)
+                    .font(.subheadline.bold())
+                    .foregroundStyle(Brand.gold)
+            }
+        case .appLaunch:
+            Image(systemName: "arrow.up.forward.app.fill")
+                .font(.title3)
+                .foregroundStyle(Brand.gold)
+                .accessibilityLabel("افتح مواقيت الصلاة")
+        }
     }
 }

@@ -35,7 +35,7 @@
 | Associated Domains | debug + release entitlements | `www.ssunnah.com`, `ssunnah.com`, `majlisilm.com`, `www.majlisilm.com` |
 | Push (`aps-environment`) | debug=`development` · release=`production` | Signing/provision = OWNER |
 | Background modes | `audio`, `remote-notification` | Info.plist |
-| Live Activities | `NSSupportsLiveActivities=true` + LA target | Prayer countdown only |
+| Live Activities | `NSSupportsLiveActivities=true` + LA target | T-031 · 4 phases + DI · `PRAYER_LIVE_ACTIVITY_CERTIFIED` |
 | Location When-In-Use | Usage string present | Qibla; coarse in PrivacyInfo |
 | Motion | Usage string present | Qibla compass |
 | Microphone / Speech | **Absent** from Info.plist | AI recitation removed |

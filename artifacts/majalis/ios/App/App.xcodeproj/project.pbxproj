@@ -62,6 +62,10 @@
 		A029BF06BRANDLA /* SunnahBrandColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A029FR06BRANDCOLOR /* SunnahBrandColors.swift */; };
 		A029BF07BRANDWGT /* SunnahBrandColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A029FR06BRANDCOLOR /* SunnahBrandColors.swift */; };
 		A029BF08EMBEDWGT /* PrayerWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A029FR07WIDGETAPPEX /* PrayerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+
+		A031BF01DEEPAPP /* SunnahPrayerDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A031FR01DEEPLINK /* SunnahPrayerDeepLink.swift */; };
+		A031BF02DEEPLA /* SunnahPrayerDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A031FR01DEEPLINK /* SunnahPrayerDeepLink.swift */; };
+		A031BF03DEEPWGT /* SunnahPrayerDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A031FR01DEEPLINK /* SunnahPrayerDeepLink.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +161,8 @@
 		A029FR06BRANDCOLOR /* SunnahBrandColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahBrandColors.swift; sourceTree = "<group>"; };
 		A029FR07WIDGETAPPEX /* PrayerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PrayerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A029FR08WIDGETENT /* PrayerWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrayerWidget.entitlements; sourceTree = "<group>"; };
+
+		A031FR01DEEPLINK /* SunnahPrayerDeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahPrayerDeepLink.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +295,7 @@
 			children = (
 				A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */,
 				A029FR06BRANDCOLOR /* SunnahBrandColors.swift */,
+				A031FR01DEEPLINK /* SunnahPrayerDeepLink.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -491,6 +498,7 @@
 				B40A70BD645B44F885C91A9B /* PrayerActivityAttributes.swift in Sources */,
 				EFBF4693BAFB4F5B82254F8C /* PrayerLiveActivityPlugin.swift in Sources */,
 				A0280002SHAREDDATAAPP01 /* SunnahSharedData.swift in Sources */,
+				A031BF01DEEPAPP /* SunnahPrayerDeepLink.swift in Sources */,
 				A0280005SHAREDPLUGINAPP /* SunnahSharedDataPlugin.swift in Sources */,
 				B2C3D4E5F6071890AB12CD01 /* MajlisPlaybackAudioPlugin.swift in Sources */,
 				C1D2E3F4A5B6071890AB12CD01 /* MajlisOfflineAudioPlugin.swift in Sources */,
@@ -503,6 +511,7 @@
 			files = (
 				A0280003SHAREDDATALA01 /* SunnahSharedData.swift in Sources */,
 				A029BF06BRANDLA /* SunnahBrandColors.swift in Sources */,
+				A031BF02DEEPLA /* SunnahPrayerDeepLink.swift in Sources */,
 				18A062D2627A492F88C48C0A /* PrayerActivityAttributes.swift in Sources */,
 				05B0407FBEE74C08BAD75898 /* PrayerLiveActivityBundle.swift in Sources */,
 				364D1D47522246B3A2925CB0 /* PrayerLiveActivityLiveActivity.swift in Sources */,
@@ -516,6 +525,7 @@
 			files = (
 				A029BF05SHAREDWGT /* SunnahSharedData.swift in Sources */,
 				A029BF07BRANDWGT /* SunnahBrandColors.swift in Sources */,
+				A031BF03DEEPWGT /* SunnahPrayerDeepLink.swift in Sources */,
 				A029BF01WIDGETBUNDLE /* PrayerWidgetBundle.swift in Sources */,
 				A029BF02WIDGETENTRY /* PrayerWidgetEntry.swift in Sources */,
 				A029BF03WIDGETVIEWS /* PrayerWidgetViews.swift in Sources */,

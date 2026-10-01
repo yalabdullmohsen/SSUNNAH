@@ -1,37 +1,48 @@
 /**
- * واجهة JS لـ Live Activity الصلاة القادمة (iOS 16.2+ فقط، عبر ActivityKit).
- * التنفيذ الفعلي في ios/App/App/PrayerLiveActivityPlugin.swift.
- * على الويب/أندرويد أو iOS < 16.2: كل الدوال تُرجع { supported: false } بأمان،
- * بلا أي خطأ — الشريط داخل التطبيق + الإشعار المحلي هما البديل الكامل هناك.
+ * واجهة JS لـ Live Activity الصلاة (iOS 16.2+ / ActivityKit).
+ * الحالات: upcoming · active · completed · appLaunch
+ * التنفيذ: ios/App/App/PrayerLiveActivityPlugin.swift
  */
 import { registerPlugin } from "@capacitor/core";
 import { isIOS, isNative } from "@/lib/capacitor-utils";
 
+export type PrayerLivePhase = "upcoming" | "active" | "completed" | "appLaunch";
+
 export type PrayerLiveActivityStartOptions = {
-  /** مفتاح الصلاة: fajr | dhuhr | asr | maghrib | isha */
   prayerKey: string;
-  /** اسم الصلاة بالعربية، مثل "العصر" */
   prayerName: string;
-  /** الوقت الفعلي للصلاة (ISO 8601) */
   prayerTimeIso: string;
-  /** اسم المدينة/المحافظة المستخدمة في حساب الأوقات، للعرض في الحالة الموسّعة */
   locationLabel?: string;
+  phase?: PrayerLivePhase;
+  statusLabel?: string;
+  hasStarted?: boolean;
+  nextPrayerName?: string;
+  nextPrayerKey?: string;
+  nextPrayerTimeIso?: string;
+};
+
+export type PrayerLiveActivityUpdateOptions = {
+  phase?: PrayerLivePhase;
+  hasStarted?: boolean;
+  statusLabel?: string;
+  prayerName?: string;
+  prayerTimeIso?: string;
+  locationLabel?: string;
+  nextPrayerName?: string;
+  nextPrayerKey?: string;
+  nextPrayerTimeIso?: string;
 };
 
 interface PrayerLiveActivityPlugin {
-  /** هل الجهاز/الإصدار يدعم Live Activities؟ */
   areActivitiesSupported(): Promise<{ supported: boolean }>;
-  /** ابدأ Live Activity جديدة للصلاة القادمة (تُنهي أي نشاط سابق أولاً — نشاط واحد كحد أقصى). */
-  startActivity(options: PrayerLiveActivityStartOptions): Promise<{ started: boolean }>;
-  /** حدّث النشاط الحالي (يُستخدَم عند دخول وقت الصلاة لتغيير النص). */
-  updateActivity(options: { hasStarted: boolean }): Promise<{ updated: boolean }>;
-  /** أنهِ النشاط الحالي فوراً (أو دعه ينتهي تلقائياً بعد المهلة المحددة عند الجدولة). */
+  startActivity(options: PrayerLiveActivityStartOptions | { phase: "appLaunch"; locationLabel?: string }): Promise<{ started: boolean }>;
+  updateActivity(options: PrayerLiveActivityUpdateOptions): Promise<{ updated: boolean; phase?: string }>;
   endActivity(): Promise<{ ended: boolean }>;
+  syncFromSharedSnapshot(): Promise<{ synced: boolean; phase?: string }>;
 }
 
-const NOOP_RESULT = { supported: false, started: false, updated: false, ended: false };
+const NOOP = { supported: false, started: false, updated: false, ended: false, synced: false };
 
-/** واجهة آمنة: على غير iOS الأصلي تُرجع نتائج "لا دعم" بلا استدعاء الإضافة أصلاً. */
 function getPlugin(): PrayerLiveActivityPlugin | null {
   if (!isNative || !isIOS) return null;
   return registerPlugin<PrayerLiveActivityPlugin>("PrayerLiveActivity");
@@ -41,8 +52,7 @@ export async function areLiveActivitiesSupported(): Promise<boolean> {
   const plugin = getPlugin();
   if (!plugin) return false;
   try {
-    const res = await plugin.areActivitiesSupported();
-    return res.supported;
+    return Boolean((await plugin.areActivitiesSupported()).supported);
   } catch {
     return false;
   }
@@ -50,32 +60,83 @@ export async function areLiveActivitiesSupported(): Promise<boolean> {
 
 export async function startPrayerLiveActivity(options: PrayerLiveActivityStartOptions): Promise<boolean> {
   const plugin = getPlugin();
-  if (!plugin) return NOOP_RESULT.started;
+  if (!plugin) return NOOP.started;
   try {
-    const res = await plugin.startActivity(options);
-    return res.started;
+    const res = await plugin.startActivity({
+      ...options,
+      phase: options.phase ?? "upcoming",
+    });
+    return Boolean(res.started);
+  } catch {
+    return false;
+  }
+}
+
+/** حالة دعوة فتح شاشة المواقيت عند غياب الجدول. */
+export async function presentPrayerLiveActivityAppLaunch(locationLabel?: string): Promise<boolean> {
+  const plugin = getPlugin();
+  if (!plugin) return NOOP.started;
+  try {
+    const res = await plugin.startActivity({ phase: "appLaunch", locationLabel });
+    return Boolean(res.started);
+  } catch {
+    return false;
+  }
+}
+
+export async function updatePrayerLiveActivity(options: PrayerLiveActivityUpdateOptions): Promise<boolean> {
+  const plugin = getPlugin();
+  if (!plugin) return NOOP.updated;
+  try {
+    const res = await plugin.updateActivity(options);
+    return Boolean(res.updated);
   } catch {
     return false;
   }
 }
 
 export async function markPrayerLiveActivityEntered(): Promise<boolean> {
+  return updatePrayerLiveActivity({
+    phase: "active",
+    hasStarted: true,
+    statusLabel: "حان الآن",
+  });
+}
+
+export async function markPrayerLiveActivityCompleted(options: {
+  completedPrayerName?: string;
+  nextPrayerKey: string;
+  nextPrayerName: string;
+  nextPrayerTimeIso: string;
+  locationLabel?: string;
+}): Promise<boolean> {
+  return updatePrayerLiveActivity({
+    phase: "completed",
+    hasStarted: true,
+    statusLabel: "اكتملت",
+    prayerName: options.completedPrayerName,
+    nextPrayerKey: options.nextPrayerKey,
+    nextPrayerName: options.nextPrayerName,
+    nextPrayerTimeIso: options.nextPrayerTimeIso,
+    locationLabel: options.locationLabel,
+  });
+}
+
+export async function endPrayerLiveActivity(): Promise<boolean> {
   const plugin = getPlugin();
-  if (!plugin) return NOOP_RESULT.updated;
+  if (!plugin) return NOOP.ended;
   try {
-    const res = await plugin.updateActivity({ hasStarted: true });
-    return res.updated;
+    return Boolean((await plugin.endActivity()).ended);
   } catch {
     return false;
   }
 }
 
-export async function endPrayerLiveActivity(): Promise<boolean> {
+export async function syncPrayerLiveActivityFromAppGroup(): Promise<boolean> {
   const plugin = getPlugin();
-  if (!plugin) return NOOP_RESULT.ended;
+  if (!plugin) return NOOP.synced;
   try {
-    const res = await plugin.endActivity();
-    return res.ended;
+    return Boolean((await plugin.syncFromSharedSnapshot()).synced);
   } catch {
     return false;
   }
