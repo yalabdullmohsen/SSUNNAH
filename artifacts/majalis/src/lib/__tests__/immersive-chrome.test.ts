@@ -148,3 +148,16 @@ import "./format-lesson-appointment.test.ts";
 
 assert.equal(hasInPageBackChrome("/adhan-settings"), true, "إعدادات الأذان تستخدم رجوعًا داخليًا");
 assert.equal(hasInPageBackChrome("/notification-settings"), true);
+assert.equal(hasInPageBackChrome("/quran-hub"), true, "لوبي القرآن — رجوع داخلي");
+assert.equal(hasInPageBackChrome("/lessons"), true, "لوبي الدروس — رجوع داخلي");
+assert.equal(hasInPageBackChrome("/sections"), true, "المزيد/الأقسام — رجوع داخلي");
+assert.equal(hasInPageBackChrome("/sources"), true, "دليل المصادر — لوبي");
+assert.equal(hasInPageBackChrome("/competitions"), true, "المسابقات — لوبي");
+assert.equal(
+  hasInPageBackChrome("/fiqh/books/x/lessons/y"),
+  true,
+  "درس فقه — AppBack مثبت",
+);
+assert.equal(hasInPageBackChrome("/fiqh"), false, "لوبي الفقه بلا AppBack — Floating");
+assert.equal(hasInPageBackChrome("/quran-hub/tajweed"), false, "فرعي قرآن بلا لوبي — Floating");
+assert.equal(hasInPageBackChrome("/support"), false, "الدعم بلا AppBack داخلي");
