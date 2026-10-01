@@ -1,7 +1,7 @@
 /**
  * Unit gates for notification hardening (schedule signatures, constants, platform split).
  */
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import assert from "node:assert/strict";
@@ -108,9 +108,8 @@ console.log("  ✓ channel + test trigger constants");
   assert.match(channelsSrc, /تذكيرات عامة/, "general channel renamed");
   const plist = read("ios/App/App/Info.plist");
   assert.match(plist, /<key>CFBundleDisplayName<\/key>\s*<string>سُنّة<\/string>/, "iOS display name سُنّة");
-  const androidName = read("android/app/src/main/res/values/strings.xml");
-  assert.match(androidName, /<string name="app_name">سُنّة<\/string>/, "Android app_name سُنّة");
-  console.log("  ✓ native + channel identity is سُنّة");
+  assert.equal(existsSync(join(root, "android")), false, "android/ retired");
+  console.log("  ✓ native + channel identity is سُنّة (iOS-only)");
 }
 
 // ── Source gates: native hides web push; presentationOptions; Capacitor push wired ──

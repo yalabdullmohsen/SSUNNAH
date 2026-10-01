@@ -57,22 +57,7 @@ for (const name of [
 }
 assert.equal(existsSync(join(fullDir, "adhan-madinah-full.m4a")), false);
 
-const androidRaw = join(root, "android/app/src/main/res/raw");
-for (const name of [
-  "adhan_short_makkah.mp3",
-  "adhan_short_egypt.mp3",
-  "adhan_short_aqsa.mp3",
-  "adhan_short_takbeerat.mp3",
-  "adhan_short_field.mp3",
-  "adhan_short_field_full.mp3",
-  "adhan_seq_makkah_01.mp3",
-  "adhan_seq_makkah_02.mp3",
-  "adhan_seq_makkah_03.mp3",
-  "adhan_seq_makkah_04.mp3",
-]) {
-  assert.ok(existsSync(join(androidRaw, name)), `missing android raw ${name}`);
-}
-assert.equal(existsSync(join(androidRaw, "adhan_short_madinah.mp3")), false);
+assert.equal(existsSync(join(root, "android")), false, "android/ retired — no raw checks");
 
 assert.equal(
   readFileSync(join(root, "ios/App/App/App.entitlements"), "utf8").includes(

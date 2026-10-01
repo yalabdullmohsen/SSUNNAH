@@ -44,8 +44,8 @@ assert.match(cap, /showSpinner:\s*false/);
 assert.match(cap, /launchShowDuration:\s*0/);
 assert.match(cap, /backgroundColor:\s*"#F7F3EB"/);
 
-const androidNight = readPkg("android/app/src/main/res/values-night/colors.xml");
-assert.match(androidNight, /splash_background">#101614</);
+/* Android night splash retired with android/ tree */
+assert.equal(existsSync(resolve(majalisRoot, "android")), false, "android/ retired");
 
 const info = readPkg("ios/App/App/Info.plist");
 assert.match(info, /UILaunchStoryboardName/);

@@ -33,11 +33,23 @@ for (const [name, cmd] of Object.entries(pkg.scripts || {})) {
 }
 
 const majalisPkg = JSON.parse(readFileSync(resolve(root, "artifacts/majalis/package.json"), "utf8"));
-for (const name of ["mobile:sync", "mobile:android", "mobile:ios"]) {
+for (const name of ["mobile:sync", "mobile:ios"]) {
   const cmd = majalisPkg.scripts?.[name] || "";
   ok(!/\bnpx\b/.test(cmd), `majalis ${name}: no npx`);
   ok(!/\bnpm\s+exec\b/.test(cmd), `majalis ${name}: no npm exec`);
 }
+ok(
+  /cap sync ios/.test(majalisPkg.scripts?.["mobile:sync"] || ""),
+  "majalis mobile:sync is iOS-only",
+);
+ok(
+  !/cap sync android/.test(majalisPkg.scripts?.["mobile:sync"] || ""),
+  "majalis mobile:sync must not sync android",
+);
+ok(
+  /Android retired/.test(majalisPkg.scripts?.["mobile:android"] || ""),
+  "majalis mobile:android is retired stub",
+);
 
 const prepare = readFileSync(resolve(root, "artifacts/majalis/scripts/prepare-ios.sh"), "utf8")
   .split("\n")

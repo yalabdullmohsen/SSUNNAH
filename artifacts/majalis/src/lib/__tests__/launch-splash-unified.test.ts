@@ -122,23 +122,8 @@ assert.match(capTs, /launchAutoHide:\s*false/, "إخفاء برمجي — لا �
 assert.match(capTs, /showSpinner:\s*false/, "بلا مؤشر تحميل أصلي");
 assert.match(capTs, new RegExp(`backgroundColor:\\s*"${BG}"`), "لون خلفية مطابق");
 
-const styles = readFileSync(resolve(root, "android/app/src/main/res/values/styles.xml"), "utf8");
-assert.match(styles, /Theme\.SplashScreen/);
-assert.match(styles, /windowSplashScreenBackground/);
-assert.match(styles, /@drawable\/splash_icon/);
-
-assert.ok(!existsSync(resolve(root, "android/app/src/main/res/drawable/splash.png")), "لا splash.png قديم");
-assert.ok(existsSync(resolve(root, "android/app/src/main/res/drawable/splash.xml")), "splash لون XML");
-assert.ok(existsSync(resolve(root, "android/app/src/main/res/drawable/splash_icon.xml")), "splash_icon");
-const splashIconXml = readFileSync(
-  resolve(root, "android/app/src/main/res/drawable/splash_icon.xml"),
-  "utf8",
-);
-assert.doesNotMatch(splashIconXml, /#C9A227/, "بلا نجمة ذهبية");
-assert.match(splashIconXml, new RegExp(BG), "خلفية الأيقونة = سطح");
-
-const colors = readFileSync(resolve(root, "android/app/src/main/res/values/colors.xml"), "utf8");
-assert.match(colors, new RegExp(`splash_background">${BG}<`));
+/* Android retired — لا فحوص styles/drawable تحت android/ */
+assert.equal(existsSync(resolve(root, "android")), false, "android/ retired");
 
 assert.ok(!existsSync(resolve(root, "ios/App/App/Assets.xcassets/Splash.imageset")), "لا Splash.imageset");
 assert.ok(!existsSync(resolve(root, "ios/App/App/Assets.xcassets/LaunchMark.imageset")), "لا LaunchMark قديم");

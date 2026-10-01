@@ -141,6 +141,5 @@ find "$ROOT/ios" -iname 'Default@*' -delete 2>/dev/null || true
 rm -f "$ROOT/assets/splash.png"
 python3 "$ROOT/scripts/generate-silent-splash-assets.py"
 
-echo "Done. Sync native projects if needed:"
+echo "Done. Sync iOS if needed:"
 echo "  pnpm exec cap sync ios"
-echo "  pnpm exec cap sync android"

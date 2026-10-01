@@ -17,7 +17,6 @@ const config: CapacitorConfig = {
       "www.majlisilm.com",
     ],
     cleartext: false,
-    androidScheme: "https",
   },
   plugins: {
     SplashScreen: {
@@ -26,8 +25,6 @@ const config: CapacitorConfig = {
       /* سطح الرئيسية — بلا خلفية خضراء قديمة ولا أيقونة دعائية */
       backgroundColor: "#F7F3EB",
       showSpinner: false,
-      androidSplashResourceName: "splash",
-      androidScaleType: "CENTER_CROP",
       splashImmersive: true,
       splashFullScreen: true,
     },
@@ -49,18 +46,6 @@ const config: CapacitorConfig = {
       // Foreground presentation for remote pushes (APNs/FCM)
       presentationOptions: ["badge", "sound", "banner", "list"],
     },
-  },
-  android: {
-    buildOptions: {
-      keystorePath: "majalisilm-release.keystore",
-      keystorePassword: "${KEYSTORE_PASSWORD}",
-      keystoreAlias: "majalisilm",
-      keystoreAliasPassword: "${KEYSTORE_ALIAS_PASSWORD}",
-      releaseType: "APK",
-    },
-    allowMixedContent: false,
-    captureInput: true,
-    webContentsDebuggingEnabled: false,
   },
   ios: {
     // Safe areas are owned by the shared CSS shell via env(safe-area-inset-*).

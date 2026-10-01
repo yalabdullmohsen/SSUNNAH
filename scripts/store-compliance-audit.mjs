@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Store compliance audit — فحص إرشادات App Store / Google Play (مرحلة 1).
+ * Store compliance audit — App Store (iOS-only). Google Play retired.
  * تشغيل: node scripts/store-compliance-audit.mjs
  */
 import { readFileSync, existsSync } from "node:fs";
@@ -35,18 +35,12 @@ if (existsSync(privacyPath)) {
   check("ios-privacy-no-tracking", "لا تتبع إعلاني", /NSPrivacyTracking/.test(xml) ? /false/.test(xml) : true);
 }
 
-// Android manifest
-const manifestPath = resolve(majalis, "android/app/src/main/AndroidManifest.xml");
-check("android-manifest", "AndroidManifest.xml موجود", existsSync(manifestPath));
-if (existsSync(manifestPath)) {
-  const manifest = read(manifestPath);
-  check("android-internet", "INTERNET مُعلَن", /INTERNET/.test(manifest));
-  check("android-location-disclosed", "LOCATION مُعلَن", /ACCESS_(FINE|COARSE)_LOCATION/.test(manifest));
-  check("android-mic-disclosed", "RECORD_AUDIO مُعلَن", /RECORD_AUDIO/.test(manifest));
-  check("android-notifications", "POST_NOTIFICATIONS مُعلَن", /POST_NOTIFICATIONS/.test(manifest));
-  check("android-exported-guard", "MainActivity exported فقط", !/android:exported="true"/.test(manifest.replace(/MainActivity[\s\S]*?exported="true"/, "")) || /MainActivity/.test(manifest));
-  check("android-receiver-not-exported", "AdhanAlarmReceiver غير exported", /AdhanAlarmReceiver[\s\S]*exported="false"/.test(manifest));
-}
+// Android retired — tree must be absent
+check(
+  "android-retired",
+  "مجلد android غير موجود (iOS-only)",
+  !existsSync(resolve(majalis, "android")),
+);
 
 // Web privacy / deletion
 const clearDataPath = resolve(majalis, "src/lib/clear-user-local-data.ts");

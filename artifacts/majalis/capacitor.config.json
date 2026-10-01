@@ -4,7 +4,6 @@
 	"webDir": "dist",
 	"server": {
 		"cleartext": false,
-		"androidScheme": "https",
 		"allowNavigation": [
 			"www.ssunnah.com",
 			"ssunnah.com",
@@ -20,8 +19,6 @@
 			"launchAutoHide": false,
 			"backgroundColor": "#F7F3EB",
 			"showSpinner": false,
-			"androidSplashResourceName": "splash",
-			"androidScaleType": "CENTER_CROP",
 			"splashImmersive": true,
 			"splashFullScreen": true
 		},
@@ -50,11 +47,6 @@
 				"list"
 			]
 		}
-	},
-	"android": {
-		"allowMixedContent": false,
-		"captureInput": true,
-		"webContentsDebuggingEnabled": false
 	},
 	"ios": {
 		"contentInset": "never",

@@ -233,9 +233,6 @@ importers:
       '@anthropic-ai/sdk':
         specifier: ^0.105.0
         version: 0.105.0(zod@3.25.76)
-      '@capacitor/android':
-        specifier: ^8.4.1
-        version: 8.4.1(@capacitor/core@8.4.1)
       '@capacitor/app':
         specifier: ^8.1.0
         version: 8.1.0(@capacitor/core@8.4.1)
@@ -1570,11 +1567,6 @@ packages:
   '@babel/types@7.29.7':
     resolution: {integrity: sha512-4zBIxpPzowiZpusoFkyGVwakdRJUyuH5PxQ/PrqghfdFWWasvnCdPfQXHrenDai+gyLARulZjZowCOj6fjT4pA==}
     engines: {node: '>=6.9.0'}
-
-  '@capacitor/android@8.4.1':
-    resolution: {integrity: sha512-igtDCJ7QQn0P2qHFD9p4KXaa6V1b2PRNt+MxjVwtjTm/BJvqmiazOJq6rPjwFSZnfHm6iFoZk8TfzHd44pyBGw==}
-    peerDependencies:
-      '@capacitor/core': ^8.4.0
 
   '@capacitor/app@8.1.0':
     resolution: {integrity: sha512-MlmttTOWHDedr/G4SrhNRxsXMqY+R75S4MM4eIgzsgCzOYhb/MpCkA5Q3nuOCfL1oHm26xjUzqZ5aupbOwdfYg==}
@@ -9328,10 +9320,6 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
-
-  '@capacitor/android@8.4.1(@capacitor/core@8.4.1)':
-    dependencies:
-      '@capacitor/core': 8.4.1
 
   '@capacitor/app@8.1.0(@capacitor/core@8.4.1)':
     dependencies:

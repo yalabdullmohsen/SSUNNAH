@@ -3,7 +3,7 @@
  * تشغيل: node --import tsx src/lib/__tests__/startup-readiness-gate.test.ts
  */
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -43,11 +43,7 @@ const native = read("public/native-load-error.html");
 assert.match(native, /جاري تجهيز الصفحة/, "النص محفوظ");
 assert.match(native, /\.is-loading \.soft-status/, "إخفاء بصري أثناء الاستعادة");
 
-assert.match(
-  read("android/app/src/main/res/values-night/colors.xml"),
-  /#101614/,
-  "splash ليلي Android",
-);
+assert.equal(existsSync(resolve(root, "android")), false, "android/ retired");
 
 assert.match(
   read("src/styles/critical-first-paint.css"),

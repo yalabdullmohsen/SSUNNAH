@@ -91,7 +91,6 @@ for await (const file of walk(resolve(appRoot, "src"))) {
 // ٣) ملفات الجوال الأصلية — اسم التطبيق المعروض
 const nativeChecks = [
   ["capacitor.config.ts", /appName:\s*"([^"]+)"/],
-  ["android/app/src/main/res/values/strings.xml", /<string name="app_name">([^<]+)<\/string>/],
   ["ios/App/App/Info.plist", /<key>CFBundleDisplayName<\/key>\s*<string>([^<]+)<\/string>/],
 ];
 

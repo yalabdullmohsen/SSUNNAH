@@ -83,12 +83,7 @@ ok(
   !existsSync(join(root, "src", "lib", "plugins", "speech-recognition.ts")),
   "JS speech-recognition bridge removed",
 );
-ok(
-  !existsSync(
-    join(root, "android", "app", "src", "main", "java", "com", "majlisilm", "app", "MajlisSpeechRecognitionPlugin.kt"),
-  ),
-  "Android speech recognition plugin removed",
-);
+ok(!existsSync(join(root, "android")), "Android product tree retired (no artifacts/majalis/android)");
 ok(!plist.includes("NSSpeechRecognitionUsageDescription"), "Info.plist has no speech recognition usage");
 ok(!plist.includes("NSMicrophoneUsageDescription"), "Info.plist has no microphone usage (AI recitation removed)");
 ok(!pbx.includes("MajlisSpeechRecognitionPlugin.swift"), "pbxproj has no speech plugin");
@@ -127,6 +122,10 @@ ok(
   !privacy.includes("NSPrivacyAccessedAPICategoryDiskSpace") &&
     !privacy.includes("NSPrivacyAccessedAPICategorySystemBootTime"),
   "PrivacyInfo does not invent unused Required Reason APIs",
+);
+ok(
+  !privacy.includes("NSPrivacyCollectedDataTypeAudioData"),
+  "PrivacyInfo must not declare AudioData after mic/speech removal",
 );
 
 const live = readFileSync(
@@ -300,6 +299,8 @@ ok(
 // HTTPS-only: cleartext must stay false (http cleartext unused).
 ok(capJson?.server?.cleartext === false, "capacitor.config.json cleartext false (https-only)");
 ok(capJson?.webDir === "dist", "capacitor.config.json webDir is dist");
+ok(!/\bandroid\s*:/.test(capTs), "capacitor.config.ts has no android block (iOS-only)");
+ok(capJson.android === undefined, "capacitor.config.json has no android block");
 
 const aasaPath = join(root, "public", ".well-known", "apple-app-site-association");
 ok(existsSync(aasaPath), "AASA file exists");
@@ -411,28 +412,36 @@ ok(
 
 // package.json / prepare-ios: لا تستخدم npx cap — من جذر الـ monorepo يحلّ npm حزمة
 // cap@0.2.1 (بلا bin) → "could not determine executable to run". استخدم ثنائي .bin المحلي.
+// Product scope: iOS-only — mobile:android must remain a hard-fail retired stub.
 const pkg = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
-const mobileScripts = ["mobile:sync", "mobile:android", "mobile:ios"];
-for (const name of mobileScripts) {
+const iosMobileScripts = ["mobile:sync", "mobile:ios"];
+for (const name of iosMobileScripts) {
   const cmd = pkg.scripts?.[name] || "";
   ok(Boolean(cmd), `package.json has script ${name}`);
   ok(!/\bnpx\b/.test(cmd), `${name}: must not use npx (resolves wrong npm package "cap")`);
   ok(!/\bnpm\s+exec\b/.test(cmd), `${name}: must not use npm exec`);
   ok(!/(?:^|[;&|]|&&|\|\|)\s*pnpm\s+exec\s*(?:$|[;&|])/.test(cmd), `${name}: no empty pnpm exec`);
-  ok(!/\bcap\s+sync\s*(?:$|[;&|])/.test(cmd), `${name}: cap sync must include ios|android`);
+  ok(!/\bcap\s+sync\s*(?:$|[;&|])/.test(cmd), `${name}: bare cap sync forbidden (must target ios)`);
+  ok(!/\bcap\s+sync\s+android\b/.test(cmd), `${name}: must not sync android (product retired)`);
 }
 ok(
   /\bcap\s+sync\s+ios\b/.test(pkg.scripts?.["mobile:sync"] || ""),
   "mobile:sync runs cap sync ios explicitly",
 );
+const mobileAndroid = pkg.scripts?.["mobile:android"] || "";
+ok(Boolean(mobileAndroid), "package.json keeps mobile:android as retired stub");
 ok(
-  /\bcap\s+sync\s+android\b/.test(pkg.scripts?.["mobile:android"] || ""),
-  "mobile:android runs cap sync android explicitly",
+  !/\bcap\s+sync\s+android\b/.test(mobileAndroid) &&
+    /Android retired/i.test(mobileAndroid) &&
+    /process\.exit\(1\)/.test(mobileAndroid),
+  "mobile:android is hard-fail retired stub (no cap sync android)",
 );
 ok(
   /\bcap\s+open\s+ios\b/.test(pkg.scripts?.["mobile:ios"] || ""),
   "mobile:ios runs cap open ios explicitly",
 );
+ok(!pkg.dependencies?.["@capacitor/android"], "no @capacitor/android dependency");
+ok(!pkg.devDependencies?.["@capacitor/android"], "no @capacitor/android devDependency");
 
 // تجاهل التعليقات — افحص أوامر التنفيذ فقط
 const prepareIosCode = prepareIos

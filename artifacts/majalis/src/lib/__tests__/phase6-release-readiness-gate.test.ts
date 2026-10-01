@@ -30,14 +30,8 @@ const capTs = read("capacitor.config.ts");
 assert.doesNotMatch(capTs, /localhost|127\.0\.0\.1/);
 assert.doesNotMatch(capTs, /url:\s*["']http:\/\//);
 
-console.log("=== Native IDs (document mismatch, do not mutate) ===");
-const gradle = read("android/app/build.gradle");
-const androidId = gradle.match(/applicationId\s+"([^"]+)"/)?.[1];
-assert.equal(
-  androidId,
-  "com.majlisilm.app",
-  "Android applicationId الحالي (لا يُغيَّر هنا) — توحيده مع Capacitor = OWNER_ACTION",
-);
+console.log("=== iOS-only identity (Android retired) ===");
+assert.equal(existsSync(resolve(majalisRoot, "android")), false, "android/ must be retired");
 const pbx = read("ios/App/App.xcodeproj/project.pbxproj");
 assert.match(pbx, /PRODUCT_BUNDLE_IDENTIFIER = com\.yousef\.majlisilm;/);
 
@@ -53,7 +47,7 @@ for (const doc of [
   "docs/qa/MUSHAF_REAL_DEVICE_RELEASE_MATRIX.md",
   "docs/qa/PRAYER_ADHAN_REAL_DEVICE_MATRIX.md",
   "docs/qa/IOS_RELEASE_CHECKLIST.md",
-  "docs/qa/ANDROID_RELEASE_CHECKLIST.md",
+  "docs/mobile/ANDROID_RETIREMENT_INVENTORY.md",
   "docs/operations/OBSERVABILITY_CONTRACT.md",
   "docs/operations/INCIDENT_RESPONSE_RUNBOOK.md",
   "docs/privacy/PRIVACY_IMPLEMENTATION_GAP_REPORT.md",

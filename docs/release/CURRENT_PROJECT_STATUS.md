@@ -1,26 +1,27 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-10-01 (U3 `DARK_LIGHT_UNIFIED` · tip MATCH · U4 unlocked)  
+**Updated:** 2026-10-01 (iOS-only closure · Phase 0–1 Android retirement)  
 **Master closure register:** `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` · **LOCKED**  
+**iOS-only board:** `docs/audit/IOS_ONLY_CLOSURE_BOARD.md` · **`LIVE_TRUTH_LOCKED_IOS_ONLY`**  
 **Boundary report (living):** `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md`  
 **License status:** `docs/mobile/LICENSE_CERTIFICATION_STATUS.md` · `LICENSE_CERTIFICATION_REQUIRED`  
-**Mobile status:** `docs/mobile/MOBILE_READINESS_STATUS.md` · `MOBILE_PARTIALLY_READY`  
+**Mobile status:** `docs/mobile/MOBILE_READINESS_STATUS.md` · `MOBILE_PARTIALLY_READY` · Android **RETIRED**  
 **Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
 **Device runbook:** `docs/audit/WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md`  
-**Blockers:** `docs/release/PHASE_7_BLOCKER_REGISTER.md` · Master Closure Register
+**Blockers:** `docs/release/PHASE_7_BLOCKER_REGISTER.md` · Master Closure Register · Owner Apple signing
 
 ## Repository tips (measured)
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `52aa7b2f` — U3 theme pipeline (#2442) after Track 0 |
+| `origin/main` tip (pre this PR) | `52aa7b2f` — U3 theme pipeline (#2442) · prod MATCH |
 | Production `version.json` | `52aa7b2f` **MATCH** · `builtAt=2026-10-01T16:34:15.221Z` |
 | About surface | `/about` — حول التطبيق |
-| Decision | **`WEB_RELEASED_NATIVE_HOLD`** · **`PROJECT_CLOSURE_PARTIAL`** |
-| Unification | **`UNIFIED_PARTIAL`** · U2 COMPLETE · U3 **`DARK_LIGHT_UNIFIED`** · U4 **EXECUTION_UNLOCKED** (next) |
-| Mobile | **`MOBILE_PARTIALLY_READY`** · MRMP chartered · device evidence open |
-| License | **`LICENSE_CERTIFICATION_REQUIRED`** · recitations **STREAM_ONLY** · Istanbul adhan **CC0_ADHAN_CANDIDATE** |
-| Store | **HOLD** · no `STORE_SUBMISSION_READY` · no `STORE_GO` |
+| Decision | **`WEB_RELEASED_NATIVE_HOLD`** · **`PROJECT_CLOSURE_PARTIAL`** · **iOS-only product** |
+| Unification | **`UNIFIED_PARTIAL`** · U2 COMPLETE · U3 **`DARK_LIGHT_UNIFIED`** · U4 unlocked after this MATCH |
+| Mobile | **`MOBILE_PARTIALLY_READY`** · Bundle `com.yousef.majlisilm` · Android **retired** |
+| License | **`LICENSE_CERTIFICATION_REQUIRED`** · recitations **STREAM_ONLY** · Istanbul **CC0_ADHAN_CANDIDATE** |
+| Store | **HOLD** · Apple only · no Play · no `STORE_GO` |
 | Explicit non-claims | no `STORE GO` · no `CONTENT_CERTIFIED` · no `AUDIO_CERTIFIED` · no `UNIFIED_100` · no `MOBILE_READY` · no `DEVICE_TESTED` · no `WCAG CERTIFIED` |
 
 ## Closure program WAVE7→13 (merged + deployed)

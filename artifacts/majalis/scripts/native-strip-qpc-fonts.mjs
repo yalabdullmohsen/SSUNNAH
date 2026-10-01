@@ -12,7 +12,7 @@ import { fileURLToPath } from "node:url";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const targets = [
   join(root, "ios/App/App/public/fonts/qpc-v2"),
-  join(root, "android/app/src/main/assets/public/fonts/qpc-v2"),
+  /* android/ retired — iOS-only strip path */
 ];
 
 function dirSize(path) {
