@@ -248,44 +248,82 @@ Summary: `evidence/zero-startup-flicker-final-local/summary.json` (filmstrip PNG
 
 ## LOCAL VERIFICATION
 
-يُحدَّث بعد `verify:ci` على فرع الـfollow-up.
+- Follow-up #2433: `verify:preflight` + `verify:ci` محليًا قبل الدفع ✓
+- Hotfix CLS: يعيد إزالة الهيكل فور mount (انظر أسفل)
 
-## MAIN CI AND DEPLOYMENT / PRODUCTION VERSION MATCH / PRODUCTION MEASUREMENTS
+## MAIN CI AND DEPLOYMENT
 
-يُملأ بعد الدمج + MATCH + إعادة القياس.
+| Item | Status |
+|------|--------|
+| PR #2433 | **MERGED** `9d3364405` |
+| Auto Deploy | SUCCESS → production |
+| version.json MATCH | **✓ `9d336440`** @ `builtAt=2026-10-01T11:20:37.921Z` |
+
+## PRODUCTION VERSION MATCH
+
+`https://www.ssunnah.com/version.json` = `9d336440` = `origin/main` tip at measure time.
+
+## PRODUCTION MEASUREMENTS
+
+Evidence: `docs/performance/evidence/zero-startup-flicker-prod-9d336440/`  
+Tooling: نفس عقد `/tmp/measure-startup-flicker-prod.mjs` · 390×844 @2x · cache disabled.
+
+| Route | FP | CLS | themeMut | sheets | fontΔ | bgΔ | jumps H/Hero/Nav | vs `7d4b3044` |
+|-------|---:|----:|---------:|--------|-------|-----|------------------|---------------|
+| `/` | 1816 | **0.1087** | **0** | 3→107 | 0 | 0 | 0/1/0 | theme✓ · CLS أسوأ |
+| `/search` | 964 | **0.0350** | **0** | 3→71 | 0 | 0 | 1/0/1 | theme✓ · CLS أسوأ |
+| `/quran-hub` | 712 | **0.0223** | **0** | 3→75 | 0 | 0 | 1/0/1 | theme✓ · CLS أسوأ |
+| `/mushaf` | 1212 | **0** | **0** | 3→53 | 0 | 0 | 0/0/0 | ✓✓ |
+| `/prayer-times` | 696 | **0** | **0** | 3→54 | 0 | 0 | 0/0/1 | Prayer CLS✓ · theme✓ |
+
+### Wins on `9d336440`
+
+1. **themeMutAfterFP = 0** على كل المسارات الخمسة (كان 2 على غير-الرئيسية).
+2. **Prayer CLS = 0** (كان 0.0552) — إخفاء GlobalBack على تبويب الصلاة.
+3. Mushaf CLS = 0 · fontΔ=0 · bgΔ=0 محفوظة.
+
+### Regression attributed
+
+تأخير إزالة `#mj-startup-chrome` حتى ظهور selectors الإنتاجية زاد CLS على `main#main-content` (Home 0.0257→0.1087).  
+Hotfix: إعادة الإزالة الفورية عند أول commit لـ`#root` مع الإبقاء على wins (theme idempotent · hide prayer back · homeChrome=0 · nav CSS split).
 
 ## REMAINING DEBT
 
-يُحدَّث بعد القياس الإنتاجي للـfollow-up.
+1. Home/Search/QuranHub CLS فوق الهدف بعد #2433 — hotfix إزالة الهيكل مطلوب ثم إعادة قياس.
+2. Header/Bottom presence false→true على Search/QuranHub (عقد قياس selectors).
+3. Home hero.presence false→true (لا `#mj-startup-hero` — ممنوع لتلوث visual).
+4. Deferred sheets ما زالت مرتفعة (~3→107).
+5. Token `--color-brand-deep` الليلي (سطح vs حبر) — موجة توكن منفصلة.
 
 ## FINAL VERDICT
 
 ### **STARTUP_FLICKER_PARTIALLY_FIXED**
 
-(يُعاد الحكم فقط بعد MATCH + قياس إنتاجي للـfollow-up — ممنوع COMPLETE قبله)
+**لماذا ليس COMPLETE**
 
-**لماذا ليس COMPLETE بعد**
-
-- إنتاج `7d4b3044`/`cb2d3636` ما زال يحمل CLS/themeMut السابقين حتى ينشر الـfollow-up ويُقاس.
+- Home CLS / Search CLS / Quran Hub CLS فوق 0.01 على إنتاج `9d336440`.
+- Header/Hero/Nav jump لم تُغلق بالكامل.
+- Deferred identity volume مرتفع.
 
 **لماذا ليس NOT_FIXED**
 
-- #2430 خضراء ومطابقة إنتاجيًا للعقود المغلقة (font/bg/Mushaf CLS).
-- Follow-up يغلق جذور Prayer CLS + chrome removal race + nav CSS coupling.
+- themeMut=0 على كل المسارات الخمسة ✓
+- Prayer CLS=0 ✓ · Mushaf CLS=0 ✓ · font/bg delta=0 ✓
+- Contrast/Visual بقيت خضراء عبر مسار الدمج.
 
 ---
 
-## Success criteria checklist (production `7d4b3044` / `cb2d3636` قبل follow-up)
+## Success criteria checklist (production `9d336440`)
 
 | Criterion | Result |
 |-----------|--------|
 | font-size delta = 0 | ✓ |
 | background delta = 0 | ✓ |
-| theme mutations after FP = 0 | ✗ (0 على Home · 2 على غيرها) |
-| CLS Home/Search/Quran/Prayer < 0.01 | ✗ (Home/Prayer) |
+| theme mutations after FP = 0 | ✓ |
+| CLS Home/Search/Quran/Prayer < 0.01 | ✗ (Home/Search/Quran) · Prayer ✓ |
 | Mushaf CLS = 0 | ✓ |
 | Header/Hero/BottomNav jump = 0 | ✗ |
 | No deferred identity repaint (body) | ✓ |
 | No deferred identity repaint (full) | △ sheets |
 | First Paint ≈ Final Paint (canvas) | ✓ body · △ chrome |
-| Production MATCH measure | ✓ `cb2d3636` tip |
+| Production MATCH measure | ✓ `9d336440` |

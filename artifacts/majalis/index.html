@@ -160,29 +160,12 @@
               if (ph && ph.parentNode) ph.parentNode.removeChild(ph);
             } catch (_) {}
           }
-          /** أبقِ الهيكل حتى يظهر كروم React — يمنع فراغ/CLS بين الإزالة والتركيب */
+          /**
+           * إزالة الهيكل عند أول commit لـ #root.
+           * التأخير حتى ظهور selectors الإنتاجية زاد CLS على main في قياس 9d336440.
+           */
           function removeStartupChromeWhenReady() {
-            var rs = html.dataset.routeSurface;
-            if (rs === "prayer-dark" || rs === "mushaf-immersive") {
-              removeStartupChrome();
-              return;
-            }
-            var tries = 0;
-            function tick() {
-              tries++;
-              var hasHeader = document.querySelector(
-                ".app-top-chrome, header.navbar-v3, .navbar-v3",
-              );
-              var hasBottom = document.querySelector(
-                ".bottom-nav, .bottom-nav--v2, [data-bottom-nav]",
-              );
-              if ((hasHeader && hasBottom) || tries > 120) {
-                removeStartupChrome();
-                return;
-              }
-              requestAnimationFrame(tick);
-            }
-            tick();
+            removeStartupChrome();
           }
           function clearBooting() {
             /* لا تلمس class — فقط data-app-booting (مراقب الثيم يراقب class/data-theme فقط) */
@@ -196,12 +179,13 @@
               window.dispatchEvent(new Event("mj:shell-stable"));
             } catch (_) {}
           }
-          /* عقد جاهزية: أول commit لـ #root ثم إزالة الهيكل عند كروم React النهائي */
+          /* عقد جاهزية: أول commit لـ #root — أزل الهيكل فورًا ثم clearBooting */
           var rootEl = document.getElementById("root");
           if (rootEl) {
             var mo = new MutationObserver(function () {
               if (!rootEl.childNodes.length) return;
               mo.disconnect();
+              removeStartupChrome();
               requestAnimationFrame(function () {
                 requestAnimationFrame(clearBooting);
               });
@@ -209,6 +193,7 @@
             mo.observe(rootEl, { childList: true });
             if (rootEl.childNodes.length) {
               mo.disconnect();
+              removeStartupChrome();
               requestAnimationFrame(function () {
                 requestAnimationFrame(clearBooting);
               });
