@@ -1,10 +1,8 @@
 import Foundation
 import WidgetKit
 
-/// Deep link — نفس مسار Live Activity / Universal Link.
-enum PrayerWidgetDeepLink {
-    static let prayerTimes = URL(string: "https://www.ssunnah.com/prayer-times")!
-}
+/// Deep link — موحّد مع Live Activity عبر Shared/SunnahPrayerDeepLink.
+typealias PrayerWidgetDeepLink = SunnahPrayerDeepLink
 
 enum PrayerSlotKey: String, CaseIterable {
     case fajr, dhuhr, asr, maghrib, isha
