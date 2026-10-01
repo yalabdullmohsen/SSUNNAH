@@ -5,7 +5,7 @@
 | Captured | 2026-10-01T02:26Z |
 | Live baseline | [`FINAL_CLOSURE_LIVE_BASELINE.md`](./FINAL_CLOSURE_LIVE_BASELINE.md) · **LIVE_BASELINE_LOCKED** |
 | SoT tip (live) | `14b30de60` (#2416 seal after Back P7 `2a4e3985`) |
-| Active phase | **PHASE 1 Route Feedback Priority** (after Phase 0 MATCH `cfcc6e7f`) |
+| Active phase | **PHASE 2 Route Feedback Public Expansion** (after Phase 1 MATCH `c6f56d2a`) |
 | Rule | مرحلة واحدة · PR واحد · MATCH قبل التالي |
 
 ## الحالة الحالية (عند القفل الحي)
@@ -21,7 +21,7 @@ Dark Loader = CLOSED
 Identity / Cards / Buttons residual phases = CLOSED (نطاقها)
 Back Authority P7 = BACK_P7_MERGED_AND_DEPLOYED
 ADMIN-FINAL-1 = CLOSED
-Route Feedback Priority = OPEN (PARTIAL gaps: quran-hub · offline · evidence gate)
+Route Feedback Priority = **ROUTE_FEEDBACK_PRIORITY_MERGED_AND_DEPLOYED** (#2418 → `c6f56d2a`)
 Admin FINAL-2+ = OPEN
 Mushaf CSS Bridge = OPEN (NewMushafReader + VerifiedMushafReader import)
 Device QA = DEVICE_REQUIRED

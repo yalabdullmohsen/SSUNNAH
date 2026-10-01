@@ -2,7 +2,7 @@
   "version": 1,
   "phase": "ROUTE_FEEDBACK_PRIORITY",
   "policy": "COMPLETE requires routeClass + testRef + testedCommit + testedDate + artifact + expected + actual. No Feedback V3.",
-  "testedCommit": "cfcc6e7f",
+  "testedCommit": "c6f56d2a",
   "testedDate": "2026-10-01",
   "gate": "artifacts/majalis/src/lib/__tests__/closure-route-feedback-priority-gate.test.ts",
   "feedbackAuthority": "docs/design/FORM_FEEDBACK_AUTHORITY.md",
@@ -98,8 +98,14 @@
           "expected": "Keep query; clear path",
           "actual": "NoResultsState COMPLETE"
         },
-        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public search" },
-        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Client index search — no 429 surface" }
+        "permissionDenied": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public search"
+        },
+        "rateLimited": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Client index search — no 429 surface"
+        }
       }
     },
     "/quran-hub": {
@@ -131,8 +137,14 @@
           "status": "NOT_APPLICABLE",
           "reason": "No search/filter on hub root"
         },
-        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public" },
-        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "No API rate surface" }
+        "permissionDenied": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public"
+        },
+        "rateLimited": {
+          "status": "NOT_APPLICABLE",
+          "reason": "No API rate surface"
+        }
       }
     },
     "/mushaf": {
@@ -166,9 +178,18 @@
           "expected": "Cached pages usable; chrome offline signal",
           "actual": "OfflineBanner + mushaf offline contracts"
         },
-        "noResults": { "status": "NOT_APPLICABLE", "reason": "Reader not a filter list" },
-        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public reader" },
-        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Local page assets" }
+        "noResults": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Reader not a filter list"
+        },
+        "permissionDenied": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public reader"
+        },
+        "rateLimited": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Local page assets"
+        }
       }
     },
     "/mushaf/bookmarks": {
@@ -202,9 +223,18 @@
           "expected": "Local bookmarks available offline",
           "actual": "Local storage + OfflineBanner"
         },
-        "noResults": { "status": "NOT_APPLICABLE", "reason": "No search filters on bookmarks root" },
-        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Local bookmarks" },
-        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Local" }
+        "noResults": {
+          "status": "NOT_APPLICABLE",
+          "reason": "No search filters on bookmarks root"
+        },
+        "permissionDenied": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Local bookmarks"
+        },
+        "rateLimited": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Local"
+        }
       }
     },
     "/prayer-times": {
@@ -238,9 +268,18 @@
           "expected": "Chrome offline; calc unchanged",
           "actual": "OfflineBanner; DEVICE_REQUIRED for background adhan"
         },
-        "noResults": { "status": "NOT_APPLICABLE", "reason": "Not a search list" },
-        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public prayer UI" },
-        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Local calc" }
+        "noResults": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Not a search list"
+        },
+        "permissionDenied": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public prayer UI"
+        },
+        "rateLimited": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Local calc"
+        }
       }
     },
     "/lessons": {
@@ -281,8 +320,14 @@
           "expected": "Filter miss ≠ empty catalog",
           "actual": "NoResultsState COMPLETE"
         },
-        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public lessons" },
-        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Static/catalog fetch — no 429 UI" }
+        "permissionDenied": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public lessons"
+        },
+        "rateLimited": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Static/catalog fetch — no 429 UI"
+        }
       }
     },
     "/hadith": {
@@ -323,8 +368,14 @@
           "expected": "NoResults when filters miss",
           "actual": "COMPLETE"
         },
-        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public" },
-        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Local/catalog" }
+        "permissionDenied": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public"
+        },
+        "rateLimited": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Local/catalog"
+        }
       }
     },
     "/fiqh": {
@@ -365,8 +416,14 @@
           "expected": "Filter clear path",
           "actual": "COMPLETE"
         },
-        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public" },
-        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Local data" }
+        "permissionDenied": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public"
+        },
+        "rateLimited": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Local data"
+        }
       }
     },
     "/adhkar": {
@@ -400,9 +457,18 @@
           "expected": "Chrome offline",
           "actual": "OfflineBanner COMPLETE"
         },
-        "noResults": { "status": "NOT_APPLICABLE", "reason": "Hub categories not filter search" },
-        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public" },
-        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Local" }
+        "noResults": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Hub categories not filter search"
+        },
+        "permissionDenied": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public"
+        },
+        "rateLimited": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Local"
+        }
       }
     },
     "/settings": {
@@ -433,9 +499,18 @@
           "expected": "Settings usable offline for local prefs",
           "actual": "OfflineBanner chrome; version refresh fails via FieldError"
         },
-        "noResults": { "status": "NOT_APPLICABLE", "reason": "Settings search filters sections locally" },
-        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public settings shell" },
-        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "No 429 surface" }
+        "noResults": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Settings search filters sections locally"
+        },
+        "permissionDenied": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public settings shell"
+        },
+        "rateLimited": {
+          "status": "NOT_APPLICABLE",
+          "reason": "No 429 surface"
+        }
       }
     },
     "/my-learning": {
@@ -469,9 +544,18 @@
           "expected": "STATUS.networkError when offline",
           "actual": "offline branch + OfflineBanner"
         },
-        "noResults": { "status": "NOT_APPLICABLE", "reason": "Not a search results page" },
-        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Guest empty uses login CTA, not 403 page" },
-        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "No 429 UI" }
+        "noResults": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Not a search results page"
+        },
+        "permissionDenied": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Guest empty uses login CTA, not 403 page"
+        },
+        "rateLimited": {
+          "status": "NOT_APPLICABLE",
+          "reason": "No 429 UI"
+        }
       }
     },
     "/login": {
@@ -484,7 +568,10 @@
           "expected": "Auth loading",
           "actual": "COMPLETE"
         },
-        "empty": { "status": "NOT_APPLICABLE", "reason": "Form surface" },
+        "empty": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Form surface"
+        },
         "error": {
           "status": "COMPLETE",
           "testRef": "closure-wave4-route-feedback-gate.test.ts",
@@ -499,9 +586,18 @@
           "expected": "Offline chrome; submit errors mapped",
           "actual": "OfflineBanner COMPLETE"
         },
-        "noResults": { "status": "NOT_APPLICABLE", "reason": "Auth form" },
-        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Login is the access path" },
-        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Mapped via FieldError if provider returns; no dedicated 429 page" }
+        "noResults": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Auth form"
+        },
+        "permissionDenied": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Login is the access path"
+        },
+        "rateLimited": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Mapped via FieldError if provider returns; no dedicated 429 page"
+        }
       }
     },
     "/register": {
@@ -514,7 +610,10 @@
           "expected": "Auth loading",
           "actual": "COMPLETE"
         },
-        "empty": { "status": "NOT_APPLICABLE", "reason": "Form surface" },
+        "empty": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Form surface"
+        },
         "error": {
           "status": "COMPLETE",
           "testRef": "closure-wave4-route-feedback-gate.test.ts",
@@ -529,9 +628,18 @@
           "expected": "Chrome offline",
           "actual": "OfflineBanner COMPLETE"
         },
-        "noResults": { "status": "NOT_APPLICABLE", "reason": "Auth form" },
-        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Registration path" },
-        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "No dedicated 429 page" }
+        "noResults": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Auth form"
+        },
+        "permissionDenied": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Registration path"
+        },
+        "rateLimited": {
+          "status": "NOT_APPLICABLE",
+          "reason": "No dedicated 429 page"
+        }
       }
     }
   },
@@ -541,5 +649,7 @@
     "Large Text OS settings",
     "Split View iPad",
     "Prayer background / adhan delivery"
-  ]
+  ],
+  "mergedCommit": "c6f56d2ad52a5f0d022467ad48a549f44fc6b3f5",
+  "status": "ROUTE_FEEDBACK_PRIORITY_MERGED_AND_DEPLOYED"
 }

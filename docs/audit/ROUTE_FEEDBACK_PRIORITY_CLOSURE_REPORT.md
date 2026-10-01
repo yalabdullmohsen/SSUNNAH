@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **ROUTE_FEEDBACK_PRIORITY** (pending MERGED_AND_DEPLOYED) |
+| Status | **ROUTE_FEEDBACK_PRIORITY_MERGED_AND_DEPLOYED** |
 | Base tip | `cfcc6e7f` (Phase 0 LIVE_BASELINE_LOCKED) |
 | Evidence | [`ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json`](./ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json) |
 | Gate | `artifacts/majalis/src/lib/__tests__/closure-route-feedback-priority-gate.test.ts` |
@@ -68,3 +68,13 @@ Wired into `test:sunnah-ui-refinement`.
 1. focused gates PASS  
 2. verify:preflight + verify:ci PASS  
 3. PR merged · main CI · Auto Deploy · `version.json` MATCH · smoke PASS  
+
+## Delivery
+
+| Item | Value |
+|---|---|
+| PR | https://github.com/yalabdullmohsen/majalis/pull/2418 |
+| Merge | `c6f56d2ad` |
+| Production | `c6f56d2a` MATCH |
+| Smoke | priority routes HTTP 200 |
+| Criterion | `ROUTE_FEEDBACK_PRIORITY_MERGED_AND_DEPLOYED` |
