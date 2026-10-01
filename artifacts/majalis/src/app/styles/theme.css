@@ -442,7 +442,8 @@ html.dark,
   --color-muted: #B5ADA0;
   --color-brand: #5CC095;
   --color-brand-soft: #16261F;
-  --color-brand-deep: #0E1C17;
+  /* U2: brand-deep ليلاً = حبر/علامة مقروءة (elite-forest) لا سطح #0E1C17 */
+  --color-brand-deep: var(--mj-brand-deep, var(--elite-forest));
   --color-on-brand: #06231A;
   --color-accent: #C9A86C;
   --color-accent-soft: #2A3733;

@@ -93,6 +93,7 @@
 | `docs/audit/ROUTE_QUALITY_MATRIX.json` | مصفوفة جودة المسارات (حقول PENDING صادقة) |
 | `docs/audit/DEVICE_QA_REGISTER.md` | سجل DEVICE_REQUIRED — بلا أرقام ملفّقة |
 | `docs/design/TOKEN_MIGRATION_MATRIX.md` | مصفوفة هجرة الطبقات → `--sf-*`/`--sf2-*` |
+| `docs/design/FINAL_TOKEN_ROLE_MATRIX.md` | **U2** — مصفوفة أدوار التوكن النهائية (canvas…focus) |
 | `docs/design/PAGE_CONTRACT_MATRIX.md` | عقد AppPage/PageHeader vs UtilityScreen |
 | `docs/design/UTILITYSCREEN_MIGRATION_MATRIX.md` | تقاعد UtilityScreen — 128→9 KEEP |
 | `docs/audit/SUNNAH_DEBT_REDUCTION_WAVE_2_REPORT.md` | Debt Reduction Wave 2 — soft-card consumers=0 · PARTIAL |

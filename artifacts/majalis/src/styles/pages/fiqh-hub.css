@@ -2021,8 +2021,8 @@ html.dark .fiqh-status-badge--needs {
 
 html[data-theme="dark"] .fiqh-status-badge--review,
 html.dark .fiqh-status-badge--review {
-  background: color-mix(in srgb, var(--mj-muted) 22%, var(--mj-ink, var(--mj-info)));
-  color: var(--mj-surface-2);
+  background: color-mix(in srgb, var(--mj-muted) 22%, var(--mj-surface, var(--mj-info)));
+  color: var(--mj-ink, var(--mj-ink-2, #EDE8DF));
 }
 
 .fiqh-source-line {
