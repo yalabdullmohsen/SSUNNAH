@@ -5,11 +5,15 @@ import { sanitizeText } from "@/lib/sanitize";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { AdminModal, Field } from "./AdminModal";
 import { BulkImport } from "./BulkImport";
+import { useAdminConfirm, useAdminAlert } from "@/components/admin/AdminConfirmDialog";
 
 const TYPES = ["كتاب", "متن", "تفريغ", "ملخص", "صوت", "مرئي"];
 const EMPTY: any = { title: "", author: "", category: "", item_type: "كتاب", description: "", status: "approved" };
 
 export function LibrarySection() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+  const { alert, dialog: alertDialog } = useAdminAlert();
+
   const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState(() => { const p = new URLSearchParams(window.location.search); return p.get("q") || ""; });
@@ -34,7 +38,10 @@ export function LibrarySection() {
   );
 
   const handleSave = async () => {
-    if (!form.title.trim()) return alert("عنوان المادة مطلوب");
+    if (!form.title.trim()) {
+      await alert("عنوان المادة مطلوب");
+      return;
+    }
     setSaving(true);
     const payload = {
       ...form,
@@ -85,7 +92,7 @@ export function LibrarySection() {
                   <td className="mir-td mir-td--muted">{item.item_type || "—"}</td>
                   <td className="mir-td">
                     <button type="button" onClick={() => { setForm({ ...EMPTY, ...item }); setOpen(true); }} className="mir-edit-btn">تعديل</button>
-                    <button type="button" onClick={() => { if (confirm("حذف؟")) adminDeleteLibraryItem(item.id).then(load); }}>حذف</button>
+                    <button type="button" onClick={async () => { if ((await confirm({ title: "تأكيد", body: "حذف؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteLibraryItem(item.id).then(load); }}>حذف</button>
                   </td>
                 </tr>
               ))}
@@ -105,6 +112,9 @@ export function LibrarySection() {
         </Field>
         <Field label="الوصف"><textarea value={form.description || ""} onChange={(e) => setForm({ ...form, description: e.target.value })} className="adm-textarea" rows={4} /></Field>
       </AdminModal>
+          {confirmDialog}
+      {alertDialog}
+
     </div>
   );
 }

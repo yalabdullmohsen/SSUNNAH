@@ -10,6 +10,7 @@ import {
   adminResetAllQuizIsUsed,
   resetAllUsedQuizIds,
 } from "@/lib/supabase";
+import { useAdminConfirm, useAdminAlert } from "@/components/admin/AdminConfirmDialog";
 import { sanitizeText } from "@/lib/sanitize";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { AdminModal, Field, FieldRow } from "./AdminModal";
@@ -60,6 +61,9 @@ const EMPTY_FORM = {
 };
 
 export function QuizSection() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+  const { alert, dialog: alertDialog } = useAdminAlert();
+
   const { showSuccess, showError } = useAdminShell();
   const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -85,15 +89,14 @@ export function QuizSection() {
 
   useEffect(() => { load(); }, [load]);
 
-  const openAdd = () => { setForm({ ...EMPTY_FORM }); setOpen(true); };
+  const openAdd = async () => { setForm({ ...EMPTY_FORM }); setOpen(true); };
   const openEdit = (item: any) => { setForm({ ...EMPTY_FORM, ...item }); setOpen(true); };
 
   const handleDelete = async (id: string, question: string) => {
-    if (!confirm(`هل تريد حذف السؤال؟\n"${question.slice(0, 60)}..."`)) return;
+    if (!(await confirm({ title: "تأكيد", body: `هل تريد حذف السؤال؟\n"${question.slice(0, 60)}..."`, danger: true, confirmLabel: "تأكيد" }))) return;
     const { error } = await adminDeleteQuizQuestion(id);
     if (error) showError("فشل الحذف");
-    else { showSuccess("تم حذف السؤال"); load(); }
-  };
+    else { showSuccess("تم حذف السؤال"); load(); }}
 
   const handleToggleStatus = async (item: any) => {
     const { error } = await adminSetQuizQuestionStatus(item.id, item.status !== "published");
@@ -104,8 +107,14 @@ export function QuizSection() {
   const set = (k: string, v: string) => setForm((f: any) => ({ ...f, [k]: v }));
 
   const handleSave = async () => {
-    if (!form.question.trim()) return alert("نص السؤال مطلوب");
-    if (!form.answer.trim()) return alert("الجواب مطلوب");
+    if (!form.question.trim()) {
+      await alert("نص السؤال مطلوب");
+      return;
+    }
+    if (!form.answer.trim()) {
+      await alert("الجواب مطلوب");
+      return;
+    }
     setSaving(true);
     const answerClean = sanitizeText(form.answer, 1000);
     const { status, ...formRest } = form;
@@ -125,7 +134,7 @@ export function QuizSection() {
   };
 
   const handleSyncSeed = async () => {
-    if (!confirm("سيتم رفع أسئلة الكتالوج الداخلي (55 سؤال) إلى قاعدة البيانات. متابعة؟")) return;
+    if (!(await confirm({ title: "تأكيد", body: "سيتم رفع أسئلة الكتالوج الداخلي (55 سؤال) إلى قاعدة البيانات. متابعة؟", danger: true, confirmLabel: "تأكيد" }))) return;
     setSyncing(true);
     const { ok, synced, error } = await upsertQuizSeedToDb();
     setSyncing(false);
@@ -134,7 +143,7 @@ export function QuizSection() {
   };
 
   const handleResetUsed = async () => {
-    if (!confirm("سيتم إعادة تعيين جميع الأسئلة (is_used=false) وحذف سجل الاستخدام المحلي. متابعة؟")) return;
+    if (!(await confirm({ title: "تأكيد", body: "سيتم إعادة تعيين جميع الأسئلة (is_used=false) وحذف سجل الاستخدام المحلي. متابعة؟", danger: true, confirmLabel: "تأكيد" }))) return;
     setResetting(true);
     const { ok, error } = await adminResetAllQuizIsUsed();
     setResetting(false);
@@ -276,6 +285,9 @@ export function QuizSection() {
           <input className="adm-input" value={form.hint || ""} onChange={(e) => set("hint", e.target.value)} placeholder="تلميح يساعد الفريق..." />
         </Field>
       </AdminModal>
+          {confirmDialog}
+      {alertDialog}
+
     </div>
   );
 }

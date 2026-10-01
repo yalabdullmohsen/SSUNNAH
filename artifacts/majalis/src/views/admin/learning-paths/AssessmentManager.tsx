@@ -8,6 +8,7 @@ import {
   adminFetchQuestions, adminUpsertQuestion, adminDeleteQuestion,
   type AdminAssessment, type AdminQuestion,
 } from "@/lib/learning-paths-admin-service";
+import { useAdminConfirm } from "@/components/admin/AdminConfirmDialog";
 
 const EMPTY_ASSESSMENT: Partial<AdminAssessment> = { title: "", pass_percentage: 70, max_attempts: null, status: "draft" };
 
@@ -123,6 +124,7 @@ export function AssessmentManager({
    *  من نوع assessment، دون تكرار منطق الجلب. */
   onAssessmentsChange?: (list: AdminAssessment[]) => void;
 }) {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
   const { showSuccess, showError } = useAdminShell();
   const [assessments, setAssessments] = useState<AdminAssessment[]>([]);
   const [loading, setLoading] = useState(true);
@@ -170,7 +172,7 @@ export function AssessmentManager({
   };
 
   const deleteAssessment = async (id: string) => {
-    if (!confirm("حذف هذا التقييم وكل أسئلته؟ (سيبقى أي عنصر تعلّم مرتبط به بلا اختبار)")) return;
+    if (!(await confirm({ title: "تأكيد", body: "حذف هذا التقييم وكل أسئلته؟ (سيبقى أي عنصر تعلّم مرتبط به بلا اختبار)", danger: true, confirmLabel: "تأكيد" }))) return;
     const { error } = await adminDeleteAssessment(id);
     if (error) return showError(error.message);
     showSuccess("تم الحذف");
@@ -190,7 +192,7 @@ export function AssessmentManager({
   };
 
   const deleteQuestion = async (id: string) => {
-    if (!confirm("حذف هذا السؤال؟")) return;
+    if (!(await confirm({ title: "تأكيد", body: "حذف هذا السؤال؟", danger: true, confirmLabel: "تأكيد" }))) return;
     const { error } = await adminDeleteQuestion(id);
     if (error) return showError(error.message);
     load();
@@ -404,6 +406,8 @@ export function AssessmentManager({
           ملاحظة: حفظ السؤال هنا لا يعتمده تلقائيًا — استخدم زر «اعتماد» في القائمة بعد المراجعة العلمية.
         </p>
       </AdminModal>
+          {confirmDialog}
+
     </div>
   );
 }

@@ -11,6 +11,7 @@ import { StatusBadge } from "./AdminUI";
 import { AdminModal, Field } from "./AdminModal";
 import { useAdminShell } from "./AdminShell";
 import type { ShariaRulingExtended } from "@/lib/rulings-types";
+import { useAdminConfirm } from "@/components/admin/AdminConfirmDialog";
 
 const EMPTY: Partial<ShariaRulingExtended> = {
   title: "",
@@ -28,6 +29,8 @@ const EMPTY: Partial<ShariaRulingExtended> = {
 };
 
 export function RulingsSection() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+
   const { showSuccess, showError } = useAdminShell();
   const [items, setItems] = useState<ShariaRulingExtended[]>([]);
   const [loading, setLoading] = useState(true);
@@ -41,7 +44,7 @@ export function RulingsSection() {
 
   const subcategoryOptions = useMemo(() => flattenCategories(), []);
 
-  const load = () => {
+  const load = async () => {
     adminListLoad({
       label: "admin:rulings",
       setLoading,
@@ -52,8 +55,7 @@ export function RulingsSection() {
       },
       onSuccess: (merged) => setItems(merged),
       onError: () => setItems([]),
-    });
-  };
+    });}
 
   useEffect(() => {
     load();
@@ -84,7 +86,7 @@ export function RulingsSection() {
     if (!validation.valid) return showError(validation.errors.join("، "));
 
     const similar = findSimilarRulings(form, items);
-    if (similar.length > 0 && !confirm(`يوجد ${similar.length} حكم مشابه. متابعة الحفظ؟`)) return;
+    if (similar.length > 0 && !(await confirm({ title: "تأكيد", body: `يوجد ${similar.length} حكم مشابه. متابعة الحفظ؟`, danger: true, confirmLabel: "تأكيد" }))) return;
 
     setSaving(true);
     const { error } = await adminUpsertRuling(form);
@@ -215,8 +217,8 @@ export function RulingsSection() {
               </button>
               <button
                 type="button"
-                onClick={() => {
-                  if (confirm("حذف؟")) adminDeleteRuling(item.id).then(load);
+                onClick={async () => {
+                  if ((await confirm({ title: "تأكيد", body: "حذف؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteRuling(item.id).then(load);
                 }}
                 className="rls-del-btn"
               >
@@ -327,6 +329,8 @@ export function RulingsSection() {
           </select>
         </Field>
       </AdminModal>
+          {confirmDialog}
+
     </div>
   );
 }

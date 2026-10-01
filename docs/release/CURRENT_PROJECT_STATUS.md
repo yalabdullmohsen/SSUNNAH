@@ -25,14 +25,14 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `5ec1a84e` — ADMIN-FINAL-3 Core CRUD (#2424) |
-| Production `version.json` | `5ec1a84e` **MATCH** · `builtAt=2026-10-01T04:42:35.585Z` |
+| `origin/main` tip | `bb436b24` — ADMIN-FINAL-4 Entity Migration (#2425) |
+| Production `version.json` | `bb436b24` **MATCH** · `builtAt=2026-10-01T05:10:34.331Z` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
 | Internal | **`FINAL_INTERNAL_CLOSURE_PARTIAL`** |
 | Web visual/interaction | **`VISUAL_INTERACTION_COMPLETE_WEB`** (prior waves) |
 | Mushaf polish | **COMPLETE_DEVICE_HOLD** (residual lag DEVICE_REQUIRED) |
-| Admin program | **ADMIN-FINAL-3** `MERGED_AND_DEPLOYED` · **ADMIN-FINAL-4** in flight |
+| Admin program | **ADMIN-FINAL-3** `MERGED_AND_DEPLOYED` · **ADMIN-FINAL-4** MERGED · **ADMIN-FINAL-5** in flight |
 | Startup Typography FOUC | **P2** · MATCH |
 | Dark deferred absorb | **Phase 3** · MATCH (prior) |
 | Identity bridges absorb | **Phase 4** · MATCH (prior) |

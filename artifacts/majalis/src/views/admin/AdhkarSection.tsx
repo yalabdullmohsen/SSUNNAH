@@ -3,6 +3,7 @@ import {
   ADHKAR_CATEGORIES,
   type AdhkarItem,
 } from "@/lib/adhkar-seed";
+import { useAdminConfirm } from "@/components/admin/AdminConfirmDialog";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import {
   deleteAdhkarItem,
@@ -25,6 +26,8 @@ const EMPTY: AdhkarItem = {
 };
 
 export function AdhkarSection() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+
   const { showSuccess, showError } = useAdminShell();
   const [items, setItems] = useState(() => getAllAdhkarForAdmin());
   const [search, setSearch] = useState(() => { const p = new URLSearchParams(window.location.search); return p.get("q") || ""; });
@@ -90,8 +93,8 @@ export function AdhkarSection() {
     showSuccess(hidden ? "تم نشر الذكر." : "تم إخفاء الذكر.");
   };
 
-  const handleDelete = (item: AdhkarItem) => {
-    if (!confirm("هل تريد حذف/إخفاء هذا الذكر؟")) return;
+  const handleDelete = async (item: AdhkarItem) => {
+    if (!(await confirm({ title: "تأكيد", body: "هل تريد حذف/إخفاء هذا الذكر؟", danger: true, confirmLabel: "تأكيد" }))) return;
     deleteAdhkarItem(item.id);
     reload();
     showSuccess("تم حذف الذكر.");
@@ -204,6 +207,8 @@ export function AdhkarSection() {
           </div>
         </div>
       )}
+          {confirmDialog}
+
     </div>
   );
 }

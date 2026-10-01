@@ -5,10 +5,13 @@ import { COURSE_TYPES } from "@/lib/platform-types";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { AdminModal, Field } from "./AdminModal";
 import { useAdminShell } from "./AdminShell";
+import { useAdminConfirm } from "@/components/admin/AdminConfirmDialog";
 
 const EMPTY = { title: "", summary: "", body: "", course_type: "سنوية", venue_city: "", registration_open: true, status: "approved" };
 
 export function AnnualCoursesSection() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+
   const { showSuccess, showError } = useAdminShell();
   const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -31,7 +34,7 @@ export function AnnualCoursesSection() {
           <strong>{item.title}</strong>، {item.course_type}
           <div className="adm-item-actions">
             <button type="button" onClick={() => { setForm({ ...item }); setOpen(true); }} className="adm-btn-sm">تعديل</button>
-            <button type="button" onClick={() => { if (!item.id) return; if (confirm("حذف؟")) adminDeleteAnnualCourse(item.id).then(load); }} className="adm-btn-del">حذف</button>
+            <button type="button" onClick={async () => { if (!item.id) return; if ((await confirm({ title: "تأكيد", body: "حذف؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteAnnualCourse(item.id).then(load); }} className="adm-btn-del">حذف</button>
           </div>
         </div>
       ))}
@@ -54,6 +57,8 @@ export function AnnualCoursesSection() {
         <Field label="رابط التسجيل"><input className="adm-input" value={form.registration_url || ""} onChange={(e) => set("registration_url", e.target.value)} /></Field>
         <Field label="الحالة"><select className="adm-select" value={form.status || "approved"} onChange={(e) => set("status", e.target.value)}><option value="approved">منشور</option><option value="pending">معلّق</option></select></Field>
       </AdminModal>
+          {confirmDialog}
+
     </div>
   );
 }

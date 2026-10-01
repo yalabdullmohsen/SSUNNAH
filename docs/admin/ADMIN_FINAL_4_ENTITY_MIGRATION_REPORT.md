@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **ADMIN_FINAL_4** (pending MERGED_AND_DEPLOYED) |
+| Status | **ADMIN_FINAL_4_MERGED_AND_DEPLOYED** · tip `bb436b24` · production MATCH |
 | Base tip | `5ec1a84e` (ADMIN-FINAL-3 MATCH) |
 | Gate | `admin-final-4-entity-migration-gate.test.ts` |
 | Rule | رابط v3→Legacy ≠ ترحيل كامل |

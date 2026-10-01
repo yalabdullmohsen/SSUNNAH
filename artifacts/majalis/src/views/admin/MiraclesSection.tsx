@@ -5,10 +5,14 @@ import { SkeletonCardGrid } from "@/components/ui-common";
 import { AdminModal, Field } from "./AdminModal";
 import { BulkImport } from "./BulkImport";
 import { arabicMatchAny } from "@/lib/arabic-search";
+import { useAdminConfirm, useAdminAlert } from "@/components/admin/AdminConfirmDialog";
 
 const EMPTY: any = { title: "", category: "", body: "", status: "approved" };
 
 export function MiraclesSection() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+  const { alert, dialog: alertDialog } = useAdminAlert();
+
   const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState(() => { const p = new URLSearchParams(window.location.search); return p.get("q") || ""; });
@@ -33,7 +37,10 @@ export function MiraclesSection() {
   );
 
   const handleSave = async () => {
-    if (!form.title.trim()) return alert("العنوان مطلوب");
+    if (!form.title.trim()) {
+      await alert("العنوان مطلوب");
+      return;
+    }
     setSaving(true);
     const { error } = await adminUpsertMiracle({
       ...form,
@@ -42,7 +49,7 @@ export function MiraclesSection() {
       body: sanitizeText(form.body ?? form.summary ?? "", 6000),
     });
     setSaving(false);
-    if (error) return alert("تعذّر الحفظ.");
+    if (error) { await alert("تعذّر الحفظ."); return; }
     setOpen(false);
     load();
   };
@@ -81,7 +88,7 @@ export function MiraclesSection() {
                   <td className="mir-td mir-td--muted">{item.category || "—"}</td>
                   <td className="mir-td">
                     <button type="button" onClick={() => { setForm({ ...EMPTY, ...item }); setOpen(true); }} className="mir-edit-btn">تعديل</button>
-                    <button type="button" onClick={() => { if (confirm("حذف؟")) adminDeleteMiracle(item.id).then(load).catch(() => alert("تعذّر الحذف.")); }}>حذف</button>
+                    <button type="button" onClick={async () => { if ((await confirm({ title: "تأكيد", body: "حذف؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteMiracle(item.id).then(load).catch(async () => { await alert("تعذّر الحذف."); }); }}>حذف</button>
                   </td>
                 </tr>
               ))}
@@ -95,6 +102,9 @@ export function MiraclesSection() {
         <Field label="التصنيف"><input value={form.category || ""} onChange={(e) => setForm({ ...form, category: e.target.value })} className="adm-input" /></Field>
         <Field label="المحتوى"><textarea value={form.body || form.summary || ""} onChange={(e) => setForm({ ...form, body: e.target.value })} className="adm-textarea" rows={6} /></Field>
       </AdminModal>
+          {confirmDialog}
+      {alertDialog}
+
     </div>
   );
 }

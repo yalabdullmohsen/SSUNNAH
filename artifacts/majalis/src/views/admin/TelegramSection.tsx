@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAdminShell } from "@/views/admin/AdminShell";
+import { useAdminConfirm, useAdminPrompt } from "@/components/admin/AdminConfirmDialog";
 import { Building2, CalendarDays, Clock, Folder, MapPin, Send, User } from "lucide-react";
 import "@/styles/pages/telegram-section.css";
 
@@ -268,6 +269,7 @@ function StatusTab() {
 }
 
 function ChannelsTab() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
   const { showSuccess, showError } = useAdminShell();
   const [channels, setChannels] = useState<TgChannel[]>([]);
   const [loading, setLoading] = useState(true);
@@ -308,7 +310,7 @@ function ChannelsTab() {
   };
 
   const remove = async (username: string) => {
-    if (!confirm(`حذف قناة @${username}؟`)) return;
+    if (!(await confirm({ title: "تأكيد الحذف", body: `حذف قناة @${username}؟`, danger: true, confirmLabel: "حذف" }))) return;
     setActing(`del-${username}`);
     try {
       const json = await tgPost("delete-channel", { channelUsername: username });
@@ -371,11 +373,13 @@ function ChannelsTab() {
           ))}
         </div>
       )}
+      {confirmDialog}
     </div>
   );
 }
 
 function ReviewTab() {
+  const { prompt, dialog: promptDialog } = useAdminPrompt();
   const { showSuccess, showError } = useAdminShell();
   const [lessons, setLessons] = useState<TgLesson[]>([]);
   const [loading, setLoading] = useState(true);
@@ -407,7 +411,7 @@ function ReviewTab() {
   };
 
   const reject = async (id: string) => {
-    const reason = prompt("سبب الرفض (اختياري):");
+    const reason = await prompt({ title: "سبب الرفض", label: "السبب (اختياري)", confirmLabel: "متابعة", required: false });
     setActing(`reject-${id}`);
     try {
       const json = await tgPost("reject-lesson", { lessonId: id, reason: reason || undefined });
@@ -530,6 +534,7 @@ function ReviewTab() {
           })}
         </div>
       )}
+      {promptDialog}
     </div>
   );
 }

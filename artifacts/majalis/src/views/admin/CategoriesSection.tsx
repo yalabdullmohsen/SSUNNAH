@@ -39,7 +39,7 @@ import {
 import "@/styles/pages/admin-categories.css";
 
 import { Button } from "@/components/ui/button";
-import { useAdminConfirm } from "@/components/admin/AdminConfirmDialog";
+import { useAdminConfirm, useAdminPrompt } from "@/components/admin/AdminConfirmDialog";
 type StatusTab = "all" | CategoryStatus | "needs_fix";
 
 function slugify(text: string): string {
@@ -76,6 +76,7 @@ function CategoryTreeItem({
   const { showSuccess, showError } = useAdminShell();
   const { user } = useAuth();
   const { confirm, dialog: confirmDialog } = useAdminConfirm();
+  const { prompt, dialog: promptDialog } = useAdminPrompt();
   const [expanded, setExpanded] = useState(expandAll || depth < 1);
   const [open, setOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -143,7 +144,7 @@ function CategoryTreeItem({
   };
 
   const addChild = async () => {
-    const name = prompt("اسم التصنيف الفرعي الجديد؟");
+    const name = (await prompt({ title: "اسم التصنيف الفرعي الجديد؟", label: "القيمة", confirmLabel: "متابعة", required: false }));
     if (!name?.trim()) return;
     const { error } = await adminUpsertCategory({
       parent_id: node.id, name: name.trim(), slug: slugify(name), sort_order: node.children.length, status: "draft",
@@ -264,11 +265,14 @@ function CategoryTreeItem({
         </Field>
       </AdminModal>
       {confirmDialog}
+      {promptDialog}
     </div>
   );
 }
 
 export function CategoriesSection() {
+  const { prompt, dialog: promptDialog } = useAdminPrompt();
+
   const { showError, showSuccess } = useAdminShell();
   const { user } = useAuth();
   const { confirm, dialog: confirmDialog } = useAdminConfirm();
@@ -433,7 +437,7 @@ export function CategoriesSection() {
               type="button"
               className="adm-btn-add"
               onClick={async () => {
-                const name = prompt("اسم الباب الرئيسي الجديد؟");
+                const name = (await prompt({ title: "اسم الباب الرئيسي الجديد؟", label: "القيمة", confirmLabel: "متابعة", required: false }));
                 if (!name?.trim()) return;
                 const { error } = await adminUpsertCategory({
                   name: name.trim(), slug: slugify(name), sort_order: buildCategoryTree(flat).length, status: "draft", parent_id: null,
@@ -550,6 +554,7 @@ export function CategoriesSection() {
         </>
       )}
       {confirmDialog}
+      {promptDialog}
     </div>
   );
 }

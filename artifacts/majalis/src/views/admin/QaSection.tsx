@@ -6,6 +6,7 @@ import {
   adminSetQuestionStatus,
   getQaCategories,
 } from "@/lib/supabase";
+import { useAdminConfirm, useAdminAlert } from "@/components/admin/AdminConfirmDialog";
 import {
   QA_RULING_TYPES,
   QA_RULING_CATEGORY_SLUG,
@@ -32,6 +33,9 @@ const EMPTY: any = {
 };
 
 export function QaSection() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+  const { alert, dialog: alertDialog } = useAdminAlert();
+
   const [items, setItems] = useState<any[]>([]);
   const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -58,26 +62,32 @@ export function QaSection() {
   };
 
   const handleDelete = async (id: string, question: string) => {
-    if (!confirm(`هل تريد حذف السؤال "${question.slice(0, 40)}..."؟`)) return;
+    if (!(await confirm({ title: "تأكيد", body: `هل تريد حذف السؤال "${question.slice(0, 40)}..."؟`, danger: true, confirmLabel: "تأكيد" }))) return;
     const { error } = await adminDeleteQuestion(id);
-    if (error) return alert(`تعذّر الحذف: ${error.message}`);
+    if (error) { await alert(`تعذّر الحذف: ${error.message}`); return; }
     load();
   };
 
   const toggleStatus = async (item: any) => {
     const next = item.status === "published" ? "draft" : "published";
     const { error } = await adminSetQuestionStatus(item.id, next);
-    if (error) return alert(`تعذّر تغيير حالة النشر: ${error.message}`);
+    if (error) { await alert(`تعذّر تغيير حالة النشر: ${error.message}`); return; }
     load();
   };
 
   const handleSave = async () => {
-    if (!form.question.trim()) return alert("نص السؤال مطلوب");
-    if (!form.answer.trim()) return alert("نص الجواب مطلوب");
+    if (!form.question.trim()) {
+      await alert("نص السؤال مطلوب");
+      return;
+    }
+    if (!form.answer.trim()) {
+      await alert("نص الجواب مطلوب");
+      return;
+    }
     setSaving(true);
     const { error } = await adminUpsertQuestion(form);
     setSaving(false);
-    if (error) return alert(`تعذّر الحفظ: ${error.message}`);
+    if (error) { await alert(`تعذّر الحفظ: ${error.message}`); return; }
     setOpen(false); load();
   };
 
@@ -249,6 +259,9 @@ export function QaSection() {
           </label>
         </Field>
       </AdminModal>
+          {confirmDialog}
+      {alertDialog}
+
     </div>
   );
 }

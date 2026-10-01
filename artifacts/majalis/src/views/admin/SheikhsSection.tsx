@@ -9,6 +9,7 @@ import { SheikhAvatar } from "@/components/lessons/SheikhAvatar";
 import { resolveSheikhImageUrl } from "@/lib/sheikh-image";
 import { sanitizeText, sanitizeOptionalUrl } from "@/lib/sanitize";
 import { validateSheikhImage } from "@/lib/file-validation";
+import { useAdminConfirm, useAdminAlert } from "@/components/admin/AdminConfirmDialog";
 
 const toArr = (v: any) => Array.isArray(v) ? v : (v ? String(v).split(/[،,]/).map((s: string) => s.trim()).filter(Boolean) : []);
 
@@ -18,6 +19,9 @@ const EMPTY: any = {
 };
 
 export function SheikhsSection() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+  const { alert, dialog: alertDialog } = useAdminAlert();
+
   const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState(() => { const p = new URLSearchParams(window.location.search); return p.get("q") || ""; });
@@ -39,11 +43,14 @@ export function SheikhsSection() {
     setOpen(true);
   };
   const handleDelete = async (id: string, name: string) => {
-    if (!confirm(`هل تريد حذف الشيخ "${name}"؟`)) return;
+    if (!(await confirm({ title: "تأكيد", body: `هل تريد حذف الشيخ "${name}"؟`, danger: true, confirmLabel: "تأكيد" }))) return;
     await adminDeleteSheikh(id); load();
   };
   const handleSave = async () => {
-    if (!form.name.trim()) return alert("الاسم مطلوب");
+    if (!form.name.trim()) {
+      await alert("الاسم مطلوب");
+      return;
+    }
     setSaving(true);
     try {
       let imageUrl = form.image_url || form.photo_url || "";
@@ -69,17 +76,17 @@ export function SheikhsSection() {
       setImagePreview("");
       load();
     } catch {
-      alert("تعذر حفظ بيانات الشيخ.");
+      await alert("تعذر حفظ بيانات الشيخ.");
     } finally {
       setSaving(false);
     }
   };
 
-  const handleImagePick = (file: File | null) => {
+  const handleImagePick = async (file: File | null) => {
     if (!file) return;
     const check = validateSheikhImage(file);
     if (!check.ok) {
-      alert(check.error);
+      await alert(check.error);
       return;
     }
     setImageFile(file);
@@ -222,6 +229,9 @@ export function SheikhsSection() {
           </label>
         </Field>
       </AdminModal>
+          {confirmDialog}
+      {alertDialog}
+
     </div>
   );
 }
