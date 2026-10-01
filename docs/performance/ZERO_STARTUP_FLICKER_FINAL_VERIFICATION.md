@@ -140,7 +140,7 @@
 | body font/bg delta | 0 | **0** |
 | sheets | 4→111 | **4→104** |
 
-PNGs: `evidence/zero-startup-flicker-final-local/*-{01..04}-*.png`
+Summary: `evidence/zero-startup-flicker-final-local/summary.json` (filmstrip PNGs محلية عند القياس؛ غير مدمجة لتفادي سقف ملفات PR)
 
 ---
 
