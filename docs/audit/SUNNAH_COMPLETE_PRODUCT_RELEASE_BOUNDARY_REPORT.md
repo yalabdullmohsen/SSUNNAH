@@ -3,13 +3,13 @@
 | Field | Value |
 |-------|-------|
 | Report status | **LIVING** |
-| Tip / production | `01c13f25` **MATCH** |
+| Tip / production | `52aa7b2f` **MATCH** |
 | Register | `SUNNAH_MASTER_CLOSURE_REGISTER.md` **LOCKED** |
 | **Executive Verdict** | **`PROJECT_CLOSURE_PARTIAL`** |
 
 ## Executive Verdict
 
-Web tip matches production. U2 tokens frozen; U1 numeric PR merged (contract proof on tip still A3). License certification evidence filled but **not** CONTENT/AUDIO certified. MRMP chartered; device/store evidence incomplete. CC0 Istanbul adhan retrieved as **candidate only**. Recitations locked to **STREAM_ONLY**.
+Web tip matches production. U2 tokens frozen; U3 **`DARK_LIGHT_UNIFIED`** (#2442). U1 numeric PR merged (contract proof on tip still A3). License certification evidence filled but **not** CONTENT/AUDIO certified. MRMP chartered; device/store evidence incomplete. CC0 Istanbul adhan retrieved as **candidate only**. Recitations locked to **STREAM_ONLY**.
 
 Higher states (`UNIFIED_100`, `MOBILE_READY`, `STORE_SUBMISSION_READY`, `STORE_GO`) are **false**.
 
@@ -17,10 +17,10 @@ Higher states (`UNIFIED_100`, `MOBILE_READY`, `STORE_SUBMISSION_READY`, `STORE_G
 
 | Item | Status |
 |------|--------|
-| U0 baseline | present (tip stale vs CURRENT — superseded by register tip) |
+| U0 baseline | present (historical; tip SoT = register) |
 | U2 Token | COMPLETE MATCH |
-| U3 Theme | **NEXT** · Ready Pack unlocked |
-| U4 Chrome/CLS | Ready Pack prep · locked on U3 |
+| U3 Theme | **`DARK_LIGHT_UNIFIED`** · MATCH `52aa7b2f` |
+| U4 Chrome/CLS | **EXECUTION_UNLOCKED** (next) |
 | U1 numeric | #2437 merged · tip re-measure/gate proof = A3 |
 | U5–U13 | OPEN |
 | Verdict | `UNIFIED_PARTIAL` |
