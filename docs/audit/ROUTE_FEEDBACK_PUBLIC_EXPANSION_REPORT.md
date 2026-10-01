@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **ROUTE_FEEDBACK_PUBLIC** (pending MERGED_AND_DEPLOYED) |
+| Status | **ROUTE_FEEDBACK_PUBLIC_COMPLETE** |
 | Base tip | `4cb03081` (Phase 1 sealed) |
 | Classification | [`ROUTE_FEEDBACK_PUBLIC_CLASSIFICATION.json`](./ROUTE_FEEDBACK_PUBLIC_CLASSIFICATION.json) |
 | Gate | `artifacts/majalis/src/lib/__tests__/closure-route-feedback-public-gate.test.ts` |
@@ -67,3 +67,13 @@ Physical VoiceOver/TalkBack · 200% Zoom · Large Text OS · Split View remain *
 ## Closure criterion
 
 `ROUTE_FEEDBACK_PUBLIC_COMPLETE` after merge · deploy · `version.json` MATCH · smoke · no critical regression.
+
+## Delivery
+
+| Item | Value |
+|---|---|
+| PR | https://github.com/yalabdullmohsen/majalis/pull/2420 |
+| Merge | `6d554102b` |
+| Production | `6d554102` MATCH |
+| Smoke | priority + static HTTP 200 |
+| Criterion | `ROUTE_FEEDBACK_PUBLIC_COMPLETE` |
