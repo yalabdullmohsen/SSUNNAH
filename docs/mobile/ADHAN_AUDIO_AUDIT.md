@@ -73,7 +73,9 @@ Evidence paths (CC0): `docs/audio-rights/evidence/wikimedia-adhan-ogg-2026-09-13
 |--------|--------|
 | Keep CC0 field packs on web | DONE (already) |
 | Keep madinah/qatami out of bundle | DONE (already removed) |
-| Delete additional binaries without replacement | **DEFERRED** — يحتاج بديل PUBLIC_DOMAIN/OPEN/LICENSED + تحديث بوابات `test:adhan-*` |
+| Retrieve Commons `Adhan_in_Istanbul.webm` | **DONE** · `CC0_ADHAN_CANDIDATE` · `docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/` · human QA pending (~50s) |
+| Promote Istanbul → `CC0_ADHAN_APPROVED_FOR_RELEASE` | **BLOCKED** on human listen QA |
+| Delete additional binaries without replacement | **DEFERRED** — يحتاج بديل APPROVED + تحديث بوابات `test:adhan-*` |
 | Register `adhan-haram-full` / `adhan-soft-alert` in rights registry or strip | **OPEN** · MF-AUDIO-1 |
 | OWNER allowlist for Store CAF/CC0 | **OWNER_ACTION** |
 | Replace low-SR assets (16–22 kHz) with ≥44.1 kHz licensed masters | **OPEN** · MF-AUDIO-2 |

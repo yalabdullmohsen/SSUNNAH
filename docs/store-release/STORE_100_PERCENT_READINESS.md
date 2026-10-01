@@ -1,8 +1,8 @@
 # STORE 100% READINESS — سُنّة 1.0.0
 
 **Verdict:** **HOLD**  
-**Truth sync:** 2026-09-21 · `docs/release/CURRENT_PROJECT_STATUS.md`  
-**Live web tip (`origin/main` / production):** `5e99cd7c` — **not** an automatic Store RC pin.  
+**Truth sync:** 2026-10-01 · `docs/release/CURRENT_PROJECT_STATUS.md` · Master Closure Register  
+**Live web tip (`origin/main` / production):** `01c13f25` **MATCH** — **not** an automatic Store RC pin.  
 **Historical web tip (STALE):** `3ba020f2` (pre store-guard #2191)  
 **Pinned Phase-0 commit (historical):** `ed5320b1f23c7b21d230c0698e86ce5cb8731ebc`  
 **After PR-A on main (historical):** `af09bc46488b1945352dc2b679f667020af74777`  

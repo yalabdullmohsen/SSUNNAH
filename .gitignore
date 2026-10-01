@@ -69,3 +69,9 @@ artifacts/majalis/public/data/search/shards/
 .claude/homunculus/
 .agents/skills/
 .codex/
+
+# Large CC0 adhan originals (hash + API evidence committed; binary local/cache)
+docs/audio-rights/evidence/**/*.webm
+docs/audio-rights/evidence/**/*.mkv
+.cache/
+docs/audio-rights/evidence/**/*.m4a

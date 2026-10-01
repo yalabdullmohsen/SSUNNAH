@@ -200,6 +200,11 @@
 | `docs/mobile/SUNNAH_MOBILE_FIRST_EXPANSION_MASTERPLAN.md` | **Mobile First Expansion** — Watch/Widgets/LA/Maps/Fatwa · `MOBILE_FIRST_MASTERPLAN_COMPLETE` |
 | `docs/mobile/ADHAN_AUDIO_AUDIT.md` | تدقيق أصوات الأذان (afinfo + حقوق) · `AUDIO_LICENSE_PARTIAL` |
 | `docs/mobile/CONTENT_LICENSE_CERTIFICATION.md` | بوابة تراخيص المحتوى الأصلي · `LICENSE_CERTIFICATION_REQUIRED` |
+| `docs/mobile/LICENSE_CERTIFICATION_STATUS.md` | حالة التراخيص الحالية (CURRENT) |
+| `docs/mobile/MOBILE_READINESS_STATUS.md` | حالة جاهزية التطبيق الحالية (CURRENT) |
+| `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` | **Master Closure Register** · `MASTER_CLOSURE_REGISTER_LOCKED` |
+| `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md` | تقرير حدود الإغلاق الحي · `PROJECT_CLOSURE_PARTIAL` |
+| `docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/` | مرشّح أذان CC0 إسطنبول · `CC0_ADHAN_CANDIDATE` |
 | `docs/qa/IOS_RELEASE_CHECKLIST.md` / `ANDROID_RELEASE_CHECKLIST.md` | قوائم إطلاق أصلية يُعاد استخدامها |
 | `docs/store-release/STORE_100_PERCENT_READINESS.md` | جاهزية المتجر 100% (HOLD حتى أدلة) |
 
