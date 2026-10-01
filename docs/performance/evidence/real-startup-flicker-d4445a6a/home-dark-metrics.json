@@ -1,0 +1,167 @@
+{
+  "route": "home-dark",
+  "path": "/",
+  "fp": 424,
+  "fcp": 424,
+  "clsTotal": 0.02450632963281445,
+  "clsEntries": [
+    {
+      "value": 0.0034326218641275025,
+      "startTime": 1041.8999999761581,
+      "sources": [
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "header.page-hero-mj.svl-page-header.svl-ornament-host.m2030-hero"
+        }
+      ]
+    },
+    {
+      "value": 0.0010541351798870197,
+      "startTime": 1060.1000000238419,
+      "sources": [
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "nav.hw3.hw3--identity"
+        },
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "div.page-hero-mj__actions"
+        },
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "p.ss-text.ss-text--explanation.page-hero-mj__desc"
+        }
+      ]
+    },
+    {
+      "value": 0.007718627740639825,
+      "startTime": 1188.8999999761581,
+      "sources": [
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "section.home-start-here.home-start-here--compact.home-start-here--slim"
+        },
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "nav.bottom-nav.bottom-nav--v2.bottom-nav--m2030.chrome-boot-ph"
+        }
+      ]
+    },
+    {
+      "value": 0.0037484505205408677,
+      "startTime": 1255,
+      "sources": [
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "main#main-content.app-main"
+        }
+      ]
+    },
+    {
+      "value": 0.004150077490620963,
+      "startTime": 1378,
+      "sources": [
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "section.m2030-band.home-start-here-band.home-start-here-band--slim"
+        },
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "div.ss-screen.ss-screen--dashboard.ss-screen--density-compact"
+        },
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "nav.hw3.hw3--identity"
+        },
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "h1#«r0».ss-text.ss-text--screen-title.page-hero-mj__title"
+        },
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "div.page-hero-mj__actions"
+        }
+      ]
+    },
+    {
+      "value": 0.004402416836998271,
+      "startTime": 1755.8999999761581,
+      "sources": [
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "main#main-content.app-main"
+        },
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "div.navbar-ticker-row"
+        }
+      ]
+    }
+  ],
+  "themeChanges": [
+    {
+      "t": 740.1000000238419,
+      "attr": "class",
+      "dataTheme": "light",
+      "className": "light theme-light"
+    },
+    {
+      "t": 740.1000000238419,
+      "attr": "class",
+      "dataTheme": "light",
+      "className": "light theme-light"
+    },
+    {
+      "t": 1587.8999999761581,
+      "attr": "class",
+      "dataTheme": "light",
+      "className": "light theme-light"
+    }
+  ],
+  "earlyTheme": {
+    "dataTheme": "light",
+    "classDark": false,
+    "colorScheme": "light",
+    "bg": "rgb(247, 243, 235)",
+    "color": "rgb(20, 36, 28)",
+    "fontFamily": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "fontSize": "16px",
+    "bgToken": "",
+    "backgroundToken": "",
+    "fontApp": "\"Amiri\",\"MajlisAmiriFallback\",\"MajlisFallback\",\"Traditional Arabic\",serif",
+    "mjBg": "",
+    "sfBg": "",
+    "ssBg": ""
+  },
+  "finalTheme": {
+    "dataTheme": "light",
+    "classDark": false,
+    "colorScheme": "light",
+    "bg": "rgb(247, 243, 235)",
+    "color": "rgb(21, 56, 45)",
+    "fontFamily": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "fontSize": "16px",
+    "bgToken": "#f8f6f1",
+    "backgroundToken": "#f8f6f1",
+    "fontApp": "\"Amiri\", \"MajlisAmiriFallback\", \"MajlisFallback\", \"Traditional Arabic\", serif",
+    "mjBg": "#f8f6f1",
+    "sfBg": "",
+    "ssBg": ""
+  },
+  "sheetCountEarly": 3,
+  "sheetCountFinal": 111
+}

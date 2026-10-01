@@ -1,0 +1,775 @@
+{
+  "measuredAt": "2026-10-01T06:46:55.414Z",
+  "production": {
+    "commit": "d4445a6a",
+    "shortCommit": "d4445a6a",
+    "commitSha": "d4445a6a",
+    "builtAt": "2026-10-01T06:38:14.605Z",
+    "buildTime": "2026-10-01T06:38:14.605Z",
+    "ref": "main",
+    "branch": "main"
+  },
+  "base": "https://www.ssunnah.com",
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "deviceScaleFactor": 2,
+    "isMobile": true,
+    "hasTouch": true
+  },
+  "results": [
+    {
+      "route": "home",
+      "path": "/",
+      "fp": 696,
+      "fcp": 696,
+      "clsTotal": 0.02001957258879993,
+      "clsAfterFcp": 0.02001957258879993,
+      "clsEntryCount": 4,
+      "topCls": [
+        {
+          "value": 0.007718627740639825,
+          "startTime": 1305.2000000476837,
+          "sources": [
+            "section.home-start-here.home-start-here--compact.home-start-here--slim",
+            "nav.bottom-nav.bottom-nav--v2.bottom-nav--m2030.chrome-boot-ph"
+          ]
+        },
+        {
+          "value": 0.004402416836998271,
+          "startTime": 1839,
+          "sources": [
+            "main#main-content.app-main",
+            "div.navbar-ticker-row"
+          ]
+        },
+        {
+          "value": 0.004150077490620963,
+          "startTime": 1523.2999999523163,
+          "sources": [
+            "section.m2030-band.home-start-here-band.home-start-here-band--slim",
+            "div.ss-screen.ss-screen--dashboard.ss-screen--density-compact",
+            "nav.hw3.hw3--identity",
+            "h1#«r0».ss-text.ss-text--screen-title.page-hero-mj__title",
+            "div.page-hero-mj__actions"
+          ]
+        },
+        {
+          "value": 0.0037484505205408677,
+          "startTime": 1387,
+          "sources": [
+            "main#main-content.app-main"
+          ]
+        }
+      ],
+      "themeChangeCount": 3,
+      "visualChangeCount": 12,
+      "visualChanges": [
+        {
+          "key": "theme.color",
+          "early": "rgb(20, 36, 28)",
+          "final": "rgb(21, 56, 45)"
+        },
+        {
+          "key": "theme.bgToken",
+          "early": "",
+          "final": "#f8f6f1"
+        },
+        {
+          "key": "theme.backgroundToken",
+          "early": "",
+          "final": "#f8f6f1"
+        },
+        {
+          "key": "theme.fontApp",
+          "early": "\"Amiri\",\"MajlisAmiriFallback\",\"MajlisFallback\",\"Traditional Arabic\",serif",
+          "final": "\"Amiri\", \"MajlisAmiriFallback\", \"MajlisFallback\", \"Traditional Arabic\", serif"
+        },
+        {
+          "key": "bodyFont",
+          "early": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+          "final": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif"
+        },
+        {
+          "key": "bodySize",
+          "early": "16px",
+          "final": "17px"
+        },
+        {
+          "key": "bodyColor",
+          "early": "rgb(20, 36, 28)",
+          "final": "rgb(21, 56, 45)"
+        },
+        {
+          "key": "bodyBg",
+          "early": "rgb(247, 243, 235)",
+          "final": "rgb(248, 246, 241)"
+        },
+        {
+          "key": "sheetCount",
+          "early": 3,
+          "final": 111
+        },
+        {
+          "key": "header.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "bottom.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "hero.presence",
+          "early": false,
+          "final": true
+        }
+      ],
+      "sheets": [
+        3,
+        111
+      ],
+      "networkCss": 108,
+      "networkFonts": 4,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+        "size": "16px",
+        "color": "rgb(20, 36, 28)",
+        "bg": "rgb(247, 243, 235)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "fp": 508,
+      "fcp": 508,
+      "clsTotal": 0.022253543271714474,
+      "clsAfterFcp": 0.022253543271714474,
+      "clsEntryCount": 2,
+      "topCls": [
+        {
+          "value": 0.017856741762314415,
+          "startTime": 1044.7000000476837,
+          "sources": [
+            "main#main-content.app-main"
+          ]
+        },
+        {
+          "value": 0.004396801509400059,
+          "startTime": 1344.8999999761581,
+          "sources": [
+            "main#main-content.app-main"
+          ]
+        }
+      ],
+      "themeChangeCount": 5,
+      "visualChangeCount": 12,
+      "visualChanges": [
+        {
+          "key": "theme.bg",
+          "early": "rgb(248, 246, 241)",
+          "final": "rgb(247, 243, 235)"
+        },
+        {
+          "key": "bodySize",
+          "early": "16px",
+          "final": "17px"
+        },
+        {
+          "key": "sheetCount",
+          "early": 3,
+          "final": 73
+        },
+        {
+          "key": "header.fontSize",
+          "early": "16px",
+          "final": "17px"
+        },
+        {
+          "key": "header.backgroundColor",
+          "early": "rgba(0, 0, 0, 0)",
+          "final": "rgb(248, 246, 241)"
+        },
+        {
+          "key": "header.rect",
+          "early": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 27.1875
+          },
+          "final": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 65
+          },
+          "delta": {
+            "dw": 0,
+            "dh": 37.8125,
+            "dy": 0
+          }
+        },
+        {
+          "key": "bottom.fontSize",
+          "early": "16px",
+          "final": "17px"
+        },
+        {
+          "key": "bottom.backgroundColor",
+          "early": "rgba(0, 0, 0, 0)",
+          "final": "rgb(255, 255, 255)"
+        },
+        {
+          "key": "bottom.rect",
+          "early": {
+            "x": 0,
+            "y": 656.046875,
+            "w": 390,
+            "h": 27.1875
+          },
+          "final": {
+            "x": 0,
+            "y": 780,
+            "w": 390,
+            "h": 64
+          },
+          "delta": {
+            "dw": 0,
+            "dh": 36.8125,
+            "dy": 123.953125
+          }
+        },
+        {
+          "key": "hero.fontSize",
+          "early": "21.6px",
+          "final": "17px"
+        },
+        {
+          "key": "hero.fontWeight",
+          "early": "700",
+          "final": "400"
+        },
+        {
+          "key": "hero.rect",
+          "early": {
+            "x": 0,
+            "y": 27.1875,
+            "w": 390,
+            "h": 29.140625
+          },
+          "final": {
+            "x": 32,
+            "y": 125.78125,
+            "w": 326,
+            "h": 123.40625
+          },
+          "delta": {
+            "dw": 64,
+            "dh": 94.265625,
+            "dy": 98.59375
+          }
+        }
+      ],
+      "sheets": [
+        3,
+        73
+      ],
+      "networkCss": 71,
+      "networkFonts": 5,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "16px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      }
+    },
+    {
+      "route": "quran-hub",
+      "path": "/quran-hub",
+      "fp": 500,
+      "fcp": 500,
+      "clsTotal": 0.004396801509400059,
+      "clsAfterFcp": 0.004396801509400059,
+      "clsEntryCount": 1,
+      "topCls": [
+        {
+          "value": 0.004396801509400059,
+          "startTime": 1159,
+          "sources": [
+            "main#main-content.app-main"
+          ]
+        }
+      ],
+      "themeChangeCount": 5,
+      "visualChangeCount": 11,
+      "visualChanges": [
+        {
+          "key": "theme.bg",
+          "early": "rgb(248, 246, 241)",
+          "final": "rgb(247, 243, 235)"
+        },
+        {
+          "key": "bodySize",
+          "early": "16px",
+          "final": "17px"
+        },
+        {
+          "key": "sheetCount",
+          "early": 3,
+          "final": 77
+        },
+        {
+          "key": "header.fontSize",
+          "early": "16px",
+          "final": "17px"
+        },
+        {
+          "key": "header.backgroundColor",
+          "early": "rgba(0, 0, 0, 0)",
+          "final": "rgb(248, 246, 241)"
+        },
+        {
+          "key": "header.rect",
+          "early": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 27.1875
+          },
+          "final": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 65
+          },
+          "delta": {
+            "dw": 0,
+            "dh": 37.8125,
+            "dy": 0
+          }
+        },
+        {
+          "key": "bottom.fontSize",
+          "early": "16px",
+          "final": "17px"
+        },
+        {
+          "key": "bottom.backgroundColor",
+          "early": "rgba(0, 0, 0, 0)",
+          "final": "rgb(255, 255, 255)"
+        },
+        {
+          "key": "bottom.rect",
+          "early": {
+            "x": 0,
+            "y": 468.453125,
+            "w": 390,
+            "h": 27.1875
+          },
+          "final": {
+            "x": 0,
+            "y": 780,
+            "w": 390,
+            "h": 64
+          },
+          "delta": {
+            "dw": 0,
+            "dh": 36.8125,
+            "dy": 311.546875
+          }
+        },
+        {
+          "key": "hero.color",
+          "early": "rgb(21, 56, 45)",
+          "final": "rgb(247, 241, 228)"
+        },
+        {
+          "key": "hero.rect",
+          "early": {
+            "x": 0,
+            "y": 27.1875,
+            "w": 390,
+            "h": 29.140625
+          },
+          "final": {
+            "x": 201.90625,
+            "y": 155.984375,
+            "w": 120.703125,
+            "h": 41.921875
+          },
+          "delta": {
+            "dw": 269.296875,
+            "dh": 12.78125,
+            "dy": 128.796875
+          }
+        }
+      ],
+      "sheets": [
+        3,
+        77
+      ],
+      "networkCss": 75,
+      "networkFonts": 5,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "16px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      }
+    },
+    {
+      "route": "mushaf",
+      "path": "/mushaf",
+      "fp": 528,
+      "fcp": 528,
+      "clsTotal": 0,
+      "clsAfterFcp": 0,
+      "clsEntryCount": 0,
+      "topCls": [],
+      "themeChangeCount": 6,
+      "visualChangeCount": 9,
+      "visualChanges": [
+        {
+          "key": "theme.bg",
+          "early": "rgb(248, 246, 241)",
+          "final": "rgb(251, 244, 232)"
+        },
+        {
+          "key": "bodySize",
+          "early": "16px",
+          "final": "17px"
+        },
+        {
+          "key": "sheetCount",
+          "early": 3,
+          "final": 57
+        },
+        {
+          "key": "header.fontFamily",
+          "early": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+          "final": "Amiri, \"Traditional Arabic\", serif"
+        },
+        {
+          "key": "header.fontSize",
+          "early": "16px",
+          "final": "17px"
+        },
+        {
+          "key": "header.color",
+          "early": "rgb(21, 56, 45)",
+          "final": "rgb(95, 72, 20)"
+        },
+        {
+          "key": "header.rect",
+          "early": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 27.1875
+          },
+          "final": {
+            "x": -388,
+            "y": 0,
+            "w": 386,
+            "h": 36
+          },
+          "delta": {
+            "dw": 4,
+            "dh": 8.8125,
+            "dy": 0
+          }
+        },
+        {
+          "key": "bottom.presence",
+          "early": true,
+          "final": false
+        },
+        {
+          "key": "hero.rect",
+          "early": {
+            "x": 0,
+            "y": 27.1875,
+            "w": 390,
+            "h": 29.140625
+          },
+          "final": {
+            "x": 390,
+            "y": -1,
+            "w": 1,
+            "h": 1
+          },
+          "delta": {
+            "dw": 389,
+            "dh": 28.140625,
+            "dy": 28.1875
+          }
+        }
+      ],
+      "sheets": [
+        3,
+        57
+      ],
+      "networkCss": 55,
+      "networkFonts": 9,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "16px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      }
+    },
+    {
+      "route": "prayer-times",
+      "path": "/prayer-times",
+      "fp": 428,
+      "fcp": 428,
+      "clsTotal": 0.053832016314038486,
+      "clsAfterFcp": 0.053832016314038486,
+      "clsEntryCount": 2,
+      "topCls": [
+        {
+          "value": 0.05380606904606814,
+          "startTime": 1210.7999999523163,
+          "sources": [
+            "div.global-back-control-host"
+          ]
+        },
+        {
+          "value": 0.00002594726797034416,
+          "startTime": 1061.0999999046326,
+          "sources": [
+            "svg",
+            "svg",
+            "svg",
+            "svg",
+            "svg"
+          ]
+        }
+      ],
+      "themeChangeCount": 6,
+      "visualChangeCount": 15,
+      "visualChanges": [
+        {
+          "key": "theme.bg",
+          "early": "rgb(248, 246, 241)",
+          "final": "rgb(42, 64, 48)"
+        },
+        {
+          "key": "bodySize",
+          "early": "16px",
+          "final": "17px"
+        },
+        {
+          "key": "bodyBg",
+          "early": "rgb(248, 246, 241)",
+          "final": "rgb(42, 64, 48)"
+        },
+        {
+          "key": "sheetCount",
+          "early": 3,
+          "final": 58
+        },
+        {
+          "key": "header.fontSize",
+          "early": "16px",
+          "final": "17px"
+        },
+        {
+          "key": "header.color",
+          "early": "rgb(21, 56, 45)",
+          "final": "rgb(250, 250, 248)"
+        },
+        {
+          "key": "header.rect",
+          "early": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 27.1875
+          },
+          "final": {
+            "x": 16,
+            "y": 12,
+            "w": 358,
+            "h": 51.4375
+          },
+          "delta": {
+            "dw": 32,
+            "dh": 24.25,
+            "dy": 12
+          }
+        },
+        {
+          "key": "bottom.fontSize",
+          "early": "16px",
+          "final": "17px"
+        },
+        {
+          "key": "bottom.backgroundColor",
+          "early": "rgba(0, 0, 0, 0)",
+          "final": "rgb(10, 69, 48)"
+        },
+        {
+          "key": "bottom.rect",
+          "early": {
+            "x": 0,
+            "y": 320.484375,
+            "w": 390,
+            "h": 27.1875
+          },
+          "final": {
+            "x": 0,
+            "y": 780,
+            "w": 390,
+            "h": 64
+          },
+          "delta": {
+            "dw": 0,
+            "dh": 36.8125,
+            "dy": 459.515625
+          }
+        },
+        {
+          "key": "hero.fontSize",
+          "early": "21.6px",
+          "final": "17px"
+        },
+        {
+          "key": "hero.fontWeight",
+          "early": "700",
+          "final": "400"
+        },
+        {
+          "key": "hero.color",
+          "early": "rgb(21, 56, 45)",
+          "final": "rgb(247, 241, 228)"
+        },
+        {
+          "key": "hero.backgroundColor",
+          "early": "rgba(0, 0, 0, 0)",
+          "final": "rgb(10, 47, 36)"
+        },
+        {
+          "key": "hero.rect",
+          "early": {
+            "x": 0,
+            "y": 27.1875,
+            "w": 390,
+            "h": 29.140625
+          },
+          "final": {
+            "x": 16,
+            "y": 77.828125,
+            "w": 358,
+            "h": 178.421875
+          },
+          "delta": {
+            "dw": 32,
+            "dh": 149.28125,
+            "dy": 50.640625
+          }
+        }
+      ],
+      "sheets": [
+        3,
+        58
+      ],
+      "networkCss": 56,
+      "networkFonts": 5,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "16px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(42, 64, 48)"
+      }
+    },
+    {
+      "route": "home-dark",
+      "path": "/",
+      "fp": 424,
+      "fcp": 424,
+      "clsTotal": 0.02450632963281445,
+      "clsEntryCount": 6,
+      "topCls": [
+        {
+          "value": 0.007718627740639825,
+          "startTime": 1188.8999999761581,
+          "sources": [
+            "section.home-start-here.home-start-here--compact.home-start-here--slim",
+            "nav.bottom-nav.bottom-nav--v2.bottom-nav--m2030.chrome-boot-ph"
+          ]
+        },
+        {
+          "value": 0.004402416836998271,
+          "startTime": 1755.8999999761581,
+          "sources": [
+            "main#main-content.app-main",
+            "div.navbar-ticker-row"
+          ]
+        },
+        {
+          "value": 0.004150077490620963,
+          "startTime": 1378,
+          "sources": [
+            "section.m2030-band.home-start-here-band.home-start-here-band--slim",
+            "div.ss-screen.ss-screen--dashboard.ss-screen--density-compact",
+            "nav.hw3.hw3--identity",
+            "h1#«r0».ss-text.ss-text--screen-title.page-hero-mj__title",
+            "div.page-hero-mj__actions"
+          ]
+        },
+        {
+          "value": 0.0037484505205408677,
+          "startTime": 1255,
+          "sources": [
+            "main#main-content.app-main"
+          ]
+        },
+        {
+          "value": 0.0034326218641275025,
+          "startTime": 1041.8999999761581,
+          "sources": [
+            "header.page-hero-mj.svl-page-header.svl-ornament-host.m2030-hero"
+          ]
+        }
+      ],
+      "themeChangeCount": 3,
+      "sheets": [
+        3,
+        111
+      ]
+    }
+  ]
+}
