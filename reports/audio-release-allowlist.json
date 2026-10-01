@@ -1,0 +1,478 @@
+{
+  "schemaVersion": 1,
+  "phase": "T-027",
+  "locked": true,
+  "lockedAtUtc": "2026-10-01T20:55:00Z",
+  "istanbulDecision": "CC0_ADHAN_REJECTED_QUALITY",
+  "storeV1PrimaryAlert": "system-default",
+  "AUDIO_RELEASE_ALLOWLIST_LOCKED": true,
+  "counts": {
+    "total": 66,
+    "APPROVED_AUDIO": 8,
+    "BLOCKED_AUDIO": 58
+  },
+  "assets": [
+    {
+      "path": "public/audio/adhan/adhan-aqsa-full.mp3",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "INTERNAL",
+      "reason": "INTERNAL_PENDING_OWNER \u2014 not for store RC"
+    },
+    {
+      "path": "public/audio/adhan/adhan-egypt-full.m4a",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "INTERNAL",
+      "reason": "INTERNAL_PENDING_OWNER \u2014 not for store RC"
+    },
+    {
+      "path": "public/audio/adhan/adhan-field-full.m4a",
+      "id": null,
+      "allowlist": "APPROVED_AUDIO",
+      "class": "CC0_APPROVED",
+      "reason": "CC0-1.0 Wikimedia evidence"
+    },
+    {
+      "path": "public/audio/adhan/adhan-field-short.m4a",
+      "id": null,
+      "allowlist": "APPROVED_AUDIO",
+      "class": "CC0_APPROVED",
+      "reason": "CC0-1.0 Wikimedia evidence"
+    },
+    {
+      "path": "public/audio/adhan/adhan-field.m4a",
+      "id": null,
+      "allowlist": "APPROVED_AUDIO",
+      "class": "CC0_APPROVED",
+      "reason": "CC0-1.0 Wikimedia evidence"
+    },
+    {
+      "path": "public/audio/adhan/adhan-gulf-short.mp3",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "INTERNAL",
+      "reason": "INTERNAL_PENDING_OWNER \u2014 not for store RC"
+    },
+    {
+      "path": "public/audio/adhan/adhan-haram-full.m4a",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "MISSING_EVIDENCE"
+    },
+    {
+      "path": "public/audio/adhan/adhan-makkah-fajr.mp3",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "INTERNAL",
+      "reason": "INTERNAL_PENDING_OWNER \u2014 not for store RC"
+    },
+    {
+      "path": "public/audio/adhan/adhan-makkah-full.m4a",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "INTERNAL",
+      "reason": "INTERNAL_PENDING_OWNER \u2014 not for store RC"
+    },
+    {
+      "path": "public/audio/adhan/adhan-makkah.mp3",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "INTERNAL",
+      "reason": "INTERNAL_PENDING_OWNER \u2014 not for store RC"
+    },
+    {
+      "path": "public/audio/adhan/adhan-soft-alert.m4a",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "MISSING_EVIDENCE"
+    },
+    {
+      "path": "public/audio/adhan/adhan-takbeerat-short.mp3",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "INTERNAL",
+      "reason": "INTERNAL_PENDING_OWNER \u2014 not for store RC"
+    },
+    {
+      "path": "public/sounds/adhan/aqsa-general.mp3",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "INTERNAL",
+      "reason": "INTERNAL / unresolved store strip"
+    },
+    {
+      "path": "public/sounds/adhan/egypt-general.m4a",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "INTERNAL",
+      "reason": "INTERNAL / unresolved store strip"
+    },
+    {
+      "path": "public/sounds/adhan/makkah-fajr.mp3",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "INTERNAL",
+      "reason": "INTERNAL / unresolved store strip"
+    },
+    {
+      "path": "public/sounds/adhan/makkah-general.m4a",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "INTERNAL",
+      "reason": "INTERNAL / unresolved store strip"
+    },
+    {
+      "path": "public/sounds/adhan/takbeerat-short.mp3",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "INTERNAL",
+      "reason": "INTERNAL / unresolved store strip"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-01.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-02.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-03.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-04.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-short-aqsa.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-short-egypt.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-short-field-full.caf",
+      "id": null,
+      "allowlist": "APPROVED_AUDIO",
+      "class": "CC0_APPROVED",
+      "reason": "CC0 derived from field packs"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-short-field.caf",
+      "id": null,
+      "allowlist": "APPROVED_AUDIO",
+      "class": "CC0_APPROVED",
+      "reason": "CC0 derived from field packs"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-short-makkah-fajr.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-short-makkah.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-short-takbeerat.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/Sounds/alarm-clear.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer-alert.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_aqsa.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_clear.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_default.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_egypt.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_makkah.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_quiet.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_soft.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_takbeerat.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/Sounds/short-ring.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/Sounds/soft-ring.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/adhan-seq-makkah-01.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/adhan-seq-makkah-02.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/adhan-seq-makkah-03.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/adhan-seq-makkah-04.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/adhan-short-aqsa.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/adhan-short-egypt.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/adhan-short-field-full.caf",
+      "id": null,
+      "allowlist": "APPROVED_AUDIO",
+      "class": "CC0_APPROVED",
+      "reason": "CC0 derived from field packs"
+    },
+    {
+      "path": "ios/App/App/adhan-short-field.caf",
+      "id": null,
+      "allowlist": "APPROVED_AUDIO",
+      "class": "CC0_APPROVED",
+      "reason": "CC0 derived from field packs"
+    },
+    {
+      "path": "ios/App/App/adhan-short-makkah-fajr.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/adhan-short-makkah.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/adhan-short-takbeerat.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "UNKNOWN",
+      "reason": "UNKNOWN/INTERNAL \u2014 strip from Archive"
+    },
+    {
+      "path": "ios/App/App/alarm-clear.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/prayer-alert.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/prayer_aqsa.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/prayer_clear.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/prayer_default.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/prayer_egypt.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/prayer_makkah.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/prayer_quiet.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/prayer_soft.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/prayer_takbeerat.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/short-ring.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": "ios/App/App/soft-ring.caf",
+      "id": null,
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STRIP_FROM_RELEASE",
+      "reason": "Provisional tone \u2014 prefer OS default for store RC"
+    },
+    {
+      "path": null,
+      "id": "system-default",
+      "allowlist": "APPROVED_AUDIO",
+      "class": "APPROVED_FOR_RELEASE",
+      "reason": "OS notification sound \u2014 Store v1 primary"
+    },
+    {
+      "path": null,
+      "id": "istanbul",
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "CC0_ADHAN_REJECTED_QUALITY",
+      "reason": "Human QA completeness FAIL (~50.085s) \u2192 CC0_ADHAN_REJECTED_QUALITY"
+    },
+    {
+      "path": null,
+      "id": "recitations-remote",
+      "allowlist": "BLOCKED_AUDIO",
+      "class": "STREAM_ONLY",
+      "reason": "STREAM_ONLY \u2014 no binary packaging"
+    }
+  ]
+}

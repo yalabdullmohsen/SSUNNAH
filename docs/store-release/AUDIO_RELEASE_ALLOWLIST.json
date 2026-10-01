@@ -1,0 +1,98 @@
+{
+  "$schema_note": "T-027 final Store audio allowlist. Every adhan-related asset must be APPROVED_AUDIO or BLOCKED_AUDIO. Istanbul decision is final for this phase.",
+  "version": 1,
+  "phase": "T-027",
+  "locked": true,
+  "lockedAtUtc": "2026-10-01T20:55:00Z",
+  "AUDIO_RELEASE_ALLOWLIST_LOCKED": true,
+  "istanbulDecision": "CC0_ADHAN_REJECTED_QUALITY",
+  "istanbulEvidence": "docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/HUMAN_QA_RECORD.md",
+  "storeV1PrimaryAlert": "system-default",
+  "rules": [
+    "No UNKNOWN / INTERNAL / MISSING_EVIDENCE in Store Archive",
+    "No Istanbul binary after CC0_ADHAN_REJECTED_QUALITY",
+    "Recitations remain STREAM_ONLY",
+    "No AI voice replacement or adhan wording edits"
+  ],
+  "APPROVED_AUDIO": [
+    {
+      "id": "system-default",
+      "class": "APPROVED_FOR_RELEASE",
+      "files": [],
+      "note": "OS notification sound — Store v1 primary after Istanbul reject"
+    },
+    {
+      "id": "field",
+      "class": "CC0_APPROVED",
+      "files": [
+        "artifacts/majalis/public/audio/adhan/adhan-field.m4a",
+        "artifacts/majalis/public/audio/adhan/adhan-field-short.m4a",
+        "artifacts/majalis/ios/App/App/Sounds/adhan-short-field.caf"
+      ],
+      "evidence": "Wikimedia File:Adhan.ogg CC0 · prayer-audio-rights-registry"
+    },
+    {
+      "id": "field-full",
+      "class": "CC0_APPROVED",
+      "files": [
+        "artifacts/majalis/public/audio/adhan/adhan-field-full.m4a",
+        "artifacts/majalis/ios/App/App/Sounds/adhan-short-field-full.caf"
+      ],
+      "evidence": "Wikimedia File:Beautiful_adhan.ogg CC0 · prayer-audio-rights-registry"
+    }
+  ],
+  "BLOCKED_AUDIO": [
+    {
+      "id": "istanbul",
+      "class": "CC0_ADHAN_REJECTED_QUALITY",
+      "files": [],
+      "localCacheOnly": ".cache/cc0-adhan-istanbul/adhan-istanbul-cc0-candidate.m4a",
+      "reason": "Human QA completeness FAIL · duration 50.085s"
+    },
+    {
+      "id": "internal-adhan-packs",
+      "class": "INTERNAL",
+      "pattern": "public/audio/adhan/adhan-{makkah,egypt,aqsa,gulf,takbeerat}*",
+      "reason": "INTERNAL_PENDING_OWNER"
+    },
+    {
+      "id": "missing-evidence-adhan",
+      "class": "UNKNOWN",
+      "files": [
+        "artifacts/majalis/public/audio/adhan/adhan-haram-full.m4a",
+        "artifacts/majalis/public/audio/adhan/adhan-soft-alert.m4a"
+      ],
+      "reason": "MISSING_EVIDENCE"
+    },
+    {
+      "id": "excluded-celebrity-uncertain",
+      "class": "EXCLUDED",
+      "ids": ["madinah", "qatami"],
+      "reason": "removed / rejected"
+    },
+    {
+      "id": "legacy-sounds-adhan",
+      "class": "INTERNAL",
+      "pattern": "public/sounds/adhan/*",
+      "reason": "unresolved store strip"
+    },
+    {
+      "id": "ios-non-cc0-caf",
+      "class": "UNKNOWN",
+      "pattern": "ios/App/App/**/adhan-*.caf except adhan-short-field*.caf",
+      "reason": "strip from Archive"
+    },
+    {
+      "id": "ios-provisional-tones",
+      "class": "STRIP_FROM_RELEASE",
+      "pattern": "ios/App/App/Sounds/prayer*.caf|*-ring.caf|alarm-clear.caf",
+      "reason": "prefer OS default"
+    },
+    {
+      "id": "recitations-remote",
+      "class": "STREAM_ONLY",
+      "reason": "no binary / offline / watch / widget packaging"
+    }
+  ],
+  "inventoryFile": "reports/audio-release-allowlist.json"
+}
