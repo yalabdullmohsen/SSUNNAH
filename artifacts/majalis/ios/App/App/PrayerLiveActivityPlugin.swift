@@ -65,6 +65,14 @@ public class PrayerLiveActivityPlugin: CAPPlugin, CAPBridgedPlugin {
                     attributes: attributes,
                     content: .init(state: state, staleDate: nil)
                 )
+                // Mirror into App Group for future Widget/Watch readers (non-secret).
+                _ = SunnahSharedStore.publishLiveActivityState(
+                    prayerKey: prayerKey,
+                    prayerNameAr: prayerName,
+                    prayerTime: prayerTime,
+                    locationLabel: locationLabel,
+                    hasStarted: false
+                )
                 call.resolve(["started": true])
             } catch {
                 call.resolve(["started": false])
@@ -88,6 +96,13 @@ public class PrayerLiveActivityPlugin: CAPPlugin, CAPBridgedPlugin {
             Task {
                 await activity.update(.init(state: state, staleDate: nil))
             }
+            _ = SunnahSharedStore.publishLiveActivityState(
+                prayerKey: activity.attributes.prayerKey,
+                prayerNameAr: state.prayerName,
+                prayerTime: state.prayerTime,
+                locationLabel: state.locationLabel,
+                hasStarted: hasStarted
+            )
             call.resolve(["updated": true])
             return
         }

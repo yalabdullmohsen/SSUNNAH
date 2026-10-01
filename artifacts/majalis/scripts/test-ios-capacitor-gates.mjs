@@ -410,6 +410,57 @@ ok(
   "KeychainStore.swift listed under App target Sources",
 );
 
+// T-028 — App Group foundation (no Widget/Watch targets yet)
+const APP_GROUP = "group.com.yousef.majlisilm";
+const sharedSwift = join(iosApp, "Shared", "SunnahSharedData.swift");
+const sharedPlugin = join(iosApp, "App", "SunnahSharedDataPlugin.swift");
+const plaEnt = join(iosApp, "PrayerLiveActivity", "PrayerLiveActivity.entitlements");
+ok(existsSync(sharedSwift), "Shared/SunnahSharedData.swift exists");
+ok(existsSync(sharedPlugin), "SunnahSharedDataPlugin.swift exists");
+ok(existsSync(plaEnt), "PrayerLiveActivity.entitlements exists");
+if (existsSync(sharedSwift)) {
+  const shared = readFileSync(sharedSwift, "utf8");
+  ok(shared.includes(APP_GROUP), "shared store uses group.com.yousef.majlisilm");
+  ok(shared.includes("forbiddenSubstrings"), "shared store forbids secret key patterns");
+  ok(shared.includes("SharedPrayerSnapshot"), "SharedPrayerSnapshot model present");
+  ok(shared.includes("SharedProgressSnapshot"), "SharedProgressSnapshot model present");
+  ok(
+    !/KeychainStore\.set|var\s+accessToken|var\s+refreshToken/i.test(shared),
+    "shared store does not write auth tokens",
+  );
+}
+for (const entName of ["App.debug.entitlements", "App.release.entitlements", "App.entitlements"]) {
+  const entPath = join(iosApp, "App", entName);
+  ok(existsSync(entPath), `${entName} exists`);
+  if (existsSync(entPath)) {
+    const ent = readFileSync(entPath, "utf8");
+    ok(
+      ent.includes("com.apple.security.application-groups") && ent.includes(APP_GROUP),
+      `${entName} declares ${APP_GROUP}`,
+    );
+  }
+}
+if (existsSync(plaEnt)) {
+  const pla = readFileSync(plaEnt, "utf8");
+  ok(pla.includes(APP_GROUP), "LA entitlements declare App Group");
+}
+ok(/SunnahSharedData\.swift in Sources/.test(pbx), "SunnahSharedData.swift in pbx Sources");
+ok(/SunnahSharedDataPlugin\.swift in Sources/.test(pbx), "SunnahSharedDataPlugin.swift in App Sources");
+ok(
+  pbx.includes("CODE_SIGN_ENTITLEMENTS = PrayerLiveActivity/PrayerLiveActivity.entitlements"),
+  "LA target CODE_SIGN_ENTITLEMENTS set",
+);
+ok(!/PRODUCT_BUNDLE_IDENTIFIER = .*\.Widget/.test(pbx), "no Widget extension target yet (T-028 foundation only)");
+ok(!/watchos|WatchKit/i.test(pbx), "no Watch app target yet (T-028 foundation only)");
+const otherGroups = [...pbx.matchAll(/group\.com\.[a-z0-9.]+/gi)].map((m) => m[0]);
+const unexpected = otherGroups.filter((g) => g !== APP_GROUP);
+ok(unexpected.length === 0, `no conflicting App Group ids in pbx (found ${unexpected.join(",") || "none"})`);
+const livePlugin = readFileSync(join(iosApp, "App", "PrayerLiveActivityPlugin.swift"), "utf8");
+ok(
+  livePlugin.includes("SunnahSharedStore.publishLiveActivityState"),
+  "PrayerLiveActivityPlugin mirrors state into App Group",
+);
+
 // package.json / prepare-ios: لا تستخدم npx cap — من جذر الـ monorepo يحلّ npm حزمة
 // cap@0.2.1 (بلا bin) → "could not determine executable to run". استخدم ثنائي .bin المحلي.
 // Product scope: iOS-only — mobile:android must remain a hard-fail retired stub.

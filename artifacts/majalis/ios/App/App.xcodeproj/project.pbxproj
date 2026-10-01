@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0280002SHAREDDATAAPP01 /* SunnahSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */; };
+		A0280003SHAREDDATALA01 /* SunnahSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */; };
+		A0280005SHAREDPLUGINAPP /* SunnahSharedDataPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0280004SHAREDPLUGINFILE /* SunnahSharedDataPlugin.swift */; };
 		05B0407FBEE74C08BAD75898 /* PrayerLiveActivityBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6429A49DB14D2382B4F753 /* PrayerLiveActivityBundle.swift */; };
 		18A062D2627A492F88C48C0A /* PrayerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C1C0E442F343FCA02B3616 /* PrayerActivityAttributes.swift */; };
 		2FAD9763203C412B000D30F8 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD9762203C412B000D30F8 /* config.xml */; };
@@ -77,6 +80,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahSharedData.swift; sourceTree = "<group>"; };
+		A0280004SHAREDPLUGINFILE /* SunnahSharedDataPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahSharedDataPlugin.swift; sourceTree = "<group>"; };
+		A0280006PLAENTITLEMENTS /* PrayerLiveActivity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrayerLiveActivity.entitlements; sourceTree = "<group>"; };
 		20C1C0E442F343FCA02B3616 /* PrayerActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerActivityAttributes.swift; sourceTree = "<group>"; };
 		2FAD9762203C412B000D30F8 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
 		50379B222058CBB4000EE86E /* capacitor.config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = capacitor.config.json; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 				958DCC722DB07C7200EA8C5F /* debug.xcconfig */,
 				504EC3061FED79650016851F /* App */,
 				B077274F69CA4782AB6069F6 /* PrayerLiveActivity */,
+				A0280007SHAREDGROUP0001 /* Shared */,
 				504EC3051FED79650016851F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -174,6 +181,7 @@
 				504EC3071FED79650016851F /* AppDelegate.swift */,
 				20C1C0E442F343FCA02B3616 /* PrayerActivityAttributes.swift */,
 				F4816472931E4AB1A0DE1F42 /* PrayerLiveActivityPlugin.swift */,
+				A0280004SHAREDPLUGINFILE /* SunnahSharedDataPlugin.swift */,
 				B2C3D4E5F6071890AB12CD02 /* MajlisPlaybackAudioPlugin.swift */,
 				C1D2E3F4A5B6071890AB12CD02 /* MajlisOfflineAudioPlugin.swift */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
@@ -217,6 +225,7 @@
 				8D6429A49DB14D2382B4F753 /* PrayerLiveActivityBundle.swift */,
 				51BFB99A02A44271A9C1823F /* PrayerLiveActivityLiveActivity.swift */,
 				F40AA07210D9414E9C98BAD5 /* Info.plist */,
+				A0280006PLAENTITLEMENTS /* PrayerLiveActivity.entitlements */,
 			);
 			path = PrayerLiveActivity;
 			sourceTree = "<group>";
@@ -238,7 +247,16 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		A0280007SHAREDGROUP0001 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
 
 /* Begin PBXNativeTarget section */
 		504EC3031FED79650016851F /* App */ = {
@@ -388,6 +406,8 @@
 				D2B3C4D5E6F708192A3B4C5E /* NetworkService.swift in Sources */,
 				B40A70BD645B44F885C91A9B /* PrayerActivityAttributes.swift in Sources */,
 				EFBF4693BAFB4F5B82254F8C /* PrayerLiveActivityPlugin.swift in Sources */,
+				A0280002SHAREDDATAAPP01 /* SunnahSharedData.swift in Sources */,
+				A0280005SHAREDPLUGINAPP /* SunnahSharedDataPlugin.swift in Sources */,
 				B2C3D4E5F6071890AB12CD01 /* MajlisPlaybackAudioPlugin.swift in Sources */,
 				C1D2E3F4A5B6071890AB12CD01 /* MajlisOfflineAudioPlugin.swift in Sources */,
 			);
@@ -397,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0280003SHAREDDATALA01 /* SunnahSharedData.swift in Sources */,
 				18A062D2627A492F88C48C0A /* PrayerActivityAttributes.swift in Sources */,
 				05B0407FBEE74C08BAD75898 /* PrayerLiveActivityBundle.swift in Sources */,
 				364D1D47522246B3A2925CB0 /* PrayerLiveActivityLiveActivity.swift in Sources */,
@@ -437,6 +458,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PrayerLiveActivity/PrayerLiveActivity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 54;
 				DEVELOPMENT_TEAM = 5D8TX37HTS;
@@ -464,6 +486,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PrayerLiveActivity/PrayerLiveActivity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 54;
 				DEVELOPMENT_TEAM = 5D8TX37HTS;

@@ -37,6 +37,7 @@ import {
   type PrayerNotifIdKind,
 } from "./prayer-notification-ids";
 import { startPrayerLiveActivity, markPrayerLiveActivityEntered, endPrayerLiveActivity } from "./plugins/prayer-live-activity";
+import { publishSharedPrayerSnapshot } from "./plugins/sunnah-shared-data";
 import type { PrayerSoundProfile } from "./prayer-notification-sounds";
 import { PRAYER_ALERT_EVENT_NAME, type PrayerAlertEvent } from "./prayer-alert-events";
 import { isIOS, isNative } from "./capacitor-utils";
@@ -392,6 +393,23 @@ export async function startPrayerAlertScheduler(
   const prayerEpoch = epochForSlot(next, tz);
   const prayerName = KEY_TO_ARABIC[next.key] ?? next.name;
   const prayerKey = next.key.toLowerCase();
+  /* App Group snapshot — غير سرّي؛ يغذّي LA الحالي وWidget/Watch لاحقاً */
+  if (isNative && isIOS) {
+    const timesEpochMs: Record<string, number> = {};
+    for (const { slot, epoch } of slots) {
+      timesEpochMs[slot.key.toLowerCase()] = epoch;
+    }
+    void publishSharedPrayerSnapshot({
+      locationLabel: payload.city || "",
+      timeZoneIdentifier: tz,
+      dayKey: todayISO,
+      timesEpochMs,
+      nextPrayerKey: prayerKey,
+      nextPrayerNameAr: prayerName,
+      nextPrayerEpochMs: prayerEpoch,
+      nextHasStarted: Date.now() >= prayerEpoch,
+    });
+  }
   const nextOpts = resolveSlotAlertOpts(next.key, prefs);
   const preMinutes = nextOpts.preAlertMinutes;
   const preAlertDelay = prayerEpoch - Date.now() - preMinutes * 60_000;
