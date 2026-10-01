@@ -577,6 +577,415 @@ async function handleStatus(req, res, auth) {
   });
 }
 
+async function handleLibrary(req, res, admin, auth) {
+  if (req.method === "GET") {
+    if (!need(auth, "content.read") && !need(auth, "content.edit") && !need(auth, "content.*")) {
+      return deny(res, auth, "content.read");
+    }
+    const status = req.query?.status || null;
+    const { page, pageSize, from, to } = clampPage(req.query);
+    let query = admin
+      .from("library_items")
+      .select(
+        "id, title, author_name, author, type, category, description, status, file_url, external_url, created_at, updated_at",
+        { count: "exact" },
+      )
+      .order("created_at", { ascending: false });
+    if (status) query = query.eq("status", status);
+    if (req.query?.q) {
+      const term = String(req.query.q).trim().slice(0, 80);
+      if (term) {
+        query = query.or(
+          `title.ilike.%${term}%,author_name.ilike.%${term}%,author.ilike.%${term}%,category.ilike.%${term}%`,
+        );
+      }
+    }
+    const { data, error, count } = await query.range(from, to);
+    if (error) return sendSafeError(res, sendJson, error, { code: "admin_v3_list_failed" });
+    return sendJson(res, 200, {
+      ok: true,
+      data: data || [],
+      page,
+      pageSize,
+      total: count ?? 0,
+    });
+  }
+
+  if (req.method === "POST" || req.method === "PUT" || req.method === "PATCH") {
+    if (!need(auth, "content.edit") && !need(auth, "content.create") && !need(auth, "content.*")) {
+      return deny(res, auth, "content.edit");
+    }
+    const id = req.body?.id || null;
+    const fields = pickFields(req.body, [
+      "title",
+      "author_name",
+      "author",
+      "type",
+      "category",
+      "description",
+      "status",
+      "file_url",
+      "external_url",
+    ]);
+    fields.title = str(fields.title, 500);
+    fields.author_name = str(fields.author_name || fields.author, 200);
+    delete fields.author;
+    fields.type = str(fields.type, 80) || "كتاب";
+    fields.category = str(fields.category, 120);
+    fields.description = str(fields.description, MAX_TEXT);
+    fields.file_url = str(fields.file_url, 2048);
+    fields.external_url = str(fields.external_url, 2048);
+    fields.status = str(fields.status, 40) || "draft";
+    if (!fields.title) {
+      return sendJson(res, 422, { ok: false, error: "validation", userMessageAr: "عنوان المادة مطلوب." });
+    }
+    fields.updated_at = new Date().toISOString();
+    if (!id) fields.created_at = fields.updated_at;
+    const result = id
+      ? await admin.from("library_items").update(fields).eq("id", id).select("id, updated_at").maybeSingle()
+      : await admin.from("library_items").insert(fields).select("id, updated_at").maybeSingle();
+    if (result.error) return sendSafeError(res, sendJson, result.error, { code: "admin_v3_upsert_failed" });
+    await audit(admin, auth, id ? "content.update" : "content.create", "library_items", result.data?.id || id, {
+      title: fields.title,
+    });
+    return sendJson(res, 200, { ok: true, data: result.data });
+  }
+
+  if (req.method === "DELETE") {
+    if (!need(auth, "content.delete") && !need(auth, "archive") && !need(auth, "content.*")) {
+      return deny(res, auth, "content.delete");
+    }
+    const id = req.query?.id || req.body?.id;
+    if (!id) return sendJson(res, 400, { ok: false, error: "bad_request" });
+    const { data: row } = await admin.from("library_items").select("id, title").eq("id", id).maybeSingle();
+    if (!row) return sendJson(res, 404, { ok: false, error: "not_found" });
+    const { error } = await admin
+      .from("library_items")
+      .update({ status: "archived", updated_at: new Date().toISOString() })
+      .eq("id", id);
+    if (error) return sendSafeError(res, sendJson, error, { code: "admin_v3_archive_failed" });
+    await audit(admin, auth, "content.archive", "library_items", id, { title: row.title });
+    return sendJson(res, 200, { ok: true, message: "archived" });
+  }
+
+  sendJson(res, 405, { ok: false, error: "method_not_allowed" });
+}
+
+async function handleIslamicStories(req, res, admin, auth) {
+  if (req.method === "GET") {
+    if (!need(auth, "content.read") && !need(auth, "content.edit") && !need(auth, "content.*")) {
+      return deny(res, auth, "content.read");
+    }
+    const { page, pageSize, from, to } = clampPage(req.query);
+    let query = admin
+      .from("islamic_stories")
+      .select(
+        "id, slug, title, category, era, summary, full_content, is_approved, verified_by, created_at, updated_at",
+        { count: "exact" },
+      )
+      .order("created_at", { ascending: false });
+    if (req.query?.status === "approved") query = query.eq("is_approved", true);
+    if (req.query?.status === "draft" || req.query?.status === "pending") query = query.eq("is_approved", false);
+    if (req.query?.q) {
+      const term = String(req.query.q).trim().slice(0, 80);
+      if (term) {
+        query = query.or(`title.ilike.%${term}%,slug.ilike.%${term}%,category.ilike.%${term}%,era.ilike.%${term}%`);
+      }
+    }
+    const { data, error, count } = await query.range(from, to);
+    if (error) return sendSafeError(res, sendJson, error, { code: "admin_v3_list_failed" });
+    return sendJson(res, 200, {
+      ok: true,
+      data: data || [],
+      page,
+      pageSize,
+      total: count ?? 0,
+    });
+  }
+
+  if (req.method === "POST" || req.method === "PUT" || req.method === "PATCH") {
+    if (!need(auth, "content.edit") && !need(auth, "content.create") && !need(auth, "content.*")) {
+      return deny(res, auth, "content.edit");
+    }
+    const id = req.body?.id || null;
+    const fields = pickFields(req.body, [
+      "slug",
+      "title",
+      "category",
+      "era",
+      "summary",
+      "full_content",
+      "is_approved",
+    ]);
+    fields.title = str(fields.title, 500);
+    fields.slug = str(fields.slug, 160);
+    fields.category = str(fields.category, 120);
+    fields.era = str(fields.era, 120);
+    fields.summary = str(fields.summary, MAX_TEXT);
+    fields.full_content = str(fields.full_content, MAX_TEXT);
+    if (typeof fields.is_approved === "string") {
+      fields.is_approved = fields.is_approved === "true" || fields.is_approved === "1";
+    } else if (fields.is_approved == null) {
+      fields.is_approved = false;
+    } else {
+      fields.is_approved = !!fields.is_approved;
+    }
+    if (!fields.title || !fields.slug) {
+      return sendJson(res, 422, {
+        ok: false,
+        error: "validation",
+        userMessageAr: "العنوان والـ slug مطلوبان.",
+      });
+    }
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/i.test(fields.slug)) {
+      return sendJson(res, 422, {
+        ok: false,
+        error: "validation",
+        userMessageAr: "صيغة slug غير صالحة.",
+      });
+    }
+    fields.updated_at = new Date().toISOString();
+    const result = id
+      ? await admin.from("islamic_stories").update(fields).eq("id", id).select("id").maybeSingle()
+      : await admin.from("islamic_stories").insert(fields).select("id").maybeSingle();
+    if (result.error) return sendSafeError(res, sendJson, result.error, { code: "admin_v3_upsert_failed" });
+    await audit(admin, auth, id ? "content.update" : "content.create", "islamic_stories", result.data?.id || id, {
+      slug: fields.slug,
+      is_approved: fields.is_approved,
+    });
+    return sendJson(res, 200, { ok: true, data: result.data });
+  }
+
+  if (req.method === "DELETE") {
+    if (!need(auth, "content.delete") && !need(auth, "archive") && !need(auth, "content.*")) {
+      return deny(res, auth, "content.delete");
+    }
+    const id = req.query?.id || req.body?.id;
+    if (!id) return sendJson(res, 400, { ok: false, error: "bad_request" });
+    const { data: row } = await admin.from("islamic_stories").select("id, title").eq("id", id).maybeSingle();
+    if (!row) return sendJson(res, 404, { ok: false, error: "not_found" });
+    const { error } = await admin
+      .from("islamic_stories")
+      .update({ is_approved: false, verified_by: null, updated_at: new Date().toISOString() })
+      .eq("id", id);
+    if (error) return sendSafeError(res, sendJson, error, { code: "admin_v3_archive_failed" });
+    await audit(admin, auth, "content.archive", "islamic_stories", id, { title: row.title });
+    return sendJson(res, 200, { ok: true, message: "unapproved" });
+  }
+
+  sendJson(res, 405, { ok: false, error: "method_not_allowed" });
+}
+
+async function handleProphetStories(req, res, admin, auth) {
+  if (req.method === "GET") {
+    if (!need(auth, "content.read") && !need(auth, "content.edit") && !need(auth, "content.*")) {
+      return deny(res, auth, "content.read");
+    }
+    const { page, pageSize, from, to } = clampPage(req.query);
+    let query = admin
+      .from("prophet_stories")
+      .select("id, slug, arabic_name, content, is_approved, verified_by, approved_at, created_at", {
+        count: "exact",
+      })
+      .order("id", { ascending: true });
+    if (req.query?.status === "approved") query = query.eq("is_approved", true);
+    if (req.query?.status === "draft" || req.query?.status === "pending") query = query.eq("is_approved", false);
+    if (req.query?.q) {
+      const term = String(req.query.q).trim().slice(0, 80);
+      if (term) {
+        query = query.or(`slug.ilike.%${term}%,arabic_name.ilike.%${term}%`);
+      }
+    }
+    const { data, error, count } = await query.range(from, to);
+    if (error) return sendSafeError(res, sendJson, error, { code: "admin_v3_list_failed" });
+    return sendJson(res, 200, {
+      ok: true,
+      data: data || [],
+      page,
+      pageSize,
+      total: count ?? 0,
+    });
+  }
+
+  if (req.method === "POST" || req.method === "PUT" || req.method === "PATCH") {
+    if (!need(auth, "content.edit") && !need(auth, "content.create") && !need(auth, "content.*")) {
+      return deny(res, auth, "content.edit");
+    }
+    const id = req.body?.id || null;
+    // Citations JSON editor remains Legacy — v3 edits content + approval + names only
+    const fields = pickFields(req.body, ["slug", "arabic_name", "content", "is_approved"]);
+    fields.slug = str(fields.slug, 160);
+    fields.arabic_name = str(fields.arabic_name, 200);
+    fields.content = str(fields.content, MAX_TEXT);
+    if (typeof fields.is_approved === "string") {
+      fields.is_approved = fields.is_approved === "true" || fields.is_approved === "1";
+    } else if (fields.is_approved == null && !id) {
+      fields.is_approved = false;
+    } else if (fields.is_approved != null) {
+      fields.is_approved = !!fields.is_approved;
+    } else {
+      delete fields.is_approved;
+    }
+    if (!fields.slug || !fields.arabic_name) {
+      return sendJson(res, 422, {
+        ok: false,
+        error: "validation",
+        userMessageAr: "الاسم العربي والـ slug مطلوبان.",
+      });
+    }
+    if (fields.is_approved === true) {
+      fields.approved_at = new Date().toISOString();
+      fields.verified_by = "admin_v3";
+    } else if (fields.is_approved === false) {
+      fields.approved_at = null;
+      fields.verified_by = null;
+    }
+    const result = id
+      ? await admin.from("prophet_stories").update(fields).eq("id", id).select("id").maybeSingle()
+      : await admin.from("prophet_stories").insert(fields).select("id").maybeSingle();
+    if (result.error) return sendSafeError(res, sendJson, result.error, { code: "admin_v3_upsert_failed" });
+    await audit(admin, auth, id ? "content.update" : "content.create", "prophet_stories", result.data?.id || id, {
+      slug: fields.slug,
+      is_approved: fields.is_approved,
+    });
+    return sendJson(res, 200, { ok: true, data: result.data });
+  }
+
+  if (req.method === "DELETE") {
+    if (!need(auth, "content.delete") && !need(auth, "archive") && !need(auth, "content.*")) {
+      return deny(res, auth, "content.delete");
+    }
+    const id = req.query?.id || req.body?.id;
+    if (!id) return sendJson(res, 400, { ok: false, error: "bad_request" });
+    const { data: row } = await admin.from("prophet_stories").select("id, slug").eq("id", id).maybeSingle();
+    if (!row) return sendJson(res, 404, { ok: false, error: "not_found" });
+    const { error } = await admin
+      .from("prophet_stories")
+      .update({ is_approved: false, approved_at: null, verified_by: null })
+      .eq("id", id);
+    if (error) return sendSafeError(res, sendJson, error, { code: "admin_v3_archive_failed" });
+    await audit(admin, auth, "content.archive", "prophet_stories", id, { slug: row.slug });
+    return sendJson(res, 200, { ok: true, message: "unapproved" });
+  }
+
+  sendJson(res, 405, { ok: false, error: "method_not_allowed" });
+}
+
+const ARBAEEN_STATUSES = new Set(["draft", "in_review", "verified", "published", "rejected"]);
+
+async function handleArbaeen(req, res, admin, auth) {
+  if (req.method === "GET") {
+    if (!need(auth, "content.read") && !need(auth, "content.edit") && !need(auth, "content.*")) {
+      return deny(res, auth, "content.read");
+    }
+    const { page, pageSize, from, to } = clampPage(req.query);
+    let query = admin
+      .from("arbaeen_love_of_allah")
+      .select(
+        "id, order_number, title, hadith_text, source, hadith_number, grade, verified_by, review_status, editor_notes, created_at, updated_at",
+        { count: "exact" },
+      )
+      .order("order_number", { ascending: true });
+    if (req.query?.status && ARBAEEN_STATUSES.has(String(req.query.status))) {
+      query = query.eq("review_status", String(req.query.status));
+    }
+    if (req.query?.q) {
+      const term = String(req.query.q).trim().slice(0, 80);
+      if (term) {
+        query = query.or(`title.ilike.%${term}%,source.ilike.%${term}%,hadith_text.ilike.%${term}%`);
+      }
+    }
+    const { data, error, count } = await query.range(from, to);
+    if (error) return sendSafeError(res, sendJson, error, { code: "admin_v3_list_failed" });
+    return sendJson(res, 200, {
+      ok: true,
+      data: data || [],
+      page,
+      pageSize,
+      total: count ?? 0,
+    });
+  }
+
+  if (req.method === "POST" || req.method === "PUT" || req.method === "PATCH") {
+    if (!need(auth, "content.edit") && !need(auth, "content.create") && !need(auth, "content.*")) {
+      return deny(res, auth, "content.edit");
+    }
+    const id = req.body?.id || null;
+    const fields = pickFields(req.body, [
+      "order_number",
+      "title",
+      "hadith_text",
+      "source",
+      "hadith_number",
+      "grade",
+      "review_status",
+      "editor_notes",
+      "verified_by",
+    ]);
+    fields.title = str(fields.title, 500);
+    fields.hadith_text = str(fields.hadith_text, MAX_TEXT);
+    fields.source = str(fields.source, 400);
+    fields.hadith_number = str(fields.hadith_number, 80);
+    fields.grade = str(fields.grade, 40);
+    fields.editor_notes = str(fields.editor_notes, 2000);
+    fields.verified_by = str(fields.verified_by, 200);
+    fields.review_status = str(fields.review_status, 40) || "draft";
+    if (!ARBAEEN_STATUSES.has(fields.review_status)) {
+      return sendJson(res, 422, {
+        ok: false,
+        error: "validation",
+        userMessageAr: "حالة المراجعة غير صالحة.",
+      });
+    }
+    if (fields.order_number != null && fields.order_number !== "") {
+      const n = Number.parseInt(String(fields.order_number), 10);
+      fields.order_number = Number.isFinite(n) ? n : null;
+    } else {
+      fields.order_number = null;
+    }
+    if (!fields.title || !fields.hadith_text || !fields.source) {
+      return sendJson(res, 422, {
+        ok: false,
+        error: "validation",
+        userMessageAr: "العنوان ونص الحديث والمصدر مطلوبة.",
+      });
+    }
+    fields.updated_at = new Date().toISOString();
+    if (!id) fields.created_at = fields.updated_at;
+    const result = id
+      ? await admin.from("arbaeen_love_of_allah").update(fields).eq("id", id).select("id, updated_at").maybeSingle()
+      : await admin.from("arbaeen_love_of_allah").insert(fields).select("id, updated_at").maybeSingle();
+    if (result.error) return sendSafeError(res, sendJson, result.error, { code: "admin_v3_upsert_failed" });
+    await audit(admin, auth, id ? "content.update" : "content.create", "arbaeen_love_of_allah", result.data?.id || id, {
+      review_status: fields.review_status,
+    });
+    return sendJson(res, 200, { ok: true, data: result.data });
+  }
+
+  if (req.method === "DELETE") {
+    if (!need(auth, "content.delete") && !need(auth, "archive") && !need(auth, "content.*")) {
+      return deny(res, auth, "content.delete");
+    }
+    const id = req.query?.id || req.body?.id;
+    if (!id) return sendJson(res, 400, { ok: false, error: "bad_request" });
+    const { data: row } = await admin
+      .from("arbaeen_love_of_allah")
+      .select("id, title")
+      .eq("id", id)
+      .maybeSingle();
+    if (!row) return sendJson(res, 404, { ok: false, error: "not_found" });
+    const { error } = await admin
+      .from("arbaeen_love_of_allah")
+      .update({ review_status: "rejected", updated_at: new Date().toISOString() })
+      .eq("id", id);
+    if (error) return sendSafeError(res, sendJson, error, { code: "admin_v3_archive_failed" });
+    await audit(admin, auth, "content.archive", "arbaeen_love_of_allah", id, { title: row.title });
+    return sendJson(res, 200, { ok: true, message: "rejected" });
+  }
+
+  sendJson(res, 405, { ok: false, error: "method_not_allowed" });
+}
+
 export default async function handler(req, res) {
   const auth = await requireAdminAccess(req, res, sendJson);
   if (!auth) return;
@@ -597,6 +1006,10 @@ export default async function handler(req, res) {
     if (entity === "lessons") return await handleLessons(req, res, admin, auth);
     if (entity === "sheikhs") return await handleSheikhs(req, res, admin, auth);
     if (entity === "fawaid") return await handleFawaid(req, res, admin, auth);
+    if (entity === "library") return await handleLibrary(req, res, admin, auth);
+    if (entity === "islamic-stories") return await handleIslamicStories(req, res, admin, auth);
+    if (entity === "prophet-stories") return await handleProphetStories(req, res, admin, auth);
+    if (entity === "arbaeen") return await handleArbaeen(req, res, admin, auth);
     if (entity === "categories") return await handleCategories(req, res, admin, auth);
     if (entity === "users") return await handleUsers(req, res, admin, auth);
     if (entity === "audit") return await handleAudit(req, res, admin, auth);

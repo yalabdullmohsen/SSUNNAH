@@ -4,6 +4,7 @@ import { AdminV3CenterWorkspace } from "./centers/AdminV3CenterWorkspace";
 import { ReviewInboxPage } from "./domains/reviews/ReviewInboxPage";
 import { ContentHubPage } from "./domains/content/ContentHubPage";
 import { EntityCrudPage } from "./domains/content/EntityCrudPage";
+import { RemainingEntityCrudPage } from "./domains/content/RemainingEntityCrudPage";
 import { TaxonomyPage } from "./domains/taxonomy/TaxonomyPage";
 import { UsersPage } from "./domains/community/UsersPage";
 import { RolesPage } from "./domains/community/RolesPage";
@@ -25,6 +26,10 @@ export function AdminV3Router() {
   if (path === "/admin/v3/content/lessons") return <EntityCrudPage kind="lessons" />;
   if (path === "/admin/v3/content/sheikhs") return <EntityCrudPage kind="sheikhs" />;
   if (path === "/admin/v3/content/fawaid") return <EntityCrudPage kind="fawaid" />;
+  if (path === "/admin/v3/content/library") return <RemainingEntityCrudPage kind="library" />;
+  if (path === "/admin/v3/content/islamic-stories") return <RemainingEntityCrudPage kind="islamic-stories" />;
+  if (path === "/admin/v3/content/prophet-stories") return <RemainingEntityCrudPage kind="prophet-stories" />;
+  if (path === "/admin/v3/content/arbaeen") return <RemainingEntityCrudPage kind="arbaeen" />;
   if (path === "/admin/v3/content") return <ContentHubPage />;
 
   if (path === "/admin/v3/taxonomy") return <TaxonomyPage />;

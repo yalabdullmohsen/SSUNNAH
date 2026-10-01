@@ -2,18 +2,19 @@
 
 | Field | Value |
 |---|---|
-| Captured | 2026-10-01T04:10Z |
+| Captured | 2026-10-01T04:10Z · **refreshed 2026-10-01T04:50Z** |
 | Live baseline | [`FINAL_CLOSURE_LIVE_BASELINE.md`](./FINAL_CLOSURE_LIVE_BASELINE.md) · **LIVE_BASELINE_LOCKED** |
-| SoT tip (live) | `a04419361` (#2423 seal after FINAL-2 `8255ed5db`) |
+| SoT tip (live) | `5ec1a84e` (ADMIN-FINAL-3 #2424 · MATCH production) |
 | Post-FINAL-2 baseline | [`POST_ADMIN_FINAL_2_LIVE_BASELINE.md`](./POST_ADMIN_FINAL_2_LIVE_BASELINE.md) · **LOCKED** |
-| Active phase | **ADMIN-FINAL-3 Core CRUD** (PR #2424) |
+| Active phase | **ADMIN-FINAL-4 Entity Migration** |
 | Rule | مرحلة واحدة · PR واحد · MATCH قبل التالي |
 
 ## الحالة الحالية (عند القفل الحي)
 
 ```text
-main = production = 8255ed5db / 8255ed5d · MATCH
+main = production = 5ec1a84e · MATCH (was 8255ed5d FINAL-2; then a0441936 seal; then FINAL-3)
 ADMIN-FINAL-2 = ADMIN_FINAL_2_MERGED_AND_DEPLOYED (#2422)
+ADMIN-FINAL-3 = ADMIN_FINAL_3_MERGED_AND_DEPLOYED (#2424 → 5ec1a84e)
 
 WAVE1–WAVE13 = CLOSED
 Startup Typography P0/P1/P2 = CLOSED

@@ -1,12 +1,15 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-09-30 (Cards residual absorb Phase 5 after Identity Phase 4 MATCH)  
+**Updated:** 2026-10-01 (ADMIN-FINAL-4 entity migration in flight after FINAL-3 MATCH)  
 **Canonical readiness:** `docs/release/RELEASE_READINESS_TRUTH.md`  
 **Final boundary:** `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md`  
 **Live program state:** `docs/audit/SUNNAH_FINAL_QUALITY_PROGRAM_LIVE_STATE.md`  
 **Mushaf polish seal:** `docs/mushaf/MUSHAF_POST_CLOSURE_POLISH_FINAL_REPORT.md`  
 **Admin final program:** `docs/admin/ADMIN_FINAL_MIGRATION_AND_SECURITY_BASELINE.md`  
 **Admin FINAL-1 closure:** `docs/admin/ADMIN_FINAL_1_CLOSURE_REPORT.md`  
+**Admin FINAL-3 closure:** `docs/admin/ADMIN_FINAL_3_CORE_CRUD_CLOSURE_REPORT.md`  
+**Admin FINAL-4 report:** `docs/admin/ADMIN_FINAL_4_ENTITY_MIGRATION_REPORT.md`  
+**Post ADMIN-FINAL-2 baseline:** `docs/remediation/POST_ADMIN_FINAL_2_LIVE_BASELINE.md`  
 **Startup typography FOUC:** `docs/performance/STARTUP_TYPOGRAPHY_FOUC_LIVE_BASELINE.md`  
 **Startup FOUC P2 scope:** `docs/performance/STARTUP_TYPOGRAPHY_FOUC_PHASE2_SCOPE.md`  
 **FINAL program resume:** `docs/performance/SUNNAH_FINAL_PROGRAM_PHASE0_LIVE_TRUTH.md`  
@@ -22,19 +25,19 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `032ad8db` — Identity bridges absorb Phase 4 (#2411) |
-| Production `version.json` | `032ad8db` **MATCH** · `builtAt=2026-09-30T23:10:47.134Z` |
+| `origin/main` tip | `5ec1a84e` — ADMIN-FINAL-3 Core CRUD (#2424) |
+| Production `version.json` | `5ec1a84e` **MATCH** · `builtAt=2026-10-01T04:42:35.585Z` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** |
-| Internal | **`INTERNAL_CLOSURE_COMPLETE`** |
-| Web visual/interaction | **`VISUAL_INTERACTION_COMPLETE_WEB`** |
+| Internal | **`FINAL_INTERNAL_CLOSURE_PARTIAL`** |
+| Web visual/interaction | **`VISUAL_INTERACTION_COMPLETE_WEB`** (prior waves) |
 | Mushaf polish | **COMPLETE_DEVICE_HOLD** (residual lag DEVICE_REQUIRED) |
-| Admin program | **ADMIN-FINAL-1** `MERGED_AND_DEPLOYED` · FINAL-2+ allowed next |
+| Admin program | **ADMIN-FINAL-3** `MERGED_AND_DEPLOYED` · **ADMIN-FINAL-4** in flight |
 | Startup Typography FOUC | **P2** · MATCH |
-| Dark deferred absorb | **Phase 3** · MATCH `ac0218d8` |
-| Identity bridges absorb | **Phase 4** · MATCH `032ad8db` · hex 8905 |
-| Cards residual absorb | **Phase 5** · radius 1258 · Delivery pending |
-| Explicit non-claims | no `STORE GO` · no `DEVICE_TESTED` · no `MUSHAF_SILKY` · no `WCAG CERTIFIED` · no `FULLY COMPLETE` · no `ADMIN_FULLY_SECURE` · no `ZERO_FLICKER_COMPLETE` · no `ZERO_INTERNAL_DEBT` |
+| Dark deferred absorb | **Phase 3** · MATCH (prior) |
+| Identity bridges absorb | **Phase 4** · MATCH (prior) |
+| Cards residual absorb | **Phase 5** · MATCH (prior) |
+| Explicit non-claims | no `STORE GO` · no `DEVICE_TESTED` · no `MUSHAF_SILKY` · no `WCAG CERTIFIED` · no `FULLY COMPLETE` · no `ADMIN_FULLY_SECURE` · no `ZERO_FLICKER_COMPLETE` · no `ZERO_INTERNAL_DEBT` · no `FINAL_INTERNAL_CLOSURE_COMPLETE` |
 
 ## Closure program WAVE7→13 (merged + deployed)
 

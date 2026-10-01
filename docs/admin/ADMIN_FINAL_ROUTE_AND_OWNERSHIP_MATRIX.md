@@ -21,6 +21,10 @@ Classification legend: `V3_CANONICAL` · `V3_ALIAS` · `LEGACY_ACTIVE` · `LEGAC
 | `/admin/v3/content/lessons` | v3 | Content | lessons CRUD | content.* | `/api/admin/v3/lessons` | V3 native | Legacy section KEEP | `V3_CANONICAL` | 404 | n/a |
 | `/admin/v3/content/sheikhs` | v3 | Content | sheikhs CRUD | content.* | `/api/admin/v3/sheikhs` | V3 native | Legacy KEEP | `V3_CANONICAL` | 404 | n/a |
 | `/admin/v3/content/fawaid` | v3 | Content | fawaid CRUD | content.* | `/api/admin/v3/fawaid` | V3 native | Legacy KEEP | `V3_CANONICAL` | 404 | n/a |
+| `/admin/v3/content/library` | v3 | Content | library CRUD | content.* | `/api/admin/v3/library` | V3 FINAL-4 | Legacy KEEP | `V3_CANONICAL` | 404 | n/a |
+| `/admin/v3/content/islamic-stories` | v3 | Content | islamic stories | content.* | `/api/admin/v3/islamic-stories` | V3 FINAL-4 | Legacy KEEP | `V3_CANONICAL` | 404 | n/a |
+| `/admin/v3/content/prophet-stories` | v3 | Content | prophet stories (partial) | content.* | `/api/admin/v3/prophet-stories` | V3_PARTIAL FINAL-4 | Legacy citations | `V3_CANONICAL` | 404 | n/a |
+| `/admin/v3/content/arbaeen` | v3 | Content | arbaeen love | content.* | `/api/admin/v3/arbaeen` | V3 FINAL-4 | Legacy KEEP | `V3_CANONICAL` | 404 | n/a |
 | `/admin/v3/taxonomy` | v3 | Taxonomy | categories | content.edit | `/api/admin/v3/categories` | V3 native | Legacy KEEP | `V3_CANONICAL` | 404 | n/a |
 | `/admin/v3/analytics` | v3 | Analytics | platform | super/system admin | `/api/admin/analytics-platform` | PARTIAL | search-analytics Legacy | `V3_CANONICAL` | 404 | n/a |
 | `/admin/v3/community` | v3 | Community | users list/roles | users.* | `/api/admin/v3/users` | V3 FINAL-3 | Legacy users | `V3_CANONICAL` | 404 | n/a |
@@ -53,7 +57,7 @@ Classification legend: `V3_CANONICAL` · `V3_ALIAS` · `LEGACY_ACTIVE` · `LEGAC
 | `/admin/import` | Redirect | Content import | → url | — | — | alias | url import | `V3_ALIAS` / Legacy alias | 404 | keep |
 | `/admin/integrations/instagram` | Standalone | Integrations | Instagram | content.edit | instagram-integration | ops | settings | `STANDALONE_MIGRATE_NOW` | 404 | FINAL-6 · secrets OWNER |
 | `/admin/feature-status` | Standalone | System | feature health | admin | feature-health | ops | settings | `STANDALONE_MIGRATE_NOW` | 404 | FINAL-6 |
-| `/admin/universities` | Standalone | Content | universities admin | content.* | client/RLS + page | migrate | content hub | `STANDALONE_MIGRATE_NOW` | 404 | FINAL-4 |
+| `/admin/universities` | Standalone | Content | universities admin | content.* | `/api/admin/universities` nested | LEGACY_REQUIRED | content hub link | `LEGACY_REQUIRED` | 404 | nested schema — not link-only complete |
 | `/admin/fiqh-review` | Redirect | — | → `/admin/v3` | — | — | dead→v3 | `/admin/v3` | `DEPRECATED` | 404 | SAFE_REMOVE_CANDIDATE after bookmark window |
 | `/admin/fiqh-quality` | Redirect | — | → `/admin/v3` | — | — | dead→v3 | `/admin/v3` | `DEPRECATED` | 404 | SAFE_REMOVE_CANDIDATE after bookmark window |
 
@@ -76,8 +80,8 @@ Classification legend: `V3_CANONICAL` · `V3_ALIAS` · `LEGACY_ACTIVE` · `LEGAC
 | `lessons` | Content | `LEGACY_KEEP_JUSTIFIED` | `/admin/v3/content/lessons` |
 | `sheikhs` | Content | `LEGACY_KEEP_JUSTIFIED` | `/admin/v3/content/sheikhs` |
 | `fawaid` | Content | `LEGACY_KEEP_JUSTIFIED` | `/admin/v3/content/fawaid` |
-| `library` | Content | `LEGACY_MIGRATE_NOW` | no v3 native CRUD yet (FINAL-4) |
-| `adhkar` | Content | `LEGACY_MIGRATE_NOW` | FINAL-4 |
+| `library` | Content | `LEGACY_KEEP_JUSTIFIED` | `/admin/v3/content/library` (FINAL-4) |
+| `adhkar` | Content | `LEGACY_REQUIRED` | BLOCKED_SOURCE — seed + localStorage; no server table |
 | `miracles` | Content | `LEGACY_KEEP_JUSTIFIED` | content hub link |
 | `qa` | Content | `LEGACY_KEEP_JUSTIFIED` | content hub |
 | `quiz` | Content | `LEGACY_KEEP_JUSTIFIED` | content hub |
@@ -85,7 +89,7 @@ Classification legend: `V3_CANONICAL` · `V3_ALIAS` · `LEGACY_ACTIVE` · `LEGAC
 | `annual-courses` | Content | `LEGACY_KEEP_JUSTIFIED` | content hub |
 | `dawah` | Content | `LEGACY_KEEP_JUSTIFIED` | content hub |
 | `week-day-facts` | Content | `LEGACY_KEEP_JUSTIFIED` | content hub |
-| `arbaeen-love` | Content | `LEGACY_KEEP_JUSTIFIED` | content hub |
+| `arbaeen-love` | Content | `LEGACY_KEEP_JUSTIFIED` | `/admin/v3/content/arbaeen` (FINAL-4) |
 | `researches` | Content | `LEGACY_KEEP_JUSTIFIED` | content hub |
 | `users` | Community | `LEGACY_KEEP_JUSTIFIED` | `/admin/v3/community` |
 | `error-logs` | Settings | `LEGACY_KEEP_JUSTIFIED` | settings ops |
@@ -94,10 +98,10 @@ Classification legend: `V3_CANONICAL` · `V3_ALIAS` · `LEGACY_ACTIVE` · `LEGAC
 | `aggregator` | Automation | `STANDALONE_MIGRATE_NOW` | FINAL-6 |
 | `knowledge-engine` | Automation | `STANDALONE_MIGRATE_NOW` | FINAL-6 |
 | `telegram` | Integrations | `LEGACY_MIGRATE_NOW` | FINAL-6 · prompt debt |
-| `prophet-stories` | Content | `LEGACY_KEEP_JUSTIFIED` | content hub |
-| `islamic-stories` | Content | `LEGACY_MIGRATE_NOW` | FINAL-4 if live |
+| `prophet-stories` | Content | `LEGACY_KEEP_JUSTIFIED` | `/admin/v3/content/prophet-stories` (V3_PARTIAL — citations Legacy) |
+| `islamic-stories` | Content | `LEGACY_KEEP_JUSTIFIED` | `/admin/v3/content/islamic-stories` (FINAL-4) |
 | `updates` | Content | `LEGACY_KEEP_JUSTIFIED` | content hub |
-| `universities` | Content | `LEGACY_MIGRATE_NOW` | also standalone page |
+| `universities` | Content | `LEGACY_REQUIRED` | nested API; also `/admin/universities` |
 | `search-analytics` | Analytics | `LEGACY_KEEP_JUSTIFIED` | analytics hub tool |
 | `verified-knowledge` | Content/Review | `LEGACY_KEEP_JUSTIFIED` | settings/content |
 | `knowledge-reasoning` | Automation | `STANDALONE_MIGRATE_NOW` | FINAL-6 |
