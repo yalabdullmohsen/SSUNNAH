@@ -201,11 +201,12 @@ Summary: `evidence/zero-startup-flicker-final-local/summary.json` (filmstrip PNG
 
 ## 12) Remaining debt
 
-1. **Deferred volume** ما زال مرتفعًا (Home ~104) — يحتاج Consumer-map phase أعمق / code-splitting أضيق دون mega CSS.  
-2. **Hero/header residual geometry** على Home (rect/لون الهيكل vs React النهائي).  
-3. **Non-home presence** (search/quran/mushaf/prayer): skeleton مُزال أو بلا hero مسار — presence mount يبقى.  
-4. **profile-hub-v2.css** ما زال يُستورد من `BottomNavBar` (محكم اللون الآن؛ يفضّل تفريغ الاستيراد لاحقًا).  
-5. **Production MATCH re-measure** بعد الدمج.  
+1. **Deferred volume** على الإنتاج Home 3→108.
+2. **Hero residual** على Home + header/nav jumps على Search/QuranHub.
+3. **theme mut = 2** على غير-الرئيسية بعد FP.
+4. **CLS إنتاج**: Home 0.0257 · Prayer 0.0552 (فوق الهدف).
+5. **profile-hub-v2.css** ما زال مستوردًا من BottomNavBar.
+6. **Token hardening** (متابعة): `--color-brand-deep` الليلي كان يشير لسطح `#0E1C17` بدل حبر مقروء — خُفّف عبر dark layers؛ يُفضّل alias رمزي دائم.
 
 ---
 
@@ -215,33 +216,31 @@ Summary: `evidence/zero-startup-flicker-final-local/summary.json` (filmstrip PNG
 
 **لماذا ليس COMPLETE**
 
-- ما زال deferred sheet volume عاليًا (4→104).  
-- ما زال hero/header rect/color residual على Home.  
-- مسارات غير الرئيسية ما زالت presence-mount للـ hero/chrome.  
-- لم يكتمل بعد قياس إنتاج MATCH في هذه الجولة (يُعاد بعد الدمج).  
+- إنتاج `7d4b3044`: Home CLS **0.0257** وPrayer CLS **0.0552**.
+- theme mutations after FP ≠ 0 على Search/QuranHub/Mushaf/Prayer (=2).
+- Header/Hero/BottomNav jump ما زال على مسارات غير-Home + hero residual على Home.
+- Deferred sheets مرتفع (Home 3→108).
 
 **لماذا ليس NOT_FIXED**
 
-- `theme mutations after FP = 0` ✓  
-- `font-size delta = 0` · `background delta = 0` ✓  
-- CLS كل المسارات ضمن الهدف · Mushaf = 0 ✓  
-- Chrome skeleton من FP على Home (presence) ✓  
-- ختم كتّاب html/body/#root المؤجّلين + ختم عاجي bottom-nav ✓  
-- خفض ملموس لـ sheets دون رفع أي budget ✓  
+- PR #2430 دُمج ونُشر: Contrast/visual/Verify/ci-required خضراء.
+- `font-size delta = 0` · `background delta = 0` على الإنتاج ✓
+- Mushaf CLS = 0 · Home theme mut = 0 على الإنتاج ✓
+- ختم html/body/#root + هيكل كروم بلا selectors إنتاجية ✓
 
 ---
 
-## Success criteria checklist
+## Success criteria checklist (production `7d4b3044`)
 
 | Criterion | Result |
 |-----------|--------|
 | font-size delta = 0 | ✓ |
 | background delta = 0 | ✓ |
-| theme mutations after FP = 0 | ✓ |
-| CLS Home/Search/Quran/Prayer < 0.01 | ✓ |
+| theme mutations after FP = 0 | ✗ (0 على Home · 2 على غيرها) |
+| CLS Home/Search/Quran/Prayer < 0.01 | ✗ (Home/Prayer) |
 | Mushaf CLS = 0 | ✓ |
-| Header/Hero/BottomNav jump = 0 | △ (presence ✓ · residual geometry) |
+| Header/Hero/BottomNav jump = 0 | ✗ |
 | No deferred identity repaint (body) | ✓ |
-| No deferred identity repaint (full) | △ sheets/cards |
-| First Paint ≈ Final Paint (canvas) | ✓ |
-| Production MATCH measure | ⏳ after merge |
+| No deferred identity repaint (full) | △ sheets |
+| First Paint ≈ Final Paint (canvas) | ✓ body · △ chrome |
+| Production MATCH measure | ✓ `7d4b3044` |
