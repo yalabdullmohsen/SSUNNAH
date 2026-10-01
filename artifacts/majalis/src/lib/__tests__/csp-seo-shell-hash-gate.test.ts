@@ -20,12 +20,18 @@ assert.match(post, /setTimeout\(a,\s*2500\)/, "سقف أمان إن تعذّر �
 assert.doesNotMatch(post, /setTimeout\(a,\s*3200\)/);
 assert.match(post, /#seo-shell\{[^}]*position:\s*fixed/, "الصدفة غطاء ثابت بلا تضخيم ارتفاع الصفحة");
 assert.match(post, /#seo-shell\{[^}]*z-index:\s*2/, "الصدفة فوق #root حتى الإزالة");
+assert.match(post, /extractCriticalStyles/, "U4: حقن CSS الحرج في صفحات prerender");
+assert.match(post, /extractSpaBootBody/, "U4: حقن mj-startup-chrome في صفحات prerender");
+assert.match(post, /mj-startup-chrome/, "U4: هيكل الكروم جزء من الدمج");
+assert.match(post, /hasHeader&&hasBottom/, "U4: إزالة الصدفة بعد كروم React لا أول ابن");
 
-/** النص الحرفي كما يُحقن في HTML (داخل <script>…</script>) */
-const SCRIPT =
-  "(function(){function a(){document.documentElement.classList.add('js-ready');var s=document.getElementById('seo-shell');if(s)s.remove()}function arm(){requestAnimationFrame(function(){requestAnimationFrame(a)})}var r=document.getElementById('root');if(r&&r.hasChildNodes())arm();else{var o=new MutationObserver(function(){if(r&&r.hasChildNodes()){o.disconnect();arm()}});o.observe(r||document.documentElement,{childList:true,subtree:true});setTimeout(a,2500)}})()";
-assert.ok(post.includes(`<script>${SCRIPT}</script>`), "نص السكربت ثابت بلا مسافات زائدة");
-assert.ok(SCRIPT.startsWith("(function"), "IIFE كامل بين وسمَي script");
+/** استخرج قيمة SEO_SHELL_REMOVE_SCRIPT كما تُحقن في HTML */
+const constMatch = post.match(/const SEO_SHELL_REMOVE_SCRIPT\s*=\s*"((?:\\.|[^"\\])*)"/);
+assert.ok(constMatch, "ثابت SEO_SHELL_REMOVE_SCRIPT موجود");
+const SCRIPT = JSON.parse(`"${constMatch[1]}"`) as string;
+assert.ok(SCRIPT.startsWith("(function"), "IIFE كامل");
+assert.match(SCRIPT, /function ready\(\)/, "جاهزية كروم React قبل إزالة الصدفة");
+assert.ok(post.includes("<script>${SEO_SHELL_REMOVE_SCRIPT}</script>"), "حقن عبر الثابت");
 
 const hash = createHash("sha256").update(SCRIPT, "utf8").digest("base64");
 const token = `'sha256-${hash}'`;

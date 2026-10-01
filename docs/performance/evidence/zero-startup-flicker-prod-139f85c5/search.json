@@ -1,0 +1,82 @@
+{
+  "route": "search",
+  "path": "/search",
+  "fp": 744,
+  "fcp": 744,
+  "elapsedMs": 5857,
+  "clsTotal": 0.932716050449255,
+  "clsAfterFcp": 0.932716050449255,
+  "clsEntryCount": 3,
+  "topCls": [
+    {
+      "value": 0.9277251184834123,
+      "startTime": 1246.1000000238419,
+      "sources": [
+        "main#main-content.app-main",
+        "div.lrf-wrap.lrf-wrap--skel"
+      ]
+    },
+    {
+      "value": 0.004396801509400059,
+      "startTime": 1578.1999999284744,
+      "sources": [
+        "main#main-content.app-main"
+      ]
+    },
+    {
+      "value": 0.0005941304564426237,
+      "startTime": 1328.3999999761581,
+      "sources": [
+        "div.navbar-v3__end",
+        "button.relative.inline-flex"
+      ]
+    }
+  ],
+  "themeChangeCount": 0,
+  "visualChangeCount": 3,
+  "visualChanges": [
+    {
+      "key": "sheetCount",
+      "early": 3,
+      "final": 78
+    },
+    {
+      "key": "header.presence",
+      "early": false,
+      "final": true
+    },
+    {
+      "key": "bottom.presence",
+      "early": false,
+      "final": true
+    }
+  ],
+  "sheets": [
+    3,
+    78
+  ],
+  "networkCss": 81,
+  "networkFonts": 5,
+  "earlyBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "finalBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "fontDelta": 0,
+  "backgroundDelta": 0,
+  "headerJump": true,
+  "heroJump": false,
+  "bottomJump": true,
+  "backJump": false,
+  "headerDelta": null,
+  "heroDelta": null,
+  "bottomDelta": null,
+  "backDelta": null
+}

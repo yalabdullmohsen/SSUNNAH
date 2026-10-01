@@ -1,0 +1,65 @@
+{
+  "route": "prayer-times",
+  "path": "/prayer-times",
+  "fp": 644,
+  "fcp": 644,
+  "elapsedMs": 5460,
+  "clsTotal": 0.00002594726797034416,
+  "clsAfterFcp": 0.00002594726797034416,
+  "clsEntryCount": 1,
+  "topCls": [
+    {
+      "value": 0.00002594726797034416,
+      "startTime": 1447.1000000238419,
+      "sources": [
+        "svg",
+        "svg",
+        "svg",
+        "svg",
+        "svg"
+      ]
+    }
+  ],
+  "themeChangeCount": 0,
+  "visualChangeCount": 2,
+  "visualChanges": [
+    {
+      "key": "sheetCount",
+      "early": 3,
+      "final": 61
+    },
+    {
+      "key": "bottom.presence",
+      "early": false,
+      "final": true
+    }
+  ],
+  "sheets": [
+    3,
+    61
+  ],
+  "networkCss": 64,
+  "networkFonts": 5,
+  "earlyBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(248, 250, 252)",
+    "bg": "rgb(42, 64, 48)"
+  },
+  "finalBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(248, 250, 252)",
+    "bg": "rgb(42, 64, 48)"
+  },
+  "fontDelta": 0,
+  "backgroundDelta": 0,
+  "headerJump": false,
+  "heroJump": false,
+  "bottomJump": true,
+  "backJump": false,
+  "headerDelta": null,
+  "heroDelta": null,
+  "bottomDelta": null,
+  "backDelta": null
+}
