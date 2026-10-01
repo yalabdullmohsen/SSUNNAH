@@ -5,7 +5,7 @@
 | Captured | 2026-10-01T02:26Z |
 | Live baseline | [`FINAL_CLOSURE_LIVE_BASELINE.md`](./FINAL_CLOSURE_LIVE_BASELINE.md) · **LIVE_BASELINE_LOCKED** |
 | SoT tip (live) | `14b30de60` (#2416 seal after Back P7 `2a4e3985`) |
-| Active phase | **PHASE 2 Route Feedback Public Expansion** (tip `4cb03081`) |
+| Active phase | **PHASE 3 ADMIN-FINAL-2 Reviews Inbox** (after Phase 2 MATCH `6d554102`) |
 | Rule | مرحلة واحدة · PR واحد · MATCH قبل التالي |
 
 ## الحالة الحالية (عند القفل الحي)
@@ -22,6 +22,7 @@ Identity / Cards / Buttons residual phases = CLOSED (نطاقها)
 Back Authority P7 = BACK_P7_MERGED_AND_DEPLOYED
 ADMIN-FINAL-1 = CLOSED
 Route Feedback Priority = **ROUTE_FEEDBACK_PRIORITY_MERGED_AND_DEPLOYED** (#2418 → `c6f56d2a`)
+Route Feedback Public = **ROUTE_FEEDBACK_PUBLIC_COMPLETE** (#2420 → `6d554102`)
 Admin FINAL-2+ = OPEN
 Mushaf CSS Bridge = OPEN (NewMushafReader + VerifiedMushafReader import)
 Device QA = DEVICE_REQUIRED
