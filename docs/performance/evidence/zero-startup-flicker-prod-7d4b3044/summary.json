@@ -1,0 +1,352 @@
+{
+  "measuredAt": "2026-10-01T09:40:50.492Z",
+  "production": {
+    "commit": "7d4b3044",
+    "shortCommit": "7d4b3044",
+    "commitSha": "7d4b3044",
+    "builtAt": "2026-10-01T09:34:08.574Z",
+    "buildTime": "2026-10-01T09:34:08.574Z",
+    "ref": "main",
+    "branch": "main"
+  },
+  "base": "https://www.ssunnah.com",
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "deviceScaleFactor": 2,
+    "isMobile": true,
+    "hasTouch": true
+  },
+  "results": [
+    {
+      "route": "home",
+      "path": "/",
+      "fp": 684,
+      "fcp": 684,
+      "elapsedMs": 49241,
+      "clsTotal": 0.02568111494057256,
+      "clsAfterFcp": 0.02568111494057256,
+      "clsEntryCount": 5,
+      "topCls": [
+        {
+          "value": 0.007718627740639825,
+          "startTime": 1299.8999999761581,
+          "sources": [
+            "section.home-start-here.home-start-here--compact",
+            "nav.bottom-nav.bottom-nav--v2"
+          ]
+        },
+        {
+          "value": 0.005794669598083647,
+          "startTime": 1199.3999999761581,
+          "sources": [
+            "header.page-hero-mj.svl-page-header",
+            "section.m2030-band.home-start-here-band"
+          ]
+        },
+        {
+          "value": 0.004402416836998271,
+          "startTime": 1922.1000000238419,
+          "sources": [
+            "main#main-content.app-main",
+            "div.navbar-ticker-row"
+          ]
+        },
+        {
+          "value": 0.004016950244309946,
+          "startTime": 1601.8999999761581,
+          "sources": [
+            "section.m2030-band.home-start-here-band",
+            "div.ss-screen.ss-screen--dashboard",
+            "nav.hw3.hw3--identity",
+            "h1#«r0».ss-text.ss-text--screen-title",
+            "div.page-hero-mj__actions"
+          ]
+        },
+        {
+          "value": 0.0037484505205408677,
+          "startTime": 1394.7000000476837,
+          "sources": [
+            "main#main-content.app-main"
+          ]
+        }
+      ],
+      "themeChangeCount": 0,
+      "visualChangeCount": 2,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 3,
+          "final": 108
+        },
+        {
+          "key": "hero.presence",
+          "early": false,
+          "final": true
+        }
+      ],
+      "sheets": [
+        3,
+        108
+      ],
+      "networkCss": 88,
+      "networkFonts": 4,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "fontDelta": 0,
+      "backgroundDelta": 0,
+      "headerJump": false,
+      "heroJump": true,
+      "bottomJump": false
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "fp": 724,
+      "fcp": 724,
+      "elapsedMs": 5624,
+      "clsTotal": 0.004396801509400059,
+      "clsAfterFcp": 0.004396801509400059,
+      "clsEntryCount": 1,
+      "topCls": [
+        {
+          "value": 0.004396801509400059,
+          "startTime": 1466,
+          "sources": [
+            "main#main-content.app-main"
+          ]
+        }
+      ],
+      "themeChangeCount": 2,
+      "visualChangeCount": 3,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 3,
+          "final": 72
+        },
+        {
+          "key": "header.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "bottom.presence",
+          "early": false,
+          "final": true
+        }
+      ],
+      "sheets": [
+        3,
+        72
+      ],
+      "networkCss": 75,
+      "networkFonts": 5,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "fontDelta": 0,
+      "backgroundDelta": 0,
+      "headerJump": true,
+      "heroJump": false,
+      "bottomJump": true
+    },
+    {
+      "route": "quran-hub",
+      "path": "/quran-hub",
+      "fp": 688,
+      "fcp": 688,
+      "elapsedMs": 5556,
+      "clsTotal": 0.004396801509400059,
+      "clsAfterFcp": 0.004396801509400059,
+      "clsEntryCount": 1,
+      "topCls": [
+        {
+          "value": 0.004396801509400059,
+          "startTime": 1441.2999999523163,
+          "sources": [
+            "main#main-content.app-main"
+          ]
+        }
+      ],
+      "themeChangeCount": 2,
+      "visualChangeCount": 3,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 3,
+          "final": 76
+        },
+        {
+          "key": "header.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "bottom.presence",
+          "early": false,
+          "final": true
+        }
+      ],
+      "sheets": [
+        3,
+        76
+      ],
+      "networkCss": 79,
+      "networkFonts": 5,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "fontDelta": 0,
+      "backgroundDelta": 0,
+      "headerJump": true,
+      "heroJump": false,
+      "bottomJump": true
+    },
+    {
+      "route": "mushaf",
+      "path": "/mushaf",
+      "fp": 712,
+      "fcp": 712,
+      "elapsedMs": 6798,
+      "clsTotal": 0,
+      "clsAfterFcp": 0,
+      "clsEntryCount": 0,
+      "topCls": [],
+      "themeChangeCount": 2,
+      "visualChangeCount": 1,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 3,
+          "final": 54
+        }
+      ],
+      "sheets": [
+        3,
+        54
+      ],
+      "networkCss": 61,
+      "networkFonts": 9,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "fontDelta": 0,
+      "backgroundDelta": 0,
+      "headerJump": false,
+      "heroJump": false,
+      "bottomJump": false
+    },
+    {
+      "route": "prayer-times",
+      "path": "/prayer-times",
+      "fp": 872,
+      "fcp": 872,
+      "elapsedMs": 5917,
+      "clsTotal": 0.055193225717379696,
+      "clsAfterFcp": 0.055193225717379696,
+      "clsEntryCount": 3,
+      "topCls": [
+        {
+          "value": 0.05492702881786123,
+          "startTime": 1923.7000000476837,
+          "sources": [
+            "div.global-back-control-host"
+          ]
+        },
+        {
+          "value": 0.0002402496315481199,
+          "startTime": 1510.4000000953674,
+          "sources": [
+            "svg"
+          ]
+        },
+        {
+          "value": 0.00002594726797034416,
+          "startTime": 1593.9000000953674,
+          "sources": [
+            "svg",
+            "svg",
+            "svg",
+            "svg",
+            "svg"
+          ]
+        }
+      ],
+      "themeChangeCount": 2,
+      "visualChangeCount": 2,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 3,
+          "final": 55
+        },
+        {
+          "key": "bottom.presence",
+          "early": false,
+          "final": true
+        }
+      ],
+      "sheets": [
+        3,
+        55
+      ],
+      "networkCss": 58,
+      "networkFonts": 5,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(248, 250, 252)",
+        "bg": "rgb(42, 64, 48)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(248, 250, 252)",
+        "bg": "rgb(42, 64, 48)"
+      },
+      "fontDelta": 0,
+      "backgroundDelta": 0,
+      "headerJump": false,
+      "heroJump": false,
+      "bottomJump": true
+    }
+  ]
+}
