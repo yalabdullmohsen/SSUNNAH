@@ -197,6 +197,9 @@
 | `docs/mobile/MRMP_V1_TRACKER.md` | لوحة حية للمراحل + blockers |
 | `docs/mobile/SUNNAH_MOBILE_READINESS_FINAL_REPORT.md` | تقرير جاهزية التطبيق (M14 living) · حكم حالي `MOBILE_PARTIALLY_READY` |
 | `docs/mobile/phases/M01_*.md` … `M13_*.md` | one-pagers للمراحل |
+| `docs/mobile/SUNNAH_MOBILE_FIRST_EXPANSION_MASTERPLAN.md` | **Mobile First Expansion** — Watch/Widgets/LA/Maps/Fatwa · `MOBILE_FIRST_MASTERPLAN_COMPLETE` |
+| `docs/mobile/ADHAN_AUDIO_AUDIT.md` | تدقيق أصوات الأذان (afinfo + حقوق) · `AUDIO_LICENSE_PARTIAL` |
+| `docs/mobile/CONTENT_LICENSE_CERTIFICATION.md` | بوابة تراخيص المحتوى الأصلي · `LICENSE_CERTIFICATION_REQUIRED` |
 | `docs/qa/IOS_RELEASE_CHECKLIST.md` / `ANDROID_RELEASE_CHECKLIST.md` | قوائم إطلاق أصلية يُعاد استخدامها |
 | `docs/store-release/STORE_100_PERCENT_READINESS.md` | جاهزية المتجر 100% (HOLD حتى أدلة) |
 
