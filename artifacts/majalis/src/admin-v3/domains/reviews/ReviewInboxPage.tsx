@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
-import { Link } from "wouter";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { Link, useSearch } from "wouter";
 import { Button } from "@/components/ui/button";
 import { FormLabel, FieldError, FormActions } from "@/components/design-system/FormFields";
 import { useAuth } from "@/components/AuthProvider";
+import { navigateTo } from "@/lib/navigation-intent";
 import { decideSubmission, listSubmissions } from "../../data/admin-v3-api";
 import { can, resolveGovernanceRole } from "../../permissions";
 import { emitAdminV3AuditEvent } from "../../audit-events";
@@ -30,6 +31,40 @@ type Row = {
   updated_at?: string;
 };
 
+/** Official FINAL-2 queue facets — single inbox, no duplicate surfaces. */
+const QUEUES = [
+  { id: "pending", label: "قيد المراجعة" },
+  { id: "assigned_to_me", label: "مُسند إليّ" },
+  { id: "urgent", label: "عاجل" },
+  { id: "scientific", label: "علمي" },
+  { id: "editorial", label: "تحريري" },
+  { id: "approved", label: "مقبول" },
+  { id: "rejected", label: "مرفوض" },
+  { id: "published", label: "منشور" },
+  { id: "archived", label: "مؤرشف" },
+] as const;
+
+type QueueId = (typeof QUEUES)[number]["id"];
+
+function parseQueue(raw: string | null): QueueId {
+  const v = String(raw || "pending");
+  return (QUEUES.some((q) => q.id === v) ? v : "pending") as QueueId;
+}
+
+function dedupeRows(rows: Row[]): Row[] {
+  const seen = new Set<string>();
+  const out: Row[] = [];
+  for (const row of rows) {
+    const id = String(row.id || "");
+    if (!id || seen.has(id)) continue;
+    seen.add(id);
+    out.push(row);
+  }
+  return out;
+}
+
+const URGENT_MS = 7 * 24 * 60 * 60 * 1000;
+
 export function ReviewInboxPage() {
   const { user } = useAuth();
   const role = resolveGovernanceRole(user);
@@ -37,11 +72,17 @@ export function ReviewInboxPage() {
   const canApprove = can(role, "review.approve") || can(role, "publish") || can(role, "content.*");
   const canReject = can(role, "review.reject") || can(role, "content.moderate") || can(role, "review.editorial");
 
-  const [status, setStatus] = useState("pending");
-  const [type, setType] = useState("");
-  const [q, setQ] = useState("");
+  const search = useSearch();
+  const params = useMemo(() => {
+    const s = search.startsWith("?") ? search.slice(1) : search;
+    return new URLSearchParams(s);
+  }, [search]);
+
+  const [queue, setQueue] = useState<QueueId>(() => parseQueue(params.get("queue")));
+  const [type, setType] = useState(() => params.get("type") || "");
+  const [q, setQ] = useState(() => params.get("q") || "");
   const dq = useDebouncedValue(q);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(() => Math.max(1, Number.parseInt(params.get("page") || "1", 10) || 1));
   const [rows, setRows] = useState<Row[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -52,18 +93,54 @@ export function ReviewInboxPage() {
   const [rejectError, setRejectError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [flash, setFlash] = useState<string | null>(null);
+  const [queueNote, setQueueNote] = useState<string | null>(null);
+
+  // Persist filters + page in URL (shareable, reload-safe) via navigation-intent state mode
+  useEffect(() => {
+    const next = new URLSearchParams();
+    next.set("queue", queue);
+    if (type) next.set("type", type);
+    if (dq) next.set("q", dq);
+    if (page > 1) next.set("page", String(page));
+    const qs = next.toString();
+    const target = qs ? `/admin/v3/reviews?${qs}` : "/admin/v3/reviews";
+    navigateTo(target, { mode: "state" });
+  }, [queue, type, dq, page]);
 
   const load = useCallback(
     async (signal?: AbortSignal) => {
       setLoading(true);
       setError(null);
+      setQueueNote(null);
       try {
+        if (queue === "assigned_to_me") {
+          // No assignee column in submissions — honest empty until schema OWNER_ACTION
+          setRows([]);
+          setTotal(0);
+          setQueueNote("إسناد المراجعات غير مفعّل في المخطط الحالي — طابور «مُسند إليّ» جاهز واجهياً ويحتاج عمود assignee (OWNER_ACTION).");
+          return;
+        }
         const res = await listSubmissions(
-          { status, type: type || undefined, q: dq || undefined, page, pageSize: 20 },
+          {
+            queue,
+            type: type || undefined,
+            q: dq || undefined,
+            page,
+            pageSize: 20,
+          },
           signal,
         );
-        setRows((res.data || []) as Row[]);
-        setTotal(res.total || 0);
+        let next = dedupeRows((res.data || []) as Row[]);
+        if (queue === "urgent") {
+          const cutoff = Date.now() - URGENT_MS;
+          next = next.filter((r) => {
+            const t = r.created_at ? new Date(r.created_at).getTime() : 0;
+            return t > 0 && t <= cutoff;
+          });
+          setQueueNote("العاجل = قيد المراجعة أقدم من ٧ أيام.");
+        }
+        setRows(next);
+        setTotal(queue === "urgent" ? next.length : res.total || 0);
       } catch (e) {
         const err = e as { userMessageAr?: string; status?: number; correlationId?: string };
         setError(
@@ -75,16 +152,16 @@ export function ReviewInboxPage() {
         setLoading(false);
       }
     },
-    [status, type, dq, page],
+    [queue, type, dq, page],
   );
 
   useEffect(() => {
     if (!canRead) return;
     const ac = new AbortController();
     void load(ac.signal);
-    emitAdminV3AuditEvent("admin.center.view", "/admin/v3/reviews", { center: "reviews", status, type });
+    emitAdminV3AuditEvent("admin.center.view", "/admin/v3/reviews", { center: "reviews", queue, type });
     return () => ac.abort();
-  }, [load, canRead, status, type]);
+  }, [load, canRead, queue, type]);
 
   if (!canRead) return <AdminPermissionDenied permission="content.read" />;
 
@@ -92,6 +169,10 @@ export function ReviewInboxPage() {
 
   const runApprove = async () => {
     if (!selected || !canApprove || busy) return;
+    if (selected.status !== "pending") {
+      setError("لا يمكن اعتماد عنصر غير قيد المراجعة.");
+      return;
+    }
     setBusy(true);
     try {
       await decideSubmission({
@@ -112,6 +193,10 @@ export function ReviewInboxPage() {
 
   const runReject = async () => {
     if (!selected || !canReject || busy) return;
+    if (selected.status !== "pending") {
+      setError("لا يمكن رفض عنصر غير قيد المراجعة.");
+      return;
+    }
     if (rejectReason.trim().length < 3) {
       setRejectError("سبب الرفض مطلوب (٣ أحرف على الأقل).");
       return;
@@ -139,23 +224,48 @@ export function ReviewInboxPage() {
   };
 
   return (
-    <div className="av3-domain">
+    <div className="av3-domain" data-testid="admin-v3-review-inbox">
       <AdminPageHeader
-        title="صندوق المراجعة"
-        description="مراجعة مقترحات المجتمع بعمليات أصلية — الموافقة تنشر المحتوى حسب نوعه."
-        badge="أصلي"
+        title="صندوق المراجعة الموحّد"
+        description="طابور رسمي واحد للمراجعات — بدون تكرار عناصر أو اعتماد/رفض مزدوج."
+        badge="FINAL-2"
         crumbs={[
           { label: "لوحة التحكم", href: "/admin/v3" },
           { label: "المراجعات" },
         ]}
         actions={
           <Button asChild variant="secondary">
-            <Link href="/admin?section=submissions">المسار السابق</Link>
+            <Link href="/admin?section=submissions">Legacy مساهمات</Link>
           </Button>
         }
       />
 
       {flash ? <AdminFlash>{flash}</AdminFlash> : null}
+      {queueNote ? (
+        <p className="av3-muted" role="status">
+          {queueNote}
+        </p>
+      ) : null}
+
+      <div className="av3-queue-tabs" role="tablist" aria-label="طوابير المراجعة">
+        {QUEUES.map((item) => (
+          <Button
+            key={item.id}
+            type="button"
+            role="tab"
+            aria-selected={queue === item.id}
+            variant={queue === item.id ? "primary" : "secondary"}
+            data-queue={item.id}
+            onClick={() => {
+              setQueue(item.id);
+              setPage(1);
+              setSelected(null);
+            }}
+          >
+            {item.label}
+          </Button>
+        ))}
+      </div>
 
       <AdminFilterBar
         onSubmit={(e) => {
@@ -164,21 +274,6 @@ export function ReviewInboxPage() {
         }}
       >
         <AdminSearchInput value={q} onChange={setQ} label="بحث في العنوان أو المرسل" />
-        <label className="av3-field">
-          <span className="av3-sr-only">الحالة</span>
-          <select
-            aria-label="الحالة"
-            value={status}
-            onChange={(e) => {
-              setStatus(e.target.value);
-              setPage(1);
-            }}
-          >
-            <option value="pending">قيد المراجعة</option>
-            <option value="approved">مقبول</option>
-            <option value="rejected">مرفوض</option>
-          </select>
-        </label>
         <label className="av3-field">
           <span className="av3-sr-only">النوع</span>
           <select
@@ -204,7 +299,7 @@ export function ReviewInboxPage() {
           <AdminDataTable
             rowKey={(r) => String(r.id)}
             rows={rows as unknown as Record<string, unknown>[]}
-            emptyTitle="لا عناصر في صندوق المراجعة"
+            emptyTitle="لا عناصر في هذا الطابور"
             columns={[
               { key: "type", label: "النوع" },
               { key: "title", label: "العنوان" },
@@ -325,17 +420,21 @@ export function ReviewInboxPage() {
 
       <section className="av3-legacy-block" aria-label="مسارات توافق">
         <h3>
-          أدوات إضافية <span className="av3-badge av3-badge--legacy">Legacy</span>
+          مسارات توافق <span className="av3-badge av3-badge--legacy">LEGACY_KEEP</span>
         </h3>
+        <p className="av3-muted">
+          الصندوق الرسمي هو <Link href="/admin/v3/reviews">/admin/v3/reviews</Link>. المسارات التالية
+          تبقى لأدوات متخصصة (صوت/أتمتة) حتى اكتمال تكافؤها.
+        </p>
         <ul className="av3-legacy-links">
           <li>
-            <Link href="/admin/review-hub">مركز المراجعة</Link>
+            <Link href="/admin/review-hub">Review Hub (صوت) — LEGACY_KEEP</Link>
           </li>
           <li>
-            <Link href="/admin/review-center">مراجعة الأتمتة</Link>
+            <Link href="/admin/review-center">Review Center (أتمتة) — LEGACY_KEEP</Link>
           </li>
           <li>
-            <Link href="/admin?section=reports">البلاغات</Link>
+            <Link href="/admin?section=submissions">Legacy submissions — alias إلى نفس API</Link>
           </li>
         </ul>
       </section>
