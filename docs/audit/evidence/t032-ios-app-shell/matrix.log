@@ -1,0 +1,100 @@
+[23:02:25] T-032 matrix start APP_BUILD=/Users/alabdullmohsen/Library/Developer/Xcode/DerivedData/App-dvazkgzjifrsrpgwjcyegztedhrt/Build/Products/Debug-iphonesimulator/App.app
+[23:02:25] Boot iPhone 17 (D6FD9993-ED1B-4659-9C3B-B74999C0F87E)
+[23:02:25] Boot iPhone 17 (D6FD9993-ED1B-4659-9C3B-B74999C0F87E)
+[23:02:28] Install App on iphone
+[23:02:28] Install App on iphone
+com.yousef.majlisilm: 50649
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: 52A78580-3834-4D05-81AC-12959A130295 (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/iphone/01-cold-start.png
+com.yousef.majlisilm: 50694
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: 52A78580-3834-4D05-81AC-12959A130295 (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/iphone/02-warm-start.png
+com.yousef.majlisilm: 50694
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: 52A78580-3834-4D05-81AC-12959A130295 (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/iphone/03-bg-fg.png
+com.yousef.majlisilm: 50694
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: 52A78580-3834-4D05-81AC-12959A130295 (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/iphone/04-idle-resume.png
+com.yousef.majlisilm: 50752
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: 52A78580-3834-4D05-81AC-12959A130295 (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/iphone/05-kill-relaunch.png
+com.yousef.majlisilm: 50776
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: 52A78580-3834-4D05-81AC-12959A130295 (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/iphone/06-offline-start.png
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: 52A78580-3834-4D05-81AC-12959A130295 (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/iphone/07-deeplink-prayer.png
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: 52A78580-3834-4D05-81AC-12959A130295 (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/iphone/07b-deeplink-mushaf.png
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: 52A78580-3834-4D05-81AC-12959A130295 (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/iphone/07c-home-after-prayer.png
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: 52A78580-3834-4D05-81AC-12959A130295 (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/iphone/08-rotation-landscape.png
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: 52A78580-3834-4D05-81AC-12959A130295 (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/iphone/08b-rotation-portrait.png
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: 52A78580-3834-4D05-81AC-12959A130295 (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/iphone/10-safe-area-home.png
+[23:04:14] Done iphone → /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/iphone
+[23:04:14] Done iphone → /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/iphone
+[23:04:14] Boot iPad Pro 13-inch (BA03B762-656E-44A8-896A-7596A48E4CF6)
+[23:04:14] Boot iPad Pro 13-inch (BA03B762-656E-44A8-896A-7596A48E4CF6)
+[23:04:35] Install App on ipad
+[23:04:35] Install App on ipad
+com.yousef.majlisilm: 51204
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: D0CCDDA8-12A0-4C4F-8549-592133DC57EB (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/ipad/01-cold-start.png
+com.yousef.majlisilm: 51265
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: D0CCDDA8-12A0-4C4F-8549-592133DC57EB (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/ipad/02-warm-start.png
+com.yousef.majlisilm: 51265
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: D0CCDDA8-12A0-4C4F-8549-592133DC57EB (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/ipad/03-bg-fg.png
+com.yousef.majlisilm: 51265
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: D0CCDDA8-12A0-4C4F-8549-592133DC57EB (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/ipad/04-idle-resume.png
+com.yousef.majlisilm: 51376
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: D0CCDDA8-12A0-4C4F-8549-592133DC57EB (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/ipad/05-kill-relaunch.png
+com.yousef.majlisilm: 51412
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: D0CCDDA8-12A0-4C4F-8549-592133DC57EB (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/ipad/06-offline-start.png
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: D0CCDDA8-12A0-4C4F-8549-592133DC57EB (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/ipad/07-deeplink-prayer.png
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: D0CCDDA8-12A0-4C4F-8549-592133DC57EB (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/ipad/07b-deeplink-mushaf.png
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: D0CCDDA8-12A0-4C4F-8549-592133DC57EB (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/ipad/07c-home-after-prayer.png
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: D0CCDDA8-12A0-4C4F-8549-592133DC57EB (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/ipad/08-rotation-landscape.png
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: D0CCDDA8-12A0-4C4F-8549-592133DC57EB (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/ipad/08b-rotation-portrait.png
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: D0CCDDA8-12A0-4C4F-8549-592133DC57EB (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/ipad/09-split-ready.png
+Detected file type from extension: PNG
+Note: No display specified. Defaulting to display: D0CCDDA8-12A0-4C4F-8549-592133DC57EB (screenID: 1, name: LCD)
+Wrote screenshot to: /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/ipad/10-safe-area-home.png
+[23:07:41] Done ipad → /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/ipad
+[23:07:41] Done ipad → /Users/alabdullmohsen/majlis-app/docs/audit/evidence/t032-ios-app-shell/ipad

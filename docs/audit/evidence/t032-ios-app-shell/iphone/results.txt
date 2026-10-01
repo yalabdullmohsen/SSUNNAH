@@ -1,0 +1,12 @@
+cold_start:OK:14704ms
+warm_start:OK
+background_foreground:OK
+resume_idle:OK
+kill_relaunch:OK
+offline_start:OK
+deeplink_prayer:OK
+deeplink_mushaf:OK
+prayer_surface_restore:OK
+rotation:OK
+split_view:N_A
+safe_area:OK
