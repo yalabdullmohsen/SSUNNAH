@@ -1,18 +1,24 @@
-# Android Release Checklist — Phase 6 (repository bounds)
+# Android Release Checklist — **RETIRED / HISTORICAL**
 
-| Item | Status | Notes |
-|---|---|---|
-| Gradle project present | PASS | `artifacts/majalis/android` |
-| `applicationId` | `com.majlisilm.app` | **≠** Capacitor `com.yousef.majlisilm` → OWNER_ACTION |
-| minSdk 24 / targetSdk 36 / compileSdk 36 | PASS | variables.gradle |
-| versionName 1.0.0 / versionCode 1 | PASS | do not bump randomly |
-| cleartext false / allowMixedContent false | PASS | capacitor config |
-| webContentsDebuggingEnabled false | PASS | production config |
-| Keystore path referenced | OWNER_ACTION / BLOCKED_CREDENTIAL | passwords via env placeholders |
-| Exact alarm / notification permission behavior | DEVICE_REQUIRED | OEM variance |
-| Reboot receivers | DEVICE_REQUIRED | |
-| Release AAB/APK signed | BLOCKED_CREDENTIAL | |
-| Play internal track | OWNER_ACTION | |
-| Real device matrix | DEVICE_REQUIRED | |
+| Field | Value |
+|-------|-------|
+| Status | **`OUT_OF_SCOPE` · `ANDROID_PRODUCT_RETIRED`** |
+| Decision | 2026-10-01 — product is **iOS-only** (`com.yousef.majlisilm`) |
+| Tree | `artifacts/majalis/android` **removed** from active product |
+| History | Recoverable via Git tag `android-last-supported-state` |
+| Inventory | `docs/mobile/ANDROID_RETIREMENT_INVENTORY.md` |
+| Active store path | Apple App Store / TestFlight only — see `STORE_100_PERCENT_READINESS.md` |
 
-Do not change applicationId or signing configs in this phase without explicit owner decision.
+Do **not** treat rows below as live release work. Preserved for historical reference only.
+
+---
+
+## Historical notes (pre-retirement)
+
+| Item | Historical note |
+|---|---|
+| Gradle project | Lived under `artifacts/majalis/android` |
+| `applicationId` | Was `com.majlisilm.app` ≠ Capacitor iOS id |
+| Play internal / AAB | Never certified · now permanently out of product scope |
+
+Google Play · Wear OS · Android Auto = **OUT OF SCOPE**.

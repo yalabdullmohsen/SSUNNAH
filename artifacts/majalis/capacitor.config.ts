@@ -17,7 +17,6 @@ const config: CapacitorConfig = {
       "www.majlisilm.com",
     ],
     cleartext: false,
-    androidScheme: "https",
   },
   plugins: {
     SplashScreen: {
@@ -26,8 +25,6 @@ const config: CapacitorConfig = {
       /* سطح الرئيسية — بلا خلفية خضراء قديمة ولا أيقونة دعائية */
       backgroundColor: "#F7F3EB",
       showSpinner: false,
-      androidSplashResourceName: "splash",
-      androidScaleType: "CENTER_CROP",
       splashImmersive: true,
       splashFullScreen: true,
     },

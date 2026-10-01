@@ -3,10 +3,10 @@
 | Field | Value |
 |-------|-------|
 | Locked at (UTC) | `2026-10-01T15:55:00Z` |
-| Tip (post U3) | `origin/main` / production **MATCH** `52aa7b2f` |
-| Program | COMPLETE PRODUCT · MOBILE · LICENSE · STORE CLOSURE |
-| Status | **`MASTER_CLOSURE_REGISTER_LOCKED`** |
-| Policy | PEOP/CEP · serial execution · UNKNOWN job = temporary HARD_BLOCKER |
+| Tip (post U3) | `origin/main` / production **MATCH** `52aa7b2f` (pre iOS-only PR) |
+| Program | **IOS-ONLY** COMPLETE PRODUCT · LICENSE · APPLE STORE CLOSURE |
+| Status | **`MASTER_CLOSURE_REGISTER_LOCKED`** · **`LIVE_TRUTH_LOCKED_IOS_ONLY`** |
+| Policy | PEOP/CEP · serial execution · UNKNOWN job = temporary HARD_BLOCKER · Android **RETIRED** |
 
 ## Live truth (lock)
 
@@ -42,7 +42,7 @@
 | A8 | A | U9 Route matrices | FIXABLE | Agent | 8 admin v3 missing | Y | N | N | N | N | `ROUTES_CLASSIFIED_AND_CLOSED` |
 | A9 | A | U10 Mushaf boundary | FIXABLE+DEVICE | Agent | integrity PASS · device hold | soft | Y | Y | Y | Y | `MUSHAF_BOUNDARY_CERTIFIED` |
 | A10 | A | U11–U13 final web | FIXABLE | Agent | UNIFIED_PARTIAL | Y | N | N | N | N | `UNIFIED_100` or honest PARTIAL |
-| B1 | B | M1 Native architecture / appId | HARD | Agent+Owner | Android≠iOS appId | N | Y | Y | Y | Y | `NATIVE_ARCHITECTURE_CERTIFIED` |
+| B1 | B | M1 Native architecture iOS | FIXABLE+OWNER | Agent+Owner | Bundle `com.yousef.majlisilm` · Android retired | N | Y | N/A | Y | Y | `IOS_NATIVE_ARCHITECTURE_CERTIFIED` |
 | B2 | B | M2 App shell device | DEVICE | Agent+Tester | DEVICE_QA_REGISTER | N | Y | Y | Y | Y | `APP_SHELL_STABLE` |
 | B3 | B | M3 Deep links | DEVICE | Agent+Tester | MRMP M3 | N | Y | Y | Y | Y | `DEEP_LINKS_CERTIFIED` |
 | B4 | B | M4 Auth mobile | DEVICE | Agent+Tester | MRMP M4 | N | Y | Y | soft | Y | `AUTH_MOBILE_CERTIFIED` |

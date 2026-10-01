@@ -46,8 +46,11 @@ const cap = JSON.parse(read("capacitor.config.json")) as {
 assert.equal(cap.appId, "com.yousef.majlisilm");
 assert.equal(cap.server?.url, "https://www.ssunnah.com");
 assert.equal(cap.server?.cleartext, false);
-const androidId = read("android/app/build.gradle").match(/applicationId\s+"([^"]+)"/)?.[1];
-assert.equal(androidId, "com.majlisilm.app");
+assert.equal(
+  existsSync(resolve(majalisRoot, "android")),
+  false,
+  "android/ retired — iOS-only product",
+);
 
 console.log("=== Release truth forbids STORE GO ===");
 const truth = readRepo("docs/release/RELEASE_READINESS_TRUTH.md");

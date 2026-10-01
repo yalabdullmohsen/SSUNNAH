@@ -1,8 +1,8 @@
 # STORE 100% READINESS — سُنّة 1.0.0
 
-**Verdict:** **HOLD**  
-**Truth sync:** 2026-10-01 · `docs/release/CURRENT_PROJECT_STATUS.md` · Master Closure Register  
-**Live web tip (`origin/main` / production):** `01c13f25` **MATCH** — **not** an automatic Store RC pin.  
+**Verdict:** **HOLD** · **Apple App Store only** (Android / Google Play **RETIRED**)  
+**Truth sync:** 2026-10-01 · `docs/release/CURRENT_PROJECT_STATUS.md` · `IOS_ONLY_CLOSURE_BOARD.md`  
+**Live web tip (`origin/main` / production):** `52aa7b2f` **MATCH** — **not** an automatic Store RC pin.  
 **Historical web tip (STALE):** `3ba020f2` (pre store-guard #2191)  
 **Pinned Phase-0 commit (historical):** `ed5320b1f23c7b21d230c0698e86ce5cb8731ebc`  
 **After PR-A on main (historical):** `af09bc46488b1945352dc2b679f667020af74777`  
@@ -13,11 +13,11 @@
 | Gate | Status | Evidence |
 |---|---|---|
 | iOS prayer notification WORKING | ☐ | No device evidence — DEVICE_REQUIRED |
-| Android prayer notification WORKING | ☐ | No device evidence — DEVICE_REQUIRED |
+| Android prayer notification WORKING | ☑ N/A | **ANDROID_PRODUCT_RETIRED** |
 | Verified sound playback on iOS | ☐ | Catalog includes CC0 `field`/`field-full` + shorts; **device unproven** |
-| Verified sound playback on Android | ☐ | same — DEVICE_REQUIRED |
+| Verified sound playback on Android | ☑ N/A | **RETIRED** |
 | No unresolved asset in iOS binary | ☐ | CAF adhan-* still in Xcode tree — OWNER exclude / license |
-| No unresolved asset in Android binary | ☐ | Requires strip+sync on store build |
+| No unresolved asset in Android binary | ☑ N/A | Tree removed · historical via Git tag |
 | License manifest complete | ☑ | `STORE_ASSET_MANIFEST.md` (must stay in sync with rights registry) |
 | Bundle ID approved | ☐ | OWNER decision |
 | Signing approved | ☐ | OWNER secrets |

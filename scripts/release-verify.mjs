@@ -91,15 +91,7 @@ assert("server.url is www.ssunnah.com", capJson.server?.url === "https://www.ssu
 assert("no localhost in capacitor.config.ts", !/localhost|127\.0\.0\.1/.test(capTs));
 assert("no http:// cleartext server", !/url:\s*["']http:\/\//.test(capTs));
 
-const androidGradle = readFileSync(join(majalis, "android/app/build.gradle"), "utf8");
-const androidAppId = androidGradle.match(/applicationId\s+"([^"]+)"/)?.[1];
-assert("android applicationId present", Boolean(androidAppId), androidAppId || "missing");
-if (androidAppId && androidAppId !== capJson.appId) {
-  warnings.push(
-    `Android applicationId (${androidAppId}) ≠ Capacitor appId (${capJson.appId}) — OWNER_ACTION before store`,
-  );
-  console.warn(`⚠ appId mismatch Capacitor=${capJson.appId} Android=${androidAppId} (documented, not auto-fixed)`);
-}
+assert("android/ retired (iOS-only product)", !existsSync(join(majalis, "android")));
 
 const pbx = readFileSync(join(majalis, "ios/App/App.xcodeproj/project.pbxproj"), "utf8");
 assert("iOS PRODUCT_BUNDLE_IDENTIFIER includes com.yousef.majlisilm", /PRODUCT_BUNDLE_IDENTIFIER = com\.yousef\.majlisilm;/.test(pbx));
@@ -120,7 +112,7 @@ for (const doc of [
   "docs/qa/MUSHAF_REAL_DEVICE_RELEASE_MATRIX.md",
   "docs/qa/PRAYER_ADHAN_REAL_DEVICE_MATRIX.md",
   "docs/qa/IOS_RELEASE_CHECKLIST.md",
-  "docs/qa/ANDROID_RELEASE_CHECKLIST.md",
+  "docs/mobile/ANDROID_RETIREMENT_INVENTORY.md",
   "docs/operations/OBSERVABILITY_CONTRACT.md",
   "docs/operations/INCIDENT_RESPONSE_RUNBOOK.md",
   "docs/privacy/PRIVACY_IMPLEMENTATION_GAP_REPORT.md",
