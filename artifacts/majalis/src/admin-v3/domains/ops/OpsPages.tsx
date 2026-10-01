@@ -78,6 +78,10 @@ export function SettingsOpsPage() {
       <p className="av3-dash__sub">
         لا يُعرض أي سر. لا إرسال جماعي افتراضي من هذه الصفحة.
       </p>
+      <p className="av3-dash__sub">
+        مركز الأتمتة والتكاملات (FINAL-6):{" "}
+        <Link href="/admin/v3/automation">/admin/v3/automation</Link>
+      </p>
       <section className="av3-legacy-block">
         <h3>
           أدوات التشغيل <AdminLegacyChip />

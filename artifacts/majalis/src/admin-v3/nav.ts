@@ -101,7 +101,6 @@ const LEGACY_PATH_ALIASES: Record<string, AdminV3CenterId> = {
   [`${ADMIN_V3_BASE}/review`]: "reviews",
   [`${ADMIN_V3_BASE}/users`]: "community",
   [`${ADMIN_V3_BASE}/notifications`]: "settings",
-  [`${ADMIN_V3_BASE}/automation`]: "settings",
   [`${ADMIN_V3_BASE}/system`]: "settings",
   [`${ADMIN_V3_BASE}/audit`]: "settings",
   [`${ADMIN_V3_BASE}/home`]: "overview",
@@ -111,6 +110,10 @@ export function resolveAdminV3Center(pathname: string): AdminV3NavItem {
   const clean = pathname.split("?")[0] || ADMIN_V3_BASE;
   if (clean === ADMIN_V3_BASE || clean === `${ADMIN_V3_BASE}/`) {
     return ADMIN_V3_NAV[0]!;
+  }
+  // FINAL-6: automation hub lives under /admin/v3/automation* (shell highlight → settings)
+  if (clean === `${ADMIN_V3_BASE}/automation` || clean.startsWith(`${ADMIN_V3_BASE}/automation/`)) {
+    return ADMIN_V3_NAV.find((n) => n.id === "settings") ?? ADMIN_V3_NAV[0]!;
   }
   const aliased = LEGACY_PATH_ALIASES[clean];
   if (aliased) {

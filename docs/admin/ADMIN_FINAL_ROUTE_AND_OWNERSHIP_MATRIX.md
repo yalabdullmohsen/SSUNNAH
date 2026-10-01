@@ -34,7 +34,10 @@ Classification legend: `V3_CANONICAL` · `V3_ALIAS` · `LEGACY_ACTIVE` · `LEGAC
 | `/admin/v3/review` | redirect | Reviews | — | — | — | alias | `/admin/v3/reviews` | `V3_ALIAS` | 404 | keep alias |
 | `/admin/v3/users` | redirect | Community | — | — | — | alias | `/admin/v3/community` | `V3_ALIAS` | 404 | keep alias |
 | `/admin/v3/notifications` | redirect | Settings | — | — | — | alias | `/admin/v3/settings` | `V3_ALIAS` | 404 | keep alias |
-| `/admin/v3/automation` | redirect | Settings | — | — | — | alias | `/admin/v3/settings` | `V3_ALIAS` | 404 | keep alias |
+| `/admin/v3/automation` | v3 | Automation | hub + classification | content.read | `/api/admin/v3/automation` | status hub | settings highlight | `V3_CANONICAL` (PARTIAL) | 404 | FINAL-6 |
+| `/admin/v3/automation/sources` | v3 | Automation | sources read-only | content.read | `/api/admin/v3/automation?view=sources` | native read | Legacy manage `/admin/sources` | `V3_CANONICAL` (PARTIAL) | 404 | FINAL-6 |
+| `/admin/v3/automation/auto-content` | v3 | Automation | stats/health read | content.read | `/api/admin/v3/automation?view=auto-content` | native read | Legacy run `/admin/auto-content` | `V3_CANONICAL` (PARTIAL) | 404 | FINAL-6 |
+| `/admin/v3/automation/integrations` | v3 | Automation | telegram/instagram flags | content.read | `/api/admin/v3/automation?view=integrations` | status only | Legacy ops + OWNER secrets | `V3_CANONICAL` (PARTIAL) | 404 | FINAL-6 |
 | `/admin/v3/system` | redirect | Settings | — | — | — | alias | `/admin/v3/settings` | `V3_ALIAS` | 404 | keep alias |
 | `/admin/users` | redirect | Community | — | — | — | bridge | `/admin?section=users` | `LEGACY_ACTIVE` | 404 | after community parity |
 | `/admin/dashboard` | Standalone | Reviews/Home | dashboard page | admin | — | migrate/link | `/admin/v3` or review-hub | `STANDALONE_MIGRATE_NOW` | 404 | after parity |
