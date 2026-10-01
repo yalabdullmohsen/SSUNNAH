@@ -22,9 +22,9 @@
 | Info.plist URL scheme name | `com.yousef.majlisilm` / scheme `majlisilm` | ✓ |
 | Keychain service | `com.yousef.majlisilm.auth` | ✓ |
 | Production AASA `appIDs` | `5D8TX37HTS.com.yousef.majlisilm` | ✓ |
-| Watch app target | — | **NOT PRESENT** (Phase 12) |
-| Home Screen Widget target (non-LA) | — | **NOT PRESENT** (Phase 12) |
-| App Groups | — | **NOT PRESENT** (required before Watch/Widgets data share) |
+| Watch app target | — | **NOT PRESENT** (post–T-028; contract only) |
+| Home Screen Widget target (non-LA) | — | **NOT PRESENT** (post–T-028; contract only) |
+| App Groups | `group.com.yousef.majlisilm` | **Prepared** — `IOS_SHARED_DATA_FOUNDATION_READY` (T-028); portal registration OWNER_ACTION |
 
 **Decision:** Do **not** rename Bundle ID. No evidence of a different App Store Connect identifier in-repo. If ASC differs → OWNER_ACTION Decision Record before any rename.
 
@@ -71,6 +71,9 @@
 ```text
 IOS_NATIVE_ARCHITECTURE_CERTIFIED
 BUNDLE_ID_LOCKED=com.yousef.majlisilm
-WATCH_WIDGET_APP_GROUPS=PENDING_PHASE_12
+IOS_SHARED_DATA_FOUNDATION_READY
+APP_GROUP=group.com.yousef.majlisilm
+WATCH_WIDGET_TARGETS=NOT_STARTED
 SIGNING_ASC=OWNER_ACTION
+PORTAL_APP_GROUP_REGISTRATION=OWNER_ACTION
 ```

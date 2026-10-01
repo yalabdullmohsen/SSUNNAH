@@ -202,6 +202,9 @@
 | `docs/mobile/CONTENT_LICENSE_CERTIFICATION.md` | بوابة تراخيص المحتوى الأصلي · `LICENSE_CERTIFICATION_REQUIRED` |
 | `docs/mobile/LICENSE_CERTIFICATION_STATUS.md` | حالة التراخيص الحالية (CURRENT) |
 | `docs/mobile/MOBILE_READINESS_STATUS.md` | حالة جاهزية التطبيق الحالية (CURRENT) |
+| `docs/mobile/IOS_NATIVE_ARCHITECTURE_CERTIFICATION.md` | شهادة هوية iOS + entitlements · App Group `group.com.yousef.majlisilm` |
+| `docs/mobile/IOS_SHARED_DATA_CONTRACT.md` | عقد مشاركة بيانات App Group · عقود Widget/Watch (بلا تنفيذ) |
+| `docs/audit/IOS_APP_GROUPS_FOUNDATION_REPORT.md` | T-028 · `IOS_SHARED_DATA_FOUNDATION_READY` |
 | `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` | **Master Closure Register** · `MASTER_CLOSURE_REGISTER_LOCKED` |
 | `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md` | تقرير حدود الإغلاق الحي · `PROJECT_CLOSURE_PARTIAL` |
 | `docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/` | مرشّح أذان CC0 إسطنبول · `CC0_ADHAN_CANDIDATE` |
