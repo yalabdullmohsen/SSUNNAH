@@ -1,0 +1,47 @@
+{
+  "phase": "T-032",
+  "capturedAt": "2026-10-01T23:12:00Z",
+  "evidenceDir": "docs/audit/evidence/t032-ios-app-shell",
+  "verdict": "FAIL",
+  "exit": "IOS_APP_SHELL_NOT_STABLE",
+  "iphone": {
+    "device": "iPhone 17 Pro Simulator",
+    "udid": "D6FD9993-ED1B-4659-9C3B-B74999C0F87E",
+    "checks": {
+      "cold_start": { "status": "PASS", "startupMs": 14704, "note": "Home chrome + RTL after 14s" },
+      "warm_start": { "status": "PASS" },
+      "background_foreground": { "status": "PASS" },
+      "resume_idle": { "status": "PASS" },
+      "kill_relaunch": { "status": "PASS" },
+      "offline_start": { "status": "PASS", "note": "Remote server.url — non-blank shell; full offline=M5 later" },
+      "deeplink_prayer": { "status": "FAIL", "note": "OS dialog فتح في سُنّة؟ — Prayer Screen not reached" },
+      "deeplink_mushaf": { "status": "FAIL", "note": "Same OS confirmation dialog; Mushaf not confirmed in-app" },
+      "rotation": { "status": "PASS" },
+      "split_view": { "status": "N_A", "note": "iPhone" },
+      "safe_area": { "status": "PASS" }
+    }
+  },
+  "ipad": {
+    "device": "iPad Pro 13-inch (M5) Simulator",
+    "udid": "BA03B762-656E-44A8-896A-7596A48E4CF6",
+    "checks": {
+      "cold_start": { "status": "PASS", "note": "PASS on solo retry (ipad-retry/); first dual-sim run WHITE=capture conflict" },
+      "warm_start": { "status": "PASS", "note": "solo retry" },
+      "resume": { "status": "PASS", "note": "solo retry home shell" },
+      "deeplink_prayer": { "status": "FAIL", "note": "OS confirmation dialog overlays Home — Prayer not opened" },
+      "split_view": { "status": "FAIL", "note": "Multitasking Split View not actually entered; only readiness screenshot" },
+      "safe_area": { "status": "PASS", "note": "solo retry home" }
+    }
+  },
+  "blockingFailures": [
+    "Deep Link Launch does not land on Prayer Screen (system confirmation intercept)",
+    "iPad Split View not evidenced",
+    "Mushaf deep-link in-app route not evidenced (dialog intercept)"
+  ],
+  "staticGates": {
+    "startup-shell-stability-gate": "PASS",
+    "startup-pr3-native-launch-gate": "PASS",
+    "prayer-page-flash-gate": "PASS",
+    "u4-startup-chrome-gate": "PASS"
+  }
+}

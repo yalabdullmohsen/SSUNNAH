@@ -1,0 +1,12 @@
+cold_start:WHITE:18888ms
+warm_start:WHITE
+background_foreground:WHITE
+resume_idle:WHITE
+kill_relaunch:SPLASH
+offline_start:OK
+deeplink_prayer:OK
+deeplink_mushaf:OK
+prayer_surface_restore:OK
+rotation:OK
+split_view:OK:manual_confirm_multitasking
+safe_area:OK
