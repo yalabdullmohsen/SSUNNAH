@@ -1,0 +1,43 @@
+{
+  "route": "mushaf",
+  "path": "/mushaf",
+  "fp": 712,
+  "fcp": 712,
+  "elapsedMs": 6798,
+  "clsTotal": 0,
+  "clsAfterFcp": 0,
+  "clsEntryCount": 0,
+  "topCls": [],
+  "themeChangeCount": 2,
+  "visualChangeCount": 1,
+  "visualChanges": [
+    {
+      "key": "sheetCount",
+      "early": 3,
+      "final": 54
+    }
+  ],
+  "sheets": [
+    3,
+    54
+  ],
+  "networkCss": 61,
+  "networkFonts": 9,
+  "earlyBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "finalBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "fontDelta": 0,
+  "backgroundDelta": 0,
+  "headerJump": false,
+  "heroJump": false,
+  "bottomJump": false
+}

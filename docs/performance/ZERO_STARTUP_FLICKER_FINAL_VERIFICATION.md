@@ -149,8 +149,23 @@ Summary: `evidence/zero-startup-flicker-final-local/summary.json` (filmstrip PNG
 | Item | Status |
 |------|--------|
 | Local preview measure | ✓ (هذا الملف) |
-| Production `www.ssunnah.com` re-measure | **بعد الدمج + version.json MATCH** |
-| version.json MATCH | معلّق على نشر main |
+| PR #2430 | **MERGED** `7d4b30443` — Color contrast ✓ · visual-snapshot ✓ · Verify build ✓ · ci-required ✓ |
+| Auto Deploy | **SUCCESS** (workflow_dispatch بعد الدمج) |
+| version.json MATCH | **✓ `7d4b3044`** @ `builtAt=2026-10-01T09:34:08.574Z` |
+| Production re-measure | ✓ `docs/performance/evidence/zero-startup-flicker-prod-7d4b3044/summary.json` |
+| Tooling (prod) | Chrome headless + Playwright · 390×844 @2x · cache disabled |
+
+### Production route table (`7d4b3044`)
+
+| Route | FP | CLS | theme mut | sheets | font Δ | bg Δ | Header/Hero/Nav jump |
+|-------|---:|----:|----------:|--------|--------|------|----------------------|
+| `/` | 684 | **0.0257** | 0 | 3→108 | 0 | 0 | hero residual |
+| `/search` | 724 | 0.0044 | 2 | 3→72 | 0 | 0 | header+nav |
+| `/quran-hub` | 688 | 0.0044 | 2 | 3→76 | 0 | 0 | header+nav |
+| `/mushaf` | 712 | **0** | 2 | 3→54 | 0 | 0 | none |
+| `/prayer-times` | 872 | **0.0552** | 2 | 3→55 | 0 | 0 | nav |
+
+> ملاحظة: theme mut على غير-الرئيسية يُحسب لتغيّر `class`/`data-theme` فقط (dark/light/theme-*)؛ Home بقي 0. CLS الرئيسية/الصلاة على الإنتاج أعلى من المعاينة المحلية — لا يُعلن COMPLETE.
 
 ---
 
