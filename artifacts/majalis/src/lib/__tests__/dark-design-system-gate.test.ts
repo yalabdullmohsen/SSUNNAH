@@ -32,9 +32,10 @@ const ensure = read("src/lib/ensure-dark-layers.ts");
 assert.match(ensure, /dark-design-system\.css/);
 assert.match(
   ensure,
-  /Promise\.all\(\[\s*import\("\.\.\/styles\/dark-mode-surfaces\.css"\)/,
-  "محمّل واحد يستورد surfaces",
+  /Promise\.all\(\[[\s\S]*?import\("\.\.\/styles\/dark-mode-surfaces\.css"\)/,
+  "محمّل واحد يستورد surfaces (بعد recovery الاختياري)",
 );
+assert.match(ensure, /dark-mode-recovery\.css/, "recovery داخل محمّل الليل");
 
 const main = read("src/main.tsx");
 assert.match(main, /dark-design-system\.css/);

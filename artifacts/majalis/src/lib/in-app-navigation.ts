@@ -2,8 +2,8 @@
  * احتواء الروابط داخل تطبيق Capacitor — يمنع فتح Safari للمسارات الداخلية،
  * ويفتح الروابط الخارجية عبر Browser plugin مع تأكيد اختياري.
  */
-import { Capacitor } from "@capacitor/core";
 import { openExternalUrl } from "@/lib/capacitor-utils";
+import { isNativePlatform } from "@/lib/native-platform";
 
 const APP_HOSTS = new Set([
   "www.ssunnah.com",
@@ -15,11 +15,7 @@ const APP_HOSTS = new Set([
 ]);
 
 function isNative(): boolean {
-  try {
-    return Capacitor.isNativePlatform();
-  } catch {
-    return false;
-  }
+  return isNativePlatform();
 }
 
 export function isAppHost(hostname: string): boolean {

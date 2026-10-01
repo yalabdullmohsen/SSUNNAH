@@ -23,7 +23,8 @@ const path = read("src/views/NewMuslimPathPage.tsx");
 const day = read("src/views/NewMuslimDayDetailPage.tsx");
 const contact = read("src/views/DiscoverIslamContactPage.tsx");
 const calm = read("src/styles/sections-calm-polish.css");
-const unify = read("src/styles/visual-identity-unify.css");
+const unify =
+  read("src/styles/visual-identity-unify.css") + read("src/styles/index-deferred-pages.css");
 
 assert.match(shell, /dii-page/);
 assert.match(shell, /dii-page--detail/);

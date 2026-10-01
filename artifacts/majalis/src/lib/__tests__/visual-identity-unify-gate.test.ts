@@ -12,6 +12,8 @@ const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
 const calm = read("src/styles/sections-calm-polish.css");
 const unify = read("src/styles/visual-identity-unify.css");
+/** ATF sync + صفحات مؤجّلة — ملكية التوحيد بعد U1 numeric */
+const unifyOwned = unify + read("src/styles/index-deferred-pages.css");
 const soft = read("src/styles/theme-aliases.css");
 const ds = read("src/styles/design-system.css");
 const miracles = read("src/styles/pages/miracles.css");
@@ -57,14 +59,14 @@ for (const cls of [
   "tawheed-type-card",
 ]) {
   assert.match(calm, new RegExp(`\\.${cls}`), `calm يشمل .${cls}`);
-  assert.match(unify, new RegExp(`\\.${cls}`), `unify يشمل .${cls}`);
+  assert.match(unifyOwned, new RegExp(`\\.${cls}`), `unify+deferred يشمل .${cls}`);
 }
 assert.match(calm, /\.notif-card/);
 assert.match(calm, /\.an-card/);
 assert.match(calm, /\.hlr__card/);
-assert.match(unify, /\.notif-card/);
-assert.match(unify, /\.an-card/);
-assert.match(unify, /\.hlr__card/);
+assert.match(unifyOwned, /\.notif-card/);
+assert.match(unifyOwned, /\.an-card/);
+assert.match(unifyOwned, /\.hlr__card/);
 assert.match(calm, /--section-stack-gap/);
 assert.match(calm, /\.scroll-to-top[\s\S]*?border-radius:\s*var\(--radius-(?:pill|button)/);
 assert.match(calm, /\.ss-action-btn--sm/);
@@ -82,8 +84,8 @@ assert.match(ux, /\.ss-action-btn--sm[\s\S]*?min-height:\s*44px/);
 assert.match(calm, /\.hadith-detail-card/);
 assert.match(calm, /\.rsc\b/);
 assert.match(calm, /\.ahd-section/);
-assert.match(unify, /\.hadith-detail-card/);
-assert.match(unify, /\.rsc\b/);
+assert.match(unifyOwned, /\.hadith-detail-card/);
+assert.match(unifyOwned, /\.rsc\b/);
 
 const mustalah = read("src/styles/pages/hadith-mustalah.css");
 const books = read("src/styles/pages/hadith-books.css");
@@ -167,5 +169,5 @@ assert.match(finalRelease, /--shadow-soft:\s*var\(--mj-sh\)/, "فوز unify لل
 console.log("visual-identity-unify-gate.test.ts: ok");
 
 console.log("=== بطاقات الدليل ===");
-assert.match(unify, /\.ilm-card/);
-assert.match(unify, /\.inst-card/);
+assert.match(unifyOwned, /\.ilm-card/);
+assert.match(unifyOwned, /\.inst-card/);

@@ -3217,3 +3217,380 @@ html[data-theme="dark"] .skeleton-base {
   line-height: 1.55;
 }
 
+/* U1 NUMERIC: visual-identity page blocks (not Home ATF) */
+/* ── دخول ──────────────────────────────────────────────────────────── */
+.login-page {
+  --auth-green: var(--color-primary) !important;
+  --auth-green-deep: var(--color-primary-dark) !important;
+  --auth-ink: var(--color-text) !important;
+  --auth-muted: var(--color-muted) !important;
+  --auth-line: var(--color-border) !important;
+  --auth-surface: var(--color-surface) !important;
+  --auth-field: var(--color-surface-soft) !important;
+  background: var(--color-bg) !important;
+  color: var(--color-text) !important;
+}
+
+.login-card {
+  border: 1px solid var(--color-border) !important;
+  background: var(--color-surface) !important;
+  border-radius: var(--radius-sheet) !important;
+  box-shadow: var(--shadow-soft) !important;
+  max-width: 22rem;
+  padding: 1.15rem 1.05rem 1rem !important;
+}
+
+.login-card__brand {
+  color: var(--color-primary-dark) !important;
+}
+
+.login-tab.is-active,
+.login-submit {
+  background: var(--color-primary) !important;
+  border-color: var(--color-primary-dark) !important;
+  color: var(--mj-on-brand, #fff) !important;
+  box-shadow: none !important;
+}
+
+.login-field,
+.login-page input,
+.login-page .login-input {
+  background: var(--color-surface-soft) !important;
+  border: 1px solid var(--color-border) !important;
+  color: var(--color-text) !important;
+  border-radius: var(--radius-control, 14px) !important;
+}
+
+.login-field input::placeholder,
+.login-page input::placeholder,
+.login-page .login-input::placeholder {
+  color: var(--mj-ink-2, var(--color-muted)) !important;
+  opacity: 1 !important;
+}
+
+/* ── قائمة جانبية ──────────────────────────────────────────────────── */
+.drawer-panel,
+.sidebar-panel {
+  background: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border-inline-end: 1px solid var(--color-border) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.sidebar-item {
+  border-inline-start: 0 !important;
+  border-radius: var(--radius-control, 14px) !important;
+  color: var(--color-text) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  min-height: 44px;
+}
+
+.sidebar-item.active,
+.sidebar-item[aria-current="page"],
+.sidebar-item.is-active {
+  background: var(--color-selected) !important;
+  color: var(--color-primary-dark) !important;
+  border-inline-start: 0 !important;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-primary) 35%, transparent) !important;
+}
+
+.sidebar-item.active .sidebar-item-icon,
+.sidebar-item.is-active .sidebar-item-icon {
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent) !important;
+  color: var(--color-primary) !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="dark"] .sidebar-item.active,
+html.dark .sidebar-item.active {
+  color: var(--color-text) !important;
+}
+
+/* ── قرآن (مركز/بطاقات — دون المصحف) ───────────────────────────────── */
+.quran-hub,
+.quran-hub-page,
+.section-lobby {
+  background: var(--color-bg) !important;
+  color: var(--color-text) !important;
+}
+
+.quran-hub-hero,
+.quran-hub-closing,
+.card--featured,
+.section-lobby__featured {
+  background: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-border) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.quran-hub-hero__title,
+.quran-hub-hero__sub,
+.quran-hub-closing *,
+.card--featured,
+.card--featured * {
+  color: inherit !important;
+}
+
+.quran-open-mushaf__cta-btn,
+.quran-hub .btn-primary {
+  box-shadow: none !important;
+}
+
+/* ── دروس ──────────────────────────────────────────────────────────── */
+.lessons-page,
+.lessons-page-v2,
+.lessons-page-v3 {
+  --lesson-green: var(--color-primary) !important;
+  --lesson-green-deep: var(--color-primary-dark) !important;
+  --lesson-green-soft: var(--color-primary-soft) !important;
+  background: var(--color-bg) !important;
+  color: var(--color-text) !important;
+}
+
+.lesson-unified-card {
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border) !important;
+  box-shadow: var(--shadow-soft) !important;
+  border-radius: var(--radius-card) !important;
+}
+
+.lessons-page-v3 .page-hero-mj,
+.lessons-page-v2 .page-hero-mj,
+.lessons-v2-filters,
+.lessons-v3-sticky {
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border) !important;
+  box-shadow: none !important;
+  border-radius: var(--radius-card, 18px) !important;
+}
+
+.lessons-page-v3 .filter-chips__chip.is-active,
+.lessons-filter-tabs .lessons-filter-tab--active {
+  background: var(--mj-chip-active-bg, var(--color-primary-dark)) !important;
+  color: var(--mj-chip-active-fg, #ffffff) !important;
+}
+
+/* ── فقه ───────────────────────────────────────────────────────────── */
+/* هيرو أقسام — زمرد داكن صلب · بلا تدرّج مزعج */
+.fqh-hub-hero,
+.fiqh-lux-book-hero,
+.page-hero-mj--bleed,
+.mss-hero-surface {
+  background: var(--cs-ink-hero, var(--mj-brand-deep, #0a2f24)) !important;
+  background-image: none !important;
+  color: var(--cs-on-ink, #f7f1e4) !important;
+  box-shadow: none !important;
+  min-height: 0 !important;
+  padding-block: 1.1rem !important;
+}
+
+/*
+ * زر الرجوع على الهيرو المتدرج يستخدم .mj-btn (أول مطابقة لبوابة التباين).
+ * خلفية شفافة/color() + تدرّج الأب → NO_COLOR. ثبّت خلفية صلبة + نص عاجي.
+ */
+.page-hero-mj--bleed .page-hero-mj__back,
+.page-hero-mj--bleed .mj-btn.mj-btn--ghost.app-back-btn,
+.page-hero-mj--bleed .mj-btn.mj-btn--ghost.app-back-btn--hero,
+.mss-hero-surface .page-hero-mj__back,
+.fqh-hub-hero .page-hero-mj__back,
+.fiqh-lux-book-hero .page-hero-mj__back {
+  background: #0a3d2e !important;
+  background-color: #0a3d2e !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  border: 1px solid color-mix(in srgb, #ffffff 32%, transparent) !important;
+  box-shadow: none !important;
+}
+
+.page-hero-mj--bleed .page-hero-mj__back *,
+.page-hero-mj--bleed .mj-btn.mj-btn--ghost.app-back-btn *,
+.mss-hero-surface .page-hero-mj__back *,
+.fqh-hub-hero .page-hero-mj__back *,
+.fiqh-lux-book-hero .page-hero-mj__back * {
+  color: inherit !important;
+}
+
+.fqh-hub-hero {
+  border-radius: 0 0 var(--radius-sheet) var(--radius-sheet);
+  margin-bottom: 0.85rem;
+}
+
+.fqh-hub-card {
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border) !important;
+  box-shadow: var(--shadow-soft) !important;
+  border-radius: var(--radius-card) !important;
+  color: var(--color-text) !important;
+}
+
+/* ── أقسام ─────────────────────────────────────────────────────────── */
+.section-hub,
+.section-hub__intro,
+.section-hub__card {
+  background: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-border) !important;
+  box-shadow: var(--shadow-soft) !important;
+  border-radius: var(--radius-card) !important;
+}
+
+.section-hub {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.section-hub__intro {
+  background: var(--color-surface-soft) !important;
+}
+
+/* أبطال الأقسام العامة — لا تبتلع الصفحة */
+.page-hero-mj,
+.mss-hero,
+.modern-section-hero {
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.page-hero-mj:not(.page-hero-mj--bleed),
+.mss-hero:not(.mss-hero-surface) {
+  background: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-border) !important;
+}
+
+/* أيقونات موحّدة الحجم/اللون في البطاقات */
+.hub-card svg,
+.section-card svg,
+.sidebar-item-icon svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: currentColor;
+}
+
+/* تباين نص عام */
+.login-page,
+.drawer-panel,
+.sidebar-panel,
+.quran-hub,
+.lessons-page,
+.lessons-page-v2,
+.lessons-page-v3,
+.section-hub,
+.fqh-hub,
+.fiqh-hub {
+  color: var(--color-text);
+}
+
+.login-page .muted,
+.sidebar-item__meta,
+.quran-hub .muted,
+.lessons-page .muted,
+.section-hub__meta {
+  /* ink-2 أوضح من muted على surface-soft (AA) */
+  color: var(--mj-ink-2, var(--color-muted)) !important;
+}
+
+/* دليل المعالم والمؤسسات */
+.ilm-card,
+.inst-card {
+  border-radius: var(--radius-card, 24px);
+}
+
+/* P15: ضمان تباين .sq-header ليلاً — خلفية نعناع صلبة + حبر on-brand */
+html[data-theme="dark"] .sq-header,
+html.dark .sq-header {
+  background: #5fbf98 !important;
+  background-color: #5fbf98 !important;
+  background-image: none !important;
+  color: #06231a !important;
+  border-color: #1e4d3c !important;
+}
+html[data-theme="dark"] .sq-header .sq-title,
+html.dark .sq-header .sq-title,
+html[data-theme="dark"] .sq-header .sq-kicker,
+html.dark .sq-header .sq-kicker,
+html[data-theme="dark"] .sq-header .sq-meta,
+html.dark .sq-header .sq-meta,
+html[data-theme="dark"] .sq-header .sq-toggle,
+html.dark .sq-header .sq-toggle,
+html[data-theme="dark"] .sq-header svg,
+html.dark .sq-header svg,
+html[data-theme="dark"] .sq-header :where(*),
+html.dark .sq-header :where(*) {
+  color: #06231a !important;
+}
+
+/* U1 NUMERIC: section card unify (non-Home ATF) */
+/* بطاقات قراءة/مراجع فاتحة — البطاقات الرئيسية عبر card-system؛ soft-card متقاعد */
+.soft-card:not(.hub-card),
+.section-card,
+.ds-card,
+.mj-card,
+.hadith-card,
+.isp-card,
+.sect-card,
+.akl-card,
+.tarikh-card,
+.mk-card,
+.mk-lane-card,
+.fiqh-book-card,
+.ve-book-card,
+.ve-chapter-card,
+.nation-card,
+.prophet-lux-card,
+.seerah-panel,
+.seerah-notice,
+.seerah-timeline,
+.seerah-phase,
+.tf-card,
+.tf-path-card,
+.tf-spotlight-card,
+.tf-edition-card,
+.tf-intro,
+.gl-term,
+.ai-detail,
+.uq-fact-item,
+.uq-dalil-box,
+.uq-info-box,
+.dii-hub-card,
+.dii-list-card,
+.dii-block,
+.dii-journey-step,
+.dii-path-day,
+.dii-contact-cta,
+.dii-contact-form,
+.dii-answer-card,
+.dii-evidence-item,
+.dii-shubha-text-card,
+.hs-card,
+.hb-hadith-row,
+.fqh-hub-card,
+.quran-hub-card,
+.twh-hub-card,
+.tawheed-type-card,
+.hlr__card {
+  background: var(--color-surface) !important;
+  border: 1px solid color-mix(in srgb, var(--color-border) 88%, transparent) !important;
+  border-radius: var(--radius-card) !important;
+  box-shadow: var(--shadow-soft) !important;
+  color: var(--color-text);
+}
+
+.an-card,
+.notif-card,
+.nh-section {
+  border-radius: var(--radius-card) !important;
+}
+
+/* تفاصيل قراءة/حديث: نصف قطر موحّد دون فرض خلفية (تحتفظ بألوان دلالية) */
+.hadith-detail-card,
+.rsc,
+.ahd-section,
+.isp-detail__section,
+.tarikh-detail__section,
+.akl-block {
+  border-radius: var(--radius-card) !important;
+}
+

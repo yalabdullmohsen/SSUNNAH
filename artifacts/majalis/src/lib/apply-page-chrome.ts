@@ -1,7 +1,7 @@
 /**
  * تطبيق PageChrome على DOM + Capacitor StatusBar + theme-color.
+ * كشف الأصلي عبر native-platform — لا تسحب @capacitor/core إلى entry.
  */
-import { Capacitor } from "@capacitor/core";
 import { TOP_SPONSOR_STATUS } from "@/config/header-ad";
 import {
   resolvePageChrome,
@@ -11,6 +11,7 @@ import {
   type StatusBarIconStyle,
 } from "@/lib/page-chrome";
 import { VIEWPORT_CONTENT } from "@/lib/ensure-chrome-meta";
+import { isNativePlatform } from "@/lib/native-platform";
 
 let lastAppliedKey = "";
 let lastAppliedHex = "";
@@ -78,7 +79,7 @@ export function applyPageChromeDom(chrome: PageChromeDef, key?: string) {
 }
 
 async function applyNativeStatusBar(chrome: PageChromeDef) {
-  if (!Capacitor.isNativePlatform()) return;
+  if (!isNativePlatform()) return;
   try {
     const { StatusBar, Style } = await import("@capacitor/status-bar");
     if (!overlaysConfigured) {
@@ -167,7 +168,7 @@ export async function applyMushafThemeChrome(theme: MushafSurfaceTheme): Promise
 
 /** تهيئة إقلاع: overlay + لون افتراضي (قبل React إن أمكن). */
 export async function bootstrapStatusBarOverlay(): Promise<void> {
-  if (!Capacitor.isNativePlatform()) return;
+  if (!isNativePlatform()) return;
   try {
     const { StatusBar } = await import("@capacitor/status-bar");
     await StatusBar.setOverlaysWebView({ overlay: true });

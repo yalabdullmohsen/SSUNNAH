@@ -27,7 +27,6 @@ import {
 } from "./lib/app-startup-controller";
 import { scheduleBackgroundUiFontWarm } from "./lib/background-ui-fonts";
 import { markStartup } from "./lib/startup-performance-marks";
-import { prefetchTopRoutesOnIdle } from "./lib/prefetch-top-routes";
 import { initOnboardingState } from "./lib/onboarding-state";
 import { scheduleOnIdle } from "./lib/yield-to-main";
 import { logLcpCandidateHint } from "./lib/home-lcp-static-shell";
@@ -79,8 +78,7 @@ import "./styles/visual-identity-unify.css";
 /* Green Surface System — مؤجّل تحت الميزانية (انظر loadNonCriticalCss) */
 /* حالات تفاعل متمايزة + ::selection — متزامن (عقد identity-cascade / dark-deferred) */
 import "./styles/interaction-states.css";
-/* استرداد ليلي P0 — متزامن؛ القواعد مقيّدة بـ html.dark لتقليل theme flash */
-import "./styles/dark-mode-recovery.css";
+/* dark-mode-recovery مع ensure-dark-layers — خارج CSS النهاري (عقد U1 unused-css ≤80) */
 // dark-mode-surfaces.css / dark-design-system.css / premium-dark-refine.css / luxury-night-v2.css
 // — محمّل واحد عبر ensure-dark-layers (Phase 3: لا إعادة idle لنفس الوحدات)
 {
@@ -275,7 +273,16 @@ function scheduleNetworkWarm() {
 }
 scheduleNetworkWarm();
 
-prefetchTopRoutesOnIdle();
+/* تسخين المسارات — استيراد ديناميكي بعد 25s حتى لا يدخل prefetch إلى entry/LHCI Unused JS */
+{
+  const armPrefetch = () => {
+    window.setTimeout(() => {
+      void import("./lib/prefetch-top-routes").then((m) => m.runPrefetchTopRoutes());
+    }, 25_000);
+  };
+  if (document.readyState === "complete") armPrefetch();
+  else window.addEventListener("load", armPrefetch, { once: true });
+}
 
 async function mount() {
   const started = performance.now();

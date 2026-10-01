@@ -1,14 +1,15 @@
 /**
  * أدوات Capacitor — StatusBar يُدار مركزياً عبر apply-page-chrome (overlay + لون الصفحة).
  * setupStatusBar يبقى للتوافق (إقلاع / استعادة بعد immersive) ويعيد مزامنة chrome الحالي.
+ * كشف المنصّة عبر native-platform (بلا @capacitor/core في حزمة الإقلاع).
  */
-import { Capacitor } from "@capacitor/core";
+import { getNativePlatform, isNativePlatform } from "@/lib/native-platform";
 
-export const isNative = Capacitor.isNativePlatform();
+export const isNative = isNativePlatform();
 /** اسم صريح لواجهة التطبيق — مطابق لـ Capacitor.isNativePlatform() */
 export const isNativeApp = isNative;
-export const isAndroid = Capacitor.getPlatform() === "android";
-export const isIOS = Capacitor.getPlatform() === "ios";
+export const isAndroid = getNativePlatform() === "android";
+export const isIOS = getNativePlatform() === "ios";
 
 /** ألوان سطح افتراضية — تطابق theme-color / --mj-bg */
 export const STATUS_BAR_BG_LIGHT = "#F7F3EB";
