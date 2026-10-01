@@ -26,8 +26,14 @@ assert.doesNotMatch(recovery, /filter:\s*invert/, "بلا invert");
 assert.doesNotMatch(recovery, /mix-blend-mode:\s*(multiply|screen|difference|exclusion)/, "بلا blend ضار");
 
 const main = read("src/main.tsx");
-assert.match(main, /import\s+['"]\.\/styles\/dark-mode-recovery\.css['"]/, "الاسترداد متزامن من main");
-assert.match(main, /dark-mode-recovery\.css/, "الاسترداد محمّل من main");
+assert.doesNotMatch(
+  main,
+  /import\s+['"]\.\/styles\/dark-mode-recovery\.css['"]/,
+  "الاسترداد ليس sync نهاريًا في main",
+);
+const ensure = read("src/lib/ensure-dark-layers.ts");
+assert.match(ensure, /dark-mode-recovery\.css/, "الاسترداد عبر ensure-dark-layers");
+assert.match(main, /ensureDarkLayersForBoot/, "إقلاع داكن يحمّل طبقات الليل");
 
 const nav = read("src/styles/m2030/navigation.css");
 assert.match(nav, /--brand-on-surface/, "تبويب نشط ليلي لا يعتمد على brand-on-light وحده");

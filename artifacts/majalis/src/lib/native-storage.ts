@@ -8,17 +8,11 @@
  * مهم: لا يُنتظر hydrate قبل createRoot — مهلة قصيرة حتى لا تتجمّد شاشة الإقلاع
  * إذا كان ملحق Preferences غير موجود في الـ binary أو علّق الجسر الأصلي.
  */
-import { Capacitor } from "@capacitor/core";
+import { isNativePlatform } from "@/lib/native-platform";
 
 const HYDRATE_BUDGET_MS = 900;
 
-const isNative = () => {
-  try {
-    return Capacitor.isNativePlatform();
-  } catch {
-    return false;
-  }
-};
+const isNative = () => isNativePlatform();
 
 function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T | null> {
   return new Promise((resolve) => {

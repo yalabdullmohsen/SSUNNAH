@@ -7,7 +7,6 @@
  * Capacitor SplashScreen طبقة تغطية صامتة؛ تُخفى فورًا عند التسليح حتى لا تظهر
  * كدخولية ثانية فوق HTML. الدخولية الوحيدة ذات العلامة/العبارة هي #mj-launch-splash.
  */
-import { Capacitor } from "@capacitor/core";
 import {
   LAUNCH_SPLASH_ID,
   SPLASH_FADE_OUT_MS,
@@ -16,6 +15,7 @@ import {
   SPLASH_SESSION_KEY,
 } from "@/lib/majlis-splash";
 import { notifyNativeLaunchEnded } from "@/lib/app-startup-controller";
+import { isNativePlatform } from "@/lib/native-platform";
 import { markStartup } from "@/lib/startup-performance-marks";
 import { trackOps } from "@/lib/ops-telemetry";
 
@@ -68,7 +68,7 @@ export function dismissHtmlLaunchSplash(immediate = false, reason = "dismiss"): 
 async function hideCapacitorSplash(immediate = false): Promise<void> {
   if (capacitorHidden) return;
   capacitorHidden = true;
-  if (!Capacitor.isNativePlatform()) return;
+  if (!isNativePlatform()) return;
   try {
     const { SplashScreen } = await import("@capacitor/splash-screen");
     await SplashScreen.hide({
