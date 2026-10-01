@@ -77,7 +77,7 @@ assert.match(
 );
 
 console.log("=== U4 geometry contracts in critical ===");
-assert.match(crit, /\.home-page-hero\.page-hero-mj[\s\S]*min-height:\s*11rem/);
+assert.match(crit, /\.home-page-hero\.page-hero-mj[\s\S]*min-height:\s*18rem/);
 assert.match(crit, /\.app-top-chrome[\s\S]*min-height:\s*var\(--app-top-chrome-h/);
 assert.match(
   html,

@@ -16,7 +16,7 @@
   isolation: isolate;
   overflow: visible;
   color: var(--mj-ink);
-  min-height: 11rem;
+  min-height: 18rem;
 }
 
 .mj-home-lcp-ph {

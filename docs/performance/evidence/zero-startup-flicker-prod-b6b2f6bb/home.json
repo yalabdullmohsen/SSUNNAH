@@ -1,0 +1,122 @@
+{
+  "route": "home",
+  "path": "/",
+  "fp": 1556,
+  "fcp": 1556,
+  "elapsedMs": 50080,
+  "clsTotal": 0.07153070904552605,
+  "clsAfterFcp": 0.07153070904552605,
+  "clsEntryCount": 9,
+  "topCls": [
+    {
+      "value": 0.015991400125783338,
+      "startTime": 2288.100000023842,
+      "sources": [
+        "header.page-hero-mj.svl-page-header",
+        "section.m2030-band.home-start-here-band",
+        "nav.bottom-nav.bottom-nav--v2"
+      ]
+    },
+    {
+      "value": 0.015877795254285072,
+      "startTime": 2717.399999976158,
+      "sources": [
+        "section.home-start-here.home-start-here--compact",
+        "div.ss-screen.ss-screen--dashboard",
+        "a.bottom-nav__tab",
+        "a.bottom-nav__tab"
+      ]
+    },
+    {
+      "value": 0.011961656788369534,
+      "startTime": 2189.399999976158,
+      "sources": [
+        "div.app-shell"
+      ]
+    },
+    {
+      "value": 0.010712059220180738,
+      "startTime": 2222.399999976158,
+      "sources": [
+        "header.page-hero-mj.svl-page-header",
+        "section.m2030-band.home-start-here-band",
+        "span.hus-input.mj-home-lcp-ph__search-ph",
+        "span.bottom-nav__tab-icon",
+        "span.bottom-nav__tab-icon"
+      ]
+    },
+    {
+      "value": 0.007375820539745288,
+      "startTime": 2207.399999976158,
+      "sources": [
+        "main#main-content.app-main"
+      ]
+    }
+  ],
+  "themeChangeCount": 0,
+  "visualChangeCount": 3,
+  "visualChanges": [
+    {
+      "key": "sheetCount",
+      "early": 3,
+      "final": 114
+    },
+    {
+      "key": "hero.rect",
+      "early": {
+        "x": 16,
+        "y": 113,
+        "w": 358,
+        "h": 176
+      },
+      "final": {
+        "x": 32,
+        "y": 186.171875,
+        "w": 326,
+        "h": 285.328125
+      },
+      "delta": {
+        "dw": -32,
+        "dh": 109.328125,
+        "dy": 73.171875
+      }
+    },
+    {
+      "key": "hero.color",
+      "early": "rgb(21, 56, 45)",
+      "final": "rgb(247, 241, 228)"
+    }
+  ],
+  "sheets": [
+    3,
+    114
+  ],
+  "networkCss": 72,
+  "networkFonts": 4,
+  "earlyBody": {
+    "font": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "finalBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "fontDelta": 0,
+  "backgroundDelta": 0,
+  "headerJump": false,
+  "heroJump": false,
+  "bottomJump": false,
+  "backJump": false,
+  "headerDelta": null,
+  "heroDelta": {
+    "dw": -32,
+    "dh": 109.328125,
+    "dy": 73.171875
+  },
+  "bottomDelta": null,
+  "backDelta": null
+}
