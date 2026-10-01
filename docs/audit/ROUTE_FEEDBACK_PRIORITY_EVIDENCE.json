@@ -1,0 +1,545 @@
+{
+  "version": 1,
+  "phase": "ROUTE_FEEDBACK_PRIORITY",
+  "policy": "COMPLETE requires routeClass + testRef + testedCommit + testedDate + artifact + expected + actual. No Feedback V3.",
+  "testedCommit": "cfcc6e7f",
+  "testedDate": "2026-10-01",
+  "gate": "artifacts/majalis/src/lib/__tests__/closure-route-feedback-priority-gate.test.ts",
+  "feedbackAuthority": "docs/design/FORM_FEEDBACK_AUTHORITY.md",
+  "components": [
+    "EmptyStateV2",
+    "NoResultsState",
+    "LoadingStateV2",
+    "ErrorStateV2",
+    "OfflineStateV2",
+    "StaleDataIndicator",
+    "PermissionDeniedState",
+    "RateLimitedState",
+    "FieldError"
+  ],
+  "routes": {
+    "/": {
+      "routeClass": "ACTIVE_PUBLIC_HIGH_TRAFFIC",
+      "states": {
+        "loading": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "artifacts/majalis/src/pages/home (HomeDashboard + StaleDataIndicator)",
+          "expected": "Skeleton/section load without blank wipe",
+          "actual": "Home sections load; isolated stale strip on follow section fail"
+        },
+        "empty": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "HomeDashboard empty/follow paths",
+          "expected": "Empty ≠ NoResults",
+          "actual": "COMPLETE via WAVE4 + matrix"
+        },
+        "error": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "StaleDataIndicator / ErrorStateV2 authority",
+          "expected": "No raw API; in-place recovery",
+          "actual": "Friendly copy; no location.reload as primary"
+        },
+        "offline": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "artifacts/majalis/src/components/OfflineBanner.tsx + App.tsx mount",
+          "expected": "Chrome offline banner on navigator.offLine",
+          "actual": "OfflineBanner lazy-mounted for all public shells"
+        },
+        "noResults": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Home is not a search/filter results surface"
+        },
+        "permissionDenied": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public home — no auth gate"
+        },
+        "rateLimited": {
+          "status": "NOT_APPLICABLE",
+          "reason": "No rate-limited primary fetch on home shell"
+        }
+      }
+    },
+    "/search": {
+      "routeClass": "ACTIVE_PUBLIC_HIGH_TRAFFIC",
+      "states": {
+        "loading": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "artifacts/majalis/src/pages/account/ui/SearchView.tsx",
+          "expected": "Loading without blank",
+          "actual": "Search loading path gated"
+        },
+        "empty": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Pre-query empty uses search chrome; results use NoResults"
+        },
+        "error": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "SearchView.tsx STATUS.loadError + OfflineStateV2",
+          "expected": "No err.message raw",
+          "actual": "Gate asserts no setError(err.message)"
+        },
+        "offline": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "SearchView OfflineStateV2",
+          "expected": "Offline ≠ Error",
+          "actual": "OfflineStateV2 on search"
+        },
+        "noResults": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "SearchView NoResultsState",
+          "expected": "Keep query; clear path",
+          "actual": "NoResultsState COMPLETE"
+        },
+        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public search" },
+        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Client index search — no 429 surface" }
+      }
+    },
+    "/quran-hub": {
+      "routeClass": "ACTIVE_PUBLIC_HIGH_TRAFFIC",
+      "states": {
+        "loading": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "artifacts/majalis/src/pages/quran/ui/QuranHubView.tsx",
+          "expected": "Lobby renders from registry",
+          "actual": "DashboardScreen + SectionLobby synchronous"
+        },
+        "empty": {
+          "status": "NOT_APPLICABLE",
+          "reason": "STATIC_LOBBY — registry groups; defensive EmptyStateV2 only if groups length 0"
+        },
+        "error": {
+          "status": "NOT_APPLICABLE",
+          "reason": "No network list fetch on hub shell"
+        },
+        "offline": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "OfflineBanner + local lobby/registry",
+          "expected": "Hub usable offline from local registry",
+          "actual": "OfflineBanner chrome + static lobby"
+        },
+        "noResults": {
+          "status": "NOT_APPLICABLE",
+          "reason": "No search/filter on hub root"
+        },
+        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public" },
+        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "No API rate surface" }
+      }
+    },
+    "/mushaf": {
+      "routeClass": "MUSHAF_SPECIAL",
+      "states": {
+        "loading": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "NewMushafReader + mushaf gates",
+          "expected": "No Quran text/mapping change",
+          "actual": "MUSHAF_SPECIAL matrix confirm"
+        },
+        "empty": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "mushaf page shell",
+          "expected": "604 pages present",
+          "actual": "Integrity gates hold"
+        },
+        "error": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "mushaf error chrome",
+          "expected": "No content corruption on fail",
+          "actual": "MUSHAF_SPECIAL error paths gated"
+        },
+        "offline": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "OfflineBanner + offline reading pack",
+          "expected": "Cached pages usable; chrome offline signal",
+          "actual": "OfflineBanner + mushaf offline contracts"
+        },
+        "noResults": { "status": "NOT_APPLICABLE", "reason": "Reader not a filter list" },
+        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public reader" },
+        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Local page assets" }
+      }
+    },
+    "/mushaf/bookmarks": {
+      "routeClass": "MUSHAF_SPECIAL",
+      "states": {
+        "loading": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "MushafBookmarksView",
+          "expected": "List/loading chrome",
+          "actual": "COMPLETE"
+        },
+        "empty": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "MushafBookmarksView empty",
+          "expected": "Empty bookmarks state",
+          "actual": "COMPLETE"
+        },
+        "error": {
+          "status": "COMPLETE",
+          "testRef": "closure-pr5-forms-feedback-gate.test.ts",
+          "artifact": "FieldError import failure path",
+          "expected": "No window.alert",
+          "actual": "FieldError for import errors"
+        },
+        "offline": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "local bookmarks + OfflineBanner",
+          "expected": "Local bookmarks available offline",
+          "actual": "Local storage + OfflineBanner"
+        },
+        "noResults": { "status": "NOT_APPLICABLE", "reason": "No search filters on bookmarks root" },
+        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Local bookmarks" },
+        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Local" }
+      }
+    },
+    "/prayer-times": {
+      "routeClass": "PRAYER_SPECIAL",
+      "states": {
+        "loading": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "PrayerTimesView",
+          "expected": "No calc/method change",
+          "actual": "PRAYER_SPECIAL matrix confirm"
+        },
+        "empty": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "PrayerTimesView location/empty chrome",
+          "expected": "Honest empty when location unset",
+          "actual": "COMPLETE without calc change"
+        },
+        "error": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "pts-error role=alert",
+          "expected": "Friendly error; no method rewrite",
+          "actual": "COMPLETE"
+        },
+        "offline": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "OfflineBanner + local timetable cache",
+          "expected": "Chrome offline; calc unchanged",
+          "actual": "OfflineBanner; DEVICE_REQUIRED for background adhan"
+        },
+        "noResults": { "status": "NOT_APPLICABLE", "reason": "Not a search list" },
+        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public prayer UI" },
+        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Local calc" }
+      }
+    },
+    "/lessons": {
+      "routeClass": "ACTIVE_PUBLIC_HIGH_TRAFFIC",
+      "states": {
+        "loading": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "LessonsView.tsx",
+          "expected": "Skeleton geometry",
+          "actual": "PageLoadingGuard + list"
+        },
+        "empty": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "EmptyStateV2",
+          "expected": "Empty ≠ NoResults",
+          "actual": "EmptyStateV2 when no published lessons"
+        },
+        "error": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "ErrorStateV2 + setReloadKey",
+          "expected": "In-place retry; no safeLocationReload",
+          "actual": "Gate asserts ErrorStateV2 + setReloadKey"
+        },
+        "offline": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "OfflineBanner + ErrorStateV2 offline mapping via STATUS",
+          "expected": "Offline signal + retry",
+          "actual": "OfflineBanner chrome COMPLETE"
+        },
+        "noResults": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "NoResultsState in LessonsView",
+          "expected": "Filter miss ≠ empty catalog",
+          "actual": "NoResultsState COMPLETE"
+        },
+        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public lessons" },
+        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Static/catalog fetch — no 429 UI" }
+      }
+    },
+    "/hadith": {
+      "routeClass": "ACTIVE_PUBLIC_HIGH_TRAFFIC",
+      "states": {
+        "loading": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "Hadith pages",
+          "expected": "Loading chrome",
+          "actual": "COMPLETE matrix"
+        },
+        "empty": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "Hadith empty",
+          "expected": "Empty catalog honesty",
+          "actual": "COMPLETE"
+        },
+        "error": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "Hadith error + reloadKey patterns",
+          "expected": "Friendly error",
+          "actual": "COMPLETE"
+        },
+        "offline": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "OfflineBanner",
+          "expected": "Chrome offline",
+          "actual": "OfflineBanner COMPLETE"
+        },
+        "noResults": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "Hadith filter no-results",
+          "expected": "NoResults when filters miss",
+          "actual": "COMPLETE"
+        },
+        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public" },
+        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Local/catalog" }
+      }
+    },
+    "/fiqh": {
+      "routeClass": "ACTIVE_PUBLIC_HIGH_TRAFFIC",
+      "states": {
+        "loading": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "RulingsView.tsx",
+          "expected": "Loading",
+          "actual": "COMPLETE"
+        },
+        "empty": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "EmptyStateV2",
+          "expected": "Empty ≠ NoResults",
+          "actual": "Gate asserts EmptyStateV2"
+        },
+        "error": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "ErrorStateV2",
+          "expected": "No raw API interpolation",
+          "actual": "Gate asserts no raw error string template"
+        },
+        "offline": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "OfflineBanner",
+          "expected": "Chrome offline",
+          "actual": "OfflineBanner COMPLETE"
+        },
+        "noResults": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "NoResultsState",
+          "expected": "Filter clear path",
+          "actual": "COMPLETE"
+        },
+        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public" },
+        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Local data" }
+      }
+    },
+    "/adhkar": {
+      "routeClass": "ACTIVE_PUBLIC_HIGH_TRAFFIC",
+      "states": {
+        "loading": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "AdhkarView.tsx",
+          "expected": "Loading",
+          "actual": "COMPLETE"
+        },
+        "empty": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "Adhkar empty/EmptyStateV2",
+          "expected": "Honest empty",
+          "actual": "COMPLETE"
+        },
+        "error": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "AdhkarView EmptyStateV2 load error title",
+          "expected": "STATUS.loadError mapping",
+          "actual": "COMPLETE"
+        },
+        "offline": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "OfflineBanner + local adhkar packs",
+          "expected": "Chrome offline",
+          "actual": "OfflineBanner COMPLETE"
+        },
+        "noResults": { "status": "NOT_APPLICABLE", "reason": "Hub categories not filter search" },
+        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public" },
+        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Local" }
+      }
+    },
+    "/settings": {
+      "routeClass": "ACTIVE_PUBLIC_SECONDARY",
+      "states": {
+        "loading": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "SettingsView.tsx",
+          "expected": "Settings render without page fetch spinner debt",
+          "actual": "UtilityScreen + local prefs"
+        },
+        "empty": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Settings is control surface, not a collection"
+        },
+        "error": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "SettingsView FieldError settings-cache-refresh-error",
+          "expected": "Cache refresh failure → FieldError + STATUS.loadError",
+          "actual": "FieldError wired for STATUS.loadError"
+        },
+        "offline": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "OfflineBanner + local prefs",
+          "expected": "Settings usable offline for local prefs",
+          "actual": "OfflineBanner chrome; version refresh fails via FieldError"
+        },
+        "noResults": { "status": "NOT_APPLICABLE", "reason": "Settings search filters sections locally" },
+        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Public settings shell" },
+        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "No 429 surface" }
+      }
+    },
+    "/my-learning": {
+      "routeClass": "ACTIVE_PUBLIC_HIGH_TRAFFIC",
+      "states": {
+        "loading": {
+          "status": "COMPLETE",
+          "testRef": "my-learning-route-quality-gate.test.ts",
+          "artifact": "MyLearningView.tsx",
+          "expected": "Skeleton + aria-busy",
+          "actual": "COMPLETE"
+        },
+        "empty": {
+          "status": "COMPLETE",
+          "testRef": "my-learning-route-quality-gate.test.ts",
+          "artifact": "guest empty + login CTA",
+          "expected": "Guest empty honest",
+          "actual": "COMPLETE"
+        },
+        "error": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "ErrorState + retryTick",
+          "expected": "Offline vs load error mapping",
+          "actual": "COMPLETE"
+        },
+        "offline": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "MyLearningView navigator.onLine + OfflineBanner",
+          "expected": "STATUS.networkError when offline",
+          "actual": "offline branch + OfflineBanner"
+        },
+        "noResults": { "status": "NOT_APPLICABLE", "reason": "Not a search results page" },
+        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Guest empty uses login CTA, not 403 page" },
+        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "No 429 UI" }
+      }
+    },
+    "/login": {
+      "routeClass": "AUTH",
+      "states": {
+        "loading": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "LoginView.tsx",
+          "expected": "Auth loading",
+          "actual": "COMPLETE"
+        },
+        "empty": { "status": "NOT_APPLICABLE", "reason": "Form surface" },
+        "error": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "FieldError auth-form-error",
+          "expected": "Mapped auth errors; no raw provider",
+          "actual": "FieldError COMPLETE"
+        },
+        "offline": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "OfflineBanner + FieldError on failed submit",
+          "expected": "Offline chrome; submit errors mapped",
+          "actual": "OfflineBanner COMPLETE"
+        },
+        "noResults": { "status": "NOT_APPLICABLE", "reason": "Auth form" },
+        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Login is the access path" },
+        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "Mapped via FieldError if provider returns; no dedicated 429 page" }
+      }
+    },
+    "/register": {
+      "routeClass": "AUTH",
+      "states": {
+        "loading": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "Register/Login flows",
+          "expected": "Auth loading",
+          "actual": "COMPLETE"
+        },
+        "empty": { "status": "NOT_APPLICABLE", "reason": "Form surface" },
+        "error": {
+          "status": "COMPLETE",
+          "testRef": "closure-wave4-route-feedback-gate.test.ts",
+          "artifact": "FieldError auth errors",
+          "expected": "Mapped errors",
+          "actual": "COMPLETE"
+        },
+        "offline": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "OfflineBanner",
+          "expected": "Chrome offline",
+          "actual": "OfflineBanner COMPLETE"
+        },
+        "noResults": { "status": "NOT_APPLICABLE", "reason": "Auth form" },
+        "permissionDenied": { "status": "NOT_APPLICABLE", "reason": "Registration path" },
+        "rateLimited": { "status": "NOT_APPLICABLE", "reason": "No dedicated 429 page" }
+      }
+    }
+  },
+  "deviceRequired": [
+    "VoiceOver / TalkBack physical",
+    "200% Zoom device matrix",
+    "Large Text OS settings",
+    "Split View iPad",
+    "Prayer background / adhan delivery"
+  ]
+}
