@@ -21,6 +21,7 @@ for (const p of [
   "/admin/v3/content/fawaid",
   "/admin/v3/taxonomy",
   "/admin/v3/community",
+  "/admin/v3/community/roles",
   "/admin/legacy",
   "/admin",
 ]) {
@@ -36,6 +37,7 @@ for (const rel of [
   "src/admin-v3/domains/content/EntityCrudPage.tsx",
   "src/admin-v3/domains/taxonomy/TaxonomyPage.tsx",
   "src/admin-v3/domains/community/UsersPage.tsx",
+  "src/admin-v3/domains/community/RolesPage.tsx",
   "src/admin-v3/permissions.ts",
   "src/admin-v3/data/admin-v3-api.ts",
   "lib/api-handlers/admin/v3.js",

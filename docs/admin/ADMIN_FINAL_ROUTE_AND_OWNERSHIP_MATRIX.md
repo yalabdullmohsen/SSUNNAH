@@ -23,7 +23,8 @@ Classification legend: `V3_CANONICAL` · `V3_ALIAS` · `LEGACY_ACTIVE` · `LEGAC
 | `/admin/v3/content/fawaid` | v3 | Content | fawaid CRUD | content.* | `/api/admin/v3/fawaid` | V3 native | Legacy KEEP | `V3_CANONICAL` | 404 | n/a |
 | `/admin/v3/taxonomy` | v3 | Taxonomy | categories | content.edit | `/api/admin/v3/categories` | V3 native | Legacy KEEP | `V3_CANONICAL` | 404 | n/a |
 | `/admin/v3/analytics` | v3 | Analytics | platform | super/system admin | `/api/admin/analytics-platform` | PARTIAL | search-analytics Legacy | `V3_CANONICAL` | 404 | n/a |
-| `/admin/v3/community` | v3 | Community | users list/roles | users.* | `/api/admin/v3/users` | V3 partial | Legacy users | `V3_CANONICAL` | 404 | n/a |
+| `/admin/v3/community` | v3 | Community | users list/roles | users.* | `/api/admin/v3/users` | V3 FINAL-3 | Legacy users | `V3_CANONICAL` | 404 | n/a |
+| `/admin/v3/community/roles` | v3 | Community | roles catalog (read-only) | users.read | code catalog | V3 FINAL-3 | — | `V3_CANONICAL` | 404 | n/a |
 | `/admin/v3/settings` | v3 | Settings | ops links | admin | mixed | hub | automation Legacy | `V3_CANONICAL` | 404 | n/a |
 | `/admin/v3/audit` | v3 | Audit | audit read | audit.read | `/api/admin/v3/audit` | V3 native | settings link | `V3_CANONICAL` | 404 | n/a |
 | `/admin/v3/review` | redirect | Reviews | — | — | — | alias | `/admin/v3/reviews` | `V3_ALIAS` | 404 | keep alias |

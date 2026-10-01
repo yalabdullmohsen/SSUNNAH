@@ -111,6 +111,7 @@
 | `docs/admin/ADMIN_FINAL_SCOPE_MANIFEST.md` | **ADMIN-FINAL-1** — نطاق + `IMPLEMENTATION_FROZEN` |
 | `docs/admin/ADMIN_FINAL_1_CLOSURE_REPORT.md` | **ADMIN-FINAL-1** — إغلاق MERGED_AND_DEPLOYED |
 | `docs/admin/ADMIN_FINAL_2_REVIEWS_INBOX_CLOSURE_REPORT.md` | **ADMIN-FINAL-2** — `ADMIN_FINAL_2_MERGED_AND_DEPLOYED` (#2422 → `8255ed5d`) |
+| `docs/admin/ADMIN_FINAL_3_CORE_CRUD_CLOSURE_REPORT.md` | **ADMIN-FINAL-3** — Core CRUD Lessons/Sheikhs/Fawaid/Categories/Users/Roles |
 | `docs/admin/ADMIN_FINAL_ROUTE_AND_OWNERSHIP_MATRIX.md` | **ADMIN-FINAL-1** — مصفوفة مسارات/ملكية/تصنيف |
 | `docs/security/ADMIN_SERVER_AUTHORIZATION_CLOSURE_REPORT.md` | جرد تفويض خادم Admin · `AUTH_INVENTORY_BASELINED` |
 | `docs/admin/ANALYTICS_PLATFORM_REPORT.md` | منصة تحليلات Admin v3 — `/admin/v3/analytics` · PARTIAL · بلا mock |

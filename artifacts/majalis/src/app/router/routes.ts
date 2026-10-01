@@ -78,6 +78,7 @@ const PATHS = [
   "/admin/v3/taxonomy",
   "/admin/v3/analytics",
   "/admin/v3/community",
+  "/admin/v3/community/roles",
   "/admin/v3/settings",
   "/admin/v3/review",
   "/admin/v3/users",

@@ -4,15 +4,20 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/AuthProvider";
 import { v3List, v3Mutate } from "../../data/admin-v3-api";
 import { can, resolveGovernanceRole } from "../../permissions";
+import { emitAdminV3AuditEvent } from "../../audit-events";
 import {
   AdminConfirmDialog,
   AdminDataTable,
+  AdminFilterBar,
+  AdminFlash,
   AdminFormField,
   AdminFormLayout,
   AdminLoadGate,
   AdminPageHeader,
   AdminPermissionDenied,
+  AdminSearchInput,
   AdminStatusBadge,
+  useDebouncedValue,
 } from "../../ui/primitives";
 
 type Cat = {
@@ -30,9 +35,13 @@ export function TaxonomyPage() {
   const canRead = can(role, "content.read") || can(role, "content.edit");
   const canWrite = can(role, "content.edit") || can(role, "content.*");
 
-  const [rows, setRows] = useState<Cat[]>([]);
+  const [allRows, setAllRows] = useState<Cat[]>([]);
+  const [q, setQ] = useState("");
+  const dq = useDebouncedValue(q);
+  const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [flash, setFlash] = useState<string | null>(null);
   const [draft, setDraft] = useState({ id: "", name: "", slug: "", parent_id: "", status: "published" });
   const [busy, setBusy] = useState(false);
   const [archiveTarget, setArchiveTarget] = useState<Cat | null>(null);
@@ -42,7 +51,8 @@ export function TaxonomyPage() {
     setError(null);
     try {
       const res = await v3List<Cat>("categories");
-      setRows(res.data || []);
+      setAllRows(res.data || []);
+      emitAdminV3AuditEvent("admin.center.view", "/admin/v3/taxonomy", { center: "taxonomy" });
     } catch (e) {
       const err = e as { userMessageAr?: string };
       setError(err.userMessageAr || "تعذّر تحميل التصنيفات.");
@@ -55,7 +65,23 @@ export function TaxonomyPage() {
     if (canRead) void load();
   }, [canRead, load]);
 
-  const byId = useMemo(() => new Map(rows.map((r) => [r.id, r])), [rows]);
+  const rows = useMemo(() => {
+    const term = dq.trim().toLowerCase();
+    return allRows.filter((r) => {
+      if (status && String(r.status || "") !== status) return false;
+      if (!term) return true;
+      return (
+        String(r.name || "")
+          .toLowerCase()
+          .includes(term) ||
+        String(r.slug || "")
+          .toLowerCase()
+          .includes(term)
+      );
+    });
+  }, [allRows, dq, status]);
+
+  const byId = useMemo(() => new Map(allRows.map((r) => [r.id, r])), [allRows]);
 
   if (!canRead) return <AdminPermissionDenied permission="content.read" />;
 
@@ -63,6 +89,7 @@ export function TaxonomyPage() {
     e.preventDefault();
     if (!canWrite || busy) return;
     setBusy(true);
+    setError(null);
     try {
       await v3Mutate("categories", draft.id ? "PUT" : "POST", {
         id: draft.id || undefined,
@@ -71,6 +98,10 @@ export function TaxonomyPage() {
         parent_id: draft.parent_id || null,
         status: draft.status,
       });
+      emitAdminV3AuditEvent(draft.id ? "admin.taxonomy.update" : "admin.taxonomy.create", "/admin/v3/taxonomy", {
+        id: draft.id || null,
+      });
+      setFlash(draft.id ? "تم تحديث التصنيف." : "تم إنشاء التصنيف.");
       setDraft({ id: "", name: "", slug: "", parent_id: "", status: "published" });
       await load();
     } catch (err) {
@@ -81,12 +112,35 @@ export function TaxonomyPage() {
     }
   };
 
+  const onRestore = async (r: Cat) => {
+    if (!canWrite || busy) return;
+    setBusy(true);
+    setError(null);
+    try {
+      await v3Mutate("categories", "PUT", {
+        id: r.id,
+        name: r.name,
+        slug: r.slug,
+        parent_id: r.parent_id || null,
+        status: "published",
+      });
+      emitAdminV3AuditEvent("admin.taxonomy.restore", "/admin/v3/taxonomy", { id: r.id });
+      setFlash(`استُعيد «${r.name || r.id}».`);
+      await load();
+    } catch (err) {
+      const e2 = err as { userMessageAr?: string };
+      setError(e2.userMessageAr || "فشلت الاستعادة.");
+    } finally {
+      setBusy(false);
+    }
+  };
+
   return (
-    <div className="av3-domain">
+    <div className="av3-domain" data-testid="admin-v3-taxonomy">
       <AdminPageHeader
         title="التصنيفات"
-        description="شجرة أبواب العلم — منع الحلقات وأرشفة بدل الحذف النهائي."
-        badge="أصلي"
+        description="شجرة أبواب العلم — منع الحلقات وأرشفة بدل الحذف النهائي · FINAL-3."
+        badge="FINAL-3"
         crumbs={[
           { label: "لوحة التحكم", href: "/admin/v3" },
           { label: "التصنيف" },
@@ -98,10 +152,34 @@ export function TaxonomyPage() {
         }
       />
 
+      {flash ? <AdminFlash>{flash}</AdminFlash> : null}
+
+      <AdminFilterBar
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
+        <AdminSearchInput value={q} onChange={setQ} label="بحث بالاسم أو slug" />
+        <label className="av3-field">
+          <span className="av3-sr-only">الحالة</span>
+          <select
+            aria-label="تصفية الحالة"
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          >
+            <option value="">كل الحالات</option>
+            <option value="published">منشور</option>
+            <option value="draft">مسودة</option>
+            <option value="archived">مؤرشف</option>
+          </select>
+        </label>
+      </AdminFilterBar>
+
       <AdminLoadGate loading={loading} error={error} onRetry={() => void load()}>
         <AdminDataTable
           rows={rows as unknown as Record<string, unknown>[]}
           rowKey={(r) => String(r.id)}
+          emptyTitle={dq || status ? "لا نتائج مطابقة" : "لا تصنيفات بعد"}
           columns={[
             { key: "name", label: "الاسم" },
             { key: "slug", label: "slug" },
@@ -137,7 +215,17 @@ export function TaxonomyPage() {
                       تعديل
                     </Button>
                   ) : null}
-                  {canWrite ? (
+                  {canWrite && String(r.status || "") === "archived" ? (
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      disabled={busy}
+                      onClick={() => void onRestore(r as unknown as Cat)}
+                    >
+                      استعادة
+                    </Button>
+                  ) : null}
+                  {canWrite && String(r.status || "") !== "archived" ? (
                     <Button
                       type="button"
                       variant="destructive"
@@ -184,17 +272,30 @@ export function TaxonomyPage() {
             <AdminFormField label="الأب" id="cat-parent">
               <select
                 id="cat-parent"
+                aria-label="التصنيف الأب"
                 value={draft.parent_id}
                 onChange={(e) => setDraft((d) => ({ ...d, parent_id: e.target.value }))}
               >
                 <option value="">— جذر —</option>
-                {rows
+                {allRows
                   .filter((r) => r.id !== draft.id)
                   .map((r) => (
                     <option key={r.id} value={r.id}>
                       {r.name}
                     </option>
                   ))}
+              </select>
+            </AdminFormField>
+            <AdminFormField label="الحالة" id="cat-status">
+              <select
+                id="cat-status"
+                aria-label="حالة التصنيف"
+                value={draft.status}
+                onChange={(e) => setDraft((d) => ({ ...d, status: e.target.value }))}
+              >
+                <option value="published">منشور</option>
+                <option value="draft">مسودة</option>
+                <option value="archived">مؤرشف</option>
               </select>
             </AdminFormField>
           </AdminFormLayout>
@@ -205,6 +306,7 @@ export function TaxonomyPage() {
         open={!!archiveTarget}
         title="أرشفة تصنيف"
         body={`أرشفة «${archiveTarget?.name || ""}»؟ لن يُحذف إن كان له أبناء.`}
+        confirmLabel="أرشفة"
         danger
         busy={busy}
         onCancel={() => setArchiveTarget(null)}
@@ -213,6 +315,10 @@ export function TaxonomyPage() {
           setBusy(true);
           try {
             await v3Mutate("categories", "DELETE", undefined, { id: archiveTarget.id });
+            emitAdminV3AuditEvent("admin.taxonomy.archive", "/admin/v3/taxonomy", {
+              id: archiveTarget.id,
+            });
+            setFlash(`أُرشِف «${archiveTarget.name || ""}».`);
             setArchiveTarget(null);
             await load();
           } catch (err) {

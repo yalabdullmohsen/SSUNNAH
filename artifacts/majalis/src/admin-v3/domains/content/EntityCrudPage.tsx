@@ -61,6 +61,7 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
 
   const [q, setQ] = useState("");
   const dq = useDebouncedValue(q);
+  const [status, setStatus] = useState("");
   const [page, setPage] = useState(1);
   const [rows, setRows] = useState<Record<string, unknown>[]>([]);
   const [total, setTotal] = useState(0);
@@ -73,6 +74,7 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
   const [confirmDelete, setConfirmDelete] = useState<Record<string, unknown> | null>(null);
   const [confirmDiscard, setConfirmDiscard] = useState(false);
   const [flash, setFlash] = useState<string | null>(null);
+  const supportsStatus = kind === "lessons" || kind === "fawaid";
 
   useUnsavedWarning(dirty);
 
@@ -83,7 +85,12 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
       try {
         const res = await v3List<Record<string, unknown>>(
           kind,
-          { q: dq || undefined, page, pageSize: 20 },
+          {
+            q: dq || undefined,
+            page,
+            pageSize: 20,
+            status: supportsStatus && status ? status : undefined,
+          },
           signal,
         );
         setRows(res.data || []);
@@ -97,7 +104,7 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
         setLoading(false);
       }
     },
-    [kind, dq, page],
+    [kind, dq, page, status, supportsStatus],
   );
 
   useEffect(() => {
@@ -162,13 +169,21 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
         if (editing.updated_at) body.updated_at = editing.updated_at;
       }
       await v3Mutate(kind, editing?.id ? "PUT" : "POST", body);
+      emitAdminV3AuditEvent(editing?.id ? "admin.content.update" : "admin.content.create", `/admin/v3/content/${kind}`, {
+        kind,
+        id: editing?.id ? String(editing.id) : null,
+      });
       setFlash("تم الحفظ.");
       setEditing(null);
       setDirty(false);
       await load();
     } catch (err) {
-      const e2 = err as { userMessageAr?: string };
-      setError(e2.userMessageAr || "فشل الحفظ.");
+      const e2 = err as { userMessageAr?: string; status?: number };
+      setError(
+        e2.status === 409
+          ? e2.userMessageAr || "تعارض: تغيّر السجل. أعد التحميل."
+          : e2.userMessageAr || "فشل الحفظ.",
+      );
     } finally {
       setBusy(false);
     }
@@ -179,12 +194,47 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
     setBusy(true);
     try {
       await v3Mutate(kind, "DELETE", undefined, { id: String(confirmDelete.id) });
-      setFlash(`تم أرشفة «${String(confirmDelete[meta.labelField] || confirmDelete.id).slice(0, 40)}».`);
+      emitAdminV3AuditEvent("admin.content.archive", `/admin/v3/content/${kind}`, {
+        kind,
+        id: String(confirmDelete.id),
+      });
+      setFlash(
+        kind === "sheikhs"
+          ? `تم حذف «${String(confirmDelete[meta.labelField] || confirmDelete.id).slice(0, 40)}».`
+          : `تم أرشفة «${String(confirmDelete[meta.labelField] || confirmDelete.id).slice(0, 40)}».`,
+      );
       setConfirmDelete(null);
       await load();
     } catch (err) {
       const e2 = err as { userMessageAr?: string };
-      setError(e2.userMessageAr || "فشلت الأرشفة.");
+      setError(e2.userMessageAr || "فشلت العملية.");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const onRestore = async (row: Record<string, unknown>) => {
+    if (!row.id || !canWrite || busy || !supportsStatus) return;
+    setBusy(true);
+    setError(null);
+    try {
+      await v3Mutate(kind, "PUT", {
+        id: row.id,
+        status: "draft",
+        updated_at: row.updated_at,
+        ...(kind === "lessons"
+          ? { title: row.title }
+          : { text: row.text, author_name: row.author_name, source_name: row.source_name }),
+      });
+      emitAdminV3AuditEvent("admin.content.restore", `/admin/v3/content/${kind}`, {
+        kind,
+        id: String(row.id),
+      });
+      setFlash("تمت الاستعادة إلى مسودة.");
+      await load();
+    } catch (err) {
+      const e2 = err as { userMessageAr?: string };
+      setError(e2.userMessageAr || "فشلت الاستعادة.");
     } finally {
       setBusy(false);
     }
@@ -266,13 +316,32 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
           setPage(1);
         }}
       >
-        <AdminSearchInput value={q} onChange={setQ} />
+        <AdminSearchInput value={q} onChange={setQ} label="بحث" />
+        {supportsStatus ? (
+          <label className="av3-field">
+            <span className="av3-sr-only">الحالة</span>
+            <select
+              aria-label="تصفية الحالة"
+              value={status}
+              onChange={(e) => {
+                setStatus(e.target.value);
+                setPage(1);
+              }}
+            >
+              <option value="">كل الحالات</option>
+              <option value="draft">مسودة</option>
+              <option value="approved">منشور/معتمد</option>
+              <option value="archived">مؤرشف</option>
+            </select>
+          </label>
+        ) : null}
       </AdminFilterBar>
 
       <AdminLoadGate loading={loading} error={error} onRetry={() => void load()}>
         <AdminDataTable
           rows={rows}
           rowKey={(r) => String(r.id)}
+          emptyTitle={dq || status ? "لا نتائج مطابقة" : "لا عناصر بعد"}
           columns={[
             ...columns,
             {
@@ -285,13 +354,23 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
                       تعديل
                     </Button>
                   ) : null}
-                  {canArchive ? (
+                  {canWrite && supportsStatus && String(r.status || "") === "archived" ? (
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      disabled={busy}
+                      onClick={() => void onRestore(r)}
+                    >
+                      استعادة
+                    </Button>
+                  ) : null}
+                  {canArchive && String(r.status || "") !== "archived" ? (
                     <Button
                       type="button"
                       variant="destructive"
                       onClick={() => setConfirmDelete(r)}
                     >
-                      أرشفة
+                      {kind === "sheikhs" ? "حذف" : "أرشفة"}
                     </Button>
                   ) : null}
                 </div>
@@ -421,9 +500,13 @@ export function EntityCrudPage({ kind }: { kind: EntityKind }) {
 
       <AdminConfirmDialog
         open={!!confirmDelete}
-        title="تأكيد الأرشفة"
-        body={`هل تريد أرشفة «${String(confirmDelete?.[meta.labelField] || "").slice(0, 60)}»؟`}
-        confirmLabel="أرشفة"
+        title={kind === "sheikhs" ? "تأكيد الحذف" : "تأكيد الأرشفة"}
+        body={
+          kind === "sheikhs"
+            ? `هل تريد حذف «${String(confirmDelete?.[meta.labelField] || "").slice(0, 60)}» نهائيًا؟`
+            : `هل تريد أرشفة «${String(confirmDelete?.[meta.labelField] || "").slice(0, 60)}»؟`
+        }
+        confirmLabel={kind === "sheikhs" ? "حذف" : "أرشفة"}
         danger
         busy={busy}
         onCancel={() => setConfirmDelete(null)}

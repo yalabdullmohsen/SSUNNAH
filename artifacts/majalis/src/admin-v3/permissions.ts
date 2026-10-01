@@ -25,7 +25,8 @@ export type AdminServerPermission =
   | "import"
   | "*";
 
-const ROLE_PERMS: Record<string, readonly AdminServerPermission[]> = {
+/** Catalog of governance roles (FINAL-3 Roles entity — read-only matrix; assignment via Users). */
+export const ROLE_PERMS: Record<string, readonly AdminServerPermission[]> = {
   super_admin: ["*"],
   system_admin: ["users.manage", "audit.read", "analytics.read", "content.read"],
   content_manager: [
@@ -60,6 +61,12 @@ const ROLE_PERMS: Record<string, readonly AdminServerPermission[]> = {
   author: ["content.create", "content.read"],
   translator: ["content.read"],
 };
+
+export const GOVERNANCE_ROLE_IDS = Object.keys(ROLE_PERMS) as readonly string[];
+
+export function permissionsListForRole(role: string): readonly AdminServerPermission[] {
+  return ROLE_PERMS[role] || ROLE_PERMS.read_only!;
+}
 
 function expand(perms: readonly AdminServerPermission[]): Set<string> {
   const set = new Set<string>(perms);

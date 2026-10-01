@@ -108,6 +108,7 @@ export const ADMIN_V3_CENTERS: Record<
     permissions: ["admin.read", "users.read", "users.roles", "review.read"],
     tools: [
       { id: "users", title: "المستخدمون", description: "قائمة الحسابات والأدوار (أصلي)", href: "/admin/v3/community", tags: ["مستخدمون", "أصلي"], legacySource: "admin-v3/UsersPage" },
+      { id: "roles", title: "كتالوج الأدوار", description: "مصفوفة صلاحيات الحوكمة (أصلي FINAL-3)", href: "/admin/v3/community/roles", tags: ["أدوار", "أصلي"], legacySource: "admin-v3/RolesPage" },
       { id: "reports", title: "البلاغات", description: "بلاغات المجتمع", href: "/admin?section=reports", tags: ["بلاغات"], legacySource: "AdminShell#reports" },
       { id: "submissions", title: "المساهمات", description: "مقترحات بانتظار المراجعة", href: "/admin/v3/reviews", tags: ["مساهمات", "أصلي"], legacySource: "admin-v3/ReviewInboxPage" },
       { id: "governance", title: "الحوكمة", description: "سياسات الحوكمة (عرض)", href: "/admin?section=governance", tags: ["حوكمة"], legacySource: "AdminShell#governance" },
