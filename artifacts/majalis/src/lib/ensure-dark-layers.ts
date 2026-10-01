@@ -12,10 +12,12 @@ let corePromise: Promise<void> | null = null;
 let luxuryNightV2Promise: Promise<void> | null = null;
 let identityLuxuryPromise: Promise<void> | null = null;
 
-/** طبقات العقد الليلي الأساسية (surfaces + design-system + premium refine). */
+/** طبقات العقد الليلي الأساسية (recovery + surfaces + design-system + premium refine). */
 export function ensureDarkCoreLayers(): Promise<void> {
   if (!corePromise) {
     corePromise = Promise.all([
+      /* recovery كان متزامنًا في main فيُحسب Unused CSS على Home النهاري — يُحمَّل مع الليل فقط */
+      import("../styles/dark-mode-recovery.css"),
       import("../styles/dark-mode-surfaces.css"),
       import("../styles/dark-design-system.css"),
       import("../styles/premium-dark-refine.css"),

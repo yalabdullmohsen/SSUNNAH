@@ -68,8 +68,13 @@ assert.doesNotMatch(
   "App لا يستورد luxury مباشرة",
 );
 
-/* recovery يبقى متزامنًا — بلا مسار reload-to-win */
-assert.match(main, /import\s+["']\.\/styles\/dark-mode-recovery\.css["']/);
+/* recovery مع ensureDarkCoreLayers — بلا sync نهاري وبلا reload-to-win بعد final-release */
+assert.doesNotMatch(
+  main,
+  /import\s+["']\.\/styles\/dark-mode-recovery\.css["']/,
+  "لا sync recovery في main (U1 unused-css)",
+);
+assert.match(ensure, /dark-mode-recovery\.css/, "recovery داخل ensureDarkCoreLayers");
 assert.doesNotMatch(
   main,
   /final-release[\s\S]{0,800}import\("\.\/styles\/dark-mode-recovery\.css"\)/,

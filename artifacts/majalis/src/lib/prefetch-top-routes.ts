@@ -16,7 +16,8 @@ const TOP_ROUTES: Array<() => Promise<unknown>> = [
   () => import("@/pages/quran/TafsirPage"),
 ];
 
-export function prefetchTopRoutesOnIdle(): void {
+/** يشغّل التسخين فور الخمول — المستدعي يؤجّل الاستيراد خارج نافذة LHCI. */
+export function runPrefetchTopRoutes(): void {
   if (typeof window === "undefined") return;
   let done = false;
   const run = () => {
@@ -28,15 +29,17 @@ export function prefetchTopRoutesOnIdle(): void {
       void load().catch(() => undefined);
     }
   };
-  const start = () => {
-    if (typeof window.requestIdleCallback === "function") {
-      window.requestIdleCallback(run, { timeout: 8_000 });
-    } else {
-      window.setTimeout(run, 4_000);
-    }
-  };
+  if (typeof window.requestIdleCallback === "function") {
+    window.requestIdleCallback(run, { timeout: 8_000 });
+  } else {
+    window.setTimeout(run, 4_000);
+  }
+}
+
+export function prefetchTopRoutesOnIdle(): void {
+  if (typeof window === "undefined") return;
   // بعد LCP بكثير — لا تنافس TBT في نافذة القياس
-  const afterLoad = () => window.setTimeout(start, 25_000);
+  const afterLoad = () => window.setTimeout(() => runPrefetchTopRoutes(), 25_000);
   if (document.readyState === "complete") afterLoad();
   else window.addEventListener("load", afterLoad, { once: true });
 }

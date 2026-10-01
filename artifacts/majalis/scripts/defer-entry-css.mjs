@@ -14,9 +14,12 @@ const appRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const CRITICAL_PATH = resolve(appRoot, "src/styles/critical-first-paint.css");
 export const INLINE_CSS_BUDGET = 14 * 1024;
 
-/** نص السكربت حرفياً — أي تغيير يتطلب تحديث hash في vercel.json CSP */
+/** نص السكربت حرفياً — أي تغيير يتطلب تحديث hash في vercel.json CSP.
+ * يفعّل media=all بعد DOMContentLoaded + rAF×2 — بعد أول تخطيط وقبل load الطويل،
+ * حتى ينخفض unused-css دون تأخير hydration الذي يرفع unused-js (U1).
+ * الطلاء الأول يعتمد على mj-lcp-critical / mj-cls-reserve. */
 export const DEFER_CSS_BOOT_SCRIPT =
-  "(function(){document.querySelectorAll('link[data-mj-css-defer]').forEach(function(l){function a(){l.media='all';l.removeAttribute('data-mj-css-defer')}if(l.sheet)a();else l.addEventListener('load',a);});})();";
+  "(function(){function apply(){document.querySelectorAll('link[data-mj-css-defer]').forEach(function(l){function a(){l.media='all';l.removeAttribute('data-mj-css-defer')}if(l.sheet)a();else l.addEventListener('load',a);});}function arm(){requestAnimationFrame(function(){requestAnimationFrame(apply);});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',arm,{once:true});else arm();})();";
 
 export function deferCssBootScriptSha256() {
   return createHash("sha256").update(DEFER_CSS_BOOT_SCRIPT, "utf8").digest("base64");

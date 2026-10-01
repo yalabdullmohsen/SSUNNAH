@@ -9,6 +9,7 @@ import { fileURLToPath } from "node:url";
 import {
   INLINE_CSS_BUDGET,
   applyEntryCssDefer,
+  deferCssBootScriptSha256,
   deferStylesheets,
   hasBlockingStylesheet,
   inlineStyleBytes,
@@ -102,5 +103,13 @@ if (existsSync(distHtml)) {
     }
   }
 }
+
+const vercel = readFileSync(resolve(root, "vercel.json"), "utf8");
+const deferHash = deferCssBootScriptSha256();
+assert.match(
+  vercel,
+  new RegExp(`'sha256-${deferHash.replace(/[+/]/g, "\\$&")}'`),
+  "CSP يضم hash سكربت data-mj-css-boot",
+);
 
 console.log("defer-entry-css-gate.test.ts: ok");

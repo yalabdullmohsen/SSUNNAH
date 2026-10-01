@@ -34,7 +34,11 @@ assert.equal(
 assert.match(main, /ensureDarkCoreLayers|ensureDarkLayersForBoot/);
 /* WAVE7: sync only — deferred reload-to-win removed after CASCADE SEAL absorb */
 assert.match(main, /import\s+["']\.\/styles\/visual-identity-unify\.css["']/);
-assert.match(main, /import\s+["']\.\/styles\/dark-mode-recovery\.css["']/);
+assert.doesNotMatch(
+  main,
+  /import\s+["']\.\/styles\/dark-mode-recovery\.css["']/,
+  "U1: recovery ليس sync في main",
+);
 assert.doesNotMatch(
   main,
   /import\(\s*["']\.\/styles\/visual-identity-unify\.css["']\s*\)/,
@@ -43,8 +47,10 @@ assert.doesNotMatch(
 assert.doesNotMatch(
   main,
   /import\(\s*["']\.\/styles\/dark-mode-recovery\.css["']\s*\)/,
-  "WAVE7: no deferred recovery reimport",
+  "recovery عبر ensure-dark-layers لا عبر main dynamic",
 );
+const ensureDark = readFileSync(resolve(root, "src/lib/ensure-dark-layers.ts"), "utf8");
+assert.match(ensureDark, /dark-mode-recovery\.css/, "recovery داخل محمّل الليل");
 
 assert.match(report, /IMPLEMENTATION_FROZEN/);
 assert.match(report, /ACTIVE_COMPATIBILITY/);

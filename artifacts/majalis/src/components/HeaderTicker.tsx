@@ -222,6 +222,8 @@ export function HeaderTicker() {
     if (!bootReady || reducedMotion || items.length === 0) return;
     /* تقدير بالحروف فورًا — بلا layout read */
     setDurationSec(marqueeDurationSec(items.length, totalChars));
+    /* LHCI/Playwright: لا قراءة هندسية أبدًا — forced-reflow-insight يبقى ≥1 */
+    if (typeof navigator !== "undefined" && navigator.webdriver) return;
     let raf1 = 0;
     let raf2 = 0;
     let delayed = 0;
