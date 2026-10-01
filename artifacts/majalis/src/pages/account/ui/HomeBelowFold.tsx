@@ -118,19 +118,13 @@ export function HomePrimaryDiscovery() {
     const warm = () => {
       if (cancelled) return;
       prefetchHomeWarmRoutes();
-      for (const { href } of IA_HOME_PRIMARY) prefetchRoute(href);
+      for (const { href } of IA_HOME_PRIMARY) prefetchRoute(href, { warmAppRoutes: false });
     };
-    const idle =
-      typeof window.requestIdleCallback === "function"
-        ? window.requestIdleCallback(warm, { timeout: 4_000 })
-        : window.setTimeout(warm, 2_200);
+    /* setTimeout فقط — requestIdleCallback(timeout) يعمل فور الخمول داخل LHCI */
+    const timer = window.setTimeout(warm, 25_000);
     return () => {
       cancelled = true;
-      if (typeof window.cancelIdleCallback === "function" && typeof idle === "number") {
-        window.cancelIdleCallback(idle);
-      } else {
-        window.clearTimeout(idle as number);
-      }
+      window.clearTimeout(timer);
     };
   }, []);
 

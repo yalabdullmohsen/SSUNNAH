@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
 import {
   isLocalBookmarked,
   toggleLocalBookmark,
@@ -13,6 +12,11 @@ type Props = {
   className?: string;
   compact?: boolean;
 };
+
+async function loadSupabase() {
+  const { supabase } = await import("@/lib/supabase");
+  return supabase;
+}
 
 export function FavoriteButton({
   contentType,
@@ -31,6 +35,25 @@ export function FavoriteButton({
       const local = isLocalBookmarked(contentType, contentId);
       if (!cancelled) setBookmarked(local);
 
+      /* زائر بلا جلسة ظاهرة: لا تحمّل supabase مع بطاقات الرئيسية */
+      try {
+        const hasToken = (() => {
+          for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key && (key.includes("-auth-token") || key.endsWith("auth-token"))) return true;
+          }
+          return false;
+        })();
+        if (!hasToken) {
+          if (!cancelled) setMode("local");
+          return;
+        }
+      } catch {
+        if (!cancelled) setMode("local");
+        return;
+      }
+
+      const supabase = await loadSupabase();
       const {
         data: { user },
       } = await supabase.auth.getUser();
@@ -48,7 +71,7 @@ export function FavoriteButton({
         .maybeSingle();
       if (!cancelled) setBookmarked(Boolean(data) || local);
     };
-    load();
+    void load();
     return () => {
       cancelled = true;
     };
@@ -58,6 +81,7 @@ export function FavoriteButton({
     if (busy) return;
     setBusy(true);
     try {
+      const supabase = await loadSupabase();
       const {
         data: { user },
       } = await supabase.auth.getUser();
@@ -76,7 +100,6 @@ export function FavoriteButton({
 
       setMode("cloud");
       const previous = bookmarked;
-      // تحديث تفاؤلي فوري مع تراجع عند الفشل
       setBookmarked(!previous);
       try {
         if (previous) {

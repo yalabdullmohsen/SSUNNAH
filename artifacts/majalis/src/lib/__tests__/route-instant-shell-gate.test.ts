@@ -59,7 +59,8 @@ for (const path of [
 
 const below = read("src/pages/account/ui/HomeBelowFold.tsx");
 assert.match(below, /prefetchHomeWarmRoutes/, "تسخين مبكر تحت الطية");
-assert.match(below, /prefetchRoute\(href\)/, "وصول سريع يسخّن عند اللمس");
+assert.match(below, /prefetchRoute\(href/, "تسخين مسارات الاكتشاف (جماعي بلا AppRoutes؛ اللمس عبر FeatureCard/usePrefetchRoute)");
+assert.match(prefetch, /warmAppRoutes/, "عقد تسخين AppRoutes اختياري");
 
 const guard = read("src/components/PageLoadingGuard.tsx");
 assert.doesNotMatch(

@@ -18,6 +18,8 @@ import "@/styles/components/first-visit-intro.css";
 import "@/styles/components/home-daily-strip.css";
 import "@/styles/components/home-continue-learning.css";
 import "@/styles/components/home-sections-grid.css";
+/* كان في index.css — يُحمَّل مع حزمة الرئيسية مبكرًا (لا idle) لتقليل Unused CSS دون CLS */
+import "@/styles/index-deferred-pages.css";
 
 const FirstVisitIntro = lazy(() =>
   import("@/components/onboarding/FirstVisitIntro").then((m) => ({ default: m.FirstVisitIntro })),

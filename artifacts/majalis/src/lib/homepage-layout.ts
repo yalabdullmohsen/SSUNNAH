@@ -6,8 +6,6 @@
  * القسم الثابت (البطل في الأعلى) غير قابل للتخصيص عمدًا — هوية الصفحة الأساسية.
  * خاتمة «عن المجلس / من نحن» أُزيلت من الرئيسية بعد تنظيف الاكتشاف (2026-08).
  */
-import { supabase } from "@/lib/supabase";
-
 export type HomeWidgetId =
   "lessons" | "continue" | "daily-progress" | "daily-benefits" | "upcoming-events" | "quiz" | "sunnah-time" | "week-streak" | "mind-map" | "prayer-ranks" | "occasions" | "interesting-topics" | "prayer" | "explore";
 
@@ -107,6 +105,7 @@ export function visibleWidgetOrder(prefs: HomepagePrefs): HomeWidgetId[] {
 
 export async function fetchRemoteHomepagePrefs(userId: string): Promise<HomepagePrefs | null> {
   try {
+    const { supabase } = await import("@/lib/supabase");
     const { data, error } = await supabase
       .from("user_homepage_prefs")
       .select("widget_order, hidden_widgets")
@@ -121,6 +120,7 @@ export async function fetchRemoteHomepagePrefs(userId: string): Promise<Homepage
 
 export async function saveRemoteHomepagePrefs(userId: string, prefs: HomepagePrefs): Promise<void> {
   try {
+    const { supabase } = await import("@/lib/supabase");
     await supabase.from("user_homepage_prefs").upsert(
       {
         user_id: userId,
