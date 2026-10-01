@@ -16,7 +16,7 @@ import {
 } from "@/lib/learning-paths-admin-service";
 
 import { Button } from "@/components/ui/button";
-import { useAdminConfirm } from "@/components/admin/AdminConfirmDialog";
+import { useAdminConfirm, useAdminPrompt } from "@/components/admin/AdminConfirmDialog";
 function slugify(text: string): string {
   return text
     .trim()
@@ -36,6 +36,7 @@ function StageCard({
 }) {
   const { showSuccess, showError } = useAdminShell();
   const { confirm, dialog: confirmDialog } = useAdminConfirm();
+  const { prompt, dialog: promptDialog } = useAdminPrompt();
   const [expanded, setExpanded] = useState(false);
   const [courses, setCourses] = useState<AdminCourse[]>([]);
   const [loading, setLoading] = useState(false);
@@ -118,7 +119,7 @@ function StageCard({
                 type="button"
                 className="adm-btn-add"
                 onClick={async () => {
-                  const title = prompt("عنوان المقرر الجديد؟");
+                  const title = (await prompt({ title: "عنوان المقرر الجديد؟", label: "القيمة", confirmLabel: "متابعة", required: false }));
                   if (!title?.trim()) return;
                   const { error } = await adminUpsertCourse({
                     stage_id: stage.id,
@@ -153,6 +154,7 @@ function StageCard({
         </Field>
       </AdminModal>
     {confirmDialog}
+    {promptDialog}
     </div>
   );
 }
@@ -167,6 +169,7 @@ function CourseCard({
 }) {
   const { showSuccess, showError } = useAdminShell();
   const { confirm, dialog: confirmDialog } = useAdminConfirm();
+  const { prompt, dialog: promptDialog } = useAdminPrompt();
   const [expanded, setExpanded] = useState(false);
   const [units, setUnits] = useState<AdminUnit[]>([]);
   const [loading, setLoading] = useState(false);
@@ -297,7 +300,7 @@ function CourseCard({
                 type="button"
                 className="adm-btn-add"
                 onClick={async () => {
-                  const title = prompt("عنوان الوحدة الجديدة؟");
+                  const title = (await prompt({ title: "عنوان الوحدة الجديدة؟", label: "القيمة", confirmLabel: "متابعة", required: false }));
                   if (!title?.trim()) return;
                   const { error } = await adminUpsertUnit({ course_id: course.id, title: title.trim(), sort_order: units.length });
                   if (error) return showError(error.message);
@@ -342,6 +345,7 @@ function CourseCard({
         <p className="adm-empty-msg">النشر مقفل تلقائيًا إن لم يوجد محتوى إلزامي كافٍ، أو اختبار إلزامي بلا أسئلة معتمدة.</p>
       </AdminModal>
     {confirmDialog}
+    {promptDialog}
     </div>
   );
 }
@@ -364,6 +368,7 @@ function UnitCard({
 }) {
   const { showError } = useAdminShell();
   const { confirm, dialog: confirmDialog } = useAdminConfirm();
+  const { prompt, dialog: promptDialog } = useAdminPrompt();
   const [expanded, setExpanded] = useState(false);
   const [items, setItems] = useState<AdminItem[]>([]);
   const [loading, setLoading] = useState(false);
@@ -443,7 +448,7 @@ function UnitCard({
                 type="button"
                 className="adm-btn-add"
                 onClick={async () => {
-                  const title = prompt("عنوان العنصر الجديد؟");
+                  const title = (await prompt({ title: "عنوان العنصر الجديد؟", label: "القيمة", confirmLabel: "متابعة", required: false }));
                   if (!title?.trim()) return;
                   const { error } = await adminUpsertItem({
                     unit_id: unit.id,
@@ -468,6 +473,7 @@ function UnitCard({
         </div>
       )}
       {confirmDialog}
+    {promptDialog}
     </div>
   );
 }
@@ -708,6 +714,7 @@ function BookEditor({ learningItemId }: { learningItemId: string }) {
 /* ═══ الجذر: كل مراحل مسار واحد ══════════════════════════════════════════ */
 
 export function LearningPathTreeEditor({ pathId }: { pathId: string }) {
+  const { prompt, dialog: promptDialog } = useAdminPrompt();
   const { showError } = useAdminShell();
   const [stages, setStages] = useState<AdminStage[]>([]);
   const [loading, setLoading] = useState(true);
@@ -749,7 +756,7 @@ export function LearningPathTreeEditor({ pathId }: { pathId: string }) {
         type="button"
         className="adm-btn-add"
         onClick={async () => {
-          const title = prompt("عنوان المرحلة الجديدة؟");
+          const title = (await prompt({ title: "عنوان المرحلة الجديدة؟", label: "القيمة", confirmLabel: "متابعة", required: false }));
           if (!title?.trim()) return;
           const { error } = await adminUpsertStage({
             path_id: pathId,
@@ -764,6 +771,8 @@ export function LearningPathTreeEditor({ pathId }: { pathId: string }) {
       >
         <Plus size={14} /> إضافة مرحلة
       </Button>
+          {promptDialog}
+
     </div>
   );
 }

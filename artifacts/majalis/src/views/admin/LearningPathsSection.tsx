@@ -10,6 +10,7 @@ import {
   adminFetchPaths, adminUpsertPath, adminDeletePath, adminRecomputePathTotalSessions,
   adminValidatePathForPublish, type AdminPath,
 } from "@/lib/learning-paths-admin-service";
+import { useAdminConfirm } from "@/components/admin/AdminConfirmDialog";
 
 const EMPTY_PATH: Partial<AdminPath> = {
   slug: "", title: "", title_en: "", description: "", level: "beginner",
@@ -21,6 +22,8 @@ function slugify(text: string): string {
 }
 
 export function LearningPathsSection() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+
   const { showSuccess, showError } = useAdminShell();
   const [paths, setPaths] = useState<AdminPath[]>([]);
   const [loading, setLoading] = useState(true);
@@ -59,7 +62,7 @@ export function LearningPathsSection() {
   };
 
   const deletePath = async (p: AdminPath) => {
-    if (!confirm(`حذف مسار «${p.title}» بكل مراحله ومقرراته؟ لا يمكن التراجع.`)) return;
+    if (!(await confirm({ title: "تأكيد", body: `حذف مسار «${p.title}» بكل مراحله ومقرراته؟ لا يمكن التراجع.`, danger: true, confirmLabel: "تأكيد" }))) return;
     const { error } = await adminDeletePath(p.id);
     if (error) return showError(error.message);
     showSuccess("تم الحذف");
@@ -180,6 +183,8 @@ export function LearningPathsSection() {
           إجمالي الجلسات يُحسَب من زر التحديث (↻) في القائمة، لا يُكتب يدويًا هنا.
         </p>
       </AdminModal>
+          {confirmDialog}
+
     </div>
   );
 }

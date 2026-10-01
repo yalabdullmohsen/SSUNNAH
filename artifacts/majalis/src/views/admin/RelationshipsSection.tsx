@@ -9,6 +9,7 @@ import {
   setKnowledgeRelVerified,
   deleteKnowledgeRelationship,
 } from "@/lib/supabase";
+import { useAdminConfirm } from "@/components/admin/AdminConfirmDialog";
 import { useAdminShell } from "./AdminShell";
 
 const SOURCE_TYPES: { value: KnowledgeSourceType; label: string }[] = [
@@ -40,6 +41,8 @@ const EMPTY_FORM = {
 };
 
 export function RelationshipsSection() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+
   const { showSuccess, showError } = useAdminShell();
   const [rows, setRows] = useState<KnowledgeRelationship[]>([]);
   const [loading, setLoading] = useState(true);
@@ -120,7 +123,7 @@ export function RelationshipsSection() {
   }
 
   async function handleDelete(r: KnowledgeRelationship) {
-    if (!window.confirm(`حذف العلاقة: ${r.source_id} → ${r.target_id}?`)) return;
+    if (!(await confirm({ title: "تأكيد", body: `حذف العلاقة: ${r.source_id} → ${r.target_id}?`, danger: true, confirmLabel: "تأكيد" }))) return;
     const ok = await deleteKnowledgeRelationship(r.id);
     if (ok) { showSuccess("تم الحذف"); await load(); }
     else showError("فشل الحذف");
@@ -297,6 +300,8 @@ export function RelationshipsSection() {
           ))}
         </div>
       )}
+          {confirmDialog}
+
     </div>
   );
 }

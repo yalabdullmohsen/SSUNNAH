@@ -9,6 +9,7 @@ import {
   WEEK_DAY_LABELS, WEEK_DAY_REVIEW_STATUS_LABELS, weekDayInfoTypeLabel,
   type WeekDayFact, type WeekDayCode, type WeekDayInfoType, type WeekDayReviewStatus,
 } from "@/lib/week-day-facts-service";
+import { useAdminConfirm, useAdminAlert } from "@/components/admin/AdminConfirmDialog";
 
 const DAY_ORDER: WeekDayCode[] = ["sat", "sun", "mon", "tue", "wed", "thu", "fri"];
 const INFO_TYPES: WeekDayInfoType[] = ["recurring_virtue", "historical_event", "organizational_suggestion"];
@@ -23,6 +24,9 @@ const EMPTY: Omit<WeekDayFact, "id"> = {
 };
 
 export function WeekDayFactsSection() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+  const { alert, dialog: alertDialog } = useAdminAlert();
+
   const [items, setItems] = useState<WeekDayFact[]>([]);
   const [loading, setLoading] = useState(true);
   const [dayFilter, setDayFilter] = useState<WeekDayCode | "all">("all");
@@ -40,7 +44,10 @@ export function WeekDayFactsSection() {
   const filtered = dayFilter === "all" ? items : items.filter((i) => i.day_of_week === dayFilter);
 
   const handleSave = async () => {
-    if (!form.title.trim() || !form.body.trim()) return alert("العنوان والنص مطلوبان.");
+    if (!form.title.trim() || !form.body.trim()) {
+      await alert("العنوان والنص مطلوبان.");
+      return;
+    }
     setSaving(true);
     try {
       const payload = {
@@ -64,7 +71,7 @@ export function WeekDayFactsSection() {
       setOpen(false);
       load();
     } catch (e) {
-      alert(String((e as { message?: string })?.message || "تعذّر الحفظ."));
+      await alert(String((e as { message?: string })?.message || "تعذّر الحفظ."));
     } finally {
       setSaving(false);
     }
@@ -76,7 +83,7 @@ export function WeekDayFactsSection() {
       if (error) throw error;
       load();
     } catch (e) {
-      alert(String((e as { message?: string })?.message || "تعذّر تغيير الحالة."));
+      await alert(String((e as { message?: string })?.message || "تعذّر تغيير الحالة."));
     }
   };
 
@@ -141,7 +148,7 @@ export function WeekDayFactsSection() {
                 <button type="button" onClick={() => { setForm({ ...item }); setOpen(true); }}>تعديل</button>
                 <button
                   type="button"
-                  onClick={() => { if (confirm("حذف نهائي لهذه المادة؟")) adminDeleteWeekDayFact(item.id).then(load); }}
+                  onClick={async () => { if ((await confirm({ title: "تأكيد", body: "حذف نهائي لهذه المادة؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteWeekDayFact(item.id).then(load); }}
                 >حذف</button>
               </div>
             </article>
@@ -177,6 +184,9 @@ export function WeekDayFactsSection() {
         <Field label="ملاحظات المحرر"><textarea value={form.editor_notes || ""} onChange={(e) => setForm({ ...form, editor_notes: e.target.value })} className="adm-textarea" rows={2} /></Field>
         <Field label="ترتيب العرض"><input type="number" value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: Number(e.target.value) || 0 })} className="adm-input" /></Field>
       </AdminModal>
+          {confirmDialog}
+      {alertDialog}
+
     </div>
   );
 }

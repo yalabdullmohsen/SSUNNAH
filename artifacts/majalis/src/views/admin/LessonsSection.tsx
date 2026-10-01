@@ -11,6 +11,7 @@ import { SkeletonCardGrid } from "@/components/ui-common";
 import { adminListLoad } from "@/lib/admin-list-load";
 import { AdminModal, Field, FieldRow } from "./AdminModal";
 import { BulkImport } from "./BulkImport";
+import { useAdminConfirm, useAdminAlert } from "@/components/admin/AdminConfirmDialog";
 
 const CATEGORIES = ["تفسير", "فقه", "عقيدة", "حديث", "سيرة", "تجويد", "أخرى"];
 const VENUE_TYPES = ["مسجد", "مجلس", "ديوان", "مزرعة", "استراحة", "مركز", "جامعة", "أخرى"] as const;
@@ -74,6 +75,9 @@ function toHHMM(raw: string): string {
 }
 
 export function LessonsSection() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+  const { alert, dialog: alertDialog } = useAdminAlert();
+
   const [items, setItems] = useState<any[]>([]);
   const [sheikhs, setSheikhs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -126,14 +130,14 @@ export function LessonsSection() {
     setOpen(true);
   };
   const handleDelete = async (id: string, title: string) => {
-    if (!confirm(`هل تريد حذف الدرس "${title}"؟`)) return;
+    if (!(await confirm({ title: "تأكيد", body: `هل تريد حذف الدرس "${title}"؟`, danger: true, confirmLabel: "تأكيد" }))) return;
     const { data, error } = await adminDeleteLesson(id);
     if (error) {
-      alert(`تعذّر حذف الدرس: ${error.message || "خطأ غير معروف"}`);
+      await alert(`تعذّر حذف الدرس: ${error.message || "خطأ غير معروف"}`);
       return;
     }
     if (!data || data.length === 0) {
-      alert("لم يُحذف الدرس. تأكّد أنك مسجّل الدخول بحساب مشرف معتمد؛ إن استمرّت المشكلة فصلاحية الإشراف قد تكون غير مُفعّلة على مستوى قاعدة البيانات.");
+      await alert("لم يُحذف الدرس. تأكّد أنك مسجّل الدخول بحساب مشرف معتمد؛ إن استمرّت المشكلة فصلاحية الإشراف قد تكون غير مُفعّلة على مستوى قاعدة البيانات.");
       return;
     }
     invalidateLessonsCache();
@@ -167,7 +171,7 @@ export function LessonsSection() {
     };
     const { error } = await adminUpsertLesson(payload);
     setSaving(false);
-    if (error) return alert("تعذّر الحفظ.");
+    if (error) { await alert("تعذّر الحفظ."); return; }
     invalidateLessonsCache();
     setOpen(false);
     load();
@@ -175,7 +179,7 @@ export function LessonsSection() {
   const set = (k: string, v: any) => setForm((f: any) => ({ ...f, [k]: v }));
 
   const handleSyncSeed = async () => {
-    if (!confirm("سيتم رفع جميع الدروس من الكتالوج الداخلي إلى قاعدة البيانات (upsert). متابعة؟")) return;
+    if (!(await confirm({ title: "تأكيد", body: "سيتم رفع جميع الدروس من الكتالوج الداخلي إلى قاعدة البيانات (upsert). متابعة؟", danger: true, confirmLabel: "تأكيد" }))) return;
     setSyncing(true);
     setSyncMsg(null);
     const { ok, synced, error } = await upsertSeedLessonsToDb();
@@ -415,6 +419,9 @@ export function LessonsSection() {
           </select>
         </Field>
       </AdminModal>
+          {confirmDialog}
+      {alertDialog}
+
     </div>
   );
 }

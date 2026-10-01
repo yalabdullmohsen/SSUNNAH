@@ -5,10 +5,13 @@ import { UPDATE_TYPES } from "@/lib/platform-types";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { AdminModal, Field } from "./AdminModal";
 import { useAdminShell } from "./AdminShell";
+import { useAdminConfirm } from "@/components/admin/AdminConfirmDialog";
 
 const EMPTY = { title: "", summary: "", update_type: "إعلان", source_url: "", status: "approved", published_at: new Date().toISOString() };
 
 export function UpdatesSection() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+
   const { showSuccess, showError } = useAdminShell();
   const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -32,7 +35,7 @@ export function UpdatesSection() {
           <strong className="adm-block-title">{item.title}</strong>
           <div className="adm-item-actions">
             <button type="button" onClick={() => { setForm({ ...item }); setOpen(true); }} className="adm-btn-sm">تعديل</button>
-            <button type="button" onClick={() => { if (confirm("حذف؟")) adminDeleteUpdate(item.id).then(load).catch(() => showError("تعذّر الحذف.")); }} className="adm-btn-del">حذف</button>
+            <button type="button" onClick={async () => { if ((await confirm({ title: "تأكيد", body: "حذف؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteUpdate(item.id).then(load).catch(() => showError("تعذّر الحذف.")); }} className="adm-btn-del">حذف</button>
           </div>
         </div>
       ))}
@@ -50,6 +53,8 @@ export function UpdatesSection() {
         <Field label="رابط"><input className="adm-input" value={form.source_url || ""} onChange={(e) => set("source_url", e.target.value)} /></Field>
         <Field label="الحالة"><select className="adm-select" value={form.status || "approved"} onChange={(e) => set("status", e.target.value)}><option value="approved">منشور</option><option value="pending">معلّق</option></select></Field>
       </AdminModal>
+          {confirmDialog}
+
     </div>
   );
 }

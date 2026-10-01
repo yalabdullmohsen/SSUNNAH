@@ -9,6 +9,7 @@ import {
   ARBAEEN_REVIEW_STATUS_LABELS,
   type ArbaeenHadith, type ArbaeenReviewStatus,
 } from "@/lib/arbaeen-love-service";
+import { useAdminConfirm, useAdminAlert } from "@/components/admin/AdminConfirmDialog";
 
 const STATUS_FLOW: ArbaeenReviewStatus[] = ["draft", "in_review", "verified", "published", "rejected"];
 
@@ -18,6 +19,9 @@ const EMPTY: Omit<ArbaeenHadith, "id"> = {
 };
 
 export function ArbaeenLoveSection() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+  const { alert, dialog: alertDialog } = useAdminAlert();
+
   const [items, setItems] = useState<ArbaeenHadith[]>([]);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
@@ -33,7 +37,7 @@ export function ArbaeenLoveSection() {
 
   const handleSave = async () => {
     if (!form.title.trim() || !form.hadith_text.trim() || !form.source.trim()) {
-      return alert("العنوان ونص الحديث والمصدر حقول مطلوبة.");
+      await alert("العنوان ونص الحديث والمصدر حقول مطلوبة."); return;
     }
     setSaving(true);
     try {
@@ -58,7 +62,7 @@ export function ArbaeenLoveSection() {
       setOpen(false);
       load();
     } catch (e) {
-      alert(String((e as { message?: string })?.message || "تعذّر الحفظ."));
+      await alert(String((e as { message?: string })?.message || "تعذّر الحفظ."));
     } finally {
       setSaving(false);
     }
@@ -70,7 +74,7 @@ export function ArbaeenLoveSection() {
       if (error) throw error;
       load();
     } catch (e) {
-      alert(String((e as { message?: string })?.message || "تعذّر تغيير الحالة."));
+      await alert(String((e as { message?: string })?.message || "تعذّر تغيير الحالة."));
     }
   };
 
@@ -129,7 +133,7 @@ export function ArbaeenLoveSection() {
                 <button type="button" onClick={() => { setForm({ ...item }); setOpen(true); }}>تعديل</button>
                 <button
                   type="button"
-                  onClick={() => { if (confirm("حذف نهائي لهذا الحديث؟")) adminDeleteArbaeenLove(item.id).then(load); }}
+                  onClick={async () => { if ((await confirm({ title: "تأكيد", body: "حذف نهائي لهذا الحديث؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteArbaeenLove(item.id).then(load); }}
                 >حذف</button>
               </div>
             </article>
@@ -154,6 +158,9 @@ export function ArbaeenLoveSection() {
         <Field label="المراجع الشرعي / الجهة"><input value={form.verified_by || ""} onChange={(e) => setForm({ ...form, verified_by: e.target.value })} className="adm-input" /></Field>
         <Field label="ملاحظات المحرر"><textarea value={form.editor_notes || ""} onChange={(e) => setForm({ ...form, editor_notes: e.target.value })} className="adm-textarea" rows={2} /></Field>
       </AdminModal>
+          {confirmDialog}
+      {alertDialog}
+
     </div>
   );
 }

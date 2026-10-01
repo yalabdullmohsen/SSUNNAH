@@ -4,6 +4,7 @@ import { adminGetAllFawaid, moderateFawaid, adminDeleteFawaid, adminUpsertFawaid
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { AdminModal, Field } from "./AdminModal";
 import { BulkImport } from "./BulkImport";
+import { useAdminConfirm, useAdminAlert } from "@/components/admin/AdminConfirmDialog";
 
 const STATUS_OPTIONS: Record<string, string> = { approved: "مقبول", pending: "معلّق", rejected: "مرفوض" };
 const EMPTY_FAWAID: any = { text: "", author_name: "", status: "approved" };
@@ -17,6 +18,9 @@ const STATUS_COLORS: Record<string, { bg: string; text: string }> = {
 const FILTERS: [string, string][] = [["all", "الكل"], ["pending", "معلّقة"], ["approved", "مقبولة"], ["rejected", "مرفوضة"]];
 
 export function FawaidSection() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+  const { alert, dialog: alertDialog } = useAdminAlert();
+
   const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all");
@@ -25,21 +29,24 @@ export function FawaidSection() {
   const [form, setForm] = useState<any>(EMPTY_FAWAID);
   const [saving, setSaving] = useState(false);
 
-  const load = () => { setLoading(true); adminGetAllFawaid().then(({ data }) => {  setItems(data ?? []); setLoading(false);  }).catch(() => {}).finally(() => setLoading(false)); };
+  const load = async () => { setLoading(true); adminGetAllFawaid().then(({ data }) => {  setItems(data ?? []); setLoading(false);  }).catch(() => {}).finally(() => setLoading(false)); };
   useEffect(() => { load(); }, []);
 
   const moderate = async (id: string, status: string) => { await moderateFawaid(id, status); load(); };
-  const handleDelete = async (id: string) => { if (!confirm("هل تريد حذف هذه الفائدة نهائيًا؟")) return; await adminDeleteFawaid(id); load(); };
+  const handleDelete = async (id: string) => { if (!(await confirm({ title: "تأكيد", body: "هل تريد حذف هذه الفائدة نهائيًا؟", danger: true, confirmLabel: "تأكيد" }))) return; await adminDeleteFawaid(id); load(); };
 
   const openAdd = () => { setForm({ ...EMPTY_FAWAID }); setOpen(true); };
   const openEdit = (item: any) => { setForm({ id: item.id, text: item.text || "", author_name: item.author_name || "", status: item.status || "approved" }); setOpen(true); };
   const set = (k: string, v: any) => setForm((f: any) => ({ ...f, [k]: v }));
   const handleSave = async () => {
-    if (!form.text.trim()) return alert("نص الفائدة مطلوب");
+    if (!form.text.trim()) {
+      await alert("نص الفائدة مطلوب");
+      return;
+    }
     setSaving(true);
     const { error } = await adminUpsertFawaid(form);
     setSaving(false);
-    if (error) return alert(`تعذّر الحفظ: ${error.message}`);
+    if (error) { await alert(`تعذّر الحفظ: ${error.message}`); return; }
     setOpen(false); load();
   };
 
@@ -143,6 +150,9 @@ export function FawaidSection() {
           </select>
         </Field>
       </AdminModal>
+          {confirmDialog}
+      {alertDialog}
+
     </div>
   );
 }

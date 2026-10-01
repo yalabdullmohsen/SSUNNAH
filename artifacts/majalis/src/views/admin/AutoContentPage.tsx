@@ -12,6 +12,7 @@ import {
   adminRejectAutoContent,
   triggerAutoContentSync,
 } from "@/lib/auto-content-service";
+import { useAdminConfirm } from "@/components/admin/AdminConfirmDialog";
 import type {
   AutoImportedContent,
   AutoImportLog,
@@ -54,6 +55,8 @@ function Stat({ label, value }: { label: string; value: number }) {
 }
 
 function AutoContentAdmin() {
+  const { confirm, dialog: confirmDialog } = useAdminConfirm();
+
   const { showSuccess, showError } = useAdminShell();
   const [items, setItems] = useState<AutoImportedContent[]>([]);
   const [sources, setSources] = useState<TrustedSource[]>([]);
@@ -127,7 +130,7 @@ function AutoContentAdmin() {
   };
 
   const handleReject = async (id: string) => {
-    if (!confirm("رفض هذه المادة؟")) return;
+    if (!(await confirm({ title: "تأكيد", body: "رفض هذه المادة؟", danger: true, confirmLabel: "تأكيد" }))) return;
     const { error } = await adminRejectAutoContent(id);
     if (error) return showError(error.message);
     showSuccess("تم رفض المادة.");
@@ -347,6 +350,7 @@ function AutoContentAdmin() {
           ))}
         </div>
       )}
+      {confirmDialog}
     </div>
   );
 }

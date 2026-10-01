@@ -115,3 +115,178 @@ export function useAdminConfirm(): {
 
   return { confirm, dialog };
 }
+
+export type AdminAlertRequest = string | { title?: string; body: string };
+
+type AlertPending = { title: string; body: string; resolve: () => void };
+
+/** تنبيه إداري — يستبدل window.alert في مسارات Admin الحية. */
+export function useAdminAlert(): {
+  alert: (req: AdminAlertRequest) => Promise<void>;
+  dialog: ReactNode;
+} {
+  const [pending, setPending] = useState<AlertPending | null>(null);
+  const okRef = useRef<HTMLButtonElement>(null);
+
+  const alert = useCallback((req: AdminAlertRequest) => {
+    const title = typeof req === "string" ? "تنبيه" : req.title || "تنبيه";
+    const body = typeof req === "string" ? req : req.body;
+    return new Promise<void>((resolve) => {
+      setPending({ title, body, resolve });
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!pending) return;
+    okRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        pending.resolve();
+        setPending(null);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [pending]);
+
+  const dialog = pending ? (
+    <div className="adm-modal__overlay" role="presentation">
+      <div
+        className="adm-modal__dialog adm-confirm-dialog"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="adm-alert-title"
+        aria-describedby="adm-alert-body"
+      >
+        <div className="adm-modal__header">
+          <h2 id="adm-alert-title" className="adm-modal__title">
+            {pending.title}
+          </h2>
+        </div>
+        <div className="adm-modal__body">
+          <p id="adm-alert-body">{pending.body}</p>
+        </div>
+        <FormActions className="adm-modal__footer">
+          <Button
+            type="button"
+            variant="primary"
+            ref={okRef}
+            onClick={() => {
+              pending.resolve();
+              setPending(null);
+            }}
+          >
+            حسناً
+          </Button>
+        </FormActions>
+      </div>
+    </div>
+  ) : null;
+
+  return { alert, dialog };
+}
+
+export type AdminPromptRequest = {
+  title: string;
+  label?: string;
+  placeholder?: string;
+  defaultValue?: string;
+  confirmLabel?: string;
+  required?: boolean;
+};
+
+type PromptPending = AdminPromptRequest & { resolve: (value: string | null) => void };
+
+/** نموذج إدخال إداري — يستبدل window.prompt في مسارات Admin الحية. */
+export function useAdminPrompt(): {
+  prompt: (req: AdminPromptRequest) => Promise<string | null>;
+  dialog: ReactNode;
+} {
+  const [pending, setPending] = useState<PromptPending | null>(null);
+  const [value, setValue] = useState("");
+  const [busy, setBusy] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const prompt = useCallback((req: AdminPromptRequest) => {
+    setValue(req.defaultValue || "");
+    setBusy(false);
+    return new Promise<string | null>((resolve) => {
+      setPending({ ...req, resolve });
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!pending) return;
+    inputRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && !busy) {
+        pending.resolve(null);
+        setPending(null);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [pending, busy]);
+
+  const close = (result: string | null) => {
+    if (!pending) return;
+    pending.resolve(result);
+    setPending(null);
+    setBusy(false);
+  };
+
+  const submit = () => {
+    if (!pending || busy) return;
+    const trimmed = value.trim();
+    if (pending.required !== false && !trimmed) return;
+    setBusy(true);
+    close(trimmed || "");
+  };
+
+  const dialog = pending ? (
+    <div className="adm-modal__overlay" role="presentation">
+      <div
+        className="adm-modal__dialog adm-confirm-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="adm-prompt-title"
+      >
+        <div className="adm-modal__header">
+          <h2 id="adm-prompt-title" className="adm-modal__title">
+            {pending.title}
+          </h2>
+        </div>
+        <form
+          className="adm-modal__body"
+          onSubmit={(e) => {
+            e.preventDefault();
+            submit();
+          }}
+        >
+          <label className="av3-field" htmlFor="adm-prompt-input">
+            <span className="av3-field__label">{pending.label || "القيمة"}</span>
+            <input
+              ref={inputRef}
+              id="adm-prompt-input"
+              className="adm-input"
+              value={value}
+              placeholder={pending.placeholder || ""}
+              onChange={(e) => setValue(e.target.value)}
+              required={pending.required !== false}
+            />
+          </label>
+          <FormActions className="adm-modal__footer">
+            <Button type="button" variant="secondary" onClick={() => close(null)} disabled={busy}>
+              إلغاء
+            </Button>
+            <Button type="submit" variant="primary" loading={busy}>
+              {pending.confirmLabel || "تأكيد"}
+            </Button>
+          </FormActions>
+        </form>
+      </div>
+    </div>
+  ) : null;
+
+  return { prompt, dialog };
+}
