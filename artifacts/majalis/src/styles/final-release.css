@@ -121,48 +121,23 @@ html.dark .hsh-step__cta {
   --app-status-fg-mode: dark;
 }
 
+/* ZERO FLICKER FINAL: لا إعادة طلاء html/body/#root بعد الإقلاع */
 html {
-  /* ZERO FLICKER: لوحة المحتوى النهائية منذ الطلاء */
-  background: var(--mj-bg);
   min-height: 100dvh;
 }
 body {
   min-width: 320px;
   overflow-x: clip;
-  /* ZERO FLICKER: لوحة المحتوى النهائية — لا تُرجع إلى splash beige بعد First Paint */
-  background: var(--mj-bg);
-  color: var(--mj-ink, var(--color-text));
-  font-family: var(--font-app, var(--font-body, "Amiri", "Noto Naskh Arabic", serif));
-  /* لا font-size هنا — المالك critical + typography-scale (--text-body) */
   line-height: 1.85;
 }
 
-html[data-theme="dark"],
-html.dark {
-  background: var(--mj-bg);
-}
-html[data-theme="dark"] body,
-html.dark body {
-  background: var(--mj-bg);
-}
-
-#root,
 .app-shell {
   min-height: 100svh;
   min-height: 100dvh;
-  background: var(--mj-bg);
-  color: var(--color-text);
   margin: 0;
   padding: 0;
   overflow-x: clip;
   max-width: 100%;
-}
-
-html[data-theme="dark"] #root,
-html[data-theme="dark"] .app-shell,
-html.dark #root,
-html.dark .app-shell {
-  background: var(--mj-bg);
 }
 
 .app-main {
@@ -2213,7 +2188,8 @@ header.navbar-v3,
 @media (max-width: 879px) {
   .bottom-nav,
   .bottom-nav--v2 {
-    background-color: var(--mj-surface, var(--color-surface, #fff)) !important;
+    /* ZERO FLICKER FINAL: لوحة المحتوى لا سطح أبيض مستقل */
+    background-color: var(--mj-bg) !important;
     background-image: none !important;
     opacity: 1 !important;
     backdrop-filter: none !important;

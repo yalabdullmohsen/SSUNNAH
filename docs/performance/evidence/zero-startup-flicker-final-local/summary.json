@@ -1,0 +1,444 @@
+{
+  "measuredAt": "2026-10-01T08:36:03.304Z",
+  "production": {
+    "commit": "96db2834",
+    "shortCommit": "96db2834",
+    "commitSha": "96db2834",
+    "builtAt": "2026-10-01T08:31:25.339Z",
+    "buildTime": "2026-10-01T08:31:25.339Z",
+    "ref": "main",
+    "branch": "main"
+  },
+  "base": "http://127.0.0.1:24216",
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "deviceScaleFactor": 2,
+    "isMobile": true,
+    "hasTouch": true
+  },
+  "results": [
+    {
+      "route": "home",
+      "path": "/",
+      "fp": 56,
+      "fcp": 56,
+      "clsTotal": 0.004402416836998271,
+      "clsAfterFcp": 0.004402416836998271,
+      "clsEntryCount": 1,
+      "topCls": [
+        {
+          "value": 0.004402416836998271,
+          "startTime": 581.5,
+          "sources": [
+            "main#main-content.app-main",
+            "div.navbar-ticker-row"
+          ]
+        }
+      ],
+      "themeChangeCount": 0,
+      "visualChangeCount": 5,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 4,
+          "final": 104
+        },
+        {
+          "key": "header.rect",
+          "early": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 116.390625
+          },
+          "final": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 108.390625
+          },
+          "delta": {
+            "dw": 0,
+            "dh": 8,
+            "dy": 0
+          }
+        },
+        {
+          "key": "hero.color",
+          "early": "rgb(21, 56, 45)",
+          "final": "rgb(247, 241, 228)"
+        },
+        {
+          "key": "hero.backgroundColor",
+          "early": "rgb(255, 255, 255)",
+          "final": "rgb(15, 92, 63)"
+        },
+        {
+          "key": "hero.rect",
+          "early": {
+            "x": 16,
+            "y": 193.1875,
+            "w": 326,
+            "h": 286.875
+          },
+          "final": {
+            "x": 32,
+            "y": 181.5625,
+            "w": 326,
+            "h": 286.921875
+          },
+          "delta": {
+            "dw": 0,
+            "dh": 0.046875,
+            "dy": 11.625
+          }
+        }
+      ],
+      "sheets": [
+        4,
+        104
+      ],
+      "networkCss": 101,
+      "networkFonts": 4,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      }
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "fp": 44,
+      "fcp": 44,
+      "clsTotal": 0,
+      "clsAfterFcp": 0,
+      "clsEntryCount": 0,
+      "topCls": [],
+      "themeChangeCount": 0,
+      "visualChangeCount": 9,
+      "visualChanges": [
+        {
+          "key": "theme.bgToken",
+          "early": "",
+          "final": "#f8f6f1"
+        },
+        {
+          "key": "theme.backgroundToken",
+          "early": "",
+          "final": "#f8f6f1"
+        },
+        {
+          "key": "theme.fontApp",
+          "early": "\"Amiri\",\"MajlisAmiriFallback\",\"MajlisFallback\",\"Traditional Arabic\",serif",
+          "final": "\"Amiri\", \"MajlisAmiriFallback\", \"MajlisFallback\", \"Traditional Arabic\", serif"
+        },
+        {
+          "key": "bodyFont",
+          "early": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+          "final": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif"
+        },
+        {
+          "key": "sheetCount",
+          "early": 3,
+          "final": 70
+        },
+        {
+          "key": "header.fontFamily",
+          "early": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+          "final": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif"
+        },
+        {
+          "key": "header.rect",
+          "early": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 108.390625
+          },
+          "final": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 65
+          },
+          "delta": {
+            "dw": 0,
+            "dh": 43.390625,
+            "dy": 0
+          }
+        },
+        {
+          "key": "bottom.fontFamily",
+          "early": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+          "final": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif"
+        },
+        {
+          "key": "hero.presence",
+          "early": false,
+          "final": true
+        }
+      ],
+      "sheets": [
+        3,
+        70
+      ],
+      "networkCss": 67,
+      "networkFonts": 4,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      }
+    },
+    {
+      "route": "quran-hub",
+      "path": "/quran-hub",
+      "fp": 40,
+      "fcp": 40,
+      "clsTotal": 0,
+      "clsAfterFcp": 0,
+      "clsEntryCount": 0,
+      "topCls": [],
+      "themeChangeCount": 0,
+      "visualChangeCount": 9,
+      "visualChanges": [
+        {
+          "key": "theme.bgToken",
+          "early": "",
+          "final": "#f8f6f1"
+        },
+        {
+          "key": "theme.backgroundToken",
+          "early": "",
+          "final": "#f8f6f1"
+        },
+        {
+          "key": "theme.fontApp",
+          "early": "\"Amiri\",\"MajlisAmiriFallback\",\"MajlisFallback\",\"Traditional Arabic\",serif",
+          "final": "\"Amiri\", \"MajlisAmiriFallback\", \"MajlisFallback\", \"Traditional Arabic\", serif"
+        },
+        {
+          "key": "bodyFont",
+          "early": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+          "final": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif"
+        },
+        {
+          "key": "sheetCount",
+          "early": 3,
+          "final": 74
+        },
+        {
+          "key": "header.fontFamily",
+          "early": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+          "final": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif"
+        },
+        {
+          "key": "header.rect",
+          "early": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 108.390625
+          },
+          "final": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 65
+          },
+          "delta": {
+            "dw": 0,
+            "dh": 43.390625,
+            "dy": 0
+          }
+        },
+        {
+          "key": "bottom.fontFamily",
+          "early": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+          "final": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif"
+        },
+        {
+          "key": "hero.presence",
+          "early": false,
+          "final": true
+        }
+      ],
+      "sheets": [
+        3,
+        74
+      ],
+      "networkCss": 71,
+      "networkFonts": 4,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      }
+    },
+    {
+      "route": "mushaf",
+      "path": "/mushaf",
+      "fp": 52,
+      "fcp": 52,
+      "clsTotal": 0,
+      "clsAfterFcp": 0,
+      "clsEntryCount": 0,
+      "topCls": [],
+      "themeChangeCount": 0,
+      "visualChangeCount": 7,
+      "visualChanges": [
+        {
+          "key": "theme.bgToken",
+          "early": "",
+          "final": "#f8f6f1"
+        },
+        {
+          "key": "theme.backgroundToken",
+          "early": "",
+          "final": "#f8f6f1"
+        },
+        {
+          "key": "theme.fontApp",
+          "early": "\"Amiri\",\"MajlisAmiriFallback\",\"MajlisFallback\",\"Traditional Arabic\",serif",
+          "final": "\"Amiri\", \"MajlisAmiriFallback\", \"MajlisFallback\", \"Traditional Arabic\", serif"
+        },
+        {
+          "key": "bodyFont",
+          "early": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+          "final": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif"
+        },
+        {
+          "key": "sheetCount",
+          "early": 3,
+          "final": 52
+        },
+        {
+          "key": "header.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "hero.presence",
+          "early": false,
+          "final": true
+        }
+      ],
+      "sheets": [
+        3,
+        52
+      ],
+      "networkCss": 49,
+      "networkFonts": 8,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      }
+    },
+    {
+      "route": "prayer-times",
+      "path": "/prayer-times",
+      "fp": 64,
+      "fcp": 64,
+      "clsTotal": 0,
+      "clsAfterFcp": 0,
+      "clsEntryCount": 0,
+      "topCls": [],
+      "themeChangeCount": 0,
+      "visualChangeCount": 4,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 4,
+          "final": 53
+        },
+        {
+          "key": "header.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "bottom.presence",
+          "early": false,
+          "final": true
+        },
+        {
+          "key": "hero.presence",
+          "early": false,
+          "final": true
+        }
+      ],
+      "sheets": [
+        4,
+        53
+      ],
+      "networkCss": 50,
+      "networkFonts": 4,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(248, 250, 252)",
+        "bg": "rgb(42, 64, 48)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(248, 250, 252)",
+        "bg": "rgb(42, 64, 48)"
+      }
+    },
+    {
+      "route": "home-dark",
+      "path": "/",
+      "fp": 52,
+      "fcp": 52,
+      "clsTotal": 0.004402416836998271,
+      "clsEntryCount": 1,
+      "topCls": [
+        {
+          "value": 0.004402416836998271,
+          "startTime": 586.5,
+          "sources": [
+            "main#main-content.app-main",
+            "div.navbar-ticker-row"
+          ]
+        }
+      ],
+      "themeChangeCount": 0,
+      "sheets": [
+        3,
+        104
+      ]
+    }
+  ]
+}

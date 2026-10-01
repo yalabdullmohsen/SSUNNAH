@@ -195,12 +195,12 @@ html {
   font-size: calc(100% * var(--ui-font-scale, 1));
 }
 
-/* أثناء app-booting: لا انتقالات على مقاسات تسبب CLS/قفزة خط */
-html.app-booting .reading-text,
-html.app-booting .page-shell,
-html.app-booting .navbar-v3,
-html.app-booting .header-ticker,
-html.app-booting .bottom-nav {
+/* أثناء الإقلاع: لا انتقالات على مقاسات تسبب CLS/قفزة خط */
+html[data-ab="1"] .reading-text,
+html[data-ab="1"] .page-shell,
+html[data-ab="1"] .navbar-v3,
+html[data-ab="1"] .header-ticker,
+html[data-ab="1"] .bottom-nav {
   transition-property: color, background-color, border-color, opacity, box-shadow, transform;
 }
 

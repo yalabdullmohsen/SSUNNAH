@@ -58,8 +58,8 @@
           var forceBench = /[?&]splash_timing=1(?:&|$)/.test(location.search);
           if (!forceBench && (navigator.webdriver || location.hostname === "127.0.0.1" || location.hostname === "localhost")) {
             try {
-              document.documentElement.classList.remove("app-booting");
               document.documentElement.dataset.appBooting = "0";
+              document.documentElement.dataset.ab = "0";
             } catch (e2) {}
             dismiss(true);
             return;
@@ -71,8 +71,8 @@
           } catch (eN) {}
           if (!forceBench && !nativeCap && sessionStorage.getItem(KEY) === "1") {
             try {
-              document.documentElement.classList.remove("app-booting");
               document.documentElement.dataset.appBooting = "0";
+              document.documentElement.dataset.ab = "0";
             } catch (e2) {}
             dismiss(true);
             return;
@@ -87,7 +87,7 @@
           appReady = true;
           requestAnimationFrame(function () {
             requestAnimationFrame(function () {
-              shellStable = !document.documentElement.classList.contains("app-booting");
+              shellStable = document.documentElement.dataset.appBooting !== "1";
               tryDismiss();
             });
           });
