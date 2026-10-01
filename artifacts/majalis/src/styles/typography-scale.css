@@ -24,7 +24,8 @@
 }
 
 body {
-  font-size: var(--text-body);
+  /* Font Authority — مطلق 17px من أول طلاء حتى النهائي */
+  font-size: 1.0625rem;
   font-weight: var(--font-weight-regular, 400);
   line-height: var(--lh-body, 1.75);
   letter-spacing: 0;

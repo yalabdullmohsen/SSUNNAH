@@ -54,11 +54,24 @@ export function runBootSequenceBeforeMount(): void {
   try {
     const theme = resolveTheme(readThemePreference());
     const root = document.documentElement;
-    root.dataset.theme = theme;
-    root.classList.toggle("theme-dark", theme === "dark");
-    root.classList.toggle("theme-light", theme === "light");
-    root.setAttribute("dir", "rtl");
-    root.lang = "ar";
+    // سكربت index.html يضبط الثيم قبل الطلاء — لا تعِد إن تطابق
+    if (root.dataset.theme !== theme) {
+      root.dataset.theme = theme;
+    }
+    const wantDark = theme === "dark";
+    if (wantDark) {
+      if (!root.classList.contains("theme-dark")) root.classList.add("theme-dark");
+      if (!root.classList.contains("dark")) root.classList.add("dark");
+      if (root.classList.contains("theme-light")) root.classList.remove("theme-light");
+      if (root.classList.contains("light")) root.classList.remove("light");
+    } else if (!root.classList.contains("theme-light") || !root.classList.contains("light")) {
+      if (!root.classList.contains("theme-light")) root.classList.add("theme-light");
+      if (!root.classList.contains("light")) root.classList.add("light");
+      if (root.classList.contains("theme-dark")) root.classList.remove("theme-dark");
+      if (root.classList.contains("dark")) root.classList.remove("dark");
+    }
+    if (root.getAttribute("dir") !== "rtl") root.setAttribute("dir", "rtl");
+    if (root.lang !== "ar") root.lang = "ar";
     applyFontPreference(readFontPreference());
     applyPreferences(readPreferences());
     // سخّن ذاكرة آخر صفحة مصحف فورًا (قراءة sync) — يمنع وميض الصفحة 1

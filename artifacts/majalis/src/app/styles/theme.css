@@ -6,9 +6,9 @@
 
 @theme {
   /* سطح التطبيق الواحد — الأسطح المتلاصقة ترجع إليه لا إلى هكس مستقل */
-  /* إقلاع/PWA يبقى #F7F3EB · لوحة المحتوى عبر Foundation (#F8F6F1 / أبيض) */
+  /* PWA/meta theme-color يبقى splash-beige · لوحة المحتوى = mj-bg من أول طلاء */
   --surface-app: #F7F3EB;
-  --color-bg: #F7F3EB;
+  --color-bg: var(--mj-bg);
   --color-surface: #FFFFFF;
   --color-surface-2: #EFE8DC;
   --color-hairline: rgba(15, 92, 63, 0.12);
@@ -274,7 +274,8 @@
   --mj-fs-h1: 26px;
   --mj-fs-h2: 18px;
   --mj-fs-sacred: 20px;
-  --mj-fs-body: 16px;
+  /* Font Authority — 17px من أول طلاء؛ يطابق #mj-lcp-critical / typography-scale */
+  --mj-fs-body: 1.0625rem;
   --mj-fs-btn: 14px;
   --mj-fs-small: 14px;
   --mj-fs-tiny: 13px;
@@ -617,10 +618,12 @@ textarea {
 
 body {
   font-family: var(--font-ui, var(--font-app));
-  font-size: var(--mj-fs-body);
+  /* Font Authority — قيمة مطلقة؛ لا تعتمد على --text-body (لون إرثي متعارض) */
+  font-size: 1.0625rem;
   line-height: var(--mj-lh-body);
   color: var(--mj-ink);
-  background: var(--surface-app);
+  /* Canvas Authority — لوحة المحتوى النهائية (mj-bg) لا splash beige */
+  background: var(--mj-bg);
   overflow-x: clip;
   font-synthesis: none;
 }

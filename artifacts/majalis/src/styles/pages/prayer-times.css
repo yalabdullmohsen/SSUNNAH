@@ -22,6 +22,8 @@ html.pts-immersive .majlisilm-app {
   background-color: var(--brand-olive-deep, #2a4030) !important;
   background-image: var(--pts-page-gradient) !important;
   background-attachment: fixed;
+  /* نص فاتح منذ وصول CSS الصفحة — يمنع قفزة --mj-ink على body */
+  color: var(--on-dark-body, var(--mj-on-brand));
   min-height: 100svh;
   min-height: 100dvh;
 }

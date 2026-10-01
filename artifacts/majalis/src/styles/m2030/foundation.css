@@ -3,10 +3,9 @@
  */
 
 html {
-  /* سطح التطبيق — لا bleed أسود تحت الشريط/Home Indicator */
-  background-color: var(--surface-app, var(--mj-bg, #F7F3EB));
-  background-image:
-    radial-gradient(ellipse 70% 40% at 100% 0%, color-mix(in srgb, var(--em-500) 6%, transparent), transparent 55%);
+  /* Canvas Authority — نفس --mj-bg من critical؛ لا تُرجع إلى splash beige */
+  background-color: var(--mj-bg);
+  background-image: none;
   color: var(--text);
   min-height: 100svh;
   min-height: 100dvh;
@@ -15,11 +14,12 @@ html {
 
 html[data-theme="dark"],
 html.dark {
-  background-color: var(--surface-app, var(--mj-bg, #101614));
+  background-color: var(--mj-bg);
 }
 
 body {
-  background-color: var(--surface-app, var(--mj-bg, #F7F3EB)) !important;
+  /* ZERO FLICKER: لا تُرجع body إلى splash beige بعد First Paint */
+  background-color: var(--mj-bg) !important;
   background-image: none !important;
   color: var(--text) !important;
   font-family: var(--font-body) !important;
@@ -30,13 +30,13 @@ body {
 
 html[data-theme="dark"] body,
 html.dark body {
-  background-color: var(--surface-app, var(--mj-bg, #101614)) !important;
+  background-color: var(--mj-bg) !important;
 }
 
 #root,
 .app-shell,
 .majlisilm-app {
-  background-color: var(--surface-app, var(--mj-bg));
+  background-color: var(--mj-bg);
   color: var(--text);
 }
 
@@ -44,7 +44,7 @@ html[data-theme="dark"] #root,
 html[data-theme="dark"] .app-shell,
 html.dark #root,
 html.dark .app-shell {
-  background-color: var(--surface-app, var(--mj-bg));
+  background-color: var(--mj-bg);
 }
 
 h1, h2, h3, .ds-section__title {
