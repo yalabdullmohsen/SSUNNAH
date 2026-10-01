@@ -4,6 +4,8 @@
 |---|---|
 | Status | **ADMIN_FINAL_3** (pending MERGED_AND_DEPLOYED) |
 | Base tip | `a04419361` (after ADMIN-FINAL-2 seal) |
+| Post-FINAL-2 baseline | [`POST_ADMIN_FINAL_2_LIVE_BASELINE.md`](../remediation/POST_ADMIN_FINAL_2_LIVE_BASELINE.md) · **LOCKED** |
+| PR | [#2424](https://github.com/yalabdullmohsen/majalis/pull/2424) |
 | Gate | `admin-final-3-core-crud-gate.test.ts` |
 | Entities | Lessons · Sheikhs · Fawaid · Categories · Users · Roles |
 

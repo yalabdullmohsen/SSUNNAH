@@ -5,7 +5,8 @@
 | Captured | 2026-10-01T04:10Z |
 | Live baseline | [`FINAL_CLOSURE_LIVE_BASELINE.md`](./FINAL_CLOSURE_LIVE_BASELINE.md) · **LIVE_BASELINE_LOCKED** |
 | SoT tip (live) | `a04419361` (#2423 seal after FINAL-2 `8255ed5db`) |
-| Active phase | **PHASE 4 ADMIN-FINAL-3 Core CRUD** (in progress) |
+| Post-FINAL-2 baseline | [`POST_ADMIN_FINAL_2_LIVE_BASELINE.md`](./POST_ADMIN_FINAL_2_LIVE_BASELINE.md) · **LOCKED** |
+| Active phase | **ADMIN-FINAL-3 Core CRUD** (PR #2424) |
 | Rule | مرحلة واحدة · PR واحد · MATCH قبل التالي |
 
 ## الحالة الحالية (عند القفل الحي)
