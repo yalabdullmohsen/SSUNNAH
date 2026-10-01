@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Locked at (UTC) | `2026-10-01T15:55:00Z` |
-| Tip | `origin/main` / production **MATCH** `01c13f25` |
+| Tip (post Track 0) | `origin/main` / production **MATCH** `8e4734cd` |
 | Program | COMPLETE PRODUCT · MOBILE · LICENSE · STORE CLOSURE |
 | Status | **`MASTER_CLOSURE_REGISTER_LOCKED`** |
 | Policy | PEOP/CEP · serial execution · UNKNOWN job = temporary HARD_BLOCKER |
@@ -12,13 +12,13 @@
 
 | Item | Value |
 |------|-------|
-| `origin/main` | `01c13f25` |
-| Production `version.json` | `01c13f25` MATCH |
+| `origin/main` | `8e4734cd` (Track 0 squash) |
+| Production `version.json` | `8e4734cd` MATCH |
 | Open PRs | `#2299` native widgets CONFLICTING · `#1791` offline draft |
-| Recent merges | `#2440` license evidence · `#2439` MF0 · `#2438` MRMP · `#2437` U1 numeric · `#2436` U2 |
-| U2 | MERGED_AND_DEPLOYED · MATCH · unlocks U3 |
-| U3 | Ready Pack COMPLETE · **EXECUTION_UNLOCKED** (next serial code) |
-| U4 | Ready Pack IN_PROGRESS (~70%) · locked until U3 |
+| Recent merges | `#2441` Track 0 · `#2440` license · `#2439` MF0 · `#2438` MRMP · `#2437` U1n · `#2436` U2 |
+| U2 | MERGED_AND_DEPLOYED · MATCH |
+| U3 | **IN_PROGRESS** — sole JS writer `applyThemePreference` · `test:u3-theme-pipeline` |
+| U4 | Ready Pack IN_PROGRESS (~70%) · locked until U3 `DARK_LIGHT_UNIFIED` |
 | MRMP | Chartered · `MOBILE_PARTIALLY_READY` |
 | License | `LICENSE_CERTIFICATION_REQUIRED` (#2440) |
 | Store | HOLD · `WEB_RELEASED_NATIVE_HOLD` |
@@ -32,7 +32,7 @@
 | ID | Track | Description | Class | Owner | Evidence | Web | iOS | Android | Store Sub | Store Go | Exact exit |
 |----|-------|-------------|-------|-------|----------|-----|-----|---------|-----------|----------|------------|
 | T0-1 | 0 | Master register + CURRENT sync | DOCS | Agent | this file | — | — | — | — | — | `MASTER_CLOSURE_REGISTER_LOCKED` |
-| A1 | A | U3 Theme pipeline | FIXABLE | Agent | U3 Ready Pack | Y | soft | soft | N | N | `DARK_LIGHT_UNIFIED` |
+| A1 | A | U3 Theme pipeline | FIXABLE | Agent | U3 Ready Pack · gate | Y | soft | soft | N | N | `DARK_LIGHT_UNIFIED` (IN_PROGRESS) |
 | A2 | A | U4 Startup chrome/CLS | FIXABLE | Agent | U4 Ready Pack | Y | soft | soft | N | N | `STARTUP_CHROME_STABLE` |
 | A3 | A | U1 numeric LHCI ≤80/≤500/reflow≥1 | FIXABLE | Agent | LHCI audit · #2437 local | Y | N | N | N | N | `LHCI_HOME_MOBILE_CLOSED` |
 | A4 | A | U8 Deferred identity | FIXABLE | Agent | LIVE inventory deferred=49 | Y | N | N | N | N | `DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED` |

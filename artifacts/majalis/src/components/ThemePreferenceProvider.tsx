@@ -1,4 +1,13 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
 import {
   applyThemePreference,
   readThemePreference,
@@ -22,13 +31,13 @@ export function ThemePreferenceProvider({ children }: { children: ReactNode }) {
   const [preference, setPreferenceState] = useState<ThemePreference>(() => readThemePreference());
   const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">(() => resolveTheme(readThemePreference()));
 
-  // Apply on mount and whenever preference changes
-  useEffect(() => {
+  /* U3: قبل الطلاء — idempotent إن طابق الإقلاع (يمنع themeMutAfterFP) */
+  useLayoutEffect(() => {
     applyThemePreference(preference);
     setResolvedTheme(resolveTheme(preference));
   }, [preference]);
 
-  // طبقات الوضع الداكن — محمّل واحد (ensure-dark-layers) بلا تكرار مع إقلاع/idle
+  // طبقات الوضع الداكن — محمّل CSS فقط (ensure-dark-layers) بلا مسّ data-theme/class
   useEffect(() => {
     if (resolvedTheme === "dark") {
       void ensureDarkLayersForThemeSwitch();

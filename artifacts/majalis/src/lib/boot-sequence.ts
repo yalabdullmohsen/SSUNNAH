@@ -16,7 +16,7 @@ import {
   purgeLegacyColdBootKeysSync,
   purgeStaleRuntimeCaches,
 } from "@/lib/runtime-cache-purge";
-import { readThemePreference, resolveTheme } from "@/lib/theme-preference";
+import { applyThemePreference, readThemePreference } from "@/lib/theme-preference";
 import { applyPreferences, readPreferences } from "@/lib/user-preferences";
 
 export type BootPhase =
@@ -52,24 +52,9 @@ export function runBootSequenceBeforeMount(): void {
 
   phase = "hydrate";
   try {
-    const theme = resolveTheme(readThemePreference());
     const root = document.documentElement;
-    // سكربت index.html يضبط الثيم قبل الطلاء — لا تعِد إن تطابق
-    if (root.dataset.theme !== theme) {
-      root.dataset.theme = theme;
-    }
-    const wantDark = theme === "dark";
-    if (wantDark) {
-      if (!root.classList.contains("theme-dark")) root.classList.add("theme-dark");
-      if (!root.classList.contains("dark")) root.classList.add("dark");
-      if (root.classList.contains("theme-light")) root.classList.remove("theme-light");
-      if (root.classList.contains("light")) root.classList.remove("light");
-    } else if (!root.classList.contains("theme-light") || !root.classList.contains("light")) {
-      if (!root.classList.contains("theme-light")) root.classList.add("theme-light");
-      if (!root.classList.contains("light")) root.classList.add("light");
-      if (root.classList.contains("theme-dark")) root.classList.remove("theme-dark");
-      if (root.classList.contains("dark")) root.classList.remove("dark");
-    }
+    /* U3: كاتب JS وحيد = applyThemePreference (idempotent إن طابق mj-theme-boot) */
+    applyThemePreference(readThemePreference());
     if (root.getAttribute("dir") !== "rtl") root.setAttribute("dir", "rtl");
     if (root.lang !== "ar") root.lang = "ar";
     applyFontPreference(readFontPreference());

@@ -3,11 +3,11 @@
 | Field | Value |
 |-------|-------|
 | Phase | **U3** Light, Dark and System Single Pipeline |
-| Status | **READY_PACK_COMPLETE** |
-| Execution | **EXECUTION_UNLOCKED** (2026-10-01) — U2 `#2436` MERGED_AND_DEPLOYED · tip/prod MATCH `01c13f25` · Master Closure Register locked · next serial code after Track 0 merge |
-| Depends on | U2 `TOKEN_CONTRACT_STABLE` ✅ |
-| Exit | `DARK_LIGHT_UNIFIED` · production `themeMutAfterFP = 0` |
-| Policy | CEP/PEOP — PREPARATION ONLY until unlock |
+| Status | **EXECUTING** → exit `DARK_LIGHT_UNIFIED` after MATCH+Smoke |
+| Execution | **IN_PROGRESS** (2026-10-01) — Track 0 `#2441` MERGED · tip/prod MATCH `8e4734cd` · sole JS writer = `applyThemePreference` · gate `test:u3-theme-pipeline` |
+| Depends on | U2 `TOKEN_CONTRACT_STABLE` ✅ · Track 0 LOCKED ✅ |
+| Exit | `DARK_LIGHT_UNIFIED` · production `themeMutAfterFP = 0` (proven historically on `9d336440`; re-confirm after this tip MATCH) |
+| Policy | CEP/PEOP — code + gate this PR · no U4 scope |
 
 ## 1. Scope
 

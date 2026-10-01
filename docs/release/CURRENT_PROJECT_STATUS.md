@@ -1,6 +1,6 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-10-01 (Master Closure Track 0 · tip MATCH)  
+**Updated:** 2026-10-01 (U3 Theme Pipeline executing · base tip MATCH)  
 **Master closure register:** `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` · **LOCKED**  
 **Boundary report (living):** `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md`  
 **License status:** `docs/mobile/LICENSE_CERTIFICATION_STATUS.md` · `LICENSE_CERTIFICATION_REQUIRED`  
@@ -13,11 +13,11 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `01c13f25` — license A–P evidence (#2440) after MF0/MRMP/U1n/U2 |
-| Production `version.json` | `01c13f25` **MATCH** · `builtAt=2026-10-01T15:39:15.604Z` |
+| `origin/main` tip | `8e4734cd` — Track 0 Master Closure Register (#2441) after license A–P |
+| Production `version.json` | `8e4734cd` **MATCH** · `builtAt=2026-10-01T16:06:01.136Z` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** · **`PROJECT_CLOSURE_PARTIAL`** |
-| Unification | **`UNIFIED_PARTIAL`** · U2 COMPLETE · U3 **EXECUTION_UNLOCKED** (next) |
+| Unification | **`UNIFIED_PARTIAL`** · U2 COMPLETE · U3 **IN_PROGRESS** (single JS theme writer) |
 | Mobile | **`MOBILE_PARTIALLY_READY`** · MRMP chartered · device evidence open |
 | License | **`LICENSE_CERTIFICATION_REQUIRED`** · recitations **STREAM_ONLY** · Istanbul adhan **CC0_ADHAN_CANDIDATE** |
 | Store | **HOLD** · no `STORE_SUBMISSION_READY` · no `STORE_GO` |
