@@ -242,8 +242,13 @@ scanTree([
 
 const bundleIdMatches = [...pbx.matchAll(/PRODUCT_BUNDLE_IDENTIFIER = ([^;]+);/g)].map((m) => m[1]);
 ok(
-  bundleIdMatches.every((id) => id === "com.yousef.majlisilm" || id.includes("PrayerLiveActivity")),
-  "bundle identifiers unchanged (App + extension only)",
+  bundleIdMatches.every(
+    (id) =>
+      id === "com.yousef.majlisilm" ||
+      id.includes("PrayerLiveActivity") ||
+      id.includes("PrayerWidget"),
+  ),
+  "bundle identifiers App + PrayerLiveActivity + PrayerWidget only",
 );
 ok(
   /DEVELOPMENT_TEAM = 5D8TX37HTS;/.test(pbx),
@@ -410,14 +415,18 @@ ok(
   "KeychainStore.swift listed under App target Sources",
 );
 
-// T-028 — App Group foundation (no Widget/Watch targets yet)
+// T-028/T-029 — App Group foundation + Prayer Widget Extension
 const APP_GROUP = "group.com.yousef.majlisilm";
 const sharedSwift = join(iosApp, "Shared", "SunnahSharedData.swift");
 const sharedPlugin = join(iosApp, "App", "SunnahSharedDataPlugin.swift");
 const plaEnt = join(iosApp, "PrayerLiveActivity", "PrayerLiveActivity.entitlements");
+const widgetEnt = join(iosApp, "PrayerWidget", "PrayerWidget.entitlements");
+const widgetMain = join(iosApp, "PrayerWidget", "PrayerTimesWidget.swift");
 ok(existsSync(sharedSwift), "Shared/SunnahSharedData.swift exists");
 ok(existsSync(sharedPlugin), "SunnahSharedDataPlugin.swift exists");
 ok(existsSync(plaEnt), "PrayerLiveActivity.entitlements exists");
+ok(existsSync(widgetEnt), "PrayerWidget.entitlements exists");
+ok(existsSync(widgetMain), "PrayerTimesWidget.swift exists");
 if (existsSync(sharedSwift)) {
   const shared = readFileSync(sharedSwift, "utf8");
   ok(shared.includes(APP_GROUP), "shared store uses group.com.yousef.majlisilm");
@@ -444,14 +453,26 @@ if (existsSync(plaEnt)) {
   const pla = readFileSync(plaEnt, "utf8");
   ok(pla.includes(APP_GROUP), "LA entitlements declare App Group");
 }
+if (existsSync(widgetEnt)) {
+  const we = readFileSync(widgetEnt, "utf8");
+  ok(we.includes(APP_GROUP), "Widget entitlements declare App Group");
+}
 ok(/SunnahSharedData\.swift in Sources/.test(pbx), "SunnahSharedData.swift in pbx Sources");
 ok(/SunnahSharedDataPlugin\.swift in Sources/.test(pbx), "SunnahSharedDataPlugin.swift in App Sources");
 ok(
   pbx.includes("CODE_SIGN_ENTITLEMENTS = PrayerLiveActivity/PrayerLiveActivity.entitlements"),
   "LA target CODE_SIGN_ENTITLEMENTS set",
 );
-ok(!/PRODUCT_BUNDLE_IDENTIFIER = .*\.Widget/.test(pbx), "no Widget extension target yet (T-028 foundation only)");
-ok(!/watchos|WatchKit/i.test(pbx), "no Watch app target yet (T-028 foundation only)");
+ok(
+  pbx.includes("PRODUCT_BUNDLE_IDENTIFIER = com.yousef.majlisilm.PrayerWidget"),
+  "PrayerWidget extension target present (T-029)",
+);
+ok(
+  pbx.includes("CODE_SIGN_ENTITLEMENTS = PrayerWidget/PrayerWidget.entitlements"),
+  "Widget target CODE_SIGN_ENTITLEMENTS set",
+);
+ok(/PrayerWidgetExtension\.appex in Embed Foundation Extensions/.test(pbx), "Widget appex embedded in App");
+ok(!/watchos|WatchKit/i.test(pbx), "no Watch app target yet");
 const otherGroups = [...pbx.matchAll(/group\.com\.[a-z0-9.]+/gi)].map((m) => m[0]);
 const unexpected = otherGroups.filter((g) => g !== APP_GROUP);
 ok(unexpected.length === 0, `no conflicting App Group ids in pbx (found ${unexpected.join(",") || "none"})`);
@@ -460,6 +481,24 @@ ok(
   livePlugin.includes("SunnahSharedStore.publishLiveActivityState"),
   "PrayerLiveActivityPlugin mirrors state into App Group",
 );
+if (existsSync(widgetMain)) {
+  const w = readFileSync(widgetMain, "utf8");
+  ok(w.includes("systemSmall") && w.includes("accessoryInline"), "widget supports home + lock families");
+  ok(w.includes("accessoryCircular") && w.includes("accessoryRectangular"), "lock circular/rectangular families");
+  const entryPath = join(iosApp, "PrayerWidget", "PrayerWidgetEntry.swift");
+  const entry = readFileSync(entryPath, "utf8");
+  ok(entry.includes("SunnahSharedStore.loadPrayer"), "widget timeline reads App Group prayer snapshot");
+  ok(!/URLSession|http:\/\/|https:\/\/api/i.test(entry), "widget timeline has no API calls");
+  ok(entry.includes("www.ssunnah.com/prayer-times"), "widget deep link to prayer screen");
+  const views = readFileSync(join(iosApp, "PrayerWidget", "PrayerWidgetViews.swift"), "utf8");
+  ok(views.includes("widgetURL"), "views attach widgetURL");
+  ok(views.includes("accessibilityLabel"), "VoiceOver labels present");
+  ok(views.includes("layoutDirection"), "RTL layoutDirection set");
+  ok(
+    !/Quran|QPC|Hisn|Fatwa|recitation/i.test(views + w + entry),
+    "no blocked corpus content in widget",
+  );
+}
 
 // package.json / prepare-ios: لا تستخدم npx cap — من جذر الـ monorepo يحلّ npm حزمة
 // cap@0.2.1 (بلا bin) → "could not determine executable to run". استخدم ثنائي .bin المحلي.

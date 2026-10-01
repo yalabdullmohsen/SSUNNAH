@@ -4,7 +4,7 @@
 |-------|-------|
 | App Group | `group.com.yousef.majlisilm` |
 | Bundle ID | `com.yousef.majlisilm` |
-| Status | **Foundation prepared** — Widget Extension / Watch App **not** created (T-028) |
+| Status | **Foundation ready** · Prayer Widget Extension **present** (T-029) · Watch App **not** created |
 | SoT Swift | `ios/App/Shared/SunnahSharedData.swift` |
 | JS bridge | `src/lib/plugins/sunnah-shared-data.ts` |
 
@@ -21,19 +21,22 @@ Auth tokens · refresh/access · passwords · API keys · credentials · Keychai
 
 Auth remains in `KeychainStore` service `com.yousef.majlisilm.auth` only.
 
-## Future Widget contract (do not implement yet)
+## Prayer Widget (T-029 — implemented)
+
+Target: `com.yousef.majlisilm.PrayerWidget` · folder `ios/App/PrayerWidget/`.
 
 | Family | Kind | Data source | Content (license-safe) |
 |--------|------|-------------|------------------------|
-| Small | `systemSmall` | prayer.v1 | Next prayer name + countdown |
-| Medium | `systemMedium` | prayer.v1 | Next + today’s times strip |
-| Large | `systemLarge` | prayer.v1 + progress.v1 | Day grid + wird progress |
+| Small | `systemSmall` | prayer.v1 | Current · next · countdown |
+| Medium | `systemMedium` | prayer.v1 | Timeline · current · next |
+| Large | `systemLarge` | prayer.v1 | Timeline · remaining · dates · last updated |
 | Inline Lock Screen | `accessoryInline` | prayer.v1 | Next prayer name |
-| Circular Lock Screen | `accessoryCircular` | prayer.v1 | Countdown ring |
+| Circular Lock Screen | `accessoryCircular` | prayer.v1 | Countdown |
 | Rectangular Lock Screen | `accessoryRectangular` | prayer.v1 | Name + time |
 
 Deep link: `https://www.ssunnah.com/prayer-times` (same as LA).  
-No Quran text / QPC / fatwa bodies / UNKNOWN audio in widgets.
+No Quran text / QPC / fatwa / progress.v1 / UNKNOWN audio in widgets.  
+Certification: `docs/audit/IOS_WIDGETS_PRAYER_CERTIFICATION_REPORT.md`.
 
 ## Future Watch contract (do not implement yet)
 

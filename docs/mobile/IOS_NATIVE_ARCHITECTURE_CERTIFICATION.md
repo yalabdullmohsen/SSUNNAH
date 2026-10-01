@@ -22,9 +22,9 @@
 | Info.plist URL scheme name | `com.yousef.majlisilm` / scheme `majlisilm` | ✓ |
 | Keychain service | `com.yousef.majlisilm.auth` | ✓ |
 | Production AASA `appIDs` | `5D8TX37HTS.com.yousef.majlisilm` | ✓ |
-| Watch app target | — | **NOT PRESENT** (post–T-028; contract only) |
-| Home Screen Widget target (non-LA) | — | **NOT PRESENT** (post–T-028; contract only) |
-| App Groups | `group.com.yousef.majlisilm` | **Prepared** — `IOS_SHARED_DATA_FOUNDATION_READY` (T-028); portal registration OWNER_ACTION |
+| Watch app target | — | **NOT PRESENT** |
+| Home Screen Widget target (non-LA) | `com.yousef.majlisilm.PrayerWidget` | **PRESENT** — `IOS_WIDGETS_PRAYER_CERTIFIED` (T-029) |
+| App Groups | `group.com.yousef.majlisilm` | **Prepared** — App · LA · PrayerWidget; portal registration OWNER_ACTION |
 
 **Decision:** Do **not** rename Bundle ID. No evidence of a different App Store Connect identifier in-repo. If ASC differs → OWNER_ACTION Decision Record before any rename.
 
@@ -72,8 +72,10 @@
 IOS_NATIVE_ARCHITECTURE_CERTIFIED
 BUNDLE_ID_LOCKED=com.yousef.majlisilm
 IOS_SHARED_DATA_FOUNDATION_READY
+IOS_WIDGETS_PRAYER_CERTIFIED
 APP_GROUP=group.com.yousef.majlisilm
-WATCH_WIDGET_TARGETS=NOT_STARTED
+WIDGET_BUNDLE_ID=com.yousef.majlisilm.PrayerWidget
+WATCH_TARGET=NOT_STARTED
 SIGNING_ASC=OWNER_ACTION
 PORTAL_APP_GROUP_REGISTRATION=OWNER_ACTION
 ```
