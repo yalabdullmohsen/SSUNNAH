@@ -11,8 +11,8 @@
   "bytes": 64900101,
   "sha256": "ba0d10961d2ea2ebcb5f255383ae7dc60d980e8cfe9dab425b1ac7c85eb3e99a",
   "wikiSha1": "15ea3b39550146a4b18a8d7debadb99f3ea7b5e2",
-  "status": "CC0_ADHAN_CANDIDATE",
-  "notes": "Original WebM retained under evidence/. Audio extract pending ffmpeg. Human listening QA required before CC0_ADHAN_APPROVED_FOR_RELEASE. Not claimed AUDIO_CERTIFIED.",
+  "status": "CC0_ADHAN_REJECTED_QUALITY",
+  "notes": "T-027 Human QA REJECTED_QUALITY (completeness FAIL ~50.085s). Store v1 → system-default. Not claimed AUDIO_CERTIFIED / APPROVED_FOR_RELEASE.",
   "audioExtract": {
     "localCachePath": ".cache/cc0-adhan-istanbul/adhan-istanbul-cc0-candidate.m4a",
     "format": "aac/m4a mono 44100 Hz ~128kbps",
@@ -26,6 +26,8 @@
     "Not placed in public/audio or store binary",
     "Forbidden claims: AUDIO_CERTIFIED, CC0_ADHAN_APPROVED_FOR_RELEASE"
   ],
-  "humanQaRequired": true,
-  "updatedUtc": "2026-10-01T15:51:32.977660+00:00"
+  "humanQaRequired": false,
+  "humanQaDecision": "CC0_ADHAN_REJECTED_QUALITY",
+  "humanQaRecord": "HUMAN_QA_RECORD.md",
+  "updatedUtc": "2026-10-01T20:55:00.000000+00:00"
 }

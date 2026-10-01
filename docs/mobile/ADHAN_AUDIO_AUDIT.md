@@ -73,8 +73,9 @@ Evidence paths (CC0): `docs/audio-rights/evidence/wikimedia-adhan-ogg-2026-09-13
 |--------|--------|
 | Keep CC0 field packs on web | DONE (already) |
 | Keep madinah/qatami out of bundle | DONE (already removed) |
-| Retrieve Commons `Adhan_in_Istanbul.webm` | **DONE** · `CC0_ADHAN_CANDIDATE` · `docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/` · human QA pending (~50s) |
-| Promote Istanbul → `CC0_ADHAN_APPROVED_FOR_RELEASE` | **BLOCKED** on human listen QA |
+| Retrieve Commons `Adhan_in_Istanbul.webm` | **DONE** · evidence under `docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/` |
+| Human QA Istanbul (T-027) | **DONE** · **`CC0_ADHAN_REJECTED_QUALITY`** · completeness FAIL (~50.085s) · see `HUMAN_QA_RECORD.md` |
+| Promote Istanbul → `CC0_ADHAN_APPROVED_FOR_RELEASE` | **CLOSED — rejected** · Store v1 uses `system-default` |
 | Delete additional binaries without replacement | **DEFERRED** — يحتاج بديل APPROVED + تحديث بوابات `test:adhan-*` |
 | Register `adhan-haram-full` / `adhan-soft-alert` in rights registry or strip | **OPEN** · MF-AUDIO-1 |
 | OWNER allowlist for Store CAF/CC0 | **OWNER_ACTION** |

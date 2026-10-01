@@ -18,6 +18,8 @@ Decisions: `APPROVED` · `APPROVED_WITH_ATTRIBUTION` · `WEB_ONLY` · `STREAM_ON
 | Hisn Muslim texts | app content | BLOCKED_LICENSE / OWNER_ACTION | LICENSE_RISKS |
 | Adhan `system-default` | OS | APPROVED | catalog filter |
 | Adhan field / field-full CC0 | selectable | APPROVED when verified_for_production | rights registry |
+| Adhan Istanbul Commons CC0 | candidate rejected | DO_NOT_BUNDLE · `CC0_ADHAN_REJECTED_QUALITY` (T-027) | HUMAN_QA_RECORD.md |
+| Adhan store v1 primary | OS | APPROVED `system-default` | AUDIO_RELEASE_ALLOWLIST.json |
 | Adhan madinah / qatami | blocked | DO_NOT_BUNDLE | approvedForProduction:false |
 | everyayah / mp3quran | stream | STREAM_ONLY | LICENSE_RISKS |
 | Embedded `public/sounds/adhan` unresolved | binary risk | DO_NOT_BUNDLE for store RC | store strip policy |
