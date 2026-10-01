@@ -1,0 +1,81 @@
+{
+  "route": "home",
+  "path": "/",
+  "fp": 88,
+  "fcp": 88,
+  "elapsedMs": 5122,
+  "clsTotal": 0.0002639203971159678,
+  "clsAfterFcp": 0.0002639203971159678,
+  "clsEntryCount": 1,
+  "topCls": [
+    {
+      "value": 0.0002639203971159678,
+      "startTime": 599.3000000715256,
+      "sources": [
+        "div.navbar-ticker-row"
+      ]
+    }
+  ],
+  "themeChangeCount": 0,
+  "visualChangeCount": 4,
+  "visualChanges": [
+    {
+      "key": "sheetCount",
+      "early": 4,
+      "final": 71
+    },
+    {
+      "key": "hero.rect",
+      "early": {
+        "x": 16,
+        "y": 182,
+        "w": 358,
+        "h": 221.046875
+      },
+      "final": {
+        "x": 32,
+        "y": 186.171875,
+        "w": 326,
+        "h": 285.328125
+      },
+      "delta": {
+        "dw": -32,
+        "dh": 64.28125,
+        "dy": 4.171875
+      }
+    },
+    {
+      "key": "hero.backgroundColor",
+      "early": "rgba(0, 0, 0, 0)",
+      "final": "rgb(15, 92, 63)"
+    },
+    {
+      "key": "hero.color",
+      "early": "rgb(21, 56, 45)",
+      "final": "rgb(247, 241, 228)"
+    }
+  ],
+  "sheets": [
+    4,
+    71
+  ],
+  "networkCss": 74,
+  "networkFonts": 6,
+  "earlyBody": {
+    "font": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "finalBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "fontDelta": 0,
+  "backgroundDelta": 0,
+  "headerJump": false,
+  "heroJump": false,
+  "bottomJump": false
+}

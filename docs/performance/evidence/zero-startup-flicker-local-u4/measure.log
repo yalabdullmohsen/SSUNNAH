@@ -1,0 +1,7 @@
+home: fp=84 cls=0.0003 theme=0 sheets=4→71 fontΔ=0 bgΔ=0 jumps H/Hero/Nav=0/1/0
+search: fp=64 cls=0.0000 theme=0 sheets=4→79 fontΔ=0 bgΔ=0 jumps H/Hero/Nav=0/0/0
+quran-hub: fp=56 cls=0.0000 theme=0 sheets=4→83 fontΔ=0 bgΔ=0 jumps H/Hero/Nav=0/0/0
+mushaf: fp=60 cls=0.0000 theme=0 sheets=5→61 fontΔ=0 bgΔ=0 jumps H/Hero/Nav=0/0/0
+prayer-times: fp=52 cls=0.0000 theme=0 sheets=5→62 fontΔ=0 bgΔ=0 jumps H/Hero/Nav=0/0/0
+wrote /Users/alabdullmohsen/majlis-app/docs/performance/evidence/zero-startup-flicker-local-u4/summary.json
+version f864a975

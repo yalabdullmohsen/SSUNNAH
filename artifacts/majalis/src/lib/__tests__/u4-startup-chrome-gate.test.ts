@@ -1,0 +1,94 @@
+/**
+ * U4 — STARTUP_CHROME_STABLE structural contract.
+ * Run: node --import tsx src/lib/__tests__/u4-startup-chrome-gate.test.ts
+ */
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
+const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
+
+const html = read("index.html");
+const crit = read("src/styles/critical-first-paint.css");
+const pack = readFileSync(
+  resolve(root, "../../docs/remediation/U4_STARTUP_CHROME_CLS_READY_PACK.md"),
+  "utf8",
+);
+
+console.log("=== U4 removal timing ===");
+assert.match(html, /isStartupChromeReady/, "ready predicate present");
+assert.match(html, /hasHeader && hasBottom/, "standard routes wait header+bottom");
+assert.match(html, /prayer[\s\S]*hasBottom/, "prayer waits bottom only");
+assert.match(html, /mushaf[\s\S]*return true/, "mushaf ready without chrome");
+assert.match(html, /أبقِ data-sc/, "keep data-sc after skeleton remove");
+assert.doesNotMatch(
+  html,
+  /removeAttribute\("data-sc"\)/,
+  "boot must not clear data-sc (CLS on app-shell)",
+);
+assert.doesNotMatch(
+  html,
+  /إزالة الهيكل عند أول commit لـ #root/,
+  "no first-commit strip policy",
+);
+const app = read("src/App.tsx");
+assert.match(app, /dataset\.sc\s*=\s*"top"/, "App keeps data-sc on standard routes");
+
+console.log("=== U4 flow reserve ===");
+assert.match(html, /dataset\.sc\s*=\s*"top"/, "data-sc=top wired");
+assert.match(html, /dataset\.sc\s*=\s*"bottom"/, "data-sc=bottom for prayer");
+assert.match(
+  html,
+  /html\[data-sc=top\] #root\{padding-top:var\(--app-top-chrome-h\)/,
+  "critical inline reserves header flow on #root",
+);
+assert.match(
+  html,
+  /html\[data-sc=top\] \.app-top-chrome\{position:fixed/,
+  "React chrome fixed while skeleton active (no double height)",
+);
+assert.match(html, /data-home-chrome="0"\]\{--app-top-chrome-h:65px\}/, "non-home header lock 65");
+assert.match(html, /data-home-chrome="1"\]\{--app-top-chrome-h:113px\}/, "home header lock 113");
+assert.match(html, /#mj-startup-bottom\{[^}]*height:64px/, "bottom lock 64px not clobberable --nav-h");
+assert.match(html, /html\.pts-immersive #mj-startup-header/, "prayer hides header ph");
+assert.match(html, /html\.chrome-immersive #mj-startup-chrome/, "mushaf hides full ph");
+assert.doesNotMatch(
+  crit,
+  /data-startup-chrome|data-sc=top/,
+  "U4 reserve stays in mj-lcp-critical only (CLS budget)",
+);
+
+console.log("=== U4 placeholders ===");
+assert.match(html, /id="mj-startup-header"/);
+assert.match(html, /id="mj-startup-hero-ph"/);
+assert.match(html, /id="mj-startup-bottom"/);
+assert.match(html, /html\[data-home-chrome="1"\] #mj-startup-hero-ph\{display:block\}/);
+assert.match(
+  html,
+  /__rs === "mushaf-immersive"[\s\S]*removeChild/,
+  "mushaf strips full skeleton",
+);
+assert.match(
+  html,
+  /__rs === "prayer-dark"[\s\S]*mj-startup-header[\s\S]*remove/,
+  "prayer keeps bottom placeholder",
+);
+
+console.log("=== U4 geometry contracts in critical ===");
+assert.match(crit, /\.home-page-hero\.page-hero-mj[\s\S]*min-height:\s*11rem/);
+assert.match(crit, /\.app-top-chrome[\s\S]*min-height:\s*var\(--app-top-chrome-h/);
+assert.match(
+  html,
+  /--header-h:calc\(var\(--header-chrome\)\+max\(var\(--inset-top,0px\),12px\)/,
+  "header-h includes navbar pad max(inset,12)",
+);
+assert.match(html, /--ticker-row-h:calc\(var\(--ticker-h\)\+\.65rem\)/);
+assert.match(html, /__hc !== "1"[\s\S]*mj-startup-hero-ph/, "strip hero node off-home");
+assert.match(html, /\.app-back-btn--bar\.fixed-back-bar/);
+
+console.log("=== U4 ready pack status ===");
+assert.match(pack, /STARTUP_CHROME_STABLE|CHROME_FP_EQUALS_FINAL/);
+
+console.log("u4-startup-chrome-gate: ok");

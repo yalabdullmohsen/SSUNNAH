@@ -3,27 +3,46 @@
 | Field | Value |
 |-------|-------|
 | Phase | **U4** Startup Chrome + CLS |
-| Status | **READY_PACK_IN_PROGRESS** (~70%) |
-| Execution | **EXECUTION_UNLOCKED** (2026-10-01) — U3 `DARK_LIGHT_UNIFIED` · tip/prod MATCH `52aa7b2f` |
+| Status | **LOCAL_CONTRACTS_PASS** — awaiting prod MATCH + measure |
+| Unlocked by | `#2444` MERGED · tip/prod **`f864a975` MATCH** · Smoke 200 |
 | Exit | `CHROME_FP_EQUALS_FINAL` / `STARTUP_CHROME_STABLE` |
-| Depends | U2 tokens ✅ · U3 theme pipeline ✅ |
 
-## Scope (prep)
+## Root cause
 
-Unify Header · Ticker · Hero · BottomNav · Back · Safe Area · Main offset. Startup skeleton IDs only. Home/Search/QuranHub/Prayer CLS &lt; 0.01 · Mushaf CLS = 0. Split profile-hub-v2 from BottomNavBar.
+1. Stripping `#mj-startup-chrome` on first `#root` child → Header/Bottom Jump.
+2. `--app-top-chrome-h` omitted navbar `padding-block-start: max(inset,12px)` → 48→65 rect jump.
+3. `--nav-h` overwritten mid-boot (56 vs 64) → Bottom Jump.
+4. Clearing `data-sc` removed `#root` padding while chrome left `position:fixed` → **CLS on `.app-shell`**.
 
-## Inventory pointers (reuse — no rework)
+## Fix
 
-- `ZERO_STARTUP_FLICKER_*` · `PRAYER_TRANSITION_MEASUREMENTS` · `ROUTE_THEME_OWNERSHIP`
-- U1 leftover: CI unused-css selected **150** (follow if still on entry graph)
-- Gates: zero-startup-flicker · startup-shell-stability · cls-home · layout-bands
+- Wait for React chrome (`isStartupChromeReady`) before skeleton remove.
+- Keep `data-sc` after boot (App maintains it) — fixed chrome + padding reserve.
+- Lock `--app-top-chrome-h` to **65px** (non-home) / **113px** (home) on `data-sc=top`.
+- Bottom skeleton **height:64px** (not clobberable `--nav-h`).
+- Home hero placeholder `mj-startup-hero-ph` (measure prefers real `.page-hero-mj`).
+- Prayer keeps bottom ph; Mushaf strips full skeleton.
 
-## Remaining prep
+## Local measure (`zero-startup-flicker-local-u4`)
 
-- [ ] Exact selector Early=Final matrix per route
-- [ ] profile-hub-v2 consumer map
-- [ ] Smoke + CDP measure plan draft finalize
+| Route | CLS | H/Hero/Nav Jump |
+|-------|----:|-----------------|
+| `/` | **0.0003** | 0/0/0 |
+| `/search` | **0** | 0/0/0 |
+| `/quran-hub` | **0** | 0/0/0 |
+| `/mushaf` | **0** | 0/0/0 |
+| `/prayer-times` | **0** | 0/0/0 |
 
-## Exit criteria
+Tool: `artifacts/majalis/scripts/measure-startup-flicker-u4.mjs` · 390×844 @2x · Hero Jump = presence only (CLS owns content rect).
 
-Early Rect/Color = Final · no immersive skeleton · production CLS targets · MATCH+Smoke.
+## Forbidden
+
+Splash longer · artificial delay · `overflow:hidden` · snapshot update to hide regression.
+
+## Gates
+
+`test:u4-startup-chrome` · `test:zero-startup-flicker` · `test:cls-home-gate`
+
+## Exit
+
+Production re-measure after MATCH → claim `STARTUP_CHROME_STABLE`.
