@@ -119,8 +119,27 @@ function extractSeoTags(prerenderHead) {
   ].filter(Boolean).join("\n  ");
 }
 
+/** CSS الحرج من SPA (mj-lcp-critical / mj-cls-reserve / splash) — بدونه data-sc بلا padding → CLS. */
+function extractCriticalStyles(spaHead) {
+  return [...spaHead.matchAll(/<style[^>]*>[\s\S]*?<\/style>/gi)].map((m) => m[0]).join("\n  ");
+}
+
+/**
+ * هيكل الإقلاع من body الـSPA قبل #root:
+ * splash + #mj-startup-chrome + سكربت المسار — بدون ذلك Header/Bottom Jump على صفحات prerender.
+ */
+function extractSpaBootBody(spaBody) {
+  const idx = spaBody.search(/<div\s+id=["']root["']/i);
+  if (idx < 0) return "";
+  return spaBody.slice(0, idx).trim();
+}
+
+/** إزالة #seo-shell فقط بعد كروم React (نفس عقد U4) — لا عند أول ابن فارغ لـ #root. */
+const SEO_SHELL_REMOVE_SCRIPT =
+  "(function(){function ready(){var h=document.documentElement;var rs=h.dataset.routeSurface||\"\";if(rs===\"mushaf-immersive\"||h.classList.contains(\"chrome-immersive\"))return!!(document.getElementById(\"root\")&&document.getElementById(\"root\").hasChildNodes());var prayer=rs===\"prayer-dark\"||h.classList.contains(\"pts-immersive\");var hasHeader=!!document.querySelector(\".app-top-chrome, header.navbar-v3, .chrome-boot-ph.navbar-v3\");var hasBottom=!!document.querySelector(\".bottom-nav, .bottom-nav--v2, [data-bottom-nav]\");return prayer?hasBottom:(hasHeader&&hasBottom)}function a(){if(!ready())return;document.documentElement.classList.add('js-ready');var s=document.getElementById('seo-shell');if(s)s.remove()}function arm(){requestAnimationFrame(function(){requestAnimationFrame(a)})}var r=document.getElementById('root');if(ready()){arm();return}var o=new MutationObserver(function(){if(ready()){o.disconnect();arm()}});o.observe(r||document.documentElement,{childList:true,subtree:true});setTimeout(a,2500)})()";
+
 /** بناء صفحة HTML مُدمجة */
-function buildMergedHtml(seoTags, spaAssets, prerenderBody, spaBody) {
+function buildMergedHtml(seoTags, spaAssets, criticalStyles, spaBootBody, prerenderBody) {
   return `<!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
@@ -128,6 +147,7 @@ function buildMergedHtml(seoTags, spaAssets, prerenderBody, spaBody) {
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
     ${seoTags}
+    ${criticalStyles}
     <style>
       #root{min-height:40vh;position:relative;z-index:1}
       #seo-shell{position:fixed;inset:0;z-index:2;overflow:auto;background:#F7F3EB}
@@ -137,12 +157,13 @@ function buildMergedHtml(seoTags, spaAssets, prerenderBody, spaBody) {
     ${spaAssets}
   </head>
   <body>
-    <!-- محتوى SEO فوق #root حتى يستقر LCP ثم يُزال بعد جاهزية React -->
+    ${spaBootBody}
+    <!-- محتوى SEO فوق #root حتى يستقر LCP ثم يُزال بعد جاهزية كروم React -->
     <div id="seo-shell">
       ${prerenderBody}
     </div>
     <div id="root"></div>
-    <script>(function(){function a(){document.documentElement.classList.add('js-ready');var s=document.getElementById('seo-shell');if(s)s.remove()}function arm(){requestAnimationFrame(function(){requestAnimationFrame(a)})}var r=document.getElementById('root');if(r&&r.hasChildNodes())arm();else{var o=new MutationObserver(function(){if(r&&r.hasChildNodes()){o.disconnect();arm()}});o.observe(r||document.documentElement,{childList:true,subtree:true});setTimeout(a,2500)}})()</script>
+    <script>${SEO_SHELL_REMOVE_SCRIPT}</script>
   </body>
 </html>`;
 }
@@ -168,6 +189,13 @@ async function main() {
   const spaHead = extractHeadBlock(spaHtml);
   const spaBody = extractBody(spaHtml);
   const spaAssets = extractSpaAssets(spaHead);
+  const criticalStyles = extractCriticalStyles(spaHead);
+  const spaBootBody = extractSpaBootBody(spaBody);
+  if (!criticalStyles.includes("mj-lcp-critical") || !spaBootBody.includes("mj-startup-chrome")) {
+    throw new Error(
+      "post-build-seo: SPA shell ناقص (mj-lcp-critical / mj-startup-chrome) — أوقف الدمج",
+    );
+  }
 
   // العثور على جميع ملفات prerender
   let prerenderFiles;
@@ -190,7 +218,7 @@ async function main() {
     const seoTags = ensureThemeColorMetas(extractSeoTags(prerenderHead));
     const body = unifyPrerenderNav(prerenderBody);
 
-    const merged_html = buildMergedHtml(seoTags, spaAssets, body, spaBody);
+    const merged_html = buildMergedHtml(seoTags, spaAssets, criticalStyles, spaBootBody, body);
 
     const destPath = resolve(distDir, relPath);
     const destDir = dirname(destPath);

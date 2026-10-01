@@ -112,6 +112,9 @@ async function measureRoute(browser, { route, path }) {
     const hero =
       document.querySelector(".page-hero-mj, .home-page-hero, .quran-hub-hero") ||
       document.getElementById("mj-startup-hero-ph");
+    const back = document.querySelector(
+      '.app-back-btn--bar.fixed-back-bar, button.app-back-btn--bar[data-fixed-back-bar="1"], [data-global-back-host] .app-back-btn, .floating-back-btn, .global-back-btn',
+    );
     const rect = (el) => {
       if (!el) return null;
       const r = el.getBoundingClientRect();
@@ -129,6 +132,7 @@ async function measureRoute(browser, { route, path }) {
       header: { present: !!header, rect: rect(header), color: cs(header)?.color, bg: cs(header)?.backgroundColor },
       bottom: { present: !!bottom, rect: rect(bottom), color: cs(bottom)?.color, bg: cs(bottom)?.backgroundColor },
       hero: { present: !!hero, rect: rect(hero), color: cs(hero)?.color, bg: cs(hero)?.backgroundColor },
+      back: { present: !!back, rect: rect(back), color: cs(back)?.color, bg: cs(back)?.backgroundColor },
       themeBg: getComputedStyle(document.documentElement).getPropertyValue("--mj-bg").trim(),
     };
   });
@@ -141,6 +145,9 @@ async function measureRoute(browser, { route, path }) {
     const header = document.querySelector(".app-top-chrome, header.navbar-v3, .navbar-v3");
     const bottom = document.querySelector(".bottom-nav, .bottom-nav--v2, [data-bottom-nav]");
     const hero = document.querySelector(".page-hero-mj, .home-page-hero, .quran-hub-hero");
+    const back = document.querySelector(
+      '.app-back-btn--bar.fixed-back-bar, button.app-back-btn--bar[data-fixed-back-bar="1"], [data-global-back-visible] .app-back-btn, .floating-back-btn, .global-back-btn',
+    );
     const rect = (el) => {
       if (!el) return null;
       const r = el.getBoundingClientRect();
@@ -166,6 +173,7 @@ async function measureRoute(browser, { route, path }) {
       header: { present: !!header, rect: rect(header), color: cs(header)?.color, bg: cs(header)?.backgroundColor },
       bottom: { present: !!bottom, rect: rect(bottom), color: cs(bottom)?.color, bg: cs(bottom)?.backgroundColor },
       hero: { present: !!hero, rect: rect(hero), color: cs(hero)?.color, bg: cs(hero)?.backgroundColor },
+      back: { present: !!back, rect: rect(back), color: cs(back)?.color, bg: cs(back)?.backgroundColor },
       themeBg: getComputedStyle(document.documentElement).getPropertyValue("--mj-bg").trim(),
       fp,
       fcp,
@@ -182,9 +190,9 @@ async function measureRoute(browser, { route, path }) {
   if (early.sheets !== final.sheets) {
     visualChanges.push({ key: "sheetCount", early: early.sheets, final: final.sheets });
   }
-  for (const key of ["header", "bottom", "hero"]) {
-    const e = early[key];
-    const f = final[key];
+  for (const key of ["header", "bottom", "hero", "back"]) {
+    const e = early[key] || { present: false, rect: null };
+    const f = final[key] || { present: false, rect: null };
     if (!!e.present !== !!f.present) {
       visualChanges.push({ key: `${key}.presence`, early: !!e.present, final: !!f.present });
     }
@@ -244,12 +252,17 @@ async function measureRoute(browser, { route, path }) {
     /* Hero content paints after chrome — Jump = presence only; CLS owns layout */
     heroJump: visualChanges.some((v) => v.key === "hero.presence"),
     bottomJump: visualChanges.some((v) => v.key === "bottom.rect" || v.key === "bottom.presence"),
+    backJump: visualChanges.some((v) => v.key === "back.rect" || v.key === "back.presence"),
+    headerDelta: visualChanges.find((v) => v.key === "header.rect")?.delta || null,
+    heroDelta: visualChanges.find((v) => v.key === "hero.rect")?.delta || null,
+    bottomDelta: visualChanges.find((v) => v.key === "bottom.rect")?.delta || null,
+    backDelta: visualChanges.find((v) => v.key === "back.rect")?.delta || null,
   };
 
   writeFileSync(join(OUT, `${route}.json`), JSON.stringify(result, null, 2));
   await context.close();
   console.log(
-    `${route}: fp=${result.fp?.toFixed?.(0) ?? result.fp} cls=${result.clsTotal.toFixed(4)} theme=${result.themeChangeCount} sheets=${result.sheets.join("→")} fontΔ=${result.fontDelta} bgΔ=${result.backgroundDelta} jumps H/Hero/Nav=${+result.headerJump}/${+result.heroJump}/${+result.bottomJump}`,
+    `${route}: fp=${result.fp?.toFixed?.(0) ?? result.fp} cls=${result.clsTotal.toFixed(4)} theme=${result.themeChangeCount} sheets=${result.sheets.join("→")} fontΔ=${result.fontDelta} bgΔ=${result.backgroundDelta} jumps H/Hero/Nav/Back=${+result.headerJump}/${+result.heroJump}/${+result.bottomJump}/${+result.backJump}`,
   );
   return result;
 }

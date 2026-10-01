@@ -1,0 +1,87 @@
+{
+  "route": "quran-hub",
+  "path": "/quran-hub",
+  "fp": 716,
+  "fcp": 716,
+  "elapsedMs": 6136,
+  "clsTotal": 0.04479028443218096,
+  "clsAfterFcp": 0.04479028443218096,
+  "clsEntryCount": 4,
+  "topCls": [
+    {
+      "value": 0.019813307275333623,
+      "startTime": 1334.3999999761581,
+      "sources": [
+        "div.navbar-v3__end"
+      ]
+    },
+    {
+      "value": 0.01339255632173581,
+      "startTime": 1434.7999999523163,
+      "sources": [
+        "main#main-content.app-main"
+      ]
+    },
+    {
+      "value": 0.007187619325711462,
+      "startTime": 1390.7000000476837,
+      "sources": [
+        "div.lrf-wrap.lrf-wrap--skel"
+      ]
+    },
+    {
+      "value": 0.004396801509400059,
+      "startTime": 2179.5,
+      "sources": [
+        "main#main-content.app-main"
+      ]
+    }
+  ],
+  "themeChangeCount": 0,
+  "visualChangeCount": 3,
+  "visualChanges": [
+    {
+      "key": "sheetCount",
+      "early": 3,
+      "final": 82
+    },
+    {
+      "key": "header.presence",
+      "early": false,
+      "final": true
+    },
+    {
+      "key": "bottom.presence",
+      "early": false,
+      "final": true
+    }
+  ],
+  "sheets": [
+    3,
+    82
+  ],
+  "networkCss": 85,
+  "networkFonts": 5,
+  "earlyBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "finalBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "fontDelta": 0,
+  "backgroundDelta": 0,
+  "headerJump": true,
+  "heroJump": false,
+  "bottomJump": true,
+  "backJump": false,
+  "headerDelta": null,
+  "heroDelta": null,
+  "bottomDelta": null,
+  "backDelta": null
+}
