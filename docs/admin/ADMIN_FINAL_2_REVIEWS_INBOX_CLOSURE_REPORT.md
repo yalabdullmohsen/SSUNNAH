@@ -2,11 +2,14 @@
 
 | Field | Value |
 |---|---|
-| Status | **ADMIN_FINAL_2** (pending MERGED_AND_DEPLOYED) |
+| Status | **ADMIN_FINAL_2_MERGED_AND_DEPLOYED** |
 | Canonical | `/admin/v3/reviews` · `ReviewInboxPage` |
 | API | `/api/admin/submissions` (+ `queue`) |
 | Gate | `admin-final-2-reviews-inbox-gate.test.ts` |
+| PR | [#2422](https://github.com/yalabdullmohsen/majalis/pull/2422) → squash `8255ed5db` |
 | Base tip | `4db59aa62` |
+| Production | `https://www.ssunnah.com/version.json` = `8255ed5d` **MATCH** (builtAt 2026-10-01T04:07:19Z) |
+| Smoke | public routes HTTP 200 · `/admin`+`/admin/v3` public **404** · `/api/healthz` 200 · `/version.json` 200 |
 
 ## Official queues
 
@@ -42,4 +45,6 @@ Pending · Assigned to me · Urgent · Scientific · Editorial · Approved · Re
 
 ## Closure
 
-`ADMIN_FINAL_2_MERGED_AND_DEPLOYED` after merge · deploy · version MATCH · smoke `/admin` 404 public.
+**ADMIN_FINAL_2_MERGED_AND_DEPLOYED** — merge #2422 · production MATCH `8255ed5d` · smoke PASS (`/admin` public 404).
+
+Next program phase: **ADMIN-FINAL-3 Core CRUD** (from tip `8255ed5db`).
