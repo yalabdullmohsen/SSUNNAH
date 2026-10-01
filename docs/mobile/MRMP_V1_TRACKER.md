@@ -11,7 +11,7 @@
 |-------|------|--------|---------------|-------|
 | M1 | `NATIVE_ARCHITECTURE_CERTIFIED` | **OPEN** | HARD | Android `applicationId` ≠ Capacitor/iOS appId |
 | M2 | `APP_SHELL_STABLE` | OPEN | DEVICE_REQUIRED | No fresh device cold/warm matrix |
-| M3 | `DEEP_LINKS_CERTIFIED` | OPEN | EXTERNAL/DEVICE | AASA/App Links live verify |
+| M3 | `DEEP_LINKS_CERTIFIED` | **FAIL / OPEN** | DEVICE_REQUIRED | T-033: AASA LIVE · Associated Domains OK · UL/scheme in-app route proof FAIL (OS dialog) → `IOS_DEEP_LINKS_NOT_CERTIFIED` |
 | M4 | `AUTH_CERTIFIED` | OPEN | DEVICE_REQUIRED | Session + offline start |
 | M5 | `OFFLINE_READY` | OPEN | NOT_STARTED | Strategy doc + route matrix |
 | M6 | `MUSHAF_MOBILE_CERTIFIED` | OPEN | DEVICE_REQUIRED | 25/50/100 turns unproven |
