@@ -2,27 +2,30 @@
 
 | Field | Value |
 |---|---|
-| Captured | 2026-10-01T02:02Z |
-| SoT tip after Phase 1 | `2a4e3985` (Back P7 MERGED_AND_DEPLOYED) |
-| Active phase | **2 — Route Feedback** (after Back P7 MATCH `2a4e3985`) |
+| Captured | 2026-10-01T02:26Z |
+| Live baseline | [`FINAL_CLOSURE_LIVE_BASELINE.md`](./FINAL_CLOSURE_LIVE_BASELINE.md) · **LIVE_BASELINE_LOCKED** |
+| SoT tip (live) | `14b30de60` (#2416 seal after Back P7 `2a4e3985`) |
+| Active phase | **PHASE 0 → seal then PHASE 1 Route Feedback Priority** |
 | Rule | مرحلة واحدة · PR واحد · MATCH قبل التالي |
 
-## الحالة الحالية (عند القفل)
+## الحالة الحالية (عند القفل الحي)
 
 ```text
-main = production = 2a4e3985
-Critical CSS gzip = 55766 / 61440 · هامش 5674
+main = production = 14b30de60 / 14b30de6 · MATCH
+Critical CSS gzip (prod) = 55738 / 61440 · هامش 5702
+Prior product tip = 2a4e3985 (Back P7) · +1 docs commit #2416
 
 WAVE1–WAVE13 = CLOSED
 Startup Typography P0/P1/P2 = CLOSED
 Dark Loader = CLOSED
 Identity / Cards / Buttons residual phases = CLOSED (نطاقها)
-Back Authority P7 = **BACK_P7_MERGED_AND_DEPLOYED** (#2415 → `2a4e3985`)
-Route Feedback = OPEN (15/415)
+Back Authority P7 = BACK_P7_MERGED_AND_DEPLOYED
+ADMIN-FINAL-1 = CLOSED
+Route Feedback Priority = OPEN (PARTIAL gaps: quran-hub · offline · evidence gate)
 Admin FINAL-2+ = OPEN
-Mushaf CSS Bridge = OPEN
+Mushaf CSS Bridge = OPEN (NewMushafReader + VerifiedMushafReader import)
 Device QA = DEVICE_REQUIRED
-Store = HOLD
+Store = HOLD · WEB_RELEASED_NATIVE_HOLD
 ```
 
 ## قواعد البرنامج
@@ -39,8 +42,9 @@ Store = HOLD
 
 | # | مرحلة | معيار إغلاق |
 |---|---|---|
-| 1 | Back Authority P7 | `BACK_P7_MERGED_AND_DEPLOYED` |
-| 2 | Route Feedback priority routes | تغطية عامة ذات أولوية + أدلة |
+| 0 | Live State Lock | `LIVE_BASELINE_LOCKED` · `FINAL_CLOSURE_LIVE_BASELINE.md` |
+| 1 | Back Authority P7 | `BACK_P7_MERGED_AND_DEPLOYED` ✅ |
+| 2 | Route Feedback priority routes | `ROUTE_FEEDBACK_PRIORITY_MERGED_AND_DEPLOYED` |
 | 3 | ADMIN-FINAL-2 Inbox unify | `ADMIN_FINAL_2_MERGED_AND_DEPLOYED` |
 | 4 | ADMIN-FINAL-3…7 | CRUD · migrate · dialogs · automation · authz |
 | 5 | Legacy Admin SAFE_REMOVE | consumer=0 + تكافؤ |

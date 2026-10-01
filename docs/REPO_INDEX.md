@@ -99,6 +99,8 @@
 | `docs/design/CARD_MIGRATION_STATUS.md` | حالة هجرة soft-cards → سلطة البطاقات |
 | `docs/design/DARK_MODE_BRIDGE_INVENTORY.md` | جرد جسور الليل (بدون حذف جماعي) |
 | `docs/audit/SUNNAH_REPOSITORY_CLOSURE_REPORT.md` | إغلاق المستودع موجة 1 — WEB_RELEASED_NATIVE_HOLD |
+| `docs/remediation/SUNNAH_FINAL_CLOSURE_PROGRAM.md` | برنامج الإغلاق النهائي — مراحل متسلسلة · MATCH قبل التالي |
+| `docs/remediation/FINAL_CLOSURE_LIVE_BASELINE.md` | **PHASE 0** — قفل الحالة الحية `LIVE_BASELINE_LOCKED` |
 | `docs/remediation/ROUTE_THEME_OWNERSHIP.md` | مالك سطح المسار (`commitRouteSurface`) — بلا تسرّب pts-immersive |
 | `docs/design/FORM_FEEDBACK_AUTHORITY.md` | **Interaction PR-6** — سلطة النماذج + FormFields + Empty/Loading/Error/Offline |
 | `docs/admin/ADMIN_FINAL_MIGRATION_AND_SECURITY_BASELINE.md` | **ADMIN-FINAL-1** — خط أساس حي للترحيل والأمن |
