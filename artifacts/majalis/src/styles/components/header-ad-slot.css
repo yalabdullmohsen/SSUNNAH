@@ -109,9 +109,9 @@
 
 html[data-theme="dark"] .header-ad-slot__banner,
 html.theme-dark .header-ad-slot__banner {
-  color: #edf7f2;
-  background: #121816;
-  border-color: color-mix(in srgb, #d4b76a 28%, #121816);
+  color: var(--mj-ink, #edf7f2);
+  background: var(--mj-bg, var(--surface-app, #0F1613));
+  border-color: color-mix(in srgb, var(--mj-accent, #d4b76a) 28%, var(--mj-bg, var(--surface-app)));
 }
 
 html[data-theme="dark"] .header-ad-slot__title,
