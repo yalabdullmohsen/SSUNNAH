@@ -47,8 +47,10 @@ for (const rel of targets) {
 }
 
 const review = read("src/admin-v3/domains/reviews/ReviewInboxPage.tsx");
-assert.match(review, /aria-label="الحالة"/);
+// FINAL-2: status select replaced by official queue tablist
+assert.match(review, /aria-label="طوابير المراجعة"/);
 assert.match(review, /aria-label="النوع"/);
+assert.match(review, /QUEUES|assigned_to_me/);
 
 function collectTsx(dir: string, out: string[] = []): string[] {
   for (const ent of readdirSync(dir, { withFileTypes: true })) {

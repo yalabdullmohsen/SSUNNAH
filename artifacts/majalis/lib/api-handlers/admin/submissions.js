@@ -62,8 +62,30 @@ export default async function handler(req, res) {
       return;
     }
 
-    const status = String(req.query?.status || "pending").slice(0, 40);
-    const type = req.query?.type ? String(req.query.type).slice(0, 40) : null;
+    const queue = String(req.query?.queue || "").trim().slice(0, 40);
+    const rawStatus = String(req.query?.status || "").trim().slice(0, 40);
+    // Official FINAL-2 queues → DB status (+ optional type)
+    const QUEUE_STATUS = {
+      pending: "pending",
+      approved: "approved",
+      rejected: "rejected",
+      published: "approved",
+      archived: "archived",
+      scientific: "pending",
+      editorial: "pending",
+      urgent: "pending",
+      assigned_to_me: "pending",
+    };
+    const status =
+      (queue && QUEUE_STATUS[queue]) ||
+      (rawStatus && ["pending", "approved", "rejected", "archived", "published"].includes(rawStatus)
+        ? rawStatus === "published"
+          ? "approved"
+          : rawStatus
+        : "pending");
+    let type = req.query?.type ? String(req.query.type).slice(0, 40) : null;
+    if (queue === "scientific" && !type) type = "معلومة";
+    if (queue === "editorial" && !type) type = "فائدة";
     const page = Math.max(1, Number.parseInt(String(req.query?.page || "1"), 10) || 1);
     const pageSize = Math.min(50, Math.max(1, Number.parseInt(String(req.query?.pageSize || "25"), 10) || 25));
     const from = (page - 1) * pageSize;

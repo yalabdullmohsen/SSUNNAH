@@ -5,7 +5,7 @@
 | Captured | 2026-10-01T02:26Z |
 | Live baseline | [`FINAL_CLOSURE_LIVE_BASELINE.md`](./FINAL_CLOSURE_LIVE_BASELINE.md) · **LIVE_BASELINE_LOCKED** |
 | SoT tip (live) | `14b30de60` (#2416 seal after Back P7 `2a4e3985`) |
-| Active phase | **PHASE 3 ADMIN-FINAL-2 Reviews Inbox** (after Phase 2 MATCH `6d554102`) |
+| Active phase | **PHASE 3 ADMIN-FINAL-2 Reviews Inbox** (tip `4db59aa62`) |
 | Rule | مرحلة واحدة · PR واحد · MATCH قبل التالي |
 
 ## الحالة الحالية (عند القفل الحي)
