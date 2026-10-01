@@ -47,7 +47,7 @@
   :root {
     --header-chrome: 48px;
     /* افتراض الرئيسية (دخول شائع) — يُصفَّر عند data-home-chrome=0 */
-    --ticker-row-h: calc(var(--ticker-h) + 0.65rem);
+    --ticker-row-h: calc(var(--ticker-h) + 1.125rem);
     --app-top-chrome-h: calc(
       var(--header-chrome) + var(--inset-top, 0px) + var(--ad-banner-height) + var(--search-height) +
         var(--ticker-row-h)
@@ -62,10 +62,10 @@ html {
   font-size: calc(100% * var(--ui-font-scale, 1));
 }
 
-html.app-booting,
-html.app-booting *,
-html.app-booting *::before,
-html.app-booting *::after {
+html[data-ab="1"],
+html[data-ab="1"] *,
+html[data-ab="1"] *::before,
+html[data-ab="1"] *::after {
   transition-property: opacity, color, background-color, border-color, box-shadow, transform, filter;
   animation-duration: 0.001ms;
   animation-delay: 0s;
@@ -88,22 +88,22 @@ body {
 }
 
 /* أثناء الإقلاع: لا تغيّر ارتفاعات الهيكل بعد القفل */
-html.app-booting .app-top-chrome,
-html.app-booting .bottom-nav,
-html.app-booting .bottom-nav--v2,
-html.app-booting .header-ticker,
-html.app-booting .hus,
-html.app-booting .hus-field {
+html[data-ab="1"] .app-top-chrome,
+html[data-ab="1"] .bottom-nav,
+html[data-ab="1"] .bottom-nav--v2,
+html[data-ab="1"] .header-ticker,
+html[data-ab="1"] .hus,
+html[data-ab="1"] .hus-field {
   min-height: inherit;
 }
-html.app-booting .app-top-chrome {
+html[data-ab="1"] .app-top-chrome {
   min-height: var(--app-top-chrome-h, var(--header-h, 56px));
 }
-html.app-booting .bottom-nav,
-html.app-booting .bottom-nav--v2 {
+html[data-ab="1"] .bottom-nav,
+html[data-ab="1"] .bottom-nav--v2 {
   min-height: var(--nav-h, var(--bottom-nav-height, 64px));
 }
-html.app-booting .hus-field {
+html[data-ab="1"] .hus-field {
   min-height: 52px;
 }
 .skip-link,
@@ -245,7 +245,7 @@ html.app-booting .hus-field {
   padding-bottom: var(--inset-bottom, 0px);
   min-height: calc(var(--bottom-nav-height) + var(--inset-bottom, 0px));
   z-index: var(--z-nav);
-  background-color: var(--mj-bg);
+  background-color: var(--mj-bg, #f8f6f1);
   background-image: none;
   opacity: 1;
   backdrop-filter: none;

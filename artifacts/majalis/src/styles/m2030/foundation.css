@@ -2,49 +2,24 @@
  * Majlisilm 2030 — Foundation (ألوان/نصوص/أشكال من الرموز فقط)
  */
 
+/* ZERO FLICKER FINAL: لا إعادة طلاء html/body/#root بعد الإقلاع —
+   المالك: #mj-lcp-critical + theme.css + index.css */
 html {
-  /* Canvas Authority — نفس --mj-bg من critical؛ لا تُرجع إلى splash beige */
-  background-color: var(--mj-bg);
-  background-image: none;
-  color: var(--text);
   min-height: 100svh;
   min-height: 100dvh;
   overscroll-behavior: none;
-}
-
-html[data-theme="dark"],
-html.dark {
-  background-color: var(--mj-bg);
 }
 
 body {
-  /* ZERO FLICKER: لا تُرجع body إلى splash beige بعد First Paint */
-  background-color: var(--mj-bg) !important;
-  background-image: none !important;
-  color: var(--text) !important;
-  font-family: var(--font-body) !important;
   min-height: 100svh;
   min-height: 100dvh;
   overscroll-behavior: none;
 }
 
-html[data-theme="dark"] body,
-html.dark body {
-  background-color: var(--mj-bg) !important;
-}
-
-#root,
 .app-shell,
 .majlisilm-app {
-  background-color: var(--mj-bg);
-  color: var(--text);
-}
-
-html[data-theme="dark"] #root,
-html[data-theme="dark"] .app-shell,
-html.dark #root,
-html.dark .app-shell {
-  background-color: var(--mj-bg);
+  min-height: 100svh;
+  min-height: 100dvh;
 }
 
 h1, h2, h3, .ds-section__title {

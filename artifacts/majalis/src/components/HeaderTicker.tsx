@@ -87,7 +87,7 @@ function waitUntilBootSettled(): Promise<void> {
       resolve();
     };
     const tryReady = () => {
-      if (!document.documentElement.classList.contains("app-booting")) {
+      if (document.documentElement.dataset.appBooting !== "1") {
         done();
         return;
       }

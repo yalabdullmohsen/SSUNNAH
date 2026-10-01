@@ -33,8 +33,16 @@ assert.ok(html.includes("#101614") || html.includes("#101614"), "خلفية لي
 assert.match(html, /v13-startup-shell-stable|v14-release-fresh-2026-09/, "نسخة تصميم تُبطل الكاش القديم");
 assert.match(html, /font-display:\s*optional/, "font-display optional بلا قفزة");
 
-assert.match(critical, /html\.app-booting[\s\S]*\.app-top-chrome/, "قفل هيدر أثناء الإقلاع");
-assert.match(critical, /html\.app-booting[\s\S]*bottom-nav/, "قفل الشريط السفلي");
+assert.match(
+  critical,
+  /html\[data-ab="1"\][\s\S]*\.app-top-chrome/,
+  "قفل هيدر أثناء الإقلاع",
+);
+assert.match(
+  critical,
+  /html\[data-ab="1"\][\s\S]*bottom-nav/,
+  "قفل الشريط السفلي",
+);
 assert.ok(critical.includes("hus-field") && critical.includes("52px"), "قفل البحث");
 
 assert.match(shell, /shouldSuppressBootErrors/, "بوابة كبح أخطاء الإقلاع");
@@ -64,12 +72,12 @@ assert.match(sw, /clients\.claim/, "clients.claim بعد التفعيل");
 
 assert.match(
   critical,
-  /html\.app-booting[\s\S]*\.app-top-chrome[\s\S]*min-height:\s*var\(--app-top-chrome-h/,
+  /html\[data-ab="1"\][\s\S]*\.app-top-chrome[\s\S]*min-height:\s*var\(--app-top-chrome-h/,
   "ارتفاع الهيدر محجوز أثناء الإقلاع",
 );
 assert.match(
   critical,
-  /html\.app-booting[\s\S]*\.bottom-nav[\s\S]*min-height:\s*var\(--(?:nav-h|bottom-nav-height)/,
+  /html\[data-ab="1"\][\s\S]*\.bottom-nav[\s\S]*min-height:\s*var\(--(?:nav-h|bottom-nav-height)/,
   "ارتفاع الشريط السفلي محجوز",
 );
 

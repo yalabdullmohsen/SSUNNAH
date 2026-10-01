@@ -190,7 +190,8 @@ html.dark[data-v2-profile="1"] .kp-empty {
 
 /* ── Bottom Nav V2 polish (5 tabs unchanged) ── */
 html[data-v2-nav="1"] .bottom-nav.bottom-nav--v2 {
-  background: var(--v2-color-ivory-surface, #fffcf8) !important;
+  /* ZERO FLICKER FINAL: لوحة المحتوى لا عاجي أبيض بعد FP */
+  background: var(--mj-bg) !important;
   background-image: none !important;
   border-block-start: 1px solid var(--v2-hairline);
   box-shadow: 0 -6px 24px rgba(22, 36, 30, 0.06);

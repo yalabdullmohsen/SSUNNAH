@@ -35,15 +35,25 @@ assert.doesNotMatch(
   /\.bottom-nav[\s\S]{0,800}?background-image:\s*linear-gradient\([\s\S]*?--mj-splash/,
   "لا تدرّج أسود/أخضر تحت الشريط السفلي",
 );
-assert.match(finalCss, /#root,\s*\n\.app-shell/);
+/* ZERO FLICKER FINAL: deferred لا يعيد طلاء html/body/#root */
 assert.match(
   finalCss,
-  /html\s*\{[\s\S]*?background:\s*var\(--mj-bg/,
-  "html بلوحة المحتوى (--mj-bg) لا mj-splash",
+  /ZERO FLICKER FINAL: لا إعادة طلاء html\/body\/#root/,
+  "ختم امتصاص الهوية موثّق",
+);
+const htmlBlock = finalCss.match(/(?:^|\n)html\s*\{[^}]+\}/);
+assert.ok(htmlBlock, "كتلة html موجودة");
+assert.doesNotMatch(htmlBlock[0], /background/, "html بلا إعادة طلاء خلفية");
+assert.doesNotMatch(
+  finalCss,
+  /(?:^|\n)#root,\s*\n\.app-shell\s*\{[^}]*background:\s*var\(--mj-bg/,
+  "لا إعادة طلاء #root من final-release",
 );
 
 const foundation = read("src/styles/m2030/foundation.css");
-assert.match(foundation, /background-color:\s*var\(--mj-bg/);
+const bodyBlock = foundation.match(/(?:^|\n)body\s*\{[^}]+\}/);
+assert.ok(bodyBlock, "كتلة body في foundation");
+assert.doesNotMatch(bodyBlock[0], /background/, "foundation لا يعيد طلاء body");
 assert.doesNotMatch(
   foundation,
   /body\s*\{[\s\S]*?--mj-splash,\s*#0E1A15/,

@@ -21,7 +21,7 @@ let shellStableAt = 0;
 export function isAppBooting(): boolean {
   if (typeof document === "undefined") return false;
   const root = document.documentElement;
-  return root.classList.contains("app-booting") || root.dataset.appBooting === "1";
+  return root.dataset.appBooting === "1" || root.classList.contains("app-booting");
 }
 
 export function isDocumentPaintReady(): boolean {

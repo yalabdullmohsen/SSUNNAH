@@ -116,12 +116,24 @@ if (
   }
 }
 
-// طبقات مظهر غير حرجة — بعد load + idle حتى لا تنافس LCP (كانت void import فوريًا)
+// طبقات مظهر غير حرجة — بعد load + idle حتى لا تنافس LCP
+// ZERO FLICKER FINAL: توجيه المسار — لا تُدخل CSS غير-Home إلى رسم Home
 function loadNonCriticalCss() {
-  /* Phase 5 — طبقات z-index + سياسة الحركة (ليست حرجة لأول طلاء) */
+  const path =
+    typeof location !== "undefined"
+      ? (location.pathname || "/").replace(/\/+$/, "") || "/"
+      : "/";
+  const isHome = path === "/";
+  const wantsReadingShell =
+    path.startsWith("/lessons") ||
+    path.startsWith("/hadith") ||
+    path.startsWith("/fiqh") ||
+    path.startsWith("/topics") ||
+    path.startsWith("/scholars") ||
+    path.startsWith("/fawaid") ||
+    path.startsWith("/adhkar");
   void import("./styles/z-index-layers.css");
   void import("./styles/motion-policy.css");
-  /* طبقات تحديث الواجهة + رموز ds-* — مؤجّلة تحت ميزانية CSS الحرج (<60KiB gzip) */
   void import("./styles/components/modern-section-shell.css");
   void import("./styles/section-cards-theme.css");
   void import("./styles/sunnah-foundation-type.css");
@@ -136,45 +148,46 @@ function loadNonCriticalCss() {
   void import("./styles/m2030/navigation.css");
   void import("./styles/brand-v4-contrast-fixes.css");
   void import("./styles/a11y-release-gate.css");
-  void import("./styles/index-deferred-pages.css");
   void import("./styles/visual-enrichment.css");
-  void import("./styles/section-makarim-pattern.css");
   void import("./styles/design-system.css").then(() => {
     void import("./styles/brand-v4-components.css");
     // بعد design-system حتمًا حتى لا يفوز blur(20px) على final-release
     void import("./styles/final-release.css").then(() => {
       // WAVE7: لا إعادة استيراد unify/recovery بعد final-release —
       // فوز الهوية/الليل مُمتص في WAVE7 CASCADE SEAL داخل final-release.css.
-      // كنس الشريط الزخرفي مرة واحدة بعد الطبقات المتأخرة (لا تكرار import)
       void import("./styles/card-decorative-strip-cleanup.css");
-      /* Editorial أخيرًا حتى تفوز رموز الورق/الزيتون على الطبقات المتأخرة */
       void import("./styles/modern-islamic-editorial-tokens.css");
       void import("./styles/modern-islamic-editorial.css").then(() => {
-        /* Card System بعد كل الطبقات حتى تفوز هوية الزمرد الداكن على soft/hub */
         void import("./styles/card-system.css").then(() => {
-          /* Card System V2 + حالات التطبيق — بعد النظام الحالي */
           void import("./styles/card-system-v2.css");
           void import("./styles/app-state-v2.css");
-          /* تجربة التعريف بالإسلام — بعد card-system حتى يفوز النطاق الفاتح/AA */
-          void import("./styles/islam-intro-experience.css");
+          if (!isHome) {
+            void import("./styles/islam-intro-experience.css");
+          }
         });
       });
     });
   });
   void import("./styles/components/instant-interaction.css");
-  void import("./styles/components/compact-sources.css");
-  void import("./styles/components/content-reading-shell.css");
-  void import("./styles/reading-prose-system.css");
   void import("./styles/sunnah-visual-language.css");
   void import("./styles/sunnah-geometry-system.css");
   void import("./styles/visual-refresh-v1.css");
-  void import("./styles/components/reading-section-card.css");
   void import("./styles/components/native-feel.css");
   void import("./styles/m2030/interactions.css");
-  void import("./styles/m2030/pages.css");
-  // final-release يُحمَّل بعد design-system أعلاه — لا تحميل متوازٍ
-  // طبقات الليل: محمّل idempotent واحد — لا تكرار interaction-states (متزامن أعلاه)
-  // ولا إعادة surfaces/premium إن حُمِّلت عند الإقلاع الداكن
+
+  if (!isHome) {
+    void import("./styles/index-deferred-pages.css");
+    void import("./styles/section-makarim-pattern.css");
+    void import("./styles/components/compact-sources.css");
+    void import("./styles/m2030/pages.css");
+  }
+  if (wantsReadingShell) {
+    void import("./styles/components/content-reading-shell.css");
+    void import("./styles/reading-prose-system.css");
+    void import("./styles/components/reading-section-card.css");
+  }
+
+  /* طبقات الليل على idle دائمًا — contrast/Playwright يطبّق dark بعد load بلا ThemeProvider */
   if (!isDarkCoreLoadStarted()) {
     void ensureDarkCoreLayers();
   }

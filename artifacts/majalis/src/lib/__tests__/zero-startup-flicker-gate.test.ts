@@ -28,6 +28,16 @@ console.log("=== theme boot applies route surface before paint ===");
 assert.match(html, /pts-immersive/);
 assert.match(html, /chrome-immersive/);
 assert.match(html, /dataset\.routeSurface\s*=\s*"prayer-dark"/);
+assert.match(html, /dataset\.appBooting\s*=\s*"1"/, "boot flag via data only");
+assert.doesNotMatch(html, /classList\.add\(\s*["']app-booting["']\s*\)/, "no app-booting class mutation");
+assert.match(html, /id="mj-startup-chrome"/, "startup chrome skeleton from FP");
+assert.match(html, /id="mj-startup-header"/);
+assert.match(html, /id="mj-startup-bottom"/);
+assert.doesNotMatch(
+  html,
+  /id="mj-startup-hero"|class="[^"]*navbar-ticker-row|class="[^"]*bottom-nav/,
+  "هيكل بلا classes إنتاجية تلوّث المقاييس",
+);
 
 console.log("=== deferred design-system must not re-paint body font/bg ===");
 const ds = read("src/styles/design-system.css");
