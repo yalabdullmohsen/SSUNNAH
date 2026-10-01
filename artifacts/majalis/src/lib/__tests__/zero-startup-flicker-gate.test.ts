@@ -33,12 +33,20 @@ assert.doesNotMatch(html, /classList\.add\(\s*["']app-booting["']\s*\)/, "no app
 assert.match(html, /id="mj-startup-chrome"/, "startup chrome skeleton from FP");
 assert.match(html, /id="mj-startup-header"/);
 assert.match(html, /id="mj-startup-bottom"/);
+assert.match(html, /id="mj-startup-hero-ph"/, "hero placeholder ID-only (not mj-startup-hero — قياس يفضّل البطل الحقيقي)");
 assert.match(html, /dataset\.homeChrome\s*=\s*"0"/, "non-home يصفّر ticker reserve");
+assert.match(html, /dataset\.sc\s*=\s*"top"/, "data-sc=top marks header flow reserve");
+assert.match(html, /isStartupChromeReady/, "U4 waits for React chrome before remove");
 assert.match(html, /removeStartupChromeWhenReady/, "إزالة الهيكل بعد كروم React لا قبله");
 assert.doesNotMatch(
   html,
-  /id="mj-startup-hero"|class="[^"]*navbar-ticker-row|class="[^"]*bottom-nav/,
+  /id="mj-startup-chrome"[^>]*>[\s\S]*class="[^"]*(?:navbar-ticker-row|bottom-nav|app-top-chrome)/,
   "هيكل بلا classes إنتاجية تلوّث المقاييس",
+);
+assert.doesNotMatch(
+  html,
+  /if\s*\(\s*!rootEl\.childNodes\.length\s*\)\s*return;\s*mo\.disconnect\(\);\s*removeStartupChrome\(\)/,
+  "must not strip chrome on first #root commit alone",
 );
 
 console.log("=== deferred design-system must not re-paint body font/bg ===");

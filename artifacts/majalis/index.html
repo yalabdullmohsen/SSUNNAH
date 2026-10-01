@@ -74,17 +74,20 @@
               html.classList.add("pts-immersive");
               html.dataset.routeSurface = "prayer-dark";
               html.dataset.homeChrome = "0";
+              html.dataset.sc = "bottom";
             } else if (__path === "/mushaf" || __path.indexOf("/mushaf/") === 0) {
               html.classList.add("chrome-immersive");
               html.dataset.routeSurface = "mushaf-immersive";
               html.dataset.homeChrome = "0";
             } else if (__path === "/") {
               html.dataset.routeSurface = "standard-light";
-              html.dataset.startupHero = "1";
               html.dataset.homeChrome = "1";
+              html.dataset.sc = "top";
+              html.dataset.sh = "1";
             } else {
               html.dataset.routeSurface = "standard-light";
               html.dataset.homeChrome = "0";
+              html.dataset.sc = "top";
             }
           } catch (_) {}
           var splashBg = resolved === "dark" ? "#101614" : "#F8F6F1";
@@ -159,13 +162,41 @@
               var ph = document.getElementById("mj-startup-chrome");
               if (ph && ph.parentNode) ph.parentNode.removeChild(ph);
             } catch (_) {}
+            try {
+              /* أبقِ data-sc — إزالة padding-top كانت مصدر CLS على .app-shell */
+              html.removeAttribute("data-sh");
+            } catch (_) {}
           }
           /**
-           * إزالة الهيكل عند أول commit لـ #root.
-           * التأخير حتى ظهور selectors الإنتاجية زاد CLS على main في قياس 9d336440.
+           * U4: أزل الهيكل فقط بعد وجود كروم React (أو مسار بلا كروم).
+           * الإزالة عند أول commit لـ #root سبّبت header/bottom Jump + CLS على main.
            */
+          function isStartupChromeReady() {
+            var rs = html.dataset.routeSurface || "";
+            var mushaf = rs === "mushaf-immersive" || html.classList.contains("chrome-immersive");
+            if (mushaf) return true;
+            var prayer = rs === "prayer-dark" || html.classList.contains("pts-immersive");
+            var hasHeader = !!document.querySelector(
+              ".app-top-chrome, header.navbar-v3, .chrome-boot-ph.navbar-v3",
+            );
+            var hasBottom = !!document.querySelector(
+              ".bottom-nav, .bottom-nav--v2, [data-bottom-nav]",
+            );
+            if (prayer) return hasBottom;
+            return hasHeader && hasBottom;
+          }
+          function removeStartupHeroIfReal() {
+            try {
+              if (!document.querySelector(".page-hero-mj, .home-page-hero")) return;
+              var he = document.getElementById("mj-startup-hero-ph");
+              if (he) he.remove();
+            } catch (_) {}
+          }
           function removeStartupChromeWhenReady() {
+            removeStartupHeroIfReal();
+            if (!isStartupChromeReady()) return false;
             removeStartupChrome();
+            return true;
           }
           function clearBooting() {
             /* لا تلمس class — فقط data-app-booting (مراقب الثيم يراقب class/data-theme فقط) */
@@ -179,21 +210,19 @@
               window.dispatchEvent(new Event("mj:shell-stable"));
             } catch (_) {}
           }
-          /* عقد جاهزية: أول commit لـ #root — أزل الهيكل فورًا ثم clearBooting */
+          /* راقب ظهور كروم React — لا تُزل الهيكل عند أول عقدة فارغة في #root */
           var rootEl = document.getElementById("root");
           if (rootEl) {
             var mo = new MutationObserver(function () {
-              if (!rootEl.childNodes.length) return;
+              if (!removeStartupChromeWhenReady()) return;
               mo.disconnect();
-              removeStartupChrome();
               requestAnimationFrame(function () {
                 requestAnimationFrame(clearBooting);
               });
             });
-            mo.observe(rootEl, { childList: true });
-            if (rootEl.childNodes.length) {
+            mo.observe(rootEl, { childList: true, subtree: true });
+            if (removeStartupChromeWhenReady()) {
               mo.disconnect();
-              removeStartupChrome();
               requestAnimationFrame(function () {
                 requestAnimationFrame(clearBooting);
               });
@@ -206,7 +235,7 @@
     </script>
     <!-- فحص نسخة مبكر: عند اختلاف /version.json امسح الكاش ثم أعد التحميل مرة واحدة فقط -->
     <script id="mj-version-boot" src="/boot-legacy-cache.js"></script>
-    <style id="mj-lcp-critical"> :root{--mj-bg:#F8F6F1;--mj-ink:#15382D;--mj-fs-body:1.0625rem;--text-body:1.0625rem;--font-app:"Amiri","MajlisAmiriFallback","MajlisFallback","Traditional Arabic",serif;--font-ui:var(--font-app);}@font-face{font-family:"Amiri";font-style:normal;font-weight:400 500;font-display:optional;src:url("/fonts/ui/amiri-400-ar.woff2") format("woff2");unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+0660-0669;ascent-override:95%;descent-override:25%;line-gap-override:0%;}@font-face{font-family:"Amiri";font-style:normal;font-weight:600 800;font-display:optional;src:url("/fonts/ui/amiri-700-ar.woff2") format("woff2");unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+0660-0669;ascent-override:95%;descent-override:25%;line-gap-override:0%;}@font-face{font-family:"MajlisAmiriFallback";src:local("Noto Naskh Arabic"),local("Geeza Pro"),local("Traditional Arabic");ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:97%;}html{--ui-font-scale:1;--ui-density-scale:1;--ticker-h:2.65rem;font-size:calc(100% * var(--ui-font-scale,1));-webkit-text-size-adjust:100%;text-size-adjust:100%;}html,body,#root{background-color:#F8F6F1;margin:0;min-height:100dvh;min-height:100svh;color:#15382D;font-family:var(--font-app);font-weight:400;line-height:1.7;}body{font-synthesis:none;font-size:1.0625rem;}html.pts-immersive,html.pts-immersive body,html.pts-immersive #root{background-color:#2a4030;color:#fafaf8;}.app-back-btn--bar.fixed-back-bar,button.app-back-btn--bar[data-fixed-back-bar="1"]{position:fixed;width:44px;height:44px;z-index:220;}html.dark,html.dark body,html.dark #root,html.theme-dark,html.theme-dark body,html.theme-dark #root,html[data-theme="dark"],html[data-theme="dark"] body,html[data-theme="dark"] #root{background-color:#101614;color:#e8eeea;}button,input,textarea,select{font-family:inherit;line-height:inherit;}h1,h2,h3,strong,b{font-weight:700;}h4,button{font-weight:500;}html[data-ab="1"],html[data-ab="1"] *,html[data-ab="1"] *::before,html[data-ab="1"] *::after{transition-property:opacity,color,background-color,border-color,box-shadow,transform,filter;animation-duration:0.001ms;animation-delay:0s;}:root{--inset-top:env(safe-area-inset-top,0px);--inset-bottom:env(safe-area-inset-bottom,0px);--inset-right:env(safe-area-inset-right,0px);--inset-left:env(safe-area-inset-left,0px);--ticker-h:2.65rem;--header-chrome:56px;--header-ad-h:48px;--ad-row-h:0px;--ad-banner-height:0px;--search-height:0px;--ticker-row-h:0px;--header-h:calc(var(--header-chrome) + var(--inset-top,0px) + var(--ad-banner-height,0px));--app-top-chrome-h:calc(var(--header-h) + var(--search-height) + var(--ticker-row-h));--bottom-nav-h:64px;--bottom-nav-height:64px;--nav-h:calc(var(--bottom-nav-height) + var(--inset-bottom,0px));--content-pb:calc(var(--bottom-nav-height) + var(--inset-bottom,0px) + 24px);--mm-paper:#f7f1e3;}@media (max-width:879px){:root{--header-chrome:48px;--ticker-row-h:calc(var(--ticker-h)+1.125rem);--app-top-chrome-h:calc(var(--header-chrome)+var(--inset-top,0px)+var(--ad-banner-height)+var(--search-height)+var(--ticker-row-h))}html[data-home-chrome="0"]{--ticker-row-h:0px}}html.theme-dark,html[data-theme="dark"]{--mm-paper:#1a221c;}@media (display-mode:standalone),(display-mode:fullscreen){html,body{min-height:100dvh;min-height:-webkit-fill-available;}}.app-top-chrome{min-height:var(--app-top-chrome-h);box-sizing:border-box;}.navbar-v3{min-height:0;box-sizing:border-box;}.navbar-v3__search-row{height:var(--search-height);min-height:var(--search-height);max-height:var(--search-height);box-sizing:border-box;}.navbar-ticker-row{min-height:var(--ticker-row-h,var(--ticker-h,2.25rem));height:var(--ticker-row-h,var(--ticker-h,2.25rem));box-sizing:border-box;}.header-ticker{height:var(--ticker-h,2.25rem);min-height:var(--ticker-h,2.25rem);max-height:var(--ticker-h,2.25rem);box-sizing:border-box;}.bottom-nav,[data-bottom-nav]{min-height:var(--nav-h);box-sizing:border-box;background-color:#F8F6F1;}html.theme-dark .bottom-nav,html[data-theme="dark"] .bottom-nav,html.theme-dark [data-bottom-nav],html[data-theme="dark"] [data-bottom-nav]{background-color:#101614;}#mj-startup-chrome{position:fixed;inset:0;pointer-events:none;z-index:1}#mj-startup-header,#mj-startup-bottom{background:var(--mj-bg)}#mj-startup-header{width:100%;min-height:var(--app-top-chrome-h)}#mj-startup-bottom{position:fixed;inset-inline:0;bottom:0;min-height:var(--nav-h)}html[data-route-surface=prayer-dark] #mj-startup-chrome,html[data-route-surface=mushaf-immersive] #mj-startup-chrome{display:none}</style>
+    <style id="mj-lcp-critical"> :root{--mj-bg:#F8F6F1;--mj-ink:#15382D;--mj-fs-body:1.0625rem;--text-body:1.0625rem;--font-app:"Amiri","MajlisAmiriFallback","MajlisFallback","Traditional Arabic",serif;--font-ui:var(--font-app);}@font-face{font-family:"Amiri";font-style:normal;font-weight:400 500;font-display:optional;src:url("/fonts/ui/amiri-400-ar.woff2") format("woff2");unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+0660-0669;ascent-override:95%;descent-override:25%;line-gap-override:0%;}@font-face{font-family:"Amiri";font-style:normal;font-weight:600 800;font-display:optional;src:url("/fonts/ui/amiri-700-ar.woff2") format("woff2");unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+0660-0669;ascent-override:95%;descent-override:25%;line-gap-override:0%;}@font-face{font-family:"MajlisAmiriFallback";src:local("Noto Naskh Arabic"),local("Geeza Pro"),local("Traditional Arabic");ascent-override:95%;descent-override:25%;line-gap-override:0%;size-adjust:97%;}html{--ui-font-scale:1;--ui-density-scale:1;--ticker-h:2.65rem;font-size:calc(100% * var(--ui-font-scale,1));-webkit-text-size-adjust:100%;text-size-adjust:100%;}html,body,#root{background-color:#F8F6F1;margin:0;min-height:100dvh;min-height:100svh;color:#15382D;font-family:var(--font-app);font-weight:400;line-height:1.7;}body{font-synthesis:none;font-size:1.0625rem;}html.pts-immersive,html.pts-immersive body,html.pts-immersive #root{background-color:#2a4030;color:#fafaf8;}.app-back-btn--bar.fixed-back-bar,button.app-back-btn--bar[data-fixed-back-bar="1"]{position:fixed;width:44px;height:44px;z-index:220;}html.dark,html.dark body,html.dark #root,html.theme-dark,html.theme-dark body,html.theme-dark #root,html[data-theme="dark"],html[data-theme="dark"] body,html[data-theme="dark"] #root{background-color:#101614;color:#e8eeea;}button,input,textarea,select{font-family:inherit;line-height:inherit;}h1,h2,h3,strong,b{font-weight:700;}h4,button{font-weight:500;}html[data-ab="1"],html[data-ab="1"] *,html[data-ab="1"] *::before,html[data-ab="1"] *::after{transition-property:opacity,color,background-color,border-color,box-shadow,transform,filter;animation-duration:0.001ms;animation-delay:0s;}:root{--inset-top:env(safe-area-inset-top,0px);--inset-bottom:env(safe-area-inset-bottom,0px);--inset-right:env(safe-area-inset-right,0px);--inset-left:env(safe-area-inset-left,0px);--ticker-h:2.65rem;--header-chrome:56px;--header-ad-h:48px;--ad-row-h:0px;--ad-banner-height:0px;--search-height:0px;--ticker-row-h:0px;--header-h:calc(var(--header-chrome)+max(var(--inset-top,0px),12px)+var(--ad-banner-height,0px));--app-top-chrome-h:calc(var(--header-h) + var(--search-height) + var(--ticker-row-h));--bottom-nav-h:64px;--bottom-nav-height:64px;--nav-h:calc(var(--bottom-nav-height) + var(--inset-bottom,0px));--content-pb:calc(var(--bottom-nav-height) + var(--inset-bottom,0px) + 24px);--mm-paper:#f7f1e3;}@media (max-width:879px){:root{--header-chrome:48px;--ticker-row-h:calc(var(--ticker-h)+.65rem);--app-top-chrome-h:calc(var(--header-chrome)+max(var(--inset-top,0px),12px)+var(--ad-banner-height)+var(--search-height)+var(--ticker-row-h))}html[data-home-chrome="0"]{--ticker-row-h:0px}}html.theme-dark,html[data-theme="dark"]{--mm-paper:#1a221c;}@media (display-mode:standalone),(display-mode:fullscreen){html,body{min-height:100dvh;min-height:-webkit-fill-available;}}.app-top-chrome{min-height:var(--app-top-chrome-h);box-sizing:border-box;}.navbar-v3{min-height:0;box-sizing:border-box;}.navbar-v3__search-row{height:var(--search-height);min-height:var(--search-height);max-height:var(--search-height);box-sizing:border-box;}.navbar-ticker-row{min-height:var(--ticker-row-h,var(--ticker-h,2.25rem));height:var(--ticker-row-h,var(--ticker-h,2.25rem));box-sizing:border-box;}.header-ticker{height:var(--ticker-h,2.25rem);min-height:var(--ticker-h,2.25rem);max-height:var(--ticker-h,2.25rem);box-sizing:border-box;}.bottom-nav,[data-bottom-nav]{min-height:var(--nav-h);box-sizing:border-box;background-color:#F8F6F1;}html.theme-dark .bottom-nav,html[data-theme="dark"] .bottom-nav,html.theme-dark [data-bottom-nav],html[data-theme="dark"] [data-bottom-nav]{background-color:#101614;}#mj-startup-chrome{position:fixed;inset:0;pointer-events:none;z-index:1}#mj-startup-header,#mj-startup-bottom{background:var(--mj-bg)}#mj-startup-header{width:100%;height:var(--app-top-chrome-h)}#mj-startup-hero-ph{display:none;position:absolute;top:var(--app-top-chrome-h);inset-inline:1rem;height:11rem;background:#0f5c3f}html[data-home-chrome="1"] #mj-startup-hero-ph{display:block}#mj-startup-bottom{position:fixed;inset-inline:0;bottom:0;height:64px;padding-bottom:var(--inset-bottom,0);box-sizing:content-box}html.pts-immersive #mj-startup-header,html.pts-immersive #mj-startup-hero-ph{display:none}html.pts-immersive #mj-startup-bottom{background:#2a4030}html.chrome-immersive #mj-startup-chrome{display:none}html[data-sc=top][data-home-chrome="0"]{--app-top-chrome-h:65px}html[data-sc=top][data-home-chrome="1"]{--app-top-chrome-h:113px}html[data-sc=top] #root{padding-top:var(--app-top-chrome-h)}html[data-sc=top] .app-top-chrome{position:fixed;top:0;inset-inline:0;width:100%;z-index:200}</style>
     <style id="mj-splash-critical">
 :root{--mj-splash-bg-light:#F8F6F1;--mj-splash-bg-dark:#101614;--mj-splash-bg:var(--mj-splash-bg-light);--mj-splash-ink:#123f2e}
 html[data-theme="dark"]{--mj-splash-bg:var(--mj-splash-bg-dark);--mj-splash-ink:#a8d5c0}
@@ -216,8 +245,8 @@ html,body,#root,html.capacitor-native,html.capacitor-native body,html.capacitor-
 .mj-launch-splash__inner{position:relative;z-index:1;display:grid;justify-items:center;gap:.65rem;text-align:center;padding:1rem;animation:mj-splash-in .32s ease-out both}
 .mj-launch-splash__mark{padding:.45rem 1rem;border-radius:1rem;border:1px solid color-mix(in srgb,var(--mj-splash-ink) 20%,transparent);background:color-mix(in srgb,var(--mj-splash-ink) 8%,transparent)}
 .mj-launch-splash__title{margin:0;font:700 clamp(1.55rem,6vw,1.85rem)/1.15 var(--font-ui,"Amiri","MajlisAmiriFallback",serif);color:var(--mj-splash-ink);letter-spacing:.02em}
-.mj-launch-splash__tagline{margin:0;font:500 .95rem/1.5 var(--font-ui,"Amiri","MajlisAmiriFallback",serif);color:color-mix(in srgb,var(--mj-splash-ink) 76%,transparent);max-width:17rem}
-.mj-launch-splash__progress{width:3.4rem;height:.14rem;border-radius:999px;background:color-mix(in srgb,var(--mj-splash-ink) 18%,transparent);overflow:hidden;margin-block-start:.2rem}
+.mj-launch-splash__tagline{margin:0;font:500 .95rem/1.5 var(--font-ui,"Amiri",serif);color:color-mix(in srgb,var(--mj-splash-ink) 76%,transparent);max-width:17rem}
+.mj-launch-splash__progress{width:3.4rem;height:.14rem;border-radius:999px;background:color-mix(in srgb,var(--mj-splash-ink) 18%,transparent);overflow:hidden;margin-top:.2rem}
 .mj-launch-splash__progress-bar{display:block;height:100%;width:0;border-radius:inherit;background:var(--mj-splash-ink);transform-origin:right center;animation:mj-splash-progress .7s ease-out forwards}
 @keyframes mj-splash-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes mj-splash-progress{to{width:100%}}
@@ -337,9 +366,10 @@ html,body,#root,html.capacitor-native,html.capacitor-native body,html.capacitor-
     <!-- defer: لا يحجب أول رسم؛ الدخولية تُدار بعد parse مباشرة دون تأخير LCP -->
     <script defer src="/mj-launch-splash-boot.js"></script>
 
-    <!-- Startup Chrome Skeleton — أبعاد الهيدر/الشريط فقط (بلا classes إنتاجية) -->
+    <!-- Startup Chrome Skeleton — أبعاد فقط (IDs بلا classes إنتاجية) -->
     <div id="mj-startup-chrome" aria-hidden="true">
       <div id="mj-startup-header"></div>
+      <div id="mj-startup-hero-ph"></div>
       <div id="mj-startup-bottom"></div>
     </div>
     <script>
@@ -352,8 +382,19 @@ html,body,#root,html.capacitor-native,html.capacitor-native body,html.capacitor-
         });
         var __ph = document.getElementById("mj-startup-chrome");
         var __rs = document.documentElement.dataset.routeSurface;
-        if (__ph && (__rs === "prayer-dark" || __rs === "mushaf-immersive")) {
+        var __hc = document.documentElement.dataset.homeChrome;
+        /* مصحف: بلا هيكل. صلاة: أبقِ الشريط السفلي فقط (BottomNav ظاهر). */
+        if (__ph && __rs === "mushaf-immersive") {
           __ph.parentNode.removeChild(__ph);
+        } else if (__ph && __rs === "prayer-dark") {
+          var __hh = document.getElementById("mj-startup-header");
+          var __he = document.getElementById("mj-startup-hero-ph");
+          if (__hh) __hh.remove();
+          if (__he) __he.remove();
+        } else if (__hc !== "1") {
+          /* غير الرئيسية: لا تُبقِ عقدة hero (display:none ما زال presence=true في القياس) */
+          var __he2 = document.getElementById("mj-startup-hero-ph");
+          if (__he2) __he2.remove();
         }
       } catch (error) {}
     </script>

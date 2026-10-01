@@ -697,8 +697,16 @@ function AppShellInner() {
   const homeChrome = isHomeChromePath(location);
 
   useLayoutEffect(() => {
-    document.documentElement.dataset.homeChrome = homeChrome ? "1" : "0";
-  }, [homeChrome]);
+    const root = document.documentElement;
+    root.dataset.homeChrome = homeChrome ? "1" : "0";
+    /* U4: أبقِ data-sc لثبات padding/fixed chrome — لا تُزل بعد الهيكل */
+    if (hideTopChrome) {
+      if (onPrayer) root.dataset.sc = "bottom";
+      else root.removeAttribute("data-sc");
+    } else {
+      root.dataset.sc = "top";
+    }
+  }, [homeChrome, hideTopChrome, onPrayer]);
 
   const searchScrollYRef = useRef(0);
 
