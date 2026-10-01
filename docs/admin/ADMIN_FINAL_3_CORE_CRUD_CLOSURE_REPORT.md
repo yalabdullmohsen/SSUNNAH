@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **ADMIN_FINAL_3** (pending MERGED_AND_DEPLOYED) |
+| Status | **ADMIN_FINAL_3_MERGED_AND_DEPLOYED** · tip `5ec1a84e` · production MATCH |
 | Base tip | `a04419361` (after ADMIN-FINAL-2 seal) |
 | Post-FINAL-2 baseline | [`POST_ADMIN_FINAL_2_LIVE_BASELINE.md`](../remediation/POST_ADMIN_FINAL_2_LIVE_BASELINE.md) · **LOCKED** |
 | PR | [#2424](https://github.com/yalabdullmohsen/majalis/pull/2424) |

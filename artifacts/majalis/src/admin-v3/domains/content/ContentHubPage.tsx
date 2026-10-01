@@ -4,12 +4,24 @@ import { AppCard } from "@/components/design-system/AppCard";
 import { listCenterTools } from "../../centers/catalog";
 import { AdminPageHeader, AdminLegacyChip } from "../../ui/primitives";
 
-const NATIVE_IDS = new Set(["lessons", "sheikhs", "fawaid"]);
+const NATIVE_IDS = new Set([
+  "lessons",
+  "sheikhs",
+  "fawaid",
+  "library",
+  "islamic-stories",
+  "prophet-stories",
+  "arbaeen",
+]);
 
 const NATIVE = [
   { href: "/admin/v3/content/lessons", title: "الدروس", desc: "CRUD أصلي عبر API" },
   { href: "/admin/v3/content/sheikhs", title: "المشايخ", desc: "CRUD أصلي عبر API" },
   { href: "/admin/v3/content/fawaid", title: "الفوائد", desc: "CRUD أصلي عبر API" },
+  { href: "/admin/v3/content/library", title: "المكتبة", desc: "CRUD أصلي FINAL-4" },
+  { href: "/admin/v3/content/islamic-stories", title: "القصص الإسلامية", desc: "CRUD أصلي FINAL-4" },
+  { href: "/admin/v3/content/prophet-stories", title: "قصص الأنبياء", desc: "محتوى واعتماد FINAL-4" },
+  { href: "/admin/v3/content/arbaeen", title: "الأربعون في محبة الله", desc: "CRUD أصلي FINAL-4" },
 ] as const;
 
 export function ContentHubPage() {
@@ -18,7 +30,7 @@ export function ContentHubPage() {
     <div className="av3-domain">
       <AdminPageHeader
         title="مركز المحتوى"
-        description="المسارات الأصلية للدروس والمشايخ والفوائد — بقية الأدوات عبر التوافق."
+        description="المسارات الأصلية للمحتوى (FINAL-3/4) — بقية الأدوات عبر التوافق مع تصنيف صريح."
         badge="أصلي + توافق"
         crumbs={[
           { label: "لوحة التحكم", href: "/admin/v3" },

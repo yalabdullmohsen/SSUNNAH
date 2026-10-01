@@ -736,6 +736,10 @@ export default function AppRoutes() {
       <Route path="/admin/v3/content/lessons"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3/content/sheikhs"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3/content/fawaid"><AdminLazyRoute component={AdminV3App} /></Route>
+      <Route path="/admin/v3/content/library"><AdminLazyRoute component={AdminV3App} /></Route>
+      <Route path="/admin/v3/content/islamic-stories"><AdminLazyRoute component={AdminV3App} /></Route>
+      <Route path="/admin/v3/content/prophet-stories"><AdminLazyRoute component={AdminV3App} /></Route>
+      <Route path="/admin/v3/content/arbaeen"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3/content"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3/reviews"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3/taxonomy"><AdminLazyRoute component={AdminV3App} /></Route>
