@@ -66,7 +66,76 @@ Prevents: automation entity without auth · mutating verbs in handleAutomation �
 
 Do not claim full admin security, zero residual risk, Instagram complete migration, or automation fully migrated.
 
+## LHCI FAILURE ROOT CAUSE
+
+| Field | Value |
+|---|---|
+| Failed CI run | `36823098327` (first attempt on head `efbbe82e`) |
+| Failed LHCI artifact | `lhci-home-reports` id `11144765268` |
+| Passing rerun (same run, `--failed` once) | LHCI job `110246039381` · artifact id `11144716627` |
+| Base main compare | tip `021001e6` · run `36821200673` · artifact `11144061322` |
+| Classification | **LHCI_FLAKE** (TBT variance under simulate throttling) |
+| Not | PR_REGRESSION · ROUTE_GRAPH_LEAK · ADMIN_BUNDLE_LEAK · CSS_GRAPH_LEAK · MISCONFIGURED_AUDIT · EXISTING_MAIN_FAILURE |
+
+### Audit that returned 0,0,0 (expected ≥1)
+
+**Name:** `forced-reflow-insight` (title: «Forced reflow»)  
+**Assertion:** `["warn", { minScore: 1 }]` in `artifacts/majalis/scripts/lhci-thresholds.cjs`  
+**Observed:** score `0` on PR fail, PR pass, and main — **warning only**, not the hard fail.  
+Not a schema/misconfiguration issue; Lighthouse emits the insight with score 0 when forced reflow is detected.
+
+### Hard fail (error)
+
+**`total-blocking-time`** — `["error", { maxNumericValue: 2100 }]` — **threshold not raised**.
+
+| Set | TBT runs (ms) | Median | vs 2100 |
+|---|---|---:|---|
+| PR fail | 2301 / 2243 / 2311 | **2301** | FAIL |
+| PR rerun pass | 1596 / 1715 / 1711 | **1711** | PASS |
+| main `021001e6` | 2044 / 2086 / 2051 | **2051** | PASS |
+
+### Warnings (unchanged across fail/pass/main — not blockers)
+
+| Audit | Assertion | Fail / Pass / Main |
+|---|---|---|
+| `unused-css-rules` | warn ≤80 (LHCI unit) | found ~150 / 150 / same class · savings bytes **39141** identical |
+| `unused-javascript` | warn ≤500 | found ~860–1020 · savings ~**138k** identical class |
+| `categories:performance` | warn ≥0.7 | ~0.47–0.48 warn |
+| `forced-reflow-insight` | warn ≥1 | **0,0,0** on all sets |
+
+Largest unused CSS (all sets): `assets/index-*.css` (~39 KiB wasted).  
+Largest unused JS (all sets): `supabase-*.js`, `index-*.js`, `react-dom-*.js`, `AppRoutes-*.js` — **not** Automation/Admin v3 modules.
+
+### Home graph vs FINAL-6
+
+| Check | Result |
+|---|---|
+| `AutomationHub*` / `admin-v3` network on `/` | **absent** (fail + pass + main) |
+| Pre-existing admin-ish on `/` | `AdminInlineEdit` · `admin-api` · `adhkar-admin` — **same on main** (not introduced by FINAL-6) |
+| AppRoutes transfer delta PR vs main | **+52 bytes** only |
+| Total transfer delta | **~+40 bytes** |
+| AdminV3App load path | `lazyWithRetry(() => import("@/admin-v3/AdminV3App"))` + `AdminLazyRoute` only |
+
+### Implemented fix
+
+**None in product code** — root cause is CI TBT simulate variance (LHCI_FLAKE).  
+Single allowed failed-job rerun produced three runs all ≤2100 (median 1711).  
+Thresholds / budgets / must-not-skip / warn→error conversions: **unchanged**.
+
+### Verification runs
+
+1. Focused gates: `test:admin-final-6-automation` (local) ✅  
+2. CI first attempt: LHCI FAIL (TBT) → Verify/ci-required downstream FAIL  
+3. One `--failed` rerun: LHCI / Verify build / ci-required **SUCCESS**  
+4. Artifact compare fail vs pass vs main as above  
+5. Independent confirmation: rerun artifact TBT median **1711** ≤ 2100  
+
+### Confirmation
+
+Thresholds were **not** raised. No Admin JS/CSS from FINAL-6 entered the public initial graph. Merge only after required checks green on current head.
+
 ## Follow-ups
 
-- ADMIN-FINAL-7 Authorization matrix + IDOR/mass-assignment gates
+- ADMIN-FINAL-7 Authorization matrix + IDOR/mass-assignment gates — **after** `ADMIN_FINAL_6_MERGED_AND_DEPLOYED`
 - Legacy SAFE_REMOVE only after parity + consumer=0
+- Pre-existing home `AdminInlineEdit` / `adhkar-admin` idle graph: follow-up (not FINAL-6 scope)

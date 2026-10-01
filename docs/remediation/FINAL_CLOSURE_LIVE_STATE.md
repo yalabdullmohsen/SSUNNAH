@@ -8,7 +8,7 @@
 | Public `/admin` | HTTP **404** (intentional) |
 | General status | `WEB_RELEASED_NATIVE_HOLD` |
 | Internal status | `FINAL_INTERNAL_CLOSURE_PARTIAL` |
-| Active work | **ADMIN-FINAL-6** PR #2427 · head `d73214a9` · CI in progress · auto-merge enabled |
+| Active work | **ADMIN-FINAL-6** PR #2427 · head `efbbe82e` · LHCI_FLAKE proven · awaiting merge/deploy/MATCH |
 
 ## Phase status (authoritative)
 
@@ -19,7 +19,7 @@
 | ADMIN-FINAL-3 | **COMPLETE** / MERGED_AND_DEPLOYED | #2424 |
 | ADMIN-FINAL-4 | **COMPLETE** / MERGED_AND_DEPLOYED | #2425 → was `bb436b24` |
 | ADMIN-FINAL-5 Dialogs | **VERIFIED** / `ADMIN_FINAL_5_MERGED_AND_DEPLOYED` | #2426 → `021001e6` MATCH · main CI SUCCESS · `/admin` 404 |
-| ADMIN-FINAL-6 Automation | **CI_RUNNING** / PR_OPEN | #2427 · Ready · auto-merge squash · head `d73214a9` |
+| ADMIN-FINAL-6 Automation | **READY_TO_MERGE** after LHCI_FLAKE rerun PASS | #2427 · head `efbbe82e` · LHCI median TBT 1711 |
 | ADMIN-FINAL-7 Authorization | **NOT_STARTED** | — |
 | Legacy Admin Retirement | **NOT_STARTED** | — |
 | Mushaf CSS Bridge | **NOT_STARTED** | MADINAH_CSS_BRIDGE_ACTIVE |
