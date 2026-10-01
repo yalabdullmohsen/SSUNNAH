@@ -24,7 +24,7 @@
 | `/admin/v3/review` | `/admin/v3/reviews` |
 | `/admin/v3/users` | `/admin/v3/community` |
 | `/admin/v3/notifications` | `/admin/v3/settings` |
-| `/admin/v3/automation` | `/admin/v3/settings` |
+| `/admin/v3/automation` | مركز الأتمتة FINAL-6 (أصلي جزئي) — لا يُحوَّل إلى settings |
 | `/admin/v3/system` | `/admin/v3/settings` |
 | `/admin/v3/audit` | سجل التدقيق داخل الإعدادات |
 

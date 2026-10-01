@@ -986,6 +986,151 @@ async function handleArbaeen(req, res, admin, auth) {
   sendJson(res, 405, { ok: false, error: "method_not_allowed" });
 }
 
+
+async function handleAutomation(req, res, admin, auth) {
+  if (req.method !== "GET") {
+    return sendJson(res, 405, { ok: false, error: "method_not_allowed" });
+  }
+  if (!need(auth, "content.read") && !need(auth, "*")) {
+    return deny(res, auth, "content.read");
+  }
+
+  const view = String(req.query?.view || "overview").toLowerCase();
+
+  if (view === "overview" || view === "matrix") {
+    const telegramConfigured = Boolean(String(process.env.TELEGRAM_WEBHOOK_SECRET || "").trim());
+    let instagramConfigured = false;
+    try {
+      const { isInstagramGraphConfigured } = await import("../../../lib/cms/instagram-graph-api.mjs");
+      instagramConfigured = Boolean(isInstagramGraphConfigured());
+    } catch {
+      instagramConfigured = false;
+    }
+    return sendJson(res, 200, {
+      ok: true,
+      data: {
+        phase: "ADMIN-FINAL-6",
+        telegramConfigured,
+        instagramConfigured,
+        surfaces: [
+          { id: "automation-hub", classification: "V3_PARTIAL", note: "مركز حالة وتصنيف — بلا تشغيل mutating" },
+          { id: "sources", classification: "V3_PARTIAL", note: "قائمة مصادر للقراءة فقط" },
+          { id: "auto-content", classification: "V3_PARTIAL", note: "إحصاءات/صحة قراءة فقط — run يبقى Legacy" },
+          { id: "telegram", classification: "LEGACY_REQUIRED", note: "webhook/broadcast/مراجعة دروس" },
+          { id: "instagram", classification: instagramConfigured ? "LEGACY_REQUIRED" : "BLOCKED_CREDENTIAL", note: "أسرار Graph OWNER؛ واجهة Legacy للتشغيل" },
+          { id: "automation-engines", classification: "LEGACY_REQUIRED", note: "MKE/AKP/smart-cms/aggregators" },
+          { id: "feature-status", classification: "LEGACY_REQUIRED", note: "مراقبة ميزات تشغيلية" },
+        ],
+      },
+    });
+  }
+
+  if (view === "integrations") {
+    let instagram = { configured: false, manualAssistMode: true };
+    try {
+      const { getInstagramGraphStatus } = await import("../../../lib/cms/instagram-graph-api.mjs");
+      const st = getInstagramGraphStatus();
+      instagram = {
+        configured: Boolean(st.configured),
+        manualAssistMode: Boolean(st.manualAssistMode),
+        status: st.status || null,
+        accessTokenSet: Boolean(st.accessTokenSet),
+        // never return tokenPreview / secrets
+      };
+    } catch {
+      /* keep defaults */
+    }
+    return sendJson(res, 200, {
+      ok: true,
+      data: {
+        telegram: {
+          configured: Boolean(String(process.env.TELEGRAM_WEBHOOK_SECRET || "").trim()),
+          mutations: "LEGACY_REQUIRED",
+        },
+        instagram: {
+          ...instagram,
+          mutations: instagram.configured ? "LEGACY_REQUIRED" : "BLOCKED_CREDENTIAL",
+          ownerAction: !instagram.configured,
+        },
+      },
+    });
+  }
+
+  if (view === "sources") {
+    if (!admin) {
+      return sendJson(res, 503, { ok: false, error: "supabase_admin_not_configured" });
+    }
+    const { listTrustedSources } = await import("../../../lib/cms/trusted-sources.mjs");
+    const { listAutomationRuns } = await import("../../../lib/cms/automation-runs.mjs");
+    const sources = await listTrustedSources({ activeOnly: false });
+    const runs = await listAutomationRuns({ limit: 8 }).catch(() => []);
+    const safeSources = (sources || []).map((s) => ({
+      id: s.id,
+      name: s.name,
+      source_type: s.source_type || s.platform || null,
+      platform: s.platform || null,
+      active: Boolean(s.active),
+      trust_level: s.trust_level || null,
+      auto_publish_allowed: Boolean(s.auto_publish_allowed),
+      last_checked_at: s.last_checked_at || null,
+      last_success_at: s.last_success_at || null,
+      failure_count: Number(s.failure_count) || 0,
+      last_error: s.last_error ? String(s.last_error).slice(0, 160) : null,
+      category: s.category || null,
+      // omit url/feed/config handles that may embed secrets/tokens
+    }));
+    const safeRuns = (runs || []).slice(0, 8).map((r) => ({
+      id: r.id || r.run_id || null,
+      status: r.status || null,
+      created_at: r.created_at || r.started_at || null,
+      source_name: r.source_name || r.source || null,
+    }));
+    await audit(admin, auth, "automation.sources.read", "automation_sources", null, {
+      count: safeSources.length,
+    });
+    return sendJson(res, 200, {
+      ok: true,
+      data: {
+        sources: safeSources,
+        recentRuns: safeRuns,
+        mutations: "LEGACY_REQUIRED",
+        legacyHref: "/admin/sources",
+      },
+    });
+  }
+
+  if (view === "auto-content") {
+    const {
+      getAutoContentPipelineStats,
+      getAutoContentHealth,
+    } = await import("../../../lib/auto-content/auto-content-sync.mjs");
+    const limit = Math.min(20, Math.max(1, Number.parseInt(String(req.query?.limit || "10"), 10) || 10));
+    const [stats, health] = await Promise.all([
+      getAutoContentPipelineStats(limit).catch((e) => ({ ok: false, error: String(e?.message || e) })),
+      getAutoContentHealth().catch((e) => ({ ok: false, error: String(e?.message || e) })),
+    ]);
+    if (admin) {
+      await audit(admin, auth, "automation.auto_content.read", "auto_content", null, {});
+    }
+    return sendJson(res, 200, {
+      ok: true,
+      data: {
+        stats,
+        health,
+        mutations: "LEGACY_REQUIRED",
+        runLegacyHref: "/admin/auto-content",
+      },
+    });
+  }
+
+  return sendJson(res, 400, {
+    ok: false,
+    error: "unknown_view",
+    userMessageAr: "عرض أتمتة غير معروف.",
+    allowed: ["overview", "matrix", "sources", "auto-content", "integrations"],
+  });
+}
+
 export default async function handler(req, res) {
   const auth = await requireAdminAccess(req, res, sendJson);
   if (!auth) return;
@@ -997,7 +1142,7 @@ export default async function handler(req, res) {
   }
 
   const admin = getSupabaseAdmin();
-  if (!admin && entity !== "status") {
+  if (!admin && entity !== "status" && entity !== "automation") {
     sendJson(res, 503, { ok: false, error: "supabase_admin_not_configured" });
     return;
   }
@@ -1014,6 +1159,7 @@ export default async function handler(req, res) {
     if (entity === "users") return await handleUsers(req, res, admin, auth);
     if (entity === "audit") return await handleAudit(req, res, admin, auth);
     if (entity === "status") return await handleStatus(req, res, auth);
+    if (entity === "automation") return await handleAutomation(req, res, admin, auth);
     sendJson(res, 404, { ok: false, error: "not_found" });
   } catch (err) {
     sendSafeError(res, sendJson, err, { code: "admin_v3_error" });

@@ -751,7 +751,10 @@ export default function AppRoutes() {
       <Route path="/admin/v3/review"><Redirect to="/admin/v3/reviews" /></Route>
       <Route path="/admin/v3/users"><Redirect to="/admin/v3/community" /></Route>
       <Route path="/admin/v3/notifications"><Redirect to="/admin/v3/settings" /></Route>
-      <Route path="/admin/v3/automation"><Redirect to="/admin/v3/settings" /></Route>
+      <Route path="/admin/v3/automation/sources"><AdminLazyRoute component={AdminV3App} /></Route>
+      <Route path="/admin/v3/automation/auto-content"><AdminLazyRoute component={AdminV3App} /></Route>
+      <Route path="/admin/v3/automation/integrations"><AdminLazyRoute component={AdminV3App} /></Route>
+      <Route path="/admin/v3/automation"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3/system"><Redirect to="/admin/v3/settings" /></Route>
       <Route path="/admin/v3/audit"><AdminLazyRoute component={AdminV3App} /></Route>
       <Route path="/admin/v3"><AdminLazyRoute component={AdminV3App} /></Route>

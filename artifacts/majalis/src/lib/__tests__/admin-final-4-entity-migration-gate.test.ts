@@ -50,7 +50,8 @@ assert.match(catalog, /\/admin\/v3\/content\/prophet-stories/);
 assert.match(catalog, /\/admin\/v3\/content\/arbaeen/);
 // Honest residuals — not fake V3_COMPLETE via link-only
 assert.match(catalog, /LEGACY_REQUIRED|seed/);
-assert.match(catalog, /ADMIN-FINAL-6|\/admin\/sources/);
+assert.match(catalog, /\/admin\/v3\/automation\/sources/);
+assert.match(catalog, /\/admin\/sources/);
 assert.match(catalog, /\/admin\/universities/);
 
 const hub = read("admin-v3/domains/content/ContentHubPage.tsx");

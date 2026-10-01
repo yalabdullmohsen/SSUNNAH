@@ -10,6 +10,7 @@ import { UsersPage } from "./domains/community/UsersPage";
 import { RolesPage } from "./domains/community/RolesPage";
 import { AnalyticsPlatformPage } from "./domains/analytics/AnalyticsPlatformPage";
 import { AuditPage, SettingsOpsPage } from "./domains/ops/OpsPages";
+import { AutomationHubPage } from "./domains/ops/AutomationHubPage";
 import { resolveAdminV3Center } from "./nav";
 
 /**
@@ -38,6 +39,14 @@ export function AdminV3Router() {
   if (path === "/admin/v3/analytics") return <AnalyticsPlatformPage />;
   if (path === "/admin/v3/settings") return <SettingsOpsPage />;
   if (path === "/admin/v3/audit") return <AuditPage />;
+  if (
+    path === "/admin/v3/automation" ||
+    path === "/admin/v3/automation/sources" ||
+    path === "/admin/v3/automation/auto-content" ||
+    path === "/admin/v3/automation/integrations"
+  ) {
+    return <AutomationHubPage />;
+  }
 
   // Fallback: catalog workspace for unknown/aliased centers
   const center = resolveAdminV3Center(path);
