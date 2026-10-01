@@ -13,6 +13,7 @@ import "@/styles/pages/glossary.css";
 import "@/styles/islam-intro-experience.css";
 import "@/styles/pages/worship-history-v2.css";
 import { ListScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
    §242، المصطلحات الإسلامية  (.gl-*)
@@ -1869,10 +1870,12 @@ export default function IslamicGlossaryPage({ lockedCategory }: IslamicGlossaryP
       <div className="gl-container">
         <div className="gl-cats" role="tablist" aria-label="تصنيفات المعجم الشرعي">
           {cats.map((c) => (
-            <button
+            <Button
               key={c.id}
               type="button"
               role="tab"
+              variant="ghost"
+              size="small"
               className={`gl-cat${activeCategory === c.id ? " gl-cat--active" : ""}`}
               onClick={() => {
                 setActiveCategory(c.id);
@@ -1882,7 +1885,7 @@ export default function IslamicGlossaryPage({ lockedCategory }: IslamicGlossaryP
             >
               {c.label}
               <span className="gl-cat__count">{formatArabicNumber(countByCat[c.id] ?? 0)}</span>
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -1900,8 +1903,9 @@ export default function IslamicGlossaryPage({ lockedCategory }: IslamicGlossaryP
             const isOpen = openTerm === term.id;
             return (
               <Card key={term.id} className={`gl-term${isOpen ? " gl-term--open" : ""}`} raised={isOpen}>
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
                   className="gl-term__head"
                   onClick={() => setOpenTerm(isOpen ? null : term.id)}
                   aria-expanded={isOpen}
@@ -1919,7 +1923,7 @@ export default function IslamicGlossaryPage({ lockedCategory }: IslamicGlossaryP
                   <span className="gl-term__chevron" aria-hidden="true">
                     {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                   </span>
-                </button>
+                </Button>
 
                 {isOpen && (
                   <div className="gl-term__body" data-detail-full="1">

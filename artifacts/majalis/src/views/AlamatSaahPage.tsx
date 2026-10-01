@@ -6,6 +6,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/alamat-saah.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
    §246، علامات الساعة  (.as-*)
@@ -385,16 +386,18 @@ export default function AlamatSaahPage() {
       {/* Tabs */}
       <div className="as-tabs" role="tablist" aria-label="أقسام أشراط الساعة">
         {TABS.map(t => (
-          <button
+          <Button
             key={t.id}
             id={`als-tab-${t.id}`}
             type="button"
             role="tab"
+            variant="ghost"
+            size="small"
             className={`as-tab${activeTab === t.id ? " as-tab--active" : ""}`}
             onClick={() => setActiveTab(t.id)}
             aria-selected={activeTab === t.id}
-              aria-controls={`als-panel-${t.id}`}
-          >{t.label}</button>
+            aria-controls={`als-panel-${t.id}`}
+          >{t.label}</Button>
         ))}
       </div>
 

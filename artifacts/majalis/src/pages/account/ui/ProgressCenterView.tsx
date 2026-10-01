@@ -11,6 +11,7 @@ import {
   setPersonalizationEnabled,
   type ProgressSnapshot,
 } from "@/lib/knowledge-platform";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/knowledge-platform-p0.css";
 import "@/styles/pages/profile-hub-v2.css";
 
@@ -124,8 +125,9 @@ export default function ProgressCenterView() {
           <span>تفعيل التخصيص المحلي (نشاط وبحث على هذا الجهاز فقط)</span>
         </label>
         <div className="kp-actions">
-          <button
+          <Button
             type="button"
+            variant="secondary"
             className="kp-btn"
             disabled={busy}
             onClick={() => {
@@ -135,9 +137,10 @@ export default function ProgressCenterView() {
             }}
           >
             مسح سجل النشاط والبحث
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
+            variant="destructive"
             className="kp-btn kp-btn--danger"
             disabled={busy}
             onClick={() => {
@@ -147,10 +150,10 @@ export default function ProgressCenterView() {
             }}
           >
             مسح بيانات منصة المعرفة المحلية
-          </button>
-          <button type="button" className="kp-btn" disabled={busy} onClick={() => void refresh()}>
+          </Button>
+          <Button type="button" variant="secondary" className="kp-btn" disabled={busy} onClick={() => void refresh()}>
             تحديث
-          </button>
+          </Button>
         </div>
         <p className="kp-note">
           لا تُرسل سجلات القراءة أو البحث إلى خدمات خارجية من هذه الشاشة. Analytics منفصلة وتخضع لموافقة ملفات التعريف.

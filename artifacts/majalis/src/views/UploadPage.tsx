@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, type ChangeEvent, type DragEvent, type FormEvent } from "react";
-import { AlertTriangle, CheckCircle2, FolderOpen, GraduationCap, Loader2, ScrollText, Upload, XCircle } from "lucide-react";
+import { AlertTriangle, CheckCircle2, FolderOpen, GraduationCap, ScrollText, Upload, XCircle } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
 import { submitLesson } from "@/lib/user-submissions-service";
 import { FieldLabel } from "@/components/design-system/FormFields";
@@ -10,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/upload.css";
 
 type UploadState = "idle" | "uploading" | "success" | "error";
@@ -79,13 +80,15 @@ function FileDropZone({ accept, maxMb, onFile, file, hint }: {
             <div className="ulp-dropzone__filesize">
               {(file.size / (1024 * 1024)).toFixed(2)} MB
             </div>
-            <button
+            <Button
               type="button"
+              variant="ghost"
+              size="small"
               onClick={(e) => { e.stopPropagation(); onFile(null); }}
               className="ulp-dropzone__remove"
             >
               إزالة الملف
-            </button>
+            </Button>
           </div>
         ) : (
           <div>
@@ -293,8 +296,8 @@ function Feedback({ state, message }: { state: UploadState; message: string }) {
 
 function SubmitBtn({ loading, label }: { loading: boolean; label: string }) {
   return (
-    <button type="submit" className="ulp-submit" disabled={loading}>
-      {loading ? <><Loader2 size={16} className="animate-spin" aria-hidden /> <span className="sr-only">إرسال</span></> : label}
-    </button>
+    <Button type="submit" variant="primary" className="ulp-submit" disabled={loading} loading={loading}>
+      {loading ? <span className="sr-only">إرسال</span> : label}
+    </Button>
   );
 }

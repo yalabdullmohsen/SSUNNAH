@@ -12,6 +12,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/updates.css";
 import { ListScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 const TYPE_COLORS: Record<string, string> = {
   قرار: "#123F2E",
@@ -105,16 +106,18 @@ export default function UpdatesPage() {
 
       <div className="content-hub-chips" role="tablist" aria-label="تصفية المستجدات">
         {["الكل", ...UPDATE_TYPES].map((t) => (
-          <button
+          <Button
             key={t}
             role="tab"
             type="button"
+            variant="ghost"
+            size="small"
             onClick={() => setFilter(t)}
             className={filter === t ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"}
             aria-selected={filter === t}
           >
             {t}
-          </button>
+          </Button>
         ))}
       </div>
 

@@ -18,6 +18,7 @@ import {
   type CircleFilters,
   type QuranCircle,
 } from "@/lib/quran-circles-service";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/filters.css";
 import "@/styles/pages/quran-circles.css";
 import { ListScreen } from "@/components/design-system/screens";
@@ -99,15 +100,17 @@ function CircleCard({ circle }: { circle: QuranCircle }) {
         <div className="qc-card__desc-wrap">
           <p className={expanded ? "qc-card__desc is-expanded" : "qc-card__desc"}>{description}</p>
           {longDescription ? (
-            <button
+            <Button
               type="button"
+              variant="ghost"
+              size="small"
               className="qc-card__more"
               onClick={() => setExpanded((v) => !v)}
               aria-expanded={expanded}
+              iconEnd={<ChevronDown size={14} aria-hidden="true" className={expanded ? "is-flip" : ""} />}
             >
               {expanded ? "عرض أقل" : "عرض المزيد"}
-              <ChevronDown size={14} aria-hidden="true" className={expanded ? "is-flip" : ""} />
-            </button>
+            </Button>
           ) : null}
         </div>
       ) : null}

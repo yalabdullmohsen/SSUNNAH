@@ -61,8 +61,10 @@ assert.doesNotMatch(ulum, /\.uq-fact-item[^{]*\{[^}]*#F0F7F4/);
 assert.doesNotMatch(ulum, /\.uq-info-box[^{]*\{[^}]*#FFFBEB/);
 assert.doesNotMatch(ulum, /\.uq-dalil-box[^{]*\{[^}]*#EEF2FF/);
 
-console.log("=== رأس مصطلح قابل للضغط كزر ===");
-assert.match(glossaryView, /<button[\s\S]*?className="gl-term__head"/);
+console.log("=== رأس مصطلح قابل للضغط عبر Button الرسمي ===");
+assert.match(glossaryView, /from ["']@\/components\/ui\/button["']/);
+assert.match(glossaryView, /<Button[\s\S]*?className="gl-term__head"/);
+assert.doesNotMatch(glossaryView, /<button\b/);
 
 console.log("=== مصادر الجنة/النار وأدب الطلب بلا #fff صلب على البطاقة ===");
 const janna = read("src/styles/pages/janna-naar.css");
