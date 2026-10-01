@@ -36,7 +36,7 @@ assert(css.includes("home-page-hero"), "أنماط الهيرو المدمجة")
 assert(!css.includes("home-brand-title__panel"), "لا لوحة زخرفية للهوية في البطاقة");
 assert(!/min-height:\s*clamp\(11\.5rem,\s*33dvh/.test(css), "لا ارتفاع ثلث شاشة زائد");
 assert(!/min-height:\s*unset/.test(css), "لا إلغاء حجز ارتفاع الهيرو");
-assert(/min-height:\s*11rem/.test(css), "ارتفاع الهيرو محجوز");
+assert(/min-height:\s*18rem/.test(css), "ارتفاع الهيرو محجوز = النهائي (~285px)");
 assert(/overflow:\s*visible/.test(css), "الهيرو لا يقصّ عنوان سُنّة");
 assert(/line-height:\s*1\.55/.test(css), "ارتفاع سطر كافٍ للحركات العربية");
 assert(/border-radius:\s*var\(--radius-2xl/.test(css), "زوايا البطاقة ناعمة");

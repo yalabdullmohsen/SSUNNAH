@@ -29,9 +29,9 @@ assert.match(html, /src="\/mj-launch-splash-boot\.js"/);
 assert.match(boot, /SOFT_MAX_MS\s*=\s*480/, "هدف LCP ليّن");
 assert.match(boot, /MAX_MS\s*=\s*1400/, "سقف انتظار خطوط");
 assert.match(boot, /MIN_MS\s*=\s*0/, "بلا تأخير اصطناعي");
-assert.match(critical, /\.hsh-steps[\s\S]*min-height:\s*10rem/, "حجز ارتفاع hsh-steps بعد ضغط ابدأ من هنا");
+assert.match(critical, /\.hsh-steps[\s\S]*min-height:\s*14rem/, "حجز ارتفاع hsh-steps بعد ضغط ابدأ من هنا");
 assert.match(critical, /\.hsh-step[\s\S]*min-height:\s*3\.5rem/, "حجز ارتفاع hsh-step المضغوط");
-assert.match(critical, /\.home-page-hero\.page-hero-mj[\s\S]*min-height:\s*11rem/, "حجز ارتفاع هيرو الرئيسية");
+assert.match(critical, /\.home-page-hero\.page-hero-mj[\s\S]*min-height:\s*18rem/, "حجز ارتفاع هيرو الرئيسية = النهائي");
 assert.match(critical, /\.hus-field[\s\S]*min-height:\s*52px/, "حجز شريط البحث");
 assert.match(critical, /\.daily-wird-card[\s\S]*min-height:\s*28rem/, "حجز ورد اليوم يبقى في CSS الحرج للتوافق");
 assert.match(critical, /\.navbar-v3__tagline-mark[\s\S]*aspect-ratio/, "حجز وردمارك الهيدر");
@@ -101,7 +101,12 @@ assert.equal(
   );
   assert.match(critical, /\.mj-home-primary-discovery-ph[\s\S]*min-height:\s*22rem/, "حجز الاكتشاف المضغوط في CSS الحرج");
   assert.match(critical, /\.home-live-now-ph[\s\S]*min-height:\s*3\.25rem/, "حجز البث في CSS الحرج");
-  assert.match(critical, /\.home-start-here--slim[\s\S]*min-height:\s*7\.5rem|\.home-start-here\s*\{[\s\S]*min-height:\s*8\.5rem/, "حجز ابدأ من هنا المضغوط");
+  assert.match(
+    critical,
+    /\.home-start-here--compact[\s\S]*min-height:\s*20rem|\.home-start-here,.home-start-here--slim,.home-start-here--compact[\s\S]*min-height:\s*20rem/,
+    "حجز ابدأ من هنا المضغوط ≥20rem (CLS إنتاج)",
+  );
 }
+
 
 console.log("cls-home-gate.test.ts: ok");

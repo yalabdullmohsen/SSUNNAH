@@ -8,7 +8,7 @@
   isolation: isolate;
   /* لا تقصّ الشدّة/الضمّة فوق «سُنّة» */
   overflow: visible;
-  min-height: 11rem;
+  min-height: 18rem;
   display: flex;
   align-items: center;
   justify-content: center;

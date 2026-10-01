@@ -53,7 +53,7 @@
 /* ── الرئيسية: Premium Welcome Card ── */
 .home-page-hero.page-hero-mj,
 .home-welcome-premium.page-hero-mj {
-  min-height: 11rem;
+  min-height: 18rem;
   margin-inline: max(0.75rem, var(--page-gutter, 1rem));
   margin-block: 0.55rem 0.85rem;
   padding: 1.15rem 1.1rem 1.25rem;
