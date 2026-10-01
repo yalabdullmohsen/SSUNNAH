@@ -132,11 +132,6 @@ function loadNonCriticalCss() {
     path.startsWith("/scholars") ||
     path.startsWith("/fawaid") ||
     path.startsWith("/adhkar");
-  const isDark =
-    typeof document !== "undefined" &&
-    (document.documentElement.dataset.theme === "dark" ||
-      document.documentElement.classList.contains("dark"));
-
   void import("./styles/z-index-layers.css");
   void import("./styles/motion-policy.css");
   void import("./styles/components/modern-section-shell.css");
@@ -192,8 +187,8 @@ function loadNonCriticalCss() {
     void import("./styles/components/reading-section-card.css");
   }
 
-  /* لا تُحمّل طبقات الليل على الثيم النهاري — كانت تضخّم Home sheets بلا مستهلك */
-  if (isDark && !isDarkCoreLoadStarted()) {
+  /* طبقات الليل على idle دائمًا — contrast/Playwright يطبّق dark بعد load بلا ThemeProvider */
+  if (!isDarkCoreLoadStarted()) {
     void ensureDarkCoreLayers();
   }
 }
