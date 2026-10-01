@@ -103,6 +103,8 @@
 | `docs/remediation/FINAL_CLOSURE_LIVE_BASELINE.md` | **PHASE 0** — قفل الحالة الحية `LIVE_BASELINE_LOCKED` |
 | `docs/audit/ROUTE_FEEDBACK_PRIORITY_CLOSURE_REPORT.md` | **PHASE 1** — Route Feedback Priority + evidence gate |
 | `docs/audit/ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json` | أدلة COMPLETE لمسارات الأولوية |
+| `docs/audit/ROUTE_FEEDBACK_PUBLIC_EXPANSION_REPORT.md` | **PHASE 2** — توسيع Feedback للمسارات العامة |
+| `docs/audit/ROUTE_FEEDBACK_PUBLIC_CLASSIFICATION.json` | تصنيف كل المسارات العامة + أدلة الصنف |
 | `docs/remediation/ROUTE_THEME_OWNERSHIP.md` | مالك سطح المسار (`commitRouteSurface`) — بلا تسرّب pts-immersive |
 | `docs/design/FORM_FEEDBACK_AUTHORITY.md` | **Interaction PR-6** — سلطة النماذج + FormFields + Empty/Loading/Error/Offline |
 | `docs/admin/ADMIN_FINAL_MIGRATION_AND_SECURITY_BASELINE.md` | **ADMIN-FINAL-1** — خط أساس حي للترحيل والأمن |
