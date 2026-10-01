@@ -7,9 +7,11 @@
 | Required state | `BASELINE_LOCKED` |
 | Current verdict | `UNIFIED_PARTIAL` |
 | Startup verdict | `STARTUP_FLICKER_PARTIALLY_FIXED` |
+| Tip supersession (2026-10-01) | Live tip/prod **`01c13f25` MATCH** — see `SUNNAH_MASTER_CLOSURE_REGISTER.md` (do not treat cb2d3636 rows below as current tip) |
+| Next serial | **U3** `EXECUTION_UNLOCKED` after Track 0 |
 
-> Source-of-truth order: live code · GitHub CI · production `version.json` · then historical reports.  
-> Stale claim in program prompt (“PR blocked by Color Contrast / Visual Snapshot”) is **superseded** by live evidence below.
+> Source-of-truth order: live code · GitHub CI · production `version.json` · Master Closure Register · then historical rows in this file.  
+> Stale claim in program prompt (“PR blocked by Color Contrast / Visual Snapshot”) is **superseded** by live evidence.
 
 ---
 

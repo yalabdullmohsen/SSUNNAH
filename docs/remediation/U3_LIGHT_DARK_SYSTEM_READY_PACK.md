@@ -3,9 +3,9 @@
 | Field | Value |
 |-------|-------|
 | Phase | **U3** Light, Dark and System Single Pipeline |
-| Status | **READY_PACK_COMPLETE** (preparation) |
-| Execution | **LOCKED** until U2 = MERGED_AND_DEPLOYED + MATCH + Smoke |
-| Depends on | U2 `TOKEN_CONTRACT_STABLE` |
+| Status | **READY_PACK_COMPLETE** |
+| Execution | **EXECUTION_UNLOCKED** (2026-10-01) — U2 `#2436` MERGED_AND_DEPLOYED · tip/prod MATCH `01c13f25` · Master Closure Register locked · next serial code after Track 0 merge |
+| Depends on | U2 `TOKEN_CONTRACT_STABLE` ✅ |
 | Exit | `DARK_LIGHT_UNIFIED` · production `themeMutAfterFP = 0` |
 | Policy | CEP/PEOP — PREPARATION ONLY until unlock |
 
