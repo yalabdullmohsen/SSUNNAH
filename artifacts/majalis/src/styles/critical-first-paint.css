@@ -284,10 +284,12 @@ html[data-ab="1"] .hus-field {
 .hsh-step{min-height:3.5rem;box-sizing:border-box}
 .home-start-here{min-height:8.5rem}
 .home-start-here--slim{min-height:7.5rem}
-@media (min-width:720px){.hsh-steps{min-height:8rem}.home-start-here{min-height:7.5rem}}
+.home-start-here-band{min-height:8.5rem}
+@media (min-width:720px){.hsh-steps{min-height:8rem}.home-start-here,.home-start-here-band{min-height:7.5rem}}
 .mj-home-lcp-ph__hero-cta{display:inline-flex;align-items:center;justify-content:center;min-width:9.5rem;min-height:2.65rem}
 .home-page-hero .page-hero-mj__eyebrow,.home-page-hero .m2030-hero__eyebrow{min-height:1.35rem}
 .home-page-hero .page-hero-mj__actions{min-height:2.85rem}
+.home-page-hero.page-hero-mj{min-height:9.25rem}
 html:not(.app-hydrated) .app-shell,html:not(.app-hydrated) .app-top-chrome,html:not(.app-hydrated) .bottom-nav,html:not(.app-hydrated) .bottom-nav--v2,html:not(.app-hydrated) .app-main,html:not(.app-hydrated) #main-content{transition:none!important;animation:none!important}
 #root,.app-shell{min-height:100svh;min-height:100dvh;min-height:var(--app-vvh,100dvh)}
 

@@ -39,13 +39,17 @@ export function applyThemePreference(preference: ThemePreference) {
   const resolved = resolveTheme(preference);
   const root = document.documentElement;
   const wantDark = resolved === "dark";
+  const wantScheme = wantDark ? "dark" : "light";
+  /* طبّق color-scheme بصمت إن نقص — بلا لمس class/data-theme */
+  if (root.style.colorScheme !== wantScheme) {
+    root.style.colorScheme = wantScheme;
+  }
   const already =
     root.dataset.theme === resolved &&
     root.classList.contains(wantDark ? "dark" : "light") &&
     root.classList.contains(wantDark ? "theme-dark" : "theme-light") &&
     !root.classList.contains(wantDark ? "light" : "dark") &&
-    !root.classList.contains(wantDark ? "theme-light" : "theme-dark") &&
-    root.style.colorScheme === (wantDark ? "dark" : "light");
+    !root.classList.contains(wantDark ? "theme-light" : "theme-dark");
   // لا تعِد الكتابة إن طابق سكربت الإقلاع — يمنع theme repaint بعد FP
   if (already) {
     void BRAND_THEME_COLOR;

@@ -17,10 +17,19 @@ export function commitRouteSurface(pathname: string): RouteSurfaceMode {
   if (typeof document === "undefined") return resolveRouteSurfaceMode(pathname);
   const root = document.documentElement;
   const mode = resolveRouteSurfaceMode(pathname);
-  root.dataset.routeSurface = mode;
-  root.classList.toggle("pts-immersive", mode === "prayer-dark");
-  root.classList.toggle("chrome-immersive", mode === "mushaf-immersive");
-  if (mode !== "prayer-dark") {
+  /* Idempotent — لا تلمس class/dataset إن طابق الإقلاع (يمنع themeMut الزائف) */
+  if (root.dataset.routeSurface !== mode) {
+    root.dataset.routeSurface = mode;
+  }
+  const wantPts = mode === "prayer-dark";
+  const wantChrome = mode === "mushaf-immersive";
+  if (root.classList.contains("pts-immersive") !== wantPts) {
+    root.classList.toggle("pts-immersive", wantPts);
+  }
+  if (root.classList.contains("chrome-immersive") !== wantChrome) {
+    root.classList.toggle("chrome-immersive", wantChrome);
+  }
+  if (mode !== "prayer-dark" && root.dataset.routeIntent != null) {
     delete root.dataset.routeIntent;
   }
   return mode;

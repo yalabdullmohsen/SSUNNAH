@@ -13,7 +13,7 @@ import { haptics } from "@/lib/haptics";
 import { prefetchAppRoutesShell } from "@/lib/prefetch-app-routes";
 import { shouldAllowNavigation } from "@/lib/nav-click-guard";
 import { prefetchPrayerRouteAssets } from "@/lib/route-surface";
-import "@/styles/pages/profile-hub-v2.css";
+/* Nav polish: sunnah-identity-chrome-nav فقط — لا profile-hub-v2 في مسار الشريط */
 import "@/styles/sunnah-identity-chrome-nav.css";
 
 const HREF_TO_ID: Record<string, BottomTabId> = {

@@ -42,6 +42,9 @@ export function GlobalBackControlHost() {
   const path = normalizeNavPath(location);
   const hideOnHome = path === "/";
   const hideOnMushaf = isImmersiveChromePath(path);
+  /** تبويب صلاة رئيسي — لا Floating Back (كان مصدر CLS ≈0.055 على الإنتاج) */
+  const hideOnPrayer =
+    path === "/prayer-times" || path.startsWith("/prayer-times/");
   const hideOnAdhanSettings =
     path === "/adhan-settings" || path.startsWith("/adhan-settings/");
   /** صفحات قانونية بلا AppBack داخلي — إخفاء العائم صراحة (متوافق مع عقد AppBackButton) */
@@ -51,6 +54,7 @@ export function GlobalBackControlHost() {
   const routeHide =
     hideOnHome ||
     hideOnMushaf ||
+    hideOnPrayer ||
     hideOnAdhanSettings ||
     hideOnLegalSupport ||
     hideOnInPageAppBack;
