@@ -102,12 +102,15 @@ export function isAuthStandalonePath(pathname: string): boolean {
 }
 
 
-/** صفحات بمكوّن رجوع داخلي (هيدر القسم) — يُخفى عنها السهم العائم حتى لا يغطي البطاقات */
+/**
+ * صفحات بمكوّن رجوع داخلي مثبت (AppBackButton فعلي) — يُخفى عنها العائم (FLOATING rule 6).
+ * لا تُوسَّع بلا إثبات consumer؛ المسارات الفرعية بلا AppBack تبقى على Floating fallback.
+ */
 export function hasInPageBackChrome(pathname: string): boolean {
-  // اللوبيات تعتمد FloatingBackButton (بوابات section-lobby) — لا نخفيه هناك.
-  // الصفحات الغمرية/الصلاة تُستثنى عبر isImmersiveChromePath / isPrayerTimesPath.
   const p = pathname.replace(/\/+$/, "") || "/";
   if (isHadithReaderPath(p)) return true;
+  // درس فقه — AppBackButton في FiqhLessonView فقط (ليس لوبي /fiqh ولا كتب/أبواب)
+  if (/^\/fiqh\/books\/[^/]+\/lessons\/[^/]+$/.test(p)) return true;
   return (
     p === "/settings" ||
     p.startsWith("/settings/") ||
@@ -121,6 +124,11 @@ export function hasInPageBackChrome(pathname: string): boolean {
     p.startsWith("/profile/") ||
     p === "/search" ||
     p.startsWith("/search/") ||
-    /^\/lessons\/[^/]+$/.test(p)
+    p === "/lessons" ||
+    /^\/lessons\/[^/]+$/.test(p) ||
+    p === "/quran-hub" ||
+    p === "/sources" ||
+    p === "/competitions" ||
+    p === "/sections"
   );
 }

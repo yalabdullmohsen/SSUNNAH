@@ -44,11 +44,20 @@ export function GlobalBackControlHost() {
   const hideOnMushaf = isImmersiveChromePath(path);
   const hideOnAdhanSettings =
     path === "/adhan-settings" || path.startsWith("/adhan-settings/");
+  /** صفحات قانونية بلا AppBack داخلي — إخفاء العائم صراحة (متوافق مع عقد AppBackButton) */
+  const hideOnLegalSupport = path === "/support" || path === "/contact";
   /** Rule 6: prefer in-page AppBackButton — suppress unified floating host when page chrome owns back */
   const hideOnInPageAppBack = hasInPageBackChrome(path);
-  const routeHide = hideOnHome || hideOnMushaf || hideOnAdhanSettings || hideOnInPageAppBack;
+  const routeHide =
+    hideOnHome ||
+    hideOnMushaf ||
+    hideOnAdhanSettings ||
+    hideOnLegalSupport ||
+    hideOnInPageAppBack;
   const [modalHide, setModalHide] = useState(false);
-  const hideBack = routeHide || modalHide;
+  /** Safety net: any mounted in-page AppBack (not the bar FAB) suppresses the host */
+  const [domInPageBack, setDomInPageBack] = useState(false);
+  const hideBack = routeHide || modalHide || domInPageBack;
 
   useEffect(() => installFloatingLayerSync(), []);
 
@@ -56,21 +65,35 @@ export function GlobalBackControlHost() {
     if (routeHide) {
       document.documentElement.style.setProperty("--global-back-clearance", `0px`);
       document.documentElement.removeAttribute("data-global-back-visible");
+      setDomInPageBack(false);
       return;
     }
+    let raf = 0;
     const sync = () => {
+      const inPage = Boolean(
+        document.querySelector('[data-app-back="1"]:not([data-fixed-back-bar="1"])'),
+      );
+      setDomInPageBack(inPage);
       const suppress = shouldSuppressBackgroundFloating();
       setModalHide(suppress);
-      if (suppress) {
+      if (suppress || inPage) {
         document.documentElement.removeAttribute("data-global-back-visible");
+        document.documentElement.style.setProperty("--global-back-clearance", `0px`);
         return;
       }
       syncBackLayoutVars(hostRef.current);
     };
+    const schedule = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(() => {
+        raf = 0;
+        sync();
+      });
+    };
     sync();
-    window.addEventListener("resize", sync);
-    window.visualViewport?.addEventListener("resize", sync);
-    const mo = new MutationObserver(sync);
+    window.addEventListener("resize", schedule);
+    window.visualViewport?.addEventListener("resize", schedule);
+    const mo = new MutationObserver(schedule);
     mo.observe(document.documentElement, {
       attributes: true,
       attributeFilter: [
@@ -81,10 +104,12 @@ export function GlobalBackControlHost() {
         "style",
       ],
     });
-    mo.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    /* childList محدود على body فقط (بلا attributes) + جدولة rAF — لا polling */
+    mo.observe(document.body, { childList: true, subtree: true });
     return () => {
-      window.removeEventListener("resize", sync);
-      window.visualViewport?.removeEventListener("resize", sync);
+      if (raf) window.cancelAnimationFrame(raf);
+      window.removeEventListener("resize", schedule);
+      window.visualViewport?.removeEventListener("resize", schedule);
       mo.disconnect();
     };
   }, [routeHide]);
