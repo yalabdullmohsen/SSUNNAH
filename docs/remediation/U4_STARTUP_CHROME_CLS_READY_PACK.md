@@ -4,9 +4,9 @@
 |-------|-------|
 | Phase | **U4** Startup Chrome + CLS |
 | Status | **READY_PACK_IN_PROGRESS** (~70%) |
-| Execution | LOCKED until U3 MERGED_AND_DEPLOYED |
-| Exit | `CHROME_FP_EQUALS_FINAL` |
-| Depends | U2 tokens · U3 theme pipeline |
+| Execution | **EXECUTION_UNLOCKED** (2026-10-01) — U3 `DARK_LIGHT_UNIFIED` · tip/prod MATCH `52aa7b2f` |
+| Exit | `CHROME_FP_EQUALS_FINAL` / `STARTUP_CHROME_STABLE` |
+| Depends | U2 tokens ✅ · U3 theme pipeline ✅ |
 
 ## Scope (prep)
 
