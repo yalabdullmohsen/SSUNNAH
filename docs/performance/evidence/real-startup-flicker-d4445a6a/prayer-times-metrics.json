@@ -1,0 +1,1282 @@
+{
+  "route": "prayer-times",
+  "path": "/prayer-times",
+  "url": "https://www.ssunnah.com/prayer-times",
+  "htmlStatus": 200,
+  "contentType": "text/html; charset=utf-8",
+  "cacheControl": "public, max-age=0, must-revalidate",
+  "navMsWall": 8077,
+  "paints": [
+    {
+      "name": "first-paint",
+      "startTime": 428,
+      "duration": 0
+    },
+    {
+      "name": "first-contentful-paint",
+      "startTime": 428,
+      "duration": 0
+    }
+  ],
+  "fp": 428,
+  "fcp": 428,
+  "clsTotal": 0.053832016314038486,
+  "clsAfterFcp": 0.053832016314038486,
+  "clsEntries": [
+    {
+      "value": 0.00002594726797034416,
+      "startTime": 1061.0999999046326,
+      "sources": [
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "svg"
+        },
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "svg"
+        },
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "svg"
+        },
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "svg"
+        },
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "svg"
+        }
+      ]
+    },
+    {
+      "value": 0.05380606904606814,
+      "startTime": 1210.7999999523163,
+      "sources": [
+        {
+          "previousRect": {},
+          "currentRect": {},
+          "selector": "div.global-back-control-host"
+        }
+      ]
+    }
+  ],
+  "themeChanges": [
+    {
+      "t": 581.8999999761581,
+      "attr": "class",
+      "dataTheme": "light",
+      "className": "app-booting light theme-light pts-immersive"
+    },
+    {
+      "t": 592.6999999284744,
+      "attr": "class",
+      "dataTheme": "light",
+      "className": "app-booting light theme-light pts-immersive"
+    },
+    {
+      "t": 592.6999999284744,
+      "attr": "class",
+      "dataTheme": "light",
+      "className": "app-booting light theme-light pts-immersive"
+    },
+    {
+      "t": 595,
+      "attr": "class",
+      "dataTheme": "light",
+      "className": "app-booting light theme-light pts-immersive js-ready"
+    },
+    {
+      "t": 1807.6999999284744,
+      "attr": "class",
+      "dataTheme": "light",
+      "className": "light theme-light pts-immersive js-ready"
+    },
+    {
+      "t": 2907.0999999046326,
+      "attr": "class",
+      "dataTheme": "light",
+      "className": "light theme-light pts-immersive js-ready"
+    }
+  ],
+  "fonts": [
+    {
+      "t": 519.8999999761581,
+      "event": "loadingdone",
+      "status": "loaded",
+      "size": 11
+    },
+    {
+      "t": 520.0999999046326,
+      "event": "fonts.ready",
+      "status": "loaded",
+      "size": 11
+    },
+    {
+      "t": 2573.399999976158,
+      "event": "loadingdone",
+      "status": "loaded",
+      "size": 11
+    }
+  ],
+  "navigation": {
+    "responseStart": 79.89999997615814,
+    "domContentLoadedEventEnd": 563,
+    "loadEventEnd": 563.3999999761581,
+    "domInteractive": 423.6999999284744,
+    "transferSize": 5782
+  },
+  "marks": [
+    {
+      "name": "mj:safe-area-ready",
+      "startTime": 2410.1999999284744
+    },
+    {
+      "name": "mj:safe-area-ready",
+      "startTime": 2510.399999976158
+    },
+    {
+      "name": "mj:safe-area-ready",
+      "startTime": 2511.1999999284744
+    }
+  ],
+  "resourceCss": [
+    {
+      "name": "/fonts/ui/amiri-400-ar.woff2",
+      "startTime": 94.39999997615814,
+      "duration": 185.60000002384186,
+      "transferSize": 92128,
+      "encodedBodySize": 91828,
+      "initiatorType": "link",
+      "responseEnd": 280
+    },
+    {
+      "name": "/fonts/ui/amiri-700-ar.woff2",
+      "startTime": 94.59999990463257,
+      "duration": 300.10000002384186,
+      "transferSize": 100324,
+      "encodedBodySize": 100024,
+      "initiatorType": "link",
+      "responseEnd": 394.6999999284744
+    },
+    {
+      "name": "/assets/index-CWNWtpam.css",
+      "startTime": 94.79999995231628,
+      "duration": 304.2999999523163,
+      "transferSize": 61561,
+      "encodedBodySize": 61261,
+      "initiatorType": "link",
+      "responseEnd": 399.09999990463257
+    },
+    {
+      "name": "/fonts/ui/amiri-400-lat.woff2",
+      "startTime": 408.7999999523163,
+      "duration": 107.79999995231628,
+      "transferSize": 19872,
+      "encodedBodySize": 19572,
+      "initiatorType": "css",
+      "responseEnd": 516.5999999046326
+    },
+    {
+      "name": "/fonts/ui/amiri-700-lat.woff2",
+      "startTime": 419.7999999523163,
+      "duration": 96.39999997615814,
+      "transferSize": 20584,
+      "encodedBodySize": 20284,
+      "initiatorType": "css",
+      "responseEnd": 516.1999999284744
+    },
+    {
+      "name": "/assets/language-offline-Dqh68hOt.css",
+      "startTime": 577.5,
+      "duration": 120.79999995231628,
+      "transferSize": 1529,
+      "encodedBodySize": 1229,
+      "initiatorType": "link",
+      "responseEnd": 698.2999999523163
+    },
+    {
+      "name": "/assets/app-bottom-sheet-C2bPK1on.css",
+      "startTime": 578.0999999046326,
+      "duration": 108.10000002384186,
+      "transferSize": 2423,
+      "encodedBodySize": 2123,
+      "initiatorType": "link",
+      "responseEnd": 686.1999999284744
+    },
+    {
+      "name": "/assets/FocusArrival-DZ1O6Vk1.css",
+      "startTime": 578.5,
+      "duration": 108.19999992847443,
+      "transferSize": 682,
+      "encodedBodySize": 382,
+      "initiatorType": "link",
+      "responseEnd": 686.6999999284744
+    },
+    {
+      "name": "/assets/AppRoutes-BNwGYHVD.css",
+      "startTime": 579.3999999761581,
+      "duration": 121,
+      "transferSize": 882,
+      "encodedBodySize": 582,
+      "initiatorType": "link",
+      "responseEnd": 700.3999999761581
+    },
+    {
+      "name": "/assets/sunnah-identity-chrome-nav-CgzN67hg.css",
+      "startTime": 580,
+      "duration": 118.89999997615814,
+      "transferSize": 1495,
+      "encodedBodySize": 1195,
+      "initiatorType": "link",
+      "responseEnd": 698.8999999761581
+    },
+    {
+      "name": "/assets/profile-hub-v2-BtXge6dX.css",
+      "startTime": 580.0999999046326,
+      "duration": 118.5,
+      "transferSize": 1957,
+      "encodedBodySize": 1657,
+      "initiatorType": "link",
+      "responseEnd": 698.5999999046326
+    },
+    {
+      "name": "/assets/SafeAreaDebugOverlay-Ur9h1QnK.css",
+      "startTime": 580.3999999761581,
+      "duration": 115.29999995231628,
+      "transferSize": 1097,
+      "encodedBodySize": 797,
+      "initiatorType": "link",
+      "responseEnd": 695.6999999284744
+    },
+    {
+      "name": "/assets/app-shell-v2-CL2JEVg2.css",
+      "startTime": 591.6999999284744,
+      "duration": 109.80000007152557,
+      "transferSize": 3883,
+      "encodedBodySize": 3583,
+      "initiatorType": "link",
+      "responseEnd": 701.5
+    },
+    {
+      "name": "/assets/sunnah-identity-responsive-a11y-D1rO4viJ.css",
+      "startTime": 591.7999999523163,
+      "duration": 106.29999995231628,
+      "transferSize": 1110,
+      "encodedBodySize": 810,
+      "initiatorType": "link",
+      "responseEnd": 698.0999999046326
+    },
+    {
+      "name": "/assets/worship-history-v2-CA0n40xM.css",
+      "startTime": 592,
+      "duration": 103.29999995231628,
+      "transferSize": 1931,
+      "encodedBodySize": 1631,
+      "initiatorType": "link",
+      "responseEnd": 695.2999999523163
+    },
+    {
+      "name": "/assets/z-index-layers-C1cXdWlU.css",
+      "startTime": 600.2999999523163,
+      "duration": 127.10000002384186,
+      "transferSize": 566,
+      "encodedBodySize": 266,
+      "initiatorType": "link",
+      "responseEnd": 727.3999999761581
+    },
+    {
+      "name": "/assets/motion-policy-B1s5fTX6.css",
+      "startTime": 600.3999999761581,
+      "duration": 124.19999992847443,
+      "transferSize": 860,
+      "encodedBodySize": 560,
+      "initiatorType": "link",
+      "responseEnd": 724.5999999046326
+    },
+    {
+      "name": "/assets/modern-section-shell-eZQjFsBH.css",
+      "startTime": 600.3999999761581,
+      "duration": 126.10000002384186,
+      "transferSize": 4052,
+      "encodedBodySize": 3752,
+      "initiatorType": "link",
+      "responseEnd": 726.5
+    },
+    {
+      "name": "/assets/sunnah-foundation-type-v_3RKwtj.css",
+      "startTime": 600.5,
+      "duration": 119.69999992847443,
+      "transferSize": 761,
+      "encodedBodySize": 461,
+      "initiatorType": "link",
+      "responseEnd": 720.1999999284744
+    },
+    {
+      "name": "/assets/section-cards-theme-Ben8GeF2.css",
+      "startTime": 600.5,
+      "duration": 123.29999995231628,
+      "transferSize": 4906,
+      "encodedBodySize": 4606,
+      "initiatorType": "link",
+      "responseEnd": 723.7999999523163
+    },
+    {
+      "name": "/assets/green-surface-system-DMfa1boT.css",
+      "startTime": 600.5,
+      "duration": 126.69999992847443,
+      "transferSize": 2346,
+      "encodedBodySize": 2046,
+      "initiatorType": "link",
+      "responseEnd": 727.1999999284744
+    },
+    {
+      "name": "/assets/ssunnah-semantic-tokens-CQ8sIWXj.css",
+      "startTime": 600.5,
+      "duration": 127.89999997615814,
+      "transferSize": 1254,
+      "encodedBodySize": 954,
+      "initiatorType": "link",
+      "responseEnd": 728.3999999761581
+    },
+    {
+      "name": "/assets/card-matte-unify-CLqwJk2z.css",
+      "startTime": 600.6999999284744,
+      "duration": 118.30000007152557,
+      "transferSize": 1231,
+      "encodedBodySize": 931,
+      "initiatorType": "link",
+      "responseEnd": 719
+    },
+    {
+      "name": "/assets/ssunnah-card-unify-qpJyAXbi.css",
+      "startTime": 600.6999999284744,
+      "duration": 124.5,
+      "transferSize": 1386,
+      "encodedBodySize": 1086,
+      "initiatorType": "link",
+      "responseEnd": 725.1999999284744
+    },
+    {
+      "name": "/assets/badge-system-CMJ7SbqK.css",
+      "startTime": 600.6999999284744,
+      "duration": 126.30000007152557,
+      "transferSize": 1453,
+      "encodedBodySize": 1153,
+      "initiatorType": "link",
+      "responseEnd": 727
+    },
+    {
+      "name": "/assets/modern-ui-refresh-CAZhAhhB.css",
+      "startTime": 600.7999999523163,
+      "duration": 121.60000002384186,
+      "transferSize": 4464,
+      "encodedBodySize": 4164,
+      "initiatorType": "link",
+      "responseEnd": 722.3999999761581
+    },
+    {
+      "name": "/assets/foundation-UXnZtnvD.css",
+      "startTime": 600.7999999523163,
+      "duration": 126.89999997615814,
+      "transferSize": 1581,
+      "encodedBodySize": 1281,
+      "initiatorType": "link",
+      "responseEnd": 727.6999999284744
+    },
+    {
+      "name": "/assets/ssunnah-ds-canonical-B3if-Pyt.css",
+      "startTime": 600.7999999523163,
+      "duration": 127,
+      "transferSize": 2434,
+      "encodedBodySize": 2134,
+      "initiatorType": "link",
+      "responseEnd": 727.7999999523163
+    },
+    {
+      "name": "/assets/brand-v4-contrast-fixes-BnRVjaFs.css",
+      "startTime": 600.8999999761581,
+      "duration": 118.19999992847443,
+      "transferSize": 2221,
+      "encodedBodySize": 1921,
+      "initiatorType": "link",
+      "responseEnd": 719.0999999046326
+    },
+    {
+      "name": "/assets/navigation-ovIIdpXS.css",
+      "startTime": 600.8999999761581,
+      "duration": 120.89999997615814,
+      "transferSize": 1574,
+      "encodedBodySize": 1274,
+      "initiatorType": "link",
+      "responseEnd": 721.7999999523163
+    },
+    {
+      "name": "/assets/index-deferred-pages-C9sc21Jj.css",
+      "startTime": 601,
+      "duration": 118.89999997615814,
+      "transferSize": 1618,
+      "encodedBodySize": 1318,
+      "initiatorType": "link",
+      "responseEnd": 719.8999999761581
+    },
+    {
+      "name": "/assets/a11y-release-gate-4WX-vdux.css",
+      "startTime": 601,
+      "duration": 120.59999990463257,
+      "transferSize": 540,
+      "encodedBodySize": 240,
+      "initiatorType": "link",
+      "responseEnd": 721.5999999046326
+    },
+    {
+      "name": "/assets/visual-enrichment-DO4B91SV.css",
+      "startTime": 601,
+      "duration": 127,
+      "transferSize": 2944,
+      "encodedBodySize": 2644,
+      "initiatorType": "link",
+      "responseEnd": 728
+    },
+    {
+      "name": "/assets/instant-interaction-1i6P19TR.css",
+      "startTime": 601.1999999284744,
+      "duration": 109.39999997615814,
+      "transferSize": 1325,
+      "encodedBodySize": 1025,
+      "initiatorType": "link",
+      "responseEnd": 710.5999999046326
+    },
+    {
+      "name": "/assets/section-makarim-pattern-B39qjtcy.css",
+      "startTime": 601.1999999284744,
+      "duration": 120.70000004768372,
+      "transferSize": 2814,
+      "encodedBodySize": 2514,
+      "initiatorType": "link",
+      "responseEnd": 721.8999999761581
+    },
+    {
+      "name": "/assets/compact-sources-CzP5cpNO.css",
+      "startTime": 601.1999999284744,
+      "duration": 124.20000004768372,
+      "transferSize": 1570,
+      "encodedBodySize": 1270,
+      "initiatorType": "link",
+      "responseEnd": 725.3999999761581
+    },
+    {
+      "name": "/assets/design-system-Db8rdCuA.css",
+      "startTime": 601.1999999284744,
+      "duration": 125,
+      "transferSize": 12662,
+      "encodedBodySize": 12362,
+      "initiatorType": "link",
+      "responseEnd": 726.1999999284744
+    },
+    {
+      "name": "/assets/content-reading-shell-C4BSBGSz.css",
+      "startTime": 601.2999999523163,
+      "duration": 118.20000004768372,
+      "transferSize": 2934,
+      "encodedBodySize": 2634,
+      "initiatorType": "link",
+      "responseEnd": 719.5
+    },
+    {
+      "name": "/assets/reading-prose-system-DIyRVvJn.css",
+      "startTime": 601.5,
+      "duration": 121.69999992847443,
+      "transferSize": 2765,
+      "encodedBodySize": 2465,
+      "initiatorType": "link",
+      "responseEnd": 723.1999999284744
+    },
+    {
+      "name": "/assets/sunnah-visual-language-3GCBcB99.css",
+      "startTime": 601.5,
+      "duration": 122.59999990463257,
+      "transferSize": 3379,
+      "encodedBodySize": 3079,
+      "initiatorType": "link",
+      "responseEnd": 724.0999999046326
+    },
+    {
+      "name": "/assets/sunnah-geometry-system-CgxOtH85.css",
+      "startTime": 601.5,
+      "duration": 131.19999992847443,
+      "transferSize": 1365,
+      "encodedBodySize": 1065,
+      "initiatorType": "link",
+      "responseEnd": 732.6999999284744
+    },
+    {
+      "name": "/assets/visual-refresh-v1-CPErb07V.css",
+      "startTime": 601.5999999046326,
+      "duration": 158.60000002384186,
+      "transferSize": 2659,
+      "encodedBodySize": 2359,
+      "initiatorType": "link",
+      "responseEnd": 760.1999999284744
+    },
+    {
+      "name": "/assets/reading-section-card-BxmldoKU.css",
+      "startTime": 601.6999999284744,
+      "duration": 127.60000002384186,
+      "transferSize": 2250,
+      "encodedBodySize": 1950,
+      "initiatorType": "link",
+      "responseEnd": 729.2999999523163
+    },
+    {
+      "name": "/assets/native-feel-3Vlt3r2r.css",
+      "startTime": 601.6999999284744,
+      "duration": 129.70000004768372,
+      "transferSize": 1807,
+      "encodedBodySize": 1507,
+      "initiatorType": "link",
+      "responseEnd": 731.3999999761581
+    },
+    {
+      "name": "/assets/interactions-DPlvel9n.css",
+      "startTime": 601.7999999523163,
+      "duration": 127.20000004768372,
+      "transferSize": 1741,
+      "encodedBodySize": 1441,
+      "initiatorType": "link",
+      "responseEnd": 729
+    },
+    {
+      "name": "/assets/pages-D7ChMe0J.css",
+      "startTime": 601.7999999523163,
+      "duration": 127.20000004768372,
+      "transferSize": 1731,
+      "encodedBodySize": 1431,
+      "initiatorType": "link",
+      "responseEnd": 729
+    },
+    {
+      "name": "/assets/dark-mode-surfaces-CGMgZiPF.css",
+      "startTime": 601.8999999761581,
+      "duration": 127.89999997615814,
+      "transferSize": 4927,
+      "encodedBodySize": 4627,
+      "initiatorType": "link",
+      "responseEnd": 729.7999999523163
+    },
+    {
+      "name": "/assets/premium-dark-refine-nQCflsOL.css",
+      "startTime": 601.8999999761581,
+      "duration": 127.79999995231628,
+      "transferSize": 5261,
+      "encodedBodySize": 4961,
+      "initiatorType": "link",
+      "responseEnd": 729.6999999284744
+    },
+    {
+      "name": "/assets/dark-design-system-DfP5fT-V.css",
+      "startTime": 601.8999999761581,
+      "duration": 131,
+      "transferSize": 2864,
+      "encodedBodySize": 2564,
+      "initiatorType": "link",
+      "responseEnd": 732.8999999761581
+    },
+    {
+      "name": "/assets/brand-v4-components-CcXSAmlr.css",
+      "startTime": 727.1999999284744,
+      "duration": 191.80000007152557,
+      "transferSize": 1384,
+      "encodedBodySize": 1084,
+      "initiatorType": "link",
+      "responseEnd": 919
+    },
+    {
+      "name": "/assets/final-release-D5tx6atc.css",
+      "startTime": 727.2999999523163,
+      "duration": 97.39999997615814,
+      "transferSize": 12004,
+      "encodedBodySize": 11704,
+      "initiatorType": "link",
+      "responseEnd": 824.6999999284744
+    },
+    {
+      "name": "/assets/card-decorative-strip-cleanup-GGE5g2Q-.css",
+      "startTime": 825.5999999046326,
+      "duration": 94.30000007152557,
+      "transferSize": 1462,
+      "encodedBodySize": 1162,
+      "initiatorType": "link",
+      "responseEnd": 919.8999999761581
+    },
+    {
+      "name": "/assets/modern-islamic-editorial-tokens-BItGfE2N.css",
+      "startTime": 825.6999999284744,
+      "duration": 95.10000002384186,
+      "transferSize": 857,
+      "encodedBodySize": 557,
+      "initiatorType": "link",
+      "responseEnd": 920.7999999523163
+    },
+    {
+      "name": "/assets/modern-islamic-editorial-BS3CMsf9.css",
+      "startTime": 825.8999999761581,
+      "duration": 94.5,
+      "transferSize": 1411,
+      "encodedBodySize": 1111,
+      "initiatorType": "link",
+      "responseEnd": 920.3999999761581
+    },
+    {
+      "name": "/assets/ssunnah-screen-patterns-mnVxgDNi.css",
+      "startTime": 930,
+      "duration": 119.19999992847443,
+      "transferSize": 1042,
+      "encodedBodySize": 742,
+      "initiatorType": "link",
+      "responseEnd": 1049.1999999284744
+    },
+    {
+      "name": "/assets/app-state-v2-B65h6OM2.css",
+      "startTime": 930.0999999046326,
+      "duration": 120.20000004768372,
+      "transferSize": 1329,
+      "encodedBodySize": 1029,
+      "initiatorType": "link",
+      "responseEnd": 1050.2999999523163
+    },
+    {
+      "name": "/assets/prayer-times-B5kLs-GH.css",
+      "startTime": 930.1999999284744,
+      "duration": 119.30000007152557,
+      "transferSize": 6052,
+      "encodedBodySize": 5752,
+      "initiatorType": "link",
+      "responseEnd": 1049.5
+    },
+    {
+      "name": "/assets/card-system-D5kNugvE.css",
+      "startTime": 930.5999999046326,
+      "duration": 120.70000004768372,
+      "transferSize": 5074,
+      "encodedBodySize": 4774,
+      "initiatorType": "link",
+      "responseEnd": 1051.2999999523163
+    },
+    {
+      "name": "/assets/card-system-v2-Cgfkcf_L.css",
+      "startTime": 1051.8999999761581,
+      "duration": 108.5,
+      "transferSize": 1473,
+      "encodedBodySize": 1173,
+      "initiatorType": "link",
+      "responseEnd": 1160.3999999761581
+    },
+    {
+      "name": "/assets/islam-intro-experience-DLqM-w2u.css",
+      "startTime": 1052,
+      "duration": 99,
+      "transferSize": 3379,
+      "encodedBodySize": 3079,
+      "initiatorType": "link",
+      "responseEnd": 1151
+    },
+    {
+      "name": "/fonts/ui/noto-naskh-400-lat.woff2",
+      "startTime": 2410.6999999284744,
+      "duration": 159,
+      "transferSize": 20032,
+      "encodedBodySize": 19732,
+      "initiatorType": "css",
+      "responseEnd": 2569.6999999284744
+    }
+  ],
+  "networkCssCount": 56,
+  "networkFontCount": 5,
+  "networkCssSample": [
+    {
+      "url": "/assets/index-CWNWtpam.css",
+      "status": 200,
+      "t": 1790837201473
+    },
+    {
+      "url": "/assets/app-bottom-sheet-C2bPK1on.css",
+      "status": 200,
+      "t": 1790837201761
+    },
+    {
+      "url": "/assets/FocusArrival-DZ1O6Vk1.css",
+      "status": 200,
+      "t": 1790837201769
+    },
+    {
+      "url": "/assets/worship-history-v2-CA0n40xM.css",
+      "status": 200,
+      "t": 1790837201786
+    },
+    {
+      "url": "/assets/SafeAreaDebugOverlay-Ur9h1QnK.css",
+      "status": 200,
+      "t": 1790837201788
+    },
+    {
+      "url": "/assets/sunnah-identity-responsive-a11y-D1rO4viJ.css",
+      "status": 200,
+      "t": 1790837201788
+    },
+    {
+      "url": "/assets/language-offline-Dqh68hOt.css",
+      "status": 200,
+      "t": 1790837201790
+    },
+    {
+      "url": "/assets/profile-hub-v2-BtXge6dX.css",
+      "status": 200,
+      "t": 1790837201790
+    },
+    {
+      "url": "/assets/sunnah-identity-chrome-nav-CgzN67hg.css",
+      "status": 200,
+      "t": 1790837201790
+    },
+    {
+      "url": "/assets/AppRoutes-BNwGYHVD.css",
+      "status": 200,
+      "t": 1790837201791
+    },
+    {
+      "url": "/assets/app-shell-v2-CL2JEVg2.css",
+      "status": 200,
+      "t": 1790837201791
+    },
+    {
+      "url": "/assets/brand-v4-contrast-fixes-BnRVjaFs.css",
+      "status": 200,
+      "t": 1790837201803
+    },
+    {
+      "url": "/assets/instant-interaction-1i6P19TR.css",
+      "status": 200,
+      "t": 1790837201804
+    },
+    {
+      "url": "/assets/card-matte-unify-CLqwJk2z.css",
+      "status": 200,
+      "t": 1790837201807
+    },
+    {
+      "url": "/assets/content-reading-shell-C4BSBGSz.css",
+      "status": 200,
+      "t": 1790837201830
+    },
+    {
+      "url": "/assets/index-deferred-pages-C9sc21Jj.css",
+      "status": 200,
+      "t": 1790837201830
+    },
+    {
+      "url": "/assets/sunnah-foundation-type-v_3RKwtj.css",
+      "status": 200,
+      "t": 1790837201830
+    },
+    {
+      "url": "/assets/navigation-ovIIdpXS.css",
+      "status": 200,
+      "t": 1790837201830
+    },
+    {
+      "url": "/assets/modern-ui-refresh-CAZhAhhB.css",
+      "status": 200,
+      "t": 1790837201830
+    },
+    {
+      "url": "/assets/a11y-release-gate-4WX-vdux.css",
+      "status": 200,
+      "t": 1790837201830
+    },
+    {
+      "url": "/assets/section-makarim-pattern-B39qjtcy.css",
+      "status": 200,
+      "t": 1790837201830
+    },
+    {
+      "url": "/assets/section-cards-theme-Ben8GeF2.css",
+      "status": 200,
+      "t": 1790837201831
+    },
+    {
+      "url": "/assets/reading-prose-system-DIyRVvJn.css",
+      "status": 200,
+      "t": 1790837201831
+    },
+    {
+      "url": "/assets/sunnah-visual-language-3GCBcB99.css",
+      "status": 200,
+      "t": 1790837201831
+    },
+    {
+      "url": "/assets/motion-policy-B1s5fTX6.css",
+      "status": 200,
+      "t": 1790837201831
+    },
+    {
+      "url": "/assets/ssunnah-card-unify-qpJyAXbi.css",
+      "status": 200,
+      "t": 1790837201831
+    },
+    {
+      "url": "/assets/compact-sources-CzP5cpNO.css",
+      "status": 200,
+      "t": 1790837201831
+    },
+    {
+      "url": "/assets/design-system-Db8rdCuA.css",
+      "status": 200,
+      "t": 1790837201831
+    },
+    {
+      "url": "/assets/modern-section-shell-eZQjFsBH.css",
+      "status": 200,
+      "t": 1790837201832
+    },
+    {
+      "url": "/assets/badge-system-CMJ7SbqK.css",
+      "status": 200,
+      "t": 1790837201833
+    },
+    {
+      "url": "/assets/green-surface-system-DMfa1boT.css",
+      "status": 200,
+      "t": 1790837201833
+    },
+    {
+      "url": "/assets/ssunnah-ds-canonical-B3if-Pyt.css",
+      "status": 200,
+      "t": 1790837201833
+    },
+    {
+      "url": "/assets/z-index-layers-C1cXdWlU.css",
+      "status": 200,
+      "t": 1790837201833
+    },
+    {
+      "url": "/assets/foundation-UXnZtnvD.css",
+      "status": 200,
+      "t": 1790837201833
+    },
+    {
+      "url": "/assets/visual-enrichment-DO4B91SV.css",
+      "status": 200,
+      "t": 1790837201833
+    },
+    {
+      "url": "/assets/ssunnah-semantic-tokens-CQ8sIWXj.css",
+      "status": 200,
+      "t": 1790837201833
+    },
+    {
+      "url": "/assets/pages-D7ChMe0J.css",
+      "status": 200,
+      "t": 1790837201833
+    },
+    {
+      "url": "/assets/interactions-DPlvel9n.css",
+      "status": 200,
+      "t": 1790837201833
+    },
+    {
+      "url": "/assets/reading-section-card-BxmldoKU.css",
+      "status": 200,
+      "t": 1790837201833
+    },
+    {
+      "url": "/assets/premium-dark-refine-nQCflsOL.css",
+      "status": 200,
+      "t": 1790837201833
+    },
+    {
+      "url": "/assets/dark-mode-surfaces-CGMgZiPF.css",
+      "status": 200,
+      "t": 1790837201834
+    },
+    {
+      "url": "/assets/native-feel-3Vlt3r2r.css",
+      "status": 200,
+      "t": 1790837201834
+    },
+    {
+      "url": "/assets/dark-design-system-DfP5fT-V.css",
+      "status": 200,
+      "t": 1790837201834
+    },
+    {
+      "url": "/assets/sunnah-geometry-system-CgxOtH85.css",
+      "status": 200,
+      "t": 1790837201834
+    },
+    {
+      "url": "/assets/visual-refresh-v1-CPErb07V.css",
+      "status": 200,
+      "t": 1790837201836
+    },
+    {
+      "url": "/assets/final-release-D5tx6atc.css",
+      "status": 200,
+      "t": 1790837201899
+    },
+    {
+      "url": "/assets/brand-v4-components-CcXSAmlr.css",
+      "status": 200,
+      "t": 1790837201995
+    },
+    {
+      "url": "/assets/card-decorative-strip-cleanup-GGE5g2Q-.css",
+      "status": 200,
+      "t": 1790837201997
+    },
+    {
+      "url": "/assets/modern-islamic-editorial-BS3CMsf9.css",
+      "status": 200,
+      "t": 1790837201997
+    },
+    {
+      "url": "/assets/modern-islamic-editorial-tokens-BItGfE2N.css",
+      "status": 200,
+      "t": 1790837202000
+    },
+    {
+      "url": "/assets/prayer-times-B5kLs-GH.css",
+      "status": 200,
+      "t": 1790837202126
+    },
+    {
+      "url": "/assets/ssunnah-screen-patterns-mnVxgDNi.css",
+      "status": 200,
+      "t": 1790837202127
+    },
+    {
+      "url": "/assets/app-state-v2-B65h6OM2.css",
+      "status": 200,
+      "t": 1790837202128
+    },
+    {
+      "url": "/assets/card-system-D5kNugvE.css",
+      "status": 200,
+      "t": 1790837202128
+    },
+    {
+      "url": "/assets/islam-intro-experience-DLqM-w2u.css",
+      "status": 200,
+      "t": 1790837202227
+    },
+    {
+      "url": "/assets/card-system-v2-Cgfkcf_L.css",
+      "status": 200,
+      "t": 1790837202236
+    }
+  ],
+  "networkFontSample": [
+    {
+      "url": "/fonts/ui/amiri-400-ar.woff2",
+      "status": 200,
+      "t": 1790837201361
+    },
+    {
+      "url": "/fonts/ui/amiri-700-ar.woff2",
+      "status": 200,
+      "t": 1790837201478
+    },
+    {
+      "url": "/fonts/ui/amiri-700-lat.woff2",
+      "status": 200,
+      "t": 1790837201593
+    },
+    {
+      "url": "/fonts/ui/amiri-400-lat.woff2",
+      "status": 200,
+      "t": 1790837201595
+    },
+    {
+      "url": "/fonts/ui/noto-naskh-400-lat.woff2",
+      "status": 200,
+      "t": 1790837203652
+    }
+  ],
+  "snapshotCount": 68,
+  "earlyTheme": {
+    "dataTheme": "light",
+    "classDark": false,
+    "colorScheme": "light",
+    "bg": "rgb(248, 246, 241)",
+    "color": "rgb(21, 56, 45)",
+    "fontFamily": "Times",
+    "fontSize": "16px",
+    "bgToken": "#f8f6f1",
+    "backgroundToken": "#f8f6f1",
+    "fontApp": "\"Amiri\", \"MajlisAmiriFallback\", \"MajlisFallback\", \"Traditional Arabic\", serif",
+    "mjBg": "#f8f6f1",
+    "sfBg": "",
+    "ssBg": ""
+  },
+  "finalTheme": {
+    "dataTheme": "light",
+    "classDark": false,
+    "colorScheme": "light",
+    "bg": "rgb(42, 64, 48)",
+    "color": "rgb(21, 56, 45)",
+    "fontFamily": "Times",
+    "fontSize": "16px",
+    "bgToken": "#f8f6f1",
+    "backgroundToken": "#f8f6f1",
+    "fontApp": "\"Amiri\", \"MajlisAmiriFallback\", \"MajlisFallback\", \"Traditional Arabic\", serif",
+    "mjBg": "#f8f6f1",
+    "sfBg": "",
+    "ssBg": ""
+  },
+  "earlyBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "16px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "finalBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(42, 64, 48)"
+  },
+  "earlyChrome": {
+    "header": {
+      "tag": "HEADER",
+      "className": "",
+      "fontFamily": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "27.2px",
+      "color": "rgb(21, 56, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 27.1875
+      }
+    },
+    "bottom": {
+      "tag": "NAV",
+      "className": "",
+      "fontFamily": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "27.2px",
+      "color": "rgb(21, 56, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": {
+        "x": 0,
+        "y": 320.484375,
+        "w": 390,
+        "h": 27.1875
+      }
+    },
+    "hero": {
+      "tag": "H1",
+      "className": "",
+      "fontFamily": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+      "fontSize": "21.6px",
+      "fontWeight": "700",
+      "lineHeight": "29.16px",
+      "color": "rgb(21, 56, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": {
+        "x": 0,
+        "y": 27.1875,
+        "w": 390,
+        "h": 29.140625
+      }
+    }
+  },
+  "finalChrome": {
+    "header": {
+      "tag": "HEADER",
+      "className": "pts-header",
+      "fontFamily": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+      "fontSize": "17px",
+      "fontWeight": "400",
+      "lineHeight": "28.9px",
+      "color": "rgb(250, 250, 248)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "rect": {
+        "x": 16,
+        "y": 12,
+        "w": 358,
+        "h": 51.4375
+      }
+    },
+    "bottom": {
+      "tag": "NAV",
+      "className": "bottom-nav bottom-nav--v2 bottom-nav--m2030 mj-nav-skin mj-chrome-stable mj-chrome-scrollable bottom-nav--visible",
+      "fontFamily": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+      "fontSize": "17px",
+      "fontWeight": "400",
+      "lineHeight": "26.35px",
+      "color": "rgb(21, 56, 45)",
+      "backgroundColor": "rgb(10, 69, 48)",
+      "rect": {
+        "x": 0,
+        "y": 780,
+        "w": 390,
+        "h": 64
+      }
+    },
+    "hero": {
+      "tag": "SECTION",
+      "className": "pts-hero pts-hero--compact",
+      "fontFamily": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+      "fontSize": "17px",
+      "fontWeight": "400",
+      "lineHeight": "28.9px",
+      "color": "rgb(247, 241, 228)",
+      "backgroundColor": "rgb(10, 47, 36)",
+      "rect": {
+        "x": 16,
+        "y": 77.828125,
+        "w": 358,
+        "h": 178.421875
+      }
+    }
+  },
+  "visualDiff": {
+    "changeCount": 15,
+    "changes": [
+      {
+        "key": "theme.bg",
+        "early": "rgb(248, 246, 241)",
+        "final": "rgb(42, 64, 48)"
+      },
+      {
+        "key": "bodySize",
+        "early": "16px",
+        "final": "17px"
+      },
+      {
+        "key": "bodyBg",
+        "early": "rgb(248, 246, 241)",
+        "final": "rgb(42, 64, 48)"
+      },
+      {
+        "key": "sheetCount",
+        "early": 3,
+        "final": 58
+      },
+      {
+        "key": "header.fontSize",
+        "early": "16px",
+        "final": "17px"
+      },
+      {
+        "key": "header.color",
+        "early": "rgb(21, 56, 45)",
+        "final": "rgb(250, 250, 248)"
+      },
+      {
+        "key": "header.rect",
+        "early": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 27.1875
+        },
+        "final": {
+          "x": 16,
+          "y": 12,
+          "w": 358,
+          "h": 51.4375
+        },
+        "delta": {
+          "dw": 32,
+          "dh": 24.25,
+          "dy": 12
+        }
+      },
+      {
+        "key": "bottom.fontSize",
+        "early": "16px",
+        "final": "17px"
+      },
+      {
+        "key": "bottom.backgroundColor",
+        "early": "rgba(0, 0, 0, 0)",
+        "final": "rgb(10, 69, 48)"
+      },
+      {
+        "key": "bottom.rect",
+        "early": {
+          "x": 0,
+          "y": 320.484375,
+          "w": 390,
+          "h": 27.1875
+        },
+        "final": {
+          "x": 0,
+          "y": 780,
+          "w": 390,
+          "h": 64
+        },
+        "delta": {
+          "dw": 0,
+          "dh": 36.8125,
+          "dy": 459.515625
+        }
+      },
+      {
+        "key": "hero.fontSize",
+        "early": "21.6px",
+        "final": "17px"
+      },
+      {
+        "key": "hero.fontWeight",
+        "early": "700",
+        "final": "400"
+      },
+      {
+        "key": "hero.color",
+        "early": "rgb(21, 56, 45)",
+        "final": "rgb(247, 241, 228)"
+      },
+      {
+        "key": "hero.backgroundColor",
+        "early": "rgba(0, 0, 0, 0)",
+        "final": "rgb(10, 47, 36)"
+      },
+      {
+        "key": "hero.rect",
+        "early": {
+          "x": 0,
+          "y": 27.1875,
+          "w": 390,
+          "h": 29.140625
+        },
+        "final": {
+          "x": 16,
+          "y": 77.828125,
+          "w": 358,
+          "h": 178.421875
+        },
+        "delta": {
+          "dw": 32,
+          "dh": 149.28125,
+          "dy": 50.640625
+        }
+      }
+    ]
+  },
+  "sheetCountEarly": 3,
+  "sheetCountFinal": 58,
+  "scrollbarEarly": 0,
+  "scrollbarFinal": 0
+}
