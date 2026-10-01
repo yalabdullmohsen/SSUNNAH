@@ -5,8 +5,8 @@
 | Program | **SUNNAH MOBILE FIRST EXPANSION** |
 | Product | سُنّة — منصة إسلامية Native First |
 | Relationship | **Extends** MRMP v1 · **Parallel** to UNIFIED U* (web) |
-| Tip at plan | `origin/main` / production **MATCH** `57bdf91e` |
-| License posture | **`LICENSE_CERTIFICATION_REQUIRED`** — see `CONTENT_LICENSE_CERTIFICATION.md` |
+| Tip at plan | synced with `origin/main` @ `2318e97c` (U1 numeric) · license evidence filled |
+| License posture | **`LICENSE_CERTIFICATION_REQUIRED`** — live evidence in `CONTENT_LICENSE_CERTIFICATION.md` |
 | Audio posture | **`AUDIO_LICENSE_PARTIAL`** — see `ADHAN_AUDIO_AUDIT.md` |
 | **Plan status** | **`MOBILE_FIRST_MASTERPLAN_COMPLETE`** |
 | Non-claims | no `STORE_GO` · no `CONTENT_CERTIFIED` · no `AUDIO_CERTIFIED` · no Watch/Widget shipped |
