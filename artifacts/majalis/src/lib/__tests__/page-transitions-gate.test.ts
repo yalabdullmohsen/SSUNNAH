@@ -61,7 +61,7 @@ assert.match(lrf, /lrf-skel--prayer/, "هيكل صلاة بشكل الصفحة �
 assert.match(lrf, /lrf-wrap--search/, "هيكل بحث فوري");
 assert.match(lrf, /lrf-wrap--settings/, "هيكل إعدادات فوري");
 assert.match(instant, /\.lrf-wrap--skel[\s\S]*background:\s*var\(--mj-bg/, "هيكل المسار يرث سطح الواجهة");
-assert.match(app, /prayer-route-shell\.css/, "صدفة صلاة متزامنة مع App");
+assert.match(app, /ensurePrayerRouteShellCss|prayer-route-shell\.css/, "صدفة صلاة مع مسار الصلاة (خارج Home sync)");
 assert.match(app, /commitRouteSurface\(location\)/, "سطح الصلاة قبل الطلاء عبر المالك الوحيد");
 
 assert.match(splash, /hideNativeSplash|dismissHtmlLaunchSplash/, "إقلاع splash → قشرة التطبيق");

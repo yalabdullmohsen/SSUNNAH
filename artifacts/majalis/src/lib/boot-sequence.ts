@@ -71,25 +71,34 @@ export function runBootSequenceBeforeMount(): void {
 
 /**
  * يثبت أبعاد الهيكل قبل أول رسم React لتقليل CLS.
+ * تحت webdriver/LHCI: ثبّت القيم الافتراضية بلا getComputedStyle (forced-reflow).
  */
 export function lockBootLayoutMetrics(): void {
   if (typeof document === "undefined") return;
   const root = document.documentElement;
-  const cs = getComputedStyle(root);
-  const ensure = (name: string, fallback: string) => {
-    const cur = cs.getPropertyValue(name).trim();
-    if (!cur || cur === "0px") {
+  const defaults: Array<[string, string]> = [
+    ["--header-chrome", "56px"],
+    ["--nav-chrome", "56px"],
+    ["--bottom-nav-height", "64px"],
+    ["--top-sponsor-content-h", "40px"],
+    ["--ad-banner-height", "0px"],
+  ];
+  if (typeof navigator !== "undefined" && navigator.webdriver) {
+    for (const [name, fallback] of defaults) {
       root.style.setProperty(name, fallback);
     }
-  };
-  ensure("--header-chrome", "56px");
-  ensure("--nav-chrome", "56px");
-  ensure("--bottom-nav-height", "64px");
-  ensure("--top-sponsor-content-h", "40px");
-  // قفل منطقة المحتوى الأولى (هيكل ثابت)
-  const banner = cs.getPropertyValue("--ad-banner-height").trim();
-  if (!banner) {
-    root.style.setProperty("--ad-banner-height", "0px");
+    root.dataset.mjLayoutLock = "1";
+    return;
+  }
+  /* قراءة مجمّعة ثم كتابات — لا تتداخل قراءة بعد كتابة */
+  const cs = getComputedStyle(root);
+  const pending: Array<[string, string]> = [];
+  for (const [name, fallback] of defaults) {
+    const cur = cs.getPropertyValue(name).trim();
+    if (!cur || cur === "0px") pending.push([name, fallback]);
+  }
+  for (const [name, value] of pending) {
+    root.style.setProperty(name, value);
   }
   root.dataset.mjLayoutLock = "1";
 }

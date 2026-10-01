@@ -1,0 +1,38 @@
+[
+  {
+    "url": "http://127.0.0.1:24216/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/home/runner/work/majalis/majalis/artifacts/majalis/lhci-reports/127_0_0_1--2026_10_01_20_00_33.report.html",
+    "jsonPath": "/home/runner/work/majalis/majalis/artifacts/majalis/lhci-reports/127_0_0_1--2026_10_01_20_00_33.report.json",
+    "summary": {
+      "performance": 0.5,
+      "accessibility": 0.99,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://127.0.0.1:24216/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/home/runner/work/majalis/majalis/artifacts/majalis/lhci-reports/127_0_0_1--2026_10_01_20_00_52.report.html",
+    "jsonPath": "/home/runner/work/majalis/majalis/artifacts/majalis/lhci-reports/127_0_0_1--2026_10_01_20_00_52.report.json",
+    "summary": {
+      "performance": 0.51,
+      "accessibility": 0.99,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://127.0.0.1:24216/",
+    "isRepresentativeRun": true,
+    "htmlPath": "/home/runner/work/majalis/majalis/artifacts/majalis/lhci-reports/127_0_0_1--2026_10_01_20_01_10.report.html",
+    "jsonPath": "/home/runner/work/majalis/majalis/artifacts/majalis/lhci-reports/127_0_0_1--2026_10_01_20_01_10.report.json",
+    "summary": {
+      "performance": 0.52,
+      "accessibility": 0.99,
+      "best-practices": 1,
+      "seo": 1
+    }
+  }
+]

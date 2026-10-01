@@ -18,8 +18,6 @@ import { BOTTOM_NAV_TABS } from "@/lib/nav-map";
 import { isComingSoonPath } from "@/lib/nav-visibility";
 import { ErrorBoundary, SectionErrorBoundary } from "@/components/ErrorBoundary";
 import "@/styles/components/chrome-boot-ph.css";
-/** صدفة مسار الصلاة — متزامنة مع App حتى لا يظهر إطار كريمي قبل prayer-times.css */
-import "@/styles/prayer-route-shell.css";
 import { usePageSeo } from "@/lib/seo";
 import { lazyWithRetry } from "@/lib/lazy-with-retry";
 import { useSharedPrayerData } from "@/components/prayer/PrayerCountdownProvider";
@@ -35,12 +33,18 @@ import {
 } from "@/lib/scroll-document-top";
 import { recordNavigationVisit } from "@/lib/navigation-back";
 import { isAuthStandalonePath, isImmersiveChromePath, isPinnedChromePath, isPrayerTimesPath } from "@/lib/immersive-chrome";
-import { commitRouteSurface } from "@/lib/route-surface";
+import { commitRouteSurface, ensurePrayerRouteShellCss } from "@/lib/route-surface";
 import { isHomeChromePath } from "@/lib/ticker-quiet-paths";
 import { isNative, isNativeApp } from "@/lib/capacitor-utils";
 import { isMiniPlayerVisible, subscribeMiniPlayer } from "@/lib/quran-mini-player";
 import { HomeHeroLcp, HomeRestShell, HomeSearchShell } from "@/components/home/HomeHeroLcp";
 import { HomeStartHereSection } from "@/components/home/HomeStartHereSection";
+
+/** صدفة الصلاة — خارج Home initial CSS؛ تُحمَّل عند مسار/نية الصلاة فقط */
+if (typeof location !== "undefined" && isPrayerTimesPath(location.pathname || "/")) {
+  ensurePrayerRouteShellCss();
+}
+
 const HomeUniversalSearch = lazyWithRetry(
   () =>
     import("@/components/home/HomeUniversalSearch").then((m) => ({
@@ -735,6 +739,7 @@ function AppShellInner() {
 
   /* قبل الطلاء — مالك وحيد لـ pts-immersive (لا Prefetch/warm) */
   useLayoutEffect(() => {
+    if (isPrayerTimesPath(location)) ensurePrayerRouteShellCss();
     commitRouteSurface(location);
   }, [location]);
 

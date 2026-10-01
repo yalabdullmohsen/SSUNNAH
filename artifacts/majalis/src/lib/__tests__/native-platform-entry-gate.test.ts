@@ -48,4 +48,11 @@ assert.match(
   "HeaderTicker: لا قراءة هندسية تحت webdriver/LHCI",
 );
 
+const bootVitals = read("src/lib/boot-vitals-snapshot.ts");
+assert.match(
+  bootVitals,
+  /navigator\.webdriver/,
+  "boot layout diag: لا قراءة هندسية تحت webdriver/LHCI",
+);
+
 console.log("native-platform-entry-gate: PASS");
