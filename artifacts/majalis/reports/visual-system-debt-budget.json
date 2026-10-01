@@ -1,7 +1,7 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Ceilings must not rise. Lower intentionally in later waves; never raise without documented exception.",
+  "note": "PHASE7: Back Authority \u2014 important 4787\u21924784 after removing AppBack CSS hide !important.",
   "floors": {
     "officialButtonImportFiles": 202,
     "sfTokenRefs": 757,
@@ -9,7 +9,7 @@
   },
   "ceilings": {
     "cssFiles": 356,
-    "important": 4787,
+    "important": 4784,
     "hexInCss": 8905,
     "rgbHslInCss": 2124,
     "mjDeclarations": 193,
@@ -20,5 +20,5 @@
     "inlineColorStyleMatches": 48,
     "rawButtonFiles": 168
   },
-  "updatedAt": "2026-09-30T23:44:49.511Z"
+  "updatedAt": "2026-10-01T01:50:00.000Z"
 }

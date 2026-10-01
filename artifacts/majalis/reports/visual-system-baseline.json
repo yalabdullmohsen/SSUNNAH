@@ -1,10 +1,10 @@
 {
-  "measuredAt": "2026-09-30T23:53:47.140Z",
+  "measuredAt": "2026-10-01T01:51:06.576Z",
   "scope": "artifacts/majalis/src",
   "cssFiles": 356,
   "tsxFiles": 831,
   "ruleBlocksApprox": 20677,
-  "important": 4787,
+  "important": 4784,
   "hexInCss": 8905,
   "rgbHslInCss": 2124,
   "mjTokenRefs": 9950,

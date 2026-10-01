@@ -1,19 +1,19 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "PHASE6: Buttons residual absorb — Privacy/Progress/Glossary/Circles/Updates/Upload/Contact/Support/Submit/UserStats/Alamat/Institutions/NewMuslim/Sects/UniCompare → Button/IconButton.",
+  "note": "PHASE7: Back Authority — removed calm-polish AppBack display:none !important; buttonRelatedImportant 1262→1258.",
   "ceilings": {
     "rawButtonFiles": 168,
     "rawButtonElements": 650,
     "divSpanOnClick": 59,
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
-    "buttonRelatedImportantApprox": 1262,
+    "buttonRelatedImportantApprox": 1258,
     "buttonRelatedHexApprox": 1708
   },
   "floors": {
     "officialButtonImportFiles": 202,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-09-30T23:45:00.000Z"
+  "updatedAt": "2026-10-01T01:50:00.000Z"
 }

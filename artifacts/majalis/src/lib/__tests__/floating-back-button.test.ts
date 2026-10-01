@@ -21,6 +21,8 @@ assert.match(fab, /autoHideFloating=\{false\}/, "الشريط لا يُخفى ع
 assert.match(fab, /path === "\/"|hideOnHome/, "إخفاء على الرئيسية");
 assert.match(fab, /isImmersiveChromePath|hideOnMushaf/, "إخفاء على المصحف");
 assert.match(fab, /adhan-settings|hideOnAdhanSettings/, "إخفاء على إعدادات الأذان — هيدر داخلي");
+assert.match(fab, /hasInPageBackChrome|hideOnInPageAppBack/, "إخفاء عند رجوع داخلي (rule 6)");
+assert.match(fab, /data-app-back="1"\]:not\(\[data-fixed-back-bar/, "شبكة أمان DOM ضد الازدواج");
 assert.match(fab, /hideBack/, "إخفاء موحّد");
 assert.doesNotMatch(fab, /ChevronUp/);
 assert.match(fab, /data-visible="1"|data-global-back-visible/, "ظاهر أسفل يمين");
