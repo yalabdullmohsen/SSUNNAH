@@ -19,6 +19,7 @@ assert.match(fab, /variant="bar"/);
 assert.match(fab, /AppBackButton/);
 assert.match(fab, /autoHideFloating=\{false\}/, "الشريط لا يُخفى على /profile والإعدادات العامة");
 assert.match(fab, /path === "\/"|hideOnHome/, "إخفاء على الرئيسية");
+assert.match(fab, /prayer-times|hideOnPrayer/, "إخفاء على الصلاة — منع CLS للمضيف");
 assert.match(fab, /isImmersiveChromePath|hideOnMushaf/, "إخفاء على المصحف");
 assert.match(fab, /adhan-settings|hideOnAdhanSettings/, "إخفاء على إعدادات الأذان — هيدر داخلي");
 assert.match(fab, /hasInPageBackChrome|hideOnInPageAppBack/, "إخفاء عند رجوع داخلي (rule 6)");

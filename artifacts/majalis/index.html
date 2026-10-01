@@ -73,12 +73,18 @@
             if (__path === "/prayer-times" || __path.indexOf("/prayer-times/") === 0) {
               html.classList.add("pts-immersive");
               html.dataset.routeSurface = "prayer-dark";
+              html.dataset.homeChrome = "0";
             } else if (__path === "/mushaf" || __path.indexOf("/mushaf/") === 0) {
               html.classList.add("chrome-immersive");
               html.dataset.routeSurface = "mushaf-immersive";
+              html.dataset.homeChrome = "0";
             } else if (__path === "/") {
+              html.dataset.routeSurface = "standard-light";
               html.dataset.startupHero = "1";
               html.dataset.homeChrome = "1";
+            } else {
+              html.dataset.routeSurface = "standard-light";
+              html.dataset.homeChrome = "0";
             }
           } catch (_) {}
           var splashBg = resolved === "dark" ? "#101614" : "#F8F6F1";
@@ -154,11 +160,35 @@
               if (ph && ph.parentNode) ph.parentNode.removeChild(ph);
             } catch (_) {}
           }
+          /** أبقِ الهيكل حتى يظهر كروم React — يمنع فراغ/CLS بين الإزالة والتركيب */
+          function removeStartupChromeWhenReady() {
+            var rs = html.dataset.routeSurface;
+            if (rs === "prayer-dark" || rs === "mushaf-immersive") {
+              removeStartupChrome();
+              return;
+            }
+            var tries = 0;
+            function tick() {
+              tries++;
+              var hasHeader = document.querySelector(
+                ".app-top-chrome, header.navbar-v3, .navbar-v3",
+              );
+              var hasBottom = document.querySelector(
+                ".bottom-nav, .bottom-nav--v2, [data-bottom-nav]",
+              );
+              if ((hasHeader && hasBottom) || tries > 120) {
+                removeStartupChrome();
+                return;
+              }
+              requestAnimationFrame(tick);
+            }
+            tick();
+          }
           function clearBooting() {
             /* لا تلمس class — فقط data-app-booting (مراقب الثيم يراقب class/data-theme فقط) */
             if (html.dataset.appBooting !== "0") html.dataset.appBooting = "0";
             if (html.dataset.ab !== "0") html.dataset.ab = "0";
-            removeStartupChrome();
+            removeStartupChromeWhenReady();
             /* مصدر واحد: حتى مع إزالة مبكرة أطلق shell-stable مرة */
             if (window.__mjShellStableFired) return;
             window.__mjShellStableFired = true;
@@ -166,15 +196,12 @@
               window.dispatchEvent(new Event("mj:shell-stable"));
             } catch (_) {}
           }
-          /* عقد جاهزية مختصر: أول commit لـ #root = React mounted + App Shell —
-             بلا انتظار Auth/Home وبلا جسر أحداث من الحزمة. */
+          /* عقد جاهزية: أول commit لـ #root ثم إزالة الهيكل عند كروم React النهائي */
           var rootEl = document.getElementById("root");
           if (rootEl) {
             var mo = new MutationObserver(function () {
               if (!rootEl.childNodes.length) return;
               mo.disconnect();
-              /* أزل الهيكل فورًا حتى لا يلوّث querySelector(.bottom-nav/.navbar-ticker-row) */
-              removeStartupChrome();
               requestAnimationFrame(function () {
                 requestAnimationFrame(clearBooting);
               });
@@ -182,7 +209,6 @@
             mo.observe(rootEl, { childList: true });
             if (rootEl.childNodes.length) {
               mo.disconnect();
-              removeStartupChrome();
               requestAnimationFrame(function () {
                 requestAnimationFrame(clearBooting);
               });

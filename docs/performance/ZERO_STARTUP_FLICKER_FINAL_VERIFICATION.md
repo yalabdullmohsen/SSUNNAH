@@ -199,38 +199,83 @@ Summary: `evidence/zero-startup-flicker-final-local/summary.json` (filmstrip PNG
 
 ---
 
-## 12) Remaining debt
+## 12) Remaining debt (before follow-up closure)
 
 1. **Deferred volume** على الإنتاج Home 3→108.
 2. **Hero residual** على Home + header/nav jumps على Search/QuranHub.
 3. **theme mut = 2** على غير-الرئيسية بعد FP.
 4. **CLS إنتاج**: Home 0.0257 · Prayer 0.0552 (فوق الهدف).
-5. **profile-hub-v2.css** ما زال مستوردًا من BottomNavBar.
-6. **Token hardening** (متابعة): `--color-brand-deep` الليلي كان يشير لسطح `#0E1C17` بدل حبر مقروء — خُفّف عبر dark layers؛ يُفضّل alias رمزي دائم.
+5. ~~**profile-hub-v2.css** مستورد من BottomNavBar~~ → **أُصلح** في follow-up (انظر §CURRENT).
+6. **Token hardening** (متابعة منفصلة): `--color-brand-deep` الليلي.
 
 ---
 
-## 13) Final verdict
+## CURRENT CI FAILURE CLOSURE
+
+| Gate | Status |
+|---|---|
+| Color Contrast | **SUCCESS** على #2430 — لا إعادة فتح |
+| Visual Snapshot | **SUCCESS** على #2430 — لا تحديث baseline |
+| Verify build / ci-required | **SUCCESS** على #2430 |
+
+## COLOR CONTRAST BEFORE AND AFTER
+
+لا regressions جديدة في هذا الـfollow-up (لا تعديل تباين دلالي). الحالات السابقة أُغلقت في #2430.
+
+## VISUAL SNAPSHOT BEFORE AND AFTER
+
+لا تحديث snapshots. إصلاح هندسة الإقلاع يستهدف منع فراغ Home Dark دون إخفاء الفرق.
+
+## HOME DARK GEOMETRY
+
+- `data-home-chrome=0` على غير-الرئيسية من الإقلاع.
+- إزالة `#mj-startup-chrome` فقط بعد وجود Header+Bottom React (غير غامر).
+- احتياط `home-start-here-band` / `home-page-hero` في `critical-first-paint.css`.
+
+## PRAYER GEOMETRY
+
+- إخفاء `GlobalBackControlHost` على `/prayer-times` (كان مصدر CLS ≈0.055).
+- `pts-immersive` من boot + `commitRouteSurface` idempotent.
+
+## THEME MUTATIONS
+
+- `applyThemePreference`: color-scheme بصمت ثم early-return دون لمس class إن تطابق.
+- `commitRouteSurface`: كتابة dataset/class فقط عند الاختلاف.
+
+## DEFERRED CSS BEFORE AND AFTER
+
+انظر `docs/design/DEFERRED_CSS_CONSUMER_MATRIX_V2.md` — فصل profile-hub عن BottomNav.
+
+## LOCAL VERIFICATION
+
+يُحدَّث بعد `verify:ci` على فرع الـfollow-up.
+
+## MAIN CI AND DEPLOYMENT / PRODUCTION VERSION MATCH / PRODUCTION MEASUREMENTS
+
+يُملأ بعد الدمج + MATCH + إعادة القياس.
+
+## REMAINING DEBT
+
+يُحدَّث بعد القياس الإنتاجي للـfollow-up.
+
+## FINAL VERDICT
 
 ### **STARTUP_FLICKER_PARTIALLY_FIXED**
 
-**لماذا ليس COMPLETE**
+(يُعاد الحكم فقط بعد MATCH + قياس إنتاجي للـfollow-up — ممنوع COMPLETE قبله)
 
-- إنتاج `7d4b3044`: Home CLS **0.0257** وPrayer CLS **0.0552**.
-- theme mutations after FP ≠ 0 على Search/QuranHub/Mushaf/Prayer (=2).
-- Header/Hero/BottomNav jump ما زال على مسارات غير-Home + hero residual على Home.
-- Deferred sheets مرتفع (Home 3→108).
+**لماذا ليس COMPLETE بعد**
+
+- إنتاج `7d4b3044`/`cb2d3636` ما زال يحمل CLS/themeMut السابقين حتى ينشر الـfollow-up ويُقاس.
 
 **لماذا ليس NOT_FIXED**
 
-- PR #2430 دُمج ونُشر: Contrast/visual/Verify/ci-required خضراء.
-- `font-size delta = 0` · `background delta = 0` على الإنتاج ✓
-- Mushaf CLS = 0 · Home theme mut = 0 على الإنتاج ✓
-- ختم html/body/#root + هيكل كروم بلا selectors إنتاجية ✓
+- #2430 خضراء ومطابقة إنتاجيًا للعقود المغلقة (font/bg/Mushaf CLS).
+- Follow-up يغلق جذور Prayer CLS + chrome removal race + nav CSS coupling.
 
 ---
 
-## Success criteria checklist (production `7d4b3044`)
+## Success criteria checklist (production `7d4b3044` / `cb2d3636` قبل follow-up)
 
 | Criterion | Result |
 |-----------|--------|
@@ -243,4 +288,4 @@ Summary: `evidence/zero-startup-flicker-final-local/summary.json` (filmstrip PNG
 | No deferred identity repaint (body) | ✓ |
 | No deferred identity repaint (full) | △ sheets |
 | First Paint ≈ Final Paint (canvas) | ✓ body · △ chrome |
-| Production MATCH measure | ✓ `7d4b3044` |
+| Production MATCH measure | ✓ `cb2d3636` tip |
