@@ -170,7 +170,13 @@ export async function playAdhanUrlAsync(
   audio.preload = "auto";
   audio.volume = useFade ? 0 : targetVol;
   _current = audio;
-  audio.src = preferLocalAdhanUrl(url);
+  // Prefer Cache API blob when available (offline CDN packs); else local/CDN URL.
+  revokeObjectUrl();
+  try {
+    audio.src = await resolvePlayableUrl(url);
+  } catch {
+    audio.src = preferLocalAdhanUrl(url);
+  }
 
   const maxMs = opts?.maxMs;
   if (typeof maxMs === "number" && maxMs > 0) {
@@ -214,7 +220,6 @@ export async function playAdhanUrlAsync(
       return { ok: false, code: "unknown", message: "أُلغي التشغيل." };
     }
     if (useFade && _current === audio) fadeIn(audio, targetVol);
-    void resolvePlayableUrl(url).catch(() => undefined);
     return { ok: true, audio };
   } catch (err) {
     if (

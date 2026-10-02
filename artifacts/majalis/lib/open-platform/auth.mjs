@@ -26,7 +26,8 @@ export function generateApiKey(prefix = "maj") {
 export function extractApiKey(req) {
   const auth = req.headers?.authorization || req.headers?.Authorization;
   if (auth?.startsWith("Bearer ")) return auth.slice(7).trim();
-  return req.headers?.["x-api-key"] || req.query?.api_key || null;
+  // Header only — never accept api_key in query (logs / Referer leak).
+  return req.headers?.["x-api-key"] || null;
 }
 
 export async function validateApiKey(req, { requiredScope, resource } = {}) {

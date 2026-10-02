@@ -20,6 +20,7 @@ import "@/styles/pages/university-detail.css";
 import "@/styles/pages/learning-path-dashboard.css";
 import { DetailScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
+import { safeHttpHref } from "@/lib/sanitize";
 
 function ProgramCard({ program: p }: { program: UniversityProgram }) {
   const [open, setOpen] = useState(false);
@@ -115,8 +116,8 @@ function ProgramCard({ program: p }: { program: UniversityProgram }) {
                     </span>
                   </div>
                 )}
-                {req.application_url && (
-                  <a href={req.application_url} target="_blank" rel="noopener noreferrer"
+                {safeHttpHref(req.application_url) && (
+                  <a href={safeHttpHref(req.application_url)} target="_blank" rel="noopener noreferrer"
                     className="flex items-center gap-1.5 px-4 py-2 citation-btn citation-btn--primary rounded-xl text-sm font-medium transition-colors">
                     <ExternalLink size={13} aria-hidden="true" /> رابط التقديم الرسمي ↗
                   </a>
@@ -180,8 +181,8 @@ function DetailContent({ university: u }: { university: University }) {
 
           {/* أزرار */}
           <div className="flex gap-2 mt-5 flex-wrap">
-            {u.website_url && (
-              <a href={u.website_url} target="_blank" rel="noopener noreferrer" className="udp-website-btn">
+            {safeHttpHref(u.website_url) && (
+              <a href={safeHttpHref(u.website_url)} target="_blank" rel="noopener noreferrer" className="udp-website-btn">
                 <Globe size={14} aria-hidden="true" /> الموقع الرسمي ↗
               </a>
             )}
@@ -244,13 +245,14 @@ function DetailContent({ university: u }: { university: University }) {
           <section>
             <h2 className="udp-section-title">وسائل التواصل</h2>
             <div className="flex flex-wrap gap-2">
-              {Object.entries(u.social_links).map(([platform, url]) => (
-                url && (
-                  <a key={platform} href={url} target="_blank" rel="noopener noreferrer" className="udp-social-link">
+              {Object.entries(u.social_links).map(([platform, url]) => {
+                const href = safeHttpHref(url);
+                return href ? (
+                  <a key={platform} href={href} target="_blank" rel="noopener noreferrer" className="udp-social-link">
                     {platform} ↗
                   </a>
-                )
-              ))}
+                ) : null;
+              })}
             </div>
           </section>
         )}

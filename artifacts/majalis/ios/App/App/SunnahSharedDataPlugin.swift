@@ -1,5 +1,6 @@
 import Foundation
 import Capacitor
+import WidgetKit
 
 /// Capacitor bridge — publish non-secret prayer/progress snapshots into App Group
 /// for future Widget / Watch / Live Activity readers.
@@ -57,7 +58,11 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
             nextHasStarted: call.getBool("nextHasStarted") ?? false,
             updatedAtEpochMs: Int64(Date().timeIntervalSince1970 * 1000)
         )
-        call.resolve(["ok": SunnahSharedStore.publishPrayer(snap)])
+        let ok = SunnahSharedStore.publishPrayer(snap)
+        if ok {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
+        call.resolve(["ok": ok])
     }
 
     @objc func publishProgressSnapshot(_ call: CAPPluginCall) {
@@ -68,7 +73,11 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
             mushafPagesReadToday: call.getInt("mushafPagesReadToday") ?? 0,
             updatedAtEpochMs: Int64(Date().timeIntervalSince1970 * 1000)
         )
-        call.resolve(["ok": SunnahSharedStore.publishProgress(snap)])
+        let ok = SunnahSharedStore.publishProgress(snap)
+        if ok {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
+        call.resolve(["ok": ok])
     }
 
     @objc func readPrayerSnapshot(_ call: CAPPluginCall) {

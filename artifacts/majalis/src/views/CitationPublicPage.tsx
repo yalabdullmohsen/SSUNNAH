@@ -21,6 +21,7 @@ import { truncateAtWord } from "@/lib/utils";
 import "@/styles/pages/citation-public.css";
 import { DetailScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
+import { safeHttpHref } from "@/lib/sanitize";
 
 export default function CitationPublicPage() {
   const [, params] = useRoute("/c/:slug");
@@ -121,7 +122,9 @@ export default function CitationPublicPage() {
   const src = citation.source;
   const typeMod = src ? citTypeClass(src.content_type) : "cit-type--fatwa";
   const typeLabel = src ? CONTENT_TYPE_LABEL[src.content_type] || "" : "";
-  const sourceHref = src?.source_url || (src?.reference_id ? `/${src.content_type.replace("_", "-")}/${src.reference_id}` : "/");
+  const sourceHref =
+    safeHttpHref(src?.source_url) ||
+    (src?.reference_id ? `/${src.content_type.replace("_", "-")}/${src.reference_id}` : "/");
 
   return (
     <DetailScreen compose="mark">

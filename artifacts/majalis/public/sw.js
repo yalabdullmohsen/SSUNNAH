@@ -268,7 +268,11 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(req.url);
 
   // External Quran/prayer APIs → cache-first (data rarely changes mid-day)
-  if (DATA_FIRST_ORIGINS.some((h) => url.hostname.includes(h))) {
+  if (
+    DATA_FIRST_ORIGINS.some(
+      (h) => url.hostname === h || url.hostname.endsWith(`.${h}`),
+    )
+  ) {
     event.respondWith(cacheFirst(req, DATA_CACHE));
     return;
   }
@@ -706,6 +710,28 @@ self.addEventListener("push", (event) => {
   event.waitUntil(self.registration.showNotification(title, options));
 });
 
+/** Notification nav: relative same-origin paths only (reject javascript:/data:/external). */
+function sanitizeNotificationNavUrl(raw, fallback) {
+  const fb = fallback || "/";
+  if (typeof raw !== "string") return fb;
+  const t = raw.trim();
+  if (!t) return fb;
+  if (/^(javascript|data|vbscript):/i.test(t)) return fb;
+  if (t.startsWith("/") && !t.startsWith("//") && !t.includes("://")) {
+    if (t.includes("..")) return fb;
+    return t;
+  }
+  try {
+    const u = new URL(t, self.location.origin);
+    if (u.origin === self.location.origin) {
+      return `${u.pathname}${u.search}${u.hash}` || fb;
+    }
+  } catch {
+    /* ignore */
+  }
+  return fb;
+}
+
 self.addEventListener("notificationclick", (event) => {
   const action = event.action;
   event.notification.close();
@@ -720,7 +746,10 @@ self.addEventListener("notificationclick", (event) => {
             /* ignore */
           }
         }
-        const target = event.notification.data?.url || "/prayer-times";
+        const target = sanitizeNotificationNavUrl(
+          event.notification.data?.url,
+          "/prayer-times",
+        );
         const match = all.find((c) => "focus" in c);
         if (match) return match.focus();
         return clients.openWindow(target);
@@ -732,10 +761,18 @@ self.addEventListener("notificationclick", (event) => {
   const target =
     action === "open-prayer"
       ? "/prayer-times"
-      : event.notification.data?.url || "/";
+      : sanitizeNotificationNavUrl(event.notification.data?.url, "/");
   event.waitUntil(
     clients.matchAll({ type: "window", includeUncontrolled: true }).then((all) => {
-      const match = all.find((c) => c.url.includes(target) && "focus" in c);
+      const match = all.find((c) => {
+        if (!("focus" in c)) return false;
+        try {
+          const path = new URL(c.url).pathname;
+          return path === target || (target !== "/" && path.startsWith(target.endsWith("/") ? target : `${target}/`));
+        } catch {
+          return false;
+        }
+      });
       if (match) return match.focus();
       return clients.openWindow(target);
     }),

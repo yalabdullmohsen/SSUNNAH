@@ -244,7 +244,8 @@ console.log("=== Malformed legacy session does not crash ===");
   const got = await storage.getItem("sb-bad");
   assert.equal(got, null);
   assert.equal(chain.has("sb-bad"), false);
-  assert.equal(mem.get(__authStorageTest.MIGRATION_FLAG), "1");
+  // Non-session keys must not set global migration flag (would skip later real sessions).
+  assert.notEqual(mem.get(__authStorageTest.MIGRATION_FLAG), "1");
   __resetSunnahAuthKeychainPluginCacheForTests();
   restore();
 }

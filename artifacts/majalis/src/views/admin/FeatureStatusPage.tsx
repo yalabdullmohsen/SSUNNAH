@@ -326,7 +326,7 @@ export default function FeatureStatusPage() {
                         <td>{f.pr ? `#${f.pr}` : "—"}</td>
                         <td>
                           {(f.routes || []).map((r) => (
-                            <a key={r} href={`https://www.ssunnah.com${r}`} target="_blank" rel="noreferrer">
+                            <a key={r} href={`https://www.ssunnah.com${r}`} target="_blank" rel="noopener noreferrer">
                               {r}
                             </a>
                           ))}

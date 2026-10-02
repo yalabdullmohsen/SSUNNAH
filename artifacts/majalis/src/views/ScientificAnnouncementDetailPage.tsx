@@ -13,12 +13,10 @@ import { ContentDetailLayout } from "@/components/platform/ContentDetailLayout";
 import "@/styles/pages/scientific-announcements.css";
 import { DetailScreen } from "@/components/design-system/screens";
 
+import { safeHttpHref } from "@/lib/sanitize";
+
 function safeHref(url?: string): string | undefined {
-  if (!url) return undefined;
-  try {
-    const { protocol } = new URL(url);
-    return protocol === "https:" || protocol === "http:" ? url : undefined;
-  } catch { return undefined; }
+  return safeHttpHref(url);
 }
 
 function DetailRow({ label, value }: { label: string; value?: string }) {

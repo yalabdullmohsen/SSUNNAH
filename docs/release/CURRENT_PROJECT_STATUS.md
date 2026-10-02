@@ -1,6 +1,6 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-10-02 (PR #2471 merged · production MATCH · main CI green)  
+**Updated:** 2026-10-02 (FINAL_REPOSITORY_HARDENING_PROGRAM on branch · P1/P2/P3 repo defects closed in source)  
 **Master closure register:** `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` · **LOCKED**  
 **iOS-only board:** `docs/audit/IOS_ONLY_CLOSURE_BOARD.md` · **`LIVE_TRUTH_LOCKED_IOS_ONLY`**  
 **Boundary report (living):** `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md`  
@@ -47,8 +47,20 @@
 |---|---|
 | Client review credentials | **REMOVED** · `NO_CLIENT_EMBEDDED_REVIEW_CREDENTIALS` |
 | Cap Supabase storage | **Keychain adapter in source** · `CAPACITOR_AUTH_STORAGE_HARDENED` |
+| Sign-out order | **FIXED** · revoke server session → clear native/local storage |
+| Admin role updates | **Admin API only** · anon client path removed · `requireAdminAccess` + `users.manage` |
 | Build 55 binary | Still prior contract (localStorage) — cannot certify new auth on 55 |
 | Device certification | **OPEN** · requires next build > 55 |
+
+## FINAL_REPOSITORY_HARDENING_PROGRAM (repository-only)
+
+| Class | Status |
+|---|---|
+| Open P1 | **0** (signOut · admin role · mushaf reduced-motion · LA linger) |
+| Open security P2 | **0** (SW openWindow · OpenAPI key header · safeHttpHref CMS sinks) |
+| Open runtime P2 | **0** (auth LS fallback · adhan cache · clearAll keys · prayer enter · widget reload · AppState race · boxShadow 1112) |
+| Open P3 hygiene | **0** (LA await · SW hostname match · security UI walks admin) |
+| Explicit non-claims | no App Store / TestFlight / device certification from this program |
 
 ## Closure program WAVE7→13 (merged + deployed)
 

@@ -778,7 +778,8 @@
     "test:admin-final-6-automation": "node --import tsx src/lib/__tests__/admin-final-6-automation-gate.test.ts",
     "test:ios-release-candidate": "node --import tsx src/lib/__tests__/ios-release-candidate-gate.test.ts",
     "test:ios-build-version-traceability": "node --import tsx src/lib/__tests__/ios-build-version-traceability-gate.test.ts",
-    "test:supabase-auth-storage": "node --import tsx src/lib/__tests__/supabase-auth-storage-gate.test.ts"
+    "test:supabase-auth-storage": "node --import tsx src/lib/__tests__/supabase-auth-storage-gate.test.ts && node --import tsx src/lib/__tests__/final-hardening-p1-gate.test.ts",
+    "test:final-hardening-p1": "node --import tsx src/lib/__tests__/final-hardening-p1-gate.test.ts"
   },
   "devDependencies": {
     "@capacitor/assets": "^3.0.5",

@@ -8,6 +8,7 @@ import { getShubhaBySlug, type DawahShubha } from "@/lib/dawah-service";
 import { shubuhatCompletenessTier } from "@/lib/shubuhat-contract";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
 import { DetailScreen } from "@/components/design-system/screens";
+import { safeHttpHref } from "@/lib/sanitize";
 
 function formatUpdatedAt(iso: string): string {
   const d = new Date(iso);
@@ -147,7 +148,7 @@ export default function DiscoverIslamDoubtDetailPage() {
           <h2 className="page-section-title">المصادر</h2>
           <ul className="dii-sources-list">
             {item.sources.map((s, i) => (
-              <li key={i}>{s.url ? <a href={s.url} target="_blank" rel="noopener noreferrer">{s.title}</a> : s.title}{s.author ? ` — ${s.author}` : ""}</li>
+              <li key={i}>{safeHttpHref(s.url) ? <a href={safeHttpHref(s.url)} target="_blank" rel="noopener noreferrer">{s.title}</a> : s.title}{s.author ? ` — ${s.author}` : ""}</li>
             ))}
           </ul>
         </section>

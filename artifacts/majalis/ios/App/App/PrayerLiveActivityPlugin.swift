@@ -131,11 +131,11 @@ public class PrayerLiveActivityPlugin: CAPPlugin, CAPBridgedPlugin {
                 }
             }()
 
+            Self.mirrorToAppGroup(prayerKey: activity.attributes.prayerKey, state: state)
             Task {
                 await activity.update(.init(state: state, staleDate: stale))
+                call.resolve(["updated": true, "phase": state.phase.rawValue])
             }
-            Self.mirrorToAppGroup(prayerKey: activity.attributes.prayerKey, state: state)
-            call.resolve(["updated": true, "phase": state.phase.rawValue])
             return
         }
         #endif
@@ -150,10 +150,12 @@ public class PrayerLiveActivityPlugin: CAPPlugin, CAPBridgedPlugin {
                 call.resolve(["ended": false])
                 return
             }
-            for activity in activities {
-                Task { await activity.end(nil, dismissalPolicy: .immediate) }
+            Task {
+                for activity in activities {
+                    await activity.end(nil, dismissalPolicy: .immediate)
+                }
+                call.resolve(["ended": true])
             }
-            call.resolve(["ended": true])
             return
         }
         #endif
