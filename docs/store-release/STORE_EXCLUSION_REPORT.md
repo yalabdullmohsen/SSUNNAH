@@ -11,14 +11,17 @@ Prove that `MISSING_EVIDENCE` / unresolved adhan media / QPC fonts are not shipp
 
 ## Excluded from store dist (webDir → cap sync)
 
-Globs in `excluded-asset-globs.json` under `artifacts/majalis`:
+SoT: `STORE_RELEASE_ALLOWLIST.json` (T-026) · globs: `excluded-asset-globs.json`
 
-- `public/sounds/adhan/*.{mp3,m4a}`
-- `public/audio/adhan/*.{mp3,m4a}` — **includes** CC0 `field` / `field-full` until OWNER allowlists them for store
-- `public/fonts/qpc-v2/**` — QPC redistribution **BLOCKED_LICENSE** until written OWNER OK
+- INTERNAL / UNKNOWN adhan under `public/{sounds,audio}/adhan` — stripped from dist
+- **Kept in dist (CC0_APPROVED only):** `adhan-field.m4a` · `adhan-field-short.m4a` · `adhan-field-full.m4a`
+- Istanbul = `CC0_ADHAN_CANDIDATE` — **not** in binary
+- `public/fonts/qpc-v2/**` — `OWNER_DECISION_REQUIRED` Strip Path (not Licensed)
+- UNKNOWN sheikh rasters under `dist/sheikhs/*.{jpg,jpeg,png,webp}`
 
 **Tool:** `node scripts/store-strip-unresolved-assets.mjs`  
-Runs against `artifacts/majalis/dist` and deletes matching unresolved media **and** `dist/fonts/qpc-v2`.
+**Inventory gate:** `pnpm run store:inventory` · `pnpm run verify:store-assets`  
+**Store Archive audio:** `node artifacts/majalis/scripts/native-strip-store-release-audio.mjs` (keeps CC0 field CAF only)
 
 **Gate:** `pnpm run verify:store-assets` (also wired into `pnpm run verify:ci` repo-gates)  
 After store strip: `STORE_CHECK_DIST=1 pnpm run verify:store-assets`  

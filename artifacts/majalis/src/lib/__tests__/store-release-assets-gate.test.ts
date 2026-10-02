@@ -63,6 +63,19 @@ assert.ok(
   globs.excludedFromStoreBinary.some((g: string) => g.includes("qpc-v2")),
   "store strip must cover QPC fonts (BLOCKED_LICENSE until OWNER OK)",
 );
+assert.ok(Array.isArray(globs.cc0KeepInStoreDist) && globs.cc0KeepInStoreDist.length >= 3, "CC0 keep list");
+
+const allowlist = JSON.parse(
+  readFileSync(resolve(store, "STORE_RELEASE_ALLOWLIST.json"), "utf8"),
+);
+assert.equal(allowlist.audioAllowlist?.locked, true, "AUDIO_RELEASE_ALLOWLIST_LOCKED");
+assert.equal(allowlist.qpc?.class, "OWNER_DECISION_REQUIRED");
+assert.equal(allowlist.qpc?.licensedClaimForbidden, true);
+assert.equal(allowlist.recitations?.class, "STREAM_ONLY");
+assert.ok(
+  existsSync(resolve(appRoot, "scripts/native-strip-store-release-audio.mjs")),
+  "native store audio strip required",
+);
 
 const manifest = readFileSync(resolve(store, "STORE_ASSET_MANIFEST.md"), "utf8");
 assert.match(manifest, /field-full|أذان ميداني كامل|File:Beautiful_adhan/);
