@@ -158,3 +158,70 @@ html[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] [class*="border-i
     transition: none;
   }
 }
+
+/* Dark — منع WHITE_LEAK على /quran-hub (عاج/أبيض فاتح في الوضع الليلي) */
+html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"],
+html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] {
+  background: var(--v2-color-night-bg, var(--v2-surface-canvas));
+  color: var(--v2-color-night-ink, var(--mj-ink));
+}
+
+html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .section-lobby__title,
+html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .section-lobby__title,
+html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .quran-hub-page__title,
+html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .quran-hub-page__title,
+html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .section-lobby__group-title,
+html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .section-lobby__group-title {
+  color: var(--v2-color-night-ink, var(--mj-ink));
+}
+
+html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .section-lobby__back,
+html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .section-lobby__back {
+  background: var(--v2-color-night-surface, var(--v2-surface-raised));
+  border-color: var(--v2-color-night-hairline, var(--v2-hairline));
+  color: var(--v2-color-night-ink, var(--mj-ink));
+}
+
+html[data-theme="dark"][data-v2-quran-hub="1"] .quran-open-mushaf__cta,
+html.dark[data-v2-quran-hub="1"] .quran-open-mushaf__cta {
+  /* بدل --v2-color-on-emerald (أبيض) الذي يفشل WHITE_LEAK */
+  background: var(--v2-color-gold, var(--sunnah-quran-gold));
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
+}
+
+html[data-theme="dark"][data-v2-quran-hub="1"] .quran-open-mushaf__cta-label,
+html.dark[data-v2-quran-hub="1"] .quran-open-mushaf__cta-label {
+  color: inherit;
+}
+
+html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card,
+html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card,
+html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] [data-section-card],
+html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] [data-section-card],
+html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .cs-card,
+html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .cs-card,
+html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .ss-app-card,
+html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .ss-app-card,
+html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .ss-surface,
+html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .ss-surface {
+  background: var(--v2-color-night-surface, var(--v2-surface-raised));
+  background-color: var(--v2-color-night-surface, var(--v2-surface-raised));
+  border-color: var(--v2-color-night-hairline, var(--v2-hairline));
+  color: var(--v2-color-night-ink, var(--mj-ink));
+}
+
+html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card__icon,
+html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card__icon {
+  background: color-mix(in srgb, var(--v2-color-emerald, var(--mj-brand)) 28%, transparent);
+  color: var(--v2-color-night-ink, var(--mj-ink));
+}
+
+html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card__label,
+html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card__label {
+  color: var(--v2-color-night-ink, var(--mj-ink));
+}
+
+html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card__subtitle,
+html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card__subtitle {
+  color: var(--v2-color-night-muted, var(--mj-ink-2));
+}
