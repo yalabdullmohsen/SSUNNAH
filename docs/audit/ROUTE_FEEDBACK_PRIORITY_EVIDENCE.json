@@ -2,8 +2,8 @@
   "version": 1,
   "phase": "ROUTE_FEEDBACK_PRIORITY",
   "policy": "COMPLETE requires routeClass + testRef + testedCommit + testedDate + artifact + expected + actual. No Feedback V3.",
-  "testedCommit": "c6f56d2a",
-  "testedDate": "2026-10-01",
+  "testedCommit": "endgame-u4",
+  "testedDate": "2026-10-02",
   "gate": "artifacts/majalis/src/lib/__tests__/closure-route-feedback-priority-gate.test.ts",
   "feedbackAuthority": "docs/design/FORM_FEEDBACK_AUTHORITY.md",
   "components": [
@@ -60,6 +60,13 @@
         "rateLimited": {
           "status": "NOT_APPLICABLE",
           "reason": "No rate-limited primary fetch on home shell"
+        },
+        "stale": {
+          "status": "COMPLETE",
+          "testRef": "closure-route-feedback-priority-gate.test.ts",
+          "artifact": "artifacts/majalis/src/components/HomeDashboard.tsx + StaleDataIndicator",
+          "expected": "Stale strip with refresh when follow/last-reading load fails",
+          "actual": "StaleDataIndicator mounted on loadError with onRefresh recovery"
         }
       }
     },

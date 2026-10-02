@@ -31,8 +31,8 @@ assert.ok(existsSync(resolve(evidenceDir, "inventory-after.json")));
 const summary = JSON.parse(readFileSync(resolve(evidenceDir, "summary.json"), "utf8"));
 assert.equal(summary.tsxSoftCardConsumers, 0);
 assert.equal(summary.exit, "CARD_AUTHORITY_ONLY");
-assert.ok(summary.visualAfter.borderRadiusPxDecls <= 1243);
-assert.ok(summary.visualAfter.boxShadowDecls <= 1113);
+assert.ok(summary.visualAfter.borderRadiusPxDecls <= 1222);
+assert.ok(summary.visualAfter.boxShadowDecls <= 1108);
 
 // Product TSX must not emit soft-card className
 function walk(dir: string, out: string[] = []): string[] {
@@ -64,8 +64,8 @@ assert.equal(existsSync(resolve(majalisRoot, "src/components/design-system/SoftC
 
 const budget = JSON.parse(readMaj("reports/visual-system-debt-budget.json"));
 assert.equal(budget.policy, "decreasing-ceilings");
-assert.ok(budget.ceilings.borderRadiusPxDecls <= 1243);
-assert.ok(budget.ceilings.boxShadowDecls <= 1113);
+assert.ok(budget.ceilings.borderRadiusPxDecls <= 1222);
+assert.ok(budget.ceilings.boxShadowDecls <= 1108);
 
 const check = spawnSync(process.execPath, ["scripts/visual-system-inventory.mjs", "--check"], {
   cwd: majalisRoot,

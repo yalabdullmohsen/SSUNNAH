@@ -27,9 +27,11 @@
     "zIndexRawDecls": 258
   },
   "visualAfter": {
-    "boxShadowDecls": 1113,
-    "borderRadiusPxDecls": 1243,
+    "boxShadowDecls": 1108,
+    "borderRadiusPxDecls": 1222,
     "zIndexRawDecls": 258
   },
-  "exit": "CARD_AUTHORITY_ONLY"
+  "exit": "CARD_AUTHORITY_ONLY",
+  "updatedAt": "2026-10-02T21:20:00.000Z",
+  "note": " Endgame lowered ceilings after lessons radii + shadow prune."
 }

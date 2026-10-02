@@ -131,7 +131,6 @@
   color: inherit;
   background: var(--qp-surface);
   border: 1px solid var(--qp-line);
-  box-shadow: none;
   overflow: hidden;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
@@ -149,7 +148,6 @@
   background: color-mix(in srgb, var(--qp-accent) 4%, var(--qp-surface));
   text-decoration: none;
   transform: none;
-  box-shadow: none;
 }
 
 .qp-person-card:active {
@@ -262,7 +260,6 @@ html[data-theme="dark"] .qp-people {
 html[data-theme="dark"] .qp-person-card {
   background: var(--qp-surface);
   border-color: var(--border, #35443F);
-  box-shadow: none;
 }
 
 html[data-theme="dark"] .qp-person-card__cta,
@@ -416,7 +413,6 @@ html[data-theme="dark"] .qp-person-detail__card,
 html[data-theme="dark"] .qp-person-detail__ayah {
   background: var(--qp-surface);
   border-color: var(--qp-line);
-  box-shadow: none;
 }
 
 html[data-theme="dark"] .qp-person-detail__h,

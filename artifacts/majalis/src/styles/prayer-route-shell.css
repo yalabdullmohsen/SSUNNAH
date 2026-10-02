@@ -30,12 +30,21 @@ html.pts-immersive .bottom-nav--m2030 {
   border-block-start-color: rgba(255, 255, 255, 0.12) !important;
 }
 
-/* هيكل Suspense — نفس سطح الصلاة لا كريم الرئيسية */
+/* هيكل Suspense — نفس صدفة pts-screen--boot النهائية (لا هندسة lrf منفصلة) */
 .lrf-wrap--prayer.lrf-wrap--skel {
   background: transparent;
   color: #fafaf8;
-  min-height: min(88dvh, 40rem);
-  padding-block-start: max(12px, var(--inset-top, 0px));
+  min-height: 0;
+  padding: 0;
+}
+.pts-screen--boot .pts-boot-skel,
+.pts-screen--boot .lrf-skel--prayer {
+  width: min(100%, 26rem);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  color: #fafaf8;
 }
 .lrf-wrap--prayer .lrf-skel--prayer {
   width: min(100%, 26rem);

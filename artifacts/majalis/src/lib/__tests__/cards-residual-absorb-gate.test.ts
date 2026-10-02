@@ -34,10 +34,10 @@ assert.match(v2, /border-radius:\s*var\(--sf-radius-pill\)/);
 
 const budget = JSON.parse(read("reports/visual-system-debt-budget.json"));
 assert.ok(
-  budget.ceilings.borderRadiusPxDecls <= 1243,
-  `borderRadius ceiling ≤1243 (got ${budget.ceilings.borderRadiusPxDecls})`,
+  budget.ceilings.borderRadiusPxDecls <= 1222,
+  `borderRadius ceiling ≤1222 (got ${budget.ceilings.borderRadiusPxDecls})`,
 );
-assert.ok(budget.ceilings.boxShadowDecls <= 1113);
+assert.ok(budget.ceilings.boxShadowDecls <= 1108);
 
 const report = readFileSync(
   resolve(root, "../../docs/performance/SUNNAH_FINAL_PROGRAM_PHASE5_CARDS_RESIDUAL_ABSORB.md"),

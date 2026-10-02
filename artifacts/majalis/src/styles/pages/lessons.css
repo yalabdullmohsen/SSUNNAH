@@ -49,7 +49,7 @@
 /* أزرار تصفية الدروس — شرائح خفيفة بلا صندوق ثقيل */
 .lessons-page-v2 .filter-chips,
 .lessons-page-v2 .filter-chips__chip {
-  border-radius: 999px !important;
+  border-radius: var(--sf-radius-pill) !important;
 }
 .lessons-page-v2 .filter-chips {
   border-radius: 0 !important;
@@ -482,7 +482,7 @@ html.dark .kuwait-tab:hover:not(.kuwait-tab--active) {
   width: max-content;
   max-width: 100%;
   justify-self: start;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   min-height: 2.5rem;
   padding-inline: 0.95rem;
 }
@@ -780,7 +780,7 @@ html.dark .lesson-detail-info-grid dd,
   display: inline-flex;
   align-items: center;
   padding: 0.15rem 0.5rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   font-size: 0.68rem;
   font-weight: 750;
   line-height: 1.3;
@@ -795,7 +795,7 @@ html.dark .lesson-detail-info-grid dd,
   display: inline-flex;
   align-items: center;
   padding: 0.15rem 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   font-size: 0.68rem;
   font-weight: 800;
   color: var(--mj-white, #ffffff);
@@ -812,7 +812,7 @@ html.dark .lesson-detail-info-grid dd,
   font-size: 0.72rem;
   font-weight: 750;
   padding: 0.2rem 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   background: color-mix(in srgb, var(--lesson-green) 14%, var(--mj-white, var(--mj-white, #ffffff)));
   color: var(--lesson-green-deep);
   border: 1px solid color-mix(in srgb, var(--lesson-green) 28%, transparent);
@@ -951,7 +951,7 @@ html.dark .lesson-detail-info-grid dd,
 .lessons-similar-section .lesson-unified-card__btn,
 .lessons-page-v3 .lesson-unified-card__btn {
   min-height: 40px;
-  border-radius: 12px !important;
+  border-radius: var(--sf-radius-xs) !important;
   appearance: none;
   -webkit-appearance: none;
   font-weight: 750;
@@ -1370,7 +1370,7 @@ html[data-theme="dark"] .lesson-detail-page .lesson-detail-actions-panel {
   display: inline-flex;
   align-items: center;
   padding: 0.15rem 0.5rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   font-size: var(--ds-text-xs, 0.75rem);
   font-weight: 700;
   white-space: nowrap;
@@ -1465,7 +1465,7 @@ html[data-theme="dark"] .lesson-detail-page .lesson-detail-actions-panel {
   min-width: 2.25rem;
   min-height: 2.25rem;
   padding: 0;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   border: 1px solid color-mix(in srgb, var(--primary-strong, var(--mj-brand-deep)) 22%, transparent);
   background: var(--surface, var(--mj-surface));
   color: var(--primary-strong, var(--mj-brand-deep));
@@ -1489,7 +1489,7 @@ html[data-theme="dark"] .lesson-detail-page .lesson-detail-actions-panel {
   min-width: 1rem;
   height: 1rem;
   padding: 0 0.22rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   background: var(--mj-brand, #1e5f4b);
   color: var(--mj-white, #ffffff);
   font-size: 0.62rem;
@@ -1510,7 +1510,7 @@ html[data-theme="dark"] .lesson-detail-page .lesson-detail-actions-panel {
   padding: 0.28rem 0.55rem;
   min-height: 2rem;
   border: 1px solid var(--mn-border-default, #d8e3de);
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   font: inherit;
   font-size: 0.8rem;
   background: var(--color-surface, var(--mj-white, var(--mj-white, #ffffff)));
@@ -1537,7 +1537,7 @@ html.dark .lesson-filters__search-field input {
   min-height: 2rem;
   min-width: max-content;
   padding: 0.22rem 0.65rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   background: var(--mj-chip-bg, var(--surface, var(--mj-surface)));
   border: 1px solid var(--mj-chip-border, var(--border, color-mix(in srgb, var(--mj-brand) 18%, transparent)));
   color: var(--mj-chip-fg, var(--text, #124a38));
@@ -1728,7 +1728,7 @@ html[data-theme="dark"] .section-lobby.lessons-page-v3 .lesson-unified-card__tit
 }
 .pts-timetable-skel {
   min-height: 3rem;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   background: color-mix(in srgb, var(--mj-brand, #0F5C45) 6%, transparent);
 }
 
@@ -1782,7 +1782,7 @@ html[data-theme="dark"] .section-lobby.lessons-page-v3 .lesson-unified-card__tit
   display: inline-flex;
   align-items: center;
   padding: 0.12rem 0.45rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   font-size: 0.66rem;
   font-weight: 750;
   color: var(--lesson-type-ink, var(--lesson-green-deep, #12362c));
@@ -1812,7 +1812,7 @@ html[data-theme="dark"] .section-lobby.lessons-page-v3 .lesson-unified-card__tit
   z-index: 8;
   min-width: 9.5rem;
   padding: 0.35rem;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   background: var(--surface-card, var(--mj-surface));
   border: 1px solid color-mix(in srgb, #0f5c3f 14%, #e8ebe9);
   box-shadow: 0 8px 24px color-mix(in srgb, #15382d 12%, transparent);
@@ -1827,7 +1827,7 @@ html[data-theme="dark"] .section-lobby.lessons-page-v3 .lesson-unified-card__tit
   min-height: 40px;
   padding: 0.4rem 0.65rem;
   border: 0;
-  border-radius: 8px;
+  border-radius: var(--sf-radius-xs);
   background: transparent;
   color: #15382d;
   font-size: 0.84rem;
@@ -1868,7 +1868,7 @@ html[data-theme="dark"] .section-lobby.lessons-page-v3 .lesson-unified-card__tit
 .lesson-detail-type-pill {
   display: inline-flex;
   padding: 0.2rem 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   font-size: 0.72rem;
   font-weight: 800;
   color: var(--lesson-type-ink, #12362c);
@@ -1885,7 +1885,7 @@ html[data-theme="dark"] .section-lobby.lessons-page-v3 .lesson-unified-card__tit
 }
 .lesson-detail-map--compact {
   margin-top: 0.75rem;
-  border-radius: 14px;
+  border-radius: var(--sf-radius-sm);
   border: 1px solid color-mix(in srgb, #0f5c3f 12%, #e8ebe9);
   overflow: hidden;
   background: color-mix(in srgb, #0f5c3f 4%, #f8f6f1);
@@ -1904,7 +1904,7 @@ html[data-theme="dark"] .section-lobby.lessons-page-v3 .lesson-unified-card__tit
 .lesson-detail-map__toggle {
   min-height: 36px;
   padding: 0.3rem 0.7rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   border: 1px solid color-mix(in srgb, #0f5c3f 22%, transparent);
   background: var(--surface-card, var(--mj-surface));
   color: #0a4530;
@@ -1945,7 +1945,7 @@ html[data-theme="dark"] .section-lobby.lessons-page-v3 .lesson-unified-card__tit
 }
 .lesson-detail-meta-disclosure {
   margin-top: 0.85rem;
-  border-radius: 12px;
+  border-radius: var(--sf-radius-xs);
   border: 1px solid color-mix(in srgb, #0f5c3f 12%, #e8ebe9);
   padding: 0.55rem 0.75rem;
   background: var(--surface-card, var(--mj-surface));
@@ -2197,7 +2197,7 @@ html[data-theme="dark"] .lesson-unified-card__menu-item {
   font-size: 0.8rem;
   font-weight: 600;
   padding: 0.18rem 0.5rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   background: var(--chip-bg, var(--mj-brand-soft, var(--brand-soft, var(--mj-brand-soft))));
   color: var(--chip-fg, var(--brand-on-white, #0F4A36));
   border: 1px solid color-mix(in srgb, var(--brand-on-white, #146C4E) 22%, transparent);
@@ -2339,7 +2339,7 @@ html[data-theme="dark"] .lesson-unified-card__menu-item {
   font-size: 0.8rem;
   font-weight: 700;
   padding: 0.15rem 0.5rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   background: rgba(26, 60, 46, 0.08);
   color: var(--majalis-emerald-deep);
 }
