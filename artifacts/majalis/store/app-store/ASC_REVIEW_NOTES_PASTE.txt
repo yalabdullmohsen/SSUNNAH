@@ -1,18 +1,17 @@
 APP STORE CONNECT — Review Notes (copy/paste)
 
-Build: 1.0 (54)
+Build: use the build under review (do not paste credentials into the binary)
 App: سُنّة (Sunnah)
 
-=== Guideline 2.1 — Demo / Demonstration Mode ===
+=== Guideline 2.1 — Demo account ===
 
 Email: apple.review@ssunnah.com
-Password: SunnahReview-2026!
+Password: <<OWNER: paste rotated password in ASC Review Notes only — never commit to git>>
 
-On Login (/login): enter the credentials above → Sign in (local demonstration session; no email confirmation required).
+Sign-in path: open تسجيل الدخول (/login) → enter the credentials above → Sign in.
+Requires a confirmed Supabase account (no client-side review bypass).
 
 Guest path: «المتابعة كزائر» — Quran, adhkar, prayer times, hadith, lessons work without login.
-
-Previous info@ssunnah.com note was insufficient when email confirmation blocked sign-in; Build 54 adds local Demonstration Mode.
 
 === Guideline 2.5.4 — Background Audio ===
 

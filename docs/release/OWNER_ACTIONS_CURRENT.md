@@ -1,12 +1,16 @@
 # OWNER ACTIONS CURRENT — سُنّة
 
-**Updated:** 2026-09-30 (post-WAVE13 tip sync)  
-**Live web tip (not Store RC):** `ba139bb1` — see `CURRENT_PROJECT_STATUS.md`  
+**Updated:** 2026-10-02 (BUILD_55 auth hardening)  
+**Live web tip:** see `CURRENT_PROJECT_STATUS.md`  
+**Build 55 truth:** `docs/store-release/BUILD_55_TRACEABILITY.md`  
 **Device evidence procedure:** `docs/audit/WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md`  
 **Rule:** Agents must **not** execute these. Record only.
 
 | action | why | evidence | exact system | consequence if not done | safe rollback |
 |---|---|---|---|---|---|
+| **Rotate App Store review account password** (`REVIEW_CREDENTIAL_ROTATION_OWNER_ACTION`) | Password was previously embedded in client source; rotate after hardening merge | `review-notes.md` · ASC Review Notes | Supabase Auth + App Store Connect Review Notes only | Prior literal may remain usable by anyone who saw old client | Revoke/rotate again; never commit new password |
+| Paste rotated review password **only** into ASC Review Notes | Reviewers need login without client secret | `ASC_REVIEW_NOTES_PASTE.txt` (placeholder) | App Store Connect | Apple review login friction | Update ASC notes; keep git password-free |
+| Device re-cert auth on build **> 55** (`CAPACITOR_AUTH_REQUIRES_DEVICE_RECERTIFICATION`) | Build 55 binary lacks Keychain adapter / credential removal | `BUILD_55_TRACEABILITY.md` · T-034 | Physical iPhone/iPad + TestFlight | Cannot claim `IOS_AUTH_CERTIFIED` | Re-test after next Archive |
 | Approve Bundle ID for store builds | Binary identity must match Apple/Google accounts | `STORE_100_PERCENT_READINESS.md` unchecked | Apple Developer / Play Console | Cannot ship store binary | Keep current non-store IDs |
 | Provide signing certificates / profiles | Required for Archive/AAB | same | Xcode / Play App Signing | No TestFlight/AAB | Do not embed secrets in repo |
 | App Store Connect / Play credentials for upload | Human-operated upload | same | ASC / Play Console | No store submission | Revoke tokens if leaked |

@@ -84,18 +84,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               );
             }
           } else {
-            const { hasAppStoreReviewSession, buildAppStoreReviewUser } = await import(
-              "@/lib/app-store-review-auth"
+            void import("@/lib/app-store-review-auth").then((m) =>
+              m.clearLegacyAppStoreReviewSession(),
             );
-            if (hasAppStoreReviewSession()) {
-              const reviewUser = buildAppStoreReviewUser() as NonNullable<AuthUser>;
-              setUser(reviewUser);
-              setStatus("authenticated");
-              lastUserIdRef.current = reviewUser.id;
-            } else {
-              setUser(null);
-              setStatus("unauthenticated");
-            }
+            setUser(null);
+            setStatus("unauthenticated");
           }
         } catch {
           if (activeRef.current && signedOutGeneration.current === generationAtStart) {
@@ -112,8 +105,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const shouldBootstrapSoon = (() => {
       try {
-        // أصلي: التوكن قد يكون في Preferences قبل اكتمال hydrate → localStorage
-        // فتح bootstrap فورًا يمنع وميض «زائر» ثم «مسجّل».
+        // أصلي (Capacitor): الجلسة في Keychain عبر supabase-auth-storage؛
+        // bootstrap فورًا يمنع وميض «زائر» ثم «مسجّل».
         const cap = (
           window as Window & {
             Capacitor?: { isNativePlatform?: () => boolean };
@@ -226,15 +219,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [queryClient]);
 
   const refreshUser = useCallback(async () => {
-    const { hasAppStoreReviewSession, buildAppStoreReviewUser } = await import(
-      "@/lib/app-store-review-auth"
-    );
-    if (hasAppStoreReviewSession()) {
-      const reviewUser = buildAppStoreReviewUser() as NonNullable<AuthUser>;
-      setUser(reviewUser);
-      setStatus("authenticated");
-      return reviewUser;
-    }
     if (!authApi) return null;
     const gen = signedOutGeneration.current;
     const next = await authApi.getCurrentUser();
@@ -246,19 +230,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = useCallback(
     async (email: string, password: string) => {
-      const {
-        matchesAppStoreReviewCredentials,
-        buildAppStoreReviewUser,
-        persistAppStoreReviewSession,
-      } = await import("@/lib/app-store-review-auth");
-      if (matchesAppStoreReviewCredentials(email, password)) {
-        const reviewUser = buildAppStoreReviewUser() as NonNullable<AuthUser>;
-        persistAppStoreReviewSession();
-        lastUserIdRef.current = reviewUser.id;
-        setUser(reviewUser);
-        setStatus("authenticated");
-        return { data: { user: reviewUser, session: null }, error: null } as never;
-      }
       if (!authApi) return noopAuth();
       return authApi.signIn(email, password);
     },
@@ -272,7 +243,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(null);
     setStatus("unauthenticated");
     queryClient.clear();
-    void import("@/lib/app-store-review-auth").then((m) => m.clearAppStoreReviewSession());
+    void import("@/lib/app-store-review-auth").then((m) => m.clearLegacyAppStoreReviewSession());
     void import("@/lib/quran-audio-resume").then((m) => m.clearAudioResumeState());
     void import("@/lib/lesson-audio-resume").then((m) => m.clearAllLessonAudioResume());
     void import("@/lib/sync-engine").then((m) => {
