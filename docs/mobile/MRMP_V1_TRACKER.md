@@ -12,7 +12,7 @@
 | M1 | `NATIVE_ARCHITECTURE_CERTIFIED` | **OPEN** | HARD | Android `applicationId` ≠ Capacitor/iOS appId |
 | M2 | `APP_SHELL_STABLE` | **FAIL / OPEN** | DEVICE_REQUIRED | T-032 Simulator: Home cold/warm/resume PASS · Deep Link+Split View FAIL → `IOS_APP_SHELL_NOT_STABLE` |
 | M3 | `DEEP_LINKS_CERTIFIED` | OPEN | EXTERNAL/DEVICE | AASA/App Links live verify |
-| M4 | `AUTH_CERTIFIED` | OPEN | DEVICE_REQUIRED | Session + offline start |
+| M4 | `AUTH_CERTIFIED` | **FAIL / OPEN** | DEVICE_REQUIRED | T-034: Cap session=localStorage · Login–Expiration unproven → `IOS_AUTH_NOT_CERTIFIED` |
 | M5 | `OFFLINE_READY` | OPEN | NOT_STARTED | Strategy doc + route matrix |
 | M6 | `MUSHAF_MOBILE_CERTIFIED` | OPEN | DEVICE_REQUIRED | 25/50/100 turns unproven |
 | M7 | `PRAYER_NOTIFICATION_CERTIFIED` | OPEN | DEVICE_REQUIRED | STORE_100% HOLD |
