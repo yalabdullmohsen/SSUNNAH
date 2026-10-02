@@ -125,13 +125,16 @@ export async function signIn(email: string, password: string) {
 }
 
 export async function signOut() {
+  // Revoke server session first while storage still holds the access token.
+  // Clearing Keychain/localStorage before signOut skips global revoke (no token loaded).
+  const result = await supabase.auth.signOut();
   try {
     const { clearAllNativeAuthSessions } = await import("./supabase-auth-storage");
     await clearAllNativeAuthSessions();
   } catch {
-    /* ignore — still attempt Supabase signOut */
+    /* ignore — native leftovers are best-effort after revoke */
   }
-  return await supabase.auth.signOut();
+  return result;
 }
 
 /** طلب رابط استعادة كلمة المرور — يعيد إلى /auth/callback ثم صفحة التحديث. */
