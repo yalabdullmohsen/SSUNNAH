@@ -104,23 +104,39 @@ function markNativeIos() {
   };
 }
 
-function makeMockPlugin(chain: Map<string, string>, state: { legacyCleared: boolean }): SunnahAuthKeychainPlugin {
+function makeMockPlugin(
+  chain: Map<string, string>,
+  state: { legacyCleared: boolean; calls: { get: number; set: number; remove: number; clearLegacy: number } },
+  opts?: { failVerify?: boolean },
+): SunnahAuthKeychainPlugin {
   return {
     async get({ key }) {
+      state.calls.get += 1;
+      if (opts?.failVerify) return { value: null };
       return { value: chain.has(key) ? chain.get(key)! : null };
     },
     async set({ key, value }) {
+      state.calls.set += 1;
       chain.set(key, value);
       return { ok: true };
     },
     async remove({ key }) {
+      state.calls.remove += 1;
       chain.delete(key);
       return { ok: true };
     },
     async clearNativeLegacySession() {
+      state.calls.clearLegacy += 1;
       state.legacyCleared = true;
       return { ok: true };
     },
+  };
+}
+
+function freshCallState() {
+  return {
+    legacyCleared: false,
+    calls: { get: 0, set: 0, remove: 0, clearLegacy: 0 },
   };
 }
 
@@ -147,7 +163,7 @@ console.log("=== Native Keychain path + migration via registered plugin ===");
   const restore = installLocalStorage(mem);
   markNativeIos();
   const chain = new Map<string, string>();
-  const state = { legacyCleared: false };
+  const state = freshCallState();
   __setSunnahAuthKeychainPluginForTests(makeMockPlugin(chain, state));
 
   const storage = createSupabaseAuthStorage();
@@ -161,16 +177,23 @@ console.log("=== Native Keychain path + migration via registered plugin ===");
   assert.equal(mem.has(legacyKey), false, "legacy localStorage purged after Keychain migration");
   assert.equal(mem.get(__authStorageTest.MIGRATION_FLAG), "1");
   assert.notEqual(mem.get(__authStorageTest.FALLBACK_FLAG), __authStorageTest.FALLBACK_MODE);
+  assert.ok(state.calls.get >= 1 && state.calls.set >= 1, "get/set traverse plugin runtime path");
 
   const refreshed = JSON.stringify({ access_token: "new-a", refresh_token: "new-b" });
+  const setBefore = state.calls.set;
+  const getBefore = state.calls.get;
   await storage.setItem(legacyKey, refreshed);
   assert.equal(chain.get(legacyKey), refreshed);
   assert.equal(mem.has(legacyKey), false, "refresh must not leave token in localStorage");
+  assert.equal(state.calls.set, setBefore + 1, "set traverses plugin");
+  assert.ok(state.calls.get > getBefore, "set verifies via plugin.get");
+  assert.equal(mem.get(__authStorageTest.LAST_AUTH_KEY_FLAG), legacyKey);
 
   mem.set(__authStorageTest.LEGACY_REVIEW_FLAG, "1");
   await storage.removeItem(legacyKey);
   assert.equal(chain.has(legacyKey), false);
   assert.equal(state.legacyCleared, true, "remove/logout clears majlis.auth.session.v1");
+  assert.ok(state.calls.remove >= 1, "remove traverses plugin runtime path");
   assert.equal(mem.has(__authStorageTest.LEGACY_REVIEW_FLAG), false);
 
   __resetSunnahAuthKeychainPluginCacheForTests();
@@ -201,7 +224,7 @@ console.log("=== Malformed legacy session does not crash ===");
   const restore = installLocalStorage(mem);
   markNativeIos();
   const chain = new Map<string, string>();
-  const state = { legacyCleared: false };
+  const state = freshCallState();
   __setSunnahAuthKeychainPluginForTests(makeMockPlugin(chain, state));
   mem.set("sb-bad", "{not-json");
   const storage = createSupabaseAuthStorage();
@@ -213,13 +236,44 @@ console.log("=== Malformed legacy session does not crash ===");
   restore();
 }
 
-console.log("=== clearAllNativeAuthSessions clears legacy Keychain account ===");
+console.log("=== Unverified Keychain set → classified fallback (not silent success) ===");
 {
-  const state = { legacyCleared: false };
-  __setSunnahAuthKeychainPluginForTests(makeMockPlugin(new Map(), state));
-  await clearAllNativeAuthSessions();
-  assert.equal(state.legacyCleared, true);
+  const mem = new Map<string, string>();
+  const restore = installLocalStorage(mem);
+  markNativeIos();
+  const chain = new Map<string, string>();
+  const state = freshCallState();
+  __setSunnahAuthKeychainPluginForTests(makeMockPlugin(chain, state, { failVerify: true }));
+  const storage = createSupabaseAuthStorage();
+  const key = "sb-unverified-auth-token";
+  const blob = JSON.stringify({ access_token: "u1", refresh_token: "u2" });
+  await storage.setItem(key, blob);
+  assert.equal(mem.get(__authStorageTest.FALLBACK_FLAG), __authStorageTest.FALLBACK_MODE);
+  assert.equal(mem.get(key), blob, "falls back to localStorage when Keychain verify fails");
+  assert.ok(state.calls.set >= 1 && state.calls.get >= 1);
   __resetSunnahAuthKeychainPluginCacheForTests();
+  restore();
+}
+
+console.log("=== clearAllNativeAuthSessions clears cap.supabase.* + majlis.auth.session.v1 ===");
+{
+  const mem = new Map<string, string>();
+  const restore = installLocalStorage(mem);
+  markNativeIos();
+  const chain = new Map<string, string>();
+  const state = freshCallState();
+  const key = "sb-logout-auth-token";
+  const blob = JSON.stringify({ access_token: "c1", refresh_token: "c2" });
+  chain.set(key, blob);
+  mem.set(__authStorageTest.LAST_AUTH_KEY_FLAG, key);
+  __setSunnahAuthKeychainPluginForTests(makeMockPlugin(chain, state));
+  await clearAllNativeAuthSessions();
+  assert.equal(chain.has(key), false, "cap.supabase session key removed");
+  assert.equal(state.legacyCleared, true, "majlis.auth.session.v1 cleared");
+  assert.ok(state.calls.remove >= 1 && state.calls.clearLegacy >= 1);
+  assert.equal(mem.has(__authStorageTest.LAST_AUTH_KEY_FLAG), false);
+  __resetSunnahAuthKeychainPluginCacheForTests();
+  restore();
   await clearAllNativeAuthSessions(); // web / no plugin — no throw
 }
 
