@@ -1,0 +1,8 @@
+store-asset-inventory OK → reports/store-asset-inventory.json
+  total=131 releaseFlavor=83 releaseUnknown=0
+  stripped=44 streamOnly=1 ownerDecisions=2
+  AUDIO_RELEASE_ALLOWLIST_LOCKED=true
+  RELEASE_BINARY_HAS_ZERO_UNKNOWN_ASSETS=true
+  STORE_RELEASE_CONTENT_CLEARED=true
+  note: skipped dist binary scan (use STORE_CHECK_DIST=1 after store:strip)
+store-asset-inventory --check-release PASS

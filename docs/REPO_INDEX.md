@@ -237,6 +237,8 @@
 | `docs/audit/evidence/t046-u9-route-matrix/` | جرد/دين مسارات + summary T-046 |
 | `docs/audit/STORE_RELEASE_CONTENT_CLEARANCE_REPORT.md` | T-047 · `STORE_RELEASE_CONTENT_CLEARED` (PASS) |
 | `docs/audit/APP_STORE_READINESS_REPORT.md` | T-048 · `APP_STORE_READINESS_COMPLETE` (PASS) · OWNER_ACTION rows remain |
+| `docs/audit/TESTFLIGHT_INTERNAL_CERTIFICATION_REPORT.md` | T-049 · `TESTFLIGHT_INTERNAL_NOT_CERTIFIED` (FAIL) · export/TF install blocked |
+| `docs/audit/evidence/t049-testflight-internal/` | archive/export logs + summary T-049 |
 | `docs/store-release/APP_STORE_PRIVACY_ANSWERS_DRAFT.md` | مسودة إجابات خصوصية ASC مقابل PrivacyInfo |
 | `docs/audit/evidence/t048-app-store-readiness/` | checklist + summary T-048 |
 | `docs/store-release/THIRD_PARTY_NOTICES.md` | إشعارات الطرف الثالث لحدود Store RC |

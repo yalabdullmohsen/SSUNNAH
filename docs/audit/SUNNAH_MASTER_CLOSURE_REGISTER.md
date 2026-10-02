@@ -64,7 +64,7 @@
 | D7 | D | Attributions complete | LICENSE | Agent | `ATTRIBUTIONS.md` · `THIRD_PARTY_NOTICES.md` · CREDITS T-047 | soft | soft | soft | Y | Y | `ATTRIBUTIONS_COMPLETE` ✅ |
 | E1 | E | Apple store readiness | OWNER | Owner+Agent | `APP_STORE_READINESS_REPORT.md` · 13 OWNER_ACTION | N | Y | N | Y | Y | `APP_STORE_READINESS_COMPLETE` ✅ (not STORE_GO) |
 | E2 | E | Google store readiness | OUT_OF_SCOPE | — | Android retired | N | N | RETIRED | N | N | `ANDROID_PRODUCT_RETIRED` ✅ |
-| E3 | E | RC TestFlight Internal | OWNER+DEVICE | Owner | MRMP M12–M13 | N | Y | RETIRED | Y | Y | `TESTFLIGHT_INTERNAL_CERTIFIED` |
+| E3 | E | RC TestFlight Internal | OWNER+DEVICE | Owner+Agent | `TESTFLIGHT_INTERNAL_CERTIFICATION_REPORT.md` · export FAIL | N | Y | RETIRED | Y | Y | `TESTFLIGHT_INTERNAL_NOT_CERTIFIED` (FAIL) |
 
 Legend: Web/iOS/Android/Store Sub/Store Go = blocks that surface if open (Y/N/soft).
 

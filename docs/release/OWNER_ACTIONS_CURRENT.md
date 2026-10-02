@@ -27,6 +27,8 @@
 | ASC Privacy nutrition labels = PrivacyInfo | Must not assume console answers | `APP_STORE_PRIVACY_ANSWERS_DRAFT.md` | ASC | Privacy mismatch rejection | Re-sync from PrivacyInfo |
 | Capture Store RC screenshots iPhone/Max/iPad | All sets MISSING | `store/screenshots/README.md` | Device/simulator + ASC | No listing visuals | Retake from Store RC only |
 | ASC export compliance + demo credentials re-verify | Forms/credentials console-only | review-notes.md · Info.plist encryption flag | ASC | Review delays | Update notes per build |
+| App Group `group.com.yousef.majlisilm` on App+LA+Widget store profiles | T-049 export failed without App Groups on store profiles | `TESTFLIGHT_INTERNAL_CERTIFICATION_REPORT.md` · export-attempt.log | Apple Developer portal | Cannot export/upload TF IPA | Re-export after profile refresh |
+| App Store profile for `PrayerWidget` + TF upload | Missing widget store profile; no TF build | same | ASC / Xcode Organizer | Install/Smoke stay FAIL | Upload from pinned `STORE_SOURCE_COMMIT` only |
 
 ## Not owner-blocked (agents may continue)
 

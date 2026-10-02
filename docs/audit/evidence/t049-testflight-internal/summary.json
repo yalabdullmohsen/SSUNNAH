@@ -1,0 +1,79 @@
+{
+  "measuredAt": "2026-10-02T03:51:47.715Z",
+  "phase": "T-049 TESTFLIGHT_INTERNAL",
+  "storeSourceCommit": "8be8ed1b577d257b82be2893430c5626242132da",
+  "version": "1.0",
+  "buildNumber": "54",
+  "archive": {
+    "xcodeArchive": "PASS",
+    "archivePath": "/tmp/sunnah-t049.xcarchive",
+    "exportAppStore": "FAIL",
+    "validateApp": "FAIL",
+    "capacitorSyncThisCycle": "NOT_RUN",
+    "podResolution": "N/A_SPM",
+    "evidence": [
+      "docs/audit/evidence/t049-testflight-internal/archive-attempt.log",
+      "docs/audit/evidence/t049-testflight-internal/export-attempt.log"
+    ],
+    "exportErrors": [
+      "No profiles for com.yousef.majlisilm.PrayerWidget",
+      "Store profiles missing App Groups group.com.yousef.majlisilm for App + PrayerLiveActivity"
+    ]
+  },
+  "install": {
+    "iPhone": "FAIL",
+    "iPad": "FAIL",
+    "reason": "No TestFlight build uploaded; App Store export failed"
+  },
+  "smoke": {
+    "status": "FAIL",
+    "reason": "No TestFlight install — Home/Search/Quran/Mushaf/Prayer/Settings/Account not exercised on TF build"
+  },
+  "features": {
+    "Widgets": "UNPROVEN_ON_TF",
+    "WatchSync": "NOT_APPLICABLE",
+    "LiveActivity": "UNPROVEN_ON_TF",
+    "DeepLinks": "UNPROVEN_ON_TF",
+    "Notifications": "UNPROVEN_ON_TF",
+    "Offline": "UNPROVEN_ON_TF",
+    "Authentication": "UNPROVEN_ON_TF"
+  },
+  "boundary": {
+    "status": "PASS",
+    "RELEASE_BINARY_HAS_ZERO_UNKNOWN_ASSETS": true,
+    "AUDIO_RELEASE_ALLOWLIST_LOCKED": true,
+    "STREAM_ONLY": true,
+    "evidence": "docs/audit/evidence/t049-testflight-internal/boundary-check.log"
+  },
+  "crashes": {
+    "status": "UNPROVEN",
+    "note": "No TF install crash review possible"
+  },
+  "boards": {
+    "Archive": "FAIL",
+    "Install": "FAIL",
+    "Smoke": "FAIL",
+    "Boundary": "PASS"
+  },
+  "blockingFailures": [
+    "EXPORT_FAILED_APP_GROUPS_PROFILES",
+    "NO_TESTFLIGHT_UPLOAD",
+    "NO_IPHONE_TF_INSTALL",
+    "NO_IPAD_TF_INSTALL",
+    "SMOKE_NOT_EXECUTED_ON_TF"
+  ],
+  "ownerActions": [
+    "Register App Group group.com.yousef.majlisilm on App + PrayerLiveActivity + PrayerWidget store profiles",
+    "Create/refresh App Store provisioning profiles including PrayerWidget",
+    "Apple Distribution cert / ASC upload permission",
+    "Upload build to TestFlight Internal",
+    "Install+smoke on physical iPhone and iPad"
+  ],
+  "noteCurrentStateCorrection": {
+    "DeviceMatrix": "IOS_DEVICE_MATRIX_INCOMPLETE (not COMPLETE)",
+    "Performance": "MOBILE_PERFORMANCE_NOT_CERTIFIED (not CERTIFIED)"
+  },
+  "exit": "TESTFLIGHT_INTERNAL_NOT_CERTIFIED",
+  "exitCode": "TESTFLIGHT_INTERNAL_NOT_CERTIFIED",
+  "verdict": "FAIL"
+}
