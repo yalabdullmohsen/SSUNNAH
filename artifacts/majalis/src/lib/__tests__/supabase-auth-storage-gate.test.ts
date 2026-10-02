@@ -42,6 +42,19 @@ assert.match(boot, /storage:\s*createSupabaseAuthStorage\(\)/);
 const supabaseApi = read("src/lib/supabase.ts");
 assert.match(supabaseApi, /clearAllNativeAuthSessions/);
 assert.match(supabaseApi, /export async function signOut/);
+{
+  const signOutBody = supabaseApi.match(
+    /export async function signOut\(\)\s*\{([\s\S]*?)\n\}/,
+  )?.[1];
+  assert.ok(signOutBody, "signOut body readable");
+  const revokeAt = signOutBody.indexOf("supabase.auth.signOut");
+  const clearAt = signOutBody.indexOf("clearAllNativeAuthSessions");
+  assert.ok(revokeAt >= 0 && clearAt >= 0, "signOut calls revoke + native clear");
+  assert.ok(
+    revokeAt < clearAt,
+    "AUTH_SIGNOUT: supabase.auth.signOut must run before clearAllNativeAuthSessions",
+  );
+}
 
 const swift = read("ios/App/App/SunnahAuthKeychainPlugin.swift");
 assert.match(swift, /clearNativeLegacySession/);

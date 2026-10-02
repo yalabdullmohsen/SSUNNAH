@@ -287,10 +287,8 @@ export function createSupabaseAuthStorage(): SupabaseAuthStorage {
 }
 
 /**
- * Unified logout cleanup:
- * - Cap Keychain accounts `cap.supabase.<sb-*-auth-token>`
- * - NetworkService account `majlis.auth.session.v1`
- * - WebView leftovers for the same keys
+ * Unified native leftovers cleanup (Cap Keychain + NetworkService legacy).
+ * Call AFTER supabase.auth.signOut() so the access token is still available for server revoke.
  * Safe on web (native calls no-op when plugin missing).
  */
 export async function clearAllNativeAuthSessions(): Promise<void> {
