@@ -18,6 +18,7 @@ import type { HadithRecord } from "@/lib/hadith/hadithNormalize";
 import "@/styles/pages/shimael.css";
 import "@/styles/pages/prophet-stories.css";
 import { ListScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 type TabId = "khalq" | "khuluq" | "sira" | "mahabbah";
 
@@ -482,7 +483,7 @@ function BabBlock({
   const key = bab.id + idOffset;
   return (
     <div className="sh-bab">
-      <button type="button" className="sh-bab__head" onClick={onToggle} aria-expanded={open}>
+      <Button type="button" variant="ghost" className="sh-bab__head" onClick={onToggle} aria-expanded={open}>
         <span className="sh-bab__icon" aria-hidden="true">
           <SectionIcon name={bab.icon} size={22} />
         </span>
@@ -491,7 +492,7 @@ function BabBlock({
         <span className="sh-bab__chevron" aria-hidden="true">
           {open ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </span>
-      </button>
+      </Button>
       {open ? (
         <div className="sh-bab__body sh-bab__body--reader">
           {bab.hadiths.map((h, j) => (
@@ -655,8 +656,9 @@ export default function ShimaelPage() {
               </ReadingSectionCard>
               {filteredMahabbah.map((m, i) => (
                 <div key={i} className="sh-mahabbah sh-bab">
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
                     className="sh-bab__head"
                     onClick={() => setOpenMahabbah(openMahabbah === i ? null : i)}
                     aria-expanded={openMahabbah === i}
@@ -665,7 +667,7 @@ export default function ShimaelPage() {
                     <span className="sh-bab__chevron" aria-hidden="true">
                       {openMahabbah === i ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                     </span>
-                  </button>
+                  </Button>
                   {openMahabbah === i ? (
                     <div className="sh-bab__body sh-bab__body--reader">
                       <ReadingSectionCard title={m.title}>

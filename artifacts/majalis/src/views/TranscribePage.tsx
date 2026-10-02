@@ -8,6 +8,7 @@ import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/components/AuthProvider";
 import "@/styles/pages/transcribe.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 type TabId = "upload" | "youtube" | "text";
 type Status = "idle" | "uploading" | "processing" | "done" | "error";
@@ -253,14 +254,15 @@ export default function TranscribePage() {
             { id: "youtube" as const, label: "يوتيوب" },
             { id: "text" as const, label: "نص مباشر" },
           ].map((tab) => (
-            <button
+            <Button
               key={tab.id}
               type="button"
+              variant="ghost"
               onClick={() => setActiveTab(tab.id)}
               className={activeTab === tab.id ? "trp-tab trp-tab--active" : "trp-tab"}
             >
               {tab.label}
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -350,14 +352,15 @@ export default function TranscribePage() {
             </p>
           )}
 
-          <button
+          <Button
             type="button"
+            variant="primary"
             onClick={handleProcess}
             disabled={authLoading || !isLoggedIn || status === "uploading" || status === "processing"}
             className="trp-submit-btn"
           >
             {status === "uploading" || status === "processing" ? "يُعالَج..." : "ابدأ التحليل الذكي"}
-          </button>
+          </Button>
         </div>
 
         {result && (

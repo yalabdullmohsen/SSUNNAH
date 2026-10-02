@@ -227,11 +227,9 @@ const QUIZ_QUESTIONS = [
 
 function ProphetCard({
   prophet,
-  onSelect,
   index = 0,
 }: {
   prophet: ProphetRecord;
-  onSelect: () => void;
   index?: number;
 }) {
   const color = prophetColor(prophet.slug);
@@ -245,17 +243,14 @@ function ProphetCard({
       : null;
 
   return (
-    <div
+    <Link
+      href={`/prophets/${prophet.slug}`}
       className={`prophet-lux-card${isUlulAzm ? " prophet-lux-card--azm" : ""}`}
       style={{
         "--prophet-color": color,
         "--prophet-accent": accent,
         "--card-i": index,
       } as React.CSSProperties}
-      onClick={onSelect}
-      onKeyDown={e => (e.key === "Enter" || e.key === " ") && onSelect()}
-      tabIndex={0}
-      role="button"
       aria-label={`عرض قصة ${prophet.arabicName} عليه السلام`}
     >
       <div className="prophet-lux-card__glow prophet-lux-card__glow--off" aria-hidden="true" hidden />
@@ -292,7 +287,7 @@ function ProphetCard({
         <ChevronLeft size={16} strokeWidth={2.5} />
       </span>
       <div className="prophet-lux-card__border" />
-    </div>
+    </Link>
   );
 }
 
@@ -774,18 +769,15 @@ function TimelineView({ onSelect }: { onSelect: (slug: string) => void }) {
             >
               <IslamicStar size={16} color="#fff" />
             </Button>
-            <div
+            <Link
+              href={`/prophets/${p.slug}`}
               className="prophet-timeline__card"
-              onClick={() => onSelect(p.slug)}
-              role="button"
-              tabIndex={0}
               aria-label={`عرض قصة ${p.arabicName}`}
-              onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onSelect(p.slug)}
             >
               <h3 className="prophet-timeline__name">{p.arabicName}</h3>
               <p className="prophet-timeline__title">{p.title}</p>
               <p className="prophet-timeline__era">{p.era}</p>
-            </div>
+            </Link>
           </div>
         );
       })}
@@ -1169,7 +1161,6 @@ export default function ProphetStoriesPage({
                       key={p.slug}
                       prophet={p}
                       index={i}
-                      onSelect={() => openProphet(p.slug)}
                     />
                   ))}
                 </div>

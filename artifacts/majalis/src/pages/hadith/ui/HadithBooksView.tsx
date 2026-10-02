@@ -124,16 +124,15 @@ function HadithRow({ h, index }: { h: CdnHadith; index: number }) {
   }
 
   return (
-    <div
-      className={`hb-hadith-row${expanded ? " hb-hadith-row--expanded" : ""}`}
-      onClick={() => setExpanded((x) => !x)}
-      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setExpanded((x) => !x)}
-      tabIndex={0}
-      role="button"
-      aria-expanded={expanded}
-      aria-label={`الحديث ${h.hadithnumber}`}
-    >
-      <div className="hb-hadith-row__head">
+    <div className={`hb-hadith-row${expanded ? " hb-hadith-row--expanded" : ""}`}>
+      <Button
+        type="button"
+        variant="ghost"
+        className="hb-hadith-row__head"
+        onClick={() => setExpanded((x) => !x)}
+        aria-expanded={expanded}
+        aria-label={`الحديث ${h.hadithnumber}`}
+      >
         <span className="hb-hadith-row__num">{index}</span>
         <p className="hb-hadith-row__preview">
           {expanded ? matn : truncateAtWord(matn, 140)}
@@ -143,12 +142,9 @@ function HadithRow({ h, index }: { h: CdnHadith; index: number }) {
           className={`hb-hadith-row__chevron${expanded ? " hb-hadith-row__chevron--open" : ""}`}
           aria-hidden="true"
         />
-      </div>
+      </Button>
       {expanded && (
-        // onClick هنا لمنع انتشار النقر إلى صف الحديث الأب (الذي يطوي/يبسط
-        // عند النقر) — لا إجراء فعلي يحتاج مكافئ لوحة مفاتيح.
-        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-        <div className="hb-hadith-row__detail" onClick={(e) => e.stopPropagation()}>
+        <div className="hb-hadith-row__detail">
           <div className="hb-hadith-row__meta">
             {chapter && <span className="hb-hadith-row__chapter">{chapter}</span>}
             {(h as { _source?: string })._source && (

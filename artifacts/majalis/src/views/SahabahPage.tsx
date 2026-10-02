@@ -7,6 +7,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import "@/styles/pages/sahabah.css";
 import { ListScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 
 type SahabiCategory = "الكل" | "الخلفاء" | "العشرة" | "النساء" | "العلماء" | "الفاتحون";
@@ -1274,16 +1275,17 @@ export default function SahabahPage() {
         {/* categories */}
         <div className="sb-cats" role="tablist" aria-label="تصفية الصحابة">
           {CATEGORIES.map((cat) => (
-            <button
+            <Button
               key={cat}
               role="tab"
               type="button"
+              variant="ghost"
               className={`sb-cat-btn${activeCat === cat ? " sb-cat-btn--active" : ""}`}
               onClick={() => setActiveCat(cat)}
               aria-selected={activeCat === cat}
             >
               {cat}
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -1295,8 +1297,9 @@ export default function SahabahPage() {
             const isOpen = openId === s.id;
             return (
               <article key={s.id} className={`sb-card${isOpen ? " sb-card--open" : ""}`}>
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
                   className="sb-card__head"
                   onClick={() => setOpenId(isOpen ? null : s.id)}
                   aria-expanded={isOpen}
@@ -1312,7 +1315,7 @@ export default function SahabahPage() {
                     ))}
                   </div>
                   <span className={`sb-card__chevron${isOpen ? " sb-card__chevron--open" : ""}`}>▾</span>
-                </button>
+                </Button>
 
                 {isOpen && (
                   <div className="sb-card__body">
