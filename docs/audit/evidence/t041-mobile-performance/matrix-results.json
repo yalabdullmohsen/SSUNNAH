@@ -1,0 +1,24 @@
+{
+  "phase": "T-041",
+  "capturedAt": "2026-10-02T01:55:51Z",
+  "verdict": "FAIL",
+  "exit": "MOBILE_PERFORMANCE_NOT_CERTIFIED",
+  "requiredBoard": {
+    "Startup": "FAIL",
+    "Navigation": "FAIL",
+    "Mushaf": "FAIL",
+    "Prayer": "FAIL",
+    "Crash-Free": "FAIL"
+  },
+  "blockingFailures": [
+    "No device table with Device/OS/Build/Metric/Result numeric measurements for Cold/Warm/Resume/Route/Search/Mushaf turn/Memory/CPU/Dropped frames",
+    "Device Matrix prereq IOS_DEVICE_MATRIX_INCOMPLETE — CURRENT STATE COMPLETE contradicted",
+    "MUSHAF_HEAVINESS_AND_PAGE_TURN_REPORT.md MISSING from repository",
+    "Accessibility CERTIFIED claim false (T-039 NOT CERTIFIED) — not used as PASS evidence",
+    "Fluidity JSON is repo model only — not device wall-clock FPS/memory",
+    "Crash-free session window on TF/device NOT MEASURED"
+  ],
+  "heavinessReport": "MISSING",
+  "mushafArchitectureEdits": "NONE",
+  "budgetRaised": false
+}

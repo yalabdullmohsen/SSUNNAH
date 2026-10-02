@@ -1,0 +1,6 @@
+{
+  "lhciBudgetScript": "artifacts/majalis has test:lhci-budget (web)",
+  "bundleBudget": "verify:ci bundle budget (web)",
+  "budgetRaised": false,
+  "devicePerfMeasured": false
+}
