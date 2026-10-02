@@ -212,6 +212,8 @@
 | `scripts/ios-app-shell-stability-matrix.sh` | تشغيل مصفوفة استقرار الصدفة على Simulator |
 | `docs/audit/IOS_AUTH_CERTIFICATION_REPORT.md` | T-034 · `IOS_AUTH_NOT_CERTIFIED` (FAIL) · Cap localStorage ≠ Keychain primary |
 | `docs/audit/evidence/t034-ios-auth/` | أدلة/جرد ثابت لمصادقة iOS T-034 |
+| `docs/audit/MUSHAF_IOS_DEVICE_CERTIFICATION_REPORT.md` | T-036 · `MUSHAF_IOS_NOT_CERTIFIED` (FAIL) · device 25/50/100 NOT MEASURED |
+| `docs/audit/evidence/t036-mushaf-ios/` | أدلة تكامل ثابت + لقطات محاكي T-036 |
 | `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` | **Master Closure Register** · `MASTER_CLOSURE_REGISTER_LOCKED` |
 | `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md` | تقرير حدود الإغلاق الحي · `PROJECT_CLOSURE_PARTIAL` |
 | `docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/` | مرشّح أذان CC0 إسطنبول · `CC0_ADHAN_CANDIDATE` |

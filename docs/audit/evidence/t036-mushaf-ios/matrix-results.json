@@ -1,0 +1,32 @@
+{
+  "phase": "T-036",
+  "capturedAt": "2026-10-02T00:33:28Z",
+  "verdict": "FAIL",
+  "exit": "MUSHAF_IOS_NOT_CERTIFIED",
+  "requiredBoard": {
+    "25": "FAIL",
+    "50": "FAIL",
+    "100": "FAIL",
+    "Search": "FAIL",
+    "Bookmarks": "FAIL",
+    "Tafsir": "FAIL",
+    "Integrity": "PARTIAL"
+  },
+  "blockingFailures": [
+    "docs/mushaf/MUSHAF_HEAVINESS_AND_PAGE_TURN_REPORT.md MISSING from repository (referenced by MASTER_COPYABLE but not present)",
+    "No device FPS/memory/CPU/page-unlock/touch-latency measurements for 25/50/100 page turns",
+    "Search/Bookmarks/Tafsir device flows UNPROVEN on iPhone/iPad",
+    "iPad Split View / Audio interruption / Lock screen interruption UNPROVEN",
+    "CLS=0 physical device not measured",
+    "Offline prereq IOS_OFFLINE_NOT_READY (T-035 FAIL tip in evidence)"
+  ],
+  "staticIntegrity": {
+    "mushaf604Gate": "see static/mushaf-604.log",
+    "finalIntegrityFreeze": "see static/mushaf-final-integrity.log",
+    "deviceFPS": "NOT_MEASURED",
+    "deviceMemory": "NOT_MEASURED",
+    "clsPhysical": "NOT_MEASURED"
+  },
+  "heavinessReport": "MISSING",
+  "sacredBoundary": "NO_EDITS"
+}
