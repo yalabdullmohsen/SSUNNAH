@@ -1,0 +1,36 @@
+
+> @workspace/majalis@1.0.0 test:prayer-engine-p0 /Users/alabdullmohsen/majlis-app/artifacts/majalis
+> node --import tsx src/lib/__tests__/prayer-engine-p0-gate.test.ts && pnpm run test:prayer-notification-scheduler
+
+prayer-engine-p0-gate.test.ts: ok
+  ✓ notification scheduler reconcile API
+
+> @workspace/majalis@1.0.0 test:prayer-notification-scheduler /Users/alabdullmohsen/majlis-app/artifacts/majalis
+> node --import tsx src/lib/__tests__/prayer-notification-scheduler.test.ts && node --import tsx src/lib/__tests__/prayer-notifications-rebuild.test.ts
+
+  ✓ logical identifiers stable
+  ✓ reconcile keeps foreign, adds missing
+  ✓ stale cancelled
+  ✓ changed replaced
+  ✓ past expired
+  ✓ idempotent + validate
+  ✓ past desired rejected
+  ✓ safe window { days: 3, expectedRequests: 45 }
+  ✓ health
+prayer-notification-scheduler.test.ts: ok
+  ✓ enter title copy
+  ✓ prayer order validation
+  ✓ estimated payload rejected
+  ✓ all enabled prayers schedule one enter each
+  ✓ disabled prayer not scheduled
+  ✓ reschedule twice is idempotent (same ids)
+  ✓ fingerprint stable; timezone change invalidates
+  ✓ past times not scheduled
+  ✓ invalid/missing times skip scheduling
+  ✓ master off does not schedule
+  ✓ legacy migration conservative when absent
+  ✓ master on with zero prayers heals to all-on
+  ✓ load heals poisoned master-on/zero-prayers store
+  ✓ cancel old prayer ids without wiping other systems
+  ✓ settings change invalidates fingerprint
+prayer-notifications-rebuild.test.ts: ok

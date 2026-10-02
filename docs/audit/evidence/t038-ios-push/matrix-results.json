@@ -1,0 +1,26 @@
+{
+  "phase": "T-038",
+  "capturedAt": "2026-10-02T01:06:53Z",
+  "verdict": "FAIL",
+  "exit": "IOS_PUSH_NOT_CERTIFIED",
+  "requiredBoard": {
+    "Foreground": "FAIL",
+    "Background": "FAIL",
+    "Terminated": "FAIL",
+    "Deep Link": "FAIL",
+    "Token Refresh": "FAIL",
+    "Duplicate Prevention": "FAIL"
+  },
+  "blockingFailures": [
+    "No device APNs delivery evidence for Foreground/Background/Terminated/Cold-start-from-notification",
+    "Deep Link from notification action UNPROVEN (T-033 deep links also NOT CERTIFIED)",
+    "Token refresh / Permission denied / Permission granted later — UNPROVEN on device",
+    "Duplicate prevention & Quiet Hours — static policy present; device outcome UNPROVEN",
+    "Prayer/Adhan prereq IOS_PRAYER_ADHAN_NOT_CERTIFIED (T-037 FAIL) — CURRENT STATE CERTIFIED contradicted"
+  ],
+  "staticGates": {
+    "notifications-hardening": "PASS",
+    "sunnah-notifications-policy": "PASS"
+  },
+  "corpusPolicy": "No Quran/Hisn/Fatwa corpus text in push bodies for this cert attempt"
+}

@@ -214,6 +214,12 @@
 | `docs/audit/evidence/t034-ios-auth/` | أدلة/جرد ثابت لمصادقة iOS T-034 |
 | `docs/audit/MUSHAF_IOS_DEVICE_CERTIFICATION_REPORT.md` | T-036 · `MUSHAF_IOS_NOT_CERTIFIED` (FAIL) · device 25/50/100 NOT MEASURED |
 | `docs/audit/evidence/t036-mushaf-ios/` | أدلة تكامل ثابت + لقطات محاكي T-036 |
+| `docs/audit/IOS_PRAYER_ADHAN_CERTIFICATION_REPORT.md` | T-037 · `IOS_PRAYER_ADHAN_NOT_CERTIFIED` (FAIL) · device delivery UNPROVEN |
+| `docs/audit/evidence/t037-ios-prayer-adhan/` | أدلة ثابتة/محاكي لصلاة وأذان T-037 |
+| `docs/audit/IOS_PUSH_CERTIFICATION_REPORT.md` | T-038 · `IOS_PUSH_NOT_CERTIFIED` (FAIL) · APNs device delivery UNPROVEN |
+| `docs/audit/evidence/t038-ios-push/` | أدلة ثابتة/محاكي لـ Push T-038 |
+| `docs/audit/IOS_ACCESSIBILITY_CERTIFICATION_REPORT.md` | T-039 · `IOS_ACCESSIBILITY_NOT_CERTIFIED` (FAIL) · VoiceOver device UNPROVEN |
+| `docs/audit/evidence/t039-ios-a11y/` | أدلة/جرد إمكانية الوصول T-039 |
 | `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` | **Master Closure Register** · `MASTER_CLOSURE_REGISTER_LOCKED` |
 | `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md` | تقرير حدود الإغلاق الحي · `PROJECT_CLOSURE_PARTIAL` |
 | `docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/` | مرشّح أذان CC0 إسطنبول · `CC0_ADHAN_CANDIDATE` |

@@ -1,0 +1,33 @@
+{
+  "phase": "T-037",
+  "capturedAt": "2026-10-02T00:47:08Z",
+  "verdict": "FAIL",
+  "exit": "IOS_PRAYER_ADHAN_NOT_CERTIFIED",
+  "requiredBoard": {
+    "Foreground": "FAIL",
+    "Background": "FAIL",
+    "Terminated": "FAIL",
+    "Locked": "FAIL",
+    "Timezone": "FAIL",
+    "Location": "FAIL"
+  },
+  "blockingFailures": [
+    "No device evidence for Adhan audio fire in Foreground/Background/Terminated/Locked/Airplane/Focus/Silent/LowPower",
+    "No device evidence for notification→app open, duplicate prevention, or double-trigger under real triggers",
+    "Timezone change / Location change / Device reboot / midnight rollover — UNPROVEN on device",
+    "Istanbul Adhan is CC0_ADHAN_REJECTED_QUALITY — not APPROVED_FOR_RELEASE; Store posture system-default (ADHAN_AUDIO_AUDIT)",
+    "AUDIO_CERTIFIED=false · AUDIO_LICENSE_PARTIAL",
+    "Live Activity T-031 CERTIFIED for phases/DI UI — does not prove Adhan delivery or notification scenarios",
+    "VoiceOver / accessible countdown — UNPROVEN (A11y cert not started)",
+    "Mushaf prereq MUSHAF_IOS_NOT_CERTIFIED (T-036 FAIL) — CURRENT STATE CERTIFIED contradicted"
+  ],
+  "audio": {
+    "istanbul": "CC0_ADHAN_REJECTED_QUALITY",
+    "storeFallback": "system-default",
+    "audioCertified": false,
+    "verdict": "AUDIO_LICENSE_PARTIAL"
+  },
+  "liveActivity": "PRAYER_LIVE_ACTIVITY_CERTIFIED (UI phases only; not delivery matrix)",
+  "prayerEngineEdits": "NONE",
+  "staticGates": "prayer-engine-p0 + adhan-smart-cancel + adhan-playback-modes logs"
+}
