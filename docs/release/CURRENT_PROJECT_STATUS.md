@@ -1,6 +1,6 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-10-03 (Batch A — U4 remasure + LHCI home unused-css closure)  
+**Updated:** 2026-10-03 (SUNNAH_FINAL_CLOSURE_PROGRAM — A–I execution)  
 **Master closure register:** `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` · **LOCKED**  
 **iOS-only board:** `docs/audit/IOS_ONLY_CLOSURE_BOARD.md` · **`LIVE_TRUTH_LOCKED_IOS_ONLY`**  
 **Boundary report (living):** `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md`  
@@ -30,33 +30,34 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `c1cec798` — U4 hus/tab geometry (#2481); Batch A LHCI pending merge |
-| Production `version.json` | `c1cec798` **MATCH** · `builtAt=2026-10-02T22:21:28.663Z` |
-| Recent hardening | #2474 contrast · #2475 Keychain · #2476 signOut · #2477 FINAL_REPOSITORY_HARDENING (P0–P3 Accepted Truth = 0) |
+| `origin/main` tip | `f9ac3572` — LHCI unused-css defer identity (#2482); FINAL_CLOSURE branch pending tip MATCH |
+| Production `version.json` | `f9ac3572` **MATCH** · `builtAt=2026-10-02T23:08:40.375Z` (pre–final-closure) |
+| Recent hardening | #2474–#2477 · #2480 U4 · #2481 hus · #2482 LHCI defer · do not reopen |
 | Next iOS Archive | **1.0.1 / ≥56** · tip must include hardening · `DEVICE_RECERTIFICATION_REQUIRED` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** · **`PROJECT_CLOSURE_PARTIAL`** · **iOS-only product** |
-| Unification | **`UNIFIED_PARTIAL`** · U2 COMPLETE · U3 **`DARK_LIGHT_UNIFIED`** · U4 Home cold CLS residual · LHCI local closed pending tip MATCH · U7 Back **PASS** historically · U5/U6 at debt ceilings |
+| Unification | **`UNIFIED_PARTIAL`** · U4 local CLS≈0.0003 · LHCI local closed · prod remasure after tip MATCH · U7 Back historically PASS · buttons/cards debt improved |
 | Mobile | **`MOBILE_PARTIALLY_READY`** · Bundle `com.yousef.majlisilm` · Android **retired** |
-| License | **`LICENSE_CERTIFICATION_REQUIRED`** · recitations **STREAM_ONLY** · Istanbul **CC0_ADHAN_REJECTED_QUALITY** (not in binary) |
+| License | **`LICENSE_CERTIFICATION_REQUIRED`** · packet: `docs/store-release/LICENSE_EXECUTION_PACKET.md` |
 | Store | **HOLD** for new submission · App Store 1.0 live · TF 1.0.1(55) available · no Play · no `STORE_GO` |
 | Repo defects (Accepted Truth) | **P0=0 · P1=0 · P2=0 · P3=0** |
 | Explicit non-claims | no `STORE GO` · no `CONTENT_CERTIFIED` · no `AUDIO_CERTIFIED` · no `UNIFIED_100` · no `MOBILE_READY` · no `DEVICE_TESTED` · no `WCAG CERTIFIED` · no `IOS_AUTH_CERTIFIED` · no `IOS_RELEASE_CANDIDATE_READY` |
 
 ## Active program
 
-**`SUNNAH_FINAL_PRODUCT_UNIFICATION_AND_STORE_CLOSURE`**
+**`SUNNAH_FINAL_CLOSURE_PROGRAM` (A→I)**
 
 | Phase | Target exit | Status |
 |---|---|---|
-| 0 Truth sync | `DOCUMENTATION_MATCH_CURRENT_MAIN` | **COMPLETE** (tip `c1cec798`) |
-| 1 U4 Startup | `STARTUP_CHROME_STABLE` / `CHROME_FP_EQUALS_FINAL` | **NOT CLOSED** — remasure `c1cec798`: Prayer/Search/Quran/Mushaf PASS · Home cold CLS FAIL · see `U4_STARTUP_CHROME_REMEASURE_c1cec798.md` |
-| 2 LHCI | `LHCI_HOME_MOBILE_CLOSED` | **LOCAL CLOSED** unused-css=0×3 · forced-reflow=1×3 · awaiting tip MATCH re-proof · see `LHCI_HOME_REMEASURE_BATCH_A.md` |
-| 3 UI authority | BUTTON / CARD / BACK toward UNIFIED_100 | **PARTIAL** — Back PASS historically · buttons/cards at debt ceilings |
-| 4 Route quality | priority routes feedback COMPLETE | **PARTIAL** — wave4 tested · stale/permission gaps remain |
-| 5 Mushaf fluidity | measured plan only | **PREPARED** — `docs/mushaf/MUSHAF_FLUIDITY_PLAN.md` |
-| 6 License matrix | owner decision prep | **PREPARED** — `docs/store-release/LICENSE_DECISION_MATRIX.md` |
-| 7 iOS RC prep | checklist only · no Archive | **PREPARED** — `docs/store-release/IOS_RC_EXECUTION_PLAN.md` |
+| A Startup chrome | `STARTUP_CHROME_STABLE` | **LOCAL PASS** Home CLS≈0.000323 · 5 routes <0.01 · awaiting tip MATCH remasure |
+| B LHCI Home | `LHCI_HOME_MOBILE_CLOSED` | **LOCAL PASS** unused-css 0×3 · forced-reflow 1×3 · prod f9ac3572 was 150–320 / 1/1/0 |
+| C Button authority | `BUTTON_AUTHORITY_IMPROVED` | **LOCAL** rawButtonFiles 109→107 · elements 482→471 |
+| D Card authority | `CARD_AUTHORITY_IMPROVED` | **LOCAL** shadows 1108→1107 · radius 1222→1221 |
+| E Route feedback | `ROUTE_FEEDBACK_COMPLETE` | **EVIDENCE** `docs/audit/ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json` |
+| F Mushaf fluidity | plan only | **READY** `docs/mushaf/MUSHAF_FLUIDITY_IMPLEMENTATION_PLAN.md` |
+| G Docs sync | tip=prod=docs | **PARTIAL** until tip MATCH after merge |
+| H License packet | classification | **READY** `docs/store-release/LICENSE_EXECUTION_PACKET.md` |
+| I Build 56 | checklist only | **READY** `docs/store-release/BUILD_56_EXECUTION_PACKET.md` · no Archive |
 
 ## T-034 Auth status
 

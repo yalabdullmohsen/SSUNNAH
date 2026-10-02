@@ -9,9 +9,8 @@ const TOP_ROUTES: Array<() => Promise<unknown>> = [
   () => import("@/pages/account/SectionsPage"),
   () => import("@/pages/quran/QuranHubPage"),
   () => import("@/pages/worship/PrayerTimesPage"),
-  () => import("@/pages/lessons/LessonsPage"),
+  /* Lessons/Fiqh CSS-heavy — تُستبعد من التسخين التلقائي (LHCI unused-css) */
   () => import("@/pages/hadith/HadithPage"),
-  () => import("@/pages/fiqh/FiqhPage"),
   () => import("@/pages/worship/AdhkarPage"),
   () => import("@/pages/quran/TafsirPage"),
 ];
@@ -39,7 +38,7 @@ export function runPrefetchTopRoutes(): void {
 export function prefetchTopRoutesOnIdle(): void {
   if (typeof window === "undefined") return;
   // بعد LCP بكثير — لا تنافس TBT في نافذة القياس
-  const afterLoad = () => window.setTimeout(() => runPrefetchTopRoutes(), 25_000);
+  const afterLoad = () => window.setTimeout(() => runPrefetchTopRoutes(), 90_000);
   if (document.readyState === "complete") afterLoad();
   else window.addEventListener("load", afterLoad, { once: true });
 }

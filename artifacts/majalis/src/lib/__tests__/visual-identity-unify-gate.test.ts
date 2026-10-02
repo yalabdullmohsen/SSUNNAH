@@ -145,10 +145,20 @@ assert.match(
 
 const mainSrc = read("src/main.tsx");
 assert.match(mainSrc, /void import\("\.\/styles\/final-release\.css"\)/, "final-release مؤجّل");
-assert.match(mainSrc, /^\s*import\s+"\.\/styles\/visual-identity-unify\.css"/m, "هوية متزامنة لأول طلاء");
+/* LHCI Home: unify مؤجّل مرة واحدة — هوية ATF عبر critical + foundation sync */
 assert.doesNotMatch(
   mainSrc,
-  /import\("\.\/styles\/visual-identity-unify\.css"\)/,
+  /^\s*import\s+"\.\/styles\/visual-identity-unify\.css"/m,
+  "unify ليس sync في entry",
+);
+assert.match(
+  mainSrc,
+  /import\(\s*"\.\/styles\/visual-identity-unify\.css"\s*\)/,
+  "unify مؤجّل مرة واحدة في loadNonCriticalCss",
+);
+assert.doesNotMatch(
+  mainSrc,
+  /final-release\.css"[\s\S]{0,400}visual-identity-unify\.css/,
   "WAVE7: لا إعادة هوية بعد final-release (ممتص في CASCADE SEAL)",
 );
 assert.doesNotMatch(

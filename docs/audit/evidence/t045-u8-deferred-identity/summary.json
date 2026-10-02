@@ -7,18 +7,18 @@
     "darkEnsureImports": 6
   },
   "importsAfter": {
-    "mainSyncCssImports": 15,
-    "mainDeferredCssImports": 49,
+    "mainSyncCssImports": 14,
+    "mainDeferredCssImports": 50,
     "darkEnsureImports": 6
   },
   "byDecision": {
-    "CRITICAL_TO_FIRST_PAINT": 15,
-    "AFTER_IDLE_SAFE": 35,
+    "CRITICAL_TO_FIRST_PAINT": 14,
+    "AFTER_IDLE_SAFE": 36,
     "COMPONENT_LOCAL": 6,
     "ROUTE_SPECIFIC": 8,
     "KEEP_JUSTIFIED": 6
   },
-  "deferredKeepJustified": 49,
+  "deferredKeepJustified": 50,
   "darkKeepJustified": 6,
   "unjustifiedDeferred": [],
   "reloadToWinPresent": false,
@@ -44,10 +44,10 @@
       "index.css",
       "styles/theme-aliases.css",
       "styles/semantic-layer-tokens.css",
-      "styles/visual-identity-unify.css",
       "styles/interaction-states.css"
     ],
     "deferred": [
+      "styles/visual-identity-unify.css",
       "styles/z-index-layers.css",
       "styles/motion-policy.css",
       "styles/tokens.css",
@@ -110,5 +110,6 @@
   "activeCompatibilityPresent": true,
   "activeCompatibilityJustified": true,
   "exit": "DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED",
-  "exitCode": "DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+  "exitCode": "DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED",
+  "note": "2026-10-03: visual-identity-unify deferred for Home unused-css ≤80"
 }

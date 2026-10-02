@@ -1,0 +1,48 @@
+{
+  "route": "search",
+  "path": "/search",
+  "fp": 68,
+  "fcp": 68,
+  "elapsedMs": 4784,
+  "clsTotal": 0,
+  "clsAfterFcp": 0,
+  "clsEntryCount": 0,
+  "topCls": [],
+  "themeChangeCount": 0,
+  "visualChangeCount": 1,
+  "visualChanges": [
+    {
+      "key": "sheetCount",
+      "early": 4,
+      "final": 80
+    }
+  ],
+  "sheets": [
+    4,
+    80
+  ],
+  "networkCss": 82,
+  "networkFonts": 5,
+  "earlyBody": {
+    "font": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "finalBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "fontDelta": 0,
+  "backgroundDelta": 0,
+  "headerJump": false,
+  "heroJump": false,
+  "bottomJump": false,
+  "backJump": false,
+  "headerDelta": null,
+  "heroDelta": null,
+  "bottomDelta": null,
+  "backDelta": null
+}

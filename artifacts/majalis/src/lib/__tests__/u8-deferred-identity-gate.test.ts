@@ -44,8 +44,8 @@ assert.deepEqual(summary.unjustifiedDeferred, []);
 assert.deepEqual(summary.firstPaintMisplacedDeferred, []);
 assert.equal(summary.activeCompatibilityJustified, true);
 
-assert.equal(summary.importsAfter.mainSyncCssImports, 15);
-assert.equal(summary.importsAfter.mainDeferredCssImports, 49);
+assert.equal(summary.importsAfter.mainSyncCssImports, 14);
+assert.equal(summary.importsAfter.mainDeferredCssImports, 50);
 assert.equal(summary.importsAfter.darkEnsureImports, 6);
 assert.equal(summary.importsBefore.mainSyncCssImports, 15);
 assert.equal(summary.importsBefore.mainDeferredCssImports, 49);
@@ -56,13 +56,13 @@ const syncImports = [
     .split("function loadNonCriticalCss")[0]
     .matchAll(/^\s*import\s+"\.\/([^"]+\.css)"/gm),
 ].map((m) => m[1]);
-assert.equal(syncImports.length, 15, `sync count ${syncImports.length}`);
+assert.equal(syncImports.length, 14, `sync count ${syncImports.length}`);
 
 const deferredImports = [...main.matchAll(/import\("\.\/(styles\/[^"]+\.css)"\)/g)].map(
   (m) => m[1],
 );
 const deferredUnique = [...new Set(deferredImports)];
-assert.equal(deferredUnique.length, 49, `deferred unique ${deferredUnique.length}`);
+assert.equal(deferredUnique.length, 50, `deferred unique ${deferredUnique.length}`);
 
 assert.match(main, /WAVE7: لا إعادة استيراد unify\/recovery بعد final-release/);
 assert.doesNotMatch(
@@ -94,7 +94,7 @@ for (const layer of [
 const deferredItems = inventory.items.filter(
   (it: { lane: string }) => it.lane === "deferred" || it.lane === "dark-ensure",
 );
-assert.equal(deferredItems.length, 49 + 6);
+assert.equal(deferredItems.length, 50 + 6);
 for (const it of deferredItems) {
   assert.equal(
     it.keep,

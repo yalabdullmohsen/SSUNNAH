@@ -33,7 +33,16 @@ assert.deepEqual(
 );
 
 assert.match(main, /void import\("\.\/styles\/final-release\.css"\)/);
-assert.match(main, /^\s*import\s+"\.\/styles\/visual-identity-unify\.css"/m);
+assert.doesNotMatch(
+  main,
+  /^\s*import\s+"\.\/styles\/visual-identity-unify\.css"/m,
+  "LHCI: unify مؤجّل (unused-css Home)",
+);
+assert.match(
+  main,
+  /import\(\s*"\.\/styles\/visual-identity-unify\.css"\s*\)/,
+  "unify مؤجّل مرة واحدة",
+);
 assert.doesNotMatch(
   main,
   /^\s*import\s+"\.\/styles\/dark-mode-recovery\.css"/m,
@@ -51,14 +60,14 @@ assert.doesNotMatch(
 );
 
 /**
- * U1 LHCI Home graph: tokens / identity-reset / v2-tokens / contrast-fix /
- * sections-calm-polish / ssunnah-ux-polish move sync→idle (Home ATF keeps
- * foundation + theme + unify + interaction-states; recovery مع الليل فقط).
+ * U1+LHCI Home graph: tokens / identity-reset / v2-tokens / contrast-fix /
+ * sections-calm-polish / ssunnah-ux-polish / unify move sync→idle
+ * (Home ATF: foundation + theme + interaction-states; recovery مع الليل فقط).
  * Evidence: unused-css selected ≤80 · unused-js ≤500 · forced-reflow=1.
  */
-assert.ok(sync.length === 15, `sync CSS imports expected 15 after U1 numeric (got ${sync.length})`);
+assert.ok(sync.length === 14, `sync CSS imports expected 14 after unify defer (got ${sync.length})`);
 assert.ok(deferred.length >= 42, `deferred call sites expected ≥42 after Phase 3 (got ${deferred.length})`);
-assert.ok(deferred.length <= 49, `deferred call sites expected ≤49 after U1 idle absorb (got ${deferred.length})`);
+assert.ok(deferred.length <= 50, `deferred call sites expected ≤50 after unify defer (got ${deferred.length})`);
 assert.match(main, /ensure-dark-layers|ensureDarkCoreLayers/, "Phase 3 dark loader wired");
 /* U1: listed polish/token sheets must not return to sync entry */
 for (const f of [

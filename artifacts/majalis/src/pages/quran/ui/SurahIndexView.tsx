@@ -16,6 +16,7 @@ import { getSurahList, getSurahMeta } from "@/lib/quran-api";
 import { useNumerals } from "@/hooks/useNumerals";
 import { VirtualList, type VirtualListHandle } from "@/components/VirtualList";
 import { ListScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/surah-index.css";
 
 type RevelationFilter = "all" | "meccan" | "medinan" | "favorites";
@@ -152,38 +153,38 @@ export default function SurahIndexPage() {
 
       <div className="surah-index-controls">
         <div className="surah-index-sort" role="tablist" aria-label="ترتيب العرض">
-          <button
-            type="button"
+          <Button
+            type="button" variant="ghost"
             role="tab"
             aria-selected={sortMode === "mushaf"}
             className={`surah-index-chip${sortMode === "mushaf" ? " is-active" : ""}`}
             onClick={() => setSortMode("mushaf")}
           >
             ترتيب المصحف
-          </button>
-          <button
-            type="button"
+          </Button>
+          <Button
+            type="button" variant="ghost"
             role="tab"
             aria-selected={sortMode === "revelation"}
             className={`surah-index-chip${sortMode === "revelation" ? " is-active" : ""}`}
             onClick={() => setSortMode("revelation")}
           >
             ترتيب النزول
-          </button>
+          </Button>
         </div>
 
         <div className="surah-index-filters" role="tablist" aria-label="تصفية السور">
-          <button
-            type="button"
+          <Button
+            type="button" variant="ghost"
             role="tab"
             aria-selected={filter === "all"}
             className={`surah-index-chip${filter === "all" ? " is-active" : ""}`}
             onClick={() => setFilter("all")}
           >
             الكل
-          </button>
-          <button
-            type="button"
+          </Button>
+          <Button
+            type="button" variant="ghost"
             role="tab"
             aria-selected={filter === "meccan"}
             className={`surah-index-chip${filter === "meccan" ? " is-active" : ""}`}
@@ -192,9 +193,9 @@ export default function SurahIndexPage() {
             title={!revelationLoaded ? "يحتاج اتصالاً بالإنترنت لتحميل التصنيف" : undefined}
           >
             مكية
-          </button>
-          <button
-            type="button"
+          </Button>
+          <Button
+            type="button" variant="ghost"
             role="tab"
             aria-selected={filter === "medinan"}
             className={`surah-index-chip${filter === "medinan" ? " is-active" : ""}`}
@@ -203,21 +204,21 @@ export default function SurahIndexPage() {
             title={!revelationLoaded ? "يحتاج اتصالاً بالإنترنت لتحميل التصنيف" : undefined}
           >
             مدنية
-          </button>
-          <button
-            type="button"
+          </Button>
+          <Button
+            type="button" variant="ghost"
             role="tab"
             aria-selected={filter === "favorites"}
             className={`surah-index-chip${filter === "favorites" ? " is-active" : ""}`}
             onClick={() => setFilter("favorites")}
           >
             <Star size={12} strokeWidth={2} aria-hidden="true" /> المفضلة
-          </button>
+          </Button>
         </div>
 
         <div className="surah-index-jumps" role="group" aria-label="انتقال سريع">
           {JUMPS.map((jump) => (
-            <button
+            <Button
               key={jump.id}
               type="button"
               className={`surah-index-jump${activeJump === jump.id ? " is-active" : ""}`}
@@ -225,7 +226,7 @@ export default function SurahIndexPage() {
               onClick={() => handleJump(jump)}
             >
               {jump.label}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -275,8 +276,8 @@ export default function SurahIndexPage() {
                   <span className="surah-index-row__name">{plainName}</span>
                   <span className="surah-index-row__meta">{metaLine(s, startPage)}</span>
                 </span>
-                <button
-                  type="button"
+                <Button
+                  type="button" variant="ghost"
                   className={`surah-index-row__fav${fav ? " is-active" : ""}`}
                   onClick={(e) => handleToggleFavorite(s.number, e)}
                   aria-label={fav ? `إزالة ${plainName} من المفضلة` : `إضافة ${plainName} إلى المفضلة`}
@@ -288,7 +289,7 @@ export default function SurahIndexPage() {
                     fill={fav ? "currentColor" : "none"}
                     aria-hidden="true"
                   />
-                </button>
+                </Button>
               </Link>
             );
           }}

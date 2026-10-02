@@ -51,24 +51,18 @@
 }
 
 /* ── الرئيسية: Premium Welcome Card ── */
-.home-page-hero.page-hero-mj,
+/* لا تعدّل هندسة ATF (عقدة U4) — الخلفية الصلبة عبر critical + home-brand-title */
 .home-welcome-premium.page-hero-mj {
   min-height: 18rem;
-  margin-inline: max(0.75rem, var(--page-gutter, 1rem));
-  margin-block: 0.55rem 0.85rem;
-  padding: 1.15rem 1.1rem 1.25rem;
-  border-radius: var(--svl-radius-lg, 28px);
+  margin-inline: max(0.75rem, var(--m2030-pad, 1rem));
+  margin-block: 0.25rem 0.75rem;
+  padding-block: 1rem 1.5rem;
+  padding-inline: 1rem;
+  border-radius: 1.75rem;
   border: 1px solid color-mix(in srgb, var(--svl-accent-primary, #0f5c45) 18%, var(--svl-border-subtle));
-  background:
-    linear-gradient(
-      145deg,
-      color-mix(in srgb, var(--svl-accent-primary, #0f5c45) 16%, #fffcf6) 0%,
-      color-mix(in srgb, var(--svl-accent-gold, #a8843a) 8%, #f7f3eb) 48%,
-      color-mix(in srgb, var(--svl-accent-primary, #0f5c45) 10%, #f3efe6) 100%
-    );
-  box-shadow: var(--svl-shadow-hero, var(--svl-shadow-elevated));
-  color: var(--svl-text-primary, #12201a);
-  overflow: hidden;
+  background-color: #0f5c45;
+  color: #f7f1e4;
+  overflow: visible;
 }
 
 .home-page-hero .page-hero-mj__title,

@@ -1,10 +1,10 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Endgame: public QuranSearch + MakkiMadani + admin Settings → Button/IconButton; ceilings lowered.",
+  "note": "Final closure: SurahIndex+RevelationOrder \u2192 Button; ceilings lowered.",
   "ceilings": {
-    "rawButtonFiles": 109,
-    "rawButtonElements": 482,
+    "rawButtonFiles": 107,
+    "rawButtonElements": 471,
     "divSpanOnClick": 46,
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
@@ -12,8 +12,8 @@
     "buttonRelatedHexApprox": 1703
   },
   "floors": {
-    "officialButtonImportFiles": 252,
+    "officialButtonImportFiles": 256,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-10-02T21:18:49.774Z"
+  "updatedAt": "2026-10-02T23:31:36.668Z"
 }

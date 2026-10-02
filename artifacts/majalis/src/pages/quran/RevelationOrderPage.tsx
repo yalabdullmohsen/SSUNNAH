@@ -4,6 +4,7 @@ import { BookOpen, Info } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
 import { STATUS } from "@/lib/ui-copy";
 import { fetchSurahIndexLocal, fetchRevelationTypes, type SurahIndexEntry } from "@/lib/surah-index";
+import { Button } from "@/components/ui/button";
 
 type RevelationFilter = "all" | "meccan" | "medinan";
 
@@ -72,15 +73,15 @@ export default function RevelationOrderPage() {
       </header>
 
       <div className="revord-filters" role="tablist" aria-label="فلترة حسب مكان النزول">
-        <button type="button" role="tab" aria-selected={filter === "all"} className={`revord-chip${filter === "all" ? "is-active" : ""}`} onClick={() => setFilter("all")}>
+        <Button type="button" variant="ghost" role="tab" aria-selected={filter === "all"} className={`revord-chip${filter === "all" ? "is-active" : ""}`} onClick={() => setFilter("all")}>
           الكل
-        </button>
-        <button type="button" role="tab" aria-selected={filter === "meccan"} className={`revord-chip revord-chip--meccan${filter === "meccan" ? "is-active" : ""}`} onClick={() => setFilter("meccan")}>
+        </Button>
+        <Button type="button" variant="ghost" role="tab" aria-selected={filter === "meccan"} className={`revord-chip revord-chip--meccan${filter === "meccan" ? "is-active" : ""}`} onClick={() => setFilter("meccan")}>
           <span className="revord-dot revord-dot--meccan" aria-hidden="true" /> مكية
-        </button>
-        <button type="button" role="tab" aria-selected={filter === "medinan"} className={`revord-chip revord-chip--medinan${filter === "medinan" ? "is-active" : ""}`} onClick={() => setFilter("medinan")}>
+        </Button>
+        <Button type="button" variant="ghost" role="tab" aria-selected={filter === "medinan"} className={`revord-chip revord-chip--medinan${filter === "medinan" ? "is-active" : ""}`} onClick={() => setFilter("medinan")}>
           <span className="revord-dot revord-dot--medinan" aria-hidden="true" /> مدنية
-        </button>
+        </Button>
       </div>
 
       {loading && surahs.length === 0 ? (

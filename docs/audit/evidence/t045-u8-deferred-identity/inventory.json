@@ -8,8 +8,8 @@
       "darkEnsureImports": 6
     },
     "importsAfter": {
-      "mainSyncCssImports": 15,
-      "mainDeferredCssImports": 49,
+      "mainSyncCssImports": 14,
+      "mainDeferredCssImports": 50,
       "darkEnsureImports": 6
     },
     "byDecision": {
@@ -19,7 +19,7 @@
       "ROUTE_SPECIFIC": 8,
       "KEEP_JUSTIFIED": 6
     },
-    "deferredKeepJustified": 49,
+    "deferredKeepJustified": 50,
     "darkKeepJustified": 6,
     "unjustifiedDeferred": [],
     "reloadToWinPresent": false,
@@ -379,7 +379,7 @@
     },
     {
       "path": "styles/visual-identity-unify.css",
-      "lane": "sync",
+      "lane": "deferred",
       "decision": "CRITICAL_TO_FIRST_PAINT",
       "keep": "KEEP_JUSTIFIED",
       "families": [
@@ -992,5 +992,10 @@
       ],
       "reason": "Identity luxury night; App data-v2-night path only"
     }
-  ]
+  ],
+  "importsAfter": {
+    "mainSyncCssImports": 14,
+    "mainDeferredCssImports": 50,
+    "darkEnsureImports": 6
+  }
 }
