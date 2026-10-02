@@ -1,6 +1,6 @@
 {
-  "totalFiles": 168,
-  "totalElements": 650,
+  "totalFiles": 112,
+  "totalElements": 485,
   "byDecision": {
     "ADMIN_ONLY": {
       "files": 68,
@@ -10,1026 +10,570 @@
       "files": 43,
       "elements": 216
     },
-    "USE_LINK_OR_BUTTON_MIX": {
-      "files": 16,
-      "elements": 69
-    },
-    "USE_ICON_BUTTON": {
-      "files": 33,
-      "elements": 70
-    },
-    "USE_BUTTON": {
-      "files": 8,
-      "elements": 27
+    "THIRD_PARTY": {
+      "files": 1,
+      "elements": 1
     }
   },
   "items": [
     {
       "file": "features/mushaf-reader/MushafControlsLayer.tsx",
       "count": 25,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "features/mushaf-madinah/AyahActionSheet.tsx",
       "count": 21,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "features/mushaf-madinah/MushafAudioDock.tsx",
       "count": 16,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "components/QuranViewer.tsx",
       "count": 14,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "pages/quran/ui/QuranMemorizationView.tsx",
       "count": 12,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "features/mushaf-madinah/MushafSearchSheet.tsx",
       "count": 11,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "features/mushaf-madinah/MushafControls.tsx",
       "count": 10,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "components/admin/SubmissionsReviewPanel.tsx",
       "count": 8,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "pages/quran/ui/SurahIndexView.tsx",
       "count": 8,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "views/admin/AutomationReviewPage.tsx",
       "count": 8,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/AutomationSourcesPage.tsx",
       "count": 8,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/ProphetStoriesSection.tsx",
       "count": 8,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "features/mushaf-madinah/TafsirTabPanel.tsx",
       "count": 7,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "pages/quran/ui/MushafBookmarksView.tsx",
       "count": 7,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "views/admin/AutonomousPlatformPage.tsx",
       "count": 7,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/FawaidSection.tsx",
       "count": 7,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/ImageImportSection.tsx",
       "count": 7,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/LessonImportImagePage.tsx",
       "count": 7,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/RulingsSection.tsx",
       "count": 7,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/learning-paths/AssessmentManager.tsx",
       "count": 7,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "components/admin/review-hub/ReviewFilterBar.tsx",
       "count": 6,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
-    },
-    {
-      "file": "components/memorize/Flashcards.tsx",
-      "count": 6,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_BUTTON"
     },
     {
       "file": "components/quran/ImmersiveVerseOptionsSheet.tsx",
       "count": 6,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "components/quran/QuranSurahJumpSearch.tsx",
       "count": 6,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "pages/hifz-path/HifzUnitPracticePanel.tsx",
       "count": 6,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "pages/quran/ui/QuranNumbersView.tsx",
       "count": 6,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "views/admin/AdhkarSection.tsx",
       "count": 6,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/AutoContentPage.tsx",
       "count": 6,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/BulkImport.tsx",
       "count": 6,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/LearningPathsSection.tsx",
       "count": 6,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/QuizSection.tsx",
       "count": 6,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/RelationshipsSection.tsx",
       "count": 6,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "components/admin/review-hub/RecitationReviewCard.tsx",
       "count": 5,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "components/quran/BulkDownloadCard.tsx",
       "count": 5,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "components/quran/HifzAudioLoopPlayer.tsx",
       "count": 5,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "components/quran/ImmersivePrefsDrawer.tsx",
       "count": 5,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
-    },
-    {
-      "file": "views/AsmaaHusnaPage.tsx",
-      "count": 5,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_BUTTON"
-    },
-    {
-      "file": "views/HikamSalafPage.tsx",
-      "count": 5,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
-    },
-    {
-      "file": "views/IslamicSectsPage.tsx",
-      "count": 5,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
-    },
-    {
-      "file": "views/KnowledgeGraphPage.tsx",
-      "count": 5,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
-    },
-    {
-      "file": "views/KnowledgeSectionPage.tsx",
-      "count": 5,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
-    },
-    {
-      "file": "views/ResearcherProfilePage.tsx",
-      "count": 5,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
-    },
-    {
-      "file": "views/SinsAndRightsPage.tsx",
-      "count": 5,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
     },
     {
       "file": "views/admin/LessonImportShared.tsx",
       "count": 5,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/ReligiousCalendarReviewSection.tsx",
       "count": 5,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/SheikhsSection.tsx",
       "count": 5,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/WeekDayFactsSection.tsx",
       "count": 5,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "components/AdminInlineEdit.tsx",
       "count": 4,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "components/admin/review-hub/ReviewHubWorkspace.tsx",
       "count": 4,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
-    },
-    {
-      "file": "components/assistant/AssistantChatView.tsx",
-      "count": 4,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
-    },
-    {
-      "file": "components/majlis/MainNavigationScreen.tsx",
-      "count": 4,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_BUTTON"
-    },
-    {
-      "file": "components/mind-map/MindMapCanvas.tsx",
-      "count": 4,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
-    },
-    {
-      "file": "components/onboarding/AppFeatureTour.tsx",
-      "count": 4,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_BUTTON"
     },
     {
       "file": "components/quran/SurahList.tsx",
       "count": 4,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
-    },
-    {
-      "file": "components/rag/ResearchAnswer.tsx",
-      "count": 4,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
-    },
-    {
-      "file": "components/ui/TopicQuiz.tsx",
-      "count": 4,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_BUTTON"
-    },
-    {
-      "file": "views/AcademicResearchPage.tsx",
-      "count": 4,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
-    },
-    {
-      "file": "views/CarModePage.tsx",
-      "count": 4,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
-    },
-    {
-      "file": "views/MySubmissionsPage.tsx",
-      "count": 4,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
-    },
-    {
-      "file": "views/QaPage.tsx",
-      "count": 4,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
-    },
-    {
-      "file": "views/ResearchDetailPage.tsx",
-      "count": 4,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
-    },
-    {
-      "file": "views/SunanYawmiyyaPage.tsx",
-      "count": 4,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
     },
     {
       "file": "views/admin/AdminShell.tsx",
       "count": 4,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/ContentFileImport.tsx",
       "count": 4,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/DashboardSection.tsx",
       "count": 4,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/DawahSection.tsx",
       "count": 4,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/InstagramManualAssistPanel.tsx",
       "count": 4,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/IslamicIntelligenceSection.tsx",
       "count": 4,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/KnowledgeReasoningSection.tsx",
       "count": 4,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/LessonsSection.tsx",
       "count": 4,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/OpenPlatformSection.tsx",
       "count": 4,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/Phase2TrialImport.tsx",
       "count": 4,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/QaSection.tsx",
       "count": 4,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/TelegramSection.tsx",
       "count": 4,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "components/admin/review-hub/ContentModerationCard.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "components/admin/review-hub/WaveformAudioPlayer.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
-    },
-    {
-      "file": "components/audio/AudioLibrarySelectionPanel.tsx",
-      "count": 3,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "components/calendar/CalendarDayCell.tsx",
-      "count": 3,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "components/quiz-game/DailyChallengeQuiz.tsx",
-      "count": 3,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "components/reading/TasbeehCounter.tsx",
-      "count": 3,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "components/reading/TextHighlightCapture.tsx",
-      "count": 3,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "components/ui/mj.tsx",
-      "count": 3,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_LINK_OR_BUTTON_MIX"
-    },
-    {
-      "file": "pages/account/ui/FawaidView.tsx",
-      "count": 3,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
     },
     {
       "file": "pages/quran/QuranMemorizationPlansPage.tsx",
       "count": 3,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "pages/quran/RevelationOrderPage.tsx",
       "count": 3,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
-    },
-    {
-      "file": "views/IslamicStoriesPage.tsx",
-      "count": 3,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "views/MutashabihatPage.tsx",
-      "count": 3,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
     },
     {
       "file": "views/admin/AnnualCoursesSection.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/ArbaeenLoveSection.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/AutonomousAiSection.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/ClientErrorLogsSection.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/FeatureStatusPage.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/GlobalReferenceSection.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/GovernanceSection.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/IslamicStoriesSection.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/LibrarySection.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/MiraclesSection.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/ResearchesSection.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/ScholarlyVerificationSection.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/SubmissionsSection.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/UpdatesSection.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/VerifiedKnowledgeSection.tsx",
       "count": 3,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "components/admin/review-hub/LinearAudioReviewPlayer.tsx",
       "count": 2,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "components/admin/review-hub/ReviewHubHeaderBar.tsx",
       "count": 2,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "components/admin/review-hub/ReviewHubSidebar.tsx",
       "count": 2,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
-    },
-    {
-      "file": "components/history/HistoryStageIndicator.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "components/knowledge-collection/KnowledgeCollectionSystem.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "components/notifications/SunnahChannelsPanel.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "components/quiz-game/DirectQaCard.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_BUTTON"
     },
     {
       "file": "components/quran/ImmersiveQuranApp.tsx",
       "count": 2,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "components/quran/QuranAudioPlayer.tsx",
       "count": 2,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "components/quran/QuranPlayerView.tsx",
       "count": 2,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "components/quran/TafsirModalViewer.tsx",
       "count": 2,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
-    },
-    {
-      "file": "components/topic/TopicPage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "components/universities/CompareBar.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
     },
     {
       "file": "features/mushaf-madinah/MushafSettingsSheet.tsx",
       "count": 2,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "features/mushaf-madinah/MushafTafsirSheet.tsx",
       "count": 2,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "features/mushaf-madinah/quran-sheet/QuranSheetShell.tsx",
       "count": 2,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "features/mushaf-reader/MushafPageArrows.tsx",
       "count": 2,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "features/mushaf-reader/MushafPager.tsx",
       "count": 2,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
-    },
-    {
-      "file": "pages/account/ui/FlashCardsView.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
     },
     {
       "file": "pages/quran/QuranEnginePage.tsx",
       "count": 2,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "pages/quran/ui/DuasQuranView.tsx",
       "count": 2,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "pages/quran/ui/TafsirView.tsx",
       "count": 2,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "pages/quran/ui/UlumQuranView.tsx",
       "count": 2,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
-    },
-    {
-      "file": "views/AkhlaqPage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "views/ArkanImanPage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "views/DiscoverIslamArticleDetailPage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "views/DiscoverIslamQuestionDetailPage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "views/IslamicLandmarksMapExplorerPage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "views/IslamicLandmarksPage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "views/NationsPage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "views/ProphetsFamilyTreePage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "views/SahabahPage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "views/SawmPage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "views/ShimaelPage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "views/TawbaPage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "views/TopicsIndexPage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "views/TranscribePage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "views/UniversityDetailPage.tsx",
-      "count": 2,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
     },
     {
       "file": "views/admin/InstagramIntegrationPage.tsx",
       "count": 2,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/KnowledgeEngineSection.tsx",
       "count": 2,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
-    },
-    {
-      "file": "components/layout/DrawerFromRegistry.tsx",
-      "count": 1,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "components/motion/Pressable.tsx",
-      "count": 1,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_BUTTON"
     },
     {
       "file": "components/prophets/ProphetMushafMentions.tsx",
       "count": 1,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
-    },
-    {
-      "file": "components/prophets/ProphetStorySourcesBlock.tsx",
-      "count": 1,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
     },
     {
       "file": "components/quran/ImmersiveQuranPage.tsx",
       "count": 1,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "components/quran/QuranOpenMushafCard.tsx",
       "count": 1,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "components/quran/QuranVerseList.tsx",
       "count": 1,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
-    },
-    {
-      "file": "components/ui/HubCard.tsx",
-      "count": 1,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
-    },
-    {
-      "file": "components/ui/StatusBadge.tsx",
-      "count": 1,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_BUTTON"
     },
     {
       "file": "components/ui/sidebar.tsx",
       "count": 1,
-      "pathClass": "PRODUCT_CANDIDATE",
-      "decision": "USE_ICON_BUTTON"
+      "decision": "THIRD_PARTY"
     },
     {
       "file": "features/mushaf-reader/MushafDisplayModeControl.tsx",
       "count": 1,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "features/mushaf-reader/MushafExitControl.tsx",
       "count": 1,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "features/mushaf-reader/MushafPageNumber.tsx",
       "count": 1,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "features/mushaf-reader/NewMushafReader.tsx",
       "count": 1,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "pages/quran/MakkiMadaniPage.tsx",
       "count": 1,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "pages/quran/ui/QuranSearchView.tsx",
       "count": 1,
-      "pathClass": "MUSHAF_SPECIAL",
       "decision": "MUSHAF_SPECIAL"
     },
     {
       "file": "views/admin/AdminUI.tsx",
       "count": 1,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/AggregatorSection.tsx",
       "count": 1,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/AutomationCenterPage.tsx",
       "count": 1,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/ContentProductionDashboardPage.tsx",
       "count": 1,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/LessonImportUrlPage.tsx",
       "count": 1,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/MajlisKnowledgeEnginePage.tsx",
       "count": 1,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/ReportsSection.tsx",
       "count": 1,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/SearchAnalyticsSection.tsx",
       "count": 1,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/SettingsSection.tsx",
       "count": 1,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     },
     {
       "file": "views/admin/UsersSection.tsx",
       "count": 1,
-      "pathClass": "ADMIN_ONLY",
       "decision": "ADMIN_ONLY"
     }
   ]
