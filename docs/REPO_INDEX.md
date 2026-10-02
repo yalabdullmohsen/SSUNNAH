@@ -236,6 +236,9 @@
 | `docs/audit/ADMIN_ROUTE_UNIFICATION_MATRIX.json` | مصفوفة توحيد مسارات الإدارة U9 |
 | `docs/audit/evidence/t046-u9-route-matrix/` | جرد/دين مسارات + summary T-046 |
 | `docs/audit/STORE_RELEASE_CONTENT_CLEARANCE_REPORT.md` | T-047 · `STORE_RELEASE_CONTENT_CLEARED` (PASS) |
+| `docs/audit/APP_STORE_READINESS_REPORT.md` | T-048 · `APP_STORE_READINESS_COMPLETE` (PASS) · OWNER_ACTION rows remain |
+| `docs/store-release/APP_STORE_PRIVACY_ANSWERS_DRAFT.md` | مسودة إجابات خصوصية ASC مقابل PrivacyInfo |
+| `docs/audit/evidence/t048-app-store-readiness/` | checklist + summary T-048 |
 | `docs/store-release/THIRD_PARTY_NOTICES.md` | إشعارات الطرف الثالث لحدود Store RC |
 | `docs/store-release/ATTRIBUTIONS.md` | إسنادات Store RC |
 | `docs/audit/evidence/t047-store-release-content/` | جرد أصول + summary T-047 |

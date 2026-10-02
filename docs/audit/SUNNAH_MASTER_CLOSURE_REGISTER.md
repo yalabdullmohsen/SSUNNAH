@@ -62,7 +62,7 @@
 | D5 | D | Lessons/books/fatwa metadata-only | LICENSE | Owner+Agent | LICENSE cert E–H | soft | Y | Y | Y | Y | No UNKNOWN bodies in RC |
 | D6 | D | Fonts/images catalog | LICENSE | Agent | OFL OK · QPC blocked | soft | Y | Y | Y | Y | No UNKNOWN images |
 | D7 | D | Attributions complete | LICENSE | Agent | `ATTRIBUTIONS.md` · `THIRD_PARTY_NOTICES.md` · CREDITS T-047 | soft | soft | soft | Y | Y | `ATTRIBUTIONS_COMPLETE` ✅ |
-| E1 | E | Apple store readiness | OWNER | Owner | STORE_100 | N | Y | N | Y | Y | ASC metadata+signing |
+| E1 | E | Apple store readiness | OWNER | Owner+Agent | `APP_STORE_READINESS_REPORT.md` · 13 OWNER_ACTION | N | Y | N | Y | Y | `APP_STORE_READINESS_COMPLETE` ✅ (not STORE_GO) |
 | E2 | E | Google store readiness | OUT_OF_SCOPE | — | Android retired | N | N | RETIRED | N | N | `ANDROID_PRODUCT_RETIRED` ✅ |
 | E3 | E | RC TestFlight Internal | OWNER+DEVICE | Owner | MRMP M12–M13 | N | Y | RETIRED | Y | Y | `TESTFLIGHT_INTERNAL_CERTIFIED` |
 

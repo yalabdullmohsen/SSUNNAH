@@ -767,6 +767,7 @@
     "test:u8-deferred-identity": "node --import tsx src/lib/__tests__/u8-deferred-identity-gate.test.ts",
     "test:u9-route-matrix": "node --import tsx src/lib/__tests__/u9-route-matrix-gate.test.ts",
     "test:store-release-content-clearance": "node --import tsx src/lib/__tests__/store-release-content-clearance-gate.test.ts",
+    "test:app-store-readiness": "node --import tsx src/lib/__tests__/app-store-readiness-gate.test.ts",
     "test:route-feedback-priority": "node --import tsx src/lib/__tests__/closure-route-feedback-priority-gate.test.ts",
     "test:route-feedback-public": "node --import tsx src/lib/__tests__/closure-route-feedback-public-gate.test.ts",
     "test:admin-final-2-reviews": "node --import tsx src/lib/__tests__/admin-final-2-reviews-inbox-gate.test.ts",

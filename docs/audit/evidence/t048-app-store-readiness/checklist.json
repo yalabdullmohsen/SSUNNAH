@@ -1,0 +1,357 @@
+{
+  "version": 1,
+  "phase": "T-048",
+  "summary": {
+    "measuredAt": "2026-10-02T03:38:25.665Z",
+    "phase": "T-048 APP_STORE_READINESS",
+    "totalItems": 43,
+    "pass": 30,
+    "fail": 0,
+    "ownerAction": 13,
+    "unknown": 0,
+    "screenshots": {
+      "iPhone": {
+        "required": [
+          "Home",
+          "Mushaf",
+          "Lessons",
+          "Prayer",
+          "Dhikr/Cards"
+        ],
+        "status": "MISSING",
+        "ready": false
+      },
+      "iPhoneMax": {
+        "required": [
+          "Home",
+          "Mushaf",
+          "Lessons",
+          "Prayer",
+          "Dhikr/Cards"
+        ],
+        "status": "MISSING",
+        "ready": false
+      },
+      "iPad": {
+        "required": [
+          "Home",
+          "Mushaf",
+          "Lessons",
+          "Prayer",
+          "Dhikr/Cards"
+        ],
+        "status": "MISSING",
+        "ready": false
+      }
+    },
+    "exit": "APP_STORE_READINESS_COMPLETE",
+    "exitCode": "APP_STORE_READINESS_COMPLETE",
+    "note": "Complete means checklist fully classified PASS|OWNER_ACTION with zero UNKNOWN/FAIL. Does not mean STORE_GO or ASC fields already submitted."
+  },
+  "items": [
+    {
+      "id": "meta.app_name",
+      "section": "Metadata",
+      "label": "App Name سُنّة",
+      "status": "PASS",
+      "evidence": "Info.plist CFBundleDisplayName · listing.md"
+    },
+    {
+      "id": "meta.subtitle",
+      "section": "Metadata",
+      "label": "Subtitle draft ≤30",
+      "status": "PASS",
+      "evidence": "artifacts/majalis/store/app-store/listing.md"
+    },
+    {
+      "id": "meta.description",
+      "section": "Metadata",
+      "label": "Description draft ≤4000",
+      "status": "PASS",
+      "evidence": "listing.md · store-assets/description-ar.txt"
+    },
+    {
+      "id": "meta.keywords",
+      "section": "Metadata",
+      "label": "Keywords draft ≤100",
+      "status": "PASS",
+      "evidence": "listing.md · store-assets/keywords.txt"
+    },
+    {
+      "id": "meta.category",
+      "section": "Metadata",
+      "label": "Primary category in ASC",
+      "status": "OWNER_ACTION",
+      "evidence": "Not selected in ASC from repo; recommend Education or Reference"
+    },
+    {
+      "id": "meta.age_rating_draft",
+      "section": "Metadata",
+      "label": "Age rating questionnaire draft",
+      "status": "PASS",
+      "evidence": "age-rating.md expected 4+; Contests row flagged OWNER"
+    },
+    {
+      "id": "meta.age_rating_contests",
+      "section": "Metadata",
+      "label": "Contests answer vs /competitions",
+      "status": "OWNER_ACTION",
+      "evidence": "Product has competitions; ASC Contests must not be blindly None"
+    },
+    {
+      "id": "meta.copyright",
+      "section": "Metadata",
+      "label": "Copyright string",
+      "status": "OWNER_ACTION",
+      "evidence": "Legal entity / © year not sealed in ASC from repo"
+    },
+    {
+      "id": "meta.support_url",
+      "section": "Metadata",
+      "label": "Support URL",
+      "status": "PASS",
+      "evidence": "https://www.ssunnah.com/support · /contact route"
+    },
+    {
+      "id": "meta.privacy_url",
+      "section": "Metadata",
+      "label": "Privacy URL",
+      "status": "PASS",
+      "evidence": "https://www.ssunnah.com/privacy · PrivacyPage"
+    },
+    {
+      "id": "meta.terms_url",
+      "section": "Metadata",
+      "label": "Terms URL",
+      "status": "PASS",
+      "evidence": "https://www.ssunnah.com/terms · TermsPage"
+    },
+    {
+      "id": "meta.marketing_url",
+      "section": "Metadata",
+      "label": "Marketing URL",
+      "status": "PASS",
+      "evidence": "https://www.ssunnah.com (optional)"
+    },
+    {
+      "id": "meta.url_consistency",
+      "section": "Metadata",
+      "label": "Canonical URL host vs majlisilm.com drafts",
+      "status": "OWNER_ACTION",
+      "evidence": "store/metadata-ar.md still lists majlisilm.com — ASC must use ssunnah.com production host"
+    },
+    {
+      "id": "meta.asc_paste",
+      "section": "Metadata",
+      "label": "ASC listing fields filled",
+      "status": "OWNER_ACTION",
+      "evidence": "Drafts in repo only; STORE_METADATA_TECHNICAL_GAP_REPORT"
+    },
+    {
+      "id": "privacy.manifest_present",
+      "section": "Privacy",
+      "label": "PrivacyInfo.xcprivacy present",
+      "status": "PASS",
+      "evidence": "ios/App/App/PrivacyInfo.xcprivacy"
+    },
+    {
+      "id": "privacy.tracking_false",
+      "section": "Privacy",
+      "label": "NSPrivacyTracking=false",
+      "status": "PASS",
+      "evidence": "PrivacyInfo"
+    },
+    {
+      "id": "privacy.collected_types",
+      "section": "Privacy",
+      "label": "Email + CoarseLocation declared",
+      "status": "PASS",
+      "evidence": "PrivacyInfo"
+    },
+    {
+      "id": "privacy.no_audio_data",
+      "section": "Privacy",
+      "label": "No AudioData / no mic string",
+      "status": "PASS",
+      "evidence": "PrivacyInfo + Info.plist"
+    },
+    {
+      "id": "privacy.asc_sync",
+      "section": "Privacy",
+      "label": "ASC Privacy answers match PrivacyInfo",
+      "status": "OWNER_ACTION",
+      "evidence": "APP_STORE_PRIVACY_ANSWERS_DRAFT.md — console unconfirmed"
+    },
+    {
+      "id": "shots.iphone",
+      "section": "Screenshots",
+      "label": "iPhone required set",
+      "status": "OWNER_ACTION",
+      "evidence": "READY=false MISSING — store/screenshots/README.md only; no PNG inventory",
+      "ready": false
+    },
+    {
+      "id": "shots.iphone_max",
+      "section": "Screenshots",
+      "label": "iPhone Max / 6.7\" set",
+      "status": "OWNER_ACTION",
+      "evidence": "MISSING",
+      "ready": false
+    },
+    {
+      "id": "shots.ipad",
+      "section": "Screenshots",
+      "label": "iPad set",
+      "status": "OWNER_ACTION",
+      "evidence": "MISSING",
+      "ready": false
+    },
+    {
+      "id": "review.notes_draft",
+      "section": "Reviewer",
+      "label": "Reviewer notes draft",
+      "status": "PASS",
+      "evidence": "store/app-store/review-notes.md · REVIEWER_NOTES.md"
+    },
+    {
+      "id": "review.demo_account",
+      "section": "Reviewer",
+      "label": "Demo account documented",
+      "status": "PASS",
+      "evidence": "review-notes.md demo path; ASC credential validity OWNER"
+    },
+    {
+      "id": "review.demo_asc",
+      "section": "Reviewer",
+      "label": "Demo credentials pasted & verified in ASC",
+      "status": "OWNER_ACTION",
+      "evidence": "Must re-verify before each submission"
+    },
+    {
+      "id": "review.account_deletion_instructions",
+      "section": "Reviewer",
+      "label": "Account deletion path",
+      "status": "PASS",
+      "evidence": "/account-deletion · AccountDeletionView · footer link"
+    },
+    {
+      "id": "review.content_notes",
+      "section": "Reviewer",
+      "label": "Content / religious notes",
+      "status": "PASS",
+      "evidence": "review-notes.md overview"
+    },
+    {
+      "id": "review.background_audio_notes",
+      "section": "Reviewer",
+      "label": "Background audio guidance",
+      "status": "PASS",
+      "evidence": "review-notes.md Guideline 2.5.4"
+    },
+    {
+      "id": "export.plist_flag",
+      "section": "ExportCompliance",
+      "label": "ITSAppUsesNonExemptEncryption=false",
+      "status": "PASS",
+      "evidence": "Info.plist"
+    },
+    {
+      "id": "export.asc_form",
+      "section": "ExportCompliance",
+      "label": "ASC export compliance form",
+      "status": "OWNER_ACTION",
+      "evidence": "Confirm Exempt encryption answer in ASC"
+    },
+    {
+      "id": "notif.usage_string",
+      "section": "Notifications",
+      "label": "NSUserNotificationsUsageDescription",
+      "status": "PASS",
+      "evidence": "Info.plist Arabic string — prayer/adhkar reminders"
+    },
+    {
+      "id": "notif.behavior_match",
+      "section": "Notifications",
+      "label": "Store disclosure matches behavior",
+      "status": "PASS",
+      "evidence": "Local + remote-notification background; Store RC sound=system-default (T-047); not marketing ads"
+    },
+    {
+      "id": "notif.asc_copy",
+      "section": "Notifications",
+      "label": "ASC app description notification claims",
+      "status": "OWNER_ACTION",
+      "evidence": "Owner must not claim guaranteed delivery / licensed adhan packs"
+    },
+    {
+      "id": "account.login",
+      "section": "Account",
+      "label": "Login",
+      "status": "PASS",
+      "evidence": "/login LoginView"
+    },
+    {
+      "id": "account.logout",
+      "section": "Account",
+      "label": "Logout",
+      "status": "PASS",
+      "evidence": "SettingsView · NavBar · SideNavDrawer"
+    },
+    {
+      "id": "account.delete",
+      "section": "Account",
+      "label": "Delete account",
+      "status": "PASS",
+      "evidence": "/account-deletion AccountDeletionView + gate"
+    },
+    {
+      "id": "account.export",
+      "section": "Account",
+      "label": "Export data",
+      "status": "PASS",
+      "evidence": "PrivacyCenterPage + SettingsView server/local export"
+    },
+    {
+      "id": "account.listing_claims",
+      "section": "Account",
+      "label": "Listing does not invent missing account features",
+      "status": "PASS",
+      "evidence": "listing.md: optional account; no social feed claims"
+    },
+    {
+      "id": "prereq.content_cleared",
+      "section": "Prerequisites",
+      "label": "Store release content cleared",
+      "status": "PASS",
+      "evidence": "STORE_RELEASE_CONTENT_CLEARANCE_REPORT.md"
+    },
+    {
+      "id": "prereq.ios_arch",
+      "section": "Prerequisites",
+      "label": "iOS native architecture certified",
+      "status": "PASS",
+      "evidence": "IOS_NATIVE_ARCHITECTURE_CERTIFICATION.md"
+    },
+    {
+      "id": "prereq.signing",
+      "section": "Prerequisites",
+      "label": "Distribution signing / profiles",
+      "status": "OWNER_ACTION",
+      "evidence": "OWNER_ACTIONS_CURRENT.md · SIGNING_ASC"
+    },
+    {
+      "id": "prereq.bundle_id",
+      "section": "Prerequisites",
+      "label": "Bundle ID locked com.yousef.majlisilm",
+      "status": "PASS",
+      "evidence": "IOS_NATIVE_ARCHITECTURE_CERTIFICATION.md"
+    },
+    {
+      "id": "prereq.testflight_not_started",
+      "section": "Prerequisites",
+      "label": "TestFlight not started (in-scope hold)",
+      "status": "PASS",
+      "evidence": "T-048 forbidden to start TestFlight"
+    }
+  ]
+}
