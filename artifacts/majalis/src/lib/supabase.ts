@@ -1213,8 +1213,21 @@ export async function adminGetUsers() {
   return adminFetchAll("profiles", "*");
 }
 
-export async function adminUpdateUserRole(userId: string, role: string) {
-  return await supabase.from("profiles").update({ role }).eq("id", userId);
+/**
+ * @deprecated Removed — role updates must go through /api/admin/v3/users
+ * (requireAdminAccess + users.manage). Do not update profiles.role from the anon client.
+ */
+export async function adminUpdateUserRole(_userId: string, _role: string): Promise<{
+  data: null;
+  error: { message: string };
+}> {
+  return {
+    data: null,
+    error: {
+      message:
+        "adminUpdateUserRole_removed: use Admin API /api/admin/v3/users with requireAdminAccess",
+    },
+  };
 }
 
 // ─── الأسئلة والأجوبة الدينية ───────────────────────────────────────────────────

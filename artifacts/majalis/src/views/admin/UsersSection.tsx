@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { arabicMatchAny } from "@/lib/arabic-search";
-import { adminGetUsers, adminUpdateUserRole } from "@/lib/supabase";
-import { assignGovernanceRole, syncLegacyRoles, LEGACY_ROLE_MAP } from "@/lib/governance-service";
+import { adminGetUsers } from "@/lib/supabase";
+import { v3Mutate } from "@/admin-v3/data/admin-v3-api";
+import { syncLegacyRoles } from "@/lib/governance-service";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { useAdminShell } from "./AdminShell";
 
@@ -37,20 +38,12 @@ export function UsersSection() {
   const handleRoleChange = async (userId: string, newRole: string) => {
     setUpdatingId(userId);
     try {
-      const { error } = await adminUpdateUserRole(userId, newRole);
-      if (error) {
-        showError("تعذّر تغيير الصلاحية، تحقّق من صلاحياتك (RLS).");
-        return;
-      }
-      const governanceRole = LEGACY_ROLE_MAP[newRole] || "read_only";
-      try {
-        await assignGovernanceRole(userId, governanceRole);
-      } catch {
-        /* governance table may not exist yet */
-      }
+      // Server authority only: /api/admin/v3/users + requireAdminAccess + users.manage
+      await v3Mutate("users", "PUT", { id: userId, role: newRole });
       showSuccess("تم تحديث الصلاحية.");
-    } catch {
-      showError("تعذّر تغيير الصلاحية.");
+    } catch (err) {
+      const e = err as { userMessageAr?: string };
+      showError(e.userMessageAr || "تعذّر تغيير الصلاحية.");
     } finally {
       setUpdatingId(null);
       load();

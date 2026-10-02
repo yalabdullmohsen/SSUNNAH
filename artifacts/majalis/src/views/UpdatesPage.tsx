@@ -13,6 +13,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/updates.css";
 import { ListScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
+import { safeHttpHref } from "@/lib/sanitize";
 
 const TYPE_COLORS: Record<string, string> = {
   قرار: "#123F2E",
@@ -158,8 +159,8 @@ export default function UpdatesPage() {
                 )}
                 <time dateTime={item.published_at}>{formatDate(item.published_at)}</time>
               </div>
-              {item.source_url ? (
-                <Link href={item.source_url} className="upd-title-link">
+              {safeHttpHref(item.source_url) ? (
+                <Link href={safeHttpHref(item.source_url)!} className="upd-title-link">
                   <h2 className="updates-timeline-title">{item.title}</h2>
                 </Link>
               ) : (

@@ -117,7 +117,7 @@ export function OpenPlatformSection() {
       <div className="ops-header">
         <h2 className="ops-title">Open Islamic Platform، لوحة المطورين</h2>
         <div className="ops-btn-group">
-          <a href="/api/v1/docs?format=html" target="_blank" rel="noreferrer" className="ops-docs-link">
+          <a href="/api/v1/docs?format=html" target="_blank" rel="noopener noreferrer" className="ops-docs-link">
             التوثيق
           </a>
           <button type="button" onClick={handleReport} className="ops-btn">إنشاء التقرير</button>
@@ -146,7 +146,7 @@ export function OpenPlatformSection() {
         <Panel title="إصدارات API">
           {API_VERSIONS.map((v) => (
             <div key={v} className="ops-api-row">
-              <a href={`/api/${v}/docs?format=html`} target="_blank" rel="noreferrer"><code>/api/{v}</code></a>
+              <a href={`/api/${v}/docs?format=html`} target="_blank" rel="noopener noreferrer"><code>/api/{v}</code></a>
               {v === "v1" && "، Stable"}
               {v === "v2" && "، Enhanced metadata"}
               {v === "v3" && "، Relations + semantic"}

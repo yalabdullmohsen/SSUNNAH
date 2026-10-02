@@ -46,6 +46,25 @@ function rememberAuthStorageKey(key: string): void {
   }
 }
 
+function deriveSupabaseAuthStorageKey(): string | null {
+  try {
+    // Lazy import avoided — parse from known vite/runtime URL if present on window bootstrap.
+    const g = window as unknown as { __SSUNNAH_SUPABASE_URL__?: string };
+    const raw =
+      g.__SSUNNAH_SUPABASE_URL__ ||
+      (typeof import.meta !== "undefined"
+        ? String((import.meta as ImportMeta & { env?: { VITE_SUPABASE_URL?: string } }).env?.VITE_SUPABASE_URL || "")
+        : "");
+    if (!raw) return null;
+    const host = new URL(raw).hostname; // e.g. abcd.supabase.co
+    const ref = host.split(".")[0];
+    if (!ref || ref.length < 4) return null;
+    return `sb-${ref}-auth-token`;
+  } catch {
+    return null;
+  }
+}
+
 function collectAuthStorageKeys(): string[] {
   const keys = new Set<string>();
   try {
@@ -54,6 +73,8 @@ function collectAuthStorageKeys(): string[] {
   } catch {
     /* ignore */
   }
+  const derived = deriveSupabaseAuthStorageKey();
+  if (derived) keys.add(derived);
   try {
     for (let i = 0; i < localStorage.length; i += 1) {
       const key = localStorage.key(i);
@@ -158,11 +179,7 @@ async function migrateLegacyIfNeeded(plugin: SunnahAuthKeychainPlugin, key: stri
     legacy = null;
   }
   if (!legacy || !looksLikeSessionBlob(legacy)) {
-    try {
-      localStorage.setItem(MIGRATION_FLAG, "1");
-    } catch {
-      /* ignore */
-    }
+    // Do not set MIGRATION_FLAG for non-session keys — a later real auth key must still migrate.
     return;
   }
 
@@ -213,6 +230,12 @@ function nativeKeychainStorage(): SupabaseAuthStorage {
           rememberAuthStorageKey(key);
           clearFallbackFlag();
           return value;
+        }
+        // Keychain miss: fall back to leftover LS session (failed migrate must not look logged-out).
+        const legacy = await web.getItem(key);
+        if (legacy && looksLikeSessionBlob(legacy)) {
+          markFallback("keychain_miss_ls_session");
+          return legacy;
         }
         return null;
       } catch {

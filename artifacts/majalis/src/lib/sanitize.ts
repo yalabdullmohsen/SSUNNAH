@@ -25,6 +25,27 @@ export function sanitizeOptionalUrl(value: unknown, maxLength = 2048): string {
   return "";
 }
 
+/**
+ * Safe public href: relative app paths or http(s) only.
+ * Rejects javascript:/data:/protocol-relative // and other schemes.
+ */
+export function safeHttpHref(value: unknown, maxLength = 2048): string | undefined {
+  const raw = stripHtml(String(value ?? "")).trim().slice(0, maxLength);
+  if (!raw) return undefined;
+  if (/^(javascript|data|vbscript):/i.test(raw)) return undefined;
+  if (raw.startsWith("/") && !raw.startsWith("//") && !raw.includes("://")) {
+    if (raw.includes("..")) return undefined;
+    return raw;
+  }
+  try {
+    const url = new URL(raw);
+    if (url.protocol === "http:" || url.protocol === "https:") return url.toString();
+  } catch {
+    return undefined;
+  }
+  return undefined;
+}
+
 export function sanitizeFormRecord(
   record: Record<string, unknown>,
   fields: Record<string, { max?: number; type?: "text" | "url" }>,

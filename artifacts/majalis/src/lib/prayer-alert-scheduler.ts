@@ -59,6 +59,8 @@ const KEY_TO_ARABIC: Record<string, string> = {
 };
 
 const _timers: ReturnType<typeof setTimeout>[] = [];
+/** مؤقّتات linger لـ Live Activity — لا تُمسح مع إعادة جدولة الإشعارات. */
+const _liveActivityTimers: ReturnType<typeof setTimeout>[] = [];
 /** توقيع آخر جدولة أصلية — يمنع التكرار دون حجب إعادة الجدولة عند تغيّر الوقت/التفضيلات. */
 let _lastScheduleSig: string | null = null;
 let _lastTimeZone: string | null = null;
@@ -68,6 +70,11 @@ let _liveActivityActiveForKey: string | null = null;
 function clearAllTimers() {
   for (const t of _timers) clearTimeout(t);
   _timers.length = 0;
+}
+
+function clearLiveActivityTimers() {
+  for (const t of _liveActivityTimers) clearTimeout(t);
+  _liveActivityTimers.length = 0;
 }
 
 /** يُصدَّر للاختبارات والواجهات — يبني توقيع جدولة الإشعار الأصلي. */
@@ -180,6 +187,8 @@ async function fireLiveActivityEnter(
 ) {
   const prefs = loadPrayerAlertPrefs();
   if (!prefs.liveActivitiesEnabled) return;
+  // استبدل linger السابق فقط — لا تضع هذه المؤقّتات في _timers (تُمسح عند reschedule).
+  clearLiveActivityTimers();
   await markPrayerLiveActivityEntered();
   const t = setTimeout(() => {
     void (async () => {
@@ -195,14 +204,14 @@ async function fireLiveActivityEnter(
           void endPrayerLiveActivity();
           _liveActivityActiveForKey = null;
         }, Math.min(LIVE_ACTIVITY_LINGER_MINUTES, 3) * 60_000);
-        _timers.push(t2);
+        _liveActivityTimers.push(t2);
       } else {
         void endPrayerLiveActivity();
         _liveActivityActiveForKey = null;
       }
     })();
   }, LIVE_ACTIVITY_LINGER_MINUTES * 60_000);
-  _timers.push(t);
+  _liveActivityTimers.push(t);
 }
 
 function asPrayerKey(slotKey: string): PrayerKey | null {
@@ -492,9 +501,16 @@ export async function startPrayerAlertScheduler(
         payload.city,
       );
       _lastScheduleSig = null;
-      import("./prayer-times").then(({ fetchPrayerTimes }) => {
-        fetchPrayerTimes().then((p) => startPrayerAlertScheduler(p));
-      });
+      void import("./prayer-times")
+        .then(({ fetchPrayerTimes }) => fetchPrayerTimes())
+        .then((p) => startPrayerAlertScheduler(p))
+        .catch((err) => {
+          try {
+            console.warn("[prayer-alert] enter reschedule failed", err);
+          } catch {
+            /* ignore */
+          }
+        });
     }, enterDelay);
     _timers.push(t);
   }
@@ -502,6 +518,15 @@ export async function startPrayerAlertScheduler(
 
 export function stopPrayerAlertScheduler() {
   clearAllTimers();
+  clearLiveActivityTimers();
+}
+
+/** للاختبارات — هل مؤقّتات LA منفصلة عن مؤقّتات الجدولة؟ */
+export function __prayerAlertSchedulerTimerDebug() {
+  return {
+    scheduleTimers: _timers.length,
+    liveActivityTimers: _liveActivityTimers.length,
+  };
 }
 
 /** يُستدعى عند عودة التطبيق للواجهة (resume) — يُعيد فحص النافذة الحالية فوراً. */

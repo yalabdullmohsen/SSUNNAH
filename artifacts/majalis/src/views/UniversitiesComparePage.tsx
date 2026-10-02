@@ -11,6 +11,7 @@ import "@/styles/pages/universities-compare.css";
 import "@/styles/pages/learning-path-dashboard.css";
 import { DetailScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
+import { safeHttpHref } from "@/lib/sanitize";
 
 function lowestFee(programs: UniversityProgram[]): string {
   const fees = programs
@@ -146,14 +147,15 @@ function CompareContent() {
 
         {/* روابط التقديم */}
         <div className="mt-4 ucp-apply-grid" style={{ "--col-count": compareList.length } as React.CSSProperties}>
-          {compareList.map((u) => (
-            u.website_url ? (
-              <a key={u.slug} href={u.website_url} target="_blank" rel="noopener noreferrer"
+          {compareList.map((u) => {
+            const href = safeHttpHref(u.website_url);
+            return href ? (
+              <a key={u.slug} href={href} target="_blank" rel="noopener noreferrer"
                 className="text-center py-2.5 citation-btn citation-btn--primary rounded-xl text-sm font-medium transition-colors">
                 <Globe size={13} className="inline ms-1" />موقع {u.name_ar.split(" ")[1] || u.name_ar} ↗
               </a>
-            ) : <div key={u.slug} />
-          ))}
+            ) : <div key={u.slug} />;
+          })}
         </div>
       </div>
 

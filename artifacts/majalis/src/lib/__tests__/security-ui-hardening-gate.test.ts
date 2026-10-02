@@ -20,7 +20,8 @@ function walk(dir, out = []) {
     const p = join(dir, name);
     const st = statSync(p);
     if (st.isDirectory()) {
-      if (name === "node_modules" || name === "__tests__" || name === "admin") continue;
+      // Include admin views — security rules apply there too.
+      if (name === "node_modules" || name === "__tests__") continue;
       walk(p, out);
     } else if (/\.(tsx|jsx)$/.test(name)) out.push(p);
   }

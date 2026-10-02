@@ -443,10 +443,12 @@ function PrayerAlertSchedulerBootstrap() {
     window.addEventListener("majalis:adhan-prefs-changed", onPrefsChanged);
 
     // iOS WKWebView: appStateChange أوثق من visibilitychange في بعض مسارات الخلفية→المقدمة.
-    let removeAppState: (() => void) | undefined;
+    let removeAppState = () => {};
+    let cancelled = false;
     void import("@/lib/capacitor-utils").then(({ isNative }) => {
-      if (!isNative) return;
+      if (!isNative || cancelled) return;
       void import("@capacitor/app").then(({ App: CapApp }) => {
+        if (cancelled) return;
         const sub = CapApp.addListener("appStateChange", ({ isActive }) => {
           if (isActive) {
             void import("@/lib/adhan-diagnostics").then(({ adhanDiag }) =>
@@ -469,6 +471,10 @@ function PrayerAlertSchedulerBootstrap() {
           }
         });
         void Promise.resolve(sub).then((handle) => {
+          if (cancelled) {
+            void handle.remove();
+            return;
+          }
           removeAppState = () => {
             void handle.remove();
           };
@@ -477,12 +483,13 @@ function PrayerAlertSchedulerBootstrap() {
     });
 
     return () => {
+      cancelled = true;
       window.clearInterval(clockId);
       document.removeEventListener("visibilitychange", onVisible);
       window.removeEventListener(PRAYER_ALERT_PREFS_CHANGED_EVENT, onPrefsChanged);
       window.removeEventListener("majalis:prayer-notification-prefs-changed", onPrefsChanged);
       window.removeEventListener("majalis:adhan-prefs-changed", onPrefsChanged);
-      removeAppState?.();
+      removeAppState();
     };
   }, [data]);
 

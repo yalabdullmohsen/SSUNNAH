@@ -221,6 +221,26 @@ export function useMushafPager({
     [onNavigateStart, onPageChange],
   );
 
+  /** عند ms=0 لا يُطلق transitionend — نفّذ الالتزام فورًا حتى لا يبقى locking دائمًا. */
+  const finishTrackCommit = useCallback(
+    (animatedX: number) => {
+      cancelPendingMove();
+      dragDx.current = 0;
+      setTrackX(animatedX, true);
+      if (!prefersReducedMotion()) return;
+      const commit = pendingCommit.current;
+      pendingCommit.current = null;
+      if (commit == null) {
+        locking.current = false;
+        onNavigateCancel?.();
+        return;
+      }
+      mushafTurnMark("visualTransitionEnd", commit);
+      go(commit);
+    },
+    [cancelPendingMove, go, onNavigateCancel, setTrackX],
+  );
+
   useLayoutEffect(() => {
     locking.current = false;
     pendingCommit.current = null;
@@ -382,13 +402,13 @@ export function useMushafPager({
         if (next == null) {
           locking.current = true;
           pendingCommit.current = null;
-          resetToCurrent(true);
+          finishTrackCommit(-1 * w);
           return;
         }
         locking.current = true;
         pendingCommit.current = next;
         mushafTurnMark("transitionStart", next);
-        setTrackX(0, true);
+        finishTrackCommit(0);
         return;
       }
       if (swipeDelta === -1) {
@@ -396,13 +416,13 @@ export function useMushafPager({
         if (prev == null) {
           locking.current = true;
           pendingCommit.current = null;
-          resetToCurrent(true);
+          finishTrackCommit(-1 * w);
           return;
         }
         locking.current = true;
         pendingCommit.current = prev;
         mushafTurnMark("transitionStart", prev);
-        setTrackX(-2 * w, true);
+        finishTrackCommit(-2 * w);
         return;
       }
     }
@@ -410,7 +430,7 @@ export function useMushafPager({
     if (panning.current) {
       locking.current = true;
       pendingCommit.current = null;
-      resetToCurrent(true);
+      finishTrackCommit(-1 * w);
       return;
     }
 
@@ -457,6 +477,7 @@ export function useMushafPager({
       locking.current = true;
       pendingCommit.current = null;
       resetToCurrent(true);
+      if (prefersReducedMotion()) locking.current = false;
       /* إلغاء السحب دون commit — أعد قفل المنتج إن وُجد */
       onNavigateCancel?.();
     }

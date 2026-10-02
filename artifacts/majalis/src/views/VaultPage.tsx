@@ -18,6 +18,7 @@ import {
   type VaultData,
   type VaultNote,
 } from "@/lib/vault-service";
+import { safeHttpHref } from "@/lib/sanitize";
 import {
   listLocalBookmarks,
   removeLocalBookmark,
@@ -742,8 +743,8 @@ export default function VaultPage() {
                     <span className="vault-item-card__date">
                       {new Date(r.last_opened_at).toLocaleDateString("ar-SA", { day: "numeric", month: "short" })}
                     </span>
-                    {r.content_url && (
-                      <a href={r.content_url} className="vault-item-card__link" target="_blank" rel="noopener noreferrer">
+                    {safeHttpHref(r.content_url) && (
+                      <a href={safeHttpHref(r.content_url)} className="vault-item-card__link" target="_blank" rel="noopener noreferrer">
                         فتح ←
                       </a>
                     )}

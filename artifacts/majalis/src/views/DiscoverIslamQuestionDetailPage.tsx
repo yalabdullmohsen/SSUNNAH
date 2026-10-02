@@ -9,6 +9,7 @@ import { getQuestionBySlug, getQuestionTranslations, type DawahQuestion, type Da
 import { supabase } from "@/lib/supabase";
 import { DetailScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
+import { safeHttpHref } from "@/lib/sanitize";
 
 const LANG_LABELS: Record<string, string> = { en: "English", fr: "Français", es: "Español" };
 
@@ -127,7 +128,7 @@ export default function DiscoverIslamQuestionDetailPage() {
           <h2 className="page-section-title">المصادر</h2>
           <ul className="dii-sources-list">
             {item.sources.map((s, i) => (
-              <li key={i}>{s.url ? <a href={s.url} target="_blank" rel="noopener noreferrer">{s.title}</a> : s.title}{s.author ? ` — ${s.author}` : ""}</li>
+              <li key={i}>{safeHttpHref(s.url) ? <a href={safeHttpHref(s.url)} target="_blank" rel="noopener noreferrer">{s.title}</a> : s.title}{s.author ? ` — ${s.author}` : ""}</li>
             ))}
           </ul>
         </section>
