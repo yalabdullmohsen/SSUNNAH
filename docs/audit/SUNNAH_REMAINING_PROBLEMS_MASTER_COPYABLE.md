@@ -2,18 +2,19 @@
 
 | Field | Value |
 |---|---|
-| Captured | 2026-09-30T09:50Z (بعد WAVE5) |
-| `origin/main` | `40548c89` — WAVE5 Critical/FOUC مدمج |
-| Production `https://www.ssunnah.com/version.json` | `40548c89` **MATCH** · builtAt=2026-09-30T09:15:17.839Z |
-| Critical CSS live (prod) | `assets/index-ZphkCCU5.css` · raw=311081 · gzip L9=**57171** ≤61440 · هامش **4269** |
+| Captured | 2026-10-02T20:40Z (Phase 0 truth sync · tip live) |
+| `origin/main` | `0c4e808f8` |
+| Production `https://www.ssunnah.com/version.json` | `0c4e808f` **MATCH** · builtAt=2026-10-02T20:25:53.522Z |
+| Repo defects Accepted Truth | P0=0 · P1=0 · P2=0 · P3=0 (#2477) |
 | Product root | `artifacts/majalis` · React 19 · Vite 7 · Tailwind 4 · Wouter · Capacitor 8 · RTL-first |
-| Status claim allowed | VISUAL_INTERACTION_COMPLETE_WEB · WEB_RELEASED_NATIVE_HOLD · WAVE2–WAVE5 MERGED_AND_DEPLOYED |
-| Status NOT claimed | STORE GO · WCAG CERTIFIED · FULLY COMPLETE · ZERO_INTERNAL_DEBT · mushaf silky · DEVICE_TESTED |
+| Status claim allowed | VISUAL_INTERACTION_COMPLETE_WEB · WEB_RELEASED_NATIVE_HOLD · PROJECT_CLOSURE_PARTIAL · UNIFIED_PARTIAL |
+| Status NOT claimed | STORE GO · UNIFIED_100 · WCAG CERTIFIED · FULLY COMPLETE · ZERO_INTERNAL_DEBT · mushaf silky · DEVICE_TESTED · IOS_RELEASE_CANDIDATE_READY · IOS_AUTH_CERTIFIED |
 
-**قاعدة صادقة:** WAVE1→WAVE5 أغلقت نطاقاتها المنشورة؛ الدين الداخلي ما زال كبيرًا وقابلًا للإصلاح موجيًا.  
-**تصنيفات:** `FIXABLE_IN_REPOSITORY` · `DEVICE_REQUIRED` · `OWNER_ACTION` · `BLOCKED` · `KEEP_JUSTIFIED` · `MUSHAF_SPECIAL` · `ADMIN_ONLY` · `CLOSED_IN_WAVE`.
+**قاعدة صادقة:** عيوب المستودع المؤكدة من قائمة Accepted Truth مغلقة؛ دين التوحيد/الإقلاع/الجهاز/الترخيص/المتجر ما زال مفتوحًا.  
+**برنامج نشط:** `SUNNAH_FINAL_PRODUCT_UNIFICATION_AND_STORE_CLOSURE`  
+**تصنيفات:** `FIXABLE_IN_REPOSITORY` · `DEVICE_REQUIRED` · `OWNER_ACTION` · `BLOCKED` · `KEEP_JUSTIFIED` · `MUSHAF_SPECIAL` · `ADMIN_ONLY` · `CLOSED`.
 
-**ممنوعات عامة عند الإصلاح:** لا عائلة توكن/نظام أزرار/بطاقات جديد · لا رفع debt ceilings · لا تعطيل visual-snapshot / must-not-skip · لا مسّ نص قرآن/تشكيل/ترقيم/page mapping/604/15 سطر · لا تغيير حساب مواقيت/جدولة أذان · لا ترقيع `overflow:hidden`/`!important` لإخفاء عيب · لا إرجاع مسار مكسور للرئيسية · لا force-push / reset --hard / git clean -fd.
+**ممنوعات عامة عند الإصلاح:** لا عائلة توكن/نظام أزرار/بطاقات جديد · لا رفع debt ceilings · لا تعطيل visual-snapshot / must-not-skip · لا مسّ نص قرآن/تشكيل/ترقيم/page mapping/604/15 سطر · لا تغيير حساب مواقيت/جدولة أذان · لا ترقيع `overflow:hidden`/`!important` لإخفاء عيب · لا إرجاع مسار مكسور للرئيسية · لا force-push / reset --hard / git clean -fd · لا ادعاء UNIFIED_100 / STORE_GO بلا أدلة.
 
 ---
 
