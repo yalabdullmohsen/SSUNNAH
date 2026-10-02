@@ -239,6 +239,8 @@
 | `docs/audit/APP_STORE_READINESS_REPORT.md` | T-048 · `APP_STORE_READINESS_COMPLETE` (PASS) · OWNER_ACTION rows remain |
 | `docs/audit/TESTFLIGHT_INTERNAL_CERTIFICATION_REPORT.md` | T-049 · `TESTFLIGHT_INTERNAL_NOT_CERTIFIED` (FAIL) · export/TF install blocked |
 | `docs/audit/evidence/t049-testflight-internal/` | archive/export logs + summary T-049 |
+| `docs/audit/IOS_RELEASE_CANDIDATE_REPORT.md` | T-050 · `IOS_RELEASE_CANDIDATE_NOT_READY` (FAIL) · TF/device prereqs |
+| `docs/audit/evidence/t050-ios-release-candidate/` | summary + RC lock evidence T-050 |
 | `docs/store-release/APP_STORE_PRIVACY_ANSWERS_DRAFT.md` | مسودة إجابات خصوصية ASC مقابل PrivacyInfo |
 | `docs/audit/evidence/t048-app-store-readiness/` | checklist + summary T-048 |
 | `docs/store-release/THIRD_PARTY_NOTICES.md` | إشعارات الطرف الثالث لحدود Store RC |

@@ -29,6 +29,7 @@
 | ASC export compliance + demo credentials re-verify | Forms/credentials console-only | review-notes.md · Info.plist encryption flag | ASC | Review delays | Update notes per build |
 | App Group `group.com.yousef.majlisilm` on App+LA+Widget store profiles | T-049 export failed without App Groups on store profiles | `TESTFLIGHT_INTERNAL_CERTIFICATION_REPORT.md` · export-attempt.log | Apple Developer portal | Cannot export/upload TF IPA | Re-export after profile refresh |
 | App Store profile for `PrayerWidget` + TF upload | Missing widget store profile; no TF build | same | ASC / Xcode Organizer | Install/Smoke stay FAIL | Upload from pinned `STORE_SOURCE_COMMIT` only |
+| Complete TF Internal + device matrix/a11y/perf evidence for iOS RC | T-050 blocked: Binary/Install/Smoke/Device FAIL | `IOS_RELEASE_CANDIDATE_REPORT.md` | ASC + physical devices | `IOS_RELEASE_CANDIDATE_READY` remains false | Re-cert from same pin after evidence |
 
 ## Not owner-blocked (agents may continue)
 
