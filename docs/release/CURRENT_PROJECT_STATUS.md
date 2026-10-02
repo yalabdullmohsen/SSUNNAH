@@ -1,6 +1,6 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-10-02 (BUILD_55 post-upload security + version traceability hardening)  
+**Updated:** 2026-10-02 (PR #2471 merged · production MATCH · main CI green)  
 **Master closure register:** `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` · **LOCKED**  
 **iOS-only board:** `docs/audit/IOS_ONLY_CLOSURE_BOARD.md` · **`LIVE_TRUTH_LOCKED_IOS_ONLY`**  
 **Boundary report (living):** `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md`  
@@ -29,8 +29,10 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip (pre hardening PR) | `574c838a2` — T-050 NOT_READY (#2470) |
-| Production `version.json` | verify after merge (web auto-deploy) |
+| `origin/main` tip | `c62396a93` — #2471 auth/version hardening (squash) |
+| Production `version.json` | `c62396a9` **MATCH** · `builtAt=2026-10-02T16:56:46.496Z` |
+| PR #2471 | **MERGED** · `MAIN_CI_PASS` · `AUTO_DEPLOY_SUCCESS` · `WEB_SMOKE_PASS` |
+| Next iOS Archive | **1.0.1 / 56** · `DEVICE_RECERTIFICATION_REQUIRED` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** · **`PROJECT_CLOSURE_PARTIAL`** · **iOS-only product** |
 | Unification | **`UNIFIED_PARTIAL`** · U2 COMPLETE · U3 **`DARK_LIGHT_UNIFIED`** |
