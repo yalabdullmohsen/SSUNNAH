@@ -1,34 +1,66 @@
 {
-  "generated_at": "2026-09-25T13:17:54.607Z",
+  "generated_at": "2026-10-02T20:14:57.731Z",
   "dry_run": false,
-  "instagram_mode": "oembed",
+  "instagram_mode": "provider",
   "instagram": {
-    "mode": "oembed",
-    "configured": null,
-    "message": "instagram skipped: empty inbox"
+    "mode": "provider",
+    "configured": true,
+    "message": null
   },
   "instagram_accounts_total": 47,
-  "instagram_checked": 0,
-  "instagram_unchanged": 0,
-  "instagram_new_posts_found": 0,
-  "instagram_published": 0,
+  "instagram_checked": 45,
+  "instagram_unchanged": 5,
+  "instagram_new_posts_found": 39,
+  "instagram_published": 6,
   "instagram_skipped_private": 0,
   "instagram_skipped_provider_404": 0,
   "instagram_failed": 0,
-  "instagram_probe_records_used": 0,
-  "instagram_fetch_records_used": 0,
+  "instagram_probe_records_used": 45,
+  "instagram_fetch_records_used": 39,
   "sources": 56,
-  "fetched": 26,
-  "published": 14,
-  "merged": 6,
+  "fetched": 64,
+  "published": 25,
+  "merged": 0,
   "failed": [],
   "skipped": [
     {
+      "id": "ig-nadwat.kw",
+      "reason": "fetch_daily_limit"
+    },
+    {
       "id": "instagram",
-      "reason": "instagram skipped: empty inbox"
+      "reason": "fetch_daily_limit"
     },
     {
       "id": "web-aayatkw.com",
+      "reason": "quality_gate:weak_title"
+    },
+    {
+      "id": "ig-athr_yabka",
+      "reason": "quality_gate:weak_title"
+    },
+    {
+      "id": "ig-erth.kwt",
+      "reason": "quality_gate:no_useful_type"
+    },
+    {
+      "id": "ig-shariaaac",
+      "reason": "quality_gate:too_old"
+    },
+    {
+      "id": "ig-w_alanbiya",
+      "reason": "quality_gate:too_old"
+    },
+    {
+      "id": "ig-thegrandmosque",
+      "reason": "quality_gate:too_old"
+    },
+    {
+      "id": "ig-quranicplatform",
+      "reason": "quality_gate:weak_title"
+    },
+    {
+      "id": "ig-alshalahi_masjd",
       "reason": "quality_gate:weak_title"
     },
     {
@@ -40,38 +72,166 @@
       "reason": "quality_gate:no_useful_type"
     },
     {
+      "id": "ig-tartelkw",
+      "reason": "quality_gate:no_useful_type"
+    },
+    {
+      "id": "ig-jouryaldahi",
+      "reason": "quality_gate:no_useful_type"
+    },
+    {
+      "id": "ig-7offath",
+      "reason": "quality_gate:weak_title"
+    },
+    {
+      "id": "ig-erwaa.quran",
+      "reason": "quality_gate:weak_title"
+    },
+    {
+      "id": "ig-alholah_kw",
+      "reason": "quality_gate:too_old"
+    },
+    {
+      "id": "ig-trahumkwclub",
+      "reason": "quality_gate:weak_title"
+    },
+    {
+      "id": "ig-othmanalkamees",
+      "reason": "quality_gate:weak_title"
+    },
+    {
+      "id": "ig-duroos.alseera",
+      "reason": "quality_gate:too_old"
+    },
+    {
       "id": "telegram-DrosQ8",
       "reason": "quality_gate:no_useful_type"
     },
     {
       "id": "telegram-DrosQ8",
       "reason": "quality_gate:no_useful_type"
+    },
+    {
+      "id": "ig-drooss_kw",
+      "reason": "quality_gate:weak_title"
+    },
+    {
+      "id": "ig-duroos_abdullahalmubarak",
+      "reason": "quality_gate:weak_title"
+    },
+    {
+      "id": "ig-warathakw2",
+      "reason": "quality_gate:no_useful_type"
+    },
+    {
+      "id": "ig-diwan_al3uni_alsharif_alesbuei",
+      "reason": "quality_gate:weak_title"
     },
     {
       "id": "web-drosq8-linktree",
       "reason": "quality_gate:no_useful_type"
+    },
+    {
+      "id": "ig-qetaa_quran",
+      "reason": "quality_gate:too_old"
+    },
+    {
+      "id": "ig-manaratkw",
+      "reason": "quality_gate:no_useful_type"
+    },
+    {
+      "id": "ig-mrkz_al_albany",
+      "reason": "quality_gate:weak_title"
+    },
+    {
+      "id": "ig-saad.al.abdullah.city",
+      "reason": "quality_gate:weak_title"
+    },
+    {
+      "id": "ig-nebraas_kw",
+      "reason": "quality_gate:no_useful_type"
+    },
+    {
+      "id": "ig-mosque.mbark.j",
+      "reason": "quality_gate:weak_title"
+    },
+    {
+      "id": "ig-mpe.kh11",
+      "reason": "quality_gate:weak_title"
+    },
+    {
+      "id": "ig-masjedalansary",
+      "reason": "quality_gate:no_useful_type"
+    },
+    {
+      "id": "ig-mhamadh.kw",
+      "reason": "quality_gate:too_old"
+    },
+    {
+      "id": "ig-m_alkhayatq8",
+      "reason": "quality_gate:weak_title"
+    },
+    {
+      "id": "ig-masjedalmehry",
+      "reason": "quality_gate:too_old"
+    },
+    {
+      "id": "ig-masjid_mubark_alsaifi",
+      "reason": "quality_gate:no_useful_type"
+    },
+    {
+      "id": "ig-moudhi_mosque",
+      "reason": "quality_gate:too_old"
+    },
+    {
+      "id": "ig-mansuh_quranayh",
+      "reason": "quality_gate:too_old"
     }
   ],
   "last_seen_updates": [
     {
+      "id": "ig-rasikhoon",
+      "last_seen_at": "2026-10-01T00:00:00.000Z"
+    },
+    {
+      "id": "ig-masjid_alshalahi_women",
+      "last_seen_at": "2026-09-26T00:00:00.000Z"
+    },
+    {
       "id": "web-othmanalkhamees_schedule",
-      "last_seen_at": "2026-09-25T13:17:26.078Z"
+      "last_seen_at": "2026-10-02T19:54:31.096Z"
+    },
+    {
+      "id": "ig-alwa7yyen",
+      "last_seen_at": "2026-10-02T19:56:08.783Z"
     },
     {
       "id": "telegram-DrosQ8",
-      "last_seen_at": "2026-09-25T13:17:42.459Z"
+      "last_seen_at": "2026-10-02T20:01:27.621Z"
+    },
+    {
+      "id": "ig-fajeralkous",
+      "last_seen_at": "2026-09-24T00:00:00.000Z"
+    },
+    {
+      "id": "ig-ghaith.kw",
+      "last_seen_at": "2026-10-01T00:00:00.000Z"
+    },
+    {
+      "id": "ig-al_mabarrah",
+      "last_seen_at": "2026-09-24T00:00:00.000Z"
     }
   ],
   "lookback_days": 7,
-  "lookback_since": "2026-09-18T13:17:17.477Z",
-  "lesson_relevant_published": 14,
+  "lookback_since": "2026-09-25T19:45:26.251Z",
+  "lesson_relevant_published": 25,
   "quality_gate": {
-    "rejected_old": 0,
-    "rejected_weak_title": 1,
-    "rejected_no_useful_type": 5,
+    "rejected_old": 10,
+    "rejected_weak_title": 16,
+    "rejected_no_useful_type": 13,
     "rejected_missing_date": 0,
     "rejected_other": 0,
-    "published": 14
+    "published": 25
   },
   "content_changed": true
 }
