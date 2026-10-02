@@ -244,7 +244,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setStatus("unauthenticated");
     queryClient.clear();
     void import("@/lib/app-store-review-auth").then((m) => m.clearLegacyAppStoreReviewSession());
-    void import("@/lib/supabase-auth-storage").then((m) => m.clearAllNativeAuthSessions());
     void import("@/lib/quran-audio-resume").then((m) => m.clearAudioResumeState());
     void import("@/lib/lesson-audio-resume").then((m) => m.clearAllLessonAudioResume());
     void import("@/lib/sync-engine").then((m) => {

@@ -39,8 +39,9 @@ const boot = read("src/lib/supabase-bootstrap.ts");
 assert.match(boot, /createSupabaseAuthStorage/);
 assert.match(boot, /storage:\s*createSupabaseAuthStorage\(\)/);
 
-const authProvider = read("src/components/AuthProvider.tsx");
-assert.match(authProvider, /clearAllNativeAuthSessions/);
+const supabaseApi = read("src/lib/supabase.ts");
+assert.match(supabaseApi, /clearAllNativeAuthSessions/);
+assert.match(supabaseApi, /export async function signOut/);
 
 const swift = read("ios/App/App/SunnahAuthKeychainPlugin.swift");
 assert.match(swift, /clearNativeLegacySession/);

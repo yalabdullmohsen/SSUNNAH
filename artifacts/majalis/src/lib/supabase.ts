@@ -125,6 +125,12 @@ export async function signIn(email: string, password: string) {
 }
 
 export async function signOut() {
+  try {
+    const { clearAllNativeAuthSessions } = await import("./supabase-auth-storage");
+    await clearAllNativeAuthSessions();
+  } catch {
+    /* ignore — still attempt Supabase signOut */
+  }
   return await supabase.auth.signOut();
 }
 
