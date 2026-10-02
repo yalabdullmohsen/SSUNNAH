@@ -1,6 +1,6 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-10-02 (SUNNAH_FINAL_PRODUCT_UNIFICATION_AND_STORE_CLOSURE · Phase 0 truth sync)  
+**Updated:** 2026-10-03 (Batch A — U4 remasure + LHCI home unused-css closure)  
 **Master closure register:** `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` · **LOCKED**  
 **iOS-only board:** `docs/audit/IOS_ONLY_CLOSURE_BOARD.md` · **`LIVE_TRUTH_LOCKED_IOS_ONLY`**  
 **Boundary report (living):** `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md`  
@@ -30,13 +30,13 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `0c4e808f8` — `chore(harvest): تحديث feed المصادر` |
-| Production `version.json` | `0c4e808f` **MATCH** · `builtAt=2026-10-02T20:25:53.522Z` |
+| `origin/main` tip | `c1cec798` — U4 hus/tab geometry (#2481); Batch A LHCI pending merge |
+| Production `version.json` | `c1cec798` **MATCH** · `builtAt=2026-10-02T22:21:28.663Z` |
 | Recent hardening | #2474 contrast · #2475 Keychain · #2476 signOut · #2477 FINAL_REPOSITORY_HARDENING (P0–P3 Accepted Truth = 0) |
 | Next iOS Archive | **1.0.1 / ≥56** · tip must include hardening · `DEVICE_RECERTIFICATION_REQUIRED` |
 | About surface | `/about` — حول التطبيق |
 | Decision | **`WEB_RELEASED_NATIVE_HOLD`** · **`PROJECT_CLOSURE_PARTIAL`** · **iOS-only product** |
-| Unification | **`UNIFIED_PARTIAL`** · U2 COMPLETE · U3 **`DARK_LIGHT_UNIFIED`** · U4 **`STARTUP_CHROME_STABLE` not closed** · U7 Back **PASS** historically · U5/U6 ceilings still at debt edges |
+| Unification | **`UNIFIED_PARTIAL`** · U2 COMPLETE · U3 **`DARK_LIGHT_UNIFIED`** · U4 Home cold CLS residual · LHCI local closed pending tip MATCH · U7 Back **PASS** historically · U5/U6 at debt ceilings |
 | Mobile | **`MOBILE_PARTIALLY_READY`** · Bundle `com.yousef.majlisilm` · Android **retired** |
 | License | **`LICENSE_CERTIFICATION_REQUIRED`** · recitations **STREAM_ONLY** · Istanbul **CC0_ADHAN_REJECTED_QUALITY** (not in binary) |
 | Store | **HOLD** for new submission · App Store 1.0 live · TF 1.0.1(55) available · no Play · no `STORE_GO` |
@@ -49,9 +49,9 @@
 
 | Phase | Target exit | Status |
 |---|---|---|
-| 0 Truth sync | `DOCUMENTATION_MATCH_CURRENT_MAIN` | **COMPLETE** (this tip `0c4e808f`) |
-| 1 U4 Startup | `STARTUP_CHROME_STABLE` / `CHROME_FP_EQUALS_FINAL` | **NOT CLOSED** — remasure: Search/Quran/Mushaf PASS · Home/Prayer CLS FAIL · see `U4_STARTUP_CHROME_REMEASURE_0c4e808f.md` |
-| 2 LHCI | `LHCI_HOME_MOBILE_CLOSED` | **NOT CLOSED** — unused-css=150 · forced-reflow unstable · see `LHCI_HOME_REMEASURE_0c4e808f.md` |
+| 0 Truth sync | `DOCUMENTATION_MATCH_CURRENT_MAIN` | **COMPLETE** (tip `c1cec798`) |
+| 1 U4 Startup | `STARTUP_CHROME_STABLE` / `CHROME_FP_EQUALS_FINAL` | **NOT CLOSED** — remasure `c1cec798`: Prayer/Search/Quran/Mushaf PASS · Home cold CLS FAIL · see `U4_STARTUP_CHROME_REMEASURE_c1cec798.md` |
+| 2 LHCI | `LHCI_HOME_MOBILE_CLOSED` | **LOCAL CLOSED** unused-css=0×3 · forced-reflow=1×3 · awaiting tip MATCH re-proof · see `LHCI_HOME_REMEASURE_BATCH_A.md` |
 | 3 UI authority | BUTTON / CARD / BACK toward UNIFIED_100 | **PARTIAL** — Back PASS historically · buttons/cards at debt ceilings |
 | 4 Route quality | priority routes feedback COMPLETE | **PARTIAL** — wave4 tested · stale/permission gaps remain |
 | 5 Mushaf fluidity | measured plan only | **PREPARED** — `docs/mushaf/MUSHAF_FLUIDITY_PLAN.md` |

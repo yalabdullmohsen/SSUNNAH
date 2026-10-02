@@ -1,0 +1,45 @@
+{
+  "tipBase": "c1cec798",
+  "patch": "home: design-system chain on first interaction OR 60s after load",
+  "url": "http://127.0.0.1:24216/",
+  "tool": "@lhci/cli@0.15.1",
+  "thresholdsUnchanged": true,
+  "runs": [
+    {
+      "file": "127_0_0_1--2026_10_02_22_50_13.report.json",
+      "unusedCssNumeric": 0,
+      "unusedCssBytes": 16769,
+      "unusedJsNumeric": 430,
+      "forcedReflowScore": 1,
+      "perf": 0.67
+    },
+    {
+      "file": "127_0_0_1--2026_10_02_22_50_27.report.json",
+      "unusedCssNumeric": 0,
+      "unusedCssBytes": 16769,
+      "unusedJsNumeric": 430,
+      "forcedReflowScore": 1,
+      "perf": 0.64
+    },
+    {
+      "file": "127_0_0_1--2026_10_02_22_50_41.report.json",
+      "unusedCssNumeric": 0,
+      "unusedCssBytes": 16769,
+      "unusedJsNumeric": 430,
+      "forcedReflowScore": 1,
+      "perf": 0.65
+    }
+  ],
+  "selected": {
+    "unused-css-rules-min": 0,
+    "unused-css-rules-max": 0,
+    "unused-css-rules-median": 0,
+    "forced-reflow-insight-all": [
+      1,
+      1,
+      1
+    ],
+    "unused-javascript-min": 430
+  },
+  "exit": "LHCI_HOME_MOBILE_CLOSED"
+}

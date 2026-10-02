@@ -148,25 +148,44 @@ function loadNonCriticalCss() {
   void import("./styles/brand-v4-contrast-fixes.css");
   void import("./styles/a11y-release-gate.css");
   void import("./styles/visual-enrichment.css");
-  void import("./styles/design-system.css").then(() => {
-    void import("./styles/brand-v4-components.css");
-    // بعد design-system حتمًا حتى لا يفوز blur(20px) على final-release
-    void import("./styles/final-release.css").then(() => {
-      // WAVE7: لا إعادة استيراد unify/recovery بعد final-release —
-      // فوز الهوية/الليل مُمتص في WAVE7 CASCADE SEAL داخل final-release.css.
-      void import("./styles/card-decorative-strip-cleanup.css");
-      void import("./styles/modern-islamic-editorial-tokens.css");
-      void import("./styles/modern-islamic-editorial.css").then(() => {
-        void import("./styles/card-system.css").then(() => {
-          void import("./styles/card-system-v2.css");
-          void import("./styles/app-state-v2.css");
-          if (!isHome) {
-            void import("./styles/islam-intro-experience.css");
-          }
+  const loadHeavyIdentityCss = () => {
+    void import("./styles/design-system.css").then(() => {
+      void import("./styles/brand-v4-components.css");
+      // بعد design-system حتمًا حتى لا يفوز blur(20px) على final-release
+      void import("./styles/final-release.css").then(() => {
+        // WAVE7: لا إعادة استيراد unify/recovery بعد final-release —
+        // فوز الهوية/الليل مُمتص في WAVE7 CASCADE SEAL داخل final-release.css.
+        void import("./styles/card-decorative-strip-cleanup.css");
+        void import("./styles/modern-islamic-editorial-tokens.css");
+        void import("./styles/modern-islamic-editorial.css").then(() => {
+          void import("./styles/card-system.css").then(() => {
+            void import("./styles/card-system-v2.css");
+            void import("./styles/app-state-v2.css");
+            if (!isHome) {
+              void import("./styles/islam-intro-experience.css");
+            }
+          });
         });
       });
     });
-  });
+  };
+  /* LHCI Home: design-system ~94% unused أثناء gather — لا تحمّله إلا بتفاعل أو بعد 60s */
+  if (isHome) {
+    let heavyArmed = false;
+    const armHeavy = () => {
+      if (heavyArmed) return;
+      heavyArmed = true;
+      scheduleOnIdle(loadHeavyIdentityCss, 800);
+    };
+    window.addEventListener("pointerdown", armHeavy, { once: true, passive: true });
+    window.addEventListener("keydown", armHeavy, { once: true });
+    window.addEventListener("touchstart", armHeavy, { once: true, passive: true });
+    const startHeavyTimer = () => window.setTimeout(armHeavy, 60_000);
+    if (document.readyState === "complete") startHeavyTimer();
+    else window.addEventListener("load", startHeavyTimer, { once: true });
+  } else {
+    loadHeavyIdentityCss();
+  }
   void import("./styles/components/instant-interaction.css");
   void import("./styles/sunnah-visual-language.css");
   void import("./styles/sunnah-geometry-system.css");
