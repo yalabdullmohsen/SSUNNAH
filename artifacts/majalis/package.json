@@ -765,6 +765,7 @@
     "test:back-authority-unify": "node --import tsx src/lib/__tests__/back-authority-unify-gate.test.ts",
     "test:u7-back-authority": "node --import tsx src/lib/__tests__/u7-back-authority-gate.test.ts",
     "test:u8-deferred-identity": "node --import tsx src/lib/__tests__/u8-deferred-identity-gate.test.ts",
+    "test:u9-route-matrix": "node --import tsx src/lib/__tests__/u9-route-matrix-gate.test.ts",
     "test:route-feedback-priority": "node --import tsx src/lib/__tests__/closure-route-feedback-priority-gate.test.ts",
     "test:route-feedback-public": "node --import tsx src/lib/__tests__/closure-route-feedback-public-gate.test.ts",
     "test:admin-final-2-reviews": "node --import tsx src/lib/__tests__/admin-final-2-reviews-inbox-gate.test.ts",

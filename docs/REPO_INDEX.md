@@ -231,6 +231,10 @@
 | `docs/audit/evidence/t044-u7-back-authority/` | جرد رجوع/عائم + summary T-044 |
 | `docs/audit/U8_DEFERRED_IDENTITY_REPORT.md` | T-045 · `DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED` (PASS) |
 | `docs/audit/evidence/t045-u8-deferred-identity/` | جرد هوية مؤجّلة + summary T-045 |
+| `docs/audit/U9_ROUTE_MATRIX_CERTIFICATION_REPORT.md` | T-046 · `ROUTES_CLASSIFIED_AND_CLOSED` (PASS) |
+| `docs/audit/ROUTE_UNIFICATION_MATRIX.json` | مصفوفة توحيد المسارات العامة U9 |
+| `docs/audit/ADMIN_ROUTE_UNIFICATION_MATRIX.json` | مصفوفة توحيد مسارات الإدارة U9 |
+| `docs/audit/evidence/t046-u9-route-matrix/` | جرد/دين مسارات + summary T-046 |
 | `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` | **Master Closure Register** · `MASTER_CLOSURE_REGISTER_LOCKED` |
 | `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md` | تقرير حدود الإغلاق الحي · `PROJECT_CLOSURE_PARTIAL` |
 | `docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/` | مرشّح أذان CC0 إسطنبول · `CC0_ADHAN_CANDIDATE` |

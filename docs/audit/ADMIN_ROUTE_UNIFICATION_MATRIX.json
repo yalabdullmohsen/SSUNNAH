@@ -1,0 +1,3435 @@
+{
+  "version": 1,
+  "phase": "U9_ROUTE_MATRIX_ADMIN",
+  "policy": "Admin classified separately as ADMIN_ONLY. Field KEEP_JUSTIFIED where public authorities do not apply. Do not use admin PASS to close public coverage.",
+  "requiredFields": [
+    "Theme",
+    "Canvas",
+    "Buttons",
+    "Cards",
+    "Back",
+    "Floating",
+    "Loading",
+    "Empty",
+    "Error",
+    "Offline",
+    "RTL",
+    "Keyboard",
+    "Contrast",
+    "StartupCLS",
+    "DeferredRepaint",
+    "Evidence",
+    "Status"
+  ],
+  "sourceDoc": "docs/admin/ADMIN_FINAL_ROUTE_AND_OWNERSHIP_MATRIX.md",
+  "summary": {
+    "adminRoutes": 42,
+    "unclassified": 0,
+    "closed": 42,
+    "openRouteDebtAdmin": 42
+  },
+  "routes": [
+    {
+      "route": "/admin",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/auto-content",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/automation",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/automation/center",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/automation/content-production",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/automation/dashboard",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/automation/platform",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/automation/review",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/automation/sources",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/autonomous-platform",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/content",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/content-import/image",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/content-import/url",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/content-production",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/dashboard",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/feature-status",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/fiqh-quality",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/fiqh-review",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/import",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/integrations/instagram",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/legacy",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/review-center",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/review-hub",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/sources",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/universities",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/users",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "PASS",
+          "note": "rtl=COMPLETE"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "closure-wave11-route-quality-gate.test.ts · closure-wave4-route-feedback-gate.test.ts · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3/analytics",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3/audit",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3/automation",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3/community",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3/content",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3/content/fawaid",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3/content/lessons",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3/content/sheikhs",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3/notifications",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3/review",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3/reviews",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3/settings",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3/system",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3/taxonomy",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    },
+    {
+      "route": "/admin/v3/users",
+      "componentHint": null,
+      "sourceRouteClass": "ADMIN_ACCESS",
+      "classification": "ADMIN_ONLY",
+      "public": false,
+      "priority": false,
+      "fields": {
+        "Theme": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin theme not in public U3 claim"
+        },
+        "Canvas": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin canvas separate"
+        },
+        "Buttons": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U5"
+        },
+        "Cards": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U6"
+        },
+        "Back": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "ADMIN_ONLY U7"
+        },
+        "Floating": {
+          "status": "PASS",
+          "note": "FLOATING_LAYER_CERTIFIED (U7)"
+        },
+        "Loading": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "loading=ADMIN boundary"
+        },
+        "Empty": {
+          "status": "PASS",
+          "note": "empty=NOT_APPLICABLE"
+        },
+        "Error": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "error=ADMIN boundary"
+        },
+        "Offline": {
+          "status": "PASS",
+          "note": "offline=NOT_APPLICABLE"
+        },
+        "RTL": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "rtl=ADMIN boundary"
+        },
+        "Keyboard": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin keyboard DEVICE_REQUIRED"
+        },
+        "Contrast": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Admin contrast separate"
+        },
+        "StartupCLS": {
+          "status": "KEEP_JUSTIFIED",
+          "note": "Startup CLS not measured per secondary route"
+        },
+        "DeferredRepaint": {
+          "status": "PASS",
+          "note": "U8 DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+        },
+        "Evidence": {
+          "status": "PASS",
+          "note": "ROUTE_QUALITY_MATRIX · U8_DEFERRED_IDENTITY_REPORT · INTERACTION_COMPONENT_AUTHORITY · CARD_SURFACE_AUTHORITY"
+        },
+        "Status": {
+          "status": "CLOSED",
+          "note": "CLOSED with KEEP_JUSTIFIED residuals",
+          "closure": "KEEP_JUSTIFIED"
+        }
+      },
+      "status": "CLOSED",
+      "closure": "KEEP_JUSTIFIED"
+    }
+  ]
+}

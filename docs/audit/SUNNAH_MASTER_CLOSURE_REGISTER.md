@@ -40,7 +40,7 @@
 | A5 | A | U5 Buttons + div/span | FIXABLE | Agent | raw=650 · onClick=59 | Y | N | N | N | N | `BUTTON_AUTHORITY_ONLY` |
 | A6 | A | U6 Cards | FIXABLE | Agent | soft-card families | Y | N | N | N | N | `CARD_AUTHORITY_ONLY` |
 | A7 | A | U7 Back/Floating | FIXABLE | Agent | history.back residual | Y | soft | soft | N | N | `BACK_AUTHORITY_ONLY` |
-| A8 | A | U9 Route matrices | FIXABLE | Agent | 8 admin v3 missing | Y | N | N | N | N | `ROUTES_CLASSIFIED_AND_CLOSED` |
+| A8 | A | U9 Route matrices | FIXABLE | Agent | `U9_ROUTE_MATRIX_CERTIFICATION_REPORT.md` · 416 classified · 0 UNCLASSIFIED | Y | N | N | N | N | `ROUTES_CLASSIFIED_AND_CLOSED` ✅ |
 | A9 | A | U10 Mushaf boundary | FIXABLE+DEVICE | Agent | integrity PASS · device hold | soft | Y | Y | Y | Y | `MUSHAF_BOUNDARY_CERTIFIED` |
 | A10 | A | U11–U13 final web | FIXABLE | Agent | UNIFIED_PARTIAL | Y | N | N | N | N | `UNIFIED_100` or honest PARTIAL |
 | B1 | B | M1 Native architecture iOS | FIXABLE+OWNER | Agent+Owner | `IOS_NATIVE_ARCHITECTURE_CERTIFICATION.md` | N | Y | RETIRED | Y | Y | `IOS_NATIVE_ARCHITECTURE_CERTIFIED` ✅ |
