@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-25T13:17:54.606Z",
+  "updated_at": "2026-10-02T20:14:57.731Z",
   "accounts": [
     {
       "id": "web-aayatkw.com",
@@ -89,7 +89,7 @@
       "last_seen_at": null,
       "last_seen_post_id": null,
       "last_seen_post_url": null,
-      "last_checked_at": null,
+      "last_checked_at": "2026-10-02T19:45:26.251Z",
       "last_published_at": null
     },
     {
@@ -157,11 +157,11 @@
       "trusted": true,
       "autoPublish": true,
       "poll_priority": "normal",
-      "last_seen_at": null,
-      "last_seen_post_id": null,
-      "last_seen_post_url": null,
-      "last_checked_at": null,
-      "last_published_at": null
+      "last_seen_at": "2026-10-01T00:00:00.000Z",
+      "last_seen_post_id": "Dd8mgevMndB",
+      "last_seen_post_url": "https://www.instagram.com/p/Dd8mgevMndB/",
+      "last_checked_at": "2026-10-01T00:00:00.000Z",
+      "last_published_at": "2026-10-01T00:00:00.000Z"
     },
     {
       "id": "ig-masjid_alshalahi_women",
@@ -180,11 +180,11 @@
       "trusted": true,
       "autoPublish": true,
       "poll_priority": "normal",
-      "last_seen_at": null,
-      "last_seen_post_id": null,
-      "last_seen_post_url": null,
-      "last_checked_at": null,
-      "last_published_at": null
+      "last_seen_at": "2026-09-26T00:00:00.000Z",
+      "last_seen_post_id": "DdwbR82sx3O",
+      "last_seen_post_url": "https://www.instagram.com/p/DdwbR82sx3O/",
+      "last_checked_at": "2026-09-26T00:00:00.000Z",
+      "last_published_at": "2026-09-26T00:00:00.000Z"
     },
     {
       "id": "ig-thegrandmosque",
@@ -252,7 +252,7 @@
       "last_seen_at": null,
       "last_seen_post_id": null,
       "last_seen_post_url": null,
-      "last_checked_at": null,
+      "last_checked_at": "2026-10-02T19:45:26.251Z",
       "last_published_at": null
     },
     {
@@ -299,7 +299,7 @@
       "trusted": true,
       "autoPublish": true,
       "poll_priority": "high",
-      "last_seen_at": "2026-09-25T13:17:26.078Z"
+      "last_seen_at": "2026-10-02T19:54:31.096Z"
     },
     {
       "id": "ig-almanabr",
@@ -322,7 +322,7 @@
       "last_seen_at": null,
       "last_seen_post_id": null,
       "last_seen_post_url": null,
-      "last_checked_at": null,
+      "last_checked_at": "2026-10-02T19:45:26.251Z",
       "last_published_at": null
     },
     {
@@ -385,11 +385,11 @@
       "trusted": true,
       "autoPublish": true,
       "poll_priority": "normal",
-      "last_seen_at": null,
-      "last_seen_post_id": null,
-      "last_seen_post_url": null,
-      "last_checked_at": null,
-      "last_published_at": null
+      "last_seen_at": "2026-10-02T19:56:08.783Z",
+      "last_seen_post_id": "Dd_XHestkRA",
+      "last_seen_post_url": "https://www.instagram.com/p/Dd_XHestkRA/",
+      "last_checked_at": "2026-10-02T19:56:08.783Z",
+      "last_published_at": "2026-10-02T19:56:08.783Z"
     },
     {
       "id": "ig-tartelkw",
@@ -621,7 +621,7 @@
       "last_seen_at": null,
       "last_seen_post_id": null,
       "last_seen_post_url": null,
-      "last_checked_at": null,
+      "last_checked_at": "2026-10-02T19:45:26.251Z",
       "last_published_at": null
     },
     {
@@ -643,7 +643,7 @@
       "trusted": true,
       "autoPublish": true,
       "poll_priority": "high",
-      "last_seen_at": "2026-09-25T13:17:42.459Z"
+      "last_seen_at": "2026-10-02T20:01:27.621Z"
     },
     {
       "id": "ig-drooss_kw",
@@ -735,7 +735,7 @@
       "last_seen_at": null,
       "last_seen_post_id": null,
       "last_seen_post_url": null,
-      "last_checked_at": null,
+      "last_checked_at": "2026-10-02T19:45:26.251Z",
       "last_published_at": null
     },
     {
@@ -799,11 +799,11 @@
       "trusted": true,
       "autoPublish": true,
       "poll_priority": "normal",
-      "last_seen_at": null,
-      "last_seen_post_id": null,
-      "last_seen_post_url": null,
-      "last_checked_at": null,
-      "last_published_at": null
+      "last_seen_at": "2026-09-24T00:00:00.000Z",
+      "last_seen_post_id": "Ddq3kf4DeMi",
+      "last_seen_post_url": "https://www.instagram.com/p/Ddq3kf4DeMi/",
+      "last_checked_at": "2026-09-24T00:00:00.000Z",
+      "last_published_at": "2026-09-24T00:00:00.000Z"
     },
     {
       "id": "ig-ghaith.kw",
@@ -822,11 +822,11 @@
       "trusted": true,
       "autoPublish": true,
       "poll_priority": "normal",
-      "last_seen_at": null,
-      "last_seen_post_id": null,
-      "last_seen_post_url": null,
-      "last_checked_at": null,
-      "last_published_at": null
+      "last_seen_at": "2026-10-01T00:00:00.000Z",
+      "last_seen_post_id": "Dd9RddROrvm",
+      "last_seen_post_url": "https://www.instagram.com/p/Dd9RddROrvm/",
+      "last_checked_at": "2026-10-01T00:00:00.000Z",
+      "last_published_at": "2026-10-01T00:00:00.000Z"
     },
     {
       "id": "ig-qetaa_quran",
@@ -894,11 +894,11 @@
       "trusted": true,
       "autoPublish": true,
       "poll_priority": "normal",
-      "last_seen_at": null,
-      "last_seen_post_id": null,
-      "last_seen_post_url": null,
-      "last_checked_at": null,
-      "last_published_at": null
+      "last_seen_at": "2026-09-24T00:00:00.000Z",
+      "last_seen_post_id": "DdrdqXVsoWf",
+      "last_seen_post_url": "https://www.instagram.com/p/DdrdqXVsoWf/",
+      "last_checked_at": "2026-09-24T00:00:00.000Z",
+      "last_published_at": "2026-09-24T00:00:00.000Z"
     },
     {
       "id": "ig-mrkz_al_albany",
