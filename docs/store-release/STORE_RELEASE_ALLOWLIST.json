@@ -1,14 +1,22 @@
 {
-  "$schema_note": "T-026 Store Release Allowlist — SoT for Release Candidate binary boundary. Classes: APPROVED_FOR_RELEASE | STRIP_FROM_RELEASE | STREAM_ONLY | OWNER_DECISION_REQUIRED | BLOCKED_LICENSE | CC0_APPROVED | OFL_APPROVED | CC0_CANDIDATE | INTERNAL | UNKNOWN | EXCLUDED | METADATA_ONLY.",
-  "version": 1,
-  "phase": "T-026",
-  "lockedAtUtc": "2026-10-01T20:40:00Z",
+  "$schema_note": "T-026 Store Release Allowlist — SoT for Release Candidate binary boundary. Classes: APPROVED_FOR_RELEASE | STRIP_FROM_RELEASE | STREAM_ONLY | OWNER_DECISION_REQUIRED | BLOCKED_LICENSE | CC0_APPROVED | OFL_APPROVED | CC0_ADHAN_REJECTED_QUALITY | CC0_CANDIDATE | INTERNAL | UNKNOWN | EXCLUDED | METADATA_ONLY.",
+  "version": 2,
+  "phase": "T-047",
+  "lockedAtUtc": "2026-10-02T03:25:00Z",
   "claims": {
     "AUDIO_CERTIFIED": false,
     "CONTENT_CERTIFIED": false,
-    "RELEASE_BINARY_HAS_ZERO_UNKNOWN_ASSETS": "gated",
+    "RELEASE_BINARY_HAS_ZERO_UNKNOWN_ASSETS": true,
     "AUDIO_RELEASE_ALLOWLIST_LOCKED": true,
-    "STORE_RELEASE_CONTENT_CLEARED": "gated"
+    "STORE_RELEASE_CONTENT_CLEARED": true,
+    "THIRD_PARTY_NOTICES_COMPLETE": true,
+    "ATTRIBUTIONS_COMPLETE": true
+  },
+  "notices": {
+    "thirdPartyNotices": "docs/store-release/THIRD_PARTY_NOTICES.md",
+    "attributions": "docs/store-release/ATTRIBUTIONS.md",
+    "credits": "CREDITS.md",
+    "inAppSources": "/sources"
   },
   "releaseBinaryAllowedClasses": [
     "APPROVED_FOR_RELEASE",
@@ -58,12 +66,12 @@
     "candidatesNotInBinary": [
       {
         "id": "istanbul",
-        "class": "CC0_CANDIDATE",
-        "status": "CC0_ADHAN_CANDIDATE",
+        "class": "CC0_ADHAN_REJECTED_QUALITY",
+        "status": "CC0_ADHAN_REJECTED_QUALITY",
         "inBinary": false,
-        "humanQa": "pending",
-        "evidence": "docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/",
-        "note": "Do not promote to CC0_APPROVED without Human QA"
+        "humanQa": "rejected",
+        "evidence": "docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/HUMAN_QA_RECORD.md",
+        "note": "T-027 reject — Store v1 primary remains system-default; never promote without new QA"
       }
     ],
     "strippedFromRelease": [

@@ -15,7 +15,7 @@ SoT: `STORE_RELEASE_ALLOWLIST.json` (T-026) · globs: `excluded-asset-globs.json
 
 - INTERNAL / UNKNOWN adhan under `public/{sounds,audio}/adhan` — stripped from dist
 - **Kept in dist (CC0_APPROVED only):** `adhan-field.m4a` · `adhan-field-short.m4a` · `adhan-field-full.m4a`
-- Istanbul = `CC0_ADHAN_CANDIDATE` — **not** in binary
+- Istanbul = `CC0_ADHAN_REJECTED_QUALITY` — **not** in binary (Store v1 = `system-default`)
 - `public/fonts/qpc-v2/**` — `OWNER_DECISION_REQUIRED` Strip Path (not Licensed)
 - UNKNOWN sheikh rasters under `dist/sheikhs/*.{jpg,jpeg,png,webp}`
 

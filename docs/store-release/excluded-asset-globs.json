@@ -37,7 +37,7 @@
     "Store RC dist keeps only CC0_APPROVED field packs; INTERNAL/UNKNOWN adhan stripped.",
     "allowedSystemNotificationSounds are STRIP_FROM_RELEASE for Archive (prefer OS default) — run native-strip-store-release-audio.mjs before Archive.",
     "Streaming-only sources (everyayah, mp3quran, Quran.com, AlQuran Cloud) must never be copied into the binary.",
-    "Istanbul remains CC0_ADHAN_CANDIDATE — not in binary until Human QA.",
+    "Istanbul = CC0_ADHAN_REJECTED_QUALITY (T-027) — not in binary; Store v1 primary system-default.",
     "madinah and qatami are EXCLUDED — do not re-add without written rights.",
     "QPC: OWNER_DECISION_REQUIRED — Strip Path active (dist + native-strip-qpc-fonts). No Licensed claim.",
     "UNKNOWN sheikh rasters stripped from dist/sheikhs; SVG avatars may remain.",

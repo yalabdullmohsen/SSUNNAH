@@ -24,7 +24,7 @@
 | License | `LICENSE_CERTIFICATION_REQUIRED` (#2440) |
 | Store | HOLD · Apple-only · `WEB_RELEASED_NATIVE_HOLD` |
 | Recitations policy | **STREAM_ONLY** |
-| Adhan Istanbul CC0 | `CC0_ADHAN_CANDIDATE` (not APPROVED) |
+| Adhan Istanbul CC0 | `CC0_ADHAN_REJECTED_QUALITY` (not in binary) |
 
 ---
 
@@ -61,7 +61,7 @@
 | D4 | D | Adhan CC0 approve + strip unknowns | AUDIO | Agent+Human | Istanbul CANDIDATE | soft | Y | Y | Y | Y | `CC0_ADHAN_APPROVED_FOR_RELEASE` + allowlist |
 | D5 | D | Lessons/books/fatwa metadata-only | LICENSE | Owner+Agent | LICENSE cert E–H | soft | Y | Y | Y | Y | No UNKNOWN bodies in RC |
 | D6 | D | Fonts/images catalog | LICENSE | Agent | OFL OK · QPC blocked | soft | Y | Y | Y | Y | No UNKNOWN images |
-| D7 | D | Attributions complete | LICENSE | Agent | CREDITS · /sources | soft | soft | soft | Y | Y | `ATTRIBUTIONS_COMPLETE` |
+| D7 | D | Attributions complete | LICENSE | Agent | `ATTRIBUTIONS.md` · `THIRD_PARTY_NOTICES.md` · CREDITS T-047 | soft | soft | soft | Y | Y | `ATTRIBUTIONS_COMPLETE` ✅ |
 | E1 | E | Apple store readiness | OWNER | Owner | STORE_100 | N | Y | N | Y | Y | ASC metadata+signing |
 | E2 | E | Google store readiness | OUT_OF_SCOPE | — | Android retired | N | N | RETIRED | N | N | `ANDROID_PRODUCT_RETIRED` ✅ |
 | E3 | E | RC TestFlight Internal | OWNER+DEVICE | Owner | MRMP M12–M13 | N | Y | RETIRED | Y | Y | `TESTFLIGHT_INTERNAL_CERTIFIED` |

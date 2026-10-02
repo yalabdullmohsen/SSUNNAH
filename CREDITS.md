@@ -4,6 +4,21 @@
 **مخاطر ما قبل المتجر:** [`LICENSE_RISKS.md`](./LICENSE_RISKS.md).  
 صفحة التطبيق: `/sources` (`SourcesLicensesPage`).
 
+## Store Release Candidate (T-047)
+
+حدود حزمة المتجر (بعد strip) موثّقة بالكامل هنا:
+
+| وثيقة | دور |
+|---|---|
+| [`docs/store-release/THIRD_PARTY_NOTICES.md`](./docs/store-release/THIRD_PARTY_NOTICES.md) | `THIRD_PARTY_NOTICES_COMPLETE` |
+| [`docs/store-release/ATTRIBUTIONS.md`](./docs/store-release/ATTRIBUTIONS.md) | `ATTRIBUTIONS_COMPLETE` |
+| [`docs/store-release/STORE_RELEASE_ALLOWLIST.json`](./docs/store-release/STORE_RELEASE_ALLOWLIST.json) | Allowlist + audio lock |
+| [`docs/audit/STORE_RELEASE_CONTENT_CLEARANCE_REPORT.md`](./docs/audit/STORE_RELEASE_CONTENT_CLEARANCE_REPORT.md) | تقرير الخروج |
+
+**في الحزمة:** خطوط OFL · أذان ميداني CC0 · أصول منتج · `system-default`.  
+**خارج الحزمة:** QPC strip · تلاوات STREAM_ONLY · أذان INTERNAL/UNKNOWN · أجسام دروس/كتب/فتاوى.  
+لا يُدّعى `CONTENT_CERTIFIED` / `STORE_GO` من هذا القسم وحده.
+
 | المصدر | الاستخدام | ترخيص / إسناد (حالة) | رابط |
 |---|---|---|---|
 | Tanzil / نص عثماني (عبر AlQuran Cloud وملفات محلية) | نص القرآن في المصحف والبحث | راجع `docs/LICENSES.md` و`artifacts/majalis/docs/quran-data-source.md` — **جزئي / مطلوب للمتجر** | https://tanzil.net / https://alquran.cloud |

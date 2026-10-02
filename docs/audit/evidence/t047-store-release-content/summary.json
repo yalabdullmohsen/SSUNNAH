@@ -1,0 +1,26 @@
+{
+  "measuredAt": "2026-10-02T03:23:50.752Z",
+  "phase": "T-047 STORE_RELEASE_CONTENT_CLEARED",
+  "exit": "STORE_RELEASE_CONTENT_CLEARED",
+  "totalAssets": 131,
+  "releaseFlavorCount": 83,
+  "releaseFlavorUnknownCount": 0,
+  "treeUnknownCount": 20,
+  "strippedCount": 44,
+  "streamOnlyCount": 1,
+  "ownerDecisionCount": 2,
+  "cc0ApprovedCount": 5,
+  "oflApprovedCount": 12,
+  "audioAllowlistLocked": true,
+  "qpcClass": "OWNER_DECISION_REQUIRED",
+  "RELEASE_BINARY_HAS_ZERO_UNKNOWN_ASSETS": true,
+  "AUDIO_RELEASE_ALLOWLIST_LOCKED": true,
+  "STORE_RELEASE_CONTENT_CLEARED": true,
+  "THIRD_PARTY_NOTICES_COMPLETE": true,
+  "ATTRIBUTIONS_COMPLETE": true,
+  "blocking": [],
+  "notices": {
+    "thirdParty": "docs/store-release/THIRD_PARTY_NOTICES.md",
+    "attributions": "docs/store-release/ATTRIBUTIONS.md"
+  }
+}
