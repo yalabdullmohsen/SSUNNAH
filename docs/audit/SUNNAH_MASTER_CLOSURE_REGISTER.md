@@ -36,7 +36,7 @@
 | A1 | A | U3 Theme pipeline | FIXABLE | Agent | #2442 · gate · MATCH | Y | soft | soft | N | N | `DARK_LIGHT_UNIFIED` ✅ |
 | A2 | A | U4 Startup chrome/CLS | FIXABLE | Agent | U4 Ready Pack | Y | soft | soft | N | N | `STARTUP_CHROME_STABLE` (NEXT) |
 | A3 | A | U1 numeric LHCI ≤80/≤500/reflow≥1 | FIXABLE | Agent | LHCI audit · #2437 local | Y | N | N | N | N | `LHCI_HOME_MOBILE_CLOSED` |
-| A4 | A | U8 Deferred identity | FIXABLE | Agent | LIVE inventory deferred=49 | Y | N | N | N | N | `DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED` |
+| A4 | A | U8 Deferred identity | FIXABLE | Agent | `U8_DEFERRED_IDENTITY_REPORT.md` · deferred=49 all KEEP_JUSTIFIED · WAVE7 seal | Y | N | N | N | N | `DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED` ✅ |
 | A5 | A | U5 Buttons + div/span | FIXABLE | Agent | raw=650 · onClick=59 | Y | N | N | N | N | `BUTTON_AUTHORITY_ONLY` |
 | A6 | A | U6 Cards | FIXABLE | Agent | soft-card families | Y | N | N | N | N | `CARD_AUTHORITY_ONLY` |
 | A7 | A | U7 Back/Floating | FIXABLE | Agent | history.back residual | Y | soft | soft | N | N | `BACK_AUTHORITY_ONLY` |
