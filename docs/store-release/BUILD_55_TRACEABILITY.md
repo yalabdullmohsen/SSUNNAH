@@ -21,10 +21,12 @@
 
 Do **not** claim Build 55 was produced from a git tag/commit that already contained 1.0.1/55.
 
-## After repository hardening (this PR)
+## After repository hardening (merged)
 
 | Claim | Value |
 |-------|-------|
+| Merge | PR **#2471** → `c62396a93760` on `main` |
+| Production web | `version.json` **c62396a9** MATCH |
 | `project.pbxproj` tip | **1.0.1 / 55** for App + PrayerWidget + PrayerLiveActivity |
 | Review credentials in client | removed (`NO_CLIENT_EMBEDDED_REVIEW_CREDENTIALS`) |
 | Capacitor auth storage | Keychain adapter in source (`CAPACITOR_AUTH_STORAGE_HARDENED`) |
