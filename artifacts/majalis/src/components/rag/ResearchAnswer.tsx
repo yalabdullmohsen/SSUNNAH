@@ -3,6 +3,7 @@ import { ClipboardCopy, Library, Save, Scale } from "lucide-react";
 import { SourceCard } from "./SourceCard";
 import type { RAGResult, ContentType } from "@/lib/rag-service";
 import { EMPTY } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/content-actions-rag.css";
 
 interface Props {
@@ -88,11 +89,12 @@ export function ResearchAnswer({ result, onSave }: Props) {
       {/* تبويبات */}
       <div className="ra-tabs-bar" role="tablist" aria-label="أقسام نتائج البحث">
         {visibleTabs.map((t) => (
-          <button
+          <Button
             key={t.key}
             id={`ra-tab-${t.key}`}
             role="tab"
             type="button"
+            variant="ghost"
             onClick={() => setActiveTab(t.key)}
             className={`ra-tab${activeTab === t.key ? " ra-tab--active" : ""}`}
             aria-selected={activeTab === t.key}
@@ -104,7 +106,7 @@ export function ResearchAnswer({ result, onSave }: Props) {
                 ({getSourcesForTab(t.key).length})
               </span>
             )}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -120,21 +122,23 @@ export function ResearchAnswer({ result, onSave }: Props) {
 
             {/* أزرار الإجراءات */}
             <div className="flex gap-2 flex-wrap">
-              <button
+              <Button
                 type="button"
+                variant="outline"
                 onClick={() => { navigator.clipboard.writeText(result.answer).catch(() => {}); }}
                 className="ra-action-btn"
               >
                 <ClipboardCopy size={14} className="inline ms-1" />نسخ الجواب
-              </button>
+              </Button>
               {onSave && (
-                <button
+                <Button
                   type="button"
+                  variant="primary"
                   onClick={onSave}
                   className="citation-btn citation-btn--primary"
                 >
                   <Save size={14} className="inline ms-1" />حفظ في المكتبة
-                </button>
+                </Button>
               )}
             </div>
 
@@ -148,13 +152,14 @@ export function ResearchAnswer({ result, onSave }: Props) {
                   ))}
                 </div>
                 {result.sources.length > 4 && (
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
                     onClick={() => setActiveTab("all")}
                     className="ra-show-all"
                   >
                     عرض جميع المصادر ({result.sources.length}) ←
-                  </button>
+                  </Button>
                 )}
               </div>
             )}

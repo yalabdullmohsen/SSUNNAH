@@ -7,6 +7,8 @@ import {
   type MindMapNode,
   type PositionedNode,
 } from "@/lib/mind-map-layout";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 
 const MIN_SCALE = 0.35;
 const MAX_SCALE = 2.2;
@@ -219,15 +221,15 @@ export function MindMapCanvas({ root, mapId }: { root: MindMapNode; mapId: strin
       </div>
 
       <div className="mmv-controls" role="group" aria-label="أدوات التكبير والتصغير">
-        <button type="button" className="mmv-ctrl-btn" onClick={() => zoomBy(1.25)} aria-label="تكبير">
+        <IconButton type="button" className="mmv-ctrl-btn" onClick={() => zoomBy(1.25)} label="تكبير">
           <Plus size={16} strokeWidth={2.4} />
-        </button>
-        <button type="button" className="mmv-ctrl-btn" onClick={() => zoomBy(0.8)} aria-label="تصغير">
+        </IconButton>
+        <IconButton type="button" className="mmv-ctrl-btn" onClick={() => zoomBy(0.8)} label="تصغير">
           <Minus size={16} strokeWidth={2.4} />
-        </button>
-        <button type="button" className="mmv-ctrl-btn" onClick={centerView} aria-label="إعادة ضبط العرض">
+        </IconButton>
+        <IconButton type="button" className="mmv-ctrl-btn" onClick={centerView} label="إعادة ضبط العرض">
           <RotateCcw size={15} strokeWidth={2.2} />
-        </button>
+        </IconButton>
       </div>
 
       <p className="mmv-count">{totalVisible} عقدة مرئية</p>
@@ -242,8 +244,9 @@ function MindMapCanvasNode({ node, onToggle }: { node: PositionedNode; onToggle:
       className={`mmv-node ${depthClass}${node.collapsed ? " mmv-node--collapsed" : ""}`}
       style={{ left: node.x, top: node.y }}
     >
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className={`mmv-node__btn${node.hasChildren ? "" : " mmv-node__btn--leaf"}`}
         onClick={() => node.hasChildren && onToggle(node.id)}
         aria-expanded={node.hasChildren ? !node.collapsed : undefined}
@@ -252,7 +255,7 @@ function MindMapCanvasNode({ node, onToggle }: { node: PositionedNode; onToggle:
         {node.hasChildren && (
           <span className="mmv-node__badge" aria-hidden="true">{node.collapsed ? "+" : "−"}</span>
         )}
-      </button>
+      </Button>
       {node.href && (
         <Link href={node.href} className="mmv-node__link" aria-label={`فتح ${node.label}`}>
           <ExternalLink size={11} strokeWidth={2.2} />

@@ -17,6 +17,7 @@ import { truncateAtWord } from "@/lib/utils";
 import "@/styles/pages/knowledge.css";
 import "@/styles/islam-intro-experience.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 const SECTION_TITLE: Record<string, string> = {
   prophets: "قصص الأنبياء",
@@ -119,20 +120,21 @@ export default function KnowledgeSectionPage() {
       <div className={`page-shell narrow ${focusMode ? "knowledge-focus" : ""}`} dir="rtl">
         <PageHeader eyebrow={SECTION_TITLE[section] || "معرفة"} title={item.title} />
         <div className="knowledge-toolbar">
-          <button type="button" className="asp-add-btn" onClick={() => setFontScale((s) => Math.min(1.6, s + 0.1))}>
+          <Button type="button" variant="ghost" className="asp-add-btn" onClick={() => setFontScale((s) => Math.min(1.6, s + 0.1))}>
             تكبير الخط
-          </button>
-          <button type="button" className="asp-add-btn" onClick={() => setFontScale((s) => Math.max(0.9, s - 0.1))}>
+          </Button>
+          <Button type="button" variant="ghost" className="asp-add-btn" onClick={() => setFontScale((s) => Math.max(0.9, s - 0.1))}>
             تصغير
-          </button>
-          <button type="button" className="asp-add-btn" onClick={() => setFocusMode((v) => !v)}>
+          </Button>
+          <Button type="button" variant="ghost" className="asp-add-btn" onClick={() => setFocusMode((v) => !v)}>
             {focusMode ? "إظهار الأدوات" : "وضع قراءة"}
-          </button>
-          <button type="button" className="asp-run-btn" onClick={() => void copyBody()}>
+          </Button>
+          <Button type="button" variant="outline" className="asp-run-btn" onClick={() => void copyBody()}>
             نسخ النص
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
+            variant="outline"
             className="asp-run-btn"
             onClick={() => {
               const url = `https://www.ssunnah.com/knowledge/${section}/${item.id}`;
@@ -140,7 +142,7 @@ export default function KnowledgeSectionPage() {
             }}
           >
             مشاركة
-          </button>
+          </Button>
         </div>
         <article className="knowledge-article surface-brand" style={{ ["--knowledge-font-scale" as string]: String(fontScale) } as CSSProperties}>
           <div className="knowledge-article-body">

@@ -9,6 +9,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import "@/styles/pages/my-submissions.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 const STATUS_META: Record<SubmissionStatus, { Icon: LucideIcon; label: string; mod: string }> = {
   pending:  { Icon: Clock,        label: "قيد التدقيق", mod: "msr-status--pending"  },
@@ -66,13 +67,14 @@ function SubmissionRow({ sub }: { sub: UserSubmission }) {
 
         {/* Audio preview */}
         {sub.file_url && sub.file_mime?.startsWith("audio") && (
-          <button
+          <Button
             type="button"
+            variant="ghost"
             onClick={toggleAudio}
             className={`msr-card__audio-btn${audioPlaying ? " is-playing" : ""}`}
           >
             {audioPlaying ? "⏹ إيقاف" : "▶ استمع للتسجيل"}
-          </button>
+          </Button>
         )}
 
         {/* Reviewer note */}
@@ -181,13 +183,14 @@ export default function MySubmissionsPage() {
             aria-label="بريدك@مثال.com" placeholder="بريدك@مثال.com"
             className="msp-email-input"
           />
-          <button
+          <Button
             type="submit"
+            variant="primary"
             disabled={loading}
             className={`msp-search-btn${loading ? " is-loading" : ""}`}
           >
             {loading ? "..." : "بحث"}
-          </button>
+          </Button>
         </form>
       </div>
 
@@ -221,8 +224,8 @@ export default function MySubmissionsPage() {
         <div className="msp-empty-state">
           <div className="msp-empty-state__icon" aria-hidden="true"><FileText size={40} strokeWidth={1.3} /></div>
           <p className="msp-empty-state__msg">{EMPTY.data}</p>
-          <Link href="/upload">
-            <button type="button" className="msp-cta-btn">ارفع درساً</button>
+          <Link href="/upload" className="msp-cta-btn">
+            ارفع درساً
           </Link>
         </div>
       )}
@@ -238,10 +241,8 @@ export default function MySubmissionsPage() {
       {list === null && !loading && (
         <div className="msp-cta">
           <div className="msp-cta__text">أو ارفع محتوىً جديداً:</div>
-          <Link href="/upload">
-            <button type="button" className="msp-cta-btn msp-cta-btn--gradient">
-              <Upload size={15} strokeWidth={2} aria-hidden="true" /> رفع درس علمي
-            </button>
+          <Link href="/upload" className="msp-cta-btn msp-cta-btn--gradient">
+            <Upload size={15} strokeWidth={2} aria-hidden="true" /> رفع درس علمي
           </Link>
         </div>
       )}

@@ -240,13 +240,14 @@ export default function AcademicResearchPage() {
               <option key={s} value={s} />
             ))}
           </datalist>
-          <button
+          <Button
             type="button"
+            variant="primary"
             className="sr-btn sr-btn--primary"
             onClick={runSearch}
           >
             <Search size={16} aria-hidden /> بحث
-          </button>
+          </Button>
           <FilterToggle
             expanded={filtersOpen}
             onClick={() => setFiltersOpen(true)}
@@ -311,27 +312,29 @@ export default function AcademicResearchPage() {
               التخصصات
             </h2>
             {RESEARCH_CATEGORIES.length > CATEGORY_PREVIEW ? (
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 className="sr-section__link"
                 onClick={() => setShowAllCats((v) => !v)}
               >
                 {showAllCats ? "أقل" : "المزيد"}
-              </button>
+              </Button>
             ) : null}
           </div>
           <div className="sr-cat-grid">
             {visibleCats.map((c) => (
-              <button
+              <Button
                 key={c.id}
                 type="button"
+                variant="ghost"
                 className={`sr-cat${categoryId === c.id ? " is-active" : ""}`}
                 onClick={() =>
                   setCategoryId(categoryId === c.id ? "" : c.id)
                 }
               >
                 {c.label}
-              </button>
+              </Button>
             ))}
           </div>
         </section>
@@ -345,14 +348,15 @@ export default function AcademicResearchPage() {
             </div>
             <div className="sr-cat-grid">
               {topUniversities.map((u) => (
-                <button
+                <Button
                   key={u}
                   type="button"
+                  variant="ghost"
                   className={`sr-cat${university === u ? " is-active" : ""}`}
                   onClick={() => setUniversity(university === u ? "" : u)}
                 >
                   {u}
-                </button>
+                </Button>
               ))}
             </div>
           </section>

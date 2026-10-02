@@ -8,6 +8,7 @@ import {
 } from "@/lib/quiz-content-affinity";
 import { recordQuizAttempt } from "@/lib/quiz-performance-service";
 import { hapticNotify } from "@/lib/capacitor-utils";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/section-quiz.css";
 
 interface QuizBodyProps {
@@ -50,9 +51,9 @@ function QuizBody({ questions, onRefresh }: QuizBodyProps) {
           </p>
 
           {!revealed[i] ? (
-            <button type="button" className="sq-reveal-btn" onClick={() => reveal(i)}>
+            <Button type="button" variant="outline" className="sq-reveal-btn" onClick={() => reveal(i)}>
               أظهر الإجابة
-            </button>
+            </Button>
           ) : (
             <>
               <div className="sq-answer">
@@ -62,12 +63,12 @@ function QuizBody({ questions, onRefresh }: QuizBodyProps) {
               {q.hint && <p className="sq-hint"><SectionIcon name="💡" size={16} /> {q.hint}</p>}
               {scores[i] === null ? (
                 <div className="sq-score-btns">
-                  <button type="button" className="sq-btn sq-btn--correct" onClick={() => mark(i, true)}>
+                  <Button type="button" variant="outline" className="sq-btn sq-btn--correct" onClick={() => mark(i, true)}>
                     <CheckCircle2 size={15} aria-hidden="true" /> أجبت صح
-                  </button>
-                  <button type="button" className="sq-btn sq-btn--wrong" onClick={() => mark(i, false)}>
+                  </Button>
+                  <Button type="button" variant="outline" className="sq-btn sq-btn--wrong" onClick={() => mark(i, false)}>
                     <XCircle size={15} aria-hidden="true" /> أجبت غلط
-                  </button>
+                  </Button>
                 </div>
               ) : (
                 <span className={`sq-score-badge sq-score-badge--${scores[i] ? "correct" : "wrong"}`}>
@@ -85,9 +86,9 @@ function QuizBody({ questions, onRefresh }: QuizBodyProps) {
             {correctCount} / {questions.length} إجابة صحيحة
             {correctCount === questions.length && ""}
           </p>
-          <button type="button" className="sq-refresh-btn" onClick={onRefresh}>
+          <Button type="button" variant="ghost" className="sq-refresh-btn" onClick={onRefresh}>
             <RotateCcw size={15} aria-hidden="true" /> أسئلة جديدة
-          </button>
+          </Button>
         </div>
       )}
     </div>
@@ -139,13 +140,12 @@ export function TopicQuiz({
 
   return (
     <section className="sq-section" dir="rtl" aria-label={title}>
-      <div
+      <Button
+        type="button"
+        variant="ghost"
         className="sq-header"
         onClick={toggle}
-        role="button"
-        tabIndex={0}
         aria-expanded={expanded}
-        onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && toggle()}
       >
         <div className="sq-header-content">
           <Brain size={20} aria-hidden="true" />
@@ -154,7 +154,7 @@ export function TopicQuiz({
         <span className="sq-toggle" aria-hidden="true">
           {expanded ? "▲" : "▼"}
         </span>
-      </div>
+      </Button>
 
       {expanded && (
         <QuizBody key={seed} questions={questions} onRefresh={() => setSeed((s) => s + 1)} />

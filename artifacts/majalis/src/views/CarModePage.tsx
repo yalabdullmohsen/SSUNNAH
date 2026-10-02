@@ -5,6 +5,8 @@ import { supabase } from "@/lib/supabase";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/car-mode.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 
 type AudioLesson = {
   id: string;
@@ -198,41 +200,42 @@ export default function CarModePage() {
 
       {/* Controls */}
       <div className="car-mode__controls">
-        <button
+        <IconButton
           type="button"
           className="car-mode__btn car-mode__btn--sm"
           onClick={goPrev}
           disabled={currentIdx === 0}
-          aria-label="السابق"
+          label="السابق"
         >
           <SkipBack size={28} strokeWidth={1.6} />
-        </button>
-        <button
+        </IconButton>
+        <IconButton
           type="button"
           className="car-mode__btn car-mode__btn--play"
           onClick={togglePlay}
-          aria-label={playing ? "إيقاف" : "تشغيل"}
+          label={playing ? "إيقاف" : "تشغيل"}
         >
           {playing ? <Pause size={36} strokeWidth={1.5} /> : <Play size={36} strokeWidth={1.5} />}
-        </button>
-        <button
+        </IconButton>
+        <IconButton
           type="button"
           className="car-mode__btn car-mode__btn--sm"
           onClick={goNext}
           disabled={currentIdx === lessons.length - 1}
-          aria-label="التالي"
+          label="التالي"
         >
           <SkipForward size={28} strokeWidth={1.6} />
-        </button>
+        </IconButton>
       </div>
 
       {/* Playlist (scrollable list below controls) */}
       <div className="car-mode__playlist" role="tablist" aria-label="قائمة الدروس">
         {lessons.map((lesson, idx) => (
-          <button
+          <Button
             key={lesson.id}
             role="tab"
             type="button"
+            variant="ghost"
             className={`car-mode__playlist-item${idx === currentIdx ? " car-mode__playlist-item--active" : ""}`}
             onClick={() => selectLesson(idx)}
             aria-selected={idx === currentIdx}
@@ -242,7 +245,7 @@ export default function CarModePage() {
             {lesson.speaker_name && (
               <span className="car-mode__playlist-speaker">{lesson.speaker_name}</span>
             )}
-          </button>
+          </Button>
         ))}
       </div>
     </div>

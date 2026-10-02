@@ -14,6 +14,7 @@ import type { RightsCategory } from "@/lib/sins-rights-types";
 import { breadcrumbJsonLd } from "@/lib/seo-structured-data";
 import "@/styles/sins-rights.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 type Tab = "overview" | "allah" | "ibad" | "shared" | "guide" | "what-if" | "muhasaba" | "mindmap";
 
@@ -260,14 +261,15 @@ function RepentanceGuide() {
       </div>
       <div className="snr-guide-options">
         {GUIDE_OPTIONS.map((opt) => (
-          <button
+          <Button
             key={opt.value}
             type="button"
+            variant="ghost"
             className={`snr-guide-option${selected === opt.value ? " snr-guide-option--selected" : ""}`}
             onClick={() => setSelected(selected === opt.value ? null : opt.value)}
           >
             {opt.label}
-          </button>
+          </Button>
         ))}
       </div>
       {result && (
@@ -301,15 +303,16 @@ function WhatIfSection() {
       <div className="snr-faq-title">ماذا أفعل إذا؟</div>
       {WHAT_IF_QA.map((item, idx) => (
         <div key={idx} className="snr-faq-item">
-          <button
+          <Button
             type="button"
+            variant="ghost"
             className="snr-faq-q"
             onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
             aria-expanded={openIdx === idx}
           >
             <span>{item.q}</span>
             <span className={`snr-faq-chevron${openIdx === idx ? " snr-faq-chevron--open" : ""}`}>▼</span>
-          </button>
+          </Button>
           {openIdx === idx && <div className="snr-faq-a">{item.a}</div>}
         </div>
       ))}
@@ -345,28 +348,30 @@ function MuhasabaSection() {
               <div className="snr-muhasaba-cat-title">{cat}</div>
               <div className="snr-muhasaba-status-row">
                 {(["in_progress", "done"] as MuhasabaStatus[]).map((s) => (
-                  <button
+                  <Button
                     key={s}
                     type="button"
+                    variant="ghost"
                     className={`snr-muhasaba-status-btn snr-muhasaba-status-btn--${s.replace("_", "-")}${status === s ? " snr-muhasaba-status-btn--active" : ""}`}
                     onClick={() => setStatus(cat, s)}
                     aria-pressed={status === s}
                   >
                     {statusLabels[s]}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
           );
         })}
       </div>
-      <button
+      <Button
         type="button"
+        variant="outline"
         className="snr-muhasaba-btn"
         onClick={() => setStatuses({})}
       >
         إعادة ضبط
-      </button>
+      </Button>
     </div>
   );
 }
@@ -383,19 +388,18 @@ function MindMap() {
       <div className="snr-mindmap-root">
         {MINDMAP_NODES.map((node) => (
           <div key={node.id} className="snr-mindmap-node">
-            <div
+            <Button
+              type="button"
+              variant="ghost"
               className="snr-mindmap-node-header"
               onClick={() => toggle(node.id)}
-              role="button"
               aria-expanded={!!openNodes[node.id]}
-              tabIndex={0}
-              onKeyDown={(e) => e.key === "Enter" && toggle(node.id)}
             >
               <span className={`snr-mindmap-toggle${openNodes[node.id] ? " snr-mindmap-toggle--open" : ""}`} aria-hidden="true">‹</span>
               <span className="snr-mindmap-node-icon"><SectionIcon name={node.icon} size={22} /></span>
               <span className="snr-mindmap-node-label">{node.label}</span>
               <span className="snr-mindmap-node-count">{node.children.length}</span>
-            </div>
+            </Button>
             {openNodes[node.id] && (
               <div className="snr-mindmap-children">
                 {node.children.map((child) => (
@@ -469,15 +473,16 @@ export default function SinsAndRightsPage() {
       {/* التبويبات */}
       <nav className="snr-tabs" aria-label="أقسام الذنوب والحقوق">
         {TABS.map((tab) => (
-          <button
+          <Button
             key={tab.key}
             type="button"
+            variant="ghost"
             className={`snr-tab${activeTab === tab.key ? " snr-tab--active" : ""}`}
             onClick={() => setActiveTab(tab.key)}
             aria-pressed={activeTab === tab.key}
           >
             {tab.label}
-          </button>
+          </Button>
         ))}
       </nav>
 
