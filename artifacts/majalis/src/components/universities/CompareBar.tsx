@@ -1,6 +1,8 @@
 import "@/styles/components/university-card.css";
 import { Link } from "wouter";
 import { useCompare } from "./CompareContext";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 
 export function CompareBar() {
   const { compareList, removeFromCompare, clearCompare } = useCompare();
@@ -17,9 +19,14 @@ export function CompareBar() {
           {compareList.map((u) => (
             <span key={u.slug} className="compare-chip">
               {u.name_ar.slice(0, 25)}{u.name_ar.length > 25 ? "…" : ""}
-              <button type="button" onClick={() => removeFromCompare(u.slug)}
-                aria-label={`إزالة ${u.name_ar} من المقارنة`}
-                className="compare-chip__remove">×</button>
+              <IconButton
+                type="button"
+                onClick={() => removeFromCompare(u.slug)}
+                label={`إزالة ${u.name_ar} من المقارنة`}
+                className="compare-chip__remove"
+              >
+                ×
+              </IconButton>
             </span>
           ))}
         </div>
@@ -30,10 +37,9 @@ export function CompareBar() {
               قارن الآن ←
             </Link>
           )}
-          <button type="button" onClick={clearCompare}
-            className="compare-bar__clear">
+          <Button type="button" variant="ghost" onClick={clearCompare} className="compare-bar__clear">
             مسح الكل
-          </button>
+          </Button>
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ import { CollectionHero, CollectionStats } from "./CollectionHero";
 import { CategoryCard } from "./CategoryCard";
 import { TopicListItem } from "./TopicListItem";
 import { TopicReaderPage } from "./TopicReaderPage";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/knowledge-collection.css";
 import "@/styles/islam-intro-experience.css";
 import "@/styles/prophets-semantic-tokens.css";
@@ -174,7 +175,7 @@ export function KnowledgeCollectionSystem({
             autoComplete="off"
             dir="rtl"
           />
-          <button type="submit">بحث</button>
+          <Button type="submit" variant="primary">بحث</Button>
         </form>
         {filteredTopics.length === 0 ? (
           <p className="kc-empty" role="status">
@@ -229,7 +230,7 @@ export function KnowledgeCollectionSystem({
           autoComplete="off"
           dir="rtl"
         />
-        <button type="submit">بحث</button>
+        <Button type="submit" variant="primary">بحث</Button>
       </form>
       {filteredCategories.length === 0 ? (
         <p className="kc-empty" role="status">

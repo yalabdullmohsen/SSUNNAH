@@ -8,6 +8,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/arkan-iman.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 /* ─── بيانات أركان الإيمان ─── */
 type RuknIman = {
@@ -215,17 +216,18 @@ export default function ArkanImanPage() {
         {/* أزرار تنقل سريع */}
         <div className="ai-hero__nav">
           {ARKAN_IMAN.map((r) => (
-            <button
+            <Button
               key={r.num}
               type="button"
-              className={`ai-hero__nav-btn${openId === r.num ? "ai-hero__nav-btn--active" : ""}`}
+              variant="ghost"
+              className={`ai-hero__nav-btn${openId === r.num ? " ai-hero__nav-btn--active" : ""}`}
               onClick={() => toggle(r.num)}
               aria-pressed={openId === r.num}
               aria-label={r.title}
             >
               <span className="ai-hero__nav-icon"><SectionIcon name={r.icon} size={22} /></span>
               <span className="ai-hero__nav-label">{r.numAr}</span>
-            </button>
+            </Button>
           ))}
         </div>
       </section>
@@ -236,8 +238,9 @@ export default function ArkanImanPage() {
           const isOpen = openId === rukn.num;
           return (
             <article key={rukn.num} className={`ai-card${isOpen ? "ai-card--open" : ""}`}>
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 className="ai-card__header"
                 onClick={() => toggle(rukn.num)}
                 aria-expanded={isOpen}
@@ -253,7 +256,7 @@ export default function ArkanImanPage() {
                 <span className="ai-card__chevron" aria-hidden="true">
                   {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                 </span>
-              </button>
+              </Button>
 
               {isOpen && (
                 <div className="ai-card__body">

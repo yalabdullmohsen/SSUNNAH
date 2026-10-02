@@ -28,6 +28,7 @@ import {
   Caption,
 } from "@/components/design-system/text";
 import { ACTION, EMPTY, STATUS } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/topic-page.css";
 import "@/styles/components/safe-hero.css";
 import "@/styles/sunnah-identity-detail-reading.css";
@@ -214,9 +215,10 @@ export function TopicPage({
               const tabId = `${baseId}-tab-${t.id}`;
               const panelId = `${baseId}-panel-${t.id}`;
               return (
-                <button
+                <Button
                   key={t.id}
                   type="button"
+                  variant="ghost"
                   role="tab"
                   id={tabId}
                   data-topic-tab={t.id}
@@ -233,7 +235,7 @@ export function TopicPage({
                   }
                 >
                   {t.label}
-                </button>
+                </Button>
               );
             })}
           </div>
@@ -261,9 +263,9 @@ export function TopicPage({
                 : STATUS.loadError}
             </BodyText>
             {onRetry ? (
-              <button type="button" className="topic-page__retry" onClick={onRetry}>
+              <Button type="button" variant="ghost" className="topic-page__retry" onClick={onRetry}>
                 {ACTION.retry}
-              </button>
+              </Button>
             ) : null}
           </div>
         ) : null}

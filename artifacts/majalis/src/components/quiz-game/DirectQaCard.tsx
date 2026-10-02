@@ -8,6 +8,7 @@ import { Search } from "lucide-react";
 import { loadSeedQa, type SeedQaItem } from "@/lib/qa-seed";
 import { QA_DISCLAIMER } from "@/lib/theme";
 import { EMPTY } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
 
 type Status = "loading" | "found" | "not-found";
 
@@ -58,9 +59,9 @@ export function DirectQaCard({ qaId, onDismiss }: { qaId: string; onDismiss: () 
     return (
       <div className="qzg-direct-qa qzg-direct-qa--missing">
         <p>{EMPTY.generic}</p>
-        <button type="button" className="qzg-direct-qa__cta" onClick={onDismiss}>
+        <Button type="button" variant="primary" className="qzg-direct-qa__cta" onClick={onDismiss}>
           الذهاب إلى تحدي الأسئلة
-        </button>
+        </Button>
       </div>
     );
   }
@@ -76,9 +77,9 @@ export function DirectQaCard({ qaId, onDismiss }: { qaId: string; onDismiss: () 
       <h1 className="qzg-direct-qa__q">{item.question}</h1>
       <p className="qzg-direct-qa__a">{answer}</p>
       <p className="qzg-direct-qa__disclaimer">{QA_DISCLAIMER}</p>
-      <button type="button" className="qzg-direct-qa__cta" onClick={onDismiss}>
+      <Button type="button" variant="primary" className="qzg-direct-qa__cta" onClick={onDismiss}>
         الذهاب إلى تحدي الأسئلة
-      </button>
+      </Button>
     </div>
   );
 }

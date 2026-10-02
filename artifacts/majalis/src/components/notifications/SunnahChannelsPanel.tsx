@@ -29,6 +29,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 
 const CADENCE_LABELS: Record<ChannelCadence, string> = {
   immediate: "فوري",
@@ -42,13 +43,14 @@ function PermissionHint({ state }: { state: string }) {
     return (
       <div className="notif-row__sub">
         <p>إذن النظام مرفوض نهائيًا. افتح إعدادات الجهاز لتفعيل إشعارات «سُنّة».</p>
-        <button
+        <Button
           type="button"
+          variant="ghost"
           className="btn btn--ghost"
           onClick={() => void openSystemNotificationSettings()}
         >
           فتح إعدادات النظام
-        </button>
+        </Button>
       </div>
     );
   }
@@ -243,8 +245,9 @@ export function SunnahChannelsPanel() {
         </div>
       ) : null}
 
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className="btn btn--ghost"
         onClick={() => {
           setPrefs(disableAllNonEssentialChannels());
@@ -252,7 +255,7 @@ export function SunnahChannelsPanel() {
         }}
       >
         إيقاف جميع الإشعارات غير الضرورية
-      </button>
+      </Button>
     </section>
   );
 }

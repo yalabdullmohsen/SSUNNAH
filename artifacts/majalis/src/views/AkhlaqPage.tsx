@@ -8,6 +8,7 @@ import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SectionTemplatePage } from "@/components/topic/TopicPage";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/akhlaq.css";
 /* ─── بيانات الأخلاق ─── */
 type AkhlaqEntry = {
@@ -1037,16 +1038,17 @@ export default function AkhlaqPage() {
         />
         <div className="akl-cats" role="tablist" aria-label="تصفية الأخلاق">
           {CATEGORIES.map((c) => (
-            <button
+            <Button
               key={c}
               role="tab"
               type="button"
+              variant="ghost"
               className={`akl-cat${category === c ? " akl-cat--active" : ""}`}
               onClick={() => setCategory(c)}
               aria-selected={category === c}
             >
               {c}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -1057,8 +1059,9 @@ export default function AkhlaqPage() {
           const open = expanded === a.id;
           return (
             <article key={a.id} className={`akl-card${open ? " akl-card--open" : ""}`}>
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 className="akl-card__header"
                 onClick={() => toggle(a.id)}
                 aria-expanded={open}
@@ -1071,7 +1074,7 @@ export default function AkhlaqPage() {
                 <span className="akl-card__chevron" aria-hidden="true">
                   {open ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                 </span>
-              </button>
+              </Button>
 
               <p className="akl-card__summary">{a.summary}</p>
 

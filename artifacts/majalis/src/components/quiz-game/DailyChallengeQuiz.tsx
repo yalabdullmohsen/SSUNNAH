@@ -13,6 +13,7 @@ import { recordQuizAttempt } from "@/lib/quiz-performance-service";
 import { hapticNotify } from "@/lib/capacitor-utils";
 import { toArabicDigits } from "@/lib/utils";
 import { EMPTY } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/daily-challenge-quiz.css";
 
 type LevelId = "easy" | "medium" | "hard";
@@ -196,29 +197,31 @@ export function DailyChallengeQuiz() {
 
       <div className="dcq__filters" role="group" aria-label="القسم">
         {CATEGORY_PICK.map((c) => (
-          <button
+          <Button
             key={c.id}
             type="button"
+            variant="ghost"
             className={`dcq__chip${categoryId === c.id ? "is-active" : ""}`}
             disabled={locked}
             onClick={() => setCategoryId(c.id)}
           >
             {c.name}
-          </button>
+          </Button>
         ))}
       </div>
 
       <div className="dcq__filters" role="group" aria-label="المستوى">
         {LEVELS.map((l) => (
-          <button
+          <Button
             key={l.id}
             type="button"
+            variant="ghost"
             className={`dcq__chip${level === l.id ? "is-active" : ""}`}
             disabled={locked}
             onClick={() => setLevel(l.id)}
           >
             {l.label}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -236,14 +239,15 @@ export function DailyChallengeQuiz() {
               }
               return (
                 <li key={c}>
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
                     className={cls}
                     disabled={answered}
                     onClick={() => onPick(c)}
                   >
                     {c}
-                  </button>
+                  </Button>
                 </li>
               );
             })}
