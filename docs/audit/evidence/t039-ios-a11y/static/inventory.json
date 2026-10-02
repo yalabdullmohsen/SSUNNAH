@@ -1,0 +1,86 @@
+{
+  "voiceOverDevice": "NOT_MEASURED",
+  "dynamicTypeDevice": "NOT_MEASURED",
+  "reduceMotionCssFiles": 84,
+  "increaseContrastDevice": "NOT_MEASURED",
+  "rtlPrimary": "YES_PRODUCT_DEFAULT",
+  "hardwareKeyboardIpad": "NOT_MEASURED",
+  "focusNavigationDevice": "NOT_MEASURED",
+  "unlabeledIconButtonSamples": [
+    {
+      "file": "src/admin-v3/AdminV3Shell.tsx",
+      "snippet": "<Button                 type=\"button\"                 variant=\"ghost\"                 className=\"av3-icon-btn\"                 aria-expanded={notifOpen}        "
+    },
+    {
+      "file": "src/admin-v3/AdminV3Shell.tsx",
+      "snippet": "<Button                 type=\"button\"                 variant=\"ghost\"                 className=\"av3-icon-btn\"                 aria-expanded={accountOpen}      "
+    },
+    {
+      "file": "src/features/mushaf-madinah/MushafControls.tsx",
+      "snippet": "<button             type=\"button\"             className=\"mm-controls__icon\"             onClick={() => (onSettings ? onSettings() : onToggleTheme?.())}         "
+    },
+    {
+      "file": "src/features/mushaf-madinah/MushafControls.tsx",
+      "snippet": "<button             type=\"button\"             className=\"mm-controls__icon\"             onClick={() => (onSearch ? onSearch() : openGoto())}             aria-la"
+    },
+    {
+      "file": "src/components/GlobalSearchModal.tsx",
+      "snippet": "<Button       type=\"button\"       variant=\"ghost\"       onClick={() => onSelect(result)}       className=\"gsm-result-btn\"     >       <span className=\"gsm-resul"
+    },
+    {
+      "file": "src/components/ContentActions.tsx",
+      "snippet": "<Button               key={star}               type=\"button\"               variant=\"ghost\"               size=\"icon\"               onClick={() => handleRating(s"
+    },
+    {
+      "file": "src/components/citation/CitationActionBar.tsx",
+      "snippet": "<Button           type=\"button\"           variant=\"ghost\"           size=\"small\"           onClick={() => handleCopy()}           className={btnClass}          "
+    },
+    {
+      "file": "src/components/assistant/AssistantFloatingWidget.tsx",
+      "snippet": "<Button                   ref={closeRef}                   type=\"button\"                   variant=\"ghost\"                   size=\"icon\"                   class"
+    },
+    {
+      "file": "src/components/ui/sidebar.tsx",
+      "snippet": "<Button       data-sidebar=\"trigger\"       data-slot=\"sidebar-trigger\"       variant=\"ghost\"       size=\"icon\"       className={cn(\"h-7 w-7\", className)}       "
+    },
+    {
+      "file": "src/components/quran/HifzAudioLoopPlayer.tsx",
+      "snippet": "<button               type=\"button\"               className=\"hifz-loop__icon-btn\"               onClick={restartFromStart}               title=\"إعادة من بداية ا"
+    },
+    {
+      "file": "src/views/ShimaelPage.tsx",
+      "snippet": "<button type=\"button\" className=\"sh-bab__head\" onClick={onToggle} aria-expanded={open}>         <span className=\"sh-bab__icon\" aria-hidden=\"true\">           <Se"
+    },
+    {
+      "file": "src/views/ArkanIslamPage.tsx",
+      "snippet": "<Button variant=\"ghost\"               key={r.num}               type=\"button\"               className={`arkan-hero__icon-btn${expanded === r.num ? \"is-active\" :"
+    },
+    {
+      "file": "src/views/ContactPage.tsx",
+      "snippet": "<Button                 type=\"button\"                 variant=\"ghost\"                 className=\"contact-btn contact-btn--ghost\"                 onClick={copyEm"
+    },
+    {
+      "file": "src/views/SupportPage.tsx",
+      "snippet": "<Button                   type=\"button\"                   variant=\"ghost\"                   className=\"contact-btn contact-btn--ghost\"                   onClick"
+    },
+    {
+      "file": "src/views/PrivacyCenterPage.tsx",
+      "snippet": "<Button             type=\"button\"             variant=\"secondary\"             className=\"ss-action-btn ss-action-btn--secondary\"             iconStart={<Cookie "
+    },
+    {
+      "file": "src/views/FamilyModePage.tsx",
+      "snippet": "<Button variant=\"ghost\"             type=\"button\"             className=\"fm-role-btn\"             onClick={() => setRole(\"parent\")}           >             <spa"
+    },
+    {
+      "file": "src/views/FamilyModePage.tsx",
+      "snippet": "<Button variant=\"ghost\"             type=\"button\"             className=\"fm-role-btn\"             onClick={() => setRole(\"child\")}           >             <span"
+    },
+    {
+      "file": "src/pages/fiqh/ui/MawarithCalculatorView.tsx",
+      "snippet": "<Button type=\"button\" className=\"mwc-saved__open\" onClick={() => loadSavedCase(c)} variant=\"ghost\">{c.title}</Button>                     <IconButton type=\"butt"
+    }
+  ],
+  "unlabeledSampleCount": 18,
+  "u5Edits": "NONE",
+  "mushafEdits": "NONE"
+}

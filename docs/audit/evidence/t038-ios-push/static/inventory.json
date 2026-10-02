@@ -1,0 +1,13 @@
+{
+  "pushModuleFiles": [
+    "src/lib/push-notifications.ts",
+    "src/lib/pushNotifications.ts"
+  ],
+  "hasRegister": false,
+  "gatesNative": true,
+  "quietHoursModule": true,
+  "deduplicator": true,
+  "deepLinks": true,
+  "apsEnvironment": true,
+  "deviceDeliveryMatrix": "NOT_RUN"
+}

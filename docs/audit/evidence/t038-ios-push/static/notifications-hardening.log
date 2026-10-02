@@ -1,0 +1,9 @@
+  ✓ prayer schedule signature stability
+  ✓ quran daily reminder constants
+  ✓ Remote Push enabled (Capacitor)
+  ✓ channel + test trigger constants
+  ✓ notification copy strips app brand
+  ✓ native + channel identity is سُنّة (iOS-only)
+  ✓ source architecture gates
+
+notifications-hardening: all checks passed

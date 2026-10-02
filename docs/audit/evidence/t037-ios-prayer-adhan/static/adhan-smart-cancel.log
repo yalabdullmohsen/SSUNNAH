@@ -1,0 +1,6 @@
+[ADHAN_DIAG] ADHAN_STOP {
+  source: 'cancelAdhanIosSegmentChain',
+  prayerKey: 'maghrib',
+  cancelledIds: [ 729815, 729816, 729817, 729818 ]
+}
+adhan-smart-cancel.test.ts: ok

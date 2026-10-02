@@ -1,0 +1,23 @@
+{
+  "phase": "T-039",
+  "capturedAt": "2026-10-02T01:33:38Z",
+  "verdict": "FAIL",
+  "exit": "IOS_ACCESSIBILITY_NOT_CERTIFIED",
+  "requiredBoard": {
+    "VoiceOver": "FAIL",
+    "Dynamic Type": "FAIL",
+    "Reduce Motion": "FAIL",
+    "Contrast": "FAIL",
+    "RTL": "FAIL"
+  },
+  "blockingFailures": [
+    "VoiceOver not exercised on iPhone/iPad for scoped screens",
+    "Dynamic Type / Large Text / Increase Contrast / Differentiate Without Color — device UNPROVEN",
+    "Reduce Motion device behavior UNPROVEN (CSS prefers-reduced-motion present in some files only)",
+    "iPad Hardware Keyboard + Focus Navigation UNPROVEN",
+    "Mushaf VoiceOver/selection stability on device UNPROVEN (no mushaf edits)",
+    "Push prereq IOS_PUSH_NOT_CERTIFIED — CURRENT STATE CERTIFIED contradicted"
+  ],
+  "staticContrastGate": "see a11y-contrast-100.log",
+  "buttonAuthority": "inventory unlabeledIconButtonSamples — no U5 fixes"
+}
