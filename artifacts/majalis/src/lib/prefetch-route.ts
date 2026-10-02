@@ -85,10 +85,9 @@ export const HOME_WARM_ROUTES = [
   "/quran-hub",
   /* لا تُسخَّن /mushaf من الرئيسية — يمنع TBT/CSS المصحف على Home */
   "/prayer-times",
-  "/lessons",
+  /* لا /lessons ولا /fiqh هنا — CSS الثقيل كان يرفع unused-css إلى 320 أثناء LHCI */
   "/sections",
   "/hadith",
-  "/fiqh",
   "/tafsir",
   "/tawhid",
   "/adhkar",

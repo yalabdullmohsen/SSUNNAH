@@ -18,20 +18,17 @@
   padding-block: var(--svl-space-l, 1rem) var(--svl-space-xl, 1.5rem);
   padding-inline: var(--svl-space-l, 1rem);
   border-radius: var(--radius-2xl, var(--mj-r-xl, 1.75rem));
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 9%, var(--mj-hairline, transparent));
-  background-color: transparent !important;
-  background-image: none !important;
-  color: var(--mj-ink);
-  box-shadow:
-    0 1px 0 color-mix(in srgb, #fff 45%, transparent),
-    0 18px 42px -26px color-mix(in srgb, var(--mj-brand-deep, #123f2e) 22%, transparent);
+  border: 1px solid transparent;
+  /* يطابق FP critical — لا شفاف يسبب CLS عند استبدال #mj-home-flow-hero-ph */
+  background-color: var(--v2-color-emerald, #0f5c45);
+  background-image: none;
+  color: var(--v2-color-on-emerald, #f7f1e4);
+  box-shadow: none;
 }
 
 .home-page-hero.home-page-hero--compact.page-hero-mj {
   padding-block: 0.85rem 1rem;
-  box-shadow:
-    0 1px 0 color-mix(in srgb, #fff 40%, transparent),
-    0 10px 28px -22px color-mix(in srgb, var(--mj-brand-deep, #123f2e) 18%, transparent);
+  box-shadow: none;
 }
 .home-page-hero.home-page-hero--compact.page-hero-mj::before,
 .home-page-hero.home-page-hero--compact.page-hero-mj::after {
@@ -42,25 +39,7 @@
 }
 
 .home-page-hero.page-hero-mj::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  border-radius: inherit;
-  background-image:
-    radial-gradient(
-      120% 90% at 50% -10%,
-      color-mix(in srgb, var(--mj-brand, #1f6b56) 16%, transparent),
-      transparent 58%
-    ),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--mj-brand-soft, #e2efe8) 72%, var(--mj-bg, #f5f1e8)) 0%,
-      color-mix(in srgb, var(--mj-brand-soft, #e2efe8) 28%, var(--mj-bg, #f5f1e8)) 48%,
-      color-mix(in srgb, var(--mj-bg, #f5f1e8) 92%, transparent) 100%
-    );
-  opacity: 1;
+  content: none;
 }
 
 /* تلاشي ناعم أسفل البطاقة نحو خلفية الصفحة — بلا حافة مربعة */

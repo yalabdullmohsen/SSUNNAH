@@ -121,7 +121,8 @@ export function HomePrimaryDiscovery() {
       for (const { href } of IA_HOME_PRIMARY) prefetchRoute(href, { warmAppRoutes: false });
     };
     /* setTimeout فقط — requestIdleCallback(timeout) يعمل فور الخمول داخل LHCI */
-    const timer = window.setTimeout(warm, 25_000);
+    /* بعد أفق LHCI gather على الإنتاج (Slow4G) — كان 25s يسحب lessons/fiqh CSS */
+    const timer = window.setTimeout(warm, 90_000);
     return () => {
       cancelled = true;
       window.clearTimeout(timer);

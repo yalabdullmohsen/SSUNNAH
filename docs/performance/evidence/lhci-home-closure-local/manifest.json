@@ -1,0 +1,22 @@
+{
+  "patch": "ATF geometry parity + defer unify + prefetch 90s + HeaderTicker 60s",
+  "url": "http://127.0.0.1:24216/",
+  "runs": [
+    {
+      "unusedCss": 0,
+      "forcedReflow": 1,
+      "unusedJs": 430
+    },
+    {
+      "unusedCss": 0,
+      "forcedReflow": 1,
+      "unusedJs": 430
+    },
+    {
+      "unusedCss": 0,
+      "forcedReflow": 1,
+      "unusedJs": 580
+    }
+  ],
+  "exit": "LHCI_HOME_MOBILE_CLOSED"
+}

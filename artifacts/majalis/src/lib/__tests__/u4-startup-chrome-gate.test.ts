@@ -73,8 +73,13 @@ assert.match(
 );
 assert.match(
   html,
-  /#mj-home-flow-hero-ph\{min-height:18rem/,
+  /#mj-home-flow-hero-ph\{[^}]*min-height:18rem/,
   "flow hero matches real hero geometry",
+);
+assert.match(
+  html,
+  /#mj-home-flow-hero-ph\{[^}]*(?:background-color|background):#0f5c45/,
+  "flow hero paints final emerald at FP",
 );
 assert.match(
   html,

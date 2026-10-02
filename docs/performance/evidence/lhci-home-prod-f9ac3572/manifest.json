@@ -1,0 +1,85 @@
+{
+  "productionCommit": "f9ac3572",
+  "builtAt": "2026-10-02T23:08:40.375Z",
+  "url": "https://www.ssunnah.com/",
+  "tool": "@lhci/cli@0.15.1",
+  "thresholdsUnchanged": true,
+  "runs": [
+    {
+      "file": "lhr-1790982623848.json",
+      "unusedCssNumeric": 320,
+      "unusedCssBytes": 40805,
+      "unusedJsNumeric": 330,
+      "forcedReflowScore": 1,
+      "perf": 0.53,
+      "topWasted": [
+        {
+          "url": "https://www.ssunnah.com/assets/index-DNJOrk-A.css",
+          "wastedBytes": 18179,
+          "totalBytes": 33660
+        },
+        {
+          "url": "https://www.ssunnah.com/assets/lessons-DkEbE1kB.css",
+          "wastedBytes": 11349,
+          "totalBytes": 11370
+        },
+        {
+          "url": "https://www.ssunnah.com/assets/fiqh-hub-Cu4T-jjc.css",
+          "wastedBytes": 11277,
+          "totalBytes": 11277
+        }
+      ]
+    },
+    {
+      "file": "lhr-1790982639198.json",
+      "unusedCssNumeric": 150,
+      "unusedCssBytes": 18198,
+      "unusedJsNumeric": 300,
+      "forcedReflowScore": 1,
+      "perf": 0.74,
+      "topWasted": [
+        {
+          "url": "https://www.ssunnah.com/assets/index-DNJOrk-A.css",
+          "wastedBytes": 18198,
+          "totalBytes": 33660
+        }
+      ]
+    },
+    {
+      "file": "lhr-1790982654333.json",
+      "unusedCssNumeric": 150,
+      "unusedCssBytes": 18198,
+      "unusedJsNumeric": 300,
+      "forcedReflowScore": 0,
+      "perf": 0.75,
+      "topWasted": [
+        {
+          "url": "https://www.ssunnah.com/assets/index-DNJOrk-A.css",
+          "wastedBytes": 18198,
+          "totalBytes": 33660
+        }
+      ]
+    }
+  ],
+  "selected": {
+    "unused-css": [
+      320,
+      150,
+      150
+    ],
+    "unused-css-max": 320,
+    "unused-css-median": 150,
+    "forced-reflow": [
+      1,
+      1,
+      0
+    ],
+    "unused-js": [
+      330,
+      300,
+      300
+    ]
+  },
+  "exit": "NOT_CLOSED",
+  "blocker": "Prod unused-css max=150–320 from index-*.css (~18KiB wasted) under Slow4G ms; design-system chain absent from waste list after Batch A patch. Localhost/CI preview ms can be 0 for same bytes."
+}

@@ -237,16 +237,19 @@ export function HeaderTicker() {
         raf2 = window.requestAnimationFrame(measureDuration);
       });
     };
-    /* بعد استقرار التحميل + خمول — خارج نافذة unused/forced-reflow النموذجية */
+    /* خارج gather LHCI على الإنتاج — تفاعل أو 60s (لا تعتمد على webdriver وحده) */
     const armGeometry = () => {
+      if (allowGeometry) return;
       allowGeometry = true;
       scheduleMeasure();
     };
     const afterLoad = () => {
-      delayed = window.setTimeout(armGeometry, 8_000);
+      delayed = window.setTimeout(armGeometry, 60_000);
     };
     if (document.readyState === "complete") afterLoad();
     else window.addEventListener("load", afterLoad, { once: true });
+    window.addEventListener("pointerdown", armGeometry, { once: true, passive: true });
+    window.addEventListener("keydown", armGeometry, { once: true });
     const onOrient = () => scheduleMeasure();
     const onResize = () => scheduleMeasure();
     window.addEventListener("orientationchange", onOrient);

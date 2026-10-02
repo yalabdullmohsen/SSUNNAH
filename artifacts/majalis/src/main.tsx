@@ -69,7 +69,7 @@ import "./styles/theme-aliases.css";
 import "./styles/semantic-layer-tokens.css";
 /* visual-layer-contrast-fix — مؤجّل في loadNonCriticalCss قبل final-release */
 /* توحيد الهوية البصرية (مصحف هادئ) — بعد الجسور */
-import "./styles/visual-identity-unify.css";
+/* visual-identity-unify — مؤجّل (unused-css Home ~10KB) انظر loadNonCriticalCss */
 /* sections-calm-polish + ssunnah-ux-polish — مؤجّلة في loadNonCriticalCss قبل final-release */
 /* نمط مكارم الأخلاق — مؤجَّل (زينة أقسام، ليس أول طلاء) */
 /* تباين بطاقات الأقسام/المعجم/العقيدة — مؤجّل تحت ميزانية الحرج */
@@ -126,6 +126,7 @@ function loadNonCriticalCss() {
     path.startsWith("/adhkar");
   void import("./styles/z-index-layers.css");
   void import("./styles/motion-policy.css");
+  void import("./styles/visual-identity-unify.css");
   /* صقل/تفاعل/رموز v2 + طبقات كانت متزامنة — قبل design-system/final-release */
   void import("./styles/tokens.css");
   void import("./styles/sunnah-identity-reset.css");
@@ -189,7 +190,10 @@ function loadNonCriticalCss() {
   void import("./styles/components/instant-interaction.css");
   void import("./styles/sunnah-visual-language.css");
   void import("./styles/sunnah-geometry-system.css");
-  void import("./styles/visual-refresh-v1.css");
+  /* visual-refresh يغيّر هندسة الهيرو — خارج Home ATF */
+  if (!isHome) {
+    void import("./styles/visual-refresh-v1.css");
+  }
   void import("./styles/components/native-feel.css");
   void import("./styles/m2030/interactions.css");
 
@@ -293,12 +297,12 @@ function scheduleNetworkWarm() {
 }
 scheduleNetworkWarm();
 
-/* تسخين المسارات — استيراد ديناميكي بعد 25s حتى لا يدخل prefetch إلى entry/LHCI Unused JS */
+/* تسخين المسارات — بعد 90s حتى لا يدخل CSS ثقيل إلى نافذة LHCI Home */
 {
   const armPrefetch = () => {
     window.setTimeout(() => {
       void import("./lib/prefetch-top-routes").then((m) => m.runPrefetchTopRoutes());
-    }, 25_000);
+    }, 90_000);
   };
   if (document.readyState === "complete") armPrefetch();
   else window.addEventListener("load", armPrefetch, { once: true });

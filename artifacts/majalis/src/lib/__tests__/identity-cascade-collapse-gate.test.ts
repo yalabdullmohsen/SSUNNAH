@@ -32,8 +32,17 @@ assert.equal(
   "Phase 3: لا import مؤجّل لـ interaction-states (متزامن يكفي)",
 );
 assert.match(main, /ensureDarkCoreLayers|ensureDarkLayersForBoot/);
-/* WAVE7: sync only — deferred reload-to-win removed after CASCADE SEAL absorb */
-assert.match(main, /import\s+["']\.\/styles\/visual-identity-unify\.css["']/);
+/* Final closure: unify مؤجّل مرة واحدة لخفض unused-css Home — ليس reload-to-win بعد final-release */
+assert.doesNotMatch(
+  main,
+  /import\s+["']\.\/styles\/visual-identity-unify\.css["']/,
+  "unify ليس sync في entry",
+);
+assert.match(
+  main,
+  /import\(\s*["']\.\/styles\/visual-identity-unify\.css["']\s*\)/,
+  "unify مؤجّل مرة واحدة في loadNonCriticalCss",
+);
 assert.doesNotMatch(
   main,
   /import\s+["']\.\/styles\/dark-mode-recovery\.css["']/,
@@ -41,8 +50,8 @@ assert.doesNotMatch(
 );
 assert.doesNotMatch(
   main,
-  /import\(\s*["']\.\/styles\/visual-identity-unify\.css["']\s*\)/,
-  "WAVE7: no deferred unify reimport",
+  /final-release\.css["'][\s\S]{0,400}visual-identity-unify\.css/,
+  "WAVE7: no unify reload-to-win after final-release",
 );
 assert.doesNotMatch(
   main,

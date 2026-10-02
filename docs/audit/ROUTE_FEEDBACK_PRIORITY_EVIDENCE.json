@@ -2,7 +2,7 @@
   "version": 1,
   "phase": "ROUTE_FEEDBACK_PRIORITY",
   "policy": "COMPLETE requires routeClass + testRef + testedCommit + testedDate + artifact + expected + actual. No Feedback V3.",
-  "testedCommit": "endgame-u4",
+  "testedCommit": "final-closure-a-i",
   "testedDate": "2026-10-02",
   "gate": "artifacts/majalis/src/lib/__tests__/closure-route-feedback-priority-gate.test.ts",
   "feedbackAuthority": "docs/design/FORM_FEEDBACK_AUTHORITY.md",
@@ -67,6 +67,10 @@
           "artifact": "artifacts/majalis/src/components/HomeDashboard.tsx + StaleDataIndicator",
           "expected": "Stale strip with refresh when follow/last-reading load fails",
           "actual": "StaleDataIndicator mounted on loadError with onRefresh recovery"
+        },
+        "permission": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public home — no auth gate"
         }
       }
     },
@@ -112,6 +116,15 @@
         "rateLimited": {
           "status": "NOT_APPLICABLE",
           "reason": "Client index search — no 429 surface"
+        },
+        "stale": {
+          "status": "NOT_APPLICABLE",
+          "reason": "No long-lived stale cache surface on this shell; OfflineBanner covers network loss",
+          "testRef": "closure-route-feedback-priority-gate.test.ts"
+        },
+        "permission": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public search"
         }
       }
     },
@@ -151,6 +164,15 @@
         "rateLimited": {
           "status": "NOT_APPLICABLE",
           "reason": "No API rate surface"
+        },
+        "stale": {
+          "status": "NOT_APPLICABLE",
+          "reason": "No long-lived stale cache surface on this shell; OfflineBanner covers network loss",
+          "testRef": "closure-route-feedback-priority-gate.test.ts"
+        },
+        "permission": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public"
         }
       }
     },
@@ -196,6 +218,15 @@
         "rateLimited": {
           "status": "NOT_APPLICABLE",
           "reason": "Local page assets"
+        },
+        "stale": {
+          "status": "NOT_APPLICABLE",
+          "reason": "No long-lived stale cache surface on this shell; OfflineBanner covers network loss",
+          "testRef": "closure-route-feedback-priority-gate.test.ts"
+        },
+        "permission": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public reader"
         }
       }
     },
@@ -286,6 +317,15 @@
         "rateLimited": {
           "status": "NOT_APPLICABLE",
           "reason": "Local calc"
+        },
+        "stale": {
+          "status": "NOT_APPLICABLE",
+          "reason": "No long-lived stale cache surface on this shell; OfflineBanner covers network loss",
+          "testRef": "closure-route-feedback-priority-gate.test.ts"
+        },
+        "permission": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public prayer UI"
         }
       }
     },
@@ -334,6 +374,15 @@
         "rateLimited": {
           "status": "NOT_APPLICABLE",
           "reason": "Static/catalog fetch — no 429 UI"
+        },
+        "stale": {
+          "status": "NOT_APPLICABLE",
+          "reason": "No long-lived stale cache surface on this shell; OfflineBanner covers network loss",
+          "testRef": "closure-route-feedback-priority-gate.test.ts"
+        },
+        "permission": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public lessons"
         }
       }
     },
@@ -517,6 +566,15 @@
         "rateLimited": {
           "status": "NOT_APPLICABLE",
           "reason": "No 429 surface"
+        },
+        "stale": {
+          "status": "NOT_APPLICABLE",
+          "reason": "No long-lived stale cache surface on this shell; OfflineBanner covers network loss",
+          "testRef": "closure-route-feedback-priority-gate.test.ts"
+        },
+        "permission": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Public settings shell"
         }
       }
     },
