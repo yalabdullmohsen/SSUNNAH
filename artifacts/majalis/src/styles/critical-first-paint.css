@@ -239,20 +239,22 @@ html[data-ab="1"] .hus-field {
 .bottom-nav__tab {
   flex: 1 1 0;
   min-height: 48px;
-  height: var(--bottom-nav-height);
+  height: calc(var(--bottom-nav-height) - 0.2rem);
+  max-height: var(--bottom-nav-height);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.mj-home-lcp-ph__daily-band,.daily-wird-card,[data-testid="daily-wird-card"]{min-height:28rem;border-radius:1rem}
-.home-sacred-day-slot,.home-sacred-day--ph{min-height:6.25rem;box-sizing:border-box}
-.mj-home-lcp-ph__start-here{min-height:20rem}
-.mj-home-primary-discovery-ph{min-height:22rem;box-sizing:border-box}
-.home-live-now-ph{min-height:3.25rem;box-sizing:border-box}
+.mj-home-lcp-ph__daily-band,.daily-wird-card,[data-testid="daily-wird-card"]{min-height:28rem}
+.home-sacred-day-slot,.home-sacred-day--ph{min-height:6.25rem}
+.mj-home-primary-discovery-ph{min-height:22rem}
+.home-live-now-ph{min-height:3.25rem}
 .mj-home-below-fold-ph{min-height:8rem}
-.mj-home-lcp-ph__search .hus-field,.hus-field{min-height:52px;box-sizing:border-box}
+.mj-home-lcp-ph__start-here{min-height:20rem}
+.hus{width:min(100%,40rem);margin:.55rem auto .25rem}
+.mj-home-lcp-ph__search .hus-field,.hus-field{min-height:52px;padding:.35rem .85rem;box-sizing:border-box}
 @media (min-width:880px){#main-content.app-main{padding-block-end:2rem}.bottom-nav,.bottom-nav--v2{display:none}}
 @media (min-width:720px){.mj-home-lcp-ph__daily-band{min-height:15rem}}
 .hsh-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;min-height:14rem;list-style:none;margin:.75rem 0 0;padding:0}
@@ -260,5 +262,5 @@ html[data-ab="1"] .hus-field {
 .home-start-here,.home-start-here--slim,.home-start-here--compact,.home-start-here-band{min-height:20rem}
 @media (min-width:720px){.hsh-steps{min-height:12rem}.home-start-here,.home-start-here--slim,.home-start-here--compact,.home-start-here-band{min-height:16rem}}
 html:not(.app-hydrated) .app-shell,html:not(.app-hydrated) .app-top-chrome,html:not(.app-hydrated) .bottom-nav,html:not(.app-hydrated) .bottom-nav--v2,html:not(.app-hydrated) .app-main,html:not(.app-hydrated) #main-content{transition:none!important;animation:none!important}
-#root,.app-shell{min-height:100svh;min-height:100dvh;min-height:var(--app-vvh,100dvh)}
+#root,.app-shell{min-height:var(--app-vvh,100dvh)}
 

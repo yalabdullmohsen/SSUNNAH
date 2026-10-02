@@ -1,0 +1,400 @@
+{
+  "measuredAt": "2026-10-02T21:58:11.269Z",
+  "production": {
+    "commit": "9d829705",
+    "shortCommit": "9d829705",
+    "commitSha": "9d829705",
+    "builtAt": "2026-10-02T21:40:15.293Z",
+    "buildTime": "2026-10-02T21:40:15.293Z",
+    "ref": "main",
+    "branch": "main"
+  },
+  "base": "https://www.ssunnah.com",
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "deviceScaleFactor": 2,
+    "isMobile": true,
+    "hasTouch": true
+  },
+  "results": [
+    {
+      "route": "home",
+      "path": "/",
+      "fp": 1752,
+      "fcp": 1752,
+      "elapsedMs": 50318,
+      "clsTotal": 0.15337689069385077,
+      "clsAfterFcp": 0.15337689069385077,
+      "clsEntryCount": 13,
+      "topCls": [
+        {
+          "value": 0.0630502398433302,
+          "startTime": 2732.10000000149,
+          "sources": [
+            "section.m2030-band.home-start-here-band",
+            "div.page-hero-mj__content",
+            "::after"
+          ]
+        },
+        {
+          "value": 0.021742636199770897,
+          "startTime": 2663.3000000044703,
+          "sources": [
+            "div.app-shell"
+          ]
+        },
+        {
+          "value": 0.017138843726296836,
+          "startTime": 3120.60000000149,
+          "sources": [
+            "section.home-start-here.home-start-here--compact",
+            "a.bottom-nav__tab",
+            "a.bottom-nav__tab",
+            "a.bottom-nav__tab",
+            "a.bottom-nav__tab"
+          ]
+        },
+        {
+          "value": 0.015720565856562074,
+          "startTime": 2764.8000000044703,
+          "sources": [
+            "section.m2030-band.home-start-here-band",
+            "header.page-hero-mj.svl-page-header"
+          ]
+        },
+        {
+          "value": 0.012314413422879091,
+          "startTime": 2683.39999999851,
+          "sources": [
+            "main#main-content.app-main"
+          ]
+        }
+      ],
+      "themeChangeCount": 0,
+      "visualChangeCount": 4,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 3,
+          "final": 115
+        },
+        {
+          "key": "hero.rect",
+          "early": {
+            "x": 16,
+            "y": 169,
+            "w": 358,
+            "h": 288
+          },
+          "final": {
+            "x": 32,
+            "y": 186.171875,
+            "w": 326,
+            "h": 285.328125
+          },
+          "delta": {
+            "dw": -32,
+            "dh": -2.671875,
+            "dy": 17.171875
+          }
+        },
+        {
+          "key": "hero.backgroundColor",
+          "early": "rgba(0, 0, 0, 0)",
+          "final": "rgb(15, 92, 63)"
+        },
+        {
+          "key": "hero.color",
+          "early": "rgb(21, 56, 45)",
+          "final": "rgb(247, 241, 228)"
+        }
+      ],
+      "sheets": [
+        3,
+        115
+      ],
+      "networkCss": 72,
+      "networkFonts": 4,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "fontDelta": 0,
+      "backgroundDelta": 0,
+      "headerJump": false,
+      "heroJump": false,
+      "bottomJump": false,
+      "backJump": false,
+      "headerDelta": null,
+      "heroDelta": {
+        "dw": -32,
+        "dh": -2.671875,
+        "dy": 17.171875
+      },
+      "bottomDelta": null,
+      "backDelta": null
+    },
+    {
+      "route": "search",
+      "path": "/search",
+      "fp": 864,
+      "fcp": 864,
+      "elapsedMs": 6161,
+      "clsTotal": 0.00721332272288387,
+      "clsAfterFcp": 0.00721332272288387,
+      "clsEntryCount": 2,
+      "topCls": [
+        {
+          "value": 0.006619192266441247,
+          "startTime": 1392.3999999985099,
+          "sources": [
+            "div.lrf-skel.lrf-skel--page",
+            "a.bottom-nav__tab",
+            "a.bottom-nav__tab.is-active",
+            "a.bottom-nav__tab",
+            "a.bottom-nav__tab"
+          ]
+        },
+        {
+          "value": 0.0005941304564426237,
+          "startTime": 1525.8999999985099,
+          "sources": [
+            "div.navbar-v3__end",
+            "button.relative.inline-flex"
+          ]
+        }
+      ],
+      "themeChangeCount": 0,
+      "visualChangeCount": 1,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 6,
+          "final": 81
+        }
+      ],
+      "sheets": [
+        6,
+        81
+      ],
+      "networkCss": 80,
+      "networkFonts": 4,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "fontDelta": 0,
+      "backgroundDelta": 0,
+      "headerJump": false,
+      "heroJump": false,
+      "bottomJump": false,
+      "backJump": false,
+      "headerDelta": null,
+      "heroDelta": null,
+      "bottomDelta": null,
+      "backDelta": null
+    },
+    {
+      "route": "quran-hub",
+      "path": "/quran-hub",
+      "fp": 756,
+      "fcp": 756,
+      "elapsedMs": 5702,
+      "clsTotal": 0.0017139842606686906,
+      "clsAfterFcp": 0.0017139842606686906,
+      "clsEntryCount": 1,
+      "topCls": [
+        {
+          "value": 0.0017139842606686906,
+          "startTime": 1274.1000000014901,
+          "sources": [
+            "div.lrf-skel.lrf-skel--page"
+          ]
+        }
+      ],
+      "themeChangeCount": 0,
+      "visualChangeCount": 1,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 6,
+          "final": 85
+        }
+      ],
+      "sheets": [
+        6,
+        85
+      ],
+      "networkCss": 84,
+      "networkFonts": 4,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "fontDelta": 0,
+      "backgroundDelta": 0,
+      "headerJump": false,
+      "heroJump": false,
+      "bottomJump": false,
+      "backJump": false,
+      "headerDelta": null,
+      "heroDelta": null,
+      "bottomDelta": null,
+      "backDelta": null
+    },
+    {
+      "route": "mushaf",
+      "path": "/mushaf",
+      "fp": 1328,
+      "fcp": 1328,
+      "elapsedMs": 7719,
+      "clsTotal": 0,
+      "clsAfterFcp": 0,
+      "clsEntryCount": 0,
+      "topCls": [],
+      "themeChangeCount": 0,
+      "visualChangeCount": 1,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 6,
+          "final": 63
+        }
+      ],
+      "sheets": [
+        6,
+        63
+      ],
+      "networkCss": 66,
+      "networkFonts": 8,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(21, 56, 45)",
+        "bg": "rgb(248, 246, 241)"
+      },
+      "fontDelta": 0,
+      "backgroundDelta": 0,
+      "headerJump": false,
+      "heroJump": false,
+      "bottomJump": false,
+      "backJump": false,
+      "headerDelta": null,
+      "heroDelta": null,
+      "bottomDelta": null,
+      "backDelta": null
+    },
+    {
+      "route": "prayer-times",
+      "path": "/prayer-times",
+      "fp": 680,
+      "fcp": 680,
+      "elapsedMs": 5646,
+      "clsTotal": 0.0016704047290561237,
+      "clsAfterFcp": 0.0016704047290561237,
+      "clsEntryCount": 2,
+      "topCls": [
+        {
+          "value": 0.0016444574610857796,
+          "startTime": 1275.5,
+          "sources": [
+            "a.bottom-nav__tab",
+            "a.bottom-nav__tab",
+            "a.bottom-nav__tab",
+            "a.bottom-nav__tab.is-active",
+            "a.bottom-nav__tab"
+          ]
+        },
+        {
+          "value": 0.00002594726797034416,
+          "startTime": 1357.8999999985099,
+          "sources": [
+            "svg",
+            "svg",
+            "svg",
+            "svg",
+            "svg"
+          ]
+        }
+      ],
+      "themeChangeCount": 0,
+      "visualChangeCount": 3,
+      "visualChanges": [
+        {
+          "key": "sheetCount",
+          "early": 6,
+          "final": 65
+        },
+        {
+          "key": "bottom.color",
+          "early": "rgb(248, 250, 252)",
+          "final": "rgb(21, 56, 45)"
+        },
+        {
+          "key": "bodyBg",
+          "early": "rgba(0, 0, 0, 0)",
+          "final": "rgb(42, 64, 48)"
+        }
+      ],
+      "sheets": [
+        6,
+        65
+      ],
+      "networkCss": 64,
+      "networkFonts": 4,
+      "earlyBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(248, 250, 252)",
+        "bg": "rgba(0, 0, 0, 0)"
+      },
+      "finalBody": {
+        "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+        "size": "17px",
+        "color": "rgb(248, 250, 252)",
+        "bg": "rgb(42, 64, 48)"
+      },
+      "fontDelta": 0,
+      "backgroundDelta": 1,
+      "headerJump": false,
+      "heroJump": false,
+      "bottomJump": false,
+      "backJump": false,
+      "headerDelta": null,
+      "heroDelta": null,
+      "bottomDelta": null,
+      "backDelta": null
+    }
+  ]
+}
