@@ -14,6 +14,13 @@ const BAD = [
   /sk_live_[0-9a-zA-Z]{20,}/,
   /sk_test_[0-9a-zA-Z]{20,}/,
   /eyJhbGciOiJ(?:a|A)[A-Za-z0-9_-]{30,}\.[A-Za-z0-9_-]{30,}\.[A-Za-z0-9_-]{20,}/,
+  // App Store review / demo password literals must never ship in client bundles
+  // (assembled so this scanner file does not contain the contiguous secret)
+  new RegExp(["Sunnah", "Review", "-2026!"].join("")),
+  /APP_STORE_REVIEW_PASSWORD\s*[:=]\s*['"][^'"]+['"]/,
+  /matchesAppStoreReviewCredentials/,
+  /persistAppStoreReviewSession/,
+  /buildAppStoreReviewUser/,
 ];
 
 function walk(dir, out = []) {
@@ -34,13 +41,19 @@ if (!existsSync(dist)) {
 const hits = [];
 for (const f of walk(dist)) {
   const t = readFileSync(f, "utf8");
-  for (const re of BAD) {
-    if (re.test(t)) hits.push(`${f}: ${re}`);
-  }
+  BAD.forEach((re, patternIndex) => {
+    if (re.test(t)) hits.push({ path: f, patternIndex });
+  });
 }
 if (hits.length) {
   console.error("verify-no-secret-leak: FAIL");
-  console.error(hits.slice(0, 20).join("\n"));
+  // Do not echo secret literals — file path + pattern index only
+  console.error(
+    hits
+      .slice(0, 20)
+      .map((h, i) => `${i + 1}. ${h.path} [pattern#${h.patternIndex}]`)
+      .join("\n"),
+  );
   process.exit(1);
 }
 console.log("verify-no-secret-leak: ok");

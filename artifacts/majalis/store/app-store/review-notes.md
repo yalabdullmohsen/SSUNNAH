@@ -1,33 +1,32 @@
 # App Review Notes — سُنّة (paste into App Store Connect)
 
-**Version:** 1.0  
-**Build:** 54 (remediation after rejection of Build 53)  
-**Bundle ID:** com.yousef.majlisilm  
+**Bundle ID:** `com.yousef.majlisilm`  
+**Version / Build:** use the values of the binary under review (CURRENT App Store may differ from TestFlight).
 
 ---
 
-## Guideline 2.1 — Sign-in / Demonstration Mode
+## Guideline 2.1 — Sign-in
 
-### Demo account (works offline of email confirmation)
+### Demo account (OWNER-managed — not embedded in the app)
 
 | Field | Value |
 |-------|-------|
 | Email | `apple.review@ssunnah.com` |
-| Password | `SunnahReview-2026!` |
+| Password | **Only in App Store Connect Review Notes** (rotated by owner; never committed to git) |
 
 **How to sign in:**
 
 1. Open **تسجيل الدخول** (`/login`).
-2. Enter the email and password above → Sign in.
-3. You land on Home as a signed-in review user (local demonstration session; does not depend on email confirmation). Logged-in surfaces (settings account, vault/progress affordances, etc.) become available. **No admin privileges.**
+2. Enter the email and the password from ASC Review Notes → Sign in.
+3. Account must be **email-confirmed** in Supabase. There is **no** client-side review bypass and **no** password in the JavaScript bundle.
 
 ### Guest access (no account required)
 
 Most of the product works without login: Quran Mushaf, adhkar, prayer times, Qibla, hadith, lessons browsing, fiqh, seerah. Tap **المتابعة كزائر** on the login screen or use the app from Home.
 
-### Why the previous demo failed
+### OWNER_ACTION after security hardening
 
-The prior note pointed at `info@ssunnah.com` with a password “provided separately,” and production Supabase may require email confirmation. Build 54 adds a **local Demonstration Mode** that does not depend on email confirmation or network auth success.
+Rotate the App Store review account password in Supabase Auth and update ASC Review Notes. Do not put the new password in the repository.
 
 ---
 
@@ -35,40 +34,13 @@ The prior note pointed at `info@ssunnah.com` with a password “provided separat
 
 The app declares `UIBackgroundModes = audio` because **Quran tilawa continues while backgrounded or locked**.
 
-### Exact verification path (please follow)
+### Exact verification path
 
 1. Launch **سُنّة**.
-2. Open **المصحف** (Quran) — main Quran entry / route `/mushaf`.
-3. Tap an ayah → start **تلاوة** (play) from the ayah actions or audio dock. Confirm sound plays in foreground.
-4. Press **Home** (or switch apps) — **audio must keep playing ≥ 60 seconds**.
-5. Open **Control Center** — **Now Playing** shows surah/ayah and reciter; pause/play work.
-6. **Lock** the device — audio continues; Lock Screen transport controls work.
-7. Unlock and return — position and ayah remain consistent.
+2. Open **المصحف** — route `/mushaf`.
+3. Start **تلاوة** — confirm sound in foreground.
+4. Press **Home** — audio continues ≥ 60 seconds.
+5. **Control Center** — Now Playing transport works.
+6. **Lock** — audio + Lock Screen controls continue.
 
-There is **no** silent keep-alive. Background mode is only for real Quran/lesson playback via `AVAudioSession` `.playback` + Now Playing (`MajlisPlaybackAudioPlugin`).
-
-Prayer reminders use notifications (`remote-notification`) and are separate from continuous background audio.
-
-Device runbook (internal): `artifacts/majalis/docs/AUDIO_BACKGROUND_DEVICE_RUNBOOK.md`.
-
----
-
-## App Overview (short)
-
-Arabic RTL Islamic education: full Quran with audio, adhkar, prayer times, Qibla, hadith, fiqh, lessons. Optional account. No ads / no tracking SDKs.
-
----
-
-## Permissions
-
-- **Location When In Use:** Qibla only; not stored; manual city fallback if denied.
-- **Motion:** Qibla compass heading.
-- **Notifications:** Opt-in prayer/dhikr reminders.
-
----
-
-## Test tips
-
-- Arabic RTL UI.
-- Prayer times compute locally (Adhan library).
-- Network needed for streamed lessons / remote content; Mushaf tilawa needs reachable audio URLs (or cached ayahs).
+No silent keep-alive. Background mode is only for real Quran/lesson playback via `AVAudioSession` `.playback` + Now Playing (`MajlisPlaybackAudioPlugin`).

@@ -11,6 +11,7 @@ import {
   setRuntimeSupabaseConfig,
 } from "./supabase-env";
 import { RequestManager, REQUEST_TIMEOUT_MS } from "./request-manager";
+import { createSupabaseAuthStorage } from "./supabase-auth-storage";
 
 export {
   getEffectiveSupabaseAnonKey,
@@ -63,7 +64,11 @@ function supabaseGlobalFetch(input: RequestInfo | URL, init?: RequestInit): Prom
 
 function createConfiguredClient(url: string, key: string): SupabaseClient {
   return createClient(url, key, {
-    auth: { persistSession: true, autoRefreshToken: true },
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      storage: createSupabaseAuthStorage(),
+    },
     global: { fetch: supabaseGlobalFetch },
   });
 }

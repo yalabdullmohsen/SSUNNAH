@@ -1,65 +1,72 @@
 /**
- * بوابة Apple Review Remediation — 2.1 demo session + 2.5.4 notes + build bump.
+ * بوابة Apple Review — يمنع كلمات مرور المراجعة في العميل ويفرض مسار تسجيل دخول طبيعي.
  * Run: node --import tsx src/lib/__tests__/apple-review-remediation-gate.test.ts
  */
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
+import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import {
-  APP_STORE_REVIEW_EMAIL,
-  APP_STORE_REVIEW_PASSWORD,
-  matchesAppStoreReviewCredentials,
-  buildAppStoreReviewUser,
-} from "../app-store-review-auth";
 
 const majalisRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(majalisRoot, rel), "utf8");
 
-console.log("=== Review credentials + local user ===");
-assert.equal(APP_STORE_REVIEW_EMAIL, "apple.review@ssunnah.com");
-assert.ok(APP_STORE_REVIEW_PASSWORD.length >= 12);
-assert.equal(matchesAppStoreReviewCredentials(APP_STORE_REVIEW_EMAIL, APP_STORE_REVIEW_PASSWORD), true);
-assert.equal(matchesAppStoreReviewCredentials("x@y.com", APP_STORE_REVIEW_PASSWORD), false);
-const u = buildAppStoreReviewUser();
-assert.equal(u.profile.role, "user");
-assert.equal(u.is_owner, false);
-assert.equal(u.profile.is_admin, false);
+/** Assembled so the contiguous password literal never appears in source. */
+const REVIEW_PW_LITERAL = ["Sunnah", "Review", "-2026!"].join("");
 
-console.log("=== AuthProvider credential path (no review-mode UI) ===");
-const auth = read("src/components/AuthProvider.tsx");
+/** Patterns that must NEVER appear in client source / store paste as real secrets */
+const FORBIDDEN_CLIENT = [
+  /APP_STORE_REVIEW_PASSWORD\s*=/,
+  new RegExp(REVIEW_PW_LITERAL.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")),
+  /matchesAppStoreReviewCredentials/,
+  /persistAppStoreReviewSession/,
+  /buildAppStoreReviewUser/,
+  /hasAppStoreReviewSession/,
+];
+
+console.log("=== No review password / bypass in client source ===");
+const authMod = read("src/lib/app-store-review-auth.ts");
+const authProvider = read("src/components/AuthProvider.tsx");
 const login = read("src/pages/account/ui/LoginView.tsx");
-assert.match(auth, /matchesAppStoreReviewCredentials/);
-assert.match(auth, /persistAppStoreReviewSession/);
-assert.match(auth, /clearAppStoreReviewSession/);
-assert.match(auth, /hasAppStoreReviewSession/);
-/* واجهة «وضع مراجعة App Store» أُزيلت — الدخول عبر البريد/كلمة المرور فقط */
-assert.doesNotMatch(login, /app-store-review-login/);
+for (const re of FORBIDDEN_CLIENT) {
+  assert.doesNotMatch(authMod, re, `app-store-review-auth must not match ${re}`);
+  assert.doesNotMatch(authProvider, re, `AuthProvider must not match ${re}`);
+  assert.doesNotMatch(login, re, `LoginView must not match ${re}`);
+}
+assert.match(authMod, /clearLegacyAppStoreReviewSession/);
+assert.match(authProvider, /clearLegacyAppStoreReviewSession/);
+assert.match(authProvider, /authApi\.signIn/);
 assert.doesNotMatch(login, /وضع مراجعة App Store/);
-assert.doesNotMatch(login, /enterAppStoreReviewMode/);
-assert.doesNotMatch(login, /APP_STORE_REVIEW_EMAIL|app-store-review-auth/);
 assert.match(login, /المتابعة كزائر/);
 assert.match(login, /نسيت كلمة المرور/);
 
-console.log("=== Review notes + ASC paste ===");
+console.log("=== Review notes: no committed password literal ===");
 const notes = read("store/app-store/review-notes.md");
 const paste = read("store/app-store/ASC_REVIEW_NOTES_PASTE.txt");
 assert.match(notes, /apple\.review@ssunnah\.com/);
-assert.match(notes, /SunnahReview-2026!/);
-assert.doesNotMatch(notes, /وضع مراجعة App Store/);
-assert.doesNotMatch(paste, /وضع مراجعة App Store/);
+assert.match(paste, /apple\.review@ssunnah\.com/);
+assert.ok(!notes.includes(REVIEW_PW_LITERAL), "review-notes must not contain review password");
+assert.ok(!paste.includes(REVIEW_PW_LITERAL), "ASC paste must not contain review password");
+assert.match(notes, /OWNER|App Store Connect Review Notes/i);
 assert.match(notes, /Guideline 2\.5\.4|Background Audio/i);
 assert.match(notes, /\/mushaf/);
-assert.match(notes, /Now Playing|Control Center/i);
-assert.match(paste, /apple\.review@ssunnah\.com/);
-assert.match(paste, /SunnahReview-2026!/);
-assert.match(paste, /Build:\s*1\.0\s*\(54\)/);
 
-console.log("=== iOS build number 54 ===");
-const pbx = read("ios/App/App.xcodeproj/project.pbxproj");
-assert.match(pbx, /CURRENT_PROJECT_VERSION = 54;/);
-assert.doesNotMatch(pbx, /CURRENT_PROJECT_VERSION = 52;/);
-assert.doesNotMatch(pbx, /CURRENT_PROJECT_VERSION = 53;/);
+console.log("=== Scan src for committed review password literal ===");
+function walk(dir: string, out: string[] = []): string[] {
+  for (const name of readdirSync(dir)) {
+    if (name === "node_modules" || name === "dist" || name.startsWith(".")) continue;
+    const p = join(dir, name);
+    const st = statSync(p);
+    if (st.isDirectory()) walk(p, out);
+    else if (/\.(ts|tsx|js|jsx|mjs|md|txt)$/.test(name)) out.push(p);
+  }
+  return out;
+}
+const hits: string[] = [];
+for (const f of walk(resolve(majalisRoot, "src"))) {
+  const t = readFileSync(f, "utf8");
+  if (t.includes(REVIEW_PW_LITERAL)) hits.push(f);
+}
+assert.equal(hits.length, 0, `review password found in: ${hits.join(", ")}`);
 
 console.log("=== 2.5.4 audio mode still declared ===");
 const plist = read("ios/App/App/Info.plist");

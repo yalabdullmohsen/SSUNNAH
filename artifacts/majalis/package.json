@@ -205,7 +205,7 @@
     "test:ds-coverage": "node scripts/ssunnah-ds-coverage.mjs",
     "test:ds-governance": "node --import tsx src/lib/__tests__/ssunnah-ds-governance-gate.test.ts",
     "test:chrome-no-white-strip": "node --import tsx src/lib/__tests__/chrome-no-white-strip.test.ts && node scripts/verify-no-white-chrome.mjs",
-    "test:ios-gates": "pnpm run test:ios-only-product-scope && node scripts/test-ios-capacitor-gates.mjs && pnpm run test:ios-background-audio-2-5-4 && pnpm run test:apple-review-remediation",
+    "test:ios-gates": "pnpm run test:ios-only-product-scope && node scripts/test-ios-capacitor-gates.mjs && pnpm run test:ios-background-audio-2-5-4 && pnpm run test:apple-review-remediation && pnpm run test:ios-build-version-traceability && pnpm run test:supabase-auth-storage",
     "test:ios-notifications": "node scripts/test-ios-notifications.mjs",
     "diagnose:prayer-times": "node --import tsx scripts/diagnose-prayer-times.mjs",
     "test:prayer-notif-timing": "node --import tsx src/lib/__tests__/prayer-notif-timing.test.ts",
@@ -776,7 +776,9 @@
     "test:admin-final-4-entity-migration": "node --import tsx src/lib/__tests__/admin-final-4-entity-migration-gate.test.ts",
     "test:admin-final-5-dialogs-forms": "node --import tsx src/lib/__tests__/admin-final-5-dialogs-forms-gate.test.ts",
     "test:admin-final-6-automation": "node --import tsx src/lib/__tests__/admin-final-6-automation-gate.test.ts",
-    "test:ios-release-candidate": "node --import tsx src/lib/__tests__/ios-release-candidate-gate.test.ts"
+    "test:ios-release-candidate": "node --import tsx src/lib/__tests__/ios-release-candidate-gate.test.ts",
+    "test:ios-build-version-traceability": "node --import tsx src/lib/__tests__/ios-build-version-traceability-gate.test.ts",
+    "test:supabase-auth-storage": "node --import tsx src/lib/__tests__/supabase-auth-storage-gate.test.ts"
   },
   "devDependencies": {
     "@capacitor/assets": "^3.0.5",
