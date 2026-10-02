@@ -3,7 +3,7 @@
   "policy": "decreasing-ceilings",
   "note": "T-043 U6 Card Authority: card component CSS radius → tokens (1258→1243); product card façades via AppCard/InteractiveCard; soft-card TSX consumers remain 0.",
   "floors": {
-    "officialButtonImportFiles": 253,
+    "officialButtonImportFiles": 252,
     "sfTokenRefs": 757,
     "ssTokenRefs": 724
   },

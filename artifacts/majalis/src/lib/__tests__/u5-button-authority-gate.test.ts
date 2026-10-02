@@ -49,8 +49,8 @@ assert.equal(budget.policy, "decreasing-ceilings");
 assert.ok(budget.ceilings.rawButtonFiles <= 112);
 assert.ok(budget.ceilings.rawButtonElements <= 485);
 assert.ok(budget.ceilings.divSpanOnClick <= 46);
-// T-043: SectionCard/HeroActionCard → InteractiveCard (Link); floor may be 253.
-assert.ok(budget.floors.officialButtonImportFiles >= 253);
+// T-044: AppBack migrations may lower Button import floor to 252.
+assert.ok(budget.floors.officialButtonImportFiles >= 252);
 
 const check = spawnSync(process.execPath, ["scripts/interaction-system-inventory.mjs", "--check"], {
   cwd: majalisRoot,

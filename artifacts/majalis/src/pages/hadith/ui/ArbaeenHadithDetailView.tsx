@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useParams, Link } from "wouter";
 import { ChevronRight, ChevronLeft, BookOpen, Lightbulb } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
+import { AppBackButton } from "@/components/common/AppBackButton";
 import { ARBAEEN_NAWAWI } from "@/lib/arbaeen-nawawi-seed";
 import { generateAllQuestionsForHadith } from "@/lib/arbaeen-quiz";
 import { isMcqAnswerCorrect } from "@/lib/answer-grading";
@@ -113,9 +114,13 @@ export default function ArbaeenHadithDetailPage() {
   return (
     <DetailScreen compose="mark">
     <KnowledgeLayout kind="hadith" className="ahd-page" data-kx="1">
-      <Link href="/arbaeen-nawawi" className="ahd-back">
-        <ChevronRight size={16} aria-hidden="true" /> فهرس الأربعين النووية
-      </Link>
+      <AppBackButton
+        variant="inline"
+        fallbackHref="/arbaeen-nawawi"
+        className="ahd-back"
+        label="فهرس الأربعين النووية"
+        aria-label="العودة إلى فهرس الأربعين النووية"
+      />
 
       <header className="ahd-header">
         <span className="ahd-header__num">الحديث {hadith.id} من 42</span>

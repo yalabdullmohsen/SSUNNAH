@@ -763,6 +763,7 @@
     "test:mushaf-final-6-a11y": "node --import tsx src/lib/__tests__/mushaf-final-6-a11y-offline-memory-gate.test.ts",
     "test:buttons-residual-absorb": "node --import tsx src/lib/__tests__/buttons-residual-absorb-p6-gate.test.ts",
     "test:back-authority-unify": "node --import tsx src/lib/__tests__/back-authority-unify-gate.test.ts",
+    "test:u7-back-authority": "node --import tsx src/lib/__tests__/u7-back-authority-gate.test.ts",
     "test:route-feedback-priority": "node --import tsx src/lib/__tests__/closure-route-feedback-priority-gate.test.ts",
     "test:route-feedback-public": "node --import tsx src/lib/__tests__/closure-route-feedback-public-gate.test.ts",
     "test:admin-final-2-reviews": "node --import tsx src/lib/__tests__/admin-final-2-reviews-inbox-gate.test.ts",

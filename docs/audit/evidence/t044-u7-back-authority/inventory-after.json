@@ -1,0 +1,69 @@
+{
+  "measuredAt": "2026-10-02T02:45:59.876Z",
+  "productHistoryBackFiles": [
+    {
+      "file": "features/mushaf-bookmarks/MushafBookmarkEditorShell.tsx",
+      "count": 1
+    },
+    {
+      "file": "lib/navigation-back.ts",
+      "count": 2
+    }
+  ],
+  "navigateNeg1": [],
+  "migrated": [
+    "PrayerTimesView pts-back → AppBackButton",
+    "ProphetStoryReaderHeader → AppBackButton",
+    "CompetitionDetailView → AppBackButton",
+    "ArbaeenHadithDetailView → AppBackButton",
+    "SubmitContentPage → AppBackButton"
+  ],
+  "justified": [
+    {
+      "id": "MushafBookmarkEditorShell history.back",
+      "decision": "MUSHAF_SPECIAL",
+      "reason": "sheet dismiss KEEP (P7+U7)"
+    },
+    {
+      "id": "navigation-back.goBackOrFallback history.back",
+      "decision": "APP_BACK_BUTTON",
+      "reason": "canonical authority path"
+    },
+    {
+      "id": "FeatureTourPage goBackOrFallback",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "sheet/tour close via authority helper"
+    },
+    {
+      "id": "wizard step backs (Mawarith etc)",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "step navigation not route back"
+    },
+    {
+      "id": "mm-search-sheet__back",
+      "decision": "MUSHAF_SPECIAL",
+      "reason": "sheet close not route ownership"
+    },
+    {
+      "id": "kc-back Links",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "section parent Link (not history back system)"
+    }
+  ],
+  "floatingConsumers": [
+    "App.tsx",
+    "components/FloatingBackButton.tsx",
+    "components/FloatingLayerSync.tsx",
+    "components/ScrollToTop.tsx",
+    "components/assistant/AssistantFloatingWidget.tsx",
+    "components/quran/QuranMiniPlayerBar.tsx",
+    "features/mushaf-bookmarks/MushafBookmarkEditorShell.tsx",
+    "lib/floating-layer-manager.ts"
+  ],
+  "floatingControlMentionsBaseline": 10,
+  "exit": {
+    "BACK_AUTHORITY_ONLY": true,
+    "FLOATING_LAYER_CERTIFIED": true
+  },
+  "exitCode": "BACK_AUTHORITY_ONLY+FLOATING_LAYER_CERTIFIED"
+}

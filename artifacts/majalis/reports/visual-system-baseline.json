@@ -1,5 +1,5 @@
 {
-  "measuredAt": "2026-10-02T02:36:08.123Z",
+  "measuredAt": "2026-10-02T02:48:16.900Z",
   "scope": "artifacts/majalis/src",
   "cssFiles": 356,
   "tsxFiles": 834,
@@ -18,7 +18,7 @@
   "zIndexRawDecls": 258,
   "borderRadiusPxDecls": 1243,
   "inlineColorStyleMatches": 48,
-  "officialButtonImportFiles": 253,
+  "officialButtonImportFiles": 252,
   "rawButtonFiles": 112,
   "mainSyncCssImports": 15,
   "mainDeferredCssImports": 49,

@@ -1,8 +1,8 @@
 import { useEffect, useMemo } from "react";
 import { Link } from "wouter";
-import { ArrowRight, ExternalLink, Trophy } from "lucide-react";
+import { ExternalLink, Trophy } from "lucide-react";
 import { ShareButtons } from "@/components/ContentActions";
-import { DirectionalIcon } from "@/components/DirectionalIcon";
+import { AppBackButton } from "@/components/common/AppBackButton";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import {
@@ -60,10 +60,13 @@ export default function CompetitionDetailView({ params }: { params: { id: string
   return (
     <DetailScreen compose="mark">
     <div className="cmp-detail" dir="rtl" data-competition-detail="1">
-      <Link href="/competitions" className="cmp-detail__back">
-        <DirectionalIcon icon={ArrowRight} size={16} />
-        المسابقات
-      </Link>
+      <AppBackButton
+        variant="inline"
+        fallbackHref="/competitions"
+        className="cmp-detail__back"
+        label="المسابقات"
+        aria-label="العودة إلى المسابقات"
+      />
 
       {!open ? (
         <div className="cmp-detail__alert" role="status">

@@ -1,7 +1,7 @@
 import { memo, useEffect, useState, lazy, Suspense } from "react";
 import { applyPageSeo } from "@/lib/seo";
-import { Link, useLocation } from "wouter";
-import { ArrowRight, Bell, Compass, HandHeart, MapPin, CircleDot, Settings2 } from "lucide-react";
+import { Link } from "wouter";
+import { Bell, Compass, HandHeart, MapPin, CircleDot, Settings2 } from "lucide-react";
 import {
   useSharedPrayerData,
   useSharedPrayerSlot,
@@ -27,7 +27,6 @@ import {
 } from "@/lib/prayer-calc-prefs";
 import { getActivePrayerLocation } from "@/lib/prayer-location-prefs";
 import { PrayerLocationPicker } from "@/components/prayer/PrayerLocationPicker";
-import { goBackOrFallback, normalizeNavPath } from "@/lib/navigation-back";
 import { toArabicDigits } from "@/lib/utils";
 import { DashboardScreen } from "@/components/design-system/screens";
 import { RANKS } from "@/lib/prayer-ranks-data";
@@ -35,7 +34,7 @@ import "@/styles/pages/prayer-times.css";
 import "@/styles/pages/worship-history-v2.css";
 
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { AppBackButton } from "@/components/common/AppBackButton";
 import { FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
@@ -170,7 +169,6 @@ const PrayerHeroCountdownValue = memo(function PrayerHeroCountdownValue({
 });
 
 export default function PrayerTimesPage() {
-  const [location] = useLocation();
   const [locLabel, setLocLabel] = useState(() => getActivePrayerLocation().label);
   const [locToken, setLocToken] = useState(0);
   const [govOpen, setGovOpen] = useState(false);
@@ -180,10 +178,6 @@ export default function PrayerTimesPage() {
   const [highLat, setHighLat] = useState<HighLatitudeRuleId>(() => getHighLatitudeRule());
 
   recordDevRender("prayerPage");
-
-  function handleBack() {
-    goBackOrFallback(normalizeNavPath(location), "/");
-  }
 
   useEffect(() => {
     recordDevMount("prayerPage");
@@ -277,10 +271,13 @@ export default function PrayerTimesPage() {
         <Settings2 size={16} strokeWidth={2} aria-hidden="true" />
         <span>إعدادات</span>
       </Link>
-      <IconButton type="button" className="pts-back" onClick={handleBack} label="رجوع">
-        <ArrowRight size={16} strokeWidth={2.2} aria-hidden="true" />
-        <span>رجوع</span>
-      </IconButton>
+      <AppBackButton
+        variant="inline"
+        fallbackHref="/"
+        className="pts-back"
+        label="رجوع"
+        aria-label="رجوع"
+      />
     </div>
   );
 

@@ -227,6 +227,8 @@
 | `docs/audit/evidence/t042-u5-button-authority/` | جرد raw/divSpan + summary T-042 |
 | `docs/audit/U6_CARD_AUTHORITY_REPORT.md` | T-043 · `CARD_AUTHORITY_ONLY` (PASS) · soft-card TSX=0 · radius↓ |
 | `docs/audit/evidence/t043-u6-card-authority/` | جرد بطاقات + summary T-043 |
+| `docs/audit/U7_BACK_AUTHORITY_REPORT.md` | T-044 · `BACK_AUTHORITY_ONLY` + `FLOATING_LAYER_CERTIFIED` (PASS) |
+| `docs/audit/evidence/t044-u7-back-authority/` | جرد رجوع/عائم + summary T-044 |
 | `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` | **Master Closure Register** · `MASTER_CLOSURE_REGISTER_LOCKED` |
 | `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md` | تقرير حدود الإغلاق الحي · `PROJECT_CLOSURE_PARTIAL` |
 | `docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/` | مرشّح أذان CC0 إسطنبول · `CC0_ADHAN_CANDIDATE` |

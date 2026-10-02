@@ -1,0 +1,807 @@
+{
+  "summary": {
+    "measuredAt": "2026-10-02T02:44:08.921Z",
+    "totals": {
+      "history.back": 3,
+      "navigate(-1)": 0,
+      "goBackOrFallback": 22,
+      "AppBackButton": 76,
+      "FloatingBackButton": 50,
+      "GlobalBackButton": 10,
+      "fixed-back": 11,
+      "floating-back": 18,
+      "FloatingLayerManager": 25
+    },
+    "historyNavigateHits": 2,
+    "convertCandidates": [],
+    "floatingControlMentionsBaseline": 10
+  },
+  "items": [
+    {
+      "file": "App.tsx",
+      "pattern": "FloatingBackButton",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "App.tsx",
+      "pattern": "GlobalBackButton",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "CONVERT_TO_APP_BACK"
+    },
+    {
+      "file": "components/FloatingBackButton.tsx",
+      "pattern": "AppBackButton",
+      "count": 7,
+      "pathClass": "AUTHORITY",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "components/FloatingBackButton.tsx",
+      "pattern": "FloatingBackButton",
+      "count": 2,
+      "pathClass": "AUTHORITY",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "components/FloatingBackButton.tsx",
+      "pattern": "GlobalBackButton",
+      "count": 1,
+      "pathClass": "AUTHORITY",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "components/FloatingBackButton.tsx",
+      "pattern": "fixed-back",
+      "count": 1,
+      "pathClass": "AUTHORITY",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/FloatingBackButton.tsx",
+      "pattern": "floating-back",
+      "count": 1,
+      "pathClass": "AUTHORITY",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "components/FloatingBackButton.tsx",
+      "pattern": "FloatingLayerManager",
+      "count": 4,
+      "pathClass": "AUTHORITY",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/FloatingLayerSync.tsx",
+      "pattern": "FloatingLayerManager",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/GlobalBackButton.tsx",
+      "pattern": "FloatingBackButton",
+      "count": 3,
+      "pathClass": "AUTHORITY",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "components/GlobalBackButton.tsx",
+      "pattern": "GlobalBackButton",
+      "count": 1,
+      "pathClass": "AUTHORITY",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "components/NativeBackButtonListener.tsx",
+      "pattern": "goBackOrFallback",
+      "count": 2,
+      "pathClass": "AUTHORITY",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/ScrollToTop.tsx",
+      "pattern": "FloatingLayerManager",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/assistant/AssistantFloatingWidget.tsx",
+      "pattern": "FloatingLayerManager",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/common/AppBackButton.tsx",
+      "pattern": "goBackOrFallback",
+      "count": 2,
+      "pathClass": "AUTHORITY",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/common/AppBackButton.tsx",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "AUTHORITY",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "components/common/AppBackButton.tsx",
+      "pattern": "fixed-back",
+      "count": 2,
+      "pathClass": "AUTHORITY",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/common/AppBackButton.tsx",
+      "pattern": "floating-back",
+      "count": 2,
+      "pathClass": "AUTHORITY",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "components/design-system/index.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "components/design-system/index.ts",
+      "pattern": "FloatingBackButton",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "components/lobby/SectionLobby.tsx",
+      "pattern": "AppBackButton",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "components/motion/EdgeSwipeBack.tsx",
+      "pattern": "goBackOrFallback",
+      "count": 2,
+      "pathClass": "AUTHORITY",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/quran/QuranMiniPlayerBar.tsx",
+      "pattern": "FloatingLayerManager",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/topic/SectionHero.tsx",
+      "pattern": "AppBackButton",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "components/ui/PageHeroIntegratedBack.tsx",
+      "pattern": "AppBackButton",
+      "count": 3,
+      "pathClass": "AUTHORITY",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "features/mushaf-bookmarks/MushafBookmarkEditorShell.tsx",
+      "pattern": "history.back",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "features/mushaf-bookmarks/MushafBookmarkEditorShell.tsx",
+      "pattern": "FloatingLayerManager",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "hooks/usePersistedState.ts",
+      "pattern": "GlobalBackButton",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "CONVERT_TO_APP_BACK"
+    },
+    {
+      "file": "lib/__tests__/app-launch-polish-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/app-launch-polish-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/app-launch-polish-gate.test.ts",
+      "pattern": "GlobalBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "CONVERT_TO_APP_BACK"
+    },
+    {
+      "file": "lib/__tests__/authority-unification-final-gate.test.ts",
+      "pattern": "FloatingLayerManager",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "lib/__tests__/back-authority-unify-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 6,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/back-authority-unify-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/back-authority-unify-gate.test.ts",
+      "pattern": "fixed-back",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "lib/__tests__/contact-page-rebuild-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/directories-maps-ux-p0-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 5,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/directory-catalogs-quality-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/floating-back-button.test.ts",
+      "pattern": "goBackOrFallback",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "lib/__tests__/floating-back-button.test.ts",
+      "pattern": "AppBackButton",
+      "count": 5,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/floating-back-button.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/floating-back-button.test.ts",
+      "pattern": "GlobalBackButton",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "CONVERT_TO_APP_BACK"
+    },
+    {
+      "file": "lib/__tests__/floating-back-button.test.ts",
+      "pattern": "fixed-back",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "lib/__tests__/floating-back-button.test.ts",
+      "pattern": "floating-back",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/floating-layer-manager-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/floating-layer-manager-gate.test.ts",
+      "pattern": "floating-back",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/floating-layer-manager-gate.test.ts",
+      "pattern": "FloatingLayerManager",
+      "count": 10,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "lib/__tests__/framed-chrome-gate.test.ts",
+      "pattern": "floating-back",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/hadith-list-responsive-recovery-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/hadith-list-responsive-recovery-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/immersive-chrome.test.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/interaction-system-authority-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/islamic-landmarks-discover-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/knowledge-experience-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/knowledge-experience-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/knowledge-summary-card-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/legacy-sections-ui-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/legacy-sections-ui-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/login-auth-redesign-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/miracles-keep-previous-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/miracles-ui-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/miracles-ui-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/mobile-back-lesson-chips-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/mobile-back-lesson-chips-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/mobile-back-lesson-chips-gate.test.ts",
+      "pattern": "floating-back",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/prayer-audio-rights-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "PRAYER_SPECIAL",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/pre-testflight-non-device-polish.test.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/pre-testflight-non-device-polish.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/quran-circles-ui-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/section-back-button.test.ts",
+      "pattern": "goBackOrFallback",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "lib/__tests__/section-back-button.test.ts",
+      "pattern": "AppBackButton",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/section-back-button.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/section-lobby-gates.test.ts",
+      "pattern": "goBackOrFallback",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "lib/__tests__/section-lobby-gates.test.ts",
+      "pattern": "AppBackButton",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-anti-legacy-ui-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-design-system-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-ds-governance-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-ds-governance-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-polish-pass-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-quality-regression-gate.test.ts",
+      "pattern": "goBackOrFallback",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-quality-regression-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 6,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-quality-regression-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 6,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-quality-regression-gate.test.ts",
+      "pattern": "floating-back",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-stability-foundation-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/sunnah-ai-narration-back-dark-p0-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/sunnah-ai-narration-back-dark-p0-gate.test.ts",
+      "pattern": "GlobalBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "CONVERT_TO_APP_BACK"
+    },
+    {
+      "file": "lib/__tests__/sunnah-foundation-reset-pr0-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/sunnah-foundation-reset-pr0-gate.test.ts",
+      "pattern": "FloatingLayerManager",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "lib/__tests__/sunnah-identity-reset-pr7-gate.test.ts",
+      "pattern": "FloatingBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/sunnah-identity-reset-pr7-gate.test.ts",
+      "pattern": "fixed-back",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "lib/__tests__/sunnah-identity-reset-pr7-gate.test.ts",
+      "pattern": "floating-back",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/u4-startup-chrome-gate.test.ts",
+      "pattern": "fixed-back",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "lib/__tests__/ui-density-layout-gate.test.ts",
+      "pattern": "AppBackButton",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/__tests__/visual-identity-unify-gate.test.ts",
+      "pattern": "floating-back",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/__tests__/zero-startup-flicker-gate.test.ts",
+      "pattern": "fixed-back",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "lib/floating-layer-manager.ts",
+      "pattern": "floating-back",
+      "count": 5,
+      "pathClass": "AUTHORITY",
+      "decision": "FLOATING_FALLBACK"
+    },
+    {
+      "file": "lib/floating-layer-manager.ts",
+      "pattern": "FloatingLayerManager",
+      "count": 4,
+      "pathClass": "AUTHORITY",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "lib/immersive-chrome.ts",
+      "pattern": "AppBackButton",
+      "count": 2,
+      "pathClass": "AUTHORITY",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/navigation-back.ts",
+      "pattern": "history.back",
+      "count": 2,
+      "pathClass": "AUTHORITY",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "lib/navigation-back.ts",
+      "pattern": "goBackOrFallback",
+      "count": 1,
+      "pathClass": "AUTHORITY",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "lib/navigation.ts",
+      "pattern": "goBackOrFallback",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "pages/account/FeatureTourPage.tsx",
+      "pattern": "goBackOrFallback",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "pages/account/ui/SearchView.tsx",
+      "pattern": "AppBackButton",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "pages/fiqh/ui/FiqhLessonView.tsx",
+      "pattern": "AppBackButton",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "pages/hadith/ui/ArbaeenNawawiView.tsx",
+      "pattern": "AppBackButton",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "pages/lessons/ui/LessonDetailView.tsx",
+      "pattern": "AppBackButton",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "pages/worship/ui/AdhanSettingsView.tsx",
+      "pattern": "AppBackButton",
+      "count": 3,
+      "pathClass": "PRAYER_SPECIAL",
+      "decision": "APP_BACK_BUTTON"
+    },
+    {
+      "file": "pages/worship/ui/PrayerTimesView.tsx",
+      "pattern": "goBackOrFallback",
+      "count": 2,
+      "pathClass": "PRAYER_SPECIAL",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "views/AdminPage.tsx",
+      "pattern": "GlobalBackButton",
+      "count": 1,
+      "pathClass": "ADMIN_ONLY",
+      "decision": "CONVERT_TO_APP_BACK"
+    },
+    {
+      "file": "views/ProphetStoriesPage.tsx",
+      "pattern": "goBackOrFallback",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    }
+  ],
+  "historyHits": [
+    {
+      "file": "features/mushaf-bookmarks/MushafBookmarkEditorShell.tsx",
+      "pattern": "history.back",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "lib/navigation-back.ts",
+      "pattern": "history.back",
+      "count": 2,
+      "pathClass": "AUTHORITY",
+      "decision": "APP_BACK_BUTTON"
+    }
+  ]
+}
