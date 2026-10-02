@@ -46,7 +46,7 @@ for (const key of Object.keys(rawInv.byDecision)) {
 
 const budget = JSON.parse(readMaj("reports/interaction-system-debt-budget.json"));
 assert.equal(budget.policy, "decreasing-ceilings");
-assert.ok(budget.ceilings.rawButtonFiles <= 112);
+assert.ok(budget.ceilings.rawButtonFiles <= 109);
 assert.ok(budget.ceilings.rawButtonElements <= 485);
 assert.ok(budget.ceilings.divSpanOnClick <= 46);
 // T-044: AppBack migrations may lower Button import floor to 252.

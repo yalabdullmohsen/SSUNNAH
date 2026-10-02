@@ -1,10 +1,10 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "T-044: officialButtonImportFiles floor 253→252 — Prayer/detail backs left IconButton/Button for AppBackButton (Back Authority). Floating mentions ceiling held at 10.",
+  "note": "Endgame: public QuranSearch + MakkiMadani + admin Settings → Button/IconButton; ceilings lowered.",
   "ceilings": {
-    "rawButtonFiles": 112,
-    "rawButtonElements": 485,
+    "rawButtonFiles": 109,
+    "rawButtonElements": 482,
     "divSpanOnClick": 46,
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
@@ -15,5 +15,5 @@
     "officialButtonImportFiles": 252,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-10-02T02:46:00.000Z"
+  "updatedAt": "2026-10-02T21:18:49.774Z"
 }

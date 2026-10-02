@@ -5,6 +5,7 @@ import { getSiteSettings, updateSiteSettings } from "@/lib/site-settings";
 import { AdminSectionToolbar } from "./AdminSectionToolbar";
 import { useAdminShell } from "./AdminShell";
 import { Field } from "./AdminModal";
+import { Button } from "@/components/ui/button";
 
 export function SettingsSection() {
   const { showSuccess, showError } = useAdminShell();
@@ -30,9 +31,9 @@ export function SettingsSection() {
       <AdminSectionToolbar
         title="الإعدادات"
         actions={
-          <button type="button" onClick={save} className="set-save-btn">
+          <Button type="button" onClick={save} className="set-save-btn" variant="primary" size="small">
             حفظ الإعدادات
-          </button>
+          </Button>
         }
       />
 

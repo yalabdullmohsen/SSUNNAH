@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/ui-common";
 import { EMPTY } from "@/lib/ui-copy";
 import { SurahInfoCard } from "@/components/quran/SurahInfoCard";
 import { getSurahList } from "@/lib/quran-api";
+import { Button } from "@/components/ui/button";
 
 type Filter = "الكل" | "مكية" | "مدنية";
 
@@ -41,7 +42,19 @@ export default function MakkiMadaniPage() {
       <div className="revelation-toolbar">
         <label><span className="sr-only">البحث باسم السورة</span><input className="ds-input" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="ابحث باسم السورة" /></label>
         <div className="filter-tabs" role="group" aria-label="تصفية السور">
-          {(["الكل", "مكية", "مدنية"] as Filter[]).map((value) => <button key={value} type="button" className={filter === value ? "is-active" : ""} aria-pressed={filter === value} onClick={() => setFilter(value)}>{value}</button>)}
+          {(["الكل", "مكية", "مدنية"] as Filter[]).map((value) => (
+            <Button
+              key={value}
+              type="button"
+              variant={filter === value ? "primary" : "ghost"}
+              size="small"
+              className={filter === value ? "is-active" : ""}
+              aria-pressed={filter === value}
+              onClick={() => setFilter(value)}
+            >
+              {value}
+            </Button>
+          ))}
         </div>
       </div>
 

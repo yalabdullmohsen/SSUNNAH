@@ -58,14 +58,20 @@ export function LazyRouteFallback() {
       }
     >
       {prayerShell ? (
-        <div className="lrf-skel lrf-skel--prayer" aria-hidden="true">
-          <div className="lrf-skel__title" />
-          <div className="lrf-skel__hero" />
-          <div className="lrf-skel__row" />
-          <div className="lrf-skel__row" />
-          <div className="lrf-skel__row" />
-          <div className="lrf-skel__row" />
-          <div className="lrf-skel__row" />
+        <div
+          className="pts-screen pts-screen--with-nav pts-screen--boot"
+          aria-hidden="true"
+          data-route-fallback="prayer-boot"
+        >
+          <div className="lrf-skel lrf-skel--prayer pts-boot-skel">
+            <div className="lrf-skel__title pts-boot-title" />
+            <div className="lrf-skel__hero pts-boot-hero" />
+            <div className="lrf-skel__row pts-boot-row" />
+            <div className="lrf-skel__row pts-boot-row" />
+            <div className="lrf-skel__row pts-boot-row" />
+            <div className="lrf-skel__row pts-boot-row" />
+            <div className="lrf-skel__row pts-boot-row" />
+          </div>
         </div>
       ) : (
         <div className="lrf-skel lrf-skel--page" aria-hidden="true">

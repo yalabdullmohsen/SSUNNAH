@@ -24,6 +24,7 @@ import { PageHeader } from "@/components/ui-common";
 import { VirtualList } from "@/components/VirtualList";
 import "@/styles/pages/quran-search.css";
 import { ListScreen } from "@/components/design-system/screens";
+import { IconButton } from "@/components/design-system/Buttons";
 
 const DEBOUNCE_MS = 200;
 
@@ -161,14 +162,14 @@ export default function QuranSearchPage() {
             data-search-field="1"
           />
           {searchQuery ? (
-            <button
+            <IconButton
               type="button"
               className="quran-search-page__clear"
-              aria-label="مسح البحث"
+              label="مسح البحث"
               onClick={() => setSearchQuery("")}
             >
               <X size={16} aria-hidden="true" />
-            </button>
+            </IconButton>
           ) : null}
         </label>
       </form>

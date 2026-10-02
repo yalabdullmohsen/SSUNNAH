@@ -64,7 +64,28 @@ console.log("=== U4 placeholders ===");
 assert.match(html, /id="mj-startup-header"/);
 assert.match(html, /id="mj-startup-hero-ph"/);
 assert.match(html, /id="mj-startup-bottom"/);
-assert.match(html, /html\[data-home-chrome="1"\] #mj-startup-hero-ph\{display:block\}/);
+assert.match(html, /id="mj-home-flow-reserve"/, "home flow reserve in #root");
+assert.match(html, /#mj-startup-hero-ph\{display:none\}/, "absolute hero-ph never paints (flow reserve owns layout)");
+assert.match(
+  html,
+  /\[data-home-chrome="1"\] #mj-home-flow-reserve\{display:block\}/,
+  "home shows in-flow reserve at FP",
+);
+assert.match(
+  html,
+  /#mj-home-flow-hero-ph\{min-height:18rem/,
+  "flow hero matches real hero geometry",
+);
+assert.match(
+  html,
+  /#mj-home-flow-start-ph\{min-height:20rem/,
+  "flow start-here matches real band geometry",
+);
+assert.match(
+  html,
+  /#mj-startup-bottom[^}]*#0a4530|\.bottom-nav\{background:#0a4530/,
+  "prayer bottom chrome matches final nav surface",
+);
 assert.match(
   html,
   /__rs === "mushaf-immersive"[\s\S]*removeChild/,
@@ -86,6 +107,11 @@ assert.match(
 );
 assert.match(html, /--ticker-row-h:calc\(var\(--ticker-h\)\+\.65rem\)/);
 assert.match(html, /__hc !== "1"[\s\S]*mj-startup-hero-ph/, "strip hero node off-home");
+assert.match(
+  html,
+  /mj-home-flow-reserve[\s\S]*homeChrome !== "1"[\s\S]*remove\(\)/,
+  "strip home flow reserve off-home (no false hero presence)",
+);
 assert.match(html, /\.app-back-btn--bar\.fixed-back-bar/);
 
 console.log("=== U4 ready pack status ===");

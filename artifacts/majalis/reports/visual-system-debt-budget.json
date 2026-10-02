@@ -1,7 +1,7 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "T-043 U6 Card Authority: card component CSS radius → tokens (1258→1243); product card façades via AppCard/InteractiveCard; soft-card TSX consumers remain 0.",
+  "note": "Endgame: lessons.css radii→tokens; quran-people redundant box-shadow:none removed; ceilings lowered.",
   "floors": {
     "officialButtonImportFiles": 252,
     "sfTokenRefs": 757,
@@ -14,11 +14,11 @@
     "rgbHslInCss": 2124,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
-    "boxShadowDecls": 1112,
+    "boxShadowDecls": 1108,
     "zIndexRawDecls": 258,
-    "borderRadiusPxDecls": 1243,
+    "borderRadiusPxDecls": 1222,
     "inlineColorStyleMatches": 48,
-    "rawButtonFiles": 112
+    "rawButtonFiles": 109
   },
-  "updatedAt": "2026-10-02T19:55:00.000Z"
+  "updatedAt": "2026-10-02T21:18:49.775Z"
 }
