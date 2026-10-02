@@ -89,24 +89,26 @@ export default function NationsPage() {
       </p>
       <div className="nations-toolbar">
         <div className="nations-view-switch" role="tablist" aria-label="طريقة العرض">
-          <button
+          <Button
             type="button"
+            variant="ghost"
             role="tab"
             aria-selected={view === "grid"}
             className={`nations-view-btn${view === "grid" ? " is-active" : ""}`}
             onClick={() => setView("grid")}
           >
             بطاقات
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
+            variant="ghost"
             role="tab"
             aria-selected={view === "timeline"}
             className={`nations-view-btn${view === "timeline" ? " is-active" : ""}`}
             onClick={() => setView("timeline")}
           >
             تسلسل زمني تقريبي
-          </button>
+          </Button>
         </div>
       </div>
 

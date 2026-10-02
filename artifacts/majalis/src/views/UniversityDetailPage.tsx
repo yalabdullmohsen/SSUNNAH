@@ -19,6 +19,7 @@ import { EMPTY } from "@/lib/ui-copy";
 import "@/styles/pages/university-detail.css";
 import "@/styles/pages/learning-path-dashboard.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 function ProgramCard({ program: p }: { program: UniversityProgram }) {
   const [open, setOpen] = useState(false);
@@ -26,7 +27,7 @@ function ProgramCard({ program: p }: { program: UniversityProgram }) {
 
   return (
     <div className="udp-prog-card">
-      <button type="button" onClick={() => setOpen(!open)} className="udp-prog-header-btn">
+      <Button type="button" variant="ghost" onClick={() => setOpen(!open)} className="udp-prog-header-btn">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap mb-1">
             <span className="udp-badge--emerald">{p.degree_level}</span>
@@ -41,7 +42,7 @@ function ProgramCard({ program: p }: { program: UniversityProgram }) {
           )}
         </div>
         <span className="udp-chevron">{open ? "▲" : "▼"}</span>
-      </button>
+      </Button>
 
       {open && (
         <div className="udp-prog-body space-y-4">
@@ -184,7 +185,8 @@ function DetailContent({ university: u }: { university: University }) {
                 <Globe size={14} aria-hidden="true" /> الموقع الرسمي ↗
               </a>
             )}
-            <button type="button"
+            <Button type="button"
+              variant="ghost"
               onClick={() => inCompare ? removeFromCompare(u.slug) : addToCompare(u)}
               disabled={!inCompare && !canAdd}
               className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
@@ -193,7 +195,7 @@ function DetailContent({ university: u }: { university: University }) {
                 "opacity-50 cursor-not-allowed"
               }`}>
               {inCompare ? "✓ في المقارنة" : "⇔ أضف للمقارنة"}
-            </button>
+            </Button>
           </div>
         </div>
       </div>

@@ -23,6 +23,7 @@ import { TopicPage } from "@/components/topic/TopicPage";
 import { useReadingScrollMemory } from "@/hooks/useReadingScrollMemory";
 import { hasPublicSource } from "@/lib/content-provenance";
 import { ListScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 /** دفعات واجهة — تفادي رسم مئات البطاقات دفعة واحدة في DOM. */
 const FAWAID_PAGE_SIZE = 24;
@@ -271,16 +272,17 @@ export default function FawaidPage({
       />
       <div className="content-hub-chips" role="tablist" aria-label="تصفية الفوائد">
         {DISPLAY_CATEGORIES.map((cat) => (
-          <button
+          <Button
             key={cat}
             role="tab"
             type="button"
+            variant="ghost"
             onClick={() => setCategory(cat)}
             className={category === cat ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"}
             aria-selected={category === cat}
           >
             {cat}
-          </button>
+          </Button>
         ))}
       </div>
     </>
@@ -329,9 +331,9 @@ export default function FawaidPage({
             </div>
             {hasMore ? (
               <div ref={loadMoreRef} className="fawaid-load-more">
-                <button type="button" className="content-hub-chip" onClick={revealMore}>
+                <Button type="button" variant="ghost" className="content-hub-chip" onClick={revealMore}>
                   عرض المزيد ({visibleCount} من {displayItems.length})
-                </button>
+                </Button>
               </div>
             ) : null}
           </>
@@ -363,9 +365,9 @@ export default function FawaidPage({
                   aria-label="اسم الكاتب (اختياري)"
                   placeholder="اسم الكاتب (اختياري)"
                 />
-                <button type="submit" disabled={submitting || !text.trim()}>
+                <Button type="submit" variant="primary" disabled={submitting || !text.trim()}>
                   {submitting ? "يُرسل…" : "إرسال الفائدة"}
-                </button>
+                </Button>
               </form>
             )}
           </div>

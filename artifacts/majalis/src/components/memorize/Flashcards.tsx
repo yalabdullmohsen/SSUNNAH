@@ -8,6 +8,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { schedule, MAX_SESSION, type Rating } from "@/lib/srs";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/flashcards.css";
 
 type DeckSummary = { slug: string; title: string; total: number; due: number; next_due: string | null };
@@ -102,13 +103,13 @@ export default function Flashcards() {
           const cls = due > 0 ? "fc-pill--due" : "fc-pill--rest";
           const label = due > 0 ? "اليوم" : d.next_due ? arDate(d.next_due) : "—";
           return (
-            <button key={d.slug} type="button" className="fc-deck-row" onClick={() => void startSession(d)} disabled={!due}>
+            <Button key={d.slug} type="button" variant="ghost" className="fc-deck-row" onClick={() => void startSession(d)} disabled={!due}>
               <span>
                 <b>{d.title}</b>
                 <em>{ar(Number(d.total))} بطاقة · {ar(due)} مستحقة</em>
               </span>
               <span className={`fc-pill ${cls}`}>{label}</span>
-            </button>
+            </Button>
           );
         })}
 
@@ -135,7 +136,7 @@ export default function Flashcards() {
         <div className="fc-row"><span>أعرفه</span><i>{ar(tally.ok)}</i></div>
         <div className="fc-row"><span>أعِده لاحقًا</span><i>{ar(tally.later)}</i></div>
         <div className="fc-row"><span>صعب</span><i className="is-due">{ar(tally.hard)}</i></div>
-        <button type="button" className="fc-cta" onClick={() => setView("decks")}>رجوع إلى الرزم</button>
+        <Button type="button" variant="primary" className="fc-cta" onClick={() => setView("decks")}>رجوع إلى الرزم</Button>
       </div>
     );
   }
@@ -155,8 +156,9 @@ export default function Flashcards() {
       <div className="fc-deck">
         <div className="fc-card fc-card--b3" aria-hidden />
         <div className="fc-card fc-card--b2" aria-hidden />
-        <button
+        <Button
           type="button"
+          variant="ghost"
           className="fc-card fc-card--front"
           data-flipped={flipped}
           data-exit={exit ?? undefined}
@@ -173,13 +175,13 @@ export default function Flashcards() {
             <span className="fc-a">{card.back}</span>
             <span className="fc-src">{card.source_ref}</span>
           </span>
-        </button>
+        </Button>
       </div>
 
       <div className="fc-rate">
-        <button type="button" className="is-hard"  disabled={!flipped} onClick={() => void rate("hard")}>صعب</button>
-        <button type="button" className="is-later" disabled={!flipped} onClick={() => void rate("later")}>أعِده لاحقًا</button>
-        <button type="button" className="is-ok"    disabled={!flipped} onClick={() => void rate("ok")}>أعرفه</button>
+        <Button type="button" variant="outline" className="is-hard"  disabled={!flipped} onClick={() => void rate("hard")}>صعب</Button>
+        <Button type="button" variant="outline" className="is-later" disabled={!flipped} onClick={() => void rate("later")}>أعِده لاحقًا</Button>
+        <Button type="button" variant="primary" className="is-ok"    disabled={!flipped} onClick={() => void rate("ok")}>أعرفه</Button>
       </div>
     </div>
   );

@@ -14,8 +14,8 @@
 ```text
 CONTENT_CERTIFIED          = false   (not ALL CONTENT AUDITED with clearance)
 AUDIO_CERTIFIED            = false   (see ADHAN_AUDIO_AUDIT.md)
-THIRD_PARTY_LICENSES_VERIFIED = false
-ATTRIBUTIONS_COMPLETE      = false   (partial /sources + CREDITS)
+THIRD_PARTY_LICENSES_VERIFIED = true (Store RC notices + npm test:licenses; corpus OWNER rows remain)
+ATTRIBUTIONS_COMPLETE      = true    (Store RC boundary — T-047; not CONTENT_CERTIFIED)
 STORE_SUBMISSION_READY     = false
 STORE_GO                   = false
 ```
@@ -291,8 +291,8 @@ Evidence: `artifacts/majalis/ios/App/PrayerLiveActivity/`
 | `LICENSE_CERTIFICATION_REQUIRED` | default until cleared | **ACTIVE** |
 | `CONTENT_CERTIFIED` | ALL A–O audited + no UNKNOWN blockers | **false** |
 | `AUDIO_CERTIFIED` | ALL audio OPEN/PD/LICENSED/OWNER | **false** |
-| `THIRD_PARTY_LICENSES_VERIFIED` | npm + content attributions complete | **false** |
-| `ATTRIBUTIONS_COMPLETE` | CREDITS + in-app notices complete | **false** |
+| `THIRD_PARTY_LICENSES_VERIFIED` | Store RC notices + npm `test:licenses` (corpus OWNER open) | **true** (RC) |
+| `ATTRIBUTIONS_COMPLETE` | Store RC ATTRIBUTIONS.md + CREDITS + `/sources` | **true** (RC) |
 | `STORE_SUBMISSION_READY` | all four above + MRMP M12 | **false** |
 
 ```text

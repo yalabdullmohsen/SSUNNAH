@@ -1,0 +1,996 @@
+{
+  "summary": {
+    "measuredAt": "2026-10-02T02:58:45.000Z",
+    "phase": "T-045 U8_DEFERRED_IDENTITY",
+    "importsBefore": {
+      "mainSyncCssImports": 15,
+      "mainDeferredCssImports": 49,
+      "darkEnsureImports": 6
+    },
+    "importsAfter": {
+      "mainSyncCssImports": 15,
+      "mainDeferredCssImports": 49,
+      "darkEnsureImports": 6
+    },
+    "byDecision": {
+      "CRITICAL_TO_FIRST_PAINT": 15,
+      "AFTER_IDLE_SAFE": 35,
+      "COMPONENT_LOCAL": 6,
+      "ROUTE_SPECIFIC": 8,
+      "KEEP_JUSTIFIED": 6
+    },
+    "deferredKeepJustified": 49,
+    "darkKeepJustified": 6,
+    "unjustifiedDeferred": [],
+    "reloadToWinPresent": false,
+    "firstPaintMisplacedDeferred": [],
+    "absorbedFiles": [
+      "visual-identity-unify winners (tokens/chrome)",
+      "dark-mode-recovery chrome winners",
+      "reload-to-win deferred reimport unify/recovery"
+    ],
+    "removedFiles": [],
+    "keptFiles": {
+      "sync": [
+        "styles/fonts-ui.css",
+        "app/styles/theme.css",
+        "styles/sunnah-foundation-tokens.css",
+        "styles/sunnah-foundation-v2.css",
+        "styles/ssunnah-theme-api.css",
+        "styles/brand-v4.css",
+        "styles/design-tokens.css",
+        "styles/breakpoints.css",
+        "styles/typography-scale.css",
+        "styles/typography-app.css",
+        "index.css",
+        "styles/theme-aliases.css",
+        "styles/semantic-layer-tokens.css",
+        "styles/visual-identity-unify.css",
+        "styles/interaction-states.css"
+      ],
+      "deferred": [
+        "styles/z-index-layers.css",
+        "styles/motion-policy.css",
+        "styles/tokens.css",
+        "styles/sunnah-identity-reset.css",
+        "styles/visual-layer-contrast-fix.css",
+        "styles/visual-redesign-v2-tokens.css",
+        "styles/sections-calm-polish.css",
+        "styles/ssunnah-ux-polish.css",
+        "styles/components/modern-section-shell.css",
+        "styles/section-cards-theme.css",
+        "styles/sunnah-foundation-type.css",
+        "styles/green-surface-system.css",
+        "styles/ssunnah-semantic-tokens.css",
+        "styles/ssunnah-card-unify.css",
+        "styles/card-matte-unify.css",
+        "styles/components/badge-system.css",
+        "styles/modern-ui-refresh.css",
+        "styles/ssunnah-ds-canonical.css",
+        "styles/m2030/foundation.css",
+        "styles/m2030/navigation.css",
+        "styles/brand-v4-contrast-fixes.css",
+        "styles/a11y-release-gate.css",
+        "styles/visual-enrichment.css",
+        "styles/design-system.css",
+        "styles/brand-v4-components.css",
+        "styles/final-release.css",
+        "styles/card-decorative-strip-cleanup.css",
+        "styles/modern-islamic-editorial-tokens.css",
+        "styles/modern-islamic-editorial.css",
+        "styles/card-system.css",
+        "styles/card-system-v2.css",
+        "styles/app-state-v2.css",
+        "styles/islam-intro-experience.css",
+        "styles/components/instant-interaction.css",
+        "styles/sunnah-visual-language.css",
+        "styles/sunnah-geometry-system.css",
+        "styles/visual-refresh-v1.css",
+        "styles/components/native-feel.css",
+        "styles/m2030/interactions.css",
+        "styles/index-deferred-pages.css",
+        "styles/section-makarim-pattern.css",
+        "styles/components/compact-sources.css",
+        "styles/m2030/pages.css",
+        "styles/components/content-reading-shell.css",
+        "styles/reading-prose-system.css",
+        "styles/components/reading-section-card.css",
+        "styles/fonts-ui-bold.css",
+        "styles/capacitor-native-ux.css",
+        "styles/ios-edge.css"
+      ],
+      "darkEnsure": [
+        "styles/dark-mode-recovery.css",
+        "styles/dark-mode-surfaces.css",
+        "styles/dark-design-system.css",
+        "styles/premium-dark-refine.css",
+        "styles/pages/luxury-night-v2.css",
+        "styles/sunnah-identity-luxury-night.css"
+      ]
+    },
+    "activeCompatibilityPresent": true,
+    "activeCompatibilityJustified": true,
+    "exit": "DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED",
+    "exitCode": "DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED"
+  },
+  "identityFamilies": {
+    "brand-v4": [
+      "styles/brand-v4.css",
+      "styles/brand-v4-components.css",
+      "styles/brand-v4-contrast-fixes.css"
+    ],
+    "final-release": [
+      "styles/final-release.css"
+    ],
+    "visual-redesign": [
+      "styles/visual-redesign-v2-tokens.css",
+      "styles/visual-refresh-v1.css",
+      "styles/visual-enrichment.css",
+      "styles/visual-layer-contrast-fix.css",
+      "styles/visual-identity-unify.css"
+    ],
+    "m2030": [
+      "styles/m2030/foundation.css",
+      "styles/m2030/navigation.css",
+      "styles/m2030/interactions.css",
+      "styles/m2030/pages.css"
+    ],
+    "token-compatibility": [
+      "styles/design-tokens.css",
+      "styles/tokens.css",
+      "styles/theme-aliases.css",
+      "styles/semantic-layer-tokens.css",
+      "styles/ssunnah-theme-api.css",
+      "styles/ssunnah-semantic-tokens.css",
+      "styles/ssunnah-ds-canonical.css",
+      "styles/modern-islamic-editorial-tokens.css"
+    ],
+    "dark-compatibility": [
+      "styles/dark-mode-recovery.css",
+      "styles/dark-mode-surfaces.css",
+      "styles/dark-design-system.css",
+      "styles/premium-dark-refine.css",
+      "styles/pages/luxury-night-v2.css",
+      "styles/sunnah-identity-luxury-night.css"
+    ],
+    "deferred-identity-layers": [
+      "styles/sunnah-identity-reset.css",
+      "styles/sections-calm-polish.css",
+      "styles/ssunnah-ux-polish.css",
+      "styles/sunnah-visual-language.css",
+      "styles/sunnah-geometry-system.css",
+      "styles/green-surface-system.css",
+      "styles/design-system.css",
+      "styles/final-release.css",
+      "styles/modern-ui-refresh.css"
+    ]
+  },
+  "sync": [
+    "styles/fonts-ui.css",
+    "app/styles/theme.css",
+    "styles/sunnah-foundation-tokens.css",
+    "styles/sunnah-foundation-v2.css",
+    "styles/ssunnah-theme-api.css",
+    "styles/brand-v4.css",
+    "styles/design-tokens.css",
+    "styles/breakpoints.css",
+    "styles/typography-scale.css",
+    "styles/typography-app.css",
+    "index.css",
+    "styles/theme-aliases.css",
+    "styles/semantic-layer-tokens.css",
+    "styles/visual-identity-unify.css",
+    "styles/interaction-states.css"
+  ],
+  "deferred": [
+    "styles/z-index-layers.css",
+    "styles/motion-policy.css",
+    "styles/tokens.css",
+    "styles/sunnah-identity-reset.css",
+    "styles/visual-layer-contrast-fix.css",
+    "styles/visual-redesign-v2-tokens.css",
+    "styles/sections-calm-polish.css",
+    "styles/ssunnah-ux-polish.css",
+    "styles/components/modern-section-shell.css",
+    "styles/section-cards-theme.css",
+    "styles/sunnah-foundation-type.css",
+    "styles/green-surface-system.css",
+    "styles/ssunnah-semantic-tokens.css",
+    "styles/ssunnah-card-unify.css",
+    "styles/card-matte-unify.css",
+    "styles/components/badge-system.css",
+    "styles/modern-ui-refresh.css",
+    "styles/ssunnah-ds-canonical.css",
+    "styles/m2030/foundation.css",
+    "styles/m2030/navigation.css",
+    "styles/brand-v4-contrast-fixes.css",
+    "styles/a11y-release-gate.css",
+    "styles/visual-enrichment.css",
+    "styles/design-system.css",
+    "styles/brand-v4-components.css",
+    "styles/final-release.css",
+    "styles/card-decorative-strip-cleanup.css",
+    "styles/modern-islamic-editorial-tokens.css",
+    "styles/modern-islamic-editorial.css",
+    "styles/card-system.css",
+    "styles/card-system-v2.css",
+    "styles/app-state-v2.css",
+    "styles/islam-intro-experience.css",
+    "styles/components/instant-interaction.css",
+    "styles/sunnah-visual-language.css",
+    "styles/sunnah-geometry-system.css",
+    "styles/visual-refresh-v1.css",
+    "styles/components/native-feel.css",
+    "styles/m2030/interactions.css",
+    "styles/index-deferred-pages.css",
+    "styles/section-makarim-pattern.css",
+    "styles/components/compact-sources.css",
+    "styles/m2030/pages.css",
+    "styles/components/content-reading-shell.css",
+    "styles/reading-prose-system.css",
+    "styles/components/reading-section-card.css",
+    "styles/fonts-ui-bold.css",
+    "styles/capacitor-native-ux.css",
+    "styles/ios-edge.css"
+  ],
+  "darkDeferred": [
+    "styles/dark-mode-recovery.css",
+    "styles/dark-mode-surfaces.css",
+    "styles/dark-design-system.css",
+    "styles/premium-dark-refine.css",
+    "styles/pages/luxury-night-v2.css",
+    "styles/sunnah-identity-luxury-night.css"
+  ],
+  "absorption": [
+    {
+      "what": "visual-identity-unify winners (tokens/chrome)",
+      "into": "styles/final-release.css WAVE7 CASCADE SEAL",
+      "status": "ABSORBED_PRIOR_WAVE7",
+      "consumerMap": "gates: visual-identity-unify + wave5-critical-fouc + identity-cascade"
+    },
+    {
+      "what": "dark-mode-recovery chrome winners",
+      "into": "styles/final-release.css WAVE7 CASCADE SEAL + ensure-dark-layers",
+      "status": "ABSORBED_PRIOR_WAVE7",
+      "consumerMap": "gates: dark-mode-chrome + dark-deferred-absorb"
+    },
+    {
+      "what": "reload-to-win deferred reimport unify/recovery",
+      "into": "removed from main.tsx loadNonCriticalCss",
+      "status": "REMOVED_PRIOR_WAVE7",
+      "consumerMap": "zero-startup-flicker + wave5 gates assert absence"
+    }
+  ],
+  "removedThisPhase": [],
+  "items": [
+    {
+      "path": "styles/fonts-ui.css",
+      "lane": "sync",
+      "decision": "CRITICAL_TO_FIRST_PAINT",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Sync identity/bootstrap — required for first paint / theme contract"
+    },
+    {
+      "path": "app/styles/theme.css",
+      "lane": "sync",
+      "decision": "CRITICAL_TO_FIRST_PAINT",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Sync identity/bootstrap — required for first paint / theme contract"
+    },
+    {
+      "path": "styles/sunnah-foundation-tokens.css",
+      "lane": "sync",
+      "decision": "CRITICAL_TO_FIRST_PAINT",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Sync identity/bootstrap — required for first paint / theme contract"
+    },
+    {
+      "path": "styles/sunnah-foundation-v2.css",
+      "lane": "sync",
+      "decision": "CRITICAL_TO_FIRST_PAINT",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Sync identity/bootstrap — required for first paint / theme contract"
+    },
+    {
+      "path": "styles/ssunnah-theme-api.css",
+      "lane": "sync",
+      "decision": "CRITICAL_TO_FIRST_PAINT",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "token-compatibility"
+      ],
+      "reason": "Sync identity/bootstrap — required for first paint / theme contract"
+    },
+    {
+      "path": "styles/brand-v4.css",
+      "lane": "sync",
+      "decision": "CRITICAL_TO_FIRST_PAINT",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "brand-v4"
+      ],
+      "reason": "Sync identity/bootstrap — required for first paint / theme contract"
+    },
+    {
+      "path": "styles/design-tokens.css",
+      "lane": "sync",
+      "decision": "CRITICAL_TO_FIRST_PAINT",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "token-compatibility"
+      ],
+      "reason": "Sync identity/bootstrap — required for first paint / theme contract"
+    },
+    {
+      "path": "styles/breakpoints.css",
+      "lane": "sync",
+      "decision": "CRITICAL_TO_FIRST_PAINT",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Sync identity/bootstrap — required for first paint / theme contract"
+    },
+    {
+      "path": "styles/typography-scale.css",
+      "lane": "sync",
+      "decision": "CRITICAL_TO_FIRST_PAINT",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Sync identity/bootstrap — required for first paint / theme contract"
+    },
+    {
+      "path": "styles/typography-app.css",
+      "lane": "sync",
+      "decision": "CRITICAL_TO_FIRST_PAINT",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Sync identity/bootstrap — required for first paint / theme contract"
+    },
+    {
+      "path": "index.css",
+      "lane": "sync",
+      "decision": "CRITICAL_TO_FIRST_PAINT",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Sync identity/bootstrap — required for first paint / theme contract"
+    },
+    {
+      "path": "styles/theme-aliases.css",
+      "lane": "sync",
+      "decision": "CRITICAL_TO_FIRST_PAINT",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "token-compatibility"
+      ],
+      "reason": "Sync identity/bootstrap — required for first paint / theme contract"
+    },
+    {
+      "path": "styles/semantic-layer-tokens.css",
+      "lane": "sync",
+      "decision": "CRITICAL_TO_FIRST_PAINT",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "token-compatibility"
+      ],
+      "reason": "Sync identity/bootstrap — required for first paint / theme contract"
+    },
+    {
+      "path": "styles/visual-identity-unify.css",
+      "lane": "sync",
+      "decision": "CRITICAL_TO_FIRST_PAINT",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "visual-redesign"
+      ],
+      "reason": "Sync identity/bootstrap — required for first paint / theme contract"
+    },
+    {
+      "path": "styles/interaction-states.css",
+      "lane": "sync",
+      "decision": "CRITICAL_TO_FIRST_PAINT",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Sync identity/bootstrap — required for first paint / theme contract"
+    },
+    {
+      "path": "styles/z-index-layers.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Canonical z-index scale; Foundation companion; not ATF chrome writer",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/motion-policy.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Motion policy tokens; after idle under critical CSS budget",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/tokens.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "token-compatibility"
+      ],
+      "reason": "Legacy token bridge ACTIVE_COMPATIBILITY; SoT remains Foundation --sf-*/theme",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/sunnah-identity-reset.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "deferred-identity-layers"
+      ],
+      "reason": "Identity reset polish; sync brand-v4+unify cover first paint",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/visual-layer-contrast-fix.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "visual-redesign"
+      ],
+      "reason": "Contrast patches post-aliases; a11y gate support",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/visual-redesign-v2-tokens.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "visual-redesign"
+      ],
+      "reason": "Dashboard redesign tokens COMPATIBILITY; not ATF Home SoT",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/sections-calm-polish.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "deferred-identity-layers"
+      ],
+      "reason": "OVERRIDE_PATCH KEEP; token absorb done; consumer rules remain",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/ssunnah-ux-polish.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "deferred-identity-layers"
+      ],
+      "reason": "UX polish ACTIVE_COMPATIBILITY; deferred under critical CSS gzip budget",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/components/modern-section-shell.css",
+      "lane": "deferred",
+      "decision": "COMPONENT_LOCAL",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Section shell component CSS; consumers via section shells",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/section-cards-theme.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Section card theme polish; AppCard authority remains U6",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/sunnah-foundation-type.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Foundation type companions; sync typography-scale/app cover ATF",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/green-surface-system.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "deferred-identity-layers"
+      ],
+      "reason": "Green surface system LEGACY_NON_SOT until PR-13; consumers>0",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/ssunnah-semantic-tokens.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "token-compatibility"
+      ],
+      "reason": "Semantic token bridges --ss-*; Foundation remains SoT",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/ssunnah-card-unify.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Card unify bridges; soft-card TSX=0 (U6); CSS remap KEEP",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/card-matte-unify.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Matte card polish; no new card system",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/components/badge-system.css",
+      "lane": "deferred",
+      "decision": "COMPONENT_LOCAL",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Badge component system; local consumers",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/modern-ui-refresh.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "deferred-identity-layers"
+      ],
+      "reason": "SAFE_REMOVE_CANDIDATE blocked — consumers/opt-in leftovers per LEGACY matrix",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/ssunnah-ds-canonical.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "token-compatibility"
+      ],
+      "reason": "DS canonical bridges; no new Design System",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/m2030/foundation.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "m2030"
+      ],
+      "reason": "ACTIVE_LEGACY campaign foundation; port consumers before retire",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/m2030/navigation.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "m2030"
+      ],
+      "reason": "ACTIVE_LEGACY nav; ATF bottom-nav covered by sync+critical-first-paint; KEEP under CSS budget",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/brand-v4-contrast-fixes.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "brand-v4"
+      ],
+      "reason": "ACTIVE_COMPATIBILITY contrast bridges to --mj-*; gate support",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/a11y-release-gate.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "A11y release patches; not first-paint identity SoT",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/visual-enrichment.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "visual-redesign"
+      ],
+      "reason": "Visual enrichment polish; deferred by critical CSS budget",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/design-system.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "deferred-identity-layers"
+      ],
+      "reason": "ACTIVE_COMPATIBILITY large overlap; SAFE_REMOVE blocked until unused proof + screenshots",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/brand-v4-components.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "brand-v4"
+      ],
+      "reason": "ACTIVE_COMPATIBILITY component chrome; brand-v4.css sync covers ATF tokens",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/final-release.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "final-release",
+        "deferred-identity-layers"
+      ],
+      "reason": "ACTIVE_LEGACY + WAVE7 CASCADE SEAL tip; after design-system; no reload-to-win",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/card-decorative-strip-cleanup.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Decorative strip cleanup after seal; card authority U6",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/modern-islamic-editorial-tokens.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "token-compatibility"
+      ],
+      "reason": "Editorial tokens educational surfaces; not mushaf",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/modern-islamic-editorial.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Editorial surface rules; route/content after idle",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/card-system.css",
+      "lane": "deferred",
+      "decision": "COMPONENT_LOCAL",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Card system v1 COMPATIBILITY; v2 preferred; consumers via CSS classes",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/card-system-v2.css",
+      "lane": "deferred",
+      "decision": "COMPONENT_LOCAL",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Card system v2 surface; AppCard/InteractiveCard authority",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/app-state-v2.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Unified app states CANONICAL companion; after card stack",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/islam-intro-experience.css",
+      "lane": "deferred",
+      "decision": "ROUTE_SPECIFIC",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Non-home intro experience; skipped on Home path",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/components/instant-interaction.css",
+      "lane": "deferred",
+      "decision": "COMPONENT_LOCAL",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Instant interaction feel; after idle",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/sunnah-visual-language.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "deferred-identity-layers"
+      ],
+      "reason": "SVL runtime KEEP until phased migration (LEGACY matrix)",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/sunnah-geometry-system.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "deferred-identity-layers"
+      ],
+      "reason": "Geometry system polish; Foundation spacing SoT sync",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/visual-refresh-v1.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "visual-redesign"
+      ],
+      "reason": "Visual refresh v1 overlays; hero CTA rules secondary to sync brand",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/components/native-feel.css",
+      "lane": "deferred",
+      "decision": "COMPONENT_LOCAL",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Native-feel motion/interaction; no framer-motion",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/m2030/interactions.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "m2030"
+      ],
+      "reason": "ACTIVE_LEGACY m2030 interactions; port then retire",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/index-deferred-pages.css",
+      "lane": "deferred",
+      "decision": "ROUTE_SPECIFIC",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Non-home pages bundle; skipped on Home",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/section-makarim-pattern.css",
+      "lane": "deferred",
+      "decision": "ROUTE_SPECIFIC",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Makarim section ornament; non-home",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/components/compact-sources.css",
+      "lane": "deferred",
+      "decision": "ROUTE_SPECIFIC",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Sources compact layout; non-home",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/m2030/pages.css",
+      "lane": "deferred",
+      "decision": "ROUTE_SPECIFIC",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "m2030"
+      ],
+      "reason": "ACTIVE_LEGACY m2030 pages; non-home",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/components/content-reading-shell.css",
+      "lane": "deferred",
+      "decision": "ROUTE_SPECIFIC",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Reading shell for lessons/hadith/fiqh/topics paths",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/reading-prose-system.css",
+      "lane": "deferred",
+      "decision": "ROUTE_SPECIFIC",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Reading prose system with reading shell paths",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/components/reading-section-card.css",
+      "lane": "deferred",
+      "decision": "ROUTE_SPECIFIC",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Reading section cards with reading shell",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/fonts-ui-bold.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Decorative bold UI weights; delayed 20s; Amiri 700 at boot",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/capacitor-native-ux.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "Native Capacitor UX; loaded only when isNative",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/ios-edge.css",
+      "lane": "deferred",
+      "decision": "AFTER_IDLE_SAFE",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [],
+      "reason": "iOS safe-area edges; loaded only when isNative",
+      "fpRisk": false,
+      "fpJustification": "ATF html/body/header/hero/bottom-nav/CTA covered by sync Foundation+brand-v4+unify+interaction-states+critical-first-paint; deferred under critical CSS gzip budget / route gating"
+    },
+    {
+      "path": "styles/dark-mode-recovery.css",
+      "lane": "dark-ensure",
+      "decision": "KEEP_JUSTIFIED",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "dark-compatibility"
+      ],
+      "reason": "ACTIVE_COMPATIBILITY dark boot via ensure-dark-layers single loader; WAVE7 removed deferred reload-to-win"
+    },
+    {
+      "path": "styles/dark-mode-surfaces.css",
+      "lane": "dark-ensure",
+      "decision": "KEEP_JUSTIFIED",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "dark-compatibility"
+      ],
+      "reason": "ACTIVE_COMPATIBILITY surface remaps; single dark loader; no duplicate idle reimport"
+    },
+    {
+      "path": "styles/dark-design-system.css",
+      "lane": "dark-ensure",
+      "decision": "KEEP_JUSTIFIED",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "dark-compatibility"
+      ],
+      "reason": "COMPATIBILITY dark remap aids; --mj-* absorbed PR2; KEEP consumer patches"
+    },
+    {
+      "path": "styles/premium-dark-refine.css",
+      "lane": "dark-ensure",
+      "decision": "KEEP_JUSTIFIED",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "dark-compatibility"
+      ],
+      "reason": "ACTIVE dark polish --pd-*; single loader"
+    },
+    {
+      "path": "styles/pages/luxury-night-v2.css",
+      "lane": "dark-ensure",
+      "decision": "KEEP_JUSTIFIED",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "dark-compatibility"
+      ],
+      "reason": "Night identity bundle for dark boot / theme switch"
+    },
+    {
+      "path": "styles/sunnah-identity-luxury-night.css",
+      "lane": "dark-ensure",
+      "decision": "KEEP_JUSTIFIED",
+      "keep": "KEEP_JUSTIFIED",
+      "families": [
+        "dark-compatibility"
+      ],
+      "reason": "Identity luxury night; App data-v2-night path only"
+    }
+  ]
+}

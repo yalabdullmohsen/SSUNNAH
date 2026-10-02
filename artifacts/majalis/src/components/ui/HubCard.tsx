@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { prefetchRoute } from "@/lib/prefetch-route";
 import { formatArabicNumber } from "@/lib/numerals";
 import { CardTitle, SupportingText, Caption, LabelText } from "@/components/design-system/text";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/hub-card.css";
 
 export type SectionEntryVariant = "primary" | "soft" | "compact" | "detailed" | "featured";
@@ -231,8 +232,9 @@ export const SectionEntryCard = memo(function SectionEntryCard({
   }
 
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
       className={classNames}
       aria-label={title}
       data-section-entry="1"
@@ -240,7 +242,7 @@ export const SectionEntryCard = memo(function SectionEntryCard({
       onClick={(e) => handleClick(e as unknown as MouseEvent)}
     >
       {body}
-    </button>
+    </Button>
   );
 });
 

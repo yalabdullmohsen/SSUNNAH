@@ -129,6 +129,15 @@ export function hasInPageBackChrome(pathname: string): boolean {
     p === "/quran-hub" ||
     p === "/sources" ||
     p === "/competitions" ||
-    p === "/sections"
+    /^\/competitions\/[^/]+$/.test(p) ||
+    p === "/sections" ||
+    p === "/prayer-times" ||
+    p.startsWith("/prayer-times/") ||
+    p === "/prophets" ||
+    p.startsWith("/prophets/") ||
+    p === "/arbaeen-nawawi" ||
+    /^\/arbaeen-nawawi\/[^/]+$/.test(p) ||
+    p === "/submit" ||
+    p === "/submit-content"
   );
 }

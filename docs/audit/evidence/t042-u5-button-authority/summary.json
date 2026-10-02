@@ -1,0 +1,35 @@
+{
+  "measuredAt": "2026-10-02T02:19:09.070Z",
+  "before": {
+    "rawButtonFiles": 168,
+    "rawButtonElements": 650,
+    "divSpanOnClick": 59,
+    "officialButtonImportFiles": 205,
+    "iconButtonConsumerFiles": 33
+  },
+  "after": {
+    "rawButtonFiles": 112,
+    "rawButtonElements": 485,
+    "divSpanOnClick": 46
+  },
+  "rawByDecision": {
+    "ADMIN_ONLY": {
+      "files": 68,
+      "elements": 268
+    },
+    "MUSHAF_SPECIAL": {
+      "files": 43,
+      "elements": 216
+    },
+    "THIRD_PARTY": {
+      "files": 1,
+      "elements": 1
+    }
+  },
+  "divByDecision": {
+    "KEEP_JUSTIFIED": 46
+  },
+  "productRawRemaining": 0,
+  "convertDivRemaining": 0,
+  "exit": "BUTTON_AUTHORITY_ONLY"
+}

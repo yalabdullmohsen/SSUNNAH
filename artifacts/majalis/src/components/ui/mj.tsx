@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { PageHero } from "./PageHero";
 import { AppCard } from "@/components/design-system/AppCard";
+import { Button as CanonicalButton } from "@/components/ui/button";
 
 export function PageHeader({
   eyebrow,
@@ -69,13 +70,13 @@ export function ListRow({
   disabled?: boolean;
 }) {
   return (
-    <button type="button" className={cn("mj-row", className)} onClick={onClick} disabled={disabled}>
+    <CanonicalButton type="button" variant="ghost" className={cn("mj-row", className)} onClick={onClick} disabled={disabled}>
       <span>
         <b style={{ fontWeight: 500 }}>{title}</b>
         {subtitle ? <em>{subtitle}</em> : null}
       </span>
       {trailing}
-    </button>
+    </CanonicalButton>
   );
 }
 
@@ -89,9 +90,12 @@ export function Button({
   variant?: "primary" | "ghost" | "soft";
   pill?: boolean;
 }) {
+  const mapped =
+    variant === "ghost" ? "ghost" : variant === "soft" ? "secondary" : "primary";
   return (
-    <button
+    <CanonicalButton
       type="button"
+      variant={mapped}
       className={cn(
         "mj-btn",
         variant === "ghost" && "mj-btn--ghost",
@@ -102,7 +106,7 @@ export function Button({
       {...props}
     >
       {children}
-    </button>
+    </CanonicalButton>
   );
 }
 
@@ -189,9 +193,9 @@ export function EmptyState({
         </a>
       ) : null}
       {!actionHref && actionLabel && onAction ? (
-        <button type="button" className="mj-empty__action mj-pressable" onClick={onAction}>
+        <CanonicalButton type="button" variant="ghost" className="mj-empty__action mj-pressable" onClick={onAction}>
           {actionLabel}
-        </button>
+        </CanonicalButton>
       ) : null}
     </div>
   );

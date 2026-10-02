@@ -23,6 +23,13 @@
 | Pin Store RC commit for Archive/AAB | Tip `5e99cd7c` ≠ automatic store pin | `CURRENT_PROJECT_STATUS.md` + store readiness | Release process | Wrong binary shipped | Rebuild from recorded pin only |
 | Device matrix sign-off (prayer + mushaf) | Cannot be simulated fully | `WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md` + `DEVICE_QA_REGISTER.md` | Physical devices | DEVICE_REQUIRED rows stay open | Re-test after fixes |
 | Final App Store GO / WITHDRAW | Legal+product authority | Store readiness | Owner | No submission | Withdraw build in ASC |
+| ASC: category · copyright · Contests answer · paste listing | T-048 readiness OWNER rows | `APP_STORE_READINESS_REPORT.md` · checklist | ASC | Cannot submit listing | Keep drafts in repo |
+| ASC Privacy nutrition labels = PrivacyInfo | Must not assume console answers | `APP_STORE_PRIVACY_ANSWERS_DRAFT.md` | ASC | Privacy mismatch rejection | Re-sync from PrivacyInfo |
+| Capture Store RC screenshots iPhone/Max/iPad | All sets MISSING | `store/screenshots/README.md` | Device/simulator + ASC | No listing visuals | Retake from Store RC only |
+| ASC export compliance + demo credentials re-verify | Forms/credentials console-only | review-notes.md · Info.plist encryption flag | ASC | Review delays | Update notes per build |
+| App Group `group.com.yousef.majlisilm` on App+LA+Widget store profiles | T-049 export failed without App Groups on store profiles | `TESTFLIGHT_INTERNAL_CERTIFICATION_REPORT.md` · export-attempt.log | Apple Developer portal | Cannot export/upload TF IPA | Re-export after profile refresh |
+| App Store profile for `PrayerWidget` + TF upload | Missing widget store profile; no TF build | same | ASC / Xcode Organizer | Install/Smoke stay FAIL | Upload from pinned `STORE_SOURCE_COMMIT` only |
+| Complete TF Internal + device matrix/a11y/perf evidence for iOS RC | T-050 blocked: Binary/Install/Smoke/Device FAIL | `IOS_RELEASE_CANDIDATE_REPORT.md` | ASC + physical devices | `IOS_RELEASE_CANDIDATE_READY` remains false | Re-cert from same pin after evidence |
 
 ## Not owner-blocked (agents may continue)
 

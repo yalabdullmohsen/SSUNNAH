@@ -1,0 +1,17 @@
+2026-10-02 06:50:54.217 xcodebuild[32643:27712398] [MT] IDEDistribution: -[IDEDistributionLogging _createLoggingBundleAtPath:]: Created bundle at path "/var/folders/1_/gmz8v_rx7x96425532x4k9tr0000gn/T/App_2026-10-02_06-50-54.216.xcdistributionlogs".
+error: exportArchive No profiles for 'com.yousef.majlisilm.PrayerWidget' were found
+
+error: exportArchive Provisioning profile "iOS Team Store Provisioning Profile: com.yousef.majlisilm.PrayerLiveActivity" doesn't include the App Groups capability.
+
+error: exportArchive Provisioning profile "iOS Team Store Provisioning Profile: com.yousef.majlisilm.PrayerLiveActivity" doesn't support the group.com.yousef.majlisilm App Group.
+
+error: exportArchive Provisioning profile "iOS Team Store Provisioning Profile: com.yousef.majlisilm.PrayerLiveActivity" doesn't include the com.apple.security.application-groups entitlement.
+
+error: exportArchive Provisioning profile "iOS Team Store Provisioning Profile: com.yousef.majlisilm" doesn't include the App Groups capability.
+
+error: exportArchive Provisioning profile "iOS Team Store Provisioning Profile: com.yousef.majlisilm" doesn't support the group.com.yousef.majlisilm App Group.
+
+error: exportArchive Provisioning profile "iOS Team Store Provisioning Profile: com.yousef.majlisilm" doesn't include the com.apple.security.application-groups entitlement.
+
+** EXPORT FAILED **
+

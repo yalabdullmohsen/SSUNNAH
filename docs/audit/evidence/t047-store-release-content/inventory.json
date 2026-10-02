@@ -1,0 +1,2527 @@
+{
+  "schemaVersion": 2,
+  "phase": "T-047",
+  "generatedAtUtc": "2026-10-02T03:23:50.713Z",
+  "allowlistPath": "docs/store-release/STORE_RELEASE_ALLOWLIST.json",
+  "summary": {
+    "totalAssets": 131,
+    "releaseFlavorCount": 83,
+    "releaseFlavorUnknownCount": 0,
+    "treeUnknownCount": 20,
+    "strippedCount": 44,
+    "streamOnlyCount": 1,
+    "ownerDecisionCount": 2,
+    "cc0ApprovedCount": 5,
+    "oflApprovedCount": 12,
+    "audioAllowlistLocked": true,
+    "qpcClass": "OWNER_DECISION_REQUIRED",
+    "RELEASE_BINARY_HAS_ZERO_UNKNOWN_ASSETS": true,
+    "AUDIO_RELEASE_ALLOWLIST_LOCKED": true,
+    "STORE_RELEASE_CONTENT_CLEARED": true,
+    "THIRD_PARTY_NOTICES_COMPLETE": true,
+    "ATTRIBUTIONS_COMPLETE": true
+  },
+  "releaseFlavor": [
+    {
+      "id": "audio:adhan-field-full.m4a",
+      "path": "public/audio/adhan/adhan-field-full.m4a",
+      "domain": "adhan",
+      "class": "CC0_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "audio:adhan-field-short.m4a",
+      "path": "public/audio/adhan/adhan-field-short.m4a",
+      "domain": "adhan",
+      "class": "CC0_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "audio:adhan-field.m4a",
+      "path": "public/audio/adhan/adhan-field.m4a",
+      "domain": "adhan",
+      "class": "CC0_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "ios-caf:adhan-short-field-full.caf",
+      "path": "ios/App/App/Sounds/adhan-short-field-full.caf",
+      "domain": "adhan-ios",
+      "class": "CC0_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "ios-caf:adhan-short-field.caf",
+      "path": "ios/App/App/Sounds/adhan-short-field.caf",
+      "domain": "adhan-ios",
+      "class": "CC0_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:OFL.txt",
+      "path": "public/fonts/ui/OFL.txt",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:amiri-400-ar.woff2",
+      "path": "public/fonts/ui/amiri-400-ar.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:amiri-400-lat.woff2",
+      "path": "public/fonts/ui/amiri-400-lat.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:amiri-700-ar.woff2",
+      "path": "public/fonts/ui/amiri-700-ar.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:amiri-700-lat.woff2",
+      "path": "public/fonts/ui/amiri-700-lat.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:aref-ruqaa-400-ar.woff2",
+      "path": "public/fonts/ui/aref-ruqaa-400-ar.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:aref-ruqaa-700-ar.woff2",
+      "path": "public/fonts/ui/aref-ruqaa-700-ar.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:aref-ruqaa-700-lat.woff2",
+      "path": "public/fonts/ui/aref-ruqaa-700-lat.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:noto-naskh-400-ar.woff2",
+      "path": "public/fonts/ui/noto-naskh-400-ar.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:noto-naskh-400-lat.woff2",
+      "path": "public/fonts/ui/noto-naskh-400-lat.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:noto-naskh-700-ar.woff2",
+      "path": "public/fonts/ui/noto-naskh-700-ar.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:scheherazade-400-ar.woff2",
+      "path": "public/fonts/ui/scheherazade-400-ar.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/drawer-open-390x844-dark.png",
+      "path": "public/brand/drawer-open-390x844-dark.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/drawer-open-390x844.png",
+      "path": "public/brand/drawer-open-390x844.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/icon-1024-maskable.png",
+      "path": "public/brand/icon-1024-maskable.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/icon-1024.png",
+      "path": "public/brand/icon-1024.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/icon-512-maskable.png",
+      "path": "public/brand/icon-512-maskable.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/majlisilm-brand-source.png",
+      "path": "public/brand/majlisilm-brand-source.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/official-og.png",
+      "path": "public/brand/official-og.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/official-og.webp",
+      "path": "public/brand/official-og.webp",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/official.png",
+      "path": "public/brand/official.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/official.webp",
+      "path": "public/brand/official.webp",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-adhkar.png",
+      "path": "public/brand/og-adhkar.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-contact.png",
+      "path": "public/brand/og-contact.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-fiqh.png",
+      "path": "public/brand/og-fiqh.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-hadith.png",
+      "path": "public/brand/og-hadith.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-home.png",
+      "path": "public/brand/og-home.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-lessons.png",
+      "path": "public/brand/og-lessons.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-library.png",
+      "path": "public/brand/og-library.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-quran.png",
+      "path": "public/brand/og-quran.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/splash-logo.png",
+      "path": "public/brand/splash-logo.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/splash-logo.webp",
+      "path": "public/brand/splash-logo.webp",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/twitter-image.png",
+      "path": "public/brand/twitter-image.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/live/ithraa.svg",
+      "path": "public/images/live/ithraa.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/live/madinah.svg",
+      "path": "public/images/live/madinah.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/live/makkah.svg",
+      "path": "public/images/live/makkah.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/posters/fadat-dawwi-al-usaimi.svg",
+      "path": "public/images/posters/fadat-dawwi-al-usaimi.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/posters/mansour-friday-reading.svg",
+      "path": "public/images/posters/mansour-friday-reading.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/posters/osama-shatti-prayer-book.svg",
+      "path": "public/images/posters/osama-shatti-prayer-book.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/posters/othman-sahih-muslim.svg",
+      "path": "public/images/posters/othman-sahih-muslim.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/posters/othman-tafsir-nahl.svg",
+      "path": "public/images/posters/othman-tafsir-nahl.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/posters/othman-talkhis-almuqni.svg",
+      "path": "public/images/posters/othman-talkhis-almuqni.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/posters/rashed-fundamental-course.svg",
+      "path": "public/images/posters/rashed-fundamental-course.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/bandar-almaimouni.svg",
+      "path": "public/sheikhs/bandar-almaimouni.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/daham-abukhashba.svg",
+      "path": "public/sheikhs/daham-abukhashba.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/faisal-zowaid.svg",
+      "path": "public/sheikhs/faisal-zowaid.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/hamed-almesaad.svg",
+      "path": "public/sheikhs/hamed-almesaad.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/hussein-muwaiziri.svg",
+      "path": "public/sheikhs/hussein-muwaiziri.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/mansour-alkhalidi.svg",
+      "path": "public/sheikhs/mansour-alkhalidi.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/mutlaq-aljasser.svg",
+      "path": "public/sheikhs/mutlaq-aljasser.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/nasar-alajmi.svg",
+      "path": "public/sheikhs/nasar-alajmi.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/osama-alshatti.svg",
+      "path": "public/sheikhs/osama-alshatti.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/othman-alkhamees.svg",
+      "path": "public/sheikhs/othman-alkhamees.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/rashed-alsulayyim.svg",
+      "path": "public/sheikhs/rashed-alsulayyim.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/saad-otaibi.svg",
+      "path": "public/sheikhs/saad-otaibi.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/salem-altaweel.svg",
+      "path": "public/sheikhs/salem-altaweel.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:apple-touch-icon.png",
+      "path": "public/apple-touch-icon.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:corner-ornament.svg",
+      "path": "public/corner-ornament.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:favicon-32.png",
+      "path": "public/favicon-32.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:favicon-48.png",
+      "path": "public/favicon-48.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:favicon.ico",
+      "path": "public/favicon.ico",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:favicon.png",
+      "path": "public/favicon.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:favicon.svg",
+      "path": "public/favicon.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:icon-192.png",
+      "path": "public/icon-192.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:icon-192.webp",
+      "path": "public/icon-192.webp",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:icon-512.png",
+      "path": "public/icon-512.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:icon-512.webp",
+      "path": "public/icon-512.webp",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:icon-96.png",
+      "path": "public/icon-96.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:logo-calligraphy-400.png",
+      "path": "public/logo-calligraphy-400.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:logo-calligraphy-400.webp",
+      "path": "public/logo-calligraphy-400.webp",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:logo-calligraphy-800.webp",
+      "path": "public/logo-calligraphy-800.webp",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:logo-calligraphy.png",
+      "path": "public/logo-calligraphy.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:logo-icon.png",
+      "path": "public/logo-icon.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:logo.png",
+      "path": "public/logo.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:og-image.png",
+      "path": "public/og-image.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:star-pattern.svg",
+      "path": "public/star-pattern.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "prayer-calculation-engine",
+      "path": null,
+      "domain": "product",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "system-default-notification",
+      "path": null,
+      "domain": "adhan",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    }
+  ],
+  "stripped": [
+    {
+      "id": "audio:adhan-aqsa-full.mp3",
+      "path": "public/audio/adhan/adhan-aqsa-full.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-egypt-full.m4a",
+      "path": "public/audio/adhan/adhan-egypt-full.m4a",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-gulf-short.mp3",
+      "path": "public/audio/adhan/adhan-gulf-short.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-haram-full.m4a",
+      "path": "public/audio/adhan/adhan-haram-full.m4a",
+      "domain": "adhan",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-makkah-fajr.mp3",
+      "path": "public/audio/adhan/adhan-makkah-fajr.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-makkah-full.m4a",
+      "path": "public/audio/adhan/adhan-makkah-full.m4a",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-makkah.mp3",
+      "path": "public/audio/adhan/adhan-makkah.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-soft-alert.m4a",
+      "path": "public/audio/adhan/adhan-soft-alert.m4a",
+      "domain": "adhan",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-takbeerat-short.mp3",
+      "path": "public/audio/adhan/adhan-takbeerat-short.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "sounds:aqsa-general.mp3",
+      "path": "public/sounds/adhan/aqsa-general.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "sounds:egypt-general.m4a",
+      "path": "public/sounds/adhan/egypt-general.m4a",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "sounds:makkah-fajr.mp3",
+      "path": "public/sounds/adhan/makkah-fajr.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "sounds:makkah-general.m4a",
+      "path": "public/sounds/adhan/makkah-general.m4a",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "sounds:takbeerat-short.mp3",
+      "path": "public/sounds/adhan/takbeerat-short.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "ios-caf:adhan-seq-makkah-01.caf",
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-01.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-seq-makkah-02.caf",
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-02.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-seq-makkah-03.caf",
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-03.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-seq-makkah-04.caf",
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-04.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-short-aqsa.caf",
+      "path": "ios/App/App/Sounds/adhan-short-aqsa.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-short-egypt.caf",
+      "path": "ios/App/App/Sounds/adhan-short-egypt.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-short-makkah-fajr.caf",
+      "path": "ios/App/App/Sounds/adhan-short-makkah-fajr.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-short-makkah.caf",
+      "path": "ios/App/App/Sounds/adhan-short-makkah.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-short-takbeerat.caf",
+      "path": "ios/App/App/Sounds/adhan-short-takbeerat.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:alarm-clear.caf",
+      "path": "ios/App/App/Sounds/alarm-clear.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer-alert.caf",
+      "path": "ios/App/App/Sounds/prayer-alert.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_aqsa.caf",
+      "path": "ios/App/App/Sounds/prayer_aqsa.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_clear.caf",
+      "path": "ios/App/App/Sounds/prayer_clear.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_default.caf",
+      "path": "ios/App/App/Sounds/prayer_default.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_egypt.caf",
+      "path": "ios/App/App/Sounds/prayer_egypt.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_makkah.caf",
+      "path": "ios/App/App/Sounds/prayer_makkah.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_quiet.caf",
+      "path": "ios/App/App/Sounds/prayer_quiet.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_soft.caf",
+      "path": "ios/App/App/Sounds/prayer_soft.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_takbeerat.caf",
+      "path": "ios/App/App/Sounds/prayer_takbeerat.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:short-ring.caf",
+      "path": "ios/App/App/Sounds/short-ring.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:soft-ring.caf",
+      "path": "ios/App/App/Sounds/soft-ring.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "qpc-v2-fonts",
+      "path": "public/fonts/qpc-v2/**",
+      "domain": "fonts",
+      "class": "OWNER_DECISION_REQUIRED",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "fileCount": 604,
+      "grantPath": {
+        "required": "Written QUL/KFGQPC redistribute grant for App Store binary",
+        "evidenceDir": "docs/store-release/license-evidence/",
+        "decisionId": "LIC-01",
+        "then": "Owner flips class to APPROVED_FOR_RELEASE with dated evidence; remove strip"
+      },
+      "stripPath": {
+        "activeForReleaseCandidate": true,
+        "tools": [
+          "scripts/store-strip-unresolved-assets.mjs → dist/fonts/qpc-v2",
+          "artifacts/majalis/scripts/native-strip-qpc-fonts.mjs → ios public fonts"
+        ],
+        "classInReleaseFlavor": "STRIP_FROM_RELEASE"
+      },
+      "licensedClaim": false
+    },
+    {
+      "id": "img:public/sheikhs/mansour-alkhalidi.jpg",
+      "path": "public/sheikhs/mansour-alkhalidi.jpg",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img:public/sheikhs/mansour-alkhalidi.webp",
+      "path": "public/sheikhs/mansour-alkhalidi.webp",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img:public/sheikhs/othman-alkhamees.jpg",
+      "path": "public/sheikhs/othman-alkhamees.jpg",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img:public/sheikhs/othman-alkhamees.webp",
+      "path": "public/sheikhs/othman-alkhamees.webp",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img:public/sheikhs/salem-altaweel.jpg",
+      "path": "public/sheikhs/salem-altaweel.jpg",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img:public/sheikhs/salem-altaweel.webp",
+      "path": "public/sheikhs/salem-altaweel.webp",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "hisn-muslim",
+      "path": null,
+      "domain": "content",
+      "class": "OWNER_DECISION_REQUIRED",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "istanbul-cc0-rejected",
+      "path": null,
+      "domain": "adhan",
+      "class": "CC0_ADHAN_REJECTED_QUALITY",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "CC0_ADHAN_REJECTED_QUALITY (T-027) — not in binary; Store v1 = system-default"
+    }
+  ],
+  "streamOnly": [
+    {
+      "id": "recitations-remote",
+      "path": null,
+      "domain": "recitations",
+      "class": "STREAM_ONLY",
+      "releaseAction": "STREAM_ONLY",
+      "inReleaseFlavor": false,
+      "forbidden": [
+        "binary packaging",
+        "offline bundle",
+        "watch distribution",
+        "widget distribution"
+      ]
+    }
+  ],
+  "ownerDecisions": [
+    {
+      "id": "qpc-v2-fonts",
+      "path": "public/fonts/qpc-v2/**",
+      "domain": "fonts",
+      "class": "OWNER_DECISION_REQUIRED",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "fileCount": 604,
+      "grantPath": {
+        "required": "Written QUL/KFGQPC redistribute grant for App Store binary",
+        "evidenceDir": "docs/store-release/license-evidence/",
+        "decisionId": "LIC-01",
+        "then": "Owner flips class to APPROVED_FOR_RELEASE with dated evidence; remove strip"
+      },
+      "stripPath": {
+        "activeForReleaseCandidate": true,
+        "tools": [
+          "scripts/store-strip-unresolved-assets.mjs → dist/fonts/qpc-v2",
+          "artifacts/majalis/scripts/native-strip-qpc-fonts.mjs → ios public fonts"
+        ],
+        "classInReleaseFlavor": "STRIP_FROM_RELEASE"
+      },
+      "licensedClaim": false
+    },
+    {
+      "id": "hisn-muslim",
+      "path": null,
+      "domain": "content",
+      "class": "OWNER_DECISION_REQUIRED",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    }
+  ],
+  "treeUnknown": [
+    {
+      "id": "audio:adhan-haram-full.m4a",
+      "path": "public/audio/adhan/adhan-haram-full.m4a",
+      "domain": "adhan",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-soft-alert.m4a",
+      "path": "public/audio/adhan/adhan-soft-alert.m4a",
+      "domain": "adhan",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "ios-caf:adhan-seq-makkah-01.caf",
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-01.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-seq-makkah-02.caf",
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-02.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-seq-makkah-03.caf",
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-03.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-seq-makkah-04.caf",
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-04.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-short-aqsa.caf",
+      "path": "ios/App/App/Sounds/adhan-short-aqsa.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-short-egypt.caf",
+      "path": "ios/App/App/Sounds/adhan-short-egypt.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-short-makkah-fajr.caf",
+      "path": "ios/App/App/Sounds/adhan-short-makkah-fajr.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-short-makkah.caf",
+      "path": "ios/App/App/Sounds/adhan-short-makkah.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-short-takbeerat.caf",
+      "path": "ios/App/App/Sounds/adhan-short-takbeerat.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_aqsa.caf",
+      "path": "ios/App/App/Sounds/prayer_aqsa.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_egypt.caf",
+      "path": "ios/App/App/Sounds/prayer_egypt.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_makkah.caf",
+      "path": "ios/App/App/Sounds/prayer_makkah.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "img:public/sheikhs/mansour-alkhalidi.jpg",
+      "path": "public/sheikhs/mansour-alkhalidi.jpg",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img:public/sheikhs/mansour-alkhalidi.webp",
+      "path": "public/sheikhs/mansour-alkhalidi.webp",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img:public/sheikhs/othman-alkhamees.jpg",
+      "path": "public/sheikhs/othman-alkhamees.jpg",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img:public/sheikhs/othman-alkhamees.webp",
+      "path": "public/sheikhs/othman-alkhamees.webp",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img:public/sheikhs/salem-altaweel.jpg",
+      "path": "public/sheikhs/salem-altaweel.jpg",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img:public/sheikhs/salem-altaweel.webp",
+      "path": "public/sheikhs/salem-altaweel.webp",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    }
+  ],
+  "audioAllowlist": {
+    "locked": true,
+    "inReleaseBinary": [
+      {
+        "id": "system-default",
+        "class": "APPROVED_FOR_RELEASE",
+        "files": [],
+        "note": "OS notification sound — no app media file"
+      },
+      {
+        "id": "field",
+        "class": "CC0_APPROVED",
+        "files": [
+          "public/audio/adhan/adhan-field.m4a",
+          "public/audio/adhan/adhan-field-short.m4a",
+          "ios/App/App/Sounds/adhan-short-field.caf"
+        ],
+        "evidence": "docs/audio-rights/evidence/wikimedia-adhan-ogg-2026-09-13.html · prayer-audio-rights-registry"
+      },
+      {
+        "id": "field-full",
+        "class": "CC0_APPROVED",
+        "files": [
+          "public/audio/adhan/adhan-field-full.m4a",
+          "ios/App/App/Sounds/adhan-short-field-full.caf"
+        ],
+        "evidence": "docs/audio-rights/evidence/wikimedia-beautiful-adhan-2026-09-13.html · prayer-audio-rights-registry"
+      }
+    ],
+    "candidatesNotInBinary": [
+      {
+        "id": "istanbul",
+        "class": "CC0_ADHAN_REJECTED_QUALITY",
+        "status": "CC0_ADHAN_REJECTED_QUALITY",
+        "inBinary": false,
+        "humanQa": "rejected",
+        "evidence": "docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/HUMAN_QA_RECORD.md",
+        "note": "T-027 reject — Store v1 primary remains system-default; never promote without new QA"
+      }
+    ],
+    "strippedFromRelease": [
+      {
+        "id": "makkah",
+        "class": "INTERNAL",
+        "pattern": "**/adhan-makkah*"
+      },
+      {
+        "id": "egypt",
+        "class": "INTERNAL",
+        "pattern": "**/adhan-egypt*"
+      },
+      {
+        "id": "aqsa",
+        "class": "INTERNAL",
+        "pattern": "**/adhan-aqsa*"
+      },
+      {
+        "id": "gulf",
+        "class": "INTERNAL",
+        "pattern": "**/adhan-gulf*"
+      },
+      {
+        "id": "takbeerat",
+        "class": "INTERNAL",
+        "pattern": "**/adhan-takbeerat*|**/takbeerat*"
+      },
+      {
+        "id": "haram-full",
+        "class": "UNKNOWN",
+        "pattern": "**/adhan-haram*"
+      },
+      {
+        "id": "soft-alert",
+        "class": "UNKNOWN",
+        "pattern": "**/adhan-soft-alert*"
+      },
+      {
+        "id": "madinah",
+        "class": "EXCLUDED",
+        "pattern": "**/adhan-madinah*|**/madinah-general*"
+      },
+      {
+        "id": "qatami",
+        "class": "EXCLUDED",
+        "pattern": "**/qatami*"
+      },
+      {
+        "id": "ios-seq-makkah",
+        "class": "UNKNOWN",
+        "pattern": "**/adhan-seq-makkah*.caf"
+      },
+      {
+        "id": "ios-short-non-cc0",
+        "class": "UNKNOWN",
+        "pattern": "**/adhan-short-{makkah,egypt,aqsa,takbeerat}*.caf"
+      },
+      {
+        "id": "ios-prayer-named",
+        "class": "UNKNOWN",
+        "pattern": "**/prayer_{aqsa,egypt,makkah}.caf"
+      },
+      {
+        "id": "ios-provisional-tones",
+        "class": "STRIP_FROM_RELEASE",
+        "pattern": "**/prayer-alert.caf|**/prayer_{default,clear,quiet,soft,takbeerat}.caf|**/*-ring.caf|**/alarm-clear.caf",
+        "note": "Prefer OS default until OWNER_APPROVED"
+      }
+    ]
+  },
+  "qpc": {
+    "class": "OWNER_DECISION_REQUIRED",
+    "licensedClaimForbidden": true,
+    "grantPath": {
+      "required": "Written QUL/KFGQPC redistribute grant for App Store binary",
+      "evidenceDir": "docs/store-release/license-evidence/",
+      "decisionId": "LIC-01",
+      "then": "Owner flips class to APPROVED_FOR_RELEASE with dated evidence; remove strip"
+    },
+    "stripPath": {
+      "activeForReleaseCandidate": true,
+      "tools": [
+        "scripts/store-strip-unresolved-assets.mjs → dist/fonts/qpc-v2",
+        "artifacts/majalis/scripts/native-strip-qpc-fonts.mjs → ios public fonts"
+      ],
+      "classInReleaseFlavor": "STRIP_FROM_RELEASE"
+    }
+  },
+  "assets": [
+    {
+      "id": "audio:adhan-aqsa-full.mp3",
+      "path": "public/audio/adhan/adhan-aqsa-full.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-egypt-full.m4a",
+      "path": "public/audio/adhan/adhan-egypt-full.m4a",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-field-full.m4a",
+      "path": "public/audio/adhan/adhan-field-full.m4a",
+      "domain": "adhan",
+      "class": "CC0_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "audio:adhan-field-short.m4a",
+      "path": "public/audio/adhan/adhan-field-short.m4a",
+      "domain": "adhan",
+      "class": "CC0_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "audio:adhan-field.m4a",
+      "path": "public/audio/adhan/adhan-field.m4a",
+      "domain": "adhan",
+      "class": "CC0_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "audio:adhan-gulf-short.mp3",
+      "path": "public/audio/adhan/adhan-gulf-short.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-haram-full.m4a",
+      "path": "public/audio/adhan/adhan-haram-full.m4a",
+      "domain": "adhan",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-makkah-fajr.mp3",
+      "path": "public/audio/adhan/adhan-makkah-fajr.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-makkah-full.m4a",
+      "path": "public/audio/adhan/adhan-makkah-full.m4a",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-makkah.mp3",
+      "path": "public/audio/adhan/adhan-makkah.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-soft-alert.m4a",
+      "path": "public/audio/adhan/adhan-soft-alert.m4a",
+      "domain": "adhan",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "audio:adhan-takbeerat-short.mp3",
+      "path": "public/audio/adhan/adhan-takbeerat-short.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "sounds:aqsa-general.mp3",
+      "path": "public/sounds/adhan/aqsa-general.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "sounds:egypt-general.m4a",
+      "path": "public/sounds/adhan/egypt-general.m4a",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "sounds:makkah-fajr.mp3",
+      "path": "public/sounds/adhan/makkah-fajr.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "sounds:makkah-general.m4a",
+      "path": "public/sounds/adhan/makkah-general.m4a",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "sounds:takbeerat-short.mp3",
+      "path": "public/sounds/adhan/takbeerat-short.mp3",
+      "domain": "adhan",
+      "class": "INTERNAL",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "ios-caf:adhan-seq-makkah-01.caf",
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-01.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-seq-makkah-02.caf",
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-02.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-seq-makkah-03.caf",
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-03.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-seq-makkah-04.caf",
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-04.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-short-aqsa.caf",
+      "path": "ios/App/App/Sounds/adhan-short-aqsa.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-short-egypt.caf",
+      "path": "ios/App/App/Sounds/adhan-short-egypt.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-short-field-full.caf",
+      "path": "ios/App/App/Sounds/adhan-short-field-full.caf",
+      "domain": "adhan-ios",
+      "class": "CC0_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "ios-caf:adhan-short-field.caf",
+      "path": "ios/App/App/Sounds/adhan-short-field.caf",
+      "domain": "adhan-ios",
+      "class": "CC0_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "ios-caf:adhan-short-makkah-fajr.caf",
+      "path": "ios/App/App/Sounds/adhan-short-makkah-fajr.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-short-makkah.caf",
+      "path": "ios/App/App/Sounds/adhan-short-makkah.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:adhan-short-takbeerat.caf",
+      "path": "ios/App/App/Sounds/adhan-short-takbeerat.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:alarm-clear.caf",
+      "path": "ios/App/App/Sounds/alarm-clear.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer-alert.caf",
+      "path": "ios/App/App/Sounds/prayer-alert.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_aqsa.caf",
+      "path": "ios/App/App/Sounds/prayer_aqsa.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_clear.caf",
+      "path": "ios/App/App/Sounds/prayer_clear.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_default.caf",
+      "path": "ios/App/App/Sounds/prayer_default.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_egypt.caf",
+      "path": "ios/App/App/Sounds/prayer_egypt.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_makkah.caf",
+      "path": "ios/App/App/Sounds/prayer_makkah.caf",
+      "domain": "adhan-ios",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_quiet.caf",
+      "path": "ios/App/App/Sounds/prayer_quiet.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_soft.caf",
+      "path": "ios/App/App/Sounds/prayer_soft.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:prayer_takbeerat.caf",
+      "path": "ios/App/App/Sounds/prayer_takbeerat.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:short-ring.caf",
+      "path": "ios/App/App/Sounds/short-ring.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:soft-ring.caf",
+      "path": "ios/App/App/Sounds/soft-ring.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "qpc-v2-fonts",
+      "path": "public/fonts/qpc-v2/**",
+      "domain": "fonts",
+      "class": "OWNER_DECISION_REQUIRED",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "fileCount": 604,
+      "grantPath": {
+        "required": "Written QUL/KFGQPC redistribute grant for App Store binary",
+        "evidenceDir": "docs/store-release/license-evidence/",
+        "decisionId": "LIC-01",
+        "then": "Owner flips class to APPROVED_FOR_RELEASE with dated evidence; remove strip"
+      },
+      "stripPath": {
+        "activeForReleaseCandidate": true,
+        "tools": [
+          "scripts/store-strip-unresolved-assets.mjs → dist/fonts/qpc-v2",
+          "artifacts/majalis/scripts/native-strip-qpc-fonts.mjs → ios public fonts"
+        ],
+        "classInReleaseFlavor": "STRIP_FROM_RELEASE"
+      },
+      "licensedClaim": false
+    },
+    {
+      "id": "font-ui:OFL.txt",
+      "path": "public/fonts/ui/OFL.txt",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:amiri-400-ar.woff2",
+      "path": "public/fonts/ui/amiri-400-ar.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:amiri-400-lat.woff2",
+      "path": "public/fonts/ui/amiri-400-lat.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:amiri-700-ar.woff2",
+      "path": "public/fonts/ui/amiri-700-ar.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:amiri-700-lat.woff2",
+      "path": "public/fonts/ui/amiri-700-lat.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:aref-ruqaa-400-ar.woff2",
+      "path": "public/fonts/ui/aref-ruqaa-400-ar.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:aref-ruqaa-700-ar.woff2",
+      "path": "public/fonts/ui/aref-ruqaa-700-ar.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:aref-ruqaa-700-lat.woff2",
+      "path": "public/fonts/ui/aref-ruqaa-700-lat.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:noto-naskh-400-ar.woff2",
+      "path": "public/fonts/ui/noto-naskh-400-ar.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:noto-naskh-400-lat.woff2",
+      "path": "public/fonts/ui/noto-naskh-400-lat.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:noto-naskh-700-ar.woff2",
+      "path": "public/fonts/ui/noto-naskh-700-ar.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "font-ui:scheherazade-400-ar.woff2",
+      "path": "public/fonts/ui/scheherazade-400-ar.woff2",
+      "domain": "fonts",
+      "class": "OFL_APPROVED",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/drawer-open-390x844-dark.png",
+      "path": "public/brand/drawer-open-390x844-dark.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/drawer-open-390x844.png",
+      "path": "public/brand/drawer-open-390x844.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/icon-1024-maskable.png",
+      "path": "public/brand/icon-1024-maskable.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/icon-1024.png",
+      "path": "public/brand/icon-1024.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/icon-512-maskable.png",
+      "path": "public/brand/icon-512-maskable.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/majlisilm-brand-source.png",
+      "path": "public/brand/majlisilm-brand-source.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/official-og.png",
+      "path": "public/brand/official-og.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/official-og.webp",
+      "path": "public/brand/official-og.webp",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/official.png",
+      "path": "public/brand/official.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/official.webp",
+      "path": "public/brand/official.webp",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-adhkar.png",
+      "path": "public/brand/og-adhkar.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-contact.png",
+      "path": "public/brand/og-contact.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-fiqh.png",
+      "path": "public/brand/og-fiqh.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-hadith.png",
+      "path": "public/brand/og-hadith.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-home.png",
+      "path": "public/brand/og-home.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-lessons.png",
+      "path": "public/brand/og-lessons.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-library.png",
+      "path": "public/brand/og-library.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/og-quran.png",
+      "path": "public/brand/og-quran.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/splash-logo.png",
+      "path": "public/brand/splash-logo.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/splash-logo.webp",
+      "path": "public/brand/splash-logo.webp",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/brand/twitter-image.png",
+      "path": "public/brand/twitter-image.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/live/ithraa.svg",
+      "path": "public/images/live/ithraa.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/live/madinah.svg",
+      "path": "public/images/live/madinah.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/live/makkah.svg",
+      "path": "public/images/live/makkah.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/posters/fadat-dawwi-al-usaimi.svg",
+      "path": "public/images/posters/fadat-dawwi-al-usaimi.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/posters/mansour-friday-reading.svg",
+      "path": "public/images/posters/mansour-friday-reading.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/posters/osama-shatti-prayer-book.svg",
+      "path": "public/images/posters/osama-shatti-prayer-book.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/posters/othman-sahih-muslim.svg",
+      "path": "public/images/posters/othman-sahih-muslim.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/posters/othman-tafsir-nahl.svg",
+      "path": "public/images/posters/othman-tafsir-nahl.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/posters/othman-talkhis-almuqni.svg",
+      "path": "public/images/posters/othman-talkhis-almuqni.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/images/posters/rashed-fundamental-course.svg",
+      "path": "public/images/posters/rashed-fundamental-course.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/bandar-almaimouni.svg",
+      "path": "public/sheikhs/bandar-almaimouni.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/daham-abukhashba.svg",
+      "path": "public/sheikhs/daham-abukhashba.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/faisal-zowaid.svg",
+      "path": "public/sheikhs/faisal-zowaid.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/hamed-almesaad.svg",
+      "path": "public/sheikhs/hamed-almesaad.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/hussein-muwaiziri.svg",
+      "path": "public/sheikhs/hussein-muwaiziri.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/mansour-alkhalidi.jpg",
+      "path": "public/sheikhs/mansour-alkhalidi.jpg",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img:public/sheikhs/mansour-alkhalidi.svg",
+      "path": "public/sheikhs/mansour-alkhalidi.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/mansour-alkhalidi.webp",
+      "path": "public/sheikhs/mansour-alkhalidi.webp",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img:public/sheikhs/mutlaq-aljasser.svg",
+      "path": "public/sheikhs/mutlaq-aljasser.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/nasar-alajmi.svg",
+      "path": "public/sheikhs/nasar-alajmi.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/osama-alshatti.svg",
+      "path": "public/sheikhs/osama-alshatti.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/othman-alkhamees.jpg",
+      "path": "public/sheikhs/othman-alkhamees.jpg",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img:public/sheikhs/othman-alkhamees.svg",
+      "path": "public/sheikhs/othman-alkhamees.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/othman-alkhamees.webp",
+      "path": "public/sheikhs/othman-alkhamees.webp",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img:public/sheikhs/rashed-alsulayyim.svg",
+      "path": "public/sheikhs/rashed-alsulayyim.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/saad-otaibi.svg",
+      "path": "public/sheikhs/saad-otaibi.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/salem-altaweel.jpg",
+      "path": "public/sheikhs/salem-altaweel.jpg",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img:public/sheikhs/salem-altaweel.svg",
+      "path": "public/sheikhs/salem-altaweel.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img:public/sheikhs/salem-altaweel.webp",
+      "path": "public/sheikhs/salem-altaweel.webp",
+      "domain": "images",
+      "class": "UNKNOWN",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "img-root:apple-touch-icon.png",
+      "path": "public/apple-touch-icon.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:corner-ornament.svg",
+      "path": "public/corner-ornament.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:favicon-32.png",
+      "path": "public/favicon-32.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:favicon-48.png",
+      "path": "public/favicon-48.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:favicon.ico",
+      "path": "public/favicon.ico",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:favicon.png",
+      "path": "public/favicon.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:favicon.svg",
+      "path": "public/favicon.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:icon-192.png",
+      "path": "public/icon-192.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:icon-192.webp",
+      "path": "public/icon-192.webp",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:icon-512.png",
+      "path": "public/icon-512.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:icon-512.webp",
+      "path": "public/icon-512.webp",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:icon-96.png",
+      "path": "public/icon-96.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:logo-calligraphy-400.png",
+      "path": "public/logo-calligraphy-400.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:logo-calligraphy-400.webp",
+      "path": "public/logo-calligraphy-400.webp",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:logo-calligraphy-800.webp",
+      "path": "public/logo-calligraphy-800.webp",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:logo-calligraphy.png",
+      "path": "public/logo-calligraphy.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:logo-icon.png",
+      "path": "public/logo-icon.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:logo.png",
+      "path": "public/logo.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:og-image.png",
+      "path": "public/og-image.png",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "img-root:star-pattern.svg",
+      "path": "public/star-pattern.svg",
+      "domain": "images",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "recitations-remote",
+      "path": null,
+      "domain": "recitations",
+      "class": "STREAM_ONLY",
+      "releaseAction": "STREAM_ONLY",
+      "inReleaseFlavor": false,
+      "forbidden": [
+        "binary packaging",
+        "offline bundle",
+        "watch distribution",
+        "widget distribution"
+      ]
+    },
+    {
+      "id": "lessons-corpus",
+      "path": null,
+      "domain": "content",
+      "class": "METADATA_ONLY",
+      "releaseAction": "METADATA_ONLY",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "books-corpus",
+      "path": null,
+      "domain": "content",
+      "class": "METADATA_ONLY",
+      "releaseAction": "METADATA_ONLY",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "fatwa-corpus",
+      "path": null,
+      "domain": "content",
+      "class": "METADATA_ONLY",
+      "releaseAction": "METADATA_ONLY",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "hisn-muslim",
+      "path": null,
+      "domain": "content",
+      "class": "OWNER_DECISION_REQUIRED",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false
+    },
+    {
+      "id": "istanbul-cc0-rejected",
+      "path": null,
+      "domain": "adhan",
+      "class": "CC0_ADHAN_REJECTED_QUALITY",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "CC0_ADHAN_REJECTED_QUALITY (T-027) — not in binary; Store v1 = system-default"
+    },
+    {
+      "id": "prayer-calculation-engine",
+      "path": null,
+      "domain": "product",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    },
+    {
+      "id": "system-default-notification",
+      "path": null,
+      "domain": "adhan",
+      "class": "APPROVED_FOR_RELEASE",
+      "releaseAction": "KEEP_IN_RELEASE",
+      "inReleaseFlavor": true
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "measuredAt": "2026-10-02T03:38:25.665Z",
+  "phase": "T-048 APP_STORE_READINESS",
+  "totalItems": 43,
+  "pass": 30,
+  "fail": 0,
+  "ownerAction": 13,
+  "unknown": 0,
+  "screenshots": {
+    "iPhone": {
+      "required": [
+        "Home",
+        "Mushaf",
+        "Lessons",
+        "Prayer",
+        "Dhikr/Cards"
+      ],
+      "status": "MISSING",
+      "ready": false
+    },
+    "iPhoneMax": {
+      "required": [
+        "Home",
+        "Mushaf",
+        "Lessons",
+        "Prayer",
+        "Dhikr/Cards"
+      ],
+      "status": "MISSING",
+      "ready": false
+    },
+    "iPad": {
+      "required": [
+        "Home",
+        "Mushaf",
+        "Lessons",
+        "Prayer",
+        "Dhikr/Cards"
+      ],
+      "status": "MISSING",
+      "ready": false
+    }
+  },
+  "exit": "APP_STORE_READINESS_COMPLETE",
+  "exitCode": "APP_STORE_READINESS_COMPLETE",
+  "note": "Complete means checklist fully classified PASS|OWNER_ACTION with zero UNKNOWN/FAIL. Does not mean STORE_GO or ASC fields already submitted."
+}

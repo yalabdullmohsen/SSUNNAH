@@ -1,19 +1,25 @@
 /**
- * رأس قراءة مركّز لقصص الأنبياء — رجوع + عنوان فقط.
+ * رأس قراءة مركّز لقصص الأنبياء — رجوع موحّد + عنوان فقط.
  * يظهر فقط داخل ProphetStoryReader (مسار immersive).
  * بلا استماع ولا تكبير/تصغير خط (PR-1 إعادة التصميم).
  */
 import type { ReactNode } from "react";
-import { Button } from "@/components/ui/button";
+import { AppBackButton } from "@/components/common/AppBackButton";
 
 type Props = {
   title: string;
-  onBack: () => void;
+  /** @deprecated يُتجاهل — الرجوع عبر AppBackButton + fallbackHref */
+  onBack?: () => void;
   /** اختياري — إجراءات حقيقية فقط؛ لا تُمرَّر أدوات استماع/خط */
   actions?: ReactNode;
+  fallbackHref?: string;
 };
 
-export function ProphetStoryReaderHeader({ title, onBack, actions }: Props) {
+export function ProphetStoryReaderHeader({
+  title,
+  actions,
+  fallbackHref = "/prophets",
+}: Props) {
   return (
     <header
       className="prophet-reader-header"
@@ -21,15 +27,14 @@ export function ProphetStoryReaderHeader({ title, onBack, actions }: Props) {
       data-testid="prophet-reader-header"
       data-has-actions={actions ? "1" : "0"}
     >
-      <Button
-        type="button"
+      <AppBackButton
+        variant="inline"
+        fallbackHref={fallbackHref}
         className="prophet-reader-header__back mj-pressable"
-        onClick={onBack}
+        label="رجوع"
         aria-label="العودة إلى قائمة الأنبياء"
         data-testid="prophet-reader-back"
-      >
-        رجوع
-      </Button>
+      />
       <h1 className="prophet-reader-header__title">{title}</h1>
       {actions ? <div className="prophet-reader-header__actions">{actions}</div> : null}
     </header>

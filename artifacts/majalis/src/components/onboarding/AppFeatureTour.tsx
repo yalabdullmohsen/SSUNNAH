@@ -10,6 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { markFeatureTourCompleted } from "@/lib/feature-tour-state";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/feature-tour.css";
 
 export type FeatureTourSlide = {
@@ -161,9 +162,11 @@ export function AppFeatureTour({ open, onClose, persistOnExit = true }: Props) {
 
         <div className="feature-tour-dots" role="tablist" aria-label="شرائح جولة المزايا">
           {FEATURE_TOUR_SLIDES.map((s, i) => (
-            <button
+            <Button
               key={s.id}
               type="button"
+              variant="ghost"
+              size="icon"
               role="tab"
               className={`feature-tour-dot${i === index ? " is-active" : ""}`}
               aria-selected={i === index}
@@ -175,30 +178,33 @@ export function AppFeatureTour({ open, onClose, persistOnExit = true }: Props) {
 
         <footer className="feature-tour-footer">
           <div className="feature-tour-nav">
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className="feature-tour-btn feature-tour-btn--ghost"
               onClick={finish}
             >
               {isLast ? "إغلاق" : "تخطّي"}
-            </button>
+            </Button>
             <div className="feature-tour-nav__mid">
               {index > 0 ? (
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
                   className="feature-tour-btn feature-tour-btn--ghost"
                   onClick={goPrev}
                 >
                   السابق
-                </button>
+                </Button>
               ) : null}
-              <button
+              <Button
                 type="button"
+                variant="primary"
                 className="feature-tour-btn feature-tour-btn--primary"
                 onClick={goNext}
               >
                 {isLast ? "تم" : "التالي"}
-              </button>
+              </Button>
             </div>
           </div>
         </footer>

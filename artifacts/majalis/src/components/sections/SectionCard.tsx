@@ -1,6 +1,5 @@
 import { memo } from "react";
-import { Button } from "@/components/ui/button";
-import { useLocation } from "wouter";
+import { InteractiveCard } from "@/components/design-system/SurfacePrimitives";
 import { isSectionComingSoon, type SectionDef } from "@/config/sections.registry";
 import { COMING_SOON_LABEL } from "@/lib/ui-copy";
 import { prefetchRoute } from "@/lib/prefetch-route";
@@ -12,22 +11,10 @@ type Props = {
   onNavigate?: () => void;
 };
 
-function go(href: string, setLocation: (h: string) => void) {
-  const [path, hash] = href.split("#");
-  if (path) setLocation(path);
-  window.scrollTo(0, 0);
-  if (hash) {
-    window.setTimeout(() => {
-      document.getElementById(hash)?.scrollIntoView({ behavior: "auto", block: "nearest" });
-    }, 40);
-  }
-}
-
 /**
- * بطاقة متوسطة محايدة (شبكة عمودين) — بلا تدرّج أخضر.
+ * بطاقة متوسطة محايدة (شبكة عمودين) — سطح عبر InteractiveCard / AppCard.
  */
 export const SectionCard = memo(function SectionCard({ section, className, onNavigate }: Props) {
-  const [, setLocation] = useLocation();
   const Icon = section.icon;
   const subtitle = section.subtitle?.trim();
   const soon = isSectionComingSoon(section);
@@ -38,23 +25,20 @@ export const SectionCard = memo(function SectionCard({ section, className, onNav
       : section.label;
 
   return (
-    <Button
-      type="button"
+    <InteractiveCard
+      href={soon ? undefined : section.route}
+      title={aria}
+      aria-label={aria}
+      disabled={soon}
       dir="rtl"
       data-section-card="1"
       data-section-id={section.id}
       data-coming-soon={soon ? "1" : undefined}
-      aria-label={aria}
-      data-cs-card="1"
       data-cs-type="section"
-      className={cn("card cs-card cs-section",
-        soon && "card--coming-soon",
-        className,
-      )}
-      onPointerDown={() => prefetchRoute(section.route)}
-      onClick={() => {
-        go(section.route, setLocation);
-        onNavigate?.();
+      className={cn("card cs-section", soon && "card--coming-soon", className)}
+      onNavigate={onNavigate}
+      onPointerDown={() => {
+        if (!soon) prefetchRoute(section.route);
       }}
     >
       <span className="card__icon" aria-hidden>
@@ -69,6 +53,6 @@ export const SectionCard = memo(function SectionCard({ section, className, onNav
         ) : null}
       </span>
       {subtitle ? <span className="card__subtitle">{subtitle}</span> : null}
-    </Button>
+    </InteractiveCard>
   );
 });

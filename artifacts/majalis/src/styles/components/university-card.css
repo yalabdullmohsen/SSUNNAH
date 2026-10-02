@@ -18,7 +18,7 @@
 .univ-card__head-avatar {
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 16px;
+  border-radius: var(--sf-radius-md);
   display: grid;
   place-items: center;
   background: color-mix(in srgb, var(--mj-brand, #146b52) 12%, transparent);
@@ -88,7 +88,7 @@ html[data-theme="dark"] .univ-card__name {
   align-items: center;
   gap: 0.35rem;
   padding: 0.25rem 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   background: color-mix(in srgb, var(--mj-brand, #146b52) 12%, transparent);
   font-size: 0.78rem;
 }
@@ -103,7 +103,7 @@ html[data-theme="dark"] .univ-card__name {
 .compare-bar__clear {
   border: 1px solid var(--mj-hairline, #d9d3c8);
   background: transparent;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   padding: 0.35rem 0.75rem;
   font: inherit;
   cursor: pointer;

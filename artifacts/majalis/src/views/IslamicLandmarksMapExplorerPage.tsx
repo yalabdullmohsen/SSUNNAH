@@ -13,6 +13,7 @@ import {
 } from "@/lib/islamic-landmarks-data";
 import { navigateTo } from "@/lib/navigation-intent";
 import { ScreenTitle, SupportingText } from "@/components/design-system/text";
+import { Button } from "@/components/ui/button";
 import "@/styles/islamic-landmarks.css";
 import "leaflet/dist/leaflet.css";
 
@@ -69,26 +70,28 @@ export default function IslamicLandmarksMapExplorerPage() {
       </header>
 
       <div className="ilm-explorer__chips" role="tablist" aria-label="تصفية النوع على الخريطة">
-        <button
+        <Button
           type="button"
+          variant="ghost"
           role="tab"
           aria-selected={typeFilter === "الكل"}
           className={`ilm-chip${typeFilter === "الكل" ? " ilm-chip--active" : ""}`}
           onClick={() => setTypeFilter("الكل")}
         >
           الكل
-        </button>
+        </Button>
         {LANDMARK_TYPES.map((type) => (
-          <button
+          <Button
             key={type}
             type="button"
+            variant="ghost"
             role="tab"
             aria-selected={typeFilter === type}
             className={`ilm-chip${typeFilter === type ? " ilm-chip--active" : ""}`}
             onClick={() => setTypeFilter(type)}
           >
             {type}
-          </button>
+          </Button>
         ))}
       </div>
 

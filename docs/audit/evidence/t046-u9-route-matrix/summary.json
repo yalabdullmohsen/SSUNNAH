@@ -1,0 +1,83 @@
+{
+  "measuredAt": "2026-10-02T03:11:27.581Z",
+  "phase": "T-046 U9_ROUTE_MATRIX",
+  "source": "docs/audit/ROUTE_QUALITY_MATRIX.json + AppRoutes.tsx",
+  "totalRoutes": 416,
+  "qualityMatrixRoutes": 415,
+  "publicOrNonAdmin": 374,
+  "adminOnly": 42,
+  "classificationCounts": {
+    "PUBLIC": 233,
+    "UTILITY": 111,
+    "ACCOUNT": 4,
+    "SETTINGS": 3,
+    "ADMIN_ONLY": 42,
+    "AUTH": 5,
+    "LEGAL": 11,
+    "IMMERSIVE": 7
+  },
+  "unclassified": 0,
+  "closedRoutes": 416,
+  "passClosure": 122,
+  "keepJustifiedClosure": 294,
+  "openRouteDebtCount": 294,
+  "priorityPublicCoverage": {
+    "/": {
+      "classification": "PUBLIC",
+      "closure": "PASS",
+      "status": "CLOSED"
+    },
+    "/search": {
+      "classification": "PUBLIC",
+      "closure": "PASS",
+      "status": "CLOSED"
+    },
+    "/quran-hub": {
+      "classification": "PUBLIC",
+      "closure": "PASS",
+      "status": "CLOSED"
+    },
+    "/mushaf": {
+      "classification": "IMMERSIVE",
+      "closure": "KEEP_JUSTIFIED",
+      "status": "CLOSED"
+    },
+    "/prayer-times": {
+      "classification": "PUBLIC",
+      "closure": "KEEP_JUSTIFIED",
+      "status": "CLOSED"
+    },
+    "/lessons": {
+      "classification": "PUBLIC",
+      "closure": "PASS",
+      "status": "CLOSED"
+    },
+    "/hadith": {
+      "classification": "PUBLIC",
+      "closure": "PASS",
+      "status": "CLOSED"
+    },
+    "/fiqh": {
+      "classification": "PUBLIC",
+      "closure": "PASS",
+      "status": "CLOSED"
+    },
+    "/library": {
+      "classification": "UTILITY",
+      "closure": "PASS",
+      "status": "CLOSED"
+    },
+    "/account": {
+      "classification": "ACCOUNT",
+      "closure": "KEEP_JUSTIFIED",
+      "status": "CLOSED"
+    },
+    "/settings": {
+      "classification": "SETTINGS",
+      "closure": "KEEP_JUSTIFIED",
+      "status": "CLOSED"
+    }
+  },
+  "exit": "ROUTES_CLASSIFIED_AND_CLOSED",
+  "exitCode": "ROUTES_CLASSIFIED_AND_CLOSED"
+}

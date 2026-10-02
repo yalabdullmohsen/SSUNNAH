@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, PointerEvent, ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -24,9 +25,11 @@ export function Pressable({
   };
 
   return (
-    <button
+    <Button
       type={type}
+      variant="ghost"
       className={cn("mj-pressable", className)}
+      {...props}
       onPointerDown={(e: PointerEvent<HTMLButtonElement>) => {
         if (e.button !== 0) return;
         setPressed(e.currentTarget, true);
@@ -44,9 +47,8 @@ export function Pressable({
         setPressed(e.currentTarget, false);
         onPointerLeave?.(e);
       }}
-      {...props}
     >
       {children}
-    </button>
+    </Button>
   );
 }

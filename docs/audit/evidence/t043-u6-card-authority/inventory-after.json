@@ -1,0 +1,768 @@
+{
+  "summary": {
+    "measuredAt": "2026-10-02T02:33:49.049Z",
+    "softCardRefs": 340,
+    "softCardFiles": 104,
+    "tsxSoftCardConsumers": 0,
+    "softByDecision": {
+      "KEEP_JUSTIFIED": 284,
+      "DEAD_PROVEN": 56
+    },
+    "migratedComponents": [
+      "RelatedContentCard→InteractiveCard",
+      "SectionCard→InteractiveCard",
+      "FeaturedSectionCard/HeroActionCard→InteractiveCard",
+      "ReadingSectionCard→AppCard",
+      "UnifiedLessonCard→AppCard"
+    ],
+    "justifiedFamilies": [
+      "FeatureCard (AppCard façade)",
+      "HadithCard (AppCard)",
+      "SectionEntryCard/HubCard (authority)",
+      "CSS .soft-card remaps (0 TSX consumers)",
+      "ContentCard/CardSystem hierarchy (authority doc)"
+    ],
+    "visualBefore": {
+      "boxShadowDecls": 1113,
+      "borderRadiusPxDecls": 1258,
+      "zIndexRawDecls": 258
+    },
+    "visualAfter": {
+      "boxShadowDecls": 1113,
+      "borderRadiusPxDecls": 1243,
+      "zIndexRawDecls": 258
+    },
+    "exit": "CARD_AUTHORITY_ONLY"
+  },
+  "softFiles": [
+    {
+      "file": "styles/green-surface-system.css",
+      "count": 23,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/premium-dark-refine.css",
+      "count": 19,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/card-system.css",
+      "count": 18,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "AUTHORITY token/surface sheets"
+    },
+    {
+      "file": "styles/pages/app-shell-v2.css",
+      "count": 17,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/dark-mode-surfaces.css",
+      "count": 16,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/dark-design-system.css",
+      "count": 15,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/modern-ui-refresh.css",
+      "count": 15,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/card-decorative-strip-cleanup.css",
+      "count": 13,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/lessons.css",
+      "count": 12,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/section-cards-theme.css",
+      "count": 10,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/knowledge-experience.css",
+      "count": 8,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/ssunnah-card-unify.css",
+      "count": 7,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/card-system-tokens.css",
+      "count": 6,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "AUTHORITY token/surface sheets"
+    },
+    {
+      "file": "styles/components/islamic-quiz-game.css",
+      "count": 6,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/theme-aliases.css",
+      "count": 6,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "lib/__tests__/lesson-cards-soft-gate.test.ts",
+      "count": 5,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "styles/islam-intro-experience.css",
+      "count": 5,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/home-dashboard-v2.css",
+      "count": 5,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/worship-history-v2.css",
+      "count": 5,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "lib/__tests__/quiz-soft-card-gate.test.ts",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/settings-rows-unify-gate.test.ts",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/universities-knowledge-keep-previous-gate.test.ts",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "styles/card-matte-unify.css",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/interaction-states.css",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/learn-legal-v2.css",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "app/styles/theme.css",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "lib/__tests__/calendar-rulings-soft-gate.test.ts",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/card-matte-unify-gate.test.ts",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/dark-design-system-gate.test.ts",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/mj-card-ldb-hero-unify-gate.test.ts",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/soft-cards-system-gate.test.ts",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "styles/pages/search.css",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/visual-layer-contrast-fix.css",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "lib/__tests__/account-tools-soft-gate.test.ts",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/dark-mode-interaction-states-gate.test.ts",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/stories-mawarith-soft-gate.test.ts",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/sunnah-pr5-sections-visual-gate.test.ts",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/worship-cards-soft-gate.test.ts",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "styles/components/ipad-responsive-layout.css",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/discover-islam.css",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/index-deferred-pages.css",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/ssunnah-ds-canonical.css",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/sunnah-identity-reset.css",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "lib/__tests__/boot-fouc-fonts-mushaf-gate.test.ts",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "lib/__tests__/card-system-gate.test.ts",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/dark-unified-system-gate.test.ts",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/directory-catalogs-quality-gate.test.ts",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/hadith-card-soft-gate.test.ts",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/hadith-experience-redesign-gate.test.ts",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/home-cards-appcard-gate.test.ts",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/institutions-discover-gate.test.ts",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/modern-ui-refresh-gate.test.ts",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/mushaf-anti-regression-guard.test.ts",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "lib/__tests__/quran-prayer-keep-previous-gate.test.ts",
+      "count": 1,
+      "pathClass": "PRAYER_SPECIAL",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "PRAYER_SPECIAL"
+    },
+    {
+      "file": "lib/__tests__/search-result-card-soft-gate.test.ts",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/section-cards-theme-gate.test.ts",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/soft-section-heroes-gate.test.ts",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/sunnah-ui-refinement-gate.test.ts",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/ui-regression-checklist-gate.test.ts",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "lib/__tests__/visual-redesign-v2-tokens-gate.test.ts",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN",
+      "reason": "test asserts absence/compat"
+    },
+    {
+      "file": "styles/components/reading-section-card.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/dark-mode-recovery.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/final-release.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/ios-edge.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/adab-talab-ilm.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/alamat-saah.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/arbaeen-nawawi.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/arkan-iman.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/arkan-islam.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/asmaa-husna.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/duas-quran.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/duas.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/fadail-aamal.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/fiqh-guide.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/glossary.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/hadith-mustalah.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/hajj.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/hikam-salaf.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/islam-stats.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/janaza.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/learning-path-dashboard.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/madhahib.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/malaika.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/notifications.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/occasions.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/quran-hub-v2.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/quran-hub.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/raqaiq.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/researches.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/sahabah.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/salah-guide.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/sawm.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/seerah.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/shimael.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/sunan-yawmiyya.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/tafsir.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/tahara.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/tawba.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/tawhid.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/ulum-quran.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/pages/zakat.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/ssunnah-screen-patterns.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/sunnah-identity-cards.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    },
+    {
+      "file": "styles/sunnah-identity-luxury-night.css",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "CSS_COMPAT_REMAP — no TSX className consumers; selectors remap to AppCard tokens"
+    }
+  ],
+  "authorityConsumerCount": 37
+}

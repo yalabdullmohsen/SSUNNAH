@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import type { HistoryCategory, HistoryEraMeta } from "@/data/islamic-history";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   /** عند المسار الكامل يُعرض ملخص عام بدل مرحلة واحدة */
@@ -51,15 +52,16 @@ export function HistoryStageIndicator({
       aria-label={`المرحلة الحالية: ${title}`}
     >
       <div className="tarikh-stage__row">
-        <button
+        <Button
           type="button"
+          variant="ghost"
           className="tarikh-stage__nav"
           onClick={onPrev}
           disabled={!onPrev}
           aria-label={prevLabel ? `المرحلة السابقة: ${prevLabel}` : "المرحلة السابقة"}
         >
           السابق
-        </button>
+        </Button>
         <div className="tarikh-stage__main">
           <p className="tarikh-stage__kicker">{kicker}</p>
           <p className="tarikh-stage__title">{title}</p>
@@ -67,15 +69,16 @@ export function HistoryStageIndicator({
             {[period, `${eventCount} حدثًا`].filter(Boolean).join(" · ")}
           </p>
         </div>
-        <button
+        <Button
           type="button"
+          variant="ghost"
           className="tarikh-stage__nav"
           onClick={onNext}
           disabled={!onNext}
           aria-label={nextLabel ? `المرحلة التالية: ${nextLabel}` : "المرحلة التالية"}
         >
           التالي
-        </button>
+        </Button>
       </div>
       <div
         className="tarikh-stage__progress"

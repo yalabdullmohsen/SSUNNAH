@@ -5,6 +5,7 @@ import {
   type BadgeTone,
   toPublicLabel,
 } from "@/lib/label-display";
+import { Button } from "@/components/ui/button";
 
 export type StatusBadgeProps = {
   /** نص ظاهر مباشرة، أو مفتاح تقني يُترجم عبر label-display */
@@ -93,14 +94,15 @@ export function FilterChip({
   className?: string;
 }) {
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
       className={`mj-filter filter-chips__chip ${active ? "is-active" : ""} ${className}`.trim()}
       aria-pressed={active}
       onClick={onClick}
     >
       <span className="filter-chips__label">{label}</span>
-    </button>
+    </Button>
   );
 }
 

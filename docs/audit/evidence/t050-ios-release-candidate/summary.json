@@ -1,0 +1,99 @@
+{
+  "measuredAt": "2026-10-02T04:05:00.000Z",
+  "phase": "T-050 IOS_RELEASE_CANDIDATE_READY",
+  "storeSourceCommit": "8be8ed1b577d257b82be2893430c5626242132da",
+  "version": "1.0",
+  "buildNumber": "54",
+  "archiveIdentifier": {
+    "path": "/tmp/sunnah-t049.xcarchive",
+    "name": "App",
+    "creationDate": "2026-10-02T06:50:47+03:00",
+    "infoPlistMd5": "1dd45d73c945dafbcf6b9b83e3f91b67"
+  },
+  "prerequisites": {
+    "testflight": "TESTFLIGHT_INTERNAL_NOT_CERTIFIED",
+    "storeReadiness": "APP_STORE_READINESS_COMPLETE",
+    "releaseContent": "STORE_RELEASE_CONTENT_CLEARED",
+    "deviceMatrix": "IOS_DEVICE_MATRIX_INCOMPLETE",
+    "performance": "MOBILE_PERFORMANCE_NOT_CERTIFIED",
+    "accessibility": "IOS_ACCESSIBILITY_NOT_CERTIFIED"
+  },
+  "noteCurrentStateCorrection": {
+    "TestFlight": "NOT_CERTIFIED (prompt claimed CERTIFIED)",
+    "DeviceMatrix": "INCOMPLETE (prompt claimed COMPLETE)",
+    "Performance": "NOT_CERTIFIED (prompt omitted)"
+  },
+  "binary": {
+    "status": "FAIL",
+    "appStoreExport": "FAIL",
+    "testFlightUpload": "NONE",
+    "reason": "Inherited T-049 export failure (PrayerWidget profile + App Groups)"
+  },
+  "install": {
+    "clean": "FAIL",
+    "upgrade": "FAIL",
+    "reinstall": "FAIL",
+    "iPhone": "FAIL",
+    "iPad": "FAIL"
+  },
+  "smoke": {
+    "status": "FAIL",
+    "reason": "No TestFlight RC binary"
+  },
+  "device": {
+    "status": "FAIL",
+    "matrix": "INCOMPLETE",
+    "widgets": "UNPROVEN_ON_TF",
+    "watch": "NOT_APPLICABLE",
+    "liveActivity": "UNPROVEN_ON_TF",
+    "notifications": "UNPROVEN_ON_TF",
+    "deepLinks": "UNPROVEN_ON_TF",
+    "authentication": "UNPROVEN_ON_TF",
+    "offline": "UNPROVEN_ON_TF",
+    "mushaf": "UNPROVEN_ON_TF",
+    "prayer": "UNPROVEN_ON_TF",
+    "crashes": "UNPROVEN"
+  },
+  "boundary": {
+    "status": "PASS",
+    "RELEASE_BINARY_HAS_ZERO_UNKNOWN_ASSETS": true,
+    "STREAM_ONLY": true,
+    "AUDIO_RELEASE_ALLOWLIST_LOCKED": true,
+    "STORE_RELEASE_CONTENT_CLEARED": true,
+    "evidenceInherited": "docs/audit/evidence/t049-testflight-internal/boundary-check.log"
+  },
+  "finalChecklist": {
+    "deviceMatrixComplete": false,
+    "accessibilityComplete": false,
+    "performanceComplete": false,
+    "storeReadinessComplete": true,
+    "privacyReadinessComplete": false,
+    "contentBoundaryComplete": true
+  },
+  "boards": {
+    "Binary": "FAIL",
+    "Install": "FAIL",
+    "Smoke": "FAIL",
+    "Boundary": "PASS",
+    "Device": "FAIL"
+  },
+  "blockingFailures": [
+    "TESTFLIGHT_PREREQ_NOT_CERTIFIED",
+    "EXPORT_FAILED_APP_GROUPS_PROFILES",
+    "NO_TESTFLIGHT_RC_BINARY",
+    "DEVICE_MATRIX_INCOMPLETE",
+    "ACCESSIBILITY_NOT_CERTIFIED",
+    "PERFORMANCE_NOT_CERTIFIED",
+    "INSTALL_SMOKE_UNPROVEN"
+  ],
+  "ownerActions": [
+    "Refresh store profiles with App Groups + PrayerWidget",
+    "Upload pinned build to TestFlight Internal",
+    "Complete device matrix + a11y + performance evidence",
+    "ASC privacy/listing/screenshots OWNER rows"
+  ],
+  "mushafContentModified": false,
+  "exit": "IOS_RELEASE_CANDIDATE_NOT_READY",
+  "exitCode": "IOS_RELEASE_CANDIDATE_NOT_READY",
+  "verdict": "FAIL"
+}

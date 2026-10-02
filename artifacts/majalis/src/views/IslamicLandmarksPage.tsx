@@ -156,26 +156,28 @@ export default function IslamicLandmarksPage() {
             </div>
 
             <div className="ilm-chips" role="tablist" aria-label="تصنيفات المواقع">
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 role="tab"
                 aria-selected={activeType === "الكل"}
                 className={`ilm-chip${activeType === "الكل" ? " ilm-chip--active" : ""}`}
                 onClick={() => setActiveType("الكل")}
               >
                 الكل
-              </button>
+              </Button>
               {LANDMARK_TYPES.map((type) => (
-                <button
+                <Button
                   key={type}
                   type="button"
+                  variant="ghost"
                   role="tab"
                   aria-selected={activeType === type}
                   className={`ilm-chip${activeType === type ? " ilm-chip--active" : ""}`}
                   onClick={() => setActiveType(type)}
                 >
                   {type}
-                </button>
+                </Button>
               ))}
             </div>
 

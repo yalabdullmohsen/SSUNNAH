@@ -59,6 +59,7 @@ import {
   type QaSortMode,
 } from "@/lib/qa-utils";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 function Disclaimer() {
   return (
@@ -272,10 +273,11 @@ export default function QaPage({
       />
       <div className="qa-sort-row qa-v2-sort-row" role="radiogroup" aria-label="ترتيب الأسئلة">
         {(Object.keys(QA_SORT_LABELS) as QaSortMode[]).map((mode) => (
-          <button
+          <Button
             key={mode}
             role="radio"
             type="button"
+            variant="ghost"
             className={`content-hub-chip${sortMode === mode ? " content-hub-chip--active" : ""}`}
             onClick={() => {
               setSortMode(mode);
@@ -284,7 +286,7 @@ export default function QaPage({
             aria-checked={sortMode === mode}
           >
             {QA_SORT_LABELS[mode]}
-          </button>
+          </Button>
         ))}
       </div>
       <section className="qa-v2-categories" aria-labelledby="qa-categories-heading">
@@ -293,24 +295,26 @@ export default function QaPage({
           <QaSkeleton count={4} />
         ) : (
           <div className="qa-v2-category-grid">
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className={`qa-v2-category-card${categorySlug === "all" ? " is-active" : ""}`}
               onClick={() => setCategorySlug("all")}
             >
               <span className="qa-v2-category-card__name">الكل</span>
               {isAdmin && <span className="qa-v2-category-card__count">{items.length}</span>}
-            </button>
+            </Button>
             {categoryGrid.map((cat) => (
-              <button
+              <Button
                 key={cat.slug}
                 type="button"
+                variant="ghost"
                 className={`qa-v2-category-card${categorySlug === cat.slug || categorySlug === cat.id ? " is-active" : ""}`}
                 onClick={() => setCategorySlug(cat.slug)}
               >
                 <span className="qa-v2-category-card__name">{cat.name}</span>
                 {isAdmin && <span className="qa-v2-category-card__count">{cat.count}</span>}
-              </button>
+              </Button>
             ))}
           </div>
         )}
@@ -345,9 +349,9 @@ export default function QaPage({
         <section className="qa-random-highlight">
           <h2 className="qa-random-title">سؤال عشوائي</h2>
           <QaCard item={randomItem} defaultOpen />
-          <button type="button" className="qa-random-refresh ds-btn ds-btn--ghost ds-btn--sm" onClick={handleRandom}>
+          <Button type="button" variant="ghost" className="qa-random-refresh ds-btn ds-btn--ghost ds-btn--sm" onClick={handleRandom}>
             سؤال آخر
-          </button>
+          </Button>
         </section>
       )}
 

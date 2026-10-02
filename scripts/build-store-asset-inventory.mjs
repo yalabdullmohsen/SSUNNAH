@@ -1,5 +1,5 @@
 /**
- * T-026 — Store Asset Inventory + Release Flavor Unknown=0 gate.
+ * T-026/T-047 — Store Asset Inventory + Release Flavor Unknown=0 gate.
  *
  * Usage:
  *   node scripts/build-store-asset-inventory.mjs
@@ -240,13 +240,13 @@ const logical = [
     inReleaseFlavor: false,
   },
   {
-    id: "istanbul-cc0-candidate",
+    id: "istanbul-cc0-rejected",
     path: null,
     domain: "adhan",
-    class: "CC0_CANDIDATE",
+    class: "CC0_ADHAN_REJECTED_QUALITY",
     releaseAction: "STRIP_FROM_RELEASE",
     inReleaseFlavor: false,
-    note: "CC0_ADHAN_CANDIDATE — Human QA pending; not in binary",
+    note: "CC0_ADHAN_REJECTED_QUALITY (T-027) — not in binary; Store v1 = system-default",
   },
   {
     id: "prayer-calculation-engine",
@@ -292,11 +292,13 @@ const summary = {
   AUDIO_RELEASE_ALLOWLIST_LOCKED: Boolean(allowlist.audioAllowlist?.locked),
   STORE_RELEASE_CONTENT_CLEARED:
     releaseUnknown.length === 0 && Boolean(allowlist.audioAllowlist?.locked),
+  THIRD_PARTY_NOTICES_COMPLETE: existsSync(join(root, "docs/store-release/THIRD_PARTY_NOTICES.md")),
+  ATTRIBUTIONS_COMPLETE: existsSync(join(root, "docs/store-release/ATTRIBUTIONS.md")),
 };
 
 const report = {
   schemaVersion: 2,
-  phase: "T-026",
+  phase: "T-047",
   generatedAtUtc: new Date().toISOString(),
   allowlistPath: "docs/store-release/STORE_RELEASE_ALLOWLIST.json",
   summary,
@@ -337,13 +339,28 @@ if (checkRelease) {
   if (allowlist.recitations?.class !== "STREAM_ONLY") {
     failures.push("recitations must remain STREAM_ONLY");
   }
-  // Istanbul must not be in binary keep list
+  // Istanbul must not be in binary keep list (T-027 rejected quality)
   const istanbulInBinary = (allowlist.audioAllowlist.inReleaseBinary || []).some((r) => r.id === "istanbul");
-  if (istanbulInBinary) failures.push("istanbul must not be inReleaseBinary until Human QA");
-  const istanbulCand = (allowlist.audioAllowlist.candidatesNotInBinary || []).some(
-    (r) => r.id === "istanbul" && r.class === "CC0_CANDIDATE",
-  );
-  if (!istanbulCand) failures.push("istanbul must remain CC0_CANDIDATE / not in binary");
+  if (istanbulInBinary) failures.push("istanbul must not be inReleaseBinary");
+  const istanbulRow = (allowlist.audioAllowlist.candidatesNotInBinary || []).find((r) => r.id === "istanbul");
+  if (!istanbulRow || istanbulRow.inBinary === true) {
+    failures.push("istanbul must remain candidatesNotInBinary with inBinary=false");
+  }
+  const istanbulOk =
+    istanbulRow &&
+    (istanbulRow.class === "CC0_ADHAN_REJECTED_QUALITY" || istanbulRow.class === "CC0_CANDIDATE");
+  if (!istanbulOk) {
+    failures.push("istanbul class must be CC0_ADHAN_REJECTED_QUALITY (or legacy CC0_CANDIDATE)");
+  }
+  if (!existsSync(join(root, "docs/store-release/THIRD_PARTY_NOTICES.md"))) {
+    failures.push("missing docs/store-release/THIRD_PARTY_NOTICES.md");
+  }
+  if (!existsSync(join(root, "docs/store-release/ATTRIBUTIONS.md"))) {
+    failures.push("missing docs/store-release/ATTRIBUTIONS.md");
+  }
+  if (summary.THIRD_PARTY_NOTICES_COMPLETE !== true || summary.ATTRIBUTIONS_COMPLETE !== true) {
+    failures.push("THIRD_PARTY_NOTICES_COMPLETE and ATTRIBUTIONS_COMPLETE required");
+  }
 
   // Dist binary scan only after store:strip (STORE_CHECK_DIST / --check-dist)
   const dist = join(majalis, "dist");

@@ -6,6 +6,7 @@ import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 
 type TawbaTab = "shurut" | "anwaa" | "adhkar" | "mawani" | "athaar";
@@ -275,10 +276,11 @@ export default function TawbaPage() {
       {/* tabs */}
       <div className="tw-tabs-bar" role="tablist" aria-label="أقسام التوبة">
         {TABS.map((t) => (
-          <button
+          <Button
             key={t.id}
             id={`twb-tab-${t.id}`}
             type="button"
+            variant="ghost"
             role="tab"
             className={`tw-tab${tab === t.id ? " tw-tab--active" : ""}`}
             onClick={() => setTab(t.id)}
@@ -287,7 +289,7 @@ export default function TawbaPage() {
           >
             <span className="tw-tab__icon"><SectionIcon name={t.icon} size={20} /></span>
             <span className="tw-tab__label">{t.label}</span>
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -370,15 +372,16 @@ export default function TawbaPage() {
                 const isOpen = openDhikr === i;
                 return (
                   <div key={i} className={`tw-dhikr-card${isOpen ? " tw-dhikr-card--open" : ""}`}>
-                    <button
+                    <Button
                       type="button"
+                      variant="ghost"
                       className="tw-dhikr-head"
                       onClick={() => setOpenDhikr(isOpen ? null : i)}
                     >
                       <span className="tw-dhikr-num">{i + 1}</span>
                       {d.times && <span className="tw-dhikr-times">{d.times}</span>}
                       <span className={`tw-dhikr-chevron${isOpen ? " tw-dhikr-chevron--open" : ""}`}>▾</span>
-                    </button>
+                    </Button>
                     <p className="tw-dhikr-arabic">{d.arabic}</p>
                     {isOpen && (
                       <div className="tw-dhikr-body">

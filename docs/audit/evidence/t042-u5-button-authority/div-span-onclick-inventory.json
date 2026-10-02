@@ -1,0 +1,376 @@
+{
+  "total": 46,
+  "byDecision": {
+    "KEEP_JUSTIFIED": 46
+  },
+  "items": [
+    {
+      "file": "components/AdminInlineEdit.tsx",
+      "line": 231,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className=\"aie-overlay\" onClick="
+    },
+    {
+      "file": "components/AdminSiteEditBar.tsx",
+      "line": 100,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className=\"ase-overlay\" onClick="
+    },
+    {
+      "file": "components/ComingSoonDialog.tsx",
+      "line": 38,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"bottom-sheet-overlay\" role=\"presentation\" onClick="
+    },
+    {
+      "file": "components/ComingSoonDialog.tsx",
+      "line": 39,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"bottom-sheet coming-soon-dialog\" role=\"dialog\" aria-modal=\"true\" aria-la"
+    },
+    {
+      "file": "components/GlobalSearchModal.tsx",
+      "line": 343,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className={`gsm-overlay${isMobile ? \" gsm-overlay--mobile\" : \"\"}`} onClick="
+    },
+    {
+      "file": "components/GlobalSearchModal.tsx",
+      "line": 349,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className={`gsm-card${isMobile ? \" gsm-card--mobile\" : \"\"}`} onClick="
+    },
+    {
+      "file": "components/QuranViewer.tsx",
+      "line": 553,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "PRESENTATION_SURFACE non-CTA click catcher",
+      "snippet": "<div className=\"qe-viewer__page\" onClick="
+    },
+    {
+      "file": "components/QuranViewer.tsx",
+      "line": 649,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"qe-ayah__tafsir\" onClick="
+    },
+    {
+      "file": "components/QuranViewer.tsx",
+      "line": 670,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"qe-ayah__translation\" onClick="
+    },
+    {
+      "file": "components/adhan/MuezzinPicker.tsx",
+      "line": 234,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"mzp-overlay\" role=\"presentation\" onClick="
+    },
+    {
+      "file": "components/admin/SubmissionsReviewPanel.tsx",
+      "line": 83,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className={`srp-card-header${sub.status !== \"pending\" ? ` srp-card-header--${sub.status}` : \"\"}`} o"
+    },
+    {
+      "file": "components/admin/review-hub/ReviewHubSidebar.tsx",
+      "line": 63,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className={`rh-backdrop${mobileOpen ? \" is-open\" : \"\"}`} onClick="
+    },
+    {
+      "file": "components/citation/CitationModal.tsx",
+      "line": 155,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div dir=\"rtl\" className=\"fixed inset-0 z-[200] flex items-center justify-center bg-black/60 p-4\" onCl"
+    },
+    {
+      "file": "components/fawaid/FaidaImageCardModal.tsx",
+      "line": 43,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"fic-backdrop\" role=\"dialog\" aria-modal=\"true\" aria-label=\"بطاقة مشاركة الفائدة\" "
+    },
+    {
+      "file": "components/home/HomeCustomizeSheet.tsx",
+      "line": 82,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"bottom-sheet-overlay\" role=\"presentation\" onClick="
+    },
+    {
+      "file": "components/home/HomeCustomizeSheet.tsx",
+      "line": 83,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"bottom-sheet\" role=\"dialog\" aria-modal=\"true\" aria-label=\"تخصيص الصفحة الرئيسية\" onClick="
+    },
+    {
+      "file": "components/learning/AssessmentModal.tsx",
+      "line": 66,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"am-overlay\" role=\"presentation\" onClick="
+    },
+    {
+      "file": "components/learning/AssessmentModal.tsx",
+      "line": 67,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"am-modal\" role=\"dialog\" aria-modal=\"true\" aria-label={title || \"التقييم\"} onClick="
+    },
+    {
+      "file": "components/onboarding/AppFeatureTour.tsx",
+      "line": 131,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"feature-tour-overlay\" role=\"presentation\" onClick="
+    },
+    {
+      "file": "components/quran/ReadingBreakDialog.tsx",
+      "line": 30,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"qe-break-backdrop\" role=\"presentation\" onClick="
+    },
+    {
+      "file": "components/quran/ReadingBreakDialog.tsx",
+      "line": 31,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"qe-break-dialog\" role=\"alertdialog\" aria-modal=\"true\" aria-labelledby=\"q"
+    },
+    {
+      "file": "components/ui/input-group.tsx",
+      "line": 71,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "INPUT_GROUP_ADDON focus helper",
+      "snippet": "<div role=\"group\" data-slot=\"input-group-addon\" data-align={align} className={cn(inputGroupAddon"
+    },
+    {
+      "file": "pages/account/ui/NotificationSettingsView.tsx",
+      "line": 175,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "FILE_DROPZONE drag-and-drop surface",
+      "snippet": "<div className={`nh-row${rec.isRead ? \"nh-row--read\" : \"\"}`} style={ dragX !== 0 || dragging "
+    },
+    {
+      "file": "pages/account/ui/NotificationSettingsView.tsx",
+      "line": 203,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"nh-row__actions\" onClick="
+    },
+    {
+      "file": "pages/hadith/ui/HadithView.tsx",
+      "line": 273,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"hadith-modal-overlay\" ref={overlayRef} onClick="
+    },
+    {
+      "file": "pages/worship/ui/AdhkarDhikrSheet.tsx",
+      "line": 34,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"adhkar-sheet-overlay\" role=\"dialog\" aria-modal=\"true\" aria-label=\"تفاصيل الذكر\" "
+    },
+    {
+      "file": "views/AsmaaHusnaPage.tsx",
+      "line": 221,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"ah-modal-backdrop\" onClick="
+    },
+    {
+      "file": "views/AsmaaHusnaPage.tsx",
+      "line": 226,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"ah-modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledb"
+    },
+    {
+      "file": "views/CalendarPage.tsx",
+      "line": 56,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"cal-modal-backdrop\" onClick="
+    },
+    {
+      "file": "views/CalendarPage.tsx",
+      "line": 58,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"cal-modal\" onClick="
+    },
+    {
+      "file": "views/UploadPage.tsx",
+      "line": 57,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "FILE_DROPZONE drag-and-drop surface",
+      "snippet": "<div onClick="
+    },
+    {
+      "file": "views/VaultPage.tsx",
+      "line": 184,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"vault-modal-backdrop\" onClick="
+    },
+    {
+      "file": "views/VaultPage.tsx",
+      "line": 186,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "EVENT_DELEGATION modal/sheet backdrop or stopPropagation",
+      "snippet": "<div className=\"vault-modal\" role=\"dialog\" aria-modal=\"true\" aria-label=\"إضافة ملاحظة\" onClick="
+    },
+    {
+      "file": "views/admin/AdhkarSection.tsx",
+      "line": 197,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className=\"adm-modal__overlay\" onClick="
+    },
+    {
+      "file": "views/admin/AdhkarSection.tsx",
+      "line": 199,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className=\"adh-preview-box\" onClick="
+    },
+    {
+      "file": "views/admin/AdminModal.tsx",
+      "line": 49,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className=\"adm-modal__overlay\" onClick="
+    },
+    {
+      "file": "views/admin/AdminModal.tsx",
+      "line": 51,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className=\"adm-modal__dialog\" onClick="
+    },
+    {
+      "file": "views/admin/AdminShell.tsx",
+      "line": 254,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className={`admin-backdrop${mobileOpen ? \" is-open\" : \"\"}`} onClick="
+    },
+    {
+      "file": "views/admin/BulkImport.tsx",
+      "line": 70,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className=\"adm-modal__overlay\" onClick="
+    },
+    {
+      "file": "views/admin/BulkImport.tsx",
+      "line": 72,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className=\"blk-dialog\" onClick="
+    },
+    {
+      "file": "views/admin/ContentFileImport.tsx",
+      "line": 453,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className=\"adm-modal__overlay\" onClick="
+    },
+    {
+      "file": "views/admin/ContentFileImport.tsx",
+      "line": 455,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className=\"cfi-dialog\" onClick="
+    },
+    {
+      "file": "views/admin/IslamicStoriesSection.tsx",
+      "line": 157,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className=\"is-card-head\" onClick="
+    },
+    {
+      "file": "views/admin/Phase2TrialImport.tsx",
+      "line": 105,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className=\"adm-modal__overlay\" onClick="
+    },
+    {
+      "file": "views/admin/Phase2TrialImport.tsx",
+      "line": 107,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className=\"p2t-dialog\" onClick="
+    },
+    {
+      "file": "views/admin/ProphetStoriesSection.tsx",
+      "line": 159,
+      "tag": "div",
+      "decision": "KEEP_JUSTIFIED",
+      "reason": "ADMIN_BOUNDARY expand/collapse or overlay",
+      "snippet": "<div className=\"ps-card-head\" onClick="
+    }
+  ]
+}

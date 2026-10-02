@@ -9,6 +9,8 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/sunan-yawmiyya.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { ListScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 
 /* ─── أنواع البيانات ─── */
 type Sunnah = {
@@ -919,9 +921,9 @@ export default function SunanYawmiyyaPage() {
             <CheckCircle2 size={16} aria-hidden="true" />
             <span>{doneCount} من {SUNAN.length} سنة مطبَّقة اليوم</span>
             {doneCount > 0 && (
-              <button type="button" className="sy-reset-btn" onClick={resetAll} aria-label="مسح الكل">
+              <Button type="button" variant="ghost" className="sy-reset-btn" onClick={resetAll} aria-label="مسح الكل">
                 مسح
-              </button>
+              </Button>
             )}
           </div>
           <div className="sy-progress__bar-wrap">
@@ -946,21 +948,22 @@ export default function SunanYawmiyyaPage() {
             aria-label="بحث في السنن"
           />
           {query && (
-            <button type="button" className="sy-search-clear" onClick={() => setQuery("")} aria-label="مسح البحث">
+            <IconButton type="button" className="sy-search-clear" onClick={() => setQuery("")} label="مسح البحث">
               <X size={13} />
-            </button>
+            </IconButton>
           )}
         </div>
         <div className="sy-cats">
           {CATEGORIES.map((cat) => (
-            <button
+            <Button
               key={cat}
               type="button"
+              variant="ghost"
               className={`sy-cat-chip${category === cat ? " sy-cat-chip--active" : ""}`}
               onClick={() => setCategory(cat)}
             >
               {cat}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -971,15 +974,15 @@ export default function SunanYawmiyyaPage() {
           const done = checked.has(s.id);
           return (
             <article key={s.id} className={`sy-card${done ? " sy-card--done" : ""}`}>
-              <button
+              <IconButton
                 type="button"
                 className="sy-card__check"
                 onClick={() => toggleCheck(s.id)}
-                aria-label={done ? "إلغاء تحديد السنة" : "تحديد السنة كمطبَّقة"}
+                label={done ? "إلغاء تحديد السنة" : "تحديد السنة كمطبَّقة"}
                 aria-pressed={done}
               >
                 {done ? <Check size={16} strokeWidth={2.5} /> : <span />}
-              </button>
+              </IconButton>
               <div className="sy-card__body">
                 <div className="sy-card__head">
                   <div className="sy-card__title">{s.title}</div>

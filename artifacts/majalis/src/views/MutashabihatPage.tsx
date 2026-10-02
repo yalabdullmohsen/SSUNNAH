@@ -10,6 +10,7 @@ import {
 } from "@/lib/mutashabihat-data";
 import { ChevronDown, Eye, EyeOff, BookOpen } from "lucide-react";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 import "@/styles/quran.css";
 
 /* ─── نص الآية المجلوب ─────────────────────────────────────────── */
@@ -63,8 +64,9 @@ function MutashabihatCard({ pair }: { pair: MutashabihatPair }) {
 
   return (
     <div className="mutash-card" data-open={open ? "1" : undefined}>
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className="mutash-card__head"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
@@ -83,7 +85,7 @@ function MutashabihatCard({ pair }: { pair: MutashabihatPair }) {
             style={{ transform: open ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}
           />
         </span>
-      </button>
+      </Button>
 
       {open && (
         <div className="mutash-card__body">
@@ -100,14 +102,15 @@ function MutashabihatCard({ pair }: { pair: MutashabihatPair }) {
 
           {pair.hint && (
             <div style={{ marginTop: "0.75rem" }}>
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 className="mutash-hint-btn"
                 onClick={() => setShowHint((s) => !s)}
               >
                 {showHint ? <EyeOff size={14} /> : <Eye size={14} />}
                 {showHint ? "إخفاء التلميح" : "عرض تلميح الاختلاف"}
-              </button>
+              </Button>
               {showHint && (
                 <div className="mutash-hint">
                   <SectionIcon name="💡" size={16} /> {pair.hint}
@@ -184,16 +187,17 @@ export default function MutashabihatPage() {
 
         <div className="mutash-tabs" role="tablist" aria-label="تصنيف الآيات المتشابهات">
           {["الكل", ...MUTASHABIHAT_CATEGORIES].map((cat) => (
-            <button
+            <Button
               key={cat}
               type="button"
+              variant="ghost"
               role="tab"
               className="mutash-tab"
               aria-selected={activeCategory === cat}
               onClick={() => setActiveCategory(cat)}
             >
               {cat}
-            </button>
+            </Button>
           ))}
         </div>
 

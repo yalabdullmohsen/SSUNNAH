@@ -13,6 +13,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SEARCH_INPUT_ATTRS, handleSearchEnterKey } from "@/lib/search-input";
 import "@/styles/pages/topics-index.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 // ── Static fallback topics per category ──────────────────────────────────────
 
@@ -146,28 +147,30 @@ export default function TopicsIndexPage() {
 
       {/* Category tabs */}
       <div className="tip-category-bar" role="tablist" aria-label="تصفية الموضوعات">
-        <button
+        <Button
           role="tab"
           type="button"
+          variant="ghost"
           className={activeCategory === ALL_CAT ? "tip-cat-btn tip-cat-btn--active" : "tip-cat-btn"}
           onClick={() => setActiveCategory(ALL_CAT)}
           aria-selected={activeCategory === ALL_CAT}
         >
           {ALL_CAT}
-        </button>
+        </Button>
         {allCategories.map((cat) => {
           const meta = CATEGORY_META[cat] ?? CATEGORY_META.other;
           return (
-            <button
+            <Button
               key={cat}
               role="tab"
               type="button"
+              variant="ghost"
               className={activeCategory === cat ? "tip-cat-btn tip-cat-btn--active" : "tip-cat-btn"}
               onClick={() => setActiveCategory(cat)}
               aria-selected={activeCategory === cat}
             >
               <meta.Icon size={14} strokeWidth={1.8} aria-hidden="true" /> {meta.label}
-            </button>
+            </Button>
           );
         })}
       </div>

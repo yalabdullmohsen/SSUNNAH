@@ -223,6 +223,29 @@
 | `docs/audit/IOS_DEVICE_MATRIX_CERTIFICATION_REPORT.md` | T-040 · `IOS_DEVICE_MATRIX_INCOMPLETE` (FAIL) |
 | `docs/audit/MOBILE_PERFORMANCE_CERTIFICATION_REPORT.md` | T-041 · `MOBILE_PERFORMANCE_NOT_CERTIFIED` (FAIL) · no device numeric tables |
 | `docs/audit/evidence/t041-mobile-performance/` | أدلة/نموذج fluidity فقط — بلا قياسات جهاز T-041 |
+| `docs/audit/U5_BUTTON_AUTHORITY_REPORT.md` | T-042 · `BUTTON_AUTHORITY_ONLY` (PASS) · product raw=0 · divSpan KEEP_JUSTIFIED |
+| `docs/audit/evidence/t042-u5-button-authority/` | جرد raw/divSpan + summary T-042 |
+| `docs/audit/U6_CARD_AUTHORITY_REPORT.md` | T-043 · `CARD_AUTHORITY_ONLY` (PASS) · soft-card TSX=0 · radius↓ |
+| `docs/audit/evidence/t043-u6-card-authority/` | جرد بطاقات + summary T-043 |
+| `docs/audit/U7_BACK_AUTHORITY_REPORT.md` | T-044 · `BACK_AUTHORITY_ONLY` + `FLOATING_LAYER_CERTIFIED` (PASS) |
+| `docs/audit/evidence/t044-u7-back-authority/` | جرد رجوع/عائم + summary T-044 |
+| `docs/audit/U8_DEFERRED_IDENTITY_REPORT.md` | T-045 · `DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED` (PASS) |
+| `docs/audit/evidence/t045-u8-deferred-identity/` | جرد هوية مؤجّلة + summary T-045 |
+| `docs/audit/U9_ROUTE_MATRIX_CERTIFICATION_REPORT.md` | T-046 · `ROUTES_CLASSIFIED_AND_CLOSED` (PASS) |
+| `docs/audit/ROUTE_UNIFICATION_MATRIX.json` | مصفوفة توحيد المسارات العامة U9 |
+| `docs/audit/ADMIN_ROUTE_UNIFICATION_MATRIX.json` | مصفوفة توحيد مسارات الإدارة U9 |
+| `docs/audit/evidence/t046-u9-route-matrix/` | جرد/دين مسارات + summary T-046 |
+| `docs/audit/STORE_RELEASE_CONTENT_CLEARANCE_REPORT.md` | T-047 · `STORE_RELEASE_CONTENT_CLEARED` (PASS) |
+| `docs/audit/APP_STORE_READINESS_REPORT.md` | T-048 · `APP_STORE_READINESS_COMPLETE` (PASS) · OWNER_ACTION rows remain |
+| `docs/audit/TESTFLIGHT_INTERNAL_CERTIFICATION_REPORT.md` | T-049 · `TESTFLIGHT_INTERNAL_NOT_CERTIFIED` (FAIL) · export/TF install blocked |
+| `docs/audit/evidence/t049-testflight-internal/` | archive/export logs + summary T-049 |
+| `docs/audit/IOS_RELEASE_CANDIDATE_REPORT.md` | T-050 · `IOS_RELEASE_CANDIDATE_NOT_READY` (FAIL) · TF/device prereqs |
+| `docs/audit/evidence/t050-ios-release-candidate/` | summary + RC lock evidence T-050 |
+| `docs/store-release/APP_STORE_PRIVACY_ANSWERS_DRAFT.md` | مسودة إجابات خصوصية ASC مقابل PrivacyInfo |
+| `docs/audit/evidence/t048-app-store-readiness/` | checklist + summary T-048 |
+| `docs/store-release/THIRD_PARTY_NOTICES.md` | إشعارات الطرف الثالث لحدود Store RC |
+| `docs/store-release/ATTRIBUTIONS.md` | إسنادات Store RC |
+| `docs/audit/evidence/t047-store-release-content/` | جرد أصول + summary T-047 |
 | `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` | **Master Closure Register** · `MASTER_CLOSURE_REGISTER_LOCKED` |
 | `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md` | تقرير حدود الإغلاق الحي · `PROJECT_CLOSURE_PARTIAL` |
 | `docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/` | مرشّح أذان CC0 إسطنبول · `CC0_ADHAN_CANDIDATE` |

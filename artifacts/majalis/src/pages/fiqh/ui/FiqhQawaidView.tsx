@@ -474,12 +474,11 @@ export default function FiqhQawaidPage() {
             </p>
             {QAWAID_KUBRA.map((q, i) => (
               <div key={q.id} className="fq-card" data-kx-kind="ruling">
-                <div
+                <Button
+                  type="button"
+                  variant="ghost"
                   className="fq-card__head"
                   onClick={() => setOpenKubra(openKubra === q.id ? null : q.id)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={e => (e.key === "Enter" || e.key === " ") && setOpenKubra(openKubra === q.id ? null : q.id)}
                   aria-expanded={openKubra === q.id}
                 >
                   <div className="fq-card__num-wrap">
@@ -491,7 +490,7 @@ export default function FiqhQawaidPage() {
                   <span className="fq-card__chevron" aria-hidden="true">
                     {openKubra === q.id ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                   </span>
-                </div>
+                </Button>
 
                 {openKubra === q.id && (
                   <div className="fq-card__body">
@@ -592,12 +591,11 @@ export default function FiqhQawaidPage() {
             </p>
             {DHAWAABIT.map(d => (
               <div key={d.id} className="fq-daabit" data-kx-kind="definition">
-                <div
+                <Button
+                  type="button"
+                  variant="ghost"
                   className="fq-daabit__head"
                   onClick={() => setOpenDhaabit(openDhaabit === d.id ? null : d.id)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={e => (e.key === "Enter" || e.key === " ") && setOpenDhaabit(openDhaabit === d.id ? null : d.id)}
                   aria-expanded={openDhaabit === d.id}
                 >
                   <span className="fq-daabit__icon" aria-hidden="true"><SectionIcon name={d.icon} size={22} /></span>
@@ -606,7 +604,7 @@ export default function FiqhQawaidPage() {
                   <span className="fq-card__chevron" aria-hidden="true">
                     {openDhaabit === d.id ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                   </span>
-                </div>
+                </Button>
                 {openDhaabit === d.id && (
                   <div className="fq-daabit__body">
                     {d.rules.map((r, j) => (
@@ -633,12 +631,11 @@ export default function FiqhQawaidPage() {
             </p>
             {TATBIQAT.map((t, i) => (
               <div key={i} className="fq-tatbiq">
-                <div
+                <Button
+                  type="button"
+                  variant="ghost"
                   className="fq-tatbiq__head"
                   onClick={() => setOpenTatbiq(openTatbiq === i ? null : i)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={e => (e.key === "Enter" || e.key === " ") && setOpenTatbiq(openTatbiq === i ? null : i)}
                   aria-expanded={openTatbiq === i}
                 >
                   <span className="fq-tatbiq__num">{(i + 1).toLocaleString("ar-EG")}</span>
@@ -649,7 +646,7 @@ export default function FiqhQawaidPage() {
                   <span className="fq-card__chevron" aria-hidden="true">
                     {openTatbiq === i ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                   </span>
-                </div>
+                </Button>
                 {openTatbiq === i && (
                   <div className="fq-tatbiq__body">
                     <div className="fq-tatbiq__q">

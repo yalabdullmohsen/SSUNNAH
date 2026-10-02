@@ -27,6 +27,7 @@ import { resolveLessonType } from "@/lib/lesson-type";
 
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/design-system/Buttons";
+import { AppCard } from "@/components/design-system/AppCard";
 type Props = {
   lesson: UnifiedLesson;
   compact?: boolean;
@@ -190,11 +191,13 @@ export const UnifiedLessonCard = memo(function UnifiedLessonCard({
     !compact;
 
   return (
-    <article
-      data-cs-card="1"
+    <AppCard
+      as="article"
+      padding="none"
       data-cs-type="lesson"
       data-lesson-type={lessonType.id}
-      className={`lesson-unified-card   cs-card card-v2 lesson-unified-card--dense${compact ? "lesson-unified-card--compact" : ""}${todayClass} ${prominence}`.trim()}
+      data-ss-surface="lesson"
+      className={`lesson-unified-card card-v2 lesson-unified-card--dense${compact ? " lesson-unified-card--compact" : ""}${todayClass} ${prominence}`.trim()}
     >
       <header className="lesson-unified-card__header">
         <div className="lesson-unified-card__badges">
@@ -335,7 +338,7 @@ export const UnifiedLessonCard = memo(function UnifiedLessonCard({
           </div>
         </div>
       </div>
-    </article>
+    </AppCard>
   );
 });
 

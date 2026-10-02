@@ -1,7 +1,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { GraduationCap } from "lucide-react";
-import { Link } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
+import { AppBackButton } from "@/components/common/AppBackButton";
 import { FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
@@ -76,25 +76,24 @@ export default function SubmitContentPage() {
   return (
     <div className="scp-page">
       <div className="scp-back-row">
-        <Link href="/" className="scp-back-link">← الرئيسية</Link>
+        <AppBackButton variant="inline" fallbackHref="/" className="scp-back-link" label="← الرئيسية" />
       </div>
 
       <h1 className="scp-title">أضف محتوى</h1>
       <p className="scp-subtitle">يصل مقترحك للأدمن لمراجعته قبل النشر.</p>
 
-      <div
+      <Button
+        type="button"
+        variant="ghost"
         className="scp-banner"
         onClick={() => setContentType("درس")}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setContentType("درس")}
       >
         <div className="scp-banner__emoji" aria-hidden="true"><GraduationCap size={32} strokeWidth={1.4} /></div>
         <div>
           <p className="scp-banner__heading">أضف درساً علمياً</p>
           <p className="scp-banner__desc">شارك درساً، محاضرة، أو موضوعاً علمياً مفيداً</p>
         </div>
-      </div>
+      </Button>
 
       {status === "success" && (
         <div role="status" className="scp-feedback scp-feedback--success">{message}</div>

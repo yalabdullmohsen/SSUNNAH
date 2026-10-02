@@ -1,19 +1,19 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "PHASE7: Back Authority — removed calm-polish AppBack display:none !important; buttonRelatedImportant 1262→1258.",
+  "note": "T-044: officialButtonImportFiles floor 253→252 — Prayer/detail backs left IconButton/Button for AppBackButton (Back Authority). Floating mentions ceiling held at 10.",
   "ceilings": {
-    "rawButtonFiles": 168,
-    "rawButtonElements": 650,
-    "divSpanOnClick": 59,
+    "rawButtonFiles": 112,
+    "rawButtonElements": 485,
+    "divSpanOnClick": 46,
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
-    "buttonRelatedImportantApprox": 1258,
-    "buttonRelatedHexApprox": 1708
+    "buttonRelatedImportantApprox": 1221,
+    "buttonRelatedHexApprox": 1703
   },
   "floors": {
-    "officialButtonImportFiles": 202,
+    "officialButtonImportFiles": 252,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-10-01T01:50:00.000Z"
+  "updatedAt": "2026-10-02T02:46:00.000Z"
 }

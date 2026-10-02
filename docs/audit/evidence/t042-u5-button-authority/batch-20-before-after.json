@@ -1,0 +1,42 @@
+{
+  "task": "t042-u5-button-authority batch migrate",
+  "measuredAt": "2026-10-02T02:16:54.163Z",
+  "files": [
+    { "file": "components/memorize/Flashcards.tsx", "before": 6, "after": 0 },
+    { "file": "views/AsmaaHusnaPage.tsx", "before": 5, "after": 0 },
+    { "file": "views/HikamSalafPage.tsx", "before": 5, "after": 0 },
+    { "file": "views/IslamicSectsPage.tsx", "before": 5, "after": 0 },
+    { "file": "views/KnowledgeGraphPage.tsx", "before": 5, "after": 0 },
+    { "file": "views/KnowledgeSectionPage.tsx", "before": 5, "after": 0 },
+    { "file": "views/ResearcherProfilePage.tsx", "before": 5, "after": 0 },
+    { "file": "views/SinsAndRightsPage.tsx", "before": 5, "after": 0 },
+    { "file": "components/assistant/AssistantChatView.tsx", "before": 4, "after": 0 },
+    { "file": "components/majlis/MainNavigationScreen.tsx", "before": 4, "after": 0 },
+    { "file": "components/mind-map/MindMapCanvas.tsx", "before": 4, "after": 0 },
+    { "file": "components/onboarding/AppFeatureTour.tsx", "before": 4, "after": 0 },
+    { "file": "components/rag/ResearchAnswer.tsx", "before": 4, "after": 0 },
+    { "file": "components/ui/TopicQuiz.tsx", "before": 4, "after": 0 },
+    { "file": "views/AcademicResearchPage.tsx", "before": 4, "after": 0 },
+    { "file": "views/CarModePage.tsx", "before": 4, "after": 0 },
+    { "file": "views/MySubmissionsPage.tsx", "before": 4, "after": 0 },
+    { "file": "views/QaPage.tsx", "before": 4, "after": 0 },
+    { "file": "views/ResearchDetailPage.tsx", "before": 4, "after": 0 },
+    { "file": "views/SunanYawmiyyaPage.tsx", "before": 4, "after": 0 }
+  ],
+  "totals": { "before": 90, "after": 0 },
+  "divSpanHeadersConverted": [
+    "components/ui/TopicQuiz.tsx (sq-header)",
+    "views/SinsAndRightsPage.tsx (snr-mindmap-node-header)",
+    "views/AsmaaHusnaPage.tsx (ah-card role=button)"
+  ],
+  "blockersSkipped": [
+    {
+      "file": "views/KnowledgeGraphPage.tsx",
+      "reason": "SVG <g role=button> graph node cannot become HTML Button; left as SVG interactive group"
+    }
+  ],
+  "inventoryBaseline": {
+    "rawButtonFiles": { "before": 168, "after": 112 },
+    "rawButtonElements": { "before": 650, "after": 485 }
+  }
+}

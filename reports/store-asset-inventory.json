@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "phase": "T-026",
-  "generatedAtUtc": "2026-10-01T20:45:57.872Z",
+  "phase": "T-047",
+  "generatedAtUtc": "2026-10-02T03:54:17.592Z",
   "allowlistPath": "docs/store-release/STORE_RELEASE_ALLOWLIST.json",
   "summary": {
     "totalAssets": 131,
@@ -17,7 +17,9 @@
     "qpcClass": "OWNER_DECISION_REQUIRED",
     "RELEASE_BINARY_HAS_ZERO_UNKNOWN_ASSETS": true,
     "AUDIO_RELEASE_ALLOWLIST_LOCKED": true,
-    "STORE_RELEASE_CONTENT_CLEARED": true
+    "STORE_RELEASE_CONTENT_CLEARED": true,
+    "THIRD_PARTY_NOTICES_COMPLETE": true,
+    "ATTRIBUTIONS_COMPLETE": true
   },
   "releaseFlavor": [
     {
@@ -1068,13 +1070,13 @@
       "inReleaseFlavor": false
     },
     {
-      "id": "istanbul-cc0-candidate",
+      "id": "istanbul-cc0-rejected",
       "path": null,
       "domain": "adhan",
-      "class": "CC0_CANDIDATE",
+      "class": "CC0_ADHAN_REJECTED_QUALITY",
       "releaseAction": "STRIP_FROM_RELEASE",
       "inReleaseFlavor": false,
-      "note": "CC0_ADHAN_CANDIDATE — Human QA pending; not in binary"
+      "note": "CC0_ADHAN_REJECTED_QUALITY (T-027) — not in binary; Store v1 = system-default"
     }
   ],
   "streamOnly": [
@@ -1333,12 +1335,12 @@
     "candidatesNotInBinary": [
       {
         "id": "istanbul",
-        "class": "CC0_CANDIDATE",
-        "status": "CC0_ADHAN_CANDIDATE",
+        "class": "CC0_ADHAN_REJECTED_QUALITY",
+        "status": "CC0_ADHAN_REJECTED_QUALITY",
         "inBinary": false,
-        "humanQa": "pending",
-        "evidence": "docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/",
-        "note": "Do not promote to CC0_APPROVED without Human QA"
+        "humanQa": "rejected",
+        "evidence": "docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/HUMAN_QA_RECORD.md",
+        "note": "T-027 reject — Store v1 primary remains system-default; never promote without new QA"
       }
     ],
     "strippedFromRelease": [
@@ -2497,13 +2499,13 @@
       "inReleaseFlavor": false
     },
     {
-      "id": "istanbul-cc0-candidate",
+      "id": "istanbul-cc0-rejected",
       "path": null,
       "domain": "adhan",
-      "class": "CC0_CANDIDATE",
+      "class": "CC0_ADHAN_REJECTED_QUALITY",
       "releaseAction": "STRIP_FROM_RELEASE",
       "inReleaseFlavor": false,
-      "note": "CC0_ADHAN_CANDIDATE — Human QA pending; not in binary"
+      "note": "CC0_ADHAN_REJECTED_QUALITY (T-027) — not in binary; Store v1 = system-default"
     },
     {
       "id": "prayer-calculation-engine",

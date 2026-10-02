@@ -10,6 +10,8 @@ import "@/styles/pages/hikam-salaf.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { DetailScreen } from "@/components/design-system/screens";
 import { truncateAtWord } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 
 /* ─── أنواع البيانات ─── */
 type Hikma = {
@@ -1605,33 +1607,35 @@ export default function HikamSalafPage() {
             aria-label="بحث في حكم السلف"
           />
           {query && (
-            <button type="button" className="hk-search-clear" onClick={() => setQuery("")} aria-label="مسح">
+            <IconButton type="button" className="hk-search-clear" onClick={() => setQuery("")} label="مسح">
               <X size={13} />
-            </button>
+            </IconButton>
           )}
         </div>
         <div className="hk-cats" role="tablist" aria-label="تصفية حكم السلف">
           {CATEGORIES.map((cat) => (
-            <button
+            <Button
               key={cat}
               role="tab"
               type="button"
+              variant="ghost"
               className={`hk-cat${category === cat ? " hk-cat--active" : ""}`}
               onClick={() => { setCategory(cat); setShowFavsOnly(false); }}
               aria-selected={category === cat}
             >
               {cat}
-            </button>
+            </Button>
           ))}
           {favorites.size > 0 && (
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className={`hk-cat hk-cat--fav-filter${showFavsOnly ? " hk-cat--active" : ""}`}
               onClick={() => { setShowFavsOnly((v) => !v); setCategory("الكل"); }}
               aria-pressed={showFavsOnly}
             >
               <Heart size={14} aria-hidden="true" /> المحفوظات ({favorites.size})
-            </button>
+            </Button>
           )}
         </div>
       </div>
@@ -1671,24 +1675,25 @@ export default function HikamSalafPage() {
                   </footer>
                 </blockquote>
                 <div className="hk-card__actions">
-                  <button
+                  <IconButton
                     type="button"
                     className={`hk-btn hk-btn--fav${isFav ? " hk-btn--fav-active" : ""}`}
                     onClick={() => toggleFav(h.id)}
-                    aria-label={isFav ? "إزالة من المحفوظات" : "إضافة للمحفوظات"}
+                    label={isFav ? "إزالة من المحفوظات" : "إضافة للمحفوظات"}
                     aria-pressed={isFav}
                   >
                     <Heart size={15} fill={isFav ? "currentColor" : "none"} />
-                  </button>
-                  <button
+                  </IconButton>
+                  <Button
                     type="button"
+                    variant="ghost"
                     className={`hk-btn hk-btn--copy${wasCopied ? " hk-btn--copied" : ""}`}
                     onClick={() => copyHikma(h)}
                     aria-label="نسخ الحكمة"
                   >
                     <Copy size={14} />
                     <span>{wasCopied ? "تم النسخ" : "نسخ"}</span>
-                  </button>
+                  </Button>
                 </div>
               </article>
             );

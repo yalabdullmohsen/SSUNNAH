@@ -231,7 +231,7 @@ button.hub-card {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border-radius: 14px;
+  border-radius: var(--sf-radius-sm);
   background: var(--cs-on-ink-icon-bg, color-mix(in srgb, #ffffff 14%, transparent));
   color: var(--cs-on-ink-icon, #f7f1e4);
   font-size: 1.15rem;
@@ -309,7 +309,7 @@ button.hub-card {
   display: inline-flex;
   align-items: center;
   padding: 0.18rem 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   background: var(--cs-on-ink-icon-bg, color-mix(in srgb, #ffffff 14%, transparent));
   color: var(--cs-gold-ink, #f0e2b0);
   border: none;
@@ -569,7 +569,7 @@ html.dark .hub-card .mj-badge {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  border-radius: 12px !important;
+  border-radius: var(--sf-radius-control) !important;
   background: var(--cs-on-ink-icon-bg, color-mix(in srgb, #ffffff 14%, transparent)) !important;
   color: var(--cs-on-ink-icon, #f7f1e4) !important;
 }
@@ -697,7 +697,7 @@ article ul li,
   display: inline-flex;
   align-items: center;
   padding: 0.15rem 0.5rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   background: var(--mj-brand-soft);
   color: var(--mj-brand);
   font-family: var(--mj-ui);

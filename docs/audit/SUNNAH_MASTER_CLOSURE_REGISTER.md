@@ -24,7 +24,7 @@
 | License | `LICENSE_CERTIFICATION_REQUIRED` (#2440) |
 | Store | HOLD · Apple-only · `WEB_RELEASED_NATIVE_HOLD` |
 | Recitations policy | **STREAM_ONLY** |
-| Adhan Istanbul CC0 | `CC0_ADHAN_CANDIDATE` (not APPROVED) |
+| Adhan Istanbul CC0 | `CC0_ADHAN_REJECTED_QUALITY` (not in binary) |
 
 ---
 
@@ -36,11 +36,11 @@
 | A1 | A | U3 Theme pipeline | FIXABLE | Agent | #2442 · gate · MATCH | Y | soft | soft | N | N | `DARK_LIGHT_UNIFIED` ✅ |
 | A2 | A | U4 Startup chrome/CLS | FIXABLE | Agent | U4 Ready Pack | Y | soft | soft | N | N | `STARTUP_CHROME_STABLE` (NEXT) |
 | A3 | A | U1 numeric LHCI ≤80/≤500/reflow≥1 | FIXABLE | Agent | LHCI audit · #2437 local | Y | N | N | N | N | `LHCI_HOME_MOBILE_CLOSED` |
-| A4 | A | U8 Deferred identity | FIXABLE | Agent | LIVE inventory deferred=49 | Y | N | N | N | N | `DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED` |
+| A4 | A | U8 Deferred identity | FIXABLE | Agent | `U8_DEFERRED_IDENTITY_REPORT.md` · deferred=49 all KEEP_JUSTIFIED · WAVE7 seal | Y | N | N | N | N | `DEFERRED_IDENTITY_ABSORBED_OR_JUSTIFIED` ✅ |
 | A5 | A | U5 Buttons + div/span | FIXABLE | Agent | raw=650 · onClick=59 | Y | N | N | N | N | `BUTTON_AUTHORITY_ONLY` |
 | A6 | A | U6 Cards | FIXABLE | Agent | soft-card families | Y | N | N | N | N | `CARD_AUTHORITY_ONLY` |
 | A7 | A | U7 Back/Floating | FIXABLE | Agent | history.back residual | Y | soft | soft | N | N | `BACK_AUTHORITY_ONLY` |
-| A8 | A | U9 Route matrices | FIXABLE | Agent | 8 admin v3 missing | Y | N | N | N | N | `ROUTES_CLASSIFIED_AND_CLOSED` |
+| A8 | A | U9 Route matrices | FIXABLE | Agent | `U9_ROUTE_MATRIX_CERTIFICATION_REPORT.md` · 416 classified · 0 UNCLASSIFIED | Y | N | N | N | N | `ROUTES_CLASSIFIED_AND_CLOSED` ✅ |
 | A9 | A | U10 Mushaf boundary | FIXABLE+DEVICE | Agent | integrity PASS · device hold | soft | Y | Y | Y | Y | `MUSHAF_BOUNDARY_CERTIFIED` |
 | A10 | A | U11–U13 final web | FIXABLE | Agent | UNIFIED_PARTIAL | Y | N | N | N | N | `UNIFIED_100` or honest PARTIAL |
 | B1 | B | M1 Native architecture iOS | FIXABLE+OWNER | Agent+Owner | `IOS_NATIVE_ARCHITECTURE_CERTIFICATION.md` | N | Y | RETIRED | Y | Y | `IOS_NATIVE_ARCHITECTURE_CERTIFIED` ✅ |
@@ -61,10 +61,11 @@
 | D4 | D | Adhan CC0 approve + strip unknowns | AUDIO | Agent+Human | Istanbul CANDIDATE | soft | Y | Y | Y | Y | `CC0_ADHAN_APPROVED_FOR_RELEASE` + allowlist |
 | D5 | D | Lessons/books/fatwa metadata-only | LICENSE | Owner+Agent | LICENSE cert E–H | soft | Y | Y | Y | Y | No UNKNOWN bodies in RC |
 | D6 | D | Fonts/images catalog | LICENSE | Agent | OFL OK · QPC blocked | soft | Y | Y | Y | Y | No UNKNOWN images |
-| D7 | D | Attributions complete | LICENSE | Agent | CREDITS · /sources | soft | soft | soft | Y | Y | `ATTRIBUTIONS_COMPLETE` |
-| E1 | E | Apple store readiness | OWNER | Owner | STORE_100 | N | Y | N | Y | Y | ASC metadata+signing |
+| D7 | D | Attributions complete | LICENSE | Agent | `ATTRIBUTIONS.md` · `THIRD_PARTY_NOTICES.md` · CREDITS T-047 | soft | soft | soft | Y | Y | `ATTRIBUTIONS_COMPLETE` ✅ |
+| E1 | E | Apple store readiness | OWNER | Owner+Agent | `APP_STORE_READINESS_REPORT.md` · 13 OWNER_ACTION | N | Y | N | Y | Y | `APP_STORE_READINESS_COMPLETE` ✅ (not STORE_GO) |
 | E2 | E | Google store readiness | OUT_OF_SCOPE | — | Android retired | N | N | RETIRED | N | N | `ANDROID_PRODUCT_RETIRED` ✅ |
-| E3 | E | RC TestFlight Internal | OWNER+DEVICE | Owner | MRMP M12–M13 | N | Y | RETIRED | Y | Y | `TESTFLIGHT_INTERNAL_CERTIFIED` |
+| E3 | E | RC TestFlight Internal | OWNER+DEVICE | Owner+Agent | `TESTFLIGHT_INTERNAL_CERTIFICATION_REPORT.md` · export FAIL | N | Y | RETIRED | Y | Y | `TESTFLIGHT_INTERNAL_NOT_CERTIFIED` (FAIL) |
+| E3b | E | iOS Release Candidate | OWNER+DEVICE | Owner+Agent | `IOS_RELEASE_CANDIDATE_REPORT.md` · TF/device prereq FAIL | N | Y | RETIRED | Y | Y | `IOS_RELEASE_CANDIDATE_NOT_READY` (FAIL) |
 
 Legend: Web/iOS/Android/Store Sub/Store Go = blocks that surface if open (Y/N/soft).
 

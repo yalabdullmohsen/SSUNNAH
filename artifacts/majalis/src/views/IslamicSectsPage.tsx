@@ -20,6 +20,7 @@ import {
 } from "@/lib/knowledge-list-scroll";
 import "@/styles/pages/islamic-sects.css";
 import "@/styles/islam-intro-experience.css";
+import { Button } from "@/components/ui/button";
 const LIST_PATH = "/islamic-sects";
 
 export default function IslamicSectsPage() {
@@ -181,15 +182,16 @@ export default function IslamicSectsPage() {
                     <p className="sect-hub__filter-label">النوع</p>
                     <div className="sect-hub__chips" role="group" aria-label="تصفية النوع">
                       {entityChips.map((c) => (
-                        <button
+                        <Button
                           type="button"
+                          variant="ghost"
                           key={c.value}
                           className={`sect-hub__chip${entityKind === c.value ? " is-active" : ""}`}
                           onClick={() => startTransition(() => setEntityKind(c.value))}
                         >
                           {c.label}
                           {c.value !== "الكل" ? ` (${c.count})` : ""}
-                        </button>
+                        </Button>
                       ))}
                     </div>
                   </>
@@ -204,8 +206,9 @@ export default function IslamicSectsPage() {
                       aria-label="تصفية الحالة التاريخية"
                     >
                       {statusChips.map((c) => (
-                        <button
+                        <Button
                           type="button"
+                          variant="ghost"
                           key={c.value}
                           className={`sect-hub__chip${historicalStatus === c.value ? " is-active" : ""}`}
                           onClick={() =>
@@ -214,7 +217,7 @@ export default function IslamicSectsPage() {
                         >
                           {c.label}
                           {c.value !== "الكل" ? ` (${c.count})` : ""}
-                        </button>
+                        </Button>
                       ))}
                     </div>
                   </>
@@ -225,15 +228,16 @@ export default function IslamicSectsPage() {
                     <p className="sect-hub__filter-label">الفترة</p>
                     <div className="sect-hub__chips" role="group" aria-label="تصفية الفترة">
                       {eraChips.map((c) => (
-                        <button
+                        <Button
                           type="button"
+                          variant="ghost"
                           key={c.value}
                           className={`sect-hub__chip${eraBucket === c.value ? " is-active" : ""}`}
                           onClick={() => startTransition(() => setEraBucket(c.value))}
                         >
                           {c.label}
                           {c.value !== "الكل" ? ` (${c.count})` : ""}
-                        </button>
+                        </Button>
                       ))}
                     </div>
                   </>
@@ -244,8 +248,9 @@ export default function IslamicSectsPage() {
                     <p className="sect-hub__filter-label">التصنيف</p>
                     <div className="sect-hub__chips" role="group" aria-label="تصفية التصنيف">
                       {legacyChips.map((c) => (
-                        <button
+                        <Button
                           type="button"
+                          variant="ghost"
                           key={c.value}
                           className={`sect-hub__chip${legacyCategory === c.value ? " is-active" : ""}`}
                           onClick={() =>
@@ -254,7 +259,7 @@ export default function IslamicSectsPage() {
                         >
                           {c.label}
                           {c.value !== "الكل" ? ` (${c.count})` : ""}
-                        </button>
+                        </Button>
                       ))}
                     </div>
                   </>
@@ -270,13 +275,14 @@ export default function IslamicSectsPage() {
               {filtered.length === 0 ? (
                 <div className="sect-hub__empty" role="status">
                   <p>{EMPTY.search}</p>
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
                     className="sect-hub__chip is-active"
                     onClick={resetFilters}
                   >
                     مسح عوامل التصفية
-                  </button>
+                  </Button>
                 </div>
               ) : null}
 

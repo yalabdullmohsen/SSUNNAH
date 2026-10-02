@@ -15,7 +15,7 @@
 | Mature/Suggestive Themes | لا / None |
 | Medical/Treatment Information | لا / None |
 | Unrestricted Web Access | لا / None |
-| Contests | لا / None |
+| Contests | **OWNER_ACTION** — المنتج فيه مسارات `/competitions` (مسابقات علمية). لا تُجب بـ None في ASC دون مراجعة مالك. مسودة قديمة «لا» **ملغاة**. |
 
 ## التصنيف المتوقع
 **4+**
