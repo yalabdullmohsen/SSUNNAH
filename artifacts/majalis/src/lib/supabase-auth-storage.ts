@@ -22,6 +22,9 @@ const LEGACY_REVIEW_FLAG = "ssunnah-app-store-review-session-v1";
 /** Explicit classification when native Keychain bridge is unavailable — not Keychain success. */
 const FALLBACK_FLAG = "ssunnah-auth-storage-mode-v1";
 const FALLBACK_MODE = "localStorage_fallback";
+/** Last Supabase auth storage key name only (never the session blob). */
+const LAST_AUTH_KEY_FLAG = "ssunnah-auth-storage-key-v1";
+const AUTH_TOKEN_KEY_RE = /^sb-.+-auth-token$/;
 
 export type AuthStorageBackend = "web" | "keychain" | "localStorage_fallback";
 
@@ -29,6 +32,47 @@ function isNativePlatform(): boolean {
   try {
     const cap = (window as unknown as { Capacitor?: { isNativePlatform?: () => boolean } }).Capacitor;
     return typeof cap?.isNativePlatform === "function" && cap.isNativePlatform();
+  } catch {
+    return false;
+  }
+}
+
+function rememberAuthStorageKey(key: string): void {
+  if (!AUTH_TOKEN_KEY_RE.test(key)) return;
+  try {
+    localStorage.setItem(LAST_AUTH_KEY_FLAG, key);
+  } catch {
+    /* ignore */
+  }
+}
+
+function collectAuthStorageKeys(): string[] {
+  const keys = new Set<string>();
+  try {
+    const remembered = localStorage.getItem(LAST_AUTH_KEY_FLAG);
+    if (remembered && AUTH_TOKEN_KEY_RE.test(remembered)) keys.add(remembered);
+  } catch {
+    /* ignore */
+  }
+  try {
+    for (let i = 0; i < localStorage.length; i += 1) {
+      const key = localStorage.key(i);
+      if (key && AUTH_TOKEN_KEY_RE.test(key)) keys.add(key);
+    }
+  } catch {
+    /* ignore */
+  }
+  return [...keys];
+}
+
+async function verifyKeychainWrite(
+  plugin: SunnahAuthKeychainPlugin,
+  key: string,
+  value: string,
+): Promise<boolean> {
+  try {
+    const res = await plugin.get({ key });
+    return typeof res?.value === "string" && res.value === value;
   } catch {
     return false;
   }
@@ -166,6 +210,7 @@ function nativeKeychainStorage(): SupabaseAuthStorage {
         const res = await plugin.get({ key });
         const value = res?.value;
         if (typeof value === "string" && value.length > 0) {
+          rememberAuthStorageKey(key);
           clearFallbackFlag();
           return value;
         }
@@ -180,20 +225,31 @@ function nativeKeychainStorage(): SupabaseAuthStorage {
       if (!plugin) {
         markFallback("plugin_null_set");
         await web.setItem(key, value);
+        rememberAuthStorageKey(key);
         return;
       }
       try {
         await plugin.set({ key, value });
+        const verified = await verifyKeychainWrite(plugin, key, value);
+        if (!verified) {
+          // Never pretend Keychain write succeeded.
+          markFallback("plugin_set_unverified");
+          await web.setItem(key, value);
+          rememberAuthStorageKey(key);
+          return;
+        }
         try {
           localStorage.removeItem(key);
           localStorage.setItem(MIGRATION_FLAG, "1");
         } catch {
           /* ignore */
         }
+        rememberAuthStorageKey(key);
         clearFallbackFlag();
       } catch {
         markFallback("plugin_set_failed");
         await web.setItem(key, value);
+        rememberAuthStorageKey(key);
       }
     },
     async removeItem(key) {
@@ -213,6 +269,9 @@ function nativeKeychainStorage(): SupabaseAuthStorage {
       await web.removeItem(key);
       try {
         localStorage.removeItem(LEGACY_REVIEW_FLAG);
+        if (localStorage.getItem(LAST_AUTH_KEY_FLAG) === key) {
+          localStorage.removeItem(LAST_AUTH_KEY_FLAG);
+        }
       } catch {
         /* ignore */
       }
@@ -228,13 +287,41 @@ export function createSupabaseAuthStorage(): SupabaseAuthStorage {
 }
 
 /**
- * Clears Cap supabase keys (via removeItem callers) + NetworkService legacy account.
- * Safe to call on web (no-op for native legacy).
+ * Unified logout cleanup:
+ * - Cap Keychain accounts `cap.supabase.<sb-*-auth-token>`
+ * - NetworkService account `majlis.auth.session.v1`
+ * - WebView leftovers for the same keys
+ * Safe on web (native calls no-op when plugin missing).
  */
 export async function clearAllNativeAuthSessions(): Promise<void> {
-  await clearNativeLegacyAuthSession();
+  const keys = collectAuthStorageKeys();
+  const plugin = getSunnahAuthKeychainPlugin();
+  if (plugin) {
+    for (const key of keys) {
+      try {
+        await plugin.remove({ key });
+      } catch {
+        /* continue */
+      }
+    }
+    try {
+      await plugin.clearNativeLegacySession();
+    } catch {
+      /* ignore */
+    }
+  } else {
+    await clearNativeLegacyAuthSession();
+  }
+  for (const key of keys) {
+    try {
+      localStorage.removeItem(key);
+    } catch {
+      /* ignore */
+    }
+  }
   try {
     localStorage.removeItem(LEGACY_REVIEW_FLAG);
+    localStorage.removeItem(LAST_AUTH_KEY_FLAG);
   } catch {
     /* ignore */
   }
@@ -247,6 +334,8 @@ export const __authStorageTest = {
   LEGACY_REVIEW_FLAG,
   FALLBACK_FLAG,
   FALLBACK_MODE,
+  LAST_AUTH_KEY_FLAG,
   looksLikeSessionBlob,
   isNativePlatform,
+  collectAuthStorageKeys,
 };

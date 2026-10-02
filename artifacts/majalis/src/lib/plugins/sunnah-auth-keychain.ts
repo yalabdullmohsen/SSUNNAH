@@ -33,13 +33,17 @@ function isNativeIosRuntime(): boolean {
   }
 }
 
-/** Registered Capacitor proxy via registerPlugin (do not use legacy Plugins map lookup). */
+/**
+ * Registered Capacitor proxy — same runtime pattern as SunnahSharedData / PrayerLiveActivity.
+ * Never use legacy Capacitor.Plugins.SunnahAuthKeychain map lookup.
+ */
 export function getSunnahAuthKeychainPlugin(): SunnahAuthKeychainPlugin | null {
   if (testOverride !== undefined) return testOverride;
   if (typeof window === "undefined") return null;
   if (!isNativeIosRuntime()) return null;
   if (cached !== undefined) return cached;
   try {
+    // registerPlugin returns the bridged proxy; get/set/remove must go through it.
     cached = registerPlugin<SunnahAuthKeychainPlugin>(PLUGIN_NAME);
     return cached;
   } catch {
