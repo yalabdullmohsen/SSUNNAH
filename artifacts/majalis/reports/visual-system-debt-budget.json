@@ -1,9 +1,9 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "PHASE7: Back Authority \u2014 important 4787\u21924784 after removing AppBack CSS hide !important.",
+  "note": "T-043 U6 Card Authority: card component CSS radius → tokens (1258→1243); product card façades via AppCard/InteractiveCard; soft-card TSX consumers remain 0.",
   "floors": {
-    "officialButtonImportFiles": 255,
+    "officialButtonImportFiles": 253,
     "sfTokenRefs": 757,
     "ssTokenRefs": 724
   },
@@ -16,9 +16,9 @@
     "mjDeclOutsideAllowlist": 0,
     "boxShadowDecls": 1113,
     "zIndexRawDecls": 258,
-    "borderRadiusPxDecls": 1258,
+    "borderRadiusPxDecls": 1243,
     "inlineColorStyleMatches": 48,
     "rawButtonFiles": 112
   },
-  "updatedAt": "2026-10-02T02:19:00.000Z"
+  "updatedAt": "2026-10-02T02:33:00.000Z"
 }

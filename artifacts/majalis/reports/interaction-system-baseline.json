@@ -1,10 +1,10 @@
 {
-  "measuredAt": "2026-10-02T02:21:58.392Z",
+  "measuredAt": "2026-10-02T02:36:08.806Z",
   "scope": "artifacts/majalis/src",
   "tsxFiles": 834,
   "rawButtonFiles": 112,
   "rawButtonElements": 485,
-  "officialButtonImportFiles": 255,
+  "officialButtonImportFiles": 253,
   "actionButtonConsumerFiles": 7,
   "iconButtonConsumerFiles": 43,
   "divSpanOnClick": 46,

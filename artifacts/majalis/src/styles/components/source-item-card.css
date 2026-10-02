@@ -5,7 +5,7 @@
   gap: 8px;
   padding: 14px;
   border: 1px solid var(--mj-hairline, #d5ddd9);
-  border-radius: 14px;
+  border-radius: var(--sf-radius-sm);
   background: var(--mj-surface, #fff);
   min-width: 0;
 }
@@ -22,7 +22,7 @@
   display: inline-flex;
   align-items: center;
   padding: 2px 8px;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   font-size: 12px;
   font-weight: 700;
   background: var(--mj-brand-soft, var(--brand-soft, var(--mj-brand-soft)));
@@ -71,7 +71,7 @@
   align-items: center;
   gap: 6px;
   padding: 8px 12px;
-  border-radius: 10px;
+  border-radius: var(--cs-radius-control);
   font-size: 13px;
   font-weight: 700;
   text-decoration: none;

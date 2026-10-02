@@ -176,7 +176,7 @@
   top: 0.55em;
   width: 0.35rem;
   height: 0.35rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   background: var(--mj-brand, #1f6b56);
 }
 

@@ -220,14 +220,13 @@
 | `docs/audit/evidence/t038-ios-push/` | أدلة ثابتة/محاكي لـ Push T-038 |
 | `docs/audit/IOS_ACCESSIBILITY_CERTIFICATION_REPORT.md` | T-039 · `IOS_ACCESSIBILITY_NOT_CERTIFIED` (FAIL) · VoiceOver device UNPROVEN |
 | `docs/audit/evidence/t039-ios-a11y/` | أدلة/جرد إمكانية الوصول T-039 |
-<<<<<<< HEAD
 | `docs/audit/IOS_DEVICE_MATRIX_CERTIFICATION_REPORT.md` | T-040 · `IOS_DEVICE_MATRIX_INCOMPLETE` (FAIL) |
 | `docs/audit/MOBILE_PERFORMANCE_CERTIFICATION_REPORT.md` | T-041 · `MOBILE_PERFORMANCE_NOT_CERTIFIED` (FAIL) · no device numeric tables |
 | `docs/audit/evidence/t041-mobile-performance/` | أدلة/نموذج fluidity فقط — بلا قياسات جهاز T-041 |
-=======
 | `docs/audit/U5_BUTTON_AUTHORITY_REPORT.md` | T-042 · `BUTTON_AUTHORITY_ONLY` (PASS) · product raw=0 · divSpan KEEP_JUSTIFIED |
 | `docs/audit/evidence/t042-u5-button-authority/` | جرد raw/divSpan + summary T-042 |
->>>>>>> origin/cursor/t042-u5-button-authority
+| `docs/audit/U6_CARD_AUTHORITY_REPORT.md` | T-043 · `CARD_AUTHORITY_ONLY` (PASS) · soft-card TSX=0 · radius↓ |
+| `docs/audit/evidence/t043-u6-card-authority/` | جرد بطاقات + summary T-043 |
 | `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` | **Master Closure Register** · `MASTER_CLOSURE_REGISTER_LOCKED` |
 | `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md` | تقرير حدود الإغلاق الحي · `PROJECT_CLOSURE_PARTIAL` |
 | `docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01/` | مرشّح أذان CC0 إسطنبول · `CC0_ADHAN_CANDIDATE` |

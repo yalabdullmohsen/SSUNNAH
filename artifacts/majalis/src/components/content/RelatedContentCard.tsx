@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { InteractiveCard } from "@/components/design-system/SurfacePrimitives";
 import "@/styles/components/reading-section-card.css";
 
 export type RelatedContentCardProps = {
@@ -10,7 +10,7 @@ export type RelatedContentCardProps = {
 };
 
 /**
- * بطاقة «ذات صلة / اقرأ أيضًا» — تصنيف + عنوان + وصف + سهم دخول.
+ * بطاقة «ذات صلة / اقرأ أيضًا» — عبر InteractiveCard (سلطة الأسطح).
  */
 export function RelatedContentCard({
   href,
@@ -20,9 +20,9 @@ export function RelatedContentCard({
   className = "",
 }: RelatedContentCardProps) {
   return (
-    <Link
+    <InteractiveCard
       href={href}
-      data-cs-card="1"
+      title={title}
       data-cs-type="related"
       className={`rcc cs-related${className ? ` ${className}` : ""}`}
     >
@@ -32,7 +32,7 @@ export function RelatedContentCard({
       <span className="rcc__arrow" aria-hidden="true">
         ←
       </span>
-    </Link>
+    </InteractiveCard>
   );
 }
 

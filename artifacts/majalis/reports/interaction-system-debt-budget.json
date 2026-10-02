@@ -1,7 +1,7 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "T-042 U5 Button Authority: product raw buttons → Button/IconButton/Link; divSpanOnClick 59→46 all KEEP_JUSTIFIED; remaining raw = ADMIN_ONLY + MUSHAF_SPECIAL + THIRD_PARTY(sidebar rail).",
+  "note": "T-043: officialButtonImportFiles floor 255→253 — SectionCard/HeroActionCard left Button for InteractiveCard (Link nav = Card Authority). Raw ceilings unchanged from U5.",
   "ceilings": {
     "rawButtonFiles": 112,
     "rawButtonElements": 485,
@@ -12,8 +12,8 @@
     "buttonRelatedHexApprox": 1703
   },
   "floors": {
-    "officialButtonImportFiles": 255,
+    "officialButtonImportFiles": 253,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-10-02T02:19:00.000Z"
+  "updatedAt": "2026-10-02T02:34:00.000Z"
 }

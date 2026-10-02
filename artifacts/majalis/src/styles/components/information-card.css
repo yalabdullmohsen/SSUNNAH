@@ -34,7 +34,7 @@
   flex: 0 0 auto;
   width: 1.85rem;
   height: 1.85rem;
-  border-radius: 10px;
+  border-radius: var(--cs-radius-control);
   background: color-mix(in srgb, var(--mj-brand, #0f5c45) 14%, transparent);
   color: var(--mj-brand-deep, #123f2e);
 }

@@ -1,0 +1,35 @@
+{
+  "measuredAt": "2026-10-02T02:33:49.049Z",
+  "softCardRefs": 340,
+  "softCardFiles": 104,
+  "tsxSoftCardConsumers": 0,
+  "softByDecision": {
+    "KEEP_JUSTIFIED": 284,
+    "DEAD_PROVEN": 56
+  },
+  "migratedComponents": [
+    "RelatedContentCard→InteractiveCard",
+    "SectionCard→InteractiveCard",
+    "FeaturedSectionCard/HeroActionCard→InteractiveCard",
+    "ReadingSectionCard→AppCard",
+    "UnifiedLessonCard→AppCard"
+  ],
+  "justifiedFamilies": [
+    "FeatureCard (AppCard façade)",
+    "HadithCard (AppCard)",
+    "SectionEntryCard/HubCard (authority)",
+    "CSS .soft-card remaps (0 TSX consumers)",
+    "ContentCard/CardSystem hierarchy (authority doc)"
+  ],
+  "visualBefore": {
+    "boxShadowDecls": 1113,
+    "borderRadiusPxDecls": 1258,
+    "zIndexRawDecls": 258
+  },
+  "visualAfter": {
+    "boxShadowDecls": 1113,
+    "borderRadiusPxDecls": 1243,
+    "zIndexRawDecls": 258
+  },
+  "exit": "CARD_AUTHORITY_ONLY"
+}

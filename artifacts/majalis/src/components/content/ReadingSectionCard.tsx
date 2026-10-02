@@ -1,4 +1,5 @@
 import { useId, useState, type ReactNode, type ToggleEvent } from "react";
+import { AppCard } from "@/components/design-system/AppCard";
 import "@/styles/components/reading-section-card.css";
 import "@/styles/knowledge-experience.css";
 
@@ -74,9 +75,13 @@ export function ReadingSectionCard({
   }
 
   return (
-    <Tag
+    <AppCard
+      as={Tag}
+      tone="muted"
+      padding="md"
       className={classes}
       data-kx-block={variant}
+      data-ss-surface="reading-section"
       aria-labelledby={titleId}
     >
       <h2 id={titleId} className="rsc__title">
@@ -85,7 +90,7 @@ export function ReadingSectionCard({
       <div className="rsc__body" data-detail-full="1">
         {children}
       </div>
-    </Tag>
+    </AppCard>
   );
 }
 

@@ -1,0 +1,2592 @@
+{
+  "summary": {
+    "measuredAt": "2026-10-02T02:30:53.692Z",
+    "totals": {
+      "soft-card": 340,
+      "SoftCard": 0,
+      "cs-card": 34,
+      "card-shell": 0,
+      "section-card": 85,
+      "feature-card": 16,
+      "ss-app-card": 30,
+      "AppCard": 144,
+      "InteractiveCard": 17,
+      "StatusCard": 18,
+      "SectionEntryCard": 49,
+      "ElevatedSurface": 5,
+      "InsetSurface": 9,
+      "ContentCard": 18,
+      "CardSystem": 7,
+      "ui/card": 0
+    },
+    "byDecision": {
+      "ADMIN_ONLY": 44,
+      "MIGRATE_TO_APPCARD": 346,
+      "KEEP_JUSTIFIED": 205,
+      "PRAYER_SPECIAL": 4,
+      "MUSHAF_SPECIAL": 8,
+      "DEAD_PROVEN": 165
+    },
+    "softCardFileCount": 104,
+    "softCardRefs": 340
+  },
+  "softCardFiles": [
+    {
+      "file": "styles/green-surface-system.css",
+      "pattern": "soft-card",
+      "count": 23,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/premium-dark-refine.css",
+      "pattern": "soft-card",
+      "count": 19,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/card-system.css",
+      "pattern": "soft-card",
+      "count": 18,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "styles/pages/app-shell-v2.css",
+      "pattern": "soft-card",
+      "count": 17,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/dark-mode-surfaces.css",
+      "pattern": "soft-card",
+      "count": 16,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/dark-design-system.css",
+      "pattern": "soft-card",
+      "count": 15,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/modern-ui-refresh.css",
+      "pattern": "soft-card",
+      "count": 15,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/card-decorative-strip-cleanup.css",
+      "pattern": "soft-card",
+      "count": 13,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/lessons.css",
+      "pattern": "soft-card",
+      "count": 12,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/section-cards-theme.css",
+      "pattern": "soft-card",
+      "count": 10,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/knowledge-experience.css",
+      "pattern": "soft-card",
+      "count": 8,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/ssunnah-card-unify.css",
+      "pattern": "soft-card",
+      "count": 7,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/card-system-tokens.css",
+      "pattern": "soft-card",
+      "count": 6,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "styles/components/islamic-quiz-game.css",
+      "pattern": "soft-card",
+      "count": 6,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/theme-aliases.css",
+      "pattern": "soft-card",
+      "count": 6,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "lib/__tests__/lesson-cards-soft-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 5,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "styles/islam-intro-experience.css",
+      "pattern": "soft-card",
+      "count": 5,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/home-dashboard-v2.css",
+      "pattern": "soft-card",
+      "count": 5,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/worship-history-v2.css",
+      "pattern": "soft-card",
+      "count": 5,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "lib/__tests__/quiz-soft-card-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/settings-rows-unify-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/universities-knowledge-keep-previous-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "styles/card-matte-unify.css",
+      "pattern": "soft-card",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/interaction-states.css",
+      "pattern": "soft-card",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/learn-legal-v2.css",
+      "pattern": "soft-card",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "app/styles/theme.css",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "lib/__tests__/calendar-rulings-soft-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/card-matte-unify-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/dark-design-system-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/mj-card-ldb-hero-unify-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/soft-cards-system-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "styles/pages/search.css",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/visual-layer-contrast-fix.css",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "lib/__tests__/account-tools-soft-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/dark-mode-interaction-states-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/stories-mawarith-soft-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/sunnah-pr5-sections-visual-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/worship-cards-soft-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "styles/components/ipad-responsive-layout.css",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/discover-islam.css",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/index-deferred-pages.css",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/ssunnah-ds-canonical.css",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/sunnah-identity-reset.css",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "lib/__tests__/boot-fouc-fonts-mushaf-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "lib/__tests__/card-system-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/dark-unified-system-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/directory-catalogs-quality-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/hadith-card-soft-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/hadith-experience-redesign-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/home-cards-appcard-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/institutions-discover-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/modern-ui-refresh-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/mushaf-anti-regression-guard.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "lib/__tests__/quran-prayer-keep-previous-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRAYER_SPECIAL",
+      "decision": "PRAYER_SPECIAL"
+    },
+    {
+      "file": "lib/__tests__/search-result-card-soft-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/section-cards-theme-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/soft-section-heroes-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/sunnah-ui-refinement-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/ui-regression-checklist-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/visual-redesign-v2-tokens-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "styles/components/reading-section-card.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/dark-mode-recovery.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/final-release.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/ios-edge.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/adab-talab-ilm.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/alamat-saah.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/arbaeen-nawawi.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/arkan-iman.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/arkan-islam.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/asmaa-husna.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/duas-quran.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/duas.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/fadail-aamal.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/fiqh-guide.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/glossary.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/hadith-mustalah.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/hajj.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/hikam-salaf.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/islam-stats.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/janaza.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/learning-path-dashboard.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/madhahib.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/malaika.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/notifications.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/occasions.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/quran-hub-v2.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "styles/pages/quran-hub.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "styles/pages/raqaiq.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/researches.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/sahabah.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/salah-guide.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/sawm.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/seerah.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/shimael.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/sunan-yawmiyya.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/tafsir.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/tahara.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/tawba.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/tawhid.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/ulum-quran.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/zakat.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/ssunnah-screen-patterns.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/sunnah-identity-cards.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/sunnah-identity-luxury-night.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    }
+  ],
+  "items": [
+    {
+      "file": "admin-v3/AdminV3Dashboard.tsx",
+      "pattern": "AppCard",
+      "count": 4,
+      "pathClass": "ADMIN_ONLY",
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "admin-v3/AdminV3Dashboard.tsx",
+      "pattern": "StatusCard",
+      "count": 3,
+      "pathClass": "ADMIN_ONLY",
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "admin-v3/centers/AdminV3CenterWorkspace.tsx",
+      "pattern": "AppCard",
+      "count": 4,
+      "pathClass": "ADMIN_ONLY",
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "admin-v3/centers/AdminV3CenterWorkspace.tsx",
+      "pattern": "StatusCard",
+      "count": 3,
+      "pathClass": "ADMIN_ONLY",
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "admin-v3/domains/content/ContentHubPage.tsx",
+      "pattern": "AppCard",
+      "count": 6,
+      "pathClass": "ADMIN_ONLY",
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "admin-v3/domains/ops/AutomationHubPage.tsx",
+      "pattern": "AppCard",
+      "count": 10,
+      "pathClass": "ADMIN_ONLY",
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "admin-v3/domains/ops/OpsPages.tsx",
+      "pattern": "AppCard",
+      "count": 4,
+      "pathClass": "ADMIN_ONLY",
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "admin-v3/ui/primitives.tsx",
+      "pattern": "StatusCard",
+      "count": 3,
+      "pathClass": "ADMIN_ONLY",
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "app/styles/theme.css",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "components/content/ContentReading.tsx",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "components/content/ContentReading.tsx",
+      "pattern": "SectionEntryCard",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/content/ReadingSectionCard.tsx",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "components/content/RelatedContentCard.tsx",
+      "pattern": "cs-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "components/content/RelatedContentCard.tsx",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "components/design-system/AppCard.tsx",
+      "pattern": "cs-card",
+      "count": 3,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/AppCard.tsx",
+      "pattern": "ss-app-card",
+      "count": 6,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/AppCard.tsx",
+      "pattern": "AppCard",
+      "count": 1,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/CardSystem.tsx",
+      "pattern": "cs-card",
+      "count": 4,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/CardSystem.tsx",
+      "pattern": "AppCard",
+      "count": 8,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/CardSystem.tsx",
+      "pattern": "ContentCard",
+      "count": 1,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/CardSystemV2.tsx",
+      "pattern": "ContentCard",
+      "count": 2,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/ContentCard.tsx",
+      "pattern": "AppCard",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/ContentCard.tsx",
+      "pattern": "ContentCard",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/FeatureCard.tsx",
+      "pattern": "feature-card",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "components/design-system/FeatureCard.tsx",
+      "pattern": "AppCard",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/SurfacePrimitives.tsx",
+      "pattern": "AppCard",
+      "count": 12,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/SurfacePrimitives.tsx",
+      "pattern": "InteractiveCard",
+      "count": 1,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/SurfacePrimitives.tsx",
+      "pattern": "StatusCard",
+      "count": 1,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/SurfacePrimitives.tsx",
+      "pattern": "ElevatedSurface",
+      "count": 1,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/SurfacePrimitives.tsx",
+      "pattern": "InsetSurface",
+      "count": 1,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/index.ts",
+      "pattern": "cs-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "components/design-system/index.ts",
+      "pattern": "AppCard",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/index.ts",
+      "pattern": "InteractiveCard",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/index.ts",
+      "pattern": "StatusCard",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/index.ts",
+      "pattern": "SectionEntryCard",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/index.ts",
+      "pattern": "ElevatedSurface",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/index.ts",
+      "pattern": "InsetSurface",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/index.ts",
+      "pattern": "ContentCard",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/design-system/index.ts",
+      "pattern": "CardSystem",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/hadith/HadithCard.tsx",
+      "pattern": "cs-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "components/hadith/HadithCard.tsx",
+      "pattern": "AppCard",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/home/DailyWirdCard.tsx",
+      "pattern": "AppCard",
+      "count": 10,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/home/HomeDailyBenefits.tsx",
+      "pattern": "AppCard",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/home/HomeDailyProgress.tsx",
+      "pattern": "InteractiveCard",
+      "count": 5,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/home/HomeLatestUpdates.tsx",
+      "pattern": "InteractiveCard",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/home/HomePrayerRanks.tsx",
+      "pattern": "InsetSurface",
+      "count": 3,
+      "pathClass": "PRAYER_SPECIAL",
+      "decision": "PRAYER_SPECIAL"
+    },
+    {
+      "file": "components/home/HomeSacredOfDay.tsx",
+      "pattern": "AppCard",
+      "count": 6,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/home/HomeUpcomingEvents.tsx",
+      "pattern": "AppCard",
+      "count": 6,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/lessons/UnifiedLessonCard.tsx",
+      "pattern": "cs-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "components/quiz-game/IslamicQuizGame.tsx",
+      "pattern": "section-card",
+      "count": 11,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "components/quran/QuranOpenMushafCard.tsx",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "components/sections/FeaturedSectionCard.tsx",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "components/sections/SectionCard.tsx",
+      "pattern": "cs-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "components/sections/SectionCard.tsx",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "components/sections/SectionRow.tsx",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "components/sections/section-cards.css",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "components/ui/HubCard.tsx",
+      "pattern": "cs-card",
+      "count": 2,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/ui/HubCard.tsx",
+      "pattern": "SectionEntryCard",
+      "count": 4,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/ui/InternalCards.tsx",
+      "pattern": "AppCard",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/ui/InternalCards.tsx",
+      "pattern": "SectionEntryCard",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/ui/InternalCards.tsx",
+      "pattern": "ContentCard",
+      "count": 5,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/ui/mj.tsx",
+      "pattern": "AppCard",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "components/ui-common.tsx",
+      "pattern": "SectionEntryCard",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "lib/__tests__/account-tools-soft-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/admin-v3-interaction-authority-gate.test.ts",
+      "pattern": "AppCard",
+      "count": 4,
+      "pathClass": "ADMIN_ONLY",
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "lib/__tests__/admin-v3-interaction-authority-gate.test.ts",
+      "pattern": "InteractiveCard",
+      "count": 1,
+      "pathClass": "ADMIN_ONLY",
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "lib/__tests__/admin-v3-interaction-authority-gate.test.ts",
+      "pattern": "StatusCard",
+      "count": 2,
+      "pathClass": "ADMIN_ONLY",
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "lib/__tests__/authority-unification-final-gate.test.ts",
+      "pattern": "AppCard",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/authority-unification-final-gate.test.ts",
+      "pattern": "InteractiveCard",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/boot-fouc-fonts-mushaf-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "lib/__tests__/calendar-rulings-soft-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/card-matte-unify-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/card-matte-unify-gate.test.ts",
+      "pattern": "ss-app-card",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/card-surface-authority-gate.test.ts",
+      "pattern": "AppCard",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/card-surface-authority-gate.test.ts",
+      "pattern": "InteractiveCard",
+      "count": 5,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/card-surface-authority-gate.test.ts",
+      "pattern": "StatusCard",
+      "count": 5,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/card-surface-authority-gate.test.ts",
+      "pattern": "ElevatedSurface",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/card-surface-authority-gate.test.ts",
+      "pattern": "InsetSurface",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/card-system-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/card-system-gate.test.ts",
+      "pattern": "cs-card",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/card-system-gate.test.ts",
+      "pattern": "AppCard",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/card-system-gate.test.ts",
+      "pattern": "CardSystem",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/content-detail-no-truncate-gate.test.ts",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/dark-design-system-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/dark-design-system-gate.test.ts",
+      "pattern": "ss-app-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/dark-mode-interaction-states-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/dark-unified-system-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/directory-catalogs-quality-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/hadith-card-soft-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/hadith-card-soft-gate.test.ts",
+      "pattern": "AppCard",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/hadith-experience-redesign-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/hadith-experience-redesign-gate.test.ts",
+      "pattern": "AppCard",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/hadith-more-search-ux.test.ts",
+      "pattern": "SectionEntryCard",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/hadith-section-ui-gate.test.ts",
+      "pattern": "SectionEntryCard",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/home-cards-appcard-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/home-cards-appcard-gate.test.ts",
+      "pattern": "ss-app-card",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/home-cards-appcard-gate.test.ts",
+      "pattern": "AppCard",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/institutions-discover-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/lesson-cards-soft-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 5,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/lesson-cards-soft-gate.test.ts",
+      "pattern": "AppCard",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/miracles-ui-gate.test.ts",
+      "pattern": "SectionEntryCard",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/mj-card-ldb-hero-unify-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/mj-card-ldb-hero-unify-gate.test.ts",
+      "pattern": "AppCard",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/modern-ui-refresh-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/mushaf-anti-regression-guard.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "lib/__tests__/product-redesign-wave1-foundation-gate.test.ts",
+      "pattern": "CardSystem",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/product-redesign-wave3-cards-gate.test.ts",
+      "pattern": "SectionEntryCard",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/quiz-soft-card-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/quiz-soft-card-gate.test.ts",
+      "pattern": "section-card",
+      "count": 7,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/quran-open-mushaf-card-gate.test.ts",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "lib/__tests__/quran-prayer-keep-previous-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRAYER_SPECIAL",
+      "decision": "PRAYER_SPECIAL"
+    },
+    {
+      "file": "lib/__tests__/search-result-card-soft-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/section-cards-theme-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/section-cards-theme-gate.test.ts",
+      "pattern": "SectionEntryCard",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/section-entry-card-gate.test.ts",
+      "pattern": "SectionEntryCard",
+      "count": 7,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/section-hub-visual-regression.test.ts",
+      "pattern": "SectionEntryCard",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/settings-rows-unify-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/settings-rows-unify-gate.test.ts",
+      "pattern": "AppCard",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/soft-cards-system-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/soft-cards-system-gate.test.ts",
+      "pattern": "ss-app-card",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/soft-cards-system-gate.test.ts",
+      "pattern": "AppCard",
+      "count": 5,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/soft-section-heroes-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-anti-legacy-ui-gate.test.ts",
+      "pattern": "AppCard",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-anti-legacy-ui-gate.test.ts",
+      "pattern": "ContentCard",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-design-system-gate.test.ts",
+      "pattern": "AppCard",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-design-system-gate.test.ts",
+      "pattern": "ContentCard",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-design-system-lockdown-gate.test.ts",
+      "pattern": "ContentCard",
+      "count": 3,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/ssunnah-quality-regression-gate.test.ts",
+      "pattern": "section-card",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/stories-mawarith-soft-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/sunnah-design-system-consolidation-gate.test.ts",
+      "pattern": "AppCard",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/sunnah-design-system-consolidation-gate.test.ts",
+      "pattern": "ContentCard",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/sunnah-pr5-sections-visual-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/sunnah-ui-refinement-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/ui-regression-checklist-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/ui-regression-checklist-gate.test.ts",
+      "pattern": "ss-app-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/ui-regression-checklist-gate.test.ts",
+      "pattern": "AppCard",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/universities-knowledge-keep-previous-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 4,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/visual-identity-unify-gate.test.ts",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/visual-identity-unify-gate.test.ts",
+      "pattern": "SectionEntryCard",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/visual-redesign-v2-tokens-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/visual-redesign-v2-tokens-gate.test.ts",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "lib/__tests__/worship-cards-soft-gate.test.ts",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "DEAD_PROVEN",
+      "decision": "DEAD_PROVEN"
+    },
+    {
+      "file": "main.tsx",
+      "pattern": "cs-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "main.tsx",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "main.tsx",
+      "pattern": "ss-app-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "main.tsx",
+      "pattern": "AppCard",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "pages/account/ui/ProgressCenterView.tsx",
+      "pattern": "CardSystem",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "pages/account/ui/SettingsView.tsx",
+      "pattern": "AppCard",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "pages/fiqh/ui/FiqhView.tsx",
+      "pattern": "SectionEntryCard",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "pages/hadith/HadithBooksAndRulingsPage.tsx",
+      "pattern": "SectionEntryCard",
+      "count": 5,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "pages/hadith/ui/HadithView.tsx",
+      "pattern": "SectionEntryCard",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "pages/quran/ui/QuranNumbersView.tsx",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "styles/card-decorative-strip-cleanup.css",
+      "pattern": "soft-card",
+      "count": 13,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/card-decorative-strip-cleanup.css",
+      "pattern": "section-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/card-matte-unify.css",
+      "pattern": "soft-card",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/card-matte-unify.css",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/card-system-tokens.css",
+      "pattern": "soft-card",
+      "count": 6,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "styles/card-system-v2.css",
+      "pattern": "SectionEntryCard",
+      "count": 1,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "styles/card-system.css",
+      "pattern": "soft-card",
+      "count": 18,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "styles/card-system.css",
+      "pattern": "cs-card",
+      "count": 12,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "styles/card-system.css",
+      "pattern": "section-card",
+      "count": 4,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "styles/card-system.css",
+      "pattern": "ss-app-card",
+      "count": 1,
+      "pathClass": "AUTHORITY_DEFINITION",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "styles/components/ipad-responsive-layout.css",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/components/islamic-quiz-game.css",
+      "pattern": "soft-card",
+      "count": 6,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/components/islamic-quiz-game.css",
+      "pattern": "section-card",
+      "count": 7,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/components/reading-section-card.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/dark-design-system.css",
+      "pattern": "soft-card",
+      "count": 15,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/dark-design-system.css",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/dark-design-system.css",
+      "pattern": "feature-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/dark-mode-recovery.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/dark-mode-recovery.css",
+      "pattern": "feature-card",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/dark-mode-surfaces.css",
+      "pattern": "soft-card",
+      "count": 16,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/discover-islam.css",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/final-release.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/green-surface-system.css",
+      "pattern": "soft-card",
+      "count": 23,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/green-surface-system.css",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/index-deferred-pages.css",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/index-deferred-pages.css",
+      "pattern": "section-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/interaction-states.css",
+      "pattern": "soft-card",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/ios-edge.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/islam-intro-experience.css",
+      "pattern": "soft-card",
+      "count": 5,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/knowledge-experience.css",
+      "pattern": "soft-card",
+      "count": 8,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/knowledge-experience.css",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/modern-islamic-editorial.css",
+      "pattern": "section-card",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/modern-ui-refresh.css",
+      "pattern": "soft-card",
+      "count": 15,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/modern-ui-refresh.css",
+      "pattern": "section-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/adab-talab-ilm.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/alamat-saah.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/app-shell-v2.css",
+      "pattern": "soft-card",
+      "count": 17,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/app-shell-v2.css",
+      "pattern": "section-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/app-shell-v2.css",
+      "pattern": "ss-app-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "styles/pages/arbaeen-nawawi.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/arkan-iman.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/arkan-islam.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/asmaa-husna.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/duas-quran.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/duas.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/fadail-aamal.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/fiqh-guide.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/fiqh-hub.css",
+      "pattern": "SectionEntryCard",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "styles/pages/glossary.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/hadith-mustalah.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/hajj.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/hikam-salaf.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/home-dashboard-v2.css",
+      "pattern": "soft-card",
+      "count": 5,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/islam-stats.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/janaza.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/learn-legal-v2.css",
+      "pattern": "soft-card",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/learn-legal-v2.css",
+      "pattern": "section-card",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/learning-path-dashboard.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/lessons.css",
+      "pattern": "soft-card",
+      "count": 12,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/madhahib.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/malaika.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/notifications.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/occasions.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/quran-hub-v2.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "styles/pages/quran-hub-v2.css",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "styles/pages/quran-hub.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "MUSHAF_SPECIAL",
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "styles/pages/raqaiq.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/researches.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/sahabah.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/salah-guide.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/sawm.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/search.css",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/seerah.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/shimael.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/sunan-yawmiyya.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/tafsir.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/tahara.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/tawba.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/tawhid.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/ulum-quran.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/worship-history-v2.css",
+      "pattern": "soft-card",
+      "count": 5,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/pages/zakat.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/premium-dark-refine.css",
+      "pattern": "soft-card",
+      "count": 19,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/premium-dark-refine.css",
+      "pattern": "section-card",
+      "count": 10,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/premium-dark-refine.css",
+      "pattern": "feature-card",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/section-cards-theme.css",
+      "pattern": "soft-card",
+      "count": 10,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/sections-calm-polish.css",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/ssunnah-card-unify.css",
+      "pattern": "soft-card",
+      "count": 7,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/ssunnah-card-unify.css",
+      "pattern": "section-card",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/ssunnah-card-unify.css",
+      "pattern": "AppCard",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "styles/ssunnah-ds-canonical.css",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/ssunnah-ds-canonical.css",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/ssunnah-screen-patterns.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/ssunnah-screen-patterns.css",
+      "pattern": "AppCard",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "styles/ssunnah-ux-polish.css",
+      "pattern": "feature-card",
+      "count": 5,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/ssunnah-ux-polish.css",
+      "pattern": "ss-app-card",
+      "count": 7,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "styles/sunnah-identity-cards.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/sunnah-identity-home-hub.css",
+      "pattern": "section-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/sunnah-identity-luxury-night.css",
+      "pattern": "soft-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/sunnah-identity-luxury-night.css",
+      "pattern": "ss-app-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "styles/sunnah-identity-reset.css",
+      "pattern": "soft-card",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/sunnah-identity-reset.css",
+      "pattern": "ss-app-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "styles/theme-aliases.css",
+      "pattern": "soft-card",
+      "count": 6,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/visual-layer-contrast-fix.css",
+      "pattern": "soft-card",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "styles/visual-refresh-v1.css",
+      "pattern": "section-card",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    },
+    {
+      "file": "views/MergedSectionHubPage.tsx",
+      "pattern": "SectionEntryCard",
+      "count": 2,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "views/MiraclesPage.tsx",
+      "pattern": "SectionEntryCard",
+      "count": 4,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "views/UserStatsPage.tsx",
+      "pattern": "AppCard",
+      "count": 3,
+      "pathClass": "PRODUCT",
+      "decision": "KEEP_JUSTIFIED"
+    },
+    {
+      "file": "views/learning/LearningPathsPage.tsx",
+      "pattern": "cs-card",
+      "count": 1,
+      "pathClass": "PRODUCT",
+      "decision": "MIGRATE_TO_APPCARD"
+    }
+  ]
+}

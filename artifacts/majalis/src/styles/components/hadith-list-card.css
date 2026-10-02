@@ -33,7 +33,7 @@
   width: 1.75rem;
   height: 1.75rem;
   margin-block-start: 0.1rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   display: grid;
   place-items: center;
   font-size: 0.72rem;

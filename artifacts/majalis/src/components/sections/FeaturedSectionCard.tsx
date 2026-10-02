@@ -1,5 +1,4 @@
-import { useLocation } from "wouter";
-import { Button } from "@/components/ui/button";
+import { InteractiveCard } from "@/components/design-system/SurfacePrimitives";
 import type { SectionDef } from "@/config/sections.registry";
 import { prefetchRoute } from "@/lib/prefetch-route";
 import { cn } from "@/lib/utils";
@@ -13,44 +12,33 @@ type Props = {
 };
 
 /**
- * مربع مميّز — الخلفية الخضراء ولون الحبر في صنف variant واحد فقط (.card--featured).
- * ممنوع تعيين لون الحبر أبيضًا عبر منفعة Tailwind منفصلة عن الخلفية.
+ * مربع مميّز — الخلفية الخضراء عبر `.card--featured` فوق InteractiveCard.
  */
 export function HeroActionCard({ section, className, onNavigate, resolveRoute }: Props) {
-  const [, setLocation] = useLocation();
   const Icon = section.icon;
   const subtitle = section.subtitle?.trim();
   const aria = subtitle ? `${section.label} — ${subtitle}` : section.label;
+  const href = resolveRoute?.(section) ?? section.route;
 
   return (
-    <Button
-      type="button"
+    <InteractiveCard
+      href={href}
+      title={aria}
+      aria-label={aria}
       dir="rtl"
       data-section-card="featured"
       data-hero-action="1"
       data-section-id={section.id}
-      aria-label={aria}
       className={cn("card--featured hero-action-card", className)}
-      onPointerDown={() => prefetchRoute(resolveRoute?.(section) ?? section.route)}
-      onClick={() => {
-        const href = resolveRoute?.(section) ?? section.route;
-        const [path, hash] = href.split("#");
-        if (path) setLocation(path);
-        window.scrollTo(0, 0);
-        if (hash) {
-          window.setTimeout(() => {
-            document.getElementById(hash)?.scrollIntoView({ behavior: "auto", block: "nearest" });
-          }, 40);
-        }
-        onNavigate?.();
-      }}
+      onNavigate={onNavigate}
+      onPointerDown={() => prefetchRoute(href)}
     >
       <span className="card__icon" aria-hidden>
         <Icon strokeWidth={1.75} aria-hidden />
       </span>
       <span className="card__label">{section.label}</span>
       {subtitle ? <span className="card__subtitle">{subtitle}</span> : null}
-    </Button>
+    </InteractiveCard>
   );
 }
 
