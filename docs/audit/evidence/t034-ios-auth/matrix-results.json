@@ -1,0 +1,58 @@
+{
+  "phase": "T-034",
+  "capturedAt": "2026-10-01T23:56:06Z",
+  "verdict": "FAIL",
+  "exit": "IOS_AUTH_NOT_CERTIFIED",
+  "requiredBoard": {
+    "Login": "FAIL",
+    "Logout": "FAIL",
+    "Register": "FAIL",
+    "Recovery": "FAIL",
+    "Expiration": "FAIL"
+  },
+  "features": {
+    "login": true,
+    "logout": true,
+    "register": true,
+    "passwordReset": true,
+    "accountDelete": true,
+    "accountExport": true
+  },
+  "security": {
+    "capSessionStorage": {
+      "persistSession": true,
+      "customStorageAdapter": false,
+      "usesKeychainFromJs": false,
+      "defaultSupabaseStorage": "localStorage (WebView) via @supabase/supabase-js default"
+    },
+    "nativeKeychain": {
+      "service": "com.yousef.majlisilm.auth",
+      "account": "majlis.auth.session.v1",
+      "purgesLegacyUserDefaults": true,
+      "wiredToCapWebViewLogin": false
+    },
+    "appStoreReview": {
+      "hardcodedCredentialsInClient": true,
+      "sessionFlagStorage": true,
+      "storageKey": "ssunnah-app-store-review-session-v1"
+    },
+    "userDefaultsTokenWriteHits": [
+      "artifacts/majalis/ios/App/App/Services/NetworkService.swift"
+    ]
+  },
+  "accountDelete": "FEATURE_PRESENT_UNPROVEN_DEVICE",
+  "accountExport": "FEATURE_PRESENT_UNPROVEN_DEVICE",
+  "blockingFailures": [
+    "No authenticated device fixture / test credentials in environment — Login/Logout/Register/Recovery/Expiration cannot be executed end-to-end",
+    "Cap WebView session uses Supabase default persistSession (localStorage), not Keychain — Keychain PRIMARY STORE not proven for Cap auth path",
+    "App Store review credentials hardcoded in client source (app-store-review-auth.ts) with localStorage session flag",
+    "Prerequisite T-033 Deep Links NOT CERTIFIED — account deep-link route open blocked by OS dialog",
+    "Session expiration + return-route restore after login unproven on device"
+  ],
+  "simEvidence": [
+    "sim/01-cold-home-logged-out.png",
+    "sim/02-warm-home.png",
+    "sim/03-resume.png",
+    "sim/04-account-deeplink-dialog.png"
+  ]
+}

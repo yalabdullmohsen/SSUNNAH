@@ -1,0 +1,64 @@
+{
+  "supabase_bootstrap": {
+    "path": "artifacts/majalis/src/lib/supabase-bootstrap.ts",
+    "bytes": 3025
+  },
+  "auth_provider": {
+    "path": "artifacts/majalis/src/components/AuthProvider.tsx",
+    "bytes": 12617
+  },
+  "review_auth": {
+    "path": "artifacts/majalis/src/lib/app-store-review-auth.ts",
+    "bytes": 2383
+  },
+  "keychain": {
+    "path": "artifacts/majalis/ios/App/App/Services/KeychainStore.swift",
+    "bytes": 2190
+  },
+  "network": {
+    "path": "artifacts/majalis/ios/App/App/Services/NetworkService.swift",
+    "bytes": 12025
+  },
+  "account_delete_view": {
+    "path": "artifacts/majalis/src/pages/account/ui/AccountDeletionView.tsx",
+    "bytes": 9237
+  },
+  "privacy_export": {
+    "path": "artifacts/majalis/src/views/PrivacyCenterPage.tsx",
+    "bytes": 5626
+  },
+  "login_view": {
+    "path": "artifacts/majalis/src/pages/account/ui/LoginView.tsx",
+    "bytes": 19088
+  },
+  "cap_session_storage": {
+    "persistSession": true,
+    "customStorageAdapter": false,
+    "usesKeychainFromJs": false,
+    "defaultSupabaseStorage": "localStorage (WebView) via @supabase/supabase-js default"
+  },
+  "app_store_review": {
+    "hardcodedCredentialsInClient": true,
+    "sessionFlagStorage": true,
+    "storageKey": "ssunnah-app-store-review-session-v1"
+  },
+  "native_keychain": {
+    "service": "com.yousef.majlisilm.auth",
+    "account": "majlis.auth.session.v1",
+    "purgesLegacyUserDefaults": true,
+    "wiredToCapWebViewLogin": false
+  },
+  "features": {
+    "login": true,
+    "logout": true,
+    "register": true,
+    "passwordReset": true,
+    "accountDelete": true,
+    "accountExport": true
+  },
+  "userDefaultsTokenWriteHits": [
+    "artifacts/majalis/ios/App/App/Services/NetworkService.swift"
+  ],
+  "testCredentialsAvailable": false,
+  "deviceFlowsRunnable": false
+}
