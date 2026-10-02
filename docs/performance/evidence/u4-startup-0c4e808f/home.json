@@ -1,0 +1,112 @@
+{
+  "route": "home",
+  "path": "/",
+  "fp": 792,
+  "fcp": 792,
+  "elapsedMs": 6489,
+  "clsTotal": 0.012816525960415394,
+  "clsAfterFcp": 0.012816525960415394,
+  "clsEntryCount": 3,
+  "topCls": [
+    {
+      "value": 0.008569421863148418,
+      "startTime": 1311.8999999985099,
+      "sources": [
+        "section.home-start-here.home-start-here--compact",
+        "span.bottom-nav__tab",
+        "span.bottom-nav__tab",
+        "span.bottom-nav__tab",
+        "span.bottom-nav__tab"
+      ]
+    },
+    {
+      "value": 0.003983183700151009,
+      "startTime": 1601.5,
+      "sources": [
+        "section.m2030-band.home-start-here-band",
+        "nav.hw3.hw3--identity",
+        "h1#«r0».ss-text.ss-text--screen-title",
+        "div.page-hero-mj__actions",
+        "p.ss-text.ss-text--explanation"
+      ]
+    },
+    {
+      "value": 0.0002639203971159678,
+      "startTime": 2016.7999999970198,
+      "sources": [
+        "div.navbar-ticker-row"
+      ]
+    }
+  ],
+  "themeChangeCount": 0,
+  "visualChangeCount": 4,
+  "visualChanges": [
+    {
+      "key": "sheetCount",
+      "early": 3,
+      "final": 71
+    },
+    {
+      "key": "hero.rect",
+      "early": {
+        "x": 32,
+        "y": 113,
+        "w": 326,
+        "h": 288
+      },
+      "final": {
+        "x": 32,
+        "y": 186.171875,
+        "w": 326,
+        "h": 285.328125
+      },
+      "delta": {
+        "dw": 0,
+        "dh": -2.671875,
+        "dy": 73.171875
+      }
+    },
+    {
+      "key": "hero.backgroundColor",
+      "early": "rgb(248, 246, 241)",
+      "final": "rgb(15, 92, 63)"
+    },
+    {
+      "key": "hero.color",
+      "early": "rgb(21, 56, 45)",
+      "final": "rgb(247, 241, 228)"
+    }
+  ],
+  "sheets": [
+    3,
+    71
+  ],
+  "networkCss": 72,
+  "networkFonts": 4,
+  "earlyBody": {
+    "font": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "finalBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "fontDelta": 0,
+  "backgroundDelta": 0,
+  "headerJump": false,
+  "heroJump": false,
+  "bottomJump": false,
+  "backJump": false,
+  "headerDelta": null,
+  "heroDelta": {
+    "dw": 0,
+    "dh": -2.671875,
+    "dy": 73.171875
+  },
+  "bottomDelta": null,
+  "backDelta": null
+}

@@ -1,10 +1,11 @@
 # OWNER ACTIONS CURRENT — سُنّة
 
-**Updated:** 2026-10-02 (BUILD_55 auth hardening)  
-**Live web tip:** see `CURRENT_PROJECT_STATUS.md`  
+**Updated:** 2026-10-02 (truth sync · tip `0c4e808f` MATCH)  
+**Live web tip:** `0c4e808f` — see `CURRENT_PROJECT_STATUS.md`  
 **Build 55 truth:** `docs/store-release/BUILD_55_TRACEABILITY.md`  
 **Device evidence procedure:** `docs/audit/WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md`  
-**Rule:** Agents must **not** execute these. Record only.
+**Rule:** Agents must **not** execute these. Record only.  
+**Pin for next Archive:** tip ≥ `0c4e808f` on `main` · build number ≥ **56**.
 
 | action | why | evidence | exact system | consequence if not done | safe rollback |
 |---|---|---|---|---|---|
@@ -24,7 +25,7 @@
 | Enable Auth MFA for admin accounts | Admin security | same | Supabase Auth dashboard | Elevated account risk | Disable MFA only via dashboard |
 | Enable leaked-password protection | Auth hardening | same | Supabase Auth dashboard | Weaker password policy | Toggle off in dashboard |
 | Confirm Vercel production secrets set | Assistant/API server needs | Vercel project settings | Vercel | Feature degradation, not silent license bypass | Rotate/remove secrets |
-| Pin Store RC commit for Archive/AAB | Tip `5e99cd7c` ≠ automatic store pin | `CURRENT_PROJECT_STATUS.md` + store readiness | Release process | Wrong binary shipped | Rebuild from recorded pin only |
+| Pin Store RC commit for Archive/AAB | Must record exact tip (≥ `0c4e808f`) before Archive | `CURRENT_PROJECT_STATUS.md` + store readiness | Release process | Wrong binary shipped | Rebuild from recorded pin only |
 | Device matrix sign-off (prayer + mushaf) | Cannot be simulated fully | `WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md` + `DEVICE_QA_REGISTER.md` | Physical devices | DEVICE_REQUIRED rows stay open | Re-test after fixes |
 | Final App Store GO / WITHDRAW | Legal+product authority | Store readiness | Owner | No submission | Withdraw build in ASC |
 | ASC: category · copyright · Contests answer · paste listing | T-048 readiness OWNER rows | `APP_STORE_READINESS_REPORT.md` · checklist | ASC | Cannot submit listing | Keep drafts in repo |
