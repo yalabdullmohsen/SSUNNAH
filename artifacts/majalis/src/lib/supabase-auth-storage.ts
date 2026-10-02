@@ -1,9 +1,15 @@
 /**
  * Supabase Auth storage adapter.
  * - Web: localStorage (unchanged contract)
- * - Capacitor iOS/Android: Keychain via SunnahAuthKeychain plugin
+ * - Capacitor iOS: Keychain via registered SunnahAuthKeychain plugin
  * Migrates legacy WebView localStorage sessions into Keychain once, then purges tokens from LS.
  */
+
+import {
+  clearNativeLegacyAuthSession,
+  getSunnahAuthKeychainPlugin,
+  type SunnahAuthKeychainPlugin,
+} from "@/lib/plugins/sunnah-auth-keychain";
 
 export type SupabaseAuthStorage = {
   getItem: (key: string) => Promise<string | null>;
@@ -13,12 +19,11 @@ export type SupabaseAuthStorage = {
 
 const MIGRATION_FLAG = "ssunnah-auth-keychain-migrated-v1";
 const LEGACY_REVIEW_FLAG = "ssunnah-app-store-review-session-v1";
+/** Explicit classification when native Keychain bridge is unavailable — not Keychain success. */
+const FALLBACK_FLAG = "ssunnah-auth-storage-mode-v1";
+const FALLBACK_MODE = "localStorage_fallback";
 
-type KeychainPlugin = {
-  get: (opts: { key: string }) => Promise<{ value?: string | null }>;
-  set: (opts: { key: string; value: string }) => Promise<{ ok?: boolean }>;
-  remove: (opts: { key: string }) => Promise<{ ok?: boolean }>;
-};
+export type AuthStorageBackend = "web" | "keychain" | "localStorage_fallback";
 
 function isNativePlatform(): boolean {
   try {
@@ -26,6 +31,28 @@ function isNativePlatform(): boolean {
     return typeof cap?.isNativePlatform === "function" && cap.isNativePlatform();
   } catch {
     return false;
+  }
+}
+
+function markFallback(reason: string): void {
+  try {
+    localStorage.setItem(FALLBACK_FLAG, FALLBACK_MODE);
+  } catch {
+    /* ignore */
+  }
+  try {
+    // Safe: no tokens / no session blob
+    console.warn("[auth-storage] keychain_unavailable_fallback", reason);
+  } catch {
+    /* ignore */
+  }
+}
+
+function clearFallbackFlag(): void {
+  try {
+    localStorage.removeItem(FALLBACK_FLAG);
+  } catch {
+    /* ignore */
   }
 }
 
@@ -55,25 +82,14 @@ function webStorage(): SupabaseAuthStorage {
   };
 }
 
-function getKeychainPlugin(): KeychainPlugin | null {
-  try {
-    const plugins = (
-      window as unknown as { Capacitor?: { Plugins?: Record<string, KeychainPlugin> } }
-    ).Capacitor?.Plugins;
-    const p = plugins?.SunnahAuthKeychain;
-    if (!p || typeof p.get !== "function" || typeof p.set !== "function" || typeof p.remove !== "function") {
-      return null;
-    }
-    return p;
-  } catch {
-    return null;
-  }
-}
-
 function looksLikeSessionBlob(value: string): boolean {
   if (!value || value.length < 8) return false;
   try {
-    const parsed = JSON.parse(value) as { access_token?: unknown; refresh_token?: unknown; currentSession?: unknown };
+    const parsed = JSON.parse(value) as {
+      access_token?: unknown;
+      refresh_token?: unknown;
+      currentSession?: unknown;
+    };
     return Boolean(
       (typeof parsed.access_token === "string" && parsed.access_token.length > 0) ||
         (typeof parsed.refresh_token === "string" && parsed.refresh_token.length > 0) ||
@@ -84,7 +100,7 @@ function looksLikeSessionBlob(value: string): boolean {
   }
 }
 
-async function migrateLegacyIfNeeded(plugin: KeychainPlugin, key: string): Promise<void> {
+async function migrateLegacyIfNeeded(plugin: SunnahAuthKeychainPlugin, key: string): Promise<void> {
   try {
     if (localStorage.getItem(MIGRATION_FLAG) === "1") return;
   } catch {
@@ -116,6 +132,7 @@ async function migrateLegacyIfNeeded(plugin: KeychainPlugin, key: string): Promi
       } catch {
         /* ignore */
       }
+      clearFallbackFlag();
       return;
     }
     await plugin.set({ key, value: legacy });
@@ -127,10 +144,11 @@ async function migrateLegacyIfNeeded(plugin: KeychainPlugin, key: string): Promi
       } catch {
         /* ignore */
       }
+      clearFallbackFlag();
     }
-    // If verify failed: leave legacy in place; do not half-delete; no reload loop.
+    // If verify failed: leave legacy; do not half-delete; no reload loop.
   } catch {
-    /* bridge unavailable — leave legacy; login may still work until next update */
+    markFallback("migration_bridge_error");
   }
 }
 
@@ -138,24 +156,29 @@ function nativeKeychainStorage(): SupabaseAuthStorage {
   const web = webStorage();
   return {
     async getItem(key) {
-      const plugin = getKeychainPlugin();
+      const plugin = getSunnahAuthKeychainPlugin();
       if (!plugin) {
+        markFallback("plugin_null_get");
         return web.getItem(key);
       }
       await migrateLegacyIfNeeded(plugin, key);
       try {
         const res = await plugin.get({ key });
         const value = res?.value;
-        if (typeof value === "string" && value.length > 0) return value;
-        if (value === null || value === undefined) return null;
+        if (typeof value === "string" && value.length > 0) {
+          clearFallbackFlag();
+          return value;
+        }
         return null;
       } catch {
+        markFallback("plugin_get_failed");
         return web.getItem(key);
       }
     },
     async setItem(key, value) {
-      const plugin = getKeychainPlugin();
+      const plugin = getSunnahAuthKeychainPlugin();
       if (!plugin) {
+        markFallback("plugin_null_set");
         await web.setItem(key, value);
         return;
       }
@@ -167,15 +190,22 @@ function nativeKeychainStorage(): SupabaseAuthStorage {
         } catch {
           /* ignore */
         }
+        clearFallbackFlag();
       } catch {
+        markFallback("plugin_set_failed");
         await web.setItem(key, value);
       }
     },
     async removeItem(key) {
-      const plugin = getKeychainPlugin();
+      const plugin = getSunnahAuthKeychainPlugin();
       if (plugin) {
         try {
           await plugin.remove({ key });
+        } catch {
+          /* ignore */
+        }
+        try {
+          await plugin.clearNativeLegacySession();
         } catch {
           /* ignore */
         }
@@ -186,6 +216,7 @@ function nativeKeychainStorage(): SupabaseAuthStorage {
       } catch {
         /* ignore */
       }
+      clearFallbackFlag();
     },
   };
 }
@@ -196,10 +227,26 @@ export function createSupabaseAuthStorage(): SupabaseAuthStorage {
   return isNativePlatform() ? nativeKeychainStorage() : webStorage();
 }
 
+/**
+ * Clears Cap supabase keys (via removeItem callers) + NetworkService legacy account.
+ * Safe to call on web (no-op for native legacy).
+ */
+export async function clearAllNativeAuthSessions(): Promise<void> {
+  await clearNativeLegacyAuthSession();
+  try {
+    localStorage.removeItem(LEGACY_REVIEW_FLAG);
+  } catch {
+    /* ignore */
+  }
+  clearFallbackFlag();
+}
+
 /** Test helpers (no secrets). */
 export const __authStorageTest = {
   MIGRATION_FLAG,
   LEGACY_REVIEW_FLAG,
+  FALLBACK_FLAG,
+  FALLBACK_MODE,
   looksLikeSessionBlob,
   isNativePlatform,
 };

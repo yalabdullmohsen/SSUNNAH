@@ -10,7 +10,11 @@ public class SunnahAuthKeychainPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "get", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "set", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "remove", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "clearNativeLegacySession", returnType: CAPPluginReturnPromise),
     ]
+
+    /// NetworkService Keychain account — must be cleared on Cap logout too.
+    private static let nativeLegacySessionAccount = "majlis.auth.session.v1"
 
     private func account(for call: CAPPluginCall) -> String? {
         guard let key = call.getString("key")?.trimmingCharacters(in: .whitespacesAndNewlines), !key.isEmpty else {
@@ -71,6 +75,15 @@ public class SunnahAuthKeychainPlugin: CAPPlugin, CAPBridgedPlugin {
             call.resolve(["ok": true])
         } catch {
             call.reject("keychain_remove_failed")
+        }
+    }
+
+    @objc func clearNativeLegacySession(_ call: CAPPluginCall) {
+        do {
+            try KeychainStore.delete(account: Self.nativeLegacySessionAccount)
+            call.resolve(["ok": true])
+        } catch {
+            call.reject("keychain_clear_legacy_failed")
         }
     }
 }

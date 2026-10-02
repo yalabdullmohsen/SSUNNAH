@@ -19,8 +19,8 @@
 | `NEXT_RELEASE_TESTFLIGHT_AVAILABLE` | TestFlight **1.0.1 (55)** · ASC UUID `a3fc6865-…` · `BUILT_FROM_MAIN_PLUS_VERSION_PIN` |
 | `BUILD_55_DEVICE_CERTIFICATION_MISSING` | Physical-device evidence not attached |
 | iOS tip versions (source) | `MARKETING_VERSION=1.0.1` · `CURRENT_PROJECT_VERSION=55` (App + Widget + Live Activity) |
-| Auth (repository) | `IOS_AUTH_REPOSITORY_HARDENED` · Keychain-backed Cap storage · no client review password |
-| Auth (device) | `DEVICE_RECERTIFICATION_REQUIRED` · **not** `IOS_AUTH_CERTIFIED` |
+| Auth (repository) | Keychain via `registerPlugin("SunnahAuthKeychain")` · logout clears Cap + `majlis.auth.session.v1` · no client review password |
+| Auth (device) | `DEVICE_RECERTIFICATION_REQUIRED` · **not** `IOS_AUTH_CERTIFIED` · needs Build 56 after this runtime fix |
 | `REVIEW_CREDENTIAL_ROTATION_OWNER_ACTION` | Owner must rotate ASC review password after merge (ASC notes only) |
 | `CAPACITOR_AUTH_REQUIRES_DEVICE_RECERTIFICATION` | Next Archive must be build **> 55** containing this hardening |
 | Explicit non-claims | no `IOS_AUTH_CERTIFIED` · no `STORE_GO` · no device PASS on Build 55 auth fix |
