@@ -8,6 +8,7 @@ import { Link, useLocation } from "wouter";
 import { SIDEBAR_NAV_GROUPS } from "@/lib/sidebar-nav";
 import { isNavHrefActive } from "@/lib/nav-active";
 import { loadLastPageSync } from "@/lib/quran-last-page";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   onNavigate?: () => void;
@@ -96,8 +97,9 @@ export const DrawerFromRegistry = memo(function DrawerFromRegistry({
             }
           >
             <h2 id={titleId} className="sidebar-section-title">
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 className="sidebar-section-toggle"
                 aria-expanded={expanded}
                 aria-controls={panelId}
@@ -113,7 +115,7 @@ export const DrawerFromRegistry = memo(function DrawerFromRegistry({
                   className={`sidebar-section-toggle__chevron${expanded ? " is-open" : ""}`}
                   aria-hidden="true"
                 />
-              </button>
+              </Button>
             </h2>
             <nav
               id={panelId}

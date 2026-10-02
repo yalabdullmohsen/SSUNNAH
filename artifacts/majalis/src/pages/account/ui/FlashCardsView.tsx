@@ -26,6 +26,7 @@ import { recordUserActivity } from "@/lib/user-streak";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { ListScreen } from "@/components/design-system/screens";
 import { SectionErrorBoundary } from "@/components/ErrorBoundary";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/flashcards.css";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -86,12 +87,11 @@ function CardFace({
   onFlip: () => void;
 }) {
   return (
-    <div
+    <Button
+      type="button"
+      variant="ghost"
       className={`fc-card${flipped ? " fc-card--flipped" : ""}`}
       onClick={onFlip}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onFlip()}
       aria-label={flipped ? "انقر لرؤية الوجه" : "انقر لرؤية الإجابة"}
     >
       <div className="fc-card__inner">
@@ -126,7 +126,7 @@ function CardFace({
           <p className="fc-card__text fc-card__text--back" dir="rtl">{card.back}</p>
         </div>
       </div>
-    </div>
+    </Button>
   );
 }
 
@@ -156,9 +156,10 @@ function QualityBar({
         {QUALITY_OPTIONS.map((opt) => {
           const days = previewDays(card, opt.value);
           return (
-            <button
+            <Button
               key={opt.value}
               type="button"
+              variant="ghost"
               className={`fc-quality__btn ${FC_Q_MOD[opt.value] ?? ""}`}
               onClick={() => onRate(opt.value)}
               aria-keyshortcuts={KEY_LABELS[opt.value]}
@@ -169,7 +170,7 @@ function QualityBar({
                 <kbd className="fc-kbd">{KEY_LABELS[opt.value]}</kbd>
                 <span className="fc-q__days">{daysLabel(days)}</span>
               </span>
-            </button>
+            </Button>
           );
         })}
       </div>
@@ -194,13 +195,14 @@ function SessionComplete({
       <h2 className="fc-complete__title">انتهت جلسة المراجعة!</h2>
       <p className="fc-complete__sub">راجعت <strong>{reviewed}</strong> بطاقة اليوم، أحسنت!</p>
       <div className="fc-complete__actions">
-        <button
+        <Button
           type="button"
+          variant="primary"
           className="fc-complete__btn fc-complete__btn--primary"
           onClick={onRestart}
         >
           ↺ مراجعة مجدداً
-        </button>
+        </Button>
         <Link href="/lessons" className="fc-complete__btn">الدروس والدورات</Link>
         <Link href="/my-learning"   className="fc-complete__btn">حسابي التعليمي</Link>
       </div>

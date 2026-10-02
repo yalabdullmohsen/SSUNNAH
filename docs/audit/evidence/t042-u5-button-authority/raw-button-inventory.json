@@ -1,0 +1,580 @@
+{
+  "totalFiles": 112,
+  "totalElements": 485,
+  "byDecision": {
+    "ADMIN_ONLY": {
+      "files": 68,
+      "elements": 268
+    },
+    "MUSHAF_SPECIAL": {
+      "files": 43,
+      "elements": 216
+    },
+    "THIRD_PARTY": {
+      "files": 1,
+      "elements": 1
+    }
+  },
+  "items": [
+    {
+      "file": "features/mushaf-reader/MushafControlsLayer.tsx",
+      "count": 25,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "features/mushaf-madinah/AyahActionSheet.tsx",
+      "count": 21,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "features/mushaf-madinah/MushafAudioDock.tsx",
+      "count": 16,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "components/QuranViewer.tsx",
+      "count": 14,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "pages/quran/ui/QuranMemorizationView.tsx",
+      "count": 12,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "features/mushaf-madinah/MushafSearchSheet.tsx",
+      "count": 11,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "features/mushaf-madinah/MushafControls.tsx",
+      "count": 10,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "components/admin/SubmissionsReviewPanel.tsx",
+      "count": 8,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "pages/quran/ui/SurahIndexView.tsx",
+      "count": 8,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "views/admin/AutomationReviewPage.tsx",
+      "count": 8,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/AutomationSourcesPage.tsx",
+      "count": 8,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/ProphetStoriesSection.tsx",
+      "count": 8,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "features/mushaf-madinah/TafsirTabPanel.tsx",
+      "count": 7,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "pages/quran/ui/MushafBookmarksView.tsx",
+      "count": 7,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "views/admin/AutonomousPlatformPage.tsx",
+      "count": 7,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/FawaidSection.tsx",
+      "count": 7,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/ImageImportSection.tsx",
+      "count": 7,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/LessonImportImagePage.tsx",
+      "count": 7,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/RulingsSection.tsx",
+      "count": 7,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/learning-paths/AssessmentManager.tsx",
+      "count": 7,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "components/admin/review-hub/ReviewFilterBar.tsx",
+      "count": 6,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "components/quran/ImmersiveVerseOptionsSheet.tsx",
+      "count": 6,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "components/quran/QuranSurahJumpSearch.tsx",
+      "count": 6,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "pages/hifz-path/HifzUnitPracticePanel.tsx",
+      "count": 6,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "pages/quran/ui/QuranNumbersView.tsx",
+      "count": 6,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "views/admin/AdhkarSection.tsx",
+      "count": 6,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/AutoContentPage.tsx",
+      "count": 6,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/BulkImport.tsx",
+      "count": 6,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/LearningPathsSection.tsx",
+      "count": 6,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/QuizSection.tsx",
+      "count": 6,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/RelationshipsSection.tsx",
+      "count": 6,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "components/admin/review-hub/RecitationReviewCard.tsx",
+      "count": 5,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "components/quran/BulkDownloadCard.tsx",
+      "count": 5,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "components/quran/HifzAudioLoopPlayer.tsx",
+      "count": 5,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "components/quran/ImmersivePrefsDrawer.tsx",
+      "count": 5,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "views/admin/LessonImportShared.tsx",
+      "count": 5,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/ReligiousCalendarReviewSection.tsx",
+      "count": 5,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/SheikhsSection.tsx",
+      "count": 5,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/WeekDayFactsSection.tsx",
+      "count": 5,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "components/AdminInlineEdit.tsx",
+      "count": 4,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "components/admin/review-hub/ReviewHubWorkspace.tsx",
+      "count": 4,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "components/quran/SurahList.tsx",
+      "count": 4,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "views/admin/AdminShell.tsx",
+      "count": 4,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/ContentFileImport.tsx",
+      "count": 4,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/DashboardSection.tsx",
+      "count": 4,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/DawahSection.tsx",
+      "count": 4,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/InstagramManualAssistPanel.tsx",
+      "count": 4,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/IslamicIntelligenceSection.tsx",
+      "count": 4,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/KnowledgeReasoningSection.tsx",
+      "count": 4,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/LessonsSection.tsx",
+      "count": 4,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/OpenPlatformSection.tsx",
+      "count": 4,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/Phase2TrialImport.tsx",
+      "count": 4,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/QaSection.tsx",
+      "count": 4,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/TelegramSection.tsx",
+      "count": 4,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "components/admin/review-hub/ContentModerationCard.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "components/admin/review-hub/WaveformAudioPlayer.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "pages/quran/QuranMemorizationPlansPage.tsx",
+      "count": 3,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "pages/quran/RevelationOrderPage.tsx",
+      "count": 3,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "views/admin/AnnualCoursesSection.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/ArbaeenLoveSection.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/AutonomousAiSection.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/ClientErrorLogsSection.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/FeatureStatusPage.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/GlobalReferenceSection.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/GovernanceSection.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/IslamicStoriesSection.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/LibrarySection.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/MiraclesSection.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/ResearchesSection.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/ScholarlyVerificationSection.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/SubmissionsSection.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/UpdatesSection.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/VerifiedKnowledgeSection.tsx",
+      "count": 3,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "components/admin/review-hub/LinearAudioReviewPlayer.tsx",
+      "count": 2,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "components/admin/review-hub/ReviewHubHeaderBar.tsx",
+      "count": 2,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "components/admin/review-hub/ReviewHubSidebar.tsx",
+      "count": 2,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "components/quran/ImmersiveQuranApp.tsx",
+      "count": 2,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "components/quran/QuranAudioPlayer.tsx",
+      "count": 2,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "components/quran/QuranPlayerView.tsx",
+      "count": 2,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "components/quran/TafsirModalViewer.tsx",
+      "count": 2,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "features/mushaf-madinah/MushafSettingsSheet.tsx",
+      "count": 2,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "features/mushaf-madinah/MushafTafsirSheet.tsx",
+      "count": 2,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "features/mushaf-madinah/quran-sheet/QuranSheetShell.tsx",
+      "count": 2,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "features/mushaf-reader/MushafPageArrows.tsx",
+      "count": 2,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "features/mushaf-reader/MushafPager.tsx",
+      "count": 2,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "pages/quran/QuranEnginePage.tsx",
+      "count": 2,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "pages/quran/ui/DuasQuranView.tsx",
+      "count": 2,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "pages/quran/ui/TafsirView.tsx",
+      "count": 2,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "pages/quran/ui/UlumQuranView.tsx",
+      "count": 2,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "views/admin/InstagramIntegrationPage.tsx",
+      "count": 2,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/KnowledgeEngineSection.tsx",
+      "count": 2,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "components/prophets/ProphetMushafMentions.tsx",
+      "count": 1,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "components/quran/ImmersiveQuranPage.tsx",
+      "count": 1,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "components/quran/QuranOpenMushafCard.tsx",
+      "count": 1,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "components/quran/QuranVerseList.tsx",
+      "count": 1,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "components/ui/sidebar.tsx",
+      "count": 1,
+      "decision": "THIRD_PARTY"
+    },
+    {
+      "file": "features/mushaf-reader/MushafDisplayModeControl.tsx",
+      "count": 1,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "features/mushaf-reader/MushafExitControl.tsx",
+      "count": 1,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "features/mushaf-reader/MushafPageNumber.tsx",
+      "count": 1,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "features/mushaf-reader/NewMushafReader.tsx",
+      "count": 1,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "pages/quran/MakkiMadaniPage.tsx",
+      "count": 1,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "pages/quran/ui/QuranSearchView.tsx",
+      "count": 1,
+      "decision": "MUSHAF_SPECIAL"
+    },
+    {
+      "file": "views/admin/AdminUI.tsx",
+      "count": 1,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/AggregatorSection.tsx",
+      "count": 1,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/AutomationCenterPage.tsx",
+      "count": 1,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/ContentProductionDashboardPage.tsx",
+      "count": 1,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/LessonImportUrlPage.tsx",
+      "count": 1,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/MajlisKnowledgeEnginePage.tsx",
+      "count": 1,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/ReportsSection.tsx",
+      "count": 1,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/SearchAnalyticsSection.tsx",
+      "count": 1,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/SettingsSection.tsx",
+      "count": 1,
+      "decision": "ADMIN_ONLY"
+    },
+    {
+      "file": "views/admin/UsersSection.tsx",
+      "count": 1,
+      "decision": "ADMIN_ONLY"
+    }
+  ]
+}

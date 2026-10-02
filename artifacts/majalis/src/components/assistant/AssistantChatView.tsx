@@ -18,6 +18,7 @@ import type { ChatMessage } from "@/hooks/useAssistantChat";
 import { ASSISTANT_WELCOME_MESSAGE } from "@/hooks/useAssistantChat";
 import { AssistantReply } from "./AssistantReply";
 import { STATUS } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/assistant-chat.css";
 import "@/styles/pages/assistant-shell.css";
 
@@ -184,15 +185,16 @@ function EmptyState({
               </div>
               <div className="acv-cat__pills">
                 {cat.questions.map((q) => (
-                  <button
+                  <Button
                     key={q}
                     type="button"
+                    variant="ghost"
                     disabled={loading}
                     onClick={() => onQuickPrompt(q)}
                     className="assistant-quick-prompt-chip"
                   >
                     {q}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -253,10 +255,10 @@ export function AssistantChatView({
             </span>
           )}
           {canClear && (
-            <button type="button" className="acv-clear-btn" onClick={onClear} aria-label="محادثة جديدة">
+            <Button type="button" variant="ghost" className="acv-clear-btn" onClick={onClear} aria-label="محادثة جديدة">
               <Eraser size={14} aria-hidden="true" />
               محادثة جديدة
-            </button>
+            </Button>
           )}
         </div>
       )}
@@ -333,14 +335,15 @@ export function AssistantChatView({
                 <>
                   <p>{message.content}</p>
                   {message.isFailure && onRetry && (
-                    <button
+                    <Button
                       type="button"
+                      variant="outline"
                       className="assistant-retry-btn"
                       onClick={onRetry}
                       disabled={loading}
                     >
                       <RefreshCw size={14} aria-hidden="true" /> إعادة المحاولة
-                    </button>
+                    </Button>
                   )}
                 </>
               )}
@@ -363,8 +366,9 @@ export function AssistantChatView({
             rows={compact ? 2 : 3}
             disabled={loading}
           />
-          <button
+          <Button
             type="submit"
+            variant="primary"
             className="assistant-send-btn"
             disabled={loading || !input.trim()}
             aria-label={loading ? "تحديث النتائج" : "إرسال السؤال"}
@@ -375,7 +379,7 @@ export function AssistantChatView({
               <SendHorizontal size={18} aria-hidden="true" />
             )}
             <span className="assistant-send-btn__label">{loading ? "جارٍ..." : "إرسال"}</span>
-          </button>
+          </Button>
         </div>
         <p className="assistant-composer-hint">Shift+Enter لسطر جديد · الإجابات تعليمية وليست فتوى شخصية</p>
       </form>

@@ -10,6 +10,8 @@ import {
   HIGHLIGHT_COLOR_LABEL,
 } from "@/lib/text-highlights";
 import { truncateAtWord } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import "@/styles/components/text-highlight-capture.css";
 
 type Props = {
@@ -121,14 +123,16 @@ export function TextHighlightCapture({
           </p>
           <div className="thc-pop__colors" role="group" aria-label="لون التحديد">
             {(["yellow", "green", "blue"] as HighlightColor[]).map((c) => (
-              <button
+              <IconButton
                 key={c}
                 type="button"
+                label={HIGHLIGHT_COLOR_LABEL[c]}
                 className={`thc-swatch thc-swatch--${c}${color === c ? " is-on" : ""}`}
                 aria-pressed={color === c}
-                aria-label={HIGHLIGHT_COLOR_LABEL[c]}
                 onClick={() => setColor(c)}
-              />
+              >
+                <span aria-hidden="true" />
+              </IconButton>
             ))}
           </div>
           <textarea
@@ -142,12 +146,12 @@ export function TextHighlightCapture({
             onChange={(e) => setNote(e.target.value)}
           />
           <div className="thc-pop__actions">
-            <button type="button" className="thc-btn thc-btn--ghost" onClick={clear}>
+            <Button type="button" variant="ghost" className="thc-btn thc-btn--ghost" onClick={clear}>
               إلغاء
-            </button>
-            <button type="button" className="thc-btn thc-btn--primary" onClick={save}>
+            </Button>
+            <Button type="button" variant="primary" className="thc-btn thc-btn--primary" onClick={save}>
               {savedFlash ? "✓ حُفظت" : "حفظ الفائدة"}
-            </button>
+            </Button>
           </div>
         </div>
       )}

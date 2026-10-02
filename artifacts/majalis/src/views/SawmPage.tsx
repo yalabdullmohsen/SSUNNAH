@@ -6,9 +6,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import "@/styles/pages/sawm.css";
 import { DetailScreen } from "@/components/design-system/screens";
-
-
-/* ───────── types ───────── */
+import { Button } from "@/components/ui/button";
 type SawmTab = "types" | "conditions" | "muftirat" | "exemptions" | "virtues";
 
 interface FastType {
@@ -622,11 +620,12 @@ export default function SawmPage() {
         {/* tabs */}
         <div className="sw-tabs" role="tablist" aria-label="أقسام الصيام">
           {TABS.map((t) => (
-            <button
+            <Button
               key={t.id}
               id={`swm-tab-${t.id}`}
               role="tab"
               type="button"
+              variant="ghost"
               className={`sw-tab${tab === t.id ? " sw-tab--active" : ""}`}
               onClick={() => setTab(t.id)}
               aria-selected={tab === t.id}
@@ -634,7 +633,7 @@ export default function SawmPage() {
             >
               <span className="sw-tab__icon"><SectionIcon name={t.icon} size={24} /></span>
               <span className="sw-tab__label">{t.label}</span>
-            </button>
+            </Button>
           ))}
         </div>
       </section>
@@ -655,8 +654,9 @@ export default function SawmPage() {
               const isOpen = openType === ft.id;
               return (
                 <article key={ft.id} className={`sw-card${isOpen ? " sw-card--open" : ""}`}>
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
                     className="sw-card__head"
                     onClick={() => setOpenType(isOpen ? null : ft.id)}
                     aria-expanded={isOpen}
@@ -668,7 +668,7 @@ export default function SawmPage() {
                     </div>
                     <span className={KIND_CLASS[ft.kind]}>{KIND_LABEL[ft.kind]}</span>
                     <span className={`sw-card__chevron${isOpen ? " sw-card__chevron--open" : ""}`}>▾</span>
-                  </button>
+                  </Button>
                   {isOpen && (
                     <div className="sw-card__body">
                       <p className="sw-card__desc">{ft.description}</p>

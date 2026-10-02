@@ -23,6 +23,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 
 const SPEC_NONE = "__none__";
 
@@ -38,14 +40,15 @@ function InterestTag({
   onToggle: () => void;
 }) {
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
       className={`rp-tag${selected ? " rp-tag--active" : ""}`}
       onClick={onToggle}
       aria-pressed={selected}
     >
       {label}
-    </button>
+    </Button>
   );
 }
 
@@ -70,7 +73,7 @@ function PublicationInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />
-      <button type="button" className="rp-pub-remove" onClick={onRemove} aria-label="حذف">✕</button>
+      <IconButton type="button" className="rp-pub-remove" onClick={onRemove} label="حذف">✕</IconButton>
     </div>
   );
 }
@@ -95,9 +98,9 @@ function ShareBanner({ userId }: { userId: string }) {
     <div className="rp-share-banner">
       <span className="rp-share-banner__label flex items-center gap-1"><Link2 size={14} aria-hidden="true" /> رابط ملفك العام:</span>
       <span className="rp-share-banner__url">{url}</span>
-      <button type="button" className="vault-btn vault-btn--sm vault-btn--primary" onClick={copy}>
+      <Button type="button" variant="primary" className="vault-btn vault-btn--sm vault-btn--primary" onClick={copy}>
         {copied ? "✓ تم النسخ" : "نسخ"}
-      </button>
+      </Button>
     </div>
   );
 }
@@ -322,26 +325,28 @@ export default function ResearcherProfilePage() {
               />
             ))}
           </div>
-          <button
+          <Button
             type="button"
+            variant="ghost"
             className="vault-btn vault-btn--ghost rp-add-pub"
             onClick={() => setPubInput((p) => [...p, ""])}
           >
             ＋ إضافة عنوان
-          </button>
+          </Button>
         </div>
 
         {/* Save */}
         <div className="rp-save-row">
           {saved && <span className="rp-saved-msg">✓ تم الحفظ بنجاح</span>}
-          <button
+          <Button
             type="button"
+            variant="primary"
             className="vault-btn vault-btn--primary rp-save-btn"
             onClick={handleSave}
             disabled={saving}
           >
             {saving ? "حفظ…" : "حفظ الملف"}
-          </button>
+          </Button>
         </div>
       </div>
       <div className="twh-share">

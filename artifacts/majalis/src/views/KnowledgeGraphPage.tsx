@@ -362,7 +362,7 @@ export default function KnowledgeGraphPage() {
       {/* Tabs */}
       <div className="kng-tabs" role="tablist" aria-label="أوضاع عرض الرسم البياني">
         {(["graph", "explore"] as Tab[]).map((t) => (
-          <button key={t} type="button" onClick={() => setTab(t)}
+          <Button key={t} type="button" variant="ghost" onClick={() => setTab(t)}
             role="tab"
             className={`kng-tab${tab === t ? " is-active" : ""}`}
             aria-selected={tab === t}
@@ -370,17 +370,17 @@ export default function KnowledgeGraphPage() {
             aria-controls={`kng-panel-${t}`}
           >
             {t === "graph" ? "شبكة العلاقات" : "استكشاف الموضوعات"}
-          </button>
+          </Button>
         ))}
 
         <div className="kng-source-group">
           <span className="kng-source-label">المصدر:</span>
           {(["new", "old"] as DataSource[]).map((s) => (
-            <button key={s} type="button" onClick={() => setSource(s)}
+            <Button key={s} type="button" variant="ghost" onClick={() => setSource(s)}
               className={`kng-source-btn${source === s ? " is-active" : ""}`}
             >
               {s === "new" ? "الإصدار الحالي" : "الإصدار السابق"}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -600,9 +600,9 @@ export default function KnowledgeGraphPage() {
                 aria-label="مثال: عقيدة، صلاة، زكاة، السيرة" placeholder="مثال: عقيدة، صلاة، زكاة، السيرة..."
                 className="kng-search-input"
               />
-              <button type="button" onClick={handleTagSearch} disabled={tagLoading} className="kng-search-btn">
+              <Button type="button" variant="primary" onClick={handleTagSearch} disabled={tagLoading} className="kng-search-btn">
                 {tagLoading ? "..." : "بحث"}
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -610,11 +610,11 @@ export default function KnowledgeGraphPage() {
             <p className="kng-suggest-tags__label">وسوم مقترحة:</p>
             <div className="kng-suggest-tags__chips">
               {["العقيدة", "الصلاة", "الزكاة", "الصوم", "الحج", "السيرة", "الأخلاق", "القرآن"].map((tag) => (
-                <button key={tag} type="button" onClick={() => setSearchTag(tag)}
+                <Button key={tag} type="button" variant="ghost" onClick={() => setSearchTag(tag)}
                   className={`kng-suggest-chip${searchTag === tag ? " is-active" : ""}`}
                 >
                   {tag}
-                </button>
+                </Button>
               ))}
             </div>
           </div>
@@ -653,7 +653,7 @@ export default function KnowledgeGraphPage() {
               <h3 className="kng-type-browse__title">استعراض حسب النوع</h3>
               <div className="kng-type-browse__chips">
                 {(Object.keys(NODE_TYPE_LABEL) as KnNodeType[]).map((t) => (
-                  <button key={t} type="button"
+                  <Button key={t} type="button" variant="ghost"
                     // كان `navigate(/knowledge-graph?type=${t})` — لكن هذه
                     // الصفحة لا تقرأ أي query param من الرابط إطلاقاً (لا
                     // useSearch ولا URLSearchParams في الملف)، فكان الزر
@@ -666,7 +666,7 @@ export default function KnowledgeGraphPage() {
                     className={`kng-type-chip kng-nt--${t}`}
                   >
                     {NODE_TYPE_LABEL[t]}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>

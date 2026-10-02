@@ -32,8 +32,9 @@ function ProgressRing({
   const offset = RING_C * (1 - Math.min(ringPct, 100) / 100);
 
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
       className={[
         "tc-ring-btn tc-btn-wrap",
         pulse ? "tc-ring-btn--pulse" : "",
@@ -66,7 +67,7 @@ function ProgressRing({
           {goalReached ? "✓ استمر" : "اضغط"}
         </span>
       </div>
-    </button>
+    </Button>
   );
 }
 
@@ -198,17 +199,19 @@ export function TasbeehCounter({
       {/* أهداف جاهزة — صف مستقل */}
       <div className="tasbeeh-counter__presets" role="group" aria-label="هدف جاهز">
         {TASBEEH_PRESETS.filter((p) => p.value !== "custom").map((p) => (
-          <button
+          <Button
             key={String(p.value)}
             type="button"
+            variant="ghost"
             className={`tasbeeh-counter__preset${activeTarget === p.value ? " is-active" : ""}`}
             onClick={() => setTarget(Number(p.value))}
           >
             {p.label}
-          </button>
+          </Button>
         ))}
-        <button
+        <Button
           type="button"
+          variant="ghost"
           className={`tasbeeh-counter__preset${isCustomTarget ? " is-active" : ""}`}
           onClick={() => {
             if (!isCustomTarget) setTarget(Math.max(1, activeTarget || 33));
@@ -216,7 +219,7 @@ export function TasbeehCounter({
           aria-pressed={isCustomTarget}
         >
           مخصص
-        </button>
+        </Button>
       </div>
 
       {/* حقل المخصص يظهر فقط عند اختياره — لا يتراكب مع الأزرار */}

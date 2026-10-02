@@ -36,6 +36,7 @@ import {
 } from "@/lib/scholarly-research";
 import "@/styles/pages/researches.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 export default function ResearchDetailPage() {
   const params = useParams<{ id?: string }>();
@@ -394,23 +395,25 @@ export default function ResearchDetailPage() {
           <div className="sr-filters">
             {(["arabic", "apa", "chicago", "mla"] as CitationStyle[]).map(
               (s) => (
-                <button
+                <Button
                   key={s}
                   type="button"
+                  variant="outline"
                   className="sr-btn sr-btn--outline"
                   onClick={() => setCiteStyle(s)}
                 >
                   {s === "arabic" ? "عربي أكاديمي" : s.toUpperCase()}
-                </button>
+                </Button>
               ),
             )}
-            <button
+            <Button
               type="button"
+              variant="outline"
               className="sr-btn sr-btn--outline"
               onClick={copyCite}
             >
               {copied ? "تم النسخ" : "نسخ التوثيق"}
-            </button>
+            </Button>
           </div>
           <div className="sr-cite-box">{citation}</div>
         </section>
@@ -423,13 +426,14 @@ export default function ResearchDetailPage() {
         )}
 
         <p>
-          <button
+          <Button
             type="button"
+            variant="outline"
             className="sr-btn sr-btn--outline"
             onClick={() => setReportOpen((v) => !v)}
           >
             إبلاغ عن خطأ أو انتهاك حقوق
-          </button>
+          </Button>
         </p>
         {reportOpen && (
           <div className="sr-form">
@@ -440,8 +444,9 @@ export default function ResearchDetailPage() {
                 onChange={(e) => setReportText(e.target.value)}
               />
             </label>
-            <button
+            <Button
               type="button"
+              variant="outline"
               className="sr-btn sr-btn--outline"
               onClick={() => {
                 try {
@@ -465,7 +470,7 @@ export default function ResearchDetailPage() {
               }}
             >
               إرسال البلاغ
-            </button>
+            </Button>
           </div>
         )}
 

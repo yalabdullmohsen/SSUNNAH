@@ -14,6 +14,8 @@ import { PageShell } from "@/components/layout/PageShell";
 import { PAGE_EXPLORE_LINKS } from "@/lib/explore-links";
 import { ListScreen } from "@/components/design-system/screens";
 import { truncateAtWord } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 
 const CATEGORIES = [...ASMA_CATEGORIES];
 const STATUS_FILTERS: Array<"الكل" | AsmaStatus> = ["الكل", "ثابت", "مشهور"];
@@ -146,30 +148,32 @@ export default function AsmaaHusnaPage() {
         </div>
         <div className="ah-cat-chips" role="tablist" aria-label="تصفية حسب ثبوت الاسم">
           {STATUS_FILTERS.map((s) => (
-            <button
+            <Button
               key={s}
               role="tab"
               type="button"
+              variant="ghost"
               className={`ah-cat-chip ah-cat-chip--status${statusFilter === s ? "ah-cat-chip--active" : ""}`}
               onClick={() => setStatusFilter(s)}
               aria-selected={statusFilter === s}
             >
               {s === "الكل" ? "كل الدرجات" : s}
-            </button>
+            </Button>
           ))}
         </div>
         <div className="ah-cat-chips" role="tablist" aria-label="تصفية الأسماء الحسنى">
           {CATEGORIES.map((c) => (
-            <button
+            <Button
               key={c}
               role="tab"
               type="button"
+              variant="ghost"
               className={`ah-cat-chip${category === c ? "ah-cat-chip--active" : ""}`}
               onClick={() => setCategory(c)}
               aria-selected={category === c}
             >
               {c}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -180,28 +184,27 @@ export default function AsmaaHusnaPage() {
       ) : (
         <div className="ah-grid">
           {filtered.map((a) => (
-            <div
+            <Button
               key={a.num}
-              role="button"
-              tabIndex={0}
+              type="button"
+              variant="ghost"
               className="ah-card"
               onClick={() => setSelected(a)}
-              onKeyDown={(e) => (e.key === "Enter" || e.key === "") && setSelected(a)}
               aria-label={`${a.arabic}، ${a.meaning}`}
             >
               <span className="ah-card__num">{a.num}</span>
               <span className={`ah-card__status ah-card__status--${a.status === "ثابت" ? "thabit" : "mashhur"}`}>{a.status}</span>
               <span className="ah-card__name">{a.arabic}</span>
               <span className="ah-card__meaning">{truncateAtWord(a.meaning, 35)}</span>
-              <button
+              <IconButton
                 type="button"
                 className={`ah-card__fav${favs.has(a.num) ? "ah-card__fav--active" : ""}`}
                 onClick={(e) => { e.stopPropagation(); toggleFav(a.num); }}
-                aria-label={favs.has(a.num) ? "إزالة من المحفوظات" : "إضافة للمحفوظات"}
+                label={favs.has(a.num) ? "إزالة من المحفوظات" : "إضافة للمحفوظات"}
               >
                 <Heart size={13} strokeWidth={2} />
-              </button>
-            </div>
+              </IconButton>
+            </Button>
           ))}
         </div>
       )}
@@ -230,14 +233,14 @@ export default function AsmaaHusnaPage() {
             <div className="ah-modal__head">
               <span className="ah-modal__num">{selected.num}</span>
               <h2 id="ah-modal-name" className="ah-modal__name">{selected.arabic}</h2>
-              <button
+              <IconButton
                 type="button"
                 className={`ah-modal__fav${favs.has(selected.num) ? "ah-modal__fav--active" : ""}`}
                 onClick={() => toggleFav(selected.num)}
-                aria-label="تفضيل"
+                label="تفضيل"
               >
                 <Heart size={18} />
-              </button>
+              </IconButton>
             </div>
 
             <div className="ah-modal__section">
@@ -266,13 +269,14 @@ export default function AsmaaHusnaPage() {
 
             <div className="ah-modal__cat-badge">{selected.category}</div>
 
-            <button
+            <Button
               type="button"
+              variant="outline"
               className="ah-modal__close"
               onClick={() => setSelected(null)}
             >
               إغلاق
-            </button>
+            </Button>
           </div>
         </div>
       )}

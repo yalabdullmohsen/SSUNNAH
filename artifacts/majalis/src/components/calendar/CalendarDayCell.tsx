@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import { arSA } from "date-fns/locale";
 import { hijriDayLabel, MAX_EVENTS_PER_CELL } from "@/lib/calendar-dates";
 import type { CalendarEvent } from "@/lib/calendar-events";
+import { Button } from "@/components/ui/button";
 
 export type CalendarDayCellProps = {
   date: Date;
@@ -30,9 +31,9 @@ function EventList({
     return (
       <div className="cal-cell-events">
         {shown.map((ev) => (
-          <button key={ev.id} type="button" className="cal-event-chip" onClick={() => onEventClick(ev)}>
+          <Button key={ev.id} type="button" variant="ghost" className="cal-event-chip" onClick={() => onEventClick(ev)}>
             <span className="cal-event-chip__title">{ev.title}</span>
-          </button>
+          </Button>
         ))}
         {extra > 0 ? <span className="cal-cell-more">+{extra}</span> : null}
       </div>
@@ -85,11 +86,11 @@ export function CalendarDayCell({
           <ul className="cal-day-panel__list">
             {events.map((ev) => (
               <li key={ev.id}>
-                <button type="button" className="cal-day-item" onClick={() => onEventClick(ev)}>
+                <Button type="button" variant="ghost" className="cal-day-item" onClick={() => onEventClick(ev)}>
                   <strong>{ev.title}</strong>
                   <span>{ev.sheikh} · {ev.mosque}</span>
                   <span>{ev.time}</span>
-                </button>
+                </Button>
               </li>
             ))}
           </ul>
@@ -125,8 +126,9 @@ export function CalendarDayCell({
   }
 
   return (
-    <button
+    <Button
       type="button"
+      variant="ghost"
       className={[
         "cal-cell cal-cell--month",
         isSelected ? "is-selected" : "",
@@ -149,6 +151,6 @@ export function CalendarDayCell({
         ) : null}
       </div>
       <EventList events={events} onEventClick={onEventClick} interactive={false} />
-    </button>
+    </Button>
   );
 }

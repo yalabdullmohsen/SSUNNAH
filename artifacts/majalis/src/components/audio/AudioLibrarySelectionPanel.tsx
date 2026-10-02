@@ -14,6 +14,7 @@ import {
   SELECTED_MUEZZIN_STORAGE_KEY,
 } from "@/lib/adhan-preferences";
 import { clampSelectableMuezzinId, type SelectableMuezzinId } from "@/lib/adhan-muezzin-library";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/audio-library-selection.css";
 
 type Tab = "muezzins" | "reciters";
@@ -47,8 +48,9 @@ export function AudioLibrarySelectionPanel() {
       </div>
 
       <div className="als-tabs" role="tablist" aria-label="نوع المكتبة">
-        <button
+        <Button
           type="button"
+          variant="ghost"
           role="tab"
           aria-selected={tab === "muezzins"}
           className={`als-tab${tab === "muezzins" ? " is-active" : ""}`}
@@ -56,9 +58,10 @@ export function AudioLibrarySelectionPanel() {
         >
           <Volume2 size={15} aria-hidden="true" />
           المؤذنون
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
+          variant="ghost"
           role="tab"
           aria-selected={tab === "reciters"}
           className={`als-tab${tab === "reciters" ? " is-active" : ""}`}
@@ -66,7 +69,7 @@ export function AudioLibrarySelectionPanel() {
         >
           <Mic2 size={15} aria-hidden="true" />
           القرّاء
-        </button>
+        </Button>
       </div>
 
       {tab === "muezzins" ? (
@@ -77,8 +80,9 @@ export function AudioLibrarySelectionPanel() {
               const selected = selectedMuezzin === m.id;
               return (
                 <li key={m.id}>
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
                     className={`als-card${selected ? " is-selected" : ""}`}
                     aria-pressed={selected}
                     onClick={() => selectMuezzin(m.id)}
@@ -91,7 +95,7 @@ export function AudioLibrarySelectionPanel() {
                       {!m.bundled ? "بث" : "محلي"}
                       {selected ? " ✓" : ""}
                     </span>
-                  </button>
+                  </Button>
                 </li>
               );
             })}

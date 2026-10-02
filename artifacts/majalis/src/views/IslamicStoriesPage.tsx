@@ -20,6 +20,7 @@ import {
   ReadingProse,
   ReadingSectionCard,
 } from "@/components/content/ReadingSectionCard";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/islamic-stories.css";
 const STORY_ICON_MAP: Record<string, LucideIcon> = {
   Star, Scale, Sword, Landmark, Bird, Compass, Gem, BookOpen, Moon, Castle,
@@ -59,8 +60,9 @@ function StoryCard({ story, onSelect }: { story: IslamicStory; onSelect: () => v
     <article
       className={`isp-card isp-card--${story.category === "صحابة" ? "companions" : story.category === "فتوحات" ? "conquests" : "history"}`}
     >
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className="isp-card__hit"
         onClick={onSelect}
         aria-label={`اقرأ قصة: ${story.title}`}
@@ -83,7 +85,7 @@ function StoryCard({ story, onSelect }: { story: IslamicStory; onSelect: () => v
         </div>
 
         <span className="isp-card__cta" aria-hidden="true">اقرأ القصة</span>
-      </button>
+      </Button>
       <div className="isp-card__admin">
       </div>
     </article>
@@ -334,14 +336,15 @@ export default function IslamicStoriesPage() {
             <span className="isp-filter-label">التصنيف</span>
             <div className="isp-filter-chips" role="group" aria-label="تصفية التصنيف">
               {CATEGORY_LABELS.map((cat) => (
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
                   key={cat}
                   className={`isp-chip${category === cat ? " is-active" : ""}`}
                   onClick={() => setCategory(cat)}
                 >
                   {cat}
-                </button>
+                </Button>
               ))}
             </div>
           </div>
@@ -350,14 +353,15 @@ export default function IslamicStoriesPage() {
             <span className="isp-filter-label">الحقبة الزمنية</span>
             <div className="isp-filter-chips" role="group" aria-label="تصفية الحقبة">
               {ERA_LABELS.map((e) => (
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
                   key={e}
                   className={`isp-chip${era === e ? " is-active" : ""}`}
                   onClick={() => setEra(e)}
                 >
                   {e}
-                </button>
+                </Button>
               ))}
             </div>
           </div>

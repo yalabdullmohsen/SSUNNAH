@@ -8,6 +8,7 @@ import { EMPTY } from "@/lib/ui-copy";
 import { getQuestionBySlug, getQuestionTranslations, type DawahQuestion, type DawahTranslation } from "@/lib/dawah-service";
 import { supabase } from "@/lib/supabase";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 const LANG_LABELS: Record<string, string> = { en: "English", fr: "Français", es: "Español" };
 
@@ -70,11 +71,11 @@ export default function DiscoverIslamQuestionDetailPage() {
       {translations.length > 0 && (
         <div className="dii-lang-row" role="tablist" aria-label="الترجمات المتاحة">
           <span className="dii-lang-label">الترجمات المتاحة:</span>
-          <button type="button" onClick={() => setViewLang("ar")} className={viewLang === "ar" ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"}>العربية</button>
+          <Button type="button" variant="ghost" onClick={() => setViewLang("ar")} className={viewLang === "ar" ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"}>العربية</Button>
           {translations.map((t) => (
-            <button key={t.lang} type="button" onClick={() => setViewLang(t.lang)} className={viewLang === t.lang ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"}>
+            <Button key={t.lang} type="button" variant="ghost" onClick={() => setViewLang(t.lang)} className={viewLang === t.lang ? "content-hub-chip content-hub-chip--active" : "content-hub-chip"}>
               {LANG_LABELS[t.lang] || t.lang}
-            </button>
+            </Button>
           ))}
         </div>
       )}

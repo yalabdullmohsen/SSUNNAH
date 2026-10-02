@@ -5,6 +5,7 @@ import { PROPHETS_LINEAGE, type LineageNode } from "@/lib/prophets-lineage";
 import { ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
 import { truncateAtWord } from "@/lib/utils";
 import { DetailScreen } from "@/components/design-system/screens";
+import { IconButton } from "@/components/design-system/Buttons";
 import "@/styles/pages/prophet-stories.css";
 
 // ── ثوابت التخطيط ──────────────────────────────────────────────────────────
@@ -240,7 +241,7 @@ export default function ProphetsFamilyTreePage() {
             { icon: <ZoomOut size={16}/>, fn: () => zoom(-1), title: "تصغير" },
             { icon: <RotateCcw size={16}/>, fn: reset,         title: "إعادة تعيين" },
           ].map(({ icon, fn, title }) => (
-            <button key={title} type="button" onClick={fn} aria-label={title} className="pft-tool-btn">{icon}</button>
+            <IconButton key={title} type="button" onClick={fn} label={title} className="pft-tool-btn">{icon}</IconButton>
           ))}
         </div>
       </header>
@@ -369,7 +370,7 @@ export default function ProphetsFamilyTreePage() {
                 <span className="pft-detail__badge">أولو العزم</span>
               )}
             </h2>
-            <button type="button" onClick={() => setSelected(null)} aria-label="إغلاق" className="pft-detail__close">×</button>
+            <IconButton type="button" onClick={() => setSelected(null)} label="إغلاق" className="pft-detail__close">×</IconButton>
           </div>
           {selectedNode.era && (
             <p className="pft-detail__row">

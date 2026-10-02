@@ -1,6 +1,8 @@
 /**
  * كتلة مصادر القصة — يعرض الموجود فقط بلا اختراع.
  */
+import { Button } from "@/components/ui/button";
+
 type SourceItem = {
   label: string;
   detail?: string;
@@ -32,14 +34,15 @@ export function ProphetStorySourcesBlock({ sources, onCopy }: Props) {
                 {s.detail ? <span className="prophet-sources-block__detail">{s.detail}</span> : null}
               </div>
               {onCopy ? (
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
                   className="prophet-sources-block__copy mj-pressable"
                   onClick={() => onCopy(copyText)}
                   aria-label={`نسخ المرجع: ${s.label}`}
                 >
                   نسخ
-                </button>
+                </Button>
               ) : null}
             </li>
           );

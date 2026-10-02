@@ -19,6 +19,8 @@ import {
   QURAN_APP_FONT_MAX,
   QURAN_APP_FONT_MIN,
 } from "@/lib/quran-app-controller";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import "@/styles/majlisilm-shell.css";
 
 export type MajlisIlmAppProps = {
@@ -118,22 +120,22 @@ export function MajlisIlmApp({
           {title}
         </h1>
         <div className="majlisilm-app__actions">
-          <button
+          <IconButton
             type="button"
-            aria-label="بحث"
+            label="بحث"
             onClick={() => setSearchOpen(true)}
             style={{ color: ink }}
           >
             <Search size={20} aria-hidden="true" />
-          </button>
-          <button
+          </IconButton>
+          <IconButton
             type="button"
-            aria-label="إعدادات القراءة"
+            label="إعدادات القراءة"
             onClick={() => setDrawerOpen(true)}
             style={{ color: ink }}
           >
             <Settings2 size={20} aria-hidden="true" />
-          </button>
+          </IconButton>
         </div>
       </header>
 
@@ -153,22 +155,24 @@ export function MajlisIlmApp({
       </main>
 
       <nav className="majlisilm-app__nav" aria-label="التنقل الرئيسي">
-        <button
+        <Button
           type="button"
+          variant="ghost"
           className={tab === 0 ? "is-on" : undefined}
           onClick={() => setTab(0)}
         >
           <BookOpen size={20} aria-hidden="true" />
           المصحف
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
+          variant="ghost"
           className={tab === 1 ? "is-on" : undefined}
           onClick={() => setTab(1)}
         >
           <School size={20} aria-hidden="true" />
           المسارات
-        </button>
+        </Button>
       </nav>
 
       <SmartSearchPanel open={searchOpen} onClose={() => setSearchOpen(false)} />
