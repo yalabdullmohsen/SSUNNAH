@@ -1,0 +1,56 @@
+{
+  "route": "quran-hub",
+  "path": "/quran-hub",
+  "fp": 756,
+  "fcp": 756,
+  "elapsedMs": 5702,
+  "clsTotal": 0.0017139842606686906,
+  "clsAfterFcp": 0.0017139842606686906,
+  "clsEntryCount": 1,
+  "topCls": [
+    {
+      "value": 0.0017139842606686906,
+      "startTime": 1274.1000000014901,
+      "sources": [
+        "div.lrf-skel.lrf-skel--page"
+      ]
+    }
+  ],
+  "themeChangeCount": 0,
+  "visualChangeCount": 1,
+  "visualChanges": [
+    {
+      "key": "sheetCount",
+      "early": 6,
+      "final": 85
+    }
+  ],
+  "sheets": [
+    6,
+    85
+  ],
+  "networkCss": 84,
+  "networkFonts": 4,
+  "earlyBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "finalBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "fontDelta": 0,
+  "backgroundDelta": 0,
+  "headerJump": false,
+  "heroJump": false,
+  "bottomJump": false,
+  "backJump": false,
+  "headerDelta": null,
+  "heroDelta": null,
+  "bottomDelta": null,
+  "backDelta": null
+}
