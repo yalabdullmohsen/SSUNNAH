@@ -1,0 +1,27 @@
+{
+  "capturedAt": "2026-10-02T01:45:20.759Z",
+  "productionUrl": "https://www.ssunnah.com/version.json",
+  "production": {
+    "commit": "ef2d35a0",
+    "shortCommit": "ef2d35a0",
+    "commitSha": "ef2d35a0",
+    "builtAt": "2026-10-02T01:01:08.087Z",
+    "buildTime": "2026-10-02T01:01:08.087Z",
+    "ref": "main",
+    "branch": "main"
+  },
+  "productionFetchError": null,
+  "local": {
+    "repoRoot": "/Users/alabdullmohsen/majlis-app",
+    "branch": "cursor/t040-ios-device-matrix-completion",
+    "originMain": "ef2d35a0e83f3f63fe5f749b78f4600117f7900d",
+    "originMainShort": "ef2d35a0"
+  },
+  "match": "MATCH",
+  "telemetryDefault": "OFF",
+  "policy": {
+    "noPII": true,
+    "noQuranText": true,
+    "deviceRowsDefault": "DEVICE_REQUIRED"
+  }
+}

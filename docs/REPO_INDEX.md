@@ -184,6 +184,8 @@
 | `docs/audit/SUNNAH_FINAL_PROGRAM_CONTINUATION_STATE.md` | حالة متابعة البرنامج الحيّة |
 | `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md` | إغلاق داخلي نهائي WAVE7→13 · INTERNAL_CLOSURE_COMPLETE · WEB_RELEASED_NATIVE_HOLD |
 | `docs/audit/WAVE13_FINAL_DEVICE_EVIDENCE_RUNBOOK.md` | Runbook أدلة أجهزة · كل صف غير منفَّذ = DEVICE_REQUIRED |
+| `docs/audit/IOS_DEVICE_MATRIX_CERTIFICATION_REPORT.md` | T-040 · `IOS_DEVICE_MATRIX_INCOMPLETE` (FAIL) · FAIL_RECORDs لأجهزة الحد الأدنى |
+| `docs/audit/evidence/t040-ios-device-matrix/` | جرد/FAIL_RECORD لمصفوفة أجهزة T-040 |
 | `docs/audit/SUNNAH_FULL_PROJECT_AUDIT.md` | تدقيق شامل 2026-09-21 (`PARTIAL`) — خط أساس Remediation |
 
 ## MRMP — قطار جاهزية التطبيق (مستقل عن UNIFIED)

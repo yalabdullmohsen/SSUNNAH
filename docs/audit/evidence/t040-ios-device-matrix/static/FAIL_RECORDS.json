@@ -1,0 +1,26 @@
+[
+  {
+    "id": "FAIL_RECORD-D-IP-MODERN",
+    "deviceClass": "Modern iPhone",
+    "status": "FAIL",
+    "reason": "No row with Artifact+Tester+Date for required surfaces/modes; DEVICE_QA_REGISTER cells remain DEVICE_REQUIRED"
+  },
+  {
+    "id": "FAIL_RECORD-D-IP-OLDER",
+    "deviceClass": "Older/Smaller iPhone",
+    "status": "FAIL",
+    "reason": "No compact iPhone evidence pack with required record format"
+  },
+  {
+    "id": "FAIL_RECORD-D-IPAD",
+    "deviceClass": "iPad",
+    "status": "FAIL",
+    "reason": "No iPad full surface×mode matrix with artifacts"
+  },
+  {
+    "id": "FAIL_RECORD-D-IPAD-SPLIT",
+    "deviceClass": "iPad Split View",
+    "status": "FAIL",
+    "reason": "Split View never evidenced (also T-032 blocker)"
+  }
+]
