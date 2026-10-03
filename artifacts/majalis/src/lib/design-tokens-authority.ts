@@ -1,0 +1,141 @@
+/**
+ * DESIGN_TOKENS_AUTHORITY — logical token paths → canonical CSS vars (sf/mj/ss).
+ * See docs/design/DESIGN_TOKENS_AUTHORITY.md
+ *
+ * Policy: no new token family. Paths are the product vocabulary;
+ * values resolve only to Foundation `--sf*` / `--sf2-*` · Product `--mj-*` · Bridge `--ss-*`.
+ */
+
+export const DESIGN_TOKENS_AUTHORITY = {
+  // ── Colors ──
+  "color.primary": "--mj-brand",
+  "color.secondary": "--mj-brand-deep",
+  "color.accent": "--mj-accent",
+  "color.success": "--sf2-success",
+  "color.warning": "--mj-warning",
+  "color.error": "--mj-danger",
+  "color.info": "--mj-info",
+  "color.text.primary": "--mj-ink",
+  "color.text.secondary": "--mj-ink-2",
+  "color.text.muted": "--mj-ink-2",
+  "color.text.inverse": "--mj-on-brand",
+  "color.surface.base": "--mj-bg",
+  "color.surface.elevated": "--mj-surface",
+  "color.surface.overlay": "--sf2-overlay",
+  "color.border.default": "--mj-hairline",
+  "color.border.subtle": "--mj-hairline",
+  "color.border.focus": "--sf2-focus-ring",
+
+  // ── Typography ──
+  "typography.display": "--sf-type-display",
+  "typography.pageTitle": "--sf-type-page-title",
+  "typography.sectionTitle": "--sf-type-section-title",
+  "typography.cardTitle": "--sf-type-card-title",
+  "typography.subtitle": "--sf-type-supporting",
+  "typography.body": "--sf-type-body",
+  "typography.bodySmall": "--sf-type-supporting",
+  "typography.caption": "--sf-type-caption",
+  "typography.label": "--sf-type-metadata",
+  "typography.button": "--text-label",
+  "typography.badge": "--text-caption",
+  "typography.meta": "--sf-type-metadata",
+
+  // ── Spacing ──
+  "spacing.xs": "--sf2-space-1",
+  "spacing.sm": "--sf2-space-2",
+  "spacing.md": "--sf2-space-3",
+  "spacing.lg": "--sf2-space-4",
+  "spacing.xl": "--sf2-space-5",
+  "spacing.2xl": "--sf2-space-6",
+  "spacing.3xl": "--sf2-space-8",
+
+  // ── Sizes ──
+  "size.icon.xs": "16",
+  "size.icon.sm": "18",
+  "size.icon.md": "22",
+  "size.icon.lg": "24",
+  "size.avatar.sm": "--sf2-icon-box-sm",
+  "size.avatar.md": "--sf2-icon-box",
+  "size.avatar.lg": "2.75rem",
+  "size.button.sm": "--touch-min",
+  "size.button.md": "--touch-comfortable",
+  "size.button.lg": "--touch-comfortable",
+  "size.input.sm": "--touch-min",
+  "size.input.md": "--touch-min",
+  "size.input.lg": "--touch-comfortable",
+
+  // ── Radii ──
+  "radius.none": "0",
+  "radius.sm": "--sf-radius-xs",
+  "radius.md": "--sf-radius-control",
+  "radius.lg": "--radius-card",
+  "radius.xl": "--sf-radius-feature",
+
+  // ── Elevation ──
+  "elevation.0": "--sf2-elevation-0",
+  "elevation.1": "--sf2-elevation-1",
+  "elevation.2": "--sf2-elevation-2",
+  "elevation.3": "--sf2-elevation-3",
+  "elevation.4": "--sf2-elevation-4",
+
+  // ── Borders ──
+  "border.default": "--ss-border-subtle",
+  "border.subtle": "--ss-border-subtle",
+  "border.focus": "--ss-border-focus",
+  "border.divider": "--ss-border-divider",
+
+  // ── Breakpoints ──
+  "breakpoint.mobile": "--bp-lg",
+  "breakpoint.tablet": "--bp-tablet",
+  "breakpoint.desktop": "--bp-desktop",
+  "breakpoint.widescreen": "--bp-wide",
+
+  // ── Component tokens ──
+  "card.padding": "--sf2-space-4",
+  "card.radius": "--radius-card",
+  "card.border": "--ss-border-subtle",
+  "card.shadow": "--sf2-elevation-1",
+  "button.height": "--touch-min",
+  "button.radius": "--sf-radius-control",
+  "button.spacing": "--sf2-space-3",
+  "button.typography": "--text-label",
+  "form.height": "--touch-min",
+  "form.radius": "--sf-radius-control",
+  "form.spacing": "--sf2-space-3",
+  "form.label": "--sf-type-metadata",
+  "table.header": "2.5rem",
+  "table.row": "--touch-min",
+  "table.spacing": "--sf2-space-3",
+  "list.item": "--touch-min",
+  "list.spacing": "--sf2-space-2",
+  "modal.width": "max-w-lg",
+  "modal.radius": "--radius-card",
+  "modal.spacing": "--sf2-space-6",
+  "tab.height": "--ss-tab-min-height",
+  "tab.spacing": "--ss-tab-pad-x",
+  "tab.indicator": "--ss-tab-indicator-size",
+  "nav.height": "--bottom-nav-height",
+  "nav.spacing": "--sf2-space-2",
+  "nav.icon": "22",
+  "search.height": "--touch-min",
+  "search.spacing": "--sf2-space-3",
+  "filter.height": "--touch-min",
+  "filter.spacing": "--sf2-space-2",
+  "status.loading": "LoadingStateV2",
+  "status.empty": "EmptyStateV2",
+  "status.error": "ErrorStateV2",
+  "status.offline": "OfflineStateV2",
+} as const;
+
+export type DesignTokenPath = keyof typeof DESIGN_TOKENS_AUTHORITY;
+
+export const DESIGN_TOKENS_AUTHORITY_META = {
+  status: "DESIGN_TOKENS_AUTHORITY_ACTIVE",
+  policy: "no-new-family",
+  layers: ["--sf-*", "--sf2-*", "--mj-*", "--ss-*"] as const,
+  migration: "All future visual work must resolve through DESIGN_TOKENS_AUTHORITY paths → canonical CSS vars.",
+} as const;
+
+export function resolveDesignToken(path: DesignTokenPath): string {
+  return DESIGN_TOKENS_AUTHORITY[path];
+}

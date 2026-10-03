@@ -64,6 +64,8 @@ Phases AD–AG: `docs/audit/VISUAL_AD_AG_SPACING_SIZE_A11Y_CONTRAST_REPORT.md` �
 
 Phases AH–AJ: `docs/audit/VISUAL_AH_AJ_ELEVATION_BORDER_GOVERNANCE_REPORT.md` · elevation/border maps · `test:design-governance` · preflight map check.
 
+Phase AK: `docs/design/DESIGN_TOKENS_AUTHORITY.md` · `TOKEN_COMPLIANCE_REPORT` · `test:design-tokens-authority`.
+
 ## Endgame phases (A–H)
 
 | Phase | Target exit | Status |

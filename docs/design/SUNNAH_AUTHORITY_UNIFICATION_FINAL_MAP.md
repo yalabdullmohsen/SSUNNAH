@@ -133,6 +133,13 @@ Automation: `scripts/design-governance-report.mjs` → DESIGN_AUTHORITY/DRIFT re
 Exit: `ELEVATION_AUTHORITY_ONLY` · `BORDER_AUTHORITY_ONLY` · `DESIGN_GOVERNANCE_AUTOMATED`.  
 Gates: `test:design-governance` · preflight `design-governance-preflight.mjs`.
 
+## Unified Design Tokens Authority
+
+Catalog: `DESIGN_TOKENS_AUTHORITY.md` · `lib/design-tokens-authority.ts`  
+Logical paths (`color.primary`, `spacing.md`, …) → sf/mj/ss only.  
+Compliance: `TOKEN_COMPLIANCE_REPORT` · `test:design-tokens-authority`.  
+Exit: `DESIGN_TOKENS_AUTHORITY_ACTIVE` · `TOKEN_COMPLIANCE_ENFORCED` · `VISUAL_SYSTEM_UNIFIED`.
+
 ## Page Authority
 
 Canonical: `AppPage` · `PageHeader` · Screen adapters (`DetailScreen`, …) per `PAGE_CONTRACT_MATRIX.md`.

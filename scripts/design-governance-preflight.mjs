@@ -17,9 +17,12 @@ const REQUIRED = [
   "docs/design/SPACING_AUTHORITY_MAP.md",
   "docs/design/SIZE_AUTHORITY_MAP.md",
   "docs/design/DESIGN_GOVERNANCE_AUTOMATION.md",
+  "docs/design/DESIGN_TOKENS_AUTHORITY.md",
   "artifacts/majalis/src/lib/elevation-authority.ts",
   "artifacts/majalis/src/lib/border-authority.ts",
+  "artifacts/majalis/src/lib/design-tokens-authority.ts",
   "artifacts/majalis/scripts/design-governance-report.mjs",
+  "artifacts/majalis/scripts/token-compliance-report.mjs",
 ];
 
 const missing = REQUIRED.filter((rel) => !existsSync(resolve(ROOT, rel)));
