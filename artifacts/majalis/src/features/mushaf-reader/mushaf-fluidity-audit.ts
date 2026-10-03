@@ -73,13 +73,18 @@ export function runMushafFluidityAudit(
   const tele = readPkg("src/features/mushaf-reader/mushaf-turn-telemetry.ts");
   const pager = readPkg("src/features/mushaf-reader/useMushafPager.ts");
 
+  /* WAVE6: اشتراك سطري واحد (useMushafHighlightKeys) بدل 3×N كلمات */
   const verseWordSyncSubscriptionsPerWord = countMatches(
     verse,
     /useMushafAyahWord(?:Selected|Playing|SearchHighlight)\(/g,
   );
-  /* في VerseWord الحقيقي نتوقع 3 استدعاءات؛ مع enabled=false تبقى الاستدعاءات لكن الاشتراك noop */
+  const lineLevelHighlightKeys =
+    /useMushafHighlightKeys\(syncHighlights\)/.test(verse) ||
+    /useMushafHighlightKeys\(/.test(verse);
+  /* تجميد اللوحات المجاورة: syncHighlights=false → subscribeNoop */
   const adjacentPaneSyncFrozen =
     /syncHighlights=\{/.test(reader) ||
+    lineLevelHighlightKeys ||
     /useMushafAyahWordSelected\([^)]+,\s*(?:syncHighlights|enabled|highlightsEnabled)/.test(
       verse,
     ) ||
@@ -129,6 +134,10 @@ export function runMushafFluidityAudit(
   if (!clearPageChromeGuarded) estimatedTurnRenderHotspots += 6;
   if (arrowsWaitNeighborsReady) estimatedTurnRenderHotspots += 5;
   if (!oppositeNearPrefetchOnIdle) estimatedTurnRenderHotspots += 10;
+  /* عقوبة اشتراكات لكل كلمة؛ تُلغى عند التحويل لاشتراك سطري */
+  if (!lineLevelHighlightKeys && verseWordSyncSubscriptionsPerWord > 0) {
+    estimatedTurnRenderHotspots += Math.min(24, verseWordSyncSubscriptionsPerWord * 4);
+  }
 
   const topDelays = [
     {
@@ -145,11 +154,17 @@ export function runMushafFluidityAudit(
     },
     {
       id: "WORD_SYNC_FANOUT_X3_SHEETS",
-      severity: adjacentPaneSyncFrozen ? 4 : 9,
-      evidence: adjacentPaneSyncFrozen
-        ? "adjacent/turning panes use noop sync subscribe"
-        : "each word subscribes selected/playing/search on all sheets",
-      class: adjacentPaneSyncFrozen ? "PARTIAL" : "FIXABLE_IN_REPOSITORY",
+      severity: lineLevelHighlightKeys ? 2 : adjacentPaneSyncFrozen ? 4 : 9,
+      evidence: lineLevelHighlightKeys
+        ? "line-level useMushafHighlightKeys (1 subscribe / line)"
+        : adjacentPaneSyncFrozen
+          ? "adjacent/turning panes use noop sync subscribe"
+          : "each word subscribes selected/playing/search on all sheets",
+      class: lineLevelHighlightKeys
+        ? "PARTIAL"
+        : adjacentPaneSyncFrozen
+          ? "PARTIAL"
+          : "FIXABLE_IN_REPOSITORY",
     },
     {
       id: "FONT_MISS_ON_TARGET",

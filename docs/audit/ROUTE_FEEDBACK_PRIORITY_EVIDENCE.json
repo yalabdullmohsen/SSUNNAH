@@ -272,6 +272,10 @@
         "rateLimited": {
           "status": "NOT_APPLICABLE",
           "reason": "Local"
+        },
+        "stale": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Bookmark list refresh is local; stale strip not applicable"
         }
       }
     },
@@ -524,6 +528,10 @@
         "rateLimited": {
           "status": "NOT_APPLICABLE",
           "reason": "Local"
+        },
+        "stale": {
+          "status": "NOT_APPLICABLE",
+          "reason": "No long-lived stale strip on adhkar shell; OfflineBanner covers network loss"
         }
       }
     },
@@ -620,6 +628,10 @@
         "rateLimited": {
           "status": "NOT_APPLICABLE",
           "reason": "No 429 UI"
+        },
+        "stale": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Progress refresh is pull/reload; no stale strip on shell"
         }
       }
     },
@@ -662,6 +674,10 @@
         "rateLimited": {
           "status": "NOT_APPLICABLE",
           "reason": "Mapped via FieldError if provider returns; no dedicated 429 page"
+        },
+        "stale": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Auth form surface — no stale data indicator"
         }
       }
     },
@@ -704,6 +720,10 @@
         "rateLimited": {
           "status": "NOT_APPLICABLE",
           "reason": "No dedicated 429 page"
+        },
+        "stale": {
+          "status": "NOT_APPLICABLE",
+          "reason": "Auth form surface — no stale data indicator"
         }
       }
     }
@@ -717,5 +737,6 @@
   ],
   "mergedCommit": "c6f56d2ad52a5f0d022467ad48a549f44fc6b3f5",
   "status": "ROUTE_FEEDBACK_COMPLETE",
-  "endgameNote": "Required routes /, /search, /quran-hub, /mushaf, /prayer-times, /lessons, /settings — COMPLETE/N/A only"
+  "endgameNote": "Required routes /, /search, /quran-hub, /mushaf, /prayer-times, /lessons, /settings — COMPLETE/N/A only",
+  "radicalClosureWave5": "stale field expansion on priority set"
 }

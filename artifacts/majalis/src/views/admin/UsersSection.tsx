@@ -4,6 +4,7 @@ import { adminGetUsers } from "@/lib/supabase";
 import { v3Mutate } from "@/admin-v3/data/admin-v3-api";
 import { syncLegacyRoles } from "@/lib/governance-service";
 import { SkeletonCardGrid } from "@/components/ui-common";
+import { Button } from "@/components/ui/button";
 import { useAdminShell } from "./AdminShell";
 
 const ROLES: Record<string, { label: string; bg: string; text: string }> = {
@@ -75,14 +76,16 @@ export function UsersSection() {
 
       <div className="usr-filter-row">
         {FILTERS.map(([v, l]) => (
-          <button
+          <Button
             type="button"
+            variant={filter === v ? "secondary" : "ghost"}
+            size="small"
             key={v}
             onClick={() => setFilter(v)}
             className={`usr-filter-btn${filter === v ? " usr-filter-btn--active" : ""}`}
           >
             {l} ({counts[v as keyof typeof counts]})
-          </button>
+          </Button>
         ))}
       </div>
 
