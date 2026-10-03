@@ -76,6 +76,8 @@ Phases BA–BE: `docs/audit/VISUAL_BA_BE_PRODUCT_MATURITY_REPORT.md` · maturity
 
 Phases BF–BJ: `docs/audit/VISUAL_BF_BJ_PERFORMANCE_EXCELLENCE_REPORT.md` · render/mushaf/startup/network/budgets · `test:performance-excellence` (no speculative fixes).
 
+Phases BK–BO: `docs/audit/VISUAL_BK_BO_DATABASE_EXCELLENCE_REPORT.md` · DB heatmap · query queue · indexes · cache · health scorecard · `test:database-excellence`.
+
 ## Endgame phases (A–H)
 
 | Phase | Target exit | Status |

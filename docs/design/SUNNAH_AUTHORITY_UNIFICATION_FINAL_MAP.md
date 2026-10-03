@@ -174,6 +174,12 @@ Program: `PERFORMANCE_EXCELLENCE_PROGRAM.md` · `scripts/performance-excellence-
 Outputs: RENDER_COST · MUSHAF_BOTTLENECK · STARTUP_PERFORMANCE · NETWORK_EFFICIENCY · PERFORMANCE_BUDGET (+ drift alerts).  
 Gate: `test:performance-excellence` · existing `test:bundle-budget` / LHCI budgets unchanged.
 
+## Database excellence BK–BO
+
+Program: `DATABASE_EXCELLENCE_PROGRAM.md` · `scripts/database-excellence-engine.mjs`.  
+Outputs: DATABASE_HEATMAP · QUERY_OPTIMIZATION_QUEUE · INDEX_AUTHORITY · CACHE_OPTIMIZATION_PLAN · SUNNAH_DATABASE_HEALTH_SCORECARD.  
+Gate: `test:database-excellence` · `test:supabase-policy-audit` unchanged.
+
 ## Page Authority
 
 Canonical: `AppPage` · `PageHeader` · Screen adapters (`DetailScreen`, …) per `PAGE_CONTRACT_MATRIX.md`.
