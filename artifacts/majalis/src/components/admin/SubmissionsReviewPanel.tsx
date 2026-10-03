@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { CheckCircle2, ClipboardList, Clock, Download, FolderOpen, GraduationCap, Library, Link2, MapPin, Paperclip, PenLine, RefreshCw, User, XCircle } from "lucide-react";
 import {
   listSubmissions,
@@ -46,13 +47,13 @@ function AudioPreview({ url }: { url: string }) {
   useEffect(() => () => { ref.current?.pause(); }, []);
 
   return (
-    <button
+    <Button variant="secondary" size="small"
       type="button"
       onClick={toggle}
       className={`srp-audio-btn${playing ? " srp-audio-btn--playing" : ""}`}
     >
       {playing ? "⏹ إيقاف" : "▶ استمع"}
-    </button>
+    </Button>
   );
 }
 
@@ -182,7 +183,7 @@ function SubmissionCard({ sub, onReview }: {
               {published ? (
                 <div className="srp-publish-success srp-publish-success--lesson"><CheckCircle2 size={14} className="inline ml-1" />تمت إضافته كمسودة!</div>
               ) : (
-                <button
+                <Button variant="secondary" size="small"
                   type="button"
                   disabled={publishing}
                   onClick={async () => {
@@ -201,7 +202,7 @@ function SubmissionCard({ sub, onReview }: {
                   className="srp-publish-btn srp-publish-btn--lesson"
                 >
                   {publishing ? "جارٍ الإضافة..." : <><PenLine size={13} className="inline ml-1" />إضافة كمسودة</>}
-                </button>
+                </Button>
               )}
               {publishError && <div className="srp-publish-error">{publishError}</div>}
             </div>
@@ -221,12 +222,12 @@ function SubmissionCard({ sub, onReview }: {
                 />
               </label>
               <div className="srp-review-btns">
-                <button type="button" disabled={loading} onClick={() => handle("approved")} className="srp-action-btn srp-action-btn--approve">
+                <Button variant="secondary" size="small" type="button" disabled={loading} onClick={() => handle("approved")} className="srp-action-btn srp-action-btn--approve">
                   {loading ? "..." : <><CheckCircle2 size={13} className="inline ml-1" />قبول</>}
-                </button>
-                <button type="button" disabled={loading} onClick={() => handle("rejected")} className="srp-action-btn srp-action-btn--reject">
+                </Button>
+                <Button variant="secondary" size="small" type="button" disabled={loading} onClick={() => handle("rejected")} className="srp-action-btn srp-action-btn--reject">
                   {loading ? "..." : <><XCircle size={13} className="inline ml-1" />رفض</>}
-                </button>
+                </Button>
               </div>
             </div>
           )}
@@ -236,7 +237,7 @@ function SubmissionCard({ sub, onReview }: {
                 رفع الأذان ملغى — يمكن إغلاق هذا الطلب بالرفض مع ملاحظة للمستخدم.
               </p>
               <div className="srp-review-btns">
-                <button
+                <Button variant="secondary" size="small"
                   type="button"
                   disabled={loading}
                   onClick={async () => {
@@ -248,7 +249,7 @@ function SubmissionCard({ sub, onReview }: {
                   className="srp-action-btn srp-action-btn--reject"
                 >
                   {loading ? "..." : <><XCircle size={13} className="inline ml-1" />إغلاق الطلب</>}
-                </button>
+                </Button>
               </div>
             </div>
           )}
@@ -303,7 +304,7 @@ export function SubmissionsReviewPanel() {
             <div className="srp-header-pending"><Clock size={13} className="inline ml-1" />{pending} طلب بانتظار المراجعة</div>
           )}
         </div>
-        <button type="button" onClick={load} className="srp-refresh-btn"><RefreshCw size={13} className="inline ml-1" />تحديث</button>
+        <Button variant="secondary" size="small" type="button" onClick={load} className="srp-refresh-btn"><RefreshCw size={13} className="inline ml-1" />تحديث</Button>
       </div>
 
       {/* Stats */}
@@ -333,25 +334,25 @@ export function SubmissionsReviewPanel() {
       {/* Filters */}
       <div className="srp-filters">
         {(["all", "pending", "approved", "rejected"] as const).map((s) => (
-          <button
+          <Button variant="secondary" size="small"
             key={s}
             type="button"
             onClick={() => setFStatus(s)}
             className={`srp-filter-btn${filterStatus === s ? " srp-filter-btn--active" : ""}`}
           >
             {{ all: "الكل", pending: "قيد المراجعة", approved: "مقبول", rejected: "مرفوض" }[s]}
-          </button>
+          </Button>
         ))}
         <div className="srp-filter-divider" />
         {(["all", "lesson"] as const).map((t) => (
-          <button
+          <Button variant="secondary" size="small"
             key={t}
             type="button"
             onClick={() => setFType(t)}
             className={`srp-filter-btn${filterType === t ? " srp-filter-btn--active-type" : ""}`}
           >
             {{ all: "كل الأنواع", lesson: "درس" }[t]}
-          </button>
+          </Button>
         ))}
       </div>
 

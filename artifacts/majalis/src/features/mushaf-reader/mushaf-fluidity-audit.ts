@@ -194,8 +194,20 @@ export function runMushafFluidityAudit(
     },
     {
       id: "SELECTION_GETCLIENTRECTS",
-      severity: selectionFrozenWhileTurning ? 2 : 6,
-      evidence: "AyahSelectionOverlay measure path",
+      severity:
+        /useMushafOverlayKeys/.test(verse) ||
+        /useMushafOverlayKeys/.test(readPkg("src/features/mushaf-reader/AyahSelectionOverlay.tsx"))
+          ? selectionFrozenWhileTurning
+            ? 1
+            : 4
+          : selectionFrozenWhileTurning
+            ? 2
+            : 6,
+      evidence: /useMushafOverlayKeys/.test(
+        readPkg("src/features/mushaf-reader/AyahSelectionOverlay.tsx"),
+      )
+        ? "AyahSelectionOverlay single useMushafOverlayKeys + band dedupe"
+        : "AyahSelectionOverlay measure path",
       class: selectionFrozenWhileTurning ? "PARTIAL" : "FIXABLE_IN_REPOSITORY",
     },
     {

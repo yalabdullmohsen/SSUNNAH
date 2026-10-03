@@ -4,6 +4,7 @@
  * نصوص غير قرآنية: إخفاء تدريجي اختياري إن وُجد نص معتمد لاحقًا.
  */
 import { useEffect, useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import {
   DetailSection,
@@ -197,20 +198,20 @@ export function HifzUnitPracticePanel({
           </p>
         ) : null}
         <div className="mt-3 flex flex-wrap gap-2">
-          <button
+          <Button variant="secondary" size="small"
             type="button"
             className="rounded-md border px-3 py-2 text-sm mj-pressable"
             onClick={() => setProgress(startHifzUnit(identity))}
           >
             ابدأ الحفظ
-          </button>
-          <button
+          </Button>
+          <Button variant="secondary" size="small"
             type="button"
             className="rounded-md border px-3 py-2 text-sm mj-pressable"
             onClick={() => setProgress(recordHifzRepetition(identity))}
           >
             سجّل تكرارًا
-          </button>
+          </Button>
         </div>
       </DetailSection>
 
@@ -244,7 +245,7 @@ export function HifzUnitPracticePanel({
 
       <DetailSection title="تسجيل في محفوظاتي">
         <div className="flex flex-wrap gap-2">
-          <button
+          <Button variant="secondary" size="small"
             type="button"
             className="rounded-md bg-primary px-3 py-2 text-sm text-primary-foreground mj-pressable"
             onClick={() =>
@@ -256,8 +257,8 @@ export function HifzUnitPracticePanel({
             }
           >
             {HIFZ_COMPLETION_CTA.completedUnit}
-          </button>
-          <button
+          </Button>
+          <Button variant="secondary" size="small"
             type="button"
             className="rounded-md border px-3 py-2 text-sm mj-pressable"
             onClick={() =>
@@ -269,7 +270,7 @@ export function HifzUnitPracticePanel({
             }
           >
             {HIFZ_COMPLETION_CTA.savedToMine}
-          </button>
+          </Button>
         </div>
         <p className="mt-2 text-xs text-muted-foreground">
           هذا تسجيل ذاتي ضمن محفوظاتك — ليس شهادة حفظ.
@@ -282,7 +283,7 @@ export function HifzUnitPracticePanel({
         progress?.state === "REVIEWED") && (
         <DetailSection title="المراجعة">
           <div className="flex flex-wrap gap-2">
-            <button
+            <Button variant="secondary" size="small"
               type="button"
               className="rounded-md border px-3 py-2 text-sm mj-pressable"
               onClick={() =>
@@ -294,8 +295,8 @@ export function HifzUnitPracticePanel({
               }
             >
               راجعت وأتممت
-            </button>
-            <button
+            </Button>
+            <Button variant="secondary" size="small"
               type="button"
               className="rounded-md border px-3 py-2 text-sm mj-pressable"
               onClick={() =>
@@ -307,7 +308,7 @@ export function HifzUnitPracticePanel({
               }
             >
               تحتاج تثبيتًا
-            </button>
+            </Button>
           </div>
         </DetailSection>
       )}

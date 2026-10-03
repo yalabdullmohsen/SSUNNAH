@@ -142,3 +142,9 @@ html[data-theme="dark"] .bdm-card__bar,
 html.dark .bdm-card__bar {
   background: var(--mj-hairline, #35443f);
 }
+
+.bdm-quota-alert {
+  font-size: 0.85rem;
+  color: var(--mj-danger);
+  margin: 0 0 0.5rem;
+}

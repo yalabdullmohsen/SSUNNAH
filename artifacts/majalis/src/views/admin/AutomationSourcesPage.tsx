@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import {
   listTrustedLessonSources,
@@ -105,12 +106,12 @@ function AutomationSourcesContent() {
       </div>
 
       <div className="asp-actions">
-        <button type="button" disabled={busy} onClick={() => { setForm({ ...EMPTY }); setShowForm(true); }} className="asp-add-btn">
+        <Button variant="secondary" size="small" type="button" disabled={busy} onClick={() => { setForm({ ...EMPTY }); setShowForm(true); }} className="asp-add-btn">
           + إضافة مصدر
-        </button>
-        <button type="button" disabled={busy} onClick={() => onRunMonitor()} className="asp-run-btn">
+        </Button>
+        <Button variant="secondary" size="small" type="button" disabled={busy} onClick={() => onRunMonitor()} className="asp-run-btn">
           فحص الآن (كل المصادر)
-        </button>
+        </Button>
       </div>
 
       {showForm && (
@@ -138,8 +139,8 @@ function AutomationSourcesContent() {
             </label>
           </div>
           <div className="asp-form-actions">
-            <button type="button" disabled={busy} onClick={onSave} className="asp-save-btn">حفظ</button>
-            <button type="button" onClick={() => setShowForm(false)} className="asp-cancel-btn">إلغاء</button>
+            <Button variant="secondary" size="small" type="button" disabled={busy} onClick={onSave} className="asp-save-btn">حفظ</Button>
+            <Button variant="secondary" size="small" type="button" onClick={() => setShowForm(false)} className="asp-cancel-btn">إلغاء</Button>
           </div>
         </section>
       )}
@@ -174,16 +175,16 @@ function AutomationSourcesContent() {
                   <InstagramManualAssistPanel source={s} onDone={load} />
                 </div>
                 <div className="asp-card-actions">
-                  <button type="button" disabled={busy} onClick={() => toggleTrustedSource(s.id!, !s.active).then(load).catch(() => showError("تعذر تحديث حالة المصدر."))} className="asp-small-btn">
+                  <Button variant="secondary" size="small" type="button" disabled={busy} onClick={() => toggleTrustedSource(s.id!, !s.active).then(load).catch(() => showError("تعذر تحديث حالة المصدر."))} className="asp-small-btn">
                     {s.active ? "تعطيل" : "تفعيل"}
-                  </button>
-                  <button type="button" disabled={busy} onClick={() => toggleAutoPublish(s.id!).then(load).catch(() => showError("تعذر تحديث النشر التلقائي."))} className="asp-small-btn">
+                  </Button>
+                  <Button variant="secondary" size="small" type="button" disabled={busy} onClick={() => toggleAutoPublish(s.id!).then(load).catch(() => showError("تعذر تحديث النشر التلقائي."))} className="asp-small-btn">
                     Auto-Publish
-                  </button>
-                  <button type="button" disabled={busy} onClick={() => { setForm(s); setShowForm(true); }} className="asp-small-btn">تعديل</button>
-                  <button type="button" disabled={busy} onClick={() => onRunMonitor(s.id)} className="asp-small-btn asp-small-btn--accent">
+                  </Button>
+                  <Button variant="secondary" size="small" type="button" disabled={busy} onClick={() => { setForm(s); setShowForm(true); }} className="asp-small-btn">تعديل</Button>
+                  <Button variant="secondary" size="small" type="button" disabled={busy} onClick={() => onRunMonitor(s.id)} className="asp-small-btn asp-small-btn--accent">
                     فحص الآن
-                  </button>
+                  </Button>
                 </div>
               </div>
             </article>

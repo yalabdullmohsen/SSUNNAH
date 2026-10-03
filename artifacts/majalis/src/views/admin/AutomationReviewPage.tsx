@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { invalidateLessonsCache } from "@/lib/lessons-service";
 import {
@@ -210,7 +211,7 @@ function AutomationReviewContent() {
 
       <div className="arp-tabs">
         {tabs.map(([key, label]) => (
-          <button
+          <Button variant="secondary" size="small"
             key={key}
             type="button"
             onClick={() => setTab(key)}
@@ -222,7 +223,7 @@ function AutomationReviewContent() {
             } as React.CSSProperties : undefined}
           >
             {label}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -270,12 +271,12 @@ function AutomationReviewContent() {
                         {d.source_url && <a href={d.source_url} target="_blank" rel="noopener noreferrer" className="arp-card-url">{d.source_url}</a>}
                       </div>
                       <div className="arp-card-actions">
-                        <button type="button" disabled={busy} onClick={() => onApprove(d)} className="arp-approve-btn">اعتماد</button>
+                        <Button variant="secondary" size="small" type="button" disabled={busy} onClick={() => onApprove(d)} className="arp-approve-btn">اعتماد</Button>
                         <Link href={`/admin/content-import/url?draft=${d.id}`} className="arp-edit-link">تعديل</Link>
                         {d.source_id && (
-                          <button type="button" disabled={busy} onClick={() => onReAnalyze(d.id)} className="arp-small-btn">إعادة التحليل</button>
+                          <Button variant="secondary" size="small" type="button" disabled={busy} onClick={() => onReAnalyze(d.id)} className="arp-small-btn">إعادة التحليل</Button>
                         )}
-                        <button type="button" disabled={busy} onClick={() => onReject(d.id)} className="arp-small-btn">رفض</button>
+                        <Button variant="secondary" size="small" type="button" disabled={busy} onClick={() => onReject(d.id)} className="arp-small-btn">رفض</Button>
                       </div>
                     </div>
                     {d.extracted_text && (
@@ -328,10 +329,10 @@ function AutomationReviewContent() {
                       {u.original_url && <a href={u.original_url} target="_blank" rel="noopener noreferrer" className="arp-card-url">{u.original_url}</a>}
                     </div>
                     <div className="arp-card-actions">
-                      <button type="button" disabled={busy} onClick={() => onApproveUnified(u.id)} className="arp-approve-btn">اعتماد</button>
-                      <button type="button" disabled={busy} onClick={() => onPinUnified(u.id, !u.pinned)} className="arp-small-btn">{u.pinned ? "إلغاء التثبيت" : "تثبيت"}</button>
-                      <button type="button" disabled={busy} onClick={() => onRejectUnified(u.id)} className="arp-small-btn">رفض</button>
-                      <button type="button" disabled={busy} onClick={() => onDeleteUnified(u.id)} className="arp-small-btn">حذف</button>
+                      <Button variant="secondary" size="small" type="button" disabled={busy} onClick={() => onApproveUnified(u.id)} className="arp-approve-btn">اعتماد</Button>
+                      <Button variant="secondary" size="small" type="button" disabled={busy} onClick={() => onPinUnified(u.id, !u.pinned)} className="arp-small-btn">{u.pinned ? "إلغاء التثبيت" : "تثبيت"}</Button>
+                      <Button variant="secondary" size="small" type="button" disabled={busy} onClick={() => onRejectUnified(u.id)} className="arp-small-btn">رفض</Button>
+                      <Button variant="secondary" size="small" type="button" disabled={busy} onClick={() => onDeleteUnified(u.id)} className="arp-small-btn">حذف</Button>
                     </div>
                   </div>
                 </div>

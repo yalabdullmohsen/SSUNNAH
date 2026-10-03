@@ -130,7 +130,7 @@ export function ReciterDownloadManager() {
         </small>
       </span>
       {quotaMsg ? (
-        <p role="alert" style={{ fontSize: ".85rem", color: "var(--mj-danger, #b91c1c)", margin: "0 0 .5rem" }}>
+        <p role="alert" className="bdm-quota-alert">
           {quotaMsg}
         </p>
       ) : null}

@@ -26,22 +26,22 @@
 }
 
 .ss-app-card--accent {
-  background-color: color-mix(in srgb, var(--ss-soft-gold, #b08a3e) 10%, var(--ss-card-bg, #fffcf7));
+  background-color: color-mix(in srgb, var(--ss-soft-gold) 10%, var(--ss-card-bg));
   background-image: linear-gradient(
     160deg,
-    color-mix(in srgb, var(--ss-soft-gold, #b08a3e) 14%, transparent),
+    color-mix(in srgb, var(--ss-soft-gold) 14%, transparent),
     color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 6%, transparent)
   );
-  border-color: color-mix(in srgb, var(--ss-soft-gold, #b08a3e) 32%, var(--ss-border, #d9d2c6));
+  border-color: color-mix(in srgb, var(--ss-soft-gold) 32%, var(--ss-border));
   color: var(--mj-ink, var(--v2-color-ink));
   box-shadow: var(--ss-shadow-soft, 0 1px 2px rgba(11, 32, 24, 0.06));
 }
 
 html[data-theme="dark"] .ss-app-card--accent,
 html.dark .ss-app-card--accent {
-  background-color: color-mix(in srgb, var(--ss-soft-gold, #d9b871) 12%, var(--ss-card-bg, #1b2421));
-  color: var(--mj-ink, #f8fafc);
-  border-color: color-mix(in srgb, var(--ss-soft-gold, #d9b871) 28%, var(--ss-border, #35443f));
+  background-color: color-mix(in srgb, var(--ss-soft-gold) 12%, var(--ss-card-bg));
+  color: var(--mj-ink);
+  border-color: color-mix(in srgb, var(--ss-soft-gold) 28%, var(--ss-border));
 }
 
 .ss-feature-card {
@@ -168,14 +168,14 @@ html.dark .ss-app-card--accent {
 }
 
 .ss-action-btn--destructive {
-  background: color-mix(in srgb, var(--mj-danger, #c0392b) 12%, transparent);
-  color: var(--mj-danger, #9b2c1f);
-  border-color: color-mix(in srgb, var(--mj-danger, #c0392b) 35%, transparent);
+  background: color-mix(in srgb, var(--mj-danger) 12%, transparent);
+  color: var(--mj-danger);
+  border-color: color-mix(in srgb, var(--mj-danger) 35%, transparent);
 }
 
 .ss-action-btn--destructive:hover,
 .ss-action-btn--destructive:focus-visible {
-  background: color-mix(in srgb, var(--mj-danger, #c0392b) 18%, transparent);
+  background: color-mix(in srgb, var(--mj-danger) 18%, transparent);
 }
 
 .ss-action-btn.is-disabled {
@@ -185,15 +185,15 @@ html.dark .ss-app-card--accent {
 
 html[data-theme="dark"] .ss-action-btn--primary,
 html.dark .ss-action-btn--primary {
-  background: var(--ss-primary-green, #4fb48b);
-  color: var(--mj-on-brand, #06231a);
+  background: var(--ss-primary-green);
+  color: var(--mj-on-brand);
 }
 
 html[data-theme="dark"] .ss-action-btn--secondary,
 html.dark .ss-action-btn--secondary,
 html[data-theme="dark"] .ss-action-btn--ghost,
 html.dark .ss-action-btn--ghost {
-  color: var(--ss-deep-green, #8fd4b0);
+  color: var(--ss-deep-green);
   border-color: color-mix(in srgb, var(--ss-primary-green) 28%, var(--ss-border));
 }
 
@@ -335,7 +335,7 @@ html.dark .ss-action-btn--ghost {
 .sidebar-section-title {
   font-size: 0.88rem;
   font-weight: 800;
-  color: var(--ss-soft-gold, var(--mj-accent, #b08a3e));
+  color: var(--ss-soft-gold, var(--mj-accent));
   opacity: 1;
 }
 
@@ -363,12 +363,12 @@ html[dir="rtl"] .sidebar-item.active {
 
 html[data-theme="dark"] .sidebar-title,
 html.dark .sidebar-title {
-  color: var(--ss-deep-green, #8fd4b0);
+  color: var(--ss-deep-green);
 }
 
 html[data-theme="dark"] .sidebar-item,
 html.dark .sidebar-item {
-  color: var(--mj-ink, #f8fafc);
+  color: var(--mj-ink);
 }
 
 html[data-theme="dark"] .sidebar-item.active,
@@ -486,7 +486,7 @@ html.dark .sidebar-item.active {
 /* ── ليلي: نصوص/أزرار شائعة ── */
 html[data-theme="dark"] .mj-btn--ghost,
 html.dark .mj-btn--ghost {
-  color: var(--ss-deep-green, #8fd4b0);
+  color: var(--ss-deep-green);
   border-color: color-mix(in srgb, var(--ss-primary-green) 35%, var(--ss-border));
 }
 
@@ -494,12 +494,12 @@ html[data-theme="dark"] .card__label,
 html.dark .card__label,
 html[data-theme="dark"] .hub-card__title,
 html.dark .hub-card__title {
-  color: var(--mj-ink, #f8fafc);
+  color: var(--mj-ink);
 }
 
 html[data-theme="dark"] .card__subtitle,
 html.dark .card__subtitle {
-  color: var(--ss-muted-text, #c5d0cb);
+  color: var(--ss-muted-text);
 }
 
 /* ── شبكة الميزات (الرئيسية) ── */
@@ -712,9 +712,9 @@ html[data-audio-dock="1"] .floating-back-btn {
 .qa-skeleton-line {
   background: linear-gradient(
     90deg,
-    color-mix(in srgb, var(--ss-border, #d9d2c6) 55%, var(--ss-card-bg, var(--mj-white))) 0%,
+    color-mix(in srgb, var(--ss-border) 55%, var(--ss-card-bg, var(--mj-white))) 0%,
     color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 6%, var(--ss-card-bg, var(--mj-white))) 50%,
-    color-mix(in srgb, var(--ss-border, #d9d2c6) 55%, var(--ss-card-bg, var(--mj-white))) 100%
+    color-mix(in srgb, var(--ss-border) 55%, var(--ss-card-bg, var(--mj-white))) 100%
   );
   background-size: 180% 100%;
   animation: ss-skel-shimmer 1.35s ease-in-out infinite;
@@ -764,7 +764,7 @@ html[data-audio-dock="1"] .floating-back-btn {
 
 html[data-theme="dark"] .ss-state-card,
 html.dark .ss-state-card {
-  background: var(--ss-card-bg, #1b2421);
+  background: var(--ss-card-bg);
   border-color: color-mix(in srgb, var(--ss-primary-green) 22%, var(--ss-border));
 }
 
@@ -797,7 +797,7 @@ p,
 .ss-muted,
 .text-muted,
 .muted {
-  color: var(--mj-ink-2, #4A5A53) !important;
+  color: var(--mj-ink-2) !important;
   opacity: 1;
 }
 
@@ -816,7 +816,7 @@ p,
 
 .bottom-nav,
 .bottom-nav--v2 {
-  box-shadow: 0 -1px 0 color-mix(in srgb, var(--mj-ink, #122) 8%, transparent);
+  box-shadow: 0 -1px 0 color-mix(in srgb, var(--mj-ink) 8%, transparent);
 }
 
 html[data-theme="dark"] .hub-card,
@@ -827,8 +827,8 @@ html[data-theme="dark"] .isp-card,
 html.dark .isp-card,
 html[data-theme="dark"] .sect-hub__card,
 html.dark .sect-hub__card {
-  background: var(--ss-card-bg, #1b2421);
-  border-color: color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 28%, var(--ss-border, #2a3531));
+  background: var(--ss-card-bg);
+  border-color: color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 28%, var(--ss-border));
 }
 
 html[data-theme="dark"] .srch-home-form,
@@ -982,24 +982,24 @@ html.dark .search-page .search-page-form {
 }
 .home-progress-compact__pct {
   font-weight: 700;
-  color: var(--ss-deep-green, var(--mj-brand-deep, #0c4f3a));
+  color: var(--ss-deep-green, var(--mj-brand-deep));
 }
 .home-progress-compact__bar {
   height: 8px;
   border-radius: var(--sf-radius-pill);
-  background: color-mix(in srgb, var(--mj-brand, #1f6b4a) 12%, #e8ebe7);
+  background: color-mix(in srgb, var(--mj-brand) 12%, #e8ebe7);
   overflow: hidden;
 }
 .home-progress-compact__bar > span {
   display: block;
   height: 100%;
-  background: var(--mj-brand, #1f6b4a);
+  background: var(--mj-brand);
   border-radius: inherit;
 }
 .home-progress-compact__meta {
   margin: 0.4rem 0 0;
   font-size: 0.82rem;
-  color: var(--mj-muted, #5c6b63);
+  color: var(--mj-muted);
 }
 
 .hp-recent-bar {
@@ -1043,7 +1043,7 @@ html.dark .search-page .search-page-form {
   text-decoration: none;
   color: inherit;
   background: color-mix(in srgb, var(--mj-white) 80%, var(--msk-canvas-1, #f4f4f1));
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b4a) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-brand) 12%, transparent);
   overflow: hidden;
 }
 .hp-recent-chip__label {
@@ -1071,7 +1071,7 @@ html.dark .search-page .search-page-form {
 .search-empty-state,
 .kids-hub-intro {
   border-radius: var(--radius-card, var(--sf-radius-md, 20px));
-  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 16%, var(--mj-hairline, #d5ddd9));
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 16%, var(--mj-hairline));
   background: var(--sf-surface-raised, var(--mj-surface, var(--mj-white)));
   box-shadow: var(--sf-shadow-card, none);
   box-sizing: border-box;
@@ -1089,7 +1089,7 @@ html[data-theme="dark"] .search-empty-state,
 html.dark .search-empty-state,
 html[data-theme="dark"] .kids-hub-intro,
 html.dark .kids-hub-intro {
-  background: color-mix(in srgb, var(--mj-surface, #15201c) 88%, #0d1412);
+  background: color-mix(in srgb, var(--mj-surface) 88%, #0d1412);
   border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, rgba(255, 255, 255, 0.1));
   box-shadow: var(--sf-shadow-elevated);
 }
@@ -1107,7 +1107,7 @@ html.dark .kids-hub-intro {
 
 .scroll-to-top,
 .floating-back-btn--top {
-  border-color: color-mix(in srgb, var(--mj-brand-deep, #155a42) 35%, transparent) !important;
+  border-color: color-mix(in srgb, var(--mj-brand-deep) 35%, transparent) !important;
 }
 
 .assistant-fab {

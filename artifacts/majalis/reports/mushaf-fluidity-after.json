@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-03T17:01:57.260Z",
+  "capturedAt": "2026-10-03T17:21:32.818Z",
   "phase": "AFTER",
   "topDelays": [
     {
@@ -51,16 +51,16 @@
       "class": "FIXABLE_IN_REPOSITORY"
     },
     {
-      "id": "SELECTION_GETCLIENTRECTS",
-      "severity": 2,
-      "evidence": "AyahSelectionOverlay measure path",
-      "class": "PARTIAL"
-    },
-    {
       "id": "NEIGHBOR_EPOCH_RERENDER",
       "severity": 1,
       "evidence": "setNeighborEpoch after prefetch completes",
       "class": "FIXABLE_IN_REPOSITORY"
+    },
+    {
+      "id": "SELECTION_GETCLIENTRECTS",
+      "severity": 1,
+      "evidence": "AyahSelectionOverlay single useMushafOverlayKeys + band dedupe",
+      "class": "PARTIAL"
     }
   ],
   "metrics": {
@@ -78,7 +78,7 @@
     "telemetryVisualTransitionEnd": true,
     "telemetryProductUnlock": true,
     "fontCacheHitSyncUsP50": 0.006,
-    "fontCacheHitSyncUsP95": 0.015,
+    "fontCacheHitSyncUsP95": 0.017,
     "fontCacheHitSamples": 80,
     "estimatedTurnRenderHotspots": 0
   }

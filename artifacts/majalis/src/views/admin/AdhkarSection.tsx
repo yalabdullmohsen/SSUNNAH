@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   ADHKAR_CATEGORIES,
   type AdhkarItem,
@@ -112,9 +113,9 @@ export function AdhkarSection() {
         onSearchChange={setSearch}
         searchPlaceholder="ابحث في الأذكار..."
         actions={
-          <button type="button" onClick={openAdd} className="adh-add-btn">
+          <Button variant="secondary" size="small" type="button" onClick={openAdd} className="adh-add-btn">
             + إضافة ذكر
-          </button>
+          </Button>
         }
         filters={
           <select
@@ -143,14 +144,14 @@ export function AdhkarSection() {
               </div>
               <div className="adh-item__ftr">
                 <div className="adh-btns">
-                  <button type="button" className="adh-btn" onClick={() => setPreview(item)}>معاينة</button>
-                  <button type="button" className="adh-btn" onClick={() => openEdit(item)}>تعديل</button>
-                  <button type="button" className="adh-btn" onClick={() => togglePublish(item)}>
+                  <Button variant="secondary" size="small" type="button" className="adh-btn" onClick={() => setPreview(item)}>معاينة</Button>
+                  <Button variant="secondary" size="small" type="button" className="adh-btn" onClick={() => openEdit(item)}>تعديل</Button>
+                  <Button variant="secondary" size="small" type="button" className="adh-btn" onClick={() => togglePublish(item)}>
                     {hidden ? "نشر" : "إخفاء"}
-                  </button>
-                  <button type="button" className="adh-btn adh-btn--del" onClick={() => handleDelete(item)}>
+                  </Button>
+                  <Button variant="secondary" size="small" type="button" className="adh-btn adh-btn--del" onClick={() => handleDelete(item)}>
                     حذف
-                  </button>
+                  </Button>
                 </div>
                 <span className="adh-item__meta">
                   {categoryName(item.categoryId)} · ×{item.count}
@@ -203,7 +204,7 @@ export function AdhkarSection() {
               {categoryName(preview.categoryId)} · ×{preview.count}
               {preview.source ? ` · ${preview.source}` : ""}
             </p>
-            <button type="button" onClick={() => setPreview(null)} className="adh-btn adh-btn--mt">إغلاق</button>
+            <Button variant="secondary" size="small" type="button" onClick={() => setPreview(null)} className="adh-btn adh-btn--mt">إغلاق</Button>
           </div>
         </div>
       )}

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { adminGetAllRulings, adminUpsertRuling, adminDeleteRuling } from "@/lib/platform-supabase";
 import { getAllRulingsForAdmin } from "@/lib/rulings-service";
@@ -120,7 +121,7 @@ export function RulingsSection() {
       <div className="rls-header">
         <h2 className="rls-title">موسوعة الأحكام ({stats.total})</h2>
         <div className="rls-btn-group">
-          <button
+          <Button variant="secondary" size="small"
             type="button"
             onClick={() => {
               setForm({ ...EMPTY });
@@ -129,7 +130,7 @@ export function RulingsSection() {
             className="rls-add-btn"
           >
             + إضافة حكم
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -156,22 +157,22 @@ export function RulingsSection() {
         <h3 className="rls-import-h3">استيراد جماعي (CSV / JSON / Markdown)</h3>
         <div className="rls-fmt-row">
           {(["csv", "json", "markdown"] as const).map((f) => (
-            <button
+            <Button variant="secondary" size="small"
               key={f}
               type="button"
               onClick={() => setImportFormat(f)}
               className={`rls-fmt-btn${importFormat === f ? " rls-fmt-btn--active" : ""}`}
             >
               {f.toUpperCase()}
-            </button>
+            </Button>
           ))}
-          <button
+          <Button variant="secondary" size="small"
             type="button"
             onClick={() => setImportText(RULINGS_CSV_TEMPLATE)}
             className="rls-tmpl-btn"
           >
             تحميل قالب CSV
-          </button>
+          </Button>
         </div>
         <textarea
           value={importText}
@@ -180,9 +181,9 @@ export function RulingsSection() {
           placeholder="الصق محتوى الاستيراد هنا..."
           className="adm-textarea rls-textarea--mb"
         />
-        <button type="button" onClick={handleImport} className="rls-import-btn">
+        <Button variant="secondary" size="small" type="button" onClick={handleImport} className="rls-import-btn">
           استيراد
-        </button>
+        </Button>
         {importResult && <p className="rls-import-result">{importResult}</p>}
       </div>
 
@@ -212,10 +213,10 @@ export function RulingsSection() {
               {item.subcategory ? ` / ${item.subcategory}` : ""}
             </span>
             <div className="rls-item-actions">
-              <button type="button" onClick={() => { setForm({ ...item }); setOpen(true); }} className="rls-edit-btn">
+              <Button variant="secondary" size="small" type="button" onClick={() => { setForm({ ...item }); setOpen(true); }} className="rls-edit-btn">
                 تعديل
-              </button>
-              <button
+              </Button>
+              <Button variant="secondary" size="small"
                 type="button"
                 onClick={async () => {
                   if ((await confirm({ title: "تأكيد", body: "حذف؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteRuling(item.id).then(load);
@@ -223,15 +224,15 @@ export function RulingsSection() {
                 className="rls-del-btn"
               >
                 حذف
-              </button>
+              </Button>
               {item.verification_status === "pending" && (
-                <button
+                <Button variant="secondary" size="small"
                   type="button"
                   onClick={() => adminUpsertRuling({ ...item, verification_status: "approved" }).then(load)}
                   className="rls-approve-btn"
                 >
                   اعتماد
-                </button>
+                </Button>
               )}
             </div>
           </div>

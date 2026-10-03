@@ -1,4 +1,5 @@
 import { SectionIcon } from "@/components/ui/SectionIcon";
+import { Button } from "@/components/ui/button";
 import { useCallback, useEffect, useState } from "react";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { AdminShell, useAdminShell } from "@/views/admin/AdminShell";
@@ -104,9 +105,9 @@ function fmtDt(iso?: string | null) {
 
 function RunBtn({ label, busy, onClick }: { label: string; busy?: boolean; onClick: () => void }) {
   return (
-    <button type="button" onClick={onClick} disabled={busy} className="aup-run-btn">
+    <Button variant="secondary" size="small" type="button" onClick={onClick} disabled={busy} className="aup-run-btn">
       {busy ? "جاري..." : label}
-    </button>
+    </Button>
   );
 }
 
@@ -204,7 +205,7 @@ function AutonomousPlatformContent() {
           <RunBtn label="تحقق" busy={busy === "validate"} onClick={() => run("validate")} />
           <RunBtn label="مراقبة" busy={busy === "monitor"} onClick={() => run("monitor")} />
           <RunBtn label="استرداد" busy={busy === "recovery"} onClick={() => run("recovery")} />
-          <button type="button" onClick={refresh} className="aup-refresh-btn">تحديث</button>
+          <Button variant="secondary" size="small" type="button" onClick={refresh} className="aup-refresh-btn">تحديث</Button>
         </div>
       </div>
 
@@ -237,14 +238,14 @@ function AutonomousPlatformContent() {
 
       <div className="aup-tabs">
         {TABS.map((t) => (
-          <button
+          <Button variant="secondary" size="small"
             key={t.key}
             type="button"
             onClick={() => setTab(t.key)}
             className={`aup-tab${tab === t.key ? " aup-tab--active" : ""}`}
           >
             {t.label}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -354,9 +355,9 @@ function AutonomousPlatformContent() {
                     {item.payload?.title || item.payload?.text?.slice(0, 120) || "(لا عنوان)"}
                   </div>
                   <div className="aup-item-actions">
-                    <button type="button" onClick={() => reviewDecide(item.id, "approved")} className="aup-approve-btn">قبول</button>
-                    <button type="button" onClick={() => reviewDecide(item.id, "rejected")} className="aup-reject-btn">رفض</button>
-                    <button type="button" onClick={() => reviewDecide(item.id, "duplicate")} className="aup-dup-btn">مكرر</button>
+                    <Button variant="secondary" size="small" type="button" onClick={() => reviewDecide(item.id, "approved")} className="aup-approve-btn">قبول</Button>
+                    <Button variant="secondary" size="small" type="button" onClick={() => reviewDecide(item.id, "rejected")} className="aup-reject-btn">رفض</Button>
+                    <Button variant="secondary" size="small" type="button" onClick={() => reviewDecide(item.id, "duplicate")} className="aup-dup-btn">مكرر</Button>
                   </div>
                 </div>
               ))}
@@ -387,7 +388,7 @@ function AutonomousPlatformContent() {
                     {alert.message && <div className="aup-alert-msg">{alert.message}</div>}
                     <div className="aup-alert-foot">
                       <span className="aup-alert-time">{fmtDt(alert.created_at)}</span>
-                      <button type="button" onClick={() => resolveAlert(alert.id)} className="aup-resolve-btn">تم الحل</button>
+                      <Button variant="secondary" size="small" type="button" onClick={() => resolveAlert(alert.id)} className="aup-resolve-btn">تم الحل</Button>
                     </div>
                   </div>
                 );

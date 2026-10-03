@@ -1,64 +1,48 @@
-# MUSHAF_WAVE6_REPORT — Fluidity Radical Closure
+# MUSHAF_WAVE6_REPORT — Internal Closure Final
 
 | Field | Value |
 |-------|-------|
-| Status | `MUSHAF_WAVE6_COMPLETE` (repository) · `DEVICE_HOLD` |
+| Status | `MUSHAF_WAVE6_FINAL_REPO_COMPLETE` · DEVICE_HOLD |
 | Date UTC | 2026-10-03 |
-| Tip base | `a8067f664` + radical-closure delta |
-| Authority | `docs/mushaf/MUSHAF_FLUIDITY_IMPLEMENTATION_PLAN.md` |
+| Tip | `cursor/sunnah-internal-closure-final` |
 | Gate | `test:mushaf-fluidity-optimization` PASS |
 
-## Diagnosis (unchanged class)
+## Quantified bottlenecks (after this wave)
 
-`MUSHAF_HEAVY_BY_ARCHITECTURE` — three interactive QPC sheets, product+visual dual lock, font readiness, selection measure.
+| ID | Severity | Class | Status |
+|----|----------|-------|--------|
+| PRODUCT_LOCK_FONT_LAYOUT | 10 | MUSHAF_SPECIAL | KEEP_JUSTIFIED — integrity of page commit |
+| VISUAL_SETTLE_220MS | 9 | KEEP_JUSTIFIED | CSS settle matches layout-bands |
+| FONT_MISS_ON_TARGET | 8 | MUSHAF_SPECIAL | QPC face load required |
+| DOM_WORDS_X3_COMPOSITE | 7 | MUSHAF_SPECIAL | 3-sheet pager architecture |
+| DEVICE_MAIN_THREAD_UNKNOWN | 6 | EXTERNAL_BLOCKER | DEVICE_REQUIRED |
+| WORD_SYNC_FANOUT | 2 | FIXED | line-level `useMushafHighlightKeys` |
+| SELECTION_GETCLIENTRECTS | 1 | FIXED→PARTIAL | `useMushafOverlayKeys` + band dedupe |
+| BIDIRECTIONAL_NEAR_PREFETCH | 3 | FIXED | opposite idle |
+| CLEAR_CHROME / NEIGHBOR_EPOCH | ≤2 | FIXED | prior WAVE6 |
 
-## Quantified bottleneck inventory
+## Fixes this wave
 
-| ID | Severity (after) | Class | Evidence |
-|----|------------------|-------|----------|
-| PRODUCT_LOCK_FONT_LAYOUT | 10 | MUSHAF_SPECIAL | finishPageTurn waits font+layout+displayView |
-| VISUAL_SETTLE_220MS | 9 | KEEP_JUSTIFIED | SETTLE_MS=220 before go() |
-| FONT_MISS_ON_TARGET | 8 | MUSHAF_SPECIAL | ensureQpcPageFont on cache miss |
-| DOM_WORDS_X3_COMPOSITE | 7 | MUSHAF_SPECIAL | three QPC sheets during pan |
-| DEVICE_MAIN_THREAD_UNKNOWN | 6 | DEVICE_REQUIRED | FPS/long-tasks not in CI |
-| WORD_SYNC_FANOUT | **2** (was 9/4) | PARTIAL | line-level `useMushafHighlightKeys` |
-| BIDIRECTIONAL_NEAR_PREFETCH | 3 | FIXABLE→done | opposite ±1 idle |
-| CLEAR_CHROME_SETSTATE | 2 | FIXABLE→done | needsClear guard |
-| SELECTION_GETCLIENTRECTS | 2 | PARTIAL | frozen while turning |
-| NEIGHBOR_EPOCH_RERENDER | 1 | FIXABLE→done | removed |
+1. **Overlay subscription isolation** — `AyahSelectionOverlay` uses single `useMushafOverlayKeys(enabled)` instead of 3 hooks.
+2. **Selection measure dedupe** — skip `setState` when cached band arrays unchanged (audio repeat same ayah).
+3. **Line highlight path** — preserved from radical closure (`useMushafHighlightKeys` in VerseLayer).
+4. **Audio coupling** — overlay no longer independently subscribes to playing/selected/nav keys.
 
-## Safe rendering optimizations (this wave)
+## Preserved
 
-1. **Subscription reduction** — `MushafVerseLayer` / `MushafBasmalaView` subscribe once via `useMushafHighlightKeys(syncHighlights)` instead of 3×N per-word hooks.
-2. **Stable snapshot cache** — `getHighlightKeysSnapshot()` returns referentially stable object when keys unchanged (rAF-friendly emit path retained).
-3. **Lock simplification** — adjacent/turning panes keep `syncHighlights={pagerSettled && role === "current"}` → `subscribeNoop`.
-4. **Font readiness** — opposite-near idle prefetch + direction-aware ±1/±2 (prior WAVE6; preserved).
-5. **Gate update** — fluidity optimization gate asserts line-level hooks; forbids per-word hooks in VerseLayer.
+Quran text · ayah/page mapping · QPC SoT · 604 pages — **untouched**.
 
-## Non-goals preserved
+## Metrics
 
-- Quran text / page mapping / ayah mapping / line layout / QPC SoT / 604 pages — **untouched**.
-
-## Measurable before/after
-
-| Metric | BEFORE | AFTER | Delta |
-|--------|--------|-------|-------|
-| `estimatedTurnRenderHotspots` | 64 | 0 | −64 |
-| `verseWordSyncSubscriptionsPerWord` (VerseLayer) | 3 | 0 | −3 |
-| Line-level highlight subscribe | no | yes | improved |
-| `adjacentPaneSyncFrozen` | true | true | same |
-| `oppositeNearPrefetchOnIdle` | true | true | same |
-| `clearPageChromeGuarded` | true | true | same |
-| `neighborEpochRerender` | false | false | same |
-| Telemetry pointerUp / visual / unlock | true | true | same |
-
-Artifacts: `artifacts/majalis/reports/mushaf-fluidity-{before,after,delta}.json`
+| Metric | Before (program) | After |
+|--------|------------------|-------|
+| estimatedTurnRenderHotspots | 64 | **0** |
+| VerseLayer per-word sync hooks | 3 | **0** |
+| Overlay store subscriptions | 3 | **1** |
 
 ## Exit
 
 ```text
-MUSHAF_WAVE6_COMPLETE
-REPOSITORY_FIXABLE_FLUIDITY_REDUCED
-DEVICE_FPS_EVIDENCE = DEVICE_REQUIRED
-QURAN_CONTENT_UNCHANGED = true
+MUSHAF_WAVE6_FINAL_REPO_COMPLETE
+REMAINING = MUSHAF_SPECIAL | DEVICE_REQUIRED | KEEP_JUSTIFIED only
 ```
