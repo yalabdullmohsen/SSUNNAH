@@ -1,0 +1,104 @@
+name: Staging Identity Verify (read-only)
+
+# Read-only: parse Staging secret URLs for project ref. No SQL. No migrations. No writes.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  identity:
+    name: staging-identity
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment: staging
+    env:
+      STAGING_SUPABASE_URL: ${{ secrets.STAGING_SUPABASE_URL }}
+      STAGING_DATABASE_URL: ${{ secrets.STAGING_DATABASE_URL }}
+      STAGING_ANON_KEY: ${{ secrets.STAGING_ANON_KEY }}
+      STAGING_SERVICE_ROLE_KEY: ${{ secrets.STAGING_SERVICE_ROLE_KEY }}
+      PRODUCTION_SUPABASE_PROJECT_REF: ngmvmlulzacrlicuagyp
+    steps:
+      - name: Verify secret presence and isolation (no values printed)
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          import os, re, sys
+          from urllib.parse import urlparse
+
+          PROD = os.environ["PRODUCTION_SUPABASE_PROJECT_REF"]
+          required = [
+              "STAGING_SUPABASE_URL",
+              "STAGING_DATABASE_URL",
+              "STAGING_ANON_KEY",
+              "STAGING_SERVICE_ROLE_KEY",
+          ]
+          missing = [k for k in required if not os.environ.get(k)]
+          if missing:
+              print("SECRET_AVAILABILITY=FAIL")
+              print("MISSING", ",".join(missing))
+              sys.exit(1)
+          print("SECRET_AVAILABILITY=PASS")
+          print("GITHUB_ENVIRONMENT=staging")
+
+          url = os.environ["STAGING_SUPABASE_URL"].strip().strip('"').strip("'")
+          db = os.environ["STAGING_DATABASE_URL"].strip().strip('"').strip("'")
+          anon = os.environ["STAGING_ANON_KEY"]
+          service = os.environ["STAGING_SERVICE_ROLE_KEY"]
+
+          # Never print secrets/URLs/keys
+          print("STAGING_SUPABASE_URL_LEN", len(url))
+          print("STAGING_DATABASE_URL_LEN", len(db))
+          print("STAGING_ANON_KEY_LEN", len(anon))
+          print("STAGING_SERVICE_ROLE_KEY_LEN", len(service))
+
+          host = urlparse(url).hostname or ""
+          if not host.endswith(".supabase.co"):
+              print("PROJECT_IDENTITY=FAIL")
+              print("REASON=STAGING_SUPABASE_URL_HOST_NOT_SUPABASE_CO")
+              sys.exit(1)
+          ref = host.split(".")[0]
+          if not re.fullmatch(r"[a-z0-9]{10,}", ref):
+              print("PROJECT_IDENTITY=FAIL")
+              print("REASON=STAGING_REF_PARSE_INVALID")
+              sys.exit(1)
+
+          print("STAGING_PROJECT_REF", ref)
+          print("PRODUCTION_PROJECT_REF", PROD)
+
+          if ref == PROD:
+              print("STAGING_EQUALS_PRODUCTION=true")
+              print("ISOLATION=FAIL")
+              print("CLASSIFICATION=STAGING_INVALID")
+              sys.exit(2)
+          print("STAGING_EQUALS_PRODUCTION=false")
+
+          # DB URL must not reference production ref; should reference staging ref when parseable
+          if PROD in db:
+              print("DB_URL_CONTAINS_PRODUCTION_REF=true")
+              print("ISOLATION=FAIL")
+              print("CLASSIFICATION=STAGING_INVALID")
+              sys.exit(2)
+          print("DB_URL_CONTAINS_PRODUCTION_REF=false")
+
+          db_refs = set(re.findall(r"(?:postgres\.|db\.)([a-z0-9]{10,})", db))
+          print("DB_PARSED_REF_COUNT", len(db_refs))
+          if db_refs and ref not in db_refs:
+              print("DB_REF_MISMATCH_WITH_URL=true")
+              print("ISOLATION=FAIL")
+              print("CLASSIFICATION=STAGING_INVALID")
+              sys.exit(2)
+          print("DB_REF_MISMATCH_WITH_URL=false")
+
+          # Keys should look present and distinct lengths at least (not empty)
+          if anon == service:
+              print("KEY_COLLISION=ANON_EQ_SERVICE")
+              print("ISOLATION=FAIL")
+              print("CLASSIFICATION=STAGING_INVALID")
+              sys.exit(2)
+
+          print("ENVIRONMENT_ISOLATION=PASS")
+          print("PROJECT_IDENTITY=PASS")
+          print("CLASSIFICATION=STAGING_EXISTS")
+          PY
