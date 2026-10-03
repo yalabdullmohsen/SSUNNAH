@@ -225,7 +225,7 @@ html[data-ab="1"] .hus-field {
 .mj-home-primary-discovery-ph{min-height:22rem}
 .home-live-now-ph{min-height:3.25rem}
 .mj-home-lcp-ph__start-here,.home-start-here,.home-start-here--slim,.home-start-here--compact,.home-start-here-band{min-height:20rem}
-.hus{width:min(100%,40rem);margin:.55rem auto .25rem}.mj-home-lcp-ph__search .hus-field,.hus-field{min-height:52px;padding:.35rem .85rem;box-sizing:border-box}
+.hus{width:min(100%,40rem);margin:.55rem auto .25rem}.mj-home-lcp-ph__search .hus-field,.hus-field{height:52px;min-height:52px;max-height:52px;padding:.35rem .85rem;box-sizing:border-box}
 .hsh-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;min-height:14rem;list-style:none;margin:.75rem 0 0;padding:0}.hsh-step{min-height:3.5rem;box-sizing:border-box}
 @media (min-width:880px){#main-content.app-main{padding-block-end:2rem}.bottom-nav,.bottom-nav--v2{display:none}}
 @media (min-width:720px){.home-start-here,.home-start-here--slim,.home-start-here--compact,.home-start-here-band{min-height:16rem}}
