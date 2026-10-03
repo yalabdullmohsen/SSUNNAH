@@ -47,5 +47,17 @@ const arabicDb = readFileSync(resolve(majalis, "src/lib/arabic-db-search.ts"), "
 assert.doesNotMatch(arabicDb, /\.channel\(/);
 assert.match(arabicDb, /resolveArabicSearchPath|ARABIC_DB_RPC/);
 assert.match(arabicDb, /Math\.min\(lim,\s*50\)/);
+assert.match(arabicDb, /STALE_SEARCH_SUPERSEDED|searchGeneration/);
+
+// Logout clears React Query cache (ownership-sensitive)
+const auth = readFileSync(resolve(majalis, "src/components/AuthProvider.tsx"), "utf8");
+assert.match(auth, /queryClient\.clear\(\)/);
+assert.match(auth, /logout/);
+
+// Entity hooks use canonical queryKeys
+const scholars = readFileSync(resolve(majalis, "src/entities/scholar/hooks.ts"), "utf8");
+assert.match(scholars, /queryKeys\.scholars/);
+const books = readFileSync(resolve(majalis, "src/entities/book/hooks.ts"), "utf8");
+assert.match(books, /queryKeys\.books/);
 
 console.log("query-cache-contract-gate: ok");

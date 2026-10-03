@@ -8,6 +8,15 @@ import { supabase } from "@/lib/supabase";
 import { resolveArabicSearchPath } from "@/lib/arabic-search-feature-flag";
 import { recordSearchObs } from "@/lib/search-observability";
 
+/** Monotonic generation — drop stale RPC responses when a newer request started. */
+let searchGeneration = 0;
+export function __resetSearchGenerationForTests(): void {
+  searchGeneration = 0;
+}
+export function getSearchGeneration(): number {
+  return searchGeneration;
+}
+
 export type ArabicDbSearchEntity =
   | "lessons"
   | "sheikhs"
@@ -85,6 +94,7 @@ export async function searchHadithsDb(
       path: "legacy_fallback",
     };
   }
+  const gen = ++searchGeneration;
   const started = Date.now();
   const safeLim = Math.max(1, Math.min(lim, 50));
   const { data, error } = await supabase.rpc("search_hadiths", {
@@ -98,6 +108,9 @@ export async function searchHadithsDb(
     p_cursor_score: filters.cursorScore ?? null,
     p_cursor_id: filters.cursorId ?? null,
   });
+  if (gen !== searchGeneration) {
+    return { data: null, error: new Error("STALE_SEARCH_SUPERSEDED"), path: "rpc" };
+  }
   const rows = (data as unknown[]) ?? null;
   recordSearchObs(
     {
@@ -142,6 +155,7 @@ export async function searchSourcesDb(
       path: "legacy_fallback",
     };
   }
+  const gen = ++searchGeneration;
   const started = Date.now();
   const safeLim = Math.max(1, Math.min(lim, 50));
   const { data, error } = await supabase.rpc("search_sources", {
@@ -152,6 +166,9 @@ export async function searchSourcesDb(
     p_cursor_score: filters.cursorScore ?? null,
     p_cursor_id: filters.cursorId ?? null,
   });
+  if (gen !== searchGeneration) {
+    return { data: null, error: new Error("STALE_SEARCH_SUPERSEDED"), path: "rpc" };
+  }
   const rows = (data as unknown[]) ?? null;
   recordSearchObs(
     {

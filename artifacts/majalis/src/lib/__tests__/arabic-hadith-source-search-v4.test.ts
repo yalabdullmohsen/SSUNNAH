@@ -11,7 +11,9 @@ import {
   arNormalizeLite,
   keysetPage,
   rankHadithDocs,
+  rankSourceDocs,
   scoreHadithDoc,
+  scoreSourceDoc,
 } from "@/lib/arabic-search-relevance";
 
 const majalis = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
@@ -189,6 +191,20 @@ const orderDoc = [
 const ordered = rankHadithDocs(orderDoc, "باب الوضوء");
 assert.equal(ordered[0].id, "t");
 assert.ok(ordered[0].relevance_score >= ordered[1].relevance_score);
+
+// Source ranking (Phase 7)
+const sources = [
+  { id: "s1", name: "صحيح البخاري", category: "hadith", source_type: "book" },
+  { id: "s2", name: "صحيح مسلم", category: "hadith", source_type: "book" },
+  { id: "s3", name: "فتح الباري", category: "sharh", source_type: "book" },
+];
+const srcExact = rankSourceDocs(sources, "صحيح البخاري");
+assert.equal(srcExact[0].id, "s1");
+assert.equal(srcExact[0].matched_field, "name_exact");
+const srcPrefix = rankSourceDocs(sources, "صحيح");
+assert.ok(srcPrefix[0].relevance_score >= srcPrefix[1].relevance_score);
+assert.equal(scoreSourceDoc(sources[0], "   ").matched_field, "empty");
+assert.ok(existsSync(resolve(root, "docs/audit/QUERY_TO_INDEX_MATRIX.md")));
 
 // SQL security static checks (Phase 5)
 assert.match(sql, /SECURITY INVOKER/);
