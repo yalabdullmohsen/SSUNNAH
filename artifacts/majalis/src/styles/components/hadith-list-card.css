@@ -9,9 +9,9 @@
   min-width: 0;
   margin: 0;
   padding: 0.75rem 0.85rem;
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #173d35) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-brand) 12%, transparent);
   border-radius: var(--radius-card, 1rem);
-  background: var(--ss-card-bg, var(--mj-surface, #fffef9));
+  background: var(--ss-card-bg, var(--mj-surface));
   color: inherit;
   text-align: start;
   text-decoration: none;
@@ -21,7 +21,7 @@
 }
 
 .hlc--read {
-  background: color-mix(in srgb, var(--mj-brand, #173d35) 4%, var(--mj-surface, var(--mj-white)));
+  background: color-mix(in srgb, var(--mj-brand) 4%, var(--mj-surface, var(--mj-white)));
 }
 
 .hlc--active {
@@ -62,7 +62,7 @@
 .hlc__preview {
   font-size: 0.8rem;
   line-height: 1.65;
-  color: var(--mj-ink-2, #5a6b64);
+  color: var(--mj-ink-2);
   font-family: var(--font-quran, var(--font-app, serif));
   white-space: normal;
   overflow-wrap: break-word;
@@ -76,18 +76,14 @@
 
 .hlc__meta {
   font-size: 0.72rem;
-  color: var(--mj-muted, #6b7c74);
+  color: var(--mj-muted);
 }
 
 :is(html[data-theme="dark"], html.dark, html.theme-dark) .hlc {
-  background: var(--surface-elevated, #24302b);
+  background: var(--surface-elevated);
   border-color: color-mix(in srgb, var(--mj-white) 10%, transparent);
 }
 
 :is(html[data-theme="dark"], html.dark, html.theme-dark) .hlc__title {
-  color: var(--mj-ink, #e9efec);
-}
-
-:is(html[data-theme="dark"], html.dark, html.theme-dark) .hlc__preview {
-  color: var(--mj-ink-2, #b7c4be);
+  color: var(--mj-ink);
 }
