@@ -1042,6 +1042,44 @@ html[data-theme="dark"] .snr-list li { color: var(--mj-hairline) !important; }
 
 html[data-theme="dark"] .snr-related-link-label { color: var(--mj-hairline) !important; }
 
+/* ── إحصائيات وروابط الدليل (امتصاص inline) ── */
+.snr-stats-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.snr-stat-card {
+  flex: 1 1 140px;
+  background: color-mix(in srgb, var(--mj-brand-deep, var(--mj-brand)) 5%, transparent);
+  border-radius: var(--sf-radius-md, var(--elite-r-md));
+  padding: 1rem;
+  text-align: center;
+}
+
+.snr-stat-value {
+  font-size: var(--ss-type-screen-title);
+  font-weight: 700;
+  color: var(--elite-green, var(--mj-brand-deep));
+}
+
+.snr-stat-label {
+  font-size: var(--ss-type-label);
+  color: var(--elite-ink-soft, var(--mj-ink-2));
+}
+
+.snr-related-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.snr-related-row .snr-related-link {
+  flex: 1 1 160px;
+}
+
 /* ── حالة فارغة ── */
 .snr-empty {
   text-align: center;

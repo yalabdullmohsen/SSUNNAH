@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { useAdminShell } from "@/views/admin/AdminShell";
 import {
   fetchOpenPlatformDashboard,
@@ -120,7 +121,7 @@ export function OpenPlatformSection() {
           <a href="/api/v1/docs?format=html" target="_blank" rel="noopener noreferrer" className="ops-docs-link">
             التوثيق
           </a>
-          <button type="button" onClick={handleReport} className="ops-btn">إنشاء التقرير</button>
+          <Button type="button" variant="secondary" size="small" onClick={handleReport} className="ops-btn">إنشاء التقرير</Button>
         </div>
       </div>
 
@@ -162,14 +163,14 @@ export function OpenPlatformSection() {
             onChange={(e) => setNewKeyName(e.target.value)}
             className="ops-key-input"
           />
-          <button type="button" onClick={handleCreateKey} className="ops-btn">إنشاء مفتاح</button>
+          <Button type="button" variant="secondary" size="small" onClick={handleCreateKey} className="ops-btn">إنشاء مفتاح</Button>
         </Panel>
 
         <Panel title="مفاتيح API">
           {(dashboard?.keys || []).map((k) => (
             <div key={k.id} className="ops-key-row">
               <span>{k.name} ({k.key_prefix}...)</span>
-              <button type="button" className="ops-revoke-btn" onClick={() => handleRevoke(k.id)}>إلغاء</button>
+              <Button type="button" variant="ghost" size="small" className="ops-revoke-btn" onClick={() => handleRevoke(k.id)}>إلغاء</Button>
             </div>
           ))}
           {!dashboard?.keys?.length && <p className="ii-muted">لا مفاتيح بعد</p>}
@@ -183,7 +184,7 @@ export function OpenPlatformSection() {
             onChange={(e) => setNewWebhookUrl(e.target.value)}
             className="ops-key-input"
           />
-          <button type="button" onClick={handleCreateWebhook} className="ops-btn">إضافة Webhook</button>
+          <Button type="button" variant="secondary" size="small" onClick={handleCreateWebhook} className="ops-btn">إضافة Webhook</Button>
           {webhooks.map((w) => (
             <div key={w.id} className="ops-webhook-url">{w.url}</div>
           ))}

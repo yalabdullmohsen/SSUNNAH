@@ -515,48 +515,37 @@ export default function SinsAndRightsPage() {
           </div>
 
           {/* إحصائيات سريعة */}
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "2rem" }}>
+          <div className="snr-stats-row">
             {[
               { label: "موضوعاً", value: SINS_TOPICS.length },
               { label: "أسئلة عملية", value: WHAT_IF_QA.length },
             ].map((stat) => (
-              <div
-                key={stat.label}
-                style={{
-                  flex: "1 1 140px",
-                  background: "color-mix(in srgb, var(--mj-brand-deep, var(--mj-brand)) 5%, transparent)",
-                  borderRadius: "var(--elite-r-md, 12px)",
-                  padding: "1rem",
-                  textAlign: "center",
-                }}
-              >
-                <div style={{ fontSize: "var(--ss-type-screen-title)", fontWeight: 700, color: "var(--elite-green, var(--mj-brand-deep))" }}>
-                  {stat.value}
-                </div>
-                <div style={{ fontSize: "var(--ss-type-label)", color: "var(--elite-ink-soft, #5D726A)" }}>{stat.label}</div>
+              <div key={stat.label} className="snr-stat-card">
+                <div className="snr-stat-value">{stat.value}</div>
+                <div className="snr-stat-label">{stat.label}</div>
               </div>
             ))}
           </div>
 
           {/* روابط سريعة للأقسام الأخرى */}
-          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "1rem" }}>
-            <Link href="/tazkiya" className="snr-related-link" style={{ flex: "1 1 160px" }}>
+          <div className="snr-related-row">
+            <Link href="/tazkiya" className="snr-related-link">
               <span className="snr-related-link-label"><SectionIcon name="🌱" size={18} /> التزكية والتوبة</span>
               <span className="snr-mindmap-child-arrow">‹</span>
             </Link>
-            <Link href="/tawba" className="snr-related-link" style={{ flex: "1 1 160px" }}>
+            <Link href="/tawba" className="snr-related-link">
               <span className="snr-related-link-label"><SectionIcon name="📖" size={18} /> التوبة والاستغفار</span>
               <span className="snr-mindmap-child-arrow">‹</span>
             </Link>
-            <Link href="/tawhid" className="snr-related-link" style={{ flex: "1 1 160px" }}>
+            <Link href="/tawhid" className="snr-related-link">
               <span className="snr-related-link-label"><SectionIcon name="🕋" size={18} /> التوحيد والعقيدة</span>
               <span className="snr-mindmap-child-arrow">‹</span>
             </Link>
-            <Link href="/fiqh" className="snr-related-link" style={{ flex: "1 1 160px" }}>
+            <Link href="/fiqh" className="snr-related-link">
               <span className="snr-related-link-label"><SectionIcon name="⚖️" size={18} /> الأحكام الشرعية</span>
               <span className="snr-mindmap-child-arrow">‹</span>
             </Link>
-            <Link href="/akhlaq" className="snr-related-link" style={{ flex: "1 1 160px" }}>
+            <Link href="/akhlaq" className="snr-related-link">
               <span className="snr-related-link-label"><SectionIcon name="🌿" size={18} /> الأخلاق الإسلامية</span>
               <span className="snr-mindmap-child-arrow">‹</span>
             </Link>

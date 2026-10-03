@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-01T03:09:11.756Z",
+  "generatedAt": "2026-10-03T17:00:16.285Z",
   "source": "artifacts/majalis/src/AppRoutes.tsx",
   "mainTip": "4cb03081",
   "totalRoutes": 415,
@@ -217,11 +217,12 @@
       "publicFeedbackCommit": "4cb03081",
       "publicFeedbackDate": "2026-10-01",
       "publicFeedbackPhase": "ROUTE_FEEDBACK_PUBLIC",
-      "auditNote": "FINAL CLOSURE Phase2 public classification · AUTH",
+      "auditNote": "RADICAL_CLOSURE WAVE5 · account surface feedback classified",
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/account/delete",
@@ -338,7 +339,8 @@
       "priorityFeedbackEvidence": "docs/audit/ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "PRIORITY_CLOSED"
+      "publicFeedbackPhase": "PRIORITY_CLOSED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/adhkar/:slug",
@@ -2779,7 +2781,8 @@
       "priorityFeedbackEvidence": "docs/audit/ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "PRIORITY_CLOSED"
+      "publicFeedbackPhase": "PRIORITY_CLOSED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/fiqh-council",
@@ -2797,11 +2800,12 @@
       "publicFeedbackCommit": "4cb03081",
       "publicFeedbackDate": "2026-10-01",
       "publicFeedbackPhase": "ROUTE_FEEDBACK_PUBLIC",
-      "auditNote": "FINAL CLOSURE Phase2 public classification · REDIRECT_ONLY",
+      "auditNote": "RADICAL_CLOSURE WAVE5 · secondary public; stale N/A",
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/fiqh-council/:rest*",
@@ -3029,7 +3033,8 @@
       "priorityFeedbackEvidence": "docs/audit/ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "PRIORITY_CLOSED"
+      "publicFeedbackPhase": "PRIORITY_CLOSED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/hadith-science",
@@ -4446,7 +4451,8 @@
       "priorityFeedbackEvidence": "docs/audit/ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "PRIORITY_CLOSED"
+      "publicFeedbackPhase": "PRIORITY_CLOSED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/lessons/:id",
@@ -4464,11 +4470,12 @@
       "publicFeedbackCommit": "4cb03081",
       "publicFeedbackDate": "2026-10-01",
       "publicFeedbackPhase": "ROUTE_FEEDBACK_PUBLIC",
-      "auditNote": "FINAL CLOSURE Phase2 public classification · PUBLIC_DETAIL",
+      "auditNote": "RADICAL_CLOSURE WAVE5 · PUBLIC_DETAIL feedback COMPLETE core; stale N/A",
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/lessons/archive",
@@ -4642,7 +4649,8 @@
       "priorityFeedbackEvidence": "docs/audit/ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "PRIORITY_CLOSED"
+      "publicFeedbackPhase": "PRIORITY_CLOSED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/madhahib",
@@ -5312,7 +5320,8 @@
       "priorityFeedbackEvidence": "docs/audit/ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "PRIORITY_CLOSED"
+      "publicFeedbackPhase": "PRIORITY_CLOSED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/mushaf-v2-preview",
@@ -5407,7 +5416,8 @@
       "priorityFeedbackEvidence": "docs/audit/ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "PRIORITY_CLOSED"
+      "publicFeedbackPhase": "PRIORITY_CLOSED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/mushaf/page",
@@ -5524,7 +5534,8 @@
       "priorityFeedbackEvidence": "docs/audit/ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "PRIORITY_CLOSED"
+      "publicFeedbackPhase": "PRIORITY_CLOSED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/my-submissions",
@@ -5779,7 +5790,7 @@
       "rtl": "COMPLETE",
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
-      "auditNote": "FINAL CLOSURE Phase2 public classification · REDIRECT_ONLY",
+      "auditNote": "RADICAL_CLOSURE WAVE5 · REDIRECT_ONLY shell → /prayer-times (PRIORITY_CLOSED target)",
       "routeClass": "REDIRECT_ONLY",
       "publicFeedbackTestRef": "closure-route-feedback-public-gate.test.ts",
       "publicFeedbackCommit": "4cb03081",
@@ -5788,7 +5799,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "REDIRECT_ONLY"
     },
     {
       "route": "/prayer-countdown",
@@ -5862,7 +5874,8 @@
       "priorityFeedbackEvidence": "docs/audit/ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "PRIORITY_CLOSED"
+      "publicFeedbackPhase": "PRIORITY_CLOSED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/privacy",
@@ -6527,7 +6540,8 @@
       "priorityFeedbackEvidence": "docs/audit/ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "PRIORITY_CLOSED"
+      "publicFeedbackPhase": "PRIORITY_CLOSED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/quran-hub/numbers",
@@ -7260,7 +7274,8 @@
       "priorityFeedbackEvidence": "docs/audit/ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "PRIORITY_CLOSED"
+      "publicFeedbackPhase": "PRIORITY_CLOSED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/research",
@@ -7709,7 +7724,8 @@
       "priorityFeedbackEvidence": "docs/audit/ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "PRIORITY_CLOSED"
+      "publicFeedbackPhase": "PRIORITY_CLOSED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/search/:q",
@@ -7722,7 +7738,7 @@
       "rtl": "COMPLETE",
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
-      "auditNote": "FINAL CLOSURE Phase2 public classification · PUBLIC_DETAIL",
+      "auditNote": "RADICAL_CLOSURE WAVE5 · detail inherits /search Feedback V2; stale N/A (query surface)",
       "routeClass": "PUBLIC_DETAIL",
       "publicFeedbackTestRef": "closure-route-feedback-public-gate.test.ts",
       "publicFeedbackCommit": "4cb03081",
@@ -7731,7 +7747,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/sections",
@@ -7805,7 +7822,8 @@
       "priorityFeedbackEvidence": "docs/audit/ROUTE_FEEDBACK_PRIORITY_EVIDENCE.json",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "PRIORITY_CLOSED"
+      "publicFeedbackPhase": "PRIORITY_CLOSED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/shamael",
@@ -9208,5 +9226,7 @@
   "priorityFeedbackPhase": "ROUTE_FEEDBACK_PRIORITY",
   "priorityFeedbackNote": "Priority 14 routes closed with evidence packs; COMPLETE forbidden without evidence gate.",
   "publicFeedbackPhase": "ROUTE_FEEDBACK_PUBLIC",
-  "publicFeedbackNote": "All public routes classified with evidence defaults; COMPLETE gated."
+  "publicFeedbackNote": "All public routes classified with evidence defaults; COMPLETE gated.",
+  "radicalClosureNote": "2026-10-03: priority stale field hygiene — NOT_APPLICABLE where no stale cache UI",
+  "radicalClosureWave5": "2026-10-03"
 }

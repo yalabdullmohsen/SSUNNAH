@@ -9,11 +9,7 @@ import type { QpcWord } from "@/lib/quran-data/qpc-page-data";
 import { BASMALA_QPC_WORDS } from "@/lib/quran-data/basmala-qpc-words";
 import { displaySurahName } from "@/lib/quran-display";
 import { toArabicDigits } from "@/lib/utils";
-import {
-  useMushafAyahWordPlaying,
-  useMushafAyahWordSearchHighlight,
-  useMushafAyahWordSelected,
-} from "@/features/mushaf-shared/mushaf-ayah-sync-store";
+import { useMushafHighlightKeys } from "@/features/mushaf-shared/mushaf-ayah-sync-store";
 import { MushafAyahMarker } from "./MushafAyahMarker";
 
 type LineProps = {
@@ -75,7 +71,9 @@ const VerseWord = memo(function VerseWord({
   movePress,
   endPress,
   clearPress,
-  syncHighlights = true,
+  selected = false,
+  playing = false,
+  searchHit = false,
 }: {
   word: QpcWord;
   onSelectVerse?: (verseKey: string) => void;
@@ -83,11 +81,11 @@ const VerseWord = memo(function VerseWord({
   movePress: (e: ReactPointerEvent<HTMLElement>) => void;
   endPress: (verseKey: string) => void;
   clearPress: () => void;
-  syncHighlights?: boolean;
+  /** تمييز من اشتراك السطر الواحد — لا hooks لكل كلمة */
+  selected?: boolean;
+  playing?: boolean;
+  searchHit?: boolean;
 }) {
-  const selected = useMushafAyahWordSelected(word.verseKey, syncHighlights);
-  const playing = useMushafAyahWordPlaying(word.verseKey, syncHighlights);
-  const searchHit = useMushafAyahWordSearchHighlight(word.verseKey, syncHighlights);
   const isEnd = word.charType === "end";
   const state = [
     selected ? "is-selected" : "",
@@ -204,6 +202,8 @@ export const MushafVerseLayer = memo(function MushafVerseLayer({
   syncHighlights = true,
 }: LineProps) {
   const pressRef = useRef<PressState | null>(null);
+  /** اشتراك واحد لكل سطر بدل 3×N كلمات */
+  const highlightKeys = useMushafHighlightKeys(syncHighlights);
 
   const clearPress = () => {
     const cur = pressRef.current;
@@ -278,7 +278,9 @@ export const MushafVerseLayer = memo(function MushafVerseLayer({
           movePress={movePress}
           endPress={endPress}
           clearPress={clearPress}
-          syncHighlights={syncHighlights}
+          selected={highlightKeys.selected === w.verseKey}
+          playing={highlightKeys.playing === w.verseKey}
+          searchHit={highlightKeys.search === w.verseKey}
         />
       ))}
     </div>
@@ -303,9 +305,10 @@ export const MushafBasmalaView = memo(function MushafBasmalaView({
   const qpc = words && words.length > 0 ? words : BASMALA_QPC_WORDS;
   const body = qpc.filter((w) => w.charType !== "end");
   const end = numbered ? qpc.find((w) => w.charType === "end") : null;
-  const selected = useMushafAyahWordSelected("1:1", syncHighlights);
-  const playing = useMushafAyahWordPlaying("1:1", syncHighlights);
-  const searchHit = useMushafAyahWordSearchHighlight("1:1", syncHighlights);
+  const highlightKeys = useMushafHighlightKeys(syncHighlights);
+  const selected = highlightKeys.selected === "1:1";
+  const playing = highlightKeys.playing === "1:1";
+  const searchHit = highlightKeys.search === "1:1";
   const state = [selected ? "is-selected" : "", playing ? "is-playing" : "", searchHit ? "is-search-hit" : ""].filter(Boolean).join(" ");
   const pressRef = useRef<{ x: number; y: number; longTimer: number; longFired: boolean } | null>(
     null,

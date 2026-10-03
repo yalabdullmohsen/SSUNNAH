@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Ban, CheckCircle2, XCircle } from "lucide-react";
 import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { adminFetch } from "@/lib/admin-api";
 import registry from "../../../data/feature-registry.json";
@@ -153,25 +154,29 @@ export default function FeatureStatusPage() {
           </p>
         </div>
         <div className="admin-feature-status__actions">
-          <button type="button" className="ui-card-btn" onClick={load} disabled={loading}>
+          <Button type="button" variant="secondary" size="small" className="ui-card-btn" onClick={load} disabled={loading}>
             {loading ? "جاري الفحص…" : "إعادة الفحص"}
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
+            variant="primary"
+            size="small"
             className="ui-card-btn ui-card-btn--primary"
             onClick={runBootstrap}
             disabled={activating}
           >
             {activating ? "جاري التهيئة…" : "Self Bootstrap كامل"}
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
+            variant="secondary"
+            size="small"
             className="ui-card-btn"
             onClick={() => runActivation("migrate")}
             disabled={activating}
           >
             Activation Migrations فقط
-          </button>
+          </Button>
           <Link href="/admin" className="ui-card-btn ui-card-btn--ghost">
             لوحة التحكم
           </Link>

@@ -32,7 +32,11 @@ const page = readPkg("src/features/mushaf-reader/MushafPage.tsx");
 assert.match(sync, /subscribeNoop/);
 assert.match(sync, /enabled \? subscribe : subscribeNoop/);
 assert.match(verse, /syncHighlights/);
-assert.match(verse, /useMushafAyahWordSelected\(word\.verseKey,\s*syncHighlights\)/);
+assert.match(verse, /useMushafHighlightKeys\(syncHighlights\)/);
+assert.doesNotMatch(verse, /useMushafAyahWordSelected\(/);
+assert.doesNotMatch(verse, /useMushafAyahWordPlaying\(/);
+assert.doesNotMatch(verse, /useMushafAyahWordSearchHighlight\(/);
+assert.match(sync, /useMushafHighlightKeys/);
 assert.match(page, /syncHighlights/);
 assert.match(reader, /syncHighlights=\{pagerSettled && role === "current"\}/);
 

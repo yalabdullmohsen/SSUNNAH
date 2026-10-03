@@ -1,11 +1,11 @@
 {
-  "capturedAt": "2026-09-30T19:26:32.847Z",
+  "capturedAt": "2026-10-03T17:01:57.261Z",
   "delta": [
     {
       "metric": "verseWordSyncSubscriptionsPerWord",
       "before": 6,
-      "after": 6,
-      "delta": "0"
+      "after": 0,
+      "delta": "-6"
     },
     {
       "metric": "adjacentPaneSyncFrozen",
@@ -82,14 +82,14 @@
     {
       "metric": "fontCacheHitSyncUsP50",
       "before": 0.006,
-      "after": 0.014,
-      "delta": "+0.008"
+      "after": 0.006,
+      "delta": "0"
     },
     {
       "metric": "fontCacheHitSyncUsP95",
       "before": 0.015,
-      "after": 0.062,
-      "delta": "+0.047"
+      "after": 0.015,
+      "delta": "0"
     },
     {
       "metric": "fontCacheHitSamples",

@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-09-30T19:26:32.846Z",
+  "capturedAt": "2026-10-03T17:01:57.260Z",
   "phase": "AFTER",
   "topDelays": [
     {
@@ -33,16 +33,16 @@
       "class": "DEVICE_REQUIRED"
     },
     {
-      "id": "WORD_SYNC_FANOUT_X3_SHEETS",
-      "severity": 4,
-      "evidence": "adjacent/turning panes use noop sync subscribe",
-      "class": "PARTIAL"
-    },
-    {
       "id": "BIDIRECTIONAL_NEAR_PREFETCH_CONTENTION",
       "severity": 3,
       "evidence": "opposite ±1 deferred to idle",
       "class": "FIXABLE_IN_REPOSITORY"
+    },
+    {
+      "id": "WORD_SYNC_FANOUT_X3_SHEETS",
+      "severity": 2,
+      "evidence": "line-level useMushafHighlightKeys (1 subscribe / line)",
+      "class": "PARTIAL"
     },
     {
       "id": "CLEAR_CHROME_SETSTATE_STORM",
@@ -64,7 +64,7 @@
     }
   ],
   "metrics": {
-    "verseWordSyncSubscriptionsPerWord": 6,
+    "verseWordSyncSubscriptionsPerWord": 0,
     "adjacentPaneSyncFrozen": true,
     "oppositeNearPrefetchOnIdle": true,
     "directionAwareNearOrder": true,
@@ -77,8 +77,8 @@
     "telemetryPointerUp": true,
     "telemetryVisualTransitionEnd": true,
     "telemetryProductUnlock": true,
-    "fontCacheHitSyncUsP50": 0.014,
-    "fontCacheHitSyncUsP95": 0.062,
+    "fontCacheHitSyncUsP50": 0.006,
+    "fontCacheHitSyncUsP95": 0.015,
     "fontCacheHitSamples": 80,
     "estimatedTurnRenderHotspots": 0
   }

@@ -13,10 +13,23 @@ let searchHighlightVerseKey: string | null = null;
 
 const listeners = new Set<SyncListener>();
 
-function emit(): void {
+/** تجميع إشعارات التلاوة/التحديد في إطار رسم واحد — يقلل عواصف setState أثناء الصوت */
+let emitRaf: number | null = null;
+
+function flushEmit(): void {
+  emitRaf = null;
   for (const fn of listeners) {
     fn();
   }
+}
+
+function emit(): void {
+  if (typeof window === "undefined" || typeof window.requestAnimationFrame !== "function") {
+    flushEmit();
+    return;
+  }
+  if (emitRaf != null) return;
+  emitRaf = window.requestAnimationFrame(flushEmit);
 }
 
 /** توافق خلفي: selected = يدوي، playing = صوت */
@@ -67,6 +80,49 @@ function subscribe(listener: SyncListener): () => void {
 /** لا اشتراك — ألواح غير مستقرة/غير حالية أثناء التقليب (يمنع fan-out ×3) */
 function subscribeNoop(_listener: SyncListener): () => void {
   return () => undefined;
+}
+
+/**
+ * لقطة مفاتيح التمييز الثلاثة في اشتراك واحد — لتقليل useSyncExternalStore لكل كلمة.
+ * WAVE6+/radical: سطر واحد يشترك بدل 3×N كلمات.
+ */
+export type MushafHighlightKeysSnapshot = {
+  selected: string | null;
+  playing: string | null;
+  search: string | null;
+};
+
+const EMPTY_HIGHLIGHT_KEYS: MushafHighlightKeysSnapshot = {
+  selected: null,
+  playing: null,
+  search: null,
+};
+
+/** لقطة ثابتة المرجع طالما المفاتيح لم تتغير — شرط useSyncExternalStore */
+let cachedHighlightKeys: MushafHighlightKeysSnapshot = EMPTY_HIGHLIGHT_KEYS;
+
+function getHighlightKeysSnapshot(): MushafHighlightKeysSnapshot {
+  if (
+    cachedHighlightKeys.selected === manuallySelectedVerseKey &&
+    cachedHighlightKeys.playing === audioHighlightedVerseKey &&
+    cachedHighlightKeys.search === searchHighlightVerseKey
+  ) {
+    return cachedHighlightKeys;
+  }
+  cachedHighlightKeys = {
+    selected: manuallySelectedVerseKey,
+    playing: audioHighlightedVerseKey,
+    search: searchHighlightVerseKey,
+  };
+  return cachedHighlightKeys;
+}
+
+export function useMushafHighlightKeys(enabled = true): MushafHighlightKeysSnapshot {
+  return useSyncExternalStore(
+    enabled ? subscribe : subscribeNoop,
+    () => (enabled ? getHighlightKeysSnapshot() : EMPTY_HIGHLIGHT_KEYS),
+    () => EMPTY_HIGHLIGHT_KEYS,
+  );
 }
 
 /**
@@ -125,5 +181,10 @@ export function resetMushafAyahSyncStoreForTests(): void {
   audioHighlightedVerseKey = null;
   navigationHighlightedVerseKey = null;
   searchHighlightVerseKey = null;
+  cachedHighlightKeys = EMPTY_HIGHLIGHT_KEYS;
+  if (emitRaf != null && typeof window !== "undefined" && typeof window.cancelAnimationFrame === "function") {
+    window.cancelAnimationFrame(emitRaf);
+  }
+  emitRaf = null;
   listeners.clear();
 }

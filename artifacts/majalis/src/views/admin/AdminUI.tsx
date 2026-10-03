@@ -1,5 +1,6 @@
 import { Component, type ErrorInfo, type ReactNode } from "react";
 import { buildErrorReport, createErrorId, logClientError } from "@/lib/error-report";
+import { Button } from "@/components/ui/button";
 
 /* ─── شارة الحالة الموحّدة ──────────────────────────────────────────────
    توحّد عرض حالة عناصر المحتوى عبر كل الأقسام:
@@ -82,7 +83,9 @@ export class AdminSectionBoundary extends Component<BoundaryProps, BoundaryState
           حدث خلل أثناء تحميل القسم. يمكنك إعادة المحاولة أو الانتقال لقسم آخر.
           {this.state.errorId && <><br />رقم التتبع: <code>{this.state.errorId}</code></>}
         </p>
-        <button type="button" onClick={this.reset}>إعادة المحاولة</button>
+        <Button type="button" variant="secondary" onClick={this.reset}>
+          إعادة المحاولة
+        </Button>
       </div>
     );
   }
