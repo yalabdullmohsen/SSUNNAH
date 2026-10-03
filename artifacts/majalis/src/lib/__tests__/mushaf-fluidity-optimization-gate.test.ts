@@ -37,6 +37,12 @@ assert.doesNotMatch(verse, /useMushafAyahWordSelected\(/);
 assert.doesNotMatch(verse, /useMushafAyahWordPlaying\(/);
 assert.doesNotMatch(verse, /useMushafAyahWordSearchHighlight\(/);
 assert.match(sync, /useMushafHighlightKeys/);
+assert.match(sync, /useMushafOverlayKeys/);
+const overlay = readPkg("src/features/mushaf-reader/AyahSelectionOverlay.tsx");
+assert.match(overlay, /useMushafOverlayKeys\(enabled\)/);
+assert.doesNotMatch(overlay, /useMushafAyahSelectedKey\(/);
+assert.doesNotMatch(overlay, /useMushafAyahPlayingKey\(/);
+assert.doesNotMatch(overlay, /useMushafAyahNavigationKey\(/);
 assert.match(page, /syncHighlights/);
 assert.match(reader, /syncHighlights=\{pagerSettled && role === "current"\}/);
 

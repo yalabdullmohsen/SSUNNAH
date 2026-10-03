@@ -467,9 +467,9 @@ html[data-theme="dark"] .navbar-mobile-login,
 html.dark .navbar-mobile-login,
 html[data-theme="dark"] .navbar-menu-btn--drawer,
 html.dark .navbar-menu-btn--drawer {
-  background: var(--mj-surface-2, #222d29) !important;
-  color: var(--mj-ink, #f8fafc) !important;
-  border-color: var(--mj-hairline, #35443f) !important;
+  background: var(--mj-surface-2) !important;
+  color: var(--mj-ink) !important;
+  border-color: var(--mj-hairline) !important;
 }
 .navbar-menu-btn:active,
 .navbar-theme-toggle:active,
@@ -849,8 +849,8 @@ html.dark .navbar-menu-btn--drawer {
   background: color-mix(in srgb, var(--color-primary) 5%, transparent);
 }
 .bottom-nav--v2 .bottom-nav__tab.is-active {
-  color: var(--color-primary-dark, var(--mj-brand-deep, #123f2e));
-  background: var(--color-active-tab-bg, color-mix(in srgb, var(--mj-brand-deep, #123f2e) 7%, transparent));
+  color: var(--color-primary-dark, var(--mj-brand-deep));
+  background: var(--color-active-tab-bg, color-mix(in srgb, var(--mj-brand-deep) 7%, transparent));
   border-radius: var(--radius-nav, var(--mj-r-md, 20px));
 }
 .bottom-nav--v2 .bottom-nav__tab-icon {
@@ -1047,8 +1047,8 @@ html.dark .top-section-bar {
 
   .bottom-nav--v2 .bottom-nav__tab.is-active,
   .bottom-nav .bottom-nav__tab.is-active {
-    color: var(--color-primary-dark, var(--mj-brand-deep, #123f2e)) !important;
-    background: var(--color-active-tab-bg, color-mix(in srgb, var(--mj-brand-deep, #123f2e) 7%, transparent)) !important;
+    color: var(--color-primary-dark, var(--mj-brand-deep)) !important;
+    background: var(--color-active-tab-bg, color-mix(in srgb, var(--mj-brand-deep) 7%, transparent)) !important;
     font-weight: 600 !important;
   }
 
@@ -1295,7 +1295,7 @@ html.dark .top-section-bar__tab.is-active {
   left: auto;
   inset-inline-start: auto;
   inset-inline-end: auto;
-  background: color-mix(in srgb, var(--mj-surface, var(--mj-white)) 92%, var(--mj-brand-soft, #e2efe8));
+  background: color-mix(in srgb, var(--mj-surface, var(--mj-white)) 92%, var(--mj-brand-soft));
   color: var(--mj-brand-deep, var(--mj-brand-deep));
   border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 28%, transparent);
   opacity: 1;

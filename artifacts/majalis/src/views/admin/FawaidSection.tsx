@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { adminGetAllFawaid, moderateFawaid, adminDeleteFawaid, adminUpsertFawaid } from "@/lib/supabase";
 import { SkeletonCardGrid } from "@/components/ui-common";
@@ -71,7 +72,7 @@ export function FawaidSection() {
             importRow={(row) => adminUpsertFawaid({ status: "approved", ...row })}
             onDone={load}
           />
-          <button type="button" onClick={openAdd} className="faw-add-btn">+ إضافة فائدة</button>
+          <Button variant="secondary" size="small" type="button" onClick={openAdd} className="faw-add-btn">+ إضافة فائدة</Button>
         </div>
       </div>
 
@@ -79,14 +80,14 @@ export function FawaidSection() {
 
       <div className="faw-filter-row">
         {FILTERS.map(([v, l]) => (
-          <button
+          <Button variant="secondary" size="small"
             type="button"
             key={v}
             onClick={() => setFilter(v)}
             className={`faw-filter-btn${filter === v ? " faw-filter-btn--active" : ""}`}
           >
             {l}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -108,22 +109,22 @@ export function FawaidSection() {
                 <div className="faw-card__footer">
                   <div className="faw-card__actions">
                     {item.status !== "approved" && (
-                      <button type="button" onClick={() => moderate(item.id, "approved")} className="faw-approve-btn">
+                      <Button variant="secondary" size="small" type="button" onClick={() => moderate(item.id, "approved")} className="faw-approve-btn">
                         قبول
-                      </button>
+                      </Button>
                     )}
                     {item.status !== "rejected" && (
-                      <button type="button" onClick={() => moderate(item.id, "rejected")} className="faw-reject-btn">
+                      <Button variant="secondary" size="small" type="button" onClick={() => moderate(item.id, "rejected")} className="faw-reject-btn">
                         رفض
-                      </button>
+                      </Button>
                     )}
                     {item.status === "approved" && (
-                      <button type="button" onClick={() => moderate(item.id, "pending")} className="faw-pending-btn">
+                      <Button variant="secondary" size="small" type="button" onClick={() => moderate(item.id, "pending")} className="faw-pending-btn">
                         إعادة للانتظار
-                      </button>
+                      </Button>
                     )}
-                    <button type="button" onClick={() => openEdit(item)} className="faw-edit-btn">تعديل</button>
-                    <button type="button" onClick={() => handleDelete(item.id)} className="faw-del-btn">حذف</button>
+                    <Button variant="secondary" size="small" type="button" onClick={() => openEdit(item)} className="faw-edit-btn">تعديل</Button>
+                    <Button variant="secondary" size="small" type="button" onClick={() => handleDelete(item.id)} className="faw-del-btn">حذف</Button>
                   </div>
                   <div className="faw-card__meta">
                     {item.author_name && <span>{item.author_name} · </span>}

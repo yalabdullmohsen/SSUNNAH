@@ -1,10 +1,6 @@
 import { memo, useLayoutEffect, useRef, useState } from "react";
 import { clearTextMeasureCache, getCachedTextBands, type TextBand } from "@/lib/text-layout-geometry";
-import {
-  useMushafAyahNavigationKey,
-  useMushafAyahPlayingKey,
-  useMushafAyahSelectedKey,
-} from "@/features/mushaf-shared/mushaf-ayah-sync-store";
+import { useMushafOverlayKeys } from "@/features/mushaf-shared/mushaf-ayah-sync-store";
 import { mushafTurnInc } from "./mushaf-turn-telemetry";
 
 type Props = {
@@ -74,13 +70,20 @@ export const AyahSelectionOverlay = memo(function AyahSelectionOverlay({
   container,
   enabled = true,
 }: Props) {
-  const selectedKey = useMushafAyahSelectedKey();
-  const playingKey = useMushafAyahPlayingKey();
-  const navigationKey = useMushafAyahNavigationKey();
+  /** اشتراك واحد — عزل صوت/تحديد/تنقّل عن fan-out ثلاثي */
+  const overlayKeys = useMushafOverlayKeys(enabled);
+  const selectedKey = overlayKeys.selected;
+  const playingKey = overlayKeys.playing;
+  const navigationKey = overlayKeys.navigation;
   const [selected, setSelected] = useState<TextBand[]>([]);
   const [playing, setPlaying] = useState<TextBand[]>([]);
   const [navigation, setNavigation] = useState<TextBand[]>([]);
   const rafRef = useRef<number | null>(null);
+  const bandsRef = useRef<{ selected: TextBand[]; playing: TextBand[]; navigation: TextBand[] }>({
+    selected: [],
+    playing: [],
+    navigation: [],
+  });
 
   /* إبطال الكاش عند تغيّر الحاوية/التفعيل فقط — لا عند كل تبديل آية */
   useLayoutEffect(() => {
@@ -97,19 +100,32 @@ export const AyahSelectionOverlay = memo(function AyahSelectionOverlay({
 
     const measureNow = () => {
       rafRef.current = null;
-      setSelected(selectedKey ? collectBands(container, selectedKey) : []);
-      setPlaying(
+      const nextSelected = selectedKey ? collectBands(container, selectedKey) : [];
+      const nextPlaying =
         playingKey && playingKey !== selectedKey && playingKey !== navigationKey
           ? collectBands(container, playingKey)
-          : [],
-      );
-      setNavigation(
+          : [];
+      const nextNavigation =
         navigationKey && navigationKey !== selectedKey
           ? collectBands(container, navigationKey)
           : navigationKey && !selectedKey
             ? collectBands(container, navigationKey)
-            : [],
-      );
+            : [];
+      const prev = bandsRef.current;
+      /* تجنّب setState إذا لم تتغيّر الأشرطة (صوت يكرّر نفس الآية) */
+      const same =
+        prev.selected === nextSelected &&
+        prev.playing === nextPlaying &&
+        prev.navigation === nextNavigation;
+      if (same) return;
+      bandsRef.current = {
+        selected: nextSelected,
+        playing: nextPlaying,
+        navigation: nextNavigation,
+      };
+      setSelected(nextSelected);
+      setPlaying(nextPlaying);
+      setNavigation(nextNavigation);
     };
 
     const schedule = () => {
@@ -119,6 +135,7 @@ export const AyahSelectionOverlay = memo(function AyahSelectionOverlay({
       rafRef.current = window.requestAnimationFrame(measureNow);
     };
 
+    /* قياس مفتاح جديد فوراً؛ resize يبقى rAF */
     measureNow();
 
     const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(schedule) : null;

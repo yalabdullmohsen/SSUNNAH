@@ -59,9 +59,9 @@ export default function StartHerePage() {
 
       <section aria-labelledby="levels-heading" className="meth-section">
         <h2 id="levels-heading">اختر مستواك</h2>
-        <div className="meth-grid" style={{ display: "grid", gap: "0.75rem" }}>
+        <div className="meth-grid">
           {LEVELS.map(({ href, title, desc, Icon }) => (
-            <Link key={title} href={href} className="meth-card" style={{ textDecoration: "none", color: "inherit" }}>
+            <Link key={title} href={href} className="meth-card">
               <Icon size={20} strokeWidth={1.8} aria-hidden="true" />
               <strong style={{ display: "block", marginBlock: "0.35rem" }}>{title}</strong>
               <p style={{ margin: 0, fontSize: "var(--ss-type-supporting)", opacity: 0.85 }}>{desc}</p>

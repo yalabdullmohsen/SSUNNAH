@@ -62,8 +62,8 @@ export default function SinsAndRightsDetailPage({ params }: { params: { slug: st
     return (
       <div className="snr-detail-page">
         <Empty text={EMPTY.data} />
-        <div style={{ textAlign: "center", marginTop: "1rem" }}>
-          <Link href="/sins-and-rights" style={{ color: "var(--elite-green, var(--mj-brand-deep))", fontWeight: 600 }}>
+        <div className="snr-detail-back">
+          <Link href="/sins-and-rights" className="snr-detail-back__link">
             ← العودة إلى الذنوب والحقوق
           </Link>
         </div>
@@ -128,7 +128,7 @@ export default function SinsAndRightsDetailPage({ params }: { params: { slug: st
         <div className="snr-detail-section-title">
           <span><SectionIcon name="📘" size={18} /></span> الشرح
         </div>
-        <p style={{ fontSize: "var(--ss-type-body)", color: "var(--elite-ink, var(--mj-brand-deep))", lineHeight: 1.75 }}>
+        <p className="snr-detail-explanation">
           {topic.explanation}
         </p>
       </section>
@@ -225,7 +225,7 @@ export default function SinsAndRightsDetailPage({ params }: { params: { slug: st
         )}
 
         {topic.repentanceConditions.hasExpiation && topic.repentanceConditions.expiationDetails && (
-          <div style={{ background: "color-mix(in srgb, var(--mj-info, #1a4a7a) 6%, transparent)", borderRadius: "var(--elite-r-sm, 8px)", padding: "0.75rem 1rem", marginTop: "0.75rem", fontSize: "var(--ss-type-label)", color: "var(--mj-info, var(--mj-brand-deep))" }}>
+          <div className="snr-detail-expiation">
             <SectionIcon name="📋" size={16} /> <strong>الكفارة:</strong> {topic.repentanceConditions.expiationDetails}
           </div>
         )}

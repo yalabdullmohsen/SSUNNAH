@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { Button } from "@/components/ui/button";
 import { AlertTriangle, Pencil } from "lucide-react";
 import { useLocation } from "wouter";
 import { useAuth } from "@/components/AuthProvider";
@@ -233,7 +234,7 @@ function AdminEditModal({ contentType, contentId, initialData = {}, onClose, onS
         {/* رأس المودال */}
         <div className="aie-modal__header">
           <h2 className="aie-modal__title"><Pencil size={15} className="inline ms-1" /> تعديل {LABELS[contentType]}</h2>
-          <button type="button" className="aie-modal__close" onClick={onClose} aria-label="إغلاق">✕</button>
+          <Button variant="secondary" size="small" type="button" className="aie-modal__close" onClick={onClose} aria-label="إغلاق">✕</Button>
         </div>
 
         {/* الحقول */}
@@ -269,12 +270,12 @@ function AdminEditModal({ contentType, contentId, initialData = {}, onClose, onS
           {error && <p className="aie-modal__error"><AlertTriangle size={13} className="inline ms-1" />{error}</p>}
           {saved && <p className="aie-modal__success">✓ تم الحفظ بنجاح</p>}
           <div className="aie-modal__actions">
-            <button type="button" className="aie-btn aie-btn--ghost" onClick={onClose} disabled={saving}>
+            <Button variant="secondary" size="small" type="button" className="aie-btn aie-btn--ghost" onClick={onClose} disabled={saving}>
               إلغاء
-            </button>
-            <button type="button" className="aie-btn aie-btn--primary" onClick={handleSave} disabled={saving || saved}>
+            </Button>
+            <Button variant="secondary" size="small" type="button" className="aie-btn aie-btn--primary" onClick={handleSave} disabled={saving || saved}>
               {saving ? "جارٍ الحفظ…" : "حفظ التعديلات"}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -304,7 +305,7 @@ export function AdminInlineEdit({ contentType, contentId, initialData, className
 
   return (
     <>
-      <button
+      <Button variant="secondary" size="small"
         type="button"
         className={`aie-trigger ${className || ""}`}
         onClick={() => setOpen(true)}
@@ -312,7 +313,7 @@ export function AdminInlineEdit({ contentType, contentId, initialData, className
         aria-label="تعديل"
       >
         <Pencil size={14} className="inline ms-1" />تعديل
-      </button>
+      </Button>
 
       {open && (
         <AdminEditModal

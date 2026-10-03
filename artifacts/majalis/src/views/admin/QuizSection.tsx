@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import { Button } from "@/components/ui/button";
 import { Lightbulb } from "lucide-react";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import {
@@ -168,13 +169,13 @@ export function QuizSection() {
       <div className="qzs-header">
         <h2 className="qzs-title">أسئلة المسابقة ({items.length})</h2>
         <div className="qzs-btn-group">
-          <button type="button" className="qzs-btn qzs-btn--warn" onClick={handleResetUsed} disabled={resetting}>
+          <Button variant="secondary" size="small" type="button" className="qzs-btn qzs-btn--warn" onClick={handleResetUsed} disabled={resetting}>
             {resetting ? "جاري الإعادة..." : "إعادة تعيين المُستخدَمة"}
-          </button>
-          <button type="button" className="qzs-btn qzs-btn--warn" onClick={handleSyncSeed} disabled={syncing}>
+          </Button>
+          <Button variant="secondary" size="small" type="button" className="qzs-btn qzs-btn--warn" onClick={handleSyncSeed} disabled={syncing}>
             {syncing ? "جاري الرفع..." : "رفع Seed → DB"}
-          </button>
-          <button type="button" className="qzs-btn qzs-btn--primary" onClick={openAdd}>+ سؤال جديد</button>
+          </Button>
+          <Button variant="secondary" size="small" type="button" className="qzs-btn qzs-btn--primary" onClick={openAdd}>+ سؤال جديد</Button>
         </div>
       </div>
 
@@ -244,11 +245,11 @@ export function QuizSection() {
                   {item.hint && <div className="qzs-item-hint"><Lightbulb size={13} className="inline ml-1" />{item.hint}</div>}
                 </div>
                 <div className="qzs-item-actions">
-                  <button type="button" className="qzs-btn" onClick={() => openEdit(item)}>تعديل</button>
-                  <button type="button" className="qzs-btn" onClick={() => handleToggleStatus(item)}>
+                  <Button variant="secondary" size="small" type="button" className="qzs-btn" onClick={() => openEdit(item)}>تعديل</Button>
+                  <Button variant="secondary" size="small" type="button" className="qzs-btn" onClick={() => handleToggleStatus(item)}>
                     {item.status === "published" ? "إخفاء" : "نشر"}
-                  </button>
-                  <button type="button" className="qzs-btn qzs-btn--danger" onClick={() => handleDelete(item.id, item.question)}>حذف</button>
+                  </Button>
+                  <Button variant="secondary" size="small" type="button" className="qzs-btn qzs-btn--danger" onClick={() => handleDelete(item.id, item.question)}>حذف</Button>
                 </div>
               </div>
             );

@@ -133,7 +133,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/academic-research/:id",
@@ -155,7 +156,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/academic-research/assistant",
@@ -177,7 +179,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/academic-research/submit",
@@ -199,7 +202,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/account-deletion",
@@ -244,7 +248,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/adab-talab-ilm",
@@ -266,7 +271,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/adhan-help",
@@ -288,7 +294,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/adhan-settings",
@@ -310,7 +317,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/adhkar",
@@ -362,7 +370,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/admin",
@@ -380,7 +389,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/auto-content",
@@ -398,7 +408,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/automation",
@@ -416,7 +427,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/automation/center",
@@ -434,7 +446,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/automation/content-production",
@@ -452,7 +465,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/automation/dashboard",
@@ -470,7 +484,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/automation/platform",
@@ -488,7 +503,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/automation/review",
@@ -506,7 +522,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/automation/sources",
@@ -524,7 +541,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/autonomous-platform",
@@ -542,7 +560,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/content",
@@ -560,7 +579,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/content-import/image",
@@ -578,7 +598,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/content-import/url",
@@ -596,7 +617,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/content-production",
@@ -614,7 +636,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/dashboard",
@@ -632,7 +655,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/feature-status",
@@ -650,7 +674,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/fiqh-quality",
@@ -668,7 +693,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/fiqh-review",
@@ -686,7 +712,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/import",
@@ -704,7 +731,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/integrations/instagram",
@@ -722,7 +750,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/legacy",
@@ -740,7 +769,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/review-center",
@@ -758,7 +788,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/review-hub",
@@ -776,7 +807,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/sources",
@@ -794,7 +826,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/universities",
@@ -812,7 +845,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/users",
@@ -830,7 +864,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3",
@@ -854,7 +889,8 @@
       "wave11Commit": "2aa5dc8a",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3/analytics",
@@ -872,7 +908,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3/audit",
@@ -890,7 +927,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3/automation",
@@ -908,7 +946,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3/community",
@@ -926,7 +965,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3/content",
@@ -944,7 +984,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3/content/fawaid",
@@ -962,7 +1003,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3/content/lessons",
@@ -980,7 +1022,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3/content/sheikhs",
@@ -998,7 +1041,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3/notifications",
@@ -1016,7 +1060,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3/review",
@@ -1034,7 +1079,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3/reviews",
@@ -1052,7 +1098,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3/settings",
@@ -1070,7 +1117,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3/system",
@@ -1088,7 +1136,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3/taxonomy",
@@ -1106,7 +1155,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/admin/v3/users",
@@ -1124,7 +1174,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "ADMIN_ACCESS",
       "rateLimited": "NOT_APPLICABLE",
-      "publicFeedbackPhase": "ADMIN_EXCLUDED"
+      "publicFeedbackPhase": "ADMIN_EXCLUDED",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/akhlaq",
@@ -1146,7 +1197,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/alamat-saah",
@@ -1168,7 +1220,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/amr-bil-maruf",
@@ -1190,7 +1243,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/amrad-qalbiyya",
@@ -1212,7 +1266,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/anbiya",
@@ -1234,7 +1289,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/announcements",
@@ -1256,7 +1312,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/annual-courses",
@@ -1278,7 +1335,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/annual-courses/:id",
@@ -1300,7 +1358,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/aqidah",
@@ -1322,7 +1381,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/arabic-language",
@@ -1344,7 +1404,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/arabic-language/:categoryId",
@@ -1366,7 +1427,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/arabic-language/:categoryId/:topicId",
@@ -1388,7 +1450,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/arbaeen-nawawi",
@@ -1410,7 +1473,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/arbaeen-nawawi/:id",
@@ -1432,7 +1496,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/arkan",
@@ -1454,7 +1519,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/arkan-iman",
@@ -1476,7 +1542,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/asbab-al-nuzul",
@@ -1498,7 +1565,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/asma-husna",
@@ -1520,7 +1588,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/assistant",
@@ -1542,7 +1611,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/auth/callback",
@@ -1564,7 +1634,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/auth/register",
@@ -1586,7 +1657,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/auth/update-password",
@@ -1608,7 +1680,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/c/:slug",
@@ -1630,7 +1703,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/calendar",
@@ -1652,7 +1726,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/car-mode",
@@ -1674,7 +1749,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/cards",
@@ -1696,7 +1772,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/citations",
@@ -1718,7 +1795,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/competitions",
@@ -1740,7 +1818,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/competitions/:id",
@@ -1762,7 +1841,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/condolences",
@@ -1784,7 +1864,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/contact",
@@ -1806,7 +1887,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/courses",
@@ -1828,7 +1910,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/courses/paths",
@@ -1850,7 +1933,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/daily-wird",
@@ -1872,7 +1956,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/dalail-nubuwwah",
@@ -1894,7 +1979,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/dalail-nubuwwah/:categoryId",
@@ -1916,7 +2002,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/dalail-nubuwwah/:categoryId/:topicId",
@@ -1938,7 +2025,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/data-licenses",
@@ -1960,7 +2048,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/delete-account",
@@ -1982,7 +2071,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/demo-ayah-reader",
@@ -2004,7 +2094,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/dev/design-system",
@@ -2026,7 +2117,8 @@
       "offline": "NOT_APPLICABLE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/discover-islam",
@@ -2048,7 +2140,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/discover-islam/articles/:slug",
@@ -2070,7 +2163,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/discover-islam/contact",
@@ -2092,7 +2186,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/discover-islam/doubts",
@@ -2114,7 +2209,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/discover-islam/doubts/:slug",
@@ -2136,7 +2232,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/discover-islam/how-to-convert",
@@ -2158,7 +2255,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/discover-islam/new-muslim",
@@ -2180,7 +2278,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/discover-islam/new-muslim/:day",
@@ -2202,7 +2301,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/discover-islam/questions",
@@ -2224,7 +2324,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/discover-islam/questions/:slug",
@@ -2246,7 +2347,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/duas",
@@ -2268,7 +2370,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/duas-quran",
@@ -2290,7 +2393,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/durus-imaniyya",
@@ -2312,7 +2416,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/durus-imaniyya/:categoryId",
@@ -2334,7 +2439,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/durus-imaniyya/:categoryId/:topicId",
@@ -2356,7 +2462,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/durus-mutanawwia",
@@ -2378,7 +2485,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/durus-mutanawwia/:categoryId",
@@ -2400,7 +2508,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/durus-mutanawwia/:categoryId/:topicId",
@@ -2422,7 +2531,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/events",
@@ -2444,7 +2554,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/explore",
@@ -2466,7 +2577,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/fadail-aamal",
@@ -2488,7 +2600,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/family",
@@ -2510,7 +2623,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/family-mode",
@@ -2532,7 +2646,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/fatwa",
@@ -2554,7 +2669,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/fatwa-policy",
@@ -2576,7 +2692,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/fatwa/:id",
@@ -2598,7 +2715,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/fatwas",
@@ -2620,7 +2738,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/fawaid",
@@ -2642,7 +2761,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/feature-tour",
@@ -2664,7 +2784,8 @@
       "offline": "NOT_APPLICABLE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/features-in-progress",
@@ -2686,7 +2807,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/fikr-waqia",
@@ -2708,7 +2830,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/fikr-waqia/:categoryId",
@@ -2730,7 +2853,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/fikr-waqia/:categoryId/:topicId",
@@ -2752,7 +2876,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/fiqh",
@@ -2827,7 +2952,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/fiqh-qawaid",
@@ -2849,7 +2975,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/fiqh/books/:bookId",
@@ -2871,7 +2998,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/fiqh/books/:bookId/chapters/:chapterId",
@@ -2893,7 +3021,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/fiqh/books/:bookId/lessons/:lessonId",
@@ -2915,7 +3044,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/fiqh/topics/:topicId",
@@ -2937,7 +3067,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/fiqh/usul",
@@ -2959,7 +3090,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/flashcards",
@@ -2981,7 +3113,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/glossary",
@@ -3003,7 +3136,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/hadith",
@@ -3056,7 +3190,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/hadith/:id",
@@ -3078,7 +3213,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/hadith/arbaeen",
@@ -3100,7 +3236,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/hadith/arbaeen-love-of-allah",
@@ -3122,7 +3259,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/hadith/books",
@@ -3144,7 +3282,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/hadith/books-and-rulings",
@@ -3166,7 +3305,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/hadith/daif",
@@ -3188,7 +3328,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/hadith/mawdu",
@@ -3210,7 +3351,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/hadith/sahih",
@@ -3232,7 +3374,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/hajj",
@@ -3254,7 +3397,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/hifz-path",
@@ -3276,7 +3420,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/hifz-path/c/:category",
@@ -3298,7 +3443,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/hifz-path/my",
@@ -3320,7 +3466,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/hifz-path/p/:slug",
@@ -3342,7 +3489,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/hifz-path/p/:slug/u/:unitId",
@@ -3364,7 +3512,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/hikam-salaf",
@@ -3386,7 +3535,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/iman-topics",
@@ -3408,7 +3558,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/iman-topics/:categoryId",
@@ -3430,7 +3581,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/iman-topics/:categoryId/:topicId",
@@ -3452,7 +3604,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/institutions",
@@ -3474,7 +3627,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/internal/status",
@@ -3496,7 +3650,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/islam-stats",
@@ -3518,7 +3673,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/islamic-directory",
@@ -3540,7 +3696,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/islamic-events",
@@ -3562,7 +3719,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/islamic-glossary",
@@ -3584,7 +3742,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/islamic-history",
@@ -3606,7 +3765,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/islamic-history/:rest*",
@@ -3628,7 +3788,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/islamic-institutions",
@@ -3650,7 +3811,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/islamic-landmarks",
@@ -3672,7 +3834,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/islamic-landmarks/:id",
@@ -3694,7 +3857,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/islamic-landmarks/map",
@@ -3716,7 +3880,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/islamic-sects",
@@ -3738,7 +3903,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/islamic-sects/:id",
@@ -3760,7 +3926,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/islamic-stories",
@@ -3782,7 +3949,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/janaza",
@@ -3804,7 +3972,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/janna-naar",
@@ -3826,7 +3995,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/jumuah",
@@ -3848,7 +4018,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/knowledge",
@@ -3870,7 +4041,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/knowledge-graph",
@@ -3892,7 +4064,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/knowledge-map",
@@ -3914,7 +4087,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/knowledge/:section",
@@ -3936,7 +4110,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/knowledge/:section/:id",
@@ -3958,7 +4133,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/kuwait-lessons",
@@ -3980,7 +4156,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/latest",
@@ -4002,7 +4179,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learn",
@@ -4025,7 +4203,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learn/:slug",
@@ -4047,7 +4226,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learn/lesson/:id",
@@ -4069,7 +4249,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/learn/series/:slug",
@@ -4091,7 +4272,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/learning",
@@ -4113,7 +4295,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learning-path",
@@ -4135,7 +4318,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learning-path/:scienceSlug",
@@ -4157,7 +4341,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learning-path/book/:bookId",
@@ -4179,7 +4364,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learning-path/dashboard",
@@ -4201,7 +4387,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learning-paths",
@@ -4223,7 +4410,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learning-plan",
@@ -4245,7 +4433,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learning/calendar",
@@ -4267,7 +4456,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learning/certificates",
@@ -4289,7 +4479,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learning/certificates/:code",
@@ -4311,7 +4502,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learning/paths",
@@ -4333,7 +4525,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learning/paths/:slug",
@@ -4355,7 +4548,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learning/quiz",
@@ -4377,7 +4571,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/learning/quiz/:slug",
@@ -4399,7 +4594,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/lesson-calendar",
@@ -4421,7 +4617,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/lessons",
@@ -4497,7 +4694,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/lessons/current",
@@ -4519,7 +4717,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/lessons/paths",
@@ -4541,7 +4740,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/library",
@@ -4598,7 +4798,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/licenses",
@@ -4620,7 +4821,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/login",
@@ -4672,7 +4874,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/madhahib/:id",
@@ -4694,7 +4897,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/malaika",
@@ -4716,7 +4920,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/man-nahnu",
@@ -4738,7 +4943,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/maqasid-sharia",
@@ -4760,7 +4966,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/maqasid-sharia/:categoryId",
@@ -4782,7 +4989,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/maqasid-sharia/:categoryId/:topicId",
@@ -4804,7 +5012,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/masajid",
@@ -4826,7 +5035,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/masarat",
@@ -4848,7 +5058,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/mawarith",
@@ -4870,7 +5081,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/mawarith/calculator",
@@ -4892,7 +5104,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/mawsuaat",
@@ -4914,7 +5127,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/mawsuaat/:categoryId",
@@ -4936,7 +5150,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/mawsuaat/:categoryId/:topicId",
@@ -4958,7 +5173,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/memorization",
@@ -4980,7 +5196,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/memorization-plans",
@@ -5002,7 +5219,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/memorization-tests",
@@ -5024,7 +5242,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/memorize",
@@ -5046,7 +5265,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/methodology",
@@ -5068,7 +5288,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/mind-map",
@@ -5090,7 +5311,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/miracles",
@@ -5112,7 +5334,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/miracles/quran",
@@ -5134,7 +5357,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/miracles/sunnah",
@@ -5156,7 +5380,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/miracles/topic/:slug",
@@ -5178,7 +5403,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/more",
@@ -5202,7 +5428,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/mosque-mode",
@@ -5224,7 +5451,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/mosques",
@@ -5246,7 +5474,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/muezzins",
@@ -5268,7 +5497,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/muezzins/:rest",
@@ -5290,7 +5520,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/mushaf",
@@ -5343,7 +5574,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/mushaf/:surah",
@@ -5365,7 +5597,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/mushaf/about-edition",
@@ -5387,7 +5620,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/mushaf/bookmarks",
@@ -5439,7 +5673,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/mushaf/page/:page",
@@ -5461,7 +5696,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/mutashabihat",
@@ -5483,7 +5719,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/my-citations",
@@ -5505,7 +5742,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/my-learning",
@@ -5557,7 +5795,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/nations",
@@ -5579,7 +5818,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/nations/:slug",
@@ -5601,7 +5841,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/news",
@@ -5623,7 +5864,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/nikah",
@@ -5645,7 +5887,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/notification-settings",
@@ -5667,7 +5910,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/notifications-and-sound",
@@ -5689,7 +5933,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/occasions",
@@ -5711,7 +5956,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/occasions-lessons",
@@ -5733,7 +5979,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/offline",
@@ -5755,7 +6002,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/pathways",
@@ -5777,7 +6025,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/prayer",
@@ -5822,7 +6071,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/prayer-ranks",
@@ -5844,7 +6094,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/prayer-times",
@@ -5932,7 +6183,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/privacy-policy",
@@ -5954,7 +6206,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/profile",
@@ -5976,7 +6229,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/progress",
@@ -5998,7 +6252,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/prophet-stories",
@@ -6020,7 +6275,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/prophet-stories/:slug",
@@ -6042,7 +6298,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/prophetic-medicine",
@@ -6064,7 +6321,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/prophets",
@@ -6121,7 +6379,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/prophets-stories/:slug",
@@ -6143,7 +6402,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/prophets/:slug",
@@ -6165,7 +6425,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/prophets/al-yasaa",
@@ -6187,7 +6448,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/prophets/alyasa",
@@ -6209,7 +6471,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/prophets/ishaaq",
@@ -6231,7 +6494,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/prophets/ishaq",
@@ -6253,7 +6517,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/prophets/tree",
@@ -6275,7 +6540,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/prophets/zakaria",
@@ -6297,7 +6563,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/prophets/zakariya",
@@ -6319,7 +6586,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/qa",
@@ -6341,7 +6609,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/qa/:rest*",
@@ -6363,7 +6632,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/qibla",
@@ -6420,7 +6690,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran",
@@ -6444,7 +6715,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/quran-circles",
@@ -6466,7 +6738,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran-engine",
@@ -6488,7 +6761,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran-engine/viewer",
@@ -6510,7 +6784,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran-hub",
@@ -6563,7 +6838,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran-hub/qiraat",
@@ -6585,7 +6861,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran-hub/seven-ahruf",
@@ -6607,7 +6884,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran-hub/tajweed",
@@ -6629,7 +6907,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran-hub/tajweed/:chapter",
@@ -6651,7 +6930,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran-hub/terms",
@@ -6673,7 +6953,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran-hub/tilawa",
@@ -6695,7 +6976,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran-index",
@@ -6717,7 +6999,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/quran-knowledge",
@@ -6739,7 +7022,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran-memorization",
@@ -6761,7 +7045,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran-sciences",
@@ -6783,7 +7068,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/quran-stories",
@@ -6805,7 +7091,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/quran-studies",
@@ -6827,7 +7114,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/quran/hifz-loop",
@@ -6849,7 +7137,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran/makki-madani",
@@ -6871,7 +7160,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran/memorization-plans",
@@ -6893,7 +7183,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran/mushaf",
@@ -6915,7 +7206,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/quran/offline-player",
@@ -6937,7 +7229,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran/people",
@@ -6959,7 +7252,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran/people/:slug",
@@ -6981,7 +7275,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran/recitation-test-ai",
@@ -7003,7 +7298,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/quran/revelation-order",
@@ -7025,7 +7321,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran/search",
@@ -7047,7 +7344,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran/surah-stories",
@@ -7069,7 +7367,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran/surah-stories/:number",
@@ -7091,7 +7390,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran/surahs",
@@ -7113,7 +7413,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/quran/tafsir",
@@ -7135,7 +7436,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/quran/tajweed",
@@ -7157,7 +7459,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/quran/terms",
@@ -7179,7 +7482,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/quran/worship-hub",
@@ -7201,7 +7505,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/raqaiq",
@@ -7223,7 +7528,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/reading-plans",
@@ -7245,7 +7551,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/register",
@@ -7297,7 +7604,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/researcher",
@@ -7319,7 +7627,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/researcher-profile",
@@ -7341,7 +7650,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/researches",
@@ -7363,7 +7673,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/review-plans",
@@ -7385,7 +7696,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/reviewed-cards",
@@ -7407,7 +7719,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/riba",
@@ -7429,7 +7742,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/rulings",
@@ -7451,7 +7765,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/rulings/:id",
@@ -7473,7 +7788,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/ruqya",
@@ -7495,7 +7811,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/sadaqa",
@@ -7517,7 +7834,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/sahabah",
@@ -7539,7 +7857,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/salah-guide",
@@ -7561,7 +7880,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/sawm",
@@ -7583,7 +7903,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/scholarly-research",
@@ -7605,7 +7926,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/scholars",
@@ -7627,7 +7949,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/scholars/:id",
@@ -7649,7 +7972,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/scientific-announcements/:id",
@@ -7671,7 +7995,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/scientific-library",
@@ -7693,7 +8018,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/search",
@@ -7770,7 +8096,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/seerah",
@@ -7792,7 +8119,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/settings",
@@ -7845,7 +8173,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/sharia-research",
@@ -7867,7 +8196,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/sheikhs",
@@ -7889,7 +8219,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/sheikhs/:id",
@@ -7911,7 +8242,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/shubuhat",
@@ -7933,7 +8265,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/sins-and-rights",
@@ -7955,7 +8288,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/sins-and-rights/:slug",
@@ -7977,7 +8311,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/sitemap",
@@ -7999,7 +8334,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/sources",
@@ -8021,7 +8357,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/sources-licenses",
@@ -8043,7 +8380,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/sources/:id",
@@ -8065,7 +8403,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/start-here",
@@ -8087,7 +8426,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/stats",
@@ -8109,7 +8449,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/stories",
@@ -8131,7 +8472,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/study-paths",
@@ -8153,7 +8495,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/study-room",
@@ -8175,7 +8518,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/submit",
@@ -8197,7 +8541,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/sujood-sahw",
@@ -8219,7 +8564,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/sunan-yawmiyya",
@@ -8241,7 +8587,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/sunnah-studies",
@@ -8263,7 +8610,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/sunnah-studies/:categoryId",
@@ -8285,7 +8633,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/sunnah-studies/:categoryId/:topicId",
@@ -8307,7 +8656,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/support",
@@ -8329,7 +8679,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/surah-stories",
@@ -8351,7 +8702,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/tafsir",
@@ -8373,7 +8725,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/tahara",
@@ -8395,7 +8748,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/tajweed",
@@ -8417,7 +8771,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/talaq",
@@ -8439,7 +8794,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/tarikh-islami",
@@ -8461,7 +8817,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/tarikh-islami/:id",
@@ -8483,7 +8840,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/tasbih",
@@ -8540,7 +8898,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/tawhid",
@@ -8562,7 +8921,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/tawhid/:slug",
@@ -8584,7 +8944,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/tazkiya",
@@ -8606,7 +8967,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/tazkiya-topics",
@@ -8628,7 +8990,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/tazkiya-topics/:categoryId",
@@ -8650,7 +9013,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/tazkiya-topics/:categoryId/:topicId",
@@ -8672,7 +9036,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/teachers",
@@ -8694,7 +9059,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/teachers/:slug",
@@ -8716,7 +9082,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/terms",
@@ -8773,7 +9140,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/topics/:slug",
@@ -8795,7 +9163,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/tracks",
@@ -8817,7 +9186,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/transcribe",
@@ -8839,7 +9209,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/udhiya",
@@ -8861,7 +9232,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/ulum-quran",
@@ -8883,7 +9255,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/universities",
@@ -8905,7 +9278,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/universities/:slug",
@@ -8927,7 +9301,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/universities/compare",
@@ -8949,7 +9324,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/updates",
@@ -8971,7 +9347,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/updates/auto/:slug",
@@ -8993,7 +9370,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/upload",
@@ -9015,7 +9393,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/usra-mujtama",
@@ -9037,7 +9416,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/usra-mujtama/:categoryId",
@@ -9059,7 +9439,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/usra-mujtama/:categoryId/:topicId",
@@ -9081,7 +9462,8 @@
       "offline": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/vault",
@@ -9103,7 +9485,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/waqf",
@@ -9125,7 +9508,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/wasaya-nabawiyya",
@@ -9147,7 +9531,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     },
     {
       "route": "/whats-new",
@@ -9169,7 +9554,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/who-we-are",
@@ -9191,7 +9577,8 @@
       "offline": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "NOT_APPLICABLE"
     },
     {
       "route": "/zakat",
@@ -9213,7 +9600,8 @@
       "offline": "COMPLETE",
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "stale": "PARTIAL"
     }
   ],
   "criticalRoutesUpdated": 28,
@@ -9228,5 +9616,6 @@
   "publicFeedbackPhase": "ROUTE_FEEDBACK_PUBLIC",
   "publicFeedbackNote": "All public routes classified with evidence defaults; COMPLETE gated.",
   "radicalClosureNote": "2026-10-03: priority stale field hygiene — NOT_APPLICABLE where no stale cache UI",
-  "radicalClosureWave5": "2026-10-03"
+  "radicalClosureWave5": "2026-10-03",
+  "internalClosureFinalAt": "2026-10-03"
 }

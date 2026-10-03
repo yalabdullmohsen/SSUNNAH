@@ -232,7 +232,7 @@ html.dark .sidebar-item-icon {
 .lessons-page-v2 .filter-chips__chip.is-active {
   background: var(--badge-filter-active-bg, var(--mj-chip-active-bg, var(--primary))) !important;
   border-color: var(--badge-filter-active-bg, var(--mj-chip-active-bg, var(--mj-brand-deep, var(--primary)))) !important;
-  color: var(--badge-filter-active-fg, var(--mj-chip-active-fg, var(--mj-on-brand, #ffffff))) !important;
+  color: var(--badge-filter-active-fg, var(--mj-chip-active-fg, var(--mj-on-brand))) !important;
   box-shadow: none !important;
 }
 
@@ -386,7 +386,7 @@ html.dark .lessons-page-v2 .filter-chips__chip.is-active {
 .sidebar-item.active,
 .sidebar-item.is-active {
   background: var(--state-selected-bg, var(--mj-chip-active-bg, var(--primary))) !important;
-  color: var(--state-selected-fg, var(--mj-chip-active-fg, #06231a)) !important;
+  color: var(--state-selected-fg, var(--mj-chip-active-fg)) !important;
   border: 1px solid var(--state-selected-border, color-mix(in srgb, var(--primary) 28%, transparent)) !important;
   box-shadow: none !important;
 }
@@ -477,7 +477,7 @@ button.floating-back-btn[data-floating-back="1"] {
   box-shadow: var(--shadow) !important;
   z-index: var(--z-fab, 220) !important;
   background: var(--primary) !important;
-  color: var(--mj-on-brand, #fff) !important;
+  color: var(--mj-on-brand) !important;
   border: 1px solid var(--mj-brand-deep, transparent) !important;
   display: inline-flex !important;
   align-items: center !important;

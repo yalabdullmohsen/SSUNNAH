@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Plus, Pencil, Trash2, Settings, RefreshCw, ArrowRight } from "lucide-react";
 import { AdminModal, Field, FieldRow } from "@/views/admin/AdminModal";
 import { AdminSectionToolbar } from "@/views/admin/AdminSectionToolbar";
@@ -82,9 +83,9 @@ export function LearningPathsSection() {
     const p = paths.find((x) => x.id === selectedPathId);
     return (
       <div>
-        <button type="button" className="adm-btn-sm" onClick={() => setSelectedPathId(null)}>
+        <Button variant="secondary" size="small" type="button" className="adm-btn-sm" onClick={() => setSelectedPathId(null)}>
           <ArrowRight size={13} /> رجوع لقائمة المسارات
-        </button>
+        </Button>
         <h2 className="adm-section-h2">{p?.title}</h2>
         <LearningPathTreeEditor pathId={selectedPathId} />
       </div>
@@ -100,9 +101,9 @@ export function LearningPathsSection() {
         onSearchChange={setSearch}
         searchPlaceholder="ابحث بالعنوان أو المعرّف…"
         actions={
-          <button type="button" className="adm-btn-add" onClick={() => { setForm({ ...EMPTY_PATH }); setWhatYouLearnText(""); setOpen(true); }}>
+          <Button variant="secondary" size="small" type="button" className="adm-btn-add" onClick={() => { setForm({ ...EMPTY_PATH }); setWhatYouLearnText(""); setOpen(true); }}>
             <Plus size={14} /> إضافة مسار
-          </button>
+          </Button>
         }
       />
 
@@ -120,20 +121,20 @@ export function LearningPathsSection() {
                     <span className="adm-type-badge">{p.total_sessions} جلسة</span>
                   </div>
                   <div className="adm-item-actions">
-                    <button type="button" className="adm-btn-sm" onClick={() => setSelectedPathId(p.id)}>
+                    <Button variant="secondary" size="small" type="button" className="adm-btn-sm" onClick={() => setSelectedPathId(p.id)}>
                       <Settings size={13} /> إدارة المحتوى
-                    </button>
-                    <button type="button" className="adm-btn-sm" onClick={() => recompute(p)} title="إعادة احتساب إجمالي الجلسات من العناصر الفعلية">
+                    </Button>
+                    <Button variant="secondary" size="small" type="button" className="adm-btn-sm" onClick={() => recompute(p)} title="إعادة احتساب إجمالي الجلسات من العناصر الفعلية">
                       <RefreshCw size={13} />
-                    </button>
-                    <button
+                    </Button>
+                    <Button variant="secondary" size="small"
                       type="button"
                       className="adm-btn-sm"
                       onClick={() => { setForm(p); setWhatYouLearnText((p.what_you_learn ?? []).join("\n")); setOpen(true); }}
                     >
                       <Pencil size={13} /> تعديل
-                    </button>
-                    <button type="button" className="adm-btn-del" onClick={() => deletePath(p)}><Trash2 size={13} /> حذف</button>
+                    </Button>
+                    <Button variant="secondary" size="small" type="button" className="adm-btn-del" onClick={() => deletePath(p)}><Trash2 size={13} /> حذف</Button>
                   </div>
                 </div>
                 {p.description && <p className="adm-empty-msg">{p.description}</p>}

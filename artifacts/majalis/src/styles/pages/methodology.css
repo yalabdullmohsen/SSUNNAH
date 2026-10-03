@@ -202,3 +202,6 @@
    مجالس — تحسينات إعادة التصميم الشامل v4 — 2026
    ══════════════════════════════════════════════════════════════════ */
 
+
+.meth-grid { display: grid; gap: 0.75rem; }
+.meth-card { text-decoration: none; color: inherit; }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import {
   type KnowledgeRelationship,
@@ -220,13 +221,13 @@ export function RelationshipsSection() {
           </div>
         </div>
         <div className="rel-form-actions">
-          <button type="button" disabled={saving} onClick={handleSave} className="rel-save-btn">
+          <Button variant="secondary" size="small" type="button" disabled={saving} onClick={handleSave} className="rel-save-btn">
             {saving ? "جارِ الحفظ..." : editId ? "تحديث" : "إضافة"}
-          </button>
+          </Button>
           {editId && (
-            <button type="button" onClick={resetForm} className="rel-cancel-btn">
+            <Button variant="secondary" size="small" type="button" onClick={resetForm} className="rel-cancel-btn">
               إلغاء
-            </button>
+            </Button>
           )}
         </div>
       </div>
@@ -235,11 +236,11 @@ export function RelationshipsSection() {
         <input className="rel-search" value={search} placeholder="بحث بالمعرّف أو التسمية..."
           onChange={(e) => setSearch(e.target.value)} />
         {(["all", "verified", "pending"] as const).map((v) => (
-          <button key={v} type="button" onClick={() => setFilterVerified(v)}
+          <Button variant="secondary" size="small" key={v} type="button" onClick={() => setFilterVerified(v)}
             className="rel-filter-btn"
             style={filterVerified === v ? { "--rel-fb-bg": "var(--mj-brand)", "--rel-fb-color": "#fff" } as React.CSSProperties : undefined}>
             {v === "all" ? "الكل" : v === "verified" ? "محققة" : "قيد المراجعة"}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -283,17 +284,17 @@ export function RelationshipsSection() {
                   >
                     {r.is_verified ? "محققة" : "قيد المراجعة"}
                   </span>
-                  <button type="button" onClick={() => handleToggleVerified(r)}
+                  <Button variant="secondary" size="small" type="button" onClick={() => handleToggleVerified(r)}
                     className="rel-toggle-btn"
                     style={{ "--rel-tb-bg": r.is_verified ? "rgba(23,61,53,0.08)" : "#d1fae5" } as React.CSSProperties}>
                     {r.is_verified ? "إلغاء التحقق" : "تحقق"}
-                  </button>
-                  <button type="button" onClick={() => startEdit(r)} className="rel-edit-btn">
+                  </Button>
+                  <Button variant="secondary" size="small" type="button" onClick={() => startEdit(r)} className="rel-edit-btn">
                     تعديل
-                  </button>
-                  <button type="button" onClick={() => handleDelete(r)} className="rel-del-btn">
+                  </Button>
+                  <Button variant="secondary" size="small" type="button" onClick={() => handleDelete(r)} className="rel-del-btn">
                     حذف
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

@@ -125,6 +125,45 @@ export function useMushafHighlightKeys(enabled = true): MushafHighlightKeysSnaps
   );
 }
 
+/** لقطة طبقة التحديد (selected/playing/navigation) — اشتراك واحد بدل 3 hooks في AyahSelectionOverlay */
+export type MushafOverlayKeysSnapshot = {
+  selected: string | null;
+  playing: string | null;
+  navigation: string | null;
+};
+
+const EMPTY_OVERLAY_KEYS: MushafOverlayKeysSnapshot = {
+  selected: null,
+  playing: null,
+  navigation: null,
+};
+
+let cachedOverlayKeys: MushafOverlayKeysSnapshot = EMPTY_OVERLAY_KEYS;
+
+function getOverlayKeysSnapshot(): MushafOverlayKeysSnapshot {
+  if (
+    cachedOverlayKeys.selected === manuallySelectedVerseKey &&
+    cachedOverlayKeys.playing === audioHighlightedVerseKey &&
+    cachedOverlayKeys.navigation === navigationHighlightedVerseKey
+  ) {
+    return cachedOverlayKeys;
+  }
+  cachedOverlayKeys = {
+    selected: manuallySelectedVerseKey,
+    playing: audioHighlightedVerseKey,
+    navigation: navigationHighlightedVerseKey,
+  };
+  return cachedOverlayKeys;
+}
+
+export function useMushafOverlayKeys(enabled = true): MushafOverlayKeysSnapshot {
+  return useSyncExternalStore(
+    enabled ? subscribe : subscribeNoop,
+    () => (enabled ? getOverlayKeysSnapshot() : EMPTY_OVERLAY_KEYS),
+    () => EMPTY_OVERLAY_KEYS,
+  );
+}
+
 /**
  * اشتراك محلي — تحديد يدوي فقط (التنقّل عبر overlay بلا تغيير لون الحبر).
  * `enabled=false` → subscribeNoop (لا إعادة رسم عند تغيّر التحديد/التلاوة/البحث).
@@ -182,6 +221,7 @@ export function resetMushafAyahSyncStoreForTests(): void {
   navigationHighlightedVerseKey = null;
   searchHighlightVerseKey = null;
   cachedHighlightKeys = EMPTY_HIGHLIGHT_KEYS;
+  cachedOverlayKeys = EMPTY_OVERLAY_KEYS;
   if (emitRaf != null && typeof window !== "undefined" && typeof window.cancelAnimationFrame === "function") {
     window.cancelAnimationFrame(emitRaf);
   }

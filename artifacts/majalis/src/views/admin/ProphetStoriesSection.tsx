@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { supabase } from "@/lib/supabase";
 import { useAdminShell } from "./AdminShell";
 import { AlertTriangle, BookOpen, Save } from "lucide-react";
@@ -94,15 +95,15 @@ function EditForm({
                 value={c.note}
                 onChange={(e) => updateCit(i, "note", e.target.value)}
               />
-              <button type="button" className="ps-edit-del-cit" onClick={() => removeCit(i)}>
+              <Button type="button" variant="secondary" size="small" className="ps-edit-del-cit" onClick={() => removeCit(i)}>
                 حذف
-              </button>
+              </Button>
             </div>
           ))}
         </div>
-        <button type="button" className="ps-add-cit-btn" onClick={addCit}>
+        <Button type="button" variant="secondary" size="small" className="ps-add-cit-btn" onClick={addCit}>
           + إضافة استشهاد
-        </button>
+        </Button>
       </div>
 
       <div>
@@ -115,12 +116,12 @@ function EditForm({
       </div>
 
       <div className="ps-edit-actions">
-        <button type="button" className="ps-save-btn" onClick={handleSave} disabled={saving}>
+        <Button type="button" variant="secondary" size="small" className="ps-save-btn" onClick={handleSave} disabled={saving}>
           {saving ? "جاري الحفظ…" : <><Save size={13} className="inline ml-1" aria-hidden="true" /> حفظ التعديلات</>}
-        </button>
-        <button type="button" className="ps-cancel-btn" onClick={onCancel} disabled={saving}>
+        </Button>
+        <Button type="button" variant="secondary" size="small" className="ps-cancel-btn" onClick={onCancel} disabled={saving}>
           إلغاء
-        </button>
+        </Button>
         <span className="ps-edit-hint">التعديل لا يغيّر حالة الاعتماد</span>
       </div>
     </div>
@@ -157,14 +158,13 @@ function StoryCard({
 
   return (
     <div className={`ps-card ${story.is_approved ? "approved" : ""} ${editing ? "editing" : ""}`}>
-      <div
+      <Button
+        type="button"
+        variant="ghost"
         className="ps-card-head"
         onClick={handleHeadClick}
-        role="button"
-        tabIndex={0}
         aria-expanded={open}
         aria-label={`${open ? "طي" : "توسيع"} ${story.arabic_name}`}
-        onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && handleHeadClick()}
       >
         <span className="ps-name">{story.arabic_name}</span>
         {editing
@@ -174,27 +174,29 @@ function StoryCard({
             </span>
         }
         {!editing && <span className="ps-toggle">{open ? "▲" : "▼"}</span>}
-      </div>
+      </Button>
 
       {open && !editing && (
         <div className="ps-body">
           <CitationsList citations={story.citations} />
 
-          <button
+          <Button
             type="button"
+            variant="ghost"
+            size="small"
             className="ps-full-toggle"
             onClick={() => setShowFull((p) => !p)}
           >
             {showFull ? "▲ إخفاء النص الكامل" : "▼ عرض النص الكامل"}
-          </button>
+          </Button>
 
           {showFull && <div className="ps-content">{story.content}</div>}
 
           <div className="ps-actions">
             {!story.is_approved ? (
-              <button type="button" className="ps-approve-btn" onClick={handleApprove} disabled={busy}>
+              <Button type="button" variant="secondary" size="small" className="ps-approve-btn" onClick={handleApprove} disabled={busy}>
                 {busy ? "جاري الاعتماد…" : "✓ اعتماد هذه القصة"}
-              </button>
+              </Button>
             ) : (
               <>
                 <span className="ps-approved-info">
@@ -203,19 +205,21 @@ function StoryCard({
                     ? `، ${new Date(story.approved_at).toLocaleDateString("ar-SA")}`
                     : ""}
                 </span>
-                <button type="button" className="ps-revoke-btn" onClick={handleRevoke} disabled={busy}>
+                <Button type="button" variant="secondary" size="small" className="ps-revoke-btn" onClick={handleRevoke} disabled={busy}>
                   {busy ? "…" : "سحب الاعتماد"}
-                </button>
+                </Button>
               </>
             )}
-            <button
+            <Button
               type="button"
+              variant="secondary"
+              size="small"
               className="ps-edit-btn"
               onClick={() => { setShowFull(false); setEditing(true); }}
               disabled={busy}
             >
               ✏ تعديل القصة
-            </button>
+            </Button>
           </div>
         </div>
       )}
