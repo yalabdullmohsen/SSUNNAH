@@ -355,7 +355,6 @@ html[data-theme="dark"] .ads-diagnostics-toggle {
   flex-shrink: 0;
   align-self: center;
   transition: background 0.2s ease;
-  box-shadow: none !important;
   transform: none !important;
 }
 .ads-toggle.is-on {

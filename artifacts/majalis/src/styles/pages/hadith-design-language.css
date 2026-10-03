@@ -96,7 +96,6 @@
   padding: 1rem 1.05rem 0.85rem;
   background: var(--surface-elevated, #fff);
   border: 1px solid color-mix(in srgb, var(--mj-brand, #1f4d3a) 14%, transparent);
-  box-shadow: none;
 }
 :is(html[data-theme="dark"], html.dark, html.theme-dark) .hadith-card.hdl-card {
   background: var(--surface-elevated, #24302b);

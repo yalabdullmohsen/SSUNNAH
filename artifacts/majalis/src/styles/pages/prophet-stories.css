@@ -590,7 +590,6 @@ html.dark .prophets-page-lead {
   font-family: var(--font-body);
   transition: all 0.2s;
   white-space: nowrap;
-  box-shadow: none;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -938,7 +937,6 @@ html.dark .prophets-page-lead {
   border-radius: var(--radius-tile, 24px);
   padding: 1rem 1.1rem;
   overflow: visible;
-  box-shadow: none;
 }
 .prophet-miracle-box__icon {
   font-size: var(--ds-text-base);
@@ -968,7 +966,6 @@ html.dark .prophets-page-lead {
   padding: 0.45rem 0.95rem;
   min-height: 44px;
   border-radius: var(--radius-pill, 999px);
-  box-shadow: none;
   font-size: 0.85rem;
 }
 
@@ -2147,7 +2144,6 @@ html.dark .prophets-page-lead {
   max-width: none;
   margin: 0;
   border-radius: 0;
-  box-shadow: none;
   overflow: visible;
   padding: 0.85rem max(1rem, var(--page-gutter, 1rem)) 0.95rem;
 }
@@ -2736,12 +2732,10 @@ html[data-theme="dark"] .prophet-fact-card {
   background: color-mix(in srgb, var(--ps-surface, #1A2421) 92%, var(--prophets-bg-dark, var(--mj-brand-deep-surface, #0f2a24)));
   background-image: none;
   border-color: var(--ps-line, #35443F);
-  box-shadow: none;
 }
 
 html.dark .prophet-lux-card__border,
 html[data-theme="dark"] .prophet-lux-card__border {
-  box-shadow: none;
   opacity: 0.35;
 }
 

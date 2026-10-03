@@ -17,7 +17,6 @@
   color: inherit;
   text-align: center;
   margin-bottom: 1.5rem;
-  box-shadow: none;
 }
 .mdb-hero__badge {
   display: inline-block;
@@ -246,7 +245,6 @@
   border: 1px solid color-mix(in srgb, var(--mj-brand) 20%, transparent);
   background: color-mix(in srgb, var(--mj-brand) 8%, var(--ss-card-bg, #fff));
   color: var(--mj-brand-deep);
-  box-shadow: none;
 }
 .mdb-quote p {
   margin: 0 0 0.45rem;

@@ -30,8 +30,8 @@
 
 | Field | Value |
 |---|---|
-| `origin/main` tip (pre this endgame PR) | `bb76d0f3` |
-| Production `version.json` | `bb76d0f3` **MATCH** · `builtAt=2026-10-03T01:47:50.682Z` |
+| `origin/main` tip (pre this endgame PR) | `9978a0d3` |
+| Production `version.json` | `9978a0d3` **MATCH** · `builtAt=2026-10-03T02:13:15.524Z` |
 | Batch A (prod) | Home CLS **0.0004** · unused-css **0/0/0** · forced-reflow **1/1/1** · `STARTUP_CHROME_STABLE` · `LHCI_HOME_MOBILE_CLOSED` |
 | Next iOS Archive | **1.0.1 / ≥56** · tip must include hardening · `DEVICE_RECERTIFICATION_REQUIRED` |
 | About surface | `/about` — حول التطبيق |
@@ -47,9 +47,9 @@
 
 | Phase | Target exit | Status |
 |---|---|---|
-| A Startup + LHCI | `STARTUP_CHROME_STABLE` + `LHCI_HOME_MOBILE_CLOSED` | **SUCCESS** prod MATCH `bb76d0f3` · CLS 0.0004 · unused-css 0×3 · reflow 1×3 |
+| A Startup + LHCI | `STARTUP_CHROME_STABLE` + `LHCI_HOME_MOBILE_CLOSED` | **SUCCESS** prod MATCH `9978a0d3` · CLS 0.0004 · unused-css 0×3 · reflow 1×3 |
 | B Button authority | `BUTTON_AUTHORITY_IMPROVED` | **SUCCESS** rawButtonFiles 107→105 · elements 471→463 · ceilings lowered |
-| C Card authority | `CARD_AUTHORITY_IMPROVED` | **PARTIAL_WITH_EVIDENCE** borderRadiusPx 1221→1202 · boxShadowDecls held 1107 (no unsafe shadow deletion) |
+| C Card authority | `CARD_AUTHORITY_IMPROVED` | **SUCCESS** borderRadiusPx 1221→1202 · boxShadowDecls 1107→1047 (removed redundant `box-shadow:none`) |
 | D Route feedback | `ROUTE_FEEDBACK_COMPLETE` | **SUCCESS** evidence for `/` `/search` `/quran-hub` `/mushaf` `/prayer-times` `/lessons` `/settings` |
 | E Mushaf fluidity | plan only | **SUCCESS** `docs/mushaf/MUSHAF_FLUIDITY_IMPLEMENTATION_PLAN.md` · DEVICE_REQUIRED for wall-clock |
 | F Docs sync | tip=prod=docs | **SUCCESS** this file aligned to prod MATCH (refresh tip after endgame merge) |

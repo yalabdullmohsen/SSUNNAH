@@ -1906,7 +1906,6 @@ html.dark .hadith-browse-cta__desc {
   color: inherit;
   text-decoration: none;
   min-height: 0;
-  box-shadow: none;
 }
 .hadith-dataset-card:hover {
   border-color: color-mix(in srgb, #0F5C3F 32%, transparent);

@@ -453,7 +453,6 @@
   border: 1px solid color-mix(in srgb, var(--mj-brand, #173d35) 12%, transparent);
   border-radius: var(--radius-card, 16px);
   background: var(--ss-card-bg, var(--mj-surface, #fffef9));
-  box-shadow: none;
 }
 
 .an-summary__eyebrow {
@@ -556,7 +555,6 @@
   border: 1px solid var(--mj-hairline, #e3e8e6);
   background: var(--ss-card-bg, var(--mj-surface, #fff));
   color: var(--mj-ink-2, #5a6b64);
-  box-shadow: none;
 }
 
 .an-cat--active {

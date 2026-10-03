@@ -60,7 +60,6 @@
 .uq-hero .uq-stat {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.22);
-  box-shadow: none;
 }
 .uq-hero .uq-stat__num { color: var(--on-brand, inherit); }
 .uq-hero .uq-stat__label { color: var(--on-brand-secondary, var(--mj-surface-2)); }
@@ -69,7 +68,6 @@ html.dark .uq-stat,
 html[data-theme="dark"] .uq-stat {
   background: color-mix(in srgb, var(--surface-brand-wash, #16261F) 90%, var(--mj-ink));
   border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand, #5a9e88)) 26%, var(--mj-hairline));
-  box-shadow: none;
 }
 html.dark .uq-stat__num,
 html[data-theme="dark"] .uq-stat__num {

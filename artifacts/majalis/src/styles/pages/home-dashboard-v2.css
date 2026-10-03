@@ -244,7 +244,6 @@ html[data-v2-dashboard="1"] .hw3-action:focus-visible {
 html[data-v2-dashboard="1"] .m2030-home .m2030-band--sage {
   background: transparent;
   border: none;
-  box-shadow: none;
 }
 
 html[data-v2-dashboard="1"] .m2030-home .m2030-band__title {
@@ -289,7 +288,6 @@ html[data-v2-dashboard="1"] .m2030-home .home-start-here {
   background: var(--v2-color-ivory-surface);
   border: 1px solid var(--v2-hairline);
   border-radius: var(--v2-radius-card);
-  box-shadow: none;
   padding: 1rem 1rem 0.75rem;
 }
 
@@ -310,7 +308,6 @@ html[data-v2-dashboard="1"] .m2030-home .hsh-step {
   border: none;
   border-block-end: 1px solid var(--v2-hairline);
   border-radius: 0;
-  box-shadow: none;
   padding-inline: 0;
 }
 
@@ -334,7 +331,6 @@ html[data-v2-dashboard="1"] .m2030-home .home-resume-v2 .mj-card.soft-card {
 
 html[data-v2-dashboard="1"] .m2030-home .home-resume-v2 .mj-card .mj-card,
 html[data-v2-dashboard="1"] .m2030-home .home-resume-v2 .soft-card .soft-card {
-  box-shadow: none;
   border: none;
   background: transparent;
   padding: 0;

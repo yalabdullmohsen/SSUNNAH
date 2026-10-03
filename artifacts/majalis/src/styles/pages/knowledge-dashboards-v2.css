@@ -130,7 +130,6 @@ html[data-v2-knowledge="1"] .tawheed-type-card::before {
   border-inline-start-width: 0;
   width: 0;
   background: none;
-  box-shadow: none;
 }
 
 html[data-v2-knowledge="1"] .hadith-card__text,

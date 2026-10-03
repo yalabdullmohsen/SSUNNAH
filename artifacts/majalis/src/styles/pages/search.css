@@ -656,7 +656,6 @@ html.dark .srch-result-card__icon {
   padding: 0.15rem 0.1rem;
   border: 0;
   background: transparent;
-  box-shadow: none;
 }
 .search-home > .compact-section-header .compact-section-header__title {
   font-size: clamp(1.25rem, 3.6vw, 1.5rem);

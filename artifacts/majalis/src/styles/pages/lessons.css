@@ -1470,7 +1470,6 @@ html[data-theme="dark"] .lesson-detail-page .lesson-detail-actions-panel {
   background: var(--surface, var(--mj-surface));
   color: var(--primary-strong, var(--mj-brand-deep));
   cursor: pointer;
-  box-shadow: none;
 }
 
 .lesson-filters__icon-btn svg {
@@ -1544,7 +1543,6 @@ html.dark .lesson-filters__search-field input {
   font-size: 0.74rem;
   font-weight: 650;
   white-space: nowrap;
-  box-shadow: none;
 }
 
 .lessons-page-v3 .lesson-filters__chips .filter-chips__chip.is-active,
@@ -1682,14 +1680,12 @@ html.dark .lessons-page-v3 .filter-chips__chip.is-active,
   border-radius: var(--radius-card, 16px);
   background-color: var(--surface, var(--mj-surface));
   background-image: none;
-  box-shadow: none;
 }
 :root[data-theme="dark"] .section-lobby.lessons-page-v3 .lesson-unified-card:not(.soft-card),
 .dark .section-lobby.lessons-page-v3 .lesson-unified-card:not(.soft-card) {
   background-color: var(--surface, #1b2421);
   background-image: none;
   border-color: color-mix(in srgb, var(--primary, var(--mj-brand, #5fbf98)) 28%, var(--mj-hairline));
-  box-shadow: none;
 }
 .section-lobby.lessons-page-v3 .lesson-unified-card--compact {
   padding: 0;
@@ -2151,7 +2147,6 @@ html[data-theme="dark"] .lesson-unified-card__menu-item {
   border-radius: var(--ds-radius-xl);
   background: var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff)));
   overflow: hidden;
-  box-shadow: none;
   display: flex;
   flex-direction: column;
   height: 100%;

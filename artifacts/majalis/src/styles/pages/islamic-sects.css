@@ -460,7 +460,6 @@ html.dark .sect-hub__chip.is-active,
   line-height: 1.9;
   text-wrap: pretty;
   overflow-wrap: anywhere;
-  box-shadow: none;
 }
 
 .sect-card__verify {
@@ -493,7 +492,6 @@ html.dark .sect-hub__chip.is-active,
   font-weight: 650 !important;
   background: color-mix(in srgb, var(--mj-brand-deep, #12362c) 92%, #000) !important;
   color: var(--on-dark-strong, var(--mj-white, #ffffff)) !important;
-  box-shadow: none !important;
 }
 
 .sect-related__link--ghost {

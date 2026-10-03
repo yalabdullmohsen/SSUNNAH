@@ -9,16 +9,16 @@
   },
   "ceilings": {
     "cssFiles": 356,
-    "important": 4755,
+    "important": 4747,
     "hexInCss": 8855,
     "rgbHslInCss": 2121,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
-    "boxShadowDecls": 1107,
+    "boxShadowDecls": 1047,
     "zIndexRawDecls": 257,
     "borderRadiusPxDecls": 1202,
     "inlineColorStyleMatches": 48,
     "rawButtonFiles": 105
   },
-  "updatedAt": "2026-10-03T01:58:26.572Z"
+  "updatedAt": "2026-10-03T02:14:37.378Z"
 }

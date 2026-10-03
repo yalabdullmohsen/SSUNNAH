@@ -35,7 +35,6 @@
 }
 .tch-card:hover {
   border-color: transparent;
-  box-shadow: none;
 }
 .tch-card__photo {
   width: 72px;

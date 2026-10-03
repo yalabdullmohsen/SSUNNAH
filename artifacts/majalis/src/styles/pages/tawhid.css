@@ -144,7 +144,6 @@ html[data-v2-app="1"] .topic-page--tawhid .tawheed-type-card {
   background-image: none !important;
   color: var(--color-text, var(--mj-ink, #16241e)) !important;
   border-color: color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, var(--mj-hairline))) !important;
-  box-shadow: none !important;
 }
 html[data-v2-app="1"] .topic-page--tawhid .kx-library-card .kx-library-card__title,
 html[data-v2-app="1"] .topic-page--tawhid .hub-card .hub-card__title,
