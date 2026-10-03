@@ -12,15 +12,65 @@
  * Optional:
  *   EXPECTED_STAGING_REF (default dgxzcmzcapzcrvcfzjmc)
  *   PRODUCTION_SUPABASE_PROJECT_REF (default ngmvmlulzacrlicuagyp)
+ *   PG_MODULE_PATH (absolute path to pg package; avoids ESM workspace resolution)
+ *   CERT_STOP_AFTER=baseline (capture baseline only; no fixture/seed/migration/writes)
  */
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import { createRequire } from "node:module";
 import dns from "node:dns";
 import { lookup as dnsLookup } from "node:dns/promises";
-import pg from "pg";
 
 dns.setDefaultResultOrder("ipv4first");
+
+/** Resolve `pg` without relying on workspace/catalog node_modules. */
+async function loadPg() {
+  const require = createRequire(import.meta.url);
+  const candidates = [
+    process.env.PG_MODULE_PATH,
+    "/tmp/staging-cert-node/node_modules/pg",
+    join(dirname(fileURLToPath(import.meta.url)), "../node_modules/pg"),
+    "pg",
+  ].filter(Boolean);
+
+  const errors = [];
+  for (const cand of candidates) {
+    try {
+      if (cand !== "pg" && !existsSync(cand) && !existsSync(`${cand}.js`)) {
+        errors.push(`${cand}: missing`);
+        continue;
+      }
+      // Prefer CJS require for deterministic resolution from absolute path.
+      if (cand !== "pg") {
+        return require(cand);
+      }
+      return require("pg");
+    } catch (e) {
+      errors.push(`${cand}: ${e.message}`);
+    }
+  }
+  // Last resort: dynamic import by file URL if package entry exists
+  for (const cand of candidates) {
+    if (cand === "pg") continue;
+    const entry = join(cand, "lib/index.js");
+    if (!existsSync(entry)) continue;
+    try {
+      return await import(pathToFileURL(entry).href);
+    } catch (e) {
+      errors.push(`${entry}: ${e.message}`);
+    }
+  }
+  throw new Error(
+    `ERR_MODULE_NOT_FOUND pg — tried: ${errors.join(" | ")}. Set PG_MODULE_PATH to absolute pg package dir.`,
+  );
+}
+
+const pg = await loadPg();
+const PgClient = pg.Client || pg.default?.Client;
+if (!PgClient) {
+  throw new Error("ERR_MODULE_NOT_FOUND pg.Client — package loaded but Client export missing");
+}
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const majalis = join(__dirname, "..");
@@ -791,7 +841,7 @@ async function connectStagingClient() {
   }
   report.identity.dbHost = host;
   report.identity.dbIpv4 = ipv4;
-  const client = new pg.Client({
+  const client = new PgClient({
     connectionString: dbUrl,
     host: ipv4,
     ssl: { rejectUnauthorized: false, servername: host },
@@ -815,6 +865,18 @@ async function main() {
     }
 
     await captureBaseline(client);
+
+    // Repair / read-only gate: stop before any fixture/seed/migration writes.
+    if ((process.env.CERT_STOP_AFTER || "").toLowerCase() === "baseline") {
+      report.classification = "STAGING_BASELINE_CAPTURED";
+      report.migration = { status: "SKIPPED_CERT_STOP_AFTER_BASELINE" };
+      report.finishedAt = new Date().toISOString();
+      writeReports();
+      console.log("STAGING_BASELINE_CAPTURED");
+      console.log("STAGING_CERTIFICATION_WORKFLOW_PASS");
+      process.exit(0);
+    }
+
     await ensureFixture(client);
     await captureBaseline(client); // refresh counts after fixture/seed
 
