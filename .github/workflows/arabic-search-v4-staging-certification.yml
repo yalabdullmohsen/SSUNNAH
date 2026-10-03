@@ -3,6 +3,15 @@ name: Arabic Search v4 Staging Certification
 # STAGING ONLY. No Production SQL. No Production flag enable.
 on:
   workflow_dispatch:
+    inputs:
+      stop_after:
+        description: "Stop after phase (baseline = no DB writes/migration)"
+        required: true
+        type: choice
+        options:
+          - full
+          - baseline
+        default: full
 
 permissions:
   contents: write
@@ -25,6 +34,8 @@ jobs:
       STAGING_SERVICE_ROLE_KEY: ${{ secrets.STAGING_SERVICE_ROLE_KEY }}
       EXPECTED_STAGING_REF: dgxzcmzcapzcrvcfzjmc
       PRODUCTION_SUPABASE_PROJECT_REF: ngmvmlulzacrlicuagyp
+      CERT_STOP_AFTER: ${{ inputs.stop_after == 'baseline' && 'baseline' || '' }}
+      PG_MODULE_PATH: /tmp/staging-cert-node/node_modules/pg
     steps:
       - name: Preflight identity (no secret values)
         run: |
@@ -41,6 +52,7 @@ jobs:
           ref=host.split(".")[0] if host.endswith(".supabase.co") else ""
           print("STAGING_PROJECT_REF", ref)
           print("PRODUCTION_PROJECT_REF", PROD)
+          print("CERT_STOP_AFTER", os.environ.get("CERT_STOP_AFTER") or "full")
           if ref!=EXP:
             print("REF_UNEXPECTED"); sys.exit(2)
           if ref==PROD or PROD in os.environ["STAGING_DATABASE_URL"]:
@@ -54,15 +66,18 @@ jobs:
         with:
           node-version: "24"
 
-      - name: Install pg driver (isolated + local node_modules)
+      - name: Install pg driver (isolated absolute path)
         run: |
           set -euo pipefail
+          rm -rf /tmp/staging-cert-node
           mkdir -p /tmp/staging-cert-node
           cd /tmp/staging-cert-node
           npm init -y >/dev/null
           npm install pg@8.16.3
-          mkdir -p "$GITHUB_WORKSPACE/artifacts/majalis/node_modules"
-          cp -a /tmp/staging-cert-node/node_modules/. "$GITHUB_WORKSPACE/artifacts/majalis/node_modules/"
+          test -f /tmp/staging-cert-node/node_modules/pg/package.json
+          test -f /tmp/staging-cert-node/node_modules/pg/lib/index.js
+          node -e "const {createRequire}=require('module'); const r=createRequire('/tmp/staging-cert-node/package.json'); const pg=r('pg'); if(!pg.Client) process.exit(2); console.log('PG_RESOLVE_OK', pg.Client.name)"
+          echo "PG_MODULE_PATH=/tmp/staging-cert-node/node_modules/pg" >> "$GITHUB_ENV"
 
       - name: Run staging certification
         working-directory: artifacts/majalis
