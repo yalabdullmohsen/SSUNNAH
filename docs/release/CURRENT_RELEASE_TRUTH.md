@@ -1,10 +1,11 @@
 # CURRENT RELEASE TRUTH — سُنّة
 
-**Generated:** 2026-09-30  
-**Program:** Post-WAVE6 final internal closure (WAVE7→13)  
+**Generated:** 2026-10-03  
+**Program:** Open-PR resolution + iOS certification cleanup (docs/evidence sync)  
 **Authority:** Measured from `origin/main` + live production  
 **Canonical status surface:** `docs/release/CURRENT_PROJECT_STATUS.md`  
-**Boundary report:** `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md`
+**Boundary report:** `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md`  
+**PR board:** `docs/audit/OPEN_PR_RESOLUTION_BOARD.md`
 
 ---
 
@@ -13,11 +14,18 @@
 | Surface | Value | Evidence |
 |---|---|---|
 | Git root | `git rev-parse --show-toplevel` | command |
-| `origin/main` tip | `ba139bb1ec753f2b6731e1018887e89897575988` | `gh api …/commits/main` |
-| Production `version.json` | `ba139bb1` · HTTP 200 · `builtAt` `2026-09-30T14:58:51.872Z` | curl live |
-| Match | **MATCH** | capture-build-context |
-| Internal status | **INTERNAL_CLOSURE_COMPLETE** | boundary report |
-| General status | **WEB_RELEASED_NATIVE_HOLD** | boundary report |
+| `origin/main` tip | `7ad9b9d0f2403070674bbc80802de087a600bb1f` | `git fetch` + rev-parse |
+| Production `version.json` | `7ad9b9d0` · HTTP 200 · `builtAt` `2026-10-03T15:52:39.091Z` | curl `https://www.ssunnah.com/version.json` |
+| Match | **MATCH** | live vs origin/main |
+| App Store (no action) | `1.0` LIVE / READY_FOR_SALE | `BUILD_55_TRACEABILITY.md` |
+| TestFlight (no action) | `1.0.1 (55)` available; device cert missing | same |
+| Next Archive requirement | build **≥ 56** from hardened main | same |
+| T-040 Device matrix | `IOS_DEVICE_MATRIX_INCOMPLETE` / DEVICE_REQUIRED | evidence synced; checklist current |
+| T-033 Deep links | `IOS_DEEP_LINKS_NOT_CERTIFIED` / DEVICE_REQUIRED | sim FAIL pack on main |
+| Widgets | T-028/029/031 on main; #2299 superseded | PrayerWidget + Live Activity |
+| Offline Expo PR #1791 | OBSOLETE; manifest only | `OFFLINE_SCOPE_MANIFEST.md` |
+| Internal status | **INTERNAL_CLOSURE_COMPLETE** + open-PR board cleaned | resolution board |
+| General status | **WEB_RELEASED_NATIVE_HOLD** | boundary + device hold |
 | Store RC pin | **not set by owner** | HOLD |
 
 **Smoke (public):** HTTP 200 on primary routes. `/admin*` anonymous → intentional 404.

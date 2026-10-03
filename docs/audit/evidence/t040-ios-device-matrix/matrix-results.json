@@ -1,0 +1,47 @@
+{
+  "phase": "T-040",
+  "capturedAt": "2026-10-02T01:45:21Z",
+  "verdict": "FAIL",
+  "exit": "IOS_DEVICE_MATRIX_INCOMPLETE",
+  "requiredBoard": {
+    "Modern iPhone": "FAIL",
+    "Older iPhone": "FAIL",
+    "iPad": "FAIL",
+    "Split View": "FAIL"
+  },
+  "blockingFailures": [
+    "DEVICE_QA_REGISTER remains DEVICE_REQUIRED across Home/Mushaf/Prayer/Search/Auth/Adhan rows",
+    "WAVE13 runbook status RUNBOOK_READY — execution DEVICE_REQUIRED; no filled evidence-row set for T-040",
+    "Required devices Modern/Older iPhone + iPad + Split View lack Artifact+Tester+Date per surface×mode",
+    "Accessibility prereq IOS_ACCESSIBILITY_NOT_CERTIFIED (not CERTIFIED)",
+    "Cannot claim DEVICE_TESTED or IOS_DEVICE_MATRIX_COMPLETE"
+  ],
+  "failRecords": [
+    {
+      "id": "FAIL_RECORD-D-IP-MODERN",
+      "deviceClass": "Modern iPhone",
+      "status": "FAIL",
+      "reason": "No row with Artifact+Tester+Date for required surfaces/modes; DEVICE_QA_REGISTER cells remain DEVICE_REQUIRED"
+    },
+    {
+      "id": "FAIL_RECORD-D-IP-OLDER",
+      "deviceClass": "Older/Smaller iPhone",
+      "status": "FAIL",
+      "reason": "No compact iPhone evidence pack with required record format"
+    },
+    {
+      "id": "FAIL_RECORD-D-IPAD",
+      "deviceClass": "iPad",
+      "status": "FAIL",
+      "reason": "No iPad full surface×mode matrix with artifacts"
+    },
+    {
+      "id": "FAIL_RECORD-D-IPAD-SPLIT",
+      "deviceClass": "iPad Split View",
+      "status": "FAIL",
+      "reason": "Split View never evidenced (also T-032 blocker)"
+    }
+  ],
+  "registerStatus": "DEVICE_REQUIRED dominant",
+  "runbookStatus": "RUNBOOK_READY / execution DEVICE_REQUIRED"
+}
