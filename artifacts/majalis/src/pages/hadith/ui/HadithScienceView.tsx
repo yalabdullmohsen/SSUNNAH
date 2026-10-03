@@ -11,6 +11,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/hadith-mustalah.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 import { UnifiedPrimaryFilters } from "@/components/filters/UnifiedPrimaryFilters";
 import "@/styles/knowledge-experience.css";
@@ -1054,14 +1055,8 @@ export default function HadithSciencePage() {
       <div className="hs-controls">
         <div className="hs-search-wrap">
           <Search size={16} className="hs-search-icon" aria-hidden="true" />
-          <input
-            className="hs-search"
-            type="search"
-            placeholder="ابحث في المصطلحات."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            aria-label="بحث في مصطلح الحديث"
-          />
+          <SearchInput className="hs-search" placeholder="ابحث في المصطلحات." value={query} onChange={(e) => setQuery(e.target.value)}
+            aria-label="بحث في مصطلح الحديث" onClear={() => setQuery("")} />
           {query && (
             <IconButton type="button" className="hs-search-clear" onClick={() => setQuery("")} label="مسح البحث">
               <X size={14} />

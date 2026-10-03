@@ -410,7 +410,7 @@ html[data-theme="dark"] .srp-action-btn { background: rgba(255,255,255,.06); bor
 .srp-save-msg { font-size: .75rem; color: var(--majalis-ink-soft); margin-inline-end: auto; }
 
 .srp-prompt-btn {
-  font-size: .75rem; padding: .375rem .75rem; border-radius: 9999px;
+  font-size: .75rem; padding: .375rem .75rem; border-radius: var(--sf-radius-pill);
   background: var(--majalis-panel); border: 1px solid var(--majalis-line);
   color: var(--majalis-ink); cursor: pointer; transition: border-color .15s, color .15s;
 }
@@ -447,7 +447,7 @@ html[data-theme="dark"] .srp-action-btn { background: rgba(255,255,255,.06); bor
 }
 .srp-lib-del:hover { color: var(--majalis-danger, var(--mj-danger)); }
 .srp-lib-excerpt { font-size: .75rem; color: var(--majalis-ink-soft); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
-.srp-lib-tag { font-size: .75rem; background: var(--majalis-emerald-muted, rgba(31,77,58,.1)); color: var(--majalis-emerald); padding: .125rem .5rem; border-radius: 9999px; }
+.srp-lib-tag { font-size: .75rem; background: var(--majalis-emerald-muted, rgba(31,77,58,.1)); color: var(--majalis-emerald); padding: .125rem .5rem; border-radius: var(--sf-radius-pill); }
 .srp-lib-date { font-size: .75rem; color: var(--majalis-ink-soft); opacity: .4; margin-inline-end: auto; }
 .srp-lib-search-btn { font-size: .75rem; color: var(--majalis-emerald); background: none; border: none; cursor: pointer; }
 .srp-lib-search-btn:hover { text-decoration: underline; }

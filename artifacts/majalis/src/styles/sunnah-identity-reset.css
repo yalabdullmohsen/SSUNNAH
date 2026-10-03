@@ -143,7 +143,6 @@ html[data-v2-app="1"] .es2__icon {
   width: var(--v2-icon-tile);
   height: var(--v2-icon-tile);
   background: var(--v2-surface-functional);
-  box-shadow: none;
 }
 
 /* ── Density rhythm ── */

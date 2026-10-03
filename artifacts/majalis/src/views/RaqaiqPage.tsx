@@ -6,6 +6,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/raqaiq.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { ListScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
@@ -484,14 +485,10 @@ export default function RaqaiqPage() {
               <p>الرقائق ما رقَّ من الكلام وأثَّر في القلب. هذه المواعظ من أصح ما نُقِل وأبلغه في تليين القلوب القاسية.</p>
             </div>
             <div className="rq-search-wrap">
-              <input
-                type="search"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
+              <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
                 placeholder="ابحث في الرقائق.."
                 className="page-search-input rq-search-input"
-                aria-label="بحث في مواعظ الرقائق"
-              />
+                aria-label="بحث في مواعظ الرقائق" onClear={() => setSearch("")} />
             </div>
             <div className="rq-list">
               {filteredRaqaiq.map((r, i) => (

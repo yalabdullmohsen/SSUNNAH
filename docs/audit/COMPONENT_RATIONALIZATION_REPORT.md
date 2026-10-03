@@ -1,6 +1,6 @@
 # COMPONENT_RATIONALIZATION_REPORT
 
-Generated: 2026-10-03T08:28:53.907Z
+Generated: 2026-10-03T08:57:20.660Z
 
 Target: **one component authority per purpose**.
 
@@ -28,7 +28,7 @@ Target: **one component authority per purpose**.
 
 ### buttons
 
-- `Button`: 2087
+- `Button`: 2083
 - `ActionButton`: 30
 - `PrimaryButton`: 4
 - `SecondaryButton`: 4
@@ -55,12 +55,12 @@ Target: **one component authority per purpose**.
 
 ### tabs
 
-- `ContentTabs`: 8
+- `ContentTabs`: 10
 - `TabSystem`: 2
 
 ### search
 
-- `SearchInput`: 28
+- `SearchInput`: 92
 - `SearchField`: 5
 
 ### lists

@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { SearchInput } from "@/components/design-system";
 import { Link, useLocation } from "wouter";
 import type { DarsSection } from "@/lib/dars-types";
 import { arabicMatchAny } from "@/lib/arabic-search";
@@ -165,16 +166,12 @@ export function KnowledgeCollectionSystem({
             setSearch(draft);
           }}
         >
-          <input
-            type="search"
-            value={draft}
-            onChange={(e) => setDraft(e.target.value)}
+          <SearchInput value={draft} onChange={(e) => setDraft(e.target.value)}
             placeholder="ابحث في موضوعات هذا الباب…"
             aria-label="بحث في الموضوعات"
             enterKeyHint="search"
             autoComplete="off"
-            dir="rtl"
-          />
+            dir="rtl" onClear={() => setDraft("")} />
           <Button type="submit" variant="primary">بحث</Button>
         </form>
         {filteredTopics.length === 0 ? (
@@ -220,16 +217,12 @@ export function KnowledgeCollectionSystem({
           setSearch(draft);
         }}
       >
-        <input
-          type="search"
-          value={draft}
-          onChange={(e) => setDraft(e.target.value)}
+        <SearchInput value={draft} onChange={(e) => setDraft(e.target.value)}
           placeholder="ابحث في الأبواب والموضوعات…"
           aria-label="بحث داخل المجموعة"
           enterKeyHint="search"
           autoComplete="off"
-          dir="rtl"
-        />
+          dir="rtl" onClear={() => setDraft("")} />
         <Button type="submit" variant="primary">بحث</Button>
       </form>
       {filteredCategories.length === 0 ? (

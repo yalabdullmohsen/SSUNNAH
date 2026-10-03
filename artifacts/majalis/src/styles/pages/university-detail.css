@@ -18,11 +18,11 @@
 .udp-badge--emerald {
   font-size: .75rem; background: var(--majalis-emerald-muted, rgba(31,77,58,.1));
   color: var(--majalis-emerald); padding: .125rem .5rem;
-  border-radius: 9999px; font-weight: 500; display: inline-flex; align-items: center; gap: .25rem;
+  border-radius: var(--sf-radius-pill); font-weight: 500; display: inline-flex; align-items: center; gap: .25rem;
 }
 .udp-badge--neutral {
   font-size: .75rem; background: var(--majalis-parchment-deep, var(--mj-bg, #f0ece4));
-  color: var(--majalis-ink-soft); padding: .125rem .5rem; border-radius: 9999px;
+  color: var(--majalis-ink-soft); padding: .125rem .5rem; border-radius: var(--sf-radius-pill);
 }
 .udp-prog-name { font-weight: 600; color: var(--majalis-ink); font-size: .875rem; }
 .udp-prog-dept { font-size: .75rem; color: var(--majalis-ink-soft); margin-top: .125rem; }
@@ -41,7 +41,7 @@
 .udp-req-file { color: var(--majalis-emerald); flex-shrink: 0; margin-top: .125rem; }
 .udp-step-num {
   flex-shrink: 0; width: 1.5rem; height: 1.5rem;
-  border-radius: 9999px; background: var(--majalis-emerald);
+  border-radius: var(--sf-radius-pill); background: var(--majalis-emerald);
   color: var(--mj-white, var(--mj-white)); font-size: .75rem; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
 }

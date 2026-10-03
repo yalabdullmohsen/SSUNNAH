@@ -6,6 +6,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/alamat-saah.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
@@ -410,14 +411,10 @@ export default function AlamatSaahPage() {
               <p>العلامات الصغرى هي المقدِّمات البعيدة للساعة، وقد وقع كثيرها وبعضها لا يزال جارياً. والصغرى لا تعني صغر خطورتها بل قِدَمها في الظهور قبل الكبرى.</p>
             </div>
             <div className="as-search-wrap">
-              <input
-                type="search"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
+              <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
                 placeholder="ابحث في علامات الساعة."
                 className="page-search-input as-search-input"
-                aria-label="بحث في علامات الساعة الصغرى"
-              />
+                aria-label="بحث في علامات الساعة الصغرى" onClear={() => setSearch("")} />
             </div>
             <div className="as-status-legend">
               {["وقعت","جارية","لم تقع"].map(s => (

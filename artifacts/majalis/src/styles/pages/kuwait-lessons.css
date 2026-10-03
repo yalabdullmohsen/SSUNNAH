@@ -108,7 +108,7 @@
   color: var(--color-success-fg);
   background: var(--color-success-bg);
   padding: 0.3rem 0.7rem;
-  border-radius: 100px;
+  border-radius: var(--sf-radius-pill);
   white-space: nowrap;
   margin-top: 0.25rem;
 }

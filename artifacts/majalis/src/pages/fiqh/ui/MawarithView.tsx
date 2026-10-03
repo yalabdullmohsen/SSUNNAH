@@ -9,6 +9,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import "@/styles/pages/mawarith.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 
@@ -505,14 +506,10 @@ export default function MawarithPage() {
           <div role="tabpanel" id="mwr-panel-masail" aria-labelledby="mwr-tab-masail" className="mw-section">
             <p className="mw-lead">مسائل فقهية مشهورة في علم الفرائض، تُبيّن دقة المنهج وعمق الفقه الإسلامي</p>
             <div className="mw-search-wrap">
-              <input
-                type="search"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
+              <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
                 placeholder="ابحث في مسائل الفرائض..."
                 className="page-search-input mw-search-input"
-                aria-label="بحث في مسائل المواريث"
-              />
+                aria-label="بحث في مسائل المواريث" onClear={() => setSearch("")} />
             </div>
             <div className="mw-masail-list">
               {filteredMasail.map((m, i) => (

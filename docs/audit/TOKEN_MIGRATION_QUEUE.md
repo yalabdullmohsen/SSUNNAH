@@ -1,6 +1,6 @@
 # TOKEN_MIGRATION_QUEUE
 
-Generated: 2026-10-03T08:28:53.907Z
+Generated: 2026-10-03T08:57:20.660Z
 
 Files with violations: **365**
 
@@ -10,8 +10,8 @@ Files with violations: **365**
 |---|---:|
 | color | 6549 |
 | spacing | 177 |
-| shadow | 990 |
-| radii | 177 |
+| shadow | 966 |
+| radii | 140 |
 | typography | 94 |
 
 ## Highest-impact first
@@ -23,9 +23,9 @@ Files with violations: **365**
 | 262 | `styles/admin.css` | color×248, shadow×13, radii×1 |
 | 218 | `styles/pages/prophet-stories.css` | color×126, spacing×2, shadow×26, radii×2 |
 | 200 | `styles/pages/lessons.css` | color×131, spacing×1, shadow×11 |
-| 195 | `styles/pages/hadith-design-language.css` | color×130, shadow×1, radii×8 |
-| 190 | `styles/pages/hadith.css` | color×119, shadow×12, radii×5 |
-| 172 | `styles/pages/fiqh-hub.css` | color×102, spacing×1, shadow×18, radii×2 |
+| 183 | `styles/pages/hadith-design-language.css` | color×130, shadow×1 |
+| 183 | `styles/pages/hadith.css` | color×119, shadow×12 |
+| 169 | `styles/pages/fiqh-hub.css` | color×102, spacing×1, shadow×18 |
 | 149 | `styles/dark-mode-surfaces.css` | color×137, shadow×11, radii×1 |
 | 144 | `styles/dark-mode-recovery.css` | color×126, shadow×17, radii×1 |
 | 132 | `styles/design-system.css` | color×107, shadow×23, radii×2 |
@@ -39,9 +39,9 @@ Files with violations: **365**
 | 89 | `styles/islamic-landmarks.css` | color×86, shadow×1, radii×2 |
 | 87 | `styles/pages/app-shell-v2.css` | color×50, shadow×12 |
 | 77 | `styles/pages/arbaeen-nawawi.css` | color×51, shadow×4 |
-| 74 | `styles/knowledge-experience.css` | color×52, shadow×16, radii×6 |
 | 71 | `styles/brand-v4.css` | color×71 |
 | 71 | `styles/green-surface-system.css` | color×68, shadow×3 |
 | 70 | `styles/pages/adhan-settings.css` | color×39, shadow×4, radii×7 |
+| 69 | `styles/pages/prayer-times.css` | color×36, shadow×11, radii×2 |
 
 Map values → `DESIGN_TOKENS_AUTHORITY` · no new token family.

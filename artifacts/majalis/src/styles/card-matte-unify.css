@@ -35,7 +35,6 @@
 .prophet-lux-card::before,
 .ui-card:not([data-scripture])::before,
 .ui-card:not([data-scripture])::after {
-  box-shadow: none;
 }
 
 /* حلقات التركيز تبقى وظيفية — لا تُمس */

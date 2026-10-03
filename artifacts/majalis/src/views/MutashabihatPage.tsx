@@ -10,6 +10,7 @@ import {
 } from "@/lib/mutashabihat-data";
 import { ChevronDown, Eye, EyeOff, BookOpen } from "lucide-react";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 import "@/styles/quran.css";
 
@@ -201,14 +202,8 @@ export default function MutashabihatPage() {
           ))}
         </div>
 
-        <input
-          type="search"
-          className="mutash-search"
-          placeholder="ابحث بالعنوان أو اسم السورة..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          aria-label="البحث في الآيات المتشابهات"
-        />
+        <SearchInput className="mutash-search" placeholder="ابحث بالعنوان أو اسم السورة..." value={search} onChange={(e) => setSearch(e.target.value)}
+          aria-label="البحث في الآيات المتشابهات" onClear={() => setSearch("")} />
 
         <p className="mutash-meta">
           {filtered.length} {filtered.length === 1 ? "مجموعة" : "مجموعات"} متشابهة

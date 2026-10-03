@@ -45,7 +45,7 @@ assert.match(hadithCss, /\.hadith-detail-card[\s\S]*border-radius:\s*var\(--radi
 assert.match(hadithCss, /--bottom-nav-total/);
 assert.match(
   hadithCss,
-  /border-radius:\s*999px[\s\S]*\.ds-filter-toggle|\.ds-filter-toggle[\s\S]*border-radius:\s*999px/,
+  /\.ds-filter-toggle[\s\S]*border-radius:\s*(?:999px|var\(--(?:sf-)?radius-pill)/,
 );
 assert.doesNotMatch(
   hadithCss,

@@ -35,7 +35,7 @@
 .trp-benefit-category {
   margin-top: .25rem;
   display: inline-block;
-  border-radius: 9999px;
+  border-radius: var(--sf-radius-pill);
   background: var(--majalis-emerald);
   padding: .125rem .5rem;
   font-size: .75rem;
@@ -116,10 +116,10 @@
 .trp-progress-row { display: flex; justify-content: space-between; font-size: .875rem; margin-bottom: .25rem; }
 .trp-progress-status { color: var(--majalis-ink-soft); }
 .trp-progress-pct { font-weight: 500; color: var(--majalis-emerald); }
-.trp-prog-track { height: .5rem; width: 100%; border-radius: 9999px; background: var(--majalis-line); }
+.trp-prog-track { height: .5rem; width: 100%; border-radius: var(--sf-radius-pill); background: var(--majalis-line); }
 .trp-prog-fill {
   height: .5rem;
-  border-radius: 9999px;
+  border-radius: var(--sf-radius-pill);
   background: var(--majalis-emerald);
   transition: width .5s;
   width: var(--tp-pct, 0%);

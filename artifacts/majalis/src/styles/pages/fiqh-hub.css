@@ -227,12 +227,12 @@ html[data-theme="dark"] .fqh-hub-card__desc {
   display: inline-block; font-size: .75rem;
   background: var(--majalis-emerald-muted, rgba(31,77,58,.1));
   color: var(--majalis-emerald); padding: .125rem .5rem;
-  border-radius: 9999px;
+  border-radius: var(--sf-radius-pill);
 }
 .fqp-cat-chip {
   display: inline-block; padding: .375rem .75rem; font-size: .75rem;
   font-weight: 500; background: var(--majalis-emerald-muted, rgba(31,77,58,.1));
-  color: var(--majalis-emerald); border-radius: 9999px;
+  color: var(--majalis-emerald); border-radius: var(--sf-radius-pill);
   cursor: pointer; transition: opacity .15s;
 }
 .fqp-cat-chip:hover { opacity: .8; }

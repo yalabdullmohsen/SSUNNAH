@@ -8,6 +8,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { Droplets } from "lucide-react";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 
 
 type TaharaTab = "wudu" | "ghusl" | "tayammum" | "najasat";
@@ -225,14 +226,10 @@ export default function TaharaPage() {
 
       <div className="th-body">
         <div className="th-search-wrap">
-          <input
-            type="search"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
+          <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
             placeholder="ابحث في أحكام الطهارة."
             className="page-search-input th-search-input"
-            aria-label="بحث في أحكام الطهارة"
-          />
+            aria-label="بحث في أحكام الطهارة" onClear={() => setSearch("")} />
         </div>
 
         {/* ── الوضوء ── */}

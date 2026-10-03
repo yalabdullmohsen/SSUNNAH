@@ -14,6 +14,7 @@ import type {
 import "@/styles/pages/prophetic-medicine.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 const PM_ICON_MAP: Record<string, LucideIcon> = {
@@ -128,14 +129,10 @@ export default function PropheticMedicinePage() {
       {/* بحث */}
       <div className="pmp-search-wrap">
         <Search size={16} className="pmp-search-icon" aria-hidden="true" />
-        <input
-          type="search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+        <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
           placeholder="ابحث في الطب النبوي..."
           className="page-search-input pmp-search-input"
-          aria-label="بحث في موسوعة الطب النبوي"
-        />
+          aria-label="بحث في موسوعة الطب النبوي" onClear={() => setSearch("")} />
       </div>
 
       {/* شريط الفلتر */}

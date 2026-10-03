@@ -11,15 +11,15 @@
 .rp-plan-card { padding: 1rem 1.1rem; }
 .rp-plan-card__head { display: flex; justify-content: space-between; align-items: center; gap: .5rem; margin-bottom: .6rem; }
 .rp-plan-card__title { font-size: var(--ds-text-base); font-weight: 700; margin: 0; }
-.rp-badge { font-size: .72rem; font-weight: 700; padding: .2rem .6rem; border-radius: 99px; white-space: nowrap; background: var(--bg-hover, #f0f0f0); color: var(--text-muted, var(--mj-muted)); }
+.rp-badge { font-size: .72rem; font-weight: 700; padding: .2rem .6rem; border-radius: var(--sf-radius-pill); white-space: nowrap; background: var(--bg-hover, #f0f0f0); color: var(--text-muted, var(--mj-muted)); }
 .rp-badge--ahead { background: rgba(23,61,53,.12); color: var(--mj-brand); }
 .rp-badge--behind { background: rgba(190,60,40,.12); color: var(--mj-danger); }
 .rp-badge--done { background: rgba(23,61,53,.18); color: var(--mj-brand); }
 .rp-badge--paused { background: rgba(120,120,120,.15); color: var(--mj-muted); }
 .rp-badge--active { background: rgba(31,77,58,.1); color: var(--mj-brand-deep); }
 .rp-badge--idle { background: rgba(120,120,120,.1); color: var(--mj-muted); }
-.rp-progress-bar { height: 8px; border-radius: 99px; background: var(--bg-hover, var(--mj-surface-2)); overflow: hidden; margin-bottom: .5rem; }
-.rp-progress-bar__fill { height: 100%; background: var(--majalis-emerald, var(--mj-brand)); border-radius: 99px; transition: width .3s; }
+.rp-progress-bar { height: 8px; border-radius: var(--sf-radius-pill); background: var(--bg-hover, var(--mj-surface-2)); overflow: hidden; margin-bottom: .5rem; }
+.rp-progress-bar__fill { height: 100%; background: var(--majalis-emerald, var(--mj-brand)); border-radius: var(--sf-radius-pill); transition: width .3s; }
 .rp-plan-card__meta { font-size: .82rem; color: var(--text-muted, var(--mj-muted)); margin: 0 0 .5rem; }
 .rp-plan-card__catchup { font-size: .82rem; color: var(--mj-danger); background: rgba(190,60,40,.08); border-radius: .5rem; padding: .5rem .7rem; margin: 0 0 .6rem; }
 .rp-plan-card__log { display: flex; gap: .5rem; margin-bottom: .6rem; }
@@ -42,7 +42,7 @@
 .rp-suggestions li button:hover { background: var(--bg-hover, #f3f0eb); }
 .rp-suggestions li button span { color: var(--text-muted, var(--mj-muted)); font-size: .78rem; }
 .rp-days-grid { display: flex; flex-wrap: wrap; gap: .4rem; }
-.rp-day-chip { padding: .4rem .8rem; border-radius: 99px; border: 1px solid var(--border, var(--mj-hairline)); background: none; font-size: .82rem; font-weight: 500; cursor: pointer; }
+.rp-day-chip { padding: .4rem .8rem; border-radius: var(--sf-radius-pill); border: 1px solid var(--border, var(--mj-hairline)); background: none; font-size: .82rem; font-weight: 500; cursor: pointer; }
 .rp-day-chip.is-active { background: var(--majalis-emerald, var(--mj-brand)); color: var(--mj-white, var(--mj-white)); border-color: var(--majalis-emerald, var(--mj-brand)); }
 .rp-checkbox-field { display: flex; align-items: center; gap: .5rem; font-size: .85rem; margin-bottom: .8rem; }
 .rp-feasibility { font-size: .82rem; padding: .6rem .8rem; border-radius: .5rem; background: rgba(23,61,53,.08); color: var(--mj-brand); margin-bottom: .8rem; }

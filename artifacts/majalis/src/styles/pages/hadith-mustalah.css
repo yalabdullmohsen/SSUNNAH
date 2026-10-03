@@ -81,7 +81,7 @@
 .hs-cat-chip {
   min-height: 44px;
   padding: 0.45rem 1rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   border: 1.5px solid var(--mj-brand-soft);
   background: var(--ss-card-bg, var(--color-surface, var(--mj-surface)));
   font-size: 0.8rem;

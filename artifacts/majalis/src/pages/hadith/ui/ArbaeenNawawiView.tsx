@@ -12,6 +12,7 @@ import { HadithListCard } from "@/components/hadith/HadithListCard";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { ExploreAlsoNav } from "@/components/ExploreAlsoNav";
 import { ListScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 import "@/styles/pages/arbaeen-nawawi.css";
 import "@/styles/pages/hadith-design-language.css";
@@ -214,18 +215,17 @@ export default function ArbaeenNawawiPage() {
           </header>
 
           <div className="an-filters">
-            <label className="an-search-wrap">
-              <span className="sr-only">ابحث في أحاديث الأربعين النووية</span>
-              <input
-                type="search"
+            <div className="an-search-wrap">
+              <SearchInput
                 className="an-search"
                 placeholder="ابحث في أحاديث الأربعين النووية"
                 value={query}
                 onChange={(e) => onQueryChange(e.target.value)}
+                aria-label="ابحث في أحاديث الأربعين النووية"
                 enterKeyHint="search"
                 autoComplete="off"
               />
-            </label>
+            </div>
             {query.trim() ? (
               <p className="an-results-count" aria-live="polite">
                 {filtered.length === 0 ? EMPTY.searchShort : `${filtered.length} نتيجة`}

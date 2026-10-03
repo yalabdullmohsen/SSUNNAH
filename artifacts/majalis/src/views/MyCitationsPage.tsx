@@ -18,6 +18,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import "@/styles/pages/my-citations.css";
 import { ListScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 const TABS = ["الكل", "المجلدات", "المفضلة", "الأكثر استخداماً"] as const;
@@ -210,10 +211,7 @@ export default function MyCitationsPage() {
           </div>
 
           <div className="mt-4">
-            <input
-              type="search"
-              value={searchQuery}
-              onChange={(e) => handleSearch(e.target.value)}
+            <SearchInput value={searchQuery} onChange={(e) => handleSearch(e.target.value)}
               aria-label="ابحث في اقتباساتك وملاحظاتك" placeholder="ابحث في اقتباساتك وملاحظاتك..."
               className="mcp-search-input"
               dir="rtl"

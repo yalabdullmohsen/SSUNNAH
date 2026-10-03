@@ -415,7 +415,7 @@ export default function MawarithCalculatorPage() {
           {result.shares.length > 0 && (
             <div className="mwc-shares">
               <h2 className="mwc-section-title">أنصبة الورثة</h2>
-              <div className="mwc-shares-table">
+              <div className="mwc-shares-table ss-data-table">
                 <div className="mwc-shares-table__head">
                   <span>الوارث</span><span>العدد</span><span>النصيب</span><span>نصيب الفرد</span><span>الأساس</span>
                 </div>

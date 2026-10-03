@@ -1,6 +1,6 @@
 # DESIGN_DRIFT_ATLAS
 
-Generated: 2026-10-03T08:28:56.024Z
+Generated: 2026-10-03T08:57:23.067Z
 
 Entries: **13** · Policy: no undocumented visual drift.
 
@@ -10,14 +10,14 @@ Screenshots: DEVICE_REQUIRED on absorb PRs (not stored in this static atlas).
 |---|---|---|---|---|
 | P0 | cards | bypass=208 adoption=9% | CARD_SURFACE_AUTHORITY · AppCard | `components/AdminRouteGuard.tsx`, `components/ExploreAlsoNav.tsx` |
 | P0 | buttons | bypass=100 adoption=71% | INTERACTION_COMPONENT_AUTHORITY · Button | `components/AdminInlineEdit.tsx`, `components/QuranViewer.tsx` |
-| P0 | forms | bypass=177 adoption=7% | FORM_AUTHORITY_MAP · FormLabel/FieldError | `admin-v3/domains/analytics/AnalyticsPlatformPage.tsx`, `admin-v3/domains/community/UsersPage.tsx` |
+| P0 | forms | bypass=148 adoption=23% | FORM_AUTHORITY_MAP · FormLabel/FieldError | `admin-v3/domains/analytics/AnalyticsPlatformPage.tsx`, `admin-v3/domains/community/UsersPage.tsx` |
 | P0 | token:color | hardcoded color ×6549 | COLOR_AUTHORITY_MAP / DESIGN_TOKENS_AUTHORITY color.* | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |
-| P0 | token:shadow | hardcoded shadow ×990 | CARD_SURFACE_AUTHORITY · AppCard | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |
+| P0 | token:shadow | hardcoded shadow ×966 | CARD_SURFACE_AUTHORITY · AppCard | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |
 | P1 | lists | bypass=74 adoption=10% | LIST_AUTHORITY_MAP · NavigationList | `admin-v3/centers/AdminV3CenterWorkspace.tsx`, `admin-v3/domains/ops/AutomationHubPage.tsx` |
-| P1 | tabs | bypass=72 adoption=3% | TAB_AUTHORITY_MAP · ContentTabs | `admin-v3/domains/reviews/ReviewInboxPage.tsx`, `components/FiqhGuidePage.tsx` |
+| P1 | tabs | bypass=71 adoption=4% | TAB_AUTHORITY_MAP · ContentTabs | `admin-v3/domains/reviews/ReviewInboxPage.tsx`, `components/FiqhGuidePage.tsx` |
 | P1 | token:spacing | hardcoded spacing ×177 | SPACING_AUTHORITY_MAP / spacing.* | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |
-| P1 | token:radii | hardcoded radii ×177 | CARD_SURFACE_AUTHORITY · AppCard | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |
-| P2 | tables | bypass=14 adoption=36% | TABLE_AUTHORITY_MAP · DataTable | `components/prayer/PrayerAnnualTimetable.tsx`, `views/ProphetStoriesPage.tsx` |
+| P1 | token:radii | hardcoded radii ×140 | CARD_SURFACE_AUTHORITY · AppCard | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |
+| P2 | tables | bypass=14 adoption=39% | TABLE_AUTHORITY_MAP · DataTable | `components/prayer/PrayerAnnualTimetable.tsx`, `views/ProphetStoriesPage.tsx` |
 | P2 | navigation | bypass=1 adoption=94% | NAVIGATION_AUTHORITY_MAP · AppBackButton/BottomNav | `components/ScrollToTop.tsx` |
 | P2 | modals | bypass=1 adoption=96% | INTERACTION_COMPONENT_AUTHORITY · Button | `components/NativeBackButtonListener.tsx` |
 | P2 | token:typography | hardcoded typography ×94 | TYPOGRAPHY_AUTHORITY_MAP / typography.* | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |

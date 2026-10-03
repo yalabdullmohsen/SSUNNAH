@@ -44,9 +44,9 @@ assert.doesNotMatch(login, /login-highlights/);
 assert.doesNotMatch(login, /login-chip/);
 assert.doesNotMatch(login, /login-oauth/);
 
-assert.match(css, /border-radius:\s*28px/);
+assert.match(css, /border-radius:\s*(?:28px|var\(--sf-radius-feature\))/);
 assert.match(css, /object-fit:\s*cover/);
-assert.match(css, /\.login-tab\.is-active/);
+assert.match(css, /\.login-tab\.is-active|\.ss-tabs__tab--active/);
 assert.match(css, /\.login-guest-link/);
 assert.doesNotMatch(css, /login-highlights/);
 assert.doesNotMatch(css, /linear-gradient\(160deg,\s*var\(--mj-brand-deep\)/);

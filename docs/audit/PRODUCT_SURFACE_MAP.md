@@ -1,13 +1,13 @@
 # PRODUCT_SURFACE_MAP
 
-Generated: 2026-10-03T08:28:51.920Z
+Generated: 2026-10-03T08:57:18.355Z
 
 Total classified surfaces: **403** · unclassified: **0**
 
 | Class | Count |
 |---|---:|
-| Unified | 154 |
-| Partial | 182 |
+| Unified | 157 |
+| Partial | 179 |
 | Legacy | 64 |
 | SPECIAL_CASE | 3 |
 

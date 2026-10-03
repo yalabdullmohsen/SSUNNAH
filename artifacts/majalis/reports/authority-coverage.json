@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-03T08:28:55.754Z",
-  "AUTHORITY_ADOPTION_PERCENTAGE": 41,
+  "updatedAt": "2026-10-03T08:57:22.753Z",
+  "AUTHORITY_ADOPTION_PERCENTAGE": 43,
   "families": {
     "cards": {
       "usingCount": 20,
@@ -116,23 +116,23 @@
       ]
     },
     "forms": {
-      "usingCount": 14,
-      "bypassCount": 177,
+      "usingCount": 43,
+      "bypassCount": 148,
       "relevantCount": 191,
-      "adoptionPercent": 7,
+      "adoptionPercent": 23,
       "usingSample": [
         "admin-v3/AdminV3Shell.tsx",
         "admin-v3/centers/AdminV3CenterWorkspace.tsx",
         "admin-v3/domains/reviews/ReviewInboxPage.tsx",
+        "components/FiqhGuidePage.tsx",
         "components/admin/AdminConfirmDialog.tsx",
+        "components/knowledge-collection/KnowledgeCollectionSystem.tsx",
         "pages/account/ui/AccountDeletionView.tsx",
         "pages/account/ui/FawaidView.tsx",
         "pages/account/ui/LoginView.tsx",
         "pages/account/ui/SettingsView.tsx",
-        "pages/lessons/LessonsArchivePage.tsx",
-        "pages/lessons/TeachersIndexPage.tsx",
-        "pages/quran/ui/MushafBookmarksView.tsx",
-        "pages/worship/ui/PrayerRanksView.tsx"
+        "pages/fiqh/ui/HajjView.tsx",
+        "pages/fiqh/ui/JanazaView.tsx"
       ],
       "bypassSample": [
         "admin-v3/domains/analytics/AnalyticsPlatformPage.tsx",
@@ -143,16 +143,15 @@
         "components/AdminInlineEdit.tsx",
         "components/AdminSiteEditBar.tsx",
         "components/ContentActions.tsx",
-        "components/FiqhGuidePage.tsx",
         "components/GlobalSearchModal.tsx",
         "components/HijriMonthSelect.tsx",
-        "components/SearchSuggestions.tsx"
+        "components/SearchSuggestions.tsx",
+        "components/adhan/AudioPromptsSettingsCard.tsx"
       ],
       "migrationPriority": [
         "components/AdminInlineEdit.tsx",
         "components/AdminSiteEditBar.tsx",
         "components/ContentActions.tsx",
-        "components/FiqhGuidePage.tsx",
         "components/GlobalSearchModal.tsx",
         "components/HijriMonthSelect.tsx",
         "components/SearchSuggestions.tsx",
@@ -168,14 +167,15 @@
         "components/assistant/AssistantChatView.tsx",
         "components/citation/CitationModal.tsx",
         "components/filters/FilterBar.tsx",
-        "components/fiqh/FiqhReportError.tsx"
+        "components/fiqh/FiqhReportError.tsx",
+        "components/hadith/HadithSearch.tsx"
       ]
     },
     "tables": {
-      "usingCount": 8,
+      "usingCount": 9,
       "bypassCount": 14,
-      "relevantCount": 22,
-      "adoptionPercent": 36,
+      "relevantCount": 23,
+      "adoptionPercent": 39,
       "usingSample": [
         "admin-v3/domains/community/RolesPage.tsx",
         "admin-v3/domains/community/UsersPage.tsx",
@@ -183,6 +183,7 @@
         "admin-v3/domains/content/RemainingEntityCrudPage.tsx",
         "admin-v3/domains/reviews/ReviewInboxPage.tsx",
         "admin-v3/domains/taxonomy/TaxonomyPage.tsx",
+        "pages/fiqh/ui/MawarithCalculatorView.tsx",
         "pages/lessons/ui/AnnualCourseDetailView.tsx",
         "views/UniversitiesComparePage.tsx"
       ],
@@ -270,11 +271,12 @@
       ]
     },
     "tabs": {
-      "usingCount": 2,
-      "bypassCount": 72,
+      "usingCount": 3,
+      "bypassCount": 71,
       "relevantCount": 74,
-      "adoptionPercent": 3,
+      "adoptionPercent": 4,
       "usingSample": [
+        "pages/account/ui/LoginView.tsx",
         "pages/quran/ui/UlumQuranView.tsx",
         "views/TawbaPage.tsx"
       ],
@@ -310,9 +312,9 @@
         "components/topic/TopicPage.tsx",
         "pages/account/ui/FawaidView.tsx",
         "pages/account/ui/IslamicGlossaryView.tsx",
-        "pages/account/ui/LoginView.tsx",
         "pages/account/ui/NotificationSettingsView.tsx",
-        "pages/fiqh/ui/FiqhQawaidView.tsx"
+        "pages/fiqh/ui/FiqhQawaidView.tsx",
+        "pages/fiqh/ui/HajjView.tsx"
       ]
     },
     "navigation": {
@@ -376,8 +378,8 @@
     },
     {
       "family": "forms",
-      "bypassCount": 177,
-      "adoptionPercent": 7
+      "bypassCount": 148,
+      "adoptionPercent": 23
     },
     {
       "family": "buttons",
@@ -391,13 +393,13 @@
     },
     {
       "family": "tabs",
-      "bypassCount": 72,
-      "adoptionPercent": 3
+      "bypassCount": 71,
+      "adoptionPercent": 4
     },
     {
       "family": "tables",
       "bypassCount": 14,
-      "adoptionPercent": 36
+      "adoptionPercent": 39
     },
     {
       "family": "navigation",

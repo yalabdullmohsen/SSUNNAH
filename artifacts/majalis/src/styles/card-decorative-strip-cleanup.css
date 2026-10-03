@@ -232,6 +232,5 @@
 .soft-card .soft-card--on-light,
 .ss-state-card .soft-card,
 .section-lobby .soft-card .soft-card {
-  box-shadow: none;
   background: var(--svl-surface-layered, var(--svl-surface-section, var(--mj-surface-2, var(--mj-surface))));
 }

@@ -1,20 +1,20 @@
 # DESIGN_DRIFT_REPORT
 
-Generated: 2026-10-03T08:28:50.129Z
+Generated: 2026-10-03T08:57:16.256Z
 
 ## Scores
 
-- consistencyScore: **88**
-- driftScore: **12**
-- authorityAdoptionRatio: **41%**
+- consistencyScore: **89**
+- driftScore: **11**
+- authorityAdoptionRatio: **43%**
 
 ## Debt vs ceilings
 
 | Metric | Current | Ceiling | Status |
 |---|---:|---:|---|
 | hexInCss | 7022 | 7022 | ✅ |
-| boxShadowDecls | 1010 | 1010 | ✅ |
-| borderRadiusPxDecls | 429 | 429 | ✅ |
+| boxShadowDecls | 986 | 986 | ✅ |
+| borderRadiusPxDecls | 392 | 392 | ✅ |
 | rgbHslInCss | 2087 | 2087 | ✅ |
 | important | 4747 | 4747 | ✅ |
 | rawButtonFiles | 102 | 102 | ✅ |
@@ -22,10 +22,10 @@ Generated: 2026-10-03T08:28:50.129Z
 ## Top divergence sources
 
 - **cards**: bypass=208 · adoption=9%
-- **forms**: bypass=177 · adoption=7%
+- **forms**: bypass=148 · adoption=23%
 - **buttons**: bypass=100 · adoption=71%
 - **lists**: bypass=74 · adoption=10%
-- **tabs**: bypass=72 · adoption=3%
+- **tabs**: bypass=71 · adoption=4%
 
 ## Easiest wins
 

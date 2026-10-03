@@ -260,7 +260,6 @@ html[data-theme="dark"] .mj-filter-chip[aria-pressed="true"] {
   border-radius: var(--mur-radius-sm);
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 6%, var(--mj-surface, #fffcf8));
   border: none;
-  box-shadow: none;
 }
 
 /* ── بحث حديث ── */
