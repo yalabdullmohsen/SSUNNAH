@@ -5,6 +5,7 @@ import {
   QuranNavigationService,
   type QuranNavigationSource,
 } from "@/lib/quran-navigation";
+import { Button } from "@/components/ui/button";
 import type { ProphetMushafMention } from "@/lib/prophet-mushaf-mentions";
 
 type Props = {
@@ -43,7 +44,7 @@ export function ProphetMushafMentions({
           const surahName = getSurahMeta(m.surahId)?.name ?? String(m.surahId);
           const label = `سورة ${surahName}، الآية ${toArabicDigits(m.ayahId)}، فتح في المصحف`;
           return (
-            <button
+            <Button variant="ghost"
               key={`${m.surahId}:${m.ayahId}`}
               type="button"
               className="prophet-mushaf-mention-card"
@@ -88,7 +89,7 @@ export function ProphetMushafMentions({
               <span className="prophet-mushaf-mention-card__icon" aria-hidden="true">
                 <BookOpen size={18} />
               </span>
-            </button>
+            </Button>
           );
         })}
       </div>

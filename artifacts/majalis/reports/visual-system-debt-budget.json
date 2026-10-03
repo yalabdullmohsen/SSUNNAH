@@ -1,24 +1,24 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Endgame: lessons.css radii\u2192tokens; quran-people redundant box-shadow:none removed; ceilings lowered.",
+  "note": "Ceilings must not rise. Lower intentionally in later waves; never raise without documented exception.",
   "floors": {
-    "officialButtonImportFiles": 252,
-    "sfTokenRefs": 757,
+    "officialButtonImportFiles": 257,
+    "sfTokenRefs": 794,
     "ssTokenRefs": 724
   },
   "ceilings": {
     "cssFiles": 356,
-    "important": 4784,
-    "hexInCss": 8905,
-    "rgbHslInCss": 2124,
+    "important": 4755,
+    "hexInCss": 8855,
+    "rgbHslInCss": 2121,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
     "boxShadowDecls": 1107,
     "zIndexRawDecls": 257,
-    "borderRadiusPxDecls": 1221,
+    "borderRadiusPxDecls": 1202,
     "inlineColorStyleMatches": 48,
-    "rawButtonFiles": 107
+    "rawButtonFiles": 105
   },
-  "updatedAt": "2026-10-02T21:18:49.775Z"
+  "updatedAt": "2026-10-03T01:58:26.572Z"
 }
