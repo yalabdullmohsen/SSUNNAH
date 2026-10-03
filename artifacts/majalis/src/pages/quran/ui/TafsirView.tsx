@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { InternalLinkCard } from "@/components/ui/InternalCards";
+import { Button } from "@/components/ui/button";
 import {
   AlertTriangle,
   BookMarked,
@@ -295,17 +296,18 @@ export default function TafsirPage() {
       <div className="tf-controls">
         <div className="tf-cats" role="tablist" aria-label="تصفية حسب الباب">
           {TAFSIR_CATEGORIES.map((cat) => (
-            <button
+            <Button
               key={cat}
               role="tab"
               type="button"
+              variant="ghost"
               className={`tf-cat-chip${category === cat ? " tf-cat-chip--active" : ""}`}
               onClick={() => setCategory(cat)}
               aria-selected={category === cat}
             >
               {cat}
               <span className="tf-cat-chip__count">{toArabicDigits(categoryCounts[cat] ?? 0)}</span>
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -328,8 +330,9 @@ export default function TafsirPage() {
               const isOpen = openId === card.id;
               return (
                 <article key={card.id} className={`tf-card${isOpen ? " tf-card--open" : ""}`}>
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
                     className="tf-card__header"
                     onClick={() => setOpenId((prev) => (prev === card.id ? null : card.id))}
                     aria-expanded={isOpen}
@@ -339,7 +342,7 @@ export default function TafsirPage() {
                       <div className="tf-card__term">{card.title}</div>
                     </div>
                     {card.meta ? <span className="tf-card__meta">{card.meta}</span> : null}
-                  </button>
+                  </Button>
                   {isOpen ? (
                     <TextHighlightCapture
                       source="tafsir"

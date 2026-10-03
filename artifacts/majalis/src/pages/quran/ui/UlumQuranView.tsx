@@ -4,6 +4,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { InternalLinkCard } from "@/components/ui/InternalCards";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/ulum-quran.css";
 import { DashboardScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout, DefinitionBlock } from "@/components/knowledge";
@@ -250,19 +251,20 @@ export default function UlumQuranPage() {
     <KnowledgeLayout kind="knowledge" className="uq-page" data-kx="1" role="main">
       <div className="uq-tabs-bar" role="tablist" aria-label="أقسام علوم القرآن">
         {TABS.map((t) => (
-          <button
+          <Button
             key={t.id}
             id={`ulq-tab-${t.id}`}
             type="button"
+            variant="ghost"
             role="tab"
             className={`uq-tab${tab === t.id ? " uq-tab--active" : ""}`}
             onClick={() => setTab(t.id)}
             aria-selected={tab === t.id}
-              aria-controls={`ulq-panel-${t.id}`}
+            aria-controls={`ulq-panel-${t.id}`}
           >
             <span><SectionIcon name={t.icon} size={22} /></span>
             <span>{t.label}</span>
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -312,15 +314,16 @@ export default function UlumQuranPage() {
                 const isOpen = openJam === i;
                 return (
                   <div key={i} className={`uq-jam-card${isOpen ? " uq-jam-card--open" : ""}`}>
-                    <button
+                    <Button
                       type="button"
+                      variant="ghost"
                       className="uq-jam-head"
                       onClick={() => setOpenJam(isOpen ? null : i)}
                     >
                       <span className="uq-jam-num"><SectionIcon name={s.icon} size={22} /></span>
                       <span className="uq-jam-title">{s.stage}</span>
                       <span className={`uq-jam-chevron${isOpen ? " uq-jam-chevron--open" : ""}`}>▾</span>
-                    </button>
+                    </Button>
                     {isOpen && (
                       <ul className="uq-jam-body">
                         {s.items.map((item) => (

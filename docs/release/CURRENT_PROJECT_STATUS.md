@@ -48,6 +48,8 @@
 `VISUAL_SYSTEM_UNIFICATION_FINAL_WAVE` — `docs/audit/VISUAL_SYSTEM_UNIFICATION_WAVE_REPORT.md`  
 Metrics vs `origin/main`: hexInCss 8855→7026 · borderRadiusPx 1202→456 · boxShadow 1047→1026 · sfTokenRefs 794→1006 · btnHex 1698→1184 · **UNIFIED_PARTIAL** (closer to UNIFIED_100; not claimed).
 
+Phases I–L: `docs/audit/VISUAL_IJKL_BUTTON_FORM_IDENTITY_REPORT.md` · `docs/design/FORM_AUTHORITY_MAP.md` · rawButtonFiles 105→102 · rawButtonElements 463→457 · façades `LinkButton`/`ToggleButton` · FORM map APPROVED/LEGACY/SPECIAL_CASE.
+
 ## Endgame phases (A–H)
 
 | Phase | Target exit | Status |

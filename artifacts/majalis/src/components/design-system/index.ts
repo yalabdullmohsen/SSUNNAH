@@ -76,7 +76,7 @@ export {
 } from "./IdentitySurfaces";
 export { ContentCard, type ContentCardProps } from "./ContentCard";
 export { ActionButton, type ActionButtonProps } from "./ActionButton";
-export { PrimaryButton, SecondaryButton, IconButton } from "./Buttons";
+export { PrimaryButton, SecondaryButton, IconButton, LinkButton, ToggleButton } from "./Buttons";
 export { SettingsList, type SettingsListRow } from "./SettingsList";
 export {
   FormLabel,

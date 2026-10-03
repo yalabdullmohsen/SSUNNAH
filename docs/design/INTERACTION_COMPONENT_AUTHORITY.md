@@ -4,7 +4,7 @@
 |---|---|
 | Status | **AUTHORITY (Interaction PR-1)** |
 | Canonical button | `artifacts/majalis/src/components/ui/button.tsx` → `Button` |
-| Product façades | `ActionButton` / `PrimaryButton` / `SecondaryButton` / `IconButton` |
+| Product façades | `ActionButton` / `PrimaryButton` / `SecondaryButton` / `IconButton` / `LinkButton` / `ToggleButton` |
 | Back | `AppBackButton` (in-page preferred over floating) |
 | Baseline | `docs/design/SUNNAH_INTERACTION_SYSTEM_BASELINE.md` |
 | Mushaf tools | **MUSHAF_SPECIAL** — not migrated in general waves |
@@ -69,6 +69,8 @@ Aliases kept for compatibility: `variant="default"` → primary; `size="sm"|"def
 | `ActionButton` | `href` → Wouter `Link`; else → `Button` + legacy `ss-action-btn*` classes |
 | `PrimaryButton` / `SecondaryButton` | Thin wrappers over `ActionButton` |
 | `IconButton` | `Button` `size="icon"` + required `label` |
+| `LinkButton` | `Button` `variant="link"` — in-page link look (not route nav) |
+| `ToggleButton` | thin façade over `ui/toggle` |
 
 ## Migration rules
 
