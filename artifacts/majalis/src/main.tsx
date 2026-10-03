@@ -150,6 +150,10 @@ function loadNonCriticalCss() {
   void import("./styles/a11y-release-gate.css");
   void import("./styles/visual-enrichment.css");
   const loadHeavyIdentityCss = () => {
+    if (isHome) {
+      void import("./styles/sunnah-visual-language.css");
+      void import("./styles/sunnah-geometry-system.css");
+    }
     void import("./styles/design-system.css").then(() => {
       void import("./styles/brand-v4-components.css");
       // بعد design-system حتمًا حتى لا يفوز blur(20px) على final-release
@@ -188,10 +192,10 @@ function loadNonCriticalCss() {
     loadHeavyIdentityCss();
   }
   void import("./styles/components/instant-interaction.css");
-  void import("./styles/sunnah-visual-language.css");
-  void import("./styles/sunnah-geometry-system.css");
-  /* visual-refresh يغيّر هندسة الهيرو — خارج Home ATF */
+  /* Home ATF: svl/geometry تغيّر مقاس عنوان الهيرو → CLS — مع heavy فقط */
   if (!isHome) {
+    void import("./styles/sunnah-visual-language.css");
+    void import("./styles/sunnah-geometry-system.css");
     void import("./styles/visual-refresh-v1.css");
   }
   void import("./styles/components/native-feel.css");

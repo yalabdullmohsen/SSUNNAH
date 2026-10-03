@@ -167,10 +167,10 @@ html[data-ab="1"] .hus-field {
   }
 }
 
+:root{--m2030-pad:clamp(.85rem,3.5vw,1.35rem)}
 .m2030-hero.page-hero-mj,.home-page-hero.page-hero-mj,.home-page-hero.home-page-hero--compact.page-hero-mj,#mj-home-flow-hero-ph{box-sizing:border-box;min-height:18rem;overflow:visible;display:flex;align-items:center;justify-content:center;margin-inline:max(.75rem,var(--m2030-pad,1rem));margin-block:.25rem .75rem;padding:.85rem 1rem 1rem;border-radius:1.75rem;border:1px solid transparent;background:#0f5c45;color:#f7f1e4}
-#mj-home-flow-reserve{width:100%;box-sizing:border-box}
+#mj-home-flow-reserve{width:100%;box-sizing:border-box;padding-inline:var(--gutter-inline-start) var(--gutter-inline-end)}
 #mj-home-flow-start-band.home-start-here-band,.home-start-here-band.home-start-here-band--slim{margin:0;padding-inline:0;box-sizing:border-box}
-
 .home-page-hero .page-hero-mj__eyebrow{min-height:1.5rem;line-height:1.45;max-height:none;overflow:visible;white-space:nowrap;text-overflow:ellipsis}
 
 .home-page-hero .page-hero-mj__title{font-size:clamp(2.15rem,8vw,2.75rem);line-height:1.55;min-height:3.15rem;padding-block:.18em .12em;font-weight:800;overflow:visible}
@@ -222,18 +222,13 @@ html[data-ab="1"] .hus-field {
 }
 
 .mj-home-lcp-ph__daily-band,.daily-wird-card,[data-testid="daily-wird-card"]{min-height:28rem}
-.home-sacred-day--ph{min-height:6.25rem}
 .mj-home-primary-discovery-ph{min-height:22rem}
 .home-live-now-ph{min-height:3.25rem}
-.mj-home-below-fold-ph{min-height:8rem}
-.mj-home-lcp-ph__start-here{min-height:20rem}
+.mj-home-lcp-ph__start-here,.home-start-here,.home-start-here--slim,.home-start-here--compact,.home-start-here-band{min-height:20rem}
 .hus{width:min(100%,40rem);margin:.55rem auto .25rem}.mj-home-lcp-ph__search .hus-field,.hus-field{min-height:52px;padding:.35rem .85rem;box-sizing:border-box}
+.hsh-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;min-height:14rem;list-style:none;margin:.75rem 0 0;padding:0}.hsh-step{min-height:3.5rem;box-sizing:border-box}
 @media (min-width:880px){#main-content.app-main{padding-block-end:2rem}.bottom-nav,.bottom-nav--v2{display:none}}
-@media (min-width:720px){.mj-home-lcp-ph__daily-band{min-height:15rem}}
-.hsh-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;min-height:14rem;list-style:none;margin:.75rem 0 0;padding:0}
-.hsh-step{min-height:3.5rem;box-sizing:border-box}
-.home-start-here,.home-start-here--slim,.home-start-here--compact,.home-start-here-band{min-height:20rem}
-@media (min-width:720px){.hsh-steps{min-height:12rem}.home-start-here,.home-start-here--slim,.home-start-here--compact,.home-start-here-band{min-height:16rem}}
+@media (min-width:720px){.home-start-here,.home-start-here--slim,.home-start-here--compact,.home-start-here-band{min-height:16rem}}
 html:not(.app-hydrated) :is(.app-shell,.app-top-chrome,.bottom-nav,.bottom-nav--v2,.app-main,#main-content){transition:none!important;animation:none!important}
 #root,.app-shell{min-height:var(--app-vvh,100dvh)}
 
