@@ -1480,6 +1480,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
 
   return (
     <MushafPager
+            settled={pagerSettled}
       ref={metricsRootRef}
       page={page}
       onPageChange={go}

@@ -1575,6 +1575,15 @@ html[data-mushaf-appearance="night"] .nm-root .mm-audio-dock__reciter-btn,
   isolation: isolate;
 }
 
+/* WAVE debt-zero: ألواح ±1 المستقرة — تخفيف عمل التخطيط/الطلاء دون مساس بالنص */
+.nm-pager__sheet[data-pane="next"][data-settled="1"],
+.nm-pager__sheet[data-pane="prev"][data-settled="1"],
+.nm-root .mm-pager__sheet[data-pane="next"][data-settled="1"],
+.nm-root .mm-pager__sheet[data-pane="prev"][data-settled="1"] {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 100%;
+}
+
 /* قفل بكسل بعد measure — data-pager-w من useMushafPager */
 .nm-pager-scroller[data-pager-w] .nm-pager-track,
 .nm-root .mm-pager-scroller[data-pager-w] .mm-pager-track,

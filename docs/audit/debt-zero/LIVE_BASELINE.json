@@ -1,0 +1,34 @@
+{
+  "capturedAt": "2026-10-03T17:48:10.728511Z",
+  "mainShaAtProgramStart": "050179c3fd40f8ef2d3cff65bbfe6d7928860262",
+  "priorPRs": {
+    "2515": "e34fbe094",
+    "2516": "050179c3f"
+  },
+  "productionMatch": "UNVERIFIED_DNS_FROM_AGENT_ENV",
+  "beforeProgram": {
+    "hexInCss": 6956,
+    "inlineColorStyleMatches": 39,
+    "rawButtonElements": 360,
+    "rawButtonFiles": 84,
+    "mushafHotspots": 0,
+    "overlaySubscriptions": 1
+  },
+  "afterThisPR": {
+    "hexInCss": 6956,
+    "inlineColorStyleMatches": 39,
+    "rawButtonElements": 311,
+    "rawButtonFiles": 76,
+    "officialButtonImportFiles": 287,
+    "divSpanOnClick": 41,
+    "important": 4747,
+    "borderRadiusPxDecls": 392,
+    "note": "Mass hex-fallback strip reverted: failed on-brand-contrast + visual-snapshot without per-file parity proof"
+  },
+  "mushaf": {
+    "hotspots": 0,
+    "offPaneInertWhenSettled": true,
+    "contentVisibilityAutoOffPane": true,
+    "overlayKeysHook": true
+  }
+}

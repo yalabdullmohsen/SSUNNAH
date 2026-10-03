@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { adminGetSheikhs, adminUpsertSheikh, adminDeleteSheikh, uploadSheikhImage, deleteSheikhImage } from "@/lib/supabase";
 import { GOVERNORATES } from "@/lib/theme";
@@ -127,7 +128,7 @@ export function SheikhsSection() {
             })}
             onDone={load}
           />
-          <button type="button" onClick={openAdd} className="skh-add-btn">+ إضافة شيخ</button>
+          <Button variant="secondary" size="small" type="button" onClick={openAdd} className="skh-add-btn">+ إضافة شيخ</Button>
         </div>
       </div>
       <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="بحث في المشايخ..." className="adm-input skh-search" />
@@ -164,8 +165,8 @@ export function SheikhsSection() {
                   <td className="skh-td skh-td--center">{item.years_experience ?? "—"}</td>
                   <td className="skh-td">
                     <div className="skh-cell-actions">
-                      <button type="button" onClick={() => openEdit(item)} className="skh-btn-edit">تعديل</button>
-                      <button type="button" onClick={() => handleDelete(item.id, item.name)} className="skh-btn-del">حذف</button>
+                      <Button variant="secondary" size="small" type="button" onClick={() => openEdit(item)} className="skh-btn-edit">تعديل</Button>
+                      <Button variant="secondary" size="small" type="button" onClick={() => handleDelete(item.id, item.name)} className="skh-btn-del">حذف</Button>
                     </div>
                   </td>
                 </tr>
@@ -214,9 +215,9 @@ export function SheikhsSection() {
             <SheikhAvatar src={imagePreview || resolveSheikhImageUrl(form)} name={form.name || "شيخ"} size={96} />
             <div className="skh-img-actions">
               <input ref={fileInputRef} type="file" accept="image/png,image/jpeg,image/jpg,image/webp" hidden onChange={(e) => handleImagePick(e.target.files?.[0] || null)} />
-              <button type="button" className="skh-btn-edit" onClick={() => fileInputRef.current?.click()}>رفع صورة</button>
+              <Button variant="secondary" size="small" type="button" className="skh-btn-edit" onClick={() => fileInputRef.current?.click()}>رفع صورة</Button>
               {(imagePreview || resolveSheikhImageUrl(form)) && (
-                <button type="button" className="skh-btn-del" onClick={handleRemoveImage}>حذف الصورة</button>
+                <Button variant="secondary" size="small" type="button" className="skh-btn-del" onClick={handleRemoveImage}>حذف الصورة</Button>
               )}
               <span className="skh-img-hint">معاينة قبل الحفظ، تُرفع عند الضغط على «حفظ»</span>
             </div>

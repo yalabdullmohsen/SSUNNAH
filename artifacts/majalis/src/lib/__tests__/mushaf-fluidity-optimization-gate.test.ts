@@ -45,6 +45,13 @@ assert.doesNotMatch(overlay, /useMushafAyahPlayingKey\(/);
 assert.doesNotMatch(overlay, /useMushafAyahNavigationKey\(/);
 assert.match(page, /syncHighlights/);
 assert.match(reader, /syncHighlights=\{pagerSettled && role === "current"\}/);
+assert.match(reader, /settled=\{pagerSettled\}/);
+const pagerSrc = readPkg("src/features/mushaf-reader/MushafPager.tsx");
+assert.match(pagerSrc, /settled/);
+assert.match(pagerSrc, /\binert\b/);
+assert.match(pagerSrc, /data-settled/);
+const pagerCss = readPkg("src/features/mushaf-reader/mushaf-reader.css");
+assert.match(pagerCss, /content-visibility:\s*auto/);
 
 /* direction-aware opposite near idle */
 assert.match(reader, /fluidity:\s*opposite-near-idle/);

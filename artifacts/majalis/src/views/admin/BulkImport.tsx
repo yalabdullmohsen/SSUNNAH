@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 interface BulkImportProps {
   title: string;
@@ -61,7 +62,7 @@ export function BulkImport({ title, template, hint, importRow, onDone }: BulkImp
 
   return (
     <>
-      <button type="button" onClick={() => setOpen(true)} className="blk-trigger-btn">⇪ استيراد جماعي</button>
+      <Button variant="secondary" size="small" type="button" onClick={() => setOpen(true)} className="blk-trigger-btn">⇪ استيراد جماعي</Button>
 
       {open && (
         // نقر الخلفية للإغلاق مصحوب بمعالج Escape فعلي (أعلاه) وزر إغلاق ظاهر —
@@ -71,7 +72,7 @@ export function BulkImport({ title, template, hint, importRow, onDone }: BulkImp
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
           <div className="blk-dialog" onClick={e => e.stopPropagation()}>
             <div className="blk-header">
-              <button type="button" onClick={close} className="blk-close" aria-label="إغلاق">×</button>
+              <Button variant="secondary" size="small" type="button" onClick={close} className="blk-close" aria-label="إغلاق">×</Button>
               <h2 className="blk-title">{title}</h2>
             </div>
 
@@ -81,8 +82,8 @@ export function BulkImport({ title, template, hint, importRow, onDone }: BulkImp
                 {hint ? ` ${hint}` : ""}
               </p>
               <div className="blk-tool-row">
-                <button type="button" onClick={fillTemplate} className="blk-tmpl-btn">إدراج نموذج جاهز</button>
-                <button type="button" onClick={() => setText("")} className="blk-clear-btn">مسح</button>
+                <Button variant="secondary" size="small" type="button" onClick={fillTemplate} className="blk-tmpl-btn">إدراج نموذج جاهز</Button>
+                <Button variant="secondary" size="small" type="button" onClick={() => setText("")} className="blk-clear-btn">مسح</Button>
               </div>
               <textarea
                 className="blk-mono-textarea"
@@ -120,12 +121,12 @@ export function BulkImport({ title, template, hint, importRow, onDone }: BulkImp
             </div>
 
             <div className="blk-footer">
-              <button type="button" onClick={run} disabled={running || !text.trim()} className="blk-run-btn">
+              <Button variant="secondary" size="small" type="button" onClick={run} disabled={running || !text.trim()} className="blk-run-btn">
                 {running ? "جارٍ الاستيراد…" : "بدء الاستيراد"}
-              </button>
-              <button type="button" onClick={close} disabled={running} className="blk-cancel-btn">
+              </Button>
+              <Button variant="secondary" size="small" type="button" onClick={close} disabled={running} className="blk-cancel-btn">
                 {result ? "إغلاق" : "إلغاء"}
-              </button>
+              </Button>
             </div>
           </div>
         </div>

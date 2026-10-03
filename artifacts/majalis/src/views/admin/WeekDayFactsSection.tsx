@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { AdminModal, Field } from "./AdminModal";
 import { sanitizeText } from "@/lib/sanitize";
@@ -93,11 +94,11 @@ export function WeekDayFactsSection() {
     <div>
       <div className="mir-header">
         <h2 className="mir-title">أيام الأسبوع ({items.length})</h2>
-        <button
+        <Button variant="secondary" size="small"
           type="button"
           className="mir-add-btn"
           onClick={() => { setForm({ ...EMPTY }); setOpen(true); }}
-        >+ إضافة مادة</button>
+        >+ إضافة مادة</Button>
       </div>
 
       <p className="adm-empty-msg" style={{ marginBottom: "0.75rem" }}>
@@ -106,11 +107,11 @@ export function WeekDayFactsSection() {
       </p>
 
       <div className="fiqh-review-filters">
-        <button type="button" className={dayFilter === "all" ? "fiqh-review-filter--active" : ""} onClick={() => setDayFilter("all")}>الكل</button>
+        <Button variant="secondary" size="small" type="button" className={dayFilter === "all" ? "fiqh-review-filter--active" : ""} onClick={() => setDayFilter("all")}>الكل</Button>
         {DAY_ORDER.map((d) => (
-          <button key={d} type="button" className={dayFilter === d ? "fiqh-review-filter--active" : ""} onClick={() => setDayFilter(d)}>
+          <Button variant="secondary" size="small" key={d} type="button" className={dayFilter === d ? "fiqh-review-filter--active" : ""} onClick={() => setDayFilter(d)}>
             {WEEK_DAY_LABELS[d]}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -145,11 +146,11 @@ export function WeekDayFactsSection() {
                     <option key={s} value={s}>{WEEK_DAY_REVIEW_STATUS_LABELS[s]}</option>
                   ))}
                 </select>
-                <button type="button" onClick={() => { setForm({ ...item }); setOpen(true); }}>تعديل</button>
-                <button
+                <Button variant="secondary" size="small" type="button" onClick={() => { setForm({ ...item }); setOpen(true); }}>تعديل</Button>
+                <Button variant="secondary" size="small"
                   type="button"
                   onClick={async () => { if ((await confirm({ title: "تأكيد", body: "حذف نهائي لهذه المادة؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteWeekDayFact(item.id).then(load); }}
-                >حذف</button>
+                >حذف</Button>
               </div>
             </article>
           ))}

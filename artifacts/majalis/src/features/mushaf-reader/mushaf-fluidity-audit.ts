@@ -212,8 +212,14 @@ export function runMushafFluidityAudit(
     },
     {
       id: "DOM_WORDS_X3_COMPOSITE",
-      severity: 7,
-      evidence: "three interactive QPC sheets during pan",
+      severity: /content-visibility:\s*auto/.test(
+        readPkg("src/features/mushaf-reader/mushaf-reader.css"),
+      )
+        ? 5
+        : 7,
+      evidence: /inert/.test(readPkg("src/features/mushaf-reader/MushafPager.tsx"))
+        ? "three QPC sheets; off-pane inert+content-visibility when settled"
+        : "three interactive QPC sheets during pan",
       class: "MUSHAF_SPECIAL",
     },
     {
