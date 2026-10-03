@@ -340,9 +340,15 @@ console.log("=== Expansion PR-C Knowledge Dashboards ===");
   assert.match(fiqh, /knowledge-dashboards-v2\.css/);
   assert.match(fiqh, /EmptyStateV2/);
   assert.match(hadith, /knowledge-dashboards-v2\.css/);
-  /* HadithEmptyState wraps EmptyStateV2 — keep V2 contract via the shared component */
+  /* HadithEmptyState يوجّه إلى عائلة Feedback V2 (Empty/Error/Offline/NoResults) */
   assert.match(hadith, /HadithEmptyState/);
-  assert.match(read("src/components/hadith/HadithEmptyState.tsx"), /EmptyStateV2/);
+  {
+    const empty = read("src/components/hadith/HadithEmptyState.tsx");
+    assert.match(empty, /EmptyStateV2|ErrorStateV2|OfflineStateV2|NoResultsState/);
+    assert.match(empty, /ErrorStateV2/);
+    assert.match(empty, /OfflineStateV2/);
+    assert.match(empty, /NoResultsState/);
+  }
   assert.match(tawhid, /knowledge-dashboards-v2\.css/);
   const css = read("src/styles/pages/knowledge-dashboards-v2.css");
   assert.match(css, /data-v2-knowledge/);
@@ -372,7 +378,7 @@ console.log("=== Expansion PR-D Worship + Glossary + History ===");
   assert.match(adhkar, /EmptyStateV2/);
   assert.match(prayer, /worship-history-v2\.css/);
   assert.match(glossary, /worship-history-v2\.css/);
-  assert.match(glossary, /EmptyStateV2/);
+  assert.match(glossary, /EmptyStateV2|NoResultsState/);
   assert.match(tarikh, /worship-history-v2\.css/);
   assert.match(tarikh, /EmptyStateV2/);
   assert.match(salah, /worship-history-v2\.css/);

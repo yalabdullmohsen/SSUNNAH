@@ -1,4 +1,9 @@
-import { EmptyStateV2 } from "@/components/design-system";
+import {
+  EmptyStateV2,
+  ErrorStateV2,
+  NoResultsState,
+  OfflineStateV2,
+} from "@/components/design-system";
 
 export type HadithEmptyKind =
   | "no_results"
@@ -45,7 +50,7 @@ const SPECS: Record<HadithEmptyKind, Spec> = {
   network_required: {
     title: "هذه المجموعة تتطلب اتصالًا",
     description: "المحتوى غير مخزّن محليًا بالكامل ويعتمد على الكتالوج الشبكي.",
-    nextStep: "تصفّح الصحيحين المتاحين محليًا، أو افتح الأربعين النووية.",
+    nextStep: "تصفّح الصحيحين المتاحين محليًا، أو افتح مسار الأربعين النووية.",
     ctaLabel: "عرض أحاديث البخاري",
     href: "/hadith/sahih",
   },
@@ -73,7 +78,7 @@ const SPECS: Record<HadithEmptyKind, Spec> = {
 };
 
 /**
- * حالة فارغة موحّدة لقسم الحديث — عنوان + شرح + خطوة تالية + إجراء واحد مفيد.
+ * حالة حديث موحّدة — NoResults / Offline / Error حسب النوع (Feedback V2).
  */
 export function HadithEmptyState({
   kind,
@@ -82,50 +87,64 @@ export function HadithEmptyState({
   className = "",
 }: HadithEmptyStateProps) {
   const spec = SPECS[kind];
+  const cls = `hadith-empty-state${className ? ` ${className}` : ""}`;
 
-  let href = spec.href;
-  let onCtaClick: (() => void) | undefined;
-  let ctaLabel = spec.ctaLabel;
-
-  if (spec.useClear && onClearFilters) {
-    onCtaClick = onClearFilters;
-    href = undefined;
-  } else if (spec.useRetry && onRetry) {
-    onCtaClick = onRetry;
-    href = undefined;
-  } else if (spec.useClear && !onClearFilters) {
-    href = "/hadith/sahih";
-    ctaLabel = "عرض أحاديث البخاري";
-  } else if (spec.useRetry && !onRetry) {
-    href = "/arbaeen-nawawi";
-    ctaLabel = "فتح الأربعين النووية";
+  if (kind === "no_results" || kind === "filter_empty") {
+    return (
+      <NoResultsState
+        className={cls}
+        data-hadith-empty={kind}
+        title={spec.title}
+        description={`${spec.description} ${spec.nextStep}`}
+        clearLabel={spec.ctaLabel}
+        onClear={onClearFilters}
+      />
+    );
   }
 
-  // مسار بديل ثانوي عبر nextStep إن كان الإجراء مسح فلاتر
-  const nextStep =
-    kind === "network_required" || kind === "unavailable_locally"
-      ? `${spec.nextStep} · أو: فتح الأربعين النووية (/arbaeen-nawawi)`
-      : spec.nextStep;
+  if (kind === "network_required" || kind === "unavailable_locally") {
+    return (
+      <OfflineStateV2
+        className={cls}
+        data-hadith-empty={kind}
+        title={spec.title}
+        description={spec.description}
+        availableHint={`${spec.nextStep} · أو: الأربعين النووية (/arbaeen-nawawi)`}
+        onRetry={onRetry}
+        offlineCenterHref={spec.href ?? "/hadith/sahih"}
+        offlineCenterLabel={spec.ctaLabel}
+      />
+    );
+  }
 
+  if (kind === "network_failed" || kind === "load_failed") {
+    return (
+      <ErrorStateV2
+        className={cls}
+        data-hadith-empty={kind}
+        title={spec.title}
+        description={`${spec.description} ${spec.nextStep}`}
+        retryLabel={spec.ctaLabel}
+        onRetry={onRetry}
+        homeHref="/arbaeen-nawawi"
+        homeLabel="فتح الأربعين النووية"
+      />
+    );
+  }
+
+  /* احتياطي — عائلة EmptyStateV2 تبقى في العقد */
   return (
     <EmptyStateV2
-      className={`hadith-empty-state${className ? ` ${className}` : ""}`}
+      className={cls}
       data-hadith-empty={kind}
       title={spec.title}
       description={spec.description}
-      nextStep={nextStep}
-      ctaLabel={ctaLabel}
-      href={href}
-      onCtaClick={onCtaClick}
+      nextStep={spec.nextStep}
+      ctaLabel={spec.ctaLabel}
+      href={spec.href}
     />
   );
 }
 
-/** اختصارات إجراءات شائعة لربط الواجهة */
-export const HADITH_EMPTY_ACTIONS = {
-  clearFilters: "مسح عوامل التصفية",
-  bukhari: "عرض أحاديث البخاري",
-  muslim: "عرض أحاديث مسلم",
-  arbaeen: "فتح الأربعين النووية",
-  retry: "إعادة المحاولة",
-} as const;
+/** للتوافق مع المستوردين الذين يفضّلون تسمية Empty */
+export const HadithEmpty = HadithEmptyState;

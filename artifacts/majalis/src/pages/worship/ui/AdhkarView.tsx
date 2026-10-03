@@ -5,7 +5,7 @@ import { navigateTo } from "@/lib/navigation-intent";
 import { ADHKAR_CATEGORIES, FEATURED_ADHKAR_SLUGS } from "@/lib/adhkar-seed";
 import { usePublishedAdhkarItems, isPublishableAdhkar, getUnverifiedAdhkarItems } from "@/lib/adhkar-service";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
-import { EmptyStateV2 } from "@/components/design-system";
+import { EmptyStateV2, ErrorStateV2, LoadingStateV2 } from "@/components/design-system";
 import { PageShell } from "@/components/layout/PageShell";
 import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { adhkarCatRedirectPath, hrefAdhkar, resolveAdhkarCategory } from "@/lib/content-href";
@@ -302,9 +302,14 @@ export default function AdhkarPage() {
 
       {/* منطقة الذكر */}
       {isLoading && publishedItems.length === 0 ? (
-        <div className="adhkar-loading-hint" role="status" aria-busy="true" aria-label="تحديث الأذكار" />
+        <LoadingStateV2 title="تحديث الأذكار" skeletonLines={2} />
       ) : isError && publishedItems.length === 0 ? (
-        <EmptyStateV2 title="تعذّر التحميل" description={STATUS.loadError} />
+        <ErrorStateV2
+          title="تعذّر التحميل"
+          description={STATUS.loadError}
+          homeHref="/adhkar"
+          homeLabel="الأذكار"
+        />
       ) : total === 0 ? (
         <EmptyStateV2 title="لا أذكار هنا" description={EMPTY.data} />
       ) : current ? (

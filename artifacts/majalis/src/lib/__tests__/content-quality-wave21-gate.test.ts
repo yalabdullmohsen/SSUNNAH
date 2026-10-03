@@ -32,7 +32,7 @@ for (const [rel, re] of pages) {
   assert.ok(!src.includes("لم يُعثر على الحديث في المصادر"), `${rel} بلا حديث يدوي`);
 }
 
-/* كتب الحديث: حالة الشبكة عبر HadithEmptyState (يلفّ EmptyStateV2) بدل STATUS الخام */
+/* كتب الحديث: حالة الشبكة عبر HadithEmptyState (Feedback V2) بدل STATUS الخام */
 {
   const books = read("src/pages/hadith/ui/HadithBooksView.tsx");
   assert.match(books, /HadithEmptyState/, "HadithBooksView يستخدم HadithEmptyState");
@@ -40,7 +40,7 @@ for (const [rel, re] of pages) {
   assert.doesNotMatch(books, /description:\s*"لم يُعثر/);
   assert.ok(!books.includes("لم يُعثر على الحديث في المصادر"));
   const empty = read("src/components/hadith/HadithEmptyState.tsx");
-  assert.match(empty, /EmptyStateV2/);
+  assert.match(empty, /ErrorStateV2|OfflineStateV2|NoResultsState|EmptyStateV2/);
 }
 
 console.log("content-quality-wave21-gate.test.ts: ok");

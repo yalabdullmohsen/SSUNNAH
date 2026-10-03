@@ -1107,7 +1107,7 @@ html.dark .search-no-results__hint {
 .srch-chip {
   display: inline-flex;
   align-items: center;
-  min-height: 2rem;
+  min-height: var(--touch-min, 44px);
   padding: 0.2rem 0.7rem;
   border: 1px solid color-mix(in srgb, var(--mj-ink, #12201a) 12%, transparent);
   border-radius: var(--radius-pill, 999rem);

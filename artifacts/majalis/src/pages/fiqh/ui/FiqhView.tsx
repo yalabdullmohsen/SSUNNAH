@@ -28,7 +28,13 @@ import { SectionEntryCard } from "@/components/ui/HubCard";
 import { KnowledgeLayout, KnowledgeLibraryCard } from "@/components/knowledge";
 import { UnifiedPrimaryFilters } from "@/components/filters/UnifiedPrimaryFilters";
 import { GridScreen } from "@/components/design-system/screens";
-import { EmptyStateV2 } from "@/components/design-system";
+import {
+  EmptyStateV2,
+  ErrorStateV2,
+  LoadingStateV2,
+  NoResultsState,
+  OfflineStateV2,
+} from "@/components/design-system";
 import { isHiddenFromNav } from "@/lib/nav-visibility";
 import { useDebouncedValue } from "@/hooks/useDebouncedValue";
 import { FIQH_EMPTY, FIQH_SEARCH, SECTION_LEAD } from "@/lib/ui-copy-fiqh";
@@ -104,16 +110,20 @@ function SearchHitList({
   books,
   chapters,
   lessons,
+  onClearSearch,
 }: {
   books: FiqhBook[];
   chapters: FiqhChapterHit[];
   lessons: FiqhLessonHit[];
+  onClearSearch?: () => void;
 }) {
   if (books.length === 0 && chapters.length === 0 && lessons.length === 0) {
     return (
-      <EmptyStateV2
+      <NoResultsState
         title="لا نتائج"
         description={FIQH_EMPTY.search}
+        clearLabel="مسح البحث"
+        onClear={onClearSearch}
       />
     );
   }
@@ -212,12 +222,41 @@ function FiqhBooksBody() {
   );
 
   if (loadError) {
+    const offline = typeof navigator !== "undefined" && navigator.onLine === false;
+    if (offline) {
+      return (
+        <OfflineStateV2
+          title="تعذّر تحميل كتب الفقه دون اتصال"
+          description={loadError}
+          availableHint="عند عودة الاتصال أعد المحاولة. المباحث المساندة تبقى متاحة من القائمة."
+          onRetry={() => {
+            setLoadError(null);
+            setReady(false);
+            void ensureFiqhCatalogLoaded()
+              .then(() => setReady(true))
+              .catch(() => setLoadError("تعذّر تحميل كتب الفقه. أعد المحاولة لاحقًا."));
+          }}
+        />
+      );
+    }
     return (
-      <EmptyStateV2 title="تعذّر التحميل" description={loadError} />
+      <ErrorStateV2
+        title="تعذّر التحميل"
+        description={loadError}
+        onRetry={() => {
+          setLoadError(null);
+          setReady(false);
+          void ensureFiqhCatalogLoaded()
+            .then(() => setReady(true))
+            .catch(() => setLoadError("تعذّر تحميل كتب الفقه. أعد المحاولة لاحقًا."));
+        }}
+        homeHref="/hadith"
+        homeLabel="الحديث"
+      />
     );
   }
   if (!ready) {
-    return <div className="fiqh-hub-edu-note" role="status" aria-busy="true" />;
+    return <LoadingStateV2 title="تجهيز كتب الفقه" skeletonLines={3} />;
   }
 
   return (
@@ -254,6 +293,7 @@ function FiqhBooksBody() {
             books={searchResults.books}
             chapters={searchResults.chapters}
             lessons={searchResults.lessons}
+            onClearSearch={() => setQuery("")}
           />
         </section>
       ) : (

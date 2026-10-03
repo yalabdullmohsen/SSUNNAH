@@ -1,6 +1,5 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  AlertCircle,
   BookMarked,
   BookOpen,
   Clock3,
@@ -59,7 +58,7 @@ import "@/styles/pages/search.css";
 import "@/styles/pages/library-search-v2.css";
 import { ACTION, EMPTY, SEARCH, STATUS } from "@/lib/ui-copy";
 import { ListScreen } from "@/components/design-system/screens";
-import { NoResultsState, OfflineStateV2 } from "@/components/design-system";
+import { ErrorStateV2, NoResultsState, OfflineStateV2 } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/design-system/Buttons";
 
@@ -498,20 +497,14 @@ export default function SearchPage() {
             onRetry={() => void run(term, scope)}
           />
         ) : (
-          <div className="srch-error-inline" role="alert">
-            <AlertCircle size={16} strokeWidth={2} aria-hidden />
-            <div className="srch-error-inline__body">
-              <p className="srch-error-inline__title">{STATUS.loadError}</p>
-              <p className="srch-error-inline__reason">تعذّر تحديث النتائج. أعد المحاولة أو انتقل إلى قسم آخر.</p>
-              <div className="srch-error-inline__actions">
-                <Button type="button" variant="outline" size="small" className="srch-error-inline__retry" onClick={() => void run(term, scope)}>
-                  {ACTION.retry}
-                </Button>
-                <Link href="/mushaf" className="srch-error-inline__alt">المصحف</Link>
-                <Link href="/hadith" className="srch-error-inline__alt">الحديث</Link>
-              </div>
-            </div>
-          </div>
+          <ErrorStateV2
+            title={STATUS.loadError}
+            description="تعذّر تحديث النتائج. أعد المحاولة أو انتقل إلى المصحف أو الحديث."
+            retryLabel={ACTION.retry}
+            onRetry={() => void run(term, scope)}
+            homeHref="/hadith"
+            homeLabel="الحديث"
+          />
         )
       ) : null}
 
