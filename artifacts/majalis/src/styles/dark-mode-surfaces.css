@@ -959,7 +959,8 @@ html.dark .asp-hero__glow {
   opacity: 0 !important;
 }
 /* رجوع الهيرو — نص فاتح على سطح داكن (بوابة contrast)
- * يتجاوز modern-section-shell الذي يفرض var(--v2-color-ink) على bleed heroes. */
+ * --mj-brand-deep ليلاً = mint فاتح (#8FD4B0) للاستخدام كـ accent نصّي،
+ * لا كخلفية زر. الخلفية = --mj-brand-deep-surface فقط. */
 html[data-theme="dark"] .page-hero-mj__back,
 html.dark .page-hero-mj__back,
 html[data-theme="dark"] .app-back-btn--hero,
@@ -974,8 +975,8 @@ html[data-theme="dark"] .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-her
 html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--ghost {
   color: #f3efe6 !important;
   border-color: color-mix(in srgb, #f3efe6 32%, transparent) !important;
-  background: var(--mj-brand-deep) !important;
-  background-color: var(--mj-brand-deep) !important;
+  background: var(--mj-brand-deep-surface, #0e1c17) !important;
+  background-color: var(--mj-brand-deep-surface, #0e1c17) !important;
   background-image: none !important;
   text-shadow: none !important;
   opacity: 1 !important;

@@ -260,8 +260,9 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn.mj-
 html[data-theme="dark"] .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--ghost,
 html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--ghost {
   color: #f3efe6 !important;
-  background: var(--mj-brand-deep) !important;
-  background-color: var(--mj-brand-deep) !important;
+  /* ليلاً --mj-brand-deep mint فاتح؛ السطح الداكن فقط لـ AA على نص #f3efe6 */
+  background: var(--mj-brand-deep-surface, #0e1c17) !important;
+  background-color: var(--mj-brand-deep-surface, #0e1c17) !important;
   background-image: none !important;
   border-color: color-mix(in srgb, #f3efe6 32%, transparent) !important;
 }
