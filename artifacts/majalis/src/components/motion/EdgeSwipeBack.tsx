@@ -10,7 +10,8 @@ const LOCK_DX = 10;
 const MAX_DY_LOCK = 36;
 const COMMIT_RATIO = 0.32;
 const SCRIM_MAX = 0.38;
-const SPRING = "transform 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 280ms ease";
+const SPRING =
+  "transform var(--motion-duration-slow, 280ms) cubic-bezier(0.22, 1, 0.36, 1), opacity var(--motion-duration-slow, 280ms) ease";
 
 /**
  * سحب تفاعلي من حافة البداية (RTL: يمين) للرجوع — يتبع الإصبع،
@@ -28,6 +29,19 @@ export function EdgeSwipeBack() {
     let startY = 0;
     let tracking = false;
     let locked = false;
+    const pendingTimers = new Set<number>();
+    const schedule = (fn: () => void, ms: number) => {
+      const id = window.setTimeout(() => {
+        pendingTimers.delete(id);
+        fn();
+      }, ms);
+      pendingTimers.add(id);
+      return id;
+    };
+    const clearPendingTimers = () => {
+      for (const id of pendingTimers) window.clearTimeout(id);
+      pendingTimers.clear();
+    };
     let dx = 0;
     let rtl = true;
     let scrim: HTMLDivElement | null = null;
@@ -83,7 +97,7 @@ export function EdgeSwipeBack() {
           scrim.style.transition = "opacity 220ms ease";
           scrim.style.opacity = "0";
         }
-        window.setTimeout(() => {
+        schedule(() => {
           if (!main) return;
           main.style.transform = "";
           main.style.transition = "";
@@ -147,7 +161,7 @@ export function EdgeSwipeBack() {
       skipNextRouteMotion();
       void import("@/lib/haptics").then((m) => m.haptics.selection()).catch(() => undefined);
       goBackOrFallback(location);
-      window.setTimeout(() => {
+      schedule(() => {
         if (!main) return;
         main.style.transition = "none";
         main.style.transform = "";
@@ -176,7 +190,7 @@ export function EdgeSwipeBack() {
           scrim.style.transition = "opacity 240ms ease";
           scrim.style.opacity = "0";
         }
-        window.setTimeout(finishCommit, 280);
+        schedule(finishCommit, 280);
       } else {
         resetVisual(true);
       }
@@ -189,6 +203,7 @@ export function EdgeSwipeBack() {
     window.addEventListener("touchcancel", onEnd, { passive: true });
 
     return () => {
+      clearPendingTimers();
       window.removeEventListener("touchstart", onStart);
       window.removeEventListener("touchmove", onMove);
       window.removeEventListener("touchend", onEnd);

@@ -983,6 +983,49 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
 
   const closeActions = useCallback(() => setActionsOpen(false), []);
 
+  const onSearchSheetClose = useCallback(() => {
+    setSearchOpen(false);
+    setIndexOpen(false);
+  }, []);
+
+  const onSearchSheetGotoPage = useCallback(
+    (n: number, verseKey?: string) => {
+      if (verseKey) pendingSelectRef.current = verseKey;
+      go(n);
+      if (verseKey && n === page) {
+        pendingSelectRef.current = null;
+        setMushafAyahSearchHighlight(verseKey);
+        clearAyahSelection();
+        setSelectedVerseKey(null);
+        setActionsOpen(false);
+        setTafsirOpen(false);
+        setChromeOpen(false);
+        window.setTimeout(() => setMushafAyahSearchHighlight(null), 4000);
+      }
+    },
+    [go, page],
+  );
+
+  const onAudioDockPrev = useCallback(() => {
+    suppressPageSyncRef.current = false;
+    void getMushafAudioSessionOrNull()?.recitation.previousAyah();
+  }, []);
+
+  const onAudioDockNext = useCallback(() => {
+    suppressPageSyncRef.current = false;
+    void getMushafAudioSessionOrNull()?.recitation.nextAyah();
+  }, []);
+
+  const onAudioDockClose = useCallback(() => {
+    setAudioDockOpen(false);
+    setAudioDockMini(true);
+    getMushafAudioSessionOrNull()?.recitation.stop();
+  }, []);
+
+  const onAudioDockStop = useCallback(() => {
+    getMushafAudioSessionOrNull()?.recitation.stop();
+  }, []);
+
   const playSelected = useCallback(async () => {
     if (!selectedVerseKey) {
       setStatus("اختر آية أولاً");
@@ -1149,6 +1192,18 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       setStatus(STATUS.loadError);
     }
   }, [selectedVerseKey, versePreview]);
+
+  const onVerseMenuPlay = useCallback(() => {
+    void playSelected();
+  }, [playSelected]);
+
+  const onVerseMenuCopy = useCallback(() => {
+    void onCopy();
+  }, [onCopy]);
+
+  const onAudioDockTogglePlay = useCallback(() => {
+    void togglePlay();
+  }, [togglePlay]);
 
   const onBookmark = useCallback(() => {
     if (!selectedVerseKey) return;
@@ -1641,29 +1696,17 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
             iosHint={iosAudioHint}
             mini={audioDockMini}
             onMiniChange={setAudioDockMini}
-            onTogglePlay={() => void togglePlay()}
-            onPrev={() => {
-              suppressPageSyncRef.current = false;
-              void getMushafAudioSessionOrNull()?.recitation.previousAyah();
-            }}
-            onNext={() => {
-              suppressPageSyncRef.current = false;
-              void getMushafAudioSessionOrNull()?.recitation.nextAyah();
-            }}
+            onTogglePlay={onAudioDockTogglePlay}
+            onPrev={onAudioDockPrev}
+            onNext={onAudioDockNext}
             onReciterChange={(id) => void onReciterChange(id)}
             onPlayReciter={(id) => void onPlayReciter(id)}
             onRetry={() => void retryPlayback()}
             onSeek={(seconds) => getMushafAudioSessionOrNull()?.audio.seek(seconds)}
             onSpeed={(rate) => getMushafAudioSessionOrNull()?.audio.setPlaybackRate(rate)}
             onPlayRange={(range, repeat, delayMs) => void playRange(range, repeat, delayMs)}
-            onClose={() => {
-              setAudioDockOpen(false);
-              setAudioDockMini(true);
-              getMushafAudioSessionOrNull()?.recitation.stop();
-            }}
-            onStop={() => {
-              getMushafAudioSessionOrNull()?.recitation.stop();
-            }}
+            onClose={onAudioDockClose}
+            onStop={onAudioDockStop}
           />
         </Suspense>
       ) : null}
@@ -1738,9 +1781,9 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
           verseKey={selectedVerseKey}
           status={status}
           hasBookmark={selectedVerseHasBookmark}
-          onPlay={() => void playSelected()}
+          onPlay={onVerseMenuPlay}
           onTafsir={openTafsir}
-          onCopy={() => void onCopy()}
+          onCopy={onVerseMenuCopy}
           onBookmark={onBookmark}
           onDeleteBookmark={onDeleteBookmark}
           onClose={closeActions}
@@ -1786,24 +1829,8 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
           <MushafSearchSheet
             open={searchOpen || indexOpen}
             mode={indexOpen ? "index" : "search"}
-            onClose={() => {
-              setSearchOpen(false);
-              setIndexOpen(false);
-            }}
-            onGotoPage={(n, verseKey) => {
-              if (verseKey) pendingSelectRef.current = verseKey;
-              go(n);
-              if (verseKey && n === page) {
-                pendingSelectRef.current = null;
-                setMushafAyahSearchHighlight(verseKey);
-                clearAyahSelection();
-                setSelectedVerseKey(null);
-                setActionsOpen(false);
-                setTafsirOpen(false);
-                setChromeOpen(false);
-                window.setTimeout(() => setMushafAyahSearchHighlight(null), 4000);
-              }
-            }}
+            onClose={onSearchSheetClose}
+            onGotoPage={onSearchSheetGotoPage}
           />
         </Suspense>
       ) : null}

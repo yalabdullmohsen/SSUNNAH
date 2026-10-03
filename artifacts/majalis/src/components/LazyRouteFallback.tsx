@@ -16,6 +16,29 @@ export function LazyRouteFallback() {
   const adhkarShell = /^\/(adhkar|tasbih|duas)(\/|$)/.test(path);
   const lessonsShell = /^\/lessons(\/|$)/.test(path);
   const lessonDetail = /^\/lessons\/[^/]+/.test(path);
+  const mushafShell = /^\/mushaf(\/|$)/.test(path);
+  const hadithShell = /^\/(hadith|arbaeen-nawawi|hadith-science)(\/|$)/.test(path);
+  const fiqhShell = /^\/fiqh(\/|$)/.test(path);
+
+  const routeShell = mushafShell
+    ? "mushaf"
+    : prayerShell
+      ? "prayer"
+      : hadithShell
+        ? "hadith"
+        : fiqhShell
+          ? "fiqh"
+          : settingsShell
+            ? "settings"
+            : searchShell
+              ? "search"
+              : adhkarShell
+                ? "adhkar"
+                : lessonDetail
+                  ? "lesson-detail"
+                  : lessonsShell
+                    ? "lessons"
+                    : undefined;
 
   return (
     <div
@@ -33,6 +56,9 @@ export function LazyRouteFallback() {
         adhkarShell ? "lrf-wrap--adhkar" : "",
         lessonsShell ? "lrf-wrap--lessons" : "",
         lessonDetail ? "lrf-wrap--lesson-detail" : "",
+        mushafShell ? "lrf-wrap--mushaf" : "",
+        hadithShell ? "lrf-wrap--hadith" : "",
+        fiqhShell ? "lrf-wrap--fiqh" : "",
       ]
         .filter(Boolean)
         .join(" ")}
@@ -41,23 +67,13 @@ export function LazyRouteFallback() {
       aria-label={STATUS.updating}
       data-prophets-shell={prophetsShell ? "1" : undefined}
       data-route-fallback="1"
-      data-route-shell={
-        prayerShell
-          ? "prayer"
-          : settingsShell
-            ? "settings"
-            : searchShell
-              ? "search"
-              : adhkarShell
-                ? "adhkar"
-                : lessonDetail
-                  ? "lesson-detail"
-                  : lessonsShell
-                    ? "lessons"
-                    : undefined
-      }
+      data-route-shell={routeShell}
     >
-      {prayerShell ? (
+      {mushafShell ? (
+        <div className="lrf-skel lrf-skel--mushaf" aria-hidden="true" data-route-fallback="mushaf-boot">
+          <div className="lrf-skel__mushaf-plane" />
+        </div>
+      ) : prayerShell ? (
         <div
           className="pts-screen pts-screen--with-nav pts-screen--boot"
           aria-hidden="true"
@@ -72,6 +88,16 @@ export function LazyRouteFallback() {
             <div className="lrf-skel__row pts-boot-row" />
             <div className="lrf-skel__row pts-boot-row" />
           </div>
+        </div>
+      ) : hadithShell || fiqhShell ? (
+        <div
+          className={`lrf-skel lrf-skel--hub ${hadithShell ? "lrf-skel--hadith" : "lrf-skel--fiqh"}`}
+          aria-hidden="true"
+        >
+          <div className="lrf-skel__title" />
+          <div className="lrf-skel__line" />
+          <div className="lrf-skel__block" />
+          <div className="lrf-skel__block lrf-skel__block--short" />
         </div>
       ) : (
         <div className="lrf-skel lrf-skel--page" aria-hidden="true">

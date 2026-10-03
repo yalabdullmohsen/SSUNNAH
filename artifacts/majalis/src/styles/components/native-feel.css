@@ -118,19 +118,19 @@ html:is(.dark, [data-theme="dark"]) #main-content:is(.mj-route-enter, .mj-route-
   background: var(--mj-bg, #121816);
 }
 
-/* الاستمرارية: Fast Fade فقط — بلا انزلاق كبير أو Bounce */
+/* الاستمرارية: Fast Fade فقط — مدد عبر motion-policy مع fallback ضمن 90–180 */
 #main-content.mj-route-push > *,
 #main-content.mj-route-enter > * {
-  animation: mj-route-push-in 160ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation: mj-route-push-in var(--motion-duration-base, 160ms) cubic-bezier(0.32, 0.72, 0, 1) both;
 }
 #main-content.mj-route-pop > * {
-  animation: mj-route-pop-in 150ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation: mj-route-pop-in var(--motion-duration-base, 150ms) cubic-bezier(0.32, 0.72, 0, 1) both;
 }
 #main-content.mj-route-tab > * {
-  animation: mj-route-tab-in 120ms ease-out both;
+  animation: mj-route-tab-in var(--motion-duration-fast, 120ms) ease-out both;
 }
 #main-content.mj-route-modal > * {
-  animation: mj-route-modal-in 140ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation: mj-route-modal-in var(--motion-duration-fast, 140ms) cubic-bezier(0.32, 0.72, 0, 1) both;
 }
 
 /* سحب حافة تفاعلي */

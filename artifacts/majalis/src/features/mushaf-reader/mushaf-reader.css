@@ -816,7 +816,7 @@ html[data-theme="dark"] .nm-basmala.is-search-hit {
 
 .nm-ayah-sel__band--navigation {
   background: color-mix(in srgb, #E4DAB6 48%, transparent);
-  transition: opacity 600ms ease;
+  transition: opacity var(--motion-duration-slow, 280ms) ease;
 }
 .nm-ayah-sel__band--navigation.is-fading {
   opacity: 0;
