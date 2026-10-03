@@ -60,20 +60,31 @@ export async function mergeGuestStateToAccount(userId: string): Promise<GuestMer
       const remoteKeys = new Set(
         (remote ?? []).map((r) => `${r.content_type}::${r.content_id}`),
       );
-      for (const b of local) {
-        const key = `${b.contentType}::${b.contentId}`;
-        if (remoteKeys.has(key)) continue;
-        const { error } = await supabase.from("bookmarks").insert({
+      const toInsert = local
+        .filter((b) => !remoteKeys.has(`${b.contentType}::${b.contentId}`))
+        .map((b) => ({
           user_id: userId,
           content_type: b.contentType,
           content_id: b.contentId,
           title: b.title || null,
-        });
+        }));
+      if (toInsert.length) {
+        const { error } = await supabase.from("bookmarks").insert(toInsert);
         if (!error) {
-          result.bookmarksMerged += 1;
-          remoteKeys.add(key);
+          result.bookmarksMerged += toInsert.length;
+          for (const row of toInsert) remoteKeys.add(`${row.content_type}::${row.content_id}`);
         } else {
-          result.errors.push(`bookmark:${key}`);
+          // Fall back to per-row only on batch failure (constraint / RLS edge).
+          for (const row of toInsert) {
+            const key = `${row.content_type}::${row.content_id}`;
+            const { error: oneErr } = await supabase.from("bookmarks").insert(row);
+            if (!oneErr) {
+              result.bookmarksMerged += 1;
+              remoteKeys.add(key);
+            } else {
+              result.errors.push(`bookmark:${key}`);
+            }
+          }
         }
       }
     }
@@ -136,14 +147,23 @@ export async function mergeGuestStateToAccount(userId: string): Promise<GuestMer
   if (firstMerge) {
     try {
       const { listTextHighlights } = await import("@/lib/text-highlights");
-      const { addNote } = await import("@/lib/vault-service");
       const highlights = listTextHighlights().slice(0, 40);
-      for (const h of highlights) {
-        const body = [h.quote, h.note ? `\n— ${h.note}` : "", `\n(${h.sourceTitle})`]
-          .filter(Boolean)
-          .join("");
-        if (!body.trim()) continue;
-        await addNote(userId, { note_text: body.slice(0, 4000) });
+      const noteRows = highlights
+        .map((h) => {
+          const body = [h.quote, h.note ? `\n— ${h.note}` : "", `\n(${h.sourceTitle})`]
+            .filter(Boolean)
+            .join("");
+          return body.trim() ? { user_id: userId, note_text: body.slice(0, 4000) } : null;
+        })
+        .filter((r): r is { user_id: string; note_text: string } => Boolean(r));
+      if (noteRows.length) {
+        const { error } = await supabase.from("user_notes").insert(noteRows);
+        if (error) {
+          const { addNote } = await import("@/lib/vault-service");
+          for (const row of noteRows) {
+            await addNote(userId, { note_text: row.note_text });
+          }
+        }
       }
     } catch {
       result.errors.push("highlights");

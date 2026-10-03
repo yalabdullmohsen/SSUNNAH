@@ -41,7 +41,8 @@ const bundle = JSON.parse(readMaj("reports/database-excellence-engine.json"));
 assert.equal(bundle.DATABASE_HEATMAP_REPORT.DATABASE_PERFORMANCE_DEEP_AUDIT, true);
 assert.ok(bundle.DATABASE_HEATMAP_REPORT.schema.sqlFiles >= 10);
 assert.equal(bundle.QUERY_OPTIMIZATION_QUEUE.SUPABASE_QUERY_OPTIMIZATION, true);
-assert.ok(bundle.QUERY_OPTIMIZATION_QUEUE.counts.selectStar >= 1);
+// SELECT_STAR_ELIMINATION_PROGRAM: data-fetch select('*') must stay at zero.
+assert.equal(bundle.QUERY_OPTIMIZATION_QUEUE.counts.selectStar, 0);
 assert.equal(bundle.INDEX_AUTHORITY_REPORT.DATABASE_INDEX_STRATEGY_REVIEW, true);
 assert.equal(bundle.CACHE_OPTIMIZATION_PLAN.DATA_CACHING_STRATEGY_REVIEW, true);
 assert.equal(bundle.SUNNAH_DATABASE_HEALTH_SCORECARD.DATABASE_READINESS_CERTIFICATION, true);

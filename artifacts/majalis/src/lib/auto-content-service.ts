@@ -10,11 +10,17 @@ import type {
   TrustedSource,
 } from "@/lib/auto-content/auto-content-utils";
 import { mapContentTypeToUpdateType } from "@/lib/auto-content/auto-content-utils";
+import {
+  AUTO_IMPORTED_CONTENT_COLS,
+  AUTO_IMPORT_LOGS_COLS,
+  AUTO_IMPORT_RUNS_COLS,
+  TRUSTED_SOURCES_COLS,
+} from "@/lib/db-select-columns";
 
 export async function adminGetAutoImportedContent(status?: string) {
   let q = supabase
     .from("auto_imported_content")
-    .select("*")
+    .select(AUTO_IMPORTED_CONTENT_COLS)
     .order("created_at", { ascending: false });
 
   if (status && status !== "all") {
@@ -28,7 +34,7 @@ export async function adminGetAutoImportedContent(status?: string) {
 export async function adminGetTrustedSources() {
   const { data, error } = await supabase
     .from("trusted_sources")
-    .select("*")
+    .select(TRUSTED_SOURCES_COLS)
     .order("name");
   return { data: (data || []) as TrustedSource[], error };
 }
@@ -36,7 +42,7 @@ export async function adminGetTrustedSources() {
 export async function adminGetAutoImportLogs(limit = 30) {
   const { data, error } = await supabase
     .from("auto_import_logs")
-    .select("*")
+    .select(AUTO_IMPORT_LOGS_COLS)
     .order("created_at", { ascending: false })
     .limit(limit);
   return { data: (data || []) as AutoImportLog[], error };
@@ -45,7 +51,7 @@ export async function adminGetAutoImportLogs(limit = 30) {
 export async function adminGetAutoImportRuns(limit = 10) {
   const { data, error } = await supabase
     .from("auto_import_runs")
-    .select("*")
+    .select(AUTO_IMPORT_RUNS_COLS)
     .order("started_at", { ascending: false })
     .limit(limit);
   return { data: (data || []) as AutoImportRun[], error };
@@ -62,7 +68,7 @@ export async function adminApproveAutoContent(id: string) {
       updated_at: new Date().toISOString(),
     })
     .eq("id", id)
-    .select("*")
+    .select(AUTO_IMPORTED_CONTENT_COLS)
     .single();
   return { data: data as AutoImportedContent | null, error };
 }
@@ -77,7 +83,7 @@ export async function adminRejectAutoContent(id: string) {
       updated_at: new Date().toISOString(),
     })
     .eq("id", id)
-    .select("*")
+    .select(AUTO_IMPORTED_CONTENT_COLS)
     .single();
   return { data: data as AutoImportedContent | null, error };
 }

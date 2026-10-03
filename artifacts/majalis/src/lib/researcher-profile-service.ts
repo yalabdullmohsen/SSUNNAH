@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase";
+import { RESEARCHER_PROFILES_COLS } from "@/lib/db-select-columns";
 
 export type ResearcherProfile = {
   id: string;
@@ -16,7 +17,7 @@ export type ResearcherProfile = {
 export async function getResearcherProfile(userId: string): Promise<ResearcherProfile | null> {
   const { data } = await supabase
     .from("researcher_profiles")
-    .select("*")
+    .select(RESEARCHER_PROFILES_COLS)
     .eq("user_id", userId)
     .maybeSingle();
   return (data as ResearcherProfile | null) ?? null;

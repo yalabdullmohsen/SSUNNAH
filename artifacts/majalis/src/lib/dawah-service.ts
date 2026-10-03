@@ -8,6 +8,13 @@ import { supabase } from "@/lib/supabase";
 import { arabicSearchPatterns, arabicMatchAny, ilikePattern } from "@/lib/arabic-search";
 import type { Lang } from "@/lib/language-preference";
 import {
+  DAWAH_ARTICLES_COLS,
+  DAWAH_CONTACT_REQUESTS_COLS,
+  DAWAH_QUEUE_COLS,
+  DAWAH_SHUBUHAT_COLS,
+  NEW_MUSLIM_PATH_COLS,
+} from "@/lib/db-select-columns";
+import {
   getStaticArticleBySlug,
   getStaticQuestionBySlug,
   STATIC_DAWAH_CATEGORIES,
@@ -178,7 +185,14 @@ export async function getFeaturedQuestions(limit = 8): Promise<DawahQuestion[]> 
 }
 
 export async function getQuestionsByCategory(categorySlug?: string, limit = 50): Promise<DawahQuestion[]> {
-  let q = supabase.from("dawah_questions").select("*, dawah_categories!inner(slug)").match(PUBLISHED).order("title").limit(limit);
+  let q = supabase
+    .from("dawah_questions")
+    .select(
+      "id, category_id, slug, title, short_answer, detailed_answer, evidences, glossary_terms, sources, related_question_ids, keywords, target_religion, reviewed_at, updated_at, view_count, dawah_categories!inner(slug)",
+    )
+    .match(PUBLISHED)
+    .order("title")
+    .limit(limit);
   if (categorySlug) q = q.eq("dawah_categories.slug", categorySlug);
   const { data, error } = await q;
   if (error || !data?.length) {
@@ -253,7 +267,11 @@ export async function getFeaturedShubuhat(limit = 6): Promise<DawahShubha[]> {
 }
 
 export async function getShubuhatByCategory(categorySlug?: string, complexity?: string): Promise<DawahShubha[]> {
-  let q = supabase.from("dawah_shubuhat").select("*, dawah_categories!inner(slug)").match(PUBLISHED).order("title");
+  let q = supabase
+    .from("dawah_shubuhat")
+    .select(`${DAWAH_SHUBUHAT_COLS}, dawah_categories!inner(slug)`)
+    .match(PUBLISHED)
+    .order("title");
   if (categorySlug) q = q.eq("dawah_categories.slug", categorySlug);
   if (complexity) q = q.eq("complexity_level", complexity);
   const { data, error } = await q;
@@ -266,13 +284,18 @@ export async function getShubuhatByCategory(categorySlug?: string, complexity?: 
 }
 
 export async function getShubhaBySlug(slug: string): Promise<DawahShubha | null> {
-  const { data, error } = await supabase.from("dawah_shubuhat").select("*").eq("slug", slug).match(PUBLISHED).maybeSingle();
+  const { data, error } = await supabase.from("dawah_shubuhat").select(DAWAH_SHUBUHAT_COLS).eq("slug", slug).match(PUBLISHED).maybeSingle();
   if (error || !data) return getStaticShubhaBySlug(slug);
   return data as DawahShubha;
 }
 
 export async function getArticlesByCategory(categorySlug?: string, limit = 30): Promise<DawahArticle[]> {
-  let q = supabase.from("dawah_articles").select("*, dawah_categories!inner(slug)").match(PUBLISHED).order("created_at", { ascending: false }).limit(limit);
+  let q = supabase
+    .from("dawah_articles")
+    .select(`${DAWAH_ARTICLES_COLS}, dawah_categories!inner(slug)`)
+    .match(PUBLISHED)
+    .order("created_at", { ascending: false })
+    .limit(limit);
   if (categorySlug) q = q.eq("dawah_categories.slug", categorySlug);
   const { data, error } = await q;
   if (error || !data?.length) {
@@ -282,7 +305,7 @@ export async function getArticlesByCategory(categorySlug?: string, limit = 30): 
 }
 
 export async function getArticleBySlug(slug: string): Promise<DawahArticle | null> {
-  const { data, error } = await supabase.from("dawah_articles").select("*").eq("slug", slug).match(PUBLISHED).maybeSingle();
+  const { data, error } = await supabase.from("dawah_articles").select(DAWAH_ARTICLES_COLS).eq("slug", slug).match(PUBLISHED).maybeSingle();
   if (error || !data) return getStaticArticleBySlug(slug);
   return data as DawahArticle;
 }
@@ -290,7 +313,7 @@ export async function getArticleBySlug(slug: string): Promise<DawahArticle | nul
 export async function getNewMuslimPath(audience: "all" | "men" | "women" = "all"): Promise<NewMuslimDay[]> {
   const { data, error } = await supabase
     .from("new_muslim_path")
-    .select("*")
+    .select(NEW_MUSLIM_PATH_COLS)
     .match(PUBLISHED)
     .in("audience", audience === "all" ? ["all"] : ["all", audience])
     .order("day_number");
@@ -357,7 +380,8 @@ export async function submitDawahContactRequest(payload: ContactRequestPayload):
 /* ── إدارة ── */
 
 export async function adminListDawahQueue(table: "dawah_questions" | "dawah_shubuhat" | "dawah_articles" | "new_muslim_path") {
-  const { data, error } = await supabase.from(table).select("*").neq("status", "published").order("created_at", { ascending: false });
+  const cols = DAWAH_QUEUE_COLS[table] || "id, status, created_at";
+  const { data, error } = await supabase.from(table).select(cols).neq("status", "published").order("created_at", { ascending: false });
   return { data: data || [], error };
 }
 
@@ -377,7 +401,7 @@ export async function adminUpdateDawahStatus(
 }
 
 export async function adminListContactRequests(status?: string) {
-  let q = supabase.from("dawah_contact_requests").select("*").order("created_at", { ascending: false });
+  let q = supabase.from("dawah_contact_requests").select(DAWAH_CONTACT_REQUESTS_COLS).order("created_at", { ascending: false });
   if (status) q = q.eq("status", status);
   const { data, error } = await q;
   return { data: data || [], error };

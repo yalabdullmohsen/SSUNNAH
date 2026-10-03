@@ -9,6 +9,7 @@
  *     بقية أقسام لوحة الإدارة في هذا المشروع (adminUpsertLibraryItem وغيرها).
  */
 import { supabase } from "@/lib/supabase";
+import { ASSESSMENTS_COLS, PREREQUISITES_COLS, TABLE_COLS } from "@/lib/db-select-columns";
 
 export type AdminPath = {
   id: string;
@@ -123,17 +124,21 @@ export type AdminQuestion = {
 type Res<T> = Promise<{ data: T | null; error: { message: string } | null }>;
 
 async function fetchList<T>(table: string, match: Record<string, string>, orderCol = "sort_order"): Res<T[]> {
-  let q = supabase.from(table).select("*");
+  const cols = TABLE_COLS[table];
+  if (!cols) throw new Error(`missing column list for ${table}`);
+  let q = supabase.from(table).select(cols);
   for (const [k, v] of Object.entries(match)) q = q.eq(k, v);
   const { data, error } = await q.order(orderCol, { ascending: true });
-  return { data: (data as T[]) ?? null, error };
+  return { data: ((data as unknown) as T[]) ?? null, error };
 }
 
 async function upsertRow<T extends { id?: string }>(table: string, row: T): Res<T> {
   const { id, ...rest } = row as any;
   const payload = id ? { id, ...rest } : rest;
-  const { data, error } = await supabase.from(table).upsert(payload).select("*").single();
-  return { data: data as T, error };
+  const cols = TABLE_COLS[table];
+  if (!cols) throw new Error(`missing column list for ${table}`);
+  const { data, error } = await supabase.from(table).upsert(payload).select(cols).single();
+  return { data: (data as unknown) as T, error };
 }
 
 async function deleteRow(table: string, id: string): Res<null> {
@@ -178,7 +183,7 @@ export async function adminAddPrerequisite(courseId: string, requiresCourseId: s
   const { data, error } = await supabase
     .from("prerequisites")
     .insert({ course_id: courseId, requires_course_id: requiresCourseId })
-    .select("*")
+    .select(PREREQUISITES_COLS)
     .single();
   return { data: data as AdminPrerequisite, error };
 }
@@ -211,7 +216,7 @@ export async function adminFetchAssessments(
   scopeId: string,
 ): Res<AdminAssessment[]> {
   const col = scopeType === "course" ? "course_id" : scopeType === "stage" ? "stage_id" : "path_id";
-  const { data, error } = await supabase.from("assessments").select("*").eq(col, scopeId).order("created_at");
+  const { data, error } = await supabase.from("assessments").select(ASSESSMENTS_COLS).eq(col, scopeId).order("created_at");
   return { data: (data as AdminAssessment[]) ?? null, error };
 }
 
@@ -261,23 +266,34 @@ export async function adminValidateCourseForPublish(courseId: string): Promise<P
     errors.push("لا يوجد عنصر تعلّم إلزامي واحد على الأقل — لا يمكن حساب الاجتياز بلا محتوى إلزامي");
   }
   const requiredAssessmentItems = requiredItems.filter((i: any) => i.item_type === "assessment" && i.assessment_id);
-  for (const item of requiredAssessmentItems) {
-    const { data: assessment } = await supabase
+  const assessmentIds = [
+    ...new Set(requiredAssessmentItems.map((i: any) => String(i.assessment_id)).filter(Boolean)),
+  ];
+  if (assessmentIds.length > 0) {
+    const { data: assessments } = await supabase
       .from("assessments")
       .select("id, status")
-      .eq("id", (item as any).assessment_id)
-      .maybeSingle();
-    if (!assessment || assessment.status !== "published") {
-      errors.push("يوجد عنصر اختبار إلزامي مرتبط بتقييم غير منشور بعد");
-      continue;
-    }
-    const { count } = await supabase
+      .in("id", assessmentIds);
+    const statusById = new Map((assessments ?? []).map((a: any) => [String(a.id), a.status]));
+    const { data: questionRows } = await supabase
       .from("assessment_questions")
-      .select("id", { count: "exact", head: true })
-      .eq("assessment_id", (item as any).assessment_id)
+      .select("assessment_id")
+      .in("assessment_id", assessmentIds)
       .eq("is_approved", true);
-    if (!count) {
-      errors.push("يوجد اختبار إلزامي بلا أي سؤال معتمد (is_approved) — لن يستطيع أي طالب اجتيازه");
+    const approvedCount = new Map<string, number>();
+    for (const row of questionRows ?? []) {
+      const id = String((row as any).assessment_id);
+      approvedCount.set(id, (approvedCount.get(id) ?? 0) + 1);
+    }
+    for (const item of requiredAssessmentItems) {
+      const id = String((item as any).assessment_id);
+      if (statusById.get(id) !== "published") {
+        errors.push("يوجد عنصر اختبار إلزامي مرتبط بتقييم غير منشور بعد");
+        continue;
+      }
+      if (!(approvedCount.get(id) ?? 0)) {
+        errors.push("يوجد اختبار إلزامي بلا أي سؤال معتمد (is_approved) — لن يستطيع أي طالب اجتيازه");
+      }
     }
   }
   return { ok: errors.length === 0, errors };

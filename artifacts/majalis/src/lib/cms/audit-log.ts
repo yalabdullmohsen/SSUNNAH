@@ -1,6 +1,7 @@
 import { getSupabaseClient } from "@/lib/supabase-bootstrap";
 import { logSupabaseError } from "@/lib/supabase-config";
 import type { CmsContentKind } from "./content-types";
+import { ADMIN_AUDIT_LOGS_COLS } from "@/lib/db-select-columns";
 
 export type AuditAction =
   | "create"
@@ -65,7 +66,7 @@ export async function getAuditLogsForRecord(tableName: string, recordId: string,
   const supabase = client();
   const { data, error } = await supabase
     .from("admin_audit_logs")
-    .select("*")
+    .select(ADMIN_AUDIT_LOGS_COLS)
     .eq("table_name", tableName)
     .eq("record_id", recordId)
     .order("created_at", { ascending: false })

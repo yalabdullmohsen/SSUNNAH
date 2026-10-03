@@ -1001,8 +1001,11 @@ export async function adminResolveReport(id: string) {
   return await supabase.from("error_reports").update({ status: "resolved" }).eq("id", id);
 }
 
+const SHEIKH_ADMIN_COLS =
+  "id, name, bio, biography, city, photo_url, image_url, years_experience, is_verified, specialties, qualifications, ijazah, created_at, updated_at";
+
 export async function adminGetSheikhs() {
-  return adminFetchAll("sheikhs", "*", "name", true);
+  return adminFetchAll("sheikhs", SHEIKH_ADMIN_COLS, "name", true);
 }
 
 export async function adminUpsertSheikh(data: any) {
@@ -1082,7 +1085,7 @@ export async function adminGetLessons(page = 0, pageSize = 500) {
   const to   = from + pageSize - 1;
   const { data, error, count } = await supabase
     .from("lessons")
-    .select("*, sheikhs(name)", { count: "exact" })
+    .select(`${LESSON_DETAIL_COLUMNS}, sheikhs(name)`, { count: "exact" })
     .order("created_at", { ascending: false })
     .range(from, to);
   return { data: data || [], error, count: count ?? 0 };
@@ -1157,8 +1160,11 @@ export async function adminDeleteLesson(id: string) {
   return await supabase.from("lessons").delete().eq("id", id).select("id");
 }
 
+const LIBRARY_ADMIN_COLS =
+  "id, title, author, category, item_type, description, status, sheikh_id, created_at, updated_at, sheikhs(name)";
+
 export async function adminGetLibrary() {
-  return adminFetchAll("library_items", "*, sheikhs(name)");
+  return adminFetchAll("library_items", LIBRARY_ADMIN_COLS);
 }
 
 export async function adminUpsertLibraryItem(data: any) {
@@ -1172,8 +1178,10 @@ export async function adminDeleteLibraryItem(id: string) {
   return await supabase.from("library_items").delete().eq("id", id);
 }
 
+const MIRACLES_ADMIN_COLS = "id, title, category, body, summary, status, created_at, updated_at";
+
 export async function adminGetMiracles() {
-  return adminFetchAll("scientific_miracles", "*");
+  return adminFetchAll("scientific_miracles", MIRACLES_ADMIN_COLS);
 }
 
 export async function adminUpsertMiracle(data: any) {
@@ -1186,8 +1194,10 @@ export async function adminDeleteMiracle(id: string) {
   return await supabase.from("scientific_miracles").delete().eq("id", id);
 }
 
+const FAWAID_ADMIN_COLS = "id, text, author_name, source_name, status, created_at, updated_at";
+
 export async function adminGetAllFawaid() {
-  return adminFetchAll("fawaid", "*");
+  return adminFetchAll("fawaid", FAWAID_ADMIN_COLS);
 }
 
 export async function adminUpsertFawaid(data: any) {
@@ -1210,7 +1220,10 @@ export async function adminDeleteFawaid(id: string) {
 }
 
 export async function adminGetUsers() {
-  return adminFetchAll("profiles", "*");
+  return adminFetchAll(
+    "profiles",
+    "id, full_name, city, points, level, role, created_at, updated_at",
+  );
 }
 
 /**
@@ -1307,8 +1320,11 @@ export async function getQaQuestions({ categoryId, search }: { categoryId?: stri
   return { data: result, error: null, usingDemo: false };
 }
 
+const QA_ADMIN_COLS =
+  "id, question, answer, evidence, reference, review_status, status, ruling_type, category_id, created_at, updated_at, qa_categories(name, slug)";
+
 export async function adminGetQuestions() {
-  return adminFetchAll("qa_questions", "*, qa_categories(name, slug)");
+  return adminFetchAll("qa_questions", QA_ADMIN_COLS);
 }
 
 export async function adminUpsertQuestion(data: any) {
@@ -1414,7 +1430,10 @@ export async function getQuizQuestions({ section, level }: { section?: string; l
 }
 
 export async function adminGetQuizQuestions() {
-  return adminFetchAll("quiz_questions", "*");
+  return adminFetchAll(
+    "quiz_questions",
+    "id, section, category, level, question, answer, hint, is_published, is_used, created_at, updated_at",
+  );
 }
 
 export async function adminUpsertQuizQuestion(data: any) {

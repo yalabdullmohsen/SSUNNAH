@@ -1,6 +1,6 @@
 # CACHE_OPTIMIZATION_PLAN
 
-Generated: 2026-10-03T09:21:33.294Z
+Generated: 2026-10-03T10:38:11.770Z
 
 ## React Query
 
@@ -11,7 +11,7 @@ Generated: 2026-10-03T09:21:33.294Z
 | gcTime ms | 900000 |
 | useQuery sites ≈ | 5 |
 | custom staleTime files | 4 |
-| duplicate fetch risk | HIGH |
+| duplicate fetch risk | MODERATE |
 
 ## Realtime
 

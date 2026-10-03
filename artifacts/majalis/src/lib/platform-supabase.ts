@@ -1,5 +1,6 @@
 import { supabase } from "./supabase";
 import { logSupabaseError } from "./supabase-config";
+import { ANNUAL_COURSES_COLS, PLATFORM_UPDATES_COLS, SHARIA_RULINGS_COLS } from "@/lib/db-select-columns";
 
 const now = () => new Date().toISOString();
 
@@ -11,7 +12,7 @@ const now = () => new Date().toISOString();
 // ─── Rulings Admin ───────────────────────────────────────────────────────────
 
 export async function adminGetAllRulings() {
-  const { data, error } = await supabase.from("sharia_rulings").select("*").order("created_at", { ascending: false });
+  const { data, error } = await supabase.from("sharia_rulings").select(SHARIA_RULINGS_COLS).order("created_at", { ascending: false });
   if (error) logSupabaseError("adminGetAllRulings", error);
   return { data: data || [], error };
 }
@@ -29,7 +30,7 @@ export async function adminDeleteRuling(id: string) {
 // ─── Annual Courses Admin ────────────────────────────────────────────────────
 
 export async function adminGetAllAnnualCourses() {
-  const { data, error } = await supabase.from("annual_courses").select("*").order("created_at", { ascending: false });
+  const { data, error } = await supabase.from("annual_courses").select(ANNUAL_COURSES_COLS).order("created_at", { ascending: false });
   if (error) logSupabaseError("adminGetAllAnnualCourses", error);
   return { data: data || [], error };
 }
@@ -47,7 +48,7 @@ export async function adminDeleteAnnualCourse(id: string) {
 // ─── Updates Admin ───────────────────────────────────────────────────────────
 
 export async function adminGetAllUpdates() {
-  const { data, error } = await supabase.from("platform_updates").select("*").order("published_at", { ascending: false });
+  const { data, error } = await supabase.from("platform_updates").select(PLATFORM_UPDATES_COLS).order("published_at", { ascending: false });
   if (error) logSupabaseError("adminGetAllUpdates", error);
   return { data: data || [], error };
 }

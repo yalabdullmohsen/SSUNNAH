@@ -5,6 +5,7 @@
  * وprogress_log وقت الطلب (نفس مبدأ محرك المسارات العلمية).
  */
 import { supabase } from "@/lib/supabase";
+import { BOOK_READING_PLANS_COLS } from "@/lib/db-select-columns";
 
 export type PlanStatus =
   | "draft" | "not_started" | "in_progress" | "ahead" | "behind"
@@ -169,7 +170,7 @@ export function estimatePlanFeasibility(params: {
 export async function fetchUserPlans(userId: string): Promise<BookReadingPlan[]> {
   const { data } = await supabase
     .from("book_reading_plans")
-    .select("*")
+    .select(BOOK_READING_PLANS_COLS)
     .eq("user_id", userId)
     .neq("status", "cancelled")
     .order("created_at", { ascending: false });
@@ -202,7 +203,7 @@ export async function createPlan(userId: string, params: {
       include_review_days: params.includeReviewDays,
       status: "not_started",
     })
-    .select("*")
+    .select(BOOK_READING_PLANS_COLS)
     .single();
   if (error) throw error;
   return data as BookReadingPlan;
@@ -210,7 +211,7 @@ export async function createPlan(userId: string, params: {
 
 /** تسجيل صفحات مُنجَزة اليوم — يحدّث current_page وprogress_log والحالة. */
 export async function logReadingProgress(planId: string, pagesReadToday: number, date = new Date().toISOString().slice(0, 10)): Promise<void> {
-  const { data: plan } = await supabase.from("book_reading_plans").select("*").eq("id", planId).maybeSingle();
+  const { data: plan } = await supabase.from("book_reading_plans").select(BOOK_READING_PLANS_COLS).eq("id", planId).maybeSingle();
   if (!plan) return;
   const p = plan as BookReadingPlan;
   const log = [...(p.progress_log ?? []).filter((e) => e.date !== date), { date, pages_read: pagesReadToday }];

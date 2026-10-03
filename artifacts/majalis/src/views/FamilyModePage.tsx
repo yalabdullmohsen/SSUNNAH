@@ -8,6 +8,7 @@ import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/family-mode.css";
 import { EMPTY } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
+import { FAMILY_LINKS_COLS } from "@/lib/db-select-columns";
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
 
@@ -50,7 +51,7 @@ function ParentView({ userId }: { userId: string }) {
   const loadLinks = async () => {
     const { data } = await supabase
       .from("family_links")
-      .select("*")
+      .select(FAMILY_LINKS_COLS)
       .eq("parent_id", userId)
       .neq("status", "revoked")
       .order("created_at", { ascending: false });
@@ -226,7 +227,7 @@ function ChildView({ userId }: { userId: string }) {
   useEffect(() => {
     supabase
       .from("family_links")
-      .select("*")
+      .select(FAMILY_LINKS_COLS)
       .eq("child_id", userId)
       .eq("status", "active")
       .maybeSingle()
@@ -240,7 +241,7 @@ function ChildView({ userId }: { userId: string }) {
     setError("");
     const { data: link, error: fetchErr } = await supabase
       .from("family_links")
-      .select("*")
+      .select(FAMILY_LINKS_COLS)
       .eq("invite_code", trimmed)
       .eq("status", "pending")
       .maybeSingle();

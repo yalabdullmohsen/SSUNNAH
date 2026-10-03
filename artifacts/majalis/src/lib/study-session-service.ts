@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase";
+import { STUDY_SESSIONS_COLS } from "@/lib/db-select-columns";
 
 export type StudySession = {
   id: string;
@@ -56,7 +57,7 @@ export async function getDailyStudyStats(userId: string): Promise<DailyStudyStat
 export async function getRecentSessions(userId: string, limit = 10): Promise<StudySession[]> {
   const { data } = await supabase
     .from("study_sessions")
-    .select("*")
+    .select(STUDY_SESSIONS_COLS)
     .eq("user_id", userId)
     .order("created_at", { ascending: false })
     .limit(limit);

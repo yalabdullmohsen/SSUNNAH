@@ -356,6 +356,7 @@ export async function runImportJob(
     jobId = job?.id;
   }
 
+  const jobRowBuffer: Record<string, unknown>[] = [];
   for (let i = 0; i < rows.length; i++) {
     const cleaned = { ...rows[i] };
     for (const key of Object.keys(cleaned)) {
@@ -382,7 +383,7 @@ export async function runImportJob(
     else if (result.action === "error") summary.errors++;
 
     if (jobId && isSupabaseConfigured()) {
-      await supabase.from("import_job_rows").insert({
+      jobRowBuffer.push({
         job_id: jobId,
         row_index: i,
         external_key: record.external_key,
@@ -392,6 +393,13 @@ export async function runImportJob(
         message: result.message,
         raw_payload: cleaned,
       });
+    }
+  }
+  // Batch import_job_rows — content upserts stay ordered for dedup side-effects.
+  if (jobId && isSupabaseConfigured() && jobRowBuffer.length) {
+    const CHUNK = 100;
+    for (let i = 0; i < jobRowBuffer.length; i += CHUNK) {
+      await supabase.from("import_job_rows").insert(jobRowBuffer.slice(i, i + CHUNK));
     }
   }
 
