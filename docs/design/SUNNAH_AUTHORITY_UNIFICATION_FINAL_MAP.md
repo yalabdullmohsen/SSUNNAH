@@ -75,6 +75,18 @@ Map: `docs/design/LIST_AUTHORITY_MAP.md`.
 Cards + tables + lists + `StatusBadge` + `FilterChips` + SsText metadata.  
 Doc: `docs/design/DATA_PRESENTATION_AUTHORITY.md`. Gate: `test:table-list-authority`.
 
+## Modal / Overlay Authority
+
+Canonical: `Dialog` · `AlertDialog` · product `ConfirmDialog` · `AppBottomSheet` / `Sheet`.  
+Maps: `MODAL_AUTHORITY_MAP.md` · `OVERLAY_AUTHORITY_MAP.md`.  
+AdminConfirmDialog / Mushaf sheets = SPECIAL_CASE. Gate: `test:overlay-feedback-authority`.
+
+## Feedback / Status Authority
+
+Feedback V2 states + `Alert` + FieldError + StatusBadge.  
+Maps: `FEEDBACK_AUTHORITY_MAP.md` · `STATUS_AUTHORITY_MAP.md`.  
+Exit: `FEEDBACK_AUTHORITY_ONLY` · `STATUS_AUTHORITY_ONLY`.
+
 ## Page Authority
 
 Canonical: `AppPage` · `PageHeader` · Screen adapters (`DetailScreen`, …) per `PAGE_CONTRACT_MATRIX.md`.

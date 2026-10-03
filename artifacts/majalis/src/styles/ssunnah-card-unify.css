@@ -245,3 +245,9 @@ table.ss-data-table {
 .ss-list > .mur-settings-row {
   min-height: 2.75rem;
 }
+
+/* —— Confirm dialog density (MODAL authority) —— */
+.ss-confirm-dialog {
+  border-radius: var(--radius-card, 1rem);
+  border-color: var(--mj-hairline, var(--sf-hairline, transparent));
+}

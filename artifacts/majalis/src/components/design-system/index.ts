@@ -83,6 +83,7 @@ export {
   NavigationList,
   ResultList,
 } from "./ListSystem";
+export { ConfirmDialog, type ConfirmDialogProps } from "./ConfirmDialog";
 export { SettingsList, type SettingsListRow } from "./SettingsList";
 export {
   FormLabel,

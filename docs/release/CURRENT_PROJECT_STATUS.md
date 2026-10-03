@@ -52,6 +52,8 @@ Phases I–L: `docs/audit/VISUAL_IJKL_BUTTON_FORM_IDENTITY_REPORT.md` · `docs/d
 
 Phases M–O: `docs/audit/VISUAL_MNO_TABLE_LIST_DATA_REPORT.md` · TABLE/LIST/DATA maps · `ListSystem` façades · `.ss-data-table` · UniversitiesCompare → `ui/table` · hexInCss →7025.
 
+Phases P–S: `docs/audit/VISUAL_PQRS_MODAL_FEEDBACK_OVERLAY_REPORT.md` · MODAL/FEEDBACK/STATUS/OVERLAY maps · product `ConfirmDialog` · `test:overlay-feedback-authority`.
+
 ## Endgame phases (A–H)
 
 | Phase | Target exit | Status |
