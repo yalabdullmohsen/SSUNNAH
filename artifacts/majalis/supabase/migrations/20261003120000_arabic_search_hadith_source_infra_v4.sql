@@ -65,6 +65,23 @@ AS $$
   SELECT public.ar_normalize(input);
 $$;
 
+-- Wrapper: to_tsvector(regconfig, text) is STABLE (catalog lookup). Generated
+-- STORED columns require IMMUTABLE expressions — plpgsql body is accepted.
+CREATE OR REPLACE FUNCTION public.to_tsvector_simple(input text)
+RETURNS tsvector
+LANGUAGE plpgsql
+IMMUTABLE
+PARALLEL SAFE
+SET search_path = public
+AS $$
+BEGIN
+  RETURN to_tsvector('simple'::regconfig, coalesce(input, ''));
+END;
+$$;
+
+COMMENT ON FUNCTION public.to_tsvector_simple(text) IS
+  'IMMUTABLE wrapper around to_tsvector(simple) for generated search_vector columns.';
+
 -- ─── 2. Hadith search documents (generated stored) ───────────────────
 DO $$
 BEGIN
@@ -121,14 +138,12 @@ BEGIN
     ALTER TABLE public.verified_hadith_items
       ADD COLUMN search_vector tsvector
       GENERATED ALWAYS AS (
-        setweight(to_tsvector('simple', coalesce(public.ar_normalize(title), '')), 'A')
-        || setweight(to_tsvector('simple', coalesce(public.ar_normalize(hadith_number), '')), 'A')
-        || setweight(to_tsvector('simple', coalesce(public.ar_normalize(text), '')), 'B')
-        || setweight(to_tsvector('simple', coalesce(public.ar_normalize(narrator), '')), 'B')
+        setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(title), '')), 'A')
+        || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(hadith_number), '')), 'A')
+        || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(text), '')), 'B')
+        || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(narrator), '')), 'B')
         || setweight(
-             to_tsvector(
-               'simple',
-               coalesce(
+             public.to_tsvector_simple(coalesce(
                  public.ar_normalize(
                    concat_ws(' ', coalesce(source_name, ''), coalesce(collection, ''), coalesce(chapter, ''))
                  ),
@@ -138,9 +153,7 @@ BEGIN
              'C'
            )
         || setweight(
-             to_tsvector(
-               'simple',
-               coalesce(
+             public.to_tsvector_simple(coalesce(
                  public.ar_normalize(
                    concat_ws(' ', coalesce(array_to_string(keywords, ' '), ''), coalesce(explanation, ''))
                  ),
@@ -197,15 +210,13 @@ BEGIN
       ALTER TABLE public.trusted_sources
         ADD COLUMN search_vector tsvector
         GENERATED ALWAYS AS (
-          setweight(to_tsvector('simple', coalesce(public.ar_normalize(name), '')), 'A')
+          setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(name), '')), 'A')
           || setweight(
-               to_tsvector(
-                 'simple',
-                 coalesce(public.ar_normalize(concat_ws(' ', coalesce(category, ''), coalesce(source_type, ''))), '')
+               public.to_tsvector_simple(coalesce(public.ar_normalize(concat_ws(' ', coalesce(category, ''), coalesce(source_type, ''))), '')
                ),
                'C'
              )
-          || setweight(to_tsvector('simple', coalesce(public.ar_normalize(url), '')), 'D')
+          || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(url), '')), 'D')
         ) STORED;
     END IF;
   END IF;
@@ -252,11 +263,11 @@ BEGIN
       ALTER TABLE public.scholarly_sources
         ADD COLUMN search_vector tsvector
         GENERATED ALWAYS AS (
-          setweight(to_tsvector('simple', coalesce(public.ar_normalize(name), '')), 'A')
-          || setweight(to_tsvector('simple', coalesce(public.ar_normalize(name_ar), '')), 'B')
-          || setweight(to_tsvector('simple', coalesce(public.ar_normalize(entity_name), '')), 'B')
-          || setweight(to_tsvector('simple', coalesce(public.ar_normalize(source_type), '')), 'C')
-          || setweight(to_tsvector('simple', coalesce(public.ar_normalize(url), '')), 'D')
+          setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(name), '')), 'A')
+          || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(name_ar), '')), 'B')
+          || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(entity_name), '')), 'B')
+          || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(source_type), '')), 'C')
+          || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(url), '')), 'D')
         ) STORED;
     END IF;
   END IF;
