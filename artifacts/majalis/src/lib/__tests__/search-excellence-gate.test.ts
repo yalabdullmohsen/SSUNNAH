@@ -48,12 +48,24 @@ for (const rel of [
 }
 
 assert.ok(existsSync(resolve(majalis, "supabase/arabic_search_infrastructure_v2.sql")));
+assert.ok(existsSync(resolve(majalis, "supabase/arabic_search_hadiths_sources_v3.sql")));
 const infraSql = readMaj("supabase/arabic_search_infrastructure_v2.sql");
+const infraV3 = readMaj("supabase/arabic_search_hadiths_sources_v3.sql");
 assert.match(infraSql, /ar_normalize/);
 assert.match(infraSql, /pg_trgm/);
 assert.match(infraSql, /search_lessons/);
 assert.match(infraSql, /search_vector/);
 assert.match(infraSql, /gin_trgm_ops/);
+assert.match(infraV3, /idx_hadiths_title_trgm/);
+assert.match(infraV3, /idx_hadiths_narrator_trgm/);
+assert.match(infraV3, /idx_hadiths_search_vector/);
+assert.match(infraV3, /idx_sources_search_vector/);
+assert.match(infraV3, /search_hadiths/);
+assert.match(infraV3, /search_sources/);
+assert.match(infraV3, /CREATE OR REPLACE VIEW public\.hadiths/);
+assert.match(infraV3, /CREATE OR REPLACE VIEW public\.sources/);
+assert.match(infraV3, /verified_hadith_items/);
+assert.match(infraV3, /trusted_sources/);
 
 const bundle = JSON.parse(readMaj("reports/search-excellence-engine.json"));
 assert.equal(bundle.ARABIC_SEARCH_NORMALIZATION_REPORT.ARABIC_SEARCH_OPTIMIZATION, true);

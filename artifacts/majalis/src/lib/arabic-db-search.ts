@@ -11,6 +11,8 @@ export type ArabicDbSearchEntity =
   | "scholars"
   | "library_items"
   | "hadith_items"
+  | "hadiths"
+  | "sources"
   | "content";
 
 const RPC: Record<Exclude<ArabicDbSearchEntity, "content">, string> = {
@@ -19,6 +21,8 @@ const RPC: Record<Exclude<ArabicDbSearchEntity, "content">, string> = {
   scholars: "search_scholars",
   library_items: "search_library_items",
   hadith_items: "search_hadith_items",
+  hadiths: "search_hadiths",
+  sources: "search_sources",
 };
 
 /** بحث كيان واحد عبر RPC الهجين. */

@@ -357,9 +357,9 @@
       "synonymExpand": true
     },
     "sql": {
-      "sqlFiles": 410,
-      "ginTrigramMentions": 38,
-      "ftsMentions": 59,
+      "sqlFiles": 412,
+      "ginTrigramMentions": 66,
+      "ftsMentions": 75,
       "searchIndexSqlFiles": 2
     },
     "costProxies": [
@@ -622,8 +622,12 @@
     "artifacts": {
       "arNormalizeSql": true,
       "migrationCopied": true,
+      "hadithsSourcesV3": true,
+      "migrationV3Copied": true,
       "legacyNormalizeAr": true,
-      "pgTrgm": true
+      "pgTrgm": true,
+      "hadithsView": true,
+      "sourcesView": true
     },
     "arNormalizeFeatures": {
       "alifFold": true,
@@ -659,17 +663,17 @@
       },
       {
         "id": "hadith",
-        "table": "verified_hadith_items",
+        "table": "verified_hadith_items (=hadiths)",
         "trgmIndexInSql": true,
         "ftsIndexInSql": true,
         "rpcInSql": true
       },
       {
         "id": "sources",
-        "table": "trusted_sources|scholarly_sources",
+        "table": "trusted_sources (=sources)",
         "trgmIndexInSql": true,
-        "ftsIndexInSql": false,
-        "rpcInSql": false
+        "ftsIndexInSql": true,
+        "rpcInSql": true
       }
     ],
     "indexesDeclared": {
@@ -678,17 +682,28 @@
       "scholars_name_trgm": true,
       "books_search_vector": true,
       "books_title_trgm": true,
-      "hadith_search_vector": true,
-      "hadith_title_trgm": true,
-      "sources_name_trgm": true
+      "hadiths_title_trgm": true,
+      "hadiths_narrator_trgm": true,
+      "hadiths_search_trgm": true,
+      "hadiths_search_vector": true,
+      "sources_name_trgm": true,
+      "sources_search_trgm": true,
+      "sources_search_vector": true
     },
     "rpcsDeclared": {
       "search_lessons": true,
       "search_sheikhs": true,
       "search_scholars": true,
       "search_library_items": true,
+      "search_hadiths": true,
       "search_hadith_items": true,
+      "search_sources": true,
       "search_content_hybrid": true
+    },
+    "tableMapping": {
+      "hadiths": "verified_hadith_items",
+      "sources": "trusted_sources",
+      "note": "Views public.hadiths / public.sources alias physical tables"
     },
     "clientDebt": {
       "ilikeSitesApprox": 7,

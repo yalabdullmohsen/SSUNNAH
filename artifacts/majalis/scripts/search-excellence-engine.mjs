@@ -490,11 +490,17 @@ const SEARCH_UX_IMPROVEMENT_PLAN = {
 
 // ── BU: ARABIC_SEARCH_INFRASTRUCTURE_HARDENING (SQL layer) ────────────────
 const infraV2Path = join(majalis, "supabase/arabic_search_infrastructure_v2.sql");
+const infraV3Path = join(majalis, "supabase/arabic_search_hadiths_sources_v3.sql");
 const infraMigrationPath = join(
   majalis,
   "supabase/migrations/20261003100000_arabic_search_infrastructure_v2.sql",
 );
+const infraMigrationV3Path = join(
+  majalis,
+  "supabase/migrations/20261003110000_arabic_search_hadiths_sources_v3.sql",
+);
 const infraSql = existsSync(infraV2Path) ? readUtf(infraV2Path) : "";
+const infraV3Sql = existsSync(infraV3Path) ? readUtf(infraV3Path) : "";
 const legacyArabicSql = existsSync(join(majalis, "supabase/arabic_search_upgrade_v1.sql"))
   ? readUtf(join(majalis, "supabase/arabic_search_upgrade_v1.sql"))
   : "";
@@ -506,11 +512,11 @@ const searchableEntities = [
   { id: "lessons", table: "lessons", trgm: /idx_lessons_.*trgm|idx_lessons_title_ar_trgm/, fts: /idx_lessons_search_vector/, rpc: /search_lessons/ },
   { id: "scholars", table: "sheikhs", trgm: /idx_scholars_name_trgm|idx_sheikhs_search_trgm/, fts: /idx_sheikhs_search_vector/, rpc: /search_sheikhs|search_scholars/ },
   { id: "books", table: "library_items", trgm: /idx_books_title_trgm|idx_library_items_search_trgm/, fts: /idx_books_search_vector/, rpc: /search_library_items/ },
-  { id: "hadith", table: "verified_hadith_items", trgm: /idx_hadith_title_trgm|idx_verified_hadith_search_trgm/, fts: /idx_hadith_search_vector/, rpc: /search_hadith_items/ },
-  { id: "sources", table: "trusted_sources|scholarly_sources", trgm: /idx_sources_name_trgm/, fts: null, rpc: null },
+  { id: "hadith", table: "verified_hadith_items (=hadiths)", trgm: /idx_hadiths_title_trgm|idx_hadith_title_trgm|idx_verified_hadith_search_trgm/, fts: /idx_hadiths_search_vector|idx_hadith_search_vector/, rpc: /search_hadiths|search_hadith_items/ },
+  { id: "sources", table: "trusted_sources (=sources)", trgm: /idx_sources_name_trgm|idx_sources_search_trgm/, fts: /idx_sources_search_vector/, rpc: /search_sources/ },
 ];
 
-const sqlCorpus = [infraSql, legacyArabicSql, unifiedSql].join("\n");
+const sqlCorpus = [infraSql, infraV3Sql, legacyArabicSql, unifiedSql].join("\n");
 const entityInventory = searchableEntities.map((e) => ({
   id: e.id,
   table: e.table,
@@ -540,8 +546,12 @@ const ARABIC_SEARCH_INFRASTRUCTURE_REPORT = {
   artifacts: {
     arNormalizeSql: existsSync(infraV2Path),
     migrationCopied: existsSync(infraMigrationPath),
+    hadithsSourcesV3: existsSync(infraV3Path),
+    migrationV3Copied: existsSync(infraMigrationV3Path),
     legacyNormalizeAr: /normalize_ar/.test(legacyArabicSql + unifiedSql),
     pgTrgm: /CREATE EXTENSION IF NOT EXISTS pg_trgm/i.test(sqlCorpus),
+    hadithsView: /CREATE OR REPLACE VIEW public\.hadiths/i.test(infraV3Sql),
+    sourcesView: /CREATE OR REPLACE VIEW public\.sources/i.test(infraV3Sql),
   },
   arNormalizeFeatures: {
     alifFold: /أإآٱ/.test(infraSql),
@@ -560,17 +570,28 @@ const ARABIC_SEARCH_INFRASTRUCTURE_REPORT = {
     scholars_name_trgm: /idx_scholars_name_trgm/.test(infraSql),
     books_search_vector: /idx_books_search_vector/.test(infraSql),
     books_title_trgm: /idx_books_title_trgm/.test(infraSql),
-    hadith_search_vector: /idx_hadith_search_vector/.test(infraSql),
-    hadith_title_trgm: /idx_hadith_title_trgm/.test(infraSql),
-    sources_name_trgm: /idx_sources_name_trgm/.test(infraSql),
+    hadiths_title_trgm: /idx_hadiths_title_trgm/.test(infraV3Sql),
+    hadiths_narrator_trgm: /idx_hadiths_narrator_trgm/.test(infraV3Sql),
+    hadiths_search_trgm: /idx_hadiths_search_trgm/.test(infraV3Sql),
+    hadiths_search_vector: /idx_hadiths_search_vector/.test(infraV3Sql),
+    sources_name_trgm: /idx_sources_name_trgm/.test(sqlCorpus),
+    sources_search_trgm: /idx_sources_search_trgm/.test(infraV3Sql),
+    sources_search_vector: /idx_sources_search_vector/.test(infraV3Sql),
   },
   rpcsDeclared: {
     search_lessons: /search_lessons/.test(infraSql),
     search_sheikhs: /search_sheikhs/.test(infraSql),
     search_scholars: /search_scholars/.test(infraSql),
     search_library_items: /search_library_items/.test(infraSql),
-    search_hadith_items: /search_hadith_items/.test(infraSql),
+    search_hadiths: /search_hadiths/.test(infraV3Sql),
+    search_hadith_items: /search_hadith_items/.test(sqlCorpus),
+    search_sources: /search_sources/.test(infraV3Sql),
     search_content_hybrid: /search_vector @@ plainto_tsquery/.test(infraSql),
+  },
+  tableMapping: {
+    hadiths: "verified_hadith_items",
+    sources: "trusted_sources",
+    note: "Views public.hadiths / public.sources alias physical tables",
   },
   clientDebt: {
     ilikeSitesApprox: clientIlikeSites,
@@ -830,8 +851,21 @@ md(
     `|---|---|`,
     `| ar_normalize SQL (v2) | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.arNormalizeSql ? "✅" : "❌"} |`,
     `| migrations/…v2.sql | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.migrationCopied ? "✅" : "❌"} |`,
+    `| hadiths/sources SQL (v3) | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.hadithsSourcesV3 ? "✅" : "❌"} |`,
+    `| migrations/…v3.sql | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.migrationV3Copied ? "✅" : "❌"} |`,
+    `| view hadiths | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.hadithsView ? "✅" : "❌"} |`,
+    `| view sources | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.sourcesView ? "✅" : "❌"} |`,
     `| legacy normalize_ar | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.legacyNormalizeAr ? "✅" : "❌"} |`,
     `| pg_trgm | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.pgTrgm ? "✅" : "❌"} |`,
+    "",
+    "## Table mapping (سُنّة)",
+    "",
+    `| Spec name | Physical table |`,
+    `|---|---|`,
+    `| hadiths | \`${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.tableMapping.hadiths}\` |`,
+    `| sources | \`${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.tableMapping.sources}\` |`,
+    "",
+    ARABIC_SEARCH_INFRASTRUCTURE_REPORT.tableMapping.note,
     "",
     "## Entity inventory",
     "",
@@ -872,7 +906,7 @@ md(
     "",
     ...ARABIC_SEARCH_INFRASTRUCTURE_REPORT.remainingDebt.map((x) => `- ${x}`),
     "",
-    "SQL: `supabase/arabic_search_infrastructure_v2.sql`",
+    "SQL: `supabase/arabic_search_infrastructure_v2.sql` + `arabic_search_hadiths_sources_v3.sql`",
     "",
   ].join("\n"),
 );
@@ -971,6 +1005,7 @@ if (check) {
     join(repo, "docs/design/SEARCH_EXCELLENCE_PROGRAM.md"),
     join(majalis, "reports/search-excellence-engine.json"),
     join(majalis, "supabase/arabic_search_infrastructure_v2.sql"),
+    join(majalis, "supabase/arabic_search_hadiths_sources_v3.sql"),
   ].filter((p) => !existsSync(p));
   if (miss.length || docs.length < 100 || normalizePass < NORMALIZE_PAIRS.length - 1) {
     console.error("search-excellence --check FAIL", {
@@ -986,6 +1021,15 @@ if (check) {
   }
   if (!/ar_normalize/.test(infraSql) || !/search_lessons/.test(infraSql)) {
     console.error("search-excellence --check FAIL: infrastructure SQL incomplete");
+    process.exit(1);
+  }
+  if (
+    !/idx_hadiths_title_trgm/.test(infraV3Sql) ||
+    !/idx_hadiths_narrator_trgm/.test(infraV3Sql) ||
+    !/search_hadiths/.test(infraV3Sql) ||
+    !/search_sources/.test(infraV3Sql)
+  ) {
+    console.error("search-excellence --check FAIL: hadiths/sources v3 incomplete");
     process.exit(1);
   }
   console.log("search-excellence --check: ok");
