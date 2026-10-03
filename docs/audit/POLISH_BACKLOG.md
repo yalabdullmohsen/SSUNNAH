@@ -1,12 +1,12 @@
 # POLISH_BACKLOG
 
-Generated: 2026-10-03T08:57:20.660Z
+Generated: 2026-10-03T09:21:28.250Z
 
-Total signals: **276**
+Total signals: **275**
 
 ## By issue (frequency)
 
-- icon size literal — prefer size.icon.* tokens: **225**
+- icon size literal — prefer size.icon.* tokens: **224**
 - opacity-only disabled cue: **14**
 - truncation without title tooltip: **13**
 - inline spacing — prefer tokens: **10**

@@ -1,6 +1,6 @@
 # COMPONENT_RATIONALIZATION_REPORT
 
-Generated: 2026-10-03T08:57:20.660Z
+Generated: 2026-10-03T09:21:28.250Z
 
 Target: **one component authority per purpose**.
 
@@ -32,7 +32,7 @@ Target: **one component authority per purpose**.
 - `ActionButton`: 30
 - `PrimaryButton`: 4
 - `SecondaryButton`: 4
-- `IconButton`: 190
+- `IconButton`: 188
 
 ### dialogs
 

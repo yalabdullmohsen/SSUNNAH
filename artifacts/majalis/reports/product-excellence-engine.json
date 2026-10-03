@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-03T08:57:20.660Z",
+  "updatedAt": "2026-10-03T09:21:28.250Z",
   "PRODUCT_COHESION_SCORE": 57,
   "PRODUCT_COHESION_REPORT": {
     "score": 57,
@@ -148,7 +148,7 @@
   },
   "TOKEN_MIGRATION_QUEUE": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:20.660Z",
+    "updatedAt": "2026-10-03T09:21:28.250Z",
     "TOKEN_ENFORCEMENT_MIGRATION": true,
     "totalFilesWithViolations": 365,
     "top": [
@@ -848,7 +848,7 @@
   },
   "COMPONENT_RATIONALIZATION_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:20.660Z",
+    "updatedAt": "2026-10-03T09:21:28.250Z",
     "COMPONENT_USAGE_RATIONALIZATION": true,
     "groups": [
       {
@@ -907,7 +907,7 @@
           },
           {
             "name": "IconButton",
-            "hits": 190
+            "hits": 188
           }
         ],
         "overlapping": true,
@@ -1152,7 +1152,7 @@
   },
   "JOURNEY_LENGTH_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:20.660Z",
+    "updatedAt": "2026-10-03T09:21:28.250Z",
     "NAVIGATION_JOURNEY_COMPRESSION": true,
     "bottomNavTabs": [
       "/",
@@ -1206,9 +1206,9 @@
   },
   "POLISH_BACKLOG": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:20.660Z",
+    "updatedAt": "2026-10-03T09:21:28.250Z",
     "PRODUCT_POLISH_PASS": true,
-    "total": 276,
+    "total": 275,
     "quickWins": [
       {
         "path": "components/QuranActionBar.tsx",
@@ -1394,7 +1394,7 @@
     "byIssue": [
       {
         "issue": "icon size literal — prefer size.icon.* tokens",
-        "count": 225
+        "count": 224
       },
       {
         "issue": "opacity-only disabled cue",

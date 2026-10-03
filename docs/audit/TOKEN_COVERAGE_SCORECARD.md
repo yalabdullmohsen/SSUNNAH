@@ -1,6 +1,6 @@
 # TOKEN_COVERAGE_SCORECARD
 
-Generated: 2026-10-03T08:57:18.355Z
+Generated: 2026-10-03T09:21:26.150Z
 
 | Metric | Value |
 |---|---:|
@@ -8,7 +8,7 @@ Generated: 2026-10-03T08:57:18.355Z
 | hardcodedValuesPct | 40% |
 | legacyCssDensityScore | 100 |
 | authorityCoveragePct | 43% |
-| designTokenPaths | 101 |
+| designTokenPaths | 125 |
 | sfTokenRefs | 1128 |
 | mjTokenRefs | 11629 |
 | ssTokenRefs | 758 |

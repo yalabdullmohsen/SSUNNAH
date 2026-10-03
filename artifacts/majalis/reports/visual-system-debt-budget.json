@@ -4,7 +4,7 @@
   "note": "Ceilings must not rise. Lower intentionally in later waves; never raise without documented exception.",
   "floors": {
     "officialButtonImportFiles": 262,
-    "sfTokenRefs": 1127,
+    "sfTokenRefs": 1128,
     "ssTokenRefs": 758
   },
   "ceilings": {
@@ -20,5 +20,5 @@
     "inlineColorStyleMatches": 48,
     "rawButtonFiles": 102
   },
-  "updatedAt": "2026-10-03T08:49:41.306Z"
+  "updatedAt": "2026-10-03T09:14:24.971Z"
 }
