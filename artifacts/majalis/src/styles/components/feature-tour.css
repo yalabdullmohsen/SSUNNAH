@@ -75,14 +75,14 @@ body.feature-tour-open {
   display: grid;
   place-items: center;
   border-radius: 1.25rem;
-  background: color-mix(in srgb, var(--mj-brand, #1e5f4b) 12%, var(--mj-surface, #fff));
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1e5f4b) 22%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 12%, var(--mj-surface, var(--mj-white)));
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent);
 }
 
 .feature-tour-icon {
   width: 2.75rem;
   height: 2.75rem;
-  color: var(--mj-brand, #1e5f4b);
+  color: var(--mj-brand, var(--mj-brand));
 }
 
 .feature-tour-title {
@@ -109,7 +109,7 @@ body.feature-tour-open {
   margin: 0;
   font-size: 0.78rem;
   line-height: 1.5;
-  color: color-mix(in srgb, var(--mj-ink-muted, #4a5c55) 88%, var(--mj-brand, #1e5f4b));
+  color: color-mix(in srgb, var(--mj-ink-muted, #4a5c55) 88%, var(--mj-brand, var(--mj-brand)));
 }
 
 .feature-tour-dots {
@@ -125,7 +125,7 @@ body.feature-tour-open {
   min-height: 44px;
   padding: 0;
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: transparent;
   cursor: pointer;
   position: relative;
@@ -138,17 +138,17 @@ body.feature-tour-open {
   top: 50%;
   height: 0.44rem;
   transform: translateY(-50%);
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: color-mix(in srgb, var(--mj-ink, #0e241e) 18%, transparent);
   transition: background 180ms ease, width 180ms ease;
 }
 
 .feature-tour-dot.is-active::after {
-  background: var(--mj-brand, #1e5f4b);
+  background: var(--mj-brand, var(--mj-brand));
 }
 
 .feature-tour-dot:focus-visible {
-  outline: 2px solid var(--mj-brand, #1e5f4b);
+  outline: 2px solid var(--mj-brand, var(--mj-brand));
   outline-offset: 2px;
 }
 
@@ -191,8 +191,8 @@ body.feature-tour-open {
 }
 
 .feature-tour-btn--primary {
-  background: var(--mj-brand, #1e5f4b);
-  color: #fff;
+  background: var(--mj-brand, var(--mj-brand));
+  color: var(--mj-white);
   border-color: transparent;
 }
 
@@ -208,7 +208,7 @@ body.feature-tour-open {
 }
 
 .feature-tour-btn:focus-visible {
-  outline: 2px solid var(--mj-brand, #1e5f4b);
+  outline: 2px solid var(--mj-brand, var(--mj-brand));
   outline-offset: 2px;
 }
 

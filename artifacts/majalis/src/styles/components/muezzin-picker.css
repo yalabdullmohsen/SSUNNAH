@@ -10,7 +10,7 @@
 }
 
 .mzp-sheet {
-  background: var(--msk-canvas-1, var(--majalis-panel-raised, #fff));
+  background: var(--msk-canvas-1, var(--majalis-panel-raised, var(--mj-white)));
   border-radius: 1.25rem 1.25rem 0 0;
   width: min(100vw, 540px);
   max-height: 70vh;
@@ -27,7 +27,7 @@
 .mzp-handle {
   width: 40px;
   height: 4px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: var(--msk-border, rgba(0, 0, 0, 0.18));
 }
 
@@ -73,7 +73,7 @@
 .mzp-progress {
   margin-top: 0.55rem;
   height: 3px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: color-mix(in srgb, var(--msk-gold, #1c5244) 18%, transparent);
   overflow: hidden;
 }
@@ -150,7 +150,7 @@
   border-radius: 0.65rem !important;
   border: none !important;
   background: var(--msk-gold, var(--majalis-emerald, var(--mj-brand-deep))) !important;
-  color: #fff !important;
+  color: var(--mj-white) !important;
   cursor: pointer;
   font: inherit !important;
   font-size: 0.72rem !important;
@@ -250,7 +250,7 @@
   justify-content: center;
   padding: 0;
   cursor: pointer;
-  color: #fff;
+  color: var(--mj-white);
 }
 .mzp-radio--selected {
   border-color: var(--msk-gold, var(--majalis-emerald));

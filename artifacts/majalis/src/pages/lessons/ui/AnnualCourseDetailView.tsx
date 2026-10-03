@@ -9,6 +9,15 @@ import { breadcrumbJsonLd } from "@/lib/seo-structured-data";
 import { usePageView } from "@/hooks/usePageView";
 import "@/styles/pages/annual-course-detail.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SimpleList } from "@/components/design-system/ListSystem";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { cleanAnnualCourseSummary } from "@/lib/content-display-polish";
 
 function buildMapsEmbed(mapUrl?: string, venue?: string, city?: string) {
@@ -119,35 +128,50 @@ export default function AnnualCourseDetailPage({ params }: { params: { id: strin
       {item.sheikh_names && item.sheikh_names.length > 0 && (
         <section className="content-detail-section">
           <h2>المشايخ</h2>
-          <ul>{item.sheikh_names.map((n: string) => <li key={n}>{n}</li>)}</ul>
+          <SimpleList aria-label="المشايخ" className="content-detail-list">
+            {item.sheikh_names.map((n: string) => (
+              <li key={n} className="ss-list__item">{n}</li>
+            ))}
+          </SimpleList>
         </section>
       )}
 
       {item.mutoon && item.mutoon.length > 0 && (
         <section className="content-detail-section">
           <h2>المتون</h2>
-          <ul>{item.mutoon.map((m: string) => <li key={m}>{m}</li>)}</ul>
+          <SimpleList aria-label="المتون" className="content-detail-list">
+            {item.mutoon.map((m: string) => (
+              <li key={m} className="ss-list__item">{m}</li>
+            ))}
+          </SimpleList>
         </section>
       )}
 
       {item.schedule && item.schedule.length > 0 && (
         <section className="content-detail-section">
           <h2>الجدول</h2>
-          <table className="content-detail-table">
-            <thead>
-              <tr><th>اليوم</th><th>الوقت</th><th>الموضوع</th><th>الشيخ</th></tr>
-            </thead>
-            <tbody>
-              {item.schedule.map((s: any, i: number) => (
-                <tr key={i}>
-                  <td>{s.day}</td>
-                  <td>{s.time}</td>
-                  <td>{s.topic}</td>
-                  <td>{s.sheikh}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="ss-data-table-wrap">
+            <Table className="ss-data-table content-detail-table">
+              <TableHeader>
+                <TableRow>
+                  <TableHead>اليوم</TableHead>
+                  <TableHead>الوقت</TableHead>
+                  <TableHead>الموضوع</TableHead>
+                  <TableHead>الشيخ</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {item.schedule.map((s: any, i: number) => (
+                  <TableRow key={i}>
+                    <TableCell>{s.day}</TableCell>
+                    <TableCell>{s.time}</TableCell>
+                    <TableCell>{s.topic}</TableCell>
+                    <TableCell>{s.sheikh}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
         </section>
       )}
 

@@ -8,7 +8,7 @@
   font-size: clamp(1.75rem, 5vw, 2.15rem);
   font-weight: 800;
   line-height: 1.2;
-  color: var(--mj-ink, #16241e);
+  color: var(--mj-ink, var(--v2-color-ink));
   letter-spacing: -0.01em;
 }
 
@@ -18,8 +18,8 @@
   width: 28px;
   height: 3px;
   margin-block-start: 10px;
-  border-radius: 999px;
-  background: var(--mj-brand, #1e5f4b);
+  border-radius: var(--radius-pill, 999rem);
+  background: var(--mj-brand, var(--mj-brand));
 }
 
 .quran-numbers-page {
@@ -38,7 +38,7 @@
   margin: 0;
   font-size: 14px;
   line-height: 1.65;
-  color: var(--mj-ink, #16241e);
+  color: var(--mj-ink, var(--v2-color-ink));
 }
 
 .quran-numbers-page__method-link {
@@ -60,11 +60,11 @@
   width: 100%;
   min-height: 44px;
   border: 1px solid var(--mj-hairline, var(--mj-hairline, #e3e8e6));
-  border-radius: 12px;
+  border-radius: var(--radius-md, 0.75rem);
   padding: 10px 12px;
   font: inherit;
-  background: var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff)));
-  color: var(--mj-ink, #16241e);
+  background: var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
+  color: var(--mj-ink, var(--v2-color-ink));
 }
 
 .quran-numbers-tabs,
@@ -92,10 +92,10 @@
 .quran-stat-sheet__actions button {
   min-height: 44px;
   padding: 8px 12px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1px solid var(--mj-hairline, var(--mj-hairline, #e3e8e6));
-  background: var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff)));
-  color: var(--mj-ink, #16241e);
+  background: var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
+  color: var(--mj-ink, var(--v2-color-ink));
   font: inherit;
   font-size: 13px;
   font-weight: 600;
@@ -104,9 +104,9 @@
 
 .quran-numbers-tabs button[data-active="1"],
 .quran-numbers-freq-modes button[data-active="1"] {
-  background: color-mix(in srgb, var(--mj-brand, #1e5f4b) 14%, transparent);
-  border-color: var(--mj-brand, #1e5f4b);
-  color: var(--mj-brand, #1e5f4b);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, transparent);
+  border-color: var(--mj-brand, var(--mj-brand));
+  color: var(--mj-brand, var(--mj-brand));
 }
 
 .quran-numbers-grid {
@@ -130,19 +130,19 @@
   cursor: pointer;
   appearance: none;
   border: 1px solid var(--mj-hairline, var(--mj-hairline, #e3e8e6));
-  border-radius: 16px;
-  background: var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff)));
-  color: var(--mj-ink, #16241e);
+  border-radius: var(--radius-lg, 1rem);
+  background: var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
+  color: var(--mj-ink, var(--v2-color-ink));
   font: inherit;
 }
 
 .quran-stat-card__kind {
   font-size: 11px;
   font-weight: 700;
-  color: var(--mj-brand, #1e5f4b);
-  background: color-mix(in srgb, var(--mj-brand, #1e5f4b) 12%, transparent);
+  color: var(--mj-brand, var(--mj-brand));
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 12%, transparent);
   padding: 2px 8px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm, 0.5rem);
 }
 
 .quran-stat-card__value {
@@ -206,7 +206,7 @@
 .quran-numbers-table-scroll {
   overflow: auto;
   border: 1px solid var(--mj-hairline, var(--mj-hairline, #e3e8e6));
-  border-radius: 12px;
+  border-radius: var(--radius-md, 0.75rem);
   max-height: 420px;
 }
 
@@ -227,7 +227,7 @@
 .quran-numbers-table th {
   position: sticky;
   top: 0;
-  background: var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
   z-index: 1;
 }
 
@@ -247,7 +247,7 @@
 .quran-stat-sheet__kind {
   margin: 0;
   font-size: 13px;
-  color: var(--mj-brand, #1e5f4b);
+  color: var(--mj-brand, var(--mj-brand));
   font-weight: 700;
 }
 
@@ -261,7 +261,7 @@
   margin: 0;
   font-size: 14px;
   line-height: 1.55;
-  color: var(--mj-ink, #16241e);
+  color: var(--mj-ink, var(--v2-color-ink));
 }
 
 .quran-stat-sheet__src {

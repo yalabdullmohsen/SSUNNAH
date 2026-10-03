@@ -116,7 +116,7 @@ html.pts-immersive #root {
   --radius-button: 1.125rem;
   --radius-sheet: 1.75rem;
   --radius-nav: 1.75rem;
-  --radius-pill: 9999px;
+  --radius-pill: 999px;
 
   /* ── ترتيب الطبقات (Design System — Z-Index Scale) ── */
   --z-base:    0;

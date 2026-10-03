@@ -4,6 +4,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
+import { Button } from "@/components/ui/button";
 import "@/styles/pages/duas-quran.css";
 import { ListScreen } from "@/components/design-system/screens";
 
@@ -386,16 +387,17 @@ export default function DuasQuranPage() {
         {/* categories */}
         <div className="dq-cats" role="tablist" aria-label="تصفية أدعية القرآن">
           {CATEGORIES.map((cat) => (
-            <button
+            <Button
               key={cat}
               role="tab"
               type="button"
+              variant="ghost"
               className={`dq-cat-btn${activeCat === cat ? " dq-cat-btn--active" : ""}`}
               onClick={() => setActiveCat(cat)}
               aria-selected={activeCat === cat}
             >
               {cat}
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -407,8 +409,9 @@ export default function DuasQuranPage() {
             const isOpen = openId === d.id;
             return (
               <article key={d.id} className={`dq-card${isOpen ? " dq-card--open" : ""}`}>
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
                   className="dq-card__head"
                   onClick={() => setOpenId(isOpen ? null : d.id)}
                   aria-expanded={isOpen}
@@ -424,7 +427,7 @@ export default function DuasQuranPage() {
                     ))}
                   </div>
                   <span className={`dq-chevron${isOpen ? " dq-chevron--open" : ""}`}>▾</span>
-                </button>
+                </Button>
 
                 {/* الدعاء دائماً ظاهر */}
                 <div className="dq-arabic-wrap">

@@ -27,7 +27,7 @@
 }
 
 .optimized-sheikh-image--avatar {
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
 }
 
 .optimized-sheikh-image--responsive {

@@ -40,8 +40,8 @@ html[data-v2-night="1"] .sc2-desc {
 
 /* CTA على بطاقة الترحيب: نص زمردي داكن ثابت على أبيض (تباين AA) */
 html[data-v2-night="1"] .sc2--welcome .sc2-cta {
-  background: var(--v2-color-on-emerald, #fff);
-  color: var(--v2-color-emerald, #0f5c45);
+  background: var(--v2-color-on-emerald, var(--mj-white));
+  color: var(--v2-color-emerald, var(--mj-brand));
 }
 
 /* Quran Hub — فجوة الوضع الليلي */
@@ -58,7 +58,7 @@ html[data-v2-night="1"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"
 }
 
 html[data-v2-night="1"][data-v2-quran-hub="1"] .quran-open-mushaf {
-  background-color: var(--sunnah-emerald-deep, #0a3d2e);
+  background-color: var(--sunnah-emerald-deep, var(--mj-brand-deep));
   background-image:
     radial-gradient(
       120% 80% at 100% 0%,
@@ -67,10 +67,10 @@ html[data-v2-night="1"][data-v2-quran-hub="1"] .quran-open-mushaf {
     ),
     linear-gradient(
       145deg,
-      var(--v2-color-emerald, #0f5c45) 0%,
+      var(--v2-color-emerald, var(--mj-brand)) 0%,
       var(--v2-color-night-bg, #0a1612) 100%
     );
-  color: var(--v2-color-on-emerald, #fff);
+  color: var(--v2-color-on-emerald, var(--mj-white));
 }
 
 /* عناوين كانت emerald-deep داكن — تصبح مقروءة ليلاً */
@@ -119,7 +119,7 @@ html[data-v2-night="1"][data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab {
 
 html[data-v2-night="1"][data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab.is-active {
   color: var(--v2-color-night-ink, #edf5f0);
-  background: color-mix(in srgb, var(--v2-color-emerald, #0f5c45) 30%, transparent);
+  background: color-mix(in srgb, var(--v2-color-emerald, var(--mj-brand)) 30%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -27,10 +27,10 @@
 .sect-hub__note {
   margin: 0;
   padding: 0.85rem 1rem;
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   border: 1px solid color-mix(in srgb, var(--mj-accent, var(--mj-accent)) 45%, var(--ss-border, var(--mj-hairline)));
   background: color-mix(in srgb, var(--mj-accent, var(--mj-accent)) 12%, var(--ss-card-bg, var(--mj-surface)));
-  color: var(--color-text, var(--mj-ink, #16241e));
+  color: var(--color-text, var(--mj-ink, var(--v2-color-ink)));
   font-size: 0.88rem;
   line-height: 1.7;
   text-align: start;
@@ -42,7 +42,7 @@
   min-width: 0;
   min-height: 44px;
   padding: 0.65rem 1rem;
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   border: 1px solid color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 22%, var(--ss-border, var(--mj-hairline)));
   background: var(--ss-card-bg, var(--color-surface, var(--mj-surface)));
   color: var(--color-text, var(--mj-ink));
@@ -87,7 +87,7 @@
   flex: 0 0 auto;
   min-height: 44px;
   padding: 0.35rem 0.9rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1px solid color-mix(in srgb, var(--mj-brand) 28%, var(--ss-border, var(--mj-hairline)));
   background: var(--ss-card-bg, var(--mj-surface));
   color: var(--brand-on-light, var(--mj-brand-deep, #12362c));
@@ -101,7 +101,7 @@
 .sect-hub__chip.is-active {
   background: var(--mj-brand-deep, #12362c);
   border-color: var(--mj-brand-deep, #12362c);
-  color: var(--on-dark-strong, var(--mj-white, #ffffff));
+  color: var(--on-dark-strong, var(--mj-white, var(--mj-white)));
 }
 
 html.dark .sect-hub__chip.is-active,
@@ -170,7 +170,7 @@ html.dark .sect-hub__chip.is-active,
   width: 100%;
   max-width: 100%;
   padding: 1rem 1.05rem;
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   border: 1px solid color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, var(--mj-hairline)));
   background: var(--ss-card-bg, var(--color-surface, var(--mj-surface)));
   box-shadow: var(--ss-shadow-soft, 0 2px 10px -6px rgba(11, 32, 24, 0.14));
@@ -203,7 +203,7 @@ html.dark .sect-hub__chip.is-active,
   place-items: center;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   flex-shrink: 0;
   background: color-mix(in srgb, var(--mj-brand) 12%, var(--ss-card-bg, var(--mj-surface)));
   color: var(--brand-on-light, var(--mj-brand-deep));
@@ -244,7 +244,7 @@ html.dark .sect-hub__chip.is-active,
   display: inline-flex;
   align-items: center;
   padding: 0.15rem 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   font-size: 0.72rem;
   font-weight: 700;
   background: color-mix(in srgb, var(--mj-brand) 12%, transparent);
@@ -363,7 +363,7 @@ html.dark .sect-hub__chip.is-active,
   width: min(100%, var(--sect-read-max));
   max-width: 100%;
   box-sizing: border-box;
-  border-radius: var(--radius-card, 20px);
+  border-radius: var(--radius-card, 1.25rem);
   border: 1px solid color-mix(in srgb, var(--mj-brand) 16%, var(--ss-border, var(--mj-hairline)));
   background: color-mix(in srgb, var(--mj-brand) 5%, var(--ss-card-bg, var(--mj-surface)));
 }
@@ -431,7 +431,7 @@ html.dark .sect-hub__chip.is-active,
   top: 0.7em;
   width: 0.34rem;
   height: 0.34rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: color-mix(in srgb, var(--mj-brand, #5fbf98) 85%, #12362c);
 }
 
@@ -450,7 +450,7 @@ html.dark .sect-hub__chip.is-active,
   margin: 0;
   padding: 0.95rem 1.05rem;
   max-width: var(--sect-read-max);
-  border-radius: var(--radius-card, 18px);
+  border-radius: var(--radius-card, 1.125rem);
   border: 1px solid color-mix(in srgb, var(--mj-brand) 18%, transparent);
   background: color-mix(in srgb, var(--mj-brand) 7%, var(--ss-card-bg, var(--mj-surface)));
   color: var(--color-text, var(--mj-ink));
@@ -486,12 +486,12 @@ html.dark .sect-hub__chip.is-active,
   min-height: 2.5rem !important;
   height: auto !important;
   padding: 0.45rem 0.85rem !important;
-  border-radius: var(--radius-button, 14px) !important;
+  border-radius: var(--sf-radius-control, 14px) !important;
   text-decoration: none;
   font-size: 0.86rem !important;
   font-weight: 650 !important;
   background: color-mix(in srgb, var(--mj-brand-deep, #12362c) 92%, #000) !important;
-  color: var(--on-dark-strong, var(--mj-white, #ffffff)) !important;
+  color: var(--on-dark-strong, var(--mj-white, var(--mj-white))) !important;
 }
 
 .sect-related__link--ghost {
@@ -505,7 +505,7 @@ html.dark .sect-hub__chip.is-active,
 .sect-hub__share {
   margin-top: 0.35rem;
   padding: 1rem 1.05rem;
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   border: 1px solid color-mix(in srgb, var(--mj-brand) 16%, var(--ss-border, var(--mj-hairline)));
   background: color-mix(in srgb, var(--mj-bg, #f7f3eb) 70%, var(--ss-card-bg, var(--mj-surface)));
   width: 100%;
@@ -608,7 +608,7 @@ html.dark .sect-related__link--ghost,
 .sect-card__toggle:focus-visible {
   outline: 2px solid var(--mj-brand, #5fbf98);
   outline-offset: 3px;
-  border-radius: var(--radius-card, 20px);
+  border-radius: var(--radius-card, 1.25rem);
 }
 
 /* Back control clearance — لا يغطي النص */
@@ -636,7 +636,7 @@ html.dark .sect-card__cta,
 .sect-hub__empty {
   margin: 0.75rem 0 1.25rem;
   padding: 1rem 1.1rem;
-  border-radius: 12px;
+  border-radius: var(--radius-md, 0.75rem);
   border: 1px dashed color-mix(in srgb, var(--mj-brand) 28%, transparent);
   background: color-mix(in srgb, var(--mj-brand) 6%, transparent);
   text-align: start;

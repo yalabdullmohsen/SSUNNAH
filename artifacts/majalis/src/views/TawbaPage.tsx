@@ -6,6 +6,8 @@ import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { DetailScreen } from "@/components/design-system/screens";
+import { ContentTabs } from "@/components/design-system/TabSystem";
+import { SearchInput } from "@/components/design-system/FormFields";
 import { Button } from "@/components/ui/button";
 
 
@@ -273,25 +275,18 @@ export default function TawbaPage() {
         </div>
       </section>
 
-      {/* tabs */}
-      <div className="tw-tabs-bar" role="tablist" aria-label="أقسام التوبة">
-        {TABS.map((t) => (
-          <Button
-            key={t.id}
-            id={`twb-tab-${t.id}`}
-            type="button"
-            variant="ghost"
-            role="tab"
-            className={`tw-tab${tab === t.id ? " tw-tab--active" : ""}`}
-            onClick={() => setTab(t.id)}
-            aria-selected={tab === t.id}
-              aria-controls={`twb-panel-${t.id}`}
-          >
-            <span className="tw-tab__icon"><SectionIcon name={t.icon} size={20} /></span>
-            <span className="tw-tab__label">{t.label}</span>
-          </Button>
-        ))}
-      </div>
+      <ContentTabs
+        className="tw-tabs-bar"
+        ariaLabel="أقسام التوبة"
+        idPrefix="twb"
+        value={tab}
+        onChange={(id) => setTab(id as TawbaTab)}
+        items={TABS.map((t) => ({
+          id: t.id,
+          label: t.label,
+          icon: <SectionIcon name={t.icon} size={20} />,
+        }))}
+      />
 
       <div className="tw-body">
         {/* ── شروط التوبة ── */}
@@ -301,9 +296,14 @@ export default function TawbaPage() {
               اتفق العلماء على أن للتوبة شروطاً لا تصح إلا بها، وتزداد شرطاً إذا تعلّقت بحق آدمي
             </p>
             <div className="tw-search-wrap">
-              <input type="search" value={search} onChange={e => setSearch(e.target.value)}
-                placeholder="ابحث في شروط التوبة." className="page-search-input tw-search-input"
-                aria-label="بحث في شروط التوبة" />
+              <SearchInput
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                onClear={() => setSearch("")}
+                placeholder="ابحث في شروط التوبة."
+                className="page-search-input tw-search-input"
+                aria-label="بحث في شروط التوبة"
+              />
             </div>
             <div className="tw-shurut-list">
               {filteredShurut.map((s) => (
@@ -423,9 +423,14 @@ export default function TawbaPage() {
           <div role="tabpanel" id="twb-panel-mawani" aria-labelledby="twb-tab-mawani" className="tw-section">
             <p className="tw-section-lead">أمور تحول دون قبول التوبة أو صحتها، يجب الحذر منها</p>
             <div className="tw-search-wrap">
-              <input type="search" value={search} onChange={e => setSearch(e.target.value)}
-                placeholder="ابحث في الموانع." className="page-search-input tw-search-input"
-                aria-label="بحث في موانع التوبة" />
+              <SearchInput
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                onClear={() => setSearch("")}
+                placeholder="ابحث في الموانع."
+                className="page-search-input tw-search-input"
+                aria-label="بحث في موانع التوبة"
+              />
             </div>
             <div className="tw-mawani-list">
               {filteredMawani.map((m, i) => (

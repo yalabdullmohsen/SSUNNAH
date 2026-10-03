@@ -80,9 +80,9 @@
 
   border-radius: var(--surface-feature-radius, var(--radius-card, var(--mur-radius, 24px)));
   background: var(--surface-feature, var(--surface, var(--mj-surface, #f4faf7)));
-  border: 1px solid var(--surface-feature-border, color-mix(in srgb, var(--mj-brand, #146b52) 18%, var(--mj-hairline, #d9d3c8)));
+  border: 1px solid var(--surface-feature-border, color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, var(--mj-hairline, transparent)));
   box-shadow: var(--surface-feature-shadow, var(--mur-shadow, var(--ss-shadow-soft, var(--mj-sh, 0 4px 18px -14px rgba(10, 61, 46, 0.14)))));
-  color: var(--surface-feature-ink, var(--textPrimary, var(--mj-ink, #16241e)));
+  color: var(--surface-feature-ink, var(--textPrimary, var(--mj-ink, var(--v2-color-ink))));
 }
 
 .ui-card__title,
@@ -113,7 +113,7 @@
 .card:not([data-scripture]):not(.mushaf *):not(.qpc-page),
 .rounded-none.card,
 .rounded-none.ui-card {
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
 }
 
 /* ضغط تفاعلي موحّد */
@@ -155,4 +155,300 @@ button.ui-card:active {
 .qzg-section-card.soft-card,
 .qzg-section-card.soft-card--on-light {
   border-radius: var(--radius-card, 1.5rem);
+}
+
+
+/* —— Product data-table + list shell (TABLE/LIST authority) —— */
+/**
+ * Product data-table recipe — single visual language for non-admin tables.
+ * Tokens only: sf / mj / ds. No new token family.
+ */
+
+.ss-data-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--mj-hairline, var(--sf-hairline, transparent));
+  border-radius: var(--radius-card, 1rem);
+  background: var(--mj-surface, var(--sf-surface-raised, transparent));
+}
+
+.ss-data-table,
+table.ss-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--ds-text-sm, 0.875rem);
+  color: var(--mj-ink, var(--sf-color-rich-ink));
+}
+
+.ss-data-table th,
+.ss-data-table td {
+  padding: 0.65rem 0.75rem;
+  text-align: start;
+  vertical-align: top;
+  border-bottom: 1px solid var(--mj-hairline, var(--sf-hairline, transparent));
+}
+
+.ss-data-table th {
+  min-height: 2.5rem;
+  font-weight: 650;
+  font-size: 0.8rem;
+  color: var(--mj-ink-2, var(--sf-color-rich-ink-muted));
+  background: color-mix(in srgb, var(--mj-brand, var(--sf-color-deep-emerald)) 4%, transparent);
+}
+
+.ss-data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.ss-data-table tbody tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--mj-brand, var(--sf-color-deep-emerald)) 3%, transparent);
+}
+
+.ss-data-table tbody tr:hover td {
+  background: color-mix(in srgb, var(--mj-brand, var(--sf-color-deep-emerald)) 6%, transparent);
+}
+
+.ss-data-table tr[data-state="selected"] td,
+.ss-data-table tr.is-selected td {
+  background: color-mix(in srgb, var(--mj-brand, var(--sf-color-deep-emerald)) 10%, transparent);
+}
+
+/* Absorb common legacy class names onto the same recipe */
+.content-detail-table,
+.quran-numbers-table,
+.nb-table,
+.ucp-table,
+.fiqh-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--ds-text-sm, 0.875rem);
+}
+
+.content-detail-table th,
+.content-detail-table td,
+.quran-numbers-table th,
+.quran-numbers-table td,
+.nb-table th,
+.nb-table td {
+  border-color: var(--mj-hairline, var(--line, transparent));
+  padding: 0.55rem 0.75rem;
+}
+
+.ss-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ss-list > li,
+.ss-list > .ss-list__item,
+.ss-list > .id-content-row,
+.ss-list > .mur-settings-row {
+  min-height: 2.75rem;
+  padding: 0.55rem 0.15rem;
+  border-bottom: 1px solid var(--mj-hairline, var(--sf-hairline, transparent));
+}
+
+.ss-list > li:last-child,
+.ss-list > .ss-list__item:last-child {
+  border-bottom: none;
+}
+
+/* —— Confirm dialog density (MODAL authority) —— */
+.ss-confirm-dialog {
+  border-radius: var(--radius-card, 1rem);
+  border-color: var(--mj-hairline, var(--sf-hairline, transparent));
+}
+
+/* —— Tab authority (TAB_AUTHORITY_ONLY) —— */
+:root {
+  --ss-tab-min-height: 2.75rem;
+  --ss-tab-pad-y: 0.65rem;
+  --ss-tab-pad-x: 0.8rem;
+  --ss-tab-gap: 0.2rem;
+  --ss-tab-font-size: 0.8rem;
+  --ss-tab-indicator-size: 2px;
+}
+
+.ss-tabs {
+  display: flex;
+  overflow-x: auto;
+  gap: 0;
+  background: var(--mj-bg, transparent);
+  border-bottom: var(--ss-tab-indicator-size) solid var(--mj-hairline, var(--sf-hairline, transparent));
+  padding: 0 0.5rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ss-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.ss-tabs__tab {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ss-tab-gap);
+  min-height: var(--ss-tab-min-height);
+  min-width: 2.75rem;
+  padding: var(--ss-tab-pad-y) var(--ss-tab-pad-x);
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--mj-ink-2, var(--color-text-muted));
+  font-size: var(--ss-tab-font-size);
+  font-weight: 500;
+  white-space: nowrap;
+  border-bottom: var(--ss-tab-indicator-size) solid transparent;
+  margin-bottom: calc(-1 * var(--ss-tab-indicator-size));
+  position: relative;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.ss-tabs__tab:hover:not(:disabled) {
+  color: var(--mj-ink, var(--color-text));
+  background: var(--color-surface-muted, color-mix(in srgb, var(--mj-brand, #0f766e) 6%, transparent));
+}
+
+.ss-tabs__tab:focus-visible {
+  outline: 2px solid var(--mj-brand, var(--color-primary));
+  outline-offset: 2px;
+}
+
+.ss-tabs__tab--active {
+  color: var(--mj-brand, var(--majalis-emerald, var(--color-primary)));
+  font-weight: 700;
+  border-bottom-color: var(--mj-brand, var(--majalis-emerald, var(--color-primary)));
+}
+
+.ss-tabs__icon {
+  display: inline-flex;
+  line-height: 1;
+}
+
+.ss-tabs__label {
+  font-size: inherit;
+}
+
+.ss-tabs__marker {
+  position: absolute;
+  inset-inline: 0.5rem;
+  bottom: 0;
+  height: 0;
+  /* indicator via border-bottom on tab — marker reserved for a11y dual-cue consumers */
+}
+
+.ss-tabs--pill {
+  border-bottom: none;
+  gap: 0.35rem;
+  padding: 0.35rem 0.5rem;
+  background: var(--color-surface-muted, var(--mj-surface-2, transparent));
+  border-radius: var(--radius-card, 1rem);
+}
+
+.ss-tabs--pill .ss-tabs__tab {
+  flex-direction: row;
+  border-bottom: none;
+  margin-bottom: 0;
+  border-radius: var(--radius-control, 0.75rem);
+  min-height: 2.5rem;
+}
+
+.ss-tabs--pill .ss-tabs__tab--active {
+  background: var(--mj-surface, var(--color-surface));
+  color: var(--mj-brand, var(--color-primary));
+  border: 1px solid var(--mj-hairline, var(--sf-hairline, transparent));
+}
+
+/* Soft absorb: align common page tab bars to shared rhythm (no color wars). */
+.tw-tabs-bar,
+.uq-tabs-bar,
+.sg-tabs-bar,
+.mw-tabs-bar,
+.atl-tabs-bar,
+.ra-tabs-bar,
+.fqp-tabs-scroll,
+.tabs-bar {
+  min-height: var(--ss-tab-min-height);
+  scrollbar-width: none;
+}
+
+.tw-tabs-bar::-webkit-scrollbar,
+.uq-tabs-bar::-webkit-scrollbar,
+.sg-tabs-bar::-webkit-scrollbar,
+.mw-tabs-bar::-webkit-scrollbar,
+.atl-tabs-bar::-webkit-scrollbar,
+.ra-tabs-bar::-webkit-scrollbar,
+.fqp-tabs-scroll::-webkit-scrollbar,
+.tabs-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* —— Color authority semantic remind (COLOR_AUTHORITY_ONLY) ——
+   Canonical meanings live in lib/color-authority.ts — do not invent page greens/reds.
+   PRIMARY=--mj-brand · TEXT=--mj-ink · SURFACE=--mj-surface · ERROR=--mj-danger
+*/
+
+/* —— Spacing / size authority (SPACING_AUTHORITY_ONLY · SIZE_AUTHORITY_ONLY) —— */
+:root {
+  /* Compat: keep --ds-space rhythm locked to foundation steps when present */
+  --ds-space-1: var(--sf2-space-1, 4px);
+  --ds-space-2: var(--sf2-space-2, 8px);
+  --ds-space-3: var(--sf2-space-3, 12px);
+  --ds-space-4: var(--sf2-space-4, 16px);
+  --ds-space-5: var(--sf2-space-5, 20px);
+  --ds-space-6: var(--sf2-space-6, 24px);
+  --ds-space-8: var(--sf2-space-8, 32px);
+
+  /* Elevation aliases → existing shadow tokens (ELEVATION_AUTHORITY_ONLY) */
+  --sf2-elevation-0: var(--sf2-shadow-none, none);
+  --sf2-elevation-1: var(--sf2-shadow-card, var(--sf-shadow-card, none));
+  --sf2-elevation-2: var(--sf-shadow-elevated, var(--mj-sh, none));
+  --sf2-elevation-3: var(--mj-sh, var(--sf-shadow-elevated, none));
+  --sf2-elevation-4: var(--mj-sh-lg, var(--mj-sh, none));
+
+  /* Border role aliases (BORDER_AUTHORITY_ONLY) */
+  --ss-border-subtle: var(--mj-hairline, var(--sf-hairline, transparent));
+  --ss-border-divider: var(--mj-hairline, var(--sf-hairline, transparent));
+  --ss-border-strong: var(--sf-border-strong, var(--mj-hairline, transparent));
+  --ss-border-focus: var(--sf2-focus-ring, var(--mj-brand));
+}
+
+/* —— Search field rhythm (SEARCH authority) —— */
+.ss-search-input,
+.page-search-input,
+input[type="search"].mj-search,
+.mj-search-field {
+  min-height: var(--touch-min, 44px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ss-search-input input[type="search"],
+.page-search-input,
+input[type="search"].mj-search {
+  font-size: 1rem; /* ≥16px — يمنع تكبير iOS */
+}
+
+@media (min-width: 768px) {
+  .ss-search-input input[type="search"] {
+    font-size: 0.875rem;
+  }
+}
+
+/* —— Filter chip density absorb (FILTER authority) —— */
+.mj-segmented-filter,
+.mj-active-filters {
+  gap: 0.35rem;
+}
+
+.mj-active-filters__pill,
+.mj-filter-chip {
+  min-height: var(--touch-min, 44px);
 }

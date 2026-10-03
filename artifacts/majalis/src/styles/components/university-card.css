@@ -1,5 +1,5 @@
 .univ-card {
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   background: var(--ss-card-bg, #fffcf7);
   border: 1px solid color-mix(in srgb, var(--mj-brand) 16%, var(--ss-border, #e3e8e6));
   overflow: hidden;
@@ -21,8 +21,8 @@
   border-radius: var(--sf-radius-md);
   display: grid;
   place-items: center;
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 12%, transparent);
-  color: var(--brand-on-light, var(--mj-brand-deep, #0d4a39));
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 12%, transparent);
+  color: var(--brand-on-light, var(--mj-brand-deep, var(--mj-brand-deep)));
   font-weight: 800;
 }
 .univ-card__head-en {
@@ -38,7 +38,7 @@
   padding: 0 1rem 1rem;
 }
 /* ── 192 — UniversityCard helpers ─────────────────────────────────────────── */
-.univ-card__logo     { background: color-mix(in srgb, var(--ss-card-bg, #fff) 90%, transparent); }
+.univ-card__logo     { background: color-mix(in srgb, var(--ss-card-bg, var(--mj-white)) 90%, transparent); }
 .univ-card__location { color: var(--majalis-ink-soft); }
 .univ-card__meta     { color: var(--majalis-ink-soft); }
 .univ-card__updated  { color: var(--majalis-line); }
@@ -51,7 +51,7 @@
 /* ── نُقل إلى styles/components/prayer-countdown-banner.css ── */
 
 .univ-card__name {
-  color: var(--brand-on-light, var(--mj-brand-deep, #0d4a39));
+  color: var(--brand-on-light, var(--mj-brand-deep, var(--mj-brand-deep)));
   margin: 0;
 }
 html.dark .univ-card__name,
@@ -71,7 +71,7 @@ html[data-theme="dark"] .univ-card__name {
   z-index: 30;
   padding: 0.65rem 0.85rem calc(0.65rem + var(--inset-bottom, 0px));
   background: color-mix(in srgb, var(--mj-surface, #fffcf7) 92%, transparent);
-  border-top: 1px solid color-mix(in srgb, var(--mj-ink, #16241e) 10%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--mj-ink, var(--v2-color-ink)) 10%, transparent);
   backdrop-filter: blur(10px);
 }
 .compare-bar__inner {
@@ -89,7 +89,7 @@ html[data-theme="dark"] .univ-card__name {
   gap: 0.35rem;
   padding: 0.25rem 0.55rem;
   border-radius: var(--sf-radius-pill);
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 12%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 12%, transparent);
   font-size: 0.78rem;
 }
 .compare-chip__remove {

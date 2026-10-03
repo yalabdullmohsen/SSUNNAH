@@ -58,6 +58,128 @@ Canonical: Input · Textarea · Select · Checkbox · Radio · Switch · FormLab
 
 Forbidden: Feedback V3 / parallel form kits. Gate: `test:form-feedback-authority`.
 
+## Table Authority
+
+Canonical: `ui/table` + `.ss-data-table` (`ssunnah-card-unify.css`).  
+Map: `docs/design/TABLE_AUTHORITY_MAP.md`.  
+Admin `.av3-table` / legacy `.admin-table` = SPECIAL_CASE.
+
+## List Authority
+
+Canonical façades: `SimpleList` · `InteractiveList` · `NavigationList` · `ResultList`  
+→ ContentRow / SettingsList / VirtualList (`ListSystem.tsx`).  
+Map: `docs/design/LIST_AUTHORITY_MAP.md`.
+
+## Data Presentation Authority
+
+Cards + tables + lists + `StatusBadge` + `FilterChips` + SsText metadata.  
+Doc: `docs/design/DATA_PRESENTATION_AUTHORITY.md`. Gate: `test:table-list-authority`.
+
+## Modal / Overlay Authority
+
+Canonical: `Dialog` · `AlertDialog` · product `ConfirmDialog` · `AppBottomSheet` / `Sheet`.  
+Maps: `MODAL_AUTHORITY_MAP.md` · `OVERLAY_AUTHORITY_MAP.md`.  
+AdminConfirmDialog / Mushaf sheets = SPECIAL_CASE. Gate: `test:overlay-feedback-authority`.
+
+## Feedback / Status Authority
+
+Feedback V2 states + `Alert` + FieldError + StatusBadge.  
+Maps: `FEEDBACK_AUTHORITY_MAP.md` · `STATUS_AUTHORITY_MAP.md`.  
+Exit: `FEEDBACK_AUTHORITY_ONLY` · `STATUS_AUTHORITY_ONLY`.
+
+## Tab Authority
+
+Canonical: `ContentTabs` / `PageTabs` · `SegmentedFilter` for filters.  
+Map: `TAB_AUTHORITY_MAP.md`. Gate: `test:tab-nav-authority`.  
+Exit: `TAB_AUTHORITY_ONLY`.
+
+## Navigation Authority
+
+Canonical: `BottomNavBar` · `NavBar` · `SideNavDrawer` · `Breadcrumbs` · `config/navigation.ts`.  
+Maps: `NAVIGATION_AUTHORITY_MAP.md` · `NAVIGATION_EXPERIENCE_AUTHORITY.md`.  
+Exit: `NAVIGATION_AUTHORITY_ONLY` · `NAVIGATION_EXPERIENCE_UNIFIED`.
+
+## Search / Filter / State / Responsive
+
+Canonical search: `SearchInput` · `SearchResultCard` · `GlobalSearchModal` / `/search`.  
+Canonical filters: `components/filters/*` (`SegmentedFilter` · `ActiveFilters` · sheets).  
+State: Feedback V2 (= `STATE_AUTHORITY_ONLY`).  
+Responsive: `breakpoints.css` only.  
+Maps: `SEARCH_` · `FILTER_` · `STATE_` · `RESPONSIVE_AUTHORITY_MAP.md`.  
+Gate: `test:search-filter-state-authority`.
+
+## Color / Typography / Design Language
+
+Canonical color roles: `COLOR_AUTHORITY_MAP` · `lib/color-authority.ts` → `--mj-*` / `--sf2-*`.  
+Canonical type: `TYPOGRAPHY_AUTHORITY_MAP` · SsText · `typography-scale.css`.  
+Language: `DESIGN_LANGUAGE_AUTHORITY.md`.  
+Exit: `COLOR_AUTHORITY_ONLY` · `TYPOGRAPHY_AUTHORITY_ONLY` · `DESIGN_LANGUAGE_UNIFIED`.  
+Gate: `test:color-typography-authority`.
+
+## Spacing / Size / A11y / Contrast
+
+Spacing: `--sf2-space-*` · `SPACING_AUTHORITY_MAP`.  
+Size: `--touch-min` · icon boxes · `SIZE_AUTHORITY_MAP`.  
+A11y: `ACCESSIBILITY_AUTHORITY_MAP` (+ `ACCESSIBILITY_STANDARD`).  
+Contrast: `CONTRAST_AUTHORITY_MAP` + existing AA/on-brand gates.  
+Exit: `SPACING_AUTHORITY_ONLY` · `SIZE_AUTHORITY_ONLY` · `ACCESSIBILITY_STANDARDIZED` · `CONTRAST_STANDARDIZED`.  
+Gate: `test:spacing-size-a11y-contrast-authority`.
+
+## Elevation / Border / Design Governance
+
+Elevation LEVEL_0…4 → `--sf2-shadow-*` / `--mj-sh*` · `ELEVATION_AUTHORITY_MAP`.  
+Border PRIMARY…FOCUS → hairline / brand / focus · `BORDER_AUTHORITY_MAP`.  
+Automation: `scripts/design-governance-report.mjs` → DESIGN_AUTHORITY/DRIFT reports + consistency score.  
+Exit: `ELEVATION_AUTHORITY_ONLY` · `BORDER_AUTHORITY_ONLY` · `DESIGN_GOVERNANCE_AUTOMATED`.  
+Gates: `test:design-governance` · preflight `design-governance-preflight.mjs`.
+
+## Unified Design Tokens Authority
+
+Catalog: `DESIGN_TOKENS_AUTHORITY.md` · `lib/design-tokens-authority.ts`  
+Logical paths (`color.primary`, `spacing.md`, …) → sf/mj/ss only.  
+Compliance: `TOKEN_COMPLIANCE_REPORT` · `test:design-tokens-authority`.  
+Exit: `DESIGN_TOKENS_AUTHORITY_ACTIVE` · `TOKEN_COMPLIANCE_ENFORCED` · `VISUAL_SYSTEM_UNIFIED`.
+
+## Polish wave AL–AP (measurable consistency)
+
+Interaction states: `INTERACTION_AUTHORITY_MAP` → `INTERACTION_SYSTEM_UNIFIED`.  
+Coverage: `AUTHORITY_COVERAGE_REPORT` · `AUTHORITY_ADOPTION_PERCENTAGE`.  
+Scoring: `DESIGN_CONSISTENCY_SCORE` (+ drift · adoption · easiest wins) every governance run.  
+Admin: `ADMIN_UI_AUTHORITY_MAP` → `ADMIN_UI_STANDARDIZED`.  
+Empty excellence: `EMPTY_STATE_STANDARD`.  
+Journeys: `USER_JOURNEY_OPTIMIZATION_PLAN`.  
+Gate: `test:polish-consistency` (wired into `test:design-governance`).
+
+## Compliance wave AQ–AU (drift prevention)
+
+Engine: `DESIGN_SYSTEM_COMPLIANCE_ENGINE.md` · `scripts/design-compliance-engine.mjs`.  
+Outputs: DESIGN_COMPLIANCE_* · TOKEN_COVERAGE_SCORECARD · UI_DUPLICATION_REPORT · CONSISTENCY_PRIORITY_MATRIX · PRODUCT_SURFACE_MAP · SUNNAH_PRODUCT_CERTIFICATION_REPORT.  
+Gate: `test:design-compliance-engine`.
+
+## Product excellence AV–AZ
+
+Program: `PRODUCT_EXCELLENCE_PROGRAM.md` · `scripts/product-excellence-engine.mjs`.  
+Outputs: PRODUCT_COHESION_* · TOKEN_MIGRATION_QUEUE · COMPONENT_RATIONALIZATION · JOURNEY_LENGTH · POLISH_BACKLOG.  
+Gate: `test:product-excellence`.
+
+## Product maturity BA–BE
+
+Program: `PRODUCT_MATURITY_PROGRAM.md` · `scripts/product-maturity-engine.mjs`.  
+Outputs: PRODUCT_MATURITY_SCORECARD · DESIGN_DRIFT_ATLAS · MICRO_FRICTION_BACKLOG · CONTENT_STYLE_AUTHORITY · ICON_AUTHORITY_MAP.  
+Gate: `test:product-maturity`.
+
+## Performance excellence BF–BJ
+
+Program: `PERFORMANCE_EXCELLENCE_PROGRAM.md` · `scripts/performance-excellence-engine.mjs`.  
+Outputs: RENDER_COST · MUSHAF_BOTTLENECK · STARTUP_PERFORMANCE · NETWORK_EFFICIENCY · PERFORMANCE_BUDGET (+ drift alerts).  
+Gate: `test:performance-excellence` · existing `test:bundle-budget` / LHCI budgets unchanged.
+
+## Database excellence BK–BO
+
+Program: `DATABASE_EXCELLENCE_PROGRAM.md` · `scripts/database-excellence-engine.mjs`.  
+Outputs: DATABASE_HEATMAP · QUERY_OPTIMIZATION_QUEUE · INDEX_AUTHORITY · CACHE_OPTIMIZATION_PLAN · SUNNAH_DATABASE_HEALTH_SCORECARD.  
+Gate: `test:database-excellence` · `test:supabase-policy-audit` unchanged.
+
 ## Page Authority
 
 Canonical: `AppPage` · `PageHeader` · Screen adapters (`DetailScreen`, …) per `PAGE_CONTRACT_MATRIX.md`.

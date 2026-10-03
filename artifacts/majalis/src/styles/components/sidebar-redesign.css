@@ -46,7 +46,7 @@
   height: 100dvh;
   max-height: 100dvh;
   background: var(--surface, var(--color-surface, #fffcf8));
-  color: var(--text, var(--color-text, #16241e));
+  color: var(--text, var(--color-text, var(--v2-color-ink)));
   border-inline-end: 1px solid var(--border, var(--color-border, rgba(18, 54, 42, 0.12)));
   box-shadow: var(--shadow-soft, 0 3px 12px -10px rgba(10, 61, 46, 0.12));
   direction: rtl;
@@ -80,7 +80,7 @@ html[dir="rtl"] .sidebar-panel {
   padding: 6px 6px 14px;
   margin-inline: 2px;
   background: transparent;
-  color: var(--text, #16241e);
+  color: var(--text, var(--v2-color-ink));
   flex-shrink: 0;
   border-bottom: 1px solid color-mix(in srgb, var(--border, #d9d3c8) 85%, transparent);
 }
@@ -97,16 +97,16 @@ html[dir="rtl"] .sidebar-panel {
   font-weight: 800;
   line-height: 1.35;
   margin: 0;
-  color: var(--text, #16241e);
+  color: var(--text, var(--v2-color-ink));
 }
 
 .sidebar-close {
   width: 44px;
   height: 44px;
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #146b52) 18%, var(--border, #d9d3c8));
-  border-radius: var(--radius-button, 14px);
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, var(--border, #d9d3c8));
+  border-radius: var(--sf-radius-control, 14px);
   background: var(--primary-soft, var(--mj-brand-soft, #e6f2ec));
-  color: var(--mj-brand-deep, #0d4a39);
+  color: var(--mj-brand-deep, var(--mj-brand-deep));
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -116,7 +116,7 @@ html[dir="rtl"] .sidebar-panel {
 }
 
 .sidebar-close:hover {
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 16%, var(--surface, #fff));
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 16%, var(--surface, var(--mj-white)));
 }
 
 .sidebar-body {
@@ -200,7 +200,7 @@ html[dir="rtl"] .sidebar-panel {
 }
 
 .sidebar-section-toggle:focus-visible {
-  outline: 2px solid var(--sf2-focus-ring, var(--color-primary, #0f5c3f));
+  outline: 2px solid var(--sf2-focus-ring, var(--color-primary, var(--sf-color-deep-emerald)));
   outline-offset: 2px;
 }
 
@@ -243,8 +243,8 @@ html[dir="rtl"] .sidebar-panel {
   align-items: center;
   gap: 12px;
   padding: 10px 12px;
-  border-radius: var(--radius-button, 14px);
-  color: var(--text, #16241e);
+  border-radius: var(--sf-radius-control, 14px);
+  color: var(--text, var(--v2-color-ink));
   text-decoration: none;
   background: transparent;
   border: 1px solid transparent;
@@ -257,24 +257,23 @@ html[dir="rtl"] .sidebar-panel {
 }
 
 .sidebar-item:hover {
-  background: color-mix(in srgb, var(--sidebar-item-accent, var(--mj-brand, #146b52)) 10%, var(--surface, #fff));
+  background: color-mix(in srgb, var(--sidebar-item-accent, var(--mj-brand, var(--mj-brand))) 10%, var(--surface, var(--mj-white)));
 }
 
 .sidebar-item:active {
-  background: color-mix(in srgb, var(--sidebar-item-accent, var(--mj-brand, #146b52)) 14%, var(--surface, #fff));
+  background: color-mix(in srgb, var(--sidebar-item-accent, var(--mj-brand, var(--mj-brand))) 14%, var(--surface, var(--mj-white)));
 }
 
 .sidebar-item.active {
-  background: color-mix(in srgb, var(--sf2-action-primary, var(--color-primary, #0f5c3f)) 12%, var(--sf2-card-bg, #fff));
-  border-color: color-mix(in srgb, var(--sf2-action-primary, var(--color-primary, #0f5c3f)) 18%, transparent);
-  border-inline-start: 3px solid var(--sf2-action-primary, var(--color-primary, #0f5c3f));
-  color: var(--sf2-text-primary, var(--color-primary-dark, #15382d));
-  box-shadow: none;
+  background: color-mix(in srgb, var(--sf2-action-primary, var(--color-primary, var(--sf-color-deep-emerald))) 12%, var(--sf2-card-bg, var(--mj-white)));
+  border-color: color-mix(in srgb, var(--sf2-action-primary, var(--color-primary, var(--sf-color-deep-emerald))) 18%, transparent);
+  border-inline-start: 3px solid var(--sf2-action-primary, var(--color-primary, var(--sf-color-deep-emerald)));
+  color: var(--sf2-text-primary, var(--color-primary-dark, var(--sf-color-rich-ink)));
   font-weight: 700;
 }
 
 .sidebar-item:focus-visible {
-  outline: 2px solid var(--sf2-focus-ring, var(--color-primary, #0f5c3f));
+  outline: 2px solid var(--sf2-focus-ring, var(--color-primary, var(--sf-color-deep-emerald)));
   outline-offset: 2px;
 }
 
@@ -282,19 +281,19 @@ html[dir="rtl"] .sidebar-panel {
   width: 40px;
   height: 40px;
   border-radius: var(--radius-control, 12px);
-  background: color-mix(in srgb, var(--sidebar-item-accent, var(--mj-brand, #146b52)) 12%, var(--surface, #fff));
-  border: 1px solid color-mix(in srgb, var(--sidebar-item-accent, var(--mj-brand, #146b52)) 22%, transparent);
+  background: color-mix(in srgb, var(--sidebar-item-accent, var(--mj-brand, var(--mj-brand))) 12%, var(--surface, var(--mj-white)));
+  border: 1px solid color-mix(in srgb, var(--sidebar-item-accent, var(--mj-brand, var(--mj-brand))) 22%, transparent);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--sidebar-item-accent, var(--mj-brand, #146b52));
+  color: var(--sidebar-item-accent, var(--mj-brand, var(--mj-brand)));
   flex-shrink: 0;
 }
 
 .sidebar-item.active .sidebar-item-icon {
-  background: color-mix(in srgb, var(--color-primary, #146b52) 16%, transparent);
-  color: var(--color-primary, #146b52);
-  border-color: color-mix(in srgb, var(--color-primary, #146b52) 28%, transparent);
+  background: color-mix(in srgb, var(--color-primary, var(--mj-brand)) 16%, transparent);
+  color: var(--color-primary, var(--mj-brand));
+  border-color: color-mix(in srgb, var(--color-primary, var(--mj-brand)) 28%, transparent);
 }
 
 .sidebar-item-text {
@@ -324,9 +323,9 @@ html[dir="rtl"] .sidebar-panel {
 .sidebar-user-chip {
   margin: 8px 4px 0;
   padding: 10px 12px;
-  border-radius: var(--radius-button, 14px);
+  border-radius: var(--sf-radius-control, 14px);
   background: var(--primary-soft, #e6f2ec);
-  color: var(--mj-brand-deep, #0d4a39);
+  color: var(--mj-brand-deep, var(--mj-brand-deep));
   font-size: 0.85rem;
   font-weight: 700;
   overflow: hidden;
@@ -411,7 +410,7 @@ html[data-theme="dark"] .sidebar-item-icon {
 
 html[data-theme="dark"] .sidebar-item.active .sidebar-item-icon {
   background: #0f4a31;
-  color: #fff;
+  color: var(--mj-white);
 }
 
 html[data-theme="dark"] .sidebar-user-chip {

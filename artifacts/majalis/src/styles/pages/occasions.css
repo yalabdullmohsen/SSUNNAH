@@ -57,7 +57,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
 }
 
 .occasion-detail__head {
@@ -81,8 +81,8 @@
   font-weight: 600;
   color: var(--mj-brand-deep, #12362c);
   background: var(--mj-brand-soft, #e8f5f0);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1e5f4b) 18%, transparent);
-  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, transparent);
+  border-radius: var(--radius-pill, 999rem);
   padding: 0.15rem 0.55rem;
   white-space: nowrap;
   margin-inline-start: 0.4rem;
@@ -98,14 +98,14 @@
   color: var(--text-secondary, var(--mj-ink-2, var(--mj-ink-2)));
   white-space: nowrap;
   background: var(--color-surface-muted, #f2f4f3);
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   padding: 0.28rem 0.7rem;
   flex-shrink: 0;
 }
 
 .occasion-detail__countdown--soon {
   color: #9b2c2c;
-  background: color-mix(in srgb, var(--mj-danger) 10%, var(--mj-white, var(--mj-white, #ffffff)));
+  background: color-mix(in srgb, var(--mj-danger) 10%, var(--mj-white, var(--mj-white, var(--mj-white))));
 }
 
 .occasion-detail__date {
@@ -127,7 +127,7 @@
   line-height: var(--lh-type-prose, 1.75);
   color: var(--text-secondary, var(--mj-ink-2, var(--mj-ink-2)));
   background: color-mix(in srgb, var(--mj-accent) 10%, transparent);
-  border-radius: 12px;
+  border-radius: var(--radius-md, 0.75rem);
   padding: 0.55rem 0.75rem;
 }
 

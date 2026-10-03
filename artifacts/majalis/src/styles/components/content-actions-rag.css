@@ -91,7 +91,7 @@
 .ca-report-chip--active {
   background: var(--majalis-danger, #dc2626);
   border-color: var(--majalis-danger, #dc2626);
-  color: #fff;
+  color: var(--mj-white);
 }
 
 .ca-report-textarea {
@@ -111,7 +111,7 @@
 
 .ca-report-submit {
   background: var(--majalis-danger, #dc2626);
-  color: #fff;
+  color: var(--mj-white);
   padding: .5rem 1rem;
   border-radius: .5rem;
   font-size: .875rem;
@@ -190,7 +190,7 @@
 .ra-tabs-bar::-webkit-scrollbar { display:none; }
 .ra-tab { flex-shrink:0; padding:.375rem .75rem; font-size:.875rem; border-radius:.375rem .375rem 0 0; font-weight:500; transition:background .15s, color .15s; color:var(--majalis-ink-soft); background:none; border:none; cursor:pointer; }
 .ra-tab:hover { background:var(--mn-surface-hover, rgba(31,77,58,.06)); }
-.ra-tab--active { background:var(--majalis-emerald); color:#fff; }
+.ra-tab--active { background:var(--majalis-emerald); color:var(--mj-white); }
 .ra-answer-box { background:var(--majalis-parchment); border:1px solid var(--majalis-line); border-radius:.75rem; padding: var(--ds-space-5); }
 .ra-action-btn { display:inline-flex; align-items:center; gap:.375rem; padding:.375rem .75rem; font-size:.875rem; background:var(--majalis-parchment-deep,#f0ece4); color:var(--majalis-ink); border-radius:.5rem; border:none; cursor:pointer; transition:background .15s; }
 .ra-action-btn:hover { background:var(--mn-surface-hover,rgba(31,77,58,.06)); }

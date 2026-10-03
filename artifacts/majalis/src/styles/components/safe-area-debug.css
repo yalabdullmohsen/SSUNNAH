@@ -40,8 +40,8 @@
   top: calc(var(--inset-top) + 4px);
   inset-inline-start: 8px;
   font: 11px/1.2 ui-monospace, monospace;
-  color: #fff;
+  color: var(--mj-white);
   background: rgb(0 0 0 / 55%);
   padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: var(--radius-xs, 0.25rem);
 }

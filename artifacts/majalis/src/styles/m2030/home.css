@@ -572,7 +572,7 @@ html.dark .m2030-feature__title {
   padding: 0.85rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
 }
 
 .m2030-customize {
@@ -752,7 +752,7 @@ html.dark .m2030-feature__title {
   align-items: center;
   min-height: 1.4rem;
   padding: 0.1rem 0.45rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   font-size: 0.68rem;
   font-weight: 700;
 }

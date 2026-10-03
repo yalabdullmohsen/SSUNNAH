@@ -1,9 +1,9 @@
 .share-faida {
   margin: 0.85rem 0 0.35rem;
   padding: 0.65rem 0.75rem;
-  border-radius: 16px;
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1e5f4b) 18%, var(--mj-hairline, #e3e8e6));
-  background: color-mix(in srgb, var(--mj-brand-soft, var(--brand-soft, var(--mj-brand-soft))) 35%, var(--mj-surface, #fff));
+  border-radius: var(--radius-lg, 1rem);
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, var(--mj-hairline, #e3e8e6));
+  background: color-mix(in srgb, var(--mj-brand-soft, var(--brand-soft, var(--mj-brand-soft))) 35%, var(--mj-surface, var(--mj-white)));
 }
 
 .share-faida__label {
@@ -26,10 +26,10 @@
   gap: 0.35rem;
   min-height: 40px;
   padding: 0.35rem 0.75rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1px solid var(--mj-hairline, #e3e8e6);
-  background: var(--mj-surface, #fff);
-  color: var(--mj-ink, #16241e);
+  background: var(--mj-surface, var(--mj-white));
+  color: var(--mj-ink, var(--v2-color-ink));
   font: inherit;
   font-size: 0.78rem;
   font-weight: 700;
@@ -38,8 +38,8 @@
 }
 
 .share-faida__btn:hover {
-  border-color: var(--mj-brand, #1e5f4b);
-  color: var(--mj-brand, #1e5f4b);
+  border-color: var(--mj-brand, var(--mj-brand));
+  color: var(--mj-brand, var(--mj-brand));
 }
 
 .share-faida__btn:active {
@@ -47,20 +47,20 @@
 }
 
 .share-faida__btn:focus-visible {
-  outline: 2px solid var(--mj-brand, #1e5f4b);
+  outline: 2px solid var(--mj-brand, var(--mj-brand));
   outline-offset: 2px;
 }
 
 .share-faida__btn--primary {
-  background: var(--mj-brand, #1e5f4b);
-  border-color: var(--mj-brand, #1e5f4b);
-  color: var(--mj-on-brand, #fff);
+  background: var(--mj-brand, var(--mj-brand));
+  border-color: var(--mj-brand, var(--mj-brand));
+  color: var(--mj-on-brand, var(--mj-white));
 }
 
 .share-faida__btn--primary:hover {
   background: var(--mj-brand-deep, #14614a);
   border-color: var(--mj-brand-deep, #14614a);
-  color: var(--mj-on-brand, #fff);
+  color: var(--mj-on-brand, var(--mj-white));
 }
 
 html[data-theme="dark"] .share-faida,
@@ -118,7 +118,7 @@ html.dark .share-faida__btn {
   min-width: 32px;
   min-height: 32px;
   padding: 0;
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   border: 1px solid var(--mj-hairline, #d5ddd9);
   background: color-mix(in srgb, var(--mj-surface-2, #f3f6f4) 90%, transparent);
   color: var(--mj-ink-2, #4a5a53);
@@ -128,7 +128,7 @@ html.dark .share-faida__btn {
 .share-faida__icon-btn--primary {
   background: #1a4d3e;
   border-color: color-mix(in srgb, #1a4d3e 85%, #34d399);
-  color: #fff;
+  color: var(--mj-white);
 }
 
 .share-faida__icon-btn:focus-visible {

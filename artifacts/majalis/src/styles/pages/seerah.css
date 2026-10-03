@@ -54,9 +54,9 @@
   gap: 0.65rem;
   margin-top: 1.35rem;
   padding: 0.7rem 1.25rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 28%, transparent);
+  border-radius: var(--radius-pill, 999rem);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 28%, transparent);
   color: var(--mss-on-hero-accent, #123f2e);
   font-size: 0.95rem;
   font-weight: 700;
@@ -65,8 +65,8 @@
 }
 .seerah-full-cta:hover,
 .seerah-full-cta:focus-visible {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 18%, transparent);
-  border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 40%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, transparent);
+  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 40%, transparent);
   outline: none;
 }
 .seerah-full-cta:active {
@@ -78,8 +78,8 @@
   justify-content: center;
   width: 1.6rem;
   height: 1.6rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 14%, transparent);
+  border-radius: var(--radius-pill, 999rem);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, transparent);
   font-size: 1rem;
   line-height: 1;
 }
@@ -97,7 +97,7 @@
   padding: 0.9rem 1.25rem;
   background: var(--majalis-panel);
   border: 1px solid var(--majalis-line);
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   font-size: 0.85rem;
   color: var(--majalis-emerald);
   line-height: 1.7;
@@ -130,7 +130,7 @@
   gap: 0;
   background: var(--ss-card-bg, var(--color-surface, var(--mj-surface, var(--mj-surface))));
   border: 1px solid var(--majalis-line);
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   padding: var(--ds-space-2);
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   max-height: calc(100svh - 2rem);
@@ -147,7 +147,7 @@
   line-height: 1.65;
   color: var(--majalis-muted, #5c6b64);
   background: var(--majalis-parchment);
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   border: 1px dashed var(--majalis-line);
 }
 .seerah-sources__note {
@@ -203,7 +203,7 @@
     flex-shrink: 0;
     border: 1px solid var(--majalis-line);
     background: var(--ss-card-bg, var(--color-surface, var(--mj-surface, var(--mj-surface))));
-    border-radius: 10px;
+    border-radius: var(--radius-sm, 0.625rem);
     gap: var(--ds-space-1);
   }
   .seerah-timeline__item--active {
@@ -284,7 +284,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
 .seerah-panel {
   flex: 1;
   background: var(--ss-card-bg, var(--color-surface, var(--mj-surface, var(--mj-surface))));
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   border: 1px solid var(--majalis-line);
   padding: 1.75rem;
   min-height: 0;
@@ -394,7 +394,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
   padding: 0.55rem 1.1rem;
   background: var(--majalis-panel);
   border: 1px solid var(--majalis-line);
-  border-radius: 8px;
+  border-radius: var(--radius-sm, 0.5rem);
   cursor: pointer;
   font-size: 0.83rem;
   color: var(--majalis-ink-soft);
@@ -411,7 +411,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
   padding: var(--ds-space-6);
   background: var(--ss-card-bg, var(--color-surface, var(--mj-surface, var(--mj-surface))));
   border: 1px solid var(--majalis-line);
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   box-shadow: 0 1px 6px rgba(0,0,0,0.04);
 }
 @media (max-width: 640px) {
@@ -513,7 +513,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
 .seerah-timeline__item--active .seerah-timeline__dot {
   background: var(--phase-color, var(--majalis-emerald));
   border-color: var(--phase-color, var(--majalis-emerald));
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
 }
 .seerah-panel__header-body { flex: 1; }
 .seerah-panel__num  { color: var(--panel-color, var(--majalis-emerald)); }
@@ -580,7 +580,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
 }
 .seerah-phase {
   padding: 1.25rem 1.25rem 1.25rem 1.25rem !important;
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
   border: 1px solid var(--v2-border, #D8D2C7) !important;
   background: var(--v2-surface, var(--mj-bg)) !important;
   margin-bottom: 1rem !important;
@@ -601,7 +601,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
   color: var(--majalis-brass, var(--mj-brand));
   text-decoration: none;
   border: 1px solid rgba(23,61,53,0.25);
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   padding: 0.2rem 0.75rem;
   transition: border-color 0.15s, background 0.15s;
   margin-bottom: 1rem;
@@ -626,7 +626,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
 .seerah-timeline {
   width: min(210px, 100%);
   padding: 0.45rem;
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
   gap: 0.15rem;
   max-height: calc(100svh - 7rem);
@@ -635,7 +635,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
 .seerah-timeline__item {
   gap: 0.45rem;
   padding: 0.4rem 0.5rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm, 0.5rem);
 }
 
 .seerah-timeline__dot {
@@ -662,7 +662,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
 
 .seerah-panel {
   padding: 1.1rem 1.15rem 1.15rem;
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   min-height: 0;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
   max-width: 40rem;
@@ -683,7 +683,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: color-mix(in srgb, var(--panel-color, var(--majalis-emerald)) 10%, transparent);
 }
 
@@ -732,7 +732,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
   margin-bottom: 1rem;
   padding: 0.75rem 0.85rem;
   border-radius: var(--radius-control, 14px);
-  background: color-mix(in srgb, var(--majalis-parchment, #f7f3ea) 88%, var(--mj-white, #ffffff));
+  background: color-mix(in srgb, var(--majalis-parchment, #f7f3ea) 88%, var(--mj-white, var(--mj-white)));
   border: 1px solid var(--majalis-line, #e6e0d4);
 }
 
@@ -765,7 +765,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
 .seerah-panel__nav-btn {
   padding: 0.45rem 0.85rem;
   font-size: 0.8rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
 }
 
 /* لا أزرار مشاركة داخل بطاقة المرحلة */
@@ -814,7 +814,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
 html[data-theme="dark"] .seerah-panel__events,
 html.dark .seerah-panel__events {
   background: color-mix(in srgb, var(--majalis-panel, #1c2420) 92%, var(--mj-ink));
-  border-color: color-mix(in srgb, var(--mj-white, var(--mj-white, #ffffff)) 12%, transparent);
+  border-color: color-mix(in srgb, var(--mj-white, var(--mj-white, var(--mj-white))) 12%, transparent);
 }
 
 

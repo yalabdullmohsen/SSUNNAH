@@ -60,6 +60,22 @@ export type InteractionState =
   | "success"
   | "error";
 
+/**
+ * Product vocabulary for interactive states (Phase AL).
+ * See docs/design/INTERACTION_AUTHORITY_MAP.md — do not invent page-local state kits.
+ */
+export const INTERACTION_STATE_AUTHORITY = {
+  idle: "default surface (Button / AppCard / field)",
+  hovered: "hover-elevate · InteractiveCard only when navigable",
+  focused: "focus-visible ring · --ss-border-focus / --sf2-focus-ring",
+  pressed: "active-elevate-2 · MOTION_DURATION_MS.instant",
+  selected: "ContentTabs indicator · toggle selected · list selected",
+  loading: "Button.loading (aria-busy) · LoadingStateV2",
+  disabled: "disabled attr + muted surface (not opacity-only)",
+  success: "Feedback V2 / status success roles",
+  error: "FieldError · ErrorStateV2 · destructive Button",
+} as const satisfies Record<InteractionState, string>;
+
 /** ميزانية إطار حسب معدل التحديث (هدف داخلي — القياس على الجهاز مطلوب) */
 export const FRAME_BUDGET_MS = {
   hz60: 16.7,

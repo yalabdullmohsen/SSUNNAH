@@ -30,7 +30,7 @@
 .profile-identity__avatar {
   width: 48px; height: 48px;
   border-radius: 50%;
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   font-size: 1.4rem;
   font-weight: 800;
   display: flex; align-items: center; justify-content: center;
@@ -43,7 +43,7 @@
   font-size: 0.72rem;
   font-weight: 700;
   padding: 0.1rem 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1.5px solid;
 }
 .profile-identity__streak { text-align: center; }
@@ -58,7 +58,7 @@
 
 /* ── شريط المستوى ───────────────────────────────────────────────── */
 .profile-level-bar {
-  background: var(--majalis-panel, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--majalis-panel, var(--mj-white, var(--mj-white, var(--mj-white))));
   border: 1px solid var(--ds-line-color);
   border-radius: var(--ds-radius-lg, 0.625rem);
   padding: 0.875rem 1.25rem;
@@ -74,14 +74,14 @@
 .profile-level-bar__xp { font-size: 0.72rem; color: var(--majalis-ink-soft); }
 .profile-level-bar__track {
   height: 8px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: var(--ds-line-color);
   overflow: hidden;
   margin-bottom: 0.35rem;
 }
 .profile-level-bar__fill {
   height: 100%;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   transition: width 0.6s ease;
 }
 .profile-level-bar__meta {
@@ -110,7 +110,7 @@
   .profile-stats-grid { grid-template-columns: repeat(2, 1fr); }
 }
 .profile-stat-card {
-  background: var(--majalis-panel, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--majalis-panel, var(--mj-white, var(--mj-white, var(--mj-white))));
   border: 1px solid var(--ds-line-color);
   border-radius: var(--ds-radius-lg, 0.625rem);
   padding: 0.875rem 0.75rem;
@@ -199,7 +199,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
-  background: var(--majalis-panel, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--majalis-panel, var(--mj-white, var(--mj-white, var(--mj-white))));
   border: 1px solid var(--ds-line-color);
   border-radius: var(--ds-radius-lg, 0.625rem);
   transition: border-color 0.15s;
@@ -223,17 +223,17 @@
   color: var(--majalis-ink-soft);
   background: var(--ds-line-color);
   padding: 0.1rem 0.4rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
 }
 .profile-resume__section { font-size: 0.68rem; color: var(--majalis-ink-soft); }
 .profile-resume__track {
   height: 4px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: var(--ds-line-color);
   overflow: hidden;
   margin-top: 0.25rem;
 }
-.profile-resume__fill { height: 100%; background: var(--ds-emerald); border-radius: 999px; }
+.profile-resume__fill { height: 100%; background: var(--ds-emerald); border-radius: var(--radius-pill, 999rem); }
 .profile-resume__pct { font-size: 0.72rem; font-weight: 700; color: var(--ds-emerald-deep); flex-shrink: 0; }
 .profile-resume__del {
   background: none;
@@ -257,9 +257,9 @@
 }
 .profile-quick-link {
   padding: 0.45rem 0.9rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1.5px solid var(--ds-line-color);
-  background: var(--majalis-panel, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--majalis-panel, var(--mj-white, var(--mj-white, var(--mj-white))));
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--majalis-ink);
@@ -289,7 +289,7 @@
   gap: 0.6rem;
   padding: 0.65rem 1rem;
   background: var(--ds-emerald-deep);
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   border-radius: 0.75rem;
   font-size: 0.82rem;
   box-shadow: 0 4px 16px rgba(0,0,0,0.2);
@@ -327,7 +327,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
-  background: var(--majalis-panel, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--majalis-panel, var(--mj-white, var(--mj-white, var(--mj-white))));
   border: 1px solid var(--ds-line-color);
   border-radius: var(--ds-radius-lg, 0.625rem);
   text-decoration: none;
@@ -359,11 +359,11 @@
 .home-resume__card-track {
   width: 48px;
   height: 4px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: var(--ds-line-color);
   overflow: hidden;
 }
-.home-resume__card-fill { height: 100%; background: var(--ds-emerald); border-radius: 999px; }
+.home-resume__card-fill { height: 100%; background: var(--ds-emerald); border-radius: var(--radius-pill, 999rem); }
 .home-resume__card-pct { font-size: 0.68rem; font-weight: 700; color: var(--ds-emerald-deep); }
 
 /* ══════════════════════════════════════════════════════════════════════

@@ -57,7 +57,7 @@ a.bottom-nav__tab,
   width: 100%;
   max-width: 40rem;
   max-height: 85svh;
-  border-radius: 20px 20px 0 0;
+  border-radius: var(--radius-card, 1.25rem) 20px 0 0;
   transform: translateY(calc(-1 * var(--keyboard-inset)));
 }
 .app-sheet__footer {

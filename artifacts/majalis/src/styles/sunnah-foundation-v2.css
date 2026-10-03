@@ -71,8 +71,8 @@
   --sf2-type-hadith: var(--sf-type-hadith);
 
   /* ── Radius: control · card · feature · sheet ── */
-  --sf2-radius-control: var(--sf-radius-control, var(--sf-radius-xs, 12px));
-  --sf2-radius-card: var(--sf-radius-card, var(--sf-radius-md, 20px));
+  --sf2-radius-control: var(--sf-radius-control, 0.75rem));
+  --sf2-radius-card: var(--sf-radius-card, 1.5rem));
   --sf2-radius-feature: var(--sf-radius-feature, var(--sf-radius-lg, 24px));
   --sf2-radius-sheet: var(--sf-radius-sheet, var(--sf-radius-lg, 24px));
   --sf2-radius-pill: var(--sf-radius-pill, 999px);

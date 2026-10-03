@@ -1,0 +1,392 @@
+{
+  "updatedAt": "2026-10-03T04:34:20.878Z",
+  "PRODUCT_MATURITY_SCORECARD": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:34:20.878Z",
+    "overallScore": 75,
+    "overallLevel": "MATURE",
+    "categories": [
+      {
+        "name": "Design",
+        "score": 81,
+        "level": "MATURE"
+      },
+      {
+        "name": "UX",
+        "score": 66,
+        "level": "ADVANCED"
+      },
+      {
+        "name": "Performance",
+        "score": 72,
+        "note": "Proxy via CSS debt ceilings — DEVICE_REQUIRED for LHCI/startup",
+        "level": "ADVANCED"
+      },
+      {
+        "name": "Consistency",
+        "score": 62,
+        "level": "ADVANCED"
+      },
+      {
+        "name": "Maintainability",
+        "score": 85,
+        "level": "MATURE"
+      },
+      {
+        "name": "Accessibility",
+        "score": 78,
+        "level": "MATURE"
+      },
+      {
+        "name": "Architecture",
+        "score": 82,
+        "level": "MATURE"
+      }
+    ],
+    "PRODUCT_MATURITY_AUDIT": true,
+    "nonClaims": [
+      "NOT UNIFIED_100",
+      "NOT EXCELLENT claim",
+      "DEVICE_REQUIRED for perf wall-clock"
+    ]
+  },
+  "DESIGN_DRIFT_ATLAS": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:34:20.878Z",
+    "DESIGN_DRIFT_ERADICATION": true,
+    "undocumentedDriftPolicy": "No undocumented visual drift — every entry has authority + priority",
+    "entryCount": 13,
+    "entries": [
+      {
+        "domain": "cards",
+        "location": [
+          "components/AdminRouteGuard.tsx",
+          "components/ExploreAlsoNav.tsx",
+          "components/FiqhGuidePage.tsx",
+          "components/GlobalSearchModal.tsx",
+          "components/RelatedKnowledge.tsx"
+        ],
+        "signal": "bypass=208 adoption=9%",
+        "rootCause": "Parallel implementations outside authority",
+        "authority": "CARD_SURFACE_AUTHORITY · AppCard",
+        "migrationPriority": "P0",
+        "screenshot": "DEVICE_REQUIRED — capture on absorb PR"
+      },
+      {
+        "domain": "buttons",
+        "location": [
+          "components/AdminInlineEdit.tsx",
+          "components/QuranViewer.tsx",
+          "components/admin/SubmissionsReviewPanel.tsx",
+          "components/admin/review-hub/ContentModerationCard.tsx",
+          "components/admin/review-hub/LinearAudioReviewPlayer.tsx"
+        ],
+        "signal": "bypass=100 adoption=71%",
+        "rootCause": "Residual raw controls",
+        "authority": "INTERACTION_COMPONENT_AUTHORITY · Button",
+        "migrationPriority": "P0",
+        "screenshot": "DEVICE_REQUIRED — capture on absorb PR"
+      },
+      {
+        "domain": "forms",
+        "location": [
+          "admin-v3/domains/analytics/AnalyticsPlatformPage.tsx",
+          "admin-v3/domains/community/UsersPage.tsx",
+          "admin-v3/domains/content/EntityCrudPage.tsx",
+          "admin-v3/domains/content/RemainingEntityCrudPage.tsx",
+          "admin-v3/domains/taxonomy/TaxonomyPage.tsx"
+        ],
+        "signal": "bypass=182 adoption=5%",
+        "rootCause": "Parallel implementations outside authority",
+        "authority": "FORM_AUTHORITY_MAP · FormLabel/FieldError",
+        "migrationPriority": "P0",
+        "screenshot": "DEVICE_REQUIRED — capture on absorb PR"
+      },
+      {
+        "domain": "token:color",
+        "location": [
+          "features/mushaf-madinah/mushaf-madinah.css",
+          "styles/quran.css",
+          "styles/admin.css"
+        ],
+        "signal": "hardcoded color ×6549",
+        "rootCause": "Literal CSS/TSX values not mapped through DESIGN_TOKENS_AUTHORITY",
+        "authority": "COLOR_AUTHORITY_MAP / DESIGN_TOKENS_AUTHORITY color.*",
+        "migrationPriority": "P0",
+        "screenshot": "DEVICE_REQUIRED — before/after on high-traffic route"
+      },
+      {
+        "domain": "token:shadow",
+        "location": [
+          "features/mushaf-madinah/mushaf-madinah.css",
+          "styles/quran.css",
+          "styles/admin.css"
+        ],
+        "signal": "hardcoded shadow ×1005",
+        "rootCause": "Literal CSS/TSX values not mapped through DESIGN_TOKENS_AUTHORITY",
+        "authority": "CARD_SURFACE_AUTHORITY · AppCard",
+        "migrationPriority": "P0",
+        "screenshot": "DEVICE_REQUIRED — before/after on high-traffic route"
+      },
+      {
+        "domain": "lists",
+        "location": [
+          "admin-v3/centers/AdminV3CenterWorkspace.tsx",
+          "admin-v3/domains/ops/AutomationHubPage.tsx",
+          "admin-v3/domains/ops/OpsPages.tsx",
+          "components/ErrorBoundary.tsx",
+          "components/GlobalSearchModal.tsx"
+        ],
+        "signal": "bypass=74 adoption=10%",
+        "rootCause": "Parallel implementations outside authority",
+        "authority": "LIST_AUTHORITY_MAP · NavigationList",
+        "migrationPriority": "P1",
+        "screenshot": "DEVICE_REQUIRED — capture on absorb PR"
+      },
+      {
+        "domain": "tabs",
+        "location": [
+          "admin-v3/domains/reviews/ReviewInboxPage.tsx",
+          "components/FiqhGuidePage.tsx",
+          "components/GlobalSearchModal.tsx",
+          "components/adhan/PrayerAudioPicker.tsx",
+          "components/admin/review-hub/ReviewFilterBar.tsx"
+        ],
+        "signal": "bypass=72 adoption=3%",
+        "rootCause": "Parallel implementations outside authority",
+        "authority": "TAB_AUTHORITY_MAP · ContentTabs",
+        "migrationPriority": "P1",
+        "screenshot": "DEVICE_REQUIRED — capture on absorb PR"
+      },
+      {
+        "domain": "token:spacing",
+        "location": [
+          "features/mushaf-madinah/mushaf-madinah.css",
+          "styles/quran.css",
+          "styles/pages/prophet-stories.css"
+        ],
+        "signal": "hardcoded spacing ×177",
+        "rootCause": "Literal CSS/TSX values not mapped through DESIGN_TOKENS_AUTHORITY",
+        "authority": "SPACING_AUTHORITY_MAP / spacing.*",
+        "migrationPriority": "P1",
+        "screenshot": "DEVICE_REQUIRED — before/after on high-traffic route"
+      },
+      {
+        "domain": "token:radii",
+        "location": [
+          "features/mushaf-madinah/mushaf-madinah.css",
+          "styles/quran.css",
+          "styles/admin.css"
+        ],
+        "signal": "hardcoded radii ×204",
+        "rootCause": "Literal CSS/TSX values not mapped through DESIGN_TOKENS_AUTHORITY",
+        "authority": "CARD_SURFACE_AUTHORITY · AppCard",
+        "migrationPriority": "P1",
+        "screenshot": "DEVICE_REQUIRED — before/after on high-traffic route"
+      },
+      {
+        "domain": "tables",
+        "location": [
+          "components/prayer/PrayerAnnualTimetable.tsx",
+          "views/ProphetStoriesPage.tsx",
+          "views/admin/FeatureStatusPage.tsx",
+          "views/admin/KnowledgeReasoningSection.tsx",
+          "views/admin/LessonsSection.tsx"
+        ],
+        "signal": "bypass=14 adoption=36%",
+        "rootCause": "Parallel implementations outside authority",
+        "authority": "TABLE_AUTHORITY_MAP · DataTable",
+        "migrationPriority": "P2",
+        "screenshot": "DEVICE_REQUIRED — capture on absorb PR"
+      },
+      {
+        "domain": "navigation",
+        "location": [
+          "components/ScrollToTop.tsx"
+        ],
+        "signal": "bypass=1 adoption=94%",
+        "rootCause": "Residual raw controls",
+        "authority": "NAVIGATION_AUTHORITY_MAP · AppBackButton/BottomNav",
+        "migrationPriority": "P2",
+        "screenshot": "DEVICE_REQUIRED — capture on absorb PR"
+      },
+      {
+        "domain": "modals",
+        "location": [
+          "components/NativeBackButtonListener.tsx"
+        ],
+        "signal": "bypass=1 adoption=96%",
+        "rootCause": "Residual raw controls",
+        "authority": "INTERACTION_COMPONENT_AUTHORITY · Button",
+        "migrationPriority": "P2",
+        "screenshot": "DEVICE_REQUIRED — capture on absorb PR"
+      },
+      {
+        "domain": "token:typography",
+        "location": [
+          "features/mushaf-madinah/mushaf-madinah.css",
+          "styles/quran.css",
+          "features/mushaf-reader/mushaf-reader.css"
+        ],
+        "signal": "hardcoded typography ×94",
+        "rootCause": "Literal CSS/TSX values not mapped through DESIGN_TOKENS_AUTHORITY",
+        "authority": "TYPOGRAPHY_AUTHORITY_MAP / typography.*",
+        "migrationPriority": "P2",
+        "screenshot": "DEVICE_REQUIRED — before/after on high-traffic route"
+      }
+    ]
+  },
+  "MICRO_FRICTION_BACKLOG": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:34:20.878Z",
+    "UX_MICRO_FRICTION_ELIMINATION": true,
+    "total": 4,
+    "items": [
+      {
+        "id": "journey:Home → Mushaf",
+        "issue": "Home → Mushaf takes 2 clicks (target 1)",
+        "impact": "high",
+        "cost": "low",
+        "fix": "Keep hub CTA «افتح المصحف» above fold; optional long-press mushaf prefetch"
+      },
+      {
+        "id": "journey:Home → Search",
+        "issue": "Home → Search takes 2 clicks (target 1)",
+        "impact": "high",
+        "cost": "low",
+        "fix": "Promote search affordance on Home header (1 tap)"
+      },
+      {
+        "id": "home:continue-dupe",
+        "issue": "Two continue-learning surfaces (Learning + Widget)",
+        "impact": "high",
+        "cost": "low",
+        "fix": "Keep one primary HomeContinueLearning CTA"
+      },
+      {
+        "id": "confirm:components/NativeBackButtonListener.tsx",
+        "issue": "window.confirm — weak/blocking feedback",
+        "impact": "high",
+        "cost": "medium",
+        "fix": "ConfirmDialog / AdminConfirmDialog"
+      }
+    ],
+    "stats": {
+      "confirmCount": 1,
+      "alertCount": 0,
+      "hashNav": 0,
+      "duplicateContinue": 1
+    }
+  },
+  "CONTENT_STYLE_SCAN": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:34:20.878Z",
+    "canonicalModule": "artifacts/majalis/src/lib/ui-copy.ts",
+    "uiCopyPresent": true,
+    "conflictingTerminology": [
+      {
+        "a": "حاول مرة أخرى",
+        "b": "أعد المحاولة",
+        "label": "retry wording",
+        "countA": 5,
+        "countB": 19,
+        "samplesA": [
+          "components/UpdateAvailableBanner.tsx",
+          "components/fawaid/FaidaImageCardModal.tsx",
+          "views/SubmitContentPage.tsx"
+        ],
+        "samplesB": [
+          "admin-v3/states.tsx",
+          "components/ErrorBoundary.tsx",
+          "components/PageLoadingGuard.tsx"
+        ]
+      },
+      {
+        "a": "لا توجد نتائج",
+        "b": "لا نتائج",
+        "label": "empty search",
+        "countA": 3,
+        "countB": 15,
+        "samplesA": [
+          "admin-v3/ui/primitives.tsx",
+          "views/admin/IslamicStoriesSection.tsx",
+          "views/admin/QuizSection.tsx"
+        ],
+        "samplesB": [
+          "admin-v3/centers/AdminV3CenterWorkspace.tsx",
+          "admin-v3/domains/analytics/AnalyticsPlatformPage.tsx",
+          "admin-v3/domains/community/UsersPage.tsx"
+        ]
+      },
+      {
+        "a": "حفظ",
+        "b": "احفظ",
+        "label": "save verb form",
+        "countA": 133,
+        "countB": 11,
+        "samplesA": [
+          "admin-v3/domains/content/EntityCrudPage.tsx",
+          "admin-v3/domains/content/RemainingEntityCrudPage.tsx",
+          "admin-v3/domains/taxonomy/TaxonomyPage.tsx"
+        ],
+        "samplesB": [
+          "components/ContentActions.tsx",
+          "components/IosAppCta.tsx",
+          "components/citation/CitationModal.tsx"
+        ]
+      },
+      {
+        "a": "إلغاء",
+        "b": "ألغِ",
+        "label": "cancel verb form",
+        "countA": 44,
+        "countB": 2,
+        "samplesA": [
+          "App.tsx",
+          "admin-v3/domains/content/EntityCrudPage.tsx",
+          "admin-v3/domains/content/RemainingEntityCrudPage.tsx"
+        ],
+        "samplesB": [
+          "components/AdminRouteGuard.tsx",
+          "features/mushaf-reader/NewMushafReader.tsx"
+        ]
+      }
+    ],
+    "CONTENT_DESIGN_UNIFICATION": true
+  },
+  "ICON_SCAN": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:34:20.878Z",
+    "lucideFiles": 254,
+    "sizeHistogram": {
+      "12": 46,
+      "13": 157,
+      "14": 182,
+      "15": 76,
+      "16": 187,
+      "17": 11,
+      "18": 207,
+      "19": 1,
+      "20": 42,
+      "22": 49,
+      "24": 43,
+      "26": 5,
+      "28": 20,
+      "30": 1,
+      "32": 15,
+      "34": 1,
+      "36": 17,
+      "40": 17,
+      "44": 1,
+      "48": 7
+    },
+    "preferredSizes": {
+      "sm": 16,
+      "md": 18,
+      "lg": 22,
+      "xl": 24
+    },
+    "authority": "docs/design/ICON_AUTHORITY_MAP.md · ICON_SIZE_SCALE in size-authority.ts",
+    "ICON_SYSTEM_UNIFICATION": true
+  }
+}

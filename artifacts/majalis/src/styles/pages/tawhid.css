@@ -49,9 +49,9 @@
     var(--topic-hero-from, var(--mj-brand)) 0%,
     var(--topic-hero-to, var(--mj-brand-deep)) 100%
   );
-  border-radius: 22px;
+  border-radius: var(--radius-card, 1.5rem);
   padding: 2rem max(1rem, var(--page-gutter, 1rem)) 1.85rem;
-  color: var(--topic-on-hero, var(--on-dark-strong, var(--mj-white, #ffffff)));
+  color: var(--topic-on-hero, var(--on-dark-strong, var(--mj-white, var(--mj-white))));
   box-shadow: 0 8px 24px -14px rgba(11, 32, 24, 0.35);
 }
 .twh-hub-hero__inner {
@@ -66,7 +66,7 @@
 .twh-hub-hero__title {
   font-size: clamp(1.5rem, 5vw, 2rem);
   font-weight: 900;
-  color: var(--topic-on-hero, var(--on-dark-strong, var(--mj-white, #ffffff)));
+  color: var(--topic-on-hero, var(--on-dark-strong, var(--mj-white, var(--mj-white))));
   margin: 0.35rem 0 0.5rem;
   font-family: var(--font-display, serif);
   line-height: 1.4;
@@ -82,10 +82,10 @@
 .twh-hub-hero__ayah {
   font-size: clamp(1rem, 3.4vw, 1.15rem);
   font-family: var(--font-quran, "Amiri Quran", serif);
-  color: var(--topic-on-hero, var(--on-dark-strong, var(--mj-white, #ffffff)));
+  color: var(--topic-on-hero, var(--on-dark-strong, var(--mj-white, var(--mj-white))));
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-inline-end: 3px solid rgba(255, 255, 255, 0.42);
-  border-radius: 16px;
+  border-radius: var(--radius-lg, 1rem);
   padding: 0.75rem 0.9rem;
   margin: 0;
   font-style: normal;
@@ -120,7 +120,7 @@
   padding: 1rem 1.1rem;
   min-height: 7.5rem;
   height: auto;
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   border: 1.5px solid color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, rgba(0,0,0,0.07)));
   background: var(--ss-card-bg, var(--mj-surface));
   text-decoration: none;
@@ -142,7 +142,7 @@ html[data-v2-app="1"] .topic-page--tawhid .tawheed-type-card {
   background: var(--ss-card-bg, var(--mj-surface, #fffcf8)) !important;
   background-color: var(--ss-card-bg, var(--mj-surface, #fffcf8)) !important;
   background-image: none !important;
-  color: var(--color-text, var(--mj-ink, #16241e)) !important;
+  color: var(--color-text, var(--mj-ink, var(--v2-color-ink))) !important;
   border-color: color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, var(--mj-hairline))) !important;
 }
 html[data-v2-app="1"] .topic-page--tawhid .kx-library-card .kx-library-card__title,
@@ -150,7 +150,7 @@ html[data-v2-app="1"] .topic-page--tawhid .hub-card .hub-card__title,
 html[data-v2-app="1"] .topic-page--tawhid .hub-card .kx-library-card__title,
 html[data-v2-app="1"] .topic-page--tawhid .twh-hub-card__title,
 html[data-v2-app="1"] .topic-page--tawhid .tawheed-type-card__title {
-  color: var(--mj-brand-deep, #0d4a39) !important;
+  color: var(--mj-brand-deep, var(--mj-brand-deep)) !important;
   font-weight: 800 !important;
 }
 /* نهاري فقط — لا تُطبَّق على الداكن (كانت تفوز على قواعد dark وتُسقط التباين إلى ~1.46) */
@@ -176,8 +176,8 @@ html[data-v2-app="1"][data-theme="dark"] .topic-page--tawhid .tawheed-type-card_
 html[data-v2-app="1"] .topic-page--tawhid .hub-card .hub-card__go,
 html[data-v2-app="1"] .topic-page--tawhid .kx-library-card .kx-library-card__action {
   background: var(--mj-brand-soft, #e2efe8) !important;
-  color: var(--mj-brand-deep, #0d4a39) !important;
-  border-radius: 999px !important;
+  color: var(--mj-brand-deep, var(--mj-brand-deep)) !important;
+  border-radius: var(--radius-pill, 999rem) !important;
   opacity: 1 !important;
 }
 .twh-hub-card:hover {
@@ -231,7 +231,7 @@ html[data-v2-app="1"] .topic-page--tawhid .kx-library-card .kx-library-card__act
 .twh-hub-card__badge {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   background: var(--twh-hub-clr, var(--mj-brand));
   padding: 0.2rem 0.55rem;
   border-radius: var(--ds-radius-full);
@@ -283,7 +283,7 @@ html[data-theme="dark"] .twh-hub-card__desc {
   transition: all 0.15s;
   touch-action: manipulation;
 }
-.twh-jumpnav__btn:hover { background: var(--majalis-emerald, var(--mj-brand)); color: var(--mj-white, #ffffff); }
+.twh-jumpnav__btn:hover { background: var(--majalis-emerald, var(--mj-brand)); color: var(--mj-white, var(--mj-white)); }
 
 /* Section label */
 .twh-section-label {
@@ -318,7 +318,7 @@ html[data-theme="dark"] .twh-hub-card__desc {
   text-decoration: none;
   transition: all 0.17s;
 }
-.twh-goto-btn:hover { background: var(--majalis-emerald, var(--mj-brand)); color: var(--mj-white, #ffffff); }
+.twh-goto-btn:hover { background: var(--majalis-emerald, var(--mj-brand)); color: var(--mj-white, var(--mj-white)); }
 
 /* Book level badges */
 .twh-book-level {
@@ -332,7 +332,7 @@ html[data-theme="dark"] .twh-hub-card__desc {
 .twh-book-level--beginner { background: var(--mj-success-soft, #d1fae5); color: var(--mj-brand); }
 .twh-book-level--mid      { background: rgba(23,61,53,.12); color: var(--mj-brand); }
 .twh-book-level--adv {
-  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand, #1f6b56)) 14%, var(--ss-card-bg, var(--mj-surface)));
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand, var(--mj-brand))) 14%, var(--ss-card-bg, var(--mj-surface)));
   color: var(--brand-on-light, var(--mj-brand-deep, #12362c));
 }
 /* --mid وحدها خلفيتها شفافة (تتلوّن بلون البطاقة المحيطة) فتصبح داكنة في
@@ -415,7 +415,7 @@ html[data-theme="dark"] .twh-book-level--mid { color: var(--mj-brand, #7ed4b5) !
   align-items: flex-start;
   background: var(--ss-card-bg, var(--majalis-panel, var(--mj-surface)));
   border: 1px solid color-mix(in srgb, var(--mj-brand) 16%, var(--majalis-line, #d4e6de));
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   padding: 0.875rem 1rem;
   color: var(--color-text, var(--mj-ink));
 }
@@ -425,7 +425,7 @@ html[data-theme="dark"] .twh-book-level--mid { color: var(--mj-brand, #7ed4b5) !
   height: 2rem;
   border-radius: 50%;
   background: var(--majalis-emerald, var(--mj-brand));
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   font-weight: 900;
   font-size: 0.85rem;
   display: flex;
@@ -458,7 +458,7 @@ html[data-theme="dark"] .twh-book-level--mid { color: var(--mj-brand, #7ed4b5) !
 }
 
 .twh-asma-card {
-  background: var(--majalis-panel, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--majalis-panel, var(--mj-white, var(--mj-white, var(--mj-white))));
   border: 1px solid var(--majalis-line, #d4e6de);
   border-radius: var(--ds-radius-lg);
   padding: 0.875rem 1rem;
@@ -495,7 +495,7 @@ html[data-theme="dark"] .twh-book-level--mid { color: var(--mj-brand, #7ed4b5) !
 }
 
 .twh-book-card {
-  background: var(--majalis-panel, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--majalis-panel, var(--mj-white, var(--mj-white, var(--mj-white))));
   border: 1px solid var(--majalis-line, #d4e6de);
   border-inline-end: 3px solid var(--majalis-emerald, var(--mj-brand));
   border-radius: var(--ds-radius-lg);

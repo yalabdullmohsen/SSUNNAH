@@ -73,7 +73,7 @@
 .mcp-folder-btn:hover { background: var(--mn-surface-hover, rgba(31,77,58,.06)); }
 .mcp-folder-btn--active { background: var(--majalis-emerald-muted, rgba(31,77,58,.1)); }
 .mcp-folder-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--majalis-ink-soft); }
-.mcp-cit-card { background: var(--majalis-panel); border-radius: .75rem; border: 1px solid var(--majalis-line); overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06); transition: box-shadow .15s; }
+.mcp-cit-card { background: var(--majalis-panel); border-radius: .75rem; border: 1px solid var(--majalis-line); overflow: hidden; box-shadow: var(--v2-shadow-soft); transition: box-shadow .15s; }
 .mcp-cit-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.1); }
 .mcp-cit-title { font-size: .875rem; font-weight: 600; color: var(--majalis-ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .mcp-fav-btn { font-size: var(--ds-text-lg); flex-shrink: 0; transition: transform .15s; background: none; border: none; cursor: pointer; color: var(--majalis-ink-soft); opacity: .4; }
@@ -127,5 +127,5 @@
 .cit-type--prophet-story { --cit-type-color: var(--mj-danger); --cm-type-color: var(--mj-danger); --cab-type-color: var(--mj-danger); }
 .cit-type--qa            { --cit-type-color: var(--mj-muted); --cm-type-color: var(--mj-muted); --cab-type-color: var(--mj-muted); }
 .cit-type-bar     { background: var(--cit-type-color, var(--mj-brand)); }
-.cit-type-badge   { background: var(--cit-type-color, var(--mj-brand)); color: var(--mj-on-brand, #fff); }
+.cit-type-badge   { background: var(--cit-type-color, var(--mj-brand)); color: var(--mj-on-brand, var(--mj-white)); }
 

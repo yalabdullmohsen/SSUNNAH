@@ -10,7 +10,7 @@
 .srp-stat-card--pending  { --srp-stat-bg: #F0F9FF;                             --srp-stat-color: #0369A1; }
 .srp-stat-card--approved { --srp-stat-bg: var(--majalis-emerald-soft,#EBF5F0); --srp-stat-color: var(--majalis-emerald-deep,var(--mj-brand-deep)); }
 .srp-stat-card--rejected { --srp-stat-bg: var(--majalis-danger-muted,rgba(155,28,28,0.07)); --srp-stat-color: var(--majalis-danger,#9B1C1C); }
-.srp-stat-card--split    { --srp-stat-bg: color-mix(in srgb, var(--ss-primary-green, #0F5C45) 8%, #fff); --srp-stat-color: var(--ss-deep-green, #0A3D2E); }
+.srp-stat-card--split    { --srp-stat-bg: color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 8%, var(--mj-white)); --srp-stat-color: var(--ss-deep-green, var(--mj-brand-deep)); }
 .srp-stat-val   { font-size: var(--ds-text-xl); font-weight: 800; color: var(--srp-stat-color, var(--mj-ink-2)); }
 .srp-stat-label { font-size: 0.6rem; color: var(--srp-stat-color, var(--mj-ink-2)); font-weight: 600; margin-top: 0.1rem; }
 
@@ -27,8 +27,8 @@
   cursor: pointer;
   font-family: inherit;
 }
-.srp-filter-btn--active      { border-color: var(--majalis-emerald-deep, var(--mj-brand-deep)); background: var(--majalis-emerald-deep, var(--mj-brand-deep)); color: #fff; }
-.srp-filter-btn--active-type { border-color: var(--brand, var(--mj-brand)); background: var(--brand, var(--mj-brand)); color: #fff; }
+.srp-filter-btn--active      { border-color: var(--majalis-emerald-deep, var(--mj-brand-deep)); background: var(--majalis-emerald-deep, var(--mj-brand-deep)); color: var(--mj-white); }
+.srp-filter-btn--active-type { border-color: var(--brand, var(--mj-brand)); background: var(--brand, var(--mj-brand)); color: var(--mj-white); }
 
 .srp-state           { text-align: center; padding: var(--ds-space-8); color: #9ca3af; }
 .srp-state--error    { text-align: start; padding: var(--ds-space-4); background: var(--majalis-danger-muted, #fef2f2); border: 1px solid var(--majalis-danger, #dc2626); border-radius: 0.6rem; color: var(--majalis-danger, var(--mj-danger-deep)); font-size: 0.85rem; }
@@ -70,7 +70,7 @@
   border-radius: 0.4rem;
   border: none;
   background: var(--majalis-emerald-deep, var(--mj-brand-deep));
-  color: #fff;
+  color: var(--mj-white);
   font-size: var(--ds-text-xs);
   font-weight: 600;
   cursor: pointer;
@@ -93,21 +93,21 @@
   border-radius: var(--ds-radius);
   border: none;
   background: var(--majalis-emerald-deep, var(--mj-brand-deep));
-  color: #fff;
+  color: var(--mj-white);
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
   font-family: inherit;
 }
 .srp-publish-btn:disabled { background: #9ca3af; cursor: not-allowed; }
-.srp-publish-btn--lesson  { background: var(--ss-deep-green, #0A3D2E); }
+.srp-publish-btn--lesson  { background: var(--ss-deep-green, var(--mj-brand-deep)); }
 .srp-publish-btn--lesson:disabled { background: #9ca3af; }
 
 .srp-review-actions { margin-top: 1rem; display: flex; flex-direction: column; gap: var(--ds-space-2-5); }
 .srp-review-label   { font-size: 0.78rem; font-weight: 600; color: var(--majalis-ink); }
 .srp-review-textarea { margin-top: 0.35rem; width: 100%; padding: 0.5rem 0.75rem; border-radius: var(--ds-radius); border: 1.5px solid var(--majalis-line); font-family: inherit; font-size: 0.82rem; direction: rtl; box-sizing: border-box; resize: vertical; }
 .srp-review-btns     { display: flex; gap: var(--ds-space-2); }
-.srp-action-btn { flex: 1; padding: 0.55rem; border-radius: 0.6rem; border: none; color: #fff; font-size: 0.85rem; font-weight: 700; cursor: pointer; font-family: inherit; }
+.srp-action-btn { flex: 1; padding: 0.55rem; border-radius: 0.6rem; border: none; color: var(--mj-white); font-size: 0.85rem; font-weight: 700; cursor: pointer; font-family: inherit; }
 .srp-action-btn--approve { background: var(--mj-brand-deep); }
 .srp-action-btn--reject  { background: #dc2626; }
 

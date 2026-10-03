@@ -24,7 +24,7 @@ html.dark .av3-root {
   --av3-ink: #e8efe9;
   --av3-muted: #9aada2;
   --av3-accent: #5dba8c;
-  --av3-line: color-mix(in srgb, #fff 14%, transparent);
+  --av3-line: color-mix(in srgb, var(--mj-white) 14%, transparent);
 }
 
 .av3-skip {
@@ -34,7 +34,7 @@ html.dark .av3-root {
   z-index: 40;
   transform: translateY(-200%);
   background: var(--av3-accent);
-  color: #fff;
+  color: var(--mj-white);
   padding: 0.4rem 0.75rem;
   border-radius: 0.4rem;
 }
@@ -181,7 +181,7 @@ html.dark .av3-root {
 .av3-btn--primary {
   background: var(--av3-accent);
   border-color: transparent;
-  color: #fff;
+  color: var(--mj-white);
 }
 .av3-icon-btn:focus-visible,
 .av3-btn:focus-visible {

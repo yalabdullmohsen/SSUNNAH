@@ -1,8 +1,8 @@
 /* صفحة الدخول/التسجيل — هادئة، بلا تسويق، RTL */
 .login-page {
-  --auth-green: var(--color-primary, var(--mj-brand, #0f5c45));
+  --auth-green: var(--color-primary, var(--mj-brand, var(--mj-brand)));
   --auth-green-deep: var(--color-primary-dark, var(--mj-brand-deep, #12362c));
-  --auth-ink: var(--color-text, var(--mj-ink, #16241e));
+  --auth-ink: var(--color-text, var(--mj-ink, var(--v2-color-ink)));
   --auth-muted: var(--color-muted, var(--mj-muted, #5e6e67));
   --auth-line: var(--color-border, var(--mj-hairline, #d9d2c6));
   --auth-surface: var(--color-surface, var(--mj-surface, #fffcf8));
@@ -133,7 +133,7 @@ html[data-theme="dark"] .login-card__brand {
 
 .login-tab.is-active {
   background: var(--auth-green);
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   box-shadow: 0 2px 8px rgba(31, 107, 79, 0.22);
 }
 
@@ -223,7 +223,7 @@ html[data-theme="dark"] .login-alert--success {
   border: none;
   border-radius: var(--sf-radius-xs);
   background: var(--auth-green);
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   font: inherit;
   font-size: 0.95rem;
   font-weight: 700;
@@ -280,7 +280,7 @@ html[data-theme="dark"] .login-text-btn {
   padding: 0.55rem 0.75rem;
   border: 1px solid var(--auth-line);
   border-radius: 0.45rem;
-  background: var(--mj-white, var(--mj-white, #ffffff));
+  background: var(--mj-white, var(--mj-white, var(--mj-white)));
   color: var(--mj-danger);
   font-size: 0.78rem;
   font-weight: 700;

@@ -2,11 +2,11 @@
  * بطاقات قراءة موحّدة لتفاصيل الأقسام النصية (تاريخ / قصص / محتوى تفصيلي).
  */
 .rsc {
-  --rsc-bg: var(--ss-card-bg, var(--sf-surface-raised, #ffffff));
-  --rsc-border: var(--sf-hairline, color-mix(in srgb, var(--mj-brand, #1f6b56) 16%, transparent));
-  --rsc-ink: var(--sf-color-rich-ink, var(--mj-ink, #15382d));
+  --rsc-bg: var(--ss-card-bg, var(--sf-surface-raised, var(--mj-white)));
+  --rsc-border: var(--sf-hairline, color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 16%, transparent));
+  --rsc-ink: var(--sf-color-rich-ink, var(--mj-ink, var(--sf-color-rich-ink)));
   --rsc-muted: var(--sf-color-rich-ink-soft, var(--mj-ink-2, #48645a));
-  --rsc-title: var(--sf-color-deep-emerald-deep, var(--mj-brand-deep, #0a4530));
+  --rsc-title: var(--sf-color-deep-emerald-deep, var(--mj-brand-deep, var(--sf-color-deep-emerald-deep)));
   margin: 0 0 var(--sf-space-3, 0.75rem);
   padding: var(--sf-pad-card, 0.85rem) var(--sf-space-4, 1rem);
   max-width: var(--read-measure, 38rem);
@@ -15,15 +15,15 @@
   box-sizing: border-box;
   background: var(--rsc-bg);
   border: 1px solid var(--rsc-border);
-  border-radius: var(--sf-radius-md, var(--radius-card, 20px));
+  border-radius: var(--sf-radius-md, var(--radius-card, 1.25rem));
   box-shadow: var(--sf-shadow-card, none);
 }
 
 .rsc--summary,
 .rsc--definition {
-  background: color-mix(in srgb, var(--sf-color-deep-emerald, #0f5c3f) 5%, var(--rsc-bg));
-  border-color: color-mix(in srgb, var(--sf-color-deep-emerald, #0f5c3f) 18%, transparent);
-  border-inline-start: 3px solid var(--sf-color-deep-emerald, #0f5c3f);
+  background: color-mix(in srgb, var(--sf-color-deep-emerald, var(--sf-color-deep-emerald)) 5%, var(--rsc-bg));
+  border-color: color-mix(in srgb, var(--sf-color-deep-emerald, var(--sf-color-deep-emerald)) 18%, transparent);
+  border-inline-start: 3px solid var(--sf-color-deep-emerald, var(--sf-color-deep-emerald));
 }
 
 .rsc--warning,
@@ -35,21 +35,21 @@
 
 .rsc--evidence,
 .rsc--quote {
-  background: color-mix(in srgb, var(--sf-color-quran-gold, #c9a82e) 8%, var(--rsc-bg));
-  border-color: color-mix(in srgb, var(--sf-color-quran-gold, #c9a82e) 28%, transparent);
-  border-inline-start: 3px solid var(--sf-color-quran-gold, #c9a82e);
+  background: color-mix(in srgb, var(--sf-color-quran-gold, var(--sf-color-quran-gold)) 8%, var(--rsc-bg));
+  border-color: color-mix(in srgb, var(--sf-color-quran-gold, var(--sf-color-quran-gold)) 28%, transparent);
+  border-inline-start: 3px solid var(--sf-color-quran-gold, var(--sf-color-quran-gold));
 }
 
 .rsc--faq,
 .rsc--lessons,
 .rsc--outcomes {
-  background: color-mix(in srgb, var(--sf-color-deep-emerald, #0f5c3f) 4%, var(--rsc-bg));
-  border-color: color-mix(in srgb, var(--sf-color-deep-emerald, #0f5c3f) 16%, transparent);
+  background: color-mix(in srgb, var(--sf-color-deep-emerald, var(--sf-color-deep-emerald)) 4%, var(--rsc-bg));
+  border-color: color-mix(in srgb, var(--sf-color-deep-emerald, var(--sf-color-deep-emerald)) 16%, transparent);
 }
 
 .rsc--sources {
-  background: color-mix(in srgb, var(--sf-color-deep-emerald, #0f5c3f) 6%, var(--rsc-bg));
-  border-color: color-mix(in srgb, var(--sf-color-deep-emerald, #0f5c3f) 20%, transparent);
+  background: color-mix(in srgb, var(--sf-color-deep-emerald, var(--sf-color-deep-emerald)) 6%, var(--rsc-bg));
+  border-color: color-mix(in srgb, var(--sf-color-deep-emerald, var(--sf-color-deep-emerald)) 20%, transparent);
 }
 
 .rsc--related {
@@ -96,11 +96,11 @@
   display: block;
   font-size: 0.78rem;
   font-weight: 700;
-  color: color-mix(in srgb, var(--mj-brand, #1f6b56) 75%, var(--rsc-muted));
+  color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 75%, var(--rsc-muted));
 }
 .rsc.rsc--accordion[open] {
-  border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 28%, transparent);
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 5%, var(--rsc-bg));
+  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 28%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 5%, var(--rsc-bg));
 }
 .rsc.rsc--accordion > .rsc__body {
   padding: 0 0.95rem 0.85rem;
@@ -177,7 +177,7 @@
   width: 0.35rem;
   height: 0.35rem;
   border-radius: var(--sf-radius-pill);
-  background: var(--mj-brand, #1f6b56);
+  background: var(--mj-brand, var(--mj-brand));
 }
 
 .rsc-stack {
@@ -204,7 +204,7 @@
   padding: 0.85rem 0.95rem;
   border-radius: var(--ds-radius-md, 14px);
   border: 1px solid var(--rsc-border);
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 4%, var(--rsc-bg));
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 4%, var(--rsc-bg));
   text-decoration: none;
   color: inherit;
   min-height: 44px;
@@ -212,8 +212,8 @@
 }
 
 .rcc:hover {
-  border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 35%, transparent);
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 8%, var(--rsc-bg));
+  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 35%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 8%, var(--rsc-bg));
 }
 
 .rcc__cat {
@@ -221,7 +221,7 @@
   grid-row: 1;
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--mj-brand, #1f6b56);
+  color: var(--mj-brand, var(--mj-brand));
 }
 
 .rcc__title {
@@ -251,14 +251,14 @@
   align-self: center;
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--mj-brand, #1f6b56);
+  color: var(--mj-brand, var(--mj-brand));
   line-height: 1;
 }
 
 html[data-theme="dark"] .rsc,
 html.dark .rsc {
   --rsc-bg: var(--ss-card-bg, #1b2421);
-  --rsc-border: color-mix(in srgb, var(--mj-brand, #1f6b56) 28%, #2a3832);
+  --rsc-border: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 28%, #2a3832);
   --rsc-ink: var(--mj-ink, #e8efeb);
   --rsc-muted: var(--mj-ink-2, #c5d0cb);
   --rsc-title: #7ed4b5;
@@ -278,12 +278,12 @@ html[data-theme="dark"] .rsc--evidence,
 html.dark .rsc--evidence,
 html[data-theme="dark"] .rsc--quote,
 html.dark .rsc--quote {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 12%, var(--rsc-bg));
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 12%, var(--rsc-bg));
 }
 
 html[data-theme="dark"] .rcc,
 html.dark .rcc {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 10%, var(--rsc-bg));
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, var(--rsc-bg));
 }
 
 html[data-theme="dark"] .rcc__summary,
@@ -297,8 +297,8 @@ html.dark .rcc__summary {
   margin: 1.5rem auto 1rem;
   max-width: 42rem;
   padding: 0.85rem 0.75rem 0.35rem;
-  border-radius: var(--radius-card, 20px);
-  border: 1px dashed color-mix(in srgb, var(--mj-brand, #1f6b56) 28%, transparent);
+  border-radius: var(--radius-card, 1.25rem);
+  border: 1px dashed color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 28%, transparent);
   background: color-mix(in srgb, var(--mj-surface-2, #f4f7f5) 90%, transparent);
   box-sizing: border-box;
 }
@@ -312,7 +312,6 @@ html.dark .rcc__summary {
 .cr-related-footer__card.rsc--related {
   margin: 0;
   border: 0;
-  box-shadow: none;
   background: transparent;
   padding: 0.25rem 0.35rem 0.55rem;
 }
@@ -321,6 +320,6 @@ html.dark .rcc__summary {
 }
 html.dark .cr-related-footer,
 [data-theme="dark"] .cr-related-footer {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 12%, rgba(12, 28, 22, 0.75));
-  border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 34%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 12%, rgba(12, 28, 22, 0.75));
+  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 34%, transparent);
 }

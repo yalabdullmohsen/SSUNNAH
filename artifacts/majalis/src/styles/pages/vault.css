@@ -17,7 +17,7 @@
 }
 .vault-modal {
   background: var(--v2-surface, var(--mj-bg)) !important;
-  border-radius: 16px !important;
+  border-radius: var(--radius-lg, 1rem) !important;
   padding: 1.5rem !important;
   width: 100% !important;
   max-width: 480px !important;
@@ -54,7 +54,7 @@
   min-height: 120px !important;
   padding: 0.75rem !important;
   border: 1px solid var(--v2-border, #D8D2C7) !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius-sm, 0.5rem) !important;
   font-size: 0.9rem !important;
   font-family: inherit !important;
   resize: vertical !important;
@@ -127,7 +127,7 @@ button.vault-item-card__title {
   border-radius: var(--ds-radius, 0.5rem);
   font-size: 0.9rem;
   color: var(--majalis-ink);
-  background: var(--majalis-panel, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--majalis-panel, var(--mj-white, var(--mj-white, var(--mj-white))));
   box-sizing: border-box;
 }
 .vault-search:focus { outline: none; border-color: var(--ds-emerald); }
@@ -158,7 +158,7 @@ button.vault-item-card__title {
   padding: 0.5rem 1rem;
   border: 1.5px solid var(--ds-line-color);
   border-radius: var(--ds-radius, 0.5rem);
-  background: var(--majalis-panel, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--majalis-panel, var(--mj-white, var(--mj-white, var(--mj-white))));
   color: var(--majalis-ink-soft);
   font-size: 0.875rem;
   cursor: pointer;
@@ -177,7 +177,7 @@ button.vault-item-card__title {
   justify-content: center;
   min-width: 1.4rem;
   height: 1.4rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: var(--ds-line-color);
   color: var(--majalis-ink-soft);
   font-size: 0.75rem;
@@ -185,7 +185,7 @@ button.vault-item-card__title {
 }
 .vault-tab--active .vault-tab__count {
   background: var(--ds-emerald);
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
 }
 
 /* List & Item card */
@@ -195,7 +195,7 @@ button.vault-item-card__title {
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
-  background: var(--majalis-panel, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--majalis-panel, var(--mj-white, var(--mj-white, var(--mj-white))));
   border: 1px solid var(--ds-line-color);
   border-radius: var(--ds-radius, 0.5rem);
   transition: box-shadow 0.15s;
@@ -217,7 +217,7 @@ button.vault-item-card__title {
   color: var(--majalis-ink-soft);
   background: var(--ds-emerald-soft);
   padding: 0.1rem 0.5rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
 }
 .vault-item-card__date-col { display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem; }
 .vault-item-card__date { font-size: 0.75rem; color: var(--majalis-ink-soft); white-space: nowrap; }
@@ -239,13 +239,13 @@ button.vault-item-card__title {
 }
 .vault-btn--primary {
   background: var(--ds-emerald);
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   border-color: var(--ds-emerald);
 }
 .vault-btn--primary:hover { background: var(--ds-emerald-deep); }
 .vault-btn--primary:disabled { opacity: 0.6; cursor: not-allowed; }
 .vault-btn--ghost {
-  background: var(--majalis-panel, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--majalis-panel, var(--mj-white, var(--mj-white, var(--mj-white))));
   border-color: var(--ds-line-color);
   color: var(--majalis-ink-soft);
 }
@@ -273,7 +273,7 @@ button.vault-item-card__title {
 }
 .vault-notes__list { display: flex; flex-direction: column; gap: 0.75rem; }
 .vault-note-card {
-  background: var(--majalis-panel, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--majalis-panel, var(--mj-white, var(--mj-white, var(--mj-white))));
   border: 1px solid var(--ds-line-color);
   border-radius: var(--ds-radius, 0.5rem);
   padding: 0.875rem 1rem;
@@ -325,7 +325,7 @@ button.vault-item-card__title {
   top: 0.85rem;
   width: 0.45rem;
   height: 0.45rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
 }
 .vault-hl--yellow .vault-hl__swatch { background: #d4b84a; }
 .vault-hl--green .vault-hl__swatch { background: #3d9a5f; }
@@ -352,7 +352,7 @@ button.vault-item-card__title {
   padding: 1rem;
 }
 .vault-modal {
-  background: var(--majalis-panel, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--majalis-panel, var(--mj-white, var(--mj-white, var(--mj-white))));
   border-radius: var(--ds-radius-lg, 0.625rem);
   width: 100%;
   max-width: 520px;

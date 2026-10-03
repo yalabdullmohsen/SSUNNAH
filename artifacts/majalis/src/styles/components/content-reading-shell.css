@@ -18,7 +18,7 @@
 .cr-note {
   margin: 0;
   padding: var(--read-card-pad-block, 1.15rem) var(--read-card-pad-inline, 1.2rem);
-  border-radius: var(--mie-radius-card, var(--radius-card, 24px));
+  border-radius: var(--mie-radius-card, var(--radius-card, 1.5rem));
   border: 1px solid var(--mie-border, color-mix(in srgb, var(--brand-olive, #3d5c45) 14%, transparent));
   background: var(--surface-card, color-mix(in srgb, var(--brand-olive, #3d5c45) 7%, #fffbf5));
   color: var(--text-primary, var(--mj-ink, #1a241c));
@@ -99,11 +99,11 @@
 .content-detail-body > section,
 .mk-detail .mk-block,
 .tawheed-principle-card {
-  border-radius: var(--radius-card, 24px) !important;
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 16%, var(--ss-border, #d9d3c8)) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 16%, var(--ss-border, #d9d3c8)) !important;
   background: var(--ss-card-bg, var(--color-surface, #fffcf7)) !important;
-  box-shadow: 0 10px 26px -20px color-mix(in srgb, var(--mj-brand, #1f6b56) 35%, transparent) !important;
-  color: var(--mj-ink, #16241e) !important;
+  box-shadow: 0 10px 26px -20px color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 35%, transparent) !important;
+  color: var(--mj-ink, var(--v2-color-ink)) !important;
 }
 
 .qr-section,
@@ -120,7 +120,7 @@
 .gl-term__title,
 .tawheed-principle-card h2,
 .tawheed-principle-card h3 {
-  color: var(--brand-on-light, var(--mj-brand-deep, #0d4a39)) !important;
+  color: var(--brand-on-light, var(--mj-brand-deep, var(--mj-brand-deep))) !important;
   font-size: var(--type-title-l, var(--text-h1)) !important;
   font-weight: 800 !important;
   line-height: var(--lh-reading-section, 1.35) !important;
@@ -135,7 +135,7 @@
 .gl-term__body,
 .gl-term__detail,
 .tawheed-principle-card p {
-  color: var(--mj-ink, #16241e) !important;
+  color: var(--mj-ink, var(--v2-color-ink)) !important;
   opacity: 1 !important;
   font-size: var(--type-body-lg, var(--text-body)) !important;
   line-height: var(--lh-reading, 1.9) !important;
@@ -151,9 +151,9 @@
 .content-detail-sources {
   margin-top: 0.75rem !important;
   padding: 0.7rem 0.85rem !important;
-  border-radius: 18px !important;
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 18%, transparent) !important;
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 7%, transparent) !important;
+  border-radius: var(--sf-radius-control, 1.125rem) !important;
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, transparent) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 7%, transparent) !important;
   color: var(--mj-ink-2, #3d5349) !important;
   font-size: 0.86rem !important;
   line-height: 1.65 !important;
@@ -163,7 +163,7 @@
 
 .qr-source strong,
 .gl-term__source strong {
-  color: var(--mj-brand-deep, #0d4a39) !important;
+  color: var(--mj-brand-deep, var(--mj-brand-deep)) !important;
   font-weight: 800 !important;
 }
 
@@ -185,18 +185,18 @@
   align-items: center !important;
   min-height: 3rem !important;
   padding: 0.75rem 1rem !important;
-  border-radius: var(--radius-card, 24px) !important;
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 16%, transparent) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 16%, transparent) !important;
   background: var(--ss-card-bg, #fffcf7) !important;
-  color: var(--mj-ink, #16241e) !important;
+  color: var(--mj-ink, var(--v2-color-ink)) !important;
   text-decoration: none !important;
   font-weight: 700 !important;
   box-shadow: 0 8px 20px -18px rgba(15, 40, 30, 0.2) !important;
 }
 
 .qr-note {
-  border-radius: var(--radius-card, 24px) !important;
-  color: var(--mj-ink, #16241e) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
+  color: var(--mj-ink, var(--v2-color-ink)) !important;
   font-weight: 550 !important;
 }
 
@@ -296,7 +296,7 @@ html[data-theme="dark"] .compact-sources--in-rsc .compact-sources__item {
   margin-block-end: var(--read-heading-gap-after, 0.55rem);
   line-height: var(--lh-reading-section, 1.35);
   letter-spacing: 0;
-  color: var(--brand-on-light, var(--mj-brand-deep, #0d4a39));
+  color: var(--brand-on-light, var(--mj-brand-deep, var(--mj-brand-deep)));
 }
 
 .isp-page section + section,
@@ -321,9 +321,9 @@ html[data-theme="dark"] .compact-sources--in-rsc .compact-sources__item {
   margin-block: 0.85rem 1rem;
   max-width: 40rem;
   padding-inline: 0.85rem;
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 5%, transparent);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 14%, transparent);
-  border-radius: var(--radius-button, 18px);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, transparent);
+  border-radius: var(--sf-radius-control, 1.125rem);
 }
 
 html[data-theme="dark"] .isp-page blockquote,
@@ -414,7 +414,7 @@ html.dark .seerah-page blockquote {
 
 .content-detail-action-btn:hover {
   background: var(--majalis-emerald, var(--mj-brand));
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
 }
 
 .content-detail-evidence ul,
@@ -447,7 +447,7 @@ html.dark .seerah-page blockquote {
 
 .content-detail-table th,
 .content-detail-table td {
-  border: 1px solid var(--line, #ddd5c8);
+  border: 1px solid var(--mj-hairline, var(--line, transparent));
   padding: 0.5rem 0.75rem;
   text-align: right;
 }

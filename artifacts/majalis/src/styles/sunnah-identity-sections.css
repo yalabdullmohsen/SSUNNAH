@@ -45,7 +45,7 @@ html[data-v2-app="1"][data-v2-sections="1"] .more-page-tile {
   min-height: 0;
   height: auto;
   padding: var(--v2-pad-card, 0.75rem);
-  border-radius: var(--v2-radius-card, 16px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   box-shadow: var(--v2-shadow-soft);
 }
 
@@ -110,7 +110,7 @@ html[data-v2-app="1"] .hadith-hub-card {
   min-height: 0;
   height: auto;
   padding: 0.55rem 0.65rem;
-  border-radius: var(--v2-radius-card, 16px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   box-shadow: var(--v2-shadow-soft);
   background: var(--v2-surface-raised, var(--mj-surface));
   border-color: var(--v2-hairline, var(--mj-hairline));

@@ -1,0 +1,428 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-03T04:34:20.657Z",
+  "AUTHORITY_ADOPTION_PERCENTAGE": 41,
+  "families": {
+    "cards": {
+      "usingCount": 20,
+      "bypassCount": 208,
+      "relevantCount": 228,
+      "adoptionPercent": 9,
+      "usingSample": [
+        "admin-v3/AdminV3Dashboard.tsx",
+        "admin-v3/centers/AdminV3CenterWorkspace.tsx",
+        "admin-v3/domains/content/ContentHubPage.tsx",
+        "admin-v3/domains/ops/AutomationHubPage.tsx",
+        "admin-v3/domains/ops/OpsPages.tsx",
+        "components/content/ReadingSectionCard.tsx",
+        "components/content/RelatedContentCard.tsx",
+        "components/hadith/HadithCard.tsx",
+        "components/home/DailyWirdCard.tsx",
+        "components/home/HomeDailyBenefits.tsx",
+        "components/home/HomeDailyProgress.tsx",
+        "components/home/HomeLatestUpdates.tsx"
+      ],
+      "bypassSample": [
+        "components/AdminRouteGuard.tsx",
+        "components/ExploreAlsoNav.tsx",
+        "components/FiqhGuidePage.tsx",
+        "components/GlobalSearchModal.tsx",
+        "components/RelatedKnowledge.tsx",
+        "components/adhan/PrayerAlertSettingsCard.tsx",
+        "components/admin/SubmissionsReviewPanel.tsx",
+        "components/admin/review-hub/ContentModerationCard.tsx",
+        "components/admin/review-hub/RecitationReviewCard.tsx",
+        "components/assistant/AssistantChatView.tsx",
+        "components/audio/AudioLibrarySelectionPanel.tsx",
+        "components/citation/CitationModal.tsx"
+      ],
+      "migrationPriority": [
+        "components/AdminRouteGuard.tsx",
+        "components/ExploreAlsoNav.tsx",
+        "components/FiqhGuidePage.tsx",
+        "components/GlobalSearchModal.tsx",
+        "components/RelatedKnowledge.tsx",
+        "components/adhan/PrayerAlertSettingsCard.tsx",
+        "components/admin/SubmissionsReviewPanel.tsx",
+        "components/admin/review-hub/ContentModerationCard.tsx",
+        "components/admin/review-hub/RecitationReviewCard.tsx",
+        "components/assistant/AssistantChatView.tsx",
+        "components/audio/AudioLibrarySelectionPanel.tsx",
+        "components/citation/CitationModal.tsx",
+        "components/content/ContentReading.tsx",
+        "components/fawaid/FaidaImageCardModal.tsx",
+        "components/fawaid/FaidahCard.tsx",
+        "components/hadith/HadithDatasetSummary.tsx",
+        "components/hadith/HadithEntryCard.tsx",
+        "components/home/HomeContinueWidget.tsx",
+        "components/home/HomeExplorePlatform.tsx",
+        "components/home/HomeHeroLcp.tsx"
+      ]
+    },
+    "buttons": {
+      "usingCount": 250,
+      "bypassCount": 100,
+      "relevantCount": 350,
+      "adoptionPercent": 71,
+      "usingSample": [
+        "admin-v3/AdminV3Dashboard.tsx",
+        "admin-v3/AdminV3Shell.tsx",
+        "admin-v3/centers/AdminV3CenterWorkspace.tsx",
+        "admin-v3/domains/analytics/AnalyticsPlatformPage.tsx",
+        "admin-v3/domains/community/RolesPage.tsx",
+        "admin-v3/domains/community/UsersPage.tsx",
+        "admin-v3/domains/content/ContentHubPage.tsx",
+        "admin-v3/domains/content/EntityCrudPage.tsx",
+        "admin-v3/domains/content/RemainingEntityCrudPage.tsx",
+        "admin-v3/domains/ops/AutomationHubPage.tsx",
+        "admin-v3/domains/ops/OpsPages.tsx",
+        "admin-v3/domains/reviews/ReviewInboxPage.tsx"
+      ],
+      "bypassSample": [
+        "components/AdminInlineEdit.tsx",
+        "components/QuranViewer.tsx",
+        "components/admin/SubmissionsReviewPanel.tsx",
+        "components/admin/review-hub/ContentModerationCard.tsx",
+        "components/admin/review-hub/LinearAudioReviewPlayer.tsx",
+        "components/admin/review-hub/RecitationReviewCard.tsx",
+        "components/admin/review-hub/ReviewFilterBar.tsx",
+        "components/admin/review-hub/ReviewHubHeaderBar.tsx",
+        "components/admin/review-hub/ReviewHubSidebar.tsx",
+        "components/admin/review-hub/ReviewHubWorkspace.tsx",
+        "components/admin/review-hub/WaveformAudioPlayer.tsx",
+        "components/quran/BulkDownloadCard.tsx"
+      ],
+      "migrationPriority": [
+        "components/AdminInlineEdit.tsx",
+        "components/QuranViewer.tsx",
+        "components/admin/SubmissionsReviewPanel.tsx",
+        "components/admin/review-hub/ContentModerationCard.tsx",
+        "components/admin/review-hub/LinearAudioReviewPlayer.tsx",
+        "components/admin/review-hub/RecitationReviewCard.tsx",
+        "components/admin/review-hub/ReviewFilterBar.tsx",
+        "components/admin/review-hub/ReviewHubHeaderBar.tsx",
+        "components/admin/review-hub/ReviewHubSidebar.tsx",
+        "components/admin/review-hub/ReviewHubWorkspace.tsx",
+        "components/admin/review-hub/WaveformAudioPlayer.tsx",
+        "components/quran/BulkDownloadCard.tsx",
+        "components/quran/HifzAudioLoopPlayer.tsx",
+        "components/quran/ImmersivePrefsDrawer.tsx",
+        "components/quran/ImmersiveQuranApp.tsx",
+        "components/quran/ImmersiveQuranPage.tsx",
+        "components/quran/ImmersiveVerseOptionsSheet.tsx",
+        "components/quran/QuranAudioPlayer.tsx",
+        "components/quran/QuranPlayerView.tsx",
+        "components/quran/QuranSurahJumpSearch.tsx"
+      ]
+    },
+    "forms": {
+      "usingCount": 9,
+      "bypassCount": 182,
+      "relevantCount": 191,
+      "adoptionPercent": 5,
+      "usingSample": [
+        "admin-v3/AdminV3Shell.tsx",
+        "admin-v3/centers/AdminV3CenterWorkspace.tsx",
+        "admin-v3/domains/reviews/ReviewInboxPage.tsx",
+        "components/admin/AdminConfirmDialog.tsx",
+        "pages/account/ui/AccountDeletionView.tsx",
+        "pages/account/ui/LoginView.tsx",
+        "pages/account/ui/SettingsView.tsx",
+        "pages/quran/ui/MushafBookmarksView.tsx",
+        "views/TawbaPage.tsx"
+      ],
+      "bypassSample": [
+        "admin-v3/domains/analytics/AnalyticsPlatformPage.tsx",
+        "admin-v3/domains/community/UsersPage.tsx",
+        "admin-v3/domains/content/EntityCrudPage.tsx",
+        "admin-v3/domains/content/RemainingEntityCrudPage.tsx",
+        "admin-v3/domains/taxonomy/TaxonomyPage.tsx",
+        "components/AdminInlineEdit.tsx",
+        "components/AdminSiteEditBar.tsx",
+        "components/ContentActions.tsx",
+        "components/FiqhGuidePage.tsx",
+        "components/GlobalSearchModal.tsx",
+        "components/HijriMonthSelect.tsx",
+        "components/SearchSuggestions.tsx"
+      ],
+      "migrationPriority": [
+        "components/AdminInlineEdit.tsx",
+        "components/AdminSiteEditBar.tsx",
+        "components/ContentActions.tsx",
+        "components/FiqhGuidePage.tsx",
+        "components/GlobalSearchModal.tsx",
+        "components/HijriMonthSelect.tsx",
+        "components/SearchSuggestions.tsx",
+        "components/adhan/AudioPromptsSettingsCard.tsx",
+        "components/adhan/MuezzinPicker.tsx",
+        "components/adhan/PrayerAudioPicker.tsx",
+        "components/admin/SubmissionsReviewPanel.tsx",
+        "components/admin/review-hub/ContentModerationCard.tsx",
+        "components/admin/review-hub/RecitationReviewCard.tsx",
+        "components/admin/review-hub/ReviewFilterBar.tsx",
+        "components/admin/review-hub/ReviewHubHeaderBar.tsx",
+        "components/admin/review-hub/ReviewHubWorkspace.tsx",
+        "components/assistant/AssistantChatView.tsx",
+        "components/citation/CitationModal.tsx",
+        "components/filters/FilterBar.tsx",
+        "components/fiqh/FiqhReportError.tsx"
+      ]
+    },
+    "tables": {
+      "usingCount": 8,
+      "bypassCount": 14,
+      "relevantCount": 22,
+      "adoptionPercent": 36,
+      "usingSample": [
+        "admin-v3/domains/community/RolesPage.tsx",
+        "admin-v3/domains/community/UsersPage.tsx",
+        "admin-v3/domains/content/EntityCrudPage.tsx",
+        "admin-v3/domains/content/RemainingEntityCrudPage.tsx",
+        "admin-v3/domains/reviews/ReviewInboxPage.tsx",
+        "admin-v3/domains/taxonomy/TaxonomyPage.tsx",
+        "pages/lessons/ui/AnnualCourseDetailView.tsx",
+        "views/UniversitiesComparePage.tsx"
+      ],
+      "bypassSample": [
+        "components/prayer/PrayerAnnualTimetable.tsx",
+        "views/ProphetStoriesPage.tsx",
+        "views/admin/FeatureStatusPage.tsx",
+        "views/admin/KnowledgeReasoningSection.tsx",
+        "views/admin/LessonsSection.tsx",
+        "views/admin/LibrarySection.tsx",
+        "views/admin/MiraclesSection.tsx",
+        "views/admin/QaSection.tsx",
+        "views/admin/ScholarlyVerificationSection.tsx",
+        "views/admin/SheikhsSection.tsx",
+        "views/admin/TelegramSection.tsx",
+        "views/admin/UsersSection.tsx"
+      ],
+      "migrationPriority": [
+        "components/prayer/PrayerAnnualTimetable.tsx",
+        "views/ProphetStoriesPage.tsx",
+        "views/admin/FeatureStatusPage.tsx",
+        "views/admin/KnowledgeReasoningSection.tsx",
+        "views/admin/LessonsSection.tsx",
+        "views/admin/LibrarySection.tsx",
+        "views/admin/MiraclesSection.tsx",
+        "views/admin/QaSection.tsx",
+        "views/admin/ScholarlyVerificationSection.tsx",
+        "views/admin/SheikhsSection.tsx",
+        "views/admin/TelegramSection.tsx",
+        "views/admin/UsersSection.tsx",
+        "views/admin/VerifiedKnowledgeSection.tsx",
+        "views/internal/InternalStatusPage.tsx"
+      ]
+    },
+    "lists": {
+      "usingCount": 8,
+      "bypassCount": 74,
+      "relevantCount": 82,
+      "adoptionPercent": 10,
+      "usingSample": [
+        "components/adhan/PrayerAlertSettingsCard.tsx",
+        "components/adhkar/AdhkarRemindersCard.tsx",
+        "components/ui-common.tsx",
+        "pages/account/ui/NotificationSettingsView.tsx",
+        "pages/account/ui/NotificationsAndSoundView.tsx",
+        "pages/account/ui/SettingsView.tsx",
+        "pages/lessons/ui/AnnualCourseDetailView.tsx",
+        "pages/worship/ui/AdhanSettingsView.tsx"
+      ],
+      "bypassSample": [
+        "admin-v3/centers/AdminV3CenterWorkspace.tsx",
+        "admin-v3/domains/ops/AutomationHubPage.tsx",
+        "admin-v3/domains/ops/OpsPages.tsx",
+        "components/ErrorBoundary.tsx",
+        "components/GlobalSearchModal.tsx",
+        "components/adhan/AudioPromptsSettingsCard.tsx",
+        "components/adhan/PrayerAudioPicker.tsx",
+        "components/audio/AudioLibrarySelectionPanel.tsx",
+        "components/auth/PasswordPolicyChecklist.tsx",
+        "components/calendar/CalendarDayCell.tsx",
+        "components/content/CompactSources.tsx",
+        "components/content/ReadingSectionCard.tsx"
+      ],
+      "migrationPriority": [
+        "admin-v3/centers/AdminV3CenterWorkspace.tsx",
+        "components/ErrorBoundary.tsx",
+        "components/GlobalSearchModal.tsx",
+        "components/adhan/AudioPromptsSettingsCard.tsx",
+        "components/adhan/PrayerAudioPicker.tsx",
+        "components/audio/AudioLibrarySelectionPanel.tsx",
+        "components/auth/PasswordPolicyChecklist.tsx",
+        "components/calendar/CalendarDayCell.tsx",
+        "components/content/CompactSources.tsx",
+        "components/content/ReadingSectionCard.tsx",
+        "components/filters/ActiveFilters.tsx",
+        "components/fiqh/FiqhSourceLine.tsx",
+        "components/hadith/HadithKnowledgeBlocks.tsx",
+        "components/hadith/HadithReaderSection.tsx",
+        "components/home/HomeHeroLcp.tsx",
+        "components/home/HomeLocalResumeCard.tsx",
+        "components/home/HomeSunnahByTime.tsx",
+        "components/knowledge-collection/KnowledgeCollectionSystem.tsx",
+        "components/layout/ContentHubLayout.tsx",
+        "components/lessons/LessonCourseCard.tsx"
+      ]
+    },
+    "tabs": {
+      "usingCount": 2,
+      "bypassCount": 72,
+      "relevantCount": 74,
+      "adoptionPercent": 3,
+      "usingSample": [
+        "pages/quran/ui/UlumQuranView.tsx",
+        "views/TawbaPage.tsx"
+      ],
+      "bypassSample": [
+        "admin-v3/domains/reviews/ReviewInboxPage.tsx",
+        "components/FiqhGuidePage.tsx",
+        "components/GlobalSearchModal.tsx",
+        "components/adhan/PrayerAudioPicker.tsx",
+        "components/admin/review-hub/ReviewFilterBar.tsx",
+        "components/admin/review-hub/ReviewHubWorkspace.tsx",
+        "components/audio/AudioLibrarySelectionPanel.tsx",
+        "components/citation/CitationModal.tsx",
+        "components/home/HomeUniversalSearch.tsx",
+        "components/majlis/SmartSearchPanel.tsx",
+        "components/onboarding/AppFeatureTour.tsx",
+        "components/prayer/PrayerLocationPicker.tsx"
+      ],
+      "migrationPriority": [
+        "components/FiqhGuidePage.tsx",
+        "components/GlobalSearchModal.tsx",
+        "components/adhan/PrayerAudioPicker.tsx",
+        "components/admin/review-hub/ReviewFilterBar.tsx",
+        "components/admin/review-hub/ReviewHubWorkspace.tsx",
+        "components/audio/AudioLibrarySelectionPanel.tsx",
+        "components/citation/CitationModal.tsx",
+        "components/home/HomeUniversalSearch.tsx",
+        "components/majlis/SmartSearchPanel.tsx",
+        "components/onboarding/AppFeatureTour.tsx",
+        "components/prayer/PrayerLocationPicker.tsx",
+        "components/prophets/ProphetStoryTabs.tsx",
+        "components/quran/SurahList.tsx",
+        "components/rag/ResearchAnswer.tsx",
+        "components/topic/TopicPage.tsx",
+        "pages/account/ui/FawaidView.tsx",
+        "pages/account/ui/IslamicGlossaryView.tsx",
+        "pages/account/ui/LoginView.tsx",
+        "pages/account/ui/NotificationSettingsView.tsx",
+        "pages/fiqh/ui/FiqhQawaidView.tsx"
+      ]
+    },
+    "navigation": {
+      "usingCount": 15,
+      "bypassCount": 1,
+      "relevantCount": 16,
+      "adoptionPercent": 94,
+      "usingSample": [
+        "App.tsx",
+        "components/FloatingBackButton.tsx",
+        "components/common/AppBackButton.tsx",
+        "components/lobby/SectionLobby.tsx",
+        "components/prophets/ProphetStoryReaderHeader.tsx",
+        "components/topic/SectionHero.tsx",
+        "pages/account/ui/SearchView.tsx",
+        "pages/competitions/ui/CompetitionDetailView.tsx",
+        "pages/fiqh/ui/FiqhLessonView.tsx",
+        "pages/hadith/ui/ArbaeenHadithDetailView.tsx",
+        "pages/hadith/ui/ArbaeenNawawiView.tsx",
+        "pages/lessons/ui/LessonDetailView.tsx"
+      ],
+      "bypassSample": [
+        "components/ScrollToTop.tsx"
+      ],
+      "migrationPriority": [
+        "components/ScrollToTop.tsx"
+      ]
+    },
+    "modals": {
+      "usingCount": 26,
+      "bypassCount": 1,
+      "relevantCount": 27,
+      "adoptionPercent": 96,
+      "usingSample": [
+        "admin-v3/domains/community/UsersPage.tsx",
+        "admin-v3/domains/content/EntityCrudPage.tsx",
+        "admin-v3/domains/content/RemainingEntityCrudPage.tsx",
+        "admin-v3/domains/taxonomy/TaxonomyPage.tsx",
+        "components/ScrollToTop.tsx",
+        "components/admin/AdminConfirmDialog.tsx",
+        "views/admin/AdhkarSection.tsx",
+        "views/admin/AnnualCoursesSection.tsx",
+        "views/admin/ArbaeenLoveSection.tsx",
+        "views/admin/AutoContentPage.tsx",
+        "views/admin/CategoriesSection.tsx",
+        "views/admin/FawaidSection.tsx"
+      ],
+      "bypassSample": [
+        "components/NativeBackButtonListener.tsx"
+      ],
+      "migrationPriority": [
+        "components/NativeBackButtonListener.tsx"
+      ]
+    }
+  },
+  "topDivergenceSources": [
+    {
+      "family": "cards",
+      "bypassCount": 208,
+      "adoptionPercent": 9
+    },
+    {
+      "family": "forms",
+      "bypassCount": 182,
+      "adoptionPercent": 5
+    },
+    {
+      "family": "buttons",
+      "bypassCount": 100,
+      "adoptionPercent": 71
+    },
+    {
+      "family": "lists",
+      "bypassCount": 74,
+      "adoptionPercent": 10
+    },
+    {
+      "family": "tabs",
+      "bypassCount": 72,
+      "adoptionPercent": 3
+    },
+    {
+      "family": "tables",
+      "bypassCount": 14,
+      "adoptionPercent": 36
+    },
+    {
+      "family": "navigation",
+      "bypassCount": 1,
+      "adoptionPercent": 94
+    },
+    {
+      "family": "modals",
+      "bypassCount": 1,
+      "adoptionPercent": 96
+    }
+  ],
+  "easiestWins": [
+    {
+      "family": "tables",
+      "reason": "امتصاص 14 ملفًا يتجاوز السلطة — عائد سريع على adoption",
+      "bypassCount": 14
+    },
+    {
+      "family": "navigation",
+      "reason": "امتصاص 1 ملفًا يتجاوز السلطة — عائد سريع على adoption",
+      "bypassCount": 1
+    },
+    {
+      "family": "modals",
+      "reason": "امتصاص 1 ملفًا يتجاوز السلطة — عائد سريع على adoption",
+      "bypassCount": 1
+    }
+  ],
+  "policy": "migrate-when-touched · SPECIAL_CASE mushaf/prayer/admin wrappers OK if composing authority"
+}

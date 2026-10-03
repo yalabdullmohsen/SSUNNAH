@@ -56,7 +56,7 @@
   padding: 0.65rem 1rem;
   background: var(--elite-white, var(--mj-bg));
   border: 1.5px solid var(--elite-border-2, rgba(24,54,42,0.15));
-  border-radius: 18px;
+  border-radius: var(--sf-radius-control, 1.125rem);
   color: var(--elite-ink, var(--mj-brand-deep));
   font-size: 0.9rem;
   font-family: inherit;
@@ -104,7 +104,7 @@
   padding: 0.35rem 0.9rem;
   background: var(--ss-card-bg, var(--mj-surface));
   border: 1px solid color-mix(in srgb, var(--mj-brand) 28%, var(--ss-border));
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   color: var(--brand-on-light, var(--mj-brand-deep));
   font-size: 0.82rem;
   font-weight: 650;
@@ -121,7 +121,7 @@
 .isp-chip.is-active {
   background: var(--mj-brand-deep, #12362c);
   border-color: var(--mj-brand-deep, #12362c);
-  color: var(--on-dark-strong, var(--mj-white, #ffffff));
+  color: var(--on-dark-strong, var(--mj-white, var(--mj-white)));
 }
 html.dark .isp-chip.is-active,
 [data-theme="dark"] .isp-chip.is-active {
@@ -173,7 +173,7 @@ html.dark .isp-chip.is-active,
   padding: 1.1rem 1.05rem;
   background: var(--ss-card-bg, var(--color-surface, var(--mj-surface)));
   border: 1px solid color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, var(--mj-hairline)));
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   box-shadow: var(--ss-shadow-soft, 0 2px 10px -6px rgba(11, 32, 24, 0.14));
   cursor: pointer;
   transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
@@ -208,7 +208,7 @@ html.dark .isp-chip.is-active,
   place-items: center;
   width: 2.6rem;
   height: 2.6rem;
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   flex-shrink: 0;
   background: color-mix(in srgb, var(--mj-brand) 12%, var(--ss-card-bg));
   color: var(--brand-on-light, var(--mj-brand-deep));
@@ -265,7 +265,7 @@ html.dark .isp-chip.is-active,
 .isp-tag {
   background: color-mix(in srgb, var(--mj-brand) 8%, transparent);
   color: var(--color-text-muted, var(--mj-muted));
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   padding: 0.15rem 0.55rem;
   font-size: 0.75rem;
 }
@@ -351,7 +351,7 @@ html.dark .isp-chip.is-active,
 .isp-detail__hero {
   background: var(--ss-card-bg, var(--mj-surface));
   border: 1px solid color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border));
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   padding: 1.35rem 1.2rem;
   display: flex;
   flex-direction: column;
@@ -385,7 +385,7 @@ html.dark .isp-chip.is-active,
 .isp-detail__section {
   background: var(--color-surface, var(--elite-white, var(--mj-surface)));
   border: 1px solid var(--color-hairline, var(--elite-border, rgba(0,0,0,0.07)));
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   padding: 1.25rem 1.5rem;
   box-shadow: 0 10px 26px -18px rgba(10, 61, 46, 0.22);
 }
@@ -501,7 +501,7 @@ html.dark .isp-chip.is-active,
   border-radius: inherit;
 }
 .isp-card__hit:focus-visible {
-  outline: 2px solid var(--mj-brand, #1e5f4b);
+  outline: 2px solid var(--mj-brand, var(--mj-brand));
   outline-offset: 3px;
 }
 .isp-card__admin {

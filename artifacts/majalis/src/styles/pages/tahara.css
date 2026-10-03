@@ -22,8 +22,8 @@
 .th-hero__sub { font-size: .93rem; /* soft ink */ max-width: 480px; margin: 0 auto 1.25rem; line-height: 1.85; }
 
 .th-ayah {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 22%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent);
   border-radius: .7rem;
   padding: .85rem 1.1rem;
   max-width: 540px;
@@ -48,8 +48,8 @@
   align-items: center;
   justify-content: center;
   gap: .2rem;
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 18%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, transparent);
   border-bottom: none;
   border-radius: .5rem .5rem 0 0;
   padding: .5rem .9rem .4rem;
@@ -61,11 +61,11 @@
   min-height: 44px;
 }
 .th-tab:hover {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 14%, transparent);
-  color: var(--mss-on-hero, #16241e);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, transparent);
+  color: var(--mss-on-hero, var(--v2-color-ink));
 }
 .th-tab--active {
-  background: var(--color-surface, var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff))));
+  background: var(--color-surface, var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white)))));
   color: var(--color-brand-deep, var(--mj-brand-deep));
   font-weight: 700;
 }
@@ -97,7 +97,7 @@
 /* fardh */
 .th-fardh-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .7rem; }
 .th-fardh-card {
-  background: var(--mj-surface, var(--surface-1, var(--mj-white, var(--mj-white, #ffffff))));
+  background: var(--mj-surface, var(--surface-1, var(--mj-white, var(--mj-white, var(--mj-white)))));
   border: 1px solid var(--mj-hairline, var(--border-subtle));
   border-radius: .7rem;
   padding: .85rem .9rem;
@@ -133,7 +133,7 @@
 /* nawaqidh */
 .th-nawaqidh-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .65rem; }
 .th-naqidh-card {
-  background: var(--mj-surface, var(--surface-1, var(--mj-white, var(--mj-white, #ffffff))));
+  background: var(--mj-surface, var(--surface-1, var(--mj-white, var(--mj-white, var(--mj-white)))));
   border: 1px solid var(--mj-hairline);
   border-radius: .65rem;
   padding: .8rem .9rem;
@@ -164,7 +164,7 @@
 /* ghusl */
 .th-mujibat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .7rem; }
 .th-mujib-card {
-  background: var(--mj-surface, var(--surface-1, var(--mj-white, var(--mj-white, #ffffff))));
+  background: var(--mj-surface, var(--surface-1, var(--mj-white, var(--mj-white, var(--mj-white)))));
   border: 1px solid var(--mj-hairline);
   border-radius: .65rem;
   padding: .8rem .9rem;
@@ -207,7 +207,7 @@
   min-width: 1.6rem;
   height: 1.6rem;
   background: var(--color-brand, var(--mj-brand));
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -227,7 +227,7 @@
   display: flex;
   align-items: flex-start;
   gap: .6rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  box-shadow: var(--v2-shadow-soft);
 }
 .th-ibaha-card__icon { font-size: 1.3rem; flex-shrink: 0; }
 .th-ibaha-card__title { display: block; font-size: .88rem; font-weight: 700; color: var(--txt-primary, var(--mj-ink)); margin-bottom: .2rem; }
@@ -281,7 +281,7 @@
   display: flex;
   align-items: flex-start;
   gap: .65rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  box-shadow: var(--v2-shadow-soft);
 }
 .th-naj-card__icon { font-size: 1.3rem; flex-shrink: 0; }
 .th-naj-card__title { display: block; font-size: .88rem; font-weight: 700; color: var(--txt-primary, var(--mj-ink)); margin-bottom: .2rem; }
@@ -332,7 +332,7 @@ html.dark .th-page {
 }
 html[data-theme="dark"] .th-tab.th-tab--active[role="tab"][aria-selected="true"],
 html.dark .th-tab.th-tab--active[role="tab"][aria-selected="true"] {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 10%, #fffef9);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, #fffef9);
   color: #123f2e;
 }
 html[data-theme="dark"] .th-tab,

@@ -61,7 +61,7 @@ html.pts-immersive .bottom-nav--m2030 {
 .lrf-wrap--prayer .lrf-skel__hero {
   display: block;
   height: 8.5rem;
-  border-radius: 18px;
+  border-radius: var(--sf-radius-control, 1.125rem);
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
@@ -93,7 +93,7 @@ html.pts-immersive .bottom-nav--m2030 {
 }
 .pts-boot-hero {
   min-height: 8.5rem;
-  border-radius: 18px;
+  border-radius: var(--sf-radius-control, 1.125rem);
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.12);
 }

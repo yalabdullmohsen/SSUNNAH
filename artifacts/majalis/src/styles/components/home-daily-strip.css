@@ -12,7 +12,7 @@
   margin: 0;
   font-size: 1.05rem;
   font-weight: 800;
-  color: #15382d;
+  color: var(--sf-color-rich-ink);
   letter-spacing: -0.01em;
 }
 
@@ -32,9 +32,9 @@
   min-height: 6.5rem;
   padding: 0.7rem 0.75rem;
   border-radius: 14px;
-  background: #fff;
-  border: 1px solid color-mix(in srgb, #0f5c3f 14%, #e8ebe9);
-  box-shadow: 0 1px 2px color-mix(in srgb, #15382d 6%, transparent);
+  background: var(--mj-white);
+  border: 1px solid color-mix(in srgb, var(--sf-color-deep-emerald) 14%, #e8ebe9);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--sf-color-rich-ink) 6%, transparent);
   text-decoration: none;
   color: inherit;
   touch-action: manipulation;
@@ -47,13 +47,13 @@
 .hds__kicker {
   font-size: 0.72rem;
   font-weight: 700;
-  color: #0f5c3f;
+  color: var(--sf-color-deep-emerald);
 }
 
 .hds__text {
   font-size: 0.84rem;
   line-height: 1.45;
-  color: #15382d;
+  color: var(--sf-color-rich-ink);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -71,5 +71,5 @@
 .home-daily-strip--ph {
   min-height: 15rem;
   border-radius: 14px;
-  background: color-mix(in srgb, #0f5c3f 4%, #f8f6f1);
+  background: color-mix(in srgb, var(--sf-color-deep-emerald) 4%, #f8f6f1);
 }

@@ -1,6 +1,6 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-10-03 (SUNNAH_AUTONOMOUS_ENDGAME_MODE — phases A–H)  
+**Updated:** 2026-10-03 (VISUAL_SYSTEM_UNIFICATION_FINAL_WAVE)  
 **Master closure register:** `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` · **LOCKED**  
 **iOS-only board:** `docs/audit/IOS_ONLY_CLOSURE_BOARD.md` · **`LIVE_TRUTH_LOCKED_IOS_ONLY`**  
 **Boundary report (living):** `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md`  
@@ -42,6 +42,41 @@
 | Store | **HOLD** for new submission · App Store 1.0 live · TF 1.0.1(55) available · no Play · no `STORE_GO` |
 | Repo defects (Accepted Truth) | **P0=0 · P1=0 · P2=0 · P3=0** |
 | Explicit non-claims | no `STORE GO` · no `CONTENT_CERTIFIED` · no `AUDIO_CERTIFIED` · no `UNIFIED_100` · no `MOBILE_READY` · no `DEVICE_TESTED` · no `WCAG CERTIFIED` · no `IOS_AUTH_CERTIFIED` · no `IOS_RELEASE_CANDIDATE_READY` |
+
+## Visual unification
+
+`VISUAL_SYSTEM_UNIFICATION_FINAL_WAVE` — `docs/audit/VISUAL_SYSTEM_UNIFICATION_WAVE_REPORT.md`  
+Metrics vs `origin/main`: hexInCss 8855→7026 · borderRadiusPx 1202→456 · boxShadow 1047→1026 · sfTokenRefs 794→1006 · btnHex 1698→1184 · **UNIFIED_PARTIAL** (closer to UNIFIED_100; not claimed).
+
+Phases I–L: `docs/audit/VISUAL_IJKL_BUTTON_FORM_IDENTITY_REPORT.md` · `docs/design/FORM_AUTHORITY_MAP.md` · rawButtonFiles 105→102 · rawButtonElements 463→457 · façades `LinkButton`/`ToggleButton` · FORM map APPROVED/LEGACY/SPECIAL_CASE.
+
+Phases M–O: `docs/audit/VISUAL_MNO_TABLE_LIST_DATA_REPORT.md` · TABLE/LIST/DATA maps · `ListSystem` façades · `.ss-data-table` · UniversitiesCompare → `ui/table` · hexInCss →7025.
+
+Phases P–S: `docs/audit/VISUAL_PQRS_MODAL_FEEDBACK_OVERLAY_REPORT.md` · MODAL/FEEDBACK/STATUS/OVERLAY maps · product `ConfirmDialog` · `test:overlay-feedback-authority`.
+
+Phases T–V: `docs/audit/VISUAL_TUV_TAB_NAV_IA_REPORT.md` · TAB/NAV/IA maps · `ContentTabs` · `test:tab-nav-authority`.
+
+Phases W–Z: `docs/audit/VISUAL_WXYZ_SEARCH_FILTER_STATE_RESPONSIVE_REPORT.md` · SEARCH/FILTER/STATE/RESPONSIVE maps · SearchField→SearchInput · `test:search-filter-state-authority`.
+
+Phases AA–AC: `docs/audit/VISUAL_AA_AC_COLOR_TYPE_LANGUAGE_REPORT.md` · COLOR/TYPOGRAPHY/DESIGN_LANGUAGE maps · `test:color-typography-authority`.
+
+Phases AD–AG: `docs/audit/VISUAL_AD_AG_SPACING_SIZE_A11Y_CONTRAST_REPORT.md` · SPACING/SIZE/A11Y/CONTRAST maps · `test:spacing-size-a11y-contrast-authority`.
+
+Phases AH–AJ: `docs/audit/VISUAL_AH_AJ_ELEVATION_BORDER_GOVERNANCE_REPORT.md` · elevation/border maps · `test:design-governance` · preflight map check.
+
+Phase AK: `docs/design/DESIGN_TOKENS_AUTHORITY.md` · `TOKEN_COMPLIANCE_REPORT` · `test:design-tokens-authority`.
+
+Phases AL–AP: `docs/audit/VISUAL_AL_AP_POLISH_CONSISTENCY_REPORT.md` · interaction/coverage/scoring/admin/journeys · `test:polish-consistency`.
+
+Phases AQ–AU: `docs/audit/VISUAL_AQ_AU_COMPLIANCE_CERTIFICATION_REPORT.md` · compliance engine · token coverage · duplication · heatmap · product certification · `test:design-compliance-engine`.
+
+Phases AV–AZ: `docs/audit/VISUAL_AV_AZ_PRODUCT_EXCELLENCE_REPORT.md` · cohesion · token migration queue · rationalization · journey compression · polish backlog · `test:product-excellence`.
+
+Phases BA–BE: `docs/audit/VISUAL_BA_BE_PRODUCT_MATURITY_REPORT.md` · maturity scorecard · drift atlas · micro-friction · content/icon authorities · `test:product-maturity`.
+
+Phases BF–BJ: `docs/audit/VISUAL_BF_BJ_PERFORMANCE_EXCELLENCE_REPORT.md` · render/mushaf/startup/network/budgets · `test:performance-excellence` (no speculative fixes).
+
+Phases BK–BO: `docs/audit/VISUAL_BK_BO_DATABASE_EXCELLENCE_REPORT.md` · DB heatmap · query queue · indexes · cache · health scorecard · `test:database-excellence`.
 
 ## Endgame phases (A–H)
 

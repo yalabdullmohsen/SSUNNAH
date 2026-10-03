@@ -127,7 +127,7 @@
   gap: 0.4rem;
   min-height: 44px;
   padding: 0.55rem 1rem;
-  border-radius: var(--radius-button, 18px);
+  border-radius: var(--sf-radius-control, 1.125rem);
   font: inherit;
   font-size: 0.9rem;
   font-weight: 700;
@@ -138,7 +138,7 @@
 
 .contact-btn--primary {
   background: var(--majalis-emerald-deep, var(--mj-brand));
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
 }
 
 .contact-btn--primary:hover {
@@ -146,8 +146,8 @@
 }
 
 .contact-btn--ghost {
-  background: var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff)));
-  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand, #1f6b56)) 18%, var(--mj-hairline, var(--mj-hairline, #e3e8e6)));
+  background: var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
+  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand, var(--mj-brand))) 18%, var(--mj-hairline, var(--mj-hairline, #e3e8e6)));
   color: var(--majalis-ink);
 }
 
@@ -257,7 +257,7 @@
 
 .contact-faq {
   border: 1px solid var(--majalis-line, color-mix(in srgb, currentColor 12%, transparent));
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   overflow: hidden;
   background: var(--majalis-panel, transparent);
 }
@@ -280,7 +280,7 @@
   gap: 0.75rem;
   padding-block: 0.85rem;
   text-align: start !important;
-  border-radius: var(--radius-button, 18px);
+  border-radius: var(--radius-button);
   border: 0;
   background: transparent;
   appearance: none;

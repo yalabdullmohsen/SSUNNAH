@@ -16,7 +16,7 @@ html {
 
 :root {
   /* مِشكاة: --majalis-* tokens تُعرَّف في index.css — لا تتجاوزها هنا */
-  --card-radius: var(--radius-card, 24px);
+  --card-radius: var(--radius-card, 1.5rem);
   --card-padding: var(--ds-space-3);
   --card-shadow: var(--ds-shadow);
   --mobile-gap: var(--ds-space-3);
@@ -80,7 +80,7 @@ html {
   padding-inline: 0.35rem;
 }
 .surah-info-card__link--secondary { font-weight: 600; opacity: 0.9; }
-.revelation-badge { display: inline-flex; padding: .2rem .55rem; border-radius: 999px; font-weight: 800; }
+.revelation-badge { display: inline-flex; padding: .2rem .55rem; border-radius: var(--radius-pill, 999rem); font-weight: 800; }
 .revelation-badge--makki { background: #fff4d6; color: #765510; }
 .revelation-badge--madani { background: var(--ds-emerald-soft); color: var(--ds-emerald-deep); }
 @media (max-width: 640px) { .revelation-comparison { grid-template-columns: 1fr; } .revelation-toolbar { align-items: stretch; flex-direction: column; } .revelation-toolbar label { max-width: none; } }
@@ -495,7 +495,7 @@ p, li {
 .page-stats-row > span,
 .ruling-stats-bar > span {
   padding: 0.2rem 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: var(--ds-emerald-soft);
   color: var(--ds-emerald-deep);
 }
@@ -538,7 +538,7 @@ p, li {
   padding: 0.2rem 0.625rem;
   font-size: var(--ds-text-xs);
   font-weight: 700;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1px solid var(--ds-line-color);
   background: var(--majalis-panel, #fff);
   color: var(--ds-ink-soft);
@@ -857,7 +857,7 @@ p, li {
   font-size: var(--ds-text-xs);
   font-weight: 700;
   padding: 0.1rem 0.45rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: var(--ds-emerald-soft);
   color: var(--ds-emerald-deep);
 }
@@ -926,7 +926,7 @@ p, li {
 .search-topic-chip {
   font-size: var(--ds-text-xs);
   padding: 0.2rem 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: var(--ds-emerald-soft);
   color: var(--ds-emerald-deep);
   font-weight: 700;
@@ -945,7 +945,7 @@ p, li {
   font-size: var(--ds-text-xs);
   font-weight: 700;
   padding: 0.25rem 0.625rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1px solid var(--ds-line-color);
   color: var(--ds-ink-soft);
   text-decoration: none;
@@ -1124,11 +1124,11 @@ p, li {
   --ds-radius-xs: 0.25rem;
   --ds-radius-sm: 0.375rem;
   --ds-radius:    var(--radius-control, 0.875rem);
-  --ds-radius-lg: var(--radius-button, 18px);
-  --ds-radius-xl: var(--radius-card, 24px);
-  --ds-radius-2xl: var(--radius-card, 24px);
+  --ds-radius-lg: var(--radius-button);
+  --ds-radius-xl: var(--radius-card, 1.5rem);
+  --ds-radius-2xl: var(--radius-card, 1.5rem);
   --ds-radius-full: 9999px;
-  --card-radius: var(--radius-card, 24px);
+  --card-radius: var(--radius-card, 1.5rem);
 
   /* ── Shadows — subtle, premium ── */
   --ds-shadow-xs: 0 1px 2px rgba(26,23,20,.04);
@@ -1449,7 +1449,7 @@ hr.decorative,
   padding: 0.2rem 0.625rem;
   background: rgba(23,61,53, 0.12);
   color: var(--clr-primary, var(--mj-brand));
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   font-size: 0.73rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
@@ -1793,7 +1793,7 @@ hr.decorative,
   align-items: center;
   overflow: hidden;
   padding: 0.2rem 0.5rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: var(--surface-brand-solid, #1e5f4b);
   color: var(--on-brand, #ffffff);
   border: 1px solid var(--on-brand-hairline, rgba(255, 255, 255, 0.22));
@@ -2280,7 +2280,7 @@ hr.decorative,
 .lsw-badge {
   font-size: 0.7rem;
   padding: 0.15rem 0.5rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: color-mix(in srgb, var(--majalis-emerald) 8%, transparent);
   color: var(--majalis-emerald, var(--mj-brand));
   font-weight: 600;
@@ -2302,7 +2302,7 @@ hr.decorative,
 .lsw-featured__now {
   display: inline-block;
   padding: 0.35rem 0.9rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   color: #fff;
   font-size: 0.85rem;
   font-weight: 700;
@@ -3014,7 +3014,7 @@ select:focus-visible {
   width: 30px;
   height: 30px;
   min-height: 30px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1.5px solid var(--ds-line-color);
   background: #fff;
   color: var(--ds-emerald);
@@ -3067,7 +3067,7 @@ select:focus-visible {
   padding: 0.4rem 0.85rem;
   background: none;
   border: 1px solid var(--ds-line-color);
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   color: var(--majalis-ink-soft);
   font-size: 0.78rem;
   font-weight: 600;

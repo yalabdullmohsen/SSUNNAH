@@ -52,7 +52,7 @@
 
   /* ── Radius family ── */
   --svl-radius-sm: var(--radius-sm, 14px);
-  --svl-radius-md: var(--radius-card, 24px);
+  --svl-radius-md: var(--radius-card, 1.5rem);
   --svl-radius-lg: var(--radius-sheet, 28px);
   --svl-radius-pill: 999px;
 

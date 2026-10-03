@@ -4,7 +4,7 @@
 .gl-page {
   min-height: 100svh;
   background: var(--color-bg, var(--surface-app, var(--mj-bg)));
-  color: var(--color-text, var(--mj-ink, #16241e));
+  color: var(--color-text, var(--mj-ink, var(--v2-color-ink)));
   padding-bottom: calc(
     var(--bottom-nav-height, 88px) + var(--inset-bottom, 0px) +
       max(4.5rem, var(--assistant-fab-size, 3.35rem) + 3.25rem)
@@ -60,8 +60,8 @@
   justify-content: center;
   min-height: 44px;
   padding: 0 14px;
-  border-radius: 999px;
-  background: var(--ss-card-bg, var(--mj-surface, var(--mj-white, #ffffff)));
+  border-radius: var(--radius-pill, 999rem);
+  background: var(--ss-card-bg, var(--mj-surface, var(--mj-white, var(--mj-white))));
   color: var(--mss-on-hero-accent, #0B3D2E);
   font-weight: 700;
   text-decoration: none;
@@ -69,8 +69,8 @@
 }
 .gl-hero__btn--ghost {
   background: transparent;
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 28%, transparent);
-  color: var(--mss-on-hero, #16241e);
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 28%, transparent);
+  color: var(--mss-on-hero, var(--v2-color-ink));
 }
 
 /* Search */
@@ -112,7 +112,7 @@
 .gl-cat:hover { border-color: var(--mj-brand); color: var(--mj-brand); }
 .gl-cat--active {
   background: var(--mj-brand-deep, #12362c) !important;
-  color: var(--on-dark-strong, var(--mj-white, #ffffff)) !important;
+  color: var(--on-dark-strong, var(--mj-white, var(--mj-white))) !important;
   border-color: var(--mj-brand-deep, #12362c);
 }
 .gl-cat__count {
@@ -132,7 +132,7 @@
 .gl-term {
   background: var(--ss-card-bg, var(--mj-surface));
   border: 1px solid color-mix(in srgb, var(--mj-brand) 16%, var(--ss-border, var(--mj-info-soft)));
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   overflow: hidden;
   box-shadow: var(--ss-shadow-soft, 0 1px 4px rgba(0,0,0,.04));
   transition: box-shadow .2s, border-color .2s;
@@ -149,7 +149,7 @@
 .gl-term__chevron {
   width: 1.85rem;
   height: 1.85rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: color-mix(in srgb, var(--mj-brand) 12%, transparent);
   transition: transform 160ms ease;
 }

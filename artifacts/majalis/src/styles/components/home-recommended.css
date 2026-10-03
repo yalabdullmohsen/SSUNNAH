@@ -10,7 +10,7 @@
   margin: 0;
   font-size: 1.05rem;
   font-weight: 800;
-  color: #15382d;
+  color: var(--sf-color-rich-ink);
 }
 
 .hrc__rail {
@@ -35,9 +35,9 @@
   scroll-snap-align: start;
   padding: 0.65rem 0.75rem;
   border-radius: 14px;
-  background: #fff;
-  border: 1px solid color-mix(in srgb, #0f5c3f 12%, #e8ebe9);
-  box-shadow: 0 1px 2px color-mix(in srgb, #15382d 5%, transparent);
+  background: var(--mj-white);
+  border: 1px solid color-mix(in srgb, var(--sf-color-deep-emerald) 12%, #e8ebe9);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--sf-color-rich-ink) 5%, transparent);
   text-decoration: none;
   color: inherit;
   display: flex;
@@ -48,7 +48,7 @@
 .hrc__chip-title {
   font-size: 0.86rem;
   font-weight: 700;
-  color: #15382d;
+  color: var(--sf-color-rich-ink);
   line-height: 1.35;
   display: -webkit-box;
   -webkit-line-clamp: 2;

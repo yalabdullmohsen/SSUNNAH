@@ -54,17 +54,16 @@ html.dark .pattern-backdrop {
   /* رموز mss (--mss-hero-from / --mss-hero-gradient) للبطاقات المميزة فقط */
   background-color: var(
     --mss-section-hero-bg,
-    var(--svl-surface-section, color-mix(in srgb, var(--mj-brand, #1f6b56) 5.5%, var(--mj-surface, #fffef9)))
+    var(--svl-surface-section, color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 5.5%, var(--mj-surface, #fffef9)))
   );
   background-image: none;
-  color: var(--svl-text-primary, var(--mj-ink, #16241e));
+  color: var(--svl-text-primary, var(--mj-ink, var(--v2-color-ink)));
   border: 1px solid var(--svl-border-subtle, var(--mj-hairline, #e3e8e6));
   border-inline-start-width: 1px;
   border-inline-start-color: var(--svl-border-subtle, var(--mj-hairline, #e3e8e6));
-  box-shadow: none;
 }
 .page-hero-mj--bleed:not(.home-page-hero) .pattern-backdrop {
-  color: var(--mj-brand, #1f6b56);
+  color: var(--mj-brand, var(--mj-brand));
   opacity: 0.06;
 }
 .page-hero-mj--bleed:not(.home-page-hero) .page-hero-mj__content {
@@ -76,7 +75,7 @@ html.dark .pattern-backdrop {
   color: var(--mss-on-hero-accent, var(--mj-brand-deep, #123f2e));
 }
 .page-hero-mj--bleed:not(.home-page-hero) :is(.page-hero-mj__title, .page-hero-mj__headline) {
-  color: var(--mss-on-hero, #16241e) !important;
+  color: var(--mss-on-hero, var(--v2-color-ink)) !important;
 }
 .page-hero-mj--bleed:not(.home-page-hero) .page-hero-mj__desc {
   color: var(--mss-on-hero-muted, #4a554f) !important;
@@ -196,7 +195,7 @@ html.dark .pattern-backdrop {
   min-height: 40px;
   min-width: unset;
   padding: 0.4rem 0.9rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1px solid var(--border-soft, var(--mj-hairline, var(--color-border)));
   background: var(--surface, var(--mj-bg, transparent));
   color: var(--text-main, var(--mj-ink-2, var(--color-text)));
@@ -216,9 +215,8 @@ html.dark .pattern-backdrop {
 }
 .filter-chips__chip.is-active {
   background: var(--color-primary-dark, var(--mj-brand-deep, #123f2e));
-  color: var(--text-on-brand, #fff);
+  color: var(--text-on-brand, var(--mj-white));
   border-color: var(--color-primary-dark, var(--mj-brand-deep, #123f2e));
-  box-shadow: none;
 }
 .filter-chips__soon {
   font-size: 0.68rem;

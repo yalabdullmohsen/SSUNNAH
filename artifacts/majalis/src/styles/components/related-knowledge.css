@@ -41,7 +41,7 @@
   padding: 0.75rem 0.9rem;
   border-radius: var(--ds-radius-lg);
   border: 1.5px solid var(--clr-border, rgba(0,0,0,.1));
-  background: var(--clr-surface, #fff);
+  background: var(--clr-surface, var(--mj-white));
   text-decoration: none;
   overflow: hidden;
   transition: border-color .15s, background .15s, transform .1s;
@@ -133,7 +133,7 @@ html[data-theme="dark"] .rk-card__title { color: var(--mj-ink); }
   padding: 0.65rem 0.85rem;
   border-radius: 0.7rem;
   border: 1.5px solid var(--clr-border, rgba(0,0,0,.1));
-  background: var(--clr-surface, #fff);
+  background: var(--clr-surface, var(--mj-white));
   text-decoration: none;
   transition: border-color .15s, background .15s;
 }

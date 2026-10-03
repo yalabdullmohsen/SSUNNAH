@@ -41,7 +41,7 @@
 /* tabs */
 .sh-tabs {
   display: flex; gap: .4rem; flex-wrap: nowrap; margin-bottom: 1.75rem;
-  background: var(--ss-card-bg, var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff)))); border: 1px solid rgba(23,61,53,.15); border-radius: var(--ds-radius-xl); padding: .35rem;
+  background: var(--ss-card-bg, var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))))); border: 1px solid rgba(23,61,53,.15); border-radius: var(--ds-radius-xl); padding: .35rem;
   overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
 }
 .sh-tabs::-webkit-scrollbar { display: none; }
@@ -51,7 +51,7 @@
   color: var(--mj-ink-2); font-family: inherit; font-size: .8rem; font-weight: 600;
   cursor: pointer; transition: background .15s, color .15s; white-space: nowrap;
 }
-.sh-tab--active { background: var(--mj-brand); color: var(--mj-white, #ffffff); }
+.sh-tab--active { background: var(--mj-brand); color: var(--mj-white, var(--mj-white)); }
 
 /* section */
 .sh-section { display: flex; flex-direction: column; gap: var(--ds-space-4); }
@@ -67,7 +67,7 @@
 
 /* باب */
 .sh-bab {
-  background: var(--ss-card-bg, var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff)))); border: 1px solid rgba(23,61,53,.15); border-radius: var(--ds-radius-xl); overflow: hidden;
+  background: var(--ss-card-bg, var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))))); border: 1px solid rgba(23,61,53,.15); border-radius: var(--ds-radius-xl); overflow: hidden;
   transition: box-shadow .15s;
 }
 .sh-bab:hover { box-shadow: 0 2px 16px rgba(23,61,53,.1); }
@@ -110,10 +110,10 @@
 .sh-mahabbah-intro {
   display: flex; flex-direction: column; align-items: center; gap: .65rem;
   background: linear-gradient(135deg, var(--mj-brand-deep), var(--mj-brand));
-  border-radius: var(--ds-radius-2xl); padding: 2rem 1.5rem; color: var(--mj-white, #ffffff); text-align: center;
+  border-radius: var(--ds-radius-2xl); padding: 2rem 1.5rem; color: var(--mj-white, var(--mj-white)); text-align: center;
   margin-bottom: .5rem;
 }
-.sh-mahabbah-intro__icon { color: var(--on-dark-strong, var(--mj-white, #ffffff)); opacity: .9; }
+.sh-mahabbah-intro__icon { color: var(--on-dark-strong, var(--mj-white, var(--mj-white))); opacity: .9; }
 .sh-mahabbah-intro__title { font-size: var(--ds-text-2xl); font-weight: 900; margin: 0; }
 .sh-mahabbah-intro__text {
   font-size: .88rem; color: var(--on-dark-body, var(--mj-surface-2)); margin: 0; line-height: 1.7;
@@ -122,7 +122,7 @@
 
 .sh-mahabbah-list { display: flex; flex-direction: column; gap: .75rem; }
 .sh-mahabbah-card {
-  background: var(--ss-card-bg, var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff)))); border: 1px solid rgba(23,61,53,.15); border-radius: var(--ds-radius-xl); overflow: hidden;
+  background: var(--ss-card-bg, var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))))); border: 1px solid rgba(23,61,53,.15); border-radius: var(--ds-radius-xl); overflow: hidden;
 }
 .sh-mahabbah-card__head {
   display: flex; align-items: center; gap: .75rem; padding: .85rem 1.1rem;
@@ -147,7 +147,7 @@
 /* صلاة */
 .sh-salat-box {
   margin-top: 1.5rem; background: linear-gradient(135deg, var(--mj-brand-deep), var(--mj-brand));
-  border-radius: var(--ds-radius-2xl); padding: 1.75rem 1.5rem; color: var(--mj-white, #ffffff); text-align: center;
+  border-radius: var(--ds-radius-2xl); padding: 1.75rem 1.5rem; color: var(--mj-white, var(--mj-white)); text-align: center;
 }
 .sh-salat-box__head {
   display: flex; align-items: center; justify-content: center; gap: .5rem;
@@ -156,7 +156,7 @@
 }
 .sh-salat-box__text {
   font-family: var(--font-body); font-size: var(--ds-text-2xl);
-  line-height: 2; margin: 0 0 .75rem; color: var(--mj-white, #ffffff);
+  line-height: 2; margin: 0 0 .75rem; color: var(--mj-white, var(--mj-white));
 }
 .sh-salat-box__sub { font-size: .78rem; color: rgba(200,240,220,.6); margin: 0; }
 
@@ -173,7 +173,7 @@
   padding: 1.1rem 1.15rem 0.9rem;
   text-align: start;
   margin: 0.75rem 1rem 0.5rem;
-  border-radius: var(--radius-card, 18px);
+  border-radius: var(--radius-card, 1.125rem);
 }
 .sh-page--ds .sh-hero__glow { display: none; }
 .sh-page--ds .sh-hero__title {
@@ -219,9 +219,9 @@
 .sh-search-wrap { margin: 0 0 1rem; }
 .sh-section { display: grid; gap: 0.65rem; }
 .sh-bab {
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #0f5c45) 14%, var(--mj-line, #d9d2c6));
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, var(--mj-line, #d9d2c6));
   border-radius: 14px;
-  background: var(--mj-surface, #fff);
+  background: var(--mj-surface, var(--mj-white));
   overflow: hidden;
 }
 .sh-bab__head {
@@ -251,9 +251,9 @@
   color: var(--mj-ink-2, #3d4f47);
 }
 .sh-mahabbah {
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #0f5c45) 14%, var(--mj-line, #d9d2c6));
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, var(--mj-line, #d9d2c6));
   border-radius: 14px;
-  background: var(--mj-surface, #fff);
+  background: var(--mj-surface, var(--mj-white));
   overflow: hidden;
 }
 .sh-quiz-wrap { margin-top: 1.25rem; }

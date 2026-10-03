@@ -72,13 +72,11 @@
       var(--v2-color-emerald-soft) 100%
     );
   color: var(--v2-color-emerald-deep);
-  box-shadow: none;
 }
 
 .sc2--welcome .sc2-icon {
   background: color-mix(in srgb, var(--v2-color-on-emerald) 16%, transparent);
   color: var(--v2-color-on-emerald);
-  box-shadow: none;
 }
 
 .sc2-icon svg {

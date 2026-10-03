@@ -9,7 +9,7 @@
 html[data-v2-app="1"] body,
 html[data-v2-app="1"] .app-shell {
   background-color: var(--v2-color-ivory, #f9f8f4);
-  color: var(--v2-color-ink, #16241e);
+  color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
 html[data-v2-app="1"] .page-shell,
@@ -20,12 +20,12 @@ html[data-v2-app="1"] .legal-page,
 html[data-v2-app="1"] main[class*="-page"],
 html[data-v2-app="1"] .grid-screen,
 html[data-v2-app="1"] .utility-screen {
-  color: var(--v2-color-ink, #16241e);
+  color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
 /*
  * أسطح/حبر البطاقات الفاتحة — مقيّدة بالوضع الفاتح فقط.
- * CI #7500/#7543: دبابيس !important العامة كانت تثبت #15382D فوق سطح ليلي (#24302B)
+ * CI #7500/#7543: دبابيس !important العامة كانت تثبت var(--sf-color-rich-ink) فوق سطح ليلي (#24302B)
  * وتغلب على hub-card.css الداكن → ~1.07:1. لا تُطبَّق هنا في dark.
  */
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .soft-card:not(.hub-card):not(.lesson-unified-card):not(.lpp-path-card):not(.topic-card):not(.section-entry-card):not(.ss-feature-card__inner),
@@ -34,12 +34,12 @@ html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .mj-card,
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .ss-app-card,
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .qzg-section-card,
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .ruling-card {
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background: var(--cs-surface-3, var(--v2-color-ivory-surface, #ffffff)) !important;
-  background-color: var(--cs-surface-3, var(--v2-color-ivory-surface, #ffffff)) !important;
+  background: var(--cs-surface-3, var(--v2-color-ivory-surface, var(--mj-white))) !important;
+  background-color: var(--cs-surface-3, var(--v2-color-ivory-surface, var(--mj-white))) !important;
   box-shadow: var(--v2-shadow-soft);
-  color: var(--v2-color-ink, #16241e) !important;
+  color: var(--v2-color-ink, var(--v2-color-ink)) !important;
 }
 
 /* ── بطاقات رئيسية — أبيض · حبر AA (لا عاجي على فاتح) ── */
@@ -49,19 +49,19 @@ html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .topic-card,
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .ss-feature-card__inner,
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .soft-card.hub-card,
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .hub-card.soft-card--on-light {
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
-  background: var(--cs-surface-3, #ffffff) !important;
-  background-color: var(--cs-surface-3, #ffffff) !important;
+  background: var(--cs-surface-3, var(--mj-white)) !important;
+  background-color: var(--cs-surface-3, var(--mj-white)) !important;
   background-image: none !important;
   box-shadow: var(--cs-shadow, var(--v2-shadow-soft));
-  color: var(--cs-text-primary, #15382d) !important;
+  color: var(--cs-text-primary, var(--sf-color-rich-ink)) !important;
 }
 
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .hub-card .hub-card__title,
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .section-entry-card__title,
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .card__label {
-  color: var(--cs-text-primary, #15382d) !important;
+  color: var(--cs-text-primary, var(--sf-color-rich-ink)) !important;
   font-weight: 700 !important;
 }
 
@@ -80,29 +80,29 @@ html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .hub-card .hub-card__g
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .lesson-unified-card,
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .lesson-unified-card.soft-card,
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .lesson-unified-card.soft-card--on-light {
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
-  background: var(--cs-surface-3, #ffffff) !important;
-  background-color: var(--cs-surface-3, #ffffff) !important;
+  background: var(--cs-surface-3, var(--mj-white)) !important;
+  background-color: var(--cs-surface-3, var(--mj-white)) !important;
   background-image: none !important;
   box-shadow: var(--cs-shadow, var(--v2-shadow-soft));
-  color: var(--cs-text-primary, #15382d) !important;
+  color: var(--cs-text-primary, var(--sf-color-rich-ink)) !important;
 }
 
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .lesson-unified-card__title,
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .lesson-unified-card__sheikh {
-  color: var(--cs-text-primary, #15382d) !important;
+  color: var(--cs-text-primary, var(--sf-color-rich-ink)) !important;
 }
 
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .lpp-path-card,
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .lpp-path-card.soft-card--on-light {
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
-  background: var(--cs-surface-3, #ffffff) !important;
-  background-color: var(--cs-surface-3, #ffffff) !important;
+  background: var(--cs-surface-3, var(--mj-white)) !important;
+  background-color: var(--cs-surface-3, var(--mj-white)) !important;
   background-image: none !important;
   box-shadow: var(--cs-shadow, var(--v2-shadow-soft));
-  color: var(--cs-text-primary, #15382d) !important;
+  color: var(--cs-text-primary, var(--sf-color-rich-ink)) !important;
 }
 
 /* إزالة عمود أخضر جانبي / شريط زخرفي مزدوج على البطاقات العامة */
@@ -129,7 +129,7 @@ html[data-v2-app="1"] .card__icon {
   height: var(--v2-icon-tile, 2.75rem);
   border-radius: var(--v2-radius-icon, 16px);
   background: var(--cs-primary-soft, var(--v2-color-emerald-soft, #e2efe8)) !important;
-  color: var(--cs-primary-deep, var(--v2-color-emerald-deep, #0a4530)) !important;
+  color: var(--cs-primary-deep, var(--v2-color-emerald-deep, var(--sf-color-deep-emerald-deep))) !important;
 }
 
 html[data-v2-app="1"] .more-page-tile__icon,
@@ -138,7 +138,7 @@ html[data-v2-app="1"] .soft-card:not(.hub-card) .icon-tile {
   height: var(--v2-icon-tile, 2.75rem);
   border-radius: var(--v2-radius-icon, 16px);
   background: var(--v2-color-emerald-soft, #e2efe8);
-  color: var(--v2-color-emerald-deep, #0a3d2e);
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
 
 /* ── Page Header V2 (صفحات داخلية — بلا هيرو زمردي كامل إلا عند الترحيب) ── */
@@ -157,7 +157,7 @@ html[data-v2-app="1"] .ph2__eyebrow {
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: var(--v2-color-emerald, #0f5c45);
+  color: var(--v2-color-emerald, var(--mj-brand));
 }
 
 html[data-v2-app="1"] .ph2__title {
@@ -165,7 +165,7 @@ html[data-v2-app="1"] .ph2__title {
   font-size: 1.45rem;
   font-weight: 800;
   line-height: 1.3;
-  color: var(--v2-color-ink, #16241e);
+  color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
 html[data-v2-app="1"] .ph2__title::after {
@@ -176,7 +176,7 @@ html[data-v2-app="1"] .ph2__title::after {
   margin-block-start: 0.55rem;
   border-radius: var(--v2-radius-pill, 999px);
   /* Gold accent فقط — بلا تدرّج أخضر/ذهبي */
-  background: var(--v2-accent-gold, var(--v2-color-gold, #c9a82e));
+  background: var(--v2-accent-gold, var(--v2-color-gold, var(--sf-color-quran-gold)));
 }
 
 html[data-v2-app="1"] .ph2__desc {
@@ -193,7 +193,7 @@ html[data-v2-app="1"] .section-lobby__group-title,
 html[data-v2-app="1"] .legal-section h2,
 html[data-v2-app="1"] .page-shell__intro,
 html[data-v2-app="1"] .content-hub__title {
-  color: var(--v2-color-ink, #16241e);
+  color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
 /* ── Empty State V2 ── */
@@ -205,10 +205,10 @@ html[data-v2-app="1"] .es2 {
   text-align: center;
   gap: var(--v2-space-3, 0.75rem);
   padding: var(--v2-space-8, 2rem) var(--v2-space-5, 1.25rem);
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
   background: var(--v2-color-ivory-muted, #efe8dc);
-  color: var(--v2-color-ink, #16241e);
+  color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
 html[data-v2-app="1"] .es2__icon {
@@ -218,7 +218,7 @@ html[data-v2-app="1"] .es2__icon {
   place-items: center;
   border-radius: var(--v2-radius-icon, 16px);
   background: var(--v2-color-emerald-soft, #e2efe8);
-  color: var(--v2-color-emerald-deep, #0a3d2e);
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
 
 html[data-v2-app="1"] .es2__mark {
@@ -241,7 +241,7 @@ html[data-v2-app="1"] .es2__nav-path {
   color: var(--sf-color-rich-ink-soft, #48645a);
 }
 html[data-v2-app="1"] .es2__nav-path {
-  color: var(--sf-color-deep-emerald, #0f5c3f);
+  color: var(--sf-color-deep-emerald, var(--sf-color-deep-emerald));
   font-weight: 600;
 }
 html[data-v2-app="1"] .es2__desc {
@@ -257,8 +257,8 @@ html[data-v2-app="1"] .es2__cta {
   padding-inline: var(--v2-space-5, 1.25rem);
   border-radius: var(--v2-radius-pill, 999px);
   border: none;
-  background: var(--v2-color-emerald, #0f5c45);
-  color: var(--v2-color-on-emerald, #fff);
+  background: var(--v2-color-emerald, var(--mj-brand));
+  color: var(--v2-color-on-emerald, var(--mj-white));
   font-weight: 700;
   text-decoration: none;
   display: inline-flex;
@@ -267,18 +267,18 @@ html[data-v2-app="1"] .es2__cta {
 
 /* جسر mj-empty القديم */
 html[data-v2-app="1"] .mj-empty {
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
   background: var(--v2-color-ivory-muted, #efe8dc);
   padding: var(--v2-space-8, 2rem) var(--v2-space-5, 1.25rem);
 }
 
 html[data-v2-app="1"] .mj-empty .mj-dot {
-  background: var(--v2-color-emerald, #0f5c45);
+  background: var(--v2-color-emerald, var(--mj-brand));
 }
 
 html[data-v2-app="1"] .mj-empty b {
-  color: var(--v2-color-ink, #16241e);
+  color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
 html[data-v2-app="1"] .mj-empty span {
@@ -395,7 +395,7 @@ html[data-v2-app="1"] .dashboard-screen,
 html[data-v2-app="1"] .list-screen,
 html[data-v2-app="1"] .utility-screen {
   background-color: var(--v2-color-ivory, #f9f8f4);
-  color: var(--v2-color-ink, #16241e);
+  color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
 html[data-v2-app="1"] .section-hero {
@@ -410,7 +410,7 @@ html[data-v2-app="1"] .fqh-hub-hero,
 html[data-v2-app="1"] .twh-hub-hero {
   max-width: min(56rem, 100%);
   margin: 0.35rem auto 0.75rem;
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid color-mix(in srgb, #d4b45c 35%, #0a2f24);
   background-color: var(--cs-ink-hero, #0a2f24) !important;
   background-image: none !important;
@@ -435,7 +435,7 @@ html[data-v2-app="1"] .topic-page__hero .safe-hero__badge,
 html[data-v2-app="1"] .safe-hero__badge,
 html[data-v2-app="1"] .fqh-hub-hero__title,
 html[data-v2-app="1"] .fqh-hub-hero__eyebrow {
-  color: var(--cs-on-ink-title, #ffffff) !important;
+  color: var(--cs-on-ink-title, var(--mj-white)) !important;
 }
 
 html[data-v2-app="1"] .topic-page__hero .topic-page__sub,
@@ -448,7 +448,7 @@ html[data-v2-app="1"] .fqh-hub-hero__sub {
 
 html[data-v2-app="1"] .topic-page__eyebrow,
 html[data-v2-app="1"] .safe-hero__badge {
-  background: color-mix(in srgb, #ffffff 14%, transparent) !important;
+  background: color-mix(in srgb, var(--mj-white) 14%, transparent) !important;
   color: var(--cs-gold-ink, #f0e2b0) !important;
   border-radius: var(--v2-radius-pill, 999px);
   font-weight: 700;
@@ -466,7 +466,7 @@ html[data-v2-app="1"] .topic-page__title::after {
   height: 3px;
   margin-block-start: 0.55rem;
   border-radius: var(--v2-radius-pill, 999px);
-  background: var(--v2-accent-gold, var(--v2-color-gold, #c9a82e));
+  background: var(--v2-accent-gold, var(--v2-color-gold, var(--sf-color-quran-gold)));
 }
 
 html[data-v2-app="1"] .section-hero__back,
@@ -474,12 +474,12 @@ html[data-v2-app="1"] .section-hero__back-row .app-back-btn {
   border-radius: var(--v2-radius-pill, 999px);
   border-color: var(--v2-hairline);
   background: var(--v2-color-ivory-surface, #fffcf8);
-  color: var(--v2-color-emerald-deep, #0a3d2e);
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   box-shadow: var(--v2-shadow-soft);
 }
 
 html[data-v2-app="1"] .topic-page__group-title {
-  color: var(--v2-color-emerald-deep, #0a3d2e);
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   font-weight: 800;
 }
 
@@ -497,11 +497,11 @@ html[data-v2-app="1"] .flashcard,
 html[data-v2-app="1"] .competition-card,
 html[data-v2-app="1"] .dua-card,
 html[data-v2-app="1"] .kp-list--packs li {
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
   background: var(--v2-color-ivory-surface, #fffcf8);
   box-shadow: var(--v2-shadow-soft);
-  color: var(--v2-color-ink, #16241e);
+  color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
 html[data-v2-app="1"] .kx-library-card::before,
@@ -515,7 +515,7 @@ html[data-v2-app="1"] .tarikh-card::before {
 
 /* Legal تحت الجسر العام */
 html[data-v2-app="1"] .legal-page-hero {
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
   background: var(--v2-color-ivory-surface, #fffcf8);
   box-shadow: var(--v2-shadow-soft);
@@ -528,13 +528,13 @@ html[data-v2-app="1"] .legal-page-eyebrow {
   padding: 0.25rem 0.75rem;
   border-radius: var(--v2-radius-pill, 999px);
   background: var(--v2-color-emerald-soft, #e2efe8);
-  color: var(--v2-color-emerald-deep, #0a3d2e);
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   font-weight: 700;
   font-size: 0.8rem;
 }
 
 html[data-v2-app="1"] .legal-page-hero h1 {
-  color: var(--v2-color-ink, #16241e);
+  color: var(--v2-color-ink, var(--v2-color-ink));
   font-weight: 800;
 }
 
@@ -545,11 +545,11 @@ html[data-v2-app="1"] .legal-page-hero h1::after {
   height: 3px;
   margin-block-start: 0.55rem;
   border-radius: var(--v2-radius-pill, 999px);
-  background: var(--v2-accent-gold, var(--v2-color-gold, #c9a82e));
+  background: var(--v2-accent-gold, var(--v2-color-gold, var(--sf-color-quran-gold)));
 }
 
 html[data-v2-app="1"] .legal-section {
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
   background: var(--v2-color-ivory-surface, #fffcf8);
   box-shadow: var(--v2-shadow-soft);
@@ -616,7 +616,7 @@ html[data-v2-app="1"] .kx-library-card,
 html[data-v2-app="1"] .topic-card,
 html[data-v2-app="1"] .hadith-card {
   box-shadow:
-    0 1px 0 color-mix(in srgb, #fff 65%, transparent),
+    0 1px 0 color-mix(in srgb, var(--mj-white) 65%, transparent),
     var(--v2-shadow-soft);
   transition:
     transform var(--v2-duration-fast, 140ms) var(--v2-ease-out, ease),
@@ -631,7 +631,7 @@ html[data-v2-app="1"] .mj-card:hover,
 html[data-v2-app="1"] .kx-library-card:hover,
 html[data-v2-app="1"] .topic-card:hover,
 html[data-v2-app="1"] .hadith-card:hover {
-  border-color: color-mix(in srgb, var(--v2-color-emerald, #0f5c45) 24%, var(--v2-hairline));
+  border-color: color-mix(in srgb, var(--v2-color-emerald, var(--mj-brand)) 24%, var(--v2-hairline));
   box-shadow: var(--v2-shadow-card);
   transform: translateY(-1px);
 }
@@ -646,7 +646,7 @@ html[data-v2-app="1"] .kx-library-card:active {
 
 html[data-v2-app="1"] .hub-card__icon,
 html[data-v2-app="1"] .section-entry-card__icon {
-  background: var(--cs-on-ink-icon-bg, color-mix(in srgb, #ffffff 14%, transparent)) !important;
+  background: var(--cs-on-ink-icon-bg, color-mix(in srgb, var(--mj-white) 14%, transparent)) !important;
   color: var(--cs-on-ink-icon, #f7f1e4) !important;
 }
 
@@ -655,10 +655,10 @@ html[data-v2-app="1"] .es2__icon {
   background:
     linear-gradient(
       145deg,
-      color-mix(in srgb, var(--v2-color-gold, #c9a82e) 12%, var(--v2-color-emerald-soft, #e2efe8)) 0%,
+      color-mix(in srgb, var(--v2-color-gold, var(--sf-color-quran-gold)) 12%, var(--v2-color-emerald-soft, #e2efe8)) 0%,
       var(--v2-color-emerald-soft, #e2efe8) 100%
     );
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--v2-color-gold, #c9a82e) 22%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--v2-color-gold, var(--sf-color-quran-gold)) 22%, transparent);
 }
 
 html[data-v2-app="1"] .ph2,

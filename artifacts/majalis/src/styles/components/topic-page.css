@@ -5,7 +5,7 @@
   --topic-hero-to: var(--mss-hero-to, #245f4d);
   --topic-accent: var(--mj-brand);
   --section-accent: var(--topic-accent);
-  --topic-on-hero: var(--mss-on-hero, #ffffff);
+  --topic-on-hero: var(--mss-on-hero, var(--mj-white));
   --topic-on-hero-muted: var(--mss-on-hero-muted, #f3efe6);
   --topic-on-hero-accent: var(--mss-on-hero-accent, #fff1c4);
   direction: rtl;
@@ -43,12 +43,12 @@
   background-image: linear-gradient(
     135deg,
     var(--topic-hero-from) 0%,
-    var(--mss-hero-mid, #1f6b56) 55%,
+    var(--mss-hero-mid, var(--mj-brand)) 55%,
     var(--topic-hero-to) 100%
   );
   color: var(--topic-on-hero);
   padding: max(1.75rem, 28px) max(1rem, var(--page-gutter, 1rem)) 1.35rem;
-  border: 1px solid color-mix(in srgb, #fff 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-white) 12%, transparent);
   box-shadow: var(--mss-shadow-hero, 0 8px 24px -14px rgba(11, 32, 24, 0.4));
 }
 
@@ -85,7 +85,7 @@
   font-weight: 800;
   line-height: 1.35;
   /* soft-hero: حبر ثابت لا يتبع --mj-ink الليلي الفاتح */
-  color: var(--mss-on-hero, var(--topic-on-hero, #16241e));
+  color: var(--mss-on-hero, var(--topic-on-hero, var(--v2-color-ink)));
   overflow-wrap: anywhere;
 }
 
@@ -105,7 +105,7 @@
   border: 1px solid color-mix(in srgb, var(--topic-on-hero) 22%, transparent);
   border-inline-end: 3px solid color-mix(in srgb, var(--topic-on-hero-accent, var(--topic-on-hero)) 55%, transparent);
   background: color-mix(in srgb, var(--topic-on-hero) 10%, transparent);
-  border-radius: 16px;
+  border-radius: var(--radius-lg, 1rem);
 }
 
 .topic-page__quote-text {
@@ -128,7 +128,7 @@
   padding-bottom: 0.45rem;
   font-size: 1.125rem;
   font-weight: 800;
-  color: var(--mj-ink, #16241e);
+  color: var(--mj-ink, var(--v2-color-ink));
   border-block-end: 1px solid var(--mj-hairline, #d5ddd9);
   max-width: 42rem;
   margin-inline: auto;
@@ -169,9 +169,9 @@
   height: auto;
   min-height: 44px;
   padding: 0 1rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1.5px solid var(--msk-border, var(--mj-hairline));
-  background: var(--mj-surface, #fff);
+  background: var(--mj-surface, var(--mj-white));
   color: var(--mj-ink);
   font: inherit;
   font-size: 0.8125rem;
@@ -215,7 +215,7 @@
   border-radius: 0.55rem;
   border: 1.5px solid var(--mj-brand);
   background: var(--mj-brand);
-  color: #fff;
+  color: var(--mj-white);
   font: inherit;
   font-weight: 600;
   cursor: pointer;
@@ -233,8 +233,8 @@
 }
 
 .topic-card {
-  background: color-mix(in srgb, var(--mj-surface, #fff) 96%, var(--mj-brand-soft, var(--brand-soft, var(--mj-brand-soft))));
-  border-radius: 22px;
+  background: color-mix(in srgb, var(--mj-surface, var(--mj-white)) 96%, var(--mj-brand-soft, var(--brand-soft, var(--mj-brand-soft))));
+  border-radius: var(--radius-card, 1.5rem);
   border: 1px solid color-mix(in srgb, var(--topic-accent, var(--mj-brand)) 24%, var(--msk-border, var(--mj-hairline)));
   padding: 1rem 1.05rem;
   box-shadow: 0 2px 10px -7px rgba(11, 32, 24, 0.16);
@@ -307,7 +307,7 @@ html[data-theme="dark"] .topic-page__tab.is-active,
 html.dark .topic-page__tab.is-active {
   border-color: var(--topic-accent, var(--mj-brand));
   background: color-mix(in srgb, var(--topic-accent, var(--mj-brand)) 18%, transparent);
-  color: color-mix(in srgb, var(--topic-accent, var(--mj-brand)) 88%, #fff);
+  color: color-mix(in srgb, var(--topic-accent, var(--mj-brand)) 88%, var(--mj-white));
 }
 
 /* SectionHero — صف العنوان مع أيقونة اختيارية */
@@ -338,7 +338,7 @@ html.dark .topic-page__tab.is-active {
 html[data-theme="dark"] .topic-page__hero,
 html.dark .topic-page__hero {
   box-shadow: 0 10px 28px -16px rgba(0, 0, 0, 0.55);
-  border-color: color-mix(in srgb, #fff 10%, transparent);
+  border-color: color-mix(in srgb, var(--mj-white) 10%, transparent);
 }
 
 html[data-theme="dark"] .topic-page__crumb,
@@ -538,7 +538,7 @@ html.dark .topic-page__crumb [aria-hidden] {
 .fiqh-review-tag {
   font-size: 0.7rem;
   padding: 0.15rem 0.5rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: rgba(180, 83, 9, 0.12);
   color: var(--majalis-emerald);
 }

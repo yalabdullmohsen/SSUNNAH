@@ -55,7 +55,7 @@
   min-width: 4.75rem;
   padding: 0.7rem 1rem;
   border-radius: 0.85rem;
-  background: var(--surface-card, var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff))));
+  background: var(--surface-card, var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white)))));
   border: 1px solid color-mix(in srgb, var(--mj-brand-deep, #123F32) 14%, var(--majalis-line, var(--mj-hairline)));
   box-shadow: 0 1px 2px color-mix(in srgb, var(--mj-brand-deep, #123F32) 6%, transparent);
 }
@@ -99,7 +99,7 @@ html[data-theme="dark"] .tf-stat span {
 .tf-intro {
   background: var(--mj-brand-tint);
   border: 1.5px solid var(--mj-brand-soft);
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   padding: 1.1rem 1.2rem;
   margin-bottom: 1.25rem;
   color: var(--mj-brand-deep);
@@ -183,7 +183,7 @@ html[data-theme="dark"] .tf-stat span {
   font-family: inherit;
 }
 .tf-cat-chip:hover { border-color: var(--mj-brand); color: var(--mj-brand); }
-.tf-cat-chip--active { background: var(--mj-brand); border-color: var(--mj-brand); color: var(--mj-white, #ffffff); }
+.tf-cat-chip--active { background: var(--mj-brand); border-color: var(--mj-brand); color: var(--mj-white, var(--mj-white)); }
 
 .tf-section { margin-bottom: 1.75rem; }
 .tf-section__title {
@@ -198,7 +198,7 @@ html[data-theme="dark"] .tf-stat span {
 .tf-card {
   background: var(--ss-card-bg, var(--color-surface, var(--mj-surface)));
   border: 1.5px solid var(--mj-brand-soft);
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   overflow: hidden;
 }
 .tf-card--open { border-color: var(--mj-brand); box-shadow: 0 3px 14px rgba(31, 77, 58, 0.1); }
@@ -386,11 +386,11 @@ html[data-theme="dark"] .tf-stat span {
   flex-shrink: 0;
   width: 2.1rem;
   height: 2.1rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   display: grid;
   place-items: center;
   background: var(--mj-brand);
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   font-weight: 800;
   font-size: 0.85rem;
   z-index: 1;
@@ -430,7 +430,7 @@ html[data-theme="dark"] .tf-stat span {
 .tf-path-card {
   background: var(--ss-card-bg, var(--color-surface, var(--mj-surface)));
   border: 1.5px solid var(--mj-brand-soft);
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   padding: 1rem;
   position: relative;
 }
@@ -440,9 +440,9 @@ html[data-theme="dark"] .tf-stat span {
   min-width: 1.6rem;
   height: 1.6rem;
   padding: 0 0.35rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: var(--mj-brand-deep);
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   font-size: 0.78rem;
   font-weight: 800;
   margin-bottom: 0.55rem;
@@ -479,9 +479,9 @@ html[data-theme="dark"] .tf-stat span {
   gap: 0.7rem;
 }
 .tf-spotlight-card {
-  background: linear-gradient(165deg, var(--mj-white, var(--mj-white, #ffffff)) 0%, #F4FAF7 100%);
+  background: linear-gradient(165deg, var(--mj-white, var(--mj-white, var(--mj-white))) 0%, #F4FAF7 100%);
   border: 1.5px solid var(--mj-brand-soft);
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   padding: 1rem;
 }
 .tf-spotlight-card__level {
@@ -557,9 +557,9 @@ html[data-theme="dark"] .tf-stat span {
   gap: 0.75rem;
 }
 .tf-edition-card {
-  background: var(--majalis-panel, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--majalis-panel, var(--mj-white, var(--mj-white, var(--mj-white))));
   border: 1px solid var(--majalis-line, var(--mj-hairline));
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   padding: 1rem 1.05rem;
   display: flex;
   flex-direction: column;
@@ -576,7 +576,7 @@ html[data-theme="dark"] .tf-stat span {
   font-weight: 800;
   color: var(--majalis-emerald);
   background: color-mix(in srgb, var(--majalis-emerald) 10%, transparent);
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   padding: 0.15rem 0.55rem;
 }
 .tf-edition-card__author {
@@ -590,6 +590,6 @@ html[data-theme="dark"] .tf-stat span {
   line-height: 1.6;
   color: #8A5A18;
   background: rgba(184, 148, 63, 0.1);
-  border-radius: 8px;
+  border-radius: var(--radius-sm, 0.5rem);
   padding: 0.45rem 0.55rem;
 }

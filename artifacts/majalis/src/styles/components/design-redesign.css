@@ -30,7 +30,7 @@
   box-sizing: border-box;
 }
 .navbar-v3__search-btn:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--mj-brand, var(--brand)) 55%, #fff);
+  outline: 3px solid color-mix(in srgb, var(--mj-brand, var(--brand)) 55%, var(--mj-white));
   outline-offset: 2px;
 }
 .navbar-v3__search-btn span {

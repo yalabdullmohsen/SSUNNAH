@@ -80,14 +80,14 @@ html:is(.dark, [data-theme="dark"]) .lrf-wrap--skel {
 .lrf-skel__eyebrow {
   width: 4.5rem;
   height: 0.65rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: color-mix(in srgb, currentColor 9%, transparent);
 }
 
 .lrf-skel__title {
   height: 1.25rem;
   width: min(14rem, 55%);
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   background: color-mix(in srgb, currentColor 10%, transparent);
 }
 
@@ -104,7 +104,7 @@ html:is(.dark, [data-theme="dark"]) .lrf-wrap--skel {
 
 .lrf-skel__line {
   height: 0.75rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm, 0.5rem);
   width: 88%;
 }
 

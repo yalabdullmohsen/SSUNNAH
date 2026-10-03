@@ -60,7 +60,7 @@
 
 .qmem-stat {
   padding: 0.5rem 1rem;
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   background: rgba(255,255,255,0.09);
   border: 1px solid rgba(255,255,255,0.12);
   text-align: center;
@@ -108,7 +108,7 @@
 
 .qmem-type-card {
   padding: var(--ds-space-4);
-  border-radius: 12px;
+  border-radius: var(--radius-md, 0.75rem);
   border: 1.5px solid var(--ds-border, #e5e7eb);
   background: var(--ds-surface, #fff);
   cursor: pointer;
@@ -159,7 +159,7 @@
   flex: 1;
   min-width: 200px;
   padding: 0.5rem 0.85rem;
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   border: 1.5px solid var(--ds-border, #e5e7eb);
   background: var(--ds-surface, #fff);
   color: var(--ds-text-1, #1a1a1a);
@@ -174,7 +174,7 @@
 
 .qmem-start-btn {
   padding: 0.6rem 1.5rem;
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   background: var(--majalis-emerald, var(--mj-brand));
   color: #fff;
   border: none;
@@ -234,7 +234,7 @@
 }
 
 .qmem-card {
-  border-radius: 16px;
+  border-radius: var(--radius-lg, 1rem);
   border: 1.5px solid var(--ds-border, #e5e7eb);
   background: var(--ds-surface, #fff);
   padding: 1.75rem;
@@ -287,7 +287,7 @@
 
 .qmem-option {
   padding: 0.65rem 0.9rem;
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   border: 1.5px solid var(--ds-border, #e5e7eb);
   background: var(--ds-surface, #fff);
   color: var(--ds-text-1, #1a1a1a);
@@ -394,7 +394,7 @@
 .qmem-answer-input {
   width: 100%;
   padding: 0.75rem 1rem;
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   border: 1.5px solid var(--ds-border, #e5e7eb);
   background: var(--ds-surface, #fff);
   color: var(--ds-text-1, #1a1a1a);
@@ -412,7 +412,7 @@
 .qmem-submit-btn {
   align-self: flex-start;
   padding: 0.6rem 1.25rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm, 0.5rem);
   background: var(--majalis-emerald, var(--mj-brand));
   color: #fff;
   border: none;
@@ -425,7 +425,7 @@
 /* result */
 .qmem-result {
   padding: var(--ds-space-4);
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   margin-top: 0.75rem;
 }
 
@@ -463,7 +463,7 @@
 
 .qmem-rating-btn {
   padding: 0.35rem 0.75rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm, 0.5rem);
   border: none;
   font-size: 0.8rem;
   font-weight: 700;
@@ -485,7 +485,7 @@
   margin-top: 1rem;
   width: 100%;
   padding: 0.7rem;
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   background: var(--majalis-emerald, var(--mj-brand));
   color: #fff;
   border: none;
@@ -561,7 +561,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.6rem 0.85rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm, 0.5rem);
   background: var(--ds-surface-2, #f9fafb);
   font-size: 0.82rem;
 }
@@ -580,7 +580,7 @@
 
 .qmem-due-badge {
   padding: 0.15rem 0.5rem;
-  border-radius: 20px;
+  border-radius: var(--radius-card, 1.25rem);
   font-size: 0.7rem;
   font-weight: 700;
   background: rgba(23,61,53,0.1);

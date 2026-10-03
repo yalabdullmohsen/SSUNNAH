@@ -8,24 +8,24 @@
   --backgroundSubtle: var(--mj-surface-2, var(--surface-muted, var(--background)));
   --surface: var(--mj-surface, var(--color-surface, #fffcf8));
   --surfaceElevated: var(--mj-surface, var(--surface-elevated, var(--surface)));
-  --surfaceInteractive: color-mix(in srgb, var(--mj-brand, #146b52) 6%, var(--surface));
+  --surfaceInteractive: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 6%, var(--surface));
 
   /* Brand */
-  --primary: var(--mj-brand, #146b52);
+  --primary: var(--mj-brand, var(--mj-brand));
   --primaryHover: color-mix(in srgb, var(--primary) 88%, #000);
-  --primaryPressed: var(--mj-brand-deep, #0d4a39);
+  --primaryPressed: var(--mj-brand-deep, var(--mj-brand-deep));
   --primaryContainer: var(--mj-brand-soft, #e6f2ec);
-  --onPrimary: var(--mj-on-brand, #ffffff);
+  --onPrimary: var(--mj-on-brand, var(--mj-white));
 
   /* Text */
-  --textPrimary: var(--mj-ink, #16241e);
+  --textPrimary: var(--mj-ink, var(--v2-color-ink));
   --textSecondary: var(--mj-ink-2, #4f5f58);
   --textMuted: var(--mj-muted, #5e6e67);
   --textOnColor: var(--onPrimary);
 
   /* Borders / chrome */
   --border: var(--mj-hairline, #d9d3c8);
-  --borderStrong: color-mix(in srgb, var(--mj-ink, #16241e) 18%, var(--border));
+  --borderStrong: color-mix(in srgb, var(--mj-ink, var(--v2-color-ink)) 18%, var(--border));
   --divider: var(--border);
   --selected: color-mix(in srgb, var(--primary) 12%, var(--surface));
   --success: var(--primary);
@@ -35,7 +35,7 @@
   --focus: color-mix(in srgb, var(--primary) 55%, transparent);
   --skeletonBase: color-mix(in srgb, var(--textPrimary) 8%, transparent);
   --skeletonHighlight: color-mix(in srgb, var(--textPrimary) 14%, transparent);
-  --overlay: color-mix(in srgb, var(--mj-ink, #16241e) 42%, transparent);
+  --overlay: color-mix(in srgb, var(--mj-ink, var(--v2-color-ink)) 42%, transparent);
 
   /* Typography roles */
   --type-display: clamp(1.75rem, 4vw, 2.25rem);

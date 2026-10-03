@@ -1,0 +1,2860 @@
+{
+  "DESIGN_COMPLIANCE_SCORE": 73,
+  "DESIGN_COMPLIANCE_REPORT": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:28:33.995Z",
+    "DESIGN_COMPLIANCE_SCORE": 73,
+    "DESIGN_SYSTEM_COMPLIANCE_ENGINE": true,
+    "signals": {
+      "nonAuthorityComponents": [
+        {
+          "family": "cards",
+          "bypassCount": 208,
+          "adoptionPercent": 9
+        },
+        {
+          "family": "forms",
+          "bypassCount": 182,
+          "adoptionPercent": 5
+        },
+        {
+          "family": "buttons",
+          "bypassCount": 100,
+          "adoptionPercent": 71
+        },
+        {
+          "family": "lists",
+          "bypassCount": 74,
+          "adoptionPercent": 10
+        },
+        {
+          "family": "tabs",
+          "bypassCount": 72,
+          "adoptionPercent": 3
+        },
+        {
+          "family": "tables",
+          "bypassCount": 14,
+          "adoptionPercent": 36
+        },
+        {
+          "family": "navigation",
+          "bypassCount": 1,
+          "adoptionPercent": 94
+        },
+        {
+          "family": "modals",
+          "bypassCount": 1,
+          "adoptionPercent": 96
+        }
+      ],
+      "rogueStyling": {
+        "hexInCss": 7022,
+        "rgbHslInCss": 2087,
+        "boxShadowDecls": 1026,
+        "inlineColorStyleMatches": 48,
+        "withinCeilings": true
+      },
+      "tokenViolationsProxy": {
+        "hardcodedPct": 40,
+        "note": "hex/rgb in CSS as proxy — absorption via DESIGN_TOKENS_AUTHORITY"
+      },
+      "duplicatePatterns": [
+        {
+          "kind": "cards",
+          "count": 41,
+          "maintenanceCost": 41,
+          "sample": [
+            "components/adhan/AudioPromptsSettingsCard.tsx",
+            "components/adhan/PrayerAlertSettingsCard.tsx",
+            "components/adhkar/AdhkarRemindersCard.tsx",
+            "components/admin/review-hub/ContentModerationCard.tsx",
+            "components/admin/review-hub/RecitationReviewCard.tsx",
+            "components/content/ReadingSectionCard.tsx",
+            "components/content/RelatedContentCard.tsx",
+            "components/design-system/AppCard.tsx",
+            "components/design-system/ContentCard.tsx",
+            "components/design-system/FeatureCard.tsx",
+            "components/fawaid/FaidahCard.tsx",
+            "components/fiqh/FiqhIssueCard.tsx",
+            "components/hadith/HadithCard.tsx",
+            "components/hadith/HadithEntryCard.tsx",
+            "components/hadith/HadithListCard.tsx"
+          ],
+          "authorityHint": "AppCard / InteractiveCard"
+        },
+        {
+          "kind": "filters",
+          "count": 15,
+          "maintenanceCost": 15,
+          "sample": [
+            "components/admin/review-hub/ReviewFilterBar.tsx",
+            "components/design-system/FilterSystem.tsx",
+            "components/filters/ActiveFilters.tsx",
+            "components/filters/FilterBar.tsx",
+            "components/filters/FilterChip.tsx",
+            "components/filters/FilterResetButton.tsx",
+            "components/filters/FilterSheet.tsx",
+            "components/filters/SegmentedFilter.tsx",
+            "components/filters/UnifiedFilterBar.tsx",
+            "components/filters/UnifiedPrimaryFilters.tsx",
+            "components/hadith/HadithFilters.tsx",
+            "components/layout/FilterBottomSheet.tsx",
+            "components/lessons/LessonFilters.tsx",
+            "components/rulings/RulingFilters.tsx",
+            "components/ui/FilterChips.tsx"
+          ],
+          "authorityHint": "FILTER_AUTHORITY_MAP"
+        },
+        {
+          "kind": "dialogs",
+          "count": 12,
+          "maintenanceCost": 12,
+          "sample": [
+            "components/ComingSoonDialog.tsx",
+            "components/GlobalSearchModal.tsx",
+            "components/admin/AdminConfirmDialog.tsx",
+            "components/citation/CitationModal.tsx",
+            "components/design-system/ConfirmDialog.tsx",
+            "components/fawaid/FaidaImageCardModal.tsx",
+            "components/learning/AssessmentModal.tsx",
+            "components/quran/ReadingBreakDialog.tsx",
+            "components/quran/TafsirModalViewer.tsx",
+            "components/ui/alert-dialog.tsx",
+            "components/ui/dialog.tsx",
+            "views/admin/AdminModal.tsx"
+          ],
+          "authorityHint": "ConfirmDialog"
+        },
+        {
+          "kind": "status",
+          "count": 6,
+          "maintenanceCost": 6,
+          "sample": [
+            "components/design-system/EmptyStateV2.tsx",
+            "components/design-system/ErrorStateV2.tsx",
+            "components/design-system/LoadingStateV2.tsx",
+            "components/design-system/NoResultsState.tsx",
+            "components/design-system/OfflineStateV2.tsx",
+            "components/hadith/HadithEmptyState.tsx"
+          ],
+          "authorityHint": "Feedback V2 (Empty/Loading/Error/Offline)"
+        }
+      ]
+    },
+    "COMPONENT_COMPLIANCE_INDEX": [
+      {
+        "component": "cards",
+        "adoptionPercent": 9,
+        "using": 20,
+        "bypassing": 208,
+        "rating": "NOT_CERTIFIED"
+      },
+      {
+        "component": "buttons",
+        "adoptionPercent": 71,
+        "using": 250,
+        "bypassing": 100,
+        "rating": "PARTIAL"
+      },
+      {
+        "component": "forms",
+        "adoptionPercent": 5,
+        "using": 9,
+        "bypassing": 182,
+        "rating": "NOT_CERTIFIED"
+      },
+      {
+        "component": "tables",
+        "adoptionPercent": 36,
+        "using": 8,
+        "bypassing": 14,
+        "rating": "NOT_CERTIFIED"
+      },
+      {
+        "component": "lists",
+        "adoptionPercent": 10,
+        "using": 8,
+        "bypassing": 74,
+        "rating": "NOT_CERTIFIED"
+      },
+      {
+        "component": "tabs",
+        "adoptionPercent": 3,
+        "using": 2,
+        "bypassing": 72,
+        "rating": "NOT_CERTIFIED"
+      },
+      {
+        "component": "navigation",
+        "adoptionPercent": 94,
+        "using": 15,
+        "bypassing": 1,
+        "rating": "CERTIFIED"
+      },
+      {
+        "component": "modals",
+        "adoptionPercent": 96,
+        "using": 26,
+        "bypassing": 1,
+        "rating": "CERTIFIED"
+      }
+    ]
+  },
+  "COMPONENT_COMPLIANCE_INDEX": [
+    {
+      "component": "cards",
+      "adoptionPercent": 9,
+      "using": 20,
+      "bypassing": 208,
+      "rating": "NOT_CERTIFIED"
+    },
+    {
+      "component": "buttons",
+      "adoptionPercent": 71,
+      "using": 250,
+      "bypassing": 100,
+      "rating": "PARTIAL"
+    },
+    {
+      "component": "forms",
+      "adoptionPercent": 5,
+      "using": 9,
+      "bypassing": 182,
+      "rating": "NOT_CERTIFIED"
+    },
+    {
+      "component": "tables",
+      "adoptionPercent": 36,
+      "using": 8,
+      "bypassing": 14,
+      "rating": "NOT_CERTIFIED"
+    },
+    {
+      "component": "lists",
+      "adoptionPercent": 10,
+      "using": 8,
+      "bypassing": 74,
+      "rating": "NOT_CERTIFIED"
+    },
+    {
+      "component": "tabs",
+      "adoptionPercent": 3,
+      "using": 2,
+      "bypassing": 72,
+      "rating": "NOT_CERTIFIED"
+    },
+    {
+      "component": "navigation",
+      "adoptionPercent": 94,
+      "using": 15,
+      "bypassing": 1,
+      "rating": "CERTIFIED"
+    },
+    {
+      "component": "modals",
+      "adoptionPercent": 96,
+      "using": 26,
+      "bypassing": 1,
+      "rating": "CERTIFIED"
+    }
+  ],
+  "TOKEN_COVERAGE_SCORECARD": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:28:33.995Z",
+    "tokenUsagePct": 60,
+    "hardcodedValuesPct": 40,
+    "legacyCssDensityScore": 100,
+    "authorityCoveragePct": 41,
+    "designTokenPaths": 101,
+    "refs": {
+      "sf": 1063,
+      "mj": 11625,
+      "ss": 758,
+      "hexInCss": 7022,
+      "rgbHslInCss": 2087
+    },
+    "target": "100% token-driven UI (aspiration — not claimed)",
+    "TOKEN_COVERAGE_AUDIT": true
+  },
+  "UI_DUPLICATION_REPORT": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:28:33.995Z",
+    "policy": "One pattern per use case · migrate-when-touched",
+    "clusters": [
+      {
+        "kind": "cards",
+        "count": 41,
+        "maintenanceCost": 41,
+        "sample": [
+          "components/adhan/AudioPromptsSettingsCard.tsx",
+          "components/adhan/PrayerAlertSettingsCard.tsx",
+          "components/adhkar/AdhkarRemindersCard.tsx",
+          "components/admin/review-hub/ContentModerationCard.tsx",
+          "components/admin/review-hub/RecitationReviewCard.tsx",
+          "components/content/ReadingSectionCard.tsx",
+          "components/content/RelatedContentCard.tsx",
+          "components/design-system/AppCard.tsx",
+          "components/design-system/ContentCard.tsx",
+          "components/design-system/FeatureCard.tsx",
+          "components/fawaid/FaidahCard.tsx",
+          "components/fiqh/FiqhIssueCard.tsx",
+          "components/hadith/HadithCard.tsx",
+          "components/hadith/HadithEntryCard.tsx",
+          "components/hadith/HadithListCard.tsx"
+        ],
+        "authorityHint": "AppCard / InteractiveCard"
+      },
+      {
+        "kind": "filters",
+        "count": 15,
+        "maintenanceCost": 15,
+        "sample": [
+          "components/admin/review-hub/ReviewFilterBar.tsx",
+          "components/design-system/FilterSystem.tsx",
+          "components/filters/ActiveFilters.tsx",
+          "components/filters/FilterBar.tsx",
+          "components/filters/FilterChip.tsx",
+          "components/filters/FilterResetButton.tsx",
+          "components/filters/FilterSheet.tsx",
+          "components/filters/SegmentedFilter.tsx",
+          "components/filters/UnifiedFilterBar.tsx",
+          "components/filters/UnifiedPrimaryFilters.tsx",
+          "components/hadith/HadithFilters.tsx",
+          "components/layout/FilterBottomSheet.tsx",
+          "components/lessons/LessonFilters.tsx",
+          "components/rulings/RulingFilters.tsx",
+          "components/ui/FilterChips.tsx"
+        ],
+        "authorityHint": "FILTER_AUTHORITY_MAP"
+      },
+      {
+        "kind": "dialogs",
+        "count": 12,
+        "maintenanceCost": 12,
+        "sample": [
+          "components/ComingSoonDialog.tsx",
+          "components/GlobalSearchModal.tsx",
+          "components/admin/AdminConfirmDialog.tsx",
+          "components/citation/CitationModal.tsx",
+          "components/design-system/ConfirmDialog.tsx",
+          "components/fawaid/FaidaImageCardModal.tsx",
+          "components/learning/AssessmentModal.tsx",
+          "components/quran/ReadingBreakDialog.tsx",
+          "components/quran/TafsirModalViewer.tsx",
+          "components/ui/alert-dialog.tsx",
+          "components/ui/dialog.tsx",
+          "views/admin/AdminModal.tsx"
+        ],
+        "authorityHint": "ConfirmDialog"
+      },
+      {
+        "kind": "status",
+        "count": 6,
+        "maintenanceCost": 6,
+        "sample": [
+          "components/design-system/EmptyStateV2.tsx",
+          "components/design-system/ErrorStateV2.tsx",
+          "components/design-system/LoadingStateV2.tsx",
+          "components/design-system/NoResultsState.tsx",
+          "components/design-system/OfflineStateV2.tsx",
+          "components/hadith/HadithEmptyState.tsx"
+        ],
+        "authorityHint": "Feedback V2 (Empty/Loading/Error/Offline)"
+      },
+      {
+        "kind": "forms",
+        "count": 3,
+        "maintenanceCost": 3,
+        "sample": [
+          "components/design-system/FormFields.tsx",
+          "components/home/HomeExplorePlatform.tsx",
+          "components/ui/form.tsx"
+        ],
+        "authorityHint": "FormLabel · FieldError · SearchInput"
+      },
+      {
+        "kind": "results",
+        "count": 2,
+        "maintenanceCost": 2,
+        "sample": [
+          "components/design-system/NoResultsState.tsx",
+          "components/search/SearchResultCards.tsx"
+        ],
+        "authorityHint": "Search + EmptyStateV2 / NoResultsState"
+      }
+    ],
+    "highestCost": [
+      "cards",
+      "filters",
+      "dialogs"
+    ],
+    "UI_DUPLICATION_ELIMINATION": true
+  },
+  "VISUAL_HEATMAP": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:28:33.995Z",
+    "ranked": [
+      {
+        "area": "styles",
+        "debt": 512,
+        "reasons": [
+          "styles/admin.css",
+          "styles/app-state-v2.css",
+          "styles/brand-v4-components.css",
+          "styles/brand-v4-contrast-fixes.css",
+          "styles/brand-v4.css",
+          "styles/card-system-tokens.css"
+        ]
+      },
+      {
+        "area": "views",
+        "debt": 268,
+        "reasons": [
+          "views/AcademicResearchPage.tsx",
+          "views/AmradQalbiyyaPage.tsx",
+          "views/ArbaeenLovePage.tsx",
+          "views/ArkanImanPage.tsx",
+          "views/ArkanIslamPage.tsx",
+          "views/AsmaaHusnaPage.tsx"
+        ]
+      },
+      {
+        "area": "components",
+        "debt": 133,
+        "reasons": [
+          "components/AdminInlineEdit.tsx",
+          "components/AdminSiteEditBar.tsx",
+          "components/CrossDeviceResumeToast.tsx",
+          "components/FiqhGuidePage.tsx",
+          "components/GlobalSearchModal.tsx",
+          "components/HomeDashboard.tsx"
+        ]
+      },
+      {
+        "area": "features",
+        "debt": 77,
+        "reasons": [
+          "features/mushaf-bookmarks/MushafBookmarkComposer.tsx",
+          "features/mushaf-bookmarks/MushafBookmarkMarkers.tsx",
+          "features/mushaf-bookmarks/MushafPageBookmarkSheet.tsx",
+          "features/mushaf-madinah/AyahActionSheet.tsx",
+          "features/mushaf-madinah/MushafAudioDock.tsx",
+          "features/mushaf-madinah/MushafAyahHighlight.tsx"
+        ]
+      },
+      {
+        "area": "pages",
+        "debt": 45,
+        "reasons": [
+          "pages/account/ui/AccountDeletionView.tsx",
+          "pages/account/ui/FawaidView.tsx",
+          "pages/account/ui/FlashCardsView.tsx",
+          "pages/account/ui/HomeBelowFold.tsx",
+          "pages/account/ui/NotificationSettingsView.tsx",
+          "pages/account/ui/NotificationsAndSoundView.tsx"
+        ]
+      },
+      {
+        "area": "family:cards",
+        "debt": 42,
+        "reasons": [
+          "bypass×208"
+        ]
+      },
+      {
+        "area": "family:forms",
+        "debt": 36,
+        "reasons": [
+          "bypass×182"
+        ]
+      },
+      {
+        "area": "family:buttons",
+        "debt": 20,
+        "reasons": [
+          "bypass×100"
+        ]
+      },
+      {
+        "area": "app",
+        "debt": 15,
+        "reasons": [
+          "app/styles/theme.css"
+        ]
+      },
+      {
+        "area": "family:lists",
+        "debt": 15,
+        "reasons": [
+          "bypass×74"
+        ]
+      },
+      {
+        "area": "family:tabs",
+        "debt": 14,
+        "reasons": [
+          "bypass×72"
+        ]
+      },
+      {
+        "area": "css",
+        "debt": 6,
+        "reasons": [
+          "index.css"
+        ]
+      },
+      {
+        "area": "family:tables",
+        "debt": 3,
+        "reasons": [
+          "bypass×14"
+        ]
+      },
+      {
+        "area": "admin-v3",
+        "debt": 2,
+        "reasons": [
+          "admin-v3/domains/analytics/charts.tsx",
+          "admin-v3/domains/ops/AutomationHubPage.tsx"
+        ]
+      },
+      {
+        "area": "main.tsx",
+        "debt": 2,
+        "reasons": [
+          "main.tsx"
+        ]
+      },
+      {
+        "area": "App.tsx",
+        "debt": 1,
+        "reasons": [
+          "App.tsx"
+        ]
+      },
+      {
+        "area": "family:navigation",
+        "debt": 0,
+        "reasons": [
+          "bypass×1"
+        ]
+      },
+      {
+        "area": "family:modals",
+        "debt": 0,
+        "reasons": [
+          "bypass×1"
+        ]
+      }
+    ],
+    "CONSISTENCY_HEATMAP": true
+  },
+  "CONSISTENCY_PRIORITY_MATRIX": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:28:33.995Z",
+    "byDebt": [
+      {
+        "rank": 1,
+        "area": "styles",
+        "debt": 512,
+        "action": "Migrate-when-touched · prefer authority components + tokens"
+      },
+      {
+        "rank": 2,
+        "area": "views",
+        "debt": 268,
+        "action": "Migrate-when-touched · prefer authority components + tokens"
+      },
+      {
+        "rank": 3,
+        "area": "components",
+        "debt": 133,
+        "action": "Migrate-when-touched · prefer authority components + tokens"
+      },
+      {
+        "rank": 4,
+        "area": "features",
+        "debt": 77,
+        "action": "Migrate-when-touched · prefer authority components + tokens"
+      },
+      {
+        "rank": 5,
+        "area": "pages",
+        "debt": 45,
+        "action": "Migrate-when-touched · prefer authority components + tokens"
+      },
+      {
+        "rank": 6,
+        "area": "family:cards",
+        "debt": 42,
+        "action": "Absorb cards toward authority"
+      },
+      {
+        "rank": 7,
+        "area": "family:forms",
+        "debt": 36,
+        "action": "Absorb forms toward authority"
+      },
+      {
+        "rank": 8,
+        "area": "family:buttons",
+        "debt": 20,
+        "action": "Absorb buttons toward authority"
+      },
+      {
+        "rank": 9,
+        "area": "app",
+        "debt": 15,
+        "action": "Migrate-when-touched · prefer authority components + tokens"
+      },
+      {
+        "rank": 10,
+        "area": "family:lists",
+        "debt": 15,
+        "action": "Absorb lists toward authority"
+      },
+      {
+        "rank": 11,
+        "area": "family:tabs",
+        "debt": 14,
+        "action": "Absorb tabs toward authority"
+      },
+      {
+        "rank": 12,
+        "area": "css",
+        "debt": 6,
+        "action": "Migrate-when-touched · prefer authority components + tokens"
+      },
+      {
+        "rank": 13,
+        "area": "family:tables",
+        "debt": 3,
+        "action": "Absorb tables toward authority"
+      },
+      {
+        "rank": 14,
+        "area": "admin-v3",
+        "debt": 2,
+        "action": "Migrate-when-touched · prefer authority components + tokens"
+      },
+      {
+        "rank": 15,
+        "area": "main.tsx",
+        "debt": 2,
+        "action": "Migrate-when-touched · prefer authority components + tokens"
+      },
+      {
+        "rank": 16,
+        "area": "App.tsx",
+        "debt": 1,
+        "action": "Migrate-when-touched · prefer authority components + tokens"
+      },
+      {
+        "rank": 17,
+        "area": "family:navigation",
+        "debt": 0,
+        "action": "Absorb navigation toward authority"
+      },
+      {
+        "rank": 18,
+        "area": "family:modals",
+        "debt": 0,
+        "action": "Absorb modals toward authority"
+      }
+    ],
+    "byAdoptionGap": [
+      {
+        "rank": 1,
+        "family": "cards",
+        "adoptionPercent": 9,
+        "bypassCount": 208
+      },
+      {
+        "rank": 2,
+        "family": "forms",
+        "adoptionPercent": 5,
+        "bypassCount": 182
+      },
+      {
+        "rank": 3,
+        "family": "buttons",
+        "adoptionPercent": 71,
+        "bypassCount": 100
+      },
+      {
+        "rank": 4,
+        "family": "lists",
+        "adoptionPercent": 10,
+        "bypassCount": 74
+      },
+      {
+        "rank": 5,
+        "family": "tabs",
+        "adoptionPercent": 3,
+        "bypassCount": 72
+      },
+      {
+        "rank": 6,
+        "family": "tables",
+        "adoptionPercent": 36,
+        "bypassCount": 14
+      },
+      {
+        "rank": 7,
+        "family": "navigation",
+        "adoptionPercent": 94,
+        "bypassCount": 1
+      },
+      {
+        "rank": 8,
+        "family": "modals",
+        "adoptionPercent": 96,
+        "bypassCount": 1
+      }
+    ]
+  },
+  "PRODUCT_SURFACE_MAP": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:28:33.995Z",
+    "total": 403,
+    "classCounts": {
+      "Unified": 151,
+      "Partial": 185,
+      "Legacy": 64,
+      "SPECIAL_CASE": 3
+    },
+    "unclassified": 0,
+    "COMPLETE_PRODUCT_SURFACE_INVENTORY": true,
+    "sampleByClass": {
+      "Unified": [
+        "pages/account/QuizPage.tsx",
+        "pages/account/ui/AccountDeletionView.tsx",
+        "pages/account/ui/FawaidView.tsx",
+        "pages/account/ui/FlashCardsView.tsx",
+        "pages/account/ui/HomeBelowFold.tsx",
+        "pages/account/ui/IslamicGlossaryView.tsx",
+        "pages/account/ui/LoginView.tsx",
+        "pages/account/ui/NotificationSettingsView.tsx",
+        "pages/account/ui/OfflineCenterView.tsx",
+        "pages/account/ui/ProgressCenterView.tsx",
+        "pages/account/ui/SearchView.tsx",
+        "pages/account/ui/SettingsView.tsx"
+      ],
+      "Partial": [
+        "pages/account/AccountDeletionPage.tsx",
+        "pages/account/FawaidPage.tsx",
+        "pages/account/FeatureTourPage.tsx",
+        "pages/account/FlashCardsPage.tsx",
+        "pages/account/HomePage.tsx",
+        "pages/account/IslamicGlossaryPage.tsx",
+        "pages/account/LoginPage.tsx",
+        "pages/account/MemorizePage.tsx",
+        "pages/account/MorePage.tsx",
+        "pages/account/NotificationSettingsPage.tsx",
+        "pages/account/NotificationsAndSoundPage.tsx",
+        "pages/account/OfflineCenterPage.tsx"
+      ],
+      "Legacy": [
+        "pages/hifz-path/HifzUnitPracticePanel.tsx",
+        "pages/quran/QuranEnginePage.tsx",
+        "pages/quran/QuranMemorizationPlansPage.tsx",
+        "pages/quran/ui/QuranMemorizationView.tsx",
+        "pages/quran/ui/QuranNumbersView.tsx",
+        "views/SinsAndRightsDetailPage.tsx",
+        "views/admin/AdhkarSection.tsx",
+        "views/admin/AdminShell.tsx",
+        "views/admin/AdminUI.tsx",
+        "views/admin/AggregatorSection.tsx",
+        "views/admin/AnnualCoursesSection.tsx",
+        "views/admin/ArbaeenLoveSection.tsx"
+      ],
+      "SPECIAL_CASE": [
+        "pages/quran/MushafBookmarksPage.tsx",
+        "pages/quran/MushafReaderPage.tsx",
+        "pages/quran/ui/MushafBookmarksView.tsx"
+      ]
+    },
+    "surfaces": [
+      {
+        "path": "pages/account/AccountDeletionPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/FawaidPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/FeatureTourPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/FlashCardsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/HomePage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/IslamicGlossaryPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/LoginPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/MemorizePage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/MorePage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/NotificationSettingsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/NotificationsAndSoundPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/OfflineCenterPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/ProgressCenterPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/QuizPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/account/RegisterPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/SearchPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/SectionsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/SettingsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/SiteMapPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/ui/AccountDeletionView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/account/ui/FawaidView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/account/ui/FlashCardsView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/account/ui/HomeBelowFold.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/account/ui/HomeView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/ui/IslamicGlossaryView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/account/ui/LoginView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/account/ui/NotificationSettingsView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/account/ui/NotificationsAndSoundView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/ui/OfflineCenterView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/account/ui/ProgressCenterView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/account/ui/RegisterView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/ui/SearchView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/account/ui/SettingsView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/account/ui/SiteMapView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/assistant/AssistantGate.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/competitions/CompetitionDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/competitions/CompetitionsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/competitions/ui/CompetitionDetailView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/competitions/ui/CompetitionsHubView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/dev/DesignSystemGalleryPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/fiqh/FatwaPolicyPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/FiqhBookPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/FiqhChapterPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/FiqhLessonPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/FiqhPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/FiqhQawaidPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/FiqhTopicPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/FiqhUsulPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/HajjPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/JanazaPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/MawarithCalculatorPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/MawarithPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/NikahPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/RulingDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/RulingsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/SalahGuidePage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/TalaqPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/ZakatPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/ui/FiqhBookView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/ui/FiqhChapterView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/ui/FiqhLessonView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/fiqh/ui/FiqhQawaidView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/fiqh/ui/FiqhTopicView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/ui/FiqhUsulView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/ui/FiqhView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/fiqh/ui/HajjView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/fiqh/ui/JanazaView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/fiqh/ui/MawarithCalculatorView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/fiqh/ui/MawarithView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/fiqh/ui/RulingDetailView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/fiqh/ui/RulingsView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/fiqh/ui/SalahGuideView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/fiqh/ui/ZakatView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/hadith/ArbaeenHadithDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/hadith/ArbaeenNawawiPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/hadith/HadithBooksAndRulingsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/hadith/HadithBooksPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/hadith/HadithByIdPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/hadith/HadithDaifPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/hadith/HadithMawduPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/hadith/HadithPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/hadith/HadithSahihPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/hadith/HadithSciencePage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/hadith/SunnahStudiesPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/hadith/ui/ArbaeenHadithDetailView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/hadith/ui/ArbaeenNawawiView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/hadith/ui/HadithBooksView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/hadith/ui/HadithByIdView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/hadith/ui/HadithClassGuide.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/hadith/ui/HadithScienceView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/hadith/ui/HadithView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/hifz-path/HifzPathCategoryPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/hifz-path/HifzPathDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/hifz-path/HifzPathMyPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/hifz-path/HifzPathPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/hifz-path/HifzPathRow.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/hifz-path/HifzPathUnitPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/hifz-path/HifzUnitPracticePanel.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "pages/lessons/AnnualCourseDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/lessons/KuwaitLessonsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/lessons/LessonDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/lessons/LessonsArchivePage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/lessons/LessonsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/lessons/MyLearningPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/lessons/OccasionsLessonsHubPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/lessons/TeacherDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/lessons/TeachersIndexPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/lessons/ui/AnnualCourseDetailView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/lessons/ui/KuwaitLessonsView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/lessons/ui/LessonDetailView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/lessons/ui/LessonsView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/lessons/ui/MyLearningView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/library/LibraryDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/library/LibraryPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/library/ReadingPlansPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/library/ScholarlyResearchPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/library/ui/LibraryDetailView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/library/ui/LibraryView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/library/ui/ReadingPlansView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/library/ui/ScholarlyResearchView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/quran/DuasQuranPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/MakkiMadaniPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/quran/MushafBookmarksPage.tsx",
+        "kind": "page/view",
+        "class": "SPECIAL_CASE"
+      },
+      {
+        "path": "pages/quran/MushafReaderPage.tsx",
+        "kind": "page/view",
+        "class": "SPECIAL_CASE"
+      },
+      {
+        "path": "pages/quran/QuranCirclesPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/QuranEnginePage.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "pages/quran/QuranHifzLoopPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/QuranHubPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/QuranKnowledgeHubPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/QuranMemorizationPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/QuranMemorizationPlansPage.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "pages/quran/QuranNumbersPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/QuranOfflinePlayerPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/QuranPeoplePage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/QuranPersonDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/QuranQiraatPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/QuranSearchPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/QuranSevenAhrufPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/QuranTajweedPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/QuranTilawaPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/QuranUlumTermsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/QuranWorshipHubPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/RevelationOrderPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/quran/SurahIndexPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/SurahStoriesPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/TafsirPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/TajweedChapterPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/UlumQuranPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/ui/DuasQuranView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/quran/ui/MushafBookmarksView.tsx",
+        "kind": "page/view",
+        "class": "SPECIAL_CASE"
+      },
+      {
+        "path": "pages/quran/ui/QuranCirclesView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/quran/ui/QuranHifzLoopView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/ui/QuranHubView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/quran/ui/QuranMemorizationView.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "pages/quran/ui/QuranNumbersView.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "pages/quran/ui/QuranPeopleView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/ui/QuranPersonDetailView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/ui/QuranQiraatView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/ui/QuranSearchView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/ui/QuranSevenAhrufView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/ui/QuranTajweedView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/ui/QuranTilawaView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/ui/QuranWorshipHubView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/ui/SurahIndexView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/quran/ui/SurahStoriesView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/quran/ui/TafsirView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/quran/ui/UlumQuranView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/scholars/ScholarProfilePage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/sources/SourceDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/sources/SourcesDirectoryPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/tazkiya/TazkiyaHubPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/worship/AdhanHelpPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/worship/AdhanSettingsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/worship/AdhkarPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/worship/DailyWirdPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/worship/DuasPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/worship/PrayerRanksPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/worship/PrayerTimesPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/worship/QiblaPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/worship/TasbihPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/worship/ui/AdhanHelpView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/worship/ui/AdhanSettingsView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/worship/ui/AdhkarDhikrSheet.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/worship/ui/AdhkarFocusNav.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/worship/ui/AdhkarView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/worship/ui/DailyWirdView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/worship/ui/DuasView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/worship/ui/PrayerRanksView.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/worship/ui/PrayerTimesView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/worship/ui/QiblaView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "pages/worship/ui/TasbihView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/AboutPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/AcademicResearchPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/AdabTalabIlmPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/AdminPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/AkhlaqPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/AlamatSaahPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/AmrBilMarufPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/AmradQalbiyyaPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/ArabicLanguagePage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/ArbaeenLovePage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/ArkanImanPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/ArkanIslamPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/AsmaaHusnaPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/AssistantPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/AuthCallbackPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/AutoContentDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/CalendarPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/CarModePage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/CardsPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/CitationPublicPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/ContactPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/DalailNubuwwahPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/DiscoverIslamArticleDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/DiscoverIslamContactPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/DiscoverIslamDoubtDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/DiscoverIslamDoubtsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/DiscoverIslamPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/DiscoverIslamQuestionDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/DiscoverIslamQuestionsPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/DurusImaniyyaPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/DurusMutanawwiaPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/FadailAamalPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/FamilyModePage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/FikrWaqiaPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/HikamSalafPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/HowToBecomeMuslimPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/ImanTopicsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/InstitutionsPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/IslamStatsPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/IslamicDirectoryHubPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/IslamicLandmarkDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/IslamicLandmarksMapExplorerPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/IslamicLandmarksPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/IslamicSectsDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/IslamicSectsPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/IslamicStoriesPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/JannaNaarPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/JumuahPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/KnowledgeGraphPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/KnowledgeSectionPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/MadhahibDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/MadhahibPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/MalaikaPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/MaqasidShariaPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/MawsuaatPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/MemorizationHubPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/MergedSectionHubPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/MethodologyPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/MindMapPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/MiraclesPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/MosqueModePage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/MutashabihatPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/MyCitationsPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/MySubmissionsPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/NationDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/NationsPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/NewMuslimDayDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/NewMuslimPathPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/OccasionsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/PrivacyCenterPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/PrivacyPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/ProphetStoriesPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/PropheticMedicinePage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/ProphetsFamilyTreePage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/QaPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/RaqaiqPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/ResearchAssistantPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/ResearchDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/ResearchSubmitPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/ResearcherProfilePage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/RibaPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/RuqyaPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/SadaqaPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/SahabahPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/SawmPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/ScientificAnnouncementDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/SeerahPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/ShimaelPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/SinsAndRightsDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/SinsAndRightsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/SourcesLicensesPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/StartHerePage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/StudyRoomPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/SubmitContentPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/SujoodSahwPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/SunanYawmiyyaPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/SupportPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/TaharaPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/TarikhIslamiDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/TarikhIslamiPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/TawbaPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/TawhidPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/TawhidTopicPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/TazkiyaTopicsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/TermsPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/TopicPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/TopicsIndexPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/TranscribePage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/UdhiyaPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/UniversitiesComparePage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/UniversitiesPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/UniversityDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/UpdatePasswordPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/UpdatesPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/UploadPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/UserStatsPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/UsraMujtamaPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/VaultPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/WaqfPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/WasayaNabawiyyaPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/admin/AdhkarSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/AdminDashboardPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/admin/AdminModal.tsx",
+        "kind": "dialog",
+        "class": "Unified"
+      },
+      {
+        "path": "views/admin/AdminSectionToolbar.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/admin/AdminShell.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/AdminUI.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/AggregatorSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/AnnualCoursesSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/ArbaeenLoveSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/AutoContentPage.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/AutomationCenterPage.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/AutomationDashboardPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/admin/AutomationReviewPage.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/AutomationSourcesPage.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/AutonomousAiSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/AutonomousPlatformPage.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/BulkImport.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/CategoriesSection.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/admin/ClientErrorLogsSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/ContentFileImport.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/ContentProductionDashboardPage.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/DashboardSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/DawahSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/FawaidSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/FeatureStatusPage.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/GlobalReferenceSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/GovernanceSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/ImageImportSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/InstagramIntegrationPage.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/InstagramManualAssistPanel.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/IslamicIntelligenceSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/IslamicStoriesSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/KnowledgeEngineSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/KnowledgeReasoningSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/LearningPathsSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/LessonImportImagePage.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/LessonImportShared.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/LessonImportUrlPage.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/LessonsSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/LibrarySection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/MajlisKnowledgeEnginePage.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/MiraclesSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/OpenPlatformSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/Phase2TrialImport.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/ProphetStoriesSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/QaSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/QuizSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/RelationshipsSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/ReligiousCalendarReviewSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/ReportsSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/ResearchesSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/ReviewHubPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/admin/RulingsSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/ScholarlyVerificationSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/SearchAnalyticsSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/SettingsSection.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/admin/SheikhsSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/SmartCmsSection.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/admin/SubmissionsSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/TelegramSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/UniversitiesAdminPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/admin/UpdatesSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/UsersSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/VerifiedKnowledgeSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/WeekDayFactsSection.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/learning-paths/AssessmentManager.tsx",
+        "kind": "page/view",
+        "class": "Legacy"
+      },
+      {
+        "path": "views/admin/learning-paths/LearningPathTreeEditor.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/internal/InternalStatusPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "views/learning/CertificateVerifyPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/learning/LearningPathDetailPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/learning/LearningPathsPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/learning/LearningQuizPage.tsx",
+        "kind": "page/view",
+        "class": "Unified"
+      },
+      {
+        "path": "views/not-found.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "admin-v3/AdminV3Shell.tsx",
+        "kind": "admin",
+        "class": "Unified"
+      },
+      {
+        "path": "admin-v3/domains/analytics/AnalyticsPlatformPage.tsx",
+        "kind": "admin",
+        "class": "Unified"
+      },
+      {
+        "path": "admin-v3/domains/community/RolesPage.tsx",
+        "kind": "admin",
+        "class": "Unified"
+      },
+      {
+        "path": "admin-v3/domains/community/UsersPage.tsx",
+        "kind": "admin",
+        "class": "Unified"
+      },
+      {
+        "path": "admin-v3/domains/content/ContentHubPage.tsx",
+        "kind": "admin",
+        "class": "Unified"
+      },
+      {
+        "path": "admin-v3/domains/content/EntityCrudPage.tsx",
+        "kind": "admin",
+        "class": "Unified"
+      },
+      {
+        "path": "admin-v3/domains/content/RemainingEntityCrudPage.tsx",
+        "kind": "admin",
+        "class": "Unified"
+      },
+      {
+        "path": "admin-v3/domains/ops/AutomationHubPage.tsx",
+        "kind": "admin",
+        "class": "Unified"
+      },
+      {
+        "path": "admin-v3/domains/reviews/ReviewInboxPage.tsx",
+        "kind": "admin",
+        "class": "Unified"
+      },
+      {
+        "path": "admin-v3/domains/taxonomy/TaxonomyPage.tsx",
+        "kind": "admin",
+        "class": "Unified"
+      },
+      {
+        "path": "components/ComingSoonDialog.tsx",
+        "kind": "dialog",
+        "class": "Unified"
+      },
+      {
+        "path": "components/GlobalSearchModal.tsx",
+        "kind": "dialog",
+        "class": "Unified"
+      },
+      {
+        "path": "components/admin/AdminConfirmDialog.tsx",
+        "kind": "dialog",
+        "class": "Partial"
+      },
+      {
+        "path": "components/citation/CitationModal.tsx",
+        "kind": "dialog",
+        "class": "Unified"
+      },
+      {
+        "path": "components/design-system/ConfirmDialog.tsx",
+        "kind": "dialog",
+        "class": "Unified"
+      },
+      {
+        "path": "components/fawaid/FaidaImageCardModal.tsx",
+        "kind": "dialog",
+        "class": "Unified"
+      },
+      {
+        "path": "components/learning/AssessmentModal.tsx",
+        "kind": "dialog",
+        "class": "Unified"
+      },
+      {
+        "path": "components/quran/ReadingBreakDialog.tsx",
+        "kind": "dialog",
+        "class": "Unified"
+      },
+      {
+        "path": "components/quran/TafsirModalViewer.tsx",
+        "kind": "dialog",
+        "class": "Legacy"
+      }
+    ]
+  },
+  "SUNNAH_PRODUCT_CERTIFICATION_REPORT": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:28:33.995Z",
+    "overallScore": 66,
+    "overallRating": "PARTIAL",
+    "dimensions": [
+      {
+        "name": "Design / Consistency",
+        "score": 88,
+        "rating": "CERTIFIED"
+      },
+      {
+        "name": "Components / Authority adoption",
+        "score": 41,
+        "rating": "NOT_CERTIFIED"
+      },
+      {
+        "name": "Tokens",
+        "score": 60,
+        "rating": "PARTIAL"
+      },
+      {
+        "name": "Accessibility (map present)",
+        "score": 85,
+        "rating": "CERTIFIED"
+      },
+      {
+        "name": "Visual identity / language",
+        "score": 85,
+        "rating": "CERTIFIED"
+      },
+      {
+        "name": "Navigation",
+        "score": 94,
+        "rating": "CERTIFIED"
+      },
+      {
+        "name": "Search",
+        "score": 75,
+        "rating": "PARTIAL"
+      },
+      {
+        "name": "Forms",
+        "score": 5,
+        "rating": "NOT_CERTIFIED"
+      },
+      {
+        "name": "Performance debt proxy",
+        "score": 50,
+        "rating": "PARTIAL"
+      },
+      {
+        "name": "Compliance engine",
+        "score": 73,
+        "rating": "PARTIAL"
+      }
+    ],
+    "FINAL_PRODUCT_CERTIFICATION": true,
+    "nonClaims": [
+      "NOT UNIFIED_100",
+      "SPECIAL_CASE Mushaf/Prayer/Admin retained",
+      "Device performance CERTIFIED only with DEVICE_REQUIRED evidence"
+    ]
+  }
+}

@@ -142,7 +142,7 @@ html.dark .jnz-subtitle {
   display: flex;
   flex-direction: column;
   gap: .5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  box-shadow: var(--v2-shadow-soft);
 }
 .jnz-takfin-card__head { display: flex; align-items: center; gap: .65rem; }
 .jnz-takfin-card__icon { font-size: var(--ds-text-2xl); }
@@ -167,7 +167,7 @@ html.dark .jnz-subtitle {
   display: flex;
   align-items: flex-start;
   gap: .6rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  box-shadow: var(--v2-shadow-soft);
 }
 .jnz-rukn-card__num {
   min-width: 1.6rem;
@@ -208,7 +208,7 @@ html.dark .jnz-subtitle {
   display: flex;
   align-items: flex-start;
   gap: .65rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  box-shadow: var(--v2-shadow-soft);
 }
 .jnz-dafn-card__icon { font-size: 1.4rem; flex-shrink: 0; }
 .jnz-dafn-card__title { display: block; font-size: .88rem; font-weight: 700; color: var(--mj-ink); margin-bottom: .2rem; }
@@ -222,7 +222,7 @@ html.dark .jnz-subtitle {
   display: flex;
   align-items: flex-start;
   gap: .75rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  box-shadow: var(--v2-shadow-soft);
 }
 .jnz-adab-card__icon { font-size: var(--ds-text-2xl); flex-shrink: 0; }
 .jnz-adab-card__title { display: block; font-size: .9rem; font-weight: 700; color: var(--mj-ink); margin-bottom: .25rem; }

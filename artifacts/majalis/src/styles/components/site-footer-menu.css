@@ -6,7 +6,7 @@
 .site-footer.site-footer--global {
   margin-block-start: 48px;
   border-block-start: 1px solid color-mix(in srgb, var(--color-border, var(--mj-hairline)) 85%, transparent);
-  background: color-mix(in srgb, var(--color-surface, #fff) 92%, var(--color-primary, var(--mj-brand)) 4%);
+  background: color-mix(in srgb, var(--color-surface, var(--mj-white)) 92%, var(--color-primary, var(--mj-brand)) 4%);
   color: var(--color-text-muted, var(--mj-ink-2));
   /* فراغ فوق الشريط السفلي على الجوال */
   padding-block-end: calc(16px + var(--inset-bottom));
@@ -68,7 +68,7 @@
 .site-footer-link:focus-visible {
   outline: 3px solid color-mix(in srgb, var(--color-accent, var(--mj-accent)) 50%, white);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: var(--radius-xs, 0.25rem);
 }
 
 /* جوال: مجموعات مطوية */

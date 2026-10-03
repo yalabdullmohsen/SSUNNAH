@@ -32,7 +32,7 @@
   min-height: 44px;
   padding: 0.65rem 1rem;
   border: 1px solid color-mix(in srgb, var(--mj-brand) 22%, var(--ss-border, var(--mj-hairline)));
-  border-radius: var(--radius-button, 18px);
+  border-radius: var(--sf-radius-control, 1.125rem);
   color: var(--color-text, var(--mj-ink));
   outline: none;
   direction: rtl;
@@ -60,7 +60,7 @@
   flex: 0 0 auto;
   min-height: 44px;
   padding: 0.35rem 0.85rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   font-size: 0.82rem;
   font-weight: 650;
   cursor: pointer;
@@ -73,7 +73,7 @@
 
 .akl-cat--active {
   background: var(--mj-brand-deep, #12362c);
-  color: var(--on-dark-strong, var(--mj-white, #ffffff));
+  color: var(--on-dark-strong, var(--mj-white, var(--mj-white)));
   border-color: var(--mj-brand-deep, #12362c);
 }
 
@@ -105,7 +105,7 @@ html.dark .akl-cat--active,
 .akl-card {
   background: var(--ss-card-bg, var(--mj-surface));
   border: 1px solid color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, var(--mj-hairline)));
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   overflow: hidden;
   box-shadow: var(--ss-shadow-soft, 0 2px 10px -6px rgba(11, 32, 24, 0.14));
   transition: border-color 0.15s, box-shadow 0.15s;
@@ -141,7 +141,7 @@ html.dark .akl-cat--active,
   place-items: center;
   width: 2.6rem;
   height: 2.6rem;
-    border-radius: var(--radius-button, 18px);
+    border-radius: var(--sf-radius-control, 1.125rem);
   flex-shrink: 0;
   background: color-mix(in srgb, var(--mj-brand) 12%, var(--ss-card-bg));
   color: var(--brand-on-light, var(--mj-brand-deep));
@@ -193,7 +193,7 @@ html.dark .akl-cat--active,
 
 .akl-block {
   background: color-mix(in srgb, var(--mj-brand) 6%, var(--ss-card-bg));
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   padding: 0.85rem 1rem;
 }
 
@@ -294,7 +294,7 @@ html.dark .akl-cat--active,
   gap: 0.2rem;
   padding: 0.85rem 1rem;
   border: 1px solid color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border));
-    border-radius: var(--radius-card, 24px);
+    border-radius: var(--radius-card, 1.5rem);
   text-decoration: none;
   background: var(--ss-card-bg, var(--mj-surface));
   box-shadow: var(--ss-shadow-soft, 0 2px 8px -6px rgba(11, 32, 24, 0.12));

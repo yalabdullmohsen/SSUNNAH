@@ -40,13 +40,13 @@
   /* soft via shell */
 }
 .ai-hero__nav-btn:hover {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 14%, transparent) !important;
-  border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 28%, transparent) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, transparent) !important;
+  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 28%, transparent) !important;
 }
 .ai-hero__nav-btn--active {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 16%, #fffef9) !important;
-  border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 35%, transparent) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--mj-brand, #1f6b56) 18%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 16%, #fffef9) !important;
+  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 35%, transparent) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, transparent);
 }
 .ai-hero__nav-icon { font-size: 1.4rem; line-height: 1; }
 .ai-hero__nav-label { font-size: 0.72rem; font-weight: 700; /* soft ink */ }
@@ -58,7 +58,7 @@
 .ai-card {
   background: var(--ss-card-bg, var(--mj-surface));
   border: 1.5px solid color-mix(in srgb, var(--mj-brand) 18%, var(--mj-brand-soft, #e2efe8));
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   overflow: hidden;
   box-shadow: var(--ss-shadow-soft, 0 1px 6px rgba(31,77,58,0.06));
   transition: box-shadow 0.18s, border-color 0.18s;
@@ -128,7 +128,7 @@
 .ai-detail {
   background: var(--mj-surface-2, var(--color-surface-soft, var(--mj-bg)));
   border: 1px solid color-mix(in srgb, var(--mj-brand) 16%, var(--mj-brand-soft, #e2efe8));
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   padding: 0.75rem 1rem;
 }
 .ai-detail__label { font-size: 0.8rem; font-weight: 800; color: var(--mj-brand); margin-bottom: 0.3rem; }
@@ -139,14 +139,14 @@
   background: linear-gradient(135deg, var(--mj-brand), var(--mj-brand-deep));
   border-radius: 0.85rem;
   padding: 1rem 1.1rem;
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   display: flex;
   gap: 0.6rem;
   align-items: flex-start;
 }
 .ai-scholar__star { flex-shrink: 0; margin-top: 0.2rem; color: rgba(255,255,255,0.7); }
 .ai-scholar blockquote { margin: 0; padding: 0; border: none; }
-.ai-scholar blockquote p { font-size: 0.88rem; color: var(--mj-white, #ffffff); font-style: normal; line-height: 1.65; margin: 0 0 0.3rem; }
+.ai-scholar blockquote p { font-size: 0.88rem; color: var(--mj-white, var(--mj-white)); font-style: normal; line-height: 1.65; margin: 0 0 0.3rem; }
 .ai-scholar blockquote footer { font-size: 0.78rem; color: rgba(255,255,255,0.75); font-weight: 700; }
 
 /* صفحات ذات صلة */
@@ -157,7 +157,7 @@
   display: block;
   padding: 0.6rem 0.85rem;
   border: 1.5px solid color-mix(in srgb, var(--mj-brand) 18%, var(--mj-brand-soft, #e2efe8));
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   text-decoration: none;
   font-size: 0.83rem;
   font-weight: 600;

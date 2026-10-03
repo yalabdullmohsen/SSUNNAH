@@ -21,6 +21,7 @@
   --ds-text-md: var(--text-body-lg);
   --ds-text-lg: var(--text-h3);
   --ds-text-xl: var(--text-h2);
+  --ds-text-2xl: var(--text-h1);
 }
 
 body {

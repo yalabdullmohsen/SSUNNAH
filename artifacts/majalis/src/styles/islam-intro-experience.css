@@ -50,7 +50,7 @@ html[data-v2-app="1"] .topic-page--tawhid .twh-hub-card,
   color: var(--ii-ink) !important;
   border: 1px solid var(--ii-border) !important;
   box-shadow: none !important;
-  border-radius: var(--radius-card, 18px) !important;
+  border-radius: var(--radius-card, 1.125rem) !important;
   padding: var(--ii-pad) !important;
   min-height: 0 !important;
   max-width: none !important;
@@ -205,7 +205,7 @@ html[data-v2-app="1"] .dii-page .hub-card__go,
 .dii-block,
 .dii-contact-cta {
   padding: 0.9rem 1rem !important;
-  border-radius: 16px !important;
+  border-radius: var(--radius-lg, 1rem) !important;
 }
 
 .dii-evidence-list {
@@ -312,7 +312,7 @@ html[data-v2-app="1"] .dii-page .hub-card__go,
 
 .gl-page .gl-term {
   border: 1px solid var(--ii-border) !important;
-  border-radius: 16px !important;
+  border-radius: var(--radius-lg, 1rem) !important;
   box-shadow: none !important;
   background: var(--ii-surface) !important;
 }
@@ -512,7 +512,7 @@ html[data-v2-app="1"] .dii-page .hub-card__go,
 .rsc--quote,
 [data-kx-kind="evidence"] {
   padding: 0.55rem 0.75rem !important;
-  border-radius: 12px !important;
+  border-radius: var(--radius-md, 0.75rem) !important;
   margin: 0 !important;
 }
 

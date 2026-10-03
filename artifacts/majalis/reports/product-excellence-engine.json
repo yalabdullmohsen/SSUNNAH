@@ -1,0 +1,1443 @@
+{
+  "updatedAt": "2026-10-03T04:31:53.186Z",
+  "PRODUCT_COHESION_SCORE": 57,
+  "PRODUCT_COHESION_REPORT": {
+    "score": 57,
+    "experiences": [
+      {
+        "id": "Mushaf",
+        "special": true,
+        "fileCount": 50,
+        "scores": {
+          "visual": 46,
+          "interaction": 46,
+          "navigation": 50,
+          "hierarchy": 50
+        },
+        "cohesion": 48
+      },
+      {
+        "id": "Library",
+        "special": false,
+        "fileCount": 8,
+        "scores": {
+          "visual": 51,
+          "interaction": 56,
+          "navigation": 53,
+          "hierarchy": 53
+        },
+        "cohesion": 53
+      },
+      {
+        "id": "Home",
+        "special": false,
+        "fileCount": 36,
+        "scores": {
+          "visual": 51,
+          "interaction": 53,
+          "navigation": 63,
+          "hierarchy": 50
+        },
+        "cohesion": 54
+      },
+      {
+        "id": "Quran Hub",
+        "special": false,
+        "fileCount": 2,
+        "scores": {
+          "visual": 60,
+          "interaction": 50,
+          "navigation": 50,
+          "hierarchy": 60
+        },
+        "cohesion": 55
+      },
+      {
+        "id": "Hadith",
+        "special": false,
+        "fileCount": 18,
+        "scores": {
+          "visual": 54,
+          "interaction": 58,
+          "navigation": 57,
+          "hierarchy": 52
+        },
+        "cohesion": 55
+      },
+      {
+        "id": "Lessons",
+        "special": false,
+        "fileCount": 14,
+        "scores": {
+          "visual": 54,
+          "interaction": 54,
+          "navigation": 60,
+          "hierarchy": 55
+        },
+        "cohesion": 56
+      },
+      {
+        "id": "Fiqh",
+        "special": false,
+        "fileCount": 33,
+        "scores": {
+          "visual": 58,
+          "interaction": 57,
+          "navigation": 55,
+          "hierarchy": 52
+        },
+        "cohesion": 56
+      },
+      {
+        "id": "Prayer",
+        "special": true,
+        "fileCount": 13,
+        "scores": {
+          "visual": 59,
+          "interaction": 63,
+          "navigation": 56,
+          "hierarchy": 50
+        },
+        "cohesion": 57
+      },
+      {
+        "id": "Settings",
+        "special": false,
+        "fileCount": 4,
+        "scores": {
+          "visual": 58,
+          "interaction": 69,
+          "navigation": 65,
+          "hierarchy": 55
+        },
+        "cohesion": 62
+      },
+      {
+        "id": "Admin",
+        "special": false,
+        "fileCount": 20,
+        "scores": {
+          "visual": 58,
+          "interaction": 68,
+          "navigation": 63,
+          "hierarchy": 51
+        },
+        "cohesion": 67
+      },
+      {
+        "id": "Search",
+        "special": false,
+        "fileCount": 3,
+        "scores": {
+          "visual": 65,
+          "interaction": 67,
+          "navigation": 63,
+          "hierarchy": 57
+        },
+        "cohesion": 68
+      }
+    ],
+    "mostFragmented": [
+      "Mushaf",
+      "Library",
+      "Home",
+      "Quran Hub",
+      "Hadith"
+    ],
+    "PRODUCT_COHESION_AUDIT": true
+  },
+  "TOKEN_MIGRATION_QUEUE": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:31:53.186Z",
+    "TOKEN_ENFORCEMENT_MIGRATION": true,
+    "totalFilesWithViolations": 365,
+    "top": [
+      {
+        "path": "features/mushaf-madinah/mushaf-madinah.css",
+        "impact": 457,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 389
+          },
+          {
+            "kind": "spacing",
+            "count": 4
+          },
+          {
+            "kind": "shadow",
+            "count": 31
+          },
+          {
+            "kind": "radii",
+            "count": 30
+          },
+          {
+            "kind": "typography",
+            "count": 3
+          }
+        ]
+      },
+      {
+        "path": "styles/quran.css",
+        "impact": 370,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 336
+          },
+          {
+            "kind": "spacing",
+            "count": 2
+          },
+          {
+            "kind": "shadow",
+            "count": 25
+          },
+          {
+            "kind": "radii",
+            "count": 6
+          },
+          {
+            "kind": "typography",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "path": "styles/admin.css",
+        "impact": 262,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 248
+          },
+          {
+            "kind": "shadow",
+            "count": 13
+          },
+          {
+            "kind": "radii",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "path": "styles/pages/prophet-stories.css",
+        "impact": 218,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 126
+          },
+          {
+            "kind": "spacing",
+            "count": 2
+          },
+          {
+            "kind": "shadow",
+            "count": 26
+          },
+          {
+            "kind": "radii",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "path": "styles/pages/lessons.css",
+        "impact": 200,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 131
+          },
+          {
+            "kind": "spacing",
+            "count": 1
+          },
+          {
+            "kind": "shadow",
+            "count": 11
+          }
+        ]
+      },
+      {
+        "path": "styles/pages/hadith-design-language.css",
+        "impact": 197,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 130
+          },
+          {
+            "kind": "shadow",
+            "count": 1
+          },
+          {
+            "kind": "radii",
+            "count": 10
+          }
+        ]
+      },
+      {
+        "path": "styles/pages/hadith.css",
+        "impact": 190,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 119
+          },
+          {
+            "kind": "shadow",
+            "count": 12
+          },
+          {
+            "kind": "radii",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "path": "styles/pages/fiqh-hub.css",
+        "impact": 174,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 102
+          },
+          {
+            "kind": "spacing",
+            "count": 1
+          },
+          {
+            "kind": "shadow",
+            "count": 18
+          },
+          {
+            "kind": "radii",
+            "count": 3
+          }
+        ]
+      },
+      {
+        "path": "styles/dark-mode-surfaces.css",
+        "impact": 149,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 137
+          },
+          {
+            "kind": "shadow",
+            "count": 11
+          },
+          {
+            "kind": "radii",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "path": "styles/dark-mode-recovery.css",
+        "impact": 144,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 126
+          },
+          {
+            "kind": "shadow",
+            "count": 17
+          },
+          {
+            "kind": "radii",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "path": "styles/design-system.css",
+        "impact": 132,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 107
+          },
+          {
+            "kind": "shadow",
+            "count": 23
+          },
+          {
+            "kind": "radii",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "path": "features/mushaf-reader/mushaf-reader.css",
+        "impact": 126,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 107
+          },
+          {
+            "kind": "shadow",
+            "count": 18
+          },
+          {
+            "kind": "typography",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "path": "index.css",
+        "impact": 115,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 107
+          },
+          {
+            "kind": "shadow",
+            "count": 6
+          },
+          {
+            "kind": "radii",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "path": "styles/reader-page-chrome.css",
+        "impact": 98,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 79
+          },
+          {
+            "kind": "shadow",
+            "count": 12
+          },
+          {
+            "kind": "radii",
+            "count": 7
+          }
+        ]
+      },
+      {
+        "path": "styles/index-deferred-pages.css",
+        "impact": 97,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 59
+          },
+          {
+            "kind": "shadow",
+            "count": 37
+          },
+          {
+            "kind": "radii",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "path": "styles/premium-dark-refine.css",
+        "impact": 92,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 53
+          },
+          {
+            "kind": "shadow",
+            "count": 39
+          }
+        ]
+      },
+      {
+        "path": "styles/interaction-states.css",
+        "impact": 91,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 86
+          },
+          {
+            "kind": "shadow",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "path": "styles/pages/search.css",
+        "impact": 90,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 59
+          },
+          {
+            "kind": "shadow",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "path": "styles/islamic-landmarks.css",
+        "impact": 89,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 86
+          },
+          {
+            "kind": "shadow",
+            "count": 1
+          },
+          {
+            "kind": "radii",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "path": "styles/pages/app-shell-v2.css",
+        "impact": 87,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 50
+          },
+          {
+            "kind": "shadow",
+            "count": 12
+          }
+        ]
+      },
+      {
+        "path": "styles/pages/arbaeen-nawawi.css",
+        "impact": 80,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 51
+          },
+          {
+            "kind": "shadow",
+            "count": 4
+          },
+          {
+            "kind": "radii",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "path": "styles/knowledge-experience.css",
+        "impact": 74,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 52
+          },
+          {
+            "kind": "shadow",
+            "count": 16
+          },
+          {
+            "kind": "radii",
+            "count": 6
+          }
+        ]
+      },
+      {
+        "path": "styles/brand-v4.css",
+        "impact": 71,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 71
+          }
+        ]
+      },
+      {
+        "path": "styles/green-surface-system.css",
+        "impact": 71,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 68
+          },
+          {
+            "kind": "shadow",
+            "count": 3
+          }
+        ]
+      },
+      {
+        "path": "styles/pages/adhan-settings.css",
+        "impact": 70,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 39
+          },
+          {
+            "kind": "shadow",
+            "count": 4
+          },
+          {
+            "kind": "radii",
+            "count": 7
+          }
+        ]
+      },
+      {
+        "path": "styles/pages/prayer-times.css",
+        "impact": 69,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 36
+          },
+          {
+            "kind": "shadow",
+            "count": 11
+          },
+          {
+            "kind": "radii",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "path": "styles/modern-ui-refresh.css",
+        "impact": 67,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 44
+          },
+          {
+            "kind": "shadow",
+            "count": 23
+          }
+        ]
+      },
+      {
+        "path": "styles/pages/quran-numbers.css",
+        "impact": 67,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 15
+          },
+          {
+            "kind": "spacing",
+            "count": 18
+          },
+          {
+            "kind": "typography",
+            "count": 15
+          }
+        ]
+      },
+      {
+        "path": "styles/visual-enrichment.css",
+        "impact": 65,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 57
+          },
+          {
+            "kind": "shadow",
+            "count": 7
+          },
+          {
+            "kind": "radii",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "path": "styles/visual-refresh-v1.css",
+        "impact": 65,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 47
+          },
+          {
+            "kind": "shadow",
+            "count": 18
+          }
+        ]
+      },
+      {
+        "path": "styles/components/assistant-chat.css",
+        "impact": 63,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 58
+          },
+          {
+            "kind": "shadow",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "path": "styles/quran-memorization.css",
+        "impact": 62,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 58
+          },
+          {
+            "kind": "shadow",
+            "count": 1
+          },
+          {
+            "kind": "radii",
+            "count": 3
+          }
+        ]
+      },
+      {
+        "path": "components/lobby/section-lobby.css",
+        "impact": 61,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 26
+          },
+          {
+            "kind": "spacing",
+            "count": 22
+          },
+          {
+            "kind": "shadow",
+            "count": 1
+          },
+          {
+            "kind": "radii",
+            "count": 2
+          },
+          {
+            "kind": "typography",
+            "count": 10
+          }
+        ]
+      },
+      {
+        "path": "styles/ssunnah-ux-polish.css",
+        "impact": 61,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 47
+          },
+          {
+            "kind": "spacing",
+            "count": 3
+          },
+          {
+            "kind": "shadow",
+            "count": 11
+          }
+        ]
+      },
+      {
+        "path": "styles/components/modern-section-shell.css",
+        "impact": 60,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 50
+          },
+          {
+            "kind": "shadow",
+            "count": 10
+          }
+        ]
+      },
+      {
+        "path": "styles/pages/flashcards.css",
+        "impact": 57,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 17
+          },
+          {
+            "kind": "spacing",
+            "count": 14
+          },
+          {
+            "kind": "typography",
+            "count": 10
+          }
+        ]
+      },
+      {
+        "path": "styles/components/hub-card.css",
+        "impact": 56,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 48
+          },
+          {
+            "kind": "shadow",
+            "count": 8
+          }
+        ]
+      },
+      {
+        "path": "styles/islam-intro-experience.css",
+        "impact": 56,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 38
+          },
+          {
+            "kind": "shadow",
+            "count": 10
+          },
+          {
+            "kind": "radii",
+            "count": 8
+          }
+        ]
+      },
+      {
+        "path": "styles/pages/islamic-sects.css",
+        "impact": 56,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 38
+          },
+          {
+            "kind": "shadow",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "path": "styles/components/home-universal-search.css",
+        "impact": 55,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 32
+          },
+          {
+            "kind": "shadow",
+            "count": 5
+          },
+          {
+            "kind": "radii",
+            "count": 2
+          }
+        ]
+      }
+    ],
+    "byKindTotals": {
+      "color": 6549,
+      "spacing": 177,
+      "shadow": 1005,
+      "radii": 204,
+      "typography": 94
+    },
+    "policy": "Highest-impact first · map to DESIGN_TOKENS_AUTHORITY · no new family"
+  },
+  "COMPONENT_RATIONALIZATION_REPORT": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:31:53.186Z",
+    "COMPONENT_USAGE_RATIONALIZATION": true,
+    "groups": [
+      {
+        "purpose": "cards",
+        "authority": "AppCard / InteractiveCard / StatusCard",
+        "variantsInUse": 5,
+        "usage": [
+          {
+            "name": "AppCard",
+            "hits": 110
+          },
+          {
+            "name": "InteractiveCard",
+            "hits": 21
+          },
+          {
+            "name": "StatusCard",
+            "hits": 11
+          },
+          {
+            "name": "SoftCard",
+            "hits": 0
+          },
+          {
+            "name": "ContentCard",
+            "hits": 8
+          },
+          {
+            "name": "HubCard",
+            "hits": 30
+          }
+        ],
+        "overlapping": true,
+        "consolidationCandidate": true
+      },
+      {
+        "purpose": "buttons",
+        "authority": "Button (+ façades)",
+        "variantsInUse": 5,
+        "usage": [
+          {
+            "name": "Button",
+            "hits": 2087
+          },
+          {
+            "name": "ActionButton",
+            "hits": 30
+          },
+          {
+            "name": "PrimaryButton",
+            "hits": 4
+          },
+          {
+            "name": "SecondaryButton",
+            "hits": 4
+          },
+          {
+            "name": "IconButton",
+            "hits": 190
+          }
+        ],
+        "overlapping": true,
+        "consolidationCandidate": true
+      },
+      {
+        "purpose": "dialogs",
+        "authority": "ConfirmDialog",
+        "variantsInUse": 4,
+        "usage": [
+          {
+            "name": "ConfirmDialog",
+            "hits": 1
+          },
+          {
+            "name": "AdminConfirmDialog",
+            "hits": 34
+          },
+          {
+            "name": "Dialog",
+            "hits": 7
+          },
+          {
+            "name": "AlertDialog",
+            "hits": 6
+          }
+        ],
+        "overlapping": true,
+        "consolidationCandidate": true
+      },
+      {
+        "purpose": "badges/chips",
+        "authority": "design-system Badge/Chip (consolidate)",
+        "variantsInUse": 3,
+        "usage": [
+          {
+            "name": "Badge",
+            "hits": 11
+          },
+          {
+            "name": "Chip",
+            "hits": 8
+          },
+          {
+            "name": "FilterChip",
+            "hits": 7
+          }
+        ],
+        "overlapping": true,
+        "consolidationCandidate": true
+      },
+      {
+        "purpose": "status",
+        "authority": "Feedback V2",
+        "variantsInUse": 3,
+        "usage": [
+          {
+            "name": "EmptyStateV2",
+            "hits": 51
+          },
+          {
+            "name": "LoadingStateV2",
+            "hits": 14
+          },
+          {
+            "name": "ErrorStateV2",
+            "hits": 19
+          }
+        ],
+        "overlapping": true,
+        "consolidationCandidate": true
+      },
+      {
+        "purpose": "tabs",
+        "authority": "ContentTabs",
+        "variantsInUse": 2,
+        "usage": [
+          {
+            "name": "ContentTabs",
+            "hits": 8
+          },
+          {
+            "name": "TabSystem",
+            "hits": 2
+          }
+        ],
+        "overlapping": false,
+        "consolidationCandidate": false
+      },
+      {
+        "purpose": "search",
+        "authority": "SearchInput",
+        "variantsInUse": 2,
+        "usage": [
+          {
+            "name": "SearchInput",
+            "hits": 18
+          },
+          {
+            "name": "SearchField",
+            "hits": 5
+          }
+        ],
+        "overlapping": false,
+        "consolidationCandidate": true
+      },
+      {
+        "purpose": "lists",
+        "authority": "NavigationList / ListRow",
+        "variantsInUse": 2,
+        "usage": [
+          {
+            "name": "NavigationList",
+            "hits": 8
+          },
+          {
+            "name": "ListRow",
+            "hits": 2
+          }
+        ],
+        "overlapping": false,
+        "consolidationCandidate": false
+      },
+      {
+        "purpose": "tables",
+        "authority": "DataTable / ss-data-table",
+        "variantsInUse": 0,
+        "usage": [
+          {
+            "name": "DataTable",
+            "hits": 0
+          }
+        ],
+        "overlapping": false,
+        "consolidationCandidate": false
+      }
+    ],
+    "duplicationFromCompliance": [
+      {
+        "kind": "cards",
+        "count": 41,
+        "maintenanceCost": 41,
+        "sample": [
+          "components/adhan/AudioPromptsSettingsCard.tsx",
+          "components/adhan/PrayerAlertSettingsCard.tsx",
+          "components/adhkar/AdhkarRemindersCard.tsx",
+          "components/admin/review-hub/ContentModerationCard.tsx",
+          "components/admin/review-hub/RecitationReviewCard.tsx",
+          "components/content/ReadingSectionCard.tsx",
+          "components/content/RelatedContentCard.tsx",
+          "components/design-system/AppCard.tsx",
+          "components/design-system/ContentCard.tsx",
+          "components/design-system/FeatureCard.tsx",
+          "components/fawaid/FaidahCard.tsx",
+          "components/fiqh/FiqhIssueCard.tsx",
+          "components/hadith/HadithCard.tsx",
+          "components/hadith/HadithEntryCard.tsx",
+          "components/hadith/HadithListCard.tsx"
+        ],
+        "authorityHint": "AppCard / InteractiveCard"
+      },
+      {
+        "kind": "filters",
+        "count": 15,
+        "maintenanceCost": 15,
+        "sample": [
+          "components/admin/review-hub/ReviewFilterBar.tsx",
+          "components/design-system/FilterSystem.tsx",
+          "components/filters/ActiveFilters.tsx",
+          "components/filters/FilterBar.tsx",
+          "components/filters/FilterChip.tsx",
+          "components/filters/FilterResetButton.tsx",
+          "components/filters/FilterSheet.tsx",
+          "components/filters/SegmentedFilter.tsx",
+          "components/filters/UnifiedFilterBar.tsx",
+          "components/filters/UnifiedPrimaryFilters.tsx",
+          "components/hadith/HadithFilters.tsx",
+          "components/layout/FilterBottomSheet.tsx",
+          "components/lessons/LessonFilters.tsx",
+          "components/rulings/RulingFilters.tsx",
+          "components/ui/FilterChips.tsx"
+        ],
+        "authorityHint": "FILTER_AUTHORITY_MAP"
+      },
+      {
+        "kind": "dialogs",
+        "count": 12,
+        "maintenanceCost": 12,
+        "sample": [
+          "components/ComingSoonDialog.tsx",
+          "components/GlobalSearchModal.tsx",
+          "components/admin/AdminConfirmDialog.tsx",
+          "components/citation/CitationModal.tsx",
+          "components/design-system/ConfirmDialog.tsx",
+          "components/fawaid/FaidaImageCardModal.tsx",
+          "components/learning/AssessmentModal.tsx",
+          "components/quran/ReadingBreakDialog.tsx",
+          "components/quran/TafsirModalViewer.tsx",
+          "components/ui/alert-dialog.tsx",
+          "components/ui/dialog.tsx",
+          "views/admin/AdminModal.tsx"
+        ],
+        "authorityHint": "ConfirmDialog"
+      },
+      {
+        "kind": "status",
+        "count": 6,
+        "maintenanceCost": 6,
+        "sample": [
+          "components/design-system/EmptyStateV2.tsx",
+          "components/design-system/ErrorStateV2.tsx",
+          "components/design-system/LoadingStateV2.tsx",
+          "components/design-system/NoResultsState.tsx",
+          "components/design-system/OfflineStateV2.tsx",
+          "components/hadith/HadithEmptyState.tsx"
+        ],
+        "authorityHint": "Feedback V2 (Empty/Loading/Error/Offline)"
+      },
+      {
+        "kind": "forms",
+        "count": 3,
+        "maintenanceCost": 3,
+        "sample": [
+          "components/design-system/FormFields.tsx",
+          "components/home/HomeExplorePlatform.tsx",
+          "components/ui/form.tsx"
+        ],
+        "authorityHint": "FormLabel · FieldError · SearchInput"
+      },
+      {
+        "kind": "results",
+        "count": 2,
+        "maintenanceCost": 2,
+        "sample": [
+          "components/design-system/NoResultsState.tsx",
+          "components/search/SearchResultCards.tsx"
+        ],
+        "authorityHint": "Search + EmptyStateV2 / NoResultsState"
+      }
+    ],
+    "target": "One component authority per purpose"
+  },
+  "JOURNEY_LENGTH_REPORT": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:31:53.186Z",
+    "NAVIGATION_JOURNEY_COMPRESSION": true,
+    "bottomNavTabs": [
+      "/",
+      "/lessons",
+      "/quran-hub",
+      "/prayer-times",
+      "/sections",
+      "/mushaf"
+    ],
+    "journeys": [
+      {
+        "id": "Home → Mushaf",
+        "currentClicks": 2,
+        "path": [
+          "BottomNav→/quran-hub",
+          "Hub→/mushaf"
+        ],
+        "shortestValid": 1,
+        "recommendation": "Keep hub CTA «افتح المصحف» above fold; optional long-press mushaf prefetch"
+      },
+      {
+        "id": "Home → Prayer",
+        "currentClicks": 1,
+        "path": [
+          "HomeCompactPrayer→/prayer-times OR BottomNav→/prayer-times"
+        ],
+        "shortestValid": 1,
+        "recommendation": "Preserve single-tap BottomNav + home strip link"
+      },
+      {
+        "id": "Home → Search",
+        "currentClicks": 2,
+        "path": [
+          "Home/Sections→Search entry",
+          "SearchView"
+        ],
+        "shortestValid": 1,
+        "recommendation": "Promote search affordance on Home header (1 tap)"
+      },
+      {
+        "id": "Home → Continue Lesson",
+        "currentClicks": 1,
+        "path": [
+          "HomeContinueLearning→lesson"
+        ],
+        "shortestValid": 1,
+        "recommendation": "Keep single CTA on HomeContinueLearning; dedupe HomeContinueWidget if both render"
+      }
+    ],
+    "note": "Static click estimates — DEVICE_REQUIRED for wall-clock validation"
+  },
+  "POLISH_BACKLOG": {
+    "version": 1,
+    "updatedAt": "2026-10-03T04:31:53.186Z",
+    "PRODUCT_POLISH_PASS": true,
+    "total": 277,
+    "quickWins": [
+      {
+        "path": "components/QuranActionBar.tsx",
+        "issue": "truncation without title tooltip",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/reading/TextHighlightCapture.tsx",
+        "issue": "truncation without title tooltip",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/alert-dialog.tsx",
+        "issue": "physical text align — prefer logical start/end",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/command.tsx",
+        "issue": "opacity-only disabled cue",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/dialog.tsx",
+        "issue": "opacity-only disabled cue",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/dialog.tsx",
+        "issue": "physical text align — prefer logical start/end",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/drawer.tsx",
+        "issue": "physical text align — prefer logical start/end",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/field.tsx",
+        "issue": "opacity-only disabled cue",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/input-group.tsx",
+        "issue": "opacity-only disabled cue",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/input.tsx",
+        "issue": "opacity-only disabled cue",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/menubar.tsx",
+        "issue": "opacity-only disabled cue",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/navigation-menu.tsx",
+        "issue": "opacity-only disabled cue",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/select.tsx",
+        "issue": "opacity-only disabled cue",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/sheet.tsx",
+        "issue": "opacity-only disabled cue",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/sidebar.tsx",
+        "issue": "truncation without title tooltip",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/sidebar.tsx",
+        "issue": "opacity-only disabled cue",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/table.tsx",
+        "issue": "physical text align — prefer logical start/end",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/textarea.tsx",
+        "issue": "opacity-only disabled cue",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "components/ui/toggle.tsx",
+        "issue": "opacity-only disabled cue",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "features/mushaf-madinah/MushafSearchSheet.tsx",
+        "issue": "truncation without title tooltip",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "pages/hadith/ui/HadithByIdView.tsx",
+        "issue": "truncation without title tooltip",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "pages/hadith/ui/HadithScienceView.tsx",
+        "issue": "truncation without title tooltip",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "pages/lessons/ui/MyLearningView.tsx",
+        "issue": "truncation without title tooltip",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "pages/library/ui/ScholarlyResearchView.tsx",
+        "issue": "opacity-only disabled cue",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "pages/quran/ui/QuranSearchView.tsx",
+        "issue": "truncation without title tooltip",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "pages/worship/ui/AdhkarView.tsx",
+        "issue": "truncation without title tooltip",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "views/AsmaaHusnaPage.tsx",
+        "issue": "truncation without title tooltip",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "views/CitationPublicPage.tsx",
+        "issue": "truncation without title tooltip",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "views/HikamSalafPage.tsx",
+        "issue": "truncation without title tooltip",
+        "severity": "medium",
+        "effort": "S"
+      },
+      {
+        "path": "views/ProphetsFamilyTreePage.tsx",
+        "issue": "truncation without title tooltip",
+        "severity": "medium",
+        "effort": "S"
+      }
+    ],
+    "byIssue": [
+      {
+        "issue": "icon size literal — prefer size.icon.* tokens",
+        "count": 226
+      },
+      {
+        "issue": "opacity-only disabled cue",
+        "count": 14
+      },
+      {
+        "issue": "truncation without title tooltip",
+        "count": 13
+      },
+      {
+        "issue": "inline spacing — prefer tokens",
+        "count": 10
+      },
+      {
+        "issue": "ad-hoc motion class — check MOTION_AUTHORITY",
+        "count": 10
+      },
+      {
+        "issue": "physical text align — prefer logical start/end",
+        "count": 4
+      }
+    ]
+  },
+  "related": {
+    "consistencyScore": 88,
+    "authorityAdoption": 41,
+    "designCompliance": 73,
+    "hexInCss": 7022
+  }
+}

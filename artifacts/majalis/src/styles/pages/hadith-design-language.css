@@ -2,7 +2,7 @@
 
 :root {
   --hdl-matn: var(--mj-ink, #14241c);
-  --hdl-matn-bg: color-mix(in srgb, var(--mj-brand, #1f4d3a) 6%, var(--surface-elevated, #fff));
+  --hdl-matn-bg: color-mix(in srgb, var(--mj-brand, #1f4d3a) 6%, var(--surface-elevated, var(--mj-white)));
   --hdl-matn-border: color-mix(in srgb, var(--mj-brand, #1f4d3a) 28%, transparent);
   --hdl-narrator: color-mix(in srgb, var(--mj-brand, #1f4d3a) 72%, #0a1a12);
   --hdl-source: var(--text-secondary, #3d5348);
@@ -24,7 +24,7 @@
   --hdl-matn: var(--text-primary, #e8f0eb);
   --hdl-matn-bg: color-mix(in srgb, var(--surface-elevated, #24302b) 92%, #1a2420);
   --hdl-matn-border: color-mix(in srgb, var(--mj-brand-soft, #6faf8e) 35%, transparent);
-  --hdl-narrator: color-mix(in srgb, var(--mj-brand-soft, #8fcdb0) 70%, #fff);
+  --hdl-narrator: color-mix(in srgb, var(--mj-brand-soft, #8fcdb0) 70%, var(--mj-white));
   --hdl-source: var(--text-secondary, #b7c7be);
   --hdl-takhrij: #e6d59a;
   --hdl-takhrij-bg: color-mix(in srgb, #c9a227 18%, transparent);
@@ -44,7 +44,7 @@
   font-size: var(--hdl-matn-size);
   line-height: var(--hdl-matn-lh);
   padding: 1rem 1.1rem;
-  border-radius: var(--radius-card, 16px);
+  border-radius: var(--radius-card, 1rem);
   margin: 0;
   font-weight: 500;
 }
@@ -53,21 +53,21 @@
 .hdl-role--takhrij {
   color: var(--hdl-takhrij);
   background: var(--hdl-takhrij-bg);
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   padding: 0.35rem 0.65rem;
   display: inline-block;
 }
 .hdl-role--sharh {
   color: var(--hdl-sharh);
   background: var(--hdl-sharh-bg);
-  border-radius: var(--radius-card, 16px);
+  border-radius: var(--radius-card, 1rem);
   padding: 0.85rem 1rem;
   line-height: 1.75;
 }
 .hdl-role--fawaid {
   color: var(--hdl-fawaid);
   background: var(--hdl-fawaid-bg);
-  border-radius: var(--radius-card, 16px);
+  border-radius: var(--radius-card, 1rem);
   padding: 0.85rem 1rem;
   line-height: 1.7;
 }
@@ -94,7 +94,7 @@
   flex-direction: column;
   gap: var(--hdl-card-gap);
   padding: 1rem 1.05rem 0.85rem;
-  background: var(--surface-elevated, #fff);
+  background: var(--surface-elevated, var(--mj-white));
   border: 1px solid color-mix(in srgb, var(--mj-brand, #1f4d3a) 14%, transparent);
 }
 :is(html[data-theme="dark"], html.dark, html.theme-dark) .hadith-card.hdl-card {
@@ -195,8 +195,8 @@
   display: grid;
   gap: 0.55rem;
   padding: 0.9rem 1rem;
-  border-radius: var(--radius-card, 16px);
-  background: var(--surface-elevated, #fff);
+  border-radius: var(--radius-card, 1rem);
+  background: var(--surface-elevated, var(--mj-white));
   border: 1px solid color-mix(in srgb, var(--mj-brand, #1f4d3a) 14%, transparent);
 }
 :is(html[data-theme="dark"], html.dark, html.theme-dark) .hdl-source-block {
@@ -230,8 +230,8 @@
 }
 .hdl-reader-section {
   padding: 1rem 1.05rem;
-  border-radius: var(--radius-card, 16px);
-  background: var(--surface-elevated, #fff);
+  border-radius: var(--radius-card, 1rem);
+  background: var(--surface-elevated, var(--mj-white));
   border: 1px solid color-mix(in srgb, var(--mj-brand, #1f4d3a) 12%, transparent);
 }
 :is(html[data-theme="dark"], html.dark, html.theme-dark) .hdl-reader-section {
@@ -276,8 +276,8 @@
 
 /* FAQ accordion */
 .hdl-faq {
-  border-radius: var(--radius-card, 16px);
-  background: var(--surface-elevated, #fff);
+  border-radius: var(--radius-card, 1rem);
+  background: var(--surface-elevated, var(--mj-white));
   border: 1px solid color-mix(in srgb, var(--mj-brand, #1f4d3a) 12%, transparent);
   padding: 0.35rem 0.85rem 0.55rem;
 }
@@ -312,12 +312,12 @@
   gap: 0.55rem;
   padding: 1.15rem 1.15rem 1.05rem;
   margin-bottom: 0.85rem;
-  border-radius: var(--radius-card, 18px);
+  border-radius: var(--radius-card, 1.125rem);
   background:
     linear-gradient(
       160deg,
       color-mix(in srgb, var(--mj-brand, #1f4d3a) 14%, var(--surface-secondary, #f4f7f5)),
-      var(--surface-elevated, #fff) 55%
+      var(--surface-elevated, var(--mj-white)) 55%
     );
   border: 1px solid color-mix(in srgb, var(--mj-brand, #1f4d3a) 16%, transparent);
 }
@@ -379,7 +379,7 @@
   padding: 0.4rem 0.75rem;
   border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--mj-brand, #1f4d3a) 18%, transparent);
-  background: var(--surface-interactive, var(--surface-elevated, #fff));
+  background: var(--surface-interactive, var(--surface-elevated, var(--mj-white)));
   color: var(--text-primary, #14241c);
   cursor: pointer;
 }
@@ -399,7 +399,7 @@
   padding: 0.4rem 0.75rem;
   border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--mj-brand, #1f4d3a) 16%, transparent);
-  background: var(--surface-elevated, #fff);
+  background: var(--surface-elevated, var(--mj-white));
   color: var(--text-secondary, #3d5348);
   cursor: pointer;
 }
@@ -430,8 +430,8 @@
   gap: 0.75rem;
   align-items: center;
   padding: 1rem 1.05rem;
-  border-radius: var(--radius-card, 16px);
-  background: var(--surface-elevated, #fff);
+  border-radius: var(--radius-card, 1rem);
+  background: var(--surface-elevated, var(--mj-white));
   border: 1px solid color-mix(in srgb, var(--mj-brand, #1f4d3a) 12%, transparent);
   text-decoration: none;
   color: inherit;
@@ -479,9 +479,9 @@
 
 /* Arbaeen HDL row as card */
 .an-row.hdl-hadith-row {
-  background: var(--surface-elevated, #fff);
+  background: var(--surface-elevated, var(--mj-white));
   border: 1px solid color-mix(in srgb, var(--mj-brand, #1f4d3a) 12%, transparent);
-  border-radius: var(--radius-card, 16px);
+  border-radius: var(--radius-card, 1rem);
   margin-bottom: 0.65rem;
   overflow: hidden;
 }
@@ -617,7 +617,7 @@
 .hdl-chip.is-active,
 .hdl-discover__book.is-active {
   color: var(--mj-brand-deep, #0f2f22) !important;
-  background: color-mix(in srgb, var(--mj-brand, #1f4d3a) 18%, #fff) !important;
+  background: color-mix(in srgb, var(--mj-brand, #1f4d3a) 18%, var(--mj-white)) !important;
   border-color: color-mix(in srgb, var(--mj-brand, #1f4d3a) 42%, transparent) !important;
 }
 :is(html[data-theme="dark"], html.dark, html.theme-dark) .hdl-chip,
@@ -697,7 +697,7 @@
   padding: 0.25rem 0.7rem 0.45rem;
   border-radius: 14px;
   border-color: color-mix(in srgb, var(--mj-brand, #1f4d3a) 14%, transparent);
-  background: color-mix(in srgb, var(--surface-elevated, #fff) 97%, var(--mj-brand, #1f4d3a) 3%);
+  background: color-mix(in srgb, var(--surface-elevated, var(--mj-white)) 97%, var(--mj-brand, #1f4d3a) 3%);
 }
 .hdl-faq__title {
   margin: 0.45rem 0 0.15rem;

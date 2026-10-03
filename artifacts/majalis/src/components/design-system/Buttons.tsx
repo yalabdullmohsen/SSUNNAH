@@ -1,6 +1,7 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, ComponentProps, ReactNode } from "react";
 import { ActionButton, type ActionButtonProps } from "./ActionButton";
-import { Button } from "@/components/ui/button";
+import { Button, type ButtonProps } from "@/components/ui/button";
+import { Toggle } from "@/components/ui/toggle";
 import { cn } from "@/lib/utils";
 
 /** زر أساسي — يمر عبر ActionButton → Button الرسمي. */
@@ -11,6 +12,19 @@ export function PrimaryButton(props: ActionButtonProps) {
 /** زر ثانوي — سطح + حد. */
 export function SecondaryButton(props: ActionButtonProps) {
   return <ActionButton {...props} variant="secondary" />;
+}
+
+/** مظهر رابط لأفعال داخل الصفحة — ليس تنقّلًا (التنقّل = Link/Wouter). */
+export function LinkButton({
+  variant: _v,
+  ...props
+}: Omit<ButtonProps, "variant"> & { variant?: never }) {
+  return <Button {...props} variant="link" />;
+}
+
+/** حالة ثنائية مضغوطة — واجهة رقيقة فوق Toggle الرسمي. */
+export function ToggleButton(props: ComponentProps<typeof Toggle>) {
+  return <Toggle {...props} />;
 }
 
 type IconButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {

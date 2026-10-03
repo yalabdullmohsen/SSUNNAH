@@ -7,8 +7,8 @@
   gap: 0.75rem 1rem;
   padding: 0.85rem 1rem;
   border-radius: var(--radius-xl, 1rem);
-  background: color-mix(in srgb, var(--mj-brand, #0f5c45) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #0f5c45) 18%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, transparent);
   color: var(--mj-fg, #1a1a1a);
 }
 
@@ -39,8 +39,8 @@
   min-height: 2.5rem;
   padding: 0.45rem 0.95rem;
   border-radius: var(--radius-lg, 0.75rem);
-  background: var(--mj-brand, #0f5c45);
-  color: #fff;
+  background: var(--mj-brand, var(--mj-brand));
+  color: var(--mj-white);
   font-weight: 600;
   font-size: 0.9rem;
   text-decoration: none;
@@ -51,7 +51,7 @@
 }
 
 .ios-app-cta__action:focus-visible {
-  outline: 2px solid var(--mj-brand, #0f5c45);
+  outline: 2px solid var(--mj-brand, var(--mj-brand));
   outline-offset: 2px;
 }
 

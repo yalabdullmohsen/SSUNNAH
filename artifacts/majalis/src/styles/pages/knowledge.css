@@ -13,7 +13,7 @@
 .knowledge-article {
   font-size: calc(1rem * var(--knowledge-font-scale, 1));
   padding: 1rem 1.1rem;
-  border-radius: var(--svl-radius-md, var(--radius-card, 24px));
+  border-radius: var(--svl-radius-md, var(--radius-card, 1.5rem));
   color: var(--svl-text-primary, var(--mj-ink, #12201a));
   background: var(--svl-surface-primary, var(--mj-surface, #fffcf6));
   border: 1px solid var(--svl-border-subtle, var(--mj-hairline, #d9d3c8));
@@ -26,7 +26,7 @@
 }
 
 .knowledge-article a {
-  color: var(--svl-accent-primary-deep, var(--mj-brand-deep, #0a3d2e));
+  color: var(--svl-accent-primary-deep, var(--mj-brand-deep, var(--mj-brand-deep)));
   text-decoration-thickness: from-font;
 }
 
@@ -58,7 +58,7 @@
   gap: 0.75rem;
   min-height: 44px;
   padding: 0.75rem 1rem;
-  border-radius: var(--svl-radius-sm, var(--radius-card, 16px));
+  border-radius: var(--svl-radius-sm, var(--radius-card, 1rem));
   text-decoration: none;
   color: var(--svl-text-primary, var(--mj-ink, #12201a));
   background: var(--svl-surface-primary, var(--mj-surface, #fffcf6));

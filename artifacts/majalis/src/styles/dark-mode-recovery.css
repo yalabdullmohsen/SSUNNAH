@@ -482,9 +482,9 @@ html[data-theme="dark"] .m2030-btn--ghost,
 html[data-theme="dark"] .page-hero-mj__actions .mj-btn--ghost,
 html.dark .m2030-btn--ghost,
 html.dark .page-hero-mj__actions .mj-btn--ghost {
-  background: color-mix(in srgb, #fff 8%, transparent) !important;
+  background: color-mix(in srgb, var(--mj-white) 8%, transparent) !important;
   color: var(--dm-text-on-feature) !important;
-  border: 1px solid color-mix(in srgb, #fff 22%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--mj-white) 22%, transparent) !important;
 }
 
 /* ═══ Start-here / New visitor card ═══ */
@@ -688,8 +688,8 @@ html.dark .home-progress-compact__meta {
 .home-start-here--slim {
   padding: 0.85rem 1rem;
   border-radius: 14px;
-  background: #fff;
-  border: 1px solid color-mix(in srgb, #0f5c3f 12%, #e8ebe9);
+  background: var(--mj-white);
+  border: 1px solid color-mix(in srgb, var(--sf-color-deep-emerald) 12%, #e8ebe9);
 }
 .home-start-here--slim .hsh-lead {
   margin: 0.25rem 0 0;
@@ -706,7 +706,7 @@ html.dark .home-progress-compact__meta {
 }
 .home-start-here--compact {
   padding: 1rem 1rem 0.75rem;
-  border-radius: 16px;
+  border-radius: var(--radius-lg, 1rem);
 }
 .home-start-here--compact .hsh-actions {
   display: flex;
@@ -721,7 +721,7 @@ html.dark .home-progress-compact__meta {
   justify-content: center;
   min-height: 2.5rem;
   padding: 0.45rem 0.95rem;
-  border-radius: 12px;
+  border-radius: var(--radius-md, 0.75rem);
   font-weight: 700;
   text-decoration: none;
 }
