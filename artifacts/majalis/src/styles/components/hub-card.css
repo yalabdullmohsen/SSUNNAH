@@ -112,12 +112,12 @@
   gap: 0.45rem;
   min-height: var(--sec-entry-min-h);
   padding: var(--sec-entry-pad);
-  background: var(--cs-ink-topic, #0f3d2e);
-  border: 1px solid var(--cs-ink-border, color-mix(in srgb, #d4b45c 28%, #0f3d2e));
+  background: var(--cs-ink-topic);
+  border: 1px solid var(--cs-ink-border, color-mix(in srgb, var(--mj-accent) 28%, var(--mj-brand-deep)));
   border-radius: var(--surface-feature-radius, var(--radius-card, 1.5rem));
   box-shadow: var(--cs-ink-shadow, var(--ss-shadow-soft, 0 2px 10px -6px rgba(11, 32, 24, 0.12)));
   text-decoration: none;
-  color: var(--cs-on-ink, #f7f1e4);
+  color: var(--cs-on-ink);
   min-width: 0;
   overflow: hidden;
   margin-inline: auto;
@@ -140,7 +140,7 @@ button.hub-card {
 }
 
 .hub-card:hover {
-  border-color: color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 48%, var(--ss-soft-gold, var(--mj-accent, #b8963f)) 12%);
+  border-color: color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 48%, var(--ss-soft-gold, var(--mj-accent)) 12%);
   box-shadow: var(--ss-shadow, 0 8px 20px -10px rgba(11, 32, 24, 0.18));
   text-decoration: none;
 }
@@ -157,7 +157,7 @@ button.hub-card {
 
 .hub-card--soft {
   background: var(--surface-knowledge, color-mix(in srgb, var(--ss-card-bg, var(--mj-surface, var(--mj-white))) 97%, var(--mj-brand-soft) 3%));
-  border-color: var(--surface-knowledge-border, color-mix(in srgb, var(--mj-hairline, #e3e8e6) 88%, var(--mj-brand) 12%));
+  border-color: var(--surface-knowledge-border, color-mix(in srgb, var(--mj-hairline) 88%, var(--mj-brand) 12%));
 }
 
 .hub-card--compact {
@@ -232,7 +232,7 @@ button.hub-card {
   flex-shrink: 0;
   border-radius: var(--sf-radius-sm);
   background: var(--cs-on-ink-icon-bg, color-mix(in srgb, var(--mj-white) 14%, transparent));
-  color: var(--cs-on-ink-icon, #f7f1e4);
+  color: var(--cs-on-ink-icon);
   font-size: 1.15rem;
 }
 
@@ -262,7 +262,7 @@ button.hub-card {
   font-size: var(--type-card-desc, var(--mj-fs-small));
   font-weight: 500;
   line-height: 1.6;
-  color: var(--cs-on-ink-body, #e4ddd0);
+  color: var(--cs-on-ink-body);
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -299,7 +299,7 @@ button.hub-card {
   font-family: var(--mj-num);
   font-size: var(--mj-fs-tiny, 0.75rem);
   font-weight: 650;
-  color: var(--cs-on-ink-meta, #c9c0ae);
+  color: var(--cs-on-ink-meta);
 }
 
 .hub-card__chip,
@@ -309,7 +309,7 @@ button.hub-card {
   padding: 0.18rem 0.55rem;
   border-radius: var(--sf-radius-pill);
   background: var(--cs-on-ink-icon-bg, color-mix(in srgb, var(--mj-white) 14%, transparent));
-  color: var(--cs-gold-ink, #f0e2b0);
+  color: var(--cs-gold-ink);
   border: none;
   font-family: var(--mj-ui);
   font-size: var(--mj-fs-tiny);
@@ -322,7 +322,7 @@ button.hub-card {
   font-family: var(--mj-ui);
   font-size: var(--mj-fs-tiny);
   font-weight: 700;
-  color: var(--cs-on-ink-meta, #c9c0ae);
+  color: var(--cs-on-ink-meta);
 }
 
 .hub-card__go {
@@ -335,7 +335,7 @@ button.hub-card {
   border-radius: 0;
   border: none;
   background: transparent;
-  color: var(--cs-on-ink-meta, #c9c0ae);
+  color: var(--cs-on-ink-meta);
   opacity: 0.92;
   pointer-events: none;
   transition: opacity 0.14s ease, color 0.14s ease;
@@ -343,7 +343,7 @@ button.hub-card {
 
 .hub-card:hover .hub-card__go {
   opacity: 1;
-  color: var(--cs-gold-ink, #f0e2b0);
+  color: var(--cs-gold-ink);
   background: transparent;
   border-color: transparent;
 }
@@ -371,7 +371,7 @@ button.hub-card {
 }
 
 .hub-card--featured:not(.hub-card--compact) {
-  border-color: color-mix(in srgb, var(--mj-accent, #b8963f) 42%, var(--mj-brand) 28%);
+  border-color: color-mix(in srgb, var(--mj-accent) 42%, var(--mj-brand) 28%);
   background: color-mix(in srgb, var(--mj-brand-soft) 55%, var(--mj-surface, var(--mj-white)));
 }
 
@@ -389,21 +389,21 @@ html.dark .hub-card {
   background:
     linear-gradient(
       165deg,
-      color-mix(in srgb, #0f3d2e 18%, var(--mj-surface, #1a221f)) 0%,
-      color-mix(in srgb, var(--mj-surface, #1a221f) 96%, #0f3d2e 4%) 55%
+      color-mix(in srgb, var(--mj-brand-deep) 18%, var(--mj-surface)) 0%,
+      color-mix(in srgb, var(--mj-surface) 96%, var(--mj-brand-deep) 4%) 55%
     );
-  border-color: color-mix(in srgb, var(--mj-brand, #5cc095) 28%, var(--mj-hairline, #2a3531));
+  border-color: color-mix(in srgb, var(--mj-brand) 28%, var(--mj-hairline));
   box-shadow: 0 2px 12px -6px rgba(0, 0, 0, 0.45);
 }
 
 html[data-theme="dark"] .hub-card:hover,
 html.dark .hub-card:hover {
-  border-color: color-mix(in srgb, var(--mj-brand, #5cc095) 55%, var(--mj-accent, #c4a24a) 15%);
+  border-color: color-mix(in srgb, var(--mj-brand) 55%, var(--mj-accent) 15%);
 }
 
 /*
- * CI #7500: لا تستخدم --text-primary/--mj-ink هنا إن أشارت لحبر غني فاتح (var(--sf-color-rich-ink))
- * على سطح ليلي مرتفع (#24302B) — ثبّت حبر الليل صراحة (AA).
+ * CI 7500: لا تستخدم --text-primary/--mj-ink هنا إن أشارت لحبر غني فاتح (var(--sf-color-rich-ink))
+ * على سطح ليلي مرتفع (var(--sf-color-luxury-night-elevated)) — ثبّت حبر الليل صراحة (AA).
  */
 html[data-theme="dark"] .hub-card .hub-card__title,
 html.dark .hub-card .hub-card__title,
@@ -411,7 +411,7 @@ html[data-theme="dark"] .hub-card .ss-text--card-title,
 html.dark .hub-card .ss-text--card-title,
 html[data-theme="dark"] .hub-card .cs2-nav__title,
 html.dark .hub-card .cs2-nav__title {
-  color: var(--sf2-text-primary, var(--sf-color-luxury-night-ink, #edf5f0));
+  color: var(--sf2-text-primary, var(--sf-color-luxury-night-ink));
 }
 
 html[data-theme="dark"] .hub-card .hub-card__desc,
@@ -420,7 +420,7 @@ html[data-theme="dark"] .hub-card .ss-text--supporting,
 html.dark .hub-card .ss-text--supporting,
 html[data-theme="dark"] .hub-card .cs2-nav__desc,
 html.dark .hub-card .cs2-nav__desc {
-  color: var(--mj-ink-2, #c2cfca);
+  color: var(--mj-ink-2);
   opacity: 1;
 }
 
@@ -428,34 +428,34 @@ html[data-theme="dark"] .hub-card .hub-card__meta,
 html.dark .hub-card .hub-card__meta,
 html[data-theme="dark"] .hub-card .cs2-nav__meta,
 html.dark .hub-card .cs2-nav__meta {
-  color: color-mix(in srgb, var(--mj-brand, #5cc095) 70%, #edf5f0);
+  color: color-mix(in srgb, var(--mj-brand) 70%, var(--sf-color-luxury-night-ink));
 }
 
 html[data-theme="dark"] .hub-card__icon,
 html.dark .hub-card__icon {
-  background: color-mix(in srgb, var(--mj-brand, #5cc095) 16%, transparent);
-  color: var(--mj-brand, #5cc095);
+  background: color-mix(in srgb, var(--mj-brand) 16%, transparent);
+  color: var(--mj-brand);
 }
 
 html[data-theme="dark"] .hub-card__go,
 html.dark .hub-card__go {
   background: transparent;
   border-color: transparent;
-  color: color-mix(in srgb, var(--mj-brand, #5cc095) 85%, #ecf2ef);
+  color: color-mix(in srgb, var(--mj-brand) 85%, var(--sf-color-luxury-night-ink));
 }
 
 html[data-theme="dark"] .hub-card--soft,
 html.dark .hub-card--soft {
-  background: color-mix(in srgb, var(--mj-surface, #1a221f) 96%, #0f3d2e 4%);
+  background: color-mix(in srgb, var(--mj-surface) 96%, var(--mj-brand-deep) 4%);
 }
 
 html[data-theme="dark"] .hub-card__chip,
 html.dark .hub-card__chip,
 html[data-theme="dark"] .hub-card .mj-badge,
 html.dark .hub-card .mj-badge {
-  background: color-mix(in srgb, var(--mj-brand, #5cc095) 14%, transparent);
-  color: color-mix(in srgb, var(--mj-brand, #5cc095) 85%, var(--mj-white));
-  border-color: color-mix(in srgb, var(--mj-brand, #5cc095) 28%, transparent);
+  background: color-mix(in srgb, var(--mj-brand) 14%, transparent);
+  color: color-mix(in srgb, var(--mj-brand) 85%, var(--mj-white));
+  border-color: color-mix(in srgb, var(--mj-brand) 28%, transparent);
 }
 
 /* إبطال الكتل الداكنة الفارغة للبطاقات القديمة */
@@ -473,12 +473,12 @@ html.dark .hub-card .mj-badge {
   flex-direction: column !important;
   gap: var(--mj-s3) !important;
   padding: var(--mj-s4) !important;
-  background: var(--cs-ink-topic, #0f3d2e) !important;
-  border: 1px solid var(--cs-ink-border, color-mix(in srgb, #d4b45c 28%, #0f3d2e)) !important;
+  background: var(--cs-ink-topic) !important;
+  border: 1px solid var(--cs-ink-border, color-mix(in srgb, var(--mj-accent) 28%, var(--mj-brand-deep))) !important;
   border-radius: var(--radius-card, 1.5rem) !important;
   box-shadow: var(--cs-ink-shadow, none) !important;
   overflow: visible !important;
-  color: var(--cs-on-ink, #f7f1e4) !important;
+  color: var(--cs-on-ink) !important;
 }
 
 .quran-hub-card:hover {
@@ -505,7 +505,7 @@ html.dark .hub-card .mj-badge {
   font-family: var(--mj-ui) !important;
   font-size: var(--mj-fs-small) !important;
   line-height: var(--mj-lh-small) !important;
-  color: var(--cs-on-ink-body, #e4ddd0) !important;
+  color: var(--cs-on-ink-body) !important;
 }
 
 .quran-hub-card__link {
@@ -528,13 +528,13 @@ html.dark .hub-card .mj-badge {
 
 .fqh-hub-card,
 .twh-hub-card {
-  background: var(--cs-ink-topic, #0f3d2e) !important;
-  border: 1px solid var(--cs-ink-border, color-mix(in srgb, #d4b45c 28%, #0f3d2e)) !important;
+  background: var(--cs-ink-topic) !important;
+  border: 1px solid var(--cs-ink-border, color-mix(in srgb, var(--mj-accent) 28%, var(--mj-brand-deep))) !important;
   border-radius: var(--radius-card, 1.5rem) !important;
   padding: var(--mj-s4) !important;
   box-shadow: var(--cs-ink-shadow, 0 2px 10px -6px rgba(11, 32, 24, 0.14)) !important;
   min-height: 0 !important;
-  color: var(--cs-on-ink, #f7f1e4) !important;
+  color: var(--cs-on-ink) !important;
 }
 
 .fqh-hub-card:hover,
@@ -555,7 +555,7 @@ html.dark .hub-card .mj-badge {
   font-family: var(--font-body-ui, var(--mj-ui)) !important;
   font-size: var(--type-card-desc, var(--mj-fs-small)) !important;
   line-height: var(--mj-lh-small) !important;
-  color: var(--cs-on-ink-body, #e4ddd0) !important;
+  color: var(--cs-on-ink-body) !important;
 }
 
 .fqh-hub-card__emoji,
@@ -567,7 +567,7 @@ html.dark .hub-card .mj-badge {
   justify-content: center;
   border-radius: var(--sf-radius-control) !important;
   background: var(--cs-on-ink-icon-bg, color-mix(in srgb, var(--mj-white) 14%, transparent)) !important;
-  color: var(--cs-on-ink-icon, #f7f1e4) !important;
+  color: var(--cs-on-ink-icon) !important;
 }
 
 .page-action-btn,

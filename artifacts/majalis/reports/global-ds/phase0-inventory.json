@@ -1,0 +1,582 @@
+{
+  "phase": "GLOBAL_APP_DESIGN_SYSTEM_UNIFICATION",
+  "non_hadith_css_files": 349,
+  "systems": {
+    "HERO": {
+      "css_files": 127,
+      "pattern_hits": 2265,
+      "hex_in_matching_files": 3348,
+      "rgb_in_matching_files": 1222,
+      "important_in_matching_files": 3205,
+      "sample_files": [
+        "src/app/styles/theme.css",
+        "src/components/lobby/section-lobby.css",
+        "src/index.css",
+        "src/styles/a11y-release-gate.css",
+        "src/styles/card-decorative-strip-cleanup.css",
+        "src/styles/card-system-tokens.css",
+        "src/styles/card-system.css",
+        "src/styles/components/compact-sources.css",
+        "src/styles/components/content-reading-shell.css",
+        "src/styles/components/home-brand-title.css",
+        "src/styles/components/ipad-responsive-layout.css",
+        "src/styles/components/modern-section-shell.css"
+      ]
+    },
+    "CARD": {
+      "css_files": 210,
+      "pattern_hits": 6216,
+      "hex_in_matching_files": 4994,
+      "rgb_in_matching_files": 1569,
+      "important_in_matching_files": 3996,
+      "sample_files": [
+        "src/app/styles/theme.css",
+        "src/components/lobby/section-lobby.css",
+        "src/components/sections/section-cards.css",
+        "src/features/mushaf-madinah/mushaf-madinah.css",
+        "src/features/mushaf-madinah/quran-sheet/quran-sheet.css",
+        "src/index.css",
+        "src/pages/competitions/ui/competitions.css",
+        "src/styles/a11y-release-gate.css",
+        "src/styles/admin.css",
+        "src/styles/brand-v4-components.css",
+        "src/styles/brand-v4-contrast-fixes.css",
+        "src/styles/capacitor-native-ux.css"
+      ]
+    },
+    "LIST": {
+      "css_files": 102,
+      "pattern_hits": 366,
+      "hex_in_matching_files": 2628,
+      "rgb_in_matching_files": 1113,
+      "important_in_matching_files": 2468,
+      "sample_files": [
+        "src/index.css",
+        "src/styles/admin.css",
+        "src/styles/card-decorative-strip-cleanup.css",
+        "src/styles/components/audio-library-selection.css",
+        "src/styles/components/bulk-download-card.css",
+        "src/styles/components/compact-sources.css",
+        "src/styles/components/content-actions-rag.css",
+        "src/styles/components/global-search-modal.css",
+        "src/styles/components/home/home-widget-chrome.css",
+        "src/styles/components/ipad-responsive-layout.css",
+        "src/styles/components/islamic-quiz-game.css",
+        "src/styles/components/knowledge-summary-card.css"
+      ]
+    },
+    "FORM": {
+      "css_files": 72,
+      "pattern_hits": 345,
+      "hex_in_matching_files": 2355,
+      "rgb_in_matching_files": 775,
+      "important_in_matching_files": 1712,
+      "sample_files": [
+        "src/features/mushaf-madinah/mushaf-madinah.css",
+        "src/features/mushaf-madinah/quran-sheet/quran-sheet.css",
+        "src/features/mushaf-reader/mushaf-reader.css",
+        "src/styles/admin.css",
+        "src/styles/brand-v4-components.css",
+        "src/styles/capacitor-native-ux.css",
+        "src/styles/components/audio-library-selection.css",
+        "src/styles/components/content-actions-rag.css",
+        "src/styles/components/global-search-modal.css",
+        "src/styles/components/home-universal-search.css",
+        "src/styles/components/islamic-quiz-game.css",
+        "src/styles/components/more-bottom-sheet.css"
+      ]
+    },
+    "BUTTON": {
+      "css_files": 141,
+      "pattern_hits": 1431,
+      "hex_in_matching_files": 4078,
+      "rgb_in_matching_files": 1398,
+      "important_in_matching_files": 3769,
+      "sample_files": [
+        "src/app/styles/theme.css",
+        "src/features/mushaf-madinah/mushaf-madinah.css",
+        "src/features/mushaf-madinah/quran-sheet/quran-sheet.css",
+        "src/index.css",
+        "src/pages/competitions/ui/competitions.css",
+        "src/styles/admin.css",
+        "src/styles/brand-v4-components.css",
+        "src/styles/brand-v4-contrast-fixes.css",
+        "src/styles/breakpoints.css",
+        "src/styles/capacitor-native-ux.css",
+        "src/styles/card-system.css",
+        "src/styles/components/adhan-notification.css"
+      ]
+    },
+    "NAV": {
+      "css_files": 41,
+      "pattern_hits": 486,
+      "hex_in_matching_files": 1374,
+      "rgb_in_matching_files": 352,
+      "important_in_matching_files": 1839,
+      "sample_files": [
+        "src/app/styles/theme.css",
+        "src/styles/brand-v4-components.css",
+        "src/styles/breakpoints.css",
+        "src/styles/capacitor-native-ux.css",
+        "src/styles/components/app-bottom-sheet.css",
+        "src/styles/components/app-chrome-scroll.css",
+        "src/styles/components/instant-interaction.css",
+        "src/styles/components/mobile-pwa.css",
+        "src/styles/components/native-feel.css",
+        "src/styles/components/sidebar-redesign.css",
+        "src/styles/components/top-chrome-layout.css",
+        "src/styles/critical-first-paint.css"
+      ]
+    },
+    "TAB": {
+      "css_files": 73,
+      "pattern_hits": 590,
+      "hex_in_matching_files": 2457,
+      "rgb_in_matching_files": 844,
+      "important_in_matching_files": 2256,
+      "sample_files": [
+        "src/features/mushaf-madinah/mushaf-madinah.css",
+        "src/features/mushaf-madinah/quran-sheet/quran-sheet.css",
+        "src/styles/admin.css",
+        "src/styles/brand-v4-components.css",
+        "src/styles/brand-v4-contrast-fixes.css",
+        "src/styles/capacitor-native-ux.css",
+        "src/styles/components/audio-library-selection.css",
+        "src/styles/components/citation-modal.css",
+        "src/styles/components/content-actions-rag.css",
+        "src/styles/components/content-reading-shell.css",
+        "src/styles/components/ipad-responsive-layout.css",
+        "src/styles/components/native-feel.css"
+      ]
+    },
+    "SEARCH": {
+      "css_files": 83,
+      "pattern_hits": 681,
+      "hex_in_matching_files": 3296,
+      "rgb_in_matching_files": 895,
+      "important_in_matching_files": 2736,
+      "sample_files": [
+        "src/app/styles/theme.css",
+        "src/features/mushaf-madinah/mushaf-madinah.css",
+        "src/features/mushaf-madinah/quran-sheet/quran-sheet.css",
+        "src/features/mushaf-reader/mushaf-reader.css",
+        "src/index.css",
+        "src/styles/admin.css",
+        "src/styles/components/badge-system.css",
+        "src/styles/components/muezzin-picker.css",
+        "src/styles/components/top-chrome-layout.css",
+        "src/styles/dark-design-system.css",
+        "src/styles/dark-mode-recovery.css",
+        "src/styles/dark-mode-surfaces.css"
+      ]
+    },
+    "FILTER": {
+      "css_files": 59,
+      "pattern_hits": 548,
+      "hex_in_matching_files": 1610,
+      "rgb_in_matching_files": 504,
+      "important_in_matching_files": 1730,
+      "sample_files": [
+        "src/pages/competitions/ui/competitions.css",
+        "src/styles/admin.css",
+        "src/styles/brand-v4-contrast-fixes.css",
+        "src/styles/breakpoints.css",
+        "src/styles/components/app-bottom-sheet.css",
+        "src/styles/components/badge-system.css",
+        "src/styles/components/filters.css",
+        "src/styles/components/global-search-modal.css",
+        "src/styles/components/home-universal-search.css",
+        "src/styles/components/native-feel.css",
+        "src/styles/components/page-hero.css",
+        "src/styles/components/submissions-review.css"
+      ]
+    },
+    "FEEDBACK": {
+      "css_files": 136,
+      "pattern_hits": 598,
+      "hex_in_matching_files": 3978,
+      "rgb_in_matching_files": 1412,
+      "important_in_matching_files": 2466,
+      "sample_files": [
+        "src/app/styles/theme.css",
+        "src/features/mushaf-madinah/mushaf-madinah.css",
+        "src/features/mushaf-madinah/quran-sheet/quran-sheet.css",
+        "src/features/mushaf-reader/mushaf-reader.css",
+        "src/index.css",
+        "src/pages/competitions/ui/competitions.css",
+        "src/styles/admin.css",
+        "src/styles/app-state-v2.css",
+        "src/styles/brand-v4-contrast-fixes.css",
+        "src/styles/card-decorative-strip-cleanup.css",
+        "src/styles/card-system-v2.css",
+        "src/styles/components/achievement-toast.css"
+      ]
+    }
+  },
+  "top_hero_classes": [
+    [
+      "home-page-hero",
+      144
+    ],
+    [
+      "topic-page__hero",
+      118
+    ],
+    [
+      "page-hero-mj",
+      77
+    ],
+    [
+      "page-hero-mj--bleed",
+      48
+    ],
+    [
+      "fiqh-lux-book-hero",
+      41
+    ],
+    [
+      "m2030-hero",
+      39
+    ],
+    [
+      "page-hero-mj__title",
+      29
+    ],
+    [
+      "quran-hub-hero",
+      26
+    ],
+    [
+      "sh-hero",
+      26
+    ],
+    [
+      "page-hero-mj__desc",
+      25
+    ],
+    [
+      "legal-page-hero",
+      23
+    ],
+    [
+      "page-hero-mj__back",
+      22
+    ],
+    [
+      "uq-hero",
+      19
+    ],
+    [
+      "page-hero-mj__actions",
+      17
+    ],
+    [
+      "fqh-hub-hero",
+      16
+    ],
+    [
+      "section-hero",
+      16
+    ],
+    [
+      "rq-hero",
+      15
+    ],
+    [
+      "seerah-hero",
+      14
+    ],
+    [
+      "sw-hero",
+      14
+    ],
+    [
+      "myl2-hero",
+      14
+    ],
+    [
+      "prophet-detail-lux__hero",
+      14
+    ],
+    [
+      "tf-hero",
+      14
+    ],
+    [
+      "lpd2-hero",
+      13
+    ],
+    [
+      "pmp-hero",
+      13
+    ],
+    [
+      "srp-hero",
+      13
+    ],
+    [
+      "safe-hero__badge",
+      13
+    ],
+    [
+      "ve-hero",
+      13
+    ],
+    [
+      "th-hero",
+      12
+    ],
+    [
+      "page-hero-mj__eyebrow",
+      12
+    ],
+    [
+      "asp-hero",
+      12
+    ],
+    [
+      "twh-hub-hero",
+      11
+    ],
+    [
+      "mdb-hero",
+      11
+    ],
+    [
+      "hk-hero",
+      11
+    ],
+    [
+      "as-hero",
+      11
+    ],
+    [
+      "mk-hero",
+      11
+    ],
+    [
+      "an-hero",
+      11
+    ],
+    [
+      "sb-hero",
+      11
+    ],
+    [
+      "hj-hero",
+      11
+    ],
+    [
+      "tw-hero",
+      11
+    ],
+    [
+      "fa-hero",
+      11
+    ]
+  ],
+  "hero_css_files_count": 139,
+  "top_card_classes": [
+    [
+      "hub-card",
+      275
+    ],
+    [
+      "soft-card",
+      147
+    ],
+    [
+      "lesson-unified-card",
+      95
+    ],
+    [
+      "ui-card",
+      74
+    ],
+    [
+      "mj-card",
+      62
+    ],
+    [
+      "hub-card__title",
+      58
+    ],
+    [
+      "hub-card__desc",
+      55
+    ],
+    [
+      "topic-card",
+      53
+    ],
+    [
+      "hadith-card",
+      44
+    ],
+    [
+      "hub-card-grid",
+      43
+    ],
+    [
+      "prophet-lux-card",
+      43
+    ],
+    [
+      "section-entry-card",
+      41
+    ],
+    [
+      "lesson-unified-card__title",
+      39
+    ],
+    [
+      "soft-card--on-light",
+      38
+    ],
+    [
+      "hub-card__icon",
+      33
+    ],
+    [
+      "lpp-path-card",
+      32
+    ],
+    [
+      "kx-library-card",
+      31
+    ],
+    [
+      "tarikh-card",
+      30
+    ],
+    [
+      "sect-card",
+      30
+    ],
+    [
+      "ds-card",
+      29
+    ],
+    [
+      "lesson-unified-card--compact",
+      29
+    ],
+    [
+      "quran-hub-card",
+      28
+    ],
+    [
+      "twh-hub-card",
+      27
+    ],
+    [
+      "ve-chapter-card",
+      27
+    ],
+    [
+      "dii-hub-card",
+      26
+    ],
+    [
+      "mk-lane-card",
+      25
+    ],
+    [
+      "prophet-fact-card",
+      25
+    ],
+    [
+      "srch-result-card",
+      25
+    ],
+    [
+      "tf-card",
+      23
+    ],
+    [
+      "tawheed-type-card",
+      22
+    ],
+    [
+      "fiqh-book-card",
+      22
+    ],
+    [
+      "lesson-unified-card__sheikh",
+      21
+    ],
+    [
+      "section-card",
+      21
+    ],
+    [
+      "fiqh-category-card",
+      21
+    ],
+    [
+      "content-card",
+      21
+    ],
+    [
+      "lesson-unified-card__facts",
+      21
+    ],
+    [
+      "an-card",
+      20
+    ],
+    [
+      "hub-card__meta",
+      20
+    ],
+    [
+      "lesson-unified-card__btn",
+      20
+    ],
+    [
+      "hs-card",
+      19
+    ]
+  ],
+  "local_auth_sample": [
+    [
+      "color-primary",
+      12
+    ],
+    [
+      "color-primary-dark",
+      8
+    ],
+    [
+      "color-primary-foreground",
+      7
+    ],
+    [
+      "color-primary-contrast",
+      7
+    ],
+    [
+      "color-primary-soft",
+      6
+    ],
+    [
+      "color-primary-deep",
+      4
+    ],
+    [
+      "color-primary-strong",
+      3
+    ],
+    [
+      "color-primary-hover",
+      2
+    ]
+  ],
+  "drift": {
+    "hex_non_hadith": 6637,
+    "font_size_px_decls": 104,
+    "spacing_px_decls": 284,
+    "radius_px_decls": 137,
+    "box_shadow_decls": 966
+  }
+}

@@ -79,7 +79,7 @@
 .fq-faraa-card {
 
   border-radius: var(--surface-feature-radius, var(--radius-card, var(--mur-radius, 24px)));
-  background: var(--surface-feature, var(--surface, var(--mj-surface, #f4faf7)));
+  background: var(--surface-feature, var(--surface, var(--mj-surface)));
   border: 1px solid var(--surface-feature-border, color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, var(--mj-hairline, transparent)));
   box-shadow: var(--surface-feature-shadow, var(--mur-shadow, var(--ss-shadow-soft, var(--mj-sh, 0 4px 18px -14px rgba(10, 61, 46, 0.14)))));
   color: var(--surface-feature-ink, var(--textPrimary, var(--mj-ink, var(--v2-color-ink))));
@@ -313,7 +313,7 @@ table.ss-data-table {
 
 .ss-tabs__tab:hover:not(:disabled) {
   color: var(--mj-ink, var(--color-text));
-  background: var(--color-surface-muted, color-mix(in srgb, var(--mj-brand, #0f766e) 6%, transparent));
+  background: var(--color-surface-muted, color-mix(in srgb, var(--mj-brand) 6%, transparent));
 }
 
 .ss-tabs__tab:focus-visible {

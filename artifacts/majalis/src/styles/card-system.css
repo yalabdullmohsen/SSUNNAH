@@ -342,9 +342,9 @@ html[data-v2-app="1"] .topic-page__hero .topic-page__quote-ref {
   font-size: 0.72rem;
   font-weight: 800;
   line-height: 1.2;
-  color: var(--mj-brand-deep, #0d4a39);
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 14%, transparent);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 28%, transparent);
+  color: var(--mj-brand-deep);
+  background: color-mix(in srgb, var(--mj-brand) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-brand) 28%, transparent);
 }
 
 .card--coming-soon .card__subtitle {
@@ -524,7 +524,7 @@ html[data-theme="dark"] .sc2-icon {
 
 .lesson-unified-card__btn--primary {
   background: var(--cs-primary) !important;
-  color: #ffffff !important;
+  color: var(--mj-white) !important;
   border-color: var(--cs-primary) !important;
 }
 
@@ -570,7 +570,7 @@ html[data-theme="dark"] .sc2-icon {
 }
 
 .lpp-path-card__badge--progress {
-  color: #ffffff !important;
+  color: var(--mj-white) !important;
   background: var(--cs-primary) !important;
   border-color: var(--cs-primary) !important;
   font-weight: 700;

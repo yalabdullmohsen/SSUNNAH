@@ -57,7 +57,7 @@ html[data-v2-app="1"] .sidebar-panel {
   padding: calc(var(--inset-top) + 8px) 12px calc(var(--inset-bottom) + 12px);
   gap: 2px;
   box-shadow: var(--v2-shadow-soft);
-  background: var(--v2-surface-raised, var(--surface, #fffcf8));
+  background: var(--v2-surface-raised, var(--surface));
   border-inline-end-color: var(--v2-hairline, var(--border));
 }
 
@@ -144,9 +144,9 @@ html[data-v2-app="1"] button.app-back-btn--bar[data-fixed-back-bar="1"] {
   min-height: 2.75rem;
   border-radius: var(--v2-radius-pill, 999px);
   box-shadow: var(--v2-shadow-soft);
-  background: var(--v2-surface-raised, color-mix(in srgb, var(--mj-surface, #fff) 94%, var(--v2-color-emerald-soft, #e2efe8)));
-  border-color: var(--v2-hairline, color-mix(in srgb, var(--mj-brand, #146b52) 22%, transparent));
-  color: var(--v2-color-emerald-deep, var(--mj-brand-deep, #0d4a39));
+  background: var(--v2-surface-raised, color-mix(in srgb, var(--mj-surface) 94%, var(--v2-color-emerald-soft)));
+  border-color: var(--v2-hairline, color-mix(in srgb, var(--mj-brand) 22%, transparent));
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
 
 html[data-v2-app="1"] .global-back-btn:focus-visible,
@@ -178,8 +178,8 @@ html[data-theme="dark"][data-v2-app="1"] .floating-back-btn,
 html.dark[data-v2-app="1"] .floating-back-btn,
 html[data-theme="dark"][data-v2-app="1"] .app-back-btn--bar.fixed-back-bar,
 html.dark[data-v2-app="1"] .app-back-btn--bar.fixed-back-bar {
-  background: var(--v2-color-night-surface, #12261f);
-  color: var(--v2-color-night-ink, #edf5f0);
+  background: var(--v2-color-night-surface);
+  color: var(--v2-color-night-ink);
   border-color: var(--v2-color-night-hairline, rgba(255, 255, 255, 0.12));
   box-shadow: var(--v2-shadow-soft);
 }
