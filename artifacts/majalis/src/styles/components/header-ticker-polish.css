@@ -1,12 +1,12 @@
 /* تيكّر المقتطفات — يُحمَّل مع HeaderTicker (خارج المسار الحرج) */
 .header-ticker {
   /* خلفية هادئة بهوية خضراء موحدة — بلا شفافية أو تمويه */
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 7%, var(--mj-surface, #ffffff)) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 7%, var(--mj-surface, var(--mj-white))) !important;
   background-image: none !important;
   opacity: 1 !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 22%, var(--mj-hairline, #e3e8e6));
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, var(--mj-hairline, #e3e8e6));
   box-shadow: 0 2px 10px -4px rgba(11, 32, 24, 0.22);
   min-height: var(--ticker-h, 2.65rem);
   height: var(--ticker-h, 2.65rem);
@@ -17,7 +17,7 @@
   overflow-x: clip;
 }
 html.dark .header-ticker {
-  background: color-mix(in srgb, #1f6b56 18%, #0f2f28) !important;
+  background: color-mix(in srgb, var(--mj-brand) 18%, #0f2f28) !important;
   border-color: rgba(227, 203, 140, 0.28);
   box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.45);
   color: #fafaf8;
@@ -50,7 +50,7 @@ html.dark .header-ticker__label {
 }
 .header-ticker__text {
   font-weight: 650;
-  color: var(--mj-ink, var(--color-text, #16241e));
+  color: var(--mj-ink, var(--color-text, var(--v2-color-ink)));
 }
 html.dark .header-ticker__text {
   color: #fafaf8;
@@ -106,11 +106,11 @@ html.dark .header-ticker__source {
     min-height: var(--ticker-h, 2.65rem);
     height: var(--ticker-h, 2.65rem);
     max-height: var(--ticker-h, 2.65rem);
-    border-radius: 18px;
-    background: color-mix(in srgb, var(--mj-brand, #1f6b56) 7%, var(--mj-surface, #ffffff)) !important;
+    border-radius: var(--sf-radius-control, 1.125rem);
+    background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 7%, var(--mj-surface, var(--mj-white))) !important;
   }
   html.dark .navbar-ticker-row .header-ticker {
-    background: color-mix(in srgb, #1f6b56 18%, #0f2f28) !important;
+    background: color-mix(in srgb, var(--mj-brand) 18%, #0f2f28) !important;
   }
 }
 

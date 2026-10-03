@@ -38,7 +38,7 @@
   align-items: center;
   background: rgba(255,255,255,0.12);
   border: 1px solid rgba(255,255,255,0.2);
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   padding: 0.6rem 1.1rem;
   min-width: 64px;
 }
@@ -81,7 +81,7 @@
 .hs-cat-chip {
   min-height: 44px;
   padding: 0.45rem 1rem;
-  border-radius: var(--radius-pill, 999px);
+  border-radius: 999px;
   border: 1.5px solid var(--mj-brand-soft);
   background: var(--ss-card-bg, var(--color-surface, var(--mj-surface)));
   font-size: 0.8rem;
@@ -100,9 +100,9 @@
 
 /* بطاقة */
 .hs-card {
-  background: var(--color-surface, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--color-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
   border: 1.5px solid var(--mj-brand-soft);
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   overflow: hidden;
   transition: border-color 0.15s, box-shadow 0.15s;
 }
@@ -177,7 +177,7 @@
   display: block;
   padding: 0.6rem 0.85rem;
   border: 1.5px solid var(--mj-brand-soft);
-  border-radius: 18px;
+  border-radius: var(--sf-radius-control, 1.125rem);
   text-decoration: none;
   font-size: 0.83rem;
   font-weight: 600;

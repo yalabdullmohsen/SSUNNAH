@@ -15,14 +15,14 @@
   gap: 0.35rem;
   padding: 1rem 0.875rem;
   border-radius: var(--ds-radius-xl);
-  background: color-mix(in srgb, var(--hit-clr, var(--mj-brand)) 7%, #ffffff);
+  background: color-mix(in srgb, var(--hit-clr, var(--mj-brand)) 7%, var(--mj-white));
   border: 1px solid color-mix(in srgb, var(--hit-clr, var(--mj-brand)) 12%, transparent);
   text-decoration: none;
   color: inherit;
   transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 .hit-card:hover {
-  background: color-mix(in srgb, var(--hit-clr, var(--mj-brand)) 12%, #ffffff);
+  background: color-mix(in srgb, var(--hit-clr, var(--mj-brand)) 12%, var(--mj-white));
   transform: translateY(-2px);
   box-shadow: 0 4px 16px color-mix(in srgb, var(--hit-clr, var(--mj-brand)) 18%, transparent);
   text-decoration: none;

@@ -28,7 +28,7 @@
   min-height: 0;
   max-width: 100%;
   border-radius: 1rem;
-  background: var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
   border: 1px solid color-mix(in srgb, var(--qom-accent) 16%, var(--mj-hairline, var(--mj-hairline, #e3e8e6)));
   box-shadow: 0 6px 18px -14px rgba(11, 32, 24, 0.35);
   overflow: hidden;
@@ -40,7 +40,7 @@
   inset-block: 0;
   inset-inline-start: 0;
   width: 4px;
-  background: linear-gradient(180deg, var(--qom-accent) 0%, color-mix(in srgb, var(--qom-accent) 70%, var(--sunnah-quran-gold, #c9a82e)) 100%);
+  background: linear-gradient(180deg, var(--qom-accent) 0%, color-mix(in srgb, var(--qom-accent) 70%, var(--sunnah-quran-gold, var(--sf-color-quran-gold))) 100%);
   border-start-start-radius: 1rem;
   border-end-start-radius: 1rem;
 }
@@ -78,7 +78,7 @@
   font-size: 1rem;
   font-weight: 800;
   line-height: 1.3;
-  color: var(--majalis-ink, var(--mj-ink, #16241e));
+  color: var(--majalis-ink, var(--mj-ink, var(--v2-color-ink)));
 }
 
 .quran-open-mushaf__desc {
@@ -114,10 +114,10 @@
   margin: 0;
   padding: 0.45rem 0.7rem;
   border: none;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: var(--qom-accent);
   cursor: pointer;
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   max-width: none;
   box-shadow: 0 4px 12px -6px rgba(18, 63, 46, 0.45);
   -webkit-tap-highlight-color: transparent;
@@ -157,7 +157,7 @@
 }
 
 .quran-open-mushaf__cta:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--qom-accent) 55%, var(--sunnah-quran-gold, #c9a82e));
+  outline: 2px solid color-mix(in srgb, var(--qom-accent) 55%, var(--sunnah-quran-gold, var(--sf-color-quran-gold)));
   outline-offset: 3px;
 }
 
@@ -182,7 +182,7 @@
 html[data-theme="dark"] .quran-open-mushaf,
 html.dark .quran-open-mushaf {
   background: var(--surface-elevated, #24302b);
-  border-color: color-mix(in srgb, var(--qom-accent, var(--sunnah-quran-gold, #c9a82e)) 22%, var(--mj-hairline, #35443f));
+  border-color: color-mix(in srgb, var(--qom-accent, var(--sunnah-quran-gold, var(--sf-color-quran-gold))) 22%, var(--mj-hairline, #35443f));
   box-shadow: 0 6px 18px -14px rgba(0, 0, 0, 0.42);
 }
 
@@ -200,7 +200,7 @@ html.dark .quran-hub-hero::before {
 html[data-theme="dark"] .quran-hub-hero__ornament,
 html.dark .quran-hub-hero__ornament {
   opacity: 0.35;
-  color: color-mix(in srgb, var(--sunnah-quran-gold, #c9a82e) 55%, var(--mj-brand-deep, #8fd4b0));
+  color: color-mix(in srgb, var(--sunnah-quran-gold, var(--sf-color-quran-gold)) 55%, var(--mj-brand-deep, #8fd4b0));
 }
 
 html[data-theme="dark"] .quran-open-mushaf__title,
@@ -223,7 +223,7 @@ html.dark .quran-open-mushaf__resume {
 
 html[data-theme="dark"] .quran-open-mushaf__cta-label,
 html.dark .quran-open-mushaf__cta-label {
-  color: var(--mj-on-brand, #fff);
+  color: var(--mj-on-brand, var(--mj-white));
 }
 
 html[data-theme="dark"] .quran-open-mushaf__icon,
@@ -320,7 +320,7 @@ html.dark .quran-open-mushaf__icon {
 .quran-hub-stat__val {
   font-size: 1.6rem;
   font-weight: 800;
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   line-height: 1;
 }
 .quran-hub-stat__lbl {
@@ -353,8 +353,8 @@ html.dark .quran-open-mushaf__icon {
   display: flex;
   flex-direction: column;
   background: var(--mj-surface);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand, #1f6b56)) 14%, var(--mj-hairline, var(--mj-hairline, #e3e8e6)));
-  border-radius: var(--radius-card, 24px);
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand, var(--mj-brand))) 14%, var(--mj-hairline, var(--mj-hairline, #e3e8e6)));
+  border-radius: var(--radius-card, 1.5rem);
   overflow: hidden;
   text-decoration: none;
   color: inherit;
@@ -463,7 +463,7 @@ html.dark .quran-open-mushaf__icon {
   display: flex;
   align-items: center;
   gap: var(--ds-space-3);
-  background: var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
   border: 1px solid var(--mj-hairline, rgba(23,61,53,0.1));
   border-radius: var(--ds-radius-lg);
   padding: 1rem 1.25rem;
@@ -489,7 +489,7 @@ html.dark .quran-open-mushaf__icon {
 .quran-hub-closing__ayah {
   font-family: "Amiri", "Scheherazade New", serif;
   font-size: clamp(1.1rem, 3vw, 1.4rem);
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   margin: 0 0 0.5rem;
   line-height: 1.9;
 }
@@ -519,7 +519,7 @@ html.dark .quran-open-mushaf__icon {
   }
   .quran-hub-hero__title {
     font-size: clamp(1.45rem, 6vw, 2rem);
-    color: var(--mj-white, #ffffff);
+    color: var(--mj-white, var(--mj-white));
   }
   .quran-hub-hero__sub {
     margin-bottom: 1rem;

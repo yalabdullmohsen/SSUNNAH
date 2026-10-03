@@ -142,7 +142,7 @@
     min-width: 0;
     height: var(--ticker-height);
     margin: 0;
-    border-radius: 18px;
+    border-radius: var(--sf-radius-control, 1.125rem);
     overflow: hidden;
   }
 
@@ -231,5 +231,5 @@ html.dark .navbar-v3__search-row,
 html[data-theme="dark"] .navbar-ticker-row,
 html.dark .navbar-ticker-row {
   background: var(--mj-bg, #0c1210);
-  border-block-start-color: color-mix(in srgb, #fff 8%, transparent);
+  border-block-start-color: color-mix(in srgb, var(--mj-white) 8%, transparent);
 }

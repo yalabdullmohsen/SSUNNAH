@@ -45,8 +45,8 @@
 .ss-feature-card__icon {
   width: 2.75rem;
   height: 2.75rem;
-  background: color-mix(in srgb, var(--svl-accent-primary, #0f5c45) 12%, var(--svl-surface-primary, #fff));
-  color: var(--svl-accent-primary-deep, #0a3d2e);
+  background: color-mix(in srgb, var(--svl-accent-primary, var(--mj-brand)) 12%, var(--svl-surface-primary, var(--mj-white)));
+  color: var(--svl-accent-primary-deep, var(--mj-brand-deep));
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--svl-accent-gold, #a8843a) 22%, transparent);
 }
 
@@ -59,8 +59,8 @@
   padding-block: 1rem 1.5rem;
   padding-inline: 1rem;
   border-radius: 1.75rem;
-  border: 1px solid color-mix(in srgb, var(--svl-accent-primary, #0f5c45) 18%, var(--svl-border-subtle));
-  background-color: #0f5c45;
+  border: 1px solid color-mix(in srgb, var(--svl-accent-primary, var(--mj-brand)) 18%, var(--svl-border-subtle));
+  background-color: var(--mj-brand);
   color: #f7f1e4;
   overflow: visible;
 }
@@ -82,25 +82,25 @@
 
 .home-page-hero .page-hero-mj__eyebrow,
 .home-welcome-premium .page-hero-mj__eyebrow {
-  color: var(--svl-accent-primary-deep, #0a3d2e);
+  color: var(--svl-accent-primary-deep, var(--mj-brand-deep));
   font-weight: 700;
 }
 
 .home-page-hero .m2030-btn--primary,
 .home-welcome-premium .m2030-btn--primary {
-  background: var(--svl-accent-primary-deep, #0a3d2e);
-  color: #ffffff;
+  background: var(--svl-accent-primary-deep, var(--mj-brand-deep));
+  color: var(--mj-white);
   border-color: transparent;
-  box-shadow: 0 8px 18px -10px color-mix(in srgb, #0a3d2e 55%, transparent);
+  box-shadow: 0 8px 18px -10px color-mix(in srgb, var(--mj-brand-deep) 55%, transparent);
   font-weight: 750;
   min-height: 2.75rem;
 }
 
 .home-page-hero .m2030-btn--ghost,
 .home-welcome-premium .m2030-btn--ghost {
-  color: var(--svl-accent-primary-deep, #0a3d2e);
-  border-color: color-mix(in srgb, var(--svl-accent-primary, #0f5c45) 35%, transparent);
-  background: color-mix(in srgb, #ffffff 55%, transparent);
+  color: var(--svl-accent-primary-deep, var(--mj-brand-deep));
+  border-color: color-mix(in srgb, var(--svl-accent-primary, var(--mj-brand)) 35%, transparent);
+  background: color-mix(in srgb, var(--mj-white) 55%, transparent);
   font-weight: 650;
 }
 
@@ -117,7 +117,7 @@
 .qom-card {
   min-height: 5.5rem;
   box-shadow: var(--svl-shadow-elevated);
-  border-color: color-mix(in srgb, var(--svl-accent-primary, #0f5c45) 20%, var(--svl-border-subtle));
+  border-color: color-mix(in srgb, var(--svl-accent-primary, var(--mj-brand)) 20%, var(--svl-border-subtle));
 }
 
 [data-quran-hub="1"] .card__icon {
@@ -146,10 +146,10 @@
   background:
     linear-gradient(
       135deg,
-      color-mix(in srgb, var(--svl-accent-primary, #0f5c45) 14%, var(--svl-surface-elevated, #fff)) 0%,
+      color-mix(in srgb, var(--svl-accent-primary, var(--mj-brand)) 14%, var(--svl-surface-elevated, var(--mj-white))) 0%,
       var(--svl-surface-primary, #fffcf6) 100%
     );
-  border: 1px solid color-mix(in srgb, var(--svl-accent-primary, #0f5c45) 22%, var(--svl-border-subtle));
+  border: 1px solid color-mix(in srgb, var(--svl-accent-primary, var(--mj-brand)) 22%, var(--svl-border-subtle));
   box-shadow: var(--svl-shadow-elevated);
   border-radius: var(--svl-radius-md, 24px);
 }
@@ -157,8 +157,8 @@
 .quran-open-mushaf__icon {
   width: 2.85rem;
   height: 2.85rem;
-  color: var(--svl-accent-primary-deep, #0a3d2e);
-  background: color-mix(in srgb, var(--svl-accent-gold, #a8843a) 14%, #fff);
+  color: var(--svl-accent-primary-deep, var(--mj-brand-deep));
+  background: color-mix(in srgb, var(--svl-accent-gold, #a8843a) 14%, var(--mj-white));
 }
 
 .quran-open-mushaf__title {
@@ -173,7 +173,7 @@
 
 .quran-hub-card {
   box-shadow: var(--svl-shadow-card);
-  border-color: color-mix(in srgb, var(--svl-accent-primary, #0f5c45) 16%, var(--svl-border-subtle));
+  border-color: color-mix(in srgb, var(--svl-accent-primary, var(--mj-brand)) 16%, var(--svl-border-subtle));
 }
 
 .quran-hub-card__title {
@@ -194,8 +194,8 @@
 .prophet-lux-card {
   background: linear-gradient(
     165deg,
-    var(--svl-surface-elevated, #fff) 0%,
-    color-mix(in srgb, var(--svl-accent-primary, #0f5c45) 5%, var(--svl-surface-primary)) 100%
+    var(--svl-surface-elevated, var(--mj-white)) 0%,
+    color-mix(in srgb, var(--svl-accent-primary, var(--mj-brand)) 5%, var(--svl-surface-primary)) 100%
   );
   box-shadow: var(--svl-shadow-card);
 }
@@ -204,7 +204,7 @@
 .prophet-lux-card__chip--stat,
 .prophet-lux-card__chip--azm {
   border-color: color-mix(in srgb, var(--svl-accent-gold, #a8843a) 28%, var(--svl-border-subtle));
-  background: color-mix(in srgb, var(--svl-accent-primary, #0f5c45) 9%, var(--svl-surface-primary));
+  background: color-mix(in srgb, var(--svl-accent-primary, var(--mj-brand)) 9%, var(--svl-surface-primary));
   color: var(--svl-text-primary);
   font-weight: 700;
 }
@@ -224,7 +224,7 @@
 
 .prophets-seerah-timeline__dot,
 .seerah-journey__dot {
-  background: var(--svl-accent-primary, #0f5c45);
+  background: var(--svl-accent-primary, var(--mj-brand));
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--svl-accent-gold, #a8843a) 28%, transparent);
 }
 
@@ -239,7 +239,7 @@
 
 .prophets-seerah-full-cta,
 .seerah-journey__cta {
-  background: var(--svl-accent-primary-deep, #0a3d2e);
+  background: var(--svl-accent-primary-deep, var(--mj-brand-deep));
   color: #f8faf8;
   box-shadow: var(--svl-shadow-card);
   font-weight: 750;

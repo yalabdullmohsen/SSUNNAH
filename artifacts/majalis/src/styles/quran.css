@@ -1848,7 +1848,7 @@ html[data-theme="dark"] .qs-recitation-cta { background: rgba(94,196,154,.1); bo
 .rtp-consent {
   margin: 0.75rem 1rem;
   padding: 0.85rem 1rem;
-  border-radius: 12px;
+  border-radius: var(--radius-md, 0.75rem);
   background: var(--majalis-emerald-soft, #F0F7F4);
   border: 1px solid var(--border, var(--mj-hairline));
 }
@@ -1898,7 +1898,7 @@ html[data-theme="dark"] .qs-recitation-cta { background: rgba(94,196,154,.1); bo
   max-width: 220px;
   height: 6px;
   margin: .45rem 0 .25rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: color-mix(in srgb, var(--majalis-emerald, var(--mj-brand-deep)) 12%, transparent);
   overflow: hidden;
 }
@@ -1941,12 +1941,12 @@ html[data-theme="dark"] .qs-recitation-cta { background: rgba(94,196,154,.1); bo
   font-size: .85rem;
   color: var(--clr-text-2, #4b5563);
   background: var(--majalis-emerald-soft, #F0F7F4);
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   padding: .5rem .7rem;
 }
 .rtp-result {
   background: var(--majalis-emerald-soft, #F0F7F4);
-  border-radius: 12px;
+  border-radius: var(--radius-md, 0.75rem);
   padding: .75rem .9rem;
 }
 .rtp-result__score {
@@ -2045,7 +2045,7 @@ html[data-theme="dark"] .rtp-transcript {
 }
 .qs-mushaf-body--hl-wash .mf2-ayah-group--active .mf2-word {
   background-color: color-mix(in srgb, var(--color-mushaf-gold, #8B6914) 10%, transparent);
-  border-radius: 6px;
+  border-radius: var(--radius-xs, 0.375rem);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 .qs-mushaf-body--hl-border .mf2-ayah-group--active {
@@ -2053,7 +2053,7 @@ html[data-theme="dark"] .rtp-transcript {
 }
 .qs-mushaf-body--hl-border .mf2-ayah-group--active .mf2-word {
   box-shadow: inset 0 0 0 1.5px var(--mf-gold, var(--brand-deep, var(--mj-brand-deep)));
-  border-radius: 6px;
+  border-radius: var(--radius-xs, 0.375rem);
 }
 .qs-mushaf-body--hl-underline .mf2-ayah-group--active {
   background: transparent;
@@ -2071,13 +2071,13 @@ html[data-theme="dark"] .rtp-transcript {
 .qs-mushaf-body--hl-side-indicator .mf2-ayah-group--active .mf2-word {
   background-color: color-mix(in srgb, var(--mf-gold, var(--brand-deep, var(--mj-brand-deep))) 8%, transparent);
   box-shadow: inset -3px 0 0 var(--mf-gold, var(--brand-deep, var(--mj-brand-deep)));
-  border-radius: 6px;
+  border-radius: var(--radius-xs, 0.375rem);
 }
 .qs-mushaf-body--spotlight .mf2-ayah-group { opacity: 0.38; transition: opacity 0.2s; }
 .qs-mushaf-body--spotlight .mf2-ayah-group--active { opacity: 1; background: transparent; }
 .qs-mushaf-body--spotlight .mf2-ayah-group--active .mf2-word {
   background-color: color-mix(in srgb, var(--color-mushaf-gold, #8B6914) 10%, transparent);
-  border-radius: 6px;
+  border-radius: var(--radius-xs, 0.375rem);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 

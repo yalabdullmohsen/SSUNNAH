@@ -16,10 +16,10 @@
   gap: 0.45rem;
   min-height: 44px;
   padding: 0.55rem 1rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1px solid color-mix(in srgb, var(--mj-brand, #146b52) 55%, transparent);
   background: var(--mj-brand, #146b52);
-  color: #fff;
+  color: var(--mj-white);
   font: inherit;
   font-weight: 700;
   font-size: 0.9rem;
@@ -29,7 +29,7 @@
 }
 
 .ilm-cta--secondary {
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 10%, var(--mj-surface, #fff));
+  background: color-mix(in srgb, var(--mj-brand, #146b52) 10%, var(--mj-surface, var(--mj-white)));
   color: var(--mj-brand-deep, #0d4a38);
   border-color: color-mix(in srgb, var(--mj-brand, #146b52) 28%, transparent);
 }
@@ -123,7 +123,7 @@ html[data-theme="dark"] .ilm-cta--secondary {
   flex: 0 0 auto;
   min-height: 36px;
   padding: 0.35rem 0.85rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1px solid var(--mj-hairline, #d9d3c8);
   background: var(--mj-surface, #fff);
   color: var(--mj-ink, #16241e);
@@ -225,7 +225,7 @@ html[data-theme="dark"] .ilm-chip--active {
   text-decoration: none;
   color: inherit;
   overflow: hidden;
-  border-radius: var(--radius-card, 16px);
+  border-radius: var(--radius-card, 1rem);
   background: var(--mj-surface, #fff);
   border: 1px solid var(--mj-hairline, #e5e7eb);
   min-width: 0;
@@ -296,7 +296,7 @@ html[data-theme="dark"] .ilm-chip--active {
   align-items: center;
   width: fit-content;
   padding: 0.18rem 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   font-size: 0.72rem;
   font-weight: 700;
   line-height: 1.3;
@@ -332,7 +332,7 @@ html[data-theme="dark"] .ilm-badge--era {
 
 .ilm-tag {
   padding: 0.2rem 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: color-mix(in srgb, var(--mj-brand, #146b52) 8%, #f5f3ee);
   color: var(--mj-ink, #16241e);
   font-size: 0.75rem;
@@ -362,7 +362,7 @@ html[data-theme="dark"] .ilm-badge--era {
 }
 
 .ilm-detail__hero-media {
-  border-radius: var(--radius-card, 16px);
+  border-radius: var(--radius-card, 1rem);
   overflow: hidden;
   border: 1px solid var(--mj-hairline, #e5e7eb);
 }
@@ -551,7 +551,7 @@ html[data-theme="dark"] .ilm-badge--era {
   justify-self: start;
   min-height: 40px;
   padding: 0.35rem 0.85rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1px solid var(--mj-brand, #146b52);
   background: var(--mj-brand, #146b52);
   color: #fff;

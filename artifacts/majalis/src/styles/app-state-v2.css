@@ -62,7 +62,7 @@
 .app-state-v2--loading .app-state-v2__skeleton {
   width: min(100%, 16rem);
   height: 0.75rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: linear-gradient(
     90deg,
     var(--sf2-skeleton, #e6ebe8) 0%,

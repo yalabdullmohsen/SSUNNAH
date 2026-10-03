@@ -10,7 +10,7 @@
   border: 1px solid var(--border, var(--mj-hairline));
   border-radius: var(--radius-card, 1rem);
   padding: 1rem 1.1rem;
-  background: var(--surface-raised, var(--mj-surface, #fff));
+  background: var(--surface-raised, var(--mj-surface, var(--mj-white)));
 }
 
 .bdm-card__header {
@@ -48,7 +48,7 @@
 
 .bdm-card__bar {
   height: 0.55rem;
-  border-radius: var(--radius-pill, 999px);
+  border-radius: 999px;
   background: var(--border, var(--mj-hairline));
   overflow: hidden;
 }
@@ -56,7 +56,7 @@
 .bdm-card__bar-fill {
   height: 100%;
   background: var(--brand-deep, var(--mj-brand-deep, #1a4d3e));
-  border-radius: var(--radius-pill, 999px);
+  border-radius: 999px;
   transition: width 0.2s ease;
 }
 
@@ -85,12 +85,12 @@
   width: 100%;
   padding: 0.65rem 1rem;
   border: none;
-  border-radius: var(--radius-button, 18px);
+  border-radius: var(--sf-radius-control, 1.125rem);
   font-size: 0.85rem;
   font-weight: 700;
   font-family: inherit;
   cursor: pointer;
-  color: #fff;
+  color: var(--mj-white);
 }
 
 .bdm-card__btn:disabled {
@@ -100,7 +100,7 @@
 
 .bdm-card__btn--start {
   background: var(--brand-deep, var(--mj-brand-deep, #1a4d3e));
-  color: #fff;
+  color: var(--mj-white);
 }
 
 .bdm-card__btn--pause {
@@ -109,7 +109,7 @@
 
 .bdm-card__btn--done {
   background: var(--brand-deep, var(--mj-brand-deep));
-  color: #fff;
+  color: var(--mj-white);
 }
 
 .bdm-card__btn--delete {

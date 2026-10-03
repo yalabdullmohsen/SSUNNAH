@@ -8,7 +8,7 @@
 /* ── Bottom Nav: ظل أخف · نشط بلا قفزة ذهبية · تسمية UI ── */
 html[data-v2-app="1"][data-v2-nav="1"] .bottom-nav.bottom-nav--v2 {
   box-shadow: var(--v2-shadow-soft);
-  border-radius: var(--v2-radius-card, 16px) var(--v2-radius-card, 16px) 0 0;
+  border-radius: var(--v2-radius-card, 1.5rem) var(--v2-radius-card, 1.5rem) 0 0;
 }
 
 html[data-v2-app="1"][data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab {

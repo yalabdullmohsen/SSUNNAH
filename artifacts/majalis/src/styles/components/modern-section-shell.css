@@ -22,7 +22,7 @@
   /* هيرو الأقسام = زمرد داكن (هوية رئيسية) */
   --mss-section-hero-bg: var(--cs-ink-hero, #0a2f24);
   /* نص فوق هيرو أخضر غامق (asp-hero / بطاقات مميزة) */
-  --mss-on-dark-hero: #ffffff;
+  --mss-on-dark-hero: var(--mj-white);
   --mss-on-dark-hero-muted: #e4ddd0;
   --mss-on-dark-hero-accent: #f0e2b0;
   --mss-radius-hero: 1.35rem;
@@ -228,29 +228,29 @@
   display: inline-flex;
   align-self: flex-start;
   padding: 0.22rem 0.65rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 10%, transparent);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 22%, transparent);
+  border-radius: var(--radius-pill, 999rem);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent);
   color: var(--mss-on-hero-accent, #123f2e) !important;
   letter-spacing: 0.02em;
   font-weight: 800;
 }
 
 .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .page-hero-mj__back {
-  color: var(--mss-on-hero, #ffffff) !important;
+  color: var(--mss-on-hero, var(--mj-white)) !important;
   background: var(--cs-ink-topic, #0f3d2e) !important;
   background-color: var(--cs-ink-topic, #0f3d2e) !important;
   background-image: none !important;
-  border-color: color-mix(in srgb, #ffffff 32%, transparent) !important;
+  border-color: color-mix(in srgb, var(--mj-white) 32%, transparent) !important;
 }
 
 .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn.mj-btn--ghost,
 .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--ghost {
-  color: var(--mss-on-hero, #ffffff) !important;
+  color: var(--mss-on-hero, var(--mj-white)) !important;
   background: var(--cs-ink-topic, #0f3d2e) !important;
   background-color: var(--cs-ink-topic, #0f3d2e) !important;
   background-image: none !important;
-  border-color: color-mix(in srgb, #ffffff 32%, transparent) !important;
+  border-color: color-mix(in srgb, var(--mj-white) 32%, transparent) !important;
 }
 
 html[data-theme="dark"] .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .page-hero-mj__back,
@@ -260,8 +260,8 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn.mj-
 html[data-theme="dark"] .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--ghost,
 html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--ghost {
   color: #f3efe6 !important;
-  background: #0a3d2e !important;
-  background-color: #0a3d2e !important;
+  background: var(--mj-brand-deep) !important;
+  background-color: var(--mj-brand-deep) !important;
   background-image: none !important;
   border-color: color-mix(in srgb, #f3efe6 32%, transparent) !important;
 }
@@ -271,7 +271,7 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--gh
 }
 
 .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .pattern-backdrop {
-  color: #fff;
+  color: var(--mj-white);
   opacity: 0.08;
 }
 
@@ -289,15 +289,15 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--gh
 .topic-page__eyebrow,
 .topic-page__hero .safe-hero__badge {
   color: var(--mss-on-hero-accent, #f0e2b0) !important;
-  background: color-mix(in srgb, #ffffff 14%, transparent) !important;
+  background: color-mix(in srgb, var(--mj-white) 14%, transparent) !important;
   border: 1px solid color-mix(in srgb, #d4b45c 40%, transparent);
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   font-weight: 800;
 }
 
 .topic-page__title,
 .topic-page__hero .topic-page__title {
-  color: var(--mss-on-hero, #ffffff) !important;
+  color: var(--mss-on-hero, var(--mj-white)) !important;
 }
 
 .topic-page__sub,
@@ -311,7 +311,7 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--gh
   width: 3rem;
   height: 3rem;
   border-radius: 1rem;
-  background: color-mix(in srgb, #ffffff 14%, transparent);
+  background: color-mix(in srgb, var(--mj-white) 14%, transparent);
   border: 1px solid color-mix(in srgb, #d4b45c 32%, transparent);
   color: var(--mss-on-hero-accent, #f0e2b0);
   flex-shrink: 0;
@@ -333,7 +333,7 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--gh
 
 .section-lobby__head:not(.section-lobby__head--bare) .section-lobby__title,
 .section-lobby__head:not(.section-lobby__head--bare) .quran-hub-page__title {
-  color: var(--mss-on-hero, #16241e) !important;
+  color: var(--mss-on-hero, var(--v2-color-ink)) !important;
 }
 
 .section-lobby__head:not(.section-lobby__head--bare) .section-lobby__title::after,
@@ -342,13 +342,13 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--gh
 }
 
 .section-lobby__head:not(.section-lobby__head--bare) .section-lobby__back-inline {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 10%, transparent);
-  border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 22%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent);
+  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent);
   color: var(--mss-on-hero-accent, #123f2e);
 }
 
 .section-lobby__head:not(.section-lobby__head--bare) .section-lobby__head-row {
-  border-bottom-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 14%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, transparent);
 }
 
 /* اللوبيات التي تُخفي الرأس بصريًا تبقى كما هي (lessons / fiqh lux) */
@@ -371,7 +371,7 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--gh
 .section-lobby[data-lessons-hub="1"] .quran-hub-page__title,
 .fiqh-lux-page .section-lobby__title,
 .fiqh-lux-page .quran-hub-page__title {
-  color: var(--on-surface, var(--mj-ink, #16241e)) !important;
+  color: var(--on-surface, var(--mj-ink, var(--v2-color-ink))) !important;
 }
 
 .section-lobby[data-lessons-hub="1"] .section-lobby__title::after,
@@ -382,8 +382,8 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--gh
 /* —— بطاقات موحّدة (بلا قاعدة .card{} عامة — بوابة no-global-dangerous-css) —— */
 .hub-card {
   box-shadow: var(--mss-shadow-card);
-  border-radius: var(--radius-tile, 24px);
-  border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 20%, var(--mj-hairline, #e3e8e6));
+  border-radius: var(--radius-tile, 1.5rem);
+  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 20%, var(--mj-hairline, #e3e8e6));
 }
 
 .hub-card:hover {
@@ -398,13 +398,13 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--gh
 .card--featured {
   background-color: var(--mss-hero-from) !important;
   background-image: var(--mss-hero-gradient) !important;
-  border-color: color-mix(in srgb, #1f6b56 28%, transparent) !important;
+  border-color: color-mix(in srgb, var(--mj-brand) 28%, transparent) !important;
   box-shadow: var(--mss-shadow-hero) !important;
 }
 
 /* شرائح اللوبي */
 .section-lobby__chip {
-  border-radius: 999px !important;
+  border-radius: var(--radius-pill, 999rem) !important;
   transition:
     background 0.15s ease,
     border-color 0.15s ease,
@@ -419,7 +419,7 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--gh
 .section-lobby__chip.is-active {
   background: var(--mss-hero-from) !important;
   border-color: var(--mss-hero-from) !important;
-  color: #fff !important;
+  color: var(--mj-white) !important;
 }
 
 /* أسطح صفحات خفيفة أكثر ترابطًا */
@@ -454,7 +454,7 @@ html[data-theme="dark"] .card {
   border-radius: var(--mss-radius-card, 1.15rem) !important;
   background-color: var(--mss-hero-from, #0f4a3a) !important;
   background-image: var(--mss-hero-gradient) !important;
-  border: 1px solid color-mix(in srgb, #1f6b56 28%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--mj-brand) 28%, transparent) !important;
   box-shadow: var(--mss-shadow-hero) !important;
   color: var(--mss-on-hero, #faf5ea) !important;
 }
@@ -476,8 +476,8 @@ html[data-theme="dark"] .card {
   align-items: center;
   gap: 0.35rem;
   padding: 0.45rem 0.95rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--mss-hero-from, #0f4a3a) 10%, #fff);
+  border-radius: var(--radius-pill, 999rem);
+  background: color-mix(in srgb, var(--mss-hero-from, #0f4a3a) 10%, var(--mj-white));
   border: 1px solid color-mix(in srgb, var(--mss-hero-from, #0f4a3a) 22%, transparent);
   color: var(--mss-hero-from, #0f4a3a);
   font-weight: 700;
@@ -493,7 +493,7 @@ html[data-theme="dark"] .card {
   background-color: var(--mss-hero-from, #0f4a3a) !important;
   background-image: var(--mss-hero-gradient) !important;
   color: var(--mss-on-hero, #faf5ea) !important;
-  border-color: color-mix(in srgb, #1f6b56 28%, transparent);
+  border-color: color-mix(in srgb, var(--mj-brand) 28%, transparent);
   box-shadow: var(--mss-shadow-hero);
 }
 
@@ -533,8 +533,8 @@ html[data-theme="dark"] .card {
 .gl-hero .gl-hero__badge,
 .sm-hero .sm-hero__eye {
   color: var(--mss-on-hero-accent, #123f2e) !important;
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 10%, transparent) !important;
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 22%, transparent) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent) !important;
 }
 
 .sw-hero .sw-hero__title,
@@ -543,7 +543,7 @@ html[data-theme="dark"] .card {
 .atl-hero .atl-hero__title,
 .gl-hero .gl-hero__title,
 .sm-hero .sm-hero__title {
-  color: var(--mss-on-hero, #16241e) !important;
+  color: var(--mss-on-hero, var(--v2-color-ink)) !important;
 }
 
 .sw-hero .sw-hero__sub,
@@ -571,8 +571,8 @@ html[data-theme="dark"] .card {
 .sb-hero .sb-ayah,
 .as-hero .as-hero__method,
 .atl-hero .atl-hero__quote {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 8%, transparent) !important;
-  border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 22%, transparent) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 8%, transparent) !important;
+  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent) !important;
 }
 
 
@@ -595,8 +595,8 @@ html[data-theme="dark"] .card {
 .ai-hero .ai-hero__badge,
 .arkan-hero .arkan-hero__hadith {
   color: var(--mss-on-hero-accent, #123f2e) !important;
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 10%, transparent) !important;
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 22%, transparent) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent) !important;
 }
 
 .myl2-hero .myl2-hero__title,
@@ -634,7 +634,7 @@ html[data-theme="dark"] .card {
 .duas-hero .duas-hero__title,
 .ai-hero .ai-hero__title,
 .arkan-hero .arkan-hero__title {
-  color: var(--mss-on-hero, #16241e) !important;
+  color: var(--mss-on-hero, var(--v2-color-ink)) !important;
 }
 
 .myl2-hero .myl2-hero__sub,
@@ -677,15 +677,15 @@ html[data-theme="dark"] .card {
 .hj-hero .hj-talbiya,
 .jnz-hero .jnz-ayah,
 .hs-hero .hs-stat {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 8%, transparent) !important;
-  border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 22%, transparent) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 8%, transparent) !important;
+  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent) !important;
 }
 
 .ai-hero .ai-hero__nav-btn,
 .arkan-hero .arkan-hero__icon-btn {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 8%, transparent) !important;
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 18%, transparent) !important;
-  color: var(--mss-on-hero, #16241e) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 8%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, transparent) !important;
+  color: var(--mss-on-hero, var(--v2-color-ink)) !important;
 }
 .ai-hero .ai-hero__nav-label,
 .arkan-hero .arkan-hero__icon-num {
@@ -693,19 +693,19 @@ html[data-theme="dark"] .card {
 }
 
 .asp-hero {
-  --mss-on-hero: #ffffff;
+  --mss-on-hero: var(--mj-white);
   --mss-on-hero-muted: #f3efe6;
   --mss-on-hero-accent: #fff1c4;
-  --color-hero-fg: #ffffff;
+  --color-hero-fg: var(--mj-white);
   --color-hero-fg-muted: #f3efe6;
   --color-hero-fg-accent: #fff1c4;
-  color: #ffffff;
+  color: var(--mj-white);
 }
 
 .asp-hero .asp-hero__eyebrow,
 .asp-hero .assistant-title,
 .asp-hero .assistant-intro {
-  color: #ffffff !important;
+  color: var(--mj-white) !important;
   opacity: 1 !important;
 }
 
@@ -718,7 +718,7 @@ html[data-theme="dark"] .card {
 .page-shell .mj-card--raised {
   border-radius: var(--mss-radius-card, 1.15rem);
   box-shadow: var(--mss-shadow-card);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 14%, var(--mj-hairline, #e3e8e6));
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, var(--mj-hairline, #e3e8e6));
 }
 
 
@@ -740,8 +740,8 @@ html[data-theme="dark"] .card {
 .fg-hero .fg-hero__badge,
 .an-hero .an-hero__badge {
   color: var(--mss-on-hero-accent, #123f2e) !important;
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 10%, transparent) !important;
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 22%, transparent) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent) !important;
 }
 .zk-hero .zk-hero__sub,
 .tw-hero .tw-hero__sub,
@@ -779,5 +779,5 @@ html[data-theme="dark"] .card {
 .tf-hero .tf-hero__stat, .tf-hero .tf-hero__stat strong, .tf-hero .tf-hero__stat span,
 .fg-hero .fg-hero__stat, .fg-hero .fg-hero__stat strong, .fg-hero .fg-hero__stat span,
 .an-hero .an-hero__stat, .an-hero .an-hero__stat strong, .an-hero .an-hero__stat span {
-  color: var(--mss-on-hero, #16241e) !important;
+  color: var(--mss-on-hero, var(--v2-color-ink)) !important;
 }

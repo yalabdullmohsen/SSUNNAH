@@ -176,7 +176,7 @@ html.dark .sw-tab--active {
  */
 html[data-theme="dark"] .th-tab.th-tab--active[role="tab"][aria-selected="true"],
 html.dark .th-tab.th-tab--active[role="tab"][aria-selected="true"] {
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 10%, #fffef9) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, #fffef9) !important;
   color: #123f2e !important;
 }
 html[data-theme="dark"] .th-tab.th-tab--active[role="tab"][aria-selected="true"] .th-tab__label,
@@ -340,7 +340,7 @@ html[data-theme="dark"] .bottom-nav--v2 .bottom-nav__tab.is-active,
 html.dark .bottom-nav__tab.is-active,
 html.dark .bottom-nav--v2 .bottom-nav__tab.is-active {
   color: var(--mj-accent, #c4a35a) !important;
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 18%, transparent) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, transparent) !important;
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mj-accent, #c4a35a) 18%, transparent) !important;
 }
 html[data-theme="dark"] .bottom-nav__tab.is-active::before,
@@ -698,7 +698,7 @@ html[data-theme="dark"] :where(
   [style*="color: #000"],
   [style*="color:#111"],
   [style*="color: #111"],
-  [style*="color:#16241E"],
+  [style*="color:var(--v2-color-ink)"],
   [style*="color:rgb(0, 0, 0)"]
 ),
 html.dark :where(
@@ -706,7 +706,7 @@ html.dark :where(
   [style*="color: #000"],
   [style*="color:#111"],
   [style*="color: #111"],
-  [style*="color:#16241E"],
+  [style*="color:var(--v2-color-ink)"],
   [style*="color:rgb(0, 0, 0)"]
 ) {
   color: var(--txt-primary, #F8FAFC) !important;
@@ -959,7 +959,7 @@ html.dark .asp-hero__glow {
   opacity: 0 !important;
 }
 /* رجوع الهيرو — نص فاتح على سطح داكن (بوابة contrast)
- * يتجاوز modern-section-shell الذي يفرض #16241e على bleed heroes. */
+ * يتجاوز modern-section-shell الذي يفرض var(--v2-color-ink) على bleed heroes. */
 html[data-theme="dark"] .page-hero-mj__back,
 html.dark .page-hero-mj__back,
 html[data-theme="dark"] .app-back-btn--hero,
@@ -974,8 +974,8 @@ html[data-theme="dark"] .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-her
 html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--ghost {
   color: #f3efe6 !important;
   border-color: color-mix(in srgb, #f3efe6 32%, transparent) !important;
-  background: #0a3d2e !important;
-  background-color: #0a3d2e !important;
+  background: var(--mj-brand-deep) !important;
+  background-color: var(--mj-brand-deep) !important;
   background-image: none !important;
   text-shadow: none !important;
   opacity: 1 !important;

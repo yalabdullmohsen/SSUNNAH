@@ -72,7 +72,7 @@
   color: var(--mn-text-active);
   background: var(--majalis-emerald-muted);
   padding: 0.15rem 0.5rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
 }
 
 .qa-v2-category-card__desc {
@@ -86,6 +86,6 @@
   color: var(--majalis-emerald);
   background: rgba(31,77,58,0.08);
   padding: 0.2rem 0.5rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
 }
 

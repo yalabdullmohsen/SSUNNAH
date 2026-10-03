@@ -11,7 +11,7 @@
   --kc-muted: var(--prophets-text-muted, #5e6e65);
   --kc-olive: var(--prophets-accent, var(--brand-olive, #3d5c45));
   --kc-olive-deep: var(--prophets-accent-hover, #2a4030);
-  --kc-emerald: var(--brand-emerald, #1e5f4b);
+  --kc-emerald: var(--brand-emerald, var(--mj-brand));
   --kc-border: var(--prophets-border-subtle, color-mix(in srgb, #3d5c45 14%, transparent));
   --kc-border-strong: var(--prophets-border-strong, color-mix(in srgb, #3d5c45 32%, transparent));
   --kc-on-deep: var(--prophets-text-on-deep, #fffef9);

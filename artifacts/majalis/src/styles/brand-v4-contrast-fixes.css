@@ -145,7 +145,7 @@ html[data-theme="dark"] .fiqh-hub-strip__sep {
   gap: 0.35rem;
   min-height: 40px;
   padding: 0.4rem 0.95rem !important;
-  border-radius: 999px !important;
+  border-radius: var(--radius-pill, 999rem) !important;
   background-color: var(--brand, #0f5c45) !important;
   color: var(--text-on-brand, #ffffff) !important;
   border: 1px solid color-mix(in srgb, var(--brand, #0f5c45) 78%, #000) !important;

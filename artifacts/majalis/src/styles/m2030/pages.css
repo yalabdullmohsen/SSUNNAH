@@ -28,8 +28,8 @@ html.pts-immersive .app-main {
   /* أبيض ثابت فوق الزمرد — لا يعتمد على --text-on-dark بعد أن أُسيء ربطه بـ --mj-ink */
   --pts-white: #FAFAF8;
   --pts-muted: rgba(250, 250, 248, 0.88);
-  --pts-radius: var(--radius-card, 24px);
-  --pts-radius-sm: var(--radius-tile, 24px);
+  --pts-radius: var(--radius-card, 1.5rem);
+  --pts-radius-sm: var(--radius-tile, 1.5rem);
   background: transparent !important;
   background-color: transparent !important;
   background-image: none !important;
@@ -46,7 +46,7 @@ html.pts-immersive .app-main {
 .pts-next,
 .pts-hero-card,
 .pts-countdown {
-  border-radius: var(--pts-radius, var(--radius-card, 24px)) !important;
+  border-radius: var(--pts-radius, var(--radius-card, 1.5rem)) !important;
   border: 1px solid rgba(255, 255, 255, 0.14) !important;
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.045)) !important;
   box-shadow:
@@ -92,7 +92,7 @@ html.pts-immersive .app-main {
 .course-card {
   background: var(--surface) !important;
   border: 1px solid var(--border) !important;
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
   box-shadow: var(--e-1) !important;
   padding: 0.85rem !important;
 }
@@ -101,7 +101,7 @@ html.pts-immersive .app-main {
 .lesson-unified-card {
   background: var(--surface, var(--color-surface, #fff)) !important;
   border: 1px solid var(--border, var(--color-border)) !important;
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
   box-shadow: 0 8px 24px -16px rgba(11, 32, 24, 0.2) !important;
   padding: 0 !important;
   overflow: hidden !important;
@@ -144,7 +144,7 @@ html.pts-immersive .app-main {
 [class*="quiz-progress"] {
   height: 0.3rem !important;
   background: var(--surface-3) !important;
-  border-radius: 999px !important;
+  border-radius: var(--radius-pill, 999rem) !important;
   overflow: hidden;
 }
 

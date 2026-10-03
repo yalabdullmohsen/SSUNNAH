@@ -101,7 +101,7 @@ html.dark {
 .tarikh-detail__section,
 .akl-block,
 .an-card__benefit {
-  border-radius: var(--radius-button, 18px) !important;
+  border-radius: var(--sf-radius-control, 1.125rem) !important;
 }
 
 .hub-card:hover,
@@ -203,7 +203,7 @@ html.dark .sidebar-item-icon {
   min-width: unset !important;
   height: auto !important;
   padding: 0.35rem 0.75rem !important;
-  border-radius: 999px !important;
+  border-radius: var(--radius-pill, 999rem) !important;
   border: 1px solid var(--mj-chip-border, var(--border)) !important;
   background: var(--badge-filter-bg, var(--mj-chip-bg, var(--surface))) !important;
   color: var(--badge-filter-fg, var(--mj-chip-fg, var(--text))) !important;
@@ -379,7 +379,7 @@ html.dark .lessons-page-v2 .filter-chips__chip.is-active {
   min-height: 44px !important;
   padding: 6px 10px !important;
   gap: 10px !important;
-  border-radius: 12px !important;
+  border-radius: var(--radius-md, 0.75rem) !important;
   color: var(--text) !important;
 }
 
@@ -455,7 +455,7 @@ button.floating-back-btn[data-floating-back="1"] {
   min-height: 44px !important;
   min-width: 44px !important;
   aspect-ratio: auto !important;
-  border-radius: var(--radius-button, 14px) !important;
+  border-radius: var(--sf-radius-control, 14px) !important;
 }
 
 .scroll-to-top {
@@ -473,7 +473,7 @@ button.floating-back-btn[data-floating-back="1"] {
   max-height: 40px !important;
   padding-inline: 0.65rem !important;
   gap: 0.25rem !important;
-  border-radius: var(--radius-button, 14px) !important;
+  border-radius: var(--sf-radius-control, 14px) !important;
   box-shadow: var(--shadow) !important;
   z-index: var(--z-fab, 220) !important;
   background: var(--primary) !important;
@@ -586,13 +586,13 @@ a.m2030-btn,
 .mj-btn,
 .mj-btn--primary,
 .m2030-btn--primary {
-  border-radius: var(--radius-button, 18px) !important;
+  border-radius: var(--sf-radius-control, 1.125rem) !important;
   min-height: 48px;
   padding-inline: 1.1rem;
 }
 
 .hadith-card__read-more {
-  border-radius: var(--radius-button, 18px) !important;
+  border-radius: var(--sf-radius-control, 1.125rem) !important;
   min-height: 44px !important;
   padding: 0.45rem 0.95rem !important;
 }
@@ -600,7 +600,7 @@ a.m2030-btn,
 .hadith-action-btn {
   min-width: 44px !important;
   min-height: 44px !important;
-  border-radius: var(--radius-button, 18px) !important;
+  border-radius: var(--sf-radius-control, 1.125rem) !important;
 }
 
 .fiqh-category-card,
@@ -610,7 +610,7 @@ a.m2030-btn,
 .notif-card,
 .an-card,
 .hlr__card {
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
 }
 
 /* ── تماسك التطبيق: تباعد + لمس + عائم ─────────────────────────────── */
@@ -638,7 +638,7 @@ a.m2030-btn,
 }
 
 .scroll-to-top {
-  border-radius: var(--radius-pill, 999px) !important;
+  border-radius: var(--radius-pill, 999rem) !important;
   min-width: 48px !important;
   min-height: 48px !important;
   z-index: var(--z-fab, 220) !important;
@@ -658,13 +658,13 @@ a.m2030-btn,
 }
 
 .hb-sidebar {
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
 }
 
 .hb-chapter-item,
 .hb-load-more,
 .hb-empty {
-  border-radius: var(--radius-button, 18px) !important;
+  border-radius: var(--sf-radius-control, 1.125rem) !important;
 }
 
 .home-content-hub__icon,

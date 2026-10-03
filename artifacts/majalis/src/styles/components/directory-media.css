@@ -4,7 +4,7 @@
   width: 100%;
   overflow: hidden;
   border-radius: inherit;
-  background: color-mix(in srgb, var(--mj-brand, #0f5c45) 8%, var(--mj-surface, #fffcf7));
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 8%, var(--mj-surface, #fffcf7));
   writing-mode: horizontal-tb;
   direction: rtl;
 }
@@ -27,7 +27,7 @@
   justify-content: center;
   gap: 0.35rem;
   padding: 0.75rem;
-  color: color-mix(in srgb, var(--mj-brand-deep, #0d4a39) 55%, transparent);
+  color: color-mix(in srgb, var(--mj-brand-deep, var(--mj-brand-deep)) 55%, transparent);
   writing-mode: horizontal-tb;
 }
 

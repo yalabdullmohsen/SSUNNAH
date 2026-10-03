@@ -19,15 +19,13 @@
   padding: 0.85rem 1rem 1rem;
   border-radius: var(--radius-2xl, var(--mj-r-xl, 1.75rem));
   border: 1px solid transparent;
-  background-color: #0f5c45 !important;
+  background-color: var(--mj-brand) !important;
   background-image: none !important;
   color: #f7f1e4 !important;
-  box-shadow: none;
 }
 
 .home-page-hero.home-page-hero--compact.page-hero-mj {
   padding: 0.85rem 1rem 1rem;
-  box-shadow: none;
 }
 .home-page-hero.home-page-hero--compact.page-hero-mj::before,
 .home-page-hero.home-page-hero--compact.page-hero-mj::after {
@@ -50,10 +48,10 @@
   height: 1.4rem;
   z-index: 0;
   pointer-events: none;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: radial-gradient(
     70% 100% at 50% 0%,
-    color-mix(in srgb, var(--mj-brand, #1f6b56) 10%, transparent),
+    color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent),
     transparent 72%
   );
   filter: blur(10px);
@@ -131,7 +129,7 @@ html.dark .home-page-hero .page-hero-mj__desc {
 }
 
 .home-page-hero .m2030-btn--ghost {
-  background: color-mix(in srgb, var(--mj-surface, #fff) 78%, transparent);
+  background: color-mix(in srgb, var(--mj-surface, var(--mj-white)) 78%, transparent);
   color: var(--brand-on-light, var(--mj-brand-deep, #146C4E));
   border: 1px solid color-mix(in srgb, var(--color-primary, var(--mj-brand)) 28%, transparent);
 }
@@ -140,7 +138,7 @@ html[data-theme="dark"] .home-page-hero.page-hero-mj,
 html.dark .home-page-hero.page-hero-mj {
   border-color: color-mix(in srgb, var(--mj-brand, #5cc095) 22%, var(--mj-hairline, #35443f));
   box-shadow:
-    0 1px 0 color-mix(in srgb, #fff 6%, transparent),
+    0 1px 0 color-mix(in srgb, var(--mj-white) 6%, transparent),
     0 16px 40px -24px rgba(0, 0, 0, 0.55);
 }
 
@@ -175,23 +173,23 @@ html[data-contrast-audit="1"] .home-page-hero:not(.home-page-hero--eyebrow-ready
  * الزخرفة/الأزرار في home-dashboard-v2.css (خارج حزمة الإقلاع).
  * خلفية صلبة لازمة لبوابة Playwright — لا تعتمد على ::before. */
 html[data-v2-dashboard="1"] .home-page-hero.page-hero-mj {
-  /* #0f5c45 يطابق FP critical — لا --sf-deep (#0f5c3f) */
-  background-color: #0f5c45 !important;
+  /* var(--mj-brand) يطابق FP critical — لا --sf-deep (var(--sf-color-deep-emerald)) */
+  background-color: var(--mj-brand) !important;
   background-image: none !important;
   color: #f7f1e4 !important;
   border-color: transparent;
 }
 
 html[data-v2-dashboard="1"] .home-page-hero .page-hero-mj__title {
-  color: var(--v2-color-on-emerald, #fff) !important;
+  color: var(--v2-color-on-emerald, var(--mj-white)) !important;
 }
 
 html[data-v2-dashboard="1"] .home-page-hero .page-hero-mj__eyebrow,
 html[data-v2-dashboard="1"] .home-page-hero .page-hero-mj__desc {
-  color: color-mix(in srgb, var(--v2-color-on-emerald, #fff) 90%, transparent) !important;
+  color: color-mix(in srgb, var(--v2-color-on-emerald, var(--mj-white)) 90%, transparent) !important;
 }
 
 html[data-v2-dashboard="1"][data-theme="dark"] .home-page-hero.page-hero-mj,
 html[data-v2-dashboard="1"].dark .home-page-hero.page-hero-mj {
-  background-color: var(--v2-color-emerald-deep, #0a3d2e) !important;
+  background-color: var(--v2-color-emerald-deep, var(--mj-brand-deep)) !important;
 }

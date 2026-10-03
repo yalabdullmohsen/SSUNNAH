@@ -80,9 +80,9 @@
 
   border-radius: var(--surface-feature-radius, var(--radius-card, var(--mur-radius, 24px)));
   background: var(--surface-feature, var(--surface, var(--mj-surface, #f4faf7)));
-  border: 1px solid var(--surface-feature-border, color-mix(in srgb, var(--mj-brand, #146b52) 18%, var(--mj-hairline, #d9d3c8)));
+  border: 1px solid var(--surface-feature-border, color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, var(--mj-hairline, #d9d3c8)));
   box-shadow: var(--surface-feature-shadow, var(--mur-shadow, var(--ss-shadow-soft, var(--mj-sh, 0 4px 18px -14px rgba(10, 61, 46, 0.14)))));
-  color: var(--surface-feature-ink, var(--textPrimary, var(--mj-ink, #16241e)));
+  color: var(--surface-feature-ink, var(--textPrimary, var(--mj-ink, var(--v2-color-ink))));
 }
 
 .ui-card__title,
@@ -113,7 +113,7 @@
 .card:not([data-scripture]):not(.mushaf *):not(.qpc-page),
 .rounded-none.card,
 .rounded-none.ui-card {
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
 }
 
 /* ضغط تفاعلي موحّد */

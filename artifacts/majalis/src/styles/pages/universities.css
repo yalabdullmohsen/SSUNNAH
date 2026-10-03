@@ -54,7 +54,7 @@ html[data-theme="dark"] .up-skeleton {
 .up-alert--notice summary {
   cursor: pointer;
   font-weight: 700;
-  color: var(--brand-on-light, var(--mj-brand-deep, #0d4a39));
+  color: var(--brand-on-light, var(--mj-brand-deep, var(--mj-brand-deep)));
 }
 .up-alert--notice p {
   margin: 0.5rem 0 0;

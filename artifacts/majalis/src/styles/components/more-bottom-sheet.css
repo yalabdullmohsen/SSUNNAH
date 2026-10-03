@@ -255,7 +255,7 @@
     var(--surface-brand-strong, var(--mj-brand-deep)) 0%,
     var(--surface-brand-solid, var(--mj-brand)) 100%
   ) !important;
-  color: var(--on-brand, #ffffff) !important;
+  color: var(--on-brand, var(--mj-white)) !important;
   box-shadow: var(--mj-sh, 0 8px 22px color-mix(in srgb, var(--surface-brand-strong, var(--mj-brand-deep)) 35%, transparent)) !important;
   text-align: start !important;
   transition: transform 120ms ease, box-shadow 160ms ease, filter 160ms ease;
@@ -316,7 +316,7 @@
     var(--surface-brand-strong, var(--mj-brand-deep)) 0%,
     var(--surface-brand-solid, var(--mj-brand)) 100%
   ) !important;
-  color: var(--on-brand, #ffffff) !important;
+  color: var(--on-brand, var(--mj-white)) !important;
 }
 
 .bottom-sheet--services .more-sheet-item.more-sheet-item--featured.surface-brand:active {
@@ -328,7 +328,7 @@
     var(--surface-brand-strong, var(--mj-brand-deep)) 0%,
     var(--surface-brand-solid, var(--mj-brand)) 100%
   ) !important;
-  color: var(--on-brand, #ffffff) !important;
+  color: var(--on-brand, var(--mj-white)) !important;
 }
 
 .bottom-sheet--services .more-sheet-item.more-sheet-item--featured.surface-brand.more-sheet-item--active {
@@ -339,7 +339,7 @@
     var(--surface-brand-strong, var(--mj-brand-deep)) 0%,
     var(--surface-brand-solid, var(--mj-brand)) 100%
   ) !important;
-  color: var(--on-brand, #ffffff) !important;
+  color: var(--on-brand, var(--mj-white)) !important;
   border-color: var(--on-brand-hairline) !important;
 }
 
@@ -635,8 +635,8 @@ html.dark .more-hub-sheet .app-sheet__footer {
   margin: 0;
   padding: 0;
   border: 1px solid var(--mj-hairline, #e3e8e6);
-  border-radius: 999px;
-  background: var(--mj-surface, #fff);
+  border-radius: var(--radius-pill, 999rem);
+  background: var(--mj-surface, var(--mj-white));
   color: var(--mj-brand, #5fbf98);
   cursor: pointer;
 }
@@ -647,7 +647,7 @@ html.dark .more-hub-sheet .app-sheet__footer {
 }
 
 .more-sheet-theme-btn:focus-visible {
-  outline: 2px solid var(--mj-brand, #1e5f4b);
+  outline: 2px solid var(--mj-brand, var(--mj-brand));
   outline-offset: 2px;
 }
 

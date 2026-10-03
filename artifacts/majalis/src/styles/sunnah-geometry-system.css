@@ -84,7 +84,7 @@ html[data-theme="dark"] {
   top: 0.4rem;
   bottom: 0.4rem;
   width: 2px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: linear-gradient(
     to bottom,
     transparent,

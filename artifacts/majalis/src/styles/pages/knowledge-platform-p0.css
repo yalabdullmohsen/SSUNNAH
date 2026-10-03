@@ -65,7 +65,7 @@
   justify-content: center;
   min-height: 2.5rem;
   padding: 0.45rem 0.9rem;
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
   background: color-mix(in srgb, currentColor 6%, transparent);
   color: inherit;
@@ -74,7 +74,7 @@
 
 .kp-btn--primary {
   background: color-mix(in srgb, var(--mj-green, #1f6b4a) 88%, black);
-  color: #fff;
+  color: var(--mj-white);
   border-color: transparent;
 }
 

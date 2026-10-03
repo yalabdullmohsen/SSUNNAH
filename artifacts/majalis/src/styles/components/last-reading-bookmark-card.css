@@ -6,8 +6,8 @@
   padding: 0.9rem 1rem;
   border-radius: 0.9rem;
   background:
-    linear-gradient(135deg, color-mix(in srgb, #f7f1e3 88%, #c9a82e 12%), #f7f1e3);
-  border: 1px solid color-mix(in srgb, #c9a82e 28%, transparent);
+    linear-gradient(135deg, color-mix(in srgb, #f7f1e3 88%, var(--sf-color-quran-gold) 12%), #f7f1e3);
+  border: 1px solid color-mix(in srgb, var(--sf-color-quran-gold) 28%, transparent);
   color: #1c160e;
 }
 
@@ -44,7 +44,7 @@
   padding: 0.35rem 0.85rem;
   border-radius: 0.7rem;
   background: #2f6b4f;
-  color: #fff;
+  color: var(--mj-white);
   text-decoration: none;
   font-weight: 700;
 }

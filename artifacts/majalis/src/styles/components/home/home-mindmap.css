@@ -15,7 +15,7 @@
   gap: var(--ds-space-4);
   padding: 1rem 1.125rem;
   border-radius: var(--ds-radius-xl);
-  background: #ffffff;
+  background: var(--mj-white);
   border: 1px solid rgba(31, 77, 58, 0.10);
   text-decoration: none;
   color: inherit;

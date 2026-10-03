@@ -14,7 +14,7 @@
 
 .ss-app-card--muted {
   background-image: none;
-  background-color: color-mix(in srgb, var(--ss-warm-bg, var(--mj-bg)) 70%, var(--ss-card-bg, #fff));
+  background-color: color-mix(in srgb, var(--ss-warm-bg, var(--mj-bg)) 70%, var(--ss-card-bg, var(--mj-white)));
 }
 
 .ss-app-card--pad-sm {
@@ -30,10 +30,10 @@
   background-image: linear-gradient(
     160deg,
     color-mix(in srgb, var(--ss-soft-gold, #b08a3e) 14%, transparent),
-    color-mix(in srgb, var(--ss-primary-green, #0f5c45) 6%, transparent)
+    color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 6%, transparent)
   );
   border-color: color-mix(in srgb, var(--ss-soft-gold, #b08a3e) 32%, var(--ss-border, #d9d2c6));
-  color: var(--mj-ink, #16241e);
+  color: var(--mj-ink, var(--v2-color-ink));
   box-shadow: var(--ss-shadow-soft, 0 1px 2px rgba(11, 32, 24, 0.06));
 }
 
@@ -78,7 +78,7 @@ html.dark .ss-app-card--accent {
   font-size: var(--font-lg, 1.125rem);
   font-weight: 700;
   line-height: 1.35;
-  color: var(--mj-ink, #16241e);
+  color: var(--mj-ink, var(--v2-color-ink));
 }
 
 .ss-feature-card__desc {
@@ -128,7 +128,7 @@ html.dark .ss-app-card--accent {
   gap: 0.4rem;
   min-height: var(--mj-touch-min, 48px);
   padding: 0.55rem 1.15rem;
-  border-radius: var(--radius-button, 18px);
+  border-radius: var(--sf-radius-control, 1.125rem);
   border: 1px solid transparent;
   font: inherit;
   font-weight: 700;
@@ -151,8 +151,8 @@ html.dark .ss-app-card--accent {
 
 .ss-action-btn--primary {
   background: var(--ss-deep-green, var(--mj-brand-deep));
-  color: #fff;
-  border-color: color-mix(in srgb, var(--ss-deep-green, #0a3d2e) 70%, #000);
+  color: var(--mj-white);
+  border-color: color-mix(in srgb, var(--ss-deep-green, var(--mj-brand-deep)) 70%, #000);
 }
 
 .ss-action-btn--secondary {
@@ -215,7 +215,7 @@ html.dark .ss-action-btn--ghost {
 .home-sacred-day--ph {
   min-height: 6.25rem;
   box-sizing: border-box;
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   background: color-mix(in srgb, var(--ss-primary-green, var(--brand)) 6%, var(--ss-card-bg, var(--mj-surface)));
   animation: none;
 }
@@ -329,7 +329,7 @@ html.dark .ss-action-btn--ghost {
 .sidebar-title {
   font-size: 1.2rem;
   font-weight: 800;
-  color: var(--ss-deep-green, var(--mj-brand-deep, #0d4a39));
+  color: var(--ss-deep-green, var(--mj-brand-deep, var(--mj-brand-deep)));
 }
 
 .sidebar-section-title {
@@ -351,7 +351,7 @@ html.dark .ss-action-btn--ghost {
 }
 
 .sidebar-item.active {
-  background: color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 14%, var(--ss-card-bg, #fff));
+  background: color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 14%, var(--ss-card-bg, var(--mj-white)));
   border-color: color-mix(in srgb, var(--ss-primary-green) 30%, transparent);
   color: var(--ss-deep-green, var(--mj-brand-deep));
   box-shadow: inset 3px 0 0 var(--ss-primary-green, var(--mj-brand));
@@ -384,7 +384,7 @@ html.dark .sidebar-item.active {
 .search-page .srch-home-field input {
   min-height: 52px;
   font-size: 1.05rem;
-  border-radius: var(--radius-button, 18px);
+  border-radius: var(--sf-radius-control, 1.125rem);
   padding-inline: 1rem;
 }
 
@@ -392,14 +392,14 @@ html.dark .sidebar-item.active {
 .search-page button[type="submit"],
 .search-page .srch-home-submit {
   min-height: 52px;
-  border-radius: var(--radius-button, 18px);
+  border-radius: var(--sf-radius-control, 1.125rem);
   font-weight: 700;
 }
 
 .search-page .search-result,
 .search-page [data-search-result="1"],
 .search-page .srch-result-card {
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   margin-inline: auto;
   max-width: 42rem;
 }
@@ -419,7 +419,7 @@ html.dark .sidebar-item.active {
 .pts-location--chip,
 .pts-settings,
 .pts-back {
-  border-radius: var(--radius-button, 18px) !important;
+  border-radius: var(--sf-radius-control, 1.125rem) !important;
 }
 
 .pts-header {
@@ -452,7 +452,7 @@ html.dark .sidebar-item.active {
 .section-lobby__head,
 .topic-hero,
 .page-hero-mj {
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
 }
 
 .modern-section-shell__hero {
@@ -464,7 +464,7 @@ html.dark .sidebar-item.active {
 }
 
 .topic-card {
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   border: 1px solid color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 14%, var(--ss-border, var(--mj-hairline)));
   background: var(--ss-card-bg, var(--mj-surface));
   box-shadow: var(--ss-shadow-soft);
@@ -539,7 +539,7 @@ html.dark .card__subtitle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-pill, 999px);
+  border-radius: var(--radius-pill, 999rem);
   border: 1px solid color-mix(in srgb, var(--ss-primary-green) 22%, var(--ss-border));
   background: color-mix(in srgb, var(--ss-primary-green) 10%, var(--ss-card-bg));
   color: var(--ss-deep-green, var(--brand-on-light));
@@ -593,7 +593,7 @@ html.dark .card__subtitle {
 .mk-card,
 .fiqh-book-card,
 .topic-card {
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
 }
 
 .mj-pressable:active:not(.floating-back-btn):not(.global-back-btn):not(.hub-card):not(.card) {
@@ -652,7 +652,7 @@ html[data-audio-dock="1"] .floating-back-btn {
   margin: 1rem auto;
   max-width: min(28rem, calc(100% - 1.5rem));
   padding: 1.25rem 1.1rem;
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   border: 1px solid color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 14%, var(--ss-border));
   background: var(--ss-card-bg, var(--mj-surface));
   box-shadow: var(--ss-shadow-soft);
@@ -712,9 +712,9 @@ html[data-audio-dock="1"] .floating-back-btn {
 .qa-skeleton-line {
   background: linear-gradient(
     90deg,
-    color-mix(in srgb, var(--ss-border, #d9d2c6) 55%, var(--ss-card-bg, #fff)) 0%,
-    color-mix(in srgb, var(--ss-primary-green, #0f5c45) 6%, var(--ss-card-bg, #fff)) 50%,
-    color-mix(in srgb, var(--ss-border, #d9d2c6) 55%, var(--ss-card-bg, #fff)) 100%
+    color-mix(in srgb, var(--ss-border, #d9d2c6) 55%, var(--ss-card-bg, var(--mj-white))) 0%,
+    color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 6%, var(--ss-card-bg, var(--mj-white))) 50%,
+    color-mix(in srgb, var(--ss-border, #d9d2c6) 55%, var(--ss-card-bg, var(--mj-white))) 100%
   );
   background-size: 180% 100%;
   animation: ss-skel-shimmer 1.35s ease-in-out infinite;
@@ -828,7 +828,7 @@ html.dark .isp-card,
 html[data-theme="dark"] .sect-hub__card,
 html.dark .sect-hub__card {
   background: var(--ss-card-bg, #1b2421);
-  border-color: color-mix(in srgb, var(--ss-primary-green, #1f6b56) 28%, var(--ss-border, #2a3531));
+  border-color: color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 28%, var(--ss-border, #2a3531));
   box-shadow: none;
 }
 
@@ -855,7 +855,7 @@ html.dark .search-page .search-page-form {
 /* هيكل فوري لمسار المسلم الجديد — بلا نص تحميل */
 .dii-path-day--skel {
   min-height: 3.25rem;
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   background: linear-gradient(
     90deg,
     var(--skeletonBase, rgba(22, 36, 30, 0.06)) 0%,
@@ -890,9 +890,9 @@ html.dark .search-page .search-page-form {
   margin-inline-start: 0.5rem;
   padding: 0.35rem 0.85rem;
   border-radius: var(--radius-md, 14px);
-  border: 1px solid color-mix(in srgb, var(--primary, #146b52) 28%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary, var(--mj-brand)) 28%, transparent);
   background: var(--surface, #fffcf8);
-  color: var(--textPrimary, #16241e);
+  color: var(--textPrimary, var(--v2-color-ink));
   font: inherit;
   font-weight: 600;
   text-decoration: none;
@@ -1016,7 +1016,7 @@ html.dark .search-page .search-page-form {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  color: var(--mj-ink, #16241e);
+  color: var(--mj-ink, var(--v2-color-ink));
 }
 .hp-recent-bar__title {
   margin: 0;
@@ -1043,7 +1043,7 @@ html.dark .search-page .search-page-form {
   border-radius: var(--sf-radius-xs);
   text-decoration: none;
   color: inherit;
-  background: color-mix(in srgb, #fff 80%, var(--msk-canvas-1, #f4f4f1));
+  background: color-mix(in srgb, var(--mj-white) 80%, var(--msk-canvas-1, #f4f4f1));
   border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b4a) 12%, transparent);
   overflow: hidden;
 }
@@ -1072,8 +1072,8 @@ html.dark .search-page .search-page-form {
 .search-empty-state,
 .kids-hub-intro {
   border-radius: var(--radius-card, var(--sf-radius-md, 20px));
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 16%, var(--mj-hairline, #d5ddd9));
-  background: var(--sf-surface-raised, var(--mj-surface, #fff));
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 16%, var(--mj-hairline, #d5ddd9));
+  background: var(--sf-surface-raised, var(--mj-surface, var(--mj-white)));
   box-shadow: var(--sf-shadow-card, none);
   box-sizing: border-box;
 }
@@ -1091,7 +1091,7 @@ html.dark .search-empty-state,
 html[data-theme="dark"] .kids-hub-intro,
 html.dark .kids-hub-intro {
   background: color-mix(in srgb, var(--mj-surface, #15201c) 88%, #0d1412);
-  border-color: color-mix(in srgb, var(--mj-brand, #1e5f4b) 22%, rgba(255, 255, 255, 0.1));
+  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, rgba(255, 255, 255, 0.1));
   box-shadow: var(--sf-shadow-elevated);
 }
 
@@ -1101,7 +1101,7 @@ html.dark .kids-hub-intro {
 .assistant-fab {
   border-style: solid !important;
   border-width: 1px !important;
-  border-radius: var(--radius-pill, 999px) !important;
+  border-radius: var(--radius-pill, 999rem) !important;
   box-shadow: var(--sf-shadow-elevated, 0 2px 6px rgba(11, 32, 24, 0.12)) !important;
   opacity: 0.92;
 }

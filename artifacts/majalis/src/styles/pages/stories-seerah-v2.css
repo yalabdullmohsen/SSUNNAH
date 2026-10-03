@@ -7,26 +7,26 @@
 html[data-v2-stories="1"] .prophets-lux-page,
 html[data-v2-stories="1"] .seerah-page {
   background: var(--v2-color-ivory, #f9f8f4);
-  color: var(--v2-color-ink, #16241e);
+  color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
 /* هيرو قصص الأنبياء — بطاقة زمردية هادئة */
 html[data-v2-stories="1"] .prophets-lux-hero {
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   margin-inline: max(0.75rem, var(--page-gutter, 1rem));
-  background-color: var(--v2-color-emerald, #0f5c45);
+  background-color: var(--v2-color-emerald, var(--mj-brand));
   background-image:
     radial-gradient(
       120% 80% at 100% 0%,
-      color-mix(in srgb, var(--v2-color-gold, #c9a82e) 18%, transparent) 0%,
+      color-mix(in srgb, var(--v2-color-gold, var(--sf-color-quran-gold)) 18%, transparent) 0%,
       transparent 55%
     ),
     linear-gradient(
       145deg,
-      var(--v2-color-emerald, #0f5c45) 0%,
-      var(--v2-color-emerald-deep, #0a3d2e) 100%
+      var(--v2-color-emerald, var(--mj-brand)) 0%,
+      var(--v2-color-emerald-deep, var(--mj-brand-deep)) 100%
     );
-  color: var(--v2-color-on-emerald, #fff);
+  color: var(--v2-color-on-emerald, var(--mj-white));
   box-shadow: var(--v2-shadow-elevated);
   border: none;
 }
@@ -34,12 +34,12 @@ html[data-v2-stories="1"] .prophets-lux-hero {
 html[data-v2-stories="1"] .prophets-lux-hero__title,
 html[data-v2-stories="1"] .prophets-lux-hero__subtitle,
 html[data-v2-stories="1"] .prophets-lux-hero__note {
-  color: var(--v2-color-on-emerald, #fff);
+  color: var(--v2-color-on-emerald, var(--mj-white));
 }
 
 html[data-v2-stories="1"] .prophets-lux-hero__subtitle,
 html[data-v2-stories="1"] .prophets-lux-hero__note {
-  color: color-mix(in srgb, var(--v2-color-on-emerald, #fff) 88%, transparent);
+  color: color-mix(in srgb, var(--v2-color-on-emerald, var(--mj-white)) 88%, transparent);
 }
 
 html[data-v2-stories="1"] .prophets-lux-search {
@@ -51,14 +51,14 @@ html[data-v2-stories="1"] .prophets-lux-search {
 }
 
 html[data-v2-stories="1"] .prophets-lux-tab--active {
-  background: var(--v2-color-emerald, #0f5c45);
-  color: var(--v2-color-on-emerald, #fff);
+  background: var(--v2-color-emerald, var(--mj-brand));
+  color: var(--v2-color-on-emerald, var(--mj-white));
   border-radius: var(--v2-radius-pill, 999px);
 }
 
 /* بطاقات الأنبياء — أكبر · أنظف · بلا سكة جانبية */
 html[data-v2-stories="1"] .prophet-lux-card {
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
   background: var(--v2-color-ivory-surface, #fffcf8);
   box-shadow: var(--v2-shadow-card);
@@ -82,16 +82,16 @@ html[data-v2-stories="1"] .prophet-lux-card__bio {
 html[data-v2-stories="1"] .prophet-lux-card__chip {
   border-radius: var(--v2-radius-pill, 999px);
   background: var(--v2-color-emerald-soft, #e2efe8);
-  color: var(--v2-color-emerald-deep, #0a3d2e);
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   border: none;
 }
 
 /* ── السيرة: Historical Timeline Experience ── */
 html[data-v2-stories="1"] .seerah-hero {
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   margin-inline: max(0.75rem, var(--page-gutter, 1rem));
-  background-color: var(--v2-color-emerald, #0f5c45);
-  color: var(--v2-color-on-emerald, #fff);
+  background-color: var(--v2-color-emerald, var(--mj-brand));
+  color: var(--v2-color-on-emerald, var(--mj-white));
   box-shadow: var(--v2-shadow-elevated);
   border: none;
 }
@@ -99,12 +99,12 @@ html[data-v2-stories="1"] .seerah-hero {
 html[data-v2-stories="1"] .seerah-hero__title,
 html[data-v2-stories="1"] .seerah-hero__sub,
 html[data-v2-stories="1"] .seerah-hero__badge {
-  color: var(--v2-color-on-emerald, #fff);
+  color: var(--v2-color-on-emerald, var(--mj-white));
 }
 
 html[data-v2-stories="1"] .seerah-full-cta {
-  background: var(--v2-color-on-emerald, #fff);
-  color: var(--v2-color-emerald-deep, #0a3d2e);
+  background: var(--v2-color-on-emerald, var(--mj-white));
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   border: none;
   border-radius: var(--v2-radius-pill, 999px);
   font-weight: 700;
@@ -120,11 +120,10 @@ html[data-v2-stories="1"] .seerah-timeline__line {
   width: 2px;
   background: linear-gradient(
     180deg,
-    var(--v2-color-emerald, #0f5c45),
-    var(--v2-color-gold, #c9a82e)
+    color-mix(in srgb, var(--v2-color-emerald, var(--mj-brand)) 45%, transparent),
+    color-mix(in srgb, var(--v2-color-gold, var(--sf-color-quran-gold)) 45%, transparent)
   );
   border-radius: var(--v2-radius-pill, 999px);
-  opacity: 0.45;
 }
 
 html[data-v2-stories="1"] .seerah-timeline__item {
@@ -137,31 +136,31 @@ html[data-v2-stories="1"] .seerah-timeline__item {
 }
 
 html[data-v2-stories="1"] .seerah-timeline__item--active {
-  background: var(--v2-color-emerald, #0f5c45);
+  background: var(--v2-color-emerald, var(--mj-brand));
   border-color: transparent;
-  color: var(--v2-color-on-emerald, #fff);
+  color: var(--v2-color-on-emerald, var(--mj-white));
   box-shadow: var(--v2-shadow-card);
 }
 
 html[data-v2-stories="1"] .seerah-timeline__item--active .seerah-timeline__title,
 html[data-v2-stories="1"] .seerah-timeline__item--active .seerah-timeline__year {
-  color: var(--v2-color-on-emerald, #fff);
+  color: var(--v2-color-on-emerald, var(--mj-white));
 }
 
 html[data-v2-stories="1"] .seerah-timeline__dot {
   border-radius: var(--v2-radius-icon, 16px);
   background: var(--v2-color-emerald-soft, #e2efe8);
-  color: var(--v2-color-emerald-deep, #0a3d2e);
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   font-weight: 800;
 }
 
 html[data-v2-stories="1"] .seerah-timeline__item--active .seerah-timeline__dot {
-  background: color-mix(in srgb, var(--v2-color-on-emerald, #fff) 18%, transparent);
-  color: var(--v2-color-on-emerald, #fff);
+  background: color-mix(in srgb, var(--v2-color-on-emerald, var(--mj-white)) 18%, transparent);
+  color: var(--v2-color-on-emerald, var(--mj-white));
 }
 
 html[data-v2-stories="1"] .seerah-panel {
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
   background: var(--v2-color-ivory-surface, #fffcf8);
   box-shadow: var(--v2-shadow-card);
@@ -181,7 +180,7 @@ html[data-v2-stories="1"] .seerah-panel__desc {
 html[data-v2-stories="1"] .seerah-panel__topic {
   border-radius: var(--v2-radius-pill, 999px);
   background: var(--v2-color-emerald-soft, #e2efe8);
-  color: var(--v2-color-emerald-deep, #0a3d2e);
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   border: none;
 }
 
@@ -193,11 +192,11 @@ html[data-v2-stories="1"] .seerah-panel__event-item {
 }
 
 html[data-v2-stories="1"] .seerah-panel__event-dot {
-  background: var(--v2-color-gold, #c9a82e);
+  background: var(--v2-color-gold, var(--sf-color-quran-gold));
 }
 
 html[data-v2-stories="1"] .seerah-prophets-banner {
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
   background: var(--v2-color-ivory-surface, #fffcf8);
   box-shadow: var(--v2-shadow-soft);

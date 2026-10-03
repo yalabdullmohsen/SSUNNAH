@@ -8,7 +8,7 @@
   gap: 0.4rem;
   padding: 0.45rem 1rem;
   border: 1.5px solid var(--ds-emerald);
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: transparent;
   color: var(--ds-emerald-deep);
   font-size: 0.85rem;
@@ -20,7 +20,7 @@
 .scholar-follow-btn:hover { background: color-mix(in srgb, var(--ds-emerald) 10%, transparent); }
 .scholar-follow-btn--following {
   background: var(--ds-emerald);
-  color: #fff;
+  color: var(--mj-white);
 }
 .scholar-follow-btn--following:hover {
   background: var(--ds-emerald-deep);

@@ -1,7 +1,7 @@
 /**
  * section-cards-theme.css
  * تباين بطاقات الدخول/المحتوى — نهاري وليلي.
- * يُحمَّل بعد section-makarim-pattern حتى تفوز التوكنات على #fff الصلبة.
+ * يُحمَّل بعد section-makarim-pattern حتى تفوز التوكنات على var(--mj-white) الصلبة.
  * لا يمسّ نص القرآن/التشكيل.
  */
 
@@ -50,7 +50,7 @@ html[data-theme="dark"] .soft-tile--on-light {
 .mj-card,
 .ilm-card,
 .inst-card {
-  color: var(--color-text, var(--mj-ink, #16241e));
+  color: var(--color-text, var(--mj-ink, var(--v2-color-ink)));
 }
 
 .gl-term,
@@ -67,7 +67,7 @@ html[data-theme="dark"] .soft-tile--on-light {
 .uq-mm-examples__item {
   background: var(--ss-card-bg, var(--color-surface, #fffcf7)) !important;
   border-color: color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, var(--color-border, #d9d3c8))) !important;
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
   box-shadow: var(--ss-shadow-soft, var(--shadow-soft, none)) !important;
 }
 
@@ -113,15 +113,15 @@ html[data-theme="dark"] .soft-tile--on-light {
 
 .gl-cat {
   background: var(--ss-card-bg, #fffcf7) !important;
-  color: var(--brand-on-light, var(--mj-brand-deep, #0d4a39)) !important;
+  color: var(--brand-on-light, var(--mj-brand-deep, var(--mj-brand-deep))) !important;
   border-color: color-mix(in srgb, var(--mj-brand) 28%, var(--ss-border, #d9d3c8)) !important;
   min-height: 44px;
 }
 
 .gl-cat--active {
-  background: var(--mj-brand-deep, #0d4a39) !important;
-  color: var(--on-dark-strong, #fff) !important;
-  border-color: var(--mj-brand-deep, #0d4a39) !important;
+  background: var(--mj-brand-deep, var(--mj-brand-deep)) !important;
+  color: var(--on-dark-strong, var(--mj-white)) !important;
+  border-color: var(--mj-brand-deep, var(--mj-brand-deep)) !important;
 }
 
 html.dark .gl-cat--active,
@@ -138,7 +138,7 @@ html[data-theme="dark"] .gl-cat--active {
 .amr-level__rank {
   color: var(--mj-brand) !important;
   background: color-mix(in srgb, var(--mj-brand) 14%, var(--ss-card-bg, transparent));
-  border-radius: var(--radius-button, 18px);
+  border-radius: var(--sf-radius-control, 1.125rem);
 }
 
 .tawheed-type-card__num {
@@ -338,7 +338,7 @@ html[data-theme="dark"] .gl-cat--active .gl-cat__count {
   background: var(--ss-card-bg, var(--color-surface, #fffcf7)) !important;
   border-color: color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, var(--color-border))) !important;
   color: var(--color-text, var(--mj-ink)) !important;
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
 }
 
 .jn-tab,
@@ -346,7 +346,7 @@ html[data-theme="dark"] .gl-cat--active .gl-cat__count {
 .hs-cat-chip,
 .tf-cat-chip,
 .fiqh-council-subnav-link {
-  border-radius: 999px !important;
+  border-radius: var(--radius-pill, 999rem) !important;
   min-height: 44px;
 }
 
@@ -355,9 +355,9 @@ html[data-theme="dark"] .gl-cat--active .gl-cat__count {
 .hs-cat-chip--active,
 .tf-cat-chip.is-active,
 .fiqh-council-subnav-link--active {
-  background: var(--mj-brand-deep, #0d4a39) !important;
-  color: var(--on-dark-strong, #fff) !important;
-  border-color: var(--mj-brand-deep, #0d4a39) !important;
+  background: var(--mj-brand-deep, var(--mj-brand-deep)) !important;
+  color: var(--on-dark-strong, var(--mj-white)) !important;
+  border-color: var(--mj-brand-deep, var(--mj-brand-deep)) !important;
 }
 
 html.dark .atl-tab--active,
@@ -508,7 +508,7 @@ html[data-theme="dark"] .notif-row__sub {
 .inst-card {
   background: var(--ss-card-bg, var(--color-surface, #fffcf7)) !important;
   border-color: color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, var(--color-border))) !important;
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
   box-shadow: var(--ss-shadow-soft, var(--shadow-soft, none)) !important;
   color: var(--color-text, var(--mj-ink)) !important;
 }
@@ -662,7 +662,7 @@ html[data-theme="dark"] .an-card__text {
 .is-stat-card {
   background: var(--ss-card-bg, var(--color-surface, #fffcf7)) !important;
   border-color: color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, var(--color-border))) !important;
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
   color: var(--color-text, var(--mj-ink)) !important;
 }
 html.dark .rq-card,
@@ -688,7 +688,7 @@ html[data-theme="dark"] .is-stat-card {
 .sa-card {
   background: var(--ss-card-bg, var(--color-surface, #fffcf7)) !important;
   border-color: color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, var(--color-border))) !important;
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
   color: var(--color-text, var(--mj-ink)) !important;
 }
 html.dark .sh-bab,
@@ -739,9 +739,9 @@ html[data-theme="dark"] .sa-card {
 .gl-term {
   background: var(--ss-card-bg, var(--color-surface, #fffcf7)) !important;
   border-color: color-mix(in srgb, var(--mj-brand) 16%, var(--ss-border, var(--color-border, #d9d3c8))) !important;
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
   box-shadow: var(--ss-shadow-soft, 0 6px 18px -12px rgba(15, 40, 30, 0.14)) !important;
-  color: var(--color-text, var(--mj-ink, #16241e)) !important;
+  color: var(--color-text, var(--mj-ink, var(--v2-color-ink))) !important;
 }
 
 html.dark .tarikh-card,
@@ -800,7 +800,7 @@ html[data-theme="dark"] .gl-term {
 .hs-card__term,
 .uq-type-card__title,
 .tf-edition-card__title {
-  color: var(--color-text, var(--mj-ink, #16241e)) !important;
+  color: var(--color-text, var(--mj-ink, var(--v2-color-ink))) !important;
   opacity: 1 !important;
 }
 .tarikh-card__summary,
@@ -845,7 +845,7 @@ html[data-theme="dark"] .fiqh-category-card__desc {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  color: var(--mj-brand, #1f6b56) !important;
+  color: var(--mj-brand, var(--mj-brand)) !important;
   font-weight: 700;
   padding-inline: 0 !important;
   min-height: 0 !important;
@@ -863,7 +863,7 @@ html[data-theme="dark"] .isp-card__cta {
 .fiqh-category-card__icon,
 .sect-card__icon,
 .uq-type-card__icon {
-  border-radius: 16px !important;
+  border-radius: var(--radius-lg, 1rem) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -882,7 +882,7 @@ html[data-theme="dark"] .isp-card__cta {
 .gl-term,
 .internal-link-card,
 .ss-internal-link-card {
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
 }
 
 .mk-card__hit {
@@ -903,7 +903,7 @@ html[data-theme="dark"] .isp-card__cta {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  color: var(--mj-brand, #1f6b56) !important;
+  color: var(--mj-brand, var(--mj-brand)) !important;
   font-weight: 700;
 }
 
@@ -923,7 +923,7 @@ html[data-theme="dark"] .sect-card__cta {
 .sect-card__link.internal-link-card,
 .sect-card__link.ss-internal-link-card {
   background: var(--ss-card-bg, var(--color-surface, #fffcf7)) !important;
-  color: var(--color-text, var(--mj-ink, #16241e)) !important;
+  color: var(--color-text, var(--mj-ink, var(--v2-color-ink))) !important;
   border: 1px solid color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, #d9d3c8)) !important;
   justify-content: flex-start !important;
 }
@@ -951,7 +951,7 @@ html[data-theme="dark"] .sect-card__link.hub-card {
 
 .fg-related__link.hub-card,
 .fg-related__link.internal-link-card {
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
   min-height: 3.25rem;
 }
 
@@ -960,7 +960,7 @@ html[data-theme="dark"] .sect-card__link.hub-card {
 .uq-usul-card,
 .akl-related__card,
 .hs-related__link {
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
 }
 
 .nb-azm-cta,
@@ -970,7 +970,7 @@ html[data-theme="dark"] .sect-card__link.hub-card {
 .hadith-index-card,
 .tf-edition-card,
 .nb-azm-card {
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
 }
 .tf-edition-card {
   display: flex;
@@ -995,7 +995,7 @@ button.nb-azm-card {
 .an-row,
 .tf-related__link,
 .isp-card {
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
   border-color: color-mix(in srgb, var(--mj-brand) 16%, var(--ss-border, var(--color-border, #d9d3c8))) !important;
   box-shadow: var(--ss-shadow-soft, 0 6px 18px -12px rgba(15, 40, 30, 0.14)) !important;
 }
@@ -1032,7 +1032,7 @@ html[data-theme="dark"] .isp-card {
 .ilm-card,
 .inst-card,
 .ilm-modal {
-  border-radius: var(--radius-card, 24px) !important;
+  border-radius: var(--radius-card, 1.5rem) !important;
 }
 .univ-card {
   background: var(--ss-card-bg, var(--color-surface, #fffcf7)) !important;
@@ -1041,7 +1041,7 @@ html[data-theme="dark"] .isp-card {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  color: var(--color-text, var(--mj-ink, #16241e)) !important;
+  color: var(--color-text, var(--mj-ink, var(--v2-color-ink))) !important;
 }
 html.dark .univ-card,
 html[data-theme="dark"] .univ-card {
@@ -1058,13 +1058,13 @@ html[data-theme="dark"] .univ-card {
   text-decoration: none;
 }
 .univ-card__hit:focus-visible {
-  outline: 2px solid var(--mj-brand, #1f6b56);
+  outline: 2px solid var(--mj-brand, var(--mj-brand));
   outline-offset: 2px;
 }
 .univ-btn--primary-ghost {
   pointer-events: none;
   background: transparent !important;
-  color: var(--mj-brand, #1f6b56) !important;
+  color: var(--mj-brand, var(--mj-brand)) !important;
   box-shadow: none !important;
   border: none !important;
   font-weight: 700;

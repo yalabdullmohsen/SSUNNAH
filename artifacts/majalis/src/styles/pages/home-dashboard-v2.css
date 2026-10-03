@@ -20,45 +20,45 @@ html[data-v2-dashboard="1"] .home-page-hero.page-hero-mj::before {
   background-image:
     radial-gradient(
       120% 80% at 100% 0%,
-      color-mix(in srgb, var(--v2-color-gold, #c9a82e) 22%, transparent) 0%,
+      color-mix(in srgb, var(--v2-color-gold, var(--sf-color-quran-gold)) 22%, transparent) 0%,
       transparent 55%
     ),
     linear-gradient(
       145deg,
-      var(--v2-color-emerald, #0f5c45) 0%,
-      var(--v2-color-emerald-deep, #0a3d2e) 100%
+      var(--v2-color-emerald, var(--mj-brand)) 0%,
+      var(--v2-color-emerald-deep, var(--mj-brand-deep)) 100%
     );
 }
 
 html[data-v2-dashboard="1"] .home-page-hero.page-hero-mj::after {
   background: radial-gradient(
     70% 100% at 50% 0%,
-    color-mix(in srgb, var(--v2-color-emerald-deep, #0a3d2e) 35%, transparent),
+    color-mix(in srgb, var(--v2-color-emerald-deep, var(--mj-brand-deep)) 35%, transparent),
     transparent 72%
   );
 }
 
 html[data-v2-dashboard="1"] .home-page-hero .page-hero-mj__eyebrow {
-  color: color-mix(in srgb, var(--v2-color-on-emerald, #fff) 88%, transparent);
+  color: color-mix(in srgb, var(--v2-color-on-emerald, var(--mj-white)) 88%, transparent);
 }
 
 html[data-v2-dashboard="1"] .home-page-hero .page-hero-mj__desc {
-  color: color-mix(in srgb, var(--v2-color-on-emerald, #fff) 90%, transparent);
+  color: color-mix(in srgb, var(--v2-color-on-emerald, var(--mj-white)) 90%, transparent);
 }
 
 html[data-v2-dashboard="1"] .home-page-hero .m2030-btn--primary,
 html[data-v2-dashboard="1"] .home-page-hero .mj-home-lcp-ph__hero-cta {
-  background: var(--v2-color-on-emerald, #fff);
-  color: var(--v2-color-emerald-deep, #0a3d2e);
+  background: var(--v2-color-on-emerald, var(--mj-white));
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   border: none;
   border-radius: var(--v2-radius-pill, 999px);
   font-weight: 700;
 }
 
 html[data-v2-dashboard="1"] .home-page-hero .m2030-btn--ghost {
-  background: color-mix(in srgb, var(--v2-color-on-emerald, #fff) 14%, transparent);
-  color: var(--v2-color-on-emerald, #fff);
-  border: 1px solid color-mix(in srgb, var(--v2-color-on-emerald, #fff) 35%, transparent);
+  background: color-mix(in srgb, var(--v2-color-on-emerald, var(--mj-white)) 14%, transparent);
+  color: var(--v2-color-on-emerald, var(--mj-white));
+  border: 1px solid color-mix(in srgb, var(--v2-color-on-emerald, var(--mj-white)) 35%, transparent);
   border-radius: var(--v2-radius-pill, 999px);
 }
 
@@ -75,7 +75,7 @@ html[data-v2-dashboard="1"].dark .home-page-hero.page-hero-mj::before {
     ),
     linear-gradient(
       145deg,
-      var(--v2-color-emerald-deep, #0a3d2e) 0%,
+      var(--v2-color-emerald-deep, var(--mj-brand-deep)) 0%,
       var(--v2-color-night-bg, #0a1612) 100%
     );
 }
@@ -146,9 +146,9 @@ html[data-v2-dashboard="1"] .hw3-chip {
   min-height: 2.75rem;
   padding: 0.45rem 0.65rem;
   border-radius: var(--v2-radius-md, 14px);
-  border: 1px solid color-mix(in srgb, var(--v2-color-on-emerald, #fff) 22%, transparent);
-  background: color-mix(in srgb, var(--v2-color-on-emerald, #fff) 10%, transparent);
-  color: var(--v2-color-on-emerald, #fff);
+  border: 1px solid color-mix(in srgb, var(--v2-color-on-emerald, var(--mj-white)) 22%, transparent);
+  background: color-mix(in srgb, var(--v2-color-on-emerald, var(--mj-white)) 10%, transparent);
+  color: var(--v2-color-on-emerald, var(--mj-white));
   text-decoration: none;
   overflow: hidden;
   transition:
@@ -157,7 +157,7 @@ html[data-v2-dashboard="1"] .hw3-chip {
 }
 
 html[data-v2-dashboard="1"] .hw3-chip:hover {
-  background: color-mix(in srgb, var(--v2-color-on-emerald, #fff) 16%, transparent);
+  background: color-mix(in srgb, var(--v2-color-on-emerald, var(--mj-white)) 16%, transparent);
 }
 
 html[data-v2-dashboard="1"] .hw3-chip:active {
@@ -165,7 +165,7 @@ html[data-v2-dashboard="1"] .hw3-chip:active {
 }
 
 html[data-v2-dashboard="1"] .hw3-chip:focus-visible {
-  outline: 2px solid var(--v2-color-gold, #c9a82e);
+  outline: 2px solid var(--v2-color-gold, var(--sf-color-quran-gold));
   outline-offset: 2px;
 }
 
@@ -191,7 +191,7 @@ html[data-v2-dashboard="1"] .hw3-chip--progress .hw3-chip__bar {
   inset-inline: 0;
   inset-block-end: 0;
   height: 2px;
-  background: color-mix(in srgb, var(--v2-color-on-emerald, #fff) 18%, transparent);
+  background: color-mix(in srgb, var(--v2-color-on-emerald, var(--mj-white)) 18%, transparent);
 }
 
 html[data-v2-dashboard="1"] .hw3-chip--progress .hw3-chip__bar::after {
@@ -199,7 +199,7 @@ html[data-v2-dashboard="1"] .hw3-chip--progress .hw3-chip__bar::after {
   display: block;
   height: 100%;
   width: var(--hw3-pct, 0%);
-  background: var(--v2-color-gold, #c9a82e);
+  background: var(--v2-color-gold, var(--sf-color-quran-gold));
   border-radius: inherit;
 }
 
@@ -217,9 +217,9 @@ html[data-v2-dashboard="1"] .hw3-action {
   min-height: 2rem;
   padding-inline: 0.75rem;
   border-radius: var(--v2-radius-pill, 999px);
-  border: 1px solid color-mix(in srgb, var(--v2-color-gold, #c9a82e) 45%, transparent);
-  background: color-mix(in srgb, var(--v2-color-gold, #c9a82e) 14%, transparent);
-  color: var(--v2-color-on-emerald, #fff);
+  border: 1px solid color-mix(in srgb, var(--v2-color-gold, var(--sf-color-quran-gold)) 45%, transparent);
+  background: color-mix(in srgb, var(--v2-color-gold, var(--sf-color-quran-gold)) 14%, transparent);
+  color: var(--v2-color-on-emerald, var(--mj-white));
   font-size: 0.78rem;
   font-weight: 700;
   text-decoration: none;
@@ -229,7 +229,7 @@ html[data-v2-dashboard="1"] .hw3-action {
 }
 
 html[data-v2-dashboard="1"] .hw3-action:hover {
-  background: color-mix(in srgb, var(--v2-color-gold, #c9a82e) 24%, transparent);
+  background: color-mix(in srgb, var(--v2-color-gold, var(--sf-color-quran-gold)) 24%, transparent);
 }
 
 html[data-v2-dashboard="1"] .hw3-action:active {
@@ -237,7 +237,7 @@ html[data-v2-dashboard="1"] .hw3-action:active {
 }
 
 html[data-v2-dashboard="1"] .hw3-action:focus-visible {
-  outline: 2px solid var(--v2-color-gold, #c9a82e);
+  outline: 2px solid var(--v2-color-gold, var(--sf-color-quran-gold));
   outline-offset: 2px;
 }
 
@@ -348,25 +348,25 @@ html[data-v2-dashboard="1"] .m2030-home .hus-field {
   max-height: 52px;
   box-sizing: border-box;
   border-radius: var(--v2-radius-lg);
-  border-color: color-mix(in srgb, var(--v2-color-emerald, #0f5c45) 16%, var(--v2-hairline));
+  border-color: color-mix(in srgb, var(--v2-color-emerald, var(--mj-brand)) 16%, var(--v2-hairline));
   background: var(--v2-color-ivory-surface);
   box-shadow:
-    inset 0 1px 0 color-mix(in srgb, #fff 72%, transparent),
-    0 4px 16px color-mix(in srgb, var(--v2-color-emerald-deep, #0a3d2e) 6%, transparent);
+    inset 0 1px 0 color-mix(in srgb, var(--mj-white) 72%, transparent),
+    0 4px 16px color-mix(in srgb, var(--v2-color-emerald-deep, var(--mj-brand-deep)) 6%, transparent);
   transition:
     border-color var(--v2-duration-fast, 140ms) var(--v2-ease-out, ease),
     box-shadow var(--v2-duration, 200ms) var(--v2-ease-out, ease);
 }
 
 html[data-v2-dashboard="1"] .m2030-home .hus-field.is-focused {
-  border-color: color-mix(in srgb, var(--v2-color-emerald, #0f5c45) 42%, transparent);
+  border-color: color-mix(in srgb, var(--v2-color-emerald, var(--mj-brand)) 42%, transparent);
   box-shadow:
-    0 0 0 3px color-mix(in srgb, var(--v2-color-gold, #c9a82e) 28%, transparent),
-    0 6px 18px color-mix(in srgb, var(--v2-color-emerald-deep, #0a3d2e) 8%, transparent);
+    0 0 0 3px color-mix(in srgb, var(--v2-color-gold, var(--sf-color-quran-gold)) 28%, transparent),
+    0 6px 18px color-mix(in srgb, var(--v2-color-emerald-deep, var(--mj-brand-deep)) 8%, transparent);
 }
 
 html[data-v2-dashboard="1"] .m2030-home .hus-icon {
-  color: var(--v2-color-emerald-deep, #0a3d2e);
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   opacity: 0.85;
 }
 
@@ -398,8 +398,8 @@ html[data-v2-dashboard="1"] .m2030-home .home-sacred-day:not(.home-sacred-day--p
   border-radius: var(--v2-radius-pill, 999px);
   background: linear-gradient(
     180deg,
-    var(--v2-color-gold, #c9a82e),
-    var(--v2-color-emerald, #0f5c45)
+    var(--v2-color-gold, var(--sf-color-quran-gold)),
+    var(--v2-color-emerald, var(--mj-brand))
   );
 }
 
@@ -422,7 +422,7 @@ html[data-v2-dashboard="1"] .m2030-home .home-sacred-day__kicker {
   margin: 0;
   font-size: 0.78rem;
   font-weight: 800;
-  color: var(--v2-color-emerald-deep, #0a3d2e);
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
 
 html[data-v2-dashboard="1"] .m2030-home .home-sacred-day__text {

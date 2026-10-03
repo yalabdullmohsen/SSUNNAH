@@ -93,7 +93,7 @@
   height: 44px;
   min-width: 44px;
   min-height: 44px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   flex-shrink: 0;
   position: relative;
   z-index: 2;
@@ -126,7 +126,7 @@
   height: 44px;
   min-width: 44px;
   min-height: 44px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   position: relative;
   z-index: 2;
 }
@@ -142,7 +142,7 @@
   font-size: 0.7rem;
   padding: 0.2rem 0.1rem;
   gap: 1px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
 }
 
 .ayah-action-sheet__actions-grid .quran-tab svg,
@@ -165,7 +165,7 @@
   width: 44px;
   height: 44px;
   border: 1px solid color-mix(in srgb, var(--mushaf-reading-gold, var(--mm-gold, #B8942E)) 36%, transparent);
-  background: color-mix(in srgb, var(--mm-paper, #fdf9f3) 92%, #fff);
+  background: color-mix(in srgb, var(--mm-paper, #fdf9f3) 92%, var(--mj-white));
 }
 
 .mm-settings-sheet .quran-sheet__title {

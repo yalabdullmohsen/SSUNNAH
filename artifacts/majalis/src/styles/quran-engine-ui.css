@@ -21,7 +21,7 @@
   border: 1px solid color-mix(in srgb, var(--qe-emerald, var(--mj-brand-deep)) 28%, transparent);
   background: transparent;
   color: var(--qe-emerald, var(--mj-brand-deep));
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   padding: 0.4rem 0.95rem;
   font: inherit;
   cursor: pointer;
@@ -137,7 +137,7 @@ html.dark .qe-abar {
   border: 1px solid color-mix(in srgb, var(--qe-emerald) 30%, transparent);
   background: var(--qe-reader-header, color-mix(in srgb, var(--qe-panel) 92%, transparent));
   color: var(--qe-reader-text, var(--qe-emerald));
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   padding: 0.4rem 0.85rem;
   font: inherit;
   font-size: 0.82rem;
@@ -185,7 +185,7 @@ html.dark .qe-abar {
   margin: 0.85rem auto 0;
   width: fit-content;
   padding: 0.45rem 0.85rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1px solid color-mix(in srgb, var(--qe-line) 70%, transparent);
   background: color-mix(in srgb, var(--qe-panel) 94%, transparent);
   box-shadow: 0 6px 20px color-mix(in srgb, #1a2e24 12%, transparent);
@@ -195,7 +195,7 @@ html.dark .qe-abar {
 .qe-font-bar__btn {
   width: 2.4rem;
   height: 2.4rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1px solid color-mix(in srgb, var(--qe-emerald) 32%, transparent);
   background: color-mix(in srgb, var(--qe-emerald) 8%, transparent);
   color: var(--qe-emerald);
@@ -241,7 +241,7 @@ html.dark .qe-abar {
 .qe-ayah-list--focus .qe-ayah {
   border-color: transparent;
   background: transparent;
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   padding: 10px;
   margin-bottom: 0.25rem;
 }
@@ -268,7 +268,7 @@ html.dark .qe-abar {
 .qe-ayah-list--focus .qe-ayah.is-active {
   /* Flutter: Colors.brown.withOpacity(0.2) + brown[900] text */
   background: var(--quran-verse-selected-bg, rgba(121, 85, 72, 0.2));
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   padding: 10px;
 }
 
@@ -354,7 +354,7 @@ body.qe-focus-mode {
   border: 1px solid color-mix(in srgb, var(--qe-emerald) 28%, transparent);
   background: transparent;
   color: var(--qe-emerald);
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   padding: 0.35rem 0.85rem;
   font: inherit;
   cursor: pointer;
@@ -576,7 +576,7 @@ body.qe-focus-mode {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: color-mix(in srgb, var(--qe-emerald) 12%, transparent);
   color: var(--qe-emerald);
   font-size: 0.8rem;
@@ -791,7 +791,7 @@ body.qe-focus-mode {
   cursor: pointer;
   width: 2.25rem;
   height: 2.25rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
@@ -832,7 +832,7 @@ body.qe-focus-mode {
   border: 1px solid color-mix(in srgb, var(--qe-emerald) 28%, transparent);
   background: color-mix(in srgb, var(--qe-panel) 88%, transparent);
   color: var(--qe-emerald);
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   padding: 0.4rem 0.85rem;
   font: inherit;
   font-size: 0.82rem;
@@ -950,7 +950,7 @@ body.qe-focus-mode {
 
 .qe-dash__progress {
   height: 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: color-mix(in srgb, var(--qe-emerald) 12%, transparent);
   overflow: hidden;
 }
@@ -1044,7 +1044,7 @@ body.qe-focus-mode {
   border: 1px solid color-mix(in srgb, var(--qe-emerald) 28%, transparent);
   background: color-mix(in srgb, var(--qe-panel) 88%, transparent);
   color: var(--qe-emerald);
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   padding: 0.4rem 0.75rem;
   font: inherit;
   font-size: 0.8rem;
@@ -1118,7 +1118,7 @@ body.qe-focus-mode {
   border: 1px solid color-mix(in srgb, var(--qe-line) 65%, transparent);
   background: color-mix(in srgb, var(--qe-panel) 90%, transparent);
   color: var(--qe-ink);
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   padding: 0.3rem 0.65rem;
   font: inherit;
   font-size: 0.75rem;

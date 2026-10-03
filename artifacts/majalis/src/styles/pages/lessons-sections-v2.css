@@ -8,7 +8,7 @@
 html[data-v2-lessons="1"] .lessons-page-v2,
 html[data-v2-lessons="1"] .lessons-page-v3 {
   background: var(--v2-color-ivory, #f9f8f4);
-  color: var(--v2-color-ink, #16241e);
+  color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
 html[data-v2-lessons="1"] .lessons-v3-sticky {
@@ -32,18 +32,18 @@ html[data-v2-lessons="1"] .lesson-filters__icon-btn {
   height: 2.5rem;
   border-radius: var(--v2-radius-icon, 16px);
   background: var(--v2-color-emerald-soft, #e2efe8);
-  color: var(--v2-color-emerald-deep, #0a3d2e);
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   border: 1px solid var(--v2-hairline);
 }
 
 html[data-v2-lessons="1"] .lesson-unified-card {
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
-  background: var(--cs-surface-3, #ffffff) !important;
-  background-color: var(--cs-surface-3, #ffffff) !important;
+  background: var(--cs-surface-3, var(--mj-white)) !important;
+  background-color: var(--cs-surface-3, var(--mj-white)) !important;
   background-image: none !important;
   box-shadow: var(--cs-shadow, var(--v2-shadow-soft));
-  color: var(--cs-text-primary, #15382d) !important;
+  color: var(--cs-text-primary, var(--sf-color-rich-ink)) !important;
   transition:
     transform var(--v2-duration-fast, 140ms) var(--v2-ease-out, ease),
     box-shadow var(--v2-duration, 200ms) var(--v2-ease-out, ease),
@@ -51,16 +51,16 @@ html[data-v2-lessons="1"] .lesson-unified-card {
 }
 
 html[data-v2-lessons="1"] .lessons-v2-filters {
-  border-radius: var(--v2-radius-card, 26px);
-  border: 1px solid color-mix(in srgb, var(--v2-hairline) 90%, var(--v2-color-emerald, #0f5c45));
+  border-radius: var(--v2-radius-card, 1.5rem);
+  border: 1px solid color-mix(in srgb, var(--v2-hairline) 90%, var(--v2-color-emerald, var(--mj-brand)));
   background: var(--v2-color-ivory-surface, #fffcf8);
   box-shadow:
-    0 1px 0 color-mix(in srgb, #fff 65%, transparent),
+    0 1px 0 color-mix(in srgb, var(--mj-white) 65%, transparent),
     var(--v2-shadow-soft);
 }
 
 html[data-v2-lessons="1"] .lesson-unified-card:hover {
-  border-color: color-mix(in srgb, var(--v2-color-emerald, #0f5c45) 26%, var(--v2-hairline));
+  border-color: color-mix(in srgb, var(--v2-color-emerald, var(--mj-brand)) 26%, var(--v2-hairline));
   box-shadow: var(--v2-shadow-card);
   transform: translateY(-1px);
 }
@@ -74,7 +74,7 @@ html[data-v2-lessons="1"] .lesson-unified-card__title {
   font-size: 1.05rem;
   font-weight: 800;
   line-height: 1.35;
-  color: var(--cs-text-primary, #15382d) !important;
+  color: var(--cs-text-primary, var(--sf-color-rich-ink)) !important;
   letter-spacing: -0.01em;
 }
 
@@ -106,7 +106,7 @@ html[data-v2-lessons="1"] .lesson-unified-card__status {
   border-radius: var(--v2-radius-pill, 999px);
   border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
   background: var(--cs-primary-soft, #e2efe8);
-  color: var(--cs-primary-deep, #0a4530) !important;
+  color: var(--cs-primary-deep, var(--sf-color-deep-emerald-deep)) !important;
 }
 
 html[data-v2-lessons="1"] .lesson-unified-card__facts {
@@ -121,12 +121,12 @@ html[data-v2-lessons="1"] .lesson-unified-card a.mj-btn--primary {
   border-radius: var(--v2-radius-pill, 999px);
   font-weight: 800;
   min-height: 44px;
-  box-shadow: 0 1px 0 color-mix(in srgb, #fff 40%, transparent);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--mj-white) 40%, transparent);
 }
 
 html[data-v2-lessons="1"] .lessons-past-section__title,
 html[data-v2-lessons="1"] .section-lobby__title {
-  color: var(--v2-color-ink, #16241e);
+  color: var(--v2-color-ink, var(--v2-color-ink));
   font-weight: 800;
 }
 
@@ -138,14 +138,14 @@ html[data-v2-lessons="1"] .lessons-page-stats__item {
 html[data-v2-lessons="1"] .mj-btn--ghost {
   border-radius: var(--v2-radius-pill, 999px);
   border-color: var(--v2-hairline);
-  color: var(--v2-color-emerald-deep, #0a3d2e);
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
 
 /* ── الأقسام ── */
 html[data-v2-sections="1"] .section-lobby,
 html[data-v2-sections="1"] .grid-screen {
   background: var(--v2-color-ivory, #f9f8f4);
-  color: var(--v2-color-ink, #16241e);
+  color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
 html[data-v2-sections="1"] .section-lobby__title {
@@ -161,24 +161,24 @@ html[data-v2-sections="1"] .section-lobby__title::after {
   height: 3px;
   margin-block-start: 0.55rem;
   border-radius: var(--v2-radius-pill, 999px);
-  background: var(--v2-accent-gold, var(--v2-color-gold, #c9a82e));
+  background: var(--v2-accent-gold, var(--v2-color-gold, var(--sf-color-quran-gold)));
 }
 
 html[data-v2-sections="1"] .section-lobby__group-title {
   font-weight: 800;
-  color: var(--v2-color-emerald-deep, #0a3d2e);
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
 
 html[data-v2-sections="1"] .hub-card,
 html[data-v2-sections="1"] .section-entry-card {
-  border-radius: var(--v2-radius-card, 26px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
-  background: var(--cs-surface-3, #ffffff) !important;
-  background-color: var(--cs-surface-3, #ffffff) !important;
+  background: var(--cs-surface-3, var(--mj-white)) !important;
+  background-color: var(--cs-surface-3, var(--mj-white)) !important;
   background-image: none !important;
   box-shadow: var(--cs-shadow, var(--v2-shadow-soft));
   min-height: 6.5rem;
-  color: var(--cs-text-primary, #15382d) !important;
+  color: var(--cs-text-primary, var(--sf-color-rich-ink)) !important;
   transition:
     transform var(--v2-duration-fast, 140ms) var(--v2-ease-out, ease),
     box-shadow var(--v2-duration, 200ms) var(--v2-ease-out, ease),
@@ -186,11 +186,11 @@ html[data-v2-sections="1"] .section-entry-card {
 }
 
 html[data-v2-sections="1"] .more-page-tile {
-  border-radius: var(--v2-radius-card, 26px);
-  border: 1px solid color-mix(in srgb, var(--v2-hairline) 88%, var(--v2-color-emerald, #0f5c45));
+  border-radius: var(--v2-radius-card, 1.5rem);
+  border: 1px solid color-mix(in srgb, var(--v2-hairline) 88%, var(--v2-color-emerald, var(--mj-brand)));
   background: var(--v2-color-ivory-surface, #fffcf8);
   box-shadow:
-    0 1px 0 color-mix(in srgb, #fff 65%, transparent),
+    0 1px 0 color-mix(in srgb, var(--mj-white) 65%, transparent),
     var(--v2-shadow-soft);
   min-height: 6.5rem;
   transition:
@@ -202,7 +202,7 @@ html[data-v2-sections="1"] .more-page-tile {
 html[data-v2-sections="1"] .hub-card:hover,
 html[data-v2-sections="1"] .section-entry-card:hover,
 html[data-v2-sections="1"] .more-page-tile:hover {
-  border-color: color-mix(in srgb, var(--v2-color-emerald, #0f5c45) 28%, var(--v2-hairline));
+  border-color: color-mix(in srgb, var(--v2-color-emerald, var(--mj-brand)) 28%, var(--v2-hairline));
   box-shadow: var(--v2-shadow-card);
   transform: translateY(-1px);
 }
@@ -219,7 +219,7 @@ html[data-v2-sections="1"] .section-entry-card__icon {
   height: var(--v2-icon-tile, 2.75rem);
   border-radius: var(--v2-radius-icon, 16px);
   background: var(--cs-primary-soft, #e2efe8) !important;
-  color: var(--cs-primary-deep, #0a4530) !important;
+  color: var(--cs-primary-deep, var(--sf-color-deep-emerald-deep)) !important;
 }
 
 html[data-v2-sections="1"] .more-page-tile__icon {
@@ -229,11 +229,11 @@ html[data-v2-sections="1"] .more-page-tile__icon {
   background:
     linear-gradient(
       145deg,
-      color-mix(in srgb, var(--v2-color-gold, #c9a82e) 14%, var(--v2-color-emerald-soft, #e2efe8)) 0%,
+      color-mix(in srgb, var(--v2-color-gold, var(--sf-color-quran-gold)) 14%, var(--v2-color-emerald-soft, #e2efe8)) 0%,
       var(--v2-color-emerald-soft, #e2efe8) 100%
     );
-  color: var(--v2-color-emerald-deep, #0a3d2e);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--v2-color-gold, #c9a82e) 24%, transparent);
+  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--v2-color-gold, var(--sf-color-quran-gold)) 24%, transparent);
 }
 
 html[data-v2-sections="1"] .hub-card__title,
@@ -241,14 +241,14 @@ html[data-v2-sections="1"] .section-entry-card__title {
   font-weight: 800;
   font-size: 1.02rem;
   line-height: 1.3;
-  color: var(--cs-text-primary, #15382d) !important;
+  color: var(--cs-text-primary, var(--sf-color-rich-ink)) !important;
 }
 
 html[data-v2-sections="1"] .more-page-tile__label {
   font-weight: 800;
   font-size: 1.02rem;
   line-height: 1.3;
-  color: var(--v2-color-ink, #16241e);
+  color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
 html[data-v2-sections="1"] .hub-card__desc,

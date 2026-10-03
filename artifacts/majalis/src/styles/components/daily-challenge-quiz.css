@@ -105,7 +105,7 @@
   border-radius: 0.55rem;
   border: 0;
   background: var(--mj-brand, var(--brand));
-  color: #fff;
+  color: var(--mj-white);
   font-weight: 700;
   cursor: pointer;
 }

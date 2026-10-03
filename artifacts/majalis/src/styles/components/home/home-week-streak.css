@@ -19,7 +19,7 @@
   font-size: 0.78rem;
   font-weight: 800;
   background: linear-gradient(135deg, #FF6B35, #FF8C42);
-  color: #fff;
+  color: var(--mj-white);
   border-radius: var(--ds-radius-full);
   padding: 0.1rem 0.55rem;
 }
@@ -51,7 +51,7 @@
 .hws__day--done .hws__circle {
   background: var(--mj-brand);
   border-color: var(--mj-brand);
-  color: #fff;
+  color: var(--mj-white);
   box-shadow: 0 2px 8px rgba(31,77,58,0.25);
 }
 .hws__day--today .hws__circle {

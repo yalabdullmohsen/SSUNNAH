@@ -153,14 +153,14 @@
   background: var(--surface-card);
   border: 1px solid var(--mie-border);
   color: var(--text-secondary);
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
 }
 
 .search-page .search-adv-toggle:hover,
 .search-page .search-adv-toggle.is-active {
   background: var(--brand-olive);
   border-color: var(--brand-olive);
-  color: #fff;
+  color: var(--mj-white);
   box-shadow: none;
 }
 

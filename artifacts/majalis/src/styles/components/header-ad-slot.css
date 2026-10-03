@@ -34,7 +34,6 @@
   background: #0f2f28;
   background-image: none;
   border: 1px solid color-mix(in srgb, #d4b76a 28%, #0f2f28);
-  box-shadow: none;
   transition: opacity 0.15s ease, transform 0.15s ease;
   overflow: hidden;
 }
@@ -66,7 +65,7 @@
   white-space: nowrap;
   color: #0f2f28;
   background: linear-gradient(135deg, #ebe4d4 0%, #d4b76a 100%);
-  border: 1px solid color-mix(in srgb, #fff 35%, #d4b76a);
+  border: 1px solid color-mix(in srgb, var(--mj-white) 35%, #d4b76a);
 }
 
 .header-ad-slot__copy {
@@ -85,7 +84,7 @@
   font-size: 0.72rem;
   font-weight: 800;
   line-height: 1.15;
-  color: #fff;
+  color: var(--mj-white);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -96,7 +95,7 @@
   font-size: 0.58rem;
   font-weight: 600;
   line-height: 1.2;
-  color: color-mix(in srgb, #fff 82%, #d4b76a);
+  color: color-mix(in srgb, var(--mj-white) 82%, #d4b76a);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -121,7 +120,7 @@ html.theme-dark .header-ad-slot__title {
 
 html[data-theme="dark"] .header-ad-slot__subtitle,
 html.theme-dark .header-ad-slot__subtitle {
-  color: color-mix(in srgb, #fff 78%, #c8ebd9);
+  color: color-mix(in srgb, var(--mj-white) 78%, #c8ebd9);
 }
 
 html[data-theme="dark"] .header-ad-slot__badge,

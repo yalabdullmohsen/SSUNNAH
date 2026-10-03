@@ -31,10 +31,10 @@
   --surface-app: var(--mj-bg);
 
   /* حواف موحّدة — سلم Foundation: XS=12 · SM=16 · MD=20 · LG=24 */
-  --radius-card: var(--sf-radius-card, var(--sf-radius-md, 20px));
+  --radius-card: var(--sf-radius-card, 1.5rem));
   --radius-tile: var(--sf-radius-md, 20px);
   --radius-button: var(--sf-radius-sm, 16px);
-  --radius-control: var(--sf-radius-control, var(--sf-radius-xs, 12px));
+  --radius-control: var(--sf-radius-control, 0.75rem));
   --radius-sheet: var(--sf-radius-sheet, var(--sf-radius-lg, 24px));
   --radius-nav: var(--sf-radius-lg, 24px);
   --radius-pill: var(--sf-radius-pill, 999px);
@@ -207,7 +207,7 @@ html.dark .sq-header svg {
 .section-hub__chip,
 .fiqh-hub-strip__tab {
   min-height: 44px !important;
-  border-radius: 999px !important;
+  border-radius: var(--radius-pill, 999rem) !important;
   border: 1px solid var(--mj-chip-border, var(--color-border)) !important;
   background: var(--mj-chip-bg, var(--color-surface)) !important;
   color: var(--mj-chip-fg, var(--color-text)) !important;

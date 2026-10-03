@@ -59,7 +59,7 @@
   padding: 0.65rem 1rem;
   border-radius: var(--ds-radius-lg, 0.75rem);
   background: var(--msk-gold, var(--mj-brand-deep, var(--mj-brand)));
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   font-size: 0.85rem;
   font-weight: 600;
   box-shadow: 0 6px 20px color-mix(in srgb, var(--msk-gold, var(--mj-brand)) 28%, transparent);
@@ -264,7 +264,7 @@ html[data-theme="dark"] .ads-diagnostics-toggle {
 .ads-chip.is-active {
   border-color: var(--msk-gold, var(--mj-brand-deep, #1c5244));
   background: var(--msk-gold, var(--mj-brand-deep, var(--mj-brand)));
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
 }
 @media (prefers-reduced-motion: reduce) {
   .ads-chip { transition: none; }
@@ -367,7 +367,7 @@ html[data-theme="dark"] .ads-diagnostics-toggle {
   width: 27px;
   height: 27px;
   border-radius: 50%;
-  background: var(--mj-white, var(--mj-white, #ffffff));
+  background: var(--mj-white, var(--mj-white, var(--mj-white)));
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
   transition: inset-inline-start 0.2s ease;
   pointer-events: none;
@@ -418,7 +418,7 @@ html[data-theme="dark"] .ads-diagnostics-toggle {
   min-height: 44px;
   border-radius: 0.5rem;
   border: 1px solid color-mix(in srgb, var(--clr-border, var(--mj-hairline)) 80%, transparent);
-  background: var(--clr-surface, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--clr-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
   color: inherit;
   max-width: 9rem;
 }
@@ -448,7 +448,7 @@ html[data-theme="dark"] .ads-diagnostics-toggle {
 .ads-sheet {
   width: min(100vw, 540px);
   max-height: 70vh;
-  background: var(--msk-canvas-1, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--msk-canvas-1, var(--mj-white, var(--mj-white, var(--mj-white))));
   border-radius: 1.25rem 1.25rem 0 0;
   border: 1px solid var(--msk-border);
   border-bottom: none;
@@ -573,7 +573,7 @@ html[data-theme="dark"] .ads-diagnostics-toggle {
   min-height: 40px;
   border-radius: 0.55rem;
   border: 1px solid var(--msk-border);
-  background: var(--msk-canvas-1, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--msk-canvas-1, var(--mj-white, var(--mj-white, var(--mj-white))));
   color: var(--msk-text);
   font: inherit;
   font-size: 0.8rem;
@@ -615,7 +615,7 @@ html[data-theme="dark"] .ads-diagnostics-toggle {
   padding: 0.55rem 0.65rem;
   border-radius: 0.55rem;
   border: 1px solid var(--msk-border);
-  background: var(--msk-canvas-1, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--msk-canvas-1, var(--mj-white, var(--mj-white, var(--mj-white))));
 }
 
 
@@ -686,7 +686,7 @@ html[data-theme="dark"] .ads-page--v3 {
   padding: 0.7rem 0.8rem;
   border-radius: 0.7rem;
   border: 1px solid var(--msk-border, #e2ddd3);
-  background: var(--msk-canvas-1, #fff);
+  background: var(--msk-canvas-1, var(--mj-white));
 }
 .ads-sound-summary__text {
   display: flex;
@@ -761,7 +761,7 @@ html[data-theme="dark"] .ads-page--v3 {
   overflow: auto;
   padding: 1rem 1rem calc(1.25rem + var(--inset-bottom, 0px));
   border-radius: 1rem 1rem 0 0;
-  background: var(--msk-canvas-1, #fff);
+  background: var(--msk-canvas-1, var(--mj-white));
   color: var(--msk-text);
   box-shadow: 0 -8px 28px color-mix(in srgb, #000 16%, transparent);
 }
@@ -846,7 +846,7 @@ html[data-theme="dark"] .ads-page--v3 {
 }
 .prayer-audio-picker__row.is-selected {
   border-color: color-mix(in srgb, var(--brand, #0f766e) 50%, var(--msk-border));
-  background: color-mix(in srgb, var(--brand, #0f766e) 8%, var(--msk-canvas-1, #fff));
+  background: color-mix(in srgb, var(--brand, #0f766e) 8%, var(--msk-canvas-1, var(--mj-white)));
 }
 .prayer-audio-picker__select {
   border: 0;
@@ -873,7 +873,7 @@ html[data-theme="dark"] .ads-page--v3 {
   height: 2.5rem;
   border-radius: 999px;
   border: 1px solid var(--msk-border);
-  background: var(--msk-canvas-1, #fff);
+  background: var(--msk-canvas-1, var(--mj-white));
   color: inherit;
   display: grid;
   place-items: center;

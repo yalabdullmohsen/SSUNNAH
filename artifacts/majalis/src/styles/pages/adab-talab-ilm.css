@@ -18,7 +18,7 @@
 .atl-hero__title { font-size: 2rem; font-weight: 800; margin: 0 0 .5rem; }
 .atl-hero__sub { font-size: .93rem; margin: 0 0 1.2rem; line-height: 1.7; }
 .atl-hero__quote {
-  display: inline-block; border-inline-end: 3px solid color-mix(in srgb, var(--mj-brand, #1f6b56) 45%, transparent);
+  display: inline-block; border-inline-end: 3px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 45%, transparent);
   padding: .7rem 1rem; border-radius: .5rem;
   font-size: .88rem; line-height: 1.6; max-width: 520px;
 }
@@ -53,7 +53,7 @@
 
 /* Cards for fadl */
 .atl-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: .85rem; }
-.atl-card { background: var(--ss-card-bg, var(--color-surface, var(--mj-surface))); border: 1px solid var(--mj-hairline, var(--mj-hairline, #e3e8e6)); border-radius: .9rem; padding: 1.1rem 1.2rem; box-shadow: 0 1px 5px rgba(0,0,0,.04); }
+.atl-card { background: var(--ss-card-bg, var(--color-surface, var(--mj-surface))); border: 1px solid var(--mj-hairline, var(--mj-hairline, #e3e8e6)); border-radius: .9rem; padding: 1.1rem 1.2rem; box-shadow: var(--v2-shadow-soft); }
 .atl-card--hadith { border-top: 3px solid var(--mj-brand); }
 .atl-card__title { font-size: .9rem; font-weight: 800; color: var(--mj-brand); margin: 0 0 .45rem; }
 .atl-card__text { font-size: .88rem; color: var(--color-text-muted, var(--mj-ink-2)); line-height: 1.75; margin: 0 0 .4rem; }
@@ -86,7 +86,7 @@
 .atl-stage {
   display: flex; gap: var(--ds-space-4); background: var(--ss-card-bg, var(--color-surface, var(--mj-surface))); border: 1px solid var(--mj-hairline, var(--mj-hairline, #e3e8e6));
   border-radius: var(--ds-radius-xl); padding: 1.1rem 1.2rem;
-  box-shadow: 0 1px 5px rgba(0,0,0,.04);
+  box-shadow: var(--v2-shadow-soft);
 }
 .atl-stage__num {
   font-size: var(--ds-text-2xl); font-weight: 900; color: var(--mj-brand);

@@ -9,7 +9,7 @@
 html[data-v2-app="1"] .topic-page__hero {
   margin-block: 0.45rem 0.65rem;
   padding: 1.15rem max(0.85rem, var(--page-gutter, 1rem)) 1rem;
-  border-radius: var(--v2-radius-card, 16px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   box-shadow: var(--v2-shadow-soft);
 }
 
@@ -189,7 +189,7 @@ html[data-v2-app="1"] .mk-detail .mk-block {
   padding-block: var(--read-card-pad-block, 0.85rem);
   padding-inline: var(--read-card-pad-inline, 0.9rem);
   box-shadow: var(--v2-shadow-soft);
-  border-radius: var(--v2-radius-card, 16px);
+  border-radius: var(--v2-radius-card, 1.5rem);
 }
 
 html[data-v2-app="1"] .cr-shell {
@@ -225,7 +225,7 @@ html[data-v2-app="1"] .lesson-detail-page {
 html[data-v2-app="1"] .lesson-detail-page .lesson-detail-card,
 html[data-v2-app="1"] .lesson-detail-page .lesson-detail-card--compact {
   padding: var(--v2-pad-card, 0.85rem);
-  border-radius: var(--v2-radius-card, 16px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   box-shadow: var(--v2-shadow-soft);
 }
 
@@ -261,7 +261,7 @@ html[data-v2-app="1"] .hadith-by-id {
 
 html[data-v2-app="1"] .hadith-detail-card {
   padding: var(--v2-pad-card, 0.85rem);
-  border-radius: var(--v2-radius-card, 16px);
+  border-radius: var(--v2-radius-card, 1.5rem);
   box-shadow: var(--v2-shadow-soft);
   margin-block-end: var(--v2-gap-stack, 0.65rem);
 }

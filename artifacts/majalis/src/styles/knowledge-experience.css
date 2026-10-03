@@ -6,7 +6,7 @@
 :root {
   --kx-gap: 0.65rem;
   --kx-pad: 0.85rem 1rem;
-  --kx-radius: var(--radius-card, 18px);
+  --kx-radius: var(--radius-card, 1.125rem);
   --kx-ink: var(--mj-ink, #12241d);
   --kx-muted: var(--mj-ink-2, #3d5349);
   --kx-brand: var(--mj-brand, #1f6b56);
@@ -14,7 +14,7 @@
   --kx-surface: var(--ss-card-bg, #fffcf7);
   --kx-muted: var(--mj-ink-2, #3d5349);
   --kx-line: color-mix(in srgb, var(--kx-brand) 14%, transparent);
-  --kx-radius: var(--radius-card, 18px);
+  --kx-radius: var(--radius-card, 1.125rem);
 }
 
 /* —— أغلفة التخطيط —— */
@@ -108,7 +108,7 @@
 .kx-block--definition {
   background: color-mix(in srgb, var(--kx-brand) 6%, var(--kx-surface, var(--mj-surface, #fff)));
   border: 1px solid color-mix(in srgb, var(--kx-brand) 16%, transparent);
-  border-radius: var(--radius-card, 24px);
+  border-radius: var(--radius-card, 1.5rem);
   padding: 0.75rem 0.95rem;
 }
 
@@ -147,7 +147,7 @@
   top: 0.1rem;
   width: 1.35rem;
   height: 1.35rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   display: grid;
   place-items: center;
   font-size: 0.72rem;
@@ -238,7 +238,7 @@
   align-items: center;
   min-height: 2rem;
   padding: 0.25rem 0.7rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   font-size: 0.82rem;
   font-weight: 700;
   background: color-mix(in srgb, var(--kx-brand) 10%, var(--kx-surface));
@@ -322,7 +322,7 @@
   top: 0.35rem;
   width: 0.55rem;
   height: 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: var(--kx-brand);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--kx-brand) 18%, transparent);
 }
@@ -457,7 +457,7 @@
   justify-content: center;
   min-height: 2.25rem;
   padding: 0.35rem 0.75rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   font-size: 0.8rem;
   font-weight: 750;
   background: color-mix(in srgb, var(--kx-brand) 12%, transparent);
@@ -599,7 +599,7 @@
 .kx-filter-row__more {
   min-height: 2.25rem;
   padding: 0.3rem 0.75rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1px solid color-mix(in srgb, var(--kx-brand) 22%, transparent);
   background: var(--kx-surface);
   color: var(--kx-brand-deep);
@@ -669,7 +669,7 @@ button.app-back-btn--bar[data-fixed-back-bar="1"] {
   min-width: 44px;
   padding: 0.4rem 0.85rem 0.4rem 0.7rem;
   margin: 0;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: 1px solid color-mix(in srgb, var(--mj-brand, #146b52) 22%, transparent);
   background: color-mix(in srgb, var(--mj-surface, #fff) 94%, transparent);
   color: var(--mj-brand-deep, #0d4a39);
@@ -968,7 +968,7 @@ html[data-theme="dark"] .app-back-btn--bar.fixed-back-bar {
   gap: 0.35rem;
 }
 .kx-faq__item {
-  border-radius: 12px;
+  border-radius: var(--radius-md, 0.75rem);
   border-color: color-mix(in srgb, var(--kx-brand) 14%, transparent);
   background: color-mix(in srgb, var(--kx-surface) 96%, var(--kx-brand) 4%);
   transition: border-color 160ms ease, background 160ms ease;

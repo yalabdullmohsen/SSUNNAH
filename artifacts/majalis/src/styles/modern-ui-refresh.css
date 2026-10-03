@@ -8,7 +8,7 @@
   --mur-radius: 20px;
   --mur-radius-sm: 14px;
   --mur-radius-lg: 24px;
-  --mur-hairline: color-mix(in srgb, var(--mj-brand, #146b52) 10%, var(--mj-hairline, #d9d3c8));
+  --mur-hairline: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, var(--mj-hairline, #d9d3c8));
   --mur-shadow: 0 4px 18px -14px rgba(10, 61, 46, 0.18);
   --mur-shadow-press: 0 2px 10px -10px rgba(10, 61, 46, 0.16);
   --mur-gap: clamp(0.85rem, 2.2vw, 1.15rem);
@@ -114,7 +114,7 @@ html[data-theme="dark"] {
   font-weight: 750;
   line-height: 1.25;
   letter-spacing: -0.01em;
-  color: var(--mj-ink, #16241e);
+  color: var(--mj-ink, var(--v2-color-ink));
   margin: 0;
 }
 
@@ -134,8 +134,8 @@ html[data-theme="dark"] {
 .mj-segmented-filter {
   gap: 0.2rem;
   padding: 0.28rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 7%, var(--mj-surface-2, #f7f4ee));
+  border-radius: var(--radius-pill, 999rem);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 7%, var(--mj-surface-2, #f7f4ee));
   border: none;
   width: fit-content;
   max-width: 100%;
@@ -152,7 +152,7 @@ html[data-theme="dark"] {
   background: transparent;
   color: var(--mj-ink-2, #4f5f58);
   font-weight: 600;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   padding: 0.4rem 0.9rem;
   transition:
     background 160ms ease,
@@ -164,7 +164,7 @@ html[data-theme="dark"] {
 .mj-filter-chip[aria-pressed="true"],
 .mj-filter-chip[data-active="true"] {
   background: var(--mj-surface, #fffcf8);
-  color: var(--mj-brand-deep, #0d4a39);
+  color: var(--mj-brand-deep, var(--mj-brand-deep));
   box-shadow: 0 2px 8px -4px rgba(10, 61, 46, 0.22);
   font-weight: 700;
 }
@@ -238,7 +238,7 @@ html[data-theme="dark"] .mj-filter-chip[aria-pressed="true"] {
   padding-block: clamp(1rem, 2.5vw, 1.5rem);
   line-height: 1.85;
   font-size: var(--mur-body);
-  color: var(--mj-ink, #16241e);
+  color: var(--mj-ink, var(--v2-color-ink));
 }
 
 .content-reading :is(h2, h3),
@@ -248,7 +248,7 @@ html[data-theme="dark"] .mj-filter-chip[aria-pressed="true"] {
   font-weight: 750;
   line-height: 1.35;
   margin-block: 1.35rem 0.55rem;
-  color: var(--mj-ink, #16241e);
+  color: var(--mj-ink, var(--v2-color-ink));
 }
 
 .reading-info-block,
@@ -258,7 +258,7 @@ html[data-theme="dark"] .mj-filter-chip[aria-pressed="true"] {
   margin-block: 1rem;
   padding: 0.9rem 1rem;
   border-radius: var(--mur-radius-sm);
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 6%, var(--mj-surface, #fffcf8));
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 6%, var(--mj-surface, #fffcf8));
   border: none;
   box-shadow: none;
 }
@@ -271,9 +271,9 @@ html[data-theme="dark"] .mj-filter-chip[aria-pressed="true"] {
 input[type="search"].mj-search,
 .mj-search-field {
   min-height: 48px;
-  border-radius: 999px !important;
+  border-radius: var(--radius-pill, 999rem) !important;
   border: 1px solid transparent !important;
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 6%, var(--mj-surface, #fffcf8)) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 6%, var(--mj-surface, #fffcf8)) !important;
   box-shadow: none !important;
   padding-inline: 1.1rem 1rem !important;
   font-size: 1rem;
@@ -288,7 +288,7 @@ input[type="search"].mj-search:focus,
 .mj-search-field:focus {
   outline: none;
   background: var(--mj-surface, #fffcf8) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--mj-brand, #146b52) 35%, transparent) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 35%, transparent) !important;
 }
 
 .search-result-item:not(.soft-card),
@@ -296,7 +296,7 @@ input[type="search"].mj-search:focus,
   border: none !important;
   border-radius: var(--mur-radius-sm) !important;
   box-shadow: none !important;
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 4%, var(--mj-surface, #fffcf8)) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 4%, var(--mj-surface, #fffcf8)) !important;
   margin-block: 0.35rem;
 }
 
@@ -309,7 +309,7 @@ input[type="search"].mj-search:focus,
 button.soft-pill,
 .ActionButton,
 [data-slot="button"] {
-  border-radius: var(--radius-button, 18px);
+  border-radius: var(--sf-radius-control, 1.125rem);
   transition: transform 120ms ease, opacity 120ms ease, background 140ms ease;
 }
 
@@ -328,7 +328,7 @@ button.soft-pill:active,
   height: 52px !important;
   min-width: 52px !important;
   min-height: 52px !important;
-  border-radius: 16px !important;
+  border-radius: var(--radius-lg, 1rem) !important;
 }
 
 /* ── إعدادات بنمط قائمة حديثة ── */
@@ -378,7 +378,7 @@ button.soft-pill:active,
 .settings-row:active,
 .settings-item:active,
 .settings-link-row:active {
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 6%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 6%, transparent);
 }
 
 .mur-settings-row--toggle {
@@ -389,8 +389,8 @@ button.soft-pill:active,
   width: 2.75rem;
   height: 1.55rem;
   appearance: none;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #146b52) 28%, transparent);
+  border-radius: var(--radius-pill, 999rem);
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 28%, transparent);
   background: color-mix(in srgb, var(--mj-hairline, #d9d3c8) 55%, var(--mj-surface, #fffcf8));
   position: relative;
   flex-shrink: 0;
@@ -404,15 +404,15 @@ button.soft-pill:active,
   inset-inline-start: 2px;
   width: calc(1.55rem - 4px);
   height: calc(1.55rem - 4px);
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: var(--mj-surface, #fffcf8);
   box-shadow: 0 1px 2px rgba(36, 31, 24, 0.18);
   transition: inset-inline-start 140ms ease;
 }
 
 .mur-settings-row--toggle .settings-toggle-input:checked {
-  background: var(--mj-brand, #146b52);
-  border-color: var(--mj-brand, #146b52);
+  background: var(--mj-brand, var(--mj-brand));
+  border-color: var(--mj-brand, var(--mj-brand));
 }
 
 .mur-settings-row--toggle .settings-toggle-input:checked::after {
@@ -420,7 +420,7 @@ button.soft-pill:active,
 }
 
 .mur-settings-row--toggle .settings-toggle-input:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--mj-brand, #146b52) 55%, transparent);
+  outline: 2px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 55%, transparent);
   outline-offset: 2px;
 }
 
@@ -434,11 +434,11 @@ button.soft-pill:active,
 .settings-row__icon {
   width: 36px;
   height: 36px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   display: grid;
   place-items: center;
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 12%, transparent);
-  color: var(--mj-brand-deep, #0d4a39);
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 12%, transparent);
+  color: var(--mj-brand-deep, var(--mj-brand-deep));
   flex-shrink: 0;
 }
 
@@ -447,7 +447,7 @@ button.soft-pill:active,
 .settings-row__title {
   font-size: 0.98rem;
   font-weight: 650;
-  color: var(--mj-ink, #16241e);
+  color: var(--mj-ink, var(--v2-color-ink));
   line-height: 1.3;
 }
 
@@ -549,9 +549,9 @@ button.soft-pill:active,
 .settings-search-wrap input[type="search"] {
   min-height: 48px;
   width: 100%;
-  border-radius: 999px !important;
+  border-radius: var(--radius-pill, 999rem) !important;
   border: 1px solid transparent !important;
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 6%, var(--mj-surface, #fffcf8)) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 6%, var(--mj-surface, #fffcf8)) !important;
   padding-inline: 1.1rem !important;
   box-shadow: none !important;
 }
@@ -590,7 +590,7 @@ button.soft-pill:active,
   border-bottom: 1px solid color-mix(in srgb, var(--mj-hairline, #d9d3c8) 70%, transparent) !important;
   border-radius: 0 !important;
   background: transparent !important;
-  color: var(--mj-ink, #16241e) !important;
+  color: var(--mj-ink, var(--v2-color-ink)) !important;
   font-size: 0.95rem !important;
   font-weight: 650 !important;
 }
@@ -607,7 +607,7 @@ button.soft-pill:active,
 
 .mj-filter-bar__search input {
   border: 1px solid transparent !important;
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 6%, var(--mj-surface, #fffcf8)) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 6%, var(--mj-surface, #fffcf8)) !important;
   box-shadow: none !important;
 }
 
@@ -633,7 +633,7 @@ button.soft-pill:active,
 :root {
   --mur-ink: var(--mj-ink, #14241c);
   --mur-ink-secondary: color-mix(in srgb, var(--mj-ink, #14241c) 78%, var(--mj-muted, #5a6b63));
-  --mur-surface-quiet: color-mix(in srgb, var(--mj-brand, #146b52) 5%, var(--mj-surface, #fffcf8));
+  --mur-surface-quiet: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 5%, var(--mj-surface, #fffcf8));
   --mur-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -729,7 +729,7 @@ html[data-theme="dark"] {
 .support-page__card-cta:focus-visible,
 .settings-legal-link:focus-visible,
 .contact-email-card__link:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--mj-brand, #146b52) 55%, transparent);
+  outline: 2px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 55%, transparent);
   outline-offset: 2px;
 }
 

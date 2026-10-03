@@ -183,7 +183,7 @@
   justify-content: center;
   width: 2.25rem;
   height: 2.25rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   background: var(--mj-brand-soft);
   color: var(--mj-brand-deep, var(--mj-brand));
   font-weight: 800;

@@ -51,7 +51,7 @@
 
 .als-tab.is-active {
   background: #1a4d3e;
-  color: #fff;
+  color: var(--mj-white);
   font-weight: 700;
 }
 
@@ -89,7 +89,7 @@
   flex-shrink: 0;
   width: 51px;
   height: 31px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   border: none;
   background: #374151;
   padding: 2px;
@@ -106,7 +106,7 @@
   width: 27px;
   height: 27px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--mj-white);
   transition: transform 0.15s ease;
   transform: translateX(0);
 }

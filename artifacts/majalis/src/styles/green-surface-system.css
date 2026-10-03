@@ -31,7 +31,7 @@
   --surface-feature-ink-muted: var(--mj-ink-2, #4f5f58);
 
   /* ظلال / نصف قطر موحّد — ظل خفيف فقط (بلا inset ثقيل ولا شريط جانبي) */
-  --surface-feature-radius: var(--radius-card, 24px);
+  --surface-feature-radius: var(--radius-card, 1.5rem);
   --surface-feature-shadow: 0 6px 18px -14px rgba(10, 61, 46, 0.12);
   --surface-feature-pad: clamp(0.9rem, 2.6vw, 1.2rem);
 

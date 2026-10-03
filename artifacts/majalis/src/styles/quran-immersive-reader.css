@@ -222,7 +222,7 @@ body.quran-immersive-sticky .scroll-to-top {
 .immersive-quran-page__verse.is-selected {
   /* Master Prompt: Colors.brown.withOpacity(0.2) */
   background: var(--quran-verse-selected-bg, rgba(121, 85, 72, 0.2));
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   padding: 10px 8px;
 }
 
@@ -233,7 +233,7 @@ body.quran-immersive-sticky .scroll-to-top {
 .immersive-quran-page__verse.is-reciting {
   /* Audio tracking cursor — soft emerald pulse while recited */
   box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--mj-brand) 45%, transparent);
-  border-radius: 10px;
+  border-radius: var(--radius-sm, 0.625rem);
   background: color-mix(in srgb, var(--mj-brand) 8%, transparent);
 }
 
@@ -431,7 +431,7 @@ body.quran-immersive-sticky .scroll-to-top {
   margin: 4px 0;
   padding: 8px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-sm, 0.5rem);
   background: transparent;
   color: inherit;
   cursor: pointer;

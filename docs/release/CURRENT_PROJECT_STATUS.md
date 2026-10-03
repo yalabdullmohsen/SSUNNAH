@@ -1,6 +1,6 @@
 # CURRENT PROJECT STATUS — سُنّة
 
-**Updated:** 2026-10-03 (SUNNAH_AUTONOMOUS_ENDGAME_MODE — phases A–H)  
+**Updated:** 2026-10-03 (VISUAL_SYSTEM_UNIFICATION_FINAL_WAVE)  
 **Master closure register:** `docs/audit/SUNNAH_MASTER_CLOSURE_REGISTER.md` · **LOCKED**  
 **iOS-only board:** `docs/audit/IOS_ONLY_CLOSURE_BOARD.md` · **`LIVE_TRUTH_LOCKED_IOS_ONLY`**  
 **Boundary report (living):** `docs/audit/SUNNAH_COMPLETE_PRODUCT_RELEASE_BOUNDARY_REPORT.md`  
@@ -42,6 +42,11 @@
 | Store | **HOLD** for new submission · App Store 1.0 live · TF 1.0.1(55) available · no Play · no `STORE_GO` |
 | Repo defects (Accepted Truth) | **P0=0 · P1=0 · P2=0 · P3=0** |
 | Explicit non-claims | no `STORE GO` · no `CONTENT_CERTIFIED` · no `AUDIO_CERTIFIED` · no `UNIFIED_100` · no `MOBILE_READY` · no `DEVICE_TESTED` · no `WCAG CERTIFIED` · no `IOS_AUTH_CERTIFIED` · no `IOS_RELEASE_CANDIDATE_READY` |
+
+## Visual unification
+
+`VISUAL_SYSTEM_UNIFICATION_FINAL_WAVE` — `docs/audit/VISUAL_SYSTEM_UNIFICATION_WAVE_REPORT.md`  
+Metrics vs `origin/main`: hexInCss 8855→7026 · borderRadiusPx 1202→456 · boxShadow 1047→1026 · sfTokenRefs 794→1006 · btnHex 1698→1184 · **UNIFIED_PARTIAL** (closer to UNIFIED_100; not claimed).
 
 ## Endgame phases (A–H)
 

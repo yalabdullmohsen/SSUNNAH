@@ -26,7 +26,7 @@
   padding: 14px;
   border: 1px solid var(--mj-hairline, var(--mj-hairline, #e3e8e6));
   border-radius: 14px;
-  background: var(--mj-surface, var(--mj-white, var(--mj-white, #ffffff)));
+  background: var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
   text-decoration: none;
   color: inherit;
 }
@@ -41,7 +41,7 @@
   margin: 6px 0 4px;
   font-size: 16px;
   font-weight: 800;
-  color: var(--mj-ink, #16241e);
+  color: var(--mj-ink, var(--v2-color-ink));
 }
 
 .sources-directory-card__meta {

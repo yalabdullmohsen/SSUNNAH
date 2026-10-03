@@ -2,7 +2,7 @@
 
 .rh-shell {
   --rh-bg: #f8f9fa;
-  --rh-surface: var(--mj-white, #ffffff);
+  --rh-surface: var(--mj-white, var(--mj-white));
   --rh-ink: #1c1b19;
   --rh-muted: #6c757d;
   --rh-line: #efefef;
@@ -29,7 +29,7 @@
   width: 250px;
   background: var(--rh-sidebar);
   border: none;
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   padding: 0 0 1.25rem;
 }
 
@@ -57,7 +57,7 @@
 
 .rh-sidebar__title {
   margin: 0;
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   font-size: 1.15rem;
   font-weight: 700;
 }
@@ -79,7 +79,7 @@
   padding: 0.45rem 0.85rem;
   margin: 0.15rem 0;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-sm, 0.5rem);
   background: transparent;
   color: rgba(255, 255, 255, 0.7);
   font: inherit;
@@ -90,12 +90,12 @@
 
 .rh-sidebar__item:hover {
   background: rgba(255, 255, 255, 0.06);
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
 }
 
 .rh-sidebar__item.is-active {
   background: var(--rh-brown-deep);
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   font-weight: 700;
 }
 
@@ -105,9 +105,9 @@
 
 .rh-sidebar__badge {
   padding: 0.1rem 0.5rem;
-  border-radius: 12px;
+  border-radius: var(--radius-md, 0.75rem);
   background: var(--mj-warning);
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   font-size: 0.75rem;
   font-weight: 700;
 }
@@ -157,7 +157,7 @@
   align-items: center;
   gap: 1rem;
   padding: 0 1.5rem;
-  background: var(--mj-white, var(--mj-white, #ffffff));
+  background: var(--mj-white, var(--mj-white, var(--mj-white)));
   border-bottom: 1px solid var(--rh-line);
 }
 
@@ -169,7 +169,7 @@
   width: 100%;
   padding: 0.45rem 0.85rem;
   background: #f1f3f5;
-  border-radius: 8px;
+  border-radius: var(--radius-sm, 0.5rem);
   color: var(--mj-muted);
 }
 
@@ -207,7 +207,7 @@
   height: 2.25rem;
   border-radius: 999px;
   background: var(--rh-brown);
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   display: grid;
   place-items: center;
   font-weight: 700;
@@ -221,7 +221,7 @@
 .rh-mobile-toggle {
   display: none;
   border: 1px solid var(--rh-line);
-  background: var(--mj-white, var(--mj-white, #ffffff));
+  background: var(--mj-white, var(--mj-white, var(--mj-white)));
   border-radius: 0.5rem;
   width: 2.4rem;
   height: 2.4rem;
@@ -260,7 +260,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 1rem;
-  background: var(--mj-white, var(--mj-white, #ffffff));
+  background: var(--mj-white, var(--mj-white, var(--mj-white)));
   border: 1px solid var(--rh-line);
   border-radius: var(--rh-radius);
 }
@@ -317,7 +317,7 @@
 
 .rh-chip {
   border: 1px solid var(--mj-hairline);
-  background: var(--mj-white, var(--mj-white, #ffffff));
+  background: var(--mj-white, var(--mj-white, var(--mj-white)));
   color: var(--rh-ink);
   font: inherit;
   font-size: 0.86rem;
@@ -329,7 +329,7 @@
 .rh-chip.is-on {
   background: var(--rh-brown);
   border-color: var(--rh-brown);
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   font-weight: 600;
 }
 
@@ -359,7 +359,7 @@
 
 /* Flutter review cards */
 .rh-flutter-card {
-  background: var(--mj-white, var(--mj-white, #ffffff));
+  background: var(--mj-white, var(--mj-white, var(--mj-white)));
   border: 1px solid var(--mj-hairline);
   border-radius: var(--rh-radius);
   padding: 1.25rem;
@@ -385,7 +385,7 @@
 
 .rh-flutter-card__verse-badge {
   padding: 0.15rem 0.5rem;
-  border-radius: 6px;
+  border-radius: var(--radius-xs, 0.375rem);
   background: #efebe9;
   color: var(--rh-brown);
   font-size: 0.75rem;
@@ -405,7 +405,7 @@
 .rh-flutter-card__quran {
   width: 100%;
   padding: 0.75rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm, 0.5rem);
   background: var(--mj-surface);
   margin-bottom: 0.75rem;
 }
@@ -452,7 +452,7 @@
 .rh-flutter-diff__orig,
 .rh-flutter-diff__prop {
   padding: 0.65rem;
-  border-radius: 6px;
+  border-radius: var(--radius-xs, 0.375rem);
   font-size: 0.84rem;
   line-height: 1.7;
 }
@@ -548,7 +548,7 @@
   width: 100%;
   border: 1px solid var(--rh-line);
   border-radius: 0.5rem;
-  background: var(--mj-white, var(--mj-white, #ffffff));
+  background: var(--mj-white, var(--mj-white, var(--mj-white)));
   color: var(--rh-ink);
   font: inherit;
   padding: 0.55rem 0.7rem;
@@ -589,17 +589,17 @@
 
 .rh-btn--sage {
   background: var(--mj-brand, #2e7d32);
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
 }
 
 .rh-btn--brown {
   background: var(--rh-brown);
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
 }
 
 .rh-btn--rose {
   background: #c62828;
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
 }
 
 .rh-btn--gold {
@@ -625,7 +625,7 @@
   left: 50%;
   transform: translateX(-50%);
   background: #1e1e2d;
-  color: var(--mj-white, #ffffff);
+  color: var(--mj-white, var(--mj-white));
   padding: 0.65rem 1rem;
   border-radius: 999px;
   font-size: 0.86rem;
