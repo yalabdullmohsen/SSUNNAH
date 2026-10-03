@@ -8,7 +8,7 @@ import {
 } from "@/lib/knowledge-platform";
 import "@/styles/pages/knowledge-platform-p0.css";
 import "@/styles/pages/learn-legal-v2.css";
-import { PageHeaderV2, EmptyStateV2 } from "@/components/design-system";
+import { PageHeaderV2, EmptyStateV2, OfflineStateV2 } from "@/components/design-system";
 
 export default function OfflineCenterView() {
   const [packs, setPacks] = useState<OfflinePackStatus[]>([]);
@@ -37,7 +37,16 @@ export default function OfflineCenterView() {
         title="مركز دون اتصال"
         description="جرد للحزم المحلية. لا تنزيل تلقائي من هذه الصفحة — استخدم إعدادات المصحف أو المخزن للتنزيل."
       />
-      <p className="kp-meta">
+      {!online ? (
+        <OfflineStateV2
+          title="أنت غير متصل الآن"
+          description="يعرض هذا المركز الحزم المحلية فقط — بلا تنزيل جديد ودون ادّعاء حداثة البيانات."
+          availableHint="استخدم المصحف أو المخزن عند عودة الشبكة لتنزيل المحتوى."
+          offlineCenterHref="/mushaf"
+          offlineCenterLabel="فتح المصحف"
+        />
+      ) : null}
+      <p className="kp-meta" aria-live="polite">
         الشبكة: {online ? "متصلة" : "غير متصلة"} · المحرك: {engineOk ? "متاح" : "غير متاح"}
       </p>
       <p className="kp-note">{hint}</p>
@@ -52,11 +61,13 @@ export default function OfflineCenterView() {
             href="/mushaf"
           />
         ) : (
-          <ul className="kp-list kp-list--packs">
+          <ul className="kp-list kp-list--packs" aria-label="الحزم المحلية">
             {packs.map((p) => (
               <li key={p.store}>
                 <strong>{p.label}</strong>
-                <span className="kp-meta">{p.available ? `${p.recordCount} سجل` : "فارغ"}</span>
+                <span className="kp-meta" aria-label={p.available ? `${p.recordCount} سجل` : "فارغ"}>
+                  {p.available ? `${p.recordCount} سجل` : "فارغ"}
+                </span>
               </li>
             ))}
           </ul>

@@ -4,7 +4,12 @@ import { ShareButtons } from "@/components/ContentActions";
 import { Link } from "wouter";
 import { navigateTo } from "@/lib/navigation-intent";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { EmptyStateV2, ErrorStateV2, NoResultsState } from "@/components/design-system";
+import {
+  EmptyStateV2,
+  ErrorStateV2,
+  NoResultsState,
+  OfflineStateV2,
+} from "@/components/design-system";
 import { FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
@@ -647,11 +652,20 @@ export default function LessonsPage({
       <div className="lessons-v2-layout lessons-v3-layout">
         <main className="lessons-v2-main" id="lessons-list" aria-busy={loading}>
           {loadError && !loading && activeLessons.length === 0 && archivedLessons.length === 0 ? (
-            <ErrorStateV2
-              title="تعذّر تحميل الدروس"
-              description={loadError}
-              onRetry={() => setReloadKey((k) => k + 1)}
-            />
+            typeof navigator !== "undefined" && navigator.onLine === false ? (
+              <OfflineStateV2
+                title="تعذّر تحميل الدروس دون اتصال"
+                description={loadError}
+                availableHint="عند عودة الشبكة أعد المحاولة. إن وُجدت دروس محفوظة سابقًا فقد تظهر أعلاه."
+                onRetry={() => setReloadKey((k) => k + 1)}
+              />
+            ) : (
+              <ErrorStateV2
+                title="تعذّر تحميل الدروس"
+                description={loadError}
+                onRetry={() => setReloadKey((k) => k + 1)}
+              />
+            )
           ) : null}
 
           {!(loadError && activeLessons.length === 0 && archivedLessons.length === 0) ? (

@@ -7,7 +7,7 @@ import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { Card, Badge } from "@/components/ui-common";
-import { EmptyStateV2 } from "@/components/design-system";
+import { NoResultsState } from "@/components/design-system";
 import { formatArabicNumber } from "@/lib/numerals";
 import "@/styles/pages/glossary.css";
 import "@/styles/islam-intro-experience.css";
@@ -1891,7 +1891,15 @@ export default function IslamicGlossaryPage({ lockedCategory }: IslamicGlossaryP
 
         <div className="gl-results-meta">
           {filtered.length === 0 ? (
-            <EmptyStateV2 title="لا مصطلحات مطابقة" description={EMPTY.search} />
+            <NoResultsState
+              title="لا مصطلحات مطابقة"
+              description={EMPTY.search}
+              clearLabel="مسح التصفية"
+              onClear={() => {
+                if (!lockedCategory) setActiveCategory("all");
+                setAlpha("");
+              }}
+            />
           ) : (
             <p className="gl-results-count">{formatArabicNumber(filtered.length)} مصطلح</p>
           )}
