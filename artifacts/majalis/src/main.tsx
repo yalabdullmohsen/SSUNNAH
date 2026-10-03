@@ -142,8 +142,11 @@ function loadNonCriticalCss() {
   void import("./styles/ssunnah-card-unify.css");
   void import("./styles/card-matte-unify.css");
   void import("./styles/components/badge-system.css");
-  void import("./styles/modern-ui-refresh.css");
-  void import("./styles/ssunnah-ds-canonical.css");
+  /* Home: mur/ds-canonical يصفّران min-height الهيرو بـ !important → CLS */
+  if (!isHome) {
+    void import("./styles/modern-ui-refresh.css");
+    void import("./styles/ssunnah-ds-canonical.css");
+  }
   void import("./styles/m2030/foundation.css");
   void import("./styles/m2030/navigation.css");
   void import("./styles/brand-v4-contrast-fixes.css");
@@ -153,6 +156,8 @@ function loadNonCriticalCss() {
     if (isHome) {
       void import("./styles/sunnah-visual-language.css");
       void import("./styles/sunnah-geometry-system.css");
+      void import("./styles/modern-ui-refresh.css");
+      void import("./styles/ssunnah-ds-canonical.css");
     }
     void import("./styles/design-system.css").then(() => {
       void import("./styles/brand-v4-components.css");
