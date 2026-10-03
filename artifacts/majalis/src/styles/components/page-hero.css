@@ -24,7 +24,7 @@ html.dark .pattern-backdrop {
 }
 
 /* ── PageHero ── */
-.page-hero-mj {
+.page-hero-mj:not(.home-page-hero) {
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -34,8 +34,10 @@ html.dark .pattern-backdrop {
   padding-block-end: var(--svl-space-m, 0.75rem);
 }
 
-/* الرئيسية: لا تقصّ العنوان المشكّل */
+/* الرئيسية: هندسة ATF من critical + home-brand-title فقط */
 .page-hero-mj.home-page-hero {
+  position: relative;
+  isolation: isolate;
   overflow: visible;
 }
 

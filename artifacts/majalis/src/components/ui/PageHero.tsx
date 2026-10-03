@@ -56,7 +56,8 @@ export function PageHero({
   children,
 }: PageHeroProps) {
   const titleId = useId();
-  const onHero = fullBleed;
+  /* الرئيسية: fullBleed=false لكن النص على زمردي — onBrand يمنع قفزة لون العنوان */
+  const onHero = fullBleed || Boolean(className && /\bhome-page-hero\b/.test(className));
 
   return (
     <header

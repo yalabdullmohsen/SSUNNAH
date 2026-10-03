@@ -9,13 +9,12 @@
   padding-block-end: calc(var(--bottom-nav-h, 3rem) + 1.1rem);
 }
 
-/* Hero — الهوية عبر PageHero + بطاقة ناعمة (انظر home-brand-title.css) */
+/* Hero — اللون/الحشو من home-brand-title + critical (لا mj-ink هنا — CLS) */
 .m2030-hero.page-hero-mj,
 .home-page-hero.page-hero-mj {
   position: relative;
   isolation: isolate;
   overflow: visible;
-  color: var(--mj-ink);
   min-height: 18rem;
 }
 
@@ -81,11 +80,61 @@
 }
 
 .mj-home-lcp-ph__start-here {
-  min-height: 8rem;
-  border-radius: 1rem;
-  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 3%, var(--surface, #fff));
-  padding: 1rem 1rem 1.15rem;
+  min-height: 20rem;
+  border-radius: var(--radius-lg, 1rem);
+  background: var(--mj-surface, var(--surface));
+  border: 1px solid var(--color-border, var(--mj-hairline));
+  padding: 1rem 1rem 0.75rem;
   box-sizing: border-box;
+}
+
+/* ابدأ من هنا — هندسة ATF ثابتة (لا تنتظر final-release / recovery) */
+.home-start-here.home-start-here--compact {
+  min-height: 20rem;
+  margin-block: 0.75rem 1rem;
+  padding: 1rem 1rem 0.75rem;
+  border-radius: var(--radius-lg, 1rem);
+  background: var(--mj-surface, var(--surface));
+  border: 1px solid var(--color-border, var(--mj-hairline));
+  box-sizing: border-box;
+}
+.home-start-here--compact .hsh-eyebrow {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--v2-color-emerald, var(--mj-brand));
+  margin-block-end: 0.25rem;
+}
+.home-start-here--compact .hsh-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--mj-ink);
+}
+.home-start-here--compact .hsh-lead {
+  margin: 0.25rem 0 0;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--mj-ink-2);
+}
+.home-start-here--compact .hsh-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-block: 0.75rem 0.25rem;
+}
+.home-start-here--compact .hsh-actions__primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-md, 0.75rem);
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--v2-color-emerald, var(--mj-brand));
+  color: var(--v2-color-on-emerald);
 }
 
 .mj-home-lcp-ph__kicker,
@@ -196,8 +245,9 @@
 }
 
 @media (min-width: 720px) {
-  .mj-home-lcp-ph__start-here {
-    min-height: 7.5rem;
+  .mj-home-lcp-ph__start-here,
+  .home-start-here.home-start-here--compact {
+    min-height: 16rem;
   }
 
   .mj-home-lcp-ph__start-here .hsh-step {

@@ -288,21 +288,22 @@ html[data-theme="dark"] {
 }
 
 /* ── Page / Section headers (PR-3) ── */
-.svl-page-header,
-.page-hero-mj.svl-page-header {
+/* استثناء الرئيسية: مقاس/لون العنوان مقفول في critical + home-brand (U4 CLS) */
+.svl-page-header:not(.home-page-hero),
+.page-hero-mj.svl-page-header:not(.home-page-hero) {
   color: var(--svl-text-primary);
 }
 
-.svl-page-header .page-hero-mj__title,
-.svl-page-header .svl-page-header__title {
+.svl-page-header:not(.home-page-hero) .page-hero-mj__title,
+.svl-page-header:not(.home-page-hero) .svl-page-header__title {
   font-size: var(--svl-type-page-title);
   line-height: var(--svl-lh-title);
   color: var(--svl-text-primary);
   font-weight: 800;
 }
 
-.svl-page-header .page-hero-mj__desc,
-.svl-page-header .svl-page-header__desc {
+.svl-page-header:not(.home-page-hero) .page-hero-mj__desc,
+.svl-page-header:not(.home-page-hero) .svl-page-header__desc {
   font-size: var(--svl-type-body);
   line-height: var(--svl-lh-body);
   color: var(--svl-text-secondary);
@@ -310,8 +311,8 @@ html[data-theme="dark"] {
   text-align: start;
 }
 
-.svl-page-header .page-hero-mj__eyebrow,
-.svl-page-header .svl-page-header__badge {
+.svl-page-header:not(.home-page-hero) .page-hero-mj__eyebrow,
+.svl-page-header:not(.home-page-hero) .svl-page-header__badge {
   font-size: var(--svl-type-caption);
   color: var(--svl-accent-primary-deep);
   font-weight: 700;
