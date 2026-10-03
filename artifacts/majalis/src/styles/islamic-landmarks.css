@@ -227,7 +227,7 @@ html[data-theme="dark"] .ilm-chip--active {
   overflow: hidden;
   border-radius: var(--radius-card, 1rem);
   background: var(--mj-surface, #fff);
-  border: 1px solid var(--mj-hairline, #e5e7eb);
+  border: 1px solid var(--mj-hairline, transparent);
   min-width: 0;
 }
 
@@ -364,7 +364,7 @@ html[data-theme="dark"] .ilm-badge--era {
 .ilm-detail__hero-media {
   border-radius: var(--radius-card, 1rem);
   overflow: hidden;
-  border: 1px solid var(--mj-hairline, #e5e7eb);
+  border: 1px solid var(--mj-hairline, transparent);
 }
 
 .ilm-detail__badges {
@@ -382,7 +382,7 @@ html[data-theme="dark"] .ilm-badge--era {
 .ilm-detail__meta-item {
   padding: 0.85rem 1rem;
   border-radius: 14px;
-  border: 1px solid var(--mj-hairline, #e5e7eb);
+  border: 1px solid var(--mj-hairline, transparent);
   background: color-mix(in srgb, var(--mj-brand, #146b52) 5%, var(--mj-surface, #fff));
 }
 

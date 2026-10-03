@@ -62,6 +62,8 @@ Phases AA–AC: `docs/audit/VISUAL_AA_AC_COLOR_TYPE_LANGUAGE_REPORT.md` · COLOR
 
 Phases AD–AG: `docs/audit/VISUAL_AD_AG_SPACING_SIZE_A11Y_CONTRAST_REPORT.md` · SPACING/SIZE/A11Y/CONTRAST maps · `test:spacing-size-a11y-contrast-authority`.
 
+Phases AH–AJ: `docs/audit/VISUAL_AH_AJ_ELEVATION_BORDER_GOVERNANCE_REPORT.md` · elevation/border maps · `test:design-governance` · preflight map check.
+
 ## Endgame phases (A–H)
 
 | Phase | Target exit | Status |

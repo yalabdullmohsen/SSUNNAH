@@ -3,14 +3,14 @@
   "policy": "decreasing-ceilings",
   "note": "Ceilings must not rise. Lower intentionally in later waves; never raise without documented exception.",
   "floors": {
-    "officialButtonImportFiles": 260,
-    "sfTokenRefs": 1014,
-    "ssTokenRefs": 724
+    "officialButtonImportFiles": 262,
+    "sfTokenRefs": 1046,
+    "ssTokenRefs": 748
   },
   "ceilings": {
     "cssFiles": 356,
     "important": 4747,
-    "hexInCss": 7025,
+    "hexInCss": 7022,
     "rgbHslInCss": 2087,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
@@ -20,5 +20,5 @@
     "inlineColorStyleMatches": 48,
     "rawButtonFiles": 102
   },
-  "updatedAt": "2026-10-03T03:28:29.964Z"
+  "updatedAt": "2026-10-03T04:09:18.380Z"
 }

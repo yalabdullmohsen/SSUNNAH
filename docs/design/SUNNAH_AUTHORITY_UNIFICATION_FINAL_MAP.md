@@ -125,6 +125,14 @@ Contrast: `CONTRAST_AUTHORITY_MAP` + existing AA/on-brand gates.
 Exit: `SPACING_AUTHORITY_ONLY` · `SIZE_AUTHORITY_ONLY` · `ACCESSIBILITY_STANDARDIZED` · `CONTRAST_STANDARDIZED`.  
 Gate: `test:spacing-size-a11y-contrast-authority`.
 
+## Elevation / Border / Design Governance
+
+Elevation LEVEL_0…4 → `--sf2-shadow-*` / `--mj-sh*` · `ELEVATION_AUTHORITY_MAP`.  
+Border PRIMARY…FOCUS → hairline / brand / focus · `BORDER_AUTHORITY_MAP`.  
+Automation: `scripts/design-governance-report.mjs` → DESIGN_AUTHORITY/DRIFT reports + consistency score.  
+Exit: `ELEVATION_AUTHORITY_ONLY` · `BORDER_AUTHORITY_ONLY` · `DESIGN_GOVERNANCE_AUTOMATED`.  
+Gates: `test:design-governance` · preflight `design-governance-preflight.mjs`.
+
 ## Page Authority
 
 Canonical: `AppPage` · `PageHeader` · Screen adapters (`DetailScreen`, …) per `PAGE_CONTRACT_MATRIX.md`.

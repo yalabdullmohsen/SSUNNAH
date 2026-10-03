@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-03T04:09:37.197Z",
+  "consistencyScore": 100,
+  "components": {
+    "authorityMapsPresent": 100,
+    "debtWithinCeilings": 100,
+    "tokenFloors": 100
+  },
+  "metrics": {
+    "hexInCss": 7022,
+    "boxShadowDecls": 1026,
+    "borderRadiusPxDecls": 456,
+    "sfTokenRefs": 1046
+  },
+  "exits": [
+    "COLOR_AUTHORITY_ONLY",
+    "TYPOGRAPHY_AUTHORITY_ONLY",
+    "SPACING_AUTHORITY_ONLY",
+    "SIZE_AUTHORITY_ONLY",
+    "ELEVATION_AUTHORITY_ONLY",
+    "BORDER_AUTHORITY_ONLY",
+    "ACCESSIBILITY_STANDARDIZED",
+    "CONTRAST_STANDARDIZED",
+    "CARD_AUTHORITY_ONLY",
+    "BUTTON_AUTHORITY_ONLY",
+    "FORM_AUTHORITY_ONLY",
+    "TABLE_AUTHORITY_ONLY",
+    "LIST_AUTHORITY_ONLY",
+    "TAB_AUTHORITY_ONLY",
+    "NAVIGATION_AUTHORITY_ONLY",
+    "MODAL_AUTHORITY_ONLY",
+    "FEEDBACK_AUTHORITY_ONLY",
+    "STATUS_AUTHORITY_ONLY",
+    "SEARCH_AUTHORITY_ONLY",
+    "FILTER_AUTHORITY_ONLY",
+    "RESPONSIVE_SYSTEM_UNIFIED",
+    "DESIGN_LANGUAGE_UNIFIED"
+  ],
+  "DESIGN_GOVERNANCE_AUTOMATED": true,
+  "DESIGN_DRIFT_DETECTED_AUTOMATICALLY": false
+}
