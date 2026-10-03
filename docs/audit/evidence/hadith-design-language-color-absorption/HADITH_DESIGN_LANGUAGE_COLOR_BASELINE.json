@@ -1,0 +1,47 @@
+{
+  "phase": "HADITH_DESIGN_LANGUAGE_CSS_COLOR_ABSORPTION_WITH_SNAPSHOT_PROOF",
+  "capturedFrom": "origin/main@68e60f476",
+  "file": "artifacts/majalis/src/styles/pages/hadith-design-language.css",
+  "before": {
+    "bytes": 21366,
+    "lines": 731,
+    "hex": 130,
+    "uniqueHex": 30,
+    "rgbHsl": 0,
+    "varRefs": 200,
+    "unsafeHexFallbacks": 131,
+    "important": 19,
+    "colorImportantApprox": 12,
+    "gradients": 2,
+    "colorMix": 62,
+    "shadowWithColor": 1,
+    "localHdlColorProps": 17
+  },
+  "after": {
+    "hex": 0,
+    "rgbHsl": 0,
+    "unsafeHexFallbacks": 0,
+    "important": 18,
+    "localHdlColorAuthority": "ALIAS_ONLY_NO_HEX",
+    "removedUnused": [
+      "--hdl-grade-ring"
+    ]
+  },
+  "repoImpact": {
+    "hexInCss": {
+      "before": 6837,
+      "after": 6707,
+      "delta": -130
+    },
+    "important": {
+      "before": 4747,
+      "after": 4746,
+      "delta": -1
+    },
+    "sfTokenRefs": {
+      "before": 1140,
+      "after": 1153,
+      "delta": 13
+    }
+  }
+}

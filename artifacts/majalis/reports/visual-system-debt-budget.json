@@ -1,16 +1,16 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Ceilings must not rise. Lower intentionally in later waves; never raise without documented exception. Hadith CSS color absorption wave lowered hexInCss/rgbHslInCss.",
+  "note": "Ceilings must not rise. Hadith design-language CSS absorption lowered hexInCss/important; raised sfTokenRefs floor.",
   "floors": {
     "officialButtonImportFiles": 287,
-    "sfTokenRefs": 1140,
+    "sfTokenRefs": 1153,
     "ssTokenRefs": 758
   },
   "ceilings": {
     "cssFiles": 356,
-    "important": 4747,
-    "hexInCss": 6837,
+    "important": 4746,
+    "hexInCss": 6707,
     "rgbHslInCss": 2058,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
@@ -20,5 +20,5 @@
     "inlineColorStyleMatches": 39,
     "rawButtonFiles": 76
   },
-  "updatedAt": "2026-10-03T18:25:00.000Z"
+  "updatedAt": "2026-10-03T19:25:00.000Z"
 }
