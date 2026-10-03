@@ -193,19 +193,18 @@ html[data-theme="dark"] .mj-filter-chip[aria-pressed="true"] {
 
 /* ── Hero أقصر وأكثر فائدة ── */
 .page-hero,
-.page-hero-mj,
+.page-hero-mj:not(.home-page-hero),
 .mss-hero,
 .section-hero,
 .legal-page-hero,
 .home-hero,
-.topic-hero,
-.home-page-hero {
+.topic-hero {
   padding-block: var(--mur-hero-pad-y) !important;
   min-height: 0 !important;
 }
 
 .page-hero__title,
-.page-hero-mj__title,
+.page-hero-mj:not(.home-page-hero) .page-hero-mj__title,
 .mss-hero__title,
 .section-hero__title,
 .home-hero__title,

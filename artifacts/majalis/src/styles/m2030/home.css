@@ -17,6 +17,10 @@
   overflow: visible;
   min-height: 18rem;
 }
+.home-page-hero .hw3 {
+  min-height: 4.25rem;
+  width: 100%;
+}
 
 .mj-home-lcp-ph {
   contain: layout style;

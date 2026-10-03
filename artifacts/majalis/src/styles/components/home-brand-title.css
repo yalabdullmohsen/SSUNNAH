@@ -112,13 +112,8 @@ html.dark .home-page-hero .pattern-backdrop {
 }
 
 .home-page-hero .page-hero-mj__desc {
-  display: block;
-  margin: 0.35rem auto 0;
-  max-width: 28rem;
-  font-size: clamp(0.92rem, 2.6vw, 1.05rem);
-  line-height: 1.55;
-  color: var(--mj-ink-2, var(--text-secondary, #4a5c54));
-  text-wrap: pretty;
+  /* يطابق critical display:none — إظهار الوصف بعد FP = CLS */
+  display: none;
 }
 
 html[data-theme="dark"] .home-page-hero .page-hero-mj__desc,
@@ -180,9 +175,10 @@ html[data-contrast-audit="1"] .home-page-hero:not(.home-page-hero--eyebrow-ready
  * الزخرفة/الأزرار في home-dashboard-v2.css (خارج حزمة الإقلاع).
  * خلفية صلبة لازمة لبوابة Playwright — لا تعتمد على ::before. */
 html[data-v2-dashboard="1"] .home-page-hero.page-hero-mj {
-  background-color: var(--v2-color-emerald, #0f5c45) !important;
+  /* #0f5c45 يطابق FP critical — لا --sf-deep (#0f5c3f) */
+  background-color: #0f5c45 !important;
   background-image: none !important;
-  color: var(--v2-color-on-emerald, #fff);
+  color: #f7f1e4 !important;
   border-color: transparent;
 }
 

@@ -67,7 +67,7 @@ assert.doesNotMatch(
  */
 assert.ok(sync.length === 14, `sync CSS imports expected 14 after unify defer (got ${sync.length})`);
 assert.ok(deferred.length >= 42, `deferred call sites expected ≥42 after Phase 3 (got ${deferred.length})`);
-assert.ok(deferred.length <= 52, `deferred call sites expected ≤52 after home SVL defer (got ${deferred.length})`);
+assert.ok(deferred.length <= 56, `deferred call sites expected ≤56 after home mur/ds defer (got ${deferred.length})`);
 assert.match(main, /ensure-dark-layers|ensureDarkCoreLayers/, "Phase 3 dark loader wired");
 /* U1: listed polish/token sheets must not return to sync entry */
 for (const f of [

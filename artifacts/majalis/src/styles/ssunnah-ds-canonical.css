@@ -223,7 +223,7 @@ html[data-theme="dark"] {
   opacity: 1 !important;
 }
 
-.page-hero-mj:not(.page-hero-mj--bleed):not([data-scripture]),
+.page-hero-mj:not(.page-hero-mj--bleed):not(.home-page-hero):not([data-scripture]),
 .section-page-hero:not([data-scripture]) {
   padding-block: var(--ds-space-md) var(--ds-space-sm) !important;
   min-height: 0 !important;
