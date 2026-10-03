@@ -346,6 +346,10 @@ html[data-v2-dashboard="1"] .m2030-home .hus {
 }
 
 html[data-v2-dashboard="1"] .m2030-home .hus-field {
+  height: 52px;
+  min-height: 52px;
+  max-height: 52px;
+  box-sizing: border-box;
   border-radius: var(--v2-radius-lg);
   border-color: color-mix(in srgb, var(--v2-color-emerald, #0f5c45) 16%, var(--v2-hairline));
   background: var(--v2-color-ivory-surface);
