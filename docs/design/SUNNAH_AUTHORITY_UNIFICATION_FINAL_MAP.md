@@ -162,6 +162,12 @@ Program: `PRODUCT_EXCELLENCE_PROGRAM.md` · `scripts/product-excellence-engine.m
 Outputs: PRODUCT_COHESION_* · TOKEN_MIGRATION_QUEUE · COMPONENT_RATIONALIZATION · JOURNEY_LENGTH · POLISH_BACKLOG.  
 Gate: `test:product-excellence`.
 
+## Product maturity BA–BE
+
+Program: `PRODUCT_MATURITY_PROGRAM.md` · `scripts/product-maturity-engine.mjs`.  
+Outputs: PRODUCT_MATURITY_SCORECARD · DESIGN_DRIFT_ATLAS · MICRO_FRICTION_BACKLOG · CONTENT_STYLE_AUTHORITY · ICON_AUTHORITY_MAP.  
+Gate: `test:product-maturity`.
+
 ## Page Authority
 
 Canonical: `AppPage` · `PageHeader` · Screen adapters (`DetailScreen`, …) per `PAGE_CONTRACT_MATRIX.md`.

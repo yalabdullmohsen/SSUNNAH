@@ -72,6 +72,8 @@ Phases AQ–AU: `docs/audit/VISUAL_AQ_AU_COMPLIANCE_CERTIFICATION_REPORT.md` · 
 
 Phases AV–AZ: `docs/audit/VISUAL_AV_AZ_PRODUCT_EXCELLENCE_REPORT.md` · cohesion · token migration queue · rationalization · journey compression · polish backlog · `test:product-excellence`.
 
+Phases BA–BE: `docs/audit/VISUAL_BA_BE_PRODUCT_MATURITY_REPORT.md` · maturity scorecard · drift atlas · micro-friction · content/icon authorities · `test:product-maturity`.
+
 ## Endgame phases (A–H)
 
 | Phase | Target exit | Status |

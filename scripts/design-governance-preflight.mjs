@@ -32,6 +32,10 @@ const REQUIRED = [
   "docs/design/DESIGN_SYSTEM_COMPLIANCE_ENGINE.md",
   "artifacts/majalis/scripts/product-excellence-engine.mjs",
   "docs/design/PRODUCT_EXCELLENCE_PROGRAM.md",
+  "artifacts/majalis/scripts/product-maturity-engine.mjs",
+  "docs/design/PRODUCT_MATURITY_PROGRAM.md",
+  "docs/design/CONTENT_STYLE_AUTHORITY.md",
+  "docs/design/ICON_AUTHORITY_MAP.md",
 ];
 
 const missing = REQUIRED.filter((rel) => !existsSync(resolve(ROOT, rel)));
