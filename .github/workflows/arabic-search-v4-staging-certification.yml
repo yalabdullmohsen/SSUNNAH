@@ -1,0 +1,75 @@
+name: Arabic Search v4 Staging Certification
+
+# STAGING ONLY. No Production SQL. No Production flag enable.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: arabic-search-v4-staging-cert
+  cancel-in-progress: false
+
+jobs:
+  certify:
+    name: staging-certify
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment: staging
+    env:
+      STAGING_DATABASE_URL: ${{ secrets.STAGING_DATABASE_URL }}
+      STAGING_SUPABASE_URL: ${{ secrets.STAGING_SUPABASE_URL }}
+      STAGING_ANON_KEY: ${{ secrets.STAGING_ANON_KEY }}
+      STAGING_SERVICE_ROLE_KEY: ${{ secrets.STAGING_SERVICE_ROLE_KEY }}
+      EXPECTED_STAGING_REF: dgxzcmzcapzcrvcfzjmc
+      PRODUCTION_SUPABASE_PROJECT_REF: ngmvmlulzacrlicuagyp
+    steps:
+      - name: Preflight identity (no secret values)
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          import os,sys
+          from urllib.parse import urlparse
+          PROD=os.environ["PRODUCTION_SUPABASE_PROJECT_REF"]
+          EXP=os.environ["EXPECTED_STAGING_REF"]
+          for k in ["STAGING_DATABASE_URL","STAGING_SUPABASE_URL","STAGING_ANON_KEY","STAGING_SERVICE_ROLE_KEY"]:
+            if not os.environ.get(k):
+              print("MISSING",k); sys.exit(1)
+          host=urlparse(os.environ["STAGING_SUPABASE_URL"]).hostname or ""
+          ref=host.split(".")[0] if host.endswith(".supabase.co") else ""
+          print("STAGING_PROJECT_REF", ref)
+          print("PRODUCTION_PROJECT_REF", PROD)
+          if ref!=EXP:
+            print("REF_UNEXPECTED"); sys.exit(2)
+          if ref==PROD or PROD in os.environ["STAGING_DATABASE_URL"]:
+            print("PRODUCTION_REF_DETECTED"); sys.exit(3)
+          print("IDENTITY_PREFLIGHT=PASS")
+          PY
+
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "24"
+
+      - name: Install pg driver
+        working-directory: artifacts/majalis
+        run: |
+          set -euo pipefail
+          npm install --no-save pg@8.16.3
+
+      - name: Run staging certification
+        working-directory: artifacts/majalis
+        run: node scripts/arabic-search-v4-staging-certification.mjs
+
+      - name: Upload certification artifacts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: arabic-search-v4-staging-cert
+          path: |
+            docs/audit/ARABIC_SEARCH_V4_STAGING_CERTIFICATION_REPORT.md
+            docs/audit/ARABIC_SEARCH_V4_STAGING_CERTIFICATION_REPORT.json
+          if-no-files-found: warn
