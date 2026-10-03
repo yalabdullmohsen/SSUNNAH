@@ -1,7 +1,7 @@
 {
   "version": 3,
   "contentType": "search.unified",
-  "checksum": "sha256:1f4c51eed088fcd9d3d7aa3e07145d127b2bbb358428cefbed8fb18cabe0b71e",
+  "checksum": "sha256:3a29cc5e728ed3b6411adbe8fca6f123347a90fe86890638669e940bfbf784f9",
   "count": 4650,
   "files": [
     {
@@ -42,7 +42,7 @@
       "kind": "discover-islam",
       "bytes": 50826,
       "itemCount": 172,
-      "checksum": "sha256:6c14bcdd4df961dcc548bbf663483e0108eddc458cca1e01377d8518a846c3e9"
+      "checksum": "sha256:892d14324faf0a0eaf165fb8d8dae5916e148af73745ce071e69d2144b3eec29"
     },
     {
       "file": "shards/dua.json",
@@ -77,7 +77,7 @@
       "kind": "history",
       "bytes": 106545,
       "itemCount": 218,
-      "checksum": "sha256:713081f2026a21f30dbc9fe73527442dfc912ab2c9d67774dfaa4b2bb87c290b"
+      "checksum": "sha256:b87b965d9b45db49e2805de034ff408cc672e4e1646007906d2112e54b28638e"
     },
     {
       "file": "shards/intro-islam.json",
@@ -126,7 +126,7 @@
       "kind": "person",
       "bytes": 43839,
       "itemCount": 75,
-      "checksum": "sha256:a6e80e9394901933fb037dba5b85c91fc218945f3e13e8a213821ec0d3ad9f71"
+      "checksum": "sha256:404fb8746247be33c8547a69ca8b44946a221a86f0bae249e97d3cd609ce0d56"
     },
     {
       "file": "shards/prophet.json",
@@ -140,7 +140,7 @@
       "kind": "qa",
       "bytes": 1141628,
       "itemCount": 2295,
-      "checksum": "sha256:9bdab4cf011d907e515a55bea57741d98a6fd265dd9395d957b386c2c912652d"
+      "checksum": "sha256:02edc128937cb0f64f5c8c57e367e3606a8bf53c14f17d497c5fdef8f87ce891"
     },
     {
       "file": "shards/quran.json",
@@ -154,7 +154,7 @@
       "kind": "quran-people",
       "bytes": 24807,
       "itemCount": 102,
-      "checksum": "sha256:0462b4184c3a4ff3c3f74406be75eefeeccd91808c0d614cda4d2a1ef573c6a7"
+      "checksum": "sha256:6a377a13f90f532e435f82c25a93f26ef796105ad07e903bb7e0a75cac7d0fde"
     },
     {
       "file": "shards/raqaiq.json",
