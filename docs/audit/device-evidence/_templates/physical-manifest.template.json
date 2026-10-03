@@ -1,0 +1,14 @@
+{
+  "packId": "YYYYMMDD-BUILD-SHORTSHA",
+  "capturedAt": "",
+  "physicalRequired": true,
+  "appVersion": "1.0.1",
+  "appBuild": "56",
+  "buildCommit": "",
+  "installSource": "TestFlight",
+  "originMainSha": "",
+  "productionVersionSha": "",
+  "deviceInventoryRef": "docs/audit/physical-cert/DEVICE_INVENTORY_CURRENT.md",
+  "testerIds": ["tester-owner-primary"],
+  "notes": "Replace placeholders. Never include tokens/emails/phones/Quran dumps."
+}

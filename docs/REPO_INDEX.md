@@ -226,8 +226,11 @@
 | `docs/audit/evidence/t040-ios-device-matrix/` | أدلة FAIL/INCOMPLETE لمصفوفة الأجهزة T-040 |
 | `docs/audit/DEVICE_REQUIRED_CHECKLIST_CURRENT.md` | قائمة جهاز حالية (T-040/T-033) بعد تنظيف PRs |
 | `docs/audit/OPEN_PR_RESOLUTION_BOARD.md` | لوحة إغلاق #2460/#2456/#2299/#1791 |
+| `docs/audit/physical-cert/PHYSICAL_CERTIFICATION_PROGRAM.md` | برنامج شهادة الجهاز الفيزيائي (إعداد بلا Build) |
+| `docs/audit/physical-cert/BUILD_TO_TEST_CONTRACT.md` | عقد أهلية Build↔اختبار |
 | `docs/mobile/OFFLINE_SCOPE_MANIFEST.md` | نطاق Offline مستقبلي بعد إغلاق #1791 (Expo obsolete) |
 | `docs/native-widgets/archive/SUNNAH_WIDGET_SYSTEM_PR2299_PHASE1.md` | أرشيف تاريخي لـ#2299 — متجاوز بـT-028/029/031 |
+| `scripts/device-evidence/validate-physical-evidence-pack.mjs` | بوابة رفض PASS بلا أداة/Build مؤهل |
 | `docs/audit/MOBILE_PERFORMANCE_CERTIFICATION_REPORT.md` | T-041 · `MOBILE_PERFORMANCE_NOT_CERTIFIED` (FAIL) · no device numeric tables |
 | `docs/audit/evidence/t041-mobile-performance/` | أدلة/نموذج fluidity فقط — بلا قياسات جهاز T-041 |
 | `docs/audit/U5_BUTTON_AUTHORITY_REPORT.md` | T-042 · `BUTTON_AUTHORITY_ONLY` (PASS) · product raw=0 · divSpan KEEP_JUSTIFIED |
