@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "generated_at": "2026-10-02T20:14:57.726Z",
+  "generated_at": "2026-10-03T09:32:25.846Z",
   "items": [
     {
-      "id": "88d35ee15ed5b23353956305c9b560f435c2fd27",
+      "id": "ccc83bd218bdf56908062a189865d0ce49560446",
       "type": "درس",
-      "title_ar": "الآن مباشر المجلس الفقهي سؤال وجواب لفضيلة الشيخ د محمد هشام طاهري روابط البث ا…",
-      "summary_ar": "الان مباشر المجلس الفقهي (سؤال وجواب) لفضيله الشيخ د.محمد هشام طاهري روابط البث المباشر: ▪ يوتيوب https://www.youtube.com/live/wh2wkDvhx0k?si= ▪ تلجرام https:/…",
-      "sheikh": "محمد هشام طاهري 🔗 روابط البث المباشر: ▪️ يوتيوب https://www",
+      "title_ar": "ندعوكم اليوم لحضور الدرس العلمي التعليق على درء تعارض العقل والنقل لابن تيمية ل…",
+      "summary_ar": "ندعوكم اليوم لحضور الدرس العلمي: التعليق علي درء تعارض العقل والنقل لابن تيميه للشيخ د. محمد محمدي النورستاني ⏰ بعد صلاه العصر عبر البث المباشر قناه موقع دروس …",
+      "sheikh": "محمد محمدي النورستاني ⏰ بعد صلاة العصر 📍 عبر البث المباشر \ud83d",
       "place": null,
       "audience": "عام",
       "starts_at": null,
       "time_text": null,
-      "register_url": "https://t.me/DrAboSalahM?livestream",
-      "schedule_kind": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "upcoming",
       "women_attendance": "men_only",
       "women_attendance_note": null,
       "sources": [
@@ -21,16 +21,16 @@
           "id": "telegram-DrosQ8",
           "name_ar": "دروس الكويت",
           "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28108",
+          "post_url": "https://t.me/DrosQ8/28110",
           "platform": "telegram"
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-02T20:01:27.621Z",
+      "published_at": "2026-10-03T09:10:33.486Z",
       "confidence": 0.8
     },
     {
-      "id": "b28bbd29b793199043ae697119da136b0e296816",
+      "id": "db442257635d9d189e529ff2c376c4cdb1579bef",
       "type": "محاضرة",
       "title_ar": "ندعوكم الليلة لحضور محاضرة بعنوان تأملات في سورة يوسف للشيخ عبدالرحمن بن محمد ج…",
       "summary_ar": "ندعوكم الليله لحضور محاضره بعنوان: تاملات في سوره يوسف للشيخ عبدالرحمن بن محمد جامع ⏰ بعد صلاه المغرب (كل جمعه) مسجد فاطمه العوضي - خيطان https://maps.app.goo.…",
@@ -53,11 +53,11 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-02T20:01:27.621Z",
+      "published_at": "2026-10-03T09:10:33.486Z",
       "confidence": 0.8
     },
     {
-      "id": "531220da3e2aa763673fee75495e670806f1879d",
+      "id": "0795b2ec59be252de094b95d3f4e7bd66f4ce59f",
       "type": "محاضرة",
       "title_ar": "👇 جدول دروس اليوم الجمعة 👇",
       "summary_ar": "جدول دروس اليوم الجمعه",
@@ -80,19 +80,46 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-02T20:01:27.621Z",
+      "published_at": "2026-10-03T09:10:33.486Z",
       "confidence": 0.65
     },
     {
-      "id": "2b56b86aac471f02fb9276040d5d4192c306da1d",
+      "id": "14a6c485cd25f74469f2030f031ebf335060730c",
+      "type": "محاضرة",
+      "title_ar": "تفسير سورة الإسراء",
+      "summary_ar": "تفسير سوره الاسراء درس اسبوعي — يوم الجمعه رقم المجلس: 4 وصلنا الي: هذه الاسبوع نبدا من الايه : 23 الوقت: بعد المغرب المكان: مسجد موضي - منطقه الصديق الموعد ال…",
+      "sheikh": "عثمان الخميس",
+      "place": "موضي - منطقة الصديق",
+      "audience": "عام",
+      "starts_at": "2026-10-09T00:00:00.000Z",
+      "time_text": "بعد المغرب",
+      "register_url": null,
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "web-othmanalkhamees_schedule",
+          "name_ar": "جدول دروس الشيخ عثمان الخميس",
+          "url": "https://www.othmanalkhamees.com/schedule",
+          "post_url": "https://www.othmanalkhamees.com/schedule",
+          "platform": "web"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-03T09:01:04.747Z",
+      "confidence": 0.95
+    },
+    {
+      "id": "a135a9d231d789426aea22608ba1083478bdae35",
       "type": "درس",
-      "title_ar": "صحيح مسلم",
-      "summary_ar": "صحيح مسلم درس اسبوعي — يوم السبت رقم المجلس: 36 وصلنا الي: صفحه 708 - كتاب الهبات - الحديث رقم 1620 الوقت: 10:00 صباحا المكان: مسجد الياقوت - منطقه الصديق المو…",
+      "title_ar": "تلخيص مختصر المقنع",
+      "summary_ar": "تلخيص مختصر المقنع درس اسبوعي — يوم الاربعاء رقم المجلس: 137 وصلنا الي: تبعيض الطلاق - صفحه 345 الوقت: بعد المغرب المكان: مسجد الياقوت - منطقه الصديق الموعد ال…",
       "sheikh": "عثمان الخميس",
       "place": "الياقوت - منطقة الصديق",
       "audience": "عام",
-      "starts_at": "2026-10-03T00:00:00.000Z",
-      "time_text": "10:00 ص",
+      "starts_at": "2026-10-07T00:00:00.000Z",
+      "time_text": "بعد المغرب",
       "register_url": null,
       "schedule_kind": "weekly",
       "women_attendance": "men_only",
@@ -111,15 +138,15 @@
       "confidence": 0.95
     },
     {
-      "id": "a135a9d231d789426aea22608ba1083478bdae35",
+      "id": "2b56b86aac471f02fb9276040d5d4192c306da1d",
       "type": "درس",
-      "title_ar": "تلخيص مختصر المقنع",
-      "summary_ar": "تلخيص مختصر المقنع درس اسبوعي — يوم الاربعاء رقم المجلس: 137 وصلنا الي: تبعيض الطلاق - صفحه 345 الوقت: بعد المغرب المكان: مسجد الياقوت - منطقه الصديق الموعد ال…",
+      "title_ar": "صحيح مسلم",
+      "summary_ar": "صحيح مسلم درس اسبوعي — يوم السبت رقم المجلس: 36 وصلنا الي: صفحه 708 - كتاب الهبات - الحديث رقم 1620 الوقت: 10:00 صباحا المكان: مسجد الياقوت - منطقه الصديق المو…",
       "sheikh": "عثمان الخميس",
       "place": "الياقوت - منطقة الصديق",
       "audience": "عام",
-      "starts_at": "2026-10-07T00:00:00.000Z",
-      "time_text": "بعد المغرب",
+      "starts_at": "2026-10-03T00:00:00.000Z",
+      "time_text": "10:00 ص",
       "register_url": null,
       "schedule_kind": "weekly",
       "women_attendance": "men_only",
@@ -165,6 +192,33 @@
       "confidence": 0.95
     },
     {
+      "id": "a22176ebda2096b307a940ba04e27f735e898c86",
+      "type": "تنبيه",
+      "title_ar": "#جمعية_مدينة_سعد_العبدالله_التعاونية",
+      "summary_ar": "#جمعيه_مدينه_سعد_العبدالله_التعاونيه Photo by سعد العبدالله اليوم 🇰🇼 on October 02, 2026. May be an image of text.",
+      "sheikh": null,
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "upcoming",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "ig-saad.al.abdullah.city",
+          "name_ar": "مركز سعد العبدالله لتحفيظ القرآن",
+          "url": "https://instagram.com/saad.al.abdullah.city",
+          "post_url": "https://www.instagram.com/p/Dd_i4O8N1Ya/",
+          "platform": "instagram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-02T00:00:00.000Z",
+      "confidence": 0.65
+    },
+    {
       "id": "4a5a25cdbdc6d3ff276e91cb5c92f82b7de2ab88",
       "type": "تسجيل",
       "title_ar": "⁨\t⁨\t⁨\t⁨\t⁨\t⁨\t⁨\tحياكم الله مع غيث القلب🤍",
@@ -190,6 +244,33 @@
       "image_url": null,
       "published_at": "2026-10-01T00:00:00.000Z",
       "confidence": 0.75
+    },
+    {
+      "id": "959d48e0ec02f87886cc84d089a6ee6f61c3c5fb",
+      "type": "محاضرة",
+      "title_ar": "جعلنا وإياكم من الفائزين برضوانه 🤲🏻🤍",
+      "summary_ar": "جعلنا واياكم من الفائزين برضوانه بانتظاركن بعون الله تعالي في لقاء الجمعه الاسبوعي مع دكتوره مريم مندكار نفع الله بها Photo by مسجد راشد الخياط on October 01, …",
+      "sheikh": "ة مريم مندكار نفع الله بها 💕🤲🏻",
+      "place": "لقاء الجمعة الأسبوعي",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "ig-m_alkhayatq8",
+          "name_ar": "مسجد راشد الخياط",
+          "url": "https://instagram.com/m_alkhayatq8",
+          "post_url": "https://www.instagram.com/p/Dd8WWtTIH89/",
+          "platform": "instagram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-01T00:00:00.000Z",
+      "confidence": 0.85
     },
     {
       "id": "008c723655d01620c58b75b06748091cc2af78a5",
