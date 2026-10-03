@@ -1,11 +1,12 @@
 # CURRENT RELEASE TRUTH — سُنّة
 
 **Generated:** 2026-10-03  
-**Program:** Open-PR resolution + iOS certification cleanup (docs/evidence sync)  
+**Program:** iOS physical certification preparation (no new Build / no Store action)  
 **Authority:** Measured from `origin/main` + live production  
 **Canonical status surface:** `docs/release/CURRENT_PROJECT_STATUS.md`  
 **Boundary report:** `docs/audit/SUNNAH_FINAL_INTERNAL_AND_EXTERNAL_BOUNDARY_REPORT.md`  
-**PR board:** `docs/audit/OPEN_PR_RESOLUTION_BOARD.md`
+**PR board:** EMPTY · `docs/audit/OPEN_PR_RESOLUTION_BOARD.md`  
+**Physical cert program:** `docs/audit/physical-cert/PHYSICAL_CERTIFICATION_PROGRAM.md`
 
 ---
 
@@ -14,17 +15,21 @@
 | Surface | Value | Evidence |
 |---|---|---|
 | Git root | `git rev-parse --show-toplevel` | command |
-| `origin/main` tip | `7ad9b9d0f2403070674bbc80802de087a600bb1f` | `git fetch` + rev-parse |
-| Production `version.json` | `7ad9b9d0` · HTTP 200 · `builtAt` `2026-10-03T15:52:39.091Z` | curl `https://www.ssunnah.com/version.json` |
+| `origin/main` tip | `631dcc01ebff50f30eafbe5464f1777d96a1920f` | `git fetch` + rev-parse |
+| Production `version.json` | `631dcc01` · HTTP 200 · `builtAt` `2026-10-03T16:15:34.866Z` | curl `https://www.ssunnah.com/version.json` |
 | Match | **MATCH** | live vs origin/main |
 | App Store (no action) | `1.0` LIVE / READY_FOR_SALE | `BUILD_55_TRACEABILITY.md` |
+| ASC update under review | OWNER_DECLARED — agent must not touch | queue accepted truth |
 | TestFlight (no action) | `1.0.1 (55)` available; device cert missing | same |
-| Next Archive requirement | build **≥ 56** from hardened main | same |
-| T-040 Device matrix | `IOS_DEVICE_MATRIX_INCOMPLETE` / DEVICE_REQUIRED | evidence synced; checklist current |
-| T-033 Deep links | `IOS_DEEP_LINKS_NOT_CERTIFIED` / DEVICE_REQUIRED | sim FAIL pack on main |
+| Source pbx pin | still `1.0.1` / `55` (no bump this prep) | `project.pbxproj` |
+| Next Archive requirement | build **≥ 56** from hardened main | `FUTURE_BUILD_56_CHECKLIST.md` |
+| T-040 Device matrix | `IOS_DEVICE_MATRIX_INCOMPLETE` / DEVICE_CONNECTION_REQUIRED | physical-cert runbooks |
+| T-033 Deep links | `IOS_DEEP_LINKS_NOT_CERTIFIED` / DEVICE_REQUIRED | runbook + AASA live |
 | Widgets | T-028/029/031 on main; #2299 superseded | PrayerWidget + Live Activity |
 | Offline Expo PR #1791 | OBSOLETE; manifest only | `OFFLINE_SCOPE_MANIFEST.md` |
-| Internal status | **INTERNAL_CLOSURE_COMPLETE** + open-PR board cleaned | resolution board |
+| Open PR board | **EMPTY** | `gh pr list` |
+| Evidence PR | **not created** (no physical pack yet) | policy |
+| Internal status | **INTERNAL_CLOSURE_COMPLETE** + physical prep ready | program index |
 | General status | **WEB_RELEASED_NATIVE_HOLD** | boundary + device hold |
 | Store RC pin | **not set by owner** | HOLD |
 

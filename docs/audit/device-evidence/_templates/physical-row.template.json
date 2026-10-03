@@ -1,0 +1,23 @@
+{
+  "caseId": "T040-IP-PRIMARY-HOME-COLD",
+  "suite": "T040",
+  "deviceId": "D-IP-PRIMARY-CANDIDATE",
+  "deviceModel": "",
+  "osVersion": "",
+  "appVersion": "",
+  "appBuild": "",
+  "installSource": "TestFlight",
+  "tester": "tester-owner-primary",
+  "testedAt": "",
+  "result": "FAIL",
+  "artifactPath": "artifacts/HOME-COLD.png",
+  "expected": "Home renders in Cap shell without blank/crash",
+  "actual": "",
+  "physicalRequired": true,
+  "requiredBuildClass": "CAN_TEST_ON_BUILD_55",
+  "runtime": "physical",
+  "failureNotes": "",
+  "reproSteps": "1) Force quit 2) Cold launch 3) Land on Home 4) Screenshot",
+  "logRef": "",
+  "buildCommit": ""
+}
