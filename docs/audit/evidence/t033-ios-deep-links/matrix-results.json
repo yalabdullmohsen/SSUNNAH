@@ -1,0 +1,293 @@
+{
+  "phase": "T-033",
+  "capturedAt": "2026-10-01T23:37:53Z",
+  "device": "iPhone 17 Pro Simulator",
+  "verdict": "FAIL",
+  "exit": "IOS_DEEP_LINKS_NOT_CERTIFIED",
+  "blockingFailures": [
+    "Universal Link / custom-scheme automation never confirms in-app Cap route (OS «فتح في سُنّة؟» intercept)",
+    "Closed mode: all majlisilm:// routes blocked by confirmation dialog",
+    "Background mode: deep link does not land on target Cap route",
+    "Foreground Prayer/Mushaf: route mismatch (Home remains / Safari fallback)",
+    "Session / First-install / Expired: UNPROVEN (no fixture)",
+    "sunnah:// not registered in Info.plist (documented decision)"
+  ],
+  "rows": [
+    {
+      "mode": "closed_scheme",
+      "route": "home",
+      "url": "majlisilm:///",
+      "class": "CONTENT:avg=166:rgb=204,235,234",
+      "note": ""
+    },
+    {
+      "mode": "closed_scheme",
+      "route": "search",
+      "url": "majlisilm://search",
+      "class": "CONTENT:avg=166:rgb=204,235,234",
+      "note": ""
+    },
+    {
+      "mode": "closed_scheme",
+      "route": "quran",
+      "url": "majlisilm://quran",
+      "class": "CONTENT:avg=166:rgb=204,235,234",
+      "note": ""
+    },
+    {
+      "mode": "closed_scheme",
+      "route": "mushaf",
+      "url": "majlisilm://mushaf",
+      "class": "CONTENT:avg=166:rgb=204,235,234",
+      "note": ""
+    },
+    {
+      "mode": "closed_scheme",
+      "route": "prayer",
+      "url": "majlisilm://prayer-times",
+      "class": "CONTENT:avg=166:rgb=204,235,234",
+      "note": ""
+    },
+    {
+      "mode": "closed_scheme",
+      "route": "lessons",
+      "url": "majlisilm://lessons",
+      "class": "CONTENT:avg=166:rgb=204,235,234",
+      "note": ""
+    },
+    {
+      "mode": "closed_scheme",
+      "route": "hadith",
+      "url": "majlisilm://hadith",
+      "class": "CONTENT:avg=166:rgb=204,235,234",
+      "note": ""
+    },
+    {
+      "mode": "closed_scheme",
+      "route": "fiqh",
+      "url": "majlisilm://fiqh",
+      "class": "CONTENT:avg=166:rgb=204,235,234",
+      "note": ""
+    },
+    {
+      "mode": "closed_scheme",
+      "route": "library",
+      "url": "majlisilm://library",
+      "class": "CONTENT:avg=166:rgb=204,235,234",
+      "note": ""
+    },
+    {
+      "mode": "closed_scheme",
+      "route": "settings",
+      "url": "majlisilm://settings",
+      "class": "CONTENT:avg=166:rgb=204,235,234",
+      "note": ""
+    },
+    {
+      "mode": "closed_scheme",
+      "route": "account",
+      "url": "majlisilm://account",
+      "class": "CONTENT:avg=166:rgb=204,235,234",
+      "note": ""
+    },
+    {
+      "mode": "closed_ul",
+      "route": "home",
+      "url": "https://www.ssunnah.com/",
+      "class": "CONTENT:avg=196:rgb=168,204,190",
+      "note": "may_be_safari"
+    },
+    {
+      "mode": "closed_ul",
+      "route": "search",
+      "url": "https://www.ssunnah.com/search",
+      "class": "BLANKISH",
+      "note": "may_be_safari"
+    },
+    {
+      "mode": "closed_ul",
+      "route": "quran",
+      "url": "https://www.ssunnah.com/quran",
+      "class": "CONTENT:avg=165:rgb=233,236,232",
+      "note": "may_be_safari"
+    },
+    {
+      "mode": "closed_ul",
+      "route": "mushaf",
+      "url": "https://www.ssunnah.com/mushaf",
+      "class": "BLANKISH",
+      "note": "may_be_safari"
+    },
+    {
+      "mode": "closed_ul",
+      "route": "prayer",
+      "url": "https://www.ssunnah.com/prayer-times",
+      "class": "CONTENT:avg=101:rgb=186,200,190",
+      "note": "may_be_safari"
+    },
+    {
+      "mode": "closed_ul",
+      "route": "lessons",
+      "url": "https://www.ssunnah.com/lessons",
+      "class": "BLANKISH",
+      "note": "may_be_safari"
+    },
+    {
+      "mode": "closed_ul",
+      "route": "hadith",
+      "url": "https://www.ssunnah.com/hadith",
+      "class": "CONTENT:avg=153:rgb=169,199,188",
+      "note": "may_be_safari"
+    },
+    {
+      "mode": "closed_ul",
+      "route": "fiqh",
+      "url": "https://www.ssunnah.com/fiqh",
+      "class": "CONTENT:avg=153:rgb=169,199,188",
+      "note": "may_be_safari"
+    },
+    {
+      "mode": "closed_ul",
+      "route": "library",
+      "url": "https://www.ssunnah.com/library",
+      "class": "BLANKISH",
+      "note": "may_be_safari"
+    },
+    {
+      "mode": "closed_ul",
+      "route": "settings",
+      "url": "https://www.ssunnah.com/settings",
+      "class": "BLANKISH",
+      "note": "may_be_safari"
+    },
+    {
+      "mode": "closed_ul",
+      "route": "account",
+      "url": "https://www.ssunnah.com/account",
+      "class": "BLANKISH",
+      "note": "may_be_safari"
+    },
+    {
+      "mode": "scheme_sunnah",
+      "route": "prayer",
+      "url": "sunnah://prayer-times",
+      "class": "BLANKISH",
+      "note": "rc=115; An error was encountered processing the command (domain=LSApplicationWorkspaceErrorDomain, code=115): Simulator device failed to open sunnah://prayer-times. Underlying error (domai"
+    },
+    {
+      "mode": "fg_baseline",
+      "route": "home",
+      "url": "launch",
+      "class": "CONTENT:avg=156:rgb=171,204,192",
+      "note": ""
+    },
+    {
+      "mode": "fg_scheme",
+      "route": "prayer",
+      "url": "majlisilm://prayer-times",
+      "class": "CONTENT:avg=158:rgb=169,204,191",
+      "note": ""
+    },
+    {
+      "mode": "fg_ul",
+      "route": "prayer",
+      "url": "https://www.ssunnah.com/prayer-times",
+      "class": "CONTENT:avg=101:rgb=186,200,190",
+      "note": ""
+    },
+    {
+      "mode": "fg_scheme",
+      "route": "mushaf",
+      "url": "majlisilm://mushaf",
+      "class": "CONTENT:avg=101:rgb=185,200,190",
+      "note": ""
+    },
+    {
+      "mode": "fg_ul",
+      "route": "mushaf",
+      "url": "https://www.ssunnah.com/mushaf",
+      "class": "BLANKISH",
+      "note": ""
+    },
+    {
+      "mode": "bg_scheme",
+      "route": "prayer",
+      "url": "majlisilm://prayer-times",
+      "class": "BLANKISH",
+      "note": ""
+    },
+    {
+      "mode": "bg_ul",
+      "route": "mushaf",
+      "url": "https://www.ssunnah.com/mushaf",
+      "class": "BLANKISH",
+      "note": ""
+    },
+    {
+      "mode": "invalid_missing",
+      "route": "lessons",
+      "url": "majlisilm://lessons/does-not-exist-xyz-999",
+      "class": "BLANKISH",
+      "note": ""
+    },
+    {
+      "mode": "invalid_ul",
+      "route": "hadith",
+      "url": "https://www.ssunnah.com/hadith/missing-entity-zzz",
+      "class": "CONTENT:avg=153:rgb=169,199,188",
+      "note": ""
+    },
+    {
+      "mode": "session_logged_out",
+      "route": "account",
+      "url": "n/a",
+      "class": "UNPROVEN",
+      "note": "no auth fixture in T-033"
+    },
+    {
+      "mode": "session_expired",
+      "route": "account",
+      "url": "n/a",
+      "class": "UNPROVEN",
+      "note": "no expired-session fixture"
+    },
+    {
+      "mode": "first_install",
+      "route": "all",
+      "url": "n/a",
+      "class": "UNPROVEN",
+      "note": "not clean first-install device"
+    }
+  ],
+  "schemeDecision": {
+    "registeredNativeScheme": "majlisilm",
+    "sunnahSchemeInInfoPlist": false,
+    "sunnahSchemeNote": "sunnah:// used only as notification path sanitizer prefix; not a registered CFBundleURLSchemes entry",
+    "sunnahProbe": {
+      "mode": "scheme_sunnah",
+      "route": "prayer",
+      "url": "sunnah://prayer-times",
+      "class": "BLANKISH",
+      "note": "rc=115; An error was encountered processing the command (domain=LSApplicationWorkspaceErrorDomain, code=115): Simulator device failed to open sunnah://prayer-times. Underlying error (domai"
+    }
+  },
+  "aasa": {
+    "liveUrl": "https://www.ssunnah.com/.well-known/apple-app-site-association",
+    "status": "LIVE",
+    "homeExcluded": true
+  },
+  "requiredBoard": {
+    "Closed": "FAIL",
+    "Background": "FAIL",
+    "Foreground": "FAIL",
+    "Invalid": "UNPROVEN",
+    "Session": "FAIL"
+  },
+  "visualAudit": {
+    "closed_scheme": "OS dialog فتح في سُنّة؟ over SpringBoard — Cap shell route never opened for any scoped route",
+    "closed_ul": "https opens Safari; OS dialog overlays; web content may show (mushaf web) — Cap in-app route not proven",
+    "fg_scheme_prayer": "Home tab still active behind dialog — Prayer route not opened",
+    "bg_scheme_prayer": "Safari example.com + OS dialog — Cap route not opened",
+    "sunnah_scheme": "LSApplicationWorkspaceErrorDomain code=115 — scheme not registered"
+  }
+}

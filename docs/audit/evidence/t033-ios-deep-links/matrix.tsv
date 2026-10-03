@@ -1,0 +1,36 @@
+mode	route	url	class	note
+closed_scheme	home	majlisilm:///	CONTENT:avg=166:rgb=204,235,234	
+closed_scheme	search	majlisilm://search	CONTENT:avg=166:rgb=204,235,234	
+closed_scheme	quran	majlisilm://quran	CONTENT:avg=166:rgb=204,235,234	
+closed_scheme	mushaf	majlisilm://mushaf	CONTENT:avg=166:rgb=204,235,234	
+closed_scheme	prayer	majlisilm://prayer-times	CONTENT:avg=166:rgb=204,235,234	
+closed_scheme	lessons	majlisilm://lessons	CONTENT:avg=166:rgb=204,235,234	
+closed_scheme	hadith	majlisilm://hadith	CONTENT:avg=166:rgb=204,235,234	
+closed_scheme	fiqh	majlisilm://fiqh	CONTENT:avg=166:rgb=204,235,234	
+closed_scheme	library	majlisilm://library	CONTENT:avg=166:rgb=204,235,234	
+closed_scheme	settings	majlisilm://settings	CONTENT:avg=166:rgb=204,235,234	
+closed_scheme	account	majlisilm://account	CONTENT:avg=166:rgb=204,235,234	
+closed_ul	home	https://www.ssunnah.com/	CONTENT:avg=196:rgb=168,204,190	may_be_safari
+closed_ul	search	https://www.ssunnah.com/search	BLANKISH	may_be_safari
+closed_ul	quran	https://www.ssunnah.com/quran	CONTENT:avg=165:rgb=233,236,232	may_be_safari
+closed_ul	mushaf	https://www.ssunnah.com/mushaf	BLANKISH	may_be_safari
+closed_ul	prayer	https://www.ssunnah.com/prayer-times	CONTENT:avg=101:rgb=186,200,190	may_be_safari
+closed_ul	lessons	https://www.ssunnah.com/lessons	BLANKISH	may_be_safari
+closed_ul	hadith	https://www.ssunnah.com/hadith	CONTENT:avg=153:rgb=169,199,188	may_be_safari
+closed_ul	fiqh	https://www.ssunnah.com/fiqh	CONTENT:avg=153:rgb=169,199,188	may_be_safari
+closed_ul	library	https://www.ssunnah.com/library	BLANKISH	may_be_safari
+closed_ul	settings	https://www.ssunnah.com/settings	BLANKISH	may_be_safari
+closed_ul	account	https://www.ssunnah.com/account	BLANKISH	may_be_safari
+scheme_sunnah	prayer	sunnah://prayer-times	BLANKISH	rc=115; An error was encountered processing the command (domain=LSApplicationWorkspaceErrorDomain, code=115): Simulator device failed to open sunnah://prayer-times. Underlying error (domai
+fg_baseline	home	launch	CONTENT:avg=156:rgb=171,204,192	
+fg_scheme	prayer	majlisilm://prayer-times	CONTENT:avg=158:rgb=169,204,191	
+fg_ul	prayer	https://www.ssunnah.com/prayer-times	CONTENT:avg=101:rgb=186,200,190	
+fg_scheme	mushaf	majlisilm://mushaf	CONTENT:avg=101:rgb=185,200,190	
+fg_ul	mushaf	https://www.ssunnah.com/mushaf	BLANKISH	
+bg_scheme	prayer	majlisilm://prayer-times	BLANKISH	
+bg_ul	mushaf	https://www.ssunnah.com/mushaf	BLANKISH	
+invalid_missing	lessons	majlisilm://lessons/does-not-exist-xyz-999	BLANKISH	
+invalid_ul	hadith	https://www.ssunnah.com/hadith/missing-entity-zzz	CONTENT:avg=153:rgb=169,199,188	
+session_logged_out	account	n/a	UNPROVEN	no auth fixture in T-033
+session_expired	account	n/a	UNPROVEN	no expired-session fixture
+first_install	all	n/a	UNPROVEN	not clean first-install device
