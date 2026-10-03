@@ -17,13 +17,13 @@
   --mss-hero-glow-strong: color-mix(in srgb, var(--mj-accent) 28%, transparent);
   /* هيرو زمرد داكن · نص عاجي · Accent ذهبي */
   --mss-on-hero: var(--mj-white);
-  --mss-on-hero-muted: var(--mj-ink-2);
+  --mss-on-hero-muted: color-mix(in srgb, var(--sf-color-on-emerald) 86%, var(--cs-ink-hero));
   --mss-on-hero-accent: var(--mj-accent-soft);
   /* هيرو الأقسام = زمرد داكن (هوية رئيسية) */
   --mss-section-hero-bg: var(--cs-ink-hero);
   /* نص فوق هيرو أخضر غامق (asp-hero / بطاقات مميزة) */
   --mss-on-dark-hero: var(--mj-white);
-  --mss-on-dark-hero-muted: var(--mj-ink-2);
+  --mss-on-dark-hero-muted: color-mix(in srgb, var(--sf-color-on-emerald) 86%, var(--cs-ink-hero));
   --mss-on-dark-hero-accent: var(--mj-accent-soft);
   --mss-radius-hero: 1.35rem;
   --mss-radius-card: 1.15rem;

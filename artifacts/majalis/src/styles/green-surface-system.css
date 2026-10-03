@@ -45,7 +45,7 @@
   --soft-card-on-light-bg: var(--surface-feature);
   --mss-section-hero-bg: var(--cs-ink-hero, var(--mj-brand-deep));
   --mss-on-hero: var(--mj-white);
-  --mss-on-hero-muted: var(--mj-ink-2);
+  --mss-on-hero-muted: color-mix(in srgb, var(--sf-color-on-emerald) 86%, var(--cs-ink-hero, var(--mj-brand-deep)));
   --mss-on-hero-accent: var(--mj-accent-soft);
 }
 

@@ -34,8 +34,9 @@
   --cs-ink-border: color-mix(in srgb, var(--cs-ink-hero) 70%, var(--cs-gold) 12%);
   --cs-on-ink: var(--sf-color-on-emerald);
   --cs-on-ink-title: var(--sf-color-on-emerald);
-  --cs-on-ink-body: var(--mj-ink-2);
-  --cs-on-ink-meta: var(--mj-muted);
+  /* نص ثانوي فوق زمرد داكن — عاجي مكتوم (لا --mj-ink-2 النهاري الداكن) */
+  --cs-on-ink-body: color-mix(in srgb, var(--sf-color-on-emerald) 86%, var(--cs-ink-hero));
+  --cs-on-ink-meta: color-mix(in srgb, var(--sf-color-on-emerald) 70%, var(--cs-ink-hero));
   --cs-on-ink-icon-bg: color-mix(in srgb, var(--cs-on-ink) 14%, transparent);
   --cs-on-ink-icon: var(--cs-on-ink);
   --cs-ink-shadow: none;
