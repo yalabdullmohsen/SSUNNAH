@@ -391,6 +391,11 @@ table.ss-data-table {
   display: none;
 }
 
+/* —— Color authority semantic remind (COLOR_AUTHORITY_ONLY) ——
+   Canonical meanings live in lib/color-authority.ts — do not invent page greens/reds.
+   PRIMARY=--mj-brand · TEXT=--mj-ink · SURFACE=--mj-surface · ERROR=--mj-danger
+*/
+
 /* —— Search field rhythm (SEARCH authority) —— */
 .ss-search-input,
 .page-search-input,

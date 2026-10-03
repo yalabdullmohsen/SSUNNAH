@@ -108,6 +108,14 @@ Responsive: `breakpoints.css` only.
 Maps: `SEARCH_` · `FILTER_` · `STATE_` · `RESPONSIVE_AUTHORITY_MAP.md`.  
 Gate: `test:search-filter-state-authority`.
 
+## Color / Typography / Design Language
+
+Canonical color roles: `COLOR_AUTHORITY_MAP` · `lib/color-authority.ts` → `--mj-*` / `--sf2-*`.  
+Canonical type: `TYPOGRAPHY_AUTHORITY_MAP` · SsText · `typography-scale.css`.  
+Language: `DESIGN_LANGUAGE_AUTHORITY.md`.  
+Exit: `COLOR_AUTHORITY_ONLY` · `TYPOGRAPHY_AUTHORITY_ONLY` · `DESIGN_LANGUAGE_UNIFIED`.  
+Gate: `test:color-typography-authority`.
+
 ## Page Authority
 
 Canonical: `AppPage` · `PageHeader` · Screen adapters (`DetailScreen`, …) per `PAGE_CONTRACT_MATRIX.md`.

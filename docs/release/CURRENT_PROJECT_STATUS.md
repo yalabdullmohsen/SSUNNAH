@@ -58,6 +58,8 @@ Phases T–V: `docs/audit/VISUAL_TUV_TAB_NAV_IA_REPORT.md` · TAB/NAV/IA maps ·
 
 Phases W–Z: `docs/audit/VISUAL_WXYZ_SEARCH_FILTER_STATE_RESPONSIVE_REPORT.md` · SEARCH/FILTER/STATE/RESPONSIVE maps · SearchField→SearchInput · `test:search-filter-state-authority`.
 
+Phases AA–AC: `docs/audit/VISUAL_AA_AC_COLOR_TYPE_LANGUAGE_REPORT.md` · COLOR/TYPOGRAPHY/DESIGN_LANGUAGE maps · `test:color-typography-authority`.
+
 ## Endgame phases (A–H)
 
 | Phase | Target exit | Status |

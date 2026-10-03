@@ -115,6 +115,11 @@ export {
   PermissionDeniedState as AppPermissionDeniedState,
   RateLimitedState as AppRateLimitedState,
 } from "./StateSystem";
+export {
+  PageTitle,
+  SubtitleText,
+  MetaText,
+} from "./TypographySystem";
 export { SettingsList, type SettingsListRow } from "./SettingsList";
 export {
   FormLabel,
