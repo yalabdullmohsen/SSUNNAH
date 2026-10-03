@@ -93,3 +93,5 @@ $$;
 GRANT EXECUTE ON FUNCTION public.search_hadiths(text, int) TO anon, authenticated, service_role;
 GRANT EXECUTE ON FUNCTION public.search_hadith_items(text, int) TO anon, authenticated, service_role;
 GRANT EXECUTE ON FUNCTION public.search_sources(text, int) TO anon, authenticated, service_role;
+
+DROP FUNCTION IF EXISTS public.to_tsvector_simple(text);
