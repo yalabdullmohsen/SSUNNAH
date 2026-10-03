@@ -124,7 +124,6 @@
   background: var(--mj-surface, var(--mj-surface));
   border-color: rgba(255, 255, 255, 0.1);
   color: var(--mj-ink, #E9EFEC);
-  box-shadow: none;
 }
 :is(html[data-theme="dark"], html.dark) .mosque-mode__link-label {
   color: var(--elite-forest, #7bd6ae);

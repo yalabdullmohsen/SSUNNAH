@@ -234,7 +234,6 @@ html[data-theme="dark"] .login-alert--success {
 .login-submit:disabled {
   opacity: 0.7;
   cursor: not-allowed;
-  box-shadow: none;
 }
 
 .login-text-btn {

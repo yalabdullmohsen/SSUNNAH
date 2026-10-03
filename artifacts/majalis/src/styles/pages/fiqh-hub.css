@@ -175,7 +175,7 @@ html[data-theme="dark"] .fqh-hub-card__desc {
   max-width: 100%;
   overflow: hidden;
 }
-.fqp-tabs-nav--bare { background: none !important; box-shadow: none !important; }
+.fqp-tabs-nav--bare { background: none !important; }
 .fqp-tabs-scroll {
   display: flex;
   gap: .25rem !important;
@@ -2119,7 +2119,6 @@ html.dark .fiqh-lesson-alert {
   padding: 0.2rem 0.1rem;
   border: 0;
   background: transparent;
-  box-shadow: none;
   border-radius: 0;
 }
 .fiqh-lux-shell > .compact-section-header .compact-section-header__title {

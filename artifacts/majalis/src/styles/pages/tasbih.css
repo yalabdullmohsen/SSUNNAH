@@ -231,7 +231,6 @@
 html[data-theme="dark"] .adhkar-tapper__inner,
 html.dark .adhkar-tapper__inner {
   background: var(--mj-surface, #17201C);
-  box-shadow: none;
 }
 html[data-theme="dark"] .adhkar-tapper__sep,
 html[data-theme="dark"] .adhkar-tapper__tot,

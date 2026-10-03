@@ -220,7 +220,6 @@ html[data-v2-sections="1"] .section-entry-card__icon {
   border-radius: var(--v2-radius-icon, 16px);
   background: var(--cs-primary-soft, #e2efe8) !important;
   color: var(--cs-primary-deep, #0a4530) !important;
-  box-shadow: none !important;
 }
 
 html[data-v2-sections="1"] .more-page-tile__icon {

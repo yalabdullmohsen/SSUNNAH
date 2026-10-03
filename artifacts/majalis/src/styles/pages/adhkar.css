@@ -338,7 +338,6 @@ html[data-theme="dark"] .adhkar-focus-card,
 html.dark .adhkar-focus-card {
   background: var(--mj-surface, #17201C);
   border-color: var(--mj-hairline, #26332D);
-  box-shadow: none;
 }
 html[data-theme="dark"] .adhkar-focus-text,
 html.dark .adhkar-focus-text {

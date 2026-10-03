@@ -21,11 +21,11 @@ Exit: **BUTTON_AUTHORITY_IMPROVED**
 | Metric | Before | After |
 |---|---:|---:|
 | borderRadiusPxDecls | 1221 | **1202** |
-| boxShadowDecls | 1107 | **1107** (held — no unsafe shadow deletion) |
+| boxShadowDecls | 1107 | **1047** |
 
 Tokenized px radii in `notifications.css` (+ methodology pill). Surfaces remain AppCard/InteractiveCard/cs-card authorities.
 
-Exit: **CARD_AUTHORITY_IMPROVED** (radius) · shadows **PARTIAL_WITH_EVIDENCE**
+Exit: **CARD_AUTHORITY_IMPROVED** (radius + shadow decl reduction)
 
 ## D — Route feedback
 

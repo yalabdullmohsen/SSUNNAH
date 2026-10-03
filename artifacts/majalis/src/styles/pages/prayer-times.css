@@ -150,7 +150,6 @@ html.pts-immersive .scroll-to-top {
   background-image: none;
   border: 0;
   border-radius: 0;
-  box-shadow: none;
   padding-block-start: max(12px, var(--inset-top, 0px));
   padding-block-end: max(12px, var(--inset-bottom, 0px));
   padding-inline: 16px;
@@ -566,7 +565,6 @@ html.pts-immersive .scroll-to-top {
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
   -webkit-tap-highlight-color: transparent;
-  box-shadow: none;
 }
 .pts-row:hover {
   background: rgba(255, 255, 255, 0.09);
@@ -669,7 +667,6 @@ html.pts-immersive .scroll-to-top {
   background-color: rgba(255, 255, 255, 0.05);
   min-height: 3rem;
   overflow: hidden;
-  box-shadow: none;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   -webkit-tap-highlight-color: transparent;
 }
@@ -772,7 +769,6 @@ html.pts-immersive .scroll-to-top {
   .pts-screen {
     margin-bottom: 0;
     border-radius: 0;
-    box-shadow: none;
     min-height: 100dvh;
   }
 }
