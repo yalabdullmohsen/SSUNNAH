@@ -30,6 +30,8 @@ const REQUIRED = [
   "artifacts/majalis/scripts/authority-coverage-report.mjs",
   "artifacts/majalis/scripts/design-compliance-engine.mjs",
   "docs/design/DESIGN_SYSTEM_COMPLIANCE_ENGINE.md",
+  "artifacts/majalis/scripts/product-excellence-engine.mjs",
+  "docs/design/PRODUCT_EXCELLENCE_PROGRAM.md",
 ];
 
 const missing = REQUIRED.filter((rel) => !existsSync(resolve(ROOT, rel)));

@@ -156,6 +156,12 @@ Engine: `DESIGN_SYSTEM_COMPLIANCE_ENGINE.md` · `scripts/design-compliance-engin
 Outputs: DESIGN_COMPLIANCE_* · TOKEN_COVERAGE_SCORECARD · UI_DUPLICATION_REPORT · CONSISTENCY_PRIORITY_MATRIX · PRODUCT_SURFACE_MAP · SUNNAH_PRODUCT_CERTIFICATION_REPORT.  
 Gate: `test:design-compliance-engine`.
 
+## Product excellence AV–AZ
+
+Program: `PRODUCT_EXCELLENCE_PROGRAM.md` · `scripts/product-excellence-engine.mjs`.  
+Outputs: PRODUCT_COHESION_* · TOKEN_MIGRATION_QUEUE · COMPONENT_RATIONALIZATION · JOURNEY_LENGTH · POLISH_BACKLOG.  
+Gate: `test:product-excellence`.
+
 ## Page Authority
 
 Canonical: `AppPage` · `PageHeader` · Screen adapters (`DetailScreen`, …) per `PAGE_CONTRACT_MATRIX.md`.

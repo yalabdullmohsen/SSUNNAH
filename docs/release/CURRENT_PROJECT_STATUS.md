@@ -70,6 +70,8 @@ Phases AL–AP: `docs/audit/VISUAL_AL_AP_POLISH_CONSISTENCY_REPORT.md` · intera
 
 Phases AQ–AU: `docs/audit/VISUAL_AQ_AU_COMPLIANCE_CERTIFICATION_REPORT.md` · compliance engine · token coverage · duplication · heatmap · product certification · `test:design-compliance-engine`.
 
+Phases AV–AZ: `docs/audit/VISUAL_AV_AZ_PRODUCT_EXCELLENCE_REPORT.md` · cohesion · token migration queue · rationalization · journey compression · polish backlog · `test:product-excellence`.
+
 ## Endgame phases (A–H)
 
 | Phase | Target exit | Status |
