@@ -53,7 +53,7 @@ assert.match(pagerSrc, /data-settled/);
 const pagerCss = readPkg("src/features/mushaf-reader/mushaf-reader.css");
 assert.match(pagerCss, /content-visibility:\s*auto/);
 
-/* direction-aware opposite near idle */
+/* direction-aware opposite near idle — مسار جيران واحد بلا prefetch ثنائي متزامن */
 assert.match(reader, /fluidity:\s*opposite-near-idle/);
 assert.match(reader, /opposite near on idle/);
 assert.match(reader, /ensureQpcPageFont\(page \+ 1\)/);
@@ -61,6 +61,17 @@ assert.match(reader, /ensureQpcPageFont\(page - 1\)/);
 assert.match(reader, /ensureQpcPageFont\(page \+ 2\)/);
 assert.match(reader, /lastTurnDeltaRef/);
 assert.doesNotMatch(reader, /setNeighborEpoch/);
+assert.doesNotMatch(
+  reader,
+  /prefetchMushafPage\(page - 1\)[\s\S]{0,120}prefetchMushafPage\(page \+ 1\)[\s\S]{0,120}prefetchMushafPage\(page - 2\)/,
+  "لا ازدواج prefetchMushafPage ±1/±2 مع مسار opposite-near",
+);
+assert.match(reader, /onBookmarkMarkerOpenCurrent/);
+assert.match(reader, /setShellEl\(\(prev\)\s*=>\s*\(prev\s*===\s*el\s*\?\s*prev\s*:\s*el\)\)/);
+{
+  const coach = readPkg("src/features/mushaf-reader/MushafReadingCoach.tsx");
+  assert.match(coach, /alreadyDone/);
+}
 
 /* clearPageChrome guarded */
 assert.match(reader, /needsClear/);
@@ -122,10 +133,15 @@ assert.equal(after.metrics.telemetryPointerUp, true);
 assert.equal(after.metrics.telemetryVisualTransitionEnd, true);
 assert.equal(after.metrics.telemetryProductUnlock, true);
 assert.equal(after.metrics.arrowsWaitNeighborsReady, false);
+assert.equal(after.metrics.singleNeighborPrefetchPipeline, true);
+assert.equal(after.metrics.prefetchShellElGuarded, true);
+assert.equal(after.metrics.stableBookmarkMarkerOpen, true);
+assert.equal(after.metrics.readingCoachEagerWhenDismissed, false);
 assert.ok(
   after.metrics.estimatedTurnRenderHotspots < before.metrics.estimatedTurnRenderHotspots,
   `hotspots should drop (${before.metrics.estimatedTurnRenderHotspots} → ${after.metrics.estimatedTurnRenderHotspots})`,
 );
+assert.equal(after.metrics.estimatedTurnRenderHotspots, 0);
 
 /* report documents BEFORE/AFTER */
 const report = readRepo("docs/mushaf/MUSHAF_FLUIDITY_OPTIMIZATION_REPORT.md");

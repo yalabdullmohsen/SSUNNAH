@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-03T17:47:28.919Z",
+  "capturedAt": "2026-10-03T22:35:41.996Z",
   "phase": "AFTER",
   "topDelays": [
     {
@@ -33,15 +33,15 @@
       "class": "MUSHAF_SPECIAL"
     },
     {
-      "id": "BIDIRECTIONAL_NEAR_PREFETCH_CONTENTION",
-      "severity": 3,
-      "evidence": "opposite ±1 deferred to idle",
-      "class": "FIXABLE_IN_REPOSITORY"
-    },
-    {
       "id": "WORD_SYNC_FANOUT_X3_SHEETS",
       "severity": 2,
       "evidence": "line-level useMushafHighlightKeys (1 subscribe / line)",
+      "class": "PARTIAL"
+    },
+    {
+      "id": "BIDIRECTIONAL_NEAR_PREFETCH_CONTENTION",
+      "severity": 2,
+      "evidence": "single direction-aware neighbor pipeline (no dual eager prefetchMushafPage)",
       "class": "PARTIAL"
     },
     {
@@ -80,6 +80,10 @@
     "fontCacheHitSyncUsP50": 0.006,
     "fontCacheHitSyncUsP95": 0.017,
     "fontCacheHitSamples": 80,
-    "estimatedTurnRenderHotspots": 0
+    "estimatedTurnRenderHotspots": 0,
+    "singleNeighborPrefetchPipeline": true,
+    "prefetchShellElGuarded": true,
+    "stableBookmarkMarkerOpen": true,
+    "readingCoachEagerWhenDismissed": false
   }
 }

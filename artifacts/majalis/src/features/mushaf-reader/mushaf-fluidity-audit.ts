@@ -31,6 +31,12 @@ export type FluidityAuditSnapshot = {
     fontCacheHitSyncUsP95: number;
     fontCacheHitSamples: number;
     estimatedTurnRenderHotspots: number;
+    /** مسار جيران واحد (اتجاه-واعٍ) بلا prefetchMushafPage ثنائي متزامن */
+    singleNeighborPrefetchPipeline: boolean;
+    prefetchShellElGuarded: boolean;
+    stableBookmarkMarkerOpen: boolean;
+    /** false = المدرب لا يشغّل مؤقّتًا بعد dismiss محلي */
+    readingCoachEagerWhenDismissed: boolean;
   };
 };
 
@@ -128,12 +134,33 @@ export function runMushafFluidityAudit(
 
   const fontBench = benchFontCacheHit();
 
+  const coach = readPkg("src/features/mushaf-reader/MushafReadingCoach.tsx");
+  const dualEagerNeighborPrefetch =
+    /prefetchMushafPage\(page\s*-\s*1\)/.test(reader) &&
+    /prefetchMushafPage\(page\s*\+\s*1\)/.test(reader) &&
+    /prefetchMushafPage\(page\s*-\s*2\)/.test(reader) &&
+    /prefetchMushafPage\(page\s*\+\s*2\)/.test(reader);
+  const singleNeighborPrefetchPipeline =
+    /fluidity:\s*opposite-near-idle/.test(reader) && !dualEagerNeighborPrefetch;
+  const prefetchShellElGuarded =
+    /setShellEl\(\(prev\)\s*=>\s*\(prev\s*===\s*el\s*\?\s*prev\s*:\s*el\)\)/.test(reader);
+  const stableBookmarkMarkerOpen =
+    /onBookmarkMarkerOpenCurrent/.test(reader) &&
+    /onBookmarkMarkerOpen=\{\s*\n?\s*role === "current" \? onBookmarkMarkerOpenCurrent/.test(
+      reader,
+    );
+  const readingCoachEagerWhenDismissed = !/alreadyDone/.test(coach);
+
   let estimatedTurnRenderHotspots = 0;
   if (!adjacentPaneSyncFrozen) estimatedTurnRenderHotspots += 40;
   if (neighborEpochRerender) estimatedTurnRenderHotspots += 8;
   if (!clearPageChromeGuarded) estimatedTurnRenderHotspots += 6;
   if (arrowsWaitNeighborsReady) estimatedTurnRenderHotspots += 5;
   if (!oppositeNearPrefetchOnIdle) estimatedTurnRenderHotspots += 10;
+  if (!singleNeighborPrefetchPipeline) estimatedTurnRenderHotspots += 8;
+  if (!prefetchShellElGuarded) estimatedTurnRenderHotspots += 2;
+  if (!stableBookmarkMarkerOpen) estimatedTurnRenderHotspots += 2;
+  if (readingCoachEagerWhenDismissed) estimatedTurnRenderHotspots += 1;
   /* عقوبة اشتراكات لكل كلمة؛ تُلغى عند التحويل لاشتراك سطري */
   if (!lineLevelHighlightKeys && verseWordSyncSubscriptionsPerWord > 0) {
     estimatedTurnRenderHotspots += Math.min(24, verseWordSyncSubscriptionsPerWord * 4);
@@ -174,11 +201,13 @@ export function runMushafFluidityAudit(
     },
     {
       id: "BIDIRECTIONAL_NEAR_PREFETCH_CONTENTION",
-      severity: oppositeNearPrefetchOnIdle ? 3 : 7,
-      evidence: oppositeNearPrefetchOnIdle
-        ? "opposite ±1 deferred to idle"
-        : "both ±1 eager compete with target font",
-      class: "FIXABLE_IN_REPOSITORY",
+      severity: singleNeighborPrefetchPipeline ? 2 : oppositeNearPrefetchOnIdle ? 3 : 7,
+      evidence: singleNeighborPrefetchPipeline
+        ? "single direction-aware neighbor pipeline (no dual eager prefetchMushafPage)"
+        : oppositeNearPrefetchOnIdle
+          ? "opposite ±1 deferred to idle"
+          : "both ±1 eager compete with target font",
+      class: singleNeighborPrefetchPipeline ? "PARTIAL" : "FIXABLE_IN_REPOSITORY",
     },
     {
       id: "CLEAR_CHROME_SETSTATE_STORM",
@@ -252,6 +281,10 @@ export function runMushafFluidityAudit(
       fontCacheHitSyncUsP95: Number(fontBench.p95.toFixed(3)),
       fontCacheHitSamples: fontBench.samples,
       estimatedTurnRenderHotspots,
+      singleNeighborPrefetchPipeline,
+      prefetchShellElGuarded,
+      stableBookmarkMarkerOpen,
+      readingCoachEagerWhenDismissed,
     },
   };
 }

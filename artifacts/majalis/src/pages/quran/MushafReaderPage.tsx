@@ -97,10 +97,34 @@ export default function MushafReaderPage() {
     if (isMushafReaderV2Enabled()) migrateMushafUserData();
   }, []);
 
+  /* بعد أول paint / idle — لا تنافس ensureQpcPageFont على أول تقليبة */
   useEffect(() => {
-    void import("@/lib/font-ready").then((m) => {
-      void m.warmStaticQuranicFonts(["Amiri Quran", "KFGQPC Hafs Uthmanic"]);
-    });
+    let idleHandle: number | null = null;
+    let timer: number | null = null;
+    const warm = () => {
+      void import("@/lib/font-ready").then((m) => {
+        void m.warmStaticQuranicFonts(["Amiri Quran", "KFGQPC Hafs Uthmanic"]);
+      });
+    };
+    const ric = (
+      window as Window & {
+        requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+        cancelIdleCallback?: (id: number) => void;
+      }
+    ).requestIdleCallback;
+    if (typeof ric === "function") {
+      idleHandle = ric(warm, { timeout: 2800 });
+    } else {
+      timer = window.setTimeout(warm, 1400);
+    }
+    return () => {
+      if (idleHandle != null) {
+        (
+          window as Window & { cancelIdleCallback?: (id: number) => void }
+        ).cancelIdleCallback?.(idleHandle);
+      }
+      if (timer != null) window.clearTimeout(timer);
+    };
   }, []);
 
   /** مزامنة من URL فقط عند رجوع المتصفح / روابط خارجية — لا أثناء تقليب داخلي */
