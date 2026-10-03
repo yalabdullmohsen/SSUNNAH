@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { invalidateLessonsCache } from "@/lib/lessons-service";
 import { CheckCircle2, Image, MousePointerClick, Trash2, User } from "lucide-react";
 import {
@@ -158,7 +159,7 @@ function JobCard({
 }) {
   const isSpinning = job.status === "analyzing";
   return (
-    <button
+    <Button variant="secondary" size="small"
       type="button"
       className={`ii-jcard${selected ? " ii-jcard--selected" : ""}`}
       onClick={onClick}
@@ -187,7 +188,7 @@ function JobCard({
           <span className="ii-chip ii-chip--dup">⚠ مكرر محتمل</span>
         )}
       </div>
-    </button>
+    </Button>
   );
 }
 
@@ -517,60 +518,60 @@ function JobDetail({
         <div className="ii-actions">
           {isEditable && (
             <>
-              <button
+              <Button variant="secondary" size="small"
                 type="button"
                 className="ii-btn ii-btn--primary"
                 disabled={busy || !parsed.title?.trim()}
                 onClick={() => onApprove(job.id, parsed)}
               >
                 ✓ اعتماد ونشر
-              </button>
-              <button
+              </Button>
+              <Button variant="secondary" size="small"
                 type="button"
                 className="ii-btn ii-btn--secondary"
                 disabled={busy}
                 onClick={() => onSaveDraft(job.id, parsed)}
               >
                 حفظ كمسودة
-              </button>
+              </Button>
             </>
           )}
           {job.status === "failed" && (
-            <button
+            <Button variant="secondary" size="small"
               type="button"
               className="ii-btn ii-btn--secondary"
               onClick={() => onRetry(job.id)}
             >
               ↻ إعادة المحاولة
-            </button>
+            </Button>
           )}
           {["completed", "needs-review", "failed"].includes(job.status) && (
-            <button
+            <Button variant="secondary" size="small"
               type="button"
               className="ii-btn ii-btn--ghost"
               disabled={busy}
               onClick={() => onReExtract(job.id)}
             >
               ⟳ إعادة تحليل
-            </button>
+            </Button>
           )}
           {job.draftId && ["completed", "needs-review"].includes(job.status) && (
-            <button
+            <Button variant="secondary" size="small"
               type="button"
               className="ii-btn ii-btn--danger"
               disabled={busy}
               onClick={() => onReject(job.id)}
             >
               ✕ رفض
-            </button>
+            </Button>
           )}
-          <button
+          <Button variant="secondary" size="small"
             type="button"
             className="ii-btn ii-btn--ghost"
             onClick={() => onRemove(job.id)}
           >
             حذف من القائمة
-          </button>
+          </Button>
         </div>
       )}
     </div>

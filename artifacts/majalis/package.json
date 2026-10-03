@@ -642,6 +642,7 @@
     "capture:whole-app-baseline": "node scripts/whole-app-baseline.mjs --write",
     "test:mushaf-internal-perf-pr1": "node --import tsx src/lib/__tests__/mushaf-internal-perf-pr1-gate.test.ts",
     "test:wave6-mushaf-fluidity": "node --import tsx src/lib/__tests__/wave6-mushaf-fluidity-gate.test.ts",
+    "test:debt-zero-unification": "node --import tsx src/lib/__tests__/debt-zero-unification-gate.test.ts",
     "test:mushaf-fluidity-optimization": "node --import tsx src/lib/__tests__/mushaf-fluidity-optimization-gate.test.ts",
     "capture:mushaf-internal-perf-baseline": "node scripts/mushaf-internal-perf-baseline.mjs --write",
     "test:quran-journey-pr1": "node --import tsx src/lib/__tests__/quran-journey-pr1-contracts-gate.test.ts",

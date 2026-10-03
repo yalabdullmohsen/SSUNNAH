@@ -134,7 +134,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/academic-research/:id",
@@ -157,7 +158,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/academic-research/assistant",
@@ -180,7 +182,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/academic-research/submit",
@@ -203,7 +206,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/account-deletion",
@@ -272,7 +276,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/adhan-help",
@@ -295,7 +300,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/adhan-settings",
@@ -318,7 +324,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/adhkar",
@@ -371,7 +378,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/admin",
@@ -1198,7 +1206,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/alamat-saah",
@@ -1221,7 +1230,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/amr-bil-maruf",
@@ -1244,7 +1254,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/amrad-qalbiyya",
@@ -1267,7 +1278,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/anbiya",
@@ -1359,7 +1371,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/aqidah",
@@ -1405,7 +1418,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/arabic-language/:categoryId",
@@ -1428,7 +1442,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/arabic-language/:categoryId/:topicId",
@@ -1451,7 +1466,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/arbaeen-nawawi",
@@ -1474,7 +1490,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/arbaeen-nawawi/:id",
@@ -1497,7 +1514,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/arkan",
@@ -1520,7 +1538,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/arkan-iman",
@@ -1543,7 +1562,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/asbab-al-nuzul",
@@ -1589,7 +1609,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/assistant",
@@ -1612,7 +1633,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/auth/callback",
@@ -1704,7 +1726,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/calendar",
@@ -1727,7 +1750,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/car-mode",
@@ -1750,7 +1774,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/cards",
@@ -1773,7 +1798,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/citations",
@@ -1819,7 +1845,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/competitions/:id",
@@ -1842,7 +1869,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/condolences",
@@ -1957,7 +1985,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/dalail-nubuwwah",
@@ -1980,7 +2009,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/dalail-nubuwwah/:categoryId",
@@ -2003,7 +2033,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/dalail-nubuwwah/:categoryId/:topicId",
@@ -2026,7 +2057,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/data-licenses",
@@ -2118,7 +2150,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/discover-islam",
@@ -2141,7 +2174,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/discover-islam/articles/:slug",
@@ -2164,7 +2198,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/discover-islam/contact",
@@ -2187,7 +2222,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/discover-islam/doubts",
@@ -2210,7 +2246,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/discover-islam/doubts/:slug",
@@ -2233,7 +2270,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/discover-islam/how-to-convert",
@@ -2256,7 +2294,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/discover-islam/new-muslim",
@@ -2279,7 +2318,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/discover-islam/new-muslim/:day",
@@ -2302,7 +2342,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/discover-islam/questions",
@@ -2325,7 +2366,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/discover-islam/questions/:slug",
@@ -2348,7 +2390,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/duas",
@@ -2371,7 +2414,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/duas-quran",
@@ -2394,7 +2438,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/durus-imaniyya",
@@ -2417,7 +2462,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/durus-imaniyya/:categoryId",
@@ -2440,7 +2486,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/durus-imaniyya/:categoryId/:topicId",
@@ -2463,7 +2510,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/durus-mutanawwia",
@@ -2486,7 +2534,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/durus-mutanawwia/:categoryId",
@@ -2509,7 +2558,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/durus-mutanawwia/:categoryId/:topicId",
@@ -2532,7 +2582,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/events",
@@ -2601,7 +2652,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/family",
@@ -2624,7 +2676,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/family-mode",
@@ -2762,7 +2815,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/feature-tour",
@@ -2785,7 +2839,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/features-in-progress",
@@ -2831,7 +2886,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/fikr-waqia/:categoryId",
@@ -2854,7 +2910,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/fikr-waqia/:categoryId/:topicId",
@@ -2877,7 +2934,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/fiqh",
@@ -2976,7 +3034,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/fiqh/books/:bookId",
@@ -2999,7 +3058,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/fiqh/books/:bookId/chapters/:chapterId",
@@ -3022,7 +3082,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/fiqh/books/:bookId/lessons/:lessonId",
@@ -3045,7 +3106,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/fiqh/topics/:topicId",
@@ -3068,7 +3130,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/fiqh/usul",
@@ -3091,7 +3154,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/flashcards",
@@ -3114,7 +3178,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/glossary",
@@ -3191,7 +3256,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/hadith/:id",
@@ -3260,7 +3326,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/hadith/books",
@@ -3283,7 +3350,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/hadith/books-and-rulings",
@@ -3306,7 +3374,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/hadith/daif",
@@ -3329,7 +3398,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/hadith/mawdu",
@@ -3352,7 +3422,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/hadith/sahih",
@@ -3375,7 +3446,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/hajj",
@@ -3398,7 +3470,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/hifz-path",
@@ -3421,7 +3494,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/hifz-path/c/:category",
@@ -3444,7 +3518,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/hifz-path/my",
@@ -3467,7 +3542,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/hifz-path/p/:slug",
@@ -3490,7 +3566,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/hifz-path/p/:slug/u/:unitId",
@@ -3513,7 +3590,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/hikam-salaf",
@@ -3536,7 +3614,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/iman-topics",
@@ -3559,7 +3638,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/iman-topics/:categoryId",
@@ -3582,7 +3662,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/iman-topics/:categoryId/:topicId",
@@ -3605,7 +3686,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/institutions",
@@ -3628,7 +3710,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/internal/status",
@@ -3651,7 +3734,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/islam-stats",
@@ -3674,7 +3758,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/islamic-directory",
@@ -3697,7 +3782,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/islamic-events",
@@ -3743,7 +3829,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/islamic-history",
@@ -3835,7 +3922,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/islamic-landmarks/:id",
@@ -3858,7 +3946,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/islamic-landmarks/map",
@@ -3881,7 +3970,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/islamic-sects",
@@ -3904,7 +3994,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/islamic-sects/:id",
@@ -3927,7 +4018,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/islamic-stories",
@@ -3973,7 +4065,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/janna-naar",
@@ -3996,7 +4089,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/jumuah",
@@ -4019,7 +4113,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/knowledge",
@@ -4065,7 +4160,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/knowledge-map",
@@ -4111,7 +4207,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/knowledge/:section/:id",
@@ -4134,7 +4231,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/kuwait-lessons",
@@ -4157,7 +4255,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/latest",
@@ -4250,7 +4349,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/learn/series/:slug",
@@ -4273,7 +4373,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/learning",
@@ -4695,7 +4796,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/lessons/current",
@@ -4757,7 +4859,7 @@
       "routeClass": "REDIRECT_ONLY",
       "noResults": "REDIRECT_ONLY",
       "offline": "REDIRECT_ONLY",
-      "stale": "PARTIAL",
+      "stale": "KEEP_JUSTIFIED",
       "light": "COMPLETE",
       "system": "COMPLETE",
       "mobile": "COMPLETE",
@@ -4776,7 +4878,8 @@
       "publicFeedbackDate": "2026-10-01",
       "publicFeedbackPhase": "ROUTE_FEEDBACK_PUBLIC",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/library/:id",
@@ -4875,7 +4978,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/madhahib/:id",
@@ -4898,7 +5002,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/malaika",
@@ -4921,7 +5026,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/man-nahnu",
@@ -4967,7 +5073,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/maqasid-sharia/:categoryId",
@@ -4990,7 +5097,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/maqasid-sharia/:categoryId/:topicId",
@@ -5013,7 +5121,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/masajid",
@@ -5082,7 +5191,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/mawarith/calculator",
@@ -5105,7 +5215,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/mawsuaat",
@@ -5128,7 +5239,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/mawsuaat/:categoryId",
@@ -5151,7 +5263,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/mawsuaat/:categoryId/:topicId",
@@ -5174,7 +5287,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/memorization",
@@ -5197,7 +5311,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/memorization-plans",
@@ -5312,7 +5427,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/miracles",
@@ -5335,7 +5451,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/miracles/quran",
@@ -5358,7 +5475,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/miracles/sunnah",
@@ -5381,7 +5499,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/miracles/topic/:slug",
@@ -5404,7 +5523,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/more",
@@ -5452,7 +5572,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/mosques",
@@ -5598,7 +5719,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/mushaf/about-edition",
@@ -5697,7 +5819,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/mutashabihat",
@@ -5720,7 +5843,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/my-citations",
@@ -5796,7 +5920,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/nations",
@@ -5819,7 +5944,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/nations/:slug",
@@ -5842,7 +5968,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/news",
@@ -5888,7 +6015,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/notification-settings",
@@ -5957,7 +6085,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/occasions-lessons",
@@ -5980,7 +6109,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/offline",
@@ -6003,7 +6133,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/pathways",
@@ -6095,7 +6226,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/prayer-times",
@@ -6253,7 +6385,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/prophet-stories",
@@ -6299,7 +6432,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/prophetic-medicine",
@@ -6322,7 +6456,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/prophets",
@@ -6338,7 +6473,7 @@
       "routeClass": "ACTIVE_PUBLIC_SECONDARY",
       "noResults": "COMPLETE",
       "offline": "COMPLETE",
-      "stale": "PARTIAL",
+      "stale": "KEEP_JUSTIFIED",
       "light": "COMPLETE",
       "system": "COMPLETE",
       "mobile": "COMPLETE",
@@ -6357,7 +6492,8 @@
       "publicFeedbackDate": "2026-10-01",
       "publicFeedbackPhase": "ROUTE_FEEDBACK_PUBLIC",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/prophets-stories",
@@ -6403,7 +6539,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/prophets/:slug",
@@ -6426,7 +6563,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/prophets/al-yasaa",
@@ -6541,7 +6679,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/prophets/zakaria",
@@ -6650,7 +6789,7 @@
       "routeClass": "PRAYER_SPECIAL",
       "noResults": "NOT_APPLICABLE",
       "offline": "COMPLETE",
-      "stale": "PARTIAL",
+      "stale": "KEEP_JUSTIFIED",
       "light": "COMPLETE",
       "system": "COMPLETE",
       "mobile": "COMPLETE",
@@ -6668,7 +6807,8 @@
       "publicFeedbackDate": "2026-10-01",
       "publicFeedbackPhase": "ROUTE_FEEDBACK_PUBLIC",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quiz",
@@ -6691,7 +6831,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran",
@@ -6739,7 +6880,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran-engine",
@@ -6762,7 +6904,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran-engine/viewer",
@@ -6785,7 +6928,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran-hub",
@@ -6839,7 +6983,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran-hub/qiraat",
@@ -6862,7 +7007,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran-hub/seven-ahruf",
@@ -6885,7 +7031,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran-hub/tajweed",
@@ -6908,7 +7055,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran-hub/tajweed/:chapter",
@@ -6931,7 +7079,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran-hub/terms",
@@ -6954,7 +7103,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran-hub/tilawa",
@@ -6977,7 +7127,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran-index",
@@ -7023,7 +7174,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran-memorization",
@@ -7046,7 +7198,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran-sciences",
@@ -7138,7 +7291,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran/makki-madani",
@@ -7161,7 +7315,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran/memorization-plans",
@@ -7184,7 +7339,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran/mushaf",
@@ -7230,7 +7386,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran/people",
@@ -7253,7 +7410,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran/people/:slug",
@@ -7276,7 +7434,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran/recitation-test-ai",
@@ -7322,7 +7481,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran/search",
@@ -7345,7 +7505,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran/surah-stories",
@@ -7368,7 +7529,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran/surah-stories/:number",
@@ -7391,7 +7553,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran/surahs",
@@ -7414,7 +7577,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/quran/tafsir",
@@ -7506,7 +7670,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/raqaiq",
@@ -7529,7 +7694,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/reading-plans",
@@ -7552,7 +7718,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/register",
@@ -7628,7 +7795,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/researcher-profile",
@@ -7743,7 +7911,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/rulings",
@@ -7812,7 +7981,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/sadaqa",
@@ -7835,7 +8005,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/sahabah",
@@ -7858,7 +8029,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/salah-guide",
@@ -7881,7 +8053,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/sawm",
@@ -7904,7 +8077,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/scholarly-research",
@@ -7950,7 +8124,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/scholars/:id",
@@ -7973,7 +8148,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/scientific-announcements/:id",
@@ -7996,7 +8172,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/scientific-library",
@@ -8097,7 +8274,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/seerah",
@@ -8120,7 +8298,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/settings",
@@ -8174,7 +8353,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/sharia-research",
@@ -8266,7 +8446,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/sins-and-rights",
@@ -8289,7 +8470,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/sins-and-rights/:slug",
@@ -8312,7 +8494,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/sitemap",
@@ -8450,7 +8633,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/stories",
@@ -8473,7 +8657,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/study-paths",
@@ -8519,7 +8704,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/submit",
@@ -8542,7 +8728,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/sujood-sahw",
@@ -8565,7 +8752,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/sunan-yawmiyya",
@@ -8588,7 +8776,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/sunnah-studies",
@@ -8611,7 +8800,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/sunnah-studies/:categoryId",
@@ -8634,7 +8824,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/sunnah-studies/:categoryId/:topicId",
@@ -8657,7 +8848,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/support",
@@ -8726,7 +8918,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/tahara",
@@ -8749,7 +8942,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/tajweed",
@@ -8795,7 +8989,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/tarikh-islami",
@@ -8818,7 +9013,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/tarikh-islami/:id",
@@ -8841,7 +9037,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/tasbih",
@@ -8858,7 +9055,7 @@
       "routeClass": "ACTIVE_PUBLIC_SECONDARY",
       "noResults": "COMPLETE",
       "offline": "COMPLETE",
-      "stale": "PARTIAL",
+      "stale": "KEEP_JUSTIFIED",
       "light": "COMPLETE",
       "system": "COMPLETE",
       "mobile": "COMPLETE",
@@ -8876,7 +9073,8 @@
       "publicFeedbackDate": "2026-10-01",
       "publicFeedbackPhase": "ROUTE_FEEDBACK_PUBLIC",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/tawba",
@@ -8899,7 +9097,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/tawhid",
@@ -8922,7 +9121,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/tawhid/:slug",
@@ -8945,7 +9145,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/tazkiya",
@@ -8968,7 +9169,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/tazkiya-topics",
@@ -8991,7 +9193,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/tazkiya-topics/:categoryId",
@@ -9014,7 +9217,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/tazkiya-topics/:categoryId/:topicId",
@@ -9037,7 +9241,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/teachers",
@@ -9060,7 +9265,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/teachers/:slug",
@@ -9083,7 +9289,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/terms",
@@ -9210,7 +9417,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/udhiya",
@@ -9233,7 +9441,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/ulum-quran",
@@ -9256,7 +9465,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/universities",
@@ -9279,7 +9489,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/universities/:slug",
@@ -9302,7 +9513,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/universities/compare",
@@ -9325,7 +9537,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/updates",
@@ -9348,7 +9561,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/updates/auto/:slug",
@@ -9371,7 +9585,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/upload",
@@ -9394,7 +9609,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/usra-mujtama",
@@ -9417,7 +9633,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/usra-mujtama/:categoryId",
@@ -9440,7 +9657,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/usra-mujtama/:categoryId/:topicId",
@@ -9463,7 +9681,8 @@
       "noResults": "NOT_APPLICABLE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/vault",
@@ -9486,7 +9705,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/waqf",
@@ -9509,7 +9729,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/wasaya-nabawiyya",
@@ -9532,7 +9753,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     },
     {
       "route": "/whats-new",
@@ -9601,7 +9823,8 @@
       "noResults": "COMPLETE",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "stale": "PARTIAL"
+      "stale": "KEEP_JUSTIFIED",
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
     }
   ],
   "criticalRoutesUpdated": 28,
@@ -9617,5 +9840,6 @@
   "publicFeedbackNote": "All public routes classified with evidence defaults; COMPLETE gated.",
   "radicalClosureNote": "2026-10-03: priority stale field hygiene — NOT_APPLICABLE where no stale cache UI",
   "radicalClosureWave5": "2026-10-03",
-  "internalClosureFinalAt": "2026-10-03"
+  "internalClosureFinalAt": "2026-10-03",
+  "debtZeroStalePass": "2026-10-03"
 }

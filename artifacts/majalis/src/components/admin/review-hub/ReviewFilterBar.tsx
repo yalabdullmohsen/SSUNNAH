@@ -2,6 +2,7 @@
  * Filter tabs + stream chips + global search + bulk bar.
  */
 import { Search, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   FILTER_TAB_LABELS,
   type ReviewFilterTab,
@@ -55,14 +56,14 @@ export function ReviewFilterBar({
           aria-label="بحث في طابور المراجعة"
         />
         {searchQuery ? (
-          <button
+          <Button variant="secondary" size="small"
             type="button"
             className="rh-filters__clear"
             onClick={() => onSearch("")}
             aria-label="مسح البحث"
           >
             <X size={14} />
-          </button>
+          </Button>
         ) : null}
       </div>
 
@@ -74,7 +75,7 @@ export function ReviewFilterBar({
             ["content", "محتوى وتفسير"],
           ] as const
         ).map(([key, label]) => (
-          <button
+          <Button variant="secondary" size="small"
             key={key}
             type="button"
             role="tab"
@@ -83,13 +84,13 @@ export function ReviewFilterBar({
             onClick={() => onStreamFocus(key)}
           >
             {label}
-          </button>
+          </Button>
         ))}
       </div>
 
       <div className="rh-filters__tabs" role="tablist" aria-label="حالة المراجعة">
         {TABS.map((tab) => (
-          <button
+          <Button variant="secondary" size="small"
             key={tab}
             type="button"
             role="tab"
@@ -99,22 +100,22 @@ export function ReviewFilterBar({
           >
             {FILTER_TAB_LABELS[tab]}
             <span className="rh-filters__count">{filterCounts[tab]}</span>
-          </button>
+          </Button>
         ))}
       </div>
 
       {selectedCount > 0 ? (
         <div className="rh-filters__bulk" role="region" aria-label="إجراءات جماعية">
           <span>محدد: {selectedCount}</span>
-          <button type="button" className="rh-btn rh-btn--sage" onClick={onBulkApprove}>
+          <Button variant="secondary" size="small" type="button" className="rh-btn rh-btn--sage" onClick={onBulkApprove}>
             اعتماد الكل
-          </button>
-          <button type="button" className="rh-btn rh-btn--rose" onClick={onBulkReject}>
+          </Button>
+          <Button variant="secondary" size="small" type="button" className="rh-btn rh-btn--rose" onClick={onBulkReject}>
             رفض الكل
-          </button>
-          <button type="button" className="rh-btn rh-btn--ghost" onClick={onClearSelection}>
+          </Button>
+          <Button variant="secondary" size="small" type="button" className="rh-btn rh-btn--ghost" onClick={onClearSelection}>
             إلغاء التحديد
-          </button>
+          </Button>
         </div>
       ) : null}
     </div>

@@ -101,7 +101,7 @@ button.primary,
   background: var(--mj-brand) !important;
   background-color: var(--mj-brand) !important;
   background-image: none !important;
-  color: var(--mj-on-brand, #f7f1e4) !important;
+  color: var(--mj-on-brand) !important;
   border: 1px solid var(--mj-brand-deep) !important;
   border-radius: var(--radius-button) !important;
   box-shadow: none !important;
@@ -111,8 +111,8 @@ button.primary,
 .surah-story-article a.mj-btn,
 a.surah-story-read-btn {
   color: #ffffff !important;
-  background: var(--mj-brand-deep, #0d4a39) !important;
-  background-color: var(--mj-brand-deep, #0d4a39) !important;
+  background: var(--mj-brand-deep) !important;
+  background-color: var(--mj-brand-deep) !important;
 }
 
 html[data-theme="dark"] .btn-primary,
@@ -129,11 +129,11 @@ html[data-theme="dark"] a.mj-btn,
 html.dark a.mj-btn,
 html[data-theme="dark"] button.mj-btn,
 html.dark button.mj-btn {
-  background: var(--mj-brand, #4fb48b) !important;
-  background-color: var(--mj-brand, #4fb48b) !important;
+  background: var(--mj-brand) !important;
+  background-color: var(--mj-brand) !important;
   background-image: none !important;
-  color: var(--mj-on-brand, #06231a) !important;
-  border-color: var(--mj-brand-deep, #1e4d3c) !important;
+  color: var(--mj-on-brand) !important;
+  border-color: var(--mj-brand-deep) !important;
 }
 
 .mj-btn--ghost,
@@ -160,11 +160,11 @@ button.secondary {
 
 /* بانر اختبار الأقسام: نص on-brand فوق خلفية العلامة */
 .sq-header {
-  background: var(--mj-brand, #0f5c45) !important;
-  background-color: var(--mj-brand, #0f5c45) !important;
+  background: var(--mj-brand) !important;
+  background-color: var(--mj-brand) !important;
   background-image: none !important;
-  color: var(--mj-on-brand, #ffffff) !important;
-  border-color: var(--mj-brand-deep, #0a3d2e) !important;
+  color: var(--mj-on-brand) !important;
+  border-color: var(--mj-brand-deep) !important;
 }
 
 .sq-header,
@@ -173,15 +173,15 @@ button.secondary {
 .sq-header .sq-meta,
 .sq-header .sq-toggle,
 .sq-header svg {
-  color: var(--mj-on-brand, #ffffff) !important;
+  color: var(--mj-on-brand) !important;
 }
 
 html[data-theme="dark"] .sq-header,
 html.dark .sq-header {
-  background: var(--mj-brand, #4fb48b) !important;
-  background-color: var(--mj-brand, #4fb48b) !important;
-  color: var(--mj-on-brand, #06231a) !important;
-  border-color: var(--mj-brand-deep, #1e4d3c) !important;
+  background: var(--mj-brand) !important;
+  background-color: var(--mj-brand) !important;
+  color: var(--mj-on-brand) !important;
+  border-color: var(--mj-brand-deep) !important;
 }
 
 html[data-theme="dark"] .sq-header,
@@ -196,7 +196,7 @@ html[data-theme="dark"] .sq-header .sq-toggle,
 html.dark .sq-header .sq-toggle,
 html[data-theme="dark"] .sq-header svg,
 html.dark .sq-header svg {
-  color: var(--mj-on-brand, #06231a) !important;
+  color: var(--mj-on-brand) !important;
 }
 
 /* فلاتر/شيبس — tokens موحّدة (--mj-chip-*) بلا خلفية selected شفافة */
@@ -224,7 +224,7 @@ html.dark .sq-header svg {
 .fiqh-hub-strip__tab--active,
 .fiqh-hub-strip__tab.is-active {
   background: var(--mj-chip-active-bg, var(--color-primary-dark)) !important;
-  color: var(--mj-chip-active-fg, #ffffff) !important;
+  color: var(--mj-chip-active-fg) !important;
   border-color: var(--mj-chip-active-bg, var(--color-primary-dark)) !important;
   box-shadow: none !important;
 }
@@ -233,9 +233,9 @@ html[data-theme="dark"] .filter-chips__chip,
 html.dark .filter-chips__chip,
 html[data-theme="dark"] .mj-filter-chip,
 html.dark .mj-filter-chip {
-  background: var(--mj-chip-bg, #222c28) !important;
-  color: var(--mj-chip-fg, #f3f7f5) !important;
-  border-color: var(--mj-chip-border, #3a4641) !important;
+  background: var(--mj-chip-bg) !important;
+  color: var(--mj-chip-fg) !important;
+  border-color: var(--mj-chip-border) !important;
 }
 
 html[data-theme="dark"] .filter-chips__chip.is-active,
@@ -246,9 +246,9 @@ html[data-theme="dark"] .section-hub__chip.is-active,
 html.dark .section-hub__chip.is-active,
 html[data-theme="dark"] .fiqh-hub-strip__tab--active,
 html.dark .fiqh-hub-strip__tab--active {
-  background: var(--mj-chip-active-bg, #5fbf98) !important;
-  color: var(--mj-chip-active-fg, #06231a) !important;
-  border-color: color-mix(in srgb, var(--mj-chip-active-bg, #5fbf98) 55%, var(--color-border)) !important;
+  background: var(--mj-chip-active-bg) !important;
+  color: var(--mj-chip-active-fg) !important;
+  border-color: color-mix(in srgb, var(--mj-chip-active-bg) 55%, var(--color-border)) !important;
 }
 
 /* شريط علوي / بحث — نص واضح فوق سطح فاتح */
@@ -276,7 +276,7 @@ html[data-theme="dark"] input[type="search"]::placeholder,
 html.dark input[type="search"]::placeholder,
 html[data-theme="dark"] .login-field input::placeholder,
 html.dark .login-field input::placeholder {
-  color: var(--mj-ink-2, #c5d0cb) !important;
+  color: var(--mj-ink-2) !important;
 }
 
 /* تبويب سفلي نشط — علامة عميقة واضحة */

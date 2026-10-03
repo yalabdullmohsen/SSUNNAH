@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { invalidateLessonsCache } from "@/lib/lessons-service";
 import {
@@ -101,14 +102,14 @@ function DebugLogPanel({ log }: { log: DebugLog }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="lis-debug-panel">
-      <button
+      <Button variant="secondary" size="small"
         type="button"
         onClick={() => setOpen((o) => !o)}
         className="lis-debug-btn"
       >
         <span>تفاصيل الاستخراج (Debug)، {log.total_ms ?? 0} ms</span>
         <span>{open ? "▲" : "▼"}</span>
-      </button>
+      </Button>
       {open && (
         <div className="lis-debug-content">
           {log.stages.map((s, i) => (
@@ -507,22 +508,22 @@ function LessonImportImageContent() {
           onChange={(e) => onUpload(e.target.files?.[0] || null)}
         />
         <div className="lip-upload-row">
-          <button
+          <Button variant="secondary" size="small"
             type="button"
             disabled={busy}
             onClick={() => fileRef.current?.click()}
             className="lip-upload-btn"
           >
             {busy ? "جاري المعالجة…" : "اختر صورة إعلان الدرس"}
-          </button>
+          </Button>
           {!busy && lastError && lastFile && (
-            <button
+            <Button variant="secondary" size="small"
               type="button"
               onClick={() => onUpload(lastFile)}
               className="lip-retry-btn"
             >
               إعادة المحاولة
-            </button>
+            </Button>
           )}
         </div>
         {lastError && (
@@ -572,18 +573,18 @@ function LessonImportImageContent() {
           </div>
 
           <div className="lip-actions">
-            <button type="button" disabled={busy} onClick={onApprove} className="lip-approve-btn">
+            <Button variant="secondary" size="small" type="button" disabled={busy} onClick={onApprove} className="lip-approve-btn">
               اعتماد ونشر
-            </button>
-            <button type="button" disabled={busy} onClick={onSaveDraft} className="lip-draft-btn">
+            </Button>
+            <Button variant="secondary" size="small" type="button" disabled={busy} onClick={onSaveDraft} className="lip-draft-btn">
               حفظ كمسودة
-            </button>
-            <button type="button" disabled={busy} onClick={onReExtract} className="lip-extract-btn">
+            </Button>
+            <Button variant="secondary" size="small" type="button" disabled={busy} onClick={onReExtract} className="lip-extract-btn">
               إعادة استخراج
-            </button>
-            <button type="button" disabled={busy || !draftId} onClick={onReject} className="lip-reject-btn">
+            </Button>
+            <Button variant="secondary" size="small" type="button" disabled={busy || !draftId} onClick={onReject} className="lip-reject-btn">
               رفض
-            </button>
+            </Button>
           </div>
         </>
       )}

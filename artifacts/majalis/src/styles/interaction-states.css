@@ -9,64 +9,64 @@
 :root {
   /* DEFAULT */
   --state-default-bg: transparent;
-  --state-default-fg: var(--mj-ink, #16241e);
-  --state-default-border: var(--mj-hairline, #d9d3c8);
+  --state-default-fg: var(--mj-ink);
+  --state-default-border: var(--mj-hairline);
 
   /* HOVER — لمسة خفيفة فوق السطح */
-  --state-hover-bg: color-mix(in srgb, var(--mj-brand, #146b52) 6%, transparent);
-  --state-hover-fg: var(--mj-ink, #16241e);
-  --state-hover-border: color-mix(in srgb, var(--mj-brand, #146b52) 22%, var(--mj-hairline, #d9d3c8));
+  --state-hover-bg: color-mix(in srgb, var(--mj-brand) 6%, transparent);
+  --state-hover-fg: var(--mj-ink);
+  --state-hover-border: color-mix(in srgb, var(--mj-brand) 22%, var(--mj-hairline));
 
   /* ACTIVE (pressed) — أعمق من hover بلا لون ممتلئ */
-  --state-active-bg: color-mix(in srgb, var(--mj-brand, #146b52) 10%, transparent);
-  --state-active-fg: var(--mj-brand-deep, #0d4a39);
-  --state-active-border: color-mix(in srgb, var(--mj-brand, #146b52) 28%, var(--mj-hairline, #d9d3c8));
+  --state-active-bg: color-mix(in srgb, var(--mj-brand) 10%, transparent);
+  --state-active-fg: var(--mj-brand-deep);
+  --state-active-border: color-mix(in srgb, var(--mj-brand) 28%, var(--mj-hairline));
 
   /* FOCUS_VISIBLE — حلقة ذهبية هادئة؛ ليست خلفية تحديد */
-  --state-focus-ring: 0 0 0 2px var(--mj-bg, #f7f4ee), 0 0 0 4px var(--mj-accent, #c9a86c);
-  --state-focus-outline: 2px solid color-mix(in srgb, var(--mj-accent, #c9a86c) 70%, var(--mj-brand, #146b52));
+  --state-focus-ring: 0 0 0 2px var(--mj-bg), 0 0 0 4px var(--mj-accent);
+  --state-focus-outline: 2px solid color-mix(in srgb, var(--mj-accent) 70%, var(--mj-brand));
   --state-focus-outline-offset: 2px;
   --state-focus-bg: transparent;
 
   /* SELECTED — اختيار صريح (فلتر/خيار) */
-  --state-selected-bg: color-mix(in srgb, var(--mj-brand, #146b52) 12%, #ffffff);
-  --state-selected-fg: var(--mj-brand-deep, #0d4a39);
-  --state-selected-border: color-mix(in srgb, var(--mj-brand, #146b52) 32%, var(--mj-hairline, #d9d3c8));
+  --state-selected-bg: color-mix(in srgb, var(--mj-brand) 12%, #ffffff);
+  --state-selected-fg: var(--mj-brand-deep);
+  --state-selected-border: color-mix(in srgb, var(--mj-brand) 32%, var(--mj-hairline));
 
   /* CURRENT — مسار تنقّل (aria-current) أهدأ من selected */
-  --state-current-bg: color-mix(in srgb, var(--mj-brand, #146b52) 8%, transparent);
-  --state-current-fg: var(--mj-brand-deep, #0d4a39);
-  --state-current-border: color-mix(in srgb, var(--mj-brand, #146b52) 20%, transparent);
-  --state-current-indicator: var(--mj-brand, #146b52);
+  --state-current-bg: color-mix(in srgb, var(--mj-brand) 8%, transparent);
+  --state-current-fg: var(--mj-brand-deep);
+  --state-current-border: color-mix(in srgb, var(--mj-brand) 20%, transparent);
+  --state-current-indicator: var(--mj-brand);
 
   /* HIGHLIGHTED — تأكيد محتوى مقصود فقط (ليس تحديد نص) */
-  --state-highlighted-bg: color-mix(in srgb, var(--mj-brand, #146b52) 7%, #f4faf7);
-  --state-highlighted-fg: var(--mj-ink, #16241e);
-  --state-highlighted-border: color-mix(in srgb, var(--mj-brand, #146b52) 18%, var(--mj-hairline, #d9d3c8));
+  --state-highlighted-bg: color-mix(in srgb, var(--mj-brand) 7%, #f4faf7);
+  --state-highlighted-fg: var(--mj-ink);
+  --state-highlighted-border: color-mix(in srgb, var(--mj-brand) 18%, var(--mj-hairline));
 
   /* VISITED */
-  --state-visited-fg: color-mix(in srgb, var(--mj-brand-deep, #0d4a39) 70%, #4f5f58);
+  --state-visited-fg: color-mix(in srgb, var(--mj-brand-deep) 70%, #4f5f58);
 
   /* Text selection — فقط عند تحديد المستخدم */
-  --state-selection-bg: color-mix(in srgb, var(--mj-brand, #146b52) 28%, #ffffff);
-  --state-selection-fg: var(--mj-brand-deep, #0d4a39);
+  --state-selection-bg: color-mix(in srgb, var(--mj-brand) 28%, #ffffff);
+  --state-selection-fg: var(--mj-brand-deep);
 
   /* جسر للتوافق مع الرموز القديمة — selected ≠ soft ≠ focus */
   --color-selected: var(--state-selected-bg);
   --color-current: var(--state-current-bg);
   --focus-ring: var(--state-focus-ring);
-  --focus-color: var(--mj-accent, #c9a86c);
+  --focus-color: var(--mj-accent);
 }
 
 html[data-theme="dark"],
 html.dark,
 :root[data-theme="dark"] {
   --state-default-bg: transparent;
-  --state-default-fg: var(--mj-ink, #ede8df);
-  --state-default-border: var(--mj-hairline, #35443f);
+  --state-default-fg: var(--mj-ink);
+  --state-default-border: var(--mj-hairline);
 
   --state-hover-bg: color-mix(in srgb, #5fbf98 10%, transparent);
-  --state-hover-fg: var(--mj-ink, #ede8df);
+  --state-hover-fg: var(--mj-ink);
   --state-hover-border: color-mix(in srgb, #5fbf98 22%, #35443f);
 
   --state-active-bg: color-mix(in srgb, #5fbf98 16%, #1b2421);
@@ -206,9 +206,9 @@ html.dark :is(
   .section-lobby__chip,
   .lessons-filter-tab
 ):not(.is-active):not([aria-pressed="true"]):not([aria-selected="true"]) {
-  background: var(--mj-chip-bg, #222c28) !important;
-  color: var(--mj-chip-fg, #f3f7f5) !important;
-  border-color: var(--mj-chip-border, #3a4641) !important;
+  background: var(--mj-chip-bg) !important;
+  color: var(--mj-chip-fg) !important;
+  border-color: var(--mj-chip-border) !important;
   box-shadow: none !important;
 }
 

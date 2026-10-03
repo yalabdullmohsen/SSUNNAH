@@ -1,0 +1,460 @@
+{
+  "version": 1,
+  "phase": "SUNNAH_APPLICATION_DEBT_ZERO_AND_FULL_UI_UNIFICATION",
+  "policy": "KEEP_JUSTIFIED requires file+consumer+reason+risk+gate+review_trigger",
+  "count": 29,
+  "items": [
+    {
+      "id": "MUSHAF_THREE_SHEET_PAGER",
+      "class": "MUSHAF_GESTURE_SPECIAL",
+      "file": "artifacts/majalis/src/features/mushaf-reader/MushafPager.tsx",
+      "selector_or_component": "MushafPager 3-sheet recycle",
+      "consumer": "NewMushafReader",
+      "technical_reason": "RTL page-turn requires ±1 mounted sheets for transform-only gesture without remount flash",
+      "why_not_replace": "Single-sheet virtualization breaks gesture continuity and forward/backward parity",
+      "risk": "Visual jump / wrong page paint / gesture lock",
+      "regression_gate": "test:mushaf-fluidity-optimization + mushaf measure gates",
+      "review_trigger": "If device FPS proves 3-sheet cost dominates after inert/content-visibility"
+    },
+    {
+      "id": "MUSHAF_VISUAL_SETTLE_220",
+      "class": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "file": "artifacts/majalis/src/features/mushaf-reader/useMushafPager.ts",
+      "selector_or_component": "SETTLE_MS=220",
+      "consumer": "MushafPager go()",
+      "technical_reason": "Must match layout-bands MUSHAF_SETTLE_MS for CSS transition commit",
+      "why_not_replace": "Lowering without device proof causes mid-transition commit / flicker",
+      "risk": "Tear / wrong commit page",
+      "regression_gate": "layout-bands + mushaf-fluidity-optimization",
+      "review_trigger": "Device WAVE6 matrix p95 settle evidence"
+    },
+    {
+      "id": "MUSHAF_PRODUCT_LOCK_FONT",
+      "class": "MUSHAF_GESTURE_SPECIAL",
+      "file": "artifacts/majalis/src/features/mushaf-reader/NewMushafReader.tsx",
+      "selector_or_component": "pageTurnLockRef + fontReady+layout",
+      "consumer": "finishPageTurn",
+      "technical_reason": "QPC page face must be ready before unlock to avoid blank glyphs",
+      "why_not_replace": "Unlock-before-font shows missing QPC glyphs (integrity)",
+      "risk": "Blank/incorrect Mushaf paint",
+      "regression_gate": "mushaf integrity + fluidity",
+      "review_trigger": "Font pipeline redesign with proven face-ready-before-paint"
+    },
+    {
+      "id": "OVERLAY_DISMISS::components/AdminSiteEditBar.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/components/AdminSiteEditBar.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "components/AdminSiteEditBar.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::components/GlobalSearchModal.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/components/GlobalSearchModal.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "components/GlobalSearchModal.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::components/AdminInlineEdit.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/components/AdminInlineEdit.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "components/AdminInlineEdit.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::components/citation/CitationModal.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/components/citation/CitationModal.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "components/citation/CitationModal.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::components/learning/AssessmentModal.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/components/learning/AssessmentModal.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "components/learning/AssessmentModal.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::components/adhan/MuezzinPicker.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/components/adhan/MuezzinPicker.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "components/adhan/MuezzinPicker.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::components/admin/review-hub/ReviewHubSidebar.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/components/admin/review-hub/ReviewHubSidebar.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "components/admin/review-hub/ReviewHubSidebar.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::components/quran/ReadingBreakDialog.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/components/quran/ReadingBreakDialog.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "components/quran/ReadingBreakDialog.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::components/fawaid/FaidaImageCardModal.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/components/fawaid/FaidaImageCardModal.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "components/fawaid/FaidaImageCardModal.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::components/onboarding/AppFeatureTour.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/components/onboarding/AppFeatureTour.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "components/onboarding/AppFeatureTour.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::views/CalendarPage.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/views/CalendarPage.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "views/CalendarPage.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::views/AsmaaHusnaPage.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/views/AsmaaHusnaPage.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "views/AsmaaHusnaPage.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::views/VaultPage.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/views/VaultPage.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "views/VaultPage.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::views/admin/AdminShell.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/views/admin/AdminShell.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "views/admin/AdminShell.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::views/admin/BulkImport.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/views/admin/BulkImport.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "views/admin/BulkImport.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::views/admin/Phase2TrialImport.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/views/admin/Phase2TrialImport.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "views/admin/Phase2TrialImport.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::views/admin/ContentFileImport.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/views/admin/ContentFileImport.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "views/admin/ContentFileImport.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::views/admin/AdhkarSection.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/views/admin/AdhkarSection.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "views/admin/AdhkarSection.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::views/admin/AdminModal.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/views/admin/AdminModal.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "views/admin/AdminModal.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::pages/worship/ui/AdhkarDhikrSheet.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/pages/worship/ui/AdhkarDhikrSheet.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "pages/worship/ui/AdhkarDhikrSheet.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "OVERLAY_DISMISS::pages/hadith/ui/HadithView.tsx",
+      "class": "OVERLAY_DISMISS_SPECIAL",
+      "file": "artifacts/majalis/src/pages/hadith/ui/HadithView.tsx",
+      "selector_or_component": "backdrop/stopPropagation div onClick",
+      "consumer": "pages/hadith/ui/HadithView.tsx",
+      "technical_reason": "Standard dismiss-outside / stopPropagation shell; not a Button control",
+      "why_not_replace": "Replacing with Button breaks dialog geometry and click-outside contract",
+      "risk": "Focus trap / outside-click regression",
+      "regression_gate": "interaction-system-debt-budget + overlay-feedback-authority",
+      "review_trigger": "If Dialog primitive absorbs dismiss without div onClick"
+    },
+    {
+      "id": "ADMIN_RAW_BUTTON_BACKLOG",
+      "class": "ADMIN_SPECIAL",
+      "file": "artifacts/majalis/src/views/admin/* + components/admin/*",
+      "selector_or_component": "128 raw <button> across 43 files",
+      "consumer": "Admin console only (not public App Store surface)",
+      "technical_reason": "High-density admin CRUD chrome; progressive Button absorb ongoing; public unjustified=0",
+      "why_not_replace": "Big-bang admin rewrite risks operator workflows without product benefit on iOS store path",
+      "risk": "Admin UX churn / missed type=button",
+      "regression_gate": "interaction-system-debt-budget decreasing ceilings; formButtonsMissingType=0",
+      "review_trigger": "When admin redesign wave targets specific section",
+      "top_files": [
+        {
+          "file": "views/admin/ReligiousCalendarReviewSection.tsx",
+          "count": 5
+        },
+        {
+          "file": "views/admin/LessonImportShared.tsx",
+          "count": 5
+        },
+        {
+          "file": "components/admin/review-hub/RecitationReviewCard.tsx",
+          "count": 5
+        },
+        {
+          "file": "views/admin/TelegramSection.tsx",
+          "count": 4
+        },
+        {
+          "file": "views/admin/QaSection.tsx",
+          "count": 4
+        },
+        {
+          "file": "views/admin/Phase2TrialImport.tsx",
+          "count": 4
+        },
+        {
+          "file": "views/admin/LessonsSection.tsx",
+          "count": 4
+        },
+        {
+          "file": "views/admin/KnowledgeReasoningSection.tsx",
+          "count": 4
+        },
+        {
+          "file": "views/admin/IslamicIntelligenceSection.tsx",
+          "count": 4
+        },
+        {
+          "file": "views/admin/InstagramManualAssistPanel.tsx",
+          "count": 4
+        },
+        {
+          "file": "views/admin/DawahSection.tsx",
+          "count": 4
+        },
+        {
+          "file": "views/admin/DashboardSection.tsx",
+          "count": 4
+        },
+        {
+          "file": "views/admin/ContentFileImport.tsx",
+          "count": 4
+        },
+        {
+          "file": "views/admin/AdminShell.tsx",
+          "count": 4
+        },
+        {
+          "file": "components/admin/review-hub/ReviewHubWorkspace.tsx",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "id": "MUSHAF_RAW_CONTROLS",
+      "class": "MUSHAF_GESTURE_SPECIAL",
+      "file": "features/mushaf-* controls/sheets",
+      "selector_or_component": "105 raw buttons in mushaf chrome",
+      "consumer": "Mushaf reader chrome / audio dock / ayah sheet",
+      "technical_reason": "Reading chrome must stay outside Button Authority density/visual system to avoid gesture/hit-target interference",
+      "why_not_replace": "Forcing shadcn Button into Mushaf dock changes hit targets and CSS containment",
+      "risk": "Gesture capture / dock layout regression",
+      "regression_gate": "mushaf-css-boundary + fluidity + u5 button authority exit allows Mushaf_SPECIAL",
+      "review_trigger": "Dedicated Mushaf control primitive with same metrics",
+      "top_files": [
+        {
+          "file": "features/mushaf-reader/MushafControlsLayer.tsx",
+          "count": 25
+        },
+        {
+          "file": "features/mushaf-madinah/AyahActionSheet.tsx",
+          "count": 21
+        },
+        {
+          "file": "features/mushaf-madinah/MushafAudioDock.tsx",
+          "count": 16
+        },
+        {
+          "file": "features/mushaf-madinah/MushafSearchSheet.tsx",
+          "count": 11
+        },
+        {
+          "file": "features/mushaf-madinah/MushafControls.tsx",
+          "count": 10
+        },
+        {
+          "file": "features/mushaf-madinah/TafsirTabPanel.tsx",
+          "count": 7
+        },
+        {
+          "file": "features/mushaf-reader/MushafPager.tsx",
+          "count": 2
+        },
+        {
+          "file": "features/mushaf-reader/MushafPageArrows.tsx",
+          "count": 2
+        },
+        {
+          "file": "features/mushaf-madinah/quran-sheet/QuranSheetShell.tsx",
+          "count": 2
+        },
+        {
+          "file": "features/mushaf-madinah/MushafTafsirSheet.tsx",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "U8_DEFERRED_IDENTITY_LAYERS",
+      "class": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "file": "artifacts/majalis/src/main.tsx loadNonCriticalCss",
+      "selector_or_component": "54 deferred CSS imports",
+      "consumer": "Home ATF critical CSS budget ≤60KiB gzip / LHCI unused-css",
+      "technical_reason": "Absorbing all deferred into sync CSS blows Home unused-css and LCP",
+      "why_not_replace": "Mass sync import fails LHCI Home contract (U8 evidence)",
+      "risk": "LHCI / FOUC / CLS",
+      "regression_gate": "test:u8-deferred-identity + wave5-critical-fouc",
+      "review_trigger": "When Home critical budget headroom proven > absorb candidates"
+    },
+    {
+      "id": "CSS_HEX_IMPORTANT_STOCK",
+      "class": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "file": "artifacts/majalis/src/styles/**/*.css",
+      "selector_or_component": "remaining hex/!important after token fallback collapse",
+      "consumer": "Page skins + identity seals",
+      "technical_reason": "Remaining literals are gradients, SVG paints, or seal !important winners; wholesale rewrite risks snapshot/contrast",
+      "why_not_replace": "No unused-proof + screenshot parity for mass delete",
+      "risk": "Visual snapshot / contrast regression",
+      "regression_gate": "visual-system-debt-budget decreasing ceilings",
+      "review_trigger": "Per-file absorb waves with snapshot proof"
+    },
+    {
+      "id": "ROUTE_STALE_KEEP_JUSTIFIED_POOL",
+      "class": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "file": "docs/audit/ROUTE_QUALITY_MATRIX.json",
+      "selector_or_component": "223 routes stale=KEEP_JUSTIFIED",
+      "consumer": "Public/secondary routes without StaleDataIndicator",
+      "technical_reason": "Adding fake stale strips without cache semantics is dishonest COMPLETE",
+      "why_not_replace": "COMPLETE requires evidence pack fields; OfflineBanner covers network",
+      "risk": "Fake feedback / user confusion",
+      "regression_gate": "closure-route-feedback-public-gate + priority gate",
+      "review_trigger": "When route gains versioned cache + StaleDataIndicator"
+    }
+  ]
+}

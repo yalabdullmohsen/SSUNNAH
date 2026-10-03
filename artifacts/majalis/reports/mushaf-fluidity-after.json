@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-03T17:21:32.818Z",
+  "capturedAt": "2026-10-03T17:47:28.919Z",
   "phase": "AFTER",
   "topDelays": [
     {
@@ -21,16 +21,16 @@
       "class": "MUSHAF_SPECIAL"
     },
     {
-      "id": "DOM_WORDS_X3_COMPOSITE",
-      "severity": 7,
-      "evidence": "three interactive QPC sheets during pan",
-      "class": "MUSHAF_SPECIAL"
-    },
-    {
       "id": "DEVICE_MAIN_THREAD_UNKNOWN",
       "severity": 6,
       "evidence": "long tasks / FPS not measured in CI",
       "class": "DEVICE_REQUIRED"
+    },
+    {
+      "id": "DOM_WORDS_X3_COMPOSITE",
+      "severity": 5,
+      "evidence": "three QPC sheets; off-pane inert+content-visibility when settled",
+      "class": "MUSHAF_SPECIAL"
     },
     {
       "id": "BIDIRECTIONAL_NEAR_PREFETCH_CONTENTION",

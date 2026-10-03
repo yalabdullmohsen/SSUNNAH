@@ -6,38 +6,38 @@
 
 :root {
   /* ── Color ── */
-  --ds-background: var(--mj-bg, #f7f4ee);
-  --ds-backgroundSubtle: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 4%, var(--mj-bg, #f7f4ee));
-  --ds-surface: var(--mj-surface, #fffcf8);
-  --ds-surfaceSecondary: var(--mj-surface-2, #f4f1ea);
-  --ds-surfaceElevated: var(--mj-surface, #fffcf8);
-  --ds-surfaceInteractive: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 6%, var(--mj-surface, #fffcf8));
-  --ds-surfaceSelected: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 12%, var(--mj-surface, #fffcf8));
+  --ds-background: var(--mj-bg);
+  --ds-backgroundSubtle: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 4%, var(--mj-bg));
+  --ds-surface: var(--mj-surface);
+  --ds-surfaceSecondary: var(--mj-surface-2);
+  --ds-surfaceElevated: var(--mj-surface);
+  --ds-surfaceInteractive: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 6%, var(--mj-surface));
+  --ds-surfaceSelected: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 12%, var(--mj-surface));
   --ds-primary: var(--mj-brand, var(--mj-brand));
   --ds-primaryHover: var(--mj-brand-deep, var(--mj-brand-deep));
   --ds-primaryPressed: color-mix(in srgb, var(--mj-brand-deep, var(--mj-brand-deep)) 88%, #000);
-  --ds-primaryContainer: var(--mj-brand-soft, #e7f3ee);
+  --ds-primaryContainer: var(--mj-brand-soft);
   --ds-onPrimary: var(--mj-on-brand, var(--mj-white));
   --ds-textPrimary: var(--mj-ink, var(--v2-color-ink));
-  --ds-textSecondary: var(--mj-ink-2, #3d4f47);
-  --ds-textMuted: var(--mj-muted, #5e6e67);
+  --ds-textSecondary: var(--mj-ink-2);
+  --ds-textMuted: var(--mj-muted);
   --ds-textOnColor: var(--mj-on-brand, var(--mj-white));
   --ds-iconPrimary: var(--mj-ink, var(--v2-color-ink));
-  --ds-iconSecondary: var(--mj-ink-2, #3d4f47);
-  --ds-border: color-mix(in srgb, var(--mj-hairline, #d9d3c8) 55%, transparent);
-  --ds-borderStrong: var(--mj-hairline, #d9d3c8);
-  --ds-divider: color-mix(in srgb, var(--mj-hairline, #d9d3c8) 70%, transparent);
+  --ds-iconSecondary: var(--mj-ink-2);
+  --ds-border: color-mix(in srgb, var(--mj-hairline) 55%, transparent);
+  --ds-borderStrong: var(--mj-hairline);
+  --ds-divider: color-mix(in srgb, var(--mj-hairline) 70%, transparent);
   --ds-focus: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 45%, transparent);
   --ds-selected: var(--ds-surfaceSelected);
   --ds-success: var(--mj-brand, var(--mj-brand));
-  --ds-successContainer: var(--mj-brand-soft, #e7f3ee);
-  --ds-warning: var(--mj-warn, #b0892c);
-  --ds-warningContainer: color-mix(in srgb, var(--mj-warn, #b0892c) 14%, var(--mj-surface, #fffcf8));
-  --ds-error: var(--mj-danger, #b54a4a);
-  --ds-errorContainer: color-mix(in srgb, var(--mj-danger, #b54a4a) 12%, var(--mj-surface, #fffcf8));
-  --ds-disabled: color-mix(in srgb, var(--mj-muted, #5e6e67) 45%, transparent);
-  --ds-skeletonBase: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 8%, var(--mj-surface-2, #f4f1ea));
-  --ds-skeletonHighlight: color-mix(in srgb, var(--mj-surface, #fffcf8) 70%, transparent);
+  --ds-successContainer: var(--mj-brand-soft);
+  --ds-warning: var(--mj-warn);
+  --ds-warningContainer: color-mix(in srgb, var(--mj-warn) 14%, var(--mj-surface));
+  --ds-error: var(--mj-danger);
+  --ds-errorContainer: color-mix(in srgb, var(--mj-danger) 12%, var(--mj-surface));
+  --ds-disabled: color-mix(in srgb, var(--mj-muted) 45%, transparent);
+  --ds-skeletonBase: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 8%, var(--mj-surface-2));
+  --ds-skeletonHighlight: color-mix(in srgb, var(--mj-surface) 70%, transparent);
   --ds-overlay: color-mix(in srgb, #0a1210 48%, transparent);
 
   /* ── Typography roles ── */
@@ -120,15 +120,15 @@
 
 html.dark,
 html[data-theme="dark"] {
-  --ds-background: var(--mj-bg, #121916);
-  --ds-backgroundSubtle: color-mix(in srgb, var(--mj-brand, #5fbf98) 8%, var(--mj-bg, #121916));
-  --ds-surface: var(--mj-surface, #1b2421);
-  --ds-surfaceSecondary: var(--mj-surface-2, #232e2a);
-  --ds-surfaceElevated: color-mix(in srgb, var(--mj-surface, #1b2421) 88%, var(--mj-white));
-  --ds-textPrimary: var(--mj-ink, #f3f7f5);
-  --ds-textSecondary: var(--mj-ink-2, #c5d0cb);
-  --ds-textMuted: var(--mj-muted, #c5d0cb);
-  --ds-border: color-mix(in srgb, var(--mj-hairline, #3a4641) 70%, transparent);
+  --ds-background: var(--mj-bg);
+  --ds-backgroundSubtle: color-mix(in srgb, var(--mj-brand) 8%, var(--mj-bg));
+  --ds-surface: var(--mj-surface);
+  --ds-surfaceSecondary: var(--mj-surface-2);
+  --ds-surfaceElevated: color-mix(in srgb, var(--mj-surface) 88%, var(--mj-white));
+  --ds-textPrimary: var(--mj-ink);
+  --ds-textSecondary: var(--mj-ink-2);
+  --ds-textMuted: var(--mj-muted);
+  --ds-border: color-mix(in srgb, var(--mj-hairline) 70%, transparent);
   --ds-elevationLow: 0 6px 20px -14px rgba(0, 0, 0, 0.5);
   --ds-elevationMedium: 0 10px 28px -14px rgba(0, 0, 0, 0.55);
   --ds-overlay: color-mix(in srgb, #000 58%, transparent);

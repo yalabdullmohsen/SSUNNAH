@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { AdminShell, useAdminShell } from "@/views/admin/AdminShell";
@@ -150,9 +151,9 @@ function AutoContentAdmin() {
             · Cron كل 6 ساعات
           </p>
         </div>
-        <button type="button" onClick={handleSync} disabled={syncing} className="acp-sync-btn">
+        <Button variant="secondary" size="small" type="button" onClick={handleSync} disabled={syncing} className="acp-sync-btn">
           {syncing ? "جارِ المزامنة..." : "▶ تشغيل المزامنة الآن"}
-        </button>
+        </Button>
       </div>
 
       <div className="acp-stats-grid">
@@ -206,7 +207,7 @@ function AutoContentAdmin() {
 
       <div className="acp-filter-row">
         {STATUS_FILTERS.map(([v, l]) => (
-          <button
+          <Button variant="secondary" size="small"
             key={v}
             type="button"
             onClick={() => setFilter(v)}
@@ -218,7 +219,7 @@ function AutoContentAdmin() {
             } as React.CSSProperties : undefined}
           >
             {l}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -260,13 +261,13 @@ function AutoContentAdmin() {
                 </div>
               </div>
 
-              <button
+              <Button variant="secondary" size="small"
                 type="button"
                 onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
                 className="acp-expand-btn"
               >
                 {expandedId === item.id ? "▲ إخفاء SEO" : "▼ SEO & slug"}
-              </button>
+              </Button>
 
               {expandedId === item.id && (
                 <div className="acp-seo-box">
@@ -280,8 +281,8 @@ function AutoContentAdmin() {
               <div className="acp-card-actions">
                 {item.status === "needs_review" && (
                   <>
-                    <button type="button" onClick={() => handleApprove(item.id)} className="acp-approve-btn">اعتماد</button>
-                    <button type="button" onClick={() => handleReject(item.id)} className="acp-reject-btn">رفض</button>
+                    <Button variant="secondary" size="small" type="button" onClick={() => handleApprove(item.id)} className="acp-approve-btn">اعتماد</Button>
+                    <Button variant="secondary" size="small" type="button" onClick={() => handleReject(item.id)} className="acp-reject-btn">رفض</Button>
                   </>
                 )}
                 {item.status === "published" && item.slug && (
@@ -324,9 +325,9 @@ function AutoContentAdmin() {
             <h3 className="acp-section-h3 acp-section-h3--flush">
               سجل العمليات {showErrorsOnly ? "(أخطاء فقط)" : ""}
             </h3>
-            <button type="button" onClick={() => setShowErrorsOnly(!showErrorsOnly)} className="acp-logs-toggle">
+            <Button variant="secondary" size="small" type="button" onClick={() => setShowErrorsOnly(!showErrorsOnly)} className="acp-logs-toggle">
               {showErrorsOnly ? "عرض الكل" : "أخطاء فقط"}
-            </button>
+            </Button>
           </div>
           {displayedLogs.map((log) => (
             <div key={log.id} className="acp-log-item">

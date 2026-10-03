@@ -36,6 +36,8 @@ type PagerProps = {
   onPanVisualStart?: () => void;
   /** pointerdown مقبول — telemetry فقط */
   onGestureArm?: () => void;
+  /** عند true تُجمَّد الألواح غير الحالية (inert) لتقليل عمل المتصفح */
+  settled?: boolean;
   ignoreSelector?: string;
   /**
    * رسم صفحة برقم ثابت — يُستدعى لكل من (page+1, page, page-1).
@@ -78,6 +80,7 @@ export const MushafPager = forwardRef<HTMLDivElement, PagerProps>(function Musha
     onNavigateCancel,
     onPanVisualStart,
     onGestureArm,
+    settled = true,
     ignoreSelector = DEFAULT_IGNORE,
     renderPage,
     pageSlot,
@@ -158,6 +161,12 @@ export const MushafPager = forwardRef<HTMLDivElement, PagerProps>(function Musha
                     className="mm-pager__sheet nm-pager__sheet"
                     data-pane={role}
                     data-page={pageNumber}
+                    data-settled={settled ? "1" : "0"}
+                    aria-hidden={role === "current" ? undefined : true}
+                    // inert: يوقف التركيز/أحداث الألواح المجاورة عند الاستقرار فقط
+                    {...(role !== "current" && settled
+                      ? ({ inert: true } as unknown as HTMLAttributes<HTMLDivElement>)
+                      : {})}
                   >
                     {inRange ? (
                       renderPage!(pageNumber, role)

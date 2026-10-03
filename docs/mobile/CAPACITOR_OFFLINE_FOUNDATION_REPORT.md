@@ -86,3 +86,11 @@ NO_OFFLINE_IMPLEMENTATION_IN_THIS_TASK
 THREAT_MODEL_DOCUMENTED
 STREAM_ONLY_AND_LICENSE_BOUNDARY_SPECIFIED
 ```
+
+## Hardening pass (debt-zero program · 2026-10-03)
+
+- Threat model / classes / purge / STREAM_ONLY / LICENSE_BOUNDARY remain authoritative.
+- Gate `test:debt-zero-unification` asserts STREAM_ONLY + LICENSE + logout purge docs present.
+- No MMKV / Expo / #1791 revival.
+- No production offline cache implementation in this program.
+- Status: `CAPACITOR_OFFLINE_FOUNDATION_HARDENED` (governance only).

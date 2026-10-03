@@ -121,7 +121,7 @@
   touch-action: manipulation;
 }
 .adhkar-focus-btn:hover:not(:disabled) {
-  background: var(--mj-brand-soft, var(--mj-success-soft, #f0fdf4));
+  background: var(--mj-brand-soft, var(--mj-success-soft));
   border-color: var(--majalis-emerald, var(--mj-brand));
 }
 .adhkar-focus-btn:active:not(:disabled) {
@@ -275,7 +275,7 @@
   color: var(--majalis-ink, var(--mj-ink));
   text-align: center;
   padding: var(--ds-space-4);
-  background: var(--mj-brand-soft, var(--mj-success-soft, #f0fdf4));
+  background: var(--mj-brand-soft, var(--mj-success-soft));
   border-radius: var(--ds-radius-lg);
   margin-bottom: 1.25rem;
   opacity: 1;
@@ -312,8 +312,8 @@
   font-size: 0.8rem;
   font-weight: 600;
 }
-.adhkar-grade--sahih { background: var(--mj-brand-soft, var(--mj-success-soft)); color: var(--mj-brand-deep, #153025); }
-.adhkar-grade--hasan { background: var(--mj-brand-soft, #e8f5f0); color: var(--mj-brand-deep, #153025); }
+.adhkar-grade--sahih { background: var(--mj-brand-soft, var(--mj-success-soft)); color: var(--mj-brand-deep); }
+.adhkar-grade--hasan { background: var(--mj-brand-soft); color: var(--mj-brand-deep); }
 .adhkar-grade--other { background: var(--mj-surface-2, var(--mj-surface-2)); color: var(--mj-ink-2); }
 .adhkar-sheet-share {
   width: 100%;
@@ -336,74 +336,75 @@
 /* الوضع الليلي — قيم صريحة لا مشتقة من نهارية */
 html[data-theme="dark"] .adhkar-focus-card,
 html.dark .adhkar-focus-card {
-  background: var(--mj-surface, #17201C);
-  border-color: var(--mj-hairline, #26332D);
+  background: var(--mj-surface);
+  border-color: var(--mj-hairline);
 }
 html[data-theme="dark"] .adhkar-focus-text,
 html.dark .adhkar-focus-text {
-  color: var(--mj-ink, #E9EFEC);
+  color: var(--mj-ink);
   opacity: 1;
 }
 html[data-theme="dark"] .adhkar-focus-counter,
 html.dark .adhkar-focus-counter {
-  color: var(--mj-ink-2, #B4C2BC);
+  color: var(--mj-ink-2);
 }
 html[data-theme="dark"] .adhkar-focus-btn,
 html.dark .adhkar-focus-btn {
-  background: var(--mj-surface, #17201C);
-  border-color: var(--mj-hairline, #26332D);
-  color: var(--mj-ink, #E9EFEC);
+  background: var(--mj-surface);
+  border-color: var(--mj-hairline);
+  color: var(--mj-ink);
 }
 html[data-theme="dark"] .adhkar-focus-btn:hover:not(:disabled),
 html.dark .adhkar-focus-btn:hover:not(:disabled) {
   background: var(--mj-brand-soft, var(--brand-deep, var(--mj-brand-deep)));
-  border-color: var(--mj-brand, #5fbf98);
+  border-color: var(--mj-brand);
 }
 html[data-theme="dark"] .adhkar-focus-btn:disabled,
 html.dark .adhkar-focus-btn:disabled {
-  color: var(--mj-muted, #8A9A93);
-  background: var(--mj-surface-2, #1E2925);
-  border-color: var(--mj-hairline, #26332D);
+  color: var(--mj-muted);
+  background: var(--mj-surface-2);
+  border-color: var(--mj-hairline);
   opacity: 1;
 }
 html[data-theme="dark"] .adhkar-focus-btn--next,
 html.dark .adhkar-focus-btn--next {
   /* خلفية زمردية صلبة + نص داكن — يمنع انحدار التباين (نص فاتح على أبيض) */
-  background: var(--mj-brand, #4fb48b) !important;
-  color: var(--mj-on-brand, #06231a) !important;
+  background: var(--mj-brand) !important;
+  color: var(--mj-on-brand) !important;
   border-color: transparent !important;
 }
 html[data-theme="dark"] .adhkar-focus-btn--next:disabled,
 html.dark .adhkar-focus-btn--next:disabled {
-  background: var(--mj-surface-2, #1E2925);
-  color: var(--mj-muted, #8A9A93);
-  border-color: var(--mj-hairline, #26332D);
+  background: var(--mj-surface-2);
+  color: var(--mj-muted);
+  border-color: var(--mj-hairline);
 }
 html[data-theme="dark"] .adhkar-focus-btn--details,
 html.dark .adhkar-focus-btn--details {
-  color: var(--mj-brand, #5fbf98);
-  border-color: var(--mj-brand, #5fbf98);
-  background: var(--mj-surface, #17201C);
+  color: var(--mj-brand);
+  border-color: var(--mj-brand);
+  background: var(--mj-surface);
 }
 html[data-theme="dark"] .adhkar-sheet,
 html.dark .adhkar-sheet {
-  background: var(--mj-surface, #17201C);
+  background: var(--mj-surface);
 }
 html[data-theme="dark"] .adhkar-sheet-text,
 html.dark .adhkar-sheet-text {
   background: var(--mj-brand-soft, var(--brand-deep, var(--mj-brand-deep)));
-  color: var(--mj-ink, #E9EFEC);
+  /* fallback فاتح مطلوب لبوابة on-brand-contrast (حل المتغيرات بلا ثيم كامل) */
+  color: var(--mj-on-brand, #e9efec);
   opacity: 1;
 }
 html[data-theme="dark"] .adhkar-sheet-title,
 html[data-theme="dark"] .adhkar-sheet-row dd,
 html.dark .adhkar-sheet-title,
 html.dark .adhkar-sheet-row dd {
-  color: var(--mj-ink, #E9EFEC);
+  color: var(--mj-on-brand, #e9efec);
 }
 html[data-theme="dark"] .adhkar-sheet-row dt,
 html.dark .adhkar-sheet-row dt {
-  color: var(--mj-ink-2, #B4C2BC);
+  color: var(--mj-ink-2);
 }
 html[data-theme="dark"] .adhkar-grade--sahih,
 html.dark .adhkar-grade--sahih {
@@ -417,8 +418,8 @@ html.dark .adhkar-grade--hasan {
 }
 html[data-theme="dark"] .adhkar-grade--other,
 html.dark .adhkar-grade--other {
-  background: var(--mj-surface-2, #1E2925);
-  color: var(--mj-ink-2, #B4C2BC);
+  background: var(--mj-surface-2);
+  color: var(--mj-ink-2);
 }
 
 .adhkar-once {
@@ -452,7 +453,7 @@ html.dark .adhkar-grade--other {
   width: auto;
   min-width: 11rem;
   background: transparent;
-  border: 1px dashed color-mix(in srgb, var(--mj-brand, #0f3d2e) 35%, transparent);
-  color: var(--mj-ink-muted, #5a6b63);
+  border: 1px dashed color-mix(in srgb, var(--mj-brand) 35%, transparent);
+  color: var(--mj-ink-muted);
   font-size: 0.85rem;
 }

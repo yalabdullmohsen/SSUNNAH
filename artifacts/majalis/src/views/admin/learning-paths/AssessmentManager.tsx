@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Plus, Pencil, Trash2, CheckCircle2, XCircle } from "lucide-react";
 import { AdminModal, Field, FieldRow } from "@/views/admin/AdminModal";
 import { StatusBadge } from "@/views/admin/AdminUI";
@@ -210,13 +211,13 @@ export function AssessmentManager({
   return (
     <div>
       {assessments.length === 0 && (
-        <button
+        <Button variant="secondary" size="small"
           type="button"
           className="adm-btn-add"
           onClick={() => { setAssessmentForm({ ...EMPTY_ASSESSMENT }); setAssessmentOpen(true); }}
         >
           <Plus size={14} /> إنشاء تقييم
-        </button>
+        </Button>
       )}
 
       {assessments.map((a) => {
@@ -232,12 +233,12 @@ export function AssessmentManager({
                 <span className="adm-type-badge">{approvedCount}/{questions.length} سؤال معتمد</span>
               </div>
               <div className="adm-item-actions">
-                <button type="button" className="adm-btn-sm" onClick={() => { setAssessmentForm(a); setAssessmentOpen(true); }}>
+                <Button variant="secondary" size="small" type="button" className="adm-btn-sm" onClick={() => { setAssessmentForm(a); setAssessmentOpen(true); }}>
                   <Pencil size={13} /> تعديل
-                </button>
-                <button type="button" className="adm-btn-del" onClick={() => deleteAssessment(a.id)}>
+                </Button>
+                <Button variant="secondary" size="small" type="button" className="adm-btn-del" onClick={() => deleteAssessment(a.id)}>
                   <Trash2 size={13} /> حذف
-                </button>
+                </Button>
               </div>
             </div>
 
@@ -249,7 +250,7 @@ export function AssessmentManager({
 
             <div className="adm-section-hdr">
               <span className="adm-block-title">الأسئلة</span>
-              <button
+              <Button variant="secondary" size="small"
                 type="button"
                 className="adm-btn-sm"
                 onClick={() => {
@@ -259,7 +260,7 @@ export function AssessmentManager({
                 }}
               >
                 <Plus size={13} /> إضافة سؤال
-              </button>
+              </Button>
             </div>
 
             {questions.length === 0 && <p className="adm-empty-msg">لا أسئلة بعد.</p>}
@@ -272,7 +273,7 @@ export function AssessmentManager({
                     {q.question_text}
                   </div>
                   <div className="adm-item-actions">
-                    <button
+                    <Button variant="secondary" size="small"
                       type="button"
                       className="adm-btn-sm"
                       onClick={() => toggleApproval(q)}
@@ -280,8 +281,8 @@ export function AssessmentManager({
                     >
                       {q.is_approved ? <XCircle size={13} /> : <CheckCircle2 size={13} />}
                       {q.is_approved ? " إلغاء الاعتماد" : " اعتماد"}
-                    </button>
-                    <button
+                    </Button>
+                    <Button variant="secondary" size="small"
                       type="button"
                       className="adm-btn-sm"
                       onClick={() => {
@@ -291,10 +292,10 @@ export function AssessmentManager({
                       }}
                     >
                       <Pencil size={13} /> تعديل
-                    </button>
-                    <button type="button" className="adm-btn-del" onClick={() => deleteQuestion(q.id)}>
+                    </Button>
+                    <Button variant="secondary" size="small" type="button" className="adm-btn-del" onClick={() => deleteQuestion(q.id)}>
                       <Trash2 size={13} /> حذف
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>

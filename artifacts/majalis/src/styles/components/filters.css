@@ -65,8 +65,8 @@
 }
 
 .mj-filter-chip.is-active {
-  background: var(--mj-brand-deep, #135034);
-  border-color: var(--mj-brand-deep, #0e3d27);
+  background: var(--mj-brand-deep);
+  border-color: var(--mj-brand-deep);
   color: var(--mj-white);
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mj-white) 22%, transparent);
 }
@@ -125,7 +125,7 @@ html.dark .mj-filter-chip.is-active,
 }
 
 .mj-filter-bar__search input::placeholder {
-  color: var(--mj-ink-3, #5a6b63);
+  color: var(--mj-ink-3);
   opacity: 1;
 }
 
@@ -140,7 +140,7 @@ html.dark .mj-filter-chip.is-active,
   max-height: 220px;
   overflow: auto;
   background: var(--mj-surface, var(--mj-white));
-  border: 1px solid var(--mj-hairline, #d5ddd8);
+  border: 1px solid var(--mj-hairline);
   border-radius: var(--sf-radius-control, 1.125rem);
   box-shadow: 0 8px 24px color-mix(in srgb, #0a1f18 12%, transparent);
 }
@@ -183,14 +183,14 @@ html.dark .mj-filter-chip.is-active,
   border-radius: var(--radius-pill, 999rem);
   border: 1px solid var(--mj-brand, var(--mj-brand));
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent);
-  color: var(--mj-brand-deep, #0f3d30);
+  color: var(--mj-brand-deep);
   font-weight: 700;
 }
 
 html.dark .mj-filter-bar .ds-filter-toggle,
 [data-theme="dark"] .mj-filter-bar .ds-filter-toggle {
-  color: var(--mj-ink, #f2f7f4);
-  border-color: color-mix(in srgb, var(--mj-brand, #5fbf98) 55%, transparent);
+  color: var(--mj-ink);
+  border-color: color-mix(in srgb, var(--mj-brand) 55%, transparent);
 }
 
 .mj-filter-bar__badge {
@@ -215,9 +215,9 @@ html.dark .mj-filter-bar .ds-filter-toggle,
   min-height: 44px;
   padding: 0.4rem 0.75rem;
   border-radius: var(--radius-sm, 0.5rem);
-  border: 1px solid var(--mj-hairline, #d5ddd8);
+  border: 1px solid var(--mj-hairline);
   background: transparent;
-  color: var(--mj-brand-deep, #0f3d30);
+  color: var(--mj-brand-deep);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -237,12 +237,12 @@ html.dark .mj-filter-bar .ds-filter-toggle,
   margin: 0;
   font-size: 0.9rem;
   font-weight: 700;
-  color: var(--mj-brand-deep, #0f3d30);
+  color: var(--mj-brand-deep);
 }
 
 html.dark .mj-active-filters__count,
 [data-theme="dark"] .mj-active-filters__count {
-  color: var(--mj-ink, #f2f7f4);
+  color: var(--mj-ink);
 }
 
 .mj-active-filters__row {
@@ -272,7 +272,7 @@ html.dark .mj-active-filters__count,
   border-radius: var(--radius-pill, 999rem);
   border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 40%, transparent);
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 12%, transparent);
-  color: var(--mj-brand-deep, #0f3d30);
+  color: var(--mj-brand-deep);
   font: inherit;
   font-size: 0.82rem;
   font-weight: 700;
@@ -301,23 +301,23 @@ html.dark .mj-active-filters__count,
   gap: 0.3rem;
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--mj-brand-deep, #0f3d30);
+  color: var(--mj-brand-deep);
 }
 
 html.dark .mj-filter-fields label,
 html.dark .mj-filter-fields .qc-filter-field,
 [data-theme="dark"] .mj-filter-fields label,
 [data-theme="dark"] .mj-filter-fields .qc-filter-field {
-  color: var(--mj-ink, #f2f7f4);
+  color: var(--mj-ink);
 }
 
 .mj-filter-fields select {
   min-height: 44px;
   width: 100%;
   border-radius: var(--radius-control, 14px);
-  border: 1px solid var(--mj-hairline, #d5ddd8);
+  border: 1px solid var(--mj-hairline);
   background: var(--mj-surface, var(--mj-white));
-  color: var(--mj-ink, #12201b);
+  color: var(--mj-ink);
   font: inherit;
   padding: 0.4rem 0.65rem;
 }
@@ -333,8 +333,8 @@ html.dark .mj-filter-fields .qc-filter-field,
 .isp-filter-chips .isp-chip.is-active,
 .ads-chip.is-active,
 .kng-filter-chip.is-active {
-  background: var(--mj-chip-active-bg, var(--color-primary-dark, var(--mj-brand-deep, #123f2e))) !important;
-  border-color: var(--mj-chip-active-bg, var(--color-primary-dark, var(--mj-brand-deep, #123f2e))) !important;
+  background: var(--mj-chip-active-bg, var(--color-primary-dark, var(--mj-brand-deep))) !important;
+  border-color: var(--mj-chip-active-bg, var(--color-primary-dark, var(--mj-brand-deep))) !important;
   color: var(--mj-chip-active-fg, var(--mj-white)) !important;
 }
 
@@ -342,9 +342,9 @@ html.dark .filter-chips__chip.is-active,
 html.dark .ds-chip.is-active,
 [data-theme="dark"] .filter-chips__chip.is-active,
 [data-theme="dark"] .ds-chip.is-active {
-  background: var(--mj-chip-active-bg, #5fbf98) !important;
-  border-color: var(--mj-chip-active-bg, #5fbf98) !important;
-  color: var(--mj-chip-active-fg, #06231a) !important;
+  background: var(--mj-chip-active-bg) !important;
+  border-color: var(--mj-chip-active-bg) !important;
+  color: var(--mj-chip-active-fg) !important;
 }
 
 
@@ -353,13 +353,13 @@ html.dark .ds-chip.is-active,
   min-height: 44px;
   padding: 0.45rem 0.95rem;
   border-radius: var(--radius-pill, 999rem);
-  border: 1px solid var(--mj-brand, #5fbf98);
-  background: color-mix(in srgb, var(--mj-brand, #5fbf98) 12%, transparent);
-  color: var(--mj-brand-deep, #0f3d30);
+  border: 1px solid var(--mj-brand);
+  background: color-mix(in srgb, var(--mj-brand) 12%, transparent);
+  color: var(--mj-brand-deep);
   font-weight: 700;
 }
 html.dark .ds-filter-toggle,
 [data-theme="dark"] .ds-filter-toggle {
-  color: var(--mj-ink, #f2f7f4);
-  border-color: color-mix(in srgb, var(--mj-brand, #5fbf98) 55%, transparent);
+  color: var(--mj-ink);
+  border-color: color-mix(in srgb, var(--mj-brand) 55%, transparent);
 }
