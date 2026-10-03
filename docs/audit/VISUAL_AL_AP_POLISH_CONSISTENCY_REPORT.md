@@ -34,6 +34,17 @@ Date: 2026-10-03 · Branch: `cursor/visual-unification-wave` · PR #2491
 - **authorityAdoptionRatio** من تغطية المكوّنات
 - **topDivergenceSources** + **easiestWins** في كل تشغيل حوكمة
 
+### قياس وقت الدفع
+
+| Metric | Value |
+|---|---:|
+| consistencyScore | **88** |
+| driftScore | **12** |
+| AUTHORITY_ADOPTION_PERCENTAGE | **41%** |
+
+أكبر مصادر التشتت: cards (9%) · forms (5%) · tabs (3%) · lists (10%).  
+أسهل مكاسب: tables (14 ملف) · navigation/modals (1 لكل).
+
 ## المؤجَّل (موصى به لاحقًا)
 
 - MOBILE_FIRST_REVIEW (أدلة جهاز)
