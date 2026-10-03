@@ -156,3 +156,92 @@ button.ui-card:active {
 .qzg-section-card.soft-card--on-light {
   border-radius: var(--radius-card, 1.5rem);
 }
+
+
+/* —— Product data-table + list shell (TABLE/LIST authority) —— */
+/**
+ * Product data-table recipe — single visual language for non-admin tables.
+ * Tokens only: sf / mj / ds. No new token family.
+ */
+
+.ss-data-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--mj-hairline, var(--sf-hairline, transparent));
+  border-radius: var(--radius-card, 1rem);
+  background: var(--mj-surface, var(--sf-surface-raised, transparent));
+}
+
+.ss-data-table,
+table.ss-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--ds-text-sm, 0.875rem);
+  color: var(--mj-ink, var(--sf-color-rich-ink));
+}
+
+.ss-data-table th,
+.ss-data-table td {
+  padding: 0.65rem 0.75rem;
+  text-align: start;
+  vertical-align: top;
+  border-bottom: 1px solid var(--mj-hairline, var(--sf-hairline, transparent));
+}
+
+.ss-data-table th {
+  min-height: 2.5rem;
+  font-weight: 650;
+  font-size: 0.8rem;
+  color: var(--mj-ink-2, var(--sf-color-rich-ink-muted));
+  background: color-mix(in srgb, var(--mj-brand, var(--sf-color-deep-emerald)) 4%, transparent);
+}
+
+.ss-data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.ss-data-table tbody tr:hover td {
+  background: color-mix(in srgb, var(--mj-brand, var(--sf-color-deep-emerald)) 6%, transparent);
+}
+
+.ss-data-table tr[data-state="selected"] td,
+.ss-data-table tr.is-selected td {
+  background: color-mix(in srgb, var(--mj-brand, var(--sf-color-deep-emerald)) 10%, transparent);
+}
+
+/* Absorb common legacy class names onto the same recipe */
+.content-detail-table,
+.quran-numbers-table,
+.nb-table,
+.ucp-table,
+.fiqh-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--ds-text-sm, 0.875rem);
+}
+
+.content-detail-table th,
+.content-detail-table td,
+.quran-numbers-table th,
+.quran-numbers-table td,
+.nb-table th,
+.nb-table td {
+  border-color: var(--mj-hairline, var(--line, transparent));
+  padding: 0.55rem 0.75rem;
+}
+
+.ss-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ss-list > li,
+.ss-list > .id-content-row,
+.ss-list > .mur-settings-row {
+  min-height: 2.75rem;
+}

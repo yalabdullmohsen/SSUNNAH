@@ -58,6 +58,23 @@ Canonical: Input · Textarea · Select · Checkbox · Radio · Switch · FormLab
 
 Forbidden: Feedback V3 / parallel form kits. Gate: `test:form-feedback-authority`.
 
+## Table Authority
+
+Canonical: `ui/table` + `.ss-data-table` (`ssunnah-card-unify.css`).  
+Map: `docs/design/TABLE_AUTHORITY_MAP.md`.  
+Admin `.av3-table` / legacy `.admin-table` = SPECIAL_CASE.
+
+## List Authority
+
+Canonical façades: `SimpleList` · `InteractiveList` · `NavigationList` · `ResultList`  
+→ ContentRow / SettingsList / VirtualList (`ListSystem.tsx`).  
+Map: `docs/design/LIST_AUTHORITY_MAP.md`.
+
+## Data Presentation Authority
+
+Cards + tables + lists + `StatusBadge` + `FilterChips` + SsText metadata.  
+Doc: `docs/design/DATA_PRESENTATION_AUTHORITY.md`. Gate: `test:table-list-authority`.
+
 ## Page Authority
 
 Canonical: `AppPage` · `PageHeader` · Screen adapters (`DetailScreen`, …) per `PAGE_CONTRACT_MATRIX.md`.

@@ -50,6 +50,8 @@ Metrics vs `origin/main`: hexInCss 8855→7026 · borderRadiusPx 1202→456 · b
 
 Phases I–L: `docs/audit/VISUAL_IJKL_BUTTON_FORM_IDENTITY_REPORT.md` · `docs/design/FORM_AUTHORITY_MAP.md` · rawButtonFiles 105→102 · rawButtonElements 463→457 · façades `LinkButton`/`ToggleButton` · FORM map APPROVED/LEGACY/SPECIAL_CASE.
 
+Phases M–O: `docs/audit/VISUAL_MNO_TABLE_LIST_DATA_REPORT.md` · TABLE/LIST/DATA maps · `ListSystem` façades · `.ss-data-table` · UniversitiesCompare → `ui/table` · hexInCss →7025.
+
 ## Endgame phases (A–H)
 
 | Phase | Target exit | Status |

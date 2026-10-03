@@ -447,7 +447,7 @@ html.dark .seerah-page blockquote {
 
 .content-detail-table th,
 .content-detail-table td {
-  border: 1px solid var(--line, #ddd5c8);
+  border: 1px solid var(--mj-hairline, var(--line, transparent));
   padding: 0.5rem 0.75rem;
   text-align: right;
 }

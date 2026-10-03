@@ -11,6 +11,14 @@ import "@/styles/pages/universities-compare.css";
 import "@/styles/pages/learning-path-dashboard.css";
 import { DetailScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { safeHttpHref } from "@/lib/sanitize";
 
 function lowestFee(programs: UniversityProgram[]): string {
@@ -101,14 +109,14 @@ function CompareContent() {
           <AlertTriangle size={13} className="inline ms-1" />تحقّق من الموقع الرسمي لكل جامعة قبل التقديم؛ هذه البيانات إرشادية فقط.
         </div>
 
-        {/* جدول المقارنة */}
-        <div className="ucp-table-wrap">
-          <table className="w-full min-w-[600px]">
-            <thead>
-              <tr className="ucp-table-header-row">
-                <th className="ucp-th-label">المعيار</th>
+        {/* جدول المقارنة — سلطة ui/table + .ss-data-table */}
+        <div className="ucp-table-wrap ss-data-table-wrap">
+          <Table className="ss-data-table ucp-table min-w-[600px]">
+            <TableHeader>
+              <TableRow className="ucp-table-header-row">
+                <TableHead className="ucp-th-label">المعيار</TableHead>
                 {compareList.map((u) => (
-                  <th key={u.slug} className="px-4 py-3 text-center min-w-[180px]">
+                  <TableHead key={u.slug} className="px-4 py-3 text-center min-w-[180px]">
                     <div className="space-y-1">
                       <p className="ucp-uni-name">{u.name_ar}</p>
                       <div className="flex justify-center gap-1">
@@ -120,29 +128,29 @@ function CompareContent() {
                           className="ucp-danger-btn">إزالة</Button>
                       </div>
                     </div>
-                  </th>
+                  </TableHead>
                 ))}
-              </tr>
-            </thead>
-            <tbody>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {COMPARE_ROWS.map((row, i) => (
-                <tr key={row.label}
+                <TableRow key={row.label}
                   className={`ucp-table-row${i % 2 === 0 ? " ucp-table-row--even" : ""}`}>
-                  <td className="ucp-td-label">{row.label}</td>
+                  <TableCell className="ucp-td-label">{row.label}</TableCell>
                   {compareList.map((u) => (
-                    <td key={u.slug} className="ucp-td-val">
+                    <TableCell key={u.slug} className="ucp-td-val">
                       {row.label === "حالة الاعتماد" ? (
                         <span className="px-2 py-0.5 rounded-full text-xs font-medium ucp-acc-badge"
                           style={{ "--acc-color": ACCREDITATION_COLOR[u.accreditation_status] } as React.CSSProperties}>
                           {row.fn(u)}
                         </span>
                       ) : row.fn(u)}
-                    </td>
+                    </TableCell>
                   ))}
-                </tr>
+                </TableRow>
               ))}
-            </tbody>
-          </table>
+            </TableBody>
+          </Table>
         </div>
 
         {/* روابط التقديم */}
