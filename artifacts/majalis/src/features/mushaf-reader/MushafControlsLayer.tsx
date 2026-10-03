@@ -7,6 +7,7 @@ import {
   useState,
   type FormEvent,
   type KeyboardEvent,
+  type MouseEvent,
 } from "react";
 import { getSurahMeta } from "@/lib/quran-api";
 import { toArabicDigits } from "@/lib/utils";
@@ -166,11 +167,11 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
     return () => window.cancelAnimationFrame(id);
   }, [gotoOpen, pageNumber, syncDialWindow]);
 
-  const closeGoto = () => {
+  const closeGoto = useCallback(() => {
     inputRef.current?.blur();
     onGotoOpenChange(false);
     setGotoError(null);
-  };
+  }, [onGotoOpenChange]);
 
   const jumpToPage = useCallback(
     (raw: number) => {
@@ -187,27 +188,99 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
     [onGoto, onGotoOpenChange],
   );
 
-  const handleGoToPage = (e?: FormEvent) => {
-    e?.preventDefault();
-    e?.stopPropagation();
-    const n = parseMushafPageQuery(draft);
-    if (n == null || n < MUSHAF_PAGE_MIN || n > MUSHAF_PAGE_MAX) {
-      setGotoError(`أدخل رقمًا بين ${MUSHAF_PAGE_MIN} و${MUSHAF_PAGE_MAX}`);
-      inputRef.current?.focus({ preventScroll: true });
-      return;
-    }
-    jumpToPage(n);
-  };
+  const handleGoToPage = useCallback(
+    (e?: FormEvent) => {
+      e?.preventDefault();
+      e?.stopPropagation();
+      const n = parseMushafPageQuery(draft);
+      if (n == null || n < MUSHAF_PAGE_MIN || n > MUSHAF_PAGE_MAX) {
+        setGotoError(`أدخل رقمًا بين ${MUSHAF_PAGE_MIN} و${MUSHAF_PAGE_MAX}`);
+        inputRef.current?.focus({ preventScroll: true });
+        return;
+      }
+      jumpToPage(n);
+    },
+    [draft, jumpToPage],
+  );
 
-  const onInputKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key !== "Enter") return;
-    e.preventDefault();
-    handleGoToPage();
-  };
+  const onInputKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLInputElement>) => {
+      if (e.key !== "Enter") return;
+      e.preventDefault();
+      handleGoToPage();
+    },
+    [handleGoToPage],
+  );
 
-  const nudgePage = (delta: number) => {
-    jumpToPage(pageNumber + delta);
-  };
+  const nudgePage = useCallback(
+    (delta: number) => {
+      jumpToPage(pageNumber + delta);
+    },
+    [jumpToPage, pageNumber],
+  );
+
+  const onExitClick = useCallback(
+    (e: MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      onExit();
+    },
+    [onExit],
+  );
+
+  const openGoto = useCallback(() => {
+    onGotoOpenChange(true);
+  }, [onGotoOpenChange]);
+
+  const closeMore = useCallback(() => {
+    onMoreOpenChange?.(false);
+  }, [onMoreOpenChange]);
+
+  const toggleMore = useCallback(
+    (e: MouseEvent) => {
+      e.stopPropagation();
+      onMoreOpenChange?.(!moreOpen);
+    },
+    [moreOpen, onMoreOpenChange],
+  );
+
+  const runMoreAction = useCallback(
+    (action: () => void) => {
+      action();
+      onMoreOpenChange?.(false);
+    },
+    [onMoreOpenChange],
+  );
+
+  const onMoreIndex = useCallback(() => runMoreAction(onIndex), [onIndex, runMoreAction]);
+  const onMoreSearch = useCallback(() => runMoreAction(onSearch), [onSearch, runMoreAction]);
+  const onMoreBookmark = useCallback(() => {
+    if (onBookmarkPage) runMoreAction(onBookmarkPage);
+  }, [onBookmarkPage, runMoreAction]);
+  const onMorePlay = useCallback(() => {
+    if (onPlayPage) runMoreAction(onPlayPage);
+  }, [onPlayPage, runMoreAction]);
+  const onMoreTafsir = useCallback(() => {
+    if (onTafsir) runMoreAction(onTafsir);
+  }, [onTafsir, runMoreAction]);
+  const onMoreNotes = useCallback(() => {
+    if (onNotes) runMoreAction(onNotes);
+  }, [onNotes, runMoreAction]);
+  const onMoreShare = useCallback(() => {
+    if (onSharePage) runMoreAction(onSharePage);
+  }, [onSharePage, runMoreAction]);
+  const onMoreCopy = useCallback(() => {
+    if (onCopyLink) runMoreAction(onCopyLink);
+  }, [onCopyLink, runMoreAction]);
+  const onMoreToggleFocus = useCallback(() => {
+    onToggleFocusReadingMode?.();
+  }, [onToggleFocusReadingMode]);
+
+  const onDisplayModeChange = useCallback((mode: MushafAppearanceMode) => {
+    QuranSettingsRepository.setAppearanceMode(mode);
+    QuranSettingsRepository.applyAppearance(mode);
+    setDisplayMode(mode);
+  }, []);
 
   const dialSlice = MUSHAF_PAGE_LIST.slice(dialStart, dialStart + dialCount);
   const dialSpacerTop = dialStart * DIAL_ITEM_H;
@@ -228,11 +301,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
           data-testid="mushaf-toolbar-exit"
           aria-label="الخروج من المصحف"
           title="الخروج من المصحف"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            onExit();
-          }}
+          onClick={onExitClick}
           onPointerDown={(e) => e.stopPropagation()}
         >
           <span className="nm-controls__exit-icon" aria-hidden="true">
@@ -243,7 +312,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
           type="button"
           className="nm-controls__page"
           data-testid="mushaf-goto-page-btn"
-          onClick={() => onGotoOpenChange(true)}
+          onClick={openGoto}
           aria-label={`الصفحة ${pageNumber} من ${MUSHAF_PAGE_MAX} — انتقال`}
           dir="ltr"
         >
@@ -257,10 +326,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
             aria-label="المزيد"
             aria-expanded={moreOpen}
             aria-controls={moreOpen ? morePanelId : undefined}
-            onClick={(e) => {
-              e.stopPropagation();
-              onMoreOpenChange(!moreOpen);
-            }}
+            onClick={toggleMore}
           >
             <span aria-hidden="true">⋯</span>
           </button>
@@ -276,7 +342,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
           className="nm-controls-more__scrim"
           data-testid="mushaf-controls-more-scrim"
           aria-label="إغلاق المزيد"
-          onClick={() => onMoreOpenChange(false)}
+          onClick={closeMore}
         />
         <div
           id={morePanelId}
@@ -294,10 +360,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
               type="button"
               className="nm-controls-more__item"
               data-testid="mushaf-index"
-              onClick={() => {
-                onIndex();
-                onMoreOpenChange(false);
-              }}
+              onClick={onMoreIndex}
             >
               الفهرس
             </button>
@@ -305,10 +368,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
               type="button"
               className="nm-controls-more__item"
               data-testid="mushaf-search"
-              onClick={() => {
-                onSearch();
-                onMoreOpenChange(false);
-              }}
+              onClick={onMoreSearch}
             >
               البحث
             </button>
@@ -317,10 +377,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
                 type="button"
                 className="nm-controls-more__item"
                 data-testid="mushaf-page-bookmark-btn"
-                onClick={() => {
-                  onBookmarkPage();
-                  onMoreOpenChange(false);
-                }}
+                onClick={onMoreBookmark}
               >
                 العلامات
               </button>
@@ -329,7 +386,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
                 className="nm-controls-more__item"
                 href="/mushaf/bookmarks"
                 data-testid="mushaf-bookmarks-manager-link"
-                onClick={() => onMoreOpenChange(false)}
+                onClick={closeMore}
               >
                 العلامات
               </a>
@@ -339,10 +396,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
                 type="button"
                 className="nm-controls-more__item"
                 data-testid="mushaf-play-page"
-                onClick={() => {
-                  onPlayPage();
-                  onMoreOpenChange(false);
-                }}
+                onClick={onMorePlay}
               >
                 التلاوة
               </button>
@@ -352,10 +406,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
                 type="button"
                 className="nm-controls-more__item"
                 data-testid="mushaf-more-tafsir"
-                onClick={() => {
-                  onTafsir();
-                  onMoreOpenChange(false);
-                }}
+                onClick={onMoreTafsir}
               >
                 التفسير
               </button>
@@ -365,10 +416,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
                 type="button"
                 className="nm-controls-more__item"
                 data-testid="mushaf-more-notes"
-                onClick={() => {
-                  onNotes();
-                  onMoreOpenChange(false);
-                }}
+                onClick={onMoreNotes}
               >
                 الملاحظات
               </button>
@@ -377,7 +425,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
                 className="nm-controls-more__item"
                 href="/mushaf/bookmarks"
                 data-testid="mushaf-more-notes"
-                onClick={() => onMoreOpenChange(false)}
+                onClick={closeMore}
               >
                 الملاحظات
               </a>
@@ -387,10 +435,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
                 type="button"
                 className="nm-controls-more__item"
                 data-testid="mushaf-more-share"
-                onClick={() => {
-                  onSharePage();
-                  onMoreOpenChange(false);
-                }}
+                onClick={onMoreShare}
               >
                 مشاركة الصفحة
               </button>
@@ -400,10 +445,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
                 type="button"
                 className="nm-controls-more__item"
                 data-testid="mushaf-more-copy-link"
-                onClick={() => {
-                  onCopyLink();
-                  onMoreOpenChange(false);
-                }}
+                onClick={onMoreCopy}
               >
                 نسخ الرابط
               </button>
@@ -418,18 +460,14 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
                 className="nm-controls-more__row nm-controls-more__item"
                 data-testid="mushaf-focus-reading-toggle"
                 aria-pressed={focusReadingMode}
-                onClick={() => onToggleFocusReadingMode()}
+                onClick={onMoreToggleFocus}
               >
                 {focusReadingMode ? "إظهار الأدوات عند اللمس" : "وضع قراءة هادئ"}
               </button>
             ) : null}
             <MushafDisplayModeControl
               value={displayMode}
-              onChange={(mode) => {
-                QuranSettingsRepository.setAppearanceMode(mode);
-                QuranSettingsRepository.applyAppearance(mode);
-                setDisplayMode(mode);
-              }}
+              onChange={onDisplayModeChange}
               className="nm-controls-more__display-mode"
             />
             {onPageArrowsEnabledChange ? (
@@ -448,7 +486,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
               className="nm-controls-more__item"
               href="/mushaf/bookmarks"
               data-testid="mushaf-bookmarks-settings-link"
-              onClick={() => onMoreOpenChange(false)}
+              onClick={closeMore}
             >
               إدارة العلامات
             </a>
@@ -457,7 +495,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
             type="button"
             className="nm-controls-more__close"
             data-testid="mushaf-controls-more-close"
-            onClick={() => onMoreOpenChange(false)}
+            onClick={closeMore}
           >
             إغلاق
           </button>

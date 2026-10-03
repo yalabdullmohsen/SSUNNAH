@@ -46,13 +46,23 @@ const tabMs = [...spatial.matchAll(/tab:\s*(\d+)/g)].map((m) => Number(m[1]));
 assert.ok(tabMs[0] >= 90 && tabMs[0] <= 160, `tab ضمن نافذة سريعة (وجد ${tabMs[0]})`);
 
 const cssMs = [
-  ...native.matchAll(/mj-route-(?:push|pop|tab|modal)-in\s+(\d+)ms/g),
+  ...native.matchAll(
+    /mj-route-(?:push|pop|tab|modal)-in\s+(?:var\(--motion-duration-[^,]+,\s*)?(\d+)ms/g,
+  ),
 ].map((m) => Number(m[1]));
 assert.ok(cssMs.length >= 3, "مدد CSS للأنواع الأساسية");
 assert.ok(
   cssMs.every((n) => n >= 90 && n <= 180),
   `مدة CSS ضمن 90–180ms (وجد ${cssMs.join(",")})`,
 );
+assert.match(
+  native,
+  /mj-route-push-in\s+var\(--motion-duration-/,
+  "مدد المسار عبر سلطة motion-policy",
+);
+assert.match(lrf, /lrf-wrap--mushaf/, "هيكل مصحف غامر فوري");
+assert.match(lrf, /lrf-wrap--hadith/, "هيكل حديث فوري");
+assert.match(lrf, /lrf-wrap--fiqh/, "هيكل فقه فوري");
 
 assert.match(lrf, /lrf-wrap--skel/, "هيكل مسار فوري");
 assert.match(lrf, /lrf-wrap--lessons/, "هيكل دروس فوري");

@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-03T22:35:42.001Z",
+  "capturedAt": "2026-10-03T22:55:52.557Z",
   "delta": [
     {
       "metric": "verseWordSyncSubscriptionsPerWord",
@@ -88,8 +88,8 @@
     {
       "metric": "fontCacheHitSyncUsP95",
       "before": 0.015,
-      "after": 0.017,
-      "delta": "+0.002"
+      "after": 0.016,
+      "delta": "+0.001"
     },
     {
       "metric": "fontCacheHitSamples",

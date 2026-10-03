@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-03T22:35:41.996Z",
+  "capturedAt": "2026-10-03T22:55:52.555Z",
   "phase": "AFTER",
   "topDelays": [
     {
@@ -78,7 +78,7 @@
     "telemetryVisualTransitionEnd": true,
     "telemetryProductUnlock": true,
     "fontCacheHitSyncUsP50": 0.006,
-    "fontCacheHitSyncUsP95": 0.017,
+    "fontCacheHitSyncUsP95": 0.016,
     "fontCacheHitSamples": 80,
     "estimatedTurnRenderHotspots": 0,
     "singleNeighborPrefetchPipeline": true,
