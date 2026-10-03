@@ -82,7 +82,57 @@ $$;
 COMMENT ON FUNCTION public.to_tsvector_simple(text) IS
   'IMMUTABLE wrapper around to_tsvector(simple) for generated search_vector columns.';
 
--- ─── 2. Hadith search documents (generated stored) ───────────────────
+-- ─── 2. Hadith search documents (trigger-maintained; PG17-safe) ──────
+-- Generated STORED + to_tsvector is rejected on PG17 ("not immutable").
+-- Maintain search_text / search_vector via BEFORE INSERT/UPDATE triggers.
+
+CREATE OR REPLACE FUNCTION public.hadith_search_docs_refresh()
+RETURNS trigger
+LANGUAGE plpgsql
+SET search_path = public
+AS $$
+BEGIN
+  NEW.search_text := public.ar_normalize(
+    concat_ws(
+      ' ',
+      coalesce(NEW.title, ''),
+      coalesce(NEW.hadith_number, ''),
+      coalesce(NEW.narrator, ''),
+      coalesce(NEW.source_name, ''),
+      coalesce(NEW.collection, ''),
+      coalesce(NEW.chapter, ''),
+      coalesce(array_to_string(NEW.keywords, ' '), ''),
+      coalesce(NEW.explanation, ''),
+      coalesce(NEW.text, '')
+    )
+  );
+  NEW.search_vector :=
+    setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(NEW.title), '')), 'A')
+    || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(NEW.hadith_number), '')), 'A')
+    || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(NEW.text), '')), 'B')
+    || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(NEW.narrator), '')), 'B')
+    || setweight(
+         public.to_tsvector_simple(coalesce(
+           public.ar_normalize(
+             concat_ws(' ', coalesce(NEW.source_name, ''), coalesce(NEW.collection, ''), coalesce(NEW.chapter, ''))
+           ),
+           ''
+         )),
+         'C'
+       )
+    || setweight(
+         public.to_tsvector_simple(coalesce(
+           public.ar_normalize(
+             concat_ws(' ', coalesce(array_to_string(NEW.keywords, ' '), ''), coalesce(NEW.explanation, ''))
+           ),
+           ''
+         )),
+         'D'
+       );
+  RETURN NEW;
+END;
+$$;
+
 DO $$
 BEGIN
   IF NOT EXISTS (
@@ -93,80 +143,83 @@ BEGIN
     RETURN;
   END IF;
 
-  -- Drop prior generated search docs to redefine weighted FTS (idempotent-ish)
   BEGIN
     ALTER TABLE public.verified_hadith_items DROP COLUMN IF EXISTS search_vector CASCADE;
-  EXCEPTION WHEN OTHERS THEN
-    NULL;
+  EXCEPTION WHEN OTHERS THEN NULL;
   END;
   BEGIN
     ALTER TABLE public.verified_hadith_items DROP COLUMN IF EXISTS search_text CASCADE;
-  EXCEPTION WHEN OTHERS THEN
-    NULL;
+  EXCEPTION WHEN OTHERS THEN NULL;
   END;
 
-  IF NOT EXISTS (
-    SELECT 1 FROM information_schema.columns
-    WHERE table_schema = 'public' AND table_name = 'verified_hadith_items'
-      AND column_name = 'search_text'
-  ) THEN
-    ALTER TABLE public.verified_hadith_items
-      ADD COLUMN search_text text
-      GENERATED ALWAYS AS (
-        public.ar_normalize(
-          concat_ws(
-            ' ',
-            coalesce(title, ''),
-            coalesce(hadith_number, ''),
-            coalesce(narrator, ''),
-            coalesce(source_name, ''),
-            coalesce(collection, ''),
-            coalesce(chapter, ''),
-            coalesce(array_to_string(keywords, ' '), ''),
-            coalesce(explanation, ''),
-            coalesce(text, '')
-          )
-        )
-      ) STORED;
-  END IF;
+  ALTER TABLE public.verified_hadith_items
+    ADD COLUMN IF NOT EXISTS search_text text,
+    ADD COLUMN IF NOT EXISTS search_vector tsvector;
 
-  IF NOT EXISTS (
-    SELECT 1 FROM information_schema.columns
-    WHERE table_schema = 'public' AND table_name = 'verified_hadith_items'
-      AND column_name = 'search_vector'
-  ) THEN
-    ALTER TABLE public.verified_hadith_items
-      ADD COLUMN search_vector tsvector
-      GENERATED ALWAYS AS (
-        setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(title), '')), 'A')
-        || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(hadith_number), '')), 'A')
-        || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(text), '')), 'B')
-        || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(narrator), '')), 'B')
-        || setweight(
-             public.to_tsvector_simple(coalesce(
-                 public.ar_normalize(
-                   concat_ws(' ', coalesce(source_name, ''), coalesce(collection, ''), coalesce(chapter, ''))
-                 ),
-                 ''
-               )
-             ),
-             'C'
-           )
-        || setweight(
-             public.to_tsvector_simple(coalesce(
-                 public.ar_normalize(
-                   concat_ws(' ', coalesce(array_to_string(keywords, ' '), ''), coalesce(explanation, ''))
-                 ),
-                 ''
-               )
-             ),
-             'D'
-           )
-      ) STORED;
-  END IF;
+  DROP TRIGGER IF EXISTS trg_hadith_search_docs_refresh ON public.verified_hadith_items;
+  CREATE TRIGGER trg_hadith_search_docs_refresh
+    BEFORE INSERT OR UPDATE OF title, hadith_number, narrator, source_name, collection, chapter, keywords, explanation, text
+    ON public.verified_hadith_items
+    FOR EACH ROW
+    EXECUTE FUNCTION public.hadith_search_docs_refresh();
+
+  -- Backfill existing rows
+  UPDATE public.verified_hadith_items SET title = title;
 END $$;
 
--- ─── 3. Source search documents ──────────────────────────────────────
+-- ─── 3. Source search documents (trigger-maintained) ─────────────────
+CREATE OR REPLACE FUNCTION public.source_search_docs_refresh()
+RETURNS trigger
+LANGUAGE plpgsql
+SET search_path = public
+AS $$
+BEGIN
+  NEW.search_text := public.ar_normalize(
+    concat_ws(
+      ' ',
+      coalesce(NEW.name, ''),
+      coalesce(NEW.category, ''),
+      coalesce(NEW.source_type, ''),
+      coalesce(NEW.url, '')
+    )
+  );
+  NEW.search_vector :=
+    setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(NEW.name), '')), 'A')
+    || setweight(
+         public.to_tsvector_simple(coalesce(public.ar_normalize(concat_ws(' ', coalesce(NEW.category, ''), coalesce(NEW.source_type, ''))), '')),
+         'C'
+       )
+    || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(NEW.url), '')), 'D');
+  RETURN NEW;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION public.scholarly_source_search_docs_refresh()
+RETURNS trigger
+LANGUAGE plpgsql
+SET search_path = public
+AS $$
+BEGIN
+  NEW.search_text := public.ar_normalize(
+    concat_ws(
+      ' ',
+      coalesce(NEW.name, ''),
+      coalesce(NEW.name_ar, ''),
+      coalesce(NEW.entity_name, ''),
+      coalesce(NEW.source_type, ''),
+      coalesce(NEW.url, '')
+    )
+  );
+  NEW.search_vector :=
+    setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(NEW.name), '')), 'A')
+    || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(NEW.name_ar), '')), 'B')
+    || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(NEW.entity_name), '')), 'B')
+    || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(NEW.source_type), '')), 'C')
+    || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(NEW.url), '')), 'D');
+  RETURN NEW;
+END;
+$$;
+
 DO $$
 BEGIN
   IF EXISTS (
@@ -182,43 +235,18 @@ BEGIN
     EXCEPTION WHEN OTHERS THEN NULL;
     END;
 
-    IF NOT EXISTS (
-      SELECT 1 FROM information_schema.columns
-      WHERE table_schema = 'public' AND table_name = 'trusted_sources'
-        AND column_name = 'search_text'
-    ) THEN
-      ALTER TABLE public.trusted_sources
-        ADD COLUMN search_text text
-        GENERATED ALWAYS AS (
-          public.ar_normalize(
-            concat_ws(
-              ' ',
-              coalesce(name, ''),
-              coalesce(category, ''),
-              coalesce(source_type, ''),
-              coalesce(url, '')
-            )
-          )
-        ) STORED;
-    END IF;
+    ALTER TABLE public.trusted_sources
+      ADD COLUMN IF NOT EXISTS search_text text,
+      ADD COLUMN IF NOT EXISTS search_vector tsvector;
 
-    IF NOT EXISTS (
-      SELECT 1 FROM information_schema.columns
-      WHERE table_schema = 'public' AND table_name = 'trusted_sources'
-        AND column_name = 'search_vector'
-    ) THEN
-      ALTER TABLE public.trusted_sources
-        ADD COLUMN search_vector tsvector
-        GENERATED ALWAYS AS (
-          setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(name), '')), 'A')
-          || setweight(
-               public.to_tsvector_simple(coalesce(public.ar_normalize(concat_ws(' ', coalesce(category, ''), coalesce(source_type, ''))), '')
-               ),
-               'C'
-             )
-          || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(url), '')), 'D')
-        ) STORED;
-    END IF;
+    DROP TRIGGER IF EXISTS trg_source_search_docs_refresh ON public.trusted_sources;
+    CREATE TRIGGER trg_source_search_docs_refresh
+      BEFORE INSERT OR UPDATE OF name, category, source_type, url
+      ON public.trusted_sources
+      FOR EACH ROW
+      EXECUTE FUNCTION public.source_search_docs_refresh();
+
+    UPDATE public.trusted_sources SET name = name;
   END IF;
 
   IF EXISTS (
@@ -234,42 +262,18 @@ BEGIN
     EXCEPTION WHEN OTHERS THEN NULL;
     END;
 
-    IF NOT EXISTS (
-      SELECT 1 FROM information_schema.columns
-      WHERE table_schema = 'public' AND table_name = 'scholarly_sources'
-        AND column_name = 'search_text'
-    ) THEN
-      ALTER TABLE public.scholarly_sources
-        ADD COLUMN search_text text
-        GENERATED ALWAYS AS (
-          public.ar_normalize(
-            concat_ws(
-              ' ',
-              coalesce(name, ''),
-              coalesce(name_ar, ''),
-              coalesce(entity_name, ''),
-              coalesce(source_type, ''),
-              coalesce(url, '')
-            )
-          )
-        ) STORED;
-    END IF;
+    ALTER TABLE public.scholarly_sources
+      ADD COLUMN IF NOT EXISTS search_text text,
+      ADD COLUMN IF NOT EXISTS search_vector tsvector;
 
-    IF NOT EXISTS (
-      SELECT 1 FROM information_schema.columns
-      WHERE table_schema = 'public' AND table_name = 'scholarly_sources'
-        AND column_name = 'search_vector'
-    ) THEN
-      ALTER TABLE public.scholarly_sources
-        ADD COLUMN search_vector tsvector
-        GENERATED ALWAYS AS (
-          setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(name), '')), 'A')
-          || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(name_ar), '')), 'B')
-          || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(entity_name), '')), 'B')
-          || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(source_type), '')), 'C')
-          || setweight(public.to_tsvector_simple(coalesce(public.ar_normalize(url), '')), 'D')
-        ) STORED;
-    END IF;
+    DROP TRIGGER IF EXISTS trg_scholarly_source_search_docs_refresh ON public.scholarly_sources;
+    CREATE TRIGGER trg_scholarly_source_search_docs_refresh
+      BEFORE INSERT OR UPDATE OF name, name_ar, entity_name, source_type, url
+      ON public.scholarly_sources
+      FOR EACH ROW
+      EXECUTE FUNCTION public.scholarly_source_search_docs_refresh();
+
+    UPDATE public.scholarly_sources SET name = name;
   END IF;
 END $$;
 

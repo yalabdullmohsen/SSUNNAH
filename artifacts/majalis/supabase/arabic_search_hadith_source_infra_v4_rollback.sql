@@ -94,4 +94,12 @@ GRANT EXECUTE ON FUNCTION public.search_hadiths(text, int) TO anon, authenticate
 GRANT EXECUTE ON FUNCTION public.search_hadith_items(text, int) TO anon, authenticated, service_role;
 GRANT EXECUTE ON FUNCTION public.search_sources(text, int) TO anon, authenticated, service_role;
 
+
+DROP TRIGGER IF EXISTS trg_hadith_search_docs_refresh ON public.verified_hadith_items;
+DROP TRIGGER IF EXISTS trg_source_search_docs_refresh ON public.trusted_sources;
+DROP TRIGGER IF EXISTS trg_scholarly_source_search_docs_refresh ON public.scholarly_sources;
+DROP FUNCTION IF EXISTS public.hadith_search_docs_refresh();
+DROP FUNCTION IF EXISTS public.source_search_docs_refresh();
+DROP FUNCTION IF EXISTS public.scholarly_source_search_docs_refresh();
+
 DROP FUNCTION IF EXISTS public.to_tsvector_simple(text);
