@@ -16,6 +16,11 @@ Latency benchmark: **NOT_CONNECTED — no before/after wall-clock without DATABA
 | migrations/…v2.sql | ✅ |
 | hadiths/sources SQL (v3) | ✅ |
 | migrations/…v3.sql | ✅ |
+| hadith/source infra (v4) | ✅ |
+| migrations/…v4.sql | ✅ |
+| rollback v4 | ✅ |
+| relevance + keyset (v4) | ✅ |
+| PRODUCTION_APPROVAL_REQUIRED | ✅ |
 | view hadiths | ✅ |
 | view sources | ✅ |
 | legacy normalize_ar | ✅ |
@@ -51,6 +56,8 @@ Views public.hadiths / public.sources alias physical tables
 - `hadiths_narrator_trgm`: ✅
 - `hadiths_search_trgm`: ✅
 - `hadiths_search_vector`: ✅
+- `hadith_rel_auth_collection`: ✅
+- `hadith_rel_collection_chapter`: ✅
 - `sources_name_trgm`: ✅
 - `sources_search_trgm`: ✅
 - `sources_search_vector`: ✅
@@ -91,4 +98,6 @@ Migrate supabase.ts / dawah-service ILIKE paths to search_* RPCs after migration
 - Latency before/after: DEVICE_REQUIRED / DATABASE_URL
 - Client unified index hadith/scholar coverage still thin (separate from SQL)
 
-SQL: `supabase/arabic_search_infrastructure_v2.sql` + `arabic_search_hadiths_sources_v3.sql`
+SQL: `supabase/arabic_search_infrastructure_v2.sql` + `arabic_search_hadiths_sources_v3.sql` + `arabic_search_hadith_source_infra_v4.sql`
+
+Production apply: **REQUIRES_EXPLICIT_APPROVAL** (never auto).

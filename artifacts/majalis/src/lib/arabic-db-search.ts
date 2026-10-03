@@ -1,6 +1,6 @@
 /**
  * غلاف عميل لطبقة البحث العربي الهجينة (FTS + trigram) على Supabase.
- * يستدعي RPCs من arabic_search_infrastructure_v2.sql.
+ * v4: search_hadiths / search_sources مع فلاتر + صلة + keyset cursor.
  * لا يستبدل البحث المحلي الموحّد (/data/search) — مسار DB للجداول.
  */
 import { supabase } from "@/lib/supabase";
@@ -25,6 +25,23 @@ const RPC: Record<Exclude<ArabicDbSearchEntity, "content">, string> = {
   sources: "search_sources",
 };
 
+export type HadithSearchFilters = {
+  collection?: string | null;
+  chapter?: string | null;
+  authenticityClass?: "sahih" | "daif" | "mawdu" | null;
+  sourceName?: string | null;
+  narrator?: string | null;
+  cursorScore?: number | null;
+  cursorId?: string | null;
+};
+
+export type SourceSearchFilters = {
+  category?: string | null;
+  sourceType?: string | null;
+  cursorScore?: number | null;
+  cursorId?: string | null;
+};
+
 /** بحث كيان واحد عبر RPC الهجين. */
 export async function searchArabicDbEntity(
   entity: Exclude<ArabicDbSearchEntity, "content">,
@@ -34,6 +51,51 @@ export async function searchArabicDbEntity(
   const trimmed = q.trim();
   if (!trimmed) return { data: [], error: null };
   const { data, error } = await supabase.rpc(RPC[entity], { q: trimmed, lim });
+  return { data: (data as unknown[]) ?? null, error: error ? new Error(error.message) : null };
+}
+
+/** بحث أحاديث مرتّب مع فلاتر المخطط الحقيقي + cursor. */
+export async function searchHadithsDb(
+  q: string,
+  lim = 20,
+  filters: HadithSearchFilters = {},
+): Promise<{ data: unknown[] | null; error: Error | null }> {
+  const trimmed = q.trim();
+  if (!trimmed && !filters.collection && !filters.chapter && !filters.authenticityClass) {
+    return { data: [], error: null };
+  }
+  const { data, error } = await supabase.rpc("search_hadiths", {
+    q: trimmed || null,
+    lim,
+    p_collection: filters.collection ?? null,
+    p_chapter: filters.chapter ?? null,
+    p_authenticity_class: filters.authenticityClass ?? null,
+    p_source_name: filters.sourceName ?? null,
+    p_narrator: filters.narrator ?? null,
+    p_cursor_score: filters.cursorScore ?? null,
+    p_cursor_id: filters.cursorId ?? null,
+  });
+  return { data: (data as unknown[]) ?? null, error: error ? new Error(error.message) : null };
+}
+
+/** بحث مصادر موثوقة مرتّب مع فلاتر + cursor. */
+export async function searchSourcesDb(
+  q: string,
+  lim = 20,
+  filters: SourceSearchFilters = {},
+): Promise<{ data: unknown[] | null; error: Error | null }> {
+  const trimmed = q.trim();
+  if (!trimmed && !filters.category && !filters.sourceType) {
+    return { data: [], error: null };
+  }
+  const { data, error } = await supabase.rpc("search_sources", {
+    q: trimmed || null,
+    lim,
+    p_category: filters.category ?? null,
+    p_source_type: filters.sourceType ?? null,
+    p_cursor_score: filters.cursorScore ?? null,
+    p_cursor_id: filters.cursorId ?? null,
+  });
   return { data: (data as unknown[]) ?? null, error: error ? new Error(error.message) : null };
 }
 

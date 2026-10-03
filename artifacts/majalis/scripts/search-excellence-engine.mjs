@@ -491,6 +491,7 @@ const SEARCH_UX_IMPROVEMENT_PLAN = {
 // ── BU: ARABIC_SEARCH_INFRASTRUCTURE_HARDENING (SQL layer) ────────────────
 const infraV2Path = join(majalis, "supabase/arabic_search_infrastructure_v2.sql");
 const infraV3Path = join(majalis, "supabase/arabic_search_hadiths_sources_v3.sql");
+const infraV4Path = join(majalis, "supabase/arabic_search_hadith_source_infra_v4.sql");
 const infraMigrationPath = join(
   majalis,
   "supabase/migrations/20261003100000_arabic_search_infrastructure_v2.sql",
@@ -499,8 +500,13 @@ const infraMigrationV3Path = join(
   majalis,
   "supabase/migrations/20261003110000_arabic_search_hadiths_sources_v3.sql",
 );
+const infraMigrationV4Path = join(
+  majalis,
+  "supabase/migrations/20261003120000_arabic_search_hadith_source_infra_v4.sql",
+);
 const infraSql = existsSync(infraV2Path) ? readUtf(infraV2Path) : "";
 const infraV3Sql = existsSync(infraV3Path) ? readUtf(infraV3Path) : "";
+const infraV4Sql = existsSync(infraV4Path) ? readUtf(infraV4Path) : "";
 const legacyArabicSql = existsSync(join(majalis, "supabase/arabic_search_upgrade_v1.sql"))
   ? readUtf(join(majalis, "supabase/arabic_search_upgrade_v1.sql"))
   : "";
@@ -516,7 +522,7 @@ const searchableEntities = [
   { id: "sources", table: "trusted_sources (=sources)", trgm: /idx_sources_name_trgm|idx_sources_search_trgm/, fts: /idx_sources_search_vector/, rpc: /search_sources/ },
 ];
 
-const sqlCorpus = [infraSql, infraV3Sql, legacyArabicSql, unifiedSql].join("\n");
+const sqlCorpus = [infraSql, infraV3Sql, infraV4Sql, legacyArabicSql, unifiedSql].join("\n");
 const entityInventory = searchableEntities.map((e) => ({
   id: e.id,
   table: e.table,
@@ -548,10 +554,16 @@ const ARABIC_SEARCH_INFRASTRUCTURE_REPORT = {
     migrationCopied: existsSync(infraMigrationPath),
     hadithsSourcesV3: existsSync(infraV3Path),
     migrationV3Copied: existsSync(infraMigrationV3Path),
-    legacyNormalizeAr: /normalize_ar/.test(legacyArabicSql + unifiedSql),
+    hadithSourceInfraV4: existsSync(infraV4Path),
+    migrationV4Copied: existsSync(infraMigrationV4Path),
+    rollbackV4: existsSync(join(majalis, "supabase/arabic_search_hadith_source_infra_v4_rollback.sql")),
+    legacyNormalizeAr: /normalize_ar/.test(legacyArabicSql + unifiedSql + infraV4Sql),
     pgTrgm: /CREATE EXTENSION IF NOT EXISTS pg_trgm/i.test(sqlCorpus),
-    hadithsView: /CREATE OR REPLACE VIEW public\.hadiths/i.test(infraV3Sql),
-    sourcesView: /CREATE OR REPLACE VIEW public\.sources/i.test(infraV3Sql),
+    hadithsView: /CREATE OR REPLACE VIEW public\.hadiths/i.test(infraV3Sql + infraV4Sql),
+    sourcesView: /CREATE OR REPLACE VIEW public\.sources/i.test(infraV3Sql + infraV4Sql),
+    relevanceRankingV4: /relevance_score/.test(infraV4Sql),
+    keysetPaginationV4: /p_cursor_score/.test(infraV4Sql),
+    productionApprovalGate: /REQUIRES_EXPLICIT_APPROVAL/.test(infraV4Sql),
   },
   arNormalizeFeatures: {
     alifFold: /أإآٱ/.test(infraSql),
@@ -570,23 +582,25 @@ const ARABIC_SEARCH_INFRASTRUCTURE_REPORT = {
     scholars_name_trgm: /idx_scholars_name_trgm/.test(infraSql),
     books_search_vector: /idx_books_search_vector/.test(infraSql),
     books_title_trgm: /idx_books_title_trgm/.test(infraSql),
-    hadiths_title_trgm: /idx_hadiths_title_trgm/.test(infraV3Sql),
-    hadiths_narrator_trgm: /idx_hadiths_narrator_trgm/.test(infraV3Sql),
-    hadiths_search_trgm: /idx_hadiths_search_trgm/.test(infraV3Sql),
-    hadiths_search_vector: /idx_hadiths_search_vector/.test(infraV3Sql),
+    hadiths_title_trgm: /idx_hadiths_title_trgm/.test(sqlCorpus),
+    hadiths_narrator_trgm: /idx_hadiths_narrator_trgm/.test(sqlCorpus),
+    hadiths_search_trgm: /idx_hadiths_search_trgm/.test(sqlCorpus),
+    hadiths_search_vector: /idx_hadiths_search_vector/.test(sqlCorpus),
+    hadith_rel_auth_collection: /idx_hadith_rel_verified_auth_collection/.test(infraV4Sql),
+    hadith_rel_collection_chapter: /idx_hadith_rel_verified_collection_chapter/.test(infraV4Sql),
     sources_name_trgm: /idx_sources_name_trgm/.test(sqlCorpus),
-    sources_search_trgm: /idx_sources_search_trgm/.test(infraV3Sql),
-    sources_search_vector: /idx_sources_search_vector/.test(infraV3Sql),
+    sources_search_trgm: /idx_sources_search_trgm/.test(sqlCorpus),
+    sources_search_vector: /idx_sources_search_vector/.test(sqlCorpus),
   },
   rpcsDeclared: {
     search_lessons: /search_lessons/.test(infraSql),
     search_sheikhs: /search_sheikhs/.test(infraSql),
     search_scholars: /search_scholars/.test(infraSql),
     search_library_items: /search_library_items/.test(infraSql),
-    search_hadiths: /search_hadiths/.test(infraV3Sql),
+    search_hadiths: /search_hadiths/.test(sqlCorpus),
     search_hadith_items: /search_hadith_items/.test(sqlCorpus),
-    search_sources: /search_sources/.test(infraV3Sql),
-    search_content_hybrid: /search_vector @@ plainto_tsquery/.test(infraSql),
+    search_sources: /search_sources/.test(sqlCorpus),
+    search_content_hybrid: /search_vector @@ plainto_tsquery/.test(sqlCorpus),
   },
   tableMapping: {
     hadiths: "verified_hadith_items",
@@ -853,6 +867,11 @@ md(
     `| migrations/…v2.sql | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.migrationCopied ? "✅" : "❌"} |`,
     `| hadiths/sources SQL (v3) | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.hadithsSourcesV3 ? "✅" : "❌"} |`,
     `| migrations/…v3.sql | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.migrationV3Copied ? "✅" : "❌"} |`,
+    `| hadith/source infra (v4) | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.hadithSourceInfraV4 ? "✅" : "❌"} |`,
+    `| migrations/…v4.sql | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.migrationV4Copied ? "✅" : "❌"} |`,
+    `| rollback v4 | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.rollbackV4 ? "✅" : "❌"} |`,
+    `| relevance + keyset (v4) | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.relevanceRankingV4 && ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.keysetPaginationV4 ? "✅" : "❌"} |`,
+    `| PRODUCTION_APPROVAL_REQUIRED | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.productionApprovalGate ? "✅" : "❌"} |`,
     `| view hadiths | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.hadithsView ? "✅" : "❌"} |`,
     `| view sources | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.sourcesView ? "✅" : "❌"} |`,
     `| legacy normalize_ar | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.legacyNormalizeAr ? "✅" : "❌"} |`,
@@ -906,7 +925,9 @@ md(
     "",
     ...ARABIC_SEARCH_INFRASTRUCTURE_REPORT.remainingDebt.map((x) => `- ${x}`),
     "",
-    "SQL: `supabase/arabic_search_infrastructure_v2.sql` + `arabic_search_hadiths_sources_v3.sql`",
+    "SQL: `supabase/arabic_search_infrastructure_v2.sql` + `arabic_search_hadiths_sources_v3.sql` + `arabic_search_hadith_source_infra_v4.sql`",
+    "",
+    "Production apply: **REQUIRES_EXPLICIT_APPROVAL** (never auto).",
     "",
   ].join("\n"),
 );
@@ -1006,6 +1027,10 @@ if (check) {
     join(majalis, "reports/search-excellence-engine.json"),
     join(majalis, "supabase/arabic_search_infrastructure_v2.sql"),
     join(majalis, "supabase/arabic_search_hadiths_sources_v3.sql"),
+    join(majalis, "supabase/arabic_search_hadith_source_infra_v4.sql"),
+    join(majalis, "supabase/migrations/20261003120000_arabic_search_hadith_source_infra_v4.sql"),
+    join(majalis, "supabase/arabic_search_hadith_source_infra_v4_rollback.sql"),
+    join(repo, "docs/audit/ARABIC_HADITH_SOURCE_SEARCH_INFRASTRUCTURE_REPORT.md"),
   ].filter((p) => !existsSync(p));
   if (miss.length || docs.length < 100 || normalizePass < NORMALIZE_PAIRS.length - 1) {
     console.error("search-excellence --check FAIL", {
@@ -1030,6 +1055,17 @@ if (check) {
     !/search_sources/.test(infraV3Sql)
   ) {
     console.error("search-excellence --check FAIL: hadiths/sources v3 incomplete");
+    process.exit(1);
+  }
+  if (
+    !/REQUIRES_EXPLICIT_APPROVAL/.test(infraV4Sql) ||
+    !/relevance_score/.test(infraV4Sql) ||
+    !/p_cursor_score/.test(infraV4Sql) ||
+    !/idx_hadith_rel_verified_auth_collection/.test(infraV4Sql) ||
+    !/SECURITY INVOKER/.test(infraV4Sql) ||
+    !/STRICT/.test(infraV4Sql)
+  ) {
+    console.error("search-excellence --check FAIL: hadith/source infra v4 incomplete");
     process.exit(1);
   }
   console.log("search-excellence --check: ok");

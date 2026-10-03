@@ -15,8 +15,8 @@ Live latency: **NOT_MEASURED — no wall-clock invent; use DEVICE_REQUIRED / CI 
 | shards | 30 |
 | worker | true |
 | yieldToMain | true |
-| gin/trgm mentions | 66 |
-| fts mentions | 75 |
+| gin/trgm mentions | 85 |
+| fts mentions | 125 |
 
 ## Cost proxies (static)
 

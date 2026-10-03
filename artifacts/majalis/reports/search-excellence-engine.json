@@ -357,9 +357,9 @@
       "synonymExpand": true
     },
     "sql": {
-      "sqlFiles": 412,
-      "ginTrigramMentions": 66,
-      "ftsMentions": 75,
+      "sqlFiles": 415,
+      "ginTrigramMentions": 85,
+      "ftsMentions": 125,
       "searchIndexSqlFiles": 2
     },
     "costProxies": [
@@ -624,10 +624,16 @@
       "migrationCopied": true,
       "hadithsSourcesV3": true,
       "migrationV3Copied": true,
+      "hadithSourceInfraV4": true,
+      "migrationV4Copied": true,
+      "rollbackV4": true,
       "legacyNormalizeAr": true,
       "pgTrgm": true,
       "hadithsView": true,
-      "sourcesView": true
+      "sourcesView": true,
+      "relevanceRankingV4": true,
+      "keysetPaginationV4": true,
+      "productionApprovalGate": true
     },
     "arNormalizeFeatures": {
       "alifFold": true,
@@ -686,6 +692,8 @@
       "hadiths_narrator_trgm": true,
       "hadiths_search_trgm": true,
       "hadiths_search_vector": true,
+      "hadith_rel_auth_collection": true,
+      "hadith_rel_collection_chapter": true,
       "sources_name_trgm": true,
       "sources_search_trgm": true,
       "sources_search_vector": true

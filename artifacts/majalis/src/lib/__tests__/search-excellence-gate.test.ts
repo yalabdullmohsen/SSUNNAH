@@ -49,8 +49,16 @@ for (const rel of [
 
 assert.ok(existsSync(resolve(majalis, "supabase/arabic_search_infrastructure_v2.sql")));
 assert.ok(existsSync(resolve(majalis, "supabase/arabic_search_hadiths_sources_v3.sql")));
+assert.ok(existsSync(resolve(majalis, "supabase/arabic_search_hadith_source_infra_v4.sql")));
+assert.ok(
+  existsSync(
+    resolve(majalis, "supabase/migrations/20261003120000_arabic_search_hadith_source_infra_v4.sql"),
+  ),
+);
+assert.ok(existsSync(resolve(majalis, "supabase/arabic_search_hadith_source_infra_v4_rollback.sql")));
 const infraSql = readMaj("supabase/arabic_search_infrastructure_v2.sql");
 const infraV3 = readMaj("supabase/arabic_search_hadiths_sources_v3.sql");
+const infraV4 = readMaj("supabase/arabic_search_hadith_source_infra_v4.sql");
 assert.match(infraSql, /ar_normalize/);
 assert.match(infraSql, /pg_trgm/);
 assert.match(infraSql, /search_lessons/);
@@ -66,6 +74,16 @@ assert.match(infraV3, /CREATE OR REPLACE VIEW public\.hadiths/);
 assert.match(infraV3, /CREATE OR REPLACE VIEW public\.sources/);
 assert.match(infraV3, /verified_hadith_items/);
 assert.match(infraV3, /trusted_sources/);
+assert.match(infraV4, /REQUIRES_EXPLICIT_APPROVAL/);
+assert.match(infraV4, /STRICT/);
+assert.match(infraV4, /SECURITY INVOKER/);
+assert.match(infraV4, /relevance_score/);
+assert.match(infraV4, /p_cursor_score/);
+assert.match(infraV4, /idx_hadith_rel_verified_auth_collection/);
+assert.match(infraV4, /setweight/);
+assert.ok(
+  existsSync(resolve(root, "docs/audit/ARABIC_HADITH_SOURCE_SEARCH_INFRASTRUCTURE_REPORT.md")),
+);
 
 const bundle = JSON.parse(readMaj("reports/search-excellence-engine.json"));
 assert.equal(bundle.ARABIC_SEARCH_NORMALIZATION_REPORT.ARABIC_SEARCH_OPTIMIZATION, true);

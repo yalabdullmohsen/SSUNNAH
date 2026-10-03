@@ -1,0 +1,1167 @@
+ARABIC_HADITH_SOURCE_SEARCH_INFRASTRUCTURE — COPYABLE REPORT
+Mode: IMPLEMENTATION_WITH_PRODUCTION_APPROVAL_GATE
+Date: 2026-10-03
+PRODUCTION_MIGRATION_APPLIED: false
+REQUIRES_EXPLICIT_APPROVAL: true
+
+============================================================
+1. Executive Summary
+============================================================
+Implemented Arabic hadith/source search infrastructure v4 on the REAL schema.
+Hadiths map to public.verified_hadith_items (denormalized text fields; no FK ids).
+Sources map to public.trusted_sources (plus optional scholarly_sources).
+Delivered: ar_normalize (IMMUTABLE STRICT PARALLEL SAFE), weighted FTS, trigram indexes,
+justified filter/relation B-tree indexes, ranked SECURITY INVOKER RPCs with keyset cursors,
+rollback SQL, concurrent index runbook, offline relevance tests, client helpers.
+Local gates: search-excellence health=87/EXCELLENT; arabic-hadith-source-search-v4: ok.
+EXPLAIN ANALYZE: NOT_CONNECTED (no DATABASE_URL). No Production SQL applied.
+
+============================================================
+2. Real Schema Discovered
+============================================================
+public.verified_hadith_items
+- PK: id text
+- Arabic text: title, text, narrator, scholar, source_name, chapter, explanation, keywords text[]
+- Status: verification_status checked (verified|needs_review|rejected|duplicate|archived)
+- Class: authenticity_class (sahih|daif|mawdu)
+- Book/chapter: collection text, chapter text (NOT FK)
+- Dates: created_at, updated_at, deleted_at
+- ABSENT (not invented): source_id, narrator_id, category_id, book_id, chapter_id, hadith_tags, language, published_at
+- Existing indexes: idx_verified_hadith_status; idx_verified_hadith_collection(collection,hadith_number); idx_verified_hadith_keywords; idx_hadith_authenticity
+- RLS: verified_hadith_public_read USING (verification_status='verified'); admin ALL via is_admin()
+- Table size: UNKNOWN (NOT_CONNECTED)
+
+public.trusted_sources
+- PK: id uuid
+- Columns: name, source_type, url, category, trust_level, is_active, last_synced_at, created_at
+- ABSENT: description, parent_id, language
+- Unique: trusted_sources_url_uidx(url)
+- RLS: public SELECT WHERE is_active=true; admin ALL
+- Table size: UNKNOWN (NOT_CONNECTED)
+
+public.scholarly_sources (parallel registry)
+- PK: id uuid; slug unique; name; name_ar; entity_name; source_type; is_active; trust_level; url; metadata
+
+Spec aliases (views): public.hadiths → verified_hadith_items; public.sources → trusted_sources
+
+============================================================
+3. Existing Search Queries
+============================================================
+A) src/lib/supabase.ts getVerifiedHadith
+   select explicit columns; WHERE verification_status=verified; filters collection/chapter/authenticity_class; ORDER collection,hadith_number; LIMIT<=500; ILIKE=no; select(*)=no; N+1=no
+   Expected index: idx_hadith_rel_verified_auth_collection / collection_chapter
+
+B) src/lib/supabase.ts searchHadithFallback
+   ILIKE OR on title|text|narrator; verified only; LIMIT 10; pattern chunks; client arabicMatchAny post-filter
+   Expected index: title/narrator/search_text trgm → migrate to search_hadiths RPC
+
+C) pages/hadith/ui/HadithView.tsx
+   authenticityClass filter via getVerifiedHadith
+
+D) src/lib/flashcard-service.ts
+   id IN / verified fetch — PK path
+
+E) src/lib/auto-content-service.ts adminGetTrustedSources
+   select(*) order name — admin; future search_sources
+
+F) src/lib/arabic-db-search.ts
+   searchHadithsDb / searchSourcesDb → RPCs with filters+cursor
+
+G) Local corpus (hadith-corpus/search.ts, app-search.ts) — not SQL
+
+============================================================
+4. Arabic Normalization Function
+============================================================
+Name: public.ar_normalize(input text)
+Properties: IMMUTABLE, STRICT, PARALLEL SAFE, search_path=public
+Rules: أإآٱ→ا; ى→ي; ؤ→و; ئ→ي; ئو→وو; strip tashkeel+kashida; collapse spaces; trim; lower
+ة→ه DECISION: KEEP (parity with src/shared/arabic-normalize.ts; fixture pairs pass)
+Tests: القرآن/القران; إسلام/اسلام; الأذكار/الاذكار; مسؤول/مسئول; فتاوى/فتاوي; kashida+tashkeel+spaces
+Wrapper: public.normalize_ar → ar_normalize
+
+============================================================
+5. Hadith Relationship Indexes
+============================================================
+No FK relation columns exist. Justified denormalized equality indexes (partial verified):
+- idx_hadith_rel_verified_auth_collection (authenticity_class, collection, hadith_number, id)
+- idx_hadith_rel_verified_collection_chapter (collection, chapter, hadith_number, id)
+- idx_hadith_rel_verified_source_name (source_name, id)
+- idx_hadith_rel_verified_narrator (narrator, id)
+NOT created: source_id/narrator_id/category_id/book_id/chapter_id/hadith_tags_* (columns absent)
+
+============================================================
+6. Hadith Filter Indexes
+============================================================
+- idx_hadith_filter_verified_updated (updated_at DESC, id) WHERE verified AND deleted_at IS NULL
+- Pre-existing idx_verified_hadith_status / idx_hadith_authenticity retained
+- Partial WHERE uses real enum value verification_status='verified'
+
+============================================================
+7. Source Relationship Indexes
+============================================================
+- No parent_id on trusted_sources → no parent index
+- auto_import_logs.source_id FK pre-exists (import path, not search)
+- scholarly_sources slug/trust pre-exist
+
+============================================================
+8. Source Filter Indexes
+============================================================
+- idx_trusted_sources_filter_active_category (category, name, id) WHERE is_active=true
+- idx_trusted_sources_filter_active_type (source_type, name, id) WHERE is_active=true
+- idx_scholarly_sources_filter_active_type (source_type, name, id) WHERE is_active=true
+
+============================================================
+9. Trigram Indexes
+============================================================
+Justified by searchHadithFallback ILIKE + RPC %/similarity:
+- idx_hadiths_title_trgm (ar_normalize(title))
+- idx_hadiths_narrator_trgm (ar_normalize(narrator))
+- idx_hadiths_source_name_trgm (ar_normalize(source_name))
+- idx_hadiths_search_trgm (search_text)
+- idx_sources_name_trgm / idx_sources_search_trgm
+- scholarly name/search trgm when table exists
+Not created for every column: matn covered via search_text (avoids duplicate heavy GIN on full text alone)
+
+============================================================
+10. Full-Text Search Indexes
+============================================================
+Generated search_vector weighted A/B/C/D with to_tsvector('simple', ar_normalize(...))
+Hadith weights: A title+hadith_number; B text+narrator; C source_name+collection+chapter; D keywords+explanation
+Sources weights: A name; C category+source_type; D url
+GIN: idx_hadiths_search_vector; idx_sources_search_vector
+RPCs use same search_vector @@ plainto_tsquery('simple', qn)
+
+============================================================
+11. search_hadiths RPC
+============================================================
+public.search_hadiths(q, lim, p_collection, p_chapter, p_authenticity_class, p_source_name, p_narrator, p_cursor_score, p_cursor_id)
+Returns TABLE: id, title, text_snippet, narrator, source_name, collection, chapter, hadith_number, grade, authenticity_class, matched_field, relevance_score, cursor_score, cursor_id
+SECURITY INVOKER; filters verified + deleted_at IS NULL; empty query without filters → no rows; short q (<2) exact only
+Alias: search_hadith_items(q, lim)
+
+============================================================
+12. search_sources RPC
+============================================================
+public.search_sources(q, lim, p_category, p_source_type, p_cursor_score, p_cursor_id)
+Returns TABLE: id, name, category, source_type, url, trust_level, matched_field, relevance_score, cursor_score, cursor_id
+SECURITY INVOKER; is_active=true; no SELECT *
+
+============================================================
+13. Relevance Formula
+============================================================
+exact title/name 1000
+exact hadith_number 900
+prefix 700
+exact narrator 500
+exact source_name 450
+FTS ts_rank_cd * 200
+trigram similarity * 100
+freshness NOT in score (scientific relevance preserved); updated_at only for browse index tie-break elsewhere
+Offline fixtures: exact/prefix/narrator/source/number ordering verified in arabic-search-relevance.ts
+
+============================================================
+14. Pagination Contract
+============================================================
+Keyset: ORDER BY relevance_score DESC, id ASC
+Next page WHERE (score < cursor_score) OR (score = cursor_score AND id > cursor_id)
+Returns cursor_score + cursor_id
+OFFSET not used in v4 RPCs
+
+============================================================
+15. RLS and Security Review
+============================================================
+SECURITY INVOKER (default preserved explicitly)
+RPC adds verification_status='verified' AND deleted_at IS NULL (defense in depth with RLS)
+No dynamic SQL; no SELECT *; no credentials; search_path=public
+GRANT EXECUTE to anon, authenticated, service_role (public verified content only)
+Views list explicit columns
+
+============================================================
+16. Migration Files Created
+============================================================
+- artifacts/majalis/supabase/arabic_search_hadith_source_infra_v4.sql
+- artifacts/majalis/supabase/migrations/20261003120000_arabic_search_hadith_source_infra_v4.sql
+- artifacts/majalis/supabase/arabic_search_hadith_source_infra_v4_rollback.sql
+- docs/runbooks/ARABIC_SEARCH_HADITH_SOURCE_CONCURRENT_INDEXES.md
+- docs/audit/ARABIC_HADITH_SOURCE_* (inventory, matrix, relevance, explain, client plan, report)
+- src/lib/arabic-search-relevance.ts
+- src/lib/arabic-db-search.ts (searchHadithsDb/searchSourcesDb)
+- src/lib/__tests__/arabic-hadith-source-search-v4.test.ts
+- scripts/arabic-search-explain-benchmark.mjs
+
+============================================================
+17. Rollback Plan
+============================================================
+Run arabic_search_hadith_source_infra_v4_rollback.sql after approval:
+DROP v4 RPCs/views/indexes/generated columns; recreate minimal v3-compatible SETOF RPCs.
+Does not drop pg_trgm or ar_normalize.
+
+============================================================
+18. Benchmark Results
+============================================================
+Offline relevance: PASS (fixtures)
+Normalization pairs: PASS
+Gate: health=87/EXCELLENT; v4 test ok
+EXPLAIN ANALYZE latency/buffers/rows: NOT_CONNECTED
+Before/after wall-clock: NOT_CONNECTED
+
+============================================================
+19. Remaining Risks
+============================================================
+- Generated column rebuild cost on large hadith tables at apply time
+- GIN trgm on search_text (includes matn) may be large on disk
+- Client ILIKE fallback still present until migration plan step applied post-Staging
+- PostgREST clients must adopt new TABLE return shape (snippet vs full text)
+- No live RLS integration test without DATABASE_URL
+- scholarly_sources vs trusted_sources dual registry may confuse product naming
+
+============================================================
+20. Production Execution Steps
+============================================================
+1) Owner explicit approval (REQUIRED)
+2) Apply on Staging; run arabic-search-explain-benchmark.mjs with DATABASE_URL
+3) Verify pg_index.indisvalid for all idx_hadith*/idx_sources*
+4) Smoke: search_hadiths / search_sources sample queries + RLS anon
+5) Production: prefer concurrent index runbook for large GIN builds; avoid CONCURRENTLY inside txn
+6) Wire client ILIKE→RPC per CLIENT_MIGRATION_PLAN
+7) Keep rollback file ready
+8) Do NOT set PRODUCTION_MIGRATION_APPLIED until documented owner approval + apply log
+
+============================================================
+21. Owner Approval Required
+============================================================
+STATUS: WAITING_FOR_OWNER
+No Production SQL was executed in this session.
+Message for owner: Approve Staging apply of 20261003120000_arabic_search_hadith_source_infra_v4.sql, then separately approve Production with concurrent runbook.
+
+============================================================
+22. Final Verdict
+============================================================
+LOCAL_IMPLEMENTATION_COMPLETE = true
+PRODUCTION_MIGRATION_APPLIED = false
+PRODUCTION_APPROVAL_REQUIRED = true
+Exit conditions met except live Staging EXPLAIN (NOT_CONNECTED) and Production approval.
+
+REAL_SCHEMA_DISCOVERED
+ARABIC_NORMALIZATION_TESTED
+HADITH_RELATION_INDEXES_JUSTIFIED
+SOURCE_RELATION_INDEXES_JUSTIFIED
+FILTER_INDEXES_JUSTIFIED
+TRIGRAM_INDEXES_READY
+FTS_INDEXES_READY
+SEARCH_HADITHS_RPC_READY
+SEARCH_SOURCES_RPC_READY
+RELEVANCE_RANKING_TESTED
+RLS_PRESERVED
+LOCAL_MIGRATION_PASS
+ROLLBACK_READY
+PRODUCTION_APPROVAL_REQUIRED
+
+============================================================
+23. Next Executable Task
+============================================================
+Owner: approve Staging SQL apply.
+Agent after approval: apply v4 on Staging only; run EXPLAIN benchmark; report numbers; await separate Production approval.
+
+============================================================
+FILE: arabic_search_hadith_source_infra_v4.sql
+============================================================
+-- ====================================================================
+-- ARABIC_HADITH_SOURCE_SEARCH_INFRASTRUCTURE (v4)
+-- REQUIRES_EXPLICIT_APPROVAL before any Production apply.
+--
+-- Real schema (discovered — do not invent FKs):
+--   hadiths  → public.verified_hadith_items
+--     PK id text; denormalized narrator/source_name/collection/chapter;
+--     NO source_id / narrator_id / category_id / book_id / chapter_id / tag join
+--   sources  → public.trusted_sources (+ scholarly_sources parallel registry)
+--     NO parent_id / description / language columns on trusted_sources
+--
+-- Transactional migration: NO CREATE INDEX CONCURRENTLY here.
+-- Production large indexes: see runbook
+--   docs/runbooks/ARABIC_SEARCH_HADITH_SOURCE_CONCURRENT_INDEXES.md
+-- ====================================================================
+
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+
+-- ─── 1. Arabic normalization authority ───────────────────────────────
+-- QUALITY_DECISION ة→ه: KEEP (parity with src/shared/arabic-normalize.ts;
+--   pairsEquivalent evidence in ARABIC_SEARCH_NORMALIZATION_REPORT).
+-- STRICT: NULL in → NULL out; callers coalesce columns as needed.
+CREATE OR REPLACE FUNCTION public.ar_normalize(input text)
+RETURNS text
+LANGUAGE sql
+IMMUTABLE
+STRICT
+PARALLEL SAFE
+SET search_path = public
+AS $$
+  SELECT trim(both FROM regexp_replace(
+    regexp_replace(
+      translate(
+        lower(
+          regexp_replace(
+            regexp_replace(input, 'ئو', 'وو', 'g'),
+            E'[ً-ٟٓ-ٕؐ-ؚۖ-ۜ۟-ۤۧ-ٰۭـ]',
+            '',
+            'g'
+          )
+        ),
+        E'أإآٱةىؤئک',
+        E'ااااهيويك'
+      ),
+      'ء',
+      '',
+      'g'
+    ),
+    E'\\s+',
+    ' ',
+    'g'
+  ));
+$$;
+
+COMMENT ON FUNCTION public.ar_normalize(text) IS
+  'Arabic search normalize only (IMMUTABLE STRICT). Display text must stay vocalized. ة→ه KEEP for client parity.';
+
+CREATE OR REPLACE FUNCTION public.normalize_ar(input text)
+RETURNS text
+LANGUAGE sql
+IMMUTABLE
+PARALLEL SAFE
+SET search_path = public
+AS $$
+  SELECT public.ar_normalize(input);
+$$;
+
+-- ─── 2. Hadith search documents (generated stored) ───────────────────
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM information_schema.tables
+    WHERE table_schema = 'public' AND table_name = 'verified_hadith_items'
+  ) THEN
+    RAISE NOTICE 'verified_hadith_items missing — skip hadith search docs';
+    RETURN;
+  END IF;
+
+  -- Drop prior generated search docs to redefine weighted FTS (idempotent-ish)
+  BEGIN
+    ALTER TABLE public.verified_hadith_items DROP COLUMN IF EXISTS search_vector CASCADE;
+  EXCEPTION WHEN OTHERS THEN
+    NULL;
+  END;
+  BEGIN
+    ALTER TABLE public.verified_hadith_items DROP COLUMN IF EXISTS search_text CASCADE;
+  EXCEPTION WHEN OTHERS THEN
+    NULL;
+  END;
+
+  IF NOT EXISTS (
+    SELECT 1 FROM information_schema.columns
+    WHERE table_schema = 'public' AND table_name = 'verified_hadith_items'
+      AND column_name = 'search_text'
+  ) THEN
+    ALTER TABLE public.verified_hadith_items
+      ADD COLUMN search_text text
+      GENERATED ALWAYS AS (
+        public.ar_normalize(
+          concat_ws(
+            ' ',
+            coalesce(title, ''),
+            coalesce(hadith_number, ''),
+            coalesce(narrator, ''),
+            coalesce(source_name, ''),
+            coalesce(collection, ''),
+            coalesce(chapter, ''),
+            coalesce(array_to_string(keywords, ' '), ''),
+            coalesce(explanation, ''),
+            coalesce(text, '')
+          )
+        )
+      ) STORED;
+  END IF;
+
+  IF NOT EXISTS (
+    SELECT 1 FROM information_schema.columns
+    WHERE table_schema = 'public' AND table_name = 'verified_hadith_items'
+      AND column_name = 'search_vector'
+  ) THEN
+    ALTER TABLE public.verified_hadith_items
+      ADD COLUMN search_vector tsvector
+      GENERATED ALWAYS AS (
+        setweight(to_tsvector('simple', coalesce(public.ar_normalize(title), '')), 'A')
+        || setweight(to_tsvector('simple', coalesce(public.ar_normalize(hadith_number), '')), 'A')
+        || setweight(to_tsvector('simple', coalesce(public.ar_normalize(text), '')), 'B')
+        || setweight(to_tsvector('simple', coalesce(public.ar_normalize(narrator), '')), 'B')
+        || setweight(
+             to_tsvector(
+               'simple',
+               coalesce(
+                 public.ar_normalize(
+                   concat_ws(' ', coalesce(source_name, ''), coalesce(collection, ''), coalesce(chapter, ''))
+                 ),
+                 ''
+               )
+             ),
+             'C'
+           )
+        || setweight(
+             to_tsvector(
+               'simple',
+               coalesce(
+                 public.ar_normalize(
+                   concat_ws(' ', coalesce(array_to_string(keywords, ' '), ''), coalesce(explanation, ''))
+                 ),
+                 ''
+               )
+             ),
+             'D'
+           )
+      ) STORED;
+  END IF;
+END $$;
+
+-- ─── 3. Source search documents ──────────────────────────────────────
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.tables
+    WHERE table_schema = 'public' AND table_name = 'trusted_sources'
+  ) THEN
+    BEGIN
+      ALTER TABLE public.trusted_sources DROP COLUMN IF EXISTS search_vector CASCADE;
+    EXCEPTION WHEN OTHERS THEN NULL;
+    END;
+    BEGIN
+      ALTER TABLE public.trusted_sources DROP COLUMN IF EXISTS search_text CASCADE;
+    EXCEPTION WHEN OTHERS THEN NULL;
+    END;
+
+    IF NOT EXISTS (
+      SELECT 1 FROM information_schema.columns
+      WHERE table_schema = 'public' AND table_name = 'trusted_sources'
+        AND column_name = 'search_text'
+    ) THEN
+      ALTER TABLE public.trusted_sources
+        ADD COLUMN search_text text
+        GENERATED ALWAYS AS (
+          public.ar_normalize(
+            concat_ws(
+              ' ',
+              coalesce(name, ''),
+              coalesce(category, ''),
+              coalesce(source_type, ''),
+              coalesce(url, '')
+            )
+          )
+        ) STORED;
+    END IF;
+
+    IF NOT EXISTS (
+      SELECT 1 FROM information_schema.columns
+      WHERE table_schema = 'public' AND table_name = 'trusted_sources'
+        AND column_name = 'search_vector'
+    ) THEN
+      ALTER TABLE public.trusted_sources
+        ADD COLUMN search_vector tsvector
+        GENERATED ALWAYS AS (
+          setweight(to_tsvector('simple', coalesce(public.ar_normalize(name), '')), 'A')
+          || setweight(
+               to_tsvector(
+                 'simple',
+                 coalesce(public.ar_normalize(concat_ws(' ', coalesce(category, ''), coalesce(source_type, ''))), '')
+               ),
+               'C'
+             )
+          || setweight(to_tsvector('simple', coalesce(public.ar_normalize(url), '')), 'D')
+        ) STORED;
+    END IF;
+  END IF;
+
+  IF EXISTS (
+    SELECT 1 FROM information_schema.tables
+    WHERE table_schema = 'public' AND table_name = 'scholarly_sources'
+  ) THEN
+    BEGIN
+      ALTER TABLE public.scholarly_sources DROP COLUMN IF EXISTS search_vector CASCADE;
+    EXCEPTION WHEN OTHERS THEN NULL;
+    END;
+    BEGIN
+      ALTER TABLE public.scholarly_sources DROP COLUMN IF EXISTS search_text CASCADE;
+    EXCEPTION WHEN OTHERS THEN NULL;
+    END;
+
+    IF NOT EXISTS (
+      SELECT 1 FROM information_schema.columns
+      WHERE table_schema = 'public' AND table_name = 'scholarly_sources'
+        AND column_name = 'search_text'
+    ) THEN
+      ALTER TABLE public.scholarly_sources
+        ADD COLUMN search_text text
+        GENERATED ALWAYS AS (
+          public.ar_normalize(
+            concat_ws(
+              ' ',
+              coalesce(name, ''),
+              coalesce(name_ar, ''),
+              coalesce(entity_name, ''),
+              coalesce(source_type, ''),
+              coalesce(url, '')
+            )
+          )
+        ) STORED;
+    END IF;
+
+    IF NOT EXISTS (
+      SELECT 1 FROM information_schema.columns
+      WHERE table_schema = 'public' AND table_name = 'scholarly_sources'
+        AND column_name = 'search_vector'
+    ) THEN
+      ALTER TABLE public.scholarly_sources
+        ADD COLUMN search_vector tsvector
+        GENERATED ALWAYS AS (
+          setweight(to_tsvector('simple', coalesce(public.ar_normalize(name), '')), 'A')
+          || setweight(to_tsvector('simple', coalesce(public.ar_normalize(name_ar), '')), 'B')
+          || setweight(to_tsvector('simple', coalesce(public.ar_normalize(entity_name), '')), 'B')
+          || setweight(to_tsvector('simple', coalesce(public.ar_normalize(source_type), '')), 'C')
+          || setweight(to_tsvector('simple', coalesce(public.ar_normalize(url), '')), 'D')
+        ) STORED;
+    END IF;
+  END IF;
+END $$;
+
+-- ─── 4. Relationship / filter B-tree indexes (real columns only) ─────
+-- Justified by getVerifiedHadith / HadithView filters:
+--   verification_status='verified', authenticity_class, collection, chapter
+-- No FK columns exist → no source_id/narrator_id indexes.
+
+CREATE INDEX IF NOT EXISTS idx_hadith_rel_verified_auth_collection
+  ON public.verified_hadith_items (authenticity_class, collection, hadith_number, id)
+  WHERE verification_status = 'verified' AND deleted_at IS NULL;
+
+CREATE INDEX IF NOT EXISTS idx_hadith_rel_verified_collection_chapter
+  ON public.verified_hadith_items (collection, chapter, hadith_number, id)
+  WHERE verification_status = 'verified' AND deleted_at IS NULL;
+
+CREATE INDEX IF NOT EXISTS idx_hadith_rel_verified_source_name
+  ON public.verified_hadith_items (source_name, id)
+  WHERE verification_status = 'verified' AND deleted_at IS NULL;
+
+CREATE INDEX IF NOT EXISTS idx_hadith_rel_verified_narrator
+  ON public.verified_hadith_items (narrator, id)
+  WHERE verification_status = 'verified' AND deleted_at IS NULL;
+
+CREATE INDEX IF NOT EXISTS idx_hadith_filter_verified_updated
+  ON public.verified_hadith_items (updated_at DESC, id)
+  WHERE verification_status = 'verified' AND deleted_at IS NULL;
+
+CREATE INDEX IF NOT EXISTS idx_trusted_sources_filter_active_category
+  ON public.trusted_sources (category, name, id)
+  WHERE is_active = true;
+
+CREATE INDEX IF NOT EXISTS idx_trusted_sources_filter_active_type
+  ON public.trusted_sources (source_type, name, id)
+  WHERE is_active = true;
+
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.tables
+    WHERE table_schema = 'public' AND table_name = 'scholarly_sources'
+  ) THEN
+    CREATE INDEX IF NOT EXISTS idx_scholarly_sources_filter_active_type
+      ON public.scholarly_sources (source_type, name, id)
+      WHERE is_active = true;
+  END IF;
+END $$;
+
+-- ─── 5. Trigram indexes (justified by ILIKE/search paths) ────────────
+-- searchHadithFallback: title/text/narrator ILIKE
+-- search_hadiths RPC: title/narrator/search_text % similarity
+CREATE INDEX IF NOT EXISTS idx_hadiths_title_trgm
+  ON public.verified_hadith_items
+  USING gin (public.ar_normalize(title) gin_trgm_ops);
+
+CREATE INDEX IF NOT EXISTS idx_hadiths_narrator_trgm
+  ON public.verified_hadith_items
+  USING gin (public.ar_normalize(narrator) gin_trgm_ops);
+
+CREATE INDEX IF NOT EXISTS idx_hadiths_source_name_trgm
+  ON public.verified_hadith_items
+  USING gin (public.ar_normalize(source_name) gin_trgm_ops);
+
+CREATE INDEX IF NOT EXISTS idx_hadiths_search_trgm
+  ON public.verified_hadith_items
+  USING gin (search_text gin_trgm_ops);
+
+CREATE INDEX IF NOT EXISTS idx_sources_name_trgm
+  ON public.trusted_sources
+  USING gin (public.ar_normalize(name) gin_trgm_ops);
+
+CREATE INDEX IF NOT EXISTS idx_sources_search_trgm
+  ON public.trusted_sources
+  USING gin (search_text gin_trgm_ops);
+
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.tables
+    WHERE table_schema = 'public' AND table_name = 'scholarly_sources'
+  ) THEN
+    CREATE INDEX IF NOT EXISTS idx_scholarly_sources_name_trgm
+      ON public.scholarly_sources
+      USING gin (public.ar_normalize(name) gin_trgm_ops);
+    CREATE INDEX IF NOT EXISTS idx_scholarly_sources_search_trgm
+      ON public.scholarly_sources
+      USING gin (search_text gin_trgm_ops);
+  END IF;
+END $$;
+
+-- ─── 6. FTS GIN indexes ──────────────────────────────────────────────
+CREATE INDEX IF NOT EXISTS idx_hadiths_search_vector
+  ON public.verified_hadith_items
+  USING gin (search_vector);
+
+CREATE INDEX IF NOT EXISTS idx_sources_search_vector
+  ON public.trusted_sources
+  USING gin (search_vector);
+
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.columns
+    WHERE table_schema = 'public' AND table_name = 'scholarly_sources'
+      AND column_name = 'search_vector'
+  ) THEN
+    CREATE INDEX IF NOT EXISTS idx_scholarly_sources_search_vector
+      ON public.scholarly_sources
+      USING gin (search_vector);
+  END IF;
+END $$;
+
+-- ─── 7. Compatibility views ──────────────────────────────────────────
+CREATE OR REPLACE VIEW public.hadiths AS
+  SELECT
+    id, collection, hadith_number, title, text, narrator, scholar,
+    source_name, source_url, grade, chapter, keywords, explanation,
+    authenticity_class, verification_status, quality_score, trust_level,
+    metadata, deleted_at, created_at, updated_at,
+    search_text, search_vector
+  FROM public.verified_hadith_items;
+
+COMMENT ON VIEW public.hadiths IS
+  'Spec alias: hadiths = verified_hadith_items (explicit columns, no SELECT *)';
+
+CREATE OR REPLACE VIEW public.sources AS
+  SELECT
+    id, name, category, source_type, url, trust_level, is_active,
+    last_synced_at, created_at, search_text, search_vector
+  FROM public.trusted_sources;
+
+COMMENT ON VIEW public.sources IS
+  'Spec alias: sources = trusted_sources (explicit columns)';
+
+-- ─── 8. Drop prior RPC signatures (return type change) ───────────────
+DROP FUNCTION IF EXISTS public.search_hadiths(text, int);
+DROP FUNCTION IF EXISTS public.search_hadith_items(text, int);
+DROP FUNCTION IF EXISTS public.search_sources(text, int);
+
+-- ─── 9. search_hadiths — ranked + filters + keyset ───────────────────
+CREATE OR REPLACE FUNCTION public.search_hadiths(
+  q text DEFAULT NULL,
+  lim int DEFAULT 20,
+  p_collection text DEFAULT NULL,
+  p_chapter text DEFAULT NULL,
+  p_authenticity_class text DEFAULT NULL,
+  p_source_name text DEFAULT NULL,
+  p_narrator text DEFAULT NULL,
+  p_cursor_score double precision DEFAULT NULL,
+  p_cursor_id text DEFAULT NULL
+)
+RETURNS TABLE (
+  id text,
+  title text,
+  text_snippet text,
+  narrator text,
+  source_name text,
+  collection text,
+  chapter text,
+  hadith_number text,
+  grade text,
+  authenticity_class text,
+  matched_field text,
+  relevance_score double precision,
+  cursor_score double precision,
+  cursor_id text
+)
+LANGUAGE sql
+STABLE
+PARALLEL SAFE
+SECURITY INVOKER
+SET search_path = public
+AS $$
+  WITH params AS (
+    SELECT
+      public.ar_normalize(nullif(btrim(coalesce(q, '')), '')) AS qn,
+      greatest(1, least(coalesce(lim, 20), 100)) AS lim_n,
+      nullif(btrim(coalesce(p_collection, '')), '') AS f_collection,
+      nullif(btrim(coalesce(p_chapter, '')), '') AS f_chapter,
+      nullif(btrim(coalesce(p_authenticity_class, '')), '') AS f_auth,
+      public.ar_normalize(nullif(btrim(coalesce(p_source_name, '')), '')) AS f_source,
+      public.ar_normalize(nullif(btrim(coalesce(p_narrator, '')), '')) AS f_narrator,
+      p_cursor_score AS c_score,
+      nullif(btrim(coalesce(p_cursor_id, '')), '') AS c_id
+  ),
+  scored AS (
+    SELECT
+      h.id,
+      h.title,
+      left(h.text, 220) AS text_snippet,
+      h.narrator,
+      h.source_name,
+      h.collection,
+      h.chapter,
+      h.hadith_number,
+      h.grade,
+      h.authenticity_class,
+      CASE
+        WHEN p.qn IS NOT NULL AND public.ar_normalize(h.title) = p.qn THEN 'title_exact'
+        WHEN p.qn IS NOT NULL AND public.ar_normalize(h.hadith_number) = p.qn THEN 'hadith_number'
+        WHEN p.qn IS NOT NULL AND public.ar_normalize(h.title) LIKE p.qn || '%' THEN 'title_prefix'
+        WHEN p.qn IS NOT NULL AND public.ar_normalize(h.narrator) = p.qn THEN 'narrator_exact'
+        WHEN p.qn IS NOT NULL AND public.ar_normalize(h.source_name) = p.qn THEN 'source_name_exact'
+        WHEN p.qn IS NOT NULL AND h.search_vector @@ plainto_tsquery('simple', p.qn) THEN 'fts'
+        WHEN p.qn IS NOT NULL AND coalesce(h.search_text, '') % p.qn THEN 'trgm'
+        ELSE 'filter'
+      END AS matched_field,
+      (
+        CASE WHEN p.qn IS NULL THEN 0::float8
+        ELSE
+          (CASE WHEN public.ar_normalize(h.title) = p.qn THEN 1000 ELSE 0 END)
+          + (CASE WHEN public.ar_normalize(h.hadith_number) = p.qn THEN 900 ELSE 0 END)
+          + (CASE WHEN public.ar_normalize(h.title) LIKE p.qn || '%' THEN 700 ELSE 0 END)
+          + (CASE WHEN public.ar_normalize(h.narrator) = p.qn THEN 500 ELSE 0 END)
+          + (CASE WHEN public.ar_normalize(h.source_name) = p.qn THEN 450 ELSE 0 END)
+          + (CASE WHEN h.search_vector @@ plainto_tsquery('simple', p.qn)
+                  THEN 200 * coalesce(ts_rank_cd(h.search_vector, plainto_tsquery('simple', p.qn)), 0)
+                  ELSE 0 END)
+          + (100 * greatest(
+                coalesce(similarity(coalesce(h.search_text, ''), p.qn), 0),
+                coalesce(similarity(public.ar_normalize(h.title), p.qn), 0),
+                coalesce(similarity(public.ar_normalize(h.narrator), p.qn), 0),
+                coalesce(similarity(public.ar_normalize(h.source_name), p.qn), 0)
+              ))
+        END
+      )::float8 AS relevance_score
+    FROM public.verified_hadith_items h
+    CROSS JOIN params p
+    WHERE h.deleted_at IS NULL
+      AND h.verification_status = 'verified'
+      AND (
+        p.qn IS NOT NULL
+        OR p.f_collection IS NOT NULL
+        OR p.f_chapter IS NOT NULL
+        OR p.f_auth IS NOT NULL
+        OR p.f_source IS NOT NULL
+        OR p.f_narrator IS NOT NULL
+      )
+      AND (p.f_collection IS NULL OR h.collection = p.f_collection)
+      AND (p.f_chapter IS NULL OR h.chapter = p.f_chapter)
+      AND (p.f_auth IS NULL OR h.authenticity_class = p.f_auth)
+      AND (p.f_source IS NULL OR public.ar_normalize(h.source_name) = p.f_source)
+      AND (p.f_narrator IS NULL OR public.ar_normalize(h.narrator) = p.f_narrator)
+      AND (
+        p.qn IS NULL
+        OR (
+          char_length(p.qn) < 2
+          AND (
+            public.ar_normalize(h.title) = p.qn
+            OR public.ar_normalize(h.hadith_number) = p.qn
+          )
+        )
+        OR (
+          char_length(p.qn) >= 2
+          AND (
+            h.search_vector @@ plainto_tsquery('simple', p.qn)
+            OR coalesce(h.search_text, '') % p.qn
+            OR public.ar_normalize(h.title) % p.qn
+            OR public.ar_normalize(h.narrator) % p.qn
+            OR public.ar_normalize(h.source_name) % p.qn
+            OR public.ar_normalize(h.title) LIKE p.qn || '%'
+            OR public.ar_normalize(h.hadith_number) = p.qn
+          )
+        )
+      )
+  )
+  SELECT
+    s.id,
+    s.title,
+    s.text_snippet,
+    s.narrator,
+    s.source_name,
+    s.collection,
+    s.chapter,
+    s.hadith_number,
+    s.grade,
+    s.authenticity_class,
+    s.matched_field,
+    s.relevance_score,
+    s.relevance_score AS cursor_score,
+    s.id AS cursor_id
+  FROM scored s
+  CROSS JOIN params p
+  WHERE
+    p.c_score IS NULL OR p.c_id IS NULL
+    OR (s.relevance_score < p.c_score)
+    OR (s.relevance_score = p.c_score AND s.id > p.c_id)
+  ORDER BY s.relevance_score DESC, s.id ASC
+  LIMIT (SELECT lim_n FROM params);
+$$;
+
+-- Compatibility alias
+CREATE OR REPLACE FUNCTION public.search_hadith_items(
+  q text DEFAULT NULL,
+  lim int DEFAULT 20
+)
+RETURNS TABLE (
+  id text,
+  title text,
+  text_snippet text,
+  narrator text,
+  source_name text,
+  collection text,
+  chapter text,
+  hadith_number text,
+  grade text,
+  authenticity_class text,
+  matched_field text,
+  relevance_score double precision,
+  cursor_score double precision,
+  cursor_id text
+)
+LANGUAGE sql
+STABLE
+PARALLEL SAFE
+SECURITY INVOKER
+SET search_path = public
+AS $$
+  SELECT * FROM public.search_hadiths(q, lim, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+$$;
+
+-- ─── 10. search_sources — ranked + filters + keyset ──────────────────
+CREATE OR REPLACE FUNCTION public.search_sources(
+  q text DEFAULT NULL,
+  lim int DEFAULT 20,
+  p_category text DEFAULT NULL,
+  p_source_type text DEFAULT NULL,
+  p_cursor_score double precision DEFAULT NULL,
+  p_cursor_id uuid DEFAULT NULL
+)
+RETURNS TABLE (
+  id uuid,
+  name text,
+  category text,
+  source_type text,
+  url text,
+  trust_level integer,
+  matched_field text,
+  relevance_score double precision,
+  cursor_score double precision,
+  cursor_id uuid
+)
+LANGUAGE sql
+STABLE
+PARALLEL SAFE
+SECURITY INVOKER
+SET search_path = public
+AS $$
+  WITH params AS (
+    SELECT
+      public.ar_normalize(nullif(btrim(coalesce(q, '')), '')) AS qn,
+      greatest(1, least(coalesce(lim, 20), 100)) AS lim_n,
+      nullif(btrim(coalesce(p_category, '')), '') AS f_category,
+      nullif(btrim(coalesce(p_source_type, '')), '') AS f_type,
+      p_cursor_score AS c_score,
+      p_cursor_id AS c_id
+  ),
+  scored AS (
+    SELECT
+      s.id,
+      s.name,
+      s.category,
+      s.source_type,
+      s.url,
+      s.trust_level,
+      CASE
+        WHEN p.qn IS NOT NULL AND public.ar_normalize(s.name) = p.qn THEN 'name_exact'
+        WHEN p.qn IS NOT NULL AND public.ar_normalize(s.name) LIKE p.qn || '%' THEN 'name_prefix'
+        WHEN p.qn IS NOT NULL AND s.search_vector @@ plainto_tsquery('simple', p.qn) THEN 'fts'
+        WHEN p.qn IS NOT NULL AND coalesce(s.search_text, '') % p.qn THEN 'trgm'
+        ELSE 'filter'
+      END AS matched_field,
+      (
+        CASE WHEN p.qn IS NULL THEN 0::float8
+        ELSE
+          (CASE WHEN public.ar_normalize(s.name) = p.qn THEN 1000 ELSE 0 END)
+          + (CASE WHEN public.ar_normalize(s.name) LIKE p.qn || '%' THEN 700 ELSE 0 END)
+          + (CASE WHEN s.search_vector @@ plainto_tsquery('simple', p.qn)
+                  THEN 200 * coalesce(ts_rank_cd(s.search_vector, plainto_tsquery('simple', p.qn)), 0)
+                  ELSE 0 END)
+          + (100 * greatest(
+                coalesce(similarity(coalesce(s.search_text, ''), p.qn), 0),
+                coalesce(similarity(public.ar_normalize(s.name), p.qn), 0)
+              ))
+        END
+      )::float8 AS relevance_score
+    FROM public.trusted_sources s
+    CROSS JOIN params p
+    WHERE coalesce(s.is_active, true) = true
+      AND (p.f_category IS NULL OR s.category = p.f_category)
+      AND (p.f_type IS NULL OR s.source_type = p.f_type)
+      AND (
+        p.qn IS NULL
+        OR char_length(p.qn) < 2 AND public.ar_normalize(s.name) = p.qn
+        OR char_length(p.qn) >= 2 AND (
+          s.search_vector @@ plainto_tsquery('simple', p.qn)
+          OR coalesce(s.search_text, '') % p.qn
+          OR public.ar_normalize(s.name) % p.qn
+          OR public.ar_normalize(s.name) LIKE p.qn || '%'
+        )
+      )
+  )
+  SELECT
+    s.id,
+    s.name,
+    s.category,
+    s.source_type,
+    s.url,
+    s.trust_level,
+    s.matched_field,
+    s.relevance_score,
+    s.relevance_score AS cursor_score,
+    s.id AS cursor_id
+  FROM scored s
+  CROSS JOIN params p
+  WHERE
+    p.c_score IS NULL OR p.c_id IS NULL
+    OR (s.relevance_score < p.c_score)
+    OR (s.relevance_score = p.c_score AND s.id > p.c_id)
+  ORDER BY s.relevance_score DESC, s.id ASC
+  LIMIT (SELECT lim_n FROM params);
+$$;
+
+GRANT SELECT ON public.hadiths TO anon, authenticated, service_role;
+GRANT SELECT ON public.sources TO anon, authenticated, service_role;
+GRANT EXECUTE ON FUNCTION public.search_hadiths(text, int, text, text, text, text, text, double precision, text)
+  TO anon, authenticated, service_role;
+GRANT EXECUTE ON FUNCTION public.search_hadith_items(text, int)
+  TO anon, authenticated, service_role;
+GRANT EXECUTE ON FUNCTION public.search_sources(text, int, text, text, double precision, uuid)
+  TO anon, authenticated, service_role;
+
+-- ─── 11. Local self-check (non-production fixtures via SELECT) ───────
+-- SELECT public.ar_normalize('القُرآن');      -- القران
+-- SELECT public.ar_normalize('إسلام');        -- اسلام
+-- SELECT public.ar_normalize('الأذكار');      -- الاذكار
+-- SELECT public.ar_normalize('مسؤول') = public.ar_normalize('مسئول'); -- t
+-- SELECT public.ar_normalize('فتاوى');        -- فتاوي
+-- SELECT public.ar_normalize('نـــصٌ   مُكَرَّر'); -- نص مكرر
+
+
+============================================================
+FILE: arabic_search_hadith_source_infra_v4_rollback.sql
+============================================================
+-- ====================================================================
+-- ROLLBACK — ARABIC_HADITH_SOURCE_SEARCH_INFRASTRUCTURE (v4)
+-- REQUIRES_EXPLICIT_APPROVAL on Production.
+-- Safe to run after v4 apply; restores pre-v4 RPC shapes where possible.
+-- Does NOT drop pg_trgm (may be used elsewhere).
+-- Does NOT drop public.ar_normalize (shared authority).
+-- ====================================================================
+
+DROP FUNCTION IF EXISTS public.search_hadiths(text, int, text, text, text, text, text, double precision, text);
+DROP FUNCTION IF EXISTS public.search_hadith_items(text, int);
+DROP FUNCTION IF EXISTS public.search_sources(text, int, text, text, double precision, uuid);
+
+DROP VIEW IF EXISTS public.hadiths;
+DROP VIEW IF EXISTS public.sources;
+
+DROP INDEX IF EXISTS public.idx_hadith_rel_verified_auth_collection;
+DROP INDEX IF EXISTS public.idx_hadith_rel_verified_collection_chapter;
+DROP INDEX IF EXISTS public.idx_hadith_rel_verified_source_name;
+DROP INDEX IF EXISTS public.idx_hadith_rel_verified_narrator;
+DROP INDEX IF EXISTS public.idx_hadith_filter_verified_updated;
+DROP INDEX IF EXISTS public.idx_trusted_sources_filter_active_category;
+DROP INDEX IF EXISTS public.idx_trusted_sources_filter_active_type;
+DROP INDEX IF EXISTS public.idx_scholarly_sources_filter_active_type;
+
+DROP INDEX IF EXISTS public.idx_hadiths_title_trgm;
+DROP INDEX IF EXISTS public.idx_hadiths_narrator_trgm;
+DROP INDEX IF EXISTS public.idx_hadiths_source_name_trgm;
+DROP INDEX IF EXISTS public.idx_hadiths_search_trgm;
+DROP INDEX IF EXISTS public.idx_hadiths_search_vector;
+DROP INDEX IF EXISTS public.idx_sources_name_trgm;
+DROP INDEX IF EXISTS public.idx_sources_search_trgm;
+DROP INDEX IF EXISTS public.idx_sources_search_vector;
+DROP INDEX IF EXISTS public.idx_scholarly_sources_name_trgm;
+DROP INDEX IF EXISTS public.idx_scholarly_sources_search_trgm;
+DROP INDEX IF EXISTS public.idx_scholarly_sources_search_vector;
+
+-- Optional: drop generated search docs (re-apply v3 if needed)
+ALTER TABLE IF EXISTS public.verified_hadith_items DROP COLUMN IF EXISTS search_vector;
+ALTER TABLE IF EXISTS public.verified_hadith_items DROP COLUMN IF EXISTS search_text;
+ALTER TABLE IF EXISTS public.trusted_sources DROP COLUMN IF EXISTS search_vector;
+ALTER TABLE IF EXISTS public.trusted_sources DROP COLUMN IF EXISTS search_text;
+ALTER TABLE IF EXISTS public.scholarly_sources DROP COLUMN IF EXISTS search_vector;
+ALTER TABLE IF EXISTS public.scholarly_sources DROP COLUMN IF EXISTS search_text;
+
+-- Recreate minimal v3-compatible RPCs (SETOF) so clients do not hard-fail
+CREATE OR REPLACE FUNCTION public.search_hadiths(q text, lim int DEFAULT 20)
+RETURNS SETOF public.verified_hadith_items
+LANGUAGE sql
+STABLE
+SECURITY INVOKER
+SET search_path = public
+AS $$
+  SELECT h.*
+  FROM public.verified_hadith_items h
+  WHERE h.deleted_at IS NULL
+    AND h.verification_status = 'verified'
+    AND public.ar_normalize(coalesce(q, '')) <> ''
+    AND (
+      public.ar_normalize(coalesce(h.title, '')) % public.ar_normalize(q)
+      OR public.ar_normalize(coalesce(h.narrator, '')) % public.ar_normalize(q)
+      OR public.ar_normalize(coalesce(h.text, '')) % public.ar_normalize(q)
+    )
+  ORDER BY similarity(public.ar_normalize(coalesce(h.title, '')), public.ar_normalize(q)) DESC
+  LIMIT greatest(1, least(coalesce(lim, 20), 100));
+$$;
+
+CREATE OR REPLACE FUNCTION public.search_hadith_items(q text, lim int DEFAULT 20)
+RETURNS SETOF public.verified_hadith_items
+LANGUAGE sql
+STABLE
+SECURITY INVOKER
+SET search_path = public
+AS $$
+  SELECT * FROM public.search_hadiths(q, lim);
+$$;
+
+CREATE OR REPLACE FUNCTION public.search_sources(q text, lim int DEFAULT 20)
+RETURNS SETOF public.trusted_sources
+LANGUAGE sql
+STABLE
+SECURITY INVOKER
+SET search_path = public
+AS $$
+  SELECT s.*
+  FROM public.trusted_sources s
+  WHERE coalesce(s.is_active, true) = true
+    AND public.ar_normalize(coalesce(q, '')) <> ''
+    AND public.ar_normalize(s.name) % public.ar_normalize(q)
+  ORDER BY similarity(public.ar_normalize(s.name), public.ar_normalize(q)) DESC
+  LIMIT greatest(1, least(coalesce(lim, 20), 100));
+$$;
+
+GRANT EXECUTE ON FUNCTION public.search_hadiths(text, int) TO anon, authenticated, service_role;
+GRANT EXECUTE ON FUNCTION public.search_hadith_items(text, int) TO anon, authenticated, service_role;
+GRANT EXECUTE ON FUNCTION public.search_sources(text, int) TO anon, authenticated, service_role;
+
+
+============================================================
+FILE: ARABIC_SEARCH_HADITH_SOURCE_CONCURRENT_INDEXES.md (runbook)
+============================================================
+# Runbook — Concurrent indexes for Hadith/Source Arabic search (v4)
+
+Status: **REQUIRES_EXPLICIT_APPROVAL** before Production.
+
+## When to use
+
+`supabase/migrations/20261003120000_arabic_search_hadith_source_infra_v4.sql` creates indexes inside a migration transaction (`CREATE INDEX IF NOT EXISTS` without `CONCURRENTLY`).
+
+On large live tables, prefer this runbook **outside** a transaction.
+
+## Preconditions
+
+1. Owner written approval recorded (ticket / chat / PR comment).
+2. Staging apply succeeded.
+3. `pg_trgm` available.
+4. Maintenance window or low-traffic window preferred.
+5. Monitor disk for index build.
+
+## Steps (Staging → Production)
+
+```sql
+-- 1) Extensions + function (transaction OK)
+\i artifacts/majalis/supabase/arabic_search_hadith_source_infra_v4.sql
+-- OR apply generated columns / functions from migration, then indexes via concurrent below.
+```
+
+For Production large indexes only (each statement autocommit, not inside BEGIN):
+
+```sql
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hadiths_title_trgm
+  ON public.verified_hadith_items
+  USING gin (public.ar_normalize(title) gin_trgm_ops);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hadiths_narrator_trgm
+  ON public.verified_hadith_items
+  USING gin (public.ar_normalize(narrator) gin_trgm_ops);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hadiths_source_name_trgm
+  ON public.verified_hadith_items
+  USING gin (public.ar_normalize(source_name) gin_trgm_ops);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hadiths_search_trgm
+  ON public.verified_hadith_items
+  USING gin (search_text gin_trgm_ops);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hadiths_search_vector
+  ON public.verified_hadith_items
+  USING gin (search_vector);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hadith_rel_verified_auth_collection
+  ON public.verified_hadith_items (authenticity_class, collection, hadith_number, id)
+  WHERE verification_status = 'verified' AND deleted_at IS NULL;
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hadith_rel_verified_collection_chapter
+  ON public.verified_hadith_items (collection, chapter, hadith_number, id)
+  WHERE verification_status = 'verified' AND deleted_at IS NULL;
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_sources_name_trgm
+  ON public.trusted_sources
+  USING gin (public.ar_normalize(name) gin_trgm_ops);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_sources_search_trgm
+  ON public.trusted_sources
+  USING gin (search_text gin_trgm_ops);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_sources_search_vector
+  ON public.trusted_sources
+  USING gin (search_vector);
+```
+
+## Post-checks
+
+```sql
+SELECT indexrelid::regclass AS idx, indisvalid, indisready
+FROM pg_index
+WHERE indexrelid::regclass::text LIKE 'idx_hadith%'
+   OR indexrelid::regclass::text LIKE 'idx_sources%'
+   OR indexrelid::regclass::text LIKE 'idx_trusted_sources%'
+   OR indexrelid::regclass::text LIKE 'idx_scholarly_sources%';
+```
+
+Any `indisvalid = false` → rebuild or drop invalid index.
+
+## Rollback
+
+See `artifacts/majalis/supabase/arabic_search_hadith_source_infra_v4_rollback.sql`.
+
+Do not drop a live index until `pg_stat_user_indexes` shows no meaningful scans / replacement proven.
+
+## Forbidden
+
+- Auto-apply to Production without owner approval.
+- Heavy `EXPLAIN ANALYZE` on Production for full-table scans.
+
