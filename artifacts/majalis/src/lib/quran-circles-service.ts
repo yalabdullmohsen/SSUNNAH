@@ -1,6 +1,7 @@
 import { supabase } from "./supabase";
 import { isSupabaseConfigured } from "./supabase-config";
 import { QURAN_CIRCLES_SEED } from "./quran-circles-seed";
+import { QURAN_CIRCLES_COLS } from "@/lib/db-select-columns";
 
 export interface QuranCircle {
   id: string;
@@ -50,7 +51,7 @@ export async function getQuranCircles(filters: CircleFilters = {}): Promise<Qura
 
   let q = supabase
     .from("quran_circles")
-    .select("*")
+    .select(QURAN_CIRCLES_COLS)
     .eq("is_active", true)
     .eq("is_approved", true)
     .order("created_at", { ascending: false });

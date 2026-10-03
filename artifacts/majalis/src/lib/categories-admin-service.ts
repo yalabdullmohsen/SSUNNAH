@@ -9,6 +9,7 @@ import {
   type CategoryStatus,
 } from "@/lib/category-status";
 import { analyzeCategoryStructure, type StructuralIssue } from "@/lib/category-tree";
+import { CATEGORIES_COLS } from "@/lib/db-select-columns";
 
 export type AdminCategory = {
   id: string;
@@ -130,7 +131,7 @@ export async function adminUpsertCategory(row: Partial<AdminCategory>) {
     delete payload.status_changed_at;
     delete payload.status_changed_by;
   }
-  const { data, error } = await supabase.from("categories").upsert(payload).select("*").single();
+  const { data, error } = await supabase.from("categories").upsert(payload).select(CATEGORIES_COLS).single();
   return { data, error };
 }
 
@@ -290,15 +291,35 @@ export async function adminBulkPublishCategories(
 ): Promise<BulkPublishResult> {
   const result: BulkPublishResult = { attempted: categories.length, published: 0, skipped: [] };
 
+  // Prefetch content presence for the candidate set — collapses per-id count round-trips.
+  const ids = categories.map((c) => c.id).filter(Boolean);
+  const withContent = new Set<string>();
+  if (ids.length) {
+    const [{ data: lessonRows }, { data: seriesRows }] = await Promise.all([
+      supabase.from("lessons").select("category_id").in("category_id", ids).eq("status", "approved"),
+      supabase
+        .from("lesson_series")
+        .select("category_id")
+        .in("category_id", ids)
+        .eq("status", "published"),
+    ]);
+    for (const row of lessonRows ?? []) {
+      if ((row as { category_id?: string }).category_id) withContent.add(String((row as { category_id: string }).category_id));
+    }
+    for (const row of seriesRows ?? []) {
+      if ((row as { category_id?: string }).category_id) withContent.add(String((row as { category_id: string }).category_id));
+    }
+  }
+
   for (const cat of categories) {
     if (!cat.name?.trim() || !cat.slug?.trim()) {
       result.skipped.push({ id: cat.id, name: cat.name || cat.id, reason: "ناقص العنوان أو الـ slug" });
       continue;
     }
-    if (cat.parent_id) {
-      // الأب المفقود يُكتشف لاحقًا في التحليل البنيوي — لا نمنع هنا إن وُجد في القائمة
-    }
-    const check = await adminValidateCategoryForPublish(cat.id);
+    // Fast path: direct content under category. Fallback to full tree validate for parents-only.
+    const check = withContent.has(cat.id)
+      ? { ok: true, errors: [] as string[] }
+      : await adminValidateCategoryForPublish(cat.id);
     if (!check.ok) {
       result.skipped.push({ id: cat.id, name: cat.name, reason: check.errors.join("؛ ") });
       continue;
@@ -344,7 +365,7 @@ export async function adminDetachOrphanParent(category: AdminCategory) {
     patch.status_reason = "إصلاح يتيم: فصل عن أب مفقود";
     patch.status_changed_at = new Date().toISOString();
   }
-  const { data, error } = await supabase.from("categories").update(patch).eq("id", category.id).select("*").single();
+  const { data, error } = await supabase.from("categories").update(patch).eq("id", category.id).select(CATEGORIES_COLS).single();
   if (!error) {
     await writeAudit({
       category_id: category.id,
@@ -366,6 +387,6 @@ export async function adminFixEmptySlug(category: AdminCategory) {
     .replace(/^-+|-+$/g, "")
     .slice(0, 60) || `cat-${category.id.slice(0, 8)}`;
   const slug = `${base}-${category.id.slice(0, 6)}`;
-  const { data, error } = await supabase.from("categories").update({ slug }).eq("id", category.id).select("*").single();
+  const { data, error } = await supabase.from("categories").update({ slug }).eq("id", category.id).select(CATEGORIES_COLS).single();
   return { data, error };
 }

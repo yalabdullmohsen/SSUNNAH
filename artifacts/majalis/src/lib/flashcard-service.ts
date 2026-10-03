@@ -246,11 +246,15 @@ export async function submitCardReview(
 export async function syncDirtyFlashcardReviews(userId: string): Promise<number> {
   if (!isOnline()) return 0;
   const dirty = await listDirtyReviews(userId);
+  if (dirty.length === 0) return 0;
+  // Batch upsert — avoids N round-trips on login/sync (N+1 closure).
+  const CHUNK = 200;
   let synced = 0;
-  for (const row of dirty) {
+  for (let i = 0; i < dirty.length; i += CHUNK) {
+    const chunk = dirty.slice(i, i + CHUNK);
     try {
-      await supabase.from("flashcard_reviews").upsert(
-        {
+      const { error } = await supabase.from("flashcard_reviews").upsert(
+        chunk.map((row) => ({
           user_id: row.user_id,
           card_type: row.card_type,
           card_id: row.card_id,
@@ -260,13 +264,20 @@ export async function syncDirtyFlashcardReviews(userId: string): Promise<number>
           repetitions: row.repetitions,
           last_quality: row.last_quality,
           reviewed_at: row.reviewed_at,
-        },
+        })),
         { onConflict: "user_id,card_type,card_id" },
       );
-      await markReviewClean(row);
-      synced += 1;
+      if (error) continue;
+      for (const row of chunk) {
+        try {
+          await markReviewClean(row);
+          synced += 1;
+        } catch {
+          /* keep dirty locally */
+        }
+      }
     } catch {
-      /* keep dirty */
+      /* keep chunk dirty */
     }
   }
   return synced;

@@ -1,4 +1,5 @@
 import { supabase } from "./supabase";
+import { USER_PROGRESS_COLS } from "@/lib/db-select-columns";
 
 export type ContentType = "lesson" | "course" | "quran" | "lesson_detail";
 
@@ -17,7 +18,7 @@ export interface ProgressRow {
 export async function fetchRecentProgress(userId: string, limit = 6): Promise<ProgressRow[]> {
   const { data, error } = await supabase
     .from("user_progress")
-    .select("*")
+    .select(USER_PROGRESS_COLS)
     .eq("user_id", userId)
     .order("updated_at", { ascending: false })
     .limit(limit);

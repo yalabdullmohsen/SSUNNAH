@@ -3,6 +3,7 @@ import { CheckCircle2, ClipboardList, Clock, FileText, GraduationCap, Mic2, Part
 import type { LucideIcon } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { formatFileSize, type UserSubmission, type SubmissionStatus } from "@/lib/user-submissions-service";
+import { USER_SUBMISSIONS_COLS } from "@/lib/db-select-columns";
 import { Link } from "wouter";
 import { ShareButtons } from "@/components/ContentActions";
 import { applyPageSeo } from "@/lib/seo";
@@ -137,7 +138,7 @@ export default function MySubmissionsPage() {
     try {
       const { data, error } = await supabase
         .from("user_submissions")
-        .select("*")
+        .select(USER_SUBMISSIONS_COLS)
         .eq("submitter_email", email.trim().toLowerCase())
         .order("created_at", { ascending: false })
         .limit(30);

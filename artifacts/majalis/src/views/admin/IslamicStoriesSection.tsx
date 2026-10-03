@@ -4,6 +4,7 @@ import { BookOpen, Library } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/components/AuthProvider";
 import { arabicMatchAny } from "@/lib/arabic-search";
+import { ISLAMIC_STORIES_COLS } from "@/lib/db-select-columns";
 
 type IslamicStory = {
   id: number;
@@ -39,7 +40,7 @@ export function IslamicStoriesSection() {
     setLoading(true);
     const { data } = await supabase
       .from("islamic_stories")
-      .select("*")
+      .select(ISLAMIC_STORIES_COLS)
       .order("category")
       .order("era")
       .order("id");

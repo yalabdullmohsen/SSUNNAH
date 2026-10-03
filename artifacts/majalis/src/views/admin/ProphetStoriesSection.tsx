@@ -3,6 +3,7 @@ import { supabase } from "@/lib/supabase";
 import { useAdminShell } from "./AdminShell";
 import { AlertTriangle, BookOpen, Save } from "lucide-react";
 import "@/styles/pages/prophet-stories-admin.css";
+import { PROPHET_STORIES_COLS } from "@/lib/db-select-columns";
 
 type Citation = { surah: string; ayahs: string; note: string };
 
@@ -243,7 +244,7 @@ export function ProphetStoriesSection() {
     setError(null);
     const { data, error: err } = await supabase
       .from("prophet_stories")
-      .select("*")
+      .select(PROPHET_STORIES_COLS)
       .order("id", { ascending: true });
     if (err) { setError(err.message); }
     else { setStories((data as ProphetStory[]) ?? []); }

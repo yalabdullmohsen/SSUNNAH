@@ -4,6 +4,7 @@ import { ANNUAL_COURSES_SEED, findAnnualCourseById } from "./annual-courses-seed
 import { UPDATES_SEED, getSortedUpdates } from "./updates-seed";
 import { supabase, isSupabaseConfigured } from "./supabase";
 import { logSupabaseError } from "./supabase-config";
+import { ANNUAL_COURSES_COLS, PLATFORM_UPDATES_COLS } from "@/lib/db-select-columns";
 import type {
   AnnualCourse,
   PlatformUpdate,
@@ -57,7 +58,7 @@ export async function getAnnualCourses(opts?: { type?: string; search?: string; 
   try {
     let query = supabase
       .from("annual_courses")
-      .select("*")
+      .select(ANNUAL_COURSES_COLS)
       .eq("status", "approved")
       .is("archived_at", null)
       .order("year", { ascending: false, nullsFirst: false });
@@ -85,10 +86,10 @@ export async function getAnnualCourseById(id: string) {
   if (!isConfigured) return { data: fallback, usingSeed: true };
 
   try {
-    const byId = await supabase.from("annual_courses").select("*").eq("id", id).eq("status", "approved").maybeSingle();
+    const byId = await supabase.from("annual_courses").select(ANNUAL_COURSES_COLS).eq("id", id).eq("status", "approved").maybeSingle();
     if (byId.data) return { data: byId.data as AnnualCourse, usingSeed: false };
 
-    const byKey = await supabase.from("annual_courses").select("*").eq("external_key", id).eq("status", "approved").maybeSingle();
+    const byKey = await supabase.from("annual_courses").select(ANNUAL_COURSES_COLS).eq("external_key", id).eq("status", "approved").maybeSingle();
     return { data: (byKey.data as AnnualCourse) || fallback, usingSeed: !byKey.data && !!fallback };
   } catch (err) {
     logSupabaseError("getAnnualCourseById", err, { id });
@@ -105,7 +106,7 @@ export async function getPlatformUpdates(limit = 50) {
   try {
     const { data, error } = await supabase
       .from("platform_updates")
-      .select("*")
+      .select(PLATFORM_UPDATES_COLS)
       .eq("status", "approved")
       .order("published_at", { ascending: false })
       .limit(limit);

@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-10-03T09:21:33.294Z",
+  "updatedAt": "2026-10-03T10:38:11.770Z",
   "DATABASE_HEATMAP_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:33.294Z",
+    "updatedAt": "2026-10-03T10:38:11.770Z",
     "DATABASE_PERFORMANCE_DEEP_AUDIT": true,
     "connection": "NOT_CONNECTED",
     "liveMetrics": "NOT_CONNECTED — no DATABASE_URL / SUPABASE_DB_URL",
@@ -22,18 +22,18 @@
       {
         "surface": "Admin",
         "files": 5,
-        "fromCalls": 49,
-        "selectStar": 9,
-        "costProxy": 94,
-        "frequencyProxy": 49,
+        "fromCalls": 51,
+        "selectStar": 0,
+        "costProxy": 51,
+        "frequencyProxy": 51,
         "latencyProxy": "NOT_CONNECTED — needs pg_stat_statements"
       },
       {
         "surface": "Library",
         "files": 4,
         "fromCalls": 23,
-        "selectStar": 3,
-        "costProxy": 38,
+        "selectStar": 0,
+        "costProxy": 23,
         "frequencyProxy": 23,
         "latencyProxy": "NOT_CONNECTED — needs pg_stat_statements"
       },
@@ -41,8 +41,8 @@
         "surface": "Account",
         "files": 3,
         "fromCalls": 8,
-        "selectStar": 2,
-        "costProxy": 18,
+        "selectStar": 0,
+        "costProxy": 8,
         "frequencyProxy": 8,
         "latencyProxy": "NOT_CONNECTED — needs pg_stat_statements"
       },
@@ -50,8 +50,8 @@
         "surface": "Search",
         "files": 1,
         "fromCalls": 2,
-        "selectStar": 1,
-        "costProxy": 7,
+        "selectStar": 0,
+        "costProxy": 2,
         "frequencyProxy": 2,
         "latencyProxy": "NOT_CONNECTED — needs pg_stat_statements"
       },
@@ -104,11 +104,11 @@
     "topClientTables": [
       {
         "table": "lessons",
-        "clientFromCount": 20
+        "clientFromCount": 21
       },
       {
         "table": "bookmarks",
-        "clientFromCount": 14
+        "clientFromCount": 15
       },
       {
         "table": "categories",
@@ -139,16 +139,16 @@
         "clientFromCount": 9
       },
       {
+        "table": "user_notes",
+        "clientFromCount": 9
+      },
+      {
         "table": "qa_questions",
         "clientFromCount": 9
       },
       {
         "table": "quiz_questions",
         "clientFromCount": 9
-      },
-      {
-        "table": "user_notes",
-        "clientFromCount": 8
       },
       {
         "table": "library_items",
@@ -207,492 +207,16 @@
   },
   "QUERY_OPTIMIZATION_QUEUE": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:33.294Z",
+    "updatedAt": "2026-10-03T10:38:11.770Z",
     "SUPABASE_QUERY_OPTIMIZATION": true,
     "counts": {
-      "total": 80,
-      "P0": 48,
-      "P1": 32,
+      "total": 11,
+      "P0": 0,
+      "P1": 11,
       "P2": 0,
-      "selectStar": 48
+      "selectStar": 0
     },
     "items": [
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/auto-content-service.ts",
-        "table": "auto_imported_content",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/auto-content-service.ts",
-        "table": "trusted_sources",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/auto-content-service.ts",
-        "table": "auto_import_logs",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/auto-content-service.ts",
-        "table": "auto_import_runs",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/auto-content-service.ts",
-        "table": "?",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/auto-content-service.ts",
-        "table": "?",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/book-reading-plan-service.ts",
-        "table": "book_reading_plans",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/book-reading-plan-service.ts",
-        "table": "?",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/book-reading-plan-service.ts",
-        "table": "book_reading_plans",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/categories-admin-service.ts",
-        "table": "categories",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/categories-admin-service.ts",
-        "table": "categories",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/categories-admin-service.ts",
-        "table": "categories",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/cms/audit-log.ts",
-        "table": "admin_audit_logs",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/cms/supabase-cms.ts",
-        "table": "import_jobs",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/dawah-service.ts",
-        "table": "dawah_shubuhat",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/dawah-service.ts",
-        "table": "dawah_articles",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/dawah-service.ts",
-        "table": "new_muslim_path",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/dawah-service.ts",
-        "table": "?",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/dawah-service.ts",
-        "table": "dawah_contact_requests",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/learning-paths-admin-service.ts",
-        "table": "?",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/learning-paths-admin-service.ts",
-        "table": "?",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/learning-paths-admin-service.ts",
-        "table": "prerequisites",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/learning-paths-admin-service.ts",
-        "table": "assessments",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/platform-content-service.ts",
-        "table": "annual_courses",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/platform-content-service.ts",
-        "table": "annual_courses",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/platform-content-service.ts",
-        "table": "annual_courses",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/platform-content-service.ts",
-        "table": "platform_updates",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/platform-supabase.ts",
-        "table": "sharia_rulings",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/platform-supabase.ts",
-        "table": "annual_courses",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/platform-supabase.ts",
-        "table": "platform_updates",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/quran-circles-service.ts",
-        "table": "quran_circles",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/researcher-profile-service.ts",
-        "table": "researcher_profiles",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/study-session-service.ts",
-        "table": "study_sessions",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/unified-content-service.ts",
-        "table": "auto_imported_content",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/unified-content-service.ts",
-        "table": "auto_imported_content",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/unified-content-service.ts",
-        "table": "auto_imported_content",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/unified-content-service.ts",
-        "table": "auto_imported_content",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/unified-content-service.ts",
-        "table": "auto_imported_content",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/unified-content-service.ts",
-        "table": "auto_imported_content",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/user-progress-service.ts",
-        "table": "user_progress",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/user-submissions-service.ts",
-        "table": "user_submissions",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "lib/vault-service.ts",
-        "table": "user_notes",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "views/FamilyModePage.tsx",
-        "table": "family_links",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "views/FamilyModePage.tsx",
-        "table": "family_links",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "views/FamilyModePage.tsx",
-        "table": "family_links",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "views/MySubmissionsPage.tsx",
-        "table": "user_submissions",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "views/admin/IslamicStoriesSection.tsx",
-        "table": "islamic_stories",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P0",
-        "kind": "select_star",
-        "path": "views/admin/ProphetStoriesSection.tsx",
-        "table": "prophet_stories",
-        "action": "Replace select('*') with explicit columns"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/auto-content-service.ts",
-        "table": "auto_imported_content",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/auto-content-service.ts",
-        "table": "trusted_sources",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/auto-content-service.ts",
-        "table": "auto_imported_content",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/book-reading-plan-service.ts",
-        "table": "book_reading_plans",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/dawah-service.ts",
-        "table": "dawah_shubuhat",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/dawah-service.ts",
-        "table": "new_muslim_path",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/dawah-service.ts",
-        "table": "dawah_contact_requests",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/learning-paths-admin-service.ts",
-        "table": "assessments",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/platform-content-service.ts",
-        "table": "annual_courses",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/platform-supabase.ts",
-        "table": "sharia_rulings",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/platform-supabase.ts",
-        "table": "sharia_rulings",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/platform-supabase.ts",
-        "table": "annual_courses",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/platform-supabase.ts",
-        "table": "annual_courses",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/platform-supabase.ts",
-        "table": "platform_updates",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/quran-circles-service.ts",
-        "table": "quran_circles",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/unified-content-service.ts",
-        "table": "auto_imported_content",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "lib/vault-service.ts",
-        "table": "user_notes",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "views/FamilyModePage.tsx",
-        "table": "family_links",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "views/admin/IslamicStoriesSection.tsx",
-        "table": "islamic_stories",
-        "action": "Add .limit() / .range() / pagination"
-      },
-      {
-        "priority": "P1",
-        "kind": "unbounded_read",
-        "path": "views/admin/ProphetStoriesSection.tsx",
-        "table": "prophet_stories",
-        "action": "Add .limit() / .range() / pagination"
-      },
       {
         "priority": "P1",
         "kind": "n_plus_one_suspect",
@@ -738,13 +262,6 @@
       {
         "priority": "P1",
         "kind": "n_plus_one_suspect",
-        "path": "lib/learning-paths-admin-service.ts",
-        "table": "?",
-        "action": "Batch fetch / join / .in() instead of per-item query"
-      },
-      {
-        "priority": "P1",
-        "kind": "n_plus_one_suspect",
         "path": "lib/lessons/lessonDeduper.ts",
         "table": "?",
         "action": "Batch fetch / join / .in() instead of per-item query"
@@ -782,7 +299,7 @@
   },
   "INDEX_AUTHORITY_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:33.294Z",
+    "updatedAt": "2026-10-03T10:38:11.770Z",
     "DATABASE_INDEX_STRATEGY_REVIEW": true,
     "inventory": {
       "createIndexStatements": 1008,
@@ -949,7 +466,7 @@
   },
   "CACHE_OPTIMIZATION_PLAN": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:33.294Z",
+    "updatedAt": "2026-10-03T10:38:11.770Z",
     "DATA_CACHING_STRATEGY_REVIEW": true,
     "reactQuery": {
       "defaultsPresent": true,
@@ -984,20 +501,20 @@
         "priority": "P2"
       }
     ],
-    "duplicateFetchRisk": "HIGH"
+    "duplicateFetchRisk": "MODERATE"
   },
   "SUNNAH_DATABASE_HEALTH_SCORECARD": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:33.294Z",
+    "updatedAt": "2026-10-03T10:38:11.770Z",
     "DATABASE_READINESS_CERTIFICATION": true,
-    "overallScore": 66,
-    "overallRating": "NEEDS_WORK",
+    "overallScore": 76,
+    "overallRating": "GOOD",
     "dimensions": [
       {
         "name": "performance",
-        "score": 46,
+        "score": 70,
         "note": "static proxies only",
-        "rating": "CRITICAL"
+        "rating": "GOOD"
       },
       {
         "name": "indexes",
@@ -1023,9 +540,9 @@
       },
       {
         "name": "costs",
-        "score": 44,
+        "score": 84,
         "note": "select(*) and hot table frequency as cost proxies",
-        "rating": "CRITICAL"
+        "rating": "GOOD"
       },
       {
         "name": "schema_quality",
@@ -1034,7 +551,7 @@
       },
       {
         "name": "scalability",
-        "score": 50,
+        "score": 65,
         "note": "Needs pagination discipline + live stats",
         "rating": "NEEDS_WORK"
       }

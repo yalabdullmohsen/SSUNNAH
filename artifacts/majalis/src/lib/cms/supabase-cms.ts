@@ -3,6 +3,7 @@ import { logSupabaseError } from "@/lib/supabase-config";
 import { isSupabaseConfigured } from "@/lib/supabase-config";
 import { countVerifiedAdhkarItems } from "@/lib/adhkar-supabase";
 import type { CmsContentKind } from "./content-types";
+import { IMPORT_JOBS_COLS } from "@/lib/db-select-columns";
 
 export type CmsDashboardStats = {
   indexTotal: number;
@@ -24,7 +25,7 @@ export type CmsDashboardStats = {
 };
 
 async function safeCount(table: string): Promise<number | null> {
-  const { count, error } = await supabase.from(table).select("*", { count: "exact", head: true });
+  const { count, error } = await supabase.from(table).select("id", { count: "exact", head: true });
   if (error) {
     if (error.code !== "PGRST205") logSupabaseError(`count:${table}`, error);
     return null;
@@ -77,7 +78,7 @@ export async function getCmsDashboardStats(): Promise<CmsDashboardStats> {
         if (n === null) return null;
         const { count, error } = await supabase
           .from("cms_content_index")
-          .select("*", { count: "exact", head: true })
+          .select("id", { count: "exact", head: true })
           .not("scheduled_at", "is", null);
         if (error) return null;
         return count ?? 0;
@@ -86,7 +87,7 @@ export async function getCmsDashboardStats(): Promise<CmsDashboardStats> {
         if (n === null) return null;
         const { count, error } = await supabase
           .from("cms_content_index")
-          .select("*", { count: "exact", head: true })
+          .select("id", { count: "exact", head: true })
           .not("archived_at", "is", null);
         if (error) return null;
         return count ?? 0;
@@ -95,7 +96,7 @@ export async function getCmsDashboardStats(): Promise<CmsDashboardStats> {
         if (n === null) return null;
         const { count, error } = await supabase
           .from("admin_audit_logs")
-          .select("*", { count: "exact", head: true })
+          .select("id", { count: "exact", head: true })
           .gte("created_at", startOfDay.toISOString());
         if (error) return null;
         return count ?? 0;
@@ -225,7 +226,7 @@ export async function getRecentImportJobs(limit = 10) {
 
   const { data, error } = await supabase
     .from("import_jobs")
-    .select("*")
+    .select(IMPORT_JOBS_COLS)
     .order("created_at", { ascending: false })
     .limit(limit);
 

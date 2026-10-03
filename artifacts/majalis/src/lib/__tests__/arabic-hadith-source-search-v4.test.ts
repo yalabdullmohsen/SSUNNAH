@@ -170,6 +170,35 @@ assert.equal(empty.relevance_score, 0);
 const short = rankHadithDocs(fixtures, "1");
 assert.ok(short.length >= 1);
 
+// Expanded relevance / normalization fixtures (Phase 6)
+assert.equal(arNormalizeLite("القُرآن"), arNormalizeLite("القران"));
+assert.equal(arNormalizeLite("نـــصٌ"), arNormalizeLite("نص"));
+assert.equal(arNormalizeLite("فتاوى"), arNormalizeLite("فتاوي"));
+assert.equal(arNormalizeLite("صلاة"), arNormalizeLite("صلاه")); // ة→ه KEEP
+assert.equal(arNormalizeLite("  نية   صالحة  "), "نيه صالحه");
+assert.ok(arNormalizeLite("١٢٣").length >= 0);
+assert.ok(scoreHadithDoc(fixtures[0], "a").relevance_score >= 0); // latin mixed
+assert.ok(rankHadithDocs(fixtures, "zzzz-no-hit-xyz")[0].relevance_score < 120);
+assert.equal(rankHadithDocs(fixtures, "ن").length, fixtures.length); // one-char still ranks
+// Ordering: title_exact > number > prefix
+const orderDoc = [
+  { id: "t", title: "باب الوضوء", text: "x", hadith_number: "99" },
+  { id: "n", title: "غيره", text: "x", hadith_number: "باب الوضوء" },
+  { id: "p", title: "باب الوضوء الطويل", text: "x", hadith_number: "7" },
+];
+const ordered = rankHadithDocs(orderDoc, "باب الوضوء");
+assert.equal(ordered[0].id, "t");
+assert.ok(ordered[0].relevance_score >= ordered[1].relevance_score);
+
+// SQL security static checks (Phase 5)
+assert.match(sql, /SECURITY INVOKER/);
+assert.doesNotMatch(sql, /SECURITY DEFINER/);
+assert.match(sql, /SET search_path = public/);
+assert.match(sql, /least\(|greatest\(/i);
+assert.match(sql, /deleted_at IS NULL/);
+assert.match(sql, /verification_status = 'verified'/);
+assert.match(sql, /GRANT EXECUTE ON FUNCTION public\.search_hadiths/);
+
 // Pagination stability (no dupes / no loss across pages)
 const ranked = rankHadithDocs(
   [
@@ -188,11 +217,15 @@ const page2 = keysetPage(ranked, 2, {
 const ids = [...page1, ...page2].map((x) => x.id);
 assert.equal(new Set(ids).size, ids.length, "no duplicate ids across pages");
 
-// Client helper accepts new filters
+// Client helper accepts new filters + feature-flagged RPC path
 const client = readMaj("src/lib/arabic-db-search.ts");
 assert.match(client, /search_hadiths/);
 assert.match(client, /p_collection|collection/);
 assert.match(client, /cursor/);
+assert.match(client, /resolveArabicSearchPath|legacy_fallback/);
+assert.match(client, /Math\.min\(lim/);
+assert.ok(existsSync(resolve(majalis, "src/lib/arabic-search-feature-flag.ts")));
+assert.ok(existsSync(resolve(majalis, "src/lib/search-observability.ts")));
 
 // Reports
 for (const rel of [

@@ -1,19 +1,19 @@
 # SUNNAH_DATABASE_HEALTH_SCORECARD
 
-Generated: 2026-10-03T09:21:33.294Z
+Generated: 2026-10-03T10:38:11.770Z
 
-## Overall: **66** · **NEEDS_WORK**
+## Overall: **76** · **GOOD**
 
 | Dimension | Score | Rating | Note |
 |---|---:|---|---|
-| performance | 46 | CRITICAL | static proxies only |
+| performance | 70 | GOOD | static proxies only |
 | indexes | 90 | EXCELLENT |  |
 | RLS | 88 | EXCELLENT | policy audit pattern clean |
 | search | 85 | EXCELLENT |  |
 | realtime | 80 | GOOD | channels=0 subscribe=10 |
-| costs | 44 | CRITICAL | select(*) and hot table frequency as cost proxies |
+| costs | 84 | GOOD | select(*) and hot table frequency as cost proxies |
 | schema_quality | 46 | CRITICAL |  |
-| scalability | 50 | NEEDS_WORK | Needs pagination discipline + live stats |
+| scalability | 65 | NEEDS_WORK | Needs pagination discipline + live stats |
 
 Ratings: EXCELLENT ≥85 · GOOD ≥70 · NEEDS_WORK ≥50 · CRITICAL <50
 

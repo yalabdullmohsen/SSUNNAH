@@ -1,50 +1,21 @@
 # QUERY_OPTIMIZATION_QUEUE
 
-Generated: 2026-10-03T09:21:33.294Z
+Generated: 2026-10-03T10:38:11.770Z
 
-Total: **80** · P0=48 · P1=32 · select(*)=48
+Total: **11** · P0=0 · P1=11 · select(*)=0
 
 | Priority | Kind | Table | Path | Action |
 |---|---|---|---|---|
-| P0 | select_star | `auto_imported_content` | `lib/auto-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `trusted_sources` | `lib/auto-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `auto_import_logs` | `lib/auto-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `auto_import_runs` | `lib/auto-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `?` | `lib/auto-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `?` | `lib/auto-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `book_reading_plans` | `lib/book-reading-plan-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `?` | `lib/book-reading-plan-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `book_reading_plans` | `lib/book-reading-plan-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `categories` | `lib/categories-admin-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `categories` | `lib/categories-admin-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `categories` | `lib/categories-admin-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `admin_audit_logs` | `lib/cms/audit-log.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `import_jobs` | `lib/cms/supabase-cms.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `dawah_shubuhat` | `lib/dawah-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `dawah_articles` | `lib/dawah-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `new_muslim_path` | `lib/dawah-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `?` | `lib/dawah-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `dawah_contact_requests` | `lib/dawah-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `?` | `lib/learning-paths-admin-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `?` | `lib/learning-paths-admin-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `prerequisites` | `lib/learning-paths-admin-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `assessments` | `lib/learning-paths-admin-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `annual_courses` | `lib/platform-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `annual_courses` | `lib/platform-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `annual_courses` | `lib/platform-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `platform_updates` | `lib/platform-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `sharia_rulings` | `lib/platform-supabase.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `annual_courses` | `lib/platform-supabase.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `platform_updates` | `lib/platform-supabase.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `quran_circles` | `lib/quran-circles-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `researcher_profiles` | `lib/researcher-profile-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `study_sessions` | `lib/study-session-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `auto_imported_content` | `lib/unified-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `auto_imported_content` | `lib/unified-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `auto_imported_content` | `lib/unified-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `auto_imported_content` | `lib/unified-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `auto_imported_content` | `lib/unified-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `auto_imported_content` | `lib/unified-content-service.ts` | Replace select('*') with explicit columns |
-| P0 | select_star | `user_progress` | `lib/user-progress-service.ts` | Replace select('*') with explicit columns |
+| P1 | n_plus_one_suspect | `?` | `components/quiz-game/DailyChallengeQuiz.tsx` | Batch fetch / join / .in() instead of per-item query |
+| P1 | n_plus_one_suspect | `?` | `lib/categories-admin-service.ts` | Batch fetch / join / .in() instead of per-item query |
+| P1 | n_plus_one_suspect | `?` | `lib/cms/cms-service.ts` | Batch fetch / join / .in() instead of per-item query |
+| P1 | n_plus_one_suspect | `?` | `lib/flashcard-service.ts` | Batch fetch / join / .in() instead of per-item query |
+| P1 | n_plus_one_suspect | `?` | `lib/guest-cloud-merge.ts` | Batch fetch / join / .in() instead of per-item query |
+| P1 | n_plus_one_suspect | `?` | `lib/kuwait-lessons.ts` | Batch fetch / join / .in() instead of per-item query |
+| P1 | n_plus_one_suspect | `?` | `lib/lessons/lessonDeduper.ts` | Batch fetch / join / .in() instead of per-item query |
+| P1 | n_plus_one_suspect | `?` | `lib/prayer-notification-scheduler.ts` | Batch fetch / join / .in() instead of per-item query |
+| P1 | n_plus_one_suspect | `?` | `lib/user-profile-service.ts` | Batch fetch / join / .in() instead of per-item query |
+| P1 | n_plus_one_suspect | `?` | `pages/hadith/ui/HadithBooksView.tsx` | Batch fetch / join / .in() instead of per-item query |
+| P1 | n_plus_one_suspect | `?` | `views/KnowledgeGraphPage.tsx` | Batch fetch / join / .in() instead of per-item query |
 
 Target: fetch only required columns and rows.

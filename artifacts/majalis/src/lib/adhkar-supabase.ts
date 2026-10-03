@@ -60,7 +60,7 @@ export async function countVerifiedAdhkarItems(): Promise<number | null> {
 
   const { count, error } = await supabase
     .from("verified_adhkar_items")
-    .select("*", { count: "exact", head: true })
+    .select("id", { count: "exact", head: true })
     .is("deleted_at", null);
 
   if (error) {

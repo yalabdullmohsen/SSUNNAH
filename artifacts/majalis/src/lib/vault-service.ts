@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase";
+import { USER_NOTES_COLS } from "@/lib/db-select-columns";
 
 export type VaultNote = {
   id: string;
@@ -52,7 +53,7 @@ export async function getVaultData(userId: string): Promise<VaultData> {
       .limit(30),
     supabase
       .from("user_notes")
-      .select("*")
+      .select(USER_NOTES_COLS)
       .eq("user_id", userId)
       .order("updated_at", { ascending: false }),
   ]);

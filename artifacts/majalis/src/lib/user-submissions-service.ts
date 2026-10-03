@@ -3,6 +3,7 @@
  */
 
 import { supabase } from "@/lib/supabase";
+import { USER_SUBMISSIONS_COLS } from "@/lib/db-select-columns";
 
 /** "adhan" تاريخي فقط — لا إنشاء طلبات جديدة من هذا النوع. */
 export type SubmissionType = "adhan" | "lesson";
@@ -107,7 +108,7 @@ export async function listSubmissions(opts?: {
 }): Promise<UserSubmission[]> {
   let q = supabase
     .from("user_submissions")
-    .select("*")
+    .select(USER_SUBMISSIONS_COLS)
     .order("created_at", { ascending: false })
     .limit(opts?.limit ?? 50);
 
