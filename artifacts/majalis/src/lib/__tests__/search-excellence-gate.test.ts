@@ -1,0 +1,69 @@
+/**
+ * بوابة تميّز البحث BP–BT.
+ * Run: node --import tsx src/lib/__tests__/search-excellence-gate.test.ts
+ */
+import assert from "node:assert/strict";
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { spawnSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
+import { normalizeArabic } from "@/shared/arabic-normalize";
+
+const majalis = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
+const root = resolve(majalis, "../..");
+const readRepo = (rel: string) => readFileSync(resolve(root, rel), "utf8");
+const readMaj = (rel: string) => readFileSync(resolve(majalis, rel), "utf8");
+
+assert.ok(existsSync(resolve(root, "docs/design/SEARCH_EXCELLENCE_PROGRAM.md")));
+assert.match(readRepo("docs/design/SEARCH_EXCELLENCE_PROGRAM.md"), /ARABIC_SEARCH_OPTIMIZATION/);
+assert.match(readRepo("docs/design/SEARCH_EXCELLENCE_PROGRAM.md"), /SEARCH_HEALTH_SCORECARD/);
+
+const pkg = JSON.parse(readMaj("package.json"));
+assert.match(pkg.scripts["test:search-excellence"] || "", /search-excellence-engine/);
+assert.match(pkg.scripts["test:design-governance"] || "", /test:search-excellence/);
+
+// Canonical Arabic pairs (user-facing BP targets)
+assert.equal(normalizeArabic("قرآن"), normalizeArabic("قران"));
+assert.equal(normalizeArabic("إسلام"), normalizeArabic("اسلام"));
+assert.equal(normalizeArabic("مسئول"), normalizeArabic("مسؤول"));
+assert.equal(normalizeArabic("Quran"), normalizeArabic("quran"));
+
+const run = spawnSync(
+  process.execPath,
+  ["--import", "tsx", "scripts/search-excellence-engine.mjs", "--check"],
+  { cwd: majalis, encoding: "utf8" },
+);
+assert.equal(run.status, 0, run.stderr || run.stdout);
+
+for (const rel of [
+  "docs/audit/ARABIC_SEARCH_NORMALIZATION_REPORT.md",
+  "docs/audit/SEARCH_RELEVANCE_SCORECARD.md",
+  "docs/audit/SEARCH_QUERY_HEATMAP.md",
+  "docs/audit/SEARCH_COVERAGE_REPORT.md",
+  "docs/audit/SEARCH_UX_IMPROVEMENT_PLAN.md",
+  "docs/audit/SEARCH_HEALTH_SCORECARD.md",
+]) {
+  assert.ok(existsSync(resolve(root, rel)), rel);
+}
+
+const bundle = JSON.parse(readMaj("reports/search-excellence-engine.json"));
+assert.equal(bundle.ARABIC_SEARCH_NORMALIZATION_REPORT.ARABIC_SEARCH_OPTIMIZATION, true);
+assert.equal(bundle.SEARCH_RELEVANCE_SCORECARD.SEARCH_RELEVANCE_ENGINE_AUDIT, true);
+assert.equal(bundle.SEARCH_QUERY_HEATMAP.SEARCH_QUERY_PERFORMANCE, true);
+assert.equal(bundle.SEARCH_COVERAGE_REPORT.SEARCH_INDEX_COVERAGE, true);
+assert.equal(bundle.SEARCH_UX_IMPROVEMENT_PLAN.SEARCH_UX_OPTIMIZATION, true);
+assert.equal(bundle.SEARCH_HEALTH_SCORECARD.SEARCH_EXCELLENCE_CERTIFICATION, true);
+assert.ok(bundle.SEARCH_COVERAGE_REPORT.docsTotal >= 1000);
+assert.ok(
+  ["EXCELLENT", "GOOD", "PARTIAL", "NEEDS_WORK"].includes(
+    bundle.SEARCH_HEALTH_SCORECARD.overallRating,
+  ),
+);
+assert.equal(bundle.ARABIC_SEARCH_NORMALIZATION_REPORT.pairsFailed, 0);
+
+assert.match(readRepo("docs/audit/SEARCH_HEALTH_SCORECARD.md"), /EXCELLENT|GOOD|PARTIAL|NEEDS_WORK/);
+assert.match(readRepo("docs/audit/SEARCH_QUERY_HEATMAP.md"), /NOT_MEASURED/);
+
+console.log(
+  `search-excellence-gate: ok (${bundle.SEARCH_HEALTH_SCORECARD.overallScore}/${bundle.SEARCH_HEALTH_SCORECARD.overallRating} docs=${bundle.SEARCH_COVERAGE_REPORT.docsTotal} relevance=${bundle.SEARCH_RELEVANCE_SCORECARD.passRate}%)`,
+);
