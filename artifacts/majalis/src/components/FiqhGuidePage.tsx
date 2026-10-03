@@ -7,6 +7,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import type { FiqhGuideSection } from "@/lib/fiqh-guides/types";
 import "@/styles/pages/fiqh-guide.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 import { EMPTY } from "@/lib/ui-copy";
 
@@ -52,14 +53,8 @@ export function FiqhGuidePage({ section }: Props) {
       {section.methodology && <p className="fg-method">{section.methodology}</p>}
 
       <div className="fg-search">
-        <input
-          type="search"
-          className="fg-search__input"
-          placeholder="ابحث في هذا القسم..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          aria-label={`بحث في ${section.title}`}
-        />
+        <SearchInput className="fg-search__input" placeholder="ابحث في هذا القسم..." value={search} onChange={(e) => setSearch(e.target.value)}
+          aria-label={`بحث في ${section.title}`} onClear={() => setSearch("")} />
       </div>
 
       <div className="fg-tabs" role="tablist" aria-label={`أبواب ${section.title}`}>

@@ -399,7 +399,6 @@
   border-radius: var(--radius-card, 1.125rem);
   border: 1px solid color-mix(in srgb, var(--mj-brand, #0F5C45) 18%, var(--color-hairline, var(--mj-hairline)));
   background: var(--color-surface, #FFFCF7);
-  box-shadow: none;
   color: var(--color-ink, var(--mj-ink));
 }
 
@@ -421,7 +420,6 @@
   padding: 0.75rem 0.85rem;
   gap: 0.55rem;
   border-radius: var(--radius-card, 1.125rem);
-  box-shadow: none;
 }
 
 .ve-lesson-list {
@@ -463,7 +461,6 @@ html[data-theme="dark"] .ve-pager a,
 html.dark .ve-pager a {
   background: var(--color-surface, #1B2421);
   border-color: var(--color-hairline, #35443F);
-  box-shadow: none;
 }
 
 html[data-theme="dark"] .ve-book-card__icon,

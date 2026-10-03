@@ -1,6 +1,6 @@
 # INDEX_AUTHORITY_REPORT
 
-Generated: 2026-10-03T08:28:58.841Z
+Generated: 2026-10-03T08:57:26.125Z
 
 | Metric | Value |
 |---|---:|

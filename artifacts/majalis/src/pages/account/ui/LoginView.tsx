@@ -15,7 +15,7 @@ import { preloadRoute } from "@/lib/lazy-with-retry";
 import { Loading } from "@/components/ui-common";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { FormLabel, FieldError } from "@/components/design-system";
+import { FormLabel, FieldError, ContentTabs } from "@/components/design-system";
 import { PasswordPolicyChecklist } from "@/components/auth/PasswordPolicyChecklist";
 import { applyPageSeo } from "@/lib/seo";
 import { canSubmitForm } from "@/lib/form-rate-limit";
@@ -378,30 +378,18 @@ export default function LoginPage() {
         </header>
 
         {!adminLogin && tab !== "forgot" ? (
-          <div className="login-tabs" role="tablist" aria-label="وضع الحساب">
-            <Button
-              type="button"
-              variant="ghost"
-              size="small"
-              role="tab"
-              aria-selected={tab === "login"}
-              className={`login-tab${tab === "login" ? " is-active" : ""}`}
-              onClick={() => switchTab("login")}
-            >
-              تسجيل الدخول
-            </Button>
-            <Button
-              type="button"
-              variant="ghost"
-              size="small"
-              role="tab"
-              aria-selected={tab === "register"}
-              className={`login-tab${tab === "register" ? " is-active" : ""}`}
-              onClick={() => switchTab("register")}
-            >
-              إنشاء حساب
-            </Button>
-          </div>
+          <ContentTabs
+            className="login-tabs"
+            ariaLabel="وضع الحساب"
+            idPrefix="login"
+            variant="pill"
+            value={tab === "register" ? "register" : "login"}
+            onChange={(id) => switchTab(id as "login" | "register")}
+            items={[
+              { id: "login", label: "تسجيل الدخول" },
+              { id: "register", label: "إنشاء حساب" },
+            ]}
+          />
         ) : null}
 
         {!authEnabled && (

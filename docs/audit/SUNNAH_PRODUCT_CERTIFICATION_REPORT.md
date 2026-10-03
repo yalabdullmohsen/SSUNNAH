@@ -1,21 +1,21 @@
 # SUNNAH_PRODUCT_CERTIFICATION_REPORT
 
-Generated: 2026-10-03T08:28:51.920Z
+Generated: 2026-10-03T08:57:18.355Z
 
-## Overall: **66** · **PARTIAL**
+## Overall: **68** · **PARTIAL**
 
 | Dimension | Score | Rating |
 |---|---:|---|
-| Design / Consistency | 88 | CERTIFIED |
-| Components / Authority adoption | 41 | NOT_CERTIFIED |
+| Design / Consistency | 89 | CERTIFIED |
+| Components / Authority adoption | 43 | NOT_CERTIFIED |
 | Tokens | 60 | PARTIAL |
 | Accessibility (map present) | 85 | CERTIFIED |
 | Visual identity / language | 85 | CERTIFIED |
 | Navigation | 94 | CERTIFIED |
 | Search | 75 | PARTIAL |
-| Forms | 7 | NOT_CERTIFIED |
+| Forms | 23 | NOT_CERTIFIED |
 | Performance debt proxy | 50 | PARTIAL |
-| Compliance engine | 73 | PARTIAL |
+| Compliance engine | 74 | PARTIAL |
 
 ## Non-claims
 

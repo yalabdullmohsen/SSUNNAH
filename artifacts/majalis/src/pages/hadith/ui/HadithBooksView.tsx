@@ -19,6 +19,7 @@ import { VirtualList } from "@/components/VirtualList";
 import "@/styles/pages/hadith-books.css";
 import "@/styles/pages/hadith.css";
 import { ListScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 import { HadithEmptyState } from "@/components/hadith/HadithEmptyState";
 import { numberingConflictNoteAr } from "@/lib/hadith/hadith-collection-availability";
@@ -347,14 +348,8 @@ function CollectionBrowser({ meta }: { meta: CdnCollectionMeta }) {
       {/* البحث */}
       <div className="hb-search-wrap">
         <Search size={14} className="hb-search__icon" aria-hidden="true" />
-        <input
-          type="search"
-          className="hb-search-input"
-          placeholder={`ابحث في ${meta.name}…`}
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          aria-label={`بحث في ${meta.name}`}
-        />
+        <SearchInput className="hb-search-input" placeholder={`ابحث في ${meta.name}…`} value={search} onChange={(e) => setSearch(e.target.value)}
+          aria-label={`بحث في ${meta.name}`} onClear={() => setSearch("")} />
         {search && (
           <Button
             type="button"

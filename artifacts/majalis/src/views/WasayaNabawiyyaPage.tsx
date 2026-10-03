@@ -6,6 +6,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/wasaya.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
@@ -649,14 +650,10 @@ export default function WasayaNabawiyyaPage() {
 
       {(activeTab === "kabira" || activeTab === "lil-umma") && (
         <div className="wn-search-wrap">
-          <input
-            type="search"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
+          <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
             placeholder="ابحث في الوصايا."
             className="page-search-input wn-search-input"
-            aria-label="بحث في الوصايا النبوية"
-          />
+            aria-label="بحث في الوصايا النبوية" onClear={() => setSearch("")} />
         </div>
       )}
 

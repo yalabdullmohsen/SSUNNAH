@@ -162,13 +162,13 @@
   height: 4px;
   flex: 0 0 4px;
   background: var(--majalis-line, var(--mj-hairline));
-  border-radius: 9999px;
+  border-radius: var(--sf-radius-pill);
   overflow: hidden;
 }
 .adhkar-focus-progress-fill {
   height: 100%;
   background: var(--majalis-emerald, var(--mj-brand));
-  border-radius: 9999px;
+  border-radius: var(--sf-radius-pill);
   transition: width 0.3s ease;
 }
 
@@ -246,7 +246,7 @@
   width: 3rem;
   height: 4px;
   background: var(--majalis-line, var(--mj-hairline));
-  border-radius: 9999px;
+  border-radius: var(--sf-radius-pill);
   margin: 0 auto 1.25rem;
 }
 .adhkar-sheet-close {
@@ -308,7 +308,7 @@
 .adhkar-grade {
   display: inline-block;
   padding: 0.125rem 0.5rem;
-  border-radius: 9999px;
+  border-radius: var(--sf-radius-pill);
   font-size: 0.8rem;
   font-weight: 600;
 }

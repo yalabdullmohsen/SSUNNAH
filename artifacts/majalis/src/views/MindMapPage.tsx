@@ -10,6 +10,7 @@ import { MIND_MAPS, MIND_MAP_CATEGORIES, type MindMap, type MindMapNode } from "
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { MindMapCanvas } from "@/components/mind-map/MindMapCanvas";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 type ViewMode = "canvas" | "list";
@@ -241,14 +242,8 @@ export default function MindMapPage() {
 
       {/* بحث */}
       <div className="mm-search-wrap">
-        <input
-          type="search"
-          className="ds-input mm-search-input"
-          placeholder="ابحث في الخرائط الذهنية..."
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          aria-label="بحث في الخرائط الذهنية"
-        />
+        <SearchInput className="ds-input mm-search-input" placeholder="ابحث في الخرائط الذهنية..." value={search} onChange={(e) => setSearch(e.target.value)}
+          aria-label="بحث في الخرائط الذهنية" onClear={() => setSearch("")} />
       </div>
 
       {/* أزرار التوسيع والطيّ */}

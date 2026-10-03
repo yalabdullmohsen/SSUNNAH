@@ -7,6 +7,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import "@/styles/pages/sahabah.css";
 import { ListScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 
@@ -1264,13 +1265,7 @@ export default function SahabahPage() {
 
       <div className="sb-body">
         {/* search */}
-        <input
-          type="search"
-          className="sb-search"
-          aria-label="ابحث بالاسم" placeholder="ابحث بالاسم..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <SearchInput className="sb-search" aria-label="ابحث بالاسم" placeholder="ابحث بالاسم..." value={search} onChange={(e) => setSearch(e.target.value)} onClear={() => setSearch("")} />
 
         {/* categories */}
         <div className="sb-cats" role="tablist" aria-label="تصفية الصحابة">

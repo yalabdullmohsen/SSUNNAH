@@ -1,27 +1,27 @@
 # DESIGN_COMPLIANCE_REPORT
 
-Generated: 2026-10-03T08:28:51.920Z
+Generated: 2026-10-03T08:57:18.355Z
 
-## DESIGN_COMPLIANCE_SCORE: **73**
+## DESIGN_COMPLIANCE_SCORE: **74**
 
 ## Signals
 
 ### Non-authority components (top)
 
 - **cards**: bypass=208 · adoption=9%
-- **forms**: bypass=177 · adoption=7%
+- **forms**: bypass=148 · adoption=23%
 - **buttons**: bypass=100 · adoption=71%
 - **lists**: bypass=74 · adoption=10%
-- **tabs**: bypass=72 · adoption=3%
-- **tables**: bypass=14 · adoption=36%
+- **tabs**: bypass=71 · adoption=4%
+- **tables**: bypass=14 · adoption=39%
 
 ### Rogue styling proxies
 
 | Metric | Value | Ceiling |
 |---|---:|---:|
 | hexInCss | 7022 | 7022 |
-| boxShadowDecls | 1010 | 1010 |
-| borderRadiusPxDecls | 429 | 429 |
+| boxShadowDecls | 986 | 986 |
+| borderRadiusPxDecls | 392 | 392 |
 | inlineColorStyleMatches | 48 | 48 |
 
 ### Duplicate pattern clusters
@@ -39,10 +39,10 @@ Generated: 2026-10-03T08:28:51.920Z
 |---|---:|---|
 | cards | 9 | NOT_CERTIFIED |
 | buttons | 71 | PARTIAL |
-| forms | 7 | NOT_CERTIFIED |
-| tables | 36 | NOT_CERTIFIED |
+| forms | 23 | NOT_CERTIFIED |
+| tables | 39 | NOT_CERTIFIED |
 | lists | 10 | NOT_CERTIFIED |
-| tabs | 3 | NOT_CERTIFIED |
+| tabs | 4 | NOT_CERTIFIED |
 | navigation | 94 | CERTIFIED |
 | modals | 96 | CERTIFIED |
 

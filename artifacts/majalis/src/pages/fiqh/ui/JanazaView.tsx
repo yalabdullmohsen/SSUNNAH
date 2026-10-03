@@ -6,6 +6,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import "@/styles/pages/janaza.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 import { Button } from "@/components/ui/button";
 
@@ -236,14 +237,10 @@ export default function JanazaPage() {
       <div className="jnz-body">
 
         <div className="jnz-search-wrap">
-          <input
-            type="search"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
+          <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
             placeholder="ابحث في أحكام الجنائز..."
             className="page-search-input jnz-search-input"
-            aria-label="بحث في أحكام الجنائز"
-          />
+            aria-label="بحث في أحكام الجنائز" onClear={() => setSearch("")} />
         </div>
 
         {/* ── الغسل ── */}

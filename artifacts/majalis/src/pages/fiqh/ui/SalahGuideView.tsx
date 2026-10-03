@@ -8,6 +8,7 @@ import { RANKS } from "@/pages/worship/PrayerRanksPage";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 
@@ -531,9 +532,9 @@ export default function SalahGuidePage() {
         {tab === "mubtilatat" && (
           <div role="tabpanel" id="sgp-panel-mubtilatat" aria-labelledby="sgp-tab-mubtilatat" className="sg-section">
             <div className="sg-search-wrap">
-              <input type="search" value={search} onChange={e => setSearch(e.target.value)}
+              <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
                 placeholder="ابحث في المبطلات والمكروهات." className="page-search-input sg-search-input"
-                aria-label="بحث في مبطلات الصلاة" />
+                aria-label="بحث في مبطلات الصلاة" onClear={() => setSearch("")} />
             </div>
             <h2 className="sg-subhead">مبطلات الصلاة</h2>
             <div className="sg-mubtilatat-list">
@@ -566,9 +567,9 @@ export default function SalahGuidePage() {
         {tab === "khushuu" && (
           <div role="tabpanel" id="sgp-panel-khushuu" aria-labelledby="sgp-tab-khushuu" className="sg-section">
             <div className="sg-search-wrap">
-              <input type="search" value={search} onChange={e => setSearch(e.target.value)}
+              <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
                 placeholder="ابحث في أساليب الخشوع." className="page-search-input sg-search-input"
-                aria-label="بحث في الخشوع" />
+                aria-label="بحث في الخشوع" onClear={() => setSearch("")} />
             </div>
             <p className="sg-lead">
               الخشوع روح الصلاة، بلا خشوع تكون الصلاة قشراً بلا لبّ. قال تعالى:
@@ -597,9 +598,9 @@ export default function SalahGuidePage() {
         {tab === "fawaid" && (
           <div role="tabpanel" id="sgp-panel-fawaid" aria-labelledby="sgp-tab-fawaid" className="sg-section">
             <div className="sg-search-wrap">
-              <input type="search" value={search} onChange={e => setSearch(e.target.value)}
+              <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
                 placeholder="ابحث في فضائل الصلاة." className="page-search-input sg-search-input"
-                aria-label="بحث في فضائل الصلاة" />
+                aria-label="بحث في فضائل الصلاة" onClear={() => setSearch("")} />
             </div>
             <h2 className="sg-subhead">من القرآن الكريم</h2>
             <div className="sg-ayaat-list">

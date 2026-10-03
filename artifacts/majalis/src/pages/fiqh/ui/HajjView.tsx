@@ -6,6 +6,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 
@@ -410,9 +411,9 @@ export default function HajjPage() {
 
       {tab !== "overview" && (
         <div className="hj-search-wrap">
-          <input type="search" value={search} onChange={e => setSearch(e.target.value)}
+          <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
             placeholder="ابحث في مناسك الحج..." className="page-search-input hj-search-input"
-            aria-label="بحث في أحكام الحج" />
+            aria-label="بحث في أحكام الحج" onClear={() => setSearch("")} />
         </div>
       )}
 

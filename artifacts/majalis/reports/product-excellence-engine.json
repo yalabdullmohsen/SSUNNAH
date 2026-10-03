@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-03T08:28:53.907Z",
+  "updatedAt": "2026-10-03T08:57:20.660Z",
   "PRODUCT_COHESION_SCORE": 57,
   "PRODUCT_COHESION_REPORT": {
     "score": 57,
@@ -148,7 +148,7 @@
   },
   "TOKEN_MIGRATION_QUEUE": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:28:53.907Z",
+    "updatedAt": "2026-10-03T08:57:20.660Z",
     "TOKEN_ENFORCEMENT_MIGRATION": true,
     "totalFilesWithViolations": 365,
     "top": [
@@ -264,7 +264,7 @@
       },
       {
         "path": "styles/pages/hadith-design-language.css",
-        "impact": 195,
+        "impact": 183,
         "violations": [
           {
             "kind": "color",
@@ -273,16 +273,12 @@
           {
             "kind": "shadow",
             "count": 1
-          },
-          {
-            "kind": "radii",
-            "count": 8
           }
         ]
       },
       {
         "path": "styles/pages/hadith.css",
-        "impact": 190,
+        "impact": 183,
         "violations": [
           {
             "kind": "color",
@@ -291,16 +287,12 @@
           {
             "kind": "shadow",
             "count": 12
-          },
-          {
-            "kind": "radii",
-            "count": 5
           }
         ]
       },
       {
         "path": "styles/pages/fiqh-hub.css",
-        "impact": 172,
+        "impact": 169,
         "violations": [
           {
             "kind": "color",
@@ -313,10 +305,6 @@
           {
             "kind": "shadow",
             "count": 18
-          },
-          {
-            "kind": "radii",
-            "count": 2
           }
         ]
       },
@@ -535,24 +523,6 @@
         ]
       },
       {
-        "path": "styles/knowledge-experience.css",
-        "impact": 74,
-        "violations": [
-          {
-            "kind": "color",
-            "count": 52
-          },
-          {
-            "kind": "shadow",
-            "count": 16
-          },
-          {
-            "kind": "radii",
-            "count": 6
-          }
-        ]
-      },
-      {
         "path": "styles/brand-v4.css",
         "impact": 71,
         "violations": [
@@ -613,20 +583,6 @@
         ]
       },
       {
-        "path": "styles/modern-ui-refresh.css",
-        "impact": 67,
-        "violations": [
-          {
-            "kind": "color",
-            "count": 44
-          },
-          {
-            "kind": "shadow",
-            "count": 23
-          }
-        ]
-      },
-      {
         "path": "styles/pages/quran-numbers.css",
         "impact": 67,
         "violations": [
@@ -645,12 +601,26 @@
         ]
       },
       {
-        "path": "styles/visual-enrichment.css",
+        "path": "styles/modern-ui-refresh.css",
+        "impact": 66,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 44
+          },
+          {
+            "kind": "shadow",
+            "count": 22
+          }
+        ]
+      },
+      {
+        "path": "styles/knowledge-experience.css",
         "impact": 65,
         "violations": [
           {
             "kind": "color",
-            "count": 57
+            "count": 52
           },
           {
             "kind": "shadow",
@@ -658,7 +628,7 @@
           },
           {
             "kind": "radii",
-            "count": 1
+            "count": 6
           }
         ]
       },
@@ -709,6 +679,24 @@
         ]
       },
       {
+        "path": "styles/visual-enrichment.css",
+        "impact": 62,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 57
+          },
+          {
+            "kind": "shadow",
+            "count": 4
+          },
+          {
+            "kind": "radii",
+            "count": 1
+          }
+        ]
+      },
+      {
         "path": "components/lobby/section-lobby.css",
         "impact": 61,
         "violations": [
@@ -735,8 +723,22 @@
         ]
       },
       {
+        "path": "styles/components/modern-section-shell.css",
+        "impact": 60,
+        "violations": [
+          {
+            "kind": "color",
+            "count": 50
+          },
+          {
+            "kind": "shadow",
+            "count": 10
+          }
+        ]
+      },
+      {
         "path": "styles/ssunnah-ux-polish.css",
-        "impact": 61,
+        "impact": 60,
         "violations": [
           {
             "kind": "color",
@@ -745,20 +747,6 @@
           {
             "kind": "spacing",
             "count": 3
-          },
-          {
-            "kind": "shadow",
-            "count": 11
-          }
-        ]
-      },
-      {
-        "path": "styles/components/modern-section-shell.css",
-        "impact": 60,
-        "violations": [
-          {
-            "kind": "color",
-            "count": 50
           },
           {
             "kind": "shadow",
@@ -852,15 +840,15 @@
     "byKindTotals": {
       "color": 6549,
       "spacing": 177,
-      "shadow": 990,
-      "radii": 177,
+      "shadow": 966,
+      "radii": 140,
       "typography": 94
     },
     "policy": "Highest-impact first · map to DESIGN_TOKENS_AUTHORITY · no new family"
   },
   "COMPONENT_RATIONALIZATION_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:28:53.907Z",
+    "updatedAt": "2026-10-03T08:57:20.660Z",
     "COMPONENT_USAGE_RATIONALIZATION": true,
     "groups": [
       {
@@ -903,7 +891,7 @@
         "usage": [
           {
             "name": "Button",
-            "hits": 2087
+            "hits": 2083
           },
           {
             "name": "ActionButton",
@@ -999,7 +987,7 @@
         "usage": [
           {
             "name": "ContentTabs",
-            "hits": 8
+            "hits": 10
           },
           {
             "name": "TabSystem",
@@ -1016,7 +1004,7 @@
         "usage": [
           {
             "name": "SearchInput",
-            "hits": 28
+            "hits": 92
           },
           {
             "name": "SearchField",
@@ -1164,7 +1152,7 @@
   },
   "JOURNEY_LENGTH_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:28:53.907Z",
+    "updatedAt": "2026-10-03T08:57:20.660Z",
     "NAVIGATION_JOURNEY_COMPRESSION": true,
     "bottomNavTabs": [
       "/",
@@ -1218,7 +1206,7 @@
   },
   "POLISH_BACKLOG": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:28:53.907Z",
+    "updatedAt": "2026-10-03T08:57:20.660Z",
     "PRODUCT_POLISH_PASS": true,
     "total": 276,
     "quickWins": [
@@ -1431,9 +1419,9 @@
     ]
   },
   "related": {
-    "consistencyScore": 88,
-    "authorityAdoption": 41,
-    "designCompliance": 73,
+    "consistencyScore": 89,
+    "authorityAdoption": 43,
+    "designCompliance": 74,
     "hexInCss": 7022
   }
 }

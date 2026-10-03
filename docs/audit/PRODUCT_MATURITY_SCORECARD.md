@@ -1,18 +1,18 @@
 # PRODUCT_MATURITY_SCORECARD
 
-Generated: 2026-10-03T08:28:56.024Z
+Generated: 2026-10-03T08:57:23.067Z
 
-## Overall: **75** · **MATURE**
+## Overall: **76** · **MATURE**
 
 | Category | Score | Level |
 |---|---:|---|
-| Design | 81 | MATURE |
+| Design | 82 | MATURE |
 | UX | 66 | ADVANCED |
 | Performance | 72 | ADVANCED |
-| Consistency | 62 | ADVANCED |
+| Consistency | 64 | ADVANCED |
 | Maintainability | 85 | MATURE |
 | Accessibility | 78 | MATURE |
-| Architecture | 82 | MATURE |
+| Architecture | 83 | MATURE |
 
 Levels: FOUNDATION &lt;55 · ADVANCED 55–74 · MATURE 75–89 · EXCELLENT ≥90
 

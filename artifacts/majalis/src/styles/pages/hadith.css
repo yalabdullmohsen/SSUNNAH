@@ -1282,7 +1282,7 @@ html[data-theme="dark"] .hadith-stat strong {
 
 .hadith-page .hadith-quick-cat,
 .hadith-quick-cat {
-  border-radius: 999px !important;
+  border-radius: var(--sf-radius-pill) !important;
   padding: 0.28em 0.8em !important;
   font-size: 0.78rem !important;
   font-weight: 600 !important;
@@ -1342,7 +1342,7 @@ html[data-theme="dark"] .hadith-stat strong {
 .hadith-grade {
   font-size: 0.68rem;
   padding: 0.12em 0.5em;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   font-weight: 700;
   line-height: 1.35;
 }
@@ -1409,7 +1409,7 @@ html[data-theme="dark"] .hadith-stat strong {
 .hadith-keyword {
   font-size: 0.68rem;
   padding: 0.08em 0.45em;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
 }
 
 .hadith-card__actions {
@@ -1543,7 +1543,7 @@ html[data-theme="dark"] .hadith-stat strong {
   font-size: 0.72rem;
   font-weight: 800;
   padding: 0.18rem 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
 }
 
 .hadith-card__actions {
@@ -1647,7 +1647,7 @@ html.dark .hadith-card.ui-card {
 
 .hadith-page .ds-filter-toggle,
 .hadith-toolbar .ds-filter-toggle {
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   min-width: 5.5rem;
 }
 

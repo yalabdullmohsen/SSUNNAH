@@ -9,6 +9,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/fadail-aamal.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { ListScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 
 interface Fadila {
   id: string;
@@ -1091,14 +1092,7 @@ export default function FadailAamalPage() {
       <div className="fa-body">
         {/* search */}
         <div className="fa-search-row">
-          <input
-            type="search"
-            className="fa-search"
-            placeholder="ابحث في الأحاديث..."
-            aria-label="بحث في أحاديث فضائل الأعمال"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
+          <SearchInput className="fa-search" placeholder="ابحث في الأحاديث..." aria-label="بحث في أحاديث فضائل الأعمال" value={search} onChange={(e) => setSearch(e.target.value)} onClear={() => setSearch("")} />
         </div>
 
         {/* categories */}

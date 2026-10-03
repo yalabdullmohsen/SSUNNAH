@@ -1,6 +1,6 @@
 # MICRO_FRICTION_BACKLOG
 
-Generated: 2026-10-03T08:28:56.024Z
+Generated: 2026-10-03T08:57:23.067Z
 
 Items: **4** · Ranked high-impact / low-cost first.
 

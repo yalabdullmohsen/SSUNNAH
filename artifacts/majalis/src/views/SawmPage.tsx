@@ -6,6 +6,7 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import "@/styles/pages/sawm.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 type SawmTab = "types" | "conditions" | "muftirat" | "exemptions" | "virtues";
 
@@ -640,9 +641,9 @@ export default function SawmPage() {
 
       {tab !== "conditions" && (
         <div className="sw-search-wrap">
-          <input type="search" value={search} onChange={e => setSearch(e.target.value)}
+          <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
             placeholder="ابحث في أحكام الصيام..." className="page-search-input sw-search-input"
-            aria-label="بحث في أحكام الصيام" />
+            aria-label="بحث في أحكام الصيام" onClear={() => setSearch("")} />
         </div>
       )}
 

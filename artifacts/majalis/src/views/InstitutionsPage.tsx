@@ -9,7 +9,7 @@ import { EMPTY } from "@/lib/ui-copy";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { AppPage, PageHeaderV2, EmptyStateV2 } from "@/components/design-system";
+import { AppPage, PageHeaderV2, EmptyStateV2, SearchInput } from "@/components/design-system";
 import { SectionTitle, SupportingText } from "@/components/design-system/text";
 import { FieldLabel } from "@/components/design-system/FormFields";
 import { Button } from "@/components/ui/button";
@@ -150,14 +150,8 @@ export default function InstitutionsPage() {
           <section className="ilm-discover__controls" aria-label="تصفية وبحث">
             <div className="ilm-search-wrap">
               <Search size={16} className="ilm-search__icon" aria-hidden />
-              <input
-                type="search"
-                className="ilm-search"
-                placeholder="ابحث باسم المؤسسة أو البلد أو المدينة…"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                aria-label="البحث في المؤسسات الإسلامية"
-              />
+              <SearchInput className="ilm-search" placeholder="ابحث باسم المؤسسة أو البلد أو المدينة…" value={search} onChange={(e) => setSearch(e.target.value)}
+                aria-label="البحث في المؤسسات الإسلامية" onClear={() => setSearch("")} />
             </div>
 
             <div className="ilm-chips" role="tablist" aria-label="تصفية حسب نوع المؤسسة">

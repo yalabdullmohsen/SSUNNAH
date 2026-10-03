@@ -8,6 +8,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { PAGE_EXPLORE_LINKS } from "@/lib/explore-links";
 import "@/styles/pages/adab-talab-ilm.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
@@ -545,14 +546,10 @@ export default function AdabTalabIlmPage() {
 
       {(activeTab === "fadl" || activeTab === "adab-nafs" || activeTab === "adab-sheikh" || activeTab === "adab-ilm") && (
         <div className="atl-search-wrap">
-          <input
-            type="search"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
+          <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
             placeholder="ابحث في الآداب."
             className="page-search-input atl-search-input"
-            aria-label="بحث في آداب طالب العلم"
-          />
+            aria-label="بحث في آداب طالب العلم" onClear={() => setSearch("")} />
         </div>
       )}
 

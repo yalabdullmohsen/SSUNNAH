@@ -80,7 +80,6 @@ html[data-v2-app="1"] .sidebar-close {
   min-width: var(--v2-control-h, 2.75rem);
   min-height: var(--v2-control-h, 2.75rem);
   border-radius: var(--v2-radius-md, 14px);
-  box-shadow: none;
 }
 
 html[data-v2-app="1"] .sidebar-close:focus-visible {
@@ -118,7 +117,6 @@ html[data-v2-app="1"] .sidebar-item-icon {
   width: var(--v2-icon-tile, 2.25rem);
   height: var(--v2-icon-tile, 2.25rem);
   border-radius: var(--v2-radius-icon, 12px);
-  box-shadow: none;
 }
 
 html[data-v2-app="1"] .sidebar-item-title {

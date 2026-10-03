@@ -519,7 +519,6 @@
 .topic-page__body .topic-card,
 .mk-detail .soft-card,
 .tarikh-detail .soft-card {
-  box-shadow: none;
   min-height: 0;
 }
 
@@ -804,7 +803,6 @@ html.chrome-immersive [data-global-back-control-host] {
 .topic-page--tawhid .twh-pillar-card,
 .tarikh-page .soft-card {
   min-height: 0;
-  box-shadow: none;
 }
 
 .uq-page .uq-types-list,
@@ -826,7 +824,6 @@ html.chrome-immersive [data-global-back-control-host] {
 
 .hadith-by-id[data-kx="1"] .hadith-detail-card,
 .hadith-by-id .hadith-detail-card {
-  box-shadow: none;
   min-height: 0;
 }
 
@@ -836,28 +833,23 @@ html.chrome-immersive [data-global-back-control-host] {
   background: color-mix(in srgb, #b45309 8%, var(--rsc-bg, #fffcf7));
   border-color: color-mix(in srgb, #b45309 26%, transparent);
   border-inline-start-width: 1px;
-  box-shadow: none;
 }
 .rsc--outcomes,
 .rsc--concepts {
   background: color-mix(in srgb, var(--mj-brand, #1f6b56) 7%, var(--rsc-bg, #fffcf7));
   border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 18%, transparent);
-  box-shadow: none;
 }
 .rsc--ruling {
   background: color-mix(in srgb, var(--mj-brand-deep, #0d4a39) 8%, var(--rsc-bg, #fffcf7));
   border-color: color-mix(in srgb, var(--mj-brand-deep, #0d4a39) 22%, transparent);
-  box-shadow: none;
 }
 .rsc--timeline {
   background: transparent;
   border: none;
   border-radius: 0;
-  box-shadow: none;
   padding-inline-start: 1rem;
 }
 .rsc--definition {
-  box-shadow: none;
   border-radius: 0;
   border: none;
   background: transparent;
@@ -865,7 +857,6 @@ html.chrome-immersive [data-global-back-control-host] {
 }
 .rsc--sources,
 .rsc--related {
-  box-shadow: none;
   background: transparent;
   border-radius: 0;
   border: none;

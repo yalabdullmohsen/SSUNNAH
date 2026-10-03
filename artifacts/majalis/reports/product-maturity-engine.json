@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-10-03T08:28:56.024Z",
+  "updatedAt": "2026-10-03T08:57:23.067Z",
   "PRODUCT_MATURITY_SCORECARD": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:28:56.024Z",
-    "overallScore": 75,
+    "updatedAt": "2026-10-03T08:57:23.067Z",
+    "overallScore": 76,
     "overallLevel": "MATURE",
     "categories": [
       {
         "name": "Design",
-        "score": 81,
+        "score": 82,
         "level": "MATURE"
       },
       {
@@ -24,7 +24,7 @@
       },
       {
         "name": "Consistency",
-        "score": 62,
+        "score": 64,
         "level": "ADVANCED"
       },
       {
@@ -39,7 +39,7 @@
       },
       {
         "name": "Architecture",
-        "score": 82,
+        "score": 83,
         "level": "MATURE"
       }
     ],
@@ -52,7 +52,7 @@
   },
   "DESIGN_DRIFT_ATLAS": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:28:56.024Z",
+    "updatedAt": "2026-10-03T08:57:23.067Z",
     "DESIGN_DRIFT_ERADICATION": true,
     "undocumentedDriftPolicy": "No undocumented visual drift — every entry has authority + priority",
     "entryCount": 13,
@@ -96,7 +96,7 @@
           "admin-v3/domains/content/RemainingEntityCrudPage.tsx",
           "admin-v3/domains/taxonomy/TaxonomyPage.tsx"
         ],
-        "signal": "bypass=177 adoption=7%",
+        "signal": "bypass=148 adoption=23%",
         "rootCause": "Parallel implementations outside authority",
         "authority": "FORM_AUTHORITY_MAP · FormLabel/FieldError",
         "migrationPriority": "P0",
@@ -122,7 +122,7 @@
           "styles/quran.css",
           "styles/admin.css"
         ],
-        "signal": "hardcoded shadow ×990",
+        "signal": "hardcoded shadow ×966",
         "rootCause": "Literal CSS/TSX values not mapped through DESIGN_TOKENS_AUTHORITY",
         "authority": "CARD_SURFACE_AUTHORITY · AppCard",
         "migrationPriority": "P0",
@@ -152,7 +152,7 @@
           "components/adhan/PrayerAudioPicker.tsx",
           "components/admin/review-hub/ReviewFilterBar.tsx"
         ],
-        "signal": "bypass=72 adoption=3%",
+        "signal": "bypass=71 adoption=4%",
         "rootCause": "Parallel implementations outside authority",
         "authority": "TAB_AUTHORITY_MAP · ContentTabs",
         "migrationPriority": "P1",
@@ -178,7 +178,7 @@
           "styles/quran.css",
           "styles/admin.css"
         ],
-        "signal": "hardcoded radii ×177",
+        "signal": "hardcoded radii ×140",
         "rootCause": "Literal CSS/TSX values not mapped through DESIGN_TOKENS_AUTHORITY",
         "authority": "CARD_SURFACE_AUTHORITY · AppCard",
         "migrationPriority": "P1",
@@ -193,7 +193,7 @@
           "views/admin/KnowledgeReasoningSection.tsx",
           "views/admin/LessonsSection.tsx"
         ],
-        "signal": "bypass=14 adoption=36%",
+        "signal": "bypass=14 adoption=39%",
         "rootCause": "Parallel implementations outside authority",
         "authority": "TABLE_AUTHORITY_MAP · DataTable",
         "migrationPriority": "P2",
@@ -238,7 +238,7 @@
   },
   "MICRO_FRICTION_BACKLOG": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:28:56.024Z",
+    "updatedAt": "2026-10-03T08:57:23.067Z",
     "UX_MICRO_FRICTION_ELIMINATION": true,
     "total": 4,
     "items": [
@@ -280,7 +280,7 @@
   },
   "CONTENT_STYLE_SCAN": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:28:56.024Z",
+    "updatedAt": "2026-10-03T08:57:23.067Z",
     "canonicalModule": "artifacts/majalis/src/lib/ui-copy.ts",
     "uiCopyPresent": true,
     "conflictingTerminology": [
@@ -356,7 +356,7 @@
   },
   "ICON_SCAN": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:28:56.024Z",
+    "updatedAt": "2026-10-03T08:57:23.067Z",
     "lucideFiles": 253,
     "sizeHistogram": {
       "12": 46,

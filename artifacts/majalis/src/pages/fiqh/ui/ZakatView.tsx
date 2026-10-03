@@ -9,6 +9,7 @@ import { toWesternDigits } from "@/shared/arabic-normalize";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/zakat.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 import { Button } from "@/components/ui/button";
@@ -386,9 +387,9 @@ export default function ZakatPage() {
       <section className="zk-kinds">
         <h2 className="zk-kinds__title">أنواع الزكاة وأحكامها</h2>
         <div className="zk-search-wrap">
-          <input type="search" value={search} onChange={e => setSearch(e.target.value)}
+          <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
             placeholder="ابحث في أنواع الزكاة." className="page-search-input zk-search-input"
-            aria-label="بحث في أنواع الزكاة" />
+            aria-label="بحث في أنواع الزكاة" onClear={() => setSearch("")} />
         </div>
         <div className="zk-list">
           {filteredKinds.map((k) => {

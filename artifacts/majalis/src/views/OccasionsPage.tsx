@@ -19,6 +19,7 @@ import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import "@/styles/pages/occasions.css";
 import "@/styles/components/home/home-learning-seasons.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 
 function CountdownBadge({ days }: { days: number | null | undefined }) {
   if (days == null) return <span className="occasion-detail__countdown">موسمية</span>;
@@ -129,14 +130,8 @@ export default function OccasionsPage() {
       )}
       {!loading && (
         <div className="ocp-search-wrap">
-          <input
-            type="search"
-            className="ds-input ocp-search-input"
-            placeholder="ابحث في المناسبات والأعمال..."
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            aria-label="بحث في المناسبات الإسلامية"
-          />
+          <SearchInput className="ds-input ocp-search-input" placeholder="ابحث في المناسبات والأعمال..." value={search} onChange={(e) => setSearch(e.target.value)}
+            aria-label="بحث في المناسبات الإسلامية" onClear={() => setSearch("")} />
         </div>
       )}
 

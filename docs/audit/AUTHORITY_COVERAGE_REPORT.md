@@ -1,28 +1,28 @@
 # AUTHORITY_COVERAGE_REPORT
 
-Generated: 2026-10-03T08:28:55.754Z
+Generated: 2026-10-03T08:57:22.753Z
 
-## AUTHORITY_ADOPTION_PERCENTAGE: **41%**
+## AUTHORITY_ADOPTION_PERCENTAGE: **43%**
 
 | Family | Using authority | Bypassing | Relevant | Adoption % |
 |---|---:|---:|---:|---:|
 | cards | 20 | 208 | 228 | 9 |
 | buttons | 250 | 100 | 350 | 71 |
-| forms | 14 | 177 | 191 | 7 |
-| tables | 8 | 14 | 22 | 36 |
+| forms | 43 | 148 | 191 | 23 |
+| tables | 9 | 14 | 23 | 39 |
 | lists | 8 | 74 | 82 | 10 |
-| tabs | 2 | 72 | 74 | 3 |
+| tabs | 3 | 71 | 74 | 4 |
 | navigation | 15 | 1 | 16 | 94 |
 | modals | 26 | 1 | 27 | 96 |
 
 ## Top divergence sources
 
 - **cards**: bypass=208 · adoption=9%
-- **forms**: bypass=177 · adoption=7%
+- **forms**: bypass=148 · adoption=23%
 - **buttons**: bypass=100 · adoption=71%
 - **lists**: bypass=74 · adoption=10%
-- **tabs**: bypass=72 · adoption=3%
-- **tables**: bypass=14 · adoption=36%
+- **tabs**: bypass=71 · adoption=4%
+- **tables**: bypass=14 · adoption=39%
 
 ## Migration priority (non-SPECIAL samples)
 
@@ -50,11 +50,11 @@ Generated: 2026-10-03T08:28:55.754Z
 - `components/AdminInlineEdit.tsx`
 - `components/AdminSiteEditBar.tsx`
 - `components/ContentActions.tsx`
-- `components/FiqhGuidePage.tsx`
 - `components/GlobalSearchModal.tsx`
 - `components/HijriMonthSelect.tsx`
 - `components/SearchSuggestions.tsx`
 - `components/adhan/AudioPromptsSettingsCard.tsx`
+- `components/adhan/MuezzinPicker.tsx`
 
 ### tables
 - `components/prayer/PrayerAnnualTimetable.tsx`

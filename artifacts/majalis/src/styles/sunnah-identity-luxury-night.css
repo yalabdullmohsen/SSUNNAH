@@ -61,7 +61,6 @@ html[data-v2-app="1"][data-v2-night="1"] .section-entry-card__icon,
 html[data-v2-app="1"][data-v2-night="1"] .more-page-tile__icon {
   background: var(--v2-surface-functional);
   color: var(--v2-color-night-emerald-text, #9fd4bf);
-  box-shadow: none;
 }
 
 /* ── Quote / detail ── */

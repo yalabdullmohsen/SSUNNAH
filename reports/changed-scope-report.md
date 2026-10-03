@@ -1,8 +1,8 @@
 # تقرير نطاق التغييرات
 
-**التاريخ:** 2026-10-03T08:27:34.927Z
-**عدد الملفات:** 34
-**النطاقات:** other، content/data، ui/layout
+**التاريخ:** 2026-10-03T08:50:00.461Z
+**عدد الملفات:** 57
+**النطاقات:** other، ui/layout، content/data، quran/mushaf
 **docs-only:** لا
 
 ## البوابات المقترحة
@@ -16,7 +16,7 @@
 | content | ✓ |
 | ios | — |
 | full | ✓ |
-| mushaf | — |
+| mushaf | ✓ |
 | build | ✓ |
 | visual | ✓ |
 | lighthouse | ✓ |
@@ -26,40 +26,47 @@
 ## الملفات المتغيرة (أول 40)
 
 - `artifacts/majalis/reports/interaction-system-baseline.json` → other
-- `artifacts/majalis/reports/interaction-system-debt-budget.json` → other
 - `artifacts/majalis/reports/visual-system-baseline.json` → other
 - `artifacts/majalis/reports/visual-system-debt-budget.json` → other
-- `artifacts/majalis/src/pages/account/ui/FawaidView.tsx` → content_data
-- `artifacts/majalis/src/pages/fiqh/ui/RulingDetailView.tsx` → ui_layout
-- `artifacts/majalis/src/pages/lessons/LessonsArchivePage.tsx` → ui_layout
-- `artifacts/majalis/src/pages/lessons/TeachersIndexPage.tsx` → ui_layout
-- `artifacts/majalis/src/pages/worship/ui/PrayerRanksView.tsx` → ui_layout
-- `artifacts/majalis/src/styles/card-system-v2.css` → ui_layout
-- `artifacts/majalis/src/styles/components/friday-banner.css` → ui_layout
-- `artifacts/majalis/src/styles/components/home-recommended.css` → ui_layout
-- `artifacts/majalis/src/styles/discover-islam.css` → ui_layout
-- `artifacts/majalis/src/styles/highlighted-content.css` → ui_layout
-- `artifacts/majalis/src/styles/pages/arbaeen-nawawi.css` → ui_layout
-- `artifacts/majalis/src/styles/pages/assistant.css` → ui_layout
+- `artifacts/majalis/src/components/FiqhGuidePage.tsx` → ui_layout
+- `artifacts/majalis/src/components/knowledge-collection/KnowledgeCollectionSystem.tsx` → ui_layout
+- `artifacts/majalis/src/pages/account/ui/LoginView.tsx` → ui_layout
+- `artifacts/majalis/src/pages/fiqh/ui/HajjView.tsx` → ui_layout
+- `artifacts/majalis/src/pages/fiqh/ui/JanazaView.tsx` → ui_layout
+- `artifacts/majalis/src/pages/fiqh/ui/MawarithCalculatorView.tsx` → ui_layout
+- `artifacts/majalis/src/pages/fiqh/ui/MawarithView.tsx` → ui_layout
+- `artifacts/majalis/src/pages/fiqh/ui/SalahGuideView.tsx` → ui_layout
+- `artifacts/majalis/src/pages/fiqh/ui/ZakatView.tsx` → ui_layout
+- `artifacts/majalis/src/pages/hadith/ui/ArbaeenNawawiView.tsx` → content_data
+- `artifacts/majalis/src/pages/hadith/ui/HadithBooksView.tsx` → content_data
+- `artifacts/majalis/src/pages/hadith/ui/HadithScienceView.tsx` → content_data
+- `artifacts/majalis/src/pages/quran/ui/DuasQuranView.tsx` → quran_mushaf
+- `artifacts/majalis/src/styles/card-decorative-strip-cleanup.css` → ui_layout
+- `artifacts/majalis/src/styles/card-matte-unify.css` → ui_layout
+- `artifacts/majalis/src/styles/final-release.css` → ui_layout
+- `artifacts/majalis/src/styles/knowledge-experience.css` → ui_layout
+- `artifacts/majalis/src/styles/modern-islamic-editorial.css` → ui_layout
+- `artifacts/majalis/src/styles/modern-ui-refresh.css` → ui_layout
+- `artifacts/majalis/src/styles/pages/adhkar.css` → ui_layout
 - `artifacts/majalis/src/styles/pages/auth.css` → ui_layout
 - `artifacts/majalis/src/styles/pages/fiqh-hub.css` → ui_layout
-- `artifacts/majalis/src/styles/pages/hadith-books.css` → ui_layout
 - `artifacts/majalis/src/styles/pages/hadith-design-language.css` → ui_layout
-- `artifacts/majalis/src/styles/pages/miracles.css` → ui_layout
-- `artifacts/majalis/src/styles/pages/prophet-stories.css` → ui_layout
-- `artifacts/majalis/src/styles/pages/qiraat.css` → ui_layout
-- `artifacts/majalis/src/styles/pages/quran-people.css` → ui_layout
-- `artifacts/majalis/src/styles/pages/seerah.css` → ui_layout
-- `artifacts/majalis/src/styles/pages/settings.css` → ui_layout
-- `artifacts/majalis/src/styles/pages/shimael.css` → ui_layout
-- `artifacts/majalis/src/styles/pages/sources-directory.css` → ui_layout
-- `artifacts/majalis/src/styles/pages/tajweed.css` → ui_layout
-- `artifacts/majalis/src/styles/pages/tawhid.css` → ui_layout
-- `artifacts/majalis/src/styles/prayer-route-shell.css` → ui_layout
-- `artifacts/majalis/src/styles/sunnah-identity-cards.css` → ui_layout
-- `artifacts/majalis/src/styles/sunnah-visual-language.css` → ui_layout
-- `artifacts/majalis/src/views/UpdatesPage.tsx` → ui_layout
+- `artifacts/majalis/src/styles/pages/hadith-mustalah.css` → ui_layout
+- `artifacts/majalis/src/styles/pages/hadith.css` → ui_layout
+- `artifacts/majalis/src/styles/pages/kuwait-lessons.css` → ui_layout
+- `artifacts/majalis/src/styles/pages/madhahib.css` → ui_layout
+- `artifacts/majalis/src/styles/pages/reading-plans.css` → ui_layout
+- `artifacts/majalis/src/styles/pages/scholarly-research.css` → ui_layout
+- `artifacts/majalis/src/styles/pages/transcribe.css` → ui_layout
+- `artifacts/majalis/src/styles/pages/university-detail.css` → ui_layout
+- `artifacts/majalis/src/styles/ssunnah-ux-polish.css` → ui_layout
+- `artifacts/majalis/src/styles/sunnah-identity-chrome-nav.css` → ui_layout
+- `artifacts/majalis/src/styles/sunnah-identity-luxury-night.css` → ui_layout
+- `artifacts/majalis/src/styles/sunnah-identity-reset.css` → ui_layout
+- `artifacts/majalis/src/styles/visual-enrichment.css` → ui_layout
+- `artifacts/majalis/src/views/AdabTalabIlmPage.tsx` → ui_layout
 
+… +17 ملفًا
 
 ## سياسات
 

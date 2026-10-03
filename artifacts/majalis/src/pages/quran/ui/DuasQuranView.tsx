@@ -7,6 +7,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { Button } from "@/components/ui/button";
 import "@/styles/pages/duas-quran.css";
 import { ListScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system";
 
 
 type DuaCategory = "الكل" | "الأنبياء" | "الرزق والهداية" | "المغفرة" | "الأسرة" | "الدنيا والآخرة" | "الصبر والنصر";
@@ -376,13 +377,7 @@ export default function DuasQuranPage() {
 
       <div className="dq-body">
         {/* search */}
-        <input
-          type="search"
-          className="dq-search"
-          aria-label="ابحث بالاسم أو الآية" placeholder="ابحث بالاسم أو الآية..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <SearchInput className="dq-search" aria-label="ابحث بالاسم أو الآية" placeholder="ابحث بالاسم أو الآية..." value={search} onChange={(e) => setSearch(e.target.value)} onClear={() => setSearch("")} />
 
         {/* categories */}
         <div className="dq-cats" role="tablist" aria-label="تصفية أدعية القرآن">
