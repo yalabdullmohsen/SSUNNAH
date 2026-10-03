@@ -90,6 +90,26 @@ export const DESIGN_TOKENS_AUTHORITY = {
   "breakpoint.desktop": "--bp-desktop",
   "breakpoint.widescreen": "--bp-wide",
 
+  // ── Motion (existing --motion-* / --duration* / ease — no new family) ──
+  "motion.fast": "--motion-fast",
+  "motion.normal": "--motion-normal",
+  "motion.slow": "--motion-slow",
+  "motion.ease.standard": "--ease-standard",
+  "motion.ease.emphasized": "--ease-emphasized",
+  "motion.duration.fast": "--durationFast",
+  "motion.duration.normal": "--durationNormal",
+  "motion.duration.emphasized": "--durationEmphasized",
+
+  // ── Focus / accessibility ──
+  "focus.ring": "--sf2-focus-ring",
+  "focus.ring.glow": "--sf2-focus-ring-glow",
+  "a11y.touchMin": "--touch-min",
+  "a11y.touchComfortable": "--touch-comfortable",
+  "a11y.safeArea.top": "--inset-top",
+  "a11y.safeArea.bottom": "--inset-bottom",
+  "a11y.contentMax": "--content-max",
+  "a11y.pagePadX": "--page-pad-x",
+
   // ── Component tokens ──
   "card.padding": "--sf2-space-4",
   "card.radius": "--radius-card",
@@ -111,6 +131,11 @@ export const DESIGN_TOKENS_AUTHORITY = {
   "modal.width": "max-w-lg",
   "modal.radius": "--radius-card",
   "modal.spacing": "--sf2-space-6",
+  "modal.component": "Dialog",
+  "sheet.component": "AppBottomSheet",
+  "alert.component": "AlertDialog",
+  "toast.component": "Toaster",
+  "drawer.component": "Sheet",
   "tab.height": "--ss-tab-min-height",
   "tab.spacing": "--ss-tab-pad-x",
   "tab.indicator": "--ss-tab-indicator-size",
@@ -125,6 +150,9 @@ export const DESIGN_TOKENS_AUTHORITY = {
   "status.empty": "EmptyStateV2",
   "status.error": "ErrorStateV2",
   "status.offline": "OfflineStateV2",
+  "status.noResults": "NoResultsState",
+  "status.permission": "PermissionDeniedState",
+  "status.rateLimited": "RateLimitedState",
 } as const;
 
 export type DesignTokenPath = keyof typeof DESIGN_TOKENS_AUTHORITY;

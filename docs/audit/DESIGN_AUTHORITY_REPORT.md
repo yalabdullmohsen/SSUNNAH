@@ -1,6 +1,6 @@
 # DESIGN_AUTHORITY_REPORT
 
-Generated: 2026-10-03T08:57:16.256Z
+Generated: 2026-10-03T09:21:24.298Z
 
 ## Authority maps
 

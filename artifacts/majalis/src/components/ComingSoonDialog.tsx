@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { X } from "lucide-react";
+import { Link } from "wouter";
+import { AppBottomSheet } from "@/components/ui/AppBottomSheet";
 import { Button } from "@/components/ui/button";
 
 type Props = {
@@ -8,66 +8,30 @@ type Props = {
   onClose: () => void;
 };
 
-/** حوار احتياطي لمسار غير متاح في الواجهة العامة. */
+/** حوار احتياطي لمسار غير متاح — سلطة الشيت السفلي + زر إجراء. */
 export function ComingSoonDialog({ open, title, onClose }: Props) {
-  const closeRef = useRef<HTMLButtonElement>(null);
-  const previouslyFocused = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    previouslyFocused.current = document.activeElement as HTMLElement | null;
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const t = window.setTimeout(() => closeRef.current?.focus(), 40);
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", onKey);
-    return () => {
-      window.clearTimeout(t);
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prevOverflow;
-      previouslyFocused.current?.focus?.();
-    };
-  }, [open, onClose]);
-
-  if (!open) return null;
-
   return (
-    /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
-    <div className="bottom-sheet-overlay" role="presentation" onClick={onClose}>
-      <div
-        className="bottom-sheet coming-soon-dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-label={title}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="bottom-sheet__handle" />
-        <div className="bottom-sheet__head">
-          <span>قسم غير متاح</span>
-          <Button
-            ref={closeRef}
-            type="button"
-            variant="ghost"
-            size="icon"
-            onClick={onClose}
-            className="bottom-sheet__close-btn"
-            aria-label="إغلاق"
-          >
-            <X size={18} strokeWidth={1.8} aria-hidden="true" />
-          </Button>
-        </div>
-        <div className="bottom-sheet__body">
-          <div className="coming-soon-dialog__body">
-            <h2 className="coming-soon-dialog__title">{title}</h2>
-            <p className="coming-soon-dialog__text">
-              هذا القسم غير متاح الآن. تصفّح الأقسام من الشريط أو دليل الأقسام.
-            </p>
-          </div>
-        </div>
+    <AppBottomSheet
+      open={open}
+      onClose={onClose}
+      title="قسم غير متاح"
+      snap="auto"
+      className="coming-soon-dialog"
+      footer={
+        <Button type="button" variant="primary" asChild>
+          <Link href="/sections" onClick={onClose}>
+            تصفّح دليل الأقسام
+          </Link>
+        </Button>
+      }
+    >
+      <div className="coming-soon-dialog__body">
+        <h2 className="coming-soon-dialog__title">{title}</h2>
+        <p className="coming-soon-dialog__text">
+          هذا القسم غير متاح الآن. تصفّح الأقسام من الشريط أو دليل الأقسام.
+        </p>
       </div>
-    </div>
+    </AppBottomSheet>
   );
 }
 

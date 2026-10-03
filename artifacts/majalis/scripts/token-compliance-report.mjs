@@ -49,8 +49,11 @@ const rogue = {
   colors: {
     signal: "hexInCss + rgbHslInCss",
     hexInCss: baseline.hexInCss,
+    rgbHslInCss: baseline.rgbHslInCss,
     ceiling: budget.ceilings.hexInCss,
-    ok: baseline.hexInCss <= budget.ceilings.hexInCss,
+    ok:
+      baseline.hexInCss <= budget.ceilings.hexInCss &&
+      baseline.rgbHslInCss <= (budget.ceilings.rgbHslInCss ?? Infinity),
   },
   shadows: {
     signal: "boxShadowDecls",
@@ -64,9 +67,34 @@ const rogue = {
     ceiling: budget.ceilings.borderRadiusPxDecls,
     ok: baseline.borderRadiusPxDecls <= budget.ceilings.borderRadiusPxDecls,
   },
+  important: {
+    signal: "important",
+    value: baseline.important,
+    ceiling: budget.ceilings.important,
+    ok: baseline.important <= budget.ceilings.important,
+  },
+  inlineColors: {
+    signal: "inlineColorStyleMatches",
+    value: baseline.inlineColorStyleMatches,
+    ceiling: budget.ceilings.inlineColorStyleMatches,
+    ok: baseline.inlineColorStyleMatches <= budget.ceilings.inlineColorStyleMatches,
+  },
+  rawButtons: {
+    signal: "rawButtonFiles",
+    value: baseline.rawButtonFiles,
+    ceiling: budget.ceilings.rawButtonFiles,
+    ok: baseline.rawButtonFiles <= budget.ceilings.rawButtonFiles,
+  },
   spacingTypographySystems: {
     signal: "no new family (sf/mj/ss only) — map + DESIGN_TOKEN_AUTHORITY",
     ok: true,
+  },
+  unauthorizedRecipes: {
+    signal: "component paths resolve to Dialog/AppBottomSheet/Feedback V2 only",
+    ok:
+      DESIGN_TOKENS_AUTHORITY["modal.component"] === "Dialog" &&
+      DESIGN_TOKENS_AUTHORITY["sheet.component"] === "AppBottomSheet" &&
+      DESIGN_TOKENS_AUTHORITY["status.empty"] === "EmptyStateV2",
   },
 };
 

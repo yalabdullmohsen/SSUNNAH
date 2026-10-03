@@ -40,6 +40,11 @@ assert.equal(DESIGN_TOKENS_AUTHORITY["elevation.1"], "--sf2-elevation-1");
 assert.equal(DESIGN_TOKENS_AUTHORITY["border.subtle"], "--ss-border-subtle");
 assert.equal(DESIGN_TOKENS_AUTHORITY["card.shadow"], "--sf2-elevation-1");
 assert.equal(DESIGN_TOKENS_AUTHORITY["status.empty"], "EmptyStateV2");
+assert.equal(DESIGN_TOKENS_AUTHORITY["motion.fast"], "--motion-fast");
+assert.equal(DESIGN_TOKENS_AUTHORITY["focus.ring"], "--sf2-focus-ring");
+assert.equal(DESIGN_TOKENS_AUTHORITY["a11y.touchMin"], "--touch-min");
+assert.equal(DESIGN_TOKENS_AUTHORITY["sheet.component"], "AppBottomSheet");
+assert.equal(DESIGN_TOKENS_AUTHORITY["modal.component"], "Dialog");
 assert.equal(resolveDesignToken("typography.pageTitle"), "--sf-type-page-title");
 
 assert.match(script, /TOKEN_COMPLIANCE_REPORT/);

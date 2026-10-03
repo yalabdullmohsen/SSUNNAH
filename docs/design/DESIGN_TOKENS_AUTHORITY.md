@@ -32,7 +32,9 @@ JSON export: `artifacts/majalis/reports/design-tokens-authority.json` (via compl
 | Elevation | `elevation.0…4` → `--sf2-elevation-*` |
 | Borders | `border.*` → `--ss-border-*` / hairline / focus |
 | Breakpoints | mobile→`--bp-lg` · tablet · desktop · widescreen |
-| Components | card/button/form/table/list/modal/tab/nav/search/filter/status |
+| Motion | `motion.fast/normal/slow` → `--motion-*` · ease → `--ease-*` · duration aliases |
+| Focus / a11y | `focus.ring` → `--sf2-focus-ring` · `a11y.touchMin` → `--touch-min` · safe-area / content-max |
+| Components | card/button/form/table/list/modal/sheet/alert/toast/drawer/tab/nav/search/filter/status |
 
 Full path table: see `DESIGN_TOKENS_AUTHORITY` object in code (source of truth).
 

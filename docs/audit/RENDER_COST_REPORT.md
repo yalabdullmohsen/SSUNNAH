@@ -1,6 +1,6 @@
 # RENDER_COST_REPORT
 
-Generated: 2026-10-03T08:57:24.640Z
+Generated: 2026-10-03T09:21:31.895Z
 
 **Method:** static proxies — NOT wall-clock CPU. DEVICE_REQUIRED for Profiler.
 

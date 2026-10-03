@@ -1,6 +1,6 @@
 # DESIGN_DRIFT_ATLAS
 
-Generated: 2026-10-03T08:57:23.067Z
+Generated: 2026-10-03T09:21:30.460Z
 
 Entries: **13** · Policy: no undocumented visual drift.
 

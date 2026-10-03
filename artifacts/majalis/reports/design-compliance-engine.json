@@ -2,7 +2,7 @@
   "DESIGN_COMPLIANCE_SCORE": 74,
   "DESIGN_COMPLIANCE_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:18.355Z",
+    "updatedAt": "2026-10-03T09:21:26.150Z",
     "DESIGN_COMPLIANCE_SCORE": 74,
     "DESIGN_SYSTEM_COMPLIANCE_ENGINE": true,
     "signals": {
@@ -261,12 +261,12 @@
   ],
   "TOKEN_COVERAGE_SCORECARD": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:18.355Z",
+    "updatedAt": "2026-10-03T09:21:26.150Z",
     "tokenUsagePct": 60,
     "hardcodedValuesPct": 40,
     "legacyCssDensityScore": 100,
     "authorityCoveragePct": 43,
-    "designTokenPaths": 101,
+    "designTokenPaths": 125,
     "refs": {
       "sf": 1128,
       "mj": 11629,
@@ -279,7 +279,7 @@
   },
   "UI_DUPLICATION_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:18.355Z",
+    "updatedAt": "2026-10-03T09:21:26.150Z",
     "policy": "One pattern per use case · migrate-when-touched",
     "clusters": [
       {
@@ -393,7 +393,7 @@
   },
   "VISUAL_HEATMAP": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:18.355Z",
+    "updatedAt": "2026-10-03T09:21:26.150Z",
     "ranked": [
       {
         "area": "styles",
@@ -552,7 +552,7 @@
   },
   "CONSISTENCY_PRIORITY_MATRIX": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:18.355Z",
+    "updatedAt": "2026-10-03T09:21:26.150Z",
     "byDebt": [
       {
         "rank": 1,
@@ -716,7 +716,7 @@
   },
   "PRODUCT_SURFACE_MAP": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:18.355Z",
+    "updatedAt": "2026-10-03T09:21:26.150Z",
     "total": 403,
     "classCounts": {
       "Unified": 157,
@@ -2795,7 +2795,7 @@
   },
   "SUNNAH_PRODUCT_CERTIFICATION_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:18.355Z",
+    "updatedAt": "2026-10-03T09:21:26.150Z",
     "overallScore": 68,
     "overallRating": "PARTIAL",
     "dimensions": [

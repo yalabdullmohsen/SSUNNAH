@@ -1,6 +1,6 @@
 # TOKEN_COMPLIANCE_REPORT
 
-Generated: 2026-10-03T08:57:13.921Z
+Generated: 2026-10-03T09:21:22.190Z
 
 ## Status
 
@@ -9,9 +9,9 @@ Generated: 2026-10-03T08:57:13.921Z
 | DESIGN_TOKENS_AUTHORITY_ACTIVE | ✅ |
 | TOKEN_COMPLIANCE_ENFORCED | ✅ |
 | VISUAL_SYSTEM_UNIFIED | ✅ |
-| Logical paths | 101 |
-| CSS var bindings | 88 |
-| Component/literal bindings | 13 |
+| Logical paths | 125 |
+| CSS var bindings | 104 |
+| Component/literal bindings | 21 |
 
 ## Rogue signals (debt proxies)
 

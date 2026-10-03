@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-10-03T08:57:23.067Z",
+  "updatedAt": "2026-10-03T09:21:30.460Z",
   "PRODUCT_MATURITY_SCORECARD": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:23.067Z",
+    "updatedAt": "2026-10-03T09:21:30.460Z",
     "overallScore": 76,
     "overallLevel": "MATURE",
     "categories": [
@@ -52,7 +52,7 @@
   },
   "DESIGN_DRIFT_ATLAS": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:23.067Z",
+    "updatedAt": "2026-10-03T09:21:30.460Z",
     "DESIGN_DRIFT_ERADICATION": true,
     "undocumentedDriftPolicy": "No undocumented visual drift — every entry has authority + priority",
     "entryCount": 13,
@@ -238,7 +238,7 @@
   },
   "MICRO_FRICTION_BACKLOG": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:23.067Z",
+    "updatedAt": "2026-10-03T09:21:30.460Z",
     "UX_MICRO_FRICTION_ELIMINATION": true,
     "total": 4,
     "items": [
@@ -280,7 +280,7 @@
   },
   "CONTENT_STYLE_SCAN": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:23.067Z",
+    "updatedAt": "2026-10-03T09:21:30.460Z",
     "canonicalModule": "artifacts/majalis/src/lib/ui-copy.ts",
     "uiCopyPresent": true,
     "conflictingTerminology": [
@@ -356,8 +356,8 @@
   },
   "ICON_SCAN": {
     "version": 1,
-    "updatedAt": "2026-10-03T08:57:23.067Z",
-    "lucideFiles": 253,
+    "updatedAt": "2026-10-03T09:21:30.460Z",
+    "lucideFiles": 252,
     "sizeHistogram": {
       "12": 46,
       "13": 157,
@@ -365,7 +365,7 @@
       "15": 76,
       "16": 186,
       "17": 11,
-      "18": 207,
+      "18": 205,
       "19": 1,
       "20": 42,
       "22": 49,
