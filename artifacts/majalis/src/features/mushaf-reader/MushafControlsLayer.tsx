@@ -257,11 +257,21 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
   const onMoreBookmark = useCallback(() => {
     if (onBookmarkPage) runMoreAction(onBookmarkPage);
   }, [onBookmarkPage, runMoreAction]);
-  const onMorePlay = useCallback(() => runMoreAction(onPlayPage), [onPlayPage, runMoreAction]);
-  const onMoreTafsir = useCallback(() => runMoreAction(onTafsir), [onTafsir, runMoreAction]);
-  const onMoreNotes = useCallback(() => runMoreAction(onNotes), [onNotes, runMoreAction]);
-  const onMoreShare = useCallback(() => runMoreAction(onSharePage), [onSharePage, runMoreAction]);
-  const onMoreCopy = useCallback(() => runMoreAction(onCopyLink), [onCopyLink, runMoreAction]);
+  const onMorePlay = useCallback(() => {
+    if (onPlayPage) runMoreAction(onPlayPage);
+  }, [onPlayPage, runMoreAction]);
+  const onMoreTafsir = useCallback(() => {
+    if (onTafsir) runMoreAction(onTafsir);
+  }, [onTafsir, runMoreAction]);
+  const onMoreNotes = useCallback(() => {
+    if (onNotes) runMoreAction(onNotes);
+  }, [onNotes, runMoreAction]);
+  const onMoreShare = useCallback(() => {
+    if (onSharePage) runMoreAction(onSharePage);
+  }, [onSharePage, runMoreAction]);
+  const onMoreCopy = useCallback(() => {
+    if (onCopyLink) runMoreAction(onCopyLink);
+  }, [onCopyLink, runMoreAction]);
   const onMoreToggleFocus = useCallback(() => {
     onToggleFocusReadingMode?.();
   }, [onToggleFocusReadingMode]);
