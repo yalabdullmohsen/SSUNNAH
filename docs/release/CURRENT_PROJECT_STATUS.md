@@ -74,6 +74,8 @@ Phases AV–AZ: `docs/audit/VISUAL_AV_AZ_PRODUCT_EXCELLENCE_REPORT.md` · cohesi
 
 Phases BA–BE: `docs/audit/VISUAL_BA_BE_PRODUCT_MATURITY_REPORT.md` · maturity scorecard · drift atlas · micro-friction · content/icon authorities · `test:product-maturity`.
 
+Phases BF–BJ: `docs/audit/VISUAL_BF_BJ_PERFORMANCE_EXCELLENCE_REPORT.md` · render/mushaf/startup/network/budgets · `test:performance-excellence` (no speculative fixes).
+
 ## Endgame phases (A–H)
 
 | Phase | Target exit | Status |

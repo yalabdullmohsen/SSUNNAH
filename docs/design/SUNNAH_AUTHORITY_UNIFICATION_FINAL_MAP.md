@@ -168,6 +168,12 @@ Program: `PRODUCT_MATURITY_PROGRAM.md` · `scripts/product-maturity-engine.mjs`.
 Outputs: PRODUCT_MATURITY_SCORECARD · DESIGN_DRIFT_ATLAS · MICRO_FRICTION_BACKLOG · CONTENT_STYLE_AUTHORITY · ICON_AUTHORITY_MAP.  
 Gate: `test:product-maturity`.
 
+## Performance excellence BF–BJ
+
+Program: `PERFORMANCE_EXCELLENCE_PROGRAM.md` · `scripts/performance-excellence-engine.mjs`.  
+Outputs: RENDER_COST · MUSHAF_BOTTLENECK · STARTUP_PERFORMANCE · NETWORK_EFFICIENCY · PERFORMANCE_BUDGET (+ drift alerts).  
+Gate: `test:performance-excellence` · existing `test:bundle-budget` / LHCI budgets unchanged.
+
 ## Page Authority
 
 Canonical: `AppPage` · `PageHeader` · Screen adapters (`DetailScreen`, …) per `PAGE_CONTRACT_MATRIX.md`.
