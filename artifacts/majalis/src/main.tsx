@@ -116,6 +116,9 @@ function loadNonCriticalCss() {
       ? (location.pathname || "/").replace(/\/+$/, "") || "/"
       : "/";
   const isHome = path === "/";
+  /* مصحف غامر: لا تنافس هوية الأقسام/design-system مع أول تقليبة */
+  const isMushaf = path === "/mushaf" || path.startsWith("/mushaf/");
+  const deferAppChromeCss = isHome || isMushaf;
   const wantsReadingShell =
     path.startsWith("/lessons") ||
     path.startsWith("/hadith") ||
@@ -142,8 +145,8 @@ function loadNonCriticalCss() {
   void import("./styles/ssunnah-card-unify.css");
   void import("./styles/card-matte-unify.css");
   void import("./styles/components/badge-system.css");
-  /* Home: mur/ds-canonical يصفّران min-height الهيرو بـ !important → CLS */
-  if (!isHome) {
+  /* Home/Mushaf: mur/ds-canonical ليست ATF — تُؤجَّل مع heavy */
+  if (!deferAppChromeCss) {
     void import("./styles/modern-ui-refresh.css");
     void import("./styles/ssunnah-ds-canonical.css");
   }
@@ -153,7 +156,7 @@ function loadNonCriticalCss() {
   void import("./styles/a11y-release-gate.css");
   void import("./styles/visual-enrichment.css");
   const loadHeavyIdentityCss = () => {
-    if (isHome) {
+    if (deferAppChromeCss) {
       void import("./styles/sunnah-visual-language.css");
       void import("./styles/sunnah-geometry-system.css");
       void import("./styles/modern-ui-refresh.css");
@@ -171,7 +174,7 @@ function loadNonCriticalCss() {
           void import("./styles/card-system.css").then(() => {
             void import("./styles/card-system-v2.css");
             void import("./styles/app-state-v2.css");
-            if (!isHome) {
+            if (!isHome && !isMushaf) {
               void import("./styles/islam-intro-experience.css");
             }
           });
@@ -179,26 +182,27 @@ function loadNonCriticalCss() {
       });
     });
   };
-  /* LHCI Home: design-system ~94% unused أثناء gather — لا تحمّله إلا بتفاعل أو بعد 60s */
-  if (isHome) {
+  /* Home + Mushaf: لا تحمّل design-system الثقيل إلا بتفاعل أو idle متأخر */
+  if (deferAppChromeCss) {
     let heavyArmed = false;
     const armHeavy = () => {
       if (heavyArmed) return;
       heavyArmed = true;
-      scheduleOnIdle(loadHeavyIdentityCss, 800);
+      scheduleOnIdle(loadHeavyIdentityCss, isMushaf ? 1600 : 800);
     };
     window.addEventListener("pointerdown", armHeavy, { once: true, passive: true });
     window.addEventListener("keydown", armHeavy, { once: true });
     window.addEventListener("touchstart", armHeavy, { once: true, passive: true });
-    const startHeavyTimer = () => window.setTimeout(armHeavy, 60_000);
+    const heavyDelayMs = isMushaf ? 90_000 : 60_000;
+    const startHeavyTimer = () => window.setTimeout(armHeavy, heavyDelayMs);
     if (document.readyState === "complete") startHeavyTimer();
     else window.addEventListener("load", startHeavyTimer, { once: true });
   } else {
     loadHeavyIdentityCss();
   }
   void import("./styles/components/instant-interaction.css");
-  /* Home ATF: svl/geometry تغيّر مقاس عنوان الهيرو → CLS — مع heavy فقط */
-  if (!isHome) {
+  /* Home/Mushaf ATF: svl/geometry ليست لسطح المصحف — مع heavy فقط */
+  if (!deferAppChromeCss) {
     void import("./styles/sunnah-visual-language.css");
     void import("./styles/sunnah-geometry-system.css");
     void import("./styles/visual-refresh-v1.css");
@@ -206,7 +210,7 @@ function loadNonCriticalCss() {
   void import("./styles/components/native-feel.css");
   void import("./styles/m2030/interactions.css");
 
-  if (!isHome) {
+  if (!deferAppChromeCss) {
     void import("./styles/index-deferred-pages.css");
     void import("./styles/section-makarim-pattern.css");
     void import("./styles/components/compact-sources.css");

@@ -19,6 +19,9 @@ export type MushafUserDataMigrationResult = {
   reciterId: string;
 };
 
+/** مرة لكل جلسة — الصفحة والقارئ كلاهما يستدعيان؛ الثاني no-op رخيص */
+let sessionMigrateCache: MushafUserDataMigrationResult | null = null;
+
 function readMigrationVersion(): number {
   try {
     if (typeof localStorage === "undefined") return 0;
@@ -43,14 +46,17 @@ function writeMigrationVersion(v: number): void {
  * getMyBookmarks() نفسه يهجّر السجلات القديمة إلى ayahKey.
  */
 export function migrateMushafUserData(): MushafUserDataMigrationResult {
+  if (sessionMigrateCache) return sessionMigrateCache;
+
   if (!MUSHAF_V2_FEATURES.userDataMigration) {
-    return {
+    sessionMigrateCache = {
       version: readMigrationVersion(),
       ran: false,
       lastPage: loadLastPageSync(),
       bookmarkCount: getMyBookmarks().length,
       reciterId: loadReciterId(),
     };
+    return sessionMigrateCache;
   }
 
   const current = readMigrationVersion();
@@ -68,21 +74,23 @@ export function migrateMushafUserData(): MushafUserDataMigrationResult {
   saveReciterId(reciterId);
 
   if (current >= MUSHAF_USER_DATA_MIGRATION_VERSION) {
-    return {
+    sessionMigrateCache = {
       version: current,
       ran: false,
       lastPage,
       bookmarkCount: bookmarks.length,
       reciterId,
     };
+    return sessionMigrateCache;
   }
 
   writeMigrationVersion(MUSHAF_USER_DATA_MIGRATION_VERSION);
-  return {
+  sessionMigrateCache = {
     version: MUSHAF_USER_DATA_MIGRATION_VERSION,
     ran: true,
     lastPage,
     bookmarkCount: bookmarks.length,
     reciterId,
   };
+  return sessionMigrateCache;
 }

@@ -53,7 +53,9 @@ export function prefetchRoute(href: string, opts?: { warmAppRoutes?: boolean }):
     prefetchAppRoutesShell();
   }
   const path = (href.split("?")[0] || "/").split("#")[0] || "/";
-  if (!path || path === "/" || seen.has(path)) return;
+  if (!path || path === "/") return;
+  /* once لكل مسار — يمنع عاصفة dynamic import + link prefetch على pointer storms */
+  if (seen.has(path)) return;
   seen.add(path);
   const load = CHUNK[path];
   if (load) void load().catch(() => undefined);
@@ -66,7 +68,10 @@ export function prefetchRoute(href: string, opts?: { warmAppRoutes?: boolean }):
     const prefix = Object.keys(CHUNK)
       .filter((k) => k !== "/" && path.startsWith(`${k}/`))
       .sort((a, b) => b.length - a.length)[0];
-    if (prefix) void CHUNK[prefix]().catch(() => undefined);
+    if (prefix && !seen.has(`chunk:${prefix}`)) {
+      seen.add(`chunk:${prefix}`);
+      void CHUNK[prefix]().catch(() => undefined);
+    }
   }
   if (typeof document === "undefined") return;
   try {

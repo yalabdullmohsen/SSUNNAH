@@ -49,15 +49,16 @@ type Props = {
 
 export function MushafReadingCoach({ blocked = false }: Props) {
   const titleId = useId();
+  /** مستخدمون عائدون: بلا مؤقّت ولا مستمع مفاتيح */
+  const [alreadyDone] = useState(() => isDismissed());
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
 
   useEffect(() => {
-    if (blocked) return;
-    if (isDismissed()) return;
+    if (alreadyDone || blocked) return;
     const t = window.setTimeout(() => setOpen(true), 480);
     return () => window.clearTimeout(t);
-  }, [blocked]);
+  }, [alreadyDone, blocked]);
 
   const finish = useCallback(() => {
     persistDismissed();
@@ -73,7 +74,7 @@ export function MushafReadingCoach({ blocked = false }: Props) {
   }, [finish, step]);
 
   useEffect(() => {
-    if (!open) return;
+    if (alreadyDone || !open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         e.preventDefault();
@@ -82,9 +83,9 @@ export function MushafReadingCoach({ blocked = false }: Props) {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [finish, open]);
+  }, [alreadyDone, finish, open]);
 
-  if (!open || blocked) return null;
+  if (alreadyDone || !open || blocked) return null;
 
   const tip = TIPS[step] ?? TIPS[0];
 

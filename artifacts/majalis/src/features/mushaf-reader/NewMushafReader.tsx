@@ -412,15 +412,15 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       });
     const saver = getPowerSaverState();
     if (saver.mode !== "aggressive") {
+      /*
+       * صفحات الجيران + خطوطها: مسار واحد اتجاه-واعٍ (opposite-near-idle أدناه).
+       * هنا فقط تسخين صوت مجاور على idle — يمنع ازدواج prefetchMushafPage مع ensureQpcPageFont.
+       */
       if (saver.throttleBackground) {
         scheduleNonCriticalWork(() => {
           if (!cancelled) prefetchMushafPage(page + 1);
         });
       } else {
-        prefetchMushafPage(page - 1);
-        prefetchMushafPage(page + 1);
-        prefetchMushafPage(page - 2);
-        prefetchMushafPage(page + 2);
         scheduleNonCriticalWork(() => {
           if (cancelled || !isMushafAudioSessionReady()) return;
           void import("@/features/mushaf-shared/prefetch-adjacent-audio").then((m) =>
@@ -1302,6 +1302,13 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
     setChromeOpen(true);
   }, []);
 
+  const onBookmarkMarkerOpenCurrent = useCallback(
+    (ayahKey: string) => {
+      applyVerseSelection(ayahKey, true);
+    },
+    [applyVerseSelection],
+  );
+
   /*
    * لا يعتمد على `page` — role==="current" يكفي؛ يقلّل هوية renderPage
    * أثناء التزام الصفحة (settled=false) فيُعاد استخدام ألواح ±1 بلا إعادة رسم زائدة.
@@ -1320,11 +1327,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
         showBookmarkMarkers={role === "current" && pagerSettled}
         bookmarkEpoch={bookmarkEpoch}
         onBookmarkMarkerOpen={
-          role === "current"
-            ? (ayahKey) => {
-                applyVerseSelection(ayahKey, true);
-              }
-            : undefined
+          role === "current" ? onBookmarkMarkerOpenCurrent : undefined
         }
       />
     ),
@@ -1333,7 +1336,7 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       onSelectVerse,
       onLongPressVerse,
       onPageNumberPressCurrent,
-      applyVerseSelection,
+      onBookmarkMarkerOpenCurrent,
       error,
       bookmarkEpoch,
     ],
@@ -1886,7 +1889,8 @@ const PrefetchPage = memo(function PrefetchPage({
     <div
       ref={(el) => {
         shellRef.current = el;
-        setShellEl(el);
+        /* تجنّب setState عند ثبات العقدة — يمنع إعادة قياس علامات الصفحة */
+        setShellEl((prev) => (prev === el ? prev : el));
       }}
       className="nm-shell mm-page-shell mushaf-page-frame"
       data-testid={active ? "mushaf-page-shell" : undefined}
