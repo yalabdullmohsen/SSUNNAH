@@ -116,6 +116,15 @@ Language: `DESIGN_LANGUAGE_AUTHORITY.md`.
 Exit: `COLOR_AUTHORITY_ONLY` · `TYPOGRAPHY_AUTHORITY_ONLY` · `DESIGN_LANGUAGE_UNIFIED`.  
 Gate: `test:color-typography-authority`.
 
+## Spacing / Size / A11y / Contrast
+
+Spacing: `--sf2-space-*` · `SPACING_AUTHORITY_MAP`.  
+Size: `--touch-min` · icon boxes · `SIZE_AUTHORITY_MAP`.  
+A11y: `ACCESSIBILITY_AUTHORITY_MAP` (+ `ACCESSIBILITY_STANDARD`).  
+Contrast: `CONTRAST_AUTHORITY_MAP` + existing AA/on-brand gates.  
+Exit: `SPACING_AUTHORITY_ONLY` · `SIZE_AUTHORITY_ONLY` · `ACCESSIBILITY_STANDARDIZED` · `CONTRAST_STANDARDIZED`.  
+Gate: `test:spacing-size-a11y-contrast-authority`.
+
 ## Page Authority
 
 Canonical: `AppPage` · `PageHeader` · Screen adapters (`DetailScreen`, …) per `PAGE_CONTRACT_MATRIX.md`.

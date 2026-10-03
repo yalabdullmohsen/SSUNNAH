@@ -396,6 +396,18 @@ table.ss-data-table {
    PRIMARY=--mj-brand · TEXT=--mj-ink · SURFACE=--mj-surface · ERROR=--mj-danger
 */
 
+/* —— Spacing / size authority (SPACING_AUTHORITY_ONLY · SIZE_AUTHORITY_ONLY) —— */
+:root {
+  /* Compat: keep --ds-space rhythm locked to foundation steps when present */
+  --ds-space-1: var(--sf2-space-1, 4px);
+  --ds-space-2: var(--sf2-space-2, 8px);
+  --ds-space-3: var(--sf2-space-3, 12px);
+  --ds-space-4: var(--sf2-space-4, 16px);
+  --ds-space-5: var(--sf2-space-5, 20px);
+  --ds-space-6: var(--sf2-space-6, 24px);
+  --ds-space-8: var(--sf2-space-8, 32px);
+}
+
 /* —— Search field rhythm (SEARCH authority) —— */
 .ss-search-input,
 .page-search-input,

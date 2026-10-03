@@ -60,6 +60,8 @@ Phases W–Z: `docs/audit/VISUAL_WXYZ_SEARCH_FILTER_STATE_RESPONSIVE_REPORT.md` 
 
 Phases AA–AC: `docs/audit/VISUAL_AA_AC_COLOR_TYPE_LANGUAGE_REPORT.md` · COLOR/TYPOGRAPHY/DESIGN_LANGUAGE maps · `test:color-typography-authority`.
 
+Phases AD–AG: `docs/audit/VISUAL_AD_AG_SPACING_SIZE_A11Y_CONTRAST_REPORT.md` · SPACING/SIZE/A11Y/CONTRAST maps · `test:spacing-size-a11y-contrast-authority`.
+
 ## Endgame phases (A–H)
 
 | Phase | Target exit | Status |
