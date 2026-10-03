@@ -54,11 +54,14 @@ jobs:
         with:
           node-version: "24"
 
-      - name: Install pg driver
-        working-directory: artifacts/majalis
+      - name: Install pg driver (isolated)
         run: |
           set -euo pipefail
-          npm install --no-save pg@8.16.3
+          mkdir -p /tmp/staging-cert-node
+          cd /tmp/staging-cert-node
+          npm init -y >/dev/null
+          npm install pg@8.16.3
+          echo "NODE_PATH=/tmp/staging-cert-node/node_modules" >> "$GITHUB_ENV"
 
       - name: Run staging certification
         working-directory: artifacts/majalis
