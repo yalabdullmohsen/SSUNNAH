@@ -1,0 +1,358 @@
+{
+  "phase": "GLOBAL_COMPONENT_AUTHORITY_WAVE_1",
+  "tsx_consumers": {
+    "CARD_AppCard": {
+      "count": 22,
+      "samples": [
+        "admin-v3/AdminV3Dashboard.tsx",
+        "admin-v3/centers/AdminV3CenterWorkspace.tsx",
+        "admin-v3/domains/content/ContentHubPage.tsx",
+        "admin-v3/domains/ops/AutomationHubPage.tsx",
+        "admin-v3/domains/ops/OpsPages.tsx",
+        "components/content/ReadingSectionCard.tsx",
+        "components/design-system/AppCard.tsx",
+        "components/design-system/CardSystem.tsx",
+        "components/design-system/ContentCard.tsx",
+        "components/design-system/FeatureCard.tsx",
+        "components/design-system/SurfacePrimitives.tsx",
+        "components/home/DailyWirdCard.tsx",
+        "components/home/HomeDailyBenefits.tsx",
+        "components/home/HomeSacredOfDay.tsx",
+        "components/home/HomeUpcomingEvents.tsx"
+      ]
+    },
+    "CARD_HubCard": {
+      "count": 11,
+      "samples": [
+        "components/content/ContentReading.tsx",
+        "components/topic/TopicPage.tsx",
+        "components/ui-common.tsx",
+        "components/ui/HubCard.tsx",
+        "components/ui/InternalCards.tsx",
+        "pages/fiqh/ui/FiqhUsulView.tsx",
+        "pages/fiqh/ui/FiqhView.tsx",
+        "views/DiscoverIslamDoubtsPage.tsx",
+        "views/DiscoverIslamPage.tsx",
+        "views/DiscoverIslamQuestionsPage.tsx",
+        "views/MergedSectionHubPage.tsx"
+      ]
+    },
+    "CARD_lesson-unified": {
+      "count": 3,
+      "samples": [
+        "components/lessons/LessonRecordingPlayer.tsx",
+        "components/lessons/UnifiedLessonCard.tsx",
+        "pages/lessons/ui/LessonDetailView.tsx"
+      ]
+    },
+    "CARD_mj-card": {
+      "count": 1,
+      "samples": [
+        "components/ui/mj.tsx"
+      ]
+    },
+    "CARD_ui-card": {
+      "count": 5,
+      "samples": [
+        "views/admin/ClientErrorLogsSection.tsx",
+        "views/admin/FeatureStatusPage.tsx",
+        "views/admin/ReligiousCalendarReviewSection.tsx",
+        "views/admin/WeekDayFactsSection.tsx",
+        "views/internal/InternalStatusPage.tsx"
+      ]
+    },
+    "FORM_SearchInput": {
+      "count": 39,
+      "samples": [
+        "admin-v3/AdminV3Shell.tsx",
+        "admin-v3/centers/AdminV3CenterWorkspace.tsx",
+        "admin-v3/ui/primitives.tsx",
+        "components/FiqhGuidePage.tsx",
+        "components/design-system/FormFields.tsx",
+        "components/design-system/SearchSystem.tsx",
+        "components/knowledge-collection/KnowledgeCollectionSystem.tsx",
+        "components/ui/mj.tsx",
+        "pages/account/ui/FawaidView.tsx",
+        "pages/account/ui/SettingsView.tsx",
+        "pages/fiqh/ui/HajjView.tsx",
+        "pages/fiqh/ui/JanazaView.tsx",
+        "pages/fiqh/ui/MawarithView.tsx",
+        "pages/fiqh/ui/SalahGuideView.tsx",
+        "pages/fiqh/ui/ZakatView.tsx"
+      ]
+    },
+    "FORM_raw_input": {
+      "count": 131,
+      "samples": [
+        "admin-v3/domains/content/EntityCrudPage.tsx",
+        "admin-v3/domains/content/RemainingEntityCrudPage.tsx",
+        "admin-v3/domains/taxonomy/TaxonomyPage.tsx",
+        "components/AdminInlineEdit.tsx",
+        "components/GlobalSearchModal.tsx",
+        "components/HijriMonthSelect.tsx",
+        "components/SearchSuggestions.tsx",
+        "components/adhan/AudioPromptsSettingsCard.tsx",
+        "components/adhan/MuezzinPicker.tsx",
+        "components/adhan/PrayerAudioPicker.tsx",
+        "components/admin/AdminConfirmDialog.tsx",
+        "components/admin/review-hub/ContentModerationCard.tsx",
+        "components/admin/review-hub/RecitationReviewCard.tsx",
+        "components/admin/review-hub/ReviewFilterBar.tsx",
+        "components/admin/review-hub/ReviewHubHeaderBar.tsx"
+      ]
+    },
+    "HERO_PageHero": {
+      "count": 4,
+      "samples": [
+        "components/home/HomeHeroLcp.tsx",
+        "components/ui-common.tsx",
+        "components/ui/PageHero.tsx",
+        "components/ui/mj.tsx"
+      ]
+    },
+    "HERO_local_*hero": {
+      "count": 62,
+      "samples": [
+        "components/FiqhGuidePage.tsx",
+        "components/LazyRouteFallback.tsx",
+        "components/LegalPageLayout.tsx",
+        "components/home/HomeHeroLcp.tsx",
+        "components/knowledge-collection/CollectionHero.tsx",
+        "components/prophets/ProphetIdentityHero.tsx",
+        "components/topic/SectionHero.tsx",
+        "components/ui/PageHero.tsx",
+        "pages/account/ui/AccountDeletionView.tsx",
+        "pages/account/ui/SearchView.tsx",
+        "pages/account/ui/SiteMapView.tsx",
+        "pages/fiqh/ui/FiqhBookView.tsx",
+        "pages/fiqh/ui/FiqhChapterView.tsx",
+        "pages/fiqh/ui/FiqhLessonView.tsx",
+        "pages/fiqh/ui/FiqhQawaidView.tsx"
+      ]
+    },
+    "HERO_page-hero-mj": {
+      "count": 3,
+      "samples": [
+        "components/common/AppBackButton.tsx",
+        "components/home/HomeHeroLcp.tsx",
+        "components/ui/PageHero.tsx"
+      ]
+    },
+    "LIST_ListRow": {
+      "count": 2,
+      "samples": [
+        "components/ui-common.tsx",
+        "components/ui/mj.tsx"
+      ]
+    },
+    "LIST_settings-row": {
+      "count": 1,
+      "samples": [
+        "components/design-system/SettingsList.tsx"
+      ]
+    },
+    "NAV_BottomNav": {
+      "count": 4,
+      "samples": [
+        "App.tsx",
+        "components/BottomNavBar.tsx",
+        "components/design-system/PageContainer.tsx",
+        "components/design-system/TabSystem.tsx"
+      ]
+    },
+    "NAV_SideNav": {
+      "count": 2,
+      "samples": [
+        "components/NavBar.tsx",
+        "components/SideNavDrawer.tsx"
+      ]
+    }
+  },
+  "top_local_hero_classes": [
+    [
+      "page-hero",
+      261
+    ],
+    [
+      "home-page-hero",
+      153
+    ],
+    [
+      "fiqh-lux-book-hero",
+      41
+    ],
+    [
+      "m2030-hero",
+      39
+    ],
+    [
+      "sh-hero",
+      30
+    ],
+    [
+      "quran-hub-hero",
+      25
+    ],
+    [
+      "legal-page-hero",
+      23
+    ],
+    [
+      "uq-hero",
+      19
+    ],
+    [
+      "section-hero",
+      17
+    ],
+    [
+      "rq-hero",
+      15
+    ],
+    [
+      "fqh-hub-hero",
+      15
+    ],
+    [
+      "seerah-hero",
+      14
+    ],
+    [
+      "sw-hero",
+      14
+    ],
+    [
+      "myl2-hero",
+      14
+    ],
+    [
+      "tf-hero",
+      14
+    ],
+    [
+      "lpd2-hero",
+      13
+    ],
+    [
+      "pmp-hero",
+      13
+    ],
+    [
+      "srp-hero",
+      13
+    ],
+    [
+      "ve-hero",
+      13
+    ],
+    [
+      "dq-hero",
+      13
+    ],
+    [
+      "th-hero",
+      12
+    ],
+    [
+      "asp-hero",
+      12
+    ],
+    [
+      "mdb-hero",
+      11
+    ],
+    [
+      "hk-hero",
+      11
+    ],
+    [
+      "as-hero",
+      11
+    ],
+    [
+      "mk-hero",
+      11
+    ],
+    [
+      "an-hero",
+      11
+    ],
+    [
+      "sb-hero",
+      11
+    ],
+    [
+      "hj-hero",
+      11
+    ],
+    [
+      "tw-hero",
+      11
+    ]
+  ],
+  "approved": {
+    "hero": [
+      "PageHero",
+      "page-hero-mj",
+      "mss-hero-surface",
+      "modern-section-shell"
+    ],
+    "card": [
+      "HubCard",
+      "soft-card",
+      "mj-card via Card",
+      "lesson-unified-card",
+      "section-entry-card"
+    ],
+    "list": [
+      "settings-row",
+      "shared list row patterns"
+    ],
+    "form": [
+      "TextInput",
+      "SearchInput",
+      "sunnah-identity-forms-filters"
+    ],
+    "nav": [
+      "BottomNav",
+      "SideNav/drawer",
+      "sunnah-identity-chrome-nav"
+    ]
+  },
+  "classification": {
+    "APPROVED_AUTHORITY": [
+      "PageHero",
+      "modern-section-shell/MSS",
+      "AppCard",
+      "HubCard",
+      "UnifiedLessonCard",
+      "ListSystem",
+      "SettingsList",
+      "FormFields/SearchInput",
+      "BottomNavBar",
+      "SideNavDrawer",
+      "TabSystem"
+    ],
+    "LOCAL_VARIANT_CSS_BRIDGED": [
+      "section *-hero selectors under MSS shell"
+    ],
+    "SPECIAL_CASE": [
+      "home-page-hero",
+      "m2030-hero",
+      "mushaf/prayer immersive",
+      "admin-v3"
+    ],
+    "DUPLICATE_FORBIDDEN_GROWTH": [
+      "soft-card root on AppCard",
+      "parallel nav shells",
+      "page-local hero hex palettes"
+    ],
+    "DEAD": [
+      "soft-card class on AppCard",
+      "cards-v3 sync SoT"
+    ]
+  },
+  "ceilings": {
+    "localHeroCssClasses": 95
+  }
+}
