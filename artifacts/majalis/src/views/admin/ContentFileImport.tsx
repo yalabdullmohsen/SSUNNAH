@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { adminImportFetch } from "@/lib/admin-api";
 import { chunkRows, formatImportApiError, parseImportFile, UPLOAD_BATCH_SIZE } from "@/lib/import-parse";
+import { queryKeys } from "@/lib/query-keys";
 
 const IMPORT_TYPES = [
   { value: "lessons", label: "الدروس" },
@@ -250,7 +251,7 @@ export function ContentFileImport({ onDone }: ContentFileImportProps) {
       if (skipped > 0) {
         setError(null);
         setCanRetry(false);
-        void queryClient.invalidateQueries({ queryKey: ["fawaid"] });
+        void queryClient.invalidateQueries({ queryKey: queryKeys.fawaid.root });
         onDone?.();
         return;
       }
@@ -267,8 +268,8 @@ export function ContentFileImport({ onDone }: ContentFileImportProps) {
     if (importReport.ok) {
       setError(null);
       setCanRetry(false);
-      void queryClient.invalidateQueries({ queryKey: ["adhkar"] });
-      void queryClient.invalidateQueries({ queryKey: ["fawaid"] });
+      void queryClient.invalidateQueries({ queryKey: queryKeys.adhkar.root });
+      void queryClient.invalidateQueries({ queryKey: queryKeys.fawaid.root });
       onDone?.();
     } else if (job.status === "completed") {
       setError(msgs[0] || `اكتمل مع ${importReport.stats?.failed ?? 0} فشل`);

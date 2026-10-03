@@ -119,3 +119,12 @@ DATABASE_PRODUCTION_CERTIFIED = false (forbidden until live apply + metrics)
 - QUERY_TO_INDEX_MATRIX: docs/audit/QUERY_TO_INDEX_MATRIX.md
 - PRODUCTION_MIGRATION_APPLIED = false
 
+## PR #2497 finalization note (this task)
+
+- PR #2497 state: MERGED (mergeCommit 458d97d62) — already terminal before residual query-key/cache closure.
+- Successor #2498 also MERGED (150b0d70) and Production MATCH verified.
+- Staging credentials: still BLOCKED_CREDENTIAL_STAGING — packet remains DRAFT for live apply evidence.
+- Residual repo work: query-key authority + mutation invalidation contracts (no Production SQL).
+- PRODUCTION_DATABASE_MIGRATION_APPLIED = false
+- PRODUCTION_RPC_FLAG_DISABLED = true
+

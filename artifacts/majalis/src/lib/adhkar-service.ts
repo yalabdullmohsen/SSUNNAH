@@ -7,6 +7,7 @@ import type { AdhkarItem } from "@/lib/adhkar-seed";
 import { fetchVerifiedAdhkarItems } from "@/lib/adhkar-supabase";
 import { LruCache } from "@/lib/lru-cache";
 import { isBlockedFromPublic } from "@/lib/content-display-zones";
+import { ADHKAR_STALE_MS, queryKeys } from "@/lib/query-keys";
 
 /** Bounded merge-result cache — prevents retaining unbounded adhkar list snapshots. */
 const ADHKAR_LIST_CACHE = new LruCache<string, AdhkarItem[]>(4);
@@ -31,7 +32,7 @@ export function mergeAdhkarSources(local: AdhkarItem[], remote: AdhkarItem[]): A
 
 export function usePublishedAdhkarItems() {
   return useQuery({
-    queryKey: ["adhkar", "published", "no-daif"],
+    queryKey: queryKeys.adhkar.published,
     queryFn: async () => {
       const cacheKey = "published:no-daif";
       const { withOfflineFirst, getCachedAdhkarPack, cacheAdhkarPack } = await import(
@@ -65,6 +66,6 @@ export function usePublishedAdhkarItems() {
       if (hit) return hit;
       return mergeAdhkarSources(getPublishedAdhkarItems(), []);
     },
-    staleTime: 30_000,
+    staleTime: ADHKAR_STALE_MS,
   });
 }

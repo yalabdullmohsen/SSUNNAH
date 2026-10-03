@@ -168,6 +168,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                   if (!activeRef.current) return;
                   if (signedOutGeneration.current !== gen) return; // سباق sign-out
                   if (next !== null && next !== undefined) {
+                    // Account switch: drop previous user-scoped React Query cache.
+                    if (
+                      event === "SIGNED_IN" &&
+                      next.id &&
+                      lastUserIdRef.current &&
+                      lastUserIdRef.current !== next.id
+                    ) {
+                      queryClient.clear();
+                    }
                     setUser(next);
                     setStatus("authenticated");
                     if (event === "SIGNED_IN" && next.id) {
