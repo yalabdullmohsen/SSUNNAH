@@ -7,41 +7,42 @@
 
 :root {
   /* طبقات السطح — صفحة فاتحة · بطاقة بيضاء · تباين AA */
-  --cs-surface-1: var(--sf-color-warm-ivory, #f8f6f1);
-  --cs-surface-2: var(--sf-color-warm-ivory-surface, #ffffff);
-  --cs-surface-3: #ffffff;
-  --cs-primary: var(--sf-color-deep-emerald, #0f5c3f);
-  --cs-primary-deep: var(--sf-color-deep-emerald-deep, #0a4530);
+  --cs-surface-1: var(--sf-color-warm-ivory);
+  --cs-surface-2: var(--sf-color-warm-ivory-surface);
+  --cs-surface-3: var(--mj-white);
+  --cs-primary: var(--sf-color-deep-emerald);
+  --cs-primary-deep: var(--sf-color-deep-emerald-deep);
   --cs-primary-soft: var(
     --sf-color-deep-emerald-soft,
     color-mix(in srgb, var(--cs-primary) 10%, var(--cs-surface-1))
   );
-  --cs-gold: var(--sf-color-quran-gold, #c9a82e);
-  --cs-gold-ink: #f0e2b0;
-  --cs-text-primary: var(--sf-color-rich-ink, #15382d);
-  --cs-text-secondary: var(--sf-color-rich-ink-soft, #48645a);
-  --cs-text-muted: var(--sf-color-rich-ink-muted, #5f7168);
-  --cs-border: var(--sf-hairline, rgba(15, 92, 63, 0.12));
-  --cs-border-strong: color-mix(in srgb, var(--cs-primary) 28%, #c8d0cb);
+  --cs-gold: var(--sf-color-quran-gold);
+  --cs-gold-ink: var(--mj-accent-soft);
+  --cs-text-primary: var(--sf-color-rich-ink);
+  --cs-text-secondary: var(--sf-color-rich-ink-soft);
+  --cs-text-muted: var(--sf-color-rich-ink-muted);
+  --cs-border: var(--sf-hairline, color-mix(in srgb, var(--mj-brand) 12%, transparent));
+  --cs-border-strong: color-mix(in srgb, var(--cs-primary) 28%, var(--mj-hairline));
   --cs-shadow: 0 1px 2px color-mix(in srgb, var(--cs-primary-deep) 8%, transparent);
   --cs-focus-ring: var(--sf-focus-ring);
 
   /* هيرو فقط — زمرد داكن · نص عاجي (لا يُستخدم على بطاقات الأقسام) */
-  --cs-ink-hero: var(--sf-color-deep-emerald-deep, #0a4530);
-  --cs-ink-topic: var(--sf-color-deep-emerald, #0f5c3f);
-  --cs-ink-lesson: #134a38;
-  --cs-ink-path: var(--sf-color-deep-emerald, #0f5c3f);
+  --cs-ink-hero: var(--sf-color-deep-emerald-deep);
+  --cs-ink-topic: var(--sf-color-deep-emerald);
+  --cs-ink-lesson: var(--mj-brand);
+  --cs-ink-path: var(--sf-color-deep-emerald);
   --cs-ink-border: color-mix(in srgb, var(--cs-ink-hero) 70%, var(--cs-gold) 12%);
-  --cs-on-ink: var(--sf-color-on-emerald, #f7f1e4);
-  --cs-on-ink-title: var(--sf-color-on-emerald, #f7f1e4);
-  --cs-on-ink-body: #e4ddd0;
-  --cs-on-ink-meta: #c9c0ae;
+  --cs-on-ink: var(--sf-color-on-emerald);
+  --cs-on-ink-title: var(--sf-color-on-emerald);
+  /* نص ثانوي فوق زمرد داكن — عاجي مكتوم (لا --mj-ink-2 النهاري الداكن) */
+  --cs-on-ink-body: color-mix(in srgb, var(--sf-color-on-emerald) 86%, var(--cs-ink-hero));
+  --cs-on-ink-meta: color-mix(in srgb, var(--sf-color-on-emerald) 70%, var(--cs-ink-hero));
   --cs-on-ink-icon-bg: color-mix(in srgb, var(--cs-on-ink) 14%, transparent);
   --cs-on-ink-icon: var(--cs-on-ink);
   --cs-ink-shadow: none;
 
   /* كثافة — هاتف مضغوط · نصف قطر MD=20 · أيقونة/تحكم على سلم Foundation */
-  --cs-radius: var(--sf-radius-card, 1.5rem));
+  --cs-radius: var(--sf-radius-card, 1.5rem);
   --cs-radius-icon: var(--sf-radius-xs);
   --cs-radius-control: var(--sf-radius-control, var(--sf-radius-xs));
   --cs-pad-y: 0.6rem;
@@ -100,30 +101,30 @@
 
 html.dark,
 html[data-theme="dark"] {
-  --cs-surface-1: var(--sf-color-luxury-night, #101714);
-  --cs-surface-2: var(--sf-color-luxury-night-surface, #1a2420);
-  --cs-surface-3: var(--sf-color-luxury-night-elevated, #24302b);
-  --cs-primary: #5fb892;
-  --cs-primary-deep: #3d8f6c;
+  --cs-surface-1: var(--sf-color-luxury-night);
+  --cs-surface-2: var(--sf-color-luxury-night-surface);
+  --cs-surface-3: var(--sf-color-luxury-night-elevated);
+  --cs-primary: var(--mj-brand);
+  --cs-primary-deep: var(--mj-brand-deep);
   --cs-primary-soft: color-mix(in srgb, var(--cs-primary) 16%, var(--cs-surface-2));
-  --cs-gold: var(--sf-color-luxury-night-gold, #c4a84a);
-  --cs-gold-ink: #f0e2b0;
-  --cs-text-primary: var(--sf-color-luxury-night-ink, #eef3f0);
-  --cs-text-secondary: #c2d0c9;
-  --cs-text-muted: #95a8a0;
+  --cs-gold: var(--sf-color-luxury-night-gold);
+  --cs-gold-ink: var(--mj-accent-soft);
+  --cs-text-primary: var(--sf-color-luxury-night-ink);
+  --cs-text-secondary: var(--mj-ink-2);
+  --cs-text-muted: var(--mj-muted);
   --cs-border: var(--sf-hairline);
-  --cs-border-strong: color-mix(in srgb, var(--cs-primary) 40%, #35443f);
+  --cs-border-strong: color-mix(in srgb, var(--cs-primary) 40%, var(--mj-hairline));
   --cs-shadow: var(--sf-shadow-soft, none);
   /* الهوية الداكنة تبقى زمردية عميقة فوق سطح التطبيق الليلي */
-  --cs-ink-hero: #06241c;
-  --cs-ink-topic: #0a2f24;
-  --cs-ink-lesson: #0f3d2e;
-  --cs-ink-path: #0a2f24;
-  --cs-ink-border: color-mix(in srgb, var(--cs-gold) 28%, #0a2f24);
-  --cs-on-ink: #f7f1e4;
-  --cs-on-ink-title: #f7f1e4;
-  --cs-on-ink-body: #e4ddd0;
-  --cs-on-ink-meta: #c9c0ae;
+  --cs-ink-hero: var(--sf-color-luxury-night);
+  --cs-ink-topic: var(--mj-brand-deep);
+  --cs-ink-lesson: var(--mj-brand-deep);
+  --cs-ink-path: var(--mj-brand-deep);
+  --cs-ink-border: color-mix(in srgb, var(--cs-gold) 28%, var(--mj-brand-deep));
+  --cs-on-ink: var(--sf-color-on-emerald);
+  --cs-on-ink-title: var(--sf-color-on-emerald);
+  --cs-on-ink-body: var(--mj-ink-2);
+  --cs-on-ink-meta: var(--mj-muted);
   --cs-ink-shadow: none;
   --brand-soft: var(--cs-primary-soft);
   --soft-card-bg: var(--cs-surface-2);

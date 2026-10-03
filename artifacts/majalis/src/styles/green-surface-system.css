@@ -10,25 +10,25 @@
 
 :root {
   /* —— أسطح —— */
-  --surface-feature: color-mix(in srgb, var(--mj-brand, #146b52) 7%, #f4faf7);
-  --surface-knowledge: color-mix(in srgb, var(--mj-brand, #146b52) 5.5%, #f6fbf8);
-  --surface-islamic: color-mix(in srgb, var(--mj-brand, #146b52) 8.5%, #f2f8f5);
-  --surface-highlighted: color-mix(in srgb, var(--mj-brand, #146b52) 11%, #eef6f2);
+  --surface-feature: color-mix(in srgb, var(--mj-brand) 7%, #f4faf7);
+  --surface-knowledge: color-mix(in srgb, var(--mj-brand) 5.5%, #f6fbf8);
+  --surface-islamic: color-mix(in srgb, var(--mj-brand) 8.5%, #f2f8f5);
+  --surface-highlighted: color-mix(in srgb, var(--mj-brand) 11%, #eef6f2);
 
   /* حدود / تمييز */
-  --surface-feature-border: color-mix(in srgb, var(--mj-brand, #146b52) 22%, var(--mj-hairline, #d9d3c8));
-  --surface-knowledge-border: color-mix(in srgb, var(--mj-brand, #146b52) 18%, var(--mj-hairline, #d9d3c8));
-  --surface-islamic-border: color-mix(in srgb, var(--mj-brand, #146b52) 24%, var(--mj-hairline, #d9d3c8));
-  --surface-highlighted-border: color-mix(in srgb, var(--mj-brand, #146b52) 30%, var(--mj-hairline, #d9d3c8));
+  --surface-feature-border: color-mix(in srgb, var(--mj-brand) 22%, var(--mj-hairline));
+  --surface-knowledge-border: color-mix(in srgb, var(--mj-brand) 18%, var(--mj-hairline));
+  --surface-islamic-border: color-mix(in srgb, var(--mj-brand) 24%, var(--mj-hairline));
+  --surface-highlighted-border: color-mix(in srgb, var(--mj-brand) 30%, var(--mj-hairline));
 
-  --surface-feature-accent: var(--mj-brand-deep, var(--brand-on-light, #0d4a39));
-  --surface-knowledge-accent: var(--mj-brand, #146b52);
-  --surface-islamic-accent: var(--mj-brand-deep, #0d4a39);
-  --surface-highlighted-accent: var(--mj-brand-deep, #0d4a39);
+  --surface-feature-accent: var(--mj-brand-deep, var(--brand-on-light, var(--mj-brand)));
+  --surface-knowledge-accent: var(--mj-brand);
+  --surface-islamic-accent: var(--mj-brand-deep);
+  --surface-highlighted-accent: var(--mj-brand-deep);
 
   /* حبر على الأسطح الخضراء الفاتحة */
-  --surface-feature-ink: var(--mj-ink, #16241e);
-  --surface-feature-ink-muted: var(--mj-ink-2, #4f5f58);
+  --surface-feature-ink: var(--mj-ink);
+  --surface-feature-ink-muted: var(--mj-ink-2);
 
   /* ظلال / نصف قطر موحّد — ظل خفيف فقط (بلا inset ثقيل ولا شريط جانبي) */
   --surface-feature-radius: var(--radius-card, 1.5rem);
@@ -43,10 +43,10 @@
 
   /* ربط soft-card / MSS — هيرو زمرد داكن · نص عاجي */
   --soft-card-on-light-bg: var(--surface-feature);
-  --mss-section-hero-bg: #0a2f24;
-  --mss-on-hero: #ffffff;
-  --mss-on-hero-muted: #e4ddd0;
-  --mss-on-hero-accent: #f0e2b0;
+  --mss-section-hero-bg: var(--cs-ink-hero, var(--mj-brand-deep));
+  --mss-on-hero: var(--mj-white);
+  --mss-on-hero-muted: color-mix(in srgb, var(--sf-color-on-emerald) 86%, var(--cs-ink-hero, var(--mj-brand-deep)));
+  --mss-on-hero-accent: var(--mj-accent-soft);
 }
 
 html[data-theme="dark"],
@@ -71,13 +71,13 @@ html.dark,
   --surface-feature-ink: #f3efe6;
   /* عاجي ثانوي على سطح ليلي عميق — لا حبر نهاري */
   --surface-feature-ink-muted: #d8d0c4;
-  --mss-on-hero: #ffffff;
-  --mss-on-hero-muted: #e4ddd0;
-  --mss-on-hero-accent: #f0e2b0;
+  --mss-on-hero: var(--mj-white);
+  --mss-on-hero-muted: var(--mj-ink-2);
+  --mss-on-hero-accent: var(--mj-accent-soft);
 
   --surface-feature-shadow: 0 6px 16px -14px rgba(0, 0, 0, 0.45);
 
-  --mss-section-hero-bg: #06241c;
+  --mss-section-hero-bg: var(--cs-ink-hero, var(--sf-color-luxury-night));
   --soft-card-on-light-bg: var(--surface-feature);
 }
 
@@ -128,23 +128,23 @@ html.dark,
 .tawheed-type-card,
 .dii-hub-card,
 .card--featured:not([data-scripture]) {
-  background: var(--cs-surface-3, #ffffff) !important;
+  background: var(--cs-surface-3) !important;
   background-image: none !important;
   border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12)) !important;
   border-radius: var(--surface-feature-radius) !important;
   box-shadow: var(--cs-shadow, var(--surface-feature-shadow)) !important;
-  color: var(--cs-text-primary, #15382d) !important;
+  color: var(--cs-text-primary) !important;
 }
 
 .lesson-unified-card,
 .kuwait-lesson-card {
-  background: var(--cs-surface-3, #ffffff) !important;
-  background-color: var(--cs-surface-3, #ffffff) !important;
+  background: var(--cs-surface-3) !important;
+  background-color: var(--cs-surface-3) !important;
 }
 
 .lpp-path-card {
-  background: var(--cs-surface-3, #ffffff) !important;
-  background-color: var(--cs-surface-3, #ffffff) !important;
+  background: var(--cs-surface-3) !important;
+  background-color: var(--cs-surface-3) !important;
 }
 
 .hub-card__title,
@@ -152,7 +152,7 @@ html.dark,
 .lesson-card__title,
 .topic-card__title,
 .lesson-unified-card__title {
-  color: var(--cs-text-primary, #15382d) !important;
+  color: var(--cs-text-primary) !important;
   font-weight: 800;
 }
 
@@ -162,7 +162,7 @@ html.dark,
 .topic-card__meta,
 .lesson-unified-card__sheikh,
 .lesson-unified-card__desc {
-  color: var(--cs-text-secondary, #48645a) !important;
+  color: var(--cs-text-secondary) !important;
 }
 
 /* قراءة طويلة تبقى فاتحة */
@@ -297,9 +297,9 @@ html.dark,
 .mk-lane-card,
 .section-lobby__featured,
 .card--featured:not([data-scripture]) {
-  background: var(--cs-surface-3, #ffffff) !important;
+  background: var(--cs-surface-3) !important;
   border-color: var(--cs-border, rgba(15, 92, 63, 0.12)) !important;
-  color: var(--cs-text-primary, #15382d) !important;
+  color: var(--cs-text-primary) !important;
 }
 
 /* تنبيه حذر — حد موحّد دافئ (بلا شريط جانبي زخرفي) */
@@ -315,7 +315,7 @@ html.dark,
 .lesson-card__title,
 .topic-card__title,
 .lesson-unified-card__title {
-  color: var(--cs-text-primary, #15382d) !important;
+  color: var(--cs-text-primary) !important;
   font-weight: 800;
 }
 
@@ -327,7 +327,7 @@ html.dark,
 .lesson-unified-card__desc,
 .hub-card__meta,
 .hub-card__go {
-  color: var(--cs-text-secondary, #48645a) !important;
+  color: var(--cs-text-secondary) !important;
 }
 
 /* عناوين أسطح القراءة الفاتحة */
@@ -364,10 +364,10 @@ html.dark,
 .soft-card--on-light.lpp-path-card,
 .soft-card--on-light.topic-card,
 .soft-card--on-light.section-entry-card {
-  --soft-card-bg: var(--cs-surface-3, #ffffff);
+  --soft-card-bg: var(--cs-surface-3);
   --soft-card-border: var(--cs-border, rgba(15, 92, 63, 0.12));
   --soft-card-shadow: var(--cs-shadow, none);
-  color: var(--cs-text-primary, #15382d);
+  color: var(--cs-text-primary);
 }
 
 html[data-theme="dark"] .soft-card--on-light:not(.hub-card):not(.lesson-unified-card):not(.lpp-path-card):not(.topic-card):not(.section-entry-card),

@@ -10,25 +10,25 @@
  */
 
 :root {
-  --mss-hero-from: #0a2f24;
-  --mss-hero-mid: #0f3d2e;
-  --mss-hero-to: #134a38;
-  --mss-hero-glow: rgba(212, 180, 92, 0.22);
-  --mss-hero-glow-strong: rgba(212, 180, 92, 0.28);
+  --mss-hero-from: var(--mj-brand-deep);
+  --mss-hero-mid: var(--mj-brand-deep);
+  --mss-hero-to: var(--mj-brand);
+  --mss-hero-glow: color-mix(in srgb, var(--mj-accent) 22%, transparent);
+  --mss-hero-glow-strong: color-mix(in srgb, var(--mj-accent) 28%, transparent);
   /* هيرو زمرد داكن · نص عاجي · Accent ذهبي */
-  --mss-on-hero: #ffffff;
-  --mss-on-hero-muted: #e4ddd0;
-  --mss-on-hero-accent: #f0e2b0;
+  --mss-on-hero: var(--mj-white);
+  --mss-on-hero-muted: color-mix(in srgb, var(--sf-color-on-emerald) 86%, var(--cs-ink-hero));
+  --mss-on-hero-accent: var(--mj-accent-soft);
   /* هيرو الأقسام = زمرد داكن (هوية رئيسية) */
-  --mss-section-hero-bg: var(--cs-ink-hero, #0a2f24);
+  --mss-section-hero-bg: var(--cs-ink-hero);
   /* نص فوق هيرو أخضر غامق (asp-hero / بطاقات مميزة) */
   --mss-on-dark-hero: var(--mj-white);
-  --mss-on-dark-hero-muted: #e4ddd0;
-  --mss-on-dark-hero-accent: #f0e2b0;
+  --mss-on-dark-hero-muted: color-mix(in srgb, var(--sf-color-on-emerald) 86%, var(--cs-ink-hero));
+  --mss-on-dark-hero-accent: var(--mj-accent-soft);
   --mss-radius-hero: 1.35rem;
   --mss-radius-card: 1.15rem;
-  --mss-shadow-hero: 0 16px 40px rgba(10, 47, 36, 0.35);
-  --mss-shadow-card: 0 10px 28px rgba(36, 31, 24, 0.08);
+  --mss-shadow-hero: 0 16px 40px color-mix(in srgb, var(--mj-brand-deep) 35%, transparent);
+  --mss-shadow-card: 0 10px 28px color-mix(in srgb, var(--mj-ink) 8%, transparent);
   --color-hero-bg: var(--mss-hero-from);
   --color-hero-fg: var(--mss-on-hero);
   --color-hero-fg-muted: var(--mss-on-hero-muted);
@@ -96,9 +96,9 @@
   background-color: var(--mss-section-hero-bg) !important;
   background-image: none !important;
   color: var(--mss-on-hero) !important;
-  border: 1px solid var(--svl-border-subtle, var(--color-border, var(--mj-hairline, #e3e8e6))) !important;
+  border: 1px solid var(--svl-border-subtle, var(--color-border, var(--mj-hairline))) !important;
   border-inline-start-width: 1px !important;
-  border-inline-start-color: var(--svl-border-subtle, var(--color-border, var(--mj-hairline, #e3e8e6))) !important;
+  border-inline-start-color: var(--svl-border-subtle, var(--color-border, var(--mj-hairline))) !important;
   border-radius: var(--svl-radius-lg, var(--mss-radius-hero)) !important;
   box-shadow: none !important;
   min-height: 0 !important;
@@ -205,7 +205,7 @@
 }
 
 .ldb-hero a {
-  color: var(--mss-on-hero-accent, #123f2e) !important;
+  color: var(--mss-on-hero-accent) !important;
   opacity: 1;
 }
 
@@ -231,15 +231,15 @@
   border-radius: var(--radius-pill, 999rem);
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent);
   border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent);
-  color: var(--mss-on-hero-accent, #123f2e) !important;
+  color: var(--mss-on-hero-accent) !important;
   letter-spacing: 0.02em;
   font-weight: 800;
 }
 
 .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .page-hero-mj__back {
   color: var(--mss-on-hero, var(--mj-white)) !important;
-  background: var(--cs-ink-topic, #0f3d2e) !important;
-  background-color: var(--cs-ink-topic, #0f3d2e) !important;
+  background: var(--cs-ink-topic) !important;
+  background-color: var(--cs-ink-topic) !important;
   background-image: none !important;
   border-color: color-mix(in srgb, var(--mj-white) 32%, transparent) !important;
 }
@@ -247,8 +247,8 @@
 .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn.mj-btn--ghost,
 .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--ghost {
   color: var(--mss-on-hero, var(--mj-white)) !important;
-  background: var(--cs-ink-topic, #0f3d2e) !important;
-  background-color: var(--cs-ink-topic, #0f3d2e) !important;
+  background: var(--cs-ink-topic) !important;
+  background-color: var(--cs-ink-topic) !important;
   background-image: none !important;
   border-color: color-mix(in srgb, var(--mj-white) 32%, transparent) !important;
 }
@@ -259,12 +259,12 @@ html[data-theme="dark"] .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-her
 html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn.mj-btn--ghost,
 html[data-theme="dark"] .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--ghost,
 html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--ghost {
-  color: #f3efe6 !important;
+  color: var(--sf-color-luxury-night-ink) !important;
   /* ليلاً --mj-brand-deep accent فاتح؛ الخلفية = --mj-brand-deep-surface فقط */
   background: var(--mj-brand-deep-surface) !important;
   background-color: var(--mj-brand-deep-surface) !important;
   background-image: none !important;
-  border-color: color-mix(in srgb, #f3efe6 32%, transparent) !important;
+  border-color: color-mix(in srgb, var(--sf-color-luxury-night-ink) 32%, transparent) !important;
 }
 
 .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .page-hero-mj__desc {
@@ -289,9 +289,9 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--gh
 
 .topic-page__eyebrow,
 .topic-page__hero .safe-hero__badge {
-  color: var(--mss-on-hero-accent, #f0e2b0) !important;
+  color: var(--mss-on-hero-accent) !important;
   background: color-mix(in srgb, var(--mj-white) 14%, transparent) !important;
-  border: 1px solid color-mix(in srgb, #d4b45c 40%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-accent) 40%, transparent);
   border-radius: var(--radius-pill, 999rem);
   font-weight: 800;
 }
@@ -303,7 +303,7 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--gh
 
 .topic-page__sub,
 .topic-page__hero .topic-page__sub {
-  color: var(--mss-on-hero-muted, #e4ddd0) !important;
+  color: var(--mss-on-hero-muted) !important;
 }
 
 .section-hero__icon {
@@ -313,8 +313,8 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--gh
   height: 3rem;
   border-radius: 1rem;
   background: color-mix(in srgb, var(--mj-white) 14%, transparent);
-  border: 1px solid color-mix(in srgb, #d4b45c 32%, transparent);
-  color: var(--mss-on-hero-accent, #f0e2b0);
+  border: 1px solid color-mix(in srgb, var(--mj-accent) 32%, transparent);
+  color: var(--mss-on-hero-accent);
   flex-shrink: 0;
 }
 
@@ -339,13 +339,13 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--gh
 
 .section-lobby__head:not(.section-lobby__head--bare) .section-lobby__title::after,
 .section-lobby__head:not(.section-lobby__head--bare) .quran-hub-page__title::after {
-  background: var(--mss-on-hero-accent, #123f2e);
+  background: var(--mss-on-hero-accent);
 }
 
 .section-lobby__head:not(.section-lobby__head--bare) .section-lobby__back-inline {
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent);
   border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent);
-  color: var(--mss-on-hero-accent, #123f2e);
+  color: var(--mss-on-hero-accent);
 }
 
 .section-lobby__head:not(.section-lobby__head--bare) .section-lobby__head-row {
@@ -377,14 +377,14 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--gh
 
 .section-lobby[data-lessons-hub="1"] .section-lobby__title::after,
 .fiqh-lux-page .section-lobby__title::after {
-  background: var(--color-primary-dark, var(--mj-brand-deep, #123f2e));
+  background: var(--color-primary-dark, var(--mj-brand-deep));
 }
 
 /* —— بطاقات موحّدة (بلا قاعدة .card{} عامة — بوابة no-global-dangerous-css) —— */
 .hub-card {
   box-shadow: var(--mss-shadow-card);
   border-radius: var(--radius-tile, 1.5rem);
-  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 20%, var(--mj-hairline, #e3e8e6));
+  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 20%, var(--mj-hairline));
 }
 
 .hub-card:hover {
@@ -446,18 +446,18 @@ html[data-theme="dark"] .card {
   margin: 0;
   font-size: 1.15rem;
   font-weight: 800;
-  color: var(--mss-hero-from, #0f4a3a);
+  color: var(--mss-hero-from);
 }
 
 .hp-featured-card {
   position: relative;
   overflow: hidden;
   border-radius: var(--mss-radius-card, 1.15rem) !important;
-  background-color: var(--mss-hero-from, #0f4a3a) !important;
+  background-color: var(--mss-hero-from) !important;
   background-image: var(--mss-hero-gradient) !important;
   border: 1px solid color-mix(in srgb, var(--mj-brand) 28%, transparent) !important;
   box-shadow: var(--mss-shadow-hero) !important;
-  color: var(--mss-on-hero, #faf5ea) !important;
+  color: var(--mss-on-hero) !important;
 }
 
 .hp-featured-card__title,
@@ -468,7 +468,7 @@ html[data-theme="dark"] .card {
 }
 
 .hp-featured-card__cta {
-  color: var(--mss-on-hero-accent, #f2dfaa) !important;
+  color: var(--mss-on-hero-accent) !important;
   font-weight: 800;
 }
 
@@ -478,9 +478,9 @@ html[data-theme="dark"] .card {
   gap: 0.35rem;
   padding: 0.45rem 0.95rem;
   border-radius: var(--radius-pill, 999rem);
-  background: color-mix(in srgb, var(--mss-hero-from, #0f4a3a) 10%, var(--mj-white));
-  border: 1px solid color-mix(in srgb, var(--mss-hero-from, #0f4a3a) 22%, transparent);
-  color: var(--mss-hero-from, #0f4a3a);
+  background: color-mix(in srgb, var(--mss-hero-from) 10%, var(--mj-white));
+  border: 1px solid color-mix(in srgb, var(--mss-hero-from) 22%, transparent);
+  color: var(--mss-hero-from);
   font-weight: 700;
   text-decoration: none;
 }
@@ -491,9 +491,9 @@ html[data-theme="dark"] .card {
 .quran-hub-hero,
 .pts-hero,
 .pts-hero--compact {
-  background-color: var(--mss-hero-from, #0f4a3a) !important;
+  background-color: var(--mss-hero-from) !important;
   background-image: var(--mss-hero-gradient) !important;
-  color: var(--mss-on-hero, #faf5ea) !important;
+  color: var(--mss-on-hero) !important;
   border-color: color-mix(in srgb, var(--mj-brand) 28%, transparent);
   box-shadow: var(--mss-shadow-hero);
 }
@@ -522,7 +522,7 @@ html[data-theme="dark"] .card {
 .twh-hub-hero .home-eyebrow,
 .fqh-hub-hero .home-eyebrow,
 .quran-hub-hero .home-eyebrow {
-  color: var(--mss-on-dark-hero-accent, #fff1c4) !important;
+  color: var(--mss-on-dark-hero-accent) !important;
   opacity: 1 !important;
 }
 
@@ -533,7 +533,7 @@ html[data-theme="dark"] .card {
 .atl-hero .atl-hero__badge,
 .gl-hero .gl-hero__badge,
 .sm-hero .sm-hero__eye {
-  color: var(--mss-on-hero-accent, #123f2e) !important;
+  color: var(--mss-on-hero-accent) !important;
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent) !important;
   border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent) !important;
 }
@@ -564,7 +564,7 @@ html[data-theme="dark"] .card {
 .sb-hero .sb-ayah,
 .sb-hero .sb-ayah__text,
 .sb-hero .sb-ayah__ref {
-  color: var(--mss-on-hero-muted, #3d4f47) !important;
+  color: var(--mss-on-hero-muted) !important;
   opacity: 1 !important;
 }
 
@@ -595,7 +595,7 @@ html[data-theme="dark"] .card {
 .duas-hero .duas-hero__bismillah,
 .ai-hero .ai-hero__badge,
 .arkan-hero .arkan-hero__hadith {
-  color: var(--mss-on-hero-accent, #123f2e) !important;
+  color: var(--mss-on-hero-accent) !important;
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent) !important;
   border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent) !important;
 }
@@ -670,7 +670,7 @@ html[data-theme="dark"] .card {
 .duas-hero .duas-hero__stats,
 .ai-hero .ai-hero__sub,
 .arkan-hero .arkan-hero__sub {
-  color: var(--mss-on-hero-muted, #3d4f47) !important;
+  color: var(--mss-on-hero-muted) !important;
   opacity: 1 !important;
 }
 
@@ -695,11 +695,11 @@ html[data-theme="dark"] .card {
 
 .asp-hero {
   --mss-on-hero: var(--mj-white);
-  --mss-on-hero-muted: #f3efe6;
-  --mss-on-hero-accent: #fff1c4;
+  --mss-on-hero-muted: var(--sf-color-luxury-night-ink);
+  --mss-on-hero-accent: var(--mj-accent-soft);
   --color-hero-fg: var(--mj-white);
-  --color-hero-fg-muted: #f3efe6;
-  --color-hero-fg-accent: #fff1c4;
+  --color-hero-fg-muted: var(--sf-color-luxury-night-ink);
+  --color-hero-fg-accent: var(--mj-accent-soft);
   color: var(--mj-white);
 }
 
@@ -711,7 +711,7 @@ html[data-theme="dark"] .card {
 }
 
 .asp-hero .assistant-intro {
-  color: #f3efe6 !important;
+  color: var(--sf-color-luxury-night-ink) !important;
 }
 
 /* —— قوالب صفحة عامة —— */
@@ -719,7 +719,7 @@ html[data-theme="dark"] .card {
 .page-shell .mj-card--raised {
   border-radius: var(--mss-radius-card, 1.15rem);
   box-shadow: var(--mss-shadow-card);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, var(--mj-hairline, #e3e8e6));
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, var(--mj-hairline));
 }
 
 
@@ -740,7 +740,7 @@ html[data-theme="dark"] .card {
 .tf-hero .tf-hero__badge,
 .fg-hero .fg-hero__badge,
 .an-hero .an-hero__badge {
-  color: var(--mss-on-hero-accent, #123f2e) !important;
+  color: var(--mss-on-hero-accent) !important;
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent) !important;
   border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent) !important;
 }
@@ -759,7 +759,7 @@ html[data-theme="dark"] .card {
 .tf-hero .tf-hero__sub,
 .fg-hero .fg-hero__sub,
 .an-hero .an-hero__sub {
-  color: var(--mss-on-hero-muted, #3d4f47) !important;
+  color: var(--mss-on-hero-muted) !important;
   opacity: 1 !important;
 }
 

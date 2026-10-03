@@ -1,0 +1,124 @@
+{
+  "phase": "GLOBAL_APP_DESIGN_SYSTEM_UNIFICATION_WAVE1",
+  "measuredAt": "2026-10-03T21:48:40.531263+00:00",
+  "authority_files": [
+    {
+      "file": "src/styles/components/page-hero.css",
+      "before": {
+        "hex": 12,
+        "unsafe_fb": 11
+      },
+      "after": {
+        "hex": 0,
+        "unsafe_fb": 0
+      }
+    },
+    {
+      "file": "src/styles/components/hub-card.css",
+      "before": {
+        "hex": 48,
+        "unsafe_fb": 35
+      },
+      "after": {
+        "hex": 0,
+        "unsafe_fb": 0
+      }
+    },
+    {
+      "file": "src/styles/components/modern-section-shell.css",
+      "before": {
+        "hex": 50,
+        "unsafe_fb": 33
+      },
+      "after": {
+        "hex": 0,
+        "unsafe_fb": 0
+      }
+    },
+    {
+      "file": "src/styles/sunnah-identity-forms-filters.css",
+      "before": {
+        "hex": 3,
+        "unsafe_fb": 3
+      },
+      "after": {
+        "hex": 0,
+        "unsafe_fb": 0
+      }
+    },
+    {
+      "file": "src/styles/sunnah-identity-chrome-nav.css",
+      "before": {
+        "hex": 7,
+        "unsafe_fb": 7
+      },
+      "after": {
+        "hex": 0,
+        "unsafe_fb": 0
+      }
+    },
+    {
+      "file": "src/styles/card-system.css",
+      "before": {
+        "hex": 5,
+        "unsafe_fb": 3
+      },
+      "after": {
+        "hex": 0,
+        "unsafe_fb": 0
+      }
+    },
+    {
+      "file": "src/styles/ssunnah-card-unify.css",
+      "before": {
+        "hex": 2,
+        "unsafe_fb": 2
+      },
+      "after": {
+        "hex": 0,
+        "unsafe_fb": 0
+      }
+    },
+    {
+      "file": "src/styles/card-system-tokens.css",
+      "before": {
+        "hex": 39,
+        "unsafe_fb": 18
+      },
+      "after": {
+        "hex": 0,
+        "unsafe_fb": 0
+      }
+    },
+    {
+      "file": "src/styles/green-surface-system.css",
+      "before": {
+        "hex": 68,
+        "unsafe_fb": 32
+      },
+      "after": {
+        "hex": 29,
+        "unsafe_fb": 1
+      }
+    }
+  ],
+  "wave_totals": {
+    "hex_before": 234,
+    "hex_after": 29,
+    "unsafe_fb_before": 144,
+    "unsafe_fb_after": 1
+  },
+  "phase0_systems": {
+    "HERO": 127,
+    "CARD": 210,
+    "LIST": 102,
+    "FORM": 72,
+    "BUTTON": 141,
+    "NAV": 41,
+    "TAB": 73,
+    "SEARCH": 83,
+    "FILTER": 59,
+    "FEEDBACK": 136
+  },
+  "unknown_global_visual_debt": 0
+}

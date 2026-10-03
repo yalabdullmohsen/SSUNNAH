@@ -45,7 +45,7 @@ html[data-v2-app="1"] .lessons-filter-tab--active,
 html[data-v2-app="1"] .lessons-filter-tab.is-active {
   background: var(--v2-color-emerald, var(--mj-brand)) !important;
   border-color: var(--v2-color-emerald-deep, var(--mj-brand-deep)) !important;
-  color: var(--v2-color-on-emerald, #fff) !important;
+  color: var(--v2-color-on-emerald) !important;
   box-shadow: var(--v2-shadow-soft) !important;
   font-weight: var(--v2-fw-bold, 700) !important;
 }
@@ -119,7 +119,7 @@ html[data-v2-app="1"] .topic-page__tab.is-active,
 html[data-v2-app="1"] .th-tab.th-tab--active {
   font-weight: var(--v2-fw-bold, 700);
   border-color: var(--v2-color-emerald, var(--mj-brand));
-  background: color-mix(in srgb, var(--v2-color-emerald-soft, #e2efe8) 88%, transparent);
+  background: color-mix(in srgb, var(--v2-color-emerald-soft) 88%, transparent);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
 
@@ -178,7 +178,7 @@ html[data-theme="dark"][data-v2-app="1"] .mj-filter-chip,
 html.dark[data-v2-app="1"] .mj-filter-chip,
 html[data-theme="dark"][data-v2-app="1"] .filter-chips__chip,
 html.dark[data-v2-app="1"] .filter-chips__chip {
-  background: var(--v2-color-night-elevated, #1a2f28) !important;
+  background: var(--v2-color-night-elevated) !important;
   border-color: var(--v2-color-night-hairline) !important;
   color: var(--v2-color-night-ink) !important;
 }
