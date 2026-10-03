@@ -91,10 +91,11 @@ html[data-v2-dashboard="1"] .m2030-home .m2030-band:not(.home-start-here-band) {
   margin-block: var(--v2-space-2) var(--v2-space-3);
   padding-inline: max(0.75rem, var(--m2030-pad, 1rem));
 }
-/* ابدأ من هنا ATF — يطابق critical (بلا هامش/حشو شريط يحرّك الهيرو) */
+/* ابدأ من هنا ATF — حشو رأسي ثابت يطابق critical/m2030 */
 html[data-v2-dashboard="1"] .m2030-home .m2030-band.home-start-here-band {
   margin: 0;
-  padding: 0;
+  padding: 0.75rem 0 1rem;
+  min-height: calc(20rem + 1.75rem);
 }
 
 /* ── V3 Welcome Experience strip داخل الهيرو ── */

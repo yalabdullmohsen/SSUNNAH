@@ -97,7 +97,7 @@
 /* ابدأ من هنا — هندسة ATF ثابتة (لا تنتظر final-release / recovery) */
 .home-start-here.home-start-here--compact {
   min-height: 20rem;
-  margin-block: 0.75rem 1rem;
+  margin-block: 0;
   padding: 1rem 1rem 0.75rem;
   border-radius: var(--radius-lg, 1rem);
   background: var(--mj-surface, var(--surface));
@@ -350,11 +350,13 @@
 .m2030-band {
   padding: 0.75rem var(--m2030-pad);
 }
-/* شريط ابدأ من هنا فوق الطية — بلا حشو شريط يزيح المحتوى (U4) */
+/* شريط ابدأ من هنا — حشو رأسي بدل هامش القسم (يمنع نمو الشريط بعد FP) */
 .m2030-band.home-start-here-band,
 .home-start-here-band.home-start-here-band--slim {
   margin: 0;
-  padding: 0;
+  padding: 0.75rem 0 1rem;
+  min-height: calc(20rem + 1.75rem);
+  box-sizing: border-box;
 }
 
 .m2030-band--sage {
