@@ -87,9 +87,14 @@ html[data-v2-dashboard="1"].dark .home-page-hero.page-hero-mj::after {
   opacity: 0.7 !important;
 }
 
-html[data-v2-dashboard="1"] .m2030-home .m2030-band {
+html[data-v2-dashboard="1"] .m2030-home .m2030-band:not(.home-start-here-band) {
   margin-block: var(--v2-space-2) var(--v2-space-3);
   padding-inline: max(0.75rem, var(--m2030-pad, 1rem));
+}
+/* ابدأ من هنا ATF — يطابق critical (بلا هامش/حشو شريط يحرّك الهيرو) */
+html[data-v2-dashboard="1"] .m2030-home .m2030-band.home-start-here-band {
+  margin: 0;
+  padding: 0;
 }
 
 /* ── V3 Welcome Experience strip داخل الهيرو ── */
@@ -278,13 +283,13 @@ html[data-v2-dashboard="1"] .m2030-home .home-primary-portals .sc2 {
   min-height: 5.5rem;
 }
 
-/* ابدأ من هنا — هدوء + بلا بطاقة داخل بطاقة */
+/* ابدأ من هنا — هدوء؛ الحشو يطابق m2030 ATF (لا v2-space-5 → CLS) */
 html[data-v2-dashboard="1"] .m2030-home .home-start-here {
   background: var(--v2-color-ivory-surface);
   border: 1px solid var(--v2-hairline);
   border-radius: var(--v2-radius-card);
-  box-shadow: var(--v2-shadow-soft);
-  padding: var(--v2-space-5);
+  box-shadow: none;
+  padding: 1rem 1rem 0.75rem;
 }
 
 html[data-v2-dashboard="1"] .m2030-home .hsh-eyebrow {
@@ -336,7 +341,8 @@ html[data-v2-dashboard="1"] .m2030-home .home-resume-v2 .soft-card .soft-card {
 
 /* بحث / آية / ورد — أسطح عاجية ناعمة + Premium Search */
 html[data-v2-dashboard="1"] .m2030-home .hus {
-  margin-block: 0.45rem 0.15rem;
+  /* يطابق critical + home-universal-search — بلا قفزة هامش */
+  margin-block: 0.55rem 0.25rem;
 }
 
 html[data-v2-dashboard="1"] .m2030-home .hus-field {
