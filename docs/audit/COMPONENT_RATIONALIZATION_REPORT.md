@@ -1,6 +1,6 @@
 # COMPONENT_RATIONALIZATION_REPORT
 
-Generated: 2026-10-03T04:31:53.186Z
+Generated: 2026-10-03T08:28:53.907Z
 
 Target: **one component authority per purpose**.
 
@@ -49,9 +49,9 @@ Target: **one component authority per purpose**.
 
 ### status
 
-- `EmptyStateV2`: 51
+- `EmptyStateV2`: 57
 - `LoadingStateV2`: 14
-- `ErrorStateV2`: 19
+- `ErrorStateV2`: 23
 
 ### tabs
 
@@ -60,7 +60,7 @@ Target: **one component authority per purpose**.
 
 ### search
 
-- `SearchInput`: 18
+- `SearchInput`: 28
 - `SearchField`: 5
 
 ### lists

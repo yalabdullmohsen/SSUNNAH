@@ -266,7 +266,7 @@ html[data-theme="dark"] .assistant-gate__lede {
 .assistant-gate__examples a {
   display: block;
   padding: 0.7rem 0.9rem;
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
   background: var(--surface-content, #fffcf7);
   border: 1px solid var(--surface-content-border, #e5e1d8);
   color: var(--brand-on-light, var(--mj-brand-deep));

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-10-03T04:28:32.392Z",
+  "updatedAt": "2026-10-03T08:28:50.129Z",
   "consistencyScore": 88,
   "driftScore": 12,
   "authorityAdoptionRatio": 41,
@@ -12,8 +12,8 @@
     },
     {
       "family": "forms",
-      "bypassCount": 182,
-      "adoptionPercent": 5
+      "bypassCount": 177,
+      "adoptionPercent": 7
     },
     {
       "family": "buttons",
@@ -56,9 +56,9 @@
   },
   "metrics": {
     "hexInCss": 7022,
-    "boxShadowDecls": 1026,
-    "borderRadiusPxDecls": 456,
-    "sfTokenRefs": 1063,
+    "boxShadowDecls": 1010,
+    "borderRadiusPxDecls": 429,
+    "sfTokenRefs": 1090,
     "AUTHORITY_ADOPTION_PERCENTAGE": 41
   },
   "exits": [
@@ -88,7 +88,13 @@
     "INTERACTION_SYSTEM_UNIFIED",
     "ADMIN_UI_STANDARDIZED",
     "EMPTY_STATE_EXCELLENCE",
-    "DESIGN_SYSTEM_COMPLIANCE_ENGINE"
+    "DESIGN_SYSTEM_COMPLIANCE_ENGINE",
+    "PRODUCT_EXCELLENCE_ENGINE",
+    "PRODUCT_MATURITY_ENGINE",
+    "CONTENT_DESIGN_UNIFIED",
+    "ICON_SYSTEM_UNIFIED",
+    "PERFORMANCE_EXCELLENCE_ENGINE",
+    "DATABASE_EXCELLENCE_ENGINE"
   ],
   "DESIGN_GOVERNANCE_AUTOMATED": true,
   "DESIGN_CONSISTENCY_SCORING": true,

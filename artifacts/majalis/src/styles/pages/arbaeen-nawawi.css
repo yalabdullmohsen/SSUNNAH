@@ -318,7 +318,7 @@
 :is(html[data-theme="dark"], html.dark) .an-row {
   background: var(--surface-elevated, #24302b);
   border: 1px solid var(--border-elevated, #3a4a44);
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
   margin-bottom: 0.55rem;
   padding: 0.75rem 0.85rem;
 }
@@ -523,7 +523,7 @@
   width: 100%;
   max-width: 100%;
   min-height: 44px;
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
 }
 
 .an-results-count {

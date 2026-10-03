@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
-import { Search } from "lucide-react";
 import { PageHeader, SkeletonCardGrid } from "@/components/ui-common";
 import { PageShell } from "@/components/layout/PageShell";
+import { NoResultsState, SearchInput } from "@/components/design-system";
 import { applyPageSeo } from "@/lib/seo";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { getUnifiedLessonsSplit } from "@/lib/lessons-service";
@@ -75,21 +75,20 @@ export default function TeachersIndexPage() {
       </p>
 
       <div className="tch-search-wrap">
-        <Search size={16} className="sch-search-icon" aria-hidden="true" />
-        <input
+        <SearchInput
           className="tch-search-input sch-search-input"
-          type="search"
           aria-label="ابحث في المشايخ"
           placeholder="ابحث باسم الشيخ..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          onClear={() => setSearch("")}
         />
       </div>
 
       {loading && teachers.length === 0 ? (
         <SkeletonCardGrid count={8} />
       ) : filtered.length === 0 ? (
-        <p className="tch-empty">{EMPTY.search}</p>
+        <NoResultsState className="tch-empty" title="لا مشايخ مطابقون" description={EMPTY.search} onClear={() => setSearch("")} />
       ) : (
         <div className="tch-grid" role="list" aria-busy={loading}>
           {filtered.map((teacher) => (

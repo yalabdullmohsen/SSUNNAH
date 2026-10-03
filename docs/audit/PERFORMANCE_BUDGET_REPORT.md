@@ -1,6 +1,6 @@
 # PERFORMANCE_BUDGET_REPORT
 
-Generated: 2026-10-03T04:37:16.362Z
+Generated: 2026-10-03T08:28:57.458Z
 
 ## Declared budgets
 
@@ -16,7 +16,7 @@ Generated: 2026-10-03T04:37:16.362Z
 
 ## Live bundle
 
-- entryJsGzipKiB: **102.33** KiB
+- entryJsGzipKiB: **102.46** KiB
 - cssGzipKiB: **29.16** KiB
 - mushafPageJsGzipKiB: **29.78** KiB
 

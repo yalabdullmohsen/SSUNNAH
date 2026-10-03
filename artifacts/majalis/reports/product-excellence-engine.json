@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-03T04:31:53.186Z",
+  "updatedAt": "2026-10-03T08:28:53.907Z",
   "PRODUCT_COHESION_SCORE": 57,
   "PRODUCT_COHESION_REPORT": {
     "score": 57,
@@ -65,18 +65,6 @@
         "cohesion": 55
       },
       {
-        "id": "Lessons",
-        "special": false,
-        "fileCount": 14,
-        "scores": {
-          "visual": 54,
-          "interaction": 54,
-          "navigation": 60,
-          "hierarchy": 55
-        },
-        "cohesion": 56
-      },
-      {
         "id": "Fiqh",
         "special": false,
         "fileCount": 33,
@@ -97,6 +85,18 @@
           "interaction": 63,
           "navigation": 56,
           "hierarchy": 50
+        },
+        "cohesion": 57
+      },
+      {
+        "id": "Lessons",
+        "special": false,
+        "fileCount": 14,
+        "scores": {
+          "visual": 58,
+          "interaction": 54,
+          "navigation": 60,
+          "hierarchy": 55
         },
         "cohesion": 57
       },
@@ -148,7 +148,7 @@
   },
   "TOKEN_MIGRATION_QUEUE": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:31:53.186Z",
+    "updatedAt": "2026-10-03T08:28:53.907Z",
     "TOKEN_ENFORCEMENT_MIGRATION": true,
     "totalFilesWithViolations": 365,
     "top": [
@@ -264,7 +264,7 @@
       },
       {
         "path": "styles/pages/hadith-design-language.css",
-        "impact": 197,
+        "impact": 195,
         "violations": [
           {
             "kind": "color",
@@ -276,7 +276,7 @@
           },
           {
             "kind": "radii",
-            "count": 10
+            "count": 8
           }
         ]
       },
@@ -300,7 +300,7 @@
       },
       {
         "path": "styles/pages/fiqh-hub.css",
-        "impact": 174,
+        "impact": 172,
         "violations": [
           {
             "kind": "color",
@@ -316,7 +316,7 @@
           },
           {
             "kind": "radii",
-            "count": 3
+            "count": 2
           }
         ]
       },
@@ -522,7 +522,7 @@
       },
       {
         "path": "styles/pages/arbaeen-nawawi.css",
-        "impact": 80,
+        "impact": 77,
         "violations": [
           {
             "kind": "color",
@@ -531,10 +531,6 @@
           {
             "kind": "shadow",
             "count": 4
-          },
-          {
-            "kind": "radii",
-            "count": 2
           }
         ]
       },
@@ -856,15 +852,15 @@
     "byKindTotals": {
       "color": 6549,
       "spacing": 177,
-      "shadow": 1005,
-      "radii": 204,
+      "shadow": 990,
+      "radii": 177,
       "typography": 94
     },
     "policy": "Highest-impact first · map to DESIGN_TOKENS_AUTHORITY · no new family"
   },
   "COMPONENT_RATIONALIZATION_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:31:53.186Z",
+    "updatedAt": "2026-10-03T08:28:53.907Z",
     "COMPONENT_USAGE_RATIONALIZATION": true,
     "groups": [
       {
@@ -982,7 +978,7 @@
         "usage": [
           {
             "name": "EmptyStateV2",
-            "hits": 51
+            "hits": 57
           },
           {
             "name": "LoadingStateV2",
@@ -990,7 +986,7 @@
           },
           {
             "name": "ErrorStateV2",
-            "hits": 19
+            "hits": 23
           }
         ],
         "overlapping": true,
@@ -1020,7 +1016,7 @@
         "usage": [
           {
             "name": "SearchInput",
-            "hits": 18
+            "hits": 28
           },
           {
             "name": "SearchField",
@@ -1168,7 +1164,7 @@
   },
   "JOURNEY_LENGTH_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:31:53.186Z",
+    "updatedAt": "2026-10-03T08:28:53.907Z",
     "NAVIGATION_JOURNEY_COMPRESSION": true,
     "bottomNavTabs": [
       "/",
@@ -1222,9 +1218,9 @@
   },
   "POLISH_BACKLOG": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:31:53.186Z",
+    "updatedAt": "2026-10-03T08:28:53.907Z",
     "PRODUCT_POLISH_PASS": true,
-    "total": 277,
+    "total": 276,
     "quickWins": [
       {
         "path": "components/QuranActionBar.tsx",
@@ -1410,7 +1406,7 @@
     "byIssue": [
       {
         "issue": "icon size literal — prefer size.icon.* tokens",
-        "count": 226
+        "count": 225
       },
       {
         "issue": "opacity-only disabled cue",

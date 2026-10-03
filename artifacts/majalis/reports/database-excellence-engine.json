@@ -1,22 +1,22 @@
 {
-  "updatedAt": "2026-10-03T04:39:56.921Z",
+  "updatedAt": "2026-10-03T08:28:58.841Z",
   "DATABASE_HEATMAP_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:39:56.921Z",
+    "updatedAt": "2026-10-03T08:28:58.841Z",
     "DATABASE_PERFORMANCE_DEEP_AUDIT": true,
     "connection": "NOT_CONNECTED",
     "liveMetrics": "NOT_CONNECTED — no DATABASE_URL / SUPABASE_DB_URL",
     "schema": {
-      "sqlFiles": 461,
+      "sqlFiles": 468,
       "createTableStatements": 614,
       "distinctTablesMentioned": 354,
-      "createIndexStatements": 916,
+      "createIndexStatements": 1008,
       "createUniqueIndexStatements": 25,
       "enableRlsStatements": 597,
       "createPolicyStatements": 830,
-      "ginTrigramMentions": 33,
-      "ftsMentions": 113,
-      "partialIndexMentions": 44
+      "ginTrigramMentions": 96,
+      "ftsMentions": 175,
+      "partialIndexMentions": 72
     },
     "surfaces": [
       {
@@ -207,7 +207,7 @@
   },
   "QUERY_OPTIMIZATION_QUEUE": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:39:56.921Z",
+    "updatedAt": "2026-10-03T08:28:58.841Z",
     "SUPABASE_QUERY_OPTIMIZATION": true,
     "counts": {
       "total": 80,
@@ -782,14 +782,14 @@
   },
   "INDEX_AUTHORITY_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:39:56.921Z",
+    "updatedAt": "2026-10-03T08:28:58.841Z",
     "DATABASE_INDEX_STRATEGY_REVIEW": true,
     "inventory": {
-      "createIndexStatements": 916,
+      "createIndexStatements": 1008,
       "uniqueIndexes": 25,
-      "partialIndexMentions": 44,
-      "ginTrigramMentions": 33,
-      "ftsMentions": 113,
+      "partialIndexMentions": 72,
+      "ginTrigramMentions": 96,
+      "ftsMentions": 175,
       "duplicateIndexNameDefs": 30
     },
     "hotFilterMigrationPresent": true,
@@ -895,8 +895,20 @@
         "indexes": 21
       },
       {
+        "file": "arabic_search_hadith_source_infra_v4.sql",
+        "indexes": 20
+      },
+      {
+        "file": "20261003120000_arabic_search_hadith_source_infra_v4.sql",
+        "indexes": 20
+      },
+      {
         "file": "platform_expansion_v3.sql",
         "indexes": 17
+      },
+      {
+        "file": "arabic_search_hadiths_sources_v3.sql",
+        "indexes": 16
       },
       {
         "file": "auto_engine_production_complete.sql",
@@ -911,6 +923,10 @@
         "indexes": 16
       },
       {
+        "file": "20261003110000_arabic_search_hadiths_sources_v3.sql",
+        "indexes": 16
+      },
+      {
         "file": "auto_engine_production_complete.sql",
         "indexes": 16
       },
@@ -921,22 +937,6 @@
       {
         "file": "universities_v1.sql",
         "indexes": 15
-      },
-      {
-        "file": "citations_v1.sql",
-        "indexes": 13
-      },
-      {
-        "file": "learn_library_v1_schema.sql",
-        "indexes": 13
-      },
-      {
-        "file": "learning_path_v1.sql",
-        "indexes": 13
-      },
-      {
-        "file": "platform_v2_schema_fixed.sql",
-        "indexes": 13
       }
     ],
     "recommendations": [
@@ -949,7 +949,7 @@
   },
   "CACHE_OPTIMIZATION_PLAN": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:39:56.921Z",
+    "updatedAt": "2026-10-03T08:28:58.841Z",
     "DATA_CACHING_STRATEGY_REVIEW": true,
     "reactQuery": {
       "defaultsPresent": true,
@@ -988,7 +988,7 @@
   },
   "SUNNAH_DATABASE_HEALTH_SCORECARD": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:39:56.921Z",
+    "updatedAt": "2026-10-03T08:28:58.841Z",
     "DATABASE_READINESS_CERTIFICATION": true,
     "overallScore": 66,
     "overallRating": "NEEDS_WORK",
@@ -1029,7 +1029,7 @@
       },
       {
         "name": "schema_quality",
-        "score": 45,
+        "score": 46,
         "rating": "CRITICAL"
       },
       {

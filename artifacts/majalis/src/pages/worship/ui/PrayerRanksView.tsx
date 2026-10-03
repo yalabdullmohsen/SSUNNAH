@@ -6,7 +6,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { RANKS } from "@/lib/prayer-ranks-data";
 import "@/styles/pages/prayer-ranks.css";
 import { DetailScreen } from "@/components/design-system/screens";
-import { ActionButton } from "@/components/design-system";
+import { ActionButton, SearchInput } from "@/components/design-system";
 
 export { RANKS } from "@/lib/prayer-ranks-data";
 
@@ -155,12 +155,12 @@ export function PrayerRanksContent() {
       </section>
 
       <div className="prv-search-wrap">
-        <input
-          type="search"
+        <SearchInput
           className="ds-input prv-search-input"
           placeholder="ابحث في المراتب والفضائل والوصايا."
           value={search}
-          onChange={e => setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
+          onClear={() => setSearch("")}
           aria-label="بحث في فضائل الصلاة"
         />
       </div>

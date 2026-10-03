@@ -1,6 +1,6 @@
 # AUTHORITY_COVERAGE_REPORT
 
-Generated: 2026-10-03T04:28:33.989Z
+Generated: 2026-10-03T08:28:55.754Z
 
 ## AUTHORITY_ADOPTION_PERCENTAGE: **41%**
 
@@ -8,7 +8,7 @@ Generated: 2026-10-03T04:28:33.989Z
 |---|---:|---:|---:|---:|
 | cards | 20 | 208 | 228 | 9 |
 | buttons | 250 | 100 | 350 | 71 |
-| forms | 9 | 182 | 191 | 5 |
+| forms | 14 | 177 | 191 | 7 |
 | tables | 8 | 14 | 22 | 36 |
 | lists | 8 | 74 | 82 | 10 |
 | tabs | 2 | 72 | 74 | 3 |
@@ -18,7 +18,7 @@ Generated: 2026-10-03T04:28:33.989Z
 ## Top divergence sources
 
 - **cards**: bypass=208 · adoption=9%
-- **forms**: bypass=182 · adoption=5%
+- **forms**: bypass=177 · adoption=7%
 - **buttons**: bypass=100 · adoption=71%
 - **lists**: bypass=74 · adoption=10%
 - **tabs**: bypass=72 · adoption=3%

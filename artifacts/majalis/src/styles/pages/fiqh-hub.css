@@ -1864,7 +1864,7 @@ html.dark .fiqh-filters__chip.is-active {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 9px;
+  border-radius: var(--sf-radius-control);
   background: color-mix(in srgb, var(--fiqh-card-accent, var(--mj-brand)) 14%, transparent);
   color: var(--fiqh-card-accent, var(--mj-brand-deep, #12362c));
 }

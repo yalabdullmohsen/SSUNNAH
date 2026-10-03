@@ -44,7 +44,7 @@
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid var(--qp-line);
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
   font-size: 1rem;
   background: var(--qp-surface);
   color: var(--qp-ink);
@@ -175,7 +175,7 @@
   height: 2.6rem;
   display: grid;
   place-items: center;
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
   font-family: var(--mj-face, "Alexandria", sans-serif);
   font-size: 1.15rem;
   font-weight: 800;

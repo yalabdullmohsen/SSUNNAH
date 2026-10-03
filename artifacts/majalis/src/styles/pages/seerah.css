@@ -187,7 +187,7 @@
   border: none;
   cursor: pointer;
   text-align: end;
-  border-radius: 9px;
+  border-radius: var(--sf-radius-control);
   transition: background 0.15s;
   width: 100%;
 }

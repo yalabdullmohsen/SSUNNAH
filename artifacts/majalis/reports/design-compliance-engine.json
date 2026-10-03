@@ -2,7 +2,7 @@
   "DESIGN_COMPLIANCE_SCORE": 73,
   "DESIGN_COMPLIANCE_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:28:33.995Z",
+    "updatedAt": "2026-10-03T08:28:51.920Z",
     "DESIGN_COMPLIANCE_SCORE": 73,
     "DESIGN_SYSTEM_COMPLIANCE_ENGINE": true,
     "signals": {
@@ -14,8 +14,8 @@
         },
         {
           "family": "forms",
-          "bypassCount": 182,
-          "adoptionPercent": 5
+          "bypassCount": 177,
+          "adoptionPercent": 7
         },
         {
           "family": "buttons",
@@ -51,7 +51,7 @@
       "rogueStyling": {
         "hexInCss": 7022,
         "rgbHslInCss": 2087,
-        "boxShadowDecls": 1026,
+        "boxShadowDecls": 1010,
         "inlineColorStyleMatches": 48,
         "withinCeilings": true
       },
@@ -159,9 +159,9 @@
       },
       {
         "component": "forms",
-        "adoptionPercent": 5,
-        "using": 9,
-        "bypassing": 182,
+        "adoptionPercent": 7,
+        "using": 14,
+        "bypassing": 177,
         "rating": "NOT_CERTIFIED"
       },
       {
@@ -218,9 +218,9 @@
     },
     {
       "component": "forms",
-      "adoptionPercent": 5,
-      "using": 9,
-      "bypassing": 182,
+      "adoptionPercent": 7,
+      "using": 14,
+      "bypassing": 177,
       "rating": "NOT_CERTIFIED"
     },
     {
@@ -261,15 +261,15 @@
   ],
   "TOKEN_COVERAGE_SCORECARD": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:28:33.995Z",
+    "updatedAt": "2026-10-03T08:28:51.920Z",
     "tokenUsagePct": 60,
     "hardcodedValuesPct": 40,
     "legacyCssDensityScore": 100,
     "authorityCoveragePct": 41,
     "designTokenPaths": 101,
     "refs": {
-      "sf": 1063,
-      "mj": 11625,
+      "sf": 1090,
+      "mj": 11629,
       "ss": 758,
       "hexInCss": 7022,
       "rgbHslInCss": 2087
@@ -279,7 +279,7 @@
   },
   "UI_DUPLICATION_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:28:33.995Z",
+    "updatedAt": "2026-10-03T08:28:51.920Z",
     "policy": "One pattern per use case · migrate-when-touched",
     "clusters": [
       {
@@ -393,11 +393,11 @@
   },
   "VISUAL_HEATMAP": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:28:33.995Z",
+    "updatedAt": "2026-10-03T08:28:51.920Z",
     "ranked": [
       {
         "area": "styles",
-        "debt": 512,
+        "debt": 508,
         "reasons": [
           "styles/admin.css",
           "styles/app-state-v2.css",
@@ -445,7 +445,7 @@
       },
       {
         "area": "pages",
-        "debt": 45,
+        "debt": 44,
         "reasons": [
           "pages/account/ui/AccountDeletionView.tsx",
           "pages/account/ui/FawaidView.tsx",
@@ -464,9 +464,9 @@
       },
       {
         "area": "family:forms",
-        "debt": 36,
+        "debt": 35,
         "reasons": [
-          "bypass×182"
+          "bypass×177"
         ]
       },
       {
@@ -552,12 +552,12 @@
   },
   "CONSISTENCY_PRIORITY_MATRIX": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:28:33.995Z",
+    "updatedAt": "2026-10-03T08:28:51.920Z",
     "byDebt": [
       {
         "rank": 1,
         "area": "styles",
-        "debt": 512,
+        "debt": 508,
         "action": "Migrate-when-touched · prefer authority components + tokens"
       },
       {
@@ -581,7 +581,7 @@
       {
         "rank": 5,
         "area": "pages",
-        "debt": 45,
+        "debt": 44,
         "action": "Migrate-when-touched · prefer authority components + tokens"
       },
       {
@@ -593,7 +593,7 @@
       {
         "rank": 7,
         "area": "family:forms",
-        "debt": 36,
+        "debt": 35,
         "action": "Absorb forms toward authority"
       },
       {
@@ -673,8 +673,8 @@
       {
         "rank": 2,
         "family": "forms",
-        "adoptionPercent": 5,
-        "bypassCount": 182
+        "adoptionPercent": 7,
+        "bypassCount": 177
       },
       {
         "rank": 3,
@@ -716,11 +716,11 @@
   },
   "PRODUCT_SURFACE_MAP": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:28:33.995Z",
+    "updatedAt": "2026-10-03T08:28:51.920Z",
     "total": 403,
     "classCounts": {
-      "Unified": 151,
-      "Partial": 185,
+      "Unified": 154,
+      "Partial": 182,
       "Legacy": 64,
       "SPECIAL_CASE": 3
     },
@@ -1284,7 +1284,7 @@
       {
         "path": "pages/lessons/LessonsArchivePage.tsx",
         "kind": "page/view",
-        "class": "Partial"
+        "class": "Unified"
       },
       {
         "path": "pages/lessons/LessonsPage.tsx",
@@ -1309,7 +1309,7 @@
       {
         "path": "pages/lessons/TeachersIndexPage.tsx",
         "kind": "page/view",
-        "class": "Partial"
+        "class": "Unified"
       },
       {
         "path": "pages/lessons/ui/AnnualCourseDetailView.tsx",
@@ -1714,7 +1714,7 @@
       {
         "path": "pages/worship/ui/PrayerRanksView.tsx",
         "kind": "page/view",
-        "class": "Partial"
+        "class": "Unified"
       },
       {
         "path": "pages/worship/ui/PrayerTimesView.tsx",
@@ -2795,7 +2795,7 @@
   },
   "SUNNAH_PRODUCT_CERTIFICATION_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T04:28:33.995Z",
+    "updatedAt": "2026-10-03T08:28:51.920Z",
     "overallScore": 66,
     "overallRating": "PARTIAL",
     "dimensions": [
@@ -2836,7 +2836,7 @@
       },
       {
         "name": "Forms",
-        "score": 5,
+        "score": 7,
         "rating": "NOT_CERTIFIED"
       },
       {

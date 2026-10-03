@@ -1,6 +1,6 @@
 # PRODUCT_COHESION_REPORT
 
-Generated: 2026-10-03T04:31:53.186Z
+Generated: 2026-10-03T08:28:53.907Z
 
 ## PRODUCT_COHESION_SCORE: **57**
 
@@ -13,9 +13,9 @@ Most fragmented first:
 | Home | 54 | 51 | 53 | 63 | 50 | 36 |
 | Quran Hub | 55 | 60 | 50 | 50 | 60 | 2 |
 | Hadith | 55 | 54 | 58 | 57 | 52 | 18 |
-| Lessons | 56 | 54 | 54 | 60 | 55 | 14 |
 | Fiqh | 56 | 58 | 57 | 55 | 52 | 33 |
 | Prayer * | 57 | 59 | 63 | 56 | 50 | 13 |
+| Lessons | 57 | 58 | 54 | 60 | 55 | 14 |
 | Settings | 62 | 58 | 69 | 65 | 55 | 4 |
 | Admin | 67 | 58 | 68 | 63 | 51 | 20 |
 | Search | 68 | 65 | 67 | 63 | 57 | 3 |

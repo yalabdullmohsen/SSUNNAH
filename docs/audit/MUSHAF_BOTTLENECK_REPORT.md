@@ -1,6 +1,6 @@
 # MUSHAF_BOTTLENECK_REPORT
 
-Generated: 2026-10-03T04:37:16.362Z
+Generated: 2026-10-03T08:28:57.458Z
 
 Policy: **No speculative fixes — numbers first.**
 

@@ -220,7 +220,7 @@
 .sh-section { display: grid; gap: 0.65rem; }
 .sh-bab {
   border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, var(--mj-line, #d9d2c6));
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
   background: var(--mj-surface, var(--mj-white));
   overflow: hidden;
 }
@@ -252,7 +252,7 @@
 }
 .sh-mahabbah {
   border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, var(--mj-line, #d9d2c6));
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
   background: var(--mj-surface, var(--mj-white));
   overflow: hidden;
 }

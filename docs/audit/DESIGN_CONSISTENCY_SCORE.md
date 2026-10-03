@@ -1,6 +1,6 @@
 # DESIGN_CONSISTENCY_SCORE
 
-Generated: 2026-10-03T04:28:32.392Z
+Generated: 2026-10-03T08:28:50.129Z
 
 | Metric | Value |
 |---|---:|
@@ -14,7 +14,7 @@ Generated: 2026-10-03T04:28:32.392Z
 ## Top divergence
 
 - cards: bypass=208 adoption=9%
-- forms: bypass=182 adoption=5%
+- forms: bypass=177 adoption=7%
 - buttons: bypass=100 adoption=71%
 - lists: bypass=74 adoption=10%
 - tabs: bypass=72 adoption=3%

@@ -5,6 +5,7 @@ import { PageLoadingGuard } from "@/components/PageLoadingGuard";
 import { PageShell } from "@/components/layout/PageShell";
 import { UnifiedLessonCard } from "@/components/lessons/UnifiedLessonCard";
 import { ExploreAlsoNav } from "@/components/ExploreAlsoNav";
+import { EmptyStateV2, NoResultsState, SearchInput } from "@/components/design-system";
 import { applyPageSeo } from "@/lib/seo";
 import { getUnifiedLessonsSplit } from "@/lib/lessons-service";
 import { RequestManager } from "@/lib/request-manager";
@@ -108,18 +109,18 @@ export default function LessonsArchivePage() {
         ) : null}
       </p>
 
-      <label className="lessons-archive-search">
-        <span className="sr-only">بحث في الأرشيف</span>
-        <input
-          type="search"
+      <div className="lessons-archive-search">
+        <SearchInput
           className="adm-input"
           placeholder="بحث في العنوان أو الشيخ أو المسجد…"
           value={filters.search}
           onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
+          onClear={() => setFilters((prev) => ({ ...prev, search: "" }))}
+          aria-label="بحث في الأرشيف"
           enterKeyHint="search"
           autoComplete="off"
         />
-      </label>
+      </div>
 
       <PageLoadingGuard
         loading={loading}
@@ -128,12 +129,22 @@ export default function LessonsArchivePage() {
         keepPrevious
       >
         {filtered.length === 0 ? (
-          <div className="lessons-empty-state lessons-archive-empty" style={{ minHeight: 240 }}>
-            <p>لا دروس مؤرشفة حالياً{filters.search.trim() ? " تطابق البحث" : ""}.</p>
-            <Link href="/lessons" className="m2030-tile">
-              تصفّح الدروس النشطة
-            </Link>
-          </div>
+          filters.search.trim() ? (
+            <NoResultsState
+              className="lessons-archive-empty"
+              title="لا نتائج في الأرشيف"
+              description="جرّب كلمات أخرى أو امسح البحث."
+              onClear={() => setFilters((prev) => ({ ...prev, search: "" }))}
+            />
+          ) : (
+            <EmptyStateV2
+              className="lessons-archive-empty"
+              title="لا دروس مؤرشفة حالياً"
+              description="تصفّح الدروس النشطة للمتابعة."
+              ctaLabel="تصفّح الدروس النشطة"
+              href="/lessons"
+            />
+          )
         ) : (
           <div className="page-card-grid lesson-unified-grid">
             {filtered.map((lesson) => (

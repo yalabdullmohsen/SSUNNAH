@@ -1,6 +1,6 @@
 # SUNNAH_DATABASE_HEALTH_SCORECARD
 
-Generated: 2026-10-03T04:39:56.921Z
+Generated: 2026-10-03T08:28:58.841Z
 
 ## Overall: **66** · **NEEDS_WORK**
 
@@ -12,7 +12,7 @@ Generated: 2026-10-03T04:39:56.921Z
 | search | 85 | EXCELLENT |  |
 | realtime | 80 | GOOD | channels=0 subscribe=10 |
 | costs | 44 | CRITICAL | select(*) and hot table frequency as cost proxies |
-| schema_quality | 45 | CRITICAL |  |
+| schema_quality | 46 | CRITICAL |  |
 | scalability | 50 | NEEDS_WORK | Needs pagination discipline + live stats |
 
 Ratings: EXCELLENT ≥85 · GOOD ≥70 · NEEDS_WORK ≥50 · CRITICAL <50

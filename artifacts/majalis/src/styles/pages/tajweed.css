@@ -74,7 +74,7 @@
   align-items: flex-start;
   min-height: 44px;
   padding: 14px;
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
   border: 1px solid var(--mj-hairline, var(--mj-hairline, #e3e8e6));
   background: var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
   color: inherit;
@@ -148,7 +148,7 @@
 .tj-quiz-card {
   margin-top: 20px;
   padding: 14px;
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
   border: 1px solid var(--mj-hairline, var(--mj-hairline, #e3e8e6));
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 6%, transparent);
 }
