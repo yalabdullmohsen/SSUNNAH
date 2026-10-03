@@ -54,6 +54,8 @@ Phases M–O: `docs/audit/VISUAL_MNO_TABLE_LIST_DATA_REPORT.md` · TABLE/LIST/DA
 
 Phases P–S: `docs/audit/VISUAL_PQRS_MODAL_FEEDBACK_OVERLAY_REPORT.md` · MODAL/FEEDBACK/STATUS/OVERLAY maps · product `ConfirmDialog` · `test:overlay-feedback-authority`.
 
+Phases T–V: `docs/audit/VISUAL_TUV_TAB_NAV_IA_REPORT.md` · TAB/NAV/IA maps · `ContentTabs` · `test:tab-nav-authority`.
+
 ## Endgame phases (A–H)
 
 | Phase | Target exit | Status |

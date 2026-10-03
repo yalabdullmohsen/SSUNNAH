@@ -251,3 +251,130 @@ table.ss-data-table {
   border-radius: var(--radius-card, 1rem);
   border-color: var(--mj-hairline, var(--sf-hairline, transparent));
 }
+
+/* —— Tab authority (TAB_AUTHORITY_ONLY) —— */
+:root {
+  --ss-tab-min-height: 2.75rem;
+  --ss-tab-pad-y: 0.65rem;
+  --ss-tab-pad-x: 0.8rem;
+  --ss-tab-gap: 0.2rem;
+  --ss-tab-font-size: 0.8rem;
+  --ss-tab-indicator-size: 2px;
+}
+
+.ss-tabs {
+  display: flex;
+  overflow-x: auto;
+  gap: 0;
+  background: var(--mj-bg, transparent);
+  border-bottom: var(--ss-tab-indicator-size) solid var(--mj-hairline, var(--sf-hairline, transparent));
+  padding: 0 0.5rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ss-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.ss-tabs__tab {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ss-tab-gap);
+  min-height: var(--ss-tab-min-height);
+  min-width: 2.75rem;
+  padding: var(--ss-tab-pad-y) var(--ss-tab-pad-x);
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--mj-ink-2, var(--color-text-muted));
+  font-size: var(--ss-tab-font-size);
+  font-weight: 500;
+  white-space: nowrap;
+  border-bottom: var(--ss-tab-indicator-size) solid transparent;
+  margin-bottom: calc(-1 * var(--ss-tab-indicator-size));
+  position: relative;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.ss-tabs__tab:hover:not(:disabled) {
+  color: var(--mj-ink, var(--color-text));
+  background: var(--color-surface-muted, color-mix(in srgb, var(--mj-brand, #0f766e) 6%, transparent));
+}
+
+.ss-tabs__tab:focus-visible {
+  outline: 2px solid var(--mj-brand, var(--color-primary));
+  outline-offset: 2px;
+}
+
+.ss-tabs__tab--active {
+  color: var(--mj-brand, var(--majalis-emerald, var(--color-primary)));
+  font-weight: 700;
+  border-bottom-color: var(--mj-brand, var(--majalis-emerald, var(--color-primary)));
+}
+
+.ss-tabs__icon {
+  display: inline-flex;
+  line-height: 1;
+}
+
+.ss-tabs__label {
+  font-size: inherit;
+}
+
+.ss-tabs__marker {
+  position: absolute;
+  inset-inline: 0.5rem;
+  bottom: 0;
+  height: 0;
+  /* indicator via border-bottom on tab — marker reserved for a11y dual-cue consumers */
+}
+
+.ss-tabs--pill {
+  border-bottom: none;
+  gap: 0.35rem;
+  padding: 0.35rem 0.5rem;
+  background: var(--color-surface-muted, var(--mj-surface-2, transparent));
+  border-radius: var(--radius-card, 1rem);
+}
+
+.ss-tabs--pill .ss-tabs__tab {
+  flex-direction: row;
+  border-bottom: none;
+  margin-bottom: 0;
+  border-radius: var(--radius-control, 0.75rem);
+  min-height: 2.5rem;
+}
+
+.ss-tabs--pill .ss-tabs__tab--active {
+  background: var(--mj-surface, var(--color-surface));
+  color: var(--mj-brand, var(--color-primary));
+  box-shadow: none;
+  border: 1px solid var(--mj-hairline, var(--sf-hairline, transparent));
+}
+
+/* Soft absorb: align common page tab bars to shared rhythm (no color wars). */
+.tw-tabs-bar,
+.uq-tabs-bar,
+.sg-tabs-bar,
+.mw-tabs-bar,
+.atl-tabs-bar,
+.ra-tabs-bar,
+.fqp-tabs-scroll,
+.tabs-bar {
+  min-height: var(--ss-tab-min-height);
+  scrollbar-width: none;
+}
+
+.tw-tabs-bar::-webkit-scrollbar,
+.uq-tabs-bar::-webkit-scrollbar,
+.sg-tabs-bar::-webkit-scrollbar,
+.mw-tabs-bar::-webkit-scrollbar,
+.atl-tabs-bar::-webkit-scrollbar,
+.ra-tabs-bar::-webkit-scrollbar,
+.fqp-tabs-scroll::-webkit-scrollbar,
+.tabs-bar::-webkit-scrollbar {
+  display: none;
+}

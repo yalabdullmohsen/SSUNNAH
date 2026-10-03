@@ -84,6 +84,11 @@ export {
   ResultList,
 } from "./ListSystem";
 export { ConfirmDialog, type ConfirmDialogProps } from "./ConfirmDialog";
+export {
+  ContentTabs,
+  PageTabs,
+  type ContentTabItem,
+} from "./TabSystem";
 export { SettingsList, type SettingsListRow } from "./SettingsList";
 export {
   FormLabel,

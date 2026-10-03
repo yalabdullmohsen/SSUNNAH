@@ -87,6 +87,18 @@ Feedback V2 states + `Alert` + FieldError + StatusBadge.
 Maps: `FEEDBACK_AUTHORITY_MAP.md` · `STATUS_AUTHORITY_MAP.md`.  
 Exit: `FEEDBACK_AUTHORITY_ONLY` · `STATUS_AUTHORITY_ONLY`.
 
+## Tab Authority
+
+Canonical: `ContentTabs` / `PageTabs` · `SegmentedFilter` for filters.  
+Map: `TAB_AUTHORITY_MAP.md`. Gate: `test:tab-nav-authority`.  
+Exit: `TAB_AUTHORITY_ONLY`.
+
+## Navigation Authority
+
+Canonical: `BottomNavBar` · `NavBar` · `SideNavDrawer` · `Breadcrumbs` · `config/navigation.ts`.  
+Maps: `NAVIGATION_AUTHORITY_MAP.md` · `NAVIGATION_EXPERIENCE_AUTHORITY.md`.  
+Exit: `NAVIGATION_AUTHORITY_ONLY` · `NAVIGATION_EXPERIENCE_UNIFIED`.
+
 ## Page Authority
 
 Canonical: `AppPage` · `PageHeader` · Screen adapters (`DetailScreen`, …) per `PAGE_CONTRACT_MATRIX.md`.

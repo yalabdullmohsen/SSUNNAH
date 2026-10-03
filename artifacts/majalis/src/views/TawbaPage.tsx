@@ -6,6 +6,7 @@ import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { DetailScreen } from "@/components/design-system/screens";
+import { ContentTabs } from "@/components/design-system/TabSystem";
 import { Button } from "@/components/ui/button";
 
 
@@ -273,25 +274,18 @@ export default function TawbaPage() {
         </div>
       </section>
 
-      {/* tabs */}
-      <div className="tw-tabs-bar" role="tablist" aria-label="أقسام التوبة">
-        {TABS.map((t) => (
-          <Button
-            key={t.id}
-            id={`twb-tab-${t.id}`}
-            type="button"
-            variant="ghost"
-            role="tab"
-            className={`tw-tab${tab === t.id ? " tw-tab--active" : ""}`}
-            onClick={() => setTab(t.id)}
-            aria-selected={tab === t.id}
-              aria-controls={`twb-panel-${t.id}`}
-          >
-            <span className="tw-tab__icon"><SectionIcon name={t.icon} size={20} /></span>
-            <span className="tw-tab__label">{t.label}</span>
-          </Button>
-        ))}
-      </div>
+      <ContentTabs
+        className="tw-tabs-bar"
+        ariaLabel="أقسام التوبة"
+        idPrefix="twb"
+        value={tab}
+        onChange={(id) => setTab(id as TawbaTab)}
+        items={TABS.map((t) => ({
+          id: t.id,
+          label: t.label,
+          icon: <SectionIcon name={t.icon} size={20} />,
+        }))}
+      />
 
       <div className="tw-body">
         {/* ── شروط التوبة ── */}
