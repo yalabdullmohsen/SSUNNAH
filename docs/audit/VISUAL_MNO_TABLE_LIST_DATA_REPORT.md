@@ -10,7 +10,8 @@ Date: 2026-10-03 · Branch: `cursor/visual-unification-wave`
 | LEGACY→absorb | content-detail / quran-numbers / nb-table borders → hairline tokens |
 | SPECIAL_CASE | admin-v3 `.av3-table` · legacy admin CRUD · prayer annual · mushaf |
 
-`UniversitiesComparePage` migrated to `Table*` primitives + `.ss-data-table`.
+`UniversitiesComparePage` + `AnnualCourseDetailView` → `Table*` + `.ss-data-table` (zebra + hover).  
+LEGACY absorb: `.content-detail-table` · `.nb-table` · `.quran-numbers-table`.
 
 Map: `docs/design/TABLE_AUTHORITY_MAP.md` · Exit: **TABLE_AUTHORITY_ONLY** (product)
 
@@ -20,9 +21,9 @@ Façades in `ListSystem.tsx`:
 
 | Name | Equivalent |
 |---|---|
-| SimpleList | ContentRow shell |
+| SimpleList | ContentRow shell · AnnualCourse sheikh/mutoon lists |
 | InteractiveList | interactive row shell |
-| NavigationList | SettingsList |
+| NavigationList | SettingsList · **SettingsView** consumers |
 | ResultList | VirtualList |
 
 Map: `docs/design/LIST_AUTHORITY_MAP.md` · Exit: **LIST_AUTHORITY_ONLY** (product)
@@ -30,7 +31,7 @@ Map: `docs/design/LIST_AUTHORITY_MAP.md` · Exit: **LIST_AUTHORITY_ONLY** (produ
 ## Phase O — Data presentation
 
 `docs/design/DATA_PRESENTATION_AUTHORITY.md` — cards/tables/lists/badges/chips hierarchy.  
-Exit: **DATA_PRESENTATION_UNIFIED** (contract + first absorbs)
+Exit: **DATA_PRESENTATION_UNIFIED** (contract + absorbs)
 
 ## Gates
 

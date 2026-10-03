@@ -201,6 +201,10 @@ table.ss-data-table {
   border-bottom: none;
 }
 
+.ss-data-table tbody tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--mj-brand, var(--sf-color-deep-emerald)) 3%, transparent);
+}
+
 .ss-data-table tbody tr:hover td {
   background: color-mix(in srgb, var(--mj-brand, var(--sf-color-deep-emerald)) 6%, transparent);
 }
@@ -241,9 +245,17 @@ table.ss-data-table {
 }
 
 .ss-list > li,
+.ss-list > .ss-list__item,
 .ss-list > .id-content-row,
 .ss-list > .mur-settings-row {
   min-height: 2.75rem;
+  padding: 0.55rem 0.15rem;
+  border-bottom: 1px solid var(--mj-hairline, var(--sf-hairline, transparent));
+}
+
+.ss-list > li:last-child,
+.ss-list > .ss-list__item:last-child {
+  border-bottom: none;
 }
 
 /* —— Confirm dialog density (MODAL authority) —— */

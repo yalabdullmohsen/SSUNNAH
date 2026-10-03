@@ -17,6 +17,8 @@ const listSys = readFileSync(resolve(majalis, "src/components/design-system/List
 const tableCss = readFileSync(resolve(majalis, "src/styles/ssunnah-card-unify.css"), "utf8");
 const dsIndex = readFileSync(resolve(majalis, "src/components/design-system/index.ts"), "utf8");
 const compare = readFileSync(resolve(majalis, "src/views/UniversitiesComparePage.tsx"), "utf8");
+const annual = readFileSync(resolve(majalis, "src/pages/lessons/ui/AnnualCourseDetailView.tsx"), "utf8");
+const settings = readFileSync(resolve(majalis, "src/pages/account/ui/SettingsView.tsx"), "utf8");
 
 assert.match(tableMap, /TABLE_AUTHORITY_ONLY/);
 assert.match(tableMap, /ui\/table/);
@@ -40,9 +42,14 @@ assert.match(listSys, /SettingsList/);
 assert.match(listSys, /VirtualList/);
 
 assert.match(tableCss, /\.ss-data-table\b/);
+assert.match(tableCss, /nth-child\(even\)/);
 assert.match(dsIndex, /SimpleList/);
 assert.match(compare, /from ["']@\/components\/ui\/table["']/);
 assert.match(compare, /ss-data-table/);
+assert.match(annual, /from ["']@\/components\/ui\/table["']/);
+assert.match(annual, /ss-data-table/);
+assert.match(annual, /SimpleList/);
+assert.match(settings, /NavigationList/);
 assert.ok(existsSync(resolve(majalis, "src/components/ui/table.tsx")));
 
 console.log("table-list-authority-gate: ok");

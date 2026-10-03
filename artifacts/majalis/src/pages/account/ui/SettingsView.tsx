@@ -4,7 +4,8 @@ import { applyPageSeo } from "@/lib/seo";
 import { STATUS } from "@/lib/ui-copy";
 import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
 import { UtilityScreen } from "@/components/design-system/screens";
-import { SettingsList, SettingsToggleRow } from "@/components/design-system/SettingsList";
+import { SettingsToggleRow } from "@/components/design-system/SettingsList";
+import { NavigationList } from "@/components/design-system/ListSystem";
 import { AppCard } from "@/components/design-system/AppCard";
 import { FieldError, FieldLabel, FormLabel, SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
@@ -310,7 +311,7 @@ export default function SettingsPage() {
               …
             </p>
           ) : (
-            <SettingsList
+            <NavigationList
               rows={
                 isLoggedIn
                   ? [
@@ -379,7 +380,7 @@ export default function SettingsPage() {
           </div>
           <p className="settings-note">{t("lang_overlay_note")}</p>
           <p className="settings-note">السمة والمظهر</p>
-          <SettingsList
+          <NavigationList
             rows={THEME_OPTIONS.map((option) => ({
               id: `theme-${option.id}`,
               title: option.label,
@@ -604,7 +605,7 @@ export default function SettingsPage() {
             checked={preferences.occasionNotifications}
             onChange={(value) => update("occasionNotifications", value)}
           />
-          <SettingsList
+          <NavigationList
             rows={[
               { id: "notif-sound", title: "الإشعارات والصوت", href: "/notifications-and-sound" },
               { id: "notif-detail", title: "الإشعارات", href: "/notification-settings" },
@@ -616,7 +617,7 @@ export default function SettingsPage() {
 
       {visible(sections[5]!) && (
         <LegalSection title={sections[5]!.title}>
-          <SettingsList
+          <NavigationList
             rows={[
               {
                 id: "refresh-version",
@@ -679,7 +680,7 @@ export default function SettingsPage() {
       {visible(sections[6]!) && (
         <LegalSection title={sections[6]!.title}>
           <p>{t("settings_privacy_desc")}</p>
-          <SettingsList
+          <NavigationList
             rows={[
               { id: "privacy-center", title: "مركز الخصوصية", href: "/privacy-center" },
               { id: "privacy-policy", title: "سياسة الخصوصية", href: "/privacy" },
@@ -764,7 +765,7 @@ export default function SettingsPage() {
           <p className="settings-note">
             أعد مشاهدة جولة المزايا لتتعرّف على المصحف والصلاة والأذكار والبحث والتنبيهات.
           </p>
-          <SettingsList
+          <NavigationList
             rows={[
               { id: "feature-tour", title: "جولة المزايا", href: "/feature-tour" },
               { id: "about", title: "حول التطبيق", href: "/about" },

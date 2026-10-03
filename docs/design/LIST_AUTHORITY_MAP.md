@@ -24,7 +24,7 @@ Supporting: `ListScreen` shell · `HadithListCard` / `UnifiedLessonCard` as **it
 
 | Surface | Class |
 |---|---|
-| Settings / account rows (`SettingsList`) | APPROVED |
+| Settings / account rows (`SettingsList` · `NavigationList` façade) | APPROVED |
 | Section hubs (`SectionRow` · Hub cards) | APPROVED |
 | Search / long feeds (`VirtualList` · `ResultList`) | APPROVED |
 | Lesson / hadith card lists (AppCard item façades) | APPROVED (item) |

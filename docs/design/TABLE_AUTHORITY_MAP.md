@@ -23,7 +23,8 @@ No new table framework. Admin grids stay SPECIAL_CASE until admin-v3 wave.
 | Surface | Class | Notes |
 |---|---|---|
 | Product compare / stats / content tables using `ui/table` or `.ss-data-table` | APPROVED | New work must use these |
-| `UniversitiesComparePage`, `quran-numbers`, prophet `nb-table`, `content-detail-table` (migrating) | LEGACY → absorb | Remap styles to `.ss-data-table` / tokens |
+| `UniversitiesComparePage` · `AnnualCourseDetailView` | APPROVED | `ui/table` + `.ss-data-table` |
+| `quran-numbers` · prophet `nb-table` · residual `content-detail-table` CSS | LEGACY → absorb | Shared hairline/padding via unify CSS |
 | `admin-v3` `.av3-table*` · legacy `.admin-table` · section CRUD tables | SPECIAL_CASE | ADMIN_ONLY boundary |
 | `PrayerAnnualTimetable` immersive | SPECIAL_CASE | Prayer chrome / contrast locked |
 | Mushaf | SPECIAL_CASE | Not a data-grid surface |

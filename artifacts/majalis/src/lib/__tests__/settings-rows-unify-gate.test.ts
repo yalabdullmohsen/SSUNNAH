@@ -20,7 +20,7 @@ function surfaceBlock(css: string, selector: string): string {
 const settings = readFileSync(resolve(root, "src/pages/account/ui/SettingsView.tsx"), "utf8");
 assert.doesNotMatch(settings, /\bui-card-btn\b/, "لا ui-card-btn في الإعدادات");
 assert.doesNotMatch(settings, /\bsettings-danger-btn\b/, "لا settings-danger-btn — صفوف SettingsList");
-assert.match(settings, /SettingsList/, "SettingsList مستخدم");
+assert.match(settings, /NavigationList|SettingsList/, "NavigationList/SettingsList مستخدم (LIST authority)");
 assert.match(settings, /id:\s*"appearance"/, "قسم المظهر والواجهة");
 assert.match(settings, /id:\s*"reading"/, "قسم القراءة والمصحف منفصل");
 assert.match(settings, /title:\s*"المظهر والواجهة"/);
@@ -43,7 +43,7 @@ const prayer = readFileSync(resolve(root, "src/components/adhan/PrayerAlertSetti
 assert.match(prayer, /ads-card/, "تنبيه الصلاة: ads-card");
 assert.doesNotMatch(prayer, /\bsoft-card\b/, "تنبيه الصلاة بلا soft-card مباشر");
 
-assert.match(settings, /SettingsToggleRow|SettingsList/, "صفوف التبديل/القائمة من design-system");
+assert.match(settings, /SettingsToggleRow|NavigationList|SettingsList/, "صفوف التبديل/القائمة من design-system");
 assert.match(settings, /id:\s*`theme-\$\{option\.id\}`|id:\s*"theme-/, "اختيار السمة عبر SettingsList");
 assert.doesNotMatch(settings, /settings-option-grid/, "لا شبكة اختيار سمة قديمة");
 assert.doesNotMatch(settings, /className="settings-toggle-row"/, "لا settings-toggle-row مباشر");
