@@ -1,21 +1,43 @@
 # ARABIC_SEARCH_PRODUCTION_APPROVAL_PACKET
 
 Date_UTC: 2026-10-03
-PR_program: SUNNAH_DATABASE_SEARCH_SECURITY_AND_PRODUCT_CLOSURE_PROGRAM
-Authority: ARABIC_HADITH_SOURCE_SEARCH_INFRASTRUCTURE_REPORT + static review Phase 5–6
-Packet_status: DRAFT_BLOCKED_CREDENTIAL_STAGING
-Stabilization_phase: REPOSITORY_STABILIZATION_AND_RELEASE_CLOSURE
+PR_program: ARABIC_SEARCH_V4_STAGING_CERTIFICATION_AND_PRODUCTION_PACKET
+Packet_status: BLOCKED_WITH_EVIDENCE
+Stabilization_phase: STAGING_CERTIFICATION_CONNECTIVITY_BLOCKER
 
 ## Status flags
 
 PRODUCTION_MIGRATION_APPLIED = false
-STAGING_VALIDATION = BLOCKED_CREDENTIAL_STAGING
-STAGING_IDENTITY_CONFIRMED = false
-STAGING_EXISTS = false (discovery: STAGING_NOT_FOUND)
+STAGING_EXISTS = true
+STAGING_PROJECT_REF = dgxzcmzcapzcrvcfzjmc
+PRODUCTION_PROJECT_REF = ngmvmlulzacrlicuagyp
+STAGING_EQUALS_PRODUCTION = false
+ENVIRONMENT_ISOLATION = PASS
+STAGING_VALIDATION = BLOCKED_WITH_EVIDENCE
+STAGING_IDENTITY_CONFIRMED = true
 PRODUCTION_APPROVAL_REQUIRED = true
 CLIENT_RPC_FEATURE_FLAG_DEFAULT = disabled
-DATABASE_PRODUCTION_CERTIFIED = false (forbidden until live apply + metrics)
+DATABASE_PRODUCTION_CERTIFIED = false
 PACKET_READY_FOR_PRODUCTION_APPLY = false
+
+## Blocker (authoritative)
+
+GitHub Actions cannot open a TCP session to the current `STAGING_DATABASE_URL` host:
+
+- Error class: `STAGING_DB_NO_IPV4_A_RECORD` / prior `ENETUNREACH` on IPv6 `:5432`
+- Evidence run: https://github.com/yalabdullmohsen/majalis/actions/runs/37130808222
+- Report: `docs/audit/ARABIC_SEARCH_V4_STAGING_CERTIFICATION_REPORT.md`
+
+Identity preflight PASS (Staging ref ≠ Production; required secrets present).
+SQL apply / indexes / RLS / functional / EXPLAIN / soak were NOT executed because the DB TCP path is unreachable from CI.
+
+### Owner fix (Staging only — do not touch Production)
+
+1. Open Supabase project `dgxzcmzcapzcrvcfzjmc` → Project Settings → Database.
+2. Copy the **Connection pooling** URI (Session mode preferred for migrations; Transaction mode `:6543` also acceptable if IPv4).
+3. Replace GitHub Environment `staging` secret `STAGING_DATABASE_URL` with that Pooler URI (must still reference Staging ref only).
+4. Re-run workflow: **Arabic Search v4 Staging Certification**.
+5. Do not change Production secrets/URLs/flags.
 
 ## Migration files
 
@@ -24,126 +46,54 @@ PACKET_READY_FOR_PRODUCTION_APPLY = false
 - artifacts/majalis/supabase/arabic_search_hadith_source_infra_v4_rollback.sql
 - docs/runbooks/ARABIC_SEARCH_HADITH_SOURCE_CONCURRENT_INDEXES.md
 - Migration checksum (sha256): 495996733aae6579e3cc9e2e0bbf2a52143028ee7856b2aec0b9e9c446778f3a
+- Staging cert harness: artifacts/majalis/scripts/arabic-search-v4-staging-certification.mjs
+- Workflow: .github/workflows/arabic-search-v4-staging-certification.yml
 
-## Static review (repository) — PASS
+## Staging sections
 
-- ar_normalize IMMUTABLE STRICT PARALLEL SAFE + search_path=public
-- ة→ه KEEP (client parity)
-- search_vector / search_text generated expressions align with query predicates
-- FTS uses to_tsvector/plainto_tsquery('simple')
-- SECURITY INVOKER only (no DEFINER)
-- RPC lim clamped (least/greatest → max 100)
-- Empty / short query guarded
-- Keyset: score DESC, id ASC
-- Filters: verification_status=verified, deleted_at IS NULL, sources is_active
-- Return shape: snippets + public fields (no admin JSON)
-- Grants: EXECUTE to anon/authenticated/service_role on search RPCs; SELECT on views
-- Rollback SQL present
-- Client path feature-flagged OFF by default with legacy fallback error + unified local search retained
-
-## Repository delivery (merged)
-
-- PR #2497 MERGED → 458d97d62af29bae5305038c446fbdb7cee8ae72 (select-star, N+1, Arabic search contracts; RPC flag OFF)
-- PR #2498 MERGED → 150b0d70f0ef08602a973b5256b1c18342741632 (index matrix, CRUD smoke, source relevance)
-- PR #2499 MERGED → cea9595f831de53c536beeea83201a4fe90f1f86 (query-keys, invalidation, race/cache contracts)
-- origin/main tip: cea9595f831de53c536beeea83201a4fe90f1f86
-- Main CI (cea9595f): success — build, static-checks, repo-gates, Verify build, ci-required, postgres-integration
-- Auto Deploy main → production: success
-- Production version.json shortCommit: cea9595f → PRODUCTION_MATCH = true
-- Production Supabase ref (documented): ngmvmlulzacrlicuagyp
-- PRODUCTION_RPC_FLAG_DISABLED = true
-
-## Staging sections (NOT EXECUTED)
-
-- Staging Environment Identity: NOT_CONFIRMED / STAGING_NOT_FOUND
-- GitHub Environment "Staging": absent
-- STAGING_DATABASE_URL: absent (repo secrets + agent env)
-- Pre-Migration Baseline: NOT_CAPTURED
+- Staging Environment Identity: CONFIRMED (dgxzcmzcapzcrvcfzjmc ≠ ngmvmlulzacrlicuagyp)
+- Secret availability: PASS (four required secrets on Environment `staging`)
+- Pre-Migration Baseline: NOT_CAPTURED (DB TCP blocked)
 - Migration Apply Result: NOT_RUN
 - Index Validity (indisvalid): NOT_RUN
 - Functional / RLS live: NOT_RUN
 - EXPLAIN before/after: NOT_RUN
-- Benchmark classes: INSUFFICIENT_DATA
 - Client RPC Staging soak: NOT_RUN
+- Benchmark classes: INSUFFICIENT_DATA
 
-## Owner credential setup (do not paste secrets into chat/PR)
+## Repository delivery (merged; Production MATCH expected via deploy)
 
-1. Create a NEW Supabase project for Staging (name suggestion: sunnah-staging).
-2. Confirm Staging project ref ≠ ngmvmlulzacrlicuagyp (Production).
-3. Create GitHub Environment named exactly: Staging (required reviewer recommended).
-4. Store Staging-only secrets (names):
-   - STAGING_DATABASE_URL
-   - STAGING_SUPABASE_URL
-   - STAGING_ANON_KEY
-   - STAGING_SERVICE_ROLE_KEY
-   - STAGING_SUPABASE_ACCESS_TOKEN (optional, for CLI)
-5. Store variables:
-   - STAGING_SUPABASE_PROJECT_REF=<new-ref>
-   - STAGING_ENVIRONMENT_MARKER=staging
-   - PRODUCTION_SUPABASE_PROJECT_REF=ngmvmlulzacrlicuagyp
-6. Document backup/restore for Staging.
-7. Re-run identity verification (read-only) before any SQL.
-8. Do NOT set Production DATABASE_URL into any STAGING_* secret.
-9. Do NOT enable VITE_ARABIC_DB_RPC_SEARCH on Production.
+- Arabic Search v4 SQL + client flag OFF + static gates on main
+- Staging certification workflow + harness on main
+- Production RPC flag remains disabled
+- PRODUCTION_DATABASE_MIGRATION_APPLIED = false
 
-## Production apply checklist (after Staging PASS only)
+## Rollback plan (unchanged; Staging-first)
 
-- [ ] Staging migration PASS
-- [ ] All new indexes indisvalid = true
-- [ ] EXPLAIN benchmark complete; no unaccepted regressions
-- [ ] RLS + verified/active predicates confirmed live
-- [ ] Rollback rehearsed on Staging
-- [ ] Concurrent index runbook sequence accepted
-- [ ] Feature flag remains disabled until post-apply soak
-- [ ] Explicit owner approval recorded
-- [ ] Apply via workflow_dispatch apply=true OR owner-operated SQL
-- [ ] Concurrent indexes outside transaction per runbook
-- [ ] Enable VITE_ARABIC_DB_RPC_SEARCH only after RPC smoke PASS
-- [ ] Monitor search.obs counters (latency buckets, zero-result, fallback, errors) — no raw query text
+- Use `arabic_search_hadith_source_infra_v4_rollback.sql` on Staging only after a successful apply
+- Keep Production feature flag OFF during any rollback
+- Invalid indexes: `DROP INDEX CONCURRENTLY` only for invalid indexes
 
-## Expected execution sequence (Production)
+## Rollout plan (after connectivity + Staging PASS)
 
-1. Extension pg_trgm (if missing)
-2. ar_normalize / normalize_ar
-3. Generated search_text / search_vector
-4. RPC functions + grants
-5. B-tree relation indexes
-6. FTS GIN
-7. Trigram GIN (CONCURRENTLY per runbook, one at a time)
-8. Validate indisvalid
-9. Smoke search_hadiths / search_sources
-10. Enable client flag gradually
-
-## Lock / disk risks
-
-- CONCURRENTLY avoids long ACCESS EXCLUSIVE but still needs disk for index builds
-- Invalid index → stop, DROP INDEX CONCURRENTLY invalid, fix, retry — do not proceed to flag enable
-
-## Rollback
-
-- Follow arabic_search_hadith_source_infra_v4_rollback.sql
-- Keep feature flag OFF during rollback
-- Client continues unified/local search
-
-## Client
-
-- src/lib/arabic-db-search.ts — RPC when flag ON
-- src/lib/arabic-search-feature-flag.ts — default OFF
-- src/lib/search-observability.ts — privacy-safe counters
-- Legacy/unified local search remains primary until flag ON
+1. Complete Staging certification → READY_FOR_OWNER_APPROVAL
+2. Owner explicit approval
+3. Production apply via approved path only
+4. Concurrent indexes per runbook
+5. Enable `VITE_ARABIC_DB_RPC_SEARCH` only after Production smoke
+6. Monitor privacy-safe search.obs counters
 
 ## Explicit owner approval checklist
 
+- [ ] I updated Staging `STAGING_DATABASE_URL` to an IPv4 Pooler URI for `dgxzcmzcapzcrvcfzjmc`
+- [ ] Staging certification workflow PASS
 - [ ] I confirm Staging identity ≠ Production
 - [ ] I confirm Staging PASS evidence attached
-- [ ] I approve Production SQL apply for Arabic search v4
-- [ ] I accept concurrent index runbook and rollback ownership
+- [ ] I approve Production SQL apply for Arabic search v4 (later task)
 - [ ] I will not enable client RPC flag until post-apply smoke PASS
 
-## Stabilization closure note
+## Classification
 
-- PR #2497 / #2498 / #2499 are terminal MERGED; no duplicate DB/search PR required for repository closure.
-- Open non-DB PRs (#2460, #2456, #2299, #1791) are outside this database/search scope and were not closed.
-- Packet remains DRAFT until Staging identity + live validation complete.
-- PRODUCTION_DATABASE_MIGRATION_APPLIED = false
-- PRODUCTION_RPC_FLAG_DISABLED = true
+BLOCKED_WITH_EVIDENCE
+
+PRODUCTION_DATABASE_MIGRATION_APPLIED = false
