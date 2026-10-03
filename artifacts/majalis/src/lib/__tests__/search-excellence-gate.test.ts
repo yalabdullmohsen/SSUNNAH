@@ -41,10 +41,19 @@ for (const rel of [
   "docs/audit/SEARCH_QUERY_HEATMAP.md",
   "docs/audit/SEARCH_COVERAGE_REPORT.md",
   "docs/audit/SEARCH_UX_IMPROVEMENT_PLAN.md",
+  "docs/audit/ARABIC_SEARCH_INFRASTRUCTURE_REPORT.md",
   "docs/audit/SEARCH_HEALTH_SCORECARD.md",
 ]) {
   assert.ok(existsSync(resolve(root, rel)), rel);
 }
+
+assert.ok(existsSync(resolve(majalis, "supabase/arabic_search_infrastructure_v2.sql")));
+const infraSql = readMaj("supabase/arabic_search_infrastructure_v2.sql");
+assert.match(infraSql, /ar_normalize/);
+assert.match(infraSql, /pg_trgm/);
+assert.match(infraSql, /search_lessons/);
+assert.match(infraSql, /search_vector/);
+assert.match(infraSql, /gin_trgm_ops/);
 
 const bundle = JSON.parse(readMaj("reports/search-excellence-engine.json"));
 assert.equal(bundle.ARABIC_SEARCH_NORMALIZATION_REPORT.ARABIC_SEARCH_OPTIMIZATION, true);
@@ -52,6 +61,12 @@ assert.equal(bundle.SEARCH_RELEVANCE_SCORECARD.SEARCH_RELEVANCE_ENGINE_AUDIT, tr
 assert.equal(bundle.SEARCH_QUERY_HEATMAP.SEARCH_QUERY_PERFORMANCE, true);
 assert.equal(bundle.SEARCH_COVERAGE_REPORT.SEARCH_INDEX_COVERAGE, true);
 assert.equal(bundle.SEARCH_UX_IMPROVEMENT_PLAN.SEARCH_UX_OPTIMIZATION, true);
+assert.equal(bundle.ARABIC_SEARCH_INFRASTRUCTURE_REPORT.ARABIC_SEARCH_INFRASTRUCTURE_HARDENING, true);
+assert.equal(bundle.ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.arNormalizeSql, true);
+assert.match(
+  bundle.ARABIC_SEARCH_INFRASTRUCTURE_REPORT.latencyBenchmark,
+  /NOT_CONNECTED/,
+);
 assert.equal(bundle.SEARCH_HEALTH_SCORECARD.SEARCH_EXCELLENCE_CERTIFICATION, true);
 assert.ok(bundle.SEARCH_COVERAGE_REPORT.docsTotal >= 1000);
 assert.ok(

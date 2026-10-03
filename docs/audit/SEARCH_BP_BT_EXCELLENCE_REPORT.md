@@ -76,10 +76,19 @@ Latency حي: **NOT_MEASURED** (DEVICE_REQUIRED).
 2. توسيع مرادفات آمن (كلمة واحدة فقط؛ الأصل أولاً) حتى لا تغرق «سور» نتائج السور  
 3. محرّك + بوابة `test:search-excellence` ضمن `test:design-governance`
 
+## BU — بنية PostgreSQL
+
+- `public.ar_normalize()` + غلاف `normalize_ar`
+- `search_vector` + فهارس trgm للكيانات: lessons / sheikhs / library_items / hadith
+- RPCs هجينة: `search_lessons` · `search_sheikhs` · `search_library_items` · `search_hadith_items`
+- تقرير: `docs/audit/ARABIC_SEARCH_INFRASTRUCTURE_REPORT.md`
+- Latency before/after: **NOT_CONNECTED**
+
 ## التالي
 
-1. توسيع فهرسة الحديث/العلماء/الفقه/السيرة  
-2. وصل `SearchSuggestions` + `trackSearchUx` في GSM/Home  
-3. قياس latency على جهاز (DEVICE_REQUIRED)
+1. تطبيق الترحيل على Supabase + إعادة بناء الأعمدة المولَّدة  
+2. ترحيل مسارات ILIKE في `supabase.ts` → RPCs  
+3. توسيع فهرسة الحديث/العلماء في الفهرس المحلي  
+4. وصل `SearchSuggestions` + قياس latency (DEVICE_REQUIRED)
 
 بوابة: `pnpm run test:search-excellence`

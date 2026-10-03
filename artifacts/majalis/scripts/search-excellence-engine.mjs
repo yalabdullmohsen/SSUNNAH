@@ -488,6 +488,112 @@ const SEARCH_UX_IMPROVEMENT_PLAN = {
   target: "Consistent search box · suggestions · recent · highlight · groups · empty",
 };
 
+// ── BU: ARABIC_SEARCH_INFRASTRUCTURE_HARDENING (SQL layer) ────────────────
+const infraV2Path = join(majalis, "supabase/arabic_search_infrastructure_v2.sql");
+const infraMigrationPath = join(
+  majalis,
+  "supabase/migrations/20261003100000_arabic_search_infrastructure_v2.sql",
+);
+const infraSql = existsSync(infraV2Path) ? readUtf(infraV2Path) : "";
+const legacyArabicSql = existsSync(join(majalis, "supabase/arabic_search_upgrade_v1.sql"))
+  ? readUtf(join(majalis, "supabase/arabic_search_upgrade_v1.sql"))
+  : "";
+const unifiedSql = existsSync(join(majalis, "supabase/unified_search_index_v1.sql"))
+  ? readUtf(join(majalis, "supabase/unified_search_index_v1.sql"))
+  : "";
+
+const searchableEntities = [
+  { id: "lessons", table: "lessons", trgm: /idx_lessons_.*trgm|idx_lessons_title_ar_trgm/, fts: /idx_lessons_search_vector/, rpc: /search_lessons/ },
+  { id: "scholars", table: "sheikhs", trgm: /idx_scholars_name_trgm|idx_sheikhs_search_trgm/, fts: /idx_sheikhs_search_vector/, rpc: /search_sheikhs|search_scholars/ },
+  { id: "books", table: "library_items", trgm: /idx_books_title_trgm|idx_library_items_search_trgm/, fts: /idx_books_search_vector/, rpc: /search_library_items/ },
+  { id: "hadith", table: "verified_hadith_items", trgm: /idx_hadith_title_trgm|idx_verified_hadith_search_trgm/, fts: /idx_hadith_search_vector/, rpc: /search_hadith_items/ },
+  { id: "sources", table: "trusted_sources|scholarly_sources", trgm: /idx_sources_name_trgm/, fts: null, rpc: null },
+];
+
+const sqlCorpus = [infraSql, legacyArabicSql, unifiedSql].join("\n");
+const entityInventory = searchableEntities.map((e) => ({
+  id: e.id,
+  table: e.table,
+  trgmIndexInSql: e.trgm.test(sqlCorpus),
+  ftsIndexInSql: e.fts ? e.fts.test(sqlCorpus) : false,
+  rpcInSql: e.rpc ? e.rpc.test(sqlCorpus) : false,
+}));
+
+let clientIlikeSites = 0;
+let clientPatternSites = 0;
+let clientRpcSearchSites = 0;
+for (const abs of walk(srcRoot, (n) => n.endsWith(".ts") || n.endsWith(".tsx"))) {
+  const rel = relative(srcRoot, abs).replace(/\\/g, "/");
+  if (/__tests__|\.test\./.test(rel)) continue;
+  const t = readUtf(abs);
+  clientIlikeSites += countRe(t, /\.ilike\s*\(/g) + countRe(t, /\.ilike\./g);
+  clientPatternSites += countRe(t, /arabicSearchPatterns\s*\(/g);
+  clientRpcSearchSites += countRe(t, /rpc\(\s*["']search_(lessons|sheikhs|scholars|library_items|hadith_items|content)["']/g);
+}
+
+const ARABIC_SEARCH_INFRASTRUCTURE_REPORT = {
+  version: 1,
+  updatedAt,
+  ARABIC_SEARCH_INFRASTRUCTURE_HARDENING: true,
+  liveDb: Boolean(process.env.DATABASE_URL || process.env.SUPABASE_DB_URL),
+  latencyBenchmark: "NOT_CONNECTED — no before/after wall-clock without DATABASE_URL",
+  artifacts: {
+    arNormalizeSql: existsSync(infraV2Path),
+    migrationCopied: existsSync(infraMigrationPath),
+    legacyNormalizeAr: /normalize_ar/.test(legacyArabicSql + unifiedSql),
+    pgTrgm: /CREATE EXTENSION IF NOT EXISTS pg_trgm/i.test(sqlCorpus),
+  },
+  arNormalizeFeatures: {
+    alifFold: /أإآٱ/.test(infraSql),
+    taaMarbuta: /ة/.test(infraSql),
+    yaaFold: /ى/.test(infraSql),
+    wawHamza: /ؤ/.test(infraSql),
+    yehHamza: /ئ/.test(infraSql),
+    eoToWo: /ئو/.test(infraSql),
+    diacriticsStrip: true,
+    kashidaStrip: true,
+  },
+  entities: entityInventory,
+  indexesDeclared: {
+    lessons_search_vector: /idx_lessons_search_vector/.test(infraSql),
+    lessons_title_ar_trgm: /idx_lessons_title_ar_trgm/.test(infraSql),
+    scholars_name_trgm: /idx_scholars_name_trgm/.test(infraSql),
+    books_search_vector: /idx_books_search_vector/.test(infraSql),
+    books_title_trgm: /idx_books_title_trgm/.test(infraSql),
+    hadith_search_vector: /idx_hadith_search_vector/.test(infraSql),
+    hadith_title_trgm: /idx_hadith_title_trgm/.test(infraSql),
+    sources_name_trgm: /idx_sources_name_trgm/.test(infraSql),
+  },
+  rpcsDeclared: {
+    search_lessons: /search_lessons/.test(infraSql),
+    search_sheikhs: /search_sheikhs/.test(infraSql),
+    search_scholars: /search_scholars/.test(infraSql),
+    search_library_items: /search_library_items/.test(infraSql),
+    search_hadith_items: /search_hadith_items/.test(infraSql),
+    search_content_hybrid: /search_vector @@ plainto_tsquery/.test(infraSql),
+  },
+  clientDebt: {
+    ilikeSitesApprox: clientIlikeSites,
+    arabicSearchPatternsSites: clientPatternSites,
+    rpcHybridSearchSites: clientRpcSearchSites,
+    note: "Migrate supabase.ts / dawah-service ILIKE paths to search_* RPCs after migration apply",
+  },
+  estimatedImprovements: [
+    "Normalized FTS avoids multi-pattern ILIKE OR explosions",
+    "GIN(trgm) on ar_normalize(title) enables % / similarity without seq scan on large tables",
+    "search_vector GIN speeds plainto_tsquery on lessons/sheikhs/library/hadith",
+    "Client still uses local unified index for public search — DB layer for authenticated/API paths",
+  ],
+  remainingDebt: [
+    "Apply migration on live Supabase + rebuild generated columns (UPDATE title=title)",
+    "Wire client RPC callers; ILIKE pattern helpers remain for transitional paths",
+    "qa/fawaid/stories still partially ILIKE in search_content",
+    "Latency before/after: DEVICE_REQUIRED / DATABASE_URL",
+    "Client unified index hadith/scholar coverage still thin (separate from SQL)",
+  ],
+  target: "Unified Arabic search layer (FTS + trigram) over scattered ILIKE",
+};
+
 // ── Scorecard ─────────────────────────────────────────────────────────────
 const arabicScore = Math.round((normalizePass / Math.max(1, NORMALIZE_PAIRS.length)) * 100);
 const relevanceScore = SEARCH_RELEVANCE_SCORECARD.passRate;
@@ -565,12 +671,13 @@ const SEARCH_HEALTH_SCORECARD = {
 const bundle = {
   version: 1,
   updatedAt,
-  phases: ["BP", "BQ", "BR", "BS", "BT"],
+  phases: ["BP", "BQ", "BR", "BS", "BT", "BU"],
   ARABIC_SEARCH_NORMALIZATION_REPORT,
   SEARCH_RELEVANCE_SCORECARD,
   SEARCH_QUERY_HEATMAP,
   SEARCH_COVERAGE_REPORT,
   SEARCH_UX_IMPROVEMENT_PLAN,
+  ARABIC_SEARCH_INFRASTRUCTURE_REPORT,
   SEARCH_HEALTH_SCORECARD,
 };
 
@@ -705,6 +812,72 @@ md(
 );
 
 md(
+  "ARABIC_SEARCH_INFRASTRUCTURE_REPORT.md",
+  [
+    "# ARABIC_SEARCH_INFRASTRUCTURE_REPORT",
+    "",
+    `Generated: ${updatedAt}`,
+    "",
+    `Phase: **ARABIC_SEARCH_INFRASTRUCTURE_HARDENING**`,
+    "",
+    `Live DB: **${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.liveDb ? "ENV_PRESENT" : "NOT_CONNECTED"}**`,
+    "",
+    `Latency benchmark: **${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.latencyBenchmark}**`,
+    "",
+    "## Artifacts",
+    "",
+    `| Artifact | Present |`,
+    `|---|---|`,
+    `| ar_normalize SQL (v2) | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.arNormalizeSql ? "✅" : "❌"} |`,
+    `| migrations/…v2.sql | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.migrationCopied ? "✅" : "❌"} |`,
+    `| legacy normalize_ar | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.legacyNormalizeAr ? "✅" : "❌"} |`,
+    `| pg_trgm | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.pgTrgm ? "✅" : "❌"} |`,
+    "",
+    "## Entity inventory",
+    "",
+    `| Entity | Table | trgm | FTS | RPC |`,
+    `|---|---|---|---|---|`,
+    ...entityInventory.map(
+      (e) =>
+        `| ${e.id} | \`${e.table}\` | ${e.trgmIndexInSql ? "✅" : "❌"} | ${e.ftsIndexInSql ? "✅" : "❌"} | ${e.rpcInSql ? "✅" : "❌"} |`,
+    ),
+    "",
+    "## Indexes declared (v2)",
+    "",
+    ...Object.entries(ARABIC_SEARCH_INFRASTRUCTURE_REPORT.indexesDeclared).map(
+      ([k, v]) => `- \`${k}\`: ${v ? "✅" : "❌"}`,
+    ),
+    "",
+    "## RPCs declared",
+    "",
+    ...Object.entries(ARABIC_SEARCH_INFRASTRUCTURE_REPORT.rpcsDeclared).map(
+      ([k, v]) => `- \`${k}\`: ${v ? "✅" : "❌"}`,
+    ),
+    "",
+    "## Client debt",
+    "",
+    `| Metric | Value |`,
+    `|---|---:|`,
+    `| ilike sites ≈ | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.clientDebt.ilikeSitesApprox} |`,
+    `| arabicSearchPatterns sites | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.clientDebt.arabicSearchPatternsSites} |`,
+    `| hybrid RPC search sites | ${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.clientDebt.rpcHybridSearchSites} |`,
+    "",
+    ARABIC_SEARCH_INFRASTRUCTURE_REPORT.clientDebt.note,
+    "",
+    "## Estimated improvements",
+    "",
+    ...ARABIC_SEARCH_INFRASTRUCTURE_REPORT.estimatedImprovements.map((x) => `- ${x}`),
+    "",
+    "## Remaining debt",
+    "",
+    ...ARABIC_SEARCH_INFRASTRUCTURE_REPORT.remainingDebt.map((x) => `- ${x}`),
+    "",
+    "SQL: `supabase/arabic_search_infrastructure_v2.sql`",
+    "",
+  ].join("\n"),
+);
+
+md(
   "SEARCH_UX_IMPROVEMENT_PLAN.md",
   [
     "# SEARCH_UX_IMPROVEMENT_PLAN",
@@ -756,7 +929,7 @@ const programDoc = [
   `|---|---|`,
   `| Status | **ACTIVE** |`,
   `| Date | ${updatedAt} |`,
-  `| Phases | BP–BT |`,
+  `| Phases | BP–BU |`,
   `| Engine | \`artifacts/majalis/scripts/search-excellence-engine.mjs\` |`,
   `| Gate | \`test:search-excellence\` |`,
   "",
@@ -767,12 +940,15 @@ const programDoc = [
   "3. **BR** SEARCH_QUERY_PERFORMANCE → SEARCH_QUERY_HEATMAP",
   "4. **BS** SEARCH_INDEX_COVERAGE → SEARCH_COVERAGE_REPORT",
   "5. **BT** SEARCH_UX_OPTIMIZATION → SEARCH_UX_IMPROVEMENT_PLAN",
-  "6. Certification → SEARCH_HEALTH_SCORECARD",
+  "6. **BU** ARABIC_SEARCH_INFRASTRUCTURE_HARDENING → ARABIC_SEARCH_INFRASTRUCTURE_REPORT",
+  "7. Certification → SEARCH_HEALTH_SCORECARD",
+  "",
+  "SQL authority: `supabase/arabic_search_infrastructure_v2.sql` (`public.ar_normalize` + FTS/trgm RPCs)",
   "",
   "## Rules",
   "",
   "- Numbers-first; no invented wall-clock latency",
-  "- Normalization authority: `src/shared/arabic-normalize.ts`",
+  "- Normalization authority: `src/shared/arabic-normalize.ts` + SQL `public.ar_normalize`",
   "- Index: `public/data/search/index.json` (schema ≥ SEARCH_INDEX_SCHEMA_VERSION)",
   "- Do not weaken existing search gates",
   "",
@@ -780,7 +956,7 @@ const programDoc = [
 writeFileSync(join(repo, "docs/design/SEARCH_EXCELLENCE_PROGRAM.md"), programDoc);
 
 console.log(
-  `search-excellence: health=${overall}/${overallRating} norm=${normalizePass}/${NORMALIZE_PAIRS.length} relevance=${relevancePass}/${relevanceHits.length} docs=${docs.length} thin=${thinOrMissing.length} uxGaps=${uxGaps.length}`,
+  `search-excellence: health=${overall}/${overallRating} norm=${normalizePass}/${NORMALIZE_PAIRS.length} relevance=${relevancePass}/${relevanceHits.length} docs=${docs.length} thin=${thinOrMissing.length} uxGaps=${uxGaps.length} infra=${ARABIC_SEARCH_INFRASTRUCTURE_REPORT.artifacts.arNormalizeSql}`,
 );
 
 if (check) {
@@ -790,9 +966,11 @@ if (check) {
     join(repo, "docs/audit/SEARCH_QUERY_HEATMAP.md"),
     join(repo, "docs/audit/SEARCH_COVERAGE_REPORT.md"),
     join(repo, "docs/audit/SEARCH_UX_IMPROVEMENT_PLAN.md"),
+    join(repo, "docs/audit/ARABIC_SEARCH_INFRASTRUCTURE_REPORT.md"),
     join(repo, "docs/audit/SEARCH_HEALTH_SCORECARD.md"),
     join(repo, "docs/design/SEARCH_EXCELLENCE_PROGRAM.md"),
     join(majalis, "reports/search-excellence-engine.json"),
+    join(majalis, "supabase/arabic_search_infrastructure_v2.sql"),
   ].filter((p) => !existsSync(p));
   if (miss.length || docs.length < 100 || normalizePass < NORMALIZE_PAIRS.length - 1) {
     console.error("search-excellence --check FAIL", {
@@ -804,6 +982,10 @@ if (check) {
   }
   if (Number(index.version) < SEARCH_INDEX_SCHEMA_VERSION) {
     console.error("search-excellence --check FAIL: schema version", index.version);
+    process.exit(1);
+  }
+  if (!/ar_normalize/.test(infraSql) || !/search_lessons/.test(infraSql)) {
+    console.error("search-excellence --check FAIL: infrastructure SQL incomplete");
     process.exit(1);
   }
   console.log("search-excellence --check: ok");

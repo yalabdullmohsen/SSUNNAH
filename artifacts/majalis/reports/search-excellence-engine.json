@@ -6,7 +6,8 @@
     "BQ",
     "BR",
     "BS",
-    "BT"
+    "BT",
+    "BU"
   ],
   "ARABIC_SEARCH_NORMALIZATION_REPORT": {
     "version": 1,
@@ -356,9 +357,9 @@
       "synonymExpand": true
     },
     "sql": {
-      "sqlFiles": 408,
-      "ginTrigramMentions": 22,
-      "ftsMentions": 31,
+      "sqlFiles": 410,
+      "ginTrigramMentions": 38,
+      "ftsMentions": 59,
       "searchIndexSqlFiles": 2
     },
     "costProxies": [
@@ -611,6 +612,104 @@
       }
     ],
     "target": "Consistent search box · suggestions · recent · highlight · groups · empty"
+  },
+  "ARABIC_SEARCH_INFRASTRUCTURE_REPORT": {
+    "version": 1,
+    "updatedAt": "2026-10-03",
+    "ARABIC_SEARCH_INFRASTRUCTURE_HARDENING": true,
+    "liveDb": false,
+    "latencyBenchmark": "NOT_CONNECTED — no before/after wall-clock without DATABASE_URL",
+    "artifacts": {
+      "arNormalizeSql": true,
+      "migrationCopied": true,
+      "legacyNormalizeAr": true,
+      "pgTrgm": true
+    },
+    "arNormalizeFeatures": {
+      "alifFold": true,
+      "taaMarbuta": true,
+      "yaaFold": true,
+      "wawHamza": true,
+      "yehHamza": true,
+      "eoToWo": true,
+      "diacriticsStrip": true,
+      "kashidaStrip": true
+    },
+    "entities": [
+      {
+        "id": "lessons",
+        "table": "lessons",
+        "trgmIndexInSql": true,
+        "ftsIndexInSql": true,
+        "rpcInSql": true
+      },
+      {
+        "id": "scholars",
+        "table": "sheikhs",
+        "trgmIndexInSql": true,
+        "ftsIndexInSql": true,
+        "rpcInSql": true
+      },
+      {
+        "id": "books",
+        "table": "library_items",
+        "trgmIndexInSql": true,
+        "ftsIndexInSql": true,
+        "rpcInSql": true
+      },
+      {
+        "id": "hadith",
+        "table": "verified_hadith_items",
+        "trgmIndexInSql": true,
+        "ftsIndexInSql": true,
+        "rpcInSql": true
+      },
+      {
+        "id": "sources",
+        "table": "trusted_sources|scholarly_sources",
+        "trgmIndexInSql": true,
+        "ftsIndexInSql": false,
+        "rpcInSql": false
+      }
+    ],
+    "indexesDeclared": {
+      "lessons_search_vector": true,
+      "lessons_title_ar_trgm": true,
+      "scholars_name_trgm": true,
+      "books_search_vector": true,
+      "books_title_trgm": true,
+      "hadith_search_vector": true,
+      "hadith_title_trgm": true,
+      "sources_name_trgm": true
+    },
+    "rpcsDeclared": {
+      "search_lessons": true,
+      "search_sheikhs": true,
+      "search_scholars": true,
+      "search_library_items": true,
+      "search_hadith_items": true,
+      "search_content_hybrid": true
+    },
+    "clientDebt": {
+      "ilikeSitesApprox": 7,
+      "arabicSearchPatternsSites": 5,
+      "rpcHybridSearchSites": 1,
+      "note": "Migrate supabase.ts / dawah-service ILIKE paths to search_* RPCs after migration apply"
+    },
+    "estimatedImprovements": [
+      "Normalized FTS avoids multi-pattern ILIKE OR explosions",
+      "GIN(trgm) on ar_normalize(title) enables % / similarity without seq scan on large tables",
+      "search_vector GIN speeds plainto_tsquery on lessons/sheikhs/library/hadith",
+      "Client still uses local unified index for public search — DB layer for authenticated/API paths"
+    ],
+    "remainingDebt": [
+      "Apply migration on live Supabase + rebuild generated columns (UPDATE title=title)",
+      "Wire client RPC callers; ILIKE pattern helpers remain for transitional paths",
+      "qa/fawaid/stories still partially ILIKE in search_content",
+      "Latency before/after: DEVICE_REQUIRED / DATABASE_URL",
+      "Client unified index hadith/scholar coverage still thin (separate from SQL)"
+    ],
+    "target": "Unified Arabic search layer (FTS + trigram) over scattered ILIKE"
   },
   "SEARCH_HEALTH_SCORECARD": {
     "version": 1,
