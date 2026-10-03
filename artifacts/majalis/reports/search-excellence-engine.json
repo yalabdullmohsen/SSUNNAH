@@ -1,0 +1,781 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-03",
+  "phases": [
+    "BP",
+    "BQ",
+    "BR",
+    "BS",
+    "BT",
+    "BU"
+  ],
+  "ARABIC_SEARCH_NORMALIZATION_REPORT": {
+    "version": 1,
+    "updatedAt": "2026-10-03",
+    "ARABIC_SEARCH_OPTIMIZATION": true,
+    "authority": "src/shared/arabic-normalize.ts",
+    "pairsTotal": 12,
+    "pairsEquivalent": 12,
+    "pairsFailed": 0,
+    "failures": [],
+    "coverageNotes": [
+      "diacritics stripped",
+      "alif/hamza normalized",
+      "yaa / alif maqsura → ي",
+      "taa marbuta → ه",
+      "Arabic/Persian digits → Latin",
+      "kashida removed"
+    ],
+    "target": "Semantic equivalence across orthographic variants"
+  },
+  "SEARCH_RELEVANCE_SCORECARD": {
+    "version": 1,
+    "updatedAt": "2026-10-03",
+    "SEARCH_RELEVANCE_ENGINE_AUDIT": true,
+    "indexDocs": 4650,
+    "casesTotal": 15,
+    "casesPass": 15,
+    "casesFail": 0,
+    "passRate": 100,
+    "byDomain": {
+      "Quran": {
+        "pass": 4,
+        "fail": 0,
+        "cases": 4
+      },
+      "Hadith": {
+        "pass": 2,
+        "fail": 0,
+        "cases": 2
+      },
+      "Lessons": {
+        "pass": 2,
+        "fail": 0,
+        "cases": 2
+      },
+      "Scholars": {
+        "pass": 1,
+        "fail": 0,
+        "cases": 1
+      },
+      "Sources": {
+        "pass": 1,
+        "fail": 0,
+        "cases": 1
+      },
+      "Global": {
+        "pass": 5,
+        "fail": 0,
+        "cases": 5
+      }
+    },
+    "worstFirst": [],
+    "all": [
+      {
+        "domain": "Quran",
+        "q": "البقرة",
+        "expectSubstr": "بقرة",
+        "topK": 3,
+        "rank": 1,
+        "status": "PASS",
+        "topIds": [
+          "surah:2",
+          "person:safa-marwa",
+          "person:qiblatayn",
+          "person:mashar",
+          "person:namrud"
+        ]
+      },
+      {
+        "domain": "Quran",
+        "q": "الكهف",
+        "expectSubstr": "كهف",
+        "topK": 3,
+        "rank": 1,
+        "status": "PASS",
+        "topIds": [
+          "surah:18",
+          "person:ahl-kahf-names",
+          "person:dual-qarnayn-sadd",
+          "person:khidr",
+          "person:kalb-kahf"
+        ]
+      },
+      {
+        "domain": "Quran",
+        "q": "قران",
+        "expectSubstr": "قران",
+        "topK": 5,
+        "rank": 1,
+        "status": "PASS",
+        "topIds": [
+          "app:quran-numbers",
+          "knowledge:intro-quran",
+          "app:mushaf",
+          "app:quran-hub",
+          "person:azar"
+        ]
+      },
+      {
+        "domain": "Hadith",
+        "q": "حديث",
+        "expectSubstr": "حديث",
+        "topK": 5,
+        "rank": 1,
+        "status": "PASS",
+        "topIds": [
+          "app:hadith",
+          "hadith:hub",
+          "knowledge:intro-sunnah",
+          "person:bayt-izzah",
+          "person:tubba-king"
+        ]
+      },
+      {
+        "domain": "Hadith",
+        "q": "رياض الصالحين",
+        "expectSubstr": "رياض",
+        "topK": 5,
+        "rank": 1,
+        "status": "PASS",
+        "topIds": [
+          "lesson:sci-tazkiyah-nafs-weekly",
+          "lesson:kw-hadith-riyad-salihin-weekly-0",
+          "qa:seed-qa-249",
+          "history:ottoman-science",
+          "qa:seed-qa-1884"
+        ]
+      },
+      {
+        "domain": "Lessons",
+        "q": "دروس",
+        "expectSubstr": "درس",
+        "topK": 12,
+        "rank": 1,
+        "status": "PASS",
+        "topIds": [
+          "app:lessons",
+          "history:modern-lessons",
+          "lesson:sci-sireh-nabawiyya-ibn-hisham",
+          "lesson:sci-seerah-series-online",
+          "lesson:sci-prophetic-medicine-lecture"
+        ]
+      },
+      {
+        "domain": "Scholars",
+        "q": "شيخ",
+        "expectSubstr": "علم",
+        "topK": 15,
+        "rank": 1,
+        "status": "PASS",
+        "topIds": [
+          "app:scholars",
+          "history:seerah-pre-prophecy",
+          "scholar:ibn-taymiyyah",
+          "scholar:ibn-kathir",
+          "history:mamluk-ibn-taymiyya-era"
+        ]
+      },
+      {
+        "domain": "Sources",
+        "q": "تفسير",
+        "expectSubstr": "تفسير",
+        "topK": 5,
+        "rank": 1,
+        "status": "PASS",
+        "topIds": [
+          "tafsir:hub-only",
+          "tafsir:ar-tafsir-muyassar",
+          "knowledge:tafsir-ayah-3-1",
+          "knowledge:tafsir-ayah-3-10",
+          "knowledge:tafsir-ayah-3-100"
+        ]
+      },
+      {
+        "domain": "Global",
+        "q": "أذكار",
+        "expectSubstr": "اذكار",
+        "topK": 5,
+        "rank": 2,
+        "status": "PASS",
+        "topIds": [
+          "app:duas-quran",
+          "adhkar:cat:adh-wakeup",
+          "adhkar:cat:adh-morning",
+          "adhkar:cat:adh-evening",
+          "adhkar:cat:adh-sleep"
+        ]
+      },
+      {
+        "domain": "Global",
+        "q": "عقيدة",
+        "expectSubstr": "عقيد",
+        "topK": 5,
+        "rank": 2,
+        "status": "PASS",
+        "topIds": [
+          "knowledge:intro-tawhid",
+          "app:tawhid",
+          "history:rashidun-uthman-mushaf",
+          "history:mamluk-shaam-egypt-unity",
+          "person:azar"
+        ]
+      },
+      {
+        "domain": "Global",
+        "q": "سيرة",
+        "expectSubstr": "سير",
+        "topK": 5,
+        "rank": 1,
+        "status": "PASS",
+        "topIds": [
+          "lesson:sci-seerah-madani-weekly",
+          "lesson:sci-seerah-makki-weekly",
+          "lesson:sci-sireh-nabawiyya-ibn-hisham",
+          "lesson:sci-seerah-series-online",
+          "lesson:kw-seerah-nabawiyya-weekly-0"
+        ]
+      },
+      {
+        "domain": "Quran",
+        "q": "فرعون",
+        "expectSubstr": "فرعون",
+        "topK": 3,
+        "rank": 1,
+        "status": "PASS",
+        "topIds": [
+          "person:firawn",
+          "knowledge:person-firawn",
+          "app:quran-people",
+          "person:asiyah",
+          "person:man-believer"
+        ]
+      },
+      {
+        "domain": "Global",
+        "q": "زكاة",
+        "expectSubstr": "زك",
+        "topK": 5,
+        "rank": 2,
+        "status": "PASS",
+        "topIds": [
+          "lesson:sci-fiqh-ibadat-weekly",
+          "qa:seed-qa-3490",
+          "qa:seed-qa-3470",
+          "qa:seed-qa-3460",
+          "qa:seed-qa-3495"
+        ]
+      },
+      {
+        "domain": "Global",
+        "q": "صلاة",
+        "expectSubstr": "صلا",
+        "topK": 5,
+        "rank": 1,
+        "status": "PASS",
+        "topIds": [
+          "adhkar:cat:adh-salah",
+          "adhkar:cat:adh-salawat",
+          "adhkar:adh-68",
+          "adhkar:adh-202",
+          "adhkar:adh-324"
+        ]
+      },
+      {
+        "domain": "Lessons",
+        "q": "lesson",
+        "expectSubstr": "درس",
+        "topK": 12,
+        "rank": 1,
+        "status": "PASS",
+        "topIds": [
+          "app:lessons",
+          "history:modern-lessons",
+          "lesson:sci-tazkiyah-nafs-weekly",
+          "lesson:sci-sireh-nabawiyya-ibn-hisham",
+          "lesson:sci-seerah-series-online"
+        ]
+      }
+    ],
+    "target": "Best result appears in top positions"
+  },
+  "SEARCH_QUERY_HEATMAP": {
+    "version": 1,
+    "updatedAt": "2026-10-03",
+    "SEARCH_QUERY_PERFORMANCE": true,
+    "liveLatency": "NOT_MEASURED — no wall-clock invent; use DEVICE_REQUIRED / CI probes",
+    "index": {
+      "path": "public/data/search/index.json",
+      "docs": 4650,
+      "bytes": 1856232,
+      "kib": 1813,
+      "schemaVersion": 3,
+      "requiredSchema": 3,
+      "schemaOk": true
+    },
+    "shards": {
+      "count": 30,
+      "largest": [
+        {
+          "shard": "qa",
+          "bytes": 1141628
+        },
+        {
+          "shard": "tafsir",
+          "bytes": 280339
+        },
+        {
+          "shard": "adhkar",
+          "bytes": 107737
+        },
+        {
+          "shard": "history",
+          "bytes": 106545
+        },
+        {
+          "shard": "lesson",
+          "bytes": 51521
+        },
+        {
+          "shard": "discover-islam",
+          "bytes": 50826
+        },
+        {
+          "shard": "person",
+          "bytes": 43839
+        },
+        {
+          "shard": "quran-people",
+          "bytes": 24807
+        }
+      ]
+    },
+    "clientEngine": {
+      "workerPresent": true,
+      "yieldToMain": true,
+      "defaultLimitHint": "40",
+      "synonymExpand": true
+    },
+    "sql": {
+      "sqlFiles": 415,
+      "ginTrigramMentions": 85,
+      "ftsMentions": 125,
+      "searchIndexSqlFiles": 2
+    },
+    "costProxies": [
+      {
+        "id": "full_index_scan_client",
+        "costProxy": 4650,
+        "note": "Client scans primed docs; worker loads JSON"
+      },
+      {
+        "id": "index_payload_kib",
+        "costProxy": 1813,
+        "note": "Network/parse cost of index.json"
+      },
+      {
+        "id": "largest_shard_kib",
+        "costProxy": 1115,
+        "note": "qa"
+      }
+    ],
+    "target": "Sub-second common searches (DEVICE_REQUIRED for wall-clock)"
+  },
+  "SEARCH_COVERAGE_REPORT": {
+    "version": 1,
+    "updatedAt": "2026-10-03",
+    "SEARCH_INDEX_COVERAGE": true,
+    "docsTotal": 4650,
+    "kindsPresent": 30,
+    "kindCounts": {
+      "history": 218,
+      "surah": 114,
+      "tafsir": 1177,
+      "hadith": 6,
+      "adhkar": 303,
+      "nation": 22,
+      "prophet": 27,
+      "lesson": 83,
+      "qa": 2295,
+      "quran": 6,
+      "tajweed": 1,
+      "fiqh": 1,
+      "seerah": 1,
+      "person": 75,
+      "story": 1,
+      "dua": 1,
+      "app": 4,
+      "settings": 4,
+      "tafsir-audio": 1,
+      "aqidah": 3,
+      "akhlaq": 1,
+      "raqaiq": 2,
+      "fawaid": 1,
+      "miracles": 1,
+      "medicine": 1,
+      "news": 1,
+      "scholar": 10,
+      "discover-islam": 172,
+      "intro-islam": 16,
+      "quran-people": 102
+    },
+    "expected": [
+      {
+        "kind": "surah",
+        "count": 114,
+        "min": 114,
+        "status": "OK"
+      },
+      {
+        "kind": "tafsir",
+        "count": 1177,
+        "min": 100,
+        "status": "OK"
+      },
+      {
+        "kind": "hadith",
+        "count": 6,
+        "min": 20,
+        "status": "THIN"
+      },
+      {
+        "kind": "lesson",
+        "count": 83,
+        "min": 50,
+        "status": "OK"
+      },
+      {
+        "kind": "scholar",
+        "count": 10,
+        "min": 20,
+        "status": "THIN"
+      },
+      {
+        "kind": "adhkar",
+        "count": 303,
+        "min": 100,
+        "status": "OK"
+      },
+      {
+        "kind": "qa",
+        "count": 2295,
+        "min": 100,
+        "status": "OK"
+      },
+      {
+        "kind": "person",
+        "count": 75,
+        "min": 50,
+        "status": "OK"
+      },
+      {
+        "kind": "history",
+        "count": 218,
+        "min": 50,
+        "status": "OK"
+      },
+      {
+        "kind": "fiqh",
+        "count": 1,
+        "min": 10,
+        "status": "THIN"
+      },
+      {
+        "kind": "seerah",
+        "count": 1,
+        "min": 5,
+        "status": "THIN"
+      },
+      {
+        "kind": "prophet",
+        "count": 27,
+        "min": 20,
+        "status": "OK"
+      },
+      {
+        "kind": "app",
+        "count": 4,
+        "min": 3,
+        "status": "OK"
+      }
+    ],
+    "thinOrMissing": [
+      {
+        "kind": "hadith",
+        "count": 6,
+        "min": 20,
+        "status": "THIN"
+      },
+      {
+        "kind": "scholar",
+        "count": 10,
+        "min": 20,
+        "status": "THIN"
+      },
+      {
+        "kind": "fiqh",
+        "count": 1,
+        "min": 10,
+        "status": "THIN"
+      },
+      {
+        "kind": "seerah",
+        "count": 1,
+        "min": 5,
+        "status": "THIN"
+      }
+    ],
+    "orphanSample": [],
+    "orphanCount": 0,
+    "shardsOnDisk": 30,
+    "manifestPresent": true,
+    "target": "Everything searchable is indexed"
+  },
+  "SEARCH_UX_IMPROVEMENT_PLAN": {
+    "version": 1,
+    "updatedAt": "2026-10-03",
+    "SEARCH_UX_OPTIMIZATION": true,
+    "surfaces": [
+      {
+        "surface": "SearchView",
+        "searchBox": true,
+        "suggestions": true,
+        "recent": true,
+        "highlight": true,
+        "grouping": true,
+        "filters": true,
+        "empty": true,
+        "analytics": true
+      },
+      {
+        "surface": "GlobalSearchModal",
+        "searchBox": true,
+        "suggestions": true,
+        "recent": true,
+        "highlight": true,
+        "grouping": true,
+        "filters": true,
+        "empty": true,
+        "analytics": false
+      },
+      {
+        "surface": "HomeUniversalSearch",
+        "searchBox": true,
+        "suggestions": true,
+        "recent": true,
+        "highlight": true,
+        "grouping": true,
+        "filters": true,
+        "empty": true,
+        "analytics": false
+      }
+    ],
+    "searchSuggestionsComponentPresent": true,
+    "searchSuggestionsWired": false,
+    "historyLibPresent": true,
+    "analyticsLibPresent": true,
+    "gaps": [
+      {
+        "priority": "P0",
+        "area": "SearchSuggestions",
+        "action": "Wire SearchSuggestions into SearchView and/or GlobalSearchModal / Home"
+      },
+      {
+        "priority": "P1",
+        "area": "analytics",
+        "action": "Call trackSearchUx from GlobalSearchModal + HomeUniversalSearch"
+      },
+      {
+        "priority": "P1",
+        "area": "Home analytics",
+        "action": "Instrument HomeUniversalSearch with search UX events"
+      },
+      {
+        "priority": "P1",
+        "area": "GSM grouping",
+        "action": "Section results in GlobalSearchModal like SearchView"
+      },
+      {
+        "priority": "P0",
+        "area": "hadith coverage",
+        "action": "Expand hadith docs in unified index (now 6)"
+      },
+      {
+        "priority": "P0",
+        "area": "scholar coverage",
+        "action": "Expand scholar docs in unified index (now 10)"
+      },
+      {
+        "priority": "P1",
+        "area": "fiqh coverage",
+        "action": "Expand fiqh docs in unified index (now 1)"
+      }
+    ],
+    "target": "Consistent search box · suggestions · recent · highlight · groups · empty"
+  },
+  "ARABIC_SEARCH_INFRASTRUCTURE_REPORT": {
+    "version": 1,
+    "updatedAt": "2026-10-03",
+    "ARABIC_SEARCH_INFRASTRUCTURE_HARDENING": true,
+    "liveDb": false,
+    "latencyBenchmark": "NOT_CONNECTED — no before/after wall-clock without DATABASE_URL",
+    "artifacts": {
+      "arNormalizeSql": true,
+      "migrationCopied": true,
+      "hadithsSourcesV3": true,
+      "migrationV3Copied": true,
+      "hadithSourceInfraV4": true,
+      "migrationV4Copied": true,
+      "rollbackV4": true,
+      "legacyNormalizeAr": true,
+      "pgTrgm": true,
+      "hadithsView": true,
+      "sourcesView": true,
+      "relevanceRankingV4": true,
+      "keysetPaginationV4": true,
+      "productionApprovalGate": true
+    },
+    "arNormalizeFeatures": {
+      "alifFold": true,
+      "taaMarbuta": true,
+      "yaaFold": true,
+      "wawHamza": true,
+      "yehHamza": true,
+      "eoToWo": true,
+      "diacriticsStrip": true,
+      "kashidaStrip": true
+    },
+    "entities": [
+      {
+        "id": "lessons",
+        "table": "lessons",
+        "trgmIndexInSql": true,
+        "ftsIndexInSql": true,
+        "rpcInSql": true
+      },
+      {
+        "id": "scholars",
+        "table": "sheikhs",
+        "trgmIndexInSql": true,
+        "ftsIndexInSql": true,
+        "rpcInSql": true
+      },
+      {
+        "id": "books",
+        "table": "library_items",
+        "trgmIndexInSql": true,
+        "ftsIndexInSql": true,
+        "rpcInSql": true
+      },
+      {
+        "id": "hadith",
+        "table": "verified_hadith_items (=hadiths)",
+        "trgmIndexInSql": true,
+        "ftsIndexInSql": true,
+        "rpcInSql": true
+      },
+      {
+        "id": "sources",
+        "table": "trusted_sources (=sources)",
+        "trgmIndexInSql": true,
+        "ftsIndexInSql": true,
+        "rpcInSql": true
+      }
+    ],
+    "indexesDeclared": {
+      "lessons_search_vector": true,
+      "lessons_title_ar_trgm": true,
+      "scholars_name_trgm": true,
+      "books_search_vector": true,
+      "books_title_trgm": true,
+      "hadiths_title_trgm": true,
+      "hadiths_narrator_trgm": true,
+      "hadiths_search_trgm": true,
+      "hadiths_search_vector": true,
+      "hadith_rel_auth_collection": true,
+      "hadith_rel_collection_chapter": true,
+      "sources_name_trgm": true,
+      "sources_search_trgm": true,
+      "sources_search_vector": true
+    },
+    "rpcsDeclared": {
+      "search_lessons": true,
+      "search_sheikhs": true,
+      "search_scholars": true,
+      "search_library_items": true,
+      "search_hadiths": true,
+      "search_hadith_items": true,
+      "search_sources": true,
+      "search_content_hybrid": true
+    },
+    "tableMapping": {
+      "hadiths": "verified_hadith_items",
+      "sources": "trusted_sources",
+      "note": "Views public.hadiths / public.sources alias physical tables"
+    },
+    "clientDebt": {
+      "ilikeSitesApprox": 7,
+      "arabicSearchPatternsSites": 5,
+      "rpcHybridSearchSites": 1,
+      "note": "Migrate supabase.ts / dawah-service ILIKE paths to search_* RPCs after migration apply"
+    },
+    "estimatedImprovements": [
+      "Normalized FTS avoids multi-pattern ILIKE OR explosions",
+      "GIN(trgm) on ar_normalize(title) enables % / similarity without seq scan on large tables",
+      "search_vector GIN speeds plainto_tsquery on lessons/sheikhs/library/hadith",
+      "Client still uses local unified index for public search — DB layer for authenticated/API paths"
+    ],
+    "remainingDebt": [
+      "Apply migration on live Supabase + rebuild generated columns (UPDATE title=title)",
+      "Wire client RPC callers; ILIKE pattern helpers remain for transitional paths",
+      "qa/fawaid/stories still partially ILIKE in search_content",
+      "Latency before/after: DEVICE_REQUIRED / DATABASE_URL",
+      "Client unified index hadith/scholar coverage still thin (separate from SQL)"
+    ],
+    "target": "Unified Arabic search layer (FTS + trigram) over scattered ILIKE"
+  },
+  "SEARCH_HEALTH_SCORECARD": {
+    "version": 1,
+    "updatedAt": "2026-10-03",
+    "SEARCH_EXCELLENCE_CERTIFICATION": true,
+    "overallScore": 87,
+    "overallRating": "EXCELLENT",
+    "dimensions": [
+      {
+        "name": "arabic_normalization",
+        "score": 100,
+        "rating": "EXCELLENT",
+        "note": "12/12 pairs"
+      },
+      {
+        "name": "relevance",
+        "score": 100,
+        "rating": "EXCELLENT",
+        "note": "15/15 top-K"
+      },
+      {
+        "name": "index_coverage",
+        "score": 69,
+        "rating": "PARTIAL",
+        "note": "9/13 kinds OK · docs=4650"
+      },
+      {
+        "name": "query_performance_proxy",
+        "score": 90,
+        "rating": "EXCELLENT",
+        "note": "index 1813 KiB · worker=true"
+      },
+      {
+        "name": "ux",
+        "score": 77,
+        "rating": "GOOD",
+        "note": "suggestionsWired=false · P0gaps=3"
+      }
+    ],
+    "nonClaims": [
+      "No invented wall-clock search latency",
+      "Relevance measured on local unified index fixtures/probes only",
+      "Live pg_stat / production CTR not attached"
+    ]
+  }
+}

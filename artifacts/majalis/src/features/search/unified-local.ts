@@ -6,6 +6,7 @@ import {
 } from "@/features/search/tolerant-match";
 import { kindPriority } from "@/features/search/kind-priority";
 import { SEARCH_INDEX_SCHEMA_VERSION } from "@/features/search/search-index-version";
+import { expandSearchTerms } from "@/lib/search-synonyms";
 import { yieldToMain } from "@/lib/yield-to-main";
 
 export type UnifiedSearchDoc = {
@@ -144,6 +145,28 @@ function loadIndexViaWorker(url: string): Promise<IndexPayload | null> {
 
 const SYNC_SCAN_BUDGET = 2_500;
 
+/**
+ * مطابقة على الاستعلام الأصلي أولاً — المرادفات فقط إن لم يُصب شيء
+ * (تفادي غرق «أشخاص القرآن» بنتائج سور بسبب توسيع «قرآن»).
+ */
+function bestTolerantMatch(
+  titleAr: string,
+  norm: string,
+  originalQuery: string,
+  variants: string[],
+): TolerantMatch | null {
+  const primary = scoreTolerantMatch(titleAr, originalQuery, norm);
+  if (primary) return primary;
+  let best: TolerantMatch | null = null;
+  for (const v of variants) {
+    if (v === originalQuery) continue;
+    const m = scoreTolerantMatch(titleAr, v, norm);
+    if (!m) continue;
+    if (!best || compareTolerantMatches(m, best) < 0) best = m;
+  }
+  return best;
+}
+
 /** بحث محلي مجمّع حسب النوع — بلا شبكة، مع ترتيب التسامح. */
 export function searchUnifiedIndex(
   docs: UnifiedSearchDoc[],
@@ -154,13 +177,19 @@ export function searchUnifiedIndex(
   const out: Record<string, UnifiedSearchHit[]> = {};
   if (!q) return out;
 
+  // توسيع المرادفات للاستعلام المفرد فقط — العبارات متعددة الكلمات
+  // تتضرر من مرادفات قصيرة (قرآن→سور يغرق النتائج بكل سورة).
+  const tokenCount = query.trim().split(/\s+/).filter(Boolean).length;
+  const variants = tokenCount <= 1 ? expandSearchTerms(query) : [query];
+  if (!variants.includes(query)) variants.unshift(query);
+
   type Scored = UnifiedSearchHit & { _m: TolerantMatch };
   const scored: Scored[] = [];
 
   const scan = (from: number, to: number) => {
     for (let i = from; i < to; i++) {
       const d = docs[i]!;
-      const m = scoreTolerantMatch(d.titleAr, query, d.norm);
+      const m = bestTolerantMatch(d.titleAr, d.norm, query, variants);
       if (!m) continue;
       scored.push({
         id: d.id,
@@ -223,6 +252,10 @@ export async function searchUnifiedIndexAsync(
     return searchUnifiedIndex(docs, query, limit);
   }
 
+  const tokenCount = query.trim().split(/\s+/).filter(Boolean).length;
+  const variants = tokenCount <= 1 ? expandSearchTerms(query) : [query];
+  if (!variants.includes(query)) variants.unshift(query);
+
   type Scored = UnifiedSearchHit & { _m: TolerantMatch };
   const scored: Scored[] = [];
   const chunk = 400;
@@ -231,7 +264,7 @@ export async function searchUnifiedIndexAsync(
     const end = Math.min(docs.length, i + chunk);
     for (let j = i; j < end; j++) {
       const d = docs[j]!;
-      const m = scoreTolerantMatch(d.titleAr, query, d.norm);
+      const m = bestTolerantMatch(d.titleAr, d.norm, query, variants);
       if (!m) continue;
       scored.push({
         id: d.id,
