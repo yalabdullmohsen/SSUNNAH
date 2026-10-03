@@ -604,14 +604,14 @@ async function functionalTests(client) {
     (rows) => rows.every((r) => r.source_name === "البخاري") && rows.some((r) => r.id === "stg-cert-1"),
   );
 
-  // pagination / cursor stability / duplicate prevention
-  const page1 = await q(client, `SELECT * FROM search_hadiths('ب', 2)`);
+  // pagination / cursor — use q length >= 2 (RPC short-query guard requires exact id/number for len<2)
+  const page1 = await q(client, `SELECT * FROM search_hadiths('باب', 2)`);
   let page2 = { rows: [] };
   if (page1.rows.length === 2) {
     const c = page1.rows[1];
     page2 = await q(
       client,
-      `SELECT * FROM search_hadiths('ب', 2, NULL, NULL, NULL, NULL, NULL, $1, $2)`,
+      `SELECT * FROM search_hadiths('باب', 2, NULL, NULL, NULL, NULL, NULL, $1, $2)`,
       [c.cursor_score, c.cursor_id],
     );
   }
@@ -625,7 +625,8 @@ async function functionalTests(client) {
     dup,
   });
 
-  await check("sources_exactish", `SELECT * FROM search_sources('اسلام', 10)`, (rows) => rows.length >= 1);
+  // Prefer a high-similarity token present in seeded source name (not a short diluted trigram)
+  await check("sources_exactish", `SELECT * FROM search_sources('تجريبي', 10)`, (rows) => rows.length >= 1);
   await check(
     "no_rejected_in_results",
     `SELECT * FROM search_hadiths('تجريبي', 50)`,
@@ -886,6 +887,8 @@ async function main() {
     report.benchmarkBefore = { cases: before };
 
     await applyMigration(client);
+    // Re-seed after migration so INSERT triggers populate search_text/search_vector.
+    await q(client, SEED_SQL);
     await validateIndexes(client);
     await validateRls(client);
     await functionalTests(client);
