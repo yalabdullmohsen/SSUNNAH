@@ -17,6 +17,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import dns from "node:dns";
+import { lookup as dnsLookup } from "node:dns/promises";
 import pg from "pg";
 
 dns.setDefaultResultOrder("ipv4first");
@@ -772,15 +773,39 @@ function writeReports() {
   console.log("CLASSIFICATION", report.classification);
 }
 
-async function main() {
-  assertIdentity();
+function stagingDbHost() {
+  const m = dbUrl.match(/@([^/:?]+)/);
+  return m ? m[1] : null;
+}
+
+async function connectStagingClient() {
+  const host = stagingDbHost();
+  if (!host) fail("STAGING_DATABASE_URL_HOST_UNPARSED");
+  let ipv4 = null;
+  try {
+    ipv4 = (await dnsLookup(host, { family: 4 })).address;
+  } catch {
+    fail(
+      "STAGING_DB_NO_IPV4_A_RECORD — update GitHub Environment secret STAGING_DATABASE_URL to Supabase Session/Transaction Pooler (IPv4) for project dgxzcmzcapzcrvcfzjmc; keep Production untouched",
+    );
+  }
+  report.identity.dbHost = host;
+  report.identity.dbIpv4 = ipv4;
   const client = new pg.Client({
     connectionString: dbUrl,
-    ssl: { rejectUnauthorized: false },
+    host: ipv4,
+    ssl: { rejectUnauthorized: false, servername: host },
     statement_timeout: 120000,
   });
+  await client.connect();
+  return client;
+}
+
+async function main() {
+  assertIdentity();
+  let client;
   try {
-    await client.connect();
+    client = await connectStagingClient();
     // confirm DB identity via SQL if possible (no secret print)
     try {
       const dbName = await scalar(client, "SELECT current_database()");
