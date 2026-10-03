@@ -16,7 +16,10 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import dns from "node:dns";
 import pg from "pg";
+
+dns.setDefaultResultOrder("ipv4first");
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const majalis = join(__dirname, "..");
@@ -776,8 +779,8 @@ async function main() {
     ssl: { rejectUnauthorized: false },
     statement_timeout: 120000,
   });
-  await client.connect();
   try {
+    await client.connect();
     // confirm DB identity via SQL if possible (no secret print)
     try {
       const dbName = await scalar(client, "SELECT current_database()");
