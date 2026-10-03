@@ -1,0 +1,32 @@
+{
+  "phase": "HADITH_CSS_COLOR_ABSORPTION_WITH_SNAPSHOT_PROOF",
+  "capturedFrom": "origin/main@f7d86e8a8",
+  "file": "artifacts/majalis/src/styles/pages/hadith.css",
+  "before": {
+    "bytes": 58535,
+    "lines": 1980,
+    "approxSelectors": 325,
+    "ruleBlocks": 342,
+    "hex": 119,
+    "uniqueHex": 43,
+    "rgbHsl": 35,
+    "varRefs": 449,
+    "uniqueVars": 85,
+    "important": 79,
+    "gradients": 1,
+    "fallbacksInVar": 361
+  },
+  "after": {
+    "hex": 0,
+    "rgbHsl": 6,
+    "important": 79,
+    "sfTokenRefsInFile": 29,
+    "mjTokenRefsInFile": 325
+  },
+  "repoImpact": {
+    "hexInCss": { "before": 6956, "after": 6837, "delta": -119 },
+    "rgbHslInCss": { "before": 2087, "after": 2058, "delta": -29 },
+    "sfTokenRefs": { "before": 1129, "after": 1140, "delta": 11 }
+  },
+  "policy": "No new token family. No debt ceiling raise. File-scoped absorption only."
+}

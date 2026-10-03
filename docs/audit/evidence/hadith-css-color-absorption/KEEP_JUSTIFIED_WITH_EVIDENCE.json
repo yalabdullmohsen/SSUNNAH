@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "file": "artifacts/majalis/src/styles/pages/hadith.css",
+  "unknownDebt": 0,
+  "items": [
+    {
+      "id": "HADITH_CARD_HOVER_SHADOW_BLACK",
+      "class": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "selector": ".hadith-card:hover",
+      "property": "box-shadow",
+      "value": "rgba(0,0,0,0.08)",
+      "consumer": "HadithView / HadithListCard surfaces",
+      "reason": "Neutral depth shadow; tokenizing to brand-tinted shadow changes visual identity",
+      "replacementRisk": "Brand-tint alters hierarchy vs elevated white cards",
+      "validationEvidence": "hadith-color-authority-gate allowlist",
+      "regressionGate": "test:hadith-color-authority",
+      "reviewTrigger": "If --sf-shadow-card absorbs neutral black depth globally"
+    },
+    {
+      "id": "HADITH_MODAL_OVERLAY_BLACK",
+      "class": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "selector": ".hadith-modal-overlay",
+      "property": "background",
+      "value": "rgba(0,0,0,0.5)",
+      "consumer": "Hadith detail modal",
+      "reason": "Standard scrim; no semantic brand role",
+      "replacementRisk": "Brand-colored overlay breaks modal focus pattern",
+      "validationEvidence": "hadith-color-authority-gate allowlist",
+      "regressionGate": "test:hadith-color-authority",
+      "reviewTrigger": "Shared Dialog overlay token adopts this exact opacity"
+    },
+    {
+      "id": "HADITH_MODAL_ELEVATION_SHADOW",
+      "class": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "selector": ".hadith-modal",
+      "property": "box-shadow",
+      "value": "rgba(0,0,0,0.25)",
+      "consumer": "Hadith detail modal",
+      "reason": "Elevation depth for modal layer; neutral black",
+      "replacementRisk": "Brand shadow reads as glow not elevation",
+      "validationEvidence": "hadith-color-authority-gate allowlist",
+      "regressionGate": "test:hadith-color-authority",
+      "reviewTrigger": "sf-shadow-elevated matches 0.25 black opacity"
+    },
+    {
+      "id": "HADITH_QA_IVORY_DIVIDER",
+      "class": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "selector": ".qa-card__body",
+      "property": "border-top",
+      "value": "rgba(224, 215, 196, 0.7)",
+      "consumer": "Hadith Q&A cards in hadith.css",
+      "reason": "Ivory parchment divider; not brand emerald semantic",
+      "replacementRisk": "Emerald hairline changes Q&A parchment identity",
+      "validationEvidence": "hadith-color-authority-gate allowlist",
+      "regressionGate": "test:hadith-color-authority + visual snapshot /hadith",
+      "reviewTrigger": "If warm-ivory muted token equals this mix"
+    },
+    {
+      "id": "HADITH_ON_BRAND_EYEBROW_WHITE72",
+      "class": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "selector": ".hadith-section-eyebrow",
+      "property": "color",
+      "value": "rgba(255,255,255,0.72)",
+      "consumer": "Hadith section hero on brand surface",
+      "reason": "CONTRAST_SENSITIVE on-brand secondary text; prior mass Hex strip failed on-brand contrast",
+      "replacementRisk": "Token without explicit white alpha fails on-brand contrast gate",
+      "validationEvidence": "verify-on-brand-contrast + hadith-color-authority-gate",
+      "regressionGate": "test:on-brand-contrast",
+      "reviewTrigger": "If --on-brand-tertiary / --on-brand-secondary proven equivalent at 0.72"
+    },
+    {
+      "id": "HADITH_ON_BRAND_SUBTITLE_WHITE80",
+      "class": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "selector": ".hadith-section-subtitle",
+      "property": "color",
+      "value": "rgba(255,255,255,0.80)",
+      "consumer": "Hadith section hero on brand surface",
+      "reason": "CONTRAST_SENSITIVE on-brand body secondary",
+      "replacementRisk": "Same as eyebrow — on-brand contrast regression",
+      "validationEvidence": "verify-on-brand-contrast + hadith-color-authority-gate",
+      "regressionGate": "test:on-brand-contrast",
+      "reviewTrigger": "If --on-brand-secondary proven equivalent at 0.80"
+    }
+  ]
+}
