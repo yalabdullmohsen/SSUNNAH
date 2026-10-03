@@ -1,6 +1,6 @@
 # DESIGN_AUTHORITY_REPORT
 
-Generated: 2026-10-03T04:14:14.789Z
+Generated: 2026-10-03T04:25:27.315Z
 
 ## Authority maps
 
@@ -29,10 +29,22 @@ Generated: 2026-10-03T04:14:14.789Z
 | `RESPONSIVE_SYSTEM_UNIFIED` | `docs/design/RESPONSIVE_AUTHORITY_MAP.md` | ✅ |
 | `DESIGN_LANGUAGE_UNIFIED` | `docs/design/DESIGN_LANGUAGE_AUTHORITY.md` | ✅ |
 | `DESIGN_TOKENS_AUTHORITY_ACTIVE` | `docs/design/DESIGN_TOKENS_AUTHORITY.md` | ✅ |
+| `INTERACTION_SYSTEM_UNIFIED` | `docs/design/INTERACTION_AUTHORITY_MAP.md` | ✅ |
+| `ADMIN_UI_STANDARDIZED` | `docs/design/ADMIN_UI_AUTHORITY_MAP.md` | ✅ |
+| `EMPTY_STATE_EXCELLENCE` | `docs/design/EMPTY_STATE_STANDARD.md` | ✅ |
 
 ## Policy
 
 - No new color / typography / spacing / shadow / border **systems** without map + gate.
 - Mushaf / Prayer / Admin remain SPECIAL_CASE where documented.
 
-Exit signal: **DESIGN_GOVERNANCE_AUTOMATED**
+
+## Consistency scoring
+
+| Field | Value |
+|---|---:|
+| consistencyScore | 88 |
+| driftScore | 12 |
+| authorityAdoptionRatio | 41 |
+
+Exit signal: **DESIGN_GOVERNANCE_AUTOMATED** · **DESIGN_CONSISTENCY_SCORING**

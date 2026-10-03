@@ -43,6 +43,9 @@ const AUTHORITY_MAPS = [
   ["RESPONSIVE_SYSTEM_UNIFIED", "docs/design/RESPONSIVE_AUTHORITY_MAP.md"],
   ["DESIGN_LANGUAGE_UNIFIED", "docs/design/DESIGN_LANGUAGE_AUTHORITY.md"],
   ["DESIGN_TOKENS_AUTHORITY_ACTIVE", "docs/design/DESIGN_TOKENS_AUTHORITY.md"],
+  ["INTERACTION_SYSTEM_UNIFIED", "docs/design/INTERACTION_AUTHORITY_MAP.md"],
+  ["ADMIN_UI_STANDARDIZED", "docs/design/ADMIN_UI_AUTHORITY_MAP.md"],
+  ["EMPTY_STATE_EXCELLENCE", "docs/design/EMPTY_STATE_STANDARD.md"],
 ];
 
 function runInventory() {
@@ -57,15 +60,33 @@ function runInventory() {
   }
 }
 
+function runCoverage() {
+  const r = spawnSync(process.execPath, ["scripts/authority-coverage-report.mjs"], {
+    cwd: majalis,
+    encoding: "utf8",
+  });
+  if (r.status !== 0) {
+    console.error(r.stdout || "");
+    console.error(r.stderr || "");
+    throw new Error("authority-coverage-report failed");
+  }
+}
+
 function readJson(p, fallback = null) {
   if (!existsSync(p)) return fallback;
   return JSON.parse(readFileSync(p, "utf8"));
 }
 
 runInventory();
+runCoverage();
 
 const baseline = readJson(join(majalis, "reports/visual-system-baseline.json"), {});
 const budget = readJson(join(majalis, "reports/visual-system-debt-budget.json"), { ceilings: {}, floors: {} });
+const coverage = readJson(join(majalis, "reports/authority-coverage.json"), {
+  AUTHORITY_ADOPTION_PERCENTAGE: null,
+  topDivergenceSources: [],
+  easiestWins: [],
+});
 
 const mapStatus = AUTHORITY_MAPS.map(([exit, rel]) => {
   const abs = join(repo, rel);
@@ -109,25 +130,51 @@ const tokenHealth =
       ? 100
       : 60
     : 80;
-const consistency = Math.round(mapsScore * 0.45 + debtScore * 0.4 + tokenHealth * 0.15);
+const adoptionRatio =
+  typeof coverage.AUTHORITY_ADOPTION_PERCENTAGE === "number"
+    ? coverage.AUTHORITY_ADOPTION_PERCENTAGE
+    : 70;
+const consistency = Math.round(
+  mapsScore * 0.35 + debtScore * 0.3 + tokenHealth * 0.15 + adoptionRatio * 0.2,
+);
+const driftScore = Math.max(0, 100 - consistency);
+
+const topDivergenceSources = (coverage.topDivergenceSources || []).slice(0, 5);
+const easiestWins = (coverage.easiestWins || []).slice(0, 5);
+if (breaches.length) {
+  for (const b of breaches) {
+    easiestWins.unshift({
+      family: b.metric,
+      reason: `خفض الدين تحت السقف (${b.current}→≤${b.ceiling})`,
+      bypassCount: b.current - b.ceiling,
+    });
+  }
+}
 
 const score = {
-  version: 1,
+  version: 2,
   updatedAt: new Date().toISOString(),
   consistencyScore: consistency,
+  driftScore,
+  authorityAdoptionRatio: adoptionRatio,
+  topDivergenceSources,
+  easiestWins: easiestWins.slice(0, 6),
   components: {
     authorityMapsPresent: mapsScore,
     debtWithinCeilings: debtScore,
     tokenFloors: tokenHealth,
+    authorityAdoption: adoptionRatio,
   },
   metrics: {
     hexInCss: baseline.hexInCss ?? null,
     boxShadowDecls: baseline.boxShadowDecls ?? null,
     borderRadiusPxDecls: baseline.borderRadiusPxDecls ?? null,
     sfTokenRefs: baseline.sfTokenRefs ?? null,
+    AUTHORITY_ADOPTION_PERCENTAGE: coverage.AUTHORITY_ADOPTION_PERCENTAGE ?? null,
   },
   exits: mapStatus.map((m) => m.exit),
   DESIGN_GOVERNANCE_AUTOMATED: true,
+  DESIGN_CONSISTENCY_SCORING: true,
   DESIGN_DRIFT_DETECTED_AUTOMATICALLY: breaches.length > 0 || missingMaps.length > 0,
 };
 
@@ -150,7 +197,16 @@ const authorityMd = [
   "- No new color / typography / spacing / shadow / border **systems** without map + gate.",
   "- Mushaf / Prayer / Admin remain SPECIAL_CASE where documented.",
   "",
-  `Exit signal: **DESIGN_GOVERNANCE_AUTOMATED**`,
+  "",
+  "## Consistency scoring",
+  "",
+  `| Field | Value |`,
+  `|---|---:|`,
+  `| consistencyScore | ${consistency} |`,
+  `| driftScore | ${driftScore} |`,
+  `| authorityAdoptionRatio | ${adoptionRatio} |`,
+  "",
+  `Exit signal: **DESIGN_GOVERNANCE_AUTOMATED** · **DESIGN_CONSISTENCY_SCORING**`,
   "",
 ].join("\n");
 
@@ -158,6 +214,12 @@ const driftMd = [
   "# DESIGN_DRIFT_REPORT",
   "",
   `Generated: ${score.updatedAt}`,
+  "",
+  `## Scores`,
+  "",
+  `- consistencyScore: **${consistency}**`,
+  `- driftScore: **${driftScore}**`,
+  `- authorityAdoptionRatio: **${adoptionRatio}%**`,
   "",
   "## Debt vs ceilings",
   "",
@@ -169,6 +231,20 @@ const driftMd = [
     const bad = typeof cur === "number" && typeof ceil === "number" && cur > ceil;
     return `| ${k} | ${cur} | ${ceil} | ${bad ? "❌ BREACH" : "✅"} |`;
   }),
+  "",
+  "## Top divergence sources",
+  "",
+  topDivergenceSources.length
+    ? topDivergenceSources
+        .map((t) => `- **${t.family}**: bypass=${t.bypassCount} · adoption=${t.adoptionPercent}%`)
+        .join("\n")
+    : "- none",
+  "",
+  "## Easiest wins",
+  "",
+  easiestWins.length
+    ? easiestWins.map((w) => `- **${w.family}**: ${w.reason}`).join("\n")
+    : "- none",
   "",
   "## Missing authority maps",
   "",
@@ -185,17 +261,51 @@ const driftMd = [
   "## Rogue signal proxies",
   "",
   "- hex / rgbHsl / boxShadowDecls / borderRadiusPx tracked by visual-system-inventory",
+  "- component bypass tracked by authority-coverage-report",
   "- growth beyond ceilings = drift (absorption-only reductions allowed)",
   "",
   `Drift auto-detect: **${score.DESIGN_DRIFT_DETECTED_AUTOMATICALLY ? "SIGNAL" : "CLEAR"}**`,
   "",
 ].join("\n");
 
+const consistencyMd = [
+  "# DESIGN_CONSISTENCY_SCORE",
+  "",
+  `Generated: ${score.updatedAt}`,
+  "",
+  `| Metric | Value |`,
+  `|---|---:|`,
+  `| consistencyScore | ${consistency} |`,
+  `| driftScore | ${driftScore} |`,
+  `| authorityAdoptionRatio | ${adoptionRatio} |`,
+  `| mapsScore | ${mapsScore} |`,
+  `| debtScore | ${debtScore} |`,
+  `| tokenHealth | ${tokenHealth} |`,
+  "",
+  "## Top divergence",
+  "",
+  ...(topDivergenceSources.length
+    ? topDivergenceSources.map(
+        (t) => `- ${t.family}: bypass=${t.bypassCount} adoption=${t.adoptionPercent}%`,
+      )
+    : ["- none"]),
+  "",
+  "## Easiest wins",
+  "",
+  ...(easiestWins.length ? easiestWins.map((w) => `- ${w.family}: ${w.reason}`) : ["- none"]),
+  "",
+  "Machine: `artifacts/majalis/reports/DESIGN_CONSISTENCY_SCORE.json`",
+  "",
+].join("\n");
+
 writeFileSync(join(repo, "docs/audit/DESIGN_AUTHORITY_REPORT.md"), authorityMd);
 writeFileSync(join(repo, "docs/audit/DESIGN_DRIFT_REPORT.md"), driftMd);
+writeFileSync(join(repo, "docs/audit/DESIGN_CONSISTENCY_SCORE.md"), consistencyMd);
 writeFileSync(join(majalis, "reports/DESIGN_CONSISTENCY_SCORE.json"), JSON.stringify(score, null, 2) + "\n");
 
-console.log(`design-governance: consistency=${consistency} maps=${mapsScore} debt=${debtScore}`);
+console.log(
+  `design-governance: consistency=${consistency} drift=${driftScore} adoption=${adoptionRatio} maps=${mapsScore} debt=${debtScore}`,
+);
 console.log("wrote DESIGN_AUTHORITY_REPORT · DESIGN_DRIFT_REPORT · DESIGN_CONSISTENCY_SCORE");
 
 if (check) {

@@ -140,6 +140,16 @@ Logical paths (`color.primary`, `spacing.md`, …) → sf/mj/ss only.
 Compliance: `TOKEN_COMPLIANCE_REPORT` · `test:design-tokens-authority`.  
 Exit: `DESIGN_TOKENS_AUTHORITY_ACTIVE` · `TOKEN_COMPLIANCE_ENFORCED` · `VISUAL_SYSTEM_UNIFIED`.
 
+## Polish wave AL–AP (measurable consistency)
+
+Interaction states: `INTERACTION_AUTHORITY_MAP` → `INTERACTION_SYSTEM_UNIFIED`.  
+Coverage: `AUTHORITY_COVERAGE_REPORT` · `AUTHORITY_ADOPTION_PERCENTAGE`.  
+Scoring: `DESIGN_CONSISTENCY_SCORE` (+ drift · adoption · easiest wins) every governance run.  
+Admin: `ADMIN_UI_AUTHORITY_MAP` → `ADMIN_UI_STANDARDIZED`.  
+Empty excellence: `EMPTY_STATE_STANDARD`.  
+Journeys: `USER_JOURNEY_OPTIMIZATION_PLAN`.  
+Gate: `test:polish-consistency` (wired into `test:design-governance`).
+
 ## Page Authority
 
 Canonical: `AppPage` · `PageHeader` · Screen adapters (`DetailScreen`, …) per `PAGE_CONTRACT_MATRIX.md`.

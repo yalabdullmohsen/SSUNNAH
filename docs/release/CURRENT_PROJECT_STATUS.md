@@ -66,6 +66,8 @@ Phases AH–AJ: `docs/audit/VISUAL_AH_AJ_ELEVATION_BORDER_GOVERNANCE_REPORT.md` 
 
 Phase AK: `docs/design/DESIGN_TOKENS_AUTHORITY.md` · `TOKEN_COMPLIANCE_REPORT` · `test:design-tokens-authority`.
 
+Phases AL–AP: `docs/audit/VISUAL_AL_AP_POLISH_CONSISTENCY_REPORT.md` · interaction/coverage/scoring/admin/journeys · `test:polish-consistency`.
+
 ## Endgame phases (A–H)
 
 | Phase | Target exit | Status |
