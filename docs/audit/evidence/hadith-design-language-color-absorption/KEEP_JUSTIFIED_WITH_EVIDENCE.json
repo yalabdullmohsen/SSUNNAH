@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "file": "artifacts/majalis/src/styles/pages/hadith-design-language.css",
+  "unknownDebt": 0,
+  "hexRetained": 0,
+  "items": [
+    {
+      "id": "HDL_CHIP_DISCOVER_COLOR_IMPORTANT",
+      "class": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "selector": ".hdl-chip/.hdl-discover__book active+dark",
+      "property": "color/background/border-color !important",
+      "retainedValue": "tokenized ZERO Hex !important",
+      "consumer": "HadithView discover+chips; HadithBooksView",
+      "technical_reason": "Deferred layers override without !important",
+      "replacement_attempted": "Tokenized; removed duplicate recipes",
+      "failure_evidence": "Cascade vs final-release",
+      "risk": "Selected filter contrast regression",
+      "regression_gate": "test:hadith-design-language-color-authority",
+      "review_trigger": "If deferred layers stop overriding chips"
+    },
+    {
+      "id": "HDL_META_LABEL_COLOR_IMPORTANT",
+      "class": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "selector": ".hdl-card__meta-label",
+      "property": "color !important",
+      "retainedValue": "var(--text-secondary) !important",
+      "consumer": "HadithCard",
+      "technical_reason": "Competes with hadith.css meta rules",
+      "replacement_attempted": "Tokenized; removed dark dup",
+      "failure_evidence": "Shared card cascade",
+      "risk": "Wrong label color",
+      "regression_gate": "test:hadith-design-language-color-authority",
+      "review_trigger": "If meta markup leaves hadith.css selectors"
+    },
+    {
+      "id": "HDL_LEGACY_CHROME_DISPLAY_NONE",
+      "class": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "selector": ".hadith-page--hdl legacy filters",
+      "property": "display:none !important",
+      "retainedValue": "display:none !important",
+      "consumer": "Hadith hub",
+      "technical_reason": "Non-color layout KEEP",
+      "replacement_attempted": "N/A",
+      "failure_evidence": "N/A",
+      "risk": "Double filter UI",
+      "regression_gate": "test:hadith-experience-redesign",
+      "review_trigger": "If legacy chrome removed from view"
+    },
+    {
+      "id": "HDL_ALIAS_BRIDGE_NON_COLOR",
+      "class": "KEEP_NON_COLOR_LAYOUT_TOKEN",
+      "selector": "--hdl-card-gap/--hdl-matn-lh/--hdl-matn-size",
+      "property": "layout/type",
+      "retainedValue": "rem/clamp",
+      "consumer": "matn/card",
+      "technical_reason": "Non-color layout",
+      "replacement_attempted": "N/A",
+      "failure_evidence": "N/A",
+      "risk": "None",
+      "regression_gate": "test:hadith-experience-redesign",
+      "review_trigger": "If --sf-type-hadith absorbs sizes"
+    }
+  ]
+}
