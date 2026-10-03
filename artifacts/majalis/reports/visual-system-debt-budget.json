@@ -1,17 +1,17 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Ceilings must not rise. Hadith design-language CSS absorption lowered hexInCss/important; raised sfTokenRefs floor.",
+  "note": "Ceilings must not rise. Hadith surface Wave3 absorption (arbaeen/books/mustalah/badge/list-card) lowered hexInCss/rgbHslInCss; raised sf/ss token floors.",
   "floors": {
     "officialButtonImportFiles": 287,
-    "sfTokenRefs": 1153,
-    "ssTokenRefs": 758
+    "sfTokenRefs": 1157,
+    "ssTokenRefs": 759
   },
   "ceilings": {
     "cssFiles": 356,
     "important": 4746,
-    "hexInCss": 6707,
-    "rgbHslInCss": 2058,
+    "hexInCss": 6637,
+    "rgbHslInCss": 2013,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
     "boxShadowDecls": 986,
@@ -20,5 +20,5 @@
     "inlineColorStyleMatches": 39,
     "rawButtonFiles": 76
   },
-  "updatedAt": "2026-10-03T19:25:00.000Z"
+  "updatedAt": "2026-10-03T21:17:05.710Z"
 }

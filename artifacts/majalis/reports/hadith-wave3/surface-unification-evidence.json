@@ -1,0 +1,130 @@
+{
+  "phase": "HADITH_SURFACE_UNIFICATION_WAVE_3",
+  "measuredAt": "2026-10-03T21:20:45.887787+00:00",
+  "targets": [
+    {
+      "file": "src/styles/pages/arbaeen-nawawi.css",
+      "before": {
+        "hex": 51,
+        "rgb": 15,
+        "unsafe_fb": 48,
+        "important": 7,
+        "bytes": 24068
+      },
+      "after": {
+        "hex": 0,
+        "rgb": 10,
+        "unsafe_fb": 0,
+        "important": 7,
+        "bytes": 23233
+      },
+      "keep_rgb": [
+        "rgba(255,255,255,0.05)",
+        "rgba(255,255,255,0.15)",
+        "rgba(255,255,255,0.2)",
+        "rgba(255,255,255,0.25)",
+        "rgba(255,255,255,0.5)",
+        "rgba(255,255,255,0.55)",
+        "rgba(255,255,255,0.6)",
+        "rgba(255,255,255,0.8)",
+        "rgba(255,255,255,0.92)"
+      ]
+    },
+    {
+      "file": "src/styles/pages/hadith-books.css",
+      "before": {
+        "hex": 7,
+        "rgb": 35,
+        "unsafe_fb": 5,
+        "important": 1,
+        "bytes": 15193
+      },
+      "after": {
+        "hex": 0,
+        "rgb": 6,
+        "unsafe_fb": 0,
+        "important": 1,
+        "bytes": 16451
+      },
+      "keep_rgb": [
+        "rgba(255,255,255,.15)",
+        "rgba(255,255,255,.65)",
+        "rgba(255,255,255,.7)",
+        "rgba(255,255,255,.75)",
+        "rgba(255,255,255,.82)",
+        "rgba(255,255,255,.9)"
+      ]
+    },
+    {
+      "file": "src/styles/pages/hadith-mustalah.css",
+      "before": {
+        "hex": 2,
+        "rgb": 16,
+        "unsafe_fb": 0,
+        "important": 0,
+        "bytes": 7459
+      },
+      "after": {
+        "hex": 0,
+        "rgb": 5,
+        "unsafe_fb": 0,
+        "important": 0,
+        "bytes": 7814
+      },
+      "keep_rgb": [
+        "rgba(255,255,255,0.12)",
+        "rgba(255,255,255,0.15)",
+        "rgba(255,255,255,0.2)",
+        "rgba(255,255,255,0.25)",
+        "rgba(255,255,255,0.78)"
+      ]
+    },
+    {
+      "file": "src/styles/components/hadith-badge.css",
+      "before": {
+        "hex": 2,
+        "rgb": 0,
+        "unsafe_fb": 2,
+        "important": 0,
+        "bytes": 916
+      },
+      "after": {
+        "hex": 0,
+        "rgb": 0,
+        "unsafe_fb": 0,
+        "important": 0,
+        "bytes": 898
+      },
+      "keep_rgb": []
+    },
+    {
+      "file": "src/styles/components/hadith-list-card.css",
+      "before": {
+        "hex": 8,
+        "rgb": 0,
+        "unsafe_fb": 8,
+        "important": 0,
+        "bytes": 2317
+      },
+      "after": {
+        "hex": 0,
+        "rgb": 0,
+        "unsafe_fb": 0,
+        "important": 0,
+        "bytes": 2143
+      },
+      "keep_rgb": []
+    }
+  ],
+  "wave_totals": {
+    "hex_before": 70,
+    "hex_after": 0,
+    "rgb_before": 66,
+    "rgb_after": 21,
+    "unsafe_fb_before": 63,
+    "unsafe_fb_after": 0
+  },
+  "keep_justified_policy": "on-brand white rgba overlays retained for contrast on emerald/brand gradients; documented in hadith-surface-color-authority-gate.test.ts",
+  "dark_mode_fix": "hadith-books dark text on brand-deep switched mj-ink→mj-on-brand for static on-brand contrast gate",
+  "unknown_hadith_visual_debt": 0
+}
