@@ -3,15 +3,19 @@
 Date_UTC: 2026-10-03
 PR_program: SUNNAH_DATABASE_SEARCH_SECURITY_AND_PRODUCT_CLOSURE_PROGRAM
 Authority: ARABIC_HADITH_SOURCE_SEARCH_INFRASTRUCTURE_REPORT + static review Phase 5–6
+Packet_status: DRAFT_BLOCKED_CREDENTIAL_STAGING
+Stabilization_phase: REPOSITORY_STABILIZATION_AND_RELEASE_CLOSURE
 
 ## Status flags
 
 PRODUCTION_MIGRATION_APPLIED = false
 STAGING_VALIDATION = BLOCKED_CREDENTIAL_STAGING
 STAGING_IDENTITY_CONFIRMED = false
+STAGING_EXISTS = false (discovery: STAGING_NOT_FOUND)
 PRODUCTION_APPROVAL_REQUIRED = true
 CLIENT_RPC_FEATURE_FLAG_DEFAULT = disabled
 DATABASE_PRODUCTION_CERTIFIED = false (forbidden until live apply + metrics)
+PACKET_READY_FOR_PRODUCTION_APPLY = false
 
 ## Migration files
 
@@ -19,6 +23,7 @@ DATABASE_PRODUCTION_CERTIFIED = false (forbidden until live apply + metrics)
 - artifacts/majalis/supabase/arabic_search_hadith_source_infra_v4.sql
 - artifacts/majalis/supabase/arabic_search_hadith_source_infra_v4_rollback.sql
 - docs/runbooks/ARABIC_SEARCH_HADITH_SOURCE_CONCURRENT_INDEXES.md
+- Migration checksum (sha256): 495996733aae6579e3cc9e2e0bbf2a52143028ee7856b2aec0b9e9c446778f3a
 
 ## Static review (repository) — PASS
 
@@ -36,24 +41,50 @@ DATABASE_PRODUCTION_CERTIFIED = false (forbidden until live apply + metrics)
 - Rollback SQL present
 - Client path feature-flagged OFF by default with legacy fallback error + unified local search retained
 
+## Repository delivery (merged)
+
+- PR #2497 MERGED → 458d97d62af29bae5305038c446fbdb7cee8ae72 (select-star, N+1, Arabic search contracts; RPC flag OFF)
+- PR #2498 MERGED → 150b0d70f0ef08602a973b5256b1c18342741632 (index matrix, CRUD smoke, source relevance)
+- PR #2499 MERGED → cea9595f831de53c536beeea83201a4fe90f1f86 (query-keys, invalidation, race/cache contracts)
+- origin/main tip: cea9595f831de53c536beeea83201a4fe90f1f86
+- Main CI (cea9595f): success — build, static-checks, repo-gates, Verify build, ci-required, postgres-integration
+- Auto Deploy main → production: success
+- Production version.json shortCommit: cea9595f → PRODUCTION_MATCH = true
+- Production Supabase ref (documented): ngmvmlulzacrlicuagyp
+- PRODUCTION_RPC_FLAG_DISABLED = true
+
 ## Staging sections (NOT EXECUTED)
 
-- Staging Environment Identity: NOT_CONFIRMED
+- Staging Environment Identity: NOT_CONFIRMED / STAGING_NOT_FOUND
+- GitHub Environment "Staging": absent
+- STAGING_DATABASE_URL: absent (repo secrets + agent env)
 - Pre-Migration Baseline: NOT_CAPTURED
 - Migration Apply Result: NOT_RUN
 - Index Validity (indisvalid): NOT_RUN
 - Functional / RLS live: NOT_RUN
 - EXPLAIN before/after: NOT_RUN
 - Benchmark classes: INSUFFICIENT_DATA
+- Client RPC Staging soak: NOT_RUN
 
 ## Owner credential setup (do not paste secrets into chat/PR)
 
-1. Create/use Staging Postgres ≠ Production.
-2. Store only as STAGING_DATABASE_URL (or SUPABASE_STAGING_DB_URL) in approved secret store.
-3. Confirm project ref/host is Staging in dashboard before any SQL.
-4. Document backup/restore.
-5. Re-run phases 8–11 with secret present.
-6. Do NOT set Production DATABASE_URL for Staging phases.
+1. Create a NEW Supabase project for Staging (name suggestion: sunnah-staging).
+2. Confirm Staging project ref ≠ ngmvmlulzacrlicuagyp (Production).
+3. Create GitHub Environment named exactly: Staging (required reviewer recommended).
+4. Store Staging-only secrets (names):
+   - STAGING_DATABASE_URL
+   - STAGING_SUPABASE_URL
+   - STAGING_ANON_KEY
+   - STAGING_SERVICE_ROLE_KEY
+   - STAGING_SUPABASE_ACCESS_TOKEN (optional, for CLI)
+5. Store variables:
+   - STAGING_SUPABASE_PROJECT_REF=<new-ref>
+   - STAGING_ENVIRONMENT_MARKER=staging
+   - PRODUCTION_SUPABASE_PROJECT_REF=ngmvmlulzacrlicuagyp
+6. Document backup/restore for Staging.
+7. Re-run identity verification (read-only) before any SQL.
+8. Do NOT set Production DATABASE_URL into any STAGING_* secret.
+9. Do NOT enable VITE_ARABIC_DB_RPC_SEARCH on Production.
 
 ## Production apply checklist (after Staging PASS only)
 
@@ -109,22 +140,10 @@ DATABASE_PRODUCTION_CERTIFIED = false (forbidden until live apply + metrics)
 - [ ] I accept concurrent index runbook and rollback ownership
 - [ ] I will not enable client RPC flag until post-apply smoke PASS
 
-## Post-merge truth (final-closure handoff)
+## Stabilization closure note
 
-- Predecessor PR: #2497 merged to main as 458d97d62
-- Production MATCH after deploy: 458d97d6 (verified at handoff)
-- Migration checksum (sha256): 495996733aae6579e3cc9e2e0bbf2a52143028ee7856b2aec0b9e9c446778f3a
-- Client RPC flag default: DISABLED
-- Staging: still BLOCKED_CREDENTIAL_STAGING at final-closure start
-- QUERY_TO_INDEX_MATRIX: docs/audit/QUERY_TO_INDEX_MATRIX.md
-- PRODUCTION_MIGRATION_APPLIED = false
-
-## PR #2497 finalization note (this task)
-
-- PR #2497 state: MERGED (mergeCommit 458d97d62) — already terminal before residual query-key/cache closure.
-- Successor #2498 also MERGED (150b0d70) and Production MATCH verified.
-- Staging credentials: still BLOCKED_CREDENTIAL_STAGING — packet remains DRAFT for live apply evidence.
-- Residual repo work: query-key authority + mutation invalidation contracts (no Production SQL).
+- PR #2497 / #2498 / #2499 are terminal MERGED; no duplicate DB/search PR required for repository closure.
+- Open non-DB PRs (#2460, #2456, #2299, #1791) are outside this database/search scope and were not closed.
+- Packet remains DRAFT until Staging identity + live validation complete.
 - PRODUCTION_DATABASE_MIGRATION_APPLIED = false
 - PRODUCTION_RPC_FLAG_DISABLED = true
-
