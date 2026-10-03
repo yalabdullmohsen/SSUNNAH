@@ -15,14 +15,15 @@
     "overlaySubscriptions": 1
   },
   "afterThisPR": {
-    "hexInCss": 6319,
+    "hexInCss": 6956,
     "inlineColorStyleMatches": 39,
     "rawButtonElements": 311,
     "rawButtonFiles": 76,
     "officialButtonImportFiles": 287,
     "divSpanOnClick": 41,
     "important": 4747,
-    "borderRadiusPxDecls": 392
+    "borderRadiusPxDecls": 392,
+    "note": "Mass hex-fallback strip reverted: failed on-brand-contrast + visual-snapshot without per-file parity proof"
   },
   "mushaf": {
     "hotspots": 0,

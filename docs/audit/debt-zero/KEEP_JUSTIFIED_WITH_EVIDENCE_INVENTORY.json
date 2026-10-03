@@ -2,7 +2,7 @@
   "version": 1,
   "phase": "SUNNAH_APPLICATION_DEBT_ZERO_AND_FULL_UI_UNIFICATION",
   "policy": "KEEP_JUSTIFIED requires file+consumer+reason+risk+gate+review_trigger",
-  "count": 29,
+  "count": 30,
   "items": [
     {
       "id": "MUSHAF_THREE_SHEET_PAGER",
@@ -455,6 +455,18 @@
       "risk": "Fake feedback / user confusion",
       "regression_gate": "closure-route-feedback-public-gate + priority gate",
       "review_trigger": "When route gains versioned cache + StaleDataIndicator"
+    },
+    {
+      "id": "HEX_FALLBACK_MASS_STRIP_BLOCKED",
+      "class": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "file": "artifacts/majalis/src/styles/**/*.css",
+      "selector_or_component": "var(--token, #hex) fallback collapse",
+      "consumer": "on-brand-contrast gate + visual-snapshot",
+      "technical_reason": "Mass strip broke contrast resolution (gate without full theme) and visual-snapshot parity",
+      "why_not_replace": "Requires per-file absorb with snapshot+contrast proof",
+      "risk": "Unread text on brand / snapshot fail",
+      "regression_gate": "test:on-brand-contrast + visual-snapshot",
+      "review_trigger": "File-by-file absorb waves with proof"
     }
   ]
 }

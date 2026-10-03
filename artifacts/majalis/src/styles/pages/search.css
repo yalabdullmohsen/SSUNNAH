@@ -26,7 +26,7 @@
   position: sticky;
   top: var(--sticky-below-chrome, var(--app-top-chrome-h, 0px));
   z-index: var(--z-sticky, 100);
-  background: var(--surface-paper, var(--mj-bg));
+  background: var(--surface-paper, var(--mj-bg, #f3eee3));
   padding-block: 0.35rem 0.55rem;
   margin-inline: -0.15rem;
   padding-inline: 0.15rem;
@@ -59,7 +59,7 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.38rem 0.85rem;
-  background: var(--elite-sage-2);
+  background: var(--elite-sage-2, #F4F4F1);
   border: 1px solid var(--elite-border-2, rgba(24,54,42,0.15));
   border-radius: var(--ds-radius-full);
   font-size: 0.8rem;
@@ -157,7 +157,7 @@
   background: transparent;
   border: 1px solid rgba(192,57,43,0.3);
   border-radius: var(--ds-radius-full);
-  color: var(--mj-danger);
+  color: var(--mj-danger, #C0392B);
   font-size: var(--ds-text-xs);
   font-weight: 600;
   font-family: inherit;
@@ -333,7 +333,7 @@ a.search-suggestion-chip {
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--elite-ink-faint, var(--mj-ink-2));
-  background: var(--elite-sage-2);
+  background: var(--elite-sage-2, #F4F4F1);
   border-radius: var(--ds-radius-full);
   padding: 0.1rem 0.5rem;
 }
@@ -402,7 +402,7 @@ a.search-suggestion-chip {
 
 .search-result-keywords {
   font-size: 0.7rem;
-  color: var(--elite-ink-faint);
+  color: var(--elite-ink-faint, #D6D5CE);
   line-height: 1.4;
 }
 
@@ -433,13 +433,13 @@ a.search-suggestion-chip {
   flex-shrink: 0;
 }
 .search-status-badge--partial {
-  background: color-mix(in srgb, var(--mj-warning) 12%, var(--mj-surface, var(--mj-white, var(--mj-white))));
-  color: var(--mj-warning);
-  border: 1px solid color-mix(in srgb, var(--mj-warning) 22%, transparent);
+  background: color-mix(in srgb, var(--mj-warning, #c2410c) 12%, var(--mj-surface, var(--mj-white, var(--mj-white))));
+  color: var(--mj-warning, #9A3412);
+  border: 1px solid color-mix(in srgb, var(--mj-warning, #c2410c) 22%, transparent);
 }
 .search-status-badge--review {
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, var(--mj-surface, var(--mj-white, var(--mj-white))));
-  color: var(--mj-brand-deep);
+  color: var(--mj-brand-deep, #12362c);
   border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent);
 }
 
@@ -450,7 +450,7 @@ a.search-suggestion-chip {
 .search-kind-badge--fawaid      { background: color-mix(in srgb, var(--mj-brand) 10%, var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))))); color: var(--mj-brand); border-color: color-mix(in srgb, var(--mj-brand) 20%, transparent); }
 .search-kind-badge--adhkar      { background: var(--mj-brand-soft); color: var(--mj-brand); border-color: color-mix(in srgb, var(--mj-brand) 20%, transparent); }
 .search-kind-badge--library     { background: var(--badge-accent-bg, #fff8eb); color: var(--badge-accent-fg, #7a5a1e); border-color: color-mix(in srgb, var(--badge-accent-fg, #7a5a1e) 28%, transparent); }
-.search-kind-badge--hadith      { background: color-mix(in srgb, var(--mj-danger, var(--mj-danger)) 10%, var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))))); color: var(--mj-danger); border-color: color-mix(in srgb, var(--mj-danger) 22%, transparent); }
+.search-kind-badge--hadith      { background: color-mix(in srgb, var(--mj-danger, var(--mj-danger)) 10%, var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))))); color: var(--mj-danger, #BE123C); border-color: color-mix(in srgb, var(--mj-danger) 22%, transparent); }
 .search-kind-badge--quran       { background: var(--mj-brand-soft); color: var(--mj-brand); border-color: color-mix(in srgb, var(--mj-brand) 20%, transparent); }
 .search-kind-badge--story,
 .search-kind-badge--stories     { background: color-mix(in srgb, var(--mj-brand) 10%, transparent); color: var(--mj-brand); border-color: color-mix(in srgb, var(--mj-brand) 20%, transparent); }
@@ -500,7 +500,7 @@ a.search-suggestion-chip {
   border-radius: 0.3rem;
   transition: color 0.15s;
 }
-.srch-history-clear:hover { color: var(--mj-danger); }
+.srch-history-clear:hover { color: var(--mj-danger, #C0392B); }
 .srch-history-chips {
   display: flex;
   flex-wrap: wrap;
@@ -592,7 +592,7 @@ html[data-theme="dark"] .srch-quick-card:hover {
   margin: 0.15rem 0 0.85rem;
   padding: 0.85rem 0.15rem 0.35rem;
   background:
-    radial-gradient(120% 80% at 100% 0%, color-mix(in srgb, var(--mj-gold) 16%, transparent), transparent 55%),
+    radial-gradient(120% 80% at 100% 0%, color-mix(in srgb, var(--mj-gold, #b8860b) 16%, transparent), transparent 55%),
     linear-gradient(180deg, color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 8%, transparent), transparent 70%);
   border-radius: var(--ds-radius-lg, 1rem);
 }
@@ -601,14 +601,14 @@ html[data-theme="dark"] .srch-quick-card:hover {
   font-family: var(--font-brand, var(--font-app));
   font-size: clamp(1.55rem, 5vw, 1.95rem);
   font-weight: 700;
-  color: var(--mj-brand-deep);
+  color: var(--mj-brand-deep, #12362c);
   line-height: 1.2;
 }
 .srch-hero__title {
   margin: 0.15rem 0 0;
   font-size: clamp(1.15rem, 3.4vw, 1.35rem);
   font-weight: 800;
-  color: var(--text-primary, var(--mj-ink));
+  color: var(--text-primary, var(--mj-ink, #12201a));
 }
 .srch-hero__desc {
   margin: 0.35rem 0 0;
@@ -634,7 +634,7 @@ html[data-theme="dark"] .srch-quick-card:hover {
 .srch-result-section__count {
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--mj-muted);
+  color: var(--mj-muted, #5a6b63);
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent);
   border-radius: var(--radius-pill, 999rem);
   padding: 0.1rem 0.45rem;
@@ -644,12 +644,12 @@ html[data-theme="dark"] .srch-quick-card:hover {
 }
 html[data-theme="dark"] .srch-hero__brand,
 html.dark .srch-hero__brand {
-  color: var(--mj-gold);
+  color: var(--mj-gold, #d4a84b);
 }
 html[data-theme="dark"] .srch-result-card__icon,
 html.dark .srch-result-card__icon {
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 28%, transparent);
-  color: var(--mj-gold);
+  color: var(--mj-gold, #d4a84b);
 }
 .search-home > .compact-section-header {
   margin: 0.1rem 0 0.45rem;
@@ -659,7 +659,7 @@ html.dark .srch-result-card__icon {
 }
 .search-home > .compact-section-header .compact-section-header__title {
   font-size: clamp(1.25rem, 3.6vw, 1.5rem);
-  color: var(--text-primary, var(--mj-ink));
+  color: var(--text-primary, var(--mj-ink, #12201a));
 }
 .search-home > .compact-section-header .compact-section-header__desc {
   font-size: 0.84rem;
@@ -674,7 +674,7 @@ html.dark .srch-result-card__icon {
   position: sticky;
   top: var(--sticky-below-chrome, var(--app-top-chrome-h, 0px));
   z-index: var(--z-sticky, 100);
-  background: var(--mj-bg);
+  background: var(--mj-bg, #f7f6f2);
   padding-block: 0.2rem 0.35rem;
 }
 .srch-home-field {
@@ -686,9 +686,9 @@ html.dark .srch-result-card__icon {
   min-height: 44px;
   padding: 0.2rem 0.7rem;
   border-radius: var(--radius-pill, 999rem);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand, var(--mj-brand))) 18%, var(--mj-hairline, var(--mj-hairline)));
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand, var(--mj-brand))) 18%, var(--mj-hairline, var(--mj-hairline, #e3e8e6)));
   background: var(--mj-surface, var(--color-surface, var(--mj-white, var(--mj-white, var(--mj-white)))));
-  color: var(--text-primary, var(--mj-ink));
+  color: var(--text-primary, var(--mj-ink, #12201a));
   box-shadow: 0 1px 2px color-mix(in srgb, var(--mj-ink, var(--mj-info)) 5%, transparent);
 }
 .srch-home-field input {
@@ -709,7 +709,7 @@ html.dark .srch-result-card__icon {
   outline: none;
 }
 .srch-home-field:focus-within {
-  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand, var(--mj-brand))) 45%, var(--mj-hairline, var(--mj-hairline)));
+  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand, var(--mj-brand))) 45%, var(--mj-hairline, var(--mj-hairline, #e3e8e6)));
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, transparent);
 }
 .srch-home-clear {
@@ -723,7 +723,7 @@ html.dark .srch-result-card__icon {
   border: 0;
   border-radius: var(--radius-pill, 999rem);
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent);
-  color: var(--mj-brand-deep);
+  color: var(--mj-brand-deep, #12362c);
   cursor: pointer;
 }
 .srch-home-submit {
@@ -733,7 +733,7 @@ html.dark .srch-result-card__icon {
   padding: 0 1rem;
   border: 0;
   border-radius: var(--radius-pill, 999rem);
-  background: var(--mj-brand-deep);
+  background: var(--mj-brand-deep, #12362a);
   color: var(--mj-white, var(--mj-white));
   font: inherit;
   font-weight: 700;
@@ -765,7 +765,7 @@ html.dark .srch-result-card__icon {
     linear-gradient(160deg, color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 7%, transparent), transparent 62%),
     var(--mj-surface, var(--color-surface, var(--mj-white, var(--mj-white))));
   box-shadow: 0 1px 2px color-mix(in srgb, var(--mj-ink, var(--mj-info)) 5%, transparent);
-  color: var(--text-primary, var(--mj-ink));
+  color: var(--text-primary, var(--mj-ink, #12201a));
   cursor: pointer;
   font: inherit;
 }
@@ -783,7 +783,7 @@ html.dark .srch-result-card__icon {
   justify-content: center;
   border-radius: var(--radius-sm, 0.625rem);
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 12%, transparent);
-  color: var(--mj-brand-deep);
+  color: var(--mj-brand-deep, #12362c);
 }
 .srch-scope-card__text {
   display: flex;
@@ -807,7 +807,7 @@ html.dark .srch-result-card__icon {
   padding: 0.35rem 0.9rem;
   border: 0;
   background: transparent;
-  color: var(--mj-brand-deep);
+  color: var(--mj-brand-deep, #12362c);
   font: inherit;
   font-size: 0.82rem;
   font-weight: 700;
@@ -887,7 +887,7 @@ html.dark .srch-result-card__icon {
   height: 2.35rem;
   border-radius: var(--ds-radius-md, 0.65rem);
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 12%, transparent);
-  color: var(--mj-brand-deep);
+  color: var(--mj-brand-deep, #12362c);
 }
 .srch-result-card__body {
   flex: 1;
@@ -899,7 +899,7 @@ html.dark .srch-result-card__icon {
 .srch-result-card__chevron {
   flex-shrink: 0;
   align-self: center;
-  color: var(--mj-muted);
+  color: var(--mj-muted, #5a6b63);
 }
 .srch-result-card__top {
   display: flex;
@@ -913,8 +913,8 @@ html.dark .srch-result-card__icon {
   min-height: 1.4rem;
   padding: 0.1rem 0.5rem;
   border-radius: var(--radius-pill, 999rem);
-  background: color-mix(in srgb, var(--mj-gold) 14%, transparent);
-  color: var(--mj-brand-deep);
+  background: color-mix(in srgb, var(--mj-gold, #b8860b) 14%, transparent);
+  color: var(--mj-brand-deep, #12362c);
   font-size: 0.72rem;
   font-weight: 800;
 }
@@ -923,7 +923,7 @@ html.dark .srch-result-card__icon {
   font-size: var(--type-card-title, 1.05rem);
   font-weight: 800;
   line-height: var(--lh-type-card, 1.45);
-  color: var(--text-primary, var(--mj-ink));
+  color: var(--text-primary, var(--mj-ink, #12201a));
 }
 .srch-result-card__excerpt {
   margin: 0;
@@ -967,9 +967,9 @@ html[data-theme="dark"] .srch-home-field,
 html.dark .srch-home-field,
 html[data-theme="dark"] .srch-scope-card,
 html.dark .srch-scope-card {
-  background: color-mix(in srgb, var(--color-surface, #1c1917) 92%, var(--mj-brand-deep));
+  background: color-mix(in srgb, var(--color-surface, #1c1917) 92%, var(--mj-brand-deep, #0f3d32));
   color: var(--text-primary, #ecf2ef);
-  border-color: color-mix(in srgb, var(--mj-brand) 28%, var(--mj-ink-2));
+  border-color: color-mix(in srgb, var(--mj-brand, #5cc095) 28%, var(--mj-ink-2, #2a3531));
   box-shadow: 0 1px 2px color-mix(in srgb, var(--mj-ink) 25%, transparent);
 }
 html[data-theme="dark"] .srch-home-submit,
@@ -983,8 +983,8 @@ html[data-theme="dark"] .srch-result-card__kind,
 html.dark .srch-result-card__kind,
 html[data-theme="dark"] .srch-home-clear,
 html.dark .srch-home-clear {
-  background: color-mix(in srgb, var(--mj-brand) 18%, transparent);
-  color: var(--mj-brand);
+  background: color-mix(in srgb, var(--mj-brand, #5fbf98) 18%, transparent);
+  color: var(--mj-brand, #5cc095);
 }
 html[data-theme="dark"] .srch-result-card__title,
 html.dark .srch-result-card__title,
@@ -1013,8 +1013,8 @@ html.dark .search-no-results__hint {
 }
 .srch-result-card__kind {
   gap: 0.28rem;
-  background: color-mix(in srgb, var(--mj-ink) 6%, transparent);
-  color: var(--text-secondary, var(--mj-ink-2));
+  background: color-mix(in srgb, var(--mj-ink, #12201a) 6%, transparent);
+  color: var(--text-secondary, var(--mj-ink-2, #3d4f47));
   border-radius: 0.35rem;
 }
 .srch-result-card__reason {
@@ -1061,8 +1061,8 @@ html.dark .search-no-results__hint {
 .srch-result-card--mosque .srch-result-card__kind,
 .srch-result-card--landmark .srch-result-card__kind,
 .srch-result-card--institution .srch-result-card__kind {
-  background: color-mix(in srgb, var(--mj-ink) 7%, transparent);
-  color: var(--text-primary, var(--mj-ink));
+  background: color-mix(in srgb, var(--mj-ink, #12201a) 7%, transparent);
+  color: var(--text-primary, var(--mj-ink, #12201a));
 }
 .srch-idle {
   display: flex;
@@ -1109,7 +1109,7 @@ html.dark .search-no-results__hint {
   align-items: center;
   min-height: 2rem;
   padding: 0.2rem 0.7rem;
-  border: 1px solid color-mix(in srgb, var(--mj-ink) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-ink, #12201a) 12%, transparent);
   border-radius: var(--radius-pill, 999rem);
   background: var(--mj-surface, var(--mj-white));
   color: var(--text-primary, var(--mj-ink));
@@ -1129,9 +1129,9 @@ html.dark .search-no-results__hint {
   align-items: flex-start;
   margin: 0.35rem 0 0.55rem;
   padding: 0.65rem 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--mj-danger) 28%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-danger, #b42318) 28%, transparent);
   border-radius: 0.65rem;
-  background: color-mix(in srgb, var(--mj-danger) 6%, transparent);
+  background: color-mix(in srgb, var(--mj-danger, #b42318) 6%, transparent);
   color: var(--text-primary, var(--mj-ink));
 }
 .srch-error-inline__title {
@@ -1196,15 +1196,15 @@ html.dark .search-no-results__hint {
 }
 html[data-theme="dark"] .srch-chip,
 html.dark .srch-chip {
-  background: color-mix(in srgb, var(--color-surface, #1c1917) 92%, var(--mj-brand-deep));
-  border-color: color-mix(in srgb, var(--mj-brand) 22%, transparent);
+  background: color-mix(in srgb, var(--color-surface, #1c1917) 92%, var(--mj-brand-deep, #0f3d32));
+  border-color: color-mix(in srgb, var(--mj-brand, #5cc095) 22%, transparent);
   color: var(--text-primary, #ecf2ef);
 }
 html[data-theme="dark"] .srch-result-card__reason,
 html.dark .srch-result-card__reason,
 html[data-theme="dark"] .gsm-result-reason,
 html.dark .gsm-result-reason {
-  color: var(--mj-brand);
+  color: var(--mj-brand, #5cc095);
 }
 html[data-theme="dark"] .srch-result-card__kind,
 html.dark .srch-result-card__kind {

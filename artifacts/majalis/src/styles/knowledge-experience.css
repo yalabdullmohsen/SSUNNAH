@@ -7,12 +7,12 @@
   --kx-gap: 0.65rem;
   --kx-pad: 0.85rem 1rem;
   --kx-radius: var(--radius-card, 1.125rem);
-  --kx-ink: var(--mj-ink);
-  --kx-muted: var(--mj-ink-2);
-  --kx-brand: var(--mj-brand);
-  --kx-brand-deep: var(--mj-brand-deep);
-  --kx-surface: var(--ss-card-bg);
-  --kx-muted: var(--mj-ink-2);
+  --kx-ink: var(--mj-ink, #12241d);
+  --kx-muted: var(--mj-ink-2, #3d5349);
+  --kx-brand: var(--mj-brand, #1f6b56);
+  --kx-brand-deep: var(--mj-brand-deep, #0d4a39);
+  --kx-surface: var(--ss-card-bg, #fffcf7);
+  --kx-muted: var(--mj-ink-2, #3d5349);
   --kx-line: color-mix(in srgb, var(--kx-brand) 14%, transparent);
   --kx-radius: var(--radius-card, 1.125rem);
 }
@@ -106,7 +106,7 @@
 
 /* تعريف: سطح خفيف بلا شريط جانبي زخرفي */
 .kx-block--definition {
-  background: color-mix(in srgb, var(--kx-brand) 6%, var(--kx-surface, var(--mj-surface)));
+  background: color-mix(in srgb, var(--kx-brand) 6%, var(--kx-surface, var(--mj-surface, #fff)));
   border: 1px solid color-mix(in srgb, var(--kx-brand) 16%, transparent);
   border-radius: var(--radius-card, 1.5rem);
   padding: 0.75rem 0.95rem;
@@ -158,8 +158,8 @@
 
 /* أدلة: اقتباس بهوية ذهبية خفيفة */
 .kx-block--evidence {
-  background: color-mix(in srgb, var(--mj-accent) 8%, var(--kx-surface));
-  border: 1px solid color-mix(in srgb, var(--mj-accent) 22%, transparent);
+  background: color-mix(in srgb, var(--mj-accent, #b8963f) 8%, var(--kx-surface));
+  border: 1px solid color-mix(in srgb, var(--mj-accent, #b8963f) 22%, transparent);
   border-inline-start-width: 1px;
 }
 
@@ -213,8 +213,8 @@
 
 /* ملاحظات معرفية */
 .kx-block--notes {
-  background: color-mix(in srgb, var(--mj-brand) 7%, var(--kx-surface));
-  border: 1px dashed color-mix(in srgb, var(--mj-brand) 24%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 7%, var(--kx-surface));
+  border: 1px dashed color-mix(in srgb, var(--mj-brand, #1f6b56) 24%, transparent);
 }
 
 /* مفاهيم مفتاحية: شرائح */
@@ -545,7 +545,7 @@
 }
 
 .fiqh-lux-lesson[data-kx="1"] .fiqh-lux-section[data-kx-kind="evidence"] {
-  background: color-mix(in srgb, var(--mj-accent) 7%, transparent);
+  background: color-mix(in srgb, var(--mj-accent, #b8963f) 7%, transparent);
   border-radius: 14px;
   padding: 0.75rem 0.9rem;
   border-block-end: none;
@@ -613,8 +613,8 @@ html[data-theme="dark"] .kx-block--definition {
 
 html.dark .kx-library-card,
 html[data-theme="dark"] .kx-library-card {
-  background: color-mix(in srgb, #0f3d2e 18%, var(--mj-surface));
-  border-color: color-mix(in srgb, var(--mj-brand) 28%, transparent);
+  background: color-mix(in srgb, #0f3d2e 18%, var(--mj-surface, #1a221f));
+  border-color: color-mix(in srgb, var(--mj-brand, #5cc095) 28%, transparent);
 }
 
 /* عناوين/أوصاف بطاقة المكتبة في الداكن — لا تستخدم brand-deep الداكن فوق سطح داكن */
@@ -622,19 +622,19 @@ html.dark .kx-library-card__title,
 html.dark .hub-card__title,
 html[data-theme="dark"] .kx-library-card__title,
 html[data-theme="dark"] .hub-card__title {
-  color: var(--mj-ink);
+  color: var(--mj-ink, #e8f2ec);
 }
 
 html.dark .kx-library-card__desc,
 html.dark .hub-card__desc,
 html[data-theme="dark"] .kx-library-card__desc,
 html[data-theme="dark"] .hub-card__desc {
-  color: var(--mj-ink-2);
+  color: var(--mj-ink-2, #b7c9c0);
 }
 
 html.dark .kx-library-card__meta,
 html[data-theme="dark"] .kx-library-card__meta {
-  color: var(--mj-brand);
+  color: var(--mj-brand, #5cc095);
 }
 
 /* إلغاء السهم العائم الدائري — الشريط الثابت الحديث بديلًا */
@@ -669,9 +669,9 @@ button.app-back-btn--bar[data-fixed-back-bar="1"] {
   padding: 0.4rem 0.85rem 0.4rem 0.7rem;
   margin: 0;
   border-radius: var(--radius-pill, 999rem);
-  border: 1px solid color-mix(in srgb, var(--mj-brand) 22%, transparent);
-  background: color-mix(in srgb, var(--mj-surface) 94%, transparent);
-  color: var(--mj-brand-deep);
+  border: 1px solid color-mix(in srgb, var(--mj-brand, #146b52) 22%, transparent);
+  background: color-mix(in srgb, var(--mj-surface, #fff) 94%, transparent);
+  color: var(--mj-brand-deep, #0d4a39);
   font: inherit;
   font-size: 0.86rem;
   font-weight: 650;
@@ -701,7 +701,7 @@ html[data-global-back-visible="1"] button.app-back-btn--bar[data-fixed-back-bar=
 }
 
 .app-back-btn--bar.fixed-back-bar:hover {
-  background: color-mix(in srgb, var(--mj-surface) 96%, var(--mj-brand-soft));
+  background: color-mix(in srgb, var(--mj-surface, #fff) 96%, var(--mj-brand-soft, #e2efe8));
   box-shadow: 0 3px 10px rgba(11, 32, 24, 0.14);
 }
 
@@ -774,7 +774,7 @@ html.chrome-immersive [data-global-back-control-host] {
 [data-kx-kind="evidence"],
 [data-kx-kind="ruling"],
 .kx-block--ruling {
-  background: color-mix(in srgb, var(--mj-accent) 8%, transparent);
+  background: color-mix(in srgb, var(--mj-accent, #b8963f) 8%, transparent);
   border-radius: 14px;
   padding: 0.7rem 0.85rem;
 }
@@ -836,12 +836,12 @@ html.chrome-immersive [data-global-back-control-host] {
 }
 .rsc--outcomes,
 .rsc--concepts {
-  background: color-mix(in srgb, var(--mj-brand) 7%, var(--rsc-bg, #fffcf7));
-  border-color: color-mix(in srgb, var(--mj-brand) 18%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, #1f6b56) 7%, var(--rsc-bg, #fffcf7));
+  border-color: color-mix(in srgb, var(--mj-brand, #1f6b56) 18%, transparent);
 }
 .rsc--ruling {
-  background: color-mix(in srgb, var(--mj-brand-deep) 8%, var(--rsc-bg, #fffcf7));
-  border-color: color-mix(in srgb, var(--mj-brand-deep) 22%, transparent);
+  background: color-mix(in srgb, var(--mj-brand-deep, #0d4a39) 8%, var(--rsc-bg, #fffcf7));
+  border-color: color-mix(in srgb, var(--mj-brand-deep, #0d4a39) 22%, transparent);
 }
 .rsc--timeline {
   background: transparent;
@@ -860,7 +860,7 @@ html.chrome-immersive [data-global-back-control-host] {
   background: transparent;
   border-radius: 0;
   border: none;
-  border-block-start: 1px solid var(--rsc-border, color-mix(in srgb, var(--mj-brand) 14%, transparent));
+  border-block-start: 1px solid var(--rsc-border, color-mix(in srgb, var(--mj-brand, #1f6b56) 14%, transparent));
   padding-inline: 0;
 }
 
@@ -883,8 +883,8 @@ button.app-back-btn--bar[data-fixed-back-bar="1"] {
   gap: 0;
   font-size: 0;
   font-weight: 600;
-  border: 1px solid color-mix(in srgb, var(--mj-brand) 14%, var(--mj-hairline));
-  background: color-mix(in srgb, var(--mj-surface) 96%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-brand, #146b52) 14%, var(--mj-hairline, #d9d3c8));
+  background: color-mix(in srgb, var(--mj-surface, #fff) 96%, transparent);
   box-shadow: 0 2px 8px rgba(11, 32, 24, 0.1);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;

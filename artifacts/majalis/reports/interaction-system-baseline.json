@@ -1,5 +1,5 @@
 {
-  "measuredAt": "2026-10-03T17:52:38.133Z",
+  "measuredAt": "2026-10-03T18:03:58.100Z",
   "scope": "artifacts/majalis/src",
   "tsxFiles": 841,
   "rawButtonFiles": 76,
@@ -11,5 +11,5 @@
   "formButtonsMissingType": 0,
   "floatingControlFileMentions": 10,
   "buttonRelatedImportantApprox": 1145,
-  "buttonRelatedHexApprox": 1052
+  "buttonRelatedHexApprox": 1167
 }
