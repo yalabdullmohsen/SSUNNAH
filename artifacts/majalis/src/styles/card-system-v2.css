@@ -149,6 +149,5 @@ html:not([data-theme="dark"]):not(.dark) .hub-card.cs2-host .cs2-nav__desc {
 
 /* منع تداخل بطاقة داخل بطاقة بنفس الطبقة دون سبب */
 [data-cs2-card] [data-cs2-card] {
-  box-shadow: none;
   border-style: dashed;
 }

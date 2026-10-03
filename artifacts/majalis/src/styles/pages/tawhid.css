@@ -24,7 +24,7 @@
   width: 100%;
   min-height: 44px;
   padding: 0.65rem 1rem;
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
   border: 1px solid color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 22%, var(--ss-border, var(--mj-hairline)));
   background: var(--ss-card-bg, var(--color-surface, var(--mj-surface)));
   color: var(--color-text, var(--mj-ink));

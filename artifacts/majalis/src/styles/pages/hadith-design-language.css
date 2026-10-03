@@ -652,7 +652,7 @@
 .hs-card__def {
   margin: 0;
   padding: 0.85rem 1rem;
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
   background: var(--hdl-matn-bg);
   border-inline-start: 3px solid var(--hdl-matn-border);
   color: var(--hdl-matn);
@@ -695,7 +695,7 @@
 }
 .hdl-faq {
   padding: 0.25rem 0.7rem 0.45rem;
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
   border-color: color-mix(in srgb, var(--mj-brand, #1f4d3a) 14%, transparent);
   background: color-mix(in srgb, var(--surface-elevated, var(--mj-white)) 97%, var(--mj-brand, #1f4d3a) 3%);
 }

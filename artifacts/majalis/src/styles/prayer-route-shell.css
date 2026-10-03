@@ -67,7 +67,7 @@ html.pts-immersive .bottom-nav--m2030 {
 }
 .lrf-wrap--prayer .lrf-skel__row {
   height: 3.1rem;
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -99,7 +99,7 @@ html.pts-immersive .bottom-nav--m2030 {
 }
 .pts-boot-row {
   min-height: 3.1rem;
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }

@@ -22,7 +22,6 @@
   border: 1px solid color-mix(in srgb, var(--mj-brand, #146b52) 14%, var(--mj-hairline, #d9d3c8));
   border-radius: var(--radius-card, 1.5rem);
   padding: 1rem 1.1rem;
-  box-shadow: none;
   color: var(--color-text, var(--mj-ink));
 }
 
@@ -55,7 +54,6 @@ html.dark .dii-block {
 .dii-page .dii-list-card.hub-card {
   min-height: 0;
   border-radius: var(--radius-card, 1.5rem);
-  box-shadow: none;
   border: 1px solid color-mix(in srgb, var(--mj-brand, #146b52) 16%, var(--mj-hairline, #d9d3c8));
   background: var(--color-surface, var(--mj-surface, #fffcf8));
 }
@@ -205,7 +203,6 @@ html[data-v2-app="1"] .dii-page .hub-card .hub-card__go,
   color: inherit;
   background: var(--color-surface, var(--mj-surface));
   border: 1px solid color-mix(in srgb, var(--mj-brand) 16%, var(--mj-hairline));
-  box-shadow: none;
 }
 .dii-path-card strong,
 .dii-category-card strong {

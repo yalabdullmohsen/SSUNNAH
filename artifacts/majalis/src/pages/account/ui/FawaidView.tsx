@@ -13,7 +13,7 @@ import {
   getFawaidSeedCached,
 } from "@/lib/demo-content";
 import { canSubmitForm } from "@/lib/form-rate-limit";
-import { SkeletonCardGrid, Empty } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/components/ui-common";
 import { FilterBottomSheet, FilterToggle } from "@/components/layout/FilterBottomSheet";
 import { useAuth } from "@/components/AuthProvider";
 import { FaidahCard } from "@/components/fawaid/FaidahCard";
@@ -23,6 +23,7 @@ import { TopicPage } from "@/components/topic/TopicPage";
 import { useReadingScrollMemory } from "@/hooks/useReadingScrollMemory";
 import { hasPublicSource } from "@/lib/content-provenance";
 import { ListScreen } from "@/components/design-system/screens";
+import { EmptyStateV2, NoResultsState, SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 /** دفعات واجهة — تفادي رسم مئات البطاقات دفعة واحدة في DOM. */
@@ -263,9 +264,10 @@ export default function FawaidPage({
 
   const filtersPanel = (
     <>
-      <input
+      <SearchInput
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        onClear={() => setSearch("")}
         placeholder="ابحث في الفوائد..."
         className="page-search-input full content-hub-search"
         aria-label="بحث في الفوائد"
@@ -321,7 +323,11 @@ export default function FawaidPage({
         {loading && displayItems.length === 0 ? (
           <SkeletonCardGrid count={8} />
         ) : displayItems.length === 0 && !loading ? (
-          <Empty text={debouncedSearch.trim() ? EMPTY.search : EMPTY.data} />
+          debouncedSearch.trim() ? (
+            <NoResultsState title="لا فوائد مطابقة" description={EMPTY.search} onClear={() => setSearch("")} />
+          ) : (
+            <EmptyStateV2 title="لا فوائد بعد" description={EMPTY.data} />
+          )
         ) : (
           <>
             <div className="faidah-grid">

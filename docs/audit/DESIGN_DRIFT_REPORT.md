@@ -1,6 +1,6 @@
 # DESIGN_DRIFT_REPORT
 
-Generated: 2026-10-03T04:28:32.392Z
+Generated: 2026-10-03T08:28:50.129Z
 
 ## Scores
 
@@ -13,8 +13,8 @@ Generated: 2026-10-03T04:28:32.392Z
 | Metric | Current | Ceiling | Status |
 |---|---:|---:|---|
 | hexInCss | 7022 | 7022 | ✅ |
-| boxShadowDecls | 1026 | 1026 | ✅ |
-| borderRadiusPxDecls | 456 | 456 | ✅ |
+| boxShadowDecls | 1010 | 1010 | ✅ |
+| borderRadiusPxDecls | 429 | 429 | ✅ |
 | rgbHslInCss | 2087 | 2087 | ✅ |
 | important | 4747 | 4747 | ✅ |
 | rawButtonFiles | 102 | 102 | ✅ |
@@ -22,7 +22,7 @@ Generated: 2026-10-03T04:28:32.392Z
 ## Top divergence sources
 
 - **cards**: bypass=208 · adoption=9%
-- **forms**: bypass=182 · adoption=5%
+- **forms**: bypass=177 · adoption=7%
 - **buttons**: bypass=100 · adoption=71%
 - **lists**: bypass=74 · adoption=10%
 - **tabs**: bypass=72 · adoption=3%

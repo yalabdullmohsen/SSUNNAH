@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
-import { PageHeader, SkeletonCardGrid, Empty, ErrorState } from "@/components/ui-common";
+import { PageHeader, SkeletonCardGrid } from "@/components/ui-common";
 import { getMergedPlatformUpdates } from "@/lib/auto-content-service";
 import { UPDATE_TYPES } from "@/lib/platform-types";
 import { usePageView } from "@/hooks/usePageView";
@@ -12,6 +12,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/updates.css";
 import { ListScreen } from "@/components/design-system/screens";
+import { EmptyStateV2, ErrorStateV2, SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 import { safeHttpHref } from "@/lib/sanitize";
 
@@ -124,12 +125,12 @@ export default function UpdatesPage() {
 
       {(!loading || items.length > 0) && (
         <div className="upd-search-wrap">
-          <input
-            type="search"
+          <SearchInput
             className="ds-input upd-search-input"
             placeholder="ابحث في المستجدات..."
             value={search}
-            onChange={e => setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
+            onClear={() => setSearch("")}
             aria-label="بحث في المستجدات"
           />
         </div>
@@ -138,9 +139,9 @@ export default function UpdatesPage() {
       {loading && items.length === 0 ? (
         <SkeletonCardGrid />
       ) : loadError && items.length === 0 ? (
-        <ErrorState text={STATUS.loadError} onRetry={() => setRetryTick((n) => n + 1)} />
+        <ErrorStateV2 description={STATUS.loadError} onRetry={() => setRetryTick((n) => n + 1)} />
       ) : filtered.length === 0 ? (
-        <Empty text={EMPTY.data} />
+        <EmptyStateV2 title="لا مستجدات" description={EMPTY.data} />
       ) : (
         <div className="updates-timeline" aria-busy={loading}>
           {filtered.map((item) => (

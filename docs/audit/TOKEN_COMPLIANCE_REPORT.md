@@ -1,6 +1,6 @@
 # TOKEN_COMPLIANCE_REPORT
 
-Generated: 2026-10-03T04:14:15.899Z
+Generated: 2026-10-03T08:28:48.079Z
 
 ## Status
 
@@ -18,8 +18,8 @@ Generated: 2026-10-03T04:14:15.899Z
 | Area | Signal | Current | Ceiling | OK |
 |---|---|---:|---:|---|
 | colors | hexInCss | 7022 | 7022 | ✅ |
-| shadows | boxShadowDecls | 1026 | 1026 | ✅ |
-| radii | borderRadiusPxDecls | 456 | 456 | ✅ |
+| shadows | boxShadowDecls | 1010 | 1010 | ✅ |
+| radii | borderRadiusPxDecls | 429 | 429 | ✅ |
 | spacing/type systems | no new family | — | — | ✅ |
 
 ## Policy

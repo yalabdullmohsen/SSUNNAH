@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { SkeletonPage, ErrorState } from "@/components/ui-common";
+import { SkeletonPage } from "@/components/ui-common";
+import { ErrorStateV2 } from "@/components/design-system";
 import { ContentDetailLayout, RelatedLinks } from "@/components/platform/ContentDetailLayout";
 import { RulingDetailSections } from "@/components/rulings/RulingDetailSections";
 import { resolveRulingByIdentifier, getRelatedRulingsEncyclopedia } from "@/lib/rulings-service";
@@ -124,8 +125,8 @@ export default function RulingDetailPage({ params }: { params: { id: string } })
   if (loading && !item) return <SkeletonPage />;
   if (loadError) {
     return (
-      <ErrorState
-        text={STATUS.loadError}
+      <ErrorStateV2
+        description={STATUS.loadError}
         onRetry={() => setRetryTick((n) => n + 1)}
       />
     );

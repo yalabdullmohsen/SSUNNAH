@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-03T04:34:20.657Z",
+  "updatedAt": "2026-10-03T08:28:55.754Z",
   "AUTHORITY_ADOPTION_PERCENTAGE": 41,
   "families": {
     "cards": {
@@ -116,20 +116,23 @@
       ]
     },
     "forms": {
-      "usingCount": 9,
-      "bypassCount": 182,
+      "usingCount": 14,
+      "bypassCount": 177,
       "relevantCount": 191,
-      "adoptionPercent": 5,
+      "adoptionPercent": 7,
       "usingSample": [
         "admin-v3/AdminV3Shell.tsx",
         "admin-v3/centers/AdminV3CenterWorkspace.tsx",
         "admin-v3/domains/reviews/ReviewInboxPage.tsx",
         "components/admin/AdminConfirmDialog.tsx",
         "pages/account/ui/AccountDeletionView.tsx",
+        "pages/account/ui/FawaidView.tsx",
         "pages/account/ui/LoginView.tsx",
         "pages/account/ui/SettingsView.tsx",
+        "pages/lessons/LessonsArchivePage.tsx",
+        "pages/lessons/TeachersIndexPage.tsx",
         "pages/quran/ui/MushafBookmarksView.tsx",
-        "views/TawbaPage.tsx"
+        "pages/worship/ui/PrayerRanksView.tsx"
       ],
       "bypassSample": [
         "admin-v3/domains/analytics/AnalyticsPlatformPage.tsx",
@@ -373,8 +376,8 @@
     },
     {
       "family": "forms",
-      "bypassCount": 182,
-      "adoptionPercent": 5
+      "bypassCount": 177,
+      "adoptionPercent": 7
     },
     {
       "family": "buttons",

@@ -144,7 +144,7 @@
 .settings-delete-dialog__panel {
   width: min(100%, 26rem);
   padding: 1.25rem 1.1rem;
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
   background: var(--mj-surface, var(--elite-white, var(--mj-white, var(--mj-white, var(--mj-white)))));
   color: var(--mj-ink, var(--elite-ink, #14241c));
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);

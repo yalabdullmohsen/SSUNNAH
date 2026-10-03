@@ -138,7 +138,6 @@ html[data-theme="dark"] {
   /* لا شريط جانبي زخرفي */
   border-inline-start-width: 1px;
   border-inline-start-color: var(--svl-border-subtle);
-  box-shadow: none;
 }
 
 .svl-card-surface {
@@ -327,7 +326,6 @@ html[data-theme="dark"] {
   padding: 0;
   border: 0;
   background: transparent;
-  box-shadow: none;
   color: var(--svl-text-primary);
 }
 
@@ -401,7 +399,6 @@ html[data-theme="dark"] {
 .compact-section-header {
   border-color: var(--svl-border-subtle);
   background: color-mix(in srgb, var(--svl-surface-section) 70%, transparent);
-  box-shadow: none;
   border-radius: var(--svl-radius-md);
 }
 

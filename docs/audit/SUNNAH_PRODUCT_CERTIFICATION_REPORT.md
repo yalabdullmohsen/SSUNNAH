@@ -1,6 +1,6 @@
 # SUNNAH_PRODUCT_CERTIFICATION_REPORT
 
-Generated: 2026-10-03T04:28:33.995Z
+Generated: 2026-10-03T08:28:51.920Z
 
 ## Overall: **66** · **PARTIAL**
 
@@ -13,7 +13,7 @@ Generated: 2026-10-03T04:28:33.995Z
 | Visual identity / language | 85 | CERTIFIED |
 | Navigation | 94 | CERTIFIED |
 | Search | 75 | PARTIAL |
-| Forms | 5 | NOT_CERTIFIED |
+| Forms | 7 | NOT_CERTIFIED |
 | Performance debt proxy | 50 | PARTIAL |
 | Compliance engine | 73 | PARTIAL |
 

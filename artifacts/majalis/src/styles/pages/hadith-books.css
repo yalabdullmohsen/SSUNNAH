@@ -183,7 +183,7 @@
 .hb-pagination { display: flex; align-items: center; justify-content: center;
   gap: .75rem; margin-top: 1.25rem; direction: rtl; }
 .hb-pagination__btn { padding: .4rem .85rem; border: 1.5px solid var(--elite-border-2);
-  border-radius: 7px; background: var(--elite-white); cursor: pointer;
+  border-radius: var(--sf-radius-control); background: var(--elite-white); cursor: pointer;
   font-size: .82rem; font-family: inherit; color: var(--elite-ink-soft);
   transition: all .16s; }
 .hb-pagination__btn:hover:not(:disabled) { border-color: var(--ds-emerald, var(--mj-brand));
@@ -229,7 +229,7 @@ html[data-theme="dark"] .hb-notice { background: rgba(23,61,53,.08); }
   color: var(--elite-ink); margin-bottom: .2rem; }
 .hadith-books-banner p { font-size: .8rem; color: var(--elite-ink-soft); line-height: 1.5; margin: 0; }
 .hadith-books-banner__btn { flex-shrink: 0; padding: .45rem .85rem;
-  background: var(--ds-emerald, var(--mj-brand)); color: var(--mj-white, var(--mj-white)); border-radius: 7px;
+  background: var(--ds-emerald, var(--mj-brand)); color: var(--mj-white, var(--mj-white)); border-radius: var(--sf-radius-control);
   font-size: .82rem; font-weight: 600; text-decoration: none;
   white-space: nowrap; align-self: center; transition: opacity .15s; }
 .hadith-books-banner__btn:hover { opacity: .88; }

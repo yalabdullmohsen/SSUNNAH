@@ -1,6 +1,6 @@
 # DESIGN_COMPLIANCE_REPORT
 
-Generated: 2026-10-03T04:28:33.995Z
+Generated: 2026-10-03T08:28:51.920Z
 
 ## DESIGN_COMPLIANCE_SCORE: **73**
 
@@ -9,7 +9,7 @@ Generated: 2026-10-03T04:28:33.995Z
 ### Non-authority components (top)
 
 - **cards**: bypass=208 · adoption=9%
-- **forms**: bypass=182 · adoption=5%
+- **forms**: bypass=177 · adoption=7%
 - **buttons**: bypass=100 · adoption=71%
 - **lists**: bypass=74 · adoption=10%
 - **tabs**: bypass=72 · adoption=3%
@@ -20,8 +20,8 @@ Generated: 2026-10-03T04:28:33.995Z
 | Metric | Value | Ceiling |
 |---|---:|---:|
 | hexInCss | 7022 | 7022 |
-| boxShadowDecls | 1026 | 1026 |
-| borderRadiusPxDecls | 456 | 456 |
+| boxShadowDecls | 1010 | 1010 |
+| borderRadiusPxDecls | 429 | 429 |
 | inlineColorStyleMatches | 48 | 48 |
 
 ### Duplicate pattern clusters
@@ -39,7 +39,7 @@ Generated: 2026-10-03T04:28:33.995Z
 |---|---:|---|
 | cards | 9 | NOT_CERTIFIED |
 | buttons | 71 | PARTIAL |
-| forms | 5 | NOT_CERTIFIED |
+| forms | 7 | NOT_CERTIFIED |
 | tables | 36 | NOT_CERTIFIED |
 | lists | 10 | NOT_CERTIFIED |
 | tabs | 3 | NOT_CERTIFIED |

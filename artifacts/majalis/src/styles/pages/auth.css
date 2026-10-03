@@ -115,7 +115,7 @@ html[data-theme="dark"] .login-card__brand {
   gap: 0.3rem;
   margin: 0 0 0.75rem;
   padding: 0.22rem;
-  border-radius: 14px;
+  border-radius: var(--sf-radius-control);
   background: rgba(20, 83, 60, 0.06);
 }
 
