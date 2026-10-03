@@ -108,3 +108,14 @@ DATABASE_PRODUCTION_CERTIFIED = false (forbidden until live apply + metrics)
 - [ ] I approve Production SQL apply for Arabic search v4
 - [ ] I accept concurrent index runbook and rollback ownership
 - [ ] I will not enable client RPC flag until post-apply smoke PASS
+
+## Post-merge truth (final-closure handoff)
+
+- Predecessor PR: #2497 merged to main as 458d97d62
+- Production MATCH after deploy: 458d97d6 (verified at handoff)
+- Migration checksum (sha256): 495996733aae6579e3cc9e2e0bbf2a52143028ee7856b2aec0b9e9c446778f3a
+- Client RPC flag default: DISABLED
+- Staging: still BLOCKED_CREDENTIAL_STAGING at final-closure start
+- QUERY_TO_INDEX_MATRIX: docs/audit/QUERY_TO_INDEX_MATRIX.md
+- PRODUCTION_MIGRATION_APPLIED = false
+

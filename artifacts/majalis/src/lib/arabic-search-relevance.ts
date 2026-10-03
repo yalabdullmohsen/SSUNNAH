@@ -116,6 +116,49 @@ export function rankHadithDocs(docs: HadithSearchDoc[], rawQuery: string): Ranke
     .sort((a, b) => b.relevance_score - a.relevance_score || a.id.localeCompare(b.id));
 }
 
+export type SourceSearchDoc = {
+  id: string;
+  name?: string | null;
+  category?: string | null;
+  source_type?: string | null;
+  url?: string | null;
+};
+
+export function scoreSourceDoc(doc: SourceSearchDoc, rawQuery: string): RankedHit {
+  const qn = arNormalizeLite(rawQuery);
+  const name = arNormalizeLite(doc.name);
+  const category = arNormalizeLite(doc.category);
+  const sourceType = arNormalizeLite(doc.source_type);
+  const blob = arNormalizeLite([doc.name, doc.category, doc.source_type, doc.url].filter(Boolean).join(" "));
+  if (!qn) return { id: doc.id, matched_field: "empty", relevance_score: 0 };
+
+  let score = 0;
+  let matched = "none";
+  if (name === qn) {
+    score += 1000;
+    matched = "name_exact";
+  } else if (name.startsWith(qn)) {
+    score += 700;
+    matched = "name_prefix";
+  } else if (category === qn || sourceType === qn) {
+    score += 450;
+    matched = "filter_exact";
+  } else if (blob.includes(qn)) {
+    score += 200;
+    matched = "fts";
+  }
+  const trgm = Math.max(trigramSim(name, qn), trigramSim(blob, qn));
+  score += 100 * trgm;
+  if (matched === "none" && trgm > 0.2) matched = "trgm";
+  return { id: doc.id, matched_field: matched, relevance_score: score };
+}
+
+export function rankSourceDocs(docs: SourceSearchDoc[], rawQuery: string): RankedHit[] {
+  return docs
+    .map((d) => scoreSourceDoc(d, rawQuery))
+    .sort((a, b) => b.relevance_score - a.relevance_score || a.id.localeCompare(b.id));
+}
+
 /** Keyset page: score DESC, id ASC */
 export function keysetPage(
   ranked: RankedHit[],
