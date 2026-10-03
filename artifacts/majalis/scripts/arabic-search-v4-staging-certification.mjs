@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS public.verified_hadith_items (
 );
 
 CREATE TABLE IF NOT EXISTS public.trusted_sources (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  id uuid PRIMARY KEY,
   name text NOT NULL,
   category text,
   source_type text,
