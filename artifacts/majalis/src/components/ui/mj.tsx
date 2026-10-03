@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { PageHero } from "./PageHero";
 import { AppCard } from "@/components/design-system/AppCard";
+import { SearchInput } from "@/components/design-system/FormFields";
 import { Button as CanonicalButton } from "@/components/ui/button";
 
 export function PageHeader({
@@ -145,22 +146,24 @@ export function Progress({ value, className }: { value: number; className?: stri
 export function SearchField({
   className,
   onKeyDown,
+  onClear,
   ...props
-}: React.InputHTMLAttributes<HTMLInputElement>) {
+}: React.InputHTMLAttributes<HTMLInputElement> & { onClear?: () => void }) {
+  /* Compat façade → SearchInput (SEARCH authority). Keeps mj-search class for CSS. */
   return (
-    <input
-      type="search"
+    <SearchInput
       enterKeyHint="search"
       inputMode="search"
       autoComplete="off"
       autoCorrect="off"
       spellCheck={false}
       className={cn("mj-search", className)}
+      onClear={onClear}
       {...props}
       onKeyDown={(e) => {
         onKeyDown?.(e);
         if (e.key === "Enter" && !e.defaultPrevented) {
-          e.currentTarget.blur();
+          (e.currentTarget as HTMLInputElement).blur();
         }
       }}
     />

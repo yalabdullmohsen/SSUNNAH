@@ -378,3 +378,36 @@ table.ss-data-table {
 .tabs-bar::-webkit-scrollbar {
   display: none;
 }
+
+/* —— Search field rhythm (SEARCH authority) —— */
+.ss-search-input,
+.page-search-input,
+input[type="search"].mj-search,
+.mj-search-field {
+  min-height: var(--touch-min, 44px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ss-search-input input[type="search"],
+.page-search-input,
+input[type="search"].mj-search {
+  font-size: 1rem; /* ≥16px — يمنع تكبير iOS */
+}
+
+@media (min-width: 768px) {
+  .ss-search-input input[type="search"] {
+    font-size: 0.875rem;
+  }
+}
+
+/* —— Filter chip density absorb (FILTER authority) —— */
+.mj-segmented-filter,
+.mj-active-filters {
+  gap: 0.35rem;
+}
+
+.mj-active-filters__pill,
+.mj-filter-chip {
+  min-height: var(--touch-min, 44px);
+}

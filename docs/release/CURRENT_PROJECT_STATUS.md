@@ -56,6 +56,8 @@ Phases P–S: `docs/audit/VISUAL_PQRS_MODAL_FEEDBACK_OVERLAY_REPORT.md` · MODAL
 
 Phases T–V: `docs/audit/VISUAL_TUV_TAB_NAV_IA_REPORT.md` · TAB/NAV/IA maps · `ContentTabs` · `test:tab-nav-authority`.
 
+Phases W–Z: `docs/audit/VISUAL_WXYZ_SEARCH_FILTER_STATE_RESPONSIVE_REPORT.md` · SEARCH/FILTER/STATE/RESPONSIVE maps · SearchField→SearchInput · `test:search-filter-state-authority`.
+
 ## Endgame phases (A–H)
 
 | Phase | Target exit | Status |

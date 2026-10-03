@@ -7,6 +7,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { DetailScreen } from "@/components/design-system/screens";
 import { ContentTabs } from "@/components/design-system/TabSystem";
+import { SearchInput } from "@/components/design-system/FormFields";
 import { Button } from "@/components/ui/button";
 
 
@@ -295,9 +296,14 @@ export default function TawbaPage() {
               اتفق العلماء على أن للتوبة شروطاً لا تصح إلا بها، وتزداد شرطاً إذا تعلّقت بحق آدمي
             </p>
             <div className="tw-search-wrap">
-              <input type="search" value={search} onChange={e => setSearch(e.target.value)}
-                placeholder="ابحث في شروط التوبة." className="page-search-input tw-search-input"
-                aria-label="بحث في شروط التوبة" />
+              <SearchInput
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                onClear={() => setSearch("")}
+                placeholder="ابحث في شروط التوبة."
+                className="page-search-input tw-search-input"
+                aria-label="بحث في شروط التوبة"
+              />
             </div>
             <div className="tw-shurut-list">
               {filteredShurut.map((s) => (
@@ -417,9 +423,14 @@ export default function TawbaPage() {
           <div role="tabpanel" id="twb-panel-mawani" aria-labelledby="twb-tab-mawani" className="tw-section">
             <p className="tw-section-lead">أمور تحول دون قبول التوبة أو صحتها، يجب الحذر منها</p>
             <div className="tw-search-wrap">
-              <input type="search" value={search} onChange={e => setSearch(e.target.value)}
-                placeholder="ابحث في الموانع." className="page-search-input tw-search-input"
-                aria-label="بحث في موانع التوبة" />
+              <SearchInput
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                onClear={() => setSearch("")}
+                placeholder="ابحث في الموانع."
+                className="page-search-input tw-search-input"
+                aria-label="بحث في موانع التوبة"
+              />
             </div>
             <div className="tw-mawani-list">
               {filteredMawani.map((m, i) => (
