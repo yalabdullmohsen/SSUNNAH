@@ -6,7 +6,7 @@ Prepare only · No Archive · No Upload · No Build execution in this phase
 
 | Item | Status | Notes |
 |---|---|---|
-| Store source commit | PREPARE | Must be main tip after final-closure merges + MATCH prod |
+| Store source commit | PREPARE | Must be main tip after endgame merges + MATCH prod (`bb76d0f3`+) |
 | Versioning | PREPARE | MARKETING 1.0.1 · CURRENT_PROJECT_VERSION ≥56 |
 | App Groups | PREPARE | Verify entitlements vs Widget/Live Activity |
 | Widget profile | PREPARE | Provisioning profile recert (owner) |

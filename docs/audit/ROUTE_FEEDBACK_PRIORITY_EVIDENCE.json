@@ -3,7 +3,7 @@
   "phase": "ROUTE_FEEDBACK_PRIORITY",
   "policy": "COMPLETE requires routeClass + testRef + testedCommit + testedDate + artifact + expected + actual. No Feedback V3.",
   "testedCommit": "final-closure-a-i",
-  "testedDate": "2026-10-02",
+  "testedDate": "2026-10-03",
   "gate": "artifacts/majalis/src/lib/__tests__/closure-route-feedback-priority-gate.test.ts",
   "feedbackAuthority": "docs/design/FORM_FEEDBACK_AUTHORITY.md",
   "components": [
@@ -716,5 +716,6 @@
     "Prayer background / adhan delivery"
   ],
   "mergedCommit": "c6f56d2ad52a5f0d022467ad48a549f44fc6b3f5",
-  "status": "ROUTE_FEEDBACK_PRIORITY_MERGED_AND_DEPLOYED"
+  "status": "ROUTE_FEEDBACK_COMPLETE",
+  "endgameNote": "Required routes /, /search, /quran-hub, /mushaf, /prayer-times, /lessons, /settings — COMPLETE/N/A only"
 }

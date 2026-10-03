@@ -203,21 +203,21 @@ export default function MushafBookmarksView() {
       </section>
 
       {reading ? (
-        <button
+        <Button variant="ghost"
           type="button"
           className="rb-manager__last"
           onClick={() => openBookmark(reading)}
         >
           العودة إلى آخر موضع قراءة · ص {toArabicDigits(reading.page)}
-        </button>
+        </Button>
       ) : last ? (
-        <button
+        <Button variant="ghost"
           type="button"
           className="rb-manager__last"
           onClick={() => openBookmark(last)}
         >
           آخر علامة: {last.label}
-        </button>
+        </Button>
       ) : null}
 
       <div className="rb-manager__toolbar">
@@ -278,16 +278,16 @@ export default function MushafBookmarksView() {
           />
           الأرشيف
         </label>
-        <button type="button" className="rb-manager__ghost" onClick={onExport}>
+        <Button variant="ghost" type="button" className="rb-manager__ghost" onClick={onExport}>
           تصدير
-        </button>
-        <button
+        </Button>
+        <Button variant="ghost"
           type="button"
           className="rb-manager__ghost"
           onClick={() => fileRef.current?.click()}
         >
           استيراد
-        </button>
+        </Button>
         <input
           ref={fileRef}
           type="file"
@@ -326,7 +326,7 @@ export default function MushafBookmarksView() {
                 const stamp = b.updatedAt || b.createdAt || b.date;
                 return (
                   <li key={b.id} className={b.archived ? "is-archived" : undefined}>
-                    <button
+                    <Button variant="ghost"
                       type="button"
                       className="rb-manager__item"
                       onClick={() => openBookmark(b)}
@@ -339,22 +339,22 @@ export default function MushafBookmarksView() {
                         {stamp ? ` · ${stamp.slice(0, 10)}` : ""}
                         {itemProgressLine(b)}
                       </span>
-                    </button>
+                    </Button>
                     <div className="rb-manager__item-actions">
-                      <button
+                      <Button variant="ghost"
                         type="button"
                         aria-label={b.favorite ? "إزالة من المفضلة" : "مفضلة"}
                         onClick={() => void toggleBookmarkFavorite(b.id).then(refresh)}
                       >
                         {b.favorite ? "★" : "☆"}
-                      </button>
-                      <button
+                      </Button>
+                      <Button variant="ghost"
                         type="button"
                         aria-label={b.archived ? "استعادة" : "أرشفة"}
                         onClick={() => void archiveBookmark(b.id, !b.archived).then(refresh)}
                       >
                         {b.archived ? "↩" : "أرشيف"}
-                      </button>
+                      </Button>
                       {pendingDeleteId === b.id ? (
                         <div
                           className="rb-manager__delete-confirm"

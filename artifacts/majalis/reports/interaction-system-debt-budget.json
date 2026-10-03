@@ -1,19 +1,19 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Final closure: SurahIndex+RevelationOrder \u2192 Button; ceilings lowered.",
+  "note": "Ceilings must not rise; floors (canonical adoption) must not fall without documented exception.",
   "ceilings": {
-    "rawButtonFiles": 107,
-    "rawButtonElements": 471,
+    "rawButtonFiles": 105,
+    "rawButtonElements": 463,
     "divSpanOnClick": 46,
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
-    "buttonRelatedImportantApprox": 1221,
-    "buttonRelatedHexApprox": 1703
+    "buttonRelatedImportantApprox": 1220,
+    "buttonRelatedHexApprox": 1698
   },
   "floors": {
-    "officialButtonImportFiles": 256,
+    "officialButtonImportFiles": 257,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-10-02T23:31:36.668Z"
+  "updatedAt": "2026-10-03T01:58:26.353Z"
 }

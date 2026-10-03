@@ -90,7 +90,7 @@
   font-weight: 700;
   font-size: 0.82rem;
   padding: 0.4rem 0.9rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   text-decoration: none;
   white-space: nowrap;
   transition: opacity 0.15s;
@@ -135,7 +135,7 @@
   font-size: 0.8rem;
   font-weight: 700;
   padding: 0.25rem 0.7rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill, 999rem);
   letter-spacing: normal;
 }
 .hsh-title {
@@ -157,7 +157,7 @@
   border: 1px solid #e4ede9;
   border-radius: 0.875rem;
   padding: var(--ds-space-3-5);
-  box-shadow: 0 1px 4px rgba(31,77,58,0.06);
+  box-shadow: var(--sf-shadow-soft, var(--shadow-soft, none));
 }
 .hsh-step__num {
   flex-shrink: 0;

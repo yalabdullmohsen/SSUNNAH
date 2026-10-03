@@ -1,8 +1,9 @@
 # MUSHAF_FLUIDITY_IMPLEMENTATION_PLAN
 
 Status: MEASUREMENTS_FIRST · no Quran text/page/ayah/604 changes  
-Base tip: production MATCH (post final-closure PR)  
-Authority: SUNNAH_FINAL_CLOSURE_PROGRAM · Phase F
+Base tip: production MATCH `bb76d0f3` (pre endgame merge) · refresh after deploy  
+Authority: SUNNAH_AUTONOMOUS_ENDGAME_MODE · Phase E  
+Baseline refs: `docs/mushaf/WAVE6_MUSHAF_FLUIDITY_BASELINE.md` · turn telemetry hooks already in tree
 
 ## Scope
 
