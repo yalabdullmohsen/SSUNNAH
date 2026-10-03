@@ -68,6 +68,8 @@ Phase AK: `docs/design/DESIGN_TOKENS_AUTHORITY.md` · `TOKEN_COMPLIANCE_REPORT` 
 
 Phases AL–AP: `docs/audit/VISUAL_AL_AP_POLISH_CONSISTENCY_REPORT.md` · interaction/coverage/scoring/admin/journeys · `test:polish-consistency`.
 
+Phases AQ–AU: `docs/audit/VISUAL_AQ_AU_COMPLIANCE_CERTIFICATION_REPORT.md` · compliance engine · token coverage · duplication · heatmap · product certification · `test:design-compliance-engine`.
+
 ## Endgame phases (A–H)
 
 | Phase | Target exit | Status |

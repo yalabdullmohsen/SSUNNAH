@@ -150,6 +150,12 @@ Empty excellence: `EMPTY_STATE_STANDARD`.
 Journeys: `USER_JOURNEY_OPTIMIZATION_PLAN`.  
 Gate: `test:polish-consistency` (wired into `test:design-governance`).
 
+## Compliance wave AQ–AU (drift prevention)
+
+Engine: `DESIGN_SYSTEM_COMPLIANCE_ENGINE.md` · `scripts/design-compliance-engine.mjs`.  
+Outputs: DESIGN_COMPLIANCE_* · TOKEN_COVERAGE_SCORECARD · UI_DUPLICATION_REPORT · CONSISTENCY_PRIORITY_MATRIX · PRODUCT_SURFACE_MAP · SUNNAH_PRODUCT_CERTIFICATION_REPORT.  
+Gate: `test:design-compliance-engine`.
+
 ## Page Authority
 
 Canonical: `AppPage` · `PageHeader` · Screen adapters (`DetailScreen`, …) per `PAGE_CONTRACT_MATRIX.md`.

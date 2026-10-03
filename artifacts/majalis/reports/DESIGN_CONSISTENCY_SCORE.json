@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-10-03T04:25:27.315Z",
+  "updatedAt": "2026-10-03T04:28:32.392Z",
   "consistencyScore": 88,
   "driftScore": 12,
   "authorityAdoptionRatio": 41,
@@ -87,7 +87,8 @@
     "DESIGN_TOKENS_AUTHORITY_ACTIVE",
     "INTERACTION_SYSTEM_UNIFIED",
     "ADMIN_UI_STANDARDIZED",
-    "EMPTY_STATE_EXCELLENCE"
+    "EMPTY_STATE_EXCELLENCE",
+    "DESIGN_SYSTEM_COMPLIANCE_ENGINE"
   ],
   "DESIGN_GOVERNANCE_AUTOMATED": true,
   "DESIGN_CONSISTENCY_SCORING": true,
