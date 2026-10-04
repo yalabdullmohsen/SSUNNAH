@@ -2,10 +2,10 @@
 
 حدّث بسطر عند تغيير بنيوي. لا تُعِد بناء الفهرس من الصفر كل جلسة.
 
-جذر Git الفعلي: `/Users/alabdullmohsen/majlis-app` (لا تستخدم `majalis-correct`) · GitHub SoT: `yalabdullmohsen/SSUNNAH` (إعادة توجيه قديمة: `majalis`) · منتج الويب: `artifacts/majalis`.  
-منصّة/حوكمة: `docs/platform/` (PLATFORM_BASELINE · OWNERSHIP · STATE · OPERATIONS_PLAYBOOK).  
-استدامة/إصدار طويل الأمد: `docs/sustainability/`  
-حوكمة مستمرة / QUALITY_BASELINE_V1: `docs/governance/` (PROJECT_HEALTH · continuous-governance gate). (BASELINE · DOCUMENTATION_AUTHORITY · DEBT_PREVENTION · RELEASE_READINESS_CONFIRMED · LONG_TERM_GOVERNANCE · authority-manifest.json).
+جذر Git الفعلي: `/Users/alabdullmohsen/majlis-app` (لا تستخدم `majalis-correct`) · GitHub SoT: `yalabdullmohsen/SSUNNAH` (إعادة توجيه قديمة: `majalis`).  
+**هوية دائمة:** `docs/governance/SUNNAH_CANONICAL_PLATFORM_IDENTITY.md` — سُنّة = WEB + IOS + APP_STORE (منتجات منفصلة؛ بوابة `test:canonical-platform-identity`).  
+منتج الويب/الكود المشترك: `artifacts/majalis` · iOS Capacitor: `artifacts/majalis/ios` · متجر: HOLD / owner-gated.  
+منصّة: `docs/platform/` · استدامة: `docs/sustainability/` · حوكمة/QUALITY_BASELINE_V1: `docs/governance/`.
 
 ## حزم artifacts
 

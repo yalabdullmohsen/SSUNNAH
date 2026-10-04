@@ -68,6 +68,7 @@
     "routeQualityMatrixStaleUnsetMax": 0
   },
   "protectionGates": [
+    "test:canonical-platform-identity",
     "test:global-component-authority",
     "test:global-design-system-authority",
     "test:product-completeness-baseline",

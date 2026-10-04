@@ -19,7 +19,8 @@ Git root must be the monorepo root (paths like `artifacts/majalis/...`).
 
 Platform docs: `docs/platform/PLATFORM_BASELINE.md` · ownership · state · operations playbook.  
 Sustainability / release readiness (no store actions): `docs/sustainability/` · `authority-manifest.json`.  
-Continuous governance freeze: `docs/governance/QUALITY_BASELINE_V1` · `PROJECT_HEALTH.md` · `pnpm --filter @workspace/majalis run test:continuous-governance-regression`.
+Continuous governance freeze: `docs/governance/QUALITY_BASELINE_V1` · `PROJECT_HEALTH.md` · `pnpm --filter @workspace/majalis run test:continuous-governance-regression`.  
+**Permanent identity:** `docs/governance/SUNNAH_CANONICAL_PLATFORM_IDENTITY.md` — WEB · IOS · APP_STORE are separate products; report impacts separately.
 
 ## Run the web app
 

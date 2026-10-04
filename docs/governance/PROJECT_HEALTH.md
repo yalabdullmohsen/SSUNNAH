@@ -1,12 +1,25 @@
 # PROJECT_HEALTH — Continuous Governance Dashboard
 
 **Baseline:** `QUALITY_BASELINE_V1`  
-**SoT:** `yalabdullmohsen/SSUNNAH` · Prod: `https://www.ssunnah.com/version.json`
+**SoT:** `yalabdullmohsen/SSUNNAH` · Prod: `https://www.ssunnah.com/version.json`  
+**Identity:** `SUNNAH_CANONICAL_PLATFORM_IDENTITY` — evaluate **WEB · IOS · APP_STORE** separately (never merge surfaces).
+
+## Platform separation (mandatory)
+
+| Product | Scope | Success applies to |
+|---|---|---|
+| **WEB** | Browser, SEO, responsive, web routes/perf/a11y | WEB only |
+| **IOS** | Capacitor shell, lifecycle, safe areas, gestures, deep links, push | IOS only |
+| **APP_STORE** | Release/review readiness, polish, compliance, update safety | APP_STORE only |
+
+Reports must include **WEB IMPACT · IOS IMPACT · APP STORE IMPACT**.  
+Architecture classes: `WEB_ONLY` · `IOS_ONLY` · `SHARED_PLATFORM` · `APP_STORE_ONLY`.
 
 ## Health board
 
 | Area | Status | Protection | Monitor |
 |---|---|---|---|
+| Canonical identity | LOCKED | `test:canonical-platform-identity` | contract doc + JSON |
 | Design debt | GUARDED | visual debt budget · component/design-system authority · hero ceiling 95 | hex / !important / radii / shadows ceilings |
 | Interaction debt | GUARDED | interaction debt budget · Button authority | raw buttons · onClick div/span |
 | Performance | GUARDED | bundle · LHCI · sync CSS=14 · runtime excellence | entry/icons/CSS gzip budgets |
