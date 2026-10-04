@@ -18,6 +18,11 @@ assert.doesNotMatch(routes, /FiqhCouncil\w*Page/);
 assert.equal(existsSync(resolve(root, "src/views/FiqhCouncilPage.tsx")), false);
 assert.equal(existsSync(resolve(root, "src/components/fiqh-council")), false);
 assert.equal(existsSync(resolve(root, "src/lib/fiqh-council-seed.ts")), false);
+assert.equal(
+  existsSync(resolve(root, "src/styles/pages/fiqh-council-section.css")),
+  false,
+  "fiqh-council-section.css dead-with-proof removed",
+);
 assert.ok(existsSync(resolve(root, "src/lib/fiqh/nawazil-topics.ts")));
 
 assert.doesNotMatch(read("src/pages/account/MemorizePage.tsx"), /مجلس علم/);
