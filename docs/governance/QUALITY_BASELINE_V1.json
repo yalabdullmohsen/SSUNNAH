@@ -1,8 +1,8 @@
 {
   "id": "QUALITY_BASELINE_V1",
   "program": "SUNNAH_CONTINUOUS_GOVERNANCE_AND_REGRESSION_PREVENTION_PROGRAM",
-  "capturedAt": "2026-10-04T13:16:08.247Z",
-  "baseTip": "8d92504d1e641d550a6ac570e90072e2efb4f311",
+  "capturedAt": "2026-10-04T14:06:27.476Z",
+  "baseTip": "75d349f1dd803e4e7308ff4cd6cea521f0ef6685",
   "githubSoT": "yalabdullmohsen/SSUNNAH",
   "policy": "no-ceiling-raise",
   "unknownGovernanceDebt": 0,
@@ -20,10 +20,10 @@
       "zIndexRawDecls": 257,
       "borderRadiusPxDecls": 392,
       "inlineColorStyleMatches": 39,
-      "rawButtonFiles": 76
+      "rawButtonFiles": 73
     },
     "visualFloors": {
-      "officialButtonImportFiles": 287,
+      "officialButtonImportFiles": 290,
       "sfTokenRefs": 1172,
       "ssTokenRefs": 761
     }
@@ -31,16 +31,16 @@
   "interaction": {
     "interactionDebtPolicy": "decreasing-ceilings",
     "interactionCeilings": {
-      "rawButtonFiles": 76,
-      "rawButtonElements": 311,
+      "rawButtonFiles": 73,
+      "rawButtonElements": 300,
       "divSpanOnClick": 41,
       "formButtonsMissingType": 0,
       "floatingControlFileMentions": 10,
       "buttonRelatedImportantApprox": 1138,
-      "buttonRelatedHexApprox": 980
+      "buttonRelatedHexApprox": 975
     },
     "interactionFloors": {
-      "officialButtonImportFiles": 287,
+      "officialButtonImportFiles": 290,
       "actionButtonConsumerFiles": 7
     }
   },

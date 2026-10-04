@@ -25,6 +25,10 @@ const migrated = [
   "src/views/NewMuslimDayDetailPage.tsx",
   "src/views/IslamicSectsDetailPage.tsx",
   "src/views/UniversitiesComparePage.tsx",
+  /* Wave 3 / PR F */
+  "src/pages/quran/ui/QuranNumbersView.tsx",
+  "src/pages/quran/QuranMemorizationPlansPage.tsx",
+  "src/pages/quran/QuranEnginePage.tsx",
 ] as const;
 
 for (const rel of migrated) {

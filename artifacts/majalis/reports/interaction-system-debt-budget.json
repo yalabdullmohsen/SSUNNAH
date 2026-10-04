@@ -1,19 +1,19 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Ceilings must not rise. Wave 1A: buttonRelated Hex/important lowered to measured after absorb.",
+  "note": "Ceilings must not rise. Wave 3 / PR F: product Quran hub buttons absorbed; hex approx lowered to measured.",
   "ceilings": {
-    "rawButtonFiles": 76,
-    "rawButtonElements": 311,
+    "rawButtonFiles": 73,
+    "rawButtonElements": 300,
     "divSpanOnClick": 41,
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
     "buttonRelatedImportantApprox": 1138,
-    "buttonRelatedHexApprox": 980
+    "buttonRelatedHexApprox": 975
   },
   "floors": {
-    "officialButtonImportFiles": 287,
+    "officialButtonImportFiles": 290,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-10-04T11:53:07.470Z"
+  "updatedAt": "2026-10-04T14:06:27.476Z"
 }

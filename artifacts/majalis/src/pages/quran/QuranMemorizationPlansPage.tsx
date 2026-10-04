@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { BookOpen, CalendarDays, Check, RotateCcw } from "lucide-react";
 import { PageHeader } from "@/components/ui-common";
+import { Button } from "@/components/ui/button";
 import { applyPageSeo } from "@/lib/seo";
 
 const MUSHAF_PAGES = 604;
@@ -68,7 +69,19 @@ export default function QuranMemorizationPlansPage() {
       <section aria-labelledby="qmp-plans-title">
         <h2 id="qmp-plans-title" className="qmp-section-title">اختر الخطة</h2>
         <div className="qmp-plan-grid">
-          {PLANS.map((item) => <button key={item.id} type="button" className={`qmp-plan${item.id === plan.id ? " is-active" : ""}`} aria-pressed={item.id === plan.id} onClick={() => setSaved({ planId: item.id, completed: 0 })}><strong>{item.title}</strong><span>{item.description}</span></button>)}
+          {PLANS.map((item) => (
+            <Button
+              key={item.id}
+              type="button"
+              variant="ghost"
+              className={`qmp-plan${item.id === plan.id ? " is-active" : ""}`}
+              aria-pressed={item.id === plan.id}
+              onClick={() => setSaved({ planId: item.id, completed: 0 })}
+            >
+              <strong>{item.title}</strong>
+              <span>{item.description}</span>
+            </Button>
+          ))}
         </div>
       </section>
       <section className="ds-card qmp-today" aria-live="polite">
@@ -77,9 +90,28 @@ export default function QuranMemorizationPlansPage() {
         {!finished && <p className="qmp-assignment"><BookOpen size={20} aria-hidden="true" /> من صفحة <strong>{assignment.start}</strong> إلى صفحة <strong>{assignment.end}</strong></p>}
         <p className="qmp-kind-note">كرّر المقطع حتى يستقر، ثم راجع مقدار الأمس وآخر مراجعة أسبوعية. إن فاتك يوم فتابع من هنا؛ لا يتراكم عليك مقدار عقابي.</p>
         <div className="qmp-actions">
-          {!finished && <button type="button" className="ds-btn ds-btn--primary" onClick={() => setSaved((state) => ({ ...state, completed: Math.min(plan.sessions, state.completed + 1) }))}><Check size={17} /> أتممت الجلسة</button>}
+          {!finished && (
+            <Button
+              type="button"
+              variant="primary"
+              className="ds-btn ds-btn--primary"
+              iconStart={<Check size={17} />}
+              onClick={() => setSaved((state) => ({ ...state, completed: Math.min(plan.sessions, state.completed + 1) }))}
+            >
+              أتممت الجلسة
+            </Button>
+          )}
           <Link href="/mushaf" className="ds-btn ds-btn--secondary"><BookOpen size={17} /> افتح المصحف</Link>
-          {saved.completed > 0 && <button type="button" className="ds-btn ds-btn--ghost" onClick={() => setSaved((state) => ({ ...state, completed: Math.max(0, state.completed - 1) }))}>تراجع عن آخر تسجيل</button>}
+          {saved.completed > 0 && (
+            <Button
+              type="button"
+              variant="ghost"
+              className="ds-btn ds-btn--ghost"
+              onClick={() => setSaved((state) => ({ ...state, completed: Math.max(0, state.completed - 1) }))}
+            >
+              تراجع عن آخر تسجيل
+            </Button>
+          )}
         </div>
       </section>
       <section className="ds-card qmp-guidance"><h2>نظام أسبوعي مقترح</h2><ol><li>حفظ المقدار الجديد مع التكرار والاستماع لقارئ متقن.</li><li>مراجعة مقدار اليوم السابق قبل بدء الجديد.</li><li>مراجعة تراكمية في نهاية الأسبوع واختبار مواضع التردد.</li><li>اترك يومًا مرنًا للتعويض أو الراحة، ثم أكمل دون إعادة الخطة من الصفر.</li></ol><p>هذه أداة تنظيمية وليست بديلًا عن المعلّم المتقن، ولا تقيس جودة الحفظ وحدها.</p></section>

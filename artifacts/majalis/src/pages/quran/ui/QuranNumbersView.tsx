@@ -32,6 +32,8 @@ import { scoreTolerantMatch } from "@/features/search/tolerant-match";
 import "@/components/sections/section-cards.css";
 import "@/styles/pages/quran-numbers.css";
 import { DetailScreen } from "@/components/design-system/screens";
+import { SearchInput } from "@/components/design-system/FormFields";
+import { Button } from "@/components/ui/button";
 
 const GROUPS: QuranStatGroup[] = ["bunya", "alfaz", "mawdoo", "suwar", "ajaib"];
 
@@ -144,37 +146,40 @@ export default function QuranNumbersPage() {
       </p>
 
       <div className="quran-numbers-toolbar">
-        <label className="quran-numbers-search">
-          <span className="sr-only">بحث في القسم</span>
-          <input
-            type="search"
+        <div className="quran-numbers-search">
+          <SearchInput
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            onClear={() => setQuery("")}
             placeholder="ابحث في الأرقام والألفاظ…"
             aria-label="بحث في القرآن في أرقام"
           />
-        </label>
+        </div>
         <div className="quran-numbers-tabs" role="tablist" aria-label="محاور الإحصاءات">
-          <button
+          <Button
             type="button"
+            variant="ghost"
+            size="small"
             role="tab"
             aria-selected={theme === "all"}
             data-active={theme === "all" ? "1" : "0"}
             onClick={() => setTheme("all")}
           >
             الكل
-          </button>
+          </Button>
           {QURAN_STAT_THEMES.map((t) => (
-            <button
+            <Button
               key={t}
               type="button"
+              variant="ghost"
+              size="small"
               role="tab"
               aria-selected={theme === t}
               data-active={theme === t ? "1" : "0"}
               onClick={() => setTheme(t)}
             >
               {QURAN_STAT_THEME_LABEL[t]}
-            </button>
+            </Button>
           ))}
         </div>
         {theme !== "all" ? (
@@ -183,35 +188,40 @@ export default function QuranNumbersPage() {
           </p>
         ) : null}
         <div className="quran-numbers-tabs quran-numbers-tabs--groups" role="tablist" aria-label="تصنيف المصدر">
-          <button
+          <Button
             type="button"
+            variant="ghost"
+            size="small"
             role="tab"
             aria-selected={group === "all"}
             data-active={group === "all" ? "1" : "0"}
             onClick={() => setGroup("all")}
           >
             كل التصنيفات
-          </button>
+          </Button>
           {GROUPS.map((g) => (
-            <button
+            <Button
               key={g}
               type="button"
+              variant="ghost"
+              size="small"
               role="tab"
               aria-selected={group === g}
               data-active={group === g ? "1" : "0"}
               onClick={() => setGroup(g)}
             >
               {QURAN_STAT_GROUP_LABEL[g]}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
 
       <div className="quran-numbers-grid" data-sections-grid="quran-numbers">
         {filtered.map((s) => (
-          <button
+          <Button
             key={s.id}
             type="button"
+            variant="ghost"
             className="quran-stat-card"
             data-section-card="stat"
             data-stat-kind={s.kind}
@@ -228,7 +238,7 @@ export default function QuranNumbersPage() {
             <span className="quran-stat-card__label">{s.label}</span>
             {s.note ? <span className="quran-stat-card__note">{s.note}</span> : null}
             <span className="quran-stat-card__source">{formatStatSourceLine(s.source)}</span>
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -301,9 +311,9 @@ export default function QuranNumbersPage() {
               </>
             ) : null}
             <div className="quran-stat-sheet__actions">
-              <button type="button" onClick={() => void onShare(active)}>
+              <Button type="button" variant="secondary" size="small" onClick={() => void onShare(active)}>
                 مشاركة
-              </button>
+              </Button>
               {shareStatus ? <span aria-live="polite">{shareStatus}</span> : null}
             </div>
             <p>
