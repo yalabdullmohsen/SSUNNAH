@@ -155,13 +155,17 @@ function loadNonCriticalCss() {
   void import("./styles/m2030/navigation.css");
   void import("./styles/brand-v4-contrast-fixes.css");
   void import("./styles/a11y-release-gate.css");
-  void import("./styles/visual-enrichment.css");
+  /* visual-enrichment: زخرفة مؤجّلة — ليست هندسة أول إطار (S2 late soft-paint) */
+  if (!deferAppChromeCss) {
+    void import("./styles/visual-enrichment.css");
+  }
   const loadHeavyIdentityCss = () => {
     if (deferAppChromeCss) {
       void import("./styles/sunnah-visual-language.css");
       void import("./styles/sunnah-geometry-system.css");
       void import("./styles/modern-ui-refresh.css");
       void import("./styles/ssunnah-ds-canonical.css");
+      void import("./styles/visual-enrichment.css");
     }
     void import("./styles/design-system.css").then(() => {
       void import("./styles/brand-v4-components.css");
