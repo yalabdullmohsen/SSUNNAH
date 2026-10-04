@@ -11,6 +11,7 @@ import {
   saveWidgetEventOverride,
   type WidgetEventConfirmation,
 } from "@/lib/widget-data/islamic-events";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/home/home-learning-seasons.css";
 
 const STORAGE_KEY = "majalis-religious-calendar-review-v1";
@@ -189,38 +190,41 @@ export function ReligiousCalendarReviewSection() {
             </p>
             <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.75rem", flexWrap: "wrap" }}>
               {(["CALCULATED", "PROVISIONAL", "OFFICIALLY_CONFIRMED", "MANUALLY_ADJUSTED", "HIDDEN", "CANCELLED"] as WidgetEventConfirmation[]).map((status) => (
-                <button
+                <Button
                   key={status}
                   type="button"
-                  className="ds-btn"
+                  variant="secondary"
+                  size="small"
                   onClick={() => {
                     saveWidgetEventOverride(selected.record.id, { confirmationStatus: status });
                     setWidgetOverrides(loadWidgetEventOverrides());
                   }}
                 >
                   {status}
-                </button>
+                </Button>
               ))}
-              <button
+              <Button
                 type="button"
-                className="ds-btn"
+                variant="secondary"
+                size="small"
                 onClick={() => {
                   saveWidgetEventOverride(selected.record.id, { widgetEligible: true, notificationEligible: true });
                   setWidgetOverrides(loadWidgetEventOverrides());
                 }}
               >
                 تفعيل الويدجت والتنبيه
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
-                className="ds-btn"
+                variant="ghost"
+                size="small"
                 onClick={() => {
                   saveWidgetEventOverride(selected.record.id, { widgetEligible: false, notificationEligible: false });
                   setWidgetOverrides(loadWidgetEventOverrides());
                 }}
               >
                 إخفاء من الويدجت
-              </button>
+              </Button>
             </div>
           </article>
         ) : (
