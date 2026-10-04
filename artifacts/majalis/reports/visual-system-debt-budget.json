@@ -1,9 +1,9 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Wave 1C: final-release + sections-calm-polish hex-fallback absorb; ceilings=measured.",
+  "note": "Wave 3 / PR F: rawButtonFiles lowered after Quran hub Button absorb; official Button floor raised.",
   "floors": {
-    "officialButtonImportFiles": 287,
+    "officialButtonImportFiles": 290,
     "sfTokenRefs": 1183,
     "ssTokenRefs": 762
   },
@@ -18,7 +18,7 @@
     "zIndexRawDecls": 257,
     "borderRadiusPxDecls": 392,
     "inlineColorStyleMatches": 39,
-    "rawButtonFiles": 76
+    "rawButtonFiles": 73
   },
-  "updatedAt": "2026-10-04T13:16:08.247Z"
+  "updatedAt": "2026-10-04T14:06:27.476Z"
 }

@@ -3,9 +3,10 @@
 | Field | Value |
 |---|---|
 | Status | **AUTHORITY MAP** |
-| Date | 2026-10-03 |
+| Date | 2026-10-04 |
 | Source of truth | `docs/design/FORM_FEEDBACK_AUTHORITY.md` |
 | Exit target | `FORM_AUTHORITY_ONLY` (product surfaces) |
+| Wave | Eradication **PR F / Wave 3** — Quran Numbers search → `SearchInput` |
 
 No new form kit. Compose `ui/*` + `design-system/FormFields`.
 

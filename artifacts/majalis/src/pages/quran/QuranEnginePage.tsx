@@ -8,6 +8,7 @@ import { QuranEngineProvider } from "@/core/quran/QuranEngineContext";
 import { QuranProvider } from "@/context/QuranContext";
 import { HomeDashboard } from "@/components/HomeDashboard";
 import { QuranViewer } from "@/components/QuranViewer";
+import { Button } from "@/components/ui/button";
 import "@/styles/quran-engine-ui.css";
 
 export default function QuranEnginePage() {
@@ -26,23 +27,29 @@ export default function QuranEnginePage() {
         >
           {!focusMode ? (
             <nav className="qe-page__nav" aria-label="محرك القرآن">
-              <button
+              <Button
                 type="button"
+                variant="ghost"
+                size="small"
                 className={mode === "dash" ? "is-on" : undefined}
+                aria-pressed={mode === "dash"}
                 onClick={() => {
                   setFocusMode(false);
                   setMode("dash");
                 }}
               >
                 اللوحة
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
+                variant="ghost"
+                size="small"
                 className={mode === "viewer" ? "is-on" : undefined}
+                aria-pressed={mode === "viewer"}
                 onClick={() => setMode("viewer")}
               >
                 المصحف
-              </button>
+              </Button>
             </nav>
           ) : null}
           {mode === "dash" ? (

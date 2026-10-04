@@ -1,0 +1,43 @@
+{
+  "wave": "WAVE3_PR_F",
+  "taskClassification": "SHARED_PLATFORM",
+  "baseCommit": "75d349f1dd803e4e7308ff4cd6cea521f0ef6685",
+  "measuredAt": "2026-10-04T14:06:27.476Z",
+  "absorbed": {
+    "files": [
+      "pages/quran/ui/QuranNumbersView.tsx",
+      "pages/quran/QuranMemorizationPlansPage.tsx",
+      "pages/quran/QuranEnginePage.tsx"
+    ],
+    "rawButtonElementsRemoved": 11,
+    "rawButtonFilesRemoved": 3,
+    "formSearchMigrated": ["QuranNumbersView → SearchInput"]
+  },
+  "metrics": {
+    "rawButtonFiles": 73,
+    "rawButtonElements": 300,
+    "officialButtonImportFiles": 290,
+    "divSpanOnClick": 41,
+    "buttonRelatedHexApprox": 975,
+    "formButtonsMissingType": 0
+  },
+  "residuals": {
+    "SPECIAL_CASE_WITH_EVIDENCE": [
+      "mushaf reader/madinah chrome",
+      "admin + review-hub",
+      "QuranMemorizationView quiz UI",
+      "QuranViewer engine chrome"
+    ],
+    "KEEP_JUSTIFIED_WITH_EVIDENCE": [
+      "modal/sheet backdrop EVENT_DELEGATION",
+      "Upload FILE_DROPZONE",
+      "input-group focus delegation"
+    ]
+  },
+  "outputs": [
+    "RAW_BUTTON_COUNTS_REDUCED",
+    "OFFICIAL_BUTTON_ADOPTION_RAISED",
+    "FORM_SEARCH_ON_AUTHORITY",
+    "NO_BASELINE_CEILING_RAISE"
+  ]
+}
