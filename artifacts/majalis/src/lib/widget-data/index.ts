@@ -12,3 +12,4 @@ export * from "./catalog-product-justification";
 export * from "./custom-widget-strategy";
 export * from "./data-truth";
 export * from "./center-form-authority";
+export * from "./governance-completeness";

@@ -3,6 +3,8 @@
 TASK_CLASSIFICATION: IOS_ONLY
 Status: DEVICE_REQUIRED — documentation packet only; no physical pass claimed.
 
+Authority: `docs/audit/WIDGET_PHYSICAL_CERTIFICATION_PACKET.md`
+
 ## Devices
 current iPhone · older/smaller iPhone · iPad · Split View
 
@@ -13,3 +15,4 @@ Home · Lock · StandBy · Light · Dark · tinted · large text · Arabic RTL �
 Each of 32 kinds × declared families: screenshot, OS, data state, tap destination, clipping, VoiceOver, refresh, pass/fail.
 
 WIDGET_PHYSICAL_CERTIFICATION_PACKET_READY = documentation
+Physical execution = DEVICE_REQUIRED
