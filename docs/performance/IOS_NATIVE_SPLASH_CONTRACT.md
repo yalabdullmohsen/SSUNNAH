@@ -9,7 +9,7 @@
 |---|---|
 | WEB_SPLASH_CONTRACT | `index.html` `#mj-splash-critical` + `public/mj-launch-splash-boot.js` + `majlis-splash.ts` |
 | IOS_NATIVE_SPLASH_CONTRACT | `LaunchScreen.storyboard` + `LaunchBackground.colorset` + Capacitor SplashScreen config |
-| IOS_PUBLIC_MIRROR | `ios/App/App/public/mj-launch-splash-boot.js` must byte-match `public/mj-launch-splash-boot.js` |
+| IOS_PUBLIC_MIRROR | Source of truth: `public/mj-launch-splash-boot.js`. `ios/App/App/public/**` is gitignored (except `.gitkeep`) and filled by `cap sync` from `webDir: dist`. When the local mirror file exists, it must byte-match the web source. |
 
 ## Canvas contract (repository)
 
@@ -47,7 +47,8 @@ Gate `test:startup-ios-native-splash-s6` fails when:
 - Capacitor configs (root + iOS copy) ≠ `#F8F6F1`
 - LaunchBackground light/dark components drift from `#F8F6F1` / `#101614`
 - LaunchScreen uses white system background or branded chrome
-- `public/mj-launch-splash-boot.js` ≠ `ios/App/App/public/mj-launch-splash-boot.js`
+- `public/mj-launch-splash-boot.js` contract broken, or local post-sync mirror ≠ web source
+- Capacitor `webDir` no longer `dist` (breaks sync pipeline for the mirror)
 
 ## Device hold
 
