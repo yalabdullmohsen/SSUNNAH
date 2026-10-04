@@ -3568,7 +3568,6 @@ html.dark .sq-header :where(*) {
 .fqh-hub-card,
 .quran-hub-card,
 .twh-hub-card,
-.tawheed-type-card,
 .hlr__card {
   background: var(--color-surface) !important;
   border: 1px solid color-mix(in srgb, var(--color-border) 88%, transparent) !important;
@@ -3576,6 +3575,7 @@ html.dark .sq-header :where(*) {
   box-shadow: var(--shadow-soft) !important;
   color: var(--color-text);
 }
+/* .tawheed-type-card removed from deferred theme cluster — DS FEATURE sole owner (PR C). */
 
 .an-card,
 .notif-card,

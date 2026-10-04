@@ -1612,18 +1612,10 @@ html[data-theme="dark"] .ds-stat span {
   justify-content: center;
 }
 
-/* Add-wird row */
-.tasbih-add-row {
-  align-items: stretch;
-}
+/* .tasbih-add-row sole owner: styles/pages/tasbih.css (PR C). */
 
 /* Phone-specific adjustments (≤480px) */
 @media (max-width: 480px) {
-  /* Add-wird inputs stack vertically */
-  .tasbih-add-row {
-    flex-direction: column;
-  }
-
   /* Pills: scroll doesn't limit readability on phone */
   .tasbih-wird-pills {
     padding-bottom: 0.5rem;
@@ -1829,7 +1821,7 @@ html[data-theme="dark"] .ds-stat span {
 .tawheed-types-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0.55rem;
   margin-bottom: 2rem;
 }
 @media (max-width: 860px) {
@@ -1839,19 +1831,24 @@ html[data-theme="dark"] .ds-stat span {
   .tawheed-types-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* بطاقة نوع التوحيد */
+/* بطاقة نوع التوحيد — sole FEATURE owner in DS (PR C absorbs pages/tawhid dual base). */
 .tawheed-type-card {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 1.25rem 1rem;
+  padding: 0.75rem 0.85rem;
+  min-height: 0;
   border-radius: 0.75rem;
   border: 1px solid var(--ds-line-color);
+  border-top: 3px solid var(--card-color, var(--majalis-emerald));
   background: var(--bg-card);
   box-shadow: var(--ds-shadow-sm);
   direction: rtl;
   text-align: right;
 }
+.tawheed-type-card--emerald { --card-color: var(--majalis-emerald, var(--mj-brand)); }
+.tawheed-type-card--brand { --card-color: var(--mj-brand-deep, var(--mj-brand)); }
+/* no hex fallbacks in DS graph (css-authority-graph-gate). */
 .tawheed-type-card__num {
   display: inline-flex;
   align-items: center;
@@ -1859,7 +1856,7 @@ html[data-theme="dark"] .ds-stat span {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  background: var(--majalis-emerald, var(--mj-brand-deep));
+  background: var(--card-color, var(--majalis-emerald));
   color: #fff;
   font-size: 1rem;
   font-weight: 700;
@@ -1879,10 +1876,14 @@ html[data-theme="dark"] .ds-stat span {
 }
 .tawheed-type-card__desc {
   margin: 0;
-  font-size: 0.85rem;
-  line-height: 1.75;
+  font-size: 0.82rem;
+  line-height: 1.55;
   color: var(--text-base);
   flex: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 .tawheed-type-card__ayah {
   margin: 0.5rem 0 0;
@@ -2006,7 +2007,28 @@ html[data-theme="dark"] .ds-stat span {
   border-radius: 0.35rem;
   padding: 0.18rem 0.45rem;
   border-right: 3px solid;
+  border-right-color: var(--grade-color, var(--mj-brand));
   direction: rtl;
+}
+.tawheed-hadith-badge__grade {
+  font-weight: 700;
+  color: var(--grade-color, var(--mj-brand));
+  font-size: 0.68rem;
+}
+.tawheed-hadith-badge--sahih { --grade-color: var(--majalis-emerald, var(--mj-brand)); }
+.tawheed-hadith-badge--hasan { --grade-color: var(--majalis-emerald-deep, var(--mj-brand-deep)); }
+.tawheed-hadith-badge--daif  { --grade-color: var(--majalis-danger, var(--mj-danger)); }
+.tawheed-hadith-badge--mawdu { --grade-color: var(--majalis-danger, var(--mj-danger)); }
+
+:is(html[data-theme="dark"], html.dark) .tawheed-type-card {
+  background: var(--surface-elevated, var(--mj-surface));
+  border-color: var(--border-elevated, var(--mj-hairline));
+}
+:is(html[data-theme="dark"], html.dark) .tawheed-type-card__title {
+  color: var(--text-primary, var(--mj-ink));
+}
+:is(html[data-theme="dark"], html.dark) .tawheed-type-card__desc {
+  color: var(--text-secondary, var(--mj-ink-2));
 }
 
 /* شبكة الروابط ذات الصلة */

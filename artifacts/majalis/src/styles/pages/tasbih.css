@@ -117,10 +117,17 @@
 .tasbih-actions-grid,
 .tasbih-add-row {
   display: flex;
+  align-items: stretch;
   gap: 0.55rem;
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 1rem;
+}
+
+@media (max-width: 480px) {
+  .tasbih-add-row {
+    flex-direction: column;
+  }
 }
 
 .tasbih-target-field {

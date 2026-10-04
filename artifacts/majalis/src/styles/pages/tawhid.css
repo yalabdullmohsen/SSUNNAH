@@ -361,26 +361,7 @@ html[data-theme="dark"] .twh-book-level--mid { color: var(--mj-brand, #7ed4b5) !
   margin: 0 0 0.25rem;
   direction: rtl;
 }
-.tawheed-type-card {
-  border-top: 3px solid var(--card-color, var(--majalis-emerald));
-}
-.tawheed-type-card__num {
-  background: var(--card-color, var(--majalis-emerald));
-}
-.tawheed-type-card--emerald { --card-color: var(--majalis-emerald, var(--mj-brand)); }
-.tawheed-type-card--brand { --card-color: var(--mj-brand-deep, var(--mj-brand)); }
-.tawheed-hadith-badge {
-  border-right-color: var(--grade-color, var(--mj-brand));
-}
-.tawheed-hadith-badge__grade {
-  font-weight: 700;
-  color: var(--grade-color, var(--mj-brand));
-  font-size: 0.68rem;
-}
-.tawheed-hadith-badge--sahih { --grade-color: var(--majalis-emerald, var(--mj-brand)); }
-.tawheed-hadith-badge--hasan { --grade-color: var(--majalis-emerald-deep, var(--mj-brand-deep)); }
-.tawheed-hadith-badge--daif  { --grade-color: var(--majalis-danger, #9B1C1C); }
-.tawheed-hadith-badge--mawdu { --grade-color: var(--majalis-danger, #9B1C1C); }
+/* Base .tawheed-type-card* / .tawheed-hadith-badge* owned by design-system.css (PR C). */
 
 /*  أركان الإيمان */
 .twh-section-intro {
@@ -527,16 +508,12 @@ html[data-theme="dark"] .twh-book-level--mid { color: var(--mj-brand, #7ed4b5) !
 
 /* —— كثافة + Dark DS —— */
 .twh-hub-grid,
-.tawheed-types-grid {
-  gap: 0.55rem;
-}
-.twh-hub-card,
-.tawheed-type-card {
+/* Hub-card density/dark (route-local). Type-card dual base removed — DS owns it. */
+.twh-hub-card {
   padding: 0.75rem 0.85rem;
   min-height: 0;
 }
-.twh-hub-card__desc,
-.tawheed-type-card__desc {
+.twh-hub-card__desc {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -544,16 +521,13 @@ html[data-theme="dark"] .twh-book-level--mid { color: var(--mj-brand, #7ed4b5) !
   line-height: 1.55;
   font-size: 0.82rem;
 }
-:is(html[data-theme="dark"], html.dark) .twh-hub-card,
-:is(html[data-theme="dark"], html.dark) .tawheed-type-card {
+:is(html[data-theme="dark"], html.dark) .twh-hub-card {
   background: var(--surface-elevated, #24302b);
   border-color: var(--border-elevated, #3a4a44);
 }
-:is(html[data-theme="dark"], html.dark) .twh-hub-card__title,
-:is(html[data-theme="dark"], html.dark) .tawheed-type-card__title {
+:is(html[data-theme="dark"], html.dark) .twh-hub-card__title {
   color: var(--text-primary, #f4f7f5);
 }
-:is(html[data-theme="dark"], html.dark) .twh-hub-card__desc,
-:is(html[data-theme="dark"], html.dark) .tawheed-type-card__desc {
+:is(html[data-theme="dark"], html.dark) .twh-hub-card__desc {
   color: var(--text-secondary, #d5ded9);
 }

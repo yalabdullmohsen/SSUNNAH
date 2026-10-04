@@ -1,7 +1,7 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "PR B token consumer migration: elite/em absorbed; important/hex ceilings lowered to measured.",
+  "note": "PR C tasbih/tawhid dual ownership zero; hex ceiling lowered to measured.",
   "floors": {
     "officialButtonImportFiles": 288,
     "sfTokenRefs": 1220,
@@ -10,7 +10,7 @@
   "ceilings": {
     "cssFiles": 356,
     "important": 4739,
-    "hexInCss": 5601,
+    "hexInCss": 5599,
     "rgbHslInCss": 2006,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
