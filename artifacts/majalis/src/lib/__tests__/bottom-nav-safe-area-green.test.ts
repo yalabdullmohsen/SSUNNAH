@@ -77,16 +77,16 @@ assert.doesNotMatch(
 );
 
 const capTs = read("capacitor.config.ts");
-assert.match(capTs, /ios:\s*\{[\s\S]*?backgroundColor:\s*"#F7F3EB"/);
+assert.match(capTs, /ios:\s*\{[\s\S]*?backgroundColor:\s*"#F8F6F1"/);
 assert.doesNotMatch(capTs, /ios:\s*\{[\s\S]*?backgroundColor:\s*"#ffffff"/);
 assert.doesNotMatch(capTs, /ios:\s*\{[\s\S]*?backgroundColor:\s*"#0E1A15"/);
 
 const capJson = read("capacitor.config.json");
-assert.match(capJson, /"backgroundColor":\s*"#F7F3EB"/);
+assert.match(capJson, /"backgroundColor":\s*"#F8F6F1"/);
 assert.doesNotMatch(capJson, /"backgroundColor":\s*"#ffffff"/);
 
 const iosCap = read("ios/App/App/capacitor.config.json");
-assert.match(iosCap, /"backgroundColor":\s*"#F7F3EB"/);
+assert.match(iosCap, /"backgroundColor":\s*"#F8F6F1"/);
 assert.doesNotMatch(iosCap, /"backgroundColor":\s*"#ffffff"/);
 
 console.log("bottom-nav-safe-area-green.test.ts: ok");

@@ -254,7 +254,7 @@ if (isNative) {
     const bootTheme = resolveTheme(readThemePreference());
     document.documentElement.style.setProperty(
       "--app-status-bg",
-      bootTheme === "dark" ? "#101614" : "#F7F3EB",
+      bootTheme === "dark" ? "#101614" : "#F8F6F1",
     );
     document.documentElement.style.setProperty(
       "--app-status-fg-mode",

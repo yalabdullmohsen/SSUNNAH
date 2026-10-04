@@ -33,12 +33,12 @@ assert.doesNotMatch(
 );
 
 // خلفية الإقلاع تتبع الثيم المحلول (يمنع وميض فاتح فوق ليلي / شاشة دعائية)
-assert.match(main, /#F7F3EB/);
+assert.match(main, /#F8F6F1/);
 assert.match(main, /#101614/);
 assert.match(
   main,
-  /setProperty\(\s*["']--app-status-bg["'][\s\S]{0,80}#F7F3EB/,
-  "خلفية الإقلاع النهاري تطابق سطح التطبيق",
+  /setProperty\(\s*["']--app-status-bg["'][\s\S]{0,80}#F8F6F1/,
+  "خلفية الإقلاع النهاري تطابق لوحة الإقلاع/القماش",
 );
 assert.match(
   main,

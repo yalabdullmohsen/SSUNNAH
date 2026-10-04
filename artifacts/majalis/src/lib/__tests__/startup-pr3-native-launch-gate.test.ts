@@ -16,7 +16,7 @@ const contract = readPkg("src/lib/majlis-splash.ts");
 assert.match(contract, /SPLASH_PIPELINE/);
 assert.match(contract, /native-launch-color/);
 assert.match(contract, /html-branded-once/);
-assert.match(contract, /SPLASH_BG_LIGHT\s*=\s*"#F7F3EB"/);
+assert.match(contract, /SPLASH_BG_LIGHT\s*=\s*"#F8F6F1"/);
 assert.match(contract, /SPLASH_BG_DARK\s*=\s*"#101614"/);
 assert.match(contract, /SPLASH_MIN_VISIBLE_MS\s*=\s*0/);
 
@@ -42,7 +42,7 @@ assert.match(colorset, /"value"\s*:\s*"dark"/);
 const cap = readPkg("capacitor.config.ts");
 assert.match(cap, /showSpinner:\s*false/);
 assert.match(cap, /launchShowDuration:\s*0/);
-assert.match(cap, /backgroundColor:\s*"#F7F3EB"/);
+assert.match(cap, /backgroundColor:\s*"#F8F6F1"/);
 
 /* Android night splash retired with android/ tree */
 assert.equal(existsSync(resolve(majalisRoot, "android")), false, "android/ retired");

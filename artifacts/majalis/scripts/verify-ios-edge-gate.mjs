@@ -2,7 +2,7 @@
 /**
  * بوابة iOS edge-to-edge:
  * - viewport موحّد بلا maximum-scale / user-scalable في المحتوى
- * - theme-color سطحي من site.config (#F7F3EB / #101614)
+ * - theme-color سطحي من site.config (#F8F6F1 / #101614)
  * - رموز --inset-* في theme.css
  * - لا 100vh في src
  * - env(safe-area-*) فقط داخل theme.css
@@ -37,7 +37,7 @@ function walk(dir, out = []) {
 const site = JSON.parse(read("site.config.json"));
 const theme = site.themeColor;
 const themeDark = site.themeColorDark;
-if (theme !== "#F7F3EB") issues.push(`themeColor يجب #F7F3EB (وجد ${theme})`);
+if (theme !== "#F8F6F1") issues.push(`themeColor يجب #F8F6F1 (وجد ${theme})`);
 if (themeDark !== "#101614") issues.push(`themeColorDark يجب #101614 (وجد ${themeDark})`);
 
 const indexHtml = read("index.html");

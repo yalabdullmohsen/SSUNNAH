@@ -27,7 +27,7 @@ export type PageChromeKey =
   | "settings"
   | "default";
 
-const SURFACE_LIGHT = BRAND_THEME_COLOR; // #F7F3EB
+const SURFACE_LIGHT = BRAND_THEME_COLOR; // #F8F6F1 — يطابق لوحة الإقلاع/القماش
 const SURFACE_DARK = BRAND_THEME_COLOR_DARK; // #101614 / ليلي التطبيق قد يكون #131A18
 const SURFACE_DARK_APP = "#131A18";
 /** زمرد مواقيت الصلاة — يطابق --em-950 */
