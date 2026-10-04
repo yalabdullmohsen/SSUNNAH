@@ -148,6 +148,11 @@ Every architectural decision must classify, before implementation:
 **Execution protocol (permanent):** `docs/governance/SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL.md`  
 Every report must begin with `TASK_CLASSIFICATION:` using one of the classes above.
 
+**Enforcement protocol (permanent):** `docs/governance/SUNNAH_PLATFORM_ENFORCEMENT_PROTOCOL.md`  
+Quality gate: `PLATFORM_SEPARATION_GATE` → `test:platform-separation`  
+Mandatory report header: `TASK_CLASSIFICATION` + `RISK_SCOPE` (WEB · IOS · APP_STORE).  
+Mixing web evidence into iOS/App Store conclusions is a governance fail.
+
 ---
 
 ## GOVERNANCE CONTRACT

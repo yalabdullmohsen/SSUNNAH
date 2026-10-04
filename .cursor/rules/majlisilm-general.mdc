@@ -10,6 +10,7 @@ alwaysApply: true
 سُنّة = **WEB PLATFORM + IOS APPLICATION + APP STORE PRODUCT** (منتجات منفصلة).  
 العقد: `docs/governance/SUNNAH_CANONICAL_PLATFORM_IDENTITY.md` — لا يُحذف ولا يُتجاهل.  
 التصنيف قبل التنفيذ: `docs/governance/SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL.md` — كل تقرير يبدأ بـ `TASK_CLASSIFICATION:` (`WEB_ONLY|IOS_ONLY|APP_STORE_ONLY|SHARED_PLATFORM`).  
+الإنفاذ: `docs/governance/SUNNAH_PLATFORM_ENFORCEMENT_PROTOCOL.md` · `PLATFORM_SEPARATION_GATE` (`test:platform-separation`) — رأس إلزامي: `TASK_CLASSIFICATION` + `RISK_SCOPE`؛ رفض خلط المنصات.  
 كل تقرير يفصل WEB IMPACT / IOS IMPACT / APP STORE IMPACT؛ الأداء WEB/IOS/App Store UX.  
 Responsive ≠ iOS · Web perf ≠ App perf · Build ≠ Store ready. لا Builds/TestFlight/ASC إلا بتفويض مالك.
 

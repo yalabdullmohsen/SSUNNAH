@@ -69,6 +69,7 @@
   },
   "protectionGates": [
     "test:canonical-platform-identity",
+    "test:platform-separation",
     "test:global-component-authority",
     "test:global-design-system-authority",
     "test:product-completeness-baseline",
