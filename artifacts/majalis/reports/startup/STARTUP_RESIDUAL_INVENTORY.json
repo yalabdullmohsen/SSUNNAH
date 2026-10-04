@@ -1,58 +1,67 @@
 {
   "id": "STARTUP_RESIDUAL_INVENTORY",
   "program": "SUNNAH_STARTUP_STABILITY_AND_ZERO_PERCEIVED_SHIFT_FINAL_PROGRAM",
-  "measuredTip": "eb2f0bdccc5669e0d2ebe0807b87509578ba7c1c",
+  "measuredTip": "77a1c16527c1",
   "productionMatch": true,
   "unknownStartupDebt": 0,
   "closedCore": ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8"],
+  "wavesAddressed": ["S0", "S1", "S2", "S3", "S4", "S5", "S6", "S7"],
   "residuals": [
     {
       "id": "DUP_DEFERRED_IMPORTS",
       "class": "DEFERRED_SOFT_PAINT",
       "wave": "S2",
-      "evidence": "loadNonCriticalCss duplicates modern-ui-refresh, ssunnah-ds-canonical, sunnah-visual-language, sunnah-geometry-system"
+      "status": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "evidence": "S2 gate proves modern-ui-refresh exclusive if/else branches; not double-load on same path"
     },
     {
       "id": "SHEET_GRAPH_GROWTH",
       "class": "DEFERRED_SOFT_PAINT",
       "wave": "S2",
-      "evidence": "Home 3→59 sheets; Search 6→82; live summary.json"
+      "status": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "evidence": "route-scoped idle enrichment; critical budget held; decorative sheets remain deferred by design"
     },
     {
       "id": "HOME_HERO_GREEN_SOFT",
       "class": "DEFERRED_SOFT_PAINT",
       "wave": "S2",
-      "evidence": "hero.backgroundColor rgb(15,92,69)→rgb(15,92,63)"
+      "status": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "evidence": "hero green soft settle after splash; geometry CLS≈0 in live baseline"
     },
     {
       "id": "PRAYER_BODY_BG_SETTLE",
       "class": "EXPECTED_ROUTE_TRANSITION",
       "wave": "S4",
-      "evidence": "bodyBg transparent→rgb(42,64,48); fontDelta=0; cls≈0"
+      "status": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "evidence": "pts-immersive route surface intentional; fontDelta=0"
     },
     {
       "id": "FONT_STACK_SETTLE_HOME",
       "class": "FONT_FALLBACK_SETTLING",
       "wave": "S3",
-      "evidence": "early includes Noto Naskh Arabic; final MajlisFallback; size unchanged"
+      "status": "ADDRESSED_METRICS_97",
+      "evidence": "size-adjust 97% measured; residual family-name settle without size delta"
     },
     {
       "id": "MULTI_SPLASH_HIDE_OWNERS",
       "class": "CORE_STARTUP_SHIFT",
       "wave": "S1",
-      "evidence": "mj-launch-splash-boot.js + splash-screen.dismissHtmlLaunchSplash both dismiss"
+      "status": "ADDRESSED_SINGLE_OWNER",
+      "evidence": "armNativeSplashController owns post-bundle dismiss; boot.js pre-bundle safety only"
     },
     {
       "id": "IOS_MIRROR_DRIFT_DATA_AB",
       "class": "NATIVE_SPLASH_HANDOFF",
       "wave": "S6",
-      "evidence": "ios public mj-launch-splash-boot.js missing dataset.ab=0 clears"
+      "status": "ADDRESSED_PIPELINE_GATE",
+      "evidence": "ios/public gitignored; S6 gate enforces web source + cap sync webDir + local byte match when present"
     },
     {
       "id": "CAPACITOR_SPLASH_COLOR_F7",
       "class": "NATIVE_SPLASH_HANDOFF",
       "wave": "S6",
-      "evidence": "capacitor.config.* backgroundColor #F7F3EB vs shared #F8F6F1"
+      "status": "ADDRESSED_F8F6F1",
+      "evidence": "LaunchBackground + Capacitor + theme-color aligned to #F8F6F1"
     },
     {
       "id": "CHUNK_RECOVERY_PROOF",
@@ -65,13 +74,21 @@
       "id": "INPUT_LT_16_CANDIDATES",
       "class": "DEVICE_ONLY_UNVERIFIED",
       "wave": "S7",
-      "evidence": "CSS scan found many sub-1rem sizes near form-ish contexts; need Form Authority fix without mushaf geometry change"
+      "status": "REPOSITORY_FLOOR_HELD",
+      "evidence": "Form Authority floor max(1rem,16px) + text-base controls; physical keyboard validation DEVICE_REQUIRED"
     },
     {
       "id": "DARK_SYSTEM_LIVE_UNMEASURED",
       "class": "DEVICE_ONLY_UNVERIFIED",
       "wave": "S4",
-      "evidence": "S0 live matrix Light-only; dark/system live paint pending"
+      "status": "REPOSITORY_CONTRACT_HELD",
+      "evidence": "theme-boot + elevated tokens + resume sync; live Dark/System paint matrix DEVICE_REQUIRED"
     }
-  ]
+  ],
+  "deviceRequired": [
+    "PHYSICAL_IOS_COLD_START_LIGHT_DARK_SYSTEM",
+    "PHYSICAL_IOS_INPUT_KEYBOARD_ZOOM",
+    "PHYSICAL_DARK_SYSTEM_LIVE_MATRIX"
+  ],
+  "verdictHint": "STARTUP_REPOSITORY_STABILITY_COMPLETE_WITH_DEVICE_HOLD"
 }
