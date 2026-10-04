@@ -12,8 +12,9 @@
     "buttonRelatedHexApprox": 975
   },
   "floors": {
-    "officialButtonImportFiles": 290,
+    "officialButtonImportFiles": 288,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-10-04T14:06:27.476Z"
+  "updatedAt": "2026-10-04T14:27:42.111Z",
+  "noteFloor": "Wave 4: official Button import floor 290→288 after Engine/Prophet compose ContentTabs (Button owned by TabSystem)."
 }

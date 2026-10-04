@@ -22,6 +22,10 @@ const ulum = readMaj("src/pages/quran/ui/UlumQuranView.tsx");
 const tawba = readMaj("src/views/TawbaPage.tsx");
 const bottom = readMaj("src/components/BottomNavBar.tsx");
 const navConfig = readMaj("src/config/navigation.ts");
+const engine = readMaj("src/pages/quran/QuranEnginePage.tsx");
+const numbers = readMaj("src/pages/quran/ui/QuranNumbersView.tsx");
+const prophetTabs = readMaj("src/components/prophets/ProphetStoryTabs.tsx");
+const wave4 = readRepo("docs/design/eradication/PR_G_NAV_TABS_SEARCH_FILTERS.md");
 
 assert.match(tabMap, /TAB_AUTHORITY_ONLY/);
 assert.match(tabMap, /ContentTabs/);
@@ -29,6 +33,8 @@ assert.match(tabMap, /SegmentedFilter/);
 assert.match(tabMap, /APPROVED/);
 assert.match(tabMap, /LEGACY/);
 assert.match(tabMap, /SPECIAL_CASE/);
+assert.match(tabMap, /ProphetStoryTabs/);
+assert.match(tabMap, /QuranEnginePage/);
 
 assert.match(navMap, /NAVIGATION_AUTHORITY_ONLY/);
 assert.match(navMap, /BottomNavBar/);
@@ -52,6 +58,22 @@ assert.match(bottom, /BOTTOM_NAV_TABS/);
 assert.match(navConfig, /primaryNav/);
 assert.match(navConfig, /secondaryNav/);
 assert.match(navConfig, /footerNav/);
+
+/* Wave 4 / PR G */
+assert.match(engine, /ContentTabs/);
+assert.doesNotMatch(engine, /<button\b/, "QuranEnginePage nav on ContentTabs");
+assert.match(numbers, /SegmentedFilter/);
+assert.doesNotMatch(
+  numbers,
+  /role=["']tablist["']/,
+  "QuranNumbers filters are SegmentedFilter (not DIY tablist)",
+);
+assert.match(prophetTabs, /ContentTabs/);
+assert.doesNotMatch(prophetTabs, /from ["']@\/components\/ui\/button["']/, "ProphetStoryTabs composes ContentTabs");
+
+assert.match(wave4, /TASK_CLASSIFICATION/);
+assert.match(wave4, /SHARED_PLATFORM/);
+assert.match(wave4, /NAV_TABS_SEARCH_FILTERS|PR_G/);
 
 assert.ok(existsSync(resolve(majalis, "src/components/SideNavDrawer.tsx")));
 assert.ok(existsSync(resolve(majalis, "src/components/filters/SegmentedFilter.tsx")));

@@ -1,0 +1,40 @@
+{
+  "wave": "WAVE4_PR_G",
+  "taskClassification": "SHARED_PLATFORM",
+  "baseCommit": "97f6618db9bfbf94411ae5ef9ede6ed4ca60895c",
+  "measuredAt": "2026-10-04",
+  "absorbed": [
+    {
+      "id": "quran-engine-nav",
+      "file": "pages/quran/QuranEnginePage.tsx",
+      "to": "ContentTabs",
+      "classification": "APPROVED"
+    },
+    {
+      "id": "prophet-story-tabs",
+      "file": "components/prophets/ProphetStoryTabs.tsx",
+      "to": "ContentTabs façade",
+      "classification": "APPROVED"
+    },
+    {
+      "id": "quran-numbers-filters",
+      "file": "pages/quran/ui/QuranNumbersView.tsx",
+      "to": "SegmentedFilter",
+      "classification": "APPROVED"
+    }
+  ],
+  "search": {
+    "quranNumbers": "SearchInput (from PR F)",
+    "global": "GlobalSearchModal APPROVED"
+  },
+  "residuals": {
+    "LEGACY_page_local_tablist": "migrate-when-touched",
+    "SPECIAL_CASE": ["admin tabs", "mushaf chrome tabs"],
+    "KEEP_JUSTIFIED": ["BottomNavBar", "modal backdrop EVENT_DELEGATION"]
+  },
+  "outputs": [
+    "ENGINE_NAV_ON_CONTENT_TABS",
+    "PROPHET_TABS_ON_CONTENT_TABS",
+    "QURAN_NUMBERS_FILTERS_ON_SEGMENTED_FILTER"
+  ]
+}

@@ -1866,6 +1866,8 @@ html.dark .prophets-page-lead {
 }
 .prophet-detail-toc::-webkit-scrollbar,
 .prophet-story-tabs__track::-webkit-scrollbar { display: none; }
+/* ContentTabs bridge (Wave 4 / PR G): ss-tabs__* share prophet chrome */
+.prophet-story-tabs .ss-tabs__tab,
 .prophet-story-tabs__btn,
 .prophet-detail-toc__btn {
   flex-shrink: 0;
@@ -1886,12 +1888,15 @@ html.dark .prophets-page-lead {
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.15s;
 }
+.prophet-story-tabs .ss-tabs__tab:hover,
 .prophet-story-tabs__btn:hover,
 .prophet-detail-toc__btn:hover {
   border-color: var(--prophets-accent, var(--mj-brand));
   color: var(--prophets-accent, var(--mj-brand));
   transform: none;
 }
+.prophet-story-tabs .ss-tabs__tab--active,
+.prophet-story-tabs .ss-tabs__tab[data-active="1"],
 .prophet-story-tabs__btn--active,
 .prophet-detail-toc__btn--active {
   background: var(--prophets-surface-selected, color-mix(in srgb, var(--prophets-accent, var(--mj-brand)) 12%, var(--prophets-surface, var(--mj-white))));

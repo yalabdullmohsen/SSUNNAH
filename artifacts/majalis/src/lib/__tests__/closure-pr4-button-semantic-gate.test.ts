@@ -32,6 +32,11 @@ const migrated = [
 for (const rel of migrated) {
   const text = read(rel);
   assert.doesNotMatch(text, /<button\b/, `${rel}: لا raw <button>`);
+  /* Wave 4: ProphetStoryTabs composes ContentTabs (Button owned by TabSystem) */
+  if (rel.endsWith("ProphetStoryTabs.tsx")) {
+    assert.match(text, /ContentTabs/, `${rel}: ContentTabs authority`);
+    continue;
+  }
   assert.match(
     text,
     /from ["']@\/components\/ui\/button["']|from ["']@\/components\/design-system\/Buttons["']/,

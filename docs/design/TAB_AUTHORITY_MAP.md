@@ -3,11 +3,12 @@
 | Field | Value |
 |---|---|
 | Status | **AUTHORITY MAP** |
-| Date | 2026-10-03 |
+| Date | 2026-10-04 |
 | Exit | `TAB_AUTHORITY_ONLY` (product) |
 | Façades | `design-system/TabSystem.tsx` |
+| Wave | Eradication **PR G / Wave 4** |
 
-No parallel tab kit. Compose `Button` + role=tablist or approved filter/nav surfaces.
+No parallel tab kit. Compose `ContentTabs` / `PageTabs` or approved filter/nav surfaces.
 
 ## Approved
 
@@ -16,18 +17,19 @@ No parallel tab kit. Compose `Button` + role=tablist or approved filter/nav surf
 | Page / content section tabs | `ContentTabs` · `PageTabs` | `design-system/TabSystem.tsx` |
 | Filter exclusive choice (chips) | `SegmentedFilter` · `FilterChips` | `filters/SegmentedFilter.tsx` |
 | App shell bottom tabs | `BottomNavBar` | Navigation authority (not content tabs) |
-| Story section TOC tabs | `ProphetStoryTabs` (Button + tablist) | KEEP until ContentTabs absorb |
+| Story section TOC tabs | `ProphetStoryTabs` → **ContentTabs** façade | APPROVED |
 
 ## Classification
 
 | Surface | Class |
 |---|---|
-| ContentTabs / PageTabs · SegmentedFilter | APPROVED |
+| ContentTabs / PageTabs · SegmentedFilter | **CANONICAL_AUTHORITY** / APPROVED |
 | BottomNavBar tab strip | APPROVED (navigation) |
-| ProphetStoryTabs | APPROVED (façade; migrate markers to ContentTabs when touched) |
+| `ProphetStoryTabs` · `QuranEnginePage` nav | APPROVED (ContentTabs) |
+| `QuranNumbersView` theme/group | APPROVED (`SegmentedFilter` — filter intent) |
 | Admin category / admin-v3 tabs | SPECIAL_CASE (ADMIN_ONLY) |
 | Mushaf reader chrome tabs / tafsir panels | SPECIAL_CASE (MUSHAF_SPECIAL) |
-| Page-local `*-tabs-bar` / `role=tab` DIY | LEGACY — migrate when touched |
+| Remaining page-local `role=tablist` DIY | LEGACY — migrate when touched (inventory in WAVE4 report) |
 
 ## Visual / interaction contract
 
