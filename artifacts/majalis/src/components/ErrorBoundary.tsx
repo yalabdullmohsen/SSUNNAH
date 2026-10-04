@@ -3,6 +3,7 @@ import { buildErrorReport, copyErrorId, createErrorId, logClientError } from "@/
 import { CONTACT_EMAIL } from "@/lib/site-config";
 import {
   hardRecoverStaleDeploy,
+  isBrowserOffline,
   isChunkLoadError,
   tryRecoverFromStaleChunk,
 } from "@/lib/chunk-recovery";
@@ -148,14 +149,19 @@ export class ErrorBoundary extends Component<Props, State> {
     if (this.state.error) {
       const isDev = import.meta.env.DEV;
       const chunkError = isChunkLoadError(this.state.error);
+      const offline = isBrowserOffline();
 
       return (
         <div role="alert" className="error-boundary-page" data-nosnippet dir="rtl" lang="ar">
-          <p className="error-boundary-page__title">حدث خلل مؤقت في العرض</p>
+          <p className="error-boundary-page__title">
+            {offline ? "لا يتوفر اتصال بالشبكة" : "حدث خلل مؤقت في العرض"}
+          </p>
           <p className="error-boundary-page__body">
-            {chunkError
-              ? "تعذّر تحميل جزء من الصفحة. أعد المحاولة أو ارجع للرئيسية. التطبيق يبقى على آخر نسخة صالحة."
-              : userFacingBody()}
+            {offline
+              ? "أنت غير متصل. المحتوى المتاح محليًا يبقى صالحًا — أعد المحاولة بعد عودة الشبكة دون إعادة تحميل متكررة."
+              : chunkError
+                ? "تعذّر تحميل جزء من الصفحة. أعد المحاولة أو ارجع للرئيسية. التطبيق يبقى على آخر نسخة صالحة."
+                : userFacingBody()}
           </p>
           <p className="error-boundary-page__id">
             رقم التتبع: <code>{this.state.errorId}</code>
@@ -278,12 +284,15 @@ export class SectionErrorBoundary extends Component<SectionBoundaryProps, Sectio
   render() {
     if (this.state.error) {
       const chunkError = isChunkLoadError(this.state.error);
+      const offline = isBrowserOffline();
       return (
         <div className="adv-error-state adv-error-state--section" role="alert" aria-live="assertive" dir="rtl">
           <p className="adv-error-state__msg">
-            {chunkError
-              ? `تعذّر تحميل قسم «${this.props.name}». أعد المحاولة أو أعد تشغيل العرض.`
-              : `تعذّر عرض قسم «${this.props.name}». يمكنك إعادة المحاولة.`}
+            {offline
+              ? `أنت غير متصل — قسم «${this.props.name}» غير متاح الآن. أعد المحاولة بعد عودة الشبكة.`
+              : chunkError
+                ? `تعذّر تحميل قسم «${this.props.name}». أعد المحاولة أو أعد تشغيل العرض.`
+                : `تعذّر عرض قسم «${this.props.name}». يمكنك إعادة المحاولة.`}
           </p>
           <Button
             type="button"
