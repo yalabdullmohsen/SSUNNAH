@@ -191,3 +191,15 @@ html.dark[data-v2-app="1"] .filter-chips__chip.is-active {
   border-color: var(--v2-color-emerald) !important;
   color: var(--v2-color-night-ink) !important;
 }
+
+/* S7 — iOS input auto-zoom floor (≥16px) via Form Authority; no user-scalable hacks */
+@media (max-width: 879px) {
+  html[data-v2-app="1"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="hidden"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]),
+  html[data-v2-app="1"] textarea,
+  html[data-v2-app="1"] select,
+  html[data-v2-app="1"] [role="combobox"],
+  html[data-v2-app="1"] .rp-log-input,
+  html[data-v2-app="1"] .rp-text-input {
+    font-size: max(1rem, 16px);
+  }
+}
