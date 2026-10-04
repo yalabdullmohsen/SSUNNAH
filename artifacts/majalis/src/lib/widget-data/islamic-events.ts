@@ -84,9 +84,10 @@ function defaultConfirmation(id: string, dateCertainty: string): WidgetEventConf
 }
 
 function authorityStatus(confidence: string, review: string): WidgetReligiousAuthorityStatus {
-  if (review !== "approved" || confidence === "disputed") return "DISPUTED_DO_NOT_FEATURE";
-  if (confidence === "low") return "INFORMATIONAL_ONLY";
+  if (confidence === "disputed") return "DISPUTED_DO_NOT_FEATURE";
   if (review === "needs_review" || review === "draft") return "REVIEW_REQUIRED";
+  if (review !== "approved") return "DISPUTED_DO_NOT_FEATURE";
+  if (confidence === "low") return "INFORMATIONAL_ONLY";
   return "APPROVED";
 }
 

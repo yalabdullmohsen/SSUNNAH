@@ -30,7 +30,6 @@ import { WIDGET_FUTURE_BINARY_REQUIRED } from "@/lib/widget-data/types";
 import { WIDGET_PROGRESS_CONTRACTS } from "@/lib/widget-data/progress-contract";
 import { getCurrentHijriInfo } from "@/lib/hijri-utils";
 import "@/styles/pages/settings.css";
-import "@/styles/pages/widget-center.css";
 
 const SECTIONS = [
   { id: "catalog", title: "الويدجت المتاحة" },
