@@ -15,11 +15,11 @@ Each row is one responsibility. Extra sheets outside this graph (`final-release.
 | `body` line-height | 3 | premium seal | FOUNDATION_WINNER | No font-size / background |
 | `.page-shell` | 2 in foundation | later block (adds `padding-bottom`) | FOUNDATION_WINNER | First block KEEP_COMPATIBILITY |
 | `.ds-card` / `.ui-card` / `.page-card` | component + premium | premium | COMPONENT_WINNER | Seal after feature CSS |
-| `.ds-btn` / `.login-submit` | buttons + premium | premium | COMPONENT_WINNER | `.login-submit` stays on the shared button cluster (not moved to auth) |
+| `.ds-btn` / `.login-submit` | buttons + premium | premium | COMPONENT_WINNER | PR A: `.login-submit` removed from early cluster; premium seal only in DS |
 | `.ui-card-btn--danger` | buttons.css | that file | COMPONENT_WINNER | Extracted from tasbih cluster; `!important` still beats premium background |
 | `.ds-stat` layout + dark | stats.css | stats.css | COMPONENT_WINNER | |
 | `.ds-stat strong` color | stats.css + premium | premium | COMPONENT_WINNER | Contrast tokens unchanged |
-| `.search-result-row` | 3 in `features/search.css` + premium hover | last layout in search.css; hover from premium | FEATURE_WINNER + FOUNDATION_WINNER (hover) | All original text kept |
+| `.search-result-row` | 1 layout + premium hover (PR A) | last layout; hover from premium | FEATURE_WINNER + FOUNDATION_WINNER (hover) | Defeated early blocks removed with proof |
 | `.search-results-group-title` | 2 in search.css + premium color | premium color | FOUNDATION_WINNER | Layout in search.css |
 | `.search-page-title` | search.css + premium color | premium color | FOUNDATION_WINNER | |
 | `.tc-ring-btn` | 2 in tasbih.css | later (clamp size) | FEATURE_WINNER | |

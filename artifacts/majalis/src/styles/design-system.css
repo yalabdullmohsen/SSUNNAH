@@ -157,10 +157,10 @@
  */
 
 /* ── Buttons ── */
+/* .login-submit authority: premium seal cluster below (COMPONENT_WINNER). */
 .ds-btn,
 .ui-card-btn,
-.page-action-btn,
-.login-submit {
+.page-action-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -178,8 +178,7 @@
 
 .ds-btn--primary,
 .ui-card-btn,
-.page-action-btn,
-.login-submit {
+.page-action-btn {
   background: var(--ds-emerald);
   color: #fff;
   border-color: var(--ds-emerald);
@@ -187,8 +186,7 @@
 
 .ds-btn--primary:hover,
 .ui-card-btn:hover,
-.page-action-btn:hover,
-.login-submit:hover:not(:disabled) {
+.page-action-btn:hover {
   background: var(--ds-emerald-deep);
 }
 
@@ -1191,11 +1189,6 @@ html[data-theme="dark"] .ds-stat span {
   margin-bottom: var(--ds-space-2);
 }
 
-.search-result-row {
-  padding: var(--ds-space-3);
-  font-size: var(--ds-text-sm);
-}
-
 /* Search page */
 .search-page-title {
   font-size: var(--ds-text-xl);
@@ -1238,19 +1231,7 @@ html[data-theme="dark"] .ds-stat span {
   color: var(--ds-emerald-deep);
 }
 
-.search-result-row {
-  padding: var(--ds-space-3);
-  border-radius: var(--ds-radius);
-  border: 1px solid var(--ds-line-color);
-  background: var(--majalis-panel);
-  margin-bottom: var(--ds-space-2);
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-
-.search-result-row:hover {
-  border-color: rgba(26, 107, 82, 0.25);
-  box-shadow: var(--ds-shadow-sm);
-}
+/* Defeated .search-result-row + :hover removed — winner = later layout block + premium hover. */
 
 .search-result-copy span:first-child {
   display: block;
@@ -2381,7 +2362,7 @@ html[data-theme="dark"] .ds-stat span {
   to { transform: rotate(360deg); }
 }
 
-.fm-parent { }
+/* .fm-parent removed: empty rule; FamilyModePage keeps className for structure only. */
 
 /* ── أداء التقييمات (am-*) ──────────────────────────────────────── */
 .am-overlay {
