@@ -23,14 +23,16 @@
 
 Plus inline `#mj-lcp-critical` / `#mj-splash-critical` in `index.html`.
 
-## Deferred graph issues (Wave 2 targets)
+## Deferred graph issues (Wave 2)
 
-Duplicate import paths in the same function (provable):
+Call-site pairs below are **mutually exclusive** by `deferAppChromeCss` (Home/Mushaf vs other) — not double-loaded on one route:
 
-- `./styles/modern-ui-refresh.css` ×2  
+- `./styles/modern-ui-refresh.css` ×2 call sites (exclusive branches)  
 - `./styles/ssunnah-ds-canonical.css` ×2  
 - `./styles/sunnah-visual-language.css` ×2  
 - `./styles/sunnah-geometry-system.css` ×2  
+
+S2 change: `visual-enrichment.css` moved into heavy/non-ATF path for Home/Mushaf to cut early soft paint.  
 
 Route-gated (present in source comments/branches):
 
