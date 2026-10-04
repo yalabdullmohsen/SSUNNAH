@@ -198,6 +198,7 @@ struct SharedIslamicEventsPayload: Codable, Hashable {
     var validationStatus: String?
     var upcomingEventId: String?
     var updatedAtEpochMs: Int64?
+    static let currentSchema = 1
 }
 
 struct SharedHadithPayload: Codable, Hashable {
@@ -254,9 +255,23 @@ enum SunnahWidgetEnvelopeCodec {
         func str(_ key: String, fallback: String = "") -> String {
             obj[key] as? String ?? fallback
         }
-        func decodeDomain<T: Decodable>(_ key: String, as type: T.Type) -> T? {
+        func decodeDomain<T: Decodable>(_ key: String, as type: T.Type, maxSchema: Int) -> T? {
             guard let nested = obj[key], !(nested is NSNull) else { return nil }
             guard JSONSerialization.isValidJSONObject(nested) else { return nil }
+            // Future domain schema fails safely for this domain only.
+            if let nestedObj = nested as? [String: Any] {
+                let sv: Int? = {
+                    if let n = nestedObj["schemaVersion"] as? Int { return n }
+                    if let n = nestedObj["schemaVersion"] as? NSNumber { return n.intValue }
+                    return nil
+                }()
+                if let sv, sv > maxSchema {
+                    #if DEBUG
+                    log.error("domain future schema isolated key=\(key, privacy: .public) schema=\(sv)")
+                    #endif
+                    return nil
+                }
+            }
             do {
                 let nestedData = try JSONSerialization.data(withJSONObject: nested)
                 return try JSONDecoder().decode(type, from: nestedData)
@@ -278,19 +293,19 @@ enum SunnahWidgetEnvelopeCodec {
             dataVersion: obj["dataVersion"] as? String,
             publicationReason: obj["publicationReason"] as? String,
             publicationStatus: obj["publicationStatus"] as? String,
-            prayerPayload: decodeDomain("prayerPayload", as: SharedPrayerSnapshot.self),
-            calendarPayload: decodeDomain("calendarPayload", as: SharedCalendarPayload.self),
-            adhkarPayload: decodeDomain("adhkarPayload", as: SharedAdhkarPayload.self),
-            quranPayload: decodeDomain("quranPayload", as: SharedQuranPayload.self),
-            mushafPayload: decodeDomain("mushafPayload", as: SharedMushafPayload.self),
-            customContentPayload: decodeDomain("customContentPayload", as: SharedCustomContentPayload.self),
-            preferencesPayload: decodeDomain("preferencesPayload", as: SharedWidgetPreferencesPayload.self),
-            progressPayload: decodeDomain("progressPayload", as: SharedHomeProgressPayload.self),
-            contentSpotlightPayload: decodeDomain("contentSpotlightPayload", as: SharedContentSpotlightPayload.self),
-            islamicEventsPayload: decodeDomain("islamicEventsPayload", as: SharedIslamicEventsPayload.self),
-            hadithPayload: decodeDomain("hadithPayload", as: SharedHadithPayload.self),
-            duaPayload: decodeDomain("duaPayload", as: SharedDuaPayload.self),
-            diagnosticsPayload: decodeDomain("diagnosticsPayload", as: SharedWidgetDiagnosticsPayload.self)
+            prayerPayload: decodeDomain("prayerPayload", as: SharedPrayerSnapshot.self, maxSchema: SharedPrayerSnapshot.currentSchema),
+            calendarPayload: decodeDomain("calendarPayload", as: SharedCalendarPayload.self, maxSchema: SharedCalendarPayload.currentSchema),
+            adhkarPayload: decodeDomain("adhkarPayload", as: SharedAdhkarPayload.self, maxSchema: SharedAdhkarPayload.currentSchema),
+            quranPayload: decodeDomain("quranPayload", as: SharedQuranPayload.self, maxSchema: SharedQuranPayload.currentSchema),
+            mushafPayload: decodeDomain("mushafPayload", as: SharedMushafPayload.self, maxSchema: SharedMushafPayload.currentSchema),
+            customContentPayload: decodeDomain("customContentPayload", as: SharedCustomContentPayload.self, maxSchema: SharedCustomContentPayload.currentSchema),
+            preferencesPayload: decodeDomain("preferencesPayload", as: SharedWidgetPreferencesPayload.self, maxSchema: SharedWidgetPreferencesPayload.currentSchema),
+            progressPayload: decodeDomain("progressPayload", as: SharedHomeProgressPayload.self, maxSchema: SharedHomeProgressPayload.currentSchema),
+            contentSpotlightPayload: decodeDomain("contentSpotlightPayload", as: SharedContentSpotlightPayload.self, maxSchema: SharedContentSpotlightPayload.currentSchema),
+            islamicEventsPayload: decodeDomain("islamicEventsPayload", as: SharedIslamicEventsPayload.self, maxSchema: SharedIslamicEventsPayload.currentSchema),
+            hadithPayload: decodeDomain("hadithPayload", as: SharedHadithPayload.self, maxSchema: 1),
+            duaPayload: decodeDomain("duaPayload", as: SharedDuaPayload.self, maxSchema: 1),
+            diagnosticsPayload: decodeDomain("diagnosticsPayload", as: SharedWidgetDiagnosticsPayload.self, maxSchema: 1)
         )
     }
 }

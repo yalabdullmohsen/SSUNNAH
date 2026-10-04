@@ -40,6 +40,32 @@ enum CustomContentWidgetAdapter {
         guard let id else { return payload()?.items.first }
         return payload()?.items.first(where: { $0.id == id })
     }
+
+    /// Missing/deleted selection → configuration required (never invent content).
+    static func presentation(forSelectedId id: String?) -> SunnahWidgetPresentation {
+        guard let id, !id.isEmpty else { return .configurationRequired }
+        if item(id: id) == nil { return .configurationRequired }
+        return .liveValid
+    }
+}
+
+enum MushafWidgetAdapterTruth {
+    static func bookmarkConfigurationRequired(_ payload: SharedMushafPayload?) -> Bool {
+        guard let payload else { return false }
+        if let status = mirrorValidation(payload), status == "REQUIRES_CONFIGURATION" {
+            return true
+        }
+        return false
+    }
+
+    private static func mirrorValidation(_ payload: SharedMushafPayload) -> String? {
+        // MushafPayload does not carry validationStatus in Codable fields used by Build 55;
+        // configuration is inferred when a selected bookmark was cleared server-side.
+        if payload.hasBookmark == false && payload.bookmarkPage == nil && payload.lastPage == nil {
+            return "REQUIRES_CONFIGURATION"
+        }
+        return nil
+    }
 }
 
 enum HomeProgressWidgetAdapter {

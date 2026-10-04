@@ -152,6 +152,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 m.stopSyncAndClearScope(m.activeSyncScope(prevId));
                 m.bootstrapSyncEngine(null);
               });
+              void import("@/lib/widget-data/data-truth").then((m) => {
+                void m.republishSafeWidgetDataAfterAuthChange("logout");
+              });
               return;
             }
 
@@ -169,12 +172,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                   if (signedOutGeneration.current !== gen) return; // سباق sign-out
                   if (next !== null && next !== undefined) {
                     // Account switch: drop previous user-scoped React Query cache.
-                    if (
+                    const accountSwitched =
                       event === "SIGNED_IN" &&
-                      next.id &&
-                      lastUserIdRef.current &&
-                      lastUserIdRef.current !== next.id
-                    ) {
+                      !!next.id &&
+                      !!lastUserIdRef.current &&
+                      lastUserIdRef.current !== next.id;
+                    if (accountSwitched) {
                       queryClient.clear();
                     }
                     setUser(next);
@@ -185,6 +188,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                       void import("@/lib/guest-cloud-merge").then((m) =>
                         m.scheduleGuestCloudMerge(next.id),
                       );
+                      if (accountSwitched) {
+                        void import("@/lib/widget-data/data-truth").then((m) => {
+                          void m.republishSafeWidgetDataAfterAuthChange("account-switch");
+                        });
+                      }
                     }
                   }
                 })
@@ -259,6 +267,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       m.isolateAccountOnLogout(prevId);
       m.stopSyncAndClearScope(m.activeSyncScope(prevId));
       m.bootstrapSyncEngine(null);
+    });
+    void import("@/lib/widget-data/data-truth").then((m) => {
+      void m.republishSafeWidgetDataAfterAuthChange("logout");
     });
     if (!authApi) return { error: null };
     try {
