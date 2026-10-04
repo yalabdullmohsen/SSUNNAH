@@ -2,7 +2,7 @@
 
 **Program:** `SUNNAH_CONTINUOUS_GOVERNANCE_AND_REGRESSION_PREVENTION_PROGRAM`  
 **Machine freeze:** `docs/governance/QUALITY_BASELINE_V1.json`  
-**Base tip:** `2631005de` (live sync Wave 0 · Eradication E–J)  
+**Base tip:** `4c93850e` (Wave 0) · ceilings lowered further by Wave 1A absorb  
 **Policy:** **no-ceiling-raise** (decreasing-ceilings budgets may only fall)  
 **Identity (permanent):** `SUNNAH_CANONICAL_PLATFORM_IDENTITY` — WEB · IOS · APP_STORE separated (`test:canonical-platform-identity`)
 
@@ -10,8 +10,8 @@
 
 | Domain | Freeze | Source |
 |---|---|---|
-| Visual debt ceilings | hex ≤ 5763 · !important ≤ 4746 · radius px ≤ 392 · … | `reports/visual-system-debt-budget.json` |
-| Interaction debt | raw buttons ≤ 311 · div/span onClick ≤ 41 · buttonHex ≤ 1006 · … | `reports/interaction-system-debt-budget.json` |
+| Visual debt ceilings | hex ≤ 5657 · !important ≤ 4746 · rgb/hsl ≤ 2006 · … | `reports/visual-system-debt-budget.json` |
+| Interaction debt | raw buttons ≤ 311 · div/span onClick ≤ 41 · buttonHex ≤ 980 · … | `reports/interaction-system-debt-budget.json` |
 | Local heroes | ≤ 95 parallel `*-hero` classes | global-component-authority |
 | Bundle budgets | entry ≤ 120KiB+320 · icons ≤ 30KiB · CSS ≤ 100KiB | architecture-excellence PR-1 |
 | Critical sync CSS | = 14 imports in `main.tsx` | runtime excellence |

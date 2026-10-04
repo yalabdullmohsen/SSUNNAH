@@ -54,7 +54,7 @@ html {
 .revelation-toolbar { display: flex; align-items: center; justify-content: space-between; gap: var(--ds-space-3); margin-block-end: var(--ds-space-3); }
 .revelation-toolbar label { flex: 1; max-width: 28rem; }
 .filter-tabs { display: flex; gap: var(--ds-space-1); overflow-x: auto; }
-.filter-tabs button { min-height: 44px; padding-inline: var(--ds-space-4); border: 1px solid var(--ds-line-color); border-radius: var(--ds-radius); background: var(--majalis-panel, #fff); color: var(--ds-ink-soft); font: inherit; cursor: pointer; }
+.filter-tabs button { min-height: 44px; padding-inline: var(--ds-space-4); border: 1px solid var(--ds-line-color); border-radius: var(--ds-radius); background: var(--majalis-panel); color: var(--ds-ink-soft); font: inherit; cursor: pointer; }
 .filter-tabs button.is-active { background: var(--ds-emerald-soft); border-color: var(--ds-emerald); color: var(--ds-emerald-deep); font-weight: 700; }
 .revelation-review-note { color: var(--ds-ink-soft); font-size: var(--ds-text-sm); line-height: 1.7; margin-block-end: var(--ds-space-4); }
 .surah-info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: var(--ds-space-3); margin-block-end: var(--ds-space-6); }
@@ -123,7 +123,7 @@ html {
 /* ── Cards ── */
 .ui-card,
 .ds-card {
-  background: var(--majalis-panel, #FAFAF8);
+  background: var(--majalis-panel);
   border: 1px solid var(--ds-line-color);
   border-radius: var(--ds-radius-lg);
   /* ⚠️ 2026-07-22: كانت --ds-space-3 (0.75rem) — ضيقة جدًا لبطاقات محتوى
@@ -210,7 +210,7 @@ article {
 .fiqh-comparative-section h3 { font-size: 0.95rem; margin: 0.75rem 0 0.4rem; }
 .fiqh-opinions-list ul { margin: 0; padding-inline-start: 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; }
 .fiqh-opinion-evidence { color: var(--ds-ink-soft); font-size: 0.88em; }
-.fiqh-adopted-opinion { margin-top: 0.75rem; padding: 0.6rem 0.8rem; background: var(--ds-emerald-soft, rgba(23,61,53,.08)); border-radius: var(--ds-radius-md, 0.5rem); }
+/* .fiqh-adopted-opinion — DEAD_WITH_PROOF (0 TSX/TS consumers; Wave 1A) */
 .fiqh-context-disclaimer { margin-top: 0.5rem; font-size: 0.82rem; color: var(--ds-ink-soft); font-style: normal; }
 .fiqh-comparative-pending { font-size: 0.82rem; color: var(--ds-ink-soft); font-style: normal; margin: 0.25rem 0 0.75rem; }
 
@@ -274,7 +274,7 @@ article {
   font-family: inherit;
   border: 1px solid var(--ds-line-color);
   border-radius: var(--ds-radius);
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
   color: var(--ds-ink);
 }
 
@@ -408,7 +408,7 @@ article {
   padding: var(--ds-space-5);
   border-radius: var(--ds-radius-lg);
   border: 1px solid var(--ds-line-color);
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
   box-shadow: var(--ds-shadow);
 }
 
@@ -512,7 +512,7 @@ p, li {
   font-size: var(--ds-text-sm);
   border: 1px solid var(--ds-line-color);
   border-radius: var(--ds-radius);
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
   color: var(--ds-ink);
 }
 
@@ -540,7 +540,7 @@ p, li {
   font-weight: 700;
   border-radius: var(--radius-pill, 999rem);
   border: 1px solid var(--ds-line-color);
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
   color: var(--ds-ink-soft);
   cursor: pointer;
   font-family: inherit;
@@ -598,7 +598,7 @@ p, li {
   padding: var(--ds-space-3);
   border-radius: var(--ds-radius-lg);
   border: 1px solid var(--ds-line-color);
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
   box-shadow: var(--ds-shadow-sm);
   text-decoration: none;
   color: inherit;
@@ -685,7 +685,7 @@ p, li {
   font-weight: 700;
   border-radius: var(--ds-radius);
   border: 1px solid var(--ds-line-color);
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
   color: var(--ds-emerald-deep);
   cursor: pointer;
   font-family: inherit;
@@ -764,7 +764,7 @@ p, li {
   padding: var(--ds-space-3);
   border-radius: var(--ds-radius-lg);
   border: 1px solid var(--ds-line-color);
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
   box-shadow: var(--ds-shadow-sm);
 }
 
@@ -866,7 +866,7 @@ p, li {
   padding: var(--ds-space-3);
   border-radius: var(--ds-radius);
   border: 1px solid var(--ds-line-color);
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
   margin-bottom: var(--ds-space-2);
   transition: border-color 0.15s, box-shadow 0.15s;
 }
@@ -912,7 +912,7 @@ p, li {
   font-size: var(--ds-text-sm);
   border: 1px solid var(--ds-line-color);
   border-radius: var(--ds-radius);
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
 }
 
 .search-topic-chips {
@@ -1027,7 +1027,7 @@ p, li {
   font-weight: 700;
   border-radius: var(--ds-radius);
   border: 1px solid var(--ds-line-color);
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
   color: var(--ds-emerald-deep);
   cursor: pointer;
   font-family: inherit;
@@ -1140,17 +1140,17 @@ p, li {
   /* ── Colors — مرتبطة بـ msk tokens من index.css ── */
   --ds-emerald:        var(--msk-gold,        var(--mj-brand));
   --ds-emerald-deep:   var(--msk-gold-deep,   var(--mj-brand-deep));
-  --ds-emerald-soft:   var(--majalis-sage,    #EAF3EF);
+  --ds-emerald-soft:   var(--majalis-sage);
   --ds-emerald-muted:  var(--msk-gold-dim,    rgba(23,61,53,.12));
   --ds-gold:           var(--msk-gold,        var(--mj-brand));
-  --ds-gold-soft:      var(--majalis-sage,    #EAF3EF);
-  --ds-parchment:      var(--msk-canvas,      #FAF8F5);
-  --ds-parchment-deep: var(--msk-canvas-2,    #F0EDE8);
-  --ds-ink:            var(--msk-text,        #1A1A18);
-  --ds-ink-soft:       var(--msk-text-2,      #5C5C56);
-  --ds-ink-muted:      var(--msk-text-3,      #5C5C56);
-  --ds-line-color:     var(--msk-border,      #E8E7E2);
-  --ds-line-strong:    var(--msk-border,      #E8E7E2);
+  --ds-gold-soft:      var(--majalis-sage);
+  --ds-parchment:      var(--msk-canvas);
+  --ds-parchment-deep: var(--msk-canvas-2);
+  --ds-ink:            var(--msk-text);
+  --ds-ink-soft:       var(--msk-text-2);
+  --ds-ink-muted:      var(--msk-text-3);
+  --ds-line-color:     var(--msk-border);
+  --ds-line-strong:    var(--msk-border);
 
   /* ── Heading token — أسود بدل زمرد ── */
   --ds-heading: var(--ds-ink);
@@ -1221,8 +1221,8 @@ body {
   align-items: center;
   min-width: 4.75rem;
   padding: var(--ds-space-2) var(--ds-space-3);
-  background: var(--surface-card, var(--majalis-panel, #fff));
-  border: 1px solid color-mix(in srgb, var(--mj-brand-deep, #123F32) 14%, var(--ds-line-color, #d5ddd9));
+  background: var(--surface-card, var(--majalis-panel));
+  border: 1px solid color-mix(in srgb, var(--mj-brand-deep) 14%, var(--ds-line-color));
   border-radius: var(--ds-radius);
 }
 
@@ -1230,31 +1230,31 @@ body {
   font-size: 1.35rem;
   font-weight: 900;
   line-height: 1.15;
-  color: var(--mj-brand-deep, var(--ds-emerald-deep, #123F32));
+  color: var(--mj-brand-deep, var(--ds-emerald-deep));
 }
 
 .ds-stat span {
   margin-top: 0.15rem;
   font-size: var(--ds-text-xs);
   font-weight: 600;
-  color: var(--mj-ink-2, var(--ds-ink-soft, #4B625A));
+  color: var(--mj-ink-2, var(--ds-ink-soft));
   opacity: 1;
 }
 
 html.dark .ds-stat,
 html[data-theme="dark"] .ds-stat {
-  background: color-mix(in srgb, var(--surface-brand-wash, #16261F) 90%, #0f1612);
+  background: color-mix(in srgb, var(--surface-brand-wash) 90%, #0f1612);
   border-color: color-mix(in srgb, #5a9e88 26%, #2a3832);
 }
 
 html.dark .ds-stat strong,
 html[data-theme="dark"] .ds-stat strong {
-  color: var(--on-brand-wash, #F8FAFC);
+  color: var(--on-brand-wash);
 }
 
 html.dark .ds-stat span,
 html[data-theme="dark"] .ds-stat span {
-  color: var(--on-brand-wash-secondary, #E2E8F0);
+  color: var(--on-brand-wash-secondary);
 }
 
 .reading-toolbar--minimal {
@@ -1295,7 +1295,7 @@ hr.decorative,
   padding: var(--ds-space-2) var(--ds-space-3);
   border-radius: var(--ds-radius);
   border: 1px solid var(--ds-line-color);
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
   margin-bottom: var(--ds-space-2);
   font-size: var(--ds-text-sm);
 }
@@ -1337,7 +1337,7 @@ hr.decorative,
   border: 1px solid var(--ds-line-color);
   border-radius: var(--ds-radius);
   font-size: var(--ds-text-xs);
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
 }
 
 .admin-bootstrap-flag--ok {
@@ -1745,7 +1745,7 @@ hr.decorative,
 }
 
 .site-footer-email a {
-  color: var(--msk-text-2, #5C5C56);
+  color: var(--msk-text-2);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -1794,8 +1794,8 @@ hr.decorative,
   overflow: hidden;
   padding: 0.2rem 0.5rem;
   border-radius: var(--radius-pill, 999rem);
-  background: var(--surface-brand-solid, #1e5f4b);
-  color: var(--on-brand, #ffffff);
+  background: var(--surface-brand-solid);
+  color: var(--on-brand);
   border: 1px solid var(--on-brand-hairline, rgba(255, 255, 255, 0.22));
   isolation: isolate;
 }
@@ -1818,7 +1818,7 @@ hr.decorative,
   z-index: 0;
   height: 2px;
   width: var(--hcp-bar-w, 0%);
-  background: var(--on-brand, #ffffff);
+  background: var(--on-brand);
   opacity: 0.55;
   transition: width 1s linear;
 }
@@ -1831,7 +1831,7 @@ hr.decorative,
   margin-inline-start: 0.35rem;
   font-size: 0.68rem;
   font-weight: 600;
-  color: var(--text-2, #3e3a35);
+  color: var(--text-2);
   font-variant-numeric: tabular-nums;
 }
 
@@ -2046,12 +2046,12 @@ hr.decorative,
   padding: 0.75rem 1rem;
   border-radius: var(--ds-radius);
   border: 1px solid var(--ds-line-color);
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
   margin-bottom: 0.75rem;
 }
 
 .push-prompt--warn { border-color: #fcd34d; background: rgba(23,61,53,0.06); }
-.push-prompt--info { border-color: color-mix(in srgb, var(--ss-primary-green, #0F5C45) 28%, #fff); background: color-mix(in srgb, var(--ss-primary-green, #0F5C45) 8%, #fff); font-size: 0.82rem; color: var(--ss-deep-green, #0A3D2E); }
+.push-prompt--info { border-color: color-mix(in srgb, var(--ss-primary-green) 28%, #fff); background: color-mix(in srgb, var(--ss-primary-green) 8%, #fff); font-size: 0.82rem; color: var(--ss-deep-green); }
 
 .push-prompt__text {
   display: flex;
@@ -2290,7 +2290,7 @@ hr.decorative,
   border: 2px solid var(--ds-emerald);
   border-radius: var(--ds-radius-lg, 0.625rem);
   padding: 1.125rem;
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
   display: flex;
   flex-direction: column;
   gap: 0.875rem;
@@ -2374,8 +2374,8 @@ hr.decorative,
   gap: 0.5rem;
   padding: 1.25rem 1rem;
   border-radius: 0.75rem;
-  border: 1px solid var(--ds-line-color, #E8E7E2);
-  background: var(--bg-card, #fff);
+  border: 1px solid var(--ds-line-color);
+  background: var(--bg-card);
   box-shadow: var(--ds-shadow-sm);
   direction: rtl;
   text-align: right;
@@ -2402,26 +2402,26 @@ hr.decorative,
 .tawheed-type-card__subtitle {
   margin: 0;
   font-size: 0.78rem;
-  color: var(--text-muted, #6b7280);
+  color: var(--text-muted);
   font-weight: 600;
 }
 .tawheed-type-card__desc {
   margin: 0;
   font-size: 0.85rem;
   line-height: 1.75;
-  color: var(--text-base, #1a1a1a);
+  color: var(--text-base);
   flex: 1;
 }
 .tawheed-type-card__ayah {
   margin: 0.5rem 0 0;
   padding: 0.6rem 0.75rem;
   border-right: 3px solid var(--majalis-emerald, var(--mj-brand));
-  background: var(--bg-base, #faf9f6);
+  background: var(--bg-base);
   border-radius: 0 0.375rem 0.375rem 0;
   font-family: "Amiri Quran", "Scheherazade New", serif;
   font-size: 0.95rem;
   line-height: 2;
-  color: var(--text-base, #1a1a1a);
+  color: var(--text-base);
   direction: rtl;
 }
 .tawheed-type-card__ayah cite {
@@ -2441,7 +2441,7 @@ hr.decorative,
   color: var(--majalis-emerald, var(--mj-brand-deep));
   margin: 0 0 1rem;
   direction: rtl;
-  border-bottom: 2px solid var(--ds-line-color, #E8E7E2);
+  border-bottom: 2px solid var(--ds-line-color);
   padding-bottom: 0.5rem;
 }
 
@@ -2459,8 +2459,8 @@ hr.decorative,
 .tawheed-principle-card {
   padding: 1rem;
   border-radius: 0.625rem;
-  border: 1px solid var(--ds-line-color, #E8E7E2);
-  background: var(--bg-card, #fff);
+  border: 1px solid var(--ds-line-color);
+  background: var(--bg-card);
   box-shadow: var(--ds-shadow-sm);
   direction: rtl;
   text-align: right;
@@ -2469,27 +2469,17 @@ hr.decorative,
   margin: 0 0 0.4rem;
   font-size: 0.9rem;
   font-weight: 800;
-  color: var(--text-base, #1a1a1a);
+  color: var(--text-base);
 }
 .tawheed-principle-card__body {
   margin: 0;
   font-size: 0.83rem;
   line-height: 1.75;
-  color: var(--color-text-body, var(--msk-text-2, #5C5C56));
+  color: var(--color-text-body, var(--msk-text-2));
 }
 
 /* ── صفحة التوحيد المستقلة (/tawhid) ── */
-.tawheed-breadcrumb {
-  display: flex;
-  gap: 0.35rem;
-  align-items: center;
-  font-size: 0.78rem;
-  color: var(--text-muted, #6b7280);
-  margin-bottom: 1.25rem;
-  direction: rtl;
-}
-.tawheed-breadcrumb a { color: var(--majalis-emerald, var(--mj-brand)); text-decoration: none; }
-.tawheed-breadcrumb a:hover { text-decoration: underline; }
+/* .tawheed-breadcrumb — DEAD_WITH_PROOF (0 TSX/TS consumers; Wave 1A) */
 
 .tawheed-page-header {
   background: linear-gradient(135deg, var(--majalis-emerald, var(--mj-brand)) 0%, var(--mj-brand-deep) 100%);
@@ -2539,8 +2529,8 @@ hr.decorative,
   gap: 0.3rem;
   font-size: 0.8rem;
   line-height: 1.4;
-  color: var(--text-muted, #6b7280);
-  background: var(--bg-base, #f3f4f6);
+  color: var(--text-muted);
+  background: var(--bg-base);
   border-radius: 0.35rem;
   padding: 0.18rem 0.45rem;
   border-right: 3px solid;
@@ -2558,9 +2548,9 @@ hr.decorative,
   flex-direction: column;
   gap: 0.2rem;
   padding: 0.875rem 1rem;
-  border: 1px solid var(--ds-line-color, #E8E7E2);
+  border: 1px solid var(--ds-line-color);
   border-radius: 0.75rem;
-  background: var(--bg-card, #fff);
+  background: var(--bg-card);
   text-decoration: none;
   transition: box-shadow 0.15s, transform 0.15s;
   direction: rtl;
@@ -2576,7 +2566,7 @@ hr.decorative,
 }
 .tawheed-related-card__desc {
   font-size: 0.75rem;
-  color: var(--text-muted, #6b7280);
+  color: var(--text-muted);
 }
 
 /* ════════════════════════════════════════════════════════════════════
@@ -2612,7 +2602,7 @@ h1, h2, h3 {
 .ds-card,
 .page-card,
 .library-card {
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
   border: 1px solid var(--ds-line-color);
   border-radius: var(--ds-radius-lg);
   box-shadow: var(--ds-shadow-xs);
@@ -2667,7 +2657,7 @@ h1, h2, h3 {
 .login-field input {
   border-radius: var(--ds-radius);
   border-color: var(--ds-line-color);
-  background: var(--majalis-panel, #fff);
+  background: var(--majalis-panel);
   color: var(--ds-ink);
   transition: border-color var(--ds-transition-fast), box-shadow var(--ds-transition-fast);
 }
@@ -2745,7 +2735,7 @@ h1, h2, h3 {
 
 /* ── 11. الإحصائيات ── */
 .ds-stat strong {
-  color: var(--mj-brand-deep, var(--ds-emerald-deep, #123F32));
+  color: var(--mj-brand-deep, var(--ds-emerald-deep));
   font-weight: 900;
 }
 .user-stat-card__value,
@@ -2790,7 +2780,7 @@ h1, h2, h3 {
 .majalis-hero-pattern {
   background:
     radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in srgb, var(--ds-emerald) 8%, transparent), transparent),
-    linear-gradient(180deg, var(--ds-parchment) 0%, var(--majalis-panel, #fff) 100%);
+    linear-gradient(180deg, var(--ds-parchment) 0%, var(--majalis-panel) 100%);
 }
 
 /* ── 14. القسم الرئيسي ── */
@@ -2819,7 +2809,7 @@ h1, h2, h3 {
   border-radius: var(--ds-radius-full);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--ds-ink-muted, #A09A94);
+  background: var(--ds-ink-muted);
 }
 
 /* ── 17. الوضع الداكن — Premium layer overrides ── */

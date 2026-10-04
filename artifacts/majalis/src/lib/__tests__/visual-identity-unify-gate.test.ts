@@ -22,7 +22,8 @@ const filters = read("src/styles/components/filters.css");
 
 console.log("=== نصف قطر البطاقة موحّد (MD=20 / Foundation) ===");
 assert.match(soft, /--radius-card:\s*var\(--sf-radius-card/);
-assert.match(unify, /--radius-card:\s*var\(--sf-radius-card/);
+/* Wave 1A: radius token authority = theme-aliases (unify no longer redefines :root radii) */
+assert.doesNotMatch(unify, /:root\s*\{[\s\S]*?--radius-card:/, "unify لا يعيد تعريف --radius-card");
 assert.match(calm, /--radius-card:\s*var\(--sf-radius-md/, "calm-polish على سلم MD/Foundation");
 assert.doesNotMatch(calm, /--radius-card:\s*18px/, "لا تعارض 18px في calm-polish");
 assert.match(calm, /--radius-tile:\s*var\(--sf-radius-md/);

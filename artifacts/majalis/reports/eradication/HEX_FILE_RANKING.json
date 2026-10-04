@@ -72,13 +72,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/design-system.css",
-      "hex": 107,
-      "unsafeHexFallback": 63,
-      "classification": "ABSORB_NOW",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/pages/lessons.css",
       "hex": 90,
       "unsafeHexFallback": 57,
@@ -93,17 +86,17 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/theme-aliases.css",
-      "hex": 79,
-      "unsafeHexFallback": 20,
-      "classification": "ACTIVE_COMPATIBILITY",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/brand-v4.css",
       "hex": 71,
       "unsafeHexFallback": 0,
       "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/theme-aliases.css",
+      "hex": 62,
+      "unsafeHexFallback": 3,
+      "classification": "ACTIVE_COMPATIBILITY",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -160,6 +153,13 @@
       "hex": 47,
       "unsafeHexFallback": 24,
       "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/design-system.css",
+      "hex": 44,
+      "unsafeHexFallback": 0,
+      "classification": "ABSORB_NOW",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -398,13 +398,6 @@
       "hex": 26,
       "unsafeHexFallback": 0,
       "classification": "CANONICAL_AUTHORITY",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/visual-identity-unify.css",
-      "hex": 26,
-      "unsafeHexFallback": 25,
-      "classification": "ABSORB_NOW",
       "platform": "SHARED_PLATFORM"
     },
     {

@@ -1,14 +1,14 @@
 /* جسر aliases: --mj-* SoT هنا؛ unify/calm يستهلكان var(--mj-*) فقط. */
 
 :root {
-  --mj-bg: var(--sf-color-warm-ivory, #f8f6f1);
+  --mj-bg: var(--sf-color-warm-ivory);
   --mj-surface: var(--sf-color-warm-ivory-surface, var(--mj-white));
-  --mj-surface-2: var(--sf-color-warm-ivory, #f8f6f1);
+  --mj-surface-2: var(--sf-color-warm-ivory);
   --mj-surface-3: var(--sf-color-warm-ivory-surface, var(--mj-white));
   --mj-hairline: var(--sf-hairline, rgba(15, 92, 63, 0.12));
   --mj-ink: var(--sf-color-rich-ink, var(--sf-color-rich-ink));
-  --mj-ink-2: var(--sf-color-rich-ink-soft, #48645a);
-  --mj-muted: var(--sf-color-rich-ink-muted, #5f7168);
+  --mj-ink-2: var(--sf-color-rich-ink-soft);
+  --mj-muted: var(--sf-color-rich-ink-muted);
   --mj-brand: var(--sf-color-deep-emerald, var(--sf-color-deep-emerald));
   --mj-brand-soft: var(--sf-color-deep-emerald-soft);
   --mj-brand-tint: color-mix(in srgb, var(--mj-brand) 10%, var(--mj-surface));
@@ -23,7 +23,7 @@
   --mj-info-soft: #e8eef5;
   --mj-success-soft: color-mix(in srgb, var(--mj-brand) 12%, var(--mj-surface));
   --mj-white: var(--mj-white);
-  --mj-on-brand: var(--sf-color-on-emerald, #f7f1e4);
+  --mj-on-brand: var(--sf-color-on-emerald);
   --mj-sh: var(--sf-shadow-soft, none);
   --mj-chip-bg: var(--mj-surface);
   --mj-chip-fg: var(--mj-ink);
@@ -55,7 +55,7 @@
   --surface-brand-solid: var(--mj-brand);
   --surface-brand-strong: var(--mj-brand-deep);
   --on-brand: var(--mj-on-brand, var(--mj-white));
-  --on-brand-secondary: var(--on-dark-body, #F8FAFC);
+  --on-brand-secondary: var(--on-dark-body);
   --surface-inverse: var(--mj-brand-deep);
   --surface-elevated: var(--mj-surface);
 
@@ -207,8 +207,8 @@ html.dark,
    * Live-bind canvas to --surface-app so recovery/refine can deepen without redeclaring --mj-*.
    * Foundation --sf-color-luxury-night* / --sf2-* remain SoT for their consumers (no second dark authority).
    */
-  --mj-bg: var(--surface-app, #0F1613);
-  --mj-splash: var(--surface-app, #0F1613);
+  --mj-bg: var(--surface-app);
+  --mj-splash: var(--surface-app);
   --mj-surface: #1B2421;
   --mj-surface-2: #222D29;
   --mj-surface-3: #2A3733;
@@ -269,7 +269,7 @@ html.dark,
   --surface: var(--mj-surface);
   --surface-1: var(--mj-surface);
   --surface-2: var(--mj-surface-2);
-  --surface-3: var(--mj-surface-3, #2A3733);
+  --surface-3: var(--mj-surface-3);
   --surface-muted: var(--mj-surface-2);
   --surface-brand: var(--mj-brand-soft);
   /* أسطح العلامة الغامقة: نص أبيض — الأزرار النعناعية عبر --text-on-brand */
@@ -306,7 +306,7 @@ html.dark,
 
   --border: var(--mj-hairline);
   --border-subtle: var(--mj-hairline);
-  --border-strong: var(--mj-border-strong, #445651);
+  --border-strong: var(--mj-border-strong);
   --border-interactive: var(--mj-brand);
   --border-brand: var(--mj-hairline);
 
@@ -341,15 +341,34 @@ html.dark,
   --color-primary-foreground: #06231A;
   /* Canvas Authority — لا تربط --color-bg بـ splash beige */
   --color-bg: var(--mj-bg);
+  --color-surface: var(--mj-surface);
+  --color-surface-soft: var(--mj-surface-2);
+  --color-surface-muted: var(--mj-surface-2);
   --color-surface-elevated: var(--mj-surface-2);
   --color-text: var(--mj-ink);
   --color-text-muted: var(--mj-muted);
+  --color-muted: var(--mj-muted);
   --color-primary: var(--mj-brand);
+  --color-primary-dark: var(--mj-brand-deep);
+  --color-primary-soft: var(--mj-brand-soft);
+  --color-primary-contrast: var(--mj-on-brand);
+  --color-accent: var(--mj-accent);
+  --color-accent-gold: var(--mj-accent);
   --color-primary-deep: #8FD4B0;
   --color-button-secondary-bg: #222D29;
   --color-button-secondary-text: #F8FAFC;
   --color-button-secondary-border: #445651;
   --color-placeholder: #C5D0CB;
+  /* Wave 1A — absorbed from visual-identity-unify :root (single bridge authority) */
+  --ss-primary-green: var(--mj-brand);
+  --ss-deep-green: var(--mj-brand-deep);
+  --ss-soft-gold: var(--mj-accent);
+  --ss-warm-bg: var(--mj-bg);
+  --ss-card-bg: var(--mj-surface);
+  --ss-muted-text: var(--mj-muted);
+  --ss-border: var(--mj-hairline);
+  --ss-shadow: var(--shadow-soft, var(--mj-sh));
+  --surface-app: var(--mj-bg);
 
   --majalis-emerald: var(--mj-brand);
   --majalis-emerald-deep: #4AA882;
@@ -484,7 +503,7 @@ html.dark .navbar-v3 .navbar-brand__mark {
   padding-inline: 0.65rem !important;
   box-sizing: border-box !important;
   overflow: hidden !important;
-  box-shadow: 0 1px 4px color-mix(in srgb, var(--mj-brand-deep, #0f3d2e) 4%, transparent) !important;
+  box-shadow: 0 1px 4px color-mix(in srgb, var(--mj-brand-deep) 4%, transparent) !important;
 }
 .header-ticker.header-ticker--with-prayer {
   /* منطقة لمس الشريحة قد تتجاوز ٣٦px رأسيًا — لا تقصّها */
@@ -588,26 +607,26 @@ html.dark .header-ticker__label {
 }
 .ds-stat {
   background: var(--surface-card, var(--mj-surface));
-  border: 1px solid color-mix(in srgb, var(--mj-brand-deep, #123F32) 14%, var(--mj-hairline));
+  border: 1px solid color-mix(in srgb, var(--mj-brand-deep) 14%, var(--mj-hairline));
   border-radius: var(--mj-r-md);
   padding: var(--mj-s3);
   color: var(--mj-ink);
 }
-.ds-stat strong { color: var(--mj-brand-deep, #123F32); font-weight: 900; }
-.ds-stat span { color: var(--mj-ink-2, #4B625A); opacity: 1; }
+.ds-stat strong { color: var(--mj-brand-deep); font-weight: 900; }
+.ds-stat span { color: var(--mj-ink-2); opacity: 1; }
 
 html.dark .ds-stat,
 html[data-theme="dark"] .ds-stat {
-  background: color-mix(in srgb, var(--surface-brand-wash, #16261F) 90%, #0f1612);
+  background: color-mix(in srgb, var(--surface-brand-wash) 90%, #0f1612);
   border-color: color-mix(in srgb, #5a9e88 26%, #2a3832);
 }
 html.dark .ds-stat strong,
 html[data-theme="dark"] .ds-stat strong {
-  color: var(--on-brand-wash, #F8FAFC);
+  color: var(--on-brand-wash);
 }
 html.dark .ds-stat span,
 html[data-theme="dark"] .ds-stat span {
-  color: var(--on-brand-wash-secondary, #E2E8F0);
+  color: var(--on-brand-wash-secondary);
 }
 
 .gl-cat--active {
@@ -632,9 +651,13 @@ html.dark .gl-cat--active {
   --soft-card-bg: color-mix(in srgb, var(--mj-surface, var(--mj-white)) 96%, #e8f0ec);
   --soft-tile-bg: color-mix(in srgb, var(--mj-surface, var(--mj-white)) 97%, #eef4f1);
   --soft-card-pad: var(--sf-pad-card, 0.85rem);
-  --radius-card: var(--sf-radius-card, 1.5rem));
+  --radius-card: var(--sf-radius-card, 1.5rem);
   --radius-tile: var(--sf-radius-md, 20px);
   --radius-button: var(--sf-radius-sm, 16px);
+  --radius-control: var(--sf-radius-control, 0.75rem);
+  --radius-xs: var(--sf-radius-xs, 12px);
+  --pad-card-bridge: var(--sf-pad-card);
+  --type-page-title-bridge: var(--sf-type-page-title);
   --radius-sheet: var(--sf-radius-sheet, var(--sf-radius-lg, 24px));
   --radius-nav: var(--sf-radius-lg, 24px);
   --radius-pill: var(--sf-radius-pill, 999px);
