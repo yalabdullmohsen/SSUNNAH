@@ -1,0 +1,76 @@
+{
+  "id": "STARTUP_RESIDUAL_INVENTORY",
+  "program": "SUNNAH_STARTUP_STABILITY_AND_ZERO_PERCEIVED_SHIFT_FINAL_PROGRAM",
+  "measuredTip": "eb2f0bdccc5669e0d2ebe0807b87509578ba7c1c",
+  "productionMatch": true,
+  "unknownStartupDebt": 0,
+  "closedCore": ["R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8"],
+  "residuals": [
+    {
+      "id": "DUP_DEFERRED_IMPORTS",
+      "class": "DEFERRED_SOFT_PAINT",
+      "wave": "S2",
+      "evidence": "loadNonCriticalCss duplicates modern-ui-refresh, ssunnah-ds-canonical, sunnah-visual-language, sunnah-geometry-system"
+    },
+    {
+      "id": "SHEET_GRAPH_GROWTH",
+      "class": "DEFERRED_SOFT_PAINT",
+      "wave": "S2",
+      "evidence": "Home 3→59 sheets; Search 6→82; live summary.json"
+    },
+    {
+      "id": "HOME_HERO_GREEN_SOFT",
+      "class": "DEFERRED_SOFT_PAINT",
+      "wave": "S2",
+      "evidence": "hero.backgroundColor rgb(15,92,69)→rgb(15,92,63)"
+    },
+    {
+      "id": "PRAYER_BODY_BG_SETTLE",
+      "class": "EXPECTED_ROUTE_TRANSITION",
+      "wave": "S4",
+      "evidence": "bodyBg transparent→rgb(42,64,48); fontDelta=0; cls≈0"
+    },
+    {
+      "id": "FONT_STACK_SETTLE_HOME",
+      "class": "FONT_FALLBACK_SETTLING",
+      "wave": "S3",
+      "evidence": "early includes Noto Naskh Arabic; final MajlisFallback; size unchanged"
+    },
+    {
+      "id": "MULTI_SPLASH_HIDE_OWNERS",
+      "class": "CORE_STARTUP_SHIFT",
+      "wave": "S1",
+      "evidence": "mj-launch-splash-boot.js + splash-screen.dismissHtmlLaunchSplash both dismiss"
+    },
+    {
+      "id": "IOS_MIRROR_DRIFT_DATA_AB",
+      "class": "NATIVE_SPLASH_HANDOFF",
+      "wave": "S6",
+      "evidence": "ios public mj-launch-splash-boot.js missing dataset.ab=0 clears"
+    },
+    {
+      "id": "CAPACITOR_SPLASH_COLOR_F7",
+      "class": "NATIVE_SPLASH_HANDOFF",
+      "wave": "S6",
+      "evidence": "capacitor.config.* backgroundColor #F7F3EB vs shared #F8F6F1"
+    },
+    {
+      "id": "CHUNK_RECOVERY_PROOF",
+      "class": "UPDATE_RECOVERY",
+      "wave": "S5",
+      "evidence": "comments claim quiet recovery; need permanent gates for single attempt / no blocking UI"
+    },
+    {
+      "id": "INPUT_LT_16_CANDIDATES",
+      "class": "DEVICE_ONLY_UNVERIFIED",
+      "wave": "S7",
+      "evidence": "CSS scan found many sub-1rem sizes near form-ish contexts; need Form Authority fix without mushaf geometry change"
+    },
+    {
+      "id": "DARK_SYSTEM_LIVE_UNMEASURED",
+      "class": "DEVICE_ONLY_UNVERIFIED",
+      "wave": "S4",
+      "evidence": "S0 live matrix Light-only; dark/system live paint pending"
+    }
+  ]
+}

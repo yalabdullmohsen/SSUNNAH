@@ -1,0 +1,69 @@
+{
+  "route": "home",
+  "path": "/",
+  "fp": 692,
+  "fcp": 692,
+  "elapsedMs": 6251,
+  "clsTotal": 0.00040816232501055395,
+  "clsAfterFcp": 0.00040816232501055395,
+  "clsEntryCount": 2,
+  "topCls": [
+    {
+      "value": 0.0003233852765534444,
+      "startTime": 1709.8999999761581,
+      "sources": [
+        "div.header-ticker.header-ticker--empty",
+        "div.navbar-ticker-row"
+      ]
+    },
+    {
+      "value": 0.00008477704845710955,
+      "startTime": 1759.199999988079,
+      "sources": [
+        "div.ss-screen.ss-screen--dashboard"
+      ]
+    }
+  ],
+  "themeChangeCount": 0,
+  "visualChangeCount": 2,
+  "visualChanges": [
+    {
+      "key": "sheetCount",
+      "early": 3,
+      "final": 59
+    },
+    {
+      "key": "hero.backgroundColor",
+      "early": "rgb(15, 92, 69)",
+      "final": "rgb(15, 92, 63)"
+    }
+  ],
+  "sheets": [
+    3,
+    59
+  ],
+  "networkCss": 60,
+  "networkFonts": 4,
+  "earlyBody": {
+    "font": "Amiri, MajlisAmiriFallback, \"Noto Naskh Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "finalBody": {
+    "font": "Amiri, MajlisAmiriFallback, MajlisFallback, \"Traditional Arabic\", serif",
+    "size": "17px",
+    "color": "rgb(21, 56, 45)",
+    "bg": "rgb(248, 246, 241)"
+  },
+  "fontDelta": 0,
+  "backgroundDelta": 0,
+  "headerJump": false,
+  "heroJump": false,
+  "bottomJump": false,
+  "backJump": false,
+  "headerDelta": null,
+  "heroDelta": null,
+  "bottomDelta": null,
+  "backDelta": null
+}
