@@ -129,6 +129,16 @@ if (original) {
     "display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 2rem;\n  height: 2rem;\n  border-radius: 50%;\n  background: var(--majalis-emerald, var(--mj-brand-deep));\n  color: #fff;\n  font-size: 1rem;\n  font-weight: 700;\n  flex-shrink: 0;",
     "margin: 0;\n  font-size: 0.85rem;\n  line-height: 1.75;\n  color: var(--text-base);\n  flex: 1;",
     "display: inline-flex;\n  align-items: center;\n  gap: 0.3rem;\n  font-size: 0.8rem;\n  line-height: 1.4;\n  color: var(--text-muted);\n  background: var(--bg-base);\n  border-radius: 0.35rem;\n  padding: 0.18rem 0.45rem;\n  border-right: 3px solid;\n  direction: rtl;",
+    /* PR D: search/auth dual-ownership absorb — defeated DS bodies. */
+    "width: min(100%, 22rem);\n  padding: var(--ds-space-5);\n  border-radius: var(--ds-radius-lg);\n  border: 1px solid var(--ds-line-color);\n  background: var(--majalis-panel);\n  box-shadow: var(--ds-shadow);",
+    "display: flex;\n  align-items: center;\n  gap: var(--ds-space-2);\n  font-size: var(--ds-text-md);\n  font-weight: 800;\n  color: var(--ds-emerald-deep);\n  margin-bottom: var(--ds-space-2);",
+    "font-size: var(--ds-text-xs);\n  font-weight: 700;\n  padding: 0.1rem 0.45rem;\n  border-radius: var(--radius-pill, 999rem);\n  background: var(--ds-emerald-soft);\n  color: var(--ds-emerald-deep);",
+    "display: block;\n  font-size: var(--ds-text-xs);\n  color: var(--ds-ink-soft);\n  margin-top: 0.15rem;",
+    "display: flex;\n  flex-wrap: wrap;\n  gap: var(--ds-space-2);\n  align-items: center;\n  margin-bottom: var(--ds-space-3);",
+    "display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(8.75rem, 1fr));\n  gap: var(--ds-space-2);\n  margin-bottom: var(--ds-space-3);",
+    "font-size: var(--ds-text-xs);\n  padding: 0.2rem 0.55rem;\n  border-radius: var(--radius-pill, 999rem);\n  background: var(--ds-emerald-soft);\n  color: var(--ds-emerald-deep);\n  font-weight: 700;\n  text-decoration: none;",
+    "font-size: var(--ds-text-md);\n  font-weight: 800;\n  color: var(--ds-emerald-deep);\n  margin: 0 0 var(--ds-space-2);\n  display: flex;\n  align-items: center;\n  gap: var(--ds-space-2);",
+    "padding: var(--ds-space-2) var(--ds-space-3);\n  border-radius: var(--ds-radius);\n  border: 1px solid var(--ds-line-color);\n  background: var(--majalis-panel);\n  margin-bottom: var(--ds-space-2);\n  font-size: var(--ds-text-sm);",
   ]);
   while ((m = re.exec(origRules))) {
     const sel = m[1]!.trim().replace(/\s+/g, " ");
@@ -178,6 +188,9 @@ if (original) {
   assert.match(graphRules, /\.tawheed-types-grid\s*\{[\s\S]*?gap:\s*0\.55rem/);
   assert.match(graphRules, /\.tawheed-type-card\s*\{[\s\S]*?border-top:\s*3px\s+solid/);
   assert.doesNotMatch(graphRules, /\.tasbih-add-row\s*\{/);
+  /* PR D: search-result-row flex absorbed; login-card left auth. */
+  assert.match(graphRules, /\.search-result-row\s*\{[\s\S]*?display:\s*flex/);
+  assert.doesNotMatch(graphRules, /\.login-card\s*\{/);
 }
 
 console.log("css-authority-graph-gate.test.ts: ok");

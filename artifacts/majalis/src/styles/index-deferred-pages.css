@@ -344,29 +344,7 @@ html[data-reading-theme="night"] .content-surface--reading {
 
 /* ── Phase 2 styles ── */
 
-.search-results-group-title {
-  font-size: var(--ds-text-lg);
-  font-weight: 700;
-  color: var(--majalis-emerald-deep);
-  margin: 0 0 0.875rem;
-  display: flex;
-  align-items: center;
-  gap: var(--ds-space-2);
-}
-
-.search-results-count {
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--majalis-brass-deep);
-  background: var(--majalis-parchment-deep);
-  padding: 0.1rem 0.5rem;
-  border-radius: var(--radius-pill, 999rem);
-}
-
-.search-results-list {
-  display: grid;
-  gap: var(--ds-space-2-5);
-}
+/* .search-results-group-title / count / list sole owner: pages/search.css (PR D). */
 
 .favorite-btn {
   display: inline-flex;
@@ -1354,16 +1332,7 @@ body.mobile-nav-body-lock {
 
 .error-boundary-btn--ghost { background: var(--majalis-parchment); color: var(--majalis-ink-soft); border: 1px solid var(--majalis-line); }
 
-.login-alert--success {
-  background: var(--majalis-sage);
-  color: var(--majalis-emerald-deep);
-  border: 1px solid var(--majalis-emerald);
-}
-
-.login-back-link--primary {
-  font-weight: 800;
-  color: var(--majalis-emerald-deep);
-}
+/* .login-alert--success / .login-back-link--primary sole owner: pages/auth.css (PR D). */
 
 .page-action-btn--secondary {
   background: transparent;
@@ -1927,17 +1896,16 @@ svg {
     font-size: clamp(0.82rem, 3.2vw, 0.9rem);
   }
 
-  .page-search-form,
-  .search-page-form {
+  .page-search-form {
     width: 100%;
     max-width: 100%;
   }
 
-  .page-search-form input,
-  .search-page-form input {
+  .page-search-form input {
     min-width: 0;
     flex: 1 1 auto;
   }
+  /* .search-page-form sole owner: pages/search.css (PR D). */
 
   .page-card-grid,
   .page-card-grid--compact {
@@ -3217,30 +3185,8 @@ html[data-theme="dark"] .skeleton-base {
 
 /* U1 NUMERIC: visual-identity page blocks (not Home ATF) */
 /* ── دخول ──────────────────────────────────────────────────────────── */
-.login-page {
-  --auth-green: var(--color-primary) !important;
-  --auth-green-deep: var(--color-primary-dark) !important;
-  --auth-ink: var(--color-text) !important;
-  --auth-muted: var(--color-muted) !important;
-  --auth-line: var(--color-border) !important;
-  --auth-surface: var(--color-surface) !important;
-  --auth-field: var(--color-surface-soft) !important;
-  background: var(--color-bg) !important;
-  color: var(--color-text) !important;
-}
-
-.login-card {
-  border: 1px solid var(--color-border) !important;
-  background: var(--color-surface) !important;
-  border-radius: var(--radius-sheet) !important;
-  box-shadow: var(--shadow-soft) !important;
-  max-width: 22rem;
-  padding: 1.15rem 1.05rem 1rem !important;
-}
-
-.login-card__brand {
-  color: var(--color-primary-dark) !important;
-}
+/* .login-page / .login-card sole owner: pages/auth.css (PR D).
+   Theme tokens already resolve via --color-* / --auth-* in auth.css. */
 
 /* .login-submit removed from this theme cluster — auth.css owns submit.
    Keep .login-tab.is-active brand override (not submit). */
@@ -3468,8 +3414,7 @@ html.dark .sidebar-item.active {
   color: currentColor;
 }
 
-/* تباين نص عام */
-.login-page,
+/* تباين نص عام — .login-page color owned by auth.css */
 .drawer-panel,
 .sidebar-panel,
 .quran-hub,
@@ -3482,7 +3427,6 @@ html.dark .sidebar-item.active {
   color: var(--color-text);
 }
 
-.login-page .muted,
 .sidebar-item__meta,
 .quran-hub .muted,
 .lessons-page .muted,

@@ -1040,24 +1040,11 @@ html[data-theme="dark"] .ds-stat span {
 
 
 /* ── Login ── */
-/* التنسيق الكامل في auth.css — هنا لا نفرض grid/ارتفاع يعيد تمريرًا داخليًا */
-
-.login-card {
-  width: min(100%, 22rem);
-  padding: var(--ds-space-5);
-  border-radius: var(--ds-radius-lg);
-  border: 1px solid var(--ds-line-color);
-  background: var(--majalis-panel);
-  box-shadow: var(--ds-shadow);
-}
+/* .login-card / title sole owner: styles/pages/auth.css (PR D). Keep OAuth here. */
 
 .login-logo {
   width: 48px;
   height: 48px;
-}
-
-.login-card__title {
-  font-size: var(--ds-text-lg);
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1197,69 +1184,22 @@ html[data-theme="dark"] .ds-stat span {
   margin: 0 0 var(--ds-space-3);
 }
 
-.search-page-form {
-  margin-bottom: var(--ds-space-3);
-}
+/* Route search chrome (form/toolbar/filters/chips/groups/count/meta) sole owner:
+   styles/pages/search.css (PR D). Keep search-page-title + search-result-row in DS. */
 
-.search-page-hint,
-.search-page-summary {
+.search-page-hint {
   font-size: var(--ds-text-sm);
   color: var(--ds-ink-soft);
   margin-bottom: var(--ds-space-3);
 }
 
-.search-results-group {
-  margin-bottom: var(--ds-space-4);
-}
-
-.search-results-group-title {
-  display: flex;
-  align-items: center;
-  gap: var(--ds-space-2);
-  font-size: var(--ds-text-md);
-  font-weight: 800;
-  color: var(--ds-emerald-deep);
-  margin-bottom: var(--ds-space-2);
-}
-
-.search-results-count {
-  font-size: var(--ds-text-xs);
-  font-weight: 700;
-  padding: 0.1rem 0.45rem;
-  border-radius: var(--radius-pill, 999rem);
-  background: var(--ds-emerald-soft);
-  color: var(--ds-emerald-deep);
-}
-
-/* Defeated .search-result-row + :hover removed — winner = later layout block + premium hover. */
+/* Defeated early .search-result-row + :hover removed — winner = layout block + premium hover. */
 
 .search-result-copy span:first-child {
   display: block;
   font-size: var(--ds-text-sm);
   font-weight: 700;
   color: var(--ds-emerald-deep);
-}
-
-.search-result-meta {
-  display: block;
-  font-size: var(--ds-text-xs);
-  color: var(--ds-ink-soft);
-  margin-top: 0.15rem;
-}
-
-.search-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ds-space-2);
-  align-items: center;
-  margin-bottom: var(--ds-space-3);
-}
-
-.search-filters-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8.75rem, 1fr));
-  gap: var(--ds-space-2);
-  margin-bottom: var(--ds-space-3);
 }
 
 .search-filters-grid select,
@@ -1272,41 +1212,18 @@ html[data-theme="dark"] .ds-stat span {
   background: var(--majalis-panel);
 }
 
-.search-topic-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ds-space-2);
-  align-items: center;
-  margin-bottom: var(--ds-space-3);
-}
-
-.search-topic-chip {
-  font-size: var(--ds-text-xs);
-  padding: 0.2rem 0.55rem;
-  border-radius: var(--radius-pill, 999rem);
-  background: var(--ds-emerald-soft);
-  color: var(--ds-emerald-deep);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.search-results-group-title {
-  font-size: var(--ds-text-md);
-  font-weight: 800;
-  color: var(--ds-emerald-deep);
-  margin: 0 0 var(--ds-space-2);
-  display: flex;
-  align-items: center;
-  gap: var(--ds-space-2);
-}
-
 .search-result-row {
-  padding: var(--ds-space-2) var(--ds-space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-3);
+  padding: 0.65rem 0.75rem;
   border-radius: var(--ds-radius);
   border: 1px solid var(--ds-line-color);
   background: var(--majalis-panel);
   margin-bottom: var(--ds-space-2);
   font-size: var(--ds-text-sm);
+  cursor: pointer;
+  transition: background 0.12s;
 }
 
 /**
@@ -2894,7 +2811,6 @@ hr.decorative,
 .ds-page-header__title,
 .ds-section__title,
 .search-page-title,
-.search-results-group-title,
 .page-card-header p,
 .lesson-detail-title,
 .profile-section-title,
@@ -2902,6 +2818,7 @@ hr.decorative,
 h1, h2, h3 {
   color: var(--ds-heading);
 }
+/* .search-results-group-title color owned by pages/search.css (PR D). */
 
 /* العناوين التي كانت دائماً بالزمرد الداكن */
 .ds-page-header__title { font-size: var(--ds-text-2xl); font-weight: 800; line-height: 1.25; }

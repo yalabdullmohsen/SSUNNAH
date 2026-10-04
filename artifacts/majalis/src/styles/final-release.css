@@ -1461,12 +1461,12 @@ html[data-theme="dark"] .floating-back-btn:not(.floating-back-btn--top) {
 /* جسر أسماء الحالات القديمة → نفس عقد اللون/المسافة (بلا فرض خلفية/حدود جديدة) */
 .lessons-empty-state,
 .lrn-empty-state,
-.search-empty-state,
 .up-empty-state,
 .msp-empty-state__msg,
 .empty-msg {
   color: var(--color-text-muted);
 }
+/* .search-empty-state sole owner: pages/search.css (PR D). */
 .skeleton-base,
 .skeleton-block {
   border-radius: var(--radius-md, var(--r-md));
