@@ -1,10 +1,11 @@
 /**
- * DESIGN_SYSTEM_CSS_DECOMPOSITION — authority graph + token + cascade seal.
+ * DESIGN_SYSTEM_CSS_DECOMPOSITION — logical authority in one physical sheet.
+ * cssFiles ceiling = 356; extracted micro-files were inlined back in cascade order.
  * Run: node --import tsx src/lib/__tests__/css-authority-graph-gate.test.ts
  */
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { readCssGraph } from "../css-authority-graph.ts";
@@ -17,7 +18,7 @@ const DS = resolve(majalisRoot, "src/styles/design-system.css");
 const graph = readCssGraph(DS);
 const ds = readMaj("src/styles/design-system.css");
 
-const FEATURE_FILES = [
+const FORBIDDEN_SHEETS = [
   "src/styles/features/home.css",
   "src/styles/features/auth.css",
   "src/styles/features/admin.css",
@@ -27,9 +28,6 @@ const FEATURE_FILES = [
   "src/styles/features/learning-seasons.css",
   "src/styles/features/tawhid.css",
   "src/styles/features/legacy-surfaces.css",
-] as const;
-
-const COMPONENT_FILES = [
   "src/styles/components/cards.css",
   "src/styles/components/buttons.css",
   "src/styles/components/forms.css",
@@ -41,31 +39,26 @@ const COMPONENT_FILES = [
   "src/styles/components/search-ui.css",
 ] as const;
 
-console.log("=== CSS_AUTHORITY_GRAPH_SINGLE ===");
+console.log("=== CSS_AUTHORITY_GRAPH_SINGLE (physical sheet = design-system.css) ===");
 assert.equal(graph.circular.length, 0, "no circular CSS imports");
-assert.match(ds, /@import "\.\/components\/cards\.css"/);
-assert.match(ds, /@import "\.\/features\/tasbih\.css"/);
-assert.match(ds, /@import "\.\/features\/tawhid\.css"/);
-const importBlock = ds.slice(0, ds.indexOf("html {"));
-const lastImport = importBlock.lastIndexOf("@import");
-assert.ok(lastImport >= 0, "imports precede foundation html");
-assert.ok(ds.indexOf("html {") > lastImport, "foundation html after imports (cascade seal)");
+assert.match(ds, /COMPONENT_AUTHORITY/);
+assert.match(ds, /FEATURE_AUTHORITY/);
+const iComp = ds.indexOf("COMPONENT_AUTHORITY");
+const iFeat = ds.indexOf("FEATURE_AUTHORITY");
+const iHtml = ds.indexOf("\nhtml {");
+assert.ok(iComp >= 0 && iFeat > iComp, "COMPONENT region before FEATURE region");
+assert.ok(iHtml > iFeat, "FOUNDATION html after FEATURE region (cascade seal)");
+assert.doesNotMatch(ds, /@import\s+"\.\/(?:components|features)\//);
 
-console.log("=== FEATURE files do not import or redefine tokens ===");
-for (const rel of FEATURE_FILES) {
-  const text = readMaj(rel);
-  assert.doesNotMatch(text, /@import/, `${rel} must not import (no feature→feature / feature→foundation)`);
-  assert.doesNotMatch(text, /:root\s*\{/, `${rel} must not open :root`);
-  assert.doesNotMatch(text, /--(?:ds|mj|msk|sf|ss)-[\w-]+\s*:/, `${rel} must not redefine tokens`);
+console.log("=== extracted micro-sheets must not exist (cssFiles ceiling) ===");
+for (const rel of FORBIDDEN_SHEETS) {
+  assert.equal(existsSync(resolve(majalisRoot, rel)), false, `must not exist: ${rel}`);
 }
 
-console.log("=== COMPONENT files do not redefine tokens ===");
-for (const rel of COMPONENT_FILES) {
-  const text = readMaj(rel);
-  assert.doesNotMatch(text, /@import/, `${rel} must not import`);
-  assert.doesNotMatch(text, /:root\s*\{/, `${rel} must not open :root`);
-  assert.doesNotMatch(text, /--(?:ds|mj|msk|sf|ss)-[\w-]+\s*:/, `${rel} must not redefine tokens`);
-}
+console.log("=== FEATURE region must not redefine tokens ===");
+const featureRegion = ds.slice(iFeat, iHtml);
+assert.doesNotMatch(featureRegion, /:root\s*\{/);
+assert.doesNotMatch(featureRegion, /--(?:ds|mj|msk|sf|ss)-[\w-]+\s*:/);
 
 console.log("=== FOUNDATION pins (gates + startup) ===");
 assert.match(ds, /font-size:\s*calc\(\s*100%\s*\*\s*var\(--ui-font-scale,\s*1\)\s*\)/);
@@ -77,7 +70,7 @@ assert.doesNotMatch(ds, /body\s*\{[^}]*background:\s*var\(--ds-parchment\)/s);
 assert.match(ds, /--ds-radius-lg:\s*var\(--radius-button/);
 assert.match(ds, /--ds-radius-xl:\s*var\(--radius-card/);
 
-console.log("=== graph still contains moved component/feature selectors ===");
+console.log("=== graph still contains component/feature selectors ===");
 assert.match(graph.text, /\.ds-stat strong\s*\{[\s\S]*?color:\s*var\(--mj-brand-deep/);
 assert.match(graph.text, /html\.dark \.ds-stat strong/);
 assert.match(graph.text, /\.tc-ring-btn\s*\{/);
@@ -93,7 +86,7 @@ assert.doesNotMatch(graph.text, /\.fiqh-adopted-opinion\s*\{/);
 assert.doesNotMatch(graph.text, /var\(--[\w-]+\s*,\s*#[0-9a-fA-F]{3,8}/);
 
 console.log("=== rule-text preservation vs origin/main mega-file ===");
-let original = "";
+let original: string;
 try {
   original = execFileSync(
     "git",

@@ -4,54 +4,39 @@
 |---|---|
 | Date | 2026-10-04 |
 | Entry | `artifacts/majalis/src/styles/design-system.css` (deferred from `main.tsx`) |
-| Bundler | Vite inlines `@import` into the same deferred chunk — one network sheet |
+| Physical sheets | **1** (`cssFiles` ceiling 356 forbids extra DS partitions) |
 
 ## Graph
 
 ```
 design-system.css
-  @import components/cards.css
-  @import components/buttons.css
-  @import components/forms.css
-  @import components/chips.css
-  @import components/badges.css
-  @import components/stats.css
-  @import components/pagination.css
-  @import components/empty-states.css
-  @import components/search-ui.css
-  @import features/home.css
-  @import features/auth.css
-  @import features/admin.css
-  @import features/search.css
-  @import features/tasbih.css
-  @import features/user-stats.css
-  @import features/learning-seasons.css
-  @import features/tawhid.css
-  @import features/legacy-surfaces.css
-  ── then FOUNDATION rules in this file (tokens v5, html/body, page-shell, prose, skeleton, premium seal)
+  COMPONENT_AUTHORITY   cards, buttons, forms, chips, badges, stats, pagination, empty, search-ui
+  FEATURE_AUTHORITY     home, auth, admin, search, tasbih, user-stats, learning-seasons, tawhid, leftover surfaces
+  FOUNDATION seal       html / :root v5 / page-shell / prose / skeleton / premium
 ```
 
 Runtime order: **Components → Features → Foundation seal**.
 
-That seal is intentional. The pre-split mega-file ended with the v5 premium layer, which already won heading color, card/button refinements, `.ds-stat strong`, and `body` line-height. Putting foundation last preserves those computed winners. `@import` cannot follow rules, so foundation cannot be both “first in the file” and “last in the cascade.”
+That seal is intentional. The pre-split mega-file ended with the v5 premium layer, which already won heading color, card/button refinements, `.ds-stat strong`, and `body` line-height.
+
+18 micro-sheets from the first extraction were inlined back (same order Vite would have inlined `@import`). See `CSS_INTRODUCTION_AUDIT.md`.
 
 ## Forbidden edges (enforced)
 
 | Edge | Status |
 |---|---|
-| Feature → Foundation `@import` | none |
-| Feature → Feature `@import` | none |
-| Home → Tawhid | none |
-| Tasbih → Search | none |
-| Feature `:root` token redefine | none |
+| Extra `styles/features/*.css` or DS `components/{cards,buttons,…}.css` | must not exist |
+| Feature region `:root` token redefine | none |
+| Home → Tawhid import | none |
+| Tasbih → Search import | none |
 | Circular import | none |
 
 ## Ownership
 
-| Layer | Files | May |
+| Layer | Location | May |
 |---|---|---|
-| Foundation | `design-system.css` (post-import) | html/body, `:root --ds-*`, page-shell, prose, skeleton, motion, scrollbar, premium primitive seal |
-| Components | `styles/components/{cards,buttons,forms,chips,badges,stats,pagination,empty-states,search-ui}.css` | consume tokens; no `:root` |
-| Features | `styles/features/{home,auth,admin,search,tasbih,user-stats,learning-seasons,tawhid,legacy-surfaces}.css` | consume tokens; no `:root`; no cross-feature import |
+| Foundation | `design-system.css` after FEATURE region | html/body, `:root --ds-*`, page-shell, prose, skeleton, motion, scrollbar, premium primitive seal |
+| Components | `COMPONENT_AUTHORITY` region in the same file | consume tokens; no `:root` |
+| Features | `FEATURE_AUTHORITY` region in the same file | consume tokens; no `:root` |
 
-Route-level `styles/pages/*.css` (tasbih, tawhid, search, auth, user-stats) remain **KEEP_COMPATIBILITY**. They are imported by TSX and load after this deferred graph. Consumers of those imports were not changed.
+Route-level `styles/pages/*.css` (tasbih, tawhid, search, auth, user-stats) remain **KEEP_COMPATIBILITY**. TSX imports of those files were not changed.

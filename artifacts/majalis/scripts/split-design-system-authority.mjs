@@ -1,11 +1,21 @@
 #!/usr/bin/env node
 /**
- * Partition design-system.css into authority files by exact original line ranges.
- * Does not rewrite rule bodies. Runtime order is declared by the barrel @import graph.
+ * HISTORICAL partition map. Do not run: it would re-create 18 CSS sheets and
+ * breach the cssFiles ceiling (356). Authority now lives as labeled regions
+ * inside design-system.css (COMPONENT → FEATURE → FOUNDATION).
  */
 import { mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { dirname, extname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+
+throw new Error(
+  "split-design-system-authority.mjs is retired. cssFiles ceiling forbids extra sheets. See docs/design/CSS_INTRODUCTION_AUDIT.md",
+);
+
+/**
+ * Partition design-system.css into authority files by exact original line ranges.
+ * Does not rewrite rule bodies. Runtime order is declared by the barrel @import graph.
+ */
 
 const here = dirname(fileURLToPath(import.meta.url));
 const majalis = resolve(here, "..");
