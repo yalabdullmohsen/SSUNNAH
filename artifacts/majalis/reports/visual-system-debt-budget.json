@@ -1,7 +1,7 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Ceilings must not rise. Global DS Wave1 authority absorption (hero/card/forms/nav) lowered hexInCss; raised sf/ss floors.",
+  "note": "Ceilings must not rise. Eradication PR B wave1 stripped known-token Hex fallbacks on shared identity layers; hexInCss lowered to measured.",
   "floors": {
     "officialButtonImportFiles": 287,
     "sfTokenRefs": 1172,
@@ -10,7 +10,7 @@
   "ceilings": {
     "cssFiles": 356,
     "important": 4746,
-    "hexInCss": 6432,
+    "hexInCss": 6189,
     "rgbHslInCss": 2008,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
@@ -20,5 +20,5 @@
     "inlineColorStyleMatches": 39,
     "rawButtonFiles": 76
   },
-  "updatedAt": "2026-10-03T21:48:40.086Z"
+  "updatedAt": "2026-10-04T02:13:46.050Z"
 }

@@ -42,8 +42,8 @@
   background:
     linear-gradient(
       155deg,
-      color-mix(in srgb, var(--color-surface, #FFFCF7) 92%, var(--color-brand-soft, #E2EFE8)) 0%,
-      var(--color-surface, #FFFCF7) 100%
+      color-mix(in srgb, var(--color-surface) 92%, var(--color-brand-soft)) 0%,
+      var(--color-surface) 100%
     );
   box-shadow: var(--shadow-mj, var(--mj-sh));
   overflow: hidden;
@@ -63,8 +63,8 @@
   width: 4px;
   background: linear-gradient(
     180deg,
-    var(--color-brand, #0F5C45) 0%,
-    var(--color-secondary, #5C6B4A) 100%
+    var(--color-brand) 0%,
+    var(--color-secondary) 100%
   );
   border-radius: var(--radius-xs, 0.25rem) 0 0 4px;
 }
@@ -73,7 +73,7 @@
 .ve-book-card:focus-visible,
 .ve-chapter-card:hover,
 .ve-chapter-card:focus-visible {
-  border-color: color-mix(in srgb, var(--color-brand, #0F5C45) 42%, var(--color-hairline));
+  border-color: color-mix(in srgb, var(--color-brand) 42%, var(--color-hairline));
   box-shadow: 0 16px 40px -18px rgba(10, 61, 46, 0.36);
 }
 
@@ -86,8 +86,8 @@
 .ve-chapter-card.is-selected,
 .ve-book-card[aria-current="page"],
 .ve-chapter-card[aria-current="page"] {
-  border-color: var(--color-brand, #0F5C45);
-  background: color-mix(in srgb, var(--color-brand-soft, #E2EFE8) 55%, var(--color-surface));
+  border-color: var(--color-brand);
+  background: color-mix(in srgb, var(--color-brand-soft) 55%, var(--color-surface));
 }
 
 .ve-book-card__icon,
@@ -99,8 +99,8 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 14px;
-  background: var(--color-brand-soft, #E2EFE8);
-  color: var(--brand-on-white, #0C4F3A);
+  background: var(--color-brand-soft);
+  color: var(--brand-on-white);
   font-weight: 700;
   font-size: 0.95rem;
 }
@@ -146,28 +146,28 @@
   border-radius: var(--radius-pill, 999rem);
   font-size: 0.75rem;
   font-weight: 700;
-  background: var(--chip-bg, #E2EFE8);
-  color: var(--chip-fg, #0A3D2E);
-  border: 1px solid color-mix(in srgb, var(--color-brand, #0F5C45) 14%, transparent);
+  background: var(--chip-bg);
+  color: var(--chip-fg);
+  border: 1px solid color-mix(in srgb, var(--color-brand) 14%, transparent);
 }
 
 .ve-badge--secondary {
-  background: var(--color-secondary-soft, #E8EBE3);
-  color: var(--color-secondary, #5C6B4A);
-  border-color: color-mix(in srgb, var(--color-secondary, #5C6B4A) 18%, transparent);
+  background: var(--color-secondary-soft);
+  color: var(--color-secondary);
+  border-color: color-mix(in srgb, var(--color-secondary) 18%, transparent);
 }
 
 .ve-badge--accent {
-  background: var(--color-accent-soft, #F5EEDF);
-  color: color-mix(in srgb, var(--color-accent, #B08A3E) 82%, #16241E);
-  border-color: color-mix(in srgb, var(--color-accent, #B08A3E) 22%, transparent);
+  background: var(--color-accent-soft);
+  color: color-mix(in srgb, var(--color-accent) 82%, #16241E);
+  border-color: color-mix(in srgb, var(--color-accent) 22%, transparent);
 }
 
 .ve-book-card__go,
 .ve-chapter-card__go {
   flex: 0 0 auto;
   align-self: center;
-  color: var(--brand-on-white, #0C4F3A);
+  color: var(--brand-on-white);
   opacity: 0.85;
 }
 
@@ -179,8 +179,8 @@
   background:
     linear-gradient(
       160deg,
-      color-mix(in srgb, var(--primary-soft, var(--color-brand-soft, #E2EFE8)) 70%, var(--surface, var(--color-surface))) 0%,
-      var(--surface, var(--color-surface, #FFFCF7)) 70%
+      color-mix(in srgb, var(--primary-soft) 70%, var(--surface, var(--color-surface))) 0%,
+      var(--surface) 70%
     );
   box-shadow: var(--shadow-soft, var(--shadow-mj, var(--mj-sh)));
   color: var(--text-main, var(--color-ink, var(--mj-ink)));
@@ -190,14 +190,14 @@
 .ve-hero.surface-brand,
 .ve-hero.fiqh-lux-book-hero,
 .fiqh-lux-book-hero.ve-hero {
-  background: var(--primary-strong, var(--fq-emerald, #0a3d2e));
-  color: var(--text-on-primary, #fff);
+  background: var(--primary-strong);
+  color: var(--text-on-primary);
   border-color: color-mix(in srgb, #fff 14%, transparent);
 }
 
 .ve-hero__subtitle {
   margin: 0.35rem 0 0;
-  color: var(--primary-strong, var(--brand-on-white, #0C4F3A));
+  color: var(--primary-strong);
   font-weight: 600;
   text-align: start;
 }
@@ -205,7 +205,7 @@
 .ve-hero.surface-brand .ve-hero__subtitle,
 .fiqh-lux-book-hero .ve-hero__subtitle,
 .fiqh-lux-book-hero.ve-hero .ve-hero__subtitle {
-  color: var(--text-on-primary-muted, #e8f3ee);
+  color: var(--text-on-primary-muted);
 }
 
 .ve-hero__desc {
@@ -218,7 +218,7 @@
 .ve-hero.surface-brand .ve-hero__desc,
 .fiqh-lux-book-hero .ve-hero__desc,
 .fiqh-lux-book-hero.ve-hero .ve-hero__desc {
-  color: var(--text-on-primary-muted, #e8f3ee);
+  color: var(--text-on-primary-muted);
 }
 
 .ve-hero__chips,
@@ -235,7 +235,7 @@
   z-index: 2;
   padding: 0.55rem 0.15rem;
   margin-bottom: 0.75rem;
-  background: color-mix(in srgb, var(--color-bg, #F7F3EB) 88%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
   backdrop-filter: blur(6px);
 }
 
@@ -249,17 +249,17 @@
   text-decoration: none;
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--brand-on-white, #0C4F3A);
-  background: var(--color-brand-soft, #E2EFE8);
-  border: 1px solid color-mix(in srgb, var(--color-brand, #0F5C45) 16%, transparent);
+  color: var(--brand-on-white);
+  background: var(--color-brand-soft);
+  border: 1px solid color-mix(in srgb, var(--color-brand) 16%, transparent);
 }
 
 .ve-toc a.is-active,
 .ve-toc a:target,
 .ve-chip.is-active {
-  background: var(--color-brand, #0F5C45);
+  background: var(--color-brand);
   color: var(--color-on-brand, #fff);
-  border-color: var(--color-brand, #0F5C45);
+  border-color: var(--color-brand);
 }
 
 .ve-accordion {
@@ -272,13 +272,13 @@
 .ve-accordion details {
   border: 1px solid var(--color-hairline, var(--mj-hairline));
   border-radius: var(--sf-radius-control, 1.125rem);
-  background: var(--color-surface, #FFFCF7);
+  background: var(--color-surface);
   box-shadow: 0 8px 22px -18px rgba(10, 61, 46, 0.22);
   overflow: clip;
 }
 
 .ve-accordion details[open] {
-  border-color: color-mix(in srgb, var(--color-brand, #0F5C45) 28%, var(--color-hairline));
+  border-color: color-mix(in srgb, var(--color-brand) 28%, var(--color-hairline));
 }
 
 .ve-accordion summary {
@@ -299,7 +299,7 @@
 .ve-accordion summary::after {
   content: "+";
   margin-inline-start: auto;
-  color: var(--brand-on-white, #0C4F3A);
+  color: var(--brand-on-white);
   font-weight: 700;
 }
 
@@ -349,18 +349,18 @@
 
 .ve-accordion .ve-accordion__body:target,
 .ve-section:target {
-  outline: 2px solid color-mix(in srgb, var(--color-brand, #0F5C45) 45%, transparent);
+  outline: 2px solid color-mix(in srgb, var(--color-brand) 45%, transparent);
   outline-offset: 2px;
   border-radius: var(--radius-md, 0.75rem);
-  background: color-mix(in srgb, var(--color-brand-soft, #E2EFE8) 35%, transparent);
+  background: color-mix(in srgb, var(--color-brand-soft) 35%, transparent);
 }
 
 .ve-callout {
   margin: 0.85rem 0;
   padding: 0.85rem 1rem;
   border-radius: var(--radius-lg, 1rem);
-  border: 1px solid color-mix(in srgb, var(--color-accent, #B08A3E) 28%, var(--color-hairline));
-  background: var(--color-accent-soft, #F5EEDF);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-hairline));
+  background: var(--color-accent-soft);
   color: var(--color-ink, var(--mj-ink));
   text-align: start;
   line-height: 1.7;
@@ -370,7 +370,7 @@
   display: block;
   margin-bottom: 0.25rem;
   font-weight: 700;
-  color: color-mix(in srgb, var(--color-accent, #B08A3E) 75%, #16241E);
+  color: color-mix(in srgb, var(--color-accent) 75%, #16241E);
   font-size: 0.85rem;
 }
 
@@ -397,8 +397,8 @@
   padding: 0.7rem 0.85rem;
   text-decoration: none;
   border-radius: var(--radius-card, 1.125rem);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #0F5C45) 18%, var(--color-hairline, var(--mj-hairline)));
-  background: var(--color-surface, #FFFCF7);
+  border: 1px solid color-mix(in srgb, var(--mj-brand) 18%, var(--color-hairline, var(--mj-hairline)));
+  background: var(--color-surface);
   color: var(--color-ink, var(--mj-ink));
 }
 
@@ -409,7 +409,7 @@
 
 .ve-pager a strong {
   font-size: 0.92rem;
-  color: var(--brand-on-white, #0C4F3A);
+  color: var(--brand-on-white);
 }
 
 .ve-pager a.ve-pager__next {
@@ -459,8 +459,8 @@ html[data-theme="dark"] .ve-accordion details,
 html.dark .ve-accordion details,
 html[data-theme="dark"] .ve-pager a,
 html.dark .ve-pager a {
-  background: var(--color-surface, #1B2421);
-  border-color: var(--color-hairline, #35443F);
+  background: var(--color-surface);
+  border-color: var(--color-hairline);
 }
 
 html[data-theme="dark"] .ve-book-card__icon,
@@ -473,21 +473,21 @@ html[data-theme="dark"] .ve-chip,
 html.dark .ve-chip,
 html[data-theme="dark"] .ve-badge,
 html.dark .ve-badge {
-  background: var(--chip-bg, #16261F);
-  color: var(--chip-fg, #B8E0CC);
-  border-color: var(--color-hairline, #35443F);
+  background: var(--chip-bg);
+  color: var(--chip-fg);
+  border-color: var(--color-hairline);
 }
 
 html[data-theme="dark"] .ve-callout,
 html.dark .ve-callout {
-  background: var(--color-accent-soft, #2A3733);
-  border-color: var(--color-hairline, #35443F);
+  background: var(--color-accent-soft);
+  border-color: var(--color-hairline);
   color: var(--color-ink, #F8FAFC);
 }
 
 html[data-theme="dark"] .ve-toc,
 html.dark .ve-toc {
-  background: color-mix(in srgb, var(--color-bg, #131A18) 90%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 90%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {

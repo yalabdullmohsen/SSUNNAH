@@ -4,22 +4,21 @@
 **Machine source:** `artifacts/majalis/reports/eradication/FULL_VISUAL_BASELINE.json`  
 **Regenerate:** `pnpm --filter @workspace/majalis run inventory:application-layer-eradication`
 
-## Snapshot (PR A ground truth)
+## Snapshot (latest measured)
 
-Values below mirror the JSON artifact at program start from latest `main` (`672573e09` era). Re-run the inventory script after each absorption wave; ceilings must not rise.
-
+- Measured at: **2026-10-04T02:14:30.645Z**
 - CSS file count: **356**
-- CSS total bytes: **3,872,733**
-- Synchronous CSS imports (`main.tsx` before deferred loader): **14**
+- CSS total bytes: **3,870,061**
+- Synchronous CSS imports: **14**
 - Deferred CSS imports: **54**
-- Rule blocks (approx `{`): **20,735**
-- Hex count: **6,432**
+- Rule blocks (approx): **20,735**
+- Hex count: **6,189**
 - RGB/HSL count: **2,008**
-- Unsafe Hex fallbacks `var(--token, #hex)`: **3,333**
+- Unsafe Hex fallbacks `var(--token, #hex)`: **3,090**
 - `!important` count: **4,746**
 - Raw `box-shadow` decls: **986**
 - Raw `border-radius` px decls: **392**
-- Raw numeric `z-index` decls: **258** (eradication counter; visual-debt gate uses non-negative pattern ceiling 257)
+- Raw numeric `z-index` decls: **258**
 - Inline color style matches (TSX): **39**
 - Official Button import files: **287**
 - Raw `<button` files: **76**
@@ -28,19 +27,19 @@ Values below mirror the JSON artifact at program start from latest `main` (`6725
 
 - Foundation: `--sf-*` (decls 150 / var-uses 773 in CSS)
 - Application: `--ss-*` (decls 109 / var-uses 524 in CSS)
-- Bridge / legacy controlled: `--mj-*` (decls 193 / var-uses 10,889 in CSS)
+- Bridge / legacy controlled: `--mj-*` (decls 193 / var-uses 10887 in CSS)
 
 No fourth token family.
 
 ## Layer classification counts
 
 - CANONICAL_AUTHORITY: 8
+- SHARED_PLATFORM: 166
+- SPECIAL_CASE: 36
 - ACTIVE_COMPATIBILITY: 7
+- IOS_ONLY: 3
 - ABSORB_NOW: 6
 - KEEP_TEMPORARILY: 130
-- SPECIAL_CASE: 36
-- IOS_ONLY: 3
-- SHARED_PLATFORM: 166
 
 ## Companion maps
 
