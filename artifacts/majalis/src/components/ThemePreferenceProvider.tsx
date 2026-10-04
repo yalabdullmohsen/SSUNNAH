@@ -49,7 +49,7 @@ export function ThemePreferenceProvider({ children }: { children: ReactNode }) {
     void reapplyPageChromeFromLocation(resolvedTheme);
   }, [resolvedTheme]);
 
-  // Listen for system theme changes in "auto" mode
+  // Listen for system theme changes in "auto" mode (+ resume after background)
   useEffect(() => {
     if (preference !== "auto") return;
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
@@ -58,7 +58,14 @@ export function ThemePreferenceProvider({ children }: { children: ReactNode }) {
       setResolvedTheme(resolveTheme("auto"));
     };
     mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
+    const onVisible = () => {
+      if (document.visibilityState === "visible") handler();
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    return () => {
+      mq.removeEventListener("change", handler);
+      document.removeEventListener("visibilitychange", onVisible);
+    };
   }, [preference]);
 
   const setPreference = useCallback((next: ThemePreference) => {
