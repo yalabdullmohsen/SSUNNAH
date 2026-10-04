@@ -12,6 +12,7 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "getAppGroupId", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "publishPrayerSnapshot", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "publishProgressSnapshot", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "publishWidgetEnvelope", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "readPrayerSnapshot", returnType: CAPPluginReturnPromise),
     ]
 
@@ -58,7 +59,7 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
             nextHasStarted: call.getBool("nextHasStarted") ?? false,
             updatedAtEpochMs: Int64(Date().timeIntervalSince1970 * 1000)
         )
-        let ok = SunnahSharedStore.publishPrayer(snap)
+        let ok = SunnahWidgetRefreshCoordinator.commitPrayer(snap)
         if ok {
             // Reload only after App Group write+synchronize committed.
             WidgetCenter.shared.reloadTimelines(ofKind: SunnahWidgetKind.prayerTimes)
@@ -83,6 +84,21 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
             WidgetCenter.shared.reloadTimelines(ofKind: SunnahWidgetKind.prayerTimes)
         }
         call.resolve(["ok": ok])
+    }
+
+    @objc func publishWidgetEnvelope(_ call: CAPPluginCall) {
+        guard let json = call.getString("envelopeJson"),
+              let data = json.data(using: .utf8)
+        else {
+            call.resolve(["ok": false])
+            return
+        }
+        let env = SunnahWidgetEnvelopeCodec.decodeIsolated(from: data)
+        let rawDomains = call.getArray("domains", String.self) ?? []
+        var domains = Set(rawDomains.compactMap { SunnahWidgetRefreshCoordinator.Domain(rawValue: $0) })
+        if domains.isEmpty { domains = [.calendar, .adhkar, .quran, .mushaf, .custom] }
+        let ok = SunnahWidgetRefreshCoordinator.commitEnvelope(env, domains: domains)
+        call.resolve(["ok": ok, "schemaVersion": env.schemaVersion])
     }
 
     @objc func readPrayerSnapshot(_ call: CAPPluginCall) {

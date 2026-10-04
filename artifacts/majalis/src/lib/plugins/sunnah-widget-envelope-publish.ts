@@ -1,0 +1,237 @@
+/**
+ * Canonical widget envelope publisher.
+ * Reads existing app engines / daily content. Does not recalculate prayer or Hijri math in Swift.
+ */
+import { isIOS, isNative } from "@/lib/capacitor-utils";
+import { getDailyAyah, getDailyDhikr, getDailyHadith, getDayIndex } from "@/lib/daily-content";
+import { resolveTimeOfDay } from "@/lib/daily-context";
+import { loadLastPageSync } from "@/lib/quran-last-page";
+import { getActivePrayerLocation } from "@/lib/prayer-location-prefs";
+import { dateISOInZone } from "@/lib/prayer-notification-ids";
+import { buildSharedPrayerSnapshotPayload } from "./sunnah-shared-prayer-publish";
+import { publishSharedWidgetEnvelope } from "./sunnah-shared-data";
+import type { PrayerTimesPayload } from "../prayer-times";
+
+const ADHKAR_BY_TIME: Record<string, { collection: string; title: string }> = {
+  fajr: { collection: "morning", title: "أذكار الصباح" },
+  duha: { collection: "morning", title: "أذكار الصباح" },
+  zuhr: { collection: "after-salah", title: "أذكار بعد الصلاة" },
+  asr: { collection: "evening", title: "أذكار المساء" },
+  maghrib: { collection: "evening", title: "أذكار المساء" },
+  isha: { collection: "evening", title: "أذكار المساء" },
+  layl: { collection: "sleep", title: "أذكار النوم" },
+};
+
+const HIJRI_MONTHS_AR = [
+  "",
+  "محرم",
+  "صفر",
+  "ربيع الأول",
+  "ربيع الآخر",
+  "جمادى الأولى",
+  "جمادى الآخرة",
+  "رجب",
+  "شعبان",
+  "رمضان",
+  "شوال",
+  "ذو القعدة",
+  "ذو الحجة",
+];
+
+export const SUNNAH_WIDGET_ENVELOPE_SCHEMA_VERSION = 1;
+export const SUNNAH_WIDGET_ENVELOPE_KEY = "sunnah.shared.envelope.v1";
+
+function hijriParts(now: Date, timeZone: string) {
+  const fmt = new Intl.DateTimeFormat("en-u-ca-islamic-umalqura", {
+    timeZone,
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+  });
+  const parts = fmt.formatToParts(now);
+  const num = (type: Intl.DateTimeFormatPartTypes) =>
+    Number(parts.find((p) => p.type === type)?.value || 0);
+  return { day: num("day"), month: num("month"), year: num("year") };
+}
+
+function weekdayAr(now: Date, timeZone: string): string {
+  return new Intl.DateTimeFormat("ar", { timeZone, weekday: "long" }).format(now);
+}
+
+function gregorianDisplay(now: Date, timeZone: string): string {
+  return new Intl.DateTimeFormat("ar", {
+    timeZone,
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(now);
+}
+
+function hijriDisplay(now: Date, timeZone: string): string {
+  return new Intl.DateTimeFormat("ar-SA-u-ca-islamic-umalqura", {
+    timeZone,
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(now);
+}
+
+function daysUntilRamadan(now: Date, timeZone: string): { inRamadan: boolean; days: number | null } {
+  const today = hijriParts(now, timeZone);
+  if (today.month === 9) return { inRamadan: true, days: 0 };
+  const cursor = new Date(now);
+  for (let i = 1; i <= 400; i += 1) {
+    cursor.setTime(now.getTime() + i * 86400000);
+    const h = hijriParts(cursor, timeZone);
+    if (h.month === 9 && h.day === 1) return { inRamadan: false, days: i };
+  }
+  return { inRamadan: false, days: null };
+}
+
+function surahNumberFromReference(reference: string, fallback = 1): number {
+  const m = reference.match(/(\d+)\s*:\s*\d+/);
+  if (!m) return fallback;
+  return Number(m[1]) || fallback;
+}
+
+export function buildSunnahWidgetEnvelope(
+  now: Date = new Date(),
+  prayerPayload?: ReturnType<typeof buildSharedPrayerSnapshotPayload> | null,
+): Record<string, unknown> {
+  const tz = prayerPayload?.timeZoneIdentifier || getActivePrayerLocation().timeZone || "Asia/Kuwait";
+  const hijri = hijriParts(now, tz);
+  const ramadan = daysUntilRamadan(now, tz);
+  const timeOfDay = resolveTimeOfDay(now.getHours() + now.getMinutes() / 60);
+  const adhkarMap = ADHKAR_BY_TIME[timeOfDay] ?? ADHKAR_BY_TIME.duha;
+  const ayah = getDailyAyah(now);
+  const dhikr = getDailyDhikr(now);
+  const hadith = getDailyHadith(now);
+  const lastPage = loadLastPageSync();
+  const ayahSurahNumber = surahNumberFromReference(ayah.reference);
+  const generatedAt = now.getTime();
+
+  return {
+    schemaVersion: SUNNAH_WIDGET_ENVELOPE_SCHEMA_VERSION,
+    generatedAtEpochMs: generatedAt,
+    expiresAtEpochMs: generatedAt + 36 * 3600_000,
+    timezoneIdentifier: tz,
+    localeIdentifier: "ar",
+    prayerPayload: prayerPayload
+      ? {
+          schemaVersion: 1,
+          ...prayerPayload,
+          updatedAtEpochMs: generatedAt,
+        }
+      : undefined,
+    calendarPayload: {
+      schemaVersion: 1,
+      timezoneIdentifier: tz,
+      weekdayAr: weekdayAr(now, tz),
+      hijriDay: hijri.day,
+      hijriMonth: hijri.month,
+      hijriMonthAr: HIJRI_MONTHS_AR[hijri.month] || "",
+      hijriYear: hijri.year,
+      hijriDisplay: hijriDisplay(now, tz),
+      gregorianDisplay: gregorianDisplay(now, tz),
+      inRamadan: ramadan.inRamadan,
+      daysUntilRamadan: ramadan.days,
+      ramadanLabelAr: ramadan.inRamadan ? "رمضان مبارك" : "باقي على رمضان",
+      updatedAtEpochMs: generatedAt,
+    },
+    adhkarPayload: {
+      schemaVersion: 1,
+      activeCollection: adhkarMap.collection,
+      activeTitleAr: adhkarMap.title,
+      morningTitleAr: "أذكار الصباح",
+      eveningTitleAr: "أذكار المساء",
+      morningActionAr: "ابدأ ورد الصباح",
+      eveningActionAr: "ابدأ ورد المساء",
+      rotatingText: dhikr.text,
+      rotatingSource: dhikr.source,
+      rotatingCollection: dhikr.category,
+      rotationDayKey: dateISOInZone(tz, now),
+      updatedAtEpochMs: generatedAt,
+    },
+    quranPayload: {
+      schemaVersion: 1,
+      ayahText: ayah.text,
+      surahNameAr: ayah.surah.replace(/^سورة\s+/, ""),
+      surahNumber: ayahSurahNumber,
+      ayahNumber: ayah.ayahNumber,
+      page: null,
+      deepLinkPath: `/mushaf?ayah=${ayahSurahNumber}:${ayah.ayahNumber}`,
+      updatedAtEpochMs: generatedAt,
+    },
+    mushafPayload: {
+      schemaVersion: 1,
+      lastSurahNameAr: null,
+      lastSurahNumber: null,
+      lastPage,
+      lastAyahNumber: null,
+      bookmarkSurahNameAr: null,
+      bookmarkSurahNumber: null,
+      bookmarkPage: lastPage,
+      bookmarkAyahNumber: null,
+      hasProgress: lastPage != null,
+      hasBookmark: lastPage != null,
+      updatedAtEpochMs: generatedAt,
+    },
+    customContentPayload: {
+      schemaVersion: 1,
+      items: [
+        {
+          id: `ayah:${ayah.id}`,
+          contentType: "ayah",
+          titleAr: "آية",
+          text: ayah.text,
+          source: ayah.reference,
+          deepLinkPath: `/mushaf?ayah=${ayahSurahNumber}:${ayah.ayahNumber}`,
+        },
+        {
+          id: `hadith:${hadith.id}`,
+          contentType: "hadith",
+          titleAr: "حديث",
+          text: hadith.text,
+          source: hadith.source,
+          deepLinkPath: "/hadith",
+        },
+        {
+          id: `dhikr:${dhikr.id}`,
+          contentType: "dhikr",
+          titleAr: "ذكر",
+          text: dhikr.text,
+          source: dhikr.source,
+          deepLinkPath: "/adhkar/morning",
+        },
+      ],
+      updatedAtEpochMs: generatedAt,
+    },
+    preferencesPayload: {
+      schemaVersion: 1,
+      appearance: "fullColor",
+      showSource: true,
+      compactText: false,
+      updatedAtEpochMs: generatedAt,
+    },
+    dayIndex: getDayIndex(now),
+  };
+}
+
+export async function publishSunnahWidgetEnvelope(options?: {
+  domains?: string[];
+  prayerTimes?: PrayerTimesPayload | null;
+}): Promise<boolean> {
+  if (!isNative || !isIOS) return false;
+  try {
+    const prayer = options?.prayerTimes
+      ? buildSharedPrayerSnapshotPayload(options.prayerTimes)
+      : null;
+    const envelope = buildSunnahWidgetEnvelope(new Date(), prayer);
+    return await publishSharedWidgetEnvelope(
+      JSON.stringify(envelope),
+      options?.domains ?? ["calendar", "adhkar", "quran", "mushaf", "custom"],
+    );
+  } catch {
+    return false;
+  }
+}

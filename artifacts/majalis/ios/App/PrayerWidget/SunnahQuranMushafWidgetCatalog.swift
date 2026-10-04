@@ -1,0 +1,166 @@
+import SwiftUI
+import WidgetKit
+
+struct QuranAyahWidget: Widget {
+    let kind = SunnahWidgetKind.quranAyah
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
+            QuranAyahView(entry: entry)
+                .environment(\.layoutDirection, .rightToLeft)
+                .widgetURL(quranURL(entry))
+        }
+        .configurationDisplayName("آية")
+        .description("نص آية معتمد كما هو، مع اسم السورة ورقم الآية.")
+        .supportedFamilies(SunnahWidgetFamilySupport.quran)
+    }
+}
+
+struct MushafContinueWidget: Widget {
+    let kind = SunnahWidgetKind.mushafContinue
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
+            MushafContinueView(entry: entry)
+                .environment(\.layoutDirection, .rightToLeft)
+                .widgetURL(mushafContinueURL(entry))
+        }
+        .configurationDisplayName("متابعة المصحف")
+        .description("آخر موضع قراءة محفوظ، بلا اختراع صفحة.")
+        .supportedFamilies(SunnahWidgetFamilySupport.mushaf)
+    }
+}
+
+struct MushafBookmarkWidget: Widget {
+    let kind = SunnahWidgetKind.mushafBookmark
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
+            MushafBookmarkView(entry: entry)
+                .environment(\.layoutDirection, .rightToLeft)
+                .widgetURL(mushafBookmarkURL(entry))
+        }
+        .configurationDisplayName("إشارة المصحف")
+        .description("الإشارة التي اخترتها في سُنّة.")
+        .supportedFamilies(SunnahWidgetFamilySupport.mushaf)
+    }
+}
+
+private func quranURL(_ entry: CatalogWidgetEntry) -> URL {
+    if let path = entry.quran?.deepLinkPath, !path.isEmpty {
+        return SunnahWidgetDeepLinkFactory.url(path: path)
+    }
+    return SunnahWidgetDeepLinkFactory.mushaf(page: entry.quran?.page)
+}
+
+private func mushafContinueURL(_ entry: CatalogWidgetEntry) -> URL {
+    SunnahWidgetDeepLinkFactory.mushaf(page: entry.mushaf?.lastPage)
+}
+
+private func mushafBookmarkURL(_ entry: CatalogWidgetEntry) -> URL {
+    let ayah: String? = {
+        guard let s = entry.mushaf?.bookmarkSurahNumber, let a = entry.mushaf?.bookmarkAyahNumber else { return nil }
+        return "\(s):\(a)"
+    }()
+    return SunnahWidgetDeepLinkFactory.mushaf(page: entry.mushaf?.bookmarkPage, ayah: ayah)
+}
+
+private struct QuranSurface: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOSApplicationExtension 17.0, *) {
+            content.containerBackground(for: .widget) { SunnahWidgetTheme.homeGradientDeep }
+        } else {
+            content.background(SunnahWidgetTheme.homeGradientDeep)
+        }
+    }
+}
+
+struct QuranAyahView: View {
+    let entry: CatalogWidgetEntry
+
+    var body: some View {
+        Group {
+            if let quran = entry.quran, !quran.ayahText.isEmpty {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(quran.ayahText)
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                        .minimumScaleFactor(0.7)
+                    Text("سورة \(quran.surahNameAr) · آية \(SunnahWidgetTimeFormatting.arabic(quran.ayahNumber))")
+                        .font(.caption.bold())
+                        .foregroundStyle(SunnahBrandColors.gold)
+                }
+                .padding(14)
+            } else {
+                SunnahWidgetEmptyState(message: "افتح سُنّة لعرض الآية المعتمدة")
+            }
+        }
+        .modifier(QuranSurface())
+        .accessibilityLabel(entry.quran.map { "آية \($0.ayahNumber) من سورة \($0.surahNameAr). \($0.ayahText)" } ?? "الآية غير متاحة")
+    }
+}
+
+struct MushafContinueView: View {
+    let entry: CatalogWidgetEntry
+
+    var body: some View {
+        Group {
+            if let mushaf = entry.mushaf, mushaf.hasProgress, let page = mushaf.lastPage {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("متابعة القراءة")
+                        .font(.caption.bold())
+                        .foregroundStyle(SunnahBrandColors.gold)
+                    if let name = mushaf.lastSurahNameAr {
+                        Text(name)
+                            .font(.title3.bold())
+                            .foregroundStyle(.white)
+                    }
+                    Text("صفحة \(SunnahWidgetTimeFormatting.arabic(page))")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                }
+                .padding(12)
+            } else {
+                SunnahWidgetEmptyState(message: "ابدأ القراءة")
+            }
+        }
+        .modifier(QuranSurface())
+        .accessibilityLabel(continueA11y)
+    }
+
+    private var continueA11y: String {
+        guard let mushaf = entry.mushaf, mushaf.hasProgress, let page = mushaf.lastPage else {
+            return "ابدأ القراءة"
+        }
+        return "متابعة المصحف صفحة \(SunnahWidgetTimeFormatting.arabic(page))"
+    }
+}
+
+struct MushafBookmarkView: View {
+    let entry: CatalogWidgetEntry
+
+    var body: some View {
+        Group {
+            if let mushaf = entry.mushaf, mushaf.hasBookmark, let page = mushaf.bookmarkPage {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("إشارتك")
+                        .font(.caption.bold())
+                        .foregroundStyle(SunnahBrandColors.gold)
+                    Text(mushaf.bookmarkSurahNameAr ?? "المصحف")
+                        .font(.title3.bold())
+                        .foregroundStyle(.white)
+                    Text("صفحة \(SunnahWidgetTimeFormatting.arabic(page))")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                    if let ayah = mushaf.bookmarkAyahNumber {
+                        Text("آية \(SunnahWidgetTimeFormatting.arabic(ayah))")
+                            .font(.caption)
+                            .foregroundStyle(SunnahWidgetTheme.secondaryText)
+                    }
+                }
+                .padding(12)
+            } else {
+                SunnahWidgetEmptyState(message: "اختر إشارة من المصحف")
+            }
+        }
+        .modifier(QuranSurface())
+        .accessibilityLabel(entry.mushaf?.bookmarkSurahNameAr.map { "إشارة \($0)" } ?? "لا إشارة مختارة")
+    }
+}

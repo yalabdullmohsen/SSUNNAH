@@ -65,8 +65,11 @@ export function buildSharedPrayerSnapshotPayload(
   const todayNoon = calendarNoonInZone(tz, new Date(nowMs));
   const timesEpochMs: Record<string, number> = {};
   for (const slot of payload.prayers) {
-    if (!slot.obligatory || slot.minutes == null) continue;
-    timesEpochMs[slot.key.toLowerCase()] = epochAtZoneMinutes(tz, slot.minutes, todayNoon);
+    if (slot.minutes == null) continue;
+    const key = slot.key.toLowerCase();
+    if (slot.obligatory || key === "sunrise") {
+      timesEpochMs[key] = epochAtZoneMinutes(tz, slot.minutes, todayNoon);
+    }
   }
 
   const next = listUpcomingObligatory(payload.prayers, tz, nowMs)[0] ?? null;
@@ -92,7 +95,10 @@ export async function publishPrayerSnapshotForWidgets(
   if (!isNative || !isIOS) return false;
   if (!payload?.prayers?.length) return false;
   try {
-    return await publishSharedPrayerSnapshot(buildSharedPrayerSnapshotPayload(payload));
+    const ok = await publishSharedPrayerSnapshot(buildSharedPrayerSnapshotPayload(payload));
+    const { publishSunnahWidgetEnvelope } = await import("./sunnah-widget-envelope-publish");
+    void publishSunnahWidgetEnvelope({ domains: ["prayer", "calendar", "adhkar", "quran", "mushaf", "custom"] });
+    return ok;
   } catch {
     return false;
   }

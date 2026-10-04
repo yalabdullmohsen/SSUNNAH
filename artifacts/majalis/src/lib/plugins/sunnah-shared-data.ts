@@ -26,6 +26,7 @@ interface SunnahSharedDataPlugin {
   getAppGroupId(): Promise<{ appGroupId: string; available: boolean }>;
   publishPrayerSnapshot(options: SharedPrayerSnapshotPayload): Promise<{ ok: boolean }>;
   publishProgressSnapshot(options: SharedProgressSnapshotPayload): Promise<{ ok: boolean }>;
+  publishWidgetEnvelope(options: { envelopeJson: string; domains: string[] }): Promise<{ ok: boolean }>;
   readPrayerSnapshot(): Promise<Record<string, unknown> & { found: boolean }>;
 }
 
@@ -56,6 +57,20 @@ export async function publishSharedProgressSnapshot(
   if (!plugin) return false;
   try {
     const res = await plugin.publishProgressSnapshot(payload);
+    return Boolean(res.ok);
+  } catch {
+    return false;
+  }
+}
+
+export async function publishSharedWidgetEnvelope(
+  envelopeJson: string,
+  domains: string[],
+): Promise<boolean> {
+  const plugin = getPlugin();
+  if (!plugin) return false;
+  try {
+    const res = await plugin.publishWidgetEnvelope({ envelopeJson, domains });
     return Boolean(res.ok);
   } catch {
     return false;

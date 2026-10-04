@@ -212,6 +212,9 @@
 | `docs/mobile/IOS_SHARED_DATA_CONTRACT.md` | عقد مشاركة بيانات App Group · عقود Widget/Watch (بلا تنفيذ) |
 | `docs/audit/IOS_APP_GROUPS_FOUNDATION_REPORT.md` | T-028 · `IOS_SHARED_DATA_FOUNDATION_READY` |
 | `docs/audit/IOS_WIDGETS_PRAYER_CERTIFICATION_REPORT.md` | T-029 · `IOS_WIDGETS_PRAYER_CERTIFIED` · PrayerWidget 6 families |
+| `docs/audit/IOS_SUNNAH_WIDGET_PLATFORM_AUDIT.md` | W0 forensic · `CURRENT_WIDGET_ROOT_CAUSE_PROVEN` |
+| `docs/audit/IOS_SUNNAH_WIDGET_PLATFORM_CONTRACT.md` | `IOS_SUNNAH_WIDGET_PLATFORM_CONTRACT_GATE` · FUTURE_IOS_UPDATE_REQUIRED |
+| `docs/mobile/IOS_SUNNAH_WIDGET_THEME_MAPPING.md` | Native SwiftUI mapping of Sunnah emerald/gold identity |
 | `docs/audit/PRAYER_LIVE_ACTIVITY_CERTIFICATION_REPORT.md` | T-031 · `PRAYER_LIVE_ACTIVITY_CERTIFIED` · 4 phases + Dynamic Island |
 | `docs/audit/IOS_APP_SHELL_STABILITY_REPORT.md` | T-032 · `IOS_APP_SHELL_NOT_STABLE` (FAIL) · Simulator evidence pack |
 | `docs/audit/evidence/t032-ios-app-shell/` | أدلة لقطات/مصفوفة محاكي T-032 |
