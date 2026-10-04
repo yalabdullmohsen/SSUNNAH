@@ -2,7 +2,8 @@
 
 **Baseline:** `QUALITY_BASELINE_V1`  
 **SoT:** `yalabdullmohsen/SSUNNAH` · Prod: `https://www.ssunnah.com/version.json`  
-**Identity:** `SUNNAH_CANONICAL_PLATFORM_IDENTITY` — evaluate **WEB · IOS · APP_STORE** separately (never merge surfaces).
+**Identity:** `SUNNAH_CANONICAL_PLATFORM_IDENTITY` — evaluate **WEB · IOS · APP_STORE** separately (never merge surfaces).  
+**Classification:** `SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL` — classify before implement; every report starts with `TASK_CLASSIFICATION:`.
 
 ## Platform separation (mandatory)
 
@@ -13,7 +14,7 @@
 | **APP_STORE** | Release/review readiness, polish, compliance, update safety | APP_STORE only |
 
 Reports must include **WEB IMPACT · IOS IMPACT · APP STORE IMPACT**.  
-Architecture classes: `WEB_ONLY` · `IOS_ONLY` · `SHARED_PLATFORM` · `APP_STORE_ONLY`.
+Task classes: `WEB_ONLY` · `IOS_ONLY` · `APP_STORE_ONLY` · `SHARED_PLATFORM` (shared still reports three impacts).
 
 ## Health board
 

@@ -26,6 +26,20 @@
     "SHARED_PLATFORM",
     "APP_STORE_ONLY"
   ],
+  "taskClassificationProtocol": {
+    "id": "SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL",
+    "status": "PERMANENT",
+    "canonicalDoc": "docs/governance/SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL.md",
+    "mandatoryExecutionHeader": "TASK_CLASSIFICATION",
+    "classes": ["WEB_ONLY", "IOS_ONLY", "APP_STORE_ONLY", "SHARED_PLATFORM"],
+    "sharedStillRequiresSeparatedImpact": true,
+    "criticalNonEquivalences": [
+      "Responsive success ≠ iOS success",
+      "Web performance ≠ App performance",
+      "Build success ≠ App Store readiness",
+      "App Store approval ≠ Product quality"
+    ]
+  },
   "forbiddenPhrasesWithoutSeparation": [
     "Application Improved"
   ],

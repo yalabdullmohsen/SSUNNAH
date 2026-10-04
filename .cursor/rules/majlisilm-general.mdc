@@ -9,8 +9,9 @@ alwaysApply: true
 
 سُنّة = **WEB PLATFORM + IOS APPLICATION + APP STORE PRODUCT** (منتجات منفصلة).  
 العقد: `docs/governance/SUNNAH_CANONICAL_PLATFORM_IDENTITY.md` — لا يُحذف ولا يُتجاهل.  
-كل تقرير يفصل WEB IMPACT / IOS IMPACT / APP STORE IMPACT؛ الأداء WEB/IOS/App Store UX؛ المعمارية `WEB_ONLY|IOS_ONLY|SHARED_PLATFORM|APP_STORE_ONLY`.  
-نجاح سطح لا يعني نجاح سطح آخر. لا Builds/TestFlight/ASC إلا بتفويض مالك.
+التصنيف قبل التنفيذ: `docs/governance/SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL.md` — كل تقرير يبدأ بـ `TASK_CLASSIFICATION:` (`WEB_ONLY|IOS_ONLY|APP_STORE_ONLY|SHARED_PLATFORM`).  
+كل تقرير يفصل WEB IMPACT / IOS IMPACT / APP STORE IMPACT؛ الأداء WEB/IOS/App Store UX.  
+Responsive ≠ iOS · Web perf ≠ App perf · Build ≠ Store ready. لا Builds/TestFlight/ASC إلا بتفويض مالك.
 
 - الواجهة عربية RTL أولاً؛ لا تكسر الاتجاه أو الأرقام العربية في المصحف وواجهات القراءة.
 - لا تحذف محتوى شرعياً ولا تعدّل نصاً علمياً إلا في العرض/الـmetadata؛ أي تعديل علمي → طابور مراجعة بشرية.

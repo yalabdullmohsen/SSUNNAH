@@ -17,6 +17,21 @@ Canonical: `docs/governance/SUNNAH_CANONICAL_PLATFORM_IDENTITY.md` · lock: `doc
 - الأداء: **WEB PERFORMANCE** · **IOS PERFORMANCE** · **APP STORE USER EXPERIENCE**
 - قرارات المعمارية قبل التنفيذ: `WEB_ONLY` | `IOS_ONLY` | `SHARED_PLATFORM` | `APP_STORE_ONLY`
 
+### SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL (دائم)
+
+قبل أي تنفيذ صنّف المهمة أولًا. البروتوكول: `docs/governance/SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL.md`.
+
+كل تقرير **يجب** أن يبدأ بـ:
+
+```
+TASK_CLASSIFICATION:
+WEB_ONLY | IOS_ONLY | APP_STORE_ONLY | SHARED_PLATFORM
+```
+
+تقرير بلا تصنيف = **باطل**.  
+`SHARED_PLATFORM` ما زال يلزمه WEB/IOS/APP_STORE IMPACT منفصلًا.  
+Responsive ≠ iOS · Web perf ≠ App perf · Build ≠ App Store ready · Approval ≠ Product quality.
+
 نجاح سطح ≠ نجاح سطح آخر. أي برنامج حوكمة لا يفصل WEB / IOS / APP_STORE يُعد **باطلًا**.  
 لا تُنشئ Builds ولا تلمس TestFlight/App Store إلا بتفويض مالك صريح.
 
