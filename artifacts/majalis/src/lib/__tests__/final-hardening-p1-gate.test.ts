@@ -145,7 +145,7 @@ console.log("=== P2 prayer enter unhandled + AppState race ===");
 console.log("=== P2/P3 widget timeline + LA await ActivityKit ===");
 {
   const shared = read("ios/App/App/SunnahSharedDataPlugin.swift");
-  assert.match(shared, /WidgetCenter\.shared\.reloadAllTimelines/);
+  assert.match(shared, /WidgetCenter\.shared\.reloadTimelines\(ofKind:\s*SunnahWidgetKind\.prayerTimes\)/);
   const la = read("ios/App/App/PrayerLiveActivityPlugin.swift");
   assert.match(la, /await activity\.update/);
   assert.match(la, /await activity\.end/);

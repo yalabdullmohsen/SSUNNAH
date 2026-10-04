@@ -1,8 +1,11 @@
 import Foundation
 import WidgetKit
+import os
 
 /// Deep link — موحّد مع Live Activity عبر Shared/SunnahPrayerDeepLink.
 typealias PrayerWidgetDeepLink = SunnahPrayerDeepLink
+
+private let widgetLog = Logger(subsystem: "com.yousef.majlisilm", category: "PrayerWidget")
 
 enum PrayerSlotKey: String, CaseIterable {
     case fajr, dhuhr, asr, maghrib, isha
@@ -36,6 +39,7 @@ struct PrayerTimelineSlot: Hashable {
 struct PrayerWidgetEntry: TimelineEntry {
     let date: Date
     let snapshot: SharedPrayerSnapshot?
+    let dataState: PrayerWidgetDataState
     let slots: [PrayerTimelineSlot]
     let currentKey: PrayerSlotKey?
     let currentNameAr: String?
@@ -48,25 +52,46 @@ struct PrayerWidgetEntry: TimelineEntry {
     let gregorianDateText: String
     let hijriDateText: String?
 
+    /// Representative gallery/preview content — not live device data.
     static func placeholder() -> PrayerWidgetEntry {
-        make(
-            date: Date(),
+        let tz = TimeZone(identifier: "Asia/Riyadh") ?? .current
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = tz
+        let dayStart = cal.startOfDay(for: Date())
+        func at(_ hour: Int, _ minute: Int) -> Int64 {
+            let d = cal.date(byAdding: DateComponents(hour: hour, minute: minute), to: dayStart) ?? dayStart
+            return Int64(d.timeIntervalSince1970 * 1000)
+        }
+        let times: [String: Int64] = [
+            "fajr": at(5, 5),
+            "dhuhr": at(12, 10),
+            "asr": at(15, 30),
+            "maghrib": at(18, 5),
+            "isha": at(19, 30),
+        ]
+        let now = Date()
+        let nextKey = "dhuhr"
+        let nextMs = times[nextKey] ?? at(12, 10)
+        return make(
+            date: now,
             snapshot: SharedPrayerSnapshot(
-                schemaVersion: 1,
-                locationLabel: "الرياض",
-                timeZoneIdentifier: "Asia/Riyadh",
-                dayKey: "2026-10-01",
-                timesEpochMs: [:],
-                nextPrayerKey: "dhuhr",
+                schemaVersion: SharedPrayerSnapshot.currentSchema,
+                locationLabel: "معاينة",
+                timeZoneIdentifier: tz.identifier,
+                dayKey: SunnahSharedStore.dayKey(for: now, timeZone: tz),
+                timesEpochMs: times,
+                nextPrayerKey: nextKey,
                 nextPrayerNameAr: "الظهر",
-                nextPrayerEpochMs: Int64(Date().addingTimeInterval(3600).timeIntervalSince1970 * 1000),
+                nextPrayerEpochMs: nextMs,
                 nextHasStarted: false,
-                updatedAtEpochMs: Int64(Date().timeIntervalSince1970 * 1000)
-            )
+                updatedAtEpochMs: Int64(now.timeIntervalSince1970 * 1000)
+            ),
+            isPreview: true
         )
     }
 
-    static func make(date: Date, snapshot: SharedPrayerSnapshot?) -> PrayerWidgetEntry {
+    static func make(date: Date, snapshot: SharedPrayerSnapshot?, isPreview: Bool = false) -> PrayerWidgetEntry {
+        let state = isPreview ? PrayerWidgetDataState.validData : SunnahSharedStore.classifyPrayerData(snapshot, now: date)
         let tz = TimeZone(identifier: snapshot?.timeZoneIdentifier ?? TimeZone.current.identifier)
             ?? .current
         var cal = Calendar(identifier: .gregorian)
@@ -77,18 +102,41 @@ struct PrayerWidgetEntry: TimelineEntry {
             return PrayerTimelineSlot(key: key, date: Date(timeIntervalSince1970: TimeInterval(ms) / 1000))
         }.sorted { $0.date < $1.date }
 
-        let nextKeyRaw = snapshot?.nextPrayerKey?.lowercased()
-        let nextKey = nextKeyRaw.flatMap { PrayerSlotKey(rawValue: $0) }
-        let nextDate: Date? = {
-            if let ms = snapshot?.nextPrayerEpochMs {
-                return Date(timeIntervalSince1970: TimeInterval(ms) / 1000)
-            }
-            return slots.first(where: { $0.date > date })?.date
+        // Prefer slot-derived next relative to this entry date; fall back to snapshot anchors
+        // (needed after Isha when next is tomorrow Fajr not present in today's times map).
+        let derivedNext = slots.first(where: { $0.date > date })
+        let snapshotNextDate: Date? = {
+            guard let ms = snapshot?.nextPrayerEpochMs else { return nil }
+            return Date(timeIntervalSince1970: TimeInterval(ms) / 1000)
         }()
-        let nextName = snapshot?.nextPrayerNameAr ?? nextKey?.nameAr
+        let nextDate: Date? = {
+            if let d = derivedNext?.date { return d }
+            if let d = snapshotNextDate, d > date { return d }
+            return nil
+        }()
+        let nextKey: PrayerSlotKey? = {
+            if let k = derivedNext?.key { return k }
+            if let raw = snapshot?.nextPrayerKey?.lowercased(),
+               let k = PrayerSlotKey(rawValue: raw),
+               let d = snapshotNextDate, d > date {
+                return k
+            }
+            return nil
+        }()
+        let nextName = nextKey?.nameAr ?? snapshot?.nextPrayerNameAr
 
         // Current = last slot at or before now; if none, nil (before Fajr).
         let current = slots.last(where: { $0.date <= date })
+
+        let nextHasStarted: Bool = {
+            if let end = nextDate, end <= date { return true }
+            if let snapStarted = snapshot?.nextHasStarted,
+               let snapEnd = snapshotNextDate,
+               abs(snapEnd.timeIntervalSince(date)) < 60 {
+                return snapStarted
+            }
+            return false
+        }()
 
         let lastUpdated: Date? = {
             guard let ms = snapshot?.updatedAtEpochMs, ms > 0 else { return nil }
@@ -121,18 +169,28 @@ struct PrayerWidgetEntry: TimelineEntry {
         return PrayerWidgetEntry(
             date: date,
             snapshot: snapshot,
+            dataState: state,
             slots: slots,
             currentKey: current?.key,
             currentNameAr: current?.key.nameAr,
-            nextKey: nextKey ?? slots.first(where: { $0.date > date })?.key,
+            nextKey: nextKey,
             nextNameAr: nextName,
             nextDate: nextDate,
-            nextHasStarted: snapshot?.nextHasStarted ?? false,
-            locationLabel: snapshot?.locationLabel ?? "",
+            nextHasStarted: nextHasStarted,
+            locationLabel: isPreview ? "معاينة" : (snapshot?.locationLabel ?? ""),
             lastUpdated: lastUpdated,
             gregorianDateText: gregorian,
             hijriDateText: hijri
         )
+    }
+
+    var needsAppOpenAction: Bool {
+        switch dataState {
+        case .noDataYet, .malformedData, .appOpenRequired:
+            return true
+        case .staleData, .validData:
+            return false
+        }
     }
 }
 
@@ -142,7 +200,16 @@ struct PrayerWidgetProvider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (PrayerWidgetEntry) -> Void) {
-        completion(PrayerWidgetEntry.make(date: Date(), snapshot: SunnahSharedStore.loadPrayer()))
+        if context.isPreview {
+            completion(.placeholder())
+            return
+        }
+        let snapshot = SunnahSharedStore.loadPrayer()
+        let entry = PrayerWidgetEntry.make(date: Date(), snapshot: snapshot)
+        #if DEBUG
+        widgetLog.debug("snapshot state=\(entry.dataState.rawValue, privacy: .public)")
+        #endif
+        completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<PrayerWidgetEntry>) -> Void) {
@@ -150,6 +217,9 @@ struct PrayerWidgetProvider: TimelineProvider {
         let snapshot = SunnahSharedStore.loadPrayer()
         let now = Date()
         let entry = PrayerWidgetEntry.make(date: now, snapshot: snapshot)
+        #if DEBUG
+        widgetLog.debug("timeline generated state=\(entry.dataState.rawValue, privacy: .public) slots=\(entry.slots.count)")
+        #endif
 
         var dates: [Date] = [now]
         if let next = entry.nextDate, next > now {
@@ -168,8 +238,10 @@ struct PrayerWidgetProvider: TimelineProvider {
         let policy: TimelineReloadPolicy
         if let next = entry.nextDate, next > now {
             policy = .after(next)
+        } else if entry.needsAppOpenAction {
+            // Missing data — retry sooner so an app open can populate App Group.
+            policy = .after(now.addingTimeInterval(15 * 60))
         } else {
-            // No schedule — retry in 30 minutes for App Group refresh from main app.
             policy = .after(now.addingTimeInterval(30 * 60))
         }
         completion(Timeline(entries: entries.isEmpty ? [entry] : Array(entries), policy: policy))

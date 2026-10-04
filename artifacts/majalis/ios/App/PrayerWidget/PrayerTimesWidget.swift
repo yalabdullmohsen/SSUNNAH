@@ -3,7 +3,7 @@ import SwiftUI
 
 /// Prayer-only home + lock screen widgets. Data: App Group `sunnah.shared.prayer.v1` only.
 struct PrayerTimesWidget: Widget {
-    let kind = "PrayerTimesWidget"
+    let kind = SunnahWidgetKind.prayerTimes
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: PrayerWidgetProvider()) { entry in

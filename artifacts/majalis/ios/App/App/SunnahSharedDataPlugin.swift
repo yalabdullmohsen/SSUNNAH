@@ -60,9 +60,14 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
         )
         let ok = SunnahSharedStore.publishPrayer(snap)
         if ok {
-            WidgetCenter.shared.reloadAllTimelines()
+            // Reload only after App Group write+synchronize committed.
+            WidgetCenter.shared.reloadTimelines(ofKind: SunnahWidgetKind.prayerTimes)
         }
-        call.resolve(["ok": ok])
+        call.resolve([
+            "ok": ok,
+            "schemaVersion": SharedPrayerSnapshot.currentSchema,
+            "suiteAvailable": SunnahAppGroup.defaults != nil,
+        ])
     }
 
     @objc func publishProgressSnapshot(_ call: CAPPluginCall) {
@@ -75,7 +80,7 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
         )
         let ok = SunnahSharedStore.publishProgress(snap)
         if ok {
-            WidgetCenter.shared.reloadAllTimelines()
+            WidgetCenter.shared.reloadTimelines(ofKind: SunnahWidgetKind.prayerTimes)
         }
         call.resolve(["ok": ok])
     }

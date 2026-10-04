@@ -1,6 +1,7 @@
 import Foundation
+import os
 
-/// App Group canonical id — Main App · PrayerLiveActivity · future Widget/Watch.
+/// App Group canonical id — Main App · PrayerLiveActivity · PrayerWidget · future Watch.
 /// Portal registration = OWNER_ACTION; repo prepares entitlements only.
 enum SunnahAppGroup {
     static let identifier = "group.com.yousef.majlisilm"
@@ -9,6 +10,11 @@ enum SunnahAppGroup {
     static var defaults: UserDefaults? {
         UserDefaults(suiteName: identifier)
     }
+}
+
+/// WidgetKit kind strings — must match JS `SUNNAH_PRAYER_WIDGET_KIND` and `PrayerTimesWidget.kind`.
+enum SunnahWidgetKind {
+    static let prayerTimes = "PrayerTimesWidget"
 }
 
 /// Keys allowed in the App Group suite. Anything else is rejected.
@@ -63,13 +69,36 @@ struct SharedProgressSnapshot: Codable, Hashable {
     static let currentSchema = 1
 }
 
+/// Actionable reader states — never render a permanent unexplained dash when one of these applies.
+enum PrayerWidgetDataState: String {
+    case noDataYet
+    case malformedData
+    case staleData
+    case validData
+    case appOpenRequired
+}
+
 /// Single owner for App Group read/write. Never stores auth/secrets.
 enum SunnahSharedStore {
     static let schemaVersion = 1
+    private static let log = Logger(subsystem: "com.yousef.majlisilm", category: "SunnahSharedStore")
+    /// Snapshots older than this are treated as stale (reader may still show last known times).
+    static let staleAfterSeconds: TimeInterval = 36 * 3600
 
     @discardableResult
     static func publishPrayer(_ snapshot: SharedPrayerSnapshot) -> Bool {
-        writeCodable(snapshot, key: SunnahSharedKeys.prayerSnapshot)
+        #if DEBUG
+        log.debug("write attempted schema=\(snapshot.schemaVersion) day=\(snapshot.dayKey, privacy: .public)")
+        #endif
+        let ok = writeCodable(snapshot, key: SunnahSharedKeys.prayerSnapshot)
+        #if DEBUG
+        if ok {
+            log.debug("write succeeded key=\(SunnahSharedKeys.prayerSnapshot, privacy: .public) updatedAt=\(snapshot.updatedAtEpochMs)")
+        } else {
+            log.error("write failed key=\(SunnahSharedKeys.prayerSnapshot, privacy: .public) suiteAvailable=\(SunnahAppGroup.defaults != nil)")
+        }
+        #endif
+        return ok
     }
 
     @discardableResult
@@ -78,11 +107,54 @@ enum SunnahSharedStore {
     }
 
     static func loadPrayer() -> SharedPrayerSnapshot? {
-        readCodable(SharedPrayerSnapshot.self, key: SunnahSharedKeys.prayerSnapshot)
+        guard let defaults = SunnahAppGroup.defaults else {
+            #if DEBUG
+            log.error("read failed — App Group suite unavailable")
+            #endif
+            return nil
+        }
+        guard let data = defaults.data(forKey: SunnahSharedKeys.prayerSnapshot) else {
+            #if DEBUG
+            log.debug("read — no prayer payload")
+            #endif
+            return nil
+        }
+        do {
+            let snap = try JSONDecoder().decode(SharedPrayerSnapshot.self, from: data)
+            #if DEBUG
+            log.debug("read succeeded schema=\(snap.schemaVersion) day=\(snap.dayKey, privacy: .public)")
+            #endif
+            return snap
+        } catch {
+            #if DEBUG
+            log.error("decode failed class=\(String(describing: type(of: error)), privacy: .public)")
+            #endif
+            return nil
+        }
     }
 
     static func loadProgress() -> SharedProgressSnapshot? {
         readCodable(SharedProgressSnapshot.self, key: SunnahSharedKeys.progressSnapshot)
+    }
+
+    static func classifyPrayerData(_ snapshot: SharedPrayerSnapshot?, now: Date = Date()) -> PrayerWidgetDataState {
+        guard let snapshot else { return .noDataYet }
+        if snapshot.schemaVersion < 1 {
+            return .malformedData
+        }
+        if snapshot.timesEpochMs.isEmpty && snapshot.nextPrayerEpochMs == nil {
+            return .appOpenRequired
+        }
+        if snapshot.updatedAtEpochMs > 0 {
+            let updated = Date(timeIntervalSince1970: TimeInterval(snapshot.updatedAtEpochMs) / 1000)
+            if now.timeIntervalSince(updated) > staleAfterSeconds {
+                #if DEBUG
+                log.debug("stale payload detected ageSeconds=\(Int(now.timeIntervalSince(updated)))")
+                #endif
+                return .staleData
+            }
+        }
+        return .validData
     }
 
     /// Publish LA-aligned next-prayer fields without wiping day times if already present.
@@ -127,8 +199,13 @@ enum SunnahSharedStore {
             let data = try JSONEncoder().encode(value)
             defaults.set(data, forKey: key)
             defaults.set(schemaVersion, forKey: SunnahSharedKeys.schemaVersion)
+            // Ensure App Group suite is flushed before WidgetKit reload in the extension process.
+            defaults.synchronize()
             return true
         } catch {
+            #if DEBUG
+            log.error("encode failed class=\(String(describing: type(of: error)), privacy: .public)")
+            #endif
             return false
         }
     }

@@ -7,6 +7,9 @@
 | Status | **Foundation ready** · Prayer Widget Extension **present** (T-029) · Watch App **not** created |
 | SoT Swift | `ios/App/Shared/SunnahSharedData.swift` |
 | JS bridge | `src/lib/plugins/sunnah-shared-data.ts` |
+| JS publisher | `src/lib/plugins/sunnah-shared-prayer-publish.ts` |
+| Widget kind | `PrayerTimesWidget` (`SunnahWidgetKind.prayerTimes`) |
+| Schema | `sunnah.shared.prayer.v1` · `schemaVersion = 1` |
 
 ## Allowed shared payloads
 

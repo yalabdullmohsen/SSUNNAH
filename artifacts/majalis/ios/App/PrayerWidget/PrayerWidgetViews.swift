@@ -70,7 +70,7 @@ struct SmallPrayerWidgetView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            if entry.snapshot == nil {
+            if entry.needsAppOpenAction {
                 emptyLabel
             } else {
                 Label {
@@ -85,7 +85,7 @@ struct SmallPrayerWidgetView: View {
                 }
                 .accessibilityLabel(Text(smallA11yLabel))
 
-                Text(entry.nextNameAr.map { "التالي: \($0)" } ?? "—")
+                Text(entry.nextNameAr.map { "التالي: \($0)" } ?? actionDashLabel)
                     .font(.subheadline.bold())
                     .foregroundStyle(.white)
                     .lineLimit(1)
@@ -103,10 +103,25 @@ struct SmallPrayerWidgetView: View {
     }
 
     private var emptyLabel: some View {
-        Text("افتح مواقيت الصلاة")
+        Text(actionPrompt)
             .font(.caption.bold())
             .foregroundStyle(.white)
-            .accessibilityLabel("لا توجد مواقيت محفوظة. افتح مواقيت الصلاة.")
+            .accessibilityLabel(actionPromptA11y)
+    }
+
+    private var actionPrompt: String {
+        switch entry.dataState {
+        case .staleData: return "حدّث المواقيت من سُنّة"
+        default: return "افتح سُنّة لتهيئة المواقيت"
+        }
+    }
+
+    private var actionPromptA11y: String {
+        "لا توجد مواقيت جاهزة للويدجت. \(actionPrompt)."
+    }
+
+    private var actionDashLabel: String {
+        entry.dataState == .staleData ? "حدّث من سُنّة" : "—"
     }
 
     @ViewBuilder
@@ -139,33 +154,40 @@ struct MediumPrayerWidgetView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(entry.currentNameAr.map { "الحالية: \($0)" } ?? "قبل الفجر")
-                        .font(.caption.bold())
-                        .foregroundStyle(.white.opacity(0.9))
-                    Text(entry.nextNameAr.map { "التالية: \($0)" } ?? "—")
-                        .font(.headline.bold())
-                        .foregroundStyle(.white)
-                        .lineLimit(1)
-                }
-                Spacer()
-                Group {
-                    if entry.nextHasStarted {
-                        Text("الآن")
-                    } else if let end = entry.nextDate, end > entry.date {
-                        Text(timerInterval: entry.date...end, countsDown: true)
-                    } else {
-                        Text("—")
+            if entry.needsAppOpenAction {
+                Text("افتح تطبيق سُنّة لتهيئة مواقيت الصلاة")
+                    .font(.subheadline.bold())
+                    .foregroundStyle(.white)
+                    .accessibilityLabel("لا توجد مواقيت محفوظة. افتح تطبيق سُنّة.")
+            } else {
+                HStack {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(entry.currentNameAr.map { "الحالية: \($0)" } ?? "قبل الفجر")
+                            .font(.caption.bold())
+                            .foregroundStyle(.white.opacity(0.9))
+                        Text(entry.nextNameAr.map { "التالية: \($0)" } ?? "—")
+                            .font(.headline.bold())
+                            .foregroundStyle(.white)
+                            .lineLimit(1)
                     }
+                    Spacer()
+                    Group {
+                        if entry.nextHasStarted {
+                            Text("الآن")
+                        } else if let end = entry.nextDate, end > entry.date {
+                            Text(timerInterval: entry.date...end, countsDown: true)
+                        } else {
+                            Text("—")
+                        }
+                    }
+                    .font(.title2.monospacedDigit().bold())
+                    .foregroundStyle(SunnahBrandColors.gold)
+                    .accessibilityLabel("العد التنازلي")
                 }
-                .font(.title2.monospacedDigit().bold())
-                .foregroundStyle(SunnahBrandColors.gold)
-                .accessibilityLabel("العد التنازلي")
-            }
 
-            PrayerTimelineStrip(slots: entry.slots, currentKey: entry.currentKey, nextKey: entry.nextKey)
-                .accessibilityLabel("جدول صلوات اليوم")
+                PrayerTimelineStrip(slots: entry.slots, currentKey: entry.currentKey, nextKey: entry.nextKey)
+                    .accessibilityLabel("جدول صلوات اليوم")
+            }
         }
         .padding(14)
         .modifier(SunnahWidgetBackgroundCustom(colors: [
@@ -182,54 +204,64 @@ struct LargePrayerWidgetView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            HStack(alignment: .firstTextBaseline) {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(entry.gregorianDateText)
-                        .font(.caption)
-                        .foregroundStyle(.white.opacity(0.85))
-                    if let hijri = entry.hijriDateText {
-                        Text(hijri)
-                            .font(.caption2)
-                            .foregroundStyle(SunnahBrandColors.gold.opacity(0.95))
-                            .accessibilityLabel("التاريخ الهجري \(hijri)")
-                    }
-                }
-                Spacer()
-                if !entry.locationLabel.isEmpty {
-                    Text(entry.locationLabel)
-                        .font(.caption2)
-                        .foregroundStyle(.white.opacity(0.7))
-                        .lineLimit(1)
-                }
-            }
-
-            HStack {
-                Text(entry.nextNameAr.map { "التالي: \($0)" } ?? "مواقيت الصلاة")
+            if entry.needsAppOpenAction {
+                Text("افتح تطبيق سُنّة")
                     .font(.title3.bold())
                     .foregroundStyle(.white)
-                Spacer()
-                Group {
-                    if entry.nextHasStarted {
-                        Text("الآن")
-                    } else if let end = entry.nextDate, end > entry.date {
-                        Text(timerInterval: entry.date...end, countsDown: true)
-                    } else {
-                        Text("—")
+                Text("لتهيئة مواقيت الصلاة وعرضها هنا")
+                    .font(.subheadline)
+                    .foregroundStyle(.white.opacity(0.85))
+                Spacer(minLength: 0)
+            } else {
+                HStack(alignment: .firstTextBaseline) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(entry.gregorianDateText)
+                            .font(.caption)
+                            .foregroundStyle(.white.opacity(0.85))
+                        if let hijri = entry.hijriDateText {
+                            Text(hijri)
+                                .font(.caption2)
+                                .foregroundStyle(SunnahBrandColors.gold.opacity(0.95))
+                                .accessibilityLabel("التاريخ الهجري \(hijri)")
+                        }
+                    }
+                    Spacer()
+                    if !entry.locationLabel.isEmpty {
+                        Text(entry.locationLabel)
+                            .font(.caption2)
+                            .foregroundStyle(.white.opacity(0.7))
+                            .lineLimit(1)
                     }
                 }
-                .font(.title.monospacedDigit().bold())
-                .foregroundStyle(SunnahBrandColors.gold)
-                .accessibilityLabel("الوقت المتبقي")
-            }
 
-            PrayerTimelineStrip(slots: entry.slots, currentKey: entry.currentKey, nextKey: entry.nextKey, showTimes: true)
-                .frame(maxHeight: .infinity)
+                HStack {
+                    Text(entry.nextNameAr.map { "التالي: \($0)" } ?? "مواقيت الصلاة")
+                        .font(.title3.bold())
+                        .foregroundStyle(.white)
+                    Spacer()
+                    Group {
+                        if entry.nextHasStarted {
+                            Text("الآن")
+                        } else if let end = entry.nextDate, end > entry.date {
+                            Text(timerInterval: entry.date...end, countsDown: true)
+                        } else {
+                            Text("—")
+                        }
+                    }
+                    .font(.title.monospacedDigit().bold())
+                    .foregroundStyle(SunnahBrandColors.gold)
+                    .accessibilityLabel("الوقت المتبقي")
+                }
 
-            if let updated = entry.lastUpdated {
-                Text("آخر تحديث: \(updated, style: .time)")
-                    .font(.caption2)
-                    .foregroundStyle(.white.opacity(0.55))
-                    .accessibilityLabel("آخر تحديث للمواقيت")
+                PrayerTimelineStrip(slots: entry.slots, currentKey: entry.currentKey, nextKey: entry.nextKey, showTimes: true)
+                    .frame(maxHeight: .infinity)
+
+                if let updated = entry.lastUpdated {
+                    Text("آخر تحديث: \(updated, style: .time)")
+                        .font(.caption2)
+                        .foregroundStyle(.white.opacity(0.55))
+                        .accessibilityLabel("آخر تحديث للمواقيت")
+                }
             }
         }
         .padding(16)
@@ -245,7 +277,10 @@ struct InlinePrayerWidgetView: View {
     let entry: PrayerWidgetEntry
 
     var body: some View {
-        if let name = entry.nextNameAr {
+        if entry.needsAppOpenAction {
+            Text("افتح سُنّة")
+                .accessibilityLabel("افتح تطبيق سُنّة لتهيئة مواقيت الصلاة")
+        } else if let name = entry.nextNameAr {
             Text("صلاة \(name)")
                 .accessibilityLabel("الصلاة التالية \(name)")
         } else {
@@ -264,7 +299,10 @@ struct CircularPrayerWidgetView: View {
             VStack(spacing: 2) {
                 Image(systemName: entry.nextKey?.symbolName ?? "building.columns.fill")
                     .font(.caption)
-                if entry.nextHasStarted {
+                if entry.needsAppOpenAction {
+                    Text("سُنّة")
+                        .font(.caption2.bold())
+                } else if entry.nextHasStarted {
                     Text("الآن")
                         .font(.caption2.bold())
                 } else if let end = entry.nextDate, end > entry.date {
@@ -282,6 +320,9 @@ struct CircularPrayerWidgetView: View {
     }
 
     private var circularA11y: String {
+        if entry.needsAppOpenAction {
+            return "افتح تطبيق سُنّة لتهيئة مواقيت الصلاة"
+        }
         let name = entry.nextNameAr ?? "الصلاة"
         if entry.nextHasStarted { return "حان وقت \(name)" }
         return "العد التنازلي لصلاة \(name)"
@@ -292,29 +333,41 @@ struct RectangularPrayerWidgetView: View {
     let entry: PrayerWidgetEntry
 
     var body: some View {
-        HStack {
+        if entry.needsAppOpenAction {
             VStack(alignment: .leading, spacing: 2) {
-                Text(entry.nextNameAr ?? "الصلاة")
+                Text("مواقيت الصلاة")
                     .font(.headline)
                     .lineLimit(1)
-                if let end = entry.nextDate {
-                    Text(end, style: .time)
+                Text("افتح سُنّة")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .accessibilityLabel("لا توجد مواقيت. افتح تطبيق سُنّة لتهيئة المواقيت.")
+        } else {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(entry.nextNameAr ?? "الصلاة")
+                        .font(.headline)
+                        .lineLimit(1)
+                    if let end = entry.nextDate {
+                        Text(end, style: .time)
+                            .font(.caption.monospacedDigit())
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                Spacer(minLength: 4)
+                if entry.nextHasStarted {
+                    Text("الآن")
+                        .font(.caption.bold())
+                } else if let end = entry.nextDate, end > entry.date {
+                    Text(timerInterval: entry.date...end, countsDown: true)
                         .font(.caption.monospacedDigit())
-                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: 52)
                 }
             }
-            Spacer(minLength: 4)
-            if entry.nextHasStarted {
-                Text("الآن")
-                    .font(.caption.bold())
-            } else if let end = entry.nextDate, end > entry.date {
-                Text(timerInterval: entry.date...end, countsDown: true)
-                    .font(.caption.monospacedDigit())
-                    .frame(maxWidth: 52)
-            }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel(rectA11y)
         }
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel(rectA11y)
     }
 
     private var rectA11y: String {
