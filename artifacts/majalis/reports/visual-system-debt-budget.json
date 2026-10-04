@@ -1,22 +1,22 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "PR D search/auth dual ownership; important ceiling lowered to measured.",
+  "note": "PR E dead CSS; ceilings lowered to measured (cssFiles 353).",
   "floors": {
     "officialButtonImportFiles": 288,
     "sfTokenRefs": 1220,
     "ssTokenRefs": 769
   },
   "ceilings": {
-    "cssFiles": 356,
+    "cssFiles": 353,
     "important": 4724,
-    "hexInCss": 5599,
-    "rgbHslInCss": 2006,
+    "hexInCss": 5593,
+    "rgbHslInCss": 1976,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
-    "boxShadowDecls": 986,
-    "zIndexRawDecls": 256,
-    "borderRadiusPxDecls": 392,
+    "boxShadowDecls": 982,
+    "zIndexRawDecls": 255,
+    "borderRadiusPxDecls": 391,
     "inlineColorStyleMatches": 39,
     "rawButtonFiles": 73
   },

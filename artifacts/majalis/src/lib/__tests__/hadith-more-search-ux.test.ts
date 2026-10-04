@@ -3,7 +3,7 @@
  * تشغيل: node --import tsx src/lib/__tests__/hadith-more-search-ux.test.ts
  */
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { MORE_FEATURED_SECTIONS, MORE_STANDARD_SECTIONS } from "@/features/more/moreSections";
@@ -64,8 +64,11 @@ assert.ok(
 assert.equal(secondary.includes("الموضوعات"), false, "لا قسم الموضوعات في المزيد");
 assert.equal(secondary.includes("البحث"), false, "لا بطاقة بحث في المزيد");
 
-const moreCss = read("src/styles/pages/more-page.css");
-assert.match(moreCss, /--bottom-nav-height/);
+assert.equal(
+  existsSync(resolve(root, "src/styles/pages/more-page.css")),
+  false,
+  "more-page.css deleted — /more redirects; no TSX consumers (PR E)",
+);
 
 const searchCss = read("src/styles/pages/search.css");
 assert.match(searchCss, /100dvh/);
