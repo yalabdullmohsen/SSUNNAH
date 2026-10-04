@@ -54,7 +54,10 @@ for (const [, kind] of families) {
 
 assert.match(entry, /SunnahSharedStore\.loadPrayer/);
 assert.doesNotMatch(entry, /URLSession|URLRequest/);
-assert.match(entry, /www\.ssunnah\.com\/prayer-times/);
+assert.ok(
+  /SunnahPrayerDeepLink|www\.ssunnah\.com\/prayer-times/.test(entry + views),
+  "widget deep link via SunnahPrayerDeepLink or prayer-times URL",
+);
 assert.match(views, /widgetURL/);
 assert.match(views, /accessibilityLabel/);
 assert.match(views, /layoutDirection/);

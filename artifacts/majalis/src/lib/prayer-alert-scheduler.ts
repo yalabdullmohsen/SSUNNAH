@@ -43,7 +43,7 @@ import {
   endPrayerLiveActivity,
   presentPrayerLiveActivityAppLaunch,
 } from "./plugins/prayer-live-activity";
-import { publishSharedPrayerSnapshot } from "./plugins/sunnah-shared-data";
+import { publishPrayerSnapshotForWidgets } from "./plugins/sunnah-shared-prayer-publish";
 import type { PrayerSoundProfile } from "./prayer-notification-sounds";
 import { PRAYER_ALERT_EVENT_NAME, type PrayerAlertEvent } from "./prayer-alert-events";
 import { isIOS, isNative } from "./capacitor-utils";
@@ -360,6 +360,12 @@ export async function startPrayerAlertScheduler(
   _lastDateISO = todayISO;
 
   const slots = listNativePrayerScheduleSlots(payload.prayers, tz);
+
+  /* Widget/LA App Group snapshot — مستقل عن تفعيل التنبيهات ونجاح جدولة الإشعارات. */
+  if (isNative && isIOS && payload.prayers.length) {
+    void publishPrayerSnapshotForWidgets(payload);
+  }
+
   if (!slots.length) return;
 
   const prefs = loadPrayerAlertPrefs();
@@ -440,23 +446,6 @@ export async function startPrayerAlertScheduler(
   const following =
     enabledSlots.find((s) => s.epoch > prayerEpoch) ??
     null;
-  /* App Group snapshot — غير سرّي؛ يغذّي LA / Widget / Watch */
-  if (isNative && isIOS) {
-    const timesEpochMs: Record<string, number> = {};
-    for (const { slot, epoch } of slots) {
-      timesEpochMs[slot.key.toLowerCase()] = epoch;
-    }
-    void publishSharedPrayerSnapshot({
-      locationLabel: payload.city || "",
-      timeZoneIdentifier: tz,
-      dayKey: todayISO,
-      timesEpochMs,
-      nextPrayerKey: prayerKey,
-      nextPrayerNameAr: prayerName,
-      nextPrayerEpochMs: prayerEpoch,
-      nextHasStarted: Date.now() >= prayerEpoch,
-    });
-  }
   const nextOpts = resolveSlotAlertOpts(next.key, prefs);
   const preMinutes = nextOpts.preAlertMinutes;
   const preAlertDelay = prayerEpoch - Date.now() - preMinutes * 60_000;

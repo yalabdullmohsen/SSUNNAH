@@ -24,7 +24,13 @@ assert.match(pluginTs, /SUNNAH_APP_GROUP_ID/);
 assert.match(pluginTs, /publishSharedPrayerSnapshot/);
 
 const scheduler = readFileSync(resolve(appRoot, "src/lib/prayer-alert-scheduler.ts"), "utf8");
-assert.match(scheduler, /publishSharedPrayerSnapshot/);
+assert.match(scheduler, /publishPrayerSnapshotForWidgets/);
+const publishHelper = readFileSync(
+  resolve(appRoot, "src/lib/plugins/sunnah-shared-prayer-publish.ts"),
+  "utf8",
+);
+assert.match(publishHelper, /buildSharedPrayerSnapshotPayload/);
+assert.match(publishHelper, /publishSharedPrayerSnapshot/);
 
 const report = readFileSync(resolve(repo, "docs/audit/IOS_APP_GROUPS_FOUNDATION_REPORT.md"), "utf8");
 assert.match(report, /IOS_SHARED_DATA_FOUNDATION_READY/);
