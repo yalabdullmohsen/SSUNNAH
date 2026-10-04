@@ -6,6 +6,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { readCssGraph } from "../css-authority-graph.ts";
 
 const majalisRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const repoRoot = resolve(majalisRoot, "../..");
@@ -13,7 +14,7 @@ const readMaj = (rel: string) => readFileSync(resolve(majalisRoot, rel), "utf8")
 const readRepo = (rel: string) => readFileSync(resolve(repoRoot, rel), "utf8");
 
 const unify = readMaj("src/styles/visual-identity-unify.css");
-const ds = readMaj("src/styles/design-system.css");
+const ds = readCssGraph(resolve(majalisRoot, "src/styles/design-system.css")).text;
 const aliases = readMaj("src/styles/theme-aliases.css");
 const doc = readRepo("docs/design/eradication/WAVE1A_DS_VIU_ABSORPTION.md");
 
