@@ -111,12 +111,24 @@ function scheduleAfterMinVisible(run: () => void): void {
 export function armNativeSplashController(): void {
   armedAt = performance.now();
 
+  /* ملكية إخفاء HTML بعد تسليح الحزمة: مسار واحد عبر dismissHtmlLaunchSplash */
+  try {
+    (window as Window & { __mjDismissSplash?: (immediate?: boolean) => void }).__mjDismissSplash = (
+      immediate?: boolean,
+    ) => {
+      dismissHtmlLaunchSplash(Boolean(immediate), immediate ? "bundle-dismiss-immediate" : "bundle-dismiss");
+    };
+  } catch {
+    /* ignore */
+  }
+
   /* كشف الدخولية الرسمية فورًا — بلا طبقة Capacitor فوقها */
   void hideCapacitorSplash(true).then(() => {
     markStartup("startup:native-end");
     notifyNativeLaunchEnded("capacitor-splash-hidden");
   });
 
+  /* السقف زمني = مخرج أمان فقط — المسار الطبيعي mj:shell-stable */
   const deadline = window.setTimeout(() => {
     void hideNativeSplash(false, "timeout");
   }, SPLASH_MAX_VISIBLE_MS);
