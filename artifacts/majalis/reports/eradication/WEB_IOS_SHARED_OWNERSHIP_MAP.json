@@ -1,0 +1,99 @@
+{
+  "WEB_PLATFORM": {
+    "syncCss": [
+      "styles/fonts-ui.css",
+      "app/styles/theme.css",
+      "styles/sunnah-foundation-tokens.css",
+      "styles/sunnah-foundation-v2.css",
+      "styles/ssunnah-theme-api.css",
+      "styles/brand-v4.css",
+      "styles/design-tokens.css",
+      "styles/breakpoints.css",
+      "styles/typography-scale.css",
+      "styles/typography-app.css",
+      "index.css",
+      "styles/theme-aliases.css",
+      "styles/semantic-layer-tokens.css",
+      "styles/interaction-states.css"
+    ],
+    "deferredCss": [
+      "styles/z-index-layers.css",
+      "styles/motion-policy.css",
+      "styles/visual-identity-unify.css",
+      "styles/tokens.css",
+      "styles/sunnah-identity-reset.css",
+      "styles/visual-layer-contrast-fix.css",
+      "styles/visual-redesign-v2-tokens.css",
+      "styles/sections-calm-polish.css",
+      "styles/ssunnah-ux-polish.css",
+      "styles/components/modern-section-shell.css",
+      "styles/section-cards-theme.css",
+      "styles/sunnah-foundation-type.css",
+      "styles/green-surface-system.css",
+      "styles/ssunnah-semantic-tokens.css",
+      "styles/ssunnah-card-unify.css",
+      "styles/card-matte-unify.css",
+      "styles/components/badge-system.css",
+      "styles/modern-ui-refresh.css",
+      "styles/ssunnah-ds-canonical.css",
+      "styles/m2030/foundation.css",
+      "styles/m2030/navigation.css",
+      "styles/brand-v4-contrast-fixes.css",
+      "styles/a11y-release-gate.css",
+      "styles/visual-enrichment.css",
+      "styles/sunnah-visual-language.css",
+      "styles/sunnah-geometry-system.css",
+      "styles/modern-ui-refresh.css",
+      "styles/ssunnah-ds-canonical.css",
+      "styles/design-system.css",
+      "styles/brand-v4-components.css",
+      "styles/final-release.css",
+      "styles/card-decorative-strip-cleanup.css",
+      "styles/modern-islamic-editorial-tokens.css",
+      "styles/modern-islamic-editorial.css",
+      "styles/card-system.css",
+      "styles/card-system-v2.css",
+      "styles/app-state-v2.css",
+      "styles/islam-intro-experience.css",
+      "styles/components/instant-interaction.css",
+      "styles/sunnah-visual-language.css",
+      "styles/sunnah-geometry-system.css",
+      "styles/visual-refresh-v1.css",
+      "styles/m2030/interactions.css",
+      "styles/index-deferred-pages.css",
+      "styles/section-makarim-pattern.css",
+      "styles/components/compact-sources.css",
+      "styles/m2030/pages.css",
+      "styles/components/content-reading-shell.css",
+      "styles/reading-prose-system.css",
+      "styles/components/reading-section-card.css",
+      "styles/fonts-ui-bold.css"
+    ]
+  },
+  "IOS_APPLICATION": {
+    "nativeCss": [
+      "styles/components/native-feel.css",
+      "styles/capacitor-native-ux.css",
+      "styles/ios-edge.css"
+    ],
+    "note": "Capacitor WebView consumes shared CSS + native overlays; browser proof ≠ iOS proof"
+  },
+  "APP_STORE_PRODUCT": {
+    "note": "No store actions in this program; risk tracked separately from build success"
+  },
+  "SHARED_PLATFORM": {
+    "tokenAuthorities": [
+      "--sf-*",
+      "--ss-*",
+      "--mj-*"
+    ],
+    "componentAuthorities": [
+      "Button",
+      "AppCard",
+      "Dialog",
+      "Feedback V2",
+      "ListSystem",
+      "Form controls"
+    ]
+  }
+}

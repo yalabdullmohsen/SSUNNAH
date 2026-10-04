@@ -1,0 +1,1786 @@
+{
+  "id": "COMPONENT_CONSUMER_MAP",
+  "note": "Approx static reference hits; dynamic selectors require runtime proof before delete",
+  "files": {
+    "app/styles/theme.css": {
+      "referenceHitsApprox": 51,
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "components/lobby/quick-actions-quad.css": {
+      "referenceHitsApprox": 10,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "components/lobby/section-lobby.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "components/sections/section-cards.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "components/ui/compact-section-header.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "features/mushaf-madinah/mushaf-madinah.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "features/mushaf-madinah/mushaf-tafsir-sheet.css": {
+      "referenceHitsApprox": 6,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "features/mushaf-madinah/quran-sheet/quran-sheet.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "features/mushaf-reader/mushaf-display-mode-control.css": {
+      "referenceHitsApprox": 8,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "features/mushaf-reader/mushaf-reader.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "features/mushaf-reader/page-goto-dial.css": {
+      "referenceHitsApprox": 10,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "index.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "pages/competitions/ui/competitions.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/a11y-release-gate.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/admin.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY"
+    },
+    "styles/app-state-v2.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/ayah-nav-selection.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/brand-v4-components.css": {
+      "referenceHitsApprox": 7,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/brand-v4-contrast-fixes.css": {
+      "referenceHitsApprox": 4,
+      "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/brand-v4.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/breakpoints.css": {
+      "referenceHitsApprox": 30,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/capacitor-native-ux.css": {
+      "referenceHitsApprox": 16,
+      "classification": "IOS_ONLY",
+      "platform": "IOS_ONLY"
+    },
+    "styles/card-decorative-strip-cleanup.css": {
+      "referenceHitsApprox": 21,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/card-matte-unify.css": {
+      "referenceHitsApprox": 15,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/card-system-tokens.css": {
+      "referenceHitsApprox": 20,
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/card-system-v2.css": {
+      "referenceHitsApprox": 23,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/card-system.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/achievement-toast.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/adhan-notification.css": {
+      "referenceHitsApprox": 7,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/admin-gate.css": {
+      "referenceHitsApprox": 5,
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY"
+    },
+    "styles/components/admin-inline-edit.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY"
+    },
+    "styles/components/app-bottom-sheet.css": {
+      "referenceHitsApprox": 24,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/app-chrome-scroll.css": {
+      "referenceHitsApprox": 16,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/assistant-chat.css": {
+      "referenceHitsApprox": 22,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/async-data-error.css": {
+      "referenceHitsApprox": 7,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/audio-library-selection.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/badge-system.css": {
+      "referenceHitsApprox": 11,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/bulk-download-card.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/chrome-boot-ph.css": {
+      "referenceHitsApprox": 29,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/chunk-recovery-toast.css": {
+      "referenceHitsApprox": 7,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/citation-modal.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/compact-sources.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/content-actions-rag.css": {
+      "referenceHitsApprox": 12,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/content-reading-shell.css": {
+      "referenceHitsApprox": 25,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/content-trust.css": {
+      "referenceHitsApprox": 12,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/daily-challenge-quiz.css": {
+      "referenceHitsApprox": 5,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/dark-emerald-menus.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/design-redesign.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/directory-media.css": {
+      "referenceHitsApprox": 15,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/error-boundary.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/faida-image-card.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/feature-tour.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/filters.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/first-visit-intro.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/focus-arrival.css": {
+      "referenceHitsApprox": 7,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/friday-banner.css": {
+      "referenceHitsApprox": 5,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/global-search-modal.css": {
+      "referenceHitsApprox": 11,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/hadith-badge.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/hadith-list-card.css": {
+      "referenceHitsApprox": 25,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/harvest-feed-panel.css": {
+      "referenceHitsApprox": 7,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/header-ad-slot.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/header-ticker-polish.css": {
+      "referenceHitsApprox": 7,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/hifz-audio-loop-player.css": {
+      "referenceHitsApprox": 9,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home/home-interesting-topics.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home/home-learning-seasons.css": {
+      "referenceHitsApprox": 12,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home/home-mindmap.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home/home-week-streak.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home/home-widget-chrome.css": {
+      "referenceHitsApprox": 12,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home-brand-title.css": {
+      "referenceHitsApprox": 29,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home-content-hub.css": {
+      "referenceHitsApprox": 33,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home-continue-learning.css": {
+      "referenceHitsApprox": 14,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home-daily-strip.css": {
+      "referenceHitsApprox": 24,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home-live-now.css": {
+      "referenceHitsApprox": 9,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home-local-resume.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home-quick-access-v2.css": {
+      "referenceHitsApprox": 5,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home-recent-rail.css": {
+      "referenceHitsApprox": 9,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home-recommended.css": {
+      "referenceHitsApprox": 11,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home-sections-grid.css": {
+      "referenceHitsApprox": 13,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/home-universal-search.css": {
+      "referenceHitsApprox": 13,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/hub-card.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/information-card.css": {
+      "referenceHitsApprox": 8,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/instant-interaction.css": {
+      "referenceHitsApprox": 21,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/ios-app-cta.css": {
+      "referenceHitsApprox": 28,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/ipad-responsive-layout.css": {
+      "referenceHitsApprox": 10,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/islamic-geometric.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/islamic-quiz-game.css": {
+      "referenceHitsApprox": 13,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/isnad-attribution-bar.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/knowledge-summary-card.css": {
+      "referenceHitsApprox": 25,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/language-offline.css": {
+      "referenceHitsApprox": 16,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/last-reading-bookmark-card.css": {
+      "referenceHitsApprox": 6,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/mobile-pwa.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/modern-section-shell.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/more-bottom-sheet.css": {
+      "referenceHitsApprox": 9,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/muezzin-picker.css": {
+      "referenceHitsApprox": 6,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/native-feel.css": {
+      "referenceHitsApprox": 35,
+      "classification": "IOS_ONLY",
+      "platform": "IOS_ONLY"
+    },
+    "styles/components/optimized-sheikh-image.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/page-goto-visibility.css": {
+      "referenceHitsApprox": 8,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/page-hero.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/page-shell.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/prayer-countdown-banner.css": {
+      "referenceHitsApprox": 10,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/prayer-countdown-chip.css": {
+      "referenceHitsApprox": 39,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/quran-audio-chrome.css": {
+      "referenceHitsApprox": 21,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/quran-audio-dock-dismiss.css": {
+      "referenceHitsApprox": 8,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/quran-mini-player.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/quran-surah-jump-search.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/reading-break.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/reading-section-card.css": {
+      "referenceHitsApprox": 39,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/related-knowledge.css": {
+      "referenceHitsApprox": 11,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/safe-area-debug.css": {
+      "referenceHitsApprox": 20,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/safe-hero.css": {
+      "referenceHitsApprox": 50,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/scholar-follow.css": {
+      "referenceHitsApprox": 16,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/scholarly-trust.css": {
+      "referenceHitsApprox": 10,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/section-quiz.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/section-share-actions.css": {
+      "referenceHitsApprox": 27,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/share-faida.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/sidebar-redesign.css": {
+      "referenceHitsApprox": 16,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/site-footer-menu.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/source-card.css": {
+      "referenceHitsApprox": 16,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/source-item-card.css": {
+      "referenceHitsApprox": 8,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/submissions-review.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/sunnah-card-v2.css": {
+      "referenceHitsApprox": 19,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/surface-polish.css": {
+      "referenceHitsApprox": 8,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/text-highlight-capture.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/thumb-zone.css": {
+      "referenceHitsApprox": 20,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/top-chrome-layout.css": {
+      "referenceHitsApprox": 19,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/topic-page.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/university-card.css": {
+      "referenceHitsApprox": 11,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/components/virtual-list.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/critical-first-paint.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/dark-design-system.css": {
+      "referenceHitsApprox": 36,
+      "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/dark-mode-recovery.css": {
+      "referenceHitsApprox": 43,
+      "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/dark-mode-surfaces.css": {
+      "referenceHitsApprox": 29,
+      "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/design-system.css": {
+      "referenceHitsApprox": 51,
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/design-tokens.css": {
+      "referenceHitsApprox": 37,
+      "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/discover-islam.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/final-release.css": {
+      "referenceHitsApprox": 51,
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/fonts-quran.css": {
+      "referenceHitsApprox": 27,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/fonts-ui-bold.css": {
+      "referenceHitsApprox": 14,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/fonts-ui.css": {
+      "referenceHitsApprox": 36,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/green-surface-system.css": {
+      "referenceHitsApprox": 25,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/highlighted-content.css": {
+      "referenceHitsApprox": 13,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/index-deferred-pages.css": {
+      "referenceHitsApprox": 18,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/interaction-states.css": {
+      "referenceHitsApprox": 24,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/ios-edge.css": {
+      "referenceHitsApprox": 22,
+      "classification": "IOS_ONLY",
+      "platform": "IOS_ONLY"
+    },
+    "styles/islam-intro-experience.css": {
+      "referenceHitsApprox": 47,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/islamic-landmarks.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/knowledge-experience.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/m2030/foundation.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/m2030/home.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/m2030/interactions.css": {
+      "referenceHitsApprox": 34,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/m2030/navigation.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/m2030/pages.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/majlisilm-shell.css": {
+      "referenceHitsApprox": 17,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/mind-map.css": {
+      "referenceHitsApprox": 29,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/modern-islamic-editorial-tokens.css": {
+      "referenceHitsApprox": 9,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/modern-islamic-editorial.css": {
+      "referenceHitsApprox": 18,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/modern-ui-refresh.css": {
+      "referenceHitsApprox": 35,
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/motion-policy.css": {
+      "referenceHitsApprox": 13,
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/nations.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/page-container.css": {
+      "referenceHitsApprox": 22,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/account-deletion.css": {
+      "referenceHitsApprox": 27,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/adab-talab-ilm.css": {
+      "referenceHitsApprox": 43,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/adhan-settings.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/adhkar.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/admin-categories.css": {
+      "referenceHitsApprox": 5,
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY"
+    },
+    "styles/pages/admin-review-hub.css": {
+      "referenceHitsApprox": 19,
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY"
+    },
+    "styles/pages/admin-shell.css": {
+      "referenceHitsApprox": 12,
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY"
+    },
+    "styles/pages/admin-v3-shell.css": {
+      "referenceHitsApprox": 15,
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY"
+    },
+    "styles/pages/akhlaq.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/alamat-saah.css": {
+      "referenceHitsApprox": 22,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/annual-course-detail.css": {
+      "referenceHitsApprox": 4,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/app-shell-v2.css": {
+      "referenceHitsApprox": 31,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/arbaeen-detail.css": {
+      "referenceHitsApprox": 7,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/arbaeen-nawawi.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/arkan-iman.css": {
+      "referenceHitsApprox": 36,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/arkan-islam.css": {
+      "referenceHitsApprox": 12,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/asmaa-husna.css": {
+      "referenceHitsApprox": 7,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/assistant-shell.css": {
+      "referenceHitsApprox": 8,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/assistant.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/auth.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/autonomous-platform.css": {
+      "referenceHitsApprox": 12,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/calendar.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/car-mode.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/cards.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/certificate-verify.css": {
+      "referenceHitsApprox": 4,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/citation-public.css": {
+      "referenceHitsApprox": 4,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/contact.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/daily-wird.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/dev-design-gallery.css": {
+      "referenceHitsApprox": 4,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/duas-quran.css": {
+      "referenceHitsApprox": 27,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/duas.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/fadail-aamal.css": {
+      "referenceHitsApprox": 33,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/family-mode.css": {
+      "referenceHitsApprox": 9,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/fiqh-council-section.css": {
+      "referenceHitsApprox": 4,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/fiqh-guide.css": {
+      "referenceHitsApprox": 20,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/fiqh-hub.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/fiqh-qawaid.css": {
+      "referenceHitsApprox": 31,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/flashcards.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/glossary.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/hadith-books.css": {
+      "referenceHitsApprox": 32,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/hadith-design-language.css": {
+      "referenceHitsApprox": 40,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/hadith-mustalah.css": {
+      "referenceHitsApprox": 26,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/hadith.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/hajj.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/hikam-salaf.css": {
+      "referenceHitsApprox": 27,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/home-dashboard-v2.css": {
+      "referenceHitsApprox": 13,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/institutions.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/islam-stats.css": {
+      "referenceHitsApprox": 14,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/islamic-sects.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/islamic-stories.css": {
+      "referenceHitsApprox": 50,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/janaza.css": {
+      "referenceHitsApprox": 48,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/janna-naar.css": {
+      "referenceHitsApprox": 25,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/knowledge-collection.css": {
+      "referenceHitsApprox": 26,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/knowledge-dashboards-v2.css": {
+      "referenceHitsApprox": 30,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/knowledge-graph.css": {
+      "referenceHitsApprox": 46,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/knowledge-platform-p0.css": {
+      "referenceHitsApprox": 10,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/knowledge.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/kuwait-lessons.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/learn-legal-v2.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/learning-path-dashboard.css": {
+      "referenceHitsApprox": 16,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/learning-path-detail.css": {
+      "referenceHitsApprox": 4,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/learning-paths.css": {
+      "referenceHitsApprox": 40,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/learning-quiz.css": {
+      "referenceHitsApprox": 7,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/lesson-import.css": {
+      "referenceHitsApprox": 11,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/lessons-sections-v2.css": {
+      "referenceHitsApprox": 23,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/lessons.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/library-search-v2.css": {
+      "referenceHitsApprox": 14,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/luxury-night-v2.css": {
+      "referenceHitsApprox": 23,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/madhahib.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/malaika.css": {
+      "referenceHitsApprox": 40,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/mawarith.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/methodology.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/miracles.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/more-page.css": {
+      "referenceHitsApprox": 45,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/mosque-mode.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/my-citations.css": {
+      "referenceHitsApprox": 11,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/my-learning.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/my-submissions.css": {
+      "referenceHitsApprox": 11,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/not-found.css": {
+      "referenceHitsApprox": 30,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/notifications.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/occasions.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/prayer-ranks.css": {
+      "referenceHitsApprox": 42,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/prayer-times.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/profile-hub-v2.css": {
+      "referenceHitsApprox": 22,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/prophet-stories-admin.css": {
+      "referenceHitsApprox": 5,
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY"
+    },
+    "styles/pages/prophet-stories.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/prophetic-medicine.css": {
+      "referenceHitsApprox": 37,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/qa.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/qibla.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/qiraat.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/quiz.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/quran-circles.css": {
+      "referenceHitsApprox": 37,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/quran-hub-v2.css": {
+      "referenceHitsApprox": 18,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/quran-hub.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/quran-numbers.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/quran-people.css": {
+      "referenceHitsApprox": 39,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/quran-search.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/raqaiq.css": {
+      "referenceHitsApprox": 38,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/reading-plans.css": {
+      "referenceHitsApprox": 9,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/researcher-profile.css": {
+      "referenceHitsApprox": 11,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/researches.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/sahabah.css": {
+      "referenceHitsApprox": 40,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/salah-guide.css": {
+      "referenceHitsApprox": 38,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/sawm.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/scholar-profile.css": {
+      "referenceHitsApprox": 6,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/scholarly-research.css": {
+      "referenceHitsApprox": 26,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/scientific-announcements.css": {
+      "referenceHitsApprox": 25,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/search.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/seerah.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/settings.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/shimael.css": {
+      "referenceHitsApprox": 9,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/sitemap.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/sources-directory.css": {
+      "referenceHitsApprox": 25,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/stories-seerah-v2.css": {
+      "referenceHitsApprox": 19,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/study-room.css": {
+      "referenceHitsApprox": 14,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/submit-content.css": {
+      "referenceHitsApprox": 5,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/sunan-yawmiyya.css": {
+      "referenceHitsApprox": 36,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/support.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/surah-index.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/tafsir.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/tahara.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/tajweed.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/tarikh-islami.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/tasbih.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/tawba.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/tawhid.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/teachers.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/telegram-section.css": {
+      "referenceHitsApprox": 7,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/tilawa.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/topic.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/topics-index.css": {
+      "referenceHitsApprox": 8,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/transcribe.css": {
+      "referenceHitsApprox": 16,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/ulum-quran.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/universities-admin.css": {
+      "referenceHitsApprox": 7,
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY"
+    },
+    "styles/pages/universities-compare.css": {
+      "referenceHitsApprox": 4,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/universities.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/university-detail.css": {
+      "referenceHitsApprox": 4,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/updates.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/upload.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/user-stats.css": {
+      "referenceHitsApprox": 9,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/vault.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/wasaya.css": {
+      "referenceHitsApprox": 34,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/worship-history-v2.css": {
+      "referenceHitsApprox": 48,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/pages/zakat.css": {
+      "referenceHitsApprox": 51,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/prayer-route-shell.css": {
+      "referenceHitsApprox": 10,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/premium-dark-refine.css": {
+      "referenceHitsApprox": 39,
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/prophets-semantic-tokens.css": {
+      "referenceHitsApprox": 21,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/quran-engine-ui.css": {
+      "referenceHitsApprox": 20,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/quran-hifz-loop.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/quran-immersive-reader.css": {
+      "referenceHitsApprox": 24,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/quran-memorization-plans.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/quran-memorization.css": {
+      "referenceHitsApprox": 30,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/quran-player-view.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/quran-worship-hub.css": {
+      "referenceHitsApprox": 9,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/quran.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/reader-bookmarks-manager.css": {
+      "referenceHitsApprox": 9,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/reader-bookmarks.css": {
+      "referenceHitsApprox": 22,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/reader-page-chrome.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/reading-prose-system.css": {
+      "referenceHitsApprox": 44,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/rulings-encyclopedia.css": {
+      "referenceHitsApprox": 21,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/section-cards-theme.css": {
+      "referenceHitsApprox": 19,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/section-makarim-pattern.css": {
+      "referenceHitsApprox": 17,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sections-calm-polish.css": {
+      "referenceHitsApprox": 49,
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/semantic-layer-tokens.css": {
+      "referenceHitsApprox": 4,
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sins-rights.css": {
+      "referenceHitsApprox": 13,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/ssunnah-card-unify.css": {
+      "referenceHitsApprox": 34,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/ssunnah-ds-canonical.css": {
+      "referenceHitsApprox": 17,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/ssunnah-screen-patterns.css": {
+      "referenceHitsApprox": 16,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/ssunnah-semantic-tokens.css": {
+      "referenceHitsApprox": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/ssunnah-theme-api.css": {
+      "referenceHitsApprox": 28,
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/ssunnah-ux-polish.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sunnah-foundation-tokens.css": {
+      "referenceHitsApprox": 51,
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sunnah-foundation-type.css": {
+      "referenceHitsApprox": 10,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sunnah-foundation-v2.css": {
+      "referenceHitsApprox": 34,
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sunnah-geometry-system.css": {
+      "referenceHitsApprox": 18,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sunnah-identity-cards.css": {
+      "referenceHitsApprox": 13,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sunnah-identity-chrome-nav.css": {
+      "referenceHitsApprox": 42,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sunnah-identity-detail-reading.css": {
+      "referenceHitsApprox": 29,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sunnah-identity-forms-filters.css": {
+      "referenceHitsApprox": 35,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sunnah-identity-home-hub.css": {
+      "referenceHitsApprox": 19,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sunnah-identity-luxury-night.css": {
+      "referenceHitsApprox": 17,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sunnah-identity-reset.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sunnah-identity-responsive-a11y.css": {
+      "referenceHitsApprox": 15,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sunnah-identity-sections.css": {
+      "referenceHitsApprox": 40,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/sunnah-visual-language.css": {
+      "referenceHitsApprox": 23,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/theme-aliases.css": {
+      "referenceHitsApprox": 51,
+      "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/tokens.css": {
+      "referenceHitsApprox": 51,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/typography-app.css": {
+      "referenceHitsApprox": 18,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/typography-scale.css": {
+      "referenceHitsApprox": 28,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/visual-enrichment.css": {
+      "referenceHitsApprox": 5,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/visual-identity-unify.css": {
+      "referenceHitsApprox": 51,
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/visual-layer-contrast-fix.css": {
+      "referenceHitsApprox": 12,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/visual-redesign-v2-tokens.css": {
+      "referenceHitsApprox": 30,
+      "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/visual-refresh-v1.css": {
+      "referenceHitsApprox": 16,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    "styles/z-index-layers.css": {
+      "referenceHitsApprox": 11,
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    "widgets/related-rail.css": {
+      "referenceHitsApprox": 14,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    }
+  }
+}

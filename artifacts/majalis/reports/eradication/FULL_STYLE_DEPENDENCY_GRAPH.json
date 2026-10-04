@@ -1,0 +1,2925 @@
+{
+  "id": "FULL_STYLE_DEPENDENCY_GRAPH",
+  "syncLoadOrder": [
+    "styles/fonts-ui.css",
+    "app/styles/theme.css",
+    "styles/sunnah-foundation-tokens.css",
+    "styles/sunnah-foundation-v2.css",
+    "styles/ssunnah-theme-api.css",
+    "styles/brand-v4.css",
+    "styles/design-tokens.css",
+    "styles/breakpoints.css",
+    "styles/typography-scale.css",
+    "styles/typography-app.css",
+    "index.css",
+    "styles/theme-aliases.css",
+    "styles/semantic-layer-tokens.css",
+    "styles/interaction-states.css"
+  ],
+  "deferredLoadOrder": [
+    "styles/z-index-layers.css",
+    "styles/motion-policy.css",
+    "styles/visual-identity-unify.css",
+    "styles/tokens.css",
+    "styles/sunnah-identity-reset.css",
+    "styles/visual-layer-contrast-fix.css",
+    "styles/visual-redesign-v2-tokens.css",
+    "styles/sections-calm-polish.css",
+    "styles/ssunnah-ux-polish.css",
+    "styles/components/modern-section-shell.css",
+    "styles/section-cards-theme.css",
+    "styles/sunnah-foundation-type.css",
+    "styles/green-surface-system.css",
+    "styles/ssunnah-semantic-tokens.css",
+    "styles/ssunnah-card-unify.css",
+    "styles/card-matte-unify.css",
+    "styles/components/badge-system.css",
+    "styles/modern-ui-refresh.css",
+    "styles/ssunnah-ds-canonical.css",
+    "styles/m2030/foundation.css",
+    "styles/m2030/navigation.css",
+    "styles/brand-v4-contrast-fixes.css",
+    "styles/a11y-release-gate.css",
+    "styles/visual-enrichment.css",
+    "styles/sunnah-visual-language.css",
+    "styles/sunnah-geometry-system.css",
+    "styles/modern-ui-refresh.css",
+    "styles/ssunnah-ds-canonical.css",
+    "styles/design-system.css",
+    "styles/brand-v4-components.css",
+    "styles/final-release.css",
+    "styles/card-decorative-strip-cleanup.css",
+    "styles/modern-islamic-editorial-tokens.css",
+    "styles/modern-islamic-editorial.css",
+    "styles/card-system.css",
+    "styles/card-system-v2.css",
+    "styles/app-state-v2.css",
+    "styles/islam-intro-experience.css",
+    "styles/components/instant-interaction.css",
+    "styles/sunnah-visual-language.css",
+    "styles/sunnah-geometry-system.css",
+    "styles/visual-refresh-v1.css",
+    "styles/components/native-feel.css",
+    "styles/m2030/interactions.css",
+    "styles/index-deferred-pages.css",
+    "styles/section-makarim-pattern.css",
+    "styles/components/compact-sources.css",
+    "styles/m2030/pages.css",
+    "styles/components/content-reading-shell.css",
+    "styles/reading-prose-system.css",
+    "styles/components/reading-section-card.css",
+    "styles/fonts-ui-bold.css",
+    "styles/capacitor-native-ux.css",
+    "styles/ios-edge.css"
+  ],
+  "layers": [
+    {
+      "file": "features/mushaf-madinah/mushaf-madinah.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 105172,
+      "hex": 389,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/quran.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 110963,
+      "hex": 336,
+      "consumersApprox": 51
+    },
+    {
+      "file": "app/styles/theme.css",
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 34252,
+      "hex": 264,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/admin.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY",
+      "bytes": 165191,
+      "hex": 248,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/dark-mode-surfaces.css",
+      "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 35974,
+      "hex": 137,
+      "consumersApprox": 29
+    },
+    {
+      "file": "styles/pages/lessons.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 71304,
+      "hex": 131,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/dark-mode-recovery.css",
+      "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 28788,
+      "hex": 126,
+      "consumersApprox": 43
+    },
+    {
+      "file": "styles/pages/prophet-stories.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 104615,
+      "hex": 126,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/design-tokens.css",
+      "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 11796,
+      "hex": 116,
+      "consumersApprox": 37
+    },
+    {
+      "file": "features/mushaf-reader/mushaf-reader.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 68369,
+      "hex": 107,
+      "consumersApprox": 51
+    },
+    {
+      "file": "index.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 29357,
+      "hex": 107,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/design-system.css",
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 86281,
+      "hex": 107,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/fiqh-hub.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 70786,
+      "hex": 102,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/section-cards-theme.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 32697,
+      "hex": 99,
+      "consumersApprox": 19
+    },
+    {
+      "file": "styles/interaction-states.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 11483,
+      "hex": 86,
+      "consumersApprox": 24
+    },
+    {
+      "file": "styles/islamic-landmarks.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 13196,
+      "hex": 86,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/reader-page-chrome.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 26519,
+      "hex": 79,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/theme-aliases.css",
+      "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 22428,
+      "hex": 79,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/brand-v4.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 20231,
+      "hex": 71,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/index-deferred-pages.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 90694,
+      "hex": 59,
+      "consumersApprox": 18
+    },
+    {
+      "file": "styles/pages/search.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 34768,
+      "hex": 59,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/assistant-chat.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9987,
+      "hex": 58,
+      "consumersApprox": 22
+    },
+    {
+      "file": "styles/quran-memorization.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 15981,
+      "hex": 58,
+      "consumersApprox": 30
+    },
+    {
+      "file": "styles/visual-enrichment.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 12100,
+      "hex": 57,
+      "consumersApprox": 5
+    },
+    {
+      "file": "styles/premium-dark-refine.css",
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 36446,
+      "hex": 53,
+      "consumersApprox": 39
+    },
+    {
+      "file": "styles/knowledge-experience.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 25010,
+      "hex": 52,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/app-shell-v2.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 27153,
+      "hex": 50,
+      "consumersApprox": 31
+    },
+    {
+      "file": "styles/sunnah-visual-language.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 15641,
+      "hex": 47,
+      "consumersApprox": 23
+    },
+    {
+      "file": "styles/visual-refresh-v1.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 13168,
+      "hex": 47,
+      "consumersApprox": 16
+    },
+    {
+      "file": "styles/modern-ui-refresh.css",
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 22839,
+      "hex": 44,
+      "consumersApprox": 35
+    },
+    {
+      "file": "styles/reader-bookmarks.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 10914,
+      "hex": 43,
+      "consumersApprox": 22
+    },
+    {
+      "file": "styles/quran-engine-ui.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 27811,
+      "hex": 42,
+      "consumersApprox": 20
+    },
+    {
+      "file": "styles/prophets-semantic-tokens.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4164,
+      "hex": 41,
+      "consumersApprox": 21
+    },
+    {
+      "file": "styles/semantic-layer-tokens.css",
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4448,
+      "hex": 40,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/dark-design-system.css",
+      "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 20692,
+      "hex": 39,
+      "consumersApprox": 36
+    },
+    {
+      "file": "styles/pages/adhan-settings.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 24153,
+      "hex": 39,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/islamic-quiz-game.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 23914,
+      "hex": 38,
+      "consumersApprox": 13
+    },
+    {
+      "file": "styles/islam-intro-experience.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 19691,
+      "hex": 38,
+      "consumersApprox": 47
+    },
+    {
+      "file": "styles/pages/islamic-sects.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 17918,
+      "hex": 38,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/sins-rights.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 28930,
+      "hex": 38,
+      "consumersApprox": 13
+    },
+    {
+      "file": "styles/ssunnah-ds-canonical.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8788,
+      "hex": 37,
+      "consumersApprox": 17
+    },
+    {
+      "file": "styles/pages/prayer-times.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 33272,
+      "hex": 36,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/tarikh-islami.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 25608,
+      "hex": 36,
+      "consumersApprox": 51
+    },
+    {
+      "file": "components/sections/section-cards.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9304,
+      "hex": 34,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/filters.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8869,
+      "hex": 34,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/first-visit-intro.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8364,
+      "hex": 34,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/mind-map.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 19175,
+      "hex": 33,
+      "consumersApprox": 29
+    },
+    {
+      "file": "features/mushaf-reader/page-goto-dial.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4194,
+      "hex": 32,
+      "consumersApprox": 10
+    },
+    {
+      "file": "styles/components/content-reading-shell.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 12855,
+      "hex": 32,
+      "consumersApprox": 25
+    },
+    {
+      "file": "styles/components/home-universal-search.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7539,
+      "hex": 32,
+      "consumersApprox": 13
+    },
+    {
+      "file": "styles/pages/adhkar.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 12650,
+      "hex": 32,
+      "consumersApprox": 51
+    },
+    {
+      "file": "features/mushaf-madinah/quran-sheet/quran-sheet.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 12676,
+      "hex": 31,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/sidebar-redesign.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 10835,
+      "hex": 30,
+      "consumersApprox": 16
+    },
+    {
+      "file": "components/lobby/quick-actions-quad.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4467,
+      "hex": 29,
+      "consumersApprox": 10
+    },
+    {
+      "file": "styles/tokens.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8408,
+      "hex": 29,
+      "consumersApprox": 51
+    },
+    {
+      "file": "components/ui/compact-section-header.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3372,
+      "hex": 28,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/brand-v4-contrast-fixes.css",
+      "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 26971,
+      "hex": 28,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/section-quiz.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5497,
+      "hex": 28,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/green-surface-system.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 12441,
+      "hex": 28,
+      "consumersApprox": 25
+    },
+    {
+      "file": "styles/sunnah-foundation-v2.css",
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7821,
+      "hex": 28,
+      "consumersApprox": 34
+    },
+    {
+      "file": "styles/sunnah-identity-luxury-night.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7318,
+      "hex": 28,
+      "consumersApprox": 17
+    },
+    {
+      "file": "components/lobby/section-lobby.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9036,
+      "hex": 26,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/learn-legal-v2.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 11230,
+      "hex": 26,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/quran-circles.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7107,
+      "hex": 26,
+      "consumersApprox": 37
+    },
+    {
+      "file": "styles/sunnah-foundation-tokens.css",
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8738,
+      "hex": 26,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/visual-identity-unify.css",
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 10332,
+      "hex": 26,
+      "consumersApprox": 51
+    },
+    {
+      "file": "features/mushaf-madinah/mushaf-tafsir-sheet.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6037,
+      "hex": 25,
+      "consumersApprox": 6
+    },
+    {
+      "file": "styles/m2030/home.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 16926,
+      "hex": 25,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/worship-history-v2.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 11799,
+      "hex": 25,
+      "consumersApprox": 48
+    },
+    {
+      "file": "styles/app-state-v2.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3477,
+      "hex": 24,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/quran-audio-dock-dismiss.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2875,
+      "hex": 24,
+      "consumersApprox": 8
+    },
+    {
+      "file": "styles/pages/admin-v3-shell.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY",
+      "bytes": 23127,
+      "hex": 24,
+      "consumersApprox": 15
+    },
+    {
+      "file": "styles/reader-bookmarks-manager.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4743,
+      "hex": 24,
+      "consumersApprox": 9
+    },
+    {
+      "file": "styles/card-system-v2.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4622,
+      "hex": 23,
+      "consumersApprox": 23
+    },
+    {
+      "file": "styles/modern-islamic-editorial-tokens.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2383,
+      "hex": 23,
+      "consumersApprox": 9
+    },
+    {
+      "file": "styles/nations.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 14618,
+      "hex": 23,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/knowledge-dashboards-v2.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 11446,
+      "hex": 23,
+      "consumersApprox": 30
+    },
+    {
+      "file": "styles/pages/tawhid.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 18517,
+      "hex": 23,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/hifz-audio-loop-player.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6837,
+      "hex": 22,
+      "consumersApprox": 9
+    },
+    {
+      "file": "styles/discover-islam.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 12414,
+      "hex": 22,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/majlisilm-shell.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9025,
+      "hex": 22,
+      "consumersApprox": 17
+    },
+    {
+      "file": "styles/pages/admin-review-hub.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY",
+      "bytes": 12499,
+      "hex": 22,
+      "consumersApprox": 19
+    },
+    {
+      "file": "styles/pages/miracles.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 12277,
+      "hex": 22,
+      "consumersApprox": 51
+    },
+    {
+      "file": "pages/competitions/ui/competitions.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4906,
+      "hex": 21,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/content-trust.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2151,
+      "hex": 21,
+      "consumersApprox": 12
+    },
+    {
+      "file": "styles/components/home-live-now.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3595,
+      "hex": 21,
+      "consumersApprox": 9
+    },
+    {
+      "file": "styles/components/knowledge-summary-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8508,
+      "hex": 21,
+      "consumersApprox": 25
+    },
+    {
+      "file": "styles/components/share-faida.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3472,
+      "hex": 21,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/luxury-night-v2.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5443,
+      "hex": 21,
+      "consumersApprox": 23
+    },
+    {
+      "file": "styles/pages/notifications.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 25331,
+      "hex": 21,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/information-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2631,
+      "hex": 20,
+      "consumersApprox": 8
+    },
+    {
+      "file": "styles/components/submissions-review.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8897,
+      "hex": 20,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/final-release.css",
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 74006,
+      "hex": 20,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/lessons-sections-v2.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 10637,
+      "hex": 20,
+      "consumersApprox": 23
+    },
+    {
+      "file": "styles/pages/quran-people.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 10098,
+      "hex": 20,
+      "consumersApprox": 39
+    },
+    {
+      "file": "styles/pages/seerah.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 25301,
+      "hex": 20,
+      "consumersApprox": 51
+    },
+    {
+      "file": "features/mushaf-reader/mushaf-display-mode-control.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2656,
+      "hex": 19,
+      "consumersApprox": 8
+    },
+    {
+      "file": "styles/components/source-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6116,
+      "hex": 19,
+      "consumersApprox": 16
+    },
+    {
+      "file": "styles/pages/calendar.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9820,
+      "hex": 19,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/quran-player-view.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3391,
+      "hex": 19,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/section-makarim-pattern.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 13644,
+      "hex": 19,
+      "consumersApprox": 17
+    },
+    {
+      "file": "styles/visual-redesign-v2-tokens.css",
+      "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7211,
+      "hex": 19,
+      "consumersApprox": 30
+    },
+    {
+      "file": "styles/components/header-ad-slot.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3897,
+      "hex": 18,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/topic-page.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 14433,
+      "hex": 18,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/my-learning.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 15076,
+      "hex": 18,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/prayer-countdown-chip.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4321,
+      "hex": 17,
+      "consumersApprox": 39
+    },
+    {
+      "file": "styles/components/quran-audio-chrome.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4926,
+      "hex": 17,
+      "consumersApprox": 21
+    },
+    {
+      "file": "styles/pages/flashcards.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7852,
+      "hex": 17,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/assistant.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7365,
+      "hex": 16,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/quran-hub.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 15853,
+      "hex": 16,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/quran-mini-player.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 10399,
+      "hex": 15,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/scholarly-trust.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4048,
+      "hex": 15,
+      "consumersApprox": 10
+    },
+    {
+      "file": "styles/pages/quran-numbers.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6506,
+      "hex": 15,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/content-actions-rag.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 11432,
+      "hex": 14,
+      "consumersApprox": 12
+    },
+    {
+      "file": "styles/components/feature-tour.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5487,
+      "hex": 14,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/harvest-feed-panel.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2733,
+      "hex": 14,
+      "consumersApprox": 7
+    },
+    {
+      "file": "styles/components/source-item-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2930,
+      "hex": 14,
+      "consumersApprox": 8
+    },
+    {
+      "file": "styles/pages/auth.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9520,
+      "hex": 14,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/stories-seerah-v2.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7830,
+      "hex": 14,
+      "consumersApprox": 19
+    },
+    {
+      "file": "styles/pages/autonomous-platform.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 10324,
+      "hex": 13,
+      "consumersApprox": 12
+    },
+    {
+      "file": "styles/pages/institutions.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1947,
+      "hex": 13,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/profile-hub-v2.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6957,
+      "hex": 13,
+      "consumersApprox": 22
+    },
+    {
+      "file": "styles/pages/tafsir.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 15977,
+      "hex": 13,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/audio-library-selection.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3449,
+      "hex": 12,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/header-ticker-polish.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3781,
+      "hex": 12,
+      "consumersApprox": 7
+    },
+    {
+      "file": "styles/pages/admin-categories.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY",
+      "bytes": 8718,
+      "hex": 12,
+      "consumersApprox": 5
+    },
+    {
+      "file": "styles/pages/duas.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7959,
+      "hex": 12,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/my-submissions.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6910,
+      "hex": 12,
+      "consumersApprox": 11
+    },
+    {
+      "file": "styles/components/app-bottom-sheet.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9492,
+      "hex": 11,
+      "consumersApprox": 24
+    },
+    {
+      "file": "styles/components/reading-section-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8947,
+      "hex": 11,
+      "consumersApprox": 39
+    },
+    {
+      "file": "styles/pages/knowledge-collection.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8669,
+      "hex": 11,
+      "consumersApprox": 26
+    },
+    {
+      "file": "styles/pages/shimael.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 10763,
+      "hex": 11,
+      "consumersApprox": 9
+    },
+    {
+      "file": "styles/pages/vault.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 12735,
+      "hex": 11,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/compact-sources.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5193,
+      "hex": 10,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/home/home-learning-seasons.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2263,
+      "hex": 10,
+      "consumersApprox": 12
+    },
+    {
+      "file": "styles/components/home-brand-title.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6492,
+      "hex": 10,
+      "consumersApprox": 29
+    },
+    {
+      "file": "styles/components/last-reading-bookmark-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1300,
+      "hex": 10,
+      "consumersApprox": 6
+    },
+    {
+      "file": "styles/components/muezzin-picker.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7136,
+      "hex": 10,
+      "consumersApprox": 6
+    },
+    {
+      "file": "styles/pages/hajj.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 13858,
+      "hex": 10,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/islamic-stories.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 12964,
+      "hex": 10,
+      "consumersApprox": 50
+    },
+    {
+      "file": "styles/pages/library-search-v2.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4764,
+      "hex": 10,
+      "consumersApprox": 14
+    },
+    {
+      "file": "styles/pages/occasions.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4437,
+      "hex": 10,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/universities.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3114,
+      "hex": 10,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/quran-immersive-reader.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 13178,
+      "hex": 10,
+      "consumersApprox": 24
+    },
+    {
+      "file": "styles/visual-layer-contrast-fix.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 15669,
+      "hex": 10,
+      "consumersApprox": 12
+    },
+    {
+      "file": "styles/ayah-nav-selection.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2062,
+      "hex": 9,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/bulk-download-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3071,
+      "hex": 9,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/language-offline.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4824,
+      "hex": 9,
+      "consumersApprox": 16
+    },
+    {
+      "file": "styles/components/more-bottom-sheet.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 21657,
+      "hex": 9,
+      "consumersApprox": 9
+    },
+    {
+      "file": "styles/components/university-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3802,
+      "hex": 9,
+      "consumersApprox": 11
+    },
+    {
+      "file": "styles/highlighted-content.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 10857,
+      "hex": 9,
+      "consumersApprox": 13
+    },
+    {
+      "file": "styles/pages/madhahib.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 11465,
+      "hex": 9,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/settings.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9905,
+      "hex": 9,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/tawba.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 11999,
+      "hex": 9,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/sections-calm-polish.css",
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 21176,
+      "hex": 9,
+      "consumersApprox": 49
+    },
+    {
+      "file": "styles/ssunnah-semantic-tokens.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3482,
+      "hex": 9,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/ssunnah-ux-polish.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 27719,
+      "hex": 9,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/admin-inline-edit.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY",
+      "bytes": 5575,
+      "hex": 8,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/ios-app-cta.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2136,
+      "hex": 8,
+      "consumersApprox": 28
+    },
+    {
+      "file": "styles/components/reading-break.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2031,
+      "hex": 8,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/site-footer-menu.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4774,
+      "hex": 8,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/text-highlight-capture.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1695,
+      "hex": 8,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/m2030/pages.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5718,
+      "hex": 8,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/asmaa-husna.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 12214,
+      "hex": 8,
+      "consumersApprox": 7
+    },
+    {
+      "file": "styles/pages/ulum-quran.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 16718,
+      "hex": 8,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/quran-worship-hub.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2968,
+      "hex": 8,
+      "consumersApprox": 9
+    },
+    {
+      "file": "styles/components/faida-image-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3616,
+      "hex": 7,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/prayer-countdown-banner.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3900,
+      "hex": 7,
+      "consumersApprox": 10
+    },
+    {
+      "file": "styles/pages/adab-talab-ilm.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7998,
+      "hex": 7,
+      "consumersApprox": 43
+    },
+    {
+      "file": "styles/pages/akhlaq.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7380,
+      "hex": 7,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/knowledge.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1960,
+      "hex": 7,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/mosque-mode.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3909,
+      "hex": 7,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/tahara.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 13600,
+      "hex": 7,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/tajweed.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3010,
+      "hex": 7,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/prayer-route-shell.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3087,
+      "hex": 7,
+      "consumersApprox": 10
+    },
+    {
+      "file": "styles/reading-prose-system.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 13222,
+      "hex": 7,
+      "consumersApprox": 44
+    },
+    {
+      "file": "styles/sunnah-geometry-system.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4182,
+      "hex": 7,
+      "consumersApprox": 18
+    },
+    {
+      "file": "styles/components/home-local-resume.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1611,
+      "hex": 6,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/optimized-sheikh-image.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2504,
+      "hex": 6,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/top-chrome-layout.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7611,
+      "hex": 6,
+      "consumersApprox": 19
+    },
+    {
+      "file": "styles/pages/glossary.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9515,
+      "hex": 6,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/knowledge-platform-p0.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2155,
+      "hex": 6,
+      "consumersApprox": 10
+    },
+    {
+      "file": "styles/pages/mawarith.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 24722,
+      "hex": 6,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/prophetic-medicine.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4531,
+      "hex": 6,
+      "consumersApprox": 37
+    },
+    {
+      "file": "styles/pages/submit-content.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2716,
+      "hex": 6,
+      "consumersApprox": 5
+    },
+    {
+      "file": "styles/pages/universities-admin.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY",
+      "bytes": 8940,
+      "hex": 6,
+      "consumersApprox": 7
+    },
+    {
+      "file": "styles/pages/wasaya.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 10050,
+      "hex": 6,
+      "consumersApprox": 34
+    },
+    {
+      "file": "styles/capacitor-native-ux.css",
+      "classification": "IOS_ONLY",
+      "platform": "IOS_ONLY",
+      "bytes": 3295,
+      "hex": 5,
+      "consumersApprox": 16
+    },
+    {
+      "file": "styles/components/achievement-toast.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1370,
+      "hex": 5,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/home-content-hub.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2381,
+      "hex": 5,
+      "consumersApprox": 33
+    },
+    {
+      "file": "styles/pages/methodology.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7023,
+      "hex": 5,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/prophet-stories-admin.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY",
+      "bytes": 8671,
+      "hex": 5,
+      "consumersApprox": 5
+    },
+    {
+      "file": "styles/pages/qiraat.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2259,
+      "hex": 5,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/sources-directory.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1928,
+      "hex": 5,
+      "consumersApprox": 25
+    },
+    {
+      "file": "styles/pages/upload.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5846,
+      "hex": 5,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/quran-hifz-loop.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1080,
+      "hex": 5,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/sunnah-identity-detail-reading.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 10260,
+      "hex": 5,
+      "consumersApprox": 29
+    },
+    {
+      "file": "styles/sunnah-identity-home-hub.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6184,
+      "hex": 5,
+      "consumersApprox": 19
+    },
+    {
+      "file": "styles/components/adhan-notification.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6189,
+      "hex": 4,
+      "consumersApprox": 7
+    },
+    {
+      "file": "styles/components/directory-media.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1228,
+      "hex": 4,
+      "consumersApprox": 15
+    },
+    {
+      "file": "styles/components/instant-interaction.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4588,
+      "hex": 4,
+      "consumersApprox": 21
+    },
+    {
+      "file": "styles/components/native-feel.css",
+      "classification": "IOS_ONLY",
+      "platform": "IOS_ONLY",
+      "bytes": 6790,
+      "hex": 4,
+      "consumersApprox": 35
+    },
+    {
+      "file": "styles/components/related-knowledge.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6069,
+      "hex": 4,
+      "consumersApprox": 11
+    },
+    {
+      "file": "styles/pages/arkan-iman.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7723,
+      "hex": 4,
+      "consumersApprox": 36
+    },
+    {
+      "file": "styles/pages/learning-path-detail.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 10324,
+      "hex": 4,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/pages/prayer-ranks.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3693,
+      "hex": 4,
+      "consumersApprox": 42
+    },
+    {
+      "file": "styles/pages/quran-hub-v2.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9616,
+      "hex": 4,
+      "consumersApprox": 18
+    },
+    {
+      "file": "styles/pages/reading-plans.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6207,
+      "hex": 4,
+      "consumersApprox": 9
+    },
+    {
+      "file": "styles/components/chunk-recovery-toast.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 990,
+      "hex": 3,
+      "consumersApprox": 7
+    },
+    {
+      "file": "styles/components/daily-challenge-quiz.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2582,
+      "hex": 3,
+      "consumersApprox": 5
+    },
+    {
+      "file": "styles/components/global-search-modal.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9574,
+      "hex": 3,
+      "consumersApprox": 11
+    },
+    {
+      "file": "styles/components/home-continue-learning.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1301,
+      "hex": 3,
+      "consumersApprox": 14
+    },
+    {
+      "file": "styles/components/home-daily-strip.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1516,
+      "hex": 3,
+      "consumersApprox": 24
+    },
+    {
+      "file": "styles/components/ipad-responsive-layout.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6042,
+      "hex": 3,
+      "consumersApprox": 10
+    },
+    {
+      "file": "styles/critical-first-paint.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7934,
+      "hex": 3,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/fiqh-guide.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5903,
+      "hex": 3,
+      "consumersApprox": 20
+    },
+    {
+      "file": "styles/pages/fiqh-qawaid.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 11258,
+      "hex": 3,
+      "consumersApprox": 31
+    },
+    {
+      "file": "styles/pages/islam-stats.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8600,
+      "hex": 3,
+      "consumersApprox": 14
+    },
+    {
+      "file": "styles/pages/learning-path-dashboard.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 872,
+      "hex": 3,
+      "consumersApprox": 16
+    },
+    {
+      "file": "styles/pages/more-page.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2396,
+      "hex": 3,
+      "consumersApprox": 45
+    },
+    {
+      "file": "styles/pages/raqaiq.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6892,
+      "hex": 3,
+      "consumersApprox": 38
+    },
+    {
+      "file": "styles/pages/sawm.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 10979,
+      "hex": 3,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/scholar-profile.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2661,
+      "hex": 3,
+      "consumersApprox": 6
+    },
+    {
+      "file": "styles/pages/tilawa.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1222,
+      "hex": 3,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/university-detail.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8130,
+      "hex": 3,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/typography-app.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5851,
+      "hex": 3,
+      "consumersApprox": 18
+    },
+    {
+      "file": "styles/components/async-data-error.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3154,
+      "hex": 2,
+      "consumersApprox": 7
+    },
+    {
+      "file": "styles/components/home/home-week-streak.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1902,
+      "hex": 2,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/home/home-widget-chrome.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2429,
+      "hex": 2,
+      "consumersApprox": 12
+    },
+    {
+      "file": "styles/components/home-recent-rail.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1274,
+      "hex": 2,
+      "consumersApprox": 9
+    },
+    {
+      "file": "styles/components/home-recommended.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1186,
+      "hex": 2,
+      "consumersApprox": 11
+    },
+    {
+      "file": "styles/components/home-sections-grid.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1657,
+      "hex": 2,
+      "consumersApprox": 13
+    },
+    {
+      "file": "styles/m2030/navigation.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5656,
+      "hex": 2,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/alamat-saah.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8044,
+      "hex": 2,
+      "consumersApprox": 22
+    },
+    {
+      "file": "styles/pages/arkan-islam.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7071,
+      "hex": 2,
+      "consumersApprox": 12
+    },
+    {
+      "file": "styles/pages/car-mode.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4110,
+      "hex": 2,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/contact.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7449,
+      "hex": 2,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/daily-wird.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7736,
+      "hex": 2,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/duas-quran.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6746,
+      "hex": 2,
+      "consumersApprox": 27
+    },
+    {
+      "file": "styles/pages/hikam-salaf.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6831,
+      "hex": 2,
+      "consumersApprox": 27
+    },
+    {
+      "file": "styles/pages/home-dashboard-v2.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 15291,
+      "hex": 2,
+      "consumersApprox": 13
+    },
+    {
+      "file": "styles/pages/janaza.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9931,
+      "hex": 2,
+      "consumersApprox": 48
+    },
+    {
+      "file": "styles/pages/janna-naar.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7312,
+      "hex": 2,
+      "consumersApprox": 25
+    },
+    {
+      "file": "styles/pages/learning-quiz.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 14565,
+      "hex": 2,
+      "consumersApprox": 7
+    },
+    {
+      "file": "styles/pages/lesson-import.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5334,
+      "hex": 2,
+      "consumersApprox": 11
+    },
+    {
+      "file": "styles/pages/researches.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8584,
+      "hex": 2,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/salah-guide.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 15978,
+      "hex": 2,
+      "consumersApprox": 38
+    },
+    {
+      "file": "styles/pages/scientific-announcements.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6719,
+      "hex": 2,
+      "consumersApprox": 25
+    },
+    {
+      "file": "styles/pages/support.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2209,
+      "hex": 2,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/tasbih.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6425,
+      "hex": 2,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/a11y-release-gate.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 324,
+      "hex": 1,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/card-decorative-strip-cleanup.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5883,
+      "hex": 1,
+      "consumersApprox": 21
+    },
+    {
+      "file": "styles/components/home/home-interesting-topics.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1906,
+      "hex": 1,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/home/home-mindmap.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2193,
+      "hex": 1,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/home-quick-access-v2.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1523,
+      "hex": 1,
+      "consumersApprox": 5
+    },
+    {
+      "file": "styles/components/islamic-geometric.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 726,
+      "hex": 1,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/isnad-attribution-bar.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 603,
+      "hex": 1,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/mobile-pwa.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2792,
+      "hex": 1,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/page-shell.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2534,
+      "hex": 1,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/m2030/foundation.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3864,
+      "hex": 1,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/arbaeen-detail.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5635,
+      "hex": 1,
+      "consumersApprox": 7
+    },
+    {
+      "file": "styles/pages/assistant-shell.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 12661,
+      "hex": 1,
+      "consumersApprox": 8
+    },
+    {
+      "file": "styles/pages/cards.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6063,
+      "hex": 1,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/family-mode.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4949,
+      "hex": 1,
+      "consumersApprox": 9
+    },
+    {
+      "file": "styles/pages/learning-paths.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5717,
+      "hex": 1,
+      "consumersApprox": 40
+    },
+    {
+      "file": "styles/pages/malaika.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7770,
+      "hex": 1,
+      "consumersApprox": 40
+    },
+    {
+      "file": "styles/pages/quiz.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 935,
+      "hex": 1,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/researcher-profile.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4045,
+      "hex": 1,
+      "consumersApprox": 11
+    },
+    {
+      "file": "styles/pages/scholarly-research.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 15663,
+      "hex": 1,
+      "consumersApprox": 26
+    },
+    {
+      "file": "styles/pages/transcribe.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5847,
+      "hex": 1,
+      "consumersApprox": 16
+    },
+    {
+      "file": "styles/pages/updates.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9922,
+      "hex": 1,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/sunnah-foundation-type.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3325,
+      "hex": 1,
+      "consumersApprox": 10
+    },
+    {
+      "file": "styles/sunnah-identity-cards.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5493,
+      "hex": 1,
+      "consumersApprox": 13
+    },
+    {
+      "file": "styles/brand-v4-components.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 12359,
+      "hex": 0,
+      "consumersApprox": 7
+    },
+    {
+      "file": "styles/breakpoints.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4141,
+      "hex": 0,
+      "consumersApprox": 30
+    },
+    {
+      "file": "styles/card-matte-unify.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1458,
+      "hex": 0,
+      "consumersApprox": 15
+    },
+    {
+      "file": "styles/card-system-tokens.css",
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5976,
+      "hex": 0,
+      "consumersApprox": 20
+    },
+    {
+      "file": "styles/card-system.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 21441,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/admin-gate.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY",
+      "bytes": 801,
+      "hex": 0,
+      "consumersApprox": 5
+    },
+    {
+      "file": "styles/components/app-chrome-scroll.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3721,
+      "hex": 0,
+      "consumersApprox": 16
+    },
+    {
+      "file": "styles/components/badge-system.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6476,
+      "hex": 0,
+      "consumersApprox": 11
+    },
+    {
+      "file": "styles/components/chrome-boot-ph.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 370,
+      "hex": 0,
+      "consumersApprox": 29
+    },
+    {
+      "file": "styles/components/citation-modal.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1545,
+      "hex": 0,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/dark-emerald-menus.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 803,
+      "hex": 0,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/design-redesign.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1190,
+      "hex": 0,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/error-boundary.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1968,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/focus-arrival.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 500,
+      "hex": 0,
+      "consumersApprox": 7
+    },
+    {
+      "file": "styles/components/friday-banner.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2733,
+      "hex": 0,
+      "consumersApprox": 5
+    },
+    {
+      "file": "styles/components/hadith-badge.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 898,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/hadith-list-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2143,
+      "hex": 0,
+      "consumersApprox": 25
+    },
+    {
+      "file": "styles/components/hub-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 18205,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/modern-section-shell.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 23792,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/page-goto-visibility.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 902,
+      "hex": 0,
+      "consumersApprox": 8
+    },
+    {
+      "file": "styles/components/page-hero.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7349,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/components/quran-surah-jump-search.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5760,
+      "hex": 0,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/safe-area-debug.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1114,
+      "hex": 0,
+      "consumersApprox": 20
+    },
+    {
+      "file": "styles/components/safe-hero.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1348,
+      "hex": 0,
+      "consumersApprox": 50
+    },
+    {
+      "file": "styles/components/scholar-follow.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1166,
+      "hex": 0,
+      "consumersApprox": 16
+    },
+    {
+      "file": "styles/components/section-share-actions.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 536,
+      "hex": 0,
+      "consumersApprox": 27
+    },
+    {
+      "file": "styles/components/sunnah-card-v2.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3818,
+      "hex": 0,
+      "consumersApprox": 19
+    },
+    {
+      "file": "styles/components/surface-polish.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1826,
+      "hex": 0,
+      "consumersApprox": 8
+    },
+    {
+      "file": "styles/components/thumb-zone.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1864,
+      "hex": 0,
+      "consumersApprox": 20
+    },
+    {
+      "file": "styles/components/virtual-list.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 472,
+      "hex": 0,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/fonts-quran.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1617,
+      "hex": 0,
+      "consumersApprox": 27
+    },
+    {
+      "file": "styles/fonts-ui-bold.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 737,
+      "hex": 0,
+      "consumersApprox": 14
+    },
+    {
+      "file": "styles/fonts-ui.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4057,
+      "hex": 0,
+      "consumersApprox": 36
+    },
+    {
+      "file": "styles/ios-edge.css",
+      "classification": "IOS_ONLY",
+      "platform": "IOS_ONLY",
+      "bytes": 3977,
+      "hex": 0,
+      "consumersApprox": 22
+    },
+    {
+      "file": "styles/m2030/interactions.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6518,
+      "hex": 0,
+      "consumersApprox": 34
+    },
+    {
+      "file": "styles/modern-islamic-editorial.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6681,
+      "hex": 0,
+      "consumersApprox": 18
+    },
+    {
+      "file": "styles/motion-policy.css",
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 850,
+      "hex": 0,
+      "consumersApprox": 13
+    },
+    {
+      "file": "styles/page-container.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1139,
+      "hex": 0,
+      "consumersApprox": 22
+    },
+    {
+      "file": "styles/pages/account-deletion.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4532,
+      "hex": 0,
+      "consumersApprox": 27
+    },
+    {
+      "file": "styles/pages/admin-shell.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "WEB_ONLY",
+      "bytes": 5183,
+      "hex": 0,
+      "consumersApprox": 12
+    },
+    {
+      "file": "styles/pages/annual-course-detail.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 539,
+      "hex": 0,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/pages/arbaeen-nawawi.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 23233,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/certificate-verify.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 710,
+      "hex": 0,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/pages/citation-public.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4591,
+      "hex": 0,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/pages/dev-design-gallery.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 238,
+      "hex": 0,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/pages/fadail-aamal.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5796,
+      "hex": 0,
+      "consumersApprox": 33
+    },
+    {
+      "file": "styles/pages/fiqh-council-section.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4712,
+      "hex": 0,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/pages/hadith-books.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 16451,
+      "hex": 0,
+      "consumersApprox": 32
+    },
+    {
+      "file": "styles/pages/hadith-design-language.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 19961,
+      "hex": 0,
+      "consumersApprox": 40
+    },
+    {
+      "file": "styles/pages/hadith-mustalah.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7814,
+      "hex": 0,
+      "consumersApprox": 26
+    },
+    {
+      "file": "styles/pages/hadith.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 57150,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/knowledge-graph.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 10680,
+      "hex": 0,
+      "consumersApprox": 46
+    },
+    {
+      "file": "styles/pages/kuwait-lessons.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5349,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/my-citations.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9750,
+      "hex": 0,
+      "consumersApprox": 11
+    },
+    {
+      "file": "styles/pages/not-found.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4682,
+      "hex": 0,
+      "consumersApprox": 30
+    },
+    {
+      "file": "styles/pages/qa.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1983,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/qibla.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5341,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/quran-search.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3813,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/sahabah.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6785,
+      "hex": 0,
+      "consumersApprox": 40
+    },
+    {
+      "file": "styles/pages/sitemap.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2378,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/study-room.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5083,
+      "hex": 0,
+      "consumersApprox": 14
+    },
+    {
+      "file": "styles/pages/sunan-yawmiyya.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7676,
+      "hex": 0,
+      "consumersApprox": 36
+    },
+    {
+      "file": "styles/pages/surah-index.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9443,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/teachers.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 1625,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/telegram-section.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 9415,
+      "hex": 0,
+      "consumersApprox": 7
+    },
+    {
+      "file": "styles/pages/topic.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 946,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/topics-index.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 731,
+      "hex": 0,
+      "consumersApprox": 8
+    },
+    {
+      "file": "styles/pages/universities-compare.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3120,
+      "hex": 0,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/pages/user-stats.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 14549,
+      "hex": 0,
+      "consumersApprox": 9
+    },
+    {
+      "file": "styles/pages/zakat.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8909,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/quran-memorization-plans.css",
+      "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3039,
+      "hex": 0,
+      "consumersApprox": 4
+    },
+    {
+      "file": "styles/rulings-encyclopedia.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5476,
+      "hex": 0,
+      "consumersApprox": 21
+    },
+    {
+      "file": "styles/ssunnah-card-unify.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 11942,
+      "hex": 0,
+      "consumersApprox": 34
+    },
+    {
+      "file": "styles/ssunnah-screen-patterns.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3057,
+      "hex": 0,
+      "consumersApprox": 16
+    },
+    {
+      "file": "styles/ssunnah-theme-api.css",
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5694,
+      "hex": 0,
+      "consumersApprox": 28
+    },
+    {
+      "file": "styles/sunnah-identity-chrome-nav.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 10442,
+      "hex": 0,
+      "consumersApprox": 42
+    },
+    {
+      "file": "styles/sunnah-identity-forms-filters.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7229,
+      "hex": 0,
+      "consumersApprox": 35
+    },
+    {
+      "file": "styles/sunnah-identity-reset.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8834,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/sunnah-identity-responsive-a11y.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 4562,
+      "hex": 0,
+      "consumersApprox": 15
+    },
+    {
+      "file": "styles/sunnah-identity-sections.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5580,
+      "hex": 0,
+      "consumersApprox": 40
+    },
+    {
+      "file": "styles/typography-scale.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3227,
+      "hex": 0,
+      "consumersApprox": 28
+    },
+    {
+      "file": "styles/z-index-layers.css",
+      "classification": "CANONICAL_AUTHORITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 513,
+      "hex": 0,
+      "consumersApprox": 11
+    },
+    {
+      "file": "widgets/related-rail.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 528,
+      "hex": 0,
+      "consumersApprox": 14
+    }
+  ]
+}

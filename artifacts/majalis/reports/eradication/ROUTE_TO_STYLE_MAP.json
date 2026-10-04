@@ -1,0 +1,391 @@
+{
+  "id": "ROUTE_TO_STYLE_MAP",
+  "pageLocalCssImports": {
+    "pages/account/QuizPage.tsx": [
+      "@/styles/components/islamic-quiz-game.css",
+      "@/styles/pages/quiz.css",
+      "@/styles/pages/learn-legal-v2.css"
+    ],
+    "pages/account/SectionsPage.tsx": [
+      "@/components/sections/section-cards.css",
+      "@/styles/pages/lessons-sections-v2.css",
+      "@/styles/sunnah-identity-sections.css"
+    ],
+    "pages/account/ui/AccountDeletionView.tsx": [
+      "@/styles/pages/account-deletion.css"
+    ],
+    "pages/account/ui/FlashCardsView.tsx": [
+      "@/styles/pages/flashcards.css"
+    ],
+    "pages/account/ui/HomeBelowFold.tsx": [
+      "@/styles/components/home-daily-strip.css",
+      "@/styles/components/home-continue-learning.css",
+      "@/styles/components/home-sections-grid.css",
+      "@/styles/components/home-recommended.css",
+      "@/styles/components/home-recent-rail.css"
+    ],
+    "pages/account/ui/HomeView.tsx": [
+      "@/styles/components/home-brand-title.css",
+      "@/styles/m2030/home.css",
+      "@/styles/pages/home-dashboard-v2.css",
+      "@/styles/components/first-visit-intro.css",
+      "@/styles/components/home-daily-strip.css",
+      "@/styles/components/home-continue-learning.css",
+      "@/styles/components/home-sections-grid.css"
+    ],
+    "pages/account/ui/IslamicGlossaryView.tsx": [
+      "@/styles/pages/glossary.css",
+      "@/styles/islam-intro-experience.css",
+      "@/styles/pages/worship-history-v2.css"
+    ],
+    "pages/account/ui/LoginView.tsx": [
+      "@/styles/pages/auth.css",
+      "@/styles/sunnah-identity-forms-filters.css"
+    ],
+    "pages/account/ui/NotificationSettingsView.tsx": [
+      "@/styles/pages/notifications.css"
+    ],
+    "pages/account/ui/NotificationsAndSoundView.tsx": [
+      "@/styles/pages/settings.css"
+    ],
+    "pages/account/ui/OfflineCenterView.tsx": [
+      "@/styles/pages/knowledge-platform-p0.css",
+      "@/styles/pages/learn-legal-v2.css"
+    ],
+    "pages/account/ui/ProgressCenterView.tsx": [
+      "@/styles/pages/knowledge-platform-p0.css",
+      "@/styles/pages/profile-hub-v2.css"
+    ],
+    "pages/account/ui/SearchView.tsx": [
+      "@/styles/pages/search.css",
+      "@/styles/pages/library-search-v2.css"
+    ],
+    "pages/account/ui/SettingsView.tsx": [
+      "@/styles/pages/settings.css",
+      "@/styles/pages/profile-hub-v2.css"
+    ],
+    "pages/account/ui/SiteMapView.tsx": [
+      "@/styles/pages/sitemap.css"
+    ],
+    "pages/assistant/AssistantGate.tsx": [
+      "@/styles/pages/assistant.css"
+    ],
+    "pages/competitions/ui/CompetitionDetailView.tsx": [
+      "./competitions.css"
+    ],
+    "pages/competitions/ui/CompetitionsHubView.tsx": [
+      "@/components/sections/section-cards.css",
+      "./competitions.css"
+    ],
+    "pages/dev/DesignSystemGalleryPage.tsx": [
+      "@/styles/app-state-v2.css",
+      "@/styles/pages/dev-design-gallery.css"
+    ],
+    "pages/fiqh/ui/FiqhBookView.tsx": [
+      "@/styles/pages/fiqh-hub.css"
+    ],
+    "pages/fiqh/ui/FiqhChapterView.tsx": [
+      "@/styles/pages/fiqh-hub.css"
+    ],
+    "pages/fiqh/ui/FiqhLessonView.tsx": [
+      "@/styles/pages/fiqh-hub.css",
+      "@/styles/knowledge-experience.css"
+    ],
+    "pages/fiqh/ui/FiqhQawaidView.tsx": [
+      "@/styles/pages/fiqh-qawaid.css"
+    ],
+    "pages/fiqh/ui/FiqhUsulView.tsx": [
+      "@/styles/pages/fiqh-hub.css",
+      "@/styles/components/hub-card.css"
+    ],
+    "pages/fiqh/ui/FiqhView.tsx": [
+      "@/styles/pages/fiqh-hub.css",
+      "@/styles/components/hub-card.css",
+      "@/styles/pages/knowledge-dashboards-v2.css",
+      "@/styles/sunnah-identity-sections.css"
+    ],
+    "pages/fiqh/ui/HajjView.tsx": [
+      "@/styles/pages/hajj.css"
+    ],
+    "pages/fiqh/ui/JanazaView.tsx": [
+      "@/styles/pages/janaza.css"
+    ],
+    "pages/fiqh/ui/MawarithCalculatorView.tsx": [
+      "@/styles/pages/mawarith.css"
+    ],
+    "pages/fiqh/ui/MawarithView.tsx": [
+      "@/styles/pages/mawarith.css"
+    ],
+    "pages/fiqh/ui/RulingsView.tsx": [
+      "@/styles/rulings-encyclopedia.css",
+      "@/styles/pages/fiqh-hub.css",
+      "@/styles/sunnah-identity-sections.css"
+    ],
+    "pages/fiqh/ui/SalahGuideView.tsx": [
+      "@/styles/pages/salah-guide.css",
+      "@/styles/pages/worship-history-v2.css"
+    ],
+    "pages/fiqh/ui/ZakatView.tsx": [
+      "@/styles/pages/zakat.css"
+    ],
+    "pages/hadith/HadithDaifPage.tsx": [
+      "@/styles/pages/hadith.css"
+    ],
+    "pages/hadith/ui/ArbaeenHadithDetailView.tsx": [
+      "@/styles/pages/arbaeen-detail.css"
+    ],
+    "pages/hadith/ui/ArbaeenNawawiView.tsx": [
+      "@/styles/pages/arbaeen-nawawi.css",
+      "@/styles/pages/hadith-design-language.css",
+      "@/styles/components/hadith-list-card.css"
+    ],
+    "pages/hadith/ui/HadithBooksView.tsx": [
+      "@/styles/pages/hadith-design-language.css",
+      "@/styles/components/topic-page.css",
+      "@/styles/pages/hadith-books.css",
+      "@/styles/pages/hadith.css"
+    ],
+    "pages/hadith/ui/HadithByIdView.tsx": [
+      "@/styles/pages/hadith-design-language.css",
+      "@/styles/pages/hadith.css",
+      "@/styles/sunnah-identity-detail-reading.css"
+    ],
+    "pages/hadith/ui/HadithClassGuide.tsx": [
+      "@/styles/pages/hadith-design-language.css"
+    ],
+    "pages/hadith/ui/HadithScienceView.tsx": [
+      "@/styles/pages/hadith-design-language.css",
+      "@/styles/pages/hadith-mustalah.css",
+      "@/styles/knowledge-experience.css"
+    ],
+    "pages/hadith/ui/HadithView.tsx": [
+      "@/styles/components/hadith-badge.css",
+      "@/styles/pages/hadith.css",
+      "@/styles/pages/hadith-design-language.css",
+      "@/styles/pages/knowledge-dashboards-v2.css",
+      "@/styles/sunnah-identity-sections.css"
+    ],
+    "pages/lessons/LessonsArchivePage.tsx": [
+      "@/styles/pages/lessons.css"
+    ],
+    "pages/lessons/TeacherDetailPage.tsx": [
+      "@/styles/pages/teachers.css"
+    ],
+    "pages/lessons/TeachersIndexPage.tsx": [
+      "@/styles/pages/teachers.css"
+    ],
+    "pages/lessons/ui/AnnualCourseDetailView.tsx": [
+      "@/styles/pages/annual-course-detail.css"
+    ],
+    "pages/lessons/ui/KuwaitLessonsView.tsx": [
+      "@/styles/pages/kuwait-lessons.css"
+    ],
+    "pages/lessons/ui/LessonDetailView.tsx": [
+      "@/styles/pages/not-found.css",
+      "@/styles/pages/lessons.css",
+      "@/styles/sunnah-identity-detail-reading.css",
+      "@/styles/components/topic-page.css"
+    ],
+    "pages/lessons/ui/LessonsView.tsx": [
+      "@/styles/pages/lessons.css",
+      "@/styles/pages/lessons-sections-v2.css",
+      "@/components/sections/section-cards.css"
+    ],
+    "pages/lessons/ui/MyLearningView.tsx": [
+      "@/styles/pages/my-learning.css"
+    ],
+    "pages/library/ui/ReadingPlansView.tsx": [
+      "@/styles/pages/reading-plans.css"
+    ],
+    "pages/library/ui/ScholarlyResearchView.tsx": [
+      "@/styles/pages/scholarly-research.css"
+    ],
+    "pages/quran/QuranEnginePage.tsx": [
+      "@/styles/quran-engine-ui.css"
+    ],
+    "pages/quran/QuranMemorizationPlansPage.tsx": [
+      "@/styles/quran-memorization-plans.css"
+    ],
+    "pages/quran/QuranOfflinePlayerPage.tsx": [
+      "@/styles/quran-player-view.css"
+    ],
+    "pages/quran/ui/DuasQuranView.tsx": [
+      "@/styles/pages/duas-quran.css"
+    ],
+    "pages/quran/ui/MushafBookmarksView.tsx": [
+      "@/styles/reader-bookmarks-manager.css"
+    ],
+    "pages/quran/ui/QuranCirclesView.tsx": [
+      "@/styles/components/filters.css",
+      "@/styles/pages/quran-circles.css"
+    ],
+    "pages/quran/ui/QuranHifzLoopView.tsx": [
+      "@/styles/quran-hifz-loop.css"
+    ],
+    "pages/quran/ui/QuranHubView.tsx": [
+      "@/components/sections/section-cards.css",
+      "@/styles/pages/quran-hub-v2.css",
+      "@/styles/sunnah-identity-home-hub.css"
+    ],
+    "pages/quran/ui/QuranMemorizationView.tsx": [
+      "@/styles/quran-memorization.css"
+    ],
+    "pages/quran/ui/QuranNumbersView.tsx": [
+      "@/components/sections/section-cards.css",
+      "@/styles/pages/quran-numbers.css"
+    ],
+    "pages/quran/ui/QuranPeopleView.tsx": [
+      "@/styles/pages/quran-hub.css",
+      "@/styles/pages/quran-people.css"
+    ],
+    "pages/quran/ui/QuranPersonDetailView.tsx": [
+      "@/styles/pages/quran-hub.css",
+      "@/styles/pages/quran-people.css"
+    ],
+    "pages/quran/ui/QuranQiraatView.tsx": [
+      "@/styles/pages/qiraat.css"
+    ],
+    "pages/quran/ui/QuranSearchView.tsx": [
+      "@/styles/pages/quran-search.css"
+    ],
+    "pages/quran/ui/QuranSevenAhrufView.tsx": [
+      "@/styles/pages/qiraat.css"
+    ],
+    "pages/quran/ui/QuranTajweedView.tsx": [
+      "@/styles/pages/tajweed.css"
+    ],
+    "pages/quran/ui/QuranTilawaView.tsx": [
+      "@/styles/pages/tilawa.css"
+    ],
+    "pages/quran/ui/QuranWorshipHubView.tsx": [
+      "@/styles/quran-worship-hub.css"
+    ],
+    "pages/quran/ui/SurahIndexView.tsx": [
+      "@/styles/pages/surah-index.css"
+    ],
+    "pages/quran/ui/SurahStoriesView.tsx": [
+      "@/styles/pages/ulum-quran.css"
+    ],
+    "pages/quran/ui/TafsirView.tsx": [
+      "@/styles/pages/tafsir.css"
+    ],
+    "pages/quran/ui/UlumQuranView.tsx": [
+      "@/styles/pages/ulum-quran.css",
+      "@/styles/knowledge-experience.css"
+    ],
+    "pages/scholars/ScholarProfilePage.tsx": [
+      "@/styles/pages/scholar-profile.css"
+    ],
+    "pages/sources/SourceDetailPage.tsx": [
+      "@/styles/pages/sources-directory.css"
+    ],
+    "pages/sources/SourcesDirectoryPage.tsx": [
+      "@/styles/pages/sources-directory.css"
+    ],
+    "pages/worship/ui/AdhanHelpView.tsx": [
+      "@/styles/pages/adhan-settings.css"
+    ],
+    "pages/worship/ui/AdhanSettingsView.tsx": [
+      "@/styles/pages/adhan-settings.css"
+    ],
+    "pages/worship/ui/AdhkarView.tsx": [
+      "@/styles/pages/adhkar.css",
+      "@/styles/pages/tasbih.css",
+      "@/styles/components/thumb-zone.css",
+      "@/styles/pages/worship-history-v2.css"
+    ],
+    "pages/worship/ui/DailyWirdView.tsx": [
+      "@/styles/pages/daily-wird.css"
+    ],
+    "pages/worship/ui/DuasView.tsx": [
+      "@/styles/pages/duas.css"
+    ],
+    "pages/worship/ui/PrayerRanksView.tsx": [
+      "@/styles/pages/prayer-ranks.css"
+    ],
+    "pages/worship/ui/PrayerTimesView.tsx": [
+      "@/styles/pages/prayer-times.css",
+      "@/styles/pages/worship-history-v2.css"
+    ],
+    "pages/worship/ui/QiblaView.tsx": [
+      "@/styles/pages/qibla.css"
+    ],
+    "pages/worship/ui/TasbihView.tsx": [
+      "@/styles/pages/tasbih.css"
+    ]
+  },
+  "globalCascade": {
+    "sync": [
+      "styles/fonts-ui.css",
+      "app/styles/theme.css",
+      "styles/sunnah-foundation-tokens.css",
+      "styles/sunnah-foundation-v2.css",
+      "styles/ssunnah-theme-api.css",
+      "styles/brand-v4.css",
+      "styles/design-tokens.css",
+      "styles/breakpoints.css",
+      "styles/typography-scale.css",
+      "styles/typography-app.css",
+      "index.css",
+      "styles/theme-aliases.css",
+      "styles/semantic-layer-tokens.css",
+      "styles/interaction-states.css"
+    ],
+    "deferred": [
+      "styles/z-index-layers.css",
+      "styles/motion-policy.css",
+      "styles/visual-identity-unify.css",
+      "styles/tokens.css",
+      "styles/sunnah-identity-reset.css",
+      "styles/visual-layer-contrast-fix.css",
+      "styles/visual-redesign-v2-tokens.css",
+      "styles/sections-calm-polish.css",
+      "styles/ssunnah-ux-polish.css",
+      "styles/components/modern-section-shell.css",
+      "styles/section-cards-theme.css",
+      "styles/sunnah-foundation-type.css",
+      "styles/green-surface-system.css",
+      "styles/ssunnah-semantic-tokens.css",
+      "styles/ssunnah-card-unify.css",
+      "styles/card-matte-unify.css",
+      "styles/components/badge-system.css",
+      "styles/modern-ui-refresh.css",
+      "styles/ssunnah-ds-canonical.css",
+      "styles/m2030/foundation.css",
+      "styles/m2030/navigation.css",
+      "styles/brand-v4-contrast-fixes.css",
+      "styles/a11y-release-gate.css",
+      "styles/visual-enrichment.css",
+      "styles/sunnah-visual-language.css",
+      "styles/sunnah-geometry-system.css",
+      "styles/modern-ui-refresh.css",
+      "styles/ssunnah-ds-canonical.css",
+      "styles/design-system.css",
+      "styles/brand-v4-components.css",
+      "styles/final-release.css",
+      "styles/card-decorative-strip-cleanup.css",
+      "styles/modern-islamic-editorial-tokens.css",
+      "styles/modern-islamic-editorial.css",
+      "styles/card-system.css",
+      "styles/card-system-v2.css",
+      "styles/app-state-v2.css",
+      "styles/islam-intro-experience.css",
+      "styles/components/instant-interaction.css",
+      "styles/sunnah-visual-language.css",
+      "styles/sunnah-geometry-system.css",
+      "styles/visual-refresh-v1.css",
+      "styles/components/native-feel.css",
+      "styles/m2030/interactions.css",
+      "styles/index-deferred-pages.css",
+      "styles/section-makarim-pattern.css",
+      "styles/components/compact-sources.css",
+      "styles/m2030/pages.css",
+      "styles/components/content-reading-shell.css",
+      "styles/reading-prose-system.css",
+      "styles/components/reading-section-card.css",
+      "styles/fonts-ui-bold.css",
+      "styles/capacitor-native-ux.css",
+      "styles/ios-edge.css"
+    ]
+  }
+}
