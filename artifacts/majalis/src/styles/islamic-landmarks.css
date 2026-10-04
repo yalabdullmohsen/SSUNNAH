@@ -17,8 +17,8 @@
   min-height: 44px;
   padding: 0.55rem 1rem;
   border-radius: var(--radius-pill, 999rem);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, #146b52) 55%, transparent);
-  background: var(--mj-brand, #146b52);
+  border: 1px solid color-mix(in srgb, var(--mj-brand) 55%, transparent);
+  background: var(--mj-brand);
   color: var(--mj-white);
   font: inherit;
   font-weight: 700;
@@ -29,14 +29,14 @@
 }
 
 .ilm-cta--secondary {
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 10%, var(--mj-surface, var(--mj-white)));
-  color: var(--mj-brand-deep, #0d4a38);
-  border-color: color-mix(in srgb, var(--mj-brand, #146b52) 28%, transparent);
+  background: color-mix(in srgb, var(--mj-brand) 10%, var(--mj-surface, var(--mj-white)));
+  color: var(--mj-brand-deep);
+  border-color: color-mix(in srgb, var(--mj-brand) 28%, transparent);
 }
 
 html.dark .ilm-cta--secondary,
 html[data-theme="dark"] .ilm-cta--secondary {
-  background: color-mix(in srgb, var(--mj-brand, #1a8f6e) 18%, #1b2421);
+  background: color-mix(in srgb, var(--mj-brand) 18%, #1b2421);
   color: #d8f0e6;
 }
 
@@ -55,7 +55,7 @@ html[data-theme="dark"] .ilm-cta--secondary {
   margin: 0;
   font-size: 1.15rem;
   font-weight: 750;
-  color: var(--mj-ink, #16241e);
+  color: var(--mj-ink);
 }
 
 .ilm-section__sub {
@@ -104,9 +104,9 @@ html[data-theme="dark"] .ilm-cta--secondary {
   padding: 0.65rem 1rem;
   padding-inline-start: 2.5rem;
   border-radius: 14px;
-  border: 1px solid var(--mj-hairline, #d9d3c8);
-  background: var(--mj-surface, #fff);
-  color: var(--mj-ink, #16241e);
+  border: 1px solid var(--mj-hairline);
+  background: var(--mj-surface);
+  color: var(--mj-ink);
   font: inherit;
 }
 
@@ -124,9 +124,9 @@ html[data-theme="dark"] .ilm-cta--secondary {
   min-height: 36px;
   padding: 0.35rem 0.85rem;
   border-radius: var(--radius-pill, 999rem);
-  border: 1px solid var(--mj-hairline, #d9d3c8);
-  background: var(--mj-surface, #fff);
-  color: var(--mj-ink, #16241e);
+  border: 1px solid var(--mj-hairline);
+  background: var(--mj-surface);
+  color: var(--mj-ink);
   font: inherit;
   font-size: 0.85rem;
   font-weight: 600;
@@ -134,9 +134,9 @@ html[data-theme="dark"] .ilm-cta--secondary {
 }
 
 .ilm-chip--active {
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 14%, #fff);
-  border-color: color-mix(in srgb, var(--mj-brand, #146b52) 45%, transparent);
-  color: var(--mj-brand-deep, #0d4a38);
+  background: color-mix(in srgb, var(--mj-brand) 14%, #fff);
+  border-color: color-mix(in srgb, var(--mj-brand) 45%, transparent);
+  color: var(--mj-brand-deep);
 }
 
 html.dark .ilm-chip,
@@ -148,8 +148,8 @@ html[data-theme="dark"] .ilm-chip {
 
 html.dark .ilm-chip--active,
 html[data-theme="dark"] .ilm-chip--active {
-  background: color-mix(in srgb, var(--mj-brand, #1a8f6e) 28%, #1b2421);
-  border-color: color-mix(in srgb, var(--mj-brand, #1a8f6e) 50%, #35443f);
+  background: color-mix(in srgb, var(--mj-brand) 28%, #1b2421);
+  border-color: color-mix(in srgb, var(--mj-brand) 50%, #35443f);
   color: #d8f0e6;
 }
 
@@ -178,14 +178,14 @@ html[data-theme="dark"] .ilm-chip--active {
   gap: 0.35rem;
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--mj-ink, #16241e);
+  color: var(--mj-ink);
 }
 
 .ilm-select {
   min-height: 44px;
   border-radius: var(--sf-radius-xs);
-  border: 1px solid var(--mj-hairline, #d9d3c8);
-  background: var(--mj-surface, #fff);
+  border: 1px solid var(--mj-hairline);
+  background: var(--mj-surface);
   color: inherit;
   font: inherit;
   padding: 0.45rem 0.75rem;
@@ -195,7 +195,7 @@ html[data-theme="dark"] .ilm-chip--active {
   min-height: 46px;
   border-radius: var(--sf-radius-xs);
   border: none;
-  background: var(--mj-brand, #146b52);
+  background: var(--mj-brand);
   color: #fff;
   font: inherit;
   font-weight: 700;
@@ -226,7 +226,7 @@ html[data-theme="dark"] .ilm-chip--active {
   color: inherit;
   overflow: hidden;
   border-radius: var(--radius-card, 1rem);
-  background: var(--mj-surface, #fff);
+  background: var(--mj-surface);
   border: 1px solid var(--mj-hairline, transparent);
   min-width: 0;
 }
@@ -238,7 +238,7 @@ html[data-theme="dark"] .ilm-chip--active {
 .ilm-card__img {
   position: relative;
   overflow: hidden;
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 8%, #f3ebd8);
+  background: color-mix(in srgb, var(--mj-brand) 8%, #f3ebd8);
 }
 
 .ilm-card__img-badge {
@@ -259,7 +259,7 @@ html[data-theme="dark"] .ilm-chip--active {
   font-size: 1.02rem;
   font-weight: 750;
   line-height: 1.35;
-  color: var(--mj-ink, #16241e);
+  color: var(--mj-ink);
 }
 
 .ilm-card__location {
@@ -303,8 +303,8 @@ html[data-theme="dark"] .ilm-chip--active {
 }
 
 .ilm-badge--type {
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 14%, #fff);
-  color: var(--mj-brand-deep, #0d4a38);
+  background: color-mix(in srgb, var(--mj-brand) 14%, #fff);
+  color: var(--mj-brand-deep);
 }
 
 .ilm-badge--era {
@@ -314,7 +314,7 @@ html[data-theme="dark"] .ilm-chip--active {
 
 html.dark .ilm-badge--type,
 html[data-theme="dark"] .ilm-badge--type {
-  background: color-mix(in srgb, var(--mj-brand, #1a8f6e) 28%, #1b2421);
+  background: color-mix(in srgb, var(--mj-brand) 28%, #1b2421);
   color: #d8f0e6;
 }
 
@@ -333,8 +333,8 @@ html[data-theme="dark"] .ilm-badge--era {
 .ilm-tag {
   padding: 0.2rem 0.55rem;
   border-radius: var(--radius-pill, 999rem);
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 8%, #f5f3ee);
-  color: var(--mj-ink, #16241e);
+  background: color-mix(in srgb, var(--mj-brand) 8%, #f5f3ee);
+  color: var(--mj-ink);
   font-size: 0.75rem;
   font-weight: 600;
 }
@@ -383,7 +383,7 @@ html[data-theme="dark"] .ilm-badge--era {
   padding: 0.85rem 1rem;
   border-radius: 14px;
   border: 1px solid var(--mj-hairline, transparent);
-  background: color-mix(in srgb, var(--mj-brand, #146b52) 5%, var(--mj-surface, #fff));
+  background: color-mix(in srgb, var(--mj-brand) 5%, var(--mj-surface));
 }
 
 .ilm-detail__meta-label {
@@ -414,8 +414,8 @@ html[data-theme="dark"] .ilm-badge--era {
   z-index: 80;
   display: grid;
   grid-template-rows: auto auto 1fr;
-  background: var(--mj-surface, #0f1613);
-  color: var(--mj-ink, #16241e);
+  background: var(--mj-surface);
+  color: var(--mj-ink);
 }
 
 .ilm-explorer__bar {
@@ -424,8 +424,8 @@ html[data-theme="dark"] .ilm-badge--era {
   gap: 0.75rem;
   padding: 0.75rem 1rem;
   padding-top: max(0.75rem, var(--inset-top, 0px));
-  background: color-mix(in srgb, var(--mj-surface, #fff) 94%, transparent);
-  border-bottom: 1px solid var(--mj-hairline, #d9d3c8);
+  background: color-mix(in srgb, var(--mj-surface) 94%, transparent);
+  border-bottom: 1px solid var(--mj-hairline);
 }
 
 .ilm-explorer__close {
@@ -435,8 +435,8 @@ html[data-theme="dark"] .ilm-badge--era {
   width: 40px;
   height: 40px;
   border-radius: var(--sf-radius-xs);
-  border: 1px solid var(--mj-hairline, #d9d3c8);
-  background: var(--mj-surface, #fff);
+  border: 1px solid var(--mj-hairline);
+  background: var(--mj-surface);
   color: inherit;
   text-decoration: none;
 }
@@ -463,7 +463,7 @@ html[data-theme="dark"] .ilm-badge--era {
   gap: 0.35rem;
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--mj-brand, #146b52);
+  color: var(--mj-brand);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -473,8 +473,8 @@ html[data-theme="dark"] .ilm-badge--era {
   gap: 0.45rem;
   overflow-x: auto;
   padding: 0.65rem 1rem;
-  background: var(--mj-surface, #fff);
-  border-bottom: 1px solid var(--mj-hairline, #e5e7eb);
+  background: var(--mj-surface);
+  border-bottom: 1px solid var(--mj-hairline);
 }
 
 .ilm-explorer__map {
@@ -535,9 +535,9 @@ html[data-theme="dark"] .ilm-badge--era {
   margin: 0;
   padding: 0.65rem 0.85rem;
   border-radius: var(--sf-radius-xs);
-  background: color-mix(in srgb, var(--mj-surface, #fff) 92%, transparent);
-  border: 1px solid var(--mj-hairline, #d9d3c8);
-  color: var(--mj-ink, #16241e);
+  background: color-mix(in srgb, var(--mj-surface) 92%, transparent);
+  border: 1px solid var(--mj-hairline);
+  color: var(--mj-ink);
   font-size: 0.85rem;
   box-shadow: 0 4px 14px -10px rgba(0, 0, 0, 0.2);
 }
@@ -552,8 +552,8 @@ html[data-theme="dark"] .ilm-badge--era {
   min-height: 40px;
   padding: 0.35rem 0.85rem;
   border-radius: var(--radius-pill, 999rem);
-  border: 1px solid var(--mj-brand, #146b52);
-  background: var(--mj-brand, #146b52);
+  border: 1px solid var(--mj-brand);
+  background: var(--mj-brand);
   color: #fff;
   font: inherit;
   font-weight: 700;

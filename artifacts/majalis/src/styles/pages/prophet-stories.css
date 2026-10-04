@@ -11,15 +11,15 @@
   --ps-on-emerald-muted: rgba(255, 255, 255, 0.94);
   --ps-on-emerald-soft: rgba(255, 255, 255, 0.88);
   /* Modern Islamic Editorial — ورق دافئ + زيتوني */
-  --ps-surface: var(--surface-card, var(--mj-surface, #fffbf5));
-  --ps-canvas: var(--surface-paper, var(--mj-bg, #f3eee3));
+  --ps-surface: var(--surface-card, var(--mj-surface));
+  --ps-canvas: var(--surface-paper, var(--mj-bg));
   /* fallback صلب — يمنع دائرية mj-ink الفارغة → نص شفاف تقريبًا */
-  --ps-ink: var(--text-primary, var(--mj-ink, #1a241c));
+  --ps-ink: var(--text-primary, var(--mj-ink));
   /* ثانوي ≥85% وضوحًا من الأساسي — لا رمادي باهت ولا hairline */
-  --ps-ink-soft: var(--text-secondary, var(--mj-ink-2, #3f4f46));
-  --ps-line: var(--mie-border, var(--mj-hairline, #e5e0d5));
+  --ps-ink-soft: var(--text-secondary, var(--mj-ink-2));
+  --ps-line: var(--mie-border, var(--mj-hairline));
   --ps-emerald: var(--brand-olive-deep, var(--majalis-emerald, var(--mj-brand-deep)));
-  --ps-emerald-bright: var(--brand-olive, var(--mj-brand, #3d5c45));
+  --ps-emerald-bright: var(--brand-olive, var(--mj-brand));
   --ps-brass: var(--brand-gold, var(--majalis-brass, var(--mj-accent)));
 }
 
@@ -30,11 +30,11 @@ html.dark .prophet-detail-lux {
   --ps-on-emerald: var(--mj-white, var(--mj-white));
   --ps-on-emerald-muted: rgba(236, 242, 239, 0.94);
   --ps-on-emerald-soft: rgba(236, 242, 239, 0.86);
-  --ps-surface: var(--surface, #1A2421);
+  --ps-surface: var(--surface);
   --ps-canvas: var(--bg, #131A18);
   --ps-ink: var(--text-primary, #ECF2EF);
   --ps-ink-soft: var(--text-secondary, #C8D5CF);
-  --ps-line: var(--border, #35443F);
+  --ps-line: var(--border);
   --ps-emerald: #1A4A3A;
   --ps-emerald-bright: var(--accent, var(--mj-brand));
 }
@@ -50,7 +50,7 @@ html[data-theme="dark"] .prophets-lux-tab:disabled,
 html.dark .prophets-lux-tab:disabled {
   opacity: 0.55;
   color: var(--text-muted, #9FB0AB);
-  border-color: var(--border, #35443F);
+  border-color: var(--border);
 }
 
 html[data-theme="dark"] .nb-table tr:hover td,
@@ -611,12 +611,12 @@ html.dark .prophets-page-lead {
   margin: 0.35rem max(0.75rem, var(--page-gutter, 1rem)) 0;
   border-radius: var(--radius-card, 1.5rem);
   /* زمرد صلب — لا --accent الذهبي الليلي */
-  background-color: var(--ps-emerald, var(--mj-brand-deep, #0f2a24));
+  background-color: var(--ps-emerald, var(--mj-brand-deep));
   background-image: linear-gradient(
     145deg,
     color-mix(in srgb, var(--prophet-color, var(--mj-brand)) 32%, var(--mj-brand, var(--mj-brand))) 0%,
     var(--mj-brand, var(--mj-brand)) 55%,
-    color-mix(in srgb, var(--prophet-color, var(--mj-brand-deep)) 28%, var(--mj-brand-deep, #0f2a24)) 100%
+    color-mix(in srgb, var(--prophet-color, var(--mj-brand-deep)) 28%, var(--mj-brand-deep)) 100%
   );
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.12),
@@ -763,7 +763,7 @@ html.dark .prophets-page-lead {
   font-weight: 700;
   padding: 0.2rem 0.7rem;
   border-radius: var(--ds-radius-full);
-  background: color-mix(in srgb, var(--mj-brand-deep, #0f2a24) 65%, var(--mj-brand, var(--mj-brand)));
+  background: color-mix(in srgb, var(--mj-brand-deep) 65%, var(--mj-brand, var(--mj-brand)));
   color: var(--ps-on-emerald, var(--mj-white));
   border: 1px solid color-mix(in srgb, var(--ps-brass, var(--mj-accent)) 40%, transparent);
 }
@@ -1344,7 +1344,7 @@ html.dark .prophets-page-lead {
 .prophet-quiz__opt--correct {
   background: var(--mj-success-soft) !important;
   border-color: var(--mj-brand) !important;
-  color: var(--mj-brand-deep, #14532d) !important;
+  color: var(--mj-brand-deep) !important;
 }
 .prophet-quiz__opt--wrong {
   background: var(--mj-danger-soft) !important;
@@ -1668,7 +1668,7 @@ html.dark .prophets-page-lead {
   margin-top: 0.6rem;
   text-align: center;
 }
-.nb-table__row--azm td { background: color-mix(in srgb, var(--mj-brand, #059669) 8%, var(--mj-surface, var(--mj-white, var(--mj-white)))); }
+.nb-table__row--azm td { background: color-mix(in srgb, var(--mj-brand) 8%, var(--mj-surface, var(--mj-white, var(--mj-white)))); }
 .nb-table__row--azm:hover td { background: var(--mj-success-soft) !important; }
 .nb-table__row--clickable { cursor: pointer; }
 
@@ -1837,7 +1837,7 @@ html.dark .prophets-page-lead {
   font-weight: 500;
 }
 .prophet-detail-lux__azm-badge {
-  background: color-mix(in srgb, var(--mj-brand-deep, #0f2a24) 65%, var(--mj-brand, var(--mj-brand)));
+  background: color-mix(in srgb, var(--mj-brand-deep) 65%, var(--mj-brand, var(--mj-brand)));
   border-color: color-mix(in srgb, var(--ps-brass, var(--mj-accent)) 40%, transparent);
   color: var(--ps-on-emerald, var(--mj-white));
 }
@@ -2647,11 +2647,11 @@ html.dark .app-main:has(.lrf-wrap--prophet-detail) {
 */
 html.dark .prophets-lux-page,
 html[data-theme="dark"] .prophets-lux-page {
-  --ps-surface: var(--surface, #1A2421);
+  --ps-surface: var(--surface);
   --ps-canvas: var(--bg, #131A18);
   --ps-ink: var(--text-primary, #ECF2EF);
   --ps-ink-soft: var(--text-secondary, #B7C4BF);
-  --ps-line: var(--border, #35443F);
+  --ps-line: var(--border);
   --ps-emerald: #1A4A3A;
   --ps-emerald-bright: var(--accent, #5CC095);
   background: var(--ps-canvas);
@@ -3263,7 +3263,7 @@ html[data-theme="dark"] .prophets-lux-search::placeholder {
 
 
 /* Prophets rebuild — reader + tokens */
-.prophet-story-reader{min-height:100dvh;min-height:100svh;background:var(--prophets-bg,var(--mj-bg,#f7f3ea));color:var(--prophets-ink,var(--mj-ink,var(--v2-color-ink)))}
+.prophet-story-reader{min-height:100dvh;min-height:100svh;background:var(--prophets-bg,var(--mj-bg));color:var(--prophets-ink,var(--mj-ink,var(--v2-color-ink)))}
 .prophet-reader-header{position:sticky;top:0;z-index:40;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:.65rem;padding:calc(var(--inset-top,0px) + .55rem) max(.85rem,var(--page-gutter,1rem)) .65rem;background:color-mix(in srgb,var(--prophets-surface,var(--mj-white)) 94%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--prophets-line,var(--ps-line,#e5e0d5))}
 .prophet-reader-header[data-has-actions="1"]{grid-template-columns:auto minmax(0,1fr) auto}
 .prophet-reader-header__back{min-width:44px;min-height:44px;padding:.45rem .85rem;border-radius:var(--radius-pill, 999rem);border:1px solid var(--prophets-line,var(--ps-line));background:var(--prophets-surface,var(--mj-white));color:var(--prophets-ink,var(--ps-ink));font:650 .9rem var(--font-body);cursor:pointer}

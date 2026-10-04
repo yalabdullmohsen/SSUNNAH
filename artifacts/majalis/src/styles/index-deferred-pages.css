@@ -1063,7 +1063,7 @@ html body:not(.mobile-nav-body-lock) div.mobile-nav-layer {
   text-decoration: none;
   /* وردمارك SVG inline — بلا اعتماد على font-family وقت التشغيل */
   line-height: 1;
-  color: var(--majalis-emerald-deep, var(--mj-brand-deep, #0f4a36)) !important;
+  color: var(--majalis-emerald-deep, var(--mj-brand-deep)) !important;
   white-space: nowrap;
   overflow: visible;
   padding-inline: 0.25rem;
@@ -1078,7 +1078,7 @@ html body:not(.mobile-nav-body-lock) div.mobile-nav-layer {
 
 .navbar-v3 a.navbar-v3__tagline:hover,
 .navbar-v3 a.navbar-v3__tagline:focus-visible {
-  color: var(--majalis-emerald, var(--mj-brand, #1a6b4f)) !important;
+  color: var(--majalis-emerald, var(--mj-brand)) !important;
 }
 
 html[data-theme="dark"] .navbar-v3__tagline {
@@ -2065,7 +2065,7 @@ svg {
 
 .lesson-recording-player__hint {
   font-size: 0.78rem;
-  color: var(--mj-brand-deep, #1a4d3e);
+  color: var(--mj-brand-deep);
 }
 
 .lesson-recording-player__seek-note {
@@ -3378,7 +3378,7 @@ html.dark .sidebar-item.active {
 .fiqh-lux-book-hero,
 .page-hero-mj--bleed,
 .mss-hero-surface {
-  background: var(--cs-ink-hero, var(--mj-brand-deep, #0a2f24)) !important;
+  background: var(--cs-ink-hero, var(--mj-brand-deep)) !important;
   background-image: none !important;
   color: var(--cs-on-ink, #f7f1e4) !important;
   box-shadow: none !important;

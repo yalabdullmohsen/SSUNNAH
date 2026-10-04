@@ -37,13 +37,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/pages/lessons.css",
-      "hex": 131,
-      "unsafeHexFallback": 98,
-      "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/dark-mode-recovery.css",
       "hex": 126,
       "unsafeHexFallback": 9,
@@ -51,17 +44,17 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/pages/prophet-stories.css",
-      "hex": 126,
-      "unsafeHexFallback": 75,
-      "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/design-tokens.css",
       "hex": 116,
       "unsafeHexFallback": 30,
       "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/pages/prophet-stories.css",
+      "hex": 108,
+      "unsafeHexFallback": 57,
+      "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -86,17 +79,10 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/pages/fiqh-hub.css",
-      "hex": 102,
-      "unsafeHexFallback": 92,
+      "file": "styles/pages/lessons.css",
+      "hex": 90,
+      "unsafeHexFallback": 57,
       "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/islamic-landmarks.css",
-      "hex": 86,
-      "unsafeHexFallback": 56,
-      "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -121,20 +107,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/index-deferred-pages.css",
-      "hex": 59,
-      "unsafeHexFallback": 38,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/pages/search.css",
-      "hex": 59,
-      "unsafeHexFallback": 59,
-      "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/components/assistant-chat.css",
       "hex": 58,
       "unsafeHexFallback": 31,
@@ -149,6 +121,13 @@
       "platform": "SHARED_PLATFORM"
     },
     {
+      "file": "styles/index-deferred-pages.css",
+      "hex": 55,
+      "unsafeHexFallback": 34,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
       "file": "styles/premium-dark-refine.css",
       "hex": 53,
       "unsafeHexFallback": 8,
@@ -156,24 +135,17 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/knowledge-experience.css",
-      "hex": 52,
-      "unsafeHexFallback": 40,
+      "file": "styles/interaction-states.css",
+      "hex": 48,
+      "unsafeHexFallback": 8,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
     {
       "file": "styles/pages/app-shell-v2.css",
-      "hex": 50,
-      "unsafeHexFallback": 43,
-      "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/interaction-states.css",
       "hex": 48,
-      "unsafeHexFallback": 8,
-      "classification": "SHARED_PLATFORM",
+      "unsafeHexFallback": 41,
+      "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -208,6 +180,13 @@
       "file": "styles/prophets-semantic-tokens.css",
       "hex": 41,
       "unsafeHexFallback": 13,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/islamic-landmarks.css",
+      "hex": 40,
+      "unsafeHexFallback": 10,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
@@ -275,16 +254,16 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "components/sections/section-cards.css",
-      "hex": 34,
-      "unsafeHexFallback": 22,
-      "classification": "SHARED_PLATFORM",
+      "file": "styles/pages/fiqh-hub.css",
+      "hex": 35,
+      "unsafeHexFallback": 26,
+      "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/components/filters.css",
+      "file": "components/sections/section-cards.css",
       "hex": 34,
-      "unsafeHexFallback": 29,
+      "unsafeHexFallback": 22,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
@@ -313,13 +292,6 @@
       "file": "styles/components/content-reading-shell.css",
       "hex": 32,
       "unsafeHexFallback": 26,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/components/home-universal-search.css",
-      "hex": 32,
-      "unsafeHexFallback": 30,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
@@ -398,6 +370,13 @@
       "hex": 28,
       "unsafeHexFallback": 28,
       "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/pages/search.css",
+      "hex": 27,
+      "unsafeHexFallback": 27,
+      "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -586,6 +565,13 @@
       "file": "styles/components/share-faida.css",
       "hex": 21,
       "unsafeHexFallback": 14,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/knowledge-experience.css",
+      "hex": 21,
+      "unsafeHexFallback": 9,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
@@ -873,6 +859,13 @@
       "file": "styles/components/app-bottom-sheet.css",
       "hex": 11,
       "unsafeHexFallback": 11,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/components/filters.css",
+      "hex": 11,
+      "unsafeHexFallback": 6,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
@@ -1237,6 +1230,13 @@
       "file": "styles/components/home-local-resume.css",
       "hex": 6,
       "unsafeHexFallback": 6,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/components/home-universal-search.css",
+      "hex": 6,
+      "unsafeHexFallback": 4,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },

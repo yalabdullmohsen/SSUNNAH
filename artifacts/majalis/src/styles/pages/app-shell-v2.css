@@ -238,7 +238,7 @@ html[data-v2-app="1"] .es2__nav-path {
   margin: 0.35rem 0 0;
   font-size: var(--sf-type-metadata, 0.8125rem);
   line-height: 1.5;
-  color: var(--sf-color-rich-ink-soft, #48645a);
+  color: var(--sf-color-rich-ink-soft);
 }
 html[data-v2-app="1"] .es2__nav-path {
   color: var(--sf-color-deep-emerald, var(--sf-color-deep-emerald));
@@ -359,7 +359,7 @@ html[data-theme="dark"][data-v2-app="1"] .hub-card .hub-card__go,
 html.dark[data-v2-app="1"] .hub-card .hub-card__go,
 html[data-theme="dark"][data-v2-app="1"] .hub-card .cs2-nav__meta,
 html.dark[data-v2-app="1"] .hub-card .cs2-nav__meta {
-  color: color-mix(in srgb, var(--mj-brand, #5cc095) 70%, #edf5f0) !important;
+  color: color-mix(in srgb, var(--mj-brand) 70%, #edf5f0) !important;
 }
 
 html[data-theme="dark"][data-v2-app="1"] .ph2__title,
