@@ -33,6 +33,7 @@ import "@/components/sections/section-cards.css";
 import "@/styles/pages/quran-numbers.css";
 import { DetailScreen } from "@/components/design-system/screens";
 import { SearchInput } from "@/components/design-system/FormFields";
+import { NoResultsState } from "@/components/design-system";
 import { SegmentedFilter } from "@/components/filters/SegmentedFilter";
 import { Button } from "@/components/ui/button";
 
@@ -210,7 +211,16 @@ export default function QuranNumbersPage() {
       </div>
 
       {filtered.length === 0 ? (
-        <p className="sections-hub__empty">{EMPTY.search}</p>
+        <NoResultsState
+          className="sections-hub__empty"
+          title={EMPTY.search}
+          description="جرّب كلمات أخرى أو امسح محور الإحصاءات والتصنيف."
+          onClear={() => {
+            setQuery("");
+            setTheme("all");
+            setGroup("all");
+          }}
+        />
       ) : null}
 
       <AppBottomSheet
