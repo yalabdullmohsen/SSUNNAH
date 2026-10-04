@@ -52,7 +52,7 @@ jobs:
   # conclusion=cancelled (استبدال commit / concurrency لنفس الـPR) ≠ فشل — لا تعطّل auto-merge.
   cancel-on-ci-failure:
     if: >-
-      github.repository == 'yalabdullmohsen/majalis'
+      (github.repository == 'yalabdullmohsen/majalis' || github.repository == 'yalabdullmohsen/SSUNNAH')
       && github.event_name == 'workflow_run'
       && github.event.workflow_run.conclusion == 'failure'
     runs-on: ubuntu-latest
@@ -86,7 +86,7 @@ jobs:
   auto-merge:
     # لا دمج عند cancelled/failure لـ CI — فقط success (أو أحداث PR/schedule/dispatch)
     if: >-
-      github.repository == 'yalabdullmohsen/majalis'
+      (github.repository == 'yalabdullmohsen/majalis' || github.repository == 'yalabdullmohsen/SSUNNAH')
       && (
         github.event_name == 'pull_request'
         || github.event_name == 'schedule'
