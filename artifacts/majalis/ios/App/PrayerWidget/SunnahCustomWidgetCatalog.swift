@@ -2,6 +2,9 @@ import AppIntents
 import SwiftUI
 import WidgetKit
 
+/// OPTION C (PR W2): AppIntent custom widget is implemented but NOT registered in
+/// `PrayerWidgetBundle`. `CustomContentStaticWidget` owns `sunnah.widget.custom` for V1 /
+/// Build 55+. Do not register both under the same kind.
 @available(iOS 17.0, *)
 struct CustomContentWidget: Widget {
     let kind = SunnahWidgetKind.custom
@@ -21,6 +24,7 @@ struct CustomContentWidget: Widget {
     }
 }
 
+/// Canonical V1 custom-content Widget (static configuration). Owns `sunnah.widget.custom`.
 struct CustomContentStaticWidget: Widget {
     let kind = SunnahWidgetKind.custom
     var body: some WidgetConfiguration {
