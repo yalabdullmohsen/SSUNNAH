@@ -4,7 +4,8 @@
 
 جذر Git الفعلي: `/Users/alabdullmohsen/majlis-app` (لا تستخدم `majalis-correct`) · GitHub SoT: `yalabdullmohsen/SSUNNAH` (إعادة توجيه قديمة: `majalis`) · منتج الويب: `artifacts/majalis`.  
 منصّة/حوكمة: `docs/platform/` (PLATFORM_BASELINE · OWNERSHIP · STATE · OPERATIONS_PLAYBOOK).  
-استدامة/إصدار طويل الأمد: `docs/sustainability/` (BASELINE · DOCUMENTATION_AUTHORITY · DEBT_PREVENTION · RELEASE_READINESS_CONFIRMED · LONG_TERM_GOVERNANCE · authority-manifest.json).
+استدامة/إصدار طويل الأمد: `docs/sustainability/`  
+حوكمة مستمرة / QUALITY_BASELINE_V1: `docs/governance/` (PROJECT_HEALTH · continuous-governance gate). (BASELINE · DOCUMENTATION_AUTHORITY · DEBT_PREVENTION · RELEASE_READINESS_CONFIRMED · LONG_TERM_GOVERNANCE · authority-manifest.json).
 
 ## حزم artifacts
 

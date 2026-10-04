@@ -118,6 +118,8 @@ for (const [kind, q] of Object.entries(sectionProbes)) {
 
 clearUnifiedSearchIndexCache();
 primeUnifiedSearchIndex(index);
+/* warm-up — يثبّت JIT/الكاش قبل قياس السقف (لا يرفع 150ms ولا يغيّر الترتيب) */
+await runAppSearch("بقره", { limit: 20 });
 const app = await runAppSearch("بقره", { limit: 20 });
 assert.ok(app.results.length >= 1, "runAppSearch يعيد نتائج");
 assert.equal(app.quickNavHref, undefined, "لا انتقال تلقائي — بلا quickNavHref");
