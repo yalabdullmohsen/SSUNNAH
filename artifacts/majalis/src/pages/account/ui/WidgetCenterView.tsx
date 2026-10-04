@@ -6,6 +6,7 @@ import { DetailScreen } from "@/components/design-system/screens";
 import { SettingsToggleRow } from "@/components/design-system/SettingsList";
 import { EmptyStateV2, ErrorStateV2, LoadingStateV2, OfflineStateV2 } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { SearchInput, FormLabel } from "@/components/design-system";
 import {
   Select,
@@ -140,6 +141,8 @@ export default function WidgetCenterView() {
   const [refreshNote, setRefreshNote] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [customType, setCustomType] = useState<(typeof WIDGET_CUSTOM_CONTENT_TYPES)[number]>("AYAH");
+  const [customInstanceId, setCustomInstanceId] = useState("custom-1");
+  const [customContentId, setCustomContentId] = useState("ayah:daily");
   const online = typeof navigator === "undefined" ? true : navigator.onLine;
 
   useEffect(() => {
@@ -232,10 +235,15 @@ export default function WidgetCenterView() {
       <LegalPageLayout eyebrow="الأدوات" title="مركز الويدجت" density="medium" className="settings-page">
         <AppBackButton variant="inline" fallbackHref="/settings" label="رجوع" />
         <p className="settings-note">
-          المعاينات هنا بطاقات داخل سُنّة. الويدجت الأصلية على الشاشة الرئيسية أو شاشة القفل تصل بعد تحديث iOS القادم.
+          هذه الصفحة مركز إعداد داخل سُنّة (ويب أو التطبيق). المتصفح لا يعرض ويدجت WidgetKit على الشاشة الرئيسية أو شاشة القفل.
+        </p>
+        <p className="settings-note">
+          المعاينات هنا بطاقات داخل سُنّة فقط. الويدجت الأصلية على الجهاز تصل بعد تحديث تطبيق iOS القادم من App Store.
         </p>
         {WIDGET_FUTURE_BINARY_REQUIRED ? (
-          <p className="settings-note">يتطلب ظهور الويدجت الأصلية على الجهاز تحديث تطبيق سُنّة من App Store لاحقاً.</p>
+          <p className="settings-note">
+            FUTURE_IOS_UPDATE_REQUIRED: Build الحالي لا ينقل تغييرات الويدجت إلى الجهاز حتى يُثبَّت ثنائي لاحق.
+          </p>
         ) : null}
 
         <nav className="widget-center-nav" aria-label="أقسام مركز الويدجت">
@@ -429,10 +437,18 @@ export default function WidgetCenterView() {
         {section === "custom" && (
           <LegalSection title="المحتوى المخصص">
             <p className="settings-note">النصوص الحرة الخاصة غير مدعومة في الإصدار الأول. كل نسخة ويدجت لها اختيار مستقل.</p>
-            <label className="widget-center-field">
-              <span>معرّف النسخة</span>
-              <input id="widget-instance" defaultValue="custom-1" />
-            </label>
+            <div className="widget-center-field">
+              <FormLabel htmlFor="widget-instance">معرّف النسخة</FormLabel>
+              <Input
+                id="widget-instance"
+                name="widget-instance"
+                value={customInstanceId}
+                onChange={(e) => setCustomInstanceId(e.target.value)}
+                className="min-h-11 text-base"
+                autoComplete="off"
+                inputMode="text"
+              />
+            </div>
             <CenterSelect
               id="widget-content-type"
               label="نوع المحتوى"
@@ -440,10 +456,19 @@ export default function WidgetCenterView() {
               onValueChange={(v) => setCustomType(v as (typeof WIDGET_CUSTOM_CONTENT_TYPES)[number])}
               options={WIDGET_CUSTOM_CONTENT_TYPES.map((type) => ({ value: type, label: type }))}
             />
-            <label className="widget-center-field">
-              <span>معرّف العنصر المعتمد</span>
-              <input id="widget-content-id" placeholder="ayah:daily أو hadith:daily" defaultValue="ayah:daily" />
-            </label>
+            <div className="widget-center-field">
+              <FormLabel htmlFor="widget-content-id">معرّف العنصر المعتمد</FormLabel>
+              <Input
+                id="widget-content-id"
+                name="widget-content-id"
+                placeholder="ayah:daily أو hadith:daily"
+                value={customContentId}
+                onChange={(e) => setCustomContentId(e.target.value)}
+                className="min-h-11 text-base"
+                autoComplete="off"
+                inputMode="text"
+              />
+            </div>
             <SettingsToggleRow
               id="widget-show-source"
               title="إظهار المصدر"
@@ -453,12 +478,11 @@ export default function WidgetCenterView() {
             <Button
               type="button"
               onClick={() => {
-                const instanceId = (document.getElementById("widget-instance") as HTMLInputElement | null)?.value || "custom-1";
-                const contentType = customType;
-                const contentId = (document.getElementById("widget-content-id") as HTMLInputElement | null)?.value || "ayah:daily";
+                const instanceId = customInstanceId.trim() || "custom-1";
+                const contentId = customContentId.trim() || "ayah:daily";
                 upsertWidgetSelection({
                   widgetInstanceId: instanceId,
-                  contentType,
+                  contentType: customType,
                   contentId,
                   displayStyle: "standard",
                   showSource: prefs.contentSourceVisibility,
@@ -535,6 +559,9 @@ export default function WidgetCenterView() {
             <p>آخر نشر: {formatWhen(lastPublish)}</p>
             <p>السطح الحالي: {isNative && isIOS ? "تطبيق iOS المثبّت" : "ويب / سطح بلا ويدجت النظام"}</p>
             <p>تحديث ثنائي مستقبلي: {WIDGET_FUTURE_BINARY_REQUIRED ? "مطلوب" : "غير مطلوب"}</p>
+            <p className="settings-note">
+              واجهة الويب لا تستبدل WidgetKit. تحديث اللقطة من هنا يجهّز البيانات للتطبيق الأصلي بعد التحديث القادم.
+            </p>
             <p className="settings-note">لا يُعرض JSON الخام أو الأسرار هنا.</p>
             {refreshNote ? <p role="status">{refreshNote}</p> : null}
             <Button type="button" onClick={() => void refreshPublication()} disabled={busy} loading={busy}>
@@ -552,6 +579,7 @@ export default function WidgetCenterView() {
               <li>شاشة القفل تختلف عن الرئيسية في المساحة والعدّ التنازلي الحي.</li>
               <li>معاينة المعرض ليست البيانات الحية على الجهاز.</li>
               <li>Build الحالي 55 لا يستلم مصدر الويدجت الجديد إلا بعد تحديث ثنائي لاحق.</li>
+              <li>مركز الويدجت على الويب لا يعد بوعد عرض ويدجت النظام داخل المتصفح.</li>
             </ol>
             <p>
               <Link href="/settings">العودة إلى الإعدادات</Link>
