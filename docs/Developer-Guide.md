@@ -17,7 +17,8 @@ pnpm install --frozen-lockfile
 GitHub source of truth: `yalabdullmohsen/SSUNNAH` (legacy redirect: `majalis`).  
 Git root must be the monorepo root (paths like `artifacts/majalis/...`).
 
-Platform docs: `docs/platform/PLATFORM_BASELINE.md` · ownership · state · operations playbook.
+Platform docs: `docs/platform/PLATFORM_BASELINE.md` · ownership · state · operations playbook.  
+Sustainability / release readiness (no store actions): `docs/sustainability/` · `authority-manifest.json`.
 
 ## Run the web app
 

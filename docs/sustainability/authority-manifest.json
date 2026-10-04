@@ -1,0 +1,93 @@
+{
+  "program": "SUNNAH_RELEASE_AND_LONG_TERM_SUSTAINABILITY_PROGRAM",
+  "baseTip": "3a9d98d49",
+  "githubSoT": "yalabdullmohsen/SSUNNAH",
+  "productionUrl": "https://www.ssunnah.com",
+  "versionUrl": "https://www.ssunnah.com/version.json",
+  "storeStatus": "HOLD",
+  "generalStatus": "WEB_RELEASED_NATIVE_HOLD",
+  "unknownSustainabilityDebt": 0,
+  "documentationAuthorities": {
+    "architecture": [
+      "docs/platform/PLATFORM_BASELINE.md",
+      "docs/platform/PLATFORM_OWNERSHIP_MAP.md",
+      "docs/platform/STATE_ARCHITECTURE.md",
+      "docs/architecture/SYSTEM_ARCHITECTURE.md",
+      "docs/project-knowledge/02_ARCHITECTURE.md"
+    ],
+    "design": [
+      "docs/design/DESIGN_LANGUAGE_AUTHORITY.md",
+      "docs/design/DESIGN_TOKENS_AUTHORITY.md",
+      "docs/design/VISUAL_REDESIGN_V2.md",
+      "docs/project-knowledge/11_DESIGN_SYSTEM_AND_UI.md"
+    ],
+    "routes": [
+      "docs/product/INFORMATION_ARCHITECTURE.md",
+      "docs/product/SECTION_REGISTRY.md",
+      "docs/project-knowledge/05_ROUTES_AND_NAVIGATION.md"
+    ],
+    "state": [
+      "docs/platform/STATE_ARCHITECTURE.md"
+    ],
+    "search": [
+      "docs/design/UNIFIED_SEARCH_ARCHITECTURE.md",
+      "docs/project-knowledge/04_PRODUCT_AND_FEATURES.md"
+    ],
+    "mushaf": [
+      "docs/project-knowledge/09_QURAN_MUSHAF_AUDIO.md",
+      "docs/qa/MUSHAF_REAL_DEVICE_RELEASE_MATRIX.md",
+      "docs/performance/RUNTIME_EXCELLENCE_BASELINE.md"
+    ],
+    "governance": [
+      "docs/platform/OPERATIONS_PLAYBOOK.md",
+      "docs/product/PRODUCT_COMPLETENESS_BASELINE.md",
+      "docs/sustainability/LONG_TERM_GOVERNANCE.md",
+      "docs/sustainability/DEBT_PREVENTION.md"
+    ],
+    "performance": [
+      "docs/performance/ARCHITECTURE_BASELINE.md",
+      "docs/performance/RUNTIME_EXCELLENCE_BASELINE.md",
+      "docs/project-knowledge/12_PERFORMANCE.md"
+    ],
+    "release": [
+      "docs/release/RELEASE_READINESS_TRUTH.md",
+      "docs/release/CURRENT_RELEASE_TRUTH.md",
+      "docs/sustainability/RELEASE_READINESS_CONFIRMED.md",
+      "docs/qa/IOS_RELEASE_CHECKLIST.md",
+      "docs/qa/ANDROID_RELEASE_CHECKLIST.md"
+    ]
+  },
+  "knowledgeDomains": [
+    "mushaf",
+    "search",
+    "prayer",
+    "hadith",
+    "fiqh",
+    "design-system",
+    "governance",
+    "performance"
+  ],
+  "debtPreventionGates": [
+    "test:platform-architecture-excellence",
+    "test:product-completeness-baseline",
+    "test:application-experience-runtime-excellence",
+    "test:global-component-authority",
+    "test:global-design-system-authority",
+    "test:visual-redesign-v2-tokens",
+    "test:a11y-contrast-100",
+    "test:architecture-excellence-pr1",
+    "test:release-and-long-term-sustainability"
+  ],
+  "forbiddenInThisProgram": [
+    "modify_quran_content",
+    "modify_quran_mapping",
+    "modify_prayer_calculations",
+    "modify_search_ranking",
+    "apply_production_sql",
+    "create_builds",
+    "upload_testflight",
+    "interact_app_store",
+    "weaken_gates",
+    "raise_debt_ceilings"
+  ]
+}
