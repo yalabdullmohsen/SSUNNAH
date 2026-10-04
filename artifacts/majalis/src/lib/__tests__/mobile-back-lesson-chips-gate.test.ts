@@ -81,7 +81,16 @@ assert.match(lessonsCss, /--mj-chip-active-fg/);
 assert.match(lessonsCss, /color:\s*var\(--mj-chip-fg/);
 assert.match(lessonsCss, /background:\s*var\(--mj-chip-bg/);
 assert.match(lessonsCss, /border(?:-color)?:\s*[^;]*var\(--mj-chip-border/);
-assert.match(lessonsCss, /html\.dark[\s\S]*?\.filter-chips__chip\.is-active[\s\S]*?#06231a/);
+assert.match(
+  lessonsCss,
+  /html\.dark \.lessons-page-v3 \.filter-chips__chip\.is-active[\s\S]{0,320}?color:\s*var\(--mj-chip-active-fg,\s*var\(--mj-on-brand\)\)/,
+  "dark active chips consume chip-active-fg → on-brand (token authority; no page-local #06231a)",
+);
+assert.doesNotMatch(
+  lessonsCss,
+  /html\.dark \.lessons-page-v3 \.filter-chips__chip\.is-active[\s\S]{0,320}?color:\s*var\(--mj-chip-active-fg,\s*#06231a\)/,
+  "page-local #06231a fallback removed from dark active chips",
+);
 assert.match(lessonsCss, /\.lessons-page-v3\s*\{[\s\S]*?padding-bottom:\s*calc\(\s*var\(--bottom-nav-height/);
 assert.match(lessonsCss, /\.lesson-filters__chips\s*\{[\s\S]*?overflow-x:\s*auto/);
 assert.doesNotMatch(
