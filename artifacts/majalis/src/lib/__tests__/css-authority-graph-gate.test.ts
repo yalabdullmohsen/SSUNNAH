@@ -1,6 +1,7 @@
 /**
- * DESIGN_SYSTEM_CSS_DECOMPOSITION — logical authority in one physical sheet.
- * cssFiles ceiling = 356; extracted micro-files were inlined back in cascade order.
+ * DESIGN_SYSTEM_CSS_DECOMPOSITION — logical authority regions in design-system.css.
+ * cssFiles ceiling = 356. Physical component extract blocked while interaction
+ * per-file chunking would raise buttonRelatedImportantApprox (do not raise ceiling).
  * Run: node --import tsx src/lib/__tests__/css-authority-graph-gate.test.ts
  */
 import assert from "node:assert/strict";
@@ -43,6 +44,14 @@ console.log("=== CSS_AUTHORITY_GRAPH_SINGLE (physical sheet = design-system.css)
 assert.equal(graph.circular.length, 0, "no circular CSS imports");
 assert.match(ds, /COMPONENT_AUTHORITY/);
 assert.match(ds, /FEATURE_AUTHORITY/);
+assert.ok(
+  !existsSync(resolve(majalisRoot, "src/styles/pages/fiqh-council-section.css")),
+  "dead fiqh-council-section.css removed",
+);
+assert.ok(
+  !existsSync(resolve(majalisRoot, "src/styles/component-authority.css")),
+  "do not add component-authority.css until buttonRelatedImportantApprox can absorb per-file chunking",
+);
 const iComp = ds.indexOf("COMPONENT_AUTHORITY");
 const iFeat = ds.indexOf("FEATURE_AUTHORITY");
 const iHtml = ds.indexOf("\nhtml {");
@@ -50,7 +59,7 @@ assert.ok(iComp >= 0 && iFeat > iComp, "COMPONENT region before FEATURE region")
 assert.ok(iHtml > iFeat, "FOUNDATION html after FEATURE region (cascade seal)");
 assert.doesNotMatch(ds, /@import\s+"\.\/(?:components|features)\//);
 
-console.log("=== extracted micro-sheets must not exist (cssFiles ceiling) ===");
+console.log("=== retired 18 micro-sheets must not exist ===");
 for (const rel of FORBIDDEN_SHEETS) {
   assert.equal(existsSync(resolve(majalisRoot, rel)), false, `must not exist: ${rel}`);
 }
