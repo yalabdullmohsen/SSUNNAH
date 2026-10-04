@@ -270,12 +270,15 @@ const SPACING = new Set([8, 12, 16, 24]);
       if (!/card--featured/.test(feat)) {
         fail("FeaturedSectionCard يجب أن يستخدم card--featured");
       }
-      if (featCss && !/card--featured[\s\S]{0,800}color:\s*#ffffff/i.test(featCss)) {
+      if (
+        featCss &&
+        !/\.card--featured[\s\S]{0,1200}color:\s*(?:#ffffff|var\(--cs-on-ink\))/i.test(featCss)
+      ) {
         fail("section-cards.css: .card--featured بلا لون نص أبيض مربوط");
       }
       if (
         featCss &&
-        !/card--featured[\s\S]{0,700}background-color:\s*var\(--color-primary-dark|card--featured[\s\S]{0,700}background-color:\s*var\(--mj-brand-deep|card--featured[\s\S]{0,700}background-color:\s*#123[fF]2[eE]/i.test(
+        !/\.card--featured[\s\S]{0,1200}background-color:\s*var\(--(?:color-primary-dark|mj-brand-deep(?:-surface)?)/i.test(
           featCss,
         )
       ) {
