@@ -120,6 +120,8 @@ if (original) {
     "padding: var(--ds-space-3);\n  font-size: var(--ds-text-sm);",
     "padding: var(--ds-space-3);\n  border-radius: var(--ds-radius);\n  border: 1px solid var(--ds-line-color);\n  background: var(--majalis-panel);\n  margin-bottom: var(--ds-space-2);\n  transition: border-color 0.15s, box-shadow 0.15s;",
     "border-color: rgba(26, 107, 82, 0.25);\n  box-shadow: var(--ds-shadow-sm);",
+    /* PR A closure: defeated early .page-shell (winner = FOUNDATION contract absorbing final-release). */
+    "width: min(100%, var(--ds-max));\n  margin-inline: auto;\n  padding-block: var(--mj-s4, var(--ds-space-4));\n  padding-inline: var(--page-gutter, var(--ds-space-3)) var(--page-gutter-end, var(--page-gutter, var(--ds-space-3)));\n  box-sizing: border-box;",
   ]);
   while ((m = re.exec(origRules))) {
     const sel = m[1]!.trim().replace(/\s+/g, " ");
@@ -148,6 +150,23 @@ if (original) {
   assert.doesNotMatch(graphRules, /\.fm-parent\s*\{\s*\}/);
   /* Defeated early hover must not return. */
   assert.doesNotMatch(graphRules, /\.search-result-row:hover\s*\{[^}]*rgba\(26,\s*107,\s*82,\s*0\.25\)/);
+  /* PR A closure: single FOUNDATION page-shell contract (final-release base absorbed). */
+  assert.match(
+    graphRules,
+    /\.page-shell,\s*\.page-shell\.narrow,\s*\.page-shell\.wide\s*\{[\s\S]*?max-width:\s*min\(56rem,\s*100%\)/,
+  );
+  /* Defeated early page-shell (ds-max width without max-width contract) must not return as a lone rule. */
+  assert.doesNotMatch(
+    graphRules,
+    /\.page-shell\s*\{\s*width:\s*min\(100%,\s*var\(--ds-max\)\)/,
+  );
+  /* Sole body line-height in graph is the ZERO-FLICKER 1.55 contract (p/li may still use --ds-line). */
+  const bodyLh = [...graphRules.matchAll(/(?:^|[}\s;])body\s*\{\s*line-height:\s*([^;]+);/g)];
+  assert.ok(bodyLh.length >= 1, "body line-height authority required");
+  assert.ok(
+    bodyLh.every((m) => m[1]!.trim() === "1.55"),
+    `unexpected body line-height values: ${bodyLh.map((m) => m[1]).join(",")}`,
+  );
 }
 
 console.log("css-authority-graph-gate.test.ts: ok");

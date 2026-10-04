@@ -2487,14 +2487,7 @@ html {
   }
 }
 
-.page-shell {
-  width: min(100%, var(--ds-max));
-  margin-inline: auto;
-  padding-block: var(--mj-s4, var(--ds-space-4));
-  padding-inline: var(--page-gutter, var(--ds-space-3)) var(--page-gutter-end, var(--page-gutter, var(--ds-space-3)));
-  box-sizing: border-box;
-}
-
+/* Defeated early .page-shell removed — canonical contract is the later FOUNDATION block. */
 
 /* ── Typography ── */
 .ds-page-header {
@@ -2674,28 +2667,38 @@ article {
    Global compact overrides — unified across all pages
    ══════════════════════════════════════════════════════════════ */
 
-body {
-  line-height: var(--ds-line);
-}
+/* body line-height: single ZERO-FLICKER contract below (not here). */
 
 p, li {
   line-height: var(--ds-line);
 }
 
-/* Page layout — حشوة جانبية من --page-gutter فقط (جذر فهرس السور وغيره) */
+/* Page layout — canonical FOUNDATION contract (absorbs former final-release base). */
 .page-shell,
 .page-shell.narrow,
 .page-shell.wide {
-  width: min(100%, var(--ds-max));
+  width: 100%;
+  max-width: min(56rem, 100%);
   margin-inline: auto;
-  padding-block: var(--mj-s4, var(--ds-space-4));
+  padding-block: clamp(1rem, 3vw, 1.75rem) 1.25rem;
   padding-inline: var(--page-gutter, var(--ds-space-3)) var(--page-gutter-end, var(--page-gutter, var(--ds-space-3)));
-  padding-bottom: var(--mj-s12, var(--ds-space-6));
+  padding-bottom: var(--mj-s12, 1.25rem);
   box-sizing: border-box;
 }
 
 .page-shell.narrow {
-  max-width: var(--ds-content-max);
+  max-width: min(48rem, 100%);
+}
+
+@media (max-width: 879px) {
+  .page-shell {
+    padding-block-start: 0.65rem;
+    padding-block-end: 0.75rem;
+  }
+  .page-shell.narrow,
+  .lesson-detail-page.page-shell {
+    max-width: min(430px, 100%);
+  }
 }
 
 /* Hide reading tools in content pages (settings only) */
@@ -2792,7 +2795,7 @@ p, li {
   --ds-transition-slow: 350ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ZERO FLICKER: لا تعيد تعريف body font-size/background بعد First Paint —
+/* ZERO FLICKER: sole body line-height authority (no later redefinition).
    المالك: #mj-lcp-critical + typography-scale + index.css (--text-body / --mj-bg). */
 body {
   line-height: 1.55;
@@ -2863,10 +2866,7 @@ hr.decorative,
    Apple/Linear quality UI inspired by Islamic architecture.
    ════════════════════════════════════════════════════════════════════ */
 
-/* ── 1. إيقاع سطر فقط — بلا إعادة طلاء هوية body بعد First Paint ── */
-body {
-  line-height: var(--ds-line);
-}
+/* ── 1. body line-height owned solely by ZERO FLICKER block above ── */
 
 /* ── 2. العناوين — أسود/داكن بدل الزمرد ── */
 .ds-page-header__title,

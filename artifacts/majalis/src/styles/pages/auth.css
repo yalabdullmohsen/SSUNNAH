@@ -216,6 +216,8 @@ html[data-theme="dark"] .login-alert--success {
   box-shadow: 0 0 0 3px rgba(31, 107, 79, 0.12);
 }
 
+/* Auth compatibility alias — sole page owner for .login-submit layout/a11y.
+   Maps to canonical button authority (min 44px, focus-visible, disabled). */
 .login-submit {
   width: 100%;
   min-height: 2.75rem;
@@ -229,11 +231,17 @@ html[data-theme="dark"] .login-alert--success {
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(31, 107, 79, 0.18);
+  transition: background var(--motion-fast, 120ms), box-shadow var(--motion-fast, 120ms), transform 100ms;
 }
 
 .login-submit:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+.login-submit:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--auth-green) 72%, white);
+  outline-offset: 2px;
 }
 
 .login-text-btn {
