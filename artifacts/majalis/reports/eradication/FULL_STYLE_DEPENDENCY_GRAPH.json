@@ -211,14 +211,6 @@
       "consumersApprox": 18
     },
     {
-      "file": "styles/premium-dark-refine.css",
-      "classification": "ABSORB_NOW",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 36446,
-      "hex": 53,
-      "consumersApprox": 39
-    },
-    {
       "file": "styles/interaction-states.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
@@ -385,6 +377,14 @@
       "bytes": 19175,
       "hex": 33,
       "consumersApprox": 29
+    },
+    {
+      "file": "styles/premium-dark-refine.css",
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 36688,
+      "hex": 33,
+      "consumersApprox": 43
     },
     {
       "file": "features/mushaf-reader/page-goto-dial.css",
@@ -1321,14 +1321,6 @@
       "bytes": 3900,
       "hex": 7,
       "consumersApprox": 10
-    },
-    {
-      "file": "styles/modern-ui-refresh.css",
-      "classification": "ABSORB_NOW",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 22506,
-      "hex": 7,
-      "consumersApprox": 38
     },
     {
       "file": "styles/pages/adab-talab-ilm.css",
@@ -2521,6 +2513,14 @@
       "bytes": 6681,
       "hex": 0,
       "consumersApprox": 21
+    },
+    {
+      "file": "styles/modern-ui-refresh.css",
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 22264,
+      "hex": 0,
+      "consumersApprox": 42
     },
     {
       "file": "styles/motion-policy.css",

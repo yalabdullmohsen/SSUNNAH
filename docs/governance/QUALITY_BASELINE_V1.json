@@ -1,8 +1,8 @@
 {
   "id": "QUALITY_BASELINE_V1",
   "program": "SUNNAH_CONTINUOUS_GOVERNANCE_AND_REGRESSION_PREVENTION_PROGRAM",
-  "capturedAt": "2026-10-04T11:52:41.130Z",
-  "baseTip": "4c93850e8181516bb99cb892d72f4ffa19c4dc39",
+  "capturedAt": "2026-10-04T12:26:34.463Z",
+  "baseTip": "5095c9de8ea6d0766606a4637a02063961f9195c",
   "githubSoT": "yalabdullmohsen/SSUNNAH",
   "policy": "no-ceiling-raise",
   "unknownGovernanceDebt": 0,
@@ -12,7 +12,7 @@
     "visualCeilings": {
       "cssFiles": 356,
       "important": 4746,
-      "hexInCss": 5657,
+      "hexInCss": 5630,
       "rgbHslInCss": 2006,
       "mjDeclarations": 193,
       "mjDeclOutsideAllowlist": 0,

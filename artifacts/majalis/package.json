@@ -829,7 +829,7 @@
     "test:canonical-platform-identity": "node --import tsx src/lib/__tests__/canonical-platform-identity-gate.test.ts",
     "test:platform-separation": "node --import tsx src/lib/__tests__/platform-separation-gate.test.ts",
     "inventory:application-layer-eradication": "node scripts/application-layer-eradication-inventory.mjs",
-    "test:application-layer-eradication": "node scripts/application-layer-eradication-inventory.mjs --check && node --import tsx src/lib/__tests__/application-layer-eradication-gate.test.ts && node --import tsx src/lib/__tests__/eradication-wave1a-ds-viu-gate.test.ts",
+    "test:application-layer-eradication": "node scripts/application-layer-eradication-inventory.mjs --check && node --import tsx src/lib/__tests__/application-layer-eradication-gate.test.ts && node --import tsx src/lib/__tests__/eradication-wave1a-ds-viu-gate.test.ts && node --import tsx src/lib/__tests__/eradication-wave1b-dark-mur-gate.test.ts",
     "test:ios-prayer-widget-data-contract": "node --import tsx src/lib/__tests__/ios-prayer-widget-data-contract-gate.test.ts",
     "test:ios-app-groups-foundation": "node --import tsx src/lib/__tests__/ios-app-groups-foundation-gate.test.ts",
     "test:ios-widgets-prayer": "node --import tsx src/lib/__tests__/ios-widgets-prayer-gate.test.ts"

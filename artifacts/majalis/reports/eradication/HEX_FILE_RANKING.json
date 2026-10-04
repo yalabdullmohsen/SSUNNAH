@@ -121,13 +121,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/premium-dark-refine.css",
-      "hex": 53,
-      "unsafeHexFallback": 8,
-      "classification": "ABSORB_NOW",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/interaction-states.css",
       "hex": 48,
       "unsafeHexFallback": 8,
@@ -272,6 +265,13 @@
       "hex": 33,
       "unsafeHexFallback": 0,
       "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/premium-dark-refine.css",
+      "hex": 33,
+      "unsafeHexFallback": 0,
+      "classification": "ABSORB_NOW",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -1091,13 +1091,6 @@
       "hex": 7,
       "unsafeHexFallback": 0,
       "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/modern-ui-refresh.css",
-      "hex": 7,
-      "unsafeHexFallback": 4,
-      "classification": "ABSORB_NOW",
       "platform": "SHARED_PLATFORM"
     },
     {
