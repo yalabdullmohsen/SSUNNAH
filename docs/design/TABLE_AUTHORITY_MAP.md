@@ -27,7 +27,7 @@ No new table framework. Admin grids stay SPECIAL_CASE until admin-v3 wave.
 | `UniversitiesComparePage` · `AnnualCourseDetailView` · `ProphetStoriesPage` CompareView | **APPROVED_VARIANT** | `ui/table` + `.ss-data-table` (+ page modifiers) |
 | `content-detail-table` class on AnnualCourse | **ABSORB** bridge alias | Visual recipe owned by `.ss-data-table`; page CSS duplicate removed |
 | `nb-table` modifiers (`__row--azm`, `__row--clickable`, `__name`) | **KEEP_TEMPORARILY_WITH_EVIDENCE** | Page-local prophet chrome on top of authority |
-| `.quran-numbers-table` CSS (no TSX consumer) | **DEAD_WITH_PROOF** | Orphan page CSS; delete in Wave J after dynamic-selector proof |
+| `.quran-numbers-table` CSS | **DEAD_WITH_PROOF** — **REMOVED** (Wave 6) | Zero TSX consumers; cards + AppBottomSheet only |
 | `admin-v3` `.av3-table*` · legacy `.admin-table` · section CRUD tables | **SPECIAL_CASE** | ADMIN_ONLY boundary |
 | `PrayerAnnualTimetable` immersive | **SPECIAL_CASE** | Prayer chrome / contrast locked |
 | Mushaf | **SPECIAL_CASE** | Not a data-grid surface |

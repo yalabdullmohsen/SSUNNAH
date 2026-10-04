@@ -186,55 +186,7 @@ button.quran-stat-card,
   overflow: hidden;
 }
 
-.quran-numbers-table-wrap {
-  padding: 8px 16px 24px;
-}
-
-.quran-numbers-table-wrap h2 {
-  margin: 0 0 10px;
-  font-size: 1.15rem;
-}
-
-.quran-numbers-table-note {
-  margin: 8px 0 12px;
-  font-size: 12px;
-  color: var(--mj-muted, #5d726a);
-}
-
-.quran-numbers-surah-controls {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-
-.quran-numbers-table-scroll {
-  overflow: auto;
-  border: 1px solid var(--mj-hairline, var(--mj-hairline, #e3e8e6));
-  border-radius: var(--radius-md, 0.75rem);
-  max-height: 420px;
-}
-
-.quran-numbers-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-}
-
-.quran-numbers-table th,
-.quran-numbers-table td {
-  padding: 10px 8px;
-  text-align: start;
-  border-bottom: 1px solid var(--mj-hairline, #e3e8e6);
-  min-height: 44px;
-}
-
-.quran-numbers-table th {
-  position: sticky;
-  top: 0;
-  background: var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
-  z-index: 1;
-}
+/* .quran-numbers-table* removed Wave 6 — DEAD_WITH_PROOF (zero TSX consumers; page uses cards + AppBottomSheet) */
 
 .quran-stat-sheet {
   padding: 8px 4px 24px;
@@ -293,9 +245,7 @@ html.dark .quran-hub-page__title {
 html[data-theme="dark"] .quran-stat-card,
 html.dark .quran-stat-card,
 html[data-theme="dark"] .quran-numbers-search input,
-html.dark .quran-numbers-search input,
-html[data-theme="dark"] .quran-numbers-table th,
-html.dark .quran-numbers-table th {
+html.dark .quran-numbers-search input {
   background: var(--mj-surface, #1a221f);
   color: var(--mj-ink, #e8eeeb);
   border-color: var(--mj-hairline, #2a3531);

@@ -1,0 +1,27 @@
+{
+  "wave": "WAVE6_COMPAT_DEAD",
+  "taskClassification": "SHARED_PLATFORM",
+  "baseCommit": "d96bdba3694ff1463b3d19c92816fa1ea507e386",
+  "deleted": [
+    {
+      "id": "quran-numbers-table-css",
+      "files": ["styles/pages/quran-numbers.css", "styles/ssunnah-card-unify.css"],
+      "tsxConsumers": 0,
+      "classification": "DEAD_WITH_PROOF"
+    },
+    {
+      "id": "mj-row-css",
+      "files": ["app/styles/theme.css"],
+      "tsxConsumers": 0,
+      "classification": "DEAD_WITH_PROOF"
+    }
+  ],
+  "metrics": {
+    "hexInCss": 5616,
+    "zIndexRawDecls": 256
+  },
+  "outputs": [
+    "PROVEN_DEAD_CSS_REMOVED_WAVE6",
+    "HEX_AND_ZINDEX_CEILINGS_LOWERED"
+  ]
+}
