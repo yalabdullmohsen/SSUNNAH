@@ -49,7 +49,7 @@ html.dark :is(
   .lpp-cat-btn--active,
   .adhkar-focus-btn--next
 ) {
-  color: var(--em-950, var(--mj-on-brand, #06231a)) !important;
+  color: var(--mj-on-brand, #06231a) !important;
 }
 
 html[data-theme="dark"] .adhkar-focus-btn--next,
@@ -219,7 +219,7 @@ html:not([data-theme="dark"]) .navbar-menu-btn.navbar-menu-btn {
    صراحةً بدل افتراضها — هنا نحن من يحدّدها، فلا افتراض. */
 html[data-theme="dark"] .seerah-timeline__dot.seerah-timeline__dot {
   background-color: var(--em-300) !important;
-  color: var(--em-950) !important;
+  color: var(--mj-brand-deep) !important;
 }
 
 /* سنة الخط الزمني تقع فوق سطح أبيض بقي فاتحًا في الوضع الداكن. لا تُلمس
@@ -250,7 +250,7 @@ html[data-theme="dark"] :is(
   .hadith-quick-cat--active, .jnz-step__num,
   .sb-cat-btn, .twh-pillar-num, .cal-view-tab
 ) {
-  color: var(--em-950) !important;
+  color: var(--mj-brand-deep) !important;
 }
 
 /* (٣) أخضر متوسّط أو باهت فوق سطح أخضر داكن (2.1–4.03:1) —
@@ -398,7 +398,7 @@ html[data-theme="dark"] .cal-cell-num.cal-cell-num {
 
 /* آخر ثلاثة مواضع مقيسة. */
 html[data-theme="dark"] .cal-view-tab.is-active {
-  color: var(--em-950) !important;
+  color: var(--mj-brand-deep) !important;
 }
 html[data-theme="dark"] .mpv-navbar__page-input-wrap span {
   color: var(--text-2) !important;

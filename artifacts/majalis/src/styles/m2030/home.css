@@ -406,7 +406,7 @@
   gap: 0.85rem;
   align-items: center;
   padding: 0.85rem 0.95rem;
-  background: var(--mj-brand-deep, var(--em-900));
+  background: var(--mj-brand-deep, var(--mj-brand-deep));
   color: #F7FAF8;
   text-decoration: none;
   border-radius: var(--mj-r-lg);
@@ -419,7 +419,7 @@
   height: 3.85rem;
   border-radius: 50%;
   background:
-    radial-gradient(circle at center, var(--mj-brand-deep, var(--em-900)) 58%, transparent 59%),
+    radial-gradient(circle at center, var(--mj-brand-deep, var(--mj-brand-deep)) 58%, transparent 59%),
     conic-gradient(from 210deg, color-mix(in srgb, #F7FAF8 85%, transparent) calc(var(--p) * 1%), color-mix(in srgb, #F7FAF8 16%, transparent) 0);
   display: grid;
   place-items: center;

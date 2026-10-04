@@ -63,7 +63,7 @@
   font-size: 1.55rem;
   font-weight: 900;
   line-height: 1.15;
-  color: var(--mj-brand-deep, var(--em-800, #123F32));
+  color: var(--mj-brand-deep, var(--mj-brand-deep, #123F32));
 }
 .tf-stat span {
   margin-top: 0.2rem;

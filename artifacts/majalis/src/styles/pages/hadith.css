@@ -709,25 +709,25 @@
    38. Hadith Page تحسينات
    ══════════════════════════════════════════════ */
 .hadith-card {
-  background: var(--elite-white) !important;
-  border: 1px solid var(--elite-border) !important;
-  border-radius: var(--elite-r-lg) !important;
-  box-shadow: var(--elite-shadow-sm) !important;
+  background: var(--mj-bg) !important;
+  border: 1px solid var(--mj-hairline) !important;
+  border-radius: var(--radius-mj-md) !important;
+  box-shadow: var(--sf-shadow-sm, var(--ds-shadow-sm)) !important;
 }
 
 .hadith-text {
   font-family: var(--font-serif) !important;
-  color: var(--elite-ink, var(--mj-ink)) !important;
+  color: var(--mj-ink) !important;
   font-size: clamp(1rem, 2.5vw, 1.125rem) !important;
   line-height: 2.0 !important;
 }
 
 /* رأس القسم المضمّن — خلفية خضراء + نص أبيض (مثل بطاقات الدروس) */
 .hadith-section-header {
-  background-color: var(--elite-forest, var(--mj-brand-deep)) !important;
+  background-color: var(--mj-brand-deep) !important;
   background-image: url("/star-pattern.svg") !important;
   background-size: 100px 100px !important;
-  border-radius: var(--elite-r-lg, 16px) !important;
+  border-radius: var(--radius-mj-md, 16px) !important;
   padding: 1rem 1.25rem !important;
   margin-bottom: 0.5rem !important;
   gap: 0.3rem !important;
@@ -766,17 +766,17 @@ html.dark .hadith-stat strong,
 html[data-theme="dark"] .hadith-stat strong {
   color: var(--on-brand-wash, var(--mj-surface-2)) !important;
 }
-.hadith-quick-cat { color: var(--elite-ink-soft) !important; }
-.hadith-quick-cat:hover { color: var(--elite-forest, var(--mj-brand-deep)) !important; border-color: var(--elite-forest, var(--mj-brand-deep)) !important; }
-.hadith-quick-cat--active { background: var(--elite-forest, var(--mj-brand-deep)) !important; border-color: var(--elite-forest, var(--mj-brand-deep)) !important; color: var(--mj-white) !important; }
-.hadith-filter-label { color: var(--elite-ink-soft) !important; }
-.hadith-meta-label { color: var(--elite-forest, var(--mj-brand-deep)) !important; }
-.hadith-meta-item { color: var(--elite-ink-soft) !important; }
-.hadith-keyword { color: var(--elite-ink-soft) !important; }
-.hadith-action-btn { color: var(--elite-ink-soft) !important; }
-.hadith-card__text { border-inline-start-color: var(--elite-forest, var(--mj-brand-deep)) !important; }
-.hadith-modal__text { border-inline-start-color: var(--elite-forest, var(--mj-brand-deep)) !important; }
-.hadith-modal-btn { background: var(--elite-forest, var(--mj-brand-deep)) !important; color: var(--mj-white) !important; }
+.hadith-quick-cat { color: var(--mj-muted) !important; }
+.hadith-quick-cat:hover { color: var(--mj-brand-deep) !important; border-color: var(--mj-brand-deep) !important; }
+.hadith-quick-cat--active { background: var(--mj-brand-deep) !important; border-color: var(--mj-brand-deep) !important; color: var(--mj-white) !important; }
+.hadith-filter-label { color: var(--mj-muted) !important; }
+.hadith-meta-label { color: var(--mj-brand-deep) !important; }
+.hadith-meta-item { color: var(--mj-muted) !important; }
+.hadith-keyword { color: var(--mj-muted) !important; }
+.hadith-action-btn { color: var(--mj-muted) !important; }
+.hadith-card__text { border-inline-start-color: var(--mj-brand-deep) !important; }
+.hadith-modal__text { border-inline-start-color: var(--mj-brand-deep) !important; }
+.hadith-modal-btn { background: var(--mj-brand-deep) !important; color: var(--mj-white) !important; }
 
 /* مرجع الصحيحين — ملاحظة المصدر + ترقيم الصفحات */
 .hadith-source-note {

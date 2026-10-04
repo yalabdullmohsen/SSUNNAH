@@ -1144,10 +1144,10 @@ html[data-theme="dark"] .navbar-v3 a.navbar-v3__tagline:focus-visible {
 
 .navbar-menu-btn,
 .navbar-logout {
-  border: 1px solid var(--elite-border, rgba(24,54,42,0.09));
-  background: var(--elite-off-white, #F5F5F4);
+  border: 1px solid var(--mj-hairline);
+  background: var(--mj-bg, #F5F5F4);
   color: var(--majalis-ink);
-  border-radius: var(--elite-r-md, 12px);
+  border-radius: var(--sf-radius-control, 12px);
   padding: 0.375rem 0.75rem;
   font-family: inherit;
   font-weight: 700;
@@ -1180,10 +1180,10 @@ html[data-theme="dark"] .navbar-v3 a.navbar-v3__tagline:focus-visible {
 }
 
 .navbar-menu-btn:hover {
-  background: var(--elite-white, #FAFAF8);
-  border-color: var(--elite-border-2, rgba(24,54,42,0.15));
-  box-shadow: var(--elite-shadow-sm, 0 2px 4px rgba(18,32,25,0.06));
-  color: var(--elite-forest, var(--mj-brand-deep));
+  background: var(--mj-bg, #FAFAF8);
+  border-color: var(--mj-hairline);
+  box-shadow: var(--sf-shadow-sm, 0 2px 4px rgba(18,32,25,0.06));
+  color: var(--mj-brand-deep);
 }
 
 .navbar-menu-btn:active { transform: scale(0.97); }
@@ -2559,10 +2559,10 @@ body.has-assistant-fab .app-main {
 
 .ds-page-header {
   position: relative;
-  background-color: var(--elite-forest, var(--mj-brand-deep));
+  background-color: var(--mj-brand-deep);
   background-image: url("/star-pattern.svg");
   background-size: 100px 100px;
-  color: var(--elite-white, #FAFAF8);
+  color: var(--mj-bg, #FAFAF8);
   padding: 2.25rem 1.5rem 2.75rem;
   margin-bottom: 2rem;
   overflow: hidden;

@@ -38,7 +38,7 @@
   border-radius: var(--radius-chip, var(--mj-r-sm, 12px));
   border: 1px solid var(--mj-hairline);
   background: var(--majalis-parchment, #f7f5f0);
-  color: var(--mj-brand-deep, var(--em-800, #0f3d30));
+  color: var(--mj-brand-deep, var(--mj-brand-deep, #0f3d30));
   font-size: 0.9rem;
   font-weight: 700;
   line-height: 1.2;

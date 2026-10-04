@@ -7,24 +7,24 @@
 
 /* مسار التنقل */
 .hb-breadcrumb { display: flex; align-items: center; gap: .35rem; font-size: .82rem;
-  color: var(--elite-ink-soft); margin-bottom: 1.25rem; direction: rtl; }
+  color: var(--mj-muted); margin-bottom: 1.25rem; direction: rtl; }
 .hb-breadcrumb__link { color: var(--ds-emerald, var(--mj-brand)); text-decoration: none; }
 .hb-breadcrumb__link:hover { text-decoration: underline; }
-.hb-breadcrumb__sep { color: var(--elite-ink-muted); flex-shrink: 0; }
+.hb-breadcrumb__sep { color: var(--mj-ink-2); flex-shrink: 0; }
 
 /* رأس */
 .hb-header { text-align: center; margin-bottom: 1.5rem; }
 .hb-header__icon { color: var(--ds-emerald, var(--mj-brand)); margin-bottom: .5rem; display: inline-block; }
 .hb-header__title { font-size: 1.55rem; font-weight: 700;
-  color: var(--elite-ink, var(--mj-brand-deep)); margin: .25rem 0 .5rem; }
-.hb-header__subtitle { font-size: .92rem; color: var(--elite-ink-soft); max-width: 600px; margin: 0 auto .5rem; line-height: 1.55; }
-.hb-header__source { font-size: .78rem; color: var(--elite-ink-muted); }
+  color: var(--mj-brand-deep); margin: .25rem 0 .5rem; }
+.hb-header__subtitle { font-size: .92rem; color: var(--mj-muted); max-width: 600px; margin: 0 auto .5rem; line-height: 1.55; }
+.hb-header__source { font-size: .78rem; color: var(--mj-ink-2); }
 .hb-header__source-link { color: var(--ds-emerald, var(--mj-brand)); text-decoration: none; }
 .hb-header__source-link:hover { text-decoration: underline; }
 
 /* إشعار */
 .hb-notice { background: color-mix(in srgb, var(--mj-brand-deep) 6%, transparent); border: 1px solid color-mix(in srgb, var(--mj-brand-deep) 20%, transparent);
-  border-radius: var(--sf-radius-control, 1.125rem); padding: .7rem 1rem; font-size: .83rem; color: var(--elite-ink-soft);
+  border-radius: var(--sf-radius-control, 1.125rem); padding: .7rem 1rem; font-size: .83rem; color: var(--mj-muted);
   margin-bottom: 1.5rem; line-height: 1.55; }
 .hb-notice__link { color: var(--ds-emerald, var(--mj-brand)); font-weight: 600; text-decoration: none; }
 .hb-notice__link:hover { text-decoration: underline; }
@@ -36,12 +36,12 @@
 .hb-tabs { display: flex; gap: .4rem !important; padding-bottom: .15rem; min-width: max-content; }
 .hb-tab { display: flex; flex-direction: column; align-items: center;
   gap: .1rem; min-height: 44px; padding: .55rem .95rem; border-radius: var(--sf-radius-control, 1.125rem);
-  border: 1.5px solid var(--elite-border-2);
-  background: var(--elite-cream); cursor: pointer; transition: all .18s;
-  font-family: inherit; color: var(--elite-ink-soft); white-space: nowrap;
+  border: 1.5px solid var(--mj-hairline);
+  background: var(--mj-surface-2); cursor: pointer; transition: all .18s;
+  font-family: inherit; color: var(--mj-muted); white-space: nowrap;
   touch-action: manipulation; }
 .hb-tab__name { font-size: .82rem; font-weight: 600; }
-.hb-tab__total { font-size: .72rem; color: var(--elite-ink-muted); }
+.hb-tab__total { font-size: .72rem; color: var(--mj-ink-2); }
 .hb-tab__access {
   display: block;
   font-size: .65rem;
@@ -62,9 +62,9 @@
 .hb-tab--active .hb-tab__total { color: rgba(255,255,255,.7); }
 
 /* حالة التحميل */
-.hb-loading { text-align: center; padding: 3rem 1rem; color: var(--elite-ink-soft); }
+.hb-loading { text-align: center; padding: 3rem 1rem; color: var(--mj-muted); }
 .hb-loading__icon { display: inline-block; animation: spin .8s linear infinite; margin-bottom: .75rem; color: var(--ds-emerald, var(--mj-brand)); }
-.hb-loading__note { font-size: .8rem; color: var(--elite-ink-muted); margin-top: .35rem; }
+.hb-loading__note { font-size: .8rem; color: var(--mj-ink-2); margin-top: .35rem; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* حالة الخطأ */
@@ -74,32 +74,32 @@
 /* رأس المتصفح */
 .hb-browser__head { display: flex; align-items: flex-start; justify-content: space-between;
   flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; direction: rtl; }
-.hb-browser__title { font-size: 1.2rem; font-weight: 700; color: var(--elite-ink); margin: 0 0 .15rem; }
-.hb-browser__author { font-size: .8rem; color: var(--elite-ink-soft); margin: 0; }
-.hb-browser__stats { display: flex; gap: .6rem; font-size: .78rem; color: var(--elite-ink-muted); }
+.hb-browser__title { font-size: 1.2rem; font-weight: 700; color: var(--mj-brand-deep); margin: 0 0 .15rem; }
+.hb-browser__author { font-size: .8rem; color: var(--mj-muted); margin: 0; }
+.hb-browser__stats { display: flex; gap: .6rem; font-size: .78rem; color: var(--mj-ink-2); }
 
 /* البحث */
 .hb-search-wrap { position: relative; margin-bottom: 1.25rem; }
 .hb-search__icon { position: absolute; inset-inline-end: .75rem; top: 50%; transform: translateY(-50%);
-  color: var(--elite-ink-muted); pointer-events: none; }
+  color: var(--mj-ink-2); pointer-events: none; }
 .hb-search-input { width: 100%; min-height: 44px; padding: .55rem .75rem .55rem 2.2rem;
-  border: 1.5px solid var(--elite-border-2); border-radius: var(--sf-radius-control, 1.125rem);
-  font-size: .88rem; font-family: inherit; background: var(--elite-white);
-  color: var(--elite-ink); direction: rtl; outline: none; transition: border .18s; }
+  border: 1.5px solid var(--mj-hairline); border-radius: var(--sf-radius-control, 1.125rem);
+  font-size: .88rem; font-family: inherit; background: var(--mj-bg);
+  color: var(--mj-brand-deep); direction: rtl; outline: none; transition: border .18s; }
 .hb-search-input:focus { border-color: var(--ds-emerald, var(--mj-brand)); }
 .hb-search__clear { position: absolute; inset-inline-start: .75rem; top: 50%; transform: translateY(-50%);
-  background: none; border: none; cursor: pointer; color: var(--elite-ink-muted);
+  background: none; border: none; cursor: pointer; color: var(--mj-ink-2);
   display: flex; align-items: center; padding: .15rem; }
-.hb-search__clear:hover { color: var(--elite-ink); }
+.hb-search__clear:hover { color: var(--mj-brand-deep); }
 
 /* تخطيط sidebar + main */
 .hb-layout { display: flex; gap: var(--ds-space-5); align-items: flex-start; direction: rtl; }
-.hb-sidebar { width: 220px; flex-shrink: 0; background: var(--elite-cream);
-  border-radius: var(--radius-card, 1.5rem); border: 1px solid var(--elite-border-2); padding: .75rem .5rem;
+.hb-sidebar { width: 220px; flex-shrink: 0; background: var(--mj-surface-2);
+  border-radius: var(--radius-card, 1.5rem); border: 1px solid var(--mj-hairline); padding: .75rem .5rem;
   max-height: 70vh; overflow-y: auto; scrollbar-width: thin; }
 .hb-sidebar::-webkit-scrollbar { width: 4px; }
-.hb-sidebar::-webkit-scrollbar-thumb { background: var(--elite-mist); border-radius: var(--radius-xs, 0.25rem); }
-.hb-sidebar__label { font-size: .73rem; font-weight: 600; color: var(--elite-ink-muted);
+.hb-sidebar::-webkit-scrollbar-thumb { background: var(--mj-surface-2); border-radius: var(--radius-xs, 0.25rem); }
+.hb-sidebar__label { font-size: .73rem; font-weight: 600; color: var(--mj-ink-2);
   padding: 0 .5rem .4rem; text-transform: uppercase; letter-spacing: normal; }
 .hb-sidebar__more { width: 100%; background: none; border: none; cursor: pointer;
   font-size: .78rem; color: var(--ds-emerald, var(--mj-brand)); padding: .5rem; margin-top: .35rem;
@@ -110,28 +110,28 @@
 .hb-chapter-item { display: flex; justify-content: space-between; align-items: center;
   width: 100%; min-height: 44px; padding: .45rem .6rem; border-radius: var(--radius-control, 14px); border: none;
   background: none; cursor: pointer; font-size: .78rem; font-family: inherit;
-  color: var(--elite-ink-soft); text-align: end; transition: background .15s; gap: .35rem;
+  color: var(--mj-muted); text-align: end; transition: background .15s; gap: .35rem;
   touch-action: manipulation; }
 .hb-chapter-item:hover { background: color-mix(in srgb, var(--mj-brand-deep) 7%, transparent); color: var(--ds-emerald, var(--mj-brand)); }
 .hb-chapter-item--active { background: color-mix(in srgb, var(--mj-brand-deep) 12%, transparent); color: var(--ds-emerald, var(--mj-brand)); font-weight: 600; }
 .hb-chapter-item__name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.hb-chapter-item__count { font-size: .7rem; color: var(--elite-ink-muted); flex-shrink: 0; }
+.hb-chapter-item__count { font-size: .7rem; color: var(--mj-ink-2); flex-shrink: 0; }
 .hb-chapter-item--active .hb-chapter-item__count { color: var(--ds-emerald, var(--mj-brand)); }
 
 /* المحتوى الرئيسي */
 .hb-main { flex: 1; min-width: 0; }
 .hb-chapter-title { font-size: var(--ds-text-base); font-weight: 600; color: var(--ds-emerald, var(--mj-brand));
-  margin: 0 0 .85rem; padding-bottom: .5rem; border-bottom: 1px solid var(--elite-border-2); }
+  margin: 0 0 .85rem; padding-bottom: .5rem; border-bottom: 1px solid var(--mj-hairline); }
 
 /* عداد الأحاديث */
-.hb-hadith-viewer__count { font-size: .8rem; color: var(--elite-ink-muted); margin-bottom: .6rem; }
+.hb-hadith-viewer__count { font-size: .8rem; color: var(--mj-ink-2); margin-bottom: .6rem; }
 
 /* قائمة الأحاديث */
 .hb-hadith-list { display: flex; flex-direction: column; gap: .4rem; }
 
 /* صف الحديث */
-.hb-hadith-row { border: 1px solid var(--elite-border-2); border-radius: var(--radius-card, 1.5rem);
-  padding: .85rem 1rem; cursor: pointer; background: var(--elite-white);
+.hb-hadith-row { border: 1px solid var(--mj-hairline); border-radius: var(--radius-card, 1.5rem);
+  padding: .85rem 1rem; cursor: pointer; background: var(--mj-bg);
   transition: border-color .18s, box-shadow .18s; outline: none;
   min-height: 52px; touch-action: manipulation; }
 .hb-hadith-row:focus-visible { outline: 2px solid var(--ds-emerald, var(--mj-brand)); outline-offset: 2px; }
@@ -143,18 +143,18 @@
   color: var(--ds-emerald, var(--mj-brand)); font-size: .7rem; font-weight: 700;
   display: flex; align-items: center; justify-content: center; margin-top: .05rem; }
 .hb-hadith-row__preview { flex: 1; font-size: .88rem; line-height: 1.6;
-  color: var(--elite-ink); text-align: end; font-family: var(--font-body); }
-.hb-hadith-row__chevron { flex-shrink: 0; color: var(--elite-ink-muted);
+  color: var(--mj-brand-deep); text-align: end; font-family: var(--font-body); }
+.hb-hadith-row__chevron { flex-shrink: 0; color: var(--mj-ink-2);
   transition: transform .2s; margin-top: .2rem; }
 .hb-hadith-row__chevron--open { transform: rotate(90deg); }
 
 /* تفاصيل الحديث */
-.hb-hadith-row__detail { padding-top: .6rem; border-top: 1px solid var(--elite-border);
+.hb-hadith-row__detail { padding-top: .6rem; border-top: 1px solid var(--mj-hairline);
   margin-top: .55rem; display: flex; gap: .75rem; align-items: center;
   justify-content: space-between; direction: rtl; }
 .hb-hadith-row__meta { display: flex; gap: .45rem; flex-wrap: wrap; align-items: center; }
-.hb-hadith-row__chapter { font-size: .75rem; color: var(--elite-ink-soft);
-  background: var(--elite-cream); padding: .15rem .4rem; border-radius: var(--radius-control, 14px); }
+.hb-hadith-row__chapter { font-size: .75rem; color: var(--mj-muted);
+  background: var(--mj-surface-2); padding: .15rem .4rem; border-radius: var(--radius-control, 14px); }
 .hb-hadith-row__badge { font-size: .72rem; color: var(--ds-emerald, var(--mj-brand));
   font-weight: 600; }
 .hb-hadith-row__copy { font-size: .8rem; min-height: 44px; padding: .35rem .75rem;
@@ -166,7 +166,7 @@
 .hb-hadith-row__isnad {
   margin: 0.35rem 0 0.15rem;
   font-size: 0.8rem;
-  color: var(--elite-ink-soft);
+  color: var(--mj-muted);
 }
 .hb-hadith-row__isnad summary {
   cursor: pointer;
@@ -176,20 +176,20 @@
 .hb-hadith-row__isnad p {
   margin: 0.4rem 0 0;
   line-height: 1.7;
-  color: var(--elite-ink-muted);
+  color: var(--mj-ink-2);
 }
 
 /* الترقيم */
 .hb-pagination { display: flex; align-items: center; justify-content: center;
   gap: .75rem; margin-top: 1.25rem; direction: rtl; }
-.hb-pagination__btn { padding: .4rem .85rem; border: 1.5px solid var(--elite-border-2);
-  border-radius: var(--sf-radius-control); background: var(--elite-white); cursor: pointer;
-  font-size: .82rem; font-family: inherit; color: var(--elite-ink-soft);
+.hb-pagination__btn { padding: .4rem .85rem; border: 1.5px solid var(--mj-hairline);
+  border-radius: var(--sf-radius-control); background: var(--mj-bg); cursor: pointer;
+  font-size: .82rem; font-family: inherit; color: var(--mj-muted);
   transition: all .16s; }
 .hb-pagination__btn:hover:not(:disabled) { border-color: var(--ds-emerald, var(--mj-brand));
   color: var(--ds-emerald, var(--mj-brand)); }
 .hb-pagination__btn:disabled { opacity: .4; cursor: not-allowed; }
-.hb-pagination__info { font-size: .82rem; color: var(--elite-ink-muted); }
+.hb-pagination__info { font-size: .82rem; color: var(--mj-ink-2); }
 
 /* بطاقة الكتب في فهرس الحديث */
 .hadith-index-card--books { background: linear-gradient(135deg, var(--mj-brand) 0%, var(--mj-brand-deep) 100%); }
@@ -226,8 +226,8 @@ html[data-theme="dark"] .hb-notice { background: color-mix(in srgb, var(--mj-bra
 .hadith-books-banner__icon { color: var(--ds-emerald, var(--mj-brand)); flex-shrink: 0; margin-top: .1rem; }
 .hadith-books-banner > div { flex: 1; min-width: 0; }
 .hadith-books-banner strong { display: block; font-size: .9rem; font-weight: 700;
-  color: var(--elite-ink); margin-bottom: .2rem; }
-.hadith-books-banner p { font-size: .8rem; color: var(--elite-ink-soft); line-height: 1.5; margin: 0; }
+  color: var(--mj-brand-deep); margin-bottom: .2rem; }
+.hadith-books-banner p { font-size: .8rem; color: var(--mj-muted); line-height: 1.5; margin: 0; }
 .hadith-books-banner__btn { flex-shrink: 0; padding: .45rem .85rem;
   background: var(--ds-emerald, var(--mj-brand)); color: var(--mj-white); border-radius: var(--sf-radius-control);
   font-size: .82rem; font-weight: 600; text-decoration: none;
@@ -243,7 +243,7 @@ html[data-theme="dark"] .hadith-books-banner {
 /* متفق عليه info box */
 .hb-mutafaq-info { background: color-mix(in srgb, var(--mj-brand-deep) 5%, transparent); border: 1px solid color-mix(in srgb, var(--mj-brand-deep) 18%, transparent);
   border-radius: var(--radius-lg, 1rem); padding: .8rem 1rem; margin-bottom: 1rem; font-size: .82rem;
-  color: var(--elite-ink-soft); line-height: 1.6; direction: rtl; }
+  color: var(--mj-muted); line-height: 1.6; direction: rtl; }
 .hb-mutafaq-info strong { color: var(--ds-emerald, var(--mj-brand)); }
 .hb-mutafaq-info p { margin: .35rem 0 0; }
 html[data-theme="dark"] .hb-mutafaq-info { background: color-mix(in srgb, var(--mj-brand-deep) 9%, transparent); border-color: color-mix(in srgb, var(--mj-brand-deep) 22%, transparent); }

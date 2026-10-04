@@ -264,7 +264,7 @@ html[data-theme="dark"] .twh-hub-card__desc {
   gap: var(--ds-space-2);
   margin-bottom: 2rem;
   padding: 0.75rem 1rem;
-  background: var(--elite-sage-2, var(--mj-brand-soft));
+  background: var(--mj-brand-soft);
   border-radius: var(--ds-radius-lg);
 }
 .twh-jumpnav__btn {

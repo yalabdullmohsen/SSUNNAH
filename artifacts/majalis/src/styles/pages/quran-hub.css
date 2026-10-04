@@ -3,8 +3,8 @@
    ══════════════════════════════════════════════ */
 .quran-hub-page {
   min-height: 100svh;
-  background: var(--elite-white, var(--mj-bg));
-  color: var(--elite-ink, var(--mj-ink));
+  background: var(--mj-bg);
+  color: var(--mj-ink);
   /* الحجز السفلي من #main-content (--content-pb) */
   padding-bottom: 0;
   /* بطل ممتد بلا حشو جانبي على الحاوية — المحتوى التالي يستعيد الحشو */
@@ -242,7 +242,7 @@ html.dark .quran-open-mushaf__icon {
   padding-block: 0.85rem 0.5rem;
   padding-inline: max(0.5rem, var(--inset-right, 0px))
     max(0.5rem, var(--inset-left, 0px));
-  background: var(--surface-app, var(--mj-bg, var(--elite-white)));
+  background: var(--surface-app, var(--mj-bg, var(--mj-bg)));
   background-image: none;
   opacity: 1;
   backdrop-filter: none;
@@ -339,7 +339,7 @@ html.dark .quran-open-mushaf__icon {
 .quran-hub-sections__title {
   font-size: 1.35rem;
   font-weight: 700;
-  color: var(--elite-forest, var(--mj-brand-deep));
+  color: var(--mj-brand-deep);
   margin-bottom: 1.25rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid rgba(23,61,53,0.15);
@@ -400,7 +400,7 @@ html.dark .quran-open-mushaf__icon {
 .quran-hub-card__title {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--elite-forest, var(--mj-brand-deep));
+  color: var(--mj-brand-deep);
   margin: 0;
 }
 .quran-hub-card__desc {
@@ -451,7 +451,7 @@ html.dark .quran-open-mushaf__icon {
 .quran-hub-features__title {
   font-size: 1.35rem;
   font-weight: 700;
-  color: var(--elite-forest, var(--mj-brand-deep));
+  color: var(--mj-brand-deep);
   margin-bottom: 1.25rem;
 }
 .quran-hub-features__list {
@@ -467,7 +467,7 @@ html.dark .quran-open-mushaf__icon {
   border: 1px solid var(--mj-hairline, rgba(23,61,53,0.1));
   border-radius: var(--ds-radius-lg);
   padding: 1rem 1.25rem;
-  color: var(--txt-primary, var(--elite-ink, var(--mj-ink)));
+  color: var(--txt-primary, var(--mj-ink));
 }
 .quran-hub-feature-item__icon {
   color: var(--mj-brand);

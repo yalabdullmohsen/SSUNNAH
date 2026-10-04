@@ -1,16 +1,16 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Wave 6: dead .quran-numbers-table* + .mj-row CSS removed; hex/z-index ceilings lowered to measured.",
+  "note": "PR B token consumer migration: elite/em absorbed; important/hex ceilings lowered to measured.",
   "floors": {
     "officialButtonImportFiles": 288,
-    "sfTokenRefs": 1183,
-    "ssTokenRefs": 762
+    "sfTokenRefs": 1220,
+    "ssTokenRefs": 769
   },
   "ceilings": {
     "cssFiles": 356,
-    "important": 4746,
-    "hexInCss": 5616,
+    "important": 4739,
+    "hexInCss": 5601,
     "rgbHslInCss": 2006,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
@@ -20,5 +20,5 @@
     "inlineColorStyleMatches": 39,
     "rawButtonFiles": 73
   },
-  "updatedAt": "2026-10-04T15:10:00.000Z"
+  "updatedAt": "2026-10-04T20:00:00.000Z"
 }

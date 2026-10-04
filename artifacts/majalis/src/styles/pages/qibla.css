@@ -4,7 +4,7 @@
 
 .qibla-aligned { color: var(--mj-brand); }
 
-.qibla-page { background: var(--elite-white, var(--mj-bg)) !important; }
+.qibla-page { background: var(--mj-bg) !important; }
 
 .qibla-wrap {
   display: flex;
@@ -48,8 +48,8 @@
 }
 
 .qibla-aligned-badge {
-  background: var(--elite-forest, var(--mj-brand-deep)) !important;
-  color: var(--elite-white, var(--mj-bg)) !important;
+  background: var(--mj-brand-deep) !important;
+  color: var(--mj-bg) !important;
   border-radius: var(--ds-radius-full);
   padding: 0.45rem 1.25rem;
   font-size: 0.88rem;
@@ -93,7 +93,7 @@
 .qibla-info-value {
   font-size: 1.05rem;
   font-weight: 800;
-  color: var(--elite-forest, var(--mj-brand-deep));
+  color: var(--mj-brand-deep);
   font-variant-numeric: tabular-nums;
 }
 
@@ -109,12 +109,12 @@
   min-height: 2.6rem;
 }
 
-.qibla-geo-place { font-weight: 700; color: var(--elite-forest, var(--mj-brand-deep)); }
+.qibla-geo-place { font-weight: 700; color: var(--mj-brand-deep); }
 .qibla-geo-coords { font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; }
 .qibla-geo-acc { opacity: 0.85; }
 
 .qibla-permit-btn {
-  background: var(--elite-forest, var(--mj-brand-deep)) !important;
+  background: var(--mj-brand-deep) !important;
   color: var(--mj-white, var(--mj-white)) !important;
   border: none;
   border-radius: 0.6rem;
@@ -149,7 +149,7 @@
 .qibla-manual-label {
   font-size: 0.82rem;
   font-weight: 700;
-  color: var(--elite-forest, var(--mj-brand-deep));
+  color: var(--mj-brand-deep);
 }
 
 .qibla-manual-row {
@@ -172,7 +172,7 @@
   border: none;
   border-radius: 0.55rem;
   padding: 0.5rem 0.85rem;
-  background: var(--elite-forest, var(--mj-brand-deep));
+  background: var(--mj-brand-deep);
   color: var(--mj-white, var(--mj-white));
   font-weight: 700;
   font-size: 0.82rem;
@@ -218,7 +218,7 @@
   margin: 0;
   font-size: 1.15rem;
   font-weight: 800;
-  color: var(--elite-forest, var(--mj-brand-deep));
+  color: var(--mj-brand-deep);
 }
 
 .qibla-calib-body {
