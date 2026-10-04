@@ -3,7 +3,8 @@
 **Program:** `SUNNAH_CONTINUOUS_GOVERNANCE_AND_REGRESSION_PREVENTION_PROGRAM`  
 **Machine freeze:** `docs/governance/QUALITY_BASELINE_V1.json`  
 **Base tip:** `bd55ba9e6`  
-**Policy:** **no-ceiling-raise** (decreasing-ceilings budgets may only fall)
+**Policy:** **no-ceiling-raise** (decreasing-ceilings budgets may only fall)  
+**Identity (permanent):** `SUNNAH_CANONICAL_PLATFORM_IDENTITY` — WEB · IOS · APP_STORE separated (`test:canonical-platform-identity`)
 
 ## Frozen truth (summary)
 

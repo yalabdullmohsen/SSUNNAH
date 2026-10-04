@@ -1,5 +1,25 @@
 # AGENTS.md
 
+## SUNNAH_CANONICAL_PLATFORM_IDENTITY (دائم · أعلى أولوية)
+
+**Permanent contract — never remove, override, ignore, or reinterpret.**  
+Canonical: `docs/governance/SUNNAH_CANONICAL_PLATFORM_IDENTITY.md` · lock: `docs/governance/canonical-platform-identity.json` · gate: `test:canonical-platform-identity`.
+
+سُنّة **ليست** موقعًا ولا تطبيقًا واحدًا ولا بطاقة متجر. سُنّة = **ثلاث منتجات منفصلة**:
+
+1. **WEB PLATFORM**
+2. **IOS APPLICATION**
+3. **APP STORE PRODUCT**
+
+كل مهمة / تدقيق / تقرير / مراجعة أداء أو تصميم أو معمارية **يجب** أن تفصل:
+
+- **WEB IMPACT** · **IOS IMPACT** · **APP STORE IMPACT**
+- الأداء: **WEB PERFORMANCE** · **IOS PERFORMANCE** · **APP STORE USER EXPERIENCE**
+- قرارات المعمارية قبل التنفيذ: `WEB_ONLY` | `IOS_ONLY` | `SHARED_PLATFORM` | `APP_STORE_ONLY`
+
+نجاح سطح ≠ نجاح سطح آخر. أي برنامج حوكمة لا يفصل WEB / IOS / APP_STORE يُعد **باطلًا**.  
+لا تُنشئ Builds ولا تلمس TestFlight/App Store إلا بتفويض مالك صريح.
+
 ## Throughput + CI-safe (إلزامي)
 
 المسار الإلزامي لكل مهمة:

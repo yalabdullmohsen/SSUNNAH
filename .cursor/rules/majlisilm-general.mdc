@@ -5,6 +5,13 @@ alwaysApply: true
 
 # سُنّة — عام
 
+## هوية دائمة (أعلى أولوية)
+
+سُنّة = **WEB PLATFORM + IOS APPLICATION + APP STORE PRODUCT** (منتجات منفصلة).  
+العقد: `docs/governance/SUNNAH_CANONICAL_PLATFORM_IDENTITY.md` — لا يُحذف ولا يُتجاهل.  
+كل تقرير يفصل WEB IMPACT / IOS IMPACT / APP STORE IMPACT؛ الأداء WEB/IOS/App Store UX؛ المعمارية `WEB_ONLY|IOS_ONLY|SHARED_PLATFORM|APP_STORE_ONLY`.  
+نجاح سطح لا يعني نجاح سطح آخر. لا Builds/TestFlight/ASC إلا بتفويض مالك.
+
 - الواجهة عربية RTL أولاً؛ لا تكسر الاتجاه أو الأرقام العربية في المصحف وواجهات القراءة.
 - لا تحذف محتوى شرعياً ولا تعدّل نصاً علمياً إلا في العرض/الـmetadata؛ أي تعديل علمي → طابور مراجعة بشرية.
 - لا تمسّ نص القرآن ولا التشكيل ولا الترقيم يدوياً.

@@ -1,0 +1,35 @@
+{
+  "id": "SUNNAH_CANONICAL_PLATFORM_IDENTITY",
+  "status": "PERMANENT_PROJECT_CONTRACT",
+  "priority": "HIGHEST",
+  "removable": false,
+  "overridable": false,
+  "products": ["WEB", "IOS", "APP_STORE"],
+  "negations": [
+    "SUNNAH_IS_NOT_A_WEBSITE",
+    "SUNNAH_IS_NOT_A_MOBILE_APP",
+    "SUNNAH_IS_NOT_A_STORE_LISTING"
+  ],
+  "mandatoryReportSections": [
+    "WEB IMPACT",
+    "IOS IMPACT",
+    "APP STORE IMPACT"
+  ],
+  "performanceAxes": [
+    "WEB PERFORMANCE",
+    "IOS PERFORMANCE",
+    "APP STORE USER EXPERIENCE"
+  ],
+  "architectureClasses": [
+    "WEB_ONLY",
+    "IOS_ONLY",
+    "SHARED_PLATFORM",
+    "APP_STORE_ONLY"
+  ],
+  "forbiddenPhrasesWithoutSeparation": [
+    "Application Improved"
+  ],
+  "governanceRule": "Programs that do not separate WEB / IOS / APP_STORE are invalid",
+  "canonicalDoc": "docs/governance/SUNNAH_CANONICAL_PLATFORM_IDENTITY.md",
+  "enforcementGate": "test:canonical-platform-identity"
+}

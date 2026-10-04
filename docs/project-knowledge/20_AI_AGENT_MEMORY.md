@@ -11,6 +11,10 @@
 GitHub SoT: `yalabdullmohsen/SSUNNAH` · Store: **HOLD** · Web: **WEB_RELEASED_NATIVE_HOLD**.  
 لا تُنشئ Builds ولا تلمس TestFlight/App Store من وكيل.
 
+**هوية دائمة — SUNNAH_CANONICAL_PLATFORM_IDENTITY:** سُنّة = **ثلاث منتجات** (WEB PLATFORM · IOS APPLICATION · APP_STORE PRODUCT).  
+كل تقرير يفصل WEB IMPACT / IOS IMPACT / APP STORE IMPACT · أداء WEB/IOS/App Store UX · معماريًا WEB_ONLY|IOS_ONLY|SHARED_PLATFORM|APP_STORE_ONLY.  
+العقد: `docs/governance/SUNNAH_CANONICAL_PLATFORM_IDENTITY.md` — لا يُحذف ولا يُتجاوز.
+
 ## تعريف المشروع
 
 «سُنّة» منصة عربية RTL للعلم الشرعي (قرآن، دروس، حديث، عبادة، بحث). المنتج الإنتاجي الوحيد للمتجر والويب: **`artifacts/majalis`** (Vite + React + wouter + Tailwind v4 + Supabase + Capacitor).
