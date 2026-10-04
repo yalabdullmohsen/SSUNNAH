@@ -145,6 +145,9 @@ Every architectural decision must classify, before implementation:
 | `SHARED_PLATFORM` | Code or contracts shared by WEB + IOS |
 | `APP_STORE_ONLY` | Release / review / store metadata only |
 
+**Execution protocol (permanent):** `docs/governance/SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL.md`  
+Every report must begin with `TASK_CLASSIFICATION:` using one of the classes above.
+
 ---
 
 ## GOVERNANCE CONTRACT

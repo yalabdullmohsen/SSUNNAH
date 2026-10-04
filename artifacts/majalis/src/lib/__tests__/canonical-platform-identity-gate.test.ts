@@ -14,9 +14,11 @@ const readRepo = (rel: string) => readFileSync(resolve(repoRoot, rel), "utf8");
 const existsRepo = (rel: string) => existsSync(resolve(repoRoot, rel));
 
 const DOC = "docs/governance/SUNNAH_CANONICAL_PLATFORM_IDENTITY.md";
+const PROTOCOL = "docs/governance/SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL.md";
 const JSON_REL = "docs/governance/canonical-platform-identity.json";
 
 assert.ok(existsRepo(DOC), `${DOC} must exist permanently`);
+assert.ok(existsRepo(PROTOCOL), `${PROTOCOL} must exist permanently`);
 assert.ok(existsRepo(JSON_REL), `${JSON_REL} must exist permanently`);
 
 const doc = readRepo(DOC);
@@ -40,6 +42,21 @@ assert.match(doc, /APP_STORE_ONLY/);
 assert.match(doc, /CANONICAL_PLATFORM_IDENTITY_LOCKED/);
 assert.match(doc, /must never be removed/i);
 
+const protocol = readRepo(PROTOCOL);
+assert.match(protocol, /SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL/);
+assert.match(protocol, /PERMANENT/);
+assert.match(protocol, /TASK_CLASSIFICATION/);
+assert.match(protocol, /WEB_ONLY/);
+assert.match(protocol, /IOS_ONLY/);
+assert.match(protocol, /APP_STORE_ONLY/);
+assert.match(protocol, /SHARED_PLATFORM/);
+assert.match(protocol, /Responsive success/);
+assert.match(protocol, /Web performance/);
+assert.match(protocol, /Build success/);
+assert.match(protocol, /App Store approval/);
+assert.match(protocol, /PLATFORM_CLASSIFICATION_PROTOCOL_LOCKED/);
+assert.match(protocol, /Any report without classification is \*\*invalid\*\*|report without classification is \*\*invalid\*\*/i);
+
 const identity = JSON.parse(readRepo(JSON_REL)) as {
   id: string;
   status: string;
@@ -50,6 +67,15 @@ const identity = JSON.parse(readRepo(JSON_REL)) as {
   performanceAxes: string[];
   architectureClasses: string[];
   enforcementGate: string;
+  taskClassificationProtocol: {
+    id: string;
+    status: string;
+    mandatoryExecutionHeader: string;
+    classes: string[];
+    sharedStillRequiresSeparatedImpact: boolean;
+    criticalNonEquivalences: string[];
+    canonicalDoc: string;
+  };
 };
 
 assert.equal(identity.id, "SUNNAH_CANONICAL_PLATFORM_IDENTITY");
@@ -68,14 +94,32 @@ for (const c of ["WEB_ONLY", "IOS_ONLY", "SHARED_PLATFORM", "APP_STORE_ONLY"] as
 }
 assert.equal(identity.enforcementGate, "test:canonical-platform-identity");
 
-/* Entry points must inherit the contract */
+const tcp = identity.taskClassificationProtocol;
+assert.ok(tcp, "taskClassificationProtocol required in identity JSON");
+assert.equal(tcp.id, "SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL");
+assert.equal(tcp.status, "PERMANENT");
+assert.equal(tcp.mandatoryExecutionHeader, "TASK_CLASSIFICATION");
+assert.equal(tcp.sharedStillRequiresSeparatedImpact, true);
+assert.equal(tcp.canonicalDoc, PROTOCOL);
+assert.deepEqual(tcp.classes, ["WEB_ONLY", "IOS_ONLY", "APP_STORE_ONLY", "SHARED_PLATFORM"]);
+assert.ok(tcp.criticalNonEquivalences.length >= 4);
+
+/* Entry points must inherit the contract + classification protocol */
 assert.match(readRepo("AGENTS.md"), /SUNNAH_CANONICAL_PLATFORM_IDENTITY|CANONICAL_PLATFORM_IDENTITY/);
+assert.match(readRepo("AGENTS.md"), /TASK_CLASSIFICATION|PLATFORM_CLASSIFICATION_PROTOCOL/);
 assert.match(readRepo("docs/REPO_INDEX.md"), /SUNNAH_CANONICAL_PLATFORM_IDENTITY|canonical-platform-identity/);
+assert.match(readRepo("docs/REPO_INDEX.md"), /CLASSIFICATION_PROTOCOL|TASK_CLASSIFICATION/);
 assert.match(readRepo("docs/governance/PROJECT_HEALTH.md"), /WEB|IOS|APP_STORE/);
+assert.match(readRepo("docs/governance/PROJECT_HEALTH.md"), /TASK_CLASSIFICATION|WEB_ONLY/);
 assert.match(
   readRepo("docs/project-knowledge/20_AI_AGENT_MEMORY.md"),
   /SUNNAH_CANONICAL_PLATFORM_IDENTITY|WEB.*IOS.*APP_STORE|ثلاث منتجات/,
 );
+assert.match(
+  readRepo("docs/project-knowledge/20_AI_AGENT_MEMORY.md"),
+  /TASK_CLASSIFICATION|CLASSIFICATION_PROTOCOL/,
+);
+assert.match(readRepo(".cursor/rules/majlisilm-general.mdc"), /TASK_CLASSIFICATION|WEB_ONLY/);
 
 const pkg = JSON.parse(readFileSync(resolve(majalisRoot, "package.json"), "utf8")) as {
   scripts: Record<string, string>;
@@ -97,5 +141,6 @@ assert.ok(
 
 console.log("canonical-platform-identity-gate.test.ts: ok");
 console.log("CANONICAL_PLATFORM_IDENTITY_LOCKED");
+console.log("PLATFORM_CLASSIFICATION_PROTOCOL_LOCKED");
 console.log("WEB_IOS_APP_STORE_SEPARATED");
 console.log("PERMANENT_PROJECT_CONTRACT");
