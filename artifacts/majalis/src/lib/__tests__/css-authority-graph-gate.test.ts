@@ -44,9 +44,20 @@ console.log("=== CSS_AUTHORITY_GRAPH_SINGLE (physical sheet = design-system.css)
 assert.equal(graph.circular.length, 0, "no circular CSS imports");
 assert.match(ds, /COMPONENT_AUTHORITY/);
 assert.match(ds, /FEATURE_AUTHORITY/);
+assert.match(ds, /PUBLIC_FEATURE_AUTHORITY/);
+assert.match(ds, /ACCOUNT_FEATURE_AUTHORITY/);
+assert.match(ds, /ADMIN_FEATURE_AUTHORITY/);
 assert.ok(
   !existsSync(resolve(majalisRoot, "src/styles/pages/fiqh-council-section.css")),
   "dead fiqh-council-section.css removed",
+);
+assert.ok(
+  !existsSync(resolve(majalisRoot, "src/styles/pages/more-page.css")),
+  "dead more-page.css removed (PR E)",
+);
+assert.ok(
+  !existsSync(resolve(majalisRoot, "src/styles/components/chunk-recovery-toast.css")),
+  "dead chunk-recovery-toast.css removed (PR E)",
 );
 assert.ok(
   !existsSync(resolve(majalisRoot, "src/styles/component-authority.css")),

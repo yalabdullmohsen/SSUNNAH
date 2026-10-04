@@ -511,7 +511,7 @@ html[data-theme="dark"] .ds-stat span {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   FEATURE_AUTHORITY
+   FEATURE_AUTHORITY / PUBLIC_FEATURE_AUTHORITY
    home, auth, admin, search, tasbih, user-stats, learning-seasons, tawhid, leftover surfaces
    ═══════════════════════════════════════════════════════════════ */
 
@@ -1048,7 +1048,7 @@ html[data-theme="dark"] .ds-stat span {
 }
 
 /* ═══════════════════════════════════════════════════════
-   Auth — Google OAuth button
+   ACCOUNT_FEATURE_AUTHORITY — Auth OAuth (card/page in pages/auth.css)
    ═══════════════════════════════════════════════════════ */
 
 .login-oauth {
@@ -1108,7 +1108,7 @@ html[data-theme="dark"] .ds-stat span {
  */
 
 
-/* ── Admin ── */
+/* ── ADMIN_FEATURE_AUTHORITY ── */
 .admin-feature-status__head {
   padding: var(--ds-space-3);
 }

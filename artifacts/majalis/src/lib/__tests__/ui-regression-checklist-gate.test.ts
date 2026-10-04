@@ -3,7 +3,7 @@
  * Run: node --import tsx src/lib/__tests__/ui-regression-checklist-gate.test.ts
  */
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -16,7 +16,6 @@ const theme = read("src/app/styles/theme.css");
 const critical = read("src/styles/critical-first-paint.css");
 const offline = read("src/styles/components/language-offline.css");
 const pcb = read("src/styles/components/prayer-countdown-banner.css");
-const chunkToast = read("src/styles/components/chunk-recovery-toast.css");
 const soft = read("src/styles/theme-aliases.css");
 const adCss = read("src/styles/components/header-ad-slot.css");
 
@@ -62,8 +61,13 @@ assert.match(theme, /\.skip-link\.mj-skip-link:focus-visible/);
 // 5) رسائل صلبة
 assert.match(offline, /\.offline-banner\s*\{[\s\S]*?background:\s*var\(--mj-brand-deep/);
 assert.doesNotMatch(pcb, /backdrop-filter:\s*blur/);
-assert.match(chunkToast, /\.chunk-recovery-toast\s*\{[\s\S]*?background:\s*var\(--mj-ink/);
-assert.match(chunkToast, /opacity:\s*1/);
+/* PR E: chunk-recovery toast CSS deleted — component returns null in production. */
+assert.equal(
+  existsSync(resolve(root, "src/styles/components/chunk-recovery-toast.css")),
+  false,
+  "chunk-recovery-toast.css dead-with-proof",
+);
+assert.match(read("src/components/ChunkRecoveryToast.tsx"), /return null/);
 
 // 6) لا CSS عام button في final-release
 assert.doesNotMatch(finalCss, /^\s*button\s*\{/m);
