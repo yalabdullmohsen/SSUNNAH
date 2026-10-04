@@ -1,0 +1,36 @@
+{
+  "id": "PLATFORM_SEPARATION_GATE",
+  "status": "PERMANENT",
+  "removable": false,
+  "script": "test:platform-separation",
+  "enforcementProtocol": "docs/governance/SUNNAH_PLATFORM_ENFORCEMENT_PROTOCOL.md",
+  "classificationProtocol": "docs/governance/SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL.md",
+  "identityContract": "docs/governance/SUNNAH_CANONICAL_PLATFORM_IDENTITY.md",
+  "mandatoryReportHeader": ["TASK_CLASSIFICATION", "RISK_SCOPE"],
+  "riskScopeAxes": ["WEB", "IOS", "APP_STORE"],
+  "requiredImpactSections": ["WEB IMPACT", "IOS IMPACT", "APP STORE IMPACT"],
+  "architectureReviewSections": [
+    "WEB_ARCHITECTURE_IMPACT",
+    "IOS_ARCHITECTURE_IMPACT",
+    "APP_STORE_ARCHITECTURE_IMPACT"
+  ],
+  "failCodes": [
+    "PLATFORM_CLASSIFICATION_MISSING",
+    "PLATFORM_IMPACT_MISSING",
+    "PLATFORM_MIXING_DETECTED",
+    "WEB_ONLY_ASSUMED_AS_IOS",
+    "IOS_ONLY_ASSUMED_AS_WEB",
+    "IOS_ONLY_ASSUMED_AS_APP_STORE",
+    "APP_STORE_ONLY_ASSUMED_AS_PRODUCT_QUALITY",
+    "MISSING_PLATFORM_SEPARATION"
+  ],
+  "prohibitedUnseparatedConclusions": [
+    "performance improved",
+    "UX improved",
+    "navigation improved",
+    "loading improved",
+    "application improved",
+    "quality improved",
+    "readiness improved"
+  ]
+}

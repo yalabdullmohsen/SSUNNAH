@@ -21,14 +21,24 @@ Canonical: `docs/governance/SUNNAH_CANONICAL_PLATFORM_IDENTITY.md` · lock: `doc
 
 قبل أي تنفيذ صنّف المهمة أولًا. البروتوكول: `docs/governance/SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL.md`.
 
+### SUNNAH_PLATFORM_ENFORCEMENT_PROTOCOL (دائم) · PLATFORM_SEPARATION_GATE
+
+الإنفاذ: `docs/governance/SUNNAH_PLATFORM_ENFORCEMENT_PROTOCOL.md` · بوابة: `test:platform-separation` (`PLATFORM_SEPARATION_GATE`).  
+مهمة بلا تصنيف = باطلة · تقرير بلا أثر منفصل = باطل · لا تخلط استنتاجات WEB/IOS/APP_STORE.
+
 كل تقرير **يجب** أن يبدأ بـ:
 
 ```
 TASK_CLASSIFICATION:
 WEB_ONLY | IOS_ONLY | APP_STORE_ONLY | SHARED_PLATFORM
+
+RISK_SCOPE:
+WEB
+IOS
+APP_STORE
 ```
 
-تقرير بلا تصنيف = **باطل**.  
+تقرير بلا `TASK_CLASSIFICATION` أو بلا `RISK_SCOPE` = **باطل**.  
 `SHARED_PLATFORM` ما زال يلزمه WEB/IOS/APP_STORE IMPACT منفصلًا.  
 Responsive ≠ iOS · Web perf ≠ App perf · Build ≠ App Store ready · Approval ≠ Product quality.
 

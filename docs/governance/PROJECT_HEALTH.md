@@ -3,7 +3,8 @@
 **Baseline:** `QUALITY_BASELINE_V1`  
 **SoT:** `yalabdullmohsen/SSUNNAH` · Prod: `https://www.ssunnah.com/version.json`  
 **Identity:** `SUNNAH_CANONICAL_PLATFORM_IDENTITY` — evaluate **WEB · IOS · APP_STORE** separately (never merge surfaces).  
-**Classification:** `SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL` — classify before implement; every report starts with `TASK_CLASSIFICATION:`.
+**Classification:** `SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL` — classify before implement; every report starts with `TASK_CLASSIFICATION:`.  
+**Enforcement:** `SUNNAH_PLATFORM_ENFORCEMENT_PROTOCOL` · `PLATFORM_SEPARATION_GATE` (`test:platform-separation`) — require `TASK_CLASSIFICATION` + `RISK_SCOPE` + separated impacts; reject platform mixing.
 
 ## Platform separation (mandatory)
 
@@ -21,6 +22,7 @@ Task classes: `WEB_ONLY` · `IOS_ONLY` · `APP_STORE_ONLY` · `SHARED_PLATFORM` 
 | Area | Status | Protection | Monitor |
 |---|---|---|---|
 | Canonical identity | LOCKED | `test:canonical-platform-identity` | contract doc + JSON |
+| Platform separation | LOCKED | `test:platform-separation` (`PLATFORM_SEPARATION_GATE`) | enforcement protocol + gate JSON |
 | Design debt | GUARDED | visual debt budget · component/design-system authority · hero ceiling 95 | hex / !important / radii / shadows ceilings |
 | Interaction debt | GUARDED | interaction debt budget · Button authority | raw buttons · onClick div/span |
 | Performance | GUARDED | bundle · LHCI · sync CSS=14 · runtime excellence | entry/icons/CSS gzip budgets |

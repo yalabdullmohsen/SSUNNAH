@@ -40,6 +40,16 @@
       "App Store approval ≠ Product quality"
     ]
   },
+  "enforcementProtocol": {
+    "id": "SUNNAH_PLATFORM_ENFORCEMENT_PROTOCOL",
+    "status": "PERMANENT",
+    "gate": "PLATFORM_SEPARATION_GATE",
+    "script": "test:platform-separation",
+    "canonicalDoc": "docs/governance/SUNNAH_PLATFORM_ENFORCEMENT_PROTOCOL.md",
+    "gateJson": "docs/governance/platform-separation-gate.json",
+    "mandatoryReportHeader": ["TASK_CLASSIFICATION", "RISK_SCOPE"],
+    "riskScopeAxes": ["WEB", "IOS", "APP_STORE"]
+  },
   "forbiddenPhrasesWithoutSeparation": [
     "Application Improved"
   ],

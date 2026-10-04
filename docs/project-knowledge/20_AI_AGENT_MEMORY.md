@@ -14,7 +14,8 @@ GitHub SoT: `yalabdullmohsen/SSUNNAH` · Store: **HOLD** · Web: **WEB_RELEASED_
 **هوية دائمة — SUNNAH_CANONICAL_PLATFORM_IDENTITY:** سُنّة = **ثلاث منتجات** (WEB PLATFORM · IOS APPLICATION · APP_STORE PRODUCT).  
 كل تقرير يفصل WEB IMPACT / IOS IMPACT / APP STORE IMPACT · أداء WEB/IOS/App Store UX · معماريًا WEB_ONLY|IOS_ONLY|SHARED_PLATFORM|APP_STORE_ONLY.  
 العقد: `docs/governance/SUNNAH_CANONICAL_PLATFORM_IDENTITY.md` — لا يُحذف ولا يُتجاوز.  
-**CLASSIFICATION_PROTOCOL:** قبل التنفيذ صنّف المهمة؛ كل تقرير يبدأ بـ `TASK_CLASSIFICATION:` — `docs/governance/SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL.md`.
+**CLASSIFICATION_PROTOCOL:** قبل التنفيذ صنّف المهمة؛ كل تقرير يبدأ بـ `TASK_CLASSIFICATION:` — `docs/governance/SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL.md`.  
+**ENFORCEMENT_PROTOCOL / PLATFORM_SEPARATION_GATE:** `docs/governance/SUNNAH_PLATFORM_ENFORCEMENT_PROTOCOL.md` · بوابة `test:platform-separation` — رأس التقرير `TASK_CLASSIFICATION` + `RISK_SCOPE`؛ آثار WEB/IOS/APP_STORE منفصلة؛ خلط المنصات = فشل حوكمة.
 
 ## تعريف المشروع
 
