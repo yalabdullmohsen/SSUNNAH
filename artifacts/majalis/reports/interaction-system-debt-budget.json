@@ -1,19 +1,19 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Ceilings must not rise; floors must not fall without documented exception. Wave 0 E–J: buttonRelatedHexApprox lowered to live measured 1006.",
+  "note": "Ceilings must not rise. Wave 1A: buttonRelated Hex/important lowered to measured after absorb.",
   "ceilings": {
     "rawButtonFiles": 76,
     "rawButtonElements": 311,
     "divSpanOnClick": 41,
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
-    "buttonRelatedImportantApprox": 1145,
-    "buttonRelatedHexApprox": 1006
+    "buttonRelatedImportantApprox": 1138,
+    "buttonRelatedHexApprox": 980
   },
   "floors": {
     "officialButtonImportFiles": 287,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-10-04T11:25:05.038Z"
+  "updatedAt": "2026-10-04T11:53:07.470Z"
 }

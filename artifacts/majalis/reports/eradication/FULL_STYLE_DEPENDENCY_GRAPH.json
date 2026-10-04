@@ -155,14 +155,6 @@
       "consumersApprox": 51
     },
     {
-      "file": "styles/design-system.css",
-      "classification": "ABSORB_NOW",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 86281,
-      "hex": 107,
-      "consumersApprox": 51
-    },
-    {
       "file": "styles/pages/lessons.css",
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM",
@@ -179,19 +171,19 @@
       "consumersApprox": 51
     },
     {
-      "file": "styles/theme-aliases.css",
-      "classification": "ACTIVE_COMPATIBILITY",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 22428,
-      "hex": 79,
-      "consumersApprox": 51
-    },
-    {
       "file": "styles/brand-v4.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
       "bytes": 20231,
       "hex": 71,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/theme-aliases.css",
+      "classification": "ACTIVE_COMPATIBILITY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 23267,
+      "hex": 62,
       "consumersApprox": 51
     },
     {
@@ -257,6 +249,14 @@
       "bytes": 13168,
       "hex": 47,
       "consumersApprox": 16
+    },
+    {
+      "file": "styles/design-system.css",
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 85391,
+      "hex": 44,
+      "consumersApprox": 51
     },
     {
       "file": "styles/reader-bookmarks.css",
@@ -527,14 +527,6 @@
       "classification": "CANONICAL_AUTHORITY",
       "platform": "SHARED_PLATFORM",
       "bytes": 8738,
-      "hex": 26,
-      "consumersApprox": 51
-    },
-    {
-      "file": "styles/visual-identity-unify.css",
-      "classification": "ABSORB_NOW",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 10332,
       "hex": 26,
       "consumersApprox": 51
     },
@@ -2905,6 +2897,14 @@
       "bytes": 3227,
       "hex": 0,
       "consumersApprox": 28
+    },
+    {
+      "file": "styles/visual-identity-unify.css",
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7696,
+      "hex": 0,
+      "consumersApprox": 51
     },
     {
       "file": "styles/z-index-layers.css",

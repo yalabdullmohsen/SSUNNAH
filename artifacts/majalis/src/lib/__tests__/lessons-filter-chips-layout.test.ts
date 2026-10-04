@@ -27,11 +27,11 @@ assert.match(
   /\.lessons-v3-sticky\s*\{[^}]*border-radius:\s*var\(--radius-card/,
   "شريط فلتر الدروس بحواف ناعمة",
 );
-assert.match(
-  unifyCss,
-  /\.lessons-v3-sticky[\s\S]{0,220}border-radius:\s*var\(--radius-card/,
-  "توحيد الهوية يبقي حواف شريط الفلتر ناعمة",
-);
+/* Wave 1A: sticky filter radius owned by lessons page authority (+ Foundation bridge) */
+const aliasesCss = readFileSync(resolve(appRoot, "src/styles/theme-aliases.css"), "utf8");
+assert.match(aliasesCss, /--radius-card:\s*var\(--sf-radius-card/);
+assert.match(unifyCss, /\.filter-chips__chip[\s\S]{0,160}min-height:\s*44px/);
+assert.doesNotMatch(unifyCss, /:root\s*\{[\s\S]*?--radius-card:/);
 assert.match(lessonsView, /"الكل"/);
 assert.match(lessonsView, /SectionLobby/);
 assert.match(lessonsView, /useDebouncedValue/);

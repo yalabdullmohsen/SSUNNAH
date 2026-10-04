@@ -51,7 +51,9 @@ assert.doesNotMatch(unify, /--mj-brand-soft:\s*#e6f2ec/);
 assert.doesNotMatch(calm, /--mj-brand:\s*#146b52/);
 const unifyOwned = unify + read("src/styles/index-deferred-pages.css");
 assert.match(unifyOwned, /:not\(\.hub-card\)/);
-assert.match(unify, /--radius-card:\s*var\(--sf-radius-card/);
+/* Wave 1A: radius authority absorbed into theme-aliases */
+assert.match(aliases, /--radius-card:\s*var\(--sf-radius-card/);
+assert.doesNotMatch(unify, /:root\s*\{[\s\S]*?--radius-card:/);
 assert.match(unifyOwned, /\.mss-hero-surface[\s\S]{0,280}background-image:\s*none/);
 
 console.log("=== card tokens: سطح أبيض · نص AA · هيرو on-ink ===");
