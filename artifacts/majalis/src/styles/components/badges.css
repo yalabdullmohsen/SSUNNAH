@@ -1,0 +1,8 @@
+/**
+ * DS component authority — badges. revelation-badge remains in features/legacy-surfaces.css (KEEP_COMPATIBILITY, same computed rules).
+ * Extracted by exact line partition from design-system.css. Do not restyle.
+ */
+
+/* No exclusive DS badge block remained after Wave 1A.
+   .revelation-badge* stays in features/legacy-surfaces.css to avoid splitting its original cluster.
+   This file is the component-authority slot; do not add restyled duplicates. */

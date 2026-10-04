@@ -1,0 +1,75 @@
+/**
+ * DS component authority — stats rows / .ds-stat (rule text unchanged).
+ * Extracted by exact line partition from design-system.css. Do not restyle.
+ * Original lines: 482-501, 1210-1258.
+ */
+
+
+/* Stats row — compact */
+.page-stats-row,
+.ruling-stats-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-space-2);
+  margin-bottom: var(--ds-space-3);
+  font-size: var(--ds-text-xs);
+  font-weight: 700;
+  color: var(--ds-ink-soft);
+}
+
+.page-stats-row > span,
+.ruling-stats-bar > span {
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-pill, 999rem);
+  background: var(--ds-emerald-soft);
+  color: var(--ds-emerald-deep);
+}
+
+.ds-stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-space-2);
+  margin-bottom: var(--ds-space-4);
+}
+
+.ds-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 4.75rem;
+  padding: var(--ds-space-2) var(--ds-space-3);
+  background: var(--surface-card, var(--majalis-panel));
+  border: 1px solid color-mix(in srgb, var(--mj-brand-deep) 14%, var(--ds-line-color));
+  border-radius: var(--ds-radius);
+}
+
+.ds-stat strong {
+  font-size: 1.35rem;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--mj-brand-deep, var(--ds-emerald-deep));
+}
+
+.ds-stat span {
+  margin-top: 0.15rem;
+  font-size: var(--ds-text-xs);
+  font-weight: 600;
+  color: var(--mj-ink-2, var(--ds-ink-soft));
+  opacity: 1;
+}
+
+html.dark .ds-stat,
+html[data-theme="dark"] .ds-stat {
+  background: color-mix(in srgb, var(--surface-brand-wash) 90%, #0f1612);
+  border-color: color-mix(in srgb, #5a9e88 26%, #2a3832);
+}
+
+html.dark .ds-stat strong,
+html[data-theme="dark"] .ds-stat strong {
+  color: var(--on-brand-wash);
+}
+
+html.dark .ds-stat span,
+html[data-theme="dark"] .ds-stat span {
+  color: var(--on-brand-wash-secondary);
+}

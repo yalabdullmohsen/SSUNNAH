@@ -161,6 +161,7 @@
     "test:startup-typography-fouc-p1": "node --import tsx src/lib/__tests__/startup-typography-fouc-p0-gate.test.ts",
     "test:startup-typography-fouc-p2": "node --import tsx src/lib/__tests__/startup-typography-fouc-p2-gate.test.ts",
     "test:zero-startup-flicker": "node --import tsx src/lib/__tests__/zero-startup-flicker-gate.test.ts",
+    "test:css-authority-graph": "node --import tsx src/lib/__tests__/css-authority-graph-gate.test.ts",
     "test:u4-startup-chrome": "node --import tsx src/lib/__tests__/u4-startup-chrome-gate.test.ts",
     "test:mobile-nav-dedupe": "node --import tsx src/lib/__tests__/mobile-nav-dedupe.test.ts && node --import tsx src/lib/__tests__/side-nav-drawer-gate.test.ts && node --import tsx src/lib/__tests__/app-navigation.test.ts && pnpm run test:ipad-responsive && pnpm run test:sunnah-release-ui-baseline && pnpm run test:responsive-nav-buttons && pnpm run test:responsive-breakpoints-gate",
     "test:responsive-overflow": "playwright test tests/responsive-overflow.spec.ts --project=desktop",

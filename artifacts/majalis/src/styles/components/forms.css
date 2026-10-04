@@ -1,0 +1,26 @@
+/**
+ * DS component authority — forms (rule text unchanged).
+ * Extracted by exact line partition from design-system.css. Do not restyle.
+ * Original lines: 266-285.
+ */
+
+/* ── Forms ── */
+.ds-input,
+.login-field input,
+.lessons-v2-search input {
+  width: 100%;
+  min-height: 2.25rem;
+  padding: 0.4rem 0.65rem;
+  font-size: var(--ds-text-sm);
+  font-family: inherit;
+  border: 1px solid var(--ds-line-color);
+  border-radius: var(--ds-radius);
+  background: var(--majalis-panel);
+  color: var(--ds-ink);
+}
+
+.ds-input:focus,
+.login-field input:focus {
+  outline: 2px solid rgba(26, 107, 82, 0.25);
+  border-color: var(--ds-emerald);
+}

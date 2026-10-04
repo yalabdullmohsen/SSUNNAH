@@ -1,0 +1,516 @@
+/**
+ * DS feature authority — hcp / home-about / home-kicker / ds-quiz-home-card / hpv4 / hcz.
+ * Extracted by exact line partition from design-system.css. Do not restyle.
+ * Original lines: 363-374, 433-437, 1422-1836, 2989-3066.
+ */
+
+
+@media (min-width: 640px) {
+  .home-quick-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .home-daily-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.home-kicker--v3::before,
+.home-kicker--v3::after {
+  content: none !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Home Polish Additions (home/full-polish)
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── البند 1: Home Quiz Card ─────────────────────────────── */
+.ds-quiz-home-card {
+  background: linear-gradient(135deg, #f0f7f3 0%, #fefdf5 100%);
+  border: 1.5px solid rgba(23,61,53, 0.45);
+  border-radius: 1rem;
+  padding: 1.75rem;
+}
+
+.ds-quiz-home-card__content {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ds-quiz-home-card__text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.ds-quiz-home-card__badge {
+  display: inline-block;
+  padding: 0.2rem 0.625rem;
+  background: rgba(23,61,53, 0.12);
+  color: var(--clr-primary, var(--mj-brand));
+  border-radius: var(--radius-pill, 999rem);
+  font-size: 0.73rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: normal;
+}
+
+.ds-quiz-home-card__title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--ds-emerald-deep, var(--mj-brand-deep));
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+}
+
+.ds-quiz-home-card__desc {
+  font-size: 0.88rem;
+  color: #4b5563;
+  margin: 0 0 1rem;
+  line-height: 1.75;
+  max-width: 420px;
+}
+
+.ds-quiz-home-card__btn {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  background: var(--ds-emerald-deep, var(--mj-brand-deep));
+  color: #fff;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.ds-quiz-home-card__btn:hover {
+  background: var(--mj-brand-deep);
+}
+
+.ds-quiz-home-card__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.35rem 0.6rem;
+  flex-shrink: 0;
+}
+
+.ds-quiz-home-card__cat {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--ds-emerald-deep, var(--mj-brand-deep));
+  font-weight: 600;
+  padding: 0.25rem 0.4rem;
+  background: rgba(22, 78, 60, 0.07);
+  border-radius: 0.35rem;
+  white-space: nowrap;
+}
+
+.ds-quiz-home-card__cat svg {
+  flex-shrink: 0;
+  color: var(--clr-primary, var(--mj-brand));
+}
+
+/* المرحلة 6 — إحصاءات/تحدي اليوم، قيم أساسية آمنة للسياق الفاتح (تُستبدَل
+   بتجاوزات .home-main--v3 في elite-2026.css عند الاستخدام الفعلي بالرئيسية). */
+.ds-quiz-home-card__stat {
+  color: var(--ds-emerald-deep, var(--mj-brand-deep));
+  background: rgba(22, 78, 60, 0.07);
+}
+.ds-quiz-home-card__stats-empty,
+.ds-quiz-home-card__challenge-cat {
+  color: #4b5563;
+}
+.ds-quiz-home-card__challenge {
+  background: rgba(23,61,53, 0.06);
+  border: 1px solid rgba(23,61,53, 0.18);
+}
+.ds-quiz-home-card__challenge-badge {
+  color: var(--clr-primary, var(--mj-brand));
+}
+.ds-quiz-home-card__challenge-q {
+  color: var(--ds-emerald-deep, var(--mj-brand-deep));
+}
+.ds-quiz-home-card__stats-skel {
+  background: rgba(22, 78, 60, 0.08);
+}
+
+@media (max-width: 600px) {
+  .ds-quiz-home-card__content {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .ds-quiz-home-card__grid {
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .ds-quiz-home-card__desc {
+    max-width: 100%;
+  }
+}
+
+/* ── البند 4: Compact Prayer Strip ──────────────────────── */
+.hcp-strip {
+  background: #fafdf8;
+  border: 1px solid rgba(23,61,53, 0.28);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+}
+
+.hcp-strip__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.hcp-strip__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ds-emerald-deep, var(--mj-brand-deep));
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.hcp-strip__link {
+  font-size: 0.73rem;
+  color: var(--clr-primary, var(--mj-brand));
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.hcp-strip__link:hover { text-decoration: underline; }
+
+.hcp-strip__prayers {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.hcp-prayer-cell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.4rem 0.2rem;
+  border-radius: 0.375rem;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.hcp-prayer-cell--next {
+  background: rgba(19, 74, 58, 0.08);
+  border-color: var(--ds-emerald-deep, var(--mj-brand-deep));
+}
+
+.hcp-prayer-cell__name {
+  font-size: 0.82rem;
+  color: var(--majalis-ink-soft);
+  font-weight: 600;
+}
+
+.hcp-prayer-cell--next .hcp-prayer-cell__name {
+  color: var(--ds-emerald-deep, var(--mj-brand-deep));
+}
+
+.hcp-prayer-cell__time {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1f2937;
+  direction: ltr;
+  font-variant-numeric: tabular-nums;
+}
+
+.hcp-prayer-cell--next .hcp-prayer-cell__time {
+  color: var(--ds-emerald-deep, var(--mj-brand-deep));
+}
+
+/* ── البند 2: About Section ─────────────────────────────── */
+.home-about {
+  background: linear-gradient(135deg, rgba(22,78,60,0.03) 0%, rgba(23,61,53,0.04) 100%);
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid rgba(23,61,53, 0.2);
+}
+
+.home-about__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: normal;
+  color: var(--clr-primary, var(--mj-brand));
+  text-transform: uppercase;
+  margin: 0 0 0.45rem;
+}
+
+.home-about__title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--ds-emerald-deep, var(--mj-brand-deep));
+  margin: 0 0 1rem;
+}
+
+.home-about__body {
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: var(--mj-ink-2);
+  max-width: 700px;
+}
+
+.home-about__body p { margin: 0 0 0.8rem; }
+.home-about__body p:last-child { margin-bottom: 0; }
+
+/* WAVE8 — أعمدة/CTAs عن سُنّة: توكنات بدل inline colors */
+.home-about__head-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.home-about__pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+.home-about__pillar {
+  background: color-mix(in srgb, var(--mj-brand) 6%, var(--mj-surface));
+  border: 1px solid color-mix(in srgb, var(--mj-brand) 18%, var(--mj-hairline));
+  border-radius: var(--sf-radius-sm);
+  padding: 0.95rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  overflow: visible;
+}
+.home-about__pillar-deco {
+  position: absolute;
+  bottom: -12px;
+  left: -12px;
+  opacity: 0.06;
+  pointer-events: none;
+}
+.home-about__pillar-icon {
+  background: var(--mj-brand-deep);
+  color: var(--mj-on-brand);
+  padding: 0.4rem;
+  border-radius: var(--sf-radius-xs);
+  display: inline-flex;
+  width: fit-content;
+}
+.home-about__pillar-title {
+  font-size: var(--ss-type-label);
+  font-weight: 700;
+  color: var(--mj-ink);
+  line-height: 1.35;
+}
+.home-about__pillar-desc {
+  font-size: var(--ss-type-supporting);
+  color: var(--mj-ink-2);
+  line-height: 1.5;
+}
+.home-about__actions {
+  display: flex;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+.home-about__cta {
+  padding: 0.55rem 1.2rem;
+  border-radius: var(--sf-radius-xs);
+  font-weight: 700;
+  font-size: 0.83rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.home-about__cta--primary {
+  background: var(--mj-brand-deep);
+  color: var(--mj-on-brand);
+}
+.home-about__cta--secondary {
+  background: var(--surface-brand, var(--mj-brand-soft));
+  color: var(--text-brand-deep, var(--mj-brand-deep));
+  border: 1px solid var(--border-brand, var(--mj-hairline));
+}
+
+/* ── Footer email link ───────────────────────────────────── */
+.site-footer-email {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+}
+
+.site-footer-email a {
+  color: var(--msk-text-2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.site-footer-email a:hover {
+  color: var(--majalis-emerald, var(--mj-brand));
+}
+
+/* ── Compact Prayer countdown row ───────────────────────── */
+.hcp-strip__head-end {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hcp-strip__countdown {
+  font-size: 0.7rem;
+  color: var(--majalis-ink-soft);
+  font-weight: 500;
+}
+
+.hcp-strip__countdown-time {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ds-emerald-deep, var(--mj-brand-deep));
+  font-variant-numeric: tabular-nums;
+  letter-spacing: normal;
+}
+
+.hcp-strip__countdown--elapsed {
+  color: var(--ds-emerald-deep, var(--mj-brand-deep));
+  font-weight: 600;
+}
+
+/* ── حبّة «مضى على أذان …» ─────────────────────────────────────────────
+   كانت ‎.hcp-since-pill*‎ و‎.hcp-next-hint‎ بلا *أيّ* قاعدة CSS في المستودع:
+   عناصر مرسومة غير منسّقة، وشريط التقدّم ‎--hcp-bar-w‎ يُضبط في JSX ولا
+   يستهلكه أحد فلا يُرسم أبدًا. والنص كان يرث لون
+   ‎.hcp-strip__countdown--elapsed‎ (أخضر غامق) — فحين رُكّبت الحبّة على سطح
+   أخضر ظهر الوقت داكنًا على أخضر.
+   الآن: سطح علامة صريح + ‎--on-brand‎، والزوج لا يُفصل.               */
+.hcp-since-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-pill, 999rem);
+  background: var(--surface-brand-solid);
+  color: var(--on-brand);
+  border: 1px solid var(--on-brand-hairline, rgba(255, 255, 255, 0.22));
+  isolation: isolate;
+}
+
+.hcp-since-pill__text {
+  position: relative;
+  z-index: 1;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+/* شريط تقدّم فترة السماح — يستهلك --hcp-bar-w أخيرًا */
+.hcp-since-pill__bar {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  z-index: 0;
+  height: 2px;
+  width: var(--hcp-bar-w, 0%);
+  background: var(--on-brand);
+  opacity: 0.55;
+  transition: width 1s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hcp-since-pill__bar { transition: none; }
+}
+
+.hcp-next-hint {
+  margin-inline-start: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── تخصيص الصفحة الرئيسية (hcz-*) ───────────────────────────────── */
+.hcz-hint { font-size: 0.82rem; color: var(--majalis-ink-soft); margin: 0 0 1rem; line-height: 1.6; }
+.hcz-list { display: flex; flex-direction: column; gap: 0.4rem; }
+.hcz-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--ds-line-color);
+  border-radius: var(--ds-radius, 0.6rem);
+  background: #fff;
+}
+.hcz-row--hidden { opacity: 0.5; }
+.hcz-row__visibility {
+  width: 30px;
+  height: 30px;
+  min-height: 30px;
+  border-radius: var(--radius-pill, 999rem);
+  border: 1.5px solid var(--ds-line-color);
+  background: #fff;
+  color: var(--ds-emerald);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.hcz-row__label { flex: 1; font-size: 0.88rem; font-weight: 600; color: var(--majalis-ink); }
+.hcz-row__move { display: flex; gap: 0.3rem; flex-shrink: 0; }
+.hcz-row__move button {
+  width: 28px;
+  height: 28px;
+  min-height: 28px;
+  border-radius: 0.5rem;
+  border: 1.5px solid var(--ds-line-color);
+  background: #fff;
+  color: var(--majalis-ink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.hcz-row__move button:disabled { opacity: 0.3; cursor: not-allowed; }
+.hcz-row__move button:not(:disabled):hover { border-color: var(--ds-emerald); color: var(--ds-emerald); }
+.hcz-reset {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.65rem;
+  background: none;
+  border: 1px dashed var(--ds-line-color);
+  border-radius: var(--ds-radius, 0.6rem);
+  color: var(--majalis-ink-soft);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.hcz-reset:hover { border-color: var(--ds-emerald); color: var(--ds-emerald); }
+
+.hpv4-customize-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.75rem 0 0;
+  padding: 0.4rem 0.85rem;
+  background: none;
+  border: 1px solid var(--ds-line-color);
+  border-radius: var(--radius-pill, 999rem);
+  color: var(--majalis-ink-soft);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.hpv4-customize-trigger:hover { border-color: var(--ds-emerald); color: var(--ds-emerald); }

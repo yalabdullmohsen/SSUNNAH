@@ -1,0 +1,85 @@
+/**
+ * DS feature authority — lsw-*.
+ * Extracted by exact line partition from design-system.css. Do not restyle.
+ * Original lines: 2270-2348.
+ */
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   المرحلة 4 — مجتمع وتفاعل
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   Phase 5 — مواسم التعلّم Widget
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.lsw-section { margin-bottom: 0; }
+.lsw-badge {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-pill, 999rem);
+  background: color-mix(in srgb, var(--majalis-emerald) 8%, transparent);
+  color: var(--majalis-emerald, var(--mj-brand));
+  font-weight: 600;
+}
+
+.lsw-featured {
+  border: 2px solid var(--ds-emerald);
+  border-radius: var(--ds-radius-lg, 0.625rem);
+  padding: 1.125rem;
+  background: var(--majalis-panel);
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+.lsw-featured__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.lsw-featured__name { font-size: 1.2rem; font-weight: 800; display: block; margin-bottom: 0.2rem; }
+.lsw-featured__desc { margin: 0; font-size: 0.825rem; color: var(--majalis-ink-soft); }
+.lsw-featured__countdown { flex-shrink: 0; text-align: center; }
+.lsw-featured__now {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill, 999rem);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.lsw-featured__days {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  color: var(--majalis-ink-soft);
+  font-size: 0.75rem;
+}
+.lsw-featured__days strong { font-size: 1.8rem; font-weight: 800; color: var(--majalis-ink); line-height: 1; }
+.lsw-featured__suggestion { margin: 0; font-size: 0.85rem; color: var(--majalis-ink); }
+.lsw-featured__cta {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--ds-radius, 0.5rem);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.lsw-featured__cta:hover { opacity: 0.85; }
+
+.lsw-mini-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.lsw-mini-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--majalis-ink-soft);
+}
+.lsw-mini-item__dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; flex-shrink: 0; }
+.lsw-mini-item__name { flex: 1; color: var(--majalis-ink); }
+.lsw-mini-item__days { font-weight: 600; }
