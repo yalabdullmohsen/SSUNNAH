@@ -62,9 +62,9 @@ const FAMILIES = [
   },
   {
     id: "lists",
-    authority: /\b(NavigationList|SettingsList|ListSystem|ListRow)\b/,
+    authority: /\b(NavigationList|SettingsList|ListSystem|SimpleList|ResultList)\b/,
     bypass: /role=["']list["']|<ul\b[^>]*className=\{?["'`][^"'`]*(?:list|settings-row)/i,
-    importHint: /NavigationList|ListSystem|ListRow/,
+    importHint: /NavigationList|ListSystem|SettingsList|SimpleList|ResultList/,
   },
   {
     id: "tabs",

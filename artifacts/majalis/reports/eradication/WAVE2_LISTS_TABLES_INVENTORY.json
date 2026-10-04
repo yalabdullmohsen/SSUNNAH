@@ -1,0 +1,105 @@
+{
+  "wave": "WAVE2_PR_E",
+  "taskClassification": "SHARED_PLATFORM",
+  "baseCommit": "c843712d32b8e2e4e4422772add5be1044efe66f",
+  "measuredAt": "2026-10-04",
+  "platformImpacts": {
+    "WEB_IMPACT": "ProphetStories compare on ui/table + ss-data-table; ListRow removed; content-detail-table recipe deduped",
+    "IOS_APPLICATION_IMPACT": "shared WebView CSS/JS only; no Build",
+    "APP_STORE_PRODUCT_IMPACT": "none",
+    "SHARED_PLATFORM_IMPACT": "LIST/TABLE authority maps + gate"
+  },
+  "lists": {
+    "canonical": [
+      "SimpleList",
+      "InteractiveList",
+      "NavigationList",
+      "ResultList",
+      "SettingsList",
+      "ContentRow",
+      "VirtualList"
+    ],
+    "deadWithProofRemoved": [
+      {
+        "id": "mj.ListRow",
+        "files": [
+          "src/components/ui/mj.tsx",
+          "src/components/ui-common.tsx"
+        ],
+        "consumerCountTsx": 0,
+        "classification": "DEAD_WITH_PROOF"
+      }
+    ],
+    "specialCase": [
+      "admin list/grids",
+      "mushaf verse lists"
+    ]
+  },
+  "tables": {
+    "canonical": {
+      "component": "components/ui/table.tsx",
+      "recipe": ".ss-data-table",
+      "wrap": ".ss-data-table-wrap"
+    },
+    "approvedConsumers": [
+      "views/UniversitiesComparePage.tsx",
+      "pages/lessons/ui/AnnualCourseDetailView.tsx",
+      "views/ProphetStoriesPage.tsx#CompareView"
+    ],
+    "absorbed": [
+      {
+        "id": "content-detail-table-recipe",
+        "from": "styles/components/content-reading-shell.css",
+        "to": "styles/ssunnah-card-unify.css (.ss-data-table)",
+        "classification": "ABSORB"
+      },
+      {
+        "id": "prophet-nb-table-markup",
+        "from": "raw <table className=nb-table>",
+        "to": "ui/table + ss-data-table nb-table",
+        "classification": "ABSORB"
+      }
+    ],
+    "keepTemporarily": [
+      {
+        "id": "nb-table-page-modifiers",
+        "selectors": [
+          ".nb-table__row--azm",
+          ".nb-table__row--clickable",
+          ".nb-table__name",
+          ".nb-table__azm",
+          ".nb-table__count",
+          ".nb-table-note"
+        ],
+        "reason": "Prophet azm highlight + clickable row chrome on top of authority"
+      }
+    ],
+    "deadWithProof": [
+      {
+        "id": "quran-numbers-table-css",
+        "files": ["styles/pages/quran-numbers.css"],
+        "tsxConsumers": 0,
+        "deleteWave": "J"
+      },
+      {
+        "id": "mj-row-css",
+        "files": ["app/styles/theme.css"],
+        "tsxConsumers": 0,
+        "deleteWave": "J"
+      }
+    ],
+    "specialCase": [
+      "admin-v3 .av3-table*",
+      "admin section CRUD tables",
+      "PrayerAnnualTimetable",
+      "InternalStatusPage .ds-table",
+      "Mushaf (not a data grid)"
+    ]
+  },
+  "outputs": [
+    "LIST_TABLE_AUTHORITY_CONSOLIDATED",
+    "PROPHET_COMPARE_ON_TABLE_AUTHORITY",
+    "CONTENT_DETAIL_TABLE_RECIPE_DEDUPLICATED",
+    "LISTROW_DEAD_WITH_PROOF_REMOVED"
+  ]
+}

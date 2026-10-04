@@ -55,31 +55,8 @@ export function Card({
   );
 }
 
-export function ListRow({
-  title,
-  subtitle,
-  trailing,
-  onClick,
-  className,
-  disabled,
-}: {
-  title: ReactNode;
-  subtitle?: ReactNode;
-  trailing?: ReactNode;
-  onClick?: () => void;
-  className?: string;
-  disabled?: boolean;
-}) {
-  return (
-    <CanonicalButton type="button" variant="ghost" className={cn("mj-row", className)} onClick={onClick} disabled={disabled}>
-      <span>
-        <b style={{ fontWeight: 500 }}>{title}</b>
-        {subtitle ? <em>{subtitle}</em> : null}
-      </span>
-      {trailing}
-    </CanonicalButton>
-  );
-}
+/* ListRow removed (Wave 2 / PR E) — DEAD_WITH_PROOF:
+   zero TSX consumers outside definition+re-export; use NavigationList / SettingsList / ContentRow. */
 
 export function Button({
   children,
