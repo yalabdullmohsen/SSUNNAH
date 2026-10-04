@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "generated_at": "2026-10-04T09:53:21.419Z",
+  "generated_at": "2026-10-04T19:06:44.318Z",
   "items": [
     {
-      "id": "6adba4ffde8136918587cb22cc5d3c5700d469c6",
-      "type": "محاضرة",
-      "title_ar": "خطبة تأثير وسائل التواصل الاجتماعي على أبنائنا فضيلة الشيخ حسين بن مبارك المويز…",
-      "summary_ar": "خطبه - تاثير وسائل التواصل الاجتماعي علي ابنائنا فضيله الشيخ حسين بن مبارك المويزري @H_Almuwizri رابط الخطبه https://drosq8.com/play/24921 قناه موقع دروس الكوي…",
-      "sheikh": "حسين بن مبارك المويزري @H_Almuwizri 🔊 رابط الخطبة 👇 https:",
+      "id": "2754f08da1727460337aa2ee1ff672c09e57e48f",
+      "type": "درس",
+      "title_ar": "الآن مباشر شرح العقيدة التدمرية لابن تيمية فضيلة الشيخ د محمد محمدي النورستاني …",
+      "summary_ar": "الان مباشر (3) شرح العقيده التدمريه لابن تيميه فضيله الشيخ د. محمد محمدي النورستاني رابط البث: https://www.youtube.com/live/poHJSt1ba3w?si= تحميل الكتاب https:…",
+      "sheikh": "محمد محمدي النورستاني 🔗 رابط البث: https://www",
       "place": null,
       "audience": "عام",
       "starts_at": null,
       "time_text": null,
-      "register_url": "https://t.me/DrosQ8",
+      "register_url": "https://t.me/DrosQ8َ",
       "schedule_kind": null,
       "women_attendance": "men_only",
       "women_attendance_note": null,
@@ -21,13 +21,121 @@
           "id": "telegram-DrosQ8",
           "name_ar": "دروس الكويت",
           "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28122",
+          "post_url": "https://t.me/DrosQ8/28140",
           "platform": "telegram"
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-04T09:36:45.723Z",
+      "published_at": "2026-10-04T18:51:43.638Z",
       "confidence": 0.8
+    },
+    {
+      "id": "1a689c354b0c183ed0a5c82a50101d33b437a560",
+      "type": "درس",
+      "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح ثلاثة الأصول للشيخ د حمد بن محمد الهاجري ب…",
+      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: (شرح ثلاثه الاصول) للشيخ د. حمد بن محمد الهاجري ⏰ بعد صلاه المغرب (كل احد) مسجد عبدالمحسن الزبن - الفنيطيس https://maps.app.g…",
+      "sheikh": "حمد بن محمد الهاجري ⏰ بعد صلاة المغرب (كل أحد) 🕌 مسجد عبدال",
+      "place": "عبدالمحسن الزبن - الفنيطيس https://maps",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28146",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-04T18:51:43.638Z",
+      "confidence": 0.9
+    },
+    {
+      "id": "81645db2d6ae922e194824690b3d85d015ab22d5",
+      "type": "درس",
+      "title_ar": "ندعوكم الليلة لحضور المجلس العلمي شرح كتاب الروض المربع الشيخ حماد الأسلمي كل أ…",
+      "summary_ar": "ندعوكم الليله لحضور المجلس العلمي: ‌&rlm;«شرح كتاب الروض المربع» الشيخ حماد الاسلمي &rlm; @H_alaslemi كل احد واربعاء ⏰ بعد صلاه العشاء مسجد عبدالعزيز الماجشون-…",
+      "sheikh": "حماد الأسلمي &rlm; @H_alaslemi 📆 كل أحد وأربعاء ⏰ بعد صلاة",
+      "place": "عبدالعزيز الماجشون- المطلاع https://maps",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28151",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-04T18:51:43.638Z",
+      "confidence": 0.9
+    },
+    {
+      "id": "ebc15fdefc3117baf6439f1061801557c5fe4730",
+      "type": "درس",
+      "title_ar": "ندعوكم الليلة لحضور الدرس العلمي التعليق على شرح كتاب التوحيد من صحيح البخاري ل…",
+      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: التعليق علي شرح كتاب التوحيد من صحيح البخاري لابن عثيمين لفضيله الشيخ سالم الطويل ⏰ (كل احد)&nbsp; 8:30 م ديوان احمد غربي - ج…",
+      "sheikh": "سالم الطويل ⏰ (كل أحد)&nbsp; 8:30 م 📍 ديوان أحمد غربي - ج ع",
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": "8:30 م",
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28153",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-04T18:51:43.638Z",
+      "confidence": 0.9
+    },
+    {
+      "id": "a06dff19b0a25d056cfa7ed36f3f1e035f0d87c4",
+      "type": "درس",
+      "title_ar": "👇 جدول دروس اليوم الأحد 👇",
+      "summary_ar": "جدول دروس اليوم الاحد",
+      "sheikh": null,
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28145",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-04T18:51:43.638Z",
+      "confidence": 0.65
     },
     {
       "id": "f3190b618d9acabc7aefa29a26f582c1a8f4f0d6",
