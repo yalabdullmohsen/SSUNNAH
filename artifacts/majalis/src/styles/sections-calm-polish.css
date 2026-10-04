@@ -10,7 +10,7 @@
   --radius-card: var(--sf-radius-md, 20px);
   --radius-tile: var(--sf-radius-md, 20px);
   --radius-button: var(--sf-radius-sm, 16px);
-  --radius-control: 14px;
+  --radius-control: var(--sf-radius-control, 0.75rem);
   --radius-chip: 999px;
   --radius-icon: 12px;
   --radius-sheet: 28px;
@@ -402,12 +402,12 @@ html[data-theme="dark"] .sidebar-item.active,
 html.dark .sidebar-item.active,
 html[data-theme="dark"] .sidebar-item.is-active,
 html.dark .sidebar-item.is-active {
-  color: var(--state-selected-fg, #06231a) !important;
+  color: var(--state-selected-fg) !important;
 }
 
 html[data-theme="dark"] .sidebar-item[aria-current="page"],
 html.dark .sidebar-item[aria-current="page"] {
-  color: var(--state-current-fg, #b8e0cc) !important;
+  color: var(--state-current-fg) !important;
 }
 
 .sidebar-item-title {

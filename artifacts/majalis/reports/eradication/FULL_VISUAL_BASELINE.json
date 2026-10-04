@@ -1,16 +1,16 @@
 {
   "id": "FULL_VISUAL_BASELINE",
   "program": "SUNNAH_FULL_APPLICATION_LAYER_ERADICATION_AND_SINGLE_VISUAL_AUTHORITY",
-  "measuredAt": "2026-10-04T12:50:01.510Z",
+  "measuredAt": "2026-10-04T13:16:16.409Z",
   "scope": "artifacts/majalis/src",
   "cssFileCount": 356,
-  "cssTotalBytes": 3864489,
+  "cssTotalBytes": 3864419,
   "synchronousCssImports": 14,
   "deferredCssImports": 55,
   "selectorRuleBlocksApprox": 20732,
-  "hexCount": 5630,
+  "hexCount": 5619,
   "rgbHslCount": 2006,
-  "unsafeHexFallbackCount": 2562,
+  "unsafeHexFallbackCount": 2551,
   "importantCount": 4746,
   "rawShadowCount": 986,
   "rawRadiusPxCount": 392,
@@ -21,7 +21,7 @@
     "mj": 193
   },
   "tokenUses": {
-    "sf": 773,
+    "sf": 774,
     "ss": 524,
     "mj": 10836
   },
