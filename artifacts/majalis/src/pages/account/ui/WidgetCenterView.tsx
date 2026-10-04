@@ -7,6 +7,13 @@ import { SettingsToggleRow } from "@/components/design-system/SettingsList";
 import { EmptyStateV2, ErrorStateV2, LoadingStateV2, OfflineStateV2 } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 import { SearchInput, FormLabel } from "@/components/design-system";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { AppBackButton } from "@/components/common/AppBackButton";
 import { isIOS, isNative } from "@/lib/capacitor-utils";
 import { getActivePrayerLocation } from "@/lib/prayer-location-prefs";
@@ -66,6 +73,38 @@ function PreviewCard({ title, line }: { title: string; line: string }) {
   );
 }
 
+function CenterSelect({
+  id,
+  label,
+  value,
+  onValueChange,
+  options,
+}: {
+  id: string;
+  label: string;
+  value: string;
+  onValueChange: (value: string) => void;
+  options: { value: string; label: string }[];
+}) {
+  return (
+    <div className="widget-center-field">
+      <FormLabel htmlFor={id}>{label}</FormLabel>
+      <Select value={value} onValueChange={onValueChange}>
+        <SelectTrigger id={id} className="min-h-11 text-base" aria-label={label}>
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          {options.map((option) => (
+            <SelectItem key={option.value} value={option.value}>
+              {option.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  );
+}
+
 function StateBlock({ state }: { state: WidgetCenterUxState }) {
   const copy = WIDGET_CENTER_STATE_COPY[state];
   if (state === "LOADING") return <LoadingStateV2 title={copy.title} skeletonLines={2} />;
@@ -100,6 +139,7 @@ export default function WidgetCenterView() {
   const [lastPublish, setLastPublish] = useState<number | null>(null);
   const [refreshNote, setRefreshNote] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [customType, setCustomType] = useState<(typeof WIDGET_CUSTOM_CONTENT_TYPES)[number]>("AYAH");
   const online = typeof navigator === "undefined" ? true : navigator.onLine;
 
   useEffect(() => {
@@ -267,18 +307,18 @@ export default function WidgetCenterView() {
               checked={prefs.showLocationLabel}
               onChange={(on) => patchPrefs({ showLocationLabel: on })}
             />
-            <label className="widget-center-field">
-              <span>نمط عرض الصلاة</span>
-              <select
-                value={prefs.prayerDisplayMode}
-                onChange={(e) => patchPrefs({ prayerDisplayMode: e.target.value as typeof prefs.prayerDisplayMode })}
-              >
-                <option value="current">الحالية</option>
-                <option value="next">التالية</option>
-                <option value="previous">السابقة</option>
-                <option value="all">اليوم كاملاً</option>
-              </select>
-            </label>
+            <CenterSelect
+              id="widget-prayer-mode"
+              label="نمط عرض الصلاة"
+              value={prefs.prayerDisplayMode}
+              onValueChange={(v) => patchPrefs({ prayerDisplayMode: v as typeof prefs.prayerDisplayMode })}
+              options={[
+                { value: "current", label: "الحالية" },
+                { value: "next", label: "التالية" },
+                { value: "previous", label: "السابقة" },
+                { value: "all", label: "اليوم كاملاً" },
+              ]}
+            />
             <Button type="button" onClick={() => void refreshPublication()} disabled={busy}>
               تحديث بيانات الصلاة
             </Button>
@@ -295,17 +335,17 @@ export default function WidgetCenterView() {
               line={String((envelope?.calendarPayload as { displayDateArabic?: string } | undefined)?.displayDateArabic || hijri.monthName || "التاريخ الهجري وفق أم القرى")}
             />
             <p>السلطة: تقويم أم القرى المدني عبر محرك سُنّة المعتمد.</p>
-            <label className="widget-center-field">
-              <span>نمط التاريخ</span>
-              <select
-                value={prefs.calendarMode}
-                onChange={(e) => patchPrefs({ calendarMode: e.target.value as typeof prefs.calendarMode })}
-              >
-                <option value="hijri">هجري فقط</option>
-                <option value="gregorian">ميلادي فقط</option>
-                <option value="dual">هجري وميلادي</option>
-              </select>
-            </label>
+            <CenterSelect
+              id="widget-calendar-mode"
+              label="نمط التاريخ"
+              value={prefs.calendarMode}
+              onValueChange={(v) => patchPrefs({ calendarMode: v as typeof prefs.calendarMode })}
+              options={[
+                { value: "hijri", label: "هجري فقط" },
+                { value: "gregorian", label: "ميلادي فقط" },
+                { value: "dual", label: "هجري وميلادي" },
+              ]}
+            />
             <SettingsToggleRow id="widget-hijri" title="إظهار التاريخ الهجري" checked={prefs.showHijriDate} onChange={(on) => patchPrefs({ showHijriDate: on })} />
             <SettingsToggleRow id="widget-greg" title="إظهار التاريخ الميلادي" checked={prefs.showGregorianDate} onChange={(on) => patchPrefs({ showGregorianDate: on })} />
             <p className="settings-note">لا يُخلط بين سلطات تقويم مختلفة. المناسبات المعتمدة على الرؤية تُعرض مؤقتة حتى التأكيد.</p>
@@ -340,18 +380,18 @@ export default function WidgetCenterView() {
         {section === "adhkar" && (
           <LegalSection title="الأذكار">
             <PreviewCard title="أذكار الوقت" line="ورد الصباح أو المساء حسب النافذة المعتمدة" />
-            <label className="widget-center-field">
-              <span>الفئة المفضلة</span>
-              <select
-                value={prefs.preferredAdhkarCategory}
-                onChange={(e) => patchPrefs({ preferredAdhkarCategory: e.target.value as typeof prefs.preferredAdhkarCategory })}
-              >
-                <option value="morning">الصباح</option>
-                <option value="evening">المساء</option>
-                <option value="timeAware">حسب الوقت</option>
-                <option value="rotating">ذكر اليوم</option>
-              </select>
-            </label>
+            <CenterSelect
+              id="widget-adhkar-category"
+              label="الفئة المفضلة"
+              value={prefs.preferredAdhkarCategory}
+              onValueChange={(v) => patchPrefs({ preferredAdhkarCategory: v as typeof prefs.preferredAdhkarCategory })}
+              options={[
+                { value: "morning", label: "الصباح" },
+                { value: "evening", label: "المساء" },
+                { value: "timeAware", label: "حسب الوقت" },
+                { value: "rotating", label: "ذكر اليوم" },
+              ]}
+            />
             <p>صباح اليوم: {progress["morning-adhkar"] > 0 ? "مكتمل" : "غير مكتمل"}</p>
             <p>مساء اليوم: {progress["evening-adhkar"] > 0 ? "مكتمل" : "غير مكتمل"}</p>
             <p>السلسلة الحالية: {streak.currentStreak > 0 ? streak.currentStreak : "لا سلسلة حتى يُسجَّل إتمام حقيقي"}</p>
@@ -368,17 +408,17 @@ export default function WidgetCenterView() {
             <p>آخر موضع: {lastPage != null ? `صفحة ${lastPage}` : "لم يبدأ بعد — لن تُعرض صفحة ١ كتقدم"}</p>
             <p>هدف اليوم: {progress.quran > 0 ? "مسجّل" : "فعّل التتبع بقراءة معتمدة"}</p>
             <p>الإشارات: {bookmarks.length > 0 ? `${bookmarks.length} إشارة` : "لا إشارة مختارة"}</p>
-            <label className="widget-center-field">
-              <span>مصدر آية الويدجت</span>
-              <select
-                value={prefs.ayahWidgetMode}
-                onChange={(e) => patchPrefs({ ayahWidgetMode: e.target.value as typeof prefs.ayahWidgetMode })}
-              >
-                <option value="CURATED_ROTATION">دورة مراجعة معتمدة</option>
-                <option value="USER_SELECTED">اختيارك</option>
-                <option value="BOOKMARK_SELECTED">من الإشارة</option>
-              </select>
-            </label>
+            <CenterSelect
+              id="widget-ayah-mode"
+              label="مصدر آية الويدجت"
+              value={prefs.ayahWidgetMode}
+              onValueChange={(v) => patchPrefs({ ayahWidgetMode: v as typeof prefs.ayahWidgetMode })}
+              options={[
+                { value: "CURATED_ROTATION", label: "دورة مراجعة معتمدة" },
+                { value: "USER_SELECTED", label: "اختيارك" },
+                { value: "BOOKMARK_SELECTED", label: "من الإشارة" },
+              ]}
+            />
             <p className="settings-note">النص القرآني من المستودع المعتمد فقط. لا توليد ولا إعادة صياغة.</p>
             <p>
               <Link href="/mushaf">المصحف</Link> · <Link href="/mushaf/bookmarks">الفواصل</Link>
@@ -393,16 +433,13 @@ export default function WidgetCenterView() {
               <span>معرّف النسخة</span>
               <input id="widget-instance" defaultValue="custom-1" />
             </label>
-            <label className="widget-center-field">
-              <span>نوع المحتوى</span>
-              <select id="widget-content-type" defaultValue="AYAH">
-                {WIDGET_CUSTOM_CONTENT_TYPES.map((type) => (
-                  <option key={type} value={type}>
-                    {type}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <CenterSelect
+              id="widget-content-type"
+              label="نوع المحتوى"
+              value={customType}
+              onValueChange={(v) => setCustomType(v as (typeof WIDGET_CUSTOM_CONTENT_TYPES)[number])}
+              options={WIDGET_CUSTOM_CONTENT_TYPES.map((type) => ({ value: type, label: type }))}
+            />
             <label className="widget-center-field">
               <span>معرّف العنصر المعتمد</span>
               <input id="widget-content-id" placeholder="ayah:daily أو hadith:daily" defaultValue="ayah:daily" />
@@ -417,7 +454,7 @@ export default function WidgetCenterView() {
               type="button"
               onClick={() => {
                 const instanceId = (document.getElementById("widget-instance") as HTMLInputElement | null)?.value || "custom-1";
-                const contentType = (document.getElementById("widget-content-type") as HTMLSelectElement | null)?.value as (typeof WIDGET_CUSTOM_CONTENT_TYPES)[number];
+                const contentType = customType;
                 const contentId = (document.getElementById("widget-content-id") as HTMLInputElement | null)?.value || "ayah:daily";
                 upsertWidgetSelection({
                   widgetInstanceId: instanceId,
@@ -474,16 +511,16 @@ export default function WidgetCenterView() {
         {section === "privacy" && (
           <LegalSection title="الخصوصية">
             <p>لا تُنشر في حاوية الويدجت: الرموز السرية، البريد، الهاتف، الإحداثيات الدقيقة، الملاحظات الخاصة، أو سجلات الحساب الكاملة.</p>
-            <label className="widget-center-field">
-              <span>مستوى العرض</span>
-              <select
-                value={prefs.privacyDisplayLevel}
-                onChange={(e) => patchPrefs({ privacyDisplayLevel: e.target.value as typeof prefs.privacyDisplayLevel })}
-              >
-                <option value="minimal">أدنى</option>
-                <option value="standard">قياسي</option>
-              </select>
-            </label>
+            <CenterSelect
+              id="widget-privacy-level"
+              label="مستوى العرض"
+              value={prefs.privacyDisplayLevel}
+              onValueChange={(v) => patchPrefs({ privacyDisplayLevel: v as typeof prefs.privacyDisplayLevel })}
+              options={[
+                { value: "minimal", label: "أدنى" },
+                { value: "standard", label: "قياسي" },
+              ]}
+            />
             <p>
               <Link href="/privacy-center">مركز الخصوصية</Link>
             </p>
