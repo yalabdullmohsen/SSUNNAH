@@ -272,6 +272,11 @@ struct PrayerWidgetEntry: TimelineEntry {
     func slot(for key: PrayerSlotKey) -> PrayerTimelineSlot? {
         slots.first(where: { $0.key == key })
     }
+
+    var currentStartDate: Date? {
+        guard let key = currentKey else { return nil }
+        return slot(for: key)?.date
+    }
 }
 
 struct PrayerWidgetProvider: TimelineProvider {
@@ -344,6 +349,10 @@ enum SunnahWidgetTimeFormatting {
             return "\(arabic(hours)) س \(arabic(rem)) د"
         }
         return "\(arabic(minutes)) د"
+    }
+
+    static func staticElapsed(from: Date, to: Date) -> String {
+        "مضى \(staticRemaining(from: from, to: to))"
     }
 
     static func clock(_ date: Date, timeZone: TimeZone = .current) -> String {

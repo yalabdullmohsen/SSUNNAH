@@ -46,4 +46,9 @@ enum SunnahWidgetDeepLinkFactory {
 
     static func occasions() -> URL { SunnahPrayerDeepLink.occasions }
     static func widgetHelp() -> URL { SunnahPrayerDeepLink.widgetHelp }
+    static func hadith() -> URL { url(path: "/hadith") }
+    static func quranHub() -> URL { url(path: "/quran-hub") }
+    static func fawaid() -> URL { url(path: "/fawaid") }
+    static func dua() -> URL { url(path: "/adhkar") }
+    static func home() -> URL { url(path: "/") }
 }

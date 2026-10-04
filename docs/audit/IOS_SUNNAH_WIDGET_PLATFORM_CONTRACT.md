@@ -43,6 +43,20 @@ No second Widget target. PR #2299 App Group `group.com.yousef.majlisilm.widgets`
 
 Each kind declares only purpose-built families. Six prayer times are not forced into `systemSmall`.
 
+## Widget Catalog V2
+
+Glanceable Home Screen kinds added on the same `PrayerWidget` target:
+
+- Prayer current, large next countdown, morning/evening small, full-day large
+- Adhkar streak (canonical progress only)
+- Quran daily goal, mushaf journey percent, mushaf quick-open
+- Islamic event, daily hadith / faidah / dua
+- Today in Sunnah, today actions, spiritual day
+- Dedicated StandBy layouts for countdown, current prayer, daily Quran, Hijri, today
+- Lock Screen families on prayer, hijri, adhkar, and Quran goal
+
+Envelope domains `progressPayload` and `contentSpotlightPayload` decode in isolation.
+
 ## Release hold
 
 No Archive, TestFlight, App Store, signing, or Build increment. A future iOS binary is required for users to receive these widgets.

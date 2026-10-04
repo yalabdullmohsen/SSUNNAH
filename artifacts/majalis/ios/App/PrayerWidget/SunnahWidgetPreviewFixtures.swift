@@ -15,6 +15,9 @@ enum SunnahWidgetPreviewFixtures {
         inRamadan: false,
         daysUntilRamadan: 54,
         ramadanLabelAr: "باقي على رمضان",
+        upcomingEventNameAr: "يوم عاشوراء",
+        upcomingEventDays: 18,
+        upcomingEventPath: "/occasions",
         updatedAtEpochMs: 0
     )
 
@@ -30,6 +33,9 @@ enum SunnahWidgetPreviewFixtures {
         rotatingSource: "رواه مسلم",
         rotatingCollection: "أذكار الصباح",
         rotationDayKey: "preview",
+        todayCompleted: true,
+        streakDays: 7,
+        hasCanonicalProgress: true,
         updatedAtEpochMs: 0
     )
 
@@ -41,6 +47,9 @@ enum SunnahWidgetPreviewFixtures {
         ayahNumber: 1,
         page: 1,
         deepLinkPath: "/mushaf/page/1?ayah=1:1",
+        pagesCompletedToday: 1,
+        dailyTarget: 1,
+        hasCanonicalGoal: true,
         updatedAtEpochMs: 0
     )
 
@@ -56,6 +65,36 @@ enum SunnahWidgetPreviewFixtures {
         bookmarkAyahNumber: 5,
         hasProgress: true,
         hasBookmark: true,
+        journeyPercent: 1,
+        updatedAtEpochMs: 0
+    )
+
+    static let progress = SharedHomeProgressPayload(
+        schemaVersion: SharedHomeProgressPayload.currentSchema,
+        hasCanonicalTracking: true,
+        morningAdhkarDone: true,
+        eveningAdhkarDone: false,
+        quranDone: true,
+        wirdDone: true,
+        adhkarStreakDays: 7,
+        pagesCompletedToday: 1,
+        dailyPageTarget: 1,
+        mushafPercent: 12,
+        currentAdhkarTitleAr: "أذكار الصباح",
+        updatedAtEpochMs: 0
+    )
+
+    static let content = SharedContentSpotlightPayload(
+        schemaVersion: SharedContentSpotlightPayload.currentSchema,
+        hadithText: "إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ",
+        hadithSource: "متفق عليه",
+        hadithPath: "/hadith",
+        faidahText: "النية شرط لصحة العمل وقبوله.",
+        faidahSource: "ابن القيم",
+        faidahPath: "/",
+        duaText: "اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا",
+        duaSource: "رواه الترمذي",
+        duaPath: "/adhkar",
         updatedAtEpochMs: 0
     )
 

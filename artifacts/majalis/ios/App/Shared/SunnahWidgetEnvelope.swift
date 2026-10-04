@@ -16,6 +16,8 @@ struct SunnahWidgetEnvelope: Codable, Hashable {
     var mushafPayload: SharedMushafPayload?
     var customContentPayload: SharedCustomContentPayload?
     var preferencesPayload: SharedWidgetPreferencesPayload?
+    var progressPayload: SharedHomeProgressPayload?
+    var contentSpotlightPayload: SharedContentSpotlightPayload?
 
     static let currentSchema = 1
 }
@@ -33,6 +35,9 @@ struct SharedCalendarPayload: Codable, Hashable {
     var inRamadan: Bool
     var daysUntilRamadan: Int?
     var ramadanLabelAr: String
+    var upcomingEventNameAr: String?
+    var upcomingEventDays: Int?
+    var upcomingEventPath: String?
     var updatedAtEpochMs: Int64
     static let currentSchema = 1
 }
@@ -50,6 +55,9 @@ struct SharedAdhkarPayload: Codable, Hashable {
     var rotatingSource: String?
     var rotatingCollection: String?
     var rotationDayKey: String
+    var todayCompleted: Bool?
+    var streakDays: Int?
+    var hasCanonicalProgress: Bool?
     var updatedAtEpochMs: Int64
     static let currentSchema = 1
 }
@@ -62,6 +70,9 @@ struct SharedQuranPayload: Codable, Hashable {
     var ayahNumber: Int
     var page: Int?
     var deepLinkPath: String
+    var pagesCompletedToday: Int?
+    var dailyTarget: Int?
+    var hasCanonicalGoal: Bool?
     var updatedAtEpochMs: Int64
     static let currentSchema = 1
 }
@@ -78,6 +89,38 @@ struct SharedMushafPayload: Codable, Hashable {
     var bookmarkAyahNumber: Int?
     var hasProgress: Bool
     var hasBookmark: Bool
+    var journeyPercent: Int?
+    var updatedAtEpochMs: Int64
+    static let currentSchema = 1
+}
+
+struct SharedHomeProgressPayload: Codable, Hashable {
+    var schemaVersion: Int
+    var hasCanonicalTracking: Bool
+    var morningAdhkarDone: Bool
+    var eveningAdhkarDone: Bool
+    var quranDone: Bool
+    var wirdDone: Bool
+    var adhkarStreakDays: Int?
+    var pagesCompletedToday: Int
+    var dailyPageTarget: Int
+    var mushafPercent: Int?
+    var currentAdhkarTitleAr: String
+    var updatedAtEpochMs: Int64
+    static let currentSchema = 1
+}
+
+struct SharedContentSpotlightPayload: Codable, Hashable {
+    var schemaVersion: Int
+    var hadithText: String
+    var hadithSource: String?
+    var hadithPath: String
+    var faidahText: String
+    var faidahSource: String?
+    var faidahPath: String
+    var duaText: String
+    var duaSource: String?
+    var duaPath: String
     var updatedAtEpochMs: Int64
     static let currentSchema = 1
 }
@@ -153,7 +196,9 @@ enum SunnahWidgetEnvelopeCodec {
             quranPayload: decodeDomain("quranPayload", as: SharedQuranPayload.self),
             mushafPayload: decodeDomain("mushafPayload", as: SharedMushafPayload.self),
             customContentPayload: decodeDomain("customContentPayload", as: SharedCustomContentPayload.self),
-            preferencesPayload: decodeDomain("preferencesPayload", as: SharedWidgetPreferencesPayload.self)
+            preferencesPayload: decodeDomain("preferencesPayload", as: SharedWidgetPreferencesPayload.self),
+            progressPayload: decodeDomain("progressPayload", as: SharedHomeProgressPayload.self),
+            contentSpotlightPayload: decodeDomain("contentSpotlightPayload", as: SharedContentSpotlightPayload.self)
         )
     }
 }

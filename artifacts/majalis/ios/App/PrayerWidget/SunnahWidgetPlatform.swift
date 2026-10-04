@@ -2,8 +2,11 @@ import SwiftUI
 import WidgetKit
 
 enum SunnahWidgetFamilySupport {
+    static let prayerCurrent: [WidgetFamily] = [
+        .systemSmall, .systemMedium, .accessoryRectangular,
+    ]
     static let prayerNext: [WidgetFamily] = [
-        .systemSmall, .systemMedium, .accessoryInline, .accessoryCircular, .accessoryRectangular,
+        .systemSmall, .systemMedium, .systemLarge, .accessoryInline, .accessoryCircular, .accessoryRectangular,
     ]
     static let prayerPrevious: [WidgetFamily] = [
         .systemSmall, .systemMedium, .accessoryInline, .accessoryRectangular,
@@ -11,9 +14,9 @@ enum SunnahWidgetFamilySupport {
     static let prayerPreviousNext: [WidgetFamily] = [
         .systemMedium, .systemLarge, .accessoryRectangular,
     ]
-    static let prayerMorning: [WidgetFamily] = [.systemMedium, .systemLarge]
-    static let prayerEvening: [WidgetFamily] = [.systemMedium, .systemLarge]
-    static let prayerAll: [WidgetFamily] = [.systemMedium, .systemLarge]
+    static let prayerMorning: [WidgetFamily] = [.systemSmall, .systemMedium]
+    static let prayerEvening: [WidgetFamily] = [.systemSmall, .systemMedium]
+    static let prayerAll: [WidgetFamily] = [.systemLarge]
     static let prayerHijri: [WidgetFamily] = [
         .systemSmall, .systemMedium, .accessoryRectangular,
     ]
@@ -25,10 +28,25 @@ enum SunnahWidgetFamilySupport {
     ]
     static let calendarToday: [WidgetFamily] = [.systemSmall, .systemMedium]
     static let calendarRamadan: [WidgetFamily] = [.systemSmall, .systemMedium]
-    static let adhkar: [WidgetFamily] = [.systemSmall, .systemMedium]
+    static let calendarEvent: [WidgetFamily] = [
+        .systemSmall, .systemMedium, .accessoryRectangular,
+    ]
+    static let adhkar: [WidgetFamily] = [
+        .systemSmall, .systemMedium, .accessoryInline, .accessoryRectangular,
+    ]
+    static let adhkarStreak: [WidgetFamily] = [
+        .systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular,
+    ]
     static let custom: [WidgetFamily] = [.systemSmall, .systemMedium, .systemLarge]
     static let quran: [WidgetFamily] = [.systemMedium, .systemLarge]
+    static let quranGoal: [WidgetFamily] = [
+        .systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular,
+    ]
     static let mushaf: [WidgetFamily] = [.systemSmall, .systemMedium]
+    static let mushafQuickOpen: [WidgetFamily] = [.systemSmall, .systemMedium, .systemLarge]
+    static let homeToday: [WidgetFamily] = [.systemMedium, .systemLarge]
+    static let homeActions: [WidgetFamily] = [.systemMedium, .systemLarge]
+    static let homeSpiritual: [WidgetFamily] = [.systemMedium, .systemLarge]
 }
 
 enum SunnahWidgetRegistry {
@@ -113,6 +131,8 @@ struct CatalogWidgetEntry: TimelineEntry {
     let quran: SharedQuranPayload?
     let mushaf: SharedMushafPayload?
     let custom: SharedCustomContentPayload?
+    let progress: SharedHomeProgressPayload?
+    let content: SharedContentSpotlightPayload?
     let selectedCustomId: String?
     let isSampleData: Bool
 
@@ -127,6 +147,8 @@ struct CatalogWidgetEntry: TimelineEntry {
             quran: SunnahWidgetPreviewFixtures.quran,
             mushaf: SunnahWidgetPreviewFixtures.mushaf,
             custom: SunnahWidgetPreviewFixtures.custom,
+            progress: SunnahWidgetPreviewFixtures.progress,
+            content: SunnahWidgetPreviewFixtures.content,
             selectedCustomId: SunnahWidgetPreviewFixtures.custom.items.first?.id,
             isSampleData: true
         )
@@ -143,6 +165,8 @@ struct CatalogWidgetEntry: TimelineEntry {
             quran: entry.quran,
             mushaf: entry.mushaf,
             custom: entry.custom,
+            progress: entry.progress,
+            content: entry.content,
             selectedCustomId: entry.selectedCustomId,
             isSampleData: true
         )
@@ -166,6 +190,8 @@ struct CatalogWidgetEntry: TimelineEntry {
             quran: envelope?.quranPayload,
             mushaf: envelope?.mushafPayload,
             custom: envelope?.customContentPayload,
+            progress: envelope?.progressPayload,
+            content: envelope?.contentSpotlightPayload,
             selectedCustomId: selectedCustomId,
             isSampleData: false
         )

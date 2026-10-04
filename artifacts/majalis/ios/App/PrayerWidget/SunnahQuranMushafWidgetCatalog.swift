@@ -43,6 +43,48 @@ struct MushafBookmarkWidget: Widget {
     }
 }
 
+struct QuranDailyGoalWidget: Widget {
+    let kind = SunnahWidgetKind.quranGoal
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
+            QuranDailyGoalView(entry: entry)
+                .environment(\.layoutDirection, .rightToLeft)
+                .widgetURL(SunnahWidgetDeepLinkFactory.quranHub())
+        }
+        .configurationDisplayName("هدف القرآن")
+        .description("صفحات اليوم والهدف إن وُجد تتبع معتمد.")
+        .supportedFamilies(SunnahWidgetFamilySupport.quranGoal)
+    }
+}
+
+struct MushafProgressWidget: Widget {
+    let kind = SunnahWidgetKind.mushafProgress
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
+            MushafProgressView(entry: entry)
+                .environment(\.layoutDirection, .rightToLeft)
+                .widgetURL(mushafContinueURL(entry))
+        }
+        .configurationDisplayName("رحلة المصحف")
+        .description("موضع القراءة الحالي ونسبة الإتمام المحفوظة.")
+        .supportedFamilies(SunnahWidgetFamilySupport.mushaf)
+    }
+}
+
+struct MushafQuickOpenWidget: Widget {
+    let kind = SunnahWidgetKind.mushafQuickOpen
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
+            MushafQuickOpenView(entry: entry)
+                .environment(\.layoutDirection, .rightToLeft)
+                .widgetURL(mushafContinueURL(entry))
+        }
+        .configurationDisplayName("افتح المصحف")
+        .description("هدف كبير يفتح آخر موضع قراءة مباشرة.")
+        .supportedFamilies(SunnahWidgetFamilySupport.mushafQuickOpen)
+    }
+}
+
 private func quranURL(_ entry: CatalogWidgetEntry) -> URL {
     if let path = entry.quran?.deepLinkPath, !path.isEmpty {
         return SunnahWidgetDeepLinkFactory.url(path: path)
@@ -73,27 +115,35 @@ private struct QuranSurface: ViewModifier {
 }
 
 struct QuranAyahView: View {
+    @Environment(\.widgetFamily) private var family
     let entry: CatalogWidgetEntry
 
     var body: some View {
-        Group {
-            if let quran = entry.quran, !quran.ayahText.isEmpty {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(quran.ayahText)
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                        .minimumScaleFactor(0.7)
-                    Text("سورة \(quran.surahNameAr) · آية \(SunnahWidgetTimeFormatting.arabic(quran.ayahNumber))")
-                        .font(.caption.bold())
-                        .foregroundStyle(SunnahBrandColors.gold)
-                }
-                .padding(14)
-            } else {
-                SunnahWidgetEmptyState(message: "افتح سُنّة لعرض الآية المعتمدة")
-            }
-        }
+        SunnahStandBySwitch(
+            family: family,
+            home: homeBody,
+            standBy: StandByDailyQuranView(entry: entry)
+        )
         .modifier(QuranSurface())
         .accessibilityLabel(entry.quran.map { "آية \($0.ayahNumber) من سورة \($0.surahNameAr). \($0.ayahText)" } ?? "الآية غير متاحة")
+    }
+
+    @ViewBuilder
+    private var homeBody: some View {
+        if let quran = entry.quran, !quran.ayahText.isEmpty {
+            VStack(alignment: .leading, spacing: 8) {
+                Text(quran.ayahText)
+                    .font(.headline)
+                    .foregroundStyle(.white)
+                    .minimumScaleFactor(0.7)
+                Text("سورة \(quran.surahNameAr) · آية \(SunnahWidgetTimeFormatting.arabic(quran.ayahNumber))")
+                    .font(.caption.bold())
+                    .foregroundStyle(SunnahBrandColors.gold)
+            }
+            .padding(14)
+        } else {
+            SunnahWidgetEmptyState(message: "افتح سُنّة لعرض الآية المعتمدة")
+        }
     }
 }
 
@@ -162,5 +212,104 @@ struct MushafBookmarkView: View {
         }
         .modifier(QuranSurface())
         .accessibilityLabel(entry.mushaf?.bookmarkSurahNameAr.map { "إشارة \($0)" } ?? "لا إشارة مختارة")
+    }
+}
+
+struct QuranDailyGoalView: View {
+    @Environment(\.widgetFamily) private var family
+    let entry: CatalogWidgetEntry
+
+    var body: some View {
+        Group {
+            if let quran = entry.quran, quran.hasCanonicalGoal == true {
+                let done = quran.pagesCompletedToday ?? 0
+                let target = max(1, quran.dailyTarget ?? 1)
+                if family == .accessoryCircular {
+                    VStack(spacing: 2) {
+                        Text("\(SunnahWidgetTimeFormatting.arabic(done))/\(SunnahWidgetTimeFormatting.arabic(target))")
+                            .font(.caption.bold())
+                        Text("ورد")
+                            .font(.caption2)
+                    }
+                } else {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("هدف اليوم")
+                            .font(.caption.bold())
+                            .foregroundStyle(SunnahBrandColors.gold)
+                        Text("\(SunnahWidgetTimeFormatting.arabic(done)) من \(SunnahWidgetTimeFormatting.arabic(target))")
+                            .font(.title2.bold())
+                            .foregroundStyle(.white)
+                        ProgressView(value: Double(min(done, target)), total: Double(target))
+                            .tint(SunnahBrandColors.gold)
+                    }
+                    .padding(12)
+                }
+            } else {
+                SunnahWidgetEmptyState(message: "افتح سُنّة لتفعيل هدف القراءة")
+            }
+        }
+        .modifier(QuranSurface())
+        .accessibilityLabel("هدف القرآن اليوم")
+    }
+}
+
+struct MushafProgressView: View {
+    let entry: CatalogWidgetEntry
+
+    var body: some View {
+        Group {
+            if let mushaf = entry.mushaf, mushaf.hasProgress, let page = mushaf.lastPage {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("رحلة القراءة")
+                        .font(.caption.bold())
+                        .foregroundStyle(SunnahBrandColors.gold)
+                    Text(mushaf.lastSurahNameAr ?? "المصحف")
+                        .font(.title3.bold())
+                        .foregroundStyle(.white)
+                    Text("صفحة \(SunnahWidgetTimeFormatting.arabic(page))")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                    if let percent = mushaf.journeyPercent {
+                        Text("أتممت \(SunnahWidgetTimeFormatting.arabic(percent))٪")
+                            .font(.subheadline.bold())
+                            .foregroundStyle(SunnahBrandColors.gold)
+                    }
+                }
+                .padding(12)
+            } else {
+                SunnahWidgetEmptyState(message: "ابدأ القراءة لحفظ الرحلة")
+            }
+        }
+        .modifier(QuranSurface())
+        .accessibilityLabel("رحلة المصحف")
+    }
+}
+
+struct MushafQuickOpenView: View {
+    let entry: CatalogWidgetEntry
+
+    var body: some View {
+        VStack(spacing: 10) {
+            Text("افتح المصحف")
+                .font(.caption.bold())
+                .foregroundStyle(SunnahBrandColors.gold)
+            if let page = entry.mushaf?.lastPage {
+                Text("صفحة \(SunnahWidgetTimeFormatting.arabic(page))")
+                    .font(.system(size: 36, weight: .bold))
+                    .foregroundStyle(.white)
+                Text(entry.mushaf?.lastSurahNameAr ?? "آخر موضع")
+                    .font(.headline)
+                    .foregroundStyle(.white)
+            } else {
+                Text("ابدأ من الفاتحة")
+                    .font(.title2.bold())
+                    .foregroundStyle(.white)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(14)
+        .modifier(QuranSurface())
+        .accessibilityLabel("افتح المصحف على آخر موضع")
+        .accessibilityAddTraits(.isButton)
     }
 }

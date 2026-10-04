@@ -57,6 +57,20 @@ struct RamadanCountdownWidget: Widget {
     }
 }
 
+struct IslamicEventWidget: Widget {
+    let kind = SunnahWidgetKind.calendarEvent
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
+            IslamicEventView(entry: entry)
+                .environment(\.layoutDirection, .rightToLeft)
+                .widgetURL(SunnahWidgetDeepLinkFactory.occasions())
+        }
+        .configurationDisplayName("المناسبة القادمة")
+        .description("أقرب مناسبة إسلامية معتمدة وعدد الأيام المتبقية.")
+        .supportedFamilies(SunnahWidgetFamilySupport.calendarEvent)
+    }
+}
+
 private struct CalSurface: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOSApplicationExtension 17.0, *) {
@@ -76,42 +90,49 @@ struct HijriCalendarView: View {
     let entry: CatalogWidgetEntry
 
     var body: some View {
-        Group {
-            if let cal = calendarOrEmpty(entry) {
-                if family == .accessoryInline {
-                    Text("\(SunnahWidgetTimeFormatting.arabic(cal.hijriDay)) \(cal.hijriMonthAr)")
-                } else if family == .accessoryCircular {
-                    VStack {
-                        Text(SunnahWidgetTimeFormatting.arabic(cal.hijriDay))
-                            .font(.headline.bold())
-                        Text(cal.hijriMonthAr)
-                            .font(.caption2)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.6)
-                    }
-                } else {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(cal.weekdayAr)
-                            .font(.caption.bold())
-                            .foregroundStyle(SunnahBrandColors.gold)
-                        Text(SunnahWidgetTimeFormatting.arabic(cal.hijriDay))
-                            .font(.largeTitle.bold())
-                            .foregroundStyle(.white)
-                        Text(cal.hijriMonthAr)
-                            .font(.headline)
-                            .foregroundStyle(.white)
-                        Text(SunnahWidgetTimeFormatting.arabic(cal.hijriYear))
-                            .font(.caption)
-                            .foregroundStyle(SunnahWidgetTheme.secondaryText)
-                    }
-                    .padding(12)
-                }
-            } else {
-                SunnahWidgetEmptyState(message: "افتح سُنّة لعرض التاريخ الهجري")
-            }
-        }
+        SunnahStandBySwitch(
+            family: family,
+            home: homeBody,
+            standBy: StandByHijriDateView(entry: entry)
+        )
         .modifier(CalSurface())
         .accessibilityLabel(entry.calendar.map { "\($0.weekdayAr) \($0.hijriDisplay)" } ?? "التاريخ الهجري غير متاح")
+    }
+
+    @ViewBuilder
+    private var homeBody: some View {
+        if let cal = calendarOrEmpty(entry) {
+            if family == .accessoryInline {
+                Text("\(SunnahWidgetTimeFormatting.arabic(cal.hijriDay)) \(cal.hijriMonthAr)")
+            } else if family == .accessoryCircular {
+                VStack {
+                    Text(SunnahWidgetTimeFormatting.arabic(cal.hijriDay))
+                        .font(.headline.bold())
+                    Text(cal.hijriMonthAr)
+                        .font(.caption2)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.6)
+                }
+            } else {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(cal.weekdayAr)
+                        .font(.caption.bold())
+                        .foregroundStyle(SunnahBrandColors.gold)
+                    Text(SunnahWidgetTimeFormatting.arabic(cal.hijriDay))
+                        .font(.largeTitle.bold())
+                        .foregroundStyle(.white)
+                    Text(cal.hijriMonthAr)
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                    Text(SunnahWidgetTimeFormatting.arabic(cal.hijriYear))
+                        .font(.caption)
+                        .foregroundStyle(SunnahWidgetTheme.secondaryText)
+                }
+                .padding(12)
+            }
+        } else {
+            SunnahWidgetEmptyState(message: "افتح سُنّة لعرض التاريخ الهجري")
+        }
     }
 }
 
@@ -218,5 +239,53 @@ struct RamadanCountdownView: View {
             return "باقي \(SunnahWidgetTimeFormatting.arabic(days)) يوماً على رمضان"
         }
         return cal.ramadanLabelAr
+    }
+}
+
+struct IslamicEventView: View {
+    @Environment(\.widgetFamily) private var family
+    let entry: CatalogWidgetEntry
+
+    var body: some View {
+        Group {
+            if let cal = entry.calendar, let name = cal.upcomingEventNameAr, !name.isEmpty {
+                if family == .accessoryRectangular {
+                    HStack {
+                        Text(name)
+                            .lineLimit(1)
+                        Spacer()
+                        if let days = cal.upcomingEventDays {
+                            Text(days == 0 ? "اليوم" : SunnahWidgetTimeFormatting.arabic(days))
+                        }
+                    }
+                } else {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("المناسبة القادمة")
+                            .font(.caption.bold())
+                            .foregroundStyle(SunnahBrandColors.gold)
+                        Text(name)
+                            .font(.title3.bold())
+                            .foregroundStyle(.white)
+                            .minimumScaleFactor(0.8)
+                        if let days = cal.upcomingEventDays {
+                            if days == 0 {
+                                Text("اليوم")
+                                    .font(.headline)
+                                    .foregroundStyle(SunnahBrandColors.gold)
+                            } else {
+                                Text("بعد \(SunnahWidgetTimeFormatting.arabic(days)) يوماً")
+                                    .font(.headline)
+                                    .foregroundStyle(SunnahBrandColors.gold)
+                            }
+                        }
+                    }
+                    .padding(12)
+                }
+            } else {
+                SunnahWidgetEmptyState(message: "افتح سُنّة لعرض المناسبات")
+            }
+        }
+        .modifier(CalSurface())
+        .accessibilityLabel(entry.calendar?.upcomingEventNameAr ?? "لا مناسبة قادمة")
     }
 }

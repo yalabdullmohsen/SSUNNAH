@@ -81,6 +81,9 @@
 		A048BF01CUSTCATWGT000000 /* SunnahCustomWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048FR01CUSTCATFILE00000 /* SunnahCustomWidgetCatalog.swift */; };
 		A049BF01QURCATWGT0000000 /* SunnahQuranMushafWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A049FR01QURCATFILE000000 /* SunnahQuranMushafWidgetCatalog.swift */; };
 		A04ABF01INTENTSWGT000000 /* SunnahWidgetIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04AFR01INTENTSFILE00000 /* SunnahWidgetIntents.swift */; };
+		A04BBF01STANDBYWGT000000 /* SunnahStandBySupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04BFR01STANDBYFILE00000 /* SunnahStandBySupport.swift */; };
+		A04CBF01HOMECATWGT000000 /* SunnahHomeWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CFR01HOMECATFILE00000 /* SunnahHomeWidgetCatalog.swift */; };
+		A04DBF01CONTCATWGT000000 /* SunnahContentExperienceCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04DFR01CONTCATFILE00000 /* SunnahContentExperienceCatalog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +193,9 @@
 		A048FR01CUSTCATFILE00000 /* SunnahCustomWidgetCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahCustomWidgetCatalog.swift; sourceTree = "<group>"; };
 		A049FR01QURCATFILE000000 /* SunnahQuranMushafWidgetCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahQuranMushafWidgetCatalog.swift; sourceTree = "<group>"; };
 		A04AFR01INTENTSFILE00000 /* SunnahWidgetIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahWidgetIntents.swift; sourceTree = "<group>"; };
+		A04BFR01STANDBYFILE00000 /* SunnahStandBySupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahStandBySupport.swift; sourceTree = "<group>"; };
+		A04CFR01HOMECATFILE00000 /* SunnahHomeWidgetCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahHomeWidgetCatalog.swift; sourceTree = "<group>"; };
+		A04DFR01CONTCATFILE00000 /* SunnahContentExperienceCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahContentExperienceCatalog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,6 +353,9 @@
 				A048FR01CUSTCATFILE00000 /* SunnahCustomWidgetCatalog.swift */,
 				A049FR01QURCATFILE000000 /* SunnahQuranMushafWidgetCatalog.swift */,
 				A04AFR01INTENTSFILE00000 /* SunnahWidgetIntents.swift */,
+				A04BFR01STANDBYFILE00000 /* SunnahStandBySupport.swift */,
+				A04CFR01HOMECATFILE00000 /* SunnahHomeWidgetCatalog.swift */,
+				A04DFR01CONTCATFILE00000 /* SunnahContentExperienceCatalog.swift */,
 				A029FR05WIDGETINFO /* Info.plist */,
 				A029FR08WIDGETENT /* PrayerWidget.entitlements */,
 			);
@@ -580,6 +589,9 @@
 				A048BF01CUSTCATWGT000000 /* SunnahCustomWidgetCatalog.swift in Sources */,
 				A049BF01QURCATWGT0000000 /* SunnahQuranMushafWidgetCatalog.swift in Sources */,
 				A04ABF01INTENTSWGT000000 /* SunnahWidgetIntents.swift in Sources */,
+				A04BBF01STANDBYWGT000000 /* SunnahStandBySupport.swift in Sources */,
+				A04CBF01HOMECATWGT000000 /* SunnahHomeWidgetCatalog.swift in Sources */,
+				A04DBF01CONTCATWGT000000 /* SunnahContentExperienceCatalog.swift in Sources */,
 				A029BF01WIDGETBUNDLE /* PrayerWidgetBundle.swift in Sources */,
 				A029BF02WIDGETENTRY /* PrayerWidgetEntry.swift in Sources */,
 				A029BF03WIDGETVIEWS /* PrayerWidgetViews.swift in Sources */,

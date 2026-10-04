@@ -49,6 +49,9 @@ const calCat = readIos("PrayerWidget/SunnahCalendarWidgetCatalog.swift");
 const adhCat = readIos("PrayerWidget/SunnahAdhkarWidgetCatalog.swift");
 const customCat = readIos("PrayerWidget/SunnahCustomWidgetCatalog.swift");
 const quranCat = readIos("PrayerWidget/SunnahQuranMushafWidgetCatalog.swift");
+const homeCat = readIos("PrayerWidget/SunnahHomeWidgetCatalog.swift");
+const contentCat = readIos("PrayerWidget/SunnahContentExperienceCatalog.swift");
+const standby = readIos("PrayerWidget/SunnahStandBySupport.swift");
 const intents = readIos("PrayerWidget/SunnahWidgetIntents.swift");
 const plugin = readIos("App/SunnahSharedDataPlugin.swift");
 const pbx = readIos("App.xcodeproj/project.pbxproj");
@@ -60,10 +63,13 @@ assert.ok(!existsSync(resolve(iosApp, "SunnahWatch")));
 assert.match(pbx, /PRODUCT_BUNDLE_IDENTIFIER = com\.yousef\.majlisilm\.PrayerWidget/);
 assert.match(bundle, /@main/);
 assert.match(bundle, /PrayerTimesWidget\(\)/);
-assert.match(bundle, /NextPrayerWidget\(\)/);
+assert.match(bundle, /CurrentPrayerWidget\(\)/);
+assert.match(bundle, /TodayInSunnahWidget\(\)/);
+assert.match(bundle, /DailyHadithWidget\(\)/);
 
 const kinds = [
   "PrayerTimesWidget",
+  "sunnah.widget.prayer.current",
   "sunnah.widget.prayer.next",
   "sunnah.widget.prayer.previous",
   "sunnah.widget.prayer.previous-next",
@@ -75,14 +81,25 @@ const kinds = [
   "sunnah.widget.calendar.dual",
   "sunnah.widget.calendar.today",
   "sunnah.widget.calendar.ramadan",
+  "sunnah.widget.calendar.event",
   "sunnah.widget.adhkar.morning",
   "sunnah.widget.adhkar.evening",
   "sunnah.widget.adhkar.time-aware",
   "sunnah.widget.adhkar.rotating",
+  "sunnah.widget.adhkar.streak",
   "sunnah.widget.custom",
   "sunnah.widget.quran.ayah",
+  "sunnah.widget.quran.goal",
   "sunnah.widget.mushaf.continue",
   "sunnah.widget.mushaf.bookmark",
+  "sunnah.widget.mushaf.progress",
+  "sunnah.widget.mushaf.quick-open",
+  "sunnah.widget.content.hadith",
+  "sunnah.widget.content.faidah",
+  "sunnah.widget.content.dua",
+  "sunnah.widget.home.today",
+  "sunnah.widget.home.actions",
+  "sunnah.widget.home.spiritual",
 ];
 assert.equal(new Set(kinds).size, kinds.length, "kinds unique");
 for (const kind of kinds) {
@@ -98,6 +115,8 @@ assert.match(envelope, /quranPayload/);
 assert.match(envelope, /mushafPayload/);
 assert.match(envelope, /customContentPayload/);
 assert.match(envelope, /preferencesPayload/);
+assert.match(envelope, /progressPayload/);
+assert.match(envelope, /contentSpotlightPayload/);
 assert.match(envelope, /decodeIsolated/);
 assert.match(refresh, /commitPrayer|commitEnvelope/);
 assert.doesNotMatch(refresh, /reloadAllTimelines/);
@@ -117,6 +136,7 @@ assert.match(deep, /SunnahWidgetDeepLinkFactory/);
 assert.match(deep, /www\.ssunnah\.com\/prayer-times/);
 assert.match(deep, /adhkar\/morning/);
 assert.match(deep, /mushaf\/page/);
+assert.match(deep, /hadith/);
 
 assert.match(entry, /galleryPreview/);
 assert.match(entry, /context\.isPreview/);
@@ -140,17 +160,23 @@ assert.match(platform, /SunnahWidgetFamilySupport/);
 assert.match(platform, /SunnahWidgetEmptyState/);
 assert.match(platform, /SunnahWidgetErrorState/);
 
-assert.match(prayerCat, /NextPrayerWidget|prayerNext/);
-assert.match(calCat, /RamadanCountdownWidget|calendarRamadan/);
-assert.match(adhCat, /أذكار الصباح/);
-assert.match(customCat, /اختر المحتوى من إعدادات الويدجت/);
-assert.match(quranCat, /ابدأ القراءة/);
+assert.match(prayerCat, /CurrentPrayerWidget|prayerCurrent/);
+assert.match(prayerCat, /StandByCurrentPrayerView|StandByPrayerCountdownView/);
+assert.match(calCat, /IslamicEventWidget|calendarEvent/);
+assert.match(adhCat, /AdhkarStreakWidget/);
+assert.match(quranCat, /QuranDailyGoalWidget|MushafQuickOpenWidget/);
+assert.match(homeCat, /TodayInSunnahWidget/);
+assert.match(homeCat, /TodayActionsWidget/);
+assert.match(contentCat, /DailyHadithWidget/);
+assert.match(standby, /StandByTodayInSunnahView/);
 assert.match(intents, /SelectCustomContentIntent/);
 assert.match(intents, /SelectPrayerWidgetStyleIntent/);
 assert.match(intents, /SelectPrayerGroupIntent/);
 assert.match(intents, /SelectCalendarStyleIntent/);
 assert.match(intents, /SelectAdhkarTypeIntent/);
 assert.match(intents, /SelectMushafBookmarkIntent/);
+assert.match(intents, /SelectQuranWidgetStyleIntent/);
+assert.match(intents, /SelectContentTypeIntent/);
 assert.match(intents, /SelectWidgetAppearanceIntent/);
 
 for (const name of [
@@ -162,12 +188,15 @@ for (const name of [
   "SunnahAdhkarWidgetCatalog.swift",
   "SunnahCustomWidgetCatalog.swift",
   "SunnahQuranMushafWidgetCatalog.swift",
+  "SunnahHomeWidgetCatalog.swift",
+  "SunnahContentExperienceCatalog.swift",
+  "SunnahStandBySupport.swift",
 ]) {
   assert.match(pbx, new RegExp(name.replace(/\./g, "\\.")));
 }
 
 const widgetSwift = [
-  entry, views, widget, bundle, platform, previews, prayerCat, calCat, adhCat, customCat, quranCat,
+  entry, views, widget, bundle, platform, previews, prayerCat, calCat, adhCat, customCat, quranCat, homeCat, contentCat, standby,
 ].join("\n");
 assert.doesNotMatch(widgetSwift, /islamicUmmAlQura[\s\S]{0,80}toHijri|Jean Meeus/);
 assert.doesNotMatch(prayerCat + calCat, /AdhanCalculation|Coordinates\(/);
@@ -205,8 +234,12 @@ const env = buildSunnahWidgetEnvelope(new Date("2026-06-15T11:00:00+03:00"), val
 assert.equal(env.schemaVersion, 1);
 assert.ok(env.calendarPayload);
 assert.ok((env.calendarPayload as { hijriMonth: number }).hijriMonth >= 1);
+assert.ok((env.calendarPayload as { upcomingEventNameAr?: string }).upcomingEventNameAr);
 assert.ok(env.adhkarPayload);
 assert.ok(env.quranPayload);
+assert.ok(env.progressPayload);
+assert.ok(env.contentSpotlightPayload);
+assert.equal(typeof (env.contentSpotlightPayload as { hadithText: string }).hadithText, "string");
 assert.equal(typeof (env.quranPayload as { ayahText: string }).ayahText, "string");
 assert.ok(((env.quranPayload as { ayahText: string }).ayahText.length) > 0);
 assert.doesNotMatch(JSON.stringify(env), /accessToken|refreshToken|password|email@/);

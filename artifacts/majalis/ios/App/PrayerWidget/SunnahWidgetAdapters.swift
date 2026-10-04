@@ -41,3 +41,15 @@ enum CustomContentWidgetAdapter {
         return payload()?.items.first(where: { $0.id == id })
     }
 }
+
+enum HomeProgressWidgetAdapter {
+    static func payload() -> SharedHomeProgressPayload? {
+        SunnahSharedStore.loadEnvelope()?.progressPayload
+    }
+}
+
+enum ContentSpotlightWidgetAdapter {
+    static func payload() -> SharedContentSpotlightPayload? {
+        SunnahSharedStore.loadEnvelope()?.contentSpotlightPayload
+    }
+}

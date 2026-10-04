@@ -54,9 +54,10 @@ struct SelectPrayerWidgetStyleIntent: WidgetConfigurationIntent {
 
 @available(iOS 17.0, *)
 enum PrayerWidgetStyleAppEnum: String, AppEnum {
-    case next, previous, previousNext, all
+    case current, next, previous, previousNext, all
     static var typeDisplayRepresentation: TypeDisplayRepresentation = "نمط الصلاة"
     static var caseDisplayRepresentations: [PrayerWidgetStyleAppEnum: DisplayRepresentation] = [
+        .current: "الحالية",
         .next: "التالية",
         .previous: "السابقة",
         .previousNext: "السابقة والتالية",
@@ -90,13 +91,15 @@ struct SelectCalendarStyleIntent: WidgetConfigurationIntent {
 
 @available(iOS 17.0, *)
 enum CalendarStyleAppEnum: String, AppEnum {
-    case hijri, dual, today, ramadan
+    case hijri, gregorian, dual, today, ramadan, event
     static var typeDisplayRepresentation: TypeDisplayRepresentation = "نمط التاريخ"
     static var caseDisplayRepresentations: [CalendarStyleAppEnum: DisplayRepresentation] = [
         .hijri: "هجري",
+        .gregorian: "ميلادي",
         .dual: "هجري وميلادي",
         .today: "اليوم",
         .ramadan: "رمضان",
+        .event: "مناسبة",
     ]
 }
 
@@ -124,6 +127,45 @@ struct SelectMushafBookmarkIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource = "إشارة المصحف"
     @Parameter(title: "عرض الإشارة المحفوظة", default: true)
     var useSelectedBookmark: Bool
+}
+
+@available(iOS 17.0, *)
+struct SelectQuranWidgetStyleIntent: WidgetConfigurationIntent {
+    static var title: LocalizedStringResource = "نمط القرآن"
+    @Parameter(title: "النمط", default: .lastPage)
+    var style: QuranWidgetStyleAppEnum
+}
+
+@available(iOS 17.0, *)
+enum QuranWidgetStyleAppEnum: String, AppEnum {
+    case lastPage, bookmark, dailyGoal
+    static var typeDisplayRepresentation: TypeDisplayRepresentation = "نمط القرآن"
+    static var caseDisplayRepresentations: [QuranWidgetStyleAppEnum: DisplayRepresentation] = [
+        .lastPage: "آخر صفحة",
+        .bookmark: "الإشارة",
+        .dailyGoal: "هدف اليوم",
+    ]
+}
+
+@available(iOS 17.0, *)
+struct SelectContentTypeIntent: WidgetConfigurationIntent {
+    static var title: LocalizedStringResource = "نوع المحتوى"
+    @Parameter(title: "النوع", default: .ayah)
+    var type: ContentTypeAppEnum
+}
+
+@available(iOS 17.0, *)
+enum ContentTypeAppEnum: String, AppEnum {
+    case ayah, hadith, dhikr, dua, faidah, note
+    static var typeDisplayRepresentation: TypeDisplayRepresentation = "محتوى"
+    static var caseDisplayRepresentations: [ContentTypeAppEnum: DisplayRepresentation] = [
+        .ayah: "آية",
+        .hadith: "حديث",
+        .dhikr: "ذكر",
+        .dua: "دعاء",
+        .faidah: "فائدة",
+        .note: "ملاحظة",
+    ]
 }
 
 @available(iOS 17.0, *)

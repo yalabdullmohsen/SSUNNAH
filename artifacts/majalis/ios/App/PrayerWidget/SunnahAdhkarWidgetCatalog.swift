@@ -59,6 +59,18 @@ struct RotatingAdhkarWidget: Widget {
     }
 }
 
+struct AdhkarStreakWidget: Widget {
+    let kind = SunnahWidgetKind.adhkarStreak
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
+            AdhkarStreakView(entry: entry)
+        }
+        .configurationDisplayName("سلسلة الأذكار")
+        .description("إنجاز اليوم وعدد أيام السلسلة إن وُجد تتبع معتمد.")
+        .supportedFamilies(SunnahWidgetFamilySupport.adhkarStreak)
+    }
+}
+
 private struct AdhkarSurface: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOSApplicationExtension 17.0, *) {
@@ -142,5 +154,60 @@ struct RotatingAdhkarView: View {
         .environment(\.layoutDirection, .rightToLeft)
         .widgetURL(SunnahWidgetDeepLinkFactory.adhkar(collection: entry.adhkar?.activeCollection ?? "morning"))
         .accessibilityLabel(entry.adhkar?.rotatingText ?? "ذكر")
+    }
+}
+
+struct AdhkarStreakView: View {
+    @Environment(\.widgetFamily) private var family
+    let entry: CatalogWidgetEntry
+
+    var body: some View {
+        Group {
+            if let progress = entry.progress, progress.hasCanonicalTracking {
+                if family == .accessoryCircular {
+                    VStack(spacing: 2) {
+                        Text(SunnahWidgetTimeFormatting.arabic(progress.adhkarStreakDays ?? 0))
+                            .font(.headline.bold())
+                        Text("يوم")
+                            .font(.caption2)
+                    }
+                } else if family == .accessoryRectangular {
+                    HStack {
+                        Text(todayLabel)
+                        Spacer()
+                        Text("سلسلة \(SunnahWidgetTimeFormatting.arabic(progress.adhkarStreakDays ?? 0))")
+                    }
+                } else {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("أذكار اليوم")
+                            .font(.caption.bold())
+                            .foregroundStyle(SunnahBrandColors.gold)
+                        Text(todayLabel)
+                            .font(.headline)
+                            .foregroundStyle(.white)
+                        Text("السلسلة \(SunnahWidgetTimeFormatting.arabic(progress.adhkarStreakDays ?? 0))")
+                            .font(.title2.bold())
+                            .foregroundStyle(SunnahBrandColors.gold)
+                    }
+                    .padding(12)
+                }
+            } else {
+                SunnahWidgetEmptyState(message: "افتح سُنّة لتسجيل ورد الأذكار")
+            }
+        }
+        .modifier(AdhkarSurface())
+        .environment(\.layoutDirection, .rightToLeft)
+        .widgetURL(SunnahWidgetDeepLinkFactory.adhkar(collection: entry.adhkar?.activeCollection ?? "morning"))
+        .accessibilityLabel(todayLabel)
+    }
+
+    private var todayLabel: String {
+        guard let progress = entry.progress else { return "لا تتبع بعد" }
+        if progress.morningAdhkarDone && progress.eveningAdhkarDone {
+            return "صباح ومساء مكتملان"
+        }
+        if progress.morningAdhkarDone { return "أذكار الصباح مكتملة" }
+        if progress.eveningAdhkarDone { return "أذكار المساء مكتملة" }
+        return "لم يُسجَّل ورد اليوم"
     }
 }

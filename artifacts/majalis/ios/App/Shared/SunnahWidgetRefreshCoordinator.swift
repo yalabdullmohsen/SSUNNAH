@@ -7,7 +7,7 @@ enum SunnahWidgetRefreshCoordinator {
     private static let log = Logger(subsystem: "com.yousef.majlisilm", category: "SunnahWidgetRefresh")
 
     enum Domain: String {
-        case prayer, calendar, adhkar, quran, mushaf, custom, preferences
+        case prayer, calendar, adhkar, quran, mushaf, custom, home, preferences
     }
 
     @discardableResult
@@ -52,6 +52,7 @@ enum SunnahWidgetRefreshCoordinator {
         if domains.contains(.quran) { out.append(contentsOf: SunnahWidgetKind.quranFamily) }
         if domains.contains(.mushaf) { out.append(contentsOf: SunnahWidgetKind.mushafFamily) }
         if domains.contains(.custom) { out.append(contentsOf: SunnahWidgetKind.customFamily) }
+        if domains.contains(.home) { out.append(contentsOf: SunnahWidgetKind.homeFamily) }
         if domains.contains(.preferences) {
             out.append(contentsOf: SunnahWidgetKind.allUnique)
         }
@@ -71,7 +72,9 @@ enum SunnahWidgetRefreshCoordinator {
             quranPayload: nil,
             mushafPayload: nil,
             customContentPayload: nil,
-            preferencesPayload: nil
+            preferencesPayload: nil,
+            progressPayload: nil,
+            contentSpotlightPayload: nil
         )
         env.schemaVersion = SunnahWidgetEnvelope.currentSchema
         env.generatedAtEpochMs = snapshot.updatedAtEpochMs
