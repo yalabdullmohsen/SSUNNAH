@@ -314,14 +314,6 @@ html.dark .as-tab--active,
   border-radius: var(--radius-card, 1.5rem);
 }
 
-.ai-dalil--quran,
-.amr-evidence--quran {
-}
-
-.ai-dalil--hadith,
-.amr-evidence--hadith {
-}
-
 /* علامات الساعة: إزالة بنفسجي غير هويّة */
 .as-status--lam-taqaa {
   --as-status-color: var(--mj-accent, #b08a3e) !important;

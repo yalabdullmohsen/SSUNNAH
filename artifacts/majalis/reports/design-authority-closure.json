@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "sha": "ref: refs/heads/cursor/design-pr-f-design-governance",
+  "coverage": {
+    "measuredAt": "2026-10-04T21:34:31.477Z",
+    "cssFileCount": 353,
+    "cssFilesCeiling": 353,
+    "measuredCssFiles": 353,
+    "regionsLabeled": true,
+    "emptyRules": 0,
+    "keepSpecialEmptyRules": 11,
+    "commentsOnlyFiles": 0,
+    "circularImports": 0,
+    "deadFilesPresent": [],
+    "microSheetsPresent": [],
+    "featureLocalRootAllowlisted": [
+      "styles/pages/hadith-design-language.css"
+    ],
+    "featureLocalRootGrowth": [],
+    "unknownTokenFamilies": [],
+    "bridgeCounts": {
+      "ds": 3356,
+      "elite": 23,
+      "em": 45,
+      "msk": 588,
+      "majalis": 3274
+    },
+    "deprecatedGrowth": [],
+    "fmParentEmptyRule": false,
+    "defeatedSearchHoverReturned": false,
+    "featureRegionRootInDs": false
+  },
+  "failures": [],
+  "selectorOwners": [
+    {
+      "selector": ".page-shell",
+      "owner": "styles/design-system.css (FOUNDATION)",
+      "role": "structural contract"
+    },
+    {
+      "selector": ".login-submit",
+      "owner": "styles/pages/auth.css (layout/a11y) + design-system premium seal (MODEL B)",
+      "role": "auth compatibility mapped to button authority"
+    },
+    {
+      "selector": ".search-result-row",
+      "owner": "styles/design-system.css (FEATURE)",
+      "role": "base row + hover; page may use variants only"
+    },
+    {
+      "selector": ".search-page-title",
+      "owner": "styles/design-system.css (FEATURE)",
+      "role": "search title"
+    },
+    {
+      "selector": ".tc-ring-btn",
+      "owner": "styles/design-system.css (FEATURE / tasbih)",
+      "role": "tasbih ring control"
+    },
+    {
+      "selector": ".ui-card",
+      "owner": "styles/design-system.css (COMPONENT)",
+      "role": "shared card"
+    },
+    {
+      "selector": ".ds-card",
+      "owner": "styles/design-system.css (COMPONENT)",
+      "role": "shared card"
+    },
+    {
+      "selector": ".ds-btn",
+      "owner": "styles/design-system.css (COMPONENT)",
+      "role": "shared button"
+    },
+    {
+      "selector": ".ds-stat",
+      "owner": "styles/design-system.css (COMPONENT)",
+      "role": "shared stat"
+    },
+    {
+      "selector": ".fm-parent",
+      "owner": "NONE (JSX structural class only)",
+      "role": "empty rule removed; class retained for structure"
+    }
+  ]
+}

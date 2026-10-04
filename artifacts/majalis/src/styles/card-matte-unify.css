@@ -26,17 +26,6 @@
   pointer-events: none !important;
 }
 
-.soft-card:not([data-scripture])::before,
-.soft-card:not([data-scripture])::after,
-.hub-card:not([data-scripture])::before,
-.hub-card:not([data-scripture])::after,
-.sc2::before,
-.sc2::after,
-.prophet-lux-card::before,
-.ui-card:not([data-scripture])::before,
-.ui-card:not([data-scripture])::after {
-}
-
 /* حلقات التركيز تبقى وظيفية — لا تُمس */
 .soft-card:focus-visible,
 .hub-card:focus-visible,

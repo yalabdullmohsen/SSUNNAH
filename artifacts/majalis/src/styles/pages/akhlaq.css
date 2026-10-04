@@ -197,12 +197,6 @@ html.dark .akl-cat--active,
   padding: 0.85rem 1rem;
 }
 
-.akl-block--quran {
-}
-
-.akl-block--hadith {
-}
-
 .akl-block--scholar {
   background: color-mix(in srgb, var(--mj-accent, var(--mj-accent)) 10%, var(--ss-card-bg));
 }

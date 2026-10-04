@@ -1,6 +1,6 @@
 /**
  * DESIGN_SYSTEM_CSS_DECOMPOSITION — logical authority regions in design-system.css.
- * cssFiles ceiling = 356. Physical component extract blocked while interaction
+ * cssFiles ceiling = 353 (PR E). Physical component extract blocked while interaction
  * per-file chunking would raise buttonRelatedImportantApprox (do not raise ceiling).
  * Run: node --import tsx src/lib/__tests__/css-authority-graph-gate.test.ts
  */

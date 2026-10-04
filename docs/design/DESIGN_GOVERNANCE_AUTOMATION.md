@@ -32,3 +32,14 @@ Colors · typography · spacing · sizes · shadows · borders · authority maps
 ## Enforcement
 
 Do **not** introduce new color / type / spacing / shadow / border **systems** without updating the matching AUTHORITY map + gate.
+
+## PR F — Authority closure (extends this framework)
+
+| Field | Value |
+|---|---|
+| Script | `artifacts/majalis/scripts/design-authority-closure-report.mjs` |
+| Gate | `test:design-authority-closure` (also via `test:css-authority-graph`, `test:design-governance`, `test:ci-unit`) |
+| Reports | `DESIGN_AUTHORITY_COVERAGE` · `SELECTOR_OWNER_MAP` · `TOKEN_MIGRATION_STATUS` · `COMPATIBILITY_RETIREMENT_STATUS` · `DEAD_CSS_EVIDENCE` · `CSS_IMPORT_GRAPH` |
+
+Fails on: empty selectors · comments-only CSS · circular imports · dead-file return · micro-sheet explosion · new feature-local `:root` · new token family · defeated selector return · cssFiles ceiling raise above 353.
+

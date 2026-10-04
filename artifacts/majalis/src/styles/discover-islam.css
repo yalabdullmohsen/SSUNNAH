@@ -34,9 +34,6 @@
   background: var(--color-surface, var(--mj-surface));
 }
 
-.dii-block--evidence {
-}
-
 .dii-block .page-tag {
   display: inline-block;
   margin-bottom: 0.45rem;

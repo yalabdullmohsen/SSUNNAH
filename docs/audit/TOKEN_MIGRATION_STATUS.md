@@ -1,0 +1,26 @@
+# TOKEN_MIGRATION_STATUS
+
+TASK_CLASSIFICATION: SHARED_PLATFORM
+
+## Canonical
+
+- `--sf-*` · `--ss-*` · `--mj-*` · `--cs-*` (Card bridge)
+
+## Bridges (growth forbidden; migrate-then-remove over time)
+
+| Family | Refs (approx) | Status |
+|---|---:|---|
+| `--ds-*` | 3356 | SEMANTIC_BRIDGE_REQUIRED (startup/DS) |
+| `--elite-*` | 23 | KEEP_COMPATIBILITY_WITH_EVIDENCE |
+| `--em-*` | 45 | SEMANTIC_BRIDGE |
+| `--msk-*` | 588 | KEEP_COMPATIBILITY_WITH_EVIDENCE |
+| `--majalis-*` | 3274 | KEEP_COMPATIBILITY_WITH_EVIDENCE |
+
+Unknown/new families: **none**
+
+Deprecated ceilings: {"elite":30,"em":50,"ds":3400,"msk":600,"majalis":3300}
+Deprecated growth breaches: **none**
+
+Prefix allowlist: `artifacts/majalis/reports/design-token-prefix-allowlist.json` (270 prefixes)
+
+TOKEN_DRIFT_PREVENTED = true

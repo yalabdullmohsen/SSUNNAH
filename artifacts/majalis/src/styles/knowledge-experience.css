@@ -607,10 +607,6 @@
   cursor: pointer;
 }
 
-html.dark .kx-block--definition,
-html[data-theme="dark"] .kx-block--definition {
-}
-
 html.dark .kx-library-card,
 html[data-theme="dark"] .kx-library-card {
   background: color-mix(in srgb, #0f3d2e 18%, var(--mj-surface));
@@ -756,14 +752,12 @@ html.chrome-immersive [data-global-back-control-host] {
   visibility: hidden !important;
 }
 
-
 .fiqh-book-grid.kx-layout--library {
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
   max-width: 48rem;
 }
-
 
 /* —— تنويع كتل data-kx-kind خارج الفقه —— */
 [data-kx-kind="definition"],
