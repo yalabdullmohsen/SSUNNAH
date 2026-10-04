@@ -17,7 +17,7 @@
 		"SplashScreen": {
 			"launchShowDuration": 0,
 			"launchAutoHide": false,
-			"backgroundColor": "#F7F3EB",
+			"backgroundColor": "#F8F6F1",
 			"showSpinner": false,
 			"splashImmersive": true,
 			"splashFullScreen": true
@@ -25,7 +25,7 @@
 		"StatusBar": {
 			"overlaysWebView": true,
 			"style": "DARK",
-			"backgroundColor": "#F7F3EB"
+			"backgroundColor": "#F8F6F1"
 		},
 		"Keyboard": {
 			"resize": "body",
@@ -50,7 +50,7 @@
 	},
 	"ios": {
 		"contentInset": "never",
-		"backgroundColor": "#F7F3EB",
+		"backgroundColor": "#F8F6F1",
 		"scrollEnabled": true
 	},
 	"packageClassList": [

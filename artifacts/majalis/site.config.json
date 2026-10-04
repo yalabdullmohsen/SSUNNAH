@@ -52,7 +52,7 @@
   "ogImageWidth": 1200,
   "ogImageHeight": 630,
   "$themeNote": "theme-color = لون سطح الصفحة لشريط الحالة (ثابت عبر المسارات). لون العلامة يبقى --mj-brand في theme.css.",
-  "themeColor": "#F7F3EB",
+  "themeColor": "#F8F6F1",
   "themeColorDark": "#101614",
   "brandColor": "#0F5C45",
   "brandColorDark": "#4FB48B",

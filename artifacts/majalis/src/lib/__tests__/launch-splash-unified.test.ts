@@ -10,7 +10,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "../../..");
 /** PWA / Capacitor / theme-color — شريط المتصفح */
-const BG = "#F7F3EB";
+const BG = "#F8F6F1";
 /** لوحة المحتوى من أول طلاء (ZERO FLICKER = critical canvas) */
 const CANVAS = "#F8F6F1";
 
@@ -48,7 +48,7 @@ assert.match(
   new RegExp(`background-color:\\s*(${CANVAS}|var\\(--mj-splash-bg\\)|#F8F6F1)`, "i"),
   "خلفية html/body = لوحة المحتوى النهائية",
 );
-assert.match(indexHtml, new RegExp(`theme-color" content="${BG}"`), "theme-color المتصفح/PWA يبقى #F7F3EB");
+assert.match(indexHtml, new RegExp(`theme-color" content="${BG}"`), "theme-color المتصفح/PWA يبقى #F8F6F1");
 assert.match(indexHtml, /--mj-splash-bg-light:\s*#F8F6F1/i, "دخولية الويب تطابق لوحة المحتوى");
 assert.match(indexHtml, /--mj-splash-bg:\s*var\(--mj-splash-bg-light\)/, "الدخول الافتراضي فاتح");
 assert.doesNotMatch(indexHtml, /apple-touch-startup-image/, "لا صور إقلاع PWA");
@@ -114,7 +114,7 @@ const launchColorset = readFileSync(
   "utf8",
 );
 assert.match(launchColorset, /"luminosity"[\s\S]*"dark"/, "لون ليلي لـ LaunchBackground");
-assert.match(launchColorset, /0\.969|0\.968/, "مكوّن أحمر ≈ #F7F3EB");
+assert.match(launchColorset, /0\.973|0\.972/, "مكوّن أحمر ≈ #F8F6F1");
 
 const capTs = readFileSync(resolve(root, "capacitor.config.ts"), "utf8");
 assert.match(capTs, /launchShowDuration:\s*0/, "مدة إظهار Splash = 0");
@@ -156,7 +156,7 @@ assert.doesNotMatch(
 
 const manifest = JSON.parse(readFileSync(resolve(root, "public/manifest.json"), "utf8"));
 assert.equal(manifest.background_color, BG);
-assert.equal(manifest.theme_color, "#F7F3EB");
+assert.equal(manifest.theme_color, "#F8F6F1");
 
 const brand = readFileSync(resolve(root, "src/components/brand/MajlisWordmark.tsx"), "utf8");
 assert.match(brand, /سُنّة/, "وردمارك يعرض سُنّة");

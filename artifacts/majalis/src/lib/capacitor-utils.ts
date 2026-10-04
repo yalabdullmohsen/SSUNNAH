@@ -12,7 +12,7 @@ export const isAndroid = getNativePlatform() === "android";
 export const isIOS = getNativePlatform() === "ios";
 
 /** ألوان سطح افتراضية — تطابق theme-color / --mj-bg */
-export const STATUS_BAR_BG_LIGHT = "#F7F3EB";
+export const STATUS_BAR_BG_LIGHT = "#F8F6F1";
 export const STATUS_BAR_BG_DARK = "#101614";
 
 /**

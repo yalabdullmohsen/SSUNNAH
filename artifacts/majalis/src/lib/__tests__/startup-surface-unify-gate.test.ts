@@ -24,7 +24,7 @@ assert.match(indexHtml, /#F8F6F1|#f8f6f1/i);
 assert.match(splashBoot, /mj-launch-splash/);
 
 /* مسار الخطأ الأصلي: نفس خلفية الدخولية + شعار — بلا شاشة رمادية ثانية */
-assert.match(native, /#F7F3EB|#f7f3eb/i, "startup-background-flash: native-load-error must use splash beige");
+assert.match(native, /#F8F6F1|#F8F6F1/i, "startup-background-flash: native-load-error must use splash beige");
 assert.match(native, /رفيقك في العلم والعمل/, "native-load-error must reuse Sunnah tagline");
 assert.match(native, /data-startup-surface="sunnah"/);
 assert.match(native, /\.progress|class="progress"|mj-launch-splash__progress|\.pulse|class="pulse"/, "خط تقدّم خطي مثل الدخولية");

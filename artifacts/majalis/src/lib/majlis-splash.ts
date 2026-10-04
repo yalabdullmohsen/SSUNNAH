@@ -36,7 +36,7 @@ export const SPLASH_SESSION_KEY = "mj.launch-splash.session.v4";
 export const SPLASH_TAGLINE = "رفيقك في العلم والعمل";
 
 /** يطابق LaunchBackground light + App Shell. */
-export const SPLASH_BG_LIGHT = "#F7F3EB";
+export const SPLASH_BG_LIGHT = "#F8F6F1";
 
 /** يطابق LaunchBackground dark + App Shell ليلي. */
 export const SPLASH_BG_DARK = "#101614";
