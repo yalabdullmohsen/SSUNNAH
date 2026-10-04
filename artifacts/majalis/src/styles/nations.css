@@ -1,11 +1,11 @@
 /* ═══════════════════════════════════════════════════════════════
    قسم «الأمم السابقة»
-   يعتمد متغيرات الهوية القائمة (--elite-forest وأخواتها) ولا يعرّف
+   يعتمد متغيرات الهوية القائمة (--mj-brand-deep وأخواتها) ولا يعرّف
    ألواناً جديدة خارج النظام. RTL أصيل، ومقاسات تعمل من 320px صعوداً.
    ═══════════════════════════════════════════════════════════════ */
 
 .nations-page {
-  --nat-ink: var(--elite-forest, #173D35);
+  --nat-ink: var(--mj-brand-deep, #173D35);
   --nat-soft: color-mix(in srgb, var(--nat-ink) 8%, transparent);
   --nat-line: color-mix(in srgb, var(--nat-ink) 18%, transparent);
   padding-bottom: 4rem;

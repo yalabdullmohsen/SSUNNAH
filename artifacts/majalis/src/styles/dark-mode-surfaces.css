@@ -389,7 +389,7 @@ html.dark .quran-hub-card__title,
 html.dark .quran-hub-sections__title,
 html.dark .quran-hub-features__title,
 html.dark .quran-hub-card__link {
-  color: var(--elite-forest, var(--accent-strong, #7BD6AE)) !important;
+  color: var(--mj-brand-deep, var(--accent-strong, #7BD6AE)) !important;
 }
 html[data-theme="dark"] .hub-card__desc,
 html[data-theme="dark"] .quran-hub-card__desc,

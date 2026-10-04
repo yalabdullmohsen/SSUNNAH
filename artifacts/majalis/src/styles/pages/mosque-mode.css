@@ -126,7 +126,7 @@
   color: var(--mj-ink, #E9EFEC);
 }
 :is(html[data-theme="dark"], html.dark) .mosque-mode__link-label {
-  color: var(--elite-forest, #7bd6ae);
+  color: var(--mj-brand-deep, #7bd6ae);
 }
 
 

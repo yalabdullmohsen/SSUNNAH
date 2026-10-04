@@ -40,7 +40,7 @@ assert.match(
 );
 
 const aliases = read("src/styles/theme-aliases.css");
-assert.match(aliases, /--mj-brand-deep:\s*var\(--elite-forest/, "night brand-deep ink");
+assert.match(aliases, /--mj-brand-deep:\s*#8FD4B0/, "night brand-deep ink");
 assert.match(aliases, /--mj-brand-deep-surface:\s*#0E1C17/, "surface role stays separate");
 
 const ad = read("src/styles/components/header-ad-slot.css");

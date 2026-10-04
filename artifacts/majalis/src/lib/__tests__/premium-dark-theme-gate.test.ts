@@ -78,7 +78,7 @@ assert.match(theme, /--mj-brand-deep:\s*#8FD4B0/, "brand-deep ليلي = غاب�
 
 const aliases = read("src/styles/theme-aliases.css");
 assert.match(aliases, /--mj-bg:\s*var\(--surface-app/, "aliases: --mj-bg يتبع --surface-app");
-assert.match(aliases, /--mj-brand-deep:\s*var\(--elite-forest/, "aliases: brand-deep ليلي");
+assert.match(aliases, /--mj-brand-deep:\s*#8FD4B0/, "aliases: brand-deep ليلي");
 assert.match(aliases, /dynamic-range:\s*high/, "OLED/HDR في aliases لا في الجسور");
 
 const recovery = read("src/styles/dark-mode-recovery.css");

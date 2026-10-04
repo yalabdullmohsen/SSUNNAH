@@ -218,7 +218,7 @@ html:not([data-theme="dark"]) .navbar-menu-btn.navbar-menu-btn {
    داكنة لغيرها) فيتعذّر اختيار لون نص يصلح للحالتين. الحل تثبيت الخلفية
    صراحةً بدل افتراضها — هنا نحن من يحدّدها، فلا افتراض. */
 html[data-theme="dark"] .seerah-timeline__dot.seerah-timeline__dot {
-  background-color: var(--em-300) !important;
+  background-color: color-mix(in srgb, var(--mj-brand) 45%, var(--mj-surface)) !important;
   color: var(--mj-brand-deep) !important;
 }
 

@@ -219,7 +219,7 @@ html.dark,
   --mj-brand: #4FB48B;
   --mj-brand-soft: #16261F;
   --mj-brand-tint: color-mix(in srgb, var(--mj-brand) 14%, var(--mj-surface));
-  --mj-brand-deep: var(--elite-forest, #8FD4B0);
+  --mj-brand-deep: #8FD4B0;
   --mj-brand-deep-ink: #EDE8DF;
   --mj-brand-deep-surface: #0E1C17;
   --mj-accent: #C9A86C;

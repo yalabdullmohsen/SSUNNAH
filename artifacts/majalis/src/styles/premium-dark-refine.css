@@ -132,9 +132,9 @@
   --mss-on-hero-muted: var(--pd-ink-2);
   --mss-on-hero-accent: var(--pd-emerald);
   --ss-shadow-soft: var(--pd-elev-1);
-  --elite-shadow-xs: var(--pd-elev-1);
-  --elite-shadow-sm: var(--pd-elev-1);
-  --elite-shadow-md: var(--pd-elev-2);
+  --ss-shadow-xs: var(--pd-elev-1);
+  --ss-shadow-sm: var(--pd-elev-1);
+  --ss-shadow-md: var(--pd-elev-2);
   --shadow-soft: var(--pd-elev-1);
   --shadow-sheet: var(--pd-elev-3);
 }
