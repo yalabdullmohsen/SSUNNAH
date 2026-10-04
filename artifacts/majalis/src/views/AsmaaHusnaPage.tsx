@@ -16,6 +16,7 @@ import { ListScreen } from "@/components/design-system/screens";
 import { truncateAtWord } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/design-system/Buttons";
+import { AppBottomSheet } from "@/components/ui/AppBottomSheet";
 
 const CATEGORIES = [...ASMA_CATEGORIES];
 const STATUS_FILTERS: Array<"الكل" | AsmaStatus> = ["الكل", "ثابت", "مشهور"];
@@ -31,20 +32,6 @@ export default function AsmaaHusnaPage() {
     try { return new Set(JSON.parse(localStorage.getItem("ah-favs") || "[]")); }
     catch { return new Set(); }
   });
-
-  useEffect(() => {
-    if (!selected) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setSelected(null);
-    };
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prev;
-    };
-  }, [selected]);
 
   useEffect(() => {
     applyPageSeo({
@@ -217,30 +204,27 @@ export default function AsmaaHusnaPage() {
 
       {/* ═══ نافذة التفاصيل ═══ */}
       {selected && (
-        /* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events */
-        <div
-          className="ah-modal-backdrop"
-          onClick={() => setSelected(null)}
-          role="presentation"
+        <AppBottomSheet
+          open={Boolean(selected)}
+          onClose={() => setSelected(null)}
+          title={selected.arabic}
+          snap="auto"
+          className="ah-modal-sheet"
+          headerExtra={
+            <IconButton
+              type="button"
+              className={`ah-modal__fav${favs.has(selected.num) ? " ah-modal__fav--active" : ""}`}
+              onClick={() => toggleFav(selected.num)}
+              label="تفضيل"
+            >
+              <Heart size={18} />
+            </IconButton>
+          }
         >
-          <div
-            className="ah-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="ah-modal-name"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="ah-modal" dir="rtl">
             <div className="ah-modal__head">
               <span className="ah-modal__num">{selected.num}</span>
               <h2 id="ah-modal-name" className="ah-modal__name">{selected.arabic}</h2>
-              <IconButton
-                type="button"
-                className={`ah-modal__fav${favs.has(selected.num) ? "ah-modal__fav--active" : ""}`}
-                onClick={() => toggleFav(selected.num)}
-                label="تفضيل"
-              >
-                <Heart size={18} />
-              </IconButton>
             </div>
 
             <div className="ah-modal__section">
@@ -268,17 +252,8 @@ export default function AsmaaHusnaPage() {
             </div>
 
             <div className="ah-modal__cat-badge">{selected.category}</div>
-
-            <Button
-              type="button"
-              variant="outline"
-              className="ah-modal__close"
-              onClick={() => setSelected(null)}
-            >
-              إغلاق
-            </Button>
           </div>
-        </div>
+        </AppBottomSheet>
       )}
 
       <ExploreAlsoNav

@@ -1,0 +1,35 @@
+{
+  "wave": "WAVE5_PR_H",
+  "taskClassification": "SHARED_PLATFORM",
+  "baseCommit": "e3440fec361eb0bf761d97c550711e613ed6906f",
+  "absorbed": [
+    {
+      "id": "vault-add-note",
+      "file": "views/VaultPage.tsx",
+      "to": "Dialog + Textarea",
+      "classification": "APPROVED"
+    },
+    {
+      "id": "asmaa-detail",
+      "file": "views/AsmaaHusnaPage.tsx",
+      "to": "AppBottomSheet",
+      "classification": "APPROVED"
+    },
+    {
+      "id": "quran-numbers-empty",
+      "file": "pages/quran/ui/QuranNumbersView.tsx",
+      "to": "NoResultsState",
+      "classification": "APPROVED"
+    }
+  ],
+  "residuals": {
+    "LEGACY": ["CalendarPage", "HadithView", "AdhkarDhikrSheet", "AssessmentModal", "FaidaImageCardModal"],
+    "SPECIAL_CASE": ["admin overlays", "mushaf sheets"],
+    "KEEP_JUSTIFIED": ["GlobalSearchModal", "SideNavDrawer", "NativeBack window.confirm"]
+  },
+  "outputs": [
+    "VAULT_NOTE_ON_DIALOG",
+    "ASMAA_DETAIL_ON_APP_BOTTOM_SHEET",
+    "QURAN_NUMBERS_EMPTY_ON_NO_RESULTS"
+  ]
+}

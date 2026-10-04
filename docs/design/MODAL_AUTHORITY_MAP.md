@@ -3,8 +3,9 @@
 | Field | Value |
 |---|---|
 | Status | **AUTHORITY MAP** |
-| Date | 2026-10-03 |
+| Date | 2026-10-04 |
 | Exit | `MODAL_AUTHORITY_ONLY` (product) |
+| Wave | Eradication **PR H / Wave 5** |
 
 No parallel modal kit. Compose Radix/shadcn primitives + product façades.
 
@@ -22,12 +23,15 @@ No parallel modal kit. Compose Radix/shadcn primitives + product façades.
 
 | Surface | Class |
 |---|---|
-| Product Dialog / AlertDialog / ConfirmDialog / AppBottomSheet | APPROVED |
+| Product Dialog / AlertDialog / ConfirmDialog / AppBottomSheet | **CANONICAL_AUTHORITY** / APPROVED |
+| `VaultPage` AddNoteModal | APPROVED (`Dialog` + `Textarea`) |
+| `AsmaaHusnaPage` name detail | APPROVED (`AppBottomSheet`) |
+| `QuranNumbersView` stat sheet | APPROVED (`AppBottomSheet` — prior) |
 | Filter / More / Update sheets using AppBottomSheet | APPROVED |
 | `AdminConfirmDialog` + `.adm-modal*` | SPECIAL_CASE (ADMIN_ONLY) |
 | Mushaf ayah sheets / bookmark editor portals | SPECIAL_CASE (MUSHAF_SPECIAL) |
-| Page-local `role=dialog` without Dialog/Sheet | LEGACY — migrate when touched |
-| `window.confirm` / `window.alert` in product | FORBIDDEN (AdminConfirmDialog may still wrap admin flows) |
+| Remaining page-local `role=dialog` DIY | LEGACY — migrate when touched |
+| `window.confirm` / `window.alert` in product | FORBIDDEN (NativeBack system exit · AdminConfirmDialog internals held) |
 
 ## Visual / behavior contract
 
@@ -41,15 +45,6 @@ No parallel modal kit. Compose Radix/shadcn primitives + product façades.
 | Focus | trap + restore · initial focus on cancel for destructive |
 | Mobile | prefer `AppBottomSheet` for tall / filter UIs |
 | z-index | `--z-overlay-*` / FloatingLayer policy — no raw stacking wars |
-
-## Inventory snapshot
-
-| Kind | Files (approx) |
-|---|---:|
-| Sheet / AppBottomSheet consumers | 18 |
-| AdminConfirmDialog consumers | 26 |
-| Product AlertDialog façade | ConfirmDialog (new) |
-| window.confirm outside admin confirm helper | NativeBack (system) · AdminConfirmDialog internals |
 
 ## Gates
 

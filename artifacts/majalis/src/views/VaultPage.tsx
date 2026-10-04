@@ -44,6 +44,14 @@ import "@/styles/pages/vault.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { ACTION, EMPTY } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Textarea } from "@/components/ui/textarea";
 const SECTION_HREF: Record<ReadingSection, string> = {
   adhkar: "/adhkar",
   qa: "/quiz",
@@ -153,21 +161,23 @@ function VaultIcon({ type }: { type: string }) {
 // ─── Add Note Modal ───────────────────────────────────────────────────────────
 
 function AddNoteModal({
+  open,
   onSave,
   onClose,
 }: {
+  open: boolean;
   onSave: (text: string) => Promise<void>;
   onClose: () => void;
 }) {
   const [text, setText] = useState("");
   const [saving, setSaving] = useState(false);
-  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
-    document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
-  }, [onClose]);
+    if (!open) {
+      setText("");
+      setSaving(false);
+    }
+  }, [open]);
 
   const handleSave = async () => {
     const trimmed = text.trim();
@@ -179,37 +189,36 @@ function AddNoteModal({
   };
 
   return (
-    // نقر الخلفية للإغلاق مصحوب بمعالج Escape فعلي (أعلاه) وزر إغلاق ظاهر —
-    // مساران بديلان كاملان بلوحة المفاتيح.
-     
-    <div className="vault-modal-backdrop" onClick={onClose} role="presentation">
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
-      <div className="vault-modal" role="dialog" aria-modal="true" aria-label="إضافة ملاحظة" onClick={(e) => e.stopPropagation()}>
-        <div className="vault-modal__head">
-          <h3 className="vault-modal__title">إضافة ملاحظة</h3>
-          <Button variant="ghost" type="button" className="vault-modal__close" onClick={onClose} aria-label="إغلاق">✕</Button>
-        </div>
-        <textarea
-          ref={textareaRef}
+    <Dialog open={open} onOpenChange={(next) => { if (!next) onClose(); }}>
+      <DialogContent className="vault-modal" aria-describedby={undefined}>
+        <DialogHeader className="vault-modal__head">
+          <DialogTitle className="vault-modal__title">إضافة ملاحظة</DialogTitle>
+        </DialogHeader>
+        <Textarea
           className="vault-modal__textarea"
-          aria-label="اكتب ملاحظتك هنا…" placeholder="اكتب ملاحظتك هنا…"
+          aria-label="اكتب ملاحظتك هنا…"
+          placeholder="اكتب ملاحظتك هنا…"
           value={text}
           onChange={(e) => setText(e.target.value)}
           rows={5}
         />
-        <div className="vault-modal__foot">
-          <Button variant="ghost" type="button" className="vault-btn vault-btn--ghost" onClick={onClose}>إلغاء</Button>
-          <Button variant="ghost"
+        <DialogFooter className="vault-modal__foot">
+          <Button variant="ghost" type="button" className="vault-btn vault-btn--ghost" onClick={onClose}>
+            إلغاء
+          </Button>
+          <Button
+            variant="primary"
             type="button"
             className="vault-btn vault-btn--primary"
-            onClick={handleSave}
+            onClick={() => void handleSave()}
             disabled={saving || !text.trim()}
+            loading={saving}
           >
-            {saving ? "…" : "حفظ"}
+            حفظ
           </Button>
-        </div>
-      </div>
-    </div>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 }
 
@@ -774,9 +783,11 @@ export default function VaultPage() {
         </div>
       )}
 
-      {showAddNote && (
-        <AddNoteModal onSave={handleAddNote} onClose={() => setShowAddNote(false)} />
-      )}
+      <AddNoteModal
+        open={showAddNote}
+        onSave={handleAddNote}
+        onClose={() => setShowAddNote(false)}
+      />
 
       <div className="twh-share">
         <ShareButtons title="مخزن المعرفة — سُنّة" url="https://www.ssunnah.com/vault" />
