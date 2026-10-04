@@ -10,12 +10,14 @@
 | JS publisher | `src/lib/plugins/sunnah-shared-prayer-publish.ts` |
 | Widget kind | `PrayerTimesWidget` (`SunnahWidgetKind.prayerTimes`) |
 | Schema | `sunnah.shared.prayer.v1` · `schemaVersion = 1` |
+| Envelope | `sunnah.shared.envelope.v1` · independent domain payloads |
 
 ## Allowed shared payloads
 
 | Payload | Key | Consumers (future) |
 |---------|-----|---------------------|
 | Prayer times + next + countdown anchors | `sunnah.shared.prayer.v1` | Main · LA · Widget · Watch |
+| Widget envelope (isolated domains) | `sunnah.shared.envelope.v1` | Main · Widget |
 | Progress counters | `sunnah.shared.progress.v1` | Main · Widget · Watch |
 
 ## Forbidden in App Group

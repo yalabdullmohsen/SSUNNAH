@@ -866,7 +866,9 @@ function AppShellInner() {
     location === "/notifications-and-sound" ||
     location.startsWith("/notifications-and-sound?") ||
     location === "/feature-tour" ||
-    location.startsWith("/feature-tour?");
+    location.startsWith("/feature-tour?") ||
+    location === "/widget-center" ||
+    location.startsWith("/widget-center?");
 
   useEffect(() => {
     const root = document.documentElement;

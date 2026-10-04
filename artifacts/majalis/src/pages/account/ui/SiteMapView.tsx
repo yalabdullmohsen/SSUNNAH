@@ -150,6 +150,7 @@ const SECTIONS = [
       { href: "/stats",              label: "إحصائياتي",           desc: "إحصائيات نشاطك" },
       { href: "/progress",           label: "مركز التقدّم",         desc: "آخر قراءة ودروس وتقدّم محلي" },
       { href: "/offline",            label: "مركز دون اتصال",      desc: "التنزيلات والمخزون المحلي" },
+      { href: "/widget-center",      label: "مركز الويدجت",         desc: "معاينة وإعداد ويدجت سُنّة" },
       { href: "/settings",           label: "الإعدادات",           desc: "إعدادات الحساب والتطبيق" },
     ],
   },

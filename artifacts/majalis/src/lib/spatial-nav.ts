@@ -27,6 +27,7 @@ const MODAL_PREFIXES = [
   "/settings",
   "/notifications",
   "/privacy-center",
+  "/widget-center",
   "/support",
   "/contact",
 ];

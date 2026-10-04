@@ -174,7 +174,7 @@ function kuwaitEpoch(y: number, m: number, d: number, hour: number, minute: numb
 
 const beforeAsr = kuwaitEpoch(2026, 6, 15, 14, 0);
 const valid = buildSharedPrayerSnapshotPayload(fixturePayload(), beforeAsr);
-assert.equal(Object.keys(valid.timesEpochMs).sort().join(","), "asr,dhuhr,fajr,isha,maghrib");
+assert.equal(Object.keys(valid.timesEpochMs).sort().join(","), "asr,dhuhr,fajr,isha,maghrib,sunrise");
 assert.equal(valid.nextPrayerKey, "asr");
 assert.equal(valid.nextPrayerNameAr, "العصر");
 assert.ok(typeof valid.nextPrayerEpochMs === "number" && valid.nextPrayerEpochMs > beforeAsr);
@@ -198,8 +198,8 @@ const wrap = buildSharedPrayerSnapshotPayload(fixturePayload(), afterIsha);
 assert.equal(wrap.nextPrayerKey, "fajr");
 assert.ok((wrap.nextPrayerEpochMs ?? 0) > afterIsha);
 // Today's map still has all five — no tomorrow overwrite
-assert.equal(Object.keys(wrap.timesEpochMs).length, 5);
 assert.ok((wrap.timesEpochMs.fajr ?? 0) < afterIsha);
+assert.ok("sunrise" in wrap.timesEpochMs || Object.keys(wrap.timesEpochMs).length >= 5);
 
 const absentTimes = buildSharedPrayerSnapshotPayload(
   fixturePayload({

@@ -45,6 +45,7 @@ function titleFromPath(path: string): string {
   "/tawba": "التوبة والاستغفار",
   "/sins-and-rights": "الذنوب والحقوق",
   "/settings": "الإعدادات",
+  "/widget-center": "مركز الويدجت",
   "/internal/status": "حالة المنصة",
   "/dev/design-system": "معرض نظام التصميم",
 };
@@ -435,6 +436,7 @@ const PATHS = [
   "/vault",
   "/progress",
   "/offline",
+  "/widget-center",
   "/waqf",
   "/wasaya-nabawiyya",
   "/whats-new",
@@ -492,7 +494,7 @@ function inferSection(path: string): AppRouteSection {
   if (/^\/(library|scholar)/.test(path)) return "library";
   if (/^\/(adhkar|dua|tasbih|wird)/.test(path)) return "adhkar";
   if (/^\/(prayer|qibla|adhan)/.test(path)) return "prayer";
-  if (/^\/(login|register|settings|account|privacy|notification)/.test(path)) return "account";
+  if (/^\/(login|register|settings|account|privacy|notification|widget-center)/.test(path)) return "account";
   if (/^\/(search|memorize|quiz|flash|islamic-glossary|sitemap|glossary)/.test(path)) return "tools";
   return "other";
 }

@@ -11,7 +11,7 @@
 
 Depends on: `docs/audit/IOS_APP_GROUPS_FOUNDATION_REPORT.md` (`IOS_SHARED_DATA_FOUNDATION_READY`).
 
-**Data publication (repo fix):** App Group snapshot is published from `publishPrayerSnapshotForWidgets` independently of alert-enabled prefs and notification schedule success; today's `timesEpochMs` no longer overwritten by tomorrow slots; WidgetKit reload uses `reloadTimelines(ofKind: PrayerTimesWidget)` after synchronize; gallery preview uses representative placeholder; Home Screen missing data shows actionable Arabic open-app state. Gate: `IOS_PRAYER_WIDGET_DATA_CONTRACT_GATE`. Installed App Store binaries require a future iOS update containing this fix.
+**Data publication (repo fix):** App Group snapshot is published from `publishPrayerSnapshotForWidgets` independently of alert-enabled prefs and notification schedule success; today's `timesEpochMs` no longer overwritten by tomorrow slots; WidgetKit reload uses `reloadTimelines(ofKind: PrayerTimesWidget)` after synchronize; gallery preview uses representative placeholder with always-future next; Home Screen missing data shows actionable Arabic open-app state. Catalog widgets live in separate Swift files; `PrayerTimesWidget.swift` / `PrayerWidgetEntry.swift` / `PrayerWidgetViews.swift` remain prayer-only. Gate: `IOS_PRAYER_WIDGET_DATA_CONTRACT_GATE` + `IOS_SUNNAH_WIDGET_PLATFORM_CONTRACT_GATE`. Installed App Store binaries require a future iOS update containing this fix.
 
 ---
 

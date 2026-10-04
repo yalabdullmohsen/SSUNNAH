@@ -1,7 +1,7 @@
 /** Re-export domain lazy pages for AppRoutes. */
 
 export {
-  SiteMapPage, FawaidPage, QuizPage, LoginPage, RegisterPage, SettingsPage, FeatureTourPage, AccountDeletionPage, SectionsPage, IslamicGlossaryPage, FlashCardsPage, NotificationSettingsPage, NotificationsAndSoundPage, ProgressCenterPage, OfflineCenterPage
+  SiteMapPage, FawaidPage, QuizPage, LoginPage, RegisterPage, SettingsPage, FeatureTourPage, AccountDeletionPage, SectionsPage, IslamicGlossaryPage, FlashCardsPage, NotificationSettingsPage, NotificationsAndSoundPage, ProgressCenterPage, OfflineCenterPage, WidgetCenterPage
 } from "./account";
 
 export {

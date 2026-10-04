@@ -12,7 +12,9 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "getAppGroupId", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "publishPrayerSnapshot", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "publishProgressSnapshot", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "publishWidgetEnvelope", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "readPrayerSnapshot", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "readWidgetDiagnostics", returnType: CAPPluginReturnPromise),
     ]
 
     @objc func getAppGroupId(_ call: CAPPluginCall) {
@@ -58,7 +60,7 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
             nextHasStarted: call.getBool("nextHasStarted") ?? false,
             updatedAtEpochMs: Int64(Date().timeIntervalSince1970 * 1000)
         )
-        let ok = SunnahSharedStore.publishPrayer(snap)
+        let ok = SunnahWidgetRefreshCoordinator.commitPrayer(snap)
         if ok {
             // Reload only after App Group write+synchronize committed.
             WidgetCenter.shared.reloadTimelines(ofKind: SunnahWidgetKind.prayerTimes)
@@ -85,6 +87,21 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
         call.resolve(["ok": ok])
     }
 
+    @objc func publishWidgetEnvelope(_ call: CAPPluginCall) {
+        guard let json = call.getString("envelopeJson"),
+              let data = json.data(using: .utf8)
+        else {
+            call.resolve(["ok": false])
+            return
+        }
+        let env = SunnahWidgetEnvelopeCodec.decodeIsolated(from: data)
+        let rawDomains = call.getArray("domains", String.self) ?? []
+        var domains = Set(rawDomains.compactMap { SunnahWidgetRefreshCoordinator.Domain(rawValue: $0) })
+        if domains.isEmpty { domains = [.calendar, .adhkar, .quran, .mushaf, .custom] }
+        let ok = SunnahWidgetRefreshCoordinator.commitEnvelope(env, domains: domains)
+        call.resolve(["ok": ok, "schemaVersion": env.schemaVersion])
+    }
+
     @objc func readPrayerSnapshot(_ call: CAPPluginCall) {
         guard let snap = SunnahSharedStore.loadPrayer() else {
             call.resolve(["found": false])
@@ -101,6 +118,28 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
             "nextPrayerEpochMs": snap.nextPrayerEpochMs as Any,
             "nextHasStarted": snap.nextHasStarted,
             "updatedAtEpochMs": snap.updatedAtEpochMs,
+        ])
+    }
+
+    @objc func readWidgetDiagnostics(_ call: CAPPluginCall) {
+        let env = SunnahSharedStore.loadEnvelope()
+        var domains: [String] = []
+        if env?.prayerPayload != nil { domains.append("prayer") }
+        if env?.calendarPayload != nil { domains.append("calendar") }
+        if env?.adhkarPayload != nil { domains.append("adhkar") }
+        if env?.quranPayload != nil { domains.append("quran") }
+        if env?.mushafPayload != nil { domains.append("mushaf") }
+        if env?.islamicEventsPayload != nil { domains.append("islamicEvents") }
+        if env?.hadithPayload != nil { domains.append("hadith") }
+        if env?.duaPayload != nil { domains.append("dua") }
+        if env?.progressPayload != nil { domains.append("progress") }
+        if env?.diagnosticsPayload != nil { domains.append("diagnostics") }
+        call.resolve([
+            "appGroupAvailable": SunnahAppGroup.defaults != nil,
+            "schemaVersion": env?.schemaVersion as Any,
+            "generatedAtEpochMs": env?.generatedAtEpochMs as Any,
+            "domainsPresent": domains,
+            "futureBinaryRequired": true,
         ])
     }
 }

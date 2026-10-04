@@ -67,6 +67,23 @@
 		A031BF01DEEPAPP /* SunnahPrayerDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A031FR01DEEPLINK /* SunnahPrayerDeepLink.swift */; };
 		A031BF02DEEPLA /* SunnahPrayerDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A031FR01DEEPLINK /* SunnahPrayerDeepLink.swift */; };
 		A031BF03DEEPWGT /* SunnahPrayerDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A031FR01DEEPLINK /* SunnahPrayerDeepLink.swift */; };
+		A040BF01ENVELOPEAPP00000 /* SunnahWidgetEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040FR01ENVELOPEFILE0000 /* SunnahWidgetEnvelope.swift */; };
+		A040BF02ENVELOPEWGT00000 /* SunnahWidgetEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040FR01ENVELOPEFILE0000 /* SunnahWidgetEnvelope.swift */; };
+		A040BF03ENVELOPELA000000 /* SunnahWidgetEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040FR01ENVELOPEFILE0000 /* SunnahWidgetEnvelope.swift */; };
+		A041BF01REFRESHAPP000000 /* SunnahWidgetRefreshCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041FR01REFRESHFILE00000 /* SunnahWidgetRefreshCoordinator.swift */; };
+		A041BF02REFRESHWGT000000 /* SunnahWidgetRefreshCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041FR01REFRESHFILE00000 /* SunnahWidgetRefreshCoordinator.swift */; };
+		A042BF01PLATFORMWGT00000 /* SunnahWidgetPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A042FR01PLATFORMFILE0000 /* SunnahWidgetPlatform.swift */; };
+		A043BF01PREVIEWSWGT00000 /* SunnahWidgetPreviewFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A043FR01PREVIEWSFILE0000 /* SunnahWidgetPreviewFixtures.swift */; };
+		A044BF01ADAPTERSWGT00000 /* SunnahWidgetAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A044FR01ADAPTERSFILE0000 /* SunnahWidgetAdapters.swift */; };
+		A045BF01PRAYCATWGT000000 /* SunnahPrayerWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A045FR01PRAYCATFILE00000 /* SunnahPrayerWidgetCatalog.swift */; };
+		A046BF01CALCATWGT0000000 /* SunnahCalendarWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A046FR01CALCATFILE000000 /* SunnahCalendarWidgetCatalog.swift */; };
+		A047BF01ADHCATWGT0000000 /* SunnahAdhkarWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A047FR01ADHCATFILE000000 /* SunnahAdhkarWidgetCatalog.swift */; };
+		A048BF01CUSTCATWGT000000 /* SunnahCustomWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A048FR01CUSTCATFILE00000 /* SunnahCustomWidgetCatalog.swift */; };
+		A049BF01QURCATWGT0000000 /* SunnahQuranMushafWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A049FR01QURCATFILE000000 /* SunnahQuranMushafWidgetCatalog.swift */; };
+		A04ABF01INTENTSWGT000000 /* SunnahWidgetIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04AFR01INTENTSFILE00000 /* SunnahWidgetIntents.swift */; };
+		A04BBF01STANDBYWGT000000 /* SunnahStandBySupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04BFR01STANDBYFILE00000 /* SunnahStandBySupport.swift */; };
+		A04CBF01HOMECATWGT000000 /* SunnahHomeWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CFR01HOMECATFILE00000 /* SunnahHomeWidgetCatalog.swift */; };
+		A04DBF01CONTCATWGT000000 /* SunnahContentExperienceCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04DFR01CONTCATFILE00000 /* SunnahContentExperienceCatalog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +182,20 @@
 		A029FR08WIDGETENT /* PrayerWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrayerWidget.entitlements; sourceTree = "<group>"; };
 
 		A031FR01DEEPLINK /* SunnahPrayerDeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahPrayerDeepLink.swift; sourceTree = "<group>"; };
+		A040FR01ENVELOPEFILE0000 /* SunnahWidgetEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahWidgetEnvelope.swift; sourceTree = "<group>"; };
+		A041FR01REFRESHFILE00000 /* SunnahWidgetRefreshCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahWidgetRefreshCoordinator.swift; sourceTree = "<group>"; };
+		A042FR01PLATFORMFILE0000 /* SunnahWidgetPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahWidgetPlatform.swift; sourceTree = "<group>"; };
+		A043FR01PREVIEWSFILE0000 /* SunnahWidgetPreviewFixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahWidgetPreviewFixtures.swift; sourceTree = "<group>"; };
+		A044FR01ADAPTERSFILE0000 /* SunnahWidgetAdapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahWidgetAdapters.swift; sourceTree = "<group>"; };
+		A045FR01PRAYCATFILE00000 /* SunnahPrayerWidgetCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahPrayerWidgetCatalog.swift; sourceTree = "<group>"; };
+		A046FR01CALCATFILE000000 /* SunnahCalendarWidgetCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahCalendarWidgetCatalog.swift; sourceTree = "<group>"; };
+		A047FR01ADHCATFILE000000 /* SunnahAdhkarWidgetCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahAdhkarWidgetCatalog.swift; sourceTree = "<group>"; };
+		A048FR01CUSTCATFILE00000 /* SunnahCustomWidgetCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahCustomWidgetCatalog.swift; sourceTree = "<group>"; };
+		A049FR01QURCATFILE000000 /* SunnahQuranMushafWidgetCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahQuranMushafWidgetCatalog.swift; sourceTree = "<group>"; };
+		A04AFR01INTENTSFILE00000 /* SunnahWidgetIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahWidgetIntents.swift; sourceTree = "<group>"; };
+		A04BFR01STANDBYFILE00000 /* SunnahStandBySupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahStandBySupport.swift; sourceTree = "<group>"; };
+		A04CFR01HOMECATFILE00000 /* SunnahHomeWidgetCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahHomeWidgetCatalog.swift; sourceTree = "<group>"; };
+		A04DFR01CONTCATFILE00000 /* SunnahContentExperienceCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahContentExperienceCatalog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +330,8 @@
 				A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */,
 				A029FR06BRANDCOLOR /* SunnahBrandColors.swift */,
 				A031FR01DEEPLINK /* SunnahPrayerDeepLink.swift */,
+				A040FR01ENVELOPEFILE0000 /* SunnahWidgetEnvelope.swift */,
+				A041FR01REFRESHFILE00000 /* SunnahWidgetRefreshCoordinator.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -311,6 +344,18 @@
 				A029FR02WIDGETENTRY /* PrayerWidgetEntry.swift */,
 				A029FR03WIDGETVIEWS /* PrayerWidgetViews.swift */,
 				A029FR04WIDGETMAIN /* PrayerTimesWidget.swift */,
+				A042FR01PLATFORMFILE0000 /* SunnahWidgetPlatform.swift */,
+				A043FR01PREVIEWSFILE0000 /* SunnahWidgetPreviewFixtures.swift */,
+				A044FR01ADAPTERSFILE0000 /* SunnahWidgetAdapters.swift */,
+				A045FR01PRAYCATFILE00000 /* SunnahPrayerWidgetCatalog.swift */,
+				A046FR01CALCATFILE000000 /* SunnahCalendarWidgetCatalog.swift */,
+				A047FR01ADHCATFILE000000 /* SunnahAdhkarWidgetCatalog.swift */,
+				A048FR01CUSTCATFILE00000 /* SunnahCustomWidgetCatalog.swift */,
+				A049FR01QURCATFILE000000 /* SunnahQuranMushafWidgetCatalog.swift */,
+				A04AFR01INTENTSFILE00000 /* SunnahWidgetIntents.swift */,
+				A04BFR01STANDBYFILE00000 /* SunnahStandBySupport.swift */,
+				A04CFR01HOMECATFILE00000 /* SunnahHomeWidgetCatalog.swift */,
+				A04DFR01CONTCATFILE00000 /* SunnahContentExperienceCatalog.swift */,
 				A029FR05WIDGETINFO /* Info.plist */,
 				A029FR08WIDGETENT /* PrayerWidget.entitlements */,
 			);
@@ -502,6 +547,8 @@
 				EFBF4693BAFB4F5B82254F8C /* PrayerLiveActivityPlugin.swift in Sources */,
 				A0280002SHAREDDATAAPP01 /* SunnahSharedData.swift in Sources */,
 				A031BF01DEEPAPP /* SunnahPrayerDeepLink.swift in Sources */,
+				A040BF01ENVELOPEAPP00000 /* SunnahWidgetEnvelope.swift in Sources */,
+				A041BF01REFRESHAPP000000 /* SunnahWidgetRefreshCoordinator.swift in Sources */,
 				A0280005SHAREDPLUGINAPP /* SunnahSharedDataPlugin.swift in Sources */,
 				A055BF01AUTHKEYCHAIN /* SunnahAuthKeychainPlugin.swift in Sources */,
 				B2C3D4E5F6071890AB12CD01 /* MajlisPlaybackAudioPlugin.swift in Sources */,
@@ -516,6 +563,7 @@
 				A0280003SHAREDDATALA01 /* SunnahSharedData.swift in Sources */,
 				A029BF06BRANDLA /* SunnahBrandColors.swift in Sources */,
 				A031BF02DEEPLA /* SunnahPrayerDeepLink.swift in Sources */,
+				A040BF03ENVELOPELA000000 /* SunnahWidgetEnvelope.swift in Sources */,
 				18A062D2627A492F88C48C0A /* PrayerActivityAttributes.swift in Sources */,
 				05B0407FBEE74C08BAD75898 /* PrayerLiveActivityBundle.swift in Sources */,
 				364D1D47522246B3A2925CB0 /* PrayerLiveActivityLiveActivity.swift in Sources */,
@@ -530,6 +578,20 @@
 				A029BF05SHAREDWGT /* SunnahSharedData.swift in Sources */,
 				A029BF07BRANDWGT /* SunnahBrandColors.swift in Sources */,
 				A031BF03DEEPWGT /* SunnahPrayerDeepLink.swift in Sources */,
+				A040BF02ENVELOPEWGT00000 /* SunnahWidgetEnvelope.swift in Sources */,
+				A041BF02REFRESHWGT000000 /* SunnahWidgetRefreshCoordinator.swift in Sources */,
+				A042BF01PLATFORMWGT00000 /* SunnahWidgetPlatform.swift in Sources */,
+				A043BF01PREVIEWSWGT00000 /* SunnahWidgetPreviewFixtures.swift in Sources */,
+				A044BF01ADAPTERSWGT00000 /* SunnahWidgetAdapters.swift in Sources */,
+				A045BF01PRAYCATWGT000000 /* SunnahPrayerWidgetCatalog.swift in Sources */,
+				A046BF01CALCATWGT0000000 /* SunnahCalendarWidgetCatalog.swift in Sources */,
+				A047BF01ADHCATWGT0000000 /* SunnahAdhkarWidgetCatalog.swift in Sources */,
+				A048BF01CUSTCATWGT000000 /* SunnahCustomWidgetCatalog.swift in Sources */,
+				A049BF01QURCATWGT0000000 /* SunnahQuranMushafWidgetCatalog.swift in Sources */,
+				A04ABF01INTENTSWGT000000 /* SunnahWidgetIntents.swift in Sources */,
+				A04BBF01STANDBYWGT000000 /* SunnahStandBySupport.swift in Sources */,
+				A04CBF01HOMECATWGT000000 /* SunnahHomeWidgetCatalog.swift in Sources */,
+				A04DBF01CONTCATWGT000000 /* SunnahContentExperienceCatalog.swift in Sources */,
 				A029BF01WIDGETBUNDLE /* PrayerWidgetBundle.swift in Sources */,
 				A029BF02WIDGETENTRY /* PrayerWidgetEntry.swift in Sources */,
 				A029BF03WIDGETVIEWS /* PrayerWidgetViews.swift in Sources */,

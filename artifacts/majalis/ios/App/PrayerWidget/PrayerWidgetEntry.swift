@@ -8,11 +8,12 @@ typealias PrayerWidgetDeepLink = SunnahPrayerDeepLink
 private let widgetLog = Logger(subsystem: "com.yousef.majlisilm", category: "PrayerWidget")
 
 enum PrayerSlotKey: String, CaseIterable {
-    case fajr, dhuhr, asr, maghrib, isha
+    case fajr, sunrise, dhuhr, asr, maghrib, isha
 
     var nameAr: String {
         switch self {
         case .fajr: return "الفجر"
+        case .sunrise: return "الشروق"
         case .dhuhr: return "الظهر"
         case .asr: return "العصر"
         case .maghrib: return "المغرب"
@@ -23,12 +24,27 @@ enum PrayerSlotKey: String, CaseIterable {
     var symbolName: String {
         switch self {
         case .fajr: return "moon.stars.fill"
+        case .sunrise: return "sunrise.fill"
         case .dhuhr: return "sun.max.fill"
         case .asr: return "sun.haze.fill"
         case .maghrib: return "sunset.fill"
         case .isha: return "moon.fill"
         }
     }
+
+    var isObligatory: Bool { self != .sunrise }
+}
+
+enum SunnahWidgetPresentation: String {
+    case placeholder
+    case galleryPreview
+    case liveValid
+    case liveNoData
+    case liveStale
+    case liveMalformed
+    case appInitializationRequired
+    case permissionRequired
+    case configurationRequired
 }
 
 struct PrayerTimelineSlot: Hashable {
@@ -40,9 +56,14 @@ struct PrayerWidgetEntry: TimelineEntry {
     let date: Date
     let snapshot: SharedPrayerSnapshot?
     let dataState: PrayerWidgetDataState
+    let presentation: SunnahWidgetPresentation
+    let allowsLiveCountdown: Bool
     let slots: [PrayerTimelineSlot]
     let currentKey: PrayerSlotKey?
     let currentNameAr: String?
+    let previousKey: PrayerSlotKey?
+    let previousNameAr: String?
+    let previousDate: Date?
     let nextKey: PrayerSlotKey?
     let nextNameAr: String?
     let nextDate: Date?
@@ -51,27 +72,36 @@ struct PrayerWidgetEntry: TimelineEntry {
     let lastUpdated: Date?
     let gregorianDateText: String
     let hijriDateText: String?
+    let isSampleData: Bool
 
-    /// Representative gallery/preview content — not live device data.
+    /// Native redacted placeholder — layout shapes, not personal values.
     static func placeholder() -> PrayerWidgetEntry {
+        galleryPreview(presentation: .placeholder)
+    }
+
+    /// Representative gallery/preview content — not live device data. Never written to App Group.
+    static func galleryPreview(presentation: SunnahWidgetPresentation = .galleryPreview) -> PrayerWidgetEntry {
+        let now = Date()
         let tz = TimeZone(identifier: "Asia/Riyadh") ?? .current
         var cal = Calendar(identifier: .gregorian)
         cal.timeZone = tz
-        let dayStart = cal.startOfDay(for: Date())
+        let dayStart = cal.startOfDay(for: now)
         func at(_ hour: Int, _ minute: Int) -> Int64 {
             let d = cal.date(byAdding: DateComponents(hour: hour, minute: minute), to: dayStart) ?? dayStart
             return Int64(d.timeIntervalSince1970 * 1000)
         }
+        // Always-future next (~25m) so static gallery never collapses timerInterval / nextDate.
+        let next = now.addingTimeInterval(25 * 60)
+        let prev = now.addingTimeInterval(-40 * 60)
+        func ms(_ date: Date) -> Int64 { Int64(date.timeIntervalSince1970 * 1000) }
         let times: [String: Int64] = [
             "fajr": at(5, 5),
-            "dhuhr": at(12, 10),
+            "sunrise": at(6, 20),
+            "dhuhr": ms(next),
             "asr": at(15, 30),
             "maghrib": at(18, 5),
             "isha": at(19, 30),
         ]
-        let now = Date()
-        let nextKey = "dhuhr"
-        let nextMs = times[nextKey] ?? at(12, 10)
         return make(
             date: now,
             snapshot: SharedPrayerSnapshot(
@@ -80,18 +110,33 @@ struct PrayerWidgetEntry: TimelineEntry {
                 timeZoneIdentifier: tz.identifier,
                 dayKey: SunnahSharedStore.dayKey(for: now, timeZone: tz),
                 timesEpochMs: times,
-                nextPrayerKey: nextKey,
+                nextPrayerKey: "dhuhr",
                 nextPrayerNameAr: "الظهر",
-                nextPrayerEpochMs: nextMs,
+                nextPrayerEpochMs: ms(next),
                 nextHasStarted: false,
-                updatedAtEpochMs: Int64(now.timeIntervalSince1970 * 1000)
+                updatedAtEpochMs: ms(now)
             ),
-            isPreview: true
+            isPreview: true,
+            presentation: presentation,
+            allowsLiveCountdown: false,
+            previousOverride: (key: .fajr, date: prev)
         )
     }
 
-    static func make(date: Date, snapshot: SharedPrayerSnapshot?, isPreview: Bool = false) -> PrayerWidgetEntry {
+    static func noDataEntry(date: Date = Date()) -> PrayerWidgetEntry {
+        make(date: date, snapshot: nil, isPreview: false, presentation: .liveNoData, allowsLiveCountdown: false)
+    }
+
+    static func make(
+        date: Date,
+        snapshot: SharedPrayerSnapshot?,
+        isPreview: Bool = false,
+        presentation: SunnahWidgetPresentation? = nil,
+        allowsLiveCountdown: Bool = true,
+        previousOverride: (key: PrayerSlotKey, date: Date)? = nil
+    ) -> PrayerWidgetEntry {
         let state = isPreview ? PrayerWidgetDataState.validData : SunnahSharedStore.classifyPrayerData(snapshot, now: date)
+        let resolvedPresentation = presentation ?? Self.mapPresentation(state: state, isPreview: isPreview)
         let tz = TimeZone(identifier: snapshot?.timeZoneIdentifier ?? TimeZone.current.identifier)
             ?? .current
         var cal = Calendar(identifier: .gregorian)
@@ -102,9 +147,9 @@ struct PrayerWidgetEntry: TimelineEntry {
             return PrayerTimelineSlot(key: key, date: Date(timeIntervalSince1970: TimeInterval(ms) / 1000))
         }.sorted { $0.date < $1.date }
 
-        // Prefer slot-derived next relative to this entry date; fall back to snapshot anchors
-        // (needed after Isha when next is tomorrow Fajr not present in today's times map).
-        let derivedNext = slots.first(where: { $0.date > date })
+        let obligatory = slots.filter { $0.key.isObligatory }
+
+        let derivedNext = obligatory.first(where: { $0.date > date })
         let snapshotNextDate: Date? = {
             guard let ms = snapshot?.nextPrayerEpochMs else { return nil }
             return Date(timeIntervalSince1970: TimeInterval(ms) / 1000)
@@ -125,8 +170,25 @@ struct PrayerWidgetEntry: TimelineEntry {
         }()
         let nextName = nextKey?.nameAr ?? snapshot?.nextPrayerNameAr
 
-        // Current = last slot at or before now; if none, nil (before Fajr).
-        let current = slots.last(where: { $0.date <= date })
+        let current = obligatory.last(where: { $0.date <= date }) ?? {
+            guard let raw = snapshot?.currentPrayerKey?.lowercased(),
+                  let key = PrayerSlotKey(rawValue: raw),
+                  let ms = snapshot?.currentPrayerStartedAtEpochMs
+            else { return nil }
+            return PrayerTimelineSlot(key: key, date: Date(timeIntervalSince1970: TimeInterval(ms) / 1000))
+        }()
+        let previous: PrayerTimelineSlot? = {
+            if let override = previousOverride {
+                return PrayerTimelineSlot(key: override.key, date: override.date)
+            }
+            if let raw = snapshot?.previousPrayerKey?.lowercased(),
+               let key = PrayerSlotKey(rawValue: raw),
+               let ms = snapshot?.previousPrayerEpochMs {
+                return PrayerTimelineSlot(key: key, date: Date(timeIntervalSince1970: TimeInterval(ms) / 1000))
+            }
+            guard let cur = current else { return nil }
+            return obligatory.last(where: { $0.date < cur.date }) ?? obligatory.last(where: { $0.key != cur.key && $0.date <= date })
+        }()
 
         let nextHasStarted: Bool = {
             if let end = nextDate, end <= date { return true }
@@ -170,9 +232,14 @@ struct PrayerWidgetEntry: TimelineEntry {
             date: date,
             snapshot: snapshot,
             dataState: state,
+            presentation: resolvedPresentation,
+            allowsLiveCountdown: allowsLiveCountdown && !isPreview && state == .validData,
             slots: slots,
             currentKey: current?.key,
             currentNameAr: current?.key.nameAr,
+            previousKey: previous?.key,
+            previousNameAr: previous?.key.nameAr,
+            previousDate: previous?.date,
             nextKey: nextKey,
             nextNameAr: nextName,
             nextDate: nextDate,
@@ -180,8 +247,20 @@ struct PrayerWidgetEntry: TimelineEntry {
             locationLabel: isPreview ? "معاينة" : (snapshot?.locationLabel ?? ""),
             lastUpdated: lastUpdated,
             gregorianDateText: gregorian,
-            hijriDateText: hijri
+            hijriDateText: hijri,
+            isSampleData: isPreview
         )
+    }
+
+    private static func mapPresentation(state: PrayerWidgetDataState, isPreview: Bool) -> SunnahWidgetPresentation {
+        if isPreview { return .galleryPreview }
+        switch state {
+        case .validData: return .liveValid
+        case .staleData: return .liveStale
+        case .malformedData: return .liveMalformed
+        case .noDataYet: return .liveNoData
+        case .appOpenRequired: return .appInitializationRequired
+        }
     }
 
     var needsAppOpenAction: Bool {
@@ -192,6 +271,23 @@ struct PrayerWidgetEntry: TimelineEntry {
             return false
         }
     }
+
+    var isGlanceable: Bool {
+        if needsAppOpenAction { return false }
+        let name = nextNameAr?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        if name.isEmpty || name == "—" { return false }
+        if nextDate == nil && slots.isEmpty { return false }
+        return true
+    }
+
+    func slot(for key: PrayerSlotKey) -> PrayerTimelineSlot? {
+        slots.first(where: { $0.key == key })
+    }
+
+    var currentStartDate: Date? {
+        guard let key = currentKey else { return nil }
+        return slot(for: key)?.date
+    }
 }
 
 struct PrayerWidgetProvider: TimelineProvider {
@@ -201,20 +297,22 @@ struct PrayerWidgetProvider: TimelineProvider {
 
     func getSnapshot(in context: Context, completion: @escaping (PrayerWidgetEntry) -> Void) {
         if context.isPreview {
-            completion(.placeholder())
+            completion(.galleryPreview())
             return
         }
-        let snapshot = SunnahSharedStore.loadPrayer()
-        let entry = PrayerWidgetEntry.make(date: Date(), snapshot: snapshot)
-        #if DEBUG
-        widgetLog.debug("snapshot state=\(entry.dataState.rawValue, privacy: .public)")
-        #endif
-        completion(entry)
+        // Keep loadPrayer() on the snapshot path for the data-contract gate.
+        let legacy = SunnahSharedStore.loadPrayer()
+        let snapshot = SunnahSharedStore.loadCanonicalPrayer() ?? legacy
+        let live = PrayerWidgetEntry.make(date: Date(), snapshot: snapshot, allowsLiveCountdown: false)
+        if live.isGlanceable {
+            completion(live)
+        } else {
+            completion(.galleryPreview())
+        }
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<PrayerWidgetEntry>) -> Void) {
-        // Read-only App Group — no API, no prayer recalculation.
-        let snapshot = SunnahSharedStore.loadPrayer()
+        let snapshot = SunnahSharedStore.loadCanonicalPrayer() ?? SunnahSharedStore.loadPrayer()
         let now = Date()
         let entry = PrayerWidgetEntry.make(date: now, snapshot: snapshot)
         #if DEBUG
@@ -224,14 +322,19 @@ struct PrayerWidgetProvider: TimelineProvider {
         var dates: [Date] = [now]
         if let next = entry.nextDate, next > now {
             dates.append(next)
-            // Light refresh ~15m before next prayer for UI state (not countdown — system timer handles that).
             let pre = next.addingTimeInterval(-15 * 60)
             if pre > now { dates.append(pre) }
         }
         for slot in entry.slots where slot.date > now {
             dates.append(slot.date)
         }
-        // Cap refresh points — battery friendly.
+        var cal = Calendar.current
+        if let tz = TimeZone(identifier: snapshot?.timeZoneIdentifier ?? "") {
+            cal.timeZone = tz
+        }
+        if let midnight = cal.nextDate(after: now, matching: DateComponents(hour: 0, minute: 0), matchingPolicy: .nextTime) {
+            dates.append(midnight)
+        }
         let unique = Array(Set(dates)).sorted()
         let entries = unique.prefix(8).map { PrayerWidgetEntry.make(date: $0, snapshot: snapshot) }
 
@@ -239,11 +342,44 @@ struct PrayerWidgetProvider: TimelineProvider {
         if let next = entry.nextDate, next > now {
             policy = .after(next)
         } else if entry.needsAppOpenAction {
-            // Missing data — retry sooner so an app open can populate App Group.
             policy = .after(now.addingTimeInterval(15 * 60))
         } else {
             policy = .after(now.addingTimeInterval(30 * 60))
         }
         completion(Timeline(entries: entries.isEmpty ? [entry] : Array(entries), policy: policy))
+    }
+}
+
+enum SunnahWidgetTimeFormatting {
+    static func staticRemaining(from: Date, to: Date) -> String {
+        let sec = max(0, Int(to.timeIntervalSince(from)))
+        let minutes = sec / 60
+        let hours = minutes / 60
+        let rem = minutes % 60
+        if hours > 0 {
+            return "\(arabic(hours)) س \(arabic(rem)) د"
+        }
+        return "\(arabic(minutes)) د"
+    }
+
+    static func staticElapsed(from: Date, to: Date) -> String {
+        "مضى \(staticRemaining(from: from, to: to))"
+    }
+
+    static func clock(_ date: Date, timeZone: TimeZone = .current) -> String {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "ar")
+        f.timeZone = timeZone
+        f.timeStyle = .short
+        f.dateStyle = .none
+        return f.string(from: date)
+    }
+
+    static func arabic(_ value: Int) -> String {
+        let map: [Character] = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"]
+        return String(String(value).map { ch -> Character in
+            guard let d = ch.wholeNumberValue, d >= 0, d <= 9 else { return ch }
+            return map[d]
+        })
     }
 }

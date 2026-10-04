@@ -6,6 +6,12 @@ import {
   type ReviewStatus,
   type VerifiedReligiousRecord,
 } from "@/lib/religious-content";
+import {
+  loadWidgetEventOverrides,
+  saveWidgetEventOverride,
+  type WidgetEventConfirmation,
+} from "@/lib/widget-data/islamic-events";
+import { Button } from "@/components/ui/button";
 import "@/styles/components/home/home-learning-seasons.css";
 
 const STORAGE_KEY = "majalis-religious-calendar-review-v1";
@@ -41,6 +47,9 @@ function applyOverride(record: VerifiedReligiousRecord, overrides: OverrideMap):
 export function ReligiousCalendarReviewSection() {
   const [overrides, setOverrides] = useState<OverrideMap>(() =>
     typeof window !== "undefined" ? loadOverrides() : {},
+  );
+  const [widgetOverrides, setWidgetOverrides] = useState(() =>
+    typeof window !== "undefined" ? loadWidgetEventOverrides() : {},
   );
   const [filter, setFilter] = useState<"all" | ReviewStatus | "invalid">("all");
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -164,6 +173,58 @@ export function ReligiousCalendarReviewSection() {
               <button type="button" className="ds-btn" onClick={() => setStatus(selected.record.id, "needs_review")}>
                 إعادة للمراجعة
               </button>
+            </div>
+
+            <h4 style={{ marginTop: "1.25rem" }}>نشر الويدجت — أدوار التحرير والمراجعة الشرعية والاعتماد</h4>
+            <p className="settings-note">
+              لا يُنشر حدث غير مراجع. التأكيد الرسمي للمناسبات المعتمدة على الرؤية يبقى مؤقتاً حتى الاعتماد.
+              التغييرات تُحفظ محلياً مع ختم زمني دون جدول إنتاج جديد.
+            </p>
+            <p>
+              <strong>تأكيد الويدجت:</strong>{" "}
+              {widgetOverrides[selected.record.id]?.confirmationStatus ?? "حسب القاعدة (رؤية الهلال = مؤقت)"}
+            </p>
+            <p>
+              <strong>أهلية الويدجت:</strong>{" "}
+              {widgetOverrides[selected.record.id]?.widgetEligible === false ? "غير مؤهل" : "مؤهل إن كان السجل معتمداً"}
+            </p>
+            <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.75rem", flexWrap: "wrap" }}>
+              {(["CALCULATED", "PROVISIONAL", "OFFICIALLY_CONFIRMED", "MANUALLY_ADJUSTED", "HIDDEN", "CANCELLED"] as WidgetEventConfirmation[]).map((status) => (
+                <Button
+                  key={status}
+                  type="button"
+                  variant="secondary"
+                  size="small"
+                  onClick={() => {
+                    saveWidgetEventOverride(selected.record.id, { confirmationStatus: status });
+                    setWidgetOverrides(loadWidgetEventOverrides());
+                  }}
+                >
+                  {status}
+                </Button>
+              ))}
+              <Button
+                type="button"
+                variant="secondary"
+                size="small"
+                onClick={() => {
+                  saveWidgetEventOverride(selected.record.id, { widgetEligible: true, notificationEligible: true });
+                  setWidgetOverrides(loadWidgetEventOverrides());
+                }}
+              >
+                تفعيل الويدجت والتنبيه
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                size="small"
+                onClick={() => {
+                  saveWidgetEventOverride(selected.record.id, { widgetEligible: false, notificationEligible: false });
+                  setWidgetOverrides(loadWidgetEventOverrides());
+                }}
+              >
+                إخفاء من الويدجت
+              </Button>
             </div>
           </article>
         ) : (

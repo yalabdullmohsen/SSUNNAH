@@ -36,3 +36,5 @@ export const ProgressCenterPage = lazy(() => import("@/pages/account/ProgressCen
 
 export const OfflineCenterPage = lazy(() => import("@/pages/account/OfflineCenterPage"));
 
+export const WidgetCenterPage = lazy(() => import("@/pages/account/WidgetCenterPage"));
+
