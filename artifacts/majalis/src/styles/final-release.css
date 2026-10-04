@@ -1533,23 +1533,20 @@ html[data-theme="dark"] .floating-back-btn:not(.floating-back-btn--top) {
 /* ══ مكوّنات مشتركة: أزرار، رجوع، شرائح، drawer، بانرات ══ */
 .ds-btn,
 .ui-card-btn,
-.page-action-btn,
-.login-submit {
+.page-action-btn {
   min-height: 44px;
   border-radius: var(--radius-md);
   transition: background var(--motion-fast), color var(--motion-fast), border-color var(--motion-fast), transform var(--motion-fast);
 }
 .ds-btn:disabled,
 .ui-card-btn:disabled,
-.page-action-btn:disabled,
-.login-submit:disabled {
+.page-action-btn:disabled {
   opacity: 0.55;
   cursor: not-allowed;
 }
 .ds-btn:focus-visible,
 .ui-card-btn:focus-visible,
 .page-action-btn:focus-visible,
-.login-submit:focus-visible,
 .ds-page-back-btn:focus-visible {
   outline: 3px solid color-mix(in srgb, var(--color-accent) 72%, white);
   outline-offset: 2px;
@@ -1918,27 +1915,8 @@ body {
 .app-shell {
   overscroll-behavior-y: contain;
 }
-.page-shell {
-  width: 100%;
-  max-width: min(56rem, 100%);
-  margin-inline: auto;
-  padding-block: clamp(1rem, 3vw, 1.75rem) 1.25rem;
-  padding-inline: var(--page-gutter);
-  box-sizing: border-box;
-}
-@media (max-width: 879px) {
-  .page-shell {
-    padding-block-start: 0.65rem;
-    padding-block-end: 0.75rem;
-  }
-  .page-shell.narrow,
-  .lesson-detail-page.page-shell {
-    max-width: min(430px, 100%);
-  }
-}
-.page-shell.narrow {
-  max-width: min(48rem, 100%);
-}
+/* Base .page-shell structure owned by design-system.css FOUNDATION (PR A).
+   Keep only feature-specific shells below. */
 .content-hub-page.page-shell,
 .page-shell.content-hub-page {
   padding-block-end: 1.25rem;

@@ -1,0 +1,308 @@
+{
+  "main_sha": "2a6961a7f",
+  "css_files": 355,
+  "css_bytes": 3865853,
+  "ds_bytes": 90559,
+  "ds_lines": 3277,
+  "ds_selector_blocks": 459,
+  "ds_unique_selectors": 422,
+  "ds_repeated_selectors": 33,
+  "ds_empty_rules": [],
+  "fm_parent_rule_present": false,
+  "hex_all_approx": 5615,
+  "rgb_hsl_approx": 2005,
+  "important_approx": 4745,
+  "unsafe_fallback_approx": 2776,
+  "border_radius_px_approx": 392,
+  "box_shadow_decls_approx": 985,
+  "z_index_raw_approx": 256,
+  "token_report": {
+    "ds": {
+      "declarations": 181,
+      "unique_refs": 184
+    },
+    "mj": {
+      "declarations": 83,
+      "unique_refs": 114
+    },
+    "msk": {
+      "declarations": 29,
+      "unique_refs": 32
+    },
+    "sf": {
+      "declarations": 118,
+      "unique_refs": 123
+    },
+    "ss": {
+      "declarations": 76,
+      "unique_refs": 86
+    },
+    "cs": {
+      "declarations": 39,
+      "unique_refs": 39
+    },
+    "majalis": {
+      "declarations": 44,
+      "unique_refs": 47
+    },
+    "color": {
+      "declarations": 81,
+      "unique_refs": 81
+    },
+    "elite": {
+      "declarations": 13,
+      "unique_refs": 29
+    },
+    "brand": {
+      "declarations": 13,
+      "unique_refs": 14
+    },
+    "dm": {
+      "declarations": 44,
+      "unique_refs": 44
+    },
+    "pd": {
+      "declarations": 30,
+      "unique_refs": 30
+    },
+    "em": {
+      "declarations": 11,
+      "unique_refs": 11
+    }
+  },
+  "competition_counts": {
+    ".fm-parent": 0,
+    ".page-shell": 69,
+    ".login-submit": 11,
+    ".search-result-row": 5,
+    ".ui-card": 76,
+    ".ds-card": 29,
+    ".ds-btn": 22,
+    ".ds-stat": 20,
+    ".search-page-title": 2,
+    ".tc-ring-btn": 3
+  },
+  "compat_info": {
+    "styles/pages/tasbih.css": {
+      "exists": true,
+      "bytes": 6425,
+      "consumers": [
+        "pages/worship/ui/TasbihView.tsx",
+        "pages/worship/ui/AdhkarView.tsx",
+        "lib/__tests__/css-authority-graph-gate.test.ts",
+        "lib/__tests__/directories-maps-ux-p0-gate.test.ts",
+        "lib/__tests__/adhkar-stable-nav-gate.test.ts"
+      ]
+    },
+    "styles/pages/tawhid.css": {
+      "exists": true,
+      "bytes": 18517,
+      "consumers": [
+        "views/TawhidPage.tsx",
+        "views/TawhidTopicPage.tsx",
+        "lib/__tests__/css-authority-graph-gate.test.ts",
+        "lib/__tests__/islam-intro-experience-gate.test.ts"
+      ]
+    },
+    "styles/pages/search.css": {
+      "exists": true,
+      "bytes": 34440,
+      "consumers": [
+        "components/home/HomeUniversalSearch.tsx",
+        "components/quran/QuranSurahJumpSearch.tsx",
+        "pages/library/ui/ScholarlyResearchView.tsx",
+        "pages/quran/ui/QuranSearchView.tsx",
+        "pages/account/ui/SearchView.tsx",
+        "lib/__tests__/hadith-more-search-ux.test.ts",
+        "lib/__tests__/css-authority-graph-gate.test.ts",
+        "lib/__tests__/ssunnah-quality-regression-gate.test.ts",
+        "lib/__tests__/badge-system-a11y.test.ts",
+        "lib/__tests__/product-completeness-baseline-gate.test.ts"
+      ]
+    },
+    "styles/pages/auth.css": {
+      "exists": true,
+      "bytes": 9520,
+      "consumers": [
+        "components/auth/PasswordPolicyChecklist.tsx",
+        "views/UpdatePasswordPage.tsx",
+        "pages/account/ui/LoginView.tsx",
+        "lib/__tests__/login-auth-redesign-gate.test.ts",
+        "lib/__tests__/css-authority-graph-gate.test.ts",
+        "lib/__tests__/scroll-layout-gap-gate.test.ts",
+        "lib/__tests__/password-policy-auth-gate.test.ts"
+      ]
+    },
+    "styles/pages/user-stats.css": {
+      "exists": true,
+      "bytes": 14549,
+      "consumers": [
+        "views/UserStatsPage.tsx",
+        "lib/__tests__/css-authority-graph-gate.test.ts"
+      ]
+    }
+  },
+  "widget": {
+    "kind_catalog": 32,
+    "widget_structs": 33,
+    "intents": 9,
+    "bundle_has_main": true,
+    "bundle_registrations": 32,
+    "build": [
+      "55"
+    ],
+    "app_group": "group.com.yousef.majlisilm",
+    "future_binary": true
+  },
+  "scanner_visual_tail": [
+    "    \"important\": 4746,",
+    "    \"hexInCss\": 5616,",
+    "    \"rgbHslInCss\": 2006,",
+    "    \"mjDeclarations\": 193,",
+    "    \"mjDeclOutsideAllowlist\": 0,",
+    "    \"boxShadowDecls\": 986,",
+    "    \"zIndexRawDecls\": 256,",
+    "    \"borderRadiusPxDecls\": 392,",
+    "    \"inlineColorStyleMatches\": 39,",
+    "    \"rawButtonFiles\": 73",
+    "  },",
+    "  \"measured\": {",
+    "    \"cssFiles\": 355,",
+    "    \"important\": 4745,",
+    "    \"hexInCss\": 5615,",
+    "    \"rgbHslInCss\": 2005,",
+    "    \"mjDeclarations\": 193,",
+    "    \"mjDeclOutsideAllowlist\": 0,",
+    "    \"boxShadowDecls\": 985,",
+    "    \"zIndexRawDecls\": 256,",
+    "    \"borderRadiusPxDecls\": 392,",
+    "    \"inlineColorStyleMatches\": 39,",
+    "    \"rawButtonFiles\": 73",
+    "  }",
+    "}"
+  ],
+  "scanner_interaction_tail": [
+    "  \"floors\": {",
+    "    \"officialButtonImportFiles\": 288,",
+    "    \"actionButtonConsumerFiles\": 7",
+    "  },",
+    "  \"measured\": {",
+    "    \"measuredAt\": \"2026-10-04T19:27:35.550Z\",",
+    "    \"scope\": \"artifacts/majalis/src\",",
+    "    \"tsxFiles\": 843,",
+    "    \"rawButtonFiles\": 73,",
+    "    \"rawButtonElements\": 300,",
+    "    \"officialButtonImportFiles\": 290,",
+    "    \"actionButtonConsumerFiles\": 7,",
+    "    \"iconButtonConsumerFiles\": 43,",
+    "    \"divSpanOnClick\": 37,",
+    "    \"formButtonsMissingType\": 0,",
+    "    \"floatingControlFileMentions\": 10,",
+    "    \"buttonRelatedImportantApprox\": 1138,",
+    "    \"buttonRelatedHexApprox\": 975",
+    "  }",
+    "}"
+  ],
+  "repeated_top": [
+    [
+      "to",
+      4
+    ],
+    [
+      ".tawheed-types-grid",
+      3
+    ],
+    [
+      ".ds-page-header__title",
+      3
+    ],
+    [
+      ".ds-input:focus, .login-field input:focus",
+      2
+    ],
+    [
+      ".ds-filter-toggle",
+      2
+    ],
+    [
+      ".ds-filters-panel--desktop",
+      2
+    ],
+    [
+      ".ds-stat strong",
+      2
+    ],
+    [
+      ".ds-quiz-home-card__content",
+      2
+    ],
+    [
+      ".ds-quiz-home-card__desc",
+      2
+    ],
+    [
+      ".ds-quiz-home-card__grid",
+      2
+    ],
+    [
+      ".hcp-strip__head",
+      2
+    ],
+    [
+      ".hcp-strip__head-end",
+      2
+    ],
+    [
+      ".hcp-since-pill__bar",
+      2
+    ],
+    [
+      ".search-results-group-title",
+      2
+    ],
+    [
+      ".tc-ring-btn",
+      2
+    ],
+    [
+      ".tc-ring-count",
+      2
+    ],
+    [
+      ".tc-keyboard-hint",
+      2
+    ],
+    [
+      ".tasbih-stats-grid--v2",
+      2
+    ],
+    [
+      ".tasbih-add-row",
+      2
+    ],
+    [
+      ".tasbih-wird-pills",
+      2
+    ],
+    [
+      ".tawheed-principles-grid",
+      2
+    ],
+    [
+      ".revelation-comparison",
+      2
+    ],
+    [
+      ".revelation-toolbar",
+      2
+    ],
+    [
+      ".revelation-toolbar label",
+      2
+    ],
+    [
+      ".lessons-v2-sidebar",
+      2
+    ]
+  ]
+}

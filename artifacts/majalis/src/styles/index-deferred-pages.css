@@ -2481,9 +2481,7 @@ body.has-assistant-fab .app-main {
 
 /* ── انتقالات الصفحة: فورية (بلا fade يؤخّر الإحساس بالتنقّل) ── */
 
-.page-shell {
-  animation: none;
-}
+/* Duplicate .page-shell { animation: none } removed — kept near reduced-motion below. */
 
 /* ── Widescreen Hero ── */
 
@@ -3244,8 +3242,9 @@ html[data-theme="dark"] .skeleton-base {
   color: var(--color-primary-dark) !important;
 }
 
-.login-tab.is-active,
-.login-submit {
+/* .login-submit removed from this theme cluster — auth.css owns submit.
+   Keep .login-tab.is-active brand override (not submit). */
+.login-tab.is-active {
   background: var(--color-primary) !important;
   border-color: var(--color-primary-dark) !important;
   color: var(--mj-on-brand, var(--mj-white)) !important;
