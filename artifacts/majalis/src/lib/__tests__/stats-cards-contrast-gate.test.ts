@@ -6,13 +6,14 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { readCssGraph } from "../css-authority-graph.ts";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
 const tafsir = read("src/styles/pages/tafsir.css");
 const ulum = read("src/styles/pages/ulum-quran.css");
-const ds = read("src/styles/design-system.css");
+const ds = readCssGraph(resolve(root, "src/styles/design-system.css")).text;
 
 assert.match(tafsir, /\.tf-stat\s*\{[\s\S]*?background:\s*var\(--surface-card/);
 assert.match(tafsir, /\.tf-stat strong\s*\{[\s\S]*?color:\s*var\(--mj-brand-deep/);
