@@ -247,13 +247,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/premium-dark-refine.css",
-      "hex": 36,
-      "unsafeHexFallback": 0,
-      "classification": "ABSORB_NOW",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/pages/fiqh-hub.css",
       "hex": 35,
       "unsafeHexFallback": 26,
@@ -272,6 +265,13 @@
       "hex": 33,
       "unsafeHexFallback": 0,
       "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/premium-dark-refine.css",
+      "hex": 33,
+      "unsafeHexFallback": 0,
+      "classification": "ABSORB_NOW",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -1791,13 +1791,6 @@
       "hex": 1,
       "unsafeHexFallback": 0,
       "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/modern-ui-refresh.css",
-      "hex": 1,
-      "unsafeHexFallback": 0,
-      "classification": "ABSORB_NOW",
       "platform": "SHARED_PLATFORM"
     },
     {

@@ -15,11 +15,10 @@ Targets: `styles/premium-dark-refine.css` · `styles/modern-ui-refresh.css`
 
 ### premium-dark-refine.css
 
-- Bridge `--pd-bg-*` / `--pd-emerald` / `--pd-gold` / `--pd-ink*` to Dark System Contract tokens
-- Keep locked `--pd-card: #24302b` (premium-dark-theme gate)
+- Keep locked `--pd-*` palette hex (incl. `--pd-card: #24302b`) — `--surface-app: var(--pd-bg-1)` one-way only (no cycle)
 - Strip unsafe Hex fallbacks (0 remaining)
 - Replace bare `#141c19` / `#0c1210` usages with token/color-mix
-- Hex in file: **53 → 36**
+- Hex in file reduced vs pre-W1B; contrast regression from pd↔surface cycle fixed before merge
 
 ### modern-ui-refresh.css
 
@@ -33,7 +32,7 @@ Targets: `styles/premium-dark-refine.css` · `styles/modern-ui-refresh.css`
 
 | Metric | Before (W1A) | After (W1B) |
 |---|---:|---:|
-| hexInCss | 5657 | **5634** (−23) |
+| hexInCss | 5657 | **5630** (−23) |
 | unsafeHexFallback | 2574 | **2562** (−12) |
 | sfTokenRefs floor | 1172 | **1180** (raised to measured) |
 | ssTokenRefs floor | 761 | **762** |

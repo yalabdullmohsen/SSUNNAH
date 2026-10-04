@@ -10,17 +10,19 @@
  */
 
 :is(html[data-theme="dark"], html.dark) {
-  /* ═══ Premium Islamic dark tokens — تطابق Dark System Contract (Wave 1B bridge) ═══ */
-  --pd-bg-1: var(--surface-app);
-  --pd-bg-2: var(--mj-surface);
+  /* ═══ Premium Islamic dark tokens — تطابق Dark System Contract ═══
+   * Wave 1B: لا تربط --pd-bg-1 بـ --surface-app (دورة: --surface-app := --pd-bg-1).
+   * الجسور الآمنة فقط للون العلامة/الحبر بعد تثبيت لوحة pd. */
+  --pd-bg-1: #0f1613;
+  --pd-bg-2: #1b2421;
   --pd-card: #24302b;
   --pd-elevated: #2b3933;
-  --pd-emerald: var(--mj-brand);
-  --pd-emerald-soft: color-mix(in srgb, var(--pd-emerald) 88%, #fff);
-  --pd-gold: var(--mj-accent);
+  --pd-emerald: #4fb48b;
+  --pd-emerald-soft: #57b892;
+  --pd-gold: #c9a86c;
   --pd-gold-soft: color-mix(in srgb, var(--pd-gold) 16%, var(--pd-bg-2));
-  --pd-ink: var(--mj-ink);
-  --pd-ink-2: var(--mj-ink-2);
+  --pd-ink: #ede8df;
+  --pd-ink-2: #d8d0c4;
   --pd-ink-muted: #b5ada0;
   /* --mj-brand-deep* absorbed → theme.css / theme-aliases (PR2) */
   /* حدود زمردية خفيفة — تدعم المحتوى بلا منافسة */
@@ -200,7 +202,7 @@
 :is(html[data-theme="dark"], html.dark) .hub-card:focus-visible,
 :is(html[data-theme="dark"], html.dark) .top-section-bar__tab:focus-visible,
 :is(html[data-theme="dark"], html.dark) .mj-segmented-filter :focus-visible {
-  outline: var(--state-focus-outline, 2px solid color-mix(in srgb, #c9a86c 72%, #8fd4b0));
+  outline: var(--state-focus-outline, 2px solid color-mix(in srgb, var(--pd-gold) 72%, var(--mj-brand-deep)));
   outline-offset: var(--state-focus-outline-offset, 2px);
   box-shadow: var(--pd-elev-1) !important;
 }
@@ -344,7 +346,7 @@
   --qe-muted: #b0a898;
   --qe-emerald: #6fbf9a;
   --qe-panel: #15201c;
-  --qe-line: color-mix(in srgb, #c9a86c 14%, #2a3d35);
+  --qe-line: color-mix(in srgb, var(--pd-gold) 14%, var(--qe-panel));
 }
 
 :is(html[data-theme="dark"], html.dark) .qe-page__nav button.is-on {
@@ -418,7 +420,7 @@
 :is(html[data-theme="dark"], html.dark) .helper-text,
 :is(html[data-theme="dark"], html.dark) .subtitle,
 :is(html[data-theme="dark"], html.dark) .section-subtitle {
-  color: color-mix(in srgb, var(--pd-ink-2) 82%, #9aaba2) !important;
+  color: color-mix(in srgb, var(--pd-ink-2) 82%, var(--pd-ink-muted)) !important;
   opacity: 1 !important;
 }
 
@@ -426,7 +428,7 @@
 :is(html[data-theme="dark"], html.dark) .text-muted,
 :is(html[data-theme="dark"], html.dark) .meta,
 :is(html[data-theme="dark"], html.dark) [data-meta="1"] {
-  color: color-mix(in srgb, var(--pd-ink-muted) 88%, #8a9a93) !important;
+  color: color-mix(in srgb, var(--pd-ink-muted) 88%, var(--pd-bg-2)) !important;
 }
 
 /* ═══ بحث: خلفية أغمق · تركيز أوضح · حدود أخف ═══ */
@@ -495,7 +497,7 @@
 html.pts-immersive:is([data-theme="dark"], .dark) .bottom-nav,
 html.pts-immersive:is([data-theme="dark"], .dark) .bottom-nav--v2,
 html.pts-immersive:is([data-theme="dark"], .dark) .bottom-nav--m2030 {
-  background: color-mix(in srgb, var(--pd-bg-1) 88%, #000) !important;
+  background: var(--dm-bottom-nav) !important;
   background-image: none !important;
   border-top-color: color-mix(in srgb, var(--pd-gold) 10%, transparent) !important;
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.35) !important;
@@ -708,7 +710,7 @@ html.pts-immersive:is([data-theme="dark"], .dark) .app-main {
   .quran-hub-card__desc,
   .lpp-path-card__desc
 ) {
-  color: color-mix(in srgb, var(--pd-ink-2) 92%, #a8b5ad) !important;
+  color: color-mix(in srgb, var(--pd-ink-2) 92%, var(--pd-ink-muted)) !important;
   opacity: 1 !important;
 }
 
@@ -873,7 +875,7 @@ html.pts-immersive:is([data-theme="dark"], .dark) .bottom-nav__tab.is-active::be
   .chip-label,
   [data-meta="1"]
 ) {
-  color: color-mix(in srgb, var(--pd-ink-muted) 94%, #c4bbb0) !important;
+  color: color-mix(in srgb, var(--pd-ink-muted) 94%, var(--pd-ink-2)) !important;
   opacity: 1 !important;
 }
 

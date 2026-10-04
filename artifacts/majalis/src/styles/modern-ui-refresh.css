@@ -639,7 +639,7 @@ button.soft-pill:active,
 html.dark,
 html[data-theme="dark"] {
   --mur-ink: var(--mj-ink);
-  --mur-ink-secondary: color-mix(in srgb, var(--mj-ink) 72%, #9aada4);
+  --mur-ink-secondary: color-mix(in srgb, var(--mj-ink) 72%, var(--mj-muted));
   --mur-surface-quiet: color-mix(in srgb, var(--mj-brand) 10%, var(--mj-surface));
 }
 

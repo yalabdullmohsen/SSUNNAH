@@ -23,9 +23,10 @@ assert.match(doc, /WEB_IMPACT/);
 assert.match(doc, /IOS_APPLICATION_IMPACT/);
 assert.match(doc, /APP_STORE_PRODUCT_IMPACT/);
 
-assert.match(pd, /--pd-bg-1:\s*var\(--surface-app\)/);
+assert.match(pd, /--pd-bg-1:\s*#0f1613/i);
 assert.match(pd, /--pd-card:\s*#24302b/);
-assert.match(pd, /--pd-ink:\s*var\(--mj-ink\)/);
+assert.match(pd, /--surface-app:\s*var\(--pd-bg-1\)/);
+assert.doesNotMatch(pd, /--pd-bg-1:\s*var\(--surface-app\)/, "no pd↔surface-app cycle");
 assert.doesNotMatch(pd, /var\(--[\w-]+\s*,\s*#[0-9a-fA-F]{3,8}/);
 assert.doesNotMatch(pd, /--mj-[\w-]+\s*:/);
 
@@ -37,12 +38,12 @@ assert.doesNotMatch(mur, /var\(--[\w-]+\s*,\s*#[0-9a-fA-F]{3,8}/);
 const budget = JSON.parse(readMaj("reports/visual-system-debt-budget.json")) as {
   ceilings: { hexInCss: number };
 };
-assert.ok(budget.ceilings.hexInCss <= 5634);
+assert.ok(budget.ceilings.hexInCss <= 5630);
 
 const qb = JSON.parse(readRepo("docs/governance/QUALITY_BASELINE_V1.json")) as {
   design: { visualCeilings: { hexInCss: number } };
 };
-assert.ok(qb.design.visualCeilings.hexInCss <= 5634);
+assert.ok(qb.design.visualCeilings.hexInCss <= 5630);
 
 console.log("eradication-wave1b-dark-mur-gate.test.ts: ok");
 console.log("HEX_AND_FALLBACK_COUNTS_REDUCED");

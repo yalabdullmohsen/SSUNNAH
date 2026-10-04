@@ -9,7 +9,7 @@
 - CSS file count: **356**
 - Synchronous CSS imports: **14**
 - Deferred CSS imports: **55**
-- Hex count: **5,634**
+- Hex count: **5,630**
 - RGB/HSL count: **2,006**
 - Unsafe Hex fallbacks: **2,562**
 - `!important`: **4,746**
