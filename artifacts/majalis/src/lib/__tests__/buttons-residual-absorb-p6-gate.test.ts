@@ -28,7 +28,7 @@ const migrated = [
   /* Wave 3 / PR F */
   "src/pages/quran/ui/QuranNumbersView.tsx",
   "src/pages/quran/QuranMemorizationPlansPage.tsx",
-  "src/pages/quran/QuranEnginePage.tsx",
+  /* Wave 4: QuranEnginePage uses ContentTabs (Button owned by TabSystem) — not listed here */
 ] as const;
 
 for (const rel of migrated) {

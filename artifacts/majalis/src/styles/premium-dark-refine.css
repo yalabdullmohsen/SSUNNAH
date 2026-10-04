@@ -349,7 +349,9 @@
   --qe-line: color-mix(in srgb, var(--pd-gold) 14%, var(--qe-panel));
 }
 
-:is(html[data-theme="dark"], html.dark) .qe-page__nav button.is-on {
+:is(html[data-theme="dark"], html.dark) .qe-page__nav button.is-on,
+:is(html[data-theme="dark"], html.dark) .qe-page__nav .ss-tabs__tab--active,
+:is(html[data-theme="dark"], html.dark) .qe-page__nav .ss-tabs__tab[data-active="1"] {
   box-shadow: none !important;
 }
 

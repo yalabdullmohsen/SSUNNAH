@@ -3,9 +3,10 @@
 | Field | Value |
 |---|---|
 | Status | **AUTHORITY MAP** |
-| Date | 2026-10-03 |
+| Date | 2026-10-04 |
 | Exit | `FILTER_AUTHORITY_ONLY` (product) |
 | Kit | `components/filters/*` · façade `design-system/FilterSystem.tsx` |
+| Wave | Eradication **PR G / Wave 4** — Quran Numbers theme/group → `SegmentedFilter` |
 
 One filtering language. Prefer chips / segmented / sheet over page-local button rows.
 

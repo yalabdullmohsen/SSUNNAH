@@ -17,7 +17,9 @@
   padding: 0 1.1rem;
 }
 
-.qe-page__nav button {
+/* ContentTabs (pill) — keep engine chrome recipe on authority tabs */
+.qe-page__nav button,
+.qe-page__nav .ss-tabs__tab {
   border: 1px solid color-mix(in srgb, var(--qe-emerald, var(--mj-brand-deep)) 28%, transparent);
   background: transparent;
   color: var(--qe-emerald, var(--mj-brand-deep));
@@ -33,11 +35,14 @@
     transform 0.15s ease;
 }
 
-.qe-page__nav button:active {
+.qe-page__nav button:active,
+.qe-page__nav .ss-tabs__tab:active {
   transform: scale(0.97);
 }
 
-.qe-page__nav button.is-on {
+.qe-page__nav button.is-on,
+.qe-page__nav .ss-tabs__tab--active,
+.qe-page__nav .ss-tabs__tab[data-active="1"] {
   background: var(--qe-emerald, var(--mj-brand-deep));
   color: #f4faf7;
 }

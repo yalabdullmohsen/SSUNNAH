@@ -1,8 +1,8 @@
 /**
- * تبويبات قراءة قصة النبي — RTL · قابل للتمرير · هدف لمس ≥44×44.
- * الحالة المختارة: لون + حد + مؤشر — لا تعتمد على اللون وحده.
+ * تبويبات قراءة قصة النبي — واجهة فوق ContentTabs (TAB authority).
+ * RTL · قابل للتمرير · هدف لمس ≥44×44 · مؤشر للحالة النشطة.
  */
-import { Button } from "@/components/ui/button";
+import { ContentTabs } from "@/components/design-system/TabSystem";
 
 export type ProphetStoryTab = {
   id: string;
@@ -25,33 +25,15 @@ export function ProphetStoryTabs({ tabs, activeId, onSelect }: Props) {
       data-testid="prophet-story-tabs"
       aria-label="أقسام القصة"
     >
-      <div className="prophet-story-tabs__track" role="tablist" aria-orientation="horizontal">
-        {tabs.map((tab) => {
-          const active = activeId === tab.id;
-          return (
-            <Button
-              key={tab.id}
-              type="button"
-              variant="ghost"
-              size="small"
-              role="tab"
-              id={`prophet-tab-${tab.id}`}
-              className={`prophet-story-tabs__btn prophet-detail-toc__btn${active ? " prophet-story-tabs__btn--active prophet-detail-toc__btn--active" : ""}`}
-              aria-selected={active}
-              aria-current={active ? "true" : undefined}
-              tabIndex={active ? 0 : -1}
-              data-tab-id={tab.id}
-              data-active={active ? "1" : "0"}
-              onClick={() => onSelect(tab.id)}
-            >
-              <span className="prophet-story-tabs__label">{tab.label}</span>
-              {active ? (
-                <span className="prophet-story-tabs__marker" aria-hidden="true" />
-              ) : null}
-            </Button>
-          );
-        })}
-      </div>
+      <ContentTabs
+        className="prophet-story-tabs__track prophet-detail-toc__track"
+        ariaLabel="أقسام القصة"
+        idPrefix="prophet"
+        variant="pill"
+        value={activeId}
+        onChange={onSelect}
+        items={tabs.map((tab) => ({ id: tab.id, label: tab.label }))}
+      />
     </nav>
   );
 }

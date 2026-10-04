@@ -8,7 +8,7 @@ import { QuranEngineProvider } from "@/core/quran/QuranEngineContext";
 import { QuranProvider } from "@/context/QuranContext";
 import { HomeDashboard } from "@/components/HomeDashboard";
 import { QuranViewer } from "@/components/QuranViewer";
-import { Button } from "@/components/ui/button";
+import { ContentTabs } from "@/components/design-system/TabSystem";
 import "@/styles/quran-engine-ui.css";
 
 export default function QuranEnginePage() {
@@ -26,31 +26,25 @@ export default function QuranEnginePage() {
           data-focus={focusMode ? "1" : "0"}
         >
           {!focusMode ? (
-            <nav className="qe-page__nav" aria-label="محرك القرآن">
-              <Button
-                type="button"
-                variant="ghost"
-                size="small"
-                className={mode === "dash" ? "is-on" : undefined}
-                aria-pressed={mode === "dash"}
-                onClick={() => {
+            <ContentTabs
+              className="qe-page__nav"
+              ariaLabel="محرك القرآن"
+              idPrefix="qe"
+              variant="pill"
+              value={mode}
+              onChange={(id) => {
+                if (id === "dash") {
                   setFocusMode(false);
                   setMode("dash");
-                }}
-              >
-                اللوحة
-              </Button>
-              <Button
-                type="button"
-                variant="ghost"
-                size="small"
-                className={mode === "viewer" ? "is-on" : undefined}
-                aria-pressed={mode === "viewer"}
-                onClick={() => setMode("viewer")}
-              >
-                المصحف
-              </Button>
-            </nav>
+                  return;
+                }
+                setMode("viewer");
+              }}
+              items={[
+                { id: "dash", label: "اللوحة" },
+                { id: "viewer", label: "المصحف" },
+              ]}
+            />
           ) : null}
           {mode === "dash" ? (
             <HomeDashboard

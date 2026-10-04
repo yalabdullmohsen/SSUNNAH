@@ -3,7 +3,7 @@
   "policy": "decreasing-ceilings",
   "note": "Wave 3 / PR F: rawButtonFiles lowered after Quran hub Button absorb; official Button floor raised.",
   "floors": {
-    "officialButtonImportFiles": 290,
+    "officialButtonImportFiles": 288,
     "sfTokenRefs": 1183,
     "ssTokenRefs": 762
   },

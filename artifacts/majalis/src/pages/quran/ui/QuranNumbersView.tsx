@@ -33,6 +33,7 @@ import "@/components/sections/section-cards.css";
 import "@/styles/pages/quran-numbers.css";
 import { DetailScreen } from "@/components/design-system/screens";
 import { SearchInput } from "@/components/design-system/FormFields";
+import { SegmentedFilter } from "@/components/filters/SegmentedFilter";
 import { Button } from "@/components/ui/button";
 
 const GROUPS: QuranStatGroup[] = ["bunya", "alfaz", "mawdoo", "suwar", "ajaib"];
@@ -155,65 +156,31 @@ export default function QuranNumbersPage() {
             aria-label="بحث في القرآن في أرقام"
           />
         </div>
-        <div className="quran-numbers-tabs" role="tablist" aria-label="محاور الإحصاءات">
-          <Button
-            type="button"
-            variant="ghost"
-            size="small"
-            role="tab"
-            aria-selected={theme === "all"}
-            data-active={theme === "all" ? "1" : "0"}
-            onClick={() => setTheme("all")}
-          >
-            الكل
-          </Button>
-          {QURAN_STAT_THEMES.map((t) => (
-            <Button
-              key={t}
-              type="button"
-              variant="ghost"
-              size="small"
-              role="tab"
-              aria-selected={theme === t}
-              data-active={theme === t ? "1" : "0"}
-              onClick={() => setTheme(t)}
-            >
-              {QURAN_STAT_THEME_LABEL[t]}
-            </Button>
-          ))}
-        </div>
+        <SegmentedFilter
+          className="quran-numbers-tabs"
+          ariaLabel="محاور الإحصاءات"
+          value={theme}
+          onChange={(id) => setTheme(id as QuranStatTheme | "all")}
+          items={[
+            { id: "all", label: "الكل" },
+            ...QURAN_STAT_THEMES.map((t) => ({ id: t, label: QURAN_STAT_THEME_LABEL[t] })),
+          ]}
+        />
         {theme !== "all" ? (
           <p className="quran-numbers-theme-blurb" aria-live="polite">
             {QURAN_STAT_THEME_BLURB[theme]}
           </p>
         ) : null}
-        <div className="quran-numbers-tabs quran-numbers-tabs--groups" role="tablist" aria-label="تصنيف المصدر">
-          <Button
-            type="button"
-            variant="ghost"
-            size="small"
-            role="tab"
-            aria-selected={group === "all"}
-            data-active={group === "all" ? "1" : "0"}
-            onClick={() => setGroup("all")}
-          >
-            كل التصنيفات
-          </Button>
-          {GROUPS.map((g) => (
-            <Button
-              key={g}
-              type="button"
-              variant="ghost"
-              size="small"
-              role="tab"
-              aria-selected={group === g}
-              data-active={group === g ? "1" : "0"}
-              onClick={() => setGroup(g)}
-            >
-              {QURAN_STAT_GROUP_LABEL[g]}
-            </Button>
-          ))}
-        </div>
+        <SegmentedFilter
+          className="quran-numbers-tabs quran-numbers-tabs--groups"
+          ariaLabel="تصنيف المصدر"
+          value={group}
+          onChange={(id) => setGroup(id as QuranStatGroup | "all")}
+          items={[
+            { id: "all", label: "كل التصنيفات" },
+            ...GROUPS.map((g) => ({ id: g, label: QURAN_STAT_GROUP_LABEL[g] })),
+          ]}
+        />
       </div>
 
       <div className="quran-numbers-grid" data-sections-grid="quran-numbers">
