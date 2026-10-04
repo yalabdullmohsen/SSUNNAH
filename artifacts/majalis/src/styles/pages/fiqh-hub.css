@@ -271,7 +271,7 @@ html[data-theme="dark"] .fqh-hub-card__desc {
 .fiqh-hub-strip__brand {
   font-size: 0.78rem !important;
   font-weight: 700 !important;
-  color: var(--elite-forest, var(--mj-brand-deep)) !important;
+  color: var(--mj-brand-deep) !important;
   text-decoration: none !important;
   white-space: nowrap !important;
   flex-shrink: 0 !important;
@@ -297,16 +297,16 @@ html[data-theme="dark"] .fqh-hub-card__desc {
 }
 .fiqh-hub-strip__tab:hover {
   background: rgba(24, 54, 42, 0.08) !important;
-  color: var(--elite-forest, var(--mj-brand-deep)) !important;
+  color: var(--mj-brand-deep) !important;
   text-decoration: none !important;
 }
 .fiqh-hub-strip__tab--active {
-  background: var(--elite-forest, var(--mj-brand-deep)) !important;
+  background: var(--mj-brand-deep) !important;
   color: var(--mj-bg) !important;
   font-weight: 700 !important;
 }
 .fiqh-hub-strip__tab--active:hover {
-  background: var(--elite-forest, var(--mj-brand-deep)) !important;
+  background: var(--mj-brand-deep) !important;
   color: var(--mj-bg) !important;
 }
 

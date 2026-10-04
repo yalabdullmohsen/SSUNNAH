@@ -21,18 +21,9 @@
      ١) السلالم الأولية — موحّدة Light/Dark
      ══════════════════════════════════════════════════════════ */
 
-  /* Deep Emerald راقٍ (ليس Teal صارخًا ولا Forest القديم) */
-  --em-50:  #EEF3F0;   /* Primary Soft / Sage wash */
-  --em-100: #DCE7E1;
-  --em-200: #B7CDC3;
-  --em-300: #82A998;
-  --em-400: #4F8772;
-  --em-500: #2F735C;   /* تفاعل واضح غير صارخ */
-  --em-600: #1E5F4B;   /* Primary عميق راقٍ */
-  --em-700: #174A3A;
-  --em-800: #12362C;
-  --em-900: #0E241E;   /* خلفية عميقة / عناوين */
-  --em-950: #091814;
+  /* Deep Emerald --em-* literals retired (PR B).
+     SEMANTIC_BRIDGE owner: theme-aliases.css → --mj-brand* / color-mix.
+     brand-v4 keeps var(--em-*) consumers; values resolve after theme-aliases. */
 
   /* Soft Gold — لهجة محدودة */
   --gold-100: #F4F0E6;

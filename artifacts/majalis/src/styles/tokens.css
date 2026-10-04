@@ -3,7 +3,7 @@
    فوق هذا السطح؟». يُحمَّل بعد brand-v4.css ويشتق منه، لا يستنسخ قيمه.
 
    ⚠️ تحذير تعارض مقصود التوثيق:
-   في brand-v4.css الرمز ‎--surface-brand‎ = ‎var(--em-100)‎ = ‎#DCE7E1‎، أي
+   في brand-v4.css الرمز ‎--surface-brand‎ = ‎var(--mj-brand-soft)‎ = ‎#DCE7E1‎، أي
    *غسلة خضراء فاتحة* لا الأخضر الغامق. لذلك ربط ‎--on-brand: #FFFFFF‎ به
    يعطي تباين ‎1.24:1‎ — كارثة. لم يُعَد تعريفه هنا (عشرات المكونات تعتمده
    بمعناه الفاتح). بدلًا من ذلك للأسطح الخضراء الغامقة أسماء صريحة:
@@ -19,8 +19,8 @@
 :root {
   /* ── أسطح العلامة الغامقة + ما يُكتب فوقها ─────────────────────────── */
   /* يجب تعريف solid/strong هنا — لا في الوضع الليلي فقط (كان السبب الجذري) */
-  --surface-brand-solid: var(--brand, var(--em-600, #1e5f4b));
-  --surface-brand-strong: var(--brand-deep, var(--em-800, #12362c));
+  --surface-brand-solid: var(--brand, var(--mj-brand, #1e5f4b));
+  --surface-brand-strong: var(--brand-deep, var(--mj-brand-deep, #12362c));
   /*
    * ملاحظة: ‎--surface-brand‎ في brand-v4/theme-aliases = غسلة فاتحة.
    * المكوّنات ذات النص الأبيض تستخدم ‎.surface-brand‎ / ‎--surface-brand-solid‎.
@@ -46,9 +46,9 @@
   --on-brand-focus-ring: rgba(255, 255, 255, 0.92);
 
   /* ── الغسلة الفاتحة: حبر غامق فوقها، لا أبيض ───────────────────────── */
-  --surface-brand-wash: var(--em-100, #dce7e1);
-  --on-brand-wash: var(--em-900, #0e241e);
-  --on-brand-wash-secondary: var(--em-700, #174a3a);
+  --surface-brand-wash: var(--mj-brand-soft, #dce7e1);
+  --on-brand-wash: var(--mj-brand-deep, #0e241e);
+  --on-brand-wash-secondary: var(--mj-brand-deep, #174a3a);
 
   /* ── بقية الأزواج الدلالية ─────────────────────────────────────────── */
   --surface-page: var(--surface-app, var(--mj-bg, var(--bg)));

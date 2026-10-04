@@ -54,10 +54,10 @@
 .isp-search {
   width: 100%;
   padding: 0.65rem 1rem;
-  background: var(--elite-white, var(--mj-bg));
-  border: 1.5px solid var(--elite-border-2, rgba(24,54,42,0.15));
+  background: var(--mj-bg);
+  border: 1.5px solid var(--mj-hairline);
   border-radius: var(--sf-radius-control, 1.125rem);
-  color: var(--elite-ink, var(--mj-brand-deep));
+  color: var(--mj-brand-deep);
   font-size: 0.9rem;
   font-family: inherit;
   transition: border-color 0.15s;
@@ -66,11 +66,11 @@
 
 .isp-search:focus {
   outline: none;
-  border-color: var(--elite-forest, var(--mj-brand-deep));
+  border-color: var(--mj-brand-deep);
   box-shadow: 0 0 0 3px rgba(24,54,42,0.08);
 }
 
-.isp-search::placeholder { color: var(--elite-ink-muted, var(--mj-ink-2)); }
+.isp-search::placeholder { color: var(--mj-ink-2); }
 
 .isp-filter-group {
   display: flex;
@@ -81,7 +81,7 @@
 .isp-filter-label {
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--elite-ink-muted, var(--mj-ink-2));
+  color: var(--mj-ink-2);
   letter-spacing: normal;
   text-transform: uppercase;
 }
@@ -114,8 +114,8 @@
 }
 
 .isp-chip:hover {
-  border-color: var(--elite-forest, var(--mj-brand-deep));
-  color: var(--elite-forest, var(--mj-brand-deep));
+  border-color: var(--mj-brand-deep);
+  color: var(--mj-brand-deep);
 }
 
 .isp-chip.is-active {
@@ -132,7 +132,7 @@ html.dark .isp-chip.is-active,
 
 .isp-result-count {
   font-size: 0.8rem;
-  color: var(--elite-ink-muted, var(--mj-ink-2));
+  color: var(--mj-ink-2);
   margin: 0;
 }
 
@@ -300,7 +300,7 @@ html.dark .isp-chip.is-active,
   padding: var(--ds-space-8);
   background: rgba(220,38,38,0.08);
   border: 1px solid rgba(220,38,38,0.2);
-  border-radius: var(--elite-r-lg, 16px);
+  border-radius: var(--radius-mj-md, 16px);
   color: var(--mj-danger);
   font-size: 0.9rem;
 }
@@ -314,11 +314,11 @@ html.dark .isp-chip.is-active,
   gap: var(--ds-space-2);
   padding: 3rem 1rem;
   text-align: center;
-  color: var(--elite-ink-soft, var(--mj-muted));
+  color: var(--mj-muted);
 }
 
 .isp-empty__icon { font-size: 2.5rem; opacity: 0.4; }
-.isp-empty__hint { font-size: 0.82rem; color: var(--elite-ink-muted, var(--mj-ink-2)); margin: 0; }
+.isp-empty__hint { font-size: 0.82rem; color: var(--mj-ink-2); margin: 0; }
 
 /* ── صفحة التفاصيل ── */
 .isp-detail {
@@ -332,8 +332,8 @@ html.dark .isp-chip.is-active,
   align-self: flex-start;
   background: transparent;
   border: 1px solid rgba(190,199,195,0.35);
-  color: var(--elite-ink-soft, var(--mj-muted));
-  border-radius: var(--elite-r-sm, 8px);
+  color: var(--mj-muted);
+  border-radius: var(--sf-radius-xs, 8px);
   padding: 0.5rem 1.1rem;
   font-size: var(--ds-text-sm);
   font-weight: 600;
@@ -343,9 +343,9 @@ html.dark .isp-chip.is-active,
 }
 
 .isp-detail__back:hover {
-  background: var(--elite-sage-2, #F4F4F1);
-  border-color: var(--elite-forest, var(--mj-brand-deep));
-  color: var(--elite-forest, var(--mj-brand-deep));
+  background: var(--mj-brand-soft, #F4F4F1);
+  border-color: var(--mj-brand-deep);
+  color: var(--mj-brand-deep);
 }
 
 .isp-detail__hero {
@@ -383,8 +383,8 @@ html.dark .isp-chip.is-active,
 }
 
 .isp-detail__section {
-  background: var(--color-surface, var(--elite-white, var(--mj-surface)));
-  border: 1px solid var(--color-hairline, var(--elite-border, rgba(0,0,0,0.07)));
+  background: var(--color-surface, var(--mj-surface));
+  border: 1px solid var(--color-hairline, var(--mj-hairline));
   border-radius: var(--radius-card, 1.5rem);
   padding: 1.25rem 1.5rem;
   box-shadow: 0 10px 26px -18px rgba(10, 61, 46, 0.22);
@@ -402,7 +402,7 @@ html.dark .isp-chip.is-active,
   padding: 0 !important;
   border-radius: 0 !important;
   display: block !important;
-  color: var(--elite-forest, var(--mj-brand-deep)) !important;
+  color: var(--mj-brand-deep) !important;
 }
 
 .isp-detail__section-title--green  { color: var(--mj-brand) !important; }
@@ -412,7 +412,7 @@ html.dark .isp-chip.is-active,
 .isp-detail__body {
   font-size: 0.9rem;
   line-height: 1.9;
-  color: var(--elite-ink, var(--mj-brand-deep));
+  color: var(--mj-brand-deep);
   white-space: pre-wrap;
 }
 
@@ -429,7 +429,7 @@ html.dark .isp-chip.is-active,
   display: flex;
   gap: 0.6rem;
   font-size: var(--ds-text-sm);
-  color: var(--elite-ink, var(--mj-brand-deep));
+  color: var(--mj-brand-deep);
   line-height: 1.6;
   align-items: flex-start;
 }
@@ -458,7 +458,7 @@ html.dark .isp-chip.is-active,
 
 .isp-detail__list-item {
   font-size: 0.84rem;
-  color: var(--elite-ink-soft, var(--mj-muted));
+  color: var(--mj-muted);
   line-height: 1.5;
 }
 

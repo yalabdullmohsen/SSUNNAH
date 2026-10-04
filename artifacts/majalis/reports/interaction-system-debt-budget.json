@@ -9,12 +9,12 @@
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
     "buttonRelatedImportantApprox": 1138,
-    "buttonRelatedHexApprox": 975
+    "buttonRelatedHexApprox": 973
   },
   "floors": {
     "officialButtonImportFiles": 288,
     "actionButtonConsumerFiles": 7
   },
   "updatedAt": "2026-10-04T14:27:42.111Z",
-  "noteFloor": "Wave 4: official Button import floor 290→288 after Engine/Prophet compose ContentTabs (Button owned by TabSystem)."
+  "noteFloor": "Wave 4: official Button import floor 290\u2192288 after Engine/Prophet compose ContentTabs (Button owned by TabSystem)."
 }

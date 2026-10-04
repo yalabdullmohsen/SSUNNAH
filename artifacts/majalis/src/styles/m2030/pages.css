@@ -66,13 +66,13 @@ html.pts-immersive .app-main {
 .kids-hub-page--soon,
 .kids-hub-soon {
   background:
-    radial-gradient(circle at 70% 10%, color-mix(in srgb, var(--em-500) 10%, transparent), transparent 45%),
+    radial-gradient(circle at 70% 10%, color-mix(in srgb, var(--mj-brand) 10%, transparent), transparent 45%),
     var(--bg) !important;
   padding-block: 1.5rem !important;
 }
 
 .kids-hub-soon__badge {
-  background: var(--em-900) !important;
+  background: var(--mj-brand-deep) !important;
   color: var(--em-300) !important;
   border: 1px solid color-mix(in srgb, var(--em-400) 35%, transparent) !important;
   border-radius: var(--r-sm) !important;
@@ -150,7 +150,7 @@ html.pts-immersive .app-main {
 
 .quiz-progress > *,
 [class*="quiz-progress"] > * {
-  background: linear-gradient(90deg, var(--em-700), var(--em-500)) !important;
+  background: linear-gradient(90deg, var(--mj-brand-deep), var(--mj-brand)) !important;
 }
 
 .surah-list-item,

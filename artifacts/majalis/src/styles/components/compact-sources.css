@@ -192,7 +192,7 @@ html.dark .compact-sources__item {
 .compact-sources--nested .compact-sources__text {
   font-size: 0.88rem;
   line-height: 1.65;
-  color: var(--mj-ink, var(--elite-ink, #12241d));
+  color: var(--mj-ink);
   font-weight: 500;
 }
 

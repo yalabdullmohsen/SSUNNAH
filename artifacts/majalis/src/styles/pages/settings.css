@@ -28,7 +28,7 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  background: var(--elite-forest, var(--mj-brand-deep)) !important;
+  background: var(--mj-brand-deep) !important;
   color: var(--mj-bg) !important;
   border-radius: 50% !important;
   font-size: 1.25rem !important;
@@ -39,7 +39,7 @@
 .settings-account-card p {
   margin: 0 !important;
   font-size: 0.92rem !important;
-  color: var(--elite-ink, var(--mj-ink, #14241c)) !important;
+  color: var(--mj-ink) !important;
   line-height: 1.65 !important;
 }
 
@@ -62,7 +62,7 @@
   padding: 0.5rem 1rem !important;
   background: transparent !important;
   border: 1.5px solid rgba(192,57,43,0.3) !important;
-  border-radius: var(--elite-r-md, 12px) !important;
+  border-radius: var(--sf-radius-control, 12px) !important;
   color: var(--mj-danger, #c0392b) !important;
   font-size: 0.825rem !important;
   font-weight: 600 !important;
@@ -98,7 +98,7 @@
   display: inline-block !important;
   padding: 0.35rem 0.75rem !important;
   border: 1px solid rgba(23,61,53,0.25) !important;
-  border-radius: var(--elite-r-sm, 8px) !important;
+  border-radius: var(--sf-radius-xs, 8px) !important;
   color: var(--clr-primary, var(--mj-brand)) !important;
   font-size: 0.8rem !important;
   font-weight: 600 !important;
@@ -145,8 +145,8 @@
   width: min(100%, 26rem);
   padding: 1.25rem 1.1rem;
   border-radius: var(--sf-radius-control);
-  background: var(--mj-surface, var(--elite-white, var(--mj-white, var(--mj-white, var(--mj-white)))));
-  color: var(--mj-ink, var(--elite-ink, #14241c));
+  background: var(--mj-surface);
+  color: var(--mj-ink);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
 }
 
@@ -172,11 +172,11 @@
 /* حقل الإعداد (label + input/select) */
 .settings-field {
   display: flex !important;
-  flex-direction: column !important;
-  gap: 0.35rem !important;
-  font-size: 0.82rem !important;
-  font-weight: 600 !important;
-  color: var(--elite-ink-soft, var(--mj-muted)) !important;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--mj-muted) !important;
 }
 
 .settings-field input[type="text"],
@@ -184,35 +184,35 @@
 .settings-field select {
   font-family: inherit !important;
   font-size: 0.875rem !important;
-  color: var(--elite-ink, var(--mj-brand-deep)) !important;
+  color: var(--mj-brand-deep) !important;
 }
 
 .settings-field input[type="text"],
 .settings-field select {
   padding: 0.5rem 0.75rem !important;
-  border: 1.5px solid var(--elite-border-2, rgba(24,54,42,0.15)) !important;
-  border-radius: var(--elite-r-sm, 8px) !important;
-  background: var(--elite-white, var(--mj-bg)) !important;
+  border: 1.5px solid var(--mj-hairline) !important;
+  border-radius: var(--sf-radius-xs, 8px) !important;
+  background: var(--mj-bg) !important;
   transition: border-color 0.15s !important;
 }
 
 .settings-field input[type="text"]:focus,
 .settings-field select:focus {
   outline: none !important;
-  border-color: var(--elite-forest, var(--mj-brand-deep)) !important;
+  border-color: var(--mj-brand-deep) !important;
   box-shadow: 0 0 0 3px rgba(24,54,42,0.08) !important;
 }
 
 .settings-field strong {
   font-size: 0.8rem !important;
-  color: var(--elite-forest, var(--mj-brand-deep)) !important;
+  color: var(--mj-brand-deep) !important;
 }
 
 /* شبكة خيارات الخط */
 
 .settings-choice.is-active {
-  border-color: var(--elite-forest, var(--mj-brand-deep)) !important;
-  background: var(--elite-forest, var(--mj-brand-deep)) !important;
+  border-color: var(--mj-brand-deep) !important;
+  background: var(--mj-brand-deep) !important;
 }
 
 .settings-choice.is-active strong,
@@ -223,7 +223,7 @@
 /* ملاحظة نصية */
 .settings-note {
   font-size: 0.78rem !important;
-  color: var(--elite-ink-muted, var(--mj-ink-2)) !important;
+  color: var(--mj-ink-2) !important;
   line-height: 1.6 !important;
   margin: 0.25rem 0 0 !important;
 }
@@ -236,7 +236,7 @@
   gap: 1rem !important;
   min-height: 44px !important;
   padding: 0.55rem 0 !important;
-  border-bottom: 1px solid var(--elite-border, rgba(0,0,0,0.06)) !important;
+  border-bottom: 1px solid var(--mj-hairline) !important;
   cursor: pointer !important;
 }
 
@@ -247,7 +247,7 @@
 .settings-toggle-row span {
   font-size: 0.875rem !important;
   font-weight: 500 !important;
-  color: var(--elite-ink, var(--mj-brand-deep)) !important;
+  color: var(--mj-brand-deep) !important;
   line-height: 1.4 !important;
 }
 
@@ -268,7 +268,7 @@
 }
 
 .settings-toggle-row input[type="checkbox"]:checked {
-  background: var(--elite-forest, var(--mj-brand-deep)) !important;
+  background: var(--mj-brand-deep) !important;
 }
 
 .settings-toggle-row input[type="checkbox"]::after {
@@ -304,7 +304,7 @@
   min-height: 44px !important;
   padding: 0.55rem 0.85rem !important;
   border: 1.5px solid rgba(23, 61, 53, 0.18) !important;
-  border-radius: var(--elite-r-md, 12px) !important;
+  border-radius: var(--sf-radius-control, 12px) !important;
   font: inherit !important;
   background: var(--mj-bg, var(--mj-white, var(--mj-white, var(--mj-white)))) !important;
   color: inherit !important;

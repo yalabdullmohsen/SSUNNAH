@@ -1,24 +1,28 @@
 # TOKEN_CONSUMER_LIVE_REPORT
 
 TASK_CLASSIFICATION: SHARED_PLATFORM
-Source: origin/main `2a6961a7f`
+Source: PR B branch on `c3e8a3e37` (post-migration)
 
-| Family | Declarations | Unique refs |
-|---|---:|---:|
-| `--ds-*` | 181 | 184 |
-| `--mj-*` | 83 | 114 |
-| `--msk-*` | 29 | 32 |
-| `--sf-*` | 118 | 123 |
-| `--ss-*` | 76 | 86 |
-| `--cs-*` | 39 | 39 |
-| `--majalis-*` | 44 | 47 |
-| `--color-*` | 81 | 81 |
-| `--elite-*` | 13 | 29 |
-| `--brand-*` | 13 | 14 |
-| `--dm-*` | 44 | 44 |
-| `--pd-*` | 30 | 30 |
-| `--em-*` | 11 | 11 |
+| Family | Status | Notes |
+|---|---|---|
+| `--sf-*` | CANONICAL | refs ↑ (floor 1220) |
+| `--ss-*` | CANONICAL | refs held (floor 769) |
+| `--mj-*` | CANONICAL | primary migration destination |
+| `--cs-*` | CANONICAL (Card bridge) | unchanged |
+| `--ds-*` | SEMANTIC_BRIDGE_REQUIRED | DS/startup contract kept |
+| `--elite-*` | MOSTLY_MIGRATED | ~10 refs remain (`--elite-forest` dark bridge + KEEP sites) |
+| `--em-*` | SEMANTIC_BRIDGE (theme-aliases) | brand-v4 hex literals removed; external consumers → `--mj-brand*` |
+| `--msk-*` / `--majalis-*` | KEEP_COMPATIBILITY | high consumer counts |
+| `--color-*` | PRODUCT dual | unchanged |
+| `--dm-*` / `--pd-*` | KEEP_COMPATIBILITY | dark recovery / premium-dark |
+| `--brand-*` | KEEP_COMPATIBILITY | brand-v4 / theme dual |
 
-Allowed public authorities: `--sf-*` · `--ss-*` · `--mj-*` · `--cs-*` (Card bridge)
-`--ds-*` = SEMANTIC_BRIDGE_REQUIRED
-TOKEN_AUTHORITY_SINGLE = false
+TOKEN_AUTHORITY_SINGLE = false (bridges remain; growth prevented; elite/em debt reduced)
+
+Measured after PR B:
+
+- cssFiles 355
+- important 4739 (ceiling lowered)
+- hexInCss 5601 (ceiling lowered)
+- buttonRelatedImportantApprox 1138
+- buttonRelatedHexApprox 973 (ceiling lowered)
