@@ -122,6 +122,13 @@ if (original) {
     "border-color: rgba(26, 107, 82, 0.25);\n  box-shadow: var(--ds-shadow-sm);",
     /* PR A closure: defeated early .page-shell (winner = FOUNDATION contract absorbing final-release). */
     "width: min(100%, var(--ds-max));\n  margin-inline: auto;\n  padding-block: var(--mj-s4, var(--ds-space-4));\n  padding-inline: var(--page-gutter, var(--ds-space-3)) var(--page-gutter-end, var(--page-gutter, var(--ds-space-3)));\n  box-sizing: border-box;",
+    /* PR C: tasbih/tawhid dual-ownership absorb — defeated DS bodies after winner merge. */
+    "align-items: stretch;",
+    "display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 1rem;\n  margin-bottom: 2rem;",
+    "display: flex;\n  flex-direction: column;\n  gap: 0.5rem;\n  padding: 1.25rem 1rem;\n  border-radius: 0.75rem;\n  border: 1px solid var(--ds-line-color);\n  background: var(--bg-card);\n  box-shadow: var(--ds-shadow-sm);\n  direction: rtl;\n  text-align: right;",
+    "display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 2rem;\n  height: 2rem;\n  border-radius: 50%;\n  background: var(--majalis-emerald, var(--mj-brand-deep));\n  color: #fff;\n  font-size: 1rem;\n  font-weight: 700;\n  flex-shrink: 0;",
+    "margin: 0;\n  font-size: 0.85rem;\n  line-height: 1.75;\n  color: var(--text-base);\n  flex: 1;",
+    "display: inline-flex;\n  align-items: center;\n  gap: 0.3rem;\n  font-size: 0.8rem;\n  line-height: 1.4;\n  color: var(--text-muted);\n  background: var(--bg-base);\n  border-radius: 0.35rem;\n  padding: 0.18rem 0.45rem;\n  border-right: 3px solid;\n  direction: rtl;",
   ]);
   while ((m = re.exec(origRules))) {
     const sel = m[1]!.trim().replace(/\s+/g, " ");
@@ -167,6 +174,10 @@ if (original) {
     bodyLh.every((m) => m[1]!.trim() === "1.55"),
     `unexpected body line-height values: ${bodyLh.map((m) => m[1]).join(",")}`,
   );
+  /* PR C: DS remains sole owner for tawheed types grid + absorbed type-card contract. */
+  assert.match(graphRules, /\.tawheed-types-grid\s*\{[\s\S]*?gap:\s*0\.55rem/);
+  assert.match(graphRules, /\.tawheed-type-card\s*\{[\s\S]*?border-top:\s*3px\s+solid/);
+  assert.doesNotMatch(graphRules, /\.tasbih-add-row\s*\{/);
 }
 
 console.log("css-authority-graph-gate.test.ts: ok");
