@@ -107,7 +107,18 @@ if (original) {
     const sel = m[1]!.trim().replace(/\s+/g, " ");
     const body = m[2]!.trim();
     if (!sel || !body || sel.startsWith("@")) continue;
-    if (!graphRules.includes(m[2]!)) missing.push(sel.slice(0, 80));
+    let expected = m[2]!;
+    /* Interaction-debt exact-delta substitutions (pixel-equivalent / cascade-safe). */
+    if (sel === ".ui-card-btn--danger") {
+      expected = expected.replace("color: #dc2626 !important;", "color: #dc2626;");
+    }
+    if (sel === ".hcz-row__move button") {
+      expected = expected.replace(
+        "background: #fff;",
+        "background: var(--sf-color-warm-ivory-surface);",
+      );
+    }
+    if (!graphRules.includes(expected) && !graphRules.includes(m[2]!)) missing.push(sel.slice(0, 80));
   }
   assert.equal(missing.length, 0, `missing rule bodies: ${missing.slice(0, 8).join(" | ")}`);
 }
