@@ -174,6 +174,7 @@ function safeStreakDays(): number | null {
 export function buildSunnahWidgetEnvelope(
   now: Date = new Date(),
   prayerPayload?: ReturnType<typeof buildSharedPrayerSnapshotPayload> | null,
+  options?: { publicationReason?: string },
 ): Record<string, unknown> {
   const tz = prayerPayload?.timeZoneIdentifier || getActivePrayerLocation().timeZone || "Asia/Kuwait";
   const hijri = hijriParts(now, tz);
@@ -207,16 +208,30 @@ export function buildSunnahWidgetEnvelope(
   const mushafPercent =
     lastPage != null ? Math.min(100, Math.round((lastPage / TOTAL_QURAN_PAGES) * 100)) : null;
   const upcoming = pickUpcomingWidgetEvent({ month: hijri.month, day: hijri.day });
+  const prefs = loadWidgetPreferences();
+  const selections = loadWidgetSelections();
+  const calendarMode = prefs.calendarMode;
+  const selectedBookmarkId = prefs.selectedMushafBookmarkId;
+  const bookmarkMissing =
+    typeof selectedBookmarkId === "string" &&
+    selectedBookmarkId.length > 0 &&
+    bookmark == null;
+  const selectedCustomId = prefs.selectedCustomContentId;
   const missingSetup: string[] = [];
   if (!prayerPayload) missingSetup.push("prayer");
   if (lastPage == null) missingSetup.push("mushaf");
   if (!hasCanonicalTracking) missingSetup.push("progress");
-  const header = buildEnvelopeHeader(generatedAt, tz, "canonical-app-publish");
+  if (bookmarkMissing) missingSetup.push("mushaf-bookmark");
+  if (typeof selectedCustomId === "string" && selectedCustomId.length > 0) {
+    /* validated against items below after custom payload is built */
+  }
+  const header = buildEnvelopeHeader(
+    generatedAt,
+    tz,
+    options?.publicationReason || "canonical-app-publish",
+  );
   const eventsDomain = buildIslamicEventsDomain({ month: hijri.month, day: hijri.day }, generatedAt);
   const diagnostics = buildDiagnosticsDomain(generatedAt, missingSetup, []);
-  const prefs = loadWidgetPreferences();
-  const selections = loadWidgetSelections();
-  const calendarMode = prefs.calendarMode;
 
   const envelope = {
     ...header,
@@ -317,18 +332,22 @@ export function buildSunnahWidgetEnvelope(
       lastSurahNumber: lastSurah?.number ?? null,
       lastPage,
       lastAyahNumber: null,
-      bookmarkSurahNameAr: bookmarkSurah?.name ?? null,
-      bookmarkSurahNumber: bookmarkSurah?.number ?? null,
-      bookmarkPage: bookmark?.page ?? lastPage,
-      bookmarkAyahNumber: bookmarkAyah,
+      bookmarkSurahNameAr: bookmarkMissing ? null : bookmarkSurah?.name ?? null,
+      bookmarkSurahNumber: bookmarkMissing ? null : bookmarkSurah?.number ?? null,
+      bookmarkPage: bookmarkMissing ? null : bookmark?.page ?? lastPage,
+      bookmarkAyahNumber: bookmarkMissing ? null : bookmarkAyah,
       hasProgress: lastPage != null,
-      hasBookmark: bookmark != null,
+      hasBookmark: !bookmarkMissing && bookmark != null,
       progressSource: lastPage != null ? "lastPage" : "NOT_STARTED",
       syncState: "local",
       journeyPercent: mushafPercent,
       ...domainMeta(
         "quran-last-page",
-        lastPage != null ? "VALID" : "REQUIRES_INITIALIZATION",
+        bookmarkMissing
+          ? "REQUIRES_CONFIGURATION"
+          : lastPage != null
+            ? "VALID"
+            : "REQUIRES_INITIALIZATION",
         generatedAt,
       ),
       updatedAtEpochMs: generatedAt,
@@ -470,13 +489,16 @@ export function buildSunnahWidgetEnvelope(
 export async function publishSunnahWidgetEnvelope(options?: {
   domains?: string[];
   prayerTimes?: PrayerTimesPayload | null;
+  publicationReason?: string;
 }): Promise<boolean> {
   if (!isNative || !isIOS) return false;
   try {
     const prayer = options?.prayerTimes
       ? buildSharedPrayerSnapshotPayload(options.prayerTimes)
       : null;
-    const envelope = buildSunnahWidgetEnvelope(new Date(), prayer);
+    const envelope = buildSunnahWidgetEnvelope(new Date(), prayer, {
+      publicationReason: options?.publicationReason,
+    });
     const ok = await publishSharedWidgetEnvelope(
       JSON.stringify(envelope),
       options?.domains ?? ["calendar", "adhkar", "quran", "mushaf", "custom", "home"],

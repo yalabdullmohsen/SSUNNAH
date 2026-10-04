@@ -44,7 +44,12 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
                 }
             }
         }
-        let snap = SharedPrayerSnapshot(
+        func optEpoch(_ key: String) -> Int64? {
+            if let n = call.getDouble(key) { return Int64(n) }
+            if let i = call.getInt(key) { return Int64(i) }
+            return nil
+        }
+        var snap = SharedPrayerSnapshot(
             schemaVersion: SharedPrayerSnapshot.currentSchema,
             locationLabel: locationLabel,
             timeZoneIdentifier: timeZoneIdentifier,
@@ -52,14 +57,21 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
             timesEpochMs: times,
             nextPrayerKey: call.getString("nextPrayerKey"),
             nextPrayerNameAr: call.getString("nextPrayerNameAr"),
-            nextPrayerEpochMs: {
-                if let n = call.getDouble("nextPrayerEpochMs") { return Int64(n) }
-                if let i = call.getInt("nextPrayerEpochMs") { return Int64(i) }
-                return nil
-            }(),
+            nextPrayerEpochMs: optEpoch("nextPrayerEpochMs"),
             nextHasStarted: call.getBool("nextHasStarted") ?? false,
             updatedAtEpochMs: Int64(Date().timeIntervalSince1970 * 1000)
         )
+        snap.previousPrayerKey = call.getString("previousPrayerKey")
+        snap.previousPrayerNameAr = call.getString("previousPrayerNameAr")
+        snap.previousPrayerEpochMs = optEpoch("previousPrayerEpochMs")
+        snap.currentPrayerKey = call.getString("currentPrayerKey")
+        snap.currentPrayerNameAr = call.getString("currentPrayerNameAr")
+        snap.currentPrayerStartedAtEpochMs = optEpoch("currentPrayerStartedAtEpochMs")
+        snap.nextTransitionAtEpochMs = optEpoch("nextTransitionAtEpochMs")
+        snap.calculationDate = call.getString("calculationDate")
+        snap.calculationMethodIdentifier = call.getString("calculationMethodIdentifier")
+        snap.permissionState = call.getString("permissionState")
+        snap.initializationState = call.getString("initializationState")
         let ok = SunnahWidgetRefreshCoordinator.commitPrayer(snap)
         if ok {
             // Reload only after App Group write+synchronize committed.

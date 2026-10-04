@@ -137,6 +137,7 @@ enum PrayerWidgetDataState: String {
     case staleData
     case validData
     case appOpenRequired
+    case permissionRequired
 }
 
 /// Single owner for App Group read/write. Never stores auth/secrets.
@@ -219,10 +220,21 @@ enum SunnahSharedStore {
 
     static func classifyPrayerData(_ snapshot: SharedPrayerSnapshot?, now: Date = Date()) -> PrayerWidgetDataState {
         guard let snapshot else { return .noDataYet }
-        if snapshot.schemaVersion < 1 {
+        // Future schema versions fail closed for this domain; other envelope domains stay available.
+        if snapshot.schemaVersion < 1 || snapshot.schemaVersion > SharedPrayerSnapshot.currentSchema {
             return .malformedData
         }
+        let permission = (snapshot.permissionState ?? "").lowercased()
+        if permission == "denied"
+            || permission == "requires_permission"
+            || permission == "revoked" {
+            return .permissionRequired
+        }
         if snapshot.timesEpochMs.isEmpty && snapshot.nextPrayerEpochMs == nil {
+            return .appOpenRequired
+        }
+        if let initState = snapshot.initializationState?.uppercased(),
+           initState == "REQUIRES_INITIALIZATION" {
             return .appOpenRequired
         }
         if snapshot.updatedAtEpochMs > 0 {
@@ -233,6 +245,13 @@ enum SunnahSharedStore {
                 #endif
                 return .staleData
             }
+        }
+        // Expired next-prayer without a future slot must never drive a live countdown.
+        if let nextMs = snapshot.nextPrayerEpochMs,
+           nextMs > 0,
+           Date(timeIntervalSince1970: TimeInterval(nextMs) / 1000) <= now,
+           snapshot.timesEpochMs.isEmpty {
+            return .staleData
         }
         return .validData
     }

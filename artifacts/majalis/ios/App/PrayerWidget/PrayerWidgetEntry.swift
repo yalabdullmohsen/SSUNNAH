@@ -260,12 +260,13 @@ struct PrayerWidgetEntry: TimelineEntry {
         case .malformedData: return .liveMalformed
         case .noDataYet: return .liveNoData
         case .appOpenRequired: return .appInitializationRequired
+        case .permissionRequired: return .permissionRequired
         }
     }
 
     var needsAppOpenAction: Bool {
         switch dataState {
-        case .noDataYet, .malformedData, .appOpenRequired:
+        case .noDataYet, .malformedData, .appOpenRequired, .permissionRequired:
             return true
         case .staleData, .validData:
             return false

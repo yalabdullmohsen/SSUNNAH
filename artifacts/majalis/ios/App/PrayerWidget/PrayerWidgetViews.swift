@@ -63,12 +63,14 @@ enum PrayerWidgetCopy {
     static let noData = "افتح سُنّة لإكمال إعداد مواقيت الصلاة"
     static let stale = "حدّث المواقيت من سُنّة"
     static let malformed = "تعذّر قراءة المواقيت — افتح سُنّة"
+    static let permission = "فعّل إذن الموقع من إعدادات الجهاز ثم افتح سُنّة"
     static let sampleBadge = "معاينة"
 
     static func action(for entry: PrayerWidgetEntry) -> String {
         switch entry.dataState {
         case .staleData: return stale
         case .malformedData: return malformed
+        case .permissionRequired: return permission
         default: return noData
         }
     }

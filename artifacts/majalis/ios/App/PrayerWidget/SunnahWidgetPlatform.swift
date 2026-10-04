@@ -177,8 +177,14 @@ struct CatalogWidgetEntry: TimelineEntry {
         let envelope = SunnahSharedStore.loadEnvelope()
         let prayerSnap = envelope?.prayerPayload ?? SunnahSharedStore.loadPrayer()
         let prayer = PrayerWidgetEntry.make(date: now, snapshot: prayerSnap)
+        let customPresentation = CustomContentWidgetAdapter.presentation(forSelectedId: selectedCustomId)
         let presentation: SunnahWidgetPresentation = {
             if prayerSnap == nil && envelope == nil { return .liveNoData }
+            if customPresentation == .configurationRequired && selectedCustomId != nil {
+                return .configurationRequired
+            }
+            if prayer.presentation == .permissionRequired { return .permissionRequired }
+            if prayer.presentation == .liveStale { return .liveStale }
             return prayer.presentation
         }()
         return CatalogWidgetEntry(
