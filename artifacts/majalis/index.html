@@ -80,12 +80,12 @@
               html.dataset.routeSurface = "mushaf-immersive";
               html.dataset.homeChrome = "0";
             } else if (__path === "/") {
-              html.dataset.routeSurface = "standard-light";
+              html.dataset.routeSurface = resolved === "dark" ? "standard-dark" : "standard-light";
               html.dataset.homeChrome = "1";
               html.dataset.sc = "top";
               html.dataset.sh = "1";
             } else {
-              html.dataset.routeSurface = "standard-light";
+              html.dataset.routeSurface = resolved === "dark" ? "standard-dark" : "standard-light";
               html.dataset.homeChrome = "0";
               html.dataset.sc = "top";
             }
