@@ -7,6 +7,10 @@
 **repositoryRoot الفعلي:** `/Users/alabdullmohsen/majlis-app`  
 (وثائق قديمة قد تقول `majalis-correct` — اعتبر الجذر الفعلي من `git rev-parse --show-toplevel`.)
 
+**استدامة طويلة الأمد (2026-10):** ابدأ بـ `docs/sustainability/PROJECT_SUSTAINABILITY_BASELINE.md` و`authority-manifest.json` ثم `docs/platform/` و`docs/product/PRODUCT_COMPLETENESS_BASELINE.md`.  
+GitHub SoT: `yalabdullmohsen/SSUNNAH` · Store: **HOLD** · Web: **WEB_RELEASED_NATIVE_HOLD**.  
+لا تُنشئ Builds ولا تلمس TestFlight/App Store من وكيل.
+
 ## تعريف المشروع
 
 «سُنّة» منصة عربية RTL للعلم الشرعي (قرآن، دروس، حديث، عبادة، بحث). المنتج الإنتاجي الوحيد للمتجر والويب: **`artifacts/majalis`** (Vite + React + wouter + Tailwind v4 + Supabase + Capacitor).
