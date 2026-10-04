@@ -114,14 +114,6 @@
       "consumersApprox": 29
     },
     {
-      "file": "styles/pages/lessons.css",
-      "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 71304,
-      "hex": 131,
-      "consumersApprox": 51
-    },
-    {
       "file": "styles/dark-mode-recovery.css",
       "classification": "ACTIVE_COMPATIBILITY",
       "platform": "SHARED_PLATFORM",
@@ -130,20 +122,20 @@
       "consumersApprox": 43
     },
     {
-      "file": "styles/pages/prophet-stories.css",
-      "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 104615,
-      "hex": 126,
-      "consumersApprox": 51
-    },
-    {
       "file": "styles/design-tokens.css",
       "classification": "ACTIVE_COMPATIBILITY",
       "platform": "SHARED_PLATFORM",
       "bytes": 11796,
       "hex": 116,
       "consumersApprox": 37
+    },
+    {
+      "file": "styles/pages/prophet-stories.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 104454,
+      "hex": 108,
+      "consumersApprox": 51
     },
     {
       "file": "features/mushaf-reader/mushaf-reader.css",
@@ -170,19 +162,11 @@
       "consumersApprox": 51
     },
     {
-      "file": "styles/pages/fiqh-hub.css",
+      "file": "styles/pages/lessons.css",
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM",
-      "bytes": 70786,
-      "hex": 102,
-      "consumersApprox": 51
-    },
-    {
-      "file": "styles/islamic-landmarks.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 13196,
-      "hex": 86,
+      "bytes": 70762,
+      "hex": 90,
       "consumersApprox": 51
     },
     {
@@ -210,22 +194,6 @@
       "consumersApprox": 51
     },
     {
-      "file": "styles/index-deferred-pages.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 90694,
-      "hex": 59,
-      "consumersApprox": 18
-    },
-    {
-      "file": "styles/pages/search.css",
-      "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 34768,
-      "hex": 59,
-      "consumersApprox": 51
-    },
-    {
       "file": "styles/components/assistant-chat.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
@@ -242,6 +210,14 @@
       "consumersApprox": 30
     },
     {
+      "file": "styles/index-deferred-pages.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 90658,
+      "hex": 55,
+      "consumersApprox": 18
+    },
+    {
       "file": "styles/premium-dark-refine.css",
       "classification": "ABSORB_NOW",
       "platform": "SHARED_PLATFORM",
@@ -250,28 +226,20 @@
       "consumersApprox": 39
     },
     {
-      "file": "styles/knowledge-experience.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 25010,
-      "hex": 52,
-      "consumersApprox": 51
-    },
-    {
-      "file": "styles/pages/app-shell-v2.css",
-      "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 27153,
-      "hex": 50,
-      "consumersApprox": 31
-    },
-    {
       "file": "styles/interaction-states.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
       "bytes": 11141,
       "hex": 48,
       "consumersApprox": 24
+    },
+    {
+      "file": "styles/pages/app-shell-v2.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 27135,
+      "hex": 48,
+      "consumersApprox": 31
     },
     {
       "file": "styles/sunnah-visual-language.css",
@@ -312,6 +280,14 @@
       "bytes": 4164,
       "hex": 41,
       "consumersApprox": 21
+    },
+    {
+      "file": "styles/islamic-landmarks.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 12809,
+      "hex": 40,
+      "consumersApprox": 51
     },
     {
       "file": "styles/semantic-layer-tokens.css",
@@ -386,18 +362,18 @@
       "consumersApprox": 51
     },
     {
+      "file": "styles/pages/fiqh-hub.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 70124,
+      "hex": 35,
+      "consumersApprox": 51
+    },
+    {
       "file": "components/sections/section-cards.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
       "bytes": 9304,
-      "hex": 34,
-      "consumersApprox": 51
-    },
-    {
-      "file": "styles/components/filters.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 8869,
       "hex": 34,
       "consumersApprox": 51
     },
@@ -432,14 +408,6 @@
       "bytes": 12855,
       "hex": 32,
       "consumersApprox": 25
-    },
-    {
-      "file": "styles/components/home-universal-search.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 7539,
-      "hex": 32,
-      "consumersApprox": 13
     },
     {
       "file": "styles/pages/adhkar.css",
@@ -528,6 +496,14 @@
       "bytes": 7318,
       "hex": 28,
       "consumersApprox": 17
+    },
+    {
+      "file": "styles/pages/search.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 34440,
+      "hex": 27,
+      "consumersApprox": 51
     },
     {
       "file": "components/lobby/section-lobby.css",
@@ -742,6 +718,14 @@
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
       "bytes": 3472,
+      "hex": 21,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/knowledge-experience.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 24743,
       "hex": 21,
       "consumersApprox": 51
     },
@@ -1072,6 +1056,14 @@
       "bytes": 9492,
       "hex": 11,
       "consumersApprox": 24
+    },
+    {
+      "file": "styles/components/filters.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8597,
+      "hex": 11,
+      "consumersApprox": 51
     },
     {
       "file": "styles/components/reading-section-card.css",
@@ -1488,6 +1480,14 @@
       "bytes": 1611,
       "hex": 6,
       "consumersApprox": 4
+    },
+    {
+      "file": "styles/components/home-universal-search.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 7305,
+      "hex": 6,
+      "consumersApprox": 13
     },
     {
       "file": "styles/components/optimized-sheikh-image.css",

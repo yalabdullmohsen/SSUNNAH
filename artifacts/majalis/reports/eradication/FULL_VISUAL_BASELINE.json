@@ -1,16 +1,16 @@
 {
   "id": "FULL_VISUAL_BASELINE",
   "program": "SUNNAH_FULL_APPLICATION_LAYER_ERADICATION_AND_SINGLE_VISUAL_AUTHORITY",
-  "measuredAt": "2026-10-04T02:14:30.645Z",
+  "measuredAt": "2026-10-04T02:35:27.695Z",
   "scope": "artifacts/majalis/src",
   "cssFileCount": 356,
-  "cssTotalBytes": 3870061,
+  "cssTotalBytes": 3867154,
   "synchronousCssImports": 14,
   "deferredCssImports": 54,
   "selectorRuleBlocksApprox": 20735,
-  "hexCount": 6189,
+  "hexCount": 5899,
   "rgbHslCount": 2008,
-  "unsafeHexFallbackCount": 3090,
+  "unsafeHexFallbackCount": 2801,
   "importantCount": 4746,
   "rawShadowCount": 986,
   "rawRadiusPxCount": 392,
@@ -23,7 +23,7 @@
   "tokenUses": {
     "sf": 773,
     "ss": 524,
-    "mj": 10887
+    "mj": 10872
   },
   "inlineColorStyleMatches": 39,
   "officialButtonImportFiles": 287,
