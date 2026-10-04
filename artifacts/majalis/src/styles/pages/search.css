@@ -350,19 +350,7 @@ a.search-suggestion-chip {
   display: block;
 }
 
-.search-result-row {
-  display: flex;
-  align-items: center;
-  gap: var(--ds-space-3);
-  padding: 0.65rem 0.75rem;
-  border-radius: 0.6rem;
-  transition: background 0.12s;
-  cursor: pointer;
-}
-
-.search-result-row:hover {
-  background: var(--mj-brand-soft);
-}
+/* Base .search-result-row + premium :hover owned by design-system.css (PR D). */
 
 .search-result-row--fiqh {
   border-inline-end: 2px solid var(--mj-brand-deep);

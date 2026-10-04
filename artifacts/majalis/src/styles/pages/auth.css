@@ -202,7 +202,12 @@ html[data-theme="dark"] .login-alert--success {
   background: var(--auth-field);
   color: var(--auth-ink);
   font: inherit;
-  font-size: 0.95rem;
+  /* iOS: ≥16px prevents input auto-zoom (IOS_INPUT_AUTO_ZOOM_RISK_ZERO_FOR_AUTH) */
+  font-size: 16px;
+}
+
+.login-page .login-input {
+  font-size: 16px;
 }
 
 .login-field input::placeholder {
