@@ -95,9 +95,9 @@
 }
 
 .kx-summary-card__pill--review {
-  background: color-mix(in srgb, var(--mj-accent, #c4a35a) 14%, transparent);
+  background: color-mix(in srgb, var(--mj-accent) 14%, transparent);
   color: var(--color-text, var(--mj-ink));
-  border-color: color-mix(in srgb, var(--mj-accent, #c4a35a) 35%, transparent);
+  border-color: color-mix(in srgb, var(--mj-accent) 35%, transparent);
 }
 
 .kx-summary-card__summary {
@@ -237,68 +237,68 @@
 
 html.dark .kx-summary-card,
 [data-theme="dark"] .kx-summary-card {
-  background: var(--ss-card-bg, var(--mj-surface, #15201c));
-  border-color: color-mix(in srgb, var(--mj-brand) 28%, var(--mj-hairline, #2a3a34));
+  background: var(--ss-card-bg, var(--mj-surface));
+  border-color: color-mix(in srgb, var(--mj-brand) 28%, var(--mj-hairline));
 }
 
 html.dark .kx-summary-card__title,
 [data-theme="dark"] .kx-summary-card__title {
-  color: var(--mj-ink, #eef4f0);
+  color: var(--mj-ink);
 }
 
 html.dark .kx-summary-card__summary,
 [data-theme="dark"] .kx-summary-card__summary {
-  color: var(--mj-ink-2, #c5d2cb);
+  color: var(--mj-ink-2);
 }
 
 html.dark .kx-summary-card__cta,
 [data-theme="dark"] .kx-summary-card__cta {
-  color: color-mix(in srgb, var(--mj-brand, #5fbf98) 75%, #eef4f0);
+  color: color-mix(in srgb, var(--mj-brand) 75%, #eef4f0);
 }
 
 html.dark .kx-summary-card__icon,
 [data-theme="dark"] .kx-summary-card__icon {
   background: color-mix(in srgb, var(--mj-brand) 18%, #15201c);
-  color: color-mix(in srgb, var(--mj-brand, #5fbf98) 80%, #eef4f0);
+  color: color-mix(in srgb, var(--mj-brand) 80%, #eef4f0);
 }
 
 html.dark .kx-summary-card__pill,
 [data-theme="dark"] .kx-summary-card__pill {
   background: color-mix(in srgb, var(--mj-brand) 22%, transparent);
-  color: var(--on-dark-strong, #e8f5ef);
+  color: var(--on-dark-strong);
   border-color: color-mix(in srgb, var(--mj-brand) 35%, transparent);
 }
 
 html.dark .kx-summary-card__pill--muted,
 [data-theme="dark"] .kx-summary-card__pill--muted {
-  background: color-mix(in srgb, var(--mj-muted, #9bb0a6) 18%, transparent);
-  color: var(--mj-ink-2, #c5d2cb);
-  border-color: color-mix(in srgb, var(--mj-muted, #9bb0a6) 28%, transparent);
+  background: color-mix(in srgb, var(--mj-muted) 18%, transparent);
+  color: var(--mj-ink-2);
+  border-color: color-mix(in srgb, var(--mj-muted) 28%, transparent);
 }
 
 html.dark .kx-summary-card__pill--review,
 [data-theme="dark"] .kx-summary-card__pill--review {
-  background: color-mix(in srgb, var(--mj-accent, #c4a35a) 18%, transparent);
-  color: var(--mj-ink, #eef4f0);
-  border-color: color-mix(in srgb, var(--mj-accent, #c4a35a) 40%, transparent);
+  background: color-mix(in srgb, var(--mj-accent) 18%, transparent);
+  color: var(--mj-ink);
+  border-color: color-mix(in srgb, var(--mj-accent) 40%, transparent);
 }
 
 html.dark .kx-detail-surface .rsc,
 [data-theme="dark"] .kx-detail-surface .rsc {
-  border-color: color-mix(in srgb, var(--mj-brand) 24%, var(--mj-hairline, #2a3a34));
+  border-color: color-mix(in srgb, var(--mj-brand) 24%, var(--mj-hairline));
   background: transparent;
 }
 
 html.dark .kx-detail-meta__row dt,
 [data-theme="dark"] .kx-detail-meta__row dt {
-  color: var(--mj-muted, #9bb0a6);
+  color: var(--mj-muted);
 }
 
 html.dark .kx-detail-meta__row dd,
 [data-theme="dark"] .kx-detail-meta__row dd,
 html.dark .kx-detail-quote,
 [data-theme="dark"] .kx-detail-quote {
-  color: var(--mj-ink, #eef4f0);
+  color: var(--mj-ink);
 }
 
 /* iPad Landscape: عرض قراءة مريح دون تمدد مفرط */

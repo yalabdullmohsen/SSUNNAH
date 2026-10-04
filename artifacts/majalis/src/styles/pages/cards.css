@@ -1,7 +1,7 @@
 /* ============================================================
    78 — CardsPage  (cards-* additions)
    ============================================================ */
-.cards-template-swatch { background: var(--swatch-bg, #0f0f0f); }
+.cards-template-swatch { background: var(--swatch-bg); }
 .cards-preview-frame   { width: var(--cpf-w); height: var(--cpf-h); }
 .cards-export-scaler {
   transform: scale(var(--cpf-scale, 1));

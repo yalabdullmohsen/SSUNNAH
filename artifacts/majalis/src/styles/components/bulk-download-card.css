@@ -28,7 +28,7 @@
 .bdm-card__reciter {
   margin: 0.25rem 0 0;
   font-size: 0.82rem;
-  color: var(--brand-deep, var(--mj-brand-deep, #1a4d3e));
+  color: var(--brand-deep, var(--mj-brand-deep));
   font-weight: 600;
 }
 
@@ -55,7 +55,7 @@
 
 .bdm-card__bar-fill {
   height: 100%;
-  background: var(--brand-deep, var(--mj-brand-deep, #1a4d3e));
+  background: var(--brand-deep, var(--mj-brand-deep));
   border-radius: 999px;
   transition: width 0.2s ease;
 }
@@ -99,7 +99,7 @@
 }
 
 .bdm-card__btn--start {
-  background: var(--brand-deep, var(--mj-brand-deep, #1a4d3e));
+  background: var(--brand-deep, var(--mj-brand-deep));
   color: var(--mj-white);
 }
 
@@ -122,25 +122,25 @@
 
 html[data-theme="dark"] .bdm-card,
 html.dark .bdm-card {
-  background: var(--mj-surface, #1b2421);
-  border-color: var(--mj-hairline, #35443f);
+  background: var(--mj-surface);
+  border-color: var(--mj-hairline);
 }
 
 html[data-theme="dark"] .bdm-card__header,
 html.dark .bdm-card__header {
-  border-color: var(--mj-hairline, #35443f);
+  border-color: var(--mj-hairline);
 }
 
 html[data-theme="dark"] .bdm-card__info,
 html[data-theme="dark"] .bdm-card__size,
 html.dark .bdm-card__info,
 html.dark .bdm-card__size {
-  color: var(--mj-muted, #c5d0cb);
+  color: var(--mj-muted);
 }
 
 html[data-theme="dark"] .bdm-card__bar,
 html.dark .bdm-card__bar {
-  background: var(--mj-hairline, #35443f);
+  background: var(--mj-hairline);
 }
 
 .bdm-quota-alert {

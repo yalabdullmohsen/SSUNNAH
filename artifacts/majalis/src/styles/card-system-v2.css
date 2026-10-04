@@ -26,8 +26,8 @@ html:not([data-theme="dark"]):not(.dark) .hub-card.cs2-host .cs2-nav__desc {
 .cs2-warning,
 .cs2-summary,
 .cs2-action {
-  background: var(--sf2-card-bg, var(--cs-surface-2, #fff));
-  color: var(--sf2-text-primary, var(--cs-text-primary, #15382d));
+  background: var(--sf2-card-bg, var(--cs-surface-2));
+  color: var(--sf2-text-primary, var(--cs-text-primary));
   border: 1px solid var(--sf2-border-subtle, var(--cs-border));
   border-radius: var(--sf2-radius-card, var(--cs-radius, 20px));
   box-shadow: var(--sf2-shadow-none, none);
@@ -45,13 +45,13 @@ html:not([data-theme="dark"]):not(.dark) .hub-card.cs2-host .cs2-nav__desc {
   transition: background 0.15s ease, border-color 0.15s ease;
 }
 .cs2-nav:hover {
-  background: var(--sf2-selected-bg, #e8f2ec);
+  background: var(--sf2-selected-bg);
   border-color: var(--sf2-selected-border, rgba(15, 92, 63, 0.28));
 }
 .cs2-nav:focus-visible {
-  background: var(--sf2-selected-bg, #e8f2ec);
+  background: var(--sf2-selected-bg);
   outline: none;
-  box-shadow: 0 0 0 2px var(--sf2-card-bg, #fff), 0 0 0 4px var(--sf2-focus-ring, #0f5c3f);
+  box-shadow: 0 0 0 2px var(--sf2-card-bg), 0 0 0 4px var(--sf2-focus-ring);
 }
 .cs2-nav__icon {
   width: var(--sf2-icon-box, 2.25rem);
@@ -61,7 +61,7 @@ html:not([data-theme="dark"]):not(.dark) .hub-card.cs2-host .cs2-nav__desc {
   place-items: center;
   border-radius: var(--sf2-radius-control, 12px);
   background: var(--sf2-subtle-bg, var(--sf-emerald-50));
-  color: var(--sf2-action-primary, #0f5c3f);
+  color: var(--sf2-action-primary);
 }
 .cs2-nav__icon svg {
   width: 1.25rem;
@@ -73,14 +73,14 @@ html:not([data-theme="dark"]):not(.dark) .hub-card.cs2-host .cs2-nav__desc {
   margin: 0;
   font-size: var(--sf2-type-card-title, 1rem);
   font-weight: 700;
-  color: var(--sf2-text-primary, #15382d);
+  color: var(--sf2-text-primary);
   line-height: 1.35;
 }
 .cs2-nav__desc,
 .cs2-content__excerpt {
   margin: 0;
   font-size: var(--sf2-type-supporting, 0.9375rem);
-  color: var(--sf2-text-secondary, #48645a);
+  color: var(--sf2-text-secondary);
   line-height: 1.55;
   /* معاينة فقط — التفاصيل الكاملة في الصفحة */
   display: -webkit-box;
@@ -93,7 +93,7 @@ html:not([data-theme="dark"]):not(.dark) .hub-card.cs2-host .cs2-nav__desc {
 .cs2-continue__meta {
   margin: 0;
   font-size: var(--sf2-type-metadata, 0.8125rem);
-  color: var(--sf2-text-muted, #5f7168);
+  color: var(--sf2-text-muted);
 }
 /* لا زر «فتح» منفصل على بطاقة التنقّل — السطح كله قابل للنقر */
 .cs2-nav .cs2-nav__open-btn {
@@ -101,50 +101,50 @@ html:not([data-theme="dark"]):not(.dark) .hub-card.cs2-host .cs2-nav__desc {
 }
 
 .cs2-evidence {
-  border-inline-start: 3px solid var(--sf2-action-primary, #0f5c3f);
-  background: color-mix(in srgb, var(--sf2-action-primary, #0f5c3f) 5%, var(--sf2-card-bg, #fff));
+  border-inline-start: 3px solid var(--sf2-action-primary);
+  background: color-mix(in srgb, var(--sf2-action-primary) 5%, var(--sf2-card-bg));
 }
 .cs2-evidence__label {
   font-size: var(--sf2-type-badge, 0.75rem);
   font-weight: 700;
-  color: var(--sf2-action-primary-deep, #0a4530);
+  color: var(--sf2-action-primary-deep);
 }
 .cs2-evidence__body {
   font-size: var(--sf2-type-body, 1rem);
   line-height: 1.75;
-  color: var(--sf2-text-primary, #15382d);
+  color: var(--sf2-text-primary);
 }
 .cs2-evidence__cite {
   font-size: var(--sf2-type-citation, 0.8125rem);
-  color: var(--sf2-text-muted, #5f7168);
+  color: var(--sf2-text-muted);
 }
 
 .cs2-warning {
-  border-color: color-mix(in srgb, var(--sf2-warning, #8a6a12) 35%, transparent);
-  background: var(--sf2-warning-soft, #f7f1e0);
+  border-color: color-mix(in srgb, var(--sf2-warning) 35%, transparent);
+  background: var(--sf2-warning-soft);
 }
 .cs2-warning__title {
   margin: 0;
   font-size: var(--sf2-type-warning, 0.9375rem);
   font-weight: 700;
-  color: var(--sf2-warning, #8a6a12);
+  color: var(--sf2-warning);
 }
 
 .cs2-summary {
-  background: var(--sf2-elevated-bg, #efe8dc);
+  background: var(--sf2-elevated-bg);
   box-shadow: var(--sf2-shadow-none, none);
 }
 
 .cs2-continue__progress {
   height: 4px;
   border-radius: var(--sf-radius-pill);
-  background: var(--sf2-skeleton, #e6ebe8);
+  background: var(--sf2-skeleton);
   overflow: hidden;
 }
 .cs2-continue__progress > span {
   display: block;
   height: 100%;
-  background: var(--sf2-action-primary, #0f5c3f);
+  background: var(--sf2-action-primary);
 }
 
 /* منع تداخل بطاقة داخل بطاقة بنفس الطبقة دون سبب */

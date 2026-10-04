@@ -66,7 +66,7 @@ pnpm --filter @workspace/majalis run test:application-layer-eradication
 | A | Inventory + baseline + governance groundwork |
 | B | Token aliases + CSS layer absorption wave 1 |
 | C | Color absorption (highest-impact public surfaces) |
-| D | Heroes + Cards |
+| D | Heroes + Cards — **DONE** (`PR_D_HEROES_CARDS_ABSORPTION.md`) |
 | E | Lists + Tables |
 | F | Buttons + Forms + Interaction |
 | G | Navigation + Tabs + Search + Filters |
