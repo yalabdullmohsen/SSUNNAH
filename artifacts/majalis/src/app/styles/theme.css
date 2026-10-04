@@ -369,9 +369,8 @@ html.dark,
   --mj-brand-deep-surface: #0E1C17;
   --mj-brand-deep: #8FD4B0;
   --mj-brand-deep-ink: #EDE8DF;
-  --elite-forest: #8FD4B0;
   --color-primary-dark: var(--mj-brand-deep);
-  --color-active-tab-bg: color-mix(in srgb, var(--elite-forest, #8fd4b0) 16%, transparent);
+  --color-active-tab-bg: color-mix(in srgb, var(--mj-brand-deep, #8fd4b0) 16%, transparent);
   --mj-on-brand: #06231A;
   --mj-accent: #C9A86C;
   --mj-accent-soft: #2A3733;
@@ -442,8 +441,8 @@ html.dark,
   --color-muted: #B5ADA0;
   --color-brand: #5CC095;
   --color-brand-soft: #16261F;
-  /* U2: brand-deep ليلاً = حبر/علامة مقروءة (elite-forest) لا سطح #0E1C17 */
-  --color-brand-deep: var(--mj-brand-deep, var(--elite-forest));
+  /* U2: brand-deep ليلاً = حبر/علامة مقروءة لا سطح #0E1C17 */
+  --color-brand-deep: var(--mj-brand-deep);
   --color-on-brand: #06231A;
   --color-accent: #C9A86C;
   --color-accent-soft: #2A3733;

@@ -23,7 +23,7 @@
 
   /* Deep Emerald --em-* literals retired (PR B).
      SEMANTIC_BRIDGE owner: theme-aliases.css → --mj-brand* / color-mix.
-     brand-v4 keeps var(--em-*) consumers; values resolve after theme-aliases. */
+     brand-v4 semantic surfaces map to --mj-* canonical brand tokens. */
 
   /* Soft Gold — لهجة محدودة */
   --gold-100: #F4F0E6;
@@ -67,35 +67,35 @@
   --bg:              var(--n-50);
   --bg-elevated:     var(--n-0);
   --surface:         var(--n-0);
-  --surface-2:       var(--em-50);
+  --surface-2:       var(--mj-brand-soft);
   --surface-3:       var(--n-100);
   --surface-muted:   var(--n-100);
-  --surface-brand:   var(--em-100);
-  --surface-inverse: var(--em-900);
+  --surface-brand:   var(--mj-brand-soft);
+  --surface-inverse: var(--mj-brand-deep);
   --surface-elevated: var(--n-0);
 
   /* hierarchy نصوص */
-  --text-title:      var(--em-900);
+  --text-title:      var(--mj-brand-deep);
   --text:            var(--n-900);
   --text-2:          var(--n-600);
   --text-muted:      var(--n-500);
   --text-meta:       var(--n-450);
   --text-on-brand:   #FFFEFB;
   --text-on-dark:    #F1F5F3;
-  --text-brand:      var(--em-700);
-  --text-brand-deep: var(--em-800);
+  --text-brand:      var(--mj-brand-deep);
+  --text-brand-deep: var(--mj-brand-deep);
 
   --border:             var(--n-200);
   --border-strong:      var(--n-300);
   --border-interactive: var(--n-450);
-  --border-brand:       var(--em-200);
+  --border-brand:       color-mix(in srgb, var(--mj-brand) 28%, var(--mj-surface));
 
   /* Primary عميق راقٍ */
-  --brand:        var(--em-600);
-  --brand-hover:  var(--em-500);
-  --brand-active: var(--em-700);
-  --brand-soft:   var(--em-50);
-  --brand-deep:   var(--em-800);
+  --brand:        var(--mj-brand);
+  --brand-hover:  var(--mj-brand);
+  --brand-active: var(--mj-brand-deep);
+  --brand-soft:   var(--mj-brand-soft);
+  --brand-deep:   var(--mj-brand-deep);
   --accent:       var(--gold-500);
   --accent-soft:  var(--gold-100);
   --accent-deep:  var(--gold-700);
@@ -196,7 +196,7 @@
   --e-2: 0 1px 2px hsl(var(--shadow-color) / 0.06);
   --e-3: 0 2px 8px hsl(var(--shadow-color) / 0.07);
   --e-4: 0 8px 24px hsl(var(--shadow-color) / 0.1);
-  --e-brand: 0 0 0 1px color-mix(in srgb, var(--em-500) 35%, transparent);
+  --e-brand: 0 0 0 1px color-mix(in srgb, var(--mj-brand) 35%, transparent);
 
   /* ══════════════════════════════════════════════════════════
      ٧) الحركة — منحنيات واحدة عبر الموقع
@@ -338,17 +338,17 @@ html[data-theme="dark"] {
   --clr-ink:            var(--text);
   --clr-ink-soft:       var(--text-2);
 
-  /* — سُلَّم الزمرد القديم — */
-  --emerald-50:   var(--em-50);
-  --emerald-100:  var(--em-100);
-  --emerald-200:  var(--em-200);
-  --emerald-300:  var(--em-300);
-  --emerald-400:  var(--em-400);
+  /* — سُلَّم الزمردlegacy → canonical mj — */
+  --emerald-50:   var(--mj-brand-soft);
+  --emerald-100:  var(--mj-brand-soft);
+  --emerald-200:  color-mix(in srgb, var(--mj-brand) 28%, var(--mj-surface));
+  --emerald-300:  color-mix(in srgb, var(--mj-brand) 45%, var(--mj-surface));
+  --emerald-400:  color-mix(in srgb, var(--mj-brand) 70%, var(--mj-ink));
   --emerald-500:  var(--brand);
   --emerald-600:  var(--brand-hover);
   --emerald-700:  var(--brand-active);
-  --emerald-800:  var(--em-800);
-  --emerald-900:  var(--em-900);
+  --emerald-800:  var(--mj-brand-deep);
+  --emerald-900:  var(--mj-brand-deep);
   --emerald-deep: var(--brand-deep);
   --ivory:        var(--bg);
   --ink:          var(--text);
@@ -358,7 +358,7 @@ html[data-theme="dark"] {
   /* — نظام --color-* (الجسر + الأسماء الموحّدة أعلاه) — */
   --color-primary-hover:     var(--brand-hover);
   --color-text-secondary:    var(--text-2);
-  --color-accent-fg-on-soft: var(--em-700);
+  --color-accent-fg-on-soft: var(--mj-brand-deep);
   --color-accent-soft-bg:    var(--brand-soft);
   --color-success-fg:        var(--ok-fg);
   --color-success-bg:        var(--ok-bg);
@@ -386,16 +386,7 @@ html[data-theme="dark"] {
   --majalis-green:     var(--brand);
   --majalis-gold:      var(--accent);
 
-  /* — نظام --elite-* — */
-  --elite-primary: var(--brand);
-  --elite-bg:      var(--bg);
-  --elite-surface: var(--surface);
-  --elite-border:  var(--border);
-  --elite-text:    var(--text);
-  --elite-muted:   var(--text-2);
-  --elite-accent:  var(--accent);
-  --elite-radius:  var(--r-lg);
-  --elite-shadow:  var(--e-2);
+  /* --elite-* retired: consumers migrated to --mj-* / --brand / --ss-* */
 
   /* --background/--primary/--font-display: مصدرها theme.css فقط — لا إعادة تعريف */
   --surfaceElevated:var(--bg-elevated);--cardBackground:var(--surface);--textPrimary:var(--text);--textSecondary:var(--text-2);--textMuted:var(--text-muted);--iconPrimary:var(--text-brand);--accentText:var(--text-brand-deep);--selectedBackground:var(--brand-soft);--selectedText:var(--text-brand-deep);

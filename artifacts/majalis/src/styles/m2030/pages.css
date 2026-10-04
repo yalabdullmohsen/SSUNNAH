@@ -23,7 +23,7 @@ html.pts-immersive .app-main {
   --pts-bg-1: #083528;
   --pts-bg-2: #3d5c45;
   --pts-gold: #E3CB8C;
-  --pts-gold-soft: color-mix(in srgb, var(--em-400) 20%, transparent);
+  --pts-gold-soft: color-mix(in srgb, var(--mj-brand) 20%, transparent);
   --pts-gold-line: color-mix(in srgb, #D2B063 45%, transparent);
   /* أبيض ثابت فوق الزمرد — لا يعتمد على --text-on-dark بعد أن أُسيء ربطه بـ --mj-ink */
   --pts-white: #FAFAF8;
@@ -73,8 +73,8 @@ html.pts-immersive .app-main {
 
 .kids-hub-soon__badge {
   background: var(--mj-brand-deep) !important;
-  color: var(--em-300) !important;
-  border: 1px solid color-mix(in srgb, var(--em-400) 35%, transparent) !important;
+  color: var(--text-on-brand, #FFFEFB) !important;
+  border: 1px solid color-mix(in srgb, var(--mj-brand) 35%, transparent) !important;
   border-radius: var(--r-sm) !important;
 }
 

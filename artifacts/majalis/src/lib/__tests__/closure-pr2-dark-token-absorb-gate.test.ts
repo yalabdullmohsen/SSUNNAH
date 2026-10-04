@@ -27,7 +27,7 @@ const aliases = read("src/styles/theme-aliases.css");
 assert.match(aliases, /Final Internal Closure PR2/, "aliases documents PR2 absorb");
 assert.match(aliases, /--mj-bg:\s*var\(--surface-app/, "canvas live-binds surface-app");
 assert.match(aliases, /--mj-ink:\s*#EDE8DF/, "warm night ink contract");
-assert.match(aliases, /--mj-brand-deep:\s*var\(--elite-forest/, "brand-deep night");
+assert.match(aliases, /--mj-brand-deep:\s*#8FD4B0/, "brand-deep night");
 assert.match(aliases, /dynamic-range:\s*high/, "HDR deepen in allowlisted aliases");
 
 const theme = read("src/app/styles/theme.css");

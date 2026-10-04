@@ -199,7 +199,7 @@ html.dark,
   --color-border: var(--border);
 
   --ss-primary-green: var(--mj-brand, #4FB48B);
-  --ss-deep-green: var(--elite-forest, #8FD4B0);
+  --ss-deep-green: var(--mj-brand-deep, #8FD4B0);
   --ss-soft-gold: var(--mj-accent, #D9B871);
   --ss-warm-bg: var(--mj-bg, var(--surface-app));
   --ss-card-bg: var(--mj-surface);

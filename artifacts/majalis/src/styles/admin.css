@@ -1393,7 +1393,7 @@ a.admin-info-panel__item-title:hover { color: var(--majalis-emerald-deep); }
    ============================================================ */
 .adm-empty-msg  { color: var(--majalis-ink-soft); }
 .text-approved  { color: var(--mj-brand); }
-.text-forest    { color: var(--elite-forest); }
+.text-forest    { color: var(--mj-brand-deep); }
 .text-emerald   { color: var(--ds-emerald); }
 .iss-empty      { padding: var(--ds-space-8); text-align: center; color: #64748b; }
 .dsc-divider--mt2 { margin-top: 2rem; }

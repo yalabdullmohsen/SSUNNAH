@@ -84,12 +84,12 @@ export const PAGE_CHROME: Record<PageChromeKey, ChromePair> = {
   },
   prayer: {
     light: {
-      statusBarColor: "var(--em-950, #091814)",
+      statusBarColor: "var(--mj-brand-deep, #091814)",
       statusBarColorHex: PRAYER_STATUS_HEX,
       statusBarStyle: "light",
     },
     dark: {
-      statusBarColor: "var(--em-950, #091814)",
+      statusBarColor: "var(--mj-brand-deep, #091814)",
       statusBarColorHex: PRAYER_STATUS_HEX,
       statusBarStyle: "light",
     },
