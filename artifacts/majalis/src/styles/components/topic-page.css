@@ -94,9 +94,13 @@
   font-size: 0.9375rem; /* 15px */
   font-weight: 400;
   line-height: 1.65;
-  color: var(--mss-on-hero-muted, var(--topic-on-hero-muted, #4a554f));
+  /* خارج الهيرو: حبر ثانوي نهاري؛ داخل الهيرو تتفوّق قواعد on-ink-body */
+  color: var(--cs-text-secondary, var(--mj-ink-2));
   display: block;
   overflow: visible;
+}
+.topic-page__hero .topic-page__sub {
+  color: var(--cs-on-ink-body, var(--mss-on-hero-muted));
 }
 
 .topic-page__quote {

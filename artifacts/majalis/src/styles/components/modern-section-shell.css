@@ -301,7 +301,7 @@ html.dark .page-hero-mj--bleed:not(.home-page-hero):not(.m2030-hero) .mj-btn--gh
   color: var(--mss-on-hero, var(--mj-white)) !important;
 }
 
-.topic-page__sub,
+/* فرعي الهيرو فقط — --mss-on-hero-muted عاجي مكتوم فوق زمرد داكن (لا حبر نهاري) */
 .topic-page__hero .topic-page__sub {
   color: var(--mss-on-hero-muted) !important;
 }

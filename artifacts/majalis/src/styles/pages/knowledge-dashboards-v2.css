@@ -52,10 +52,9 @@ html[data-v2-knowledge="1"] .topic-page__hero .safe-hero__badge {
 }
 
 html[data-v2-knowledge="1"] .topic-page__hero .topic-page__sub,
-html[data-v2-knowledge="1"] .topic-page__sub,
 html[data-v2-knowledge="1"] .topic-page__hero .topic-page__quote-text,
 html[data-v2-knowledge="1"] .topic-page__hero .topic-page__quote-ref {
-  color: var(--cs-on-ink-body, #e4ddd0) !important;
+  color: var(--cs-on-ink-body) !important;
 }
 
 html[data-v2-knowledge="1"] .topic-page__eyebrow,
