@@ -215,9 +215,9 @@ table.ss-data-table {
 }
 
 /* Bridge aliases → same density as .ss-data-table (Wave 2 / PR E).
-   Prefer className="ss-data-table …" on ui/table; aliases remain for gradual absorb. */
+   Prefer className="ss-data-table …" on ui/table; aliases remain for gradual absorb.
+   .quran-numbers-table removed Wave 6 (DEAD_WITH_PROOF — zero consumers). */
 .content-detail-table,
-.quran-numbers-table,
 .nb-table,
 .ucp-table,
 .fiqh-info-table {
@@ -228,8 +228,6 @@ table.ss-data-table {
 
 .content-detail-table th,
 .content-detail-table td,
-.quran-numbers-table th,
-.quran-numbers-table td,
 .nb-table th,
 .nb-table td {
   border-color: var(--mj-hairline, var(--line, transparent));

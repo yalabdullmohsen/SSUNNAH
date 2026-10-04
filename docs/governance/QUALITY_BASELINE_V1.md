@@ -10,7 +10,7 @@
 
 | Domain | Freeze | Source |
 |---|---|---|
-| Visual debt ceilings | hex ≤ 5619 · !important ≤ 4746 · rgb/hsl ≤ 2006 · rawButtonFiles ≤ 73 · … | `reports/visual-system-debt-budget.json` |
+| Visual debt ceilings | hex ≤ 5616 · !important ≤ 4746 · rgb/hsl ≤ 2006 · rawButtonFiles ≤ 73 · … | `reports/visual-system-debt-budget.json` |
 | Interaction debt | raw buttons ≤ 300 · files ≤ 73 · div/span onClick ≤ 41 · buttonHex ≤ 975 · … | `reports/interaction-system-debt-budget.json` |
 | Local heroes | ≤ 95 parallel `*-hero` classes | global-component-authority |
 | Bundle budgets | entry ≤ 120KiB+320 · icons ≤ 30KiB · CSS ≤ 100KiB | architecture-excellence PR-1 |

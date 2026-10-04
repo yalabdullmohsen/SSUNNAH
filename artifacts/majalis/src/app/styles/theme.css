@@ -835,34 +835,7 @@ a:active {
   grid-template-columns: 1fr 1fr;
 }
 
-.mj-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--mj-s3);
-  width: 100%;
-  text-align: start;
-  font-family: inherit;
-  font-size: var(--mj-fs-body);
-  color: inherit;
-  background: var(--mj-surface);
-  border: 1px solid transparent;
-  border-radius: var(--mj-r-sm);
-  padding: var(--mj-s4);
-  margin-bottom: var(--mj-s2);
-  cursor: pointer;
-  transition: border-color 0.15s;
-}
-.mj-row:hover {
-  border-color: var(--mj-brand);
-}
-.mj-row em {
-  font-style: normal;
-  display: block;
-  margin-top: 2px;
-  font-size: var(--mj-fs-small);
-  color: var(--mj-muted);
-}
+/* .mj-row removed Wave 6 — DEAD_WITH_PROOF (ListRow deleted in Wave 2; zero TSX consumers) */
 
 .mj-btn {
   display: inline-flex;
