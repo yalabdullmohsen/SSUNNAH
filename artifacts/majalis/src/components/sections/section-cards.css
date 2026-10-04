@@ -36,10 +36,10 @@
   min-height: 44px;
   padding: 16px;
   text-align: start;
-  color: var(--on-surface, var(--mj-ink, #16241e));
-  background-color: var(--mj-surface, #ffffff);
+  color: var(--on-surface, var(--mj-ink));
+  background-color: var(--mj-surface);
   background-image: none;
-  border: 1px solid var(--mj-hairline, #e3e8e6);
+  border: 1px solid var(--mj-hairline);
   border-radius: var(--radius-tile, 24px);
   box-shadow: 0 4px 14px -10px rgba(11, 32, 24, 0.35);
   transition: filter 120ms ease, transform 120ms ease;
@@ -64,7 +64,7 @@
   height: 36px;
   border-radius: 999px;
   background: var(--chip-bg, var(--mj-brand-soft, var(--brand-soft, var(--mj-brand-soft))));
-  color: var(--chip-fg, var(--mj-brand-deep, #123f2e));
+  color: var(--chip-fg, var(--mj-brand-deep));
 }
 
 .card__icon svg {
@@ -87,7 +87,7 @@
   font-size: 13px;
   font-weight: 500;
   line-height: 1.35;
-  color: var(--on-surface-muted, var(--mj-ink-2, #4a5a53));
+  color: var(--on-surface-muted, var(--mj-ink-2));
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -112,10 +112,10 @@ a.card--featured,
   padding: 1.1rem 0.85rem 1.15rem;
   text-align: center;
   /* نفس أخضر الفقه الغامق — نهاراً عبر --color-primary-dark؛ ليلاً عبر deep-surface */
-  color: #ffffff;
+  color: var(--cs-on-ink);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-tile, 24px);
-  background-color: var(--mj-brand-deep-surface, var(--color-primary-dark, var(--mj-brand-deep, #123f2e)));
+  background-color: var(--mj-brand-deep-surface, var(--color-primary-dark, var(--mj-brand-deep)));
   background-image:
     linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, transparent 55%),
     radial-gradient(ellipse 80% 60% at 100% 0%, rgba(184, 150, 63, 0.14) 0%, transparent 55%);
@@ -131,25 +131,25 @@ a.card--featured,
   pointer-events: none;
   opacity: 0.08;
   background-image:
-    radial-gradient(circle at 20% 20%, #fff 1.2px, transparent 1.3px),
-    radial-gradient(circle at 80% 60%, #fff 1px, transparent 1.1px);
+    radial-gradient(circle at 20% 20%, var(--cs-on-ink) 1.2px, transparent 1.3px),
+    radial-gradient(circle at 80% 60%, var(--cs-on-ink) 1px, transparent 1.1px);
   background-size: 18px 18px, 22px 22px;
 }
 
 .card--featured > * {
   position: relative;
   z-index: 1;
-  color: #ffffff;
+  color: var(--cs-on-ink);
 }
 
 .card--featured .card__icon {
   background: rgba(255, 255, 255, 0.16);
-  color: #ffffff;
+  color: var(--cs-on-ink);
 }
 
 .card--featured .card__label,
 .card--featured .card__subtitle {
-  color: #ffffff;
+  color: var(--cs-on-ink);
   text-align: center;
 }
 
@@ -185,10 +185,10 @@ a.card--featured,
   min-height: 44px;
   padding: 12px 16px;
   text-align: start;
-  color: var(--on-surface, var(--mj-ink, #16241e));
-  background-color: var(--mj-surface, #ffffff);
+  color: var(--on-surface, var(--mj-ink));
+  background-color: var(--mj-surface);
   background-image: none;
-  border: 1px solid var(--mj-hairline, #e3e8e6);
+  border: 1px solid var(--mj-hairline);
   border-radius: var(--radius-tile, 24px);
 }
 
@@ -253,10 +253,10 @@ a.card--featured,
   width: 100%;
   min-height: 44px;
   padding: 12px 16px;
-  border: 1px solid var(--mj-hairline, #e3e8e6);
+  border: 1px solid var(--mj-hairline);
   border-radius: var(--radius-tile, 24px);
-  background: var(--mj-surface, #fff);
-  color: var(--mj-ink, #16241e);
+  background: var(--mj-surface);
+  color: var(--mj-ink);
   font: inherit;
   font-size: 15px;
 }
@@ -269,7 +269,7 @@ a.card--featured,
 .sections-hub__empty {
   margin: 0;
   font-size: 15px;
-  color: var(--on-surface-muted, var(--mj-ink-2, #4a5a53));
+  color: var(--on-surface-muted, var(--mj-ink-2));
 }
 
 .sections-hub__group {
@@ -285,7 +285,7 @@ a.card--featured,
   font-size: 15px;
   font-weight: 600;
   line-height: 1.3;
-  color: var(--on-surface-muted, var(--mj-ink-2, #4a5a53));
+  color: var(--on-surface-muted, var(--mj-ink-2));
 }
 
 .sections-hub__group-title::after {
@@ -321,20 +321,20 @@ html[data-theme="dark"] .card,
 html.dark .card,
 html[data-theme="dark"] .card--compact,
 html.dark .card--compact {
-  background-color: var(--mj-surface, #1a221f);
-  color: var(--on-surface, var(--mj-ink, #e8eeeb));
-  border-color: var(--mj-hairline, #2a3531);
+  background-color: var(--mj-surface);
+  color: var(--on-surface, var(--mj-ink));
+  border-color: var(--mj-hairline);
 }
 
 html[data-theme="dark"] .card .card__subtitle,
 html.dark .card .card__subtitle {
-  color: var(--on-surface-muted, var(--mj-ink-2, #c5d0cb));
+  color: var(--on-surface-muted, var(--mj-ink-2));
 }
 
 html[data-theme="dark"] .card .card__icon,
 html.dark .card .card__icon {
   background: rgb(28 58 48 / 0.72);
-  color: #6ee7b7;
+  color: var(--mj-brand);
   border: 1px solid rgb(6 95 70 / 0.4);
 }
 
@@ -343,11 +343,11 @@ html[data-theme="dark"] button.card--featured,
 html.dark button.card--featured,
 html[data-theme="dark"] .card--featured,
 html.dark .card--featured {
-  background-color: var(--mj-brand-deep-surface, #0f3d2e);
+  background-color: var(--mj-brand-deep-surface);
   background-image:
     linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, transparent 55%),
     radial-gradient(ellipse 80% 60% at 100% 0%, rgba(184, 150, 63, 0.12) 0%, transparent 55%);
-  color: #ffffff;
+  color: var(--cs-on-ink);
 }
 
 html[data-theme="dark"] .card--featured > *,
@@ -358,29 +358,29 @@ html[data-theme="dark"] .card--featured .card__subtitle,
 html.dark .card--featured .card__subtitle,
 html[data-theme="dark"] .card--featured .card__icon,
 html.dark .card--featured .card__icon {
-  color: #ffffff;
+  color: var(--cs-on-ink);
 }
 
 html[data-theme="dark"] .sections-hub__search,
 html.dark .sections-hub__search {
-  background: var(--mj-surface, #1a221f);
-  color: var(--mj-ink, #e8eeeb);
-  border-color: var(--mj-hairline, #2a3531);
+  background: var(--mj-surface);
+  color: var(--mj-ink);
+  border-color: var(--mj-hairline);
 }
 
 html[data-theme="dark"] .sections-hub__group-title,
 html.dark .sections-hub__group-title {
-  color: #e8eeec;
+  color: var(--mj-ink);
 }
 
 html[data-theme="dark"] .sections-hub__group-title::after,
 html.dark .sections-hub__group-title::after {
-  background: #6ee7b7;
+  background: var(--mj-brand);
 }
 
 html[data-theme="dark"] .sections-hub__empty,
 html.dark .sections-hub__empty {
-  color: #c5d0cb;
+  color: var(--mj-ink-2);
 }
 
 /* توافق أسماء قديمة أثناء الانتقال */

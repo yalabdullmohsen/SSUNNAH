@@ -143,8 +143,8 @@
     },
     {
       "file": "styles/pages/app-shell-v2.css",
-      "hex": 48,
-      "unsafeHexFallback": 41,
+      "hex": 47,
+      "unsafeHexFallback": 40,
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM"
     },
@@ -258,13 +258,6 @@
       "hex": 35,
       "unsafeHexFallback": 26,
       "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "components/sections/section-cards.css",
-      "hex": 34,
-      "unsafeHexFallback": 22,
-      "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -464,13 +457,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/card-system-v2.css",
-      "hex": 23,
-      "unsafeHexFallback": 22,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/modern-islamic-editorial-tokens.css",
       "hex": 23,
       "unsafeHexFallback": 0,
@@ -482,13 +468,6 @@
       "hex": 23,
       "unsafeHexFallback": 8,
       "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/pages/knowledge-dashboards-v2.css",
-      "hex": 23,
-      "unsafeHexFallback": 21,
-      "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -527,6 +506,13 @@
       "platform": "WEB_ONLY"
     },
     {
+      "file": "styles/pages/knowledge-dashboards-v2.css",
+      "hex": 22,
+      "unsafeHexFallback": 20,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
       "file": "styles/pages/miracles.css",
       "hex": 22,
       "unsafeHexFallback": 17,
@@ -549,13 +535,6 @@
     },
     {
       "file": "styles/components/home-live-now.css",
-      "hex": 21,
-      "unsafeHexFallback": 18,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/components/knowledge-summary-card.css",
       "hex": 21,
       "unsafeHexFallback": 18,
       "classification": "SHARED_PLATFORM",
@@ -587,13 +566,6 @@
       "hex": 21,
       "unsafeHexFallback": 19,
       "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/components/information-card.css",
-      "hex": 20,
-      "unsafeHexFallback": 14,
-      "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -639,13 +611,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/components/source-card.css",
-      "hex": 19,
-      "unsafeHexFallback": 7,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/pages/calendar.css",
       "hex": 19,
       "unsafeHexFallback": 19,
@@ -681,13 +646,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/components/topic-page.css",
-      "hex": 18,
-      "unsafeHexFallback": 15,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/pages/my-learning.css",
       "hex": 18,
       "unsafeHexFallback": 12,
@@ -706,6 +664,13 @@
       "hex": 17,
       "unsafeHexFallback": 10,
       "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/components/topic-page.css",
+      "hex": 17,
+      "unsafeHexFallback": 14,
+      "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -772,13 +737,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/components/source-item-card.css",
-      "hex": 14,
-      "unsafeHexFallback": 10,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/pages/auth.css",
       "hex": 14,
       "unsafeHexFallback": 14,
@@ -835,6 +793,13 @@
       "platform": "SHARED_PLATFORM"
     },
     {
+      "file": "styles/components/source-card.css",
+      "hex": 12,
+      "unsafeHexFallback": 0,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
       "file": "styles/pages/admin-categories.css",
       "hex": 12,
       "unsafeHexFallback": 7,
@@ -870,13 +835,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/components/reading-section-card.css",
-      "hex": 11,
-      "unsafeHexFallback": 6,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/pages/knowledge-collection.css",
       "hex": 11,
       "unsafeHexFallback": 9,
@@ -895,13 +853,6 @@
       "hex": 11,
       "unsafeHexFallback": 8,
       "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/section-cards-theme.css",
-      "hex": 11,
-      "unsafeHexFallback": 0,
-      "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -982,6 +933,13 @@
       "platform": "SHARED_PLATFORM"
     },
     {
+      "file": "styles/section-cards-theme.css",
+      "hex": 10,
+      "unsafeHexFallback": 0,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
       "file": "styles/ssunnah-ds-canonical.css",
       "hex": 10,
       "unsafeHexFallback": 7,
@@ -1003,13 +961,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/components/bulk-download-card.css",
-      "hex": 9,
-      "unsafeHexFallback": 8,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/components/language-offline.css",
       "hex": 9,
       "unsafeHexFallback": 9,
@@ -1020,13 +971,6 @@
       "file": "styles/components/more-bottom-sheet.css",
       "hex": 9,
       "unsafeHexFallback": 9,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/components/university-card.css",
-      "hex": 9,
-      "unsafeHexFallback": 8,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
@@ -1192,13 +1136,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/pages/tahara.css",
-      "hex": 7,
-      "unsafeHexFallback": 4,
-      "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/pages/tajweed.css",
       "hex": 7,
       "unsafeHexFallback": 7,
@@ -1237,6 +1174,13 @@
       "file": "styles/components/home-universal-search.css",
       "hex": 6,
       "unsafeHexFallback": 4,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/components/information-card.css",
+      "hex": 6,
+      "unsafeHexFallback": 0,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
@@ -1290,6 +1234,13 @@
       "platform": "SHARED_PLATFORM"
     },
     {
+      "file": "styles/pages/tahara.css",
+      "hex": 6,
+      "unsafeHexFallback": 3,
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
       "file": "styles/pages/universities-admin.css",
       "hex": 6,
       "unsafeHexFallback": 6,
@@ -1321,6 +1272,13 @@
       "file": "styles/components/home-content-hub.css",
       "hex": 5,
       "unsafeHexFallback": 5,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/components/reading-section-card.css",
+      "hex": 5,
+      "unsafeHexFallback": 0,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
@@ -1496,6 +1454,20 @@
       "file": "styles/components/ipad-responsive-layout.css",
       "hex": 3,
       "unsafeHexFallback": 3,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/components/knowledge-summary-card.css",
+      "hex": 3,
+      "unsafeHexFallback": 0,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/components/source-item-card.css",
+      "hex": 3,
+      "unsafeHexFallback": 0,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
@@ -1759,9 +1731,16 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/card-decorative-strip-cleanup.css",
+      "file": "styles/card-system-v2.css",
       "hex": 1,
-      "unsafeHexFallback": 1,
+      "unsafeHexFallback": 0,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/components/bulk-download-card.css",
+      "hex": 1,
+      "unsafeHexFallback": 0,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
@@ -1815,6 +1794,13 @@
       "platform": "SHARED_PLATFORM"
     },
     {
+      "file": "styles/components/university-card.css",
+      "hex": 1,
+      "unsafeHexFallback": 0,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
       "file": "styles/m2030/foundation.css",
       "hex": 1,
       "unsafeHexFallback": 0,
@@ -1832,13 +1818,6 @@
       "file": "styles/pages/assistant-shell.css",
       "hex": 1,
       "unsafeHexFallback": 0,
-      "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/pages/cards.css",
-      "hex": 1,
-      "unsafeHexFallback": 1,
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM"
     },
@@ -1900,13 +1879,6 @@
     },
     {
       "file": "styles/sunnah-foundation-type.css",
-      "hex": 1,
-      "unsafeHexFallback": 1,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/sunnah-identity-cards.css",
       "hex": 1,
       "unsafeHexFallback": 1,
       "classification": "SHARED_PLATFORM",

@@ -30,12 +30,12 @@ assert.doesNotMatch(
 
 assert.match(
   sectionCards,
-  /html\[data-theme="dark"\]\s+\.sections-hub__group-title[\s\S]*?color:\s*#e8eeec/,
+  /html\[data-theme="dark"\]\s+\.sections-hub__group-title[\s\S]*?color:\s*(?:#e8eeec|var\(--mj-ink\))/,
   "عنوان مجموعة الأقسام واضح ليلاً",
 );
 assert.match(
   lobby,
-  /html\[data-theme="dark"\]\s+\.section-lobby__group-title[\s\S]*?color:\s*#e8eeec/,
+  /html\[data-theme="dark"\]\s+\.section-lobby__group-title[\s\S]*?color:\s*(?:#e8eeec|var\(--mj-ink\))/,
 );
 
 /* شريط سفلي ليلاً — لا @media تالف ولا لون سطح غامق كنص */

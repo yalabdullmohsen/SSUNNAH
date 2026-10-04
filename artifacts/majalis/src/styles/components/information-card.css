@@ -6,19 +6,19 @@
   margin: 0 0 1rem;
   padding: 0.85rem 0.95rem;
   border-radius: var(--surface-feature-radius, var(--radius-card, 1.5rem));
-  border: 1px solid var(--surface-knowledge-border, color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, var(--mj-line, #d9d2c6)));
-  background: var(--surface-knowledge, color-mix(in srgb, var(--mj-brand-soft, #e2efe8) 72%, var(--mj-surface, var(--mj-white))));
+  border: 1px solid var(--surface-knowledge-border, color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, var(--mj-line)));
+  background: var(--surface-knowledge, color-mix(in srgb, var(--mj-brand-soft) 72%, var(--mj-surface, var(--mj-white))));
   color: var(--surface-feature-ink, var(--mj-ink, var(--v2-color-ink)));
 }
 
 .info-card--caution {
-  border-color: color-mix(in srgb, #a16207 28%, var(--surface-knowledge-border, var(--mj-line, #d9d2c6)));
+  border-color: color-mix(in srgb, #a16207 28%, var(--surface-knowledge-border, var(--mj-line)));
   background: color-mix(in srgb, #fef3c7 35%, var(--surface-knowledge, var(--mj-surface, var(--mj-white))));
 }
 
 .info-card--neutral {
-  background: var(--surface-feature, var(--mj-surface, #f4faf7));
-  border-color: var(--surface-feature-border, color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, var(--mj-line, #d9d2c6)));
+  background: var(--surface-feature, var(--mj-surface));
+  border-color: var(--surface-feature-border, color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, var(--mj-line)));
 }
 
 .info-card__head {
@@ -36,7 +36,7 @@
   height: 1.85rem;
   border-radius: var(--cs-radius-control);
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, transparent);
-  color: var(--mj-brand-deep, #123f2e);
+  color: var(--mj-brand-deep);
 }
 
 .info-card--caution .info-card__icon {
@@ -57,7 +57,7 @@
   padding-inline-start: 2.4rem;
   font-size: 0.84rem;
   line-height: 1.7;
-  color: var(--mj-ink-2, #3d4f47);
+  color: var(--mj-ink-2);
 }
 
 .info-card__body p {
@@ -66,23 +66,23 @@
 
 html[data-theme="dark"] .info-card,
 html.dark .info-card {
-  background: color-mix(in srgb, var(--mj-brand, #5cc095) 10%, var(--mj-surface, #1b2421));
-  border-color: color-mix(in srgb, var(--mj-brand, #5cc095) 28%, transparent);
-  color: var(--mj-ink, #e8f0ec);
+  background: color-mix(in srgb, var(--mj-brand) 10%, var(--mj-surface));
+  border-color: color-mix(in srgb, var(--mj-brand) 28%, transparent);
+  color: var(--mj-ink);
 }
 
 html[data-theme="dark"] .info-card__title,
 html.dark .info-card__title {
-  color: var(--mj-ink, #e8f0ec);
+  color: var(--mj-ink);
 }
 
 html[data-theme="dark"] .info-card__body,
 html.dark .info-card__body {
-  color: color-mix(in srgb, var(--mj-ink, #e8f0ec) 82%, transparent);
+  color: color-mix(in srgb, var(--mj-ink) 82%, transparent);
 }
 
 html[data-theme="dark"] .info-card--caution,
 html.dark .info-card--caution {
-  background: color-mix(in srgb, #a16207 18%, var(--mj-surface, #1b2421));
+  background: color-mix(in srgb, #a16207 18%, var(--mj-surface));
   border-color: color-mix(in srgb, #fbbf24 35%, transparent);
 }

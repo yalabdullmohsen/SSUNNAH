@@ -26,23 +26,23 @@
 .rw-type--benefit    { --rw-color: var(--majalis-emerald-deep, var(--mj-brand-deep)); }
 .rw-type--scholar    { --rw-color: var(--brand, var(--mj-brand)); }
 .rw-type--qa         { --rw-color: #0369a1; }
-.rw-type--ruling     { --rw-color: var(--majalis-ink-soft, #4A4A4A); }
-.rw-type--story      { --rw-color: var(--majalis-danger, #9B1C1C); }
+.rw-type--ruling     { --rw-color: var(--majalis-ink-soft); }
+.rw-type--story      { --rw-color: var(--majalis-danger); }
 .rw-type--miracle    { --rw-color: #0c4a6e; }
 .rw-color-bg { background: var(--rw-color, var(--mj-brand)); }
 
 /* ── SheikhsPageClient (spc-*) ────────────────────────────────────────────────── */
 .spc-channels-section { margin-bottom: 2.5rem; }
-.spc-section-h2  { font-size: 1.1rem; font-weight: 700; color: var(--majalis-ink, #EDE9DD); margin-bottom: 1rem; border-inline-end: 3px solid var(--majalis-brass, var(--mj-brand)); padding-inline-end: 0.75rem; }
-.spc-section-note { font-size: 0.82rem; color: var(--majalis-ink-muted, #9BA3B5); margin-bottom: 1.25rem; }
+.spc-section-h2  { font-size: 1.1rem; font-weight: 700; color: var(--majalis-ink); margin-bottom: 1rem; border-inline-end: 3px solid var(--majalis-brass, var(--mj-brand)); padding-inline-end: 0.75rem; }
+.spc-section-note { font-size: 0.82rem; color: var(--majalis-ink-muted); margin-bottom: 1.25rem; }
 .spc-channels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--ds-space-5); }
 .spc-channel-card  { background: var(--majalis-panel, rgba(255,255,255,0.07)); border: 1px solid rgba(255,255,255,0.10); border-radius: var(--ds-radius-lg); overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.30); }
 .spc-channel-video  { aspect-ratio: 16/9; background: #000; }
 .spc-channel-iframe { width: 100%; height: 100%; border: none; display: block; }
 .spc-channel-body   { padding: var(--ds-space-4); }
-.spc-channel-name   { font-weight: 700; font-size: 0.95rem; color: var(--majalis-ink, #EDE9DD); margin-bottom: 0.75rem; }
+.spc-channel-name   { font-weight: 700; font-size: 0.95rem; color: var(--majalis-ink); margin-bottom: 0.75rem; }
 .spc-channel-links  { display: flex; flex-wrap: wrap; gap: var(--ds-space-2); }
-.spc-channel-link   { display: inline-block; padding: 0.3rem 0.75rem; background: rgba(255,255,255,0.07); color: var(--majalis-ink-soft, #C9C5B8); border-radius: var(--ds-radius-sm); font-size: 0.78rem; font-weight: 600; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); transition: background 0.15s; }
+.spc-channel-link   { display: inline-block; padding: 0.3rem 0.75rem; background: rgba(255,255,255,0.07); color: var(--majalis-ink-soft); border-radius: var(--ds-radius-sm); font-size: 0.78rem; font-weight: 600; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); transition: background 0.15s; }
 .spc-channel-link:hover { background: rgba(255,255,255,0.12); }
 
 /* ── ScienceCard (sc-card-*) ─────────────────────────────────────────────────── */
@@ -71,7 +71,7 @@
 /* ── BookCard extensions ─────────────────────────────────────────────────── */
 
 .bc-difficulty--easy, .bc-difficulty--medium { color: var(--majalis-emerald); background: var(--majalis-emerald-muted, rgba(31,77,58,.12)); }
-.bc-difficulty--hard { color: var(--majalis-ink-soft); background: var(--majalis-parchment-deep, #f0ece4); }
+.bc-difficulty--hard { color: var(--majalis-ink-soft); background: var(--majalis-parchment-deep); }
 
 /* ── AchievementBadges extensions ─────────────────────────────────────────── */
 

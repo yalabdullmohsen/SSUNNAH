@@ -237,8 +237,8 @@
       "file": "styles/pages/app-shell-v2.css",
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM",
-      "bytes": 27135,
-      "hex": 48,
+      "bytes": 27226,
+      "hex": 47,
       "consumersApprox": 31
     },
     {
@@ -367,14 +367,6 @@
       "platform": "SHARED_PLATFORM",
       "bytes": 70124,
       "hex": 35,
-      "consumersApprox": 51
-    },
-    {
-      "file": "components/sections/section-cards.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 9304,
-      "hex": 34,
       "consumersApprox": 51
     },
     {
@@ -602,14 +594,6 @@
       "consumersApprox": 9
     },
     {
-      "file": "styles/card-system-v2.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 4622,
-      "hex": 23,
-      "consumersApprox": 23
-    },
-    {
       "file": "styles/modern-islamic-editorial-tokens.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
@@ -624,14 +608,6 @@
       "bytes": 14618,
       "hex": 23,
       "consumersApprox": 51
-    },
-    {
-      "file": "styles/pages/knowledge-dashboards-v2.css",
-      "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 11446,
-      "hex": 23,
-      "consumersApprox": 30
     },
     {
       "file": "styles/pages/tawhid.css",
@@ -674,6 +650,14 @@
       "consumersApprox": 19
     },
     {
+      "file": "styles/pages/knowledge-dashboards-v2.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 11391,
+      "hex": 22,
+      "consumersApprox": 30
+    },
+    {
       "file": "styles/pages/miracles.css",
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM",
@@ -706,14 +690,6 @@
       "consumersApprox": 9
     },
     {
-      "file": "styles/components/knowledge-summary-card.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 8508,
-      "hex": 21,
-      "consumersApprox": 25
-    },
-    {
       "file": "styles/components/share-faida.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
@@ -744,14 +720,6 @@
       "bytes": 25331,
       "hex": 21,
       "consumersApprox": 51
-    },
-    {
-      "file": "styles/components/information-card.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 2631,
-      "hex": 20,
-      "consumersApprox": 8
     },
     {
       "file": "styles/components/submissions-review.css",
@@ -802,14 +770,6 @@
       "consumersApprox": 8
     },
     {
-      "file": "styles/components/source-card.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 6116,
-      "hex": 19,
-      "consumersApprox": 16
-    },
-    {
       "file": "styles/pages/calendar.css",
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM",
@@ -850,14 +810,6 @@
       "consumersApprox": 51
     },
     {
-      "file": "styles/components/topic-page.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 14433,
-      "hex": 18,
-      "consumersApprox": 51
-    },
-    {
       "file": "styles/pages/my-learning.css",
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM",
@@ -880,6 +832,14 @@
       "bytes": 4926,
       "hex": 17,
       "consumersApprox": 21
+    },
+    {
+      "file": "styles/components/topic-page.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 14630,
+      "hex": 17,
+      "consumersApprox": 51
     },
     {
       "file": "styles/pages/flashcards.css",
@@ -954,14 +914,6 @@
       "consumersApprox": 7
     },
     {
-      "file": "styles/components/source-item-card.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 2930,
-      "hex": 14,
-      "consumersApprox": 8
-    },
-    {
       "file": "styles/pages/auth.css",
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM",
@@ -1026,6 +978,14 @@
       "consumersApprox": 7
     },
     {
+      "file": "styles/components/source-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6053,
+      "hex": 12,
+      "consumersApprox": 16
+    },
+    {
       "file": "styles/pages/admin-categories.css",
       "classification": "SPECIAL_CASE",
       "platform": "WEB_ONLY",
@@ -1066,14 +1026,6 @@
       "consumersApprox": 51
     },
     {
-      "file": "styles/components/reading-section-card.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 8947,
-      "hex": 11,
-      "consumersApprox": 39
-    },
-    {
       "file": "styles/pages/knowledge-collection.css",
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM",
@@ -1096,14 +1048,6 @@
       "bytes": 12735,
       "hex": 11,
       "consumersApprox": 51
-    },
-    {
-      "file": "styles/section-cards-theme.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 31506,
-      "hex": 11,
-      "consumersApprox": 19
     },
     {
       "file": "styles/components/compact-sources.css",
@@ -1194,6 +1138,14 @@
       "consumersApprox": 24
     },
     {
+      "file": "styles/section-cards-theme.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 31519,
+      "hex": 10,
+      "consumersApprox": 19
+    },
+    {
       "file": "styles/ssunnah-ds-canonical.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
@@ -1218,14 +1170,6 @@
       "consumersApprox": 4
     },
     {
-      "file": "styles/components/bulk-download-card.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 3071,
-      "hex": 9,
-      "consumersApprox": 4
-    },
-    {
       "file": "styles/components/language-offline.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
@@ -1240,14 +1184,6 @@
       "bytes": 21657,
       "hex": 9,
       "consumersApprox": 9
-    },
-    {
-      "file": "styles/components/university-card.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 3802,
-      "hex": 9,
-      "consumersApprox": 11
     },
     {
       "file": "styles/highlighted-content.css",
@@ -1434,14 +1370,6 @@
       "consumersApprox": 51
     },
     {
-      "file": "styles/pages/tahara.css",
-      "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 13600,
-      "hex": 7,
-      "consumersApprox": 51
-    },
-    {
       "file": "styles/pages/tajweed.css",
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM",
@@ -1488,6 +1416,14 @@
       "bytes": 7305,
       "hex": 6,
       "consumersApprox": 13
+    },
+    {
+      "file": "styles/components/information-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2505,
+      "hex": 6,
+      "consumersApprox": 8
     },
     {
       "file": "styles/components/optimized-sheikh-image.css",
@@ -1546,6 +1482,14 @@
       "consumersApprox": 5
     },
     {
+      "file": "styles/pages/tahara.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 13613,
+      "hex": 6,
+      "consumersApprox": 51
+    },
+    {
       "file": "styles/pages/universities-admin.css",
       "classification": "SPECIAL_CASE",
       "platform": "WEB_ONLY",
@@ -1584,6 +1528,14 @@
       "bytes": 2381,
       "hex": 5,
       "consumersApprox": 33
+    },
+    {
+      "file": "styles/components/reading-section-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8893,
+      "hex": 5,
+      "consumersApprox": 39
     },
     {
       "file": "styles/pages/methodology.css",
@@ -1784,6 +1736,22 @@
       "bytes": 6042,
       "hex": 3,
       "consumersApprox": 10
+    },
+    {
+      "file": "styles/components/knowledge-summary-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8346,
+      "hex": 3,
+      "consumersApprox": 25
+    },
+    {
+      "file": "styles/components/source-item-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2848,
+      "hex": 3,
+      "consumersApprox": 8
     },
     {
       "file": "styles/critical-first-paint.css",
@@ -2082,12 +2050,20 @@
       "consumersApprox": 4
     },
     {
-      "file": "styles/card-decorative-strip-cleanup.css",
+      "file": "styles/card-system-v2.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
-      "bytes": 5883,
+      "bytes": 4433,
       "hex": 1,
-      "consumersApprox": 21
+      "consumersApprox": 23
+    },
+    {
+      "file": "styles/components/bulk-download-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 2999,
+      "hex": 1,
+      "consumersApprox": 4
     },
     {
       "file": "styles/components/home/home-interesting-topics.css",
@@ -2146,6 +2122,14 @@
       "consumersApprox": 51
     },
     {
+      "file": "styles/components/university-card.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 3730,
+      "hex": 1,
+      "consumersApprox": 11
+    },
+    {
       "file": "styles/m2030/foundation.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
@@ -2168,14 +2152,6 @@
       "bytes": 12661,
       "hex": 1,
       "consumersApprox": 8
-    },
-    {
-      "file": "styles/pages/cards.css",
-      "classification": "KEEP_TEMPORARILY",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 6063,
-      "hex": 1,
-      "consumersApprox": 51
     },
     {
       "file": "styles/pages/family-mode.css",
@@ -2250,12 +2226,12 @@
       "consumersApprox": 10
     },
     {
-      "file": "styles/sunnah-identity-cards.css",
+      "file": "components/sections/section-cards.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
-      "bytes": 5493,
-      "hex": 1,
-      "consumersApprox": 13
+      "bytes": 9217,
+      "hex": 0,
+      "consumersApprox": 51
     },
     {
       "file": "styles/brand-v4-components.css",
@@ -2272,6 +2248,14 @@
       "bytes": 4141,
       "hex": 0,
       "consumersApprox": 30
+    },
+    {
+      "file": "styles/card-decorative-strip-cleanup.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5874,
+      "hex": 0,
+      "consumersApprox": 21
     },
     {
       "file": "styles/card-matte-unify.css",
@@ -2405,7 +2389,7 @@
       "file": "styles/components/modern-section-shell.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
-      "bytes": 23792,
+      "bytes": 23903,
       "hex": 0,
       "consumersApprox": 51
     },
@@ -2590,6 +2574,14 @@
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM",
       "bytes": 23233,
+      "hex": 0,
+      "consumersApprox": 51
+    },
+    {
+      "file": "styles/pages/cards.css",
+      "classification": "KEEP_TEMPORARILY",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 6054,
       "hex": 0,
       "consumersApprox": 51
     },
@@ -2856,6 +2848,14 @@
       "bytes": 5694,
       "hex": 0,
       "consumersApprox": 28
+    },
+    {
+      "file": "styles/sunnah-identity-cards.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 5484,
+      "hex": 0,
+      "consumersApprox": 13
     },
     {
       "file": "styles/sunnah-identity-chrome-nav.css",

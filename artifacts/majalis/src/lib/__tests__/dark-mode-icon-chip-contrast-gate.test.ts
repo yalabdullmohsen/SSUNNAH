@@ -25,7 +25,10 @@ assert.match(lobby, /#a7f3d0/);
 assert.match(harvest, /harvest-panel__tabs button\.is-active[\s\S]{0,160}#059669/);
 assert.match(filters, /mj-filter-chip\.is-active[\s\S]{0,160}#059669/);
 assert.match(filters, /color:\s*#ffffff/);
-assert.match(cards, /html\.dark \.card \.card__icon[\s\S]{0,160}#6ee7b7/);
-assert.match(src, /src-card__badge[\s\S]{0,160}#6ee7b7/);
+assert.match(
+  cards,
+  /html\.dark \.card \.card__icon[\s\S]{0,160}(?:#6ee7b7|var\(--mj-brand\))/,
+);
+assert.match(src, /src-card__badge[\s\S]{0,160}(?:#6ee7b7|var\(--mj-brand\))/);
 
 console.log("dark-mode-icon-chip-contrast-gate.test.ts: ok");

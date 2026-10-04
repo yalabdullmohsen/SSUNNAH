@@ -30,9 +30,9 @@ assert.doesNotMatch(featured, /text-white/);
 assert.match(css, /\.card--featured\s*\{|button\.card--featured/);
 assert.match(
   css,
-  /background-color:\s*var\(--color-primary-dark|background-color:\s*var\(--mj-brand-deep|#123[fF]2[eE]/,
+  /background-color:\s*var\(--(?:color-primary-dark|mj-brand-deep(?:-surface)?)/,
 );
-assert.match(css, /color:\s*#ffffff/);
+assert.match(css, /color:\s*(?:#ffffff|var\(--cs-on-ink\))/);
 assert.doesNotMatch(css, /background-color:\s*#1f7a5a/i);
 assert.doesNotMatch(card, /card--featured|linear-gradient/);
 assert.match(tokens, /--on-brand:\s*#ffffff/);

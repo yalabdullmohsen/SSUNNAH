@@ -5,7 +5,7 @@
  */
 
 :root {
-  --svl-card-border: var(--surface-feature-border, var(--svl-border-subtle, var(--mj-hairline, #d9d3c8)));
+  --svl-card-border: var(--surface-feature-border, var(--svl-border-subtle, var(--mj-hairline)));
 }
 
 .soft-card:not([data-scripture]):not(.mushaf-page):not(.ayah-card),

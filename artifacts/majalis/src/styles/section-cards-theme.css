@@ -12,7 +12,7 @@ html.dark .soft-tile--on-light,
 html[data-theme="dark"] .soft-tile--on-light {
   --soft-card-grad: linear-gradient(
     165deg,
-    color-mix(in srgb, var(--mj-surface) 92%, #0f3d2e) 0%,
+    color-mix(in srgb, var(--mj-surface) 92%, var(--mj-brand-deep)) 0%,
     color-mix(in srgb, var(--mj-brand) 10%, var(--mj-surface)) 100%
   );
   --soft-tile-grad: var(--soft-card-grad);

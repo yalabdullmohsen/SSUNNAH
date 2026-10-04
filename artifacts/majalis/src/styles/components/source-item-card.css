@@ -4,7 +4,7 @@
   flex-direction: column;
   gap: 8px;
   padding: 14px;
-  border: 1px solid var(--mj-hairline, #d5ddd9);
+  border: 1px solid var(--mj-hairline);
   border-radius: var(--sf-radius-sm);
   background: var(--mj-surface, var(--mj-white));
   min-width: 0;
@@ -26,12 +26,12 @@
   font-size: 12px;
   font-weight: 700;
   background: var(--mj-brand-soft, var(--brand-soft, var(--mj-brand-soft)));
-  color: var(--mj-brand-deep, #123f2e);
+  color: var(--mj-brand-deep);
 }
 
 .src-card__org {
   font-size: 12px;
-  color: var(--mj-ink-2, #4a5a53);
+  color: var(--mj-ink-2);
   font-weight: 600;
 }
 
@@ -47,7 +47,7 @@
   margin: 0;
   font-size: 13px;
   line-height: 1.6;
-  color: var(--mj-ink-2, #4a5a53);
+  color: var(--mj-ink-2);
 }
 
 .src-card__meta {
@@ -56,7 +56,7 @@
   gap: 6px;
   margin: 0;
   font-size: 12px;
-  color: var(--mj-ink-2, #4a5a53);
+  color: var(--mj-ink-2);
 }
 
 .src-card__actions {
@@ -75,7 +75,7 @@
   font-size: 13px;
   font-weight: 700;
   text-decoration: none;
-  border: 1px solid var(--mj-hairline, #d5ddd9);
+  border: 1px solid var(--mj-hairline);
   color: var(--mj-ink, var(--v2-color-ink));
   background: var(--mj-surface, var(--mj-white));
 }
@@ -93,13 +93,13 @@
 
 html[data-theme="dark"] .src-card,
 html.dark .src-card {
-  background: var(--mj-surface, #1a221f);
-  border-color: var(--mj-hairline, #2a3531);
+  background: var(--mj-surface);
+  border-color: var(--mj-hairline);
 }
 
 html[data-theme="dark"] .src-card__title,
 html.dark .src-card__title {
-  color: var(--mj-ink, #e8eeeb);
+  color: var(--mj-ink);
 }
 
 html[data-theme="dark"] .src-card__summary,
@@ -108,7 +108,7 @@ html[data-theme="dark"] .src-card__meta,
 html.dark .src-card__summary,
 html.dark .src-card__org,
 html.dark .src-card__meta {
-  color: var(--mj-ink-2, #b7c4be);
+  color: var(--mj-ink-2);
 }
 
 html[data-theme="dark"] .src-card__btn:not(.src-card__btn--primary),
@@ -121,7 +121,7 @@ html.dark .src-card__btn:not(.src-card__btn--primary) {
 html[data-theme="dark"] .src-card__badge,
 html.dark .src-card__badge {
   background: rgb(28 58 48 / 0.72);
-  color: #6ee7b7;
+  color: var(--mj-brand);
   border: 1px solid rgb(6 95 70 / 0.4);
 }
 

@@ -5,7 +5,7 @@
   --rsc-bg: var(--ss-card-bg, var(--sf-surface-raised, var(--mj-white)));
   --rsc-border: var(--sf-hairline, color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 16%, transparent));
   --rsc-ink: var(--sf-color-rich-ink, var(--mj-ink, var(--sf-color-rich-ink)));
-  --rsc-muted: var(--sf-color-rich-ink-soft, var(--mj-ink-2, #48645a));
+  --rsc-muted: var(--sf-color-rich-ink-soft, var(--mj-ink-2));
   --rsc-title: var(--sf-color-deep-emerald-deep, var(--mj-brand-deep, var(--sf-color-deep-emerald-deep)));
   margin: 0 0 var(--sf-space-3, 0.75rem);
   padding: var(--sf-pad-card, 0.85rem) var(--sf-space-4, 1rem);
@@ -257,10 +257,10 @@
 
 html[data-theme="dark"] .rsc,
 html.dark .rsc {
-  --rsc-bg: var(--ss-card-bg, #1b2421);
+  --rsc-bg: var(--ss-card-bg);
   --rsc-border: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 28%, #2a3832);
-  --rsc-ink: var(--mj-ink, #e8efeb);
-  --rsc-muted: var(--mj-ink-2, #c5d0cb);
+  --rsc-ink: var(--mj-ink);
+  --rsc-muted: var(--mj-ink-2);
   --rsc-title: #7ed4b5;
 }
 
@@ -299,7 +299,7 @@ html.dark .rcc__summary {
   padding: 0.85rem 0.75rem 0.35rem;
   border-radius: var(--radius-card, 1.25rem);
   border: 1px dashed color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 28%, transparent);
-  background: color-mix(in srgb, var(--mj-surface-2, #f4f7f5) 90%, transparent);
+  background: color-mix(in srgb, var(--mj-surface-2) 90%, transparent);
   box-sizing: border-box;
 }
 .cr-related-footer__note {
@@ -307,7 +307,7 @@ html.dark .rcc__summary {
   font-size: 0.78rem;
   font-weight: 650;
   line-height: 1.55;
-  color: var(--rsc-muted, #5a6b63);
+  color: var(--rsc-muted);
 }
 .cr-related-footer__card.rsc--related {
   margin: 0;
