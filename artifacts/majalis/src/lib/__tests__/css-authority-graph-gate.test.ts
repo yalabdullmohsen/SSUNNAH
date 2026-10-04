@@ -103,6 +103,15 @@ if (original) {
   const missing: string[] = [];
   const re = /([^{}@][^{]*)\{([^{}]+)\}/g;
   let m: RegExpExecArray | null;
+  /**
+   * PR A — defeated bodies intentionally removed after winner proof.
+   * Exact trimmed bodies from origin/main that may be absent iff a winner remains.
+   */
+  const DEFEATED_BODY_ALLOWLIST = new Set([
+    "padding: var(--ds-space-3);\n  font-size: var(--ds-text-sm);",
+    "padding: var(--ds-space-3);\n  border-radius: var(--ds-radius);\n  border: 1px solid var(--ds-line-color);\n  background: var(--majalis-panel);\n  margin-bottom: var(--ds-space-2);\n  transition: border-color 0.15s, box-shadow 0.15s;",
+    "border-color: rgba(26, 107, 82, 0.25);\n  box-shadow: var(--ds-shadow-sm);",
+  ]);
   while ((m = re.exec(origRules))) {
     const sel = m[1]!.trim().replace(/\s+/g, " ");
     const body = m[2]!.trim();
@@ -118,9 +127,18 @@ if (original) {
         "background: var(--sf-color-warm-ivory-surface);",
       );
     }
-    if (!graphRules.includes(expected) && !graphRules.includes(m[2]!)) missing.push(sel.slice(0, 80));
+    if (graphRules.includes(expected) || graphRules.includes(m[2]!)) continue;
+    if (DEFEATED_BODY_ALLOWLIST.has(body)) continue;
+    missing.push(sel.slice(0, 80));
   }
   assert.equal(missing.length, 0, `missing rule bodies: ${missing.slice(0, 8).join(" | ")}`);
+  /* Winners must remain — prevent silent re-deletion of live authority. */
+  assert.match(graphRules, /\.search-result-row\s*\{[\s\S]*?font-size:\s*var\(--ds-text-sm\)/);
+  assert.match(graphRules, /\.search-result-row:hover\s*\{[\s\S]*?color-mix\(in srgb,\s*var\(--ds-emerald\)/);
+  assert.match(graphRules, /\.login-submit\s*\{/);
+  assert.doesNotMatch(graphRules, /\.fm-parent\s*\{\s*\}/);
+  /* Defeated early hover must not return. */
+  assert.doesNotMatch(graphRules, /\.search-result-row:hover\s*\{[^}]*rgba\(26,\s*107,\s*82,\s*0\.25\)/);
 }
 
 console.log("css-authority-graph-gate.test.ts: ok");

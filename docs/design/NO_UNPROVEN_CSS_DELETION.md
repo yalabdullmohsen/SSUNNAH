@@ -11,7 +11,7 @@
 |---|---|---|---|
 | `.tawheed-breadcrumb` | DEAD_WITH_PROOF | Wave 1A: 0 TSX/TS consumers; already absent | none (not restored) |
 | `.fiqh-adopted-opinion` | DEAD_WITH_PROOF | Wave 1A comment; no `{` rule | none (not restored) |
-| `.fm-parent` | KEEP_TEMPORARILY | empty rule, 0 consumers | kept in `legacy-surfaces.css` |
+| `.fm-parent` | DEAD_WITH_PROOF_AND_REMOVED (PR A) | empty rule; class structural only | declaration deleted from design-system.css |
 | Other KEEP_TEMPORARILY rows in the inventory | KEEP_TEMPORARILY | zero static hits is not proof (dynamic / CSS-only / future) | kept |
 
 No selectors were deleted in this decomposition. Rule bodies were relocated by exact line partition.
