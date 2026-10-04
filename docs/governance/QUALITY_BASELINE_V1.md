@@ -1,0 +1,30 @@
+# QUALITY_BASELINE_V1
+
+**Program:** `SUNNAH_CONTINUOUS_GOVERNANCE_AND_REGRESSION_PREVENTION_PROGRAM`  
+**Machine freeze:** `docs/governance/QUALITY_BASELINE_V1.json`  
+**Base tip:** `bd55ba9e6`  
+**Policy:** **no-ceiling-raise** (decreasing-ceilings budgets may only fall)
+
+## Frozen truth (summary)
+
+| Domain | Freeze | Source |
+|---|---|---|
+| Visual debt ceilings | hex ≤ 6432 · !important ≤ 4746 · radius px ≤ 392 · … | `reports/visual-system-debt-budget.json` |
+| Interaction debt | raw buttons ≤ 311 · div/span onClick ≤ 41 · … | `reports/interaction-system-debt-budget.json` |
+| Local heroes | ≤ 95 parallel `*-hero` classes | global-component-authority |
+| Bundle budgets | entry ≤ 120KiB+320 · icons ≤ 30KiB · CSS ≤ 100KiB | architecture-excellence PR-1 |
+| Critical sync CSS | = 14 imports in `main.tsx` | runtime excellence |
+| Mushaf fluidity | hotspots = 0 · neighbor prefetch guarded | mushaf-fluidity-audit |
+| Route feedback | Empty/NoResults/Error/Offline/Loading V2 | product-completeness |
+| Route matrix | stale unset = 0 | ROUTE_QUALITY_MATRIX |
+
+## Goals locked by this baseline
+
+- DESIGN_REGRESSION_PREVENTED
+- PERFORMANCE_REGRESSION_PREVENTED
+- MUSHAF_REGRESSION_PREVENTED
+- ROUTE_REGRESSION_PREVENTED
+- DEBT_GROWTH_PREVENTED
+- PROJECT_HEALTH_VISIBLE
+
+UNKNOWN_GOVERNANCE_DEBT = 0

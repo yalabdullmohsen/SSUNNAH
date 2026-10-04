@@ -1,0 +1,89 @@
+{
+  "id": "QUALITY_BASELINE_V1",
+  "program": "SUNNAH_CONTINUOUS_GOVERNANCE_AND_REGRESSION_PREVENTION_PROGRAM",
+  "capturedAt": "2026-10-04T00:34:56Z",
+  "baseTip": "bd55ba9e6066176aab82c573dfc0e1e455516d85",
+  "githubSoT": "yalabdullmohsen/SSUNNAH",
+  "policy": "no-ceiling-raise",
+  "unknownGovernanceDebt": 0,
+  "design": {
+    "localHeroClassCeiling": 95,
+    "visualDebtPolicy": "decreasing-ceilings",
+    "visualCeilings": {
+      "cssFiles": 356,
+      "important": 4746,
+      "hexInCss": 6432,
+      "rgbHslInCss": 2008,
+      "mjDeclarations": 193,
+      "mjDeclOutsideAllowlist": 0,
+      "boxShadowDecls": 986,
+      "zIndexRawDecls": 257,
+      "borderRadiusPxDecls": 392,
+      "inlineColorStyleMatches": 39,
+      "rawButtonFiles": 76
+    },
+    "visualFloors": {
+      "officialButtonImportFiles": 287,
+      "sfTokenRefs": 1172,
+      "ssTokenRefs": 761
+    }
+  },
+  "interaction": {
+    "interactionDebtPolicy": "decreasing-ceilings",
+    "interactionCeilings": {
+      "rawButtonFiles": 76,
+      "rawButtonElements": 311,
+      "divSpanOnClick": 41,
+      "formButtonsMissingType": 0,
+      "floatingControlFileMentions": 10,
+      "buttonRelatedImportantApprox": 1145,
+      "buttonRelatedHexApprox": 1167
+    },
+    "interactionFloors": {
+      "officialButtonImportFiles": 287,
+      "actionButtonConsumerFiles": 7
+    }
+  },
+  "performance": {
+    "entryJsGzipBytesMax": 123200,
+    "iconsJsGzipBytesMax": 30720,
+    "mainCssGzipBytesMax": 102400,
+    "syncCriticalCssImports": 14
+  },
+  "mushaf": {
+    "estimatedTurnRenderHotspotsMax": 0,
+    "singleNeighborPrefetchPipeline": true,
+    "prefetchShellElGuarded": true,
+    "stableBookmarkMarkerOpen": true
+  },
+  "routes": {
+    "feedbackAuthority": [
+      "EmptyStateV2",
+      "NoResultsState",
+      "ErrorStateV2",
+      "OfflineStateV2",
+      "LoadingStateV2"
+    ],
+    "productCompletenessGate": "test:product-completeness-baseline",
+    "routeQualityMatrixStaleUnsetMax": 0
+  },
+  "protectionGates": [
+    "test:global-component-authority",
+    "test:global-design-system-authority",
+    "test:product-completeness-baseline",
+    "test:application-experience-runtime-excellence",
+    "test:platform-architecture-excellence",
+    "test:release-and-long-term-sustainability",
+    "test:debt-zero-unification",
+    "test:a11y-contrast-100",
+    "test:continuous-governance-regression"
+  ],
+  "success": [
+    "DESIGN_REGRESSION_PREVENTED",
+    "PERFORMANCE_REGRESSION_PREVENTED",
+    "MUSHAF_REGRESSION_PREVENTED",
+    "ROUTE_REGRESSION_PREVENTED",
+    "DEBT_GROWTH_PREVENTED",
+    "PROJECT_HEALTH_VISIBLE"
+  ]
+}

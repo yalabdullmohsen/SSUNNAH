@@ -18,7 +18,8 @@ GitHub source of truth: `yalabdullmohsen/SSUNNAH` (legacy redirect: `majalis`).
 Git root must be the monorepo root (paths like `artifacts/majalis/...`).
 
 Platform docs: `docs/platform/PLATFORM_BASELINE.md` · ownership · state · operations playbook.  
-Sustainability / release readiness (no store actions): `docs/sustainability/` · `authority-manifest.json`.
+Sustainability / release readiness (no store actions): `docs/sustainability/` · `authority-manifest.json`.  
+Continuous governance freeze: `docs/governance/QUALITY_BASELINE_V1` · `PROJECT_HEALTH.md` · `pnpm --filter @workspace/majalis run test:continuous-governance-regression`.
 
 ## Run the web app
 
