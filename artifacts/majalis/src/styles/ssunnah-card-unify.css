@@ -214,7 +214,8 @@ table.ss-data-table {
   background: color-mix(in srgb, var(--mj-brand, var(--sf-color-deep-emerald)) 10%, transparent);
 }
 
-/* Absorb common legacy class names onto the same recipe */
+/* Bridge aliases → same density as .ss-data-table (Wave 2 / PR E).
+   Prefer className="ss-data-table …" on ui/table; aliases remain for gradual absorb. */
 .content-detail-table,
 .quran-numbers-table,
 .nb-table,

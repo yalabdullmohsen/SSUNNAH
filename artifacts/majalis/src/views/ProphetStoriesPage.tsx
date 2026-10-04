@@ -28,6 +28,14 @@ import { ProphetStorySourcesBlock } from "@/components/prophets/ProphetStorySour
 import { ProphetStoryTabs } from "@/components/prophets/ProphetStoryTabs";
 import { PROPHET_MUSHAF_MENTIONS, PROPHET_MUSHAF_NAV_SOURCE } from "@/lib/prophet-mushaf-mentions";
 import { Button } from "@/components/ui/button";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 function knowledgeBodyBlocks(body: string): { title?: string; paragraphs: string[] }[] {
   const chunks = body.split(/\n(?=##\s)/);
@@ -875,24 +883,25 @@ function CompareView({ onSelect }: { onSelect: (slug: string) => void }) {
       <div className="nb-intro-box">
         <p>جدول مقارنة بين أنبياء القرآن الكريم من حيث عدد الذكر والقوم والكتاب. اضغط على اسم النبي لقراءة قصته.</p>
       </div>
-      <div className="nb-table-scroll">
-        <table className="nb-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>الاسم</th>
-              <th>القوم / المنطقة</th>
-              <th>عدد الذِّكر</th>
-              <th>الكتاب</th>
-              <th>الحقبة</th>
-            </tr>
-          </thead>
-          <tbody>
+      {/* TABLE authority: ui/table + .ss-data-table; nb-table keeps page azm/clickable modifiers */}
+      <div className="nb-table-scroll ss-data-table-wrap">
+        <Table className="ss-data-table nb-table">
+          <TableHeader>
+            <TableRow>
+              <TableHead>#</TableHead>
+              <TableHead>الاسم</TableHead>
+              <TableHead>القوم / المنطقة</TableHead>
+              <TableHead>عدد الذِّكر</TableHead>
+              <TableHead>الكتاب</TableHead>
+              <TableHead>الحقبة</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
             {PROPHETS.map(p => {
               const sup = SUPPLEMENT[p.slug];
               const isAzm = ULUL_AZM_SLUGS.includes(p.slug);
               return (
-                <tr
+                <TableRow
                   key={p.slug}
                   className={`${isAzm ? "nb-table__row--azm" : ""} nb-table__row--clickable`}
                   style={{
@@ -905,20 +914,20 @@ function CompareView({ onSelect }: { onSelect: (slug: string) => void }) {
                   role="link"
                   aria-label={`قصة ${p.arabicName}`}
                 >
-                  <td>{p.id}</td>
-                  <td className="nb-table__name">
+                  <TableCell>{p.id}</TableCell>
+                  <TableCell className="nb-table__name">
                     {p.arabicName}
                     {isAzm && <span className="nb-table__azm"> ★</span>}
-                  </td>
-                  <td>{p.peopleOrPlace}</td>
-                  <td className="nb-table__count">{sup?.mentioned ?? "—"}</td>
-                  <td>{sup?.book ?? "—"}</td>
-                  <td>{p.era}</td>
-                </tr>
+                  </TableCell>
+                  <TableCell>{p.peopleOrPlace}</TableCell>
+                  <TableCell className="nb-table__count">{sup?.mentioned ?? "—"}</TableCell>
+                  <TableCell>{sup?.book ?? "—"}</TableCell>
+                  <TableCell>{p.era}</TableCell>
+                </TableRow>
               );
             })}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
       <p className="nb-table-note">★ = من أولي العزم · اضغط على أي صف للاطلاع على القصة</p>
     </div>

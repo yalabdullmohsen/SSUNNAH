@@ -227,7 +227,7 @@ const TOKEN_MIGRATION_QUEUE = {
 // ═══════════════════════════════════════════
 const nameHits = new Map();
 const NAME_RE =
-  /\b(AppCard|InteractiveCard|StatusCard|SoftCard|ContentCard|HubCard|Button|ActionButton|PrimaryButton|SecondaryButton|IconButton|ConfirmDialog|AdminConfirmDialog|Dialog|AlertDialog|DataTable|ContentTabs|TabSystem|Badge|Chip|FilterChip|SearchInput|SearchField|EmptyStateV2|LoadingStateV2|ErrorStateV2|NavigationList|ListRow)\b/g;
+  /\b(AppCard|InteractiveCard|StatusCard|SoftCard|ContentCard|HubCard|Button|ActionButton|PrimaryButton|SecondaryButton|IconButton|ConfirmDialog|AdminConfirmDialog|Dialog|AlertDialog|DataTable|ContentTabs|TabSystem|Badge|Chip|FilterChip|SearchInput|SearchField|EmptyStateV2|LoadingStateV2|ErrorStateV2|NavigationList|SettingsList|SimpleList|ResultList)\b/g;
 
 for (const abs of tsxFiles) {
   const text = readFileSync(abs, "utf8");
@@ -281,8 +281,8 @@ const purposeGroups = [
   },
   {
     purpose: "lists",
-    authority: "NavigationList / ListRow",
-    names: ["NavigationList", "ListRow"],
+    authority: "ListSystem / NavigationList / SettingsList",
+    names: ["NavigationList", "SettingsList", "SimpleList", "ResultList"],
   },
 ];
 

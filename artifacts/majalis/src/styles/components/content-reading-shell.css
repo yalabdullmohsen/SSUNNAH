@@ -439,15 +439,5 @@ html.dark .seerah-page blockquote {
   margin-bottom: 1rem;
 }
 
-.content-detail-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--ds-text-sm);
-}
-
-.content-detail-table th,
-.content-detail-table td {
-  border: 1px solid var(--mj-hairline, var(--line, transparent));
-  padding: 0.5rem 0.75rem;
-  text-align: right;
-}
+/* .content-detail-table visual recipe absorbed into .ss-data-table
+   (ssunnah-card-unify.css). Consumers keep the class as a bridge alias. */
