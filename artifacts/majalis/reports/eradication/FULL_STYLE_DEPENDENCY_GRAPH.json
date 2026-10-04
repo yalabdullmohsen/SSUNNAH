@@ -178,22 +178,6 @@
       "consumersApprox": 51
     },
     {
-      "file": "styles/section-cards-theme.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 32697,
-      "hex": 99,
-      "consumersApprox": 19
-    },
-    {
-      "file": "styles/interaction-states.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 11483,
-      "hex": 86,
-      "consumersApprox": 24
-    },
-    {
       "file": "styles/islamic-landmarks.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
@@ -258,14 +242,6 @@
       "consumersApprox": 30
     },
     {
-      "file": "styles/visual-enrichment.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 12100,
-      "hex": 57,
-      "consumersApprox": 5
-    },
-    {
       "file": "styles/premium-dark-refine.css",
       "classification": "ABSORB_NOW",
       "platform": "SHARED_PLATFORM",
@@ -290,6 +266,14 @@
       "consumersApprox": 31
     },
     {
+      "file": "styles/interaction-states.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 11141,
+      "hex": 48,
+      "consumersApprox": 24
+    },
+    {
       "file": "styles/sunnah-visual-language.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
@@ -304,14 +288,6 @@
       "bytes": 13168,
       "hex": 47,
       "consumersApprox": 16
-    },
-    {
-      "file": "styles/modern-ui-refresh.css",
-      "classification": "ABSORB_NOW",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 22839,
-      "hex": 44,
-      "consumersApprox": 35
     },
     {
       "file": "styles/reader-bookmarks.css",
@@ -392,14 +368,6 @@
       "bytes": 28930,
       "hex": 38,
       "consumersApprox": 13
-    },
-    {
-      "file": "styles/ssunnah-ds-canonical.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 8788,
-      "hex": 37,
-      "consumersApprox": 17
     },
     {
       "file": "styles/pages/prayer-times.css",
@@ -1138,6 +1106,14 @@
       "consumersApprox": 51
     },
     {
+      "file": "styles/section-cards-theme.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 31506,
+      "hex": 11,
+      "consumersApprox": 19
+    },
+    {
       "file": "styles/components/compact-sources.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
@@ -1224,6 +1200,14 @@
       "bytes": 13178,
       "hex": 10,
       "consumersApprox": 24
+    },
+    {
+      "file": "styles/ssunnah-ds-canonical.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 8545,
+      "hex": 10,
+      "consumersApprox": 17
     },
     {
       "file": "styles/visual-layer-contrast-fix.css",
@@ -1322,14 +1306,6 @@
       "consumersApprox": 4
     },
     {
-      "file": "styles/ssunnah-ux-polish.css",
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 27719,
-      "hex": 9,
-      "consumersApprox": 51
-    },
-    {
       "file": "styles/components/admin-inline-edit.css",
       "classification": "SPECIAL_CASE",
       "platform": "WEB_ONLY",
@@ -1402,6 +1378,14 @@
       "consumersApprox": 9
     },
     {
+      "file": "styles/ssunnah-ux-polish.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 27710,
+      "hex": 8,
+      "consumersApprox": 51
+    },
+    {
       "file": "styles/components/faida-image-card.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
@@ -1416,6 +1400,14 @@
       "bytes": 3900,
       "hex": 7,
       "consumersApprox": 10
+    },
+    {
+      "file": "styles/modern-ui-refresh.css",
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 22506,
+      "hex": 7,
+      "consumersApprox": 35
     },
     {
       "file": "styles/pages/adab-talab-ilm.css",
@@ -1656,6 +1648,14 @@
       "bytes": 6184,
       "hex": 5,
       "consumersApprox": 19
+    },
+    {
+      "file": "styles/visual-enrichment.css",
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 11546,
+      "hex": 5,
+      "consumersApprox": 5
     },
     {
       "file": "styles/components/adhan-notification.css",

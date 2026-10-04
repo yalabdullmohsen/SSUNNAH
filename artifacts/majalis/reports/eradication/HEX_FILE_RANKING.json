@@ -93,20 +93,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/section-cards-theme.css",
-      "hex": 99,
-      "unsafeHexFallback": 88,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/interaction-states.css",
-      "hex": 86,
-      "unsafeHexFallback": 46,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/islamic-landmarks.css",
       "hex": 86,
       "unsafeHexFallback": 56,
@@ -163,13 +149,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/visual-enrichment.css",
-      "hex": 57,
-      "unsafeHexFallback": 54,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/premium-dark-refine.css",
       "hex": 53,
       "unsafeHexFallback": 8,
@@ -191,6 +170,13 @@
       "platform": "SHARED_PLATFORM"
     },
     {
+      "file": "styles/interaction-states.css",
+      "hex": 48,
+      "unsafeHexFallback": 8,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
       "file": "styles/sunnah-visual-language.css",
       "hex": 47,
       "unsafeHexFallback": 13,
@@ -202,13 +188,6 @@
       "hex": 47,
       "unsafeHexFallback": 24,
       "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/modern-ui-refresh.css",
-      "hex": 44,
-      "unsafeHexFallback": 41,
-      "classification": "ABSORB_NOW",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -278,13 +257,6 @@
       "file": "styles/sins-rights.css",
       "hex": 38,
       "unsafeHexFallback": 0,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
-      "file": "styles/ssunnah-ds-canonical.css",
-      "hex": 37,
-      "unsafeHexFallback": 34,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
@@ -933,6 +905,13 @@
       "platform": "SHARED_PLATFORM"
     },
     {
+      "file": "styles/section-cards-theme.css",
+      "hex": 11,
+      "unsafeHexFallback": 0,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
       "file": "styles/components/compact-sources.css",
       "hex": 10,
       "unsafeHexFallback": 8,
@@ -1007,6 +986,13 @@
       "hex": 10,
       "unsafeHexFallback": 8,
       "classification": "SPECIAL_CASE",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/ssunnah-ds-canonical.css",
+      "hex": 10,
+      "unsafeHexFallback": 7,
+      "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -1094,13 +1080,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/ssunnah-ux-polish.css",
-      "hex": 9,
-      "unsafeHexFallback": 4,
-      "classification": "SHARED_PLATFORM",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/components/admin-inline-edit.css",
       "hex": 8,
       "unsafeHexFallback": 4,
@@ -1164,6 +1143,13 @@
       "platform": "SHARED_PLATFORM"
     },
     {
+      "file": "styles/ssunnah-ux-polish.css",
+      "hex": 8,
+      "unsafeHexFallback": 3,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
       "file": "styles/components/faida-image-card.css",
       "hex": 7,
       "unsafeHexFallback": 0,
@@ -1175,6 +1161,13 @@
       "hex": 7,
       "unsafeHexFallback": 0,
       "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/modern-ui-refresh.css",
+      "hex": 7,
+      "unsafeHexFallback": 4,
+      "classification": "ABSORB_NOW",
       "platform": "SHARED_PLATFORM"
     },
     {
@@ -1384,6 +1377,13 @@
       "file": "styles/sunnah-identity-home-hub.css",
       "hex": 5,
       "unsafeHexFallback": 5,
+      "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/visual-enrichment.css",
+      "hex": 5,
+      "unsafeHexFallback": 2,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
