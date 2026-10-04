@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { QueryClientProvider } from "@tanstack/react-query";
 import App from "./App";
+import { AppProviders } from "./app/providers/AppProviders";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { ChunkRecoveryToast } from "./components/ChunkRecoveryToast";
 import { readThemePreference, resolveTheme } from "./lib/theme-preference";
@@ -276,6 +277,10 @@ const bootReporting = () => {
     /* تحت webdriver تتخطّى الدالة داخليًا — لا قراءات هندسية في نافذة LHCI */
     m.scheduleHomeStartupLayoutDiag();
   });
+  // Platform health debug hooks — never block UX (Observability Contract)
+  scheduleOnIdle(() => {
+    void import("./lib/platform/platform-health").then((m) => m.publishPlatformHealthDebug());
+  }, 2_500);
   // RUM بعد idle — لا ينافس LCP؛ يُفعَّل فقط مع موافقة التحليلات
   scheduleOnIdle(() => {
     void import("./lib/rum-telemetry").then((m) => m.initRumTelemetry());
@@ -348,7 +353,9 @@ async function mount() {
         <ChunkRecoveryToast />
         <ErrorBoundary>
           <QueryClientProvider client={queryClient}>
-            <App />
+            <AppProviders>
+              <App />
+            </AppProviders>
           </QueryClientProvider>
         </ErrorBoundary>
       </>,

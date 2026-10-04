@@ -32,7 +32,7 @@ permissions:
 
 jobs:
   scan:
-    if: github.repository == 'yalabdullmohsen/majalis'
+    if: (github.repository == 'yalabdullmohsen/majalis' || github.repository == 'yalabdullmohsen/SSUNNAH')
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:

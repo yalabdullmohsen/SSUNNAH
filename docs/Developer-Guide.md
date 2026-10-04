@@ -9,12 +9,15 @@
 ## Clone & install
 
 ```bash
-git clone https://github.com/yalabdullmohsen/majalis.git
-cd majalis
+git clone https://github.com/yalabdullmohsen/SSUNNAH.git
+cd SSUNNAH   # local folder may still be majlis-app
 pnpm install --frozen-lockfile
 ```
 
+GitHub source of truth: `yalabdullmohsen/SSUNNAH` (legacy redirect: `majalis`).  
 Git root must be the monorepo root (paths like `artifacts/majalis/...`).
+
+Platform docs: `docs/platform/PLATFORM_BASELINE.md` · ownership · state · operations playbook.
 
 ## Run the web app
 

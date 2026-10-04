@@ -7,7 +7,7 @@
 | Project ID | `prj_W2pUhYZqBRzwplLCrr5wU4lha1DV` |
 | Name | `majalis-majalis` |
 | Domains | `majlisilm.com`, `www.majlisilm.com` |
-| Repo | `yalabdullmohsen/majalis` |
+| Repo | `yalabdullmohsen/SSUNNAH` (legacy: `majalis`) |
 | Root Directory (expected) | `artifacts/majalis` |
 | Framework in repo `vercel.json` | `vite` |
 | Dashboard framework claim | May show **Next.js** in UI (cosmetic mismatch). Repo + buildCommand are Vite. Do **not** flip Production preset without Preview proof. |

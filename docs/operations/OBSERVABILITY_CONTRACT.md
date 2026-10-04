@@ -39,6 +39,18 @@
 
 `event` · `ts` · `buildId` · `appVersion` · `platform` · `environment` · `routeCategory` · `errorCategory` · `correlationId?`
 
+## Platform health aggregate (client)
+
+Read-only snapshot via `getPlatformHealthSnapshot()` / `window.__SUNNAH_PLATFORM_HEALTH__`
+(`artifacts/majalis/src/lib/platform/platform-health.ts`):
+
+- online · commitHash · buildVersion
+- startupState / fatalStartup
+- failedBlockingStages
+- searchEvents / searchErrors (no query text)
+
+Publishing must never throw into the boot path.
+
 ## Forbidden to log
 
 JWT · cookies · Service Role · API keys · full push tokens · full email/phone · private text · raw search queries without policy · AI prompts · audio payloads · full scripture dumps · unpublished admin content · raw stacks to end users.
