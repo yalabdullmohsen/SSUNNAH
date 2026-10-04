@@ -438,12 +438,12 @@ html[data-v2-app="1"] .fqh-hub-hero__eyebrow {
   color: var(--cs-on-ink-title, var(--mj-white)) !important;
 }
 
+/* عنوان فرعي داخل هيرو الحبر فقط — لا تُفرَض عاجي on-ink على سطح الصفحة الفاتح */
 html[data-v2-app="1"] .topic-page__hero .topic-page__sub,
-html[data-v2-app="1"] .topic-page__sub,
 html[data-v2-app="1"] .topic-page__hero .topic-page__quote-text,
 html[data-v2-app="1"] .topic-page__hero .topic-page__quote-ref,
 html[data-v2-app="1"] .fqh-hub-hero__sub {
-  color: var(--cs-on-ink-body, #e4ddd0) !important;
+  color: var(--cs-on-ink-body) !important;
 }
 
 html[data-v2-app="1"] .topic-page__eyebrow,

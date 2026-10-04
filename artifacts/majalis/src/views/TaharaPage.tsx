@@ -212,6 +212,7 @@ export default function TaharaPage() {
               id={`thr-tab-${t.id}`}
               type="button"
               role="tab"
+              variant="ghost"
               className={`th-tab${tab === t.id ? " th-tab--active" : ""}`}
               onClick={() => setTab(t.id)}
               aria-selected={tab === t.id}

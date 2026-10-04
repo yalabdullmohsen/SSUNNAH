@@ -48,24 +48,26 @@
   align-items: center;
   justify-content: center;
   gap: .2rem;
-  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, transparent);
+  /* رقاقة سطح معتمة (لا color-mix مع --mj-brand) + حبر ثانوي نهاري/ليلي AA */
+  background: var(--cs-surface-2, var(--mj-surface));
+  border: 1px solid var(--cs-border, var(--mj-hairline));
   border-bottom: none;
   border-radius: .5rem .5rem 0 0;
   padding: .5rem .9rem .4rem;
   cursor: pointer;
-  color: var(--mss-on-hero-muted, #3d4f47);
+  color: var(--cs-text-secondary, var(--mj-ink-2));
   font-size: .78rem;
+  font-weight: 500;
   transition: background .18s;
   min-width: 5.5rem;
   min-height: 44px;
 }
 .th-tab:hover {
-  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, transparent);
-  color: var(--mss-on-hero, var(--v2-color-ink));
+  background: var(--cs-surface-3, var(--mj-surface-2));
+  color: var(--cs-text-primary, var(--mj-ink));
 }
 .th-tab--active {
-  background: var(--color-surface, var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white)))));
+  background: var(--color-surface, var(--mj-surface, var(--mj-white)));
   color: var(--color-brand-deep, var(--mj-brand-deep));
   font-weight: 700;
 }
