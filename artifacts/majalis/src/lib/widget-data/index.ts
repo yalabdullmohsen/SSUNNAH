@@ -8,3 +8,4 @@ export * from "./catalog";
 export * from "./repository";
 export * from "./prayer-window";
 export * from "./center-state";
+export * from "./catalog-product-justification";
