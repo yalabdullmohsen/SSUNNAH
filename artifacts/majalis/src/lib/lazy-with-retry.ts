@@ -61,17 +61,53 @@ function parseStoredAllowance(raw: string | null): { buildId: string; label: str
   return { buildId: raw.slice(0, pipe), label: raw.slice(pipe + 1) || "1" };
 }
 
+/** قراءة الحارس من session ثم local — Capacitor لا يضمن دورة حياة sessionStorage كالمتصفح. */
+function readAllowanceRaw(): string | null {
+  try {
+    if (typeof sessionStorage !== "undefined") {
+      const s = sessionStorage.getItem(CHUNK_RELOAD_KEY);
+      if (s) return s;
+    }
+  } catch {
+    /* ignore */
+  }
+  try {
+    if (typeof localStorage !== "undefined") {
+      return localStorage.getItem(CHUNK_RELOAD_KEY);
+    }
+  } catch {
+    /* ignore */
+  }
+  return null;
+}
+
+function writeAllowanceRaw(value: string): void {
+  try {
+    if (typeof sessionStorage !== "undefined") {
+      sessionStorage.setItem(CHUNK_RELOAD_KEY, value);
+    }
+  } catch {
+    /* ignore */
+  }
+  try {
+    if (typeof localStorage !== "undefined") {
+      localStorage.setItem(CHUNK_RELOAD_KEY, value);
+    }
+  } catch {
+    /* ignore */
+  }
+}
+
 /**
- * محاولة استعادة واحدة لكل build/version في جلسة التبويب.
+ * محاولة استعادة واحدة لكل build/version في جلسة التبويب / التطبيق المثبّت.
  * اختلاف buildId يفتح محاولة جديدة · نفس البناء يمنع التكرار (لا حلقة).
  */
 export function consumeChunkReloadAllowance(label = "1"): boolean {
   try {
-    if (typeof sessionStorage === "undefined") return true;
     const buildId = getChunkRecoveryBuildId();
-    const stored = parseStoredAllowance(sessionStorage.getItem(CHUNK_RELOAD_KEY));
+    const stored = parseStoredAllowance(readAllowanceRaw());
     if (stored && stored.buildId === buildId) return false;
-    sessionStorage.setItem(CHUNK_RELOAD_KEY, `${buildId}|${label || "1"}`);
+    writeAllowanceRaw(`${buildId}|${label || "1"}`);
     return true;
   } catch {
     return true;
@@ -81,8 +117,7 @@ export function consumeChunkReloadAllowance(label = "1"): boolean {
 /** هل استُهلكت محاولة هذا البناء بالفعل؟ */
 export function hasChunkReloadBeenAttempted(): boolean {
   try {
-    if (typeof sessionStorage === "undefined") return false;
-    const stored = parseStoredAllowance(sessionStorage.getItem(CHUNK_RELOAD_KEY));
+    const stored = parseStoredAllowance(readAllowanceRaw());
     if (!stored) return false;
     return stored.buildId === getChunkRecoveryBuildId();
   } catch {
@@ -134,6 +169,24 @@ export function clearChunkReloadGuard(): void {
     }
   } catch {
     /* ignore */
+  }
+  try {
+    if (typeof localStorage !== "undefined") {
+      localStorage.removeItem(CHUNK_RELOAD_KEY);
+      localStorage.removeItem(CHUNK_FAILURE_META_KEY);
+    }
+  } catch {
+    /* ignore */
+  }
+}
+
+/** حالة الشبكة للمسار الهادئ — بلا reload متكرر أثناء الانقطاع. */
+export function isBrowserOffline(): boolean {
+  try {
+    if (typeof navigator === "undefined") return false;
+    return navigator.onLine === false;
+  } catch {
+    return false;
   }
 }
 

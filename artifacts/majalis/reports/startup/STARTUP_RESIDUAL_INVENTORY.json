@@ -58,7 +58,8 @@
       "id": "CHUNK_RECOVERY_PROOF",
       "class": "UPDATE_RECOVERY",
       "wave": "S5",
-      "evidence": "comments claim quiet recovery; need permanent gates for single attempt / no blocking UI"
+      "status": "ADDRESSED_IN_S5",
+      "evidence": "quiet single-attempt + offline-safe + S5 gate; no blocking تحديث العرض"
     },
     {
       "id": "INPUT_LT_16_CANDIDATES",

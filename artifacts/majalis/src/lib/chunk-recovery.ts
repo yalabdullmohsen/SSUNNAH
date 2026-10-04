@@ -9,6 +9,7 @@ import {
   consumeChunkReloadAllowance,
   getChunkRecoveryBuildId,
   hasChunkReloadBeenAttempted,
+  isBrowserOffline,
   isChunkLoadError,
   recordChunkFailureMeta,
   type ChunkFailureMeta,
@@ -22,6 +23,7 @@ export {
   CHUNK_RELOAD_KEY,
   getChunkRecoveryBuildId,
   hasChunkReloadBeenAttempted,
+  isBrowserOffline,
   recordChunkFailureMeta,
 };
 export type { ChunkFailureMeta };
@@ -76,7 +78,19 @@ export function tryRecoverFromStaleChunk(label = "1", error?: unknown): boolean 
     buildId: getChunkRecoveryBuildId(),
     reason: meta?.reason ?? "unknown",
     chunkHint: meta?.chunkHint ?? null,
+    offline: isBrowserOffline(),
   });
+
+  /* OFFLINE: لا reload · لا استنزاف المحاولة · رسالة صادقة من ErrorBoundary */
+  if (isBrowserOffline()) {
+    trackOps("chunk.recovery_result", {
+      label: label || "1",
+      ok: false,
+      reason: "offline",
+      buildId: getChunkRecoveryBuildId(),
+    });
+    return false;
+  }
 
   if (!consumeChunkReloadAllowance(label)) {
     trackOps("chunk.recovery_result", {
@@ -146,6 +160,15 @@ export function clearChunkRecoveryAfterStableBoot(reason = "interactive"): void 
  */
 export async function hardRecoverStaleDeploy(): Promise<void> {
   markDev("update:activation-start");
+  if (isBrowserOffline()) {
+    trackOps("chunk.recovery_result", {
+      label: "hard-user",
+      ok: false,
+      reason: "offline",
+      buildId: getChunkRecoveryBuildId(),
+    });
+    return;
+  }
   requestSwShellPurge();
   clearChunkReloadGuard();
   try {
@@ -159,6 +182,8 @@ export async function hardRecoverStaleDeploy(): Promise<void> {
     label: "hard-user",
     buildId: getChunkRecoveryBuildId(),
     quiet: false,
+    route: typeof window !== "undefined" ? window.location.pathname : null,
   });
+  /* يحافظ على المسار الحالي — location.reload لا يغيّر pathname */
   window.location.reload();
 }
