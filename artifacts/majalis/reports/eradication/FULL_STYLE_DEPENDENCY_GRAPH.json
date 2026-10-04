@@ -723,14 +723,6 @@
       "consumersApprox": 4
     },
     {
-      "file": "styles/final-release.css",
-      "classification": "ABSORB_NOW",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 74006,
-      "hex": 20,
-      "consumersApprox": 51
-    },
-    {
       "file": "styles/pages/lessons-sections-v2.css",
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM",
@@ -1019,6 +1011,14 @@
       "consumersApprox": 51
     },
     {
+      "file": "styles/final-release.css",
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 73925,
+      "hex": 11,
+      "consumersApprox": 51
+    },
+    {
       "file": "styles/pages/knowledge-collection.css",
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM",
@@ -1211,14 +1211,6 @@
       "consumersApprox": 51
     },
     {
-      "file": "styles/sections-calm-polish.css",
-      "classification": "ABSORB_NOW",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 21176,
-      "hex": 9,
-      "consumersApprox": 49
-    },
-    {
       "file": "styles/ssunnah-semantic-tokens.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
@@ -1377,6 +1369,14 @@
       "bytes": 13222,
       "hex": 7,
       "consumersApprox": 44
+    },
+    {
+      "file": "styles/sections-calm-polish.css",
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 21187,
+      "hex": 7,
+      "consumersApprox": 49
     },
     {
       "file": "styles/sunnah-geometry-system.css",

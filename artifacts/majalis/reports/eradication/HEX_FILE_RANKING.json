@@ -569,13 +569,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/final-release.css",
-      "hex": 20,
-      "unsafeHexFallback": 11,
-      "classification": "ABSORB_NOW",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/pages/lessons-sections-v2.css",
       "hex": 20,
       "unsafeHexFallback": 20,
@@ -828,6 +821,13 @@
       "platform": "SHARED_PLATFORM"
     },
     {
+      "file": "styles/final-release.css",
+      "hex": 11,
+      "unsafeHexFallback": 2,
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
       "file": "styles/pages/knowledge-collection.css",
       "hex": 11,
       "unsafeHexFallback": 9,
@@ -996,13 +996,6 @@
       "platform": "SHARED_PLATFORM"
     },
     {
-      "file": "styles/sections-calm-polish.css",
-      "hex": 9,
-      "unsafeHexFallback": 8,
-      "classification": "ABSORB_NOW",
-      "platform": "SHARED_PLATFORM"
-    },
-    {
       "file": "styles/ssunnah-semantic-tokens.css",
       "hex": 9,
       "unsafeHexFallback": 8,
@@ -1140,6 +1133,13 @@
       "hex": 7,
       "unsafeHexFallback": 7,
       "classification": "SHARED_PLATFORM",
+      "platform": "SHARED_PLATFORM"
+    },
+    {
+      "file": "styles/sections-calm-polish.css",
+      "hex": 7,
+      "unsafeHexFallback": 6,
+      "classification": "ABSORB_NOW",
       "platform": "SHARED_PLATFORM"
     },
     {

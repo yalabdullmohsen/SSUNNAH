@@ -1,16 +1,16 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Wave 1B: premium-dark-refine + modern-ui-refresh absorb; ceilings=measured.",
+  "note": "Wave 1C: final-release + sections-calm-polish hex-fallback absorb; ceilings=measured.",
   "floors": {
     "officialButtonImportFiles": 287,
-    "sfTokenRefs": 1182,
+    "sfTokenRefs": 1183,
     "ssTokenRefs": 762
   },
   "ceilings": {
     "cssFiles": 356,
     "important": 4746,
-    "hexInCss": 5630,
+    "hexInCss": 5619,
     "rgbHslInCss": 2006,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
@@ -20,5 +20,5 @@
     "inlineColorStyleMatches": 39,
     "rawButtonFiles": 76
   },
-  "updatedAt": "2026-10-04T12:26:34.463Z"
+  "updatedAt": "2026-10-04T13:16:08.247Z"
 }
