@@ -5,10 +5,15 @@ import os
 /// A malformed Quran payload must not break Prayer widgets.
 struct SunnahWidgetEnvelope: Codable, Hashable {
     var schemaVersion: Int
+    var payloadId: String?
     var generatedAtEpochMs: Int64
     var expiresAtEpochMs: Int64?
     var timezoneIdentifier: String
     var localeIdentifier: String
+    var calendarAuthority: String?
+    var dataVersion: String?
+    var publicationReason: String?
+    var publicationStatus: String?
     var prayerPayload: SharedPrayerSnapshot?
     var calendarPayload: SharedCalendarPayload?
     var adhkarPayload: SharedAdhkarPayload?
@@ -18,6 +23,10 @@ struct SunnahWidgetEnvelope: Codable, Hashable {
     var preferencesPayload: SharedWidgetPreferencesPayload?
     var progressPayload: SharedHomeProgressPayload?
     var contentSpotlightPayload: SharedContentSpotlightPayload?
+    var islamicEventsPayload: SharedIslamicEventsPayload?
+    var hadithPayload: SharedHadithPayload?
+    var duaPayload: SharedDuaPayload?
+    var diagnosticsPayload: SharedWidgetDiagnosticsPayload?
 
     static let currentSchema = 1
 }
@@ -38,6 +47,19 @@ struct SharedCalendarPayload: Codable, Hashable {
     var upcomingEventNameAr: String?
     var upcomingEventDays: Int?
     var upcomingEventPath: String?
+    var upcomingEventConfirmation: String?
+    var upcomingEventAuthority: String?
+    var gregorianDate: String?
+    var gregorianDay: Int?
+    var gregorianMonth: Int?
+    var gregorianYear: Int?
+    var gregorianWeekday: String?
+    var hijriDate: String?
+    var hijriWeekday: String?
+    var displayDateArabic: String?
+    var calendarMode: String?
+    var calendarAuthority: String?
+    var dayStartsAt: String?
     var updatedAtEpochMs: Int64
     static let currentSchema = 1
 }
@@ -58,6 +80,9 @@ struct SharedAdhkarPayload: Codable, Hashable {
     var todayCompleted: Bool?
     var streakDays: Int?
     var hasCanonicalProgress: Bool?
+    var timeWindows: [String]?
+    var licenseStatus: String?
+    var widgetEligible: Bool?
     var updatedAtEpochMs: Int64
     static let currentSchema = 1
 }
@@ -73,6 +98,11 @@ struct SharedQuranPayload: Codable, Hashable {
     var pagesCompletedToday: Int?
     var dailyTarget: Int?
     var hasCanonicalGoal: Bool?
+    var textSourceVersion: String?
+    var licenseStatus: String?
+    var widgetEligible: Bool?
+    var reviewStatus: String?
+    var ayahWidgetMode: String?
     var updatedAtEpochMs: Int64
     static let currentSchema = 1
 }
@@ -89,6 +119,8 @@ struct SharedMushafPayload: Codable, Hashable {
     var bookmarkAyahNumber: Int?
     var hasProgress: Bool
     var hasBookmark: Bool
+    var progressSource: String?
+    var syncState: String?
     var journeyPercent: Int?
     var updatedAtEpochMs: Int64
     static let currentSchema = 1
@@ -146,8 +178,59 @@ struct SharedWidgetPreferencesPayload: Codable, Hashable {
     var appearance: String
     var showSource: Bool
     var compactText: Bool
+    var calendarMode: String?
+    var prayerDisplayMode: String?
+    var showLocationLabel: Bool?
+    var showHijriDate: Bool?
+    var showGregorianDate: Bool?
+    var privacyDisplayLevel: String?
+    var ayahWidgetMode: String?
     var updatedAtEpochMs: Int64
     static let currentSchema = 1
+}
+
+struct SharedIslamicEventsPayload: Codable, Hashable {
+    var schemaVersion: Int
+    var domainVersion: Int?
+    var generatedAtEpochMs: Int64?
+    var expiresAtEpochMs: Int64?
+    var sourceAuthority: String?
+    var validationStatus: String?
+    var upcomingEventId: String?
+    var updatedAtEpochMs: Int64?
+}
+
+struct SharedHadithPayload: Codable, Hashable {
+    var schemaVersion: Int
+    var shortText: String?
+    var source: String?
+    var grade: String?
+    var narrator: String?
+    var deepLinkPath: String?
+    var widgetEligible: Bool?
+    var validationStatus: String?
+}
+
+struct SharedDuaPayload: Codable, Hashable {
+    var schemaVersion: Int
+    var title: String?
+    var completeShortText: String?
+    var source: String?
+    var category: String?
+    var deepLinkPath: String?
+    var widgetEligible: Bool?
+    var validationStatus: String?
+}
+
+struct SharedWidgetDiagnosticsPayload: Codable, Hashable {
+    var schemaVersion: Int
+    var generatedAtEpochMs: Int64?
+    var sourceAuthority: String?
+    var validationStatus: String?
+    var futureBinaryRequired: Bool?
+    var publicationStatus: String?
+    var staleDomains: [String]?
+    var missingSetup: [String]?
 }
 
 enum SunnahWidgetEnvelopeCodec {
@@ -186,10 +269,15 @@ enum SunnahWidgetEnvelopeCodec {
         }
         return SunnahWidgetEnvelope(
             schemaVersion: intVal("schemaVersion", fallback: 1),
+            payloadId: obj["payloadId"] as? String,
             generatedAtEpochMs: int64Val("generatedAtEpochMs") ?? 0,
             expiresAtEpochMs: int64Val("expiresAtEpochMs"),
             timezoneIdentifier: str("timezoneIdentifier", fallback: TimeZone.current.identifier),
             localeIdentifier: str("localeIdentifier", fallback: "ar"),
+            calendarAuthority: obj["calendarAuthority"] as? String,
+            dataVersion: obj["dataVersion"] as? String,
+            publicationReason: obj["publicationReason"] as? String,
+            publicationStatus: obj["publicationStatus"] as? String,
             prayerPayload: decodeDomain("prayerPayload", as: SharedPrayerSnapshot.self),
             calendarPayload: decodeDomain("calendarPayload", as: SharedCalendarPayload.self),
             adhkarPayload: decodeDomain("adhkarPayload", as: SharedAdhkarPayload.self),
@@ -198,7 +286,11 @@ enum SunnahWidgetEnvelopeCodec {
             customContentPayload: decodeDomain("customContentPayload", as: SharedCustomContentPayload.self),
             preferencesPayload: decodeDomain("preferencesPayload", as: SharedWidgetPreferencesPayload.self),
             progressPayload: decodeDomain("progressPayload", as: SharedHomeProgressPayload.self),
-            contentSpotlightPayload: decodeDomain("contentSpotlightPayload", as: SharedContentSpotlightPayload.self)
+            contentSpotlightPayload: decodeDomain("contentSpotlightPayload", as: SharedContentSpotlightPayload.self),
+            islamicEventsPayload: decodeDomain("islamicEventsPayload", as: SharedIslamicEventsPayload.self),
+            hadithPayload: decodeDomain("hadithPayload", as: SharedHadithPayload.self),
+            duaPayload: decodeDomain("duaPayload", as: SharedDuaPayload.self),
+            diagnosticsPayload: decodeDomain("diagnosticsPayload", as: SharedWidgetDiagnosticsPayload.self)
         )
     }
 }

@@ -14,6 +14,7 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "publishProgressSnapshot", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "publishWidgetEnvelope", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "readPrayerSnapshot", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "readWidgetDiagnostics", returnType: CAPPluginReturnPromise),
     ]
 
     @objc func getAppGroupId(_ call: CAPPluginCall) {
@@ -117,6 +118,28 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
             "nextPrayerEpochMs": snap.nextPrayerEpochMs as Any,
             "nextHasStarted": snap.nextHasStarted,
             "updatedAtEpochMs": snap.updatedAtEpochMs,
+        ])
+    }
+
+    @objc func readWidgetDiagnostics(_ call: CAPPluginCall) {
+        let env = SunnahSharedStore.loadEnvelope()
+        var domains: [String] = []
+        if env?.prayerPayload != nil { domains.append("prayer") }
+        if env?.calendarPayload != nil { domains.append("calendar") }
+        if env?.adhkarPayload != nil { domains.append("adhkar") }
+        if env?.quranPayload != nil { domains.append("quran") }
+        if env?.mushafPayload != nil { domains.append("mushaf") }
+        if env?.islamicEventsPayload != nil { domains.append("islamicEvents") }
+        if env?.hadithPayload != nil { domains.append("hadith") }
+        if env?.duaPayload != nil { domains.append("dua") }
+        if env?.progressPayload != nil { domains.append("progress") }
+        if env?.diagnosticsPayload != nil { domains.append("diagnostics") }
+        call.resolve([
+            "appGroupAvailable": SunnahAppGroup.defaults != nil,
+            "schemaVersion": env?.schemaVersion as Any,
+            "generatedAtEpochMs": env?.generatedAtEpochMs as Any,
+            "domainsPresent": domains,
+            "futureBinaryRequired": true,
         ])
     }
 }

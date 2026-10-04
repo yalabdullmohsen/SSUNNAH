@@ -15,7 +15,6 @@ import {
 import { DAILY_TICKER_DHIKR } from "@/lib/daily-ticker-dhikr";
 import { resolveTimeOfDay } from "@/lib/daily-context";
 import { getTodayProgress } from "@/lib/daily-progress";
-import { ISLAMIC_OCCASIONS } from "@/lib/islamic-occasions-seed";
 import { loadLastPageSync, TOTAL_QURAN_PAGES } from "@/lib/quran-last-page";
 import { getMyBookmarks } from "@/lib/quran-my-bookmarks";
 import { getSurahForPage, getSurahMeta } from "@/lib/quran-api";
@@ -25,6 +24,17 @@ import { dateISOInZone } from "@/lib/prayer-notification-ids";
 import { buildSharedPrayerSnapshotPayload } from "./sunnah-shared-prayer-publish";
 import { publishSharedWidgetEnvelope } from "./sunnah-shared-data";
 import type { PrayerTimesPayload } from "../prayer-times";
+import {
+  buildDiagnosticsDomain,
+  buildEnvelopeHeader,
+  buildIslamicEventsDomain,
+  domainMeta,
+  rememberWidgetPublication,
+} from "@/lib/widget-data/repository";
+import { pickUpcomingWidgetEvent } from "@/lib/widget-data/islamic-events";
+import { assertPublicSafeWidgetJson } from "@/lib/widget-data/privacy";
+import { loadWidgetPreferences } from "@/lib/widget-data/preferences";
+import { loadWidgetSelections } from "@/lib/widget-data/selections";
 
 const ADHKAR_BY_TIME: Record<string, { collection: string; title: string }> = {
   fajr: { collection: "morning", title: "أذكار الصباح" },
@@ -72,6 +82,19 @@ function weekdayAr(now: Date, timeZone: string): string {
   return new Intl.DateTimeFormat("ar", { timeZone, weekday: "long" }).format(now);
 }
 
+function gregorianParts(now: Date, timeZone: string) {
+  const fmt = new Intl.DateTimeFormat("en-GB", {
+    timeZone,
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+  });
+  const parts = fmt.formatToParts(now);
+  const num = (type: Intl.DateTimeFormatPartTypes) =>
+    Number(parts.find((p) => p.type === type)?.value || 0);
+  return { day: num("day"), month: num("month"), year: num("year") };
+}
+
 function gregorianDisplay(now: Date, timeZone: string): string {
   return new Intl.DateTimeFormat("ar", {
     timeZone,
@@ -100,23 +123,6 @@ function daysUntilRamadan(now: Date, timeZone: string): { inRamadan: boolean; da
     if (h.month === 9 && h.day === 1) return { inRamadan: false, days: i };
   }
   return { inRamadan: false, days: null };
-}
-
-function upcomingIslamicEvent(now: Date, timeZone: string): { name: string; days: number; id: string } | null {
-  const today = hijriParts(now, timeZone);
-  let best: { name: string; days: number; id: string } | null = null;
-  for (const occasion of ISLAMIC_OCCASIONS) {
-    if (!occasion.recurring || occasion.hijriMonth < 1) continue;
-    let months = occasion.hijriMonth - today.month;
-    if (months < 0) months += 12;
-    let days = occasion.hijriDay - today.day + months * 29.5;
-    if (days < 0) days += 354;
-    const rounded = Math.round(days);
-    if (!best || rounded < best.days) {
-      best = { name: occasion.name, days: rounded, id: occasion.id };
-    }
-  }
-  return best;
 }
 
 function surahNumberFromReference(reference: string, fallback = 1): number {
@@ -171,8 +177,8 @@ export function buildSunnahWidgetEnvelope(
 ): Record<string, unknown> {
   const tz = prayerPayload?.timeZoneIdentifier || getActivePrayerLocation().timeZone || "Asia/Kuwait";
   const hijri = hijriParts(now, tz);
+  const gregorian = gregorianParts(now, tz);
   const ramadan = daysUntilRamadan(now, tz);
-  const event = upcomingIslamicEvent(now, tz);
   const timeOfDay = resolveTimeOfDay(now.getHours() + now.getMinutes() / 60);
   const adhkarMap = ADHKAR_BY_TIME[timeOfDay] ?? ADHKAR_BY_TIME.duha;
   const ayah = getDailyAyah(now);
@@ -200,17 +206,31 @@ export function buildSunnahWidgetEnvelope(
     lastPage != null;
   const mushafPercent =
     lastPage != null ? Math.min(100, Math.round((lastPage / TOTAL_QURAN_PAGES) * 100)) : null;
+  const upcoming = pickUpcomingWidgetEvent({ month: hijri.month, day: hijri.day });
+  const missingSetup: string[] = [];
+  if (!prayerPayload) missingSetup.push("prayer");
+  if (lastPage == null) missingSetup.push("mushaf");
+  if (!hasCanonicalTracking) missingSetup.push("progress");
+  const header = buildEnvelopeHeader(generatedAt, tz, "canonical-app-publish");
+  const eventsDomain = buildIslamicEventsDomain({ month: hijri.month, day: hijri.day }, generatedAt);
+  const diagnostics = buildDiagnosticsDomain(generatedAt, missingSetup, []);
+  const prefs = loadWidgetPreferences();
+  const selections = loadWidgetSelections();
+  const calendarMode = prefs.calendarMode;
 
-  return {
-    schemaVersion: SUNNAH_WIDGET_ENVELOPE_SCHEMA_VERSION,
-    generatedAtEpochMs: generatedAt,
-    expiresAtEpochMs: generatedAt + 36 * 3600_000,
-    timezoneIdentifier: tz,
-    localeIdentifier: "ar",
+  const envelope = {
+    ...header,
     prayerPayload: prayerPayload
       ? {
           schemaVersion: 1,
           ...prayerPayload,
+          fajr: prayerPayload.timesEpochMs.fajr ?? null,
+          sunrise: prayerPayload.timesEpochMs.sunrise ?? null,
+          dhuhr: prayerPayload.timesEpochMs.dhuhr ?? null,
+          asr: prayerPayload.timesEpochMs.asr ?? null,
+          maghrib: prayerPayload.timesEpochMs.maghrib ?? null,
+          isha: prayerPayload.timesEpochMs.isha ?? null,
+          ...domainMeta("prayer-times", "VALID", generatedAt),
           updatedAtEpochMs: generatedAt,
         }
       : undefined,
@@ -223,13 +243,32 @@ export function buildSunnahWidgetEnvelope(
       hijriMonthAr: HIJRI_MONTHS_AR[hijri.month] || "",
       hijriYear: hijri.year,
       hijriDisplay: hijriDisplay(now, tz),
+      hijriDate: `${hijri.year}-${String(hijri.month).padStart(2, "0")}-${String(hijri.day).padStart(2, "0")}`,
+      hijriWeekday: weekdayAr(now, tz),
       gregorianDisplay: gregorianDisplay(now, tz),
+      gregorianDate: dateISOInZone(tz, now),
+      gregorianDay: gregorian.day,
+      gregorianMonth: gregorian.month,
+      gregorianYear: gregorian.year,
+      gregorianWeekday: weekdayAr(now, tz),
+      displayDateArabic:
+        calendarMode === "gregorian"
+          ? gregorianDisplay(now, tz)
+          : calendarMode === "dual"
+            ? `${hijriDisplay(now, tz)} · ${gregorianDisplay(now, tz)}`
+            : hijriDisplay(now, tz),
+      calendarMode,
+      calendarAuthority: "islamic-umalqura",
+      dayStartsAt: dateISOInZone(tz, now),
       inRamadan: ramadan.inRamadan,
       daysUntilRamadan: ramadan.days,
       ramadanLabelAr: ramadan.inRamadan ? "رمضان مبارك" : "باقي على رمضان",
-      upcomingEventNameAr: event?.name ?? null,
-      upcomingEventDays: event?.days ?? null,
+      upcomingEventNameAr: upcoming?.titleArabic ?? null,
+      upcomingEventDays: upcoming?.daysUntil ?? null,
       upcomingEventPath: "/occasions",
+      upcomingEventConfirmation: upcoming?.confirmationStatus ?? null,
+      upcomingEventAuthority: upcoming?.religiousAuthorityStatus ?? null,
+      ...domainMeta("hijri-utils", "VALID", generatedAt),
       updatedAtEpochMs: generatedAt,
     },
     adhkarPayload: {
@@ -244,9 +283,13 @@ export function buildSunnahWidgetEnvelope(
       rotatingSource: dhikr.source,
       rotatingCollection: dhikr.category,
       rotationDayKey: dateISOInZone(tz, now),
+      timeWindows: ["morning", "evening", "sleep", "after-salah"],
+      licenseStatus: "canonical-adhkar",
+      widgetEligible: true,
       todayCompleted: progress["morning-adhkar"] > 0 || progress["evening-adhkar"] > 0,
       streakDays,
       hasCanonicalProgress: hasCanonicalTracking,
+      ...domainMeta("adhkar-repository", dhikr.text ? "VALID" : "NO_DATA", generatedAt),
       updatedAtEpochMs: generatedAt,
     },
     quranPayload: {
@@ -260,6 +303,12 @@ export function buildSunnahWidgetEnvelope(
       pagesCompletedToday: progress.quran,
       dailyTarget: 1,
       hasCanonicalGoal: hasCanonicalTracking,
+      textSourceVersion: "quran-api",
+      licenseStatus: "canonical-quran",
+      widgetEligible: true,
+      reviewStatus: "CURATED_ROTATION",
+      ayahWidgetMode: prefs.ayahWidgetMode,
+      ...domainMeta("quran-api", ayah.text ? "VALID" : "NO_DATA", generatedAt),
       updatedAtEpochMs: generatedAt,
     },
     mushafPayload: {
@@ -274,7 +323,14 @@ export function buildSunnahWidgetEnvelope(
       bookmarkAyahNumber: bookmarkAyah,
       hasProgress: lastPage != null,
       hasBookmark: bookmark != null,
+      progressSource: lastPage != null ? "lastPage" : "NOT_STARTED",
+      syncState: "local",
       journeyPercent: mushafPercent,
+      ...domainMeta(
+        "quran-last-page",
+        lastPage != null ? "VALID" : "REQUIRES_INITIALIZATION",
+        generatedAt,
+      ),
       updatedAtEpochMs: generatedAt,
     },
     customContentPayload: {
@@ -329,9 +385,24 @@ export function buildSunnahWidgetEnvelope(
     },
     preferencesPayload: {
       schemaVersion: 1,
-      appearance: "fullColor",
-      showSource: true,
+      appearance: prefs.widgetAppearance,
+      showSource: prefs.contentSourceVisibility,
       compactText: false,
+      calendarMode: prefs.calendarMode,
+      numeralStyle: prefs.numeralStyle,
+      prayerDisplayMode: prefs.prayerDisplayMode,
+      showLocationLabel: prefs.showLocationLabel,
+      showHijriDate: prefs.showHijriDate,
+      showGregorianDate: prefs.showGregorianDate,
+      countdownMode: prefs.countdownMode,
+      preferredAdhkarCategory: prefs.preferredAdhkarCategory,
+      selectedMushafBookmarkId: prefs.selectedMushafBookmarkId,
+      selectedCustomContentId: prefs.selectedCustomContentId,
+      privacyDisplayLevel: prefs.privacyDisplayLevel,
+      ayahWidgetMode: prefs.ayahWidgetMode,
+      precedence: ["app_intent_instance", "account_preference", "local_application_preference", "product_default"],
+      selectionCount: selections.length,
+      ...domainMeta("widget-preferences", "VALID", generatedAt),
       updatedAtEpochMs: generatedAt,
     },
     progressPayload: {
@@ -346,6 +417,11 @@ export function buildSunnahWidgetEnvelope(
       dailyPageTarget: 1,
       mushafPercent,
       currentAdhkarTitleAr: adhkarMap.title,
+      ...domainMeta(
+        "daily-progress",
+        hasCanonicalTracking ? "VALID" : "REQUIRES_CONFIGURATION",
+        generatedAt,
+      ),
       updatedAtEpochMs: generatedAt,
     },
     contentSpotlightPayload: {
@@ -361,8 +437,34 @@ export function buildSunnahWidgetEnvelope(
       duaPath: "/adhkar",
       updatedAtEpochMs: generatedAt,
     },
+    islamicEventsPayload: eventsDomain,
+    hadithPayload: {
+      schemaVersion: 1,
+      ...domainMeta("daily-content", hadith.text ? "VALID" : "NO_DATA", generatedAt),
+      shortText: hadith.text,
+      source: hadith.source,
+      grade: hadith.grade ?? null,
+      narrator: hadith.narrator ?? null,
+      deepLinkPath: "/hadith",
+      widgetEligible: true,
+    },
+    duaPayload: {
+      schemaVersion: 1,
+      ...domainMeta("daily-ticker-dhikr", dua.text ? "VALID" : "NO_DATA", generatedAt),
+      title: "دعاء اليوم",
+      completeShortText: dua.text,
+      source: dua.source || null,
+      category: "GENERAL",
+      deepLinkPath: "/adhkar",
+      widgetEligible: true,
+    },
+    diagnosticsPayload: diagnostics,
     dayIndex: getDayIndex(now),
   };
+  if (!assertPublicSafeWidgetJson(JSON.stringify(envelope))) {
+    throw new Error("widget envelope failed privacy scan");
+  }
+  return envelope;
 }
 
 export async function publishSunnahWidgetEnvelope(options?: {
@@ -375,10 +477,12 @@ export async function publishSunnahWidgetEnvelope(options?: {
       ? buildSharedPrayerSnapshotPayload(options.prayerTimes)
       : null;
     const envelope = buildSunnahWidgetEnvelope(new Date(), prayer);
-    return await publishSharedWidgetEnvelope(
+    const ok = await publishSharedWidgetEnvelope(
       JSON.stringify(envelope),
       options?.domains ?? ["calendar", "adhkar", "quran", "mushaf", "custom", "home"],
     );
+    if (ok) rememberWidgetPublication(Date.now());
+    return ok;
   } catch {
     return false;
   }

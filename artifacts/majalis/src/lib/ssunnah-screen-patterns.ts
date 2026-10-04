@@ -84,6 +84,7 @@ export const SS_SCREEN_ROUTE_PATTERN: ReadonlyArray<{
   { id: "lesson-detail", path: "/lessons/:id", pattern: "detail", source: "src/pages/lessons/ui/LessonDetailView.tsx", batch: 1 },
   { id: "prayer", path: "/prayer-times", pattern: "dashboard", source: "src/pages/worship/ui/PrayerTimesView.tsx", batch: 1 },
   { id: "settings", path: "/settings", pattern: "utility", source: "src/pages/account/ui/SettingsView.tsx", batch: 1 },
+  { id: "widget-center", path: "/widget-center", pattern: "utility", source: "src/pages/account/ui/WidgetCenterView.tsx", batch: 2 },
   { id: "mushaf", path: "/mushaf", pattern: "scripture", source: "src/pages/quran/MushafReaderPage.tsx", batch: 1 },
   { id: "tafsir", path: "/tafsir", pattern: "reader", source: "src/pages/quran/ui/TafsirView.tsx", batch: 2 },
   { id: "adhkar", path: "/adhkar", pattern: "list", source: "src/pages/worship/ui/AdhkarView.tsx", batch: 2 },

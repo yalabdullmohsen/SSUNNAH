@@ -14,6 +14,17 @@ export type SharedPrayerSnapshotPayload = {
   nextPrayerNameAr?: string;
   nextPrayerEpochMs?: number;
   nextHasStarted?: boolean;
+  previousPrayerKey?: string;
+  previousPrayerNameAr?: string;
+  previousPrayerEpochMs?: number;
+  currentPrayerKey?: string;
+  currentPrayerNameAr?: string;
+  currentPrayerStartedAtEpochMs?: number;
+  nextTransitionAtEpochMs?: number;
+  calculationDate?: string;
+  calculationMethodIdentifier?: string;
+  permissionState?: string;
+  initializationState?: string;
 };
 
 export type SharedProgressSnapshotPayload = {
@@ -28,6 +39,13 @@ interface SunnahSharedDataPlugin {
   publishProgressSnapshot(options: SharedProgressSnapshotPayload): Promise<{ ok: boolean }>;
   publishWidgetEnvelope(options: { envelopeJson: string; domains: string[] }): Promise<{ ok: boolean }>;
   readPrayerSnapshot(): Promise<Record<string, unknown> & { found: boolean }>;
+  readWidgetDiagnostics(): Promise<{
+    appGroupAvailable: boolean;
+    schemaVersion?: number;
+    generatedAtEpochMs?: number;
+    domainsPresent: string[];
+    futureBinaryRequired: boolean;
+  }>;
 }
 
 function getPlugin(): SunnahSharedDataPlugin | null {
@@ -74,5 +92,32 @@ export async function publishSharedWidgetEnvelope(
     return Boolean(res.ok);
   } catch {
     return false;
+  }
+}
+
+export async function getPluginAppGroupAvailability(): Promise<boolean> {
+  const plugin = getPlugin();
+  if (!plugin) return false;
+  try {
+    const res = await plugin.getAppGroupId();
+    return Boolean(res.available);
+  } catch {
+    return false;
+  }
+}
+
+export async function readNativeWidgetDiagnostics(): Promise<{
+  appGroupAvailable: boolean;
+  schemaVersion?: number;
+  generatedAtEpochMs?: number;
+  domainsPresent: string[];
+  futureBinaryRequired: boolean;
+} | null> {
+  const plugin = getPlugin();
+  if (!plugin) return null;
+  try {
+    return await plugin.readWidgetDiagnostics();
+  } catch {
+    return null;
   }
 }

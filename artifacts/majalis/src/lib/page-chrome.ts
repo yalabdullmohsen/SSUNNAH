@@ -160,7 +160,9 @@ export function resolvePageChromeKey(pathname: string): PageChromeKey {
     path.startsWith("/profile") ||
     path.startsWith("/notification") ||
     path === "/privacy" ||
-    path.startsWith("/privacy/")
+    path.startsWith("/privacy/") ||
+    path === "/widget-center" ||
+    path.startsWith("/widget-center/")
   ) {
     return "settings";
   }

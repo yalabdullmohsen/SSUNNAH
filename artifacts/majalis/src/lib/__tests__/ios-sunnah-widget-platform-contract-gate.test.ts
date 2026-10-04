@@ -117,12 +117,15 @@ assert.match(envelope, /customContentPayload/);
 assert.match(envelope, /preferencesPayload/);
 assert.match(envelope, /progressPayload/);
 assert.match(envelope, /contentSpotlightPayload/);
+assert.match(envelope, /islamicEventsPayload/);
+assert.match(envelope, /diagnosticsPayload/);
 assert.match(envelope, /decodeIsolated/);
 assert.match(refresh, /commitPrayer|commitEnvelope/);
 assert.doesNotMatch(refresh, /reloadAllTimelines/);
 assert.doesNotMatch(plugin, /reloadAllTimelines/);
 assert.match(plugin, /WidgetCenter\.shared\.reloadTimelines\(ofKind:\s*SunnahWidgetKind\.prayerTimes\)/);
 assert.match(plugin, /SunnahWidgetRefreshCoordinator\.commitPrayer/);
+assert.match(plugin, /readWidgetDiagnostics/);
 assert.match(refresh, /reloadTimelines\(ofKind:/);
 
 for (const token of ["token", "password", "refreshToken", "email", "private_key"]) {

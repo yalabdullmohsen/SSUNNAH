@@ -17,6 +17,7 @@ import { useReadingScrollMemory } from "@/hooks/useReadingScrollMemory";
 import { haptics } from "@/lib/haptics";
 import { markMorningAdhkarDone } from "@/lib/local-milestones";
 import { recordUserActivity } from "@/lib/user-streak";
+import { setTaskProgress } from "@/lib/daily-progress";
 import { AdhkarFocusNav } from "./AdhkarFocusNav";
 import { AdhkarRemindersCard } from "@/components/adhkar/AdhkarRemindersCard";
 import { truncateAtWord } from "@/lib/content-display-polish";
@@ -230,15 +231,23 @@ export default function AdhkarPage() {
               setDone(false);
               return ni;
             }
-            // أكمل القسم — أذكار الصباح تغذي شارة التتابع
+            // اكتمال الجلسة فقط بعد آخر ذكر — لا بمجرد فتح الصفحة
             if (category === "adh-morning") {
               markMorningAdhkarDone();
+              setTaskProgress("morning-adhkar", 1);
               try {
                 recordUserActivity();
               } catch {
                 /* ignore */
               }
+            } else if (category === "adh-evening") {
+              setTaskProgress("evening-adhkar", 1);
+            } else if (category === "adh-after-salah" || category === "adh-salah") {
+              setTaskProgress("nawafil", 1);
             }
+            void import("@/lib/plugins/sunnah-widget-envelope-publish").then(({ publishSunnahWidgetEnvelope }) => {
+              void publishSunnahWidgetEnvelope({ domains: ["adhkar", "progress", "home"] });
+            });
             return i;
           });
         }, 700);

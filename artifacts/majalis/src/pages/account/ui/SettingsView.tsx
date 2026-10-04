@@ -209,7 +209,7 @@ export default function SettingsPage() {
     {
       id: "reminders",
       title: "الصلاة والتنبيهات",
-      keywords: "إشعار تذكير أذان صلاة مواقيت تنبيه دروس محتوى",
+      keywords: "إشعار تذكير أذان صلاة مواقيت تنبيه دروس محتوى ويدجت widget",
     },
     {
       id: "downloads",
@@ -610,6 +610,7 @@ export default function SettingsPage() {
               { id: "notif-sound", title: "الإشعارات والصوت", href: "/notifications-and-sound" },
               { id: "notif-detail", title: "الإشعارات", href: "/notification-settings" },
               { id: "adhan", title: "إعدادات الأذان", href: "/adhan-settings" },
+              { id: "widget-center", title: "مركز الويدجت", href: "/widget-center" },
             ]}
           />
         </LegalSection>

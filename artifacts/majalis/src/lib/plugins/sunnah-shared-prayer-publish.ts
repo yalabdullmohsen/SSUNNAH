@@ -15,6 +15,7 @@ import {
   type SharedPrayerSnapshotPayload,
 } from "./sunnah-shared-data";
 import { isIOS, isNative } from "../capacitor-utils";
+import { derivePrayerWindow } from "../widget-data/prayer-window";
 
 const KEY_TO_ARABIC: Record<string, string> = {
   Fajr: "الفجر",
@@ -73,18 +74,40 @@ export function buildSharedPrayerSnapshotPayload(
   }
 
   const next = listUpcomingObligatory(payload.prayers, tz, nowMs)[0] ?? null;
+  const window = derivePrayerWindow(
+    timesEpochMs,
+    nowMs,
+    next
+      ? {
+          key: next.slot.key.toLowerCase(),
+          nameAr: KEY_TO_ARABIC[next.slot.key] ?? next.slot.name,
+          epochMs: next.epoch,
+        }
+      : null,
+  );
 
   return {
     locationLabel: payload.city || "",
     timeZoneIdentifier: tz,
     dayKey: todayISO,
     timesEpochMs,
-    nextPrayerKey: next ? next.slot.key.toLowerCase() : undefined,
-    nextPrayerNameAr: next
-      ? KEY_TO_ARABIC[next.slot.key] ?? next.slot.name
-      : undefined,
-    nextPrayerEpochMs: next?.epoch,
-    nextHasStarted: next ? nowMs >= next.epoch : false,
+    nextPrayerKey: window.nextPrayer?.key ?? (next ? next.slot.key.toLowerCase() : undefined),
+    nextPrayerNameAr:
+      window.nextPrayer?.nameAr ??
+      (next ? KEY_TO_ARABIC[next.slot.key] ?? next.slot.name : undefined),
+    nextPrayerEpochMs: window.nextPrayer?.epochMs ?? next?.epoch,
+    nextHasStarted: window.nextPrayer ? nowMs >= window.nextPrayer.epochMs : false,
+    previousPrayerKey: window.previousPrayer?.key,
+    previousPrayerNameAr: window.previousPrayer?.nameAr,
+    previousPrayerEpochMs: window.previousPrayer?.epochMs,
+    currentPrayerKey: window.currentPrayer?.key,
+    currentPrayerNameAr: window.currentPrayer?.nameAr,
+    currentPrayerStartedAtEpochMs: window.currentPrayerStartedAt ?? undefined,
+    nextTransitionAtEpochMs: window.nextTransitionAt ?? undefined,
+    calculationDate: todayISO,
+    calculationMethodIdentifier: payload.method || undefined,
+    permissionState: payload.city ? "configured" : "REQUIRES_CONFIGURATION",
+    initializationState: Object.keys(timesEpochMs).length ? "ready" : "REQUIRES_INITIALIZATION",
   };
 }
 

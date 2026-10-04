@@ -106,6 +106,7 @@ export const footerNav: readonly FooterGroup[] = [
       { href: "/contact", label: "تواصل معنا" },
       { href: "/privacy", label: "سياسة الخصوصية" },
       { href: "/privacy-center", label: "مركز الخصوصية" },
+      { href: "/widget-center", label: "مركز الويدجت" },
       { href: "/terms", label: "شروط الاستخدام" },
       { href: "/account-deletion", label: "حذف الحساب" },
     ],

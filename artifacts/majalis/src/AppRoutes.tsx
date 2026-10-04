@@ -30,6 +30,7 @@ import {
   NotificationsAndSoundPage,
   ProgressCenterPage,
   OfflineCenterPage,
+  WidgetCenterPage,
   AutoContentDetailPage,
   AdminPage,
   AdminV3App,
@@ -305,6 +306,7 @@ export default function AppRoutes() {
       <Route path="/contact"><SafeLazyRoute component={ContactPage} /></Route>
       <Route path="/support"><SafeLazyRoute component={ContactPage} /></Route>
       <Route path="/settings"><SafeLazyRoute component={SettingsPage} /></Route>
+      <Route path="/widget-center"><SafeLazyRoute component={WidgetCenterPage} /></Route>
       {import.meta.env.DEV ? (
         <Route path="/dev/design-system">
           <SafeLazyRoute

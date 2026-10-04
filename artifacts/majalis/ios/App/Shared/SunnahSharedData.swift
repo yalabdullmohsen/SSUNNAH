@@ -103,6 +103,17 @@ struct SharedPrayerSnapshot: Codable, Hashable {
     var nextPrayerEpochMs: Int64?
     /// When the next prayer has entered (countdown → "الآن")
     var nextHasStarted: Bool
+    var previousPrayerKey: String? = nil
+    var previousPrayerNameAr: String? = nil
+    var previousPrayerEpochMs: Int64? = nil
+    var currentPrayerKey: String? = nil
+    var currentPrayerNameAr: String? = nil
+    var currentPrayerStartedAtEpochMs: Int64? = nil
+    var nextTransitionAtEpochMs: Int64? = nil
+    var calculationDate: String? = nil
+    var calculationMethodIdentifier: String? = nil
+    var permissionState: String? = nil
+    var initializationState: String? = nil
     var updatedAtEpochMs: Int64
 
     static let currentSchema = 1

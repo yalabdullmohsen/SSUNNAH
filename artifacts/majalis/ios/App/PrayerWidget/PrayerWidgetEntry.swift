@@ -170,10 +170,21 @@ struct PrayerWidgetEntry: TimelineEntry {
         }()
         let nextName = nextKey?.nameAr ?? snapshot?.nextPrayerNameAr
 
-        let current = obligatory.last(where: { $0.date <= date })
+        let current = obligatory.last(where: { $0.date <= date }) ?? {
+            guard let raw = snapshot?.currentPrayerKey?.lowercased(),
+                  let key = PrayerSlotKey(rawValue: raw),
+                  let ms = snapshot?.currentPrayerStartedAtEpochMs
+            else { return nil }
+            return PrayerTimelineSlot(key: key, date: Date(timeIntervalSince1970: TimeInterval(ms) / 1000))
+        }()
         let previous: PrayerTimelineSlot? = {
             if let override = previousOverride {
                 return PrayerTimelineSlot(key: override.key, date: override.date)
+            }
+            if let raw = snapshot?.previousPrayerKey?.lowercased(),
+               let key = PrayerSlotKey(rawValue: raw),
+               let ms = snapshot?.previousPrayerEpochMs {
+                return PrayerTimelineSlot(key: key, date: Date(timeIntervalSince1970: TimeInterval(ms) / 1000))
             }
             guard let cur = current else { return nil }
             return obligatory.last(where: { $0.date < cur.date }) ?? obligatory.last(where: { $0.key != cur.key && $0.date <= date })
