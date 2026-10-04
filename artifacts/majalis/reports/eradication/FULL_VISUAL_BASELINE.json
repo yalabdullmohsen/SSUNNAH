@@ -1,0 +1,50 @@
+{
+  "id": "FULL_VISUAL_BASELINE",
+  "program": "SUNNAH_FULL_APPLICATION_LAYER_ERADICATION_AND_SINGLE_VISUAL_AUTHORITY",
+  "measuredAt": "2026-10-04T01:53:42.000Z",
+  "scope": "artifacts/majalis/src",
+  "cssFileCount": 356,
+  "cssTotalBytes": 3872733,
+  "synchronousCssImports": 14,
+  "deferredCssImports": 54,
+  "selectorRuleBlocksApprox": 20735,
+  "hexCount": 6432,
+  "rgbHslCount": 2008,
+  "unsafeHexFallbackCount": 3333,
+  "importantCount": 4746,
+  "rawShadowCount": 986,
+  "rawRadiusPxCount": 392,
+  "rawZIndexCount": 258,
+  "tokenDeclarations": {
+    "sf": 150,
+    "ss": 109,
+    "mj": 193
+  },
+  "tokenUses": {
+    "sf": 773,
+    "ss": 524,
+    "mj": 10889
+  },
+  "inlineColorStyleMatches": 39,
+  "officialButtonImportFiles": 287,
+  "rawButtonFiles": 76,
+  "classificationCounts": {
+    "CANONICAL_AUTHORITY": 8,
+    "SHARED_PLATFORM": 166,
+    "SPECIAL_CASE": 36,
+    "ACTIVE_COMPATIBILITY": 7,
+    "IOS_ONLY": 3,
+    "ABSORB_NOW": 6,
+    "KEEP_TEMPORARILY": 130
+  },
+  "tokenAuthoritiesAllowed": [
+    "--sf-*",
+    "--ss-*",
+    "--mj-*"
+  ],
+  "forbidden": [
+    "new token family",
+    "ceiling raise",
+    "mass delete"
+  ]
+}

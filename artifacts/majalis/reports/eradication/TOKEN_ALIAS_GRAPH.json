@@ -1,0 +1,24 @@
+{
+  "foundation": "--sf-*",
+  "application": "--ss-*",
+  "bridgeLegacyControlled": "--mj-*",
+  "forbiddenNewFamilies": true,
+  "declarationCounts": {
+    "sf": 150,
+    "ss": 109,
+    "mj": 193
+  },
+  "useCounts": {
+    "sf": 773,
+    "ss": 524,
+    "mj": 10889
+  },
+  "canonicalFiles": [
+    "styles/sunnah-foundation-tokens.css",
+    "styles/sunnah-foundation-v2.css",
+    "styles/ssunnah-theme-api.css",
+    "app/styles/theme.css",
+    "styles/theme-aliases.css",
+    "styles/design-tokens.css"
+  ]
+}

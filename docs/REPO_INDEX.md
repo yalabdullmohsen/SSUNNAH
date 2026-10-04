@@ -6,6 +6,7 @@
 **هوية دائمة:** `docs/governance/SUNNAH_CANONICAL_PLATFORM_IDENTITY.md` — سُنّة = WEB + IOS + APP_STORE (منتجات منفصلة؛ بوابة `test:canonical-platform-identity`).  
 **تصنيف المهام (دائم):** `docs/governance/SUNNAH_PLATFORM_CLASSIFICATION_PROTOCOL.md` — كل تقرير يبدأ بـ `TASK_CLASSIFICATION:` (`WEB_ONLY|IOS_ONLY|APP_STORE_ONLY|SHARED_PLATFORM`).  
 **إنفاذ الفصل (دائم):** `docs/governance/SUNNAH_PLATFORM_ENFORCEMENT_PROTOCOL.md` · `PLATFORM_SEPARATION_GATE` → `test:platform-separation` — رأس التقرير: `TASK_CLASSIFICATION` + `RISK_SCOPE` + آثار WEB/IOS/APP_STORE منفصلة.  
+**Application Layer Eradication:** `docs/design/eradication/` · بوابة `test:application-layer-eradication` · خرائط `artifacts/majalis/reports/eradication/`.  
 منتج الويب/الكود المشترك: `artifacts/majalis` · iOS Capacitor: `artifacts/majalis/ios` · متجر: HOLD / owner-gated.  
 منصّة: `docs/platform/` · استدامة: `docs/sustainability/` · حوكمة/QUALITY_BASELINE_V1: `docs/governance/`.
 

@@ -70,6 +70,7 @@
   "protectionGates": [
     "test:canonical-platform-identity",
     "test:platform-separation",
+    "test:application-layer-eradication",
     "test:global-component-authority",
     "test:global-design-system-authority",
     "test:product-completeness-baseline",

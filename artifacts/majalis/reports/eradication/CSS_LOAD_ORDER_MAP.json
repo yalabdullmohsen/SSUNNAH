@@ -1,0 +1,352 @@
+{
+  "id": "CSS_LOAD_ORDER_MAP",
+  "synchronous": [
+    {
+      "order": 1,
+      "file": "styles/fonts-ui.css",
+      "phase": "sync-critical"
+    },
+    {
+      "order": 2,
+      "file": "app/styles/theme.css",
+      "phase": "sync-critical"
+    },
+    {
+      "order": 3,
+      "file": "styles/sunnah-foundation-tokens.css",
+      "phase": "sync-critical"
+    },
+    {
+      "order": 4,
+      "file": "styles/sunnah-foundation-v2.css",
+      "phase": "sync-critical"
+    },
+    {
+      "order": 5,
+      "file": "styles/ssunnah-theme-api.css",
+      "phase": "sync-critical"
+    },
+    {
+      "order": 6,
+      "file": "styles/brand-v4.css",
+      "phase": "sync-critical"
+    },
+    {
+      "order": 7,
+      "file": "styles/design-tokens.css",
+      "phase": "sync-critical"
+    },
+    {
+      "order": 8,
+      "file": "styles/breakpoints.css",
+      "phase": "sync-critical"
+    },
+    {
+      "order": 9,
+      "file": "styles/typography-scale.css",
+      "phase": "sync-critical"
+    },
+    {
+      "order": 10,
+      "file": "styles/typography-app.css",
+      "phase": "sync-critical"
+    },
+    {
+      "order": 11,
+      "file": "index.css",
+      "phase": "sync-critical"
+    },
+    {
+      "order": 12,
+      "file": "styles/theme-aliases.css",
+      "phase": "sync-critical"
+    },
+    {
+      "order": 13,
+      "file": "styles/semantic-layer-tokens.css",
+      "phase": "sync-critical"
+    },
+    {
+      "order": 14,
+      "file": "styles/interaction-states.css",
+      "phase": "sync-critical"
+    }
+  ],
+  "deferred": [
+    {
+      "order": 1,
+      "file": "styles/z-index-layers.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 2,
+      "file": "styles/motion-policy.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 3,
+      "file": "styles/visual-identity-unify.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 4,
+      "file": "styles/tokens.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 5,
+      "file": "styles/sunnah-identity-reset.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 6,
+      "file": "styles/visual-layer-contrast-fix.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 7,
+      "file": "styles/visual-redesign-v2-tokens.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 8,
+      "file": "styles/sections-calm-polish.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 9,
+      "file": "styles/ssunnah-ux-polish.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 10,
+      "file": "styles/components/modern-section-shell.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 11,
+      "file": "styles/section-cards-theme.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 12,
+      "file": "styles/sunnah-foundation-type.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 13,
+      "file": "styles/green-surface-system.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 14,
+      "file": "styles/ssunnah-semantic-tokens.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 15,
+      "file": "styles/ssunnah-card-unify.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 16,
+      "file": "styles/card-matte-unify.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 17,
+      "file": "styles/components/badge-system.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 18,
+      "file": "styles/modern-ui-refresh.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 19,
+      "file": "styles/ssunnah-ds-canonical.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 20,
+      "file": "styles/m2030/foundation.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 21,
+      "file": "styles/m2030/navigation.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 22,
+      "file": "styles/brand-v4-contrast-fixes.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 23,
+      "file": "styles/a11y-release-gate.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 24,
+      "file": "styles/visual-enrichment.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 25,
+      "file": "styles/sunnah-visual-language.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 26,
+      "file": "styles/sunnah-geometry-system.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 27,
+      "file": "styles/modern-ui-refresh.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 28,
+      "file": "styles/ssunnah-ds-canonical.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 29,
+      "file": "styles/design-system.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 30,
+      "file": "styles/brand-v4-components.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 31,
+      "file": "styles/final-release.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 32,
+      "file": "styles/card-decorative-strip-cleanup.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 33,
+      "file": "styles/modern-islamic-editorial-tokens.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 34,
+      "file": "styles/modern-islamic-editorial.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 35,
+      "file": "styles/card-system.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 36,
+      "file": "styles/card-system-v2.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 37,
+      "file": "styles/app-state-v2.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 38,
+      "file": "styles/islam-intro-experience.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 39,
+      "file": "styles/components/instant-interaction.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 40,
+      "file": "styles/sunnah-visual-language.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 41,
+      "file": "styles/sunnah-geometry-system.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 42,
+      "file": "styles/visual-refresh-v1.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 43,
+      "file": "styles/components/native-feel.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 44,
+      "file": "styles/m2030/interactions.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 45,
+      "file": "styles/index-deferred-pages.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 46,
+      "file": "styles/section-makarim-pattern.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 47,
+      "file": "styles/components/compact-sources.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 48,
+      "file": "styles/m2030/pages.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 49,
+      "file": "styles/components/content-reading-shell.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 50,
+      "file": "styles/reading-prose-system.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 51,
+      "file": "styles/components/reading-section-card.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 52,
+      "file": "styles/fonts-ui-bold.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 53,
+      "file": "styles/capacitor-native-ux.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 54,
+      "file": "styles/ios-edge.css",
+      "phase": "deferred-noncritical"
+    }
+  ],
+  "darkBoot": "ensure-dark-layers (ensureDarkLayersForBoot / ensureDarkCoreLayers)",
+  "iosNative": [
+    "styles/capacitor-native-ux.css",
+    "styles/ios-edge.css"
+  ]
+}
