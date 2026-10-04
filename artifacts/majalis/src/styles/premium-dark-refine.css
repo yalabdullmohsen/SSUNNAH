@@ -10,17 +10,17 @@
  */
 
 :is(html[data-theme="dark"], html.dark) {
-  /* ═══ Premium Islamic dark tokens — تطابق Dark System Contract ═══ */
-  --pd-bg-1: #0f1613;
-  --pd-bg-2: #1b2421;
+  /* ═══ Premium Islamic dark tokens — تطابق Dark System Contract (Wave 1B bridge) ═══ */
+  --pd-bg-1: var(--surface-app);
+  --pd-bg-2: var(--mj-surface);
   --pd-card: #24302b;
   --pd-elevated: #2b3933;
-  --pd-emerald: #4fb48b;
-  --pd-emerald-soft: #57b892;
-  --pd-gold: #c9a86c;
-  --pd-gold-soft: color-mix(in srgb, #c9a86c 16%, #1b2421);
-  --pd-ink: #ede8df;
-  --pd-ink-2: #d8d0c4;
+  --pd-emerald: var(--mj-brand);
+  --pd-emerald-soft: color-mix(in srgb, var(--pd-emerald) 88%, #fff);
+  --pd-gold: var(--mj-accent);
+  --pd-gold-soft: color-mix(in srgb, var(--pd-gold) 16%, var(--pd-bg-2));
+  --pd-ink: var(--mj-ink);
+  --pd-ink-2: var(--mj-ink-2);
   --pd-ink-muted: #b5ada0;
   /* --mj-brand-deep* absorbed → theme.css / theme-aliases (PR2) */
   /* حدود زمردية خفيفة — تدعم المحتوى بلا منافسة */
@@ -126,9 +126,9 @@
   --mss-shadow-card: var(--pd-elev-1);
   --mss-hero-glow: transparent;
   --mss-hero-glow-strong: transparent;
-  --mss-on-hero: var(--pd-ink, #ede8df);
-  --mss-on-hero-muted: var(--pd-ink-2, #d8d0c4);
-  --mss-on-hero-accent: var(--pd-emerald, #4fb48b);
+  --mss-on-hero: var(--pd-ink);
+  --mss-on-hero-muted: var(--pd-ink-2);
+  --mss-on-hero-accent: var(--pd-emerald);
   --ss-shadow-soft: var(--pd-elev-1);
   --elite-shadow-xs: var(--pd-elev-1);
   --elite-shadow-sm: var(--pd-elev-1);
@@ -231,7 +231,7 @@
 :is(html[data-theme="dark"], html.dark) .sh-hero--compact,
 :is(html[data-theme="dark"], html.dark) .sh-hero {
   background-image: none !important;
-  background-color: var(--surface-hero, #1a2822) !important;
+  background-color: var(--surface-hero) !important;
   box-shadow: none !important;
 }
 
@@ -247,7 +247,7 @@
 :is(html[data-theme="dark"], html.dark) .bottom-nav,
 :is(html[data-theme="dark"], html.dark) .bottom-nav--v2,
 :is(html[data-theme="dark"], html.dark) .bottom-nav--m2030 {
-  background-color: var(--dm-bottom-nav, #0c1210) !important;
+  background-color: var(--dm-bottom-nav) !important;
   background-image: none !important;
   border-top: 1px solid color-mix(in srgb, var(--pd-border-subtle) 55%, transparent) !important;
   box-shadow: 0 -1px 0 color-mix(in srgb, var(--pd-gold) 4%, transparent) !important;
@@ -264,7 +264,7 @@
 
 :is(html[data-theme="dark"], html.dark) .bottom-nav__tab:not(.is-active) {
   background: transparent !important;
-  color: var(--on-dark-secondary, var(--pd-ink-2, #d8d0c4)) !important;
+  color: var(--on-dark-secondary, var(--pd-ink-2)) !important;
 }
 
 :is(html[data-theme="dark"], html.dark) .bottom-nav__tab:not(.is-active) .bottom-nav__tab-label,
@@ -435,7 +435,7 @@
 :is(html[data-theme="dark"], html.dark) .search-field,
 :is(html[data-theme="dark"], html.dark) .mj-search-field,
 :is(html[data-theme="dark"], html.dark) input[type="search"] {
-  background: #141c19 !important;
+  background: var(--dm-bg-subtle) !important;
   border-color: color-mix(in srgb, var(--pd-border-subtle) 65%, transparent) !important;
   box-shadow: none !important;
 }
@@ -495,9 +495,9 @@
 html.pts-immersive:is([data-theme="dark"], .dark) .bottom-nav,
 html.pts-immersive:is([data-theme="dark"], .dark) .bottom-nav--v2,
 html.pts-immersive:is([data-theme="dark"], .dark) .bottom-nav--m2030 {
-  background: #0c1210 !important;
+  background: color-mix(in srgb, var(--pd-bg-1) 88%, #000) !important;
   background-image: none !important;
-  border-top-color: color-mix(in srgb, var(--pd-gold, #c9a86c) 10%, transparent) !important;
+  border-top-color: color-mix(in srgb, var(--pd-gold) 10%, transparent) !important;
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.35) !important;
 }
 
@@ -835,7 +835,7 @@ html.pts-immersive:is([data-theme="dark"], .dark) .app-main {
 html.pts-immersive:is([data-theme="dark"], .dark) :is(
   .bottom-nav, .bottom-nav--v2, .bottom-nav--m2030
 ) {
-  background-color: var(--dm-bottom-nav, #0c1210) !important;
+  background-color: var(--dm-bottom-nav) !important;
   background-image: none !important;
   border-top: 1px solid color-mix(in srgb, var(--pd-border-subtle) 55%, transparent) !important;
   box-shadow: 0 -1px 0 color-mix(in srgb, var(--pd-gold) 4%, transparent) !important;

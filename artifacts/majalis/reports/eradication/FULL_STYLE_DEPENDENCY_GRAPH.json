@@ -211,14 +211,6 @@
       "consumersApprox": 18
     },
     {
-      "file": "styles/premium-dark-refine.css",
-      "classification": "ABSORB_NOW",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 36446,
-      "hex": 53,
-      "consumersApprox": 39
-    },
-    {
       "file": "styles/interaction-states.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
@@ -361,6 +353,14 @@
       "bytes": 25608,
       "hex": 36,
       "consumersApprox": 51
+    },
+    {
+      "file": "styles/premium-dark-refine.css",
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 36546,
+      "hex": 36,
+      "consumersApprox": 39
     },
     {
       "file": "styles/pages/fiqh-hub.css",
@@ -1323,14 +1323,6 @@
       "consumersApprox": 10
     },
     {
-      "file": "styles/modern-ui-refresh.css",
-      "classification": "ABSORB_NOW",
-      "platform": "SHARED_PLATFORM",
-      "bytes": 22506,
-      "hex": 7,
-      "consumersApprox": 38
-    },
-    {
       "file": "styles/pages/adab-talab-ilm.css",
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM",
@@ -2129,6 +2121,14 @@
       "bytes": 3864,
       "hex": 1,
       "consumersApprox": 51
+    },
+    {
+      "file": "styles/modern-ui-refresh.css",
+      "classification": "ABSORB_NOW",
+      "platform": "SHARED_PLATFORM",
+      "bytes": 22256,
+      "hex": 1,
+      "consumersApprox": 38
     },
     {
       "file": "styles/pages/arbaeen-detail.css",

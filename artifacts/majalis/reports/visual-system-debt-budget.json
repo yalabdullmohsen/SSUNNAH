@@ -1,16 +1,16 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Ceilings must not rise. Wave 1A: hex/rgb lowered after unify+design-system hex-fallback absorb.",
+  "note": "Wave 1B: premium-dark-refine + modern-ui-refresh absorb; ceilings=measured.",
   "floors": {
     "officialButtonImportFiles": 287,
-    "sfTokenRefs": 1172,
-    "ssTokenRefs": 761
+    "sfTokenRefs": 1180,
+    "ssTokenRefs": 762
   },
   "ceilings": {
     "cssFiles": 356,
     "important": 4746,
-    "hexInCss": 5657,
+    "hexInCss": 5634,
     "rgbHslInCss": 2006,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
@@ -20,5 +20,5 @@
     "inlineColorStyleMatches": 39,
     "rawButtonFiles": 76
   },
-  "updatedAt": "2026-10-04T11:52:41.130Z"
+  "updatedAt": "2026-10-04T12:26:34.463Z"
 }
