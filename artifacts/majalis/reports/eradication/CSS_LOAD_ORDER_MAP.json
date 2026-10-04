@@ -215,131 +215,136 @@
     },
     {
       "order": 29,
-      "file": "styles/design-system.css",
+      "file": "styles/visual-enrichment.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 30,
-      "file": "styles/brand-v4-components.css",
+      "file": "styles/design-system.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 31,
-      "file": "styles/final-release.css",
+      "file": "styles/brand-v4-components.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 32,
-      "file": "styles/card-decorative-strip-cleanup.css",
+      "file": "styles/final-release.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 33,
-      "file": "styles/modern-islamic-editorial-tokens.css",
+      "file": "styles/card-decorative-strip-cleanup.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 34,
-      "file": "styles/modern-islamic-editorial.css",
+      "file": "styles/modern-islamic-editorial-tokens.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 35,
-      "file": "styles/card-system.css",
+      "file": "styles/modern-islamic-editorial.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 36,
-      "file": "styles/card-system-v2.css",
+      "file": "styles/card-system.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 37,
-      "file": "styles/app-state-v2.css",
+      "file": "styles/card-system-v2.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 38,
-      "file": "styles/islam-intro-experience.css",
+      "file": "styles/app-state-v2.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 39,
-      "file": "styles/components/instant-interaction.css",
+      "file": "styles/islam-intro-experience.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 40,
-      "file": "styles/sunnah-visual-language.css",
+      "file": "styles/components/instant-interaction.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 41,
-      "file": "styles/sunnah-geometry-system.css",
+      "file": "styles/sunnah-visual-language.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 42,
-      "file": "styles/visual-refresh-v1.css",
+      "file": "styles/sunnah-geometry-system.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 43,
-      "file": "styles/components/native-feel.css",
+      "file": "styles/visual-refresh-v1.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 44,
-      "file": "styles/m2030/interactions.css",
+      "file": "styles/components/native-feel.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 45,
-      "file": "styles/index-deferred-pages.css",
+      "file": "styles/m2030/interactions.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 46,
-      "file": "styles/section-makarim-pattern.css",
+      "file": "styles/index-deferred-pages.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 47,
-      "file": "styles/components/compact-sources.css",
+      "file": "styles/section-makarim-pattern.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 48,
-      "file": "styles/m2030/pages.css",
+      "file": "styles/components/compact-sources.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 49,
-      "file": "styles/components/content-reading-shell.css",
+      "file": "styles/m2030/pages.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 50,
-      "file": "styles/reading-prose-system.css",
+      "file": "styles/components/content-reading-shell.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 51,
-      "file": "styles/components/reading-section-card.css",
+      "file": "styles/reading-prose-system.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 52,
-      "file": "styles/fonts-ui-bold.css",
+      "file": "styles/components/reading-section-card.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 53,
-      "file": "styles/capacitor-native-ux.css",
+      "file": "styles/fonts-ui-bold.css",
       "phase": "deferred-noncritical"
     },
     {
       "order": 54,
+      "file": "styles/capacitor-native-ux.css",
+      "phase": "deferred-noncritical"
+    },
+    {
+      "order": 55,
       "file": "styles/ios-edge.css",
       "phase": "deferred-noncritical"
     }

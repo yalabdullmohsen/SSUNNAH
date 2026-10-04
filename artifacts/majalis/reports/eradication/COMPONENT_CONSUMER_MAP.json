@@ -128,7 +128,7 @@
       "platform": "SHARED_PLATFORM"
     },
     "styles/card-system-v2.css": {
-      "referenceHitsApprox": 23,
+      "referenceHitsApprox": 26,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
@@ -653,7 +653,7 @@
       "platform": "SHARED_PLATFORM"
     },
     "styles/dark-mode-recovery.css": {
-      "referenceHitsApprox": 43,
+      "referenceHitsApprox": 44,
       "classification": "ACTIVE_COMPATIBILITY",
       "platform": "SHARED_PLATFORM"
     },
@@ -683,7 +683,7 @@
       "platform": "SHARED_PLATFORM"
     },
     "styles/fonts-quran.css": {
-      "referenceHitsApprox": 27,
+      "referenceHitsApprox": 30,
       "classification": "SPECIAL_CASE",
       "platform": "SHARED_PLATFORM"
     },
@@ -693,7 +693,7 @@
       "platform": "SHARED_PLATFORM"
     },
     "styles/fonts-ui.css": {
-      "referenceHitsApprox": 36,
+      "referenceHitsApprox": 40,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
@@ -778,12 +778,12 @@
       "platform": "SHARED_PLATFORM"
     },
     "styles/modern-islamic-editorial.css": {
-      "referenceHitsApprox": 18,
+      "referenceHitsApprox": 21,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
     "styles/modern-ui-refresh.css": {
-      "referenceHitsApprox": 35,
+      "referenceHitsApprox": 38,
       "classification": "ABSORB_NOW",
       "platform": "SHARED_PLATFORM"
     },
@@ -1293,7 +1293,7 @@
       "platform": "SHARED_PLATFORM"
     },
     "styles/pages/reading-plans.css": {
-      "referenceHitsApprox": 9,
+      "referenceHitsApprox": 12,
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM"
     },
@@ -1693,7 +1693,7 @@
       "platform": "SHARED_PLATFORM"
     },
     "styles/sunnah-identity-forms-filters.css": {
-      "referenceHitsApprox": 35,
+      "referenceHitsApprox": 38,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },
@@ -1748,7 +1748,7 @@
       "platform": "SHARED_PLATFORM"
     },
     "styles/visual-enrichment.css": {
-      "referenceHitsApprox": 5,
+      "referenceHitsApprox": 15,
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM"
     },

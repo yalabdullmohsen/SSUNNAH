@@ -45,6 +45,7 @@
     "styles/sunnah-geometry-system.css",
     "styles/modern-ui-refresh.css",
     "styles/ssunnah-ds-canonical.css",
+    "styles/visual-enrichment.css",
     "styles/design-system.css",
     "styles/brand-v4-components.css",
     "styles/final-release.css",
@@ -119,7 +120,7 @@
       "platform": "SHARED_PLATFORM",
       "bytes": 28788,
       "hex": 126,
-      "consumersApprox": 43
+      "consumersApprox": 44
     },
     {
       "file": "styles/design-tokens.css",
@@ -1335,7 +1336,7 @@
       "platform": "SHARED_PLATFORM",
       "bytes": 22506,
       "hex": 7,
-      "consumersApprox": 35
+      "consumersApprox": 38
     },
     {
       "file": "styles/pages/adab-talab-ilm.css",
@@ -1607,7 +1608,7 @@
       "platform": "SHARED_PLATFORM",
       "bytes": 11546,
       "hex": 5,
-      "consumersApprox": 5
+      "consumersApprox": 15
     },
     {
       "file": "styles/components/adhan-notification.css",
@@ -1685,9 +1686,9 @@
       "file": "styles/pages/reading-plans.css",
       "classification": "KEEP_TEMPORARILY",
       "platform": "SHARED_PLATFORM",
-      "bytes": 6207,
+      "bytes": 6203,
       "hex": 4,
-      "consumersApprox": 9
+      "consumersApprox": 12
     },
     {
       "file": "styles/components/chunk-recovery-toast.css",
@@ -1757,7 +1758,7 @@
       "file": "styles/critical-first-paint.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
-      "bytes": 7934,
+      "bytes": 7960,
       "hex": 3,
       "consumersApprox": 51
     },
@@ -2055,7 +2056,7 @@
       "platform": "SHARED_PLATFORM",
       "bytes": 4433,
       "hex": 1,
-      "consumersApprox": 23
+      "consumersApprox": 26
     },
     {
       "file": "styles/components/bulk-download-card.css",
@@ -2487,7 +2488,7 @@
       "platform": "SHARED_PLATFORM",
       "bytes": 1617,
       "hex": 0,
-      "consumersApprox": 27
+      "consumersApprox": 30
     },
     {
       "file": "styles/fonts-ui-bold.css",
@@ -2503,7 +2504,7 @@
       "platform": "SHARED_PLATFORM",
       "bytes": 4057,
       "hex": 0,
-      "consumersApprox": 36
+      "consumersApprox": 40
     },
     {
       "file": "styles/ios-edge.css",
@@ -2527,7 +2528,7 @@
       "platform": "SHARED_PLATFORM",
       "bytes": 6681,
       "hex": 0,
-      "consumersApprox": 18
+      "consumersApprox": 21
     },
     {
       "file": "styles/motion-policy.css",
@@ -2869,9 +2870,9 @@
       "file": "styles/sunnah-identity-forms-filters.css",
       "classification": "SHARED_PLATFORM",
       "platform": "SHARED_PLATFORM",
-      "bytes": 7229,
+      "bytes": 7793,
       "hex": 0,
-      "consumersApprox": 35
+      "consumersApprox": 38
     },
     {
       "file": "styles/sunnah-identity-reset.css",

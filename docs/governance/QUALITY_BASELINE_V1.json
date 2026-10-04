@@ -1,8 +1,8 @@
 {
   "id": "QUALITY_BASELINE_V1",
   "program": "SUNNAH_CONTINUOUS_GOVERNANCE_AND_REGRESSION_PREVENTION_PROGRAM",
-  "capturedAt": "2026-10-04T00:34:56Z",
-  "baseTip": "bd55ba9e6066176aab82c573dfc0e1e455516d85",
+  "capturedAt": "2026-10-04T11:25:00Z",
+  "baseTip": "2631005dec759d02a6d9cf303c750e81fb95e8a2",
   "githubSoT": "yalabdullmohsen/SSUNNAH",
   "policy": "no-ceiling-raise",
   "unknownGovernanceDebt": 0,
@@ -12,7 +12,7 @@
     "visualCeilings": {
       "cssFiles": 356,
       "important": 4746,
-      "hexInCss": 5899,
+      "hexInCss": 5763,
       "rgbHslInCss": 2008,
       "mjDeclarations": 193,
       "mjDeclOutsideAllowlist": 0,
@@ -37,7 +37,7 @@
       "formButtonsMissingType": 0,
       "floatingControlFileMentions": 10,
       "buttonRelatedImportantApprox": 1145,
-      "buttonRelatedHexApprox": 1167
+      "buttonRelatedHexApprox": 1006
     },
     "interactionFloors": {
       "officialButtonImportFiles": 287,
