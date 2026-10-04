@@ -956,83 +956,67 @@ html[data-theme="dark"] .ds-stat span {
   font-variant-numeric: tabular-nums;
 }
 
-/* ── تخصيص الصفحة الرئيسية (hcz-*) ───────────────────────────────── */
-.hcz-hint { font-size: 0.82rem; color: var(--majalis-ink-soft); margin: 0 0 1rem; line-height: 1.6; }
-.hcz-list { display: flex; flex-direction: column; gap: 0.4rem; }
-.hcz-row {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 0.55rem 0.7rem;
-  border: 1px solid var(--ds-line-color);
-  border-radius: var(--ds-radius, 0.6rem);
-  background: #fff;
-}
-.hcz-row--hidden { opacity: 0.5; }
-.hcz-row__visibility {
-  width: 30px;
-  height: 30px;
-  min-height: 30px;
-  border-radius: var(--radius-pill, 999rem);
-  border: 1.5px solid var(--ds-line-color);
-  background: #fff;
-  color: var(--ds-emerald);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-.hcz-row__label { flex: 1; font-size: 0.88rem; font-weight: 600; color: var(--majalis-ink); }
-.hcz-row__move { display: flex; gap: 0.3rem; flex-shrink: 0; }
-.hcz-row__move button {
-  width: 28px;
-  height: 28px;
-  min-height: 28px;
-  border-radius: 0.5rem;
-  border: 1.5px solid var(--ds-line-color);
-  background: #fff;
-  color: var(--majalis-ink-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.hcz-row__move button:disabled { opacity: 0.3; cursor: not-allowed; }
-.hcz-row__move button:not(:disabled):hover { border-color: var(--ds-emerald); color: var(--ds-emerald); }
-.hcz-reset {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  justify-content: center;
-  width: 100%;
-  margin-top: 1rem;
-  padding: 0.65rem;
-  background: none;
-  border: 1px dashed var(--ds-line-color);
-  border-radius: var(--ds-radius, 0.6rem);
-  color: var(--majalis-ink-soft);
-  font-size: 0.82rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-.hcz-reset:hover { border-color: var(--ds-emerald); color: var(--ds-emerald); }
+/**
+ * DS feature authority — admin-*.
+ * Extracted by exact line partition from design-system.css. Do not restyle.
+ * Original lines: 423-427, 990-1000, 1329-1367.
+ */
 
-.hpv4-customize-trigger {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin: 0.75rem 0 0;
-  padding: 0.4rem 0.85rem;
-  background: none;
-  border: 1px solid var(--ds-line-color);
-  border-radius: var(--radius-pill, 999rem);
-  color: var(--majalis-ink-soft);
-  font-size: 0.78rem;
-  font-weight: 600;
-  cursor: pointer;
+
+/* ── Admin ── */
+.admin-feature-status__head {
+  padding: var(--ds-space-3);
 }
-.hpv4-customize-trigger:hover { border-color: var(--ds-emerald); color: var(--ds-emerald); }
+
+/* Admin compact */
+.admin-shell {
+  font-size: var(--ds-text-sm);
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 0.4rem 0.625rem !important;
+  font-size: var(--ds-text-xs) !important;
+}
+
+/* Admin bootstrap status flags */
+.admin-bootstrap-flag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.625rem;
+  border: 1px solid var(--ds-line-color);
+  border-radius: var(--ds-radius);
+  font-size: var(--ds-text-xs);
+  background: var(--majalis-panel);
+}
+
+.admin-bootstrap-flag--ok {
+  border-color: var(--ds-emerald-muted);
+  background: var(--ds-emerald-soft);
+}
+
+.admin-feature-status__bootstrap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  gap: var(--ds-space-2);
+  margin: var(--ds-space-3) 0;
+}
+
+.admin-bootstrap-owner-actions {
+  margin-top: var(--ds-space-3);
+  padding: var(--ds-space-3);
+  border-radius: var(--ds-radius);
+  background: #fff8e6;
+  border: 1px solid #e8d5a0;
+  font-size: var(--ds-text-sm);
+}
+
+.admin-bootstrap-owner-actions ul {
+  margin: 0.5rem 0 0;
+  padding-inline-start: 1.25rem;
+}
 
 /**
  * DS feature authority — login-oauth* and login-card. Generic .login-submit remains in buttons.css (KEEP_COMPATIBILITY).
@@ -1114,68 +1098,6 @@ html[data-theme="dark"] .ds-stat span {
 .login-oauth__btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-/**
- * DS feature authority — admin-*.
- * Extracted by exact line partition from design-system.css. Do not restyle.
- * Original lines: 423-427, 990-1000, 1329-1367.
- */
-
-
-/* ── Admin ── */
-.admin-feature-status__head {
-  padding: var(--ds-space-3);
-}
-
-/* Admin compact */
-.admin-shell {
-  font-size: var(--ds-text-sm);
-}
-
-.admin-table th,
-.admin-table td {
-  padding: 0.4rem 0.625rem !important;
-  font-size: var(--ds-text-xs) !important;
-}
-
-/* Admin bootstrap status flags */
-.admin-bootstrap-flag {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.625rem;
-  border: 1px solid var(--ds-line-color);
-  border-radius: var(--ds-radius);
-  font-size: var(--ds-text-xs);
-  background: var(--majalis-panel);
-}
-
-.admin-bootstrap-flag--ok {
-  border-color: var(--ds-emerald-muted);
-  background: var(--ds-emerald-soft);
-}
-
-.admin-feature-status__bootstrap-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
-  gap: var(--ds-space-2);
-  margin: var(--ds-space-3) 0;
-}
-
-.admin-bootstrap-owner-actions {
-  margin-top: var(--ds-space-3);
-  padding: var(--ds-space-3);
-  border-radius: var(--ds-radius);
-  background: #fff8e6;
-  border: 1px solid #e8d5a0;
-  font-size: var(--ds-text-sm);
-}
-
-.admin-bootstrap-owner-actions ul {
-  margin: 0.5rem 0 0;
-  padding-inline-start: 1.25rem;
 }
 
 /**
@@ -3293,3 +3215,82 @@ select:focus-visible {
   transform: rotate(45deg);
   flex-shrink: 0;
 }
+
+/* ── تخصيص الصفحة الرئيسية (hcz-*) ───────────────────────────────── */
+.hcz-hint { font-size: 0.82rem; color: var(--majalis-ink-soft); margin: 0 0 1rem; line-height: 1.6; }
+.hcz-list { display: flex; flex-direction: column; gap: 0.4rem; }
+.hcz-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--ds-line-color);
+  border-radius: var(--ds-radius, 0.6rem);
+  background: #fff;
+}
+.hcz-row--hidden { opacity: 0.5; }
+.hcz-row__visibility {
+  width: 30px;
+  height: 30px;
+  min-height: 30px;
+  border-radius: var(--radius-pill, 999rem);
+  border: 1.5px solid var(--ds-line-color);
+  background: #fff;
+  color: var(--ds-emerald);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.hcz-row__label { flex: 1; font-size: 0.88rem; font-weight: 600; color: var(--majalis-ink); }
+.hcz-row__move { display: flex; gap: 0.3rem; flex-shrink: 0; }
+.hcz-row__move button {
+  width: 28px;
+  height: 28px;
+  min-height: 28px;
+  border-radius: 0.5rem;
+  border: 1.5px solid var(--ds-line-color);
+  background: #fff;
+  color: var(--majalis-ink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.hcz-row__move button:disabled { opacity: 0.3; cursor: not-allowed; }
+.hcz-row__move button:not(:disabled):hover { border-color: var(--ds-emerald); color: var(--ds-emerald); }
+.hcz-reset {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.65rem;
+  background: none;
+  border: 1px dashed var(--ds-line-color);
+  border-radius: var(--ds-radius, 0.6rem);
+  color: var(--majalis-ink-soft);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.hcz-reset:hover { border-color: var(--ds-emerald); color: var(--ds-emerald); }
+
+.hpv4-customize-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.75rem 0 0;
+  padding: 0.4rem 0.85rem;
+  background: none;
+  border: 1px solid var(--ds-line-color);
+  border-radius: var(--radius-pill, 999rem);
+  color: var(--majalis-ink-soft);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.hpv4-customize-trigger:hover { border-color: var(--ds-emerald); color: var(--ds-emerald); }
+
