@@ -2,11 +2,11 @@
   "month": "2026-10",
   "items": [
     {
-      "id": "b013eadf643a242482036cba90616722aad46341",
+      "id": "6adba4ffde8136918587cb22cc5d3c5700d469c6",
       "type": "محاضرة",
-      "title_ar": "خطبة الوقاية من البلاد فضيلة الشيخ يوسف الغريب رابط الخطبة قناة موقع دروس الكويت",
-      "summary_ar": "خطبه - الوقايه من البلاد فضيله الشيخ يوسف الغريب رابط الخطبه https://drosq8.com/play/24915 قناه موقع دروس الكويت https://t.me/DrosQ8",
-      "sheikh": "يوسف الغريب 🔊 رابط الخطبة 👇 https://drosq8",
+      "title_ar": "خطبة تأثير وسائل التواصل الاجتماعي على أبنائنا فضيلة الشيخ حسين بن مبارك المويز…",
+      "summary_ar": "خطبه - تاثير وسائل التواصل الاجتماعي علي ابنائنا فضيله الشيخ حسين بن مبارك المويزري @H_Almuwizri رابط الخطبه https://drosq8.com/play/24921 قناه موقع دروس الكوي…",
+      "sheikh": "حسين بن مبارك المويزري @H_Almuwizri 🔊 رابط الخطبة 👇 https:",
       "place": null,
       "audience": "عام",
       "starts_at": null,
@@ -20,16 +20,16 @@
           "id": "telegram-DrosQ8",
           "name_ar": "دروس الكويت",
           "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28121",
+          "post_url": "https://t.me/DrosQ8/28122",
           "platform": "telegram"
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-03T18:47:48.685Z",
+      "published_at": "2026-10-04T09:36:45.723Z",
       "confidence": 0.8
     },
     {
-      "id": "fa6a21306ff9587feb5fc01bdcc78e763f4ea59f",
+      "id": "f3190b618d9acabc7aefa29a26f582c1a8f4f0d6",
       "type": "درس",
       "title_ar": "ندعوكم اليوم لحضور درس علمي شرح منظومة منهج الحق لابن سعدي للشيخ حسين المويزري …",
       "summary_ar": "ندعوكم اليوم لحضور درس علمي: شرح منظومه ‌&rlm;« منهج الحق » لابن سعدي للشيخ حسين المويزري @H_Almuwizri ⌚ كل يوم السبت (بعد صلاه العصر) مسجد سعد بن دبيس-الفردوس…",
@@ -52,11 +52,11 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-03T18:47:48.685Z",
+      "published_at": "2026-10-04T09:36:45.723Z",
       "confidence": 0.8
     },
     {
-      "id": "041587ea21faa53f053e3aa212efb563dc5574db",
+      "id": "58f4d2d9119b001fdd3ee98d8eb872a5e24c90cd",
       "type": "درس",
       "title_ar": "ندعوكم الليلة لحضور درس علمي شرح نظم الآجرمية للقلاوي للشيخ حسين المويزري كل سب…",
       "summary_ar": "ندعوكم الليله لحضور درس علمي: شرح نظم الاجرميه للقلاوي للشيخ حسين المويزري @H_Almuwizri ⌚ كل سبت بعد صلاه المغرب مسجد سعد بن دبيس-الفردوس https://maps.app.goo.…",
@@ -79,11 +79,11 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-03T18:47:48.685Z",
+      "published_at": "2026-10-04T09:36:45.723Z",
       "confidence": 0.8
     },
     {
-      "id": "9bf1e4dd5363da148fd2c8fb71082c779b877165",
+      "id": "5724f5a4b3fddd227a378ed7dabe7e37d36e67bc",
       "type": "درس",
       "title_ar": "ندعوكم الليلة لحضور الدرس الأسبوعي شرح أخصر المختصرات للشيخ سالم بن عبدالله الم…",
       "summary_ar": "ندعوكم الليله لحضور الدرس الاسبوعي: (شرح اخصر المختصرات ) للشيخ سالم بن عبدالله المرتجي كل سبت واحد (بعد صلاه المغرب) مسجد يعلي بن مره الثقفي - غرب عبدالله الم…",
@@ -106,11 +106,11 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-03T18:47:48.685Z",
+      "published_at": "2026-10-04T09:36:45.723Z",
       "confidence": 0.8
     },
     {
-      "id": "12c6536dae5c398b797188bed91662679f98b7ab",
+      "id": "1957d7b381fdbeb3576d8d2507a6b5227ff84d35",
       "type": "تنبيه",
       "title_ar": "ندعوكم الليلة للعشاء على شرف فضيلة الشيخ بدر بن علي العتيبي اليوم السبت ٢٠٢٦ ١٠…",
       "summary_ar": "ندعوكم الليله للعشاء علي شرف فضيله الشيخ بدر بن علي العتيبي اليوم السبت ٢٠٢٦/١٠/٣ ⏰ بعد صلاه العشاء ديوانيه شباب صباح الاحمد https://goo.gl/maps/ajTDgVauqvwEyX…",
@@ -133,11 +133,11 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-03T18:47:48.685Z",
+      "published_at": "2026-10-04T09:36:45.723Z",
       "confidence": 0.8
     },
     {
-      "id": "600442e3ac0ca8844c440e450f473bb0b472bea6",
+      "id": "155bde056aee9ad75b13e0423e28f5226227065b",
       "type": "درس",
       "title_ar": "👇 جدول دروس اليوم السبت 👇",
       "summary_ar": "جدول دروس اليوم السبت",
@@ -160,8 +160,35 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-03T18:47:48.685Z",
+      "published_at": "2026-10-04T09:36:45.723Z",
       "confidence": 0.65
+    },
+    {
+      "id": "b94e09ba4181fadd390beec0f55789ad953167e6",
+      "type": "درس",
+      "title_ar": "صحيح مسلم",
+      "summary_ar": "صحيح مسلم درس اسبوعي — يوم السبت رقم المجلس: 36 وصلنا الي: صفحه 708 - كتاب الهبات - الحديث رقم 1620 الوقت: 10:00 صباحا المكان: مسجد الياقوت - منطقه الصديق المو…",
+      "sheikh": "عثمان الخميس",
+      "place": "الياقوت - منطقة الصديق",
+      "audience": "عام",
+      "starts_at": "2026-10-10T00:00:00.000Z",
+      "time_text": "10:00 ص",
+      "register_url": null,
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "web-othmanalkhamees_schedule",
+          "name_ar": "جدول دروس الشيخ عثمان الخميس",
+          "url": "https://www.othmanalkhamees.com/schedule",
+          "post_url": "https://www.othmanalkhamees.com/schedule",
+          "platform": "web"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-04T09:28:54.593Z",
+      "confidence": 0.95
     },
     {
       "id": "db442257635d9d189e529ff2c376c4cdb1579bef",
