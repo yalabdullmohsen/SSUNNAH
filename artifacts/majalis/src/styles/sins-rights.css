@@ -614,7 +614,6 @@ html[data-theme="dark"] .snr-muhasaba-cat-title { color: var(--mj-hairline) !imp
 }
 
 .snr-muhasaba-status-btn:hover { border-color: var(--mj-brand-deep); }
-.snr-muhasaba-status-btn--not-started { }
 .snr-muhasaba-status-btn--in-progress.snr-muhasaba-status-btn--active {
   background: rgba(122,58,26,0.1);
   color: #7a3a1a;

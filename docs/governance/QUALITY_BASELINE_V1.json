@@ -10,15 +10,15 @@
     "localHeroClassCeiling": 95,
     "visualDebtPolicy": "decreasing-ceilings",
     "visualCeilings": {
-      "cssFiles": 356,
-      "important": 4746,
-      "hexInCss": 5616,
-      "rgbHslInCss": 2006,
+      "cssFiles": 353,
+      "important": 4724,
+      "hexInCss": 5593,
+      "rgbHslInCss": 1976,
       "mjDeclarations": 193,
       "mjDeclOutsideAllowlist": 0,
-      "boxShadowDecls": 986,
-      "zIndexRawDecls": 256,
-      "borderRadiusPxDecls": 392,
+      "boxShadowDecls": 982,
+      "zIndexRawDecls": 255,
+      "borderRadiusPxDecls": 391,
       "inlineColorStyleMatches": 39,
       "rawButtonFiles": 73
     },
@@ -79,7 +79,8 @@
     "test:release-and-long-term-sustainability",
     "test:debt-zero-unification",
     "test:a11y-contrast-100",
-    "test:continuous-governance-regression"
+    "test:continuous-governance-regression",
+    "test:design-authority-closure"
   ],
   "success": [
     "DESIGN_REGRESSION_PREVENTED",
@@ -87,6 +88,12 @@
     "MUSHAF_REGRESSION_PREVENTED",
     "ROUTE_REGRESSION_PREVENTED",
     "DEBT_GROWTH_PREVENTED",
-    "PROJECT_HEALTH_VISIBLE"
+    "PROJECT_HEALTH_VISIBLE",
+    "DESIGN_AUTHORITY_REGRESSION_PREVENTED",
+    "SELECTOR_DUPLICATION_REGRESSION_PREVENTED",
+    "TOKEN_DRIFT_PREVENTED",
+    "COMPATIBILITY_GROWTH_PREVENTED",
+    "DEAD_CSS_GROWTH_PREVENTED",
+    "NO_PARALLEL_GOVERNANCE_ENGINE"
   ]
 }

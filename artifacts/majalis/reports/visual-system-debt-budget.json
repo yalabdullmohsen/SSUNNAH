@@ -1,7 +1,7 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "PR E dead CSS; ceilings lowered to measured (cssFiles 353).",
+  "note": "PR F governance; cssFiles 353; important held 4724.",
   "floors": {
     "officialButtonImportFiles": 288,
     "sfTokenRefs": 1220,

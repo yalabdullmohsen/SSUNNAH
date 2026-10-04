@@ -8,7 +8,6 @@
 .fm-joined__icon  { font-size: 3rem; }
 .fm-btn--back     { margin-top: 1.5rem; }
 
-
 /* ── الوضع العائلي ───────────────────────────────────────────────── */
 .fm-page { padding-bottom: 4rem; }
 
@@ -101,8 +100,6 @@
 .fm-child-card__info { flex: 1; }
 .fm-child-card__name { font-size: 0.95rem; font-weight: 700; color: var(--majalis-ink); display: block; margin-bottom: 0.3rem; }
 .fm-child-card__stats { display: flex; gap: 0.75rem; font-size: 0.8rem; color: var(--majalis-ink-soft); flex-wrap: wrap; }
-
-.fm-child { }
 .fm-child__hint { font-size: 0.9rem; color: var(--majalis-ink-soft); margin-bottom: 1rem; }
 .fm-child__form { display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.75rem; }
 .fm-code-input {

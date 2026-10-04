@@ -40,6 +40,14 @@ const REQUIRED = [
   "docs/design/PERFORMANCE_EXCELLENCE_PROGRAM.md",
   "artifacts/majalis/scripts/database-excellence-engine.mjs",
   "docs/design/DATABASE_EXCELLENCE_PROGRAM.md",
+  "docs/audit/DESIGN_AUTHORITY_COVERAGE.md",
+  "docs/audit/SELECTOR_OWNER_MAP.md",
+  "docs/audit/TOKEN_MIGRATION_STATUS.md",
+  "docs/audit/COMPATIBILITY_RETIREMENT_STATUS.md",
+  "docs/audit/DEAD_CSS_EVIDENCE.md",
+  "docs/audit/CSS_IMPORT_GRAPH.md",
+  "artifacts/majalis/scripts/design-authority-closure-report.mjs",
+  "artifacts/majalis/reports/design-token-prefix-allowlist.json",
 ];
 
 const missing = REQUIRED.filter((rel) => !existsSync(resolve(ROOT, rel)));
