@@ -10,7 +10,7 @@ TASK_CLASSIFICATION: SHARED_PLATFORM
 
 | Family | Refs (approx) | Status |
 |---|---:|---|
-| `--ds-*` | 3314 | SEMANTIC_BRIDGE_REQUIRED (startup/DS) |
+| `--ds-*` | 3263 | SEMANTIC_BRIDGE_REQUIRED (startup/DS) |
 | `--elite-*` | 1 | KEEP_COMPATIBILITY_WITH_EVIDENCE |
 | `--em-*` | 20 | SEMANTIC_BRIDGE |
 | `--msk-*` | 542 | KEEP_COMPATIBILITY_WITH_EVIDENCE |
