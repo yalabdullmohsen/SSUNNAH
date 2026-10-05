@@ -1,3 +1,5 @@
+import { AdminSectionHeader } from "@/components/admin/AdminLayout";
+
 type Props = {
   title: string;
   count?: number;
@@ -9,6 +11,7 @@ type Props = {
   filters?: React.ReactNode;
 };
 
+/** واجهة توافق — الرأس والأدوات من سلطة التخطيط AdminSectionHeader. */
 export function AdminSectionToolbar({
   title,
   count,
@@ -19,30 +22,20 @@ export function AdminSectionToolbar({
   actions,
   filters,
 }: Props) {
-  return (
-    <div className="ast-wrap">
-      <div className={`ast-header${filters || onSearchChange ? " ast-header--padded" : ""}`}>
-        <h2 className="ast-title">
-          {title}
-          {count !== undefined && ` (${count})`}
-          {badge}
-        </h2>
-        {actions && <div className="ast-actions">{actions}</div>}
-      </div>
-      {(onSearchChange || filters) && (
-        <div className="ast-toolbar">
-          {onSearchChange && (
-            <input
-              value={search ?? ""}
-              onChange={(e) => onSearchChange(e.target.value)}
-              placeholder={searchPlaceholder}
-              className="adm-input ast-search"
-              aria-label="بحث"
-            />
-          )}
-          {filters}
-        </div>
-      )}
-    </div>
-  );
+  const toolbar =
+    onSearchChange || filters ? (
+      <>
+        {onSearchChange && (
+          <input
+            value={search ?? ""}
+            onChange={(e) => onSearchChange(e.target.value)}
+            placeholder={searchPlaceholder}
+            className="adm-input ast-search"
+            aria-label="بحث"
+          />
+        )}
+        {filters}
+      </>
+    ) : undefined;
+  return <AdminSectionHeader title={title} count={count} badge={badge} actions={actions} toolbar={toolbar} />;
 }

@@ -10,6 +10,7 @@ import {
 import { StatusCard } from "@/components/design-system/SurfacePrimitives";
 import { ErrorStateV2 } from "@/components/design-system";
 import { AdminV3Empty, AdminV3ErrorState, AdminV3Loading } from "../states";
+import { resolveAdminStatus } from "@/lib/admin-status";
 
 export function AdminPageHeader({
   title,
@@ -72,16 +73,11 @@ export function AdminStatusBadge({
 }: {
   status: string | null | undefined;
 }) {
-  const s = (status || "unknown").toLowerCase();
-  const tone =
-    s.includes("approved") || s.includes("publish")
-      ? "ok"
-      : s.includes("pending") || s.includes("draft")
-        ? "warn"
-        : s.includes("reject") || s.includes("archiv")
-          ? "danger"
-          : "muted";
-  return <span className={`av3-status av3-status--${tone}`}>{status || "—"}</span>;
+  // سلطة الحالة الموحّدة — نفس نبرات/تسميات اللوحة القديمة
+  const { tone, label } = resolveAdminStatus(status);
+  const cls =
+    tone === "success" || tone === "info" ? "ok" : tone === "warning" ? "warn" : tone === "danger" ? "danger" : "muted";
+  return <span className={`av3-status av3-status--${cls}`}>{label}</span>;
 }
 
 export function AdminFilterBar({
