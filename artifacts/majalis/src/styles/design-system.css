@@ -41,7 +41,6 @@
   transform: translateY(-1px);
 }
 
-
 /* Cards grid — compact */
 .page-card-grid,
 .page-card-grid--compact,
@@ -203,7 +202,6 @@
   font-size: var(--ds-text-xs);
 }
 
-
 /* Danger button variant — wins via :not() exclusion from later primary polish (no !important). */
 .ui-card-btn--danger {
   color: #dc2626;
@@ -248,7 +246,6 @@
  * Extracted by exact line partition from design-system.css. Do not restyle.
  * Original lines: 524-554, 657-707, 1089-1101.
  */
-
 
 /* Chips / filters */
 .page-chip-row,
@@ -360,7 +357,6 @@
  * Original lines: 482-501, 1210-1258.
  */
 
-
 /* Stats row — compact */
 .page-stats-row,
 .ruling-stats-bar {
@@ -436,7 +432,6 @@ html[data-theme="dark"] .ds-stat span {
  * Original lines: 1011-1039.
  */
 
-
 /* Pagination */
 .ruling-pagination {
   display: flex;
@@ -472,7 +467,6 @@ html[data-theme="dark"] .ds-stat span {
  * Original lines: 319-326.
  */
 
-
 /* ── Empty / loading ── */
 .ds-empty {
   text-align: center;
@@ -486,7 +480,6 @@ html[data-theme="dark"] .ds-stat span {
  * Extracted by exact line partition from design-system.css. Do not restyle.
  * Original lines: 502-523.
  */
-
 
 /* Search inputs */
 .page-search-input,
@@ -520,7 +513,6 @@ html[data-theme="dark"] .ds-stat span {
  * Extracted by exact line partition from design-system.css. Do not restyle.
  * Original lines: 363-374, 433-437, 1422-1836, 2989-3066.
  */
-
 
 @media (min-width: 640px) {
   .home-quick-grid {
@@ -1038,7 +1030,6 @@ html[data-theme="dark"] .ds-stat span {
  * Original lines: 402-422, 1368-1421.
  */
 
-
 /* ── Login ── */
 /* .login-card / title sole owner: styles/pages/auth.css (PR D). Keep OAuth here. */
 
@@ -1107,7 +1098,6 @@ html[data-theme="dark"] .ds-stat span {
  * Original lines: 423-427, 990-1000, 1329-1367.
  */
 
-
 /* ── ADMIN_FEATURE_AUTHORITY ── */
 .admin-feature-status__head {
   padding: var(--ds-space-3);
@@ -1168,7 +1158,6 @@ html[data-theme="dark"] .ds-stat span {
  * Extracted by exact line partition from design-system.css. Do not restyle.
  * Original lines: 438-448, 822-934, 1283-1301.
  */
-
 
 /* ── Search results ── */
 .search-results-group h2 {
@@ -1231,7 +1220,6 @@ html[data-theme="dark"] .ds-stat span {
  * Extracted by exact line partition from design-system.css. Do not restyle.
  * Original lines: 1837-2101, 2158-2162, 2175-2253.
  */
-
 
 /* ═══════════════════════════════════════════════════════
    Tasbih — SVG Progress Ring Counter
@@ -1580,7 +1568,6 @@ html[data-theme="dark"] .ds-stat span {
  * Original lines: 2102-2157.
  */
 
-
 /* ═══════════════════════════════════════════════════════
    User Stats Page — البند 9
    ═══════════════════════════════════════════════════════ */
@@ -1642,7 +1629,6 @@ html[data-theme="dark"] .ds-stat span {
  * Extracted by exact line partition from design-system.css. Do not restyle.
  * Original lines: 2270-2348.
  */
-
 
 /* ══════════════════════════════════════════════════════════════════════
    المرحلة 4 — مجتمع وتفاعل
@@ -1728,7 +1714,6 @@ html[data-theme="dark"] .ds-stat span {
  * Extracted by exact line partition from design-system.css. Do not restyle.
  * Original lines: 2351-2570.
  */
-
 
 /* ═══════════════════════════════════════════════════════════════════════════
    قسم التوحيد — HomeTawheed
@@ -2029,7 +2014,6 @@ html[data-theme="dark"] .ds-stat span {
 /* .fiqh-adopted-opinion — DEAD_WITH_PROOF (0 TSX/TS consumers; Wave 1A) */
 .fiqh-context-disclaimer { margin-top: 0.5rem; font-size: 0.82rem; color: var(--ds-ink-soft); font-style: normal; }
 .fiqh-comparative-pending { font-size: 0.82rem; color: var(--ds-ink-soft); font-style: normal; margin: 0.25rem 0 0.75rem; }
-
 
 /* ── Lessons / QA compact ── */
 .lessons-v2-stats {
@@ -2527,7 +2511,6 @@ article {
   margin-inline: auto;
 }
 
-
 /* ── Sections ── */
 .ds-section {
   margin-bottom: var(--ds-space-5);
@@ -2688,15 +2671,12 @@ p, li {
   --ds-emerald-deep:   var(--mj-brand-deep, var(--msk-gold-deep));
   --ds-emerald-soft:   var(--majalis-sage);
   --ds-emerald-muted:  var(--mj-brand-soft, var(--msk-gold-dim, rgba(23,61,53,.12)));
-  --ds-gold:           var(--mj-brand, var(--msk-gold));
-  --ds-gold-soft:      var(--majalis-sage);
   --ds-parchment:      var(--mj-bg, var(--msk-canvas));
   --ds-parchment-deep: var(--mj-surface-2, var(--msk-canvas-2));
   --ds-ink:            var(--mj-ink, var(--msk-text));
   --ds-ink-soft:       var(--mj-ink-2, var(--msk-text-2));
   --ds-ink-muted:      var(--mj-muted, var(--msk-text-3));
   --ds-line-color:     var(--mj-hairline, var(--msk-border));
-  --ds-line-strong:    var(--mj-hairline, var(--msk-border));
 
   /* ── Heading token — أسود بدل زمرد ── */
   --ds-heading: var(--ds-ink);
@@ -2711,11 +2691,6 @@ p, li {
   --ds-text-xl:  1.375rem;    /* 22px */
   --ds-text-2xl: 1.5rem;      /* 24px */
   --ds-text-3xl: 1.875rem;
-
-  --ds-font-regular: var(--font-weight-regular, 400);
-  --ds-font-medium: var(--font-weight-medium, 500);
-  --ds-font-semibold: var(--font-weight-semibold, 600);
-  --ds-font-bold: var(--font-weight-bold, 700);
 
   /* ── Layout ── */
   --ds-max:         75rem;

@@ -848,7 +848,8 @@
     "test:admin-interaction-authority-wave1": "node --import tsx src/lib/__tests__/admin-interaction-authority-wave1-gate.test.ts",
     "test:micro-friction-c5": "node --import tsx src/lib/__tests__/micro-friction-c5-gate.test.ts",
     "test:ui2-polish-a11y": "node --import tsx src/lib/__tests__/ui2-polish-a11y-gate.test.ts",
-    "test:mushaf-interaction-authority-wave1": "node --import tsx src/lib/__tests__/mushaf-interaction-authority-wave1-gate.test.ts"
+    "test:mushaf-interaction-authority-wave1": "node --import tsx src/lib/__tests__/mushaf-interaction-authority-wave1-gate.test.ts",
+    "test:token-bridge-t1": "node --import tsx src/lib/__tests__/token-bridge-t1-zero-consumer-gate.test.ts"
   },
   "devDependencies": {
     "@capacitor/assets": "^3.0.5",
