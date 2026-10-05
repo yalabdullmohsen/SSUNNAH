@@ -301,7 +301,7 @@ export default function ScholarlyResearchPage() {
                 <Button variant="ghost"
                   type="submit"
                   disabled={loading || !query.trim()}
-                  className="citation-btn citation-btn--primary srp-submit-btn disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="citation-btn citation-btn--primary srp-submit-btn disabled:opacity-100 disabled:text-muted-foreground disabled:cursor-not-allowed"
                 >
                   {loading ? "يبحث…" : <><Search size={14} aria-hidden="true" /> بحث</>}
                 </Button>
