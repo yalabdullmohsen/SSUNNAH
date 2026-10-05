@@ -26,7 +26,7 @@
 .qc-hero__lead {
   margin: 0;
   line-height: 1.7;
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   font-size: 0.95rem;
 }
 
@@ -101,7 +101,7 @@
   margin: 0.25rem 0 0;
   font-size: 0.75rem;
   font-weight: 800;
-  color: var(--msk-text-2, var(--mj-muted));
+  color: var(--mj-muted);
 }
 
 .qc-result-count {
@@ -201,7 +201,7 @@
   align-items: flex-start;
   gap: 0.35rem;
   font-size: 0.84rem;
-  color: var(--msk-text-2, var(--mj-muted));
+  color: var(--mj-muted);
   line-height: 1.5;
 }
 

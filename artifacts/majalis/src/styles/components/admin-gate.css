@@ -11,7 +11,7 @@
   max-width: 24rem;
   padding: var(--ds-space-8);
   border-radius: var(--ds-radius-lg);
-  border: 1px solid var(--msk-border, var(--mj-hairline));
+  border: 1px solid var(--mj-hairline, var(--msk-border));
   background: transparent;
   box-shadow: 0 10px 30px rgba(22, 78, 60, 0.06);
 }

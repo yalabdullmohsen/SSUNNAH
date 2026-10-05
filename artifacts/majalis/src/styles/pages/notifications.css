@@ -293,7 +293,7 @@ html.dark .notif-row__label {
    88 — NotificationSettingsPage  (nsp-*)
    ============================================================ */
 .nsp-confirm-row   { display: flex; gap: 0.4rem; align-items: center; }
-.nsp-confirm-label { font-size: var(--ds-text-xs); color: var(--msk-red, #C1595A); }
+.nsp-confirm-label { font-size: var(--ds-text-xs); color: var(--mj-danger, var(--msk-red, #C1595A)); }
 .nsp-quick-links   { margin-top: 2rem; }
 
 /* ── منقول من الطبقة الحرجة: Notification history nh-* ── */

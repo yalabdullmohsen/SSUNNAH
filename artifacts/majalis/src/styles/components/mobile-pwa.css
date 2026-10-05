@@ -40,7 +40,7 @@
   margin: 0.85rem 0 0;
   overflow: hidden;
   border-radius: var(--radius-md, 0.65rem);
-  border: 1px solid var(--msk-border, var(--mj-hairline));
+  border: 1px solid var(--mj-hairline, var(--msk-border));
 }
 .lesson-detail-poster .mj-media {
   display: block;

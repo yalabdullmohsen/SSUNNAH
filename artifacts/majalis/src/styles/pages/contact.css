@@ -45,7 +45,7 @@
   margin: 0 0 1.1rem;
   font-size: 0.98rem;
   line-height: 1.7;
-  color: var(--majalis-ink-soft, var(--msk-text-2, var(--mj-muted)));
+  color: var(--majalis-ink-soft, var(--mj-muted));
 }
 
 .contact-topic-banner {
