@@ -12,7 +12,8 @@ TASK_CLASSIFICATION: SHARED_PLATFORM
 ## Phase 0 token contract
 
 QUALITY_CAMPAIGN_GATE_PASS on tip. Kept compat: `--ds-muted` / `--ds-danger` / `--ds-success`.
-This wave removed 48 additional zero-var `--ds-*` scale/motion/type aliases (not QC-required).
+This wave removed 47 additional zero-var `--ds-*` scale/type aliases (not QC-required).
+Kept `--ds-durationFast` as governance keep-compat → `--motion-fast`.
 
 ## DESIGN
 

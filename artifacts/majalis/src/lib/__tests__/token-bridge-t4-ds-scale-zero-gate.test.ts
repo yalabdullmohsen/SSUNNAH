@@ -16,7 +16,6 @@ const removed = [
   "--ds-borderStrongWidth",
   "--ds-borderSubtle",
   "--ds-durationEmphasized",
-  "--ds-durationFast",
   "--ds-durationInstant",
   "--ds-durationNormal",
   "--ds-ease-out",
@@ -62,7 +61,14 @@ const removed = [
   "--ds-warningContainer",
 ] as const;
 
-assert.equal(removed.length, 48);
+assert.equal(removed.length, 47);
+
+/* Governance keep-compat — not in removed set */
+assert.match(
+  read("src/styles/ssunnah-ds-canonical.css"),
+  /--ds-durationFast:\s*var\(--motion-fast/,
+  "--ds-durationFast keep-compat → --motion-fast",
+);
 
 const cssBundle = [
   "src/styles/ssunnah-ds-canonical.css",
@@ -115,5 +121,6 @@ const qc = spawnSync(process.execPath, ["scripts/test-quality-campaign-gate.mjs"
 assert.equal(qc.status, 0, qc.stderr || qc.stdout);
 
 console.log("token-bridge-t4-ds-scale-zero-gate: ok");
-console.log("ALIASES_RETIRED_48");
+console.log("ALIASES_RETIRED_47");
+console.log("DURATION_FAST_KEEP_COMPAT");
 console.log("QUALITY_CAMPAIGN_CONTRACT_HELD");

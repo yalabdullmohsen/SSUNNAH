@@ -46,6 +46,9 @@
   --ds-touchTargetMinimum: 44px;
 
   /* ── Motion ── */
+  /* KEEP_COMPATIBILITY: ssunnah-ds-governance-gate requires motion token in canonical.
+     Canonical destination: --motion-fast (design-tokens / motion-policy). */
+  --ds-durationFast: var(--motion-fast, 140ms);
   /* جسر للتوافق مع MUR */
   --mur-radius: var(--ds-radiusLarge);
   --mur-radius-sm: var(--ds-radiusMedium);

@@ -4,13 +4,17 @@ TASK_CLASSIFICATION: SHARED_PLATFORM
 
 ## Result
 
-Removed **48** `--ds-*` declarations with proven `var()` consumers = 0 across `src/**`.
+Removed **47** `--ds-*` declarations with proven `var()` consumers = 0 across `src/**`.
 
 Not touched (quality-campaign / keep-compat):
 
 `--ds-background` · `--ds-surface` · `--ds-surfaceElevated` · `--ds-textPrimary` ·
 `--ds-textSecondary` · `--ds-accent` · `--ds-border` · `--ds-muted` · `--ds-danger` ·
 `--ds-success` (+ related design-tokens bridges that remain declared).
+
+Restored keep-compat after CI contract proof:
+
+`--ds-durationFast` → `var(--motion-fast, 140ms)` (ssunnah-ds-governance-gate PUBLIC_API_CONTRACT).
 
 ## Metrics
 
