@@ -95,8 +95,9 @@ html.dark .pattern-backdrop {
   min-height: 2.35rem;
   padding: 0.4rem 0.85rem;
   font-size: var(--mj-fs-small, 0.875rem);
-  color: var(--mj-ink) !important;
-  border: 1px solid var(--mj-hairline) !important;
+  /* بطل الحبر (.section-hero) يخصّص الحبر/الحد عبر المتغيّرين — بلا فرض إضافي */
+  color: var(--page-hero-back-ink, var(--mj-ink)) !important;
+  border: 1px solid var(--page-hero-back-line, var(--mj-hairline)) !important;
   background: var(--mj-surface) !important;
   border-radius: var(--mj-r-pill);
 }

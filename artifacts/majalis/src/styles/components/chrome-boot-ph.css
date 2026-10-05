@@ -12,3 +12,41 @@
   visibility: hidden;
   pointer-events: none;
 }
+
+/* Startup CLS: تخطيط صف الهيدر (هيكل الإقلاع ثم NavBar الحقيقي) يصل مع App نفسه.
+   كان في index-deferred-pages/NavBar فقط، فيُرسم البدء/النهاية مكدّسين عموديًا ثم يقفزان
+   إلى صف واحد (≈0.03 CLS على كل مسار). القيم مطابقة لتعريف index-deferred-pages. */
+.navbar-v3__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-space-3, 0.75rem);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navbar-v3__start,
+.navbar-v3__end {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-2, 0.5rem);
+}
+
+/* Startup CLS (/prophets): هندسة هيكل المسار الكسول الممتد بعرض الشاشة تصل مع App.
+   كانت في prophet-stories.css فقط (مع chunk الصفحة) فيُرسم الهيكل مُزاحًا 16px وقصيرًا
+   ثم يقفز إلى كامل العرض/الارتفاع (≈0.018 CLS). مطابقة لتعريف prophet-stories.css. */
+.lrf-wrap.lrf-wrap--prophets,
+.lrf-wrap.lrf-wrap--prophet-detail {
+  width: 100%;
+  min-height: 100dvh;
+  min-height: 100svh;
+  margin: 0;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+/* يتفوّق على #main-content.app-main (critical-first-paint) بالتخصيص لا بالفرض */
+#main-content.app-main:has(.lrf-wrap--prophets),
+#main-content.app-main:has(.lrf-wrap--prophet-detail) {
+  padding-inline: 0;
+}

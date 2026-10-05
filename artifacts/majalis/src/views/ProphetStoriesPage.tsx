@@ -28,6 +28,7 @@ import { ProphetStorySourcesBlock } from "@/components/prophets/ProphetStorySour
 import { ProphetStoryTabs } from "@/components/prophets/ProphetStoryTabs";
 import { PROPHET_MUSHAF_MENTIONS, PROPHET_MUSHAF_NAV_SOURCE } from "@/lib/prophet-mushaf-mentions";
 import { Button } from "@/components/ui/button";
+import { onTablistKeyDown } from "@/lib/tablist-keyboard";
 import {
   Table,
   TableBody,
@@ -941,6 +942,13 @@ function QuizView({ onClose }: { onClose: () => void }) {
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState<string | null>(null);
   const [done, setDone] = useState(false);
+  const questionRef = useRef<HTMLParagraphElement>(null);
+  const doneRef = useRef<HTMLHeadingElement>(null);
+
+  // الأزرار تُستبدل مع كل سؤال → ننقل التركيز إلى السؤال/النتيجة كي لا يسقط إلى body
+  useEffect(() => {
+    (done ? doneRef.current : questionRef.current)?.focus();
+  }, [idx, done]);
 
   const q = QUIZ_QUESTIONS[idx];
 
@@ -960,7 +968,7 @@ function QuizView({ onClose }: { onClose: () => void }) {
       <div className="prophet-quiz">
         <div className="prophet-quiz__done">
           <IslamicStar size={28} color={IVORY} opacity={0.45} />
-          <h2>انتهى الاختبار!</h2>
+          <h2 ref={doneRef} tabIndex={-1}>انتهى الاختبار!</h2>
           <p className="prophet-quiz__score">{score} / {QUIZ_QUESTIONS.length} ({pct}%)</p>
           <p className="prophet-quiz__remark">
             {pct >= 80 ? "ممتاز! أنت عارف بقصص الأنبياء ✦" : pct >= 60 ? "جيد! استمر في التعلم" : "واصل القراءة لتتعلم أكثر"}
@@ -982,7 +990,7 @@ function QuizView({ onClose }: { onClose: () => void }) {
       </div>
       <div className="prophet-quiz__body">
         <IslamicStar size={36} color={IVORY} />
-        <p className="prophet-quiz__question">{q.q}</p>
+        <p ref={questionRef} tabIndex={-1} className="prophet-quiz__question">{q.q}</p>
         <div className="prophet-quiz__opts">
           {q.opts.map(opt => {
             let cls = "prophet-quiz__opt";
@@ -1022,6 +1030,15 @@ export default function ProphetStoriesPage({
   const [view, setView] = useState<View>("grid");
   const searchRef = useRef<HTMLInputElement>(null);
   const [location] = useLocation();
+  const prevViewRef = useRef<View>(view);
+
+  // الخروج من الاختبار (يستبدل الصفحة كاملة) يعيد التركيز إلى التبويب النشط
+  useEffect(() => {
+    if (prevViewRef.current === "quiz" && view !== "quiz") {
+      document.getElementById(`pst-tab-${view}`)?.focus();
+    }
+    prevViewRef.current = view;
+  }, [view]);
 
   /** slug من المسار فور الرسم — بلا انتظار useEffect (يمنع وميض القائمة/الخطأ) */
   const routeSlug = useMemo(() => {
@@ -1097,8 +1114,10 @@ export default function ProphetStoriesPage({
               role="tab"
               className={`prophets-lux-tab ${view === t.id ? "prophets-lux-tab--active" : ""}`}
               onClick={() => setView(t.id)}
+              onKeyDown={onTablistKeyDown}
               aria-selected={view === t.id}
-              aria-controls={`pst-panel-${t.id}`}
+              aria-controls={view === t.id ? `pst-panel-${t.id}` : undefined}
+              tabIndex={view === t.id ? 0 : -1}
             >
               {t.id === "grid"      && <><LayoutList size={14} strokeWidth={1.8} aria-hidden="true" /> {t.label}</>}
               {t.id === "timeline"  && <><CalendarDays size={14} strokeWidth={1.8} aria-hidden="true" /> {t.label}</>}
@@ -1117,7 +1136,7 @@ export default function ProphetStoriesPage({
 
         {/* أولو العزم */}
         {view === "ulul-azm" && (
-          <div className="prophets-lux-container nb-container">
+          <div role="tabpanel" id="pst-panel-ulul-azm" aria-labelledby="pst-tab-ulul-azm" className="prophets-lux-container nb-container">
             <UlulAzmView onSelect={openProphet} />
           </div>
         )}
@@ -1138,7 +1157,7 @@ export default function ProphetStoriesPage({
 
         {/* قائمة */}
         {view === "grid" && (
-          <div className="prophets-lux-container">
+          <div role="tabpanel" id="pst-panel-grid" aria-labelledby="pst-tab-grid" className="prophets-lux-container">
             <div className="prophets-lux-search-wrap">
               <input
                 ref={searchRef}
