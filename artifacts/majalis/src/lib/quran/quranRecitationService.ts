@@ -9,7 +9,7 @@ import {
 } from "@/core/audio/AudioEngine";
 import { defaultReciterId, isReciterEnabled } from "@/config/quranReciters";
 import { listAyahAudioUrls, loadReciterId, saveReciterId } from "@/lib/quran-audio";
-import { parseVerseKey } from "@/features/mushaf-madinah/mushaf-page-for-ayah";
+import { parseVerseKey } from "@/features/mushaf-shared/mushaf-page-for-ayah";
 
 export type PlaybackMode = "ayah" | "surah" | "page" | "idle";
 

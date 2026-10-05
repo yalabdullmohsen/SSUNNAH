@@ -5,7 +5,7 @@ import { toArabicDigits } from "@/lib/utils";
 import {
   useMushafAyahWordPlaying,
   useMushafAyahWordSelected,
-} from "@/features/mushaf-madinah/mushaf-ayah-sync-store";
+} from "@/features/mushaf-shared/mushaf-ayah-sync-store";
 import type { MushafHideLevel } from "./MushafSettingsSheet";
 
 type Props = {

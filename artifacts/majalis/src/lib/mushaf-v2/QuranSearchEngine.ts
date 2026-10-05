@@ -1,4 +1,4 @@
-import { findMushafPageForAyah } from "@/features/mushaf-madinah/mushaf-page-for-ayah";
+import { findMushafPageForAyah } from "@/features/mushaf-shared/mushaf-page-for-ayah";
 /**
  * QuranSearchEngine — بحث محلّي؛ التطبيع للمطابقة فقط دون تغيير النص الأصلي المعروض.
  */

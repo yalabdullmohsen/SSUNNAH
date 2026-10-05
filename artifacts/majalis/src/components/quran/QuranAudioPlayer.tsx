@@ -5,7 +5,7 @@ import { useState } from "react";
 import type { PlayerState } from "@/core/audio/AudioEngine";
 import { QuranRecitationService } from "@/lib/quran/quranRecitationService";
 import { MushafAudioDock } from "@/features/mushaf-madinah/MushafAudioDock";
-import type { RecitationRange } from "@/features/mushaf-madinah/mushaf-page-for-ayah";
+import type { RecitationRange } from "@/features/mushaf-shared/mushaf-page-for-ayah";
 
 type Props = {
   open: boolean;
