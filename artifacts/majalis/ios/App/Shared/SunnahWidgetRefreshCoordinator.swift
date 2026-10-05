@@ -22,6 +22,11 @@ enum SunnahWidgetRefreshCoordinator {
     @discardableResult
     static func commitEnvelope(_ envelope: SunnahWidgetEnvelope, domains: Set<Domain>) -> Bool {
         guard envelope.schemaVersion >= 1 else { return false }
+        var envelope = envelope
+        if envelope.prayerPayload == nil {
+            // Non-prayer publishes (Adhkar/Widget Center) keep the committed prayer domain.
+            envelope.prayerPayload = SunnahSharedStore.loadCanonicalPrayer()
+        }
         let ok = SunnahSharedStore.publishEnvelope(envelope)
         guard ok else { return false }
         if domains.contains(.prayer), let prayer = envelope.prayerPayload {

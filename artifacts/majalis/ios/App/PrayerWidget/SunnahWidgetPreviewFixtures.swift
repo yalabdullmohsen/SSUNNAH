@@ -46,7 +46,7 @@ enum SunnahWidgetPreviewFixtures {
         surahNumber: 1,
         ayahNumber: 1,
         page: 1,
-        deepLinkPath: "/mushaf/page/1?ayah=1:1",
+        deepLinkPath: "/mushaf?page=1&ayah=1:1",
         pagesCompletedToday: 1,
         dailyTarget: 1,
         hasCanonicalGoal: true,

@@ -32,17 +32,24 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
             call.resolve(["ok": false])
             return
         }
-        var times: [String: Int64] = [:]
-        if let obj = call.getObject("timesEpochMs") {
-            for (k, v) in obj {
+        func epochMap(_ obj: JSObject?) -> [String: Int64] {
+            var out: [String: Int64] = [:]
+            for (k, v) in obj ?? [:] {
                 if let n = v as? NSNumber {
-                    times[k.lowercased()] = n.int64Value
+                    out[k.lowercased()] = n.int64Value
                 } else if let i = v as? Int {
-                    times[k.lowercased()] = Int64(i)
+                    out[k.lowercased()] = Int64(i)
                 } else if let d = v as? Double {
-                    times[k.lowercased()] = Int64(d)
+                    out[k.lowercased()] = Int64(d)
                 }
             }
+            return out
+        }
+        let times = epochMap(call.getObject("timesEpochMs"))
+        let upcomingDays: [SharedPrayerDay] = (call.getArray("upcomingDays", JSObject.self) ?? []).compactMap { day in
+            guard let key = day["dayKey"] as? String else { return nil }
+            let dayTimes = epochMap(day["timesEpochMs"] as? JSObject)
+            return dayTimes.isEmpty ? nil : SharedPrayerDay(dayKey: key, timesEpochMs: dayTimes)
         }
         func optEpoch(_ key: String) -> Int64? {
             if let n = call.getDouble(key) { return Int64(n) }
@@ -72,6 +79,7 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
         snap.calculationMethodIdentifier = call.getString("calculationMethodIdentifier")
         snap.permissionState = call.getString("permissionState")
         snap.initializationState = call.getString("initializationState")
+        snap.upcomingDays = upcomingDays.isEmpty ? nil : upcomingDays
         let ok = SunnahWidgetRefreshCoordinator.commitPrayer(snap)
         if ok {
             // Reload only after App Group write+synchronize committed.
