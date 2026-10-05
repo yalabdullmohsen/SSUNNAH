@@ -863,6 +863,7 @@
     "test:token-bridge-t3": "node --import tsx src/lib/__tests__/token-bridge-t3-ds-zero-gate.test.ts",
     "test:token-bridge-t4": "node --import tsx src/lib/__tests__/token-bridge-t4-ds-scale-zero-gate.test.ts",
     "test:token-bridge-t5": "node --import tsx src/lib/__tests__/token-bridge-t5-zero-consumer-gate.test.ts",
+    "test:reciters-catalog-integrity": "node --import tsx src/lib/__tests__/reciters-catalog-integrity-gate.test.ts",
     "test:token-bridge-t6": "node --import tsx src/lib/__tests__/token-bridge-t6-qc-gate.test.ts",
     "test:visual-debt-v1": "node --import tsx src/lib/__tests__/visual-debt-v1-gate.test.ts",
     "test:final-unification-baseline": "node --import tsx src/lib/__tests__/final-unification-baseline-gate.test.ts"

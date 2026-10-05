@@ -21,7 +21,7 @@ import {
   type DatabaseManager,
   type ReadingProgress,
 } from "./DatabaseManager";
-import { getReciter, saveReciterId } from "@/lib/quran-audio";
+import { getReciter, migrateStoredReciterId, saveReciterId } from "@/lib/quran-audio";
 import { getAudioEngine } from "@/core/audio/AudioEngine";
 import { normalizeSurahAyah } from "@/lib/ayah-ref-normalize";
 
@@ -174,13 +174,16 @@ class QuranEngineContextImpl implements QuranEngineContextApi {
         this.db.getSetting<boolean>("isActionBarEnabled"),
         this.db.getSetting<string>("preferredReciterId"),
       ]);
+      /* ترحيل عند القراءة: قارئ أُزيل/غير مُحقَّق → القارئ الافتراضي العامل */
+      const reciterId = migrateStoredReciterId(reciter || "alafasy");
+      if (reciter && reciter !== reciterId) void this.db.setSetting("preferredReciterId", reciterId);
       this.patch({
         isTajweedEnabled: tajweed ?? false,
         isActionBarEnabled: actionBar ?? true,
-        currentReciter: getReciter(reciter || "alafasy").id,
+        currentReciter: reciterId,
       });
       try {
-        getAudioEngine().setReciter(getReciter(reciter || "alafasy").id);
+        getAudioEngine().setReciter(reciterId);
       } catch {
         /* ignore */
       }    } catch (err) {

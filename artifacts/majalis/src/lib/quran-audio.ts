@@ -273,7 +273,8 @@ export const RECITERS: QuranReciter[] = [
     id: "mustafa_ismail",
     nameAr: "مصطفى إسماعيل",
     nameEn: "Mustafa Ismail",
-    everyayahFolder: "Mustafa_Ismail_48kbps",
+    /* everyayah Mustafa_Ismail_48kbps ناقص (٨٧/٢٢٩ عيّنة 404 — RECITERS_PLAYABILITY.md) → سورة كاملة فقط */
+    everyayahFolder: null,
     surahBaseUrl: "https://server8.mp3quran.net/mustafa",
     riwaya: RIWAYA_HAFS,
     qualityLabel: "48kbps",
@@ -403,18 +404,21 @@ const SURAH_AYAH_COUNTS: readonly number[] = [
   30, 20, 15, 21, 11, 8, 8, 19, 5, 8, 8, 11, 11, 8, 3, 9, 5, 4, 7, 3, 6, 3, 5, 4, 5, 6,
 ];
 
-/** islamic.network edition id — احتياط عند فشل everyayah */
+/**
+ * islamic.network «{bitrate}/{edition}» — احتياط عند فشل everyayah، لنفس الشيخ فقط.
+ * مُدقَّق شبكيًا (scripts/audit-reciters-playability.mjs): المسار 128 يعيد 403 لعبد الباسط
+ * والسديس والشريم والغامدي، فاستُبدل بالمعدّل العامل، وحُذف الغامدي (لا معدّل عامل).
+ * عبد الباسط: كتالوجنا مرتّل (Abdul_Basit_Murattal) → ar.abdulbasitmurattal بدل ar.abdulsamad (403).
+ */
 const ISLAMIC_NETWORK_EDITION: Record<string, string> = {
-  alafasy: "ar.alafasy",
-  husary: "ar.husary",
-  minshawi: "ar.minshawi",
-  abdulbasitmurattal: "ar.abdulbasitmurattal",
-  abdulsamad: "ar.abdulsamad",
-  ajamy: "ar.ahmedajamy",
-  maher: "ar.mahermuaiqly",
-  sudais: "ar.abdurrahmaansudais",
-  shuraim: "ar.saoodshuraym",
-  ghamdi: "ar.ghamadi",
+  alafasy: "128/ar.alafasy",
+  husary: "128/ar.husary",
+  minshawi: "128/ar.minshawi",
+  abdulsamad: "192/ar.abdulbasitmurattal",
+  ajamy: "128/ar.ahmedajamy",
+  maher: "128/ar.mahermuaiqly",
+  sudais: "192/ar.abdurrahmaansudais",
+  shuraim: "64/ar.saoodshuraym",
 };
 
 export function getIslamicNetworkAyahUrl(
@@ -430,7 +434,7 @@ export function getIslamicNetworkAyahUrl(
   if (!edition) return "";
   const global = getGlobalAyahNumber(surah, ayah);
   if (global < 1) return "";
-  return `https://cdn.islamic.network/quran/audio/128/${edition}/${global}.mp3`;
+  return `https://cdn.islamic.network/quran/audio/${edition}/${global}.mp3`;
 }
 
 /**
@@ -470,12 +474,25 @@ export function reciterInitial(reciter: QuranReciter): string {
 // ─── Reciter preference ────────────────────────────────────────────────────
 const RECITER_KEY = "mj-quran-reciter-v3";
 
+/**
+ * معرّفات أُزيل مصدرها آية-بآية بعد تدقيق قابلية التشغيل (docs/audit/RECITERS_PLAYABILITY.md).
+ * أي تفضيل محفوظ بها يُرحَّل عند القراءة إلى القارئ الافتراضي المُحقَّق.
+ */
+export const RETIRED_AYAH_RECITER_IDS: readonly string[] = ["mustafa_ismail"];
+
+/** ترحيل تفضيل قارئ محفوظ (localStorage أو IndexedDB) إلى قارئ مُحقَّق يعمل. */
+export function migrateStoredReciterId(id: string | null | undefined): string {
+  const raw = (id ?? "").trim();
+  if (!raw || RETIRED_AYAH_RECITER_IDS.includes(raw)) return clampToVerifiedReciterId("");
+  return clampToVerifiedReciterId(raw);
+}
+
 export function loadReciterId(): string {
   try {
     const stored = localStorage.getItem(RECITER_KEY);
-    const verified = getVerifiedRecitersSyncFallback();
-    if (stored && verified.some((r) => r.id === stored)) return stored;
-    return verified[0]?.id ?? "alafasy";
+    const migrated = migrateStoredReciterId(stored);
+    if (stored && stored !== migrated) localStorage.setItem(RECITER_KEY, migrated);
+    return migrated;
   } catch {
     return clampToVerifiedReciterId("alafasy");
   }
