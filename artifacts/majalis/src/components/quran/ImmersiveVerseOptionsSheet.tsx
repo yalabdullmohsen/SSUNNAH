@@ -5,6 +5,8 @@
 import { BookOpen, Bookmark, BookmarkCheck, Copy, Pause, Play, X } from "lucide-react";
 import { createPortal } from "react-dom";
 import { IMMERSIVE_PAPER_BG } from "@/lib/quran-immersive";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 
 export type ImmersiveVerseOptionsSheetProps = {
   verseText: string;
@@ -43,8 +45,9 @@ export function ImmersiveVerseOptionsSheet({
 }: ImmersiveVerseOptionsSheetProps) {
   const sheet = (
     <div className="immersive-verse-sheet-overlay">
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className="immersive-verse-sheet-overlay__backdrop"
         aria-label="إغلاق"
         onClick={onClose}
@@ -59,14 +62,14 @@ export function ImmersiveVerseOptionsSheet({
         <div className="immersive-verse-sheet__handle" aria-hidden="true" />
         <div className="immersive-verse-sheet__head">
           <p className="immersive-verse-sheet__preview">{verseText}</p>
-          <button
+          <IconButton
             type="button"
             className="immersive-verse-sheet__close"
             onClick={onClose}
-            aria-label="إغلاق"
+            label="إغلاق"
           >
             <X size={18} aria-hidden="true" />
-          </button>
+          </IconButton>
         </div>
         {copyStatus ? (
           <p className="immersive-verse-sheet__status" role="status">
@@ -75,8 +78,9 @@ export function ImmersiveVerseOptionsSheet({
         ) : null}
         <ul className="immersive-verse-sheet__list">
           <li>
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className="immersive-verse-sheet__row"
               onClick={onTogglePlayback}
             >
@@ -86,11 +90,12 @@ export function ImmersiveVerseOptionsSheet({
                 <Play size={20} aria-hidden="true" />
               )}
               <span>{isPlaying ? playLabelPlaying : playLabelIdle}</span>
-            </button>
+            </Button>
           </li>
           <li>
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className="immersive-verse-sheet__row"
               onClick={() => {
                 onTafsir();
@@ -99,21 +104,23 @@ export function ImmersiveVerseOptionsSheet({
             >
               <BookOpen size={20} aria-hidden="true" />
               <span>{tafsirLabel}</span>
-            </button>
+            </Button>
           </li>
           {onCopy ? (
             <li>
-              <button type="button" className="immersive-verse-sheet__row" onClick={onCopy}>
+              <Button type="button" variant="ghost"
+              className="immersive-verse-sheet__row" onClick={onCopy}>
                 <Copy size={20} aria-hidden="true" />
                 <span>{copyLabel}</span>
-              </button>
+              </Button>
             </li>
           ) : null}
           {onToggleBookmark ? (
             <li>
-              <button
+              <Button
                 type="button"
-                className="immersive-verse-sheet__row"
+                variant="ghost"
+              className="immersive-verse-sheet__row"
                 onClick={onToggleBookmark}
               >
                 {bookmarked ? (
@@ -122,7 +129,7 @@ export function ImmersiveVerseOptionsSheet({
                   <Bookmark size={20} aria-hidden="true" />
                 )}
                 <span>{bookmarked ? "إزالة الفاصلة" : "إضافة فاصلة"}</span>
-              </button>
+              </Button>
             </li>
           ) : null}
         </ul>

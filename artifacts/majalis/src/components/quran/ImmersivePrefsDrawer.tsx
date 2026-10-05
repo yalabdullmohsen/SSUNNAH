@@ -10,6 +10,8 @@ import {
   QURAN_FONT_STEP_PX,
 } from "@/lib/quran-font-size";
 import { IMMERSIVE_PAPER_BG } from "@/lib/quran-immersive";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 
 export type ImmersivePrefsDrawerProps = {
   open: boolean;
@@ -50,8 +52,9 @@ export function ImmersivePrefsDrawer({
 
   const drawer = (
     <div className="immersive-prefs-overlay">
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className="immersive-prefs-overlay__backdrop"
         aria-label="إغلاق"
         onClick={onClose}
@@ -65,14 +68,14 @@ export function ImmersivePrefsDrawer({
       >
         <div className="immersive-prefs-drawer__head">
           <h2 className="immersive-prefs-drawer__title">{title}</h2>
-          <button
+          <IconButton
             type="button"
             className="immersive-prefs-drawer__close"
             onClick={onClose}
-            aria-label="إغلاق"
+            label="إغلاق"
           >
             <X size={18} aria-hidden="true" />
-          </button>
+          </IconButton>
         </div>
 
         <div className="immersive-prefs-drawer__section">
@@ -80,13 +83,13 @@ export function ImmersivePrefsDrawer({
             <Type size={16} aria-hidden="true" /> حجم الخط
           </p>
           <div className="immersive-prefs-drawer__font-row">
-            <button type="button" onClick={dec} aria-label="تصغير الخط">
+            <Button type="button" variant="ghost" onClick={dec} aria-label="تصغير الخط">
               −
-            </button>
+            </Button>
             <span>{Math.round(fontSize)}</span>
-            <button type="button" onClick={inc} aria-label="تكبير الخط">
+            <Button type="button" variant="ghost" onClick={inc} aria-label="تكبير الخط">
               +
-            </button>
+            </Button>
           </div>
           <input
             type="range"
@@ -114,8 +117,9 @@ export function ImmersivePrefsDrawer({
 
         {lastPage != null && lastPage > 0 && onResumeLastPage ? (
           <div className="immersive-prefs-drawer__section">
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className="immersive-prefs-drawer__row"
               onClick={() => {
                 onResumeLastPage();
@@ -124,7 +128,7 @@ export function ImmersivePrefsDrawer({
             >
               <Bookmark size={18} aria-hidden="true" />
               <span>استئناف الصفحة {lastPage}</span>
-            </button>
+            </Button>
           </div>
         ) : null}
       </aside>

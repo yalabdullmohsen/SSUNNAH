@@ -850,7 +850,8 @@
     "test:ui2-polish-a11y": "node --import tsx src/lib/__tests__/ui2-polish-a11y-gate.test.ts",
     "test:mushaf-interaction-authority-wave1": "node --import tsx src/lib/__tests__/mushaf-interaction-authority-wave1-gate.test.ts",
     "test:token-bridge-t1": "node --import tsx src/lib/__tests__/token-bridge-t1-zero-consumer-gate.test.ts",
-    "test:token-bridge-t2": "node --import tsx src/lib/__tests__/token-bridge-t2-majalis-zero-gate.test.ts"
+    "test:token-bridge-t2": "node --import tsx src/lib/__tests__/token-bridge-t2-majalis-zero-gate.test.ts",
+    "test:public-button-authority-wave2": "node --import tsx src/lib/__tests__/public-button-authority-wave2-gate.test.ts"
   },
   "devDependencies": {
     "@capacitor/assets": "^3.0.5",
