@@ -22,11 +22,22 @@ for (const name of [
   "--ds-textSecondary",
   "--ds-accent",
   "--ds-border",
-  "--ds-muted",
-  "--ds-danger",
-  "--ds-success",
+  /* T6: الحالات الدلالية بأسمائها القانونية (حلّت محل --ds-muted/--ds-danger/--ds-success). */
+  "--text-muted",
+  "--danger",
+  "--success",
 ]) {
   if (!tokens.includes(name)) violations.push(`design-tokens: ناقص ${name}`);
+}
+for (const name of ["--text-muted", "--danger", "--success"]) {
+  if (!new RegExp(`(^|[\\s;{])${name}\\s*:`, "m").test(tokens)) {
+    violations.push(`design-tokens: ${name} غير مُعرَّف كتصريح`);
+  }
+}
+for (const name of ["--ds-muted", "--ds-danger", "--ds-success"]) {
+  if (new RegExp(`${name}\\s*:`).test(tokens)) {
+    violations.push(`design-tokens: ${name} متقاعد (T6) — استخدم الاسم القانوني`);
+  }
 }
 
 const banner = read("src/components/OfflineBanner.tsx");

@@ -166,6 +166,10 @@ if (original) {
         "background: var(--sf-color-warm-ivory-surface);",
       );
     }
+    /* T6: zero-consumer --ds-transition-slow retired (canonical --motion-slow). */
+    if (sel === ":root" || sel.endsWith("} :root")) {
+      expected = expected.replace(/\n?[ \t]*--ds-transition-slow:[^;]*;/g, "");
+    }
     if (graphRules.includes(expected) || graphRules.includes(m[2]!)) continue;
     if (DEFEATED_BODY_ALLOWLIST.has(body)) continue;
     missing.push(sel.slice(0, 80));
