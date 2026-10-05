@@ -1,0 +1,83 @@
+name: Accessibility (axe)
+
+# axe-core (WCAG 2.1 A/AA) عبر Playwright Chromium على الصفحات الرئيسية — 390×844، فاتح وداكن.
+# سياسة: المخالفات القائمة مسجّلة في config/a11y-axe-baseline.json ولا تُفشل الفحص؛
+# يفشل فقط عند قاعدة جديدة أو زيادة عناصر مخالفة (scripts/a11y-axe-gate.mjs).
+# ليس جزءًا من ci-required.
+#
+# تحديث خط الأساس بعد إصلاح: node scripts/a11y-axe-gate.mjs --update (على build معاينة).
+#
+# تحذير: لا تضع تعليقات HTML داخل ملفات workflow.
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "artifacts/majalis/**"
+      - "lib/**"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/a11y-axe.yml"
+  push:
+    branches: [main]
+    paths:
+      - "artifacts/majalis/**"
+      - "lib/**"
+      - "pnpm-lock.yaml"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  axe:
+    name: axe a11y (main pages)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: ./.github/actions/setup-workspace
+        with:
+          playwright: "true"
+
+      - name: Build
+        run: pnpm --filter @workspace/majalis run build
+
+      - name: Start preview
+        working-directory: artifacts/majalis
+        run: |
+          set -euo pipefail
+          pnpm exec vite preview --config vite.config.ts --host 127.0.0.1 --port 24216 > /tmp/axe-vite.log 2>&1 &
+          echo $! > /tmp/axe-vite.pid
+          for i in $(seq 1 90); do
+            if curl -sf -o /dev/null "http://127.0.0.1:24216/" \
+              && curl -sf -o /dev/null "http://127.0.0.1:24216/version.json"; then
+              echo "preview جاهز (محاولة $i)"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "preview لم يصبح جاهزًا"; tail -80 /tmp/axe-vite.log; exit 1
+
+      - name: axe gate (fail only on regression vs baseline)
+        working-directory: artifacts/majalis
+        env:
+          BASE: http://127.0.0.1:24216
+        run: node scripts/a11y-axe-gate.mjs
+
+      - name: Upload axe report
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: a11y-axe-report
+          path: artifacts/majalis/test-results/a11y-axe/
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Stop preview
+        if: always()
+        run: kill "$(cat /tmp/axe-vite.pid)" 2>/dev/null || true
