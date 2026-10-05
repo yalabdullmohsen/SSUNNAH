@@ -1,10 +1,10 @@
 # UI_DUPLICATION_REPORT
 
-Generated: 2026-10-05T21:14:10.236Z
+Generated: 2026-10-03T09:21:26.150Z
 
 Priority = highest maintenance cost first.
 
-## cards (39)
+## cards (41)
 
 Authority: AppCard / InteractiveCard
 
