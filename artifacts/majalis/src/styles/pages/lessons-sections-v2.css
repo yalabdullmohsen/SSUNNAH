@@ -30,7 +30,7 @@ html[data-v2-lessons="1"] .lesson-filters__search-field input {
 html[data-v2-lessons="1"] .lesson-filters__icon-btn {
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: var(--v2-radius-icon, 16px);
+  border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
   background: var(--v2-color-emerald-soft, #e2efe8);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   border: 1px solid var(--v2-hairline);
@@ -81,7 +81,7 @@ html[data-v2-lessons="1"] .lesson-unified-card__title {
 html[data-v2-lessons="1"] .lesson-unified-card__desc {
   font-size: 0.86rem;
   line-height: 1.5;
-  color: var(--cs-text-secondary, #48645a) !important;
+  color: var(--cs-text-secondary, var(--sf-color-rich-ink-soft)) !important;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -91,7 +91,7 @@ html[data-v2-lessons="1"] .lesson-unified-card__desc {
 html[data-v2-lessons="1"] .lesson-unified-card__sheikh {
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--cs-text-secondary, #48645a) !important;
+  color: var(--cs-text-secondary, var(--sf-color-rich-ink-soft)) !important;
 }
 
 html[data-v2-lessons="1"] .lesson-unified-card__badges {
@@ -103,7 +103,7 @@ html[data-v2-lessons="1"] .lesson-unified-card__delivery,
 html[data-v2-lessons="1"] .lesson-unified-card__status {
   font-size: 0.72rem;
   font-weight: 700;
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
   background: var(--cs-primary-soft, #e2efe8);
   color: var(--cs-primary-deep, var(--sf-color-deep-emerald-deep)) !important;
@@ -113,12 +113,12 @@ html[data-v2-lessons="1"] .lesson-unified-card__facts {
   gap: 0.35rem 0.75rem;
   font-size: 0.8rem;
   font-weight: 650;
-  color: var(--cs-text-muted, #5f7168) !important;
+  color: var(--cs-text-muted, var(--sf-color-rich-ink-muted)) !important;
 }
 
 html[data-v2-lessons="1"] .lesson-unified-card__btn,
 html[data-v2-lessons="1"] .lesson-unified-card a.mj-btn--primary {
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   font-weight: 800;
   min-height: 44px;
   box-shadow: 0 1px 0 color-mix(in srgb, var(--mj-white) 40%, transparent);
@@ -136,7 +136,7 @@ html[data-v2-lessons="1"] .lessons-page-stats__item {
 }
 
 html[data-v2-lessons="1"] .mj-btn--ghost {
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   border-color: var(--v2-hairline);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
@@ -160,7 +160,7 @@ html[data-v2-sections="1"] .section-lobby__title::after {
   width: 2.5rem;
   height: 3px;
   margin-block-start: 0.55rem;
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   background: var(--v2-accent-gold, var(--v2-color-gold, var(--sf-color-quran-gold)));
 }
 
@@ -217,7 +217,7 @@ html[data-v2-sections="1"] .hub-card__icon,
 html[data-v2-sections="1"] .section-entry-card__icon {
   width: var(--v2-icon-tile, 2.75rem);
   height: var(--v2-icon-tile, 2.75rem);
-  border-radius: var(--v2-radius-icon, 16px);
+  border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
   background: var(--cs-primary-soft, #e2efe8) !important;
   color: var(--cs-primary-deep, var(--sf-color-deep-emerald-deep)) !important;
 }
@@ -225,7 +225,7 @@ html[data-v2-sections="1"] .section-entry-card__icon {
 html[data-v2-sections="1"] .more-page-tile__icon {
   width: var(--v2-icon-tile, 2.75rem);
   height: var(--v2-icon-tile, 2.75rem);
-  border-radius: var(--v2-radius-icon, 16px);
+  border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
   background:
     linear-gradient(
       145deg,
@@ -256,7 +256,7 @@ html[data-v2-sections="1"] .section-entry-card__desc {
   font-size: 0.86rem;
   font-weight: 450;
   line-height: 1.5;
-  color: var(--cs-text-secondary, #48645a) !important;
+  color: var(--cs-text-secondary, var(--sf-color-rich-ink-soft)) !important;
 }
 
 /* Dark */
@@ -264,8 +264,8 @@ html[data-theme="dark"][data-v2-lessons="1"] .lessons-page-v2,
 html.dark[data-v2-lessons="1"] .lessons-page-v2,
 html[data-theme="dark"][data-v2-sections="1"] .section-lobby,
 html.dark[data-v2-sections="1"] .section-lobby {
-  background: var(--v2-color-night-bg, #0a1612);
-  color: var(--v2-color-night-ink, #edf5f0);
+  background: var(--v2-color-night-bg, var(--sf-color-luxury-night));
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 html[data-theme="dark"][data-v2-lessons="1"] .lesson-unified-card,
@@ -276,7 +276,7 @@ html[data-theme="dark"][data-v2-sections="1"] .hub-card,
 html.dark[data-v2-sections="1"] .hub-card,
 html[data-theme="dark"][data-v2-sections="1"] .more-page-tile,
 html.dark[data-v2-sections="1"] .more-page-tile {
-  background: var(--v2-color-night-surface, #12261f);
+  background: var(--v2-color-night-surface, var(--sf-color-luxury-night-surface));
   border-color: var(--v2-color-night-hairline);
   color: var(--v2-color-night-ink);
 }

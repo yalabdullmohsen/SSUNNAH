@@ -29,10 +29,10 @@ html[data-theme="dark"] [class*="skeleton"],
 html.dark [class*="skeleton"],
 html[data-theme="dark"] .animate-pulse,
 html.dark .animate-pulse {
-  background-color: var(--surface-3, #2A3733) !important;
+  background-color: var(--surface-3, var(--mj-surface-3)) !important;
   background-image: none !important;
   color: transparent !important;
-  border-color: var(--border-subtle, #35443F) !important;
+  border-color: var(--border-subtle, var(--mj-chip-border)) !important;
   animation: dm-skel-pulse 1.2s ease-in-out infinite;
 }
 @keyframes dm-skel-pulse {
@@ -45,7 +45,7 @@ html[data-theme="dark"] .th-ayah--body,
 html.dark .th-ayah--body,
 html[data-theme="dark"] .sw-dalil,
 html.dark .sw-dalil {
-  background: #16261F !important;
+  background: var(--mj-brand-soft) !important;
   border: 1px solid var(--gold, #D9B871) !important;
   border-inline-end-width: 1px !important;
 }
@@ -88,19 +88,19 @@ html.dark .th-sunnah-item::before {
 html[data-theme="dark"] .sw-badge--fard,
 html.dark .sw-badge--fard {
   background: var(--danger-bg, #3A2226) !important;
-  color: var(--danger-txt, #F2B8C0) !important;
+  color: var(--danger-txt, var(--mj-danger-deep)) !important;
 }
 
 /* بطاقات الدروس — تمايز عن الخلفية + زر حفظ مرئي */
 html[data-theme="dark"] .lesson-unified-card,
 html.dark .lesson-unified-card {
   background: var(--surface-1, #1B2421) !important;
-  border: 1px solid var(--border-subtle, #35443F) !important;
+  border: 1px solid var(--border-subtle, var(--mj-chip-border)) !important;
 }
 html[data-theme="dark"] .lesson-unified-card__header,
 html.dark .lesson-unified-card__header {
   background: var(--surface-2, #222D29) !important;
-  border-color: var(--border-subtle, #35443F) !important;
+  border-color: var(--border-subtle, var(--mj-chip-border)) !important;
 }
 html[data-theme="dark"] .lesson-unified-card__title,
 html.dark .lesson-unified-card__title {
@@ -110,7 +110,7 @@ html[data-theme="dark"] .lesson-unified-card__btn--ghost,
 html[data-theme="dark"] .lesson-unified-card__btn:not(.lesson-unified-card__btn--primary),
 html.dark .lesson-unified-card__btn--ghost,
 html.dark .lesson-unified-card__btn:not(.lesson-unified-card__btn--primary) {
-  border: 1px solid var(--border-strong, #445651) !important;
+  border: 1px solid var(--border-strong, var(--mj-border-strong)) !important;
   color: var(--txt-primary, #ECF2EF) !important;
   background: var(--surface-2, #222D29) !important;
 }
@@ -120,7 +120,7 @@ html[data-theme="dark"] .mj-btn--ghost,
 html.dark .mj-btn--ghost,
 html[data-theme="dark"] .m2030-btn--ghost,
 html.dark .m2030-btn--ghost {
-  border: 1px solid var(--border-subtle, #35443F) !important;
+  border: 1px solid var(--border-subtle, var(--mj-chip-border)) !important;
   color: var(--txt-primary, #ECF2EF) !important;
 }
 
@@ -131,9 +131,9 @@ html[data-theme="dark"] .sw-section__intro,
 html.dark .sw-section__intro,
 html[data-theme="dark"] .th-info-box,
 html.dark .th-info-box {
-  background: var(--surface-3, #2A3733) !important;
+  background: var(--surface-3, var(--mj-surface-3)) !important;
   color: var(--txt-primary, #ECF2EF) !important;
-  border-color: var(--border-subtle, #35443F) !important;
+  border-color: var(--border-subtle, var(--mj-chip-border)) !important;
 }
 
 html[data-theme="dark"] .th-fardh-card,
@@ -147,7 +147,7 @@ html.dark .sw-card,
 html[data-theme="dark"] .sw-cond-card,
 html.dark .sw-cond-card {
   background: var(--surface-1, #1B2421) !important;
-  border-color: var(--border-subtle, #35443F) !important;
+  border-color: var(--border-subtle, var(--mj-chip-border)) !important;
   color: var(--txt-primary, #ECF2EF);
 }
 
@@ -187,7 +187,7 @@ html.dark .th-tab.th-tab--active[role="tab"][aria-selected="true"] .th-tab__icon
 }
 html[data-theme="dark"] .surface-brand,
 html.dark .surface-brand {
-  color: #FFFFFF !important;
+  color: var(--sf-color-ivory-raised) !important;
 }
 /* .th-hero / .sh-hero / .seerah-hero soft-card — لا تُفرض ألوان الهيرو الداكن */
 /* .sw-hero صار soft-card فاتحًا — لا تُفرض عليه ألوان الهيرو الداكن */
@@ -202,12 +202,12 @@ html.dark .lesson-unified-card__btn--primary,
 html[data-theme="dark"] .sq-header,
 html.dark .sq-header {
   background: var(--accent, #5CC095) !important;
-  color: var(--on-accent, #06231A) !important;
+  color: var(--on-accent, var(--mj-on-brand)) !important;
   border-color: var(--accent, #5CC095) !important;
 }
 html[data-theme="dark"] .sq-header :where(*),
 html.dark .sq-header :where(*) {
-  color: var(--on-accent, #06231A) !important;
+  color: var(--on-accent, var(--mj-on-brand)) !important;
 }
 
 /* ── أسطح بيضاء صلبة / حبر #111 في صفحات المحتوى ── */
@@ -242,7 +242,7 @@ html.dark :where(
   .mw-masala-card, .fa-card, .dq-card, .fq-rule-card
 ) {
   background: var(--surface, #1B2421) !important;
-  border-color: var(--border, #35443F) !important;
+  border-color: var(--border, var(--mj-chip-border)) !important;
   color: var(--txt-primary, #ECF2EF);
 }
 
@@ -290,18 +290,18 @@ html.dark :where(
 html[data-theme="dark"] .srch-history-wrap,
 html.dark .srch-history-wrap {
   background: var(--surface-muted, #222D29) !important;
-  border-color: var(--border, #35443F) !important;
+  border-color: var(--border, var(--mj-chip-border)) !important;
 }
 html[data-theme="dark"] .srch-history-chip,
 html.dark .srch-history-chip {
   background: var(--surface, #1B2421) !important;
-  border-color: var(--border-strong, #445651) !important;
+  border-color: var(--border-strong, var(--mj-border-strong)) !important;
   color: var(--txt-primary, #ECF2EF) !important;
 }
 html[data-theme="dark"] .srch-quick-card,
 html.dark .srch-quick-card {
   background: var(--surface, #1B2421) !important;
-  border-color: var(--border, #35443F) !important;
+  border-color: var(--border, var(--mj-chip-border)) !important;
   color: var(--txt-primary, #ECF2EF) !important;
 }
 html[data-theme="dark"] .srch-quick-card:hover,
@@ -317,7 +317,7 @@ html.dark textarea,
 html.dark select {
   background-color: var(--surface, #1B2421);
   color: var(--txt-primary, #ECF2EF);
-  border-color: var(--border-strong, #445651);
+  border-color: var(--border-strong, var(--mj-border-strong));
 }
 html[data-theme="dark"] input::placeholder,
 html[data-theme="dark"] textarea::placeholder,
@@ -374,7 +374,7 @@ html.dark .quran-hub-feature-item,
 html[data-theme="dark"] .quran-hub-card,
 html.dark .quran-hub-card {
   background: var(--surface, #1B2421) !important;
-  border-color: var(--border, #35443F) !important;
+  border-color: var(--border, var(--mj-chip-border)) !important;
   color: var(--txt-primary, #ECF2EF) !important;
 }
 html[data-theme="dark"] .hub-card__title,
@@ -421,7 +421,7 @@ html[data-theme="dark"] .dialog-content,
 html.dark .dialog-content {
   background: var(--surface-elevated, #222D29);
   color: var(--on-dark-body, var(--txt-primary, #F8FAFC));
-  border-color: var(--border-strong, #445651);
+  border-color: var(--border-strong, var(--mj-border-strong));
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -429,7 +429,7 @@ html.dark .dialog-content {
    ═══════════════════════════════════════════════════════════════ */
 html[data-theme="dark"],
 html.dark {
-  --ps-text-primary: var(--on-dark-strong, #FFFFFF);
+  --ps-text-primary: var(--on-dark-strong, var(--sf-color-ivory-raised));
   --ps-text-body: var(--on-dark-body, #F8FAFC);
   --ps-detail-soft: var(--on-dark-body, #F8FAFC);
   --ps-detail-muted: var(--on-dark-secondary, #E8EEEC);
@@ -465,7 +465,7 @@ html.dark :where(
   .quran-hub-stats,
   .surface-brand,
 ) {
-  color: var(--on-dark-strong, #FFFFFF) !important;
+  color: var(--on-dark-strong, var(--sf-color-ivory-raised)) !important;
 }
 
 html[data-theme="dark"] :where(
@@ -506,7 +506,7 @@ html.dark :where(
   [class$="__name"],
   [class$="__heading"]
 ) {
-  color: var(--on-dark-strong, #FFFFFF) !important;
+  color: var(--on-dark-strong, var(--sf-color-ivory-raised)) !important;
   opacity: 1 !important;
   font-weight: 700;
 }
@@ -567,7 +567,7 @@ html.dark :where(
 /* أقسام القصص الطويلة — عنوان + متن صلبان */
 html[data-theme="dark"] .prophet-section-lux__title,
 html.dark .prophet-section-lux__title {
-  color: var(--on-dark-strong, #FFFFFF) !important;
+  color: var(--on-dark-strong, var(--sf-color-ivory-raised)) !important;
   opacity: 1 !important;
   font-weight: 700 !important;
 }
@@ -648,7 +648,7 @@ html.dark :where(
   .search-suggestions-panel
 ) {
   background-color: var(--surface-1, #1B2421);
-  border-color: var(--border-subtle, #35443F);
+  border-color: var(--border-subtle, var(--mj-chip-border));
   color: var(--txt-primary, #F8FAFC);
 }
 
@@ -752,7 +752,7 @@ html.dark :where(
   [aria-label="رجوع"]
 ) {
   color: var(--txt-primary, #F8FAFC) !important;
-  border-color: var(--border-strong, #445651);
+  border-color: var(--border-strong, var(--mj-border-strong));
 }
 
 /* ═══════════════════════════════════════════════════════════════

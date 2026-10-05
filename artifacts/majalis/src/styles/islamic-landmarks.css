@@ -134,7 +134,7 @@ html[data-theme="dark"] .ilm-cta--secondary {
 }
 
 .ilm-chip--active {
-  background: color-mix(in srgb, var(--mj-brand) 14%, #fff);
+  background: color-mix(in srgb, var(--mj-brand) 14%, var(--sf-color-ivory-raised));
   border-color: color-mix(in srgb, var(--mj-brand) 45%, transparent);
   color: var(--mj-brand-deep);
 }
@@ -142,14 +142,14 @@ html[data-theme="dark"] .ilm-cta--secondary {
 html.dark .ilm-chip,
 html[data-theme="dark"] .ilm-chip {
   background: #1b2421;
-  border-color: #35443f;
+  border-color: var(--mj-chip-border);
   color: #e8f2ed;
 }
 
 html.dark .ilm-chip--active,
 html[data-theme="dark"] .ilm-chip--active {
   background: color-mix(in srgb, var(--mj-brand) 28%, #1b2421);
-  border-color: color-mix(in srgb, var(--mj-brand) 50%, #35443f);
+  border-color: color-mix(in srgb, var(--mj-brand) 50%, var(--mj-chip-border));
   color: #d8f0e6;
 }
 
@@ -196,7 +196,7 @@ html[data-theme="dark"] .ilm-chip--active {
   border-radius: var(--sf-radius-xs);
   border: none;
   background: var(--mj-brand);
-  color: #fff;
+  color: var(--sf-color-ivory-raised);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -303,12 +303,12 @@ html[data-theme="dark"] .ilm-chip--active {
 }
 
 .ilm-badge--type {
-  background: color-mix(in srgb, var(--mj-brand) 14%, #fff);
+  background: color-mix(in srgb, var(--mj-brand) 14%, var(--sf-color-ivory-raised));
   color: var(--mj-brand-deep);
 }
 
 .ilm-badge--era {
-  background: color-mix(in srgb, #b89620 16%, #fff);
+  background: color-mix(in srgb, #b89620 16%, var(--sf-color-ivory-raised));
   color: #6b5410;
 }
 
@@ -320,7 +320,7 @@ html[data-theme="dark"] .ilm-badge--type {
 
 html.dark .ilm-badge--era,
 html[data-theme="dark"] .ilm-badge--era {
-  background: color-mix(in srgb, #c9a82e 22%, #1b2421);
+  background: color-mix(in srgb, var(--sf-color-quran-gold) 22%, #1b2421);
   color: #f0e2a8;
 }
 
@@ -531,7 +531,7 @@ html[data-theme="dark"] .ilm-badge--era {
   position: absolute;
   inset-inline: 1rem;
   bottom: calc(1rem + var(--inset-bottom, 0px) + var(--bottom-nav-height, 0px));
-  z-index: 500;
+  z-index: var(--z-toast);
   margin: 0;
   padding: 0.65rem 0.85rem;
   border-radius: var(--sf-radius-xs);
@@ -554,7 +554,7 @@ html[data-theme="dark"] .ilm-badge--era {
   border-radius: var(--radius-pill, 999rem);
   border: 1px solid var(--mj-brand);
   background: var(--mj-brand);
-  color: #fff;
+  color: var(--sf-color-ivory-raised);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -564,13 +564,13 @@ html.dark .ilm-map-state,
 html[data-theme="dark"] .ilm-map-state {
   background: color-mix(in srgb, #1b2421 94%, transparent);
   color: #f3f7f5;
-  border-color: #35443f;
+  border-color: var(--mj-chip-border);
 }
 
 html.dark .ilm-card,
 html[data-theme="dark"] .ilm-card {
   background: #1b2421;
-  border-color: #35443f;
+  border-color: var(--mj-chip-border);
 }
 
 html.dark .ilm-card__name,

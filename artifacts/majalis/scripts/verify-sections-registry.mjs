@@ -321,7 +321,7 @@ const SPACING = new Set([8, 12, 16, 24]);
       if (!/\.card\s*\{/.test(css)) fail("CSS: .card مفقود");
       if (!/\.card--featured/.test(css)) fail("CSS: .card--featured مفقود");
       if (!/\.card--compact/.test(css)) fail("CSS: .card--compact مفقود");
-      if (!/border-radius:\s*var\(--radius-tile,\s*24px\)/.test(css) && !/border-radius:\s*24px/.test(css) && !/border-radius:\s*22px/.test(css)) {
+      if (!/border-radius:\s*var\(--radius-tile,\s*(?:24px|var\(--sf-radius-lg\))\)/.test(css) && !/border-radius:\s*24px/.test(css) && !/border-radius:\s*22px/.test(css)) {
         fail("CSS: border-radius ناعم (--radius-tile / 24px) مفقود");
       }
       if (!/min-height:\s*44px/.test(css)) fail("CSS: min-height 44px مفقود");

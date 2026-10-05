@@ -31,7 +31,7 @@ html[data-v2-knowledge="1"] .topic-page__hero.safe-hero {
   border: 1px solid color-mix(in srgb, #d4b45c 35%, #0a2f24);
   background-color: var(--cs-ink-hero, #0a2f24) !important;
   background-image: none !important;
-  color: var(--cs-on-ink, #f7f1e4) !important;
+  color: var(--cs-on-ink, var(--sf-color-on-emerald)) !important;
   box-shadow: var(--v2-shadow-soft);
   padding: var(--v2-space-5, 1.25rem) var(--v2-space-5, 1.25rem) var(--v2-space-4, 1rem);
 }
@@ -61,7 +61,7 @@ html[data-v2-knowledge="1"] .topic-page__eyebrow,
 html[data-v2-knowledge="1"] .safe-hero__badge {
   background: color-mix(in srgb, var(--mj-white) 14%, transparent) !important;
   color: var(--cs-gold-ink, #f0e2b0) !important;
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   font-weight: 700;
 }
 
@@ -76,13 +76,13 @@ html[data-v2-knowledge="1"] .topic-page__title::after {
   width: 2.5rem;
   height: 3px;
   margin-block-start: 0.55rem;
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   background: var(--v2-accent-gold, var(--v2-color-gold, var(--sf-color-quran-gold)));
 }
 
 html[data-v2-knowledge="1"] .section-hero__back,
 html[data-v2-knowledge="1"] .section-hero__back-row .app-back-btn {
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   border-color: var(--v2-hairline);
   background: var(--v2-color-ivory-surface, #fffcf8);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
@@ -144,7 +144,7 @@ html[data-v2-knowledge="1"] .twh-pillar-icon,
 html[data-v2-knowledge="1"] .section-hero__icon {
   width: var(--v2-icon-tile, 2.75rem);
   height: var(--v2-icon-tile, 2.75rem);
-  border-radius: var(--v2-radius-icon, 16px);
+  border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
   background: var(--v2-color-emerald-soft, #e2efe8);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
@@ -153,7 +153,7 @@ html[data-v2-knowledge="1"] .tawheed-type-card__num,
 html[data-v2-knowledge="1"] .twh-pillar-num {
   background: var(--v2-color-emerald-soft, #e2efe8);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
-  border-radius: var(--v2-radius-icon, 16px);
+  border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
 }
 
 /* ── فقه: فلاتر وبحث وإحصاءات ── */
@@ -171,7 +171,7 @@ html[data-v2-knowledge="1"] .page-search-input {
 html[data-v2-knowledge="1"] .fiqh-hub-search__icon-btn {
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: var(--v2-radius-icon, 16px);
+  border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
   background: var(--v2-color-emerald-soft, #e2efe8);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   border: 1px solid var(--v2-hairline);
@@ -200,7 +200,7 @@ html[data-v2-knowledge="1"] .fiqh-hub-stats {
 }
 
 html[data-v2-knowledge="1"] .fiqh-hub-stats__item {
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   border: 1px solid var(--v2-hairline);
   background: var(--v2-color-ivory-surface, #fffcf8);
   padding: 0.35rem 0.85rem;
@@ -210,7 +210,7 @@ html[data-v2-knowledge="1"] .fiqh-hub-stats__item {
 
 /* ── حديث: تبديل أقسام + أدوات ── */
 html[data-v2-knowledge="1"] .hadith-class-switch__link {
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   border: 1px solid var(--v2-hairline);
   background: var(--v2-color-ivory-surface, #fffcf8);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
@@ -230,7 +230,7 @@ html[data-v2-knowledge="1"] .twh-jumpnav {
 
 html[data-v2-knowledge="1"] .twh-jumpnav__btn,
 html[data-v2-knowledge="1"] .twh-goto-btn {
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   border: 1px solid var(--v2-hairline);
   background: var(--v2-color-emerald-soft, #e2efe8);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
@@ -246,8 +246,8 @@ html[data-theme="dark"][data-v2-knowledge="1"] .hadith-page,
 html.dark[data-v2-knowledge="1"] .hadith-page,
 html[data-theme="dark"][data-v2-knowledge="1"] .tawhid-hub,
 html.dark[data-v2-knowledge="1"] .tawhid-hub {
-  background: var(--v2-color-night-bg, #0a1612);
-  color: var(--v2-color-night-ink, #edf5f0);
+  background: var(--v2-color-night-bg, var(--sf-color-luxury-night));
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 html[data-theme="dark"][data-v2-knowledge="1"] .topic-page__hero,
@@ -262,7 +262,7 @@ html[data-theme="dark"][data-v2-knowledge="1"] .tawheed-type-card,
 html.dark[data-v2-knowledge="1"] .tawheed-type-card,
 html[data-theme="dark"][data-v2-knowledge="1"] .twh-pillar-card,
 html.dark[data-v2-knowledge="1"] .twh-pillar-card {
-  background: var(--v2-color-night-surface, #12261f);
+  background: var(--v2-color-night-surface, var(--sf-color-luxury-night-surface));
   border-color: var(--v2-color-night-hairline);
   color: var(--v2-color-night-ink);
 }
@@ -271,7 +271,7 @@ html[data-theme="dark"][data-v2-knowledge="1"] .topic-page__hero .ss-text--on-br
 html.dark[data-v2-knowledge="1"] .topic-page__hero .ss-text--on-brand,
 html[data-theme="dark"][data-v2-knowledge="1"] .topic-page__title,
 html.dark[data-v2-knowledge="1"] .topic-page__title {
-  color: var(--v2-color-night-ink, #edf5f0);
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 html[data-theme="dark"][data-v2-knowledge="1"] .topic-page__hero .topic-page__sub,

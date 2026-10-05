@@ -70,7 +70,7 @@
   display: flex;
   flex-shrink: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
-  background: #fff;
+  background: var(--sf-color-ivory-raised);
   padding-bottom: var(--inset-bottom);
 }
 
@@ -226,7 +226,7 @@
   border: none;
   border-radius: 0.55rem;
   background: #795548;
-  color: #fff;
+  color: var(--sf-color-ivory-raised);
   font: inherit;
   font-weight: 600;
   cursor: pointer;
@@ -275,7 +275,7 @@
 .smart-search {
   position: fixed;
   inset: 0;
-  z-index: 10040;
+  z-index: var(--z-overlay-drawer);
   display: flex;
   flex-direction: column;
   background: #faf8f5;
@@ -348,7 +348,7 @@
 .smart-search__chip.is-on {
   background: #795548;
   border-color: #795548;
-  color: #fff;
+  color: var(--sf-color-ivory-raised);
 }
 
 .smart-search__results {
@@ -403,7 +403,7 @@
 .tafsir-modal-overlay {
   position: fixed;
   inset: 0;
-  z-index: 10050;
+  z-index: var(--z-overlay-sheet);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -425,7 +425,7 @@
   width: min(100%, 32rem);
   height: min(60vh, 32rem);
   background: #faf8f5;
-  border-radius: var(--radius-card, 1.5rem) 24px 0 0;
+  border-radius: var(--radius-card, 1.5rem) var(--sf-radius-lg) 0 0;
   padding: 1.25rem 1.5rem max(1.5rem, var(--inset-bottom));
   display: flex;
   flex-direction: column;

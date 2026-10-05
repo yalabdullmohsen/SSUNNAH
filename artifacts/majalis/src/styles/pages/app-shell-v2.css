@@ -68,13 +68,13 @@ html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .card__label {
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .hub-card .hub-card__desc,
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .section-entry-card__desc,
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .card__subtitle {
-  color: var(--cs-text-secondary, #48645a) !important;
+  color: var(--cs-text-secondary, var(--sf-color-rich-ink-soft)) !important;
   opacity: 1 !important;
 }
 
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .hub-card .hub-card__meta,
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .hub-card .hub-card__go {
-  color: var(--cs-text-muted, #5f7168) !important;
+  color: var(--cs-text-muted, var(--sf-color-rich-ink-muted)) !important;
 }
 
 html[data-v2-app="1"]:not([data-theme="dark"]):not(.dark) .lesson-unified-card,
@@ -127,7 +127,7 @@ html[data-v2-app="1"] .section-entry-card__icon,
 html[data-v2-app="1"] .card__icon {
   width: var(--v2-icon-tile, 2.75rem);
   height: var(--v2-icon-tile, 2.75rem);
-  border-radius: var(--v2-radius-icon, 16px);
+  border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
   background: var(--cs-primary-soft, var(--v2-color-emerald-soft, #e2efe8)) !important;
   color: var(--cs-primary-deep, var(--v2-color-emerald-deep, var(--sf-color-deep-emerald-deep))) !important;
 }
@@ -136,7 +136,7 @@ html[data-v2-app="1"] .more-page-tile__icon,
 html[data-v2-app="1"] .soft-card:not(.hub-card) .icon-tile {
   width: var(--v2-icon-tile, 2.75rem);
   height: var(--v2-icon-tile, 2.75rem);
-  border-radius: var(--v2-radius-icon, 16px);
+  border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
   background: var(--v2-color-emerald-soft, #e2efe8);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
@@ -207,7 +207,7 @@ html[data-v2-app="1"] .es2 {
   padding: var(--v2-space-8, 2rem) var(--v2-space-5, 1.25rem);
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-muted, #efe8dc);
+  background: var(--v2-color-ivory-muted, var(--sf-color-warm-ivory-muted));
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
@@ -216,7 +216,7 @@ html[data-v2-app="1"] .es2__icon {
   height: var(--v2-icon-tile, 2.75rem);
   display: grid;
   place-items: center;
-  border-radius: var(--v2-radius-icon, 16px);
+  border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
   background: var(--v2-color-emerald-soft, #e2efe8);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
@@ -255,7 +255,7 @@ html[data-v2-app="1"] .es2__cta {
   margin-block-start: var(--v2-space-2, 0.5rem);
   min-height: 44px;
   padding-inline: var(--v2-space-5, 1.25rem);
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   border: none;
   background: var(--v2-color-emerald, var(--mj-brand));
   color: var(--v2-color-on-emerald, var(--mj-white));
@@ -269,7 +269,7 @@ html[data-v2-app="1"] .es2__cta {
 html[data-v2-app="1"] .mj-empty {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-muted, #efe8dc);
+  background: var(--v2-color-ivory-muted, var(--sf-color-warm-ivory-muted));
   padding: var(--v2-space-8, 2rem) var(--v2-space-5, 1.25rem);
 }
 
@@ -290,7 +290,7 @@ html[data-v2-app="1"] .ds-btn--primary,
 html[data-v2-app="1"] .m2030-btn--primary,
 html[data-v2-app="1"] .kp-btn--primary,
 html[data-v2-app="1"] .page-action-btn:not(.page-action-btn--secondary):not(.page-action-btn--danger) {
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
 }
 
 /* Dark — Luxury Night على الجسر */
@@ -298,8 +298,8 @@ html[data-theme="dark"][data-v2-app="1"] body,
 html.dark[data-v2-app="1"] body,
 html[data-theme="dark"][data-v2-app="1"] .app-shell,
 html.dark[data-v2-app="1"] .app-shell {
-  background-color: var(--v2-color-night-bg, #0a1612);
-  color: var(--v2-color-night-ink, #edf5f0);
+  background-color: var(--v2-color-night-bg, var(--sf-color-luxury-night));
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 html[data-theme="dark"][data-v2-app="1"] .soft-card,
@@ -323,7 +323,7 @@ html.dark[data-v2-app="1"] .es2 {
   background-color: var(--surface-elevated, var(--v2-color-night-surface, #24302b)) !important;
   background-image: none !important;
   border-color: var(--v2-color-night-hairline);
-  color: var(--v2-color-night-ink, #edf5f0) !important;
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink)) !important;
 }
 
 /* CI #7543 — عناوين HubCard ليلية تغلب أي حبر غني متبقٍ من طبقات فاتحة */
@@ -339,7 +339,7 @@ html[data-theme="dark"][data-v2-app="1"] .lesson-unified-card__title,
 html.dark[data-v2-app="1"] .lesson-unified-card__title,
 html[data-theme="dark"][data-v2-app="1"] .lesson-unified-card__sheikh,
 html.dark[data-v2-app="1"] .lesson-unified-card__sheikh {
-  color: var(--sf2-text-primary, var(--sf-color-luxury-night-ink, #edf5f0)) !important;
+  color: var(--sf2-text-primary, var(--sf-color-luxury-night-ink, var(--sf-color-luxury-night-ink))) !important;
   font-weight: 700 !important;
 }
 
@@ -359,14 +359,14 @@ html[data-theme="dark"][data-v2-app="1"] .hub-card .hub-card__go,
 html.dark[data-v2-app="1"] .hub-card .hub-card__go,
 html[data-theme="dark"][data-v2-app="1"] .hub-card .cs2-nav__meta,
 html.dark[data-v2-app="1"] .hub-card .cs2-nav__meta {
-  color: color-mix(in srgb, var(--mj-brand) 70%, #edf5f0) !important;
+  color: color-mix(in srgb, var(--mj-brand) 70%, var(--sf-color-luxury-night-ink)) !important;
 }
 
 html[data-theme="dark"][data-v2-app="1"] .ph2__title,
 html.dark[data-v2-app="1"] .ph2__title,
 html[data-theme="dark"][data-v2-app="1"] .section-lobby__title,
 html.dark[data-v2-app="1"] .section-lobby__title {
-  color: var(--v2-color-night-ink, #edf5f0);
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 html[data-theme="dark"][data-v2-app="1"] .ph2__desc,
@@ -414,7 +414,7 @@ html[data-v2-app="1"] .twh-hub-hero {
   border: 1px solid color-mix(in srgb, #d4b45c 35%, #0a2f24);
   background-color: var(--cs-ink-hero, #0a2f24) !important;
   background-image: none !important;
-  color: var(--cs-on-ink, #f7f1e4) !important;
+  color: var(--cs-on-ink, var(--sf-color-on-emerald)) !important;
   box-shadow: var(--v2-shadow-soft);
   padding: var(--v2-space-5, 1.25rem) var(--v2-space-5, 1.25rem) var(--v2-space-4, 1rem);
 }
@@ -450,7 +450,7 @@ html[data-v2-app="1"] .topic-page__eyebrow,
 html[data-v2-app="1"] .safe-hero__badge {
   background: color-mix(in srgb, var(--mj-white) 14%, transparent) !important;
   color: var(--cs-gold-ink, #f0e2b0) !important;
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   font-weight: 700;
 }
 
@@ -465,13 +465,13 @@ html[data-v2-app="1"] .topic-page__title::after {
   width: 2.5rem;
   height: 3px;
   margin-block-start: 0.55rem;
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   background: var(--v2-accent-gold, var(--v2-color-gold, var(--sf-color-quran-gold)));
 }
 
 html[data-v2-app="1"] .section-hero__back,
 html[data-v2-app="1"] .section-hero__back-row .app-back-btn {
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   border-color: var(--v2-hairline);
   background: var(--v2-color-ivory-surface, #fffcf8);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
@@ -526,7 +526,7 @@ html[data-v2-app="1"] .legal-page-hero {
 html[data-v2-app="1"] .legal-page-eyebrow {
   display: inline-flex;
   padding: 0.25rem 0.75rem;
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   background: var(--v2-color-emerald-soft, #e2efe8);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   font-weight: 700;
@@ -544,7 +544,7 @@ html[data-v2-app="1"] .legal-page-hero h1::after {
   width: 2.5rem;
   height: 3px;
   margin-block-start: 0.55rem;
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   background: var(--v2-accent-gold, var(--v2-color-gold, var(--sf-color-quran-gold)));
 }
 
@@ -562,8 +562,8 @@ html[data-theme="dark"][data-v2-app="1"] .topic-page,
 html.dark[data-v2-app="1"] .topic-page,
 html[data-theme="dark"][data-v2-app="1"] .topic-page__body,
 html.dark[data-v2-app="1"] .topic-page__body {
-  background-color: var(--v2-color-night-bg, #0a1612);
-  color: var(--v2-color-night-ink, #edf5f0);
+  background-color: var(--v2-color-night-bg, var(--sf-color-luxury-night));
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 html[data-theme="dark"][data-v2-app="1"] .topic-page__hero,
@@ -580,7 +580,7 @@ html[data-theme="dark"][data-v2-app="1"] .hadith-card,
 html.dark[data-v2-app="1"] .hadith-card,
 html[data-theme="dark"][data-v2-app="1"] .gl-term,
 html.dark[data-v2-app="1"] .gl-term {
-  background: var(--v2-color-night-surface, #12261f);
+  background: var(--v2-color-night-surface, var(--sf-color-luxury-night-surface));
   border-color: var(--v2-color-night-hairline);
   color: var(--v2-color-night-ink);
 }
@@ -591,7 +591,7 @@ html[data-theme="dark"][data-v2-app="1"] .topic-page__title,
 html.dark[data-v2-app="1"] .topic-page__title,
 html[data-theme="dark"][data-v2-app="1"] .legal-page-hero h1,
 html.dark[data-v2-app="1"] .legal-page-hero h1 {
-  color: var(--v2-color-night-ink, #edf5f0);
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 html[data-theme="dark"][data-v2-app="1"] .topic-page__hero .topic-page__sub,
@@ -647,7 +647,7 @@ html[data-v2-app="1"] .kx-library-card:active {
 html[data-v2-app="1"] .hub-card__icon,
 html[data-v2-app="1"] .section-entry-card__icon {
   background: var(--cs-on-ink-icon-bg, color-mix(in srgb, var(--mj-white) 14%, transparent)) !important;
-  color: var(--cs-on-ink-icon, #f7f1e4) !important;
+  color: var(--cs-on-ink-icon, var(--sf-color-on-emerald)) !important;
 }
 
 html[data-v2-app="1"] .more-page-tile__icon,
