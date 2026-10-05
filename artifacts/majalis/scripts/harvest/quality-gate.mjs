@@ -1,4 +1,9 @@
-import { normalizeArabic, stripEmojiFromTitle, stripLessonSeriesNumbers } from "./normalize.mjs";
+import {
+  normalizeArabic,
+  scrubForbiddenBrandPhrases,
+  stripEmojiFromTitle,
+  stripLessonSeriesNumbers,
+} from "./normalize.mjs";
 import { classifyType, detectScheduleKind, extractFields } from "./classify.mjs";
 
 export const PUBLISH_MAX_AGE_DAYS = 14;
@@ -399,10 +404,12 @@ export function curateStoredFeedItems(items, now = new Date()) {
       card.title_ar.trim().length >= 3 &&
       card.title_ar.trim().length <= 80 &&
       !/…|\.\.\.$/.test(card.title_ar.trim());
+    const titleRaw = keepTitle ? card.title_ar.trim() : gate.title_ar;
     kept.push({
       ...card,
       type: gate.type,
-      title_ar: keepTitle ? card.title_ar.trim() : gate.title_ar,
+      title_ar: scrubForbiddenBrandPhrases(titleRaw),
+      summary_ar: scrubForbiddenBrandPhrases(card.summary_ar ?? ""),
       published_at: resolvedPublished || card.published_at,
     });
   }

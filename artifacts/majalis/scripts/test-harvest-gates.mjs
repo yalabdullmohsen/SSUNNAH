@@ -497,4 +497,23 @@ console.log("=== Instagram probe: unchanged لا يغيّر feed ===");
 }
 
 
+console.log("=== brand scrub: المجلس العلمي → الدرس العلمي ===");
+{
+  const { spawnSync } = await import("node:child_process");
+  const scrub = spawnSync(
+    process.execPath,
+    [resolve(root, "scripts/harvest/__tests__/brand-scrub.test.mjs")],
+    { encoding: "utf8" },
+  );
+  if (scrub.status !== 0) {
+    process.stderr.write(scrub.stdout || "");
+    process.stderr.write(scrub.stderr || "");
+    assert.fail("brand-scrub.test.mjs failed");
+  }
+  for (const item of feed.items) {
+    assert.doesNotMatch(item.title_ar || "", /المجلس العلمي/);
+    assert.doesNotMatch(item.summary_ar || "", /المجلس العلمي/);
+  }
+}
+
 console.log("test-harvest-gates.mjs: ok");
