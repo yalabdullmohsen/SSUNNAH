@@ -22,7 +22,7 @@ const FORBIDDEN_PREFIXES = [
 ];
 
 /** مهارات مشروع مختارة يدويًا تُشارَك عبر المستودع (ليست حزم ECC مولَّدة). */
-const ALLOWED_PREFIXES = [".claude/skills/graphify/"];
+const ALLOWED_PREFIXES = [".claude/skills/graphify/", ".claude/skills/sharia-content/"];
 
 function trackedFiles() {
   const out = execFileSync("git", ["ls-files", "-z", "--", ".claude", ".agents", ".codex"], {
