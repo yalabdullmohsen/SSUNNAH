@@ -3,42 +3,8 @@ import { buildErrorReport, createErrorId, logClientError } from "@/lib/error-rep
 import { Button } from "@/components/ui/button";
 
 /* ─── شارة الحالة الموحّدة ──────────────────────────────────────────────
-   توحّد عرض حالة عناصر المحتوى عبر كل الأقسام:
-   بانتظار المراجعة / موثّق / مرفوض / مسودة / منشور. */
-
-type BadgeVariant = "pending" | "approved" | "rejected" | "draft" | "published" | "neutral";
-
-const STATUS_MAP: Record<string, { variant: BadgeVariant; label: string }> = {
-  // بانتظار المراجعة
-  pending: { variant: "pending", label: "بانتظار المراجعة" },
-  pending_review: { variant: "pending", label: "بانتظار المراجعة" },
-  needs_review: { variant: "pending", label: "يحتاج مراجعة" },
-  in_review: { variant: "pending", label: "قيد المراجعة" },
-  // موثّق / معتمد
-  approved: { variant: "approved", label: "موثّق" },
-  verified: { variant: "approved", label: "موثّق" },
-  published: { variant: "published", label: "منشور" },
-  featured: { variant: "approved", label: "مميّز" },
-  // مرفوض
-  rejected: { variant: "rejected", label: "مرفوض" },
-  archived: { variant: "rejected", label: "مؤرشف" },
-  // مسودة / مخفي
-  draft: { variant: "draft", label: "مسودة" },
-  hidden: { variant: "draft", label: "مخفي" },
-  unpublished: { variant: "draft", label: "مخفي" },
-  under_review: { variant: "pending", label: "قيد المراجعة" },
-  review_pending: { variant: "pending", label: "قيد المراجعة" },
-};
-
-export function StatusBadge({ status, label }: { status: string | null | undefined; label?: string }) {
-  const key = (status ?? "").toString().trim().toLowerCase();
-  const entry = STATUS_MAP[key] ?? { variant: "neutral" as BadgeVariant, label: label ?? (status || "—") };
-  return (
-    <span className={`admin-badge admin-badge--${entry.variant}`}>
-      {label ?? entry.label}
-    </span>
-  );
-}
+   تفويض إلى سلطة التخطيط (components/admin/AdminLayout → lib/admin-status). */
+export { AdminStatusPill as StatusBadge } from "@/components/admin/AdminLayout";
 
 /* ─── حاجز أخطاء على مستوى القسم ─────────────────────────────────────────
    يعزل انهيار أي قسم عن بقية اللوحة ويعرض بطاقة إعادة محاولة بدل

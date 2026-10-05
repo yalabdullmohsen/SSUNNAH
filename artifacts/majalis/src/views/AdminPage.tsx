@@ -1,10 +1,10 @@
 import { Suspense, useEffect, useState } from "react";
 import { useLocation } from "wouter";
-import "@/styles/admin.css";
 import { applyPageSeo } from "@/lib/seo";
 import { lazyWithRetry } from "@/lib/lazy-with-retry";
 import { Loading } from "@/components/ui-common";
-import { AdminShell, type AdminSection } from "@/views/admin/AdminShell";
+import { AdminShell, resolveAdminSection, type AdminSection } from "@/views/admin/AdminShell";
+import { AdminSectionBoundary } from "@/views/admin/AdminUI";
 
 // كانت جميع أقسام لوحة التحكم (42 قسمًا) تُستورد وتُنفَّذ دفعة واحدة عند
 // دخول /admin مهما كان القسم المعروض فعليًا — هذا هو السبب الجذري لـ"تعليق"
@@ -193,15 +193,14 @@ export default function AdminPage() {
   const initialSection = (() => {
     if (typeof window === "undefined") return "dashboard" as AdminSection;
     const params = new URLSearchParams(window.location.search);
-    const section = params.get("section");
-    return (section as AdminSection) || "dashboard";
+    return resolveAdminSection(params.get("section"));
   })();
   const [section, setSection] = useState<AdminSection>(initialSection);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const next = params.get("section") as AdminSection | null;
-    if (next) setSection(next);
+    const next = params.get("section");
+    if (next) setSection(resolveAdminSection(next));
   }, [location]);
 
   // كان تبديل القسم يحدّث حالة React الداخلية فقط (setSection) بلا أي
@@ -220,6 +219,7 @@ export default function AdminPage() {
 
   return (
     <AdminShell section={section} onSectionChange={handleSectionChange}>
+      <AdminSectionBoundary name={section} resetKey={section}>
       <Suspense fallback={<Loading />}>
       {section === "image-import" && <ImageImportSection />}
       {section === "telegram" && <TelegramSection />}
@@ -242,7 +242,6 @@ export default function AdminPage() {
       {section === "governance" && <GovernanceSection />}
       {section === "knowledge-graph" && <RelationshipsSection />}
       {section === "quiz" && <QuizSection />}
-      {section === "telegram" && <TelegramSection />}
       {section === "lessons" && <LessonsSection />}
       {section === "sheikhs" && <SheikhsSection />}
       {section === "library" && <LibrarySection />}
@@ -264,6 +263,7 @@ export default function AdminPage() {
       {section === "researches" && <ResearchesSection />}
       {section === "updates" && <UpdatesSection />}
       </Suspense>
+      </AdminSectionBoundary>
     </AdminShell>
   );
 }

@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState, ty
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
 import { useAuth } from "@/components/AuthProvider";
-import "@/styles/pages/admin-shell.css";
+import "@/styles/admin.css";
 import {
   AlertTriangle, BookOpen, Bot, Brain, Building2, CalendarClock, CheckCircle2, Compass, Dna, FolderTree,
   FlaskConical, Flag, GraduationCap, Globe, HelpCircle, Heart, Image, Landmark,
@@ -147,6 +147,35 @@ const NAV_GROUPS: Array<{ title?: string; items: NavItem[] }> = [
   },
 ];
 
+/** مفاتيح الأقسام الصالحة — مصدر واحد للتحقق من ?section= (قسم مجهول ← لوحة التحكم). */
+export const ADMIN_SECTION_KEYS: ReadonlySet<AdminSection> = new Set(
+  NAV_GROUPS.flatMap((g) => g.items.map((i) => i.key)),
+);
+
+export function resolveAdminSection(raw: string | null | undefined): AdminSection {
+  const key = (raw ?? "").trim() as AdminSection;
+  return ADMIN_SECTION_KEYS.has(key) ? key : "dashboard";
+}
+
+/** عناوين الصفحات المستقلة (مسارات /admin/* خارج ?section=) — كانت تُعنون باسم القسم المضيف (مثل «الدروس»). */
+const STANDALONE_TITLES: Record<string, string> = {
+  "/admin/sources": "مصادر المحتوى",
+  "/admin/automation/sources": "مصادر المحتوى",
+  "/admin/automation/dashboard": "مراقبة الأتمتة",
+  "/admin/automation/platform": "منصة المعرفة MKE",
+  "/admin/automation/center": "مركز الأتمتة",
+  "/admin/autonomous-platform": "المنصة الذاتية AKP",
+  "/admin/integrations/instagram": "تكامل Instagram",
+  "/admin/review-center": "مركز مراجعة المحتوى",
+  "/admin/automation/review": "مركز مراجعة المحتوى",
+  "/admin/content-import/url": "إضافة درس من رابط",
+  "/admin/content-import/image": "إضافة درس من صورة",
+  "/admin/auto-content": "الاستيراد التلقائي",
+  "/admin/content-production": "إنتاج المحتوى",
+  "/admin/automation/content-production": "إنتاج المحتوى",
+  "/admin/universities": "دليل الجامعات",
+};
+
 type Flash = { type: "success" | "error"; message: string } | null;
 
 type AdminShellContextValue = {
@@ -195,7 +224,7 @@ export function AdminShell({ section, onSectionChange, children }: AdminShellPro
   const [flash, setFlash]           = useState<Flash>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { logout, user }            = useAuth();
-  const [, navigate]                = useLocation();
+  const [location, navigate]        = useLocation();
   const flashTimerRef               = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => () => { if (flashTimerRef.current) clearTimeout(flashTimerRef.current); }, []);
@@ -229,6 +258,7 @@ export function AdminShell({ section, onSectionChange, children }: AdminShellPro
   const initials = getInitials(fullName);
 
   const currentLabel =
+    STANDALONE_TITLES[(location.split("?")[0] || "").replace(/\/+$/, "")] ??
     NAV_GROUPS.flatMap((g) => g.items).find((i) => i.key === section)?.label ?? "لوحة التحكم";
 
   return (
