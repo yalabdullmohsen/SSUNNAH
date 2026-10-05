@@ -39,7 +39,7 @@ pnpm --filter @workspace/majalis run build
 
 git push origin "HEAD:$BRANCH"
 
-REPO="$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null || echo "yalabdullmohsen/majalis")"
+REPO="$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null || echo "yalabdullmohsen/SSUNNAH")"
 TITLE="$COMMIT_MSG"
 BODY="## الملخص
 دمج تلقائي من \`$BRANCH\` بعد نجاح البوابات المحلية.
