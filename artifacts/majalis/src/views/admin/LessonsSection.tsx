@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { AlertTriangle } from "lucide-react";
 import { Link } from "wouter";
 import { arabicMatchAny } from "@/lib/arabic-search";
@@ -225,10 +226,10 @@ export function LessonsSection() {
           <Link href="/admin/review-center" className="les-link-btn les-link-btn--pink">مركز المراجعة</Link>
           <Link href="/admin/content-import/image" className="les-link-btn les-link-btn--blue">إضافة درس من صورة</Link>
           <Link href="/admin/content-import/url" className="les-link-btn les-link-btn--purple">إضافة درس من رابط</Link>
-          <button type="button" onClick={handleSyncSeed} disabled={syncing} className="les-sync-btn">
+          <Button type="button" variant="outline" onClick={handleSyncSeed} disabled={syncing} className="les-sync-btn">
             {syncing ? "جاري المزامنة…" : "⬆ مزامنة الكتالوج مع DB"}
-          </button>
-          <button type="button" onClick={openAdd} className="les-add-btn">+ إضافة درس</button>
+          </Button>
+          <Button type="button" variant="primary" onClick={openAdd} className="les-add-btn">+ إضافة درس</Button>
         </div>
       </div>
       {syncMsg && (
@@ -289,8 +290,8 @@ export function LessonsSection() {
                     </td>
                     <td className="les-td">
                       <div className="les-cell-actions">
-                        <button type="button" onClick={() => openEdit(item)} className="les-btn-edit">تعديل</button>
-                        <button type="button" onClick={() => handleDelete(item.id, item.title)} className="les-btn-del">حذف</button>
+                        <Button type="button" variant="ghost" onClick={() => openEdit(item)} className="les-btn-edit">تعديل</Button>
+                        <Button type="button" variant="destructive" onClick={() => handleDelete(item.id, item.title)} className="les-btn-del">حذف</Button>
                       </div>
                     </td>
                   </tr>

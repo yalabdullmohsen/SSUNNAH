@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   adminGetQuestions,
   adminUpsertQuestion,
@@ -135,7 +136,7 @@ export function QaSection() {
             }}
             onDone={load}
           />
-          <button type="button" onClick={openAdd} className="qa-add-btn">+ إضافة سؤال</button>
+          <Button type="button" variant="primary" onClick={openAdd} className="qa-add-btn">+ إضافة سؤال</Button>
         </div>
       </div>
 
@@ -183,19 +184,20 @@ export function QaSection() {
                       </span>
                     </td>
                     <td className="qa-td">
-                      <button
+                      <Button
                         type="button"
+                        variant="outline"
                         onClick={() => toggleStatus(item)}
                         title={item.status === "published" ? "اضغط لإخفائه" : "اضغط لنشره"}
                         className={`qa-publish-btn${item.status === "published" ? " qa-publish-btn--published" : ""}`}
                       >
                         {item.status === "published" ? "منشور" : "مسودة"}
-                      </button>
+                      </Button>
                     </td>
                     <td className="qa-td">
                       <div className="qa-cell-actions">
-                        <button type="button" onClick={() => openEdit(item)} className="qa-btn-edit">تعديل</button>
-                        <button type="button" onClick={() => handleDelete(item.id, item.question)} className="qa-btn-del">حذف</button>
+                        <Button type="button" variant="ghost" onClick={() => openEdit(item)} className="qa-btn-edit">تعديل</Button>
+                        <Button type="button" variant="destructive" onClick={() => handleDelete(item.id, item.question)} className="qa-btn-del">حذف</Button>
                       </div>
                     </td>
                   </tr>

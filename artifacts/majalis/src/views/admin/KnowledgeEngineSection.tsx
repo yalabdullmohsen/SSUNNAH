@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { AlertTriangle } from "lucide-react";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { useAdminShell } from "@/views/admin/AdminShell";
@@ -103,12 +104,12 @@ export function KnowledgeEngineSection() {
           </p>
         </div>
         <div className="ken-btn-group">
-          <button type="button" onClick={handleHealth} disabled={checkingHealth} className="ken-btn">
+          <Button type="button" variant="outline" onClick={handleHealth} disabled={checkingHealth} className="ken-btn">
             {checkingHealth ? "جارٍ الفحص..." : "♥ فحص المصادر"}
-          </button>
-          <button type="button" onClick={handleRun} disabled={running} className="ken-btn ken-btn--primary">
+          </Button>
+          <Button type="button" variant="primary" onClick={handleRun} disabled={running} className="ken-btn ken-btn--primary">
             {running ? "جارٍ التشغيل..." : "▶ تشغيل كامل"}
-          </button>
+          </Button>
         </div>
       </div>
 

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import {
   getInstagramIntegrationStatus,
@@ -84,12 +85,12 @@ function InstagramIntegrationContent() {
               <div>Access Token: {status?.accessTokenSet ? status.accessTokenPreview : "غير مُعدّ"}</div>
             </div>
             <div className="igst-btns">
-              <button type="button" disabled={busy} onClick={onTest} className="igst-primary-btn">
+              <Button type="button" variant="primary" disabled={busy} onClick={onTest} className="igst-primary-btn">
                 Test Connection
-              </button>
-              <button type="button" disabled={busy} onClick={onRefreshInfo} className="igst-secondary-btn">
+              </Button>
+              <Button type="button" variant="outline" disabled={busy} onClick={onRefreshInfo} className="igst-secondary-btn">
                 Refresh Token Info
-              </button>
+              </Button>
             </div>
             {testResult && <p className="igst-result">{testResult}</p>}
           </section>

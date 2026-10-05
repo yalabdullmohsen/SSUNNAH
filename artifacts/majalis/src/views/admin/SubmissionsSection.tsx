@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { useAdminShell } from "@/views/admin/AdminShell";
 import { SubmissionsReviewPanel } from "@/components/admin/SubmissionsReviewPanel";
 
@@ -74,14 +75,15 @@ export function SubmissionsSection() {
         <h2 className="sub-title">مقترحات المحتوى</h2>
         <div className="sub-filter-row">
           {(["pending", "approved", "rejected"] as const).map((s) => (
-            <button
+            <Button
               key={s}
               type="button"
+              variant="ghost"
               onClick={() => setFilter(s)}
               className={`sub-filter-btn${filter === s ? " sub-filter-btn--active" : ""}`}
             >
               {s === "pending" ? "معلّق" : s === "approved" ? "موافق عليه" : "مرفوض"}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -122,22 +124,24 @@ export function SubmissionsSection() {
 
                 {filter === "pending" && (
                   <div className="sub-action-col">
-                    <button
+                    <Button
                       type="button"
+                      variant="primary"
                       disabled={isActing}
                       onClick={() => act(item.id, "approve")}
                       className={`sub-approve-btn${isActing ? " sub-approve-btn--acting" : ""}`}
                     >
                       موافقة
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                       type="button"
+                      variant="destructive"
                       disabled={isActing}
                       onClick={() => act(item.id, "reject")}
                       className={`sub-reject-btn${isActing ? " sub-reject-btn--acting" : ""}`}
                     >
                       رفض
-                    </button>
+                    </Button>
                   </div>
                 )}
               </div>

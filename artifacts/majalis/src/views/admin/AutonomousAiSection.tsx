@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { useAdminShell } from "@/views/admin/AdminShell";
 import {
   fetchAutonomousDashboard,
@@ -73,11 +74,11 @@ export function AutonomousAiSection() {
       <div className="aai-header">
         <h2>المنظومة الذاتية للذكاء الاصطناعي</h2>
         <div className="aai-btn-group">
-          <button type="button" onClick={handleRun} disabled={running}>
+          <Button type="button" variant="primary" onClick={handleRun} disabled={running}>
             {running ? "جاري التشغيل..." : "تشغيل الدورة الكاملة"}
-          </button>
-          <button type="button" onClick={handleSecurity}>تدقيق الأمان</button>
-          <button type="button" onClick={handleReport}>إنشاء التقرير</button>
+          </Button>
+          <Button type="button" variant="outline" onClick={handleSecurity}>تدقيق الأمان</Button>
+          <Button type="button" variant="outline" onClick={handleReport}>إنشاء التقرير</Button>
         </div>
       </div>
 

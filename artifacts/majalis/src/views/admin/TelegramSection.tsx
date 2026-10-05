@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { useAdminShell } from "@/views/admin/AdminShell";
 import { useAdminConfirm, useAdminPrompt } from "@/components/admin/AdminConfirmDialog";
 import { Building2, CalendarDays, Clock, Folder, MapPin, Send, User } from "lucide-react";
@@ -175,14 +176,15 @@ function Btn({
   className?: string;
 }) {
   return (
-    <button
+    <Button
       type="button"
+      variant={variant === "danger" ? "destructive" : variant === "secondary" ? "outline" : "primary"}
       onClick={onClick}
       disabled={loading}
       className={`tgm-btn tgm-btn--${variant}${small ? " tgm-btn--small" : ""}${extraClass ? ` ${extraClass}` : ""}`}
     >
       {loading ? "…" : children}
-    </button>
+    </Button>
   );
 }
 
@@ -442,14 +444,15 @@ function ReviewTab() {
     <div className="tgm-grid-gap">
       <div className="tgm-filters-row">
         {["all", "complete", "needs_review", "incomplete"].map((q) => (
-          <button
+          <Button
             key={q}
             type="button"
+            variant="ghost"
             onClick={() => setQualityFilter(q)}
             className={`tgm-filter-btn${qualityFilter === q ? " tgm-filter-btn--active" : ""}`}
           >
             {q === "all" ? "الكل" : QUALITY_AR[q] || q}
-          </button>
+          </Button>
         ))}
         {selected.size > 0 && (
           <Btn loading={acting === "bulk"} small onClick={bulkApprove} className="tgm-btn--auto">
@@ -511,13 +514,14 @@ function ReviewTab() {
                 )}
 
                 {(raw?.raw_text || raw?.raw_caption || lesson.description) && (
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
                     onClick={() => setExpanded(isExpanded ? null : lesson.id)}
-                    className="tgm-expand-btn"
+                    className="tgm-expand-btn justify-end"
                   >
                     {isExpanded ? "▲ إخفاء النص الأصلي" : "▼ عرض النص الأصلي"}
-                  </button>
+                  </Button>
                 )}
                 {isExpanded && (
                   <pre className="tgm-raw-pre">
@@ -653,14 +657,15 @@ export function TelegramSection() {
 
       <div className="tgm-tabs">
         {TABS.map((t) => (
-          <button
+          <Button
             key={t.key}
             type="button"
+            variant="ghost"
             onClick={() => setTab(t.key)}
             className={`tgm-tab${tab === t.key ? " tgm-tab--active" : ""}`}
           >
             {t.label}
-          </button>
+          </Button>
         ))}
       </div>
 

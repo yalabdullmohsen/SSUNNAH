@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import {
   fetchRecentErrorLogs, groupErrorsByRoute,
@@ -27,7 +28,7 @@ export function ClientErrorLogsSection() {
     <div>
       <div className="mir-header">
         <h2 className="mir-title">سجل أخطاء العميل ({logs.length} من آخر 200)</h2>
-        <button type="button" className="mir-add-btn" onClick={load}>↻ تحديث</button>
+        <Button type="button" variant="outline" className="mir-add-btn" onClick={load}>↻ تحديث</Button>
       </div>
 
       <p className="adm-empty-msg" style={{ marginBottom: "0.75rem" }}>
@@ -37,18 +38,19 @@ export function ClientErrorLogsSection() {
 
       {byRoute.length > 0 && (
         <div className="fiqh-review-filters">
-          <button type="button" className={!routeFilter ? "fiqh-review-filter--active" : ""} onClick={() => setRouteFilter(null)}>
+          <Button type="button" variant="ghost" className={!routeFilter ? "fiqh-review-filter--active" : ""} onClick={() => setRouteFilter(null)}>
             الكل ({logs.length})
-          </button>
+          </Button>
           {byRoute.slice(0, 10).map((r) => (
-            <button
+            <Button
               key={r.route}
               type="button"
+              variant="ghost"
               className={routeFilter === r.route ? "fiqh-review-filter--active" : ""}
               onClick={() => setRouteFilter(r.route)}
             >
               {r.route} ({r.count})
-            </button>
+            </Button>
           ))}
         </div>
       )}

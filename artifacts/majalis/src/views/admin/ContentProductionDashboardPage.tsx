@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import {
   getContentProductionDashboard,
@@ -102,14 +103,15 @@ function ContentProductionDashboardContent() {
                       </span>
                     )}
                   </div>
-                  <button
+                  <Button
                     type="button"
+                    variant="outline"
                     disabled={runningJob === job.id}
                     onClick={() => triggerJob(job.id)}
                     className="cpd-job-btn"
                   >
                     {runningJob === job.id ? "..." : "تشغيل"}
-                  </button>
+                  </Button>
                 </div>
               ))}
             </div>

@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   REVIEW_STATUS_LABELS,
   listSubmissions,
@@ -37,9 +38,9 @@ export function ResearchesSection() {
           ["import", "الاستيراد اليومي"],
           ["dupes", "المكررات"],
         ] as const).map(([k, label]) => (
-          <button key={k} type="button" className="sr-btn sr-btn--outline" onClick={() => setTab(k)}>
+          <Button key={k} type="button" variant="ghost" className="sr-btn sr-btn--outline" onClick={() => setTab(k)}>
             {label}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -56,16 +57,17 @@ export function ResearchesSection() {
               {s.statusNote && <p style={{ fontSize: "var(--ss-type-supporting)" }}>{s.statusNote}</p>}
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 8 }}>
                 {(["needs_revision", "rejected", "accepted", "published", "rights_hold"] as ReviewStatus[]).map((st) => (
-                  <button
+                  <Button
                     key={st}
                     type="button"
+                    variant="outline"
                     onClick={() => {
                       adminSetSubmissionStatus(s.id, st, "admin_reviewer", `تحديث إداري → ${REVIEW_STATUS_LABELS[st]}`);
                       refresh();
                     }}
                   >
                     {REVIEW_STATUS_LABELS[st]}
-                  </button>
+                  </Button>
                 ))}
               </div>
               <details style={{ marginTop: 8 }}>
@@ -88,15 +90,16 @@ export function ResearchesSection() {
 
       {tab === "import" && (
         <div>
-          <button
+          <Button
             type="button"
+            variant="primary"
             onClick={() => {
               runDailyImportDry({ force: true });
               refresh();
             }}
           >
             تشغيل الاستيراد يدويًا (جاف / آمن)
-          </button>
+          </Button>
           <h3>المصادر</h3>
           <ul>
             {RESEARCH_IMPORT_SOURCES.map((s) => (

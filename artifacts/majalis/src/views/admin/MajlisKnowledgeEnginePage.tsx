@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { getMkeDashboard, runMkeEngine } from "@/lib/majlis-knowledge-engine-api";
 import { SkeletonCardGrid } from "@/components/ui-common";
@@ -141,9 +142,9 @@ function MajlisKnowledgeEngineContent() {
           <Link href="/admin/automation/dashboard" className="mke-link">Phase 5</Link>
           <Link href="/admin/automation/center" className="mke-link">Phase 6</Link>
           <Link href="/admin/sources" className="mke-link">المصادر</Link>
-          <button type="button" onClick={handleRun} disabled={running} className="mke-run-btn">
+          <Button type="button" variant="primary" onClick={handleRun} disabled={running} className="mke-run-btn">
             {running ? "جاري التشغيل…" : "تشغيل المحرك"}
-          </button>
+          </Button>
         </div>
       </div>
 
