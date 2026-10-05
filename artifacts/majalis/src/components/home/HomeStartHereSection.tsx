@@ -1,9 +1,12 @@
 import { Link } from "wouter";
 import { HOME_START_HERE_COPY } from "./home-start-here-data";
+/* هندسة ATF لـ hsh-lead (عنصر LCP) — لا تعتمد على ترتيب استيراد HomeHeroLcp */
+import "@/styles/m2030/home.css";
 
 /**
  * بطاقة الزائر الجديد — مضغوطة: عنوان + جملة + CTA واحد.
  * بلا شبكة خطوات عملاقة تستهلك الشاشة الأولى.
+ * عنصر LCP المقاس في LHCI home mobile: `p.hsh-lead`.
  */
 export function HomeStartHereSection() {
   return (
