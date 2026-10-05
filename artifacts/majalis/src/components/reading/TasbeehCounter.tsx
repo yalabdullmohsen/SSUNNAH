@@ -3,6 +3,10 @@ import { useTasbeehCounter } from "@/hooks/useTasbeehCounter";
 import { TASBEEH_PRESETS, type TasbeehWird } from "@/lib/tasbeeh-storage";
 import { Button } from "@/components/ui/button";
 
+/** أهداف لوحة المفاتيح التي تملك تفعيلها الأصلي — اختصارات العدّاد لا تعمل فوقها */
+const INTERACTIVE_TARGET =
+  'input, textarea, select, button, a[href], summary, [contenteditable="true"], [role="button"], [role="tab"], [role="link"], [role="menuitem"], [role="checkbox"], [role="switch"], [role="radio"], [role="option"], [role="slider"]';
+
 // ─── SVG Progress Ring ─────────────────────────────────────────────────────
 
 const RING_R = 66;
@@ -126,8 +130,11 @@ export function TasbeehCounter({
         return;
       }
       if (compact || confirmReset) return;
-      const tag = (e.target as Element)?.tagName;
-      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      // لا نخطف Enter/Space/Backspace من عنصر تفاعلي مُركَّز (زر/رابط/تبويب/حقل)؛
+      // وإلا تعطّل تفعيل كل أزرار الصفحة بلوحة المفاتيح وتحوّل إلى «تسبيح».
+      const target = e.target as Element | null;
+      if (target?.closest?.(INTERACTIVE_TARGET)) return;
       if (e.code === "Space" || e.code === "Enter") {
         e.preventDefault();
         increment(1);
