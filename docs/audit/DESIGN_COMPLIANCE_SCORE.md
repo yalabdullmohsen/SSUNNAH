@@ -1,8 +1,8 @@
 # DESIGN_COMPLIANCE_SCORE
 
-Generated: 2026-10-05T22:12:49.800Z
+Generated: 2026-10-03T09:21:26.150Z
 
-**Score: 77** / 100
+**Score: 74** / 100
 
 Weights: consistency 35% · authority adoption 25% · token usage 20% · debt ceilings 10% · maps 10%.
 

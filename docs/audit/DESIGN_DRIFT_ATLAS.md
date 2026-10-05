@@ -1,6 +1,6 @@
 # DESIGN_DRIFT_ATLAS
 
-Generated: 2026-10-05T22:12:53.840Z
+Generated: 2026-10-03T09:21:30.460Z
 
 Entries: **13** · Policy: no undocumented visual drift.
 
@@ -8,18 +8,18 @@ Screenshots: DEVICE_REQUIRED on absorb PRs (not stored in this static atlas).
 
 | Priority | Domain | Signal | Authority | Sample locations |
 |---|---|---|---|---|
-| P0 | cards | bypass=198 adoption=9% | CARD_SURFACE_AUTHORITY · AppCard | `components/AdminRouteGuard.tsx`, `components/ExploreAlsoNav.tsx` |
-| P0 | forms | bypass=144 adoption=24% | FORM_AUTHORITY_MAP · FormLabel/FieldError | `admin-v3/domains/analytics/AnalyticsPlatformPage.tsx`, `admin-v3/domains/community/UsersPage.tsx` |
-| P0 | token:color | hardcoded color ×4894 | COLOR_AUTHORITY_MAP / DESIGN_TOKENS_AUTHORITY color.* | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |
-| P0 | token:shadow | hardcoded shadow ×962 | CARD_SURFACE_AUTHORITY · AppCard | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |
-| P1 | lists | bypass=73 adoption=9% | LIST_AUTHORITY_MAP · NavigationList | `admin-v3/centers/AdminV3CenterWorkspace.tsx`, `admin-v3/domains/ops/AutomationHubPage.tsx` |
-| P1 | tabs | bypass=68 adoption=8% | TAB_AUTHORITY_MAP · ContentTabs | `admin-v3/domains/reviews/ReviewInboxPage.tsx`, `components/FiqhGuidePage.tsx` |
-| P1 | token:spacing | hardcoded spacing ×174 | SPACING_AUTHORITY_MAP / spacing.* | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |
-| P1 | token:radii | hardcoded radii ×137 | CARD_SURFACE_AUTHORITY · AppCard | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |
-| P2 | buttons | bypass=1 adoption=100% | INTERACTION_COMPONENT_AUTHORITY · Button | `features/mushaf-madinah/MushafControls.tsx` |
-| P2 | tables | bypass=13 adoption=43% | TABLE_AUTHORITY_MAP · DataTable | `components/prayer/PrayerAnnualTimetable.tsx`, `views/admin/FeatureStatusPage.tsx` |
+| P0 | cards | bypass=208 adoption=9% | CARD_SURFACE_AUTHORITY · AppCard | `components/AdminRouteGuard.tsx`, `components/ExploreAlsoNav.tsx` |
+| P0 | buttons | bypass=100 adoption=71% | INTERACTION_COMPONENT_AUTHORITY · Button | `components/AdminInlineEdit.tsx`, `components/QuranViewer.tsx` |
+| P0 | forms | bypass=148 adoption=23% | FORM_AUTHORITY_MAP · FormLabel/FieldError | `admin-v3/domains/analytics/AnalyticsPlatformPage.tsx`, `admin-v3/domains/community/UsersPage.tsx` |
+| P0 | token:color | hardcoded color ×6549 | COLOR_AUTHORITY_MAP / DESIGN_TOKENS_AUTHORITY color.* | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |
+| P0 | token:shadow | hardcoded shadow ×966 | CARD_SURFACE_AUTHORITY · AppCard | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |
+| P1 | lists | bypass=74 adoption=10% | LIST_AUTHORITY_MAP · NavigationList | `admin-v3/centers/AdminV3CenterWorkspace.tsx`, `admin-v3/domains/ops/AutomationHubPage.tsx` |
+| P1 | tabs | bypass=71 adoption=4% | TAB_AUTHORITY_MAP · ContentTabs | `admin-v3/domains/reviews/ReviewInboxPage.tsx`, `components/FiqhGuidePage.tsx` |
+| P1 | token:spacing | hardcoded spacing ×177 | SPACING_AUTHORITY_MAP / spacing.* | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |
+| P1 | token:radii | hardcoded radii ×140 | CARD_SURFACE_AUTHORITY · AppCard | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |
+| P2 | tables | bypass=14 adoption=39% | TABLE_AUTHORITY_MAP · DataTable | `components/prayer/PrayerAnnualTimetable.tsx`, `views/ProphetStoriesPage.tsx` |
 | P2 | navigation | bypass=1 adoption=94% | NAVIGATION_AUTHORITY_MAP · AppBackButton/BottomNav | `components/ScrollToTop.tsx` |
-| P2 | modals | bypass=1 adoption=97% | INTERACTION_COMPONENT_AUTHORITY · Button | `components/NativeBackButtonListener.tsx` |
+| P2 | modals | bypass=1 adoption=96% | INTERACTION_COMPONENT_AUTHORITY · Button | `components/NativeBackButtonListener.tsx` |
 | P2 | token:typography | hardcoded typography ×94 | TYPOGRAPHY_AUTHORITY_MAP / typography.* | `features/mushaf-madinah/mushaf-madinah.css`, `styles/quran.css` |
 
 ## Detail (top P0/P1)
@@ -35,6 +35,18 @@ Screenshots: DEVICE_REQUIRED on absorb PRs (not stored in this static atlas).
   - `components/FiqhGuidePage.tsx`
   - `components/GlobalSearchModal.tsx`
   - `components/RelatedKnowledge.tsx`
+
+### buttons (P0)
+
+- Root cause: Residual raw controls
+- Authority: INTERACTION_COMPONENT_AUTHORITY · Button
+- Screenshot: DEVICE_REQUIRED — capture on absorb PR
+- Locations:
+  - `components/AdminInlineEdit.tsx`
+  - `components/QuranViewer.tsx`
+  - `components/admin/SubmissionsReviewPanel.tsx`
+  - `components/admin/review-hub/ContentModerationCard.tsx`
+  - `components/admin/review-hub/LinearAudioReviewPlayer.tsx`
 
 ### forms (P0)
 
@@ -90,7 +102,7 @@ Screenshots: DEVICE_REQUIRED on absorb PRs (not stored in this static atlas).
   - `components/FiqhGuidePage.tsx`
   - `components/GlobalSearchModal.tsx`
   - `components/adhan/PrayerAudioPicker.tsx`
-  - `components/admin/review-hub/ReviewHubWorkspace.tsx`
+  - `components/admin/review-hub/ReviewFilterBar.tsx`
 
 ### token:spacing (P1)
 

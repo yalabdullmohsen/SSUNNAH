@@ -1,10 +1,10 @@
 # UI_DUPLICATION_REPORT
 
-Generated: 2026-10-05T22:12:49.800Z
+Generated: 2026-10-03T09:21:26.150Z
 
 Priority = highest maintenance cost first.
 
-## cards (39)
+## cards (41)
 
 Authority: AppCard / InteractiveCard
 
@@ -19,10 +19,11 @@ Authority: AppCard / InteractiveCard
 - `components/design-system/ContentCard.tsx`
 - `components/design-system/FeatureCard.tsx`
 
-## filters (14)
+## filters (15)
 
 Authority: FILTER_AUTHORITY_MAP
 
+- `components/admin/review-hub/ReviewFilterBar.tsx`
 - `components/design-system/FilterSystem.tsx`
 - `components/filters/ActiveFilters.tsx`
 - `components/filters/FilterBar.tsx`
@@ -32,7 +33,6 @@ Authority: FILTER_AUTHORITY_MAP
 - `components/filters/SegmentedFilter.tsx`
 - `components/filters/UnifiedFilterBar.tsx`
 - `components/filters/UnifiedPrimaryFilters.tsx`
-- `components/hadith/HadithFilters.tsx`
 
 ## dialogs (12)
 
