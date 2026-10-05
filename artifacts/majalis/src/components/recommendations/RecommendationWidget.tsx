@@ -46,7 +46,7 @@ function RecCard({ item }: { item: RecommendedItem }) {
           </div>
 
           {/* العنوان */}
-          <p className="rw-card__title line-clamp-2">{title}</p>
+          <p className="rw-card__title line-clamp-2" title={title}>{title}</p>
 
           {/* معلومات إضافية */}
           {(item.author || item.collection) && (

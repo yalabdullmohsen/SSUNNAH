@@ -164,7 +164,7 @@ export function CitationModal({ source, initialText = "", startOffset, endOffset
             <span className={`px-2 py-0.5 rounded text-xs text-white font-medium cm-type-badge ${typeMod}`}>
               {typeLabel}
             </span>
-            <span className="text-sm font-semibold line-clamp-1">
+            <span className="text-sm font-semibold line-clamp-1" title={source.title_ar}>
               {source.title_ar}
             </span>
           </div>
