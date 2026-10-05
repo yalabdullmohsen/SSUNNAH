@@ -8,6 +8,8 @@ Removed **29** alias-only `--ds-*` / `--majalis-*` declarations with `var()` con
 
 Excluded after live recount: `--ds-text` (743 uses), `--majalis-bg` (2 uses).
 
+Kept (quality-campaign gate): `--ds-muted`, `--ds-danger`, `--ds-success` as semantic bridges in `design-tokens.css`.
+
 ## Metrics
 
 | Metric | Before | After |
