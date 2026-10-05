@@ -142,12 +142,32 @@ struct PrayerWidgetEntry: TimelineEntry {
         var cal = Calendar(identifier: .gregorian)
         cal.timeZone = tz
 
-        let slots: [PrayerTimelineSlot] = PrayerSlotKey.allCases.compactMap { key in
-            guard let ms = snapshot?.timesEpochMs[key.rawValue] else { return nil }
-            return PrayerTimelineSlot(key: key, date: Date(timeIntervalSince1970: TimeInterval(ms) / 1000))
-        }.sorted { $0.date < $1.date }
+        let todayKey = SunnahSharedStore.dayKey(for: date, timeZone: tz)
+        // Displayed day: the published day, or an engine-computed upcoming day once midnight passes.
+        let dayTimes: [String: Int64] = {
+            guard let snapshot else { return [:] }
+            if snapshot.dayKey != todayKey,
+               let rolled = snapshot.upcomingDays?.first(where: { $0.dayKey == todayKey }) {
+                return rolled.timesEpochMs
+            }
+            return snapshot.timesEpochMs
+        }()
+        func slotsFrom(_ times: [String: Int64]) -> [PrayerTimelineSlot] {
+            PrayerSlotKey.allCases.compactMap { key in
+                guard let ms = times[key.rawValue] else { return nil }
+                return PrayerTimelineSlot(key: key, date: Date(timeIntervalSince1970: TimeInterval(ms) / 1000))
+            }
+        }
+        let slots = slotsFrom(dayTimes).sorted { $0.date < $1.date }
 
-        let obligatory = slots.filter { $0.key.isObligatory }
+        // Every known obligatory boundary (published day + upcoming days) — drives
+        // previous/current/next across Isha → next-day Fajr without an app open.
+        let obligatory: [PrayerTimelineSlot] = {
+            var all = slotsFrom(snapshot?.timesEpochMs ?? [:])
+            for day in snapshot?.upcomingDays ?? [] { all.append(contentsOf: slotsFrom(day.timesEpochMs)) }
+            all.append(contentsOf: slots)
+            return Array(Set(all.filter { $0.key.isObligatory })).sorted { $0.date < $1.date }
+        }()
 
         let derivedNext = obligatory.first(where: { $0.date > date })
         let snapshotNextDate: Date? = {
@@ -175,19 +195,26 @@ struct PrayerWidgetEntry: TimelineEntry {
                   let key = PrayerSlotKey(rawValue: raw),
                   let ms = snapshot?.currentPrayerStartedAtEpochMs
             else { return nil }
-            return PrayerTimelineSlot(key: key, date: Date(timeIntervalSince1970: TimeInterval(ms) / 1000))
+            let started = Date(timeIntervalSince1970: TimeInterval(ms) / 1000)
+            return started <= date ? PrayerTimelineSlot(key: key, date: started) : nil
         }()
         let previous: PrayerTimelineSlot? = {
             if let override = previousOverride {
                 return PrayerTimelineSlot(key: override.key, date: override.date)
             }
+            // Derive from boundaries first: published previous* is only true at publish time.
+            if let cur = current, let derived = obligatory.last(where: { $0.date < cur.date }) {
+                return derived
+            }
             if let raw = snapshot?.previousPrayerKey?.lowercased(),
                let key = PrayerSlotKey(rawValue: raw),
                let ms = snapshot?.previousPrayerEpochMs {
-                return PrayerTimelineSlot(key: key, date: Date(timeIntervalSince1970: TimeInterval(ms) / 1000))
+                let at = Date(timeIntervalSince1970: TimeInterval(ms) / 1000)
+                if at <= date, current.map({ at < $0.date }) ?? true {
+                    return PrayerTimelineSlot(key: key, date: at)
+                }
             }
-            guard let cur = current else { return nil }
-            return obligatory.last(where: { $0.date < cur.date }) ?? obligatory.last(where: { $0.key != cur.key && $0.date <= date })
+            return nil
         }()
 
         let nextHasStarted: Bool = {
@@ -291,6 +318,34 @@ struct PrayerWidgetEntry: TimelineEntry {
     }
 }
 
+/// Timeline boundaries: now, 15m pre-alert, every known prayer boundary (published day +
+/// engine upcoming days, so after Isha → next-day Fajr), and local midnight (Hijri/Gregorian rollover).
+enum PrayerWidgetTimelinePolicy {
+    static let horizon: TimeInterval = 26 * 3600
+    static let maxEntries = 16
+
+    static func entryDates(now: Date, entry: PrayerWidgetEntry, snapshot: SharedPrayerSnapshot?) -> [Date] {
+        var dates: [Date] = [now]
+        if let next = entry.nextDate, next > now {
+            dates.append(next)
+            let pre = next.addingTimeInterval(-15 * 60)
+            if pre > now { dates.append(pre) }
+        }
+        var boundaries: [Int64] = snapshot.map { Array($0.timesEpochMs.values) } ?? []
+        for day in snapshot?.upcomingDays ?? [] { boundaries.append(contentsOf: day.timesEpochMs.values) }
+        for ms in boundaries {
+            let d = Date(timeIntervalSince1970: TimeInterval(ms) / 1000)
+            if d > now, d.timeIntervalSince(now) <= horizon { dates.append(d) }
+        }
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = TimeZone(identifier: snapshot?.timeZoneIdentifier ?? "") ?? .current
+        if let midnight = cal.nextDate(after: now, matching: DateComponents(hour: 0, minute: 0), matchingPolicy: .nextTime) {
+            dates.append(midnight)
+        }
+        return Array(Array(Set(dates)).sorted().prefix(maxEntries))
+    }
+}
+
 struct PrayerWidgetProvider: TimelineProvider {
     func placeholder(in context: Context) -> PrayerWidgetEntry {
         .placeholder()
@@ -320,24 +375,8 @@ struct PrayerWidgetProvider: TimelineProvider {
         widgetLog.debug("timeline generated state=\(entry.dataState.rawValue, privacy: .public) slots=\(entry.slots.count)")
         #endif
 
-        var dates: [Date] = [now]
-        if let next = entry.nextDate, next > now {
-            dates.append(next)
-            let pre = next.addingTimeInterval(-15 * 60)
-            if pre > now { dates.append(pre) }
-        }
-        for slot in entry.slots where slot.date > now {
-            dates.append(slot.date)
-        }
-        var cal = Calendar.current
-        if let tz = TimeZone(identifier: snapshot?.timeZoneIdentifier ?? "") {
-            cal.timeZone = tz
-        }
-        if let midnight = cal.nextDate(after: now, matching: DateComponents(hour: 0, minute: 0), matchingPolicy: .nextTime) {
-            dates.append(midnight)
-        }
-        let unique = Array(Set(dates)).sorted()
-        let entries = unique.prefix(8).map { PrayerWidgetEntry.make(date: $0, snapshot: snapshot) }
+        let entries = PrayerWidgetTimelinePolicy.entryDates(now: now, entry: entry, snapshot: snapshot)
+            .map { PrayerWidgetEntry.make(date: $0, snapshot: snapshot) }
 
         let policy: TimelineReloadPolicy
         if let next = entry.nextDate, next > now {

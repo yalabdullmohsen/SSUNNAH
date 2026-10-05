@@ -3,7 +3,8 @@ import Foundation
 /// Canonical destinations (do not introduce an unsupported URL scheme):
 /// https://www.ssunnah.com/prayer-times
 /// https://www.ssunnah.com/adhkar/morning
-/// https://www.ssunnah.com/mushaf/page/{page}
+/// https://www.ssunnah.com/mushaf?page={page}[&ayah={surah}:{ayah}]
+/// (canonical reader contract — the legacy /mushaf/page/{n} redirect drops `?ayah=`)
 enum SunnahPrayerDeepLink {
     static let origin = "https://www.ssunnah.com"
     static let prayerTimes = URL(string: "\(origin)/prayer-times")!
@@ -37,9 +38,9 @@ enum SunnahWidgetDeepLinkFactory {
 
     static func mushaf(page: Int?, ayah: String? = nil) -> URL {
         guard let page, page >= 1, page <= 604 else { return SunnahPrayerDeepLink.mushaf }
-        var path = "/mushaf/page/\(page)"
+        var path = "/mushaf?page=\(page)"
         if let ayah, !ayah.isEmpty {
-            path += "?ayah=\(ayah)"
+            path += "&ayah=\(ayah)"
         }
         return url(path: path)
     }

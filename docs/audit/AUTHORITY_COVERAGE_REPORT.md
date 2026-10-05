@@ -1,28 +1,28 @@
 # AUTHORITY_COVERAGE_REPORT
 
-Generated: 2026-10-03T09:21:30.179Z
+Generated: 2026-10-05T21:14:15.042Z
 
-## AUTHORITY_ADOPTION_PERCENTAGE: **43%**
+## AUTHORITY_ADOPTION_PERCENTAGE: **48%**
 
 | Family | Using authority | Bypassing | Relevant | Adoption % |
 |---|---:|---:|---:|---:|
-| cards | 20 | 208 | 228 | 9 |
-| buttons | 250 | 100 | 350 | 71 |
-| forms | 43 | 148 | 191 | 23 |
-| tables | 9 | 14 | 23 | 39 |
-| lists | 8 | 74 | 82 | 10 |
-| tabs | 3 | 71 | 74 | 4 |
-| navigation | 15 | 1 | 16 | 94 |
-| modals | 26 | 1 | 27 | 96 |
+| cards | 20 | 198 | 218 | 9 |
+| buttons | 346 | 1 | 347 | 100 |
+| forms | 45 | 146 | 191 | 24 |
+| tables | 10 | 13 | 23 | 43 |
+| lists | 8 | 73 | 81 | 10 |
+| tabs | 5 | 69 | 74 | 7 |
+| navigation | 16 | 1 | 17 | 94 |
+| modals | 27 | 1 | 28 | 96 |
 
 ## Top divergence sources
 
-- **cards**: bypass=208 · adoption=9%
-- **forms**: bypass=148 · adoption=23%
-- **buttons**: bypass=100 · adoption=71%
-- **lists**: bypass=74 · adoption=10%
-- **tabs**: bypass=71 · adoption=4%
-- **tables**: bypass=14 · adoption=39%
+- **cards**: bypass=198 · adoption=9%
+- **forms**: bypass=146 · adoption=24%
+- **lists**: bypass=73 · adoption=10%
+- **tabs**: bypass=69 · adoption=7%
+- **tables**: bypass=13 · adoption=43%
+- **navigation**: bypass=1 · adoption=94%
 
 ## Migration priority (non-SPECIAL samples)
 
@@ -36,16 +36,6 @@ Generated: 2026-10-03T09:21:30.179Z
 - `components/admin/SubmissionsReviewPanel.tsx`
 - `components/admin/review-hub/ContentModerationCard.tsx`
 
-### buttons
-- `components/AdminInlineEdit.tsx`
-- `components/QuranViewer.tsx`
-- `components/admin/SubmissionsReviewPanel.tsx`
-- `components/admin/review-hub/ContentModerationCard.tsx`
-- `components/admin/review-hub/LinearAudioReviewPlayer.tsx`
-- `components/admin/review-hub/RecitationReviewCard.tsx`
-- `components/admin/review-hub/ReviewFilterBar.tsx`
-- `components/admin/review-hub/ReviewHubHeaderBar.tsx`
-
 ### forms
 - `components/AdminInlineEdit.tsx`
 - `components/AdminSiteEditBar.tsx`
@@ -58,13 +48,13 @@ Generated: 2026-10-03T09:21:30.179Z
 
 ### tables
 - `components/prayer/PrayerAnnualTimetable.tsx`
-- `views/ProphetStoriesPage.tsx`
 - `views/admin/FeatureStatusPage.tsx`
 - `views/admin/KnowledgeReasoningSection.tsx`
 - `views/admin/LessonsSection.tsx`
 - `views/admin/LibrarySection.tsx`
 - `views/admin/MiraclesSection.tsx`
 - `views/admin/QaSection.tsx`
+- `views/admin/ScholarlyVerificationSection.tsx`
 
 ### lists
 - `admin-v3/centers/AdminV3CenterWorkspace.tsx`

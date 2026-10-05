@@ -22,7 +22,7 @@ import { getUserStreak } from "@/lib/user-streak";
 import { getActivePrayerLocation } from "@/lib/prayer-location-prefs";
 import { dateISOInZone } from "@/lib/prayer-notification-ids";
 import { buildSharedPrayerSnapshotPayload } from "./sunnah-shared-prayer-publish";
-import { publishSharedWidgetEnvelope } from "./sunnah-shared-data";
+import { publishSharedWidgetEnvelope, type SharedPrayerDay } from "./sunnah-shared-data";
 import type { PrayerTimesPayload } from "../prayer-times";
 import {
   buildDiagnosticsDomain,
@@ -36,7 +36,8 @@ import { assertPublicSafeWidgetJson } from "@/lib/widget-data/privacy";
 import { loadWidgetPreferences } from "@/lib/widget-data/preferences";
 import { loadWidgetSelections } from "@/lib/widget-data/selections";
 
-const ADHKAR_BY_TIME: Record<string, { collection: string; title: string }> = {
+/** Time-of-day → Adhkar window. Mirrored by Swift `SunnahWidgetDayRollover.adhkarWindow`. */
+export const WIDGET_ADHKAR_BY_TIME: Record<string, { collection: string; title: string }> = {
   fajr: { collection: "morning", title: "أذكار الصباح" },
   duha: { collection: "morning", title: "أذكار الصباح" },
   zuhr: { collection: "after-salah", title: "أذكار بعد الصلاة" },
@@ -181,7 +182,7 @@ export function buildSunnahWidgetEnvelope(
   const gregorian = gregorianParts(now, tz);
   const ramadan = daysUntilRamadan(now, tz);
   const timeOfDay = resolveTimeOfDay(now.getHours() + now.getMinutes() / 60);
-  const adhkarMap = ADHKAR_BY_TIME[timeOfDay] ?? ADHKAR_BY_TIME.duha;
+  const adhkarMap = WIDGET_ADHKAR_BY_TIME[timeOfDay] ?? WIDGET_ADHKAR_BY_TIME.duha;
   const ayah = getDailyAyah(now);
   const dhikr = getDailyDhikr(now);
   const hadith = getDailyHadith(now);
@@ -489,12 +490,13 @@ export function buildSunnahWidgetEnvelope(
 export async function publishSunnahWidgetEnvelope(options?: {
   domains?: string[];
   prayerTimes?: PrayerTimesPayload | null;
+  upcomingDays?: SharedPrayerDay[];
   publicationReason?: string;
 }): Promise<boolean> {
   if (!isNative || !isIOS) return false;
   try {
     const prayer = options?.prayerTimes
-      ? buildSharedPrayerSnapshotPayload(options.prayerTimes)
+      ? buildSharedPrayerSnapshotPayload(options.prayerTimes, Date.now(), options.upcomingDays ?? [])
       : null;
     const envelope = buildSunnahWidgetEnvelope(new Date(), prayer, {
       publicationReason: options?.publicationReason,

@@ -115,8 +115,17 @@ struct SharedPrayerSnapshot: Codable, Hashable {
     var permissionState: String? = nil
     var initializationState: String? = nil
     var updatedAtEpochMs: Int64
+    /// Engine-computed obligatory times for the following days (tomorrow, after) —
+    /// lets the widget roll after Isha → next-day Fajr and across midnight without an app open.
+    var upcomingDays: [SharedPrayerDay]? = nil
 
     static let currentSchema = 1
+}
+
+/// One calendar day of engine prayer times (epoch ms keyed by lowercase slot).
+struct SharedPrayerDay: Codable, Hashable {
+    var dayKey: String
+    var timesEpochMs: [String: Int64]
 }
 
 /// Non-sensitive progress counters for future Widget/Watch surfaces.
@@ -210,12 +219,19 @@ enum SunnahSharedStore {
         return SunnahWidgetEnvelopeCodec.decodeIsolated(from: data)
     }
 
-    /// Prayer payload prefers envelope isolation, then legacy prayer.v1.
+    /// Prayer payload: the freshest of envelope isolation and legacy prayer.v1
+    /// (a later envelope publish without prayer must never resurrect an older snapshot).
     static func loadCanonicalPrayer() -> SharedPrayerSnapshot? {
-        if let envelopePrayer = loadEnvelope()?.prayerPayload {
-            return envelopePrayer
+        let envelopePrayer = loadEnvelope()?.prayerPayload
+        let legacy = loadPrayer()
+        switch (envelopePrayer, legacy) {
+        case let (env?, leg?):
+            return leg.updatedAtEpochMs > env.updatedAtEpochMs ? leg : env
+        case let (env?, nil):
+            return env
+        default:
+            return legacy
         }
-        return loadPrayer()
     }
 
     static func classifyPrayerData(_ snapshot: SharedPrayerSnapshot?, now: Date = Date()) -> PrayerWidgetDataState {

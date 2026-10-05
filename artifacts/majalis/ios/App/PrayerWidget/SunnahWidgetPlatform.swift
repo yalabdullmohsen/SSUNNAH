@@ -101,15 +101,8 @@ struct SunnahWidgetTimelineFactory {
     static func prayerTimeline(now: Date = Date()) -> Timeline<PrayerWidgetEntry> {
         let snapshot = SunnahSharedStore.loadCanonicalPrayer() ?? SunnahSharedStore.loadPrayer()
         let entry = PrayerWidgetEntry.make(date: now, snapshot: snapshot)
-        var dates: [Date] = [now]
-        if let next = entry.nextDate, next > now {
-            dates.append(next)
-        }
-        for slot in entry.slots where slot.date > now {
-            dates.append(slot.date)
-        }
-        let unique = Array(Set(dates)).sorted().prefix(8)
-        let entries = unique.map { PrayerWidgetEntry.make(date: $0, snapshot: snapshot) }
+        let entries = PrayerWidgetTimelinePolicy.entryDates(now: now, entry: entry, snapshot: snapshot)
+            .map { PrayerWidgetEntry.make(date: $0, snapshot: snapshot) }
         let policy: TimelineReloadPolicy
         if let next = entry.nextDate, next > now {
             policy = .after(next)
@@ -175,8 +168,9 @@ struct CatalogWidgetEntry: TimelineEntry {
 
     static func live(now: Date = Date(), selectedCustomId: String? = nil) -> CatalogWidgetEntry {
         let envelope = SunnahSharedStore.loadEnvelope()
-        let prayerSnap = envelope?.prayerPayload ?? SunnahSharedStore.loadPrayer()
+        let prayerSnap = SunnahSharedStore.loadCanonicalPrayer()
         let prayer = PrayerWidgetEntry.make(date: now, snapshot: prayerSnap)
+        let tz = SunnahWidgetDayRollover.timeZone(envelope: envelope, prayer: prayerSnap)
         let customPresentation = CustomContentWidgetAdapter.presentation(forSelectedId: selectedCustomId)
         let presentation: SunnahWidgetPresentation = {
             if prayerSnap == nil && envelope == nil { return .liveNoData }
@@ -191,12 +185,12 @@ struct CatalogWidgetEntry: TimelineEntry {
             date: now,
             presentation: presentation,
             prayer: prayer,
-            calendar: envelope?.calendarPayload,
-            adhkar: envelope?.adhkarPayload,
-            quran: envelope?.quranPayload,
+            calendar: envelope?.calendarPayload.map { SunnahWidgetDayRollover.calendar($0, at: now) },
+            adhkar: envelope?.adhkarPayload.map { SunnahWidgetDayRollover.adhkar($0, at: now, timeZone: tz) },
+            quran: envelope?.quranPayload.map { SunnahWidgetDayRollover.quran($0, at: now, timeZone: tz) },
             mushaf: envelope?.mushafPayload,
             custom: envelope?.customContentPayload,
-            progress: envelope?.progressPayload,
+            progress: envelope?.progressPayload.map { SunnahWidgetDayRollover.progress($0, at: now, timeZone: tz) },
             content: envelope?.contentSpotlightPayload,
             selectedCustomId: selectedCustomId,
             isSampleData: false
@@ -225,18 +219,181 @@ struct CatalogWidgetProvider: TimelineProvider {
         let live = CatalogWidgetEntry.live(now: now)
         var dates = [now]
         if let next = live.prayer.nextDate, next > now { dates.append(next) }
-        var cal = Calendar.current
-        if let midnight = cal.nextDate(after: now, matching: DateComponents(hour: 0, minute: 1), matchingPolicy: .nextTime) {
-            dates.append(midnight)
-        }
-        let entries = Array(Set(dates)).sorted().prefix(6).map { CatalogWidgetEntry.live(now: $0) }
+        let tz = SunnahWidgetDayRollover.timeZone(envelope: SunnahSharedStore.loadEnvelope(), prayer: live.prayer.snapshot)
+        let midnight = SunnahWidgetDayRollover.nextMidnight(after: now, timeZone: tz)
+        if let midnight { dates.append(midnight) }
+        dates.append(contentsOf: SunnahWidgetDayRollover.adhkarWindowBoundaries(after: now, timeZone: tz))
+        let entries = Array(Set(dates)).sorted().prefix(8).map { CatalogWidgetEntry.live(now: $0) }
         let policy: TimelineReloadPolicy = {
             if let next = live.prayer.nextDate, next > now { return .after(next) }
-            if let midnight = cal.nextDate(after: now, matching: DateComponents(hour: 0, minute: 1), matchingPolicy: .nextTime) {
-                return .after(midnight)
-            }
+            if let midnight { return .after(midnight) }
             return .after(now.addingTimeInterval(6 * 3600))
         }()
         completion(Timeline(entries: Array(entries), policy: policy))
+    }
+}
+
+/// Day/time-window rollover for envelope domains published once by the app.
+/// Uses the same Umm al-Qura authority as the JS publisher (`islamic-umalqura`);
+/// never touches prayer calculation. Without it, Calendar/Adhkar/Progress widgets
+/// would keep yesterday's values until the app is reopened.
+enum SunnahWidgetDayRollover {
+    static let hijriMonthsAr = [
+        "", "محرم", "صفر", "ربيع الأول", "ربيع الآخر", "جمادى الأولى", "جمادى الآخرة",
+        "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة",
+    ]
+
+    static func timeZone(envelope: SunnahWidgetEnvelope?, prayer: SharedPrayerSnapshot?) -> TimeZone {
+        let id = envelope?.calendarPayload?.timezoneIdentifier ?? prayer?.timeZoneIdentifier ?? envelope?.timezoneIdentifier
+        return id.flatMap { TimeZone(identifier: $0) } ?? .current
+    }
+
+    static func nextMidnight(after date: Date, timeZone: TimeZone) -> Date? {
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = timeZone
+        return cal.nextDate(after: date, matching: DateComponents(hour: 0, minute: 0), matchingPolicy: .nextTime)
+    }
+
+    private static func dayKey(_ date: Date, _ tz: TimeZone) -> String {
+        SunnahSharedStore.dayKey(for: date, timeZone: tz)
+    }
+
+    private static func dayKey(epochMs: Int64, _ tz: TimeZone) -> String {
+        dayKey(Date(timeIntervalSince1970: TimeInterval(epochMs) / 1000), tz)
+    }
+
+    private static func daysBetween(_ fromKey: String, _ date: Date, _ tz: TimeZone) -> Int? {
+        let parser = DateFormatter()
+        parser.locale = Locale(identifier: "en_US_POSIX")
+        parser.timeZone = tz
+        parser.dateFormat = "yyyy-MM-dd"
+        guard let from = parser.date(from: fromKey) else { return nil }
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = tz
+        return cal.dateComponents([.day], from: cal.startOfDay(for: from), to: cal.startOfDay(for: date)).day
+    }
+
+    private static func arabicDate(_ date: Date, calendar id: Calendar.Identifier, tz: TimeZone, template: String) -> String {
+        var cal = Calendar(identifier: id)
+        cal.timeZone = tz
+        let f = DateFormatter()
+        f.calendar = cal
+        f.locale = Locale(identifier: "ar")
+        f.timeZone = tz
+        f.setLocalizedDateFormatFromTemplate(template)
+        return f.string(from: date)
+    }
+
+    static func calendar(_ payload: SharedCalendarPayload, at date: Date) -> SharedCalendarPayload {
+        let tz = TimeZone(identifier: payload.timezoneIdentifier) ?? .current
+        let today = dayKey(date, tz)
+        let published = payload.gregorianDate ?? payload.dayStartsAt ?? dayKey(epochMs: payload.updatedAtEpochMs, tz)
+        guard published != today,
+              let delta = daysBetween(published, date, tz), delta > 0
+        else { return payload }
+        var islamic = Calendar(identifier: .islamicUmmAlQura)
+        islamic.timeZone = tz
+        var gregorian = Calendar(identifier: .gregorian)
+        gregorian.timeZone = tz
+        let h = islamic.dateComponents([.year, .month, .day], from: date)
+        let g = gregorian.dateComponents([.year, .month, .day], from: date)
+        var out = payload
+        let weekday = arabicDate(date, calendar: .gregorian, tz: tz, template: "EEEE")
+        let hijriText = arabicDate(date, calendar: .islamicUmmAlQura, tz: tz, template: "d MMMM y")
+        let gregorianText = arabicDate(date, calendar: .gregorian, tz: tz, template: "d MMMM y")
+        out.hijriDay = h.day ?? payload.hijriDay
+        out.hijriMonth = h.month ?? payload.hijriMonth
+        out.hijriYear = h.year ?? payload.hijriYear
+        out.hijriMonthAr = hijriMonthsAr.indices.contains(out.hijriMonth) ? hijriMonthsAr[out.hijriMonth] : payload.hijriMonthAr
+        out.hijriDisplay = hijriText
+        out.hijriDate = String(format: "%04d-%02d-%02d", out.hijriYear, out.hijriMonth, out.hijriDay)
+        out.weekdayAr = weekday
+        out.hijriWeekday = weekday
+        out.gregorianWeekday = weekday
+        out.gregorianDisplay = gregorianText
+        out.gregorianDate = today
+        out.dayStartsAt = today
+        out.gregorianDay = g.day
+        out.gregorianMonth = g.month
+        out.gregorianYear = g.year
+        switch payload.calendarMode {
+        case "gregorian": out.displayDateArabic = gregorianText
+        case "dual": out.displayDateArabic = "\(hijriText) · \(gregorianText)"
+        default: out.displayDateArabic = hijriText
+        }
+        if out.hijriMonth == 9 {
+            out.inRamadan = true
+            out.daysUntilRamadan = 0
+            out.ramadanLabelAr = "رمضان مبارك"
+        } else if payload.inRamadan {
+            out.inRamadan = false
+            out.daysUntilRamadan = nil
+            out.ramadanLabelAr = "باقي على رمضان"
+        } else {
+            out.daysUntilRamadan = payload.daysUntilRamadan.map { max(0, $0 - delta) }
+        }
+        if let days = payload.upcomingEventDays {
+            let remaining = days - delta
+            if remaining >= 0 {
+                out.upcomingEventDays = remaining
+            } else {
+                // Event passed — never invent the next one; app republishes on open.
+                out.upcomingEventDays = nil
+                out.upcomingEventNameAr = nil
+            }
+        }
+        return out
+    }
+
+    /// Product windows mirror JS `resolveTimeOfDay` → ADHKAR_BY_TIME (sunnah-widget-envelope-publish.ts).
+    static func adhkarWindow(at date: Date, timeZone: TimeZone) -> (collection: String, title: String) {
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = timeZone
+        let c = cal.dateComponents([.hour, .minute], from: date)
+        let hour = Double(c.hour ?? 0) + Double(c.minute ?? 0) / 60
+        switch hour {
+        case 4..<11.5: return ("morning", "أذكار الصباح")
+        case 11.5..<14.5: return ("after-salah", "أذكار بعد الصلاة")
+        case 14.5..<21.5: return ("evening", "أذكار المساء")
+        default: return ("sleep", "أذكار النوم")
+        }
+    }
+
+    static func adhkarWindowBoundaries(after date: Date, timeZone: TimeZone) -> [Date] {
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = timeZone
+        return [(4, 0), (11, 30), (14, 30), (21, 30)].compactMap { hm in
+            cal.nextDate(after: date, matching: DateComponents(hour: hm.0, minute: hm.1), matchingPolicy: .nextTime)
+        }
+    }
+
+    static func adhkar(_ payload: SharedAdhkarPayload, at date: Date, timeZone: TimeZone) -> SharedAdhkarPayload {
+        var out = payload
+        let window = adhkarWindow(at: date, timeZone: timeZone)
+        out.activeCollection = window.collection
+        out.activeTitleAr = window.title
+        if dayKey(epochMs: payload.updatedAtEpochMs, timeZone) != dayKey(date, timeZone) {
+            out.todayCompleted = false
+        }
+        return out
+    }
+
+    static func quran(_ payload: SharedQuranPayload, at date: Date, timeZone: TimeZone) -> SharedQuranPayload {
+        guard dayKey(epochMs: payload.updatedAtEpochMs, timeZone) != dayKey(date, timeZone) else { return payload }
+        var out = payload
+        if out.pagesCompletedToday != nil { out.pagesCompletedToday = 0 }
+        return out
+    }
+
+    static func progress(_ payload: SharedHomeProgressPayload, at date: Date, timeZone: TimeZone) -> SharedHomeProgressPayload {
+        guard dayKey(epochMs: payload.updatedAtEpochMs, timeZone) != dayKey(date, timeZone) else { return payload }
+        var out = payload
+        out.morningAdhkarDone = false
+        out.eveningAdhkarDone = false
+        out.quranDone = false
+        out.wirdDone = false
+        out.pagesCompletedToday = 0
+        out.currentAdhkarTitleAr = adhkarWindow(at: date, timeZone: timeZone).title
+        return out
     }
 }

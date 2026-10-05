@@ -1,6 +1,6 @@
 # DESIGN_AUTHORITY_REPORT
 
-Generated: 2026-10-03T09:21:24.298Z
+Generated: 2026-10-05T21:14:08.016Z
 
 ## Authority maps
 
@@ -50,8 +50,8 @@ Generated: 2026-10-03T09:21:24.298Z
 
 | Field | Value |
 |---|---:|
-| consistencyScore | 89 |
-| driftScore | 11 |
-| authorityAdoptionRatio | 43 |
+| consistencyScore | 90 |
+| driftScore | 10 |
+| authorityAdoptionRatio | 48 |
 
 Exit signal: **DESIGN_GOVERNANCE_AUTOMATED** · **DESIGN_CONSISTENCY_SCORING**
