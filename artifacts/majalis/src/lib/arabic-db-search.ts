@@ -5,7 +5,7 @@
  * Feature flag default OFF until Production migration + owner approval.
  */
 import { supabase } from "@/lib/supabase";
-import { resolveArabicSearchPath } from "@/lib/arabic-search-feature-flag";
+import { resolveArabicSearchPath, type ArabicSearchPath } from "@/lib/arabic-search-feature-flag";
 import { recordSearchObs } from "@/lib/search-observability";
 
 /** Monotonic generation — drop stale RPC responses when a newer request started. */
@@ -54,16 +54,103 @@ export type SourceSearchFilters = {
   cursorId?: string | null;
 };
 
+/** Row shape returned by `search_hadiths` v4 RPC (PostgREST JSON). */
+export type HadithRpcSearchRow = {
+  id: string;
+  title: string | null;
+  text_snippet: string | null;
+  narrator: string | null;
+  source_name: string | null;
+  collection: string | null;
+  chapter: string | null;
+  hadith_number: string | null;
+  grade: string | null;
+  authenticity_class: string | null;
+  matched_field: string | null;
+  relevance_score: number | null;
+  cursor_score: number | null;
+  cursor_id: string | null;
+};
+
+/** Row shape returned by `search_sources` v4 RPC. */
+export type SourceRpcSearchRow = {
+  id: string;
+  name: string | null;
+  category: string | null;
+  source_type: string | null;
+  url: string | null;
+  trust_level: string | null;
+  matched_field: string | null;
+  relevance_score: number | null;
+  cursor_score: number | null;
+  cursor_id: string | null;
+};
+
+/** Map v4 RPC row → legacy searchEverything hadith card fields (no ranking change). */
+export function mapHadithRpcRowToSearchHit(row: HadithRpcSearchRow): {
+  id: string;
+  title: string | null;
+  text: string | null;
+  narrator: string | null;
+  collection: string | null;
+  grade: string | null;
+} {
+  return {
+    id: row.id,
+    title: row.title,
+    text: row.text_snippet,
+    narrator: row.narrator,
+    collection: row.collection,
+    grade: row.grade ?? row.authenticity_class,
+  };
+}
+
+/** True when live DB has not applied Arabic search RPCs yet (safe ILIKE emergency path). */
+export function isArabicSearchRpcMissingError(error: unknown): boolean {
+  if (!error) return false;
+  const msg =
+    error instanceof Error
+      ? error.message
+      : typeof error === "object" && error !== null && "message" in error
+        ? String((error as { message?: string }).message ?? "")
+        : String(error);
+  const lower = msg.toLowerCase();
+  const code =
+    typeof error === "object" && error !== null && "code" in error
+      ? String((error as { code?: string }).code ?? "")
+      : "";
+  return (
+    code === "42883" ||
+    code === "42702" ||
+    code === "PGRST202" ||
+    lower.includes("could not find the function") ||
+    lower.includes("function public.search_hadiths") ||
+    lower.includes("function search_hadiths") ||
+    (lower.includes("function") && lower.includes("does not exist"))
+  );
+}
+
 /** بحث كيان واحد عبر RPC الهجين. */
 export async function searchArabicDbEntity(
   entity: Exclude<ArabicDbSearchEntity, "content">,
   q: string,
   lim = 20,
-): Promise<{ data: unknown[] | null; error: Error | null }> {
+): Promise<{ data: unknown[] | null; error: Error | null; path?: ArabicSearchPath }> {
   const trimmed = q.trim();
-  if (!trimmed) return { data: [], error: null };
+  if (!trimmed) return { data: [], error: null, path: "legacy_fallback" };
+  if (resolveArabicSearchPath() !== "rpc") {
+    return {
+      data: null,
+      error: new Error("ARABIC_DB_RPC_SEARCH_DISABLED — apply Production migration + owner approval first"),
+      path: "legacy_fallback",
+    };
+  }
   const { data, error } = await supabase.rpc(RPC[entity], { q: trimmed, lim });
-  return { data: (data as unknown[]) ?? null, error: error ? new Error(error.message) : null };
+  return {
+    data: (data as unknown[]) ?? null,
+    error: error ? new Error(error.message) : null,
+    path: "rpc",
+  };
 }
 
 /** بحث أحاديث مرتّب مع فلاتر المخطط الحقيقي + cursor. */
@@ -111,7 +198,7 @@ export async function searchHadithsDb(
   if (gen !== searchGeneration) {
     return { data: null, error: new Error("STALE_SEARCH_SUPERSEDED"), path: "rpc" };
   }
-  const rows = (data as unknown[]) ?? null;
+  const rows = (data as HadithRpcSearchRow[] | null) ?? null;
   recordSearchObs(
     {
       kind: error ? "rpc_error" : "hadith_rpc",
@@ -169,7 +256,7 @@ export async function searchSourcesDb(
   if (gen !== searchGeneration) {
     return { data: null, error: new Error("STALE_SEARCH_SUPERSEDED"), path: "rpc" };
   }
-  const rows = (data as unknown[]) ?? null;
+  const rows = (data as SourceRpcSearchRow[] | null) ?? null;
   recordSearchObs(
     {
       kind: error ? "rpc_error" : "source_rpc",
@@ -191,14 +278,25 @@ export async function searchArabicDbContent(
   types?: string[],
   limit = 20,
   offset = 0,
-): Promise<{ data: unknown[] | null; error: Error | null }> {
+): Promise<{ data: unknown[] | null; error: Error | null; path?: ArabicSearchPath }> {
   const trimmed = q.trim();
-  if (!trimmed) return { data: [], error: null };
+  if (!trimmed) return { data: [], error: null, path: "legacy_fallback" };
+  if (resolveArabicSearchPath() !== "rpc") {
+    return {
+      data: null,
+      error: new Error("ARABIC_DB_RPC_SEARCH_DISABLED — search_content RPC gated until migration apply"),
+      path: "legacy_fallback",
+    };
+  }
   const { data, error } = await supabase.rpc("search_content", {
     p_query: trimmed,
     p_types: types ?? undefined,
     p_limit: limit,
     p_offset: offset,
   });
-  return { data: (data as unknown[]) ?? null, error: error ? new Error(error.message) : null };
+  return {
+    data: (data as unknown[]) ?? null,
+    error: error ? new Error(error.message) : null,
+    path: "rpc",
+  };
 }
