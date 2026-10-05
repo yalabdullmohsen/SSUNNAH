@@ -56,7 +56,7 @@ assert.match(registry, /الحديث وعلومه/);
 assert.match(registry, /سين جيم/);
 assert.match(registry, /التاريخ الإسلامي/);
 
-const nav = readFileSync(join(root, "lib/navigation.ts"), "utf8");
-assert.match(nav, /href: "\/nations"/);
+const { secondaryNav } = await import("@/config/navigation");
+assert.ok(secondaryNav.some((l) => l.href === "/nations"), "الأمم السابقة في التنقل الثانوي");
 
 console.log("prayer-time-12h.test.ts: ok");

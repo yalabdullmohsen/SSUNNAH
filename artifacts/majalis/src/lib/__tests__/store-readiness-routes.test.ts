@@ -32,7 +32,7 @@ const hrefs = account!.items
   .filter((i) => i.action.kind === "link")
   .map((i) => (i.action as { href: string }).href);
 assert.ok(hrefs.includes("/support"), "support in services center");
-assert.ok(hrefs.includes("/delete-account"), "delete-account in services center");
+assert.ok(hrefs.includes("/account-deletion"), "account deletion in services center (canonical route, no redirect hop)");
 assert.ok(SERVICES_CENTER_GROUPS.some((g) => g.id === "hubs"), "hubs group");
 
 assert.match(delSrc, /clearLocalBookmarks/, "clears local bookmarks on delete");
