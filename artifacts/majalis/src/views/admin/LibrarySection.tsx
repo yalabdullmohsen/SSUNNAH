@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { adminGetLibrary, adminUpsertLibraryItem, adminDeleteLibraryItem } from "@/lib/supabase";
 import { sanitizeText } from "@/lib/sanitize";
+import { Button } from "@/components/ui/button";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { AdminModal, Field } from "./AdminModal";
 import { BulkImport } from "./BulkImport";
@@ -67,7 +68,7 @@ export function LibrarySection() {
             importRow={(row) => adminUpsertLibraryItem({ status: "approved", ...row })}
             onDone={load}
           />
-          <button type="button" onClick={() => { setForm({ ...EMPTY }); setOpen(true); }} className="mir-add-btn">+ إضافة</button>
+          <Button type="button" variant="primary" size="small" onClick={() => { setForm({ ...EMPTY }); setOpen(true); }} className="mir-add-btn">+ إضافة</Button>
         </div>
       </div>
 
@@ -91,8 +92,8 @@ export function LibrarySection() {
                   <td className="mir-td mir-td--muted">{item.category || "—"}</td>
                   <td className="mir-td mir-td--muted">{item.item_type || "—"}</td>
                   <td className="mir-td">
-                    <button type="button" onClick={() => { setForm({ ...EMPTY, ...item }); setOpen(true); }} className="mir-edit-btn">تعديل</button>
-                    <button type="button" onClick={async () => { if ((await confirm({ title: "تأكيد", body: "حذف؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteLibraryItem(item.id).then(load); }}>حذف</button>
+                    <Button type="button" variant="secondary" size="small" onClick={() => { setForm({ ...EMPTY, ...item }); setOpen(true); }} className="mir-edit-btn">تعديل</Button>
+                    <Button type="button" variant="destructive" size="small" onClick={async () => { if ((await confirm({ title: "تأكيد", body: "حذف؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteLibraryItem(item.id).then(load); }}>حذف</Button>
                   </td>
                 </tr>
               ))}

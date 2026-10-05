@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { adminGetMiracles, adminUpsertMiracle, adminDeleteMiracle } from "@/lib/supabase";
 import { sanitizeText } from "@/lib/sanitize";
+import { Button } from "@/components/ui/button";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { AdminModal, Field } from "./AdminModal";
 import { BulkImport } from "./BulkImport";
@@ -65,7 +66,7 @@ export function MiraclesSection() {
             importRow={(row) => adminUpsertMiracle({ status: "approved", ...row })}
             onDone={load}
           />
-          <button type="button" onClick={() => { setForm({ ...EMPTY }); setOpen(true); }} className="mir-add-btn">+ إضافة</button>
+          <Button type="button" variant="primary" size="small" onClick={() => { setForm({ ...EMPTY }); setOpen(true); }} className="mir-add-btn">+ إضافة</Button>
         </div>
       </div>
 
@@ -87,8 +88,8 @@ export function MiraclesSection() {
                   <td className="mir-td">{item.title}</td>
                   <td className="mir-td mir-td--muted">{item.category || "—"}</td>
                   <td className="mir-td">
-                    <button type="button" onClick={() => { setForm({ ...EMPTY, ...item }); setOpen(true); }} className="mir-edit-btn">تعديل</button>
-                    <button type="button" onClick={async () => { if ((await confirm({ title: "تأكيد", body: "حذف؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteMiracle(item.id).then(load).catch(async () => { await alert("تعذّر الحذف."); }); }}>حذف</button>
+                    <Button type="button" variant="secondary" size="small" onClick={() => { setForm({ ...EMPTY, ...item }); setOpen(true); }} className="mir-edit-btn">تعديل</Button>
+                    <Button type="button" variant="destructive" size="small" onClick={async () => { if ((await confirm({ title: "تأكيد", body: "حذف؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteMiracle(item.id).then(load).catch(async () => { await alert("تعذّر الحذف."); }); }}>حذف</Button>
                   </td>
                 </tr>
               ))}

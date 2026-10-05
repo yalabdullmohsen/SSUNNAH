@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { adminGetDashboardStats, adminGetStats } from "@/lib/supabase";
 import { ADHKAR_ITEMS } from "@/lib/adhkar-seed";
 import { getPublishedAdhkarItems } from "@/lib/adhkar-admin";
+import { Button } from "@/components/ui/button";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { useAdminShell } from "./AdminShell";
 import { AdminSectionToolbar } from "./AdminSectionToolbar";
@@ -61,9 +62,9 @@ export function ReportsSection() {
             <Link href="/admin/dashboard" className="rpt-link-btn">
               لوحة متقدمة
             </Link>
-            <button type="button" onClick={exportReport} className="rpt-export-btn">
+            <Button type="button" variant="secondary" size="small" onClick={exportReport} className="rpt-export-btn">
               تصدير تقرير
-            </button>
+            </Button>
           </>
         }
       />

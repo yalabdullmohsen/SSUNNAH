@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { adminGetAllUpdates, adminUpsertUpdate, adminDeleteUpdate } from "@/lib/platform-supabase";
 import { UPDATES_SEED } from "@/lib/updates-seed";
 import { UPDATE_TYPES } from "@/lib/platform-types";
+import { Button } from "@/components/ui/button";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { AdminModal, Field } from "./AdminModal";
 import { useAdminShell } from "./AdminShell";
@@ -27,15 +28,15 @@ export function UpdatesSection() {
     <div>
       <div className="adm-section-hdr">
         <h2 className="adm-section-h2">آخر المستجدات ({items.length})</h2>
-        <button type="button" onClick={() => { setForm({ ...EMPTY }); setOpen(true); }} className="adm-btn-add">+ إضافة</button>
+        <Button type="button" variant="primary" size="small" onClick={() => { setForm({ ...EMPTY }); setOpen(true); }} className="adm-btn-add">+ إضافة</Button>
       </div>
       {loading ? <SkeletonCardGrid count={6} /> : items.map((item) => (
         <div key={item.id} className="adm-item-card">
           <span className="adm-type-badge">{item.update_type}</span>
           <strong className="adm-block-title">{item.title}</strong>
           <div className="adm-item-actions">
-            <button type="button" onClick={() => { setForm({ ...item }); setOpen(true); }} className="adm-btn-sm">تعديل</button>
-            <button type="button" onClick={async () => { if ((await confirm({ title: "تأكيد", body: "حذف؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteUpdate(item.id).then(load).catch(() => showError("تعذّر الحذف.")); }} className="adm-btn-del">حذف</button>
+            <Button type="button" variant="secondary" size="small" onClick={() => { setForm({ ...item }); setOpen(true); }} className="adm-btn-sm">تعديل</Button>
+            <Button type="button" variant="destructive" size="small" onClick={async () => { if ((await confirm({ title: "تأكيد", body: "حذف؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteUpdate(item.id).then(load).catch(() => showError("تعذّر الحذف.")); }} className="adm-btn-del">حذف</Button>
           </div>
         </div>
       ))}
