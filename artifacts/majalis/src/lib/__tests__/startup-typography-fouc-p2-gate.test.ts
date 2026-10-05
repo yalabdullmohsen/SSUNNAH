@@ -39,12 +39,12 @@ assert.ok(
 
 console.log("=== fonts-ui + critical-first-paint use 97% ===");
 const fontsUi = read("src/styles/fonts-ui.css");
-assert.match(fontsUi, /font-family:\s*"MajlisAmiriFallback"[\s\S]*?size-adjust:\s*97%/);
-assert.match(fontsUi, /font-family:\s*"MajlisFallback"[\s\S]*?size-adjust:\s*97%/);
+/* STARTUP_SMOOTHNESS: لا إعادة تعريف للبدائل في CSS المتأخر — المصدر index.html */
+assert.doesNotMatch(fontsUi, /font-family:\s*"Majlis(Amiri)?Fallback"/);
 assert.doesNotMatch(fontsUi, /size-adjust:\s*105%/);
 
 const critical = read("src/styles/critical-first-paint.css");
-assert.match(critical, /MajlisAmiriFallback[\s\S]*?size-adjust:\s*97%/);
+assert.doesNotMatch(critical, /font-family:\s*"MajlisAmiriFallback"/);
 assert.doesNotMatch(critical, /size-adjust:\s*105%/);
 
 console.log("=== index.html critical MajlisAmiriFallback matches 97% ===");

@@ -13,7 +13,7 @@ const readPkg = (rel: string) => readFileSync(resolve(majalisRoot, rel), "utf8")
 const readRepo = (rel: string) => readFileSync(resolve(repoRoot, rel), "utf8");
 
 const fontsUi = readPkg("src/styles/fonts-ui.css");
-assert.match(fontsUi, /font-family:\s*"Amiri"/);
+assert.match(readPkg("index.html"), /@font-face\{font-family:"Amiri"/);
 assert.match(fontsUi, /font-display:\s*optional/);
 assert.doesNotMatch(fontsUi, /fonts\.googleapis|fonts\.gstatic/);
 

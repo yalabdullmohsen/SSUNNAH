@@ -7,7 +7,7 @@
 /* ── Profile Hub surfaces ── */
 html[data-v2-profile="1"] .settings-page,
 html[data-v2-profile="1"] .kp-page {
-  background: var(--v2-color-ivory, #f9f8f4);
+  background: var(--v2-color-ivory, var(--mj-bg));
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
 

@@ -296,8 +296,8 @@ assert.match(src("styles/components/topic-page.css"), /\.topic-page__crumb a \{\
 // ─── 3. Startup CLS ───────────────────────────────────────────────────────────
 const boot = src("styles/components/chrome-boot-ph.css");
 assert.match(src("App.tsx"), /import "@\/styles\/components\/chrome-boot-ph\.css";/, "CSS الإقلاع متزامن مع App");
-assert.match(boot, /\.navbar-v3__inner \{\s*display: flex;\s*align-items: center;\s*justify-content: space-between;/, "صف الهيدر لا يُرسم مكدّسًا");
-assert.match(boot, /\.navbar-v3__start,\s*\.navbar-v3__end \{\s*display: flex;/);
+assert.match(boot, /\.chrome-boot-ph \.navbar-v3__inner \{\s*display: grid;\s*grid-template-columns: auto minmax\(0, 1fr\) auto;/, "صف الهيدر لا يُرسم مكدّسًا (تخطيط NavBar النهائي)");
+assert.match(boot, /\.chrome-boot-ph \.navbar-v3__start,\s*\.chrome-boot-ph \.navbar-v3__end \{\s*display: flex;/);
 assert.match(boot, /\.lrf-wrap\.lrf-wrap--prophets,\s*\.lrf-wrap\.lrf-wrap--prophet-detail \{\s*width: 100%;\s*min-height: 100dvh;/, "هيكل /prophets بهندسته النهائية");
 assert.match(boot, /#main-content\.app-main:has\(\.lrf-wrap--prophets\),\s*#main-content\.app-main:has\(\.lrf-wrap--prophet-detail\) \{\s*padding-inline: 0;/);
 

@@ -20,7 +20,7 @@ assert.match(registry, /route:\s*"\/tazkiya"/, "مسار البوابة");
 
 {
   const hubBlock = registry.slice(registry.indexOf('id: "tazkiya"'), registry.indexOf('id: "sins-and-rights"'));
-  assert.match(hubBlock, /surfaces:\s*NAV/, "البوابة ظاهرة في الأقسام");
+  assert.match(hubBlock, /surfaces:\s*(?:NAV|\[\.\.\.NAV\b)/, "البوابة ظاهرة في الأقسام");
 }
 
 {

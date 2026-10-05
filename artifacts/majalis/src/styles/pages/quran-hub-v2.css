@@ -5,7 +5,7 @@
  */
 
 html[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] {
-  background: var(--v2-color-ivory, #f9f8f4);
+  background: var(--v2-color-ivory, var(--mj-bg));
   color: var(--v2-color-ink, var(--v2-color-ink));
   gap: var(--v2-space-5, 1.25rem);
   padding-inline: max(1rem, var(--v2-space-4, 1rem));

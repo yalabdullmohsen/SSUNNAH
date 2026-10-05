@@ -15,7 +15,7 @@ Surfaces kept in sync:
 
 - `index.html` `#mj-lcp-critical` — `MajlisAmiriFallback` at 97% (critical budget held)
 - `src/styles/critical-first-paint.css` — both fallback faces at 97%
-- `src/styles/fonts-ui.css` — both fallback faces at 97%
+- `index.html` (#mj-lcp-critical) — single source of fallback faces (see STARTUP_SMOOTHNESS.md); Noto at 97%
 
 `MajlisFallback` is not duplicated into the HTML critical block (keeps CRITICAL_CSS_BUDGET_HELD).
 

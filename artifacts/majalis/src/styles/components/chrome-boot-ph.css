@@ -13,23 +13,25 @@
   pointer-events: none;
 }
 
-/* Startup CLS: تخطيط صف الهيدر (هيكل الإقلاع ثم NavBar الحقيقي) يصل مع App نفسه.
-   كان في index-deferred-pages/NavBar فقط، فيُرسم البدء/النهاية مكدّسين عموديًا ثم يقفزان
-   إلى صف واحد (≈0.03 CLS على كل مسار). القيم مطابقة لتعريف index-deferred-pages. */
-.navbar-v3__inner {
-  display: flex;
+/* تخطيط هيدر الإقلاع = تخطيط NavBar النهائي (final-release: شبكة 3 أعمدة + gap).
+   بدونه يبقى __inner بعرض block حتى تصل الطبقات المؤجّلة (~5s على 4x/3G)
+   فتنزل __end تحت __start (y=65) ثم تقفز إلى y=18 → CLS≈0.03 على /quran-hub و/lessons. */
+.chrome-boot-ph .navbar-v3__inner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--ds-space-3, 0.75rem);
-  width: 100%;
+  gap: 10px;
+  min-height: 56px;
+  padding-inline: 16px;
   box-sizing: border-box;
 }
-
-.navbar-v3__start,
-.navbar-v3__end {
+.chrome-boot-ph .navbar-v3__start,
+.chrome-boot-ph .navbar-v3__end {
   display: flex;
   align-items: center;
-  gap: var(--ds-space-2, 0.5rem);
+  gap: 0.5rem;
+  flex-shrink: 0;
+  min-width: 0;
 }
 
 /* Startup CLS (/prophets): هندسة هيكل المسار الكسول الممتد بعرض الشاشة تصل مع App.

@@ -12,7 +12,7 @@ html[data-v2-worship="1"] .prayer-times-page,
 html[data-v2-worship="1"] .salah-guide-page,
 html[data-v2-worship="1"] .topic-page--adhkar,
 html[data-v2-worship="1"] .content-hub-page.adhkar-page {
-  background: var(--v2-color-ivory, #f9f8f4);
+  background: var(--v2-color-ivory, var(--mj-bg));
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
@@ -121,7 +121,7 @@ html[data-v2-worship="1"] .adhkar-ring-fill {
 /* ═══════════════ Glossary ═══════════════ */
 html[data-v2-glossary="1"] .gl-page,
 html[data-v2-glossary="1"] .mj-page[data-islamic-glossary="1"] {
-  background: var(--v2-color-ivory, #f9f8f4);
+  background: var(--v2-color-ivory, var(--mj-bg));
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
@@ -197,7 +197,7 @@ html[data-v2-glossary="1"] .gl-results-count {
 /* ═══════════════ History Timeline ═══════════════ */
 html[data-v2-history="1"] .tarikh-hub,
 html[data-v2-history="1"] .topic-page--tarikh {
-  background: var(--v2-color-ivory, #f9f8f4);
+  background: var(--v2-color-ivory, var(--mj-bg));
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
 

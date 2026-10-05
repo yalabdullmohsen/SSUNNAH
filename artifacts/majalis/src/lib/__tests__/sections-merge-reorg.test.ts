@@ -61,7 +61,8 @@ assert.deepEqual(
 assert.equal(MORE_FEATURED_SECTIONS.length, 7);
 assert.deepEqual(
   MORE_FEATURED_SECTIONS.map((s) => s.title),
-  ["العقيدة", "الحديث وعلومه", "الفقه", "السيرة النبوية", "التاريخ الإسلامي", "قصص الأنبياء", "الأمم السابقة"],
+  /* ترتيب IA الموحّد: الحديث والسنة ← العقيدة والفقه ← المعرفة والتاريخ */
+  ["الحديث وعلومه", "السيرة النبوية", "العقيدة", "الفقه", "التاريخ الإسلامي", "قصص الأنبياء", "الأمم السابقة"],
 );
 
 const hubSrc = SERVICES_CENTER_GROUPS[0]!.items.map((i) => i.label).join("|");

@@ -83,10 +83,8 @@
   }
 }
 
-/* ── Safe area لكروم سفلي ── */
-html[data-v2-app="1"][data-v2-nav="1"] .bottom-nav.bottom-nav--v2 {
-  padding-bottom: max(0.35rem, var(--inset-bottom, 0px));
-}
+/* ── Safe area لكروم سفلي: مصدر وحيد في critical-first-paint + final-release (padding = inset فقط).
+   قاعدة max(.35rem) السابقة كانت تُطبَّق مؤقتًا (≈1.5s) قبل أن تهزمها navigation.css → قفزة 62↔67px. ── */
 
 /* ── Focus-visible موحّد لعناصر الهوية المتبقية ── */
 html[data-v2-app="1"] .hub-card:focus-visible,

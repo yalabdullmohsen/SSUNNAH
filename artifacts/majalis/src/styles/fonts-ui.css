@@ -1,20 +1,12 @@
 /**
  * خطوط الواجهة مستضافة محليًا (woff2) — بلا Google Fonts.
  * SIL OFL: Amiri (خط الواجهة الوحيد) + Aref Ruqaa / Scheherazade اختيارية زخرفية.
- * Amiri 400–500 + 600–800 هنا من الإقلاع — منع قفزة الوزن بعد الرسم.
+ * مصدر وحيد: @font-face لـ Amiri العربية (400–500 و600–800) وMajlisAmiriFallback/MajlisFallback
+ * مُعرَّفة مضمّنة في index.html (#mj-lcp-critical) فقط. إعادة تعريفها هنا تُنشئ FontFace جديدًا
+ * عند وصول الحزمة بعد أول رسم فيُحمَّل من الكاش داخل فترة الحجب → تبديل خط مرئي (قفزة).
  * font-display: optional — لا swap مرئي على iOS/WebView.
  */
-@font-face {
-  font-family: "Amiri";
-  font-style: normal;
-  font-weight: 400 500;
-  font-display: optional;
-  src: url("/fonts/ui/amiri-400-ar.woff2") format("woff2");
-  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+0660-0669;
-  ascent-override: 95%;
-  descent-override: 25%;
-  line-gap-override: 0%;
-}
+/* Amiri اللاتيني (أرقام/لاتيني نادر) فقط — لا يتقاطع مع أوجه العربية المضمّنة */
 @font-face {
   font-family: "Amiri";
   font-style: normal;
@@ -22,17 +14,6 @@
   font-display: optional;
   src: url("/fonts/ui/amiri-400-lat.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC;
-  ascent-override: 95%;
-  descent-override: 25%;
-  line-gap-override: 0%;
-}
-@font-face {
-  font-family: "Amiri";
-  font-style: normal;
-  font-weight: 600 800;
-  font-display: optional;
-  src: url("/fonts/ui/amiri-700-ar.woff2") format("woff2");
-  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+0660-0669;
   ascent-override: 95%;
   descent-override: 25%;
   line-gap-override: 0%;
@@ -97,21 +78,4 @@
   font-display: optional;
   src: url("/fonts/ui/scheherazade-400-ar.woff2") format("woff2");
   unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+0660-0669;
-}
-@font-face {
-  font-family: "MajlisFallback";
-  src: local("Geeza Pro"), local("Traditional Arabic");
-  /* Calibrated vs Amiri 400 (Playwright width Δ) — reports/ui-fallback-metrics.json */
-  size-adjust: 97%;
-  ascent-override: 95%;
-  descent-override: 25%;
-  line-gap-override: 0%;
-}
-@font-face {
-  font-family: "MajlisAmiriFallback";
-  src: local("Noto Naskh Arabic"), local("Geeza Pro"), local("Traditional Arabic");
-  size-adjust: 97%;
-  ascent-override: 95%;
-  descent-override: 25%;
-  line-gap-override: 0%;
 }
