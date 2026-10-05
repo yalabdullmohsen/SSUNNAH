@@ -45,6 +45,12 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/
 fastlane/test_output/
+# أسرار التوقيع والرفع — لا تُرفع أبدًا (ضعها خارج المستودع)
+*.p8
+*.p12
+*.cer
+*.mobileprovision
+fastlane/.env*
 vendor/bundle/
 .bundle/
 artifacts/majalis/ios/build/
