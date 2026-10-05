@@ -130,12 +130,44 @@ describe("path-classifier", () => {
     assert.equal(r.needVisual, false);
   });
 
-  it(".github/workflows (non-policy) remains manual review", () => {
+  it(".github/workflows (non-policy) remains manual review but runs Fast Lane only", () => {
     const r = classifyChangedPaths([".github/workflows/release-majlisilm.yml"]);
-    assert.equal(r.lane, "risky");
+    assert.equal(classifyOnePath(".github/workflows/release-majlisilm.yml"), "workflow");
+    assert.equal(r.lane, "ci-config");
     assert.equal(r.manualReview, true);
-    assert.equal(r.needPostgres, true);
+    assert.equal(r.needPostgres, false);
+    assert.equal(r.needBuild, false);
+    assert.equal(r.needMushaf, false);
+    assert.equal(r.needVisual, false);
+    assert.equal(r.needFastLane, true);
+  });
+
+  it("new standalone workflow + dependabot + docs: no heavy build, still manual review", () => {
+    const r = classifyChangedPaths([
+      ".github/workflows/claude-security-review.yml",
+      ".github/dependabot.yml",
+      "docs/AUDIT.md",
+    ]);
+    assert.equal(classifyOnePath(".github/dependabot.yml"), "workflow");
+    assert.equal(r.lane, "ci-config");
+    assert.equal(r.manualReview, true);
+    assert.equal(r.needBuild, false);
+    assert.equal(r.needFastLane, true);
+  });
+
+  it("standalone workflow + app code still builds (mixed via frontend)", () => {
+    const r = classifyChangedPaths([
+      ".github/workflows/a11y-axe.yml",
+      "artifacts/majalis/src/components/Foo.tsx",
+    ]);
+    assert.equal(r.needBuild, true);
+    assert.equal(r.manualReview, true);
     assert.equal(r.needFastLane, false);
+  });
+
+  it("ios-* workflows stay native; nested workflow paths stay risky", () => {
+    assert.equal(classifyOnePath(".github/workflows/ios-native-macos.yml"), "native");
+    assert.equal(classifyOnePath(".github/workflows/sub/x.yml"), "risky");
   });
 
   it("ci.yml concurrency/policy is Fast Lane ci-config", () => {

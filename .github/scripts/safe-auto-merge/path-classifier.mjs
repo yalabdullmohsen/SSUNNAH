@@ -4,7 +4,7 @@
  */
 import { DANGER_PATH_PATTERNS, AUTH_SECURITY_PATH_PATTERNS } from "./constants.mjs";
 
-/** @typedef {'docs'|'policy'|'content'|'frontend'|'mushaf'|'native'|'risky'|'other'} PathKind */
+/** @typedef {'docs'|'policy'|'workflow'|'content'|'frontend'|'mushaf'|'native'|'risky'|'other'} PathKind */
 /** @typedef {'docs-only'|'ci-config'|'policy-only'|'content-only'|'web-logic'|'visual'|'frontend'|'mushaf'|'native'|'risky'|'full'|'mixed'} LaneName */
 
 /**
@@ -165,6 +165,20 @@ function isPolicyWorkflowAllowlist(p) {
 }
 
 /**
+ * ملف workflow مستقل (غير مملوك للسياسة) أو إعداد Dependabot.
+ * يبقى مراجعة يدوية (DANGER_PATH_PATTERNS في eligibility + manualReview هنا)،
+ * لكنه لا يغيّر شيفرة التطبيق ⇒ Fast Lane بلا build/mushaf/postgres/visual.
+ * سابقًا كان risky ⇒ PR يضيف workflow منفصلًا يشغّل الحزمة الثقيلة كاملة ويستنزف المشغّلات.
+ * @param {string} p
+ * @returns {boolean}
+ */
+export function isStandaloneWorkflowPath(p) {
+  const s = String(p || "");
+  if (isPolicyPath(s) || isPolicyWorkflowAllowlist(s) || isNativePath(s)) return false;
+  return /^\.github\/workflows\/[^/]+\.ya?ml$/i.test(s) || /^\.github\/dependabot\.ya?ml$/i.test(s);
+}
+
+/**
  * @param {string} p
  * @returns {boolean}
  */
@@ -186,7 +200,7 @@ export function isRiskyPath(p) {
   if (/^artifacts\/majalis\/supabase\//i.test(s)) return true;
   if (/^api\//i.test(s)) return true;
   if (/^artifacts\/majalis\/api\//i.test(s)) return true;
-  if (/^\.github\/workflows\//i.test(s)) return true;
+  if (/^\.github\/workflows\//i.test(s) && !isStandaloneWorkflowPath(s)) return true;
   // lockfile = تبعية جديدة → risky؛ package.json وحده = policy (scripts/meta)
   if (/^pnpm-lock\.yaml$/i.test(s)) return true;
   if (/\.sql$/i.test(s) || /migration/i.test(s)) return true;
@@ -200,6 +214,7 @@ export function isRiskyPath(p) {
  * @returns {PathKind}
  */
 export function classifyOnePath(p) {
+  if (isStandaloneWorkflowPath(p)) return "workflow";
   if (isRiskyPath(p)) return "risky";
   if (isNativePath(p)) return "native";
   if (isMushafPath(p)) return "mushaf";
@@ -219,6 +234,7 @@ export function classifyChangedPaths(paths = [], opts = {}) {
   const kinds = {
     docs: false,
     policy: false,
+    workflow: false,
     content: false,
     frontend: false,
     mushaf: false,
@@ -232,6 +248,7 @@ export function classifyChangedPaths(paths = [], opts = {}) {
   const filesByKind = {
     docs: [],
     policy: [],
+    workflow: [],
     content: [],
     frontend: [],
     mushaf: [],
@@ -254,6 +271,7 @@ export function classifyChangedPaths(paths = [], opts = {}) {
       kinds: {
         docs: false,
         policy: false,
+        workflow: false,
         content: false,
         frontend: true,
         mushaf: true,
@@ -310,7 +328,7 @@ function finalizeClassification(input) {
     !needMushaf &&
     !needPostgres &&
     !needNative &&
-    (kinds.docs || kinds.policy) &&
+    (kinds.docs || kinds.policy || kinds.workflow) &&
     !kinds.content &&
     !kinds.frontend &&
     !kinds.other;
@@ -366,6 +384,9 @@ function finalizeClassification(input) {
   } else if (kinds.content) {
     lane = "content-only";
     laneReason = "public/data or harvest content";
+  } else if (kinds.workflow) {
+    lane = "ci-config";
+    laneReason = "standalone workflow / dependabot (manual review, no app build)";
   } else if (kinds.policy && !kinds.docs) {
     lane = "ci-config";
     laneReason = "CI/scripts/actions/package.json policy";
@@ -386,7 +407,7 @@ function finalizeClassification(input) {
   // توافق خلفي: policy-only اسم مستعار لـ ci-config في المخرجات النصية القديمة
   const laneCompat = lane === "ci-config" ? "ci-config" : lane;
 
-  const manualReview = Boolean(kinds.risky || kinds.native);
+  const manualReview = Boolean(kinds.risky || kinds.native || kinds.workflow);
 
   const requiredChecks = {
     verifyBuild: true,
