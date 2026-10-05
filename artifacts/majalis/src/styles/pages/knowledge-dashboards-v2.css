@@ -12,7 +12,7 @@ html[data-v2-knowledge="1"] .fiqh-lux-page,
 html[data-v2-knowledge="1"] .hadith-page,
 html[data-v2-knowledge="1"] .tawhid-hub,
 html[data-v2-knowledge="1"] .topic-page--tawhid .topic-page__body {
-  background: var(--v2-color-ivory, #f9f8f4);
+  background: var(--v2-color-ivory, var(--mj-bg));
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
 

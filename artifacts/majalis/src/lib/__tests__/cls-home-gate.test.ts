@@ -69,8 +69,8 @@ assert.doesNotMatch(
   "لا min-height:unset في هيرو الرئيسية",
 );
 assert.doesNotMatch(fontsUi, /font-display:\s*swap/, "لا font-display:swap لخطوط الواجهة");
-assert.match(fontsUi, /amiri-400-ar[\s\S]*font-display:\s*optional/, "Amiri 400 optional — لا يحجب LCP");
-assert.match(fontsUi, /amiri-700-ar[\s\S]*font-display:\s*optional/, "Amiri 700 optional من الإقلاع — بلا قفزة وزن");
+assert.match(html, /font-display:optional;src:url\("\/fonts\/ui\/amiri-400-ar/, "Amiri 400 optional — لا يحجب LCP");
+assert.match(html, /font-display:optional;src:url\("\/fonts\/ui\/amiri-700-ar/, "Amiri 700 optional من الإقلاع — بلا قفزة وزن");
 assert.match(fontsBold, /Aref Ruqaa[\s\S]*font-display:\s*optional/, "Aref Ruqaa 700 optional مؤجّل زخرفيًا");
 assert.doesNotMatch(fontsBold, /amiri-700/, "Amiri 700 لم يعد مؤجّلًا في fonts-ui-bold");
 assert.equal(

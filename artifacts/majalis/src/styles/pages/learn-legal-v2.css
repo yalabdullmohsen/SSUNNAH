@@ -11,7 +11,7 @@
 html[data-v2-learn="1"] .topic-page,
 html[data-v2-learn="1"] .qzg-root,
 html[data-v2-learn="1"] .quiz-page {
-  background: var(--v2-color-ivory, #f9f8f4);
+  background: var(--v2-color-ivory, var(--mj-bg));
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
@@ -117,7 +117,7 @@ html[data-v2-learn="1"] .quiz-level-badge--easy {
 html[data-v2-legal="1"] .legal-page,
 html[data-v2-legal="1"] .legal-page-body,
 html[data-v2-legal="1"] .support-page {
-  background: var(--v2-color-ivory, #f9f8f4);
+  background: var(--v2-color-ivory, var(--mj-bg));
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
@@ -199,7 +199,7 @@ html[data-v2-legal="1"] .mj-btn--primary {
 
 /* ═══════════════ Offline ═══════════════ */
 html[data-v2-offline="1"] .kp-page {
-  background: var(--v2-color-ivory, #f9f8f4);
+  background: var(--v2-color-ivory, var(--mj-bg));
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
@@ -252,7 +252,7 @@ html[data-v2-app="1"] .error-boundary,
 html[data-v2-app="1"] .error-fallback,
 html[data-v2-app="1"] .error-boundary-fallback,
 html[data-v2-app="1"] .chunk-recovery-toast {
-  background: var(--v2-color-ivory, #f9f8f4);
+  background: var(--v2-color-ivory, var(--mj-bg));
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
 

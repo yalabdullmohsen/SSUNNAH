@@ -8,7 +8,7 @@
 /* ── سطح التطبيق ── */
 html[data-v2-app="1"] body,
 html[data-v2-app="1"] .app-shell {
-  background-color: var(--v2-color-ivory, #f9f8f4);
+  background-color: var(--v2-color-ivory, var(--mj-bg));
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
@@ -394,7 +394,7 @@ html[data-v2-app="1"] .topic-page__body,
 html[data-v2-app="1"] .dashboard-screen,
 html[data-v2-app="1"] .list-screen,
 html[data-v2-app="1"] .utility-screen {
-  background-color: var(--v2-color-ivory, #f9f8f4);
+  background-color: var(--v2-color-ivory, var(--mj-bg));
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
 

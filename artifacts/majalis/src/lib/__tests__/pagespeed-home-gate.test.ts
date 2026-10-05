@@ -77,7 +77,7 @@ assert.match(html, /font-weight:\s*400/, "وزن 400 للنص العادي في 
 assert.match(html, /rel="preload"[^>]+amiri-700-ar/, "preload Amiri 700 يمنع قفزة الوزن");
 assert.match(main, /fonts-ui-bold\.css/, "Aref Ruqaa 700 مؤجّل زخرفيًا");
 assert.match(main, /setTimeout\(\(\)\s*=>\s*\{\s*void import\("\.\/styles\/fonts-ui-bold\.css"\)/, "fonts-ui-bold عبر setTimeout لا rIC");
-assert.match(read("src/styles/fonts-ui.css"), /amiri-700-ar/, "Amiri 700 في مسار الإقلاع");
+assert.match(html, /@font-face\{[^}]*amiri-700-ar/, "Amiri 700 في مسار الإقلاع (مضمّن — مصدر وحيد)");
 assert.doesNotMatch(read("src/styles/fonts-ui-bold.css"), /amiri-700/, "لا تأجيل Amiri 700");
 
 console.log("pagespeed-home-gate.test.ts: ok");

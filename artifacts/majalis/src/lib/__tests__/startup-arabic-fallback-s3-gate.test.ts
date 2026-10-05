@@ -28,19 +28,18 @@ assert.equal(metrics.bestSizeAdjustPercent, 97);
 assert.ok(metrics.bestSumAbsWidthDelta < metrics.baseline105);
 
 const fontsUi = readPkg("src/styles/fonts-ui.css");
-assert.match(fontsUi, /MajlisAmiriFallback[\s\S]*?size-adjust:\s*97%/);
-assert.match(fontsUi, /MajlisFallback[\s\S]*?size-adjust:\s*97%/);
-assert.match(fontsUi, /line-gap-override:\s*0%/);
+/* STARTUP_SMOOTHNESS: البدائل المعايَرة مصدرها الوحيد index.html — تكرارها في CSS متأخر يبدّل الوجه بعد الرسم */
+assert.doesNotMatch(fontsUi, /font-family:\s*"Majlis(Amiri)?Fallback"/);
 assert.doesNotMatch(fontsUi, /size-adjust:\s*105%/);
 
 const critical = readPkg("src/styles/critical-first-paint.css");
-assert.match(critical, /MajlisAmiriFallback[\s\S]*?size-adjust:\s*97%/);
-assert.match(critical, /MajlisAmiriFallback[\s\S]*?line-gap-override:\s*0%/);
+assert.doesNotMatch(critical, /font-family:\s*"MajlisAmiriFallback"/);
 assert.doesNotMatch(critical, /size-adjust:\s*105%/);
 
 const html = readPkg("index.html");
 assert.match(html, /MajlisAmiriFallback[^}]*size-adjust:97%/);
-/* MajlisFallback يبقى في fonts-ui/critical-first-paint — لا يُضاعف في critical HTML فوق الميزانية */
+assert.match(html, /MajlisAmiriFallback[^}]*line-gap-override:0%/);
+assert.match(html, /"MajlisFallback"[^}]*local\("GeezaPro"\)[^}]*size-adjust:/);
 assert.match(html, /font-display:optional/);
 assert.doesNotMatch(html, /font-display:\s*block/i);
 

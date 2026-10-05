@@ -2,27 +2,8 @@
  * حجز الشاشة الأولى فقط — يُضمَّن في HTML. الباقي غير حاجب.
  * لا !important. الارتفاع من الرموز نفسها المستخدمة بعد التحميل.
  */
-@font-face {
-  font-family: "Amiri";
-  font-style: normal;
-  font-weight: 400;
-  /* optional: لا يحجب LCP؛ preload + مقاييس fallback تمنع CLS */
-  font-display: optional;
-  src: url("/fonts/ui/amiri-400-ar.woff2") format("woff2");
-  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+0660-0669;
-  ascent-override: 95%;
-  descent-override: 25%;
-  line-gap-override: 0%;
-}
-
-@font-face {
-  font-family: "MajlisAmiriFallback";
-  src: local("Noto Naskh Arabic");
-  ascent-override: 95%;
-  descent-override: 25%;
-  line-gap-override: 0%;
-  size-adjust: 97%;
-}
+/* @font-face لـ Amiri والبدائل المعايَرة: مصدر وحيد في index.html (#mj-lcp-critical).
+   التكرار هنا كان ينشئ وجهًا ثانيًا بواصفات مختلفة (400 مقابل 400 500) فيتغيّر الوجه المطابق. */
 
 :root {
   --ticker-h: 2.65rem;
@@ -178,7 +159,7 @@ html[data-ab="1"] .hus-field {
 .navbar-v3__tagline-mark{display:block;flex-shrink:0;height:2.1rem;width:8.85rem;max-width:min(15rem,56vw);aspect-ratio:3787/900}
 .navbar-v3__tagline{min-height:2.1rem;min-width:8.85rem}
 .m2030-home{padding-block-end:calc(var(--bottom-nav-h) + 1.1rem)}
-.bottom-nav,.bottom-nav--v2{position:fixed;left:0;right:0;bottom:0;width:100%;box-sizing:border-box;display:flex;align-items:stretch;justify-content:space-around;padding-bottom:var(--inset-bottom,0px);min-height:calc(var(--bottom-nav-height) + var(--inset-bottom,0px));z-index:var(--z-nav);background:var(--mj-bg,#f8f6f1);border-top:1px solid var(--color-border,rgba(23,61,53,.12))}
+.bottom-nav,.bottom-nav--v2{position:fixed;left:0;right:0;bottom:0;width:100%;box-sizing:border-box;display:flex;align-items:stretch;justify-content:space-around;padding-top:.2rem;padding-bottom:var(--inset-bottom,0px);height:calc(var(--bottom-nav-height,64px) + var(--inset-bottom,0px));z-index:var(--z-nav);background:var(--mj-bg,#f8f6f1);border-top:1px solid var(--color-border,rgba(23,61,53,.12))}
 .bottom-nav__tab{flex:1 1 0;min-height:48px;height:calc(var(--bottom-nav-height) - .2rem);max-height:var(--bottom-nav-height);display:flex;flex-direction:column;align-items:center;justify-content:center}
 
 .mj-home-lcp-ph__daily-band,.daily-wird-card,[data-testid="daily-wird-card"]{min-height:28rem}
