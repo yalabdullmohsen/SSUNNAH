@@ -4,6 +4,8 @@
  * لا يمسّ نص القرآن ولا Page Mapping.
  */
 import { toArabicPageDigits } from "@/lib/numerals";
+import { Button } from "@/components/ui/button";
+import { mushafButtonClass } from "@/features/mushaf-reader/mushaf-button-parity";
 
 type Props = {
   pageNumber: number;
@@ -14,9 +16,10 @@ type Props = {
 export function MushafPageNumber({ pageNumber, onPress, className = "" }: Props) {
   const label = toArabicPageDigits(pageNumber);
   return (
-    <button
+    <Button
       type="button"
-      className={["nm-page__footer-num", className].filter(Boolean).join(" ")}
+      variant="ghost"
+      className={mushafButtonClass("nm-page__footer-num", className)}
       data-component="MushafPageNumber"
       data-testid="mushaf-page-number"
       data-page-number={pageNumber}
@@ -29,6 +32,6 @@ export function MushafPageNumber({ pageNumber, onPress, className = "" }: Props)
       onPointerDown={(e) => e.stopPropagation()}
     >
       {label}
-    </button>
+    </Button>
   );
 }

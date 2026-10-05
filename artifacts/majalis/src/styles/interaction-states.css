@@ -321,3 +321,16 @@ html.dark :is(
   color: #8fd4b0 !important;
   border-color: color-mix(in srgb, #5fbf98 22%, transparent) !important;
 }
+
+/*
+ * Mushaf Button parity — Button يلفّ أبناءه بغلاف <span class=""> واحد.
+ * داخل أزرار المصحف (.mushaf-btn) يصبح الغلاف شفافًا تمامًا:
+ * - display: contents → أبناء الزر الأصليون عناصر مباشرة في صندوقه (flex/grid كما في الزر الخام).
+ * - all: inherit → لا تصل إلى الغلاف قواعد سلالية مثل `.mm-audio-dock__controls button span`.
+ * [class=""] يطابق غلاف Button وحده. لا يمسّ هندسة الصفحة.
+ * المرجع: src/features/mushaf-reader/mushaf-button-parity.ts — docs/audit/MUSHAF_BUTTON_AUTHORITY.md
+ */
+.mushaf-btn > span[class=""] {
+  all: inherit;
+  display: contents;
+}

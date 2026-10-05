@@ -54,8 +54,10 @@ assert.doesNotMatch(composer, /<button\b/);
 const controls = read("src/features/mushaf-reader/MushafControlsLayer.tsx");
 assert.match(controls, /type="button"/);
 assert.match(controls, /aria-label/);
-// Chrome stays MUSHAF_SPECIAL_KEEP (raw button OK when typed+named)
-assert.match(controls, /<button\b/);
+// Chrome كان MUSHAF_SPECIAL_KEEP (raw مسموح). منذ mushaf-button-authority: Button رسمي + تكافؤ computed-style مُقاس
+// (docs/audit/MUSHAF_BUTTON_AUTHORITY.md) — نفس العقد: أزرار مكتوبة النوع ومسمّاة، وCSS المصحف يملك المظهر.
+assert.match(controls, /from "@\/components\/ui\/button"/);
+assert.match(controls, /mushafButtonClass\(/);
 
 const boundary = readRepo("docs/design/MUSHAF_CSS_BOUNDARY.md");
 assert.match(boundary, /LIVE|مُباشر|NewMushafReader/);
