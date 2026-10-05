@@ -1,7 +1,6 @@
 /**
  * توقيت الآيات على ملف سورة كاملة — تقدير محلي أو مقاطع quran.com عند التوفّر.
  */
-import { getReciter } from "@/lib/quran-audio";
 
 export type AyahTiming = {
   ayahNumber: number;
@@ -77,7 +76,7 @@ async function fetchQuranComSegmentTimings(
   reciterId: string,
   signal?: AbortSignal,
 ): Promise<AyahTiming[] | null> {
-  const recitationId = mapReciterToQuranComRecitation(reciterId);
+  const recitationId = QURAN_COM_RECITATION_BY_RECITER[reciterId];
   if (!recitationId) return null;
 
   try {
@@ -86,54 +85,43 @@ async function fetchQuranComSegmentTimings(
       { signal },
     );
     if (!res.ok) return null;
-    const json = (await res.json()) as {
-      audio_file?: { segments?: Array<[number, number, number]> };
-    };
-    const segments = json.audio_file?.segments;
-    if (!segments?.length) return null;
-
-    const byAyah = new Map<number, { start: number; end: number }>();
-    for (const [ayahNum, startMs, endMs] of segments) {
-      const start = startMs / 1000;
-      const end = endMs / 1000;
-      const prev = byAyah.get(ayahNum);
-      if (!prev) {
-        byAyah.set(ayahNum, { start, end });
-      } else {
-        prev.end = Math.max(prev.end, end);
-      }
-    }
-
-    const timings = [...byAyah.entries()]
-      .sort((a, b) => a[0] - b[0])
-      .map(([ayahNumber, range]) => ({
-        ayahNumber,
-        startTime: range.start,
-        endTime: range.end,
-      }));
-
-    return timings.length > 0 ? timings : null;
+    return parseQuranComChapterTimings(await res.json());
   } catch {
     return null;
   }
 }
 
-/** خريطة تقريبية — تُستخدم فقط لتحسين التزامن عند الاتصال. */
-function mapReciterToQuranComRecitation(reciterId: string): number | null {
-  const reciter = getReciter(reciterId);
-  const map: Record<string, number> = {
-    alafasy: 7,
-    husary: 2,
-    minshawi: 9,
-    sudais: 3,
-    shuraym: 12,
-    ajamy: 10,
-    dosari: 6,
-  };
-  if (map[reciterId]) return map[reciterId]!;
-  if (reciter.featured) return 7;
-  return null;
+/** يحوّل `audio_file.timestamps[]` (verse_key + timestamp_from/to بالمللي ثانية) إلى توقيتات بالثواني. */
+export function parseQuranComChapterTimings(json: unknown): AyahTiming[] | null {
+  const timestamps = (
+    json as {
+      audio_file?: {
+        timestamps?: Array<{ verse_key?: string; timestamp_from?: number; timestamp_to?: number }>;
+      };
+    } | null
+  )?.audio_file?.timestamps;
+  if (!Array.isArray(timestamps)) return null;
+
+  const timings: AyahTiming[] = [];
+  for (const t of timestamps) {
+    const ayahNumber = Number(t.verse_key?.split(":")[1]);
+    if (!Number.isInteger(ayahNumber) || typeof t.timestamp_from !== "number" || typeof t.timestamp_to !== "number") {
+      continue;
+    }
+    timings.push({ ayahNumber, startTime: t.timestamp_from / 1000, endTime: t.timestamp_to / 1000 });
+  }
+  timings.sort((a, b) => a.ayahNumber - b.ayahNumber);
+  return timings.length > 0 ? timings : null;
 }
+
+/**
+ * معرّف القارئ في التطبيق → recitation id في Quran Foundation (api/v4).
+ * لا يُربط قارئ إلا إذا كان ملف السورة الذي يشغّله التطبيق هو نفس تسجيل QF (التوقيتات بالمللي ثانية على ذلك الملف).
+ * فحص 2026-10-06: كل ملفات mp3quran (getSurahAudioUrl) تسجيلات/تحريرات مختلفة عن ملفات download.quranicaudio.com/qdc
+ * (فارق مدة غير ثابت 1–12ث على الفاتحة والإخلاص والعصر، وبعضها أقصر) ⇒ لا ربط حاليًا، ويعمل التقدير النسبي.
+ * أضف قارئًا هنا فقط بعد التحقق من تطابق الملف نفسه.
+ */
+export const QURAN_COM_RECITATION_BY_RECITER: Readonly<Record<string, number>> = {};
 
 export function scaleTimingsToDuration(timings: AyahTiming[], durationSec: number): AyahTiming[] {
   if (!timings.length || durationSec <= 0) return timings;
