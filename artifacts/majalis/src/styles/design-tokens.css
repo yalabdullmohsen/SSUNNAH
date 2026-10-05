@@ -117,15 +117,10 @@
   --ds-textSecondary: var(--text-secondary);
   --ds-accent: var(--accent);
   --ds-border: var(--border);
-  --ds-muted: var(--text-muted);
-  --ds-danger: var(--danger);
-  --ds-success: var(--success);
-  --ds-warning: var(--warning);
   --ds-disabled: color-mix(in srgb, var(--text-muted) 55%, transparent);
   --ds-skeletonBase: color-mix(in srgb, var(--text-primary) 8%, transparent);
   --ds-skeletonHighlight: color-mix(in srgb, var(--text-primary) 14%, transparent);
   --ds-overlay: color-mix(in srgb, var(--mj-ink, #16241e) 42%, transparent);
-  --ds-divider: var(--border);
 
   --motion-fast: 120ms;
   --motion-normal: 220ms;

@@ -365,25 +365,18 @@ html[data-theme="dark"] {
   --color-on-dark:           var(--text-on-dark);
 
   /* — نظام --ds-* — */
-  --ds-primary:    var(--brand);
-  --ds-bg:         var(--bg);
   --ds-surface:    var(--surface);
   --ds-border:     var(--border);
   --ds-text:       var(--text);
-  --ds-text-muted: var(--text-2);
   --ds-accent:     var(--accent);
   --ds-radius:     var(--r-lg);
   --ds-shadow:     var(--e-2);
 
   /* — نظام --majalis-* — */
-  --majalis-primary:   var(--brand);
-  --majalis-secondary: var(--accent);
   --majalis-bg:        var(--bg);
   --majalis-surface:   var(--surface);
   --majalis-border:    var(--border);
-  --majalis-text:      var(--text);
   --majalis-muted:     var(--text-2);
-  --majalis-green:     var(--brand);
   --majalis-gold:      var(--accent);
 
   /* --elite-* retired: consumers migrated to --mj-* / --brand / --ss-* */

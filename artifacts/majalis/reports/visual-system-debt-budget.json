@@ -10,7 +10,7 @@
   "ceilings": {
     "cssFiles": 353,
     "important": 4720,
-    "hexInCss": 5571,
+    "hexInCss": 5569,
     "rgbHslInCss": 1970,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
@@ -20,5 +20,5 @@
     "inlineColorStyleMatches": 38,
     "rawButtonFiles": 71
   },
-  "updatedAt": "2026-10-05T04:36:40.859Z"
+  "updatedAt": "2026-10-05T05:31:35.897Z"
 }
