@@ -275,8 +275,8 @@
     "z"
   ],
   "deprecatedCeilings": {
-    "elite": 30,
-    "em": 50,
+    "elite": 5,
+    "em": 30,
     "ds": 3400,
     "msk": 560,
     "majalis": 3300

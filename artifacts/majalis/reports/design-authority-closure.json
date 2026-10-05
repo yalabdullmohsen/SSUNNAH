@@ -2,7 +2,7 @@
   "version": 1,
   "sha": "ref: refs/heads/cursor/hv-msk-bridge-batch",
   "coverage": {
-    "measuredAt": "2026-10-05T00:04:32.466Z",
+    "measuredAt": "2026-10-05T00:05:14.744Z",
     "cssFileCount": 353,
     "cssFilesCeiling": 353,
     "measuredCssFiles": 353,

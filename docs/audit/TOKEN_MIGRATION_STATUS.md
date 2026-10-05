@@ -18,7 +18,7 @@ TASK_CLASSIFICATION: SHARED_PLATFORM
 
 Unknown/new families: **none**
 
-Deprecated ceilings: {"elite":30,"em":50,"ds":3400,"msk":560,"majalis":3300}
+Deprecated ceilings: {"elite":5,"em":30,"ds":3400,"msk":560,"majalis":3300}
 Deprecated growth breaches: **none**
 
 Prefix allowlist: `artifacts/majalis/reports/design-token-prefix-allowlist.json` (270 prefixes)
