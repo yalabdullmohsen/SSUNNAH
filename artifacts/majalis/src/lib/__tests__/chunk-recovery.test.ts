@@ -1,5 +1,5 @@
 /**
- * بوابة استعادة chunks بعد النشر — هادئة بلا reload تلقائي.
+ * بوابة الاستعادة الهادئة (tryRecoverFromStaleChunk) — بلا reload تلقائي؛ إعادة التحميل الصامتة الواحدة في chunk-auto-reload.test.ts.
  * تشغيل: node --import tsx src/lib/__tests__/chunk-recovery.test.ts
  */
 import assert from "node:assert/strict";

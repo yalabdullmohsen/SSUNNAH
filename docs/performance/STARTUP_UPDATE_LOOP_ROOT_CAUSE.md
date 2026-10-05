@@ -76,3 +76,20 @@ Native launch / HTML shell
 - [ ] إثبات جهاز/TestFlight — مؤجّل Release verification  
 
 **الحالة:** PARTIAL (جذر مثبت بالكود؛ جهاز غير مقيس هنا)
+
+---
+
+## 6) تحديث 2026-10-05 — إعادة تحميل تلقائية صامتة واحدة (MJL-20261005-203837-YZ77CE)
+
+**المشكلة:** بعد كل نشر، تبويب مفتوح على نسخة قديمة يطلب chunk لم يعد موجودًا ⇒ الاستعادة الهادئة (purge القشرة) لا تكفي وحدها ⇒ يصل الخطأ إلى ErrorBoundary فتظهر «حدث خلل مؤقت في العرض».
+
+**السياسة الجديدة (بطلب المالك):**
+
+| المسار | السلوك |
+|---|---|
+| `lazyWithRetry` → `loadWithChunkRecovery` | chunk قديم ⇒ `reloadOnceForStaleChunk` (purge قشرة + `location.reload()` على نفس المسار)؛ الوعد يبقى معلّقًا ⇒ Suspense fallback بلا شاشة خطأ |
+| `ErrorBoundary` / `SectionErrorBoundary` | chunk قديم يصل للحدود والمحاولة متاحة ⇒ `return null` + إعادة تحميل صامتة؛ غير متاحة ⇒ الشاشة الحالية كما هي |
+| منع الحلقة | حارس مستقل `majalis-chunk-auto-reload` = `buildId|at` للبناء الذي فشل: مرة واحدة لكل بناء · **لا يُمسح** عند استقرار القشرة (بخلاف `majalis-chunk-reload`) · فاصل أدنى 30 ثانية · تعذّر حفظ الحارس ⇒ بلا reload |
+| انقطاع الشبكة | بلا reload وبلا استهلاك المحاولة — رسالة الانقطاع الصادقة |
+
+ما يبقى ممنوعًا: reload متكرر · `safeLocationReload` · `setTimeout` يعيد التحميل · نصوص «تحديث العرض». بوابة: `src/lib/__tests__/chunk-auto-reload.test.ts` (ضمن `test:chunk-recovery`).
