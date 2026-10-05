@@ -7,6 +7,14 @@ on:
   pull_request:
     types: [opened, reopened, synchronize, ready_for_review]
     branches: [main]
+    # PR توثيق / إعدادات CI فقط: لا تدقيقات موقع ⇒ لا مشغّل ولا pnpm install.
+    # (Verify build في ci.yml يبقى البوابة المطلوبة؛ هذا التقرير مكمّل فقط.)
+    paths-ignore:
+      - "**/*.md"
+      - "docs/**"
+      - ".github/workflows/**"
+      - ".github/dependabot.yml"
+      - ".github/docs/**"
   workflow_dispatch:
 
 concurrency:
