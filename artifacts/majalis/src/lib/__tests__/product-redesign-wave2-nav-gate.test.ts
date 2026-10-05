@@ -13,7 +13,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
 const titles = SIDEBAR_NAV_GROUPS.map((g) => g.title);
-for (const t of ["القرآن", "الدروس", "العلوم", "العبادة", "المعرفة"]) {
+for (const t of ["القرآن الكريم", "الحديث والسنة", "العقيدة والفقه", "العبادات والأذكار", "الدروس والعلماء", "المعرفة والتاريخ"]) {
   assert.ok(titles.includes(t), `مجموعة الدرج: ${t}`);
 }
 assert.ok(
@@ -34,7 +34,7 @@ const labels = SIDEBAR_NAV_GROUPS.flatMap((g) => g.items.map((i) => i.label));
 assert.ok(labels.includes("الدروس"));
 assert.ok(labels.includes("الفقه"));
 assert.ok(labels.includes("الفوائد"));
-assert.ok(labels.includes("جميع الأقسام"));
+assert.ok(labels.includes("الأقسام"));
 assert.ok(labels.includes("المحفوظات"));
 const fiqh = SIDEBAR_NAV_GROUPS.flatMap((g) => g.items).find((i) => i.href === "/fiqh");
 assert.equal(fiqh?.description, "الأحكام الفقهية");
