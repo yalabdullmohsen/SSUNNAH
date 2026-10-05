@@ -653,49 +653,23 @@ html.dark .notif-row__label {
 
 
 /* ── أقسام الإشعارات (Settings List) ── */
-.nsp-detail__head {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
-}
-.nsp-field { margin-top: 1rem; }
-.nsp-field__label {
-  margin: 0 0 0.4rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--mj-emerald-text, var(--mj-brand-deep));
-}
-.nsp-chip-row {
+.notif-banner {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-}
-.nsp-custom-count {
-  display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  font-size: 0.8rem;
+  justify-content: space-between;
+  gap: 0.6rem;
 }
-.nsp-custom-count input {
-  width: 3.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid color-mix(in srgb, var(--mj-brand-deep) 18%, transparent);
-  padding: 0.25rem 0.4rem;
-  font: inherit;
+.notif-banner__text { margin: 0; flex: 1 1 14rem; }
+.notif-banner__action { min-height: 2.75rem; }
+.nsp-category { display: flex; flex-direction: column; }
+.nsp-quiet-range {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
 }
-.nsp-preview { margin-top: 1.25rem; }
-.nsp-preview__card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  padding: 0.85rem 1rem;
-  border-radius: 0.85rem;
-  background: color-mix(in srgb, var(--mj-brand-deep) 5%, var(--mj-surface, var(--mj-white)));
-  border: 1px solid color-mix(in srgb, var(--mj-brand-deep) 10%, transparent);
-}
-.nsp-preview__card strong { font-size: 0.95rem; }
-.nsp-preview__card span { font-size: 0.85rem; color: var(--mj-muted, #4A5568); }
+.nsp-quiet-range__field { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
+.notif-stop-all { min-height: 2.75rem; align-self: flex-start; }
 .nsp-row-status {
   display: inline-flex;
   align-items: center;
@@ -711,5 +685,3 @@ html.dark .notif-row__label {
   background: color-mix(in srgb, var(--mj-brand-deep) 25%, transparent);
 }
 .nsp-dot.is-on { background: var(--mj-brand, #1F6B4A); }
-.nsp-inline-link { display: inline-block; margin-top: 0.5rem; }
-.nsp-prayer-modes { margin-top: 0.5rem; }

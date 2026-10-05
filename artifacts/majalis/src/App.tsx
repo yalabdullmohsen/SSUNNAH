@@ -287,15 +287,14 @@ function IslamicReminderBootstrap() {
     fired.current = true;
     let cancelled = false;
     let timer: ReturnType<typeof setTimeout> | undefined;
-    void import("@/lib/local-notifications").then(({ loadNotifPrefs, scheduleIslamicReminder }) => {
+    void import("@/lib/local-notifications").then(({ migrateNotifPrefsStorage, scheduleIslamicReminder }) => {
       if (cancelled) return;
-      const prefs = loadNotifPrefs();
-      if (prefs.enabled) scheduleIslamicReminder();
-      // تأجير تلقائي: نُرسل مرة بعد 30 دقيقة من فتح التطبيق
-      timer = setTimeout(() => {
-        const p = loadNotifPrefs();
-        if (p.enabled) scheduleIslamicReminder();
-      }, 30 * 60 * 1000);
+      // ترحيل مرة واحدة لمفاتيح الإعدادات الميتة (أقسام/حقول أُزيلت)
+      migrateNotifPrefsStorage();
+      // الفئة «الجمعة والمناسبات» + ساعات الهدوء تُفحَص داخل الدالة
+      scheduleIslamicReminder();
+      // تأجيل تلقائي: نُرسل مرة بعد 30 دقيقة من فتح التطبيق
+      timer = setTimeout(() => scheduleIslamicReminder(), 30 * 60 * 1000);
     });
     return () => {
       cancelled = true;

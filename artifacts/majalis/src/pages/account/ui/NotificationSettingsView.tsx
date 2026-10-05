@@ -1,42 +1,27 @@
-import {
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type PointerEvent as ReactPointerEvent,
-  type ReactNode,
-} from "react";
+import { useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { Link } from "wouter";
-import {
-  Archive,
-  Bell,
-  BookOpen,
-  CalendarHeart,
-  CheckCheck,
-  GraduationCap,
-  HandHeart,
-  HeartHandshake,
-  MoonStar,
-  Sparkles,
-  Trash2,
-} from "lucide-react";
+import { Archive, Bell, CheckCheck, MoonStar, Trash2 } from "lucide-react";
 import { PageHeader } from "@/components/ui-common";
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/design-system/Buttons";
 import { hapticTap, isNative } from "@/lib/capacitor-utils";
 import { toArabicDigits } from "@/lib/utils";
+import { navigateTo } from "@/lib/navigation-intent";
 import {
   loadNotifPrefs,
   saveNotifPrefs,
   updateNotifSection,
   type NotifPrefs,
-  type PrayerNotifModes,
 } from "@/lib/local-notifications";
 import {
   getNotificationPermissionStatus,
   requestNotificationPermission,
   type PermissionStatus,
 } from "@/lib/prayer-local-notifications";
+import { loadAdhanPrefs } from "@/lib/adhan-preferences";
+import { loadPrayerAlertPrefs } from "@/lib/prayer-alert-preferences";
+import { getPushSupport } from "@/lib/push-notifications";
+import { openSystemNotificationSettings } from "@/lib/sunnah-notifications/permission";
 import {
   loadHistory,
   markRead,
@@ -55,15 +40,7 @@ import { fireTestLocalNotification } from "@/lib/notifications/test-trigger";
 import "@/styles/pages/notifications.css";
 import { UtilityScreen } from "@/components/design-system/screens";
 import { SettingsList, SettingsToggleRow } from "@/components/design-system/SettingsList";
-import {
-  NOTIF_SECTIONS,
-  WEEKDAY_LABELS,
-  formatSectionStatus,
-  previewSectionMessage,
-  type NotifSectionId,
-  type NotifSectionPrefs,
-  type Weekday,
-} from "@/lib/notifications/sections-config";
+import { NOTIF_SECTIONS, type NotifSectionId } from "@/lib/notifications/sections-config";
 
 type HistoryTab = "inbox" | "archived";
 
@@ -173,7 +150,7 @@ function NotifRow({
         <Trash2 size={18} strokeWidth={2} aria-hidden="true" />
       </IconButton>
       <div
-        className={`nh-row${rec.isRead ? "nh-row--read" : ""}`}
+        className={`nh-row${rec.isRead ? " nh-row--read" : ""}`}
         style={
           dragX !== 0 || dragging
             ? { transform: `translateX(${dragX}px)`, transition: dragging ? "none" : undefined }
@@ -188,7 +165,12 @@ function NotifRow({
         }}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => (e.key === "Enter" || e.key === "") && onRead()}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onRead();
+          }
+        }}
       >
         <div className="nh-row__icon" aria-hidden="true">
           <Bell size={16} strokeWidth={1.8} />
@@ -215,261 +197,84 @@ function NotifRow({
   );
 }
 
-const SECTION_ICONS: Record<NotifSectionId, ReactNode> = {
-  prayer: <MoonStar size={18} strokeWidth={1.8} aria-hidden />,
-  quran: <BookOpen size={18} strokeWidth={1.8} aria-hidden />,
-  adhkar: <Sparkles size={18} strokeWidth={1.8} aria-hidden />,
-  salawat: <HeartHandshake size={18} strokeWidth={1.8} aria-hidden />,
-  istighfar: <HandHeart size={18} strokeWidth={1.8} aria-hidden />,
-  lessons: <GraduationCap size={18} strokeWidth={1.8} aria-hidden />,
-  seekingKnowledge: <BookOpen size={18} strokeWidth={1.8} aria-hidden />,
-  fridayOccasions: <CalendarHeart size={18} strokeWidth={1.8} aria-hidden />,
-};
-
-function hourLabel(h: number): string {
-  return `${toArabicDigits(h)}:٠٠`;
+/** حالة تنبيهات الصلاة من مصدرها الوحيد (تفضيلات الأذان + تنبيهات الصلاة) — قراءة فقط. */
+function readPrayerAlertsOn(): boolean {
+  try {
+    return Boolean(loadAdhanPrefs().globalEnabled || loadPrayerAlertPrefs().alertsEnabled);
+  } catch {
+    return false;
+  }
 }
 
-function SectionDetailPanel({
-  sectionId,
-  sectionPrefs,
-  prayerModes,
-  dhikrPhraseReminder,
-  canToggle,
-  onClose,
-  onPatchSection,
-  onPrayerModes,
-  onDhikrPhrase,
+function PermissionBanner({
+  permission,
+  onRequest,
+  requesting,
 }: {
-  sectionId: NotifSectionId;
-  sectionPrefs: NotifSectionPrefs;
-  prayerModes: PrayerNotifModes;
-  dhikrPhraseReminder: boolean;
-  canToggle: boolean;
-  onClose: () => void;
-  onPatchSection: (patch: Partial<NotifSectionPrefs>) => void;
-  onPrayerModes: (patch: Partial<PrayerNotifModes>) => void;
-  onDhikrPhrase: (v: boolean) => void;
+  permission: PermissionStatus;
+  onRequest: () => void;
+  requesting: boolean;
 }) {
-  const meta = NOTIF_SECTIONS.find((s) => s.id === sectionId)!;
-  const preview = previewSectionMessage(sectionId);
-  const [customCount, setCustomCount] = useState(String(sectionPrefs.dailyCount));
-
-  useEffect(() => {
-    setCustomCount(String(sectionPrefs.dailyCount));
-  }, [sectionPrefs.dailyCount, sectionId]);
-
-  const toggleWeekday = (day: Weekday) => {
-    const set = new Set(sectionPrefs.weekdays);
-    if (set.has(day)) set.delete(day);
-    else set.add(day);
-    const next = [...set].sort((a, b) => a - b) as Weekday[];
-    onPatchSection({ weekdays: next.length ? next : ([0, 1, 2, 3, 4, 5, 6] as Weekday[]) });
-  };
-
+  if (permission === "granted") return null;
+  if (permission === "unsupported") {
+    return (
+      <div className="notif-banner notif-banner--warn" role="status">
+        {isNative
+          ? "هذا الجهاز لا يدعم الإشعارات المحلية."
+          : "متصفحك لا يدعم الإشعارات. جرّب تثبيت التطبيق أو متصفحًا آخر."}
+      </div>
+    );
+  }
+  if (permission === "denied") {
+    return (
+      <div className="notif-banner notif-banner--err" role="alert">
+        <p className="notif-banner__text">
+          {isNative
+            ? "الإشعارات محجوبة من إعدادات النظام: الإعدادات ← سُنّة ← الإشعارات."
+            : "الإشعارات محجوبة من إعدادات المتصفح لهذا الموقع. فعّلها يدويًا ثم عُد إلى هذه الصفحة."}
+        </p>
+        {isNative ? (
+          <Button
+            type="button"
+            variant="secondary"
+            size="small"
+            className="notif-banner__action"
+            onClick={() => void openSystemNotificationSettings()}
+          >
+            فتح إعدادات النظام
+          </Button>
+        ) : null}
+      </div>
+    );
+  }
   return (
-    <div className="notif-card nsp-detail" dir="rtl">
-      <div className="nsp-detail__head">
-        <Button type="button" variant="ghost" size="small" className="nh-btn" onClick={onClose}>
-          رجوع
-        </Button>
-        <h2 className="notif-card__title" style={{ margin: 0 }}>
-          {meta.title}
-        </h2>
-      </div>
-      <p className="notif-row__sub">{meta.description}</p>
-
-      <SettingsToggleRow
-        id={`sec-${sectionId}-enabled`}
-        title="تفعيل القسم"
-        description={sectionPrefs.enabled ? "مفعّل" : "متوقف"}
-        checked={sectionPrefs.enabled}
-        onChange={(v) => onPatchSection({ enabled: v })}
-        disabled={!canToggle}
-      />
-
-      {sectionId === "prayer" && (
-        <div className="nsp-prayer-modes" aria-label="أنماط تنبيه الصلاة">
-          <SettingsToggleRow
-            id="prayer-pre"
-            title="تنبيه قبل الأذان"
-            description="اقترب أذان الفجر — ص ٤:١١"
-            checked={prayerModes.preEnabled}
-            onChange={(v) => onPrayerModes({ preEnabled: v })}
-            disabled={!canToggle || !sectionPrefs.enabled}
-          />
-          <SettingsToggleRow
-            id="prayer-adhan"
-            title="إشعار الأذان"
-            description="أذان الفجر — ص ٤:١١"
-            checked={prayerModes.adhanEnabled}
-            onChange={(v) => onPrayerModes({ adhanEnabled: v })}
-            disabled={!canToggle || !sectionPrefs.enabled}
-          />
-          <SettingsToggleRow
-            id="prayer-post"
-            title="تنبيه بعد الأذان"
-            description="تذكير بصلاة الفجر — ص ٤:١١"
-            checked={prayerModes.postEnabled}
-            onChange={(v) => onPrayerModes({ postEnabled: v })}
-            disabled={!canToggle || !sectionPrefs.enabled}
-          />
-          {meta.href ? (
-            <Link href={meta.href} className="profile-quick-link nsp-inline-link">
-              إعدادات الأذان التفصيلية
-            </Link>
-          ) : null}
-        </div>
-      )}
-
-      <div className="nsp-field">
-        <p className="nsp-field__label">عدد الإشعارات يوميًا</p>
-        {meta.countPresets ? (
-          <div className="nsp-chip-row" role="group" aria-label="عدد التذكيرات">
-            {meta.countPresets.map((n) => (
-              <Button
-                key={n}
-                type="button"
-                variant="ghost"
-                size="small"
-                className={`ads-chip${sectionPrefs.dailyCount === n ? "is-active" : ""}`}
-                disabled={!canToggle || !sectionPrefs.enabled}
-                onClick={() => onPatchSection({ dailyCount: n })}
-              >
-                {toArabicDigits(n)}
-              </Button>
-            ))}
-            <label className="nsp-custom-count">
-              <span>مخصص</span>
-              <input
-                type="number"
-                min={meta.countMin}
-                max={meta.countMax}
-                value={customCount}
-                disabled={!canToggle || !sectionPrefs.enabled}
-                onChange={(e) => setCustomCount(e.target.value)}
-                onBlur={() => {
-                  const n = Math.min(
-                    meta.countMax,
-                    Math.max(meta.countMin, Number(customCount) || meta.countMin),
-                  );
-                  setCustomCount(String(n));
-                  onPatchSection({ dailyCount: n });
-                }}
-              />
-            </label>
-          </div>
-        ) : (
-          <input
-            type="number"
-            className="notif-time__input"
-            min={meta.countMin}
-            max={meta.countMax}
-            value={sectionPrefs.dailyCount}
-            disabled={!canToggle || !sectionPrefs.enabled}
-            onChange={(e) =>
-              onPatchSection({
-                dailyCount: Math.min(
-                  meta.countMax,
-                  Math.max(meta.countMin, Number(e.target.value) || meta.countMin),
-                ),
-              })
-            }
-          />
-        )}
-      </div>
-
-      <div className="nsp-field">
-        <p className="nsp-field__label">الفترة الزمنية</p>
-        <div className="notif-time">
-          <label className="notif-time__label" htmlFor={`win-start-${sectionId}`}>
-            من
-          </label>
-          <select
-            id={`win-start-${sectionId}`}
-            className="notif-time__input"
-            value={sectionPrefs.windowStartHour}
-            disabled={!canToggle || !sectionPrefs.enabled}
-            onChange={(e) => onPatchSection({ windowStartHour: Number(e.target.value) })}
-          >
-            {Array.from({ length: 24 }, (_, h) => (
-              <option key={h} value={h}>
-                {hourLabel(h)}
-              </option>
-            ))}
-          </select>
-          <label className="notif-time__label" htmlFor={`win-end-${sectionId}`}>
-            إلى
-          </label>
-          <select
-            id={`win-end-${sectionId}`}
-            className="notif-time__input"
-            value={sectionPrefs.windowEndHour}
-            disabled={!canToggle || !sectionPrefs.enabled}
-            onChange={(e) => onPatchSection({ windowEndHour: Number(e.target.value) })}
-          >
-            {Array.from({ length: 24 }, (_, h) => (
-              <option key={h} value={h}>
-                {hourLabel(h)}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      <div className="nsp-field">
-        <p className="nsp-field__label">أيام الأسبوع</p>
-        <div className="nsp-chip-row" role="group" aria-label="أيام التفعيل">
-          {([0, 1, 2, 3, 4, 5, 6] as Weekday[]).map((day) => {
-            const active = sectionPrefs.weekdays.includes(day);
-            return (
-              <Button
-                key={day}
-                type="button"
-                variant="ghost"
-                size="small"
-                className={`ads-chip${active ? "is-active" : ""}`}
-                disabled={!canToggle || !sectionPrefs.enabled}
-                onClick={() => toggleWeekday(day)}
-              >
-                {WEEKDAY_LABELS[day]}
-              </Button>
-            );
-          })}
-        </div>
-      </div>
-
-      {sectionId === "adhkar" && (
-        <SettingsToggleRow
-          id="notif-dhikr-phrase"
-          title="تذكير الذكر"
-          description="سبحان الله، الحمد لله، الله أكبر… ضمن ساعات اليقظة"
-          checked={dhikrPhraseReminder}
-          onChange={onDhikrPhrase}
-          disabled={!canToggle}
-        />
-      )}
-
-      <div className="nsp-preview" aria-label="معاينة الإشعار">
-        <p className="nsp-field__label">معاينة الإشعار</p>
-        <div className="nsp-preview__card">
-          <strong>{preview.title}</strong>
-          <span>{preview.body}</span>
-        </div>
-      </div>
+    <div className="notif-banner notif-banner--warn" role="status">
+      <p className="notif-banner__text">لم يُمنح إذن الإشعارات بعد — لن يصلك أي تذكير قبل السماح.</p>
+      <Button
+        type="button"
+        variant="primary"
+        size="small"
+        className="notif-banner__action"
+        onClick={onRequest}
+        disabled={requesting}
+        loading={requesting}
+      >
+        السماح بالإشعارات
+      </Button>
     </div>
   );
 }
 
 export default function NotificationSettingsPage() {
   const [prefs, setPrefs] = useState<NotifPrefs>(loadNotifPrefs);
-  const [activeSection, setActiveSection] = useState<NotifSectionId | null>(null);
+  const [prayerOn, setPrayerOn] = useState(readPrayerAlertsOn);
+  const pushSupport = useMemo(() => (isNative ? "unsupported" : getPushSupport()), []);
 
   useEffect(() => {
     applyPageSeo({
       path: "/notification-settings",
       title: "الإشعارات | سُنّة",
-      description: "إدارة إشعارات سُنّة: الصلاة والقرآن والأذكار والدروس والمناسبات.",
+      description: "إدارة إشعارات سُنّة: الصلاة والقرآن والأذكار وطلب العلم والمناسبات.",
       keywords: ["إشعارات", "إعدادات أذان", "تذكيرات"],
       robots: "noindex, follow",
     });
@@ -480,9 +285,20 @@ export default function NotificationSettingsPage() {
   const [saved, setSaved] = useState(false);
   const [testStatus, setTestStatus] = useState<string | null>(null);
   const showDevTools = isDevToolsVisible();
+  const firstRender = useRef(true);
 
+  /* إعادة فحص الإذن عند العودة من إعدادات النظام/المتصفح */
   useEffect(() => {
-    void getNotificationPermissionStatus().then(setPermission);
+    const refresh = () => {
+      void getNotificationPermissionStatus().then(setPermission);
+      setPrayerOn(readPrayerAlertsOn());
+    };
+    refresh();
+    const onVisible = () => {
+      if (document.visibilityState === "visible") refresh();
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    return () => document.removeEventListener("visibilitychange", onVisible);
   }, []);
 
   const [history, setHistory] = useState<NotifRecord[]>(() => loadHistory());
@@ -495,6 +311,11 @@ export default function NotificationSettingsPage() {
     setHistory(searchQ ? searchHistory(searchQ, histTab === "archived") : loadHistory());
 
   useEffect(() => {
+    // لا حفظ ولا إعادة جدولة عند أول عرض — فقط بعد تغيير فعلي من المستخدم.
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
     saveNotifPrefs(prefs);
     setSaved(true);
     const t = setTimeout(() => setSaved(false), 1500);
@@ -508,18 +329,27 @@ export default function NotificationSettingsPage() {
     refreshHistory();
   }, [searchQ, histTab]);
 
-  const handleEnable = async () => {
+  /** يطلب الإذن من فعل صريح؛ يعيد true إن صار ممنوحًا. */
+  const ensurePermission = async (): Promise<boolean> => {
+    if (permission === "granted") return true;
     setRequesting(true);
-    const granted = await requestNotificationPermission();
-    const status = await getNotificationPermissionStatus();
-    setPermission(status);
-    if (granted) {
-      setPrefs((p) => ({ ...p, enabled: true }));
-      void import("@/lib/notifications/apns-scaffold").then(({ maybeRegisterRemotePush }) => {
-        void maybeRegisterRemotePush({ requestPermission: true });
-      });
+    try {
+      const granted = await requestNotificationPermission();
+      const status = await getNotificationPermissionStatus();
+      setPermission(status);
+      if (granted) {
+        void import("@/lib/notifications/apns-scaffold").then(({ maybeRegisterRemotePush }) => {
+          void maybeRegisterRemotePush({ requestPermission: true });
+        });
+      }
+      return granted || status === "granted";
+    } finally {
+      setRequesting(false);
     }
-    setRequesting(false);
+  };
+
+  const handleEnable = async () => {
+    if (await ensurePermission()) setPrefs((p) => ({ ...p, enabled: true }));
   };
 
   const handleTestTrigger = async () => {
@@ -537,10 +367,23 @@ export default function NotificationSettingsPage() {
 
   const update = (patch: Partial<NotifPrefs>) => setPrefs((p) => ({ ...p, ...patch }));
 
+  /** تفعيل فئة يطلب الإذن عند الحاجة ويشغّل المفتاح العام — فلا تُفعَّل فئة بلا أثر. */
+  const toggleSection = async (id: NotifSectionId, on: boolean) => {
+    if (on && !(await ensurePermission())) return;
+    const next = updateNotifSection(id, { enabled: on });
+    setPrefs(on ? { ...next, enabled: true } : next);
+  };
+
+  const toggleDhikrPhrase = async (on: boolean) => {
+    if (on && !(await ensurePermission())) return;
+    update(on ? { dhikrPhraseReminder: true, enabled: true } : { dhikrPhraseReminder: false });
+  };
+
   const isGranted = permission === "granted";
   const isUnsupported = permission === "unsupported";
   const isDenied = permission === "denied";
-  const canToggle = isGranted && prefs.enabled;
+  const masterOn = prefs.enabled && isGranted;
+  const categoriesDisabled = isUnsupported || isDenied || requesting;
 
   const visibleHistory = history.filter((r) =>
     histTab === "archived" ? r.isArchived : !r.isArchived,
@@ -548,9 +391,10 @@ export default function NotificationSettingsPage() {
   const unread = history.filter((r) => !r.isRead && !r.isArchived).length;
   const dayGroups = useMemo(() => groupByDay(visibleHistory), [visibleHistory]);
 
-  const handleMarkRead = (id: string) => {
-    markRead(id);
+  const handleOpen = (rec: NotifRecord) => {
+    markRead(rec.id);
     refreshHistory();
+    if (rec.url) navigateTo(rec.url);
   };
   const handleArchive = (id: string) => {
     archiveRecord(id);
@@ -578,115 +422,106 @@ export default function NotificationSettingsPage() {
         <PageHeader
           eyebrow="الإعدادات"
           title="الإشعارات"
-          subtitle="تذكيرات منظمة للصلاة والقرآن والأذكار وطلب العلم."
+          subtitle="مكان واحد لكل التذكيرات: الصلاة والقرآن والأذكار وطلب العلم والمناسبات."
         />
 
-        <SunnahChannelsPanel />
+        <PermissionBanner
+          permission={permission}
+          onRequest={() => void handleEnable()}
+          requesting={requesting}
+        />
 
-        {!isNative && (
+        <div className="notif-card">
+          <SettingsList
+            title="الصلاة والأذان"
+            rows={[
+              {
+                id: "prayer",
+                title: "تنبيهات الصلاة والأذان",
+                description: "بمواقيت موقعك الحقيقية — الأذان والتنبيه قبله وبعده والإقامة",
+                icon: <MoonStar size={18} strokeWidth={1.8} aria-hidden />,
+                value: (
+                  <span className="nsp-row-status">
+                    <span className={`nsp-dot${prayerOn ? " is-on" : ""}`} aria-hidden />
+                    {prayerOn ? "مفعّلة" : "متوقفة"}
+                  </span>
+                ),
+                href: "/adhan-settings",
+                testId: "notif-prayer-link",
+              },
+            ]}
+          />
+        </div>
+
+        <div className="notif-card">
+          <SettingsToggleRow
+            id="notif-enabled"
+            title="تذكيرات المحتوى"
+            description={
+              isUnsupported
+                ? "غير مدعوم على هذا الجهاز"
+                : isDenied
+                  ? "محجوبة من إعدادات النظام"
+                  : masterOn
+                    ? "مفعّلة — اختر الفئات أدناه"
+                    : "متوقفة — لا يصلك أي تذكير محتوى"
+            }
+            checked={masterOn}
+            onChange={(v) => {
+              if (v) void handleEnable();
+              else update({ enabled: false });
+            }}
+            disabled={categoriesDisabled}
+          />
+        </div>
+
+        <div className="notif-card">
+          <h2 className="notif-card__title">فئات التذكير</h2>
+          {NOTIF_SECTIONS.map((section) => (
+            <div key={section.id} className="nsp-category" data-testid={`notif-section-${section.id}`}>
+              <SettingsToggleRow
+                id={`sec-${section.id}-enabled`}
+                title={section.title}
+                description={section.description}
+                checked={masterOn && prefs.sections[section.id].enabled}
+                onChange={(v) => void toggleSection(section.id, v)}
+                disabled={categoriesDisabled}
+              />
+              {section.id === "adhkar" ? (
+                <SettingsToggleRow
+                  id="notif-dhikr-phrase"
+                  title="تذكير الذكر"
+                  description="سبحان الله، الحمد لله، الصلاة على النبي ﷺ، أستغفر الله… كل ساعتين من ٨ ص إلى ٨ م"
+                  checked={masterOn && prefs.dhikrPhraseReminder}
+                  onChange={(v) => void toggleDhikrPhrase(v)}
+                  disabled={categoriesDisabled}
+                />
+              ) : null}
+            </div>
+          ))}
+        </div>
+
+        <SunnahChannelsPanel
+          onStopAll={() => setPrefs(loadNotifPrefs())}
+        />
+
+        {!isNative && pushSupport !== "unsupported" && pushSupport !== "no-vapid" && (
           <section className="notif-card" aria-label="إشعارات الدفع عبر الويب">
-            <h2 className="notif-card__title">إشعارات الدفع (PWA)</h2>
-            <p className="notif-row__sub" style={{ marginBottom: "0.75rem" }}>
-              تُرسل عبر متصفحك عند تثبيت التطبيق أو السماح بالإشعارات.
+            <h2 className="notif-card__title">إشعارات الدروس عبر المتصفح</h2>
+            <p className="notif-row__sub">
+              تصلك من الخادم حتى والموقع مغلق، بعد السماح للمتصفح.
             </p>
             <PushPrompt />
           </section>
         )}
 
-        {isNative && (
-          <section className="notif-card" aria-label="إشعارات التطبيق">
-            <h2 className="notif-card__title">إشعارات التطبيق</h2>
-            <p className="notif-row__sub">
-              على iOS تُستخدم الإشعارات المحلية لأوقات الصلاة وورد القرآن والتذكيرات اليومية.
-            </p>
-          </section>
-        )}
-
-        {isUnsupported && (
-          <div className="notif-banner notif-banner--warn">
-            {isNative
-              ? "هذا الجهاز لا يدعم الإشعارات المحلية."
-              : "متصفحك لا يدعم الإشعارات. جرّب Chrome أو Firefox."}
-          </div>
-        )}
-        {isDenied && (
-          <div className="notif-banner notif-banner--err">
-            {isNative
-              ? "الإشعارات محجوبة من إعدادات النظام. افتح الإعدادات ← سُنّة ← الإشعارات وفعّلها."
-              : "الإشعارات محجوبة من إعدادات المتصفح. فعّلها يدويًا ثم أعد المحاولة."}
-          </div>
-        )}
-        {permission === "prompt" && !prefs.enabled && (
-          <div className="notif-banner notif-banner--warn">
-            الإذن لم يُمنَح بعد — فعّل الإشعارات بالزر أدناه.
-          </div>
-        )}
-
-        <div className="notif-card">
-          <SettingsToggleRow
-            id="notif-enabled"
-            title="تفعيل الإشعارات"
-            description={
-              isGranted ? "مفعّلة" : isUnsupported ? "غير مدعوم" : isDenied ? "محجوبة" : "اضغط للسماح"
-            }
-            checked={prefs.enabled && isGranted}
-            onChange={(v) => {
-              if (v && !isGranted) void handleEnable();
-              else update({ enabled: v });
-            }}
-            disabled={isUnsupported || isDenied || requesting}
-          />
-        </div>
-
-        {activeSection ? (
-          <SectionDetailPanel
-            sectionId={activeSection}
-            sectionPrefs={prefs.sections[activeSection]}
-            prayerModes={prefs.prayerModes}
-            dhikrPhraseReminder={prefs.dhikrPhraseReminder}
-            canToggle={canToggle}
-            onClose={() => setActiveSection(null)}
-            onPatchSection={(patch) => {
-              const next = updateNotifSection(activeSection, patch);
-              setPrefs(next);
-            }}
-            onPrayerModes={(patch) =>
-              update({ prayerModes: { ...prefs.prayerModes, ...patch } })
-            }
-            onDhikrPhrase={(v) => update({ dhikrPhraseReminder: v })}
-          />
-        ) : (
-          <div className="notif-card">
-            <SettingsList
-              title="الإشعارات"
-              rows={NOTIF_SECTIONS.map((section) => {
-                const sectionPrefs = prefs.sections[section.id];
-                return {
-                  id: section.id,
-                  title: section.title,
-                  description: section.description,
-                  icon: SECTION_ICONS[section.id],
-                  value: (
-                    <span className="nsp-row-status">
-                      <span className={`nsp-dot${sectionPrefs.enabled ? "is-on" : ""}`} aria-hidden />
-                      {formatSectionStatus(sectionPrefs)}
-                    </span>
-                  ),
-                  onClick: () => setActiveSection(section.id),
-                  testId: `notif-section-${section.id}`,
-                };
-              })}
-            />
-          </div>
-        )}
-
         {isGranted && (
           <div className="notif-card">
             <Button type="button" variant="outline" size="small" className="notif-test-btn" onClick={() => void handleTestTrigger()}>
-              إرسال إشعار اختباري
+              إرسال إشعار تجريبي
             </Button>
             {testStatus && (
-              <p className="notif-row__sub" style={{ marginTop: "0.5rem" }}>
+              <p className="notif-row__sub" role="status">
                 {testStatus}
               </p>
             )}
@@ -696,16 +531,13 @@ export default function NotificationSettingsPage() {
         {showDevTools && (
           <div className="notif-card" aria-label="أدوات مطوّر الإشعارات">
             <h3 className="notif-card__title">تشخيص الإشعارات (مطوّر)</h3>
-            <p className="notif-row__sub" style={{ marginBottom: "0.75rem" }}>
-              منصة: {isNative ? "Capacitor أصلي" : "ويب"} · الإذن: {permission}
+            <p className="notif-row__sub">
+              منصة: {isNative ? "Capacitor أصلي" : "ويب"} · الإذن: {permission} · Push: {pushSupport}
             </p>
-            <Button type="button" variant="outline" size="small" className="notif-test-btn" onClick={() => void handleTestTrigger()}>
-              Test Notification Trigger
-            </Button>
           </div>
         )}
 
-        {saved && <div className="notif-saved">تم حفظ الإعدادات</div>}
+        {saved && <div className="notif-saved" role="status">تم حفظ الإعدادات</div>}
 
         <div className="nh-section">
           <div className="nh-header">
@@ -765,7 +597,7 @@ export default function NotificationSettingsPage() {
               type="button"
               variant="ghost"
               size="small"
-              className={`nh-tab${histTab === "inbox" ? "nh-tab--active" : ""}`}
+              className={`nh-tab${histTab === "inbox" ? " nh-tab--active" : ""}`}
               onClick={() => setHistTab("inbox")}
               aria-selected={histTab === "inbox"}
             >
@@ -776,7 +608,7 @@ export default function NotificationSettingsPage() {
               type="button"
               variant="ghost"
               size="small"
-              className={`nh-tab${histTab === "archived" ? "nh-tab--active" : ""}`}
+              className={`nh-tab${histTab === "archived" ? " nh-tab--active" : ""}`}
               onClick={() => setHistTab("archived")}
               aria-selected={histTab === "archived"}
             >
@@ -806,7 +638,7 @@ export default function NotificationSettingsPage() {
                     <NotifRow
                       key={rec.id}
                       rec={rec}
-                      onRead={() => handleMarkRead(rec.id)}
+                      onRead={() => handleOpen(rec)}
                       onArchive={() => handleArchive(rec.id)}
                       onDelete={() => handleDelete(rec.id)}
                     />

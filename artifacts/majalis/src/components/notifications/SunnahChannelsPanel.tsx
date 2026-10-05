@@ -1,26 +1,23 @@
 /**
- * لوحة قنوات سُنّة — موافقة مستقلة + هدوء + إيقاف غير الضروري.
- * الصلاة تبقى مستقلة (رابط لإعدادات الأذان).
+ * لوحة الهدوء والإيقاف — ساعات الهدوء (مُطبَّقة فعليًا على الجدولة) + إيقاف غير الضروري.
+ * الصلاة مستقلة دائمًا (محرك الأذان) ولا تتأثر بهذه اللوحة.
+ *
+ * كانت اللوحة تعرض «قنوات سُنّة» (تعلّم/محتوى جديد/تحديثات…) تُحفَظ ولا يقرؤها أي مُجدوِل،
+ * وساعات هدوء لا يطبّقها شيء — أُزيلت القنوات الميتة ووُصلت ساعات الهدوء
+ * بـ smart-local-notifications وdhikr-phrase-reminders وscheduleIslamicReminder.
  */
 
-import { useEffect, useState } from "react";
-import { Link } from "wouter";
+import { useState } from "react";
 import {
-  CHANNEL_POLICIES,
-  SUNNAH_NOTIFICATION_CHANNELS,
-  type ChannelCadence,
-  type SunnahNotificationChannel,
   disableAllNonEssentialChannels,
-  getSystemNotificationPermission,
-  isChannelEffectivelyEnabled,
   loadSunnahNotificationPrefs,
-  requestSystemNotificationPermissionFromUserGesture,
   saveSunnahNotificationPrefs,
-  openSystemNotificationSettings,
   trackNotificationTelemetry,
-  updateSunnahChannel,
   type SunnahNotificationPrefs,
 } from "@/lib/sunnah-notifications";
+import { loadNotifPrefs, saveNotifPrefs } from "@/lib/local-notifications";
+import { toArabicDigits } from "@/lib/utils";
+import { SettingsToggleRow } from "@/components/design-system/SettingsList";
 import { FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
@@ -31,231 +28,115 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 
-const CADENCE_LABELS: Record<ChannelCadence, string> = {
-  immediate: "فوري",
-  daily_digest: "ملخص يومي",
-  weekly_digest: "ملخص أسبوعي",
-};
+const HOURS = Array.from({ length: 24 }, (_, h) => h);
 
-function PermissionHint({ state }: { state: string }) {
-  if (state === "granted") return <p className="notif-row__sub">إذن النظام: ممنوح.</p>;
-  if (state === "denied") {
-    return (
-      <div className="notif-row__sub">
-        <p>إذن النظام مرفوض نهائيًا. افتح إعدادات الجهاز لتفعيل إشعارات «سُنّة».</p>
-        <Button
-          type="button"
-          variant="ghost"
-          className="btn btn--ghost"
-          onClick={() => void openSystemNotificationSettings()}
-        >
-          فتح إعدادات النظام
-        </Button>
-      </div>
-    );
-  }
-  if (state === "unsupported") {
-    return <p className="notif-row__sub">هذا السطح لا يدعم إذن الإشعارات.</p>;
-  }
-  return (
-    <p className="notif-row__sub">
-      لا نطلب إذن النظام عند أول تشغيل. سيُطلب فقط بعد تفعيل قناة تحتاج الإذن.
-    </p>
-  );
+function hourLabel(h: number): string {
+  const period = h < 12 ? "ص" : "م";
+  const h12 = h % 12 === 0 ? 12 : h % 12;
+  return `${toArabicDigits(h12)}:٠٠ ${period}`;
 }
 
-export function SunnahChannelsPanel() {
-  const [prefs, setPrefs] = useState<SunnahNotificationPrefs>(() => loadSunnahNotificationPrefs());
-  const [perm, setPerm] = useState<string>("prompt");
+async function resyncSchedules(): Promise<void> {
+  const { syncSmartLocalNotifications } = await import("@/lib/smart-local-notifications");
+  await syncSmartLocalNotifications();
+}
 
-  useEffect(() => {
-    void getSystemNotificationPermission().then(setPerm);
-  }, []);
+export function SunnahChannelsPanel({ onStopAll }: { onStopAll?: () => void }) {
+  const [prefs, setPrefs] = useState<SunnahNotificationPrefs>(() => loadSunnahNotificationPrefs());
+  const [stopped, setStopped] = useState(false);
 
   const persist = (next: SunnahNotificationPrefs) => {
     saveSunnahNotificationPrefs(next);
     setPrefs(loadSunnahNotificationPrefs());
+    void resyncSchedules();
   };
 
-  const onToggleChannel = async (channel: SunnahNotificationChannel, enabled: boolean) => {
-    if (enabled && CHANNEL_POLICIES[channel].requiresExplicitOptIn && perm !== "granted") {
-      const nextPerm = await requestSystemNotificationPermissionFromUserGesture();
-      setPerm(nextPerm);
-      if (nextPerm !== "granted") return;
-    }
-    const next = updateSunnahChannel(channel, { enabled });
-    setPrefs(next);
-    if (!enabled) {
-      trackNotificationTelemetry("category_disabled", { channel });
-    }
-  };
+  const quiet = prefs.quietHours;
 
   return (
-    <section className="notif-card" aria-label="قنوات إشعارات سُنّة">
-      <h2 className="notif-card__title">قنوات سُنّة</h2>
-      <p className="notif-row__sub" style={{ marginBottom: "0.75rem" }}>
-        إشعارات اختيارية ومفيدة وقابلة للتحكم. تنبيهات الصلاة مستقلة ولا تُوقف مع المحتوى.
-      </p>
+    <section className="notif-card" aria-labelledby="notif-quiet-title">
+      <h2 className="notif-card__title" id="notif-quiet-title">
+        الهدوء والإيقاف
+      </h2>
 
-      <PermissionHint state={perm} />
+      <SettingsToggleRow
+        id="notif-quiet-hours"
+        title="ساعات الهدوء"
+        description="لا تصل تذكيرات المحتوى خلالها — تنبيهات الصلاة وأوقات الأذكار لا تتأثر"
+        checked={quiet.enabled}
+        onChange={(enabled) => persist({ ...prefs, quietHours: { ...quiet, enabled } })}
+      />
 
-      <div className="notif-row" style={{ marginTop: "0.75rem" }}>
-        <div className="notif-row__text">
-          <strong>المفتاح العام لغير الضروري</strong>
-          <span className="notif-row__sub">لا يؤثر على الصلاة أو التشغيلية الضرورية.</span>
-        </div>
-        <label className="switch">
-          <input
-            type="checkbox"
-            checked={prefs.nonEssentialMasterEnabled}
-            onChange={(e) =>
-              persist({ ...prefs, nonEssentialMasterEnabled: e.target.checked })
-            }
-            aria-label="المفتاح العام لغير الضروري"
-          />
-          <span className="switch__slider" />
-        </label>
-      </div>
-
-      {SUNNAH_NOTIFICATION_CHANNELS.map((channel) => {
-        const policy = CHANNEL_POLICIES[channel];
-        const ch = prefs.channels[channel];
-        const effective = isChannelEffectivelyEnabled(prefs, channel);
-        return (
-          <div key={channel} className="notif-row" style={{ alignItems: "flex-start" }}>
-            <div className="notif-row__text">
-              <strong>{policy.labelAr}</strong>
-              <span className="notif-row__sub">{policy.descriptionAr}</span>
-              <span className="notif-row__sub">
-                المصدر: {policy.transport === "local" ? "محلي" : "دفع"}
-                {channel === "prayer" ? " · " : ""}
-                {channel === "prayer" ? (
-                  <Link href="/adhan-settings">إعدادات الأذان</Link>
-                ) : null}
-              </span>
-              {policy.supportedCadences.length > 1 && ch.enabled ? (
-                <div className="notif-row__sub" style={{ display: "block", marginTop: 6 }}>
-                  <FieldLabel>التكرار</FieldLabel>
-                  <Select
-                    value={ch.cadence}
-                    onValueChange={(v) =>
-                      setPrefs(
-                        updateSunnahChannel(channel, {
-                          cadence: v as ChannelCadence,
-                        }),
-                      )
-                    }
-                  >
-                    <SelectTrigger
-                      className="min-h-11 text-base"
-                      aria-label={`تكرار ${policy.labelAr}`}
-                    >
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {policy.supportedCadences.map((c) => (
-                        <SelectItem key={c} value={c}>
-                          {CADENCE_LABELS[c]}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              ) : null}
-              {!effective && ch.enabled ? (
-                <span className="notif-row__sub">يتطلب تشغيل المفتاح العام لغير الضروري.</span>
-              ) : null}
+      {quiet.enabled ? (
+        <div className="nsp-quiet-range">
+          {(
+            [
+              { key: "startHour", id: "notif-quiet-start", label: "من" },
+              { key: "endHour", id: "notif-quiet-end", label: "إلى" },
+            ] as const
+          ).map((field) => (
+            <div key={field.key} className="nsp-quiet-range__field">
+              <FieldLabel htmlFor={field.id}>{field.label}</FieldLabel>
+              <Select
+                value={String(quiet[field.key])}
+                onValueChange={(v) =>
+                  persist({ ...prefs, quietHours: { ...quiet, [field.key]: Number(v) } })
+                }
+              >
+                <SelectTrigger
+                  id={field.id}
+                  className="min-h-11 text-base"
+                  aria-label={`${field.label} — ساعات الهدوء`}
+                >
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {HOURS.map((h) => (
+                    <SelectItem key={h} value={String(h)}>
+                      {hourLabel(h)}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
-            <label className="switch">
-              <input
-                type="checkbox"
-                checked={ch.enabled}
-                onChange={(e) => void onToggleChannel(channel, e.target.checked)}
-                aria-label={policy.labelAr}
-              />
-              <span className="switch__slider" />
-            </label>
-          </div>
-        );
-      })}
-
-      <div className="notif-row" style={{ marginTop: "0.5rem" }}>
-        <div className="notif-row__text">
-          <strong>ساعات الهدوء</strong>
-          <span className="notif-row__sub">
-            افتراضيًا من 10 مساءً إلى 8 صباحًا — تؤجّل غير الضروري فقط.
-          </span>
-        </div>
-        <label className="switch">
-          <input
-            type="checkbox"
-            checked={prefs.quietHours.enabled}
-            onChange={(e) =>
-              persist({
-                ...prefs,
-                quietHours: { ...prefs.quietHours, enabled: e.target.checked },
-              })
-            }
-            aria-label="ساعات الهدوء"
-          />
-          <span className="switch__slider" />
-        </label>
-      </div>
-
-      {prefs.quietHours.enabled ? (
-        <div className="nsp-field" style={{ display: "flex", gap: 12, marginBottom: 12 }}>
-          <label>
-            من
-            <input
-              type="number"
-              min={0}
-              max={23}
-              value={prefs.quietHours.startHour}
-              onChange={(e) =>
-                persist({
-                  ...prefs,
-                  quietHours: {
-                    ...prefs.quietHours,
-                    startHour: Number(e.target.value),
-                  },
-                })
-              }
-              aria-label="بداية ساعات الهدوء"
-            />
-          </label>
-          <label>
-            إلى
-            <input
-              type="number"
-              min={0}
-              max={23}
-              value={prefs.quietHours.endHour}
-              onChange={(e) =>
-                persist({
-                  ...prefs,
-                  quietHours: {
-                    ...prefs.quietHours,
-                    endHour: Number(e.target.value),
-                  },
-                })
-              }
-              aria-label="نهاية ساعات الهدوء"
-            />
-          </label>
+          ))}
         </div>
       ) : null}
 
       <Button
         type="button"
         variant="ghost"
-        className="btn btn--ghost"
+        className="notif-stop-all"
         onClick={() => {
+          const current = loadNotifPrefs();
+          saveNotifPrefs({
+            ...current,
+            enabled: false,
+            quranDailyReminder: false,
+            adhkarReminder: false,
+            flashcardsReminder: false,
+            dhikrPhraseReminder: false,
+            sections: {
+              quran: { enabled: false },
+              adhkar: { enabled: false },
+              seekingKnowledge: { enabled: false },
+              fridayOccasions: { enabled: false },
+            },
+          });
           setPrefs(disableAllNonEssentialChannels());
           trackNotificationTelemetry("category_disabled", { channel: "all_non_essential" });
+          void resyncSchedules();
+          setStopped(true);
+          onStopAll?.();
         }}
       >
         إيقاف جميع الإشعارات غير الضرورية
       </Button>
+      {stopped ? (
+        <p className="notif-row__sub" role="status">
+          أُوقفت كل تذكيرات المحتوى. تنبيهات الصلاة باقية كما ضبطتها في إعدادات الأذان.
+        </p>
+      ) : null}
     </section>
   );
 }

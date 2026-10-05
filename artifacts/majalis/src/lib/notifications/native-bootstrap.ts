@@ -27,6 +27,39 @@ function navigateFromNotificationExtra(extra: unknown): void {
   }
 }
 
+type DeliveredNotification = {
+  id?: number | string;
+  title?: string;
+  body?: string;
+  extra?: unknown;
+};
+
+/**
+ * يسجّل الإشعار الأصلي في صندوق الإشعارات (عند الاستلام في الواجهة أو عند النقر)
+ * بمعرّف ثابت (id + اليوم) فلا يتكرر — كان الصندوق فارغًا دائمًا لأن لا أحد يسجّل فيه.
+ */
+function recordNativeNotification(n: DeliveredNotification | undefined): void {
+  if (!n?.title) return;
+  const extra = (n.extra && typeof n.extra === "object" ? n.extra : {}) as {
+    url?: unknown;
+    kind?: unknown;
+  };
+  if (extra.kind === "adhan-test" || extra.kind === "adhan-seq-test") return;
+  const url = typeof extra.url === "string" && extra.url.startsWith("/") && !extra.url.startsWith("//")
+    ? extra.url
+    : undefined;
+  const day = new Date().toISOString().slice(0, 10);
+  void import("@/lib/notification-history").then(({ addNotifRecord }) => {
+    addNotifRecord(
+      n.title!,
+      n.body,
+      typeof extra.kind === "string" ? extra.kind : undefined,
+      url,
+      `native-${String(n.id ?? n.title)}-${day}`,
+    );
+  });
+}
+
 export async function attachLocalNotificationListeners(): Promise<void> {
   if (!isNative || _listenersAttached) return;
   try {
@@ -44,9 +77,11 @@ export async function attachLocalNotificationListeners(): Promise<void> {
       void import("@/lib/adhan-smart-cancel").then(({ onAdhanSegmentNotificationInteraction }) =>
         onAdhanSegmentNotificationInteraction(event.notification?.extra),
       );
+      recordNativeNotification(event.notification);
       navigateFromNotificationExtra(event.notification?.extra);
     });
     await LocalNotifications.addListener("localNotificationReceived", (notification) => {
+      recordNativeNotification(notification);
       if (import.meta.env.DEV) {
         console.info(
           "[notifications] received (foreground)",
