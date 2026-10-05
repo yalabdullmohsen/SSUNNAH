@@ -191,40 +191,31 @@ html.pts-immersive #root {
   --msk-canvas-1:      var(--emerald-50);
   --msk-canvas-2:      var(--emerald-100);
   --msk-canvas-glass:  rgba(248,247,243,.94);
-  --msk-manuscript:    #F5EFE0;
-  --msk-manuscript-2:  #EDE3CA;
-  /* ملاحظة صيانة: كل متغيّرات msk-gold في هذا الملف (وأشباهها في الملفات
-     الأخرى: m26-gold، ds-gold، mj-gold، mf-gold) تُحلّ فعليًا لألوان
-     أخضر زمردي، لا أي درجة ذهبية حقيقية — بقايا تسمية من تصميم ذهبي
-     سابق أُعيد تصميمه بالكامل لأخضر زمردي دون تحديث الأسماء. لا عطل
-     بصري ناتج (كل استخدام متسق)، لكن الاسم مضلِّل لأي مطوّر يقرأ الكود.
-     إعادة تسمية آمنة تتطلب تمريرة rename فقط مخصَّصة عبر 5 ملفات CSS
-     متوازية مع تغطية بصرية كاملة — موثَّق في READY_FOR_MERGE.md قسم 15/16. */
-  --msk-gold:          var(--emerald-500);
-  --msk-gold-deep:     var(--emerald-deep);
+  /* ملاحظة صيانة: متغيّرات msk-gold تُحلّ لأخضر زمردي (بقايا تسمية). */
+  --msk-gold:          var(--mj-brand, var(--emerald-500));
+  --msk-gold-deep:     var(--mj-brand-deep, var(--emerald-deep));
   --msk-gold-dim:      rgba(23,61,53,.12);
   --msk-gold-glow:     rgba(23,61,53,.15);
   --msk-gold-border:   rgba(23,61,53,.22);
-  --msk-sky:           #1E7A9A;
+  --msk-sky:           var(--sys-info, #1E7A9A);
   --msk-sky-dim:       rgba(30,122,154,.10);
-  --msk-text:          var(--ink);
-  --msk-text-2:        #5C5C56;
-  --msk-text-3:        #5C5C56;
-  --msk-green:         var(--emerald-500);
-  --msk-red:           #B44A4A;
-  --msk-red-dim:       rgba(180,74,74,.08);
-  --msk-border:        #E8E7E2;
-  --msk-border-strong: var(--emerald-200);
+  --msk-text:          var(--mj-ink, var(--ink));
+  --msk-text-2:        var(--mj-ink-2, #5C5C56);
+  --msk-text-3:        var(--mj-muted, #5C5C56);
+  --msk-green:         var(--mj-brand, var(--emerald-500));
+  --msk-red:           var(--mj-danger, #B44A4A);
+  --msk-red-dim:       var(--mj-danger-soft, rgba(180,74,74,.08));
+  --msk-border:        var(--mj-hairline, #E8E7E2);
+  --msk-border-strong: color-mix(in srgb, var(--mj-brand) 28%, var(--mj-surface));
   --msk-divider:       rgba(23,61,53,.06);
   --msk-shadow-sm:     0 1px 2px rgba(23,61,53,.05);
   --msk-shadow:        0 2px 8px rgba(23,61,53,.06);
   --msk-shadow-lg:     0 8px 24px rgba(23,61,53,.08);
-  --msk-shadow-gold:   0 0 24px rgba(184,148,82,.12);
 
   /* ── جسر: --majalis-* → مجالس (نهار — وضع افتراضي) ── */
-  --majalis-ink:           var(--msk-text);
-  --majalis-ink-soft:      var(--msk-text-2);
-  --majalis-ink-muted:     var(--msk-text-3);
+  --majalis-ink:           var(--mj-ink, var(--msk-text));
+  --majalis-ink-soft:      var(--mj-ink-2, var(--msk-text-2));
+  --majalis-ink-muted:     var(--mj-muted, var(--msk-text-3));
   /* --ds-text-1/--ds-text-2 مُستخدمان في islamic-landmarks.css وغيرها
      (عشرات القواعد) لكنهما لم يكونا معرَّفين في أي مكان بالمشروع فعليًا —
      متغيّران "ميتان" يسقطان دومًا للقيمة الاحتياطية الثابتة المكتوبة محليًا
@@ -232,29 +223,29 @@ html.pts-immersive #root {
      فوق خلفيات داكنة في الوضع الليلي (شُخِّص 2026-07-19 عبر تدقيق تباين
      آلي حي — مثال: .qmem-section-title، .ilm-badge). تعريفهما هنا يربطهما
      بنفس نظام الألوان الواعي بالسمة تلقائيًا. */
-  --ds-text-1:             var(--msk-text);
-  --ds-text-2:             var(--msk-text-2);
-  --majalis-charcoal:      var(--msk-text);
+  --ds-text-1:             var(--mj-ink, var(--msk-text));
+  --ds-text-2:             var(--mj-ink-2, var(--msk-text-2));
+  --majalis-charcoal:      var(--mj-ink, var(--msk-text));
   --majalis-parchment:     #FFFFFF;
   --majalis-parchment-deep:#FAFAF8;
-  --majalis-panel:         var(--msk-canvas-1);
-  --majalis-panel-raised:  var(--msk-canvas-2);
-  --majalis-emerald:       var(--msk-gold);
-  --majalis-emerald-deep:  var(--msk-gold-deep);
+  --majalis-panel:         var(--mj-surface, var(--msk-canvas-1));
+  --majalis-panel-raised:  var(--mj-surface-2, var(--msk-canvas-2));
+  --majalis-emerald:       var(--mj-brand, var(--msk-gold));
+  --majalis-emerald-deep:  var(--mj-brand-deep, var(--msk-gold-deep));
   --majalis-emerald-muted: var(--msk-gold-dim);
   --majalis-emerald-soft:  rgba(23,61,53,.06);
-  --majalis-blue:          var(--msk-sky);
+  --majalis-blue:          var(--sys-info, var(--msk-sky));
   --majalis-blue-deep:     #145878;
   --majalis-blue-soft:     var(--msk-sky-dim);
   --majalis-brass:         #B8963F;
   --majalis-brass-deep:    #9C7C41;
   --majalis-brass-soft:    rgba(184,148,82,.08);
   --majalis-sage:          #EEF1EC;
-  --majalis-danger:        var(--msk-red);
-  --majalis-danger-muted:  var(--msk-red-dim);
-  --majalis-success:       var(--msk-green);
+  --majalis-danger:        var(--mj-danger, var(--msk-red));
+  --majalis-danger-muted:  var(--mj-danger-soft, var(--msk-red-dim));
+  --majalis-success:       var(--mj-brand, var(--msk-green));
   --majalis-warning:       var(--sys-warning, #B67A32);
-  --majalis-line:          var(--msk-border);
+  --majalis-line:          var(--mj-hairline, var(--msk-border));
   --majalis-line-strong:   var(--msk-border-strong);
   --majalis-shadow:        var(--msk-shadow);
   --majalis-shadow-sm:     var(--msk-shadow-sm);
@@ -262,22 +253,22 @@ html.pts-immersive #root {
   --majalis-shadow-xl:     0 24px 64px rgba(23,61,53,.10);
   --majalis-gold:          #B8963F;
   --majalis-gold-light:    rgba(184,148,82,.18);
-  --majalis-ivory:         var(--msk-canvas-1);
+  --majalis-ivory:         var(--mj-surface, var(--msk-canvas-1));
 
   /* ── جسر إرثي: متغيرات design-system.css القديمة ──
      ممنوع إعادة تعريف --text-body كلون — هو رمز حجم في typography-scale (17px). */
-  --bg-card:             var(--msk-canvas,   #FFFFFF);
-  --bg-base:             var(--msk-canvas-1, #FAFAF8);
-  --text-base:           var(--msk-text,     #1A1A18);
-  --color-text-body:     var(--msk-text-2,   #5C5C56);
-  --text-muted:          var(--msk-text-3,   #5C5C56);
-  --majalis-accent:      var(--msk-gold,     var(--mj-brand-deep));
-  --majalis-surface-2:   var(--msk-canvas-1, #FAFAF8);
+  --bg-card:             var(--mj-bg, var(--msk-canvas, #FFFFFF));
+  --bg-base:             var(--mj-surface, var(--msk-canvas-1, #FAFAF8));
+  --text-base:           var(--mj-ink, var(--msk-text, #1A1A18));
+  --color-text-body:     var(--mj-ink-2, var(--msk-text-2, #5C5C56));
+  --text-muted:          var(--mj-muted, var(--msk-text-3, #5C5C56));
+  --majalis-accent:      var(--mj-brand-deep, var(--msk-gold));
+  --majalis-surface-2:   var(--mj-surface, var(--msk-canvas-1, #FAFAF8));
   --majalis-surface-hover: rgba(23,61,53,0.04);
-  --majalis-surface-muted: var(--msk-canvas-1, #FAFAF8);
-  --ds-surface-2:        var(--msk-canvas-1, #FAFAF8);
-  --color-parchment:     var(--msk-canvas,   #FFFFFF);
-  --color-line:          var(--msk-border,   #E8E7E2);
+  --majalis-surface-muted: var(--mj-surface, var(--msk-canvas-1, #FAFAF8));
+  --ds-surface-2:        var(--mj-surface, var(--msk-canvas-1, #FAFAF8));
+  --color-parchment:     var(--mj-bg, var(--msk-canvas, #FFFFFF));
+  --color-line:          var(--mj-hairline, var(--msk-border, #E8E7E2));
 
   /* ── الخطوط ── واجهة موحّدة --font-ui / --font-app (Amiri) ──
      المصحف (--font-quran) والعناوين التراثية (--font-heritage) استثناءات. */
@@ -313,22 +304,22 @@ html.pts-immersive #root {
   --safe-right:  var(--inset-right);
 
   /* ── جسر v2 ── */
-  --v2-green:        var(--msk-gold);
-  --v2-green-deep:   var(--msk-gold-deep);
+  --v2-green:        var(--mj-brand, var(--msk-gold));
+  --v2-green-deep:   var(--mj-brand-deep, var(--msk-gold-deep));
   --v2-green-soft:   rgba(31,77,58,.06);
   --v2-green-mid:    rgba(31,77,58,.40);
-  --v2-blue:         var(--msk-sky);
+  --v2-blue:         var(--sys-info, var(--msk-sky));
   --v2-blue-deep:    #145878;
   --v2-blue-soft:    var(--msk-sky-dim);
-  --v2-gold:         var(--msk-gold);
+  --v2-gold:         var(--mj-brand, var(--msk-gold));
   --v2-gold-soft:    rgba(31,77,58,.06);
-  --v2-ink:          var(--msk-text);
-  --v2-ink-2:        var(--msk-text-2);
-  --v2-ink-3:        var(--msk-text-3);
-  --v2-surface-0:    var(--msk-canvas-1);
-  --v2-surface-1:    var(--msk-canvas);
-  --v2-surface-2:    var(--msk-canvas-2);
-  --v2-border:       var(--msk-border);
+  --v2-ink:          var(--mj-ink, var(--msk-text));
+  --v2-ink-2:        var(--mj-ink-2, var(--msk-text-2));
+  --v2-ink-3:        var(--mj-muted, var(--msk-text-3));
+  --v2-surface-0:    var(--mj-surface, var(--msk-canvas-1));
+  --v2-surface-1:    var(--mj-bg, var(--msk-canvas));
+  --v2-surface-2:    var(--mj-surface-2, var(--msk-canvas-2));
+  --v2-border:       var(--mj-hairline, var(--msk-border));
   --v2-border-soft:  var(--msk-divider);
   --v2-shadow-1:     var(--msk-shadow-sm);
   --v2-shadow-2:     var(--msk-shadow);
@@ -348,30 +339,29 @@ html.pts-immersive #root {
 /* ══ وضع النهار — إعادة تصميم الهوية v3 (أخضر رمادي داكن + عاجي دافئ) ══ */
 
 html {
-  --msk-canvas:        #FAFAF8;
-  --msk-canvas-1:      #FFFFFF;
-  --msk-canvas-2:      #EFE9DC;
+  --msk-canvas:        var(--mj-bg, #FAFAF8);
+  --msk-canvas-1:      var(--mj-surface, #FFFFFF);
+  --msk-canvas-2:      var(--mj-surface-2, #EFE9DC);
   --msk-canvas-glass:  rgba(247,244,237,.95);
   --msk-gold:          var(--mj-brand-deep);
   --msk-gold-deep:     var(--mj-brand-deep);
   --msk-gold-dim:      rgba(23,61,53,.12);
   --msk-gold-glow:     rgba(23,61,53,.15);
   --msk-gold-border:   rgba(23,61,53,.22);
-  --msk-sky:           #1E7A9A;
+  --msk-sky:           var(--sys-info, #1E7A9A);
   --msk-sky-dim:       rgba(30,122,154,.10);
-  --msk-text:          #1A1A18;
-  --msk-text-2:        #5C5C56;
-  --msk-text-3:        #5C5C56;
+  --msk-text:          var(--mj-ink, #1A1A18);
+  --msk-text-2:        var(--mj-ink-2, #5C5C56);
+  --msk-text-3:        var(--mj-muted, #5C5C56);
   --msk-green:         var(--mj-brand-deep);
-  --msk-red:           #B44A4A;
-  --msk-red-dim:       rgba(180,74,74,.08);
-  --msk-border:        #E8E7E2;
+  --msk-red:           var(--mj-danger, #B44A4A);
+  --msk-red-dim:       var(--mj-danger-soft, rgba(180,74,74,.08));
+  --msk-border:        var(--mj-hairline, #E8E7E2);
   --msk-border-strong: #D6D5CE;
   --msk-divider:       rgba(0,0,0,.06);
   --msk-shadow-sm:     0 1px 2px rgba(23,61,53,.05);
   --msk-shadow:        0 2px 8px rgba(23,61,53,.06);
   --msk-shadow-lg:     0 8px 24px rgba(23,61,53,.08);
-  --msk-shadow-gold:   0 0 24px rgba(184,148,82,.12);
 
   --majalis-ink:           #1A1A18;
   --majalis-ink-soft:      #5C5C56;

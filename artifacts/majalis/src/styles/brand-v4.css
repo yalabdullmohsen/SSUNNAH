@@ -391,9 +391,7 @@ html[data-theme="dark"] {
   /* --background/--primary/--font-display: مصدرها theme.css فقط — لا إعادة تعريف */
   --surfaceElevated:var(--bg-elevated);--cardBackground:var(--surface);--textPrimary:var(--text);--textSecondary:var(--text-2);--textMuted:var(--text-muted);--iconPrimary:var(--text-brand);--accentText:var(--text-brand-deep);--selectedBackground:var(--brand-soft);--selectedText:var(--text-brand-deep);
   /* — أنظمة متفرقة — */
-  --msk-primary: var(--brand);
-  --msk-bg:      var(--bg);
-  --msk-surface: var(--surface);
+  /* --msk-primary/--msk-surface retired: leaf consumers → --mj-brand / --mj-surface */
   --msk-border:  var(--border);
   --msk-text:    var(--text);
   --mn-primary:  var(--brand);

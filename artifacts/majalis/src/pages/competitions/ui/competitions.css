@@ -7,7 +7,7 @@
 
 .cmp-hub__lead {
   margin: 0;
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   font-size: 0.95rem;
   line-height: 1.7;
   max-width: 40rem;
@@ -20,9 +20,9 @@
 }
 
 .cmp-filter {
-  border: 1px solid var(--msk-border, var(--mj-hairline));
-  background: var(--msk-surface, #faf8f4);
-  color: var(--msk-text, var(--mj-ink));
+  border: 1px solid var(--mj-hairline, var(--msk-border));
+  background: var(--mj-surface, #faf8f4);
+  color: var(--mj-ink, var(--msk-text));
   border-radius: 8px;
   padding: 0.3rem 0.7rem;
   font-size: 0.78rem;
@@ -42,10 +42,10 @@
   gap: 0.75rem;
   text-align: center;
   padding: 2.5rem 1.25rem;
-  border: 1px dashed var(--msk-border, var(--mj-hairline));
+  border: 1px dashed var(--mj-hairline, var(--msk-border));
   border-radius: 1rem;
   background: linear-gradient(180deg, #faf8f4 0%, #f3efe6 100%);
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
 }
 
 .cmp-empty p {
@@ -56,11 +56,11 @@
 
 .cmp-empty__hint {
   font-size: 0.92rem;
-  color: var(--msk-text-3, var(--mj-ink-3));
+  color: var(--mj-muted, var(--msk-text-3));
 }
 
 .cmp-empty__hint a {
-  color: var(--mj-brand, var(--msk-brand));
+  color: var(--mj-brand);
   text-decoration: underline;
   text-underline-offset: 0.15em;
 }
@@ -74,7 +74,7 @@
 .cmp-card {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--msk-border, var(--mj-hairline));
+  border: 1px solid var(--mj-hairline, var(--msk-border));
   border-radius: 0.9rem;
   overflow: hidden;
   background: linear-gradient(180deg, #faf8f4 0%, #f5f2eb 100%);
@@ -95,7 +95,7 @@
 .cmp-card__media--fallback {
   display: grid;
   place-items: center;
-  color: var(--msk-primary, #1a3c2e);
+  color: var(--mj-brand-deep, #1a3c2e);
   opacity: 0.55;
 }
 
@@ -117,7 +117,7 @@
   padding: 0.15rem 0.55rem;
   border-radius: 999px;
   background: rgba(26, 60, 46, 0.08);
-  color: var(--msk-primary, #1a3c2e);
+  color: var(--mj-brand-deep, #1a3c2e);
 }
 
 .cmp-badge--prize {
@@ -151,7 +151,7 @@
 .cmp-card__meta {
   margin: 0;
   font-size: 0.86rem;
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -176,14 +176,14 @@
 }
 
 .cmp-btn--primary {
-  background: var(--msk-primary, #1a3c2e);
+  background: var(--mj-brand-deep, #1a3c2e);
   color: #fff;
 }
 
 .cmp-btn--ghost {
   background: transparent;
-  border-color: var(--msk-border, var(--mj-hairline));
-  color: var(--msk-text, var(--mj-ink));
+  border-color: var(--mj-hairline, var(--msk-border));
+  color: var(--mj-ink, var(--msk-text));
 }
 
 .cmp-btn--disabled {
@@ -203,7 +203,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   text-decoration: none;
   font-size: 0.9rem;
   width: fit-content;
@@ -235,7 +235,7 @@
 .cmp-detail__hero--fallback {
   display: grid;
   place-items: center;
-  color: var(--msk-primary, #1a3c2e);
+  color: var(--mj-brand-deep, #1a3c2e);
   opacity: 0.5;
 }
 
@@ -247,13 +247,13 @@
 
 .cmp-detail__org {
   margin: 0;
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
 }
 
 .cmp-detail__desc {
   margin: 0;
   line-height: 1.8;
-  color: var(--msk-text, var(--mj-ink));
+  color: var(--mj-ink, var(--msk-text));
 }
 
 .cmp-detail__dl {
@@ -264,7 +264,7 @@
 }
 
 .cmp-detail__dl dt {
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   font-size: 0.86rem;
 }
 

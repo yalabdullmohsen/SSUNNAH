@@ -768,8 +768,6 @@ html[data-theme="dark"] {
   --msk-canvas-1:      #131A18;
   --msk-canvas-2:      #1B2421;
   --msk-canvas-glass:  rgba(19,26,24,.93);
-  --msk-manuscript:    #1B2421;
-  --msk-manuscript-2:  #222D29;
   /* ذهب يبقى ذهباً — لا يُسطَّح إلى نعناعي */
   --msk-gold:          #D9B871;
   --msk-gold-deep:     #C4A35C;
@@ -790,7 +788,6 @@ html[data-theme="dark"] {
   --msk-shadow-sm:     0 1px 2px rgba(0,0,0,.40);
   --msk-shadow:        0 4px 12px rgba(0,0,0,.45), 0 1px 3px rgba(0,0,0,.35);
   --msk-shadow-lg:     0 12px 32px rgba(0,0,0,.55);
-  --msk-shadow-gold:   0 0 24px rgba(217,184,113,.12);
 
   --majalis-ink:           #F8FAFC;
   --majalis-ink-soft:      #E2E8F0;

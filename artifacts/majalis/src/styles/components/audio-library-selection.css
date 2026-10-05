@@ -1,7 +1,7 @@
 .als-panel {
   border-radius: var(--ds-radius-lg, 1rem);
-  border: 1px solid var(--msk-border);
-  background: var(--msk-surface, #111827);
+  border: 1px solid var(--mj-hairline, var(--msk-border));
+  background: var(--mj-surface, #111827);
   padding: 1rem;
   margin-block: 1rem;
 }
@@ -13,13 +13,13 @@
 .als-title {
   font-size: 1.05rem;
   font-weight: 800;
-  color: var(--msk-text);
+  color: var(--mj-ink, var(--msk-text));
   margin: 0 0 0.25rem;
 }
 
 .als-sub {
   font-size: 0.78rem;
-  color: var(--msk-text-2);
+  color: var(--mj-ink-2, var(--msk-text-2));
   margin: 0;
 }
 
@@ -42,7 +42,7 @@
   border: none;
   border-radius: 0.55rem;
   background: transparent;
-  color: var(--msk-text-2);
+  color: var(--mj-ink-2, var(--msk-text-2));
   font: inherit;
   font-size: 0.82rem;
   font-weight: 600;
@@ -75,12 +75,12 @@
 .als-row-toggle__label {
   font-size: 0.88rem;
   font-weight: 700;
-  color: var(--msk-text);
+  color: var(--mj-ink, var(--msk-text));
 }
 
 .als-row-toggle__hint {
   font-size: 0.72rem;
-  color: var(--msk-text-2);
+  color: var(--mj-ink-2, var(--msk-text-2));
   margin: 0.2rem 0 0;
   line-height: 1.45;
 }
@@ -136,7 +136,7 @@
   gap: 0.5rem;
   padding: 0.75rem 0.85rem;
   border-radius: 0.65rem;
-  border: 1px solid var(--msk-border);
+  border: 1px solid var(--mj-hairline, var(--msk-border));
   background: color-mix(in srgb, var(--msk-canvas-1, #1f2937) 60%, transparent);
   color: inherit;
   font: inherit;
@@ -157,13 +157,13 @@
   display: block;
   font-size: 0.88rem;
   font-weight: 700;
-  color: var(--msk-text);
+  color: var(--mj-ink, var(--msk-text));
 }
 
 .als-card__sub {
   display: block;
   font-size: 0.72rem;
-  color: var(--msk-text-2);
+  color: var(--mj-ink-2, var(--msk-text-2));
   margin-top: 0.15rem;
 }
 
@@ -176,7 +176,7 @@
 
 .als-hint {
   font-size: 0.75rem;
-  color: var(--msk-text-2);
+  color: var(--mj-ink-2, var(--msk-text-2));
   margin: 0;
   line-height: 1.5;
 }
