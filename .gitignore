@@ -72,7 +72,8 @@ artifacts/majalis/public/data/search/shards/
 # Keep patterns in sync with scripts/verify-no-tracked-ecc-bundles.mjs
 .claude/ecc-tools.json
 .claude/identity.json
-.claude/skills/
+.claude/skills/*
+!.claude/skills/graphify/
 .claude/homunculus/
 .agents/skills/
 .codex/
