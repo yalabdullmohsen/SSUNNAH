@@ -230,8 +230,9 @@ export function IslamicStoriesSection() {
                     <div className="is-actions">
                       {!story.is_approved ? (
                         <Button
-                          type="button" variant="ghost"
-                          variant="primary" className={`is-btn approve${isWorking ? " disabled" : ""}`}
+                          type="button"
+                          variant="primary"
+                          className={`is-btn approve${isWorking ? " disabled" : ""}`}
                           onClick={() => setApproval(story, true)}
                           disabled={isWorking}
                         >
@@ -239,8 +240,9 @@ export function IslamicStoriesSection() {
                         </Button>
                       ) : (
                         <Button
-                          type="button" variant="ghost"
-                          variant="destructive" className={`is-btn revoke${isWorking ? " disabled" : ""}`}
+                          type="button"
+                          variant="destructive"
+                          className={`is-btn revoke${isWorking ? " disabled" : ""}`}
                           onClick={() => setApproval(story, false)}
                           disabled={isWorking}
                         >
