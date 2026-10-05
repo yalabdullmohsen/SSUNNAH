@@ -7,9 +7,11 @@
  *
  * سياسة: المشاكل القائمة لا تُفشل الفحص. يفشل فقط عند الأسوأ من خط الأساس بما يتجاوز الهامش:
  *   - التوقيتات (FCP/LCP/SI): > الأساس × 1.10 (نفس هامش lhci-thresholds.cjs) و+150ms على الأقل
- *   - TBT (متذبذب تحت simulate): > max(الأساس × 1.25، الأساس + 200ms)
+ *   - TBT: يعتمد على CPU المشغّل فيتذبذب بين جولتين على نفس الشيفرة (رُصد 156→430ms)،
+ *     فيُقارَن بسقف ثابت مشترك مع lhci-home (FIXED_PREVIEW.tbtMs في lhci-thresholds.cjs) لا بالأساس
  *   - CLS: > الأساس + 0.05
- *   - الدرجات: أداء < الأساس − 0.05؛ وصول/ممارسات/SEO < الأساس − 0.03
+ *   - الدرجات: وصول/ممارسات/SEO < الأساس − 0.03 (حتمية)؛ درجة الأداء تحذير فقط
+ *     (مشتقة أساسًا من TBT — نفس سياسة lhci-home حيث categories:performance = warn)
  *
  *   node scripts/lhci-key-pages-gate.mjs            # فحص
  *   node scripts/lhci-key-pages-gate.mjs --update   # كتابة خط الأساس من القياس الحالي
@@ -17,6 +19,7 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
 
 const majalisRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const LHR_DIR = resolve(majalisRoot, ".lighthouseci");
@@ -25,6 +28,9 @@ const BASELINE_PATH = resolve(
   "config/lhci-key-pages-baseline.json",
 );
 const UPDATE = process.argv.includes("--update");
+const { FIXED_PREVIEW } = createRequire(import.meta.url)(
+  "./lhci-thresholds.cjs",
+);
 
 const METRICS = {
   fcpMs: {
@@ -41,12 +47,13 @@ const METRICS = {
   },
   tbtMs: {
     audit: "total-blocking-time",
-    worse: (b, v) => v > Math.max(b * 1.25, b + 200),
+    worse: (_b, v) => v > FIXED_PREVIEW.tbtMs,
   },
   cls: { audit: "cumulative-layout-shift", worse: (b, v) => v > b + 0.05 },
 };
+/** درجة الأداء: تحذير فقط عند الانخفاض بأكثر من هذا الهامش. */
+const PERF_WARN_SLACK = 0.05;
 const SCORES = {
-  performance: 0.05,
   accessibility: 0.03,
   "best-practices": 0.03,
   seo: 0.03,
@@ -85,7 +92,7 @@ for (const [path, runs] of Object.entries(byPath)) {
     const v = median(runs.map((r) => r.audits[audit]?.numericValue ?? NaN));
     entry[key] = key === "cls" ? Math.round(v * 10000) / 10000 : Math.round(v);
   }
-  for (const cat of Object.keys(SCORES)) {
+  for (const cat of ["performance", ...Object.keys(SCORES)]) {
     entry[cat] = median(runs.map((r) => r.categories[cat]?.score ?? 0));
   }
   current[path] = entry;
@@ -109,6 +116,7 @@ if (!existsSync(BASELINE_PATH)) {
 const baseline = JSON.parse(readFileSync(BASELINE_PATH, "utf8")).pages;
 
 const regressions = [];
+const warnings = [];
 const rows = [];
 for (const [path, now] of Object.entries(current)) {
   const base = baseline[path];
@@ -124,6 +132,10 @@ for (const [path, now] of Object.entries(current)) {
     if (now[cat] < base[cat] - slack - 1e-9)
       regressions.push(`${path} ${cat}: ${base[cat]} → ${now[cat]}`);
   }
+  if (now.performance < base.performance - PERF_WARN_SLACK - 1e-9)
+    warnings.push(
+      `${path} performance: ${base.performance} → ${now.performance}`,
+    );
   rows.push(
     `| ${path} | ${Math.round(now.performance * 100)} | ${Math.round(now.accessibility * 100)} | ${Math.round(now["best-practices"] * 100)} | ${Math.round(now.seo * 100)} | ${now.fcpMs} | ${now.lcpMs} | ${now.tbtMs} | ${now.cls} | ${now.siMs} |`,
   );
@@ -143,6 +155,13 @@ const summary = [
   regressions.length
     ? `**${regressions.length} تراجع عن خط الأساس (يُفشل الفحص):**\n${regressions.map((r) => `- ${r}`).join("\n")}`
     : "**لا تراجع عن خط الأساس.**",
+  ...(warnings.length
+    ? [
+        "",
+        `**تحذير (لا يُفشل — درجة الأداء تتذبذب مع CPU المشغّل):**`,
+        ...warnings.map((w) => `- ${w}`),
+      ]
+    : []),
 ].join("\n");
 console.log(summary);
 if (process.env.GITHUB_STEP_SUMMARY)
