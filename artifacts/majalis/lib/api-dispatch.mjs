@@ -148,6 +148,8 @@ export const API_ROUTES = [
   { prefix: "/api/public-config", module: "./api-handlers/public-config.js", allowGet: true, exact: true },
   { prefix: "/api/assistant/health", module: "./api-handlers/assistant/health.js", allowGet: true, exact: true },
   { prefix: "/api/prayer-times", module: "./api-handlers/prayer-times.js", allowGet: true, exact: true },
+  // وكيل Quran Foundation (مفاتيح الخادم فقط) — راية VITE_QF_RECITATION_AUDIO في العميل
+  { prefix: "/api/qf-chapter-audio", module: "./api-handlers/qf-chapter-audio.js", allowGet: true, exact: true },
   { prefix: "/api/content-delta", module: "./api-handlers/content-delta.js", allowGet: true, exact: true },
   { prefix: "/api/reading-sync", module: "./api-handlers/reading-sync.js", allowGet: true, exact: true },
   { prefix: "/api/cron/sync-data", module: "./api-handlers/cron/sync-data.js", allowGet: true, exact: true },

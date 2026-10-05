@@ -864,6 +864,7 @@
     "test:admin-interaction-authority-wave4": "node --import tsx src/lib/__tests__/admin-interaction-authority-wave4-gate.test.ts",
     "test:mushaf-button-authority": "node --import tsx src/lib/__tests__/mushaf-button-authority-gate.test.ts",
     "test:public-interaction-polish-batch": "node --import tsx src/lib/__tests__/public-interaction-polish-batch-gate.test.ts",
+    "test:qf-recitation-audio": "node --import tsx src/lib/__tests__/qf-recitation-audio.test.ts",
     "test:surah-ayah-timing": "node --import tsx src/lib/__tests__/surah-ayah-timing.test.ts",
     "test:mushaf-path-classification-m4": "node --import tsx src/lib/__tests__/mushaf-path-classification-m4-gate.test.ts",
     "test:startup-smoothness": "node --import tsx src/lib/__tests__/startup-smoothness-gate.test.ts",
