@@ -1,0 +1,39 @@
+{
+  "sha": "1de2b94b00dacc38ca3e0326b424fa1500214898",
+  "routes": [
+    {
+      "route": "/mushaf",
+      "sourceClass": "IMMERSIVE",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Floating",
+        "Keyboard",
+        "Contrast"
+      ],
+      "priority": true
+    },
+    {
+      "route": "/prayer-times",
+      "sourceClass": "PUBLIC",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Canvas"
+      ],
+      "priority": true
+    },
+    {
+      "route": "/settings",
+      "sourceClass": "SETTINGS",
+      "trackClass": "PARTIAL",
+      "debtFields": [
+        "Keyboard"
+      ],
+      "priority": true
+    }
+  ],
+  "note": "Priority public routes; feedback COMPLETE per Wave4; residuals DEVICE/KEEP as classified"
+}

@@ -10,87 +10,45 @@
   --ds-backgroundSubtle: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 4%, var(--mj-bg));
   --ds-surface: var(--mj-surface);
   --ds-surfaceElevated: var(--mj-surface);
-  --ds-surfaceInteractive: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 6%, var(--mj-surface));
-  --ds-surfaceSelected: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 12%, var(--mj-surface));
-  --ds-primaryPressed: color-mix(in srgb, var(--mj-brand-deep, var(--mj-brand-deep)) 88%, #000);
   --ds-textPrimary: var(--mj-ink, var(--v2-color-ink));
   --ds-textSecondary: var(--mj-ink-2);
   --ds-textMuted: var(--mj-muted, #5e6e67);
   --ds-border: color-mix(in srgb, var(--mj-hairline) 55%, transparent);
   --ds-borderStrong: var(--mj-hairline);
-  --ds-focus: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 45%, transparent);
-  --ds-warningContainer: color-mix(in srgb, var(--mj-warn, #b0892c) 14%, var(--mj-surface));
-  --ds-errorContainer: color-mix(in srgb, var(--mj-danger, #b54a4a) 12%, var(--mj-surface));
   --ds-disabled: color-mix(in srgb, var(--mj-muted, #5e6e67) 45%, transparent);
   --ds-skeletonBase: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 8%, var(--mj-surface-2));
   --ds-skeletonHighlight: color-mix(in srgb, var(--mj-surface) 70%, transparent);
   --ds-overlay: color-mix(in srgb, #0a1210 48%, transparent);
 
   /* ── Typography roles ── */
-  --ds-type-display: clamp(1.65rem, 4.5vw, 2rem);
-  --ds-type-screenTitle: clamp(1.28rem, 3.6vw, 1.55rem);
   --ds-type-sectionTitle: clamp(1.12rem, 3vw, 1.28rem);
-  --ds-type-subsectionTitle: 1.05rem;
-  --ds-type-cardTitle: 1.02rem;
-  --ds-type-bodyLarge: 1.05rem;
   --ds-type-body: 0.98rem;
-  --ds-type-scripture: clamp(1.15rem, 3vw, 1.35rem);
-  --ds-type-explanation: 0.98rem;
   --ds-type-supporting: 0.9rem;
-  --ds-type-label: 0.86rem;
-  --ds-type-buttonLabel: 0.95rem;
   --ds-type-caption: 0.8rem;
-  --ds-type-badge: 0.72rem;
-  --ds-type-numeric: 1.1rem;
   --ds-lh-tight: 1.28;
-  --ds-lh-body: 1.7;
   --ds-lh-reading: 1.85;
 
   /* ── Spacing ── */
-  --ds-space-none: 0;
-  --ds-space-xxs: 0.25rem;
-  --ds-space-xs: 0.4rem;
   --ds-space-sm: 0.65rem;
   --ds-space-md: 0.9rem;
-  --ds-space-lg: 1.15rem;
-  --ds-space-xl: 1.5rem;
   --ds-space-xxl: 2rem;
   --ds-space-section: clamp(1.25rem, 3.2vw, 1.85rem);
   --ds-space-screen: clamp(1rem, 3vw, 1.35rem);
 
   /* ── Radius ── */
-  --ds-radiusSmall: 12px;
   --ds-radiusMedium: 16px;
   --ds-radiusLarge: 20px;
   --ds-radiusXL: 24px;
-  --ds-radiusPill: 999px;
-  --ds-radiusCircle: 50%;
-
   /* ── Elevation / border ── */
-  --ds-borderSubtle: 1px solid transparent;
-  --ds-borderDefault: 1px solid var(--ds-border);
-  --ds-borderStrongWidth: 1px solid var(--ds-borderStrong);
-  --ds-elevationNone: none;
   --ds-elevationLow: 0 4px 18px -14px rgba(10, 61, 46, 0.16);
   --ds-elevationMedium: 0 8px 24px -16px rgba(10, 61, 46, 0.2);
-  --ds-elevationOverlay: 0 16px 40px -12px rgba(10, 61, 46, 0.28);
-
   /* ── Icons / touch ── */
-  --ds-iconSmall: 1rem;
-  --ds-iconMedium: 1.25rem;
-  --ds-iconLarge: 1.5rem;
   --ds-touchTargetMinimum: 44px;
 
   /* ── Motion ── */
-  --ds-durationInstant: 80ms;
-  --ds-durationFast: 140ms;
-  --ds-durationNormal: 200ms;
-  --ds-durationEmphasized: 280ms;
-  --ds-easingStandard: cubic-bezier(0.2, 0, 0, 1);
-  --ds-easingDecelerate: cubic-bezier(0, 0, 0, 1);
-  --ds-easingAccelerate: cubic-bezier(0.3, 0, 1, 1);
-  --ds-easingEmphasized: cubic-bezier(0.2, 0, 0, 1);
-
+  /* KEEP_COMPATIBILITY: ssunnah-ds-governance-gate requires motion token in canonical.
+     Canonical destination: --motion-fast (design-tokens / motion-policy). */
+  --ds-durationFast: var(--motion-fast, 140ms);
   /* جسر للتوافق مع MUR */
   --mur-radius: var(--ds-radiusLarge);
   --mur-radius-sm: var(--ds-radiusMedium);

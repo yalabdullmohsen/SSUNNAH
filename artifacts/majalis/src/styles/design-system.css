@@ -2635,7 +2635,6 @@ p, li {
   --ds-base:   16px;
 
   /* ── Spacing scale ── */
-  --ds-space-0-5: 0.125rem;
   --ds-space-1:   0.25rem;
   --ds-space-1-5: 0.375rem;
   --ds-space-2:   0.5rem;
@@ -2701,8 +2700,6 @@ p, li {
   --ds-line-prose:  1.8;
 
   /* ── Motion — Spring curves ── */
-  --ds-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ds-ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ds-ease:        cubic-bezier(0.4, 0, 0.2, 1);
   --ds-transition:  200ms cubic-bezier(0.16, 1, 0.3, 1);
   --ds-transition-fast: 120ms cubic-bezier(0.16, 1, 0.3, 1);
