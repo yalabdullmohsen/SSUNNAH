@@ -91,14 +91,14 @@ export function ReligiousCalendarReviewSection() {
 
       <div className="admin-toolbar" style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "1rem" }}>
         {(["all", "approved", "needs_review", "draft", "rejected", "invalid"] as const).map((f) => (
-          <button
+          <Button
             key={f}
-            type="button"
+            type="button" variant="ghost"
             className={`admin-chip${filter === f ? " is-active" : ""}`}
             onClick={() => setFilter(f)}
           >
             {f === "all" ? "الكل" : f === "invalid" ? "رافضها المتحقّق" : f}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -106,8 +106,8 @@ export function ReligiousCalendarReviewSection() {
         <ul style={{ listStyle: "none", margin: 0, padding: 0, maxHeight: "70vh", overflow: "auto" }}>
           {filtered.map(({ record, validation }) => (
             <li key={record.id}>
-              <button
-                type="button"
+              <Button
+                type="button" variant="ghost"
                 onClick={() => setSelectedId(record.id)}
                 style={{
                   width: "100%",
@@ -124,7 +124,7 @@ export function ReligiousCalendarReviewSection() {
                 <div style={{ fontSize: "var(--ss-type-caption)", color: "var(--mj-muted)" }}>
                   {record.reviewStatus} · {validation.publishable ? "قابل للنشر" : "محجوب"}
                 </div>
-              </button>
+              </Button>
             </li>
           ))}
         </ul>
@@ -164,15 +164,15 @@ export function ReligiousCalendarReviewSection() {
             )}
 
             <div style={{ display: "flex", gap: "0.5rem", marginTop: "1rem", flexWrap: "wrap" }}>
-              <button type="button" className="ds-btn ds-btn--primary" onClick={() => setStatus(selected.record.id, "approved")}>
+              <Button type="button" variant="primary" className="ds-btn ds-btn--primary" onClick={() => setStatus(selected.record.id, "approved")}>
                 قبول
-              </button>
-              <button type="button" className="ds-btn" onClick={() => setStatus(selected.record.id, "rejected", "رفض تحريري")}>
+              </Button>
+              <Button type="button" variant="destructive" className="ds-btn"  onClick={() => setStatus(selected.record.id, "rejected", "رفض تحريري")}>
                 رفض
-              </button>
-              <button type="button" className="ds-btn" onClick={() => setStatus(selected.record.id, "needs_review")}>
+              </Button>
+              <Button type="button" variant="ghost" className="ds-btn" onClick={() => setStatus(selected.record.id, "needs_review")}>
                 إعادة للمراجعة
-              </button>
+              </Button>
             </div>
 
             <h4 style={{ marginTop: "1.25rem" }}>نشر الويدجت — أدوار التحرير والمراجعة الشرعية والاعتماد</h4>

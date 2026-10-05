@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/components/AuthProvider";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { ISLAMIC_STORIES_COLS } from "@/lib/db-select-columns";
+import { Button } from "@/components/ui/button";
 
 type IslamicStory = {
   id: number;
@@ -185,9 +186,9 @@ export function IslamicStoriesSection() {
                     <div className="is-summary">{story.summary}</div>
 
                     {/* Full content */}
-                    <button type="button" className="is-full-toggle" onClick={() => toggleFull(story.id)}>
+                    <Button type="button" variant="ghost" className="is-full-toggle" onClick={() => toggleFull(story.id)}>
                       {isFullShown ? "▲ إخفاء التفاصيل الكاملة" : "▼ عرض التفاصيل الكاملة"}
-                    </button>
+                    </Button>
                     {isFullShown && (
                       <div className="is-content">{story.full_content}</div>
                     )}
@@ -228,23 +229,25 @@ export function IslamicStoriesSection() {
                     {/* Actions */}
                     <div className="is-actions">
                       {!story.is_approved ? (
-                        <button
+                        <Button
                           type="button"
+                          variant="primary"
                           className={`is-btn approve${isWorking ? " disabled" : ""}`}
                           onClick={() => setApproval(story, true)}
                           disabled={isWorking}
                         >
                           {isWorking ? "جاري…" : "✓ اعتماد النشر"}
-                        </button>
+                        </Button>
                       ) : (
-                        <button
+                        <Button
                           type="button"
+                          variant="destructive"
                           className={`is-btn revoke${isWorking ? " disabled" : ""}`}
                           onClick={() => setApproval(story, false)}
                           disabled={isWorking}
                         >
                           {isWorking ? "جاري…" : "✗ سحب الاعتماد"}
-                        </button>
+                        </Button>
                       )}
                     </div>
                   </div>
