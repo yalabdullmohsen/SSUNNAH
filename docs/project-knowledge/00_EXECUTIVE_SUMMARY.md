@@ -183,4 +183,4 @@
 | `20_AI_AGENT_MEMORY.md` | ذاكرة تشغيلية للنسخ |
 | `KNOWLEDGE_INDEX.json` | فهرس آلي |
 
-`PROJECT_AUDIT.md`: **غير موجود** في الجذر (يوجد `AUDIT.md` / `AUDIT_REPORT.md`) — Unknown كملف مطلوب بالاسم.
+`PROJECT_AUDIT.md`: **غير موجود** في الجذر (يوجد `docs/reports/AUDIT.md` / `docs/reports/AUDIT_REPORT.md`) — Unknown كملف مطلوب بالاسم.

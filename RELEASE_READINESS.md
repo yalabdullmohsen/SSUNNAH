@@ -1,7 +1,7 @@
 # جاهزية الإصدار 1.0.0 — سُنّة
 
 آخر تحديث: 2026-08-09  
-التصنيف: [`PLATFORMS.md`](./PLATFORMS.md) · خصوصية: [`PRIVACY_DATA_MAP.md`](./PRIVACY_DATA_MAP.md) · تراخيص: [`docs/LICENSES.md`](./docs/LICENSES.md) / [`CREDITS.md`](./CREDITS.md) / [`LICENSE_RISKS.md`](./LICENSE_RISKS.md)
+التصنيف: [`PLATFORMS.md`](./PLATFORMS.md) · خصوصية: [`docs/legal/PRIVACY_DATA_MAP.md`](./docs/legal/PRIVACY_DATA_MAP.md) · تراخيص: [`docs/LICENSES.md`](./docs/LICENSES.md) / [`CREDITS.md`](./CREDITS.md) / [`LICENSE_RISKS.md`](./LICENSE_RISKS.md)
 
 ## دفعة UX/بحث (2026-08-09)
 

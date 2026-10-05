@@ -101,7 +101,7 @@
 
 | المرحلة | العنصر | الحالة | الملفات الرئيسية |
 |---|---|---|---|
-| 0 | التدقيق | ✅ مكتمل | AUDIT_REPORT.md |
+| 0 | التدقيق | ✅ مكتمل | docs/reports/AUDIT_REPORT.md |
 | 1 | Pre-rendering بناء-وقتي | ✅ مكتمل | scripts/prerender.mjs |
 | 1 | إضافة prerender في build script | ✅ مكتمل | package.json |
 | 1 | إصلاح 5 مسارات FeatureGate في Sitemap | ✅ مكتمل | seo-routes.json |

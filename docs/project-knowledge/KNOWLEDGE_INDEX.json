@@ -358,7 +358,7 @@
     {
       "id": "project-audit-filename-missing",
       "severity": "P3",
-      "summary": "PROJECT_AUDIT.md not found; AUDIT.md exists",
+      "summary": "PROJECT_AUDIT.md not found; docs/reports/AUDIT.md exists",
       "sourceFile": null
     }
   ],

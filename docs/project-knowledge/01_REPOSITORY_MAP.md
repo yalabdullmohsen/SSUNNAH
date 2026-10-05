@@ -5,7 +5,7 @@
 ## CONFLICTS_AND_UNKNOWNS
 
 - وثائق تشير إلى جذر `/Users/alabdullmohsen/majalis-correct` بينما الجذر الفعلي `/Users/alabdullmohsen/majlis-app`. مصادر: `AGENTS.md`, `docs/REPO_INDEX.md`.
-- `PROJECT_AUDIT.md` غير موجود بالاسم؛ البدائل: `AUDIT.md`, `AUDIT_REPORT.md`, `AUDIT_INVENTORY.md`.
+- `PROJECT_AUDIT.md` غير موجود بالاسم؛ البدائل: `docs/reports/AUDIT.md`, `docs/reports/AUDIT_REPORT.md`, `docs/reports/AUDIT_INVENTORY.md`.
 
 ## شجرة مختصرة (مهم فقط)
 
