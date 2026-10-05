@@ -3,8 +3,8 @@
   "policy": "decreasing-ceilings",
   "note": "Ceilings must not rise; floors (canonical adoption) must not fall without documented exception.",
   "ceilings": {
-    "rawButtonFiles": 71,
-    "rawButtonElements": 257,
+    "rawButtonFiles": 65,
+    "rawButtonElements": 241,
     "divSpanOnClick": 37,
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
@@ -12,8 +12,8 @@
     "buttonRelatedHexApprox": 971
   },
   "floors": {
-    "officialButtonImportFiles": 292,
+    "officialButtonImportFiles": 298,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-10-05T05:53:43.318Z"
+  "updatedAt": "2026-10-05T06:11:30.528Z"
 }
