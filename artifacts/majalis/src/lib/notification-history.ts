@@ -12,6 +12,8 @@ export type NotifRecord = {
   isRead: boolean;
   isArchived: boolean;
   tag?: string;
+  /** مسار الربط العميق — النقر على السجل يفتحه */
+  url?: string;
 };
 
 function now(): string {
@@ -37,9 +39,29 @@ function saveHistory(records: NotifRecord[]): void {
   } catch { /* quota exceeded */ }
 }
 
-export function addNotifRecord(title: string, body?: string, tag?: string): NotifRecord {
-  const record: NotifRecord = { id: makeId(), title, body, createdAt: now(), isRead: false, isArchived: false, tag };
+export function addNotifRecord(
+  title: string,
+  body?: string,
+  tag?: string,
+  url?: string,
+  /** معرّف ثابت (مثل إشعار أصلي + اليوم) لمنع تسجيل الإشعار نفسه مرتين */
+  stableId?: string,
+): NotifRecord {
+  const record: NotifRecord = {
+    id: stableId ?? makeId(),
+    title,
+    body,
+    createdAt: now(),
+    isRead: false,
+    isArchived: false,
+    tag,
+    ...(url ? { url } : {}),
+  };
   const history = loadHistory();
+  if (stableId) {
+    const existing = history.find((r) => r.id === stableId);
+    if (existing) return existing;
+  }
   // منع التكرار بنفس العنوان خلال 5 ثوانٍ
   const recent = history[0];
   if (recent && recent.title === title && Date.now() - new Date(recent.createdAt).getTime() < 5000) {
