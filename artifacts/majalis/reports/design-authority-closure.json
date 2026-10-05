@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "sha": "ref: refs/heads/cursor/design-pr-f-design-governance",
+  "sha": "ref: refs/heads/cursor/hv-msk-bridge-batch",
   "coverage": {
-    "measuredAt": "2026-10-04T21:34:31.477Z",
+    "measuredAt": "2026-10-05T00:04:32.466Z",
     "cssFileCount": 353,
     "cssFilesCeiling": 353,
     "measuredCssFiles": 353,
@@ -20,9 +20,9 @@
     "unknownTokenFamilies": [],
     "bridgeCounts": {
       "ds": 3356,
-      "elite": 23,
-      "em": 45,
-      "msk": 588,
+      "elite": 1,
+      "em": 20,
+      "msk": 551,
       "majalis": 3274
     },
     "deprecatedGrowth": [],

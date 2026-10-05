@@ -11,14 +11,14 @@ TASK_CLASSIFICATION: SHARED_PLATFORM
 | Family | Refs (approx) | Status |
 |---|---:|---|
 | `--ds-*` | 3356 | SEMANTIC_BRIDGE_REQUIRED (startup/DS) |
-| `--elite-*` | 23 | KEEP_COMPATIBILITY_WITH_EVIDENCE |
-| `--em-*` | 45 | SEMANTIC_BRIDGE |
-| `--msk-*` | 588 | KEEP_COMPATIBILITY_WITH_EVIDENCE |
+| `--elite-*` | 1 | KEEP_COMPATIBILITY_WITH_EVIDENCE |
+| `--em-*` | 20 | SEMANTIC_BRIDGE |
+| `--msk-*` | 551 | KEEP_COMPATIBILITY_WITH_EVIDENCE |
 | `--majalis-*` | 3274 | KEEP_COMPATIBILITY_WITH_EVIDENCE |
 
 Unknown/new families: **none**
 
-Deprecated ceilings: {"elite":30,"em":50,"ds":3400,"msk":600,"majalis":3300}
+Deprecated ceilings: {"elite":30,"em":50,"ds":3400,"msk":560,"majalis":3300}
 Deprecated growth breaches: **none**
 
 Prefix allowlist: `artifacts/majalis/reports/design-token-prefix-allowlist.json` (270 prefixes)
