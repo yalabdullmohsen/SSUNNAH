@@ -852,6 +852,7 @@
     "test:token-bridge-t1": "node --import tsx src/lib/__tests__/token-bridge-t1-zero-consumer-gate.test.ts",
     "test:token-bridge-t2": "node --import tsx src/lib/__tests__/token-bridge-t2-majalis-zero-gate.test.ts",
     "test:public-button-authority-wave2": "node --import tsx src/lib/__tests__/public-button-authority-wave2-gate.test.ts",
+    "test:mushaf-path-classification-m4": "node --import tsx src/lib/__tests__/mushaf-path-classification-m4-gate.test.ts",
     "test:token-bridge-t3": "node --import tsx src/lib/__tests__/token-bridge-t3-ds-zero-gate.test.ts"
   },
   "devDependencies": {

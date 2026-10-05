@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "measuredAt": "2026-10-05T07:05:00.000Z",
+  "mainTip": "a0d14e7d2179f3519c6977a786f1da70ace02e00",
+  "policy": "no-unowned-mushaf-implementation",
+  "canonicalRoute": "/mushaf",
+  "canonicalTree": [
+    "/mushaf",
+    "MushafReaderPage",
+    "NewMushafReader",
+    "MushafPager",
+    "MushafPage"
+  ],
+  "paths": [
+    {
+      "id": "MUSHAF_PATH_READER_V2",
+      "module": "features/mushaf-reader/NewMushafReader.tsx",
+      "classification": "CANONICAL_PRODUCTION",
+      "routeOwners": ["/mushaf"],
+      "consumers": ["pages/quran/MushafReaderPage.tsx"],
+      "evidence": "AppRoutes mounts MushafReaderPage → NewMushafReader; mushaf-production-layout-gate forbids VerifiedMushafReader on page"
+    },
+    {
+      "id": "MUSHAF_PATH_MADINAH_READER_SHELL",
+      "module": "features/mushaf-madinah/VerifiedMushafReader.tsx",
+      "classification": "LEGACY_WITH_CONSUMERS",
+      "routeOwners": [],
+      "consumers": [
+        "features/mushaf-madinah/index.ts",
+        "features/mushaf-madinah/MushafViewport.tsx",
+        "lib/__tests__/*mushaf* (gates/fixtures)"
+      ],
+      "evidence": "index.ts marks folder archival; /mushaf does not import VerifiedMushafReader; retained for gate parity and shared sheet graph",
+      "removalBlockers": ["gate fixtures", "shared sheet re-exports", "dual-appearance theme gate reads file"]
+    },
+    {
+      "id": "MUSHAF_PATH_MADINAH_LIVE_SHEETS",
+      "module": "features/mushaf-madinah/{MushafSearchSheet,MushafTafsirSheet,MushafAudioDock,AyahActionSheet,TafsirTabPanel}",
+      "classification": "ACTIVE_SPECIAL",
+      "routeOwners": ["/mushaf", "audio mini-player"],
+      "consumers": [
+        "features/mushaf-reader/NewMushafReader.tsx (lazy Search/Tafsir)",
+        "components/quran/QuranAudioPlayer.tsx (MushafAudioDock)",
+        "AyahActionSheet → TafsirTabPanel"
+      ],
+      "evidence": "NewMushafReader lazy-imports madinah sheets; not dead",
+      "keepReason": "MUSHAF_SPECIAL shared chrome still serving canonical reader"
+    },
+    {
+      "id": "MUSHAF_PATH_QURAN_VIEWER",
+      "module": "components/QuranViewer.tsx",
+      "classification": "ACTIVE_SPECIAL",
+      "routeOwners": ["/quran-engine", "/quran-engine/viewer"],
+      "consumers": ["pages/quran/QuranEnginePage.tsx"],
+      "evidence": "QuranEnginePage mounts QuranViewer; not /mushaf canonical",
+      "keepReason": "engine/memorization alternate surface; Button authority already migrated (UI1)"
+    },
+    {
+      "id": "MUSHAF_PATH_V2_PREVIEW_ALIAS",
+      "module": "AppRoutes /mushaf-v2-preview",
+      "classification": "DEAD_WITH_PROOF",
+      "routeOwners": [],
+      "consumers": [],
+      "evidence": "AppRoutes Redirect /mushaf-v2-preview → /mushaf; no alternate implementation mounted"
+    }
+  ],
+  "unknownCount": 0,
+  "exit": [
+    "MUSHAF_PATHS_FULLY_CLASSIFIED",
+    "NO_UNOWNED_MUSHAF_IMPLEMENTATION"
+  ]
+}
