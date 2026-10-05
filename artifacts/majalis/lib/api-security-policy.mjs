@@ -160,6 +160,8 @@ export function isAllowedOrigin(origin) {
   if (o.startsWith("http://127.0.0.1:") || o.startsWith("https://127.0.0.1:")) return true;
   if (o === "https://majalis.vercel.app" || o === "https://www.majalis.vercel.app") return true;
   if (o === "https://ssunnah.app" || o === "https://www.ssunnah.app") return true;
+  // الدومين الإنتاجي الحالي — غيابه كان يردّ كل طلبات الكتابة من المتصفح بـ403 (ومنها client-error)
+  if (o === "https://ssunnah.com" || o === "https://www.ssunnah.com") return true;
   if (o === "https://majlisilm.com" || o === "https://www.majlisilm.com") return true;
   if (o.endsWith(".vercel.app") && o.startsWith("https://")) return true;
   if (!isProductionEnv() && (o.startsWith("http://192.168.") || o.startsWith("http://10."))) return true;
