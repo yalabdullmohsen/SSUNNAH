@@ -4,6 +4,7 @@
  */
 import { useEffect, useRef, useState } from "react";
 import { Pause, Play } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export type LinearAudioReviewPlayerProps = {
   src: string;
@@ -91,17 +92,20 @@ export function LinearAudioReviewPlayer({
 
   return (
     <div className={`rh-linear-audio${className ? ` ${className}` : ""}`} dir="rtl">
-      <button
+      <Button
         type="button"
-        className="rh-linear-audio__play"
+        variant="ghost"
+        size="icon"
+        className="rh-linear-audio__play [&_svg]:size-[22px]"
         onClick={() => void toggle()}
         aria-label={playing ? "إيقاف مؤقت" : "تشغيل"}
       >
         {playing ? <Pause size={22} fill="currentColor" /> : <Play size={22} fill="currentColor" />}
-      </button>
-      <button
+      </Button>
+      <Button
         type="button"
-        className="rh-linear-audio__track"
+        variant="ghost"
+        className="rh-linear-audio__track min-h-0"
         aria-label="شريط التقدم"
         onClick={(e) => {
           const rect = e.currentTarget.getBoundingClientRect();
@@ -112,7 +116,7 @@ export function LinearAudioReviewPlayer({
         }}
       >
         <span className="rh-linear-audio__bar" style={{ width: `${progress * 100}%` }} />
-      </button>
+      </Button>
       <span className="rh-linear-audio__time">
         {fmt(current)} / {fmt(duration || 10)}
       </span>

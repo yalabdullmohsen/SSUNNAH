@@ -2,6 +2,7 @@
  * Flutter AdminMainLayout sidebar — dark #1E1E2D, gold brand, brown selected.
  */
 import { Link, useLocation } from "wouter";
+import { Button } from "@/components/ui/button";
 import {
   BookOpen,
   ClipboardCheck,
@@ -78,10 +79,11 @@ export function ReviewHubSidebar({
           {NAV.map(({ key, label, href, Icon, badge }) => {
             const isActive = active === key;
             return (
-              <button
+              <Button
                 key={key}
                 type="button"
-                className={`rh-sidebar__item${isActive ? " is-active" : ""}`}
+                variant="ghost"
+                className={`rh-sidebar__item h-auto justify-start whitespace-normal text-start [&>span]:contents [&_svg]:size-[18px]${isActive ? " is-active" : ""}`}
                 aria-current={isActive ? "page" : undefined}
                 onClick={() => {
                   onNavigate(key);
@@ -94,16 +96,17 @@ export function ReviewHubSidebar({
                 {badge ? (
                   <span className="rh-sidebar__badge">{pendingCount}</span>
                 ) : null}
-              </button>
+              </Button>
             );
           })}
         </nav>
 
         <div className="rh-sidebar__foot">
           <div className="rh-sidebar__divider" />
-          <button
+          <Button
             type="button"
-            className={`rh-sidebar__item${active === "settings" ? " is-active" : ""}`}
+            variant="ghost"
+            className={`rh-sidebar__item h-auto justify-start whitespace-normal text-start [&>span]:contents [&_svg]:size-[18px]${active === "settings" ? " is-active" : ""}`}
             onClick={() => {
               onNavigate("settings");
               onCloseMobile();
@@ -112,7 +115,7 @@ export function ReviewHubSidebar({
           >
             <Settings size={18} aria-hidden="true" />
             <span className="rh-sidebar__item-label">الإعدادات</span>
-          </button>
+          </Button>
           <Link href="/" className="rh-sidebar__site" onClick={onCloseMobile}>
             ← العودة للموقع
           </Link>

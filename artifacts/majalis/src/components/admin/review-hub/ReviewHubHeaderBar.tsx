@@ -2,6 +2,7 @@
  * Flutter `AdminMainLayout` header — search, notifications, reviewer identity.
  */
 import { Bell, Menu, Search } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/AuthProvider";
 
 export type ReviewHubHeaderBarProps = {
@@ -21,14 +22,16 @@ export function ReviewHubHeaderBar({
 
   return (
     <header className="rh-header">
-      <button
+      <Button
         type="button"
-        className="rh-mobile-toggle"
+        variant="outline"
+        size="icon"
+        className="rh-mobile-toggle [&_svg]:size-[18px]"
         onClick={onOpenMobile}
         aria-label="فتح القائمة"
       >
         <Menu size={18} />
-      </button>
+      </Button>
 
       <div className="rh-header__search">
         <Search size={16} aria-hidden="true" />
@@ -43,9 +46,15 @@ export function ReviewHubHeaderBar({
 
       <div className="rh-header__spacer" />
 
-      <button type="button" className="rh-header__icon" aria-label="الإشعارات">
+      <Button
+        type="button"
+        variant="ghost"
+        size="icon"
+        className="rh-header__icon [&_svg]:size-5"
+        aria-label="الإشعارات"
+      >
         <Bell size={20} strokeWidth={1.6} />
-      </button>
+      </Button>
 
       <div className="rh-header__user">
         <span className="rh-header__avatar" aria-hidden="true">
