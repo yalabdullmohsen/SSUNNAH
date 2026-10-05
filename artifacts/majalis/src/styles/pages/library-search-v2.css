@@ -6,7 +6,7 @@
 
 html[data-v2-search="1"] .search-page,
 html[data-v2-search="1"] .srch-page--v2 {
-  background: var(--v2-color-ivory, #f9f8f4);
+  background: var(--v2-color-ivory, var(--mj-bg));
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
 
@@ -15,7 +15,7 @@ html[data-v2-search="1"] .search-page .search-page-form {
   position: sticky;
   top: var(--sticky-below-chrome, var(--app-top-chrome-h, 0px));
   z-index: var(--z-sticky, 100);
-  background: color-mix(in srgb, var(--v2-color-ivory, #f9f8f4) 92%, transparent);
+  background: color-mix(in srgb, var(--v2-color-ivory, var(--mj-bg)) 92%, transparent);
   backdrop-filter: blur(8px);
   padding-block: var(--v2-space-3, 0.75rem);
   margin-bottom: var(--v2-space-4, 1rem);

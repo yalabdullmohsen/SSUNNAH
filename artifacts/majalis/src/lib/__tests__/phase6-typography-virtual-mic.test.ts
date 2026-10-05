@@ -35,9 +35,11 @@ assert.match(indexCss, /"Amiri Quran"/);
 assert.match(indexCss, /"KFGQPC Hafs Uthmanic"/);
 
 const fontsUi = read("styles/fonts-ui.css");
-assert.match(fontsUi, /size-adjust/);
-assert.match(fontsUi, /ascent-override/);
-assert.match(fontsUi, /\/fonts\/ui\/amiri-400-ar\.woff2/);
+assert.match(fontsUi, /font-display:\s*optional/);
+const htmlFaces = readFileSync(resolve(root, "index.html"), "utf8");
+assert.match(htmlFaces, /size-adjust/);
+assert.match(htmlFaces, /ascent-override/);
+assert.match(htmlFaces, /@font-face\{[^}]*\/fonts\/ui\/amiri-400-ar\.woff2/);
 
 const fontsQuran = read("styles/fonts-quran.css");
 assert.match(fontsQuran, /"Amiri Quran"|AmiriQuran/);
@@ -53,7 +55,7 @@ assert.ok(existsSync(resolve(root, "public/fonts/ui/amiri-400-ar.woff2")));
 const main = read("main.tsx");
 assert.doesNotMatch(main, /warmStaticQuranicFonts/, "لا تسخين خطوط مصحف على كل صفحة");
 assert.match(read("pages/quran/MushafReaderPage.tsx"), /warmStaticQuranicFonts/);
-assert.match(fontsUi, /\/fonts\/ui\/amiri-400-ar\.woff2/);
+assert.match(htmlFaces, /\/fonts\/ui\/amiri-400-ar\.woff2/);
 
 assert.ok(existsSync(resolve(root, "public/fonts/qpc-v2/p1.woff2")), "خطوط QPC محفوظة كبيانات");
 

@@ -58,8 +58,9 @@ const theme = read("src/lib/theme-preference.ts");
   assert.match(fontsQuran, /font-display:\s*block/);
   assert.doesNotMatch(fontsQuran, /font-display:\s*swap/);
   const fontsUi = read("src/styles/fonts-ui.css");
-  assert.match(fontsUi, /amiri-400-ar[\s\S]*font-display:\s*optional/);
-  assert.match(fontsUi, /amiri-700-ar[\s\S]*font-display:\s*optional/);
+  /* Amiri مضمّن في index.html فقط (STARTUP_SMOOTHNESS) */
+  assert.match(html, /font-display:optional;src:url\("\/fonts\/ui\/amiri-400-ar/);
+  assert.match(html, /font-display:optional;src:url\("\/fonts\/ui\/amiri-700-ar/);
   assert.match(fontsUi, /noto-naskh-400-ar[\s\S]*font-display:\s*optional/);
   assert.match(boot, /BOOT_FONT_TIMEOUT_MS\s*=\s*280/);
   assert.match(boot, /document\.fonts\.load\(regular\)/);

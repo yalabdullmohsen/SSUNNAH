@@ -36,7 +36,9 @@ if (!/\/fonts\/ui\/amiri-400-ar\.woff2/.test(indexHtml)) {
   process.exit(1);
 }
 const fontsUi = readFileSync(ROOT + "src/styles/fonts-ui.css", "utf8");
-if (!/"Amiri"/.test(fontsUi) || !/"Noto Naskh Arabic"/.test(fontsUi)) {
+/* Amiri: مصدر وحيد مضمّن في index.html (#mj-lcp-critical) — انظر STARTUP_SMOOTHNESS.md */
+const indexHtmlFonts = readFileSync(ROOT + "index.html", "utf8");
+if (!/font-family:"Amiri"/.test(indexHtmlFonts) || !/"Noto Naskh Arabic"/.test(fontsUi)) {
   console.error("✗ fonts-ui.css يجب أن يعرّف Amiri و Noto Naskh محليًا");
   process.exit(1);
 }
