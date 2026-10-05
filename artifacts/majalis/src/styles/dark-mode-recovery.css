@@ -640,8 +640,6 @@ html.dark .page-hero-mj {
   mix-blend-mode: normal !important;
 }
 
-
-
 /* ═══ أسطح نهارية تسرّبت من تبسيط الرئيسية ═══ */
 html[data-theme="dark"] .hp-recent-bar,
 html.dark .hp-recent-bar {
@@ -801,9 +799,7 @@ html[data-theme="dark"] {
   --majalis-emerald-deep:  #4AA882;
   --majalis-emerald-muted: rgba(92,192,149,.14);
   --majalis-emerald-soft:  rgba(92,192,149,.08);
-  --majalis-blue:          #64BEDA;
-  --majalis-blue-deep:     #4EA8C4;
-  --majalis-blue-soft:     rgba(100,190,218,.10);
+
   --majalis-brass:         #D9B871;
   --majalis-brass-deep:    #C4A35C;
   --majalis-brass-soft:    rgba(217,184,113,.10);
@@ -811,16 +807,14 @@ html[data-theme="dark"] {
   --majalis-danger:        #F2B8C0;
   --majalis-danger-muted:  rgba(242,184,192,.12);
   --majalis-success:       #7BD6AE;
-  --majalis-warning:       #D9B871;
+
   --majalis-line:          #35443F;
   --majalis-line-strong:   #445651;
   --majalis-shadow:        0 4px 12px rgba(0,0,0,.45), 0 1px 3px rgba(0,0,0,.35);
   --majalis-shadow-sm:     0 1px 2px rgba(0,0,0,.40);
-  --majalis-shadow-lg:     0 12px 32px rgba(0,0,0,.55);
-  --majalis-shadow-xl:     0 24px 64px rgba(0,0,0,.65);
+
   --majalis-gold:          #D9B871;
   --majalis-gold-light:    rgba(217,184,113,.18);
-  --majalis-ivory:         #131A18;
 
   --clr-bg:          #131A18;
   --clr-surface:     #1B2421;
@@ -858,8 +852,7 @@ html[data-theme="dark"] {
   --color-line:      #35443F;
   --majalis-accent:  #D9B871;
   --majalis-surface-2: #222D29;
-  --majalis-surface-hover: rgba(92,192,149,.08);
-  --majalis-surface-muted: #222D29;
+
   --ds-surface-2: #222D29;
   --mark-green: #5CC095;
 }
