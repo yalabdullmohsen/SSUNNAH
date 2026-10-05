@@ -9,7 +9,10 @@
  *   - التوقيتات (FCP/LCP/SI): > الأساس × 1.10 (نفس هامش lhci-thresholds.cjs) و+150ms على الأقل
  *   - TBT: يعتمد على CPU المشغّل فيتذبذب بين جولتين على نفس الشيفرة (رُصد 156→430ms)،
  *     فيُقارَن بسقف ثابت مشترك مع lhci-home (FIXED_PREVIEW.tbtMs في lhci-thresholds.cjs) لا بالأساس
- *   - CLS: > الأساس + 0.05
+ *   - CLS: > max(الأساس + 0.05، سقف lhci-home المشترك FIXED_PREVIEW.cls)
+ * التجميع: قرار الفشل على أفضل جولة (optimistic) كما في lhci-home — تراجع حقيقي يزيح كل الجولات
+ * بما فيها الأفضل، أما جولة سيئة منفردة (CLS ‏/quran رُصد 0.007 ثم 0.26 على نفس الشيفرة) فلا.
+ * العرض وخط الأساس يبقيان على الوسيط.
  *   - الدرجات: وصول/ممارسات/SEO < الأساس − 0.03 (حتمية)؛ درجة الأداء تحذير فقط
  *     (مشتقة أساسًا من TBT — نفس سياسة lhci-home حيث categories:performance = warn)
  *
@@ -49,7 +52,10 @@ const METRICS = {
     audit: "total-blocking-time",
     worse: (_b, v) => v > FIXED_PREVIEW.tbtMs,
   },
-  cls: { audit: "cumulative-layout-shift", worse: (b, v) => v > b + 0.05 },
+  cls: {
+    audit: "cumulative-layout-shift",
+    worse: (b, v) => v > Math.max(b + 0.05, FIXED_PREVIEW.cls),
+  },
 };
 /** درجة الأداء: تحذير فقط عند الانخفاض بأكثر من هذا الهامش. */
 const PERF_WARN_SLACK = 0.05;
@@ -85,17 +91,26 @@ for (const lhr of lhrs) {
   (byPath[path] ??= []).push(lhr);
 }
 
+const roundMetric = (key, v) =>
+  key === "cls" ? Math.round(v * 10000) / 10000 : Math.round(v);
+/** الوسيط للعرض/خط الأساس؛ الأفضل (أدنى قياس، أعلى درجة) لقرار الفشل. */
 const current = {};
+const best = {};
 for (const [path, runs] of Object.entries(byPath)) {
   const entry = { runs: runs.length };
+  const top = { runs: runs.length };
   for (const [key, { audit }] of Object.entries(METRICS)) {
-    const v = median(runs.map((r) => r.audits[audit]?.numericValue ?? NaN));
-    entry[key] = key === "cls" ? Math.round(v * 10000) / 10000 : Math.round(v);
+    const vals = runs.map((r) => r.audits[audit]?.numericValue ?? NaN);
+    entry[key] = roundMetric(key, median(vals));
+    top[key] = roundMetric(key, Math.min(...vals));
   }
   for (const cat of ["performance", ...Object.keys(SCORES)]) {
-    entry[cat] = median(runs.map((r) => r.categories[cat]?.score ?? 0));
+    const vals = runs.map((r) => r.categories[cat]?.score ?? 0);
+    entry[cat] = median(vals);
+    top[cat] = Math.max(...vals);
   }
   current[path] = entry;
+  best[path] = top;
 }
 
 if (UPDATE) {
@@ -124,13 +139,18 @@ for (const [path, now] of Object.entries(current)) {
     regressions.push(`${path}: لا خط أساس لهذه الصفحة`);
     continue;
   }
+  const top = best[path];
   for (const [key, { worse }] of Object.entries(METRICS)) {
-    if (worse(base[key], now[key]))
-      regressions.push(`${path} ${key}: ${base[key]} → ${now[key]}`);
+    if (worse(base[key], top[key]))
+      regressions.push(
+        `${path} ${key}: ${base[key]} → ${top[key]} (أفضل جولة)`,
+      );
   }
   for (const [cat, slack] of Object.entries(SCORES)) {
-    if (now[cat] < base[cat] - slack - 1e-9)
-      regressions.push(`${path} ${cat}: ${base[cat]} → ${now[cat]}`);
+    if (top[cat] < base[cat] - slack - 1e-9)
+      regressions.push(
+        `${path} ${cat}: ${base[cat]} → ${top[cat]} (أفضل جولة)`,
+      );
   }
   if (now.performance < base.performance - PERF_WARN_SLACK - 1e-9)
     warnings.push(
