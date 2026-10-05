@@ -14,7 +14,7 @@ import { currentPageFirstAyah } from "@/lib/quran-ayah-page";
 import { getSurahMeta } from "@/lib/quran-api";
 import { toArabicIndicDigits as toArabicDigits } from "@/lib/numerals";
 import { haptics } from "@/lib/haptics";
-import { parseVerseKey } from "@/features/mushaf-madinah/mushaf-page-for-ayah";
+import { parseVerseKey } from "@/features/mushaf-shared/mushaf-page-for-ayah";
 import { MushafBookmarkEditorShell } from "./MushafBookmarkEditorShell";
 
 import { Button } from "@/components/ui/button";

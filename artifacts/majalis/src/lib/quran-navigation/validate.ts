@@ -1,5 +1,5 @@
 import { getSurahMeta } from "@/lib/quran-api";
-import { findMushafPageForAyah } from "@/features/mushaf-madinah/mushaf-page-for-ayah";
+import { findMushafPageForAyah } from "@/features/mushaf-shared/mushaf-page-for-ayah";
 import { pageFirstAyahMushaf1 } from "@/lib/quran-data/ayah-page-index.generated";
 import type {
   QuranAyahReference,
