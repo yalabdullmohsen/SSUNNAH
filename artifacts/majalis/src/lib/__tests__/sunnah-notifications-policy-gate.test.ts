@@ -144,8 +144,9 @@ assert.match(panel, /ساعات الهدوء/);
 assert.match(read("src/pages/account/ui/NotificationSettingsView.tsx"), /SunnahChannelsPanel/);
 
 const sections = read("src/lib/notifications/sections-config.ts");
-assert.match(sections, /id:\s*"prayer"[\s\S]*?enabled:\s*true/);
+// تذكيرات المحتوى opt-in افتراضيًا؛ الصلاة لم تعد فئة هنا (يملكها محرك الأذان).
 assert.match(sections, /id:\s*"quran"[\s\S]*?enabled:\s*false/);
-assert.match(sections, /id:\s*"lessons"[\s\S]*?enabled:\s*false/);
+assert.match(sections, /id:\s*"adhkar"[\s\S]*?enabled:\s*false/);
+assert.doesNotMatch(sections, /id:\s*"prayer"/);
 
 console.log("sunnah-notifications-policy-gate.test.ts: ok");

@@ -15,18 +15,10 @@ import {
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
-assert.equal(NOTIF_SECTIONS.length, 8, "ثمانية أقسام");
+// 2026-10: أُزيلت فئات بلا مُجدوِل (الصلاة على النبي/الاستغفار/الدروس)، والصلاة يملكها محرك الأذان.
+assert.equal(NOTIF_SECTIONS.length, 4, "أربع فئات كلها تحكم جدولة فعلية");
 const ids = NOTIF_SECTIONS.map((s) => s.id);
-assert.deepEqual(ids, [
-  "prayer",
-  "quran",
-  "adhkar",
-  "salawat",
-  "istighfar",
-  "lessons",
-  "seekingKnowledge",
-  "fridayOccasions",
-]);
+assert.deepEqual(ids, ["quran", "adhkar", "seekingKnowledge", "fridayOccasions"]);
 
 for (const section of NOTIF_SECTIONS) {
   assert.ok(section.messages.length >= 10, `${section.id} needs ≥10 messages`);
@@ -45,7 +37,7 @@ const b = pickSectionMessage("quran");
 // With >1 messages, consecutive picks should usually differ; allow rare collision but ensure function returns
 assert.ok(a.title && a.body);
 assert.ok(b.title && b.body);
-assert.ok(previewSectionMessage("prayer").title.includes("أذان") || previewSectionMessage("prayer").title.includes("اقترب"));
+assert.ok(previewSectionMessage("adhkar").title.includes("أذكار"));
 
 const view = read("src/pages/account/ui/NotificationSettingsView.tsx");
 assert.match(view, /SettingsList/);
