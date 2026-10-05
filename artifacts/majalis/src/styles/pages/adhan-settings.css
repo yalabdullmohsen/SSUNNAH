@@ -448,7 +448,7 @@ html[data-theme="dark"] .ads-diagnostics-toggle {
 .ads-sheet {
   width: min(100vw, 540px);
   max-height: 70vh;
-  background: var(--mj-white, var(--msk-canvas-1)));
+  background: var(--mj-surface, var(--msk-canvas-1));
   border-radius: 1.25rem 1.25rem 0 0;
   border: 1px solid var(--mj-hairline, var(--msk-border));
   border-bottom: none;
@@ -573,7 +573,7 @@ html[data-theme="dark"] .ads-diagnostics-toggle {
   min-height: 40px;
   border-radius: 0.55rem;
   border: 1px solid var(--mj-hairline, var(--msk-border));
-  background: var(--mj-white, var(--msk-canvas-1)));
+  background: var(--mj-surface, var(--msk-canvas-1));
   color: var(--mj-ink, var(--msk-text));
   font: inherit;
   font-size: 0.8rem;
@@ -615,7 +615,7 @@ html[data-theme="dark"] .ads-diagnostics-toggle {
   padding: 0.55rem 0.65rem;
   border-radius: 0.55rem;
   border: 1px solid var(--mj-hairline, var(--msk-border));
-  background: var(--mj-white, var(--msk-canvas-1)));
+  background: var(--mj-surface, var(--msk-canvas-1));
 }
 
 
