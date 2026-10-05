@@ -131,6 +131,12 @@ html.dark .qe-abar {
   gap: 0.3rem;
 }
 
+.qe-viewer__head-actions .qe-chip > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
 .qe-viewer__exit-focus {
   position: sticky;
   top: max(0.5rem, var(--inset-top));
@@ -200,6 +206,10 @@ html.dark .qe-abar {
 .qe-font-bar__btn {
   width: 2.4rem;
   height: 2.4rem;
+  min-width: 2.4rem;
+  min-height: 2.4rem;
+  max-width: 2.4rem;
+  padding: 0;
   border-radius: var(--radius-pill, 999rem);
   border: 1px solid color-mix(in srgb, var(--qe-emerald) 32%, transparent);
   background: color-mix(in srgb, var(--qe-emerald) 8%, transparent);
@@ -404,6 +414,11 @@ body.qe-focus-mode {
 .qe-ayah__play {
   flex-shrink: 0;
   width: 2.65rem;
+  min-width: 2.65rem;
+  max-width: 2.65rem;
+  height: auto;
+  min-height: 2.65rem;
+  padding: 0;
   align-self: stretch;
   display: inline-flex;
   align-items: center;
@@ -439,6 +454,11 @@ body.qe-focus-mode {
 .qe-ayah__share {
   flex-shrink: 0;
   width: 2.65rem;
+  min-width: 2.65rem;
+  max-width: 2.65rem;
+  height: auto;
+  min-height: 2.65rem;
+  padding: 0;
   align-self: stretch;
   display: inline-flex;
   align-items: center;
@@ -558,10 +578,16 @@ body.qe-focus-mode {
   font: inherit;
   cursor: pointer;
   color: inherit;
+  height: auto;
+  white-space: normal;
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,
     box-shadow 0.2s ease;
+}
+
+.qe-ayah > span:not(.qe-ayah__num):not(.qe-ayah__text) {
+  display: contents;
 }
 
 .qe-ayah:hover {

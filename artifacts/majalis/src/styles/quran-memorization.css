@@ -118,6 +118,17 @@
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+  height: auto;
+  white-space: normal;
+}
+
+.qmem-type-card > span {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+  width: 100%;
+  text-align: right;
 }
 
 .qmem-type-card:hover,

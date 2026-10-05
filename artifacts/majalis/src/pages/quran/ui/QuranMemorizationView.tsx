@@ -20,6 +20,7 @@ import {
 } from "@/lib/quran-memorization";
 import { BookOpen, ChevronLeft, RotateCcw } from "lucide-react";
 import { DetailScreen } from "@/components/design-system/screens";
+import { Button } from "@/components/ui/button";
 
 const ALL_TEST_TYPES: TestType[] = [
   "complete-ayah",
@@ -114,9 +115,10 @@ function QuestionCard({
       {question.options ? (
         <div className="qmem-options">
           {question.options.map((opt) => (
-            <button
+            <Button
               key={opt}
               type="button"
+              variant="ghost"
               disabled={answered}
               onClick={() => handleOption(opt)}
               className={`qmem-option${
@@ -128,7 +130,7 @@ function QuestionCard({
               }`}
             >
               {opt}
-            </button>
+            </Button>
           ))}
         </div>
       ) : isTextInput ? (
@@ -151,14 +153,15 @@ function QuestionCard({
                 />
               </div>
               {!answered && (
-                <button
+                <Button
                   type="button"
+                  variant="primary"
                   className="qmem-submit-btn"
                   onClick={handleTextSubmit}
                   disabled={!textInput.trim()}
                 >
                   تحقق
-                </button>
+                </Button>
               )}
             </>
           )}
@@ -195,29 +198,31 @@ function QuestionCard({
         <>
           <div className="qmem-rating">
             <span className="qmem-rating__label">تقييم مستوى الحفظ:</span>
-            <button type="button" className="qmem-rating-btn qmem-rating-btn--0" onClick={() => handleRating(0)}>لم أحفظ</button>
-            <button type="button" className="qmem-rating-btn qmem-rating-btn--1" onClick={() => handleRating(1)}>صعب</button>
-            <button type="button" className="qmem-rating-btn qmem-rating-btn--3" onClick={() => handleRating(3)}>جيد</button>
-            <button type="button" className="qmem-rating-btn qmem-rating-btn--5" onClick={() => handleRating(5)}>ممتاز</button>
+            <Button type="button" variant="ghost" className="qmem-rating-btn qmem-rating-btn--0" onClick={() => handleRating(0)}>لم أحفظ</Button>
+            <Button type="button" variant="ghost" className="qmem-rating-btn qmem-rating-btn--1" onClick={() => handleRating(1)}>صعب</Button>
+            <Button type="button" variant="ghost" className="qmem-rating-btn qmem-rating-btn--3" onClick={() => handleRating(3)}>جيد</Button>
+            <Button type="button" variant="ghost" className="qmem-rating-btn qmem-rating-btn--5" onClick={() => handleRating(5)}>ممتاز</Button>
           </div>
-          <button
+          <Button
             type="button"
+            variant="primary"
             className="qmem-next-btn"
             onClick={() => onAnswer(isCorrect)}
           >
             السؤال التالي ←
-          </button>
+          </Button>
         </>
       )}
 
       {isAutoReveal && !answered && (
-        <button
+        <Button
           type="button"
+          variant="primary"
           className="qmem-next-btn"
           onClick={() => { setAnswered(true); }}
         >
           اعرض الإجابة
-        </button>
+        </Button>
       )}
     </div>
   );
@@ -365,16 +370,18 @@ export default function QuranMemorizationPage() {
             <p className="qmem-section-title">اختر نوع الاختبار</p>
             <div className="qmem-types">
               {ALL_TEST_TYPES.map((type, i) => (
-                <button
+                <Button
                   key={type}
                   type="button"
+                  variant="ghost"
                   className={`qmem-type-card${selectedType === type ? " qmem-type-card--active" : ""}`}
                   onClick={() => setSelectedType(type)}
+                  aria-pressed={selectedType === type}
                 >
                   <span className="qmem-type-card__num">نوع {i + 1}</span>
                   <span className="qmem-type-card__name">{TEST_LABELS[type]}</span>
                   <span className="qmem-type-card__desc">{TEST_DESCRIPTIONS[type]}</span>
-                </button>
+                </Button>
               ))}
             </div>
 
@@ -397,15 +404,17 @@ export default function QuranMemorizationPage() {
               ) : (
                 <div style={{ color: "var(--mj-muted)", fontSize: "var(--ss-type-supporting)" }}>تحديث السور…</div>
               )}
-              <button
+              <Button
                 type="button"
+                variant="primary"
                 className="qmem-start-btn"
                 onClick={startSession}
                 disabled={loading || surahList.length === 0}
+                loading={loading}
+                iconEnd={!loading ? <BookOpen size={15} /> : undefined}
               >
-                {loading ? "" : "ابدأ الاختبار"}
-                {!loading && <BookOpen size={15} />}
-              </button>
+                ابدأ الاختبار
+              </Button>
             </div>
 
             {/* قائمة الآيات للمراجعة */}
@@ -476,19 +485,24 @@ export default function QuranMemorizationPage() {
             </div>
             <div className="qmem-end__score-lbl">إجابات صحيحة</div>
             <div className="qmem-end__actions">
-              <button type="button" className="qmem-start-btn" onClick={startSession}>
-                <RotateCcw size={15} />
-                جلسة جديدة
-              </button>
-              <button
+              <Button
                 type="button"
+                variant="primary"
                 className="qmem-start-btn"
-                style={{ background: "var(--ds-border,#e5e7eb)", color: "var(--ds-text-1,#1a1a1a)" }}
-                onClick={resetSession}
+                onClick={startSession}
+                iconStart={<RotateCcw size={15} />}
               >
-                <ChevronLeft size={15} />
+                جلسة جديدة
+              </Button>
+              <Button
+                type="button"
+                variant="secondary"
+                className="qmem-start-btn"
+                onClick={resetSession}
+                iconStart={<ChevronLeft size={15} />}
+              >
                 تغيير الإعدادات
-              </button>
+              </Button>
             </div>
           </div>
         )}

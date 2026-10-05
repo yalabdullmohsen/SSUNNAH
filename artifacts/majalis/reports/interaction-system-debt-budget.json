@@ -1,10 +1,10 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Ceilings must not rise; floors (canonical adoption) must not fall without documented exception.",
+  "note": "Ceilings must not rise; floors (canonical adoption) must not fall without documented exception. UI1 QuranViewer+Memorization Button authority.",
   "ceilings": {
-    "rawButtonFiles": 73,
-    "rawButtonElements": 300,
+    "rawButtonFiles": 71,
+    "rawButtonElements": 274,
     "divSpanOnClick": 37,
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
@@ -12,8 +12,8 @@
     "buttonRelatedHexApprox": 971
   },
   "floors": {
-    "officialButtonImportFiles": 290,
+    "officialButtonImportFiles": 292,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-10-05T01:00:37.572Z"
+  "updatedAt": "2026-10-05T04:40:00.000Z"
 }
