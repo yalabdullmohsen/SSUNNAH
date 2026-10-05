@@ -21,9 +21,12 @@
   background: transparent;
 }
 
+/* WCAG 1.4.1: رابط المسار يتميّز عن نص الصفحة الحالية بغير اللون وحده (نهارًا وليلًا) */
 .topic-page__crumb a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+  text-underline-offset: 0.2em;
 }
 .topic-page__crumb a:hover {
   color: var(--mj-brand);

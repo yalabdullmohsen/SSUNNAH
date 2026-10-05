@@ -7,6 +7,8 @@ import {
   MUSHAF_DISPLAY_MODE_OPTIONS,
   type MushafAppearanceMode,
 } from "@/lib/mushaf-v2/appearance-prefs";
+import { Button } from "@/components/ui/button";
+import { mushafButtonClass } from "@/features/mushaf-reader/mushaf-button-parity";
 import "./mushaf-display-mode-control.css";
 
 type Props = {
@@ -36,13 +38,14 @@ export function MushafDisplayModeControl({
         {MUSHAF_DISPLAY_MODE_OPTIONS.map((opt) => {
           const active = value === opt.id;
           return (
-            <button
+            <Button
               key={opt.id}
               type="button"
+              variant="ghost"
               role="radio"
               aria-checked={active}
               data-testid={`mushaf-display-mode-${opt.id}`}
-              className={`mushaf-display-mode__card${active ? " is-active" : ""}`}
+              className={mushafButtonClass("mushaf-display-mode__card", active && "is-active")}
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -55,7 +58,7 @@ export function MushafDisplayModeControl({
                 {active ? <Check size={16} strokeWidth={2.2} aria-hidden="true" /> : null}
               </span>
               <span className="mushaf-display-mode__desc">{opt.description}</span>
-            </button>
+            </Button>
           );
         })}
       </div>

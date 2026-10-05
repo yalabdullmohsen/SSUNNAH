@@ -1,6 +1,8 @@
 import { type ReactNode, type RefObject, useEffect } from "react";
 import { X } from "lucide-react";
 import { createPortal } from "react-dom";
+import { Button } from "@/components/ui/button";
+import { mushafButtonClass } from "@/features/mushaf-reader/mushaf-button-parity";
 import "@/styles/components/quran-audio-chrome.css";
 
 export type QuranSheetSnap = "peek" | "half" | "full";
@@ -76,9 +78,10 @@ export function QuranSheetShell({
       inert={open ? undefined : true}
       style={{ position: "fixed", inset: 0, zIndex, display: "grid", alignItems: "end", pointerEvents: open ? "none" : "none" }}
     >
-      <button
+      <Button
         type="button"
-        className="quran-sheet__scrim"
+        variant="ghost"
+        className={mushafButtonClass("quran-sheet__scrim")}
         aria-label={closeAriaLabel}
         onClick={onClose}
         tabIndex={open ? 0 : -1}
@@ -116,16 +119,17 @@ export function QuranSheetShell({
             ) : (
               <span id={titleId} />
             )}
-            <button
+            <Button
               type="button"
-              className="quran-sheet__close"
+              variant="ghost"
+              className={mushafButtonClass("quran-sheet__close")}
               onClick={onClose}
               aria-label={closeAriaLabel}
               tabIndex={open ? 0 : -1}
               data-testid="mushaf-settings-close"
             >
               <X size={14} strokeWidth={2.25} aria-hidden="true" />
-            </button>
+            </Button>
           </header>
         ) : null}
         {children}

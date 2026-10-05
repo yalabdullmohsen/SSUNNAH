@@ -121,7 +121,7 @@ export function ReciterDownloadManager() {
     <div className="mpv-settings-group">
       <span className="mpv-settings-group__label">
         تنزيل اختياري للاستماع دون اتصال (البث الحي هو الافتراضي)
-        <small style={{ display: "block", opacity: .65, fontWeight: 400, marginTop: ".2rem" }}>
+        <small style={{ display: "block", fontWeight: 400, marginTop: ".2rem" }}>
           سقف التطبيق: {formatMB(MAX_OFFLINE_AUDIO_BYTES)} م.ب · بحد أقصى{" "}
           {toArabicDigits(MAX_FULL_OFFLINE_RECITERS)} قرّاء كاملين
           {storage && storage.quota > 0

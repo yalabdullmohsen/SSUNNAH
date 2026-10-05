@@ -98,7 +98,7 @@ for (const s of sections) {
   assertNonEmptyLetters(s.subtitle, "subtitle", s.id, 4);
   assert.ok(s.route.startsWith("/"), `${s.id}.route يبدأ بـ /`);
   assert.ok(
-    ["sciences", "stories", "dawah", "library", "worship", "learning", "account"].includes(s.group),
+    ["quran", "sunnah", "fiqh", "worship", "learning", "knowledge", "account"].includes(s.group),
     `${s.id}: مجموعة معروفة (${s.group})`,
   );
 

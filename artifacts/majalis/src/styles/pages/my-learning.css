@@ -317,6 +317,8 @@
   display: flex; flex-direction: column; align-items: center; gap: var(--ds-space-2);
   padding: 1.4rem; text-align: center;
 }
+.myl2-empty--intro { margin: 0; padding-block: 0.75rem; }
+.myl2-empty--actions { padding-top: 0; }
 .myl2-empty svg  { color: var(--mj-hairline); }
 .myl2-empty p    { font-size: 0.83rem; color: var(--mj-muted); margin: 0; }
 .myl2-empty__cta {

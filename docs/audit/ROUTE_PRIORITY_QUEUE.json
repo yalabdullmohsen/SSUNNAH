@@ -1,5 +1,5 @@
 {
-  "sha": "1de2b94b00dacc38ca3e0326b424fa1500214898",
+  "sha": "bbb25cd147fa15ca23a3d8aa42b0d9133454b8bb",
   "routes": [
     {
       "route": "/mushaf",
@@ -22,15 +22,6 @@
       "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
       "debtFields": [
         "Canvas"
-      ],
-      "priority": true
-    },
-    {
-      "route": "/settings",
-      "sourceClass": "SETTINGS",
-      "trackClass": "PARTIAL",
-      "debtFields": [
-        "Keyboard"
       ],
       "priority": true
     }

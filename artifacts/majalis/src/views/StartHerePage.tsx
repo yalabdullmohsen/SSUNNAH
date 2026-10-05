@@ -63,9 +63,9 @@ export default function StartHerePage() {
           {LEVELS.map(({ href, title, desc, Icon }) => (
             <Link key={title} href={href} className="meth-card">
               <Icon size={20} strokeWidth={1.8} aria-hidden="true" />
-              <strong style={{ display: "block", marginBlock: "0.35rem" }}>{title}</strong>
-              <p style={{ margin: 0, fontSize: "var(--ss-type-supporting)", opacity: 0.85 }}>{desc}</p>
-              <span style={{ display: "inline-block", marginBlockStart: "0.5rem", fontWeight: 700 }}>
+              <strong className="meth-card__title">{title}</strong>
+              <p className="meth-card__desc">{desc}</p>
+              <span className="meth-card__cta">
                 ابدأ من هنا ←
               </span>
             </Link>

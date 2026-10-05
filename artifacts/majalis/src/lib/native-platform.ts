@@ -31,3 +31,44 @@ export function getNativePlatform(): string {
     return "web";
   }
 }
+
+/* ───────────────────────── حدّ التطبيق ↔ الموقع (APP_VS_WEB_BOUNDARY) ─────────────────────────
+ * المرجع: docs/architecture/APP_VS_WEB_BOUNDARY.md — هذه الوحدة هي مصدر الحقيقة الوحيد.
+ * - BUILD_TARGET ثابت وقت البناء (vite define لـ VITE_TARGET): "native" فقط في متغيّر البناء الأصلي
+ *   (`pnpm run build:native-variant`) → تُحذف وحدات الويب فقط (PWA/SW) بإزالة الشيفرة الميتة.
+ * - isNativeApp() يجمع الثابت مع الكشف الفعلي (window.Capacitor) لأن غلاف iOS يحمّل
+ *   https://www.ssunnah.com الحيّ (server.url) — أي الحزمة نفسها تعمل على الويب والتطبيق.
+ */
+export type BuildTarget = "native" | "web";
+
+/* vite define يستبدل `import.meta.env.VITE_TARGET` بنص ثابت → طيّ الشرط وحذف الفرع الميت.
+ * تحت node/tsx (البوابات) لا يوجد import.meta.env → "web". */
+const RAW_BUILD_TARGET: string | undefined = import.meta.env ? import.meta.env.VITE_TARGET : undefined;
+export const BUILD_TARGET: BuildTarget = RAW_BUILD_TARGET === "native" ? "native" : "web";
+/** ثابت بناء: true فقط في متغيّر البناء الأصلي — صالح لحراسة `lazy(import())` لوحدات الويب. */
+export const IS_NATIVE_BUILD = BUILD_TARGET === "native";
+
+/** داخل تطبيق سُنّة الأصلي (بناءً أو تشغيلًا). */
+export function isNativeApp(): boolean {
+  return IS_NATIVE_BUILD || isNativePlatform();
+}
+
+/** على الموقع في متصفح (ليس داخل التطبيق الأصلي). */
+export function isWeb(): boolean {
+  return !isNativeApp();
+}
+
+/** نطاقات علامتنا — روابطها تُفتح داخل التطبيق لا في Safari (مصدر واحد للقائمة). */
+export const APP_HOSTS: ReadonlySet<string> = new Set([
+  "www.ssunnah.com",
+  "ssunnah.com",
+  "majlisilm.com",
+  "www.majlisilm.com",
+  "localhost",
+  "127.0.0.1",
+]);
+
+export function isAppHost(hostname: string): boolean {
+  const h = hostname.toLowerCase().replace(/\.$/, "");
+  return APP_HOSTS.has(h) || h.endsWith(".ssunnah.com") || h.endsWith(".majlisilm.com");
+}

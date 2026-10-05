@@ -102,7 +102,7 @@ export function CrossDeviceResumeToast() {
         lineHeight: 1.45,
       }}
     >
-      <p style={{ margin: 0 }}>
+      <p>
         متابعة القراءة من {hint.deviceLabel} (صفحة {hint.page}) — اضغط للانتقال
       </p>
       <div className="cross-device-resume-toast__actions" style={{ display: "flex", gap: "0.5rem" }}>

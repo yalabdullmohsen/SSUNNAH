@@ -659,7 +659,10 @@ html.dark .notif-row__label {
   gap: 0.75rem;
   margin-bottom: 0.5rem;
 }
+/* العنوان داخل صف الرجوع — يصفّر الهوامش الافتراضية (margin-bottom يبقى من .notif-card__title) */
+.nsp-detail__head > .notif-card__title { margin-block-start: 0; margin-inline: 0; }
 .nsp-field { margin-top: 1rem; }
+.nsp-field--inline { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; }
 .nsp-field__label {
   margin: 0 0 0.4rem;
   font-size: 0.8rem;

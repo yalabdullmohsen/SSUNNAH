@@ -163,7 +163,7 @@ export default function DiscoverIslamPage() {
       {articles.length > 0 && (
         <section aria-labelledby="dii-articles-heading" className="dii-section">
           <div className="page-stats-row">
-            <h2 id="dii-articles-heading" className="page-section-title" style={{ margin: 0 }}>مقالات تأسيسية</h2>
+            <h2 id="dii-articles-heading" className="page-section-title">مقالات تأسيسية</h2>
             <Link href="/discover-islam/articles/what-is-islam" className="page-link-inline">ابدأ بـ«ما الإسلام؟»</Link>
           </div>
           <div className="hub-card-grid dii-list-grid">
@@ -203,7 +203,7 @@ export default function DiscoverIslamPage() {
       {questions.length > 0 && (
         <section aria-labelledby="dii-questions-heading" className="dii-section">
           <div className="page-stats-row">
-            <h2 id="dii-questions-heading" className="page-section-title" style={{ margin: 0 }}>أشهر الأسئلة</h2>
+            <h2 id="dii-questions-heading" className="page-section-title">أشهر الأسئلة</h2>
             <Link href="/discover-islam/questions" className="page-link-inline">عرض الكل</Link>
           </div>
           <div className="hub-card-grid dii-list-grid">
@@ -224,7 +224,7 @@ export default function DiscoverIslamPage() {
       {shubuhat.length > 0 && (
         <section aria-labelledby="dii-shubuhat-heading" className="dii-section">
           <div className="page-stats-row">
-            <h2 id="dii-shubuhat-heading" className="page-section-title" style={{ margin: 0 }}>أشهر الشبهات</h2>
+            <h2 id="dii-shubuhat-heading" className="page-section-title">أشهر الشبهات</h2>
             <Link href="/discover-islam/doubts" className="page-link-inline">عرض الكل</Link>
           </div>
           <div className="hub-card-grid dii-list-grid">
