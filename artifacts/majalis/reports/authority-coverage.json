@@ -54,7 +54,6 @@
         "components/fawaid/FaidahCard.tsx",
         "components/hadith/HadithDatasetSummary.tsx",
         "components/hadith/HadithEntryCard.tsx",
-        "components/home/HomeContinueWidget.tsx",
         "components/home/HomeExplorePlatform.tsx",
         "components/home/HomeHeroLcp.tsx"
       ]
