@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { useAdminShell } from "@/views/admin/AdminShell";
 import {
   fetchGovernanceDashboard,
@@ -73,9 +74,9 @@ export function GovernanceSection() {
       <div className="gov-header">
         <h2>الحوكمة والإدارة المؤسسية</h2>
         <div className="gov-btn-group">
-          <button type="button" onClick={handleSecurity}>تدقيق الأمان</button>
-          <button type="button" onClick={handleBackup}>نسخ احتياطي</button>
-          <button type="button" onClick={handleReport}>التقرير النهائي</button>
+          <Button type="button" variant="secondary" size="small" onClick={handleSecurity}>تدقيق الأمان</Button>
+          <Button type="button" variant="secondary" size="small" onClick={handleBackup}>نسخ احتياطي</Button>
+          <Button type="button" variant="secondary" size="small" onClick={handleReport}>التقرير النهائي</Button>
         </div>
       </div>
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { adminGetAllAnnualCourses, adminUpsertAnnualCourse, adminDeleteAnnualCourse } from "@/lib/platform-supabase";
 import { ANNUAL_COURSES_SEED } from "@/lib/annual-courses-seed";
 import { COURSE_TYPES } from "@/lib/platform-types";
+import { Button } from "@/components/ui/button";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { AdminModal, Field } from "./AdminModal";
 import { useAdminShell } from "./AdminShell";
@@ -27,14 +28,14 @@ export function AnnualCoursesSection() {
     <div>
       <div className="adm-section-hdr">
         <h2 className="adm-section-h2">الدورات العلمية ({items.length})</h2>
-        <button type="button" onClick={() => { setForm({ ...EMPTY }); setOpen(true); }} className="adm-btn-add">+ إضافة</button>
+        <Button type="button" variant="primary" size="small" onClick={() => { setForm({ ...EMPTY }); setOpen(true); }} className="adm-btn-add">+ إضافة</Button>
       </div>
       {loading ? <SkeletonCardGrid count={6} /> : items.map((item, idx) => (
         <div key={item.id ?? item.title ?? idx} className="adm-item-card">
           <strong>{item.title}</strong>، {item.course_type}
           <div className="adm-item-actions">
-            <button type="button" onClick={() => { setForm({ ...item }); setOpen(true); }} className="adm-btn-sm">تعديل</button>
-            <button type="button" onClick={async () => { if (!item.id) return; if ((await confirm({ title: "تأكيد", body: "حذف؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteAnnualCourse(item.id).then(load); }} className="adm-btn-del">حذف</button>
+            <Button type="button" variant="secondary" size="small" onClick={() => { setForm({ ...item }); setOpen(true); }} className="adm-btn-sm">تعديل</Button>
+            <Button type="button" variant="destructive" size="small" onClick={async () => { if (!item.id) return; if ((await confirm({ title: "تأكيد", body: "حذف؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteAnnualCourse(item.id).then(load); }} className="adm-btn-del">حذف</Button>
           </div>
         </div>
       ))}

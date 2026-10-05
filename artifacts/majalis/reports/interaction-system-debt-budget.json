@@ -1,10 +1,10 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Ceilings must not rise; floors (canonical adoption) must not fall without documented exception. UI1 QuranViewer+Memorization Button authority.",
+  "note": "Ceilings must not rise; floors (canonical adoption) must not fall without documented exception. Admin wave1 legacy CRUD Button authority.",
   "ceilings": {
-    "rawButtonFiles": 71,
-    "rawButtonElements": 274,
+    "rawButtonFiles": 65,
+    "rawButtonElements": 258,
     "divSpanOnClick": 37,
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
@@ -12,8 +12,8 @@
     "buttonRelatedHexApprox": 971
   },
   "floors": {
-    "officialButtonImportFiles": 292,
+    "officialButtonImportFiles": 298,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-10-05T04:40:00.000Z"
+  "updatedAt": "2026-10-05T05:34:55.236Z"
 }
