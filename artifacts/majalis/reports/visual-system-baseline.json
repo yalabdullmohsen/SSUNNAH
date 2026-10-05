@@ -1,8 +1,8 @@
 {
-  "measuredAt": "2026-10-05T04:36:41.786Z",
+  "measuredAt": "2026-10-05T05:32:35.031Z",
   "scope": "artifacts/majalis/src",
   "cssFiles": 353,
-  "tsxFiles": 843,
+  "tsxFiles": 842,
   "ruleBlocksApprox": 20622,
   "important": 4720,
   "hexInCss": 5571,
