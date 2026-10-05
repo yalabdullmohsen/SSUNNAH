@@ -78,18 +78,25 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 }
 
 {
+  // 2026-10: «الإشعارات والصوت» دُمجت في مركز الإشعارات الموحّد — المسار القديم يُحوَّل إليه،
+  // والمركز يحمل ساعات الهدوء (مطبَّقة فعليًا على الجدولة) دون استيراد مشغّل الأذان.
   const page = readFileSync(
-    resolve(root, "src/pages/account/ui/NotificationsAndSoundView.tsx"),
+    resolve(root, "src/pages/account/ui/NotificationSettingsView.tsx"),
     "utf8",
   );
-  assert.match(page, /الإشعارات والصوت/);
-  assert.match(page, /ساعات الهدوء/);
+  const panel = readFileSync(
+    resolve(root, "src/components/notifications/SunnahChannelsPanel.tsx"),
+    "utf8",
+  );
+  assert.match(page, /SunnahChannelsPanel/);
+  assert.match(panel, /ساعات الهدوء/);
   assert.doesNotMatch(page, /from "@\/lib\/adhan-audio"/);
   const routes = readFileSync(resolve(root, "src/AppRoutes.tsx"), "utf8");
-  const accountLazy = readFileSync(resolve(root, "src/app/routes/lazy/account.ts"), "utf8");
-  assert.match(routes, /notifications-and-sound/);
-  assert.match(accountLazy, /NotificationsAndSoundPage[\s\S]*lazy\(/);
-  console.log("  ✓ settings page lazy-wired");
+  assert.match(
+    routes,
+    /path="\/notifications-and-sound"><Redirect to="\/notification-settings" \/>/,
+  );
+  console.log("  ✓ legacy page redirects to unified hub");
 }
 
 {
