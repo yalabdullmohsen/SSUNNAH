@@ -3,6 +3,8 @@
  */
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import "@/styles/majlisilm-shell.css";
 
 export type TafsirModalViewerProps = {
@@ -22,8 +24,9 @@ export function TafsirModalViewer({
 
   const modal = (
     <div className="tafsir-modal-overlay">
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className="tafsir-modal-overlay__backdrop"
         aria-label="إغلاق"
         onClick={onClose}
@@ -35,14 +38,14 @@ export function TafsirModalViewer({
         aria-label="التفسير الميسر"
       >
         <div className="tafsir-modal__handle" aria-hidden="true" />
-        <button
+        <IconButton
           type="button"
           className="tafsir-modal__close"
           onClick={onClose}
-          aria-label="إغلاق"
+          label="إغلاق"
         >
           <X size={18} aria-hidden="true" />
-        </button>
+        </IconButton>
         <div className="tafsir-modal__verse">{verseText}</div>
         <h3 className="tafsir-modal__heading">التفسير الميسر:</h3>
         <hr className="tafsir-modal__divider" />

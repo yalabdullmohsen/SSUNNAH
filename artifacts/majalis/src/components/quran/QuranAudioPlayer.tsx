@@ -6,6 +6,7 @@ import type { PlayerState } from "@/core/audio/AudioEngine";
 import { QuranRecitationService } from "@/lib/quran/quranRecitationService";
 import { MushafAudioDock } from "@/features/mushaf-madinah/MushafAudioDock";
 import type { RecitationRange } from "@/features/mushaf-shared/mushaf-page-for-ayah";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   open: boolean;
@@ -89,12 +90,13 @@ export function QuranAudioPlayer({
           <p>{userMessage || "تعذر تشغيل التلاوة الآن"}</p>
           <div className="quran-audio-player__fallback-actions">
             {onRetry ? (
-              <button type="button" className="quran-audio-player__btn" onClick={onRetry}>
+              <Button type="button" variant="secondary" className="quran-audio-player__btn" onClick={onRetry}>
                 إعادة المحاولة
-              </button>
+              </Button>
             ) : null}
-            <button
+            <Button
               type="button"
+              variant="secondary"
               className="quran-audio-player__btn"
               onClick={() => {
                 if (onPickOtherReciter) onPickOtherReciter();
@@ -102,7 +104,7 @@ export function QuranAudioPlayer({
               }}
             >
               اختيار قارئ آخر
-            </button>
+            </Button>
           </div>
         </div>
       ) : null}

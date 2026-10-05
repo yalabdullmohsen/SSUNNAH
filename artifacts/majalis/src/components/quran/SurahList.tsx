@@ -5,6 +5,7 @@ import { getBookmarks, type QuranBookmark } from "@/lib/quran-personal";
 import type { MyBookmark } from "@/lib/quran-my-bookmarks";
 import { toArabicDigits } from "@/lib/utils";
 import { SurahIndexFlatList } from "@/components/quran/SurahIndexFlatList";
+import { Button } from "@/components/ui/button";
 
 type SidebarTab = "surahs" | "juz" | "bookmarks";
 
@@ -46,16 +47,17 @@ export function SurahList({ surahs: _surahs, currentSurah, onSelect, onClose, on
             { id: "bookmarks", label: "الفواصل" },
           ] as const
         ).map((t) => (
-          <button
+          <Button
             key={t.id}
             type="button"
+            variant="ghost"
             role="tab"
             aria-selected={tab === t.id}
             className={`qs-surah-list__tab${tab === t.id ? " is-active" : ""}`}
             onClick={() => setTab(t.id)}
           >
             {t.label}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -76,9 +78,10 @@ export function SurahList({ surahs: _surahs, currentSurah, onSelect, onClose, on
           {JUZ_START_PAGES.map((page, i) => {
             const juz = i + 1;
             return (
-              <button
+              <Button
                 key={juz}
                 type="button"
+                variant="ghost"
                 className="qs-juz-chip"
                 onClick={() => {
                   onSelectPage?.(page);
@@ -87,7 +90,7 @@ export function SurahList({ surahs: _surahs, currentSurah, onSelect, onClose, on
               >
                 الجزء {toArabicDigits(juz)}
                 <small>ص {toArabicDigits(page)}</small>
-              </button>
+              </Button>
             );
           })}
         </div>
@@ -109,8 +112,9 @@ export function SurahList({ surahs: _surahs, currentSurah, onSelect, onClose, on
                     const ayah = Number(ayahStr);
                     return (
                     <li key={`page-${b.id}`}>
-                      <button
+                      <Button
                         type="button"
+                        variant="ghost"
                         className="qs-surah-item"
                         onClick={() => {
                           if (Number.isFinite(surah) && Number.isFinite(ayah)) {
@@ -126,7 +130,7 @@ export function SurahList({ surahs: _surahs, currentSurah, onSelect, onClose, on
                         <span className="qs-surah-meta">
                           {b.ayahKey ? `${b.ayahKey} · ` : ""}صفحة {toArabicDigits(b.page)} · {b.date}
                         </span>
-                      </button>
+                      </Button>
                     </li>
                     );
                   })}
@@ -136,8 +140,9 @@ export function SurahList({ surahs: _surahs, currentSurah, onSelect, onClose, on
                 <ul className="qs-surah-items" aria-label="إشارات الآيات">
                   {bookmarks.map((b) => (
                     <li key={`${b.surahNum}:${b.ayahNum}:${b.addedAt}`}>
-                      <button
+                      <Button
                         type="button"
+                        variant="ghost"
                         className="qs-surah-item"
                         onClick={() => {
                           onSelectPage?.(1, { surah: b.surahNum, ayah: b.ayahNum });
@@ -147,7 +152,7 @@ export function SurahList({ surahs: _surahs, currentSurah, onSelect, onClose, on
                         <span className="qs-surah-num">{b.surahNum}:{b.ayahNum}</span>
                         <span className="qs-surah-name">{b.surahName}</span>
                         <span className="qs-surah-meta">{b.text.slice(0, 48)}{b.text.length > 48 ? "…" : ""}</span>
-                      </button>
+                      </Button>
                     </li>
                   ))}
                 </ul>

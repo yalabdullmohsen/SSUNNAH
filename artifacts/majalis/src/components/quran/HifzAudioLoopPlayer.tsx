@@ -18,6 +18,8 @@ import {
 import { toArabicDigits } from "@/lib/utils";
 import { STATUS } from "@/lib/ui-copy";
 import { useMediaSession } from "@/hooks/useMediaSession";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import "@/styles/components/hifz-audio-loop-player.css";
 
 const SILENCE_MS = [0, 1000, 2000, 3000, 5000] as const;
@@ -196,9 +198,10 @@ export function HifzAudioLoopPlayer({ surah, reciterId }: HifzAudioLoopPlayerPro
             loopUiActive && num >= hifz.startAyah && num <= Math.max(hifz.startAyah, hifz.endAyah);
 
           return (
-            <button
+            <Button
               key={ayah.number}
               type="button"
+              variant="ghost"
               ref={(el) => {
                 if (el) verseRefs.current.set(num, el);
                 else verseRefs.current.delete(num);
@@ -208,7 +211,7 @@ export function HifzAudioLoopPlayer({ surah, reciterId }: HifzAudioLoopPlayerPro
             >
               <p className="hifz-loop__verse-text">{ayah.text}</p>
               <span className="hifz-loop__verse-num">﴿{toArabicDigits(num)}﴾</span>
-            </button>
+            </Button>
           );
         })}
       </div>
@@ -216,15 +219,16 @@ export function HifzAudioLoopPlayer({ surah, reciterId }: HifzAudioLoopPlayerPro
       <div className="hifz-loop__controls">
         <div className="hifz-loop__loop-panel">
           <div className="hifz-loop__loop-row">
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className={`hifz-loop__loop-toggle${loopUiActive ? " hifz-loop__loop-toggle--on" : ""}`}
               onClick={toggleLoop}
               aria-pressed={loopUiActive}
             >
               <Repeat size={16} aria-hidden="true" />
               <span>تكرار التحفيظ (A-B)</span>
-            </button>
+            </Button>
             {isWaitingLoop ? (
               <span className="hifz-loop__wait"><SectionIcon name="⏱️" size={18} /> فترة صمت للترديد…</span>
             ) : null}
@@ -287,34 +291,35 @@ export function HifzAudioLoopPlayer({ surah, reciterId }: HifzAudioLoopPlayerPro
           <div className="hifz-loop__rates" role="group" aria-label="سرعة التشغيل">
             <Sliders size={14} aria-hidden="true" />
             {HIFZ_PLAYBACK_RATES.map((rate) => (
-              <button
+              <Button
                 key={rate}
                 type="button"
+                variant="ghost"
                 className={`hifz-loop__rate${Math.abs(snap.playbackRate - rate) < 0.01 ? " hifz-loop__rate--active" : ""}`}
                 onClick={() => setRate(rate)}
               >
                 {rate}×
-              </button>
+              </Button>
             ))}
           </div>
 
           <div className="hifz-loop__play-group">
-            <button
+            <IconButton
               type="button"
               className="hifz-loop__icon-btn"
               onClick={restartFromStart}
-              title="إعادة من بداية النطاق"
+              label="إعادة من بداية النطاق"
             >
               <RotateCcw size={20} aria-hidden="true" />
-            </button>
-            <button
+            </IconButton>
+            <IconButton
               type="button"
               className="hifz-loop__play"
               onClick={togglePlay}
-              aria-label={playing ? "إيقاف مؤقت" : "تشغيل"}
+              label={playing ? "إيقاف مؤقت" : "تشغيل"}
             >
               {playing ? <Pause size={24} aria-hidden="true" /> : <Play size={24} aria-hidden="true" />}
-            </button>
+            </IconButton>
           </div>
 
           <div className="hifz-loop__clock" aria-live="polite">

@@ -24,6 +24,7 @@
  * (callers pass `onSelectVerse` to wire handlers).
  */
 import { useCallback, useState, type CSSProperties } from "react";
+import { Button } from "@/components/ui/button";
 import {
   IMMERSIVE_FONT_SIZE_PX,
   IMMERSIVE_INK,
@@ -94,8 +95,9 @@ export function QuranVerseList({
         const isSelected = selectedIndex === index;
         return (
           <li key={index} className="quran-verse-list__item" role="none">
-            <button
+            <Button
               type="button"
+              variant="ghost"
               role="option"
               aria-selected={isSelected}
               className={`quran-verse-list__verse${isSelected ? " is-selected" : ""}`}
@@ -104,7 +106,7 @@ export function QuranVerseList({
               <span className="quran-verse-list__text" style={{ textAlign }}>
                 {text}
               </span>
-            </button>
+            </Button>
           </li>
         );
       })}

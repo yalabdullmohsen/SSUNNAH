@@ -19,6 +19,7 @@ import {
 import { ImmersiveVerseOptionsSheet } from "@/components/quran/ImmersiveVerseOptionsSheet";
 import { ImmersivePrefsDrawer } from "@/components/quran/ImmersivePrefsDrawer";
 import { STATUS } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
 import "@/styles/quran-immersive-reader.css";
 
 export type ImmersiveQuranAppProps = {
@@ -148,14 +149,15 @@ export function ImmersiveQuranApp({
       <div className="immersive-quran-app__safe">
         {!embedded ? (
           <div className="immersive-quran-app__toolbar">
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className="immersive-quran-app__settings-btn"
               onClick={() => setDrawerOpen(true)}
               aria-label="إعدادات القراءة"
             >
               إعدادات
-            </button>
+            </Button>
           </div>
         ) : null}
 
@@ -184,8 +186,9 @@ export function ImmersiveQuranApp({
                     isPlayingAudio;
                   return (
                     <li key={index}>
-                      <button
+                      <Button
                         type="button"
+                        variant="ghost"
                         className={`immersive-quran-app__verse${isSelected ? " is-selected" : ""}${isPlaying ? " is-playing" : ""}`}
                         onClick={() => {
                           if (pIdx !== pageIndex) setPageIndex(pIdx);
@@ -193,7 +196,7 @@ export function ImmersiveQuranApp({
                         }}
                       >
                         <span className="immersive-quran-app__verse-text">{text}</span>
-                      </button>
+                      </Button>
                     </li>
                   );
                 })}
