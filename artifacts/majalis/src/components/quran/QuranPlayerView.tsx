@@ -88,13 +88,17 @@ export function QuranPlayerView({ reciterId: reciterProp, surahNumber }: QuranPl
   const applyTimings = useCallback(
     async (durationSec: number) => {
       if (!ayahRows.length || durationSec <= 0) return;
-      const { timings: resolved, precise } = await resolveSurahAyahTimings(
-        surahNumber,
-        reciterId,
-        durationSec,
-        ayahRows.map((a) => ({ numberInSurah: a.number, text: a.text })),
-      );
-      const scaled = precise ? scaleTimingsToDuration(resolved, durationSec) : resolved;
+      // بث QF: توقيت الملف نفسه بالمللي ثانية ⇒ يُستعمل كما هو بلا تحجيم.
+      const exact = offlineQuranPlayer.getExactTimings();
+      const { timings: resolved, precise } = exact
+        ? { timings: exact, precise: true }
+        : await resolveSurahAyahTimings(
+            surahNumber,
+            reciterId,
+            durationSec,
+            ayahRows.map((a) => ({ numberInSurah: a.number, text: a.text })),
+          );
+      const scaled = precise && !exact ? scaleTimingsToDuration(resolved, durationSec) : resolved;
       setTimings(scaled);
       setTimingPrecise(precise);
       setAyahRows((rows) =>

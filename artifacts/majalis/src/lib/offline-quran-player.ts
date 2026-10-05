@@ -3,8 +3,9 @@
  * بديل react-native-sound — HTML5 Audio + getOfflineSurahUrl.
  */
 import { claimAudio, registerAudioStopper, releaseAudio } from "@/lib/exclusive-audio-bus";
-import { getSurahAudioUrl } from "@/lib/quran-audio";
 import { getOfflineSurahUrl } from "@/lib/quran-audio-downloads";
+import { resolveSurahStream } from "@/lib/qf-recitation-audio";
+import type { AyahTiming } from "@/lib/surah-ayah-timing";
 import { attachAudioStallRecovery, type StallRecoveryHandle } from "@/lib/audio-stall-recovery";
 import { classifyPlaybackNetworkError } from "@/lib/playback-network-error";
 import {
@@ -30,6 +31,8 @@ export type ResolvedSurahPlayback = {
   url: string;
   source: PlaybackSource;
   revokeOnCleanup?: boolean;
+  /** توقيت QF الدقيق لنفس الملف (بث QF فقط)؛ غيابه ⇒ تقدير نسبي. */
+  exactTimings?: AyahTiming[] | null;
 };
 
 export async function resolveSurahPlaybackUrl(
@@ -44,10 +47,8 @@ export async function resolveSurahPlaybackUrl(
       revokeOnCleanup: offline.startsWith("blob:"),
     };
   }
-  return {
-    url: getSurahAudioUrl(surahNumber, reciterId),
-    source: "stream",
-  };
+  const stream = await resolveSurahStream(surahNumber, reciterId);
+  return { url: stream.url, source: "stream", exactTimings: stream.timings };
 }
 
 export class OfflineQuranPlayer {
@@ -62,6 +63,7 @@ export class OfflineQuranPlayer {
   private source: PlaybackSource = "stream";
   private hadOfflineAttempt = false;
   private revokeUrl: (() => void) | null = null;
+  private exactTimings: AyahTiming[] | null = null;
   private generation = 0;
 
   static getActive(): OfflineQuranPlayer | null {
@@ -79,6 +81,11 @@ export class OfflineQuranPlayer {
   getCurrentTime(): number {
     const t = this.audio?.currentTime;
     return Number.isFinite(t) ? t! : 0;
+  }
+
+  /** توقيت الآيات الدقيق لملف البث الحالي (QF) أو null للتقدير النسبي. */
+  getExactTimings(): AyahTiming[] | null {
+    return this.exactTimings;
   }
 
   getDuration(): number {
@@ -100,19 +107,13 @@ export class OfflineQuranPlayer {
     this.setState("loading");
     await claimAudio("tilawa");
 
-    const offlineUrl = await getOfflineSurahUrl(reciterId, surahNumber);
-    this.hadOfflineAttempt = Boolean(offlineUrl);
-
-    let resolved: ResolvedSurahPlayback;
-    if (offlineUrl) {
-      resolved = { url: offlineUrl, source: "offline", revokeOnCleanup: offlineUrl.startsWith("blob:") };
-    } else {
-      resolved = { url: getSurahAudioUrl(surahNumber, reciterId), source: "stream" };
-    }
+    const resolved = await resolveSurahPlaybackUrl(reciterId, surahNumber);
+    this.hadOfflineAttempt = resolved.source === "offline";
 
     if (gen !== this.generation) return;
 
     this.source = resolved.source;
+    this.exactTimings = resolved.exactTimings ?? null;
     this.callbacks.onSourceResolved?.(resolved.source);
 
     if (resolved.revokeOnCleanup) {
