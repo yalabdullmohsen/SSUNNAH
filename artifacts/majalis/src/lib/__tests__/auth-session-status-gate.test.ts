@@ -44,16 +44,18 @@ const nav = readFileSync(resolve(root, "src/components/NavBar.tsx"), "utf8");
 assert.match(nav, /loading:\s*authLoading|authLoading/);
 assert.match(nav, /navbar-auth--pending|authLoading/);
 
-const continueWidget = readFileSync(
-  resolve(root, "src/components/home/HomeContinueWidget.tsx"),
-  "utf8",
-);
-assert.match(continueWidget, /loading:\s*authLoading/);
-assert.match(continueWidget, /authLoading[\s\S]*\? "loading"/);
-
+/* HomeContinueWidget removed (DEAD_WITH_PROOF) — auth-gated continue lives in
+   HomeContinueLearning + useRecentProgress consumers only. */
 const recentProgress = readFileSync(resolve(root, "src/hooks/useRecentProgress.ts"), "utf8");
 assert.match(recentProgress, /loading:\s*authLoading/);
 assert.match(recentProgress, /if \(authLoading\)/);
+
+const continueLearning = readFileSync(
+  resolve(root, "src/components/home/HomeContinueLearning.tsx"),
+  "utf8",
+);
+assert.match(continueLearning, /HomeLocalResumeCard|LastReadingBookmarkCard/);
+assert.doesNotMatch(continueLearning, /HomeContinueWidget/);
 
 const transcribe = readFileSync(resolve(root, "src/views/TranscribePage.tsx"), "utf8");
 assert.match(transcribe, /loading:\s*authLoading/);
