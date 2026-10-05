@@ -238,7 +238,7 @@ export function RelationshipsSection() {
         {(["all", "verified", "pending"] as const).map((v) => (
           <Button variant="secondary" size="small" key={v} type="button" onClick={() => setFilterVerified(v)}
             className="rel-filter-btn"
-            style={filterVerified === v ? { "--rel-fb-bg": "var(--mj-brand)", "--rel-fb-color": "#fff" } as React.CSSProperties : undefined}>
+            style={filterVerified === v ? { "--rel-fb-bg": "var(--mj-brand)", "--rel-fb-color": "var(--mj-surface)" } as React.CSSProperties : undefined}>
             {v === "all" ? "الكل" : v === "verified" ? "محققة" : "قيد المراجعة"}
           </Button>
         ))}
@@ -278,7 +278,7 @@ export function RelationshipsSection() {
                   <span
                     className="rel-verified-badge"
                     style={{
-                      "--rel-vb-bg": r.is_verified ? "#d1fae5" : "#E6EDE9",
+                      "--rel-vb-bg": r.is_verified ? "var(--mj-success-soft)" : "var(--mj-hairline)",
                       "--rel-vb-color": r.is_verified ? "var(--mj-brand)" : "var(--mj-brand-deep)",
                     } as React.CSSProperties}
                   >
@@ -286,7 +286,7 @@ export function RelationshipsSection() {
                   </span>
                   <Button variant="secondary" size="small" type="button" onClick={() => handleToggleVerified(r)}
                     className="rel-toggle-btn"
-                    style={{ "--rel-tb-bg": r.is_verified ? "rgba(23,61,53,0.08)" : "#d1fae5" } as React.CSSProperties}>
+                    style={{ "--rel-tb-bg": r.is_verified ? "rgba(23,61,53,0.08)" : "var(--mj-success-soft)" } as React.CSSProperties}>
                     {r.is_verified ? "إلغاء التحقق" : "تحقق"}
                   </Button>
                   <Button variant="secondary" size="small" type="button" onClick={() => startEdit(r)} className="rel-edit-btn">

@@ -1,3 +1,4 @@
+import { AdminStatCard } from "@/components/admin/AdminLayout";
 import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
@@ -34,14 +35,6 @@ type CenterStats = {
   }>;
 };
 
-function StatCard({ label, value, color }: { label: string; value: number | string; color?: string }) {
-  return (
-    <div className="acc-stat" style={color ? { "--acc-val-color": color } as React.CSSProperties : undefined}>
-      <div className="acc-stat__value">{value}</div>
-      <div className="acc-stat__label">{label}</div>
-    </div>
-  );
-}
 
 function formatDt(iso?: string) {
   if (!iso) return "—";
@@ -113,14 +106,14 @@ function AutomationCenterContent() {
       {loading ? <SkeletonCardGrid count={6} /> : (
         <>
           <div className="acc-stats-row">
-            <StatCard label="المصادر" value={stats?.sourcesCount ?? 0} />
-            <StatCard label="نشط" value={stats?.activeSources ?? 0} />
-            <StatCard label="مكتشف اليوم" value={stats?.todayDiscovered ?? 0} />
-            <StatCard label="منشور اليوم" value={stats?.todayPublished ?? 0} color="var(--mj-brand)" />
-            <StatCard label="مكرر" value={stats?.todayDuplicates ?? 0} />
-            <StatCard label="أخطاء" value={stats?.todayErrors ?? 0} color="#991B1B" />
-            <StatCard label="صور قيد التحليل" value={stats?.pendingImages ?? 0} color="var(--mj-brand-deep)" />
-            <StatCard label="سرعة (ms)" value={stats?.avgDurationMs ?? "—"} />
+            <AdminStatCard label="المصادر" value={stats?.sourcesCount ?? 0} />
+            <AdminStatCard label="نشط" value={stats?.activeSources ?? 0} />
+            <AdminStatCard label="مكتشف اليوم" value={stats?.todayDiscovered ?? 0} />
+            <AdminStatCard label="منشور اليوم" value={stats?.todayPublished ?? 0} tone="success" />
+            <AdminStatCard label="مكرر" value={stats?.todayDuplicates ?? 0} />
+            <AdminStatCard label="أخطاء" value={stats?.todayErrors ?? 0} tone="danger" />
+            <AdminStatCard label="صور قيد التحليل" value={stats?.pendingImages ?? 0} tone="info" />
+            <AdminStatCard label="سرعة (ms)" value={stats?.avgDurationMs ?? "—"} />
           </div>
 
           <section className="acc-section">

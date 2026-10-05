@@ -1,3 +1,4 @@
+import { AdminStatCard } from "@/components/admin/AdminLayout";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useAdminShell } from "@/views/admin/AdminShell";
@@ -81,14 +82,14 @@ export function GovernanceSection() {
       </div>
 
       <div className="gov-stats-grid">
-        <StatCard label="جاهزية الإنتاج" value={`${q?.overall_score ?? 0}%`} />
-        <StatCard label="التوثيق" value={`${q?.verification_pct ?? 0}%`} />
-        <StatCard label="اكتمال البيانات" value={`${q?.completeness_pct ?? 0}%`} />
-        <StatCard label="يحتاج مراجعة" value={`${q?.needs_review_pct ?? 0}%`} color="#dc2626" />
-        <StatCard label="تكرارات" value={q?.duplicate_count ?? 0} />
-        <StatCard label="روابط معطلة" value={q?.broken_links_count ?? 0} color="var(--mj-brand-deep)" />
-        <StatCard label="طابور المراجعة" value={m?.queue?.pending ?? dashboard?.review_queue?.length ?? 0} />
-        <StatCard label="معدل النجاح" value={`${m?.performance?.success_rate ?? 0}%`} />
+        <AdminStatCard label="جاهزية الإنتاج" value={`${q?.overall_score ?? 0}%`} />
+        <AdminStatCard label="التوثيق" value={`${q?.verification_pct ?? 0}%`} />
+        <AdminStatCard label="اكتمال البيانات" value={`${q?.completeness_pct ?? 0}%`} />
+        <AdminStatCard label="يحتاج مراجعة" value={`${q?.needs_review_pct ?? 0}%`} tone="warning" />
+        <AdminStatCard label="تكرارات" value={q?.duplicate_count ?? 0} />
+        <AdminStatCard label="روابط معطلة" value={q?.broken_links_count ?? 0} tone="danger" />
+        <AdminStatCard label="طابور المراجعة" value={m?.queue?.pending ?? dashboard?.review_queue?.length ?? 0} />
+        <AdminStatCard label="معدل النجاح" value={`${m?.performance?.success_rate ?? 0}%`} />
       </div>
 
       <div className="gov-panels-grid">
@@ -166,14 +167,6 @@ export function GovernanceSection() {
   );
 }
 
-function StatCard({ label, value, color }: { label: string; value: string | number; color?: string }) {
-  return (
-    <div className="gov-stat" style={{ "--gov-val-color": color } as React.CSSProperties}>
-      <div className="gov-stat__label">{label}</div>
-      <div className="gov-stat__value">{value}</div>
-    </div>
-  );
-}
 
 function Panel({ title, children }: { title: string; children: React.ReactNode }) {
   return (

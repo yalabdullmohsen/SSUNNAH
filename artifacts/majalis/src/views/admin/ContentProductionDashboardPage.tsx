@@ -1,3 +1,4 @@
+import { AdminStatCard } from "@/components/admin/AdminLayout";
 import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
@@ -9,14 +10,6 @@ import {
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { AdminShell } from "@/views/admin/AdminShell";
 
-function StatCard({ label, value, color }: { label: string; value: number | string; color?: string }) {
-  return (
-    <div className="cpd-stat" style={color ? { "--cpd-val-color": color } as React.CSSProperties : undefined}>
-      <div className="cpd-stat__value">{value}</div>
-      <div className="cpd-stat__label">{label}</div>
-    </div>
-  );
-}
 
 function ContentProductionDashboardContent() {
   const [loading, setLoading] = useState(true);
@@ -78,14 +71,14 @@ function ContentProductionDashboardContent() {
       ) : (
         <>
           <div className="cpd-stats-row">
-            <StatCard label="جاهزية النظام" value={`${data?.readiness?.score ?? 0}%`} />
-            <StatCard label="إنتاج اليوم" value={prod?.today?.published ?? 0} />
-            <StatCard label="إنتاج الأسبوع" value={prod?.week?.published ?? 0} />
-            <StatCard label="إنتاج الشهر" value={prod?.month?.published ?? 0} />
-            <StatCard label="مرفوض اليوم" value={prod?.today?.rejected ?? 0} color="var(--mj-brand-deep)" />
-            <StatCard label="مكرر اليوم" value={prod?.today?.duplicate ?? 0} />
-            <StatCard label="مصادر نشطة" value={data?.readiness?.activeSources ?? 0} />
-            <StatCard label="تنبيهات" value={data?.readiness?.openAlerts ?? 0} color="#991B1B" />
+            <AdminStatCard label="جاهزية النظام" value={`${data?.readiness?.score ?? 0}%`} />
+            <AdminStatCard label="إنتاج اليوم" value={prod?.today?.published ?? 0} />
+            <AdminStatCard label="إنتاج الأسبوع" value={prod?.week?.published ?? 0} />
+            <AdminStatCard label="إنتاج الشهر" value={prod?.month?.published ?? 0} />
+            <AdminStatCard label="مرفوض اليوم" value={prod?.today?.rejected ?? 0} tone="warning" />
+            <AdminStatCard label="مكرر اليوم" value={prod?.today?.duplicate ?? 0} />
+            <AdminStatCard label="مصادر نشطة" value={data?.readiness?.activeSources ?? 0} />
+            <AdminStatCard label="تنبيهات" value={data?.readiness?.openAlerts ?? 0} tone="danger" />
           </div>
 
           <section className="cpd-section">
@@ -136,9 +129,9 @@ function ContentProductionDashboardContent() {
           <section className="cpd-section">
             <h3 className="cpd-section-h3">Monitoring</h3>
             <div className="cpd-monitor-row">
-              <StatCard label="Retry Queue" value={obs?.retries?.length ?? 0} />
-              <StatCard label="Dead Letter" value={obs?.dlq?.length ?? 0} />
-              <StatCard label="سجلات" value={obs?.logs?.length ?? 0} />
+              <AdminStatCard label="Retry Queue" value={obs?.retries?.length ?? 0} />
+              <AdminStatCard label="Dead Letter" value={obs?.dlq?.length ?? 0} />
+              <AdminStatCard label="سجلات" value={obs?.logs?.length ?? 0} />
             </div>
             {lastRun && (
               <p className="cpd-last-run">

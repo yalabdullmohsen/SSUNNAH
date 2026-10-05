@@ -17,11 +17,11 @@ type Submission = {
 };
 
 const TYPE_COLORS: Record<ContentType, { bg: string; color: string }> = {
-  "درس":       { bg: "#dbeafe", color: "#1d4ed8" },
-  "فائدة":     { bg: "#d1fae5", color: "var(--mj-brand)" },
-  "معلومة":    { bg: "#E6EDE9", color: "var(--mj-brand-deep)" },
-  "سؤال لعبة": { bg: "#f3e8ff", color: "#7c3aed" },
-  "فكرة":      { bg: "#ffe4e6", color: "#9f1239" },
+  "درس":       { bg: "var(--mj-info-soft)", color: "var(--mj-info)" },
+  "فائدة":     { bg: "var(--mj-success-soft)", color: "var(--mj-brand)" },
+  "معلومة":    { bg: "var(--mj-hairline)", color: "var(--mj-brand-deep)" },
+  "سؤال لعبة": { bg: "var(--mj-hairline)", color: "var(--mj-accent)" },
+  "فكرة":      { bg: "var(--mj-danger-soft)", color: "var(--mj-danger)" },
 };
 
 export function SubmissionsSection() {
@@ -98,7 +98,7 @@ export function SubmissionsSection() {
 
       <div className="sub-list">
         {items.map((item) => {
-          const typeColor = TYPE_COLORS[item.type as ContentType] ?? { bg: "#f3f4f6", color: "#5C5C56" };
+          const typeColor = TYPE_COLORS[item.type as ContentType] ?? { bg: "var(--mj-hairline)", color: "var(--mj-ink-2)" };
           const isActing = acting === item.id;
           return (
             <div key={item.id} className="sub-card">

@@ -1,5 +1,5 @@
 /**
- * Flutter AdminMainLayout sidebar — dark #1E1E2D, gold brand, brown selected.
+ * Flutter AdminMainLayout sidebar — dark sidebar, gold brand, brown selected.
  */
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";

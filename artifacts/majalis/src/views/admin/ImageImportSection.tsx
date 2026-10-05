@@ -65,13 +65,13 @@ function fmt(bytes: number): string {
 }
 
 const STATUS_META: Record<JobStatus, { label: string; css: string; dot: string }> = {
-  waiting:      { label: "بانتظار المعالجة", css: "ii-chip--wait",    dot: "#94a3b8" },
-  analyzing:    { label: "جارٍ التحليل",    css: "ii-chip--analyze", dot: "#3b82f6" },
-  completed:    { label: "اكتمل",           css: "ii-chip--done",    dot: "#22c55e" },
+  waiting:      { label: "بانتظار المعالجة", css: "ii-chip--wait",    dot: "var(--mj-ink-2)" },
+  analyzing:    { label: "جارٍ التحليل",    css: "ii-chip--analyze", dot: "var(--mj-info)" },
+  completed:    { label: "اكتمل",           css: "ii-chip--done",    dot: "var(--mj-brand)" },
   "needs-review":{ label:"يحتاج مراجعة",   css: "ii-chip--review",  dot: "var(--mj-brand-deep)" },
-  failed:       { label: "فشل",            css: "ii-chip--fail",    dot: "#ef4444" },
-  approved:     { label: "تمّ النشر",      css: "ii-chip--approved",dot: "#10b981" },
-  rejected:     { label: "مرفوض",          css: "ii-chip--rejected",dot: "#dc2626" },
+  failed:       { label: "فشل",            css: "ii-chip--fail",    dot: "var(--mj-danger)" },
+  approved:     { label: "تمّ النشر",      css: "ii-chip--approved",dot: "var(--mj-brand)" },
+  rejected:     { label: "مرفوض",          css: "ii-chip--rejected",dot: "var(--mj-danger)" },
 };
 
 // ── مؤشر الثقة ─────────────────────────────────────────────────────────

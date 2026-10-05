@@ -30,11 +30,11 @@ const STATUS_FILTERS = [
 
 const STATUS_COLORS: Record<string, { bg: string; text: string }> = {
   needs_review: { bg: "rgba(23,61,53,0.08)", text: "var(--mj-brand-deep)" },
-  published: { bg: "#D1FAE5", text: "var(--majalis-emerald-deep)" },
-  rejected: { bg: "#FEE2E2", text: "#991B1B" },
-  running: { bg: "#DBEAFE", text: "#1D4ED8" },
-  completed: { bg: "#D1FAE5", text: "var(--majalis-emerald-deep)" },
-  failed: { bg: "#FEE2E2", text: "#991B1B" },
+  published: { bg: "var(--mj-success-soft)", text: "var(--majalis-emerald-deep)" },
+  rejected: { bg: "var(--mj-danger-soft)", text: "var(--mj-danger)" },
+  running: { bg: "var(--mj-info-soft)", text: "var(--mj-info)" },
+  completed: { bg: "var(--mj-success-soft)", text: "var(--majalis-emerald-deep)" },
+  failed: { bg: "var(--mj-danger-soft)", text: "var(--mj-danger)" },
 };
 
 function formatDate(iso?: string) {
@@ -186,7 +186,7 @@ function AutoContentAdmin() {
           <div className="acp-sources-list">
             {sources.map((s) => (
               <div key={s.id} className="acp-source-item">
-                <span className="acp-source-dot" style={{ "--acp-dot-color": s.is_active ? "var(--majalis-emerald-deep)" : "#991B1B" } as React.CSSProperties}>
+                <span className="acp-source-dot" style={{ "--acp-dot-color": s.is_active ? "var(--majalis-emerald-deep)" : "var(--mj-danger)" } as React.CSSProperties}>
                   {s.is_active ? "●" : "○"}
                 </span>
                 <span>{s.name}</span>
@@ -333,7 +333,7 @@ function AutoContentAdmin() {
             <div key={log.id} className="acp-log-item">
               <span
                 className="acp-log-status"
-                style={{ "--acp-ls-color": log.status === "failed" ? "#991B1B" : "var(--majalis-emerald-deep)" } as React.CSSProperties}
+                style={{ "--acp-ls-color": log.status === "failed" ? "var(--mj-danger)" : "var(--majalis-emerald-deep)" } as React.CSSProperties}
               >
                 {log.status}
               </span>

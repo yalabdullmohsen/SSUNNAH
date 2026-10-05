@@ -1,3 +1,4 @@
+import { AdminStatCard } from "@/components/admin/AdminLayout";
 import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { SkeletonCardGrid } from "@/components/ui-common";
@@ -10,15 +11,6 @@ import {
   type ScholarlyVerificationReport,
 } from "@/lib/scholarly-verification-service";
 
-function StatCard({ label, value, sub }: { label: string; value: string | number; sub?: string }) {
-  return (
-    <div className="svs-stat">
-      <p className="svs-stat__label">{label}</p>
-      <p className="svs-stat__value">{value}</p>
-      {sub && <p className="svs-stat__sub">{sub}</p>}
-    </div>
-  );
-}
 
 export function ScholarlyVerificationSection() {
   const { showSuccess, showError } = useAdminShell();
@@ -92,13 +84,13 @@ export function ScholarlyVerificationSection() {
       </div>
 
       <div className="svs-stats-grid">
-        <StatCard label="اكتمال التوثيق" value={`${report?.documentation_completeness_percent ?? 0}%`} />
-        <StatCard label="موثّق" value={report?.verified_count ?? 0} />
-        <StatCard label="يحتاج مراجعة" value={report?.needs_review_count ?? 0} />
-        <StatCard label="مرفوض" value={report?.rejected_count ?? 0} />
-        <StatCard label="مكرر" value={report?.duplicate_count ?? 0} />
-        <StatCard label="روابط معطلة" value={report?.broken_links_count ?? 0} />
-        <StatCard label="جاهزية المرجع" value={`${report?.readiness_score ?? 0}%`} sub={`${report?.items_scanned ?? 0} عنصر`} />
+        <AdminStatCard label="اكتمال التوثيق" value={`${report?.documentation_completeness_percent ?? 0}%`} />
+        <AdminStatCard label="موثّق" value={report?.verified_count ?? 0} />
+        <AdminStatCard label="يحتاج مراجعة" value={report?.needs_review_count ?? 0} />
+        <AdminStatCard label="مرفوض" value={report?.rejected_count ?? 0} />
+        <AdminStatCard label="مكرر" value={report?.duplicate_count ?? 0} />
+        <AdminStatCard label="روابط معطلة" value={report?.broken_links_count ?? 0} />
+        <AdminStatCard label="جاهزية المرجع" value={`${report?.readiness_score ?? 0}%`} sub={`${report?.items_scanned ?? 0} عنصر`} />
       </div>
 
       <h3 className="svs-section-h3">جودة كل قسم</h3>

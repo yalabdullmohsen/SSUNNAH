@@ -24,8 +24,8 @@ const WEEK_DAYS = ["السبت", "الأحد", "الاثنين", "الثلاثا
 
 function ConfidenceBadge({ score }: { score: number }) {
   const pct = Math.round(score * 100);
-  const color = pct >= 75 ? "var(--majalis-emerald-deep)" : pct >= 45 ? "var(--mj-brand-deep)" : "#991B1B";
-  const bg = pct >= 75 ? "#D1FAE5" : pct >= 45 ? "rgba(23,61,53,0.08)" : "#FEE2E2";
+  const color = pct >= 75 ? "var(--majalis-emerald-deep)" : pct >= 45 ? "var(--mj-brand-deep)" : "var(--mj-danger)";
+  const bg = pct >= 75 ? "var(--mj-success-soft)" : pct >= 45 ? "rgba(23,61,53,0.08)" : "var(--mj-danger-soft)";
   return (
     <span
       className="lis-conf-badge"
@@ -41,7 +41,7 @@ function MissingBadge({ fields }: { fields: string[] }) {
     return (
       <span
         className="lis-missing-badge"
-        style={{ "--lis-mb-bg": "#D1FAE5", "--lis-mb-color": "var(--majalis-emerald-deep)" } as React.CSSProperties}
+        style={{ "--lis-mb-bg": "var(--mj-success-soft)", "--lis-mb-color": "var(--majalis-emerald-deep)" } as React.CSSProperties}
       >
         البيانات الأساسية مكتملة
       </span>
@@ -50,7 +50,7 @@ function MissingBadge({ fields }: { fields: string[] }) {
   return (
     <span
       className="lis-missing-badge"
-      style={{ "--lis-mb-bg": "#FEE2E2", "--lis-mb-color": "#991B1B" } as React.CSSProperties}
+      style={{ "--lis-mb-bg": "var(--mj-danger-soft)", "--lis-mb-color": "var(--mj-danger)" } as React.CSSProperties}
     >
       تحتاج مراجعة: {fields.map((f) => FIELD_LABELS[f] || f).join("، ")}
     </span>
@@ -77,8 +77,8 @@ function FieldStatusGrid({
         const isOk = val && conf >= 0.5;
         const isWarn = val && conf < 0.5;
         const isMissing = !val;
-        const bg = isOk ? "#D1FAE5" : isWarn ? "rgba(23,61,53,0.08)" : "#FEE2E2";
-        const color = isOk ? "var(--majalis-emerald-deep)" : isWarn ? "var(--mj-brand-deep)" : "#991B1B";
+        const bg = isOk ? "var(--mj-success-soft)" : isWarn ? "rgba(23,61,53,0.08)" : "var(--mj-danger-soft)";
+        const color = isOk ? "var(--majalis-emerald-deep)" : isWarn ? "var(--mj-brand-deep)" : "var(--mj-danger)";
         const icon = isOk ? "✓" : isWarn ? "⚠" : "✗";
         return (
           <div
@@ -116,7 +116,7 @@ function DebugLogPanel({ log }: { log: DebugLog }) {
             <div
               key={i}
               className="lis-debug-stage"
-              style={{ "--lis-ds-bg": s.ok === false ? "#FEE2E2" : "#fff" } as React.CSSProperties}
+              style={{ "--lis-ds-bg": s.ok === false ? "var(--mj-danger-soft)" : "var(--mj-surface)" } as React.CSSProperties}
             >
               <strong>{s.stage}</strong>
               {s.ms != null && <span className="lis-debug-ms">({s.ms}ms)</span>}

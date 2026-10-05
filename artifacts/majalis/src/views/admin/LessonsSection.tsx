@@ -39,9 +39,9 @@ const AUDIENCE = ["الكل", "رجال", "نساء", "أطفال"];
 const DELIVERY = ["حضور فقط", "بث مباشر", "كلاهما"];
 const STATUSES: Record<string, string> = { approved: "معتمد", pending: "معلّق", rejected: "مرفوض" };
 const STATUS_COLORS: Record<string, { bg: string; text: string }> = {
-  approved: { bg: "#D1FAE5", text: "var(--majalis-emerald-deep)" },
+  approved: { bg: "var(--mj-success-soft)", text: "var(--majalis-emerald-deep)" },
   pending:  { bg: "rgba(23,61,53,0.08)", text: "var(--mj-brand-deep)" },
-  rejected: { bg: "#FEE2E2", text: "#991B1B" },
+  rejected: { bg: "var(--mj-danger-soft)", text: "var(--mj-danger)" },
 };
 const EMPTY: any = {
   title: "",
@@ -236,8 +236,8 @@ export function LessonsSection() {
         <div
           className="les-sync-msg"
           style={{
-            "--les-msg-bg": syncMsg.startsWith("✓") ? "#D1FAE5" : "#FEE2E2",
-            "--les-msg-color": syncMsg.startsWith("✓") ? "var(--majalis-emerald-deep)" : "#991B1B",
+            "--les-msg-bg": syncMsg.startsWith("✓") ? "var(--mj-success-soft)" : "var(--mj-danger-soft)",
+            "--les-msg-color": syncMsg.startsWith("✓") ? "var(--majalis-emerald-deep)" : "var(--mj-danger)",
           } as React.CSSProperties}
         >
           {syncMsg}

@@ -1,3 +1,4 @@
+import { AdminTabs } from "@/components/admin/AdminLayout";
 import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
@@ -35,10 +36,10 @@ type DraftRow = {
 };
 
 const DECISION_COLORS: Record<string, { bg: string; text: string }> = {
-  approved: { bg: "#D1FAE5", text: "var(--majalis-emerald-deep)" },
+  approved: { bg: "var(--mj-success-soft)", text: "var(--majalis-emerald-deep)" },
   pending_review: { bg: "rgba(23,61,53,0.08)", text: "var(--mj-brand-deep)" },
   duplicate: { bg: "rgba(23,61,53,.10)", text: "var(--mj-brand)" },
-  rejected: { bg: "#FEE2E2", text: "#991B1B" },
+  rejected: { bg: "var(--mj-danger-soft)", text: "var(--mj-danger)" },
 };
 
 function formatDt(iso?: string) {
@@ -52,9 +53,9 @@ function formatDt(iso?: string) {
 
 function confidenceColor(score: number) {
   const pct = Math.round(score * 100);
-  if (pct >= 75) return { bg: "#D1FAE5", text: "var(--majalis-emerald-deep)" };
+  if (pct >= 75) return { bg: "var(--mj-success-soft)", text: "var(--majalis-emerald-deep)" };
   if (pct >= 45) return { bg: "rgba(23,61,53,0.08)", text: "var(--mj-brand-deep)" };
-  return { bg: "#FEE2E2", text: "#991B1B" };
+  return { bg: "var(--mj-danger-soft)", text: "var(--mj-danger)" };
 }
 
 function AutomationReviewContent() {
@@ -209,23 +210,13 @@ function AutomationReviewContent() {
         </div>
       )}
 
-      <div className="arp-tabs">
-        {tabs.map(([key, label]) => (
-          <Button variant="secondary" size="small"
-            key={key}
-            type="button"
-            onClick={() => setTab(key)}
-            className="arp-tab"
-            style={tab === key ? {
-              "--arp-tab-border": "var(--majalis-emerald)",
-              "--arp-tab-bg": "#E8F5E9",
-              "--arp-tab-color": "var(--majalis-emerald-deep)",
-            } as React.CSSProperties : undefined}
-          >
-            {label}
-          </Button>
-        ))}
-      </div>
+      <AdminTabs
+        items={tabs.map(([id, label]) => ({ id, label }))}
+        value={tab}
+        onChange={(id) => setTab(id as typeof tab)}
+        ariaLabel="طوابير مراجعة المحتوى"
+        idPrefix="arp"
+      />
 
       {loading ? <SkeletonCardGrid count={6} /> : (
         <div className="arp-list">
@@ -318,7 +309,7 @@ function AutomationReviewContent() {
                         {CONTENT_TYPE_LABEL[u.content_type] || u.content_type}
                       </span>
                       {u.review_status === "needs_date_review" && (
-                        <span className="arp-decision-badge" style={{ "--arp-db-bg": "#FEF3C7", "--arp-db-color": "#92400E" } as React.CSSProperties}>
+                        <span className="arp-decision-badge" style={{ "--arp-db-bg": "var(--mj-warning-soft)", "--arp-db-color": "var(--mj-warning)" } as React.CSSProperties}>
                           يحتاج مراجعة التاريخ
                         </span>
                       )}

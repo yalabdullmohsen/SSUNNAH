@@ -17,9 +17,6 @@
 .tgm-row-val        { word-break: break-all; }
 .tgm-row-val--mono  { font-family: monospace; text-align: start; }
 .tgm-row-val--err   { color: var(--mj-danger); }
-.tgm-stat-card      { background: var(--majalis-panel); border: 1px solid var(--majalis-line); border-radius: 0.625rem; padding: var(--ds-space-4); text-align: center; }
-.tgm-stat-val       { font-size: 1.6rem; font-weight: 800; color: var(--tgm-sv-color, var(--majalis-emerald)); }
-.tgm-stat-label     { font-size: var(--ds-text-xs); color: var(--majalis-ink-soft); margin-top: 0.25rem; }
 .tgm-progress-row   { font-size: 0.82rem; }
 .tgm-progress-head  { display: flex; justify-content: space-between; margin-bottom: 0.15rem; }
 .tgm-progress-sub   { color: var(--majalis-ink-soft); }

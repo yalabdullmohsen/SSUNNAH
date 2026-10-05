@@ -114,7 +114,7 @@ export function ReligiousCalendarReviewSection() {
                   textAlign: "right",
                   padding: "0.65rem 0.75rem",
                   marginBottom: "0.35rem",
-                  border: "1px solid var(--color-border, #e5e7eb)",
+                  border: "1px solid var(--color-border, var(--mj-hairline))",
                   borderRadius: "0.5rem",
                   background: selected?.record.id === record.id ? "color-mix(in srgb, var(--mj-brand-deep) 8%, white)" : "white",
                   cursor: "pointer",
@@ -132,7 +132,7 @@ export function ReligiousCalendarReviewSection() {
         {selected ? (
           <article
             className="ui-card"
-            style={{ padding: "1rem", border: "1px solid var(--color-border, #e5e7eb)", borderRadius: "0.75rem" }}
+            style={{ padding: "1rem", border: "1px solid var(--color-border, var(--mj-hairline))", borderRadius: "0.75rem" }}
           >
             <h3 style={{ marginTop: 0 }}>{selected.record.eventName}</h3>
             <p>

@@ -93,7 +93,16 @@ for (const f of files) {
   assert.doesNotMatch(src, /\bwindow\.(confirm|alert|prompt)\(/, `${f}: لا window.confirm/alert/prompt`);
   hex += (src.match(/#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b/g) || []).length;
 }
-const HEX_CEILING = 98; // يُخفَّض مع كل موجة — لا يُرفع
+const HEX_CEILING = 0; // موجة الأقسام: كل ألوان اللوحة توكنات --mj-*
 assert.ok(hex <= HEX_CEILING, `ألوان hex في TSX اللوحة ${hex} > ${HEX_CEILING}`);
+
+/* 9) موجة الأقسام: لا بطاقات إحصاء محلية ولا تبويبات يدوية بألوان مضمّنة */
+for (const f of files) {
+  const src = read(f);
+  assert.doesNotMatch(src, /\nfunction StatCard\(/, `${f}: StatCard محلي — استخدم AdminStatCard`);
+  assert.doesNotMatch(src, /--arp-tab-(bg|border|color)/, `${f}: تبويب يدوي بألوان مضمّنة — استخدم AdminTabs`);
+}
+assert.match(read("src/views/admin/DawahSection.tsx"), /<AdminTabs/, "Dawah ← AdminTabs");
+assert.match(read("src/views/admin/AutomationReviewPage.tsx"), /<AdminTabs/, "AutomationReview ← AdminTabs");
 
 console.log(`✓ admin-dashboard-unification gate — ${sectionKeys.length} قسمًا، hex=${hex}/${HEX_CEILING}`);

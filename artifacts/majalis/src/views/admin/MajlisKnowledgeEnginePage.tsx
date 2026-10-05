@@ -1,3 +1,4 @@
+import { AdminStatCard } from "@/components/admin/AdminLayout";
 import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
@@ -60,22 +61,14 @@ type MkeStats = {
   sourcesByType?: Record<string, number>;
 };
 
-function StatCard({ label, value, color }: { label: string; value: number | string; color?: string }) {
-  return (
-    <div className="mke-stat" style={color ? { "--mke-val-color": color } as React.CSSProperties : undefined}>
-      <div className="mke-stat__value">{value}</div>
-      <div className="mke-stat__label">{label}</div>
-    </div>
-  );
-}
 
 function StatusBadge({ ok, label }: { ok: boolean; label: string }) {
   return (
     <span
       className="mke-service-badge"
       style={{
-        "--mke-sb-bg": ok ? "#D1FAE5" : "#FEE2E2",
-        "--mke-sb-color": ok ? "var(--majalis-emerald-deep)" : "#991B1B",
+        "--mke-sb-bg": ok ? "var(--mj-success-soft)" : "var(--mj-danger-soft)",
+        "--mke-sb-color": ok ? "var(--majalis-emerald-deep)" : "var(--mj-danger)",
       } as React.CSSProperties}
     >
       {label}: {ok ? "✓" : "✗"}
@@ -153,20 +146,20 @@ function MajlisKnowledgeEngineContent() {
       {loading ? <SkeletonCardGrid count={6} /> : (
         <>
           <div className="mke-stats-row">
-            <StatCard label="صحة النظام" value={stats?.health?.score ?? "—"} color={stats?.health?.status === "healthy" ? "var(--majalis-emerald-deep)" : "var(--mj-brand-deep)"} />
-            <StatCard label="المصادر" value={stats?.counts?.sources ?? (stats?.subsystems as { sources?: { total?: number } } | undefined)?.sources?.total ?? stats?.sourcesTotal ?? 0} />
-            <StatCard label="المنصات" value={stats?.platformsSupported ?? platforms.length} />
-            <StatCard label="مسودات" value={stats?.counts?.drafts ?? stats?.drafts ?? 0} />
-            <StatCard label="بانتظار المراجعة" value={stats?.counts?.pendingReview ?? stats?.pendingReview ?? 0} color="var(--mj-brand-deep)" />
-            <StatCard label="منشور اليوم" value={stats?.counts?.publishedToday ?? stats?.publishedToday ?? 0} />
-            <StatCard label="Queue" value={stats?.subsystems?.queue ? (stats.subsystems.queue as { pending?: number }).pending ?? 0 : stats?.queue?.pending ?? 0} />
-            <StatCard label="Self-Heal" value={stats?.counts?.self_heal_log ?? "—"} />
+            <AdminStatCard label="صحة النظام" value={stats?.health?.score ?? "—"} tone={stats?.health?.status === "healthy" ? "success" : "neutral"} />
+            <AdminStatCard label="المصادر" value={stats?.counts?.sources ?? (stats?.subsystems as { sources?: { total?: number } } | undefined)?.sources?.total ?? stats?.sourcesTotal ?? 0} />
+            <AdminStatCard label="المنصات" value={stats?.platformsSupported ?? platforms.length} />
+            <AdminStatCard label="مسودات" value={stats?.counts?.drafts ?? stats?.drafts ?? 0} />
+            <AdminStatCard label="بانتظار المراجعة" value={stats?.counts?.pendingReview ?? stats?.pendingReview ?? 0} tone="warning" />
+            <AdminStatCard label="منشور اليوم" value={stats?.counts?.publishedToday ?? stats?.publishedToday ?? 0} />
+            <AdminStatCard label="Queue" value={stats?.subsystems?.queue ? (stats.subsystems.queue as { pending?: number }).pending ?? 0 : stats?.queue?.pending ?? 0} />
+            <AdminStatCard label="Self-Heal" value={stats?.counts?.self_heal_log ?? "—"} />
             {akp && (
               <>
-                <StatCard label="AKP جاهزية %" value={akp.readinessPct ?? "—"} />
-                <StatCard label="منشور AKP اليوم" value={akp.counts?.published ?? akp.productionVelocity?.itemsToday ?? 0} />
-                <StatCard label="DLQ" value={akp.counts?.dlq ?? 0} color="#991B1B" />
-                <StatCard label="مراجعة AKP" value={akp.counts?.reviewPending ?? 0} color="var(--mj-brand-deep)" />
+                <AdminStatCard label="AKP جاهزية %" value={akp.readinessPct ?? "—"} />
+                <AdminStatCard label="منشور AKP اليوم" value={akp.counts?.published ?? akp.productionVelocity?.itemsToday ?? 0} />
+                <AdminStatCard label="DLQ" value={akp.counts?.dlq ?? 0} tone="danger" />
+                <AdminStatCard label="مراجعة AKP" value={akp.counts?.reviewPending ?? 0} tone="warning" />
               </>
             )}
           </div>
@@ -176,7 +169,7 @@ function MajlisKnowledgeEngineContent() {
               <h3 className="mke-section-h3">خطوط الإنتاج (Phase 2)</h3>
               <div className="mke-row-wrap">
                 {Object.entries(akp.pipelines).map(([key, p]) => (
-                  <StatCard
+                  <AdminStatCard
                     key={key}
                     label={`${p.label || key} (${p.publishedToday ?? 0}/${p.quota ?? "—"})`}
                     value={p.publishedToday ?? 0}
@@ -205,8 +198,8 @@ function MajlisKnowledgeEngineContent() {
                       key={s.slug}
                       className="mke-source-status"
                       style={{
-                        "--mke-ss-bg": s.status === "available" || s.status === "slow" ? "#ecfdf5" : "#fef2f2",
-                        "--mke-ss-color": s.status === "available" || s.status === "slow" ? "var(--majalis-emerald-deep)" : "#991B1B",
+                        "--mke-ss-bg": s.status === "available" || s.status === "slow" ? "var(--mj-success-soft)" : "var(--mj-danger-soft)",
+                        "--mke-ss-color": s.status === "available" || s.status === "slow" ? "var(--majalis-emerald-deep)" : "var(--mj-danger)",
                       } as React.CSSProperties}
                       title={s.lastError || s.status}
                     >
@@ -244,9 +237,9 @@ function MajlisKnowledgeEngineContent() {
             <section className="mke-section">
               <h3 className="mke-section-h3">دقة الاستخراج</h3>
               <div className="mke-row-wrap">
-                <StatCard label="Vision AI %" value={stats.extractionMetrics.visionAccuracy ?? "—"} />
-                <StatCard label="كشف التكرار %" value={stats.extractionMetrics.duplicateDetectionRate ?? "—"} />
-                <StatCard label="ربط الشيوخ %" value={stats.extractionMetrics.sheikhMatchRate ?? "—"} />
+                <AdminStatCard label="Vision AI %" value={stats.extractionMetrics.visionAccuracy ?? "—"} />
+                <AdminStatCard label="كشف التكرار %" value={stats.extractionMetrics.duplicateDetectionRate ?? "—"} />
+                <AdminStatCard label="ربط الشيوخ %" value={stats.extractionMetrics.sheikhMatchRate ?? "—"} />
               </div>
             </section>
           )}

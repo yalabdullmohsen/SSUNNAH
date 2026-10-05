@@ -1,3 +1,4 @@
+import { AdminStatCard } from "@/components/admin/AdminLayout";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
@@ -45,10 +46,10 @@ export function SearchAnalyticsSection() {
       </div>
 
       <div className="sas-stats-grid">
-        <StatCard label="إجمالي عمليات البحث" value={analytics?.total_searches ?? 0} />
-        <StatCard label="متوسط زمن الاستجابة" value={`${analytics?.avg_response_ms ?? 0} ms`} />
-        <StatCard label="معدل النقر" value={`${analytics?.click_through_rate ?? 0}%`} />
-        <StatCard label="جودة النتائج" value={`${analytics?.quality_score ?? 0}/100`} />
+        <AdminStatCard label="إجمالي عمليات البحث" value={analytics?.total_searches ?? 0} />
+        <AdminStatCard label="متوسط زمن الاستجابة" value={`${analytics?.avg_response_ms ?? 0} ms`} />
+        <AdminStatCard label="معدل النقر" value={`${analytics?.click_through_rate ?? 0}%`} />
+        <AdminStatCard label="جودة النتائج" value={`${analytics?.quality_score ?? 0}/100`} />
       </div>
 
       <div className="sas-panels-grid">
@@ -68,14 +69,6 @@ export function SearchAnalyticsSection() {
   );
 }
 
-function StatCard({ label, value }: { label: string; value: string | number }) {
-  return (
-    <div className="sas-stat">
-      <div className="sas-stat__label">{label}</div>
-      <div className="sas-stat__value">{value}</div>
-    </div>
-  );
-}
 
 function AnalyticsList({ title, items }: { title: string; items: string[] }) {
   return (

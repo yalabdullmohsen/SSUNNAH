@@ -1,3 +1,4 @@
+import { AdminStatCard } from "@/components/admin/AdminLayout";
 import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useAdminShell } from "@/views/admin/AdminShell";
@@ -86,11 +87,11 @@ async function tgGet(action: string, params: Record<string, string> = {}) {
 }
 
 const QUALITY_COLORS: Record<string, string> = {
-  complete: "#16a34a",
-  needs_review: "#5C5C56",
-  incomplete: "#dc2626",
-  duplicate: "#7c3aed",
-  rejected: "#9ca3af",
+  complete: "var(--mj-brand)",
+  needs_review: "var(--mj-ink-2)",
+  incomplete: "var(--mj-danger)",
+  duplicate: "var(--mj-accent)",
+  rejected: "var(--mj-ink-2)",
 };
 
 const QUALITY_AR: Record<string, string> = {
@@ -141,14 +142,6 @@ function Row({ label, value, mono = false, error = false }: { label: string; val
   );
 }
 
-function StatCard({ label, value, color }: { label: string; value: number | string; color: string }) {
-  return (
-    <div className="tgm-stat-card">
-      <div className="tgm-stat-val" style={{ "--tgm-sv-color": color } as React.CSSProperties}>{value}</div>
-      <div className="tgm-stat-label">{label}</div>
-    </div>
-  );
-}
 
 function ProgressRow({ label, value, total, color = "var(--majalis-emerald)" }: { label: string; value: number; total: number; color?: string }) {
   const pct = total > 0 ? Math.round((value / total) * 100) : 0;
@@ -497,7 +490,7 @@ function ReviewTab() {
                   <span
                     className="tgm-quality-badge"
                     style={{
-                      "--tgm-qb-bg": `${QUALITY_COLORS[lesson.quality_status] ?? "#999999"}20`,
+                      "--tgm-qb-bg": `color-mix(in srgb, ${QUALITY_COLORS[lesson.quality_status] ?? "var(--mj-ink-2)"} 12%, transparent)`,
                       "--tgm-qb-color": QUALITY_COLORS[lesson.quality_status] || "var(--majalis-ink-soft)",
                     } as React.CSSProperties}
                   >
@@ -566,11 +559,11 @@ function StatsTab() {
   return (
     <div className="tgm-grid-gap">
       <div className="tgm-stats-grid">
-        <StatCard label="إجمالي الرسائل" value={raw.total ?? 0} color="var(--majalis-emerald)" />
-        <StatCard label="دروس مُستخرجة" value={lessons.total ?? 0} color="#2563eb" />
-        <StatCard label="بانتظار المراجعة" value={lessons.byReview?.pending ?? 0} color="#5C5C56" />
-        <StatCard label="مُعتمدة" value={lessons.byReview?.approved ?? 0} color="#16a34a" />
-        <StatCard label="معدل النجاح" value={`${data.successRate}%`} color="#7c3aed" />
+        <AdminStatCard label="إجمالي الرسائل" value={raw.total ?? 0} />
+        <AdminStatCard label="دروس مُستخرجة" value={lessons.total ?? 0} tone="info" />
+        <AdminStatCard label="بانتظار المراجعة" value={lessons.byReview?.pending ?? 0} tone="warning" />
+        <AdminStatCard label="مُعتمدة" value={lessons.byReview?.approved ?? 0} tone="success" />
+        <AdminStatCard label="معدل النجاح" value={`${data.successRate}%`} tone="accent" />
       </div>
 
       <div className="tgm-panels-grid">

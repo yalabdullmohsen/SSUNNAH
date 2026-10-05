@@ -1,3 +1,4 @@
+import { AdminStatCard } from "@/components/admin/AdminLayout";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useAdminShell } from "@/views/admin/AdminShell";
@@ -83,12 +84,12 @@ export function AutonomousAiSection() {
       </div>
 
       <div className="aai-stats-grid">
-        <StatCard label="عناصر جديدة" value={obs?.metrics?.itemsNew ?? 0} />
-        <StatCard label="مرفوضة" value={obs?.metrics?.itemsRejected ?? 0} color="#dc2626" />
-        <StatCard label="معدل النجاح" value={`${obs?.metrics?.successRate ?? 0}%`} />
-        <StatCard label="محتوى يومي" value={obs?.metrics?.dailyContentCount ?? 0} />
-        <StatCard label="إعادة محاولة" value={obs?.metrics?.retryPending ?? 0} />
-        <StatCard label="مراحل Pipeline" value={Object.keys(PIPELINE_STAGE_LABELS).length} />
+        <AdminStatCard label="عناصر جديدة" value={obs?.metrics?.itemsNew ?? 0} />
+        <AdminStatCard label="مرفوضة" value={obs?.metrics?.itemsRejected ?? 0} tone="danger" />
+        <AdminStatCard label="معدل النجاح" value={`${obs?.metrics?.successRate ?? 0}%`} />
+        <AdminStatCard label="محتوى يومي" value={obs?.metrics?.dailyContentCount ?? 0} />
+        <AdminStatCard label="إعادة محاولة" value={obs?.metrics?.retryPending ?? 0} />
+        <AdminStatCard label="مراحل Pipeline" value={Object.keys(PIPELINE_STAGE_LABELS).length} />
       </div>
 
       <div className="aai-panels-grid">
@@ -98,7 +99,7 @@ export function AutonomousAiSection() {
               <span>{job.name}</span>
               <span
                 className="aai-cron-status"
-                style={{ "--aai-status-color": job.status === "healthy" ? "var(--majalis-emerald-deep,var(--mj-brand-deep))" : "#dc2626" } as React.CSSProperties}
+                style={{ "--aai-status-color": job.status === "healthy" ? "var(--majalis-emerald-deep,var(--mj-brand-deep))" : "var(--mj-danger)" } as React.CSSProperties}
               >{job.status}</span>
             </div>
           ))}
@@ -142,7 +143,7 @@ export function AutonomousAiSection() {
               <div key={ev.id || ev.created_at + ev.stage} className="aai-event">
                 <span
                   className="aai-event__status"
-                  style={{ "--aai-ev-color": ev.success ? "var(--majalis-emerald-deep,var(--mj-brand-deep))" : "#dc2626" } as React.CSSProperties}
+                  style={{ "--aai-ev-color": ev.success ? "var(--majalis-emerald-deep,var(--mj-brand-deep))" : "var(--mj-danger)" } as React.CSSProperties}
                 >{ev.success ? "✓" : "✗"}</span>
                 {" "}
                 <strong>{PIPELINE_STAGE_LABELS[ev.stage] || ev.stage}</strong>
@@ -163,14 +164,6 @@ export function AutonomousAiSection() {
   );
 }
 
-function StatCard({ label, value, color }: { label: string; value: string | number; color?: string }) {
-  return (
-    <div className="aai-stat" style={{ "--aai-val-color": color } as React.CSSProperties}>
-      <div className="aai-stat__label">{label}</div>
-      <div className="aai-stat__value">{value}</div>
-    </div>
-  );
-}
 
 function Panel({ title, children }: { title: string; children: React.ReactNode }) {
   return (

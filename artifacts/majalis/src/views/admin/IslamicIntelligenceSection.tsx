@@ -1,3 +1,4 @@
+import { AdminStatCard } from "@/components/admin/AdminLayout";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useAdminShell } from "@/views/admin/AdminShell";
@@ -14,14 +15,6 @@ import {
   type IntelligenceAnalytics,
 } from "@/lib/islamic-intelligence-service";
 
-function StatCard({ label, value, color }: { label: string; value: string | number; color?: string }) {
-  return (
-    <div className="ii-stat" style={color ? { "--ii-val-color": color } as React.CSSProperties : undefined}>
-      <div className="ii-stat__label">{label}</div>
-      <div className="ii-stat__value">{value}</div>
-    </div>
-  );
-}
 
 function Panel({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -121,14 +114,14 @@ export function IslamicIntelligenceSection() {
       </div>
 
       <div className="ii-stats-grid">
-        <StatCard label="وكلاء AI" value={dashboard?.agent_count ?? 9} />
-        <StatCard label="عمليات بحث" value={analytics?.most_searched?.length ?? 0} />
-        <StatCard label="جودة متوسطة" value={analytics?.quality?.avg_score ?? 0} />
-        <StatCard label="نسبة التوثيق" value={`${analytics?.verification_pct ?? 0}%`} />
-        <StatCard label="محتوى جديد" value={analytics?.content_growth?.new_items ?? 0} />
-        <StatCard label="يحتاج مراجعة" value={analytics?.quality?.needs_review ?? 0} color="#dc2626" />
-        <StatCard label="معدل النجاح" value={`${analytics?.update_success_rate ?? 0}%`} />
-        <StatCard label="زمن البحث" value={`${analytics?.avg_response_ms ?? 0}ms`} />
+        <AdminStatCard label="وكلاء AI" value={dashboard?.agent_count ?? 9} />
+        <AdminStatCard label="عمليات بحث" value={analytics?.most_searched?.length ?? 0} />
+        <AdminStatCard label="جودة متوسطة" value={analytics?.quality?.avg_score ?? 0} />
+        <AdminStatCard label="نسبة التوثيق" value={`${analytics?.verification_pct ?? 0}%`} />
+        <AdminStatCard label="محتوى جديد" value={analytics?.content_growth?.new_items ?? 0} />
+        <AdminStatCard label="يحتاج مراجعة" value={analytics?.quality?.needs_review ?? 0} tone="warning" />
+        <AdminStatCard label="معدل النجاح" value={`${analytics?.update_success_rate ?? 0}%`} />
+        <AdminStatCard label="زمن البحث" value={`${analytics?.avg_response_ms ?? 0}ms`} />
       </div>
 
       <div className="ii-panels-grid">
@@ -178,7 +171,7 @@ export function IslamicIntelligenceSection() {
               <span>{AGENT_LABELS[r.agent_id] || r.agent_id}</span>
               <span
                 className="ii-run-status"
-                style={{ "--ii-run-color": r.status === "completed" ? "var(--majalis-emerald-deep,var(--mj-brand-deep))" : "#dc2626" } as React.CSSProperties}
+                style={{ "--ii-run-color": r.status === "completed" ? "var(--majalis-emerald-deep,var(--mj-brand-deep))" : "var(--mj-danger)" } as React.CSSProperties}
               >
                 {r.issues_found} مشكلة
               </span>

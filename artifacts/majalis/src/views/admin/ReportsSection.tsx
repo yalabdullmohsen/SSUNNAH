@@ -74,7 +74,7 @@ export function ReportsSection() {
           <div
             key={c.label}
             className="rpt-stat-card"
-            style={{ "--rpt-bg": c.alert ? "#FEE2E2" : "var(--majalis-sage)", "--rpt-border": c.alert ? "#dc2626" : "var(--majalis-line)", "--rpt-value": c.alert ? "#dc2626" : "var(--majalis-emerald-deep)" } as React.CSSProperties}
+            style={{ "--rpt-bg": c.alert ? "var(--mj-danger-soft)" : "var(--majalis-sage)", "--rpt-border": c.alert ? "var(--mj-danger)" : "var(--majalis-line)", "--rpt-value": c.alert ? "var(--mj-danger)" : "var(--majalis-emerald-deep)" } as React.CSSProperties}
           >
             <p className="rpt-stat-value">
               {c.value}

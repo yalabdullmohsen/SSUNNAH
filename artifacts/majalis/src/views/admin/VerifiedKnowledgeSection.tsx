@@ -1,3 +1,4 @@
+import { AdminStatCard } from "@/components/admin/AdminLayout";
 import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { SkeletonCardGrid } from "@/components/ui-common";
@@ -11,15 +12,6 @@ import {
   type VerifiedKnowledgeDashboard,
 } from "@/lib/verified-knowledge-service";
 
-function StatCard({ label, value, sub }: { label: string; value: string | number; sub?: string }) {
-  return (
-    <div className="svs-stat">
-      <p className="svs-stat__label">{label}</p>
-      <p className="svs-stat__value">{value}</p>
-      {sub && <p className="svs-stat__sub">{sub}</p>}
-    </div>
-  );
-}
 
 function gapLabel(reason: string) {
   if (reason === "empty_section") return "قسم فارغ";
@@ -28,7 +20,7 @@ function gapLabel(reason: string) {
 }
 
 function priorityColor(priority: QualityGap["priority"]) {
-  if (priority === "high") return "#991B1B";
+  if (priority === "high") return "var(--mj-danger)";
   if (priority === "medium") return "var(--mj-brand-deep)";
   return "var(--majalis-ink-soft)";
 }
@@ -114,12 +106,12 @@ export function VerifiedKnowledgeSection() {
       </div>
 
       <div className="svs-stats-grid">
-        <StatCard label="المصادر" value={sources?.total ?? totals.sources_total ?? 0} sub={`${sources?.active ?? totals.sources_active ?? 0} نشط`} />
-        <StatCard label="أذكار موثّقة" value={totals.verified_adhkar ?? 0} />
-        <StatCard label="أحاديث موثّقة" value={totals.verified_hadith ?? 0} />
-        <StatCard label="سجل المصادر" value={totals.provenance_verified ?? 0} />
-        <StatCard label="فجوات" value={totals.gaps_count ?? gaps.length} />
-        <StatCard label="Seed corpus" value={totals.seed_corpus_total ?? 0} />
+        <AdminStatCard label="المصادر" value={sources?.total ?? totals.sources_total ?? 0} sub={`${sources?.active ?? totals.sources_active ?? 0} نشط`} />
+        <AdminStatCard label="أذكار موثّقة" value={totals.verified_adhkar ?? 0} />
+        <AdminStatCard label="أحاديث موثّقة" value={totals.verified_hadith ?? 0} />
+        <AdminStatCard label="سجل المصادر" value={totals.provenance_verified ?? 0} />
+        <AdminStatCard label="فجوات" value={totals.gaps_count ?? gaps.length} />
+        <AdminStatCard label="Seed corpus" value={totals.seed_corpus_total ?? 0} />
       </div>
 
       {(report?.recommendations?.length ?? 0) > 0 && (

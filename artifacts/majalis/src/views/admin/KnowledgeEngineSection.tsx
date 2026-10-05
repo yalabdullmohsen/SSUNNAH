@@ -1,3 +1,4 @@
+import { AdminStatCard } from "@/components/admin/AdminLayout";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle } from "lucide-react";
@@ -12,20 +13,10 @@ import {
   type SystemHealth,
 } from "@/lib/knowledge-engine-service";
 
-function StatCard({ label, value, sub }: { label: string; value: string | number; sub?: string }) {
-  return (
-    <div className="ken-stat">
-      <p className="ken-stat__label">{label}</p>
-      <p className="ken-stat__value">{value}</p>
-      {sub && <p className="ken-stat__sub">{sub}</p>}
-    </div>
-  );
-}
-
 const HEALTH_COLORS: Record<string, string> = {
   healthy: "var(--majalis-emerald-deep)",
-  degraded: "#5C5C56",
-  down: "#991B1B",
+  degraded: "var(--mj-ink-2)",
+  down: "var(--mj-danger)",
   unknown: "var(--majalis-ink-soft)",
 };
 
@@ -124,16 +115,16 @@ export function KnowledgeEngineSection() {
       ) : (
         <>
           <div className="ken-stats-grid">
-            <StatCard label="آخر تشغيل (ث)" value={systemHealth?.metrics?.lastDurationMs ? Math.round(systemHealth.metrics.lastDurationMs / 1000) : "—"} />
-            <StatCard label="مصادر نشطة" value={systemHealth?.metrics?.sourcesActive ?? stats?.connectors_active ?? 0} sub={`من ${systemHealth?.metrics?.sourcesTotal ?? stats?.connectors_total ?? 0}`} />
-            <StatCard label="منشور" value={systemHealth?.metrics?.itemsPublished ?? 0} />
-            <StatCard label="قيد المراجعة" value={systemHealth?.metrics?.itemsPending ?? stats?.items_review ?? 0} />
-            <StatCard label="جديد اليوم" value={systemHealth?.metrics?.itemsNewToday ?? stats?.items_new_today ?? 0} />
-            <StatCard label="منشور اليوم" value={systemHealth?.metrics?.itemsPublishedToday ?? stats?.items_published_today ?? 0} />
-            <StatCard label="Supabase" value={systemHealth?.supabase?.status === "connected" ? "✓" : "✗"} />
-            <StatCard label="Cron" value={systemHealth?.cron?.secretConfigured ? "✓" : "—"} />
-            <StatCard label="AI" value={systemHealth?.ai?.status === "ready" ? "✓" : "fallback"} />
-            <StatCard label="Queue" value={systemHealth?.queue?.pending ?? 0} sub={systemHealth?.queue?.status} />
+            <AdminStatCard label="آخر تشغيل (ث)" value={systemHealth?.metrics?.lastDurationMs ? Math.round(systemHealth.metrics.lastDurationMs / 1000) : "—"} />
+            <AdminStatCard label="مصادر نشطة" value={systemHealth?.metrics?.sourcesActive ?? stats?.connectors_active ?? 0} sub={`من ${systemHealth?.metrics?.sourcesTotal ?? stats?.connectors_total ?? 0}`} />
+            <AdminStatCard label="منشور" value={systemHealth?.metrics?.itemsPublished ?? 0} />
+            <AdminStatCard label="قيد المراجعة" value={systemHealth?.metrics?.itemsPending ?? stats?.items_review ?? 0} />
+            <AdminStatCard label="جديد اليوم" value={systemHealth?.metrics?.itemsNewToday ?? stats?.items_new_today ?? 0} />
+            <AdminStatCard label="منشور اليوم" value={systemHealth?.metrics?.itemsPublishedToday ?? stats?.items_published_today ?? 0} />
+            <AdminStatCard label="Supabase" value={systemHealth?.supabase?.status === "connected" ? "✓" : "✗"} />
+            <AdminStatCard label="Cron" value={systemHealth?.cron?.secretConfigured ? "✓" : "—"} />
+            <AdminStatCard label="AI" value={systemHealth?.ai?.status === "ready" ? "✓" : "fallback"} />
+            <AdminStatCard label="Queue" value={systemHealth?.queue?.pending ?? 0} sub={systemHealth?.queue?.status} />
           </div>
 
           {systemHealth?.errors && systemHealth.errors.length > 0 && (
@@ -143,16 +134,16 @@ export function KnowledgeEngineSection() {
           )}
 
           <div className="ken-stats-grid">
-            <StatCard label="مصادر سليمة" value={stats?.connectors_healthy ?? 0} />
-            <StatCard label="جديد اليوم" value={stats?.items_new_today ?? 0} />
-            <StatCard label="منشور اليوم" value={stats?.items_published_today ?? 0} />
-            <StatCard label="قيد المراجعة" value={stats?.items_review ?? 0} />
-            <StatCard label="مرفوض" value={stats?.items_rejected ?? 0} />
-            <StatCard label="مكرر" value={stats?.items_duplicate ?? 0} />
-            <StatCard label="مؤرشف" value={stats?.items_archived ?? 0} />
-            <StatCard label="روابط مكسورة" value={stats?.broken_links ?? 0} />
-            <StatCard label="جودة متوسطة" value={`${stats?.avg_quality ?? 0}%`} />
-            <StatCard label="ثقة متوسطة" value={`${stats?.avg_trust ?? 0}%`} />
+            <AdminStatCard label="مصادر سليمة" value={stats?.connectors_healthy ?? 0} />
+            <AdminStatCard label="جديد اليوم" value={stats?.items_new_today ?? 0} />
+            <AdminStatCard label="منشور اليوم" value={stats?.items_published_today ?? 0} />
+            <AdminStatCard label="قيد المراجعة" value={stats?.items_review ?? 0} />
+            <AdminStatCard label="مرفوض" value={stats?.items_rejected ?? 0} />
+            <AdminStatCard label="مكرر" value={stats?.items_duplicate ?? 0} />
+            <AdminStatCard label="مؤرشف" value={stats?.items_archived ?? 0} />
+            <AdminStatCard label="روابط مكسورة" value={stats?.broken_links ?? 0} />
+            <AdminStatCard label="جودة متوسطة" value={`${stats?.avg_quality ?? 0}%`} />
+            <AdminStatCard label="ثقة متوسطة" value={`${stats?.avg_trust ?? 0}%`} />
           </div>
 
           <div className="ken-panels-grid">

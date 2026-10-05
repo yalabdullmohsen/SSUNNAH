@@ -1,3 +1,4 @@
+import { AdminTabs } from "@/components/admin/AdminLayout";
 import { useCallback, useEffect, useState } from "react";
 import { useAdminShell } from "@/views/admin/AdminShell";
 import { SkeletonCardGrid } from "@/components/ui-common";
@@ -78,14 +79,13 @@ export function DawahSection() {
         </div>
       </div>
 
-      <div className="arp-tabs">
-        {TABS.map((tb) => (
-          <Button key={tb.id} type="button" variant="ghost" onClick={() => setTab(tb.id)} className="arp-tab"
-            style={tab === tb.id ? { "--arp-tab-border": "var(--majalis-emerald)", "--arp-tab-bg": "#E8F5E9", "--arp-tab-color": "var(--majalis-emerald-deep)" } as React.CSSProperties : undefined}>
-            {tb.label}
-          </Button>
-        ))}
-      </div>
+      <AdminTabs
+        items={TABS}
+        value={tab}
+        onChange={(id) => setTab(id as QueueTable | "contacts")}
+        ariaLabel="طوابير التعريف بالإسلام"
+        idPrefix="dawah"
+      />
 
       {loading ? <SkeletonCardGrid count={4} /> : (
         <div className="arp-list">

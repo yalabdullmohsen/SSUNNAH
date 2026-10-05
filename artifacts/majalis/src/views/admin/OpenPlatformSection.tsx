@@ -1,3 +1,4 @@
+import { AdminStatCard } from "@/components/admin/AdminLayout";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useAdminShell } from "@/views/admin/AdminShell";
@@ -15,14 +16,6 @@ import {
   type OpenPlatformDashboard,
 } from "@/lib/open-platform-service";
 
-function StatCard({ label, value, color }: { label: string; value: string | number; color?: string }) {
-  return (
-    <div className="ii-stat" style={color ? { "--ii-val-color": color } as React.CSSProperties : undefined}>
-      <div className="ii-stat__label">{label}</div>
-      <div className="ii-stat__value">{value}</div>
-    </div>
-  );
-}
 
 function Panel({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -133,14 +126,14 @@ export function OpenPlatformSection() {
       )}
 
       <div className="ii-stats-grid">
-        <StatCard label="Endpoints" value={API_VERSIONS.length * 20 + "+"} />
-        <StatCard label="الأقسام" value={dashboard?.resources?.length ?? 0} />
-        <StatCard label="مفاتيح API" value={dashboard?.keys?.length ?? 0} />
-        <StatCard label="طلبات (30 يوم)" value={dashboard?.usage?.total ?? 0} />
-        <StatCard label="متوسط الاستجابة" value={`${dashboard?.usage?.avg_response_ms ?? 0}ms`} />
-        <StatCard label="الـ Webhooks" value={webhooks.length} />
-        <StatCard label="Cache" value={dashboard?.cache?.entries ?? 0} />
-        <StatCard label="أخطاء" value={dashboard?.usage?.errors ?? 0} color="#dc2626" />
+        <AdminStatCard label="Endpoints" value={API_VERSIONS.length * 20 + "+"} />
+        <AdminStatCard label="الأقسام" value={dashboard?.resources?.length ?? 0} />
+        <AdminStatCard label="مفاتيح API" value={dashboard?.keys?.length ?? 0} />
+        <AdminStatCard label="طلبات (30 يوم)" value={dashboard?.usage?.total ?? 0} />
+        <AdminStatCard label="متوسط الاستجابة" value={`${dashboard?.usage?.avg_response_ms ?? 0}ms`} />
+        <AdminStatCard label="الـ Webhooks" value={webhooks.length} />
+        <AdminStatCard label="Cache" value={dashboard?.cache?.entries ?? 0} />
+        <AdminStatCard label="أخطاء" value={dashboard?.usage?.errors ?? 0} tone="danger" />
       </div>
 
       <div className="ii-panels-grid">

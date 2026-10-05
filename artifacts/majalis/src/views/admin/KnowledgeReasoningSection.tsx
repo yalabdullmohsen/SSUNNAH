@@ -1,3 +1,4 @@
+import { AdminStatCard } from "@/components/admin/AdminLayout";
 import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { SkeletonCardGrid } from "@/components/ui-common";
@@ -10,15 +11,6 @@ import {
   type ReasoningDashboard,
 } from "@/lib/reasoning-engine-service";
 
-function StatCard({ label, value, sub }: { label: string; value: string | number; sub?: string }) {
-  return (
-    <div className="ken-stat">
-      <p className="ken-stat__label">{label}</p>
-      <p className="ken-stat__value">{value}</p>
-      {sub && <p className="ken-stat__sub">{sub}</p>}
-    </div>
-  );
-}
 
 export function KnowledgeReasoningSection() {
   const { showSuccess, showError } = useAdminShell();
@@ -102,13 +94,13 @@ export function KnowledgeReasoningSection() {
       </div>
 
       <div className="krs-stats-grid">
-        <StatCard label="الكيانات" value={dashboard?.entities?.refs ?? 0} sub={`${dashboard?.entities?.verified ?? 0} موثّق`} />
-        <StatCard label="العلاقات" value={dashboard?.graph?.relations ?? 0} />
-        <StatCard label="أذكار" value={dashboard?.entities?.adhkar ?? 0} />
-        <StatCard label="أحاديث" value={dashboard?.entities?.hadith ?? 0} />
-        <StatCard label="استعلامات 24س" value={dashboard?.queries?.last_24h ?? 0} sub={`${dashboard?.queries?.answered_24h ?? 0} مجاب`} />
-        <StatCard label="ثقة متوسطة" value={`${dashboard?.queries?.avg_confidence_7d ?? "—"}%`} />
-        <StatCard label="مشاكل مفتوحة" value={dashboard?.quality?.open_issues ?? 0} />
+        <AdminStatCard label="الكيانات" value={dashboard?.entities?.refs ?? 0} sub={`${dashboard?.entities?.verified ?? 0} موثّق`} />
+        <AdminStatCard label="العلاقات" value={dashboard?.graph?.relations ?? 0} />
+        <AdminStatCard label="أذكار" value={dashboard?.entities?.adhkar ?? 0} />
+        <AdminStatCard label="أحاديث" value={dashboard?.entities?.hadith ?? 0} />
+        <AdminStatCard label="استعلامات 24س" value={dashboard?.queries?.last_24h ?? 0} sub={`${dashboard?.queries?.answered_24h ?? 0} مجاب`} />
+        <AdminStatCard label="ثقة متوسطة" value={`${dashboard?.queries?.avg_confidence_7d ?? "—"}%`} />
+        <AdminStatCard label="مشاكل مفتوحة" value={dashboard?.quality?.open_issues ?? 0} />
       </div>
 
       <h3 className="krs-section-h3">أنواع العلاقات</h3>

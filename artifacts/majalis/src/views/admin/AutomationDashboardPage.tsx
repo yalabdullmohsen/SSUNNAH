@@ -1,3 +1,4 @@
+import { AdminStatCard } from "@/components/admin/AdminLayout";
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "wouter";
 import { getAutomationDashboard } from "@/lib/lesson-automation-api";
@@ -14,14 +15,6 @@ type DashboardStats = {
   lastRun?: { started_at?: string; duration_ms?: number; items_new?: number };
 };
 
-function StatCard({ label, value, color }: { label: string; value: number | string; color?: string }) {
-  return (
-    <div className="adp-stat" style={{ "--adp-val-color": color } as React.CSSProperties}>
-      <div className="adp-stat__value">{value}</div>
-      <div className="adp-stat__label">{label}</div>
-    </div>
-  );
-}
 
 function AutomationDashboardContent() {
   const [loading, setLoading] = useState(true);
@@ -69,12 +62,12 @@ function AutomationDashboardContent() {
       {loading ? <SkeletonCardGrid count={6} /> : (
         <>
           <div className="adp-stats-row">
-            <StatCard label="المصادر" value={stats?.sourcesCount ?? 0} />
-            <StatCard label="نشط" value={stats?.activeSources ?? 0} />
-            <StatCard label="بانتظار المراجعة" value={stats?.pendingReview ?? 0} color="var(--mj-brand-deep)" />
-            <StatCard label="منشور تلقائيًا" value={stats?.autoPublished ?? 0} />
-            <StatCard label="مكرر" value={stats?.duplicates ?? 0} />
-            <StatCard label="أخطاء" value={stats?.errors ?? 0} color="#991B1B" />
+            <AdminStatCard label="المصادر" value={stats?.sourcesCount ?? 0} />
+            <AdminStatCard label="نشط" value={stats?.activeSources ?? 0} />
+            <AdminStatCard label="بانتظار المراجعة" value={stats?.pendingReview ?? 0} tone="warning" />
+            <AdminStatCard label="منشور تلقائيًا" value={stats?.autoPublished ?? 0} />
+            <AdminStatCard label="مكرر" value={stats?.duplicates ?? 0} />
+            <AdminStatCard label="أخطاء" value={stats?.errors ?? 0} tone="danger" />
           </div>
 
           <section className="adp-section--mb">

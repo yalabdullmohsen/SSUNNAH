@@ -1,3 +1,4 @@
+import { AdminStatCard } from "@/components/admin/AdminLayout";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useAdminShell } from "@/views/admin/AdminShell";
@@ -77,13 +78,13 @@ export function GlobalReferenceSection() {
       </div>
 
       <div className="grs-stats-grid">
-        <StatCard label="العناصر" value={dashboard?.counts?.refs ?? 0} />
-        <StatCard label="العلاقات" value={dashboard?.counts?.relations ?? 0} />
-        <StatCard label="المصادر" value={dashboard?.counts?.sources ?? 0} />
-        <StatCard label="نسبة التوثيق" value={`${dashboard?.verification_pct ?? 0}%`} />
-        <StatCard label="جودة متوسطة" value={dashboard?.avg_quality_score ?? 0} />
-        <StatCard label="يحتاج مراجعة" value={dashboard?.counts?.needs_review ?? 0} color="#dc2626" />
-        <StatCard label="غير مكتمل" value={dashboard?.counts?.incomplete ?? 0} color="var(--mj-brand-deep)" />
+        <AdminStatCard label="العناصر" value={dashboard?.counts?.refs ?? 0} />
+        <AdminStatCard label="العلاقات" value={dashboard?.counts?.relations ?? 0} />
+        <AdminStatCard label="المصادر" value={dashboard?.counts?.sources ?? 0} />
+        <AdminStatCard label="نسبة التوثيق" value={`${dashboard?.verification_pct ?? 0}%`} />
+        <AdminStatCard label="جودة متوسطة" value={dashboard?.avg_quality_score ?? 0} />
+        <AdminStatCard label="يحتاج مراجعة" value={dashboard?.counts?.needs_review ?? 0} tone="warning" />
+        <AdminStatCard label="غير مكتمل" value={dashboard?.counts?.incomplete ?? 0} tone="warning" />
       </div>
 
       <div className="grs-panels-grid">
@@ -127,14 +128,6 @@ export function GlobalReferenceSection() {
   );
 }
 
-function StatCard({ label, value, color }: { label: string; value: string | number; color?: string }) {
-  return (
-    <div className="grs-stat" style={{ "--grs-val-color": color } as React.CSSProperties}>
-      <div className="grs-stat__label">{label}</div>
-      <div className="grs-stat__value">{value}</div>
-    </div>
-  );
-}
 
 function Panel({ title, children }: { title: string; children: React.ReactNode }) {
   return (
