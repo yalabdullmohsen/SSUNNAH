@@ -3,6 +3,7 @@
  */
 import { useEffect } from "react";
 import { hasIosAppStoreUrl, IOS_APP_STORE_URL } from "@/lib/ios-app-store";
+import { isNativeApp } from "@/lib/native-platform";
 
 type Variant = "strip" | "footer" | "inline";
 
@@ -30,7 +31,8 @@ const COPY = {
 } as const;
 
 export function IosAppCta({ variant = "strip", className = "" }: Props) {
-  const visible = hasIosAppStoreUrl();
+  // دعوة «حمّل التطبيق» للموقع فقط — لا معنى لها داخل التطبيق نفسه.
+  const visible = hasIosAppStoreUrl() && !isNativeApp();
 
   useEffect(() => {
     if (!visible) return;

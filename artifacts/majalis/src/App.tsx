@@ -142,10 +142,14 @@ const UpdateAvailableBanner = lazyWithRetry(
     import("@/components/UpdateAvailableBanner").then((m) => ({ default: m.UpdateAvailableBanner })),
   "UpdateAvailableBanner",
 );
-const PwaInstallBanner = lazyWithRetry(
-  () => import("@/components/PwaInstallBanner").then((m) => ({ default: m.PwaInstallBanner })),
-  "PwaInstallBanner",
-);
+/** ويب فقط — يُحذف من متغيّر البناء الأصلي (IS_NATIVE_BUILD) ولا يُركَّب داخل التطبيق. */
+// ثابت بناء مُضمَّن محليًا (لا عبر استيراد) حتى يطويه vite define ويحذف الـchunk من متغيّر native.
+const PwaInstallBanner = import.meta.env.VITE_TARGET === "native"
+  ? null
+  : lazyWithRetry(
+      () => import("@/components/PwaInstallBanner").then((m) => ({ default: m.PwaInstallBanner })),
+      "PwaInstallBanner",
+    );
 const FocusArrival = lazyWithRetry(
   () => import("@/components/FocusArrival").then((m) => ({ default: m.FocusArrival })),
   "FocusArrival",
@@ -1251,7 +1255,7 @@ function AppShellInner() {
           <GlobalBackButton />
         </Suspense>
       )}
-      {!hideSiteChrome && (
+      {!hideSiteChrome && !isNative && PwaInstallBanner && (
         <Suspense fallback={null}>
           <PwaInstallBanner />
         </Suspense>

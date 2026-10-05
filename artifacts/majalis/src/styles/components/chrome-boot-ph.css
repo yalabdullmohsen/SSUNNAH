@@ -33,3 +33,22 @@
   flex-shrink: 0;
   min-width: 0;
 }
+
+/* Startup CLS (/prophets): هندسة هيكل المسار الكسول الممتد بعرض الشاشة تصل مع App.
+   كانت في prophet-stories.css فقط (مع chunk الصفحة) فيُرسم الهيكل مُزاحًا 16px وقصيرًا
+   ثم يقفز إلى كامل العرض/الارتفاع (≈0.018 CLS). مطابقة لتعريف prophet-stories.css. */
+.lrf-wrap.lrf-wrap--prophets,
+.lrf-wrap.lrf-wrap--prophet-detail {
+  width: 100%;
+  min-height: 100dvh;
+  min-height: 100svh;
+  margin: 0;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+/* يتفوّق على #main-content.app-main (critical-first-paint) بالتخصيص لا بالفرض */
+#main-content.app-main:has(.lrf-wrap--prophets),
+#main-content.app-main:has(.lrf-wrap--prophet-detail) {
+  padding-inline: 0;
+}

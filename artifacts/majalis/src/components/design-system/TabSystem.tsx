@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { onTablistKeyDown } from "@/lib/tablist-keyboard";
 
 /**
  * Tab authorities — product façades over Button + a11y tablist.
@@ -64,6 +65,7 @@ export function ContentTabs({
             tabIndex={active ? 0 : -1}
             data-active={active ? "1" : "0"}
             onClick={() => onChange(item.id)}
+            onKeyDown={onTablistKeyDown}
           >
             {item.icon ? <span className="ss-tabs__icon">{item.icon}</span> : null}
             <span className="ss-tabs__label">{item.label}</span>

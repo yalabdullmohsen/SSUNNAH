@@ -1,4 +1,6 @@
 import { memo } from "react";
+import { Button } from "@/components/ui/button";
+import { mushafButtonClass } from "@/features/mushaf-reader/mushaf-button-parity";
 
 type Props = {
   onExit: () => void;
@@ -23,9 +25,10 @@ export const MushafExitControl = memo(function MushafExitControl({
       data-visible={visible ? "1" : "0"}
       aria-hidden={!visible}
     >
-      <button
+      <Button
         type="button"
-        className="nm-exit-control"
+        variant="ghost"
+        className={mushafButtonClass("nm-exit-control")}
         data-testid="mushaf-exit-control"
         data-visible={visible ? "1" : "0"}
         tabIndex={visible ? 0 : -1}
@@ -41,7 +44,7 @@ export const MushafExitControl = memo(function MushafExitControl({
           ›
         </span>
         <span className="nm-exit-control__label">{label}</span>
-      </button>
+      </Button>
     </div>
   );
 });

@@ -73,7 +73,7 @@ export function AdminStateGate({
   emptyBody = "جرّب تغيير عوامل التصفية أو أضف عنصرًا جديدًا.",
   children,
 }: AdminSectionState & { children?: ReactNode }) {
-  if (loading) return <div className="adm-section-state"><AdminV3Loading label="جارٍ التحميل…" /></div>;
+  if (loading) return <div className="adm-section-state"><AdminV3Loading /></div>;
   if (error) return <div className="adm-section-state"><AdminV3ErrorState message={error} onRetry={onRetry} /></div>;
   if (empty) return <div className="adm-section-state"><AdminV3Empty title={emptyTitle} body={emptyBody} /></div>;
   return <>{children}</>;

@@ -17,12 +17,16 @@ const audit = readFileSync(
 );
 const registry = readFileSync(resolve(root, "src/components/layout/DrawerFromRegistry.tsx"), "utf8");
 
+/* مجموعات الدرج = مجموعات IA السبع من السجل؛ الأسماء المختصرة navLabel والتوضيح navHint */
 const knowledge = SIDEBAR_NAV_GROUPS.find((g) => g.id === "knowledge");
-assert.ok(knowledge, "مجموعة المعرفة");
-assert.ok(knowledge!.items.some((i) => i.href === "/sections" && i.label === "جميع الأقسام"));
+assert.ok(knowledge, "مجموعة المعرفة والتاريخ");
+assert.ok(
+  knowledge!.items.some((i) => i.href === "/sections" && i.label === "الأقسام" && i.description === "دليل كامل للأقسام"),
+  "مدخل جميع الأقسام بتوضيح صريح",
+);
 
 const quran = SIDEBAR_NAV_GROUPS.find((g) => g.id === "quran");
-assert.equal(quran!.title, "القرآن");
+assert.equal(quran!.title, "القرآن الكريم");
 assert.equal(quran!.subtitle, "المصحف • التفسير • التلاوة");
 assert.deepEqual(
   quran!.items.map((i) => i.label),
@@ -30,20 +34,20 @@ assert.deepEqual(
 );
 
 const learning = SIDEBAR_NAV_GROUPS.find((g) => g.id === "learning");
-assert.equal(learning!.title, "الدروس");
+assert.equal(learning!.title, "الدروس والعلماء");
 assert.deepEqual(
   learning!.items.map((i) => i.label),
-  ["الدروس", "المحفوظات", "التقدم"],
+  ["الدروس", "العلماء", "المحفوظات", "التقدم"],
 );
 assert.equal(
   learning!.items.find((i) => i.href === "/lessons")?.description,
   "الدروس والمحاضرات",
 );
 
-const sciences = SIDEBAR_NAV_GROUPS.find((g) => g.id === "sciences");
-assert.equal(sciences!.items.find((i) => i.href === "/fiqh")?.label, "الفقه");
+const fiqhGroup = SIDEBAR_NAV_GROUPS.find((g) => g.id === "fiqh");
+assert.equal(fiqhGroup!.items.find((i) => i.href === "/fiqh")?.label, "الفقه");
 assert.equal(
-  sciences!.items.find((i) => i.href === "/fiqh")?.description,
+  fiqhGroup!.items.find((i) => i.href === "/fiqh")?.description,
   "الأحكام الفقهية",
 );
 

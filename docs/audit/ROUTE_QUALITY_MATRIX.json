@@ -52,7 +52,7 @@
       "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
-      "accessibility": "PARTIAL",
+      "accessibility": "COMPLETE",
       "visualSystem": "PARTIAL",
       "routeClass": "STATIC_CONTENT",
       "noResults": "NOT_APPLICABLE",
@@ -61,10 +61,10 @@
       "light": "COMPLETE",
       "system": "COMPLETE",
       "mobile": "COMPLETE",
-      "tablet": "PARTIAL",
+      "tablet": "COMPLETE",
       "desktop": "COMPLETE",
-      "largeText": "PARTIAL",
-      "zoom200": "PARTIAL",
+      "largeText": "COMPLETE",
+      "zoom200": "COMPLETE",
       "seo": "COMPLETE",
       "deepLink": "COMPLETE",
       "wave11TestRef": "closure-wave11-route-quality-gate.test.ts",
@@ -76,7 +76,9 @@
       "publicFeedbackDate": "2026-10-01",
       "publicFeedbackPhase": "ROUTE_FEEDBACK_PUBLIC",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "routePartialClosureTestRef": "route-partial-closure-gate.test.ts",
+      "routePartialClosureEvidence": "docs/audit/ROUTE_PARTIAL_CLOSURE_EVIDENCE.json"
     },
     {
       "route": "/about-us",
@@ -301,7 +303,9 @@
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
       "stale": "KEEP_JUSTIFIED",
-      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip",
+      "routePartialClosureTestRef": "route-partial-closure-gate.test.ts",
+      "routePartialClosureEvidence": "docs/audit/ROUTE_PARTIAL_CLOSURE_EVIDENCE.json"
     },
     {
       "route": "/adhan-settings",
@@ -4936,7 +4940,7 @@
       "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
-      "accessibility": "PARTIAL",
+      "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
       "mobile": "COMPLETE",
       "auditNote": "FINAL CLOSURE Phase1 priority feedback · evidence 2026-10-01 · Feedback V2 only",
@@ -4955,7 +4959,9 @@
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
       "publicFeedbackPhase": "PRIORITY_CLOSED",
-      "stale": "NOT_APPLICABLE"
+      "stale": "NOT_APPLICABLE",
+      "routePartialClosureTestRef": "route-partial-closure-gate.test.ts",
+      "routePartialClosureEvidence": "docs/audit/ROUTE_PARTIAL_CLOSURE_EVIDENCE.json"
     },
     {
       "route": "/madhahib",
@@ -6269,7 +6275,7 @@
       "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
-      "accessibility": "PARTIAL",
+      "accessibility": "COMPLETE",
       "visualSystem": "PARTIAL",
       "routeClass": "STATIC_CONTENT",
       "noResults": "NOT_APPLICABLE",
@@ -6278,10 +6284,10 @@
       "light": "COMPLETE",
       "system": "COMPLETE",
       "mobile": "COMPLETE",
-      "tablet": "PARTIAL",
+      "tablet": "COMPLETE",
       "desktop": "COMPLETE",
-      "largeText": "PARTIAL",
-      "zoom200": "PARTIAL",
+      "largeText": "COMPLETE",
+      "zoom200": "COMPLETE",
       "seo": "COMPLETE",
       "deepLink": "COMPLETE",
       "wave11TestRef": "closure-wave11-route-quality-gate.test.ts",
@@ -6293,7 +6299,9 @@
       "publicFeedbackDate": "2026-10-01",
       "publicFeedbackPhase": "ROUTE_FEEDBACK_PUBLIC",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "routePartialClosureTestRef": "route-partial-closure-gate.test.ts",
+      "routePartialClosureEvidence": "docs/audit/ROUTE_PARTIAL_CLOSURE_EVIDENCE.json"
     },
     {
       "route": "/privacy-center",
@@ -6468,7 +6476,7 @@
       "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
-      "accessibility": "PARTIAL",
+      "accessibility": "COMPLETE",
       "visualSystem": "PARTIAL",
       "routeClass": "ACTIVE_PUBLIC_SECONDARY",
       "noResults": "COMPLETE",
@@ -6477,10 +6485,10 @@
       "light": "COMPLETE",
       "system": "COMPLETE",
       "mobile": "COMPLETE",
-      "tablet": "PARTIAL",
+      "tablet": "COMPLETE",
       "desktop": "COMPLETE",
-      "largeText": "PARTIAL",
-      "zoom200": "PARTIAL",
+      "largeText": "COMPLETE",
+      "zoom200": "COMPLETE",
       "seo": "PARTIAL",
       "deepLink": "COMPLETE",
       "wave11TestRef": "closure-wave11-route-quality-gate.test.ts",
@@ -6493,7 +6501,9 @@
       "publicFeedbackPhase": "ROUTE_FEEDBACK_PUBLIC",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip",
+      "routePartialClosureTestRef": "route-partial-closure-gate.test.ts",
+      "routePartialClosureEvidence": "docs/audit/ROUTE_PARTIAL_CLOSURE_EVIDENCE.json"
     },
     {
       "route": "/prophets-stories",
@@ -7730,7 +7740,7 @@
       "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
-      "accessibility": "PARTIAL",
+      "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
       "mobile": "COMPLETE",
       "auditNote": "FINAL CLOSURE Phase1 priority feedback · evidence 2026-10-01 · Feedback V2 only",
@@ -7749,7 +7759,9 @@
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
       "publicFeedbackPhase": "PRIORITY_CLOSED",
-      "stale": "NOT_APPLICABLE"
+      "stale": "NOT_APPLICABLE",
+      "routePartialClosureTestRef": "route-partial-closure-gate.test.ts",
+      "routePartialClosureEvidence": "docs/audit/ROUTE_PARTIAL_CLOSURE_EVIDENCE.json"
     },
     {
       "route": "/research",
@@ -8312,7 +8324,7 @@
       "rtl": "COMPLETE",
       "accessibility": "COMPLETE",
       "visualSystem": "COMPLETE",
-      "a11y": "PARTIAL",
+      "a11y": "COMPLETE",
       "auditNote": "FINAL CLOSURE Phase1 priority feedback · evidence 2026-10-01 · Feedback V2 only",
       "mobile": "COMPLETE",
       "noResults": "NOT_APPLICABLE",
@@ -8330,7 +8342,9 @@
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
       "publicFeedbackPhase": "PRIORITY_CLOSED",
-      "stale": "NOT_APPLICABLE"
+      "stale": "NOT_APPLICABLE",
+      "routePartialClosureTestRef": "route-partial-closure-gate.test.ts",
+      "routePartialClosureEvidence": "docs/audit/ROUTE_PARTIAL_CLOSURE_EVIDENCE.json"
     },
     {
       "route": "/shamael",
@@ -9049,7 +9063,7 @@
       "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
-      "accessibility": "PARTIAL",
+      "accessibility": "COMPLETE",
       "visualSystem": "PARTIAL",
       "auditNote": "FINAL CLOSURE Phase2 public classification · ACTIVE_PUBLIC_SECONDARY",
       "routeClass": "ACTIVE_PUBLIC_SECONDARY",
@@ -9059,10 +9073,10 @@
       "light": "COMPLETE",
       "system": "COMPLETE",
       "mobile": "COMPLETE",
-      "tablet": "PARTIAL",
+      "tablet": "COMPLETE",
       "desktop": "COMPLETE",
-      "largeText": "PARTIAL",
-      "zoom200": "PARTIAL",
+      "largeText": "COMPLETE",
+      "zoom200": "COMPLETE",
       "seo": "PARTIAL",
       "deepLink": "COMPLETE",
       "wave11TestRef": "closure-wave11-route-quality-gate.test.ts",
@@ -9074,7 +9088,9 @@
       "publicFeedbackPhase": "ROUTE_FEEDBACK_PUBLIC",
       "permissionDenied": "NOT_APPLICABLE",
       "rateLimited": "NOT_APPLICABLE",
-      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip"
+      "staleNote": "No dedicated StaleDataIndicator; OfflineBanner covers network loss; review when surface gains cache strip",
+      "routePartialClosureTestRef": "route-partial-closure-gate.test.ts",
+      "routePartialClosureEvidence": "docs/audit/ROUTE_PARTIAL_CLOSURE_EVIDENCE.json"
     },
     {
       "route": "/tawba",
@@ -9301,7 +9317,7 @@
       "error": "COMPLETE",
       "dark": "COMPLETE",
       "rtl": "COMPLETE",
-      "accessibility": "PARTIAL",
+      "accessibility": "COMPLETE",
       "visualSystem": "PARTIAL",
       "routeClass": "STATIC_CONTENT",
       "noResults": "NOT_APPLICABLE",
@@ -9310,10 +9326,10 @@
       "light": "COMPLETE",
       "system": "COMPLETE",
       "mobile": "COMPLETE",
-      "tablet": "PARTIAL",
+      "tablet": "COMPLETE",
       "desktop": "COMPLETE",
-      "largeText": "PARTIAL",
-      "zoom200": "PARTIAL",
+      "largeText": "COMPLETE",
+      "zoom200": "COMPLETE",
       "seo": "COMPLETE",
       "deepLink": "COMPLETE",
       "wave11TestRef": "closure-wave11-route-quality-gate.test.ts",
@@ -9325,7 +9341,9 @@
       "publicFeedbackDate": "2026-10-01",
       "publicFeedbackPhase": "ROUTE_FEEDBACK_PUBLIC",
       "permissionDenied": "NOT_APPLICABLE",
-      "rateLimited": "NOT_APPLICABLE"
+      "rateLimited": "NOT_APPLICABLE",
+      "routePartialClosureTestRef": "route-partial-closure-gate.test.ts",
+      "routePartialClosureEvidence": "docs/audit/ROUTE_PARTIAL_CLOSURE_EVIDENCE.json"
     },
     {
       "route": "/topics",

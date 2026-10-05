@@ -1,13 +1,13 @@
 {
-  "sha": "1de2b94b00dacc38ca3e0326b424fa1500214898",
-  "shaShort": "1de2b94b00da",
-  "generatedAt": "2026-10-05T09:19:52.567457+00:00",
+  "sha": "bbb25cd147fa15ca23a3d8aa42b0d9133454b8bb",
+  "shaShort": "bbb25cd147fa",
+  "generatedAt": "2026-10-05T13:47:10.139Z",
   "source": "docs/audit/evidence/t046-u9-route-matrix/open-route-debt.json",
+  "generator": "artifacts/majalis/scripts/route-debt-full-classification.mjs",
   "count": 294,
   "unknown": 0,
   "totals": {
-    "PARTIAL": 9,
-    "DEVICE_REQUIRED": 234,
+    "DEVICE_REQUIRED": 243,
     "KEEP_JUSTIFIED_WITH_EVIDENCE": 50,
     "OWNER_ACTION": 1
   },
@@ -15,7 +15,7 @@
     {
       "route": "/about",
       "sourceClass": "PUBLIC",
-      "trackClass": "PARTIAL",
+      "trackClass": "DEVICE_REQUIRED",
       "debtFields": [
         "Keyboard",
         "Contrast",
@@ -98,9 +98,8 @@
     {
       "route": "/adhan-help",
       "sourceClass": "PUBLIC",
-      "trackClass": "PARTIAL",
+      "trackClass": "DEVICE_REQUIRED",
       "debtFields": [
-        "Canvas",
         "RTL",
         "Keyboard",
         "Contrast",
@@ -2143,7 +2142,7 @@
     {
       "route": "/login",
       "sourceClass": "AUTH",
-      "trackClass": "PARTIAL",
+      "trackClass": "DEVICE_REQUIRED",
       "debtFields": [
         "Keyboard",
         "Contrast",
@@ -2598,7 +2597,7 @@
     {
       "route": "/privacy",
       "sourceClass": "LEGAL",
-      "trackClass": "PARTIAL",
+      "trackClass": "DEVICE_REQUIRED",
       "debtFields": [
         "Keyboard",
         "Contrast",
@@ -2667,7 +2666,7 @@
     {
       "route": "/prophets",
       "sourceClass": "PUBLIC",
-      "trackClass": "PARTIAL",
+      "trackClass": "DEVICE_REQUIRED",
       "debtFields": [
         "Keyboard",
         "Contrast",
@@ -3045,7 +3044,7 @@
     {
       "route": "/register",
       "sourceClass": "AUTH",
-      "trackClass": "PARTIAL",
+      "trackClass": "DEVICE_REQUIRED",
       "debtFields": [
         "Keyboard",
         "Contrast",
@@ -3223,7 +3222,7 @@
     {
       "route": "/settings",
       "sourceClass": "SETTINGS",
-      "trackClass": "PARTIAL",
+      "trackClass": "DEVICE_REQUIRED",
       "debtFields": [
         "Keyboard"
       ],
@@ -3496,7 +3495,7 @@
     {
       "route": "/tasbih",
       "sourceClass": "PUBLIC",
-      "trackClass": "PARTIAL",
+      "trackClass": "DEVICE_REQUIRED",
       "debtFields": [
         "Keyboard",
         "Contrast",
@@ -3615,7 +3614,7 @@
     {
       "route": "/terms",
       "sourceClass": "LEGAL",
-      "trackClass": "PARTIAL",
+      "trackClass": "DEVICE_REQUIRED",
       "debtFields": [
         "Keyboard",
         "Contrast",

@@ -19,6 +19,7 @@ import { FEATURE_CATS } from "../home-feature-catalog";
 import { PRIMARY_NAV_ITEMS } from "../navigation";
 import { SERVICES_CENTER_GROUPS } from "../services-center-nav";
 import { SIDEBAR_NAV_GROUPS } from "../sidebar-nav";
+import { SITE_FOOTER_GROUPS } from "../site-footer-nav";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const appRoot = resolve(__dirname, "../../..");
@@ -183,13 +184,16 @@ console.log("\n=== القوائم بلا أقسام محذوفة — عن الم
   assert(!homeSrc.includes("HomeAboutSection"), "من نحن خارج الرئيسية");
   const footerNavSrc = readFileSync(resolve(appRoot, "src/config/navigation.ts"), "utf-8");
   assert(footerSrc.includes("SITE_FOOTER_GROUPS") || footerSrc.includes("site-footer-nav"), "التذييل من مصدر المجموعات");
-  assert(footerNavSrc.includes("footerNav") && footerNavSrc.includes("الأقسام العلمية"), "التذييل من navigation.ts");
-  for (const title of ["الأقسام العلمية", "خدمات القرآن", "الدروس والبحث", "التواصل والسياسات"]) {
-    assert(footerNavSrc.includes(title), `مجموعة التذييل: ${title}`);
+  /* التذييل = مجموعات IA من السجل (menuGroups("footer")) — لا قوائم يدوية */
+  assert(footerNavSrc.includes("footerNav") && footerNavSrc.includes('menuGroups("footer")'), "التذييل من navigation.ts عبر السجل");
+  const footerTitles = SITE_FOOTER_GROUPS.map((g) => g.title);
+  for (const title of ["القرآن الكريم", "الدروس والعلماء", "الحساب والإعدادات"]) {
+    assert(footerTitles.includes(title), `مجموعة التذييل: ${title}`);
   }
-  assert(!footerNavSrc.includes('title: "استكشف"'), "لا مجموعة خامسة في التذييل");
+  assert(!footerTitles.includes("استكشف") && !footerTitles.includes("المزيد"), "لا مجموعة استكشف/المزيد في التذييل");
+  const footerHrefs = SITE_FOOTER_GROUPS.flatMap((g) => g.links.map((l) => l.href));
   for (const href of ["/methodology", "/fatwa-policy", "/about", "/privacy", "/contact"]) {
-    assert(footerNavSrc.includes(href), `رابط التذييل: ${href}`);
+    assert(footerHrefs.includes(href), `رابط التذييل: ${href}`);
   }
   assert(
     appSrc.includes("SiteFooter") &&

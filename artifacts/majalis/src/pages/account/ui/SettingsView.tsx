@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
 import { STATUS } from "@/lib/ui-copy";
@@ -46,16 +46,16 @@ import {
   VALID_PLAYBACK_RATES,
 } from "@/lib/quran-audio";
 import { useVerifiedReciters } from "@/hooks/useVerifiedReciters";
+import { useDialogKeyboard } from "@/hooks/useDialogKeyboard";
 import {
   MUSHAF_TAFSIR_EDITIONS,
   persistTafsirEdition,
   readStoredTafsirEdition,
 } from "@/lib/quran-data";
-import {
-  readBackgroundPlaybackPref,
-  restoreDefaultAppSettings,
-  writeBackgroundPlaybackPref,
-} from "@/lib/restore-default-settings";
+import { restoreDefaultAppSettings } from "@/lib/restore-default-settings";
+import { loadNotifPrefs } from "@/lib/local-notifications";
+import { loadAdhanPrefs } from "@/lib/adhan-preferences";
+import { loadPrayerAlertPrefs } from "@/lib/prayer-alert-preferences";
 import { MushafDisplayModeControl } from "@/features/mushaf-reader/MushafDisplayModeControl";
 import {
   MUSHAF_APPEARANCE_CHANGE_EVENT,
@@ -111,11 +111,33 @@ export default function SettingsPage() {
   const [reciterId, setReciterIdState] = useState(loadReciterId);
   const [tafsirId, setTafsirIdState] = useState(readStoredTafsirEdition);
   const [playbackRate, setPlaybackRateState] = useState(loadPlaybackRate);
-  const [bgPlayback, setBgPlayback] = useState(readBackgroundPlaybackPref);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const deleteDialogRef = useRef<HTMLDivElement>(null);
+  const deleteCancelRef = useRef<HTMLButtonElement>(null);
+  const closeDeleteDialog = useCallback(() => setDeleteDialogOpen(false), []);
+  // حوار modal: تركيز أولي على «إلغاء» (الخيار الآمن) · Escape يغلق · حبس Tab · إعادة التركيز للمُشغِّل
+  useDialogKeyboard(deleteDialogOpen, deleteDialogRef, closeDeleteDialog, {
+    initialFocusRef: deleteCancelRef,
+    trapFocus: true,
+  });
   const [cacheRefreshBusy, setCacheRefreshBusy] = useState(false);
   const [cacheRefreshNote, setCacheRefreshNote] = useState<string | null>(null);
   const [displayedAppVersion, setDisplayedAppVersion] = useState<string | null>(() => getDisplayedAppVersion());
+  /* حالات قراءة فقط من مصادرها الوحيدة — لا تبديل مكرر هنا */
+  const [prayerAlertsOn] = useState(() => {
+    try {
+      return Boolean(loadAdhanPrefs().globalEnabled || loadPrayerAlertPrefs().alertsEnabled);
+    } catch {
+      return false;
+    }
+  });
+  const [contentRemindersOn] = useState(() => {
+    try {
+      return loadNotifPrefs().enabled;
+    } catch {
+      return false;
+    }
+  });
   const [mushafDisplayMode, setMushafDisplayMode] = useState<MushafAppearanceMode>(() =>
     loadMushafAppearanceMode(),
   );
@@ -190,38 +212,32 @@ export default function SettingsPage() {
   const tafsirs = useMemo(() => MUSHAF_TAFSIR_EDITIONS, []);
 
   const sections: SectionDef[] = [
-    { id: "account", title: "الحساب والملف الشخصي", keywords: "حساب دخول تسجيل خروج حذف الحساب ملف" },
     {
       id: "appearance",
-      title: "المظهر والواجهة",
-      keywords: "سمة ثيم مظهر تباين كثافة كبار السن خط واجهة لغة",
+      title: "العرض والمظهر",
+      keywords: "سمة ثيم مظهر تباين كثافة كبار السن خط واجهة لغة اهتزاز لمس",
     },
     {
       id: "reading",
       title: "القراءة والمصحف",
-      keywords: "قراءة قرآن مصحف خط تفسير حجم تباعد",
+      keywords: "قراءة قرآن مصحف خط تفسير حجم تباعد قارئ سرعة تلاوة صوت تنزيل كاش مساحة دون اتصال تخزين بيانات",
     },
     {
-      id: "sound",
-      title: "الصوت والوسائط",
-      keywords: "قارئ سرعة تلاوة تشغيل خلفي صوت وسائط",
+      id: "prayer",
+      title: "الصلاة والأذان",
+      keywords: "صلاة أذان مواقيت إقامة مؤذن تنبيه ويدجت widget موقع",
     },
     {
-      id: "reminders",
-      title: "الصلاة والتنبيهات",
-      keywords: "إشعار تذكير أذان صلاة مواقيت تنبيه دروس محتوى ويدجت widget",
-    },
-    {
-      id: "downloads",
-      title: "التنزيلات والتخزين",
-      keywords: "تنزيل كاش مساحة دون اتصال تخزين نسخة تحديث",
+      id: "notifications",
+      title: "الإشعارات",
+      keywords: "إشعار تذكير أذكار قرآن ورد مراجعة جمعة مناسبات هدوء إذن",
     },
     {
       id: "privacy",
-      title: "الخصوصية والبيانات",
-      keywords: "خصوصية تصدير حذف بيانات",
+      title: "الخصوصية والحساب",
+      keywords: "حساب دخول تسجيل خروج حذف الحساب ملف خصوصية تصدير بيانات مسح",
     },
-    { id: "about", title: "الدعم وحول التطبيق", keywords: "حول سياسة شروط دعم مصادر جولة مزايا مساعدة" },
+    { id: "about", title: "حول", keywords: "حول نسخة تحديث سياسة شروط دعم مصادر جولة مزايا مساعدة" },
   ];
 
   const q = query.trim().toLowerCase();
@@ -278,7 +294,6 @@ export default function SettingsPage() {
             setReciterIdState(loadReciterId());
             setTafsirIdState(readStoredTafsirEdition());
             setPlaybackRateState(1);
-            setBgPlayback(false);
           }}
         >
           استعادة الإعدادات الافتراضية
@@ -287,93 +302,6 @@ export default function SettingsPage() {
 
       {visible(sections[0]!) && (
         <LegalSection title={sections[0]!.title}>
-          <AppCard
-            as="section"
-            className="settings-account-card"
-            data-ss-surface="inset"
-          >
-            <div className="settings-avatar" aria-hidden="true">
-              {(user?.profile?.full_name || user?.email || "م").slice(0, 1)}
-            </div>
-            <div>
-              <p>
-                <strong>{t("settings_name")}:</strong>{" "}
-                {user?.profile?.full_name || t("settings_guest")}
-              </p>
-              <p>
-                <strong>{t("settings_email")}:</strong>{" "}
-                {user?.email || t("settings_not_logged_in")}
-              </p>
-            </div>
-          </AppCard>
-          {authLoading ? (
-            <p className="settings-auth-pending" aria-busy="true" aria-label="تحديث الحساب">
-              …
-            </p>
-          ) : (
-            <NavigationList
-              rows={
-                isLoggedIn
-                  ? [
-                      {
-                        id: "logout",
-                        title: t("settings_logout"),
-                        onClick: () => logout(),
-                      },
-                      {
-                        id: "delete-account",
-                        title: t("settings_delete_account"),
-                        onClick: () => setDeleteDialogOpen(true),
-                        danger: true,
-                        testId: "settings-delete-account",
-                      },
-                    ]
-                  : [
-                      { id: "login", title: t("settings_login"), href: "/login" },
-                      { id: "register", title: t("settings_register"), href: "/register" },
-                    ]
-              }
-            />
-          )}
-          {deleteDialogOpen ? (
-            <div
-              className="settings-delete-dialog"
-              role="alertdialog"
-              aria-modal="true"
-              aria-labelledby="settings-delete-title"
-              aria-describedby="settings-delete-desc"
-            >
-              <div className="settings-delete-dialog__panel">
-                <h2 id="settings-delete-title">تأكيد حذف الحساب</h2>
-                <p id="settings-delete-desc">
-                  سيُحذف حسابك وبيانات المصادقة وجميع بياناتك الشخصية المرتبطة به نهائيًا
-                  ولا يمكن التراجع عن ذلك. المحتوى العلمي العام غير المرتبط بحسابك يبقى متاحًا للجميع.
-                </p>
-                <div className="settings-delete-dialog__actions">
-                  <Link
-                    href="/account-deletion?confirm=1"
-                    className="page-action-btn page-action-btn--danger"
-                    onClick={() => setDeleteDialogOpen(false)}
-                  >
-                    المتابعة إلى الحذف النهائي
-                  </Link>
-                  <Button
-                    type="button"
-                    variant="secondary"
-                    className="page-action-btn page-action-btn--secondary"
-                    onClick={() => setDeleteDialogOpen(false)}
-                  >
-                    إلغاء
-                  </Button>
-                </div>
-              </div>
-            </div>
-          ) : null}
-        </LegalSection>
-      )}
-
-      {visible(sections[1]!) && (
-        <LegalSection title={sections[1]!.title}>
           <div className="settings-field settings-field--lang">
             <span>{t("settings_language")}</span>
             <LanguageSwitcher />
@@ -405,6 +333,12 @@ export default function SettingsPage() {
             checked={preferences.highContrast}
             onChange={(value) => update("highContrast", value)}
           />
+          <ToggleRow
+            label="الاهتزاز اللمسي"
+            description="اهتزاز خفيف عند العدّ في المسبحة والأذكار والتفاعلات (حسب دعم الجهاز)"
+            checked={preferences.hapticsEnabled}
+            onChange={(value) => update("hapticsEnabled", value)}
+          />
           <div className="settings-field">
             <FieldLabel htmlFor="interface-font-size">{t("settings_font_size")}</FieldLabel>
             <Select
@@ -429,8 +363,8 @@ export default function SettingsPage() {
         </LegalSection>
       )}
 
-      {visible(sections[2]!) && (
-        <LegalSection title={sections[2]!.title}>
+      {visible(sections[1]!) && (
+        <LegalSection title={sections[1]!.title}>
           <MushafDisplayModeControl
             value={mushafDisplayMode}
             onChange={(mode) => {
@@ -500,11 +434,7 @@ export default function SettingsPage() {
               {t("settings_quran_font_down")}
             </Button>
           </div>
-        </LegalSection>
-      )}
-
-      {visible(sections[3]!) && (
-        <LegalSection title={sections[3]!.title}>
+          <p className="settings-subhead">التلاوة والصوت</p>
           <label className="settings-field">
             <span>القارئ المفضّل</span>
             <select
@@ -565,88 +495,14 @@ export default function SettingsPage() {
             </Select>
           </div>
           <ToggleRow
-            label="التشغيل في الخلفية"
-            description="تفضيل محلي لإبقاء التلاوة عند مغادرة الشاشة (حسب دعم الجهاز)"
-            checked={bgPlayback}
-            onChange={(on) => {
-              writeBackgroundPlaybackPref(on);
-              setBgPlayback(on);
-            }}
-          />
-          <ToggleRow
             label="توفير البيانات"
             description="يقلّل إحماء الوسائط الثقيلة عند الاتصال الضعيف"
             checked={preferences.dataSaver}
             onChange={(value) => update("dataSaver", value)}
           />
-        </LegalSection>
-      )}
-
-      {visible(sections[4]!) && (
-        <LegalSection title={sections[4]!.title}>
-          <p className="settings-note">
-            تُحفظ التفضيلات محليًا. إذن الإشعارات يُطلب عند فتح إعدادات التذكيرات أو الأذان لأول مرة.
-          </p>
-          <ToggleRow
-            label={t("settings_notif_lessons")}
-            description="تنبيهات الدروس الجديدة"
-            checked={preferences.lessonNotifications}
-            onChange={(value) => update("lessonNotifications", value)}
-          />
-          <ToggleRow
-            label={t("settings_notif_content")}
-            description="تنبيهات المحتوى العلمي"
-            checked={preferences.contentNotifications}
-            onChange={(value) => update("contentNotifications", value)}
-          />
-          <ToggleRow
-            label={t("settings_notif_occasions")}
-            description="مناسبات ومواسم"
-            checked={preferences.occasionNotifications}
-            onChange={(value) => update("occasionNotifications", value)}
-          />
+          <p className="settings-subhead">التنزيلات والتخزين</p>
           <NavigationList
             rows={[
-              { id: "notif-sound", title: "الإشعارات والصوت", href: "/notifications-and-sound" },
-              { id: "notif-detail", title: "الإشعارات", href: "/notification-settings" },
-              { id: "adhan", title: "إعدادات الأذان", href: "/adhan-settings" },
-              { id: "widget-center", title: "مركز الويدجت", href: "/widget-center" },
-            ]}
-          />
-        </LegalSection>
-      )}
-
-      {visible(sections[5]!) && (
-        <LegalSection title={sections[5]!.title}>
-          <NavigationList
-            rows={[
-              {
-                id: "refresh-version",
-                title: cacheRefreshBusy ? "يُحدَّث…" : "تحديث النسخة",
-                description: "يمسح كاش الواجهة ويعيد تحميل آخر نسخة منشورة",
-                onClick: () => {
-                  if (cacheRefreshBusy) return;
-                  setCacheRefreshBusy(true);
-                  setCacheRefreshNote("يُحدَّث الآن…");
-                  void refreshAppAndPurgeCaches()
-                    .then((result) => {
-                      if (result.shortCommit) setDisplayedAppVersion(result.shortCommit);
-                      if (result.ok) {
-                        setCacheRefreshNote("تم تحديث النسخة — يُعاد التحميل…");
-                      } else {
-                        setCacheRefreshBusy(false);
-                        setCacheRefreshNote("النسخة محدّثة بالفعل.");
-                      }
-                    })
-                    .catch(() => {
-                      setCacheRefreshBusy(false);
-                      setCacheRefreshNote(STATUS.loadError);
-                    });
-                },
-                disabled: cacheRefreshBusy,
-                testId: "refresh-app-version",
-              },
-              { id: "adhan-sounds", title: "أصوات الأذان المحمّلة", href: "/adhan-settings" },
               { id: "vault", title: "مخزن المعرفة دون اتصال", href: "/vault" },
               {
                 id: "clear-quran-cache",
@@ -655,20 +511,6 @@ export default function SettingsPage() {
               },
             ]}
           />
-          {displayedAppVersion ? (
-            <p className="settings-note" dir="ltr" data-testid="app-version-commit">
-              النسخة الحالية: {displayedAppVersion}
-            </p>
-          ) : null}
-          {cacheRefreshNote === STATUS.loadError ? (
-            <FieldError id="settings-cache-refresh-error" className="settings-note">
-              {cacheRefreshNote}
-            </FieldError>
-          ) : cacheRefreshNote ? (
-            <p className="settings-note" role="status">
-              {cacheRefreshNote}
-            </p>
-          ) : null}
           <p className="settings-note">
             تنزيل تلاوة السور كاملة للقرّاء المُحقَّقين QA — للاستماع دون اتصال.
           </p>
@@ -678,8 +520,131 @@ export default function SettingsPage() {
         </LegalSection>
       )}
 
-      {visible(sections[6]!) && (
-        <LegalSection title={sections[6]!.title}>
+      {visible(sections[2]!) && (
+        <LegalSection title={sections[2]!.title}>
+          <NavigationList
+            rows={[
+              {
+                id: "adhan",
+                title: "إعدادات الأذان والتنبيهات",
+                description: "المؤذن، التنبيه قبل الأذان وبعده، الإقامة، والصلوات المفعّلة",
+                value: prayerAlertsOn ? "مفعّلة" : "متوقفة",
+                href: "/adhan-settings",
+                testId: "settings-adhan-link",
+              },
+              { id: "prayer-times", title: "مواقيت الصلاة والموقع", href: "/prayer-times" },
+              { id: "widget-center", title: "مركز الويدجت", href: "/widget-center" },
+            ]}
+          />
+        </LegalSection>
+      )}
+
+      {visible(sections[3]!) && (
+        <LegalSection title={sections[3]!.title}>
+          <p className="settings-note">
+            كل التذكيرات في مكان واحد: الأذكار، ورد القرآن، المراجعة، الجمعة والمناسبات، وساعات الهدوء.
+          </p>
+          <NavigationList
+            rows={[
+              {
+                id: "notif-hub",
+                title: "الإشعارات والتذكيرات",
+                description: "الإذن، الفئات، ساعات الهدوء، وصندوق الإشعارات",
+                value: contentRemindersOn ? "مفعّلة" : "متوقفة",
+                href: "/notification-settings",
+                testId: "settings-notifications-link",
+              },
+            ]}
+          />
+        </LegalSection>
+      )}
+
+      {visible(sections[4]!) && (
+        <LegalSection title={sections[4]!.title}>
+          <AppCard
+            as="section"
+            className="settings-account-card"
+            data-ss-surface="inset"
+          >
+            <div className="settings-avatar" aria-hidden="true">
+              {(user?.profile?.full_name || user?.email || "م").slice(0, 1)}
+            </div>
+            <div>
+              <p>
+                <strong>{t("settings_name")}:</strong>{" "}
+                {user?.profile?.full_name || t("settings_guest")}
+              </p>
+              <p>
+                <strong>{t("settings_email")}:</strong>{" "}
+                {user?.email || t("settings_not_logged_in")}
+              </p>
+            </div>
+          </AppCard>
+          {authLoading ? (
+            <p className="settings-auth-pending" aria-busy="true" aria-label="تحديث الحساب">
+              …
+            </p>
+          ) : (
+            <NavigationList
+              rows={
+                isLoggedIn
+                  ? [
+                      {
+                        id: "logout",
+                        title: t("settings_logout"),
+                        onClick: () => logout(),
+                      },
+                      {
+                        id: "delete-account",
+                        title: t("settings_delete_account"),
+                        onClick: () => setDeleteDialogOpen(true),
+                        danger: true,
+                        testId: "settings-delete-account",
+                      },
+                    ]
+                  : [
+                      { id: "login", title: t("settings_login"), href: "/login" },
+                      { id: "register", title: t("settings_register"), href: "/register" },
+                    ]
+              }
+            />
+          )}
+          {deleteDialogOpen ? (
+            <div
+              ref={deleteDialogRef}
+              className="settings-delete-dialog"
+              role="alertdialog"
+              aria-modal="true"
+              aria-labelledby="settings-delete-title"
+              aria-describedby="settings-delete-desc"
+            >
+              <div className="settings-delete-dialog__panel">
+                <h2 id="settings-delete-title">تأكيد حذف الحساب</h2>
+                <p id="settings-delete-desc">
+                  سيُحذف حسابك وبيانات المصادقة وجميع بياناتك الشخصية المرتبطة به نهائيًا
+                  ولا يمكن التراجع عن ذلك. المحتوى العلمي العام غير المرتبط بحسابك يبقى متاحًا للجميع.
+                </p>
+                <div className="settings-delete-dialog__actions">
+                  <Link
+                    href="/account-deletion?confirm=1"
+                    className="page-action-btn page-action-btn--danger"
+                    onClick={() => setDeleteDialogOpen(false)}
+                  >
+                    المتابعة إلى الحذف النهائي
+                  </Link>
+                  <Button
+                    ref={deleteCancelRef}
+                    type="button"
+                    variant="secondary"
+                    className="page-action-btn page-action-btn--secondary"
+                    onClick={closeDeleteDialog}
+                  >
+                    إلغاء
+                  </Button>
+                </div>
+              </div>
+            </div>
+          ) : null}
           <p>{t("settings_privacy_desc")}</p>
           <NavigationList
             rows={[
@@ -761,21 +726,60 @@ export default function SettingsPage() {
         </LegalSection>
       )}
 
-      {visible(sections[7]!) && (
-        <LegalSection title={sections[7]!.title}>
+      {visible(sections[5]!) && (
+        <LegalSection title={sections[5]!.title}>
           <p className="settings-note">
             أعد مشاهدة جولة المزايا لتتعرّف على المصحف والصلاة والأذكار والبحث والتنبيهات.
           </p>
           <NavigationList
             rows={[
               { id: "feature-tour", title: "جولة المزايا", href: "/feature-tour" },
+              {
+                id: "refresh-version",
+                title: cacheRefreshBusy ? "يُحدَّث…" : "تحديث النسخة",
+                description: "يمسح كاش الواجهة ويعيد تحميل آخر نسخة منشورة",
+                onClick: () => {
+                  if (cacheRefreshBusy) return;
+                  setCacheRefreshBusy(true);
+                  setCacheRefreshNote("يُحدَّث الآن…");
+                  void refreshAppAndPurgeCaches()
+                    .then((result) => {
+                      if (result.shortCommit) setDisplayedAppVersion(result.shortCommit);
+                      if (result.ok) {
+                        setCacheRefreshNote("تم تحديث النسخة — يُعاد التحميل…");
+                      } else {
+                        setCacheRefreshBusy(false);
+                        setCacheRefreshNote("النسخة محدّثة بالفعل.");
+                      }
+                    })
+                    .catch(() => {
+                      setCacheRefreshBusy(false);
+                      setCacheRefreshNote(STATUS.loadError);
+                    });
+                },
+                disabled: cacheRefreshBusy,
+                testId: "refresh-app-version",
+              },
               { id: "about", title: "حول التطبيق", href: "/about" },
               { id: "licenses", title: "المصادر والتراخيص", href: "/data-licenses" },
               { id: "contact", title: "الدعم الفني", href: "/support" },
-              { id: "privacy", title: "سياسة الخصوصية", href: "/privacy" },
               { id: "terms", title: "شروط الاستخدام", href: "/terms" },
             ]}
           />
+          {displayedAppVersion ? (
+            <p className="settings-note" dir="ltr" data-testid="app-version-commit">
+              النسخة الحالية: {displayedAppVersion}
+            </p>
+          ) : null}
+          {cacheRefreshNote === STATUS.loadError ? (
+            <FieldError id="settings-cache-refresh-error" className="settings-note">
+              {cacheRefreshNote}
+            </FieldError>
+          ) : cacheRefreshNote ? (
+            <p className="settings-note" role="status">
+              {cacheRefreshNote}
+            </p>
+          ) : null}
         </LegalSection>
       )}
 </LegalPageLayout>

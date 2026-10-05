@@ -1020,8 +1020,8 @@
           "note": "Theme pipeline / App preference"
         },
         "Canvas": {
-          "status": "KEEP_JUSTIFIED",
-          "note": "PRAYER_SPECIAL surface — no calc/scheduling changes"
+          "status": "PASS",
+          "note": "DetailScreen chrome — نص مساعدة ثابت، ليس سطح صلاة (لا حساب/جدولة)"
         },
         "Buttons": {
           "status": "PASS",
