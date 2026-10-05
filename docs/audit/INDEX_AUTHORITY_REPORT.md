@@ -1,6 +1,6 @@
 # INDEX_AUTHORITY_REPORT
 
-Generated: 2026-10-03T10:38:11.770Z
+Generated: 2026-10-05T17:15:49.063Z
 
 | Metric | Value |
 |---|---:|
@@ -8,7 +8,7 @@ Generated: 2026-10-03T10:38:11.770Z
 | uniqueIndexes | 25 |
 | partialIndexMentions | 72 |
 | ginTrigramMentions | 96 |
-| ftsMentions | 175 |
+| ftsMentions | 190 |
 | duplicateIndexNameDefs | 30 |
 
 - Hot filter indexes migration: ✅

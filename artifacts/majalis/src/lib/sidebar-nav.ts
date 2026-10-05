@@ -153,7 +153,8 @@ const browseGroups: SidebarNavGroup[] = DRAWER_BROWSE_GROUPS.map((def) => {
 const browseHrefs = new Set(browseGroups.flatMap((g) => g.items.map((i) => i.href)));
 
 const accountItems: SidebarNavItem[] = sectionsForSurface("drawer")
-  .filter((s) => s.id !== "sections" && !browseHrefs.has(s.route))
+  /* صفوف الحساب فقط — أقسام المحتوى في الدرج تأتي من مجموعات التصفّح */
+  .filter((s) => s.group === "account" && !browseHrefs.has(s.route))
   .map((s) => ({
     href: s.route,
     label: s.label,

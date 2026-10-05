@@ -1,6 +1,6 @@
 # RENDER_COST_REPORT
 
-Generated: 2026-10-03T09:21:31.895Z
+Generated: 2026-10-05T17:15:47.805Z
 
 **Method:** static proxies — NOT wall-clock CPU. DEVICE_REQUIRED for Profiler.
 
@@ -8,7 +8,7 @@ Highest consumers (proxy): Mushaf · Prayer · Lesson player · Home
 
 | Surface | Risk score | Hot files |
 |---|---:|---:|
-| Mushaf | 152 | 8 |
+| Mushaf | 142 | 8 |
 | Prayer | 56 | 4 |
 | Lesson player | 52 | 4 |
 | Home | 36 | 6 |
@@ -23,7 +23,7 @@ Highest consumers (proxy): Mushaf · Prayer · Lesson player · Home
 - `features/mushaf-madinah/VerifiedMushafReader.tsx` score=34 · useEffect×17
 - `pages/quran/MushafReaderPage.tsx` score=16 · useEffect×8
 - `features/mushaf-reader/useMushafPager.ts` score=12 · addEventListener×4
-- `features/mushaf-reader/MushafControlsLayer.tsx` score=11 · useEffect×6, inlineHandlers×27 weak-useCallback
+- `features/mushaf-madinah/AyahActionSheet.tsx` score=10 · useEffect×5, inlineHandlers×23 weak-useCallback
 
 ### Prayer
 

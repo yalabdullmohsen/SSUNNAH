@@ -56,7 +56,7 @@ assert.equal(
 const glossary = SECTIONS.find((s) => s.id === "glossary");
 assert.ok(glossary);
 assert.equal(glossary!.hub, "sections");
-assert.equal(glossary!.group, "library");
+assert.equal(glossary!.group, "knowledge"); // مجموعة IA «المعرفة والتاريخ»
 
 const hubView = fs.readFileSync(path.join(root, "src/pages/quran/ui/QuranHubView.tsx"), "utf8");
 assert.doesNotMatch(hubView, /islamic-glossary/, "لا رابط قاموس عام في واجهة المركز");
