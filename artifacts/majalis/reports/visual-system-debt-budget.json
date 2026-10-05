@@ -9,9 +9,9 @@
   },
   "ceilings": {
     "cssFiles": 353,
-    "important": 4724,
-    "hexInCss": 5593,
-    "rgbHslInCss": 1976,
+    "important": 4720,
+    "hexInCss": 5571,
+    "rgbHslInCss": 1970,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
     "boxShadowDecls": 982,
@@ -20,5 +20,5 @@
     "inlineColorStyleMatches": 39,
     "rawButtonFiles": 73
   },
-  "updatedAt": "2026-10-04T20:00:00.000Z"
+  "updatedAt": "2026-10-05T01:00:40Z"
 }

@@ -1,20 +1,19 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "Ceilings must not rise. Wave 3 / PR F: product Quran hub buttons absorbed; hex approx lowered to measured.",
+  "note": "Ceilings must not rise; floors (canonical adoption) must not fall without documented exception.",
   "ceilings": {
     "rawButtonFiles": 73,
     "rawButtonElements": 300,
-    "divSpanOnClick": 41,
+    "divSpanOnClick": 37,
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
-    "buttonRelatedImportantApprox": 1138,
-    "buttonRelatedHexApprox": 973
+    "buttonRelatedImportantApprox": 1134,
+    "buttonRelatedHexApprox": 971
   },
   "floors": {
-    "officialButtonImportFiles": 288,
+    "officialButtonImportFiles": 290,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-10-04T14:27:42.111Z",
-  "noteFloor": "Wave 4: official Button import floor 290\u2192288 after Engine/Prophet compose ContentTabs (Button owned by TabSystem)."
+  "updatedAt": "2026-10-05T01:00:37.572Z"
 }
