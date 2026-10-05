@@ -17,6 +17,7 @@ import {
 } from "./mushaf-audio-session";
 import { MUSHAF_BOOT_STAGES } from "./mushaf-staged-boot";
 import { getSurahMeta, savePagePosition } from "@/lib/quran-api";
+import { navigateTo } from "@/lib/navigation-intent";
 import {
   getReciter,
   listAyahAudioUrls,
@@ -1491,9 +1492,8 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       setControlsMoreOpen(false);
       return;
     }
-    if (typeof window !== "undefined") {
-      window.location.assign("/mushaf/bookmarks");
-    }
+    // تنقّل SPA — لا إعادة تحميل كاملة (تُعيد تشغيل الغلاف داخل التطبيق الأصلي)
+    navigateTo("/mushaf/bookmarks");
   }, [selectedVerseKey]);
 
   const mushafPageShareUrl = useCallback(() => {

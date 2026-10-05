@@ -3,29 +3,14 @@
  * ويفتح الروابط الخارجية عبر Browser plugin مع تأكيد اختياري.
  */
 import { openExternalUrl } from "@/lib/capacitor-utils";
-import { isNativePlatform } from "@/lib/native-platform";
-
-const APP_HOSTS = new Set([
-  "www.ssunnah.com",
-  "ssunnah.com",
-  "majlisilm.com",
-  "www.majlisilm.com",
-  "localhost",
-  "127.0.0.1",
-]);
+import { isAppHost, isNativePlatform } from "@/lib/native-platform";
 
 function isNative(): boolean {
   return isNativePlatform();
 }
 
-export function isAppHost(hostname: string): boolean {
-  const h = hostname.toLowerCase().replace(/\.$/, "");
-  return (
-    APP_HOSTS.has(h) ||
-    h.endsWith(".majlisilm.com") ||
-    h.endsWith(".ssunnah.com")
-  );
-}
+/** القائمة الموحّدة في حدّ المنصّة — يُعاد تصديرها للتوافق مع المستوردين الحاليين. */
+export { isAppHost };
 
 export function resolveInternalPath(href: string, base = window.location.href): string | null {
   try {
@@ -115,6 +100,16 @@ export function installInAppNavigationGuard(): void {
         if (internal) {
           navigateInApp(internal);
           return null;
+        }
+        // خارجي http(s) → متصفح داخل التطبيق (SFSafariViewController) بدل مغادرة التطبيق إلى Safari
+        try {
+          const abs = new URL(String(url), window.location.href);
+          if (abs.protocol === "http:" || abs.protocol === "https:") {
+            void openExternalUrl(abs.toString());
+            return null;
+          }
+        } catch {
+          /* رابط غير صالح — اتركه للسلوك الافتراضي */
         }
       }
       return nativeOpen(url, target, features);
