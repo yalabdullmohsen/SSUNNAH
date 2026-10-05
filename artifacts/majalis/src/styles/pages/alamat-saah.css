@@ -105,7 +105,7 @@
 
 /* Kubra grid */
 .as-kubra-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.1rem;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 1.1rem;
 }
 .as-kubra-card {
   background: var(--ss-card-bg, var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))))); border: 1px solid var(--clr-border);

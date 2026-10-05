@@ -119,7 +119,7 @@ html[data-theme="dark"] .snr-hero-desc {
 /* ── شبكة البطاقات ── */
 .snr-categories-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: var(--ds-space-5);
   margin-bottom: 2.5rem;
 }
@@ -226,7 +226,7 @@ html[data-theme="dark"] .snr-topic-chip {
 /* ── شبكة موضوعات ── */
 .snr-topics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
   gap: var(--ds-space-4);
   margin-bottom: 2rem;
 }

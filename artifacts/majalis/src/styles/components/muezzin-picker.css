@@ -13,7 +13,7 @@
   background: var(--mj-surface, var(--msk-canvas-1));
   border-radius: 1.25rem 1.25rem 0 0;
   width: min(100vw, 540px);
-  max-height: 70vh;
+  max-height: 70dvh;
   display: flex;
   flex-direction: column;
   overflow: hidden;

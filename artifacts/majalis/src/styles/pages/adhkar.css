@@ -233,7 +233,7 @@
   padding: 1.5rem 1.5rem 2rem;
   width: 100%;
   max-width: 640px;
-  max-height: 85vh;
+  max-height: 85dvh;
   overflow-y: auto;
   position: relative;
   animation: sheetSlideUp 0.28s cubic-bezier(.32,.72,0,1) forwards;

@@ -43,7 +43,7 @@
 .jn-section--duas        { --jn-section-color: var(--brand-deep, var(--mj-brand-deep)); }
 .jn-section__title { font-size: 1.1rem; font-weight: 800; margin: 0 0 .85rem; border-inline-end: 3px solid currentColor; padding-inline-end: .7rem; color: var(--jn-section-color, var(--mj-brand)); }
 
-.jn-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .75rem; }
+.jn-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: .75rem; }
 .jn-desc-card {
   background: var(--ss-card-bg, var(--color-surface, var(--mj-surface))); border: 1px solid var(--mj-hairline); border-top: 3px solid var(--jn-section-color, var(--mj-brand));
   border-radius: .9rem; padding: 1rem 1.1rem;
@@ -64,7 +64,7 @@
 .jn-intro { background: rgba(31,77,58,.06); border-inline-end: 3px solid var(--mj-brand); border-radius: .6rem; padding: .85rem 1rem; margin-bottom: 1.2rem; }
 .jn-intro p { font-size: .88rem; color: var(--color-text, var(--mj-ink)); line-height: 1.75; margin: 0; }
 
-.jn-asbab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .8rem; }
+.jn-asbab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: .8rem; }
 .jn-sabab-card {
   background: var(--ss-card-bg, var(--color-surface, var(--mj-surface))); border: 1px solid var(--mj-hairline); border-radius: var(--ds-radius-xl);
   padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: .45rem;

@@ -210,7 +210,7 @@ html[data-theme="dark"] .ilm-chip--active {
 
 .ilm-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
   gap: 0.95rem;
 }
 
@@ -590,6 +590,6 @@ html[data-theme="dark"] .ilm-card__desc {
   }
 
   .ilm-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
   }
 }

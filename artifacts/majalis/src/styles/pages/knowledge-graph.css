@@ -125,7 +125,7 @@
 .kng-suggest-chip.is-active { background: var(--majalis-emerald); color: var(--mj-white, var(--mj-white)); border-color: var(--majalis-emerald); }
 
 .kng-tag-results__title { font-size: 0.9rem; font-weight: 700; color: var(--majalis-ink); margin-bottom: 0.75rem; }
-.kng-tag-results__grid { display: grid; gap: var(--ds-space-2); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.kng-tag-results__grid { display: grid; gap: var(--ds-space-2); grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); }
 .kng-result-link { text-decoration: none; }
 .kng-result-card {
   padding: 0.875rem 1rem; border-radius: var(--ds-radius);

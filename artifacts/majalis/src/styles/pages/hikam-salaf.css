@@ -79,7 +79,7 @@
 .hk-cat--fav-filter.hk-cat--active { background: var(--mj-brand); border-color: var(--mj-brand); color: var(--mj-white, var(--mj-white)); }
 
 /* شبكة الحكم */
-.hk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--ds-space-4); }
+.hk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: var(--ds-space-4); }
 
 /* بطاقة الحكمة */
 .hk-card {

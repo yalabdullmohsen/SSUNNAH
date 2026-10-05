@@ -1980,7 +1980,7 @@ html[data-theme="dark"] .ds-stat span {
 .filter-tabs button { min-height: 44px; padding-inline: var(--ds-space-4); border: 1px solid var(--ds-line-color); border-radius: var(--ds-radius); background: var(--majalis-panel); color: var(--ds-ink-soft); font: inherit; cursor: pointer; }
 .filter-tabs button.is-active { background: var(--ds-emerald-soft); border-color: var(--ds-emerald); color: var(--ds-emerald-deep); font-weight: 700; }
 .revelation-review-note { color: var(--ds-ink-soft); font-size: var(--ds-text-sm); line-height: 1.7; margin-block-end: var(--ds-space-4); }
-.surah-info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: var(--ds-space-3); margin-block-end: var(--ds-space-6); }
+.surah-info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(17rem, 100%), 1fr)); gap: var(--ds-space-3); margin-block-end: var(--ds-space-6); }
 .surah-info-card { display: grid; grid-template-columns: auto 1fr; gap: var(--ds-space-3); align-items: start; }
 .surah-info-card__number { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: var(--ds-radius); background: var(--ds-emerald-soft); color: var(--ds-emerald-deep); font-weight: 800; }
 .surah-info-card__body h2 { margin: 0; color: var(--ds-ink); font-size: var(--ds-text-lg); }
@@ -2304,7 +2304,7 @@ html[data-theme="dark"] .ds-stat span {
   background: #fff;
   width: 100%;
   max-width: 480px;
-  max-height: 85vh;
+  max-height: 85dvh;
   border-radius: 1rem 1rem 0 0;
   display: flex;
   flex-direction: column;

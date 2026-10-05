@@ -52,7 +52,7 @@
 .atl-section-intro p { font-size: .88rem; color: var(--color-text, var(--mj-ink)); line-height: 1.75; margin: 0; }
 
 /* Cards for fadl */
-.atl-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: .85rem; }
+.atl-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: .85rem; }
 .atl-card { background: var(--ss-card-bg, var(--color-surface, var(--mj-surface))); border: 1px solid var(--mj-hairline, var(--mj-hairline, #e3e8e6)); border-radius: .9rem; padding: 1.1rem 1.2rem; box-shadow: var(--v2-shadow-soft); }
 .atl-card--hadith { border-top: 3px solid var(--mj-brand); }
 .atl-card__title { font-size: .9rem; font-weight: 800; color: var(--mj-brand); margin: 0 0 .45rem; }

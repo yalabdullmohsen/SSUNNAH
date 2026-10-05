@@ -275,7 +275,7 @@ html[data-theme="dark"] .uq-hero .uq-stat__label {
 /* ── UQ-Qiraat — القراءات السبع (UlumQuranPage) ───────────────────────── */
 .uq-qiraat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
   gap: var(--ds-space-4);
   margin: 1.25rem 0;
 }

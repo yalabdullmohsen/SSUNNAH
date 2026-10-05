@@ -53,7 +53,7 @@
 .an-cat--read.an-cat--active { background: var(--mj-brand); color: var(--mj-on-brand, var(--mj-white)); }
 
 /* Grid */
-.an-grid { max-width: 860px; margin: 0 auto; padding: 0 1rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--ds-space-4); }
+.an-grid { max-width: 860px; margin: 0 auto; padding: 0 1rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: var(--ds-space-4); }
 .an-empty { text-align: center; color: var(--mj-muted); padding: 3rem 1rem; font-size: 0.9rem; }
 
 /* Card */

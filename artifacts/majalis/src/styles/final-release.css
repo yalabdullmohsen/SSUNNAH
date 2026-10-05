@@ -126,7 +126,7 @@ html {
   min-height: 100dvh;
 }
 body {
-  min-width: 320px;
+  /* لا حدّ أدنى للعرض: Galaxy Fold المطوي 280px (مصفوفة توافق الأجهزة) */
   overflow-x: clip;
   line-height: 1.85;
 }

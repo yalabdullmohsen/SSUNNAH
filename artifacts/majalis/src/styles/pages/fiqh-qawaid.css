@@ -125,7 +125,7 @@
   font-size: .9rem; color: var(--mj-ink); outline: none; direction: rtl;
 }
 .fq-empty { text-align: center; color: var(--mj-muted); padding: var(--ds-space-8); }
-.fq-faraa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--ds-space-4); }
+.fq-faraa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: var(--ds-space-4); }
 .fq-faraa-card {
   background: var(--mj-surface); border: 1px solid var(--mj-hairline); border-radius: .9rem; padding: 1rem 1.1rem;
   display: flex; flex-direction: column; gap: .55rem;
@@ -200,7 +200,7 @@
 /* مراجع */
 .fq-ref { margin-top: 2.5rem; padding: var(--ds-space-6); background: var(--mj-surface); border: 1px solid var(--mj-hairline); border-radius: var(--ds-radius-xl); }
 .fq-ref__title { font-size: var(--ds-text-base); font-weight: 800; color: var(--mj-ink); margin: 0 0 1rem; }
-.fq-ref__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .75rem; }
+.fq-ref__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: .75rem; }
 .fq-ref__book {
   display: flex; align-items: flex-start; gap: .6rem;
   background: var(--mj-surface-2); border: 1px solid var(--mj-hairline); border-radius: .65rem; padding: .75rem .9rem;

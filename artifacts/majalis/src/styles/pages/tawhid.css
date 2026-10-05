@@ -111,7 +111,7 @@
   box-sizing: border-box;
 }
 @media (min-width: 400px) {
-  .twh-hub-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+  .twh-hub-grid { grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: 1rem; }
 }
 .twh-hub-card {
   display: flex;
@@ -386,7 +386,7 @@ html[data-theme="dark"] .twh-book-level--mid { color: var(--mj-brand, #7ed4b5) !
 
 .twh-pillars-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(270px, 100%), 1fr));
   gap: var(--ds-space-3-5);
 }
 
@@ -471,7 +471,7 @@ html[data-theme="dark"] .twh-book-level--mid { color: var(--mj-brand, #7ed4b5) !
 .twh-share { padding: 1rem 0; margin: 1.5rem 0; border-top: 1px solid var(--majalis-line); display: flex; justify-content: center; }
 .twh-books-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
   gap: var(--ds-space-3-5);
 }
 

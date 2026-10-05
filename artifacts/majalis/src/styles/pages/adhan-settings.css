@@ -447,7 +447,7 @@ html[data-theme="dark"] .ads-diagnostics-toggle {
 }
 .ads-sheet {
   width: min(100vw, 540px);
-  max-height: 70vh;
+  max-height: 70dvh;
   background: var(--mj-surface, var(--msk-canvas-1));
   border-radius: 1.25rem 1.25rem 0 0;
   border: 1px solid var(--mj-hairline, var(--msk-border));
