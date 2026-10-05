@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "sha": "ref: refs/heads/cursor/hv-msk-bridge-batch",
+  "sha": "ref: refs/heads/cursor/hv-msk-adhan-chrome-batch",
   "coverage": {
-    "measuredAt": "2026-10-05T00:05:14.744Z",
+    "measuredAt": "2026-10-05T00:13:43.949Z",
     "cssFileCount": 353,
     "cssFilesCeiling": 353,
     "measuredCssFiles": 353,
@@ -22,8 +22,8 @@
       "ds": 3356,
       "elite": 1,
       "em": 20,
-      "msk": 551,
-      "majalis": 3274
+      "msk": 549,
+      "majalis": 3262
     },
     "deprecatedGrowth": [],
     "fmParentEmptyRule": false,

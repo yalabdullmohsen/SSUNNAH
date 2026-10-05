@@ -10,7 +10,7 @@
 }
 
 .mzp-sheet {
-  background: var(--msk-canvas-1, var(--majalis-panel-raised, var(--mj-white)));
+  background: var(--mj-surface, var(--msk-canvas-1));
   border-radius: 1.25rem 1.25rem 0 0;
   width: min(100vw, 540px);
   max-height: 70vh;
@@ -18,9 +18,9 @@
   flex-direction: column;
   overflow: hidden;
   direction: rtl;
-  border: 1px solid var(--msk-border, rgba(0, 0, 0, 0.08));
+  border: 1px solid var(--mj-hairline, var(--msk-border, rgba(0, 0, 0, 0.08)));
   border-bottom: none;
-  box-shadow: 0 -8px 32px color-mix(in srgb, var(--msk-text, #000) 14%, transparent);
+  box-shadow: 0 -8px 32px color-mix(in srgb, var(--mj-ink, var(--msk-text, #000)) 14%, transparent);
 }
 
 .mzp-handle-row { display: flex; justify-content: center; padding: 0.65rem 0 0.15rem; flex-shrink: 0; }
@@ -28,24 +28,24 @@
   width: 40px;
   height: 4px;
   border-radius: var(--radius-pill, 999rem);
-  background: var(--msk-border, rgba(0, 0, 0, 0.18));
+  background: var(--mj-hairline, var(--msk-border, rgba(0, 0, 0, 0.18)));
 }
 
 .mzp-header {
   padding: 0.55rem 1.15rem 0.55rem;
   flex-shrink: 0;
-  border-bottom: 1px solid var(--msk-border, rgba(0, 0, 0, 0.08));
+  border-bottom: 1px solid var(--mj-hairline, var(--msk-border, rgba(0, 0, 0, 0.08)));
 }
 .mzp-title {
   margin: 0;
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--msk-gold, var(--majalis-emerald, var(--mj-brand-deep)));
+  color: var(--mj-brand, var(--msk-gold));
 }
 .mzp-subtitle {
   margin: 0.3rem 0 0;
   font-size: 0.78rem;
-  color: var(--msk-text-2, var(--majalis-ink-muted));
+  color: var(--mj-ink-2, var(--msk-text-2));
   line-height: 1.45;
 }
 
@@ -62,9 +62,9 @@
   box-sizing: border-box;
   min-height: 44px;
   border-radius: 0.65rem;
-  border: 1.5px solid var(--msk-border, rgba(0, 0, 0, 0.12));
-  background: var(--msk-canvas-2, rgba(0, 0, 0, 0.03));
-  color: var(--msk-text, inherit);
+  border: 1.5px solid var(--mj-hairline, var(--msk-border, rgba(0, 0, 0, 0.12)));
+  background: var(--mj-surface-2, var(--msk-canvas-2, rgba(0, 0, 0, 0.03)));
+  color: var(--mj-ink, var(--msk-text, inherit));
   font: inherit;
   font-size: max(16px, 0.9rem);
   padding: 0.55rem 0.85rem;
@@ -74,12 +74,12 @@
   margin-top: 0.55rem;
   height: 3px;
   border-radius: var(--radius-pill, 999rem);
-  background: color-mix(in srgb, var(--msk-gold, #1c5244) 18%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, var(--msk-gold, #1c5244)) 18%, transparent);
   overflow: hidden;
 }
 .mzp-progress__bar {
   height: 100%;
-  background: var(--msk-gold, var(--mj-brand-deep, #1c5244));
+  background: var(--mj-brand, var(--msk-gold));
   transition: width 0.12s linear;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -108,7 +108,7 @@
 .mzp-empty {
   margin: 1rem 0.5rem;
   font-size: 0.85rem;
-  color: var(--msk-text-2);
+  color: var(--mj-ink-2, var(--msk-text-2));
   text-align: center;
 }
 
@@ -116,7 +116,7 @@
 .mzp-pattern-label {
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--msk-text-2, var(--majalis-ink-muted));
+  color: var(--mj-ink-2, var(--msk-text-2));
   padding: 0.35rem 0.25rem 0.45rem;
 }
 
@@ -128,16 +128,16 @@
   padding: 0.55rem 0.65rem;
   border-radius: 0.75rem;
   margin-bottom: 0.35rem;
-  background: var(--msk-canvas-2, rgba(0, 0, 0, 0.03));
-  border: 1.5px solid var(--msk-border, rgba(0, 0, 0, 0.08));
+  background: var(--mj-surface-2, var(--msk-canvas-2, rgba(0, 0, 0, 0.03)));
+  border: 1.5px solid var(--mj-hairline, var(--msk-border, rgba(0, 0, 0, 0.08)));
   min-height: 52px;
 }
 .mzp-item--selected {
-  background: color-mix(in srgb, var(--msk-gold, #1c5244) 10%, transparent);
-  border-color: var(--msk-gold, var(--majalis-emerald, var(--mj-brand-deep)));
+  background: color-mix(in srgb, var(--mj-brand, var(--msk-gold, #1c5244)) 10%, transparent);
+  border-color: var(--mj-brand, var(--msk-gold));
 }
 .mzp-item--offline {
-  border-color: color-mix(in srgb, var(--msk-gold, #1c5244) 35%, transparent);
+  border-color: color-mix(in srgb, var(--mj-brand, var(--msk-gold, #1c5244)) 35%, transparent);
 }
 
 .mzp-preview-btn {
@@ -149,7 +149,7 @@
   max-height: none !important;
   border-radius: 0.65rem !important;
   border: none !important;
-  background: var(--msk-gold, var(--majalis-emerald, var(--mj-brand-deep))) !important;
+  background: var(--mj-brand, var(--msk-gold)) !important;
   color: var(--mj-white) !important;
   cursor: pointer;
   font: inherit !important;
@@ -174,7 +174,7 @@
 }
 .mzp-preview-btn--playing {
   /* محايد داكن من لوحة الثيم — لا أحمر خارجي */
-  background: var(--msk-text, var(--mj-ink, #1a1a18)) !important;
+  background: var(--mj-ink, var(--msk-text)) !important;
 }
 .mzp-preview-btn:active { transform: none !important; }
 
@@ -187,8 +187,8 @@
   font-size: 0.65rem;
   font-weight: 700;
   vertical-align: middle;
-  background: color-mix(in srgb, var(--msk-gold, #1c5244) 14%, transparent);
-  color: var(--msk-gold, var(--majalis-emerald, var(--mj-brand-deep)));
+  background: color-mix(in srgb, var(--mj-brand, var(--msk-gold, #1c5244)) 14%, transparent);
+  color: var(--mj-brand, var(--msk-gold));
 }
 
 .mzp-info {
@@ -211,7 +211,7 @@
 .mzp-name {
   font-weight: 600;
   font-size: 0.9rem;
-  color: var(--msk-text, var(--majalis-ink));
+  color: var(--mj-ink, var(--msk-text));
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -219,7 +219,7 @@
 }
 .mzp-origin {
   font-size: 0.72rem;
-  color: var(--msk-text-2, var(--majalis-ink-muted));
+  color: var(--mj-ink-2, var(--msk-text-2));
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -232,8 +232,8 @@
   border-radius: 0.4rem;
   font-size: 0.68rem;
   font-weight: 600;
-  background: color-mix(in srgb, var(--msk-gold, #1c5244) 12%, transparent);
-  color: var(--msk-gold, var(--majalis-emerald, var(--mj-brand-deep)));
+  background: color-mix(in srgb, var(--mj-brand, var(--msk-gold, #1c5244)) 12%, transparent);
+  color: var(--mj-brand, var(--msk-gold));
 }
 
 .mzp-radio {
@@ -242,7 +242,7 @@
   min-width: 22px;
   min-height: 22px;
   border-radius: 50%;
-  border: 2px solid var(--msk-border, rgba(0, 0, 0, 0.22));
+  border: 2px solid var(--mj-hairline, var(--msk-border, rgba(0, 0, 0, 0.22)));
   background: transparent;
   flex-shrink: 0;
   display: inline-flex;
@@ -253,23 +253,23 @@
   color: var(--mj-white);
 }
 .mzp-radio--selected {
-  border-color: var(--msk-gold, var(--majalis-emerald));
-  background: var(--msk-gold, var(--majalis-emerald, var(--mj-brand-deep)));
+  border-color: var(--mj-brand, var(--msk-gold));
+  background: var(--mj-brand, var(--msk-gold));
 }
 .mzp-check { font-size: 0.65rem; line-height: 1; }
 
 .mzp-footer {
   flex-shrink: 0;
   padding: 0.65rem 1rem calc(0.85rem + var(--inset-bottom, 0px));
-  border-top: 1px solid var(--msk-border, rgba(0, 0, 0, 0.08));
+  border-top: 1px solid var(--mj-hairline, var(--msk-border, rgba(0, 0, 0, 0.08)));
 }
 .mzp-close {
   width: 100%;
   min-height: 44px;
   border-radius: 0.65rem;
-  border: 1.5px solid var(--msk-border);
-  background: var(--msk-canvas-2, transparent);
-  color: var(--msk-text);
+  border: 1.5px solid var(--mj-hairline, var(--msk-border));
+  background: var(--mj-surface-2, var(--msk-canvas-2, transparent));
+  color: var(--mj-ink, var(--msk-text));
   font: inherit;
   font-weight: 600;
   cursor: pointer;
