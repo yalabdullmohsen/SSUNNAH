@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAdminShell } from "@/views/admin/AdminShell";
 import { SkeletonCardGrid } from "@/components/ui-common";
+import { Button } from "@/components/ui/button";
 import {
   adminListDawahQueue,
   adminUpdateDawahStatus,
@@ -79,10 +80,10 @@ export function DawahSection() {
 
       <div className="arp-tabs">
         {TABS.map((tb) => (
-          <button key={tb.id} type="button" onClick={() => setTab(tb.id)} className="arp-tab"
+          <Button key={tb.id} type="button" variant="ghost" onClick={() => setTab(tb.id)} className="arp-tab"
             style={tab === tb.id ? { "--arp-tab-border": "var(--majalis-emerald)", "--arp-tab-bg": "#E8F5E9", "--arp-tab-color": "var(--majalis-emerald-deep)" } as React.CSSProperties : undefined}>
             {tb.label}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -102,10 +103,10 @@ export function DawahSection() {
                       <p className="arp-card-subtext">{(item.short_answer || item.summary_ar || "").slice(0, 160)}</p>
                     </div>
                     <div className="arp-card-actions">
-                      <button type="button" disabled={busy} onClick={() => advance(item.id, item.status)} className="arp-approve-btn">
+                      <Button type="button" variant="primary" disabled={busy} onClick={() => advance(item.id, item.status)} className="arp-approve-btn">
                         {item.status === "approved" ? "نشر" : "الموافقة والانتقال للمرحلة التالية"}
-                      </button>
-                      <button type="button" disabled={busy} onClick={() => reject(item.id)} className="arp-small-btn">إعادة لمسودة</button>
+                      </Button>
+                      <Button type="button" variant="ghost" disabled={busy} onClick={() => reject(item.id)} className="arp-small-btn">إعادة لمسودة</Button>
                     </div>
                   </div>
                 </div>
@@ -126,7 +127,7 @@ export function DawahSection() {
                       <p className="arp-card-subtext">وسيلة التواصل: {c.contact_method} — {c.contact_value}</p>
                     </div>
                     <div className="arp-card-actions">
-                      <button type="button" disabled={busy} onClick={() => resolveContact(c.id)} className="arp-approve-btn">وُضع الرد</button>
+                      <Button type="button" variant="primary" disabled={busy} onClick={() => resolveContact(c.id)} className="arp-approve-btn">وُضع الرد</Button>
                     </div>
                   </div>
                 </div>
