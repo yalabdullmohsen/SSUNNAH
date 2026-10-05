@@ -15,6 +15,10 @@ import {
   scoreHadithDoc,
   scoreSourceDoc,
 } from "@/lib/arabic-search-relevance";
+import {
+  isArabicSearchRpcMissingError,
+  mapHadithRpcRowToSearchHit,
+} from "@/lib/arabic-db-search";
 
 const majalis = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const root = resolve(majalis, "../..");
@@ -233,9 +237,37 @@ const page2 = keysetPage(ranked, 2, {
 const ids = [...page1, ...page2].map((x) => x.id);
 assert.equal(new Set(ids).size, ids.length, "no duplicate ids across pages");
 
+assert.equal(
+  mapHadithRpcRowToSearchHit({
+    id: "h1",
+    title: "t",
+    text_snippet: "snippet",
+    narrator: "n",
+    source_name: "s",
+    collection: "bukhari",
+    chapter: null,
+    hadith_number: "1",
+    grade: "sahih",
+    authenticity_class: "sahih",
+    matched_field: "title",
+    relevance_score: 100,
+    cursor_score: 100,
+    cursor_id: "h1",
+  }).text,
+  "snippet",
+);
+assert.ok(isArabicSearchRpcMissingError(new Error('function public.search_hadiths does not exist')));
+assert.ok(!isArabicSearchRpcMissingError(new Error("timeout")));
+
+const supabaseLib = readMaj("src/lib/supabase.ts");
+assert.match(supabaseLib, /searchHadithsDb/);
+assert.match(supabaseLib, /mapHadithRpcRowToSearchHit/);
+
 // Client helper accepts new filters + feature-flagged RPC path
 const client = readMaj("src/lib/arabic-db-search.ts");
 assert.match(client, /search_hadiths/);
+assert.match(client, /HadithRpcSearchRow/);
+assert.match(client, /isArabicSearchRpcMissingError/);
 assert.match(client, /p_collection|collection/);
 assert.match(client, /cursor/);
 assert.match(client, /resolveArabicSearchPath|legacy_fallback/);

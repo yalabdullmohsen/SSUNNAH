@@ -1748,6 +1748,27 @@ async function searchAdhkarFallback(term: string) {
 
 async function searchHadithFallback(term: string) {
   if (!isConfigured) return { data: [] as any[], errors: [] as any[] };
+
+  const { isArabicDbRpcSearchEnabled } = await import("./arabic-search-feature-flag");
+  if (isArabicDbRpcSearchEnabled()) {
+    const { searchHadithsDb, mapHadithRpcRowToSearchHit, isArabicSearchRpcMissingError } =
+      await import("./arabic-db-search");
+    const rpc = await searchHadithsDb(term, 10);
+    if (!rpc.error && rpc.data) {
+      return {
+        data: rpc.data.map((row) => mapHadithRpcRowToSearchHit(row as import("./arabic-db-search").HadithRpcSearchRow)),
+        errors: [] as any[],
+      };
+    }
+    if (rpc.error && !isArabicSearchRpcMissingError(rpc.error)) {
+      logSupabaseError("searchHadithFallback.rpc", rpc.error, { term });
+      return { data: [] as any[], errors: [rpc.error] };
+    }
+    if (rpc.error) {
+      logSupabaseError("searchHadithFallback.rpc_missing", rpc.error, { term });
+    }
+  }
+
   const responses = await Promise.all(
     searchPatternChunks(term).map((chunk) =>
       supabase
