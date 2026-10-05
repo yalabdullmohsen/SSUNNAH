@@ -104,7 +104,6 @@
   color: var(--majalis-parchment);
 }
 
-
 /* deferred from index.css: books */
 /* ثيمات قارئ الكتب — Phase 6 */
 
@@ -143,7 +142,6 @@ html[data-reading-theme="night"] .content-surface--reading {
   flex-wrap: wrap;
   gap: var(--ds-space-2);
 }
-
 
 /* deferred from index.css: admin */
 /* ── Admin lesson card toolbar ── */
@@ -1018,7 +1016,6 @@ worship pages ── */
   pointer-events: auto;
 }
 
-
 /* Safety: orphaned portaled overlays must never block the header when menus are closed */
 
 html body:not(.mobile-nav-body-lock) div.mobile-nav-layer {
@@ -1134,8 +1131,6 @@ html[data-theme="dark"] .navbar-v3 a.navbar-v3__tagline:focus-visible {
   height: 36px;
   transition: all 0.15s ease;
 }
-
-
 
 .navbar-search-kbd {
   font-size: 0.6rem;
@@ -2123,16 +2118,11 @@ body.has-assistant-fab .app-main {
 /* ─── Phase 1: Enhanced Design Tokens ─────────────────────── */
 
 :root {
-  --ds-1: 0.25rem; --ds-2: 0.5rem; --ds-3: 0.75rem; --ds-4: 1rem;
-  --ds-5: 1.25rem; --ds-6: 1.5rem; --ds-8: 2rem;
-  --ds-10: 2.5rem; --ds-12: 3rem; --ds-16: 4rem;
-
   --ds-r-xs: 0.375rem;
   --ds-r-sm: 0.625rem;
   --ds-r-md: 0.875rem;
   --ds-r-lg: 1.25rem;
-  --ds-r-xl: 1.75rem;
-  --ds-r-2xl: 2.5rem;
+
   --ds-r-full: 999px;
 
   --ds-shadow-xs: 0 1px 4px rgba(0,0,0,.28);
@@ -2145,9 +2135,8 @@ body.has-assistant-fab .app-main {
   --ds-t-fast: 0.14s var(--ds-ease);
   --ds-t-mid: 0.22s var(--ds-ease);
 
-  --ds-gold-grad: linear-gradient(135deg, var(--mj-brand-deep) 0%, var(--mj-brand) 55%, var(--mj-brand-deep) 100%);
   --ds-emerald-grad: linear-gradient(135deg, var(--mj-brand-deep) 0%, var(--mj-brand-deep) 100%);
-  --ds-hero-grad: linear-gradient(155deg, #0F1220 0%, #171C2E 42%, #1F2540 72%, #131829 100%);
+
 }
 
 /* ─── Phase 1: Unified Button Component ───────────────────── */
