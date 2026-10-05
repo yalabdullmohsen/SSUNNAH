@@ -386,8 +386,8 @@ html[data-theme="dark"] .login-text-btn {
   align-items: baseline;
 }
 
+/* بلا opacity: الشفافية فوق --auth-muted كانت تُسقط التباين إلى ≈3.3:1 — الثانوية بالحجم وحده */
 .password-policy__label-en {
-  opacity: 0.72;
   font-size: 0.72rem;
 }
 

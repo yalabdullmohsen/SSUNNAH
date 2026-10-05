@@ -181,6 +181,11 @@ html[data-v2-app="1"] .dii-page .hub-card__go,
   letter-spacing: 0;
 }
 
+/* عنوان قسم داخل صف «عنوان + رابط» — الصف يملك المسافة */
+.dii-page .page-stats-row > .page-section-title {
+  margin: 0;
+}
+
 /* مسار الرحلة — صفوف مضغوطة واضحة */
 .dii-journey {
   gap: 0.4rem !important;

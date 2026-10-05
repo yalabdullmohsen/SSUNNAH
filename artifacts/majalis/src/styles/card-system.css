@@ -237,6 +237,19 @@ html[data-theme="dark"] .sc2-icon {
   color: var(--cs-on-ink-body) !important;
 }
 
+/* كروم هيرو الحبر (.section-hero): زر الرجوع ومسار التنقل كانا بحبر داكن على زمرد داكن
+   (تباين ≈1.2:1). نصّهما عاجي على الحبر — AA نهارًا؛ ليلًا تبقى قواعد dark-mode-surfaces الأخص. */
+/* فرض اللون هنا ضروري: قواعد الشبح العامة (visual-identity-unify / visual-layer-contrast-fix) تفرض حبرها لاحقًا */
+.section-hero .page-hero-mj__back {
+  color: var(--cs-on-ink) !important;
+  border-color: color-mix(in srgb, var(--cs-on-ink) 32%, transparent) !important;
+}
+
+.section-hero .topic-page__crumb,
+.section-hero .topic-page__crumb a {
+  color: var(--cs-on-ink-body);
+}
+
 html[data-v2-app="1"] .topic-page__hero,
 html[data-v2-app="1"] .topic-page__hero.safe-hero,
 html[data-v2-app="1"] .topic-page__hero.on-dark {

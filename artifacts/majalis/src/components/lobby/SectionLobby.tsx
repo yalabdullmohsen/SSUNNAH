@@ -33,7 +33,7 @@ function asSection(item: LobbyItem): SectionDef {
     subtitle: item.subtitle,
     route: item.route,
     icon: item.icon,
-    group: "sciences",
+    group: "fiqh", // لون المجموعة الافتراضي (BRAND.colorDay) كما كان
     order: 0,
     surfaces: ["search"],
     status: "live",

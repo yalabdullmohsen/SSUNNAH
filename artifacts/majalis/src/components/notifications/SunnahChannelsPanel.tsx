@@ -203,7 +203,7 @@ export function SunnahChannelsPanel() {
       </div>
 
       {prefs.quietHours.enabled ? (
-        <div className="nsp-field" style={{ display: "flex", gap: 12, marginBottom: 12 }}>
+        <div className="nsp-field nsp-field--inline">
           <label>
             من
             <input

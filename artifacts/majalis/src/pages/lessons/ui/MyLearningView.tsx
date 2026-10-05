@@ -292,10 +292,10 @@ export default function MyLearningPage() {
               فتح البطاقات <ArrowLeft size={12} aria-hidden="true" />
             </Link>
           </div>
-          <p className="myl2-empty" style={{ margin: 0, paddingBlock: "0.75rem" }}>
+          <p className="myl2-empty myl2-empty--intro">
             راجع البطاقات التي حفظتها أو مررت عليها سابقا.
           </p>
-          <div className="myl2-empty" style={{ paddingTop: 0 }}>
+          <div className="myl2-empty myl2-empty--actions">
             <Link href="/flashcards" className="myl2-empty__cta">ابدأ المراجعة</Link>
           </div>
         </section>

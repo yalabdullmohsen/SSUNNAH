@@ -84,6 +84,7 @@ console.log("\n=== NavBar.tsx / App.tsx — نقطة دخول البحث موح�
     "القائمة الجانبية مربوطة بالمصدر الموحّد",
   );
   assert(
+    sidebarNavSrc.includes('menuGroups("drawer")') ||
     sidebarNavSrc.includes("sectionsForSurface") ||
       sidebarNavSrc.includes("/my-learning") ||
       (navigationSrc.includes("/my-learning") && navigationSrc.includes("حسابي")),

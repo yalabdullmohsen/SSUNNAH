@@ -163,10 +163,6 @@
       "classification": "PUBLIC",
       "debtFields": [
         {
-          "field": "Canvas",
-          "reason": "PRAYER_SPECIAL surface — no calc/scheduling changes"
-        },
-        {
           "field": "RTL",
           "reason": "RTL product-wide assumed; not per-route device audited"
         },

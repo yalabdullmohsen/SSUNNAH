@@ -205,3 +205,6 @@
 
 .meth-grid { display: grid; gap: 0.75rem; }
 .meth-card { text-decoration: none; color: inherit; }
+.meth-card__title { display: block; margin-block: 0.35rem; }
+.meth-card__desc { margin: 0; font-size: var(--ss-type-supporting); opacity: 0.85; }
+.meth-card__cta { display: inline-block; margin-block-start: 0.5rem; font-weight: 700; }

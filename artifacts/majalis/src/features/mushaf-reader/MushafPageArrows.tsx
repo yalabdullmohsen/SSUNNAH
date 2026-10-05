@@ -6,6 +6,8 @@ import {
   goToPreviousMushafPage,
   MUSHAF_NAV_LABEL,
 } from "@/features/mushaf-reader/mushaf-page-navigation";
+import { Button } from "@/components/ui/button";
+import { mushafButtonClass } from "@/features/mushaf-reader/mushaf-button-parity";
 
 type Props = {
   page: number;
@@ -68,9 +70,10 @@ export const MushafPageArrows = memo(function MushafPageArrows({
       aria-hidden={!show}
     >
       {/* مصحف: التالية يسار الشاشة (جهة التقليب) */}
-      <button
+      <Button
         type="button"
-        className="nm-page-arrow nm-page-arrow--next"
+        variant="ghost"
+        className={mushafButtonClass("nm-page-arrow nm-page-arrow--next")}
         data-testid="mushaf-page-arrow-next"
         aria-label={MUSHAF_NAV_LABEL.next}
         title={MUSHAF_NAV_LABEL.next}
@@ -92,11 +95,12 @@ export const MushafPageArrows = memo(function MushafPageArrows({
           ‹
         </span>
         <span className="nm-page-arrow__label">{MUSHAF_NAV_LABEL.nextShort}</span>
-      </button>
+      </Button>
       {/* مصحف: السابقة يمين الشاشة */}
-      <button
+      <Button
         type="button"
-        className="nm-page-arrow nm-page-arrow--prev"
+        variant="ghost"
+        className={mushafButtonClass("nm-page-arrow nm-page-arrow--prev")}
         data-testid="mushaf-page-arrow-prev"
         aria-label={MUSHAF_NAV_LABEL.previous}
         title={MUSHAF_NAV_LABEL.previous}
@@ -118,7 +122,7 @@ export const MushafPageArrows = memo(function MushafPageArrows({
           ›
         </span>
         <span className="nm-page-arrow__label">{MUSHAF_NAV_LABEL.previousShort}</span>
-      </button>
+      </Button>
     </div>
   );
 });
