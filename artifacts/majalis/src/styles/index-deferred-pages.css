@@ -635,7 +635,7 @@ compact home ── */
 .site-footer {
   margin-top: auto;
   border-top: 1px solid var(--mj-hairline, var(--msk-border, rgba(31,77,58,0.10)));
-  background: var(--mj-bg, var(--msk-canvas, #FFFFFF));
+  background: var(--mj-bg, var(--msk-canvas, var(--sf-color-ivory-raised)));
   padding: 2rem 1.25rem 2.5rem;
 }
 
@@ -947,7 +947,7 @@ worship pages ── */
   color: inherit;
   display: grid;
   gap: 0.3rem;
-  background: #FFFFFF;
+  background: var(--sf-color-ivory-raised);
   border: 1px solid rgba(31,77,58,0.10);
   border-radius: var(--ds-radius-xl);
   box-shadow: 0 2px 8px rgba(31,77,58,0.05);
@@ -1122,7 +1122,7 @@ html[data-theme="dark"] .navbar-v3 a.navbar-v3__tagline:focus-visible {
   border: 1px solid var(--mj-hairline);
   background: var(--mj-bg, #F5F5F4);
   color: var(--majalis-ink);
-  border-radius: var(--sf-radius-control, 12px);
+  border-radius: var(--sf-radius-control, var(--sf-radius-xs));
   padding: 0.375rem 0.75rem;
   font-family: inherit;
   font-weight: 700;
@@ -1371,11 +1371,6 @@ body.mobile-nav-body-lock {
 }
 
 .app-main {
-  padding-bottom: 0;
-}
-
-/* الزر ثابت فوق الشريط — لا نغيّر padding ديناميكيًا (كان مصدر CLS ~0.10) */
-body.has-assistant-fab .app-main {
   padding-bottom: 0;
 }
 
@@ -2165,7 +2160,7 @@ body.has-assistant-fab .app-main {
 
 .ds-card {
   border: 1px solid var(--mj-hairline, var(--msk-border, rgba(31,77,58,0.10)));
-  background: var(--mj-bg, var(--msk-canvas, #FFFFFF));
+  background: var(--mj-bg, var(--msk-canvas, var(--sf-color-ivory-raised)));
   border-radius: var(--ds-r-lg);
   box-shadow: var(--ds-shadow-sm);
   transition: transform var(--ds-t-fast), box-shadow var(--ds-t-fast);
@@ -3309,7 +3304,7 @@ html.dark .sidebar-item.active {
 .mss-hero-surface {
   background: var(--cs-ink-hero, var(--mj-brand-deep)) !important;
   background-image: none !important;
-  color: var(--cs-on-ink, #f7f1e4) !important;
+  color: var(--cs-on-ink, var(--sf-color-on-emerald)) !important;
   box-shadow: none !important;
   min-height: 0 !important;
   padding-block: 1.1rem !important;
@@ -3431,7 +3426,7 @@ html.dark .sq-header {
   background: #5fbf98 !important;
   background-color: #5fbf98 !important;
   background-image: none !important;
-  color: #06231a !important;
+  color: var(--mj-on-brand) !important;
   border-color: #1e4d3c !important;
 }
 html[data-theme="dark"] .sq-header .sq-title,
@@ -3446,7 +3441,7 @@ html[data-theme="dark"] .sq-header svg,
 html.dark .sq-header svg,
 html[data-theme="dark"] .sq-header :where(*),
 html.dark .sq-header :where(*) {
-  color: #06231a !important;
+  color: var(--mj-on-brand) !important;
 }
 
 /* U1 NUMERIC: section card unify (non-Home ATF) */

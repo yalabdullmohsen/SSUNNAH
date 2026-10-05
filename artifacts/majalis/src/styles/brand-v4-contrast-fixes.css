@@ -49,12 +49,12 @@ html.dark :is(
   .lpp-cat-btn--active,
   .adhkar-focus-btn--next
 ) {
-  color: var(--mj-on-brand, #06231a) !important;
+  color: var(--mj-on-brand, var(--mj-on-brand)) !important;
 }
 
 html[data-theme="dark"] .adhkar-focus-btn--next,
 html.dark .adhkar-focus-btn--next {
-  background: var(--mj-brand, #4fb48b) !important;
+  background: var(--mj-brand, var(--mj-brand)) !important;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -147,7 +147,7 @@ html[data-theme="dark"] .fiqh-hub-strip__sep {
   padding: 0.4rem 0.95rem !important;
   border-radius: var(--radius-pill, 999rem) !important;
   background-color: var(--brand, #0f5c45) !important;
-  color: var(--text-on-brand, #ffffff) !important;
+  color: var(--text-on-brand, var(--sf-color-ivory-raised)) !important;
   border: 1px solid color-mix(in srgb, var(--brand, #0f5c45) 78%, #000) !important;
   text-decoration: none !important;
   font-weight: 700 !important;
@@ -155,8 +155,8 @@ html[data-theme="dark"] .fiqh-hub-strip__sep {
 
 html[data-theme="dark"] .widget-shell__empty-cta {
   background-color: var(--brand, #5cc095) !important;
-  color: #06231a !important;
-  border-color: color-mix(in srgb, var(--brand, #5cc095) 55%, #fff) !important;
+  color: var(--mj-on-brand) !important;
+  border-color: color-mix(in srgb, var(--brand, #5cc095) 55%, var(--sf-color-ivory-raised)) !important;
 }
 
 /* أبناء الحاويات التي أُعيد تلوين خلفيتها في (ب): بعضهم يحمل لونًا داكنًا
@@ -297,7 +297,7 @@ html[data-theme="dark"] :is(
 :is(html[data-theme="dark"], html.dark) .qzg-count-btn:not(.qzg-count-btn--on) {
   background: var(--surface-2, #222d29) !important;
   color: var(--text, #f8fafc) !important;
-  border-color: var(--border, #35443f) !important;
+  border-color: var(--border, var(--mj-chip-border)) !important;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -418,7 +418,7 @@ html[data-theme="dark"] .nf2-btn--outline.nf2-btn--outline {
    فلا يكفي محدِّد بصنفين + «*». تكرار الصنف ثلاثًا مع span يتجاوزها. */
 html[data-theme="dark"] .mk-cat-pill--active.mk-cat-pill--active,
 html[data-theme="dark"] .mk-cat-pill--active.mk-cat-pill--active.mk-cat-pill--active span {
-  color: #FFFFFF !important;
+  color: var(--sf-color-ivory-raised) !important;
 }
 
 /* ══════════════════════════════════════════════════════════════

@@ -18,10 +18,10 @@
   --text-primary: #ede8df;
   --text-secondary: #d8d0c4;
   --text-muted: #b5ada0;
-  --icon-primary: #8fd4b0;
+  --icon-primary: var(--mj-brand-deep);
   --icon-secondary: #c5d8ce;
-  --border-elevated: var(--dark-border, color-mix(in srgb, #c9a86c 10%, #35443f));
-  --card-separator: color-mix(in srgb, #8fd4b0 12%, #2a3733);
+  --border-elevated: var(--dark-border, color-mix(in srgb, var(--mj-accent) 10%, var(--mj-chip-border)));
+  --card-separator: color-mix(in srgb, var(--mj-brand-deep) 12%, var(--mj-surface-3));
 
   /* جسر للمكوّنات القديمة — --mj-* absorbed → theme-aliases (PR2) */
   --ss-card-bg: var(--dark-card, var(--surface-elevated));
@@ -70,7 +70,7 @@
   background: var(--dark-card, var(--surface-elevated)) !important;
   border: 1px solid var(--dark-border, var(--border-elevated)) !important;
   border-radius: var(--radius-card, 1.25rem) !important;
-  color: var(--text-primary, #ede8df) !important;
+  color: var(--text-primary, var(--mj-chip-fg)) !important;
   box-shadow: var(--dark-elev-1, var(--pd-elev-1, 0 1px 2px rgba(0, 0, 0, 0.16))) !important;
   outline: none !important;
   filter: none !important;
@@ -88,7 +88,7 @@
 :is(html[data-theme="dark"], html.dark) .hub-card__title,
 :is(html[data-theme="dark"], html.dark) .section-entry-card .hub-card__title,
 :is(html[data-theme="dark"], html.dark) .rsc__title {
-  color: #ede8df !important;
+  color: var(--mj-chip-fg) !important;
 }
 
 :is(html[data-theme="dark"], html.dark) .soft-card :is(p, .hub-card__desc, .soft-card__desc, .supporting-text),
@@ -324,7 +324,7 @@
 }
 :is(html[data-theme="dark"], html.dark) .seerah-timeline__dot {
   background: var(--icon-primary) !important;
-  color: var(--on-accent, #06231a) !important;
+  color: var(--on-accent, var(--mj-on-brand)) !important;
 }
 
 /* —— التاريخ الإسلامي —— */
@@ -393,7 +393,7 @@
 :is(html[data-theme="dark"], html.dark) .update-available-sheet__update-btn,
 :is(html[data-theme="dark"], html.dark) .update-available-sheet .app-sheet__close--primary {
   background: var(--icon-primary) !important;
-  color: var(--on-accent, #06231a) !important;
+  color: var(--on-accent, var(--mj-on-brand)) !important;
   border: none !important;
   font-weight: 800;
 }

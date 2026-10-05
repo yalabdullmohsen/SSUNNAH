@@ -11,8 +11,8 @@ html[data-v2-app="1"][data-v2-night="1"] .content-hub,
 html[data-v2-app="1"][data-v2-night="1"] .section-lobby,
 html[data-v2-app="1"][data-v2-night="1"] .grid-screen,
 html[data-v2-app="1"][data-v2-night="1"] .topic-page {
-  background-color: var(--v2-color-night-bg, #0a1612);
-  color: var(--v2-color-night-ink, #edf5f0);
+  background-color: var(--v2-color-night-bg, var(--sf-color-luxury-night));
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 /* ── Raised surfaces / cards ── */
@@ -28,9 +28,9 @@ html[data-v2-app="1"][data-v2-night="1"] .rsc,
 html[data-v2-app="1"][data-v2-night="1"] .kx-block:not(.kx-block--definition),
 html[data-v2-app="1"][data-v2-night="1"] .hadith-detail-card,
 html[data-v2-app="1"][data-v2-night="1"] .lesson-detail-card {
-  background: var(--v2-color-night-surface, #12261f);
+  background: var(--v2-color-night-surface, var(--sf-color-luxury-night-surface));
   border-color: var(--v2-color-night-hairline);
-  color: var(--v2-color-night-ink, #edf5f0);
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
   box-shadow: var(--v2-shadow-soft);
 }
 
@@ -42,7 +42,7 @@ html[data-v2-app="1"][data-v2-night="1"] .id-content-row__title,
 html[data-v2-app="1"][data-v2-night="1"] .ph2__title,
 html[data-v2-app="1"][data-v2-night="1"] .section-lobby__title,
 html[data-v2-app="1"][data-v2-night="1"] .section-lobby__group-title {
-  color: var(--v2-color-night-ink, #edf5f0);
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 html[data-v2-app="1"][data-v2-night="1"] .hub-card__desc,
@@ -65,9 +65,9 @@ html[data-v2-app="1"][data-v2-night="1"] .more-page-tile__icon {
 
 /* ── Quote / detail ── */
 html[data-v2-app="1"][data-v2-night="1"] .id-quote-surface {
-  background: var(--v2-color-night-elevated, #18332a);
-  border-inline-start-color: var(--v2-color-night-gold, #c4a84a);
-  color: var(--v2-color-night-ink, #edf5f0);
+  background: var(--v2-color-night-elevated, var(--sf-color-luxury-night-elevated));
+  border-inline-start-color: var(--v2-color-night-gold, var(--sf-color-luxury-night-gold));
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 html[data-v2-app="1"][data-v2-night="1"] .id-quote-surface__source,
@@ -80,7 +80,7 @@ html[data-v2-app="1"][data-v2-night="1"] .topic-page__body,
 html[data-v2-app="1"][data-v2-night="1"] .reading-prose-system,
 html[data-v2-app="1"][data-v2-night="1"] .cr-shell,
 html[data-v2-app="1"][data-v2-night="1"] .lesson-content {
-  color: var(--v2-color-night-ink, #edf5f0);
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 html[data-v2-app="1"][data-v2-night="1"] .topic-page__body :is(h1, h2, h3),
@@ -93,21 +93,21 @@ html[data-v2-app="1"][data-v2-night="1"] .rsc__title {
 html[data-v2-app="1"][data-v2-night="1"] .topic-page__body p,
 html[data-v2-app="1"][data-v2-night="1"] .reading-prose-system :is(p, li),
 html[data-v2-app="1"][data-v2-night="1"] .kx-block__body {
-  color: var(--v2-color-night-ink, #edf5f0);
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 /* ── Drawer ── */
 html[data-v2-app="1"][data-v2-night="1"] .drawer-panel,
 html[data-v2-app="1"][data-v2-night="1"] .sidebar-panel {
-  background: var(--v2-color-night-surface, #12261f);
-  color: var(--v2-color-night-ink, #edf5f0);
+  background: var(--v2-color-night-surface, var(--sf-color-luxury-night-surface));
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
   border-inline-end-color: var(--v2-color-night-hairline);
   box-shadow: var(--v2-shadow-elevated);
 }
 
 html[data-v2-app="1"][data-v2-night="1"] .sidebar-title,
 html[data-v2-app="1"][data-v2-night="1"] .sidebar-item-title {
-  color: var(--v2-color-night-ink, #edf5f0);
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 html[data-v2-app="1"][data-v2-night="1"] .sidebar-section-title,
@@ -122,7 +122,7 @@ html[data-v2-app="1"][data-v2-night="1"] .sidebar-item:hover {
 html[data-v2-app="1"][data-v2-night="1"] .sidebar-item.active {
   background: color-mix(in srgb, var(--v2-color-emerald) 28%, transparent);
   border-color: color-mix(in srgb, var(--v2-color-emerald) 40%, transparent);
-  color: var(--v2-color-night-ink, #edf5f0);
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 html[data-v2-app="1"][data-v2-night="1"] .sidebar-item-icon {
@@ -132,7 +132,7 @@ html[data-v2-app="1"][data-v2-night="1"] .sidebar-item-icon {
 }
 
 html[data-v2-app="1"][data-v2-night="1"] .sidebar-close {
-  background: var(--v2-color-night-elevated, #18332a);
+  background: var(--v2-color-night-elevated, var(--sf-color-luxury-night-elevated));
   border-color: var(--v2-color-night-hairline);
   color: var(--v2-color-night-emerald-text, #9fd4bf);
 }
@@ -140,7 +140,7 @@ html[data-v2-app="1"][data-v2-night="1"] .sidebar-close {
 /* ── Tabs / chips leftover ── */
 html[data-v2-app="1"][data-v2-night="1"] .topic-page__tab,
 html[data-v2-app="1"][data-v2-night="1"] [role="tab"] {
-  background: var(--v2-color-night-elevated, #18332a);
+  background: var(--v2-color-night-elevated, var(--sf-color-luxury-night-elevated));
   border-color: var(--v2-color-night-hairline);
   color: var(--v2-color-night-muted, #b3c9bd);
 }
@@ -149,14 +149,14 @@ html[data-v2-app="1"][data-v2-night="1"] .topic-page__tab.is-active,
 html[data-v2-app="1"][data-v2-night="1"] [role="tab"][aria-selected="true"] {
   background: color-mix(in srgb, var(--v2-color-emerald) 32%, transparent);
   border-color: var(--v2-color-emerald);
-  color: var(--v2-color-night-ink, #edf5f0);
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 /* ── Gold accent as border/glow only (text stays night-ink for AA) ── */
 html[data-v2-app="1"][data-v2-night="1"] .v2-gold-label,
 html[data-v2-app="1"][data-v2-night="1"] [data-v2-gold-label] {
-  color: var(--v2-color-night-ink, #edf5f0);
-  border-color: color-mix(in srgb, var(--v2-color-night-gold, #c4a84a) 55%, transparent);
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
+  border-color: color-mix(in srgb, var(--v2-color-night-gold, var(--sf-color-luxury-night-gold)) 55%, transparent);
 }
 
 /* Focus identity night */
@@ -165,6 +165,6 @@ html[data-v2-app="1"][data-v2-night="1"] textarea:focus-visible,
 html[data-v2-app="1"][data-v2-night="1"] select:focus-visible,
 html[data-v2-app="1"][data-v2-night="1"] .mj-btn:focus-visible,
 html[data-v2-app="1"][data-v2-night="1"] .mj-filter-chip:focus-visible {
-  border-color: color-mix(in srgb, var(--v2-color-night-gold, #c4a84a) 45%, var(--v2-color-night-hairline));
+  border-color: color-mix(in srgb, var(--v2-color-night-gold, var(--sf-color-luxury-night-gold)) 45%, var(--v2-color-night-hairline));
   box-shadow: var(--v2-focus-ring);
 }

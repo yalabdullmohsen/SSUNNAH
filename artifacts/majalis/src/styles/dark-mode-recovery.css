@@ -13,7 +13,7 @@ html.dark {
   --dm-surface-2: #222d29;
   --dm-surface-elevated: #24302b;
   --dm-surface-interactive: #2b3933;
-  --dm-surface-selected: color-mix(in srgb, #4fb48b 14%, #1b2421);
+  --dm-surface-selected: color-mix(in srgb, var(--mj-brand) 14%, #1b2421);
   --dm-surface-feature: #16352c;
   --dm-surface-overlay: color-mix(in srgb, #0a1210 72%, transparent);
   --dm-surface-scrim: color-mix(in srgb, #050a08 58%, transparent);
@@ -33,41 +33,39 @@ html.dark {
   --dm-text-secondary: #d8d0c4;
   --dm-text-muted: #b5ada0;
   --dm-text-disabled: #8a9a93;
-  --dm-text-on-primary: #06231a;
-  --dm-text-on-feature: #f3efe6;
-  --dm-text-link: #8fd4b0;
+  --dm-text-link: var(--mj-brand-deep);
   --dm-text-inverse: #0c1612;
 
-  --dm-border-subtle: color-mix(in srgb, #8fd4b0 12%, #35443f);
-  --dm-border-default: #445651;
-  --dm-divider: color-mix(in srgb, #8fd4b0 12%, #2a3733);
-  --dm-focus-ring: color-mix(in srgb, #c9a86c 38%, transparent);
+  --dm-border-subtle: color-mix(in srgb, var(--mj-brand-deep) 12%, var(--mj-chip-border));
+  --dm-border-default: var(--mj-border-strong);
+  --dm-divider: color-mix(in srgb, var(--mj-brand-deep) 12%, var(--mj-surface-3));
+  --dm-focus-ring: color-mix(in srgb, var(--mj-accent) 38%, transparent);
 
-  --dm-primary: #4fb48b;
+  --dm-primary: var(--mj-brand);
   --dm-primary-hover: #5cc095;
   --dm-primary-pressed: #3d9a74;
-  --dm-primary-container: #16261f;
+  --dm-primary-container: var(--mj-brand-soft);
   --dm-accent-gold: #c9a86c;
-  --dm-accent-gold-subtle: color-mix(in srgb, #c9a86c 16%, #1b2421);
+  --dm-accent-gold-subtle: color-mix(in srgb, var(--mj-accent) 16%, #1b2421);
   --dm-success: #6bcf9a;
   --dm-warning: #e2c07a;
-  --dm-error: #f2b8c0;
+  --dm-error: var(--mj-danger-deep);
   --dm-info: #9ec5e8;
 
   --dm-card: var(--dm-surface-elevated);
   --dm-hero: var(--dm-surface-feature);
   --dm-text-on-feature: #f3efe6;
-  --dm-text-on-primary: #06231a;
+  --dm-text-on-primary: var(--mj-on-brand);
   --dm-input: #1a2421;
   --dm-input-placeholder: #b5ada0;
   --dm-bottom-nav: #0c1210;
   --dm-drawer: #1c2622;
   --dm-drawer-item: transparent;
   --dm-drawer-item-selected: var(--dm-surface-selected);
-  --dm-progress-track: #2a3733;
+  --dm-progress-track: var(--mj-surface-3);
   --dm-progress-value: var(--dm-primary);
-  --dm-skeleton-base: #2a3733;
-  --dm-skeleton-highlight: #35443f;
+  --dm-skeleton-base: var(--mj-surface-3);
+  --dm-skeleton-highlight: var(--mj-chip-border);
 
   /* إعادة ربط الرموز الشائعة — --mj-* absorbed → theme-aliases (PR2); canvas via --surface-app */
   --surface-app: var(--dm-bg);
@@ -84,7 +82,7 @@ html.dark {
   --brand-on-light: var(--dm-primary);
   --brand-on-surface: var(--dm-primary);
   --brand-on-white: var(--dm-primary);
-  --color-primary-dark: var(--dm-text-link, #8fd4b0);
+  --color-primary-dark: var(--dm-text-link, var(--mj-brand-deep));
   --soft-card-bg: var(--dm-card);
   --soft-tile-bg: var(--dm-card);
 }
@@ -218,7 +216,7 @@ html.dark .sidebar-item:hover {
 html[data-theme="dark"] .sidebar-item.active,
 html.dark .sidebar-item.active {
   background: var(--dm-drawer-item-selected) !important;
-  color: var(--dm-text-link, #8fd4b0) !important;
+  color: var(--dm-text-link, var(--mj-brand-deep)) !important;
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--dm-primary) 28%, transparent) !important;
 }
 
@@ -292,7 +290,7 @@ html[data-theme="dark"] .hus-field:focus-within,
 html.dark .hus-field:focus-within {
   border-color: color-mix(in srgb, var(--dm-accent-gold) 42%, transparent) !important;
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--dm-accent-gold) 22%, transparent) !important;
-  background: color-mix(in srgb, var(--dm-input) 88%, #0c1210) !important;
+  background: color-mix(in srgb, var(--dm-input) 88%, var(--dm-bottom-nav)) !important;
 }
 
 html[data-theme="dark"] .hus-input,
@@ -404,7 +402,7 @@ html.dark .hsg__icon {
 
 html[data-theme="dark"] .hsg__icon,
 html.dark .hsg__icon {
-  background: color-mix(in srgb, var(--dm-primary, #4fb48b) 18%, transparent) !important;
+  background: color-mix(in srgb, var(--dm-primary, var(--mj-brand)) 18%, transparent) !important;
 }
 
 /* ═══ Hero / Welcome — إزالة الشرائط السوداء ═══ */
@@ -565,13 +563,13 @@ html.dark .hsh-step:last-child {
 html[data-theme="dark"] .hsh-step__num,
 html.dark .hsh-step__num {
   background: var(--dm-primary-container) !important;
-  color: var(--dm-text-link, #8fd4b0) !important;
+  color: var(--dm-text-link, var(--mj-brand-deep)) !important;
   border: 1px solid color-mix(in srgb, var(--dm-primary) 35%, transparent) !important;
 }
 
 html[data-theme="dark"] .hsh-step__cta,
 html.dark .hsh-step__cta {
-  color: var(--dm-text-link, #8fd4b0) !important;
+  color: var(--dm-text-link, var(--mj-brand-deep)) !important;
 }
 
 /* هيكل التحميل — لا شرائط سوداء */
@@ -623,7 +621,7 @@ html.dark .m2030-feature__desc {
 html[data-theme="dark"] .ss-feature-card__icon,
 html.dark .ss-feature-card__icon {
   background: var(--dm-primary-container) !important;
-  color: var(--dm-text-link, #8fd4b0) !important;
+  color: var(--dm-text-link, var(--mj-brand-deep)) !important;
 }
 
 /* منع opacity على حاويات نصية */
@@ -666,7 +664,7 @@ html.dark .home-progress-compact {
 }
 html[data-theme="dark"] .home-progress-compact__pct,
 html.dark .home-progress-compact__pct {
-  color: var(--dm-text-link, #8fd4b0) !important;
+  color: var(--dm-text-link, var(--mj-brand-deep)) !important;
 }
 html[data-theme="dark"] .home-progress-compact__bar,
 html.dark .home-progress-compact__bar {
@@ -693,7 +691,7 @@ html.dark .home-progress-compact__meta {
   margin: 0.25rem 0 0;
   font-size: 0.86rem;
   line-height: 1.45;
-  color: #48645a;
+  color: var(--sf-color-rich-ink-soft);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -778,10 +776,10 @@ html[data-theme="dark"] {
   --msk-text-2:        #E2E8F0;
   --msk-text-3:        #C5D0CB;
   --msk-green:         #5CC095;
-  --msk-red:           #F2B8C0;
+  --msk-red:           var(--mj-danger-deep);
   --msk-red-dim:       rgba(242,184,192,.12);
-  --msk-border:        #35443F;
-  --msk-border-strong: #445651;
+  --msk-border:        var(--mj-chip-border);
+  --msk-border-strong: var(--mj-border-strong);
   --msk-divider:       rgba(255,255,255,.08);
   --msk-shadow-sm:     0 1px 2px rgba(0,0,0,.40);
   --msk-shadow:        0 4px 12px rgba(0,0,0,.45), 0 1px 3px rgba(0,0,0,.35);
@@ -790,7 +788,7 @@ html[data-theme="dark"] {
   --majalis-ink:           #F8FAFC;
   --majalis-ink-soft:      #E2E8F0;
   --majalis-ink-muted:     #C5D0CB;
-  --majalis-charcoal:      #FFFFFF;
+  --majalis-charcoal:      var(--sf-color-ivory-raised);
   --majalis-parchment:     #131A18;
   --majalis-parchment-deep:#1B2421;
   --majalis-panel:         #1B2421;
@@ -804,12 +802,12 @@ html[data-theme="dark"] {
   --majalis-brass-deep:    #C4A35C;
   --majalis-brass-soft:    rgba(217,184,113,.10);
   --majalis-sage:          #222D29;
-  --majalis-danger:        #F2B8C0;
+  --majalis-danger:        var(--mj-danger-deep);
   --majalis-danger-muted:  rgba(242,184,192,.12);
   --majalis-success:       #7BD6AE;
 
-  --majalis-line:          #35443F;
-  --majalis-line-strong:   #445651;
+  --majalis-line:          var(--mj-chip-border);
+  --majalis-line-strong:   var(--mj-border-strong);
   --majalis-shadow:        0 4px 12px rgba(0,0,0,.45), 0 1px 3px rgba(0,0,0,.35);
   --majalis-shadow-sm:     0 1px 2px rgba(0,0,0,.40);
 
@@ -818,7 +816,7 @@ html[data-theme="dark"] {
 
   --clr-bg:          #131A18;
   --clr-surface:     #1B2421;
-  --clr-border:      #35443F;
+  --clr-border:      var(--mj-chip-border);
   --clr-divider:     rgba(255,255,255,.08);
   --clr-text-1:      #F8FAFC;
   --clr-text-2:      #E2E8F0;
@@ -840,8 +838,8 @@ html[data-theme="dark"] {
   --v2-ink-3:        #C5D0CB;
   --v2-surface-0:    #1B2421;
   --v2-surface-1:    #222D29;
-  --v2-surface-2:    #2A3733;
-  --v2-border:       #35443F;
+  --v2-surface-2:    var(--mj-surface-3);
+  --v2-border:       var(--mj-chip-border);
   --v2-border-soft:  rgba(255,255,255,.08);
   --v2-shadow-1:     0 1px 2px rgba(0,0,0,.40);
   --v2-shadow-2:     0 4px 12px rgba(0,0,0,.45);
@@ -849,7 +847,7 @@ html[data-theme="dark"] {
   --v2-shadow-4:     0 24px 64px rgba(0,0,0,.65);
 
   --color-parchment: #131A18;
-  --color-line:      #35443F;
+  --color-line:      var(--mj-chip-border);
   --majalis-accent:  #D9B871;
   --majalis-surface-2: #222D29;
 
@@ -858,21 +856,21 @@ html[data-theme="dark"] {
 }
 
 html[data-theme="dark"] body {
-  background-color: #131A18;
-  color: #F8FAFC;
+  background-color: var(--color-parchment);
+  color: var(--v2-ink);
 }
 
 /* WCAG AA — focus-visible في الوضع الليلي */
 
 html[data-theme="dark"] :focus-visible {
-  outline-color: #7BD6AE !important;
+  outline-color: var(--majalis-success) !important;
   outline-offset: 3px !important;
 }
 
 /* روابط: نعناعي فاتح مقروء — لا ذهب للنصوص الطويلة */
 
 html[data-theme="dark"] a {
-  color: #7BD6AE;
+  color: var(--majalis-success);
 }
 
 html[data-theme="dark"] a:hover {

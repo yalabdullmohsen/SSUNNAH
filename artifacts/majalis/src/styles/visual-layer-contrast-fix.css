@@ -86,8 +86,8 @@ header.fiqh-lux-book-hero {
   /* خلفية علامة داكنة ثابتة — لا تستخدم primary الفاتح الليلي */
   background-color: #0a3d2e !important;
   background-image:
-    linear-gradient(145deg, color-mix(in srgb, #fff 10%, transparent), transparent 62%) !important;
-  border: 1px solid color-mix(in srgb, #fff 16%, transparent) !important;
+    linear-gradient(145deg, color-mix(in srgb, var(--sf-color-ivory-raised) 10%, transparent), transparent 62%) !important;
+  border: 1px solid color-mix(in srgb, var(--sf-color-ivory-raised) 16%, transparent) !important;
   color: var(--text-on-brand) !important;
   box-shadow: var(--shadow-soft) !important;
   text-align: start !important;
@@ -120,9 +120,9 @@ header.fiqh-lux-book-hero {
 .fiqh-lux-book-hero .ve-chip,
 .fiqh-lux-book-hero .ve-badge--secondary,
 .fiqh-lux-book-hero .ve-badge--accent {
-  background: color-mix(in srgb, #fff 18%, transparent) !important;
+  background: color-mix(in srgb, var(--sf-color-ivory-raised) 18%, transparent) !important;
   color: var(--text-on-brand) !important;
-  border: 1px solid color-mix(in srgb, #fff 24%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--sf-color-ivory-raised) 24%, transparent) !important;
 }
 
 /* أي سطح علامة غامق: نص فاتح فقط (لا text-on-primary الليلي الداكن) */
@@ -277,7 +277,7 @@ header.fiqh-lux-book-hero {
 .mj-filter-chip.is-active {
   background: var(--mj-chip-active-bg, var(--primary-strong)) !important;
   border-color: var(--mj-chip-active-bg, var(--primary-strong)) !important;
-  color: var(--mj-chip-active-fg, var(--text-on-primary, #fff)) !important;
+  color: var(--mj-chip-active-fg, var(--text-on-primary, var(--sf-color-ivory-raised))) !important;
 }
 
 .lesson-filters__tools {
@@ -495,14 +495,14 @@ html[data-theme="dark"] .surface-brand,
 html.dark [data-on-brand="light"],
 html[data-theme="dark"] [data-on-brand="light"] {
   background-color: #0a3d2e !important;
-  color: #ffffff !important;
+  color: var(--sf-color-ivory-raised) !important;
 }
 
 html.dark .fiqh-lux-book-hero :is(h1, h2, h3, p, span, small, a, li, strong),
 html[data-theme="dark"] .fiqh-lux-book-hero :is(h1, h2, h3, p, span, small, a, li, strong),
 html.dark [data-on-brand="light"] :is(h1, h2, h3, p, span, small, a, li, strong),
 html[data-theme="dark"] [data-on-brand="light"] :is(h1, h2, h3, p, span, small, a, li, strong) {
-  color: #ffffff !important;
+  color: var(--sf-color-ivory-raised) !important;
   opacity: 1 !important;
 }
 

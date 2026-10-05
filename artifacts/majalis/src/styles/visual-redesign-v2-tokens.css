@@ -7,24 +7,24 @@
  */
 :root {
   /* ── لوحة V2 ← Foundation ── */
-  --v2-color-ivory: var(--sf-color-ivory-canvas, #f8f6f1);
-  --v2-color-ivory-surface: var(--sf-color-ivory-raised, #ffffff);
-  --v2-color-ivory-muted: var(--sf-color-warm-ivory-muted, #efe8dc);
-  --v2-color-emerald: var(--sf-color-deep-emerald, var(--sunnah-emerald, #0f5c3f));
-  --v2-color-emerald-deep: var(--sf-color-deep-emerald-deep, var(--sunnah-emerald-deep, #0a4530));
+  --v2-color-ivory: var(--sf-color-ivory-canvas, var(--sf-color-warm-ivory));
+  --v2-color-ivory-surface: var(--sf-color-ivory-raised, var(--sf-color-ivory-raised));
+  --v2-color-ivory-muted: var(--sf-color-warm-ivory-muted, var(--sf-color-warm-ivory-muted));
+  --v2-color-emerald: var(--sf-color-deep-emerald, var(--sunnah-emerald, var(--sf-color-deep-emerald)));
+  --v2-color-emerald-deep: var(--sf-color-deep-emerald-deep, var(--sunnah-emerald-deep, var(--sf-color-deep-emerald-deep)));
   --v2-color-emerald-soft: var(--sf-color-deep-emerald-soft, var(--mj-brand-soft, #e2efe8));
-  --v2-color-gold: var(--sf-color-quran-gold, var(--sunnah-quran-gold, #c9a82e));
-  --v2-color-ink: var(--sf-color-rich-ink, var(--sunnah-ink, #15382d));
-  --v2-color-ink-muted: var(--sf-color-rich-ink-muted, var(--sunnah-ink-muted, #5f7168));
-  --v2-color-on-emerald: var(--sf-color-on-emerald, #ffffff);
+  --v2-color-gold: var(--sf-color-quran-gold, var(--sunnah-quran-gold, var(--sf-color-quran-gold)));
+  --v2-color-ink: var(--sf-color-rich-ink, var(--sunnah-ink, var(--sf-color-rich-ink)));
+  --v2-color-ink-muted: var(--sf-color-rich-ink-muted, var(--sunnah-ink-muted, var(--sf-color-rich-ink-muted)));
+  --v2-color-on-emerald: var(--sf-color-on-emerald, var(--sf-color-ivory-raised));
 
   /* Luxury Night ← Foundation */
-  --v2-color-night-bg: var(--sf-color-luxury-night, var(--sunnah-night-bg, #0a1612));
-  --v2-color-night-surface: var(--sf-color-luxury-night-surface, var(--sunnah-night-surface, #12261f));
-  --v2-color-night-elevated: var(--sf-color-luxury-night-elevated, #18332a);
-  --v2-color-night-ink: var(--sf-color-luxury-night-ink, var(--sunnah-night-text, #edf5f0));
+  --v2-color-night-bg: var(--sf-color-luxury-night, var(--sunnah-night-bg, var(--sf-color-luxury-night)));
+  --v2-color-night-surface: var(--sf-color-luxury-night-surface, var(--sunnah-night-surface, var(--sf-color-luxury-night-surface)));
+  --v2-color-night-elevated: var(--sf-color-luxury-night-elevated, var(--sf-color-luxury-night-elevated));
+  --v2-color-night-ink: var(--sf-color-luxury-night-ink, var(--sunnah-night-text, var(--sf-color-luxury-night-ink)));
   --v2-color-night-muted: #b3c9bd;
-  --v2-color-night-gold: var(--sf-color-luxury-night-gold, var(--sunnah-night-gold, #c4a84a));
+  --v2-color-night-gold: var(--sf-color-luxury-night-gold, var(--sunnah-night-gold, var(--sf-color-luxury-night-gold)));
   --v2-color-night-hairline: rgba(237, 245, 240, 0.14);
   --v2-color-night-emerald-text: #9fd4bf;
 
@@ -140,7 +140,7 @@ html.dark {
   --v2-color-emerald-soft: color-mix(
     in srgb,
     var(--v2-color-emerald, #0f5c45) 34%,
-    var(--v2-color-night-surface, #12261f)
+    var(--v2-color-night-surface, var(--sf-color-luxury-night-surface))
   );
   --v2-surface-canvas: var(--v2-color-night-bg);
   --v2-surface-raised: var(--v2-color-night-surface);

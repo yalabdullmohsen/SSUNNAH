@@ -17,17 +17,17 @@
   --pd-bg-2: #1b2421;
   --pd-card: #24302b;
   --pd-elevated: #2b3933;
-  --pd-emerald: #4fb48b;
+  --pd-emerald: var(--mj-brand);
   --pd-emerald-soft: #57b892;
-  --pd-gold: #c9a86c;
+  --pd-gold: var(--mj-accent);
   --pd-gold-soft: color-mix(in srgb, var(--pd-gold) 16%, var(--pd-bg-2));
-  --pd-ink: #ede8df;
+  --pd-ink: var(--mj-chip-fg);
   --pd-ink-2: #d8d0c4;
   --pd-ink-muted: #b5ada0;
   /* --mj-brand-deep* absorbed → theme.css / theme-aliases (PR2) */
   /* حدود زمردية خفيفة — تدعم المحتوى بلا منافسة */
-  --pd-border: color-mix(in srgb, var(--pd-emerald) 11%, #35443f);
-  --pd-border-subtle: color-mix(in srgb, var(--pd-emerald) 8%, #35443f);
+  --pd-border: color-mix(in srgb, var(--pd-emerald) 11%, var(--mj-chip-border));
+  --pd-border-subtle: color-mix(in srgb, var(--pd-emerald) 8%, var(--mj-chip-border));
   --pd-border-featured: color-mix(in srgb, var(--pd-emerald) 16%, #3a4a44);
 
   /* Elevation — نفس عقد theme (--dark-elev-*) */
@@ -663,7 +663,7 @@ html.pts-immersive:is([data-theme="dark"], .dark) .app-main {
   gap: 0.25rem !important;
   margin: 0 !important;
   padding: 0.28rem 0.78rem !important;
-  border-radius: var(--radius-mj-pill, 999px) !important;
+  border-radius: var(--radius-mj-pill, var(--sf-radius-pill)) !important;
   background: color-mix(in srgb, var(--pd-emerald) 14%, var(--pd-elevated)) !important;
   color: var(--pd-ink) !important;
   border: 1px solid color-mix(in srgb, var(--pd-emerald) 22%, var(--pd-border-subtle)) !important;
@@ -816,7 +816,7 @@ html.pts-immersive:is([data-theme="dark"], .dark) .app-main {
   background: color-mix(in srgb, var(--pd-emerald) 16%, var(--pd-elevated)) !important;
   color: var(--pd-ink) !important;
   border: 1px solid color-mix(in srgb, var(--pd-emerald) 20%, transparent) !important;
-  border-radius: var(--radius-mj-pill, 999px) !important;
+  border-radius: var(--radius-mj-pill, var(--sf-radius-pill)) !important;
   box-shadow: none !important;
 }
 

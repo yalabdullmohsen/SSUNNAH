@@ -147,15 +147,6 @@ html.dark,
   background-color: var(--cs-surface-3) !important;
 }
 
-.hub-card__title,
-.section-card__title,
-.lesson-card__title,
-.topic-card__title,
-.lesson-unified-card__title {
-  color: var(--cs-text-primary) !important;
-  font-weight: 800;
-}
-
 .hub-card__desc,
 .section-card__desc,
 .lesson-card__meta,
@@ -265,12 +256,6 @@ html.dark,
   font-weight: 800;
 }
 
-.ui-card__desc,
-.mj-card__desc,
-.info-card__body,
-.settings-toggle-desc {
-  color: var(--surface-feature-ink-muted) !important;
-}
 .info-card,
 .uq-info-box,
 .uq-dalil-box,

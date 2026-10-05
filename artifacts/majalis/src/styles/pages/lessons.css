@@ -223,7 +223,7 @@
 .lessons-v2-sheet-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 400;
+  z-index: var(--z-modal);
   background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: flex-end;
@@ -568,7 +568,7 @@ html.dark .kuwait-tab:hover:not(.kuwait-tab--active) {
 
 .lesson-detail-page .lesson-detail-back {
   margin-block-end: 0.55rem;
-  border-radius: var(--sf-radius-control, 12px);
+  border-radius: var(--sf-radius-control, var(--sf-radius-xs));
   min-height: 44px;
 }
 
@@ -682,7 +682,7 @@ html.dark .kuwait-tab:hover:not(.kuwait-tab--active) {
 .lesson-detail-page .lesson-detail-actions--row .lesson-unified-card__btn,
 .lesson-detail-page .lesson-unified-card__btn,
 .lesson-detail-page .lesson-detail-actions__back {
-  border-radius: var(--sf-radius-control, 12px);
+  border-radius: var(--sf-radius-control, var(--sf-radius-xs));
   min-height: 44px;
 }
 
@@ -1035,7 +1035,7 @@ html.dark .lesson-detail-info-grid dd,
   gap: 0.35rem;
   min-height: 40px;
   padding: 0.35rem 0.7rem;
-  border-radius: var(--radius-control, 12px);
+  border-radius: var(--radius-control, var(--sf-radius-xs));
   border: 1px solid var(--color-border, var(--mj-hairline));
   background: transparent;
   color: var(--color-text-muted, var(--mj-ink-2));
@@ -1130,7 +1130,7 @@ html.dark .lessons-page-v2 .lesson-unified-card__status,
 html[data-theme="dark"] .lessons-page-v2 .lesson-unified-card__status,
 html.dark .lessons-page-v3 .lesson-unified-card__status,
 html[data-theme="dark"] .lessons-page-v3 .lesson-unified-card__status {
-  background: var(--mj-chip-bg, #222c28) !important;
+  background: var(--mj-chip-bg, var(--mj-chip-bg)) !important;
   color: var(--mj-chip-fg, var(--mj-ink)) !important;
   border-color: var(--mj-chip-border, #3a4641) !important;
 }
@@ -1224,7 +1224,7 @@ html[data-theme="dark"] .lessons-page-v2 .lesson-unified-card__sheikh {
 html.dark .lesson-detail-page .lesson-detail-actions-panel,
 html[data-theme="dark"] .lesson-detail-page .lesson-detail-actions-panel {
   background: var(--surface-2, #222d29);
-  border-color: var(--border-subtle, #35443f);
+  border-color: var(--border-subtle, var(--mj-chip-border));
 }
 
 /* ── مجموعة الجدول (نفس شبكة البطاقة الموحّدة) ── */
@@ -1363,7 +1363,7 @@ html[data-theme="dark"] .lesson-detail-page .lesson-detail-actions-panel {
 
 .lesson-course-card__session .lesson-card {
   border: 1px solid var(--mn-border-default, #d8e3de);
-  border-radius: var(--ds-radius, 12px);
+  border-radius: var(--ds-radius, var(--sf-radius-xs));
 }
 
 .lesson-status-badge {
@@ -1884,7 +1884,7 @@ html[data-theme="dark"] .section-lobby.lessons-page-v3 .lesson-unified-card__tit
   border-radius: var(--sf-radius-sm);
   border: 1px solid color-mix(in srgb, var(--sf-color-deep-emerald) 12%, #e8ebe9);
   overflow: hidden;
-  background: color-mix(in srgb, var(--sf-color-deep-emerald) 4%, #f8f6f1);
+  background: color-mix(in srgb, var(--sf-color-deep-emerald) 4%, var(--sf-color-warm-ivory));
 }
 .lesson-detail-map--compact .lesson-detail-map__head {
   display: flex;
@@ -1928,7 +1928,7 @@ html[data-theme="dark"] .section-lobby.lessons-page-v3 .lesson-unified-card__tit
 }
 .lesson-detail-map__preview-hint {
   font-size: 0.72rem;
-  color: #5f7168;
+  color: var(--sf-color-rich-ink-muted);
 }
 .lesson-detail-map--compact iframe {
   display: block;
@@ -1970,12 +1970,12 @@ html[data-theme="dark"] .lesson-detail-meta-disclosure,
 html.dark .lesson-detail-map__toggle,
 html[data-theme="dark"] .lesson-detail-map__toggle {
   background: var(--dm-surface-elevated, #24302b);
-  border-color: var(--dm-border-subtle, #35443f);
-  color: var(--dm-text-primary, #ede8df);
+  border-color: var(--dm-border-subtle, var(--mj-chip-border));
+  color: var(--dm-text-primary, var(--mj-chip-fg));
 }
 html.dark .lesson-unified-card__menu-item,
 html[data-theme="dark"] .lesson-unified-card__menu-item {
-  color: var(--dm-text-primary, #ede8df);
+  color: var(--dm-text-primary, var(--mj-chip-fg));
 }
 
 /* ==== WAVE2: ported from lessons-legacy.css (file retired) ==== */

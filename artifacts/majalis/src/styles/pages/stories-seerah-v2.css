@@ -53,7 +53,7 @@ html[data-v2-stories="1"] .prophets-lux-search {
 html[data-v2-stories="1"] .prophets-lux-tab--active {
   background: var(--v2-color-emerald, var(--mj-brand));
   color: var(--v2-color-on-emerald, var(--mj-white));
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
 }
 
 /* بطاقات الأنبياء — أكبر · أنظف · بلا سكة جانبية */
@@ -80,7 +80,7 @@ html[data-v2-stories="1"] .prophet-lux-card__bio {
 }
 
 html[data-v2-stories="1"] .prophet-lux-card__chip {
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   background: var(--v2-color-emerald-soft, #e2efe8);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   border: none;
@@ -106,7 +106,7 @@ html[data-v2-stories="1"] .seerah-full-cta {
   background: var(--v2-color-on-emerald, var(--mj-white));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   border: none;
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   font-weight: 700;
 }
 
@@ -123,7 +123,7 @@ html[data-v2-stories="1"] .seerah-timeline__line {
     color-mix(in srgb, var(--v2-color-emerald, var(--mj-brand)) 45%, transparent),
     color-mix(in srgb, var(--v2-color-gold, var(--sf-color-quran-gold)) 45%, transparent)
   );
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
 }
 
 html[data-v2-stories="1"] .seerah-timeline__item {
@@ -148,7 +148,7 @@ html[data-v2-stories="1"] .seerah-timeline__item--active .seerah-timeline__year 
 }
 
 html[data-v2-stories="1"] .seerah-timeline__dot {
-  border-radius: var(--v2-radius-icon, 16px);
+  border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
   background: var(--v2-color-emerald-soft, #e2efe8);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   font-weight: 800;
@@ -178,7 +178,7 @@ html[data-v2-stories="1"] .seerah-panel__desc {
 }
 
 html[data-v2-stories="1"] .seerah-panel__topic {
-  border-radius: var(--v2-radius-pill, 999px);
+  border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   background: var(--v2-color-emerald-soft, #e2efe8);
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   border: none;
@@ -186,7 +186,7 @@ html[data-v2-stories="1"] .seerah-panel__topic {
 
 html[data-v2-stories="1"] .seerah-panel__event-item {
   border-radius: var(--v2-radius-md, 18px);
-  background: color-mix(in srgb, var(--v2-color-ivory-muted, #efe8dc) 55%, transparent);
+  background: color-mix(in srgb, var(--v2-color-ivory-muted, var(--sf-color-warm-ivory-muted)) 55%, transparent);
   padding: var(--v2-space-3, 0.75rem);
   border: none;
 }
@@ -206,8 +206,8 @@ html[data-theme="dark"][data-v2-stories="1"] .prophets-lux-page,
 html.dark[data-v2-stories="1"] .prophets-lux-page,
 html[data-theme="dark"][data-v2-stories="1"] .seerah-page,
 html.dark[data-v2-stories="1"] .seerah-page {
-  background: var(--v2-color-night-bg, #0a1612);
-  color: var(--v2-color-night-ink, #edf5f0);
+  background: var(--v2-color-night-bg, var(--sf-color-luxury-night));
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 html[data-theme="dark"][data-v2-stories="1"] .prophet-lux-card,
@@ -216,9 +216,9 @@ html[data-theme="dark"][data-v2-stories="1"] .seerah-panel,
 html.dark[data-v2-stories="1"] .seerah-panel,
 html[data-theme="dark"][data-v2-stories="1"] .seerah-timeline__item,
 html.dark[data-v2-stories="1"] .seerah-timeline__item {
-  background: var(--v2-color-night-surface, #12261f);
+  background: var(--v2-color-night-surface, var(--sf-color-luxury-night-surface));
   border-color: var(--v2-color-night-hairline, rgba(237, 245, 240, 0.12));
-  color: var(--v2-color-night-ink, #edf5f0);
+  color: var(--v2-color-night-ink, var(--sf-color-luxury-night-ink));
 }
 
 @media (prefers-reduced-motion: reduce) {

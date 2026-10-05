@@ -40,7 +40,7 @@
   background-color: var(--mj-surface);
   background-image: none;
   border: 1px solid var(--mj-hairline);
-  border-radius: var(--radius-tile, 24px);
+  border-radius: var(--radius-tile, var(--sf-radius-lg));
   box-shadow: 0 4px 14px -10px rgba(11, 32, 24, 0.35);
   transition: filter 120ms ease, transform 120ms ease;
 }
@@ -62,7 +62,7 @@
   flex-shrink: 0;
   width: 36px;
   height: 36px;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   background: var(--chip-bg, var(--mj-brand-soft, var(--brand-soft, var(--mj-brand-soft))));
   color: var(--chip-fg, var(--mj-brand-deep));
 }
@@ -114,7 +114,7 @@ a.card--featured,
   /* نفس أخضر الفقه الغامق — نهاراً عبر --color-primary-dark؛ ليلاً عبر deep-surface */
   color: var(--cs-on-ink);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-tile, 24px);
+  border-radius: var(--radius-tile, var(--sf-radius-lg));
   background-color: var(--mj-brand-deep-surface, var(--color-primary-dark, var(--mj-brand-deep)));
   background-image:
     linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, transparent 55%),
@@ -127,7 +127,7 @@ a.card--featured,
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: var(--z-base);
   pointer-events: none;
   opacity: 0.08;
   background-image:
@@ -189,13 +189,13 @@ a.card--featured,
   background-color: var(--mj-surface);
   background-image: none;
   border: 1px solid var(--mj-hairline);
-  border-radius: var(--radius-tile, 24px);
+  border-radius: var(--radius-tile, var(--sf-radius-lg));
 }
 
 .card--compact .card__icon {
   width: 36px;
   height: 36px;
-  border-radius: var(--radius-tile, 24px);
+  border-radius: var(--radius-tile, var(--sf-radius-lg));
 }
 
 .card--compact .card__icon svg {
@@ -254,7 +254,7 @@ a.card--featured,
   min-height: 44px;
   padding: 12px 16px;
   border: 1px solid var(--mj-hairline);
-  border-radius: var(--radius-tile, 24px);
+  border-radius: var(--radius-tile, var(--sf-radius-lg));
   background: var(--mj-surface);
   color: var(--mj-ink);
   font: inherit;
@@ -294,7 +294,7 @@ a.card--featured,
   width: 24px;
   height: 2px;
   margin-block-start: 8px;
-  border-radius: 999px;
+  border-radius: var(--sf-radius-pill);
   background: var(--mj-brand, var(--mj-brand));
 }
 
