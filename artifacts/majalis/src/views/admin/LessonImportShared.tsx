@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { GOVERNORATES } from "@/lib/theme";
 import { FIELD_LABELS, EMPTY_PARSED, type DebugLog, type ParsedLessonFields } from "@/lib/lesson-import-api";
+import { Button } from "@/components/ui/button";
 
 export const CATEGORIES = ["تفسير", "فقه", "عقيدة", "حديث", "سيرة", "تجويد", "أخرى"];
 export const VENUE_TYPES = ["مسجد", "مجلس", "ديوان", "مزرعة", "استراحة", "مركز", "جامعة", "أخرى"] as const;
@@ -77,10 +78,10 @@ export function DebugLogPanel({ log }: { log: DebugLog }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="lis-debug-panel">
-      <button type="button" onClick={() => setOpen((o) => !o)} className="lis-debug-btn">
+      <Button type="button" variant="ghost" onClick={() => setOpen((o) => !o)} className="lis-debug-btn">
         <span>تفاصيل الاستخراج (Debug) — {log.total_ms ?? 0} ms</span>
         <span>{open ? "▲" : "▼"}</span>
-      </button>
+      </Button>
       {open && (
         <div className="lis-debug-content">
           {log.stages.map((s, i) => (
@@ -366,20 +367,20 @@ export function LessonImportReviewPanel({
       </div>
 
       <div className="lis-review-actions">
-        <button type="button" disabled={busy} onClick={onApprove} className="lis-approve-btn">
+        <Button type="button" variant="primary" disabled={busy} onClick={onApprove} className="lis-approve-btn">
           اعتماد ونشر
-        </button>
-        <button type="button" disabled={busy} onClick={onSaveDraft} className="lis-draft-btn">
+        </Button>
+        <Button type="button" variant="secondary" disabled={busy} onClick={onSaveDraft} className="lis-draft-btn">
           حفظ كمسودة
-        </button>
+        </Button>
         {onReExtract && (
-          <button type="button" disabled={busy} onClick={onReExtract} className="lis-extract-btn">
+          <Button type="button" variant="ghost" disabled={busy} onClick={onReExtract} className="lis-extract-btn">
             {reExtractLabel}
-          </button>
+          </Button>
         )}
-        <button type="button" disabled={busy || !draftId} onClick={onReject} className="lis-reject-btn">
+        <Button type="button" variant="destructive" disabled={busy || !draftId} onClick={onReject} className="lis-reject-btn">
           رفض
-        </button>
+        </Button>
       </div>
     </>
   );

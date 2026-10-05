@@ -16,6 +16,7 @@ import { getTopSearchQueries } from "@/lib/search-history";
 import { isSupabaseConfigured } from "@/lib/supabase-config";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { useAuth } from "@/components/AuthProvider";
+import { Button } from "@/components/ui/button";
 import { useAdminShell, type AdminSection } from "./AdminShell";
 
 // ── أنواع ──────────────────────────────────────────────────────────────
@@ -363,21 +364,23 @@ function SectionCard({
       )}
 
       <div className="dsc-card__actions">
-        <button
+        <Button
           type="button"
+          variant="ghost"
           className="dsc-card__info-btn"
           onClick={() => setShowInfo((v) => !v)}
           aria-expanded={showInfo}
         >
           {showInfo ? "إخفاء" : "ماذا تفعل هذه الخانة؟"}
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
+          variant="primary"
           className="dsc-card__enter-btn"
           onClick={() => onEnter(card.key)}
         >
           دخول ←
-        </button>
+        </Button>
       </div>
     </div>
   );
@@ -537,9 +540,9 @@ export function DashboardSection() {
             <div key={rep.id} className="admin-report-item">
               <span className="admin-report-item__type">{rep.report_type}</span>
               <p className="admin-report-item__desc">{rep.description}</p>
-              <button type="button" onClick={() => resolveReport(rep.id)} className="admin-report-item__btn">
+              <Button type="button" variant="secondary" onClick={() => resolveReport(rep.id)} className="admin-report-item__btn">
                 تمت المراجعة
-              </button>
+              </Button>
             </div>
           ))}
         </div>
@@ -565,16 +568,17 @@ export function DashboardSection() {
         </div>
         <div className="dsc-group-tabs" role="tablist" aria-label="تصفية حسب المجموعة">
           {["الكل", ...GROUPS].map((g) => (
-            <button
+            <Button
               key={g}
               role="tab"
               type="button"
+              variant="ghost"
               className={`dsc-group-tab${activeGroup === g ? " is-active" : ""}`}
               aria-selected={activeGroup === g}
               onClick={() => setActiveGroup(g)}
             >
               {g}
-            </button>
+            </Button>
           ))}
         </div>
       </div>

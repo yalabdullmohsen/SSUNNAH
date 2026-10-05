@@ -854,6 +854,7 @@
     "test:public-button-authority-wave2": "node --import tsx src/lib/__tests__/public-button-authority-wave2-gate.test.ts",
     "test:public-button-authority-wave3": "node --import tsx src/lib/__tests__/public-button-authority-wave3-gate.test.ts",
     "test:admin-interaction-authority-wave2": "node --import tsx src/lib/__tests__/admin-interaction-authority-wave2-gate.test.ts",
+    "test:admin-interaction-authority-wave3": "node --import tsx src/lib/__tests__/admin-interaction-authority-wave3-gate.test.ts",
     "test:public-interaction-polish-batch": "node --import tsx src/lib/__tests__/public-interaction-polish-batch-gate.test.ts",
     "test:mushaf-path-classification-m4": "node --import tsx src/lib/__tests__/mushaf-path-classification-m4-gate.test.ts",
     "test:token-bridge-t3": "node --import tsx src/lib/__tests__/token-bridge-t3-ds-zero-gate.test.ts",
