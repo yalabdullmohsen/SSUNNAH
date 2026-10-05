@@ -1,0 +1,54 @@
+{
+  "$comment": "خط أساس axe — مخالفات قائمة لا تُفشل الفحص. يُولَّد بـ: node scripts/a11y-axe-gate.mjs --update",
+  "axeVersion": "4.12.1",
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa"
+  ],
+  "viewport": "390x844 mobile",
+  "nodeTolerance": 2,
+  "pages": {
+    "/": {
+      "light": {},
+      "dark": {
+        "color-contrast": 2
+      }
+    },
+    "/quran": {
+      "light": {},
+      "dark": {}
+    },
+    "/hadith": {
+      "light": {},
+      "dark": {
+        "color-contrast": 3
+      }
+    },
+    "/sections": {
+      "light": {},
+      "dark": {}
+    },
+    "/search": {
+      "light": {},
+      "dark": {}
+    },
+    "/adhkar": {
+      "light": {
+        "aria-progressbar-name": 1
+      },
+      "dark": {
+        "aria-progressbar-name": 1
+      }
+    },
+    "/prayer-times": {
+      "light": {},
+      "dark": {}
+    },
+    "/login": {
+      "light": {},
+      "dark": {}
+    }
+  }
+}
