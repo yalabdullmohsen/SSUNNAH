@@ -52,11 +52,10 @@ import {
   persistTafsirEdition,
   readStoredTafsirEdition,
 } from "@/lib/quran-data";
-import {
-  readBackgroundPlaybackPref,
-  restoreDefaultAppSettings,
-  writeBackgroundPlaybackPref,
-} from "@/lib/restore-default-settings";
+import { restoreDefaultAppSettings } from "@/lib/restore-default-settings";
+import { loadNotifPrefs } from "@/lib/local-notifications";
+import { loadAdhanPrefs } from "@/lib/adhan-preferences";
+import { loadPrayerAlertPrefs } from "@/lib/prayer-alert-preferences";
 import { MushafDisplayModeControl } from "@/features/mushaf-reader/MushafDisplayModeControl";
 import {
   MUSHAF_APPEARANCE_CHANGE_EVENT,
@@ -112,7 +111,6 @@ export default function SettingsPage() {
   const [reciterId, setReciterIdState] = useState(loadReciterId);
   const [tafsirId, setTafsirIdState] = useState(readStoredTafsirEdition);
   const [playbackRate, setPlaybackRateState] = useState(loadPlaybackRate);
-  const [bgPlayback, setBgPlayback] = useState(readBackgroundPlaybackPref);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const deleteDialogRef = useRef<HTMLDivElement>(null);
   const deleteCancelRef = useRef<HTMLButtonElement>(null);
@@ -125,6 +123,21 @@ export default function SettingsPage() {
   const [cacheRefreshBusy, setCacheRefreshBusy] = useState(false);
   const [cacheRefreshNote, setCacheRefreshNote] = useState<string | null>(null);
   const [displayedAppVersion, setDisplayedAppVersion] = useState<string | null>(() => getDisplayedAppVersion());
+  /* حالات قراءة فقط من مصادرها الوحيدة — لا تبديل مكرر هنا */
+  const [prayerAlertsOn] = useState(() => {
+    try {
+      return Boolean(loadAdhanPrefs().globalEnabled || loadPrayerAlertPrefs().alertsEnabled);
+    } catch {
+      return false;
+    }
+  });
+  const [contentRemindersOn] = useState(() => {
+    try {
+      return loadNotifPrefs().enabled;
+    } catch {
+      return false;
+    }
+  });
   const [mushafDisplayMode, setMushafDisplayMode] = useState<MushafAppearanceMode>(() =>
     loadMushafAppearanceMode(),
   );
@@ -199,38 +212,32 @@ export default function SettingsPage() {
   const tafsirs = useMemo(() => MUSHAF_TAFSIR_EDITIONS, []);
 
   const sections: SectionDef[] = [
-    { id: "account", title: "الحساب والملف الشخصي", keywords: "حساب دخول تسجيل خروج حذف الحساب ملف" },
     {
       id: "appearance",
-      title: "المظهر والواجهة",
-      keywords: "سمة ثيم مظهر تباين كثافة كبار السن خط واجهة لغة",
+      title: "العرض والمظهر",
+      keywords: "سمة ثيم مظهر تباين كثافة كبار السن خط واجهة لغة اهتزاز لمس",
     },
     {
       id: "reading",
       title: "القراءة والمصحف",
-      keywords: "قراءة قرآن مصحف خط تفسير حجم تباعد",
+      keywords: "قراءة قرآن مصحف خط تفسير حجم تباعد قارئ سرعة تلاوة صوت تنزيل كاش مساحة دون اتصال تخزين بيانات",
     },
     {
-      id: "sound",
-      title: "الصوت والوسائط",
-      keywords: "قارئ سرعة تلاوة تشغيل خلفي صوت وسائط",
+      id: "prayer",
+      title: "الصلاة والأذان",
+      keywords: "صلاة أذان مواقيت إقامة مؤذن تنبيه ويدجت widget موقع",
     },
     {
-      id: "reminders",
-      title: "الصلاة والتنبيهات",
-      keywords: "إشعار تذكير أذان صلاة مواقيت تنبيه دروس محتوى ويدجت widget",
-    },
-    {
-      id: "downloads",
-      title: "التنزيلات والتخزين",
-      keywords: "تنزيل كاش مساحة دون اتصال تخزين نسخة تحديث",
+      id: "notifications",
+      title: "الإشعارات",
+      keywords: "إشعار تذكير أذكار قرآن ورد مراجعة جمعة مناسبات هدوء إذن",
     },
     {
       id: "privacy",
-      title: "الخصوصية والبيانات",
-      keywords: "خصوصية تصدير حذف بيانات",
+      title: "الخصوصية والحساب",
+      keywords: "حساب دخول تسجيل خروج حذف الحساب ملف خصوصية تصدير بيانات مسح",
     },
-    { id: "about", title: "الدعم وحول التطبيق", keywords: "حول سياسة شروط دعم مصادر جولة مزايا مساعدة" },
+    { id: "about", title: "حول", keywords: "حول نسخة تحديث سياسة شروط دعم مصادر جولة مزايا مساعدة" },
   ];
 
   const q = query.trim().toLowerCase();
@@ -287,7 +294,6 @@ export default function SettingsPage() {
             setReciterIdState(loadReciterId());
             setTafsirIdState(readStoredTafsirEdition());
             setPlaybackRateState(1);
-            setBgPlayback(false);
           }}
         >
           استعادة الإعدادات الافتراضية
@@ -296,6 +302,265 @@ export default function SettingsPage() {
 
       {visible(sections[0]!) && (
         <LegalSection title={sections[0]!.title}>
+          <div className="settings-field settings-field--lang">
+            <span>{t("settings_language")}</span>
+            <LanguageSwitcher />
+          </div>
+          <p className="settings-note">{t("lang_overlay_note")}</p>
+          <p className="settings-note">السمة والمظهر</p>
+          <NavigationList
+            rows={THEME_OPTIONS.map((option) => ({
+              id: `theme-${option.id}`,
+              title: option.label,
+              description: option.description,
+              value: themePreference === option.id ? "✓" : undefined,
+              onClick: () => setThemePreference(option.id as ThemePreference),
+              testId: `settings-theme-${option.id}`,
+            }))}
+          />
+          <p className="settings-note">
+            الوضع الحالي: {resolvedTheme === "dark" ? "داكن" : "فاتح"}
+          </p>
+          <ToggleRow
+            label="وضع كبار السن"
+            description="خط أوضح وتباين أعلى ومسافات أوسع للقراءة"
+            checked={preferences.seniorMode}
+            onChange={setSeniorMode}
+          />
+          <ToggleRow
+            label="تباين مرتفع"
+            description="يزيد وضوح النص والحدود دون تغيير لون الهوية"
+            checked={preferences.highContrast}
+            onChange={(value) => update("highContrast", value)}
+          />
+          <ToggleRow
+            label="الاهتزاز اللمسي"
+            description="اهتزاز خفيف عند العدّ في المسبحة والأذكار والتفاعلات (حسب دعم الجهاز)"
+            checked={preferences.hapticsEnabled}
+            onChange={(value) => update("hapticsEnabled", value)}
+          />
+          <div className="settings-field">
+            <FieldLabel htmlFor="interface-font-size">{t("settings_font_size")}</FieldLabel>
+            <Select
+              value={preferences.fontSize}
+              onValueChange={(v) => update("fontSize", v as UserPreferences["fontSize"])}
+            >
+              <SelectTrigger
+                id="interface-font-size"
+                name="interface-font-size"
+                className="min-h-11 text-base"
+                aria-label={t("settings_font_size")}
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="صغير">صغير</SelectItem>
+                <SelectItem value="متوسط">متوسط</SelectItem>
+                <SelectItem value="كبير">كبير</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </LegalSection>
+      )}
+
+      {visible(sections[1]!) && (
+        <LegalSection title={sections[1]!.title}>
+          <MushafDisplayModeControl
+            value={mushafDisplayMode}
+            onChange={(mode) => {
+              QuranSettingsRepository.setAppearanceMode(mode);
+              QuranSettingsRepository.applyAppearance(mode);
+              setMushafDisplayMode(mode);
+            }}
+          />
+          <p className="settings-note">
+            يؤثر على المصحف فقط ولا يغيّر مظهر بقية التطبيق.
+          </p>
+          <label className="settings-field">
+            <span>{t("settings_reading_size")}</span>
+            <input
+              type="range"
+              name="reading-text-size"
+              min={READING_TEXT_MIN_PX}
+              max={READING_TEXT_MAX_PX}
+              value={draftReadingSize}
+              onInput={(e) => setDraftReadingSize(Number(e.currentTarget.value))}
+              onPointerUp={(e) => commitReadingSize(Number(e.currentTarget.value))}
+              onKeyUp={(e) => commitReadingSize(Number((e.target as HTMLInputElement).value))}
+              onBlur={(e) => commitReadingSize(Number(e.currentTarget.value))}
+            />
+            <strong className="mj-bidi-isolate">{draftReadingSize}px</strong>
+          </label>
+          <label className="settings-field">
+            <span>{t("settings_quran_font_size")}</span>
+            <input
+              type="range"
+              min={QURAN_FONT_MIN_PX}
+              max={QURAN_FONT_MAX_PX}
+              step={QURAN_FONT_STEP_PX}
+              value={draftQuranScale}
+              onInput={(e) => setDraftQuranScale(Number(e.currentTarget.value))}
+              onPointerUp={(e) => commitQuranScale(Number(e.currentTarget.value))}
+              onKeyUp={(e) => commitQuranScale(Number((e.target as HTMLInputElement).value))}
+              onBlur={(e) => commitQuranScale(Number(e.currentTarget.value))}
+            />
+            <strong className="mj-bidi-isolate">{draftQuranScale}px</strong>
+          </label>
+          <div className="settings-field">
+            <FieldLabel htmlFor="settings-quran-font">{t("settings_quran_font")}</FieldLabel>
+            <Select
+              value={quranPrefs.fontId}
+              onValueChange={(v) => setQuranPref("fontId", v as QuranFontId)}
+            >
+              <SelectTrigger
+                id="settings-quran-font"
+                className="min-h-11 text-base"
+                aria-label={t("settings_quran_font")}
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="uthmani">شهرزاد (Scheherazade)</SelectItem>
+                <SelectItem value="naskh">نسخ (Traditional Arabic)</SelectItem>
+                <SelectItem value="amiri">أميري (Amiri)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="settings-actions">
+            <Button type="button" variant="ghost" size="small" className="ds-btn ds-btn--ghost" onClick={() => bumpFont(2)}>
+              {t("settings_quran_font_up")}
+            </Button>
+            <Button type="button" variant="ghost" size="small" className="ds-btn ds-btn--ghost" onClick={() => bumpFont(-2)}>
+              {t("settings_quran_font_down")}
+            </Button>
+          </div>
+          <p className="settings-subhead">التلاوة والصوت</p>
+          <label className="settings-field">
+            <span>القارئ المفضّل</span>
+            <select
+              value={reciterId}
+              onChange={(e) => {
+                saveReciterId(e.target.value);
+                setReciterIdState(e.target.value);
+              }}
+            >
+              {reciters.map((r) => (
+                <option key={r.id} value={r.id}>
+                  {r.nameAr}
+                </option>
+              ))}
+            </select>
+          </label>
+          <p className="settings-note">يُستخدم في مشغّل التلاوة داخل المصحف</p>
+          <label className="settings-field">
+            <span>التفسير المفضّل</span>
+            <select
+              value={tafsirId}
+              onChange={(e) => {
+                persistTafsirEdition(e.target.value);
+                setTafsirIdState(e.target.value);
+              }}
+            >
+              {tafsirs.map((ed) => (
+                <option key={ed.id} value={ed.id}>
+                  {ed.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <div className="settings-field">
+            <FieldLabel htmlFor="settings-playback-rate">سرعة التشغيل</FieldLabel>
+            <Select
+              value={String(playbackRate)}
+              onValueChange={(v) => {
+                const rate = Number(v);
+                savePlaybackRate(rate);
+                setPlaybackRateState(rate);
+              }}
+            >
+              <SelectTrigger
+                id="settings-playback-rate"
+                className="min-h-11 text-base"
+                aria-label="سرعة التشغيل"
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {VALID_PLAYBACK_RATES.map((rate) => (
+                  <SelectItem key={rate} value={String(rate)}>
+                    {rate}×
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <ToggleRow
+            label="توفير البيانات"
+            description="يقلّل إحماء الوسائط الثقيلة عند الاتصال الضعيف"
+            checked={preferences.dataSaver}
+            onChange={(value) => update("dataSaver", value)}
+          />
+          <p className="settings-subhead">التنزيلات والتخزين</p>
+          <NavigationList
+            rows={[
+              { id: "vault", title: "مخزن المعرفة دون اتصال", href: "/vault" },
+              {
+                id: "clear-quran-cache",
+                title: t("settings_clear_quran_cache"),
+                onClick: () => clearQuranCache(),
+              },
+            ]}
+          />
+          <p className="settings-note">
+            تنزيل تلاوة السور كاملة للقرّاء المُحقَّقين QA — للاستماع دون اتصال.
+          </p>
+          <Suspense fallback={<p className="settings-note">تحديث إدارة التنزيلات…</p>}>
+            <ReciterDownloadManager />
+          </Suspense>
+        </LegalSection>
+      )}
+
+      {visible(sections[2]!) && (
+        <LegalSection title={sections[2]!.title}>
+          <NavigationList
+            rows={[
+              {
+                id: "adhan",
+                title: "إعدادات الأذان والتنبيهات",
+                description: "المؤذن، التنبيه قبل الأذان وبعده، الإقامة، والصلوات المفعّلة",
+                value: prayerAlertsOn ? "مفعّلة" : "متوقفة",
+                href: "/adhan-settings",
+                testId: "settings-adhan-link",
+              },
+              { id: "prayer-times", title: "مواقيت الصلاة والموقع", href: "/prayer-times" },
+              { id: "widget-center", title: "مركز الويدجت", href: "/widget-center" },
+            ]}
+          />
+        </LegalSection>
+      )}
+
+      {visible(sections[3]!) && (
+        <LegalSection title={sections[3]!.title}>
+          <p className="settings-note">
+            كل التذكيرات في مكان واحد: الأذكار، ورد القرآن، المراجعة، الجمعة والمناسبات، وساعات الهدوء.
+          </p>
+          <NavigationList
+            rows={[
+              {
+                id: "notif-hub",
+                title: "الإشعارات والتذكيرات",
+                description: "الإذن، الفئات، ساعات الهدوء، وصندوق الإشعارات",
+                value: contentRemindersOn ? "مفعّلة" : "متوقفة",
+                href: "/notification-settings",
+                testId: "settings-notifications-link",
+              },
+            ]}
+          />
+        </LegalSection>
+      )}
+
+      {visible(sections[4]!) && (
+        <LegalSection title={sections[4]!.title}>
           <AppCard
             as="section"
             className="settings-account-card"
@@ -380,317 +645,6 @@ export default function SettingsPage() {
               </div>
             </div>
           ) : null}
-        </LegalSection>
-      )}
-
-      {visible(sections[1]!) && (
-        <LegalSection title={sections[1]!.title}>
-          <div className="settings-field settings-field--lang">
-            <span>{t("settings_language")}</span>
-            <LanguageSwitcher />
-          </div>
-          <p className="settings-note">{t("lang_overlay_note")}</p>
-          <p className="settings-note">السمة والمظهر</p>
-          <NavigationList
-            rows={THEME_OPTIONS.map((option) => ({
-              id: `theme-${option.id}`,
-              title: option.label,
-              description: option.description,
-              value: themePreference === option.id ? "✓" : undefined,
-              onClick: () => setThemePreference(option.id as ThemePreference),
-              testId: `settings-theme-${option.id}`,
-            }))}
-          />
-          <p className="settings-note">
-            الوضع الحالي: {resolvedTheme === "dark" ? "داكن" : "فاتح"}
-          </p>
-          <ToggleRow
-            label="وضع كبار السن"
-            description="خط أوضح وتباين أعلى ومسافات أوسع للقراءة"
-            checked={preferences.seniorMode}
-            onChange={setSeniorMode}
-          />
-          <ToggleRow
-            label="تباين مرتفع"
-            description="يزيد وضوح النص والحدود دون تغيير لون الهوية"
-            checked={preferences.highContrast}
-            onChange={(value) => update("highContrast", value)}
-          />
-          <div className="settings-field">
-            <FieldLabel htmlFor="interface-font-size">{t("settings_font_size")}</FieldLabel>
-            <Select
-              value={preferences.fontSize}
-              onValueChange={(v) => update("fontSize", v as UserPreferences["fontSize"])}
-            >
-              <SelectTrigger
-                id="interface-font-size"
-                name="interface-font-size"
-                className="min-h-11 text-base"
-                aria-label={t("settings_font_size")}
-              >
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="صغير">صغير</SelectItem>
-                <SelectItem value="متوسط">متوسط</SelectItem>
-                <SelectItem value="كبير">كبير</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </LegalSection>
-      )}
-
-      {visible(sections[2]!) && (
-        <LegalSection title={sections[2]!.title}>
-          <MushafDisplayModeControl
-            value={mushafDisplayMode}
-            onChange={(mode) => {
-              QuranSettingsRepository.setAppearanceMode(mode);
-              QuranSettingsRepository.applyAppearance(mode);
-              setMushafDisplayMode(mode);
-            }}
-          />
-          <p className="settings-note">
-            يؤثر على المصحف فقط ولا يغيّر مظهر بقية التطبيق.
-          </p>
-          <label className="settings-field">
-            <span>{t("settings_reading_size")}</span>
-            <input
-              type="range"
-              name="reading-text-size"
-              min={READING_TEXT_MIN_PX}
-              max={READING_TEXT_MAX_PX}
-              value={draftReadingSize}
-              onInput={(e) => setDraftReadingSize(Number(e.currentTarget.value))}
-              onPointerUp={(e) => commitReadingSize(Number(e.currentTarget.value))}
-              onKeyUp={(e) => commitReadingSize(Number((e.target as HTMLInputElement).value))}
-              onBlur={(e) => commitReadingSize(Number(e.currentTarget.value))}
-            />
-            <strong className="mj-bidi-isolate">{draftReadingSize}px</strong>
-          </label>
-          <label className="settings-field">
-            <span>{t("settings_quran_font_size")}</span>
-            <input
-              type="range"
-              min={QURAN_FONT_MIN_PX}
-              max={QURAN_FONT_MAX_PX}
-              step={QURAN_FONT_STEP_PX}
-              value={draftQuranScale}
-              onInput={(e) => setDraftQuranScale(Number(e.currentTarget.value))}
-              onPointerUp={(e) => commitQuranScale(Number(e.currentTarget.value))}
-              onKeyUp={(e) => commitQuranScale(Number((e.target as HTMLInputElement).value))}
-              onBlur={(e) => commitQuranScale(Number(e.currentTarget.value))}
-            />
-            <strong className="mj-bidi-isolate">{draftQuranScale}px</strong>
-          </label>
-          <div className="settings-field">
-            <FieldLabel htmlFor="settings-quran-font">{t("settings_quran_font")}</FieldLabel>
-            <Select
-              value={quranPrefs.fontId}
-              onValueChange={(v) => setQuranPref("fontId", v as QuranFontId)}
-            >
-              <SelectTrigger
-                id="settings-quran-font"
-                className="min-h-11 text-base"
-                aria-label={t("settings_quran_font")}
-              >
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="uthmani">شهرزاد (Scheherazade)</SelectItem>
-                <SelectItem value="naskh">نسخ (Traditional Arabic)</SelectItem>
-                <SelectItem value="amiri">أميري (Amiri)</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="settings-actions">
-            <Button type="button" variant="ghost" size="small" className="ds-btn ds-btn--ghost" onClick={() => bumpFont(2)}>
-              {t("settings_quran_font_up")}
-            </Button>
-            <Button type="button" variant="ghost" size="small" className="ds-btn ds-btn--ghost" onClick={() => bumpFont(-2)}>
-              {t("settings_quran_font_down")}
-            </Button>
-          </div>
-        </LegalSection>
-      )}
-
-      {visible(sections[3]!) && (
-        <LegalSection title={sections[3]!.title}>
-          <label className="settings-field">
-            <span>القارئ المفضّل</span>
-            <select
-              value={reciterId}
-              onChange={(e) => {
-                saveReciterId(e.target.value);
-                setReciterIdState(e.target.value);
-              }}
-            >
-              {reciters.map((r) => (
-                <option key={r.id} value={r.id}>
-                  {r.nameAr}
-                </option>
-              ))}
-            </select>
-          </label>
-          <p className="settings-note">يُستخدم في مشغّل التلاوة داخل المصحف</p>
-          <label className="settings-field">
-            <span>التفسير المفضّل</span>
-            <select
-              value={tafsirId}
-              onChange={(e) => {
-                persistTafsirEdition(e.target.value);
-                setTafsirIdState(e.target.value);
-              }}
-            >
-              {tafsirs.map((ed) => (
-                <option key={ed.id} value={ed.id}>
-                  {ed.label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <div className="settings-field">
-            <FieldLabel htmlFor="settings-playback-rate">سرعة التشغيل</FieldLabel>
-            <Select
-              value={String(playbackRate)}
-              onValueChange={(v) => {
-                const rate = Number(v);
-                savePlaybackRate(rate);
-                setPlaybackRateState(rate);
-              }}
-            >
-              <SelectTrigger
-                id="settings-playback-rate"
-                className="min-h-11 text-base"
-                aria-label="سرعة التشغيل"
-              >
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {VALID_PLAYBACK_RATES.map((rate) => (
-                  <SelectItem key={rate} value={String(rate)}>
-                    {rate}×
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <ToggleRow
-            label="التشغيل في الخلفية"
-            description="تفضيل محلي لإبقاء التلاوة عند مغادرة الشاشة (حسب دعم الجهاز)"
-            checked={bgPlayback}
-            onChange={(on) => {
-              writeBackgroundPlaybackPref(on);
-              setBgPlayback(on);
-            }}
-          />
-          <ToggleRow
-            label="توفير البيانات"
-            description="يقلّل إحماء الوسائط الثقيلة عند الاتصال الضعيف"
-            checked={preferences.dataSaver}
-            onChange={(value) => update("dataSaver", value)}
-          />
-        </LegalSection>
-      )}
-
-      {visible(sections[4]!) && (
-        <LegalSection title={sections[4]!.title}>
-          <p className="settings-note">
-            تُحفظ التفضيلات محليًا. إذن الإشعارات يُطلب عند فتح إعدادات التذكيرات أو الأذان لأول مرة.
-          </p>
-          <ToggleRow
-            label={t("settings_notif_lessons")}
-            description="تنبيهات الدروس الجديدة"
-            checked={preferences.lessonNotifications}
-            onChange={(value) => update("lessonNotifications", value)}
-          />
-          <ToggleRow
-            label={t("settings_notif_content")}
-            description="تنبيهات المحتوى العلمي"
-            checked={preferences.contentNotifications}
-            onChange={(value) => update("contentNotifications", value)}
-          />
-          <ToggleRow
-            label={t("settings_notif_occasions")}
-            description="مناسبات ومواسم"
-            checked={preferences.occasionNotifications}
-            onChange={(value) => update("occasionNotifications", value)}
-          />
-          <NavigationList
-            rows={[
-              { id: "notif-sound", title: "الإشعارات والصوت", href: "/notifications-and-sound" },
-              { id: "notif-detail", title: "الإشعارات", href: "/notification-settings" },
-              { id: "adhan", title: "إعدادات الأذان", href: "/adhan-settings" },
-              { id: "widget-center", title: "مركز الويدجت", href: "/widget-center" },
-            ]}
-          />
-        </LegalSection>
-      )}
-
-      {visible(sections[5]!) && (
-        <LegalSection title={sections[5]!.title}>
-          <NavigationList
-            rows={[
-              {
-                id: "refresh-version",
-                title: cacheRefreshBusy ? "يُحدَّث…" : "تحديث النسخة",
-                description: "يمسح كاش الواجهة ويعيد تحميل آخر نسخة منشورة",
-                onClick: () => {
-                  if (cacheRefreshBusy) return;
-                  setCacheRefreshBusy(true);
-                  setCacheRefreshNote("يُحدَّث الآن…");
-                  void refreshAppAndPurgeCaches()
-                    .then((result) => {
-                      if (result.shortCommit) setDisplayedAppVersion(result.shortCommit);
-                      if (result.ok) {
-                        setCacheRefreshNote("تم تحديث النسخة — يُعاد التحميل…");
-                      } else {
-                        setCacheRefreshBusy(false);
-                        setCacheRefreshNote("النسخة محدّثة بالفعل.");
-                      }
-                    })
-                    .catch(() => {
-                      setCacheRefreshBusy(false);
-                      setCacheRefreshNote(STATUS.loadError);
-                    });
-                },
-                disabled: cacheRefreshBusy,
-                testId: "refresh-app-version",
-              },
-              { id: "adhan-sounds", title: "أصوات الأذان المحمّلة", href: "/adhan-settings" },
-              { id: "vault", title: "مخزن المعرفة دون اتصال", href: "/vault" },
-              {
-                id: "clear-quran-cache",
-                title: t("settings_clear_quran_cache"),
-                onClick: () => clearQuranCache(),
-              },
-            ]}
-          />
-          {displayedAppVersion ? (
-            <p className="settings-note" dir="ltr" data-testid="app-version-commit">
-              النسخة الحالية: {displayedAppVersion}
-            </p>
-          ) : null}
-          {cacheRefreshNote === STATUS.loadError ? (
-            <FieldError id="settings-cache-refresh-error" className="settings-note">
-              {cacheRefreshNote}
-            </FieldError>
-          ) : cacheRefreshNote ? (
-            <p className="settings-note" role="status">
-              {cacheRefreshNote}
-            </p>
-          ) : null}
-          <p className="settings-note">
-            تنزيل تلاوة السور كاملة للقرّاء المُحقَّقين QA — للاستماع دون اتصال.
-          </p>
-          <Suspense fallback={<p className="settings-note">تحديث إدارة التنزيلات…</p>}>
-            <ReciterDownloadManager />
-          </Suspense>
-        </LegalSection>
-      )}
-
-      {visible(sections[6]!) && (
-        <LegalSection title={sections[6]!.title}>
           <p>{t("settings_privacy_desc")}</p>
           <NavigationList
             rows={[
@@ -772,21 +726,60 @@ export default function SettingsPage() {
         </LegalSection>
       )}
 
-      {visible(sections[7]!) && (
-        <LegalSection title={sections[7]!.title}>
+      {visible(sections[5]!) && (
+        <LegalSection title={sections[5]!.title}>
           <p className="settings-note">
             أعد مشاهدة جولة المزايا لتتعرّف على المصحف والصلاة والأذكار والبحث والتنبيهات.
           </p>
           <NavigationList
             rows={[
               { id: "feature-tour", title: "جولة المزايا", href: "/feature-tour" },
+              {
+                id: "refresh-version",
+                title: cacheRefreshBusy ? "يُحدَّث…" : "تحديث النسخة",
+                description: "يمسح كاش الواجهة ويعيد تحميل آخر نسخة منشورة",
+                onClick: () => {
+                  if (cacheRefreshBusy) return;
+                  setCacheRefreshBusy(true);
+                  setCacheRefreshNote("يُحدَّث الآن…");
+                  void refreshAppAndPurgeCaches()
+                    .then((result) => {
+                      if (result.shortCommit) setDisplayedAppVersion(result.shortCommit);
+                      if (result.ok) {
+                        setCacheRefreshNote("تم تحديث النسخة — يُعاد التحميل…");
+                      } else {
+                        setCacheRefreshBusy(false);
+                        setCacheRefreshNote("النسخة محدّثة بالفعل.");
+                      }
+                    })
+                    .catch(() => {
+                      setCacheRefreshBusy(false);
+                      setCacheRefreshNote(STATUS.loadError);
+                    });
+                },
+                disabled: cacheRefreshBusy,
+                testId: "refresh-app-version",
+              },
               { id: "about", title: "حول التطبيق", href: "/about" },
               { id: "licenses", title: "المصادر والتراخيص", href: "/data-licenses" },
               { id: "contact", title: "الدعم الفني", href: "/support" },
-              { id: "privacy", title: "سياسة الخصوصية", href: "/privacy" },
               { id: "terms", title: "شروط الاستخدام", href: "/terms" },
             ]}
           />
+          {displayedAppVersion ? (
+            <p className="settings-note" dir="ltr" data-testid="app-version-commit">
+              النسخة الحالية: {displayedAppVersion}
+            </p>
+          ) : null}
+          {cacheRefreshNote === STATUS.loadError ? (
+            <FieldError id="settings-cache-refresh-error" className="settings-note">
+              {cacheRefreshNote}
+            </FieldError>
+          ) : cacheRefreshNote ? (
+            <p className="settings-note" role="status">
+              {cacheRefreshNote}
+            </p>
+          ) : null}
         </LegalSection>
       )}
 </LegalPageLayout>

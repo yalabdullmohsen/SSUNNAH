@@ -1,3 +1,4 @@
+import { AdminStateGate } from "@/components/admin/AdminLayout";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import {
@@ -393,6 +394,7 @@ export function DashboardSection() {
 
   const [data, setData]           = useState<DashboardData | null>(null);
   const [loading, setLoading]     = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [cmsStats, setCmsStats]   = useState<Awaited<ReturnType<typeof getCmsDashboardStats>> | null>(null);
   const [localSearches, setLocalSearches] = useState<{ query: string; count: number }[]>([]);
   const [search, setSearch]       = useState("");
@@ -400,12 +402,17 @@ export function DashboardSection() {
 
   const load = () => {
     setLoading(true);
+    setLoadError(null);
     Promise.all([adminGetDashboardStats(), getCmsDashboardStats()])
       .then(([result, cms]) => {
         setData(result);
         setCmsStats(cms);
       })
-      .catch(() => showError("تعذّر تحميل بيانات لوحة التحكم."))
+      .catch(() => {
+        // كان الفشل يترك هيكل التحميل للأبد (!data) — الآن حالة خطأ موحّدة مع إعادة المحاولة
+        setLoadError("تعذّر تحميل بيانات لوحة التحكم.");
+        showError("تعذّر تحميل بيانات لوحة التحكم.");
+      })
       .finally(() => setLoading(false));
     setLocalSearches(getTopSearchQueries(6));
   };
@@ -436,6 +443,7 @@ export function DashboardSection() {
     return groups;
   }, [filteredCards]);
 
+  if (!loading && !data && loadError) return <AdminStateGate error={loadError} onRetry={load} />;
   if (loading || !data) return <SkeletonCardGrid count={6} />;
 
   const { stats, recentReports, recentLessons, topViewedLessons, topSearches } = data;

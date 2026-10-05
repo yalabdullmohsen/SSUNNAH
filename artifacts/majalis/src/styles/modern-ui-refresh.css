@@ -453,6 +453,7 @@ button.soft-pill:active,
 .settings-list__desc,
 .mur-settings-row__desc,
 .settings-row__desc {
+  display: block;
   font-size: var(--mur-meta);
   color: var(--mj-muted);
   line-height: 1.4;

@@ -27,13 +27,8 @@ export function PushPrompt() {
   // iOS/Android native: Local Notifications only — hide Web Push UI entirely.
   if (isNative || state === "unsupported") return null;
 
-  if (state === "no-vapid") {
-    return (
-      <div className="push-prompt push-prompt--info">
-        الإشعارات تتطلب إعداد مفتاح VAPID في بيئة الإنتاج.
-      </div>
-    );
-  }
+  // بلا مفتاح VAPID لا يملك المستخدم ما يفعله — لا نعرض رسالة مطوّر.
+  if (state === "no-vapid") return null;
 
   if (state === "denied") {
     return (

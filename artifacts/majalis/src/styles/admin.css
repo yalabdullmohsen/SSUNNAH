@@ -679,15 +679,49 @@ a.admin-info-panel__item-title:hover { color: var(--majalis-emerald-deep); }
   background: currentColor;
   flex-shrink: 0;
 }
-.admin-badge--pending   { background: #F0F9FF; color: #0369A1; border-color: #BAE6FD; }
-.admin-badge--approved  { background: #D1FAE5; color: var(--mj-brand); border-color: #A7F3D0; }
-.admin-badge--rejected  { background: var(--mj-danger-soft); color: var(--mj-danger-deep); border-color: #FECACA; }
-.admin-badge--draft     { background: var(--mj-hairline); color: var(--mj-ink-2); border-color: #D1D5DB; }
-.admin-badge--published { background: #DBEAFE; color: #1E40AF; border-color: #BFDBFE; }
-.admin-badge--neutral   {
-  background: var(--majalis-sage, #e8f3ed);
-  color: var(--majalis-emerald-deep, #134a3a);
+/* نبرات الحالة الموحّدة (src/lib/admin-status.ts) — توكنات فقط */
+.admin-badge--neutral { background: var(--mj-hairline); color: var(--mj-ink-2); border-color: var(--mj-hairline); }
+.admin-badge--success { background: var(--mj-success-soft); color: var(--mj-brand-deep); border-color: var(--mj-success-soft); }
+.admin-badge--warning { background: var(--mj-warning-soft); color: var(--mj-warning); border-color: var(--mj-warning-soft); }
+.admin-badge--danger  { background: var(--mj-danger-soft); color: var(--mj-danger); border-color: var(--mj-danger-soft); }
+.admin-badge--info    { background: var(--mj-info-soft); color: var(--mj-info); border-color: var(--mj-info-soft); }
+.admin-badge--accent  { background: var(--mj-hairline); color: var(--mj-accent); border-color: var(--mj-hairline); }
+
+/* ── سلطة بطاقات الإحصاء (AdminStatCard) ─────────────────────────── */
+.adm-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr));
+  gap: var(--ds-space-3);
+  margin-bottom: var(--ds-space-4);
 }
+.adm-stat {
+  background: var(--mj-surface);
+  border: 1px solid var(--mj-hairline);
+  border-radius: var(--ds-radius-lg);
+  padding: var(--ds-space-3) var(--ds-space-4);
+  min-width: 0;
+}
+.adm-stat--danger { border-color: var(--mj-danger-soft); }
+.adm-stat__label { margin: 0; font-size: var(--ds-text-xs); color: var(--mj-ink-2); }
+.adm-stat__value { margin: var(--ds-space-1) 0 0; font-size: var(--ds-text-xl); font-weight: 800; color: var(--mj-brand-deep); overflow-wrap: anywhere; }
+.adm-stat--warning .adm-stat__value { color: var(--mj-warning); }
+.adm-stat--danger .adm-stat__value  { color: var(--mj-danger); }
+.adm-stat--info .adm-stat__value    { color: var(--mj-info); }
+.adm-stat--accent .adm-stat__value  { color: var(--mj-accent); }
+.adm-stat__sub   { margin: var(--ds-space-1) 0 0; font-size: var(--ds-text-2xs); color: var(--mj-ink-2); }
+
+/* ── نص بنبرة (AdminToneText) ─────────────────────────────────────── */
+.adm-tone-text--neutral { color: var(--mj-ink-2); }
+.adm-tone-text--success { color: var(--mj-brand-deep); }
+.adm-tone-text--warning { color: var(--mj-warning); }
+.adm-tone-text--danger  { color: var(--mj-danger); }
+.adm-tone-text--info    { color: var(--mj-info); }
+.adm-tone-text--accent  { color: var(--mj-accent); }
+
+/* ── حالات القسم الموحّدة ─────────────────────────────────────────── */
+.adm-section-state { margin-block: var(--ds-space-4); }
+.adm-section-desc  { margin: var(--ds-space-1) 0 0; font-size: var(--ds-text-sm); color: var(--mj-ink-2); }
+.adm-tabs-wrap     { margin-bottom: var(--ds-space-4); max-width: 100%; overflow-x: auto; }
 
 /* وضع داكن للشارات */
 .admin-table-scroll table { min-width: 640px; }

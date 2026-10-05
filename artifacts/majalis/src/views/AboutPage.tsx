@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
 import { ShareButtons } from "@/components/ContentActions";
 import { applyPageSeo } from "@/lib/seo";
+import { isWeb } from "@/lib/native-platform";
 import { SITE_DESCRIPTION, SITE_TAGLINE, SITE_URL } from "@/lib/site-config";
 import { DetailScreen } from "@/components/design-system/screens";
 import "@/styles/pages/learn-legal-v2.css";
@@ -83,7 +84,8 @@ export default function AboutPage() {
       <LegalSection title="تجربة الآيفون">
         <p>
           سُنّة مبنية كتطبيق أصلي للآيفون بنفس المحتوى: الدروس والعلماء والقرآن والمتابعة.
-          رابط التحميل من App Store يُعرض هنا فور النشر الرسمي.
+          {/* دعوة التحميل للموقع فقط — داخل التطبيق لا معنى لها */}
+          {isWeb() ? " رابط التحميل من App Store يُعرض هنا فور النشر الرسمي." : null}
         </p>
       </LegalSection>
 

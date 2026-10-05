@@ -180,6 +180,78 @@ export function clearChunkReloadGuard(): void {
   }
 }
 
+/**
+ * حارس إعادة التحميل التلقائية الصامتة بعد نشر جديد (chunk قديم لم يعد موجودًا).
+ * منفصل عن CHUNK_RELOAD_KEY عمدًا: ذاك يُمسح عند استقرار القشرة، أما هذا فلا يُمسح أبدًا
+ * — وإلا أعاد chunk مفقود فعلًا في البناء الجديد التحميلَ بلا نهاية.
+ * القيمة: `${buildId}|${at}` حيث buildId هو البناء الذي فشل فيه التحميل.
+ */
+export const CHUNK_AUTO_RELOAD_KEY = "majalis-chunk-auto-reload";
+/** شبكة أمان إضافية: لا إعادة تحميل تلقائية ثانية خلال هذه المدة مهما تغيّر البناء. */
+export const CHUNK_AUTO_RELOAD_MIN_INTERVAL_MS = 30_000;
+
+function readAutoReloadRaw(): string | null {
+  try {
+    if (typeof sessionStorage !== "undefined") {
+      const s = sessionStorage.getItem(CHUNK_AUTO_RELOAD_KEY);
+      if (s) return s;
+    }
+  } catch {
+    /* ignore */
+  }
+  try {
+    if (typeof localStorage !== "undefined") {
+      return localStorage.getItem(CHUNK_AUTO_RELOAD_KEY);
+    }
+  } catch {
+    /* ignore */
+  }
+  return null;
+}
+
+/**
+ * هل تُسمح إعادة تحميل تلقائية واحدة الآن؟ (قراءة فقط — بلا استهلاك)
+ * لا: أثناء الانقطاع · إن أُعيد التحميل تلقائيًا لنفس البناء سابقًا · أو خلال آخر 30 ثانية.
+ */
+export function canAutoReloadForStaleChunk(now = Date.now()): boolean {
+  if (isBrowserOffline()) return false;
+  const raw = readAutoReloadRaw();
+  if (!raw) return true;
+  const pipe = raw.indexOf("|");
+  const buildId = pipe > 0 ? raw.slice(0, pipe) : raw;
+  const at = pipe > 0 ? Number(raw.slice(pipe + 1)) : NaN;
+  if (buildId === getChunkRecoveryBuildId()) return false;
+  if (Number.isFinite(at) && now - at < CHUNK_AUTO_RELOAD_MIN_INTERVAL_MS) return false;
+  return true;
+}
+
+/**
+ * يستهلك محاولة إعادة التحميل التلقائية لهذا البناء.
+ * إن تعذّر حفظ الحارس (تخزين محظور) لا تُسمح إعادة التحميل — منع الحلقة أولى من الاستعادة.
+ */
+export function consumeChunkAutoReload(now = Date.now()): boolean {
+  if (!canAutoReloadForStaleChunk(now)) return false;
+  const value = `${getChunkRecoveryBuildId()}|${now}`;
+  let persisted = false;
+  try {
+    if (typeof sessionStorage !== "undefined") {
+      sessionStorage.setItem(CHUNK_AUTO_RELOAD_KEY, value);
+      persisted = sessionStorage.getItem(CHUNK_AUTO_RELOAD_KEY) === value;
+    }
+  } catch {
+    /* ignore */
+  }
+  try {
+    if (typeof localStorage !== "undefined") {
+      localStorage.setItem(CHUNK_AUTO_RELOAD_KEY, value);
+      persisted = localStorage.getItem(CHUNK_AUTO_RELOAD_KEY) === value || persisted;
+    }
+  } catch {
+    /* ignore */
+  }
+  return persisted;
+}
+
 /** حالة الشبكة للمسار الهادئ — بلا reload متكرر أثناء الانقطاع. */
 export function isBrowserOffline(): boolean {
   try {
@@ -198,19 +270,36 @@ export function lazyWithRetry<T extends ComponentType<unknown>>(
   factory: () => Promise<{ default: T }>,
   label?: string,
 ): LazyExoticComponent<T> {
-  return lazy(async () => {
-    try {
-      const mod = await factory();
-      clearChunkReloadGuard();
-      return mod;
-    } catch (error) {
-      if (typeof window !== "undefined" && isChunkLoadError(error)) {
-        const { tryRecoverFromStaleChunk } = await import("@/lib/chunk-recovery");
-        void tryRecoverFromStaleChunk(label || "1", error);
+  return lazy(() => loadWithChunkRecovery(factory, label));
+}
+
+/**
+ * مسار تحميل lazyWithRetry (مُصدَّر للاختبار).
+ * chunk قديم بعد نشر: إعادة تحميل تلقائية صامتة واحدة — يبقى الوعد معلّقًا (Suspense fallback)
+ * فلا تظهر شاشة الخطأ قبل إعادة التحميل. استُهلكت المحاولة/انقطاع ⇒ الاستعادة الهادئة ثم الخطأ.
+ */
+export async function loadWithChunkRecovery<T>(
+  factory: () => Promise<T>,
+  label?: string,
+): Promise<T> {
+  try {
+    const mod = await factory();
+    clearChunkReloadGuard();
+    return mod;
+  } catch (error) {
+    if (typeof window !== "undefined" && isChunkLoadError(error)) {
+      const { reloadOnceForStaleChunk, tryRecoverFromStaleChunk } = await import(
+        "@/lib/chunk-recovery"
+      );
+      if (reloadOnceForStaleChunk(label || "1", error)) {
+        return new Promise<T>(() => {
+          /* الصفحة تُعاد تحميلها — لا تُحَل ولا تُرفض */
+        });
       }
-      throw error;
+      void tryRecoverFromStaleChunk(label || "1", error);
     }
-  });
+    throw error;
+  }
 }
 
 /** Preload a lazy route chunk after auth succeeds (admin login path). */

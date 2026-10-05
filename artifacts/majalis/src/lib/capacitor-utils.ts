@@ -3,7 +3,7 @@
  * setupStatusBar يبقى للتوافق (إقلاع / استعادة بعد immersive) ويعيد مزامنة chrome الحالي.
  * كشف المنصّة عبر native-platform (بلا @capacitor/core في حزمة الإقلاع).
  */
-import { getNativePlatform, isNativePlatform } from "@/lib/native-platform";
+import { getNativePlatform, isAppHost, isNativePlatform } from "@/lib/native-platform";
 
 export const isNative = isNativePlatform();
 /** اسم صريح لواجهة التطبيق — مطابق لـ Capacitor.isNativePlatform() */
@@ -33,26 +33,12 @@ export async function setupKeyboard() {
   await Keyboard.setResizeMode({ mode: KeyboardResize.Body });
 }
 
-const OWN_HOSTS = new Set([
-  "www.ssunnah.com",
-  "ssunnah.com",
-  "majlisilm.com",
-  "www.majlisilm.com",
-  "localhost",
-  "127.0.0.1",
-]);
-
-function isOwnHost(hostname: string): boolean {
-  const h = hostname.toLowerCase().replace(/\.$/, "");
-  return OWN_HOSTS.has(h) || h.endsWith(".ssunnah.com") || h.endsWith(".majlisilm.com");
-}
-
 /** روابط علامتنا تُفتح داخل التطبيق — لا Safari (يمنع ارتداد Universal Links). */
 function navigateOwnUrlInApp(url: string): boolean {
   try {
     const u = new URL(url, typeof window !== "undefined" ? window.location.href : "https://www.ssunnah.com");
     if (u.protocol !== "http:" && u.protocol !== "https:") return false;
-    if (!isOwnHost(u.hostname)) return false;
+    if (!isAppHost(u.hostname)) return false;
     const path = `${u.pathname}${u.search}${u.hash}` || "/";
     if (!path.startsWith("/") || path.startsWith("//")) return false;
     if (typeof window === "undefined") return false;

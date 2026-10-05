@@ -8,6 +8,8 @@ import { findMushafPageForAyah } from "./mushaf-page-for-ayah";
 import { QuranSearchEngine } from "@/lib/mushaf-v2";
 import { truncateAtWord } from "@/lib/utils";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
+import { mushafButtonClass } from "@/features/mushaf-reader/mushaf-button-parity";
 
 type Hit = {
   surah: number;
@@ -197,9 +199,10 @@ export function MushafSearchSheet({ open, mode = "search", onClose, onGotoPage }
       data-mode={mode}
       data-mushaf-appearance={appearanceAttr}
     >
-      <button
+      <Button
         type="button"
-        className="mm-search-sheet__scrim quran-sheet__scrim"
+        variant="ghost"
+        className={mushafButtonClass("mm-search-sheet__scrim quran-sheet__scrim")}
         aria-label="إغلاق"
         onMouseDown={(e) => {
           if (typingRef.current) {
@@ -223,39 +226,41 @@ export function MushafSearchSheet({ open, mode = "search", onClose, onGotoPage }
         >
           {mode === "index" ? (
             <div className="mm-search-sheet__index-head">
-              <button type="button" className="mm-search-sheet__back" onClick={onClose} aria-label="رجوع">
+              <Button type="button" variant="ghost" className={mushafButtonClass("mm-search-sheet__back")} onClick={onClose} aria-label="رجوع">
                 <ArrowRight size={18} aria-hidden="true" />
-              </button>
+              </Button>
               <h2 id={titleId}>الفهرس</h2>
             </div>
           ) : (
             <div className="mm-search-sheet__head">
               <h2 id={titleId}>بحث في المصحف</h2>
-              <button type="button" onClick={onClose} aria-label="إغلاق البحث">
+              <Button type="button" variant="ghost" className={mushafButtonClass()} onClick={onClose} aria-label="إغلاق البحث">
                 إغلاق
-              </button>
+              </Button>
             </div>
           )}
           {mode === "index" ? (
             <div className="mm-search-sheet__tabs" role="tablist">
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 role="tab"
                 aria-selected={tab === "surahs"}
-                className={tab === "surahs" ? "is-active" : ""}
+                className={mushafButtonClass(tab === "surahs" ? "is-active" : "")}
                 onClick={() => setTab("surahs")}
               >
                 السور
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
+                variant="ghost"
                 role="tab"
                 aria-selected={tab === "juz"}
-                className={tab === "juz" ? "is-active" : ""}
+                className={mushafButtonClass(tab === "juz" ? "is-active" : "")}
                 onClick={() => setTab("juz")}
               >
                 الأرباع
-              </button>
+              </Button>
             </div>
           ) : null}
           <div className="mm-search-sheet__field-row">
@@ -299,14 +304,15 @@ export function MushafSearchSheet({ open, mode = "search", onClose, onGotoPage }
                 spellCheck={false}
               />
             </label>
-            <button
+            <Button
               type="submit"
-              className="mm-search-sheet__submit"
+              variant="ghost"
+              className={mushafButtonClass("mm-search-sheet__submit")}
               data-testid="mushaf-search-submit"
               disabled={tab !== "search" || (!query.trim() && !pageValid)}
             >
               {isPageQuery ? "انتقال" : "بحث"}
-            </button>
+            </Button>
           </div>
         </form>
         {tab === "juz" ? (
@@ -314,18 +320,18 @@ export function MushafSearchSheet({ open, mode = "search", onClose, onGotoPage }
             <ul className="mm-search-sheet__list mm-search-sheet__list--surahs mm-search-sheet__list--index" role="listbox" aria-label="الأجزاء">
               {ALL_JUZ.map((j) => (
                 <li key={j.n}>
-                  <button type="button" onClick={() => goPage(j.page)}>
+                  <Button type="button" variant="ghost" className={mushafButtonClass()} onClick={() => goPage(j.page)}>
                     <span className="mm-search-sheet__meta">الجزء {j.n}</span>
                     <span className="mm-search-sheet__preview">ص {j.page}</span>
-                  </button>
+                  </Button>
                 </li>
               ))}
             </ul>
             <nav className="mm-search-sheet__juz-rail" aria-label="وصول سريع للأجزاء">
               {ALL_JUZ.map((j) => (
-                <button type="button" key={j.n} onClick={() => goPage(j.page)}>
+                <Button type="button" variant="ghost" className={mushafButtonClass()} key={j.n} onClick={() => goPage(j.page)}>
                   {j.n}
-                </button>
+                </Button>
               ))}
             </nav>
           </div>
@@ -334,7 +340,7 @@ export function MushafSearchSheet({ open, mode = "search", onClose, onGotoPage }
             <ul className="mm-search-sheet__list mm-search-sheet__list--surahs mm-search-sheet__list--index" role="listbox" aria-label="فهرس السور">
               {filteredSurahs.map((s) => (
                 <li key={s.n}>
-                  <button type="button" onClick={() => goPage(s.page)}>
+                  <Button type="button" variant="ghost" className={mushafButtonClass()} onClick={() => goPage(s.page)}>
                     <span className="mm-search-sheet__badge">{s.n}</span>
                     <span className="mm-search-sheet__meta">
                       {s.name}
@@ -342,15 +348,15 @@ export function MushafSearchSheet({ open, mode = "search", onClose, onGotoPage }
                         ص {s.page} · {s.ayahs} آية · {s.revelation} · الجزء {s.juz}
                       </small>
                     </span>
-                  </button>
+                  </Button>
                 </li>
               ))}
             </ul>
             <nav className="mm-search-sheet__juz-rail" aria-label="وصول سريع للأجزاء">
               {ALL_JUZ.map((j) => (
-                <button type="button" key={j.n} onClick={() => goPage(j.page)}>
+                <Button type="button" variant="ghost" className={mushafButtonClass()} key={j.n} onClick={() => goPage(j.page)}>
                   {j.n}
-                </button>
+                </Button>
               ))}
             </nav>
           </div>
@@ -370,8 +376,10 @@ export function MushafSearchSheet({ open, mode = "search", onClose, onGotoPage }
             <ul className="mm-search-sheet__list" role="listbox" aria-label="نتائج البحث">
               {hits.map((h) => (
                 <li key={`${h.surah}:${h.ayah}`}>
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
+                    className={mushafButtonClass()}
                     onClick={() => {
                       goPage(h.page, `${h.surah}:${h.ayah}`);
                     }}
@@ -382,7 +390,7 @@ export function MushafSearchSheet({ open, mode = "search", onClose, onGotoPage }
                     <span className="mm-search-sheet__preview" dir="rtl" lang="ar">
                       {h.preview}
                     </span>
-                  </button>
+                  </Button>
                 </li>
               ))}
             </ul>
