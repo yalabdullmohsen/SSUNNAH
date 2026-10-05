@@ -117,7 +117,14 @@
   --ds-textSecondary: var(--text-secondary);
   --ds-accent: var(--accent);
   --ds-border: var(--border);
-  /* Quality-campaign semantic bridges (required by test-quality-campaign-gate). */
+  /*
+   * KEEP_COMPATIBILITY_WITH_EVIDENCE — quality-campaign public contract
+   * (scripts/test-quality-campaign-gate.mjs). Zero runtime var() consumers.
+   * Canonical destinations: --text-muted / --danger / --success (→ --mj-*).
+   * Retirement trigger: migrate quality-campaign required list to those
+   * canonical names, then delete these three aliases in the same PR.
+   * New product consumers MUST use the canonical tokens — not these aliases.
+   */
   --ds-muted: var(--text-muted);
   --ds-danger: var(--danger);
   --ds-success: var(--success);

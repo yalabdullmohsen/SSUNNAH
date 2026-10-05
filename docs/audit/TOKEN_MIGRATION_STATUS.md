@@ -10,11 +10,11 @@ TASK_CLASSIFICATION: SHARED_PLATFORM
 
 | Family | Refs (approx) | Status |
 |---|---:|---|
-| `--ds-*` | 3356 | SEMANTIC_BRIDGE_REQUIRED (startup/DS) |
+| `--ds-*` | 3314 | SEMANTIC_BRIDGE_REQUIRED (startup/DS) |
 | `--elite-*` | 1 | KEEP_COMPATIBILITY_WITH_EVIDENCE |
 | `--em-*` | 20 | SEMANTIC_BRIDGE |
-| `--msk-*` | 549 | KEEP_COMPATIBILITY_WITH_EVIDENCE |
-| `--majalis-*` | 3262 | KEEP_COMPATIBILITY_WITH_EVIDENCE |
+| `--msk-*` | 542 | KEEP_COMPATIBILITY_WITH_EVIDENCE |
+| `--majalis-*` | 3232 | KEEP_COMPATIBILITY_WITH_EVIDENCE |
 
 Unknown/new families: **none**
 
