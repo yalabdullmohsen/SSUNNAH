@@ -1,0 +1,99 @@
+name: LHCI key pages
+
+# Lighthouse (جوال، PSI Slow 4G، 3 جولات) لصفحات: الدخول، القرآن، الأقسام، البحث.
+# الصفحة الرئيسية مغطاة بوظيفة lhci-home في ci.yml.
+# سياسة: المقارنة بخط أساس مقاس (config/lhci-key-pages-baseline.json) — المشاكل القائمة لا تُفشل الفحص؛
+# يفشل فقط عند تراجع يتجاوز الهامش (scripts/lhci-key-pages-gate.mjs).
+# ليس جزءًا من ci-required.
+#
+# تحديث خط الأساس: شغّل workflow_dispatch على main ثم انسخ CURRENT_JSON من السجل
+# أو محليًا: lhci collect ثم node scripts/lhci-key-pages-gate.mjs --update
+#
+# تحذير: لا تضع تعليقات HTML داخل ملفات workflow.
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "artifacts/majalis/**"
+      - "lib/**"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/lhci-key-pages.yml"
+  push:
+    branches: [main]
+    paths:
+      - "artifacts/majalis/**"
+      - "lib/**"
+      - "pnpm-lock.yaml"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lhci-key-pages:
+    name: LHCI key pages (mobile)
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: ./.github/actions/setup-workspace
+        with:
+          playwright: "true"
+
+      - name: Build
+        run: pnpm --filter @workspace/majalis run build
+
+      - name: Start preview
+        working-directory: artifacts/majalis
+        run: |
+          set -euo pipefail
+          pnpm exec vite preview --config vite.config.ts --host 127.0.0.1 --port 24216 > /tmp/lhci-kp-vite.log 2>&1 &
+          echo $! > /tmp/lhci-kp-vite.pid
+          for i in $(seq 1 90); do
+            if curl -sf -o /dev/null "http://127.0.0.1:24216/login" \
+              && curl -sf -o /dev/null "http://127.0.0.1:24216/version.json"; then
+              echo "preview جاهز (محاولة $i)"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "preview لم يصبح جاهزًا"; tail -80 /tmp/lhci-kp-vite.log; exit 1
+
+      - name: Lighthouse collect (4 pages × 3 runs)
+        working-directory: artifacts/majalis
+        env:
+          LHCI_BASE: http://127.0.0.1:24216
+        run: |
+          set -euo pipefail
+          export CHROME_PATH
+          CHROME_PATH="$(node --input-type=module -e "import { chromium } from 'playwright'; console.log(chromium.executablePath())")"
+          test -x "$CHROME_PATH"
+          rm -rf .lighthouseci
+          npx --yes @lhci/cli@0.15.1 collect --config=./lighthouserc.key-pages.cjs
+          npx --yes @lhci/cli@0.15.1 upload --config=./lighthouserc.key-pages.cjs
+
+      - name: Compare with baseline (fail only on regression)
+        working-directory: artifacts/majalis
+        run: node scripts/lhci-key-pages-gate.mjs
+
+      - name: Upload Lighthouse reports
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: lhci-key-pages-reports
+          path: |
+            artifacts/majalis/lhci-reports/key-pages
+            artifacts/majalis/.lighthouseci
+          include-hidden-files: true
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Stop preview
+        if: always()
+        run: kill "$(cat /tmp/lhci-kp-vite.pid)" 2>/dev/null || true

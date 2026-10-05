@@ -1,0 +1,54 @@
+{
+  "$comment": "وسيط قياس الصفحات المفتاحية (LHCI، 3 جولات، PSI Slow 4G، 412×823). يُولَّد بـ: node scripts/lhci-key-pages-gate.mjs --update",
+  "source": "local",
+  "pages": {
+    "/login": {
+      "runs": 3,
+      "fcpMs": 2482,
+      "lcpMs": 8946,
+      "siMs": 2482,
+      "tbtMs": 677,
+      "cls": 0.0341,
+      "performance": 0.55,
+      "accessibility": 1,
+      "best-practices": 0.96,
+      "seo": 0.66
+    },
+    "/quran": {
+      "runs": 3,
+      "fcpMs": 2328,
+      "lcpMs": 11244,
+      "siMs": 3075,
+      "tbtMs": 1177,
+      "cls": 0.0608,
+      "performance": 0.47,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "/sections": {
+      "runs": 3,
+      "fcpMs": 2325,
+      "lcpMs": 11049,
+      "siMs": 2443,
+      "tbtMs": 1112,
+      "cls": 0.0677,
+      "performance": 0.48,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "/search": {
+      "runs": 3,
+      "fcpMs": 2307,
+      "lcpMs": 9530,
+      "siMs": 2307,
+      "tbtMs": 683,
+      "cls": 0.0474,
+      "performance": 0.55,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 0.66
+    }
+  }
+}
