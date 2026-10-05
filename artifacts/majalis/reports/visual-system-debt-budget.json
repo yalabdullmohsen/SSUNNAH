@@ -1,11 +1,11 @@
 {
   "version": 1,
   "policy": "decreasing-ceilings",
-  "note": "PR F governance; cssFiles 353; important held 4724.",
+  "note": "Ceilings must not rise. Lower intentionally in later waves; never raise without documented exception.",
   "floors": {
-    "officialButtonImportFiles": 288,
+    "officialButtonImportFiles": 292,
     "sfTokenRefs": 1220,
-    "ssTokenRefs": 769
+    "ssTokenRefs": 772
   },
   "ceilings": {
     "cssFiles": 353,
@@ -17,8 +17,8 @@
     "boxShadowDecls": 982,
     "zIndexRawDecls": 255,
     "borderRadiusPxDecls": 391,
-    "inlineColorStyleMatches": 39,
-    "rawButtonFiles": 73
+    "inlineColorStyleMatches": 38,
+    "rawButtonFiles": 71
   },
-  "updatedAt": "2026-10-05T01:00:40Z"
+  "updatedAt": "2026-10-05T04:36:40.859Z"
 }

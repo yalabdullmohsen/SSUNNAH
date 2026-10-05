@@ -63,6 +63,8 @@ import {
 import { shareVerse } from "@/lib/share-ayah";
 import { QuranActionBar } from "@/components/QuranActionBar";
 import { ReadingBreakDialog } from "@/components/quran/ReadingBreakDialog";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import { toArabicDigits } from "@/lib/utils";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import "@/styles/quran-engine-ui.css";
@@ -448,16 +450,20 @@ export function QuranViewer({ initialSurah, className, onFocusModeChange }: Qura
             </p>
           </div>
           <div className="qe-viewer__head-actions">
-            <button
+            <Button
               type="button"
+              variant="ghost"
+              size="small"
               className={`qe-chip${isTajweedEnabled ? " is-on" : ""}`}
               onClick={toggleTajweed}
               aria-pressed={isTajweedEnabled}
             >
               تجويد
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="ghost"
+              size="small"
               className={`qe-chip${showAyahNumbers ? " is-on" : ""}`}
               onClick={toggleAyahNumbers}
               aria-pressed={showAyahNumbers}
@@ -466,9 +472,11 @@ export function QuranViewer({ initialSurah, className, onFocusModeChange }: Qura
             >
               <Hash size={14} aria-hidden="true" />
               أرقام
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="ghost"
+              size="small"
               className={`qe-chip${showTafsir ? " is-on" : ""}`}
               onClick={toggleTafsir}
               aria-pressed={showTafsir}
@@ -477,9 +485,11 @@ export function QuranViewer({ initialSurah, className, onFocusModeChange }: Qura
             >
               <BookOpenText size={14} aria-hidden="true" />
               تفسير
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="ghost"
+              size="small"
               className={`qe-chip${showTranslation ? " is-on" : ""}`}
               onClick={toggleTranslation}
               aria-pressed={showTranslation}
@@ -488,9 +498,11 @@ export function QuranViewer({ initialSurah, className, onFocusModeChange }: Qura
             >
               <Languages size={14} aria-hidden="true" />
               ترجمة
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="ghost"
+              size="small"
               className="qe-chip"
               onClick={toggleFont}
               aria-label={`خط المصحف: ${fontMeta.labelAr} — اضغط للتبديل`}
@@ -498,9 +510,11 @@ export function QuranViewer({ initialSurah, className, onFocusModeChange }: Qura
             >
               <Type size={14} aria-hidden="true" />
               {fontMeta.labelAr}
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="ghost"
+              size="small"
               className={`qe-chip${themeOverride == null ? " is-on" : ""}`}
               onClick={toggleDarkMode}
               onContextMenu={(e) => {
@@ -525,9 +539,11 @@ export function QuranViewer({ initialSurah, className, onFocusModeChange }: Qura
             >
               {isDarkMode ? <Sun size={14} aria-hidden="true" /> : <Moon size={14} aria-hidden="true" />}
               {themeOverride == null ? "تلقائي" : isDarkMode ? "نهاري" : "ليلي"}
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="ghost"
+              size="small"
               className="qe-chip"
               onClick={toggleFocus}
               aria-pressed={false}
@@ -535,19 +551,21 @@ export function QuranViewer({ initialSurah, className, onFocusModeChange }: Qura
             >
               <Maximize2 size={14} aria-hidden="true" />
               تركيز
-            </button>
+            </Button>
           </div>
         </header>
       ) : (
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="small"
           className="qe-viewer__exit-focus"
           onClick={() => setFocus(false)}
           aria-label="إنهاء وضع التركيز"
         >
           <Minimize2 size={16} aria-hidden="true" />
           إنهاء التركيز
-        </button>
+        </Button>
       )}
 
       <div className="qe-viewer__page" onClick={onPageSurfaceClick} role="presentation">
@@ -556,8 +574,10 @@ export function QuranViewer({ initialSurah, className, onFocusModeChange }: Qura
         ) : error ? (
           <div role="alert">
             <p className="qe-viewer__error">{error}</p>
-            <button
+            <Button
               type="button"
+              variant="secondary"
+              size="small"
               className="qe-viewer__retry"
               onClick={(e) => {
                 e.stopPropagation();
@@ -565,7 +585,7 @@ export function QuranViewer({ initialSurah, className, onFocusModeChange }: Qura
               }}
             >
               إعادة المحاولة
-            </button>
+            </Button>
           </div>
         ) : (
           <ol
@@ -584,8 +604,9 @@ export function QuranViewer({ initialSurah, className, onFocusModeChange }: Qura
               return (
                 <li key={ayah.numberInSurah} className="qe-ayah-item">
                   <div className="qe-ayah-row">
-                    <button
+                    <Button
                       type="button"
+                      variant="ghost"
                       className={`qe-ayah${active ? " is-active" : ""}`}
                       onClick={(e) => {
                         e.stopPropagation();
@@ -612,8 +633,8 @@ export function QuranViewer({ initialSurah, className, onFocusModeChange }: Qura
                       >
                         {renderQuranText(ayah.text, showAyahNumbers)}
                       </span>
-                    </button>
-                    <button
+                    </Button>
+                    <IconButton
                       type="button"
                       className={`qe-ayah__play${playingThis ? " is-on" : ""}`}
                       onClick={(e) => {
@@ -622,7 +643,7 @@ export function QuranViewer({ initialSurah, className, onFocusModeChange }: Qura
                       }}
                       disabled={playerState === "loading" && !playingThis}
                       aria-pressed={playingThis}
-                      aria-label={
+                      label={
                         playingThis
                           ? `إيقاف تلاوة الآية ${toArabicDigits(ayah.numberInSurah)}`
                           : `تشغيل تلاوة الآية ${toArabicDigits(ayah.numberInSurah)}`
@@ -630,19 +651,19 @@ export function QuranViewer({ initialSurah, className, onFocusModeChange }: Qura
                       title={playingThis ? "إيقاف" : "استماع"}
                     >
                       {playingThis ? <Pause size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}
-                    </button>
-                    <button
+                    </IconButton>
+                    <IconButton
                       type="button"
                       className="qe-ayah__share"
                       onClick={(e) => {
                         e.stopPropagation();
                         void shareAyahVerse(ayah.text, ayah.numberInSurah);
                       }}
-                      aria-label={`مشاركة الآية ${toArabicDigits(ayah.numberInSurah)}`}
+                      label={`مشاركة الآية ${toArabicDigits(ayah.numberInSurah)}`}
                       title="مشاركة"
                     >
                       <Share2 size={16} aria-hidden="true" />
-                    </button>
+                    </IconButton>
                   </div>
                   {showTafsir ? (
                     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- stop focus-toggle bubble only
@@ -715,27 +736,27 @@ export function QuranViewer({ initialSurah, className, onFocusModeChange }: Qura
       {/* Font controls — hidden in focus mode (RN controlBar) */}
       {!isFocusMode ? (
         <div className="qe-font-bar" role="group" aria-label="حجم خط المصحف">
-          <button
+          <IconButton
             type="button"
             className="qe-font-bar__btn"
             onClick={decreaseFont}
             disabled={fontSize <= QURAN_FONT_MIN_PX}
-            aria-label="تصغير الخط"
+            label="تصغير الخط"
           >
             −
-          </button>
+          </IconButton>
           <span className="qe-font-bar__value" aria-live="polite">
             {toArabicDigits(fontSize)}
           </span>
-          <button
+          <IconButton
             type="button"
             className="qe-font-bar__btn"
             onClick={increaseFont}
             disabled={fontSize >= QURAN_FONT_MAX_PX}
-            aria-label="تكبير الخط"
+            label="تكبير الخط"
           >
             +
-          </button>
+          </IconButton>
         </div>
       ) : null}
 
