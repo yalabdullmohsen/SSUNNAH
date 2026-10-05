@@ -6,6 +6,7 @@ import { MushafBasmalaView, MushafVerseLayer } from "./MushafVerseLayer";
 import { MushafOpeningSpreadLayout } from "./MushafOpeningSpreadLayout";
 import { MushafPageNumber } from "./MushafPageNumber";
 import { AyahSelectionOverlay } from "./AyahSelectionOverlay";
+import { useMushafHighlightKeys } from "@/features/mushaf-shared/mushaf-ayah-sync-store";
 import { mushafPerfInc } from "./mushaf-turn-telemetry";
 import {
   resolveContentRowCount,
@@ -145,6 +146,9 @@ export const MushafPage = memo(function MushafPage({
     [onLongPressVerse],
   );
 
+  /** اشتراك sync-store واحد لكل صفحة — السطور تستقبل لقطة فقط (A5) */
+  const highlightKeys = useMushafHighlightKeys(syncHighlights);
+
   /*
    * شبكة .nm-page ثلاثية الصفوف: رأس | متن | تذييل.
    * ص١–ص٢: MushafOpeningSpreadLayout يغلف المتن فقط — لا يلفّ الرأس/التذييل
@@ -178,7 +182,9 @@ export const MushafPage = memo(function MushafPage({
           } as CSSProperties
         }
       >
-        <AyahSelectionOverlay container={bodyEl} enabled={selectionEnabled} />
+        {selectionEnabled ? (
+          <AyahSelectionOverlay container={bodyEl} enabled />
+        ) : null}
         {slotOrder.map((slot) => {
           const cell = slots.get(slot);
           return (
@@ -195,7 +201,7 @@ export const MushafPage = memo(function MushafPage({
                 </div>
               ) : null}
               {cell?.kind === "basmala" ? (
-                <MushafBasmalaView syncHighlights={syncHighlights} />
+                <MushafBasmalaView highlightKeys={highlightKeys} />
               ) : null}
               {cell?.kind === "line" ? (
                 cell.words.length > 0 && cell.words.every((w) => w.verseKey === "1:1") ? (
@@ -204,7 +210,7 @@ export const MushafPage = memo(function MushafPage({
                     numbered
                     onSelect={onSelectFatiha}
                     onLongPress={onLongPressFatiha}
-                    syncHighlights={syncHighlights}
+                    highlightKeys={highlightKeys}
                   />
                 ) : (
                   <MushafVerseLayer
@@ -212,7 +218,7 @@ export const MushafPage = memo(function MushafPage({
                     centered={isOpeningP1 || isLeadP2 || isLastSurahLine(cell.words, layout)}
                     onSelectVerse={onSelectVerse}
                     onLongPressVerse={onLongPressVerse}
-                    syncHighlights={syncHighlights}
+                    highlightKeys={highlightKeys}
                   />
                 )
               ) : null}
