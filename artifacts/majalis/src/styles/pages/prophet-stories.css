@@ -1617,7 +1617,8 @@ html.dark .prophets-page-lead {
 }
 .nb-miracle-ref {
   font-size: 0.72rem;
-  color: var(--mj-muted);
+  /* --mj-muted على بطاقة المعجزة الملوّنة ≈4.2:1 → الحبر الثانوي (AA) */
+  color: var(--mj-ink-2, var(--mj-muted));
 }
 
 .nb-compare-wrap {
@@ -2115,7 +2116,8 @@ html.dark .prophets-page-lead {
   color: var(--prophet-color, var(--ps-ink));
 }
 .nb-table__row--clickable .nb-table__count {
-  color: var(--prophet-accent, var(--ps-emerald));
+  /* لون التمييز وحده (ذهبي/فيروزي فاتح) ≈3:1 على صفوف الجدول → يُمزج بالحبر ليبلغ AA في الوضعين */
+  color: color-mix(in srgb, var(--prophet-accent, var(--ps-emerald)) 40%, var(--mj-ink));
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -2987,6 +2989,24 @@ html[data-theme="dark"] .prophet-lux-card__chip {
   color: #E8F0EC;
   background: #24312c;
   border-color: #4A5C55;
+}
+/* v2-stories يعيد نص الرقاقة إلى emerald-deep (داكن للخلفيات) فوق emerald-soft الليلي
+   (≈1.2:1) — ليلًا يتبع النص حبر الليل (AA). */
+html[data-v2-stories="1"].dark .prophet-lux-card__chip,
+html[data-v2-stories="1"][data-theme="dark"] .prophet-lux-card__chip {
+  color: var(--v2-color-ink);
+}
+/* --prophet-color درجات داكنة لكل نبي: ليلًا رقم البطاقة وحلقة التركيز يُمزجان مع حبر الليل
+   (رقم ≈1.5–2.2:1 → AA؛ حلقة التركيز ≥3:1). */
+html.dark .prophet-lux-card__num,
+html[data-theme="dark"] .prophet-lux-card__num,
+html.dark .nb-miracle-nabi,
+html[data-theme="dark"] .nb-miracle-nabi {
+  color: color-mix(in srgb, var(--prophet-color, var(--ps-emerald)) 30%, var(--mj-ink));
+}
+html.dark .prophet-lux-card:focus-visible,
+html[data-theme="dark"] .prophet-lux-card:focus-visible {
+  outline-color: color-mix(in srgb, var(--prophet-color, var(--ps-emerald)) 30%, var(--mj-ink));
 }
 html.dark .prophet-lux-card__chip--stat,
 html[data-theme="dark"] .prophet-lux-card__chip--stat {

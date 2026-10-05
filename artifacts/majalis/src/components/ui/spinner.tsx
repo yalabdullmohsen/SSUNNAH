@@ -9,7 +9,7 @@ const Spinner = React.forwardRef<SVGSVGElement, Omit<LucideProps, "ref">>(
       ref={ref}
       role="status"
       aria-label="تجهيز المحتوى"
-      className={cn("size-4 animate-spin", className)}
+      className={cn("ui-spinner size-4", className)}
       {...props}
     />
   )

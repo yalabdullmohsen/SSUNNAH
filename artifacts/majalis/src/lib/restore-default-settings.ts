@@ -34,23 +34,8 @@ export function restoreDefaultAppSettings(
   savePlaybackRate(1);
   persistTafsirEdition(DEFAULT_MUSHAF_TAFSIR_EDITION);
   try {
+    // مفتاح «التشغيل في الخلفية» أُزيل (لم يقرأه أي مشغّل) — يُنظَّف من التخزين.
     localStorage.removeItem("majalis-bg-playback-v1");
-  } catch {
-    /* ignore */
-  }
-}
-
-export function readBackgroundPlaybackPref(): boolean {
-  try {
-    return localStorage.getItem("majalis-bg-playback-v1") === "1";
-  } catch {
-    return false;
-  }
-}
-
-export function writeBackgroundPlaybackPref(on: boolean): void {
-  try {
-    localStorage.setItem("majalis-bg-playback-v1", on ? "1" : "0");
   } catch {
     /* ignore */
   }

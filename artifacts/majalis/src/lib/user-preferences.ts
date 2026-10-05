@@ -5,7 +5,6 @@ export type ReadingThemeId = "default" | "sepia" | "night";
 
 export type UserPreferences = {
   fontSize: "صغير" | "متوسط" | "كبير";
-  interfaceLanguage: string;
   direction: "rtl" | "ltr";
   readingTextSize: string;
   readingSpacing: "ضيق" | "متوسط" | "واسع";
@@ -15,18 +14,7 @@ export type UserPreferences = {
   readingTheme: ReadingThemeId;
   readingMode: boolean;
   imageQuality: "منخفض" | "متوسط" | "عالي";
-  videoAutoplay: boolean;
   quranFontScale: string;
-  playerQuality: string;
-  lessonNotifications: boolean;
-  lectureNotifications: boolean;
-  contentNotifications: boolean;
-  updateNotifications: boolean;
-  occasionNotifications: boolean;
-  aiSuggestions: boolean;
-  sourceDetailLevel: string;
-  searchHistory: boolean;
-  assistantVerbose: boolean;
   numeralSystem: "عربي" | "إنجليزي";
   /** كثافة واجهة المستخدم — تُطبَّق على html[data-ui-density] */
   uiDensity: "comfortable" | "compact";
@@ -42,9 +30,34 @@ export type UserPreferences = {
 
 export const SETTINGS_KEY = "majalis-user-settings-v1";
 
+/**
+ * مفاتيح أُزيلت (2026-10): كانت تُحفَظ ولا يقرؤها أي مستهلك — منها مفاتيح
+ * «إشعارات الدروس/المحتوى/المناسبات» التي ظهرت في الإعدادات بلا أي أثر.
+ * تُحذف من التخزين عند أول قراءة/كتابة (ترحيل صامت).
+ */
+export const DEAD_PREFERENCE_KEYS = [
+  "interfaceLanguage",
+  "videoAutoplay",
+  "playerQuality",
+  "lessonNotifications",
+  "lectureNotifications",
+  "contentNotifications",
+  "updateNotifications",
+  "occasionNotifications",
+  "aiSuggestions",
+  "sourceDetailLevel",
+  "searchHistory",
+  "assistantVerbose",
+] as const;
+
+function withoutDeadKeys<T extends object>(obj: T): T {
+  const copy = { ...obj } as Record<string, unknown>;
+  for (const k of DEAD_PREFERENCE_KEYS) delete copy[k];
+  return copy as T;
+}
+
 export const DEFAULT_PREFERENCES: UserPreferences = {
   fontSize: "متوسط",
-  interfaceLanguage: "العربية",
   direction: "rtl",
   readingTextSize: "17",
   readingSpacing: "واسع",
@@ -52,18 +65,7 @@ export const DEFAULT_PREFERENCES: UserPreferences = {
   readingTheme: "default",
   readingMode: false,
   imageQuality: "متوسط",
-  videoAutoplay: false,
   quranFontScale: "22",
-  playerQuality: "128",
-  lessonNotifications: true,
-  lectureNotifications: true,
-  contentNotifications: true,
-  updateNotifications: true,
-  occasionNotifications: true,
-  aiSuggestions: true,
-  sourceDetailLevel: "مختصر",
-  searchHistory: true,
-  assistantVerbose: false,
   numeralSystem: "عربي",
   uiDensity: "comfortable",
   dataSaver: false,
@@ -76,7 +78,14 @@ export function readPreferences(): UserPreferences {
   if (typeof window === "undefined") return DEFAULT_PREFERENCES;
   try {
     const raw = JSON.parse(localStorage.getItem(SETTINGS_KEY) || "{}") as Partial<UserPreferences>;
-    const stored = { ...DEFAULT_PREFERENCES, ...raw };
+    if (DEAD_PREFERENCE_KEYS.some((k) => k in raw)) {
+      try {
+        localStorage.setItem(SETTINGS_KEY, JSON.stringify(withoutDeadKeys(raw)));
+      } catch {
+        /* quota */
+      }
+    }
+    const stored = withoutDeadKeys({ ...DEFAULT_PREFERENCES, ...raw });
     if (!("hapticsEnabled" in raw) && localStorage.getItem("adhkar_haptics_enabled") === "false") {
       stored.hapticsEnabled = false;
     }
@@ -88,7 +97,7 @@ export function readPreferences(): UserPreferences {
 
 export function writePreferences(prefs: Partial<UserPreferences>) {
   if (typeof window === "undefined") return;
-  const next = { ...readPreferences(), ...prefs };
+  const next = withoutDeadKeys({ ...readPreferences(), ...prefs });
   localStorage.setItem(SETTINGS_KEY, JSON.stringify(next));
   applyPreferences(next);
 }

@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import type { LucideIcon } from "lucide-react";
-import { BookOpen, Flame, GraduationCap, Home, MoonStar, Scale, Search } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { isAuthStandalonePath, isImmersiveChromePath } from "@/lib/immersive-chrome";
 import { isComingSoonPath } from "@/lib/nav-visibility";
 import { primaryNav } from "@/config/navigation";
+import { getSectionById } from "@/config/sections.registry";
 import { useIsMobileNav } from "@/hooks/useIsMobileNav";
 
 /* هوية التبويب العلوي تُحسم عبر styles/m2030/navigation.css */
@@ -32,23 +33,13 @@ const PREFETCH_BY_HREF: Record<string, () => void> = {
   "/sections": () => { void import("@/pages/account/SectionsPage"); },
 };
 
-const PRIMARY_TAB_ICONS: Record<string, LucideIcon> = {
-  "/": Home,
-  "/lessons": GraduationCap,
-  "/quran-hub": BookOpen,
-  "/adhkar": Flame,
-  "/prayer-times": MoonStar,
-  "/fiqh": Scale,
-  "/search": Search,
-};
-
 /**
- * شريط الأقسام — نفس primaryNav الموحّد (الهيدر والصفحات العامة).
+ * شريط الأقسام — نفس primaryNav الموحّد (الهيدر والصفحات العامة)، والأيقونة من السجل.
  */
 export const SECTION_TABS: SectionTab[] = primaryNav.map((tab) => ({
   href: tab.href,
   label: tab.label,
-  Icon: PRIMARY_TAB_ICONS[tab.href] ?? BookOpen,
+  Icon: (tab.id ? getSectionById(tab.id)?.icon : undefined) ?? BookOpen,
   prefetch: PREFETCH_BY_HREF[tab.href] ?? (() => undefined),
 }));
 

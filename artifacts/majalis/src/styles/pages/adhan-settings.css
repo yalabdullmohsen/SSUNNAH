@@ -900,3 +900,14 @@ html[data-theme="dark"] .ads-page--v3 {
     transition: none;
   }
 }
+
+/**
+ * /adhan-help — عناوين بطاقات المساعدة دلاليًا h2 (تنقّل قارئ الشاشة بالعناوين)
+ * مع الحفاظ على شكل .ads-card__head: بلا هوامش/خط عناوين المتصفح.
+ */
+h2.ads-card__head {
+  margin: 0;
+  font-family: inherit;
+  line-height: inherit;
+  letter-spacing: normal;
+}

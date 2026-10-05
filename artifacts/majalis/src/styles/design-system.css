@@ -2285,6 +2285,12 @@ html[data-theme="dark"] .ds-stat span {
   to { transform: rotate(360deg); }
 }
 
+/* Spinner (components/ui/spinner.tsx) — دوران حقيقي؛ يتوقف مع prefers-reduced-motion */
+.ui-spinner { animation: spin 0.8s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .ui-spinner { animation: none; }
+}
+
 /* .fm-parent removed: empty rule; FamilyModePage keeps className for structure only. */
 
 /* ── أداء التقييمات (am-*) ──────────────────────────────────────── */
