@@ -50,20 +50,23 @@ import {
   Info,
   Landmark,
   Languages,
+  LayoutGrid,
   Layers,
   Leaf,
-  Library,
   Lightbulb,
   ListOrdered,
   Lock,
+  Mail,
   Map,
   MapPin,
   Microscope,
   MessageCircleQuestion,
+  MessageSquareHeart,
   MoonStar,
   Mountain,
   Network,
   NotebookPen,
+  Presentation,
   Radio,
   RotateCcw,
   Scale,
@@ -74,13 +77,16 @@ import {
   Settings,
   Shield,
   ShieldAlert,
+  ShieldCheck,
   Shapes,
   Sparkles,
   Sprout,
   Sun,
+  TextSearch,
   Trash2,
   Trophy,
   User,
+  UserRound,
   Users,
   Volume2,
   Wand2,
@@ -88,16 +94,34 @@ import {
 } from "lucide-react";
 import { isHiddenFromNav } from "@/lib/nav-visibility";
 
+/**
+ * الهيكل المعلوماتي الموحّد (IA) — سبع مجموعات بترتيب ثابت.
+ * كل قائمة (الدرج · التذييل · صفحة الأقسام · المزيد · مركز الخدمات) تُبنى منها،
+ * وعضوية القسم في كل قائمة تُعلَن عبر `surfaces` في مدخله هنا فقط.
+ * انظر docs/design/INFORMATION_ARCHITECTURE.md.
+ */
 export type SectionGroup =
-  | "sciences"
-  | "stories"
-  | "dawah"
-  | "library"
+  | "quran"
+  | "sunnah"
+  | "fiqh"
   | "worship"
   | "learning"
+  | "knowledge"
   | "account";
 
-export type Surface = "bottomNav" | "home" | "moreHub" | "drawer" | "search" | "quranHub" | "lessonsHub";
+/**
+ * أسطح العرض: bottomNav · home · moreHub (صفحة الأقسام) · drawer (القائمة الجانبية)
+ * · footer (التذييل) · search · quranHub · lessonsHub.
+ */
+export type Surface =
+  | "bottomNav"
+  | "home"
+  | "moreHub"
+  | "drawer"
+  | "footer"
+  | "search"
+  | "quranHub"
+  | "lessonsHub";
 
 /** أين يُعرض القسم أساساً — مكان واحد فقط كبطاقة هب */
 export type SectionHub = "quran" | "lessons" | "sections";
@@ -106,10 +130,13 @@ export type SectionStatus = "live" | "beta" | "hidden";
 
 export interface SectionDef {
   id: string;
+  /** الاسم الكامل المعتمد — بطاقات الهبات والبحث والرئيسية */
   label: string;
-  /** تسمية مختصرة للشريط السفلي إن وُجدت */
+  /** الاسم المختصر في القوائم (الشريطان · الدرج · التذييل) إن اختلف */
   navLabel?: string;
   subtitle: string;
+  /** توضيح قصير تحت الاسم في القائمة الجانبية */
+  navHint?: string;
   route: string;
   icon: LucideIcon;
   group: SectionGroup;
@@ -123,18 +150,18 @@ export interface SectionDef {
   hub: SectionHub;
   /** لون العلامة — يُحقَن على الحاوية كـ --section-accent */
   accent?: string;
-  /** قسم غير مكتمل للعامة — تُعرض شارة «قريبًا» دون إخفاء المسار */
+  /** قسم غير مكتمل للعامة — يُستبعد من القوائم ويبقى مساره متاحًا */
   comingSoon?: boolean;
 }
 
 /** لون العلامة الافتراضي لكل مجموعة أقسام */
 export const SECTION_GROUP_ACCENT: Record<SectionGroup, string> = {
-  sciences: BRAND.colorDay,
-  stories: "#8B6914",
-  dawah: "#1F5C48",
-  library: "#8B6914",
-  worship: "#2A7A6E",
+  quran: "#2A7A6E",
+  sunnah: "#0E7A5F",
+  fiqh: BRAND.colorDay,
+  worship: "#3A9A7A",
   learning: "#1F5C48",
+  knowledge: "#8B6914",
   account: BRAND.colorDay,
 };
 
@@ -178,24 +205,24 @@ export function resolveSectionAccent(s: {
 
 export const SECTION_GROUP_META: Record<
   SectionGroup,
-  { label: string; order: number; rowStyle: boolean }
+  { label: string; subtitle: string; order: number; rowStyle: boolean }
 > = {
-  sciences: { label: "العلوم الشرعية", order: 1, rowStyle: false },
-  stories: { label: "القصص والأعلام", order: 2, rowStyle: false },
-  dawah: { label: "الدعوة والتعريف", order: 3, rowStyle: false },
-  library: { label: "الفهارس والمراجع", order: 4, rowStyle: false },
-  worship: { label: "أدوات العبادة", order: 5, rowStyle: false },
-  learning: { label: "التعلّم الشخصي", order: 6, rowStyle: false },
-  account: { label: "الحساب والإعدادات", order: 7, rowStyle: true },
+  quran: { label: "القرآن الكريم", subtitle: "المصحف • التفسير • التلاوة", order: 1, rowStyle: false },
+  sunnah: { label: "الحديث والسنة", subtitle: "الحديث • السيرة • السنن", order: 2, rowStyle: false },
+  fiqh: { label: "العقيدة والفقه", subtitle: "العقيدة • الفقه • التزكية", order: 3, rowStyle: false },
+  worship: { label: "العبادات والأذكار", subtitle: "الصلاة • الأذكار • الأدعية", order: 4, rowStyle: false },
+  learning: { label: "الدروس والعلماء", subtitle: "الدروس • العلماء • المراجعة", order: 5, rowStyle: false },
+  knowledge: { label: "المعرفة والتاريخ", subtitle: "التاريخ • القصص • الفوائد", order: 6, rowStyle: false },
+  account: { label: "الحساب والإعدادات", subtitle: "الإعدادات • الدعم • السياسات", order: 7, rowStyle: true },
 };
 
 export const SECTION_GROUP_ORDER: SectionGroup[] = [
-  "sciences",
-  "stories",
-  "dawah",
-  "library",
+  "quran",
+  "sunnah",
+  "fiqh",
   "worship",
   "learning",
+  "knowledge",
   "account",
 ];
 
@@ -215,7 +242,7 @@ export const SECTION_MERGE_REDIRECTS: ReadonlyArray<{ from: string; to: string; 
 const NAV: Surface[] = ["moreHub", "home", "search"];
 const ACCOUNT: Surface[] = ["moreHub", "search"];
 /** الحساب/الإعدادات في الدرج — بلا تكرار أقسام المحتوى */
-const ACCOUNT_DRAWER: Surface[] = ["moreHub", "drawer", "search"];
+const ACCOUNT_DRAWER: Surface[] = ["moreHub", "search", "drawer"];
 const SEARCH_ONLY: Surface[] = ["search"];
 
 /** أقسام مركز القرآن الكريم — تُعرض هناك فقط كبطاقات */
@@ -250,7 +277,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "مدخل المنصة للأقسام والأدوات",
     route: "/",
     icon: Home,
-    group: "sciences",
+    group: "knowledge",
     order: -10,
     surfaces: ["bottomNav", "search", "home"],
     status: "live",
@@ -261,11 +288,12 @@ const SECTION_SEEDS: SectionSeed[] = [
     label: "مركز القرآن الكريم",
     navLabel: "القرآن",
     subtitle: "مصحف وتلاوة وتجويد وحفظ — من موضعك الأخير",
+    navHint: "مركز القراءة والتعلّم",
     route: "/quran-hub",
     icon: BookOpen,
-    group: "sciences",
-    order: -9,
-    surfaces: ["bottomNav", "search"],
+    group: "quran",
+    order: 0,
+    surfaces: ["bottomNav", "moreHub", "search", "drawer", "footer"],
     status: "live",
     keywords: ["مصحف", "قرآن", "quran", "مركز القرآن الكريم"],
     aliases: ["القرآن", "القرآن الكريم", "قرآن", "المصحف", "مركز القرآن الكريم", "مركز القرآن"],
@@ -275,24 +303,26 @@ const SECTION_SEEDS: SectionSeed[] = [
     label: "الدروس",
     navLabel: "الدروس",
     subtitle: "الدروس والمحاضرات",
+    navHint: "الدروس والمحاضرات",
     route: "/lessons",
     icon: GraduationCap,
     group: "learning",
     order: -8,
-    surfaces: ["bottomNav", "home", "search"],
+    surfaces: ["bottomNav", "home", "search", "drawer", "footer"],
     status: "live",
     keywords: ["دروس", "شروح"],
     aliases: ["الدروس", "الدروس العلمية"],
   },
   {
     id: "prayer",
-    label: "الصلاة",
+    label: "مواقيت الصلاة",
+    navLabel: "الصلاة",
     subtitle: "أوقات الصلاة والقبلة وتنبيه الأذان لموقعك",
     route: "/prayer-times",
     icon: MoonStar,
     group: "worship",
     order: -7,
-    surfaces: ["bottomNav", "search"],
+    surfaces: ["bottomNav", "search", "drawer", "footer"],
     status: "live",
     keywords: ["صلاة", "أذان", "مواقيت"],
   },
@@ -301,11 +331,12 @@ const SECTION_SEEDS: SectionSeed[] = [
     label: "جميع الأقسام",
     navLabel: "الأقسام",
     subtitle: "دليل كامل لمجالات العلم والتعليم والأدوات",
+    navHint: "دليل كامل للأقسام",
     route: "/sections",
     icon: Layers,
-    group: "account",
-    order: -5,
-    surfaces: ["bottomNav", "drawer"],
+    group: "knowledge",
+    order: 999,
+    surfaces: ["bottomNav", "drawer", "footer"],
     status: "live",
     keywords: ["أقسام", "sections", "دليل"],
     aliases: ["المزيد", "الأقسام"],
@@ -315,12 +346,13 @@ const SECTION_SEEDS: SectionSeed[] = [
   {
     id: "open-mushaf",
     label: "فتح المصحف",
+    navLabel: "المصحف",
     subtitle: "متابعة القراءة من آخر موضع محفوظ",
     route: "/mushaf",
     icon: Book,
-    group: "sciences",
-    order: 1,
-    surfaces: SEARCH_ONLY,
+    group: "quran",
+    order: -20,
+    surfaces: [...SEARCH_ONLY, "drawer", "footer"],
     status: "live",
     keywords: ["مصحف", "فتح المصحف", "قراءة"],
     aliases: ["المصحف"],
@@ -332,7 +364,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "تصفّح سور القرآن الكريم",
     route: "/quran/surahs",
     icon: FileStack,
-    group: "sciences",
+    group: "quran",
     order: 2,
     surfaces: SEARCH_ONLY,
     status: "live",
@@ -345,9 +377,9 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "تفاسير وآيات مختارة",
     route: "/tafsir",
     icon: BookOpenCheck,
-    group: "sciences",
+    group: "quran",
     order: 3,
-    surfaces: SEARCH_ONLY,
+    surfaces: [...SEARCH_ONLY, "drawer", "footer"],
     status: "live",
     keywords: ["تفسير", "آيات"],
     hub: "quran",
@@ -355,12 +387,13 @@ const SECTION_SEEDS: SectionSeed[] = [
   {
     id: "quran-tilawa",
     label: "التلاوة والقرّاء",
+    navLabel: "التلاوة",
     subtitle: "استماع القرّاء عبر المصحف",
     route: "/quran-hub/tilawa",
     icon: Headphones,
-    group: "sciences",
+    group: "quran",
     order: 4,
-    surfaces: SEARCH_ONLY,
+    surfaces: [...SEARCH_ONLY, "drawer"],
     status: "live",
     keywords: ["تلاوة", "قرّاء", "استماع", "قارئ"],
     hub: "quran",
@@ -371,9 +404,9 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "مخارج وصفات وأحكام التلاوة",
     route: "/quran-hub/tajweed",
     icon: AudioLines,
-    group: "sciences",
+    group: "quran",
     order: 5,
-    surfaces: SEARCH_ONLY,
+    surfaces: [...SEARCH_ONLY, "footer"],
     status: "live",
     keywords: [
       "تجويد",
@@ -393,7 +426,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "القرّاء والروايات وأصولها",
     route: "/quran-hub/qiraat",
     icon: GitBranch,
-    group: "sciences",
+    group: "quran",
     order: 7,
     surfaces: SEARCH_ONLY,
     status: "live",
@@ -417,7 +450,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "نزول القرآن على سبعة أحرف والفرق عن القراءات",
     route: "/quran-hub/seven-ahruf",
     icon: Sparkles,
-    group: "sciences",
+    group: "quran",
     order: 8,
     surfaces: SEARCH_ONLY,
     status: "live",
@@ -438,9 +471,9 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "أعلام ومواضع ذكر — بلا أنبياء (قسمهم مستقل)",
     route: "/quran/people",
     icon: Users,
-    group: "stories",
-    order: 8,
-    surfaces: SEARCH_ONLY,
+    group: "quran",
+    order: 9,
+    surfaces: [...SEARCH_ONLY, "footer"],
     status: "live",
     keywords: ["أعلام قرآن", "شخصيات", "المذكورون"],
     aliases: ["الذين ذكروا في القرآن", "الذين ذُكروا في القرآن", "المذكورون في القرآن"],
@@ -452,7 +485,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "سياقات النزول وأسباب التسمية والمحاور",
     route: "/quran/surah-stories",
     icon: Waypoints,
-    group: "sciences",
+    group: "quran",
     order: 9,
     surfaces: SEARCH_ONLY,
     status: "live",
@@ -466,9 +499,9 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "المكي والمدني والرسم وعدّ الآي",
     route: "/ulum-quran",
     icon: BookCopy,
-    group: "sciences",
+    group: "quran",
     order: 10,
-    surfaces: SEARCH_ONLY,
+    surfaces: [...SEARCH_ONLY, "drawer"],
     status: "live",
     keywords: ["علوم قرآن", "ناسخ", "منسوخ", "رسم", "عد الآي"],
     aliases: ["علوم القرآن"],
@@ -480,7 +513,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "إحصاءات موثّقة من مصادر معتمدة",
     route: "/quran-hub/numbers",
     icon: BarChart3,
-    group: "sciences",
+    group: "quran",
     order: 11,
     surfaces: SEARCH_ONLY,
     status: "live",
@@ -493,11 +526,12 @@ const SECTION_SEEDS: SectionSeed[] = [
     label: "المحفوظات",
     navLabel: "المحفوظات",
     subtitle: "حفظ ومراجعة آيات القرآن",
+    navHint: "مراجعة وحفظ",
     route: "/flashcards",
     icon: Bookmark,
     group: "learning",
     order: 12,
-    surfaces: SEARCH_ONLY,
+    surfaces: [...SEARCH_ONLY, "drawer"],
     status: "live",
     keywords: ["بطاقات", "حفظ", "مراجعة", "محفوظات", "حفظ قرآن"],
     aliases: ["المحفوظات", "بطاقات المراجعة", "بطاقات حفظ القرآن", "بطاقات الحفظ والمراجعة"],
@@ -509,7 +543,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "٢٧ مصطلحًا في علوم القرآن",
     route: "/quran-hub/terms",
     icon: Languages,
-    group: "sciences",
+    group: "quran",
     order: 13,
     surfaces: SEARCH_ONLY,
     status: "live",
@@ -538,7 +572,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     icon: Trophy,
     group: "learning",
     order: 4,
-    surfaces: SEARCH_ONLY,
+    surfaces: [...SEARCH_ONLY, "footer"],
     status: "live",
     keywords: ["مسابقات", "إعلان مسابقة", "حفظ", "تسميع", "جوائز", "الماهر"],
     aliases: ["مسابقة", "إعلانات المسابقات"],
@@ -562,10 +596,10 @@ const SECTION_SEEDS: SectionSeed[] = [
     label: "البحث في القرآن",
     subtitle: "ابحث في آيات المصحف",
     route: "/quran/search",
-    icon: Search,
-    group: "sciences",
+    icon: TextSearch,
+    group: "quran",
     order: 90,
-    surfaces: SEARCH_ONLY,
+    surfaces: ACCOUNT,
     status: "live",
     keywords: ["بحث", "آيات"],
     hub: "sections",
@@ -576,7 +610,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "مداخل موضوعية لعلوم القرآن",
     route: "/quran-knowledge",
     icon: Shapes,
-    group: "sciences",
+    group: "quran",
     order: 91,
     surfaces: SEARCH_ONLY,
     status: "live",
@@ -591,10 +625,10 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "أصول الإيمان والتوحيد",
     route: "/tawhid",
     icon: Shield,
-    group: "sciences",
+    group: "fiqh",
     order: 10,
     featured: true,
-    surfaces: NAV,
+    surfaces: [...NAV, "drawer", "footer"],
     status: "live",
     keywords: ["عقيدة", "توحيد", "إيمان"],
   },
@@ -605,8 +639,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     route: "/islamic-sects",
     // أيقونة فريدة — Users محجوزة لـ quran-figures (بوابة verify-sections-registry)
     icon: GitFork,
-    group: "sciences",
-    order: 12,
+    group: "fiqh",
+    order: 20,
     surfaces: NAV,
     status: "live",
     comingSoon: true,
@@ -620,7 +654,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "علوم القرآن والتجويد",
     route: "/quran-sciences",
     icon: BookMarked,
-    group: "sciences",
+    group: "quran",
     order: 20,
     surfaces: SEARCH_ONLY,
     status: "hidden",
@@ -630,13 +664,14 @@ const SECTION_SEEDS: SectionSeed[] = [
   {
     id: "hadith",
     label: "الحديث وعلومه",
+    navLabel: "الحديث",
     subtitle: "أحاديث وشروح ومصطلح الحديث",
     route: "/hadith",
     icon: ScrollText,
-    group: "sciences",
-    order: 40,
+    group: "sunnah",
+    order: 10,
     featured: true,
-    surfaces: NAV,
+    surfaces: [...NAV, "drawer", "footer"],
     status: "live",
     keywords: ["حديث", "سنّة"],
     aliases: ["الحديث"],
@@ -647,9 +682,9 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "أربعون حديثاً جامعاً مع شرح موجز وفوائد",
     route: "/arbaeen-nawawi",
     icon: ListOrdered,
-    group: "sciences",
-    order: 42,
-    surfaces: NAV,
+    group: "sunnah",
+    order: 20,
+    surfaces: [...NAV, "footer"],
     status: "live",
     keywords: ["أربعون", "نووية", "نووي", "أحاديث جامعة"],
     aliases: ["الأربعين النووية", "أربعون حديثاً", "الأربعون"],
@@ -660,11 +695,12 @@ const SECTION_SEEDS: SectionSeed[] = [
     label: "الفوائد",
     navLabel: "الفوائد",
     subtitle: "فوائد علمية مختارة",
+    navHint: "فوائد علمية مختارة",
     route: "/fawaid",
     icon: Lightbulb,
-    group: "sciences",
-    order: 45,
-    surfaces: NAV,
+    group: "knowledge",
+    order: 50,
+    surfaces: [...NAV, "drawer"],
     status: "live",
     keywords: ["فوائد", "فائدة", "مختصرات", "رقائق"],
     aliases: ["الفوائد", "الفوائد العلمية", "الفوائد الدينية", "فوائد شرعية"],
@@ -675,11 +711,12 @@ const SECTION_SEEDS: SectionSeed[] = [
     label: "الإعجاز العلمي",
     navLabel: "الإعجاز",
     subtitle: "تأملات علمية منضبطة في إشارات الوحي",
+    navHint: "الإعجاز العلمي",
     route: "/miracles",
     icon: Microscope,
-    group: "sciences",
-    order: 48,
-    surfaces: NAV,
+    group: "knowledge",
+    order: 40,
+    surfaces: [...NAV, "drawer"],
     status: "live",
     keywords: ["إعجاز", "معجزات", "إشارات كونية", "علوم", "إعجاز القرآن", "إعجاز السنة"],
     aliases: ["المعجزات", "إشارات كونية", "إعجاز علمي", "الإعجاز", "الإعجاز العلمي", "الإعجاز العلمي في القرآن والسنة"],
@@ -690,12 +727,13 @@ const SECTION_SEEDS: SectionSeed[] = [
     label: "الفقه",
     navLabel: "الفقه",
     subtitle: "الأحكام الفقهية",
+    navHint: "الأحكام الفقهية",
     route: "/fiqh",
     icon: Scale,
-    group: "sciences",
-    order: 50,
+    group: "fiqh",
+    order: 30,
     featured: true,
-    surfaces: ["moreHub", "home", "search"],
+    surfaces: [...NAV, "drawer", "footer"],
     status: "live",
     keywords: ["فقه", "أحكام", "فتاوى"],
     aliases: ["الفقه", "الفقه الإسلامي"],
@@ -707,9 +745,9 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "الذنوب والحقوق، والتوبة والاستغفار",
     route: "/tazkiya",
     icon: HeartPulse,
-    group: "sciences",
-    order: 55,
-    surfaces: NAV,
+    group: "fiqh",
+    order: 60,
+    surfaces: [...NAV, "drawer"],
     status: "live",
     keywords: ["تزكية", "توبة", "ذنوب", "حقوق", "استغفار", "معاصي", "كبائر"],
     aliases: ["الذنوب والتوبة", "التوبة والذنوب", "التزكية", "الذنوب والحقوق"],
@@ -720,8 +758,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "كبائر الذنوب وحقوق الله والعباد",
     route: "/sins-and-rights",
     icon: HeartHandshake,
-    group: "sciences",
-    order: 56,
+    group: "fiqh",
+    order: 70,
     surfaces: SEARCH_ONLY,
     status: "live",
     keywords: ["ذنوب", "حقوق", "توبة", "كبائر", "معاصي"],
@@ -733,8 +771,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "شروط التوبة وفضل الاستغفار",
     route: "/tawba",
     icon: RotateCcw,
-    group: "sciences",
-    order: 57,
+    group: "fiqh",
+    order: 80,
     surfaces: SEARCH_ONLY,
     status: "live",
     keywords: ["توبة", "استغفار", "ندم", "تزكية"],
@@ -745,8 +783,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "أخلاق المسلم من القرآن والسنة",
     route: "/akhlaq",
     icon: Leaf,
-    group: "sciences",
-    order: 58,
+    group: "fiqh",
+    order: 90,
     surfaces: NAV,
     status: "live",
     keywords: ["أخلاق", "آداب", "تزكية", "حُسن الخلق"],
@@ -758,8 +796,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "شروط وآداب طلب العلم الشرعي",
     route: "/adab-talab-ilm",
     icon: BookUser,
-    group: "sciences",
-    order: 59,
+    group: "learning",
+    order: 60,
     surfaces: NAV,
     status: "live",
     keywords: ["آداب", "طالب العلم", "طلب العلم", "منهجية"],
@@ -772,8 +810,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "قواعد الاستنباط والأدلة",
     route: "/fiqh/usul",
     icon: Network,
-    group: "sciences",
-    order: 60,
+    group: "fiqh",
+    order: 40,
     surfaces: NAV,
     status: "live",
     keywords: ["أصول", "استنباط"],
@@ -781,13 +819,15 @@ const SECTION_SEEDS: SectionSeed[] = [
   {
     id: "seerah",
     label: "السيرة النبوية",
+    navLabel: "السيرة",
     subtitle: "سيرة النبي ﷺ من المولد إلى الوفاة",
+    navHint: "السيرة النبوية",
     route: "/seerah",
     icon: Mountain,
-    group: "sciences",
-    order: 70,
+    group: "sunnah",
+    order: 60,
     featured: true,
-    surfaces: NAV,
+    surfaces: [...NAV, "drawer", "footer"],
     status: "live",
     keywords: ["سيرة", "مغازي"],
   },
@@ -797,9 +837,9 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "خط زمني بالأحداث من قبل البعثة إلى يومنا",
     route: "/tarikh-islami",
     icon: History,
-    group: "sciences",
-    order: 80,
-    surfaces: NAV,
+    group: "knowledge",
+    order: 10,
+    surfaces: [...NAV, "drawer", "footer"],
     status: "live",
     featured: true,
     keywords: ["تاريخ", "حضارة", "سيرة", "فتوحات"],
@@ -811,8 +851,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "مسار ميسر لفهم العربية المعينة على فهم الوحي",
     route: "/arabic-language",
     icon: Gem,
-    group: "sciences",
-    order: 85,
+    group: "knowledge",
+    order: 80,
     surfaces: NAV,
     status: "live",
     keywords: ["نحو", "صرف", "بلاغة", "لغة عربية", "العربية"],
@@ -825,8 +865,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "مداخل في كليات الشريعة وغايات الأحكام",
     route: "/maqasid-sharia",
     icon: Compass,
-    group: "sciences",
-    order: 86,
+    group: "fiqh",
+    order: 50,
     surfaces: NAV,
     status: "live",
     keywords: ["مقاصد", "كليات", "شريعة"],
@@ -837,8 +877,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "براهين صدق الرسالة المحمدية",
     route: "/dalail-nubuwwah",
     icon: BadgeCheck,
-    group: "sciences",
-    order: 87,
+    group: "sunnah",
+    order: 70,
     surfaces: NAV,
     status: "live",
     keywords: ["دلائل", "نبوة", "معجزات"],
@@ -851,10 +891,10 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "قصص الأنبياء في القرآن للعبرة",
     route: "/prophets",
     icon: BookHeart,
-    group: "stories",
-    order: 10,
+    group: "knowledge",
+    order: 20,
     featured: true,
-    surfaces: NAV,
+    surfaces: [...NAV, "drawer", "footer"],
     status: "live",
     keywords: ["أنبياء", "رسل"],
   },
@@ -864,10 +904,10 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "أمم سابقة ورد ذكرها في القرآن",
     route: "/nations",
     icon: Church,
-    group: "stories",
-    order: 20,
+    group: "knowledge",
+    order: 30,
     featured: true,
-    surfaces: NAV,
+    surfaces: [...NAV, "footer"],
     status: "live",
     keywords: ["أمم", "أقوام"],
   },
@@ -877,11 +917,12 @@ const SECTION_SEEDS: SectionSeed[] = [
     label: "التعريف بالإسلام",
     navLabel: "التعريف",
     subtitle: "مدخل تعريفي لغير المسلمين",
+    navHint: "التعريف بالإسلام",
     route: "/discover-islam",
     icon: HandHeart,
-    group: "dawah",
-    order: 10,
-    surfaces: NAV,
+    group: "knowledge",
+    order: 60,
+    surfaces: [...NAV, "drawer"],
     status: "live",
     keywords: ["اكتشف", "تعريف", "غير المسلمين"],
     aliases: ["اكتشف الإسلام", "التعريف"],
@@ -892,8 +933,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "أجوبة مصدرية على الشبهات الشائعة",
     route: "/discover-islam/doubts",
     icon: ShieldAlert,
-    group: "dawah",
-    order: 15,
+    group: "knowledge",
+    order: 65,
     surfaces: NAV,
     status: "live",
     keywords: ["شبهات", "تفنيد", "ردود", "إشكالات"],
@@ -906,8 +947,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "خطوات أولى للمسلم حديث العهد بالإسلام",
     route: "/discover-islam/new-muslim",
     icon: Heart,
-    group: "dawah",
-    order: 20,
+    group: "knowledge",
+    order: 70,
     surfaces: NAV,
     status: "live",
     keywords: ["مسلم جديد", "هداية", "تعريف بالإسلام"],
@@ -919,8 +960,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "مؤسسات ومساجد ومعالم إسلامية",
     route: "/islamic-directory",
     icon: Map,
-    group: "dawah",
-    order: 30,
+    group: "knowledge",
+    order: 75,
     surfaces: NAV,
     status: "live",
     keywords: ["دليل", "مساجد", "مؤسسات", "معالم"],
@@ -930,12 +971,13 @@ const SECTION_SEEDS: SectionSeed[] = [
   // —— ٤. الفهارس والمراجع ——
   {
     id: "library",
-    label: "المراجع (بحث)",
+    label: "البحث الشامل",
+    navLabel: "البحث",
     subtitle: "يُفتح عبر البحث العلمي الموحد",
     route: "/search",
-    icon: Library,
-    group: "library",
-    order: 10,
+    icon: Search,
+    group: "knowledge",
+    order: 5,
     surfaces: [],
     status: "hidden",
     keywords: [],
@@ -946,8 +988,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "رسائل جامعية وأبحاث وصفية",
     route: "/academic-research",
     icon: FlaskConical,
-    group: "library",
-    order: 20,
+    group: "knowledge",
+    order: 82,
     surfaces: NAV,
     status: "live",
     keywords: ["رسائل", "أبحاث"],
@@ -960,9 +1002,9 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "تعريفات دقيقة لأهم المصطلحات الشرعية",
     route: "/islamic-glossary",
     icon: BookText,
-    group: "library",
-    order: 30,
-    surfaces: NAV,
+    group: "knowledge",
+    order: 85,
+    surfaces: [...NAV, "drawer"],
     status: "live",
     keywords: ["مصطلح", "معجم", "قاموس", "مصطلحات إسلامية", "معجم شرعي"],
     aliases: ["القاموس الإسلامي", "مفاهيم شرعية", "مصطلحات", "المصطلحات", "المصطلحات الإسلامية", "المعجم"],
@@ -974,8 +1016,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "جامعات وكليات شرعية",
     route: "/universities",
     icon: Building2,
-    group: "library",
-    order: 60,
+    group: "learning",
+    order: 80,
     surfaces: NAV,
     status: "live",
     keywords: ["جامعات", "كليات"],
@@ -1003,7 +1045,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     icon: Flame,
     group: "worship",
     order: 20,
-    surfaces: NAV,
+    surfaces: [...NAV, "drawer", "footer"],
     status: "live",
     keywords: ["أذكار", "ذكر"],
     aliases: ["الأذكار"],
@@ -1017,7 +1059,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     icon: HandHelping,
     group: "worship",
     order: 22,
-    surfaces: NAV,
+    surfaces: [...NAV, "drawer"],
     status: "live",
     keywords: ["دعاء", "أدعية"],
     aliases: ["الأدعية"],
@@ -1025,12 +1067,13 @@ const SECTION_SEEDS: SectionSeed[] = [
   {
     id: "sunan-yawmiyya",
     label: "السنن النبوية اليومية",
+    navLabel: "السنن اليومية",
     subtitle: "سنن يومية مع تتبّع التطبيق",
     route: "/sunan-yawmiyya",
     icon: CircleDot,
-    group: "worship",
-    order: 24,
-    surfaces: NAV,
+    group: "sunnah",
+    order: 30,
+    surfaces: [...NAV, "drawer"],
     status: "live",
     keywords: ["سنن", "سنّة يومية", "هدي نبوي"],
   },
@@ -1040,8 +1083,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "وصايا جامعة من هديه ﷺ",
     route: "/wasaya-nabawiyya",
     icon: Scroll,
-    group: "worship",
-    order: 25,
+    group: "sunnah",
+    order: 40,
     surfaces: NAV,
     status: "live",
     keywords: ["وصايا", "نصيحة", "هدي"],
@@ -1052,8 +1095,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "أحاديث في فضائل العبادات والأخلاق",
     route: "/fadail-aamal",
     icon: Sprout,
-    group: "worship",
-    order: 26,
+    group: "sunnah",
+    order: 50,
     surfaces: NAV,
     status: "live",
     keywords: ["فضائل", "ثواب", "أعمال صالحة"],
@@ -1065,7 +1108,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     route: "/raqaiq",
     icon: Feather,
     group: "worship",
-    order: 27,
+    order: 35,
     surfaces: NAV,
     status: "live",
     keywords: ["رقائق", "زهد", "موعظة"],
@@ -1090,7 +1133,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     icon: MapPin,
     group: "worship",
     order: 40,
-    surfaces: NAV,
+    surfaces: [...NAV, "drawer"],
     status: "live",
     keywords: ["قبلة", "اتجاه"],
   },
@@ -1100,8 +1143,8 @@ const SECTION_SEEDS: SectionSeed[] = [
     subtitle: "جدول الدروس والمواعيد",
     route: "/calendar",
     icon: Calendar,
-    group: "worship",
-    order: 50,
+    group: "learning",
+    order: 55,
     surfaces: NAV,
     status: "live",
     keywords: ["تقويم", "دروس", "مواعيد"],
@@ -1117,7 +1160,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     icon: MessageCircleQuestion,
     group: "learning",
     order: 20,
-    surfaces: NAV,
+    surfaces: [...NAV, "footer"],
     status: "live",
     keywords: ["أسئلة", "أجوبة", "تحدي", "مسابقة", "اختبار", "تحدي الأسئلة", "سين جيم"],
     aliases: ["تحدي سُنّة", "لعبة سين جيم", "الأسئلة والأجوبة", "سين جيم"],
@@ -1131,7 +1174,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     icon: Award,
     group: "learning",
     order: 30,
-    surfaces: NAV,
+    surfaces: [...NAV, "drawer"],
     status: "live",
     keywords: ["تقدم", "إنجاز"],
   },
@@ -1233,7 +1276,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     icon: Info,
     group: "account",
     order: 60,
-    surfaces: ACCOUNT_DRAWER,
+    surfaces: [...ACCOUNT_DRAWER, "footer"],
     status: "live",
     keywords: ["حول", "من نحن"],
     aliases: ["حول التطبيق", "من نحن"],
@@ -1246,7 +1289,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     icon: FileText,
     group: "account",
     order: 70,
-    surfaces: ACCOUNT,
+    surfaces: [...ACCOUNT, "footer"],
     status: "live",
     keywords: ["منهجية", "توثيق"],
   },
@@ -1258,7 +1301,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     icon: FolderOpen,
     group: "account",
     order: 80,
-    surfaces: ACCOUNT,
+    surfaces: [...ACCOUNT, "footer"],
     status: "live",
     keywords: ["مصادر", "تراخيص"],
   },
@@ -1270,7 +1313,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     icon: Radio,
     group: "learning",
     order: 7,
-    surfaces: SEARCH_ONLY,
+    surfaces: [...SEARCH_ONLY, "footer"],
     status: "live",
     keywords: ["جهات", "دروس", "حلقات", "مصادر"],
     hub: "lessons",
@@ -1283,7 +1326,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     icon: Gavel,
     group: "account",
     order: 90,
-    surfaces: ACCOUNT,
+    surfaces: [...ACCOUNT, "footer"],
     status: "live",
     keywords: ["فتوى", "سياسة"],
   },
@@ -1295,7 +1338,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     icon: Lock,
     group: "account",
     order: 100,
-    surfaces: ACCOUNT_DRAWER,
+    surfaces: [...ACCOUNT_DRAWER, "footer"],
     status: "live",
     keywords: ["خصوصية", "بيانات"],
     aliases: ["سياسة الخصوصية", "مركز الخصوصية"],
@@ -1308,7 +1351,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     icon: Landmark,
     group: "account",
     order: 110,
-    surfaces: ACCOUNT_DRAWER,
+    surfaces: [...ACCOUNT_DRAWER, "footer"],
     status: "live",
     keywords: ["شروط", "أحكام"],
   },
@@ -1316,13 +1359,91 @@ const SECTION_SEEDS: SectionSeed[] = [
     id: "delete-account",
     label: "حذف الحساب",
     subtitle: "طلب حذف الحساب نهائياً",
-    route: "/delete-account",
+    route: "/account-deletion",
     icon: Trash2,
     group: "account",
     order: 120,
-    surfaces: ACCOUNT,
+    surfaces: [...ACCOUNT, "footer"],
     status: "live",
     keywords: ["حذف", "إلغاء حساب"],
+  },
+  // —— مداخل كانت تُكتب يدويًا في التذييل/التنقل الثانوي — صارت من السجل ——
+  {
+    id: "scholars",
+    label: "علماء الأمة",
+    navLabel: "العلماء",
+    subtitle: "تراجم الأئمة والعلماء ومناهجهم ومؤلفاتهم",
+    navHint: "تراجم الأئمة",
+    route: "/scholars",
+    icon: UserRound,
+    group: "learning",
+    order: 1,
+    surfaces: [...NAV, "drawer", "footer"],
+    status: "live",
+    keywords: ["علماء", "أئمة", "تراجم", "scholars"],
+    aliases: ["العلماء", "الأئمة"],
+  },
+  {
+    id: "teachers",
+    label: "المشايخ",
+    subtitle: "دليل المشايخ ودروسهم القادمة",
+    route: "/teachers",
+    icon: Presentation,
+    group: "learning",
+    order: 2,
+    surfaces: [...ACCOUNT, "footer"],
+    status: "live",
+    keywords: ["مشايخ", "شيخ", "مدرسون", "teachers"],
+    aliases: ["دليل المشايخ"],
+  },
+  {
+    id: "duas-quran",
+    label: "أدعية القرآن الكريم",
+    navLabel: "أدعية القرآن",
+    subtitle: "أدعية الأنبياء والمؤمنين في القرآن مع سياقها",
+    route: "/duas-quran",
+    icon: MessageSquareHeart,
+    group: "worship",
+    order: 23,
+    surfaces: [...NAV, "footer"],
+    status: "live",
+    keywords: ["أدعية قرآنية", "دعاء", "ربنا"],
+  },
+  {
+    id: "contact",
+    label: "تواصل معنا",
+    subtitle: "راسل فريق سُنّة باقتراح أو ملاحظة",
+    route: "/contact",
+    icon: Mail,
+    group: "account",
+    order: 75,
+    surfaces: [...ACCOUNT, "footer"],
+    status: "live",
+    keywords: ["تواصل", "اتصال", "مراسلة"],
+  },
+  {
+    id: "privacy-center",
+    label: "مركز الخصوصية",
+    subtitle: "إدارة بياناتك وأذوناتك في مكان واحد",
+    route: "/privacy-center",
+    icon: ShieldCheck,
+    group: "account",
+    order: 105,
+    surfaces: [...ACCOUNT, "footer"],
+    status: "live",
+    keywords: ["خصوصية", "بيانات", "أذونات"],
+  },
+  {
+    id: "widget-center",
+    label: "مركز الويدجت",
+    subtitle: "ودجات الشاشة الرئيسية وطريقة إضافتها",
+    route: "/widget-center",
+    icon: LayoutGrid,
+    group: "account",
+    order: 115,
+    surfaces: [...ACCOUNT, "footer"],
+    status: "live",
+    keywords: ["ويدجت", "ودجت", "widget"],
   },
 ];
 
@@ -1343,9 +1464,9 @@ function visible(s: SectionDef): boolean {
   return s.status !== "hidden";
 }
 
-/** لا يظهر في الاكتشاف العام إن كان مخفياً من التنقل أو غير معتمد. */
+/** لا يظهر في الاكتشاف العام إن كان مخفياً من التنقل أو غير معتمد أو «قريبًا» (صفحة بلا محتوى منشور). */
 function discoverable(s: SectionDef): boolean {
-  return visible(s) && !isHiddenFromNav(s.route);
+  return visible(s) && !s.comingSoon && !isHiddenFromNav(s.route);
 }
 
 /** أقسام غير مكتملة للعامة — شارة «قريبًا» */
@@ -1380,6 +1501,38 @@ export function sectionsByGroup(
     }
     return true;
   }).sort((a, b) => a.order - b.order);
+}
+
+function byIaOrder(a: SectionDef, b: SectionDef): number {
+  return SECTION_GROUP_META[a.group].order - SECTION_GROUP_META[b.group].order || a.order - b.order;
+}
+
+/**
+ * قوائم ذات قائمة سماح صريحة (الدرج · التذييل): العضوية من `surfaces` فقط،
+ * ولا تُسقطها HIDDEN_FROM_NAV لأن الإدراج قرار IA مقصود في السجل.
+ */
+export function menuSections(surface: "drawer" | "footer"): SectionDef[] {
+  return SECTIONS.filter((s) => visible(s) && !s.comingSoon && s.surfaces.includes(surface)).sort(
+    byIaOrder,
+  );
+}
+
+/** مجموعات قائمة صريحة بترتيب IA الموحّد — تُسقط المجموعات الفارغة. */
+export function menuGroups(
+  surface: "drawer" | "footer",
+): Array<{ group: SectionGroup; label: string; subtitle: string; sections: SectionDef[] }> {
+  const all = menuSections(surface);
+  return SECTION_GROUP_ORDER.map((group) => ({
+    group,
+    label: SECTION_GROUP_META[group].label,
+    subtitle: SECTION_GROUP_META[group].subtitle,
+    sections: all.filter((s) => s.group === group),
+  })).filter((g) => g.sections.length > 0);
+}
+
+/** الاسم المعروض في القوائم (مختصر إن وُجد). */
+export function menuLabel(s: Pick<SectionDef, "label" | "navLabel">): string {
+  return s.navLabel ?? s.label;
 }
 
 export function featuredSections(): SectionDef[] {
@@ -1425,7 +1578,7 @@ export function getSectionByRoute(route: string): SectionDef | undefined {
 export function getSectionAccent(route: string): string {
   const sec = getSectionByRoute(route);
   if (sec) return resolveSectionAccent(sec);
-  return SECTION_GROUP_ACCENT.sciences;
+  return SECTION_GROUP_ACCENT.fiqh;
 }
 
 export function searchSectionsIndex(): Array<{

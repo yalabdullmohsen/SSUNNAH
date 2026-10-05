@@ -60,7 +60,8 @@ assert.match(appSrc, /TeachersIndexPage/);
 assert.match(appSrc, /TeacherDetailPage/);
 assert.equal(appSrc.includes('path="/teachers/:slug"><SafeLazyRoute component={IslamicScholarsPage}'), false);
 
-const footer = readFileSync(resolve(appRoot, "src/config/navigation.ts"), "utf8");
-assert.match(footer, /href: "\/teachers"/);
+/* التذييل مشتق من السجل: المشايخ مدخل مسجّل وعضو في التذييل */
+const { footerNav } = await import("@/config/navigation");
+assert.ok(footerNav.some((g) => g.links.some((l) => l.href === "/teachers")), "المشايخ في التذييل");
 
 console.log("teachers-routes.test.ts: ok");

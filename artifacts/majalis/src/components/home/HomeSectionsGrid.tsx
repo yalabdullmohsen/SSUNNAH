@@ -2,26 +2,11 @@
  * شبكة أقسام مضغوطة — عمودان · البطاقة كلها قابلة للنقر · بلا CTA منفصل.
  */
 import { Link } from "wouter";
-import {
-  BookMarked,
-  BookOpen,
-  Clock,
-  GraduationCap,
-  LayoutGrid,
-  Scale,
-} from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { IA_HOME_PRIMARY } from "@/lib/ia-final-structure";
+import { getSectionByRoute } from "@/config/sections.registry";
 import { usePrefetchRoute } from "@/hooks/usePrefetchRoute";
 import "@/styles/components/home-sections-grid.css";
-
-const ICONS = {
-  "/quran-hub": BookMarked,
-  "/lessons": GraduationCap,
-  "/prayer-times": Clock,
-  "/fiqh": Scale,
-  "/adhkar": BookOpen,
-  "/sections": LayoutGrid,
-} as const;
 
 function SectionTile({
   href,
@@ -32,7 +17,10 @@ function SectionTile({
   title: string;
   desc: string;
 }) {
-  const Icon = ICONS[href as keyof typeof ICONS] ?? BookOpen;
+  /* الاسم والأيقونة من سجل الأقسام — نفس ما تعرضه القوائم وصفحة الأقسام */
+  const section = getSectionByRoute(href);
+  const Icon = section?.icon ?? BookOpen;
+  const label = section?.label ?? title;
   const { ref, onPointerEnter, onPointerDown, onFocus } = usePrefetchRoute(href);
   return (
     <li>
@@ -43,13 +31,13 @@ function SectionTile({
           onPointerEnter={onPointerEnter}
           onPointerDown={onPointerDown}
           onFocus={onFocus}
-          aria-label={title}
+          aria-label={label}
         >
           <span className="hsg__icon" aria-hidden="true">
             <Icon size={18} strokeWidth={1.8} />
           </span>
           <span className="hsg__copy">
-            <strong className="hsg__title">{title}</strong>
+            <strong className="hsg__title">{label}</strong>
             <span className="hsg__desc">{desc}</span>
           </span>
         </Link>

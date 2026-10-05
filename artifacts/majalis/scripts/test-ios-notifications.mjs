@@ -165,7 +165,7 @@ ok(
 );
 
 const main = read("src/main.tsx");
-ok(main.includes("if (!isNative)"), "SW registration skipped on native");
+ok(/if \(!isNative(?:\s*&&\s*import\.meta\.env\.VITE_TARGET !== "native")?\)/.test(main), "SW registration skipped on native (runtime + build-time boundary)");
 
 console.log("\n--- unit suite ---\n");
 for (const unitFile of [

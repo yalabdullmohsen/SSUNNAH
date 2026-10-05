@@ -31,6 +31,8 @@ import { useVerifiedReciters } from "@/hooks/useVerifiedReciters";
 import { parseVerseKey, type RecitationRange } from "./mushaf-page-for-ayah";
 import { useMushafAudioClock } from "./mushaf-audio-clock-store";
 import "@/styles/components/quran-audio-chrome.css";
+import { Button } from "@/components/ui/button";
+import { mushafButtonClass } from "@/features/mushaf-reader/mushaf-button-parity";
 
 const TafsirTabPanel = lazy(() =>
   import("./TafsirTabPanel").then((m) => ({ default: m.TafsirTabPanel })),
@@ -307,9 +309,10 @@ export const AyahActionSheet = memo(function AyahActionSheet({
         aria-modal="true"
         aria-label="خيارات الآية"
       >
-        <button
+        <Button
           type="button"
-          className="mm-ayah-bar__dismiss"
+          variant="ghost"
+          className={mushafButtonClass("mm-ayah-bar__dismiss")}
           aria-label="إغلاق شريط الآية"
           onClick={onClose}
         />
@@ -344,16 +347,17 @@ export const AyahActionSheet = memo(function AyahActionSheet({
               <p className="mm-ayah-bar__surah">{surahName || "سورة"}</p>
               <p className="mm-ayah-bar__title">آية {parsed?.ayah ?? "—"}</p>
             </div>
-            <button
+            <Button
               ref={closeRef}
               type="button"
-              className="mm-ayah-bar__close"
+              variant="ghost"
+              className={mushafButtonClass("mm-ayah-bar__close")}
               onClick={onClose}
               aria-label="إغلاق"
               data-testid="ayah-actions-close"
             >
               <X size={18} aria-hidden="true" />
-            </button>
+            </Button>
           </div>
 
           <div
@@ -361,59 +365,64 @@ export const AyahActionSheet = memo(function AyahActionSheet({
             role="tablist"
             aria-label="إجراءات الآية"
           >
-            <button
+            <Button
               type="button"
+              variant="ghost"
               role="tab"
-              className="quran-tab"
+              className={mushafButtonClass("quran-tab")}
               aria-selected={tab === "tilawa"}
               onClick={() => openTab("tilawa")}
             >
               <Headphones size={17} aria-hidden="true" />
               <span>تلاوة</span>
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="ghost"
               role="tab"
-              className="quran-tab"
+              className={mushafButtonClass("quran-tab")}
               aria-selected={tab === "tafsir"}
               onClick={() => openTab("tafsir")}
             >
               <BookOpen size={17} aria-hidden="true" />
               <span>تفسير</span>
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="ghost"
               role="tab"
-              className="quran-tab quran-tab--utility"
+              className={mushafButtonClass("quran-tab quran-tab--utility")}
               aria-selected={false}
               onClick={onCopy}
               aria-label="نسخ الآية"
             >
               <Copy size={17} aria-hidden="true" />
               <span>نسخ</span>
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="ghost"
               role="tab"
-              className="quran-tab quran-tab--utility"
+              className={mushafButtonClass("quran-tab quran-tab--utility")}
               aria-selected={false}
               onClick={onBookmark}
               aria-label="حفظ الآية"
             >
               <Bookmark size={17} aria-hidden="true" />
               <span>حفظ</span>
-            </button>
+            </Button>
             {showTajweedTab ? (
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 role="tab"
-                className="quran-tab"
+                className={mushafButtonClass("quran-tab")}
                 aria-selected={tab === "tajweed"}
                 onClick={() => openTab("tajweed")}
               >
                 <Sparkles size={17} aria-hidden="true" />
                 <span>تجويد</span>
-              </button>
+              </Button>
             ) : null}
           </div>
 
@@ -444,8 +453,10 @@ export const AyahActionSheet = memo(function AyahActionSheet({
                 ) : tafsirAudioClip ? (
                   <>
                     <div className="ayah-action-sheet__primary" role="group" aria-label="تشغيل التفسير الصوتي">
-                      <button
+                      <Button
                         type="button"
+                        variant="ghost"
+                        className={mushafButtonClass()}
                         onClick={() => {
                           if (!tafsirAudioClip) return;
                           // إيقاف إذا كان نفس المقطع يعمل
@@ -472,7 +483,7 @@ export const AyahActionSheet = memo(function AyahActionSheet({
                           <Play size={18} aria-hidden="true" />
                         )}
                         <span>{tafsirAudioPlaying ? "إيقاف" : "تشغيل"}</span>
-                      </button>
+                      </Button>
                     </div>
 
                     {expanded ? (
@@ -504,14 +515,15 @@ export const AyahActionSheet = memo(function AyahActionSheet({
                         {surahName || "سورة"} · آية {parsed?.ayah ?? "—"}
                       </p>
                     </div>
-                    <button
+                    <Button
                       type="button"
-                      className="ayah-action-sheet__player-settings"
+                      variant="ghost"
+                      className={mushafButtonClass("ayah-action-sheet__player-settings")}
                       onClick={() => setReadersOpen(true)}
                       aria-label="إعدادات القارئ"
                     >
                       <Headphones size={18} aria-hidden="true" />
-                    </button>
+                    </Button>
                   </div>
 
                   <label className="ayah-action-sheet__seek">
@@ -528,25 +540,25 @@ export const AyahActionSheet = memo(function AyahActionSheet({
                   </label>
 
                   <div className="ayah-action-sheet__player-controls" role="group" aria-label="مشغّل التلاوة">
-                    <button
+                    <Button
                       type="button"
-                      className="ayah-action-sheet__ctrl"
+                      variant="ghost"
+                      className={mushafButtonClass("ayah-action-sheet__ctrl")}
                       onClick={() => onPrevAyah?.()}
                       aria-label="الآية السابقة"
                       disabled={!onPrevAyah}
                     >
                       <SkipBack size={18} aria-hidden="true" />
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                       type="button"
-                      className={[
+                      variant="ghost"
+                      className={mushafButtonClass(
                         "ayah-action-sheet__play-hero",
-                        playerState === "playing" || playerState === "paused" ? "is-active" : "",
-                        loading ? "is-loading" : "",
-                        audioError || playerState === "error" ? "is-error" : "",
-                      ]
-                        .filter(Boolean)
-                        .join(" ")}
+                        (playerState === "playing" || playerState === "paused") && "is-active",
+                        loading && "is-loading",
+                        (audioError || playerState === "error") && "is-error",
+                      )}
                       onClick={handlePlayClick}
                       data-testid="mushaf-ayah-play"
                       aria-label={playLabel}
@@ -559,28 +571,31 @@ export const AyahActionSheet = memo(function AyahActionSheet({
                         <Play size={20} aria-hidden="true" />
                       )}
                       <span>{playLabel}</span>
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                       type="button"
-                      className="ayah-action-sheet__ctrl"
+                      variant="ghost"
+                      className={mushafButtonClass("ayah-action-sheet__ctrl")}
                       onClick={() => onNextAyah?.()}
                       aria-label="الآية التالية"
                       disabled={!onNextAyah}
                     >
                       <SkipForward size={18} aria-hidden="true" />
-                    </button>
+                    </Button>
                   </div>
 
                   <div className="ayah-action-sheet__rates" role="group" aria-label="سرعة التلاوة">
                     {([0.75, 1, 1.25] as const).map((rate) => (
-                      <button
+                      <Button
                         key={rate}
                         type="button"
+                        variant="ghost"
+                        className={mushafButtonClass()}
                         aria-pressed={Math.abs(playbackRate - rate) < 0.01}
                         onClick={() => onSpeed(rate)}
                       >
                         {rate}×
-                      </button>
+                      </Button>
                     ))}
                   </div>
 
@@ -588,9 +603,10 @@ export const AyahActionSheet = memo(function AyahActionSheet({
                     {audioStateLabel}
                   </p>
 
-                  <button
+                  <Button
                     type="button"
-                    className={`ayah-action-sheet__hifz-toggle${hifzOpen ? " is-open" : ""}`}
+                    variant="ghost"
+                    className={mushafButtonClass("ayah-action-sheet__hifz-toggle", hifzOpen && "is-open")}
                     aria-expanded={hifzOpen}
                     onClick={() => {
                       if (hifzOpen) {
@@ -603,7 +619,7 @@ export const AyahActionSheet = memo(function AyahActionSheet({
                     data-testid="mushaf-hifz-toggle"
                   >
                     وضع الحفظ
-                  </button>
+                  </Button>
                 </div>
 
                 {hifzOpen ? (
@@ -619,14 +635,16 @@ export const AyahActionSheet = memo(function AyahActionSheet({
                           ["surah", "سورة"],
                         ] as const
                       ).map(([id, label]) => (
-                        <button
+                        <Button
                           key={id}
                           type="button"
+                          variant="ghost"
+                          className={mushafButtonClass()}
                           aria-pressed={range === id}
                           onClick={() => setRange(id)}
                         >
                           {label}
-                        </button>
+                        </Button>
                       ))}
                     </div>
                     <label className="ayah-action-sheet__repeat">
@@ -660,23 +678,26 @@ export const AyahActionSheet = memo(function AyahActionSheet({
                     </label>
                     <div className="ayah-action-sheet__rates" role="group" aria-label="سرعة الحفظ">
                       {([0.75, 1, 1.25] as const).map((rate) => (
-                        <button
+                        <Button
                           key={`hifz-${rate}`}
                           type="button"
+                          variant="ghost"
+                          className={mushafButtonClass()}
                           aria-pressed={Math.abs(playbackRate - rate) < 0.01}
                           onClick={() => onSpeed(rate)}
                         >
                           {rate}×
-                        </button>
+                        </Button>
                       ))}
                     </div>
-                    <button
+                    <Button
                       type="button"
-                      className="ayah-action-sheet__apply-range"
+                      variant="ghost"
+                      className={mushafButtonClass("ayah-action-sheet__apply-range")}
                       onClick={() => onPlayRange(range, repeatCount, gapSec * 1000)}
                     >
                       بدء التكرار
-                    </button>
+                    </Button>
                   </div>
                 ) : null}
               </div>
@@ -722,9 +743,10 @@ export const AyahActionSheet = memo(function AyahActionSheet({
       {readersOpen
         ? createPortal(
             <div className="mm-reciter-sheet quran-sheet" role="dialog" aria-modal="true" aria-label="اختيار القارئ">
-              <button
+              <Button
                 type="button"
-                className="mm-reciter-sheet__scrim quran-sheet__scrim"
+                variant="ghost"
+                className={mushafButtonClass("mm-reciter-sheet__scrim quran-sheet__scrim")}
                 aria-label="إغلاق قائمة القراء"
                 onClick={() => setReadersOpen(false)}
               />
@@ -732,14 +754,15 @@ export const AyahActionSheet = memo(function AyahActionSheet({
                 <div className="quran-sheet__handle" aria-hidden="true" />
                 <div className="mm-reciter-sheet__head quran-sheet__head">
                   <h2 className="mm-reciter-sheet__title quran-sheet__title">اختر القارئ</h2>
-                  <button
+                  <Button
                     type="button"
-                    className="mm-ayah-bar__close quran-sheet__close"
+                    variant="ghost"
+                    className={mushafButtonClass("mm-ayah-bar__close quran-sheet__close")}
                     onClick={() => setReadersOpen(false)}
                     aria-label="إغلاق"
                   >
                     <X size={14} aria-hidden="true" />
-                  </button>
+                  </Button>
                 </div>
                 <label className="mm-reciter-sheet__search">
                   <span className="sr-only">بحث عن قارئ</span>
@@ -760,11 +783,12 @@ export const AyahActionSheet = memo(function AyahActionSheet({
                     const selected = r.id === reciterId;
                     return (
                       <li key={r.id} className={`quran-reciter-card${selected ? " is-selected" : ""}`}>
-                        <button
+                        <Button
                           type="button"
+                          variant="ghost"
                           role="option"
                           aria-selected={selected}
-                          className={`mm-reciter-sheet__pick quran-reciter-card__pick quran-row${selected ? " is-active" : ""}`}
+                          className={mushafButtonClass("mm-reciter-sheet__pick quran-reciter-card__pick quran-row", selected && "is-active")}
                           onClick={() => {
                             onReciterChange(r.id);
                             setReadersOpen(false);
@@ -774,10 +798,11 @@ export const AyahActionSheet = memo(function AyahActionSheet({
                           {selected ? <Check size={16} aria-hidden="true" className="mm-reciter-sheet__check" /> : null}
                           <span className="mm-reciter-sheet__name">{r.nameAr}</span>
                           <span className="mm-reciter-sheet__meta">{r.qualityLabel}</span>
-                        </button>
-                        <button
+                        </Button>
+                        <Button
                           type="button"
-                          className="mm-reciter-sheet__play quran-reciter-card__play quran-btn quran-btn--icon"
+                          variant="ghost"
+                          className={mushafButtonClass("mm-reciter-sheet__play quran-reciter-card__play quran-btn quran-btn--icon")}
                           aria-label={
                             selected && playing ? `إيقاف ${r.nameAr}` : `تشغيل ${r.nameAr}`
                           }
@@ -800,7 +825,7 @@ export const AyahActionSheet = memo(function AyahActionSheet({
                           ) : (
                             <Play size={16} aria-hidden="true" />
                           )}
-                        </button>
+                        </Button>
                       </li>
                     );
                   })}

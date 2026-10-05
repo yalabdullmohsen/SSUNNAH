@@ -17,6 +17,7 @@ import {
 } from "./mushaf-audio-session";
 import { MUSHAF_BOOT_STAGES } from "./mushaf-staged-boot";
 import { getSurahMeta, savePagePosition } from "@/lib/quran-api";
+import { navigateTo } from "@/lib/navigation-intent";
 import {
   getReciter,
   listAyahAudioUrls,
@@ -85,6 +86,8 @@ import { MushafPage } from "./MushafPage";
 import { MushafControlsLayer, MushafVerseMenu } from "./MushafControlsLayer";
 import { MushafReadingCoach } from "./MushafReadingCoach";
 import { MushafPageArrows } from "./MushafPageArrows";
+import { Button } from "@/components/ui/button";
+import { mushafButtonClass } from "./mushaf-button-parity";
 import { MushafPageScrubber } from "./MushafPageScrubber";
 import { isMushafNavCapabilityEnabled } from "./mushaf-reader-nav-contract";
 import {
@@ -1491,9 +1494,8 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
       setControlsMoreOpen(false);
       return;
     }
-    if (typeof window !== "undefined") {
-      window.location.assign("/mushaf/bookmarks");
-    }
+    // تنقّل SPA — لا إعادة تحميل كاملة (تُعيد تشغيل الغلاف داخل التطبيق الأصلي)
+    navigateTo("/mushaf/bookmarks");
   }, [selectedVerseKey]);
 
   const mushafPageShareUrl = useCallback(() => {
@@ -1980,14 +1982,15 @@ function NavigationHighlightChip({ onDismiss }: { onDismiss: () => void }) {
       dir="rtl"
     >
       <span className="nm-nav-highlight-chip__label">{label}</span>
-      <button
+      <Button
         type="button"
-        className="nm-nav-highlight-chip__dismiss"
+        variant="ghost"
+        className={mushafButtonClass("nm-nav-highlight-chip__dismiss")}
         onClick={onDismiss}
         aria-label="إلغاء التحديد"
       >
         إلغاء التحديد
-      </button>
+      </Button>
     </div>
   );
 }

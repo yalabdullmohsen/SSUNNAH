@@ -392,8 +392,9 @@ for (const abs of tsxFiles) {
     polishItems.push({ path: rel, issue, severity, effort });
 
   if (/truncate|line-clamp|text-ellipsis|overflow-hidden.*text/i.test(text) && /title|label/i.test(text)) {
-    /* presence ok — flag missing title attribute on truncated */
-    if (/truncate/.test(text) && !/title=\{/.test(text)) {
+    /* presence ok — flag missing title attribute on truncated.
+     * \btruncate\b = صنف CSS فقط؛ لا truncateAtWord() (نصوص SEO/JSON-LD) ولا متغيرات truncated. */
+    if (/\btruncate\b/.test(text) && !/title=\{/.test(text)) {
       add("truncation without title tooltip", "medium", "S");
     }
   }

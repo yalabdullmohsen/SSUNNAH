@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Flame } from "lucide-react";
 import { PageHeader } from "@/components/ui-common";
 import { PageShell } from "@/components/layout/PageShell";
@@ -11,6 +11,8 @@ import { setTaskProgress } from "@/lib/daily-progress";
 import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
+import { onTablistKeyDown } from "@/lib/tablist-keyboard";
+import { useDialogKeyboard } from "@/hooks/useDialogKeyboard";
 import "@/styles/pages/tasbih.css";
 import {
   computeStreakDays,
@@ -41,6 +43,14 @@ export default function TasbihPage() {
   const [newTarget, setNewTarget] = useState(33);
   const [syncNote, setSyncNote] = useState<string | null>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const confirmRef = useRef<HTMLDivElement>(null);
+  const confirmCancelRef = useRef<HTMLButtonElement>(null);
+  const actionsRef = useRef<HTMLDivElement>(null);
+  const closeConfirm = useCallback(() => setConfirmDelete(false), []);
+  useDialogKeyboard(confirmDelete, confirmRef, closeConfirm, {
+    initialFocusRef: confirmCancelRef,
+    returnFocusRef: actionsRef,
+  });
 
   const active = items.find((item) => item.id === activeId) || items[0];
 
@@ -164,8 +174,6 @@ export default function TasbihPage() {
         )}
       </div>
 
-      {syncNote && <p className="tasbih-sync-note">{syncNote}</p>}
-
       {/* Horizontal pill selector */}
       <div className="tasbih-wird-pills" role="tablist" aria-label="اختر الورد">
         {items.map((item) => {
@@ -173,12 +181,16 @@ export default function TasbihPage() {
           return (
             <Button
               key={item.id}
+              id={`tasbih-tab-${item.id}`}
               type="button"
               role="tab"
               variant="ghost"
               aria-selected={item.id === active?.id}
-              className={`tasbih-wird-pill${item.id === active?.id ? "is-active" : ""}`}
+              aria-controls={item.id === active?.id ? "tasbih-wird-panel" : undefined}
+              tabIndex={item.id === active?.id ? 0 : -1}
+              className={`tasbih-wird-pill${item.id === active?.id ? " is-active" : ""}`}
               onClick={() => setActiveId(item.id)}
+              onKeyDown={onTablistKeyDown}
             >
               <span className="tasbih-pill-phrase">{item.phrase}</span>
               {s.today > 0 && (
@@ -191,7 +203,12 @@ export default function TasbihPage() {
 
       {/* Active wird counter */}
       {active && (
-        <section className="tasbih-page-card tasbih-pro-card tasbih-pro-card--v2">
+        <section
+          className="tasbih-page-card tasbih-pro-card tasbih-pro-card--v2"
+          id="tasbih-wird-panel"
+          role="tabpanel"
+          aria-labelledby={`tasbih-tab-${active.id}`}
+        >
           <p className="tasbih-phrase">{active.phrase}</p>
           <TasbeehCounter
             storageId={`wird-${active.id}`}
@@ -205,16 +222,16 @@ export default function TasbihPage() {
               هذا الورد، اليوم: {activeStats.today} · الأسبوع: {activeStats.week} · الشهر: {activeStats.month}
             </p>
           )}
-          <div className="tasbih-actions-grid">
+          <div ref={actionsRef} className="tasbih-actions-grid">
             {confirmDelete ? (
-              <div className="tasbih-confirm" role="alertdialog" aria-labelledby="tasbih-delete-title" aria-describedby="tasbih-delete-desc">
+              <div ref={confirmRef} className="tasbih-confirm" role="alertdialog" aria-labelledby="tasbih-delete-title" aria-describedby="tasbih-delete-desc">
                 <p id="tasbih-delete-title" className="tasbih-confirm__title">تأكيد الحذف</p>
                 <p id="tasbih-delete-desc" className="tasbih-confirm__desc">هل تريد حذف هذا الورد نهائيًا؟</p>
                 <div className="tasbih-confirm__actions">
                   <Button type="button" variant="destructive" onClick={deleteActive}>
                     تأكيد الحذف
                   </Button>
-                  <Button type="button" variant="secondary" onClick={() => setConfirmDelete(false)}>
+                  <Button ref={confirmCancelRef} type="button" variant="secondary" onClick={closeConfirm}>
                     إلغاء
                   </Button>
                 </div>
@@ -258,7 +275,9 @@ export default function TasbihPage() {
         </div>
       </section>
 
-      <div className="tasbih-offline-note" aria-live="polite">
+      {/* ملاحظة المزامنة في سطر الحالة الأخير (لا تُدرَج فوق المحتوى → بلا إزاحة تخطيط) */}
+      <div className="tasbih-offline-note" role="status" aria-live="polite">
+        {syncNote ? `${syncNote} · ` : null}
         {authLoading
           ? "…"
           : isLoggedIn

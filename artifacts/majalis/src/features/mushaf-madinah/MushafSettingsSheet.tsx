@@ -1,6 +1,8 @@
 import { Check } from "lucide-react";
 import { useEffect, useState } from "react";
 import { QuranSheetShell } from "./quran-sheet";
+import { Button } from "@/components/ui/button";
+import { mushafButtonClass } from "@/features/mushaf-reader/mushaf-button-parity";
 import { MushafDisplayModeControl } from "@/features/mushaf-reader/MushafDisplayModeControl";
 import {
   MUSHAF_APPEARANCE_CHANGE_EVENT,
@@ -99,15 +101,16 @@ export function MushafSettingsSheet({
           <p className="mm-settings-sheet__hint">
             تلوين هادئ لفاصلة الآية فقط (أربع درجات) — لا يغيّر نص القرآن. لا توجد بيانات وقف خارجية مخترعة.
           </p>
-          <button
+          <Button
             type="button"
-            className={`mm-settings-sheet__row quran-row${ayahMarks ? " is-active" : ""}`}
+            variant="ghost"
+            className={mushafButtonClass("mm-settings-sheet__row quran-row", ayahMarks && "is-active")}
             onClick={() => onAyahMarks(!ayahMarks)}
             aria-pressed={ayahMarks}
           >
             <span>{ayahMarks ? "مفعّلة" : "متوقفة"}</span>
             {ayahMarks ? <Check size={18} aria-hidden="true" /> : null}
-          </button>
+          </Button>
         </section>
         <section className="mm-settings-sheet__card quran-card">
           <h3>اختبار الحفظ</h3>
@@ -121,15 +124,16 @@ export function MushafSettingsSheet({
               [2, "إخفاء كامل"],
             ] as const
           ).map(([level, label]) => (
-            <button
+            <Button
               key={level}
               type="button"
-              className={`mm-settings-sheet__row quran-row${hideLevel === level ? " is-active" : ""}`}
+              variant="ghost"
+              className={mushafButtonClass("mm-settings-sheet__row quran-row", hideLevel === level && "is-active")}
               onClick={() => onHideLevel(level)}
             >
               <span>{label}</span>
               {hideLevel === level ? <Check size={18} aria-hidden="true" /> : null}
-            </button>
+            </Button>
           ))}
         </section>
       </div>

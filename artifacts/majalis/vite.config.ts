@@ -22,6 +22,8 @@ const rawCommit = process.env.VERCEL_GIT_COMMIT_SHA || process.env.GIT_COMMIT ||
 /** قصير فقط في العميل — لا نسرّب الـ SHA الكامل. */
 const commitHash = rawCommit === "dev" ? "dev" : String(rawCommit).slice(0, 7);
 const buildId = process.env.VERCEL_DEPLOYMENT_ID || process.env.BUILD_ID || "local";
+/** حدّ التطبيق↔الموقع: "native" فقط عبر build:native-variant (→ dist-native، لا يمسّ dist). */
+const buildTarget = process.env.VITE_TARGET === "native" ? "native" : "web";
 
 /**
  * Vendor chunk matcher — must NOT use a bare `includes("react")`.
@@ -51,6 +53,7 @@ export default defineConfig({
     "import.meta.env.VITE_COMMIT_HASH": JSON.stringify(commitHash),
     "import.meta.env.VITE_BUILD_ID": JSON.stringify(buildId),
     "import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA": JSON.stringify(commitHash),
+    "import.meta.env.VITE_TARGET": JSON.stringify(buildTarget),
   },
   esbuild: {
     target: "es2022",
@@ -122,7 +125,7 @@ export default defineConfig({
   root: path.resolve(import.meta.dirname),
   build: {
     target: "es2022",
-    outDir: path.resolve(import.meta.dirname, "dist"),
+    outDir: path.resolve(import.meta.dirname, buildTarget === "native" ? "dist-native" : "dist"),
     emptyOutDir: true,
     minify: "esbuild",
     sourcemap: "hidden",

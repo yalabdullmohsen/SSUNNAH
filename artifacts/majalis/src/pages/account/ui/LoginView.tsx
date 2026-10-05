@@ -69,6 +69,21 @@ function resolveInitialTab(pathname: string): AuthTab {
   return "login";
 }
 
+/**
+ * الانتقال بين /login و/register يخفي الصفحة لحظيًا أثناء تبديل المسار فيُسقط المتصفح التركيز
+ * إلى body. نعيده إلى التبويب المختار ما دام لم ينتقل المستخدم لعنصر آخر (WCAG 2.4.3).
+ */
+function keepAuthTabFocus(tab: "login" | "register"): void {
+  let frames = 0;
+  const step = () => {
+    const el = document.getElementById(`login-tab-${tab}`);
+    const active = document.activeElement;
+    if (el && (active === null || active === document.body)) el.focus({ preventScroll: true });
+    if (frames++ < 45) window.requestAnimationFrame(step);
+  };
+  window.requestAnimationFrame(step);
+}
+
 export default function LoginPage() {
   const [location, navigate] = useLocation();
   const [tab, setTab] = useState<AuthTab>(() => resolveInitialTab(location));
@@ -144,6 +159,7 @@ export default function LoginPage() {
     } else if (next === "login") {
       navigate(nextPath !== "/" ? `/login?next=${encodeURIComponent(nextPath)}` : "/login");
     }
+    if (next === "login" || next === "register") keepAuthTabFocus(next);
   };
 
   const validateRegister = (): string | null => {
@@ -392,6 +408,16 @@ export default function LoginPage() {
           />
         ) : null}
 
+        {/* لوحة التبويب النشط — هدف aria-controls لـ ContentTabs (login-panel-*) */}
+        <div
+          {...(!adminLogin && tab !== "forgot"
+            ? {
+                role: "tabpanel",
+                id: `login-panel-${tab === "register" ? "register" : "login"}`,
+                "aria-labelledby": `login-tab-${tab === "register" ? "register" : "login"}`,
+              }
+            : {})}
+        >
         {!authEnabled && (
           <FieldError id="auth-form-config-error" className="login-alert login-alert--error">
             {mapAuthError(null)}
@@ -518,6 +544,7 @@ export default function LoginPage() {
             </Button>
           </form>
         )}
+        </div>
 
         {!adminLogin && tab === "login" && authEnabled ? (
           <Button

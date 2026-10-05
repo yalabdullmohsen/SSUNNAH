@@ -149,7 +149,7 @@ function DetailContent({ university: u }: { university: University }) {
       {/* Header */}
       <div className="px-4 py-8 ldb-hero">
         <div className="max-w-3xl mx-auto">
-          <Link href="/universities" className="text-sm mb-4 block w-fit opacity-90 hover:opacity-100">
+          <Link href="/universities" className="text-sm mb-4 block w-fit hover:underline underline-offset-4">
             → دليل الجامعات
           </Link>
           <div className="flex items-start gap-4">
