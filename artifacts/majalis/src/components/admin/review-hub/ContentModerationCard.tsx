@@ -2,6 +2,7 @@
  * Flutter `TafsirContentReviewCard` — original (rose) vs proposed (sage).
  */
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   CONTENT_CATEGORY_LABELS,
   type ContentReviewItem,
@@ -66,16 +67,17 @@ export function ContentModerationCard({
 
       {!locked ? (
         <footer className="rh-flutter-card__actions">
-          <button
+          <Button
             type="button"
+            variant="outline"
             className="rh-btn rh-btn--outline"
             onClick={() => setFeedbackOpen((v) => !v)}
           >
             رفض التعديل
-          </button>
-          <button type="button" className="rh-btn rh-btn--brown" onClick={onApprove}>
+          </Button>
+          <Button type="button" variant="primary" className="rh-btn rh-btn--brown" onClick={onApprove}>
             نشر وتعديل في المكتبة
-          </button>
+          </Button>
         </footer>
       ) : null}
 
@@ -88,8 +90,9 @@ export function ContentModerationCard({
             placeholder="سبب الرفض…"
             aria-label="ملاحظة الرفض"
           />
-          <button
+          <Button
             type="button"
+            variant="destructive"
             className="rh-btn rh-btn--rose"
             onClick={() => {
               onReject(feedback);
@@ -97,7 +100,7 @@ export function ContentModerationCard({
             }}
           >
             تأكيد الرفض
-          </button>
+          </Button>
         </div>
       ) : null}
 

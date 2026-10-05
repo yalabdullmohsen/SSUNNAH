@@ -4,6 +4,7 @@
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import { useMemo, useState } from "react";
 import { CheckCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   getReviewHubStore,
   type ContentReviewItem,
@@ -115,33 +116,39 @@ export function ReviewHubWorkspace({
 
       <div className="rh-flutter-toolbar">
         <div className="rh-flutter-chips" role="tablist" aria-label="نوع المراجعة">
-          <button
+          <Button
             type="button"
+            variant="outline"
+            size="small"
             role="tab"
             aria-selected={streamFocus === "recitation" || streamFocus === "all"}
             className={`rh-chip${streamFocus === "recitation" ? " is-on" : ""}`}
             onClick={() => setStreamTab("recitation")}
           >
             التلاوات الصوتية ({recCount})
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
+            variant="outline"
+            size="small"
             role="tab"
             aria-selected={streamFocus === "content"}
             className={`rh-chip${streamFocus === "content" ? " is-on" : ""}`}
             onClick={() => setStreamTab("content")}
           >
             التفاسير والمشاركات ({contentCount})
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
+            variant="outline"
+            size="small"
             role="tab"
             aria-selected={streamFocus === "all"}
             className={`rh-chip${streamFocus === "all" ? " is-on" : ""}`}
             onClick={() => setStreamTab("all")}
           >
             الكل
-          </button>
+          </Button>
         </div>
 
         <div className="rh-flutter-toolbar__actions">
@@ -153,9 +160,10 @@ export function ReviewHubWorkspace({
               placeholder="بحث…"
             />
           ) : null}
-          <button
+          <Button
             type="button"
-            className="rh-btn rh-btn--sage"
+            variant="primary"
+            className="rh-btn rh-btn--sage [&>span]:contents"
             disabled={selectedIds.length === 0}
             onClick={() => {
               const n = selectedIds.length;
@@ -165,7 +173,7 @@ export function ReviewHubWorkspace({
           >
             <CheckCheck size={16} aria-hidden="true" />
             موافقة جماعية للمحدد
-          </button>
+          </Button>
         </div>
       </div>
 

@@ -2,6 +2,7 @@
  * Flutter `AudioRecitationReviewCard` — web port with live audio + decisions.
  */
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import type { RecitationReviewItem } from "@/lib/admin-review-hub";
 import { LinearAudioReviewPlayer } from "./LinearAudioReviewPlayer";
 
@@ -69,23 +70,25 @@ export function RecitationReviewCard({
 
       {!locked ? (
         <footer className="rh-flutter-card__actions">
-          <button
+          <Button
             type="button"
+            variant="ghost"
             className="rh-btn rh-btn--ghost"
             onClick={() => setOverrideOpen((v) => !v)}
           >
             تجاوز درجة الذكاء
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
+            variant="outline"
             className="rh-btn rh-btn--outline"
             onClick={() => setFeedbackOpen((v) => !v)}
           >
             رفض التلاوة
-          </button>
-          <button type="button" className="rh-btn rh-btn--sage" onClick={onApprove}>
+          </Button>
+          <Button type="button" variant="primary" className="rh-btn rh-btn--sage" onClick={onApprove}>
             اعتماد القراءة صحيحة
-          </button>
+          </Button>
         </footer>
       ) : null}
 
@@ -98,8 +101,9 @@ export function RecitationReviewCard({
             placeholder="سبب الرفض للمستخدم…"
             aria-label="ملاحظة الرفض"
           />
-          <button
+          <Button
             type="button"
+            variant="destructive"
             className="rh-btn rh-btn--rose"
             onClick={() => {
               onReject(feedback);
@@ -107,7 +111,7 @@ export function RecitationReviewCard({
             }}
           >
             تأكيد الرفض
-          </button>
+          </Button>
         </div>
       ) : null}
 
@@ -123,8 +127,9 @@ export function RecitationReviewCard({
               onChange={(e) => setOverrideVal(e.target.value)}
             />
           </label>
-          <button
+          <Button
             type="button"
+            variant="secondary"
             className="rh-btn rh-btn--gold"
             onClick={() => {
               onOverrideScore(Number(overrideVal));
@@ -132,7 +137,7 @@ export function RecitationReviewCard({
             }}
           >
             حفظ الدرجة
-          </button>
+          </Button>
         </div>
       ) : null}
     </article>

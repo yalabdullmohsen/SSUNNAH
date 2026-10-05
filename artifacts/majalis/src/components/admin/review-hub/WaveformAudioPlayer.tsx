@@ -3,6 +3,7 @@
  */
 import { useEffect, useRef, useState } from "react";
 import { Pause, Play } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const SPEEDS = [0.8, 1, 1.2] as const;
 
@@ -94,18 +95,21 @@ export function WaveformAudioPlayer({
       aria-label={label}
     >
       <div className="rh-waveform__row">
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="icon"
           className="rh-waveform__play"
           onClick={() => void toggle()}
           aria-label={playing ? "إيقاف مؤقت" : "تشغيل"}
         >
           {playing ? <Pause size={16} /> : <Play size={16} />}
-        </button>
+        </Button>
 
-        <button
+        <Button
           type="button"
-          className="rh-waveform__bars"
+          variant="ghost"
+          className="rh-waveform__bars [&>span]:contents"
           aria-label="شريط الموجة — انقر للتقديم"
           onClick={(e) => {
             const rect = e.currentTarget.getBoundingClientRect();
@@ -124,20 +128,22 @@ export function WaveformAudioPlayer({
               />
             );
           })}
-        </button>
+        </Button>
       </div>
 
       <div className="rh-waveform__speeds" role="group" aria-label="سرعة التشغيل">
         {SPEEDS.map((s) => (
-          <button
+          <Button
             key={s}
             type="button"
+            variant="outline"
+            size="small"
             className={`rh-waveform__speed${speed === s ? " is-on" : ""}`}
             onClick={() => setSpeed(s)}
             aria-pressed={speed === s}
           >
             {s}x
-          </button>
+          </Button>
         ))}
       </div>
 
