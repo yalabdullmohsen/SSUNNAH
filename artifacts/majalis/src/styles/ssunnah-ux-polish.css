@@ -169,7 +169,8 @@ html.dark .ss-app-card--accent {
 
 .ss-action-btn--destructive {
   background: color-mix(in srgb, var(--mj-danger) 12%, transparent);
-  color: var(--mj-danger);
+  /* النص أعمق من لون الخطر نحو الحبر: فوق خلفية الخطر 12–18% يبلغ AA (4.5:1) نهارًا وليلًا */
+  color: color-mix(in srgb, var(--mj-danger) 78%, var(--mj-ink));
   border-color: color-mix(in srgb, var(--mj-danger) 35%, transparent);
 }
 
@@ -1112,4 +1113,15 @@ html.dark .kids-hub-intro {
 
 .assistant-fab {
   border-color: rgba(31, 77, 58, 0.35) !important;
+}
+
+/**
+ * WCAG 1.4.1 — الروابط داخل فقرات الصفحات القانونية/حول/الإعدادات تتميّز بغير اللون وحده
+ * (نهارًا: لون الرابط = لون النص؛ ليلًا: تباين الرابط مع النص ≈1.1:1). يُحمَّل مع LegalPageLayout.
+ */
+.legal-section p a,
+.legal-section li a {
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+  text-underline-offset: 0.2em;
 }

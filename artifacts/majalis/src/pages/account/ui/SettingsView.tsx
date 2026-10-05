@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
 import { STATUS } from "@/lib/ui-copy";
@@ -46,6 +46,7 @@ import {
   VALID_PLAYBACK_RATES,
 } from "@/lib/quran-audio";
 import { useVerifiedReciters } from "@/hooks/useVerifiedReciters";
+import { useDialogKeyboard } from "@/hooks/useDialogKeyboard";
 import {
   MUSHAF_TAFSIR_EDITIONS,
   persistTafsirEdition,
@@ -113,6 +114,14 @@ export default function SettingsPage() {
   const [playbackRate, setPlaybackRateState] = useState(loadPlaybackRate);
   const [bgPlayback, setBgPlayback] = useState(readBackgroundPlaybackPref);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const deleteDialogRef = useRef<HTMLDivElement>(null);
+  const deleteCancelRef = useRef<HTMLButtonElement>(null);
+  const closeDeleteDialog = useCallback(() => setDeleteDialogOpen(false), []);
+  // حوار modal: تركيز أولي على «إلغاء» (الخيار الآمن) · Escape يغلق · حبس Tab · إعادة التركيز للمُشغِّل
+  useDialogKeyboard(deleteDialogOpen, deleteDialogRef, closeDeleteDialog, {
+    initialFocusRef: deleteCancelRef,
+    trapFocus: true,
+  });
   const [cacheRefreshBusy, setCacheRefreshBusy] = useState(false);
   const [cacheRefreshNote, setCacheRefreshNote] = useState<string | null>(null);
   const [displayedAppVersion, setDisplayedAppVersion] = useState<string | null>(() => getDisplayedAppVersion());
@@ -337,6 +346,7 @@ export default function SettingsPage() {
           )}
           {deleteDialogOpen ? (
             <div
+              ref={deleteDialogRef}
               className="settings-delete-dialog"
               role="alertdialog"
               aria-modal="true"
@@ -358,10 +368,11 @@ export default function SettingsPage() {
                     المتابعة إلى الحذف النهائي
                   </Link>
                   <Button
+                    ref={deleteCancelRef}
                     type="button"
                     variant="secondary"
                     className="page-action-btn page-action-btn--secondary"
-                    onClick={() => setDeleteDialogOpen(false)}
+                    onClick={closeDeleteDialog}
                   >
                     إلغاء
                   </Button>

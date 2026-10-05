@@ -1,0 +1,242 @@
+{
+  "generatedAt": "2026-10-05T17:43:10.082Z",
+  "baseSha": "f63271b9d827",
+  "base": "http://127.0.0.1:4174",
+  "tool": "scripts/audit-route-partial-closure.mjs · Chromium headless · axe-core 4.12.1 (wcag2a,wcag2aa,wcag21a,wcag21aa)",
+  "scope": "Repository-side closure of QM a11y/responsive PARTIAL fields. Not a physical-device certification.",
+  "routes": {
+    "/settings": {
+      "axe": {
+        "light": [],
+        "dark": []
+      },
+      "focus": {
+        "light": {
+          "stops": 80,
+          "noVisibleFocus": []
+        },
+        "dark": {
+          "stops": 80,
+          "noVisibleFocus": []
+        }
+      },
+      "states": {},
+      "startupCls": 0.0078,
+      "reflow": {
+        "tablet768": 0,
+        "zoom200_640": 0,
+        "reflow320": 0,
+        "largeText200": 0
+      }
+    },
+    "/login": {
+      "axe": {
+        "light": [],
+        "dark": []
+      },
+      "focus": {
+        "light": {
+          "stops": 14,
+          "noVisibleFocus": []
+        },
+        "dark": {
+          "stops": 14,
+          "noVisibleFocus": []
+        }
+      },
+      "states": {
+        "light:forgot": [],
+        "dark:forgot": []
+      },
+      "startupCls": 0.0022,
+      "reflow": {
+        "tablet768": 0,
+        "zoom200_640": 0,
+        "reflow320": 0,
+        "largeText200": 0
+      }
+    },
+    "/register": {
+      "axe": {
+        "light": [],
+        "dark": []
+      },
+      "focus": {
+        "light": {
+          "stops": 14,
+          "noVisibleFocus": []
+        },
+        "dark": {
+          "stops": 14,
+          "noVisibleFocus": []
+        }
+      },
+      "states": {},
+      "startupCls": 0.0022,
+      "reflow": {
+        "tablet768": 0,
+        "zoom200_640": 0,
+        "reflow320": 0,
+        "largeText200": 0
+      }
+    },
+    "/about": {
+      "axe": {
+        "light": [],
+        "dark": []
+      },
+      "focus": {
+        "light": {
+          "stops": 61,
+          "noVisibleFocus": []
+        },
+        "dark": {
+          "stops": 62,
+          "noVisibleFocus": []
+        }
+      },
+      "states": {},
+      "startupCls": 0.0076,
+      "reflow": {
+        "tablet768": 0,
+        "zoom200_640": 0,
+        "reflow320": 0,
+        "largeText200": 0
+      }
+    },
+    "/privacy": {
+      "axe": {
+        "light": [],
+        "dark": []
+      },
+      "focus": {
+        "light": {
+          "stops": 63,
+          "noVisibleFocus": []
+        },
+        "dark": {
+          "stops": 62,
+          "noVisibleFocus": []
+        }
+      },
+      "states": {},
+      "startupCls": 0.0078,
+      "reflow": {
+        "tablet768": 0,
+        "zoom200_640": 0,
+        "reflow320": 0,
+        "largeText200": 0
+      }
+    },
+    "/terms": {
+      "axe": {
+        "light": [],
+        "dark": []
+      },
+      "focus": {
+        "light": {
+          "stops": 61,
+          "noVisibleFocus": []
+        },
+        "dark": {
+          "stops": 60,
+          "noVisibleFocus": []
+        }
+      },
+      "states": {},
+      "startupCls": 0.0078,
+      "reflow": {
+        "tablet768": 0,
+        "zoom200_640": 0,
+        "reflow320": 0,
+        "largeText200": 0
+      }
+    },
+    "/prophets": {
+      "axe": {
+        "light": [],
+        "dark": []
+      },
+      "focus": {
+        "light": {
+          "stops": 80,
+          "noVisibleFocus": []
+        },
+        "dark": {
+          "stops": 80,
+          "noVisibleFocus": []
+        }
+      },
+      "states": {
+        "light:tab:الخط الزمني": [],
+        "light:tab:أولو العزم": [],
+        "light:tab:المعجزات": [],
+        "light:tab:مقارنة": [],
+        "light:tab:اختبر نفسك": [],
+        "dark:tab:الخط الزمني": [],
+        "dark:tab:أولو العزم": [],
+        "dark:tab:المعجزات": [],
+        "dark:tab:مقارنة": [],
+        "dark:tab:اختبر نفسك": []
+      },
+      "startupCls": 0.0081,
+      "reflow": {
+        "tablet768": 0,
+        "zoom200_640": 0,
+        "reflow320": 0,
+        "largeText200": 0
+      }
+    },
+    "/tasbih": {
+      "axe": {
+        "light": [],
+        "dark": []
+      },
+      "focus": {
+        "light": {
+          "stops": 52,
+          "noVisibleFocus": []
+        },
+        "dark": {
+          "stops": 53,
+          "noVisibleFocus": []
+        }
+      },
+      "states": {
+        "light:delete-confirm": [],
+        "dark:delete-confirm": []
+      },
+      "startupCls": 0.0078,
+      "reflow": {
+        "tablet768": 0,
+        "zoom200_640": 0,
+        "reflow320": 0,
+        "largeText200": 0
+      }
+    },
+    "/adhan-help": {
+      "axe": {
+        "light": [],
+        "dark": []
+      },
+      "focus": {
+        "light": {
+          "stops": 58,
+          "noVisibleFocus": []
+        },
+        "dark": {
+          "stops": 58,
+          "noVisibleFocus": []
+        }
+      },
+      "states": {},
+      "startupCls": 0.0076,
+      "reflow": {
+        "tablet768": 0,
+        "zoom200_640": 0,
+        "reflow320": 0,
+        "largeText200": 0
+      }
+    }
+  }
+}
