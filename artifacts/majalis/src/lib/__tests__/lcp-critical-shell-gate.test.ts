@@ -72,6 +72,16 @@ assert.match(app, /HomeHeroLcp/, "هيرو LCP ثابت خارج Suspense");
 assert.match(app, /HomeStartHereSection/, "ابدأ من هنا خارج Suspense مع الهيرو");
 assert.match(app, /HomeRestShell/, "fallback بقية الرئيسية بلا استبدال h1");
 assert.doesNotMatch(home, /HomeStartHereGate|2_200/, "لا تأخير اصطناعي يسرق LCP بعد الرسم");
+{
+  const startHere = readFileSync(resolve(root, "src/components/home/HomeStartHereSection.tsx"), "utf8");
+  assert.match(startHere, /m2030\/home\.css/, "أنماط hsh-lead مع مكوّن LCP مباشرة");
+  const inject = readFileSync(resolve(root, "scripts/inject-home-chunk-preload.mjs"), "utf8");
+  assert.doesNotMatch(
+    inject,
+    /html\.replace\(anchor,\s*`\$\{preloadTag\}/,
+    "لا modulepreload لـ HomePage ينافس رسم LCP",
+  );
+}
 assert.doesNotMatch(app, /HomeInitialShell/, "لا HomeInitialShell بعد فصل الهيرو");
 assert.doesNotMatch(app, /HomeHeroLcp[\s\S]{0,120}aria-hidden/, "هيرو الرئيسية ليس مخفياً عن قارئ الشاشة");
 assert.doesNotMatch(app, /scheduleRemoveHomeLcpStaticShell/, "لا إزالة صدفة HTML");

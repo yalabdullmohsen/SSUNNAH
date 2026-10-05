@@ -1,8 +1,16 @@
 /**
- * يحقن modulepreload لحزمة HomePage بعد البناء — يُسرّع LCP (p.hsh-lead) بلا استيراد
- * ساكن في main.tsx (محظور في tbt-split-worker-gate).
+ * كان يحقن modulepreload لحزمة HomePage بعد البناء.
+ *
+ * دليل LHCI home mobile (2026-10-05):
+ *   عنصر LCP الثابت = `p.hsh-lead` داخل HomeStartHereSection (App.tsx، خارج Suspense)
+ *   وليس داخل حزمة HomePage الكسولة.
+ * modulepreload لـ HomePage على Slow 4G ينافس حزمة الإقلاع التي ترسم LCP
+ * فيرفع ELEMENT_RENDER_DELAY حتى سقف 7762ms.
+ *
+ * الإبقاء على السكربت في سلسلة البناء كحارس: يمنع إعادة إدخال preload خاطئ،
+ * ولا يحقن شيئاً.
  */
-import { readFile, writeFile, readdir } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -20,30 +28,35 @@ const homeChunk = files.find(
     (/HomePage|HomeView|account.*Home/i.test(f) || f.includes("HomePage")),
 );
 
-if (!homeChunk) {
-  console.warn("[inject-home-chunk-preload] لم تُعثر على حزمة HomePage — تخطّي");
-  process.exit(0);
-}
-
-const preloadTag = `<link rel="modulepreload" crossorigin href="/assets/${homeChunk}">`;
 let html = await readFile(indexPath, "utf8");
 
-if (html.includes(homeChunk)) {
-  console.log("[inject-home-chunk-preload] موجود مسبقاً:", homeChunk);
-  process.exit(0);
+/** أزل أي modulepreload لحزمة HomePage إن وُجد (من بناء سابق / دمج SEO). */
+const stripped = html.replace(/<link\b[^>]*>/gi, (tag) => {
+  if (!/rel\s*=\s*["']modulepreload["']/i.test(tag)) return tag;
+  if (!/HomePage|HomeView/i.test(tag)) return tag;
+  return "";
+}).replace(/\n{3,}/g, "\n\n");
+
+if (stripped !== html) {
+  const { writeFile } = await import("node:fs/promises");
+  await writeFile(indexPath, stripped, "utf8");
+  html = stripped;
+  console.log("[inject-home-chunk-preload] removed HomePage/HomeView modulepreload (LCP contention)");
 }
 
-if (/<link rel="modulepreload"[^>]*Home/i.test(html)) {
-  console.log("[inject-home-chunk-preload] modulepreload Home موجود");
-  process.exit(0);
-}
-
-const anchor = /<script type="module"/i;
-if (!anchor.test(html)) {
-  console.error("[inject-home-chunk-preload] لم يُعثر على script module في index.html");
+if (/rel="modulepreload"[^>]*(?:HomePage|HomeView)/i.test(html)) {
+  console.error("[inject-home-chunk-preload] HomePage modulepreload still present — abort");
   process.exit(1);
 }
 
-html = html.replace(anchor, `${preloadTag}\n    <script type="module"`);
-await writeFile(indexPath, html, "utf8");
-console.log("[inject-home-chunk-preload] ok:", homeChunk);
+if (homeChunk) {
+  console.log(
+    "[inject-home-chunk-preload] skip modulepreload for",
+    homeChunk,
+    "(LCP is App HomeStartHere, not HomePage chunk)",
+  );
+} else {
+  console.log("[inject-home-chunk-preload] no HomePage chunk — nothing to guard");
+}
+
+console.log("[inject-home-chunk-preload] ok: no Home LCP contention preload");
