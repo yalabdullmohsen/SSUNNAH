@@ -1,11 +1,14 @@
 /**
  * استعادة هادئة بعد نشر: chunk hashes قديمة في تبويب مفتوح.
- * بلا واجهة حاجبة · بلا Toast تقني · بلا reload تلقائي.
- * محاولة واحدة لكل build/version · تُمسح العلامة بعد استقرار الإقلاع.
+ * بلا واجهة حاجبة · بلا Toast تقني.
+ * أولًا: إعادة تحميل تلقائية صامتة واحدة لكل بناء فاشل (reloadOnceForStaleChunk) — بلا reload متكرر.
+ * بعدها: purge هادئ لقشرة SW · محاولة واحدة لكل build/version · تُمسح العلامة بعد استقرار الإقلاع.
  */
 import {
   CHUNK_RELOAD_KEY,
+  canAutoReloadForStaleChunk,
   clearChunkReloadGuard,
+  consumeChunkAutoReload,
   consumeChunkReloadAllowance,
   getChunkRecoveryBuildId,
   hasChunkReloadBeenAttempted,
@@ -18,6 +21,7 @@ import { trackOps } from "@/lib/ops-telemetry";
 
 export const CHUNK_RECOVERING_EVENT = "majalis:chunk-recovering";
 export {
+  canAutoReloadForStaleChunk,
   isChunkLoadError,
   clearChunkReloadGuard,
   CHUNK_RELOAD_KEY,
@@ -136,6 +140,45 @@ export function tryRecoverFromStaleChunk(label = "1", error?: unknown): boolean 
     reason: "quiet-purge",
     buildId: getChunkRecoveryBuildId(),
   });
+  return true;
+}
+
+let autoReloadPending = false;
+
+/** إعادة تحميل تلقائية جارية — الحدود تعرض لا شيء بدل شاشة الخطأ. */
+export function isChunkAutoReloadPending(): boolean {
+  return autoReloadPending;
+}
+
+/** للاختبار: محاكاة صفحة جديدة بعد إعادة التحميل (حالة الوحدة تُصفَّر، والتخزين يبقى). */
+export function resetChunkAutoReloadPendingForTests(): void {
+  autoReloadPending = false;
+}
+
+/**
+ * chunk قديم بعد نشر: إعادة تحميل صامتة واحدة للصفحة (نفس المسار) قبل أي شاشة خطأ.
+ * تُرجع true إن بدأت (أو كانت جارية). لا: أثناء الانقطاع · بعد محاولة لنفس البناء الفاشل ·
+ * خلال 30 ثانية من سابقة · أو إن تعذّر حفظ الحارس ⇒ لا حلقة لا نهائية.
+ * HTML شبكة-أولًا في SW (لا يُخزَّن المستند) ⇒ التحميل الجديد يجلب أسماء الـchunks الحالية.
+ */
+export function reloadOnceForStaleChunk(label = "1", error?: unknown): boolean {
+  if (typeof window === "undefined") return false;
+  if (autoReloadPending) return true;
+  if (!consumeChunkAutoReload()) return false;
+
+  autoReloadPending = true;
+  const meta = recordChunkFailureMeta(label, error ?? new Error("chunk-load"));
+  lastRecoveryMeta = meta;
+  lastRecoveryLabel = label || "1";
+  trackOps("chunk.recovery_attempted", {
+    label: lastRecoveryLabel,
+    buildId: getChunkRecoveryBuildId(),
+    quiet: true,
+    autoReload: true,
+    chunkHint: meta?.chunkHint ?? null,
+  });
+  requestSwShellPurge();
+  window.location.reload();
   return true;
 }
 
