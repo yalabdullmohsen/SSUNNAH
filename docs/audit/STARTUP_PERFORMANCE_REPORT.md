@@ -1,6 +1,6 @@
 # STARTUP_PERFORMANCE_REPORT
 
-Generated: 2026-10-03T09:21:31.895Z
+Generated: 2026-10-05T22:12:54.667Z
 
 Sync CSS imports in main.tsx: **14**
 
@@ -10,7 +10,7 @@ Sync CSS imports in main.tsx: **14**
 2. **Sync CSS in main.tsx** — 14 imports
 3. **Boot sequence / splash** — boot-sequence + splash controller gates
 4. **Home hydration** — startup-pr5 hero hydration gate
-5. **Deferred CSS/JS** — mainDeferred≈54
+5. **Deferred CSS/JS** — mainDeferred≈55
 
 ## Documented field (prod)
 

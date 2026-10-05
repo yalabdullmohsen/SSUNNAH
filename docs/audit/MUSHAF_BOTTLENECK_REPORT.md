@@ -1,6 +1,6 @@
 # MUSHAF_BOTTLENECK_REPORT
 
-Generated: 2026-10-03T09:21:31.895Z
+Generated: 2026-10-05T22:12:54.667Z
 
 Policy: **No speculative fixes — numbers first.**
 
@@ -9,11 +9,11 @@ Policy: **No speculative fixes — numbers first.**
 | Signal | Count |
 |---|---:|
 | useEffect | 78 |
-| useState | 71 |
+| useState | 72 |
 | setInterval | 0 |
 | addEventListener | 25 |
 | subscribe | 2 |
-| requestAnimationFrame | 15 |
+| requestAnimationFrame | 16 |
 | ResizeObserver | 4 |
 | MutationObserver | 0 |
 

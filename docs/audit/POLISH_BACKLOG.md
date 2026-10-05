@@ -1,12 +1,12 @@
 # POLISH_BACKLOG
 
-Generated: 2026-10-05T14:05:41.895Z
+Generated: 2026-10-05T22:12:51.750Z
 
-Total signals: **233**
+Total signals: **229**
 
 ## By issue (frequency)
 
-- icon size literal — prefer size.icon.* tokens: **223**
+- icon size literal — prefer size.icon.* tokens: **219**
 - ad-hoc motion class — check MOTION_AUTHORITY: **6**
 - inline spacing — prefer tokens: **3**
 - truncation without title tooltip: **1**

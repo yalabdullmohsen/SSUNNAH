@@ -71,8 +71,16 @@ async function scheduleNativeDhikrReminders(requestPerm: boolean): Promise<Ensur
   if (display !== "granted") return { ok: false, scheduled: 0, reason: "permission" };
 
   await LocalNotifications.cancel({ notifications: allDhikrPhraseNativeIds() });
+  // ساعات الهدوء تُسقط العبارات الواقعة داخلها (نفس قاعدة جدول الويب).
+  const { loadSunnahNotificationPrefs } = await import("@/lib/sunnah-notifications/preferences");
+  const { isMinuteWithinQuietHours } = await import("@/lib/smart-local-notifications");
+  const quiet = loadSunnahNotificationPrefs().quietHours;
+  const slots = DHIKR_PHRASE_SLOTS.map((slot, i) => ({ slot, i })).filter(
+    ({ slot }) => !isMinuteWithinQuietHours(quiet, slot.hour * 60),
+  );
+  if (slots.length === 0) return { ok: true, scheduled: 0 };
   await LocalNotifications.schedule({
-    notifications: DHIKR_PHRASE_SLOTS.map((slot, i) => ({
+    notifications: slots.map(({ slot, i }) => ({
       id: dhikrPhraseNativeId(i),
       title: slot.phrase,
       body: DHIKR_PHRASE_REMINDER_BODY,
@@ -91,12 +99,8 @@ async function scheduleNativeDhikrReminders(requestPerm: boolean): Promise<Ensur
       },
     })),
   });
-  console.info(
-    "[notifications/dhikr] scheduled",
-    DHIKR_PHRASE_SLOTS.length,
-    "daily phrase reminders",
-  );
-  return { ok: true, scheduled: DHIKR_PHRASE_SLOTS.length };
+  console.info("[notifications/dhikr] scheduled", slots.length, "daily phrase reminders");
+  return { ok: true, scheduled: slots.length };
 }
 
 /**
