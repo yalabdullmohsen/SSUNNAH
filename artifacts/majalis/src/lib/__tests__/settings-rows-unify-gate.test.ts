@@ -23,7 +23,8 @@ assert.doesNotMatch(settings, /\bsettings-danger-btn\b/, "لا settings-danger-b
 assert.match(settings, /NavigationList|SettingsList/, "NavigationList/SettingsList مستخدم (LIST authority)");
 assert.match(settings, /id:\s*"appearance"/, "قسم المظهر والواجهة");
 assert.match(settings, /id:\s*"reading"/, "قسم القراءة والمصحف منفصل");
-assert.match(settings, /title:\s*"المظهر والواجهة"/);
+// 2026-10: إعادة التجميع إلى ست مجموعات (العرض والمظهر … حول) — يبقى الفصل بين المظهر والقراءة.
+assert.match(settings, /title:\s*"العرض والمظهر"/);
 assert.match(settings, /title:\s*"القراءة والمصحف"/);
 assert.doesNotMatch(settings, /المظهر والقراءة والمصحف/, "لا قسم مدمج قديم");
 assert.match(settings, /id:\s*"feature-tour"/, "جولة المزايا ضمن SettingsList");
