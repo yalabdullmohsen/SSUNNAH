@@ -34,7 +34,7 @@ export const UniversityCard = memo(function UniversityCard({ university: u, comp
           <div className="univ-card__head-avatar">{u.name_ar[0]}</div>
         )}
         <div className="min-w-0 flex-1">
-          <p className="univ-card__name font-bold text-sm leading-snug line-clamp-2">{u.name_ar}</p>
+          <p className="univ-card__name font-bold text-sm leading-snug line-clamp-2" title={u.name_ar}>{u.name_ar}</p>
           {u.name_en && <p className="univ-card__head-en">{u.name_en}</p>}
         </div>
       </div>
@@ -59,7 +59,7 @@ export const UniversityCard = memo(function UniversityCard({ university: u, comp
         </div>
 
         {!compact && u.about && (
-          <p className="text-xs leading-relaxed line-clamp-2 univ-card__meta">
+          <p className="text-xs leading-relaxed line-clamp-2 univ-card__meta" title={u.about}>
             {u.about}
           </p>
         )}

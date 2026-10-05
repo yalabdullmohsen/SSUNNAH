@@ -5,6 +5,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { BookOpen, ChevronLeft } from "lucide-react";
 import { DirectionalIcon } from "@/components/DirectionalIcon";
+import { Button } from "@/components/ui/button";
 import {
   getSurahMeta,
   loadPagePosition,
@@ -130,8 +131,10 @@ export function QuranOpenMushafCard() {
         </div>
       </div>
 
-      <button
+      <Button
         type="button"
+        variant="ghost"
+        size="small"
         className="quran-open-mushaf__cta"
         data-section-card="open-mushaf"
         data-hero-action="1"
@@ -139,12 +142,14 @@ export function QuranOpenMushafCard() {
         aria-label={info.hasResume ? `متابعة القراءة — ${info.resumeLine}` : "فتح المصحف"}
         onPointerDown={() => prefetchRoute(info.href)}
         onClick={openMushaf}
+        iconEnd={
+          <span className="quran-open-mushaf__cta-btn" aria-hidden="true">
+            <DirectionalIcon icon={ChevronLeft} size={18} strokeWidth={2.4} />
+          </span>
+        }
       >
         <span className="quran-open-mushaf__cta-label">{info.ctaLabel}</span>
-        <span className="quran-open-mushaf__cta-btn" aria-hidden="true">
-          <DirectionalIcon icon={ChevronLeft} size={18} strokeWidth={2.4} />
-        </span>
-      </button>
+      </Button>
     </article>
   );
 }

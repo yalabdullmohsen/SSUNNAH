@@ -190,10 +190,11 @@ function DetailContent({ university: u }: { university: University }) {
               variant="ghost"
               onClick={() => inCompare ? removeFromCompare(u.slug) : addToCompare(u)}
               disabled={!inCompare && !canAdd}
+              aria-label={inCompare ? "إزالة من المقارنة" : canAdd ? "أضف للمقارنة" : "تعبأت المقارنة (4 بحد أقصى)"}
               className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
                 inCompare ? "bg-[var(--mj-surface)] udp-compare-active-btn" :
                 canAdd ? "bg-[color-mix(in_srgb,var(--mj-brand,#1f6b56)_12%,transparent)] hover:bg-[color-mix(in_srgb,var(--mj-brand,#1f6b56)_18%,transparent)]" :
-                "opacity-50 cursor-not-allowed"
+                ""
               }`}>
               {inCompare ? "✓ في المقارنة" : "⇔ أضف للمقارنة"}
             </Button>

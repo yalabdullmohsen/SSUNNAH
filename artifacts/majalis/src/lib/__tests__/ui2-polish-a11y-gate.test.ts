@@ -50,4 +50,18 @@ assert.match(thc, /thc-pop__quote[^>]*title=\{pop\.quote\}/);
 const learning = read("src/pages/lessons/ui/MyLearningView.tsx");
 assert.match(learning, /title=\{n\.title \?\? n\.body/);
 
+const univCard = read("src/components/universities/UniversityCard.tsx");
+assert.match(univCard, /line-clamp-2"[^>]*title=\{u\.name_ar\}/);
+assert.match(univCard, /univ-card__meta"[^>]*title=\{u\.about\}/);
+
+const univDetail = read("src/views/UniversityDetailPage.tsx");
+assert.doesNotMatch(univDetail, /opacity-50\s+cursor-not-allowed/, "UniversityDetail: no opacity-only disabled");
+assert.match(univDetail, /disabled=\{!inCompare && !canAdd\}/);
+
+const rec = read("src/components/recommendations/RecommendationWidget.tsx");
+assert.match(rec, /rw-card__title line-clamp-2"[^>]*title=\{title\}/);
+
+const citation = read("src/components/citation/CitationModal.tsx");
+assert.match(citation, /line-clamp-1"[^>]*title=\{source\.title_ar\}/);
+
 console.log("ui2-polish-a11y-gate: ok");
