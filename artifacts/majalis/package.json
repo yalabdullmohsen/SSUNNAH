@@ -866,6 +866,7 @@
     "test:public-interaction-polish-batch": "node --import tsx src/lib/__tests__/public-interaction-polish-batch-gate.test.ts",
     "test:qf-recitation-audio": "node --import tsx src/lib/__tests__/qf-recitation-audio.test.ts",
     "test:surah-ayah-timing": "node --import tsx src/lib/__tests__/surah-ayah-timing.test.ts",
+    "test:api-routes-security-class": "node --import tsx src/lib/__tests__/api-routes-security-class-gate.test.ts",
     "test:mushaf-path-classification-m4": "node --import tsx src/lib/__tests__/mushaf-path-classification-m4-gate.test.ts",
     "test:startup-smoothness": "node --import tsx src/lib/__tests__/startup-smoothness-gate.test.ts",
     "test:token-bridge-t3": "node --import tsx src/lib/__tests__/token-bridge-t3-ds-zero-gate.test.ts",

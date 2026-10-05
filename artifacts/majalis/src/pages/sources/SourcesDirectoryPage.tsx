@@ -51,9 +51,16 @@ export default function SourcesDirectoryPage() {
         {" "}
         <Link href="/data-licenses">المصادر والتراخيص</Link>
         {" · "}
-        <a href="https://github.com/yalabdullmohsen/majalis/blob/main/artifacts/majalis/docs/SOURCES_POLICY.md" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/yalabdullmohsen/SSUNNAH/blob/main/artifacts/majalis/docs/SOURCES_POLICY.md" target="_blank" rel="noopener noreferrer">
           سياسة المصادر
         </a>
+      </p>
+      <p className="sources-policy-note">
+        بيانات التلاوة وتوقيت الآيات لبعض القرّاء مقدَّمة من{" "}
+        <a href="https://quran.foundation" target="_blank" rel="noopener noreferrer">Quran Foundation</a>
+        {" "}عبر واجهتها البرمجية. والنص القرآني المستخدم في البحث والمطابقة من{" "}
+        <a href="https://tanzil.net" target="_blank" rel="noopener noreferrer">Tanzil.net</a>
+        {" "}(CC BY 3.0).
       </p>
       <div className="sources-directory-grid" aria-busy={loading}>
         {enabled.map((acc) => {

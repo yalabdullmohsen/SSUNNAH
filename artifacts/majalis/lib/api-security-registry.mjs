@@ -7,6 +7,7 @@ export const ROUTE_SECURITY_CLASS = Object.freeze({
   "/api/assistant/health": "PUBLIC_WRITE",
   "/api/prayer-times": "PUBLIC_READ",
   "/api/content-delta": "PUBLIC_READ",
+  "/api/qf-chapter-audio": "PUBLIC_READ",
   "/api/reading-sync": "PUBLIC_WRITE",
   "/api/cron/sync-data": "CRON",
   "/api/cron/knowledge-sync": "CRON",
