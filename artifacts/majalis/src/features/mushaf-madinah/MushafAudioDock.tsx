@@ -18,6 +18,8 @@ import { useVerifiedReciters } from "@/hooks/useVerifiedReciters";
 import { useMushafAudioClock } from "./mushaf-audio-clock-store";
 import type { RecitationRange } from "./mushaf-page-for-ayah";
 import { EMPTY } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
+import { mushafButtonClass } from "@/features/mushaf-reader/mushaf-button-parity";
 import "@/styles/components/quran-audio-dock-dismiss.css";
 import "@/styles/components/quran-audio-chrome.css";
 
@@ -165,9 +167,10 @@ export function MushafAudioDock({
         ) : null}
         <div className="mm-audio-dock__head">
           <div className="mm-audio-dock__meta">
-            <button
+            <Button
               type="button"
-              className="mm-audio-dock__reciter-btn"
+              variant="ghost"
+              className={mushafButtonClass("mm-audio-dock__reciter-btn")}
               aria-label={mini ? "فتح ورقة التلاوة" : "اختيار القارئ"}
               aria-haspopup="dialog"
               aria-expanded={mini ? !mini : readersOpen}
@@ -192,46 +195,49 @@ export function MushafAudioDock({
                 <span className="mm-audio-dock__reciter-btn-quality">{activeReciter.qualityLabel}</span>
               ) : null}
               <ChevronDown size={14} aria-hidden="true" />
-            </button>
+            </Button>
             <p className="mm-audio-dock__verse" data-testid="mushaf-dock-verse">
               {verseLabel}
             </p>
           </div>
           <div className="mm-audio-dock__head-actions">
             {mini ? (
-              <button
+              <Button
                 type="button"
-                className="mm-audio-dock__play mm-audio-dock__play--mini-cta"
+                variant="ghost"
+                className={mushafButtonClass("mm-audio-dock__play mm-audio-dock__play--mini-cta")}
                 onClick={onTogglePlay}
                 aria-label={playing ? "إيقاف مؤقت" : "تشغيل"}
                 data-testid="mushaf-dock-play"
               >
                 {playing ? <Pause size={18} aria-hidden="true" /> : <Play size={18} aria-hidden="true" />}
                 <span>{playing ? "إيقاف" : "تشغيل"}</span>
-              </button>
+              </Button>
             ) : null}
             {onMiniChange ? (
-              <button
+              <Button
                 type="button"
-                className="mm-audio-dock__mini"
+                variant="ghost"
+                className={mushafButtonClass("mm-audio-dock__mini")}
                 aria-pressed={!mini}
                 aria-label={mini ? "توسيع المشغل" : "طي المشغل"}
                 data-testid="mushaf-dock-collapse"
                 onClick={() => onMiniChange(!mini)}
               >
                 {mini ? <ChevronUp size={18} aria-hidden="true" /> : <ChevronDown size={18} aria-hidden="true" />}
-              </button>
+              </Button>
             ) : null}
             {onClose ? (
-              <button
+              <Button
                 type="button"
-                className="mm-audio-dock__close"
+                variant="ghost"
+                className={mushafButtonClass("mm-audio-dock__close")}
                 onClick={onClose}
                 aria-label="إغلاق مشغل التلاوة"
                 data-testid="mushaf-dock-close"
               >
                 <X size={18} aria-hidden="true" />
-              </button>
+              </Button>
             ) : null}
           </div>
         </div>
@@ -260,36 +266,38 @@ export function MushafAudioDock({
           <section className="mm-audio-dock__section" data-section="transport" aria-label="التنقل">
             <h3 className="mm-audio-dock__section-label sr-only">السابق · تشغيل · التالي</h3>
             <div className="mm-audio-dock__controls">
-              <button type="button" onClick={onPrev} aria-label="الآية السابقة">
+              <Button type="button" variant="ghost" className={mushafButtonClass()} onClick={onPrev} aria-label="الآية السابقة">
                 <SkipBack size={16} aria-hidden="true" />
                 <span>السابق</span>
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
-                className="mm-audio-dock__play"
+                variant="ghost"
+                className={mushafButtonClass("mm-audio-dock__play")}
                 onClick={onTogglePlay}
                 aria-label={playing ? "إيقاف مؤقت" : "تشغيل"}
                 data-testid="mushaf-dock-play"
               >
                 {playing ? <Pause size={20} aria-hidden="true" /> : <Play size={20} aria-hidden="true" />}
                 <span>{playing ? "إيقاف" : "تشغيل"}</span>
-              </button>
+              </Button>
               {onStop ? (
-                <button
+                <Button
                   type="button"
-                  className="mm-audio-dock__stop"
+                  variant="ghost"
+                  className={mushafButtonClass("mm-audio-dock__stop")}
                   onClick={onStop}
                   aria-label="إيقاف التلاوة"
                   data-testid="mushaf-dock-stop"
                   disabled={!playing && playerState !== "paused"}
                 >
                   <Square size={14} aria-hidden="true" fill="currentColor" />
-                </button>
+                </Button>
               ) : null}
-              <button type="button" onClick={onNext} aria-label="الآية التالية">
+              <Button type="button" variant="ghost" className={mushafButtonClass()} onClick={onNext} aria-label="الآية التالية">
                 <SkipForward size={16} aria-hidden="true" />
                 <span>التالي</span>
-              </button>
+              </Button>
             </div>
           </section>
         )}
@@ -305,14 +313,16 @@ export function MushafAudioDock({
             {onSpeed ? (
               <div className="mm-audio-dock__rates" role="group" aria-label="سرعة التلاوة">
                 {([0.75, 1, 1.25] as const).map((rate) => (
-                  <button
+                  <Button
                     key={rate}
                     type="button"
+                    variant="ghost"
+                    className={mushafButtonClass()}
                     aria-pressed={Math.abs(playbackRate - rate) < 0.01}
                     onClick={() => onSpeed(rate)}
                   >
                     {rate}×
-                  </button>
+                  </Button>
                 ))}
               </div>
             ) : null}
@@ -342,36 +352,40 @@ export function MushafAudioDock({
                     ["surah", "سورة"],
                   ] as const
                 ).map(([id, label]) => (
-                  <button
+                  <Button
                     key={id}
                     type="button"
+                    variant="ghost"
+                    className={mushafButtonClass()}
                     aria-pressed={range === id}
                     onClick={() => setRange(id)}
                   >
                     {label}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
 
             {onPlayRange ? (
               <div className="mm-audio-dock__hifz-bar">
-                <button
+                <Button
                   type="button"
-                  className={`mm-audio-dock__hifz-toggle${hifzOpen ? " is-open" : ""}`}
+                  variant="ghost"
+                  className={mushafButtonClass(`mm-audio-dock__hifz-toggle${hifzOpen ? " is-open" : ""}`)}
                   aria-expanded={hifzOpen}
                   data-testid="mushaf-dock-hifz"
                   onClick={() => setHifzOpen((v) => !v)}
                 >
                   وضع الحفظ
-                </button>
-                <button
+                </Button>
+                <Button
                   type="button"
-                  className="mm-audio-dock__apply-range"
+                  variant="ghost"
+                  className={mushafButtonClass("mm-audio-dock__apply-range")}
                   onClick={() => onPlayRange(range, repeatCount, hifzOpen ? 2000 : 0)}
                 >
                   تطبيق النطاق
-                </button>
+                </Button>
               </div>
             ) : null}
 
@@ -408,9 +422,10 @@ export function MushafAudioDock({
               aria-label="اختيار التلاوة"
               data-testid="mushaf-reciter-sheet"
             >
-              <button
+              <Button
                 type="button"
-                className="mm-reciter-sheet__scrim quran-sheet__scrim"
+                variant="ghost"
+                className={mushafButtonClass("mm-reciter-sheet__scrim quran-sheet__scrim")}
                 aria-label="إغلاق قائمة القراء"
                 onClick={closeReaders}
               />
@@ -418,14 +433,15 @@ export function MushafAudioDock({
                 <div className="quran-sheet__handle" aria-hidden="true" />
                 <div className="mm-reciter-sheet__head quran-sheet__head">
                   <h2 className="mm-reciter-sheet__title quran-sheet__title">اختيار التلاوة</h2>
-                  <button
+                  <Button
                     type="button"
-                    className="mm-ayah-bar__close quran-sheet__close"
+                    variant="ghost"
+                    className={mushafButtonClass("mm-ayah-bar__close quran-sheet__close")}
                     onClick={closeReaders}
                     aria-label="إغلاق"
                   >
                     <X size={14} aria-hidden="true" />
-                  </button>
+                  </Button>
                 </div>
                 <label className="mm-reciter-sheet__search">
                   <span className="sr-only">بحث عن قارئ</span>
@@ -445,11 +461,12 @@ export function MushafAudioDock({
                     const selected = r.id === reciterId;
                     return (
                       <li key={r.id} className={`quran-reciter-card${selected ? " is-selected" : ""}`}>
-                        <button
+                        <Button
                           type="button"
+                          variant="ghost"
                           role="option"
                           aria-selected={selected}
-                          className={`mm-reciter-sheet__pick quran-reciter-card__pick quran-row${selected ? " is-active" : ""}`}
+                          className={mushafButtonClass(`mm-reciter-sheet__pick quran-reciter-card__pick quran-row${selected ? " is-active" : ""}`)}
                           onClick={() => {
                             onReciterChange(r.id);
                             closeReaders();
@@ -466,10 +483,11 @@ export function MushafAudioDock({
                             {" · "}
                             {r.qualityLabel}
                           </span>
-                        </button>
-                        <button
+                        </Button>
+                        <Button
                           type="button"
-                          className="mm-reciter-sheet__play quran-reciter-card__play quran-btn quran-btn--icon"
+                          variant="ghost"
+                          className={mushafButtonClass("mm-reciter-sheet__play quran-reciter-card__play quran-btn quran-btn--icon")}
                           aria-label={
                             selected && playing ? `إيقاف ${r.nameAr}` : `تشغيل ${r.nameAr}`
                           }
@@ -492,7 +510,7 @@ export function MushafAudioDock({
                           ) : (
                             <Play size={16} aria-hidden="true" />
                           )}
-                        </button>
+                        </Button>
                       </li>
                     );
                   })}

@@ -442,7 +442,7 @@ void mount().catch((err) => {
 
 // داخل تطبيق Capacitor الأصلي نمنع تسجيل SW تمامًا لتفادي أي بقايا كاش
 // من جلسات سابقة داخل WebView؛ تحديث iOS يعتمد على ملفات cap sync فقط.
-if (!isNative) {
+if (!isNative && import.meta.env.VITE_TARGET !== "native") {
   const registerSw = () => {
     void import("./lib/service-worker").then((m) => m.registerProductionServiceWorker());
   };

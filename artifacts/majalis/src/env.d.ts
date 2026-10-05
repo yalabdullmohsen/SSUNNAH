@@ -7,6 +7,8 @@ interface ImportMetaEnv {
   readonly VITE_VAPID_PUBLIC_KEY?: string;
   readonly VITE_COMMIT_HASH?: string;
   readonly VITE_BUILD_ID?: string;
+  /** "native" في متغيّر البناء الأصلي فقط — انظر src/lib/native-platform.ts */
+  readonly VITE_TARGET?: string;
   readonly VITE_VERCEL_GIT_COMMIT_SHA?: string;
   readonly VITE_OWNER_EMAILS?: string;
   readonly VITE_RESEARCH_DEMO?: string;

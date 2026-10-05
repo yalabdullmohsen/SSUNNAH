@@ -72,9 +72,9 @@ export default function AdhanHelpView() {
 
       {SECTIONS.map((s) => (
         <section key={s.id} className="ads-card" aria-labelledby={`help-${s.id}`}>
-          <div className="ads-card__head" id={`help-${s.id}`}>
+          <h2 className="ads-card__head" id={`help-${s.id}`}>
             <span>{s.title}</span>
-          </div>
+          </h2>
           <div className="ads-card__body">
             <p className="ads-adhan-desc">{s.body}</p>
           </div>

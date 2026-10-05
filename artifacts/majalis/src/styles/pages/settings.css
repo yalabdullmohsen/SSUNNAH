@@ -229,6 +229,14 @@
 }
 .settings-note--list { list-style: none; padding: 0; }
 
+/* عنوان فرعي داخل مجموعة (التلاوة/التنزيلات ضمن القراءة والمصحف) */
+.settings-subhead {
+  margin: 1rem 0 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--mj-ink-2);
+}
+
 /* ══ مفتاح التبديل (Toggle Switch) ══ */
 .settings-toggle-row {
   display: flex !important;

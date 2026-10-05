@@ -10,6 +10,8 @@ import {
 import { MUSHAF_PAGE_MAX, MUSHAF_PAGE_MIN } from "@/lib/quran-last-page";
 import { useMushafPager, SWIPE_MIN_PX, SETTLE_MS } from "./useMushafPager";
 import { mushafPerfInc } from "./mushaf-turn-telemetry";
+import { Button } from "@/components/ui/button";
+import { mushafButtonClass } from "@/features/mushaf-reader/mushaf-button-parity";
 import {
   canGoToNextMushafPage,
   canGoToPreviousMushafPage,
@@ -195,9 +197,10 @@ export const MushafPager = forwardRef<HTMLDivElement, PagerProps>(function Musha
             )}
         </div>
       </div>
-      <button
+      <Button
         type="button"
-        className="mm-page-edge mm-page-edge--next"
+        variant="ghost"
+        className={mushafButtonClass("mm-page-edge mm-page-edge--next")}
         aria-label={MUSHAF_NAV_LABEL.next}
         disabled={disabled || !canGoToNextMushafPage(page)}
         onClick={(e) => {
@@ -205,9 +208,10 @@ export const MushafPager = forwardRef<HTMLDivElement, PagerProps>(function Musha
           goToNextMushafPage(page, go);
         }}
       />
-      <button
+      <Button
         type="button"
-        className="mm-page-edge mm-page-edge--prev"
+        variant="ghost"
+        className={mushafButtonClass("mm-page-edge mm-page-edge--prev")}
         aria-label={MUSHAF_NAV_LABEL.previous}
         disabled={disabled || !canGoToPreviousMushafPage(page)}
         onClick={(e) => {
