@@ -17,10 +17,12 @@ export function normalizeArabic(input) {
 }
 
 export function stripEmojiFromTitle(title) {
-  return String(title ?? "")
-    .replace(EMOJI, "")
-    .replace(/\s+/g, " ")
-    .trim();
+  return scrubForbiddenBrandPhrases(
+    String(title ?? "")
+      .replace(EMOJI, "")
+      .replace(/\s+/g, " ")
+      .trim(),
+  );
 }
 
 /** إزالة أرقام تسلسل الدروس/الحلقات من العناوين */
@@ -36,8 +38,16 @@ export function stripLessonSeriesNumbers(text) {
     .trim();
 }
 
+/**
+ * يمنع تسريب عبارة العلامة القديمة من نصوص المصادر الخارجية (Telegram/IG)
+ * إلى feed العام. الاستبدال يحافظ على المعنى الدعوي («درس علمي»).
+ */
+export function scrubForbiddenBrandPhrases(input) {
+  return String(input ?? "").replace(/المجلس العلمي/g, "الدرس العلمي");
+}
+
 export function summaryFromText(text, max = 160) {
-  const clean = normalizeArabic(text).replace(/\s+/g, " ").trim();
+  const clean = scrubForbiddenBrandPhrases(normalizeArabic(text).replace(/\s+/g, " ").trim());
   if (clean.length <= max) return clean;
   return `${clean.slice(0, max - 1)}…`;
 }

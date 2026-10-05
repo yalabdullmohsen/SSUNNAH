@@ -7,7 +7,7 @@ import {
   getInstagramProviderStatus,
   harvestInstagramAccount,
 } from "./adapters/instagram.mjs";
-import { summaryFromText } from "./normalize.mjs";
+import { scrubForbiddenBrandPhrases, summaryFromText } from "./normalize.mjs";
 import { classifyType, extractFields, confidenceFor, isLessonRelevant } from "./classify.mjs";
 import { qualityGate, resolvePublishedAt } from "./quality-gate.mjs";
 import { fingerprintPrimary, fingerprintSecondary, mergeOrAppend } from "./dedupe.mjs";
@@ -119,7 +119,7 @@ function itemToCard(item, account) {
   return {
     id,
     type: gate.type,
-    title_ar: title,
+    title_ar: scrubForbiddenBrandPhrases(title),
     summary_ar: summaryFromText(text, 160),
     sheikh: fields.sheikh,
     place: fields.place,
