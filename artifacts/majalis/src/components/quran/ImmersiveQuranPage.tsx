@@ -17,6 +17,7 @@ import {
 import { useAppController } from "@/hooks/useAppController";
 import { useQuranController } from "@/hooks/useQuranController";
 import { useAudioTrackingCursor } from "@/hooks/useAudioTrackingCursor";
+import { Button } from "@/components/ui/button";
 import {
   IMMERSIVE_FONT_SIZE_PX,
   IMMERSIVE_INK,
@@ -232,8 +233,9 @@ export function ImmersiveQuranPage({
                     pIdx === pageIndex && recitingIndex === index;
                   return (
                     <li key={index} className="immersive-quran-page__verse-item">
-                      <button
+                      <Button
                         type="button"
+                        variant="ghost"
                         className={`immersive-quran-page__verse${isSelected ? " is-selected" : ""}${isReciting ? " is-reciting" : ""}`}
                         onClick={() => {
                           if (pIdx !== pageIndex) setPageIndex(pIdx);
@@ -254,7 +256,7 @@ export function ImmersiveQuranPage({
                         >
                           {text}
                         </span>
-                      </button>
+                      </Button>
                     </li>
                   );
                 })}

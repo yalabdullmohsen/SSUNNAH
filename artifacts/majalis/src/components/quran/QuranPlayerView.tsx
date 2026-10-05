@@ -15,6 +15,7 @@ import { fetchSurahDetail, getSurahMeta } from "@/lib/quran-api";
 import { getReciter, loadReciterId } from "@/lib/quran-audio";
 import { toArabicDigits } from "@/lib/utils";
 import { STATUS } from "@/lib/ui-copy";
+import { Button } from "@/components/ui/button";
 
 export type QuranPlayerViewProps = {
   reciterId?: string;
@@ -230,20 +231,21 @@ export function QuranPlayerView({ reciterId: reciterProp, surahNumber }: QuranPl
 
       <div className="qpv-card__controls">
         {isPlaying ? (
-          <button type="button" className="qpv-card__btn qpv-card__btn--pause" onClick={handleToggle}>
+          <Button type="button" variant="secondary" className="qpv-card__btn qpv-card__btn--pause" onClick={handleToggle}>
             <Pause size={18} strokeWidth={2} aria-hidden="true" />
             إيقاف مؤقت
-          </button>
+          </Button>
         ) : (
-          <button
+          <Button
             type="button"
+            variant="primary"
             className="qpv-card__btn qpv-card__btn--play"
             onClick={playerState === "paused" ? handleToggle : handleStartPlay}
             disabled={!!loadError || ayahRows.length === 0}
           >
             <Play size={18} strokeWidth={2} aria-hidden="true" />
             {playerState === "paused" ? "استئناف" : "تشغيل السورة"}
-          </button>
+          </Button>
         )}
       </div>
     </div>
