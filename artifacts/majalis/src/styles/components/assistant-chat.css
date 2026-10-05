@@ -48,9 +48,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  border: 1px solid var(--msk-border, #e8e7e2);
+  border: 1px solid var(--mj-hairline, var(--msk-border, #e8e7e2));
   background: var(--mj-white);
-  color: var(--msk-text-2, #5c5c56);
+  color: var(--mj-ink-2, var(--msk-text-2, #5c5c56));
   border-radius: var(--radius-pill, 999rem);
   padding: 0.3rem 0.75rem;
   font-size: 0.75rem;
@@ -106,7 +106,7 @@
   max-width: 28rem;
   font-size: 0.84rem;
   line-height: 1.7;
-  color: var(--msk-text-2, #5c5c56);
+  color: var(--mj-ink-2, var(--msk-text-2, #5c5c56));
 }
 
 .acv-suggestions {
@@ -115,7 +115,7 @@
 }
 
 .acv-cat {
-  border: 1px solid color-mix(in srgb, var(--msk-border, #e8e7e2) 85%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-hairline, var(--msk-border, #e8e7e2)) 85%, transparent);
   border-radius: 1rem;
   padding: 0.7rem 0.8rem;
   background: color-mix(in srgb, var(--mj-white) 88%, var(--majalis-parchment, #faf7f2));
@@ -138,7 +138,7 @@
 }
 
 .assistant-quick-prompt-chip {
-  border: 1px solid var(--msk-border, #e8e7e2);
+  border: 1px solid var(--mj-hairline, var(--msk-border, #e8e7e2));
   border-radius: var(--radius-pill, 999rem);
   padding: 0.4rem 0.75rem;
   background: var(--mj-white);
@@ -190,7 +190,7 @@
 .acv-confidence {
   font-size: 0.7rem;
   font-weight: 700;
-  color: var(--msk-text-2, #5c5c56);
+  color: var(--mj-ink-2, var(--msk-text-2, #5c5c56));
 }
 
 .acv-citations {
@@ -270,7 +270,7 @@
   padding: 0.45rem 0.55rem;
   border-radius: 0.65rem;
   background: color-mix(in srgb, #d2b45d 10%, transparent);
-  color: var(--msk-text-2, #5c5c56);
+  color: var(--mj-ink-2, var(--msk-text-2, #5c5c56));
   font-size: 0.72rem;
   line-height: 1.55;
 }
@@ -301,13 +301,13 @@
   padding: 0.65rem 0.85rem;
   border-radius: 1rem 1rem 0.35rem 1rem;
   background: var(--mj-white);
-  border: 1px solid var(--msk-border, #e8e7e2);
+  border: 1px solid var(--mj-hairline, var(--msk-border, #e8e7e2));
   box-shadow: 0 6px 18px rgba(36, 31, 24, 0.06);
 }
 
 .acv-typing__label {
   font-size: 0.78rem;
-  color: var(--msk-text-2, #5c5c56);
+  color: var(--mj-ink-2, var(--msk-text-2, #5c5c56));
   font-weight: 600;
 }
 
@@ -368,7 +368,7 @@
 .assistant-composer-hint {
   margin: 0.45rem 0 0;
   font-size: 0.68rem;
-  color: var(--msk-text-2, #5c5c56);
+  color: var(--mj-ink-2, var(--msk-text-2, #5c5c56));
   text-align: center;
 }
 

@@ -2186,7 +2186,7 @@ html.dark .topic-page.topic-page--prophets {
   background: var(--mj-bg, var(--mj-surface));
 }
 .lrf-wrap.lrf-wrap--prophet-detail {
-  background: var(--prophets-bg, var(--mj-bg, var(--msk-canvas, #f7f3ea)));
+  background: var(--prophets-bg, var(--mj-bg, var(--mj-bg, var(--msk-canvas, #f7f3ea))));
 }
 html[data-theme="dark"] .lrf-wrap.lrf-wrap--prophets,
 html.dark .lrf-wrap.lrf-wrap--prophets {
@@ -2217,7 +2217,7 @@ html.dark .lrf-wrap.lrf-wrap--prophet-detail {
 #root:has(.lrf-wrap--prophet-detail),
 .app-main:has(.prophet-detail-lux),
 .app-main:has(.lrf-wrap--prophet-detail) {
-  background: var(--prophets-bg, var(--mj-bg, var(--msk-canvas, #f7f3ea)));
+  background: var(--prophets-bg, var(--mj-bg, var(--mj-bg, var(--msk-canvas, #f7f3ea))));
 }
 
 .app-shell:has(.topic-page--prophets),

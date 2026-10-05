@@ -393,6 +393,6 @@ html[data-theme="dark"] .uq-usul-card { background: rgba(23,61,53,.07); }
 
 /* WAVE12: from index.css — SurahStories trust note */
 .quran-source-note {
-  color: var(--msk-text-2);
+  color: var(--mj-ink-2, var(--msk-text-2));
   font-size: 0.88rem;
 }

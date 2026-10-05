@@ -1009,7 +1009,7 @@ html.dark .search-page .search-page-form {
   margin: 0.75rem clamp(0.75rem, 3vw, 1.25rem);
   padding: 0.75rem 0.85rem;
   border-radius: var(--sf-radius-xs);
-  background: var(--msk-canvas-1, #f4f4f1);
+  background: var(--mj-surface, var(--msk-canvas-1, #f4f4f1));
 }
 .hp-recent-bar__head {
   display: flex;
@@ -1042,7 +1042,7 @@ html.dark .search-page .search-page-form {
   border-radius: var(--sf-radius-xs);
   text-decoration: none;
   color: inherit;
-  background: color-mix(in srgb, var(--mj-white) 80%, var(--msk-canvas-1, #f4f4f1));
+  background: color-mix(in srgb, var(--mj-white) 80%, var(--mj-surface, var(--msk-canvas-1, #f4f4f1)));
   border: 1px solid color-mix(in srgb, var(--mj-brand) 12%, transparent);
   overflow: hidden;
 }

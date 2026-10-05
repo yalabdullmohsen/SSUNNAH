@@ -4,7 +4,7 @@
 .home-library-card p,
 .home-miracle-card p,
 .home-empty-card p {
-  color: var(--msk-text-2, var(--mj-muted));
+  color: var(--mj-ink-2, var(--mj-muted));
   font-size: 0.9rem;
   line-height: 1.75;
 }
@@ -22,7 +22,7 @@
 }
 
 .home-section-head h2 {
-  color: var(--msk-gold);
+  color: var(--mj-brand, var(--msk-gold));
   font-family: var(--font-body);
   font-size: clamp(1.08rem, 2.24vw, 1.48rem);
   font-weight: 700;
@@ -32,24 +32,24 @@
 
 .home-section-head p {
   max-width: 40rem;
-  color: var(--msk-text-2);
+  color: var(--mj-ink-2, var(--msk-text-2));
 }
 
 .home-section-link {
   flex-shrink: 0;
-  color: var(--msk-gold);
-  border: 1px solid var(--msk-gold-border);
+  color: var(--mj-brand, var(--msk-gold));
+  border: 1px solid var(--border-brand, var(--msk-gold-border));
   border-radius: var(--radius-pill, 999rem);
   padding: 0.48rem 0.95rem;
   font-size: 0.86rem;
   font-weight: 700;
-  background: var(--msk-gold-dim);
+  background: var(--mj-brand-soft, var(--msk-gold-dim));
   transition: background var(--motion-fast), border-color var(--motion-fast);
 }
 
 .home-section-link:hover {
   background: rgba(217,174,92,.18);
-  border-color: var(--msk-gold);
+  border-color: var(--mj-brand, var(--msk-gold));
 }
 
 .home-section {
@@ -106,7 +106,7 @@
 }
 
 .home-daily-meta {
-  color: var(--msk-text-2, var(--mj-muted));
+  color: var(--mj-ink-2, var(--mj-muted));
   font-size: 0.88rem;
   margin-bottom: 0.35rem;
 }
@@ -114,7 +114,7 @@
 
 .home-daily-meta {
   font-size: 0.78rem;
-  color: var(--msk-text-2, var(--mj-muted));
+  color: var(--mj-ink-2, var(--mj-muted));
   margin: 0.2rem 0;
 }
 
