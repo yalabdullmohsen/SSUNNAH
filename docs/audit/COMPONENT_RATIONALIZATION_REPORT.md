@@ -1,6 +1,6 @@
 # COMPONENT_RATIONALIZATION_REPORT
 
-Generated: 2026-10-05T14:05:41.895Z
+Generated: 2026-10-03T09:21:28.250Z
 
 Target: **one component authority per purpose**.
 
@@ -9,11 +9,11 @@ Target: **one component authority per purpose**.
 | cards | AppCard / InteractiveCard / StatusCard | 5 | YES |
 | buttons | Button (+ façades) | 5 | YES |
 | dialogs | ConfirmDialog | 4 | YES |
-| lists | ListSystem / NavigationList / SettingsList | 4 | YES |
 | badges/chips | design-system Badge/Chip (consolidate) | 3 | YES |
 | status | Feedback V2 | 3 | YES |
 | tabs | ContentTabs | 2 | — |
 | search | SearchInput | 2 | YES |
+| lists | NavigationList / ListRow | 2 | — |
 | tables | DataTable / ss-data-table | 0 | — |
 
 ## Usage detail
@@ -28,25 +28,18 @@ Target: **one component authority per purpose**.
 
 ### buttons
 
-- `Button`: 2897
+- `Button`: 2083
 - `ActionButton`: 30
 - `PrimaryButton`: 4
 - `SecondaryButton`: 4
-- `IconButton`: 214
+- `IconButton`: 188
 
 ### dialogs
 
 - `ConfirmDialog`: 1
 - `AdminConfirmDialog`: 34
-- `Dialog`: 10
+- `Dialog`: 7
 - `AlertDialog`: 6
-
-### lists
-
-- `NavigationList`: 9
-- `SettingsList`: 20
-- `SimpleList`: 6
-- `ResultList`: 1
 
 ### badges/chips
 
@@ -56,19 +49,24 @@ Target: **one component authority per purpose**.
 
 ### status
 
-- `EmptyStateV2`: 56
-- `LoadingStateV2`: 20
-- `ErrorStateV2`: 33
+- `EmptyStateV2`: 57
+- `LoadingStateV2`: 14
+- `ErrorStateV2`: 23
 
 ### tabs
 
-- `ContentTabs`: 15
-- `TabSystem`: 4
+- `ContentTabs`: 10
+- `TabSystem`: 2
 
 ### search
 
-- `SearchInput`: 96
+- `SearchInput`: 92
 - `SearchField`: 5
+
+### lists
+
+- `NavigationList`: 8
+- `ListRow`: 2
 
 ### tables
 
