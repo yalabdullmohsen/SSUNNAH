@@ -266,8 +266,8 @@ function cmdEnsureLabels() {
     "safe:ui": "5B21B6",
     "safe:test": "1E3A8A",
     [RELEASE_TRAIN_LABEL]: "0E8A16",
-    [RISKY_MANUAL_REVIEW_LABEL]: "9A3412",
-    [BLOCKED_DANGER_PATH_LABEL]: "7F1D1D",
+    [RISKY_MANUAL_REVIEW_LABEL]: "مسار حساس — موافَق عليه مسبقًا من المالك متى نجحت الفحوص (داخلي: risky:manual-review)",
+    [BLOCKED_DANGER_PATH_LABEL]: "مسار حساس — موافَق عليه مسبقًا من المالك متى نجحت الفحوص (داخلي: blocked:danger-path)",
     "content-safe": "1E3A8A",
     "ui-safe": "5B21B6",
     "code-safe": "0E8A16",
@@ -285,8 +285,8 @@ function cmdEnsureLabels() {
   };
   /** أوصاف عربية للواجهات — الاسم التقني يبقى للمفاتيح الداخلية. */
   const descriptions = {
-    [BLOCKED_DANGER_PATH_LABEL]: "يتطلب مراجعة — مسار خطر (داخلي: blocked:danger-path)",
-    [RISKY_MANUAL_REVIEW_LABEL]: "مراجعة مطلوبة — يحتاج مراجعة بشرية (داخلي: risky:manual-review)",
+    [BLOCKED_DANGER_PATH_LABEL]: "مسار حساس — موافَق عليه مسبقًا من المالك متى نجحت الفحوص (داخلي: blocked:danger-path)",
+    [RISKY_MANUAL_REVIEW_LABEL]: "مسار حساس — موافَق عليه مسبقًا من المالك متى نجحت الفحوص (داخلي: risky:manual-review)",
     "manual-review": "مراجعة مطلوبة",
     "no-auto-merge": "دمج يدوي",
     "no-deploy": "إيقاف نشر",
