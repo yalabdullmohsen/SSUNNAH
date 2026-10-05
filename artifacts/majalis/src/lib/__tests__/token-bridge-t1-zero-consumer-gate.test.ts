@@ -11,9 +11,9 @@ import { fileURLToPath } from "node:url";
 const majalisRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(majalisRoot, rel), "utf8");
 
+/* Kept by quality-campaign gate: --ds-muted/--ds-danger/--ds-success. */
 const removed = [
   "--ds-bg",
-  "--ds-danger",
   "--ds-error",
   "--ds-font-bold",
   "--ds-gold",

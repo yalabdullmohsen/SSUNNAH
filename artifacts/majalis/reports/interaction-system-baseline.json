@@ -1,9 +1,9 @@
 {
-  "measuredAt": "2026-10-05T04:36:41.582Z",
+  "measuredAt": "2026-10-05T05:55:55.068Z",
   "scope": "artifacts/majalis/src",
-  "tsxFiles": 843,
+  "tsxFiles": 842,
   "rawButtonFiles": 71,
-  "rawButtonElements": 274,
+  "rawButtonElements": 257,
   "officialButtonImportFiles": 292,
   "actionButtonConsumerFiles": 7,
   "iconButtonConsumerFiles": 44,

@@ -356,31 +356,34 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
             المزيد
           </h2>
           <nav className="nm-controls-more__nav" aria-label="إجراءات المصحف">
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className="nm-controls-more__item"
               data-testid="mushaf-index"
               onClick={onMoreIndex}
             >
               الفهرس
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="ghost"
               className="nm-controls-more__item"
               data-testid="mushaf-search"
               onClick={onMoreSearch}
             >
               البحث
-            </button>
+            </Button>
             {onBookmarkPage ? (
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 className="nm-controls-more__item"
                 data-testid="mushaf-page-bookmark-btn"
                 onClick={onMoreBookmark}
               >
                 العلامات
-              </button>
+              </Button>
             ) : (
               <a
                 className="nm-controls-more__item"
@@ -392,34 +395,37 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
               </a>
             )}
             {onPlayPage ? (
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 className="nm-controls-more__item"
                 data-testid="mushaf-play-page"
                 onClick={onMorePlay}
               >
                 التلاوة
-              </button>
+              </Button>
             ) : null}
             {onTafsir ? (
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 className="nm-controls-more__item"
                 data-testid="mushaf-more-tafsir"
                 onClick={onMoreTafsir}
               >
                 التفسير
-              </button>
+              </Button>
             ) : null}
             {onNotes ? (
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 className="nm-controls-more__item"
                 data-testid="mushaf-more-notes"
                 onClick={onMoreNotes}
               >
                 الملاحظات
-              </button>
+              </Button>
             ) : (
               <a
                 className="nm-controls-more__item"
@@ -431,24 +437,26 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
               </a>
             )}
             {onSharePage ? (
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 className="nm-controls-more__item"
                 data-testid="mushaf-more-share"
                 onClick={onMoreShare}
               >
                 مشاركة الصفحة
-              </button>
+              </Button>
             ) : null}
             {onCopyLink ? (
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 className="nm-controls-more__item"
                 data-testid="mushaf-more-copy-link"
                 onClick={onMoreCopy}
               >
                 نسخ الرابط
-              </button>
+              </Button>
             ) : null}
           </nav>
 
@@ -491,14 +499,15 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
               إدارة العلامات
             </a>
           </div>
-          <button
+          <Button
             type="button"
+            variant="ghost"
             className="nm-controls-more__close"
             data-testid="mushaf-controls-more-close"
             onClick={closeMore}
           >
             إغلاق
-          </button>
+          </Button>
         </div>
         </>
       ) : null}
@@ -620,12 +629,12 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
             </p>
           ) : null}
           <div className="nm-goto__actions">
-            <button type="submit" data-primary="1">
+            <Button type="submit" variant="primary" data-primary="1">
               انتقال
-            </button>
-            <button type="button" data-primary="0" onClick={closeGoto}>
+            </Button>
+            <Button type="button" variant="secondary" data-primary="0" onClick={closeGoto}>
               إلغاء
-            </button>
+            </Button>
           </div>
         </form>
       ) : null}
@@ -696,34 +705,36 @@ export const MushafVerseMenu = memo(function MushafVerseMenu({
       aria-label="إجراءات الآية"
     >
       <div className="nm-verse-menu__head">
-        <button
+        <Button
           type="button"
+          variant="ghost"
           className="nm-verse-menu__close"
           onClick={onClose}
           aria-label="إغلاق القائمة"
         >
           إغلاق
-        </button>
+        </Button>
         <span className="nm-verse-menu__label">{label}</span>
       </div>
       <div className="nm-verse-menu__grid">
-        <button type="button" className="nm-verse-menu__action" onClick={onTafsir}>
+        <Button type="button" variant="ghost" className="nm-verse-menu__action" onClick={onTafsir}>
           تفسير
-        </button>
-        <button type="button" className="nm-verse-menu__action" onClick={onPlay}>
+        </Button>
+        <Button type="button" variant="ghost" className="nm-verse-menu__action" onClick={onPlay}>
           استماع
-        </button>
-        <button type="button" className="nm-verse-menu__action" onClick={onCopy}>
+        </Button>
+        <Button type="button" variant="ghost" className="nm-verse-menu__action" onClick={onCopy}>
           نسخ
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
+          variant="ghost"
           className="nm-verse-menu__action"
           data-testid="nm-verse-menu-bookmark"
           onClick={onBookmark}
         >
           إضافة فاصل
-        </button>
+        </Button>
       </div>
       {hasBookmark && onDeleteBookmark ? (
         confirmDelete ? (
@@ -773,15 +784,16 @@ export const MushafVerseMenu = memo(function MushafVerseMenu({
           </Button>
         )
       ) : null}
-      <button
+      <Button
         type="button"
+        variant="ghost"
         className="nm-verse-menu__clear"
         data-testid="nm-verse-clear-selection"
         onClick={onClearSelection}
         aria-label="إلغاء التحديد"
       >
         إلغاء التحديد
-      </button>
+      </Button>
       <div className="nm-verse-menu__status" aria-live="polite">
         {status ?? ""}
       </div>
