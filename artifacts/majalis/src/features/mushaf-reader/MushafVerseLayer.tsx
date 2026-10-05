@@ -9,7 +9,7 @@ import type { QpcWord } from "@/lib/quran-data/qpc-page-data";
 import { BASMALA_QPC_WORDS } from "@/lib/quran-data/basmala-qpc-words";
 import { displaySurahName } from "@/lib/quran-display";
 import { toArabicDigits } from "@/lib/utils";
-import { useMushafHighlightKeys } from "@/features/mushaf-shared/mushaf-ayah-sync-store";
+import type { MushafHighlightKeysSnapshot } from "@/features/mushaf-shared/mushaf-ayah-sync-store";
 import { MushafAyahMarker } from "./MushafAyahMarker";
 
 type LineProps = {
@@ -18,8 +18,8 @@ type LineProps = {
   onSelectVerse?: (verseKey: string) => void;
   /** ضغط مطوّل → قائمة الآية (ليس فتح التفسير مباشرة) */
   onLongPressVerse?: (verseKey: string) => void;
-  /** false أثناء القلب / ألواح الجار — بلا اشتراك sync-store */
-  syncHighlights?: boolean;
+  /** لقطة تمييز من MushafPage — بلا اشتراك لكل سطر */
+  highlightKeys: MushafHighlightKeysSnapshot;
 };
 
 /** أفقياً أضيق من عتبة Pan على الآية حتى لا يُسجَّل Long Press أثناء السحب */
@@ -199,11 +199,9 @@ export const MushafVerseLayer = memo(function MushafVerseLayer({
   centered = false,
   onSelectVerse,
   onLongPressVerse,
-  syncHighlights = true,
+  highlightKeys,
 }: LineProps) {
   const pressRef = useRef<PressState | null>(null);
-  /** اشتراك واحد لكل سطر بدل 3×N كلمات */
-  const highlightKeys = useMushafHighlightKeys(syncHighlights);
 
   const clearPress = () => {
     const cur = pressRef.current;
@@ -292,7 +290,7 @@ type BasmalaProps = {
   numbered?: boolean;
   onSelect?: () => void;
   onLongPress?: () => void;
-  syncHighlights?: boolean;
+  highlightKeys: MushafHighlightKeysSnapshot;
 };
 
 export const MushafBasmalaView = memo(function MushafBasmalaView({
@@ -300,12 +298,11 @@ export const MushafBasmalaView = memo(function MushafBasmalaView({
   numbered = false,
   onSelect,
   onLongPress,
-  syncHighlights = true,
+  highlightKeys,
 }: BasmalaProps) {
   const qpc = words && words.length > 0 ? words : BASMALA_QPC_WORDS;
   const body = qpc.filter((w) => w.charType !== "end");
   const end = numbered ? qpc.find((w) => w.charType === "end") : null;
-  const highlightKeys = useMushafHighlightKeys(syncHighlights);
   const selected = highlightKeys.selected === "1:1";
   const playing = highlightKeys.playing === "1:1";
   const searchHit = highlightKeys.search === "1:1";

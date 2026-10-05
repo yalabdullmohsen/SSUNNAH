@@ -657,6 +657,7 @@
     "test:wave6-mushaf-fluidity": "node --import tsx src/lib/__tests__/wave6-mushaf-fluidity-gate.test.ts",
     "test:debt-zero-unification": "node --import tsx src/lib/__tests__/debt-zero-unification-gate.test.ts",
     "test:mushaf-fluidity-optimization": "node --import tsx src/lib/__tests__/mushaf-fluidity-optimization-gate.test.ts",
+    "test:mushaf-a4-a6-refine": "node --import tsx src/lib/__tests__/mushaf-a4-a6-refine-gate.test.ts",
     "capture:mushaf-internal-perf-baseline": "node scripts/mushaf-internal-perf-baseline.mjs --write",
     "test:quran-journey-pr1": "node --import tsx src/lib/__tests__/quran-journey-pr1-contracts-gate.test.ts",
     "test:lessons-guide-pr1": "node --import tsx src/lib/__tests__/lessons-guide-pr1-gate.test.ts",

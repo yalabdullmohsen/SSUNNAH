@@ -75,18 +75,19 @@ export function runMushafFluidityAudit(
 ): FluidityAuditSnapshot {
   const reader = readPkg("src/features/mushaf-reader/NewMushafReader.tsx");
   const verse = readPkg("src/features/mushaf-reader/MushafVerseLayer.tsx");
+  const mushafPage = readPkg("src/features/mushaf-reader/MushafPage.tsx");
   const sync = readPkg("src/features/mushaf-shared/mushaf-ayah-sync-store.ts");
   const tele = readPkg("src/features/mushaf-reader/mushaf-turn-telemetry.ts");
   const pager = readPkg("src/features/mushaf-reader/useMushafPager.ts");
 
-  /* WAVE6: اشتراك سطري واحد (useMushafHighlightKeys) بدل 3×N كلمات */
+  /* A5: اشتراك واحد/صفحة (MushafPage) — السطور تستقبل highlightKeys فقط */
   const verseWordSyncSubscriptionsPerWord = countMatches(
     verse,
     /useMushafAyahWord(?:Selected|Playing|SearchHighlight)\(/g,
   );
+  const pageLevelHighlightKeys = /useMushafHighlightKeys\(syncHighlights\)/.test(mushafPage);
   const lineLevelHighlightKeys =
-    /useMushafHighlightKeys\(syncHighlights\)/.test(verse) ||
-    /useMushafHighlightKeys\(/.test(verse);
+    pageLevelHighlightKeys && !/useMushafHighlightKeys\(/.test(verse);
   /* تجميد اللوحات المجاورة: syncHighlights=false → subscribeNoop */
   const adjacentPaneSyncFrozen =
     /syncHighlights=\{/.test(reader) ||
@@ -182,7 +183,9 @@ export function runMushafFluidityAudit(
     {
       id: "WORD_SYNC_FANOUT_X3_SHEETS",
       severity: lineLevelHighlightKeys ? 2 : adjacentPaneSyncFrozen ? 4 : 9,
-      evidence: lineLevelHighlightKeys
+      evidence: pageLevelHighlightKeys
+        ? "page-level useMushafHighlightKeys (1 subscribe / pane)"
+        : lineLevelHighlightKeys
         ? "line-level useMushafHighlightKeys (1 subscribe / line)"
         : adjacentPaneSyncFrozen
           ? "adjacent/turning panes use noop sync subscribe"

@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-03T22:55:52.555Z",
+  "capturedAt": "2026-10-05T04:53:00.102Z",
   "phase": "AFTER",
   "topDelays": [
     {
@@ -35,7 +35,7 @@
     {
       "id": "WORD_SYNC_FANOUT_X3_SHEETS",
       "severity": 2,
-      "evidence": "line-level useMushafHighlightKeys (1 subscribe / line)",
+      "evidence": "page-level useMushafHighlightKeys (1 subscribe / pane)",
       "class": "PARTIAL"
     },
     {
@@ -78,7 +78,7 @@
     "telemetryVisualTransitionEnd": true,
     "telemetryProductUnlock": true,
     "fontCacheHitSyncUsP50": 0.006,
-    "fontCacheHitSyncUsP95": 0.016,
+    "fontCacheHitSyncUsP95": 0.022,
     "fontCacheHitSamples": 80,
     "estimatedTurnRenderHotspots": 0,
     "singleNeighborPrefetchPipeline": true,

@@ -1344,7 +1344,10 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
     (page <= 1 ||
       (isQpcPageFontReady(page - 1) && Boolean(getCachedMushafPage(page - 1))));
 
-  /* شيتات فقط تعطّل السحب — الجيران يُجهَّزان في الخلفية بلا قطع اللمس */
+  /*
+   * شيتات فقط تعطّل السحب — الجيران يُجهَّزان في الخلفية بلا قطع اللمس.
+   * prefetch خط ±2 (idle) لا يدخل INTERACTION_LOCK — انظر mushaf-lock-ownership.ts
+   */
   const edgesDisabled =
     tafsirOpen || searchOpen || indexOpen || bookmarkComposerOpen || pageBookmarkSheetOpen;
   /* إخفاء الرصيف عند فتح قائمة الآية لتفادي تعارض أزرار التشغيل */

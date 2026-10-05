@@ -1,5 +1,7 @@
 /**
  * آلة حالة تقليب المصحف — توثيق + قيم data-attribute.
+ * تصنيف VISUAL_READINESS / INTERACTION_LOCK / SETTLE_LOCK / AUDIO_STATE_LOCK:
+ * `mushaf-lock-ownership.ts`
  * القفل البصري (`useMushafPager.locking`) مستقل عن قفل المنتج (`pageTurnLockRef`).
  *
  * IDLE → DRAGGING → SETTLING → COMMITTING
