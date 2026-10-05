@@ -90,7 +90,7 @@ small, .meta, .text-muted, .text-secondary {
 
 .ds-btn--primary:hover,
 .btn--primary:hover {
-  background: var(--brand-hover) !important;
+  background: var(--brand-hover);
 }
 
 .ds-btn--ghost,

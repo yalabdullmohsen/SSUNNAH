@@ -177,7 +177,7 @@
 }
 
 .ds-btn--primary,
-.ui-card-btn,
+.ui-card-btn:not(.ui-card-btn--danger),
 .page-action-btn {
   background: var(--ds-emerald);
   color: #fff;
@@ -185,7 +185,7 @@
 }
 
 .ds-btn--primary:hover,
-.ui-card-btn:hover,
+.ui-card-btn:not(.ui-card-btn--danger):hover,
 .page-action-btn:hover {
   background: var(--ds-emerald-deep);
 }
@@ -204,16 +204,16 @@
 }
 
 
-/* Danger button variant */
+/* Danger button variant — wins via :not() exclusion from later primary polish (no !important). */
 .ui-card-btn--danger {
   color: #dc2626;
-  border-color: #fca5a5 !important;
-  background: #fff5f5 !important;
+  border-color: #fca5a5;
+  background: #fff5f5;
 }
 
 .ui-card-btn--danger:hover:not(:disabled) {
-  background: #fee2e2 !important;
-  border-color: #dc2626 !important;
+  background: #fee2e2;
+  border-color: #dc2626;
 }
 
 /**
@@ -2856,7 +2856,7 @@ h1, h2, h3 {
 }
 
 .ds-btn--primary,
-.ui-card-btn,
+.ui-card-btn:not(.ui-card-btn--danger),
 .page-action-btn:not(.page-action-btn--secondary),
 .login-submit {
   background: var(--ds-emerald);
@@ -2865,7 +2865,7 @@ h1, h2, h3 {
 }
 
 .ds-btn--primary:hover:not(:disabled),
-.ui-card-btn:hover:not(:disabled),
+.ui-card-btn:not(.ui-card-btn--danger):hover:not(:disabled),
 .page-action-btn:hover:not(.page-action-btn--secondary):not(:disabled),
 .login-submit:hover:not(:disabled) {
   background: var(--ds-emerald-deep);

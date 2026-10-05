@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "sha": "ref: refs/heads/cursor/hv-msk-adhan-chrome-batch",
+  "sha": "ref: refs/heads/cursor/design-button-important-real-reduction",
   "coverage": {
-    "measuredAt": "2026-10-05T00:13:43.949Z",
+    "measuredAt": "2026-10-05T01:02:30.864Z",
     "cssFileCount": 353,
     "cssFilesCeiling": 353,
     "measuredCssFiles": 353,
