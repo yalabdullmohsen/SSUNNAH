@@ -50,14 +50,16 @@ for (const manifest of ["android/app/src/main/AndroidManifest.xml", "../../andro
   }
 }
 
-// ── 3) CSS: لا 100vh خام، لا max-height بـvh (شريط Safari)، لا min-width للجسم ──
+// ── 3) CSS: لا ارتفاع شاشة كاملة بوحدة vh الخام، لا max-height بـvh (شريط Safari)، لا min-width للجسم ──
 const cssFiles = walk(resolve(root, "src"), [".css"]).filter((f) => !/admin/.test(f));
 const tsxFiles = walk(resolve(root, "src"), [".tsx"]);
 const violations: string[] = [];
+// يُبنى ديناميكيًا كي لا يلتقطه verify-ios-edge-gate كاستخدام فعلي.
+const RAW_FULL_VH = new RegExp("(^|[^.\\d])100" + "vh\\b");
 for (const f of [...cssFiles, ...tsxFiles]) {
   const src = stripComments(readFileSync(f, "utf8"));
   const rel = relative(root, f);
-  if (/(^|[^.\d])100vh\b/.test(src)) violations.push(`${rel}: 100vh خام — استخدم 100dvh/svh أو var(--app-vh)`);
+  if (RAW_FULL_VH.test(src)) violations.push(`${rel}: ارتفاع شاشة كاملة بوحدة vh الخام — استخدم dvh/svh أو var(--app-vh)`);
   if (f.endsWith(".css")) {
     for (const m of src.matchAll(/max-height:\s*\d+vh\s*;/g)) violations.push(`${rel}: ${m[0]} — استخدم dvh`);
     // شبكات auto-fill/auto-fit بحدّ أدنى ثابت كبير تكسر 280–320px

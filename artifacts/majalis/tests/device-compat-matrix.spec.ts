@@ -214,16 +214,32 @@ async function inspect(page: Page): Promise<Omit<RouteReport, "route" | "status"
         if (r.top < hb - 2 && r.bottom > 0) chromeOverlap.push(`h1 تحت الترويسة (${Math.round(r.top)}<${Math.round(hb)})`);
       }
     }
-    if (main && fixedBottom) {
+    if (main && fixedBottom && document.scrollingElement!.scrollHeight > H + 4) {
+      // في نهاية التمرير: أعمق عنصر ورقي في المحتوى يجب أن ينتهي فوق الشريط السفلي
+      const se = document.scrollingElement!;
+      const prevY = se.scrollTop;
+      se.scrollTop = se.scrollHeight;
       const nb = fixedBottom.getBoundingClientRect().top;
-      const pad = document.scrollingElement!.scrollHeight - (main.getBoundingClientRect().bottom + window.scrollY);
-      const mainBottomPad = parseFloat(getComputedStyle(main).paddingBottom) || 0;
-      const reserve = pad + mainBottomPad;
-      const navH = H - nb;
-      if (navH > 0 && reserve + 1 < navH && document.scrollingElement!.scrollHeight > H) {
-        chromeOverlap.push(`المحتوى السفلي قد يختفي تحت الشريط (احتياط ${Math.round(reserve)} < ${Math.round(navH)})`);
+      const inFixed = (el: Element) => {
+        for (let p: Element | null = el; p && p !== main; p = p.parentElement) {
+          const pos = getComputedStyle(p).position;
+          if (pos === "fixed" || pos === "sticky") return true;
+        }
+        return false;
+      };
+      let worst: Element | null = null;
+      let worstB = 0;
+      for (const el of Array.from(main.querySelectorAll("*"))) {
+        if (el.children.length || !visible(el) || inFixed(el)) continue;
+        const r = el.getBoundingClientRect();
+        if (r.bottom > worstB) { worstB = r.bottom; worst = el; }
       }
+      if (worst && worstB > nb + 1 && worstB <= H + 1) {
+        chromeOverlap.push(`${desc(worst)} تحت الشريط السفلي (${Math.round(worstB)}>${Math.round(nb)})`);
+      }
+      se.scrollTop = prevY;
     }
+
 
     return { hOverflow, textOverflow, mediaOverflow, smallTargets, smallInputs, chromeOverlap };
   });
@@ -242,7 +258,8 @@ function setup(vp: Vp, theme: "light" | "dark") {
         } catch {}
         if (scale) {
           document.addEventListener("DOMContentLoaded", () => {
-            document.documentElement.style.setProperty("--ui-font-scale", String(scale));
+            // يحاكي «نص أكبر» في النظام: تكبير الـrem الجذري (inline يغلب ورقة الأنماط)
+            document.documentElement.style.setProperty("font-size", `${Number(scale) * 100}%`, "important");
           });
         }
       },
@@ -285,6 +302,8 @@ test.describe("مصفوفة توافق الأجهزة", () => {
         path.join(OUT_DIR, `${vp.name}-${theme}.json`),
         JSON.stringify({ viewport: vp, theme, reports }, null, 1),
       );
+      const broken = reports.filter((r) => r.status !== 200);
+      expect(broken.map((r) => `${r.route} → ${r.status}`), `${vp.name}/${theme}: مسارات لم تُحمَّل`).toEqual([]);
       const hard = reports.filter((r) => r.hOverflow || r.mediaOverflow.length);
       expect(
         hard.map((r) => `${r.route}: ${r.hOverflow ? `scrollWidth ${r.hOverflow.scrollWidth}>${r.hOverflow.innerWidth} ${r.hOverflow.offenders.join(" | ")}` : ""} ${r.mediaOverflow.join(" | ")}`),
