@@ -1,8 +1,8 @@
 # SEARCH_COVERAGE_REPORT
 
-Generated: 2026-10-03
+Generated: 2026-10-05
 
-Total docs: **4650** · kinds: **30** · shards: **30**
+Total docs: **4650** · kinds: **30** · shards: **0**
 
 | Kind | Count | Min | Status |
 |---|---:|---:|---|

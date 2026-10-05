@@ -60,7 +60,7 @@ export default function NotificationsAndSoundView() {
   return (
     <LegalPageLayout eyebrow="الإعدادات" title="الإشعارات والصوت">
         <LegalSection title="الحالة">
-          <ul className="settings-note" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+          <ul className="settings-note settings-note--list">
             <li>تنبيهات الصلاة: {status.prayerMasterEnabled ? "مفعّلة" : "متوقفة"}</li>
             <li>مسار التوصيل: {status.deliveryContextAr}</li>
             <li>المؤذن الحالي: {status.currentAdhanLabelAr}</li>

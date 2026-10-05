@@ -1,6 +1,6 @@
 # PERFORMANCE_BUDGET_REPORT
 
-Generated: 2026-10-03T09:21:31.895Z
+Generated: 2026-10-05T14:06:08.761Z
 
 ## Declared budgets
 
@@ -16,13 +16,11 @@ Generated: 2026-10-03T09:21:31.895Z
 
 ## Live bundle
 
-- entryJsGzipKiB: **102.38** KiB
-- cssGzipKiB: **29.16** KiB
-- mushafPageJsGzipKiB: **29.78** KiB
+_dist/ not present — NOT_MEASURED_NO_DIST_
 
 ## PERFORMANCE_DRIFT_ALERTS
 
-- none
+- **INFO** `distBundle` — dist/ missing — run build for live gzip enforcement (test:bundle-budget / check-performance-budget)
 
 ## CI hooks
 
