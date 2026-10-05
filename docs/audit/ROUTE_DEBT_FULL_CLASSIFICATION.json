@@ -1,0 +1,3828 @@
+{
+  "sha": "1de2b94b00dacc38ca3e0326b424fa1500214898",
+  "shaShort": "1de2b94b00da",
+  "generatedAt": "2026-10-05T09:19:52.567457+00:00",
+  "source": "docs/audit/evidence/t046-u9-route-matrix/open-route-debt.json",
+  "count": 294,
+  "unknown": 0,
+  "totals": {
+    "PARTIAL": 9,
+    "DEVICE_REQUIRED": 234,
+    "KEEP_JUSTIFIED_WITH_EVIDENCE": 50,
+    "OWNER_ACTION": 1
+  },
+  "items": [
+    {
+      "route": "/about",
+      "sourceClass": "PUBLIC",
+      "trackClass": "PARTIAL",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/academic-research",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/academic-research/:id",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/academic-research/assistant",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/academic-research/submit",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/account-deletion",
+      "sourceClass": "ACCOUNT",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/adab-talab-ilm",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/adhan-help",
+      "sourceClass": "PUBLIC",
+      "trackClass": "PARTIAL",
+      "debtFields": [
+        "Canvas",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/adhan-settings",
+      "sourceClass": "SETTINGS",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Canvas",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/adhkar",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/adhkar/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/auto-content",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/automation",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/automation/center",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/automation/content-production",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/automation/dashboard",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/automation/platform",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/automation/review",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/automation/sources",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/autonomous-platform",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/content",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/content-import/image",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/content-import/url",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/content-production",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/dashboard",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/feature-status",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/fiqh-quality",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/fiqh-review",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/import",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/integrations/instagram",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/legacy",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/review-center",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/review-hub",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/sources",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/universities",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/users",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3/analytics",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3/audit",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3/automation",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3/community",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3/content",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3/content/fawaid",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3/content/lessons",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3/content/sheikhs",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3/notifications",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3/review",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3/reviews",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3/settings",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3/system",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3/taxonomy",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/admin/v3/users",
+      "sourceClass": "ADMIN_ONLY",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Theme",
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Loading",
+        "Error",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/akhlaq",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/alamat-saah",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/amr-bil-maruf",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/amrad-qalbiyya",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/annual-courses/:id",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/arabic-language",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/arabic-language/:categoryId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/arabic-language/:categoryId/:topicId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/arbaeen-nawawi",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/arbaeen-nawawi/:id",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/arkan",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/arkan-iman",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/asma-husna",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/assistant",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/auth/callback",
+      "sourceClass": "AUTH",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/auth/update-password",
+      "sourceClass": "AUTH",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/c/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/calendar",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/car-mode",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/cards",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/competitions",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/competitions/:id",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/contact",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/daily-wird",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/dalail-nubuwwah",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/dalail-nubuwwah/:categoryId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/dalail-nubuwwah/:categoryId/:topicId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/data-licenses",
+      "sourceClass": "LEGAL",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/dev/design-system",
+      "sourceClass": "UTILITY",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/discover-islam",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/discover-islam/articles/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/discover-islam/contact",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/discover-islam/doubts",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/discover-islam/doubts/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/discover-islam/how-to-convert",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/discover-islam/new-muslim",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/discover-islam/new-muslim/:day",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/discover-islam/questions",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/discover-islam/questions/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/duas",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/duas-quran",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/durus-imaniyya",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/durus-imaniyya/:categoryId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/durus-imaniyya/:categoryId/:topicId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/durus-mutanawwia",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/durus-mutanawwia/:categoryId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/durus-mutanawwia/:categoryId/:topicId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/fadail-aamal",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/family",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/fatwa-policy",
+      "sourceClass": "LEGAL",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/fawaid",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/feature-tour",
+      "sourceClass": "UTILITY",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/fikr-waqia",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/fikr-waqia/:categoryId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/fikr-waqia/:categoryId/:topicId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/fiqh-qawaid",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/fiqh/books/:bookId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/fiqh/books/:bookId/chapters/:chapterId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/fiqh/books/:bookId/lessons/:lessonId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/fiqh/topics/:topicId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/fiqh/usul",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/flashcards",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/hadith-science",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/hadith/arbaeen-love-of-allah",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/hadith/books",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/hadith/books-and-rulings",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/hadith/daif",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/hadith/mawdu",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/hadith/sahih",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/hajj",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/hifz-path",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/hifz-path/c/:category",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/hifz-path/my",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/hifz-path/p/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/hifz-path/p/:slug/u/:unitId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/hikam-salaf",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/iman-topics",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/iman-topics/:categoryId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/iman-topics/:categoryId/:topicId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/institutions",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/internal/status",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/islam-stats",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/islamic-directory",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/islamic-glossary",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/islamic-landmarks",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/islamic-landmarks/:id",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/islamic-landmarks/map",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/islamic-sects",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/islamic-sects/:id",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/janaza",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/janna-naar",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/jumuah",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/knowledge-graph",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/knowledge/:section",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/knowledge/:section/:id",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/kuwait-lessons",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/learn/lesson/:id",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/learn/series/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/lessons/:id",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/lessons/archive",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/login",
+      "sourceClass": "AUTH",
+      "trackClass": "PARTIAL",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/madhahib",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/madhahib/:id",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/malaika",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/maqasid-sharia",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/maqasid-sharia/:categoryId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/maqasid-sharia/:categoryId/:topicId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/mawarith",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/mawarith/calculator",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/mawsuaat",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/mawsuaat/:categoryId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/mawsuaat/:categoryId/:topicId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/memorization",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/methodology",
+      "sourceClass": "LEGAL",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/mind-map",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/miracles",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/miracles/quran",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/miracles/sunnah",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/miracles/topic/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/mosque-mode",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/mushaf",
+      "sourceClass": "IMMERSIVE",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Floating",
+        "Keyboard",
+        "Contrast"
+      ],
+      "priority": true
+    },
+    {
+      "route": "/mushaf/:surah",
+      "sourceClass": "IMMERSIVE",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Floating",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/mushaf/bookmarks",
+      "sourceClass": "IMMERSIVE",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Floating",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/mushaf/page/:page",
+      "sourceClass": "IMMERSIVE",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Canvas",
+        "Buttons",
+        "Cards",
+        "Back",
+        "Floating",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/mutashabihat",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/my-learning",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/my-submissions",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/nations",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/nations/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/nikah",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/notification-settings",
+      "sourceClass": "SETTINGS",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/notifications-and-sound",
+      "sourceClass": "AUTH",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/occasions",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/occasions-lessons",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/offline",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/prayer-ranks",
+      "sourceClass": "PUBLIC",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Canvas",
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/prayer-times",
+      "sourceClass": "PUBLIC",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Canvas"
+      ],
+      "priority": true
+    },
+    {
+      "route": "/privacy",
+      "sourceClass": "LEGAL",
+      "trackClass": "PARTIAL",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/privacy-center",
+      "sourceClass": "LEGAL",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/profile",
+      "sourceClass": "ACCOUNT",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard"
+      ],
+      "priority": true
+    },
+    {
+      "route": "/progress",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/prophet-stories/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/prophetic-medicine",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/prophets",
+      "sourceClass": "PUBLIC",
+      "trackClass": "PARTIAL",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/prophets-stories/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/prophets/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/prophets/tree",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/qibla",
+      "sourceClass": "PUBLIC",
+      "trackClass": "KEEP_JUSTIFIED_WITH_EVIDENCE",
+      "debtFields": [
+        "Canvas",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quiz",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran-circles",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran-engine",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran-engine/viewer",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran-hub/numbers",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran-hub/qiraat",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran-hub/seven-ahruf",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran-hub/tajweed",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran-hub/tajweed/:chapter",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran-hub/terms",
+      "sourceClass": "LEGAL",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran-hub/tilawa",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran-knowledge",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran-memorization",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran/hifz-loop",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran/makki-madani",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran/memorization-plans",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran/offline-player",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran/people",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran/people/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran/revelation-order",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran/search",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran/surah-stories",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran/surah-stories/:number",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran/surahs",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/quran/worship-hub",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/raqaiq",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/reading-plans",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/register",
+      "sourceClass": "AUTH",
+      "trackClass": "PARTIAL",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/researcher",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/researcher-profile",
+      "sourceClass": "ACCOUNT",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/riba",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/ruqya",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/sadaqa",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/sahabah",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/salah-guide",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/sawm",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/scholars",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/scholars/:id",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/scientific-announcements/:id",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/search/:q",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/sections",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/seerah",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/settings",
+      "sourceClass": "SETTINGS",
+      "trackClass": "PARTIAL",
+      "debtFields": [
+        "Keyboard"
+      ],
+      "priority": true
+    },
+    {
+      "route": "/shamael",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/shubuhat",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/sins-and-rights",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/sins-and-rights/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/sitemap",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/sources",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/sources/:id",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/stats",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/stories",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/study-room",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/submit",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/sujood-sahw",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/sunan-yawmiyya",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/sunnah-studies",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/sunnah-studies/:categoryId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/sunnah-studies/:categoryId/:topicId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/support",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/tafsir",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/tahara",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/talaq",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/tarikh-islami",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/tarikh-islami/:id",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/tasbih",
+      "sourceClass": "PUBLIC",
+      "trackClass": "PARTIAL",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/tawba",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/tawhid",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/tawhid/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/tazkiya",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/tazkiya-topics",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/tazkiya-topics/:categoryId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/tazkiya-topics/:categoryId/:topicId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/teachers",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/teachers/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/terms",
+      "sourceClass": "LEGAL",
+      "trackClass": "PARTIAL",
+      "debtFields": [
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/transcribe",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/udhiya",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/ulum-quran",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/universities",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/universities/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/universities/compare",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/updates",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/updates/auto/:slug",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/upload",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/usra-mujtama",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/usra-mujtama/:categoryId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/usra-mujtama/:categoryId/:topicId",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/vault",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/waqf",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/wasaya-nabawiyya",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/zakat",
+      "sourceClass": "PUBLIC",
+      "trackClass": "DEVICE_REQUIRED",
+      "debtFields": [
+        "RTL",
+        "Keyboard",
+        "Contrast",
+        "StartupCLS"
+      ],
+      "priority": false
+    },
+    {
+      "route": "/account",
+      "sourceClass": "ACCOUNT",
+      "trackClass": "OWNER_ACTION",
+      "debtFields": [
+        "Routing"
+      ],
+      "priority": true
+    }
+  ]
+}
