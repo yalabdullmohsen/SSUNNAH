@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "sha": "ref: refs/heads/cursor/design-button-important-real-reduction",
+  "sha": "ref: refs/heads/main",
   "coverage": {
-    "measuredAt": "2026-10-05T01:02:30.864Z",
+    "measuredAt": "2026-10-05T03:45:56.005Z",
     "cssFileCount": 353,
     "cssFilesCeiling": 353,
     "measuredCssFiles": 353,
