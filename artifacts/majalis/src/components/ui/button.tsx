@@ -146,7 +146,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         data-loading={loading ? "1" : undefined}
         {...props}
       >
-        {content}
+        {/* Slot يدمج الخصائص في ابنه الوحيد — تمرير Fragment كان يُسقط className/data-* عن الرابط */}
+        {asChild ? children : content}
       </Comp>
     );
   },

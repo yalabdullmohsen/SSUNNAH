@@ -633,14 +633,6 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
-/* Keep older waveform/diff utilities usable if imported elsewhere */
-.rh-waveform,
-.rh-diff,
-.rh-stats,
-.rh-filters {
-  /* legacy hooks retained for optional embeds */
-}
-
 @media (max-width: 1024px) {
   .rh-flutter-stats {
     grid-template-columns: 1fr;

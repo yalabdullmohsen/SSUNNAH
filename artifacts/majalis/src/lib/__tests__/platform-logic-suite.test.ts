@@ -125,7 +125,8 @@ console.log("\n=== 4. Smart local schedule ===");
   assert(items.some((i) => i.kind === "dhikr"), "schedules dhikr phrases");
   assert(items.filter((i) => i.kind === "dhikr").length === 7, "seven dhikr phrases");
   assert(items.some((i) => i.title === "الحمد لله"), "includes alhamdulillah");
-  assert(items.some((i) => i.kind === "prayer"), "schedules prayer");
+  // الصلاة يملكها محرك الأذان بمواقيت حقيقية — كان الجدول الذكي يكرّرها بأوقات ثابتة خاطئة.
+  assert(!items.some((i) => (i.kind as string) === "prayer"), "no fixed-time prayer items");
   assert(items.some((i) => i.kind === "quran"), "schedules quran daily reminder");
   assert(items.some((i) => i.kind === "khatmah"), "schedules khatmah when behind");
   assert(items.every((i, idx) => idx === 0 || items[idx - 1].minuteOfDay <= i.minuteOfDay), "sorted by minute");

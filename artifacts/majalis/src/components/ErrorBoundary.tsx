@@ -2,9 +2,11 @@ import { Component, type ErrorInfo, type ReactNode } from "react";
 import { buildErrorReport, copyErrorId, createErrorId, logClientError } from "@/lib/error-report";
 import { CONTACT_EMAIL } from "@/lib/site-config";
 import {
+  canAutoReloadForStaleChunk,
   hardRecoverStaleDeploy,
   isBrowserOffline,
   isChunkLoadError,
+  reloadOnceForStaleChunk,
   tryRecoverFromStaleChunk,
 } from "@/lib/chunk-recovery";
 import { clearChunkReloadGuard } from "@/lib/lazy-with-retry";
@@ -20,7 +22,14 @@ type State = {
   componentStack: string | null;
   /** استعادة chunk جارية — لم تعد تُستخدم لواجهة حاجبة */
   recovering: boolean;
+  /** chunk قديم بعد نشر: إعادة تحميل صامتة واحدة جارية — لا شاشة خطأ */
+  autoReloading: boolean;
 };
+
+/** chunk قديم ومحاولة إعادة التحميل التلقائية متاحة (قراءة فقط — الاستهلاك في componentDidCatch). */
+function shouldAutoReload(error: Error): boolean {
+  return isChunkLoadError(error) && canAutoReloadForStaleChunk();
+}
 
 const ERROR_ESCAPE_LINKS = [
   { href: "/lessons", label: "الدروس" },
@@ -60,6 +69,7 @@ export class ErrorBoundary extends Component<Props, State> {
     errorId: "",
     componentStack: null,
     recovering: false,
+    autoReloading: false,
   };
 
   static getDerivedStateFromError(error: Error): Partial<State> {
@@ -70,10 +80,16 @@ export class ErrorBoundary extends Component<Props, State> {
       errorId: createErrorId("MJL"),
       componentStack: null,
       recovering: false,
+      autoReloading: shouldAutoReload(error),
     };
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
+    if (this.state.autoReloading) {
+      // إعادة تحميل صامتة واحدة — بلا شاشة خطأ ولا تسجيل فشل إقلاع
+      if (reloadOnceForStaleChunk("boundary-catch", error)) return;
+      this.setState({ autoReloading: false });
+    }
     const errorId = this.state.errorId || createErrorId("MJL");
     this.setState({ componentStack: info.componentStack ?? null, errorId });
     applyErrorBoundaryRobots(true);
@@ -115,6 +131,7 @@ export class ErrorBoundary extends Component<Props, State> {
       errorId: "",
       componentStack: null,
       recovering: false,
+      autoReloading: false,
     });
   };
 
@@ -146,6 +163,7 @@ export class ErrorBoundary extends Component<Props, State> {
   };
 
   render() {
+    if (this.state.error && this.state.autoReloading) return null;
     if (this.state.error) {
       const isDev = import.meta.env.DEV;
       const chunkError = isChunkLoadError(this.state.error);
@@ -237,23 +255,35 @@ type SectionBoundaryState = {
   /** Bumps on retry so failed React.lazy factories are not reused. */
   remountKey: number;
   recovering: boolean;
+  autoReloading: boolean;
 };
 
 /**
  * Lazy-section boundary: one chunk reload max, then Arabic retry that remounts children.
  */
 export class SectionErrorBoundary extends Component<SectionBoundaryProps, SectionBoundaryState> {
-  state: SectionBoundaryState = { error: null, errorId: "", remountKey: 0, recovering: false };
+  state: SectionBoundaryState = {
+    error: null,
+    errorId: "",
+    remountKey: 0,
+    recovering: false,
+    autoReloading: false,
+  };
 
   static getDerivedStateFromError(error: Error): Partial<SectionBoundaryState> {
     return {
       error,
       errorId: createErrorId("SEC"),
       recovering: false,
+      autoReloading: shouldAutoReload(error),
     };
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
+    if (this.state.autoReloading) {
+      if (reloadOnceForStaleChunk(`section:${this.props.name}`, error)) return;
+      this.setState({ autoReloading: false });
+    }
     void logClientError(
       buildErrorReport(error, {
         errorId: this.state.errorId || createErrorId("SEC"),
@@ -274,6 +304,7 @@ export class SectionErrorBoundary extends Component<SectionBoundaryProps, Sectio
       errorId: "",
       remountKey: s.remountKey + 1,
       recovering: false,
+      autoReloading: false,
     }));
   };
 
@@ -282,6 +313,7 @@ export class SectionErrorBoundary extends Component<SectionBoundaryProps, Sectio
   };
 
   render() {
+    if (this.state.error && this.state.autoReloading) return null;
     if (this.state.error) {
       const chunkError = isChunkLoadError(this.state.error);
       const offline = isBrowserOffline();

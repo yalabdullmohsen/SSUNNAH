@@ -10,7 +10,7 @@
 ## Light / Dark
 
 - يجب أن تبقى النصوص قابلة للقراءة في الوضعين؛ بوابات Color contrast Playwright في CI عند path-lane البصري.
-- مخاطر موثّقة تاريخيًا: نص داكن على سطح داكن، أسطح mint كبيرة، neon/glow — راجع `docs/CONTRAST_*`, `UI_FIX_REPORT.md`, `visual-fix-report.md` مع ربط الصفحات وقت الإصلاح.
+- مخاطر موثّقة تاريخيًا: نص داكن على سطح داكن، أسطح mint كبيرة، neon/glow — راجع `docs/CONTRAST_*`, `docs/reports/UI_FIX_REPORT.md`, `visual-fix-report.md` مع ربط الصفحات وقت الإصلاح.
 
 ## مكوّنات وأنماط
 

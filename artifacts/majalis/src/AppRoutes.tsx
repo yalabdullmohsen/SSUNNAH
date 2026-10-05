@@ -27,7 +27,6 @@ import {
   IslamicGlossaryPage,
   FlashCardsPage,
   NotificationSettingsPage,
-  NotificationsAndSoundPage,
   ProgressCenterPage,
   OfflineCenterPage,
   WidgetCenterPage,
@@ -469,7 +468,8 @@ export default function AppRoutes() {
       <Route path="/car-mode"><SafeLazyRoute component={CarModePage} /></Route>
       <Route path="/mosque-mode"><SafeLazyRoute component={MosqueModePage} /></Route>
       <Route path="/notification-settings"><SafeLazyRoute component={NotificationSettingsPage} /></Route>
-      <Route path="/notifications-and-sound"><SafeLazyRoute component={NotificationsAndSoundPage} /></Route>
+      {/* دُمجت في مركز الإشعارات الموحّد (كانت تكرّر مفاتيح الصلاة وتحفظ أصواتًا لا يقرؤها المحرك) */}
+      <Route path="/notifications-and-sound"><Redirect to="/notification-settings" /></Route>
       <Route path="/study-room"><SafeLazyRoute component={StudyRoomPage} /></Route>
       <Route path="/family"><SafeLazyRoute component={FamilyModePage} /></Route>
       <Route path="/family-mode"><Redirect to="/family" /></Route>

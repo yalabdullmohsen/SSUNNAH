@@ -7,11 +7,9 @@ import {
   notificationBodyWithoutBrand,
   notificationTitleWithoutBrand,
 } from "@/lib/notifications/copy";
-import {
-  SEASONAL_NOTIFICATION_POOL,
-  formatNotificationMinutesPhrase,
-  pickLocalizedNotification,
-} from "@/lib/notifications/localization";
+import { SEASONAL_NOTIFICATION_POOL } from "@/lib/notifications/localization";
+import { loadSunnahNotificationPrefs } from "@/lib/sunnah-notifications/preferences";
+import { isWithinQuietHours } from "@/lib/sunnah-notifications/quiet-hours";
 import {
   defaultSectionsPrefs,
   type NotifSectionId,
@@ -20,143 +18,145 @@ import {
 
 const STORAGE_KEY = "majalis_notif_prefs_v1";
 
-export type PrayerNotifModes = {
-  /** تنبيه قبل الأذان */
-  preEnabled: boolean;
-  /** إشعار الأذان */
-  adhanEnabled: boolean;
-  /** تنبيه بعد الأذان */
-  postEnabled: boolean;
-};
-
 export type NotifPrefs = {
+  /** المفتاح العام لتذكيرات المحتوى (لا يشمل الصلاة — لها مخزنها ومحركها). */
   enabled: boolean;
-  flashcardsReminder: boolean;   // مراجعة البطاقات المستحقة
-  resumeReminder: boolean;       // الدرس الذي لم يُكتمل
-  prayerReminder: boolean;       // قبل الصلاة بـ 10 دقائق
-  /** تذكير ورد القرآن اليومي الساعة 5 مساءً (RN scheduleDailyReminder). */
+  flashcardsReminder: boolean;   // مراجعة البطاقات المستحقة (فئة seekingKnowledge)
+  /** تذكير ورد القرآن اليومي الساعة 5 مساءً (فئة quran). */
   quranDailyReminder: boolean;
-  /** تذكير أذكار الصباح/المساء — يُفعَّل من الإعدادات فقط (لا طلب إذن عند الإطلاق). */
+  /** تذكير أذكار الصباح/المساء — يُفعَّل من الإعدادات فقط (لا طلب إذن عند الإطلاق). */
   adhkarReminder: boolean;
-  /** تذكيرات صوتية بعبارات الذكر (سبحان الله، الحمد لله، …) طوال ساعات اليقظة. */
+  /** تذكيرات بعبارات الذكر (سبحان الله، الحمد لله، …) طوال ساعات اليقظة. */
   dhikrPhraseReminder: boolean;
-  reminderHour: number;          // الساعة المفضلة للتذكير (0-23)
+  reminderHour: number;          // ساعة تذكير المراجعة (0-23)
   reminderMinute: number;
-  /** أقسام الإشعارات الموحّدة (الصلاة، القرآن، …) */
+  /** فئات التذكيرات الموحّدة — مصدر الحقيقة للتفعيل */
   sections: Record<NotifSectionId, NotifSectionPrefs>;
-  /** أنماط تنبيه الصلاة داخل قسم الصلاة */
-  prayerModes: PrayerNotifModes;
 };
 
-const DEFAULT_PRAYER_MODES: PrayerNotifModes = {
-  preEnabled: true,
-  adhanEnabled: true,
-  postEnabled: true,
-};
+/** مفاتيح قديمة كانت تُخزَّن ولا يقرؤها أي مُجدوِل — تُحذف عند أول حفظ. */
+const DEAD_STORED_KEYS = ["prayerReminder", "resumeReminder", "prayerModes"] as const;
+/** أقسام قديمة أُزيلت؛ تفعيل «الصلاة على النبي/الاستغفار» يُرحَّل إلى تذكير الذكر (يشملهما). */
+const LEGACY_DHIKR_SECTIONS = ["salawat", "istighfar"] as const;
 
 const DEFAULTS: NotifPrefs = {
   enabled: false,
   flashcardsReminder: false,
-  resumeReminder: false,
-  prayerReminder: false,
   quranDailyReminder: false,
   adhkarReminder: false,
   dhikrPhraseReminder: false,
   reminderHour: 8,
   reminderMinute: 0,
   sections: defaultSectionsPrefs(),
-  prayerModes: { ...DEFAULT_PRAYER_MODES },
 };
 
+type LegacyFlags = Pick<NotifPrefs, "quranDailyReminder" | "adhkarReminder" | "flashcardsReminder">;
+
 function mergeSectionPrefs(
-  incoming: Partial<Record<NotifSectionId, Partial<NotifSectionPrefs>>> | undefined,
-  legacy: Pick<
-    NotifPrefs,
-    | "prayerReminder"
-    | "quranDailyReminder"
-    | "adhkarReminder"
-    | "flashcardsReminder"
-    | "resumeReminder"
-  >,
+  incoming: Partial<Record<string, Partial<NotifSectionPrefs>>> | undefined,
+  legacy: LegacyFlags,
 ): Record<NotifSectionId, NotifSectionPrefs> {
   const base = defaultSectionsPrefs();
   if (incoming) {
     for (const id of Object.keys(base) as NotifSectionId[]) {
       const patch = incoming[id];
-      if (!patch) continue;
-      base[id] = {
-        ...base[id],
-        ...patch,
-        weekdays: Array.isArray(patch.weekdays) ? [...patch.weekdays] : [...base[id].weekdays],
-      };
+      // نأخذ التفعيل فقط — حقول العدد/الفترة/الأيام القديمة لا يقرؤها أحد.
+      if (patch && typeof patch.enabled === "boolean") base[id] = { enabled: patch.enabled };
     }
     return base;
   }
   // ترحيل من الأعلام القديمة عند غياب sections
-  base.prayer.enabled = legacy.prayerReminder;
   base.quran.enabled = legacy.quranDailyReminder;
   base.adhkar.enabled = legacy.adhkarReminder;
   base.seekingKnowledge.enabled = legacy.flashcardsReminder;
-  base.lessons.enabled = legacy.resumeReminder;
   return base;
 }
 
-/** مزامنة الأعلام القديمة مع أقسام الواجهة الجديدة (للتوافق مع الجدولة الحالية). */
+/** مزامنة الأعلام القديمة مع الفئات (للتوافق مع مسارات الجدولة القائمة). */
 export function syncLegacyFlagsFromSections(prefs: NotifPrefs): NotifPrefs {
   const s = prefs.sections;
   return {
     ...prefs,
-    prayerReminder: s.prayer?.enabled ?? prefs.prayerReminder,
     quranDailyReminder: s.quran?.enabled ?? prefs.quranDailyReminder,
     adhkarReminder: s.adhkar?.enabled ?? prefs.adhkarReminder,
     flashcardsReminder: s.seekingKnowledge?.enabled ?? prefs.flashcardsReminder,
-    resumeReminder: s.lessons?.enabled ?? prefs.resumeReminder,
   };
+}
+
+function freshDefaults(): NotifPrefs {
+  return { ...DEFAULTS, sections: defaultSectionsPrefs() };
 }
 
 export function loadNotifPrefs(): NotifPrefs {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { ...DEFAULTS, sections: defaultSectionsPrefs(), prayerModes: { ...DEFAULT_PRAYER_MODES } };
-    const parsed = JSON.parse(raw) as Partial<NotifPrefs>;
+    if (!raw) return freshDefaults();
+    const parsed = JSON.parse(raw) as Partial<NotifPrefs> & Record<string, unknown>;
+    const legacySections = (parsed.sections ?? {}) as Record<string, { enabled?: unknown } | undefined>;
+    const legacyDhikrOn = LEGACY_DHIKR_SECTIONS.some((id) => legacySections[id]?.enabled === true);
     const merged: NotifPrefs = {
-      ...DEFAULTS,
-      ...parsed,
+      enabled: typeof parsed.enabled === "boolean" ? parsed.enabled : DEFAULTS.enabled,
+      flashcardsReminder: parsed.flashcardsReminder ?? DEFAULTS.flashcardsReminder,
+      quranDailyReminder: parsed.quranDailyReminder ?? DEFAULTS.quranDailyReminder,
+      adhkarReminder: parsed.adhkarReminder ?? DEFAULTS.adhkarReminder,
+      dhikrPhraseReminder: Boolean(parsed.dhikrPhraseReminder ?? DEFAULTS.dhikrPhraseReminder) || legacyDhikrOn,
+      reminderHour: typeof parsed.reminderHour === "number" ? parsed.reminderHour : DEFAULTS.reminderHour,
+      reminderMinute: typeof parsed.reminderMinute === "number" ? parsed.reminderMinute : DEFAULTS.reminderMinute,
       sections: mergeSectionPrefs(parsed.sections, {
-        prayerReminder: parsed.prayerReminder ?? DEFAULTS.prayerReminder,
         quranDailyReminder: parsed.quranDailyReminder ?? DEFAULTS.quranDailyReminder,
         adhkarReminder: parsed.adhkarReminder ?? DEFAULTS.adhkarReminder,
         flashcardsReminder: parsed.flashcardsReminder ?? DEFAULTS.flashcardsReminder,
-        resumeReminder: parsed.resumeReminder ?? DEFAULTS.resumeReminder,
       }),
-      prayerModes: { ...DEFAULT_PRAYER_MODES, ...(parsed.prayerModes ?? {}) },
     };
     return syncLegacyFlagsFromSections(merged);
   } catch {
-    return { ...DEFAULTS, sections: defaultSectionsPrefs(), prayerModes: { ...DEFAULT_PRAYER_MODES } };
+    return freshDefaults();
   }
 }
 
+/** هل في التخزين قيم قديمة ميتة تحتاج ترحيلًا؟ */
+export function notifPrefsNeedMigration(): boolean {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return false;
+    const parsed = JSON.parse(raw) as Record<string, unknown> & { sections?: Record<string, unknown> };
+    if (DEAD_STORED_KEYS.some((k) => k in parsed)) return true;
+    const sections = parsed.sections ?? {};
+    return Object.keys(sections).some((k) => !(k in DEFAULTS.sections)) ||
+      Object.values(sections).some((v) => v && typeof v === "object" && Object.keys(v).some((f) => f !== "enabled"));
+  } catch {
+    return false;
+  }
+}
+
+/** ترحيل مرة واحدة: يعيد كتابة التخزين بالشكل الموحّد ويحذف المفاتيح الميتة. */
+export function migrateNotifPrefsStorage(): boolean {
+  if (!notifPrefsNeedMigration()) return false;
+  saveNotifPrefs(loadNotifPrefs());
+  return true;
+}
+
 export function saveNotifPrefs(prefs: NotifPrefs): void {
-  // ادفع الأعلام القديمة → الأقسام (مسارات Adhan/Quran التي تعدّل العلم فقط)
-  // ثم أعد مزامنة الأعلام من الأقسام لضمان اتساق واحد عند القراءة.
+  // ادفع الأعلام القديمة → الفئات (مسارات Adhan/Quran التي تعدّل العلم فقط)
+  // ثم أعد مزامنة الأعلام من الفئات لضمان اتساق واحد عند القراءة.
   const baseSections = prefs.sections ?? defaultSectionsPrefs();
   const sections: Record<NotifSectionId, NotifSectionPrefs> = {
-    ...baseSections,
-    prayer: { ...baseSections.prayer, enabled: prefs.prayerReminder },
-    quran: { ...baseSections.quran, enabled: prefs.quranDailyReminder },
-    adhkar: { ...baseSections.adhkar, enabled: prefs.adhkarReminder },
-    seekingKnowledge: {
-      ...baseSections.seekingKnowledge,
-      enabled: prefs.flashcardsReminder,
-    },
-    lessons: { ...baseSections.lessons, enabled: prefs.resumeReminder },
+    quran: { enabled: prefs.quranDailyReminder },
+    adhkar: { enabled: prefs.adhkarReminder },
+    seekingKnowledge: { enabled: prefs.flashcardsReminder },
+    fridayOccasions: { enabled: Boolean(baseSections.fridayOccasions?.enabled) },
   };
-  const next = syncLegacyFlagsFromSections({
-    ...prefs,
-    sections,
-    prayerModes: prefs.prayerModes ?? { ...DEFAULT_PRAYER_MODES },
-  });
+  const synced = syncLegacyFlagsFromSections({ ...prefs, sections });
+  const next: NotifPrefs = {
+    enabled: synced.enabled,
+    flashcardsReminder: synced.flashcardsReminder,
+    quranDailyReminder: synced.quranDailyReminder,
+    adhkarReminder: synced.adhkarReminder,
+    dhikrPhraseReminder: synced.dhikrPhraseReminder,
+    reminderHour: synced.reminderHour,
+    reminderMinute: synced.reminderMinute,
+    sections: synced.sections,
+  };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
   void import("@/lib/native-storage").then(({ storageSetSync }) => {
     storageSetSync(STORAGE_KEY, JSON.stringify(next));
@@ -168,27 +168,15 @@ export function updateNotifSection(
   patch: Partial<NotifSectionPrefs>,
 ): NotifPrefs {
   const current = loadNotifPrefs();
-  const prev = current.sections[sectionId] ?? defaultSectionsPrefs()[sectionId];
-  const section: NotifSectionPrefs = {
-    ...prev,
-    ...patch,
-    weekdays: patch.weekdays ? [...patch.weekdays] : [...prev.weekdays],
-  };
+  const section: NotifSectionPrefs = { ...current.sections[sectionId], ...patch };
   const next: NotifPrefs = {
     ...current,
-    sections: {
-      ...current.sections,
-      [sectionId]: section,
-    },
+    sections: { ...current.sections, [sectionId]: section },
   };
   // احفظ التفعيل في الأعلام القديمة قبل save (وإلا سيُعاد من العلم القديم)
-  if (patch.enabled !== undefined) {
-    if (sectionId === "prayer") next.prayerReminder = section.enabled;
-    if (sectionId === "quran") next.quranDailyReminder = section.enabled;
-    if (sectionId === "adhkar") next.adhkarReminder = section.enabled;
-    if (sectionId === "seekingKnowledge") next.flashcardsReminder = section.enabled;
-    if (sectionId === "lessons") next.resumeReminder = section.enabled;
-  }
+  if (sectionId === "quran") next.quranDailyReminder = section.enabled;
+  if (sectionId === "adhkar") next.adhkarReminder = section.enabled;
+  if (sectionId === "seekingKnowledge") next.flashcardsReminder = section.enabled;
   saveNotifPrefs(next);
   return loadNotifPrefs();
 }
@@ -221,10 +209,38 @@ export function getPermissionStatus(): NotificationPermission | "unsupported" {
   return Notification.permission;
 }
 
-export function sendLocalNotification(
-  title: string,
-  options?: { body?: string; icon?: string; tag?: string },
-): void {
+export type LocalNotificationOptions = {
+  body?: string;
+  icon?: string;
+  tag?: string;
+  /** مسار داخلي يُفتح عند النقر (يُنقّى: يجب أن يبدأ بـ / ولا يبدأ بـ //). */
+  url?: string;
+};
+
+/** ينقّي مسار الربط العميق — لا روابط خارجية من الإشعارات. */
+export function sanitizeNotificationUrl(url: unknown): string | undefined {
+  if (typeof url !== "string" || !url.startsWith("/") || url.startsWith("//")) return undefined;
+  return url;
+}
+
+/** تنقّل داخلي من نقرة إشعار (ويب/أصلي) — عبر History API ليلتقطه wouter. */
+export function navigateToNotificationUrl(url: unknown): void {
+  const target = sanitizeNotificationUrl(url);
+  if (!target || typeof window === "undefined") return;
+  const current = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+  if (current === target) return;
+  window.history.pushState({}, "", target);
+  window.dispatchEvent(new PopStateEvent("popstate"));
+}
+
+function recordDelivered(title: string, options?: LocalNotificationOptions): void {
+  void import("@/lib/notification-history").then(({ addNotifRecord }) => {
+    addNotifRecord(title, options?.body, options?.tag, sanitizeNotificationUrl(options?.url));
+  });
+}
+
+export function sendLocalNotification(title: string, options?: LocalNotificationOptions): void {
+  const url = sanitizeNotificationUrl(options?.url);
   if (isNative) {
     // Web Notification API غير موثوق داخل WKWebView — جدول عبر Capacitor.
     void (async () => {
@@ -249,10 +265,11 @@ export function sendLocalNotification(
               schedule: { at: new Date(Date.now() + 800), allowWhileIdle: true },
               sound: DEFAULT_ALERT_SOUND,
               channelId: CHANNEL_GENERAL,
-              extra: { kind: "local-web-bridge", tag: options?.tag },
+              extra: { kind: "local-web-bridge", tag: options?.tag, url },
             },
           ],
         });
+        recordDelivered(title, options);
       } catch {
         /* ignore */
       }
@@ -261,13 +278,23 @@ export function sendLocalNotification(
   }
   if (!("Notification" in window) || Notification.permission !== "granted") return;
   try {
-    new Notification(notificationTitleWithoutBrand(title), {
+    const n = new Notification(notificationTitleWithoutBrand(title), {
       body: notificationBodyWithoutBrand(options?.body ?? "") || undefined,
       icon: options?.icon ?? "/logo.png",
       tag: options?.tag,
       dir: "rtl",
       lang: "ar",
     });
+    n.onclick = () => {
+      try {
+        window.focus();
+      } catch {
+        /* ignore */
+      }
+      navigateToNotificationUrl(url);
+      n.close();
+    };
+    recordDelivered(title, options);
   } catch {
     // Safari may throw if page is not focused
   }
@@ -306,41 +333,6 @@ function markSentToday(tag: string): void {
   } catch { /* localStorage unavailable */ }
 }
 
-export function scheduleFlashcardsReminder(dueCount: number): void {
-  if (dueCount === 0 || alreadySentToday("flashcards")) return;
-  const copy = pickLocalizedNotification("flashcards", { count: dueCount });
-  sendLocalNotification(copy.title, {
-    body: copy.body,
-    tag: "flashcards",
-  });
-  markSentToday("flashcards");
-}
-
-export function scheduleResumeReminder(title: string): void {
-  if (!title || alreadySentToday("resume")) return;
-  const copy = pickLocalizedNotification("lessonFollowup", { item: title });
-  sendLocalNotification(copy.title, {
-    body: copy.body,
-    tag: "resume",
-  });
-  markSentToday("resume");
-}
-
-export function schedulePrayerReminder(prayerName: string, minutesLeft: number): void {
-  if (minutesLeft > 12 || minutesLeft < 8) return;
-  if (alreadySentToday(`prayer-${prayerName}`)) return;
-  const copy = pickLocalizedNotification("prayerPre", {
-    name: prayerName,
-    mins: minutesLeft,
-    minsPhrase: formatNotificationMinutesPhrase(minutesLeft),
-  });
-  sendLocalNotification(copy.title, {
-    body: copy.body,
-    tag: `prayer-${prayerName}`,
-  });
-  markSentToday(`prayer-${prayerName}`);
-}
-
 // ── تذكير العبادات الإسلامية حسب التقويم الهجري ────────────────────────────
 
 type IslamicRemindersPool = { icon: string; title: string; body: string }[];
@@ -371,7 +363,10 @@ function getIslamicReminders(): IslamicRemindersPool {
   }
 }
 
-export function scheduleIslamicReminder(): void {
+/** تذكير المواسم/اليوم — تحكمه فئة «الجمعة والمناسبات» ويحترم ساعات الهدوء. */
+export function scheduleIslamicReminder(prefs: NotifPrefs = loadNotifPrefs()): void {
+  if (!prefs.enabled || !prefs.sections.fridayOccasions?.enabled) return;
+  if (isWithinQuietHours(loadSunnahNotificationPrefs().quietHours)) return;
   if (alreadySentToday("islamic-reminder")) return;
   const pool = getIslamicReminders();
   if (!pool.length) return;
@@ -379,6 +374,7 @@ export function scheduleIslamicReminder(): void {
   sendLocalNotification(pick.title, {
     body: pick.body,
     tag: "islamic-reminder",
+    url: "/occasions",
   });
   markSentToday("islamic-reminder");
 }

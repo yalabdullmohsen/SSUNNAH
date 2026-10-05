@@ -21,6 +21,9 @@ const FORBIDDEN_PREFIXES = [
   ".codex/",
 ];
 
+/** مهارات مشروع مختارة يدويًا تُشارَك عبر المستودع (ليست حزم ECC مولَّدة). */
+const ALLOWED_PREFIXES = [".claude/skills/graphify/", ".claude/skills/sharia-content/"];
+
 function trackedFiles() {
   const out = execFileSync("git", ["ls-files", "-z", "--", ".claude", ".agents", ".codex"], {
     cwd: root,
@@ -35,6 +38,7 @@ function trackedFiles() {
 }
 
 function isForbidden(path) {
+  if (ALLOWED_PREFIXES.some((p) => path.startsWith(p))) return false;
   return FORBIDDEN_PREFIXES.some((p) => (p.endsWith("/") ? path.startsWith(p) : path === p));
 }
 

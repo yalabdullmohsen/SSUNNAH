@@ -5,6 +5,7 @@
 import {
   calendarNoonInZone,
   epochAtZoneMinutes,
+  getPrayerTimes,
   type PrayerSlot,
   type PrayerTimesPayload,
 } from "../prayer-times";
@@ -12,6 +13,7 @@ import { getActivePrayerLocation } from "../prayer-location-prefs";
 import { dateISOInZone } from "../prayer-notification-ids";
 import {
   publishSharedPrayerSnapshot,
+  type SharedPrayerDay,
   type SharedPrayerSnapshotPayload,
 } from "./sunnah-shared-data";
 import { isIOS, isNative } from "../capacitor-utils";
@@ -32,6 +34,41 @@ export const SUNNAH_PRAYER_SNAPSHOT_SCHEMA_VERSION = 1;
 export const SUNNAH_PRAYER_SNAPSHOT_KEY = "sunnah.shared.prayer.v1";
 
 type UpcomingSlot = { slot: PrayerSlot; epoch: number };
+
+const KEY_TO_ARABIC_LOWER: Record<string, string> = {
+  fajr: "الفجر",
+  dhuhr: "الظهر",
+  asr: "العصر",
+  maghrib: "المغرب",
+  isha: "العشاء",
+};
+
+/** Obligatory + sunrise epochs for one engine day (minutes → zone epoch). */
+function timesEpochForDay(prayers: PrayerSlot[], tz: string, noon: Date): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const slot of prayers) {
+    if (slot.minutes == null) continue;
+    const key = slot.key.toLowerCase();
+    if (slot.obligatory || key === "sunrise") {
+      out[key] = epochAtZoneMinutes(tz, slot.minutes, noon);
+    }
+  }
+  return out;
+}
+
+function firstUpcomingFromDays(
+  days: SharedPrayerDay[],
+  nowMs: number,
+): { key: string; epochMs: number } | null {
+  let best: { key: string; epochMs: number } | null = null;
+  for (const day of days) {
+    for (const [key, epochMs] of Object.entries(day.timesEpochMs)) {
+      if (key === "sunrise" || !(key in KEY_TO_ARABIC_LOWER) || epochMs <= nowMs) continue;
+      if (!best || epochMs < best.epochMs) best = { key, epochMs };
+    }
+  }
+  return best;
+}
 
 /** Upcoming obligatory slots for today remainder + tomorrow (engine minutes only). */
 function listUpcomingObligatory(
@@ -60,20 +97,23 @@ function listUpcomingObligatory(
 export function buildSharedPrayerSnapshotPayload(
   payload: PrayerTimesPayload,
   nowMs: number = Date.now(),
+  upcomingDays: SharedPrayerDay[] = [],
 ): SharedPrayerSnapshotPayload {
   const tz = payload.timezone || getActivePrayerLocation().timeZone || "Asia/Kuwait";
   const todayISO = dateISOInZone(tz, new Date(nowMs));
   const todayNoon = calendarNoonInZone(tz, new Date(nowMs));
-  const timesEpochMs: Record<string, number> = {};
-  for (const slot of payload.prayers) {
-    if (slot.minutes == null) continue;
-    const key = slot.key.toLowerCase();
-    if (slot.obligatory || key === "sunrise") {
-      timesEpochMs[key] = epochAtZoneMinutes(tz, slot.minutes, todayNoon);
-    }
-  }
+  const timesEpochMs = timesEpochForDay(payload.prayers, tz, todayNoon);
 
-  const next = listUpcomingObligatory(payload.prayers, tz, nowMs)[0] ?? null;
+  const approxNext = listUpcomingObligatory(payload.prayers, tz, nowMs)[0] ?? null;
+  const engineNext = firstUpcomingFromDays(upcomingDays, nowMs);
+  const todayHasNext = Object.entries(timesEpochMs).some(
+    ([key, epoch]) => key !== "sunrise" && epoch > nowMs,
+  );
+  /* After Isha: tomorrow's Fajr from the engine's own day computation when available. */
+  const next =
+    !todayHasNext && engineNext
+      ? { slot: { key: engineNext.key, name: KEY_TO_ARABIC_LOWER[engineNext.key] ?? engineNext.key }, epoch: engineNext.epochMs }
+      : approxNext;
   const window = derivePrayerWindow(
     timesEpochMs,
     nowMs,
@@ -108,7 +148,40 @@ export function buildSharedPrayerSnapshotPayload(
     calculationMethodIdentifier: payload.method || undefined,
     permissionState: payload.city ? "configured" : "REQUIRES_CONFIGURATION",
     initializationState: Object.keys(timesEpochMs).length ? "ready" : "REQUIRES_INITIALIZATION",
+    ...(upcomingDays.length ? { upcomingDays } : {}),
   };
+}
+
+/**
+ * Engine times for the next `days` calendar days (same location/method as the published payload).
+ * Consumed by the widget for after-Isha → next-day Fajr and midnight rollover without an app open.
+ * Uses `getPrayerTimes` (the app's single prayer source) — no recalculation here.
+ */
+export async function buildUpcomingPrayerDays(
+  payload: PrayerTimesPayload,
+  nowMs: number = Date.now(),
+  days = 2,
+): Promise<SharedPrayerDay[]> {
+  const loc = getActivePrayerLocation();
+  const tz = payload.timezone || loc.timeZone || "Asia/Kuwait";
+  // Only extend the payload we were handed — never mix in another location's times.
+  if (!payload.city || payload.city !== loc.label || tz !== loc.timeZone) return [];
+  const todayNoon = calendarNoonInZone(tz, new Date(nowMs));
+  const out: SharedPrayerDay[] = [];
+  for (let i = 1; i <= days; i += 1) {
+    const dayKey = dateISOInZone(tz, new Date(todayNoon.getTime() + i * 24 * 3600_000));
+    try {
+      const next = await getPrayerTimes(dayKey, { lat: loc.lat, lon: loc.lon, label: loc.label, timeZone: tz });
+      if (!next?.ok || !next.prayers?.length) break;
+      const noon = calendarNoonInZone(tz, new Date(todayNoon.getTime() + i * 24 * 3600_000));
+      const timesEpochMs = timesEpochForDay(next.prayers, tz, noon);
+      if (!Object.keys(timesEpochMs).length) break;
+      out.push({ dayKey, timesEpochMs });
+    } catch {
+      break;
+    }
+  }
+  return out;
 }
 
 /** Publish to App Group when running on native iOS. Never throws. */
@@ -118,9 +191,17 @@ export async function publishPrayerSnapshotForWidgets(
   if (!isNative || !isIOS) return false;
   if (!payload?.prayers?.length) return false;
   try {
-    const ok = await publishSharedPrayerSnapshot(buildSharedPrayerSnapshotPayload(payload));
+    const upcomingDays = await buildUpcomingPrayerDays(payload).catch(() => []);
+    const ok = await publishSharedPrayerSnapshot(
+      buildSharedPrayerSnapshotPayload(payload, Date.now(), upcomingDays),
+    );
     const { publishSunnahWidgetEnvelope } = await import("./sunnah-widget-envelope-publish");
-    void publishSunnahWidgetEnvelope({ domains: ["prayer", "calendar", "adhkar", "quran", "mushaf", "custom"] });
+    // Pass the engine payload so the envelope prayer domain is real (not reported as missing).
+    void publishSunnahWidgetEnvelope({
+      domains: ["prayer", "calendar", "adhkar", "quran", "mushaf", "custom", "home"],
+      prayerTimes: payload,
+      upcomingDays,
+    });
     return ok;
   } catch {
     return false;

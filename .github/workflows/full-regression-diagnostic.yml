@@ -22,22 +22,17 @@ permissions:
 
 jobs:
   guard:
+    # شرط على مستوى الوظيفة: PR عادي (غير release/*) لا يحجز مشغّلًا إطلاقًا.
+    # سابقًا كانت guard تشغّل مشغّلًا على كل PR لتقول «لا» فقط — حمل زائد يزاحم الطابور.
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.head_ref, 'release/')
     runs-on: ubuntu-latest
     timeout-minutes: 2
     outputs:
       run_diag: ${{ steps.g.outputs.run_diag }}
     steps:
+      # القرار في شرط الوظيفة أعلاه (dispatch أو release/*) — بلا حقن head_ref في shell.
       - id: g
-        run: |
-          set -euo pipefail
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "run_diag=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          case "${{ github.head_ref }}" in
-            release/*) echo "run_diag=true" >> "$GITHUB_OUTPUT" ;;
-            *) echo "run_diag=false" >> "$GITHUB_OUTPUT" ;;
-          esac
+        run: echo "run_diag=true" >> "$GITHUB_OUTPUT"
 
   build:
     needs: [guard]

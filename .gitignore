@@ -45,6 +45,12 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/
 fastlane/test_output/
+# أسرار التوقيع والرفع — لا تُرفع أبدًا (ضعها خارج المستودع)
+*.p8
+*.p12
+*.cer
+*.mobileprovision
+fastlane/.env*
 vendor/bundle/
 .bundle/
 artifacts/majalis/ios/build/
@@ -66,7 +72,9 @@ artifacts/majalis/public/data/search/shards/
 # Keep patterns in sync with scripts/verify-no-tracked-ecc-bundles.mjs
 .claude/ecc-tools.json
 .claude/identity.json
-.claude/skills/
+.claude/skills/*
+!.claude/skills/graphify/
+!.claude/skills/sharia-content/
 .claude/homunculus/
 .agents/skills/
 .codex/

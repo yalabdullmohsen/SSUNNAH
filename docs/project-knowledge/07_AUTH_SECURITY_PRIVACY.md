@@ -42,7 +42,7 @@
 ## خصوصية
 
 - صفحات `/privacy`, `/privacy-policy`, `/privacy-center`, `/account-deletion`.
-- خريطة بيانات: `PRIVACY_DATA_MAP.md` (جذر).
+- خريطة بيانات: `docs/legal/PRIVACY_DATA_MAP.md` (جذر).
 
 ## مشكلات موثّقة (توصية عامة بلا تنفيذ)
 

@@ -34,9 +34,18 @@ Android Internal Testing: يُضاف lane لاحقاً عبر `supply` بعد ت
 
 ## تشغيل محلي (macOS)
 
+المفتاح يبقى **خارج المستودع** (مثلًا `~/.appstoreconnect/private_keys/AuthKey_<KEY_ID>.p8`)، والقيم في متغيرات بيئة الجلسة فقط:
+
 ```bash
-cd /path/to/majalis-correct
-bundle exec fastlane ios beta
+export APP_STORE_CONNECT_API_KEY_ID=XXXXXXXXXX
+export APP_STORE_CONNECT_ISSUER_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+export APP_STORE_CONNECT_API_KEY_PATH=~/.appstoreconnect/private_keys/AuthKey_XXXXXXXXXX.p8
+bundle install
+pnpm --filter @workspace/majalis run build && (cd artifacts/majalis && pnpm exec cap sync ios)
+bundle exec fastlane ios build_only   # أرشفة بلا توقيع ولا رفع
+bundle exec fastlane ios beta         # توقيع + رفع TestFlight (داخلي فقط)
 ```
+
+في CI يُرفع عبر workflow ‏`iOS TestFlight Deploy` (يدويًا أو بوسم `v*.*.*`) من أسرار GitHub أعلاه. `.gitignore` يمنع `*.p8` و`*.p12` و`*.cer` و`*.mobileprovision` و`fastlane/.env*`.
 
 لا تضع ملفات `.p8` أو keystore داخل المستودع. استخدم GitHub Actions secrets أو Keychain محلي.

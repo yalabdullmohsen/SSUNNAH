@@ -1,4 +1,4 @@
-# Fastlane Appfile — مجلس العلمي (Majalis Al-Ilm)
+# Fastlane Appfile — سُنّة (Sunnah)
 # Values are resolved from environment / GitHub Actions secrets at runtime.
 
 app_identifier(ENV.fetch("APP_IDENTIFIER", "com.yousef.majlisilm"))

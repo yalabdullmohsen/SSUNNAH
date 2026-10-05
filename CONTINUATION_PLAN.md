@@ -8,7 +8,7 @@
 >   - ملفات `rulings-encyclopedia/chunks/*` مولَّدة عبر `generate:rulings` (ملخص ≤160) — لا تُحرَّر يدويًا في هذا الدمج.
 > - لم يُدمج `quiz-seed.ts` القديم من `automation/content` لأن `main` يعتمد JSON chunks.
 
-> اقرأ هذا الملف أولاً قبل أي استئناف. ثم اقرأ `AUDIT_INVENTORY.md` بجذر
+> اقرأ هذا الملف أولاً قبل أي استئناف. ثم اقرأ `docs/reports/AUDIT_INVENTORY.md` بجذر
 > المستودع للسياق الكامل. التكليف الأصلي الكامل (16 مرحلة) موجود في تعليمات
 > النظام لهذه الجلسة — لم يُنسخ هنا لتجنّب التكرار، فقط الحالة والخطوة التالية.
 
@@ -14009,7 +14009,7 @@ content-fill`. Commits بالترتيب الزمني:
 3. 36 سؤال مكرر في quiz-seed.ts أُزيلت (950→914) + تصحيح خلاف واقعي (بدر≠أول غزوة).
 4. تكراران في fawaid-seed.ts أُزيلا (510→508).
 5. صفحات SEO شبح لـ/fatwa المحذوف أُزيلت بالكامل (generate-seo.mjs + 5 ملفات ثابتة).
-6. `AUDIT_INVENTORY.md` كُتب بجذر المستودع.
+6. `docs/reports/AUDIT_INVENTORY.md` كُتب بجذر المستودع.
 
 ### الجلسة الثانية — تدقيق تخريج الأحاديث + إصلاح أدوات
 1. `scripts/audit/hadith-takhrij-check.mjs` بُني (يفحص qa/fawaid/adhkar/arbaeen/quiz-seed).

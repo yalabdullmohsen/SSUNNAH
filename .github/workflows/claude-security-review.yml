@@ -1,0 +1,81 @@
+name: Claude security review
+
+# مراجعة أمنية بالذكاء الاصطناعي لفرق كل PR (anthropics/claude-code-security-review).
+# تفحص الفرق فقط (لا الشيفرة القديمة) ⇒ كل نتيجة جديدة بطبيعتها.
+# سياسة المنع: النتائج تُعلَّق على الـPR؛ لا يفشل الفحص إلا عند نتيجة بخطورة HIGH.
+# المفتاح من أسرار المستودع ANTHROPIC_API_KEY فقط — لا مفاتيح في المستودع.
+# غياب السر ⇒ تخطٍّ بإشعار (لا فشل).
+#
+# تحذير: لا تضع تعليقات HTML داخل ملفات workflow.
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, synchronize, ready_for_review]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  security-review:
+    name: Claude security review
+    # أسرار المستودع لا تصل لـPRs القادمة من forks — نتخطاها صراحة.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check API key presence
+        id: key
+        env:
+          HAS_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+        run: |
+          if [ "$HAS_KEY" = "true" ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::ANTHROPIC_API_KEY غير مضبوط في أسرار المستودع — تخطّي المراجعة الأمنية."
+            echo "⏭️ المراجعة الأمنية متخطاة: أضف السر \`ANTHROPIC_API_KEY\` من Settings → Secrets and variables → Actions." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        if: steps.key.outputs.present == 'true'
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 2
+
+      - name: Claude Code security review
+        id: review
+        if: steps.key.outputs.present == 'true'
+        uses: anthropics/claude-code-security-review@0c6a49f1fa56a1d472575da86a94dbc1edb78eda # main 2026-10-05
+        with:
+          claude-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          comment-pr: "true"
+          upload-results: "true"
+          exclude-directories: "artifacts/majalis/public,artifacts/data,reference,db-backups,reports,test-results"
+
+      - name: Block only on HIGH severity
+        if: steps.key.outputs.present == 'true'
+        env:
+          FINDINGS_COUNT: ${{ steps.review.outputs.findings-count }}
+        run: |
+          set -euo pipefail
+          echo "findings=${FINDINGS_COUNT:-0}"
+          if [ ! -f findings.json ]; then
+            echo "لا ملف نتائج — لا منع."
+            exit 0
+          fi
+          high=$(jq '[.[] | select((.severity // "" | ascii_upcase) == "HIGH")] | length' findings.json)
+          {
+            echo "### Claude security review"
+            echo "- إجمالي النتائج: ${FINDINGS_COUNT:-0}"
+            echo "- HIGH: $high (هي وحدها تُفشل الفحص)"
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$high" -gt 0 ]; then
+            echo "::error::$high نتيجة أمنية بخطورة HIGH في فرق هذا الـPR — راجع تعليقات المراجعة."
+            exit 1
+          fi

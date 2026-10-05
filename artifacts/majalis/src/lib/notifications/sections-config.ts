@@ -1,30 +1,21 @@
 /**
- * أقسام الإشعارات الموحّدة — بدون تسمية «الإشعارات الإسلامية».
- * كل قسم: تفعيل، عدد يومي، فترة، أيام أسبوع، معاينة، ورسائل قصيرة فصيحة.
+ * فئات التذكيرات الموحّدة — بدون تسمية «الإشعارات الإسلامية».
+ * كل فئة مفتاح تفعيل واحد يحكم الجدولة فعليًا (smart-local-notifications)،
+ * ولكل فئة توقيت ثابت موثّق في وصفها ورسائل قصيرة فصيحة.
+ * تنبيهات الصلاة ليست فئة هنا: مصدرها الوحيد prayer-notifications/preferences + محرك الأذان
+ * (مواقيت حقيقية) — كانت فئة «الصلاة» تجدول على الويب أوقاتًا ثابتة خاطئة.
+ * أُزيلت (2026-10) أقسام «الصلاة على النبي/الاستغفار/الدروس» وحقول العدد/الفترة/الأيام
+ * لأنها كانت تُحفَظ ولا يقرؤها أي مُجدوِل — تُرحَّل القيم المخزّنة في local-notifications.
  */
 
 export type NotifSectionId =
-  | "prayer"
   | "quran"
   | "adhkar"
-  | "salawat"
-  | "istighfar"
-  | "lessons"
   | "seekingKnowledge"
   | "fridayOccasions";
 
-export type Weekday = 0 | 1 | 2 | 3 | 4 | 5 | 6; // أحد…السبت
-
 export type NotifSectionPrefs = {
   enabled: boolean;
-  /** عدد الإشعارات يوميًا (1–20 حسب القسم) */
-  dailyCount: number;
-  /** بداية الفترة HH */
-  windowStartHour: number;
-  /** نهاية الفترة HH */
-  windowEndHour: number;
-  /** أيام التفعيل؛ فارغ = كل الأيام */
-  weekdays: Weekday[];
 };
 
 export type NotifMessage = { title: string; body: string };
@@ -36,22 +27,11 @@ export type NotifSectionMeta = {
   /** مسار تفصيلي اختياري (مثل إعدادات الأذان) */
   href?: string;
   defaults: NotifSectionPrefs;
-  /** حدود العدد اليومي المسموح */
-  countMin: number;
-  countMax: number;
-  /** خيارات عدد سريعة (للصلاة على النبي / الاستغفار) */
-  countPresets?: number[];
   messages: readonly NotifMessage[];
 };
 
-const ALL_DAYS: Weekday[] = [0, 1, 2, 3, 4, 5, 6];
-
 const baseDay = (partial?: Partial<NotifSectionPrefs>): NotifSectionPrefs => ({
   enabled: false,
-  dailyCount: 1,
-  windowStartHour: 8,
-  windowEndHour: 20,
-  weekdays: [...ALL_DAYS],
   ...partial,
 });
 
@@ -82,38 +62,10 @@ export const PRAYER_MESSAGE_POOL = {
 
 export const NOTIF_SECTIONS: readonly NotifSectionMeta[] = [
   {
-    id: "prayer",
-    title: "الصلاة",
-    description: "قبل الأذان وعند الأذان وبعده",
-    href: "/adhan-settings",
-    defaults: baseDay({ enabled: true, dailyCount: 5, windowStartHour: 4, windowEndHour: 23 }),
-    countMin: 1,
-    countMax: 15,
-    messages: [
-      { title: "أذان الفجر", body: "ص ٤:١١" },
-      { title: "اقترب أذان الفجر", body: "ص ٤:١١" },
-      { title: "تذكير بصلاة الفجر", body: "ص ٤:١١" },
-      { title: "أذان الظهر", body: "ص ١٢:٠٥" },
-      { title: "اقترب أذان الظهر", body: "ص ١٢:٠٥" },
-      { title: "أذان العصر", body: "م ٣:٣٠" },
-      { title: "اقترب أذان العصر", body: "م ٣:٣٠" },
-      { title: "أذان المغرب", body: "م ٦:١٥" },
-      { title: "اقترب أذان المغرب", body: "م ٦:١٥" },
-      { title: "أذان العشاء", body: "م ٧:٤٥" },
-      { title: "اقترب أذان العشاء", body: "م ٧:٤٥" },
-      { title: "تذكير بصلاة الظهر", body: "ص ١٢:٠٥" },
-      { title: "تذكير بصلاة العصر", body: "م ٣:٣٠" },
-      { title: "تذكير بصلاة المغرب", body: "م ٦:١٥" },
-      { title: "تذكير بصلاة العشاء", body: "م ٧:٤٥" },
-    ],
-  },
-  {
     id: "quran",
     title: "القرآن",
-    description: "ورد يومي ومتابعة التلاوة",
-    defaults: baseDay({ enabled: false, dailyCount: 2, windowStartHour: 9, windowEndHour: 21 }),
-    countMin: 1,
-    countMax: 6,
+    description: "ورد يومي ٥:٠٠ م، وتنبيه السلسلة والختمة عند الحاجة",
+    defaults: baseDay({ enabled: false }),
     messages: [
       { title: "ورد القرآن", body: "خصص وقتاً لوردك اليومي." },
       { title: "متابعة التلاوة", body: "تابع من آخر موضع وصلت إليه." },
@@ -135,10 +87,8 @@ export const NOTIF_SECTIONS: readonly NotifSectionMeta[] = [
   {
     id: "adhkar",
     title: "الأذكار",
-    description: "الصباح والمساء والنوم",
-    defaults: baseDay({ enabled: false, dailyCount: 3, windowStartHour: 6, windowEndHour: 22 }),
-    countMin: 1,
-    countMax: 6,
+    description: "الصباح ٦:٣٠ والمساء ٥:٣٠ والنوم ٩:٣٠ وبعد الصلاة",
+    defaults: baseDay({ enabled: false }),
     messages: [
       { title: "أذكار الصباح", body: "ورد الصباح جاهز." },
       { title: "أذكار المساء", body: "ورد المساء جاهز." },
@@ -158,89 +108,10 @@ export const NOTIF_SECTIONS: readonly NotifSectionMeta[] = [
     ],
   },
   {
-    id: "salawat",
-    title: "الصلاة على النبي ﷺ",
-    description: "تذكير بعدد مرات يوميًا",
-    defaults: baseDay({ enabled: false, dailyCount: 3, windowStartHour: 8, windowEndHour: 21 }),
-    countMin: 1,
-    countMax: 20,
-    countPresets: [1, 2, 3, 5, 10],
-    messages: [
-      { title: "الصلاة على النبي ﷺ", body: "اللهم صلِّ على محمد." },
-      { title: "الصلاة على النبي ﷺ", body: "أكثر من الصلاة عليه ﷺ." },
-      { title: "الصلاة على النبي ﷺ", body: "وقت للصلاة على النبي ﷺ." },
-      { title: "الصلاة على النبي ﷺ", body: "صلِّ عليه وسلم." },
-      { title: "الصلاة على النبي ﷺ", body: "ذكّر نفسك بالصلاة عليه." },
-      { title: "الصلاة على النبي ﷺ", body: "صلِّ عليه وسلم." },
-      { title: "الصلاة على النبي ﷺ", body: "لا تنسَ الصلاة عليه ﷺ." },
-      { title: "الصلاة على النبي ﷺ", body: "اللهم صلِّ وسلِّم عليه." },
-      { title: "الصلاة على النبي ﷺ", body: "أتمم وردك من الصلاة عليه." },
-      { title: "الصلاة على النبي ﷺ", body: "صلِّ عليه عددًا يسيرًا الآن." },
-      { title: "الصلاة على النبي ﷺ", body: "تذكير بالصلاة على النبي ﷺ." },
-      { title: "الصلاة على النبي ﷺ", body: "اللهم صلِّ على نبينا محمد." },
-      { title: "الصلاة على النبي ﷺ", body: "أكثر من الصلاة والتسليم." },
-      { title: "الصلاة على النبي ﷺ", body: "وقت مناسب للصلاة عليه." },
-      { title: "الصلاة على النبي ﷺ", body: "صلِّ عليه ﷺ بقلب حاضر." },
-    ],
-  },
-  {
-    id: "istighfar",
-    title: "الاستغفار",
-    description: "تذكير بعدد مرات يوميًا",
-    defaults: baseDay({ enabled: false, dailyCount: 3, windowStartHour: 8, windowEndHour: 21 }),
-    countMin: 1,
-    countMax: 20,
-    countPresets: [1, 2, 3, 5, 10],
-    messages: [
-      { title: "الاستغفار", body: "أستغفر الله." },
-      { title: "الاستغفار", body: "أكثر من الاستغفار." },
-      { title: "الاستغفار", body: "وقت للاستغفار." },
-      { title: "الاستغفار", body: "أستغفر الله وأتوب إليه." },
-      { title: "الاستغفار", body: "ذكّر نفسك بالاستغفار." },
-      { title: "الاستغفار", body: "استغفار يسير الآن." },
-      { title: "الاستغفار", body: "لا تنسَ الاستغفار." },
-      { title: "الاستغفار", body: "أتمم ورد الاستغفار." },
-      { title: "الاستغفار", body: "تذكير بالاستغفار." },
-      { title: "الاستغفار", body: "أستغفر الله العظيم." },
-      { title: "الاستغفار", body: "أكثر من قول أستغفر الله." },
-      { title: "الاستغفار", body: "وقت مناسب للاستغفار." },
-      { title: "الاستغفار", body: "استغفر لذنبك." },
-      { title: "الاستغفار", body: "استغفار يسير الآن." },
-      { title: "الاستغفار", body: "أدرج الاستغفار في يومك." },
-    ],
-  },
-  {
-    id: "lessons",
-    title: "الدروس",
-    description: "درس اليوم والغد والأسبوع",
-    defaults: baseDay({ enabled: false, dailyCount: 2, windowStartHour: 9, windowEndHour: 21 }),
-    countMin: 1,
-    countMax: 8,
-    messages: [
-      { title: "درس اليوم", body: "درسك اليوم جاهز." },
-      { title: "دروس الغد", body: "اطّلع على جدول الغد." },
-      { title: "دروس الأسبوع", body: "راجع دروس هذا الأسبوع." },
-      { title: "قبل الدرس", body: "الدرس يقترب." },
-      { title: "بدء الدرس", body: "حان وقت الدرس." },
-      { title: "درس اليوم", body: "أكمل درس يومك." },
-      { title: "دروس الغد", body: "حضّر لدروس الغد." },
-      { title: "دروس الأسبوع", body: "خطة الأسبوع بين يديك." },
-      { title: "قبل الدرس", body: "استعد للدرس القادم." },
-      { title: "بدء الدرس", body: "ابدأ الدرس الآن." },
-      { title: "درس اليوم", body: "تابع درس اليوم." },
-      { title: "دروس الغد", body: "دروس الغد مجدولة." },
-      { title: "دروس الأسبوع", body: "لا تفوّت دروس الأسبوع." },
-      { title: "قبل الدرس", body: "تذكير قبل بدء الدرس." },
-      { title: "بدء الدرس", body: "الدرس يبدأ." },
-    ],
-  },
-  {
     id: "seekingKnowledge",
-    title: "طلب العلم",
-    description: "برامج وسلاسل ومتابعة",
-    defaults: baseDay({ enabled: false, dailyCount: 2, windowStartHour: 10, windowEndHour: 20 }),
-    countMin: 1,
-    countMax: 6,
+    title: "طلب العلم والمراجعة",
+    description: "تذكير يومي بمراجعة البطاقات والمحفوظات",
+    defaults: baseDay({ enabled: false }),
     messages: [
       { title: "البرامج العلمية", body: "تابع برنامجك العلمي." },
       { title: "السلاسل", body: "أكمل سلسلتك الحالية." },
@@ -262,16 +133,8 @@ export const NOTIF_SECTIONS: readonly NotifSectionMeta[] = [
   {
     id: "fridayOccasions",
     title: "الجمعة والمناسبات",
-    description: "الجمعة والكهف والمواسم",
-    defaults: baseDay({
-      enabled: false,
-      dailyCount: 2,
-      windowStartHour: 7,
-      windowEndHour: 18,
-      weekdays: [5],
-    }),
-    countMin: 1,
-    countMax: 5,
+    description: "سورة الكهف صباح الجمعة وتذكيرات المواسم الفاضلة",
+    defaults: baseDay({ enabled: false }),
     messages: [
       { title: "يوم الجمعة", body: "تذكير بصلاة الجمعة." },
       { title: "سورة الكهف", body: "اقرأ سورة الكهف." },
@@ -299,7 +162,7 @@ export function getNotifSection(id: NotifSectionId): NotifSectionMeta {
 }
 
 export function defaultSectionsPrefs(): Record<NotifSectionId, NotifSectionPrefs> {
-  return Object.fromEntries(NOTIF_SECTIONS.map((s) => [s.id, { ...s.defaults, weekdays: [...s.defaults.weekdays] }])) as Record<
+  return Object.fromEntries(NOTIF_SECTIONS.map((s) => [s.id, { ...s.defaults }])) as Record<
     NotifSectionId,
     NotifSectionPrefs
   >;
@@ -351,18 +214,5 @@ export function previewSectionMessage(sectionId: NotifSectionId): NotifMessage {
 }
 
 export function formatSectionStatus(prefs: NotifSectionPrefs): string {
-  if (!prefs.enabled) return "متوقف";
-  const n = prefs.dailyCount;
-  if (n <= 0) return "مفعّل";
-  return `${n.toLocaleString("ar-EG")} يوميًا`;
+  return prefs.enabled ? "مفعّل" : "متوقف";
 }
-
-export const WEEKDAY_LABELS: Record<Weekday, string> = {
-  0: "أحد",
-  1: "إثنين",
-  2: "ثلاثاء",
-  3: "أربعاء",
-  4: "خميس",
-  5: "جمعة",
-  6: "سبت",
-};

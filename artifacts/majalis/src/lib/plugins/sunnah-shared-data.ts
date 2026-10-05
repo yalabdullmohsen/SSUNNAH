@@ -25,6 +25,14 @@ export type SharedPrayerSnapshotPayload = {
   calculationMethodIdentifier?: string;
   permissionState?: string;
   initializationState?: string;
+  /** Engine times for the following days — Swift `SharedPrayerSnapshot.upcomingDays`. */
+  upcomingDays?: SharedPrayerDay[];
+};
+
+/** Swift `SharedPrayerDay` — one calendar day of engine prayer epochs. */
+export type SharedPrayerDay = {
+  dayKey: string;
+  timesEpochMs: Record<string, number>;
 };
 
 export type SharedProgressSnapshotPayload = {
