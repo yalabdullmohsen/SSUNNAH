@@ -2,16 +2,16 @@
   "month": "2026-10",
   "items": [
     {
-      "id": "2754f08da1727460337aa2ee1ff672c09e57e48f",
-      "type": "درس",
-      "title_ar": "الآن مباشر شرح العقيدة التدمرية لابن تيمية فضيلة الشيخ د محمد محمدي النورستاني …",
-      "summary_ar": "الان مباشر (3) شرح العقيده التدمريه لابن تيميه فضيله الشيخ د. محمد محمدي النورستاني رابط البث: https://www.youtube.com/live/poHJSt1ba3w?si= تحميل الكتاب https:…",
-      "sheikh": "محمد محمدي النورستاني 🔗 رابط البث: https://www",
+      "id": "094d56e802cab63c37a69b29b5e80cd5c5aabed5",
+      "type": "محاضرة",
+      "title_ar": "خطبة حسن الظن بالله عز وجل فضيلة الشيخ فهد بن سعود الدوسري رابط الخطبة قناة موق…",
+      "summary_ar": "خطبه - حسن الظن بالله عز وجل فضيله الشيخ فهد بن سعود الدوسري رابط الخطبه https://drosq8.com/play/24922 قناه موقع دروس الكويت https://t.me/DrosQ8",
+      "sheikh": "فهد بن سعود الدوسري 🔊 رابط الخطبة 👇 https://drosq8",
       "place": null,
       "audience": "عام",
       "starts_at": null,
       "time_text": null,
-      "register_url": "https://t.me/DrosQ8َ",
+      "register_url": "https://t.me/DrosQ8",
       "schedule_kind": null,
       "women_attendance": "men_only",
       "women_attendance_note": null,
@@ -20,16 +20,16 @@
           "id": "telegram-DrosQ8",
           "name_ar": "دروس الكويت",
           "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28140",
+          "post_url": "https://t.me/DrosQ8/28141",
           "platform": "telegram"
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-04T18:51:43.638Z",
+      "published_at": "2026-10-05T10:15:30.665Z",
       "confidence": 0.8
     },
     {
-      "id": "1a689c354b0c183ed0a5c82a50101d33b437a560",
+      "id": "805621e6e2997bf8687c9c21fa530939e6465074",
       "type": "درس",
       "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح ثلاثة الأصول للشيخ د حمد بن محمد الهاجري ب…",
       "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: (شرح ثلاثه الاصول) للشيخ د. حمد بن محمد الهاجري ⏰ بعد صلاه المغرب (كل احد) مسجد عبدالمحسن الزبن - الفنيطيس https://maps.app.g…",
@@ -52,14 +52,14 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-04T18:51:43.638Z",
+      "published_at": "2026-10-05T10:15:30.665Z",
       "confidence": 0.9
     },
     {
-      "id": "81645db2d6ae922e194824690b3d85d015ab22d5",
+      "id": "1c9c19048b327d0621dd2738e0a934cce20fda89",
       "type": "درس",
-      "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح كتاب الروض المربع الشيخ حماد الأسلمي كل أ…",
-      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: ‌&rlm;«شرح كتاب الروض المربع» الشيخ حماد الاسلمي &rlm; @H_alaslemi كل احد واربعاء ⏰ بعد صلاه العشاء مسجد عبدالعزيز الماجشون-…",
+      "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح كتاب الروض المربع الشيخ حماد الأسلمي كل أح…",
+      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: ‌&rlm;«شرح كتاب الروض المربع» الشيخ حماد الاسلمي &rlm; @H_alaslemi كل احد واربعاء ⏰ بعد صلاه العشاء مسجد عبدالعزيز الماجشون- …",
       "sheikh": "حماد الأسلمي &rlm; @H_alaslemi 📆 كل أحد وأربعاء ⏰ بعد صلاة",
       "place": "عبدالعزيز الماجشون- المطلاع https://maps",
       "audience": "عام",
@@ -79,11 +79,11 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-04T18:51:43.638Z",
+      "published_at": "2026-10-05T10:15:30.665Z",
       "confidence": 0.9
     },
     {
-      "id": "ebc15fdefc3117baf6439f1061801557c5fe4730",
+      "id": "a8afe6e176aa194dc8b7957a1f1e9ad3c5a9a986",
       "type": "درس",
       "title_ar": "ندعوكم الليلة لحضور الدرس العلمي التعليق على شرح كتاب التوحيد من صحيح البخاري ل…",
       "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: التعليق علي شرح كتاب التوحيد من صحيح البخاري لابن عثيمين لفضيله الشيخ سالم الطويل ⏰ (كل احد)&nbsp; 8:30 م ديوان احمد غربي - ج…",
@@ -106,11 +106,11 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-04T18:51:43.638Z",
+      "published_at": "2026-10-05T10:15:30.665Z",
       "confidence": 0.9
     },
     {
-      "id": "a06dff19b0a25d056cfa7ed36f3f1e035f0d87c4",
+      "id": "414d6802af8141b6d1551a319733d5ed61ab5848",
       "type": "درس",
       "title_ar": "👇 جدول دروس اليوم الأحد 👇",
       "summary_ar": "جدول دروس اليوم الاحد",
@@ -133,7 +133,7 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-04T18:51:43.638Z",
+      "published_at": "2026-10-05T10:15:30.665Z",
       "confidence": 0.65
     },
     {
@@ -297,6 +297,33 @@
       "image_url": null,
       "published_at": "2026-10-04T09:28:54.593Z",
       "confidence": 0.95
+    },
+    {
+      "id": "38c09eb22824fe5e1530291b650c8d6e8ce61d75",
+      "type": "تنبيه",
+      "title_ar": "تحت رعاية وحضور معالي وزيرة الشؤون الاجتماعية وشؤون الأسرة والطفولة الدكتورة أم…",
+      "summary_ar": "تحت رعايه وحضور معالي وزيره الشؤون الاجتماعيه وشؤون الاسره والطفوله الدكتوره امثال الحويله، ساهمت جمعيه حفاظ في رعايه احتفال اليوم العالمي للمسنين، الذي نظمته …",
+      "sheikh": "ة أمثال الحويلة",
+      "place": "رعاية احتفال اليوم العالمي للمسنين",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "ig-7offath",
+          "name_ar": "حُفّاظ",
+          "url": "https://hoffath.org",
+          "post_url": "https://www.instagram.com/p/DeGmMKfI5DD/",
+          "platform": "instagram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-04T00:00:00.000Z",
+      "confidence": 0.85
     },
     {
       "id": "db442257635d9d189e529ff2c376c4cdb1579bef",
@@ -648,33 +675,6 @@
       "image_url": null,
       "published_at": "2026-09-25T13:17:26.078Z",
       "confidence": 0.95
-    },
-    {
-      "id": "03b87726eab55b9f13ce5369b0835a31e15de069",
-      "type": "درس",
-      "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح كتاب التوحيد المجلس الأول لفضيلة الشيخ د د…",
-      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: شرح كتاب التوحيد (المجلس الاول) لفضيله الشيخ د. دغش العجمي @DrDaghashAlajmi ⏰ بعد صلاه المغرب (كل خميس) مسجد هله الحربي - بمن…",
-      "sheikh": "دغش العجمي @DrDaghashAlajmi ⏰ بعد صلاة المغرب (كل خميس) 🕌 م",
-      "place": "هلة الحربي - بمنطقه الظهر https://maps",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/27996",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-09-25T13:16:38.149Z",
-      "confidence": 0.9
     },
     {
       "id": "9579ea91f6e24db111ceb07f40dd5ea209957f4d",
