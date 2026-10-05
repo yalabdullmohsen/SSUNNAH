@@ -86,6 +86,8 @@ import { MushafPage } from "./MushafPage";
 import { MushafControlsLayer, MushafVerseMenu } from "./MushafControlsLayer";
 import { MushafReadingCoach } from "./MushafReadingCoach";
 import { MushafPageArrows } from "./MushafPageArrows";
+import { Button } from "@/components/ui/button";
+import { mushafButtonClass } from "./mushaf-button-parity";
 import { MushafPageScrubber } from "./MushafPageScrubber";
 import { isMushafNavCapabilityEnabled } from "./mushaf-reader-nav-contract";
 import {
@@ -1980,14 +1982,15 @@ function NavigationHighlightChip({ onDismiss }: { onDismiss: () => void }) {
       dir="rtl"
     >
       <span className="nm-nav-highlight-chip__label">{label}</span>
-      <button
+      <Button
         type="button"
-        className="nm-nav-highlight-chip__dismiss"
+        variant="ghost"
+        className={mushafButtonClass("nm-nav-highlight-chip__dismiss")}
         onClick={onDismiss}
         aria-label="إلغاء التحديد"
       >
         إلغاء التحديد
-      </button>
+      </Button>
     </div>
   );
 }

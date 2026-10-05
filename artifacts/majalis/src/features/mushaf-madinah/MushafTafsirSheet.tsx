@@ -10,6 +10,8 @@ import {
 } from "@/lib/quran-data/tafsir-editions";
 import { QuranSheetShell } from "./quran-sheet";
 import { parseVerseKey } from "./mushaf-page-for-ayah";
+import { Button } from "@/components/ui/button";
+import { mushafButtonClass } from "@/features/mushaf-reader/mushaf-button-parity";
 import "./mushaf-tafsir-sheet.css";
 
 /**
@@ -214,17 +216,18 @@ export function MushafTafsirSheet({ open, verseKey, ayahText = "", onClose }: Pr
               const tab = EDITION_TABS.find((t) => t.id === ed.id);
               const active = isEditionActive(editionId, ed.id, ed.quranComSlug);
               return (
-                <button
+                <Button
                   key={ed.id}
                   type="button"
+                  variant="ghost"
                   role="tab"
                   aria-selected={active}
-                  className={`mm-tafsir__ed-btn${active ? " is-active" : ""}`}
+                  className={mushafButtonClass(`mm-tafsir__ed-btn${active ? " is-active" : ""}`)}
                   data-testid={`mushaf-tafsir-edition-${resolveMushafTafsirEditionId(ed.id)}`}
                   onClick={() => selectEdition(ed.id)}
                 >
                   {tab?.label ?? ed.label}
-                </button>
+                </Button>
               );
             })}
           </div>
@@ -241,14 +244,15 @@ export function MushafTafsirSheet({ open, verseKey, ayahText = "", onClose }: Pr
         {!loading && error ? (
           <div className="mm-tafsir__status mm-tafsir__status--err">
             <p>{error}</p>
-            <button
+            <Button
               type="button"
-              className="mm-tafsir__retry"
+              variant="ghost"
+              className={mushafButtonClass("mm-tafsir__retry")}
               data-testid="mushaf-tafsir-retry"
               onClick={retry}
             >
               إعادة المحاولة
-            </button>
+            </Button>
           </div>
         ) : null}
 

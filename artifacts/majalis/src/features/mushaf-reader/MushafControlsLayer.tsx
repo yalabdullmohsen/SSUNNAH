@@ -29,6 +29,7 @@ import {
 } from "@/lib/mushaf-v2/appearance-prefs";
 import { QuranSettingsRepository } from "@/lib/mushaf-v2/QuranSettingsRepository";
 import { Button } from "@/components/ui/button";
+import { mushafButtonClass } from "@/features/mushaf-reader/mushaf-button-parity";
 import "./page-goto-dial.css";
 import "@/styles/components/page-goto-visibility.css";
 
@@ -295,9 +296,10 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
     >
       {/* شريط قراءة: ← · رقم الصفحة · ⋯ فقط — بلا أدوات دائمة */}
       <div className="nm-controls__bar" data-testid="nm-controls-bar" role="toolbar" aria-label="قراءة المصحف">
-        <button
+        <Button
           type="button"
-          className="nm-controls__btn nm-controls__exit"
+          variant="ghost"
+          className={mushafButtonClass("nm-controls__btn nm-controls__exit")}
           data-testid="mushaf-toolbar-exit"
           aria-label="الخروج من المصحف"
           title="الخروج من المصحف"
@@ -307,21 +309,23 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
           <span className="nm-controls__exit-icon" aria-hidden="true">
             ←
           </span>
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
-          className="nm-controls__page"
+          variant="ghost"
+          className={mushafButtonClass("nm-controls__page")}
           data-testid="mushaf-goto-page-btn"
           onClick={openGoto}
           aria-label={`الصفحة ${pageNumber} من ${MUSHAF_PAGE_MAX} — انتقال`}
           dir="ltr"
         >
           {toArabicDigits(pageNumber)}
-        </button>
+        </Button>
         {onMoreOpenChange ? (
-          <button
+          <Button
             type="button"
-            className="nm-controls__btn nm-controls__more"
+            variant="ghost"
+            className={mushafButtonClass("nm-controls__btn nm-controls__more")}
             data-testid="mushaf-controls-more"
             aria-label="المزيد"
             aria-expanded={moreOpen}
@@ -329,7 +333,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
             onClick={toggleMore}
           >
             <span aria-hidden="true">⋯</span>
-          </button>
+          </Button>
         ) : (
           <span className="nm-controls__more-spacer" aria-hidden="true" />
         )}
@@ -337,9 +341,10 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
 
       {moreOpen && onMoreOpenChange ? (
         <>
-        <button
+        <Button
           type="button"
-          className="nm-controls-more__scrim"
+          variant="ghost"
+          className={mushafButtonClass("nm-controls-more__scrim")}
           data-testid="mushaf-controls-more-scrim"
           aria-label="إغلاق المزيد"
           onClick={closeMore}
@@ -463,15 +468,16 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
           <div className="nm-controls-more__settings" data-testid="mushaf-more-settings">
             <h3 className="nm-controls-more__subtitle">إعدادات المصحف</h3>
             {onToggleFocusReadingMode ? (
-              <button
+              <Button
                 type="button"
-                className="nm-controls-more__row nm-controls-more__item"
+                variant="ghost"
+                className={mushafButtonClass("nm-controls-more__row nm-controls-more__item")}
                 data-testid="mushaf-focus-reading-toggle"
                 aria-pressed={focusReadingMode}
                 onClick={onMoreToggleFocus}
               >
                 {focusReadingMode ? "إظهار الأدوات عند اللمس" : "وضع قراءة هادئ"}
-              </button>
+              </Button>
             ) : null}
             <MushafDisplayModeControl
               value={displayMode}
@@ -527,9 +533,10 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
           </h2>
 
           <div className="nm-goto__stepper" role="group" aria-label="تعديل رقم الصفحة">
-            <button
+            <Button
               type="button"
-              className="nm-goto__nudge"
+              variant="ghost"
+              className={mushafButtonClass("nm-goto__nudge")}
               data-testid="mushaf-goto-prev"
               aria-label={MUSHAF_NAV_LABEL.previous}
               disabled={pageNumber <= MUSHAF_PAGE_MIN}
@@ -539,13 +546,14 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
               }}
             >
               −
-            </button>
+            </Button>
             <span className="nm-goto__current" aria-live="polite" dir="ltr">
               {toArabicDigits(pageNumber)}
             </span>
-            <button
+            <Button
               type="button"
-              className="nm-goto__nudge"
+              variant="ghost"
+              className={mushafButtonClass("nm-goto__nudge")}
               data-testid="mushaf-goto-next"
               aria-label={MUSHAF_NAV_LABEL.next}
               disabled={pageNumber >= MUSHAF_PAGE_MAX}
@@ -555,7 +563,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
               }}
             >
               +
-            </button>
+            </Button>
           </div>
 
           <div
@@ -573,15 +581,16 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
             {dialSlice.map((n) => {
               const active = n === pageNumber;
               return (
-                <button
+                <Button
                   key={n}
                   type="button"
+                  variant="ghost"
                   id={`mushaf-goto-page-${n}`}
                   role="option"
                   aria-selected={active}
                   data-page={n}
                   data-active={active ? "1" : undefined}
-                  className="nm-goto__dial-item"
+                  className={mushafButtonClass("nm-goto__dial-item")}
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -589,7 +598,7 @@ export const MushafControlsLayer = memo(function MushafControlsLayer({
                   }}
                 >
                   {toArabicDigits(n)}
-                </button>
+                </Button>
               );
             })}
             <div className="nm-goto__dial-spacer" style={{ height: dialSpacerBottom }} aria-hidden="true" />
