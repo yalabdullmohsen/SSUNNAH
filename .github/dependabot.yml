@@ -1,0 +1,44 @@
+# Dependabot — تحديثات الأمان فقط (pnpm + GitHub Actions).
+#
+# open-pull-requests-limit: 0 يعطّل تحديثات الإصدارات الروتينية، ويُبقي
+# تحديثات الأمان (Dependabot security updates) تعمل — لأنها لا تخضع لهذا الحد.
+# التحديثات الأمنية الصغيرة (minor/patch) تُجمَّع في PR واحد لكل نظام؛
+# الكبيرة (major) تبقى منفردة لأنها قد تكسر الواجهات.
+#
+# يتطلب تفعيل: Settings → Code security → Dependabot alerts + security updates.
+# PRs تعديل الـlockfile تُصنَّف danger-path ⇒ مراجعة يدوية قبل الدمج (سياسة safe-auto-merge).
+version: 2
+updates:
+  - package-ecosystem: "npm" # يشمل pnpm (pnpm-lock.yaml في الجذر يغطي كل مساحات العمل)
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+      time: "05:00"
+      timezone: "Asia/Kuwait"
+    open-pull-requests-limit: 0
+    commit-message:
+      prefix: "chore(deps-security)"
+    groups:
+      pnpm-security-minor-patch:
+        applies-to: security-updates
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+
+  - package-ecosystem: "github-actions"
+    directories:
+      - "/"
+      - "/.github/actions/*"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+      time: "05:00"
+      timezone: "Asia/Kuwait"
+    open-pull-requests-limit: 0
+    commit-message:
+      prefix: "chore(actions-security)"
+    groups:
+      actions-security-minor-patch:
+        applies-to: security-updates
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
