@@ -125,7 +125,7 @@
 
 .assistant-chat--modern {
   margin-top: 0;
-  border: 1px solid color-mix(in srgb, var(--msk-border, var(--mj-hairline)) 90%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-hairline, var(--msk-border)) 90%, transparent);
   border-radius: 1.25rem;
   background: color-mix(in srgb, var(--mj-white, var(--mj-white, var(--mj-white))) 92%, var(--majalis-parchment, #faf7f2));
   box-shadow: 0 18px 48px rgba(36, 31, 24, 0.08);

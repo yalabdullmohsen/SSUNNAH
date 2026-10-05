@@ -22,7 +22,7 @@
 }
 
 .tasbih-stat span {
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   font-size: 0.78rem;
 }
 
@@ -60,7 +60,7 @@
 }
 
 .tasbih-wird-tab {
-  border: 1px solid var(--msk-border, var(--mj-hairline));
+  border: 1px solid var(--mj-hairline, var(--msk-border));
   border-radius: 0.85rem;
   background: transparent;
   color: var(--majalis-ink);
@@ -80,7 +80,7 @@
 .tasbih-progress-label,
 .tasbih-saved,
 .tasbih-offline-note {
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   font-size: 0.82rem;
 }
 
@@ -140,7 +140,7 @@
 .tasbih-target-field input,
 .tasbih-add-row input {
   min-height: 44px;
-  border: 1px solid var(--msk-border, var(--mj-hairline));
+  border: 1px solid var(--mj-hairline, var(--msk-border));
   border-radius: 0.65rem;
   padding: 0 0.75rem;
   background: transparent;

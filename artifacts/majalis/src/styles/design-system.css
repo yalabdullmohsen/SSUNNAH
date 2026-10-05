@@ -864,7 +864,7 @@ html[data-theme="dark"] .ds-stat span {
 }
 
 .site-footer-email a {
-  color: var(--msk-text-2);
+  color: var(--mj-ink-2, var(--msk-text-2));
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -1865,7 +1865,7 @@ html[data-theme="dark"] .ds-stat span {
   margin: 0;
   font-size: 0.83rem;
   line-height: 1.75;
-  color: var(--color-text-body, var(--msk-text-2));
+  color: var(--color-text-body, var(--mj-ink-2, var(--msk-text-2)));
 }
 
 /* ── صفحة التوحيد المستقلة (/tawhid) ── */
@@ -2684,19 +2684,19 @@ p, li {
   --ds-shadow-lg: 0 20px 25px -5px rgba(26,23,20,.07), 0 10px 10px -5px rgba(26,23,20,.03);
 
   /* ── Colors — مرتبطة بـ msk tokens من index.css ── */
-  --ds-emerald:        var(--msk-gold,        var(--mj-brand));
-  --ds-emerald-deep:   var(--msk-gold-deep,   var(--mj-brand-deep));
+  --ds-emerald:        var(--mj-brand, var(--msk-gold));
+  --ds-emerald-deep:   var(--mj-brand-deep, var(--msk-gold-deep));
   --ds-emerald-soft:   var(--majalis-sage);
-  --ds-emerald-muted:  var(--msk-gold-dim,    rgba(23,61,53,.12));
-  --ds-gold:           var(--msk-gold,        var(--mj-brand));
+  --ds-emerald-muted:  var(--mj-brand-soft, var(--msk-gold-dim, rgba(23,61,53,.12)));
+  --ds-gold:           var(--mj-brand, var(--msk-gold));
   --ds-gold-soft:      var(--majalis-sage);
-  --ds-parchment:      var(--msk-canvas);
-  --ds-parchment-deep: var(--msk-canvas-2);
-  --ds-ink:            var(--msk-text);
-  --ds-ink-soft:       var(--msk-text-2);
-  --ds-ink-muted:      var(--msk-text-3);
-  --ds-line-color:     var(--msk-border);
-  --ds-line-strong:    var(--msk-border);
+  --ds-parchment:      var(--mj-bg, var(--msk-canvas));
+  --ds-parchment-deep: var(--mj-surface-2, var(--msk-canvas-2));
+  --ds-ink:            var(--mj-ink, var(--msk-text));
+  --ds-ink-soft:       var(--mj-ink-2, var(--msk-text-2));
+  --ds-ink-muted:      var(--mj-muted, var(--msk-text-3));
+  --ds-line-color:     var(--mj-hairline, var(--msk-border));
+  --ds-line-strong:    var(--mj-hairline, var(--msk-border));
 
   /* ── Heading token — أسود بدل زمرد ── */
   --ds-heading: var(--ds-ink);

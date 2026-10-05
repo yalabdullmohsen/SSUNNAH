@@ -15,7 +15,7 @@
 
 .lessons-v2-stat {
   background: var(--surface-card, transparent);
-  border: 1px solid var(--mie-border, var(--msk-border, var(--mj-hairline)));
+  border: 1px solid var(--mie-border, var(--mj-hairline, var(--msk-border)));
   border-radius: var(--mie-radius-card, var(--ds-radius-lg));
   padding: var(--mie-pad-card, var(--ds-space-3));
   text-align: center;
@@ -255,14 +255,14 @@
 
 .admin-feature-status__eyebrow {
   font-size: var(--ds-text-xs);
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   margin: 0 0 0.25rem;
 }
 
 .admin-feature-status__intro {
   margin: 0.5rem 0 0;
   font-size: 0.9rem;
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   max-width: 42rem;
 }
 
@@ -316,14 +316,14 @@
 
 .admin-feature-status__notes {
   font-size: 0.78rem;
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   max-width: 14rem;
 }
 
 .admin-feature-status__cli {
   margin-top: 1rem;
   font-size: 0.85rem;
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
 }
 
 .admin-feature-status__error {
@@ -2027,7 +2027,7 @@ html[data-theme="dark"] .lesson-unified-card__menu-item {
 
 .lesson-card-pro__meta dt {
   font-size: var(--ds-text-2xs);
-  color: var(--msk-text-2, var(--mj-muted));
+  color: var(--mj-muted);
   margin-bottom: 0.15rem;
   font-weight: 600;
 }
@@ -2042,7 +2042,7 @@ html[data-theme="dark"] .lesson-unified-card__menu-item {
 .lesson-card-pro__desc {
   margin: 0;
   font-size: var(--ds-text-sm);
-  color: var(--msk-text-2, var(--mj-muted));
+  color: var(--mj-muted);
   line-height: 1.75;
 }
 
@@ -2252,7 +2252,7 @@ html[data-theme="dark"] .lesson-unified-card__menu-item {
 .lesson-unified-card__meta-label {
   font-size: 0.68rem;
   font-weight: 700;
-  color: var(--msk-text-2, var(--mj-muted));
+  color: var(--mj-muted);
 }
 
 .lesson-unified-card__meta-cell strong {
@@ -2266,7 +2266,7 @@ html[data-theme="dark"] .lesson-unified-card__menu-item {
 .lesson-unified-card__note {
   margin: 0;
   font-size: 0.84rem;
-  color: var(--msk-text-2, var(--mj-muted));
+  color: var(--mj-muted);
   line-height: 1.65;
 }
 
@@ -2316,7 +2316,7 @@ html[data-theme="dark"] .lesson-unified-card__menu-item {
 
 .lesson-unified-card__btn--ghost {
   background: var(--mj-surface-2, transparent);
-  color: var(--txt-primary, var(--msk-text-2, var(--mj-muted)));
+  color: var(--txt-primary, var(--mj-muted));
   border: 1px solid var(--mj-hairline, var(--majalis-line));
 }
 
@@ -2341,7 +2341,7 @@ html[data-theme="dark"] .lesson-unified-card__menu-item {
 
 .lesson-detail-summary {
   margin: 0.5rem 0 0;
-  color: var(--msk-text-2, var(--mj-muted));
+  color: var(--mj-muted);
   line-height: 1.65;
 }
 
@@ -2425,7 +2425,7 @@ html[data-theme="dark"] .lesson-unified-card__menu-item {
   gap: var(--ds-space-1);
   margin-bottom: 0.75rem;
   font-size: 0.8125rem;
-  color: var(--msk-text-2, var(--mj-muted));
+  color: var(--mj-muted);
 }
 
 .lesson-detail-breadcrumb a {
@@ -2451,13 +2451,13 @@ html[data-theme="dark"] .lesson-unified-card__menu-item {
   padding: 0.55rem 0.85rem;
   border-radius: 0.65rem;
   background: transparent;
-  border: 1px solid var(--msk-border, var(--mj-hairline));
+  border: 1px solid var(--mj-hairline, var(--msk-border));
   min-width: 5.5rem;
 }
 
 .lesson-detail-stat span {
   font-size: var(--ds-text-xs);
-  color: var(--msk-text-2, var(--mj-muted));
+  color: var(--mj-muted);
 }
 
 .lesson-detail-stat strong {
@@ -2541,7 +2541,7 @@ html[data-theme="dark"] .lesson-unified-card__menu-item {
   border-radius: var(--ds-radius);
   background: var(--majalis-parchment-deep, #F0EBE0);
   border: 1px solid var(--majalis-line, #E8E2D8);
-  color: var(--msk-text-2, var(--mj-muted));
+  color: var(--mj-muted);
   font-weight: 600;
   font-size: 0.82rem;
   text-decoration: none;

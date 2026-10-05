@@ -55,7 +55,7 @@
 .cond-export-note {
   margin: 0.25rem 0 0;
   font-size: 0.78rem;
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   line-height: 1.6;
 }
 
@@ -73,7 +73,7 @@
 
 .cond-page-desc,
 .cards-back-link {
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   font-size: 0.9rem;
   margin-bottom: 1rem;
 }
@@ -87,14 +87,14 @@
 .cond-form-label {
   display: block;
   margin-bottom: 0.35rem;
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   font-size: 0.85rem;
   font-weight: 700;
 }
 
 .cond-input {
   width: 100%;
-  border: 1px solid var(--msk-border, var(--mj-hairline));
+  border: 1px solid var(--mj-hairline, var(--msk-border));
   border-radius: var(--ds-radius-lg);
   padding: 0.7rem 0.85rem;
   background: transparent;
@@ -117,7 +117,7 @@
   display: flex;
   align-items: center;
   gap: 0.55rem;
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   font-size: 0.88rem;
   font-weight: 600;
 }
@@ -175,7 +175,7 @@
 .cards-textarea,
 .cards-input {
   width: 100%;
-  border: 1px solid var(--msk-border, var(--mj-hairline));
+  border: 1px solid var(--mj-hairline, var(--msk-border));
   border-radius: var(--ds-radius-lg);
   padding: 0.75rem 0.9rem;
   margin-bottom: 0.65rem;
@@ -197,7 +197,7 @@
   border-radius: 0.85rem;
   padding: 0.65rem;
   background: transparent;
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   font-size: 0.85rem;
   font-weight: 700;
   text-align: center;
@@ -227,10 +227,10 @@
   flex: 1;
   min-width: 5.5rem;
   min-height: 44px;
-  border: 1px solid var(--msk-border, var(--mj-hairline));
+  border: 1px solid var(--mj-hairline, var(--msk-border));
   border-radius: 0.65rem;
   background: transparent;
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   font-size: 0.82rem;
   font-weight: 700;
 }

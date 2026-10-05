@@ -37,14 +37,14 @@
 .cal-nav-hijri {
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--msk-text-2, var(--mj-ink-2, var(--mj-muted)));
+  color: var(--mj-ink-2, var(--msk-text-2, var(--mj-muted)));
 }
 
 .cal-nav-btn,
 .cal-today-btn,
 .cal-view-tab,
 .cal-ics-btn {
-  border: 1px solid var(--msk-border, var(--mj-hairline, var(--mj-hairline)));
+  border: 1px solid var(--mj-hairline, var(--msk-border));
   background: var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
   border-radius: var(--ds-radius, 8px);
   font-family: inherit;
@@ -108,7 +108,7 @@
   margin-bottom: 0.5rem;
   font-size: var(--ds-text-xs, 0.75rem);
   font-weight: 700;
-  color: var(--msk-text-2, var(--mj-ink-2, var(--mj-muted)));
+  color: var(--mj-ink-2, var(--msk-text-2, var(--mj-muted)));
   text-align: center;
 }
 
@@ -141,7 +141,7 @@
   flex-direction: column;
   align-items: stretch;
   min-height: 4.75rem;
-  border: 1px solid var(--msk-border, var(--mj-hairline, var(--mj-hairline)));
+  border: 1px solid var(--mj-hairline, var(--msk-border));
   border-radius: var(--ds-radius, 8px);
   background: var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
   overflow: hidden;
@@ -203,7 +203,7 @@
 .cal-cell-hijri {
   font-size: 0.62rem;
   font-weight: 600;
-  color: var(--msk-text-2, var(--mj-ink-2, var(--mj-muted)));
+  color: var(--mj-ink-2, var(--msk-text-2, var(--mj-muted)));
   line-height: 1;
 }
 
@@ -262,7 +262,7 @@
 /* ── أسبوع ── */
 .cal-week-head {
   width: 100%;
-  border: 1px solid var(--msk-border, var(--mj-hairline, var(--mj-hairline)));
+  border: 1px solid var(--mj-hairline, var(--msk-border));
   background: var(--majalis-parchment-deep, #f5f5f0);
   border-radius: var(--ds-radius, 8px);
   padding: 0.25rem 0.1rem;
@@ -291,7 +291,7 @@
   display: block;
   width: 100%;
   text-align: start;
-  border: 1px solid var(--msk-border, var(--mj-hairline, var(--mj-hairline)));
+  border: 1px solid var(--mj-hairline, var(--msk-border));
   background: var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
   border-radius: var(--ds-radius, 8px);
   padding: 0.25rem 0.35rem;
@@ -325,7 +325,7 @@
 
 .cal-day-panel__hijri {
   font-size: 0.8rem;
-  color: var(--msk-text-2, var(--mj-ink-2, var(--mj-muted)));
+  color: var(--mj-ink-2, var(--msk-text-2, var(--mj-muted)));
 }
 
 .cal-day-panel__list {
@@ -339,7 +339,7 @@
 .cal-day-item {
   width: 100%;
   text-align: start;
-  border: 1px solid var(--msk-border, var(--mj-hairline, var(--mj-hairline)));
+  border: 1px solid var(--mj-hairline, var(--msk-border));
   background: var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
   border-radius: var(--ds-radius, 8px);
   padding: 0.65rem 0.75rem;
@@ -358,11 +358,11 @@
 .cal-day-item span {
   display: block;
   font-size: 0.75rem;
-  color: var(--msk-text-2, var(--mj-ink-2, var(--mj-muted)));
+  color: var(--mj-ink-2, var(--msk-text-2, var(--mj-muted)));
 }
 
 .cal-empty {
-  color: var(--msk-text-2, var(--mj-ink-2, var(--mj-muted)));
+  color: var(--mj-ink-2, var(--msk-text-2, var(--mj-muted)));
   font-size: 0.9rem;
   padding: 0.75rem 0;
   text-align: center;

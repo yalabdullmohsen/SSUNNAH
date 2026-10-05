@@ -84,7 +84,7 @@
   border: none;
   font-size: 1.1rem;
   cursor: pointer;
-  color: var(--msk-text-3, var(--mj-ink-2));
+  color: var(--mj-ink-2);
   width: 2rem;
   height: 2rem;
   display: grid;
@@ -92,7 +92,7 @@
   border-radius: 50%;
   transition: background 0.15s, color 0.15s;
 }
-.aie-modal__close:hover { background: rgba(0,0,0,0.07); color: var(--msk-text, #1A1A18); }
+.aie-modal__close:hover { background: rgba(0,0,0,0.07); color: var(--mj-ink, var(--msk-text, #1A1A18)); }
 
 /* جسم المودال */
 .aie-modal__body {
@@ -109,7 +109,7 @@
 .aie-field__label {
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   font-family: var(--mj-font-display);
 }
 .aie-field__input {
@@ -119,8 +119,8 @@
   padding: 0.55rem 0.75rem;
   font-size: 0.92rem;
   font-family: inherit;
-  color: var(--msk-text, #1A1A18);
-  background: var(--msk-canvas, #FFFFFF);
+  color: var(--mj-ink, var(--msk-text, #1A1A18));
+  background: var(--mj-bg, var(--msk-canvas, #FFFFFF));
   direction: rtl;
   transition: border-color 0.15s, box-shadow 0.15s;
   outline: none;
@@ -184,7 +184,7 @@
 .aie-btn--primary:hover:not(:disabled) { opacity: 0.88; transform: translateY(-1px); }
 .aie-btn--ghost {
   background: transparent;
-  color: var(--msk-text-2, var(--mj-ink-2));
+  color: var(--mj-ink-2, var(--msk-text-2));
   border: 1.5px solid rgba(0,0,0,0.12);
 }
 .aie-btn--ghost:hover:not(:disabled) { background: rgba(0,0,0,0.04); }

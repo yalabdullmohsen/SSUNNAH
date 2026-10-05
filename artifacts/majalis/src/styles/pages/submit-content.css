@@ -42,7 +42,7 @@
 .scp-feedback--error {
   background: rgba(193,89,90,0.10);
   border: 1px solid rgba(193,89,90,0.30);
-  color: var(--msk-red, #C1595A);
+  color: var(--mj-danger, var(--msk-red, #C1595A));
 }
 .scp-label {
   display: flex;
