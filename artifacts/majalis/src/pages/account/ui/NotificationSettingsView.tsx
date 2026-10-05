@@ -273,7 +273,7 @@ function SectionDetailPanel({
         <Button type="button" variant="ghost" size="small" className="nh-btn" onClick={onClose}>
           رجوع
         </Button>
-        <h2 className="notif-card__title" style={{ margin: 0 }}>
+        <h2 className="notif-card__title">
           {meta.title}
         </h2>
       </div>

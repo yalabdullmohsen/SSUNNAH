@@ -227,6 +227,7 @@
   line-height: 1.6 !important;
   margin: 0.25rem 0 0 !important;
 }
+.settings-note--list { list-style: none; padding: 0; }
 
 /* ══ مفتاح التبديل (Toggle Switch) ══ */
 .settings-toggle-row {
