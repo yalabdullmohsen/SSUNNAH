@@ -74,6 +74,7 @@ artifacts/majalis/public/data/search/shards/
 .claude/identity.json
 .claude/skills/*
 !.claude/skills/graphify/
+!.claude/skills/sharia-content/
 .claude/homunculus/
 .agents/skills/
 .codex/
