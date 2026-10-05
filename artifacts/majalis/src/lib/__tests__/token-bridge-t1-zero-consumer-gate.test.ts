@@ -41,11 +41,11 @@ const retired = [
   "--majalis-text",
 ] as const;
 
-/** KEEP_COMPATIBILITY_WITH_EVIDENCE — quality-campaign public contract only. */
+/** Former quality-campaign compat aliases — retired in T6 (see token-bridge-t6-qc-gate). */
 const keptCompat = [
-  { alias: "--ds-muted", canonical: "var(--text-muted)" },
-  { alias: "--ds-danger", canonical: "var(--danger)" },
-  { alias: "--ds-success", canonical: "var(--success)" },
+  { alias: "--ds-muted", canonical: "--text-muted" },
+  { alias: "--ds-danger", canonical: "--danger" },
+  { alias: "--ds-success", canonical: "--success" },
 ] as const;
 
 const cssBundle = [
@@ -69,18 +69,19 @@ for (const tok of retired) {
 }
 
 const designTokens = read("src/styles/design-tokens.css");
+const qualityGate = read("scripts/test-quality-campaign-gate.mjs");
 for (const { alias, canonical } of keptCompat) {
+  assert.doesNotMatch(
+    designTokens,
+    new RegExp(`${alias.replace(/-/g, "\\-")}\\s*:`),
+    `${alias} retired in T6`,
+  );
   assert.match(
     designTokens,
-    new RegExp(`${alias.replace(/-/g, "\\-")}\\s*:\\s*${canonical.replace(/[()]/g, "\\$&")}`),
-    `${alias} bridges to ${canonical}`,
+    new RegExp(`(^|[\\s;{])${canonical.replace(/-/g, "\\-")}\\s*:`, "m"),
+    `${canonical} canonical declared`,
   );
-}
-assert.match(designTokens, /KEEP_COMPATIBILITY_WITH_EVIDENCE/);
-
-const qualityGate = read("scripts/test-quality-campaign-gate.mjs");
-for (const { alias } of keptCompat) {
-  assert.match(qualityGate, new RegExp(`"${alias.replace(/-/g, "\\-")}"`), `${alias} still required by quality-campaign`);
+  assert.match(qualityGate, new RegExp(`"${canonical.replace(/-/g, "\\-")}"`), `${canonical} required by quality-campaign`);
 }
 
 /** No new runtime var() consumers for kept legacy aliases (repo scan). */
@@ -131,5 +132,4 @@ assert.equal(check.status, 0, check.stderr || check.stdout);
 
 console.log("token-bridge-t1-zero-consumer-gate: ok");
 console.log("ALIASES_RETIRED_26");
-console.log("COMPAT_ALIASES_KEPT_3");
-console.log("KEEP_COMPATIBILITY_WITH_EVIDENCE");
+console.log("COMPAT_ALIASES_RETIRED_T6_3");

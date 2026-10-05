@@ -24,7 +24,9 @@ assert.match(main, /modern-ui-refresh\.css/, "modern-ui-refresh محمّلة");
 assert.match(canonical, /--ds-background:/, "token background");
 assert.match(canonical, /--ds-textPrimary:/, "token textPrimary");
 assert.match(canonical, /--ds-radiusLarge:/, "token radius");
-assert.match(canonical, /--ds-durationFast:/, "token motion");
+/* T6: --ds-durationFast متقاعد؛ عقد الحركة على الرمز القانوني --motion-fast */
+assert.match(read("src/styles/design-tokens.css"), /(^|[\s;{])--motion-fast:\s*\d+ms/m, "token motion (--motion-fast)");
+assert.doesNotMatch(canonical, /--ds-durationFast\s*:/, "--ds-durationFast متقاعد (T6)");
 assert.ok(
   /Design System Adoption/.test(mur) || /Design System Adoption/.test(canonical),
   "طبقة التبني العالمي",

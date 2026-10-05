@@ -63,11 +63,11 @@ const removed = [
 
 assert.equal(removed.length, 47);
 
-/* Governance keep-compat — not in removed set */
+/* Governance motion contract — migrated to canonical --motion-fast in T6 */
 assert.match(
-  read("src/styles/ssunnah-ds-canonical.css"),
-  /--ds-durationFast:\s*var\(--motion-fast/,
-  "--ds-durationFast keep-compat → --motion-fast",
+  read("src/styles/design-tokens.css"),
+  /(^|[\s;{])--motion-fast:/m,
+  "--motion-fast canonical (ex --ds-durationFast, T6)",
 );
 
 const cssBundle = [
@@ -97,9 +97,9 @@ for (const tok of [
   "--ds-textSecondary",
   "--ds-accent",
   "--ds-border",
-  "--ds-muted",
-  "--ds-danger",
-  "--ds-success",
+  "--text-muted",
+  "--danger",
+  "--success",
 ]) {
   assert.match(dt, new RegExp(`${tok.replace(/-/g, "\\-")}\\s*:`), `${tok} QC held`);
 }
@@ -122,5 +122,5 @@ assert.equal(qc.status, 0, qc.stderr || qc.stdout);
 
 console.log("token-bridge-t4-ds-scale-zero-gate: ok");
 console.log("ALIASES_RETIRED_47");
-console.log("DURATION_FAST_KEEP_COMPAT");
+console.log("DURATION_FAST_MIGRATED_T6");
 console.log("QUALITY_CAMPAIGN_CONTRACT_HELD");

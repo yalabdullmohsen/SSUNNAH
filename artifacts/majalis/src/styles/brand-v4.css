@@ -367,7 +367,6 @@ html[data-theme="dark"] {
   /* — نظام --ds-* — */
   --ds-surface:    var(--surface);
   --ds-border:     var(--border);
-  --ds-text:       var(--text);
   --ds-accent:     var(--accent);
   --ds-radius:     var(--r-lg);
   --ds-shadow:     var(--e-2);
