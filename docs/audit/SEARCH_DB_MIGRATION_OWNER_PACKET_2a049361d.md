@@ -5,7 +5,7 @@ TASK_CLASSIFICATION: **SHARED_PLATFORM_WITH_EXTERNAL_DB**
 Packet_role: **SEARCH_REPOSITORY_MIGRATION_READY** + **SEARCH_DB_MIGRATION_OWNER_PACKET_READY**  
 Live SQL apply: **OWNER_ACTION / EXTERNAL_DB** (never from CI or agent merge)
 
-Repo_commit: `PENDING_COMMIT`  
+Repo_commit: `dbaff6444` (packet tip; search RPC wiring `e75538921`)  
 Base_main: `d2924d5fe` (2026-10-05)  
 Related: `docs/audit/ARABIC_SEARCH_PRODUCTION_APPROVAL_PACKET.md` · Staging cert `docs/audit/ARABIC_SEARCH_V4_STAGING_CERTIFICATION_REPORT.md`
 
