@@ -118,7 +118,7 @@ export function TextHighlightCapture({
           aria-label="حفظ تحديد كفائدة علمية"
           style={{ left: pop.x, top: pop.y }}
         >
-          <p className="thc-pop__quote" dir="rtl" lang="ar">
+          <p className="thc-pop__quote" dir="rtl" lang="ar" title={pop.quote}>
             {truncateAtWord(pop.quote, 120)}
           </p>
           <div className="thc-pop__colors" role="group" aria-label="لون التحديد">

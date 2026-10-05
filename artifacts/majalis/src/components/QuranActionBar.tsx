@@ -232,7 +232,7 @@ export function QuranActionBar({ ayah, onClose }: QuranActionBarProps) {
         ) : null}
       </header>
 
-      <p className="qe-abar__preview">{truncateAtWord(ayah.text, 140)}</p>
+      <p className="qe-abar__preview" title={ayah.text}>{truncateAtWord(ayah.text, 140)}</p>
 
       <Button
         type="button"

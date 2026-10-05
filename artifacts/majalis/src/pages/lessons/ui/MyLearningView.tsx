@@ -351,7 +351,7 @@ export default function MyLearningPage() {
               {notes.slice(0, 5).map((n, i) => (
                 <li key={i} className="myl2-note-item">
                   <Clock size={11} aria-hidden="true" />
-                  <span>{n.title ?? (n.body ? truncateAtWord(n.body, 80) : "")}</span>
+                  <span title={n.title ?? n.body ?? undefined}>{n.title ?? (n.body ? truncateAtWord(n.body, 80) : "")}</span>
                 </li>
               ))}
             </ul>

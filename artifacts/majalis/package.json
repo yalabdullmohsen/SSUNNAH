@@ -845,7 +845,8 @@
     "test:ios-widget-governance-completeness": "node --import tsx src/lib/__tests__/ios-widget-governance-completeness-gate.test.ts",
     "test:mushaf-ownership-a1": "node --import tsx src/lib/__tests__/mushaf-ownership-a1-gate.test.ts",
     "test:ui1-quran-button-authority": "node --import tsx src/lib/__tests__/ui1-quran-button-authority-gate.test.ts",
-    "test:micro-friction-c5": "node --import tsx src/lib/__tests__/micro-friction-c5-gate.test.ts"
+    "test:micro-friction-c5": "node --import tsx src/lib/__tests__/micro-friction-c5-gate.test.ts",
+    "test:ui2-polish-a11y": "node --import tsx src/lib/__tests__/ui2-polish-a11y-gate.test.ts"
   },
   "devDependencies": {
     "@capacitor/assets": "^3.0.5",
