@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { AdminModal, Field } from "./AdminModal";
 import { sanitizeText } from "@/lib/sanitize";
@@ -86,11 +87,12 @@ export function ArbaeenLoveSection() {
     <div>
       <div className="mir-header">
         <h2 className="mir-title">الأربعون في محبة رب العالمين ({items.length} من 40 — {publishedCount} منشور)</h2>
-        <button
+        <Button
           type="button"
+          variant="primary"
           className="mir-add-btn"
           onClick={() => { setForm({ ...EMPTY }); setOpen(true); }}
-        >+ إضافة حديث</button>
+        >+ إضافة حديث</Button>
       </div>
 
       <p className="adm-empty-msg" style={{ marginBottom: "0.75rem" }}>
@@ -130,11 +132,12 @@ export function ArbaeenLoveSection() {
                     <option key={s} value={s}>{ARBAEEN_REVIEW_STATUS_LABELS[s]}</option>
                   ))}
                 </select>
-                <button type="button" onClick={() => { setForm({ ...item }); setOpen(true); }}>تعديل</button>
-                <button
+                <Button type="button" variant="ghost" onClick={() => { setForm({ ...item }); setOpen(true); }}>تعديل</Button>
+                <Button
                   type="button"
+                  variant="destructive"
                   onClick={async () => { if ((await confirm({ title: "تأكيد", body: "حذف نهائي لهذا الحديث؟", danger: true, confirmLabel: "تأكيد" }))) adminDeleteArbaeenLove(item.id).then(load); }}
-                >حذف</button>
+                >حذف</Button>
               </div>
             </article>
           ))}

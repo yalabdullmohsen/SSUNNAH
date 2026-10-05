@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { runInstagramManualAssist } from "@/lib/instagram-integration-api";
 import type { TrustedLessonSource } from "@/lib/lesson-automation-api";
@@ -75,9 +76,9 @@ export function InstagramManualAssistPanel({ source, onDone }: Props) {
 
   return (
     <div className="igp-panel">
-      <button type="button" onClick={() => setOpen(!open)} className="igp-toggle-btn">
+      <Button type="button" variant="ghost" onClick={() => setOpen(!open)} className="igp-toggle-btn">
         {open ? "▾" : "▸"} Manual Assist، رفع إعلان يدويًا
-      </button>
+      </Button>
       {open && (
         <div className="igp-body">
           <p className="igp-info">
@@ -86,9 +87,9 @@ export function InstagramManualAssistPanel({ source, onDone }: Props) {
           </p>
           <div className="igp-mode-tabs">
             {(["upload", "url", "caption"] as const).map((m) => (
-              <button key={m} type="button" onClick={() => setMode(m)} className={`igp-mode-tab${mode === m ? " igp-mode-tab--active" : ""}`}>
+              <Button key={m} type="button" variant="ghost" onClick={() => setMode(m)} className={`igp-mode-tab${mode === m ? " igp-mode-tab--active" : ""}`}>
                 {m === "upload" ? "رفع صورة" : m === "url" ? "رابط + صورة" : "Caption"}
-              </button>
+              </Button>
             ))}
           </div>
           {allowedTypes.length > 1 && (
@@ -103,13 +104,13 @@ export function InstagramManualAssistPanel({ source, onDone }: Props) {
             <>
               <input placeholder="رابط المنشور" value={postUrl} onChange={(e) => setPostUrl(e.target.value)} className="adm-input" dir="ltr" />
               <input placeholder="رابط الصورة (اختياري)" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} className="adm-input" dir="ltr" />
-              <button type="button" disabled={busy} onClick={onSubmit} className="igp-action-btn">فحص بالذكاء الاصطناعي</button>
+              <Button type="button" variant="primary" disabled={busy} onClick={onSubmit} className="igp-action-btn">فحص بالذكاء الاصطناعي</Button>
             </>
           )}
           {mode === "caption" && (
             <>
               <textarea placeholder="الصق Caption الإعلان" value={caption} onChange={(e) => setCaption(e.target.value)} rows={3} className="adm-input" />
-              <button type="button" disabled={busy} onClick={onSubmit} className="igp-action-btn">إنشاء مسودة</button>
+              <Button type="button" variant="primary" disabled={busy} onClick={onSubmit} className="igp-action-btn">إنشاء مسودة</Button>
             </>
           )}
           {result && <p className="igp-result">{result}</p>}

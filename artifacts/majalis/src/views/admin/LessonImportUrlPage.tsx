@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { invalidateLessonsCache } from "@/lib/lessons-service";
 import {
@@ -224,14 +225,15 @@ function LessonImportUrlContent() {
         />
         <label style={labelStyle} htmlFor="liu-notes">ملاحظات (اختياري)</label>
         <input id="liu-notes" className="adm-input liu-input--mb" value={notes} onChange={(e) => setNotes(e.target.value)} disabled={busy} />
-        <button
+        <Button
           type="button"
+          variant="primary"
           disabled={busy}
           onClick={onImport}
           className="liu-import-btn"
         >
           {busy ? "جاري الاستيراد…" : "استيراد من الرابط"}
-        </button>
+        </Button>
         <ul className="liu-hints">
           {PLATFORM_HINTS.map((h) => (
             <li key={h}>{h}</li>

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import {
   getIntelligenceCenter,
@@ -94,14 +95,15 @@ function AutomationCenterContent() {
           </p>
         </div>
         <div className="acc-nav">
-          <button
+          <Button
             type="button"
+            variant="primary"
             disabled={busy}
             onClick={onRun}
             className="acc-run-btn"
           >
             تشغيل المحرك الآن
-          </button>
+          </Button>
           <Link href="/admin/sources" className="acc-nav-link">المصادر</Link>
           <Link href="/admin/automation/dashboard" className="acc-nav-link">لوحة Phase 5</Link>
           <Link href="/admin/review-center" className="acc-nav-link">مركز المراجعة</Link>

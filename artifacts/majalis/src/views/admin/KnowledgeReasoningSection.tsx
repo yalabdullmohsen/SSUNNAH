@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { useAdminShell } from "@/views/admin/AdminShell";
 import {
@@ -88,15 +89,15 @@ export function KnowledgeReasoningSection() {
           </p>
         </div>
         <div className="krs-btn-group">
-          <button type="button" disabled={running} onClick={() => handleRun(false)} className="krs-btn--primary">
+          <Button type="button" variant="primary" disabled={running} onClick={() => handleRun(false)} className="krs-btn--primary">
             {running ? "جاري التشغيل…" : "دورة الاستدلال"}
-          </button>
-          <button type="button" disabled={running} onClick={() => handleRun(true)} className="krs-btn">
+          </Button>
+          <Button type="button" variant="outline" disabled={running} onClick={() => handleRun(true)} className="krs-btn">
             دورة + إصلاح
-          </button>
-          <button type="button" onClick={handleQualityScan} className="krs-btn">
+          </Button>
+          <Button type="button" variant="outline" onClick={handleQualityScan} className="krs-btn">
             فحص الجودة
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -152,9 +153,9 @@ export function KnowledgeReasoningSection() {
           onChange={(e) => setTestQuery(e.target.value)}
           className="krs-test-input"
         />
-        <button type="button" onClick={handleTestQuery} className="krs-test-btn">
+        <Button type="button" variant="primary" onClick={handleTestQuery} className="krs-test-btn">
           اختبار
-        </button>
+        </Button>
       </div>
       {testResult && (
         <div className="krs-test-result">{testResult}</div>

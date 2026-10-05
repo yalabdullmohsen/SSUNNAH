@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { adminFetch } from "@/lib/admin-api";
 
 const SITE = "https://www.ssunnah.com";
@@ -94,9 +95,9 @@ export function Phase2TrialImport({ onDone }: Phase2TrialImportProps) {
 
   return (
     <>
-      <button type="button" onClick={() => setOpen(true)} className="p2t-btn">
+      <Button type="button" variant="primary" onClick={() => setOpen(true)} className="p2t-btn">
         استيراد تجريبي Phase 2
-      </button>
+      </Button>
 
       {open && (
         // نقر الخلفية للإغلاق مصحوب بمعالج Escape فعلي (أعلاه) — مسار وصول
@@ -112,15 +113,15 @@ export function Phase2TrialImport({ onDone }: Phase2TrialImportProps) {
             </p>
 
             <div className="p2t-btn-row">
-              <button type="button" disabled={running} onClick={() => run(false)} className="p2t-btn">
+              <Button type="button" variant="primary" disabled={running} onClick={() => run(false)} className="p2t-btn">
                 {running ? "جارٍ الاستيراد…" : "تنفيذ الاستيراد الحقيقي"}
-              </button>
-              <button type="button" disabled={running} onClick={() => run(true)} className="p2t-btn p2t-btn--outline">
+              </Button>
+              <Button type="button" variant="outline" disabled={running} onClick={() => run(true)} className="p2t-btn p2t-btn--outline">
                 معاينة (dry-run)
-              </button>
-              <button type="button" disabled={running} onClick={close} className="p2t-btn p2t-btn--ghost">
+              </Button>
+              <Button type="button" variant="ghost" disabled={running} onClick={close} className="p2t-btn p2t-btn--ghost">
                 إغلاق
-              </button>
+              </Button>
             </div>
 
             {error && <p className="p2t-error">{error}</p>}

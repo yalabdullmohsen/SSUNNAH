@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { useAdminShell } from "@/views/admin/AdminShell";
 import {
   fetchIntelligenceDashboard,
@@ -111,11 +112,11 @@ export function IslamicIntelligenceSection() {
       <div className="ii-header">
         <h2 className="ii-title">منصة الاستخبارات العلمية الإسلامية</h2>
         <div className="ii-btn-group">
-          <button type="button" onClick={handleRunAll} disabled={running} className="ii-btn">
+          <Button type="button" variant="primary" onClick={handleRunAll} disabled={running} className="ii-btn">
             {running ? "جاري التشغيل..." : "تشغيل جميع الوكلاء"}
-          </button>
-          <button type="button" onClick={handleWeekly} className="ii-btn">التقرير الأسبوعي</button>
-          <button type="button" onClick={handleReport} className="ii-btn">التقرير النهائي</button>
+          </Button>
+          <Button type="button" variant="outline" onClick={handleWeekly} className="ii-btn">التقرير الأسبوعي</Button>
+          <Button type="button" variant="outline" onClick={handleReport} className="ii-btn">التقرير النهائي</Button>
         </div>
       </div>
 
@@ -135,14 +136,15 @@ export function IslamicIntelligenceSection() {
           {agents.map(([id, agent]) => (
             <div key={id} className="ii-agent-row">
               <span>{agent.label_ar || AGENT_LABELS[id]}</span>
-              <button
+              <Button
                 type="button"
+                variant="outline"
                 className="ii-agent-btn"
                 disabled={runningAgent === id}
                 onClick={() => handleRunAgent(id)}
               >
                 {runningAgent === id ? "..." : "تشغيل"}
-              </button>
+              </Button>
             </div>
           ))}
         </Panel>

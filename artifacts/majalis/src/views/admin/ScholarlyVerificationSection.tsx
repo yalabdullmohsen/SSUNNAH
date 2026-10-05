@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { useAdminShell } from "@/views/admin/AdminShell";
 import {
@@ -81,12 +82,12 @@ export function ScholarlyVerificationSection() {
           </p>
         </div>
         <div className="svs-btn-group">
-          <button type="button" disabled={scanning} onClick={() => handleScan(false)} className="svs-btn--primary">
+          <Button type="button" variant="primary" disabled={scanning} onClick={() => handleScan(false)} className="svs-btn--primary">
             {scanning ? "جاري الفحص…" : "فحص التوثيق"}
-          </button>
-          <button type="button" disabled={scanning} onClick={() => handleScan(true)} className="svs-btn">
+          </Button>
+          <Button type="button" variant="outline" disabled={scanning} onClick={() => handleScan(true)} className="svs-btn">
             فحص + روابط
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -135,9 +136,9 @@ export function ScholarlyVerificationSection() {
           placeholder="مصدر، مؤلف، عنوان…"
           className="svs-search-input"
         />
-        <button type="button" onClick={handleSearch} className="svs-search-btn">
+        <Button type="button" variant="primary" onClick={handleSearch} className="svs-search-btn">
           بحث
-        </button>
+        </Button>
       </div>
       {searchResults.length > 0 && (
         <ul className="svs-results">

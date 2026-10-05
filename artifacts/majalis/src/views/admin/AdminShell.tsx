@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode, Suspense, lazy } from "react";
+import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
 import { useAuth } from "@/components/AuthProvider";
 import "@/styles/pages/admin-shell.css";
@@ -169,9 +170,9 @@ function FlashBanner({ flash, onClose }: { flash: Flash; onClose: () => void }) 
   return (
     <div role="alert" className={`admin-flash admin-flash--${flash.type}`}>
       <span>{flash.message}</span>
-      <button type="button" onClick={onClose} aria-label="إغلاق" className="admin-flash__close">
+      <Button type="button" variant="ghost" onClick={onClose} aria-label="إغلاق" className="admin-flash__close">
         ×
-      </button>
+      </Button>
     </div>
   );
 }
@@ -234,15 +235,16 @@ export function AdminShell({ section, onSectionChange, children }: AdminShellPro
     <AdminShellContext.Provider value={{ flash, showSuccess, showError, clearFlash, onSectionChange }}>
       {/* شريط علوي للجوال */}
       <div className="admin-topbar">
-        <button
+        <Button
           type="button"
+          variant="ghost"
           className="admin-hamburger"
           onClick={() => setMobileOpen(true)}
           aria-label="فتح القائمة"
           aria-expanded={mobileOpen}
         >
           ☰
-        </button>
+        </Button>
         <p className="admin-topbar__title">{currentLabel}</p>
         <Link href="/" className="admin-topbar__back" aria-label="العودة للموقع">
           ← الموقع
@@ -294,9 +296,9 @@ export function AdminShell({ section, onSectionChange, children }: AdminShellPro
             <Link href="/" className="admin-quicklink">
               ← العودة للموقع
             </Link>
-            <button type="button" onClick={handleLogout} className="admin-logout-btn">
+            <Button type="button" variant="ghost" onClick={handleLogout} className="admin-logout-btn">
               تسجيل الخروج
-            </button>
+            </Button>
           </div>
 
           {/* التنقل المُجمَّع */}
@@ -309,18 +311,21 @@ export function AdminShell({ section, onSectionChange, children }: AdminShellPro
                   </p>
                 )}
                 {group.items.map((item) => (
-                  <button
+                  <Button
                     key={item.key}
                     type="button"
+                    variant="ghost"
                     onClick={() => handleNavClick(item.key)}
                     aria-current={section === item.key ? "page" : undefined}
-                    className={`admin-nav__item${section === item.key ? " is-active" : ""}`}
+                    className={`admin-nav__item justify-start whitespace-normal [&_svg]:size-3.5${section === item.key ? " is-active" : ""}`}
+                    iconStart={
+                      <span className="admin-nav__item-icon" aria-hidden="true">
+                        {(() => { const I = item.Icon; return <I size={14} strokeWidth={1.8} />; })()}
+                      </span>
+                    }
                   >
-                    <span className="admin-nav__item-icon" aria-hidden="true">
-                      {(() => { const I = item.Icon; return <I size={14} strokeWidth={1.8} />; })()}
-                    </span>
                     <span className="admin-nav__item-label">{item.label}</span>
-                  </button>
+                  </Button>
                 ))}
               </div>
             ))}

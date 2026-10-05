@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { useAdminShell } from "@/views/admin/AdminShell";
 import { fetchSearchAnalytics, generateIntelligenceReport, type SearchAnalytics } from "@/lib/scholarly-intelligence-service";
@@ -38,9 +39,9 @@ export function SearchAnalyticsSection() {
     <div>
       <div className="sas-header">
         <h2>لوحة تحليل البحث</h2>
-        <button type="button" onClick={handleGenerateReport} disabled={reportLoading}>
+        <Button type="button" variant="primary" onClick={handleGenerateReport} disabled={reportLoading}>
           {reportLoading ? "جاري الإنشاء..." : "إنشاء التقرير"}
-        </button>
+        </Button>
       </div>
 
       <div className="sas-stats-grid">

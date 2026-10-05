@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { useAdminShell } from "@/views/admin/AdminShell";
 import {
@@ -100,15 +101,15 @@ export function VerifiedKnowledgeSection() {
           </p>
         </div>
         <div className="svs-btn-group">
-          <button type="button" disabled={running} onClick={() => handleRun(false)} className="svs-btn--primary">
+          <Button type="button" variant="primary" disabled={running} onClick={() => handleRun(false)} className="svs-btn--primary">
             {running ? "جاري التشغيل…" : "تشغيل الدورة"}
-          </button>
-          <button type="button" disabled={running} onClick={() => handleRun(true)} className="svs-btn">
+          </Button>
+          <Button type="button" variant="outline" disabled={running} onClick={() => handleRun(true)} className="svs-btn">
             دورة + فحص روابط
-          </button>
-          <button type="button" disabled={bootstrapping} onClick={handleBootstrap} className="svs-btn">
+          </Button>
+          <Button type="button" variant="outline" disabled={bootstrapping} onClick={handleBootstrap} className="svs-btn">
             {bootstrapping ? "جاري التهيئة…" : "تهيئة الأذكار/الأحاديث"}
-          </button>
+          </Button>
         </div>
       </div>
 

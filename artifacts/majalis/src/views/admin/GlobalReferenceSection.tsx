@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { useAdminShell } from "@/views/admin/AdminShell";
 import {
   fetchReferenceDashboard,
@@ -67,11 +68,11 @@ export function GlobalReferenceSection() {
       <div className="grs-header">
         <h2>المنظومة المرجعية العالمية</h2>
         <div className="grs-btn-group">
-          <button type="button" onClick={handleReview} disabled={reviewRunning}>
+          <Button type="button" variant="primary" onClick={handleReview} disabled={reviewRunning}>
             {reviewRunning ? "جاري المراجعة..." : "مراجعة دورية"}
-          </button>
-          <button type="button" onClick={handleAuditSources}>فحص المصادر</button>
-          <button type="button" onClick={handleReport}>إنشاء التقرير</button>
+          </Button>
+          <Button type="button" variant="outline" onClick={handleAuditSources}>فحص المصادر</Button>
+          <Button type="button" variant="outline" onClick={handleReport}>إنشاء التقرير</Button>
         </div>
       </div>
 

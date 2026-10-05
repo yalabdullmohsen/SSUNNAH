@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   CMS_CONTENT_KINDS,
   CMS_KIND_LABELS,
@@ -138,14 +139,15 @@ export function AggregatorSection() {
               <option key={k} value={k}>{CMS_KIND_LABELS[k]}</option>
             ))}
           </select>
-          <button
+          <Button
             type="button"
+            variant="primary"
             onClick={runImport}
             disabled={running || !jsonText.trim()}
             className="agg-run-btn"
           >
             {running ? "جارٍ الاستيراد…" : "تشغيل Aggregator"}
-          </button>
+          </Button>
         </div>
         <textarea
           className="blk-mono-textarea"
