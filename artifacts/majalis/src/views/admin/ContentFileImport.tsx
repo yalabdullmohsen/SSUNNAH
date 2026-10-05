@@ -3,6 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { adminImportFetch } from "@/lib/admin-api";
 import { chunkRows, formatImportApiError, parseImportFile, UPLOAD_BATCH_SIZE } from "@/lib/import-parse";
 import { queryKeys } from "@/lib/query-keys";
+import { Button } from "@/components/ui/button";
 
 const IMPORT_TYPES = [
   { value: "lessons", label: "الدروس" },
@@ -436,9 +437,9 @@ export function ContentFileImport({ onDone }: ContentFileImportProps) {
 
   return (
     <>
-      <button type="button" onClick={() => setOpen(true)} className="cfi-trigger-btn">
+      <Button type="button" variant="ghost" onClick={() => setOpen(true)} className="cfi-trigger-btn">
         ⇪ استيراد من ملف
-      </button>
+      </Button>
       <input
         ref={inputRef}
         type="file"
@@ -475,22 +476,22 @@ export function ContentFileImport({ onDone }: ContentFileImportProps) {
             </label>
 
             <div className="cfi-btn-row">
-              <button
-                type="button"
+              <Button
+                type="button" variant="ghost"
                 disabled={running}
                 onClick={() => inputRef.current?.click()}
                 className="cfi-choose-btn"
               >
                 {running ? "جارٍ الاستيراد…" : "اختيار ملف"}
-              </button>
+              </Button>
               {canRetry && !running && (
-                <button type="button" onClick={retryImport} className="cfi-retry-btn">
+                <Button type="button" variant="ghost" onClick={retryImport} className="cfi-retry-btn">
                   إعادة المحاولة
-                </button>
+                </Button>
               )}
-              <button type="button" onClick={close} disabled={running} className="cfi-close-btn">
+              <Button type="button" variant="ghost" onClick={close} disabled={running} className="cfi-close-btn">
                 إغلاق
-              </button>
+              </Button>
             </div>
 
             {filename && <p className="cfi-filename">الملف: {filename}</p>}
