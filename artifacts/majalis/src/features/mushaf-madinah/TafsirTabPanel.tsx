@@ -1,5 +1,6 @@
 import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { Bookmark, Copy, Share2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { fetchMushafAyahTafsir } from "@/lib/quran-data/fetch-ayah-content";
 import {
   getEligibleTextTafsirs,
@@ -150,22 +151,24 @@ export const TafsirTabPanel = memo(function TafsirTabPanel({
             const label =
               SOURCE_LABELS[ed.id as (typeof PRIMARY_SOURCE_IDS)[number]] ?? ed.name;
             return (
-              <button
+              <Button
                 key={ed.id}
                 type="button"
                 role="tab"
+                variant="ghost"
                 className={`quran-tab quran-btn--segment${selected ? " is-active" : ""}`}
                 aria-selected={selected}
                 onClick={() => selectEdition(ed.id)}
               >
                 {label}
-              </button>
+              </Button>
             );
           })}
         </div>
         <div className="ayah-action-sheet__tafsir-font quran-font-stepper" role="group" aria-label="حجم خط التفسير">
-          <button
+          <Button
             type="button"
+            variant="ghost"
             className="ayah-action-sheet__font-btn quran-font-stepper__btn quran-btn"
             aria-label="تصغير خط التفسير"
             disabled={fontScale === TAFSIR_FONT_SCALES[0]}
@@ -176,12 +179,13 @@ export const TafsirTabPanel = memo(function TafsirTabPanel({
             }}
           >
             أ−
-          </button>
+          </Button>
           <span className="ayah-action-sheet__font-label quran-font-stepper__label" aria-live="polite">
             {fontLabel(fontScale)}
           </span>
-          <button
+          <Button
             type="button"
+            variant="ghost"
             className="ayah-action-sheet__font-btn quran-font-stepper__btn quran-btn"
             aria-label="تكبير خط التفسير"
             disabled={fontScale === TAFSIR_FONT_SCALES[TAFSIR_FONT_SCALES.length - 1]}
@@ -192,7 +196,7 @@ export const TafsirTabPanel = memo(function TafsirTabPanel({
             }}
           >
             أ+
-          </button>
+          </Button>
         </div>
       </div>
       {active ? (
@@ -218,24 +222,24 @@ export const TafsirTabPanel = memo(function TafsirTabPanel({
       </div>
       {expanded && text ? (
         <div className="ayah-action-sheet__tafsir-actions" role="group" aria-label="إجراءات التفسير">
-          <button type="button" onClick={onCopy}>
+          <Button type="button" variant="ghost" onClick={onCopy}>
             <Copy size={18} aria-hidden="true" />
             <span>نسخ</span>
-          </button>
-          <button type="button" onClick={onShare}>
+          </Button>
+          <Button type="button" variant="ghost" onClick={onShare}>
             <Share2 size={18} aria-hidden="true" />
             <span>مشاركة</span>
-          </button>
+          </Button>
           {onShareImage ? (
-            <button type="button" onClick={onShareImage}>
+            <Button type="button" variant="ghost" onClick={onShareImage}>
               <Share2 size={18} aria-hidden="true" />
               <span>بطاقة</span>
-            </button>
+            </Button>
           ) : null}
-          <button type="button" onClick={onBookmark}>
+          <Button type="button" variant="ghost" onClick={onBookmark}>
             <Bookmark size={18} aria-hidden="true" />
             <span>إشارة</span>
-          </button>
+          </Button>
         </div>
       ) : null}
     </div>

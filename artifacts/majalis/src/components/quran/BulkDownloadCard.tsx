@@ -1,4 +1,5 @@
 import { Download, Pause, Play, Trash2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import type { DownloadProgress, ReciterDownloadStatus } from "@/lib/quran-audio-downloads";
 import { toArabicDigits } from "@/lib/utils";
 import "@/styles/components/bulk-download-card.css";
@@ -104,18 +105,19 @@ export function BulkDownloadCard({
 
       <div className="bdm-card__actions">
         {status === "downloading" ? (
-          <button type="button" className="bdm-card__btn bdm-card__btn--pause" onClick={onPause}>
+          <Button type="button" variant="secondary" className="bdm-card__btn bdm-card__btn--pause" onClick={onPause}>
             <Pause size={16} strokeWidth={2} aria-hidden="true" />
             إيقاف مؤقت
-          </button>
+          </Button>
         ) : status === "completed" ? (
-          <button type="button" className="bdm-card__btn bdm-card__btn--done" disabled>
+          <Button type="button" variant="secondary" className="bdm-card__btn bdm-card__btn--done" disabled>
             المصحف محمّل بالكامل
-          </button>
+          </Button>
         ) : canDelete ? (
           <div className="bdm-card__action-row">
-            <button
+            <Button
               type="button"
+              variant="primary"
               className="bdm-card__btn bdm-card__btn--start"
               onClick={onStart}
               disabled={downloadLocked}
@@ -131,20 +133,22 @@ export function BulkDownloadCard({
                   متابعة التنزيل
                 </>
               )}
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
+              variant="destructive"
               className="bdm-card__btn bdm-card__btn--delete"
               onClick={onDelete}
               aria-label={`حذف تنزيل ${reciterName}`}
             >
               <Trash2 size={16} strokeWidth={2} aria-hidden="true" />
               حذف
-            </button>
+            </Button>
           </div>
         ) : (
-          <button
+          <Button
             type="button"
+            variant="primary"
             className="bdm-card__btn bdm-card__btn--start"
             onClick={onStart}
             disabled={downloadLocked}
@@ -160,7 +164,7 @@ export function BulkDownloadCard({
                 بدء تحميل المصحف
               </>
             )}
-          </button>
+          </Button>
         )}
       </div>
     </article>

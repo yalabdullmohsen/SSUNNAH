@@ -17,6 +17,8 @@ import { scoreTolerantMatch } from "@/features/search/tolerant-match";
 import { toWesternDigits } from "@/shared/arabic-normalize";
 import { toArabicDigits } from "@/lib/utils";
 import { VirtualList, type VirtualListHandle } from "@/components/VirtualList";
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/design-system/Buttons";
 import { ACTION, EMPTY } from "@/lib/ui-copy";
 import { resolveCanonicalAyahHref } from "@/lib/quran-navigation";
 import "@/styles/components/quran-surah-jump-search.css";
@@ -242,17 +244,17 @@ export function QuranSurahJumpSearch({
             data-search-field="1"
           />
           {query ? (
-            <button
+            <IconButton
               type="button"
               className="quran-surah-jump__clear"
-              aria-label="مسح البحث"
+              label="مسح البحث"
               onClick={() => {
                 setQuery("");
                 inputRef.current?.focus();
               }}
             >
               <X size={16} strokeWidth={2} aria-hidden="true" />
-            </button>
+            </IconButton>
           ) : null}
         </label>
       </form>
@@ -260,19 +262,21 @@ export function QuranSurahJumpSearch({
       {!hideCatalog ? (
         <div className="quran-surah-jump__body">
           {!debounced && lastReading ? (
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className="quran-surah-jump__resume"
               onClick={() => go(lastReading.page)}
             >
               <span className="quran-surah-jump__resume-label">آخر قراءة</span>
               <span className="quran-surah-jump__resume-meta">{lastReading.label}</span>
-            </button>
+            </Button>
           ) : null}
 
           {showJumpAyah && jumpTarget?.kind === "ayah" ? (
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className="quran-surah-jump__hit quran-surah-jump__hit--ayah"
               onClick={() =>
                 go(jumpTarget.pageHint, {
@@ -286,26 +290,27 @@ export function QuranSurahJumpSearch({
                 {toArabicDigits(jumpTarget.ayah)}
               </strong>
               <span>ص {toArabicDigits(jumpTarget.pageHint)}</span>
-            </button>
+            </Button>
           ) : null}
 
           {showJumpPageOnly && jumpTarget?.kind === "page" ? (
-            <button
+            <Button
               type="button"
+              variant="ghost"
               className="quran-surah-jump__hit quran-surah-jump__hit--page"
               onClick={() => go(jumpTarget.page)}
             >
               <strong>صفحة {toArabicDigits(jumpTarget.page)}</strong>
               <span>انتقال مباشر</span>
-            </button>
+            </Button>
           ) : null}
 
           {debounced && hits.length === 0 && !showJumpAyah && !showJumpPageOnly ? (
             <div className="quran-surah-jump__empty">
               <p>{EMPTY.searchShort}</p>
-              <button type="button" onClick={() => setQuery("")}>
+              <Button type="button" variant="secondary" onClick={() => setQuery("")}>
                 {ACTION.clearSearch}
-              </button>
+              </Button>
             </div>
           ) : null}
 
@@ -320,8 +325,9 @@ export function QuranSurahJumpSearch({
               virtualizeAbove={20}
               getItemKey={(h) => h.id}
               renderItem={(h) => (
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
                   className="quran-surah-jump__hit"
                   onClick={() => go(h.page, { surah: h.id })}
                 >
@@ -335,7 +341,7 @@ export function QuranSurahJumpSearch({
                       {toArabicDigits(h.page)}
                     </span>
                   </span>
-                </button>
+                </Button>
               )}
             />
           ) : null}
