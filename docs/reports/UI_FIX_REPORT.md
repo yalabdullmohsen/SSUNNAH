@@ -27,7 +27,7 @@
 - `artifacts/majalis/src/index.css`
 - `artifacts/majalis/capacitor.config.ts`
 - `artifacts/majalis/src/styles/majalis-v2.css` (حذف CSS splash ميت لتحرير الميزانية)
-- `UI_FIX_REPORT.md`
+- `docs/reports/UI_FIX_REPORT.md`
 
 ## ما بقي
 

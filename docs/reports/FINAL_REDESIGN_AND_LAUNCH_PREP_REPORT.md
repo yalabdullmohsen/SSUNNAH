@@ -107,9 +107,9 @@
 - `src/components/home/HomeExplorePlatform.tsx`
 
 ### docs
-- `PROJECT_FINAL_REDESIGN_REPORT.md`
-- `FINAL_REDESIGN_AND_LAUNCH_PREP_REPORT.md`
-- `FINAL_LAUNCH_CHECKLIST.md`
+- `docs/reports/PROJECT_FINAL_REDESIGN_REPORT.md`
+- `docs/reports/FINAL_REDESIGN_AND_LAUNCH_PREP_REPORT.md`
+- `docs/reports/FINAL_LAUNCH_CHECKLIST.md`
 
 ## Commands Run
 

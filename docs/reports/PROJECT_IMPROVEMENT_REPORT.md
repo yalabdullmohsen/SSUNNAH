@@ -108,4 +108,4 @@ PORT=24216 BASE_PATH=/ pnpm --filter @workspace/majalis run build  # passed
 ## Improvements Done
 
 - See Flutter / React / Copy / Privacy sections above.
-- Docs: this report + `FINAL_CHECKLIST.md`.
+- Docs: this report + `docs/reports/FINAL_CHECKLIST.md`.
