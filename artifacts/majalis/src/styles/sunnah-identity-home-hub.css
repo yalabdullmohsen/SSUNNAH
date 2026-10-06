@@ -48,7 +48,7 @@ html[data-v2-app="1"][data-v2-dashboard="1"] .hw3-chip--lead {
   justify-content: space-between;
   gap: 0.5rem;
   width: 100%;
-  min-height: 2.5rem;
+  min-height: 2.75rem;
   padding: 0.5rem 0.75rem;
   border-radius: var(--v2-radius-md, 14px);
   border: 1px solid color-mix(in srgb, var(--v2-color-on-emerald, #fff) 22%, transparent);
@@ -85,11 +85,24 @@ html[data-v2-app="1"][data-v2-dashboard="1"] .hw3-meta {
   color: color-mix(in srgb, var(--v2-color-on-emerald, #fff) 82%, transparent);
 }
 
+/* أزرار صريحة (حبة) لا روابط مسطّرة — هدف لمس ≥44px وضغط فوري */
 html[data-v2-app="1"][data-v2-dashboard="1"] .hw3-meta a,
 html[data-v2-app="1"][data-v2-dashboard="1"] .hw3-meta .hw3-meta__ph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 2.75rem;
+  padding-inline: 0.85rem;
+  box-sizing: border-box;
   color: inherit;
   text-decoration: none;
-  border-block-end: 1px solid color-mix(in srgb, var(--v2-color-on-emerald, #fff) 28%, transparent);
+  border: 1px solid color-mix(in srgb, var(--v2-color-on-emerald, var(--mj-white)) 28%, transparent);
+  border-radius: var(--v2-radius-pill, 999px);
+  background: color-mix(in srgb, var(--v2-color-on-emerald, var(--mj-white)) 8%, transparent);
+  touch-action: manipulation;
+}
+html[data-v2-app="1"][data-v2-dashboard="1"] .hw3-meta a:active {
+  background: color-mix(in srgb, var(--v2-color-on-emerald, var(--mj-white)) 18%, transparent);
 }
 
 html[data-v2-app="1"][data-v2-dashboard="1"] .hw3-meta .hw3-meta__ph {

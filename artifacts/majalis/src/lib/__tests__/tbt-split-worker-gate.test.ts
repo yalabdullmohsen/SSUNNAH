@@ -57,7 +57,8 @@ assert.match(vite, /return "react-dom"/, "react-dom حزمة مستقلة");
 assert.match(vite, /return "react"/, "react حزمة مستقلة");
 assert.doesNotMatch(vite, /if \(isReactCoreModule\(id\)\) return "vendor"/, "لا حزمة vendor موحّدة");
 
-const tickerCss = read("src/styles/final-release.css");
+/* بنية الماركي (translate3d) في header-ticker-polish.css — متزامنة مع المكوّن */
+const tickerCss = read("src/styles/final-release.css") + read("src/styles/components/header-ticker-polish.css");
 assert.match(tickerCss, /translate3d\(0, 0, 0\)/, "الماركي مركّب");
 const pulseCss = read("src/styles/components/prayer-countdown-chip.css");
 assert.doesNotMatch(pulseCss, /@keyframes prayer-chip-pulse[\s\S]*box-shadow/, "نبض الشريحة بلا box-shadow");

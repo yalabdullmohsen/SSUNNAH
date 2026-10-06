@@ -85,7 +85,7 @@ assert.match(
 );
 assert.match(
   html,
-  /#mj-home-flow-start-ph\{min-height:20rem/,
+  /#mj-home-flow-start-ph\{min-height:12\.5rem/,
   "flow start-here matches real band geometry",
 );
 assert.match(

@@ -319,7 +319,8 @@ html.dark .ss-action-btn--ghost {
 .cards-grid,
 .hub-cards-grid,
 [data-cards-grid="1"] {
-  justify-items: center;
+  /* stretch لا center: center يقلّص كل بطاقة لعرض محتواها فتتفاوت العروض في نفس العمود */
+  justify-items: stretch;
   column-gap: clamp(0.75rem, 2.5vw, 1.1rem);
   row-gap: clamp(0.85rem, 2.8vw, 1.2rem);
   padding-inline: clamp(0.75rem, 3.5vw, 1.25rem);
@@ -512,7 +513,7 @@ html.dark .card__subtitle {
   max-width: min(40rem, 100%);
   margin-inline: auto;
   padding-inline: clamp(0.75rem, 3.5vw, 1.25rem);
-  justify-items: center;
+  justify-items: stretch;
   box-sizing: border-box;
 }
 
@@ -1064,9 +1065,10 @@ html.dark .search-page .search-page-form {
   margin-top: 0.5rem;
 }
 
-/* Soft-card retirement absorb — framed empties + secondary fabs (parity). */
+/* Soft-card retirement absorb — framed empties + secondary fabs (parity).
+   الشريط الذي يغلّف بطاقة بنفسه لا يُؤطَّر — كان يُنتج بطاقة داخل بطاقة بحدود مزدوجة. */
 .mj-framed,
-.m2030-band,
+.m2030-band:not(:has(> .home-start-here, > .home-content-hub__card, > .share-faida)),
 .ds-empty,
 .lessons-empty-state,
 .search-empty-state,
@@ -1080,8 +1082,8 @@ html.dark .search-page .search-page-form {
 
 html[data-theme="dark"] .mj-framed,
 html.dark .mj-framed,
-html[data-theme="dark"] .m2030-band,
-html.dark .m2030-band,
+html[data-theme="dark"] .m2030-band:not(:has(> .home-start-here, > .home-content-hub__card, > .share-faida)),
+html.dark .m2030-band:not(:has(> .home-start-here, > .home-content-hub__card, > .share-faida)),
 html[data-theme="dark"] .ds-empty,
 html.dark .ds-empty,
 html[data-theme="dark"] .lessons-empty-state,

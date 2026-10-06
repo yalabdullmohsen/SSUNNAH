@@ -43,7 +43,10 @@ assert.match(critical, /\.navbar-v3__tagline-mark[\s\S]*aspect-ratio/, "حجز �
   assert.match(home, /HomePrimaryDiscoveryGate/, "بوابة الاكتشاف موجودة");
 }
 {
-  const finalRelease = readFileSync(resolve(root, "src/styles/final-release.css"), "utf8");
+  /* بنية الماركي انتقلت من final-release إلى header-ticker-polish (متزامن مع المكوّن) */
+  const finalRelease =
+    readFileSync(resolve(root, "src/styles/final-release.css"), "utf8") +
+    readFileSync(resolve(root, "src/styles/components/header-ticker-polish.css"), "utf8");
   assert.doesNotMatch(
     finalRelease,
     /\.header-ticker--empty\s*\{\s*display:\s*none/,
@@ -103,8 +106,8 @@ assert.equal(
   assert.match(critical, /\.home-live-now-ph[\s\S]*min-height:\s*3\.25rem/, "حجز البث في CSS الحرج");
   assert.match(
     critical,
-    /\.home-start-here--compact[\s\S]*min-height:\s*20rem|\.home-start-here,.home-start-here--slim,.home-start-here--compact[\s\S]*min-height:\s*20rem/,
-    "حجز ابدأ من هنا المضغوط ≥20rem (CLS إنتاج)",
+    /\.home-start-here--compact[\s\S]*min-height:\s*12\.5rem|\.home-start-here,.home-start-here--slim,.home-start-here--compact[\s\S]*min-height:\s*12\.5rem/,
+    "حجز ابدأ من هنا = ارتفاع المحتوى الفعلي ≈194px (20rem كان فراغًا ظاهرًا)",
   );
 }
 

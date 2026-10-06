@@ -1,4 +1,155 @@
 /* تيكّر المقتطفات — يُحمَّل مع HeaderTicker (خارج المسار الحرج) */
+/* بنية الماركي — كانت في final-release.css (مؤجّل على الرئيسية حتى أول تفاعل) فكان المسار block
+   والنسخ الثلاث مكدّسة عموديًا: نص فوق الشريط وتحته يختلط ويغطي أزرار الهيدر. */
+/* لا display:none — يطوي ارتفاع الشريط ويسبب قفزة عند دخول المحتوى بعد الإقلاع */
+.header-ticker--empty {
+  visibility: hidden;
+  pointer-events: none;
+}
+.header-ticker--static { padding-inline: 1rem; }
+.header-ticker--paused { cursor: pause; }
+.header-ticker--paused .header-ticker__track,
+.header-ticker--paused .header-ticker__runner,
+.header-ticker--marquee:hover .header-ticker__track,
+.header-ticker--marquee:hover .header-ticker__runner,
+.header-ticker--marquee:focus-within .header-ticker__track,
+.header-ticker--marquee:focus-within .header-ticker__runner {
+  animation-play-state: paused;
+}
+
+.header-ticker__viewport {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  /* LTR للإحداثيات الفيزيائية فقط — النص العربي يبقى rtl على المقطع */
+  direction: ltr;
+  justify-content: flex-start;
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+.header-ticker__track,
+.header-ticker__runner {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  width: max-content;
+  max-width: none;
+  min-height: 100%;
+  gap: 0;
+  white-space: nowrap;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+.header-ticker--marquee.is-running .header-ticker__track,
+.header-ticker--marquee.is-running .header-ticker__runner {
+  animation-name: header-ticker-marquee;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-duration: var(--ticker-loop-duration, 28s);
+  will-change: transform;
+}
+
+@keyframes header-ticker-marquee {
+  /*
+   * اتجاه عربي: النص يدخل من اليسار ويخرج من اليمين (عكس الماركي الإنجليزي).
+   * نبدأ بإزاحة مقطع واحد سالبة ثم نعود إلى 0 → حركة فيزيائية نحو اليمين.
+   * --ticker-loop-shift يبقى سالبًا (-33.333% مع 3 نسخ) لضمان حلقة بلا فجوة.
+   */
+  from { transform: translate3d(var(--ticker-loop-shift, -33.33333%), 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-ticker__track,
+  .header-ticker__runner { animation: none !important; }
+}
+
+.header-ticker__segment-wrap,
+.header-ticker__segment {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  gap: 0;
+}
+
+.header-ticker__slot {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 0;
+  white-space: nowrap;
+}
+
+.header-ticker__sep {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  color: color-mix(in srgb, var(--color-primary) 55%, var(--color-text-muted));
+  font-size: 0.85rem;
+  line-height: 1;
+  user-select: none;
+  /* إجمالي الفراغ البصري بين العناصر ≈ 16–24px مع " • " */
+  padding-inline: 0.7rem;
+}
+
+.header-ticker__single-item {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-ticker__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  flex: 0 0 auto;
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: .85rem;
+  line-height: 1.35;
+  padding-block: 0.15rem;
+  padding-inline: 0;
+  position: relative;
+  white-space: nowrap;
+}
+/* الفاصل النصي " • " يغني عن النقطة المطلقة القديمة */
+.header-ticker__item + .header-ticker__item::before {
+  content: none;
+  display: none;
+}
+.header-ticker__icon { color: var(--color-primary); flex-shrink: 0; }
+.header-ticker__label {
+  color: var(--color-primary);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.header-ticker__text { white-space: nowrap; line-height: 1.45; }
+.header-ticker__source {
+  color: color-mix(in srgb, var(--color-primary) 70%, var(--color-text));
+  font-size: .74rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: .92;
+}
+.header-ticker--static .header-ticker__item {
+  white-space: normal;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+  text-align: center;
+}
+.header-ticker--static .header-ticker__text,
+.header-ticker--static .header-ticker__source { white-space: normal; }
 .header-ticker {
   /* خلفية هادئة بهوية خضراء موحدة — بلا شفافية أو تمويه */
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 7%, var(--mj-surface, var(--mj-white))) !important;

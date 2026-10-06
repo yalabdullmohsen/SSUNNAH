@@ -96,7 +96,8 @@
 
 /* ابدأ من هنا — هندسة ATF ثابتة (لا تنتظر final-release / recovery) */
 .home-start-here.home-start-here--compact {
-  min-height: 20rem;
+  /* = ارتفاع المحتوى الفعلي (≈194px عند 360–430px) — 20rem كان يترك ~126px فراغًا أسفل البطاقة */
+  min-height: 12.5rem;
   margin-block: 0;
   padding: 1rem 1rem 0.75rem;
   border-radius: var(--radius-lg, 1rem);
@@ -253,7 +254,7 @@
 @media (min-width: 720px) {
   .mj-home-lcp-ph__start-here,
   .home-start-here.home-start-here--compact {
-    min-height: 16rem;
+    min-height: 12.5rem;
   }
 
   .mj-home-lcp-ph__start-here .hsh-step {
@@ -355,7 +356,7 @@
 .home-start-here-band.home-start-here-band--slim {
   margin: 0;
   padding: 0.75rem 0 1rem;
-  min-height: calc(20rem + 1.75rem);
+  min-height: calc(12.5rem + 1.75rem);
   box-sizing: border-box;
 }
 
