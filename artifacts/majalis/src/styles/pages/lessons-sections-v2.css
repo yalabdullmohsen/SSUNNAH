@@ -106,7 +106,15 @@ html[data-v2-lessons="1"] .lesson-unified-card__status {
   border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
   background: var(--cs-primary-soft, #e2efe8);
+}
+html[data-v2-lessons="1"] .lesson-unified-card__category,
+html[data-v2-lessons="1"] .lesson-unified-card__delivery {
   color: var(--cs-primary-deep, var(--sf-color-deep-emerald-deep)) !important;
+}
+/* الحالة بلا !important: شارة «اليوم/بعد العصر» المملوءة بالأخضر تأخذ نصها الأبيض من lessons.css
+   (كان زمردًا داكنًا على أخضر = 1.4:1) */
+html[data-v2-lessons="1"] .lesson-unified-card__status {
+  color: var(--cs-primary-deep, var(--sf-color-deep-emerald-deep));
 }
 
 html[data-v2-lessons="1"] .lesson-unified-card__facts {

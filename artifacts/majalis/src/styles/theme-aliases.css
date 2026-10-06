@@ -22,7 +22,8 @@
   --mj-info: #1a3a5c;
   --mj-info-soft: #e8eef5;
   --mj-success-soft: color-mix(in srgb, var(--mj-brand) 12%, var(--mj-surface));
-  --mj-white: var(--mj-white);
+  /* أبيض صلب — كان مرجعًا دوريًا var(--mj-white) منذ #2491 فيبطل كل color/background يعتمد عليه (~1000 استعمال) */
+  --mj-white: var(--on-dark-strong);
   --mj-on-brand: var(--sf-color-on-emerald);
   --mj-sh: var(--sf-shadow-soft, none);
   --mj-chip-bg: var(--mj-surface);
@@ -232,7 +233,7 @@ html.dark,
   --mj-info: #7dd3fc;
   --mj-info-soft: rgba(125, 211, 252, 0.14);
   --mj-success-soft: rgba(126, 214, 168, 0.16);
-  --mj-white: var(--mj-white);
+  --mj-white: var(--on-dark-strong);
   --mj-on-brand: #06231a;
   --mj-elev-1: var(--dark-elev-1);
   --mj-elev-2: var(--dark-elev-2);
