@@ -46,8 +46,8 @@ assert.match(viewer, /STATUS\.loadError/);
 assert.match(viewer, /EMPTY\.data/);
 assert.doesNotMatch(viewer, /تعذّر تحميل السورة\. تحقق من الاتصال/);
 
+// البطاقة صارت ملخصًا ورابطًا للإعدادات الموحّدة بلا جدولة — لا رسائل خطأ فيها أصلًا؛ يبقى منع النصوص المرتجلة.
 const adhkar = read("src/components/adhkar/AdhkarRemindersCard.tsx");
-assert.match(adhkar, /STATUS\.networkError/);
 assert.doesNotMatch(adhkar, /تعذّر جدولة تذكيرات الذكر/);
 assert.doesNotMatch(adhkar, /تعذّر حفظ التذكيرات/);
 
