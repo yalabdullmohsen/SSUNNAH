@@ -23,12 +23,12 @@
     --app-header-height: 48px;
     /* Identity Reset PR-2: بلا صف بحث كامل في الهيدر */
     --search-height: 0px;
-    --ticker-height: 2.25rem;
+    --ticker-height: var(--ticker-h, 2.65rem);
     /* يطابق final-release — لا تُعاد إلى 64px بعد تحميل NavBar */
     --nav-chrome: 84px;
     --bottom-nav-height: 64px;
     --content-pb: calc(var(--bottom-nav-height, 64px) + var(--inset-bottom, 0px) + 24px);
-    --ticker-row-h: calc(var(--ticker-h, 2.25rem) + 0.65rem);
+    --ticker-row-h: calc(var(--ticker-h, 2.65rem) + 0.25rem);
   }
 
   html[data-home-chrome="0"] {
@@ -126,11 +126,12 @@
     isolation: isolate;
     box-sizing: border-box;
     width: 100%;
-    height: calc(var(--ticker-height) + 0.65rem);
-    min-height: calc(var(--ticker-height) + 0.65rem);
-    max-height: calc(var(--ticker-height) + 0.65rem);
+    /* الرمز الوحيد --ticker-row-h (متاح من أول رسم في CSS الحرج) */
+    height: var(--ticker-row-h);
+    min-height: var(--ticker-row-h);
+    max-height: var(--ticker-row-h);
     margin: 0;
-    padding-block: 0.3rem;
+    padding-block: var(--ticker-row-pad-block, 0px);
     padding-inline: max(12px, var(--gutter-inline-start, 12px))
       max(12px, var(--gutter-inline-end, 12px));
     overflow: visible;
