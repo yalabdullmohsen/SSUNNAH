@@ -204,15 +204,22 @@ html[dir="rtl"] .sidebar-panel {
   outline-offset: 2px;
 }
 
-/* سهم lucide واضح (مطوي ⌄ · مفتوح ⌃) بدل مربع الحدود الذي كان يظهر خطًا رماديًا */
+/* سهم واضح (مطوي ⌄ · مفتوح ⌃). كان يظهر خطًا رماديًا لأن Button غلّفه في span سطري
+   فانسحق عرضه؛ صار عنصر flex مستقلًا بحجم ثابت. */
 .sidebar-section-toggle__chevron {
   flex-shrink: 0;
-  color: var(--mj-brand);
+  box-sizing: border-box;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-inline: 0.35rem;
+  border-inline-end: 2px solid var(--mj-brand);
+  border-bottom: 2px solid var(--mj-brand);
+  transform: translateY(-0.15rem) rotate(45deg);
   transition: transform 160ms ease;
 }
 
 .sidebar-section-toggle__chevron.is-open {
-  transform: rotate(180deg);
+  transform: translateY(0.15rem) rotate(225deg);
 }
 
 @media (prefers-reduced-motion: reduce) {

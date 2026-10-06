@@ -47,6 +47,7 @@ import "@/styles/sunnah-identity-detail-reading.css";
 import "@/styles/components/topic-page.css";
 
 import { Button } from "@/components/ui/button";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 function buildMapsEmbed(url?: string, mosque?: string, region?: string) {
   if (url?.includes("google.com/maps") || url?.includes("goo.gl/maps") || url?.includes("maps.app")) {
     const query = encodeURIComponent(`${mosque || ""} ${region || ""} الكويت`.trim());
@@ -111,7 +112,7 @@ function StatPill({ label, value }: { label: string; value: number | string }) {
   return (
     <div className="lesson-detail-stat">
       <span>{label}</span>
-      <strong>{typeof value === "number" ? value.toLocaleString("ar") : value}</strong>
+      <strong>{typeof value === "number" ? value.toLocaleString(AR_UI_LOCALE) : value}</strong>
     </div>
   );
 }
@@ -550,7 +551,7 @@ export default function LessonDetailPage({
               <div><dt>الهجري</dt><dd>{unified.hijriDate}</dd></div>
             )}
             {unified.sessionCount != null && unified.sessionCount > 0 && (
-              <div><dt>اللقاءات</dt><dd>{unified.sessionCount.toLocaleString("ar")}</dd></div>
+              <div><dt>اللقاءات</dt><dd>{unified.sessionCount.toLocaleString(AR_UI_LOCALE)}</dd></div>
             )}
             <div><dt>المستوى</dt><dd>{level}</dd></div>
             {unified.hasRecording && <div><dt>تسجيل</dt><dd>متاح</dd></div>}

@@ -8,6 +8,7 @@ import { loadPagePosition, loadReadingAyahKey, getSurahMeta } from "@/lib/quran-
 import { currentPageFirstAyah } from "@/lib/quran-ayah-page";
 import { toArabicDigits } from "@/lib/utils";
 import "@/styles/components/last-reading-bookmark-card.css";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 
 type Resume = {
   page: number;
@@ -22,7 +23,7 @@ function formatSavedAt(iso: string | undefined): string | null {
   try {
     const d = new Date(iso);
     if (Number.isNaN(d.getTime())) return null;
-    return d.toLocaleString("ar", {
+    return d.toLocaleString(AR_UI_LOCALE, {
       dateStyle: "medium",
       timeStyle: "short",
     });
@@ -49,7 +50,9 @@ function resolveResume(): Resume | null {
   }
   const page = loadPagePosition();
   if (page == null || page < 1) return null;
-  if (page === 1 && !loadReadingAyahKey()) return null;
+  // صفحة 1 بلا آية محفوظة (أو 1:1) ≠ استئناف ذي معنى — لا «آخر قراءة» وهمية
+  const savedKey = loadReadingAyahKey();
+  if (page === 1 && (!savedKey || savedKey === "1:1")) return null;
   const key = loadReadingAyahKey() || currentPageFirstAyah(page);
   const surah = Number(key.split(":")[0]);
   const name =

@@ -5,10 +5,11 @@
 import { Link } from "wouter";
 import { formatAyahRefLabel, getDailyAyah, getDailyHadith, getDayIndex } from "@/lib/daily-content";
 import { AppCard } from "@/components/design-system/AppCard";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 
 function todayLabels(): string {
   try {
-    const g = new Intl.DateTimeFormat("ar", {
+    const g = new Intl.DateTimeFormat(AR_UI_LOCALE, {
       weekday: "long",
       day: "numeric",
       month: "long",

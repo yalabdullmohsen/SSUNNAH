@@ -1,5 +1,6 @@
 import { canPublishCompetition } from "./publish";
 import type { CompetitionFilterId, ExternalCompetition } from "./types";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 
 /** يُملأ لاحقًا من الأتمتة (`automation` / `importedSources`). */
 const IMPORTED_FROM_AUTOMATION: ExternalCompetition[] = [];
@@ -87,7 +88,7 @@ export function formatCompetitionDate(iso?: string): string | undefined {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return undefined;
   try {
-    return new Intl.DateTimeFormat("ar", {
+    return new Intl.DateTimeFormat(AR_UI_LOCALE, {
       year: "numeric",
       month: "long",
       day: "numeric",

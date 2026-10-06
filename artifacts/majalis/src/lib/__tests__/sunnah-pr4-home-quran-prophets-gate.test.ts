@@ -18,8 +18,10 @@ const polish = read("src/styles/ssunnah-ux-polish.css");
 const prophetsPage = read("src/views/ProphetStoriesPage.tsx");
 
 console.log("=== استئناف مصحف ذي معنى فقط ===");
-assert.match(resume, /hasMeaningfulMushafResume|page > 1/);
-assert.match(resume, /ayahKey !== "1:1"/);
+/* موضع المصحف على الرئيسية صار في بطاقة واحدة (LastReadingBookmarkCard) — القائمة لا تكرّره */
+const lastReading = read("src/components/quran/LastReadingBookmarkCard.tsx");
+assert.match(resume, /seen\.add\("mushaf"\)/);
+assert.match(lastReading, /page === 1 && \(!savedKey \|\| savedKey === "1:1"\)/);
 assert.match(openMushaf, /hasMeaningfulResume/);
 
 console.log("=== مركز قرآن: ذهب + عنوان CTA ليلي ===");

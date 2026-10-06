@@ -4,6 +4,7 @@ import { getBenefitCards } from "@/lib/unified-content-service";
 import type { AutoImportedContent } from "@/lib/auto-content/auto-content-utils";
 import { Widget } from "@/components/widgets/Widget";
 import { AppCard } from "@/components/design-system/AppCard";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 
 const BADGE_LABELS: Record<string, string> = {
   hadith: "حديث",
@@ -96,7 +97,7 @@ function BenefitCard({ item }: { item: AutoImportedContent }) {
         <span className="dmb__speaker">{speaker}</span>
         {item.source_published_at && (
           <span className="dmb__date">
-            {new Intl.DateTimeFormat("ar", { dateStyle: "medium" }).format(new Date(item.source_published_at))}
+            {new Intl.DateTimeFormat(AR_UI_LOCALE, { dateStyle: "medium" }).format(new Date(item.source_published_at))}
           </span>
         )}
       </div>

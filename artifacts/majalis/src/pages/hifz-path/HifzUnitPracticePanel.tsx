@@ -25,6 +25,7 @@ import {
   type HifzUnitProgressRecord,
   type HifzVerifiedTextReference,
 } from "@/lib/memorization-path";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 
 type Props = {
   path: HifzPath;
@@ -188,13 +189,13 @@ export function HifzUnitPracticePanel({
         {progress?.lastReviewedAt ? (
           <p className="text-sm text-muted-foreground">
             آخر مراجعة:{" "}
-            {new Date(progress.lastReviewedAt).toLocaleDateString("ar")}
+            {new Date(progress.lastReviewedAt).toLocaleDateString(AR_UI_LOCALE)}
           </p>
         ) : null}
         {progress?.nextReviewAt ? (
           <p className="text-sm text-muted-foreground">
             المراجعة القادمة:{" "}
-            {new Date(progress.nextReviewAt).toLocaleDateString("ar")}
+            {new Date(progress.nextReviewAt).toLocaleDateString(AR_UI_LOCALE)}
           </p>
         ) : null}
         <div className="mt-3 flex flex-wrap gap-2">

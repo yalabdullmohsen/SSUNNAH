@@ -105,7 +105,7 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: safe center;
 }
 .header-ticker__item {
   display: inline-flex;
@@ -142,29 +142,26 @@
   opacity: .92;
 }
 /* الحركة المخفّضة: سطر واحد ضمن ارتفاع الصف الثابت (--ticker-h) — الالتفاف كان يقصّ
-   السطر الأول والثالث ويتجاوز الصف. النص الكامل عبر الرابط وaria-label. */
+   السطر الأول والثالث ويتجاوز الصف. النص يبقى كاملًا ويُسحب أفقيًا بدل القص. */
+.header-ticker--static .header-ticker__single-item {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.header-ticker--static .header-ticker__single-item::-webkit-scrollbar {
+  display: none;
+}
 .header-ticker--static .header-ticker__item {
   white-space: nowrap;
   flex-wrap: nowrap;
-  justify-content: flex-start;
-  max-width: 100%;
-  min-width: 0;
+  flex-shrink: 0;
+  max-width: none;
   text-align: start;
 }
-.header-ticker--static .header-ticker__text {
-  flex: 1 1 auto;
-  min-width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+.header-ticker--static .header-ticker__text,
 .header-ticker--static .header-ticker__source {
-  flex: 0 1 auto;
-  max-width: 40%;
-  min-width: 0;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .header-ticker {
   /* خلفية هادئة بهوية خضراء موحدة — بلا شفافية أو تمويه */

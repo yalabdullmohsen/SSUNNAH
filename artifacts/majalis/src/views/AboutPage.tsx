@@ -7,6 +7,7 @@ import { isWeb } from "@/lib/native-platform";
 import { SITE_DESCRIPTION, SITE_TAGLINE, SITE_URL } from "@/lib/site-config";
 import { DetailScreen } from "@/components/design-system/screens";
 import "@/styles/pages/learn-legal-v2.css";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 
 type VersionInfo = {
   shortCommit?: string;
@@ -100,7 +101,7 @@ export default function AboutPage() {
                 <> (<span dir="ltr">{version.branch || version.ref}</span>)</>
               ) : null}
               {version.buildTime || version.builtAt ? (
-                <> — بُني في {new Date(String(version.buildTime || version.builtAt)).toLocaleString("ar")}</>
+                <> — بُني في {new Date(String(version.buildTime || version.builtAt)).toLocaleString(AR_UI_LOCALE)}</>
               ) : null}
               .
             </>
