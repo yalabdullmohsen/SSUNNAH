@@ -418,3 +418,46 @@ html.dark .section-lobby__chip.is-active {
 .section-lobby .section-lobby__head .section-lobby__back {
   min-height: 44px;
 }
+
+/* المكتب (≥880px): الهندسة النهائية للوبي متزامنة مع المكوّن — كانت تصل مع طبقات مؤجّلة
+   (card-system / ssunnah-ux-polish / a11y) بعد أول رسم فتتغيّر أحجام البطاقات والعناوين
+   (CLS ≈0.13–0.45 على /sections و/quran-hub). القيم = المحسوبة بعد اكتمال الطبقات. */
+@media (min-width: 880px) {
+  .app-main .section-lobby {
+    gap: 16px;
+  }
+  .app-main .section-lobby .section-lobby__title {
+    font-size: 28px;
+    line-height: 1.35;
+  }
+  .app-main .section-lobby .section-lobby__group-title {
+    font-size: 21.6px;
+    line-height: 1.35;
+    margin-block: 8.8px 5.6px;
+  }
+  .app-main .section-lobby[data-quran-hub="1"] .section-lobby__group-title {
+    font-size: 16.8px;
+    margin-block: 0;
+  }
+  .app-main .section-lobby .section-lobby__grid {
+    padding-inline: 20px;
+    gap: 12px;
+  }
+  .app-main .section-lobby .section-lobby__grid .cs-card {
+    padding: 12.8px 15.2px;
+    gap: 7.2px;
+    min-height: 0;
+  }
+  .app-main .section-lobby .section-lobby__grid .cs-card .card__icon {
+    width: 36px;
+    height: 36px;
+    min-height: 36px;
+  }
+  .app-main .section-lobby .section-lobby__grid .cs-card .card__label {
+    font-size: 17px;
+  }
+  .app-main .section-lobby .section-lobby__grid .cs-card .card__subtitle {
+    font-size: 15px;
+    line-height: 1.35;
+  }
+}

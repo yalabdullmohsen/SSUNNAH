@@ -930,9 +930,9 @@ html.dark .search-page .search-page-form {
   outline-offset: 2px;
 }
 
-/* أداء قوائم طويلة — المصحف مستثنى عبر عدم استهداف .mushaf */
+/* أداء قوائم طويلة — المصحف مستثنى عبر عدم استهداف .mushaf.
+   شبكة اللوبي (≤12 بطاقة) مستثناة: تخطّي الرسم كان يجعل البطاقات 0×0 ثم تُرسم فتُحسب إزاحة (CLS ≈0.11). */
 .list-screen .content-card,
-.section-lobby__grid > *,
 .more-hub-grid > * {
   content-visibility: auto;
   contain-intrinsic-size: auto 120px;

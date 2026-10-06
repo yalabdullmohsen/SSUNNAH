@@ -204,6 +204,28 @@ html[data-v2-app="1"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] 
   height: var(--v2-icon-tile, 2.25rem);
 }
 
+/* المكتب: القيم النهائية بعد الطبقات المؤجّلة (card-system/a11y) — قيم الجوال أعلاه كانت تُرسم أولًا
+   على المكتب ثم تُستبدل فتقفز البطاقات (CLS). */
+@media (min-width: 880px) {
+  html[data-v2-app="1"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] {
+    gap: 16px;
+  }
+  html[data-v2-app="1"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .section-lobby__title {
+    font-size: 28px;
+    line-height: 1.35;
+  }
+  html[data-v2-app="1"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .section-lobby__grid {
+    gap: 12px;
+  }
+  html[data-v2-app="1"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card {
+    padding: 12.8px 15.2px;
+  }
+  html[data-v2-app="1"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card__icon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
 html[data-v2-app="1"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card__subtitle {
   display: -webkit-box;
   -webkit-box-orient: vertical;

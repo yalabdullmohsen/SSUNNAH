@@ -731,7 +731,8 @@ export default function LessonsPage({
             </>
           </PageLoadingGuard>
           ) : null}
-          <HarvestFeedPanel />
+          {/* بعد القائمة لا قبلها: كان يُرسم أثناء التحميل ثم تدفعه القائمة ≈6800px للأسفل (CLS 0.13 مكتب) */}
+          {!loading ? <HarvestFeedPanel /> : null}
         </main>
 
         <aside className="lessons-v2-sidebar" aria-label="تصفية سطح المكتب">

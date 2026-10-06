@@ -8,16 +8,15 @@
 .navbar-v3 .navbar-brand,
 .navbar-v3 .navbar-menu-btn,
 .navbar-v3 .navbar-logout,
-.navbar-v3 .navbar-login,
 .navbar-v3 .navbar-admin-link,
 .navbar-v3 .navbar-auth {
   color: var(--mj-ink, var(--text)) !important;
 }
-.navbar-v3 .navbar-menu-btn:hover,
-.navbar-v3 .navbar-login:hover {
+.navbar-v3 .navbar-menu-btn:hover {
   background: var(--mj-surface-2, var(--surface-2)) !important;
 }
+/* «دخول» زر ممتلئ بالزمرد (index-deferred/top-chrome-layout) — الحبر الداكن عليه كان 2:1 */
 .navbar-v3 .navbar-login {
   border-color: var(--mj-hairline, var(--border)) !important;
-  color: var(--mj-ink, var(--text)) !important;
+  color: var(--on-dark-strong, var(--mj-white)) !important;
 }
