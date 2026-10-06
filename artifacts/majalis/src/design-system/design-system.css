@@ -525,7 +525,7 @@ html[dir="ltr"] .sn-switch[aria-checked="true"]::after { transform: translateX(v
 }
 .sn-navbar[data-collapsed="true"] { box-shadow: var(--sn-e1); }
 .sn-navbar__bar { display: flex; align-items: center; justify-content: space-between; gap: var(--sn-s2); min-height: var(--sn-bar-h); padding-inline: var(--sn-s2); }
-.sn-navbar__side { display: flex; align-items: center; min-width: var(--sn-touch); }
+.sn-navbar__side { display: flex; align-items: center; min-width: calc(var(--sn-touch) * 2); }
 .sn-navbar__title-sm { flex: 1; text-align: center; font: var(--sn-fw-semibold) var(--sn-fs-headline) / 1.2 var(--font-ui); opacity: 0; transform: translateY(var(--sn-s1)); transition: opacity var(--sn-dur-base) var(--sn-ease), transform var(--sn-dur-base) var(--sn-ease); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sn-navbar[data-collapsed="true"] .sn-navbar__title-sm { opacity: 1; transform: none; }
 .sn-navbar__large { padding: var(--sn-s1) var(--sn-page-x) var(--sn-s3); transition: opacity var(--sn-dur-base) var(--sn-ease); }
@@ -701,4 +701,14 @@ html {
 .app-main {
   min-height: 100dvh;
   padding-block-end: var(--content-pb);
+}
+
+/* ═══ عناوين الصفحات الداخلية — مقاس موحّد (Title 1 = --sf-type-page-title) بدل تفاوت 21–34px بين الأقسام ═══ */
+html:root body :is(
+  .tw-hero__title, .duas-hero__title, .sy-hero__title, .kc-hero__title, .section-lobby__title,
+  .tl-head > h1, .legal-page-hero h1, .legal-page-inner > h1, .page-hero-mj__title,
+  .topic-page__title, .page-shell__intro h1, .page-shell__intro .page-shell__title
+) {
+  font-size: var(--sn-fs-title1);
+  line-height: var(--sn-lh-title1);
 }

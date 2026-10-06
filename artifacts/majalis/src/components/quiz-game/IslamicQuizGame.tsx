@@ -483,7 +483,7 @@ function SetupPhase({
         <div className="qzg-setup__icon" aria-hidden="true">
           <Landmark size={36} strokeWidth={1.4} />
         </div>
-        <h1 className="qzg-setup__title">تحدي الأسئلة</h1>
+        <h2 className="qzg-setup__title">تحدي الأسئلة</h2>
         <p className="qzg-setup__sub">
           اختبر معلوماتك في العلوم الشرعية واللغة العربية من خلال أسئلة متنوعة وموثقة.
         </p>

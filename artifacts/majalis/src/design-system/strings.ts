@@ -21,6 +21,7 @@ export const S = {
   navigation_02: "ابحث في القرآن والحديث والدروس والأقسام",
   navigation_03: "بحث",
   navigation_04: "مسح البحث",
+  navigation_05: "رجوع",
   overlays_01: "إغلاق",
   primitives_01: "تعذّر التحميل",
   primitives_02: "تحقّق من اتصالك بالإنترنت ثم حاول مرة أخرى.",

@@ -1,10 +1,17 @@
 import { useLocation } from "wouter";
 import { NavigationBar, TabBar } from "../navigation";
-import { IconLink } from "../primitives";
+import { IconButton, IconLink } from "../primitives";
 import { APP_TABS, activeTabId, screenOwnsNavBar } from "./tabs";
 import { getSectionByRoute } from "@/config/sections.registry";
 import { useAuth } from "@/components/AuthProvider";
 import { S } from "@/design-system/strings";
+import { navigateTo } from "@/lib/navigation-intent";
+
+/** رجوع إلى الشاشة السابقة؛ وإن فُتحت الصفحة مباشرة (بلا سجل) فإلى «الأقسام». */
+function goBack() {
+  if (typeof window !== "undefined" && window.history.length > 1) window.history.back();
+  else navigateTo("/sections");
+}
 
 /** الشريط السفلي الموحّد — 5 تبويبات. */
 export function AppTabBar({ hidden = false }: { hidden?: boolean }) {
@@ -23,8 +30,13 @@ export function AppTopBar() {
     <NavigationBar
       title={title}
       large={false}
-      leading={<IconLink icon={isLoggedIn ? "user" : "login"} label={isLoggedIn ? S.home_32 : S.auth_18} href={isLoggedIn ? "/profile" : "/login"} />}
-      trailing={<IconLink icon="search" label={S.navigation_03} href="/search" />}
+      leading={<IconButton icon="back" label={S.navigation_05} onClick={goBack} />}
+      trailing={
+        <>
+          <IconLink icon="search" label={S.navigation_03} href="/search" />
+          <IconLink icon={isLoggedIn ? "user" : "login"} label={isLoggedIn ? S.home_32 : S.auth_18} href={isLoggedIn ? "/profile" : "/login"} />
+        </>
+      }
     />
   );
 }
