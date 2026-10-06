@@ -71,7 +71,15 @@ export default async function handler(req, res) {
     sendJson(res, 200, await upstream.json(), {
       "Cache-Control": "public, max-age=86400, s-maxage=86400",
     });
-  } catch {
-    sendJson(res, 502, { ok: false, error: "qf_unreachable" });
+  } catch (err) {
+    // نوع الفشل فقط (مثل qf_oauth_401) — بلا أي قيمة سرية — ليُشخَّص من خارج الخادم
+    const code =
+      err instanceof Error && /^qf_[a-z_0-9]+$/.test(err.message)
+        ? err.message
+        : err instanceof TypeError
+          ? "qf_network"
+          : "qf_unreachable";
+    console.error("qf-chapter-audio failed", code, err instanceof Error ? err.name : typeof err);
+    sendJson(res, 502, { ok: false, error: code });
   }
 }
