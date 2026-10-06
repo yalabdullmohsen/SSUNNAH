@@ -1,6 +1,6 @@
 # SEARCH_RELEVANCE_SCORECARD
 
-Generated: 2026-10-06
+Generated: 2026-10-03
 
 Pass rate: **100%** (15/15) · index docs=4650
 

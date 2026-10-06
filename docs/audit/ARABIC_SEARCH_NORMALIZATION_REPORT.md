@@ -1,6 +1,6 @@
 # ARABIC_SEARCH_NORMALIZATION_REPORT
 
-Generated: 2026-10-06
+Generated: 2026-10-03
 
 Equivalent pairs: **12/12**
 

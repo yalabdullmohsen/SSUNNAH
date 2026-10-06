@@ -1,7 +1,7 @@
 {
-  "day": "2026-10-06",
+  "day": "2026-10-05",
   "month": "2026-10",
-  "probe_count": 1,
-  "fetch_count": 1,
-  "month_count": 2
+  "probe_count": 48,
+  "fetch_count": 34,
+  "month_count": 82
 }

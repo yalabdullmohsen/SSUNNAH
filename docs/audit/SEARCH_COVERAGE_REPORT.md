@@ -1,6 +1,6 @@
 # SEARCH_COVERAGE_REPORT
 
-Generated: 2026-10-06
+Generated: 2026-10-03
 
 Total docs: **4650** · kinds: **30** · shards: **30**
 

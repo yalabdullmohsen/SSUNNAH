@@ -1,6 +1,6 @@
 # DATABASE_HEATMAP_REPORT
 
-Generated: 2026-10-06T03:24:10.017Z
+Generated: 2026-10-03T10:38:11.770Z
 
 Connection: **NOT_CONNECTED**
 
@@ -8,7 +8,7 @@ Connection: **NOT_CONNECTED**
 
 | Metric | Value |
 |---|---:|
-| sqlFiles | 470 |
+| sqlFiles | 468 |
 | createTableStatements | 614 |
 | distinctTablesMentioned | 354 |
 | createIndexStatements | 1008 |
@@ -16,7 +16,7 @@ Connection: **NOT_CONNECTED**
 | enableRlsStatements | 597 |
 | createPolicyStatements | 830 |
 | ginTrigramMentions | 96 |
-| ftsMentions | 190 |
+| ftsMentions | 175 |
 | partialIndexMentions | 72 |
 
 ## Surfaces (client cost/frequency proxies)

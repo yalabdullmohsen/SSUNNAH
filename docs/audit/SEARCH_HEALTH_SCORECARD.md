@@ -1,6 +1,6 @@
 # SEARCH_HEALTH_SCORECARD
 
-Generated: 2026-10-06
+Generated: 2026-10-03
 
 ## Overall: **87** · **EXCELLENT**
 
