@@ -90,3 +90,4 @@ graphify-out/
 .graphify-venv/
 .graphify-venv-312/
 CLAUDE.local.md
+design-audit/*/full/

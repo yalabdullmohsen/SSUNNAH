@@ -608,6 +608,7 @@ html[dir="ltr"] .sn-switch[aria-checked="true"]::after { transform: translateX(v
 .sn-lesson-card { display: flex; flex-direction: column; gap: var(--sn-s2); min-width: calc(var(--sn-s8) * 6); }
 .sn-lesson-card__meta { display: flex; align-items: center; flex-wrap: wrap; gap: var(--sn-s2) var(--sn-s3); color: var(--sn-text-secondary); font: var(--sn-fw-regular) var(--sn-fs-footnote) / var(--sn-lh-footnote) var(--font-ui); }
 .sn-lesson-card__meta svg { flex: none; }
+.sn-lesson-card__link { display: flex; align-items: center; min-height: var(--sn-touch); color: inherit; text-decoration: none; }
 .sn-meta-item { display: inline-flex; align-items: center; gap: var(--sn-s1); }
 
 .sn-prayer-row { display: flex; align-items: center; gap: var(--sn-s3); min-height: calc(var(--sn-s7) + var(--sn-s6)); padding: var(--sn-s3) var(--sn-s4); }
