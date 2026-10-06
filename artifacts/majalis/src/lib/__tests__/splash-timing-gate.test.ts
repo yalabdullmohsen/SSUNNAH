@@ -41,7 +41,7 @@ assert.match(main, /app:first-paint/);
 assert.ok(!existsSync(resolve(root, "src/components/MajlisSplash.tsx")), "لا مكوّن دخولية ثانٍ");
 assert.match(html, /id="mj-launch-splash"/);
 assert.match(html, /src="\/mj-launch-splash-boot\.js"/);
-assert.match(html, /<div id="mj-launch-splash" aria-hidden="true"><\/div>/, "دخولية = سطح لوني يطابق LaunchScreen (بلا شعار/عبارة)");
+assert.match(html, /<div id="mj-launch-splash" aria-hidden="true"><p class="mj-launch-splash__title">سُنّة<\/p><\/div>/, "دخولية واحدة: سطح LaunchScreen + الاسم فقط (بلا عبارة/تقدّم)");
 assert.match(html, /transition:opacity \.16s/);
 const boot = readFileSync(resolve(root, "public/mj-launch-splash-boot.js"), "utf8");
 assert.match(boot, /MIN_MS\s*=\s*0/);

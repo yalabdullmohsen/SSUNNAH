@@ -17,8 +17,8 @@ const CANVAS = "#F8F6F1";
 const indexHtml = readFileSync(resolve(root, "index.html"), "utf8");
 assert.match(indexHtml, /id="mj-launch-splash"/, "دخولية MajlisSplash في HTML الحرج");
 /* دخولية واحدة = سطح لوني يطابق LaunchScreen الأصلي (لون فقط) — بلا شعار/عبارة/تقدّم */
-assert.match(indexHtml, /<div id="mj-launch-splash" aria-hidden="true"><\/div>/, "سطح لوني فارغ");
-assert.doesNotMatch(indexHtml, /mj-launch-splash__(tagline|title|progress|inner|mark)/, "بلا محتوى دخولية ثانٍ فوق الأصلي");
+assert.match(indexHtml, /<div id="mj-launch-splash" aria-hidden="true"><p class="mj-launch-splash__title">سُنّة<\/p><\/div>/, "دخولية واحدة: سطح LaunchScreen + الاسم فقط (بلا عبارة/تقدّم)");
+assert.doesNotMatch(indexHtml, /mj-launch-splash__(tagline|progress|inner|mark)/, "بلا عبارة/تقدّم — الاسم فقط");
 assert.doesNotMatch(indexHtml, /mj-launch-splash__pulse/, "بلا نبض دوّار قديم");
 assert.doesNotMatch(indexHtml, /علم نافع، وعمل صالح/, "بلا عبارة قديمة");
 assert.doesNotMatch(indexHtml, /معك في العلم والعمل/, "بلا عبارة الدخولية السابقة");

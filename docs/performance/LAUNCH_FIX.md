@@ -27,7 +27,7 @@
 **PR الويب (يُنشر فورًا):**
 - حذف `public/boot-legacy-cache.js` ووسمه من `<head>` — لا طلب حاجب ولا reload عند تغيّر النسخة.
 - `purgeStaleRuntimeCaches` بلا reload إطلاقًا، ومقارنة النسخة ببادئة (`isSameBuildVersion`: 7 مقابل 8 أحرف = نفس البناء).
-- دخولية واحدة: `#mj-launch-splash` صار **سطحًا لونيًا فارغًا** = LaunchScreen الأصلي (لون فقط، نفس المكان، بلا شعار/عبارة/تقدّم) حتى أول شاشة حقيقية؛ تُزال مرة واحدة ولا تعود على Resume.
+- دخولية واحدة: `#mj-launch-splash` صار **سطح LaunchScreen نفسه + اسم «سُنّة» فقط** (بلا عبارة/شريط تقدّم) حتى أول شاشة حقيقية؛ تُزال مرة واحدة ولا تعود على Resume. أُبقي الاسم لأنه أول رسم ذو محتوى (FCP) — سطح فارغ تمامًا أخّر FCP في LHCI (/login 2.26s→4.30s).
 - كسر دورة `--surface-app`/`--mj-bg` في الليلي.
 - شريط عدم الاتصال: لا يظهر أثناء الإقلاع (بعد استقرار الهيكل فقط)، وطبقة `fixed` فوق الشريط السفلي — لا إزاحة ولا تغطية للهيدر.
 - حذف كود دخولية ميت: `MajlisSplash.tsx`، `hideAppSplash`/`armSplashAutoHide`، `SPLASH_TAGLINE`، `generate-splash.mjs`، `generate-silent-splash-assets.py`، `test-splash-timing.mjs` (كان يفترض 650–1200ms).
