@@ -7,7 +7,7 @@ import { safeLocationReload } from "@/lib/safe-reload";
 
 export const APP_VERSION_STORAGE_KEY = "majalis_app_version";
 const FORCE_PURGE_KEY = "majalis_force_cache_purge";
-/** يجب أن يطابق boot-legacy-cache.js و useVersionCheck لمنع reload loop */
+/** يجب أن يطابق useVersionCheck (علم تحديث المستخدم) لمنع reload loop */
 const PURGE_RELOAD_GUARD = "ssunnah-refreshing-version";
 
 const PRESERVE_LOCAL_STORAGE_EXACT = new Set([
@@ -253,13 +253,18 @@ export function ensureAppVersionMarker(): string | null {
   return version;
 }
 
+/** commit قصير (7) في الحزمة مقابل 8 في /version.json — نفس البناء إن كان أحدهما بادئة للآخر. */
+export function isSameBuildVersion(a: string, b: string): boolean {
+  return a === b || a.startsWith(b) || b.startsWith(a);
+}
+
 /**
  * عند اختلاف النسخة: امسح كاش العرض (Cache Storage + JSON IDB + مفاتيح كاش).
- * افتراضيًا بلا reload — SW/useVersionCheck يتوليان إعادة التحميل عند الحاجة.
+ * بلا reload أبدًا: المستند network-first (SW + max-age=0) فالحزمة الجارية هي الأحدث؛
+ * إعادة التحميل كانت تكرر الدخولية وتضاعف زمن الإقلاع.
  */
 export async function purgeStaleRuntimeCaches(options?: {
   force?: boolean;
-  reloadOnce?: boolean;
 }): Promise<{ purged: boolean; cachesCleared: number; version: string | null }> {
   const version = resolveAppVersion();
   let prev: string | null;
@@ -273,7 +278,7 @@ export async function purgeStaleRuntimeCaches(options?: {
   }
 
   const force = options?.force === true || forceFlag;
-  const changed = Boolean(version && prev && prev !== version);
+  const changed = Boolean(version && prev && !isSameBuildVersion(prev, version));
   if (!force && !changed) {
     if (version && !prev) {
       try {
@@ -295,17 +300,6 @@ export async function purgeStaleRuntimeCaches(options?: {
     if (version) localStorage.setItem(APP_VERSION_STORAGE_KEY, version);
   } catch {
     /* ignore */
-  }
-
-  if (options?.reloadOnce === true) {
-    try {
-      if (sessionStorage.getItem(PURGE_RELOAD_GUARD) !== "1") {
-        sessionStorage.setItem(PURGE_RELOAD_GUARD, "1");
-        safeLocationReload();
-      }
-    } catch {
-      /* ignore */
-    }
   }
 
   return { purged: true, cachesCleared, version };
@@ -345,7 +339,7 @@ export async function refreshAppAndPurgeCaches(): Promise<{
     /* ignore */
   }
 
-  const result = await purgeStaleRuntimeCaches({ force: true, reloadOnce: false });
+  const result = await purgeStaleRuntimeCaches({ force: true });
   await unregisterAllServiceWorkers();
 
   if (live?.shortCommit) {

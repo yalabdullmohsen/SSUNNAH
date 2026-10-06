@@ -18,7 +18,7 @@ const sectsCss = read("src/styles/pages/islamic-sects.css");
 const sectsPage = read("src/views/IslamicSectsPage.tsx");
 
 assert.match(indexHtml, /id="mj-launch-splash"/);
-assert.match(indexHtml, /رفيقك في العلم والعمل/);
+assert.doesNotMatch(indexHtml, /رفيقك في العلم والعمل/, "دخولية الويب سطح لوني فقط = LaunchScreen");
 /* لوحة الإقلاع = لوحة المحتوى النهائية (ZERO FLICKER) */
 assert.match(indexHtml, /#F8F6F1|#f8f6f1/i);
 assert.match(splashBoot, /mj-launch-splash/);

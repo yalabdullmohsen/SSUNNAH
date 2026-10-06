@@ -45,7 +45,6 @@ export const WEB_ONLY_FILES = Object.freeze([
   "offline.html",
   "404.html",
   "bundle-stats.html",
-  "boot-legacy-cache.js",
 ]);
 
 const WEB_ONLY_PATTERNS = [/^sitemap[-_].*\.xml$/i, /\.map$/i, /^google[0-9a-f]+\.html$/i, /^BingSiteAuth\.xml$/i];

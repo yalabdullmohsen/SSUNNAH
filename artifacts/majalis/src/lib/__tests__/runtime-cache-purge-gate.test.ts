@@ -13,7 +13,6 @@ const purge = read("src/lib/runtime-cache-purge.ts");
 const main = read("src/main.tsx");
 const sw = read("public/sw.js");
 const html = read("index.html");
-const versionBoot = read("public/boot-legacy-cache.js");
 const staticJson = read("src/lib/static-json-cache.ts");
 const vercel = read("vercel.json");
 
@@ -48,13 +47,14 @@ assert.match(
   /if \(_prevDsv\) \{[\s\S]*?majalis_force_cache_purge/,
   "force purge فقط عند الترقية من نسخة تصميم سابقة",
 );
-assert.match(
-  versionBoot,
-  /\/\* أول زيارة: خزّن النسخة فقط — بلا reload \*\/[\s\S]*?if \(!prev\)/,
-  "version-boot: أول زيارة بلا reload",
-);
-assert.match(versionBoot, /navigator\.webdriver/, "تخطّي version-boot تحت الأتمتة/LHCI");
-assert.match(html, /src="\/boot-legacy-cache\.js"/);
+/* لا سكربت نسخة حاجب في <head> ولا reload عند تغيّر النسخة (كان يكرر الدخولية بعد كل نشر) */
+assert.doesNotMatch(html, /boot-legacy-cache\.js|id="mj-version-boot"/);
+{
+  const fn = purge.match(/export async function purgeStaleRuntimeCaches[\s\S]*?return \{ purged: true/)?.[0] ?? "";
+  assert.ok(fn, "purgeStaleRuntimeCaches موجودة");
+  assert.doesNotMatch(fn, /safeLocationReload|location\.reload/, "مسح كاش الإقلاع بلا reload");
+  assert.match(fn, /isSameBuildVersion\(prev, version\)/, "commit 7 مقابل 8 أحرف = نفس البناء");
+}
 
 assert.match(html, /classList\.add\("light"/);
 assert.match(html, /storedTheme === "auto"/);

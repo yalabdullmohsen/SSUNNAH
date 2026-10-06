@@ -19,12 +19,8 @@ const sw = read("public/sw.js");
 const vercel = read("vercel.json");
 
 assert.match(html, /v13-startup-shell-stable-2026-09|v14-release-fresh-2026-09/);
-assert.match(html, /id="mj-version-boot"/);
-assert.match(html, /src="\/boot-legacy-cache\.js"/);
-const versionBoot = read("public/boot-legacy-cache.js");
-assert.match(versionBoot, /ssunnah-refreshing-version/);
-assert.match(versionBoot, /version\.json\?t=/);
-assert.match(versionBoot, /cache:\s*"no-store"/);
+/* فحص النسخة بعد الإقلاع فقط (useVersionCheck) — لا سكربت نسخة حاجب يعيد التحميل */
+assert.doesNotMatch(html, /id="mj-version-boot"|boot-legacy-cache\.js/);
 assert.doesNotMatch(html, /majlisilm|Majlisilm|المجلس العلمي/);
 assert.match(html, /classList\.add\("light"/);
 assert.match(html, /classList\.remove\("dark"/);
@@ -54,7 +50,6 @@ assert.match(
   "فحص النسخة فوري بعد استقرار الهيكل وإلا بعد نافذة الهدوء",
 );
 assert.doesNotMatch(versionHook, /silentBootPurgeThenReload/, "لا reload صامت مزدوج من الشيت");
-assert.match(versionBoot, /location\.replace|location\.reload/);
 assert.match(purge, /refreshAppAndPurgeCaches/);
 assert.match(purge, /slice\(0,\s*8\)/);
 

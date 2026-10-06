@@ -139,7 +139,6 @@ rm -rf "$ROOT/ios/App/App/Assets.xcassets/Splash.imageset"
 find "$ROOT/ios" -iname '*splash-2732*' -delete 2>/dev/null || true
 find "$ROOT/ios" -iname 'Default@*' -delete 2>/dev/null || true
 rm -f "$ROOT/assets/splash.png"
-python3 "$ROOT/scripts/generate-silent-splash-assets.py"
 
 echo "Done. Sync iOS if needed:"
 echo "  pnpm exec cap sync ios"

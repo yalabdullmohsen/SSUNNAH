@@ -2,10 +2,10 @@
  * متحكّم شاشة الإطلاق — ويب (index.html) + Capacitor SplashScreen.
  *
  * مسار واحد للإقلاع الأصلي:
- *   LaunchScreen (لون فقط) → #mj-launch-splash (الهوية الرسمية) → التطبيق
+ *   LaunchScreen (لون فقط) → #mj-launch-splash (نفس اللون، بلا شعار) → التطبيق
  *
  * Capacitor SplashScreen طبقة تغطية صامتة؛ تُخفى فورًا عند التسليح حتى لا تظهر
- * كدخولية ثانية فوق HTML. الدخولية الوحيدة ذات العلامة/العبارة هي #mj-launch-splash.
+ * كدخولية ثانية فوق HTML. الدخولية الوحيدة هي #mj-launch-splash (سطح لوني مطابق للأصلي).
  */
 import {
   LAUNCH_SPLASH_ID,
@@ -85,11 +85,6 @@ export async function hideNativeSplash(immediate = false, reason = "hide-native"
   await hideCapacitorSplash(immediate);
 }
 
-/** @deprecated الاسم السابق — يُبقي الاستدعاءات القديمة */
-export async function hideAppSplash(immediate = false): Promise<void> {
-  await hideNativeSplash(immediate);
-}
-
 function elapsedSinceArm(): number {
   if (!armedAt) return SPLASH_MAX_VISIBLE_MS;
   return performance.now() - armedAt;
@@ -142,9 +137,4 @@ export function armNativeSplashController(): void {
   };
 
   window.addEventListener("mj:shell-stable", hideHtmlWhenReady, { once: true });
-}
-
-/** @deprecated */
-export function armSplashAutoHide(): void {
-  armNativeSplashController();
 }

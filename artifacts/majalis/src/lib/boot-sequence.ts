@@ -44,9 +44,8 @@ export function runBootSequenceBeforeMount(): void {
   } catch {
     /* ignore */
   }
-  // كاش العرض عند تغيّر النسخة — غير حاجب
-  /* عند اختلاف النسخة أو علم المسح الإجباري: امسح ثم أعد التحميل مرة واحدة فقط */
-  void purgeStaleRuntimeCaches({ reloadOnce: true })
+  /* كاش العرض عند تغيّر النسخة — غير حاجب وبلا reload (المستند network-first فالحزمة الجارية أحدث) */
+  void purgeStaleRuntimeCaches()
     .then(() => ensureAppVersionMarker())
     .catch(() => ensureAppVersionMarker());
 

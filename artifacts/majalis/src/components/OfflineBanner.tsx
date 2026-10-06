@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Wifi, WifiOff, RefreshCw } from "lucide-react";
 import { BUTTON, EMPTY } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
+import { whenAppShellStable } from "@/lib/app-shell-stability";
 import "@/styles/components/language-offline.css";
 
 type Status = "online" | "offline" | "back-online";
@@ -25,9 +26,8 @@ async function readPendingCount(): Promise<number> {
 }
 
 export function OfflineBanner() {
-  const [status, setStatus] = useState<Status>(
-    !navigator.onLine ? "offline" : "online"
-  );
+  /* لا رسالة اتصال أثناء الإقلاع: حالة عدم الاتصال عند الفتح تُعرض بعد استقرار الهيكل فقط */
+  const [status, setStatus] = useState<Status>("online");
   const [pending, setPending] = useState(0);
   const diagnostics = isDevDiagnostics();
 
@@ -37,6 +37,9 @@ export function OfflineBanner() {
       void readPendingCount().then(setPending);
     };
     refreshPending();
+    const cancelBootGate = whenAppShellStable(() => {
+      if (!navigator.onLine) setStatus("offline");
+    });
 
     const goOnline = () => {
       clearTimeout(timer);
@@ -58,6 +61,7 @@ export function OfflineBanner() {
       window.removeEventListener("online", goOnline);
       window.removeEventListener("offline", goOffline);
       window.removeEventListener("majalis-outbox-flushed", onOutbox);
+      cancelBootGate();
       clearTimeout(timer);
     };
   }, []);

@@ -368,7 +368,8 @@ html.dark,
   --ss-muted-text: var(--mj-muted);
   --ss-border: var(--mj-hairline);
   --ss-shadow: var(--shadow-soft, var(--mj-sh));
-  --surface-app: var(--mj-bg);
+  /* لا --surface-app = --mj-bg هنا: --mj-bg مربوط بـ --surface-app أعلاه، والدورة تُبطل الاثنين
+     فتصير خلفية html/body شفافة حتى تصل طبقات الليل المؤجلة (وميض فاتح في الوضع الليلي). */
 
   --majalis-emerald: var(--mj-brand);
   --majalis-emerald-deep: #4AA882;
