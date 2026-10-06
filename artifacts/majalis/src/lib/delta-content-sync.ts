@@ -79,35 +79,52 @@ export async function applyContentDelta(pack: ContentDeltaPack): Promise<number>
   // Skip if already at/after target
   if (current && current === pack.targetRevision) return 0;
 
-  // Soft check base — still apply if base unknown (first install)
+  // Base check: without a recorded revision the client is on the bundled baseline
+  // (first launch) and may apply. Otherwise the pack must build on what we have —
+  // a mismatch keeps the previous version untouched and is retried next sync.
   if (current && pack.baseRevision && current !== pack.baseRevision) {
-    // Allow forward apply anyway for lightweight clients; record warning
     state.lastError = `base mismatch for ${pack.packId}: have ${current}, expected ${pack.baseRevision}`;
+    saveDeltaSyncState(state);
+    return 0;
   }
 
+  // All-or-nothing: remember previous values; on any failed op restore them and
+  // keep the previous revision (silent fallback to the last good version).
+  const undo: Array<{ key: string; prev: unknown }> = [];
   let applied = 0;
-  for (const op of pack.ops || []) {
-    try {
+  try {
+    for (const op of pack.ops || []) {
+      const prev = await idbGetValue<unknown>(pack.store, op.key);
+      undo.push({ key: op.key, prev });
       if (op.op === "set") {
         await idbPut(pack.store, op.key, op.value, pack.targetRevision);
-        applied += 1;
       } else if (op.op === "delete") {
         await idbDelete(pack.store, op.key);
-        applied += 1;
       } else if (op.op === "merge") {
-        const prev = (await idbGetValue<Record<string, unknown>>(pack.store, op.key)) || {};
         const next = isPlainObject(prev) ? { ...prev, ...op.value } : { ...op.value };
         await idbPut(pack.store, op.key, next, pack.targetRevision);
-        applied += 1;
+      } else {
+        throw new Error("unknown op");
       }
-    } catch {
-      /* continue other ops */
+      applied += 1;
     }
+  } catch (e) {
+    for (const { key, prev } of undo.reverse()) {
+      try {
+        if (prev == null) await idbDelete(pack.store, key);
+        else await idbPut(pack.store, key, prev, current);
+      } catch {
+        /* best effort */
+      }
+    }
+    state.lastError = `pack ${pack.packId} rolled back: ${e instanceof Error ? e.message : "op failed"}`;
+    saveDeltaSyncState(state);
+    return 0;
   }
 
   state.revisions[pack.packId] = pack.targetRevision;
   state.lastSyncAt = new Date().toISOString();
-  if (!state.lastError) state.lastError = null;
+  state.lastError = null;
   saveDeltaSyncState(state);
   return applied;
 }
@@ -137,8 +154,8 @@ export async function fetchContentDeltas(opts?: {
     const res = await pooledFetch(url, { timeoutMs: 12_000 });
     if (!res.ok) return [];
     const json = (await res.json()) as { packs?: ContentDeltaPack[] } | ContentDeltaPack[];
-    if (Array.isArray(json)) return json;
-    return Array.isArray(json.packs) ? json.packs : [];
+    const list = Array.isArray(json) ? json : Array.isArray(json.packs) ? json.packs : [];
+    return list.filter(isValidContentDeltaPack);
   } catch {
     return [];
   }
@@ -219,7 +236,7 @@ export function isValidContentDeltaPack(pack: unknown): pack is ContentDeltaPack
   const p = pack as ContentDeltaPack;
   return (
     typeof p.packId === "string" &&
-    typeof p.store === "string" &&
+    (Object.values(OFFLINE_STORES) as string[]).includes(p.store) &&
     typeof p.targetRevision === "string" &&
     Array.isArray(p.ops)
   );

@@ -3,6 +3,7 @@
  * تشغيل: npx tsx src/lib/__tests__/tadabbur-vault-oled-discovery-sync.test.ts
  */
 
+import "fake-indexeddb/auto";
 import {
   startRecitationTimer,
   stopRecitationTimer,
@@ -36,7 +37,7 @@ import {
   loadDeltaSyncState,
   isValidContentDeltaPack,
 } from "../delta-content-sync";
-import { OFFLINE_STORES } from "../offline-db";
+import { OFFLINE_STORES, idbGetValue } from "../offline-db";
 
 let passed = 0;
 let failed = 0;
@@ -154,6 +155,22 @@ console.log("\n=== 5. Delta sync ===");
   assert(n >= 1, "applied ops");
   const st = loadDeltaSyncState();
   assert(st.revisions["adhkar-test"] === "r1", "revision recorded");
+
+  const mismatch = { ...pack, baseRevision: "r5", targetRevision: "r6" };
+  assert((await applyContentDelta(mismatch)) === 0, "base mismatch → not applied");
+  assert(loadDeltaSyncState().revisions["adhkar-test"] === "r1", "base mismatch keeps previous revision");
+
+  const broken = {
+    ...pack,
+    baseRevision: "r1",
+    targetRevision: "r2",
+    ops: [{ op: "set" as const, key: "b", value: 99 }, { op: "bogus", key: "c" } as unknown as (typeof pack.ops)[number]],
+  };
+  assert((await applyContentDelta(broken)) === 0, "failed op → pack rolled back");
+  assert(loadDeltaSyncState().revisions["adhkar-test"] === "r1", "rollback keeps previous revision");
+  assert((await idbGetValue<number>(OFFLINE_STORES.adhkar, "b")) === 3, "rollback restores previous value");
+
+  assert(!isValidContentDeltaPack({ ...pack, store: "users" }), "unknown store rejected");
 }
 
 console.log(`\n=== Result: ${passed} passed, ${failed} failed ===\n`);
