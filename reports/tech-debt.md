@@ -1,6 +1,6 @@
 # سجل الديون التقنية — سُنّة
 
-آخر تحديث: 2026-10-06 · الترتيب: أمان ← أخطاء للمستخدم ← أداء ← تنظيف
+آخر تحديث: 2026-10-07 · الترتيب: أمان ← أخطاء للمستخدم ← أداء ← تنظيف
 
 ## نتيجة الحصر (المصادر النظيفة)
 
@@ -41,9 +41,22 @@
 |---|---|---|
 | C1 | اعتماديات `artifacts/majalis` بلا أي مرجع نصي: `hls.js`، `@hookform/resolvers`، `@radix-ui/react-avatar`، `@radix-ui/react-context-menu`، `@radix-ui/react-dropdown-menu`، `@radix-ui/react-toggle-group`، `@tailwindcss/typography`، `embla-carousel-react`، `input-otp`، `react-day-picker`، `tw-animate-css` | ✅ أُغلق (PR #2687) |
 | C2 | تحديثات patch لحزم Radix (10 حزم) | ✅ أُغلق (PR #2688) |
-| C3 | تحديثات patch: Capacitor (6 إضافات) وtailwind/adhan/dexie/compression/sharp/@types/leaflet | يحتاج قرارك: Capacitor يمس الحزمة الأصلية لـiOS (بوابة TestFlight)، و`pnpm update` يعيد تنسيق `pnpm-workspace.yaml` ويحذف تعليقات الأمان فيه فلم أستخدمه |
+| C3 | تحديثات patch: tailwind/tailwind-merge/adhan/dexie/compression/sharp/@types/leaflet | ✅ أُغلق (PR #2698، lockfile فقط). **بقيت** إضافات Capacitor الست: تمس حزمة iOS (بوابة TestFlight) — المرحلة 2 بقرارك |
 
-| C4 | الكود الميت (ملفات/تصديرات غير مستخدمة) | لم يُفحص: أداة الكشف (knip) تتطلب تثبيتًا وفشل `npx` بخطأ صلاحيات في `~/.npm/_cacache`؛ يحتاج قرارك (إصلاح الصلاحيات أو الموافقة على إضافة أداة dev) |
+| C4 | الكود الميت | ✅ أُغلق جزئيًا (PR #2697): knip بلا إعداد أعطى 989 «غير مستخدم» أغلبها وهمي (api/، scripts، imports ديناميكية)؛ بعد تصفية src/*.ts(x) وفحص المراجع عبر المستودع حُذفت 5 ملفات فقط. **بقي**: إعداد knip برسم نقاط الدخول (api/*، scripts/*، vite، vercel) لحصر دقيق — المرحلة 2 |
+
+## ديون اختبارية مكتشفة (بوابات حمراء خارج CI)
+
+| # | الدين | الحالة | المرحلة |
+|---|---|---|---|
+| T1 | `app-web-boundary-gate` (window.location.assign في الرئيسية وPrayerHero) | ✅ أُغلق (PR #2696) | 1 |
+| T2 | `content-audit-b059-coverage-matrix-gate` (inventory ينقصه 15 قسمًا حيًا) | ✅ أُغلق (PR #2696) | 1 |
+| T3 | `content-depth-audit-gate`: نص «لا نتائج» انتقل إلى strings.ts | ✅ أُغلق (PR #2696) | 1 |
+| T4 | نفس البوابة: نبذ الأنبياء الـ25 أقل من 40 كلمة (`briefBio`) | يحتاج قرارك: محتوى شرعي يُكتب ويُراجَع، لا يُولَّد آليًا | — |
+| T5 | `card-contrast-aa-root-gate` و`ci-7500-hub-card-dark-contrast-gate` (رموز --cs-* قديمة) | مفتوح: بوابات قديمة لهوية سابقة؛ تحتاج تحديثًا للهوية الحالية أو حذفًا | 2 |
+| T6 | `visual-debt-v1-gate`: `lessons-sections-v2.css` فيه 18 `!important` > سقف 17 | مفتوح (يرتبط بـP2) | 2 |
+| T7 | `scripts/test-no-homepage-leak.mjs`: 190 كتابًا بلا صفحة prerender (المكتبة محذوفة) | مفتوح: تحديث السكربت لمصدر الكتب الحالي | 2 |
+
 
 (استُثنيت الحزم الخاصة بالمنصة: `@rollup/rollup-darwin-arm64`، `@tailwindcss/oxide-darwin-arm64`، `lightningcss-darwin-arm64`، `@capacitor/ios`.)
 
@@ -58,3 +71,6 @@
 - C1: PR #2687 — مدموج (فحوص CI ناجحة).
 - C2: PR #2688 — مدموج (فحوص CI ناجحة).
 - S1/S4/P1: migrations `20261006130000` و`20261006130100` طُبّقت على staging ثم الإنتاج (2026-10-06).
+- حذف قسم العلماء: PR #2695 (مسارات /scholars تحوَّل إلى /sections؛ بيانات scholars-profiles باقية).
+- T1–T3: PR #2696 — مدموج. C4: PR #2697. C3: PR #2698 — مدموج.
+- الصفحات الداخلية (زر رجوع + عناوين 28px): PR #2700.
