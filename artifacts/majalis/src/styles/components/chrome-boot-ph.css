@@ -25,6 +25,12 @@
   padding-inline: 16px;
   box-sizing: border-box;
 }
+@media (max-width: 879px) {
+  /* = ارتفاع NavBar الحقيقي على الجوال (top-chrome-layout) — لا 56→52 عند استبدال الهيكل */
+  .chrome-boot-ph .navbar-v3__inner {
+    min-height: 3.25rem;
+  }
+}
 .chrome-boot-ph .navbar-v3__start,
 .chrome-boot-ph .navbar-v3__end {
   display: flex;
