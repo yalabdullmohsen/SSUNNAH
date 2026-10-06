@@ -72,9 +72,9 @@ assert.doesNotMatch(lazyFallback, /from ["']@\/components\/ui-common["']|from ["
 const spatial = read("src/lib/spatial-nav.ts");
 assert.doesNotMatch(spatial, /from ["']@\/lib\/nav-map["']|from ["']lucide-react["']/, "spatial-nav بلا nav-map/lucide");
 assert.match(html, /font-weight:\s*400/, "وزن 400 للنص العادي في الحرج");
-assert.match(html, /rel="preload"[^>]+plex-sans-arabic-600-ar/, "preload Sunnah UI 600 يمنع قفزة الوزن");
+assert.match(html, /rel="preload"[^>]+almarai-700-ar/, "preload Almarai 700 يمنع قفزة الوزن");
 assert.match(main, /font-faces-deferred\.css/, "الأوجه غير الحرجة مع الحزمة الرئيسية");
-assert.match(renderedIndexHtml(), /@font-face\{[^}]*plex-sans-arabic-600-ar/, "Sunnah UI 600 في مسار الإقلاع (مضمّن — مصدر وحيد)");
-assert.doesNotMatch(read("src/styles/font-faces-deferred.css"), /plex-sans-arabic-(400|600)-ar/, "الأوجه الحرجة ليست في الملف المؤجَّل");
+assert.match(renderedIndexHtml(), /@font-face\{[^}]*almarai-700-ar/, "Almarai 700 في مسار الإقلاع (مضمّن — مصدر وحيد)");
+assert.doesNotMatch(read("src/styles/font-faces-deferred.css"), /almarai-(400|700)-ar/, "الأوجه الحرجة ليست في الملف المؤجَّل");
 
 console.log("pagespeed-home-gate.test.ts: ok");

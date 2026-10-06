@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Status | **ACTIVE** |
-| Date | 2026-10-03 |
+| Date | 2026-10-06 |
 | Phases | BP–BU |
 | Engine | `artifacts/majalis/scripts/search-excellence-engine.mjs` |
 | Gate | `test:search-excellence` |

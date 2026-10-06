@@ -25,7 +25,7 @@ import { clearQuranCache } from "@/lib/quran-api";
 import { type UserPreferences } from "@/lib/user-preferences";
 import { clearLocalBookmarks } from "@/lib/local-bookmarks";
 import { clearOfflineReading } from "@/lib/offline-reading-pack";
-import { useQuranPreferences, type QuranFontId } from "@/hooks/useQuranPreferences";
+import { useQuranPreferences } from "@/hooks/useQuranPreferences";
 import {
   clampQuranFontSize,
   clampReadingTextSize,
@@ -406,26 +406,6 @@ export default function SettingsPage() {
             />
             <strong className="mj-bidi-isolate">{draftQuranScale}px</strong>
           </label>
-          <div className="settings-field">
-            <FieldLabel htmlFor="settings-quran-font">{t("settings_quran_font")}</FieldLabel>
-            <Select
-              value={quranPrefs.fontId}
-              onValueChange={(v) => setQuranPref("fontId", v as QuranFontId)}
-            >
-              <SelectTrigger
-                id="settings-quran-font"
-                className="min-h-11 text-base"
-                aria-label={t("settings_quran_font")}
-              >
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="uthmani">قرآني (Amiri Quran)</SelectItem>
-                <SelectItem value="naskh">الواجهة (IBM Plex Sans Arabic)</SelectItem>
-                <SelectItem value="amiri">أميري (Amiri)</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
           <div className="settings-actions">
             <Button type="button" variant="ghost" size="small" className="ds-btn ds-btn--ghost" onClick={() => bumpFont(2)}>
               {t("settings_quran_font_up")}

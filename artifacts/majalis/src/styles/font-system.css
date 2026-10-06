@@ -1,65 +1,52 @@
 /**
- * نظام خطوط «سُنّة» — تعريف الخطوط (self-hosted woff2، رخصة SIL OFL) في ملفين:
- *   font-system.css         ← الرموز + الأوجه الحرجة (تُحقن inline في <head> عبر inlineFontSystemPlugin)
- *   font-faces-deferred.css ← بقية الأوجه (تُحمَّل مع الحزمة الرئيسية)
- * الملفات في public/fonts/sunnah/ ومعها ملفات الرخصة OFL-*.txt.
- *
- *   "Sunnah UI"    ← IBM Plex Sans Arabic (400 / 500 / 600 / 700) — الواجهة كلها
- *   "Sunnah Text"  ← Amiri (400 / 700)                            — النصوص الشرعية
- *   "Sunnah Quran" ← Amiri Quran (400)                            — نص الآيات فقط
- *
- * سبب الحقن: CSS الدخول مؤجَّل (data-mj-css-defer) وميزانية الـinline ≤14KiB، فالأوجه الحرجة فقط (UI 400/600 وText 400)
- * تُحقن لتجنّب وميض الخط؛ وتُحمَّل مسبقًا من index.html.
+ * نظام خطوط «سُنّة» — خط واحد: Almarai (self-hosted woff2، رخصة SIL OFL في public/fonts/almarai/).
+ *   font-system.css         ← الرموز + الأوجه الحرجة 400/700 (تُحقن inline في <head> عبر inlineFontSystemPlugin)
+ *   font-faces-deferred.css ← الأوزان 300/800 (تُحمَّل مع الحزمة الرئيسية)
+ * الأوزان المتاحة 300/400/700/800 فقط. خريطة الأوزان في تعريف الأوجه: الملف 400 يخدم "400 500" والملف 700 يخدم "600 700"
+ * (فيُرسم أي 500 بالوجه 400 وأي 600 بالوجه 700). font-synthesis: none (في typography-app.css).
+ * ثلاثة رموز (--font-ui/--font-text/--font-quran) تشير كلها لـ Almarai لتسهيل أي تغيير مستقبلي.
  * خطوط جليفات صفحات المصحف (public/fonts/qpc-v2، FontFace عبر useQpcPageFont) ليست جزءًا من هذا النظام.
  */
 
 /* ── الرموز المركزية — كل التطبيق يستهلك هذه المتغيرات فقط ── */
 :root {
-  --font-ui: "Sunnah UI", -apple-system, "SF Arabic", system-ui, sans-serif;
-  --font-text: "Sunnah Text", "Sunnah UI", serif;
-  --font-quran: "Sunnah Quran", "Sunnah Text", serif;
+  --font-ui: "Almarai", -apple-system, "SF Arabic", system-ui, sans-serif;
+  --font-text: var(--font-ui);
+  --font-quran: var(--font-ui);
   /* لوحات الإدارة/الأدوات فقط — لا يُستعمل في واجهة المستخدم */
   --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
 }
 
-/* ── أوجه حرجة (preload في index.html) ── */
+/* ── أوجه حرجة (preload 400/700 في index.html) ── */
 @font-face {
-  font-family: "Sunnah UI";
+  font-family: "Almarai";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400 500;
   font-display: swap;
-  src: url("/fonts/sunnah/plex-sans-arabic-400-ar.woff2") format("woff2");
-  unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFC;
+  src: url("/fonts/almarai/almarai-400-ar.woff2") format("woff2");
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC;
 }
 @font-face {
-  font-family: "Sunnah UI";
+  font-family: "Almarai";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400 500;
   font-display: swap;
-  src: url("/fonts/sunnah/plex-sans-arabic-400-lat.woff2") format("woff2");
+  src: url("/fonts/almarai/almarai-400-lat.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122;
 }
 @font-face {
-  font-family: "Sunnah UI";
+  font-family: "Almarai";
   font-style: normal;
-  font-weight: 600;
+  font-weight: 600 700;
   font-display: swap;
-  src: url("/fonts/sunnah/plex-sans-arabic-600-ar.woff2") format("woff2");
-  unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFC;
+  src: url("/fonts/almarai/almarai-700-ar.woff2") format("woff2");
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+FB50-FDFF, U+FE70-FEFC;
 }
 @font-face {
-  font-family: "Sunnah UI";
+  font-family: "Almarai";
   font-style: normal;
-  font-weight: 600;
+  font-weight: 600 700;
   font-display: swap;
-  src: url("/fonts/sunnah/plex-sans-arabic-600-lat.woff2") format("woff2");
+  src: url("/fonts/almarai/almarai-700-lat.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122;
-}
-@font-face {
-  font-family: "Sunnah Text";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/sunnah/amiri-400-ar.woff2") format("woff2");
-  unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+FB50-FDFF, U+FE70-FEFC;
 }

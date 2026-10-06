@@ -1,6 +1,6 @@
 /**
  * STARTUP_SMOOTHNESS — يقفل الأسباب الجذرية لقفزات الدخولية (docs/performance/STARTUP_SMOOTHNESS.md):
- * 1) @font-face لنظام الخطوط (Sunnah UI/Text/Quran): مصدر وحيد font-system.css (الحرجة inline) + font-faces-deferred.css.
+ * 1) @font-face لنظام الخطوط (Almarai): مصدر وحيد font-system.css (الحرجة inline) + font-faces-deferred.css.
  *    أي إعادة تعريف في CSS يصل بعد أول رسم تُنشئ FontFace جديدًا يُحمَّل من الكاش → تبديل خط مرئي.
  * 2) لا وجه يُعرَّف مرتين.
  * 3) ارتفاع الشريط السفلي ثابت منذ أول رسم = القيمة النهائية (64px + safe-area)، بلا padding مؤقت.
@@ -27,15 +27,14 @@ const rendered = renderedIndexHtml();
 const fontSystemInline = rendered.match(/<style id="mj-font-system">([\s\S]*?)<\/style>/)?.[1] ?? "";
 assert.ok(fontSystemInline.length > 0, "mj-font-system مُحقن في index.html");
 const criticalFaces = fontSystemInline.match(/@font-face\{[^}]*\}/g) ?? [];
-assert.equal(criticalFaces.length, 5, "5 أوجه حرجة مضمّنة: Sunnah UI 400/600 (عربي+لاتيني) وSunnah Text 400 عربي");
+assert.equal(criticalFaces.length, 4, "4 أوجه حرجة مضمّنة: Almarai 400/700 (عربي+لاتيني)");
 for (const f of criticalFaces) {
   assert.match(f, /font-display:swap/, "swap — نص مرئي دائمًا");
   assert.match(f, /unicode-range:/);
 }
-assert.match(rendered, /rel="preload"[^>]+plex-sans-arabic-400-ar\.woff2/);
-assert.match(rendered, /rel="preload"[^>]+plex-sans-arabic-600-ar\.woff2/);
-assert.match(rendered, /rel="preload"[^>]+amiri-400-ar\.woff2/);
-assert.doesNotMatch(rendered, /Majlis(Amiri)?Fallback/, "لا خطوط بديلة معايَرة قديمة");
+assert.match(rendered, /rel="preload"[^>]+almarai-400-ar\.woff2/);
+assert.match(rendered, /rel="preload"[^>]+almarai-700-ar\.woff2/);
+assert.doesNotMatch(rendered, /MajlisFallback/, "لا خطوط بديلة معايَرة قديمة");
 
 const cssFiles: string[] = [];
 const walk = (dir: string) => {
@@ -57,10 +56,10 @@ for (const file of cssFiles) {
 // 2) لا وجه يُعرَّف مرتين (كان يسبب FontFace ثانيًا وتبديلًا مرئيًا)
 const allFaces = fontSystemCss().match(/src:\s*url\("([^"]+)"\)/g) ?? [];
 assert.equal(new Set(allFaces).size, allFaces.length, "كل ملف خط مُعرَّف مرة واحدة");
-assert.equal(allFaces.length, 13, "13 وجهًا: UI×8 + Text×4 + Quran×1");
-/* الواجهة Sunnah UI من أول رسم عبر --font-ui */
+assert.equal(allFaces.length, 8, "8 أوجه: Almarai × 4 أوزان × (عربي+لاتيني)");
+/* الواجهة Almarai من أول رسم عبر --font-ui */
 assert.match(lcp, /font-family:var\(--font-ui\)/);
-assert.match(fontSystemInline, /--font-ui:"Sunnah UI",-apple-system/);
+assert.match(fontSystemInline, /--font-ui:"Almarai",-apple-system/);
 
 // 3) الشريط السفلي: ارتفاع ثابت منذ أول رسم ولا padding مؤقت يغيّره
 const critical = read("src/styles/critical-first-paint.css");

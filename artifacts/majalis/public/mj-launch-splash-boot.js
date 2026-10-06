@@ -22,7 +22,7 @@
         function fontsLikelyReady() {
           try {
             if (!document.fonts || !document.fonts.check) return true;
-            return document.fonts.check('16px "Sunnah UI"');
+            return document.fonts.check('16px "Almarai"');
           } catch (e) { return true; }
         }
         function dismiss(immediate) {

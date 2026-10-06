@@ -1,11 +1,11 @@
 /* ============================================================
    Quran Section — rebuilt from scratch
-   Font: Amiri Quran (مُستضاف محليًا — fonts-quran.css مع مسارات القرآن)
+   Font: Almarai (مُستضاف محليًا — fonts-quran.css مع مسارات القرآن)
    Direction: RTL throughout
    ============================================================ */
 @import "./fonts-quran.css";
 
-/* "Sunnah Quran" مُعرَّف في src/styles/font-system.css (يُحقن inline في index.html). */
+/* "Almarai" مُعرَّف في src/styles/font-system.css (يُحقن inline في index.html). */
 
 /* ── Layout shell ── */
 .quran-shell {
@@ -280,7 +280,7 @@
 }
 
 /* Continuous paragraph — all ayahs inline like a real Mushaf page */
-/* تبرير مصحفي للنص المستمر (Amiri): inter-word + keep-all يقلّلان تمديد
+/* تبرير مصحفي للنص المستمر (Almarai): inter-word + keep-all يقلّلان تمديد
    المسافات المفرط الذي ظهر سابقًا مع letter-spacing اليدوي. مسار QPC
    (--ayah / QPC) يعتمد حجم خط موحّد ونصًا متصلًا؛ التبرير هنا لمسار Unicode/القارئ القديم. */
 .qs-mushaf-body {

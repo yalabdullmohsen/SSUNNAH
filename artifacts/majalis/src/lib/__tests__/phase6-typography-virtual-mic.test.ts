@@ -30,24 +30,22 @@ assert.equal(clampQuranFontSize(12), 14);
 assert.equal(clampQuranFontSize(40), 32);
 assert.equal(clampQuranFontSize(20), 20);
 
-// ── Sunnah Quran/Text محليًا + preload ───────────────────────────────────────
+// ── Almarai محليًا + preload ───────────────────────────────────────
 const fontsQuran = read("styles/font-faces-deferred.css");
-assert.match(fontsQuran, /"Sunnah Quran"/);
-assert.match(fontsQuran, /ascent-override|size-adjust/);
+assert.match(fontsQuran, /"Almarai"/);
 
 const html = renderedIndexHtml();
 const htmlFaces = html;
-assert.match(htmlFaces, /@font-face\{[^}]*\/fonts\/sunnah\/amiri-400-ar\.woff2/);
+assert.match(htmlFaces, /@font-face\{[^}]*\/fonts\/almarai\/almarai-400-ar\.woff2/);
 assert.doesNotMatch(html, /fonts\.googleapis\.com|fonts\.gstatic\.com/);
-assert.match(html, /fonts\/sunnah\/amiri-400-ar\.woff2/);
-assert.ok(existsSync(resolve(root, "public/fonts/sunnah/amiri-quran-400-ar.woff2")));
+assert.match(html, /fonts\/almarai\/almarai-400-ar\.woff2/);
 assert.ok(existsSync(resolve(root, "public/fonts/qpc-v2/p1.woff2")));
-assert.ok(existsSync(resolve(root, "public/fonts/sunnah/amiri-400-ar.woff2")));
+assert.ok(existsSync(resolve(root, "public/fonts/almarai/almarai-400-ar.woff2")));
 
 const main = read("main.tsx");
 assert.doesNotMatch(main, /warmStaticQuranicFonts/, "لا تسخين خطوط مصحف على كل صفحة");
 assert.match(read("pages/quran/MushafReaderPage.tsx"), /warmStaticQuranicFonts/);
-assert.match(htmlFaces, /\/fonts\/sunnah\/amiri-400-ar\.woff2/);
+assert.match(htmlFaces, /\/fonts\/almarai\/almarai-400-ar\.woff2/);
 
 assert.ok(existsSync(resolve(root, "public/fonts/qpc-v2/p1.woff2")), "خطوط QPC محفوظة كبيانات");
 

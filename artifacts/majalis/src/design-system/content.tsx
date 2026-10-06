@@ -24,7 +24,7 @@ export function formatAyahRef(surah: string, ayah: number | string): string {
   return `${surah}: ${toArabicIndicDigits(ayah)}`;
 }
 
-/** بطاقة حديث — Sunnah Text 20/1.9 (أو 24 للمميّز) + مرجع بخط الواجهة. */
+/** بطاقة حديث — 19/2.0 (أو 24/700/1.9 للمميّز) + مرجع بخط الواجهة. */
 export function HadithCard({ text, source, featured, ...actions }: { text: string; source?: string; featured?: boolean } & ActionHandlers) {
   return (
     <Card variant={featured ? "featured" : "standard"} className="sn-hadith-card" aria-label={S.content_04}>
@@ -37,7 +37,7 @@ export function HadithCard({ text, source, featured, ...actions }: { text: strin
   );
 }
 
-/** بطاقة آية — Sunnah Quran 24/2.0 (ارتفاع السطر يحمي التشكيل) + مرجع «السورة: رقم». */
+/** بطاقة آية — 22/2.1 (ارتفاع السطر يحمي التشكيل) + مرجع «السورة: رقم». */
 export function AyahCard({ text, surah, ayah, ...actions }: { text: string; surah: string; ayah: number | string } & ActionHandlers) {
   return (
     <Card variant="featured" className="sn-ayah-card" aria-label={S.content_05}>

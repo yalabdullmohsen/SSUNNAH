@@ -1,14 +1,14 @@
 # PRODUCT_SURFACE_MAP
 
-Generated: 2026-10-03T09:21:26.150Z
+Generated: 2026-10-06T19:03:57.542Z
 
-Total classified surfaces: **403** · unclassified: **0**
+Total classified surfaces: **402** · unclassified: **0**
 
 | Class | Count |
 |---|---:|
-| Unified | 157 |
-| Partial | 179 |
-| Legacy | 64 |
+| Unified | 210 |
+| Partial | 189 |
+| Legacy | 0 |
 | SPECIAL_CASE | 3 |
 
 ## Samples
@@ -40,23 +40,12 @@ Total classified surfaces: **403** · unclassified: **0**
 - `pages/account/MemorizePage.tsx`
 - `pages/account/MorePage.tsx`
 - `pages/account/NotificationSettingsPage.tsx`
-- `pages/account/NotificationsAndSoundPage.tsx`
 - `pages/account/OfflineCenterPage.tsx`
+- `pages/account/ProgressCenterPage.tsx`
 
 ### Legacy
 
-- `pages/hifz-path/HifzUnitPracticePanel.tsx`
-- `pages/quran/QuranEnginePage.tsx`
-- `pages/quran/QuranMemorizationPlansPage.tsx`
-- `pages/quran/ui/QuranMemorizationView.tsx`
-- `pages/quran/ui/QuranNumbersView.tsx`
-- `views/SinsAndRightsDetailPage.tsx`
-- `views/admin/AdhkarSection.tsx`
-- `views/admin/AdminShell.tsx`
-- `views/admin/AdminUI.tsx`
-- `views/admin/AggregatorSection.tsx`
-- `views/admin/AnnualCoursesSection.tsx`
-- `views/admin/ArbaeenLoveSection.tsx`
+- —
 
 ### SPECIAL_CASE
 

@@ -43,13 +43,12 @@ const theme = read("src/lib/theme-preference.ts");
 // 2) خطوط محلية + preload
 {
   assert.doesNotMatch(html, /fonts\.googleapis\.com|fonts\.gstatic\.com/);
-  assert.match(html, /rel="preload"[^>]+\/fonts\/sunnah\/plex-sans-arabic-400-ar\.woff2/);
-  assert.match(html, /rel="preload"[^>]+\/fonts\/sunnah\/plex-sans-arabic-600-ar\.woff2/, "preload Sunnah UI 600 قبل React");
-  assert.match(html, /rel="preload"[^>]+\/fonts\/sunnah\/amiri-400-ar\.woff2/);
+  assert.match(html, /rel="preload"[^>]+\/fonts\/almarai\/almarai-400-ar\.woff2/);
+  assert.match(html, /rel="preload"[^>]+\/fonts\/almarai\/almarai-700-ar\.woff2/, "preload Almarai 700 قبل React");
   assert.doesNotMatch(
     html,
-    /rel="preload"[^>]+(plex-sans-arabic-(500|700)|amiri-700|amiri-quran)/,
-    "preload للأوزان الأساسية فقط: UI 400/600 وText 400",
+    /rel="preload"[^>]+(almarai-(300|800)|qpc-v2)/,
+    "preload للوزنين الأساسيين فقط: Almarai 400/700",
   );
   assert.match(html, /rel="preload"[^>]+as="font"/);
   assert.match(html, /app-booting/);
@@ -61,20 +60,20 @@ const theme = read("src/lib/theme-preference.ts");
   assert.match(fontSystemCss(), /font-display:\s*swap/);
   assert.doesNotMatch(fontSystemCss(), /font-display:\s*(block|optional)/);
   /* الأوجه الحرجة مضمّنة في index.html عبر font-system.css (STARTUP_SMOOTHNESS) */
-  assert.match(rendered, /font-display:swap;src:url\("\/fonts\/sunnah\/plex-sans-arabic-400-ar/);
-  assert.match(rendered, /font-display:swap;src:url\("\/fonts\/sunnah\/amiri-400-ar/);
+  assert.match(rendered, /font-display:swap;src:url\("\/fonts\/almarai\/almarai-400-ar/);
+  assert.match(rendered, /font-display:swap;src:url\("\/fonts\/almarai\/almarai-700-ar/);
   assert.doesNotMatch(fontsQuran, /@font-face/);
   assert.match(boot, /BOOT_FONT_TIMEOUT_MS\s*=\s*280/);
   assert.match(boot, /document\.fonts\.load\(regular\)/);
   assert.match(boot, /document\.fonts\.load\(bold\)/);
-  assert.match(boot, /"Sunnah UI"/);
+  assert.match(boot, /"Almarai"/);
   assert.match(boot, /registerBootStorageGate|storageReady/);
   assert.match(main, /registerBootStorageGate/);
 }
 
-// 3) المصحف: لا Amiri بديل قبل QPC
+// 3) المصحف: لا خط بديل مكتوب في الصفحة قبل QPC
 {
-  assert.doesNotMatch(reader, /Amiri/, "لا رسم المصحف بخط Amiri بديل");
+  assert.doesNotMatch(reader, /font-family\s*:/, "لا font-family بديل داخل قارئ المصحف");
   assert.match(reader, /canMountPage/);
   assert.match(reader, /allowOffscreenPrefetch/);
   assert.match(reader, /useMushafResourceGate/);

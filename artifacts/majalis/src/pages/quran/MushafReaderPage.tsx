@@ -103,7 +103,7 @@ export default function MushafReaderPage() {
     let timer: number | null = null;
     const warm = () => {
       void import("@/lib/font-ready").then((m) => {
-        void m.warmStaticQuranicFonts(["Sunnah Quran"]);
+        void m.warmStaticQuranicFonts(["Almarai"]);
       });
     };
     const ric = (

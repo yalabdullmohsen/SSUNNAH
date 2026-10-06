@@ -1,6 +1,6 @@
 # SEARCH_QUERY_HEATMAP
 
-Generated: 2026-10-03
+Generated: 2026-10-06
 
 Live latency: **NOT_MEASURED — no wall-clock invent; use DEVICE_REQUIRED / CI probes**
 
@@ -16,7 +16,7 @@ Live latency: **NOT_MEASURED — no wall-clock invent; use DEVICE_REQUIRED / CI 
 | worker | true |
 | yieldToMain | true |
 | gin/trgm mentions | 85 |
-| fts mentions | 125 |
+| fts mentions | 140 |
 
 ## Cost proxies (static)
 

@@ -142,9 +142,9 @@ export async function whenFontsReady<T>(fn: () => T | Promise<T>, timeoutMs = 8_
   return await fn();
 }
 
-/** Warm common Quranic / Hadith body fonts once (Sunnah Quran). */
+/** Warm common Quranic / Hadith body fonts once (Almarai). */
 export async function warmStaticQuranicFonts(
-  families: string[] = ["Sunnah Quran"],
+  families: string[] = ["Almarai"],
 ): Promise<void> {
   if (typeof document === "undefined" || !document.fonts?.load) return;
   for (const family of families) {

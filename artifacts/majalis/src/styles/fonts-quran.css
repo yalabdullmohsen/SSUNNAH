@@ -1,6 +1,6 @@
 /**
  * ميزات OpenType لنص الآيات غير-PUA (وضع light / بطاقات الآيات): liga + calt للربط السياقي.
- * تعريف الخط نفسه ("Sunnah Quran") في font-system.css.
+ * تعريف الخط نفسه ("Almarai") في font-system.css.
  * .mm-viewport يعطّل توريث الميزات لحماية هندسة QPC.
  */
 .font-uthmani-ot,

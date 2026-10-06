@@ -9,8 +9,8 @@ let scheduled = false;
 function warmOptionalUiFonts(): void {
   try {
     if (typeof document === "undefined" || !document.fonts) return;
-    // Sunnah UI 400/600 وSunnah Text 400 مُحمَّلة عند الإقلاع؛ هنا الأوزان المتبقية بهدوء
-    for (const face of ['500 16px "Sunnah UI"', '700 16px "Sunnah UI"', '700 16px "Sunnah Text"']) {
+    // Almarai 400/700 مُحمَّلان عند الإقلاع؛ هنا الوزنان المتبقيان (300/800) بهدوء
+    for (const face of ['300 16px "Almarai"', '800 16px "Almarai"']) {
       void document.fonts.load(face).catch(() => {});
     }
   } catch {
