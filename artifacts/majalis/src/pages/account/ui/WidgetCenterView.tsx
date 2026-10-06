@@ -38,6 +38,7 @@ import { WIDGET_FUTURE_BINARY_REQUIRED } from "@/lib/widget-data/types";
 import { WIDGET_PROGRESS_CONTRACTS } from "@/lib/widget-data/progress-contract";
 import { getCurrentHijriInfo } from "@/lib/hijri-utils";
 import "@/styles/pages/settings.css";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 
 const SECTIONS = [
   { id: "catalog", title: "الويدجت المتاحة" },
@@ -58,7 +59,7 @@ type SectionId = (typeof SECTIONS)[number]["id"];
 function formatWhen(epochMs: number | null): string {
   if (!epochMs) return "لم يُنشر بعد";
   try {
-    return new Intl.DateTimeFormat("ar", { dateStyle: "medium", timeStyle: "short" }).format(new Date(epochMs));
+    return new Intl.DateTimeFormat(AR_UI_LOCALE, { dateStyle: "medium", timeStyle: "short" }).format(new Date(epochMs));
   } catch {
     return "غير متاح";
   }

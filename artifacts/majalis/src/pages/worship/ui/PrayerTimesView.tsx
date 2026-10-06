@@ -43,6 +43,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 const PrayerAnnualTimetable = lazy(() =>
   import("@/components/prayer/PrayerAnnualTimetable").then((m) => ({
     default: m.PrayerAnnualTimetable,
@@ -73,7 +74,7 @@ function formatHijri(raw: string | null): string {
 }
 
 function zoneDateReadable(timeZone: string): string {
-  return new Intl.DateTimeFormat("ar", {
+  return new Intl.DateTimeFormat(AR_UI_LOCALE, {
     timeZone,
     weekday: "long",
     year: "numeric",

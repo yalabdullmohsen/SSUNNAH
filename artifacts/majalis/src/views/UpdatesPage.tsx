@@ -15,6 +15,7 @@ import { ListScreen } from "@/components/design-system/screens";
 import { EmptyStateV2, ErrorStateV2, SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 import { safeHttpHref } from "@/lib/sanitize";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 
 const TYPE_COLORS: Record<string, string> = {
   قرار: "#123F2E",
@@ -29,7 +30,7 @@ const TYPE_COLORS: Record<string, string> = {
 function formatDate(iso?: string) {
   if (!iso) return "";
   try {
-    return new Intl.DateTimeFormat("ar", { dateStyle: "medium", timeStyle: "short" }).format(new Date(iso));
+    return new Intl.DateTimeFormat(AR_UI_LOCALE, { dateStyle: "medium", timeStyle: "short" }).format(new Date(iso));
   } catch {
     return iso.slice(0, 10);
   }

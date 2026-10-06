@@ -33,6 +33,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 type WizardStep = "heirs" | "estate" | "result";
 
 const HEIR_LABELS: Record<HeirKey, string> = {
@@ -85,7 +86,7 @@ function CounterRow({ label, value, onChange, max = 20 }: { label: string; value
 }
 
 function fmtMoney(n: number): string {
-  return n.toLocaleString("ar", { maximumFractionDigits: 2, minimumFractionDigits: 0 });
+  return n.toLocaleString(AR_UI_LOCALE, { maximumFractionDigits: 2, minimumFractionDigits: 0 });
 }
 
 export default function MawarithCalculatorPage() {

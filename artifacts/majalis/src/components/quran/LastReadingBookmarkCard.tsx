@@ -8,6 +8,7 @@ import { loadPagePosition, loadReadingAyahKey, getSurahMeta } from "@/lib/quran-
 import { currentPageFirstAyah } from "@/lib/quran-ayah-page";
 import { toArabicDigits } from "@/lib/utils";
 import "@/styles/components/last-reading-bookmark-card.css";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 
 type Resume = {
   page: number;
@@ -22,7 +23,7 @@ function formatSavedAt(iso: string | undefined): string | null {
   try {
     const d = new Date(iso);
     if (Number.isNaN(d.getTime())) return null;
-    return d.toLocaleString("ar", {
+    return d.toLocaleString(AR_UI_LOCALE, {
       dateStyle: "medium",
       timeStyle: "short",
     });

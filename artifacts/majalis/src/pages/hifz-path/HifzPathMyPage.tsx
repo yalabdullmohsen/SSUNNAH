@@ -17,6 +17,7 @@ import {
   listMyHifzUnits,
   refreshDueHifzReviews,
 } from "@/lib/memorization-path";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 
 const PATH = "/hifz-path";
 
@@ -69,7 +70,7 @@ function HifzPathMyShell() {
                 meta={`${u.pathTitle} · ${HIFZ_PROGRESS_USER_LABELS[u.state]}`}
                 description={
                   u.nextReviewAt
-                    ? `المراجعة القادمة: ${new Date(u.nextReviewAt).toLocaleDateString("ar")}`
+                    ? `المراجعة القادمة: ${new Date(u.nextReviewAt).toLocaleDateString(AR_UI_LOCALE)}`
                     : undefined
                 }
               />

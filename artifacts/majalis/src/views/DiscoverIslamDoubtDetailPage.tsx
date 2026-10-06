@@ -9,12 +9,13 @@ import { shubuhatCompletenessTier } from "@/lib/shubuhat-contract";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
 import { DetailScreen } from "@/components/design-system/screens";
 import { safeHttpHref } from "@/lib/sanitize";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 
 function formatUpdatedAt(iso: string): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return iso;
   try {
-    return new Intl.DateTimeFormat("ar", { dateStyle: "medium" }).format(d);
+    return new Intl.DateTimeFormat(AR_UI_LOCALE, { dateStyle: "medium" }).format(d);
   } catch {
     return iso.slice(0, 10);
   }
