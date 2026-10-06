@@ -16,6 +16,13 @@ export function toArabicIndicDigits(input: string | number): string {
   return String(input).replace(/[0-9]/g, (d) => ARABIC_INDIC_DIGITS[Number(d)]);
 }
 
+/**
+ * لغة تنسيق Intl لواجهة عربية بأرقام عربية-هندية وتقويم ميلادي.
+ * "ar" وحدها تُخرج أرقامًا لاتينية في ICU الحديث (6 أكتوبر 2026)، و"ar-SA" تقلب التقويم إلى الهجري.
+ * ponytail: لا تتبع تفضيل numeralSystem بعد (الافتراضي «عربي»)؛ مرّر useNumerals إن لزم.
+ */
+export const AR_UI_LOCALE = "ar-u-nu-arab";
+
 /** مُنسّق موحّد لأرقام واجهة «القرآن في أرقام» — عربي-هندي فقط. */
 export const formatArabicNumber = toArabicIndicDigits;
 
