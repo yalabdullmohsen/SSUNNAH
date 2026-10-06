@@ -41,15 +41,37 @@
   z-index: var(--z-app-header);
 }
 
+/* شبكة الهيدر مع NavBar نفسه (متزامن) — كانت في final-release.css المؤجَّل فقط، فيُرسم الهيدر
+   الحقيقي block (أطرافه مكدّسة) ثم يقفز إلى الشبكة عند وصول الطبقات المؤجّلة على CPU بطيء. */
+.navbar-v3__inner {
+  width: min(100%, var(--page-width, 100%));
+  margin-inline: auto;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  max-width: 100%;
+}
+.navbar-v3__start,
+.navbar-v3__end {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 
 @media (max-width: 879px) {
   .navbar-v3__inner {
     min-height: var(--app-header-height);
     max-height: 56px;
     height: var(--app-header-height);
-    padding-block: 0;
+    /* = القيم النهائية بعد الطبقات المؤجّلة (index-deferred-pages / final-release) — لا قفزة عند وصولها */
+    padding-block: 0.35rem;
     padding-inline: 16px;
-    gap: 8px;
+    gap: 10px;
+    justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
   }

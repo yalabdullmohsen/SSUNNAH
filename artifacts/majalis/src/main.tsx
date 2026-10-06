@@ -330,6 +330,30 @@ scheduleNetworkWarm();
   else window.addEventListener("load", armPrefetch, { once: true });
 }
 
+/** يفعّل link[data-mj-css-defer] فور تحميله (الطلب بدأ مع تحليل HTML) — لا يحجب أول رسم HTML. */
+function applyDeferredEntryCss(timeoutMs = 3_000): Promise<void> {
+  const links = Array.from(document.querySelectorAll<HTMLLinkElement>("link[data-mj-css-defer]"));
+  return Promise.all(
+    links.map(
+      (link) =>
+        new Promise<void>((resolve) => {
+          const apply = () => {
+            link.media = "all";
+            link.removeAttribute("data-mj-css-defer");
+            resolve();
+          };
+          if (link.sheet) {
+            apply();
+            return;
+          }
+          link.addEventListener("load", apply, { once: true });
+          link.addEventListener("error", () => resolve(), { once: true });
+          window.setTimeout(resolve, timeoutMs);
+        }),
+    ),
+  ).then(() => undefined);
+}
+
 async function mount() {
   const started = performance.now();
   markStartup("startup:js-start");
@@ -350,6 +374,10 @@ async function mount() {
     reportFatalError("#root missing", "root-missing");
     return;
   }
+
+  /* CSS الحزمة المؤجَّل (media=print حتى DOMContentLoaded+2rAF) يُطبَّق قبل أول commit لـ React:
+     على CPU بطيء كان React يرسم الرئيسية بلا تخطيطها ثم تقفز (CLS ≈0.17–0.20 في LHCI). */
+  await applyDeferredEntryCss();
 
   try {
     createRoot(rootEl).render(
