@@ -28,10 +28,10 @@
   gap: 0.55rem;
   min-height: 4.75rem;
   padding: 0.7rem 0.75rem;
-  border-radius: 14px;
-  background: var(--mj-white);
-  border: 1px solid color-mix(in srgb, var(--sf-color-deep-emerald) 12%, #e8ebe9);
-  box-shadow: 0 1px 2px color-mix(in srgb, var(--sf-color-rich-ink) 5%, transparent);
+  border-radius: var(--sf-radius-sm, 16px);
+  background: var(--mj-surface);
+  border: 0;
+  box-shadow: var(--sf-shadow-card);
   text-decoration: none;
   color: inherit;
   touch-action: manipulation;

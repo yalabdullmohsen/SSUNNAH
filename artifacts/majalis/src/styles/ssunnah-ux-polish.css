@@ -1081,7 +1081,8 @@ html.dark .search-page .search-page-form {
 .search-empty-state,
 .kids-hub-intro {
   border-radius: var(--radius-card, var(--sf-radius-md, 20px));
-  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 16%, var(--mj-hairline));
+  /* سطح أبيض + ظل ناعم يكفيان للتمايز — الإطار الملوّن أُزيل (هوية iOS) */
+  border: 0;
   background: var(--sf-surface-raised, var(--mj-surface, var(--mj-white)));
   box-shadow: var(--sf-shadow-card, none);
   box-sizing: border-box;

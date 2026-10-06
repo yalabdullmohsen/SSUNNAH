@@ -1,10 +1,10 @@
 .hcl {
   margin: 0.25rem 0 0.75rem;
   padding: 0.85rem 0.9rem;
-  border-radius: var(--radius-lg, 1rem);
-  background: var(--mj-white);
-  border: 1px solid color-mix(in srgb, var(--sf-color-deep-emerald) 12%, #e8ebe9);
-  box-shadow: 0 1px 3px color-mix(in srgb, var(--sf-color-rich-ink) 5%, transparent);
+  border-radius: var(--sf-radius-md, 20px);
+  background: var(--mj-surface);
+  border: 0;
+  box-shadow: var(--sf-shadow-card);
 }
 
 .hcl__head {

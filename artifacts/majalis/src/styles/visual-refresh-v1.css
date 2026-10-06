@@ -137,7 +137,7 @@
 
 [data-quran-hub="1"] .card__subtitle {
   color: var(--svl-text-secondary, #2f4038);
-  font-weight: 550;
+  font-weight: 400;
 }
 
 .quran-open-mushaf {

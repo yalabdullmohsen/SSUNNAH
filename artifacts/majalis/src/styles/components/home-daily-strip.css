@@ -10,8 +10,8 @@
 
 .hds__title {
   margin: 0;
-  font-size: 1.05rem;
-  font-weight: 800;
+  font-size: var(--sf-type-section-title, 1.375rem);
+  font-weight: 700;
   color: var(--sf-color-rich-ink);
   letter-spacing: 0;
 }
@@ -25,27 +25,41 @@
   gap: 0.5rem;
 }
 
+/* بطاقات متساوية الارتفاع في الصف: الخلية flex والبطاقة تملؤها */
+.hds__grid > li {
+  display: flex;
+  min-width: 0;
+}
+
 .hds__card {
+  flex: 1 1 auto;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  min-height: 6.5rem;
-  padding: 0.7rem 0.75rem;
-  border-radius: 14px;
-  background: var(--mj-white);
-  border: 1px solid color-mix(in srgb, var(--sf-color-deep-emerald) 14%, #e8ebe9);
-  box-shadow: 0 1px 2px color-mix(in srgb, var(--sf-color-rich-ink) 6%, transparent);
+  gap: 0.35rem;
+  min-height: 8.5rem;
+  padding: var(--sf-space-3, 12px);
+  border-radius: var(--sf-radius-sm, 16px);
+  background: var(--mj-surface);
+  border: 0;
+  box-shadow: var(--sf-shadow-card);
   text-decoration: none;
   color: inherit;
   touch-action: manipulation;
 }
 
 .hds__card:active {
-  transform: scale(0.985);
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hds__card:active {
+    transform: none;
+  }
 }
 
 .hds__kicker {
-  font-size: 0.72rem;
+  font-size: var(--sf-type-metadata, 0.8125rem);
   font-weight: 700;
   color: var(--sf-color-deep-emerald);
 }
@@ -60,16 +74,24 @@
   overflow: hidden;
 }
 
+/* النص الشرعي (آية/حديث/ذكر) بالنسخ وبحجم مريح؛ الفائدة تبقى بخط الواجهة */
+.hds__card:not([data-kind="faida"]) .hds__text {
+  font-family: var(--sf-font-scripture);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+/* المرجع تحت النص بلون ثانوي */
 .hds__meta {
   margin-top: auto;
-  font-size: 0.72rem;
-  color: #5f7168;
-  line-height: 1.3;
+  font-size: var(--sf-type-metadata, 0.8125rem);
+  color: var(--mj-ink-2);
+  line-height: 1.35;
 }
 
 /* حجز ارتفاع أثناء الهيكل */
 .home-daily-strip--ph {
-  min-height: 15rem;
-  border-radius: 14px;
-  background: color-mix(in srgb, var(--sf-color-deep-emerald) 4%, #f8f6f1);
+  min-height: 25.75rem; /* = الارتفاع المقيس للشريط (عنوان + صفّان بنص نسخي) */
+  border-radius: var(--sf-radius-sm, 16px);
+  background: color-mix(in srgb, var(--sf-color-deep-emerald) 4%, var(--mj-bg));
 }
