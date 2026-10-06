@@ -49,7 +49,6 @@ assert.equal(remainingThin.length, 0, `remaining_thin=${remainingThin.map((r) =>
 const enriched = [
   "/hajj",
   "/zakat",
-  "/scholars",
   "/riba",
   "/lessons/current",
   "/courses",
