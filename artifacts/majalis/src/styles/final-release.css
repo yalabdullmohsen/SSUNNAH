@@ -437,9 +437,9 @@ html.dark .nav-soon-badge {
   padding: 0;
 }
 .navbar-menu-btn--drawer {
-  background: var(--mj-surface-2, var(--color-surface-muted)) !important;
-  color: var(--mj-ink, var(--color-text)) !important;
-  border-color: var(--mj-hairline, var(--color-border)) !important;
+  background: color-mix(in srgb, var(--mj-brand) 8%, transparent) !important;
+  color: var(--mj-brand) !important;
+  border-color: transparent !important;
 }
 html[data-theme="dark"] .navbar-menu-btn,
 html.dark .navbar-menu-btn,
@@ -449,9 +449,9 @@ html[data-theme="dark"] .navbar-mobile-login,
 html.dark .navbar-mobile-login,
 html[data-theme="dark"] .navbar-menu-btn--drawer,
 html.dark .navbar-menu-btn--drawer {
-  background: var(--mj-surface-2) !important;
-  color: var(--mj-ink) !important;
-  border-color: var(--mj-hairline) !important;
+  background: color-mix(in srgb, var(--mj-brand) 16%, transparent) !important;
+  color: var(--mj-brand-deep) !important;
+  border-color: transparent !important;
 }
 .navbar-menu-btn:active,
 .navbar-theme-toggle:active,
@@ -567,9 +567,9 @@ html.dark .navbar-menu-btn--drawer {
   margin-block: clamp(1.25rem, 3vw, 2.5rem);
   padding: clamp(1rem, 2.5vw, 1.75rem);
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-soft);
+  border: 0;
+  border-radius: var(--sf-radius-md, 20px);
+  box-shadow: var(--sf-shadow-card);
 }
 .hsh-steps { gap: .75rem; }
 .hsh-step { min-height: 0; border-radius: var(--radius-md); border-color: var(--color-border); box-shadow: none; }

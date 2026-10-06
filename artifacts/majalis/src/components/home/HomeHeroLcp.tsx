@@ -5,6 +5,7 @@
  */
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
+import { BookOpen } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
 import { resolveDailyContext } from "@/lib/daily-context";
 import { hasSeenFirstVisitIntroSync } from "@/lib/first-visit-intro-state";
@@ -217,10 +218,12 @@ export function HomeHeroLcp() {
           {pending ? (
             <>
               <span role="listitem" className="hw3-meta__ph" aria-busy="true">
-                الورد —/{totalTasksAr}
+                <span className="hw3-stat__n">—/{totalTasksAr}</span>
+                <span className="hw3-stat__l">الورد</span>
               </span>
               <span role="listitem" className="hw3-meta__ph" aria-busy="true">
-                تقدم —٪
+                <span className="hw3-stat__n">—٪</span>
+                <span className="hw3-stat__l">التقدّم</span>
               </span>
             </>
           ) : (
@@ -230,14 +233,18 @@ export function HomeHeroLcp() {
                 role="listitem"
                 aria-label={`الورد اليومي · ${toArabicDigits(snap.doneCount)} من ${totalTasksAr}`}
               >
-                الورد {toArabicDigits(snap.doneCount)}/{totalTasksAr}
+                <span className="hw3-stat__n">
+                  {toArabicDigits(snap.doneCount)}/{totalTasksAr}
+                </span>
+                <span className="hw3-stat__l">الورد</span>
               </Link>
               <Link
                 href="/daily-wird"
                 role="listitem"
                 aria-label={`تقدمك اليومي ${toArabicDigits(snap.progressPct)}٪`}
               >
-                تقدم {toArabicDigits(snap.progressPct)}٪
+                <span className="hw3-stat__n">{toArabicDigits(snap.progressPct)}٪</span>
+                <span className="hw3-stat__l">التقدّم</span>
               </Link>
             </>
           )}
@@ -247,7 +254,8 @@ export function HomeHeroLcp() {
               role="listitem"
               aria-label={`آخر قراءة: صفحة ${toArabicDigits(snap.mushafPage)}`}
             >
-              مصحف ص {toArabicDigits(snap.mushafPage)}
+              <span className="hw3-stat__n">ص {toArabicDigits(snap.mushafPage)}</span>
+              <span className="hw3-stat__l">المصحف</span>
             </Link>
           ) : (
             <Link
@@ -257,7 +265,8 @@ export function HomeHeroLcp() {
               aria-busy={pending || undefined}
               aria-label="المصحف"
             >
-              المصحف
+              <BookOpen className="hw3-stat__n" size={18} strokeWidth={2} aria-hidden="true" />
+              <span className="hw3-stat__l">المصحف</span>
             </Link>
           )}
         </div>

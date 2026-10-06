@@ -16,7 +16,7 @@ const hero = readPkg("src/components/home/HomeHeroLcp.tsx");
 assert.match(hero, /mj:boot-ready|mj:feature-tour-storage-ready/);
 assert.match(hero, /invalidateLastPageMemCache/);
 assert.match(hero, /heroStorageLooksReady|getBootFlags/);
-assert.match(hero, /تقدم —٪|الورد —\//);
+assert.match(hero, /—٪|—\/\{totalTasksAr\}/); // عنصر نائب «—» لا «٠» قبل الاستعادة
 assert.match(hero, /hw3-primary/);
 assert.match(hero, /hw3-meta__ph|aria-busy/);
 assert.doesNotMatch(

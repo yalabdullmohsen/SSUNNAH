@@ -21,9 +21,10 @@
   --cs-text-primary: var(--sf-color-rich-ink);
   --cs-text-secondary: var(--sf-color-rich-ink-soft);
   --cs-text-muted: var(--sf-color-rich-ink-muted);
-  --cs-border: var(--sf-hairline, color-mix(in srgb, var(--mj-brand) 12%, transparent));
+  /* هوية iOS: البطاقة تتمايز بسطحها الأبيض فوق البيج + ظل ناعم (--sf-shadow-card) — لا إطار رمادي */
+  --cs-border: transparent;
   --cs-border-strong: color-mix(in srgb, var(--cs-primary) 28%, var(--mj-hairline));
-  --cs-shadow: 0 1px 2px color-mix(in srgb, var(--cs-primary-deep) 8%, transparent);
+  --cs-shadow: var(--sf-shadow-card);
   --cs-focus-ring: var(--sf-focus-ring);
 
   /* هيرو فقط — زمرد داكن · نص عاجي (لا يُستخدم على بطاقات الأقسام) */
@@ -112,9 +113,10 @@ html[data-theme="dark"] {
   --cs-text-primary: var(--sf-color-luxury-night-ink);
   --cs-text-secondary: var(--mj-ink-2);
   --cs-text-muted: var(--mj-muted);
+  /* ليلًا: حافة خفيفة جدًا تبقى لأن الظل لا يُرى على الداكن */
   --cs-border: var(--sf-hairline);
   --cs-border-strong: color-mix(in srgb, var(--cs-primary) 40%, var(--mj-hairline));
-  --cs-shadow: var(--sf-shadow-soft, none);
+  --cs-shadow: var(--sf-shadow-card);
   /* الهوية الداكنة تبقى زمردية عميقة فوق سطح التطبيق الليلي */
   --cs-ink-hero: var(--sf-color-luxury-night);
   --cs-ink-topic: var(--mj-brand-deep);

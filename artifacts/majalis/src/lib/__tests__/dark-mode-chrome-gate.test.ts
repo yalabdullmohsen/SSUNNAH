@@ -88,7 +88,8 @@ assert.doesNotMatch(
 );
 assert.match(
   finalCss,
-  /html\[data-theme="dark"\]\s+\.navbar-menu-btn--drawer[\s\S]*?background:\s*var\(--mj-surface-2/,
+  /* أزرار الهيدر ليلًا: غسلة هوية ناعمة (لا أبيض ولا إطار رمادي) */
+  /html\[data-theme="dark"\]\s+\.navbar-menu-btn--drawer[\s\S]*?background:\s*color-mix\(in srgb, var\(--mj-brand\) 16%/,
 );
 
 const adCss = readFileSync(resolve(root, "src/styles/components/header-ad-slot.css"), "utf8");

@@ -26,9 +26,9 @@
   .ds-chip:active,
   .ds-filter-toggle:active,
   .app-sheet__close:active {
-    /* بلا scale كبير — ظل/شفافية/انزياح خفيف فقط */
-    transform: translateY(1px);
-    opacity: 0.9;
+    /* ضغط iOS خفيف موحّد: تصغير ٠٫٩٧ (يُلغى مع الحركة المخفّضة أدناه) */
+    transform: scale(0.97);
+    opacity: 0.94;
     transition:
       transform 120ms cubic-bezier(0.22, 1.2, 0.36, 1),
       opacity 100ms ease,

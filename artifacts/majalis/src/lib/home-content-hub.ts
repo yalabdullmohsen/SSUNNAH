@@ -2,7 +2,6 @@
  * محور المحتوى البارز في الرئيسية — أعلى قيمة سردية.
  */
 import type { LucideIcon } from "lucide-react";
-import { BookOpen, Landmark, Users } from "lucide-react";
 import { getSectionByRoute } from "@/config/sections.registry";
 
 /** الاسم المعتمد من سجل الأقسام — يطابق القوائم وصفحة الأقسام. */
@@ -10,6 +9,13 @@ function sectionTitle(route: string): string {
   const s = getSectionByRoute(route);
   if (!s) throw new Error(`home-content-hub: مسار غير مسجّل ${route}`);
   return s.label;
+}
+
+/** أيقونة القسم من السجل نفسه — لا أيقونة «كتاب» عامة لكل الأنواع. */
+function sectionIcon(route: string): LucideIcon {
+  const s = getSectionByRoute(route);
+  if (!s) throw new Error(`home-content-hub: مسار غير مسجّل ${route}`);
+  return s.icon;
 }
 
 export type ContentHubCard = {
@@ -24,21 +30,21 @@ export type ContentHubCard = {
 export const HOME_CONTENT_HUB: ContentHubCard[] = [
   {
     href: "/prophets",
-    Icon: BookOpen,
+    Icon: sectionIcon("/prophets"),
     title: sectionTitle("/prophets"),
     subtitle: "من آدم إلى محمد ﷺ — قصص وعِبَر من القرآن",
     preload: () => import("@/views/ProphetStoriesPage"),
   },
   {
     href: "/quran/people",
-    Icon: Users,
+    Icon: sectionIcon("/quran/people"),
     title: sectionTitle("/quran/people"),
     subtitle: "أسماء صريحة في القرآن مع مواضع الآيات والعِبَر",
     preload: () => import("@/pages/quran/QuranPeoplePage"),
   },
   {
     href: "/nations",
-    Icon: Landmark,
+    Icon: sectionIcon("/nations"),
     title: sectionTitle("/nations"),
     subtitle: "أقوام ذُكروا في القرآن: دعوتهم وعاقبتهم والعِبَر",
     preload: () => import("@/views/NationsPage"),

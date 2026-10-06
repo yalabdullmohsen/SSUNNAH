@@ -61,7 +61,7 @@ export function HomeDailyStrip() {
       <ul className="hds__grid">
         {cards.map((c) => (
           <li key={c.id}>
-            <Link href={c.href} className="hds__card">
+            <Link href={c.href} className="hds__card" data-kind={c.id}>
               <span className="hds__kicker">{c.kicker}</span>
               <span className="hds__text">{c.text}</span>
               {c.meta ? <span className="hds__meta">{c.meta}</span> : null}

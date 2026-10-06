@@ -438,10 +438,11 @@ html.dark,
   justify-content: center !important;
   flex-shrink: 0 !important;
   box-sizing: border-box !important;
-  border-radius: var(--mj-r-sm) !important;
-  border: 1px solid var(--mj-hairline) !important;
-  background: var(--mj-surface-2) !important;
-  color: var(--mj-ink-2) !important;
+  /* أزرار أيقونة iOS: دائرة ٤٤ بغسلة خضراء ناعمة — بلا إطار رمادي ثقيل */
+  border-radius: var(--sf-radius-pill, 999px) !important;
+  border: 0 !important;
+  background: color-mix(in srgb, var(--mj-brand) 8%, transparent) !important;
+  color: var(--mj-brand) !important;
   box-shadow: none !important;
   text-decoration: none !important;
 }
@@ -473,12 +474,12 @@ html.dark,
 .navbar-v3 .navbar-theme-toggle:active,
 .navbar-v3 .navbar-mobile-login:active,
 .navbar-v3 .navbar-mobile-login--active:active {
-  background: var(--mj-hairline) !important;
-  transform: scale(0.96);
+  background: color-mix(in srgb, var(--mj-brand) 16%, transparent) !important;
+  transform: scale(0.97);
 }
 .navbar-v3 .navbar-mobile-login--active {
-  background: var(--mj-brand-soft) !important;
-  border-color: color-mix(in srgb, var(--mj-brand) 28%, var(--mj-hairline)) !important;
+  background: color-mix(in srgb, var(--mj-brand) 14%, transparent) !important;
+  border-color: transparent !important;
   color: var(--mj-brand) !important;
 }
 .navbar-v3 .navbar-menu-btn__geo {

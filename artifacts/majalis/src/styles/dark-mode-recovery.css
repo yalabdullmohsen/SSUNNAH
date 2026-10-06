@@ -352,8 +352,9 @@ html.dark .hrr__chip,
 html.dark .hrc__chip,
 html.dark .home-start-here--slim {
   background: var(--dm-surface-elevated) !important;
-  border-color: var(--dm-border-subtle) !important;
-  box-shadow: none !important;
+  /* تمايز بالسطح + ظل ناعم بدل الإطار الرمادي */
+  border-color: transparent !important;
+  box-shadow: var(--sf-shadow-card) !important;
   color: var(--dm-text-primary) !important;
 }
 
@@ -683,9 +684,9 @@ html.dark .home-progress-compact__meta {
 /* ═══ تخطيط بطاقة الزائر — صفوف بلا تداخل ═══ */
 .home-start-here--slim {
   padding: 0.85rem 1rem;
-  border-radius: 14px;
-  background: var(--mj-white);
-  border: 1px solid color-mix(in srgb, var(--sf-color-deep-emerald) 12%, #e8ebe9);
+  border-radius: var(--sf-radius-md, 20px);
+  background: var(--mj-surface);
+  border: 0;
 }
 .home-start-here--slim .hsh-lead {
   margin: 0.25rem 0 0;

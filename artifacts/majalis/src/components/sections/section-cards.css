@@ -85,7 +85,7 @@
 .card__subtitle {
   width: 100%;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.35;
   color: var(--on-surface-muted, var(--mj-ink-2));
   overflow: hidden;

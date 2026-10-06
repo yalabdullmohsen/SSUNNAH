@@ -38,9 +38,9 @@
   max-width: 12rem;
   scroll-snap-align: start;
   padding: 0.6rem 0.75rem;
-  border-radius: 14px;
-  background: var(--mj-white);
-  border: 1px solid color-mix(in srgb, var(--sf-color-deep-emerald) 12%, #e8ebe9);
+  border-radius: var(--sf-radius-xs, 12px);
+  background: var(--mj-surface);
+  border: 0;
   text-decoration: none;
   color: inherit;
   display: flex;
