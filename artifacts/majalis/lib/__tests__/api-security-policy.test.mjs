@@ -59,6 +59,10 @@ assert.match(envCfg, /لا fallback إلى CRON_SECRET/);
 assert.equal(isAllowedOrigin("https://evil.example"), false);
 assert.equal(isAllowedOrigin("https://ssunnah.app"), true);
 assert.equal(isAllowedOrigin("capacitor://localhost"), true);
+// الدومين الإنتاجي: غيابه ردّ كل طلبات الكتابة من المتصفح بـ403 منذ الانتقال إلى ssunnah.com
+assert.equal(isAllowedOrigin("https://www.ssunnah.com"), true);
+assert.equal(isAllowedOrigin("https://ssunnah.com"), true);
+assert.equal(isAllowedOrigin("https://ssunnah.com.evil.example"), false);
 
 // 7) cost overrides مرفوضة
 const stripped = stripClientCostOverrides({
