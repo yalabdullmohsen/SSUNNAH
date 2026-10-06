@@ -3,12 +3,13 @@
 | Field | Value |
 |-------|-------|
 | Tip | `0c4e808f` MATCH |
-| Updated | 2026-10-02 |
+| Updated | 2026-10-06 |
 | Rule | Agent classifies only · Owner decides GRANT / STRIP / STREAM_ONLY |
 
 | Asset class | Current repo posture | Classification | Owner options | Blocks |
 |-------------|---------------------|----------------|---------------|--------|
-| QPC / QUL fonts | Used on web Mushaf · store redistribute unclear | `GRANT_REQUIRED` or `STRIP_REQUIRED` | Written KFGQPC/QUL grant **or** permanent strip from Store flavor | STORE HOLD · native Mushaf fonts |
+| QPC / QUL fonts | Used on web Mushaf | `LICENSED_CONDITIONAL` (owner decision 2026-10-06) | Licensed via Quran Foundation developer terms («may cache or bundle font files… if the Developer maintains an active account») — conditions: keep the QF developer account active + visible attribution to Quran Foundation (on /sources). If the account lapses → `GRANT_REQUIRED` again | none while conditions hold |
+| Quran Foundation content (recitation audio + ayah timings) | Server-side proxy `/api/qf-chapter-audio` (keys in Vercel env only) | `LICENSED_CONDITIONAL` | QF terms: attribution on /sources · no caching of QF content > 1 week except via QF Content Sync (proxy cache = 1 day; offline downloads stay on mp3quran) | — |
 | Hisn Muslim edition | Corpus present / rights uncertain | `GRANT_REQUIRED` or replace | Permission letter **or** replace edition **or** feature-flag off | STORE HOLD |
 | Quran recitations audio | Policy STREAM_ONLY · kill switch | `STREAM_ONLY` | Keep stream forever **or** signed offline ToS | Offline pack · Watch corpus |
 | Adhan Istanbul CC0 | `CC0_ADHAN_REJECTED_QUALITY` | `OWNER_DECISION` | Keep rejected · find other CC0 · system sound | AUDIO_CERTIFIED |
