@@ -676,6 +676,17 @@ function ChromeNavFallback({ homeChrome }: { homeChrome: boolean }) {
   );
 }
 
+/** حجز شريط الأقسام العلوي (مكتب) بنفس الهندسة حتى وصول الحزمة الكسولة — كان يُدرَج فوق المحتوى فيزيحه. */
+function TopSectionBarFallback() {
+  return (
+    <nav className="top-section-bar top-section-bar--ph mj-chrome-stable" aria-hidden="true">
+      <div className="top-section-bar__scroll">
+        <span className="top-section-bar__tab">&nbsp;</span>
+      </div>
+    </nav>
+  );
+}
+
 /** شريط سفلي بنفس التبويبات والحالة النشطة من المسار — بلا وميض active بعد hydrate. */
 function ChromeBottomFallback() {
   const [location] = useLocation();
@@ -1239,7 +1250,7 @@ function AppShellInner() {
           </Suspense>
         </div>
       ) : null}
-      <Suspense fallback={null}>
+      <Suspense fallback={immersive || onAuthStandalone ? null : <TopSectionBarFallback />}>
         <TopSectionBar />
       </Suspense>
       {/* شريط العدّ التنازلي العام يُخفى في مسارات المواقيت والمصحف والدخول */}

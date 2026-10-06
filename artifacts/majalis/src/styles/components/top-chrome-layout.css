@@ -62,12 +62,60 @@
   }
 }
 
+/* حجز شريط الأقسام لا يظهر على الجوال (الشريط نفسه مخفي ≤879px) */
+@media (max-width: 879px) {
+  .top-section-bar--ph {
+    display: none;
+  }
+}
+
 /* المكتب (≥880px): نفس القواعد التي تأتي /lessons من index-deferred-pages.css — الرئيسية لا تحمّل
    ذلك الملف أبدًا، فكانت الأطراف والتبويبات block: روابط ملتصقة وهيدر بارتفاع ≈300px. */
 @media (min-width: 880px) {
   /* 3.25rem كما يفوز على /lessons (HubCard آخرًا)؛ على الرئيسية كان final-release آخرًا ⇒ 56px */
   .navbar-v3 .navbar-v3__inner {
     min-height: 3.25rem;
+    /* عرض حاوية المكتب (72rem كما في index-deferred-pages) لا --page-width (42rem = عرض القراءة):
+       بـ672px لا يتسع عمود التبويبات (≈386px) بجانب الأطراف فتتراكب «القائمة» على التبويبات. */
+    width: min(100%, 72rem);
+    /* التبويبات بعرض محتواها، والطرف (تيكّر/صلاة/دخول) يأخذ الباقي وينكمش هو — لا التبويبات */
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: 10px;
+    margin-inline: auto;
+  }
+  .navbar-v3 .navbar-v3__end {
+    min-width: 0;
+    justify-content: flex-end;
+  }
+  .navbar-v3 .navbar-v3__tabs {
+    flex-wrap: nowrap;
+  }
+  /* شريط الأقسام: الهندسة النهائية (final-release + m2030/navigation) متزامنة — كان 56→44→68px
+     أثناء وصول الطبقات المؤجّلة فيقفز المحتوى تحته (CLS ≈0.2 على المكتب). */
+  .top-section-bar {
+    padding-block: 0.35rem;
+    box-sizing: border-box;
+  }
+  .top-section-bar__scroll {
+    display: flex;
+    gap: 0.4rem;
+    overflow-x: auto;
+    padding-block: 0.4rem;
+    width: 100%;
+    /* بديل = القيمة النهائية لـ--page-width على المكتب (رمزه يصل مؤجَّلًا) */
+    max-width: min(100%, var(--page-width, 42rem));
+    margin-inline: auto;
+    box-sizing: border-box;
+  }
+  .top-section-bar .top-section-bar__tab {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    line-height: 1;
+    white-space: nowrap;
+    box-sizing: border-box;
   }
   .navbar-v3__start,
   .navbar-v3__end {
