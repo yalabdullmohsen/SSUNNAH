@@ -144,8 +144,6 @@
   --color-primary-soft: var(--mj-brand-soft);
   --color-border: var(--mj-hairline);
 
-  /* خطوط — --font-app للنصوص؛ --font-quran للمصحف فقط */
-  --font-face: var(--font-app);
 
   /* أنصاف وظلال */
   --r-sm: var(--mj-r-sm);

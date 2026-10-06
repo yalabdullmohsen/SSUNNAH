@@ -59,13 +59,6 @@
   /* عاجي على الزمرد الداكن — تباين AA */
   --sf-color-on-emerald: #f7f1e4;
 
-  /* ── Typography families ──
-   * الواجهة = خط النظام العربي (--font-app، بلا تنزيل) · النص الشرعي = نسخ (--font-reading) */
-  --sf-font-display: var(--font-app, -apple-system, system-ui, sans-serif);
-  --sf-font-ui: var(--font-app, -apple-system, system-ui, sans-serif);
-  --sf-font-scripture: var(--font-reading, "Amiri", "Traditional Arabic", serif);
-  /* زخرفي للشعار/لحظات عرض فقط — ممنوع في تشغيل UI · ليس لـ font-family عام */
-  --sf-font-ornament: "Aref Ruqaa", "Scheherazade New", var(--font-app);
 
   /* ── Typography scale (واحد — سلم iOS: 34/28/22/17/15/13) ──
    * rem لا px: يتبع Dynamic Type عبر --ui-font-scale على html. */

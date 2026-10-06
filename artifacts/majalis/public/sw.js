@@ -58,6 +58,19 @@ const STATIC_SHELL_ASSETS = [
   "/icon-512.png",
   "/brand/icon-512-maskable.png",
   "/star-pattern.svg",
+  // خطوط الواجهة والنصوص — لتعمل دون اتصال من أول زيارة (خط الآيات يُخزَّن عند أول استعمال عبر SWR)
+  "/fonts/sunnah/plex-sans-arabic-400-ar.woff2",
+  "/fonts/sunnah/plex-sans-arabic-400-lat.woff2",
+  "/fonts/sunnah/plex-sans-arabic-500-ar.woff2",
+  "/fonts/sunnah/plex-sans-arabic-500-lat.woff2",
+  "/fonts/sunnah/plex-sans-arabic-600-ar.woff2",
+  "/fonts/sunnah/plex-sans-arabic-600-lat.woff2",
+  "/fonts/sunnah/plex-sans-arabic-700-ar.woff2",
+  "/fonts/sunnah/plex-sans-arabic-700-lat.woff2",
+  "/fonts/sunnah/amiri-400-ar.woff2",
+  "/fonts/sunnah/amiri-400-lat.woff2",
+  "/fonts/sunnah/amiri-700-ar.woff2",
+  "/fonts/sunnah/amiri-700-lat.woff2",
 ];
 
 /** عنوان الإشعار بلا اسم التطبيق — النظام يعرض الهوية في الرأس. */

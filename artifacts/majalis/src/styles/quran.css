@@ -5,9 +5,7 @@
    ============================================================ */
 @import "./fonts-quran.css";
 
-/* @font-face الفعلي في src/index.css (يُحمَّل عالميًا في كل صفحات
-   التطبيق، لا هنا فقط — "Amiri Quran" تستخدمه ملفات أخرى غير مرتبطة
-   بمسارات المصحف مثل elite-2026.css/majalis-v2.css). */
+/* "Sunnah Quran" مُعرَّف في src/styles/font-system.css (يُحقن inline في index.html). */
 
 /* ── Layout shell ── */
 .quran-shell {
@@ -224,7 +222,7 @@
 .surah-flat-item__text {
   flex: 1;
   min-width: 0;
-  font-family: var(--font-quran, "Amiri Quran", serif);
+  font-family: var(--font-quran);
   line-height: 1.5;
 }
 .surah-flat-list__empty {
@@ -259,7 +257,7 @@
   margin-bottom: .5rem;
 }
 .qs-bismillah {
-  font-family: "Amiri Quran", "Scheherazade New", serif;
+  font-family: var(--font-quran);
   font-size: var(--qs-font-size, 26px);
   direction: rtl;
   text-align: center;
@@ -268,7 +266,7 @@
   line-height: 2;
 }
 .qs-surah-header__title {
-  font-family: "Amiri Quran", "Scheherazade New", serif;
+  font-family: var(--font-quran);
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   font-weight: 700;
   direction: rtl;
@@ -286,7 +284,7 @@
    المسافات المفرط الذي ظهر سابقًا مع letter-spacing اليدوي. مسار QPC
    (--ayah / QPC) يعتمد حجم خط موحّد ونصًا متصلًا؛ التبرير هنا لمسار Unicode/القارئ القديم. */
 .qs-mushaf-body {
-  font-family: "Amiri Quran", "Scheherazade New", serif;
+  font-family: var(--font-quran);
   font-size: var(--qs-font-size, 26px);
   line-height: 2.5;
   text-align: justify;
@@ -341,7 +339,7 @@
 /* Ornamental ayah number (legacy class — kept for backward compat) */
 .qs-ayah-inline__num {
   display: inline;
-  font-family: "Amiri Quran", "Scheherazade New", serif;
+  font-family: var(--font-quran);
   font-size: .72em;
   color: var(--majalis-gold, var(--mj-brand-deep));
   margin: 0 .15em;
@@ -634,7 +632,7 @@
   font-weight: 700;
 }
 .qs-search__result-text {
-  font-family: "Amiri Quran", "Scheherazade New", serif;
+  font-family: var(--font-quran);
   font-size: var(--ds-text-base);
   line-height: 1.8;
   direction: rtl;
@@ -1296,7 +1294,7 @@
 .qs-verse-card__text {
   font-size: 2rem;
   line-height: 2.2;
-  font-family: var(--font-quran, 'Amiri Quran', 'Scheherazade New', serif);
+  font-family: var(--font-quran);
   color: var(--text-base, #1a1a1a);
   margin: 0;
   direction: rtl;
@@ -1318,7 +1316,7 @@
 .qs-verse-tafsir__sources { display: flex; gap: .3rem; }
 .qs-verse-tafsir__body {
   margin: 0;
-  font-family: var(--font-tafsir, "Amiri", "Noto Naskh Arabic", "Traditional Arabic", serif);
+  font-family: var(--font-text);
   font-size: .95rem;
   line-height: 1.9;
   color: var(--text-base, #1a1a1a);
@@ -1384,7 +1382,7 @@
   font-size: .65rem; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
 }
-.qs-juz-ayah__text { margin: 0; line-height: 2.1; font-family: var(--font-quran, 'Amiri Quran', serif); color: var(--text-base, #1a1a1a); }
+.qs-juz-ayah__text { margin: 0; line-height: 2.1; font-family: var(--font-quran); color: var(--text-base, #1a1a1a); }
 
 /* ── Dark mode overrides ── */
 
@@ -1530,7 +1528,7 @@
   font-weight: 600;
   color: var(--mf-ink, #1A1610);
   direction: rtl;
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   border-bottom: 1px solid var(--mf-gold-faint, rgba(31,77,58,0.15));
   user-select: none;
   background: color-mix(in srgb, var(--qs-parchment, #F8F2E4) 88%, #ffffff);
@@ -1569,7 +1567,7 @@
   user-select: none;
 }
 .qs-surah-name-box__title {
-  font-family: "Amiri Quran", "Scheherazade New", serif;
+  font-family: var(--font-quran);
   font-size: var(--ds-text-base);
   font-weight: 700;
   color: var(--mf-ink, #1A1610);
@@ -1651,7 +1649,7 @@
   margin: 0 0.08em;
   user-select: none;
   -webkit-user-select: none;
-  font-family: "Amiri", "Noto Naskh Arabic", var(--font-body);
+  font-family: var(--font-ui);
   line-height: 1;
 }
 .qs-ayah-num::before,
@@ -1678,7 +1676,7 @@
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--mf-ink, #1A1610);
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-variant-numeric: tabular-nums;
 }
 
@@ -1795,7 +1793,7 @@
   color: var(--majalis-emerald, var(--mj-brand-deep));
   font-size: .88rem;
   font-weight: 700;
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   cursor: pointer;
 }
 .qs-recitation-cta:hover { background: rgba(23,61,53, .12); }
@@ -2301,7 +2299,7 @@ html[data-theme="dark"] .quran-shell--ayah:not(.quran-shell--warm):not(.quran-sh
     max(1.5vw, var(--inset-left));
   font-size: var(--mushaf-fs-header-meta, calc(0.42 * var(--mushaf-S, 34.135px)));
   font-weight: 600;
-  font-family: "Amiri", "Noto Naskh Arabic", var(--font-body, sans-serif);
+  font-family: var(--font-ui);
   color: var(--color-mushaf-meta, #8F6A35);
   letter-spacing: 0;
   /* شريط علوي ظاهر بطابع المدينة دون إزاحة الكتلة */
@@ -2705,7 +2703,7 @@ html[data-theme="dark"] .quran-shell--ayah:not(.quran-shell--warm):not(.quran-sh
   direction: rtl;
   pointer-events: none;
   color: color-mix(in srgb, var(--color-mushaf-gold, #B08D57) 78%, #c4a574);
-  font-family: "Amiri", "Noto Naskh Arabic", var(--font-body, sans-serif);
+  font-family: var(--font-ui);
   font-size: var(--mushaf-fs-footer-hizb, calc(0.40 * var(--mushaf-S, 34.135px)));
   font-weight: 400;
   letter-spacing: 0;
@@ -2762,7 +2760,7 @@ html[data-theme="dark"] .quran-shell--ayah:not(.quran-shell--warm):not(.quran-sh
   border-radius: 0;
   background: transparent;
   color: var(--color-mushaf-numeral, #6B4E2A);
-  font-family: "Amiri", "Noto Naskh Arabic", var(--font-display, serif);
+  font-family: var(--font-ui);
   font-size: var(--mushaf-fs-page-numeral, calc(0.46 * var(--mushaf-S, 24.382px)));
   font-weight: 400;
   line-height: 1;
@@ -2796,7 +2794,7 @@ html[data-theme="dark"] .quran-shell--ayah:not(.quran-shell--warm):not(.quran-sh
   z-index: 1;
   font-variant-numeric: normal;
   font-feature-settings: "tnum" 0, "lnum" 0;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   color: var(--color-mushaf-numeral, #6B4E2A);
   unicode-bidi: isolate;
   direction: ltr;
@@ -3164,7 +3162,7 @@ html[data-theme="dark"] .quran-shell--ayah:not(.quran-shell--warm):not(.quran-sh
 }
 .aas-panel__handle { width: 36px; height: 4px; border-radius: var(--ds-radius-full); background: var(--border, var(--mj-hairline)); margin: .5rem auto .75rem; }
 .aas-panel__ref { text-align: center; font-size: .78rem; color: var(--text-muted, var(--mj-muted)); margin-bottom: .5rem; }
-.aas-panel__text { font-family: "Amiri Quran", "Scheherazade New", serif; font-size: 1.3rem; text-align: center; padding: 0 1.2rem 1rem; line-height: 2; color: var(--text-base, #1a1a1a); }
+.aas-panel__text { font-family: var(--font-quran); font-size: 1.3rem; text-align: center; padding: 0 1.2rem 1rem; line-height: 2; color: var(--text-base, #1a1a1a); }
 .aas-panel__note { margin: 0 1rem 1rem; }
 .aas-panel__note textarea {
   width: 100%;
@@ -3382,7 +3380,7 @@ html[data-theme="dark"] .quran-shell--ayah:not(.quran-shell--warm):not(.quran-sh
   margin-bottom: 0.3rem;
 }
 .mutash-ayah {
-  font-family: "Amiri Quran", "Scheherazade New", serif;
+  font-family: var(--font-quran);
   font-size: var(--ss-type-scripture);
   line-height: 2.2;
   direction: rtl;

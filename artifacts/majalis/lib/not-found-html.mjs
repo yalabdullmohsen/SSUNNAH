@@ -21,11 +21,13 @@ export function buildNotFoundHtml(options = {}) {
   <meta name="robots" content="noindex, follow" />
   <link rel="icon" href="/favicon.png" />
   <style>
+    @font-face { font-family: "Sunnah UI"; font-weight: 400; font-display: swap; src: url("/fonts/sunnah/plex-sans-arabic-400-ar.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC; }
+    @font-face { font-family: "Sunnah UI"; font-weight: 600; font-display: swap; src: url("/fonts/sunnah/plex-sans-arabic-600-ar.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC; }
     :root { --ink:#1a1a1a; --muted:#5c5c56; --brand:#226A56; --brand-dark:#143F35; --bg:#f4f7f5; }
     * { box-sizing: border-box; }
     body {
       margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      font-family: "IBM Plex Sans Arabic", "Noto Naskh Arabic", Tahoma, sans-serif;
+      font-family: "Sunnah UI", -apple-system, "SF Arabic", system-ui, sans-serif;
       background: linear-gradient(160deg, #e8f0ec 0%, var(--bg) 45%, #eef2f0 100%);
       color: var(--ink); padding: 1.5rem;
     }
