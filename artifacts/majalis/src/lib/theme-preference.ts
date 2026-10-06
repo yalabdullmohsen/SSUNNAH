@@ -20,9 +20,9 @@ export function isThemePreference(value: string | null | undefined): value is Th
 }
 
 export function readThemePreference(): ThemePreference {
-  if (typeof localStorage === "undefined") return "light";
+  if (typeof localStorage === "undefined") return "auto";
   const stored = localStorage.getItem(THEME_STORAGE_KEY);
-  return isThemePreference(stored) ? stored : "light";
+  return isThemePreference(stored) ? stored : "auto";
 }
 
 export function resolveTheme(preference: ThemePreference): "light" | "dark" {

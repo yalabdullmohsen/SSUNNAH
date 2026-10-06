@@ -12,9 +12,9 @@ export const FawaidPage = lazy(() => import("@/pages/account/FawaidPage"));
 
 export const QuizPage = lazy(() => import("@/pages/account/QuizPage"));
 
-export const LoginPage = lazyWithRetry(() => import("@/pages/account/LoginPage"), "LoginPage");
+export const LoginPage = lazyWithRetry(() => import("@/design-system/screens/AuthScreen"), "LoginPage");
 
-export const RegisterPage = lazyWithRetry(() => import("@/pages/account/RegisterPage"), "RegisterPage");
+export const RegisterPage = lazyWithRetry(() => import("@/design-system/screens/AuthScreen"), "RegisterPage");
 
 export const SettingsPage = lazy(() => import("@/pages/account/SettingsPage"));
 

@@ -1,12 +1,18 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearch } from "wouter";
 import { Chip, EmptyState, ErrorState, ListGroup, ListRow, NavigationBar, SearchField, SectionHeader, SkeletonCard } from "@/design-system";
+import type { DsIconName } from "@/design-system";
 import { runAppSearch, type AppSearchResult } from "@/features/search/app-search";
 import { SEARCH_SCOPE_DEFS, isSearchScopeId, type SearchScopeId } from "@/features/search/search-scopes";
 import { groupSearchResultsBySection } from "@/features/search/search-result-sections";
 import { isBlockedSearchHref } from "@/components/search/SearchResultCards";
 import { addSearchHistory, clearSearchHistory, getSearchHistory } from "@/lib/search-history";
 import { useDebouncedValue } from "@/hooks/useDebouncedValue";
+
+const SCOPE_ICON: Record<string, DsIconName> = {
+  quran: "quran", tafsir: "tafsir", hadith: "hadith", fiqh: "fiqh", adhkar: "adhkar", lesson: "lessons",
+  fawaid: "lightbulb", seerah: "seerah", history: "calendar", prophet: "stories", discover: "info", knowledge: "lightbulb",
+};
 
 /** البحث الشامل: حقل كبير · عمليات سابقة · أقسام للتصفّح · نتائج مجمّعة حسب النوع (العنوان والوصف في سطرين). */
 export default function SearchScreen() {
@@ -70,7 +76,7 @@ export default function SearchScreen() {
           <section className="sn-stack" aria-label="تصفّح الأقسام">
             <SectionHeader title="تصفّح الأقسام" />
             <ListGroup>
-              {SEARCH_SCOPE_DEFS.map((s) => (<ListRow key={s.id} icon="search" title={s.title} description={s.desc} href={s.href} />))}
+              {SEARCH_SCOPE_DEFS.map((s) => (<ListRow key={s.id} icon={SCOPE_ICON[s.id] ?? "search"} title={s.title} description={s.desc} href={s.href} />))}
             </ListGroup>
           </section>
         ) : null}

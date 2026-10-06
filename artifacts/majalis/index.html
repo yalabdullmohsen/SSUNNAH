@@ -29,19 +29,19 @@
               } catch (_) {}
             }
           }
-          /* أولوية: اختيار المستخدم (light|dark|auto) → الافتراضي نهاري.
-             light لا يتأثر بوضع الجهاز. auto فقط يتبع النظام. */
+          /* أولوية: اختيار المستخدم (light|dark|auto) → الافتراضي «حسب النظام» (auto).
+             light لا يتأثر بوضع الجهاز. */
           var storedTheme = localStorage.getItem("majalis-theme");
           var resolved = "light";
           if (storedTheme === "dark") {
             resolved = "dark";
-          } else if (storedTheme === "auto") {
+          } else if (storedTheme === "auto" || !storedTheme) {
             resolved =
               window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
                 ? "dark"
                 : "light";
           } else {
-            /* light أو قيمة فارغة/غير معروفة → نهاري دائمًا */
+            /* light أو قيمة غير معروفة → نهاري */
             resolved = "light";
           }
           html.dataset.theme = resolved;

@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
 import { Link } from "wouter";
 import { Icon, type DsIconName } from "./Icon";
 import { cn } from "@/lib/utils";
@@ -98,9 +98,9 @@ export function Chip({ selected, children, className, ...rest }: ChipProps) {
 
 export function Segmented<T extends string>({ value, onChange, options, label }: { value: T; onChange: (v: T) => void; options: ReadonlyArray<{ value: T; label: string }>; label: string }) {
   return (
-    <div className="sn-segmented" role="tablist" aria-label={label}>
+    <div className="sn-segmented" role="group" aria-label={label}>
       {options.map((o) => (
-        <button key={o.value} type="button" role="tab" aria-selected={o.value === value} className="sn-segmented__item" onClick={() => onChange(o.value)}>
+        <button key={o.value} type="button" aria-pressed={o.value === value} className="sn-segmented__item" onClick={() => onChange(o.value)}>
           {o.label}
         </button>
       ))}
@@ -167,4 +167,19 @@ export function ErrorState({ title = "تعذّر التحميل", description = 
       {onRetry ? <Button variant="secondary" icon="refresh" onClick={onRetry}>إعادة المحاولة</Button> : null}
     </div>
   );
+}
+
+/** حقل نصّي: تسمية ظاهرة + إدخال بحدّ لمس 44 + رسالة خطأ مرتبطة بـ aria-describedby. */
+export function TextField({ label, id, error, className, ...input }: { label: string; id: string; error?: string; className?: string } & Omit<InputHTMLAttributes<HTMLInputElement>, "id">) {
+  return (
+    <div className={cn("sn-field", className)}>
+      <label htmlFor={id} className="sn-field__label">{label}</label>
+      <input id={id} className="sn-field__input" aria-invalid={error ? true : undefined} aria-describedby={error ? `${id}-error` : undefined} {...input} />
+      {error ? <p id={`${id}-error`} className="sn-field__error" role="alert">{error}</p> : null}
+    </div>
+  );
+}
+
+export function Notice({ tone = "info", children }: { tone?: "info" | "success" | "danger"; children: ReactNode }) {
+  return <p className={cn("sn-notice", `sn-notice--${tone}`)} role={tone === "danger" ? "alert" : "status"}>{children}</p>;
 }

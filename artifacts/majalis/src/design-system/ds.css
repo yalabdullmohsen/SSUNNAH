@@ -249,7 +249,7 @@ html[dir="ltr"] .sn-switch[aria-checked="true"]::after { transform: translateX(v
   cursor: pointer;
   transition: background-color var(--sn-dur-base) var(--sn-ease), color var(--sn-dur-base) var(--sn-ease);
 }
-.sn-segmented__item[aria-selected="true"] { background: var(--sn-surface); color: var(--sn-text-primary); box-shadow: var(--sn-e1); }
+.sn-segmented__item[aria-pressed="true"] { background: var(--sn-surface); color: var(--sn-text-primary); box-shadow: var(--sn-e1); }
 
 /* ═══ SearchField ═══ */
 .sn-search {
@@ -477,3 +477,31 @@ html[dir="ltr"] .sn-back svg { transform: none; }
 /* رقم السورة المزخرف */
 .sn-ornament { display: grid; place-items: center; width: var(--sn-s8); height: var(--sn-s8); border-radius: var(--sn-r-pill); box-shadow: inset 0 0 0 calc(var(--sn-hairline) * 2) var(--sn-primary); color: var(--sn-primary); font: var(--sn-fw-semibold) var(--sn-fs-footnote) / 1 var(--font-ui); font-variant-numeric: tabular-nums; background: var(--sn-surface); }
 .sn-row-item__icon:has(.sn-ornament) { background: transparent; }
+
+/* ═══ حقول ونوافذ الدخول ═══ */
+.sn-field { display: flex; flex-direction: column; gap: var(--sn-s2); }
+.sn-field__label { font: var(--sn-fw-medium) var(--sn-fs-subhead) / var(--sn-lh-subhead) var(--font-ui); color: var(--sn-text-secondary); }
+.sn-field__input {
+  min-height: calc(var(--sn-s8) + var(--sn-s2));
+  padding-inline: var(--sn-s4);
+  border: 0;
+  border-radius: var(--sn-r-md);
+  background: var(--sn-surface-2);
+  color: var(--sn-text-primary);
+  font: var(--sn-fw-regular) var(--sn-fs-body) / 1.2 var(--font-ui);
+  box-shadow: inset 0 0 0 var(--sn-hairline) var(--sn-separator);
+  transition: box-shadow var(--sn-dur-fast) var(--sn-ease);
+}
+.sn-field__input::placeholder { color: var(--sn-text-tertiary); }
+.sn-field__input:focus-visible { outline: 0; box-shadow: inset 0 0 0 calc(var(--sn-hairline) * 2) var(--sn-focus); }
+.sn-field__input[aria-invalid="true"] { box-shadow: inset 0 0 0 calc(var(--sn-hairline) * 2) var(--sn-danger); }
+.sn-field__error { margin: 0; color: var(--sn-danger); font: var(--sn-fw-regular) var(--sn-fs-footnote) / var(--sn-lh-footnote) var(--font-ui); }
+.sn-notice { margin: 0; padding: var(--sn-s3) var(--sn-s4); border-radius: var(--sn-r-md); font: var(--sn-fw-medium) var(--sn-fs-subhead) / var(--sn-lh-subhead) var(--font-ui); background: var(--sn-primary-soft); color: var(--sn-primary); }
+.sn-notice--danger { background: var(--sn-surface-2); color: var(--sn-danger); }
+.sn-notice--success { color: var(--sn-success); }
+.sn-auth-mark { align-self: center; display: grid; place-items: center; width: calc(var(--sn-s8) * 2); height: calc(var(--sn-s8) * 2); border-radius: var(--sn-r-xl); background: var(--sn-primary-strong); color: var(--sn-text-on-primary); font: var(--sn-fw-bold) var(--sn-fs-title1) / 1 var(--font-text); box-shadow: var(--sn-e2); }
+.sn-divider { display: flex; align-items: center; gap: var(--sn-s3); color: var(--sn-text-tertiary); font: var(--sn-fw-regular) var(--sn-fs-footnote) / 1 var(--font-ui); }
+.sn-divider::before, .sn-divider::after { content: ""; flex: 1; height: var(--sn-hairline); background: var(--sn-separator); }
+.sn-auth__body { padding-block-start: calc(env(safe-area-inset-top, 0px) + var(--sn-s4)); max-width: calc(var(--sn-s8) * 11); }
+.sn-auth__top { justify-content: flex-start; }
+.sn-auth__title { margin: 0; text-align: center; }
