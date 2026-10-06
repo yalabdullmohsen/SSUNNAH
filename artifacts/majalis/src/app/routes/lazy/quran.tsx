@@ -22,7 +22,7 @@ export const MushafReaderPage = lazy(() => import("@/pages/quran/MushafReaderPag
 
 export const MushafBookmarksPage = lazy(() => import("@/pages/quran/MushafBookmarksPage"));
 
-export const QuranHubPage = lazy(() => import("@/pages/quran/QuranHubPage"));
+export const QuranHubPage = lazy(() => import("@/design-system/screens/QuranHubScreen"));
 
 export const QuranNumbersPage = lazy(() => import("@/pages/quran/QuranNumbersPage"));
 

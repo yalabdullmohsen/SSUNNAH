@@ -62,7 +62,7 @@ const deferredImports = [...main.matchAll(/import\("\.\/(styles\/[^"]+\.css)"\)/
   (m) => m[1],
 );
 const deferredUnique = [...new Set(deferredImports)];
-assert.equal(deferredUnique.length, 50, `deferred unique ${deferredUnique.length}`);
+assert.equal(deferredUnique.length, 49, `deferred unique ${deferredUnique.length}`);
 
 assert.match(main, /WAVE7: لا إعادة استيراد unify\/recovery بعد final-release/);
 assert.doesNotMatch(

@@ -15,7 +15,7 @@ assert.match(tokens, /--font-base:\s*1rem/, "جوال 16px");
 assert.match(tokens, /--font-base:\s*1\.0625rem/, "سطح مكتب 17px");
 assert.match(tokens, /--lh-body:\s*1\.75/, "ارتفاع سطر للنصوص");
 assert.match(tokens, /--font-xs:\s*0\.8125rem/, "شريط سفلي 13px");
-assert.match(tokens, /--font-heading/, "خط عناوين واجهة");
+assert.match(read("src/styles/font-system.css"), /--font-ui:\s*"Sunnah UI"/, "خط عناوين الواجهة (--font-ui)");
 assert.doesNotMatch(tokens, /--font-xl:\s*clamp\([^)]*vw/, "عناوين بلا vw");
 
 const scale = read("src/styles/typography-scale.css");

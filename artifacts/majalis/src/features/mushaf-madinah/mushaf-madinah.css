@@ -2564,7 +2564,7 @@ html.dark .mm-tafsir__status:not(.mm-tafsir__status--err) {
   display: grid;
   gap: 0.55rem;
   pointer-events: auto;
-  box-shadow: 0 12px 32px color-mix(in srgb, #000 20%, transparent);
+  box-shadow: 0 12px 32px color-mix(in srgb, black 20%, transparent);
   font-family: var(--font-ui);
   color: var(--mm-ink);
 }

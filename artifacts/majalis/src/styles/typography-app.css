@@ -258,3 +258,56 @@ html[data-ab="1"] .bottom-nav {
   transition-property: color, background-color, border-color, opacity, box-shadow, transform;
 }
 
+/* ═══ أصناف الطباعة والجودة الطباعية (كانت typography-system.css) ═══ */
+/**
+ * سلّم الطباعة والأصناف — فوق رموز الخطوط في font-system.css.
+ * الأحجام بوحدة rem ليتكيّف التطبيق مع تكبير النص (Dynamic Type عبر --ui-font-scale على html).
+ */
+/* ── الواجهة ── */
+.t-display { font: var(--sn-fw-bold) var(--sn-fs-large-title) / var(--sn-lh-large-title) var(--font-ui); }
+.t-page-title { font: var(--sn-fw-bold) var(--sn-fs-title1) / var(--sn-lh-title1) var(--font-ui); }
+.t-section-title { font: var(--sn-fw-semibold) var(--sn-fs-title2) / var(--sn-lh-title2) var(--font-ui); }
+.t-card-title { font: var(--sn-fw-semibold) var(--sn-fs-headline) / var(--sn-lh-headline) var(--font-ui); }
+.t-body { font: var(--sn-fw-regular) var(--sn-fs-body) / var(--sn-lh-body) var(--font-ui); }
+.t-secondary { font: var(--sn-fw-regular) var(--sn-fs-subhead) / var(--sn-lh-subhead) var(--font-ui); }
+.t-label { font: var(--sn-fw-medium) var(--sn-fs-footnote) / var(--sn-lh-footnote) var(--font-ui); }
+.t-button { font: var(--sn-fw-semibold) var(--sn-fs-callout) / 1.25 var(--font-ui); }
+
+/* ── النصوص الشرعية — تُستعمل عبر <HadithText> و<DhikrText> و<AyahText> أو مباشرة ── */
+.text-hadith,
+.text-dhikr {
+  font: var(--sn-fw-regular) var(--sn-fs-hadith) / var(--sn-lh-hadith) var(--font-text);
+}
+.text-hadith-featured {
+  font: var(--sn-fw-bold) var(--sn-fs-hadith-featured) / var(--sn-lh-hadith-featured) var(--font-text);
+}
+.text-ayah {
+  font: var(--sn-fw-regular) var(--sn-fs-ayah) / var(--sn-lh-ayah) var(--font-quran);
+}
+/* المراجع: «رواه مسلم»، «الأنفال: ٤٥» — خط الواجهة بلون ثانوي */
+.text-ref {
+  font: var(--sn-fw-regular) var(--sn-fs-footnote) / var(--sn-lh-footnote) var(--font-ui);
+  color: var(--sn-text-secondary);
+}
+
+/* ── ضبط الجودة الطباعية ── */
+/* لا خط عريض/مائل مزيّف: الأوزان المحمّلة فعليًا فقط */
+html,
+body {
+  font-synthesis: none;
+}
+/* لا تباعد حروف في النص العربي (يكسر الاتصال) — :where لا يرفع الخصوصية */
+:where(html, body, body *) {
+  letter-spacing: 0;
+}
+/* أرقام العدّادات والأوقات: عرض ثابت حتى لا تهتز أثناء العدّ */
+time,
+[data-tabular],
+[class*="countdown"],
+[class*="timer"],
+[class*="__time"],
+[class*="__clock"],
+.tabular-nums,
+.t-num {
+  font-variant-numeric: tabular-nums;
+}

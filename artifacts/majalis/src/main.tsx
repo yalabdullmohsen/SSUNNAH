@@ -61,7 +61,6 @@ import "./styles/design-tokens.css";
 import "./styles/breakpoints.css";
 import "./styles/typography-scale.css";
 import "./styles/typography-app.css";
-import "./styles/typography-system.css";
 import "./design-system/tokens.css";
 import "./design-system/ds.css";
 import "./design-system/shell/shell.css";

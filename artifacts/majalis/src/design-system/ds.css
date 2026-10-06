@@ -166,8 +166,8 @@ a.sn-card, button.sn-card { cursor: pointer; text-align: start; width: 100%; bor
 .sn-row-item__title { font: var(--sn-fw-medium) var(--sn-fs-callout) / var(--sn-lh-callout) var(--font-ui); }
 .sn-row-item__desc { color: var(--sn-text-secondary); font: var(--sn-fw-regular) var(--sn-fs-footnote) / var(--sn-lh-footnote) var(--font-ui); }
 .sn-row-item__trail { flex: none; color: var(--sn-text-tertiary); display: inline-flex; align-items: center; gap: var(--sn-s2); }
-.sn-row-item__chev { transform: scaleX(-1); }   /* السهم نحو الداخل في RTL */
-html[dir="ltr"] .sn-row-item__chev { transform: none; }
+.sn-row-item__chev { transform: none; }   /* ChevronLeft يشير نحو الداخل في RTL */
+html[dir="ltr"] .sn-row-item__chev { transform: scaleX(-1); }
 
 /* مفتاح تبديل */
 .sn-switch {
@@ -471,3 +471,9 @@ html[dir="ltr"] .sn-switch[aria-checked="true"]::after { transform: translateX(v
 .sn-today-card { width: min(calc(100vw - var(--sn-s8) - var(--sn-s2)), calc(var(--sn-s8) * 9)); }
 .sn-lesson-slot { width: min(calc(100vw - var(--sn-s8) - var(--sn-s6)), calc(var(--sn-s8) * 8)); }
 .sn-today-card > .sn-card, .sn-lesson-slot > .sn-card { height: 100%; }
+.sn-back .sn-icon, .sn-back svg { transform: scaleX(-1); }   /* سهم الرجوع نحو اليمين في RTL */
+html[dir="ltr"] .sn-back svg { transform: none; }
+
+/* رقم السورة المزخرف */
+.sn-ornament { display: grid; place-items: center; width: var(--sn-s8); height: var(--sn-s8); border-radius: var(--sn-r-pill); box-shadow: inset 0 0 0 calc(var(--sn-hairline) * 2) var(--sn-primary); color: var(--sn-primary); font: var(--sn-fw-semibold) var(--sn-fs-footnote) / 1 var(--font-ui); font-variant-numeric: tabular-nums; background: var(--sn-surface); }
+.sn-row-item__icon:has(.sn-ornament) { background: transparent; }
