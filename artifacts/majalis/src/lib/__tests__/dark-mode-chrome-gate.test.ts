@@ -51,8 +51,9 @@ assert.match(
 );
 assert.match(
   finalCss,
-  /html\[data-theme="dark"\]\s+\.bottom-nav(?:--v2)?\s+\.bottom-nav__tab\.is-active[\s\S]*?color:\s*var\(--(?:dm-accent-gold|mj-accent)/,
-  "التبويب النشط ليلاً بلون accent لا سطح غامق",
+  /* نمط نشط واحد نهارًا وليلًا: --color-primary-dark (نعناعي فاتح ليلًا #8FD4B0) — لا ذهب ولا سطح غامق */
+  /html\[data-theme="dark"\]\s+\.bottom-nav(?:--v2)?\s+\.bottom-nav__tab\.is-active[\s\S]*?color:\s*var\(--color-primary-dark\)/,
+  "التبويب النشط ليلاً بلون الهوية الفاتح لا سطح غامق",
 );
 assert.match(
   finalCss,

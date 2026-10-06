@@ -3,15 +3,16 @@
  * مسارات موجودة فقط · بلا ميزات جديدة.
  */
 import { Link } from "wouter";
-import { BookMarked, BookOpen, Clock, GraduationCap } from "lucide-react";
+import { BookOpen, Flame, GraduationCap, MoonStar } from "lucide-react";
 import { usePrefetchRoute } from "@/hooks/usePrefetchRoute";
 import "@/styles/components/home-quick-access-v2.css";
 
 const QUICK = [
-  { href: "/quran-hub", label: "القرآن", Icon: BookMarked },
-  { href: "/adhkar", label: "الأذكار", Icon: BookOpen },
+  /* أيقونات سجل الأقسام نفسها (config/sections.registry.ts) */
+  { href: "/quran-hub", label: "القرآن", Icon: BookOpen },
+  { href: "/adhkar", label: "الأذكار", Icon: Flame },
   { href: "/lessons", label: "التعلم", Icon: GraduationCap },
-  { href: "/prayer-times", label: "الصلاة", Icon: Clock },
+  { href: "/prayer-times", label: "الصلاة", Icon: MoonStar },
 ] as const;
 
 function QuickTile({

@@ -2,8 +2,7 @@
  * شريط يومي موحّد — آية · حديث · ذكر · فائدة — بطاقات مضغوطة متساوية.
  */
 import { Link } from "wouter";
-import { getDailyAyah, getDailyDhikr, getDailyFaida, getDailyHadith } from "@/lib/daily-content";
-import { toArabicDigits } from "@/lib/utils";
+import { formatAyahRefLabel, getDailyAyah, getDailyDhikr, getDailyFaida, getDailyHadith } from "@/lib/daily-content";
 import "@/styles/components/home-daily-strip.css";
 
 function clip(text: string, max = 96): string {
@@ -19,10 +18,7 @@ export function HomeDailyStrip() {
   const faida = getDailyFaida();
 
   const ayahRef =
-    ayah.reference ||
-    [ayah.surah, ayah.ayahNumber != null ? `آية ${toArabicDigits(ayah.ayahNumber)}` : null]
-      .filter(Boolean)
-      .join(" · ");
+    formatAyahRefLabel(ayah);
 
   const cards = [
     {

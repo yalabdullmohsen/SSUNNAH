@@ -3,9 +3,8 @@
  * النص من مجمعات محلية موثّقة؛ لا توليد ولا تعديل نص شرعي.
  */
 import { Link } from "wouter";
-import { getDailyAyah, getDailyHadith, getDayIndex } from "@/lib/daily-content";
+import { formatAyahRefLabel, getDailyAyah, getDailyHadith, getDayIndex } from "@/lib/daily-content";
 import { AppCard } from "@/components/design-system/AppCard";
-import { toArabicDigits } from "@/lib/utils";
 
 function todayLabels(): string {
   try {
@@ -55,10 +54,7 @@ export function HomeSacredOfDay() {
   if (!ayah?.text) return null;
 
   const ref =
-    ayah.reference ||
-    [ayah.surah, ayah.ayahNumber != null ? `آية ${toArabicDigits(ayah.ayahNumber)}` : null]
-      .filter(Boolean)
-      .join(" · ");
+    formatAyahRefLabel(ayah);
 
   return (
     <AppCard

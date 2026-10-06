@@ -8,15 +8,24 @@ import {
 
 /**
  * زر صعود صغير واضح المعنى.
- * يظهر بعد تمرير فعلي فقط، يختفي مع Sheet/Dialog، فوق الشريط السفلي بلا تغطية للمحتوى.
+ * يظهر بعد تمرير فعلي وأثناء الصعود فقط، يختفي مع Sheet/Dialog، فوق الشريط السفلي بلا تغطية للمحتوى.
  */
 export function ScrollToTop() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    /* نمط iOS: يظهر فقط حين يصعد المستخدم بعد تمرير فعلي، ويختفي أثناء القراءة نزولًا
+       حتى لا يغطي البطاقات. (والضغط على التبويب النشط يصعد للأعلى أيضًا — BottomNavBar.) */
+    let lastY = window.scrollY;
+    let goingUp = false;
     const update = () => {
+      const y = window.scrollY;
+      if (Math.abs(y - lastY) > 8) {
+        goingUp = y < lastY;
+        lastY = y;
+      }
       const scrolled = window.scrollY > 720;
-      setVisible(scrolled && !shouldSuppressBackgroundFloating());
+      setVisible(scrolled && goingUp && !shouldSuppressBackgroundFloating());
       applyFloatingLayerCssVars();
     };
     update();

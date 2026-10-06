@@ -315,7 +315,7 @@ console.log("=== Expansion PR-B Lessons + Sections ===");
   assert.match(lessons, /lessons-sections-v2\.css/);
   assert.match(lessons, /EmptyStateV2/);
   assert.match(sections, /lessons-sections-v2\.css/);
-  assert.match(sections, /PageHeaderV2/);
+  assert.doesNotMatch(sections, /PageHeaderV2/); // عنوان واحد من رأس اللوبي
   const css = read("src/styles/pages/lessons-sections-v2.css");
   assert.match(css, /data-v2-lessons/);
   assert.match(css, /data-v2-sections/);

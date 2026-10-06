@@ -110,6 +110,11 @@ export function BottomNavBar({ isHidden = false }: { isHidden?: boolean } = {}) 
               haptics.selection();
               if (!active) {
                 window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+              } else if (location === href && window.scrollY > 0) {
+                /* نمط iOS: الضغط على التبويب النشط في جذره يصعد لأعلى الصفحة */
+                e.preventDefault();
+                const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+                window.scrollTo({ top: 0, left: 0, behavior: reduce ? "auto" : "smooth" });
               }
             }}
           >

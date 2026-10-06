@@ -204,19 +204,15 @@ html[dir="rtl"] .sidebar-panel {
   outline-offset: 2px;
 }
 
+/* سهم lucide واضح (مطوي ⌄ · مفتوح ⌃) بدل مربع الحدود الذي كان يظهر خطًا رماديًا */
 .sidebar-section-toggle__chevron {
   flex-shrink: 0;
-  width: 0.45rem;
-  height: 0.45rem;
-  border-inline-end: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(45deg);
+  color: var(--mj-brand);
   transition: transform 160ms ease;
-  opacity: 0.75;
 }
 
 .sidebar-section-toggle__chevron.is-open {
-  transform: rotate(225deg);
+  transform: rotate(180deg);
 }
 
 @media (prefers-reduced-motion: reduce) {

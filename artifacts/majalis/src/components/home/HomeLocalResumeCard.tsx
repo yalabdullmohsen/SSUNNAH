@@ -4,8 +4,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { BookOpen, Headphones } from "lucide-react";
-import { getSurahMeta, loadPagePosition, loadReadingAyahKey } from "@/lib/quran-api";
-import { normalizeAyahKey, normalizeSurahAyah } from "@/lib/ayah-ref-normalize";
+import { getSurahMeta } from "@/lib/quran-api";
+import { normalizeSurahAyah } from "@/lib/ayah-ref-normalize";
 import { AUDIO_RESUME_CHANGED_EVENT, loadAudioResumeState } from "@/lib/quran-audio-resume";
 import { getContinueReadingEntries, type ContinueSection } from "@/lib/continue-reading";
 import { ayahKeyToPage } from "@/lib/quran-ayah-page";
@@ -34,35 +34,11 @@ const SECTION_LABEL: Record<ContinueSection | "listen", string> = {
 function buildItems(): ResumeItem[] {
   const items: ResumeItem[] = [];
   const seen = new Set<string>();
-  const page = loadPagePosition();
-  const ayahKey = loadReadingAyahKey();
   const audio = loadAudioResumeState();
 
-  // صفحة 1 بدون آية محفوظة ≠ استئناف ذي معنى (لا تُعرض كـ«آخر قراءة» وهمية)
-  const hasMeaningfulMushafResume =
-    page != null && page >= 1 && (page > 1 || Boolean(ayahKey && ayahKey !== "1:1"));
-
-  if (hasMeaningfulMushafResume && page != null) {
-    const safeKey = ayahKey ? normalizeAyahKey(ayahKey) : null;
-    const surahHint = (() => {
-      if (!safeKey) return "";
-      const [s] = safeKey.split(":").map(Number);
-      if (!s || s < 1 || s > 114) return "";
-      return getSurahMeta(s).name.replace(/^سُورَةُ\s*/u, "");
-    })();
-    const href = safeKey ? `/mushaf/page/${page}?ayah=${safeKey}` : `/mushaf/page/${page}`;
-    items.push({
-      id: "mushaf-pos",
-      kind: "mushaf",
-      href,
-      sectionLabel: SECTION_LABEL.mushaf,
-      title: surahHint
-        ? `${surahHint} · ص ${toArabicDigits(page)}`
-        : `صفحة ${toArabicDigits(page)}`,
-    });
-    seen.add("mushaf");
-  }
-
+  /* موضع المصحف تعرضه بطاقة «متابعة القراءة» (LastReadingBookmarkCard) فوق القائمة —
+     تكراره هنا كان يُظهر نفس الصفحة مرتين على الرئيسية. */
+  seen.add("mushaf");
   if (audio && audio.surah >= 1 && audio.ayah >= 1) {
     const n = normalizeSurahAyah(audio.surah, audio.ayah);
     const name = getSurahMeta(n.surah).name.replace(/^سُورَةُ\s*/u, "");

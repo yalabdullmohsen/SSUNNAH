@@ -22,6 +22,7 @@ import {
   isSearchScopeId,
   type SearchScopeId,
 } from "@/features/search/search-scopes";
+import { SEARCH_SCOPE_ICONS } from "@/features/search/search-scope-icons";
 import {
   isKnowledgePlatformP0Enabled,
   runKnowledgeSearch,
@@ -443,6 +444,12 @@ export function GlobalSearchModal({ onClose }: Props) {
                       className="gsm-scope-card"
                       onClick={() => setActiveFilter(scope.id)}
                     >
+                      <span className="gsm-scope-card__icon" aria-hidden="true">
+                        {(() => {
+                          const ScopeIcon = SEARCH_SCOPE_ICONS[scope.id];
+                          return <ScopeIcon size={18} strokeWidth={1.8} />;
+                        })()}
+                      </span>
                       <strong className="gsm-scope-card__title">{scope.title}</strong>
                       <span className="gsm-scope-card__desc">{scope.desc}</span>
                     </Button>

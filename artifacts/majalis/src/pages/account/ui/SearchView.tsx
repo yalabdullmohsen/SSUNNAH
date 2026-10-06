@@ -1,22 +1,9 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
-  BookMarked,
-  BookOpen,
   Clock3,
-  Compass,
   Flame,
-  GraduationCap,
-  Heart,
-  Landmark,
   LayoutGrid,
-  Library,
-  Lightbulb,
-  BookText,
-  Scale,
-  Scroll,
   Search,
-  Sparkles,
-  Users,
   X,
 } from "lucide-react";
 import { Link, useSearch } from "wouter";
@@ -54,6 +41,7 @@ import {
   isKnowledgePlatformP0Enabled,
   runKnowledgeSearch,
 } from "@/lib/knowledge-platform";
+import { SEARCH_SCOPE_ICONS } from "@/features/search/search-scope-icons";
 import "@/styles/pages/search.css";
 import "@/styles/pages/library-search-v2.css";
 import { ACTION, EMPTY, SEARCH, STATUS } from "@/lib/ui-copy";
@@ -81,22 +69,7 @@ const SECTION_CHIPS = [
   { href: "/sources", label: "المراجع" },
 ] as const;
 
-const SCOPE_ICONS = {
-  quran: BookOpen,
-  tafsir: BookMarked,
-  seerah: Sparkles,
-  history: Landmark,
-  prophet: Users,
-  fiqh: Scale,
-  hadith: Scroll,
-  adhkar: Heart,
-  lesson: GraduationCap,
-  fawaid: Lightbulb,
-  discover: Compass,
-  knowledge: Library,
-  glossary: BookText,
-  reference: BookMarked,
-} as const;
+const SCOPE_ICONS = SEARCH_SCOPE_ICONS;
 
 function resultHref(item: AppSearchResult): string {
   if (item.href) return item.href;

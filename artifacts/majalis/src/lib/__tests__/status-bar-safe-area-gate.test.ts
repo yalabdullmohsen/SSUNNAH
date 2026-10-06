@@ -29,6 +29,8 @@ const apply = read("src/lib/apply-page-chrome.ts");
 assert.match(apply, /setOverlaysWebView\(\{\s*overlay:\s*true\s*\}\)/);
 assert.match(apply, /Style\.Dark/);
 assert.match(apply, /Style\.Light/);
+/* Capacitor: Style.Light = نص داكن · أيقونات داكنة (وضع فاتح) يجب أن تُطابق Style.Light */
+assert.match(apply, /statusBarStyle === "dark" \? Style\.Light : Style\.Dark/);
 assert.match(apply, /--app-status-bg/);
 assert.match(apply, /TOP_SPONSOR_STATUS/);
 assert.match(apply, /data-top-sponsor/);

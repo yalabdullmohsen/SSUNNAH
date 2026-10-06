@@ -111,6 +111,12 @@ export function LastReadingBookmarkCard({ className = "", compact = false }: Pro
       <Link href={resume.href} className="lrb-card__cta">
         متابعة
       </Link>
+      <progress
+        className="lrb-card__progress"
+        max={604}
+        value={Math.min(resume.page, 604)}
+        aria-label={`التقدّم في المصحف: صفحة ${toArabicDigits(resume.page)} من ٦٠٤`}
+      />
     </section>
   );
 }

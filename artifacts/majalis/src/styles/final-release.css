@@ -1053,8 +1053,8 @@ html.dark .bottom-nav--m2030 {
   html[data-theme="dark"] .bottom-nav .bottom-nav__tab.is-active,
   html.dark .bottom-nav--v2 .bottom-nav__tab.is-active,
   html.dark .bottom-nav .bottom-nav__tab.is-active {
-    color: var(--dm-accent-gold, var(--mj-accent)) !important;
-    background: color-mix(in srgb, var(--dm-primary, var(--mj-brand)) 8%, transparent) !important;
+    color: var(--color-primary-dark) !important;
+    background: var(--color-active-tab-bg) !important;
   }
   html[data-theme="dark"] .bottom-nav--v2 .bottom-nav__tab-label,
   html[data-theme="dark"] .bottom-nav .bottom-nav__tab-label,

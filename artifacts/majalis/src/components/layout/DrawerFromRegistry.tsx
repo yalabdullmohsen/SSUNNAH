@@ -8,6 +8,7 @@ import { Link, useLocation } from "wouter";
 import { SIDEBAR_NAV_GROUPS } from "@/lib/sidebar-nav";
 import { isNavHrefActive } from "@/lib/nav-active";
 import { loadLastPageSync } from "@/lib/quran-last-page";
+import { BookmarkCheck, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type Props = {
@@ -111,7 +112,9 @@ export const DrawerFromRegistry = memo(function DrawerFromRegistry({
                     <span className="sidebar-section-toggle__sub">{group.subtitle}</span>
                   ) : null}
                 </span>
-                <span
+                <ChevronDown
+                  size={18}
+                  strokeWidth={2}
                   className={`sidebar-section-toggle__chevron${expanded ? " is-open" : ""}`}
                   aria-hidden="true"
                 />
@@ -166,7 +169,7 @@ export const DrawerFromRegistry = memo(function DrawerFromRegistry({
                           style={itemStyle}
                         >
                           <span className="sidebar-item-icon" aria-hidden="true">
-                            <item.Icon size={18} strokeWidth={1.8} />
+                            <BookmarkCheck size={18} strokeWidth={1.8} />
                           </span>
                           <span className="sidebar-item-text">
                             <span className="sidebar-item-title">متابعة القراءة</span>

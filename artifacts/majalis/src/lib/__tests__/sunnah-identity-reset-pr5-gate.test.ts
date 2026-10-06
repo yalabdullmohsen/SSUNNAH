@@ -16,7 +16,8 @@ console.log("=== sections page ===");
 {
   const page = read("src/pages/account/SectionsPage.tsx");
   assert.match(page, /MoreHubFromRegistry|SectionsHubFromRegistry/);
-  assert.match(page, /PageHeaderV2/);
+  /* عنوان واحد: رأس اللوبي (Large Title) — PageHeaderV2 كان يكرّره */
+  assert.doesNotMatch(page, /PageHeaderV2/);
   assert.match(page, /GridScreen/);
   assert.match(page, /sunnah-identity-sections\.css/);
   assert.doesNotMatch(page, /MushafReader|VerifiedMushaf|qpc-v2|AdminV3/);

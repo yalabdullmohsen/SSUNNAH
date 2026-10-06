@@ -16,7 +16,7 @@
  * كلها محلية: لا طلب شبكة إضافي إطلاقًا.
  */
 
-import { DAILY_HADITH_POOL, DAILY_AYAH_POOL, DAILY_FAIDA_POOL } from "./daily-content";
+import { DAILY_HADITH_POOL, DAILY_AYAH_POOL, DAILY_FAIDA_POOL, formatAyahRefLabel } from "./daily-content";
 import { DAILY_TICKER_DHIKR } from "./daily-ticker-dhikr";
 import { FEATURED, QUICK_LINKS } from "./home-feature-catalog";
 import { filterForPublicZone, truncateForPublicPreview } from "./content-display-zones";
@@ -111,7 +111,7 @@ export function buildTickerPool(now: Date = new Date()): TickerContentItem[] {
       label: "آية اليوم",
       text,
       previewText: truncateForPublicPreview(text),
-      source: v.reference || v.surah || undefined,
+      source: formatAyahRefLabel(v) || undefined,
       href: "/mushaf",
     });
   }
