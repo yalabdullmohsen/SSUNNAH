@@ -2,7 +2,34 @@
   "month": "2026-10",
   "items": [
     {
-      "id": "8c4820c1cba62e4e2a97e79942ff9e0600e50165",
+      "id": "94bfbf32c4270b9717807a2ec448e05b0ef57bc6",
+      "type": "درس",
+      "title_ar": "الآن مباشر شرح كتاب التوحيد للإمام محمد بن عبدالوهاب فضيلة الشيخ عمر مثيب العتي…",
+      "summary_ar": "الان مباشر (56) شرح كتاب التوحيد للامام محمد بن عبدالوهاب فضيله الشيخ عمر مثيب العتيبي رابط البث المباشر https://t.me/omar_muthib?livestream تحميل الكتاب https…",
+      "sheikh": "عمر مثيب العتيبي 🔗 رابط البث المباشر https://t",
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/omar_muthib?livestream",
+      "schedule_kind": null,
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28172",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-06T10:02:08.220Z",
+      "confidence": 0.8
+    },
+    {
+      "id": "64cac92508d972195b7ffc4d0474c1290f441987",
       "type": "دورة",
       "title_ar": "ندعوكم لحضور الدورة العلمية شرح المذكرة على العقيدة الواسطية للشيخ د راشد صليهم…",
       "summary_ar": "ندعوكم لحضور الدوره العلميه: شرح المذكره علي العقيده الواسطيه للشيخ د. راشد صليهم الهاجري ⏰ بعد صلاه المغرب (كل اثنين) مسجد ابي واقد الليثي-القيروان https://ma…",
@@ -25,95 +52,14 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-05T22:06:50.836Z",
+      "published_at": "2026-10-06T10:02:08.219Z",
       "confidence": 0.9
     },
     {
-      "id": "c301bd0410090c4db28bd5be12a138e934281332",
-      "type": "درس",
-      "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح كتاب دليل الطالب للشيخ وليد سعد الحربي بعد…",
-      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: شرح كتاب دليل الطالب للشيخ وليد سعد الحربي ⏰ بعد صلاه المغرب (كل اثنين) مسجد معقل بن يسار - الوفره السكنيه https://maps.app.g…",
-      "sheikh": null,
-      "place": "معقل بن يسار - الوفرة السكنية https://maps",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28167",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-05T22:06:50.836Z",
-      "confidence": 0.8
-    },
-    {
-      "id": "beef3ff0d0da3a05b19dafea713ee26337b82c88",
-      "type": "درس",
-      "title_ar": "ندعوكم الليلة لحضور الدرس الأسبوعي شرح كتاب الشريعة للآجري للشيخ محمد بن عبدالل…",
-      "summary_ar": "ندعوكم الليله لحضور الدرس الاسبوعي: [ شرح كتاب الشريعه للاجري ] للشيخ محمد بن عبدالله العتيبي ⏰ الساعه: 8:15 م ديوان عبدالرحمن الجش - القرين https://maps.app.g…",
-      "sheikh": null,
-      "place": null,
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": "8:15 م",
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28168",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-05T22:06:50.836Z",
-      "confidence": 0.8
-    },
-    {
-      "id": "3af94bc4e1bc99bd6e58aa5ad1e773fe1840ae0a",
-      "type": "محاضرة",
-      "title_ar": "ندعوكم الليلة لحضور محاضرة بعنوان عقيدة السلف في ولاة الأمور للشيخ د مبارك مناح…",
-      "summary_ar": "ندعوكم الليله لحضور محاضره بعنوان: ( عقيده السلف في ولاه الامور ) للشيخ د. مبارك مناحي العازمي ⏰ الساعه: ٧:٣٠ مساء ديوان شيبان الهاجري - الفحيحيل https://maps.…",
-      "sheikh": "مبارك مناحي العازمي ⏰ الساعة: ٧:٣٠ مساء 📍 ديوان شيبان الهاج",
-      "place": "ولاة الأمور ) 🎙️ للشيخ د",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": "٧:٣٠ م",
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "upcoming",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28169",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-05T22:06:50.836Z",
-      "confidence": 1
-    },
-    {
-      "id": "b9148f1c6ef0a947d02e86cd7b5111b17c452cca",
+      "id": "17af748b9f6cc294e94c7b751b0a249b7cc0c523",
       "type": "درس",
       "title_ar": "ندعوكم لحضور الدرس العلمي التعليق على روضة الأفهام في شرح زوائد المحرر على بلوغ…",
-      "summary_ar": "ندعوكم لحضور الدرس العلمي: التعليق علي « روضه الافهام في شرح زوائد المحرر علي بلوغ المرام» للشيخ حسين المويزري @H_Almuwizri ⌚ (كل اثنين) بعد صلاه العصر م…",
+      "summary_ar": "ندعوكم لحضور الدرس العلمي: التعليق علي « روضه الافهام في شرح زوائد المحرر علي بلوغ المرام» للشيخ حسين المويزري @H_Almuwizri ⌚ (كل اثنين) بعد صلاه العصر مسجد سع…",
       "sheikh": null,
       "place": "شرح زوائد المحرر على بلوغ المرام» 🎙️ للشيخ حسين المويزري @H_Almuwizri ⌚ (كل اثن",
       "audience": "عام",
@@ -133,11 +79,11 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-05T22:06:50.835Z",
+      "published_at": "2026-10-06T10:02:08.219Z",
       "confidence": 0.8
     },
     {
-      "id": "4c963ff777b862cd2803505e2c36791787555b85",
+      "id": "89d8aaf6bc93792d314f3c7cc798e39b30007c7e",
       "type": "درس",
       "title_ar": "ندعوكم لحضور الدرس العلمي شرح كتاب الباعث الحثيث اختصار علوم الحديث للشيخ د عبد…",
       "summary_ar": "ندعوكم لحضور الدرس العلمي: شرح كتاب(الباعث الحثيث اختصار علوم الحديث) للشيخ د.عبدالعزيز ندي العتيبي ⏰ بعدصلاه العصر (كل اثنين) مسجد عبدالمحسن الزبن - الفنيطيس …",
@@ -160,14 +106,14 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-05T22:06:50.835Z",
+      "published_at": "2026-10-06T10:02:08.219Z",
       "confidence": 0.9
     },
     {
-      "id": "92f60d8707aae8d2618a4339a573515126e97120",
+      "id": "a932308f5bbed40c05a3957e2fb99288ec60f718",
       "type": "درس",
       "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح القواعد الأربع للشيخ فهد محارب الديحاني بع…",
-      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: شرح القواعد الاربع للشيخ فهد محارب الديحاني @Fahad_Muhareb ⏰ بعد صلاه المغرب (كل اثنين) مسجد محمد الصباح - الفروانيه ht…",
+      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: شرح القواعد الاربع للشيخ فهد محارب الديحاني @Fahad_Muhareb ⏰ بعد صلاه المغرب (كل اثنين) مسجد محمد الصباح - الفروانيه https://…",
       "sheikh": null,
       "place": "محمد الصباح - الفروانية https://maps",
       "audience": "عام",
@@ -187,15 +133,15 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-05T22:06:50.835Z",
+      "published_at": "2026-10-06T10:02:08.219Z",
       "confidence": 0.8
     },
     {
-      "id": "597eb39110ebccde89005471d1678aeb94c63deb",
+      "id": "7ff510a2bc575e9c9a9c27583d83c2225329a867",
       "type": "درس",
       "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح العقيدة الطحاوية للشيخ د محمد فهد الشلاحي …",
-      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: « شرح العقيده الطحاويه » للشيخ د. محمد فهد الشلاحي @Drmohammedalmu5 كل اثنين واربعاء ⏰ بعد صلاه المغرب مسجد عبيدا…",
-      "sheikh": "محمد فهد الشلاحي @Drmohammedalmu5 📆 كل اثنين وأربعاء",
+      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: « شرح العقيده الطحاويه » للشيخ د. محمد فهد الشلاحي @Drmohammedalmu5 كل اثنين واربعاء ⏰ بعد صلاه المغرب مسجد عبيدالله العباس- …",
+      "sheikh": "محمد فهد الشلاحي &rlm; @Drmohammedalmu5 📆 كل اثنين وأربعاء",
       "place": "عبيدالله العباس- غ عبدالله المبارك https://maps",
       "audience": "عام",
       "starts_at": null,
@@ -214,11 +160,65 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-05T22:06:50.835Z",
+      "published_at": "2026-10-06T10:02:08.219Z",
       "confidence": 0.9
     },
     {
-      "id": "fede93109362643efb8e2b6ce484550d6aace8bd",
+      "id": "9aa97ac45a7a3d8305ee689b836e5fde9b9cadb6",
+      "type": "درس",
+      "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح كتاب دليل الطالب للشيخ وليد سعد الحربي بعد…",
+      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: شرح كتاب دليل الطالب للشيخ وليد سعد الحربي ⏰ بعد صلاه المغرب (كل اثنين) مسجد معقل بن يسار - الوفره السكنيه https://maps.app.g…",
+      "sheikh": null,
+      "place": "معقل بن يسار - الوفرة السكنية https://maps",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28167",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-06T10:02:08.219Z",
+      "confidence": 0.8
+    },
+    {
+      "id": "38ab5bf0acb5ba6aad0eec00110b0c2cb67423d2",
+      "type": "درس",
+      "title_ar": "ندعوكم الليلة لحضور الدرس الأسبوعي شرح كتاب الشريعة للآجري للشيخ محمد بن عبدالل…",
+      "summary_ar": "ندعوكم الليله لحضور الدرس الاسبوعي: [ شرح كتاب الشريعه للاجري ] للشيخ محمد بن عبدالله العتيبي ⏰ الساعه: 8:15 م ديوان عبدالرحمن الجش - القرين https://maps.app.g…",
+      "sheikh": null,
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": "8:15 م",
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28168",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-06T10:02:08.219Z",
+      "confidence": 0.8
+    },
+    {
+      "id": "4397d600688ea5899184d923ff7b5917c3bf0aaa",
       "type": "درس",
       "title_ar": "👇 جدول دروس اليوم الأثنين 👇",
       "summary_ar": "جدول دروس اليوم الاثنين",
@@ -241,7 +241,7 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-05T22:06:50.835Z",
+      "published_at": "2026-10-06T10:02:08.219Z",
       "confidence": 0.65
     },
     {
@@ -623,6 +623,33 @@
       "confidence": 0.95
     },
     {
+      "id": "02bdb0790149a998194cb09fc5fe98329a096d11",
+      "type": "درس",
+      "title_ar": "حياكم الله غداً بإذن الله لمجلس الذكر بجامع سعد الشلاحي 🩵🌱",
+      "summary_ar": "حياكم الله غدا باذن الله لمجلس الذكر بجامع سعد الشلاحي Photo by اللجنه النسائيه مسجد الشلاحي on October 03, 2026. May be an image of text.",
+      "sheikh": null,
+      "place": "سعد الشلاحي 🩵🌱",
+      "audience": "نساء",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "upcoming",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "ig-masjid_alshalahi_women",
+          "name_ar": "اللجنة النسائية بجامع سعد الشلاحي",
+          "url": "https://instagram.com/masjid_alshalahi_women",
+          "post_url": "https://www.instagram.com/p/DeCSGiWM47g/",
+          "platform": "instagram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-03T00:00:00.000Z",
+      "confidence": 0.75
+    },
+    {
       "id": "a135a9d231d789426aea22608ba1083478bdae35",
       "type": "درس",
       "title_ar": "تلخيص مختصر المقنع",
@@ -733,7 +760,7 @@
     {
       "id": "4a5a25cdbdc6d3ff276e91cb5c92f82b7de2ab88",
       "type": "تسجيل",
-      "title_ar": "\t\t\t\t\t\t\tحياكم الله مع غيث القلب🤍",
+      "title_ar": "حياكم الله مع غيث القلب🤍",
       "summary_ar": "       حياكم الله مع غيث القلب صحبه خير ! نلقاكم الاثنين بعد صلاه العشاء مباشره مسجد عيسي العثمان ، في منطقه الخالديه للحضور يلزم التسجيل عبر الرابط في …",
       "sheikh": null,
       "place": "عيسى العثمان",
@@ -783,33 +810,6 @@
       "image_url": null,
       "published_at": "2026-10-01T00:00:00.000Z",
       "confidence": 0.85
-    },
-    {
-      "id": "008c723655d01620c58b75b06748091cc2af78a5",
-      "type": "درس",
-      "title_ar": "حياكم الله غداً بإذن الله لمجلس الذكر بجامع سعد الشلاحي 🩵🌱",
-      "summary_ar": "حياكم الله غدا باذن الله لمجلس الذكر بجامع سعد الشلاحي Photo by اللجنه النسائيه مسجد الشلاحي on September 26, 2026. May be an image of text.",
-      "sheikh": null,
-      "place": "سعد الشلاحي 🩵🌱",
-      "audience": "نساء",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": null,
-      "schedule_kind": "upcoming",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "ig-masjid_alshalahi_women",
-          "name_ar": "اللجنة النسائية بجامع سعد الشلاحي",
-          "url": "https://instagram.com/masjid_alshalahi_women",
-          "post_url": "https://www.instagram.com/p/DdwbR82sx3O/",
-          "platform": "instagram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-09-26T00:00:00.000Z",
-      "confidence": 0.75
     },
     {
       "id": "c23ead920c1cbeebcc5c13180272ecfa75eca123",
