@@ -269,12 +269,16 @@ ok(appDelegate.includes("import WebKit"), "AppDelegate imports WebKit for cache 
 ok(
   appDelegate.includes("WKWebsiteDataStore.default().removeData")
     || /WKWebsiteDataStore\.default\(\)\s*\.removeData/.test(appDelegate),
-  "AppDelegate clears WKWebsiteDataStore on launch (live URL freshness)",
+  "AppDelegate clears WKWebsiteDataStore after an app update (live URL freshness)",
 );
 ok(appDelegate.includes("WKWebsiteDataTypeDiskCache"), "AppDelegate purges disk cache");
 ok(appDelegate.includes("WKWebsiteDataTypeMemoryCache"), "AppDelegate purges memory cache");
 ok(appDelegate.includes("WKWebsiteDataTypeServiceWorkerRegistrations"), "AppDelegate unregisters service workers");
 ok(!appDelegate.includes("allWebsiteDataTypes"), "AppDelegate does not wipe localStorage/cookies");
+ok(
+  /CFBundleVersion[\s\S]*mj\.webCachePurgedForBuild[\s\S]*removeData/.test(appDelegate),
+  "AppDelegate purges web caches once per app build (not every launch — keeps WKWebView cache warm)",
+);
 
 const capJsonPath = join(iosApp, "App", "capacitor.config.json");
 ok(existsSync(capJsonPath), "ios capacitor.config.json exists");

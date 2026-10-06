@@ -56,12 +56,13 @@ const colors = colorset.colors as Array<{
 }>;
 const light = colors.find((c) => !c.appearances)?.color.components;
 const dark = colors.find((c) => c.appearances?.some((a) => a.value === "dark"))?.color.components;
-assert.ok(light && dark, "LaunchBackground light+dark");
+assert.ok(light, "LaunchBackground light");
+/* LaunchScreen فاتح فقط = خلفية WKWebView (ios.backgroundColor) = الويب الافتراضي — الداكن كان يومض داكن→فاتح */
+assert.equal(dark, undefined, "LaunchBackground بلا متغيّر ليلي");
 const near = (a: string, b: number, tol = 0.004) => Math.abs(Number(a) - b) <= tol;
 /* #F8F6F1 = 248,246,241 /255 */
 assert.ok(near(light!.red, 248 / 255) && near(light!.green, 246 / 255) && near(light!.blue, 241 / 255), "light ≈ F8F6F1");
 /* #101614 = 16,22,20 /255 */
-assert.ok(near(dark!.red, 16 / 255) && near(dark!.green, 22 / 255) && near(dark!.blue, 20 / 255), "dark ≈ 101614");
 
 const storyboard = readPkg("ios/App/App/Base.lproj/LaunchScreen.storyboard");
 assert.match(storyboard, /name="LaunchBackground"/);
