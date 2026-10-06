@@ -84,3 +84,9 @@ docs/audio-rights/evidence/**/*.webm
 docs/audio-rights/evidence/**/*.mkv
 .cache/
 docs/audio-rights/evidence/**/*.m4a
+
+# graphify (خريطة المشروع المحلية + بيئة Python الخاصة بالمشروع)
+graphify-out/
+.graphify-venv/
+.graphify-venv-312/
+CLAUDE.local.md
