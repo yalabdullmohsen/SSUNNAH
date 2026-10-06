@@ -23,6 +23,8 @@ export const FeatureTourPage = lazy(() => import("@/pages/account/FeatureTourPag
 export const AccountDeletionPage = lazy(() => import("@/pages/account/AccountDeletionPage"));
 
 export const SectionsPage = lazy(() => import("@/pages/account/SectionsPage"));
+export const MorePage = lazy(() => import("@/design-system/screens/MorePage"));
+export const WorshipPage = lazy(() => import("@/design-system/screens/WorshipPage"));
 
 export const IslamicGlossaryPage = lazy(() => import("@/pages/account/IslamicGlossaryPage"));
 

@@ -13,9 +13,7 @@ import { FloatingLayerSync } from "@/components/FloatingLayerSync";
 import { ensureChromeMeta } from "@/lib/ensure-chrome-meta";
 import { PageChromeSync } from "@/components/PageChromeSync";
 import { useAutoHideBottomNav } from "@/hooks/useAutoHideBottomNav";
-import { getActiveTab, type BottomTabId } from "@/lib/get-active-tab";
-import { BOTTOM_NAV_TABS } from "@/lib/nav-map";
-import { isComingSoonPath } from "@/lib/nav-visibility";
+import { AppTabBar, AppTopBar } from "@/design-system/shell";
 import { ErrorBoundary, SectionErrorBoundary } from "@/components/ErrorBoundary";
 import "@/styles/components/chrome-boot-ph.css";
 import { usePageSeo } from "@/lib/seo";
@@ -37,21 +35,12 @@ import { commitRouteSurface, ensurePrayerRouteShellCss } from "@/lib/route-surfa
 import { isHomeChromePath } from "@/lib/ticker-quiet-paths";
 import { isNative, isNativeApp } from "@/lib/capacitor-utils";
 import { isMiniPlayerVisible, subscribeMiniPlayer } from "@/lib/quran-mini-player";
-import { HomeHeroLcp, HomeRestShell, HomeSearchShell } from "@/components/home/HomeHeroLcp";
-import { HomeStartHereSection } from "@/components/home/HomeStartHereSection";
 
 /** صدفة الصلاة — خارج Home initial CSS؛ تُحمَّل عند مسار/نية الصلاة فقط */
 if (typeof location !== "undefined" && isPrayerTimesPath(location.pathname || "/")) {
   ensurePrayerRouteShellCss();
 }
 
-const HomeUniversalSearch = lazyWithRetry(
-  () =>
-    import("@/components/home/HomeUniversalSearch").then((m) => ({
-      default: m.HomeUniversalSearch,
-    })),
-  "HomeUniversalSearch",
-);
 /** شريط/كروم ثقيل (lucide + nav-map) — كسول حتى لا يدخل مسار أول زيارة / LCP */
 const SafeAreaDebugOverlay = lazyWithRetry(
   () =>
@@ -60,24 +49,7 @@ const SafeAreaDebugOverlay = lazyWithRetry(
     })),
   "SafeAreaDebugOverlay",
 );
-const NavBar = lazyWithRetry(() => import("@/components/NavBar"), "NavBar");
-const BottomNavBar = lazyWithRetry(
-  () => import("@/components/BottomNavBar").then((m) => ({ default: m.BottomNavBar })),
-  "BottomNavBar",
-);
-/** على Capacitor ابدأ تحميل الكروم فورًا لتقليل فترة ChromeNavFallback */
-if (isNativeApp) {
-  void import("@/components/NavBar");
-  void import("@/components/BottomNavBar");
-}
-const TopSectionBar = lazyWithRetry(
-  () => import("@/components/TopSectionBar").then((m) => ({ default: m.TopSectionBar })),
-  "TopSectionBar",
-);
-const ScrollToTop = lazyWithRetry(
-  () => import("@/components/ScrollToTop").then((m) => ({ default: m.ScrollToTop })),
-  "ScrollToTop",
-);
+/** الكروم الجديد (TabBar بخمسة تبويبات + شريط علوي) من نظام التصميم — مدمج مباشرة بلا Suspense */
 const GlobalBackButton = lazyWithRetry(
   () =>
     import("@/components/FloatingBackButton").then((m) => ({
@@ -109,10 +81,6 @@ const AppRoutesLazy = lazy(loadAppRoutes);
 const AssistantFloatingWidget = lazyWithRetry(
   () => import("@/components/assistant/AssistantFloatingWidget").then((m) => ({ default: m.AssistantFloatingWidget })),
   "AssistantFloatingWidget",
-);
-const PrayerCountdownBanner = lazyWithRetry(
-  () => import("@/components/prayer/PrayerCountdownBanner").then((m) => ({ default: m.PrayerCountdownBanner })),
-  "PrayerCountdownBanner",
 );
 const AdhanNotificationBar = lazyWithRetry(
   () => import("@/components/adhan/AdhanNotificationBar").then((m) => ({ default: m.AdhanNotificationBar })),
@@ -542,19 +510,9 @@ function NativeNotificationsBootstrap() {
 function HomeLazyRoute() {
   return (
     <ErrorBoundary>
-      <div className="m2030-home m2030-home--v2 m2030-home--redesign" dir="rtl">
-        {/* بحث أولاً بصريًا (هيكل فوري + تحميل كسول) — بلا تضخيم حزمة الإقلاع */}
-        <Suspense fallback={<HomeSearchShell />}>
-          <HomeUniversalSearch />
-        </Suspense>
-        <HomeHeroLcp />
-        <section className="m2030-band home-start-here-band home-start-here-band--slim" aria-label="مدخل المبتدئ">
-          <HomeStartHereSection />
-        </section>
-        <Suspense fallback={<HomeRestShell />}>
-          <HomePage />
-        </Suspense>
-      </div>
+      <Suspense fallback={<LazyRouteFallback />}>
+        <HomePage />
+      </Suspense>
     </ErrorBoundary>
   );
 }
@@ -616,108 +574,6 @@ function AppShell() {
   );
 }
 
-function DeferredPrayerCountdownBanner({ defer }: { defer: boolean }) {
-  const [ready, setReady] = useState(!defer);
-  useEffect(() => {
-    if (!defer) return;
-    let cancelled = false;
-    const reveal = () => {
-      if (!cancelled) setReady(true);
-    };
-    if (typeof window.requestIdleCallback === "function") {
-      const id = window.requestIdleCallback(reveal, { timeout: 3200 });
-      return () => {
-        cancelled = true;
-        window.cancelIdleCallback(id);
-      };
-    }
-    const t = window.setTimeout(reveal, 1400);
-    return () => {
-      cancelled = true;
-      window.clearTimeout(t);
-    };
-  }, [defer]);
-  if (!ready) return null;
-  return <PrayerCountdownBanner />;
-}
-
-/** يطابق BottomNavBar — معرفة المسار قبل ظهور الشريط. */
-const CHROME_BOOT_HREF_TO_ID: Record<string, BottomTabId> = {
-  "/": "home",
-  "/mushaf": "quran",
-  "/quran-hub": "quran",
-  "/quran-knowledge": "quran",
-  "/lessons": "lessons",
-  "/prayer-times": "prayer",
-  "/sections": "sections",
-  "/more": "sections",
-};
-
-/**
- * هيكل هيدر ثابت الأبعاد — نفس صناديق الأيقونات قبل وصول NavBar.
- * يمنع قفز البحث/الوضع الليلي/الحساب/القائمة أثناء Suspense.
- */
-function ChromeNavFallback({ homeChrome }: { homeChrome: boolean }) {
-  return (
-    <header className="navbar-v3 chrome-boot-ph mj-chrome-stable" aria-hidden="true">
-      <div className="navbar-v3__inner">
-        <div className="navbar-v3__start">
-          <span className="navbar-menu-btn navbar-menu-btn--drawer chrome-boot-ph__slot" />
-        </div>
-        <div className="navbar-v3__mid-spacer" aria-hidden="true" />
-        <div className="navbar-v3__end">
-          <span className="navbar-theme-toggle chrome-boot-ph__slot" />
-          <span className="navbar-theme-toggle navbar-search-toggle chrome-boot-ph__slot" />
-          <span className="navbar-mobile-login navbar-mobile-login--pending chrome-boot-ph__slot" />
-        </div>
-      </div>
-      {homeChrome ? <div className="navbar-ticker-row" /> : null}
-    </header>
-  );
-}
-
-/** حجز شريط الأقسام العلوي (مكتب) بنفس الهندسة حتى وصول الحزمة الكسولة — كان يُدرَج فوق المحتوى فيزيحه. */
-function TopSectionBarFallback() {
-  return (
-    <nav className="top-section-bar top-section-bar--ph mj-chrome-stable" aria-hidden="true">
-      <div className="top-section-bar__scroll">
-        <span className="top-section-bar__tab">&nbsp;</span>
-      </div>
-    </nav>
-  );
-}
-
-/** شريط سفلي بنفس التبويبات والحالة النشطة من المسار — بلا وميض active بعد hydrate. */
-function ChromeBottomFallback() {
-  const [location] = useLocation();
-  const activeId = getActiveTab(location);
-  return (
-    <nav
-      className="bottom-nav bottom-nav--v2 bottom-nav--m2030 chrome-boot-ph mj-chrome-stable bottom-nav--visible"
-      aria-hidden="true"
-      data-bottom-nav="sections-ia"
-      data-chrome-boot="1"
-    >
-      {BOTTOM_NAV_TABS.filter(({ href }) => !isComingSoonPath(href)).map(({ href, label, Icon }) => {
-        const id = CHROME_BOOT_HREF_TO_ID[href];
-        const active = id === activeId;
-        return (
-          <span
-            key={href}
-            className={`bottom-nav__tab${active ? " is-active" : ""}`}
-            aria-hidden="true"
-          >
-            <span className="bottom-nav__tab-icon">
-              <Icon size={18} strokeWidth={active ? 2 : 1.5} aria-hidden="true" />
-            </span>
-            <span className="bottom-nav__tab-label">{label}</span>
-          </span>
-        );
-      })}
-    </nav>
-  );
-}
-
 function AppShellInner() {
   const { dir, t } = useLanguage();
   const [searchOpen, setSearchOpen] = useState(false);
@@ -739,12 +595,9 @@ function AppShellInner() {
     const root = document.documentElement;
     root.dataset.homeChrome = homeChrome ? "1" : "0";
     /* U4: أبقِ data-sc لثبات padding/fixed chrome — لا تُزل بعد الهيكل */
-    if (hideTopChrome) {
-      if (onPrayer) root.dataset.sc = "bottom";
-      else root.removeAttribute("data-sc");
-    } else {
-      root.dataset.sc = "top";
-    }
+    /* الشريط العلوي الجديد لاصق ضمن التدفق — لا data-sc=top (لا padding علوي ثابت) */
+    if (onPrayer) root.dataset.sc = "bottom";
+    else root.removeAttribute("data-sc");
   }, [homeChrome, hideTopChrome, onPrayer]);
 
   const searchScrollYRef = useRef(0);
@@ -1206,7 +1059,7 @@ function AppShellInner() {
   }, [openGlobalSearch]);
 
   return (
-    <PrayerCountdownScope deferMs={isHomePath ? 20_000 : 0}>
+    <PrayerCountdownScope deferMs={0}>
     <div
       className={`app-shell${shouldHideChrome ? " app-chrome-hidden" : ""}${isNativeApp ? " app-shell--native" : ""}`}
       style={{ "--app-dir": dir } as React.CSSProperties}
@@ -1243,22 +1096,7 @@ function AppShellInner() {
       </Suspense>
       <NativeNotificationsBootstrap />
       <IdleRuntimeBoot />
-      {!hideTopChrome ? (
-        <div className="app-top-chrome">
-          <Suspense fallback={<ChromeNavFallback homeChrome={homeChrome} />}>
-            <NavBar />
-          </Suspense>
-        </div>
-      ) : null}
-      <Suspense fallback={immersive || onAuthStandalone ? null : <TopSectionBarFallback />}>
-        <TopSectionBar />
-      </Suspense>
-      {/* شريط العدّ التنازلي العام يُخفى في مسارات المواقيت والمصحف والدخول */}
-      {!hideSiteChrome && !onPrayer && (
-        <Suspense fallback={null}>
-          <DeferredPrayerCountdownBanner defer={deferHomePrayerChrome} />
-        </Suspense>
-      )}
+      {!hideTopChrome && !onAuthStandalone ? <AppTopBar /> : null}
       {!hideSiteChrome && (
         <DeferredHomeAdhanChrome defer={deferHomePrayerChrome} />
       )}
@@ -1269,11 +1107,6 @@ function AppShellInner() {
       {!hideSiteChrome && !isNative && <DeferredSiteFooter />}
       {!hideSiteChrome && <DeferredAssistantWidget />}
       {/* أدوات المشرف تُحمَّل من AdminShell فقط — لا استيراد في الهيكل العام */}
-      {!hideSiteChrome && (
-        <Suspense fallback={null}>
-          <ScrollToTop />
-        </Suspense>
-      )}
       {!onAuthStandalone && (
         <Suspense fallback={null}>
           <GlobalBackButton />
@@ -1284,11 +1117,7 @@ function AppShellInner() {
           <PwaInstallBanner />
         </Suspense>
       )}
-      {!onAuthStandalone && (
-        <Suspense fallback={hideSiteChrome ? null : <ChromeBottomFallback />}>
-          <BottomNavBar isHidden={shouldHideChrome} />
-        </Suspense>
-      )}
+      {!onAuthStandalone && !immersive && <AppTabBar hidden={shouldHideChrome && false} />}
       {!onAuthStandalone ? <DeferredQuranMiniPlayer /> : null}
       <FloatingLayerSync />
       <VisualViewportKeyboardBridge />

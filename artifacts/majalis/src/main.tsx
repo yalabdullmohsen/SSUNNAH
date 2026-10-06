@@ -62,6 +62,9 @@ import "./styles/breakpoints.css";
 import "./styles/typography-scale.css";
 import "./styles/typography-app.css";
 import "./styles/typography-system.css";
+import "./design-system/tokens.css";
+import "./design-system/ds.css";
+import "./design-system/shell/shell.css";
 import "./index.css";
 /* لغة الهيرو/البطاقات العصرية — مؤجّلة تحت ميزانية CSS الحرج ≤60KiB gzip */
 // contrast/a11y الثقيلة + صفحات متخصصة — بعد load (انظر loadNonCriticalCss)
