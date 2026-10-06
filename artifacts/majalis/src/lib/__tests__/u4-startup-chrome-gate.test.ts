@@ -49,8 +49,10 @@ assert.match(
   /html\[data-sc=top\] \.app-top-chrome\{position:fixed/,
   "React chrome fixed while skeleton active (no double height)",
 );
-assert.match(html, /data-home-chrome="0"\]\{--app-top-chrome-h:65px\}/, "non-home header lock 65");
-assert.match(html, /data-home-chrome="1"\]\{--app-top-chrome-h:113px\}/, "home header lock 113");
+/* القفل = 65/113 عند inset صفري + ما يزيد من safe-area-inset-top عن 12px (الهيدر يحشو max(inset,12px)) —
+   بلا ذلك يختفي أعلى المحتوى تحت الهيدر الثابت على iPhone. */
+assert.match(html, /data-home-chrome="0"\]\{--app-top-chrome-h:calc\(65px \+ max\(var\(--inset-top,0px\) - 12px,0px\)\)\}/, "non-home header lock 65 + safe-area excess");
+assert.match(html, /data-home-chrome="1"\]\{--app-top-chrome-h:calc\(113px \+ max\(var\(--inset-top,0px\) - 12px,0px\)\)\}/, "home header lock 113 + safe-area excess");
 assert.match(html, /#mj-startup-bottom\{[^}]*height:64px/, "bottom lock 64px not clobberable --nav-h");
 assert.match(html, /html\.pts-immersive #mj-startup-header/, "prayer hides header ph");
 assert.match(html, /html\.chrome-immersive #mj-startup-chrome/, "mushaf hides full ph");
