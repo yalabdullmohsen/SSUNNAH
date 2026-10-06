@@ -28,6 +28,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 
 const NONE = "__none__";
 
@@ -292,7 +293,7 @@ export default function ResearchSubmitPage() {
                 <p className="sr-card__meta">
                   <span className="sr-badge">{REVIEW_STATUS_LABELS[s.status]}</span>
                   {s.isPersonal && <span className="sr-badge">شخصي</span>}
-                  <span>{new Date(s.updatedAt).toLocaleString("ar")}</span>
+                  <span>{new Date(s.updatedAt).toLocaleString(AR_UI_LOCALE)}</span>
                 </p>
                 {s.statusNote && <p className="sr-card__abs">{s.statusNote}</p>}
               </div>

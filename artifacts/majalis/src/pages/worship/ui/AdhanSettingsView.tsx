@@ -62,6 +62,7 @@ import "@/styles/pages/adhan-settings.css";
 import { UtilityScreen } from "@/components/design-system/screens";
 import { SettingsToggleRow } from "@/components/design-system/SettingsList";
 import { STATUS } from "@/lib/ui-copy";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 
 const ADVANCE_OPTIONS: AdvanceMinutes[] = [0, 5, 10, 15, 30];
 
@@ -186,7 +187,7 @@ function PrayerScheduleHealthCard({ onRepair }: { onRepair: () => void }) {
       };
       setLabel(LABELS[health.code] ?? "تعذّر تحديد حالة الجدولة");
       const nextLabel = Number.isFinite(nextAtMs)
-        ? new Date(nextAtMs as number).toLocaleString("ar", {
+        ? new Date(nextAtMs as number).toLocaleString(AR_UI_LOCALE, {
             weekday: "short",
             hour: "2-digit",
             minute: "2-digit",

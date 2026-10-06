@@ -4,6 +4,7 @@ import { getUpcomingEvents, getAnnouncements } from "@/lib/unified-content-servi
 import type { AutoImportedContent } from "@/lib/auto-content/auto-content-utils";
 import { Widget } from "@/components/widgets/Widget";
 import { AppCard } from "@/components/design-system/AppCard";
+import { AR_UI_LOCALE } from "@/lib/numerals";
 
 /** فعاليات ولقاءات + إعلانات علمية مهمة معتمَدة من المصادر الرسمية —
  * لا يوجد لهذين النوعين أي سطح عرض آخر في المنصة، لذا ودجت واحد جديد
@@ -59,7 +60,7 @@ function sourceLabel(item: AutoImportedContent): string {
 
 function EventRow({ item }: { item: AutoImportedContent }) {
   const dateLabel = item.event_start_at
-    ? new Intl.DateTimeFormat("ar", { dateStyle: "medium", timeStyle: "short" }).format(new Date(item.event_start_at))
+    ? new Intl.DateTimeFormat(AR_UI_LOCALE, { dateStyle: "medium", timeStyle: "short" }).format(new Date(item.event_start_at))
     : "الموعد غير محدد";
   return (
     <AppCard padding="none" className="hue__row">
