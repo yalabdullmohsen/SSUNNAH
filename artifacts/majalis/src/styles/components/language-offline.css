@@ -101,8 +101,10 @@
   direction: rtl;
   line-height: 1.45;
   animation: ob-slide-in 0.3s ease;
-  position: sticky;
-  top: 0;
+  /* طبقة فوق الشريط السفلي (لا sticky داخل التدفق) — ظهورها لا يزيح الصفحة ولا يغطي الهيدر */
+  position: fixed;
+  inset-inline: 0;
+  bottom: calc(var(--bottom-nav-height, 64px) + var(--inset-bottom, 0px));
   z-index: 9999;
 }
 .offline-banner--back {
@@ -115,7 +117,7 @@
 .offline-banner__icon { flex-shrink: 0; }
 .offline-banner__text { line-height: 1.45; max-width: 40rem; }
 @keyframes ob-slide-in {
-  from { transform: translateY(-100%); opacity: 0; }
+  from { transform: translateY(100%); opacity: 0; }
   to   { transform: none; opacity: 1; }
 }
 

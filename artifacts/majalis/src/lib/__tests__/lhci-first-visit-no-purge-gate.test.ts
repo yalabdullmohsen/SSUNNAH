@@ -8,7 +8,6 @@ import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "../../..");
 const html = readFileSync(resolve(root, "index.html"), "utf8");
-const versionBoot = readFileSync(resolve(root, "public/boot-legacy-cache.js"), "utf8");
 const boot = readFileSync(resolve(root, "src/lib/boot-sequence.ts"), "utf8");
 const purge = readFileSync(resolve(root, "src/lib/runtime-cache-purge.ts"), "utf8");
 
@@ -19,17 +18,13 @@ assert.match(
   /if \(_prevDsv\) \{[\s\S]{0,280}?localStorage\.setItem\("majalis_force_cache_purge", "1"\)/,
   "لا تُضبط majalis_force_cache_purge في أول زيارة بلا design-v سابق",
 );
-assert.match(
-  versionBoot,
-  /\/\* أول زيارة: خزّن النسخة فقط — بلا reload \*\/[\s\S]*?if \(!prev\) \{[\s\S]*?majalis_app_version/,
-  "version-boot يخزّن النسخة في أول زيارة دون reload",
-);
-assert.match(versionBoot, /navigator\.webdriver/);
-assert.match(html, /src="\/boot-legacy-cache\.js"/);
+/* لا version-boot حاجب: كان يخزّن 8 أحرف بينما الحزمة 7 → reload في أول زيارة */
+assert.doesNotMatch(html, /boot-legacy-cache\.js/);
 
 /* الإقلاع: أول زيارة (لا prev ولا force) لا تُفرغ ثم تعيد التحميل */
 assert.match(purge, /if \(!force && !changed\)/);
 assert.match(purge, /if \(version && !prev\)/);
-assert.match(boot, /purgeStaleRuntimeCaches\(\{ reloadOnce: true \}\)/);
+assert.match(boot, /void purgeStaleRuntimeCaches\(\)/);
+assert.doesNotMatch(boot, /reloadOnce/, "لا reload عند الإقلاع");
 
 console.log("lhci-first-visit-no-purge-gate.test.ts: ok");

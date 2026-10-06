@@ -15,7 +15,7 @@ const readRepo = (rel: string) => readFileSync(resolve(repoRoot, rel), "utf8");
 const contract = readPkg("src/lib/majlis-splash.ts");
 assert.match(contract, /SPLASH_PIPELINE/);
 assert.match(contract, /native-launch-color/);
-assert.match(contract, /html-branded-once/);
+assert.match(contract, /html-surface-once/);
 assert.match(contract, /SPLASH_BG_LIGHT\s*=\s*"#F8F6F1"/);
 assert.match(contract, /SPLASH_BG_DARK\s*=\s*"#101614"/);
 assert.match(contract, /SPLASH_MIN_VISIBLE_MS\s*=\s*0/);

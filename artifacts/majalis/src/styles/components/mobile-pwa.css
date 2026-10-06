@@ -5,9 +5,6 @@
   .app-shell {
     min-height: 100dvh;
   }
-  .offline-banner {
-    padding-top: max(0.35rem, var(--inset-top));
-  }
 }
 
 /* Touch targets ≥ 44px on bottom nav tabs (iOS HIG) */

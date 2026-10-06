@@ -4,7 +4,7 @@
  * عقد الإقلاع الواحد (Startup PR-3):
  *   Native LaunchScreen (لون فقط · فاتح/داكن)
  *   → Capacitor SplashScreen (طبقة صامتة بنفس اللون · تُخفى فور التسليح)
- *   → #mj-launch-splash (الهوية الرسمية · Cold Start فقط · عبارة معتمدة)
+ *   → #mj-launch-splash (سطح لوني = LaunchScreen · بلا شعار/نص · مرة لكل إقلاع)
  *   → App Shell
  *
  * ممنوع: دخولية ثانية على Resume · Progress أصلي · Spinner · CTA · بيانات مستخدم.
@@ -32,9 +32,6 @@ export const SPLASH_FADE_OUT_MS = 160;
 
 export const SPLASH_SESSION_KEY = "mj.launch-splash.session.v4";
 
-/** عبارة قصيرة تحت الاسم — Cold Start فقط. */
-export const SPLASH_TAGLINE = "رفيقك في العلم والعمل";
-
 /** يطابق LaunchBackground light + App Shell. */
 export const SPLASH_BG_LIGHT = "#F8F6F1";
 
@@ -45,6 +42,6 @@ export const SPLASH_BG_DARK = "#101614";
 export const SPLASH_PIPELINE = [
   "native-launch-color",
   "capacitor-silent-cover",
-  "html-branded-once",
+  "html-surface-once",
   "app-shell",
 ] as const;

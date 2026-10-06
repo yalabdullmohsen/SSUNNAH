@@ -84,7 +84,7 @@ async function activateWaitingWorker(): Promise<void> {
 async function purgeAppCachesWithBudget(): Promise<void> {
   await Promise.race([
     (async () => {
-      await purgeStaleRuntimeCaches({ force: true, reloadOnce: false });
+      await purgeStaleRuntimeCaches({ force: true });
       await activateWaitingWorker();
     })(),
     new Promise<void>((resolve) => {

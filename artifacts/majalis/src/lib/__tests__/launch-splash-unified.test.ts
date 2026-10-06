@@ -16,10 +16,9 @@ const CANVAS = "#F8F6F1";
 
 const indexHtml = readFileSync(resolve(root, "index.html"), "utf8");
 assert.match(indexHtml, /id="mj-launch-splash"/, "دخولية MajlisSplash في HTML الحرج");
-assert.match(indexHtml, /mj-launch-splash__tagline/, "عبارة قصيرة تحت الاسم");
-assert.match(indexHtml, /رفيقك في العلم والعمل/, "عبارة الدخولية");
-assert.match(indexHtml, /mj-launch-splash__title/, "عنوان الهوية سُنّة");
-assert.match(indexHtml, /mj-launch-splash__progress/, "خط تقدّم أنيق");
+/* دخولية واحدة = سطح لوني يطابق LaunchScreen الأصلي (لون فقط) — بلا شعار/عبارة/تقدّم */
+assert.match(indexHtml, /<div id="mj-launch-splash" aria-hidden="true"><\/div>/, "سطح لوني فارغ");
+assert.doesNotMatch(indexHtml, /mj-launch-splash__(tagline|title|progress|inner|mark)/, "بلا محتوى دخولية ثانٍ فوق الأصلي");
 assert.doesNotMatch(indexHtml, /mj-launch-splash__pulse/, "بلا نبض دوّار قديم");
 assert.doesNotMatch(indexHtml, /علم نافع، وعمل صالح/, "بلا عبارة قديمة");
 assert.doesNotMatch(indexHtml, /معك في العلم والعمل/, "بلا عبارة الدخولية السابقة");
@@ -83,7 +82,7 @@ assert.match(majlisSplash, /SPLASH_MIN_VISIBLE_MS\s*=\s*0/);
 assert.match(majlisSplash, /SPLASH_LCP_SOFT_MS\s*=\s*480/);
 assert.match(majlisSplash, /SPLASH_MAX_VISIBLE_MS\s*=\s*1_?400|SPLASH_MAX_VISIBLE_MS\s*=\s*1400/);
 assert.match(majlisSplash, /SPLASH_FADE_OUT_MS\s*=\s*160/);
-assert.match(majlisSplash, /رفيقك في العلم والعمل/);
+assert.doesNotMatch(majlisSplash, /SPLASH_TAGLINE/, "لا عبارة دخولية");
 assert.match(majlisSplash, /session\.v4/);
 
 const mainSrc = readFileSync(resolve(root, "src/main.tsx"), "utf8");
@@ -91,7 +90,7 @@ assert.match(mainSrc, /mj:app-painted/, "main يعلن أول رسم");
 assert.match(mainSrc, /armNativeSplashController/);
 assert.doesNotMatch(mainSrc, /__mjDismissSplash\?\.\(true\)/, "لا إزالة فورية للدخولية");
 
-assert.ok(existsSync(resolve(root, "src/components/MajlisSplash.tsx")), "مكوّن MajlisSplash");
+assert.ok(!existsSync(resolve(root, "src/components/MajlisSplash.tsx")), "MajlisSplash غير المستخدم محذوف");
 
 const launch = readFileSync(
   resolve(root, "ios/App/App/Base.lproj/LaunchScreen.storyboard"),
@@ -161,8 +160,5 @@ assert.equal(manifest.theme_color, "#F8F6F1");
 const brand = readFileSync(resolve(root, "src/components/brand/MajlisWordmark.tsx"), "utf8");
 assert.match(brand, /سُنّة/, "وردمارك يعرض سُنّة");
 assert.doesNotMatch(brand, /MAJLIS_WORDMARK_PATH/, "بلا مسار SVG للاسم القديم");
-const majlisMark = readFileSync(resolve(root, "src/components/MajlisSplash.tsx"), "utf8");
-assert.match(majlisMark, /MajlisSplashWordmark/);
-assert.match(majlisMark, /MajlisWordmark/);
 
 console.log("launch-splash-unified.test.ts: ok");

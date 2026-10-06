@@ -46,9 +46,7 @@ assert.doesNotMatch(html, /dns-prefetch/, "لا dns-prefetch في الإقلاع
 }
 assert.match(html, /src="\/mj-launch-splash-boot\.js"/);
 assert.match(readFileSync(resolve(root, "public/mj-launch-splash-boot.js"), "utf8"), /MIN_MS\s*=\s*0/, "بلا تأخير اصطناعي");
-assert.match(html, /mj-launch-splash__title/, "عنوان الهوية");
-assert.match(html, /mj-launch-splash__tagline/, "عبارة قصيرة تحت الاسم");
-assert.match(html, /رفيقك في العلم والعمل/, "نص العبارة");
+assert.match(html, /<div id="mj-launch-splash" aria-hidden="true"><\/div>/, "دخولية = سطح لوني يطابق LaunchScreen (بلا شعار/عبارة)");
 assert.match(html, /id="mj-theme-boot"|v6-direct-boot-2026-08/, "ثيم مبكر قبل الرسم");
 {
   const crit = html.match(/<style id="mj-lcp-critical">([\s\S]*?)<\/style>/)?.[1] ?? "";
