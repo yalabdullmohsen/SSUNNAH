@@ -16,10 +16,10 @@
 
 | # | الدين | الحالة |
 |---|---|---|
-| S1 | Supabase: 3 دوال `SECURITY DEFINER` قابلة للتنفيذ من `anon` (`increment_fiqh_item_views`، `is_admin`، `record_lesson_view`) و8 من `authenticated` | يحتاج قرارك |
-| S2 | Supabase: حماية كلمات المرور المسرّبة معطّلة (Auth) | يحتاج قرارك |
+| S1 | Supabase: دوال `SECURITY DEFINER` قابلة للتنفيذ من `anon`/`authenticated` | ✅ أُغلق جزئيًا: سُحب EXECUTE من 6 دوال لا يستدعيها التطبيق بمفتاح المستخدم (`increment_fiqh_item_views`، `record_lesson_view`، `accept_family_invite`، `revoke_family_link`، `get_similar_users`، `upsert_user_interest`) وأُعطيت لـservice_role فقط؛ search_path كان مثبّتًا أصلًا. **بقيت عمدًا** `is_admin` (anon+authenticated) و`profile_privileges_unchanged` (authenticated) لأن 170+ سياسة RLS تستدعيهما؛ سحبها يكسر قراءة الجداول العامة. الحل الدائم: نقلهما إلى schema خاص مع إعادة كتابة السياسات (يحتاج قرارك) |
+| S2 | Supabase: حماية كلمات المرور المسرّبة معطّلة (Auth) | ⏳ خطوة يدوية في اللوحة: Authentication ← Sign In / Providers ← Password security ← فعّل «Prevent use of leaked passwords» (ميزة خطة Pro فأعلى؛ الحساب الحالي Hobby على Vercel ولم أتحقق من خطة Supabase) |
 | S3 | Supabase: امتدادان في schema `public` (`pg_trgm`، `vector`) | يحتاج قرارك |
-| S4 | Supabase: 85 جدولًا بـRLS مفعّل بلا سياسات (INFO — يعني الرفض الكامل لغير service role) | يحتاج قرارك |
+| S4 | Supabase: 85 جدولًا بـRLS مفعّل بلا سياسات | ✅ صُنّفت: كل جداول public (+85) RLS **مفعّل** عليها ولا جدول معطّل، فلا شيء لتفعيله. بلا سياسات = رفض كامل لـanon/authenticated ويعمل service_role فقط (مقصود لجداول الخطوط الخلفية)؛ لم أضف سياسات حتى لا أفتح بياناتها |
 
 ## أخطاء للمستخدم
 
@@ -31,7 +31,8 @@
 
 | # | الدين | الحالة |
 |---|---|---|
-| P1 | Supabase: 121 مفتاحًا أجنبيًا بلا فهرس، 224 فهرسًا غير مستخدم، فهرس مكرر واحد، `auth_rls_initplan` واحد، 667 تنبيه `multiple_permissive_policies` | يحتاج قرارك (تعديل مخطط الإنتاج) |
+| P1 | Supabase: 121 مفتاحًا أجنبيًا بلا فهرس | ✅ أُغلق: أُنشئ 121 فهرسًا (migration `20261006130100`) على staging ثم الإنتاج |
+| P1b | Supabase: 224 فهرسًا غير مستخدم، فهرس مكرر، `auth_rls_initplan`، 667 تنبيه `multiple_permissive_policies` | مؤجَّل بقرارك |
 | P2 | سقوف CSS في `reports/*-debt-budget.json` (`!important` 4720، hex 5546، rgb/hsl 1959، …) | مؤجَّل: خفضها يلمس الشكل البصري ويحتاج قياسًا حيًا؛ قيدك بعدم تغيير الهوية |
 
 ## تنظيف
@@ -48,9 +49,12 @@
 
 ## يحتاج قرارك
 
-S1–S4 وU1 وP1: كلها تمسّ قاعدة الإنتاج `ngmvmlulzacrlicuagyp` أو صلاحيات خارجية، فلم أنفّذ منها شيئًا.
+- U1 (Vercel runtime errors: 403)، S3 (امتدادان في public)، P1b، وC3/C4.
+- S1: نقل `is_admin`/`profile_privileges_unchanged` لـschema خاص (يعيد كتابة السياسات).
+- ملاحظة: staging ليس نسخة كاملة (9 جداول ودالة SECURITY DEFINER واحدة)، فاختبار staging اقتصر على سلامة الـmigration وقراءات anon؛ والتحقق الفعلي كان على الإنتاج: عدّ صفوف anon قبل/بعد متطابق (lessons 325، hadith 333، qa 370، rulings 690، …).
 
 ## سجل الإغلاق
 
 - C1: PR #2687 — مدموج (فحوص CI ناجحة).
 - C2: PR #2688 — مدموج (فحوص CI ناجحة).
+- S1/S4/P1: migrations `20261006130000` و`20261006130100` طُبّقت على staging ثم الإنتاج (2026-10-06).
