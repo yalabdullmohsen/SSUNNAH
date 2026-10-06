@@ -456,3 +456,15 @@ html.dark .adhkar-grade--other {
   color: var(--mj-ink-muted, #5a6b63);
   font-size: 0.85rem;
 }
+
+/* بطاقة تذكيرات الأذكار — ملخص ورابط لشاشة الإعدادات الموحّدة */
+.adhkar-reminders-card {
+  margin-block: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--sf-radius-control, 1.125rem);
+  border: 1px solid color-mix(in srgb, var(--mj-brand-deep) 12%, transparent);
+  font-size: 0.85rem;
+  color: var(--mj-muted);
+}
+.adhkar-reminders-card p { margin: 0.25rem 0 0; }
+.adhkar-reminders-card__title { margin: 0; font-size: 0.95rem; color: var(--mj-brand-deep); }

@@ -36,6 +36,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { PushPrompt } from "@/components/PushPrompt";
 import { SunnahChannelsPanel } from "@/components/notifications/SunnahChannelsPanel";
+import { AdhkarRemindersPanel } from "@/components/notifications/AdhkarRemindersPanel";
 import { fireTestLocalNotification } from "@/lib/notifications/test-trigger";
 import "@/styles/pages/notifications.css";
 import { UtilityScreen } from "@/components/design-system/screens";
@@ -329,9 +330,15 @@ export default function NotificationSettingsPage() {
     refreshHistory();
   }, [searchQ, histTab]);
 
+  /** شرح قصير قبل طلب الإذن لأول مرة — لا طلب عند الإقلاع ولا دون سياق. */
+  const [explain, setExplain] = useState<((ok: boolean) => void) | null>(null);
+  const confirmExplainer = () =>
+    new Promise<boolean>((resolve) => setExplain(() => (ok: boolean) => { setExplain(null); resolve(ok); }));
+
   /** يطلب الإذن من فعل صريح؛ يعيد true إن صار ممنوحًا. */
   const ensurePermission = async (): Promise<boolean> => {
     if (permission === "granted") return true;
+    if (permission === "prompt" && !(await confirmExplainer())) return false;
     setRequesting(true);
     try {
       const granted = await requestNotificationPermission();
@@ -431,6 +438,22 @@ export default function NotificationSettingsPage() {
           requesting={requesting}
         />
 
+        {explain ? (
+          <div className="notif-banner notif-banner--warn" role="dialog" aria-label="لماذا نطلب الإذن">
+            <p className="notif-banner__text">
+              نرسل التذكيرات التي تختارها فقط وفي أوقاتها، ويمكنك إيقافها في أي وقت. سيطلب النظام إذنك الآن.
+            </p>
+            <div className="nsp-confirm-row">
+              <Button type="button" variant="primary" size="small" onClick={() => explain(true)}>
+                متابعة
+              </Button>
+              <Button type="button" variant="ghost" size="small" onClick={() => explain(false)}>
+                ليس الآن
+              </Button>
+            </div>
+          </div>
+        ) : null}
+
         <div className="notif-card">
           <SettingsList
             title="الصلاة والأذان"
@@ -496,6 +519,18 @@ export default function NotificationSettingsPage() {
                   checked={masterOn && prefs.dhikrPhraseReminder}
                   onChange={(v) => void toggleDhikrPhrase(v)}
                   disabled={categoriesDisabled}
+                />
+              ) : null}
+              {(section.id === "adhkar" || section.id === "fridayOccasions") && masterOn && prefs.sections[section.id].enabled ? (
+                <AdhkarRemindersPanel
+                  group={section.id === "adhkar" ? "adhkar" : "occasions"}
+                  disabled={categoriesDisabled}
+                  ensurePermission={ensurePermission}
+                  onChanged={() =>
+                    void import("@/lib/smart-local-notifications").then(({ syncSmartLocalNotifications }) =>
+                      syncSmartLocalNotifications(),
+                    )
+                  }
                 />
               ) : null}
             </div>

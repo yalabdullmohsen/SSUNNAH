@@ -51,11 +51,13 @@ assert.ok(existsSync(resolve(root, "ios/App/App/Sounds/adhan-short-aqsa.caf")));
 const adhkarView = read("src/pages/worship/ui/AdhkarView.tsx");
 assert.match(adhkarView, /AdhkarRemindersCard/);
 const card = read("src/components/adhkar/AdhkarRemindersCard.tsx");
-assert.match(card, /adhkarReminder/);
-assert.match(card, /dhikrPhraseReminder/);
-assert.match(card, /syncSmartLocalNotifications/);
+// البطاقة ملخص للتذكيرات الفعلية ورابط لشاشة الإعدادات الموحّدة (لا مفاتيح موازية)
+assert.match(card, /@\/lib\/adhkar-reminders/);
+assert.match(card, /\/notification-settings/);
+assert.match(read("src/pages/account/ui/NotificationSettingsView.tsx"), /AdhkarRemindersPanel/);
 
-const smart = read("src/lib/smart-local-notifications.ts");
+// روابط تذكيرات الأذكار صارت في بيانات الفئات (adhkar-reminder-categories.json)
+const smart = read("src/data/adhkar-reminder-categories.json");
 assert.match(smart, /\/adhkar\/morning/);
 assert.match(smart, /\/adhkar\/evening/);
 assert.match(smart, /\/adhkar\/sleep/);

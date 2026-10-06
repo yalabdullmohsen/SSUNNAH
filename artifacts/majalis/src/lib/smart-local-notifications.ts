@@ -49,8 +49,8 @@ export interface SmartNotifScheduleItem {
   weekday?: number;
 }
 
-/** أنواع لا تُسقطها ساعات الهدوء: أوقات عبادة اختارها المستخدم صراحةً. */
-const QUIET_HOURS_EXEMPT_KINDS: ReadonlySet<SmartNotifScheduleItem["kind"]> = new Set(["adhkar"]);
+/** لا تُسقطها ساعات الهدوء هنا: خطة الأذكار طبّقت الهدوء مسبقًا (مع إعفاء المرتبط بوقت الصلاة). */
+const QUIET_HOURS_EXEMPT_KINDS: ReadonlySet<SmartNotifScheduleItem["kind"]> = new Set(["adhkar", "occasion"]);
 
 /** هل الدقيقة (من منتصف الليل) داخل ساعات الهدوء؟ */
 export function isMinuteWithinQuietHours(quiet: QuietHoursPrefs, minuteOfDay: number): boolean {
@@ -69,10 +69,6 @@ function loadQuietHoursSafe(): QuietHoursPrefs {
     return { enabled: false, startHour: 22, endHour: 8 };
   }
 }
-
-export const FRIDAY_KAHF_MINUTE = 9 * 60;
-/** سورة الكهف (18) — نفس صيغة mushafSurahHref دون استيراد فهرس السور الثقيل. */
-export const FRIDAY_KAHF_URL = "/mushaf/18";
 
 export const SW_SCHEDULE_LOCAL_MSG = "MAJALIS_SCHEDULE_LOCAL_NOTIFS";
 const LAST_STREAK_WARN_KEY = "majalis_last_streak_warn_day";
@@ -105,8 +101,10 @@ export function buildDailySmartSchedule(opts?: {
   includeStreakWarn?: boolean;
   streakWarnMinute?: number;
   khatmahBehind?: boolean;
-  /** يتجاوز فحص «هل الجمعة؟» — للجدولة الأصلية الأسبوعية المتكررة */
+  /** @deprecated الجمعة صارت ضمن خطة الأذكار؛ يبقى للتوافق */
   forceWeekly?: boolean;
+  /** عناصر خطة الأذكار للـ24 ساعة القادمة (planToSmartItems) */
+  adhkarItems?: SmartNotifScheduleItem[];
   /** حقن ساعات الهدوء (اختبارات) — الافتراضي من التخزين */
   quietHours?: QuietHoursPrefs;
 }): SmartNotifScheduleItem[] {
@@ -116,46 +114,8 @@ export function buildDailySmartSchedule(opts?: {
   const items: SmartNotifScheduleItem[] = [];
   const reminderMinute = prefs.reminderHour * 60 + prefs.reminderMinute;
 
-  // أذكار الصباح/المساء/النوم — تُفعَّل صراحة عبر adhkarReminder (لا طلب إذن تلقائي)
-  const adhkarOn = prefs.sections?.adhkar?.enabled ?? prefs.adhkarReminder;
-  if (adhkarOn) {
-    items.push({
-      id: "adhkar-morning",
-      kind: "adhkar",
-      title: "أذكار الصباح",
-      body: "ورد الصباح جاهز.",
-      minuteOfDay: 6 * 60 + 30,
-      tag: "majalis-adhkar-morning",
-      url: "/adhkar/morning",
-    });
-    items.push({
-      id: "adhkar-evening",
-      kind: "adhkar",
-      title: "أذكار المساء",
-      body: "ورد المساء جاهز.",
-      minuteOfDay: 17 * 60 + 30,
-      tag: "majalis-adhkar-evening",
-      url: "/adhkar/evening",
-    });
-    items.push({
-      id: "adhkar-sleep",
-      kind: "adhkar",
-      title: "أذكار النوم",
-      body: "أذكار قبل النوم.",
-      minuteOfDay: 21 * 60 + 30,
-      tag: "majalis-adhkar-sleep",
-      url: "/adhkar/sleep",
-    });
-    items.push({
-      id: "adhkar-after-salah",
-      kind: "adhkar",
-      title: "أذكار بعد الصلاة",
-      body: "سبّح واستغفر بعد صلاتك.",
-      minuteOfDay: 12 * 60 + 30,
-      tag: "majalis-adhkar-after-salah",
-      url: "/adhkar/after-salah",
-    });
-  }
+  // الأذكار والمناسبات: من خطة adhkar-reminders (فئات البيانات + محرك المواقيت) — تُمرَّر جاهزة.
+  items.push(...(opts?.adhkarItems ?? []));
 
   if (prefs.dhikrPhraseReminder) {
     for (const slot of DHIKR_PHRASE_SLOTS) {
@@ -196,21 +156,6 @@ export function buildDailySmartSchedule(opts?: {
       minuteOfDay: QURAN_DAILY_REMINDER_HOUR * 60 + QURAN_DAILY_REMINDER_MINUTE,
       tag: QURAN_DAILY_REMINDER_TAG,
       url: QURAN_DAILY_REMINDER_URL,
-    });
-  }
-
-  const occasionsOn = prefs.sections?.fridayOccasions?.enabled ?? false;
-  if (occasionsOn && (opts?.forceWeekly || minuteOfDayToDate(FRIDAY_KAHF_MINUTE).getDay() === 5)) {
-    const kahf = pickSectionMessage("fridayOccasions");
-    items.push({
-      id: "friday-kahf",
-      kind: "occasion",
-      title: kahf.title || "سورة الكهف",
-      body: kahf.body || "اقرأ سورة الكهف.",
-      minuteOfDay: FRIDAY_KAHF_MINUTE,
-      tag: "majalis-friday-kahf",
-      url: FRIDAY_KAHF_URL,
-      weekday: 5,
     });
   }
 
@@ -350,6 +295,8 @@ export async function syncSmartLocalNotifications(opts?: {
         await cancelNativeDhikrPhraseReminders();
         const { syncNativeDailyReminders } = await import("./notifications/native-daily-reminders");
         await syncNativeDailyReminders([]);
+        const { syncNativeAdhkarReminders } = await import("./adhkar-reminders");
+        await syncNativeAdhkarReminders();
       }
       return { scheduled: 0, viaSw: false };
     }
@@ -360,27 +307,30 @@ export async function syncSmartLocalNotifications(opts?: {
       await ensureQuranDailyReminderScheduled();
       const { ensureDhikrPhraseRemindersScheduled } = await import("./dhikr-phrase-reminders");
       const dhikr = await ensureDhikrPhraseRemindersScheduled();
-      // الأذكار والمراجعة والجمعة: كانت مفاتيحها على iOS لا تجدول شيئًا (مسار الويب فقط).
+      // المراجعة: تكرار أصلي ثابت. الأذكار والمناسبات: جدولة متجددة بميزانية iOS المركزية.
       const { syncNativeDailyReminders, NATIVE_DAILY_REMINDER_KINDS } = await import(
         "./notifications/native-daily-reminders"
       );
       const nativeItems = buildDailySmartSchedule({
         prefs,
         includeStreakWarn: false,
-        forceWeekly: true,
       }).filter((it) => NATIVE_DAILY_REMINDER_KINDS.has(it.kind));
       const extra = await syncNativeDailyReminders(nativeItems);
+      const { syncNativeAdhkarReminders } = await import("./adhkar-reminders");
+      const adhkar = await syncNativeAdhkarReminders();
       maybeWarnStreakLoss();
       return {
         scheduled:
-          (prefs.quranDailyReminder ? 1 : 0) + (dhikr.ok ? dhikr.scheduled : 0) + extra.scheduled,
+          (prefs.quranDailyReminder ? 1 : 0) + (dhikr.ok ? dhikr.scheduled : 0) + extra.scheduled + adhkar,
         viaSw: false,
       };
     }
 
+    const { planForDevice, planToSmartItems } = await import("./adhkar-reminders");
     const items = buildDailySmartSchedule({
       prefs,
       khatmahBehind: opts?.khatmahBehind,
+      adhkarItems: planToSmartItems(await planForDevice({ days: 2, budget: 40 })),
     });
     const viaSw = await pushScheduleToServiceWorker(items);
     if (!viaSw) scheduleInPageFallbacks(items);

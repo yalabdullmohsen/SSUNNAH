@@ -19,6 +19,8 @@ export const PROTECTED_NON_PRAYER_IDS: readonly number[] = [9301];
 export function isProtectedNonPrayerId(id: number): boolean {
   if (PROTECTED_NON_PRAYER_IDS.includes(id)) return true;
   if (id >= 9401 && id <= 9499) return true;
+  // تذكيرات المحتوى المتكررة (9601–9629) والأذكار المتجددة (9700–9999)
+  if (id >= 9601 && id <= 9999) return true;
   return false;
 }
 

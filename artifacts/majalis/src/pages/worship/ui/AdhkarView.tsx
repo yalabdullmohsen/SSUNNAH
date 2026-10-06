@@ -209,6 +209,20 @@ export default function AdhkarPage() {
     }
   }, [category]);
 
+  /* ── رابط عميق من إشعار التذكير: ?dhikr=<id> يفتح الذكر نفسه (بعد استعادة التقدم) ── */
+  const deepLinked = useRef<string | null>(null);
+  useEffect(() => {
+    const id = new URLSearchParams(window.location.search).get("dhikr");
+    if (!id || deepLinked.current === `${category}:${id}`) return;
+    const idx = items.findIndex((i) => i.id === id);
+    if (idx < 0) return;
+    deepLinked.current = `${category}:${id}`;
+    setCurrentIndex(idx);
+    setAnimKey((k) => k + 1);
+    setTapCount(0);
+    setDone(false);
+  }, [items, category, location]);
+
   /* ── النقر للعدّ ── */
   const handleTap = useCallback(() => {
     if (!current || done) return;
