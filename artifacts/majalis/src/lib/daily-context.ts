@@ -1,3 +1,4 @@
+import { gregorianToHijri } from "@/lib/hijri-utils";
 /**
  * resolveDailyContext — محرّك السياق اليومي
  * دالة نقية (pure) لا تعتمد على state خارجي.
@@ -143,6 +144,9 @@ function resolveDayOfWeek(jsDay: number): DayOfWeek {
 // الخوارزمية: Jean Meeus "Astronomical Algorithms" — دقة ±1 يوم
 
 export function toHijri(date: Date, offsetDays = 0): HijriDate {
+  // أم القرى عبر Intl (مرجع المشروع)؛ المعادلة أدناه احتياط فقط حين لا يتوفر Intl
+  const umq = gregorianToHijri(new Date(date.getTime() + offsetDays * 86400000));
+  if (umq) return { day: umq.day, month: umq.month, year: umq.year };
   const jd = Math.floor(
     (date.getTime() / 86400000) + 2440587.5
   ) + offsetDays;

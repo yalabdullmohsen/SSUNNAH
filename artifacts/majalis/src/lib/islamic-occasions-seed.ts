@@ -1,3 +1,4 @@
+import { gregorianToHijri } from "@/lib/hijri-utils";
 import { arabicMatchAny } from "@/lib/arabic-search";
 
 export type IslamicOccasion = {
@@ -370,6 +371,9 @@ export const ISLAMIC_OCCASIONS: IslamicOccasion[] = [
 
 /** Simple hijri estimate from Gregorian (Umm al-Qura approximation). */
 export function estimateHijriDate(date = new Date()) {
+  // أم القرى عبر Intl (مرجع المشروع)؛ المعادلة أدناه احتياط فقط حين لا يتوفر Intl
+  const umq = gregorianToHijri(date);
+  if (umq) return { year: umq.year, month: umq.month, day: umq.day };
   const gregorian = new Date(date);
   const jd =
     Math.floor((1461 * (gregorian.getFullYear() + 4800 + Math.floor((gregorian.getMonth() - 14) / 12))) / 4) +
