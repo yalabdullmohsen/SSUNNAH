@@ -76,7 +76,8 @@ export function deferStylesheets(html) {
       .replace(/\s+media\s*=\s*["'][^"']*["']/i, "")
       .replace(/>$/, "")
       .trimEnd();
-    const deferred = `${withoutMedia} media="print" data-mj-css-defer>`;
+    /* fetchpriority=high: يبقى غير حاجب (print) لكن يصل قبل أول commit لـReact الذي ينتظره (main.tsx) */
+    const deferred = `${withoutMedia} fetchpriority="high" media="print" data-mj-css-defer>`;
     const noscriptInner = `${withoutMedia}>`;
     return `${deferred}<noscript>${noscriptInner}</noscript>`;
   });

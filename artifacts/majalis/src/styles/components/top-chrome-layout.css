@@ -58,7 +58,7 @@
 .navbar-v3__end {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 
