@@ -552,7 +552,8 @@ html.dark .navbar-v3 .navbar-brand__mark {
 .header-ticker__single-item {
   display: flex !important;
   align-items: center !important;
-  justify-content: center !important;
+  /* safe: يتوسّط النص القصير، والطويل يبدأ من أوله قابلًا للسحب (لا جزء غير قابل للوصول) */
+  justify-content: safe center !important;
   height: 100% !important;
 }
 .header-ticker__item {

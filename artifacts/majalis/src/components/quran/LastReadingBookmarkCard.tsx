@@ -49,7 +49,9 @@ function resolveResume(): Resume | null {
   }
   const page = loadPagePosition();
   if (page == null || page < 1) return null;
-  if (page === 1 && !loadReadingAyahKey()) return null;
+  // صفحة 1 بلا آية محفوظة (أو 1:1) ≠ استئناف ذي معنى — لا «آخر قراءة» وهمية
+  const savedKey = loadReadingAyahKey();
+  if (page === 1 && (!savedKey || savedKey === "1:1")) return null;
   const key = loadReadingAyahKey() || currentPageFirstAyah(page);
   const surah = Number(key.split(":")[0]);
   const name =
