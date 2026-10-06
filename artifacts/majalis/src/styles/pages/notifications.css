@@ -72,23 +72,6 @@ html.dark .notif-row__label {
 .notif-time__input:focus { border-color: var(--mj-brand-deep) !important; outline: none !important; box-shadow: 0 0 0 3px rgba(24,54,42,0.08) !important; }
 .notif-time__hint { color: var(--mj-muted, #8a9a8e) !important; font-size: 0.78rem !important; }
 
-/* زر الاختبار */
-.notif-test-btn {
-  width: 100% !important;
-  background: var(--mj-brand-deep) !important;
-  color: var(--mj-white, var(--mj-white)) !important;
-  border: none !important;
-  border-radius: var(--sf-radius-control, 1.125rem) !important;
-  font-weight: 700 !important;
-  font-size: 0.9rem !important;
-  padding: 0.8rem !important;
-  cursor: pointer !important;
-  transition: opacity 0.15s, transform 0.15s !important;
-  font-family: inherit !important;
-}
-.notif-test-btn:hover { opacity: 0.88 !important; transform: translateY(-1px); }
-.notif-test-btn:active { transform: translateY(0); }
-
 /* تم الحفظ */
 .notif-saved {
   background: var(--mj-brand-deep) !important;

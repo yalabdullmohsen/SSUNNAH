@@ -35,31 +35,6 @@ const baseDay = (partial?: Partial<NotifSectionPrefs>): NotifSectionPrefs => ({
   ...partial,
 });
 
-/** رسائل الصلاة — العنوان يحمل الحدث؛ المتن ساعة فقط بصيغة ص/م دون تكرار الاسم أو الوقت في الجملة. */
-export const PRAYER_MESSAGE_POOL = {
-  adhan: [
-    { title: "أذان الفجر", body: "ص {{clock}}" },
-    { title: "أذان الظهر", body: "ص {{clock}}" },
-    { title: "أذان العصر", body: "م {{clock}}" },
-    { title: "أذان المغرب", body: "م {{clock}}" },
-    { title: "أذان العشاء", body: "م {{clock}}" },
-  ],
-  pre: [
-    { title: "اقترب أذان الفجر", body: "ص {{clock}}" },
-    { title: "اقترب أذان الظهر", body: "ص {{clock}}" },
-    { title: "اقترب أذان العصر", body: "م {{clock}}" },
-    { title: "اقترب أذان المغرب", body: "م {{clock}}" },
-    { title: "اقترب أذان العشاء", body: "م {{clock}}" },
-  ],
-  post: [
-    { title: "تذكير بصلاة الفجر", body: "ص {{clock}}" },
-    { title: "تذكير بصلاة الظهر", body: "ص {{clock}}" },
-    { title: "تذكير بصلاة العصر", body: "م {{clock}}" },
-    { title: "تذكير بصلاة المغرب", body: "م {{clock}}" },
-    { title: "تذكير بصلاة العشاء", body: "م {{clock}}" },
-  ],
-} as const;
-
 export const NOTIF_SECTIONS: readonly NotifSectionMeta[] = [
   {
     id: "quran",

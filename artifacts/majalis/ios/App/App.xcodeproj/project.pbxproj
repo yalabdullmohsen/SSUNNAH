@@ -16,6 +16,11 @@
 		2FAD9763203C412B000D30F8 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD9762203C412B000D30F8 /* config.xml */; };
 		AA01BF04SHORTRING000001 /* short-ring.caf in Resources */ = {isa = PBXBuildFile; fileRef = AA01FR04SHORTRING000001 /* short-ring.caf */; };
 		AA01BF03SOFTRING0000001 /* soft-ring.caf in Resources */ = {isa = PBXBuildFile; fileRef = AA01FR03SOFTRING0000001 /* soft-ring.caf */; };
+		AA02BF01REMINDERTONE001 /* tone-nada.caf in Resources */ = {isa = PBXBuildFile; fileRef = AA02FR01REMINDERTONE001 /* tone-nada.caf */; };
+		AA02BF02REMINDERTONE002 /* tone-chime.caf in Resources */ = {isa = PBXBuildFile; fileRef = AA02FR02REMINDERTONE002 /* tone-chime.caf */; };
+		AA02BF03REMINDERTONE003 /* tone-fajr.caf in Resources */ = {isa = PBXBuildFile; fileRef = AA02FR03REMINDERTONE003 /* tone-fajr.caf */; };
+		AA02BF04REMINDERTONE004 /* tone-qatra.caf in Resources */ = {isa = PBXBuildFile; fileRef = AA02FR04REMINDERTONE004 /* tone-qatra.caf */; };
+		AA02BF05REMINDERTONE005 /* tone-nasim.caf in Resources */ = {isa = PBXBuildFile; fileRef = AA02FR05REMINDERTONE005 /* tone-nasim.caf */; };
 		AA01BF02ALARMCLEAR00001 /* alarm-clear.caf in Resources */ = {isa = PBXBuildFile; fileRef = AA01FR02ALARMCLEAR00001 /* alarm-clear.caf */; };
 		AA01BF01PRAYERALERT0001 /* prayer-alert.caf in Resources */ = {isa = PBXBuildFile; fileRef = AA01FR01PRAYERALERT0001 /* prayer-alert.caf */; };
 		364D1D47522246B3A2925CB0 /* PrayerLiveActivityLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BFB99A02A44271A9C1823F /* PrayerLiveActivityLiveActivity.swift */; };
@@ -170,6 +175,11 @@
 		AA01FR01PRAYERALERT0001 /* prayer-alert.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "prayer-alert.caf"; path = "Sounds/prayer-alert.caf"; sourceTree = "<group>"; };
 		AA01FR02ALARMCLEAR00001 /* alarm-clear.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "alarm-clear.caf"; path = "Sounds/alarm-clear.caf"; sourceTree = "<group>"; };
 		AA01FR03SOFTRING0000001 /* soft-ring.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "soft-ring.caf"; path = "Sounds/soft-ring.caf"; sourceTree = "<group>"; };
+		AA02FR01REMINDERTONE001 /* tone-nada.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "tone-nada.caf"; path = "Sounds/tone-nada.caf"; sourceTree = "<group>"; };
+		AA02FR02REMINDERTONE002 /* tone-chime.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "tone-chime.caf"; path = "Sounds/tone-chime.caf"; sourceTree = "<group>"; };
+		AA02FR03REMINDERTONE003 /* tone-fajr.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "tone-fajr.caf"; path = "Sounds/tone-fajr.caf"; sourceTree = "<group>"; };
+		AA02FR04REMINDERTONE004 /* tone-qatra.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "tone-qatra.caf"; path = "Sounds/tone-qatra.caf"; sourceTree = "<group>"; };
+		AA02FR05REMINDERTONE005 /* tone-nasim.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "tone-nasim.caf"; path = "Sounds/tone-nasim.caf"; sourceTree = "<group>"; };
 		AA01FR04SHORTRING000001 /* short-ring.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "short-ring.caf"; path = "Sounds/short-ring.caf"; sourceTree = "<group>"; };
 
 		A029FR01WIDGETBUNDLE /* PrayerWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerWidgetBundle.swift; sourceTree = "<group>"; };
@@ -274,6 +284,11 @@
 				AA01FR01PRAYERALERT0001 /* prayer-alert.caf */,
 				AA01FR02ALARMCLEAR00001 /* alarm-clear.caf */,
 				AA01FR03SOFTRING0000001 /* soft-ring.caf */,
+				AA02FR01REMINDERTONE001 /* tone-nada.caf */,
+				AA02FR02REMINDERTONE002 /* tone-chime.caf */,
+				AA02FR03REMINDERTONE003 /* tone-fajr.caf */,
+				AA02FR04REMINDERTONE004 /* tone-qatra.caf */,
+				AA02FR05REMINDERTONE005 /* tone-nasim.caf */,
 				AA01FR04SHORTRING000001 /* short-ring.caf */,
 				AD11FR03A1B2C3D4E5F6071890 /* adhan-short-aqsa.caf */,
 				AD11FR04A1B2C3D4E5F6071890 /* adhan-short-egypt.caf */,
@@ -502,6 +517,11 @@
 				AD11BF01A1B2C3D4E5F6071890 /* adhan-short-makkah.caf in Resources */,
 				AA01BF04SHORTRING000001 /* short-ring.caf in Resources */,
 				AA01BF03SOFTRING0000001 /* soft-ring.caf in Resources */,
+				AA02BF01REMINDERTONE001 /* tone-nada.caf in Resources */,
+				AA02BF02REMINDERTONE002 /* tone-chime.caf in Resources */,
+				AA02BF03REMINDERTONE003 /* tone-fajr.caf in Resources */,
+				AA02BF04REMINDERTONE004 /* tone-qatra.caf in Resources */,
+				AA02BF05REMINDERTONE005 /* tone-nasim.caf in Resources */,
 				AA01BF02ALARMCLEAR00001 /* alarm-clear.caf in Resources */,
 				AA01BF01PRAYERALERT0001 /* prayer-alert.caf in Resources */,
 				AD11BF03A1B2C3D4E5F6071890 /* adhan-short-aqsa.caf in Resources */,
