@@ -1917,6 +1917,16 @@ html.dark .hadith-browse-cta__desc {
   font-weight: 700;
   color: var(--sf-color-deep-emerald);
 }
+html[data-theme="dark"] .hadith-dataset-card__avail,
+html.dark .hadith-dataset-card__avail,
+html[data-theme="dark"] .hadith-dataset-card__count,
+html.dark .hadith-dataset-card__count {
+  color: var(--majalis-success);
+}
+html[data-theme="dark"] .hadith-dataset-card__break,
+html.dark .hadith-dataset-card__break {
+  color: var(--on-dark-secondary);
+}
 .hadith-dataset-card__title {
   font-size: 0.92rem;
   font-weight: 800;

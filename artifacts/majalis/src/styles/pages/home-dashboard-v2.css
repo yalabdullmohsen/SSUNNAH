@@ -257,6 +257,11 @@ html[data-v2-dashboard="1"] .m2030-home .m2030-band__link {
   color: var(--v2-color-emerald);
   font-weight: 700;
 }
+/* زمرد داكن على سطح ليلي = 2.3:1 — رمز النجاح الليلي (نفس روابط الوضع الليلي) */
+html[data-theme="dark"][data-v2-dashboard="1"] .m2030-home .m2030-band__link,
+html.dark[data-v2-dashboard="1"] .m2030-home .m2030-band__link {
+  color: var(--majalis-success);
+}
 
 /* إخفاء الأعمدة الخضراء الجانبية القديمة داخل الرئيسية */
 html[data-v2-dashboard="1"] .m2030-home [class*="border-inline-start"],

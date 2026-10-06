@@ -89,4 +89,22 @@ assert.doesNotMatch(
   "لا تبييض mj-ink في كتلة الأسطح",
 );
 
+/* رمز يعرّف نفسه بنفسه (--x: var(--x)) يبطل وقت الحساب فيرث كل مستهلك لون الأب —
+   هكذا صار نص «متابعة»/«حسابي» داكنًا على زر أخضر داكن حين صار --mj-white دوريًا. */
+{
+  const { readdirSync, statSync } = await import("node:fs");
+  const walk = (d: string): string[] =>
+    readdirSync(d).flatMap((n) => {
+      const p = resolve(d, n);
+      return statSync(p).isDirectory() ? walk(p) : p.endsWith(".css") ? [p] : [];
+    });
+  const cyclic = walk(resolve(root, "src")).flatMap((f) =>
+    [...readFileSync(f, "utf8").matchAll(/--([a-z0-9-]+)\s*:\s*var\(\s*--\1\s*[,)]/g)].map(
+      (m) => `${f.slice(root.length + 1)}: --${m[1]}`,
+    ),
+  );
+  assert.deepEqual(cyclic, [], "رمز CSS دوري (يعرّف نفسه بنفسه)");
+  assert.match(read("src/styles/theme-aliases.css"), /--mj-white:\s*var\(--on-dark-strong\)/);
+}
+
 console.log("dark-mode-heading-contrast-gate.test.ts: ok");

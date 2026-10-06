@@ -29,7 +29,6 @@
    ══════════════════════════════════════════════════════════════ */
 html[data-theme="dark"] :is(
   .navbar-login,
-  .hsh-eyebrow,
   .hsh-step__num,
   .kuwait-tab--active,
   .lib-sort-btn--active,
@@ -40,7 +39,6 @@ html[data-theme="dark"] :is(
 ),
 html.dark :is(
   .navbar-login,
-  .hsh-eyebrow,
   .hsh-step__num,
   .kuwait-tab--active,
   .lib-sort-btn--active,
