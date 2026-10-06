@@ -610,7 +610,7 @@
     "test:section-entry-card": "node --import tsx src/lib/__tests__/section-entry-card-gate.test.ts && node --import tsx src/lib/__tests__/ui-density-layout-gate.test.ts",
     "test:sunnah-notifications-policy": "node --import tsx src/lib/__tests__/sunnah-notifications-policy-gate.test.ts",
     "test:sunnah-audio-platform": "node --import tsx src/lib/__tests__/sunnah-audio-platform-gate.test.ts",
-    "test:prayer-notification-scheduler": "node --import tsx src/lib/__tests__/prayer-notification-scheduler.test.ts && node --import tsx src/lib/__tests__/prayer-notifications-rebuild.test.ts && pnpm run test:settings-notifications-unified",
+    "test:prayer-notification-scheduler": "node --import tsx src/lib/__tests__/prayer-notification-scheduler.test.ts && node --import tsx src/lib/__tests__/prayer-alerts-multiday.test.ts && node --import tsx src/lib/__tests__/prayer-notifications-rebuild.test.ts && pnpm run test:settings-notifications-unified",
     "audit:prelaunch-readiness": "node scripts/audit-prelaunch-readiness.mjs",
     "test:ui-density-layout": "node --import tsx src/lib/__tests__/ui-density-layout-gate.test.ts",
     "test:app-audio-coordinator": "node --import tsx src/lib/__tests__/app-audio-coordinator-gate.test.ts",

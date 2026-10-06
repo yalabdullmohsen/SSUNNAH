@@ -10,6 +10,7 @@
 import {
   calendarNoonInZone,
   epochAtZoneMinutes,
+  getPrayerTimes,
   type PrayerSlot,
   type PrayerTimesPayload,
 } from "./prayer-times";
@@ -149,6 +150,44 @@ export function listNativePrayerScheduleSlots(
         epoch,
         dateISO: dateISOInZone(tz, new Date(epoch)),
       });
+    }
+  }
+  return out.sort((a, b) => a.epoch - b.epoch);
+}
+
+/** أقصى أيام النافذة الأصلية — الميزانية (MAX_NATIVE_PRAYER_NOTIFS) تقصّها حسب الأنواع المفعّلة. */
+export const NATIVE_PRAYER_WINDOW_DAYS = 7;
+
+/**
+ * نافذة متعددة الأيام بمواقيت كل يوم الحقيقية من المحرك (getPrayerTimes لكل تاريخ) —
+ * كانت النافذة اليوم + الغد بدقائق اليوم، فتتوقف التنبيهات إن لم يُفتح التطبيق يومين.
+ * الأقرب أولًا؛ rescheduleAllNativePrayers يتوقف عند الميزانية.
+ */
+export async function listNativePrayerScheduleSlotsAhead(
+  prayers: PrayerSlot[],
+  timeZone: string,
+  days = NATIVE_PRAYER_WINDOW_DAYS,
+): Promise<Array<{ slot: PrayerSlot; epoch: number; dateISO: string }>> {
+  const todayNoon = calendarNoonInZone(timeZone);
+  const todayISO = dateISOInZone(timeZone, todayNoon);
+  // اليوم من الحمولة الحالية؛ ما بعده من المحرك بتاريخه (لا إعادة استعمال دقائق اليوم للغد).
+  const out = listNativePrayerScheduleSlots(prayers, timeZone).filter((s) => s.dateISO === todayISO);
+  if (!prayers.length) return out;
+  const loc = getActivePrayerLocation();
+  const now = Date.now();
+  for (let d = 1; d < days; d++) {
+    const noon = new Date(todayNoon.getTime() + d * 24 * 3600_000);
+    const dateISO = dateISOInZone(timeZone, noon);
+    let dayPrayers: PrayerSlot[];
+    try {
+      dayPrayers = (await getPrayerTimes(dateISO, { lat: loc.lat, lon: loc.lon, label: loc.label, timeZone })).prayers;
+    } catch {
+      break; // لا تخمين بدقائق يوم آخر
+    }
+    for (const slot of dayPrayers) {
+      if (!slot.obligatory || slot.minutes == null) continue;
+      const epoch = epochAtZoneMinutes(timeZone, slot.minutes, noon);
+      if (epoch > now) out.push({ slot, epoch, dateISO });
     }
   }
   return out.sort((a, b) => a.epoch - b.epoch);
@@ -359,7 +398,7 @@ export async function startPrayerAlertScheduler(
   _lastTimeZone = tz;
   _lastDateISO = todayISO;
 
-  const slots = listNativePrayerScheduleSlots(payload.prayers, tz);
+  const slots = await listNativePrayerScheduleSlotsAhead(payload.prayers, tz);
 
   /* Widget/LA App Group snapshot — مستقل عن تفعيل التنبيهات ونجاح جدولة الإشعارات. */
   if (isNative && isIOS && payload.prayers.length) {

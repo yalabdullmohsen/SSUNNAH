@@ -40,8 +40,11 @@ import { formatTime12 } from "@/lib/prayer-times";
 
 const PRAYER_ORDER = ["fajr", "dhuhr", "asr", "maghrib", "isha"] as const;
 
-/** ميزانية نظام التشغيل (~64) — نافذة: اليوم المتبقي + الغد × 5 × حتى 4 أنواع. */
-const MAX_NATIVE_PRAYER_NOTIFS = 48;
+/**
+ * حصة الصلاة من حد iOS (64 معلّقًا) — النافذة حتى 7 أيام تُقصّ بهذه الحصة (الأقرب أولًا).
+ * الباقي (24) للورد والذكر والمراجعة وتذكيرات الأذكار المتجددة (adhkar-reminders: PRAYER_RESERVED).
+ */
+const MAX_NATIVE_PRAYER_NOTIFS = 40;
 
 export type PermissionStatus = "granted" | "denied" | "prompt" | "unsupported";
 
