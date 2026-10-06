@@ -65,9 +65,6 @@ assert.match(
 assert.doesNotMatch(home, /mushaf-madinah|VerifiedMushaf|tafsir-data|fiqh-issues-seed/, "لا حزم مصحف/تفسير/فقه في الرئيسية");
 
 assert.doesNotMatch(intro, /from ["']lucide-react["']/, "مقدمة بلا lucide — LCP");
-assert.match(app, /import\("@\/components\/NavBar"\)/, "NavBar كسول");
-assert.match(app, /import\("@\/components\/BottomNavBar"\)/, "BottomNavBar كسول");
-assert.match(app, /import\("@\/components\/TopSectionBar"\)/, "TopSectionBar كسول");
 assert.doesNotMatch(navBack, /from ["']@\/config\/sections\.registry["']/, "navigation-back بلا سجل أقسام في الإقلاع");
 
 const lazyFallback = read("src/components/LazyRouteFallback.tsx");

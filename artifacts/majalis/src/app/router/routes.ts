@@ -45,6 +45,8 @@ function titleFromPath(path: string): string {
   "/tawba": "التوبة والاستغفار",
   "/sins-and-rights": "الذنوب والحقوق",
   "/settings": "الإعدادات",
+  "/more": "المزيد",
+  "/worship": "العبادات",
   "/widget-center": "مركز الويدجت",
   "/internal/status": "حالة المنصة",
   "/dev/design-system": "معرض نظام التصميم",
@@ -457,6 +459,7 @@ const PATHS = [
   "/learning/paths/:slug",
   "/lessons/paths",
   "/more",
+  "/worship",
   "/pathways",
   "/prayer",
   "/prophets/al-yasaa",
@@ -483,7 +486,7 @@ const PATHS = [
   "/tracks"
 ] as const;
 
-const NAV_PATHS = new Set(["/","/quran-hub","/lessons","/hadith","/adhkar","/prayer-times","/search"]);
+const NAV_PATHS = new Set(["/","/quran-hub","/lessons","/worship","/more","/hadith","/adhkar","/prayer-times","/search"]);
 
 function inferSection(path: string): AppRouteSection {
   if (path === "/") return "other";
@@ -500,7 +503,7 @@ function inferSection(path: string): AppRouteSection {
 }
 
 const SITEMAP_EXCLUDED =
-  /^\/(admin|dashboard|login|register|api|search|settings|account|auth|internal|hifz-path|dev)(\/|$)/;
+  /^\/(admin|dashboard|login|register|api|search|settings|account|auth|internal|hifz-path|dev|more|worship)(\/|$)/;
 
 export const ROUTE_REGISTRY: readonly AppRoute[] = PATHS.map((path) => ({
   path,

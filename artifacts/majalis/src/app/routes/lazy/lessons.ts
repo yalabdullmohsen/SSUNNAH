@@ -6,7 +6,7 @@ import { lazyWithRetry } from "@/lib/lazy-with-retry";
 
 const lazy = lazyWithRetry;
 
-export const LessonsPage = lazy(() => import("@/pages/lessons/LessonsPage"));
+export const LessonsPage = lazy(() => import("@/design-system/screens/LessonsScreen"));
 
 export const CompetitionsPage = lazy(() => import("@/pages/competitions/CompetitionsPage"));
 
@@ -18,7 +18,7 @@ export const TeacherDetailPage = lazy(() => import("@/pages/lessons/TeacherDetai
 
 export const LessonsArchivePage = lazy(() => import("@/pages/lessons/LessonsArchivePage"));
 
-export const LessonDetailPage = lazy(() => import("@/pages/lessons/LessonDetailPage"));
+export const LessonDetailPage = lazy(() => import("@/design-system/screens/LessonDetailScreen"));
 
 export const KuwaitLessonsPage = lazy(() => import("@/pages/lessons/KuwaitLessonsPage"));
 

@@ -12,9 +12,9 @@ export const FawaidPage = lazy(() => import("@/pages/account/FawaidPage"));
 
 export const QuizPage = lazy(() => import("@/pages/account/QuizPage"));
 
-export const LoginPage = lazyWithRetry(() => import("@/pages/account/LoginPage"), "LoginPage");
+export const LoginPage = lazyWithRetry(() => import("@/design-system/screens/AuthScreen"), "LoginPage");
 
-export const RegisterPage = lazyWithRetry(() => import("@/pages/account/RegisterPage"), "RegisterPage");
+export const RegisterPage = lazyWithRetry(() => import("@/design-system/screens/AuthScreen"), "RegisterPage");
 
 export const SettingsPage = lazy(() => import("@/pages/account/SettingsPage"));
 
@@ -23,6 +23,8 @@ export const FeatureTourPage = lazy(() => import("@/pages/account/FeatureTourPag
 export const AccountDeletionPage = lazy(() => import("@/pages/account/AccountDeletionPage"));
 
 export const SectionsPage = lazy(() => import("@/pages/account/SectionsPage"));
+export const MorePage = lazy(() => import("@/design-system/screens/MorePage"));
+export const WorshipPage = lazy(() => import("@/design-system/screens/WorshipPage"));
 
 export const IslamicGlossaryPage = lazy(() => import("@/pages/account/IslamicGlossaryPage"));
 

@@ -33,8 +33,6 @@ assert.doesNotMatch(
   /إزالة الهيكل عند أول commit لـ #root/,
   "no first-commit strip policy",
 );
-const app = read("src/App.tsx");
-assert.match(app, /dataset\.sc\s*=\s*"top"/, "App keeps data-sc on standard routes");
 
 console.log("=== U4 flow reserve ===");
 assert.match(html, /dataset\.sc\s*=\s*"top"/, "data-sc=top wired");

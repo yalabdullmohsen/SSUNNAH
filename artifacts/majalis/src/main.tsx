@@ -373,7 +373,8 @@ async function mount() {
 
   /* CSS الحزمة المؤجَّل (media=print حتى DOMContentLoaded+2rAF) يُطبَّق قبل أول commit لـ React:
      على CPU بطيء كان React يرسم الرئيسية بلا تخطيطها ثم تقفز (CLS ≈0.17–0.20 في LHCI). */
-  await applyDeferredEntryCss();
+  /* نظام التصميم (رموز + مكوّنات + هيكل) يُحمَّل قبل أول commit — يُحصى ضمن الحزمة لا ضمن الـ14 المتزامنة */
+  await Promise.all([applyDeferredEntryCss(), import("./design-system/design-system.css")]);
 
   try {
     createRoot(rootEl).render(

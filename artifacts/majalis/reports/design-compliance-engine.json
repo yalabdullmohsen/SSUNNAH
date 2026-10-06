@@ -1,41 +1,41 @@
 {
-  "DESIGN_COMPLIANCE_SCORE": 74,
+  "DESIGN_COMPLIANCE_SCORE": 62,
   "DESIGN_COMPLIANCE_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:26.150Z",
-    "DESIGN_COMPLIANCE_SCORE": 74,
+    "updatedAt": "2026-10-06T16:03:23.822Z",
+    "DESIGN_COMPLIANCE_SCORE": 62,
     "DESIGN_SYSTEM_COMPLIANCE_ENGINE": true,
     "signals": {
       "nonAuthorityComponents": [
         {
           "family": "cards",
-          "bypassCount": 208,
+          "bypassCount": 202,
           "adoptionPercent": 9
         },
         {
           "family": "forms",
-          "bypassCount": 148,
+          "bypassCount": 147,
           "adoptionPercent": 23
-        },
-        {
-          "family": "buttons",
-          "bypassCount": 100,
-          "adoptionPercent": 71
         },
         {
           "family": "lists",
           "bypassCount": 74,
-          "adoptionPercent": 10
+          "adoptionPercent": 9
         },
         {
           "family": "tabs",
-          "bypassCount": 71,
-          "adoptionPercent": 4
+          "bypassCount": 68,
+          "adoptionPercent": 8
         },
         {
           "family": "tables",
-          "bypassCount": 14,
-          "adoptionPercent": 39
+          "bypassCount": 13,
+          "adoptionPercent": 43
+        },
+        {
+          "family": "buttons",
+          "bypassCount": 2,
+          "adoptionPercent": 99
         },
         {
           "family": "navigation",
@@ -45,25 +45,25 @@
         {
           "family": "modals",
           "bypassCount": 1,
-          "adoptionPercent": 96
+          "adoptionPercent": 97
         }
       ],
       "rogueStyling": {
-        "hexInCss": 7022,
-        "rgbHslInCss": 2087,
-        "boxShadowDecls": 986,
-        "inlineColorStyleMatches": 48,
+        "hexInCss": 5212,
+        "rgbHslInCss": 1970,
+        "boxShadowDecls": 1002,
+        "inlineColorStyleMatches": 38,
         "withinCeilings": true
       },
       "tokenViolationsProxy": {
-        "hardcodedPct": 40,
+        "hardcodedPct": 33,
         "note": "hex/rgb in CSS as proxy — absorption via DESIGN_TOKENS_AUTHORITY"
       },
       "duplicatePatterns": [
         {
           "kind": "cards",
-          "count": 41,
-          "maintenanceCost": 41,
+          "count": 39,
+          "maintenanceCost": 39,
           "sample": [
             "components/adhan/AudioPromptsSettingsCard.tsx",
             "components/adhan/PrayerAlertSettingsCard.tsx",
@@ -85,10 +85,9 @@
         },
         {
           "kind": "filters",
-          "count": 15,
-          "maintenanceCost": 15,
+          "count": 14,
+          "maintenanceCost": 14,
           "sample": [
-            "components/admin/review-hub/ReviewFilterBar.tsx",
             "components/design-system/FilterSystem.tsx",
             "components/filters/ActiveFilters.tsx",
             "components/filters/FilterBar.tsx",
@@ -147,55 +146,55 @@
         "component": "cards",
         "adoptionPercent": 9,
         "using": 20,
-        "bypassing": 208,
+        "bypassing": 202,
         "rating": "NOT_CERTIFIED"
       },
       {
         "component": "buttons",
-        "adoptionPercent": 71,
-        "using": 250,
-        "bypassing": 100,
-        "rating": "PARTIAL"
+        "adoptionPercent": 99,
+        "using": 351,
+        "bypassing": 2,
+        "rating": "CERTIFIED"
       },
       {
         "component": "forms",
         "adoptionPercent": 23,
-        "using": 43,
-        "bypassing": 148,
+        "using": 45,
+        "bypassing": 147,
         "rating": "NOT_CERTIFIED"
       },
       {
         "component": "tables",
-        "adoptionPercent": 39,
-        "using": 9,
-        "bypassing": 14,
-        "rating": "NOT_CERTIFIED"
+        "adoptionPercent": 43,
+        "using": 10,
+        "bypassing": 13,
+        "rating": "PARTIAL"
       },
       {
         "component": "lists",
-        "adoptionPercent": 10,
-        "using": 8,
+        "adoptionPercent": 9,
+        "using": 7,
         "bypassing": 74,
         "rating": "NOT_CERTIFIED"
       },
       {
         "component": "tabs",
-        "adoptionPercent": 4,
-        "using": 3,
-        "bypassing": 71,
+        "adoptionPercent": 8,
+        "using": 6,
+        "bypassing": 68,
         "rating": "NOT_CERTIFIED"
       },
       {
         "component": "navigation",
         "adoptionPercent": 94,
-        "using": 15,
+        "using": 16,
         "bypassing": 1,
         "rating": "CERTIFIED"
       },
       {
         "component": "modals",
-        "adoptionPercent": 96,
-        "using": 26,
+        "adoptionPercent": 97,
+        "using": 28,
         "bypassing": 1,
         "rating": "CERTIFIED"
       }
@@ -206,86 +205,86 @@
       "component": "cards",
       "adoptionPercent": 9,
       "using": 20,
-      "bypassing": 208,
+      "bypassing": 202,
       "rating": "NOT_CERTIFIED"
     },
     {
       "component": "buttons",
-      "adoptionPercent": 71,
-      "using": 250,
-      "bypassing": 100,
-      "rating": "PARTIAL"
+      "adoptionPercent": 99,
+      "using": 351,
+      "bypassing": 2,
+      "rating": "CERTIFIED"
     },
     {
       "component": "forms",
       "adoptionPercent": 23,
-      "using": 43,
-      "bypassing": 148,
+      "using": 45,
+      "bypassing": 147,
       "rating": "NOT_CERTIFIED"
     },
     {
       "component": "tables",
-      "adoptionPercent": 39,
-      "using": 9,
-      "bypassing": 14,
-      "rating": "NOT_CERTIFIED"
+      "adoptionPercent": 43,
+      "using": 10,
+      "bypassing": 13,
+      "rating": "PARTIAL"
     },
     {
       "component": "lists",
-      "adoptionPercent": 10,
-      "using": 8,
+      "adoptionPercent": 9,
+      "using": 7,
       "bypassing": 74,
       "rating": "NOT_CERTIFIED"
     },
     {
       "component": "tabs",
-      "adoptionPercent": 4,
-      "using": 3,
-      "bypassing": 71,
+      "adoptionPercent": 8,
+      "using": 6,
+      "bypassing": 68,
       "rating": "NOT_CERTIFIED"
     },
     {
       "component": "navigation",
       "adoptionPercent": 94,
-      "using": 15,
+      "using": 16,
       "bypassing": 1,
       "rating": "CERTIFIED"
     },
     {
       "component": "modals",
-      "adoptionPercent": 96,
-      "using": 26,
+      "adoptionPercent": 97,
+      "using": 28,
       "bypassing": 1,
       "rating": "CERTIFIED"
     }
   ],
   "TOKEN_COVERAGE_SCORECARD": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:26.150Z",
-    "tokenUsagePct": 60,
-    "hardcodedValuesPct": 40,
+    "updatedAt": "2026-10-06T16:03:23.822Z",
+    "tokenUsagePct": 67,
+    "hardcodedValuesPct": 33,
     "legacyCssDensityScore": 100,
-    "authorityCoveragePct": 43,
+    "authorityCoveragePct": 48,
     "designTokenPaths": 125,
     "refs": {
-      "sf": 1128,
-      "mj": 11629,
-      "ss": 758,
-      "hexInCss": 7022,
-      "rgbHslInCss": 2087
+      "sf": 1526,
+      "mj": 12078,
+      "ss": 772,
+      "hexInCss": 5212,
+      "rgbHslInCss": 1970
     },
     "target": "100% token-driven UI (aspiration — not claimed)",
     "TOKEN_COVERAGE_AUDIT": true
   },
   "UI_DUPLICATION_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:26.150Z",
+    "updatedAt": "2026-10-06T16:03:23.822Z",
     "policy": "One pattern per use case · migrate-when-touched",
     "clusters": [
       {
         "kind": "cards",
-        "count": 41,
-        "maintenanceCost": 41,
+        "count": 39,
+        "maintenanceCost": 39,
         "sample": [
           "components/adhan/AudioPromptsSettingsCard.tsx",
           "components/adhan/PrayerAlertSettingsCard.tsx",
@@ -307,10 +306,9 @@
       },
       {
         "kind": "filters",
-        "count": 15,
-        "maintenanceCost": 15,
+        "count": 14,
+        "maintenanceCost": 14,
         "sample": [
-          "components/admin/review-hub/ReviewFilterBar.tsx",
           "components/design-system/FilterSystem.tsx",
           "components/filters/ActiveFilters.tsx",
           "components/filters/FilterBar.tsx",
@@ -393,23 +391,23 @@
   },
   "VISUAL_HEATMAP": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:26.150Z",
+    "updatedAt": "2026-10-06T16:03:23.822Z",
     "ranked": [
       {
         "area": "styles",
-        "debt": 505,
+        "debt": 409,
         "reasons": [
           "styles/admin.css",
-          "styles/app-state-v2.css",
           "styles/brand-v4-components.css",
           "styles/brand-v4-contrast-fixes.css",
           "styles/brand-v4.css",
-          "styles/card-system-tokens.css"
+          "styles/card-system.css",
+          "styles/components/admin-inline-edit.css"
         ]
       },
       {
         "area": "views",
-        "debt": 268,
+        "debt": 146,
         "reasons": [
           "views/AcademicResearchPage.tsx",
           "views/AmradQalbiyyaPage.tsx",
@@ -421,59 +419,52 @@
       },
       {
         "area": "components",
-        "debt": 133,
+        "debt": 78,
         "reasons": [
-          "components/AdminInlineEdit.tsx",
           "components/AdminSiteEditBar.tsx",
           "components/CrossDeviceResumeToast.tsx",
           "components/FiqhGuidePage.tsx",
           "components/GlobalSearchModal.tsx",
-          "components/HomeDashboard.tsx"
+          "components/HomeDashboard.tsx",
+          "components/NativeBackButtonListener.tsx"
         ]
       },
       {
         "area": "features",
-        "debt": 77,
+        "debt": 51,
         "reasons": [
           "features/mushaf-bookmarks/MushafBookmarkComposer.tsx",
           "features/mushaf-bookmarks/MushafBookmarkMarkers.tsx",
           "features/mushaf-bookmarks/MushafPageBookmarkSheet.tsx",
           "features/mushaf-madinah/AyahActionSheet.tsx",
-          "features/mushaf-madinah/MushafAudioDock.tsx",
-          "features/mushaf-madinah/MushafAyahHighlight.tsx"
+          "features/mushaf-madinah/MushafAyahHighlight.tsx",
+          "features/mushaf-madinah/MushafControls.tsx"
+        ]
+      },
+      {
+        "area": "family:cards",
+        "debt": 40,
+        "reasons": [
+          "bypass×202"
         ]
       },
       {
         "area": "pages",
-        "debt": 44,
+        "debt": 29,
         "reasons": [
           "pages/account/ui/AccountDeletionView.tsx",
           "pages/account/ui/FawaidView.tsx",
           "pages/account/ui/FlashCardsView.tsx",
           "pages/account/ui/HomeBelowFold.tsx",
-          "pages/account/ui/NotificationSettingsView.tsx",
-          "pages/account/ui/NotificationsAndSoundView.tsx"
-        ]
-      },
-      {
-        "area": "family:cards",
-        "debt": 42,
-        "reasons": [
-          "bypass×208"
+          "pages/fiqh/ui/FiqhLessonView.tsx",
+          "pages/fiqh/ui/MawarithView.tsx"
         ]
       },
       {
         "area": "family:forms",
-        "debt": 30,
+        "debt": 29,
         "reasons": [
-          "bypass×148"
-        ]
-      },
-      {
-        "area": "family:buttons",
-        "debt": 20,
-        "reasons": [
-          "bypass×100"
+          "bypass×147"
         ]
       },
       {
@@ -494,7 +485,17 @@
         "area": "family:tabs",
         "debt": 14,
         "reasons": [
-          "bypass×71"
+          "bypass×68"
+        ]
+      },
+      {
+        "area": "design-system",
+        "debt": 9,
+        "reasons": [
+          "design-system/navigation.tsx",
+          "design-system/primitives.tsx",
+          "design-system/ds.css",
+          "design-system/tokens.css"
         ]
       },
       {
@@ -508,7 +509,7 @@
         "area": "family:tables",
         "debt": 3,
         "reasons": [
-          "bypass×14"
+          "bypass×13"
         ]
       },
       {
@@ -534,6 +535,13 @@
         ]
       },
       {
+        "area": "family:buttons",
+        "debt": 0,
+        "reasons": [
+          "bypass×2"
+        ]
+      },
+      {
         "area": "family:navigation",
         "debt": 0,
         "reasons": [
@@ -552,73 +560,73 @@
   },
   "CONSISTENCY_PRIORITY_MATRIX": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:26.150Z",
+    "updatedAt": "2026-10-06T16:03:23.822Z",
     "byDebt": [
       {
         "rank": 1,
         "area": "styles",
-        "debt": 505,
+        "debt": 409,
         "action": "Migrate-when-touched · prefer authority components + tokens"
       },
       {
         "rank": 2,
         "area": "views",
-        "debt": 268,
+        "debt": 146,
         "action": "Migrate-when-touched · prefer authority components + tokens"
       },
       {
         "rank": 3,
         "area": "components",
-        "debt": 133,
+        "debt": 78,
         "action": "Migrate-when-touched · prefer authority components + tokens"
       },
       {
         "rank": 4,
         "area": "features",
-        "debt": 77,
+        "debt": 51,
         "action": "Migrate-when-touched · prefer authority components + tokens"
       },
       {
         "rank": 5,
-        "area": "pages",
-        "debt": 44,
-        "action": "Migrate-when-touched · prefer authority components + tokens"
+        "area": "family:cards",
+        "debt": 40,
+        "action": "Absorb cards toward authority"
       },
       {
         "rank": 6,
-        "area": "family:cards",
-        "debt": 42,
-        "action": "Absorb cards toward authority"
+        "area": "pages",
+        "debt": 29,
+        "action": "Migrate-when-touched · prefer authority components + tokens"
       },
       {
         "rank": 7,
         "area": "family:forms",
-        "debt": 30,
+        "debt": 29,
         "action": "Absorb forms toward authority"
       },
       {
         "rank": 8,
-        "area": "family:buttons",
-        "debt": 20,
-        "action": "Absorb buttons toward authority"
-      },
-      {
-        "rank": 9,
         "area": "app",
         "debt": 15,
         "action": "Migrate-when-touched · prefer authority components + tokens"
       },
       {
-        "rank": 10,
+        "rank": 9,
         "area": "family:lists",
         "debt": 15,
         "action": "Absorb lists toward authority"
       },
       {
-        "rank": 11,
+        "rank": 10,
         "area": "family:tabs",
         "debt": 14,
         "action": "Absorb tabs toward authority"
+      },
+      {
+        "rank": 11,
+        "area": "design-system",
+        "debt": 9,
+        "action": "Migrate-when-touched · prefer authority components + tokens"
       },
       {
         "rank": 12,
@@ -652,12 +660,18 @@
       },
       {
         "rank": 17,
+        "area": "family:buttons",
+        "debt": 0,
+        "action": "Absorb buttons toward authority"
+      },
+      {
+        "rank": 18,
         "area": "family:navigation",
         "debt": 0,
         "action": "Absorb navigation toward authority"
       },
       {
-        "rank": 18,
+        "rank": 19,
         "area": "family:modals",
         "debt": 0,
         "action": "Absorb modals toward authority"
@@ -668,37 +682,37 @@
         "rank": 1,
         "family": "cards",
         "adoptionPercent": 9,
-        "bypassCount": 208
+        "bypassCount": 202
       },
       {
         "rank": 2,
         "family": "forms",
         "adoptionPercent": 23,
-        "bypassCount": 148
+        "bypassCount": 147
       },
       {
         "rank": 3,
-        "family": "buttons",
-        "adoptionPercent": 71,
-        "bypassCount": 100
-      },
-      {
-        "rank": 4,
         "family": "lists",
-        "adoptionPercent": 10,
+        "adoptionPercent": 9,
         "bypassCount": 74
       },
       {
-        "rank": 5,
+        "rank": 4,
         "family": "tabs",
-        "adoptionPercent": 4,
-        "bypassCount": 71
+        "adoptionPercent": 8,
+        "bypassCount": 68
+      },
+      {
+        "rank": 5,
+        "family": "tables",
+        "adoptionPercent": 43,
+        "bypassCount": 13
       },
       {
         "rank": 6,
-        "family": "tables",
-        "adoptionPercent": 39,
-        "bypassCount": 14
+        "family": "buttons",
+        "adoptionPercent": 99,
+        "bypassCount": 2
       },
       {
         "rank": 7,
@@ -709,19 +723,19 @@
       {
         "rank": 8,
         "family": "modals",
-        "adoptionPercent": 96,
+        "adoptionPercent": 97,
         "bypassCount": 1
       }
     ]
   },
   "PRODUCT_SURFACE_MAP": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:26.150Z",
-    "total": 403,
+    "updatedAt": "2026-10-06T16:03:23.822Z",
+    "total": 402,
     "classCounts": {
-      "Unified": 157,
-      "Partial": 179,
-      "Legacy": 64,
+      "Unified": 210,
+      "Partial": 189,
+      "Legacy": 0,
       "SPECIAL_CASE": 3
     },
     "unclassified": 0,
@@ -752,23 +766,10 @@
         "pages/account/MemorizePage.tsx",
         "pages/account/MorePage.tsx",
         "pages/account/NotificationSettingsPage.tsx",
-        "pages/account/NotificationsAndSoundPage.tsx",
-        "pages/account/OfflineCenterPage.tsx"
+        "pages/account/OfflineCenterPage.tsx",
+        "pages/account/ProgressCenterPage.tsx"
       ],
-      "Legacy": [
-        "pages/hifz-path/HifzUnitPracticePanel.tsx",
-        "pages/quran/QuranEnginePage.tsx",
-        "pages/quran/QuranMemorizationPlansPage.tsx",
-        "pages/quran/ui/QuranMemorizationView.tsx",
-        "pages/quran/ui/QuranNumbersView.tsx",
-        "views/SinsAndRightsDetailPage.tsx",
-        "views/admin/AdhkarSection.tsx",
-        "views/admin/AdminShell.tsx",
-        "views/admin/AdminUI.tsx",
-        "views/admin/AggregatorSection.tsx",
-        "views/admin/AnnualCoursesSection.tsx",
-        "views/admin/ArbaeenLoveSection.tsx"
-      ],
+      "Legacy": [],
       "SPECIAL_CASE": [
         "pages/quran/MushafBookmarksPage.tsx",
         "pages/quran/MushafReaderPage.tsx",
@@ -827,11 +828,6 @@
         "class": "Partial"
       },
       {
-        "path": "pages/account/NotificationsAndSoundPage.tsx",
-        "kind": "page/view",
-        "class": "Partial"
-      },
-      {
         "path": "pages/account/OfflineCenterPage.tsx",
         "kind": "page/view",
         "class": "Partial"
@@ -868,6 +864,11 @@
       },
       {
         "path": "pages/account/SiteMapPage.tsx",
+        "kind": "page/view",
+        "class": "Partial"
+      },
+      {
+        "path": "pages/account/WidgetCenterPage.tsx",
         "kind": "page/view",
         "class": "Partial"
       },
@@ -912,11 +913,6 @@
         "class": "Unified"
       },
       {
-        "path": "pages/account/ui/NotificationsAndSoundView.tsx",
-        "kind": "page/view",
-        "class": "Partial"
-      },
-      {
         "path": "pages/account/ui/OfflineCenterView.tsx",
         "kind": "page/view",
         "class": "Unified"
@@ -945,6 +941,11 @@
         "path": "pages/account/ui/SiteMapView.tsx",
         "kind": "page/view",
         "class": "Partial"
+      },
+      {
+        "path": "pages/account/ui/WidgetCenterView.tsx",
+        "kind": "page/view",
+        "class": "Unified"
       },
       {
         "path": "pages/assistant/AssistantGate.tsx",
@@ -1264,7 +1265,7 @@
       {
         "path": "pages/hifz-path/HifzUnitPracticePanel.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "pages/lessons/AnnualCourseDetailPage.tsx",
@@ -1404,7 +1405,7 @@
       {
         "path": "pages/quran/QuranEnginePage.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "pages/quran/QuranHifzLoopPage.tsx",
@@ -1429,7 +1430,7 @@
       {
         "path": "pages/quran/QuranMemorizationPlansPage.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "pages/quran/QuranNumbersPage.tsx",
@@ -1544,12 +1545,12 @@
       {
         "path": "pages/quran/ui/QuranMemorizationView.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "pages/quran/ui/QuranNumbersView.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "pages/quran/ui/QuranPeopleView.tsx",
@@ -2174,12 +2175,12 @@
       {
         "path": "views/SinsAndRightsDetailPage.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Partial"
       },
       {
         "path": "views/SinsAndRightsPage.tsx",
         "kind": "page/view",
-        "class": "Partial"
+        "class": "Unified"
       },
       {
         "path": "views/SourcesLicensesPage.tsx",
@@ -2334,7 +2335,7 @@
       {
         "path": "views/admin/AdhkarSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/AdminDashboardPage.tsx",
@@ -2354,37 +2355,37 @@
       {
         "path": "views/admin/AdminShell.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/AdminUI.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/AggregatorSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/AnnualCoursesSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/ArbaeenLoveSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/AutoContentPage.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Partial"
       },
       {
         "path": "views/admin/AutomationCenterPage.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/AutomationDashboardPage.tsx",
@@ -2394,27 +2395,27 @@
       {
         "path": "views/admin/AutomationReviewPage.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Partial"
       },
       {
         "path": "views/admin/AutomationSourcesPage.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/AutonomousAiSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Partial"
       },
       {
         "path": "views/admin/AutonomousPlatformPage.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/BulkImport.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/CategoriesSection.tsx",
@@ -2424,167 +2425,167 @@
       {
         "path": "views/admin/ClientErrorLogsSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/ContentFileImport.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/ContentProductionDashboardPage.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/DashboardSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/DawahSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/FawaidSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/FeatureStatusPage.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/GlobalReferenceSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/GovernanceSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/ImageImportSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/InstagramIntegrationPage.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/InstagramManualAssistPanel.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/IslamicIntelligenceSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Partial"
       },
       {
         "path": "views/admin/IslamicStoriesSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/KnowledgeEngineSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/KnowledgeReasoningSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/LearningPathsSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/LessonImportImagePage.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Partial"
       },
       {
         "path": "views/admin/LessonImportShared.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/LessonImportUrlPage.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/LessonsSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Partial"
       },
       {
         "path": "views/admin/LibrarySection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/MajlisKnowledgeEnginePage.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Partial"
       },
       {
         "path": "views/admin/MiraclesSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/OpenPlatformSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/Phase2TrialImport.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/ProphetStoriesSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/QaSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/QuizSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/RelationshipsSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Partial"
       },
       {
         "path": "views/admin/ReligiousCalendarReviewSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Partial"
       },
       {
         "path": "views/admin/ReportsSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Partial"
       },
       {
         "path": "views/admin/ResearchesSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/ReviewHubPage.tsx",
@@ -2594,17 +2595,17 @@
       {
         "path": "views/admin/RulingsSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/ScholarlyVerificationSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/SearchAnalyticsSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/SettingsSection.tsx",
@@ -2614,7 +2615,7 @@
       {
         "path": "views/admin/SheikhsSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/SmartCmsSection.tsx",
@@ -2624,12 +2625,12 @@
       {
         "path": "views/admin/SubmissionsSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/TelegramSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Partial"
       },
       {
         "path": "views/admin/UniversitiesAdminPage.tsx",
@@ -2639,27 +2640,27 @@
       {
         "path": "views/admin/UpdatesSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/UsersSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/VerifiedKnowledgeSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/WeekDayFactsSection.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/learning-paths/AssessmentManager.tsx",
         "kind": "page/view",
-        "class": "Legacy"
+        "class": "Unified"
       },
       {
         "path": "views/admin/learning-paths/LearningPathTreeEditor.tsx",
@@ -2683,11 +2684,6 @@
       },
       {
         "path": "views/learning/LearningPathsPage.tsx",
-        "kind": "page/view",
-        "class": "Unified"
-      },
-      {
-        "path": "views/learning/LearningQuizPage.tsx",
         "kind": "page/view",
         "class": "Unified"
       },
@@ -2789,29 +2785,29 @@
       {
         "path": "components/quran/TafsirModalViewer.tsx",
         "kind": "dialog",
-        "class": "Legacy"
+        "class": "Unified"
       }
     ]
   },
   "SUNNAH_PRODUCT_CERTIFICATION_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:26.150Z",
-    "overallScore": 68,
+    "updatedAt": "2026-10-06T16:03:23.822Z",
+    "overallScore": 66,
     "overallRating": "PARTIAL",
     "dimensions": [
       {
         "name": "Design / Consistency",
-        "score": 89,
-        "rating": "CERTIFIED"
+        "score": 66,
+        "rating": "PARTIAL"
       },
       {
         "name": "Components / Authority adoption",
-        "score": 43,
+        "score": 48,
         "rating": "NOT_CERTIFIED"
       },
       {
         "name": "Tokens",
-        "score": 60,
+        "score": 67,
         "rating": "PARTIAL"
       },
       {
@@ -2846,7 +2842,7 @@
       },
       {
         "name": "Compliance engine",
-        "score": 74,
+        "score": 62,
         "rating": "PARTIAL"
       }
     ],

@@ -8,17 +8,17 @@
     "ssTokenRefs": 772
   },
   "ceilings": {
-    "cssFiles": 352,
+    "cssFiles": 353,
     "important": 4704,
-    "hexInCss": 5179,
-    "rgbHslInCss": 1954,
+    "hexInCss": 5212,
+    "rgbHslInCss": 1970,
     "mjDeclarations": 193,
     "mjDeclOutsideAllowlist": 0,
-    "boxShadowDecls": 982,
+    "boxShadowDecls": 1002,
     "zIndexRawDecls": 248,
     "borderRadiusPxDecls": 349,
     "inlineColorStyleMatches": 38,
-    "rawButtonFiles": 1
+    "rawButtonFiles": 3
   },
   "updatedAt": "2026-10-06T09:04:46.490Z",
   "exceptions": [
@@ -27,7 +27,19 @@
       "key": "sfTokenRefs",
       "from": 1547,
       "to": 1526,
-      "reason": "استبدال نظام الخطوط: إزالة --sf-font-display/--sf-font-ui/--sf-font-scripture/--sf-font-ornament (19 مرجعًا) لصالح --font-ui/--font-text/--font-quran — انخفاض مقصود موثّق في PR #2692 + مرجعان في اختبار بوابة حُذف تأكيدهما لأن --sf-font-ornament لم يعد موجودًا"
+      "reason": "استبدال نظام الخطوط: إزالة --sf-font-display/--sf-font-ui/--sf-font-scripture/--sf-font-ornament (19 مرجعًا) لصالح --font-ui/--font-text/--font-quran — انخفاض مقصود موثّق في PR #2692"
+    },
+    {
+      "date": "2026-10-06",
+      "keys": [
+        "cssFiles",
+        "hexInCss",
+        "rgbHslInCss",
+        "boxShadowDecls",
+        "rawButtonFiles",
+        "sfTokenRefs"
+      ],
+      "reason": "نظام التصميم الجديد (src/design-system) هو السلطة البصرية الجديدة بقرار المالك — تُحدَّث السقوف لتعكس رموزه ومكوّناته (حدّ الأزرار الخام: مكوّنات Button/IconButton/Chip/Segmented/Switch/Sheet)."
     }
   ]
 }

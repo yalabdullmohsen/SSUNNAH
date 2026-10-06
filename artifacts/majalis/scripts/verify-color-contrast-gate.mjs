@@ -44,11 +44,11 @@ const ASSERTIONS = [
   // الرئيسية المركّزة في إصدار الإطلاق: نفحص العناصر الثابتة الظاهرة بدل
   // ودجتات الحديث/المسابقة/المكتبة التي أصبحت اختيارية من شاشة التخصيص.
   // لا تتغير عتبات WCAG؛ تغيرت فقط أهداف DOM لتطابق البنية المنشورة فعليًا.
-  { route: "/", selector: ".m2030-btn--primary", mode: "light", min: 4.5 },
-  { route: "/", selector: ".m2030-btn--primary", mode: "dark", min: 4.5 },
-  { route: "/", selector: ".m2030-band__title", mode: "light", min: 4.5 },
+  { route: "/", selector: ".sn-btn--primary", mode: "light", min: 4.5 },
+  { route: "/", selector: ".sn-btn--primary", mode: "dark", min: 4.5 },
+  { route: "/", selector: ".sn-section-header__title", mode: "light", min: 4.5 },
   // بوّابات العلم تحت الطية مؤجّلة بعد LCP — نفحص عنوان الهيرو الثابت بدلًا من .m2030-feature__title
-  { route: "/", selector: ".home-page-hero .page-hero-mj__title", mode: "light", min: 4.5 },
+  { route: "/", selector: ".sn-navbar__large-title", mode: "light", min: 4.5 },
   // ── تكليف ثانٍ (2026-07-19، بند 7): عناوين "شارة" أقسام (نص أبيض/خلفية
   // خضراء داكنة، §4c في elite-2026.css) كانت تخسر لونها الأبيض المقصود أمام
   // قواعد `.home-section h2`/`.page-shell h2:not(...)` عالية التخصيص (بفعل
@@ -58,19 +58,19 @@ const ASSERTIONS = [
   // main() لا يُعيد زيارة مسار سبقت زيارته، فتأكيد "/" بعيد عن مجموعته هنا
   // يُقاس فعليًا على آخر مسار آخر تمت زيارته (فشل زائف، لا عطل تباين حقيقي). ──
   // هيرو الإطلاق: CTA أساسي واحد + شريحة متابعة دائمة (hw3) — لا زر شبح ثانٍ
-  { route: "/", selector: ".home-page-hero .hw3-chip--lead", mode: "light", min: 4.5 },
+  { route: "/", selector: ".sn-continue-row", mode: "light", min: 4.5 },
   // مواسم التعلّم قد تُؤجَّل تحت الطية — عنوان الهيرو يغطي فحص الوضع الليلي للرئيسية
-  { route: "/", selector: ".home-page-hero .page-hero-mj__title", mode: "dark", min: 3 },
+  { route: "/", selector: ".sn-navbar__large-title", mode: "dark", min: 3 },
   // banner إعلان الشراكة داخل الهيدر قد يُخفى بالإعداد — نفحص أزرار الهيرو الثابتة
-  { route: "/", selector: ".page-hero-mj__title", mode: "light", min: 3 },
-  { route: "/", selector: ".home-page-hero .m2030-btn--primary", mode: "light", min: 4.5 },
-  { route: "/", selector: ".page-hero-mj__actions .m2030-btn--primary", mode: "light", min: 4.5 },
-  { route: "/", selector: ".page-hero-mj__title", mode: "dark", min: 3 },
-  { route: "/", selector: ".home-page-hero .m2030-btn--primary", mode: "dark", min: 4.5 },
-  { route: "/", selector: ".page-hero-mj__actions .m2030-btn--primary", mode: "dark", min: 4.5 },
+  { route: "/", selector: ".sn-navbar__large-title", mode: "light", min: 3 },
+  { route: "/", selector: ".sn-btn--primary", mode: "light", min: 4.5 },
+  { route: "/", selector: ".sn-btn--primary", mode: "light", min: 4.5 },
+  { route: "/", selector: ".sn-navbar__large-title", mode: "dark", min: 3 },
+  { route: "/", selector: ".sn-btn--primary", mode: "dark", min: 4.5 },
+  { route: "/", selector: ".sn-btn--primary", mode: "dark", min: 4.5 },
   // أسطح أزرار رئيسية — primary / ghost / شريط سفلي نشط (عقد DS)
-  { route: "/", selector: ".bottom-nav__tab.is-active || .bottom-nav--v2 .bottom-nav__tab.is-active", mode: "light", min: 4.5 },
-  { route: "/", selector: ".bottom-nav__tab.is-active || .bottom-nav--v2 .bottom-nav__tab.is-active", mode: "dark", min: 4.5 },
+  { route: "/", selector: ".sn-tab[aria-current='page']", mode: "light", min: 4.5 },
+  { route: "/", selector: ".sn-tab[aria-current='page']", mode: "dark", min: 4.5 },
   // /cards: لا تعتمد على .sq-title — يظهر فقط إن وُجدت أسئلة SectionQuiz.
   // عنوان الصفحة الثابت (.cards-page-title) هو هدف التباين الدائم (WCAG على parchment).
   // مرتبط بفحص Color contrast — لا تُخفّف ألوان العنوان في cards.css دون إعادة هذا التأكيد.
@@ -104,11 +104,11 @@ const ASSERTIONS = [
   { route: "/janaza", selector: ".jnz-subtitle", mode: "dark", min: 4.5 },
   // "الدروس السابقة" في صفحة الدروس — بعد ضغط الواجهة لم يعد
   // `.lessons-v2-section__title` يُرسَم؛ يبقى فحص العنوان الحيّ.
-  { route: "/lessons", selector: ".lessons-past-section__title", mode: "light", min: 4.5 },
-  { route: "/lessons", selector: ".section-lobby__title", mode: "light", min: 3 },
-  { route: "/lessons", selector: ".section-lobby__title", mode: "dark", min: 3 },
-  { route: "/lessons", selector: ".lesson-unified-card__title", mode: "dark", min: 3 },
-  { route: "/lessons", selector: ".lesson-unified-card__btn--secondary", mode: "dark", min: 4.5 },
+  { route: "/lessons", selector: ".sn-navbar__subtitle", mode: "light", min: 4.5 },
+  { route: "/lessons", selector: ".sn-navbar__large-title", mode: "light", min: 3 },
+  { route: "/lessons", selector: ".sn-navbar__large-title", mode: "dark", min: 3 },
+  { route: "/lessons", selector: ".sn-lesson-card__link", mode: "dark", min: 3 },
+  { route: "/lessons", selector: ".sn-lesson-card__meta", mode: "dark", min: 4.5 },
   { route: "/quran-hub/numbers", selector: ".quran-hub-page__title", mode: "light", min: 3 },
   { route: "/quran-hub/numbers", selector: ".quran-hub-page__title", mode: "dark", min: 3 },
   { route: "/quran-hub/numbers", selector: ".quran-stat-card__label", mode: "light", min: 4.5 },
@@ -192,12 +192,12 @@ const ASSERTIONS = [
   { route: "/miracles/quran", selector: ".mk-card__summary", mode: "dark", min: 4.5 },
   { route: "/miracles/quran", selector: ".mk-pill--topic", mode: "light", min: 4.5 },
   { route: "/miracles/quran", selector: ".mk-pill--topic", mode: "dark", min: 4.5 },
-  { route: "/lessons", selector: ".filter-chips__chip", mode: "light", min: 4.5 },
-  { route: "/lessons", selector: ".filter-chips__chip", mode: "dark", min: 4.5 },
-  { route: "/lessons", selector: ".filter-chips__chip.is-active", mode: "light", min: 4.5 },
-  { route: "/lessons", selector: ".filter-chips__chip.is-active", mode: "dark", min: 4.5 },
-  { route: "/lessons", selector: ".lesson-unified-card__title", mode: "light", min: 4.5 },
-  { route: "/lessons", selector: ".lesson-unified-card__title", mode: "dark", min: 4.5 },
+  { route: "/lessons", selector: ".sn-chip", mode: "light", min: 4.5 },
+  { route: "/lessons", selector: ".sn-chip", mode: "dark", min: 4.5 },
+  { route: "/lessons", selector: ".sn-chip[aria-pressed='true']", mode: "light", min: 4.5 },
+  { route: "/lessons", selector: ".sn-chip[aria-pressed='true']", mode: "dark", min: 4.5 },
+  { route: "/lessons", selector: ".sn-lesson-card__link", mode: "light", min: 4.5 },
+  { route: "/lessons", selector: ".sn-lesson-card__link", mode: "dark", min: 4.5 },
   // ── مسار المساعد خلف علم المنتج: بوابة coming-soon (بدون eyebrow القديم) ──
   { route: "/assistant", selector: ".assistant-title", mode: "light", min: 4.5 },
   { route: "/assistant", selector: ".assistant-title", mode: "dark", min: 4.5 },

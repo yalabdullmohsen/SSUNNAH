@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-10-03T09:21:31.895Z",
+  "updatedAt": "2026-10-06T16:03:28.155Z",
   "RENDER_COST_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:31.895Z",
+    "updatedAt": "2026-10-06T16:03:28.155Z",
     "REACT_RENDER_COST_AUDIT": true,
     "method": "static proxies (hooks/effects/handlers/context) — NOT wall-clock CPU",
     "deviceRequired": "React Profiler / performance.measure on device for absolute CPU",
     "surfaces": [
       {
         "surface": "Mushaf",
-        "riskScore": 152,
+        "riskScore": 142,
         "hotFiles": [
           {
             "rel": "features/mushaf-reader/NewMushafReader.tsx",
@@ -61,19 +61,6 @@
             "listeners": 4
           },
           {
-            "rel": "features/mushaf-reader/MushafControlsLayer.tsx",
-            "score": 11,
-            "signals": [
-              "useEffect×6",
-              "inlineHandlers×27 weak-useCallback"
-            ],
-            "useEffects": 6,
-            "useStates": 5,
-            "contexts": 0,
-            "intervals": 0,
-            "listeners": 2
-          },
-          {
             "rel": "features/mushaf-madinah/AyahActionSheet.tsx",
             "score": 10,
             "signals": [
@@ -109,6 +96,18 @@
             "contexts": 0,
             "intervals": 0,
             "listeners": 3
+          },
+          {
+            "rel": "features/mushaf-reader/MushafControlsLayer.tsx",
+            "score": 1,
+            "signals": [
+              "useEffect×6"
+            ],
+            "useEffects": 6,
+            "useStates": 5,
+            "contexts": 0,
+            "intervals": 0,
+            "listeners": 2
           }
         ],
         "fileCountScored": 8
@@ -392,16 +391,16 @@
   },
   "MUSHAF_BOTTLENECK_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:31.895Z",
+    "updatedAt": "2026-10-06T16:03:28.155Z",
     "MUSHAF_PERFORMANCE_DEEP_DIVE": true,
     "policy": "No speculative fixes — numbers first",
     "staticAggregates": {
       "useEffect": 78,
-      "useState": 71,
+      "useState": 72,
       "setInterval": 0,
       "addEventListener": 25,
       "subscribe": 2,
-      "requestAnimationFrame": 15,
+      "requestAnimationFrame": 16,
       "ResizeObserver": 4,
       "MutationObserver": 0
     },
@@ -517,6 +516,17 @@
         "weight": 13
       },
       {
+        "path": "features/mushaf-shared/mushaf-ayah-sync-store.ts",
+        "useEffect": 0,
+        "useState": 0,
+        "setInterval": 0,
+        "addEventListener": 0,
+        "subscribe": 2,
+        "rAF": 1,
+        "observers": 0,
+        "weight": 11
+      },
+      {
         "path": "features/mushaf-madinah/MushafControls.tsx",
         "useEffect": 3,
         "useState": 2,
@@ -526,17 +536,6 @@
         "rAF": 1,
         "observers": 0,
         "weight": 9
-      },
-      {
-        "path": "features/mushaf-shared/mushaf-ayah-sync-store.ts",
-        "useEffect": 0,
-        "useState": 0,
-        "setInterval": 0,
-        "addEventListener": 0,
-        "subscribe": 2,
-        "rAF": 0,
-        "observers": 0,
-        "weight": 8
       },
       {
         "path": "features/mushaf-madinah/MushafSettingsSheet.tsx",
@@ -552,7 +551,7 @@
       {
         "path": "features/mushaf-reader/MushafReadingCoach.tsx",
         "useEffect": 2,
-        "useState": 2,
+        "useState": 3,
         "setInterval": 0,
         "addEventListener": 1,
         "subscribe": 0,
@@ -659,11 +658,11 @@
   },
   "STARTUP_PERFORMANCE_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:31.895Z",
+    "updatedAt": "2026-10-06T16:03:28.155Z",
     "STARTUP_PERFORMANCE_ELIMINATION": true,
-    "syncCssImportsInMain": 14,
+    "syncCssImportsInMain": 17,
     "syncCssList": [
-      "./styles/fonts-ui.css",
+      "./styles/font-faces-deferred.css",
       "./app/styles/theme.css",
       "./styles/sunnah-foundation-tokens.css",
       "./styles/sunnah-foundation-v2.css",
@@ -673,14 +672,17 @@
       "./styles/breakpoints.css",
       "./styles/typography-scale.css",
       "./styles/typography-app.css",
+      "./design-system/tokens.css",
+      "./design-system/ds.css",
+      "./design-system/shell/shell.css",
       "./index.css",
       "./styles/theme-aliases.css",
       "./styles/semantic-layer-tokens.css",
       "./styles/interaction-states.css"
     ],
-    "deferredMechanismHints": 84,
+    "deferredMechanismHints": 86,
     "visualBaseline": {
-      "mainSyncCssImports": 14,
+      "mainSyncCssImports": 17,
       "mainDeferredCssImports": 54
     },
     "budgets": {
@@ -705,7 +707,7 @@
       },
       {
         "stage": "Sync CSS in main.tsx",
-        "costProxy": "14 imports",
+        "costProxy": "17 imports",
         "rank": 2
       },
       {
@@ -733,14 +735,14 @@
   },
   "NETWORK_EFFICIENCY_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:31.895Z",
+    "updatedAt": "2026-10-06T16:03:28.155Z",
     "NETWORK_EFFICIENCY_PROGRAM": true,
     "totals": {
-      "supabaseFromApprox": 535,
+      "supabaseFromApprox": 541,
       "fetchApprox": 2,
       "refetchInterval": 0,
       "setInterval": 3,
-      "selectStar": 48
+      "selectStar": 0
     },
     "hotFiles": [
       {
@@ -753,24 +755,6 @@
         "weight": 320
       },
       {
-        "path": "lib/dawah-service.ts",
-        "supabase": 32,
-        "fetch": 0,
-        "refetchInterval": 0,
-        "setInterval": 0,
-        "selectStar": 5,
-        "weight": 114
-      },
-      {
-        "path": "lib/learning-paths-admin-service.ts",
-        "supabase": 29,
-        "fetch": 0,
-        "refetchInterval": 0,
-        "setInterval": 0,
-        "selectStar": 4,
-        "weight": 98
-      },
-      {
         "path": "lib/learning-paths-service.ts",
         "supabase": 46,
         "fetch": 0,
@@ -780,13 +764,31 @@
         "weight": 92
       },
       {
-        "path": "lib/categories-admin-service.ts",
-        "supabase": 25,
+        "path": "lib/dawah-service.ts",
+        "supabase": 29,
         "fetch": 0,
         "refetchInterval": 0,
         "setInterval": 0,
-        "selectStar": 3,
-        "weight": 80
+        "selectStar": 0,
+        "weight": 58
+      },
+      {
+        "path": "lib/learning-paths-admin-service.ts",
+        "supabase": 29,
+        "fetch": 0,
+        "refetchInterval": 0,
+        "setInterval": 0,
+        "selectStar": 0,
+        "weight": 58
+      },
+      {
+        "path": "lib/categories-admin-service.ts",
+        "supabase": 28,
+        "fetch": 0,
+        "refetchInterval": 0,
+        "setInterval": 0,
+        "selectStar": 0,
+        "weight": 56
       },
       {
         "path": "lib/platform-supabase.ts",
@@ -794,26 +796,8 @@
         "fetch": 0,
         "refetchInterval": 0,
         "setInterval": 0,
-        "selectStar": 3,
-        "weight": 80
-      },
-      {
-        "path": "lib/unified-content-service.ts",
-        "supabase": 8,
-        "fetch": 0,
-        "refetchInterval": 0,
-        "setInterval": 0,
-        "selectStar": 6,
-        "weight": 76
-      },
-      {
-        "path": "lib/auto-content-service.ts",
-        "supabase": 6,
-        "fetch": 0,
-        "refetchInterval": 0,
-        "setInterval": 0,
-        "selectStar": 6,
-        "weight": 72
+        "selectStar": 0,
+        "weight": 50
       },
       {
         "path": "lib/book-reading-plan-service.ts",
@@ -821,38 +805,20 @@
         "fetch": 0,
         "refetchInterval": 0,
         "setInterval": 0,
-        "selectStar": 3,
-        "weight": 60
+        "selectStar": 0,
+        "weight": 30
       },
       {
-        "path": "views/FamilyModePage.tsx",
+        "path": "lib/cms/cms-service.ts",
         "supabase": 13,
         "fetch": 0,
         "refetchInterval": 0,
         "setInterval": 0,
-        "selectStar": 3,
-        "weight": 56
+        "selectStar": 0,
+        "weight": 26
       },
       {
-        "path": "lib/platform-content-service.ts",
-        "supabase": 6,
-        "fetch": 0,
-        "refetchInterval": 0,
-        "setInterval": 0,
-        "selectStar": 4,
-        "weight": 52
-      },
-      {
-        "path": "lib/cms/supabase-cms.ts",
-        "supabase": 11,
-        "fetch": 0,
-        "refetchInterval": 0,
-        "setInterval": 0,
-        "selectStar": 1,
-        "weight": 32
-      },
-      {
-        "path": "lib/cms/cms-service.ts",
+        "path": "views/FamilyModePage.tsx",
         "supabase": 13,
         "fetch": 0,
         "refetchInterval": 0,
@@ -870,21 +836,12 @@
         "weight": 24
       },
       {
-        "path": "lib/vault-service.ts",
-        "supabase": 7,
+        "path": "lib/cms/supabase-cms.ts",
+        "supabase": 11,
         "fetch": 0,
         "refetchInterval": 0,
         "setInterval": 0,
-        "selectStar": 1,
-        "weight": 24
-      },
-      {
-        "path": "lib/user-submissions-service.ts",
-        "supabase": 6,
-        "fetch": 0,
-        "refetchInterval": 0,
-        "setInterval": 0,
-        "selectStar": 1,
+        "selectStar": 0,
         "weight": 22
       },
       {
@@ -906,33 +863,6 @@
         "weight": 18
       },
       {
-        "path": "lib/cms/audit-log.ts",
-        "supabase": 4,
-        "fetch": 0,
-        "refetchInterval": 0,
-        "setInterval": 0,
-        "selectStar": 1,
-        "weight": 18
-      },
-      {
-        "path": "lib/study-session-service.ts",
-        "supabase": 4,
-        "fetch": 0,
-        "refetchInterval": 0,
-        "setInterval": 0,
-        "selectStar": 1,
-        "weight": 18
-      },
-      {
-        "path": "views/admin/ProphetStoriesSection.tsx",
-        "supabase": 4,
-        "fetch": 0,
-        "refetchInterval": 0,
-        "setInterval": 0,
-        "selectStar": 1,
-        "weight": 18
-      },
-      {
         "path": "lib/arbaeen-love-service.ts",
         "supabase": 8,
         "fetch": 0,
@@ -951,12 +881,12 @@
         "weight": 16
       },
       {
-        "path": "lib/researcher-profile-service.ts",
-        "supabase": 3,
+        "path": "lib/unified-content-service.ts",
+        "supabase": 8,
         "fetch": 0,
         "refetchInterval": 0,
         "setInterval": 0,
-        "selectStar": 1,
+        "selectStar": 0,
         "weight": 16
       },
       {
@@ -967,14 +897,81 @@
         "setInterval": 0,
         "selectStar": 0,
         "weight": 16
+      },
+      {
+        "path": "views/TranscribePage.tsx",
+        "supabase": 8,
+        "fetch": 1,
+        "refetchInterval": 0,
+        "setInterval": 0,
+        "selectStar": 0,
+        "weight": 16
+      },
+      {
+        "path": "lib/guest-cloud-merge.ts",
+        "supabase": 7,
+        "fetch": 0,
+        "refetchInterval": 0,
+        "setInterval": 0,
+        "selectStar": 0,
+        "weight": 14
+      },
+      {
+        "path": "lib/vault-service.ts",
+        "supabase": 7,
+        "fetch": 0,
+        "refetchInterval": 0,
+        "setInterval": 0,
+        "selectStar": 0,
+        "weight": 14
+      },
+      {
+        "path": "lib/auto-content-service.ts",
+        "supabase": 6,
+        "fetch": 0,
+        "refetchInterval": 0,
+        "setInterval": 0,
+        "selectStar": 0,
+        "weight": 12
+      },
+      {
+        "path": "lib/platform-content-service.ts",
+        "supabase": 6,
+        "fetch": 0,
+        "refetchInterval": 0,
+        "setInterval": 0,
+        "selectStar": 0,
+        "weight": 12
+      },
+      {
+        "path": "lib/user-submissions-service.ts",
+        "supabase": 6,
+        "fetch": 0,
+        "refetchInterval": 0,
+        "setInterval": 0,
+        "selectStar": 0,
+        "weight": 12
+      },
+      {
+        "path": "lib/rulings-service.ts",
+        "supabase": 5,
+        "fetch": 0,
+        "refetchInterval": 0,
+        "setInterval": 0,
+        "selectStar": 0,
+        "weight": 10
+      },
+      {
+        "path": "lib/scholar-follow-service.ts",
+        "supabase": 5,
+        "fetch": 0,
+        "refetchInterval": 0,
+        "setInterval": 0,
+        "selectStar": 0,
+        "weight": 10
       }
     ],
     "findings": [
-      {
-        "kind": "overfetch",
-        "detail": "select('*') ×48",
-        "priority": "P0"
-      },
       {
         "kind": "dedupe",
         "detail": "Prefer React Query / single-flight (existing lessons-inflight-dedup gates)",
@@ -988,7 +985,7 @@
   },
   "PERFORMANCE_BUDGET_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:31.895Z",
+    "updatedAt": "2026-10-06T16:03:28.155Z",
     "PERFORMANCE_BUDGET_ENFORCEMENT": true,
     "source": "artifacts/majalis/performance-budget.json + test-bundle-budget.mjs",
     "declaredBudgets": {
@@ -1015,9 +1012,9 @@
       }
     },
     "liveBundle": {
-      "entryJsGzipKiB": 102.38,
-      "cssGzipKiB": 29.16,
-      "mushafPageJsGzipKiB": 29.78
+      "entryJsGzipKiB": 85.15,
+      "cssGzipKiB": 29.22,
+      "mushafPageJsGzipKiB": 30.6
     },
     "ciHooks": [
       "pnpm --filter @workspace/majalis run test:bundle-budget (post-build)",
@@ -1026,6 +1023,13 @@
       "test:lhci-budget / verify:lhci-threshold-calibration",
       "test:performance-excellence (this engine — static + alerts)"
     ],
-    "PERFORMANCE_DRIFT_ALERTS": []
+    "PERFORMANCE_DRIFT_ALERTS": [
+      {
+        "metric": "mainSyncCssImports",
+        "current": 17,
+        "budget": 16,
+        "severity": "WARN"
+      }
+    ]
   }
 }

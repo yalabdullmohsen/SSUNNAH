@@ -6,7 +6,7 @@ import { lazyWithRetry } from "@/lib/lazy-with-retry";
 
 const lazy = lazyWithRetry;
 
-export const SearchPage = lazy(() => import("@/pages/account/SearchPage"));
+export const SearchPage = lazy(() => import("@/design-system/screens/SearchScreen"));
 
 export const ReadingPlansPage = lazy(() => import("@/pages/library/ReadingPlansPage"));
 

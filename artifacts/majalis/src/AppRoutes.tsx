@@ -24,6 +24,8 @@ import {
   FeatureTourPage,
   AccountDeletionPage,
   SectionsPage,
+  MorePage,
+  WorshipPage,
   IslamicGlossaryPage,
   FlashCardsPage,
   NotificationSettingsPage,
@@ -705,7 +707,8 @@ export default function AppRoutes() {
       <Route path="/updates/auto/:slug"><SafeLazyRoute component={AutoContentDetailPage} /></Route>
       <Route path="/updates"><SafeLazyRoute component={UpdatesPage} /></Route>
       <Route path="/sections"><SafeLazyRoute component={SectionsPage} /></Route>
-      <Route path="/more"><Redirect to="/sections" /></Route>
+      <Route path="/more"><SafeLazyRoute component={MorePage} /></Route>
+      <Route path="/worship"><SafeLazyRoute component={WorshipPage} /></Route>
       <Route path="/whats-new"><Redirect to="/" /></Route>
       <Route path="/login"><SafeLazyRoute component={LoginPage} /></Route>
       <Route path="/register"><SafeLazyRoute component={RegisterPage} /></Route>

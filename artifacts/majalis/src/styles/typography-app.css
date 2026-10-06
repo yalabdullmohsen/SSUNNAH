@@ -264,42 +264,30 @@ html[data-ab="1"] .bottom-nav {
  * الأحجام بوحدة rem ليتكيّف التطبيق مع تكبير النص (Dynamic Type عبر --ui-font-scale على html).
  */
 /* ── الواجهة ── */
-.t-display { font: 700 2.125rem / 1.3 var(--font-ui); }
-.t-page-title { font: 700 1.75rem / 1.35 var(--font-ui); }
-.t-section-title { font: 600 1.375rem / 1.4 var(--font-ui); }
-.t-card-title { font: 600 1.0625rem / 1.5 var(--font-ui); }
-.t-body { font: 400 1rem / 1.6 var(--font-ui); }
-.t-secondary { font: 400 0.875rem / 1.6 var(--font-ui); }
-.t-label { font: 500 0.8125rem / 1.4 var(--font-ui); }
-.t-button { font: 600 1rem / 1.25 var(--font-ui); }
+.t-display { font: var(--sn-fw-bold) var(--sn-fs-large-title) / var(--sn-lh-large-title) var(--font-ui); }
+.t-page-title { font: var(--sn-fw-bold) var(--sn-fs-title1) / var(--sn-lh-title1) var(--font-ui); }
+.t-section-title { font: var(--sn-fw-semibold) var(--sn-fs-title2) / var(--sn-lh-title2) var(--font-ui); }
+.t-card-title { font: var(--sn-fw-semibold) var(--sn-fs-headline) / var(--sn-lh-headline) var(--font-ui); }
+.t-body { font: var(--sn-fw-regular) var(--sn-fs-body) / var(--sn-lh-body) var(--font-ui); }
+.t-secondary { font: var(--sn-fw-regular) var(--sn-fs-subhead) / var(--sn-lh-subhead) var(--font-ui); }
+.t-label { font: var(--sn-fw-medium) var(--sn-fs-footnote) / var(--sn-lh-footnote) var(--font-ui); }
+.t-button { font: var(--sn-fw-semibold) var(--sn-fs-callout) / 1.25 var(--font-ui); }
 
 /* ── النصوص الشرعية — تُستعمل عبر <HadithText> و<DhikrText> و<AyahText> أو مباشرة ── */
 .text-hadith,
 .text-dhikr {
-  font-family: var(--font-text);
-  font-size: 1.1875rem;
-  font-weight: 400;
-  line-height: 1.9;
+  font: var(--sn-fw-regular) var(--sn-fs-hadith) / var(--sn-lh-hadith) var(--font-text);
 }
 .text-hadith-featured {
-  font-family: var(--font-text);
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.8;
+  font: var(--sn-fw-bold) var(--sn-fs-hadith-featured) / var(--sn-lh-hadith-featured) var(--font-text);
 }
 .text-ayah {
-  font-family: var(--font-quran);
-  font-size: 1.375rem;
-  font-weight: 400;
-  line-height: 2;
+  font: var(--sn-fw-regular) var(--sn-fs-ayah) / var(--sn-lh-ayah) var(--font-quran);
 }
 /* المراجع: «رواه مسلم»، «الأنفال: ٤٥» — خط الواجهة بلون ثانوي */
 .text-ref {
-  font-family: var(--font-ui);
-  font-size: 0.8125rem;
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--text-secondary, var(--mj-ink-muted, inherit));
+  font: var(--sn-fw-regular) var(--sn-fs-footnote) / var(--sn-lh-footnote) var(--font-ui);
+  color: var(--sn-text-secondary);
 }
 
 /* ── ضبط الجودة الطباعية ── */

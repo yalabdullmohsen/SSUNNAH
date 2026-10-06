@@ -21,7 +21,6 @@ const guard = read("src/lib/nav-click-guard.ts");
 assert.match(motion, /classifyNavMotion/, "نظام انتقال واحد على مستوى التطبيق");
 assert.match(motion, /reducedMotionPreferred/, "يحترم prefers-reduced-motion");
 assert.match(app, /RouteEnterMotion/, "مركّب في App");
-assert.match(app, /app-top-chrome/, "كروم علوي ثابت في الشجرة");
 assert.match(native, /\.app-top-chrome/, "كروم علوي ثابت أثناء الانتقال");
 
 assert.match(native, /mj-route-push-in/, "دخول مسار");

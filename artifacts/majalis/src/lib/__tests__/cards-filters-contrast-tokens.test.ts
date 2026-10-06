@@ -36,8 +36,8 @@ assert.match(gate, /route:\s*"\/miracles"/);
 assert.match(gate, /\.hub-card__title/);
 assert.match(gate, /\.hub-card__desc/);
 assert.match(gate, /\.hub-card__go/);
-assert.match(gate, /\.filter-chips__chip/);
-assert.match(gate, /\.lesson-unified-card__title/);
+assert.match(gate, /\.sn-chip/);
+assert.match(gate, /\.sn-lesson-card__link/);
 
 // /cards: عنوان الصفحة الثابت — لا .sq-title (يختفي إن خلت أسئلة الـquiz)
 assert.match(gate, /route:\s*"\/cards"/);

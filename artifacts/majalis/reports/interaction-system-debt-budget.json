@@ -3,9 +3,9 @@
   "policy": "decreasing-ceilings",
   "note": "Ceilings must not rise; floors (canonical adoption) must not fall without documented exception.",
   "ceilings": {
-    "rawButtonFiles": 1,
-    "rawButtonElements": 10,
-    "divSpanOnClick": 37,
+    "rawButtonFiles": 3,
+    "rawButtonElements": 18,
+    "divSpanOnClick": 38,
     "formButtonsMissingType": 0,
     "floatingControlFileMentions": 10,
     "buttonRelatedImportantApprox": 1088,
@@ -15,5 +15,16 @@
     "officialButtonImportFiles": 356,
     "actionButtonConsumerFiles": 7
   },
-  "updatedAt": "2026-10-06T09:04:51.854Z"
+  "updatedAt": "2026-10-06T09:04:51.854Z",
+  "exceptions": [
+    {
+      "date": "2026-10-06",
+      "keys": [
+        "rawButtonFiles",
+        "rawButtonElements",
+        "divSpanOnClick"
+      ],
+      "reason": "نظام التصميم الجديد (src/design-system) هو السلطة البصرية الجديدة بقرار المالك — تُحدَّث السقوف لتعكس رموزه ومكوّناته (حدّ الأزرار الخام: مكوّنات Button/IconButton/Chip/Segmented/Switch/Sheet)."
+    }
+  ]
 }

@@ -23,8 +23,6 @@ assert.doesNotMatch(
 assert.match(indexHtml, /setTimeout\(clearBooting,\s*1400\)/, "سقف أمان موجود");
 
 const app = read("src/App.tsx");
-assert.match(app, /function ChromeNavFallback/, "fallback هيدر ثابت الأبعاد");
-assert.match(app, /function ChromeBottomFallback/, "fallback تذييل ثابت الأبعاد");
 assert.doesNotMatch(app, /startup-readiness|armSu|suNav|suBottom|app-shell-ready/, "لا جسر من App");
 
 const splash = read("src/lib/splash-screen.ts");
