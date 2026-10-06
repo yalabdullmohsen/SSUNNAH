@@ -81,7 +81,7 @@ assert.doesNotMatch(app, /HomeInitialShell/, "لا HomeInitialShell بعد فص�
 assert.doesNotMatch(app, /HomeHeroLcp[\s\S]{0,120}aria-hidden/, "هيرو الرئيسية ليس مخفياً عن قارئ الشاشة");
 assert.doesNotMatch(app, /scheduleRemoveHomeLcpStaticShell/, "لا إزالة صدفة HTML");
 assert.match(critical, /\.hsh-steps\s*\{[\s\S]*min-height:\s*14rem/, "حجز CLS لشبكة hsh-steps المضغوطة");
-assert.doesNotMatch(html, /Majlis(Amiri)?Fallback/, "لا خطوط بديلة معايَرة قديمة");
+assert.doesNotMatch(html, /MajlisFallback/, "لا خطوط بديلة معايَرة قديمة");
 assert.match(homeCss, /contain:\s*layout style/, "حاوية placeholder بلا min-height مبالغ");
 assert.match(critical, /\.home-start-here--compact|\.home-start-here--slim|\.home-start-here[^{]*\{[^}]*min-height:\s*12\.5rem/, "حجز ابدأ من هنا المضغوط = ارتفاع المحتوى الفعلي");
 assert.match(critical, /\.mj-home-primary-discovery-ph[\s\S]*min-height:\s*22rem/, "حجز الاكتشاف المضغوط");

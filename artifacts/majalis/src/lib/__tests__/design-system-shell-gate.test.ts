@@ -44,7 +44,7 @@ const darkBlock = tokens.slice(tokens.indexOf('html[data-theme="dark"]'));
 for (const t of ["--sn-bg", "--sn-surface", "--sn-primary", "--sn-text-primary", "--sn-text-secondary", "--sn-separator", "--sn-e1"]) {
   assert.match(darkBlock, new RegExp(`${t}:`), `داكن: ${t}`);
 }
-const scale: Record<string, string> = { "large-title": "2.125rem", title1: "1.75rem", title2: "1.375rem", title3: "1.25rem", headline: "1.0625rem", body: "1.0625rem", callout: "1rem", subhead: "0.9375rem", footnote: "0.8125rem", caption: "0.75rem", hadith: "1.25rem", "hadith-featured": "1.5rem", ayah: "1.5rem" };
+const scale: Record<string, string> = { "large-title": "2.125rem", title1: "1.75rem", title2: "1.375rem", title3: "1.25rem", headline: "1.0625rem", body: "1rem", callout: "1rem", subhead: "0.875rem", footnote: "0.8125rem", caption: "0.75rem", hadith: "1.1875rem", "hadith-featured": "1.5rem", ayah: "1.375rem" };
 for (const [k, v] of Object.entries(scale)) assert.match(tokens, new RegExp(`--sn-fs-${k}:\\s*${v.replace(".", "\\.")}`), `سلّم الطباعة ${k}=${v}`);
 for (const [k, v] of Object.entries({ s1: 4, s2: 8, s3: 12, s4: 16, s5: 20, s6: 24, s7: 32, s8: 40 })) assert.match(tokens, new RegExp(`--sn-${k}:\\s*${v}px`), `شبكة 4: ${k}`);
 assert.match(tokens, /--sn-page-x:\s*20px/, "هامش الصفحة 20");

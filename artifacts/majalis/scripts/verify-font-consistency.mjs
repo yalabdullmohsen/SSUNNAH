@@ -1,12 +1,10 @@
 #!/usr/bin/env node
 /**
  * بوابة نظام الخطوط (font-system.css) — تفشل عند أي انحراف عن التركيبة المعتمدة:
- *   "Sunnah UI"    ← IBM Plex Sans Arabic (400/500/600/700)
- *   "Sunnah Text"  ← Amiri (400/700)
- *   "Sunnah Quran" ← Amiri Quran (400)
+ *   "Almarai" (300/400/700/800) — الخط الوحيد للتطبيق؛ --font-ui/--font-text/--font-quran كلها تشير إليه
  * القواعد:
  *   1) تعريفات @font-face في src/styles/font-system.css فقط (+ صفحات HTML المستقلة خارج التطبيق).
- *   2) ملفات woff2 + رخصة OFL لكل خط في public/fonts/sunnah/.
+ *   2) ملفات woff2 (ar + lat لكل وزن) + رخصة OFL في public/fonts/almarai/.
  *   3) لا Google Fonts/CDN، ولا اسم خط قديم في أي مكان.
  *   4) كل font-family في CSS يستهلك var(--font-ui|text|quran|mono) فقط (أو inherit)،
  *      باستثناء خطوط جليفات المصحف (qpc-v2 / --mm-qpc-family / --nm-qpc-family / --qe-reader-font).
@@ -40,28 +38,24 @@ const fontSystem =
   (existsSync(deferredPath) ? readFileSync(deferredPath, "utf8") : "");
 if (!fontSystem) fail.push("src/styles/font-system.css غير موجود");
 
-const REQUIRED_FACES = [
-  ["Sunnah UI", [400, 500, 600, 700], "plex-sans-arabic"],
-  ["Sunnah Text", [400, 700], "amiri"],
-  ["Sunnah Quran", [400], "amiri-quran"],
-];
-for (const [family, weights, base] of REQUIRED_FACES) {
-  for (const w of weights) {
-    const ar = `${base}-${w}-ar.woff2`;
-    if (!existsSync(path.join(ROOT, "public/fonts/sunnah", ar))) fail.push(`ملف الخط مفقود: public/fonts/sunnah/${ar}`);
-    if (!fontSystem.includes(`/fonts/sunnah/${ar}`)) fail.push(`font-system.css لا يعرّف ${family} ${w} (${ar})`);
+const WEIGHTS = [300, 400, 700, 800];
+for (const w of WEIGHTS) {
+  for (const sub of ["ar", "lat"]) {
+    const f = `almarai-${w}-${sub}.woff2`;
+    if (!existsSync(path.join(ROOT, "public/fonts/almarai", f))) fail.push(`ملف الخط مفقود: public/fonts/almarai/${f}`);
+    if (!fontSystem.includes(`/fonts/almarai/${f}`)) fail.push(`تعريفات الخطوط لا تشير إلى ${f}`);
   }
-  if (!new RegExp(`font-family:\\s*"${family}"`).test(fontSystem)) fail.push(`font-system.css بلا @font-face للعائلة "${family}"`);
 }
+if (!/font-family:\s*"Almarai"/.test(fontSystem)) fail.push('font-system.css بلا @font-face للعائلة "Almarai"');
+if (/font-family:\s*"(?!Almarai")/.test(fontSystem)) fail.push("@font-face لعائلة غير Almarai في ملفات نظام الخطوط");
 if (/font-display:\s*(?!swap)\w+/.test(fontSystem)) fail.push("font-display يجب أن يكون swap في font-system.css");
-for (const f of ["OFL-IBM-Plex-Sans-Arabic.txt", "OFL-Amiri.txt", "OFL-Amiri-Quran.txt"]) {
-  if (!existsSync(path.join(ROOT, "public/fonts/sunnah", f))) fail.push(`رخصة OFL مفقودة: public/fonts/sunnah/${f}`);
-}
+if (!existsSync(path.join(ROOT, "public/fonts/almarai/OFL-Almarai.txt"))) fail.push("رخصة OFL مفقودة: public/fonts/almarai/OFL-Almarai.txt");
 for (const t of ["--font-ui", "--font-text", "--font-quran"]) {
-  if (!new RegExp(`${t}:\\s*"Sunnah`).test(fontSystem)) fail.push(`font-system.css يجب أن يعرّف ${t}`);
+  if (!new RegExp(`${t}:\\s*("Almarai"|var\\(--font-ui\\))`).test(fontSystem)) fail.push(`font-system.css يجب أن يعرّف ${t} ليشير إلى Almarai`);
 }
 const faceCount = (fontSystem.match(/@font-face/g) || []).length;
-if (faceCount !== 13) fail.push(`عدد @font-face في font-system.css = ${faceCount} (المتوقع 13)`);
+if (faceCount !== 8) fail.push(`عدد @font-face في ملفات نظام الخطوط = ${faceCount} (المتوقع 8: 4 أوزان × ar/lat)`);
+if (existsSync(path.join(ROOT, "public/fonts/sunnah"))) fail.push("مجلد الخطوط القديم public/fonts/sunnah يجب أن يُحذف");
 
 /* @font-face خارج font-system.css (التطبيق فقط؛ صفحات HTML المستقلة مستثناة) */
 for (const p of walk(path.join(ROOT, "src"), [".css", ".ts", ".tsx"])) {
@@ -70,7 +64,7 @@ for (const p of walk(path.join(ROOT, "src"), [".css", ".ts", ".tsx"])) {
 }
 
 /* ── 3) CDN وأسماء قديمة ── */
-const OLD = /Scheherazade|Noto Naskh|Noto Sans Arabic|Aref Ruqaa|Alexandria|Traditional Arabic|Tajawal|\bCairo\b|MajlisAmiriFallback|MajlisFallback|KFGQPC|Arabic Typesetting|--font-app\b|--font-reading\b|--font-body\b|--font-display\b|--mj-ui\b|--mj-face\b|--v2-font-|--sf-font-|fonts\/ui\/|fonts-ui/;
+const OLD = /IBM Plex|Plex Sans|\bAmiri|Sunnah (UI|Text|Quran)|fonts\/sunnah|Scheherazade|Noto Naskh|Noto Sans Arabic|Aref Ruqaa|Alexandria|Traditional Arabic|Tajawal|\bCairo\b|MajlisAmiriFallback|MajlisFallback|KFGQPC|Arabic Typesetting|--font-app\b|--font-reading\b|--font-body\b|--font-display\b|--mj-ui\b|--mj-face\b|--v2-font-|--sf-font-|fonts\/ui\/|fonts-ui/;
 const CDN = /fonts\.googleapis\.com|fonts\.gstatic\.com|use\.typekit|cdn\.jsdelivr\.net\/npm\/@fontsource/;
 const scanTargets = [
   ...walk(path.join(ROOT, "src"), [".css", ".ts", ".tsx"]),
@@ -136,4 +130,4 @@ if (fail.length) {
   if (fail.length > 60) console.error(`  … و${fail.length - 60} أخرى`);
   process.exit(1);
 }
-console.log("✓ فحص نظام الخطوط: Sunnah UI / Text / Quran — 13 وجهًا، بلا CDN ولا خط قديم ولا font-family خارج الرموز");
+console.log("✓ فحص نظام الخطوط: Almarai — 8 أوجه، بلا CDN ولا خط قديم ولا font-family خارج الرموز");

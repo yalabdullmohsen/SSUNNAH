@@ -109,7 +109,7 @@ function measureInPage(peakShimmer) {
   };
   const clipped = (el) => {
     if (!el) return false;
-    /* Amiri نسخي: الحبر (تشكيل/نوازل) يتجاوز صندوق السطر ببضعة بكسلات دون اقتطاع بصري */
+    /* خط نسخي بتشكيل كثيف: الحبر (تشكيل/نوازل) يتجاوز صندوق السطر ببضعة بكسلات دون اقتطاع بصري */
     if (el.scrollHeight > el.clientHeight + 6) return true;
     const cs = getComputedStyle(el);
     const maxH = parseFloat(cs.maxHeight);

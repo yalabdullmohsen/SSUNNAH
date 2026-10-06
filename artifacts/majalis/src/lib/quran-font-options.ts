@@ -1,7 +1,6 @@
 /**
- * Quran reader typeface cycle (`toggleFont`) — الخيارات الثلاثة تستعمل خطوط نظام الخطوط فقط:
- *   uthmani → --font-quran (Amiri Quran) · amiri → --font-text (Amiri) · naskh → --font-ui (IBM Plex Sans Arabic)
- * Mapped onto existing `QuranFontId` so Settings stay in sync.
+ * Quran reader typeface cycle (`toggleFont`) — خط واحد معتمد: Almarai (--font-quran → --font-ui).
+ * يبقى النوع `QuranFontId` وبنية الخيارات لتوافق التفضيلات المحفوظة ولأي خط مستقبلي.
  */
 import type { QuranFontId } from "@/hooks/useQuranPreferences";
 
@@ -18,21 +17,9 @@ export type QuranFontOption = {
 /** Cycle order matches the RN sketch. */
 export const FONT_OPTIONS: readonly QuranFontOption[] = [
   {
-    id: "amiri",
-    label: "Amiri",
-    labelAr: "أميري",
-    stack: "var(--font-text)",
-  },
-  {
-    id: "naskh",
-    label: "IBM Plex Sans Arabic",
-    labelAr: "الواجهة",
-    stack: "var(--font-ui)",
-  },
-  {
     id: "uthmani",
-    label: "Amiri Quran",
-    labelAr: "قرآني",
+    label: "Almarai",
+    labelAr: "الخط الموحّد",
     stack: "var(--font-quran)",
   },
 ] as const;

@@ -1,7 +1,7 @@
 /**
  * طباعة واجهة التطبيق — خارج المصحف/QPC.
- * خط الواجهة الموحّد --font-ui (IBM Plex Sans Arabic).
- * النصوص الشرعية --font-text (Amiri): أحاديث/أذكار/أدعية؛ الآيات --font-quran (Amiri Quran).
+ * خط الواجهة الموحّد --font-ui (Almarai).
+ * النصوص الشرعية --font-text (Almarai): أحاديث/أذكار/أدعية؛ الآيات --font-quran (Almarai).
  */
 
   :root {
@@ -18,7 +18,7 @@
   --lh-type-card: var(--v2-lh-title, 1.4);
   --lh-type-prose: var(--v2-lh-body, 1.7);
 
-  /* أوزان الواجهة فقط: 400 / 500 / 700 (مغطاة بملفات Amiri) */
+  /* أوزان الواجهة: Almarai 300/400/700/800 — 500 يُرسم بوجه 400 (خريطة الأوزان في font-system.css) */
   --fw-regular: var(--v2-fw-regular, 400);
   --fw-medium: var(--v2-fw-medium, 500);
   --fw-bold: var(--v2-fw-bold, 700);
@@ -55,7 +55,7 @@
   font-weight: var(--fw-bold, 700);
 }
 
-/* الآيات — Sunnah Quran. نص المصحف/QPC له خطوطه المستقلة. */
+/* الآيات — Almarai. نص المصحف/QPC له خطوطه المستقلة. */
 :is(
   [class*="ayah__text"],
   [class*="__verse-text"],
@@ -68,10 +68,10 @@
   [data-sf-type="quran"]
 ) {
   font-family: var(--font-quran);
-  line-height: 2;
+  line-height: 2.1;
 }
 
-/* النص الشرعي (أحاديث/أذكار/أدعية) — Sunnah Text؛ قائمة صريحة، لا تُضف واجهة هنا. */
+/* النص الشرعي (أحاديث/أذكار/أدعية) — Almarai؛ قائمة صريحة، لا تُضف واجهة هنا. */
 :is(
   [class*="hadith-box__text"],
   [class*="dhikr-box__text"],
@@ -95,7 +95,7 @@
   .sf-type-hadith,
   [data-sf-type="hadith"],
   .home-page-hero .page-hero-mj__title,
-  /* قصص وفوائد وحكم وسنن: Sunnah Text */
+  /* قصص وفوائد وحكم وسنن: Almarai */
   .isp-card__summary,
   .prophet-section-lux__text,
   .highlighted-card__text,
@@ -107,7 +107,7 @@
   .fq-card__arabic
 ) {
   font-family: var(--font-text);
-  line-height: 1.9;
+  line-height: 2;
 }
 
 /* قصّ الأسطر الطويلة في البطاقات */

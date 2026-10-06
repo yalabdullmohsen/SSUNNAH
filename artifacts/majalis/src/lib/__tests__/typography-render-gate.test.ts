@@ -30,7 +30,7 @@ const deferredFaces = read("styles/font-faces-deferred.css");
 assert.match(deferredFaces, /font-display:\s*swap/);
 assert.match(deferredFaces, /format\("woff2"\)/);
 assert.match(fontsQuran, /font-feature-settings:\s*"liga" 1,\s*"calt" 1/);
-assert.match(deferredFaces, /amiri-quran-400-ar\.woff2/);
+assert.match(deferredFaces, /almarai-800-ar\.woff2/);
 
 const typo = read("styles/typography-app.css");
 assert.match(typo, /font-feature-settings:\s*"liga" 1,\s*"calt" 1/);
@@ -51,7 +51,7 @@ assert.match(qpcHook, /FontFace/);
 assert.match(qpcHook, /display:\s*"block"/);
 assert.match(qpcHook, /getPowerSaverState/);
 
-assert.ok(existsSync(resolve(appRoot, "../public/fonts/sunnah/amiri-quran-400-ar.woff2")));
+assert.ok(existsSync(resolve(appRoot, "../public/fonts/almarai/almarai-400-ar.woff2")));
 assert.ok(existsSync(resolve(appRoot, "../public/fonts/qpc-v2")));
 
 assert.equal(clampQuranFontSize(100), QURAN_FONT_MAX_PX);

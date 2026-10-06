@@ -4,7 +4,7 @@
  *
  * DEV NOTE: CLS measurements in Playwright run with a clean browser profile
  * (no cached fonts). Google Fonts loaded via font-display:swap cause reflow
- * when Amiri Quran / Noto Naskh load. In production with cached fonts,
+ * when web fonts load. In production with cached fonts,
  * CLS drops to < 0.05 on most pages. Per-page overrides below reflect
  * measured dev-environment baselines so the suite stays green.
  */

@@ -28,18 +28,8 @@ const QURAN_SOURCES: SourceRow[] = [
     status: "مطلوب",
   },
   {
-    name: "Amiri Quran (OFL)",
-    desc: "خط نص الآيات (Sunnah Quran) للعرض خارج مجسمات QPC — مستضاف محليًا.",
-    status: "ممنوح",
-  },
-  {
-    name: "Amiri (OFL)",
-    desc: "خط النصوص الشرعية (Sunnah Text): أحاديث وأذكار وأدعية — مستضاف محليًا.",
-    status: "ممنوح",
-  },
-  {
-    name: "IBM Plex Sans Arabic (OFL)",
-    desc: "خط الواجهة (Sunnah UI) — مستضاف محليًا بلا Google Fonts.",
+    name: "Almarai (OFL)",
+    desc: "خط التطبيق الوحيد (الواجهة والنصوص الشرعية والآيات خارج مجسمات QPC) — مستضاف محليًا بلا Google Fonts.",
     status: "ممنوح",
   },
 ];

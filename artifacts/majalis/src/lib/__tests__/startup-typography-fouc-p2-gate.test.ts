@@ -25,10 +25,9 @@ assert.match(scope, /IMPLEMENTATION_FROZEN/);
 console.log("=== الأوجه الحرجة inline والباقي مؤجَّل — بلا تكرار ===");
 const html = renderedIndexHtml();
 const inline = html.match(/<style id="mj-font-system">([\s\S]*?)<\/style>/)?.[1] ?? "";
-assert.match(inline, /"Sunnah UI"/);
-assert.match(inline, /"Sunnah Text"/);
-assert.doesNotMatch(inline, /"Sunnah Quran"[^}]*src:/, "Sunnah Quran غير حرج — في font-faces-deferred.css");
-assert.match(read("src/styles/font-faces-deferred.css"), /"Sunnah Quran"/);
+assert.match(inline, /"Almarai"/);
+assert.doesNotMatch(inline, /almarai-(300|800)-/, "الوزنان 300/800 غير حرجين — في font-faces-deferred.css");
+assert.match(read("src/styles/font-faces-deferred.css"), /"Almarai"/);
 assert.doesNotMatch(read("src/styles/critical-first-paint.css"), /@font-face/);
 
 console.log("=== P1 authority still held (no absolute 16px on html) ===");

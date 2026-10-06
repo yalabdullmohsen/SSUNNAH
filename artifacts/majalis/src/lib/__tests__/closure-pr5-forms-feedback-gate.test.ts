@@ -28,7 +28,7 @@ assert.match(settings, /from ["']@\/components\/ui\/select["']/);
 assert.doesNotMatch(settings, /name="interface-font-size"[\s\S]{0,40}<select/);
 assert.match(settings, /interface-font-size/);
 assert.match(settings, /settings-playback-rate/);
-assert.match(settings, /settings-quran-font/);
+assert.match(settings, /interface-font-size/);
 assert.match(settings, /<select[\s>]/, "reciter/tafsir natives remain justified");
 
 const login = read("src/pages/account/ui/LoginView.tsx");

@@ -55,7 +55,7 @@ console.log("\n=== index.html: preconnect ≤٢ + خطوط محلية ===");
   assert.match(afterHead.trimStart(), /^<meta charset="UTF-8"\s*\/?>/i, "charset أول عنصر في head");
   assert.ok([...html.matchAll(/rel="preload"/g)].length >= 1 && [...html.matchAll(/rel="preload"/g)].length <= 4, "preload خطوط أساسية محلية (١–٤)");
   assert.doesNotMatch(html, /fonts\.googleapis\.com|fonts\.gstatic\.com/, "لا Google Fonts في الإقلاع");
-  assert.match(html, /rel="preload"[^>]+\/fonts\/sunnah\/plex-sans-arabic-400-ar\.woff2/, "preload خط الواجهة Sunnah UI");
+  assert.match(html, /rel="preload"[^>]+\/fonts\/almarai\/almarai-400-ar\.woff2/, "preload خط الواجهة Almarai");
   assert.doesNotMatch(html, /rel="preload"[^>]+noto-naskh-400/, "لا preload Noto عند الإقلاع");
   assert.match(html, /id="mj-launch-splash"/, "دخولية MajlisSplash في HTML الحرج");
   assert.doesNotMatch(html, /id="mj-boot-skeleton"/, "بلا هيكل تحميل كامل");
@@ -122,7 +122,7 @@ console.log("\n=== SW: أصوات الأذان بلا precache في الغلاف
   );
   assert.doesNotMatch(
     shell[1]!,
-    /amiri-quran/,
+    /qpc-v2/,
     "لا precache لخط المصحف عند تثبيت SW",
   );
 }

@@ -128,9 +128,9 @@
   "fonts": {
     "uiOfl": {
       "class": "OFL_APPROVED",
-      "paths": ["public/fonts/ui/**"],
-      "licenseFile": "public/fonts/ui/OFL.txt",
-      "families": ["Amiri", "Aref Ruqaa", "Noto Naskh", "Scheherazade"]
+      "paths": ["public/fonts/almarai/**"],
+      "licenseFile": "public/fonts/almarai/OFL-Almarai.txt",
+      "families": ["Almarai"]
     },
     "qpcV2": { "class": "OWNER_DECISION_REQUIRED", "releaseAction": "STRIP_FROM_RELEASE" }
   },

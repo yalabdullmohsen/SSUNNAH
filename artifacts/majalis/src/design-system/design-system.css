@@ -73,13 +73,13 @@ html.dark {
   --sn-lh-title2: 1.3;
   --sn-fs-title3: 1.25rem;         /* 20 */
   --sn-lh-title3: 1.35;
-  --sn-fs-headline: 1.0625rem;     /* 17 / 600 */
+  --sn-fs-headline: 1.0625rem;     /* 17 / 700 */
   --sn-lh-headline: 1.4;
-  --sn-fs-body: 1.0625rem;         /* 17 */
+  --sn-fs-body: 1rem;              /* 16 */
   --sn-lh-body: 1.55;
   --sn-fs-callout: 1rem;           /* 16 */
   --sn-lh-callout: 1.5;
-  --sn-fs-subhead: 0.9375rem;      /* 15 */
+  --sn-fs-subhead: 0.875rem;       /* 14 */
   --sn-lh-subhead: 1.5;
   --sn-fs-footnote: 0.8125rem;     /* 13 */
   --sn-lh-footnote: 1.45;
@@ -87,17 +87,19 @@ html.dark {
   --sn-lh-caption: 1.4;
 
   /* النص الشرعي */
-  --sn-fs-hadith: 1.25rem;         /* 20 */
-  --sn-lh-hadith: 1.9;
+  --sn-fs-hadith: 1.1875rem;       /* 19 */
+  --sn-lh-hadith: 2;
   --sn-fs-hadith-featured: 1.5rem; /* 24 */
-  --sn-lh-hadith-featured: 1.8;
-  --sn-fs-ayah: 1.5rem;            /* 24 */
-  --sn-lh-ayah: 2;
+  --sn-lh-hadith-featured: 1.9;
+  --sn-fs-ayah: 1.375rem;          /* 22 — آيات خارج المصحف */
+  --sn-lh-ayah: 2.1;
 
   --sn-fw-regular: 400;
-  --sn-fw-medium: 500;
-  --sn-fw-semibold: 600;
+  /* Almarai: 300/400/700/800 فقط — 500←400 و600←700 (لا عريض مزيّف) */
+  --sn-fw-medium: 400;
+  --sn-fw-semibold: 700;
   --sn-fw-bold: 700;
+  --sn-fw-heavy: 800;
 }
 
 /* ═══ المسافات — شبكة 4 ═══ */
@@ -205,8 +207,8 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { display
 .sn-row { display: flex; align-items: center; gap: var(--sn-s3); }
 
 /* سلّم الطباعة */
-.sn-t-large-title { font: var(--sn-fw-bold) var(--sn-fs-large-title) / var(--sn-lh-large-title) var(--font-ui); }
-.sn-t-title1 { font: var(--sn-fw-bold) var(--sn-fs-title1) / var(--sn-lh-title1) var(--font-ui); }
+.sn-t-large-title { font: var(--sn-fw-heavy) var(--sn-fs-large-title) / var(--sn-lh-large-title) var(--font-ui); }
+.sn-t-title1 { font: var(--sn-fw-heavy) var(--sn-fs-title1) / var(--sn-lh-title1) var(--font-ui); }
 .sn-t-title2 { font: var(--sn-fw-semibold) var(--sn-fs-title2) / var(--sn-lh-title2) var(--font-ui); }
 .sn-t-title3 { font: var(--sn-fw-semibold) var(--sn-fs-title3) / var(--sn-lh-title3) var(--font-ui); }
 .sn-t-headline { font: var(--sn-fw-semibold) var(--sn-fs-headline) / var(--sn-lh-headline) var(--font-ui); }
@@ -379,7 +381,7 @@ html[dir="ltr"] .sn-switch[aria-checked="true"]::after { transform: translateX(v
 
 /* ═══ SectionHeader ═══ */
 .sn-section-header { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sn-s3); padding-block: var(--sn-s2); }
-.sn-section-header__title { font: var(--sn-fw-semibold) var(--sn-fs-title3) / var(--sn-lh-title3) var(--font-ui); margin: 0; }
+.sn-section-header__title { font: var(--sn-fw-bold) var(--sn-fs-title2) / var(--sn-lh-title2) var(--font-ui); margin: 0; }
 .sn-section-header__action {
   display: inline-flex;
   align-items: center;
@@ -528,7 +530,7 @@ html[dir="ltr"] .sn-switch[aria-checked="true"]::after { transform: translateX(v
 .sn-navbar[data-collapsed="true"] .sn-navbar__title-sm { opacity: 1; transform: none; }
 .sn-navbar__large { padding: var(--sn-s1) var(--sn-page-x) var(--sn-s3); transition: opacity var(--sn-dur-base) var(--sn-ease); }
 .sn-navbar[data-collapsed="true"] .sn-navbar__large { opacity: 0; height: 0; padding: 0; overflow: hidden; }
-.sn-navbar__large-title { margin: 0; font: var(--sn-fw-bold) var(--sn-fs-large-title) / var(--sn-lh-large-title) var(--font-ui); }
+.sn-navbar__large-title { margin: 0; font: var(--sn-fw-heavy) var(--sn-fs-large-title) / var(--sn-lh-large-title) var(--font-ui); }
 .sn-navbar__subtitle { margin: var(--sn-s1) 0 0; color: var(--sn-text-secondary); font: var(--sn-fw-regular) var(--sn-fs-subhead) / var(--sn-lh-subhead) var(--font-ui); }
 
 /* ═══ TabBar ═══ */

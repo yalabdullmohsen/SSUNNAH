@@ -74,7 +74,7 @@
   overflow: hidden;
 }
 
-/* النص الشرعي (حديث/ذكر/فائدة) — Sunnah Text؛ الآية — Sunnah Quran (ارتفاع سطر يحمي التشكيل من القص) */
+/* النص الشرعي (حديث/ذكر/فائدة) — Almarai؛ الآية — Almarai (ارتفاع سطر يحمي التشكيل من القص) */
 .hds__text {
   font-family: var(--font-text);
   font-size: 1.0625rem;

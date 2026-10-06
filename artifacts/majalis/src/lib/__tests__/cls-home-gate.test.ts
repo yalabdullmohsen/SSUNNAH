@@ -72,10 +72,10 @@ assert.doesNotMatch(
   "لا min-height:unset في هيرو الرئيسية",
 );
 const renderedHtml = renderedIndexHtml();
-assert.match(renderedHtml, /font-display:swap;src:url\("\/fonts\/sunnah\/plex-sans-arabic-400-ar/, "Sunnah UI 400 مضمّن + preload — swap بلا حجب LCP");
-assert.match(renderedHtml, /font-display:swap;src:url\("\/fonts\/sunnah\/plex-sans-arabic-600-ar/, "Sunnah UI 600 مضمّن + preload — بلا قفزة وزن");
-assert.match(fontsDeferred, /plex-sans-arabic-700-ar/, "الوزن 700 مؤجَّل مع الحزمة الرئيسية");
-assert.doesNotMatch(fontsDeferred, /plex-sans-arabic-(400|600)-ar/, "الأوجه الحرجة ليست في الملف المؤجَّل");
+assert.match(renderedHtml, /font-display:swap;src:url\("\/fonts\/almarai\/almarai-400-ar/, "Almarai 400 مضمّن + preload — swap بلا حجب LCP");
+assert.match(renderedHtml, /font-display:swap;src:url\("\/fonts\/almarai\/almarai-700-ar/, "Almarai 700 مضمّن + preload — بلا قفزة وزن");
+assert.match(fontsDeferred, /almarai-800-ar/, "الوزن 800 مؤجَّل مع الحزمة الرئيسية");
+assert.doesNotMatch(fontsDeferred, /almarai-(400|700)-ar/, "الأوجه الحرجة ليست في الملف المؤجَّل");
 assert.equal(
   lhciRc.ci.assert.assertions["cumulative-layout-shift"][1].maxNumericValue,
   preview.cls,

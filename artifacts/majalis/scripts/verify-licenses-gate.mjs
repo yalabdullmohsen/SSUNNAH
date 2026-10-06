@@ -23,7 +23,7 @@ const REQUIRED_ASSET_MARKERS = [
   "تفاسير",
   "حصن المسلم",
   "كتب المكتبة",
-  "Amiri",
+  "Almarai",
   "test:licenses",
 ];
 

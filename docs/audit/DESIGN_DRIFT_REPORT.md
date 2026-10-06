@@ -1,35 +1,36 @@
 # DESIGN_DRIFT_REPORT
 
-Generated: 2026-10-03T09:21:24.298Z
+Generated: 2026-10-06T19:03:55.857Z
 
 ## Scores
 
-- consistencyScore: **89**
-- driftScore: **11**
-- authorityAdoptionRatio: **43%**
+- consistencyScore: **90**
+- driftScore: **10**
+- authorityAdoptionRatio: **48%**
 
 ## Debt vs ceilings
 
 | Metric | Current | Ceiling | Status |
 |---|---:|---:|---|
-| hexInCss | 7022 | 7022 | ✅ |
-| boxShadowDecls | 986 | 986 | ✅ |
-| borderRadiusPxDecls | 392 | 392 | ✅ |
-| rgbHslInCss | 2087 | 2087 | ✅ |
-| important | 4747 | 4747 | ✅ |
-| rawButtonFiles | 102 | 102 | ✅ |
+| hexInCss | 5212 | 5212 | ✅ |
+| boxShadowDecls | 1002 | 1002 | ✅ |
+| borderRadiusPxDecls | 349 | 349 | ✅ |
+| rgbHslInCss | 1970 | 1970 | ✅ |
+| important | 4704 | 4704 | ✅ |
+| rawButtonFiles | 3 | 3 | ✅ |
 
 ## Top divergence sources
 
-- **cards**: bypass=208 · adoption=9%
-- **forms**: bypass=148 · adoption=23%
-- **buttons**: bypass=100 · adoption=71%
-- **lists**: bypass=74 · adoption=10%
-- **tabs**: bypass=71 · adoption=4%
+- **cards**: bypass=202 · adoption=9%
+- **forms**: bypass=147 · adoption=23%
+- **lists**: bypass=74 · adoption=9%
+- **tabs**: bypass=68 · adoption=8%
+- **tables**: bypass=13 · adoption=43%
 
 ## Easiest wins
 
-- **tables**: امتصاص 14 ملفًا يتجاوز السلطة — عائد سريع على adoption
+- **tables**: امتصاص 13 ملفًا يتجاوز السلطة — عائد سريع على adoption
+- **buttons**: امتصاص 2 ملفًا يتجاوز السلطة — عائد سريع على adoption
 - **navigation**: امتصاص 1 ملفًا يتجاوز السلطة — عائد سريع على adoption
 - **modals**: امتصاص 1 ملفًا يتجاوز السلطة — عائد سريع على adoption
 

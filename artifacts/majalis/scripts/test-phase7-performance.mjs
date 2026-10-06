@@ -39,8 +39,8 @@ assert.doesNotMatch(
 
 assert.doesNotMatch(html, /href="\[REDACTED\]"/, "no broken placeholder resource hints");
 assert.doesNotMatch(html, /fonts\.googleapis\.com|fonts\.gstatic\.com/, "no Google Fonts on boot");
-assert.match(html, /rel="preload"[^>]+\/fonts\/sunnah\/plex-sans-arabic-400-ar\.woff2/, "preload first-screen UI font");
-assert.doesNotMatch(html, /rel="preload"[^>]+AmiriQuran-Regular\.woff2/, "Quran font is not preloaded globally");
+assert.match(html, /rel="preload"[^>]+\/fonts\/almarai\/almarai-400-ar\.woff2/, "preload first-screen UI font");
+assert.doesNotMatch(html, /rel="preload"[^>]+qpc-v2/, "Mushaf fonts are not preloaded globally");
 
 assert.match(queryClient, /staleTime:\s*300_000/, "TanStack staleTime tuned for catalog traffic");
 assert.match(queryClient, /mutations:[\s\S]*retry:\s*false/, "mutations must not auto-retry");

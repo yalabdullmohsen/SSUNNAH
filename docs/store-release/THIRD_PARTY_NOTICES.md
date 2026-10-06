@@ -17,7 +17,7 @@ Companion: `ATTRIBUTIONS.md` · `CREDITS.md` · in-app `/sources` · `STORE_RELE
 
 | Family | Path | License |
 |--------|------|---------|
-| Amiri · Aref Ruqaa · Noto Naskh Arabic · Scheherazade New | `public/fonts/ui/**` | SIL Open Font License 1.1 — see `public/fonts/ui/OFL.txt` |
+| Almarai | `public/fonts/almarai/**` | SIL Open Font License 1.1 — see `public/fonts/almarai/OFL-Almarai.txt` |
 
 ### CC0 adhan audio (`CC0_APPROVED`)
 

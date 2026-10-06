@@ -1,12 +1,12 @@
 # POLISH_BACKLOG
 
-Generated: 2026-10-05T14:05:41.895Z
+Generated: 2026-10-06T19:03:59.432Z
 
-Total signals: **233**
+Total signals: **229**
 
 ## By issue (frequency)
 
-- icon size literal — prefer size.icon.* tokens: **223**
+- icon size literal — prefer size.icon.* tokens: **219**
 - ad-hoc motion class — check MOTION_AUTHORITY: **6**
 - inline spacing — prefer tokens: **3**
 - truncation without title tooltip: **1**
@@ -14,7 +14,6 @@ Total signals: **233**
 ## Quick wins (effort S)
 
 - [`components/ui/sidebar.tsx`] truncation without title tooltip (medium)
-- [`App.tsx`] icon size literal — prefer size.icon.* tokens (low)
 - [`components/AdminInlineEdit.tsx`] icon size literal — prefer size.icon.* tokens (low)
 - [`components/AdminQuickEdit.tsx`] icon size literal — prefer size.icon.* tokens (low)
 - [`components/AdminSiteEditBar.tsx`] icon size literal — prefer size.icon.* tokens (low)
@@ -38,3 +37,4 @@ Total signals: **233**
 - [`components/SiteFooter.tsx`] icon size literal — prefer size.icon.* tokens (low)
 - [`components/TopSectionBar.tsx`] icon size literal — prefer size.icon.* tokens (low)
 - [`components/adhan/AdhanNotificationBar.tsx`] icon size literal — prefer size.icon.* tokens (low)
+- [`components/adhan/AudioPromptsSettingsCard.tsx`] icon size literal — prefer size.icon.* tokens (low)

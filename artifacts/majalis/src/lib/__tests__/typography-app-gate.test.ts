@@ -27,9 +27,9 @@ assert.match(typoApp, /--fw-bold/);
 assert.doesNotMatch(typoApp, /Noto Naskh Arabic/);
 assert.doesNotMatch(typoApp, /--mm-qpc|qpc-v2/);
 
-assert.match(fontSystemCss(), /--font-ui:\s*"Sunnah UI",\s*-apple-system[^;]*system-ui/);
-assert.match(fontSystemCss(), /--font-text:\s*"Sunnah Text"/);
-assert.match(fontSystemCss(), /--font-quran:\s*"Sunnah Quran"/);
+assert.match(fontSystemCss(), /--font-ui:\s*"Almarai",\s*-apple-system[^;]*system-ui/);
+assert.match(fontSystemCss(), /--font-text:\s*var\(--font-ui\)/);
+assert.match(fontSystemCss(), /--font-quran:\s*var\(--font-ui\)/);
 assert.doesNotMatch(theme, /--font-app|--mj-face/);
 assert.match(mushaf, /--mm-qpc-size/);
 assert.match(mushaf, /qpc-v2-p1/);

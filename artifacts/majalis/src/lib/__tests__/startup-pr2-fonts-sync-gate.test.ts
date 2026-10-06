@@ -15,18 +15,17 @@ const readRepo = (rel: string) => readFileSync(resolve(repoRoot, rel), "utf8");
 
 const fontsCss = fontSystemCss();
 const indexHtml = renderedIndexHtml();
-assert.match(indexHtml, /@font-face\{font-family:"Sunnah UI"/);
+assert.match(indexHtml, /@font-face\{font-family:"Almarai"/);
 assert.match(fontsCss, /font-display:\s*swap/);
 assert.doesNotMatch(fontsCss + indexHtml, /fonts\.googleapis|fonts\.gstatic/);
 
-assert.match(indexHtml, /preload[^>]+plex-sans-arabic-400-ar\.woff2/);
-assert.match(indexHtml, /preload[^>]+plex-sans-arabic-600-ar\.woff2/);
-assert.match(indexHtml, /preload[^>]+amiri-400-ar\.woff2/);
+assert.match(indexHtml, /preload[^>]+almarai-400-ar\.woff2/);
+assert.match(indexHtml, /preload[^>]+almarai-700-ar\.woff2/);
 assert.match(indexHtml, /font-display:swap/);
 
 const boot = readPkg("src/lib/boot-readiness.ts");
 assert.match(boot, /document\.fonts\.load/);
-assert.match(boot, /"Sunnah UI"/);
+assert.match(boot, /"Almarai"/);
 assert.doesNotMatch(boot, /createRoot\s*\(|location\.reload\s*\(/);
 
 const banner = readPkg("src/components/OfflineBanner.tsx");

@@ -1,6 +1,6 @@
-/* الخطوط: src/styles/font-system.css — Sunnah UI / Text / Quran (تُحقن inline في index.html) */
+/* الخطوط: src/styles/font-system.css — Almarai (تُحقن inline في index.html) */
 
-/* خط المصحف (Amiri Quran) — fonts-quran.css يُحمَّل مع مسارات القرآن/المصحف فقط */
+/* خط المصحف (Almarai) — fonts-quran.css يُحمَّل مع مسارات القرآن/المصحف فقط */
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 

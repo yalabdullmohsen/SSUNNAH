@@ -1,14 +1,14 @@
 # INDEX_AUTHORITY_REPORT
 
-Generated: 2026-10-03T10:38:11.770Z
+Generated: 2026-10-06T19:04:03.875Z
 
 | Metric | Value |
 |---|---:|
-| createIndexStatements | 1008 |
+| createIndexStatements | 1010 |
 | uniqueIndexes | 25 |
 | partialIndexMentions | 72 |
 | ginTrigramMentions | 96 |
-| ftsMentions | 175 |
+| ftsMentions | 190 |
 | duplicateIndexNameDefs | 30 |
 
 - Hot filter indexes migration: ✅
@@ -24,7 +24,7 @@ Generated: 2026-10-03T10:38:11.770Z
 
 ## Duplicate index name definitions (migration churn)
 
-- `if` ×3
+- `if` ×4
 - `idx_governance_roles_role` ×3
 - `idx_gov_audit_created` ×3
 - `idx_profiles_is_owner` ×2

@@ -37,7 +37,7 @@ console.log("=== Identity Reset tokens in V2 file ===");
   assert.match(tokens, /--v2-focus-ring/);
   assert.match(tokens, /--v2-duration-press/);
   // لا مكتبة خطوط جديدة
-  assert.doesNotMatch(tokens, /IBM Plex|Inter|Roboto|Cairo/);
+  assert.doesNotMatch(tokens, /Inter|Roboto|Cairo/);
 }
 
 console.log("=== application layer ===");

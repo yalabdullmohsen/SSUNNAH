@@ -2,7 +2,7 @@ export type FontPreference = "default" | "naskh";
 
 export const FONT_STORAGE_KEY = "majalis-font-preference-v2";
 
-/* ملاحظة: خط الواجهة الموحَّد هو --font-ui (IBM Plex Sans Arabic)؛ الخياران لا يفرّقان بصريًا.
+/* ملاحظة: خط الواجهة الموحَّد هو --font-ui (Almarai)؛ الخياران لا يفرّقان بصريًا.
    الخياران محفوظان لتوافق الإعداد القديم ولا يفرّقان بصريًا. */
 export const FONT_OPTIONS: {
   id: FontPreference;
