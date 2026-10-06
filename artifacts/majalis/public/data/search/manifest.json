@@ -1,13 +1,13 @@
 {
   "version": 3,
   "contentType": "search.unified",
-  "checksum": "sha256:3a29cc5e728ed3b6411adbe8fca6f123347a90fe86890638669e940bfbf784f9",
-  "count": 4650,
+  "checksum": "sha256:22cb50e8a9a001047f5f826fed0c29717108283f968a486734b86cfdea0ec747",
+  "count": 4640,
   "files": [
     {
       "file": "index.json",
-      "bytes": 1856232,
-      "itemCount": 4650
+      "bytes": 1851455,
+      "itemCount": 4640
     },
     {
       "file": "shards/adhkar.json",
@@ -162,13 +162,6 @@
       "bytes": 370,
       "itemCount": 2,
       "checksum": "sha256:f037688e72270ba8b536d1ac7ae9311a3cfd4eff4190d65b628fda462c0b097f"
-    },
-    {
-      "file": "shards/scholar.json",
-      "kind": "scholar",
-      "bytes": 4827,
-      "itemCount": 10,
-      "checksum": "sha256:995d98007ffe53cd038c123e60cd03697e75bc487f54e6ee9dd94dacfc2510e8"
     },
     {
       "file": "shards/seerah.json",
