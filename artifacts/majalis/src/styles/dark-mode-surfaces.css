@@ -339,9 +339,9 @@ html[data-theme="dark"] .bottom-nav__tab.is-active,
 html[data-theme="dark"] .bottom-nav--v2 .bottom-nav__tab.is-active,
 html.dark .bottom-nav__tab.is-active,
 html.dark .bottom-nav--v2 .bottom-nav__tab.is-active {
-  color: var(--mj-accent, #c4a35a) !important;
-  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, transparent) !important;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mj-accent, #c4a35a) 18%, transparent) !important;
+  color: var(--color-primary-dark) !important;
+  background: var(--color-active-tab-bg) !important;
+  box-shadow: none !important;
 }
 html[data-theme="dark"] .bottom-nav__tab.is-active::before,
 html[data-theme="dark"] .bottom-nav--v2 .bottom-nav__tab.is-active::before,
@@ -848,9 +848,9 @@ html[data-theme="dark"] .bottom-nav__tab.is-active,
 html[data-theme="dark"] .bottom-nav--v2 .bottom-nav__tab.is-active,
 html.dark .bottom-nav__tab.is-active,
 html.dark .bottom-nav--v2 .bottom-nav__tab.is-active {
-  color: #e8f0ec !important;
-  background: color-mix(in srgb, #1a4a3a 55%, transparent) !important;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, #5fbf98 22%, transparent) !important;
+  color: var(--color-primary-dark) !important;
+  background: var(--color-active-tab-bg) !important;
+  box-shadow: none !important;
 }
 
 /* Typography — metadata / secondary / helpers */

@@ -114,11 +114,20 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const resolvedSize =
       size === "sm" ? "small" : size === "default" ? "medium" : size === "lg" ? "large" : size;
 
+    /* أبناء عناصر متعددة (عنوان + وصف، نص + سهم) يبقون أبناءً مباشرين للزر حتى يعمل
+       flex/grid المكتوب في CSS المكوّن؛ تغليفهم بـ<span> سطري كان يلصقهم («التفسيرمعاني…»)
+       ويسحق السهم المرسوم بالحدود إلى خط عمودي. النص المختلط يبقى مغلّفًا كما كان. */
+    const kids = React.Children.toArray(children);
+    const elementChildren = kids.length > 1 && kids.every((k) => React.isValidElement(k));
     const content = (
       <>
         {loading ? <Spinner /> : iconStart ? <span className="inline-flex shrink-0">{iconStart}</span> : null}
         {children != null && children !== false ? (
-          <span className={cn(loading && "opacity-90")}>{children}</span>
+          elementChildren ? (
+            children
+          ) : (
+            <span className={cn(loading && "opacity-90")}>{children}</span>
+          )
         ) : null}
         {!loading && iconEnd ? <span className="inline-flex shrink-0">{iconEnd}</span> : null}
       </>

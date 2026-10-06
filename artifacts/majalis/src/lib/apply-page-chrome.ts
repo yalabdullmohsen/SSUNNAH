@@ -90,8 +90,9 @@ async function applyNativeStatusBar(chrome: PageChromeDef) {
         /* قديم */
       }
     }
-    // Style.Dark = أيقونات داكنة · Style.Light = أيقونات فاتحة
-    const style = chrome.statusBarStyle === "dark" ? Style.Dark : Style.Light;
+    // انتبه لتسمية Capacitor المعكوسة: Style.Light = «نص داكن لخلفية فاتحة»،
+    // Style.Dark = «نص فاتح لخلفية داكنة». statusBarStyle عندنا = لون الأيقونات نفسه.
+    const style = chrome.statusBarStyle === "dark" ? Style.Light : Style.Dark;
     await StatusBar.setStyle({ style });
     await StatusBar.show();
     try {

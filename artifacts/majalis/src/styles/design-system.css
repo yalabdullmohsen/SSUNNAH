@@ -2999,20 +2999,24 @@ h1, h2, h3 {
   transform: translateY(-1px);
 }
 
-/* ── 16. Scrollbar أنيق ── */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, var(--ds-line-color) 70%, transparent);
-  border-radius: var(--ds-radius-full);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--ds-ink-muted);
+/* ── 16. Scrollbar أنيق — للمؤشر الدقيق (سطح المكتب) فقط.
+   على اللمس (iOS/WKWebView) أي ::-webkit-scrollbar مخصّص يُرسم شريطًا رماديًا دائمًا
+   على اليسار في RTL بدل مؤشر النظام الذي يختفي تلقائيًا. ── */
+@media (hover: hover) and (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--ds-line-color) 70%, transparent);
+    border-radius: var(--ds-radius-full);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--ds-ink-muted);
+  }
 }
 
 /* ── 17. الوضع الداكن — Premium layer overrides ── */

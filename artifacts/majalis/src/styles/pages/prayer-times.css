@@ -77,10 +77,11 @@ html.pts-immersive .bottom-nav .bottom-nav__tab {
 }
 html.pts-immersive .bottom-nav--v2 .bottom-nav__tab.is-active,
 html.pts-immersive .bottom-nav .bottom-nav__tab.is-active {
-  color: var(--gold-300, var(--mj-accent, #b08a3e)) !important;
-  background: color-mix(in srgb, var(--gold-400, var(--mj-accent)) 16%, transparent) !important;
+  /* نفس نمط التبويب النشط (كبسولة ناعمة + لون قوي) على سطح الصلاة الزمردي الداكن — بلا ذهب */
+  color: var(--on-dark-strong) !important;
+  background: color-mix(in srgb, var(--on-dark-strong) 14%, transparent) !important;
   border-radius: var(--mj-r-md, 16px) !important;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mj-accent-soft) 22%, transparent) !important;
+  box-shadow: none !important;
 }
 
 /* وضوح الشريط السفلي على شاشة الصلاة دون تكبير مبالغ */

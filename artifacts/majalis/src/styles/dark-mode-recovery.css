@@ -144,8 +144,8 @@ html[data-theme="dark"] .bottom-nav__tab.is-active .bottom-nav__tab-icon,
 html.dark .bottom-nav__tab.is-active,
 html.dark .bottom-nav__tab.is-active .bottom-nav__tab-label,
 html.dark .bottom-nav__tab.is-active .bottom-nav__tab-icon {
-  color: var(--dm-accent-gold) !important;
-  background: color-mix(in srgb, var(--dm-primary) 8%, transparent) !important;
+  /* نمط نشط واحد (sunnah-identity-chrome-nav): لون الهوية لا الذهب؛ الكبسولة على التبويب فقط */
+  color: var(--color-primary-dark) !important;
   filter: none !important;
   text-shadow: none !important;
 }

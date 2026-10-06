@@ -30,14 +30,6 @@ html[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .quran-hub-page__
   );
 }
 
-html[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .section-lobby__back {
-  border-radius: var(--v2-radius-pill, 999px);
-  border-color: var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
-  color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
-  box-shadow: var(--v2-shadow-soft);
-}
-
 html[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .section-lobby__group-title {
   font-size: 1.05rem;
   font-weight: 800;

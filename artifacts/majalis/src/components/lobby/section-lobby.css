@@ -267,6 +267,17 @@ html.dark .section-lobby__group-title {
   box-sizing: border-box;
 }
 
+/* صف بطاقات متساوي الارتفاع: الرابط المغلِّف (.mj-pressable = inline-flex + توسيط)
+   كان يوسّط البطاقة داخل خلية ممتدة فتظهر البطاقات متدرّجة وبأطوال مختلفة في الصف نفسه. */
+.section-lobby__grid > .ss-surface__anchor {
+  display: flex;
+  align-items: stretch;
+}
+.section-lobby__grid > .ss-surface__anchor > * {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .section-lobby__grid > :last-child:nth-child(odd) {
   grid-column: 1 / -1;
   width: 100%;
@@ -417,6 +428,39 @@ html.dark .section-lobby__chip.is-active {
 }
 .section-lobby .section-lobby__head .section-lobby__back {
   min-height: 44px;
+}
+
+/* نمط iOS: رجوع نصي في شريط التنقّل + عنوان كبير واحد (Large Title) على سطح الصفحة —
+   بلا لافتة خضراء تكرّر العنوان. نفس حافة الشبكة تحته (حافة اللقطة .section-lobby__shot). */
+.section-lobby .section-lobby__head--bare {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  margin-block: 0.25rem 0;
+  padding: 0;
+  gap: 0.25rem;
+  background: none;
+  border: 0;
+}
+.section-lobby .section-lobby__head--bare .section-lobby__back {
+  min-height: 44px;
+  padding-inline: 0.25rem 0.5rem;
+  border: 0;
+  background: transparent;
+  color: var(--mj-brand);
+  font-size: var(--sf-type-body, 1.0625rem);
+  font-weight: 500;
+}
+.section-lobby .section-lobby__head--bare .section-lobby__title,
+.section-lobby .section-lobby__head--bare .quran-hub-page__title {
+  font-size: var(--sf-type-display, 2.125rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--mj-ink);
+}
+.section-lobby .section-lobby__head--bare .section-lobby__title::after,
+.section-lobby .section-lobby__head--bare .quran-hub-page__title::after {
+  display: none;
 }
 
 /* المكتب (≥880px): الهندسة النهائية للوبي متزامنة مع المكوّن — كانت تصل مع طبقات مؤجّلة

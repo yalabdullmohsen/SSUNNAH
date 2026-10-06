@@ -323,8 +323,15 @@ html.dark .ss-action-btn--ghost {
   justify-items: stretch;
   column-gap: clamp(0.75rem, 2.5vw, 1.1rem);
   row-gap: clamp(0.85rem, 2.8vw, 1.2rem);
-  padding-inline: clamp(0.75rem, 3.5vw, 1.25rem);
   box-sizing: border-box;
+}
+
+/* حافة داخلية للشبكات الحرّة فقط — شبكة اللوبي داخل حافة الصفحة أصلًا؛ حشوها مرة ثانية
+   كان يجعل البطاقات أضيق من العنوان فوقها. */
+.cards-grid,
+.hub-cards-grid,
+[data-cards-grid="1"] {
+  padding-inline: clamp(0.75rem, 3.5vw, 1.25rem);
 }
 
 /* ── القائمة الجانبية — قراءة أوضح ── */

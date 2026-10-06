@@ -32,7 +32,6 @@ html[data-v2-app="1"][data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab-label {
 }
 
 html[data-v2-app="1"][data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab.is-active .bottom-nav__tab-icon {
-  box-shadow: var(--v2-shadow-soft);
   transform: none;
 }
 
@@ -235,18 +234,19 @@ html[data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab-label {
   letter-spacing: 0.01em;
 }
 
+/* نمط تبويب نشط واحد في كل الشاشات والوضعين: كبسولة خضراء ناعمة + لون الهوية للأيقونة
+   والتسمية (بلا دائرة ممتلئة ولا ذهب). الرموز نفسها تتبدّل ليلًا (--color-active-tab-bg /
+   --color-primary-dark) فيبقى الشكل واحدًا قبل وصول الطبقات المؤجّلة وبعدها. */
 html[data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab.is-active {
-  color: var(--v2-color-emerald, var(--mj-brand));
-  background: color-mix(in srgb, var(--v2-color-emerald-soft, var(--mj-brand-soft)) 85%, transparent);
+  color: var(--color-primary-dark, var(--mj-brand-deep));
+  background: var(--color-active-tab-bg);
 }
 
 html[data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab.is-active .bottom-nav__tab-icon {
-  background: var(--v2-color-emerald, var(--mj-brand));
-  color: var(--v2-color-on-emerald, var(--mj-on-brand));
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--v2-color-gold, var(--mj-accent)) 35%, transparent),
-    0 4px 10px color-mix(in srgb, var(--v2-color-emerald-deep, var(--mj-brand-deep)) 22%, transparent);
-  transform: translateY(-1px);
+  background: transparent;
+  color: inherit;
+  box-shadow: none;
+  transform: none;
 }
 
 html[data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab.is-active .bottom-nav__tab-label {
@@ -270,17 +270,6 @@ html.dark[data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab {
   color: var(--v2-color-night-muted, var(--mj-muted));
 }
 
-html[data-theme="dark"][data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab.is-active,
-html.dark[data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab.is-active {
-  color: var(--v2-color-night-ink, var(--mj-ink));
-  background: color-mix(in srgb, var(--v2-color-emerald, var(--mj-brand)) 28%, transparent);
-}
-
-html[data-theme="dark"][data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab.is-active .bottom-nav__tab-icon,
-html.dark[data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab.is-active .bottom-nav__tab-icon {
-  background: var(--v2-color-emerald, var(--mj-brand));
-  color: var(--v2-color-on-emerald, var(--mj-on-brand));
-}
 
 @media (prefers-reduced-motion: reduce) {
   html[data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab,

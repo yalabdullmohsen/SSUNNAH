@@ -1,63 +1,88 @@
+/* بطاقة «متابعة القراءة» — بطاقة واحدة: سطح أبيض + ظل ناعم + شريط تقدّم (الصفحة من ٦٠٤). */
 .lrb-card {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.85rem;
-  padding: 0.9rem 1rem;
-  border-radius: 0.9rem;
-  background:
-    linear-gradient(135deg, color-mix(in srgb, #f7f1e3 88%, var(--sf-color-quran-gold) 12%), #f7f1e3);
-  border: 1px solid color-mix(in srgb, var(--sf-color-quran-gold) 28%, transparent);
-  color: #1c160e;
+  gap: 0.5rem 0.85rem;
+  padding: var(--sf-space-4, 16px);
+  border-radius: var(--sf-radius-md, 20px);
+  background: var(--mj-surface);
+  box-shadow: var(--sf-shadow-card);
+  color: var(--mj-ink);
 }
 
 .lrb-card--compact {
-  padding: 0.7rem 0.85rem;
+  padding: var(--sf-space-3, 12px) var(--sf-space-4, 16px);
 }
 
 .lrb-card__eyebrow {
   margin: 0 0 0.2rem;
-  font-size: 0.75rem;
-  opacity: 0.75;
+  font-size: var(--sf-type-metadata, 0.8125rem);
+  font-weight: 600;
+  color: var(--mj-brand);
 }
 
 .lrb-card__title {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: var(--sf-type-card-title, 1.0625rem);
   font-weight: 700;
   line-height: 1.35;
 }
 
 .lrb-card__sub {
   margin: 0.25rem 0 0;
-  font-size: 0.8rem;
-  opacity: 0.8;
+  font-size: var(--sf-type-metadata, 0.8125rem);
+  color: var(--mj-ink-2);
 }
 
 .lrb-card__cta {
-  flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.6rem;
+  min-height: 44px;
   min-width: 5.5rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: 0.7rem;
-  background: #2f6b4f;
-  color: var(--mj-white);
+  padding: 0.35rem 1rem;
+  border-radius: var(--sf-radius-pill, 999px);
+  background: var(--mj-brand);
+  color: var(--mj-on-brand);
   text-decoration: none;
   font-weight: 700;
 }
 
-html.dark .lrb-card,
-html[data-theme="dark"] .lrb-card {
-  background: color-mix(in srgb, #1c1810 88%, #8a6b2e 12%);
-  border-color: color-mix(in srgb, #8a6b2e 35%, transparent);
-  color: #f0e6d2;
+.lrb-card__cta:active {
+  transform: scale(0.97);
 }
 
-html.dark .lrb-card__cta,
-html[data-theme="dark"] .lrb-card__cta {
-  background: #6fad8c;
-  color: #102018;
+.lrb-card__progress {
+  grid-column: 1 / -1;
+  display: block;
+  width: 100%;
+  height: 6px;
+  border: 0;
+  border-radius: var(--sf-radius-pill, 999px);
+  background: var(--mj-brand-soft);
+  color: var(--mj-brand);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.lrb-card__progress::-webkit-progress-bar {
+  border-radius: var(--sf-radius-pill, 999px);
+  background: var(--mj-brand-soft);
+}
+
+.lrb-card__progress::-webkit-progress-value {
+  border-radius: var(--sf-radius-pill, 999px);
+  background: var(--mj-brand);
+}
+
+.lrb-card__progress::-moz-progress-bar {
+  border-radius: var(--sf-radius-pill, 999px);
+  background: var(--mj-brand);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lrb-card__cta:active {
+    transform: none;
+  }
 }

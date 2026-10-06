@@ -34,6 +34,9 @@ html {
   text-size-adjust: 100%;
   overflow-x: clip;
   overscroll-behavior-y: contain;
+  /* الهيدر والشريط ثابتان: أي قفز لعنوان (مرساة/scrollIntoView) يتوقف تحتهما لا خلفهما —
+     كان عنوان «الأقسام الرئيسية» يُدفن تحت شريط الآيات. */
+  scroll-padding-top: calc(var(--app-top-chrome-h, 0px) + var(--sf-space-2, 8px));
   /* لوحة المحتوى النهائية منذ أول طلاء — تطابق critical / --mj-bg */
   background-color: var(--mj-bg);
   /* احتياط ارتفاع iOS — svh أولاً ثم fill-available */

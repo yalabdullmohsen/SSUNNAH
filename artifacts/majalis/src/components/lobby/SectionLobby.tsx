@@ -69,7 +69,7 @@ export function SectionLobby({
       data-lessons-hub={lobbyId === "lessons" ? "1" : undefined}
     >
       <div data-kx-layout="library" className="section-lobby__shot" data-lobby-shot="1">
-        <header className="section-lobby__head">
+        <header className="section-lobby__head section-lobby__head--bare">
           <AppBackButton
             variant="lobby"
             fallbackHref="/"

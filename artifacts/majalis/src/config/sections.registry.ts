@@ -6,6 +6,8 @@ import { BRAND } from "@/shared/config/brand";
  */
 import type { LucideIcon } from "lucide-react";
 import {
+  BookmarkCheck,
+  FileCheck,
   AudioLines,
   Award,
   BadgeCheck,
@@ -24,7 +26,6 @@ import {
   Calendar,
   CircleDot,
   Clock,
-  Church,
   Compass,
   Feather,
   FileStack,
@@ -155,6 +156,9 @@ export interface SectionDef {
 }
 
 /** لون العلامة الافتراضي لكل مجموعة أقسام */
+/** أيقونة «متابعة القراءة» (استئناف المصحف) — مميّزة عن أيقونة المصحف نفسه، من السجل لا من الواجهة. */
+export const READING_RESUME_ICON: LucideIcon = BookmarkCheck;
+
 export const SECTION_GROUP_ACCENT: Record<SectionGroup, string> = {
   quran: "#2A7A6E",
   sunnah: "#0E7A5F",
@@ -903,7 +907,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     label: "الأمم السابقة",
     subtitle: "أمم سابقة ورد ذكرها في القرآن",
     route: "/nations",
-    icon: Church,
+    icon: Landmark,
     group: "knowledge",
     order: 30,
     featured: true,
@@ -1348,7 +1352,7 @@ const SECTION_SEEDS: SectionSeed[] = [
     label: "شروط الاستخدام",
     subtitle: "شروط وأحكام الاستخدام",
     route: "/terms",
-    icon: Landmark,
+    icon: FileCheck,
     group: "account",
     order: 110,
     surfaces: [...ACCOUNT_DRAWER, "footer"],

@@ -276,19 +276,19 @@
 }
 
 :is(html[data-theme="dark"], html.dark) .bottom-nav__tab.is-active {
-  background: color-mix(in srgb, var(--pd-emerald) 7%, transparent) !important;
+  background: var(--color-active-tab-bg) !important;
 }
 
 :is(html[data-theme="dark"], html.dark) .bottom-nav__tab.is-active .bottom-nav__tab-label,
 :is(html[data-theme="dark"], html.dark) .bottom-nav__tab.is-active .bottom-nav__tab-icon {
-  color: var(--pd-gold) !important;
+  color: var(--color-primary-dark) !important;
   background: transparent !important;
   filter: none !important;
   text-shadow: none !important;
 }
 
 :is(html[data-theme="dark"], html.dark) .bottom-nav__tab.is-active::before {
-  background: var(--pd-gold) !important;
+  background: transparent !important;
   box-shadow: none !important;
   filter: none !important;
   opacity: 0.9 !important;
@@ -849,17 +849,17 @@ html.pts-immersive:is([data-theme="dark"], .dark) :is(
 
 :is(html[data-theme="dark"], html.dark).pts-immersive .bottom-nav__tab.is-active,
 html.pts-immersive:is([data-theme="dark"], .dark) .bottom-nav__tab.is-active {
-  background: color-mix(in srgb, var(--pd-emerald) 7%, transparent) !important;
+  background: color-mix(in srgb, var(--on-dark-strong) 14%, transparent) !important;
   box-shadow: none !important;
   opacity: 1 !important;
 }
 :is(html[data-theme="dark"], html.dark).pts-immersive .bottom-nav__tab.is-active :is(.bottom-nav__tab-label, .bottom-nav__tab-icon),
 html.pts-immersive:is([data-theme="dark"], .dark) .bottom-nav__tab.is-active :is(.bottom-nav__tab-label, .bottom-nav__tab-icon) {
-  color: var(--pd-gold) !important;
+  color: var(--on-dark-strong) !important;
 }
 :is(html[data-theme="dark"], html.dark).pts-immersive .bottom-nav__tab.is-active::before,
 html.pts-immersive:is([data-theme="dark"], .dark) .bottom-nav__tab.is-active::before {
-  background: var(--pd-gold) !important;
+  background: transparent !important;
   box-shadow: none !important;
   height: 2px !important;
 }

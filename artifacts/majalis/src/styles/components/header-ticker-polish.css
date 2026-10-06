@@ -105,7 +105,7 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: safe center;
 }
 .header-ticker__item {
   display: inline-flex;
@@ -141,15 +141,28 @@
   white-space: nowrap;
   opacity: .92;
 }
+/* الحركة المخفّضة: سطر واحد ضمن ارتفاع الصف الثابت (--ticker-h) — الالتفاف كان يقصّ
+   السطر الأول والثالث ويتجاوز الصف. النص يبقى كاملًا ويُسحب أفقيًا بدل القص. */
+.header-ticker--static .header-ticker__single-item {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.header-ticker--static .header-ticker__single-item::-webkit-scrollbar {
+  display: none;
+}
 .header-ticker--static .header-ticker__item {
-  white-space: normal;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 100%;
-  text-align: center;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  max-width: none;
+  text-align: start;
 }
 .header-ticker--static .header-ticker__text,
-.header-ticker--static .header-ticker__source { white-space: normal; }
+.header-ticker--static .header-ticker__source {
+  white-space: nowrap;
+}
 .header-ticker {
   /* خلفية هادئة بهوية خضراء موحدة — بلا شفافية أو تمويه */
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 7%, var(--mj-surface, var(--mj-white))) !important;
@@ -218,15 +231,6 @@ html.dark .header-ticker__source {
 .header-ticker__track {
   white-space: nowrap;
   max-width: none;
-}
-.header-ticker--static .header-ticker__item {
-  white-space: normal;
-  flex-wrap: wrap;
-  max-width: 100%;
-  overflow-wrap: anywhere;
-}
-.header-ticker--static .header-ticker__text {
-  white-space: normal;
 }
 
 /* صف الشريط + شريحة الصلاة: الشريحة ≤٣٠٪ والباقي للماركي بلا تقاطع */

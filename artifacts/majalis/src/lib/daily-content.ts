@@ -1,6 +1,7 @@
 import { DAILY_TICKER_NAWAWI } from "./daily-ticker-nawawi";
 import { DAILY_TICKER_DHIKR } from "./daily-ticker-dhikr";
 import { filterForPublicZone, normalizePublicSource } from "./content-display-zones";
+import { toArabicIndicDigits } from "./numerals";
 
 export type DailyHadithEntry = {
   id: string;
@@ -413,6 +414,16 @@ export type DailyDhikrEntry = {
 export function getDailyHadith(date = new Date()) {
   const pool = filterForPublicZone(DAILY_HADITH_POOL, "dailyReminder");
   return pickDailyItem(pool.length > 0 ? pool : DAILY_HADITH_POOL, date);
+}
+
+/**
+ * مرجع آية للعرض في الواجهة: «الأنفال: ٤٥» (اسم السورة + رقم الآية بالأرقام العربية).
+ * لا يمسّ `reference` الخام (تستهلكه الويدجت لاستخراج رقم السورة).
+ */
+export function formatAyahRefLabel(entry: Pick<DailyAyahEntry, "surah" | "ayahNumber">): string {
+  const surah = (entry.surah || "").replace(/^سورة\s+/, "").trim();
+  if (!surah) return "";
+  return entry.ayahNumber != null ? `${surah}: ${toArabicIndicDigits(entry.ayahNumber)}` : surah;
 }
 
 export function getDailyAyah(date = new Date()) {
