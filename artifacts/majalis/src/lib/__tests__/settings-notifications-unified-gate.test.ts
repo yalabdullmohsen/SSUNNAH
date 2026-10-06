@@ -88,10 +88,19 @@ const allOn = {
   },
 };
 const noQuiet = { enabled: false, startHour: 22, endHour: 8 };
+// الأذكار والجمعة من خطة adhkar-reminders — نمرّر خطة جمعة صباحًا (الكويت) بمواقيت ثابتة.
+const planMod = await import("../adhkar-reminders/plan");
+const fridayNow = Date.parse("2026-10-09T02:00:00Z");
+const planFor = (groups: { adhkar: boolean; occasions: boolean }) =>
+  planMod.planToSmartItems(planMod.planAdhkarReminders({
+    prefs: planMod.defaultReminderPrefs(), groups, now: fridayNow, timeZone: "Asia/Kuwait", days: 1,
+    prayerMinutes: () => ({ Fajr: 270, Asr: 920 }), budget: 40,
+  }), fridayNow);
+const adhkarItems = planFor({ adhkar: true, occasions: true });
 const full = smart.buildDailySmartSchedule({
   prefs: allOn,
   khatmahBehind: true,
-  forceWeekly: true,
+  adhkarItems,
   quietHours: noQuiet,
 });
 assert.ok(!full.some((i) => (i.kind as string) === "prayer"), "الصلاة يملكها محرك الأذان");
@@ -100,8 +109,7 @@ for (const kind of ["adhkar", "dhikr", "flashcards", "quran", "occasion", "strea
 }
 assert.ok(full.every((i) => typeof i.url === "string" && i.url.startsWith("/") && !i.url.startsWith("//")), "كل عنصر له رابط داخلي");
 const kahf = full.find((i) => i.kind === "occasion");
-assert.equal(kahf?.weekday, 5, "الكهف أسبوعي يوم الجمعة");
-assert.equal(kahf?.url, "/mushaf/18");
+assert.equal(kahf?.url, "/mushaf/18", "الكهف يوم الجمعة");
 
 const quranOff = smart.buildDailySmartSchedule({
   prefs: { ...allOn, quranDailyReminder: false, sections: { ...allOn.sections, quran: { enabled: false } } },
@@ -112,7 +120,7 @@ const quranOff = smart.buildDailySmartSchedule({
 assert.ok(!quranOff.some((i) => ["quran", "streak", "khatmah"].includes(i.kind)), "السلسلة والختمة تتبعان فئة القرآن");
 const occOff = smart.buildDailySmartSchedule({
   prefs: { ...allOn, sections: { ...allOn.sections, fridayOccasions: { enabled: false } } },
-  forceWeekly: true,
+  adhkarItems: planFor({ adhkar: true, occasions: false }),
   quietHours: noQuiet,
 });
 assert.ok(!occOff.some((i) => i.kind === "occasion"), "فئة المناسبات تحكم الكهف");
@@ -121,13 +129,13 @@ assert.equal(smart.buildDailySmartSchedule({ prefs: { ...allOn, enabled: false }
 /* 4) ساعات الهدوء مطبَّقة (عدا الأذكار المؤقّتة) */
 const quiet = smart.buildDailySmartSchedule({
   prefs: allOn,
-  forceWeekly: true,
+  adhkarItems,
   includeStreakWarn: false,
   quietHours: { enabled: true, startHour: 16, endHour: 19 },
 });
 assert.ok(!quiet.some((i) => i.kind === "quran"), "ورد ٥ م يسقط داخل الهدوء");
 assert.ok(!quiet.some((i) => i.kind === "dhikr" && i.minuteOfDay >= 16 * 60 && i.minuteOfDay < 19 * 60));
-assert.ok(quiet.some((i) => i.id === "adhkar-evening"), "أذكار المساء معفاة");
+assert.ok(quiet.some((i) => i.tag === "majalis-adhkar-evening"), "أذكار المساء (بعد العصر) معفاة");
 assert.equal(smart.isMinuteWithinQuietHours({ enabled: true, startHour: 22, endHour: 8 }, 23 * 60), true);
 assert.equal(smart.isMinuteWithinQuietHours({ enabled: true, startHour: 22, endHour: 8 }, 8 * 60), false);
 
@@ -141,7 +149,8 @@ for (const id of ids) {
   assert.ok(id !== 9301 && !(id >= 9401 && id <= 9499), "لا تصادم مع الورد والذكر");
 }
 assert.equal(nativeDaily.capacitorWeekday(5), 6, "الجمعة = 6 في Capacitor");
-assert.match(read("src/lib/smart-local-notifications.ts"), /syncNativeDailyReminders\(nativeItems\)/, "iOS يجدول الأذكار/المراجعة/الجمعة");
+assert.match(read("src/lib/smart-local-notifications.ts"), /syncNativeDailyReminders\(nativeItems\)/, "iOS يجدول المراجعة");
+assert.match(read("src/lib/smart-local-notifications.ts"), /syncNativeAdhkarReminders\(\)/, "iOS يجدول الأذكار والجمعة والمناسبات (متجددة)");
 assert.match(read("src/lib/dhikr-phrase-reminders.ts"), /isMinuteWithinQuietHours/, "الذكر الأصلي يحترم الهدوء");
 assert.match(read("src/lib/local-notifications.ts"), /fridayOccasions\?\.enabled/, "تذكير المواسم له مفتاح");
 

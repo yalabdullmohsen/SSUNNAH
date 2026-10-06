@@ -78,6 +78,13 @@ export async function attachLocalNotificationListeners(): Promise<void> {
         onAdhanSegmentNotificationInteraction(event.notification?.extra),
       );
       recordNativeNotification(event.notification);
+      // زرّا «تم» و«بعد 15 دقيقة» لتذكير الأذكار لا يفتحان التطبيق على صفحة.
+      if (event.actionId === "done" || event.actionId === "snooze") {
+        void import("@/lib/adhkar-reminders").then(({ handleAdhkarAction }) =>
+          handleAdhkarAction(event.actionId, event.notification ?? {}),
+        );
+        return;
+      }
       navigateFromNotificationExtra(event.notification?.extra);
     });
     await LocalNotifications.addListener("localNotificationReceived", (notification) => {
@@ -91,6 +98,9 @@ export async function attachLocalNotificationListeners(): Promise<void> {
       }
     });
     _listenersAttached = true;
+    void import("@/lib/adhkar-reminders").then(({ registerAdhkarActionTypes }) =>
+      registerAdhkarActionTypes(LocalNotifications),
+    ).catch(() => {});
     if (import.meta.env.DEV) console.info("[notifications] local listeners attached");
     void import("@/lib/adhan-smart-cancel").then(({ attachAdhanSmartCancelListeners }) =>
       attachAdhanSmartCancelListeners(),

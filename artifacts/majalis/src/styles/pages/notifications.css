@@ -699,3 +699,10 @@ html.dark .notif-row__label {
 .nsp-dot.is-on { background: var(--mj-brand, #1F6B4A); }
 .nsp-inline-link { display: inline-block; margin-top: 0.5rem; }
 .nsp-prayer-modes { margin-top: 0.5rem; }
+
+/* تذكيرات الأذكار والمناسبات داخل فئات التذكير */
+.nsp-reminders { display: flex; flex-direction: column; gap: 0.25rem; padding-inline-start: 0.75rem; }
+.nsp-reminder-detail { padding: 0 0.75rem 0.75rem; }
+.nsp-reminder-sound { align-items: flex-end; }
+.nsp-reminder-sound > .nsp-field { flex: 1 1 auto; margin-top: 0; }
+.nsp-reminders__actions { margin-top: 0.75rem; flex-wrap: wrap; }

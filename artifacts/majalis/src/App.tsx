@@ -361,6 +361,16 @@ function AdhanSchedulerBootstrap() {
  * أوقات الصلاة، ويُعيد فحص النافذة الحالية فوراً عند عودة التطبيق للواجهة
  * (مثلاً بعد إغلاقه في الخلفية لدقائق ثم فتحه من جديد داخل نافذة الـ١٥ دقيقة).
  */
+/** إعادة جدولة تذكيرات الأذكار المتجددة (iOS) — عند العودة للتطبيق وتغيّر اليوم/المنطقة/الموقع. */
+function resyncAdhkarReminders(): void {
+  void import("@/lib/capacitor-utils").then(({ isNative }) => {
+    if (!isNative) return;
+    void import("@/lib/adhkar-reminders").then(({ syncNativeAdhkarReminders }) => {
+      void syncNativeAdhkarReminders();
+    });
+  });
+}
+
 function PrayerAlertSchedulerBootstrap() {
   const { data } = useSharedPrayerData();
 
@@ -373,6 +383,8 @@ function PrayerAlertSchedulerBootstrap() {
         if (cancelled) return;
         mod.startPrayerAlertScheduler(data).catch(() => {});
       });
+      // تغيّر الموقع/اليوم يغيّر المواقيت ⇒ أذكار مرتبطة بالصلاة تُعاد جدولتها
+      resyncAdhkarReminders();
     }, 3500);
     return () => {
       cancelled = true;
@@ -400,6 +412,7 @@ function PrayerAlertSchedulerBootstrap() {
       void import("@/lib/quran-daily-reminder").then(({ ensureQuranDailyReminderScheduled }) => {
         void ensureQuranDailyReminderScheduled();
       });
+      resyncAdhkarReminders();
     };
     const onVisible = () => {
       if (document.visibilityState === "visible") rescheduleOnForeground();
@@ -436,6 +449,7 @@ function PrayerAlertSchedulerBootstrap() {
           mod.invalidatePrayerNativeSchedule();
           void mod.recheckPrayerAlertWindow(data, { force: true });
         });
+        resyncAdhkarReminders();
       }
     };
     const clockId = window.setInterval(onClockTick, 60_000);

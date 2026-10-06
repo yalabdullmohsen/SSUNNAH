@@ -120,7 +120,14 @@ console.log("\n=== 4. Smart local schedule ===");
       reminderMinute: 0,
     }),
   );
-  const items = buildDailySmartSchedule({ khatmahBehind: true });
+  // الأذكار تأتي من خطة adhkar-reminders (فئات البيانات + محرك المواقيت)
+  const plan = await import("../adhkar-reminders/plan");
+  const now = Date.now();
+  const adhkarItems = plan.planToSmartItems(plan.planAdhkarReminders({
+    prefs: plan.defaultReminderPrefs(), groups: { adhkar: true, occasions: true }, now, timeZone: "Asia/Kuwait",
+    days: 2, prayerMinutes: () => ({ Fajr: 270, Asr: 920 }), budget: 40,
+  }), now);
+  const items = buildDailySmartSchedule({ khatmahBehind: true, adhkarItems });
   assert(items.some((i) => i.kind === "adhkar"), "schedules adhkar");
   assert(items.some((i) => i.kind === "dhikr"), "schedules dhikr phrases");
   assert(items.filter((i) => i.kind === "dhikr").length === 7, "seven dhikr phrases");

@@ -62,7 +62,7 @@ export const NOTIF_SECTIONS: readonly NotifSectionMeta[] = [
   {
     id: "adhkar",
     title: "الأذكار",
-    description: "الصباح ٦:٣٠ والمساء ٥:٣٠ والنوم ٩:٣٠ وبعد الصلاة",
+    description: "الصباح بعد الفجر والمساء بعد العصر، والنوم والاستيقاظ وبعد الصلاة والصلاة على النبي ﷺ والاستغفار",
     defaults: baseDay({ enabled: false }),
     messages: [
       { title: "أذكار الصباح", body: "ورد الصباح جاهز." },
@@ -108,7 +108,7 @@ export const NOTIF_SECTIONS: readonly NotifSectionMeta[] = [
   {
     id: "fridayOccasions",
     title: "الجمعة والمناسبات",
-    description: "سورة الكهف صباح الجمعة وتذكيرات المواسم الفاضلة",
+    description: "الجمعة، وصيام الاثنين والخميس والأيام البيض، وعرفة وعاشوراء وعشر ذي الحجة ورمضان، والضحى والقيام",
     defaults: baseDay({ enabled: false }),
     messages: [
       { title: "يوم الجمعة", body: "تذكير بصلاة الجمعة." },
