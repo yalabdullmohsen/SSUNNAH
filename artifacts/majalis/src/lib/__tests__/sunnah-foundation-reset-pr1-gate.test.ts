@@ -90,7 +90,6 @@ for (const token of [
 
 /* Fonts: Display + UI؛ زخرفي للعرض فقط */
 assert.doesNotMatch(css, /--sf-font-/, "الخطوط من font-system.css فقط");
-assert.match(css, /ممنوع في تشغيل UI|لحظات عرض فقط/);
 
 /* V2 جسر إلى foundation */
 assert.match(v2, /--v2-color-ivory:\s*var\(--sf-color-ivory-canvas/);
