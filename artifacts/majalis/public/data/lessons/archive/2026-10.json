@@ -2,17 +2,17 @@
   "month": "2026-10",
   "items": [
     {
-      "id": "94bfbf32c4270b9717807a2ec448e05b0ef57bc6",
-      "type": "درس",
-      "title_ar": "الآن مباشر شرح كتاب التوحيد للإمام محمد بن عبدالوهاب فضيلة الشيخ عمر مثيب العتي…",
-      "summary_ar": "الان مباشر (56) شرح كتاب التوحيد للامام محمد بن عبدالوهاب فضيله الشيخ عمر مثيب العتيبي رابط البث المباشر https://t.me/omar_muthib?livestream تحميل الكتاب https…",
-      "sheikh": "عمر مثيب العتيبي 🔗 رابط البث المباشر https://t",
-      "place": null,
+      "id": "8b88cc50b796c09b56539ddc168d52a9c0b37eb0",
+      "type": "دورة",
+      "title_ar": "ندعوكم الليلة لحضور الدورة العلمية شرح نزهة النظر لابن حجر للشيخ د راشد صليهم ا…",
+      "summary_ar": "ندعوكم الليله لحضور الدوره العلميه: شرح نزهه النظر لابن حجر للشيخ د. راشد صليهم الهاجري ⏰ بعد صلاه المغرب (كل ثلاثاء) مسجد ابي واقد الليثي - القيروان https://m…",
+      "sheikh": "راشد صليهم الهاجري ⏰ بعد صلاة المغرب (كل ثلاثاء) 🕌 مسجد أبي",
+      "place": "أبي واقد الليثي - القيروان https://maps",
       "audience": "عام",
       "starts_at": null,
       "time_text": null,
-      "register_url": "https://t.me/omar_muthib?livestream",
-      "schedule_kind": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
       "women_attendance": "men_only",
       "women_attendance_note": null,
       "sources": [
@@ -20,13 +20,148 @@
           "id": "telegram-DrosQ8",
           "name_ar": "دروس الكويت",
           "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28172",
+          "post_url": "https://t.me/DrosQ8/28182",
           "platform": "telegram"
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-06T10:02:08.220Z",
+      "published_at": "2026-10-06T20:25:44.640Z",
+      "confidence": 0.9
+    },
+    {
+      "id": "315e31fc9ce65f3202cf58d1549e27e82289e83f",
+      "type": "دورة",
+      "title_ar": "ندعوكم الليلة لحضور البرنامج التأصيلي العلمي بعد المغرب شرح دليل الطالب للشيخ ح…",
+      "summary_ar": "ندعوكم الليله لحضور البرنامج التاصيلي العلمي: ⏰ بعد المغرب شرح دليل الطالب للشيخ حماد الظفيري ⏰ بعد العشاء شرح ثلاثه الاصول للشيخ يوسف مهراس مسجد عاصم الانصاري…",
+      "sheikh": null,
+      "place": "ري ⏰ بعد العشاء 📖 شرح ثلاثة الأصول 🎙️ للشيخ يوسف مهراس 🕌 مسجد عاصم الأنصاري -",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": "بعد المغرب",
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "upcoming",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28183",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-06T20:25:44.640Z",
+      "confidence": 0.9
+    },
+    {
+      "id": "92b1d1b585173e87370d198a089cfc79b0fa7a1a",
+      "type": "درس",
+      "title_ar": "ندعوكم اليوم لحضور الدرس العلمي شرح كتاب عمدة الأحكام لفضيلة الشيخ د دهام الفضل…",
+      "summary_ar": "ندعوكم اليوم لحضور الدرس العلمي: (شرح كتاب عمده الاحكام ) لفضيله الشيخ د. دهام الفضلي @DrEdham ⏰ بعد صلاه العصر (كل ثلاثاء) مسجد ابو طاهر السلفي - صباح الاحمد …",
+      "sheikh": "دهام الفضلي @DrEdham ⏰ بعد صلاة العصر (كل ثلاثاء) 🕌 مسجد أب",
+      "place": "أبو طاهر السلفي - صباح الأحمد https://maps",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28178",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-06T20:25:44.640Z",
+      "confidence": 0.9
+    },
+    {
+      "id": "187a0c2fa627c41f2c8019018b6682ba1e4c0359",
+      "type": "درس",
+      "title_ar": "ندعوكم اليوم لحضور الدرس الأسبوعي شرح كتاب التوحيد للشيخ د منصور بن عبدالله الع…",
+      "summary_ar": "ندعوكم اليوم لحضور الدرس الاسبوعي: شرح كتاب التوحيد للشيخ د. منصور بن عبدالله العازمي @mnsour4160 ⌚ كل ثلاثاء (بعد صلاه العصر) ديوان صالح الغيصم - جابر العلي h…",
+      "sheikh": "منصور بن عبدالله العازمي @mnsour4160 ⌚ كل ثلاثاء (بعد صلاة ا",
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28180",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-06T20:25:44.640Z",
       "confidence": 0.8
+    },
+    {
+      "id": "a23d131311abd33a3ed9e242c9c7f3a007c80ea6",
+      "type": "درس",
+      "title_ar": "👇 جدول دروس اليوم الثلاثاء 👇",
+      "summary_ar": "جدول دروس اليوم الثلاثاء",
+      "sheikh": null,
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28177",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-06T20:25:44.640Z",
+      "confidence": 0.65
+    },
+    {
+      "id": "fdf1abf95b060363d7e41c2cb4b85c518a8d3634",
+      "type": "محاضرة",
+      "title_ar": "♦️ غداً الأربعاء بعد صلاة المغرب بإذن الله",
+      "summary_ar": "غدا الاربعاء بعد صلاه المغرب باذن الله مسجد الياقوت درس تلخيص مختصر المقنع المجلس (137) – تبعيض الطلاق للشيخ عثمان الخميس لتفاصيل المحاضرات وللبث المباشر في ال…",
+      "sheikh": null,
+      "place": "الياقوت",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "upcoming",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "ig-othmanalkamees",
+          "name_ar": "د. عثمان الخميس",
+          "url": "https://instagram.com/othmanalkamees",
+          "post_url": "https://www.instagram.com/p/DeKZ7gOiWN2/",
+          "platform": "instagram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-06T20:24:29.268Z",
+      "confidence": 0.75
     },
     {
       "id": "64cac92508d972195b7ffc4d0474c1290f441987",
@@ -1025,33 +1160,6 @@
       ],
       "image_url": null,
       "published_at": "2026-09-24T00:00:00.000Z",
-      "confidence": 0.75
-    },
-    {
-      "id": "f0f6dacf1347fb2dc406d5fbdf9b0bd369fe9f72",
-      "type": "محاضرة",
-      "title_ar": "غداً الأربعاء بعد صلاة المغرب بإذن الله مسجد الياقوت درس تلخيص مختصر المقنع الم…",
-      "summary_ar": "غدا الاربعاء بعد صلاه المغرب باذن الله مسجد الياقوت درس تلخيص مختصر المقنع المجلس (136) – باب صريح الطلاق وكنايته للشيخ عثمان الخميس لتفاصيل المحاضرات وللبث ال…",
-      "sheikh": null,
-      "place": "الياقوت",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": null,
-      "schedule_kind": "upcoming",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "ig-othmanalkamees",
-          "name_ar": "د. عثمان الخميس",
-          "url": "https://instagram.com/othmanalkamees",
-          "post_url": "https://www.instagram.com/p/DdldrzpGyb2/",
-          "platform": "instagram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-09-22T18:49:18.671Z",
       "confidence": 0.75
     },
     {
