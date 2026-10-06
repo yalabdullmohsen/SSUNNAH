@@ -49,7 +49,6 @@ export const primaryNav: readonly NavLinkItem[] = PRIMARY_IDS.map(linkFromSectio
 
 /** أقسام ثانوية — sitemap · الروابط الداخلية (من السجل). */
 const SECONDARY_IDS = [
-  "scholars",
   "hadith",
   "islamic-history",
   "seerah",

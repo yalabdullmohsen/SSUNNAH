@@ -15,7 +15,6 @@ export const SEO_NAV_EXCEPTIONS: Record<string, string> = {
   "/sections": "الأقسام",
   "/tawhid": "العقيدة",
   "/fiqh": "الفقه",
-  "/scholars": "العلماء",
 };
 
 export function seoNavLabel(path: string, fallback: string): string {

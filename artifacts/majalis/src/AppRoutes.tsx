@@ -54,7 +54,6 @@ import {
   UniversitiesAdminPage,
   NotFound,
   CalendarPage,
-  ScholarProfilePage,
   ScientificAnnouncementDetailPage,
   MiraclesPage,
   PropheticMedicinePage,
@@ -403,8 +402,8 @@ export default function AppRoutes() {
         <SafeLazyRoute component={IslamicLandmarksPage} />
       </Route>
       <Route path="/mutashabihat"><SafeLazyRoute component={MutashabihatPage} /></Route>
-      <Route path="/scholars/:id"><SafeLazyRoute component={ScholarProfilePage} /></Route>
-      <Route path="/scholars"><SafeLazyRoute component={ScholarProfilePage} /></Route>
+      <Route path="/scholars/:id"><Redirect to="/sections" /></Route>
+      <Route path="/scholars"><Redirect to="/sections" /></Route>
       <Route path="/tarikh-islami/:id"><SafeLazyRoute component={TarikhIslamiDetailPage} /></Route>
       <Route path="/asma-husna"><SafeLazyRoute component={AsmaaHusnaPage} /></Route>
       <Route path="/akhlaq"><SafeLazyRoute component={AkhlaqPage} /></Route>

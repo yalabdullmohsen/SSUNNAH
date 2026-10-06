@@ -79,13 +79,6 @@ console.log("=== Surah list helper remains available ===");
   assert.match(read("src/pages/quran/ui/QuranPersonDetailView.tsx"), /getSurahMeta\(o\.surah\)\.name/);
 }
 
-console.log("=== search index generator includes scholars ===");
-{
-  const gen = read("scripts/generate-unified-search-index.mjs");
-  assert.match(gen, /SCHOLAR_PROFILES/);
-  assert.match(gen, /scholar:\$\{p\.slug\}/);
-}
-
 console.log("=== SourceItemCard cleans display ===");
 {
   assert.match(read("src/components/lessons/SourceItemCard.tsx"), /cleanHarvestDisplayText/);

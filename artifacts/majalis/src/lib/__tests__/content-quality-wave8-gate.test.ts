@@ -82,13 +82,6 @@ console.log("=== report button subject without raw id ===");
   assert.match(btn, /معرّف المحتوى/);
 }
 
-console.log("=== scholar empty sections guarded ===");
-{
-  const page = read("src/pages/scholars/ScholarProfilePage.tsx");
-  assert.match(page, /profile\.works\.length > 0/);
-  assert.match(page, /truncateAtWord/);
-}
-
 console.log("=== public lesson data without contact handles ===");
 {
   const chunk = read("public/data/lessons/chunk-000.json");
