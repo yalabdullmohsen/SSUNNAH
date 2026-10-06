@@ -3,6 +3,7 @@ import { Button, Card, CountdownHms, Icon, Skeleton } from "@/design-system";
 import { useSharedPrayerCountdownLive, useSharedPrayerData } from "@/components/prayer/PrayerCountdownProvider";
 import { formatTime12 } from "@/lib/prayer-times";
 import { S } from "@/design-system/strings";
+import { navigateTo } from "@/lib/navigation-intent";
 
 /** بطاقة Hero للصلاة القادمة: الاسم + عدّاد حيّ + المدينة + مواقيت اليوم الخمس. */
 export function PrayerHero() {
@@ -15,7 +16,7 @@ export function PrayerHero() {
       <Card variant="hero">
         <p className="sn-t-headline">{S.prayerHero_01}</p>
         <p className="sn-t-subhead">{S.prayerHero_02}</p>
-        <Button variant="on-hero" size="m" onClick={() => { window.location.assign("/prayer-times"); }}>{S.prayerHero_03}</Button>
+        <Button variant="on-hero" size="m" onClick={() => { navigateTo("/prayer-times"); }}>{S.prayerHero_03}</Button>
       </Card>
     );
   }

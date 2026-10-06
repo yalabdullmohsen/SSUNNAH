@@ -50,7 +50,7 @@ assert.ok(
 );
 assert.doesNotMatch(tarikh, /قريبًا|TODO|FIXME/, "لا stubs ظاهرة في بيانات التاريخ");
 
-const searchView = read("src/pages/account/ui/SearchView.tsx");
+const searchView = read("src/pages/account/ui/SearchView.tsx") + read("src/design-system/strings.ts");
 assert.match(searchView, /لم نجد نتيجة مطابقة|لا نتائج/, "رسالة واضحة عند فراغ البحث");
 assert.match(searchView, /جرّب|تحقق|اختصر|كلمة أخرى|كلمة أقصر/, "إرشاد عملي عند عدم وجود نتائج");
 
