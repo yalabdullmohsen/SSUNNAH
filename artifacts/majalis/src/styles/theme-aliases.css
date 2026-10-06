@@ -575,10 +575,13 @@ html.dark .header-ticker__label {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  min-height: calc(
-    var(--ticker-h, 3.5rem) + (var(--ticker-row-pad-block, 0.4rem) * 2)
-  ) !important;
-  height: auto !important;
+}
+/* الجوال: الارتفاع من --ticker-row-h وحده (top-chrome-layout + CSS الحرج). min-height هنا كان
+   calc(طول + 0 بلا وحدة) غير صالح، وheight:auto المفروض كان يطوي الصف الفارغ (10.6px) أثناء الإقلاع. */
+@media (min-width: 880px) {
+  .navbar-ticker-row {
+    height: auto !important;
+  }
 }
 .header-ticker--paused .header-ticker__track,
 .header-ticker--paused .header-ticker__runner {
