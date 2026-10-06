@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { navigateTo } from "@/lib/navigation-intent";
 import { Link } from "wouter";
 import {
   AyahCard, Button, Card, ErrorState, EmptyState, Hscroll, HadithCard, Icon, IconLink, LessonCard,
@@ -156,7 +157,7 @@ function StartHere() {
         <h2 className="sn-t-title2">{S.home_27}</h2>
         <p className="sn-t-subhead sn-t-secondary">{S.home_29}</p>
         <div className="sn-row">
-          <Button variant="primary" onClick={() => { dismiss(); window.location.assign("/mushaf"); }}>{S.home_30}</Button>
+          <Button variant="primary" onClick={() => { dismiss(); navigateTo("/mushaf"); }}>{S.home_30}</Button>
           <Button variant="tertiary" onClick={dismiss}>{S.home_31}</Button>
         </div>
       </div>
