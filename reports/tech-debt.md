@@ -38,9 +38,11 @@
 
 | # | الدين | الحالة |
 |---|---|---|
-| C1 | اعتماديات `artifacts/majalis` بلا أي مرجع نصي: `hls.js`، `@hookform/resolvers`، `@radix-ui/react-avatar`، `@radix-ui/react-context-menu`، `@radix-ui/react-dropdown-menu`، `@radix-ui/react-toggle-group`، `@tailwindcss/typography`، `embla-carousel-react`، `input-otp`، `react-day-picker`، `tw-animate-css` | ✅ PR جاهز (التحقق: tsc وvite build ناجحان) |
-| C2 | تحديثات patch لحزم Radix (10 حزم) | ✅ PR جاهز (tsc وvite build ناجحان) |
+| C1 | اعتماديات `artifacts/majalis` بلا أي مرجع نصي: `hls.js`، `@hookform/resolvers`، `@radix-ui/react-avatar`، `@radix-ui/react-context-menu`، `@radix-ui/react-dropdown-menu`، `@radix-ui/react-toggle-group`، `@tailwindcss/typography`، `embla-carousel-react`، `input-otp`، `react-day-picker`، `tw-animate-css` | ✅ أُغلق (PR #2687) |
+| C2 | تحديثات patch لحزم Radix (10 حزم) | ✅ أُغلق (PR #2688) |
 | C3 | تحديثات patch: Capacitor (6 إضافات) وtailwind/adhan/dexie/compression/sharp/@types/leaflet | يحتاج قرارك: Capacitor يمس الحزمة الأصلية لـiOS (بوابة TestFlight)، و`pnpm update` يعيد تنسيق `pnpm-workspace.yaml` ويحذف تعليقات الأمان فيه فلم أستخدمه |
+
+| C4 | الكود الميت (ملفات/تصديرات غير مستخدمة) | لم يُفحص: أداة الكشف (knip) تتطلب تثبيتًا وفشل `npx` بخطأ صلاحيات في `~/.npm/_cacache`؛ يحتاج قرارك (إصلاح الصلاحيات أو الموافقة على إضافة أداة dev) |
 
 (استُثنيت الحزم الخاصة بالمنصة: `@rollup/rollup-darwin-arm64`، `@tailwindcss/oxide-darwin-arm64`، `lightningcss-darwin-arm64`، `@capacitor/ios`.)
 
@@ -51,4 +53,4 @@ S1–S4 وU1 وP1: كلها تمسّ قاعدة الإنتاج `ngmvmlulzacrlicu
 ## سجل الإغلاق
 
 - C1: PR #2687 — مدموج (فحوص CI ناجحة).
-- C2: قيد الدمج (يُحدَّث).
+- C2: PR #2688 — مدموج (فحوص CI ناجحة).
