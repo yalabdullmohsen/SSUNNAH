@@ -44,7 +44,7 @@
   );
   /* ارتفاع الشريط المتحرك ≤ ٣٦px (٢٫٢٥rem) + توسيط flex؛ safe-area منفصل في صف الهيدر */
   --ticker-h: 2.65rem;
-  --ticker-row-pad-block: 0;
+  --ticker-row-pad-block: 0px;
   --page-gutter: var(--gutter-inline-start, max(16px, var(--inset-right)));
   --page-width: var(--content-max, 70rem);
   --motion-fast: var(--dur-fast, 140ms);

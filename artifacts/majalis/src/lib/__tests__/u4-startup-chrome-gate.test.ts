@@ -112,7 +112,8 @@ assert.match(
   /--header-h:calc\(var\(--header-chrome\)\+max\(var\(--inset-top,0px\),12px\)/,
   "header-h includes navbar pad max(inset,12)",
 );
-assert.match(html, /--ticker-row-h:calc\(var\(--ticker-h\)\+\.65rem\)/);
+/* حجز صف الشريط = الارتفاع النهائي (شريط + .25rem = 46.4px) من الرمز الوحيد — انظر ticker-row-token-gate */
+assert.match(html, /--ticker-row-h:calc\(var\(--ticker-h\) \+ \.25rem\)/);
 assert.match(html, /__hc !== "1"[\s\S]*mj-startup-hero-ph/, "strip hero node off-home");
 assert.match(
   html,

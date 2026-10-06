@@ -7,7 +7,7 @@
 
 :root {
   --ticker-h: 2.65rem;
-  --ticker-row-pad-block: 0;
+  --ticker-row-pad-block: 0px;
   --gutter-inline-start: max(var(--inset-right, 0px), 16px);
   --gutter-inline-end: max(var(--inset-left, 0px), 16px);
   --header-chrome: 56px;
@@ -27,7 +27,8 @@
 @media (max-width: 879px) {
   :root {
     --header-chrome: 48px;
-    --ticker-row-h: calc(var(--ticker-h) + 0.65rem);
+    /* مصدر وحيد لارتفاع صف الشريط على الجوال = الشكل النهائي (46.4px = شريط 42.4 + 4) */
+    --ticker-row-h: calc(var(--ticker-h) + 0.25rem);
     --app-top-chrome-h: calc(
       var(--header-chrome) + max(var(--inset-top, 0px), 12px) + var(--ad-banner-height) +
         var(--search-height) + var(--ticker-row-h)
