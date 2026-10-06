@@ -89,9 +89,7 @@ for (const token of [
 }
 
 /* Fonts: Display + UI؛ زخرفي للعرض فقط */
-assert.match(css, /--sf-font-display/);
-assert.match(css, /--sf-font-ui/);
-assert.match(css, /--sf-font-ornament/);
+assert.doesNotMatch(css, /--sf-font-/, "الخطوط من font-system.css فقط");
 assert.match(css, /ممنوع في تشغيل UI|لحظات عرض فقط/);
 
 /* V2 جسر إلى foundation */
