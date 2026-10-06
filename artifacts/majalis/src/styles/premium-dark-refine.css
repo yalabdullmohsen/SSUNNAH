@@ -615,7 +615,7 @@ html.pts-immersive:is([data-theme="dark"], .dark) .app-main {
 :is(html[data-theme="dark"], html.dark) :is(
   .app-back-btn--bar, .fixed-back-bar, .app-back-btn.fixed-back-bar,
   .scroll-to-top, .mj-scroll-top, .fab-scroll-top,
-  .lessons-v3-sticky, .search-page-form, .srch-home-form,
+  .lessons-v3-sticky,
   .mj-fab, .floating-action
 ) {
   background-color: var(--surface-float, var(--pd-elevated)) !important;
@@ -917,9 +917,7 @@ html.pts-immersive:is([data-theme="dark"], .dark) .bottom-nav__tab.is-active::be
   .announcement-bar,
   .lessons-v3-sticky,
   .filter-bar,
-  .mj-sticky-filters,
-  .search-page-form,
-  .srch-home-form
+  .mj-sticky-filters
 ) {
   background-color: var(--surface-float, var(--pd-elevated)) !important;
   background-image: none !important;

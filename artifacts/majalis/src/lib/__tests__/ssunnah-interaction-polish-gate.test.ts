@@ -18,7 +18,7 @@ const ui = read("src/components/ui-common.tsx");
 const search = read("src/pages/account/ui/SearchView.tsx");
 const asyncV = read("src/components/AsyncDataView.tsx");
 
-assert.match(native, /translateY\(1px\)/, "ضغط البطاقات: translateY خفيف لا scale كبير");
+assert.match(native, /scale\(0\.97\)/, "ضغط البطاقات: تصغير iOS خفيف ٠٫٩٧ لا scale كبير (طلب المالك)");
 assert.doesNotMatch(
   native,
   /\.mj-pressable:active[\s\S]{0,120}scale\(/,
