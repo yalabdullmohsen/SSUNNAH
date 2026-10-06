@@ -63,12 +63,6 @@ function route(path: string) {
 }
 
 {
-  const scholars = route("/scholars");
-  assert.match(scholars.title, /علماء الأمة/);
-  assert.match(scholars.description, /دروس|سلاسل/);
-}
-
-{
   const labels = readFileSync(resolve(root, "src/lib/seo-nav-labels.ts"), "utf8");
   assert.match(labels, /"\/fawaid":\s*"الفوائد"/, "تنقّل الفوائد يبقى قصيراً");
   assert.match(labels, /"\/hadith":\s*"الحديث"/, "تنقّل الحديث يبقى قصيراً");

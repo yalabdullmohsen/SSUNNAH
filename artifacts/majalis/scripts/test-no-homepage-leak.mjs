@@ -80,19 +80,15 @@ function collectPages(subdir) {
 
 // ── تغطية: كل كتاب وكل عالِم منشور له صفحة prerender ─────────────────────
 const catalog = JSON.parse(readFileSync(resolve(appRoot, "src/data/library-catalog.json"), "utf8"));
-const scholars = JSON.parse(readFileSync(resolve(appRoot, "src/data/scholars-list.json"), "utf8"));
 const bookDirs = new Set(collectPages("library").map((p) => p.slug));
-const scholarDirs = new Set(collectPages("scholars").map((p) => p.slug));
 
 const missingBooks = catalog.filter((b) => !bookDirs.has(b.id)).map((b) => b.id);
-const missingScholars = scholars.filter((s) => !scholarDirs.has(s.id)).map((s) => s.id);
 console.log("\n=== تغطية الفهرسة ===");
 assert(missingBooks.length === 0, `كل الكتب (${catalog.length}) لها صفحة prerender${missingBooks.length ? " — ناقص: " + missingBooks.join(", ") : ""}`);
-assert(missingScholars.length === 0, `كل العلماء (${scholars.length}) لهم صفحة prerender${missingScholars.length ? " — ناقص: " + missingScholars.join(", ") : ""}`);
 
 // ── لا تسرّب لمحتوى الرئيسية داخل صفحات الكتب/العلماء ────────────────────
 console.log("\n=== فحص كل صفحات الكتب والعلماء ===");
-const internalPages = [...collectPages("library"), ...collectPages("scholars")];
+const internalPages = collectPages("library");
 const leaked = [];
 const tooSimilar = [];
 for (const p of internalPages) {

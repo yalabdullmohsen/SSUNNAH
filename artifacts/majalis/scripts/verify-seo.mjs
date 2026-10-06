@@ -117,7 +117,6 @@ async function main() {
   const SPOT_PATHS = [
     "lessons",
     "library",
-    "scholars",
     "fiqh",
     "rulings",
     "adhkar",

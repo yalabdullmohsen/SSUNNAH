@@ -125,7 +125,6 @@ function loadNonCriticalCss() {
     path.startsWith("/hadith") ||
     path.startsWith("/fiqh") ||
     path.startsWith("/topics") ||
-    path.startsWith("/scholars") ||
     path.startsWith("/fawaid") ||
     path.startsWith("/adhkar");
   void import("./styles/z-index-layers.css");

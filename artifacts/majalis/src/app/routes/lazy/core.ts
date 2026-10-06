@@ -10,7 +10,6 @@ export const NotFound = lazy(() => import("@/views/not-found"));
 
 export const CalendarPage = lazy(() => import("@/views/CalendarPage"));
 
-export const ScholarProfilePage = lazy(() => import("@/pages/scholars/ScholarProfilePage"));
 
 export const ScientificAnnouncementDetailPage = lazy(() => import("@/views/ScientificAnnouncementDetailPage"));
 

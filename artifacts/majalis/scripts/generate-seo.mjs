@@ -159,7 +159,6 @@ const { PROPHETS } = await importSrc("src/lib/prophets-data.ts");
 const { NATIONS } = await importSrc("src/lib/nations-seed.ts");
 const { SINS_TOPICS } = await importSrc("src/lib/sins-rights-data.ts");
 const { getAllSurahStories } = await importSrc("src/lib/surah-stories.ts");
-const { SCHOLAR_PROFILES } = await importSrc("src/data/scholars-profiles.ts");
 const { ANNUAL_COURSES_SEED } = await importSrc("src/lib/annual-courses-seed.ts");
 /** دورات SEO من المصدر الحي — لا platform-seed.snapshot.json المجمَّد (b005). */
 const PUBLIC_ANNUAL_COURSES = ANNUAL_COURSES_SEED.filter(
@@ -880,20 +879,6 @@ const DUAS_SEED = [
 
 // ⚠️ لا FAQPage هنا: الواجهة تعرض مقتطف الإجابة فقط (answer.slice(0,120))،
 // وحقن الإجابة كاملة في البيانات المنظّمة مخالفة لسياسة Google.
-function scholarPersonJsonLd(profile) {
-  return jsonLdScript({
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: profile.fullName || profile.name,
-    alternateName: profile.name,
-    description: profile.summary,
-    url: absoluteUrl(`/scholars/${profile.slug}`),
-    ...(profile.born ? { birthDate: profile.born } : {}),
-    deathDate: profile.died,
-    knowsAbout: profile.specialty,
-  });
-}
-
 const LIST_JSON_LD = {
   // /library removed from public SEO
   "/hadith": itemListJsonLdScript(
@@ -965,7 +950,6 @@ const LIST_JSON_LD = {
     QURAN_SURAHS.map((s) => ({ name: s.name, url: `/quran/surahs#surah-${s.number}` })),
     "فهرس سور القرآن الكريم",
   ),
-  ...Object.fromEntries(SCHOLAR_PROFILES.map((s) => [`/scholars/${s.slug}`, scholarPersonJsonLd(s)])),
 };
 
 const UNIVERSITIES_CATALOG = JSON.parse(
