@@ -2,7 +2,6 @@ import { useEffect, useMemo } from "react";
 import { applyPageSeo } from "@/lib/seo";
 import { SectionLobby } from "@/components/lobby/SectionLobby";
 import { QuranOpenMushafCard } from "@/components/quran/QuranOpenMushafCard";
-import { LastReadingBookmarkCard } from "@/components/quran/LastReadingBookmarkCard";
 import { getLobby } from "@/config/section-lobbies";
 import { EmptyStateV2 } from "@/components/design-system";
 import { DashboardScreen } from "@/components/design-system/screens";
@@ -34,8 +33,8 @@ export default function QuranHubPage() {
           title={lobby.title}
           primarySlot={
             <div className="quran-hub-v2__primary">
+              {/* بطاقة واحدة للمتابعة: تقرأ علامة القراءة ثم آخر صفحة */}
               <QuranOpenMushafCard />
-              <LastReadingBookmarkCard />
             </div>
           }
           groups={lobby.groups}

@@ -95,6 +95,11 @@ export function InteractiveCard({
   onNavigate,
   ...rest
 }: InteractiveCardProps) {
+  /* data-* (هوية البطاقة: data-section-card / data-cs-type …) تخص السطح لا الرابط المغلِّف —
+     على الرابط كانت أنماط [data-cs-type] ترسم بطاقة حول البطاقة (حدود/ظل مزدوج). */
+  const dataProps: Record<string, unknown> = {};
+  const anchorProps: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(rest)) (k.startsWith("data-") ? dataProps : anchorProps)[k] = v;
   const surface = (
     <AppCard
       as="div"
@@ -109,7 +114,7 @@ export function InteractiveCard({
         className,
       )}
       aria-disabled={disabled || undefined}
-      {...(href ? {} : rest)}
+      {...(href ? dataProps : rest)}
     >
       {children}
     </AppCard>
@@ -123,7 +128,7 @@ export function InteractiveCard({
       onClick={onNavigate}
       className="ss-surface__anchor mj-pressable"
       aria-label={title}
-      {...(rest as HTMLAttributes<HTMLAnchorElement>)}
+      {...(anchorProps as HTMLAttributes<HTMLAnchorElement>)}
     >
       {surface}
     </Link>
