@@ -21,7 +21,7 @@ const prophets = read("src/styles/pages/prophet-stories.css");
 assert.match(theme, /--radius-card:\s*20px/, "رمز radius-card = MD");
 assert.match(theme, /--radius-tile:\s*20px/, "رمز radius-tile = MD");
 assert.match(theme, /--radius-button:\s*16px/, "رمز radius-button = SM");
-assert.match(theme, /--radius-sheet:\s*24px/, "رمز radius-sheet = LG");
+assert.match(theme, /--radius-sheet:\s*var\(--sf-radius-lg\)/, "رمز radius-sheet = LG (من Foundation)");
 assert.match(theme, /--radius-nav:\s*24px/, "رمز radius-nav = LG");
 assert.match(theme, /--radius-pill:\s*999px/, "رمز radius-pill");
 

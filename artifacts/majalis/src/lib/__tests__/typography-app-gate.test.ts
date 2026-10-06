@@ -25,7 +25,7 @@ assert.match(typoApp, /--fw-bold/);
 assert.doesNotMatch(typoApp, /Noto Naskh Arabic/);
 assert.doesNotMatch(typoApp, /--mm-qpc|qpc-v2/);
 
-assert.match(theme, /--font-app:\s*"Amiri"/);
+assert.match(theme, /--font-app:\s*-apple-system,[^;]*system-ui/);
 assert.match(theme, /--font-ui:\s*var\(--font-app\)/);
 assert.match(theme, /--mj-face:\s*var\(--font-app\)/);
 assert.match(mushaf, /--mm-qpc-size/);

@@ -53,7 +53,7 @@ html[data-ab="1"] *::after {
 }
 
 body {
-  font-family: "Amiri", "MajlisAmiriFallback", "Noto Naskh Arabic", serif;
+  font-family: var(--font-app);
   font-size: 1.0625rem;
 }
 

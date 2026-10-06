@@ -48,7 +48,7 @@ html[data-theme="dark"] .assistant-message-bubble {
 }
 
 .assistant-reply {
-  font-family: var(--font-reading);
+  font-family: var(--font-app);
 }
 
 .assistant-reply-title {

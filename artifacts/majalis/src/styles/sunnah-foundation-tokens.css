@@ -59,23 +59,26 @@
   /* عاجي على الزمرد الداكن — تباين AA */
   --sf-color-on-emerald: #f7f1e4;
 
-  /* ── Typography families (جسر إلى --font-app الموحّد) ── */
-  --sf-font-display: var(--font-app, "Amiri", "MajlisAmiriFallback", "Traditional Arabic", serif);
-  --sf-font-ui: var(--font-app, "Amiri", "MajlisAmiriFallback", "MajlisFallback", "Traditional Arabic", serif);
+  /* ── Typography families ──
+   * الواجهة = خط النظام العربي (--font-app، بلا تنزيل) · النص الشرعي = نسخ (--font-reading) */
+  --sf-font-display: var(--font-app, -apple-system, system-ui, sans-serif);
+  --sf-font-ui: var(--font-app, -apple-system, system-ui, sans-serif);
+  --sf-font-scripture: var(--font-reading, "Amiri", "Traditional Arabic", serif);
   /* زخرفي للشعار/لحظات عرض فقط — ممنوع في تشغيل UI · ليس لـ font-family عام */
   --sf-font-ornament: "Aref Ruqaa", "Scheherazade New", var(--font-app);
 
-  /* ── Typography scale (واحد) ── */
-  --sf-type-display: clamp(1.75rem, 5.5vw, 2.35rem);
-  --sf-type-page-title: clamp(1.35rem, 4vw, 1.75rem);
-  --sf-type-section-title: clamp(1.125rem, 3vw, 1.35rem);
-  --sf-type-card-title: clamp(1rem, 2.8vw, 1.125rem);
-  --sf-type-body: 1rem;
-  --sf-type-supporting: 0.9375rem;
-  --sf-type-metadata: 0.8125rem;
-  --sf-type-caption: 0.75rem;
-  --sf-type-badge: 0.75rem;
-  --sf-type-button: 0.9375rem;
+  /* ── Typography scale (واحد — سلم iOS: 34/28/22/17/15/13) ──
+   * rem لا px: يتبع Dynamic Type عبر --ui-font-scale على html. */
+  --sf-type-display: 2.125rem; /* 34 Large Title */
+  --sf-type-page-title: 1.75rem; /* 28 Title 1 */
+  --sf-type-section-title: 1.375rem; /* 22 Title 2 */
+  --sf-type-card-title: 1.0625rem; /* 17 Headline (semibold) */
+  --sf-type-body: 1.0625rem; /* 17 Body */
+  --sf-type-supporting: 0.9375rem; /* 15 Subhead */
+  --sf-type-metadata: 0.8125rem; /* 13 Footnote */
+  --sf-type-caption: 0.8125rem;
+  --sf-type-badge: 0.8125rem;
+  --sf-type-button: 1.0625rem;
   --sf-type-breadcrumb: 0.8125rem;
   --sf-type-citation: 0.8125rem;
   --sf-type-warning: 0.9375rem;
@@ -95,7 +98,11 @@
   --sf-fw-semibold: 600;
   --sf-fw-bold: 700;
 
-  /* ── Spacing (سلم 4) ── */
+  /* حافة الصفحة ١٦ · هدف لمس أدنى ٤٤ */
+  --sf-gutter: 16px;
+  --sf-touch-min: 44px;
+
+  /* ── Spacing (سلم 4/8/12/16/20/24/32) ── */
   --sf-space-1: 4px;
   --sf-space-2: 8px;
   --sf-space-3: 12px;
@@ -105,12 +112,12 @@
   --sf-space-8: 32px;
   --sf-space-12: 48px;
 
-  /* ── Radius (سلم مغلق — Calm Wave 1) ──
-   * control=XS · card=MD · feature/sheet=LG · pill فقط لشارات/فلاتر قصيرة */
+  /* ── Radius (سلم مغلق) ──
+   * small/control=XS ١٢ · card=MD ٢٠ · prominent/sheet=LG ٢٨ · pill لشرائح/أزرار قصيرة */
   --sf-radius-xs: 12px;
   --sf-radius-sm: 16px;
   --sf-radius-md: 20px;
-  --sf-radius-lg: 24px;
+  --sf-radius-lg: 28px;
   /* توافق خلفي: xl = lg */
   --sf-radius-xl: var(--sf-radius-lg);
   --sf-radius-card: var(--sf-radius-md);
@@ -119,12 +126,15 @@
   --sf-radius-sheet: var(--sf-radius-lg);
   --sf-radius-pill: 999px;
 
-  /* ── Shadow — عمق خفيف · سطح مطفي · بلا لمعان ── */
+  /* ── Shadow — مستويان ناعمان يحلّان محل الحدود الرمادية (سطح أبيض فوق بيج) ──
+   * card = المستوى ١ (بطاقات/شرائح) · elevated = المستوى ٢ (عائم/ورقة/مضغوط) */
   --sf-shadow-soft: none;
-  --sf-shadow-card: 0 1px 2px
-    color-mix(in srgb, var(--sf-color-deep-emerald-deep) 7%, transparent);
-  --sf-shadow-elevated: 0 2px 6px
-    color-mix(in srgb, var(--sf-color-deep-emerald-deep) 10%, transparent);
+  --sf-shadow-card:
+    0 1px 2px color-mix(in srgb, var(--sf-color-rich-ink) 6%, transparent),
+    0 4px 14px -6px color-mix(in srgb, var(--sf-color-rich-ink) 10%, transparent);
+  --sf-shadow-elevated:
+    0 2px 6px color-mix(in srgb, var(--sf-color-rich-ink) 8%, transparent),
+    0 14px 32px -12px color-mix(in srgb, var(--sf-color-rich-ink) 18%, transparent);
 
   /* ── Surface — عاجي واحد + أبيض مرفوع + سيج هادئ ── */
   --sf-surface-canvas: var(--sf-color-warm-ivory);
@@ -177,8 +187,8 @@
   --sf-pad-section: 0.85rem;
   --sf-gap-stack: 0.55rem;
   --sf-gap-section: 0.85rem;
-  --sf-row-min: 2.5rem;
-  --sf-control-h: 2.5rem;
+  --sf-row-min: 2.75rem;
+  --sf-control-h: 2.75rem;
   --sf-header-h: 2.75rem;
   --sf-icon-size: 1.65rem;
 }
@@ -190,8 +200,8 @@ html[data-density="compact"] {
   --sf-pad-section: 0.75rem;
   --sf-gap-stack: 0.5rem;
   --sf-gap-section: 0.75rem;
-  --sf-row-min: 2.5rem;
-  --sf-control-h: 2.5rem;
+  --sf-row-min: 2.75rem;
+  --sf-control-h: 2.75rem;
   --sf-header-h: 2.75rem;
 }
 
@@ -228,8 +238,11 @@ html.dark {
   --sf-surface-muted: var(--sf-color-luxury-night-elevated);
   --sf-hairline: color-mix(in srgb, var(--sf-color-luxury-night-ink) 14%, transparent);
   --sf-shadow-soft: none;
-  --sf-shadow-card: none;
-  --sf-shadow-elevated: 0 1px 2px rgba(0, 0, 0, 0.28);
+  /* ليلًا: التمايز من درجة السطح؛ الظل حافة علوية خفيفة + عمق داكن */
+  --sf-shadow-card: 0 1px 0 color-mix(in srgb, var(--sf-color-luxury-night-ink) 5%, transparent) inset,
+    0 2px 8px -4px color-mix(in srgb, var(--sf-color-luxury-night) 70%, transparent);
+  --sf-shadow-elevated: 0 1px 0 color-mix(in srgb, var(--sf-color-luxury-night-ink) 7%, transparent) inset,
+    0 12px 28px -12px color-mix(in srgb, var(--sf-color-luxury-night) 90%, transparent);
 }
 
 /* أصناف .sf-type-* مؤجّلة: styles/sunnah-foundation-type.css (ميزانية CSS الحرج) */

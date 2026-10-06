@@ -265,13 +265,14 @@ html.pts-immersive #root {
   --color-parchment:     var(--mj-bg, var(--msk-canvas, #FFFFFF));
   --color-line:          var(--mj-hairline, var(--msk-border, #E8E7E2));
 
-  /* ── الخطوط ── واجهة موحّدة --font-ui / --font-app (Amiri) ──
-     المصحف (--font-quran) والعناوين التراثية (--font-heritage) استثناءات. */
+  /* ── الخطوط ── واجهة موحّدة --font-ui / --font-app (خط النظام العربي) ──
+     النسخ --font-reading (Amiri) للنص الشرعي فقط: آيات/أحاديث/أذكار + شعار «سُنّة».
+     المصحف (--font-quran) استثناء مستقل. */
   /* aliases — المصدر @theme --font-ui في theme.css (لا تُعاد تعريف --font-ui هنا) */
   --font-primary:  var(--font-app);
   --font-body:     var(--font-app);
   --font-display:  var(--font-app);
-  --font-reading:  var(--font-app);
+  --font-reading:  "Amiri", "MajlisAmiriFallback", "Traditional Arabic", serif;
   --font-quran:    "Amiri Quran", "Scheherazade New", "KFGQPC Hafs Uthmanic", serif;
   --font-heritage: var(--font-app);
   --font-tafsir:   var(--font-app);

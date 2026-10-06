@@ -30,7 +30,8 @@ assert.match(sf, /--sf-color-deep-emerald-soft:\s*color-mix/);
 assert.doesNotMatch(sf, /--sf-color-deep-emerald-soft:\s*#e2efe8/i);
 assert.match(sf, /--sf-color-on-emerald:\s*#f7f1e4/i);
 assert.match(sf, /--sf-shadow-soft:\s*none/);
-assert.match(sf, /--sf-shadow-card:\s*none/);
+/* مستويا ظل ناعمان (حبر ٦–١٠٪) بدل الحدود الرمادية — لا ظل لامع */
+assert.match(sf, /--sf-shadow-card:\s*0 1px 2px color-mix\(in srgb, var\(--sf-color-rich-ink\) 6%/);
 
 console.log("=== theme: brand Emerald AA ===");
 assert.match(theme, /--mj-brand:\s*#0F5C3F/i);

@@ -2,8 +2,7 @@
 /**
  * verify-font-consistency.mjs
  *
- * الخط الموحَّد للواجهة هو --font-app (Amiri / Noto Naskh Arabic) —
- * مرجع فقرات وعناوين بطاقات صفحة التفسير. المصحف (--font-quran / QPC/QCF)
+ * الخط الموحَّد للواجهة هو --font-app (خط النظام العربي) والنص الشرعي --font-reading (Amiri). المصحف (--font-quran / QPC/QCF)
  * مستثنى. الرموز القديمة --font-display/--font-body/--font-sans aliases.
  *
  * Run: node scripts/verify-font-consistency.mjs
@@ -15,8 +14,13 @@ import { execSync } from "node:child_process";
 const ROOT = new URL("..", import.meta.url).pathname;
 
 const themeCss = readFileSync(ROOT + "src/app/styles/theme.css", "utf8");
-if (!/--font-app:\s*"Amiri"/.test(themeCss)) {
-  console.error("✗ --font-app يجب أن يُعرَّف في @theme كـ Amiri (مرجع التفسير)");
+/* 2026-10: الواجهة بخط النظام العربي (بلا تنزيل خط ويب)، والنسخ (Amiri) للنص الشرعي عبر --font-reading. */
+if (!/--font-app:\s*-apple-system,[^;]*system-ui/.test(themeCss)) {
+  console.error("✗ --font-app يجب أن يُعرَّف في @theme كخط النظام (-apple-system … system-ui)");
+  process.exit(1);
+}
+if (!/--font-reading:\s*"Amiri"/.test(readFileSync(ROOT + "src/index.css", "utf8"))) {
+  console.error("✗ --font-reading (النص الشرعي) يجب أن يبقى Amiri");
   process.exit(1);
 }
 for (const alias of ["--font-display", "--font-body", "--font-sans", "--font-ui", "--mj-ui"]) {
@@ -32,7 +36,7 @@ if (/fonts\.googleapis\.com|fonts\.gstatic\.com/.test(indexHtml)) {
   process.exit(1);
 }
 if (!/\/fonts\/ui\/amiri-400-ar\.woff2/.test(indexHtml)) {
-  console.error("✗ index.html يجب أن يحمّل مسبقاً Amiri المحلي كخط واجهة أساسي");
+  console.error("✗ index.html يجب أن يحمّل مسبقاً Amiri المحلي (النص الشرعي فوق الطيّة)");
   process.exit(1);
 }
 const fontsUi = readFileSync(ROOT + "src/styles/fonts-ui.css", "utf8");
@@ -97,6 +101,7 @@ function isAllowed(rawValue) {
   if (/^var\(\s*--mm-qpc-family\b/i.test(value)) return true; // خط صفحة QPC للمصحف الجديد
   if (/^var\(\s*--nm-qpc-family\b/i.test(value)) return true; // خط صفحة QPC — NewMushafReader
   if (/^var\(\s*--font-app\b/i.test(value)) return true;
+  if (/^var\(\s*--sf-font-(ui|display|scripture)\b/i.test(value)) return true; // أدوار Foundation (واجهة/نسخ شرعي)
   if (/^var\(\s*--mj-(face|ui|num)\b/i.test(value)) return true;
   if (/^var\(\s*--(mj-)?font-/i.test(value)) return true; // تُحلّ عبر :root إلى IBM Plex Sans Arabic (أو --font-quran المعتمد)
   // Identity Reset PR-1: أدوار Display/UI على Amiri (aliases في visual-redesign-v2-tokens)
@@ -178,5 +183,5 @@ if (violations.length > 0) {
   );
   process.exit(1);
 } else {
-  console.log(`\x1b[32m✓ فحص اتساق الخط: --font-app (Amiri) بلا انحراف (${listFiles().length} ملف مفحوص)\x1b[0m`);
+  console.log(`\x1b[32m✓ فحص اتساق الخط: --font-app (خط النظام) + --font-reading (Amiri) بلا انحراف (${listFiles().length} ملف مفحوص)\x1b[0m`);
 }

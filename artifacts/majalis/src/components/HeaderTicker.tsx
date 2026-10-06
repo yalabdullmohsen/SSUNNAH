@@ -161,7 +161,13 @@ function TickerEntry({ item }: { item: TickerItem }) {
     ? `${item.label} — ${item.displayText} — المصدر: ${item.source}`
     : `${item.label} — ${item.displayText}`;
   return (
-    <Link href={item.href} className="header-ticker__item" dir="rtl" aria-label={ariaLabel}>
+    <Link
+      href={item.href}
+      className="header-ticker__item"
+      data-kind={item.kind}
+      dir="rtl"
+      aria-label={ariaLabel}
+    >
       <item.Icon size={13} strokeWidth={1.8} className="header-ticker__icon" aria-hidden="true" />
       <span className="header-ticker__label">{item.label}</span>
       <span className="header-ticker__text" aria-hidden="true">
