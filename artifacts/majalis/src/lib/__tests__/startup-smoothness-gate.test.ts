@@ -1,8 +1,8 @@
 /**
  * STARTUP_SMOOTHNESS — يقفل الأسباب الجذرية لقفزات الدخولية (docs/performance/STARTUP_SMOOTHNESS.md):
- * 1) @font-face لـ Amiri العربية + البدائل المعايَرة: مصدر وحيد مضمّن في index.html.
+ * 1) @font-face لنظام الخطوط (Sunnah UI/Text/Quran): مصدر وحيد font-system.css (الحرجة inline) + font-faces-deferred.css.
  *    أي إعادة تعريف في CSS يصل بعد أول رسم تُنشئ FontFace جديدًا يُحمَّل من الكاش → تبديل خط مرئي.
- * 2) local() بأسماء PostScript/Full (اسم العائلة "Geeza Pro" لا يطابق local() في Chromium/WebKit).
+ * 2) لا وجه يُعرَّف مرتين.
  * 3) ارتفاع الشريط السفلي ثابت منذ أول رسم = القيمة النهائية (64px + safe-area)، بلا padding مؤقت.
  * 4) هيدر الإقلاع (ChromeNavFallback) بتخطيط NavBar النهائي (شبكة 3 أعمدة) — لا نزول __end لسطر ثانٍ.
  * 5) خلفية v2 قبل وصول رموزها = --mj-bg (لا #f9f8f4 مؤقت).
@@ -12,6 +12,7 @@ import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { fontSystemCss, renderedIndexHtml } from "./font-system-test-helper";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const repoRoot = resolve(root, "../..");
@@ -21,15 +22,20 @@ const html = read("index.html");
 const lcp = html.match(/<style id="mj-lcp-critical">([\s\S]*?)<\/style>/)?.[1] ?? "";
 assert.ok(lcp.length > 0, "mj-lcp-critical موجود");
 
-// 1) مصدر وحيد لأوجه Amiri العربية
-const arFaces = lcp.match(/@font-face\{font-family:"Amiri";[^}]*amiri-[47]00-ar\.woff2[^}]*\}/g) ?? [];
-assert.equal(arFaces.length, 2, "وجهان عربيان لـ Amiri (400–500 و600–800) مضمّنان");
-for (const f of arFaces) {
-  assert.match(f, /font-display:optional/, "optional — لا swap");
-  assert.match(f, /ascent-override:95%/);
+// 1) مصدر وحيد لتعريفات الخطوط: font-system.css (الأوجه الحرجة تُحقن inline) + font-faces-deferred.css (الباقي)
+const rendered = renderedIndexHtml();
+const fontSystemInline = rendered.match(/<style id="mj-font-system">([\s\S]*?)<\/style>/)?.[1] ?? "";
+assert.ok(fontSystemInline.length > 0, "mj-font-system مُحقن في index.html");
+const criticalFaces = fontSystemInline.match(/@font-face\{[^}]*\}/g) ?? [];
+assert.equal(criticalFaces.length, 5, "5 أوجه حرجة مضمّنة: Sunnah UI 400/600 (عربي+لاتيني) وSunnah Text 400 عربي");
+for (const f of criticalFaces) {
+  assert.match(f, /font-display:swap/, "swap — نص مرئي دائمًا");
+  assert.match(f, /unicode-range:/);
 }
-assert.match(html, /rel="preload"[^>]+amiri-400-ar\.woff2/);
-assert.match(html, /rel="preload"[^>]+amiri-700-ar\.woff2/);
+assert.match(rendered, /rel="preload"[^>]+plex-sans-arabic-400-ar\.woff2/);
+assert.match(rendered, /rel="preload"[^>]+plex-sans-arabic-600-ar\.woff2/);
+assert.match(rendered, /rel="preload"[^>]+amiri-400-ar\.woff2/);
+assert.doesNotMatch(rendered, /Majlis(Amiri)?Fallback/, "لا خطوط بديلة معايَرة قديمة");
 
 const cssFiles: string[] = [];
 const walk = (dir: string) => {
@@ -43,22 +49,18 @@ walk(resolve(root, "src"));
 for (const file of cssFiles) {
   const css = readFileSync(file, "utf8");
   const rel = file.slice(root.length + 1);
-  assert.doesNotMatch(css, /amiri-[47]00-ar\.woff2/, `${rel}: لا إعادة تعريف لأوجه Amiri العربية خارج index.html`);
-  assert.doesNotMatch(
-    css,
-    /font-family:\s*"Majlis(Amiri)?Fallback"\s*;[^}]*src:/,
-    `${rel}: لا إعادة تعريف لوجه بديل خارج index.html`,
-  );
+  if (rel.endsWith("styles/font-system.css") || rel.endsWith("styles/font-faces-deferred.css")) continue;
+  assert.doesNotMatch(css, /fonts\/sunnah\//, `${rel}: لا إعادة تعريف لأوجه الخطوط خارج font-system.css/font-faces-deferred.css`);
+  assert.doesNotMatch(css, /@font-face/, `${rel}: لا @font-face خارج ملفي نظام الخطوط`);
 }
 
-// 2) بدائل معايَرة بأسماء local() صحيحة + وزن عريض
-assert.match(lcp, /"MajlisAmiriFallback";src:local\("Noto Naskh Arabic Regular"\)[^}]*size-adjust:97%/);
-assert.match(lcp, /"MajlisAmiriFallback";font-weight:600 800;src:local\("Noto Naskh Arabic Bold"\)/);
-assert.match(lcp, /"MajlisFallback";src:local\("Geeza Pro Regular"\),local\("GeezaPro"\);size-adjust:/);
-assert.match(lcp, /"MajlisFallback";font-weight:600 800;src:local\("Geeza Pro Bold"\),local\("GeezaPro-Bold"\)/);
-assert.doesNotMatch(lcp, /src:local\("Geeza Pro"\)/, "اسم العائلة وحده لا يطابق local()");
-/* الواجهة بخط النظام منذ أول رسم (لا تنزيل خط ويب للواجهة) — Amiri للنص الشرعي فقط */
-assert.match(lcp, /--font-app:-apple-system,BlinkMacSystemFont,"SF Arabic",system-ui/);
+// 2) لا وجه يُعرَّف مرتين (كان يسبب FontFace ثانيًا وتبديلًا مرئيًا)
+const allFaces = fontSystemCss().match(/src:\s*url\("([^"]+)"\)/g) ?? [];
+assert.equal(new Set(allFaces).size, allFaces.length, "كل ملف خط مُعرَّف مرة واحدة");
+assert.equal(allFaces.length, 13, "13 وجهًا: UI×8 + Text×4 + Quran×1");
+/* الواجهة Sunnah UI من أول رسم عبر --font-ui */
+assert.match(lcp, /font-family:var\(--font-ui\)/);
+assert.match(fontSystemInline, /--font-ui:"Sunnah UI",-apple-system/);
 
 // 3) الشريط السفلي: ارتفاع ثابت منذ أول رسم ولا padding مؤقت يغيّره
 const critical = read("src/styles/critical-first-paint.css");

@@ -17,6 +17,7 @@ import { DetailScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 import { Button } from "@/components/ui/button";
+import { HadithText } from "@/components/typography/SacredText";
 /**
  * صفحة تعلّم كاملة لحديث واحد من الأربعين النووية (المرحلة 11) — نص/شرح/فائدة/
  * مصدر، ثم "اختبر نفسك" (أنواع أسئلة من src/lib/arbaeen-quiz.ts، كلها مُشتقّة من
@@ -128,7 +129,7 @@ export default function ArbaeenHadithDetailPage() {
         {isLoggedIn && <span className={`ahd-level ahd-level--${level === "حافظ" ? "mastered" : level === "متقدم" ? "advanced" : level === "متوسط" ? "mid" : "new"}`}>{level}</span>}
       </header>
 
-      <blockquote className="ahd-text" style={{ fontFamily: "var(--font-quran, serif)" }}>«{hadith.text}»</blockquote>
+      <HadithText as="blockquote" className="ahd-text">«{hadith.text}»</HadithText>
       <p className="ahd-source">{hadith.source}</p>
 
       <section className="ahd-section" aria-label="الشرح">

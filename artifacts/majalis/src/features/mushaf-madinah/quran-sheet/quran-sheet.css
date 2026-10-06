@@ -68,7 +68,7 @@ html.dark .quran-sheet__scrim {
   color: var(--quran-sheet-ink);
   border-radius: var(--quran-radius-sheet) var(--quran-radius-sheet) 0 0;
   box-shadow: var(--quran-sheet-shadow);
-  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-family: var(--font-ui);
 }
 
 .quran-sheet__handle {

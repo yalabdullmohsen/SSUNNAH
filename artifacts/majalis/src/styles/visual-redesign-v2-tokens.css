@@ -39,10 +39,6 @@
   );
   --v2-accent-gold: var(--v2-color-gold);
 
-  /* ── Typography ← Foundation / --font-app ── */
-  --v2-font-display: var(--sf-font-display, var(--font-app));
-  --v2-font-ui: var(--sf-font-ui, var(--font-app));
-  --v2-font-latin: var(--font-app);
 
   --v2-type-display: var(--sf-type-display, clamp(1.75rem, 5.5vw, 2.35rem));
   --v2-type-page-title: var(--sf-type-page-title, clamp(1.35rem, 4vw, 1.75rem));

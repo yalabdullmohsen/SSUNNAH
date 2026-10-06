@@ -1,12 +1,10 @@
 /**
  * طباعة واجهة التطبيق — خارج المصحف/QPC.
- * خط الواجهة الموحّد: خط النظام العربي عبر --font-ui (--font-app alias).
- * النسخ (Amiri) عبر --font-reading للنص الشرعي فقط (آيات/أحاديث/أذكار) وشعار «سُنّة».
+ * خط الواجهة الموحّد --font-ui (IBM Plex Sans Arabic).
+ * النصوص الشرعية --font-text (Amiri): أحاديث/أذكار/أدعية؛ الآيات --font-quran (Amiri Quran).
  */
 
   :root {
-  --font-heading: var(--v2-font-display, var(--font-ui, var(--font-app, "Amiri", "Traditional Arabic", serif)));
-  --font-body-ui: var(--v2-font-ui, var(--font-ui, var(--font-app, "Amiri", "Traditional Arabic", serif)));
   --brand-contrast: var(--brand-on-white, var(--mj-brand-deep));
 
   /* مقاسات موحّدة — Identity Reset scale (متوافقة مع --v2-type-*) */
@@ -37,7 +35,7 @@
 .fqp-root,
 .fq-page,
 .fiqh-hub {
-  font-family: var(--font-body-ui);
+  font-family: var(--font-ui);
   color: var(--text-primary);
 }
 
@@ -53,17 +51,31 @@
   .fqp-section-title,
   .fiqh-group__title
 ) {
-  font-family: var(--font-heading);
+  font-family: var(--font-ui);
   font-weight: var(--fw-bold, 700);
 }
 
-/* النص الشرعي بالنسخ — قائمة صريحة؛ لا تُضف واجهة هنا. نص المصحف/QPC له خطوطه المستقلة. */
+/* الآيات — Sunnah Quran. نص المصحف/QPC له خطوطه المستقلة. */
 :is(
   [class*="ayah__text"],
+  [class*="__verse-text"],
+  .qmem-ayah-text,
+  .quran-search-page__ayah-text,
+  .quran-verse-list__text,
+  .home-sacred-day__text--ayah,
+  .header-ticker__item[data-kind="ayah"] .header-ticker__text,
+  .sf-type-quran,
+  [data-sf-type="quran"]
+) {
+  font-family: var(--font-quran);
+  line-height: 2;
+}
+
+/* النص الشرعي (أحاديث/أذكار/أدعية) — Sunnah Text؛ قائمة صريحة، لا تُضف واجهة هنا. */
+:is(
   [class*="hadith-box__text"],
   [class*="dhikr-box__text"],
   [class*="dua-box__text"],
-  [class*="__verse-text"],
   .adhkar-focus-text,
   .adhkar-sheet-text,
   .dua-card__arabic,
@@ -79,18 +91,23 @@
   .jn-dua-text,
   .hj-mashar-dua__text,
   .sw-dua__text,
-  .qmem-ayah-text,
-  .quran-search-page__ayah-text,
-  .quran-verse-list__text,
-  .home-sacred-day__text--ayah,
-  .header-ticker__item:is([data-kind="ayah"], [data-kind="hadith"], [data-kind="dhikr"]) .header-ticker__text,
-  .sf-type-quran,
+  .header-ticker__item:is([data-kind="hadith"], [data-kind="dhikr"]) .header-ticker__text,
   .sf-type-hadith,
-  [data-sf-type="quran"],
   [data-sf-type="hadith"],
-  .home-page-hero .page-hero-mj__title
+  .home-page-hero .page-hero-mj__title,
+  /* قصص وفوائد وحكم وسنن: Sunnah Text */
+  .isp-card__summary,
+  .prophet-section-lux__text,
+  .highlighted-card__text,
+  .fa-card__text,
+  .pmp-hadith,
+  .dq-arabic,
+  .hk-card__text,
+  .sy-card__text,
+  .fq-card__arabic
 ) {
-  font-family: var(--sf-font-scripture);
+  font-family: var(--font-text);
+  line-height: 1.9;
 }
 
 /* قصّ الأسطر الطويلة في البطاقات */
@@ -241,3 +258,68 @@ html[data-ab="1"] .bottom-nav {
   transition-property: color, background-color, border-color, opacity, box-shadow, transform;
 }
 
+/* ═══ أصناف الطباعة والجودة الطباعية (كانت typography-system.css) ═══ */
+/**
+ * سلّم الطباعة والأصناف — فوق رموز الخطوط في font-system.css.
+ * الأحجام بوحدة rem ليتكيّف التطبيق مع تكبير النص (Dynamic Type عبر --ui-font-scale على html).
+ */
+/* ── الواجهة ── */
+.t-display { font: 700 2.125rem / 1.3 var(--font-ui); }
+.t-page-title { font: 700 1.75rem / 1.35 var(--font-ui); }
+.t-section-title { font: 600 1.375rem / 1.4 var(--font-ui); }
+.t-card-title { font: 600 1.0625rem / 1.5 var(--font-ui); }
+.t-body { font: 400 1rem / 1.6 var(--font-ui); }
+.t-secondary { font: 400 0.875rem / 1.6 var(--font-ui); }
+.t-label { font: 500 0.8125rem / 1.4 var(--font-ui); }
+.t-button { font: 600 1rem / 1.25 var(--font-ui); }
+
+/* ── النصوص الشرعية — تُستعمل عبر <HadithText> و<DhikrText> و<AyahText> أو مباشرة ── */
+.text-hadith,
+.text-dhikr {
+  font-family: var(--font-text);
+  font-size: 1.1875rem;
+  font-weight: 400;
+  line-height: 1.9;
+}
+.text-hadith-featured {
+  font-family: var(--font-text);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.8;
+}
+.text-ayah {
+  font-family: var(--font-quran);
+  font-size: 1.375rem;
+  font-weight: 400;
+  line-height: 2;
+}
+/* المراجع: «رواه مسلم»، «الأنفال: ٤٥» — خط الواجهة بلون ثانوي */
+.text-ref {
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-secondary, var(--mj-ink-muted, inherit));
+}
+
+/* ── ضبط الجودة الطباعية ── */
+/* لا خط عريض/مائل مزيّف: الأوزان المحمّلة فعليًا فقط */
+html,
+body {
+  font-synthesis: none;
+}
+/* لا تباعد حروف في النص العربي (يكسر الاتصال) — :where لا يرفع الخصوصية */
+:where(html, body, body *) {
+  letter-spacing: 0;
+}
+/* أرقام العدّادات والأوقات: عرض ثابت حتى لا تهتز أثناء العدّ */
+time,
+[data-tabular],
+[class*="countdown"],
+[class*="timer"],
+[class*="__time"],
+[class*="__clock"],
+.tabular-nums,
+.t-num {
+  font-variant-numeric: tabular-nums;
+}

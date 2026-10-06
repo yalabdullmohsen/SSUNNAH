@@ -106,8 +106,6 @@
   --lh-body: 1.75;
   --lh-prose: 1.85;
 
-  --font-heading: var(--font-ui, var(--font-app, "Amiri", "Traditional Arabic", serif));
-  --font-body-ui: var(--font-ui, var(--font-app, "Amiri", "Traditional Arabic", serif));
   --brand-contrast: var(--brand-on-white);
 
   --ds-background: var(--bg);

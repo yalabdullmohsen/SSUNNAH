@@ -68,12 +68,6 @@
   --color-danger-deep: #991B1B;
   --color-splash: #0E1A15;
 
-  /* خط الواجهة = خط النظام العربي (بلا تنزيل خط ويب — يحمي الإقلاع/LCP).
-     النسخ (Amiri) محصور في النص الشرعي عبر --font-reading (index.css / typography-app.css). */
-  --font-app: -apple-system, BlinkMacSystemFont, "SF Arabic", system-ui, "Segoe UI", "Noto Sans Arabic", Tahoma, sans-serif;
-  --font-face: var(--font-app);
-  --font-ui: var(--font-app);
-  --font-num: var(--font-app);
 
   --radius-mj-sm: 12px;
   --radius-mj-md: 16px;
@@ -154,9 +148,6 @@
   --primary-foreground: var(--color-on-brand);
   --ring: var(--color-brand);
   --border: var(--color-hairline);
-  --font-sans: var(--font-app);
-  --font-display: var(--font-app);
-  --font-body: var(--font-app);
 }
 
 :root {
@@ -266,11 +257,6 @@
   --mj-s6: 24px;
   --mj-s8: 32px;
   --mj-s12: 48px;
-  --font-app: -apple-system, BlinkMacSystemFont, "SF Arabic", system-ui, "Segoe UI", "Noto Sans Arabic", Tahoma, sans-serif;
-  --font-ui: var(--font-app);
-  --mj-face: var(--font-app);
-  --mj-ui: var(--font-app);
-  --mj-num: var(--font-app);
   /* سلم الطباعة من Foundation (34/28/22/17/15/13) — لا قيم حرفية هنا */
   --mj-fs-display: var(--sf-type-display);
   --mj-fs-h1: var(--sf-type-page-title);
@@ -323,9 +309,6 @@
   --ring: var(--mj-brand);
   --border: var(--mj-hairline);
   --input: var(--mj-hairline);
-  --font-sans: var(--font-app);
-  --font-display: var(--font-app);
-  --font-body: var(--font-app);
   --color-bg: var(--mj-bg);
   --color-primary: var(--mj-brand);
   --color-text: var(--mj-ink);
@@ -615,11 +598,11 @@ input,
 select,
 textarea {
   font-size: max(16px, 1em);
-  font-family: var(--font-app);
+  font-family: var(--font-ui);
 }
 
 body {
-  font-family: var(--font-ui, var(--font-app));
+  font-family: var(--font-ui);
   /* Font Authority — قيمة مطلقة؛ لا تعتمد على --text-body (لون إرثي متعارض) */
   font-size: 1.0625rem;
   line-height: var(--mj-lh-body);
@@ -756,15 +739,15 @@ a:active {
   margin-bottom: var(--mj-s5);
 }
 .mj-eyebrow {
-  font-family: var(--mj-num);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-tiny);
-  letter-spacing: 0.18em;
+  letter-spacing: 0;
   color: var(--mj-brand);
   margin: 0 0 var(--mj-s2);
 }
 .mj-page-head h1 {
   margin: 0 0 var(--mj-s1);
-  font-family: var(--mj-face);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-h1);
   font-weight: 700;
   color: var(--mj-ink);
@@ -808,7 +791,7 @@ a:active {
 }
 .mj-stat strong {
   display: block;
-  font-family: var(--mj-num);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-h2);
   color: var(--mj-brand);
   line-height: 1.2;
@@ -820,7 +803,7 @@ a:active {
 .mj-card h2,
 .mj-card h3 {
   margin-bottom: var(--mj-s1);
-  font-family: var(--mj-face);
+  font-family: var(--font-ui);
 }
 .mj-card p {
   margin: 0;
@@ -845,7 +828,7 @@ a:active {
   gap: var(--mj-s2);
   border: 0;
   cursor: pointer;
-  font-family: var(--font-app);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-btn);
   font-weight: 500;
   line-height: var(--mj-lh-tight);
@@ -890,35 +873,35 @@ html.dark .mj-btn--ghost {
 
 /* سُلّم الخطوط — تطبيق موحّد */
 .mj-type-page {
-  font-family: var(--mj-face);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-h1);
   font-weight: 700;
   line-height: var(--mj-lh-title);
   color: var(--mj-ink);
 }
 .mj-type-card {
-  font-family: var(--mj-face);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-h2);
   font-weight: 700;
   line-height: var(--mj-lh-card);
   color: var(--mj-ink);
 }
 .mj-type-sacred {
-  font-family: var(--mj-face);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-sacred);
   font-weight: 400;
   line-height: var(--mj-lh-sacred);
   color: var(--mj-ink);
 }
 .mj-type-ui {
-  font-family: var(--font-app);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-body);
   font-weight: 400;
   line-height: var(--mj-lh-ui);
   color: var(--mj-ink);
 }
 .mj-type-muted {
-  font-family: var(--font-app);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-small);
   font-weight: 400;
   line-height: var(--mj-lh-small);
@@ -931,7 +914,7 @@ html.dark .mj-btn--ghost {
 }
 
 .mj-badge {
-  font-family: var(--mj-num);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-tiny);
   border-radius: var(--mj-r-pill);
   padding: 4px 10px;
@@ -967,7 +950,7 @@ html.dark .mj-btn--ghost {
   border: 1px solid var(--mj-hairline);
   border-radius: var(--mj-r-pill);
   padding: 11px 18px;
-  font-family: var(--font-app);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-small);
   color: var(--mj-ink);
 }
@@ -990,7 +973,7 @@ html.dark .mj-btn--ghost {
 }
 .mj-empty b {
   display: block;
-  font-family: var(--mj-face);
+  font-family: var(--font-ui);
   font-size: 19px;
   margin-bottom: var(--mj-s1);
 }
@@ -1053,4 +1036,16 @@ html.dark .mj-btn--ghost {
 :root[data-ambient-phase="isha"] body,
 :root[data-ambient-phase="maghrib"] body {
   --mj-ambient-dim: min(var(--mj-ambient-dim, 1), 0.94);
+}
+
+/* Tailwind: أصناف font-ui / font-text / font-quran — القيم من font-system.css
+   (@utility بدل @theme: لا تعريف ثانٍ لمتغيرات الخطوط في :root). */
+@utility font-ui {
+  font-family: var(--font-ui);
+}
+@utility font-text {
+  font-family: var(--font-text);
+}
+@utility font-quran {
+  font-family: var(--font-quran);
 }

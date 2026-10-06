@@ -121,7 +121,7 @@
   margin: 0;
   font-size: var(--sf2-type-caption, 0.8125rem);
   color: var(--sf2-text-secondary, var(--sf-color-rich-ink-soft));
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-family: var(--font-ui);
   word-break: break-all;
 }
 

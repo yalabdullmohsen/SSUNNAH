@@ -5,7 +5,7 @@
   min-height: 100svh;
   background: var(--majalis-parchment);
   direction: rtl;
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   padding-bottom: calc(var(--bottom-nav-total, var(--nav-h, 64px)) + var(--inset-bottom, 0px) + 1rem);
 }
 
@@ -398,7 +398,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
   cursor: pointer;
   font-size: 0.83rem;
   color: var(--majalis-ink-soft);
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   transition: border-color 0.15s, background 0.15s;
 }
 .seerah-panel__nav-btn:hover { border-color: color-mix(in srgb, var(--majalis-ink-soft) 50%, transparent); background: var(--majalis-parchment-deep, var(--mj-bg, #f0ece4)); }
@@ -453,7 +453,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
   color: var(--majalis-emerald);
   text-decoration: none;
   transition: background 0.15s, border-color 0.15s;
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
 }
 .seerah-back-link:hover {
   background: color-mix(in srgb, var(--majalis-emerald) 12%, transparent);
@@ -472,7 +472,7 @@ html[data-theme="dark"] .seerah-phase--ghazawat { --phase-color: #FB7185; --pane
   display: flex;
   align-items: center;
   gap: 0.9rem;
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   flex-wrap: wrap;
 }
 @media (max-width: 640px) {

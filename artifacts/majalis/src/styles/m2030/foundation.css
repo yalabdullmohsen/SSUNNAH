@@ -75,7 +75,7 @@ small, .meta, .text-muted, .text-secondary {
 .ds-btn--primary,
 .btn--primary {
   border-radius: var(--r-sm) !important;
-  font-family: var(--font-body) !important;
+  font-family: var(--font-ui) !important;
   min-height: 2.75rem;
 }
 

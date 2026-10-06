@@ -63,7 +63,7 @@
   font-size: 0.8rem;
   line-height: 1.65;
   color: var(--mj-ink-2);
-  font-family: var(--font-quran, var(--font-app, serif));
+  font-family: var(--font-text);
   white-space: normal;
   overflow-wrap: break-word;
   word-break: normal;

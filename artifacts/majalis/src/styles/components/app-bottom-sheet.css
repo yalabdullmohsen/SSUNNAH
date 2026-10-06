@@ -180,7 +180,7 @@ body.app-sheet-open .app-sheet-overlay--elevated .app-sheet-overlay__scrim {
   margin: 0;
   font-size: 20px;
   font-weight: 800;
-  font-family: var(--font-display, inherit);
+  font-family: var(--font-ui);
   color: var(--mj-ink, var(--text-title));
   text-align: center;
   line-height: 1.25;
@@ -303,7 +303,7 @@ html[data-theme="dark"] .app-sheet__footer {
   font-size: 0.95rem;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   color: var(--color-text, var(--mj-ink, #0e241e));
 }
 .update-available-sheet__update-btn,

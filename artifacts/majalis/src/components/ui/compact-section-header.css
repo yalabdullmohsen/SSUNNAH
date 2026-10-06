@@ -86,7 +86,7 @@
   color: var(--mj-brand-deep, #123f2e);
   font-size: 0.72rem;
   font-weight: 700;
-  font-family: var(--mj-num, inherit);
+  font-family: var(--font-ui);
   line-height: 1.3;
 }
 

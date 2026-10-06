@@ -9,6 +9,8 @@
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
     <title>سُنّة</title>
     <style>
+    @font-face { font-family: "Sunnah UI"; font-weight: 400; font-display: swap; src: url("/fonts/sunnah/plex-sans-arabic-400-ar.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC; }
+    @font-face { font-family: "Sunnah UI"; font-weight: 600; font-display: swap; src: url("/fonts/sunnah/plex-sans-arabic-600-ar.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC; }
       :root {
         --mj-splash-bg-light: #F8F6F1;
         --mj-splash-bg: var(--mj-splash-bg-light);
@@ -20,7 +22,7 @@
         min-height: 100dvh;
         background: var(--mj-splash-bg);
         color: var(--mj-splash-ink);
-        font-family: "Amiri", "Noto Naskh Arabic", system-ui, sans-serif;
+        font-family: "Sunnah UI", -apple-system, "SF Arabic", system-ui, sans-serif;
         display: grid;
         place-items: center;
         padding: max(1.5rem, env(safe-area-inset-top)) 1.5rem

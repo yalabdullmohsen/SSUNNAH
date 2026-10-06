@@ -57,14 +57,14 @@ export function registerBootStorageGate(promise: Promise<unknown>): void {
 async function waitUiFonts(timeoutMs: number): Promise<boolean> {
   if (typeof document === "undefined" || !document.fonts) return true;
   try {
-    // خط الواجهة الوحيد Amiri (--font-ui) — regular + bold من الإقلاع
-    const regular = '400 16px "Amiri"';
-    const bold = '700 16px "Amiri"';
+    // خط الواجهة Sunnah UI (--font-ui) — 400 و600 مُحمَّلان مسبقًا من index.html
+    const regular = '400 16px "Sunnah UI"';
+    const bold = '600 16px "Sunnah UI"';
     const load = (async () => {
       await Promise.all([document.fonts.load(regular), document.fonts.load(bold)]);
     })();
     await Promise.race([load, raceTimeout(timeoutMs)]);
-    return document.fonts.check(regular) || document.fonts.check('16px "Amiri"');
+    return document.fonts.check(regular) || document.fonts.check('16px "Sunnah UI"');
   } catch {
     return false;
   }

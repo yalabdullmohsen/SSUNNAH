@@ -86,7 +86,7 @@
 .hdl-role--category {
   font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   color: var(--hdl-narrator);
 }
 
@@ -337,7 +337,7 @@
   font-size: 0.78rem;
   font-weight: 700;
   color: var(--hdl-narrator);
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 .hdl-info-hero__title {
   margin: 0;

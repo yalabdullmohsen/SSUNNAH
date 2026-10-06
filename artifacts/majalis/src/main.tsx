@@ -36,8 +36,8 @@ import {
   ensureDarkLayersForBoot,
   isDarkCoreLoadStarted,
 } from "./lib/ensure-dark-layers";
-// خطوط الواجهة المحلية قبل أي طبقة تستخدم --font-app
-import "./styles/fonts-ui.css";
+// نظام الخطوط: font-system.css (الرموز + الأوجه الحرجة) يُحقن inline عبر inlineFontSystemPlugin؛ والباقي هنا
+import "./styles/font-faces-deferred.css";
 // هوية identity-v2 — الرموز أولاً (@theme + --mj-*) قبل أي طبقة قديمة
 import "./app/styles/theme.css";
 // Foundation Reset PR-1 — مصدر الحقيقة (--sf-*) قبل الطبقات القديمة
@@ -234,10 +234,6 @@ function loadNonCriticalCss() {
 }
 function scheduleNonCriticalCss() {
   scheduleOnIdle(loadNonCriticalCss, 2500);
-  // أوزان Aref Ruqaa الزخرفية متأخرة — Amiri 700 مُحمَّل عند الإقلاع (منع قفزة الوزن)
-  window.setTimeout(() => {
-    void import("./styles/fonts-ui-bold.css");
-  }, 20000);
 }
 if (document.readyState === "complete") {
   scheduleNonCriticalCss();

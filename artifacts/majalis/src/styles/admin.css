@@ -24,7 +24,7 @@
   background: var(--majalis-parchment);
   color: var(--majalis-ink);
   direction: rtl;
-  font-family: var(--font-primary, inherit);
+  font-family: var(--font-ui);
 }
 
 .admin-main {
@@ -118,7 +118,7 @@
   font-weight: 700;
   color: rgba(255,255,255,0.96);
   margin: 0;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 .admin-sidebar-logo__subtitle {
   font-size: 0.5625rem;
@@ -387,7 +387,7 @@
   font-size: var(--ds-text-lg);
   font-weight: 700;
   margin: 0 0 0.3rem;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 .admin-welcome__date {
   font-size: 0.68rem;
@@ -785,7 +785,7 @@ a.admin-info-panel__item-title:hover { color: var(--majalis-emerald-deep); }
   font-weight: 800;
   color: var(--majalis-emerald-deep);
   margin: 0 0 0.3rem;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 .ii-header__sub { font-size: 0.8375rem; color: var(--majalis-ink-soft); margin: 0; }
 
@@ -1754,7 +1754,7 @@ a.admin-info-panel__item-title:hover { color: var(--majalis-emerald-deep); }
 .blk-tool-row         { display: flex; gap: var(--ds-space-2); margin-bottom: 0.625rem; flex-wrap: wrap; }
 .blk-tmpl-btn         { padding: 0.3rem 0.75rem; border-radius: var(--ds-radius-sm); border: 1px solid var(--majalis-emerald); background: var(--majalis-panel); color: var(--majalis-emerald-deep); cursor: pointer; font-family: inherit; font-size: 0.8125rem; font-weight: 600; }
 .blk-clear-btn        { font-size: 0.8125rem; padding: 0.3rem 0.75rem; border-radius: var(--ds-radius-sm); border: 1px solid var(--majalis-line); background: var(--majalis-panel); color: var(--majalis-ink-soft); cursor: pointer; font-family: inherit; }
-.blk-mono-textarea    { width: 100%; box-sizing: border-box; min-height: 16rem; resize: vertical; padding: var(--ds-space-3); border-radius: var(--ds-radius-sm); border: 1px solid var(--majalis-line); background: #fffdf8; color: var(--majalis-ink); font-size: 0.8125rem; line-height: 1.6; font-family: ui-monospace, "SF Mono", Menlo, monospace; direction: ltr; text-align: left; outline: none; }
+.blk-mono-textarea    { width: 100%; box-sizing: border-box; min-height: 16rem; resize: vertical; padding: var(--ds-space-3); border-radius: var(--ds-radius-sm); border: 1px solid var(--majalis-line); background: #fffdf8; color: var(--majalis-ink); font-size: 0.8125rem; line-height: 1.6; font-family: var(--font-ui); direction: ltr; text-align: left; outline: none; }
 .blk-progress         { margin-top: 0.875rem; }
 .blk-progress__track  { height: 0.5rem; border-radius: var(--ds-radius-full); background: var(--majalis-parchment-deep); overflow: hidden; }
 .blk-progress__fill   { height: 100%; width: var(--blk-pct, 0%); background: var(--majalis-emerald); transition: width 0.15s; }
@@ -2522,7 +2522,7 @@ a.admin-info-panel__item-title:hover { color: var(--majalis-emerald-deep); }
 .scm-preview-header   { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: var(--ds-space-2); }
 .scm-preview-h3       { margin: 0; color: var(--majalis-emerald-deep); font-size: var(--ds-text-base); }
 .scm-preview-toggle   { font-size: var(--ds-text-xs); padding: 0.25rem 0.65rem; border-radius: var(--ds-radius-sm); border: 1px solid rgba(255,255,255,0.15); background: transparent; color: var(--majalis-ink-soft); cursor: pointer; font-family: inherit; }
-.scm-preview-editor   { width: 100%; font-family: monospace; font-size: 0.8rem; padding: var(--ds-space-3); background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.10); border-radius: var(--ds-radius); color: var(--majalis-ink); resize: vertical; box-sizing: border-box; }
+.scm-preview-editor   { width: 100%; font-family: var(--font-mono); font-size: 0.8rem; padding: var(--ds-space-3); background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.10); border-radius: var(--ds-radius); color: var(--majalis-ink); resize: vertical; box-sizing: border-box; }
 .scm-preview-grid     { display: grid; gap: 0.4rem; }
 .scm-preview-row      { display: flex; gap: var(--ds-space-3); font-size: 0.82rem; flex-wrap: wrap; }
 .scm-preview-key      { color: var(--majalis-emerald-deep); font-weight: 700; flex-shrink: 0; min-width: 8rem; }

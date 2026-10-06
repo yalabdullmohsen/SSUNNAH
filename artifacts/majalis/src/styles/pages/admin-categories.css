@@ -224,7 +224,7 @@
 }
 
 .cat-node__slug {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-ui);
   opacity: 0.85;
 }
 

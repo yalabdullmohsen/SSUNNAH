@@ -17,9 +17,8 @@ console.log("=== Identity Reset tokens in V2 file ===");
 {
   const tokens = read("src/styles/visual-redesign-v2-tokens.css");
   assert.match(tokens, /Identity Reset/);
-  assert.match(tokens, /--v2-font-display/);
-  assert.match(tokens, /--v2-font-ui/);
-  assert.match(tokens, /--v2-font-latin/);
+  // الخطوط: رموز --font-ui/--font-text/--font-quran في font-system.css فقط
+  assert.doesNotMatch(tokens, /--v2-font-/);
   assert.match(tokens, /--v2-type-display/);
   assert.match(tokens, /--v2-type-page-title/);
   assert.match(tokens, /--v2-type-section-title/);
@@ -46,7 +45,7 @@ console.log("=== application layer ===");
   assert.ok(existsSync(resolve(majalisRoot, "src/styles/sunnah-identity-reset.css")));
   const ir = read("src/styles/sunnah-identity-reset.css");
   assert.match(ir, /data-v2-app/);
-  assert.match(ir, /--v2-font-ui|--font-ui/);
+  assert.match(ir, /--font-ui/);
   assert.match(ir, /data-display-type/);
   assert.match(ir, /navbar-menu-btn--drawer/);
   assert.match(ir, /line-clamp:\s*2/);
@@ -55,7 +54,7 @@ console.log("=== application layer ===");
   assert.doesNotMatch(ir, /Aref Ruqaa/);
   assert.doesNotMatch(ir, /mushaf-reader|qpc-v2/);
   const fontGate = read("scripts/verify-font-consistency.mjs");
-  assert.match(fontGate, /v2-font-\(display\|ui\|latin\)/);
+  assert.match(fontGate, /--v2-font-/);
 }
 
 console.log("=== wired in main + App density ===");
@@ -76,12 +75,12 @@ console.log("=== Aref removed from chrome drawer button ===");
     /\.navbar-menu-btn--drawer\s*\{[^}]*Aref Ruqaa/s,
     "لا Aref Ruqaa في زر القائمة",
   );
-  assert.match(index, /\.navbar-menu-btn--drawer[\s\S]*--v2-font-ui/);
+  assert.match(index, /\.navbar-menu-btn--drawer[\s\S]*--font-ui/);
 }
 
 console.log("=== TS aliases ===");
 assert.equal(V2_TYPE.pageTitle, "var(--v2-type-page-title)");
-assert.equal(V2_FONT.ui, "var(--v2-font-ui)");
+assert.equal(V2_FONT.ui, "var(--font-ui)");
 assert.equal(V2_DENSITY.padCard, "var(--v2-pad-card)");
 assert.equal(V2_SURFACE.canvas, "var(--v2-surface-canvas)");
 

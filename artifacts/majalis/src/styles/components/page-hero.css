@@ -104,13 +104,13 @@ html.dark .pattern-backdrop {
   margin: 0;
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   /* هيرو الحبر الداكن (card-system) — ذهبي على زمرد، لا brand فاتح على داكن */
   color: var(--cs-gold-ink);
 }
 .page-hero-mj__title {
   margin: 0;
-  font-family: var(--font-heading, var(--mj-face, var(--font-display)));
+  font-family: var(--font-ui);
   font-size: var(--svl-type-page-title, var(--type-page-title, clamp(1.625rem, 5vw, 2rem)));
   font-weight: 800;
   line-height: var(--svl-lh-title, 1.35);
@@ -155,7 +155,7 @@ html.dark .pattern-backdrop {
   min-height: 2.65rem;
   padding: 0.55rem 1.1rem;
   font-weight: 500;
-  font-family: var(--mj-ui);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-btn);
 }
 .page-hero-mj__actions .mj-btn--ghost,

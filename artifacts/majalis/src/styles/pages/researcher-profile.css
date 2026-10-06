@@ -43,7 +43,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   color: var(--majalis-ink-soft);
-  font-family: monospace;
+  font-family: var(--font-mono);
 }
 
 .rp-section {

@@ -223,7 +223,7 @@ html.dark .akl-cat--active,
 }
 
 .akl-block__quran {
-  font-family: var(--font-quran, serif);
+  font-family: var(--font-quran);
 }
 
 .akl-block__ref,

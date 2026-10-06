@@ -78,7 +78,7 @@ assert.match(tokens, /--tafsir-body-size/);
 assert.match(tokens, /--tafsir-ayah-size/);
 assert.match(tokens, /--tafsir-reading-width/);
 assert.match(tokens, /--tafsir-sheet-bg/);
-assert.match(tokens, /Amiri Quran/);
-assert.match(tokens, /IBM Plex Sans Arabic/);
+assert.match(tokens, /var\(--font-quran\)/);
+assert.match(tokens, /var\(--font-ui\)/);
 
 console.log("mushaf-tafsir-selection-rebuild-gate.test.ts: ok");

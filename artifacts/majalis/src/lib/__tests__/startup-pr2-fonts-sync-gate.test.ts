@@ -6,25 +6,27 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { fontSystemCss, renderedIndexHtml } from "./font-system-test-helper";
 
 const majalisRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const repoRoot = resolve(majalisRoot, "../..");
 const readPkg = (rel: string) => readFileSync(resolve(majalisRoot, rel), "utf8");
 const readRepo = (rel: string) => readFileSync(resolve(repoRoot, rel), "utf8");
 
-const fontsUi = readPkg("src/styles/fonts-ui.css");
-assert.match(readPkg("index.html"), /@font-face\{font-family:"Amiri"/);
-assert.match(fontsUi, /font-display:\s*optional/);
-assert.doesNotMatch(fontsUi, /fonts\.googleapis|fonts\.gstatic/);
+const fontsCss = fontSystemCss();
+const indexHtml = renderedIndexHtml();
+assert.match(indexHtml, /@font-face\{font-family:"Sunnah UI"/);
+assert.match(fontsCss, /font-display:\s*swap/);
+assert.doesNotMatch(fontsCss + indexHtml, /fonts\.googleapis|fonts\.gstatic/);
 
-const indexHtml = readPkg("index.html");
+assert.match(indexHtml, /preload[^>]+plex-sans-arabic-400-ar\.woff2/);
+assert.match(indexHtml, /preload[^>]+plex-sans-arabic-600-ar\.woff2/);
 assert.match(indexHtml, /preload[^>]+amiri-400-ar\.woff2/);
-assert.match(indexHtml, /preload[^>]+amiri-700-ar\.woff2/);
-assert.match(indexHtml, /font-display:optional/);
+assert.match(indexHtml, /font-display:swap/);
 
 const boot = readPkg("src/lib/boot-readiness.ts");
 assert.match(boot, /document\.fonts\.load/);
-assert.match(boot, /"Amiri"/);
+assert.match(boot, /"Sunnah UI"/);
 assert.doesNotMatch(boot, /createRoot\s*\(|location\.reload\s*\(/);
 
 const banner = readPkg("src/components/OfflineBanner.tsx");

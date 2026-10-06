@@ -1,7 +1,7 @@
 import type { SVGProps } from "react";
 
 /**
- * وردمارك «سُنّة» — نص قصير بخط الواجهة (Amiri) بدل مسار SVG للاسم القديم.
+ * وردمارك «سُنّة» — نص قصير بخط النصوص (Sunnah Text) بدل مسار SVG للاسم القديم.
  * بلا تحميل خط إضافي وقت التشغيل فوق خط الإقلاع.
  */
 
@@ -27,7 +27,7 @@ export default function MajlisWordmark({ className, width, height, style, ...pro
         y="24"
         textAnchor="middle"
         fill="currentColor"
-        style={{ fontFamily: '"Amiri", "Noto Naskh Arabic", serif', fontSize: 26, fontWeight: 700 }}
+        style={{ fontFamily: "var(--font-text)", fontSize: 26, fontWeight: 700 }}
       >
         سُنّة
       </text>

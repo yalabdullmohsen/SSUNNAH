@@ -242,7 +242,7 @@ html.dark .ss-action-btn--ghost {
   font-size: 0.8rem;
   font-weight: 800;
   color: var(--ss-deep-green, var(--brand-on-light));
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
 }
 
 .home-sacred-day__text {
@@ -250,7 +250,7 @@ html.dark .ss-action-btn--ghost {
   font-size: clamp(0.95rem, 2.8vw, 1.05rem);
   line-height: 1.7;
   color: var(--mj-ink);
-  font-family: var(--font-heading, var(--font-ui));
+  font-family: var(--font-text);
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
@@ -437,7 +437,7 @@ html.dark .sidebar-item.active {
 }
 
 .pts-title {
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 
 /* ── حشو المحتوى أمام العائم/الشريط ── */

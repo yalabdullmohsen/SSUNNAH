@@ -108,7 +108,7 @@
 }
 
 .quran-search-page__hit header strong {
-  font-family: var(--mj-ui, var(--font-body));
+  font-family: var(--font-ui);
   font-weight: 800;
   color: var(--mj-brand-deep, var(--mj-brand));
 }
@@ -129,7 +129,7 @@
 .quran-search-page__ayah-text,
 .quran-search-page__hit p {
   margin: 0;
-  font-family: "Amiri Quran", "Scheherazade New", "Traditional Arabic", serif;
+  font-family: var(--font-quran);
   font-size: 1.15rem;
   line-height: 2;
   color: var(--mj-ink, var(--v2-color-ink));
@@ -138,7 +138,7 @@
 }
 
 .quran-search-page__surah-meta {
-  font-family: var(--mj-ui, var(--font-body)) !important;
+  font-family: var(--font-ui) !important;
   font-size: 0.9rem !important;
   line-height: 1.5 !important;
   color: var(--mj-ink-2) !important;

@@ -6,6 +6,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { renderedIndexHtml } from "./font-system-test-helper";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
@@ -26,12 +27,12 @@ const vitals = read("src/lib/boot-vitals-snapshot.ts");
 
 assert.match(html, /mj-theme-boot/, "سكربت ثيم قبل React");
 assert.match(html, /app-booting/, "app-booting من أول إطار");
-assert.match(html, /(?:font-family|--font-app)\s*:\s*"Amiri"/, "خط الواجهة في critical");
+assert.match(html, /font-family:\s*var\(--font-ui\)/, "خط الواجهة (--font-ui) في critical");
 assert.match(html, /button,\s*input,\s*textarea,\s*select/, "عناصر النموذج ترث الخط");
 assert.match(html, /min-height:\s*100(?:dvh|svh)/, "ارتفاع viewport ثابت لـ iOS");
 assert.ok(html.includes("#101614") || html.includes("#101614"), "خلفية ليلي قبل React");
 assert.match(html, /v13-startup-shell-stable|v14-release-fresh-2026-09/, "نسخة تصميم تُبطل الكاش القديم");
-assert.match(html, /font-display:\s*optional/, "font-display optional بلا قفزة");
+assert.match(renderedIndexHtml(), /font-display:swap/, "font-display swap + preload للأوجه الحرجة");
 
 assert.match(
   critical,

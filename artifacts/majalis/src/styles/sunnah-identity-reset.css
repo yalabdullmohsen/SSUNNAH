@@ -13,7 +13,7 @@ html[data-v2-app="1"] .content-hub,
 html[data-v2-app="1"] .section-lobby,
 html[data-v2-app="1"] .kp-page,
 html[data-v2-app="1"] main {
-  font-family: var(--v2-font-ui);
+  font-family: var(--font-ui);
   font-weight: var(--v2-fw-regular);
   line-height: var(--v2-lh-body);
   text-align: start;
@@ -26,7 +26,7 @@ html[data-v2-app="1"] .brand-wordmark,
 html[data-v2-app="1"] .quote-surface,
 html[data-v2-app="1"] .quote-surface__text {
   /* شعار «سُنّة» والاقتباسات الشرعية = نسخ؛ الواجهة بخط النظام */
-  font-family: var(--sf-font-scripture);
+  font-family: var(--font-text);
   font-weight: var(--v2-fw-bold);
   line-height: var(--v2-lh-display);
 }
@@ -51,7 +51,7 @@ html[data-v2-app="1"] .ph2__eyebrow,
 html[data-v2-app="1"] .meta,
 html[data-v2-app="1"] .caption,
 html[data-v2-app="1"] .text-meta {
-  font-family: var(--v2-font-ui) !important;
+  font-family: var(--font-ui) !important;
 }
 
 /* Type scale mapping */
@@ -115,7 +115,7 @@ html[data-v2-app="1"] .home-sacred-day__date {
 html[data-v2-app="1"] :lang(en),
 html[data-v2-app="1"] .ltr-inline,
 html[data-v2-app="1"] [dir="ltr"]:not(html):not(body) {
-  font-family: var(--v2-font-latin);
+  font-family: var(--font-ui);
   unicode-bidi: isolate;
 }
 

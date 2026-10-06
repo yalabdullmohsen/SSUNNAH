@@ -333,7 +333,7 @@ html.dark .sect-hub__chip.is-active,
   border-block-end: 1px solid color-mix(in srgb, var(--mj-brand) 16%, transparent);
   font-size: 0.92rem;
   font-weight: 800;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   line-height: 1.4;
   color: var(--brand-on-light, var(--mj-brand-deep, #12362c));
 }
@@ -379,7 +379,7 @@ html.dark .sect-hub__chip.is-active,
   margin: 0;
   font-size: 0.72rem;
   font-weight: 750;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   color: var(--color-text-muted, var(--mj-muted));
 }
 

@@ -586,7 +586,7 @@ html[data-theme="dark"] .srch-quick-card:hover {
 }
 .srch-hero__brand {
   margin: 0;
-  font-family: var(--font-brand, var(--font-app));
+  font-family: var(--font-ui);
   font-size: clamp(1.55rem, 5vw, 1.95rem);
   font-weight: 700;
   color: var(--mj-brand-deep);

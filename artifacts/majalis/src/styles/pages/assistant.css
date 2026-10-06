@@ -68,7 +68,7 @@
   border-radius: var(--radius-pill, 999rem);
   font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   /* أبيض صلب فوق الأخضر — لا يرث --color-hero-fg soft-ink */
   color: var(--mj-white) !important;
   background: color-mix(in srgb, var(--mj-white) 18%, transparent);

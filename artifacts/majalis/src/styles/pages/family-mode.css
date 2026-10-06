@@ -81,7 +81,7 @@
   font-weight: 900;
   letter-spacing: normal;
   color: var(--ds-emerald-deep);
-  font-family: monospace;
+  font-family: var(--font-mono);
 }
 .fm-invite-card__hint { font-size: 0.75rem; color: var(--majalis-ink-soft); }
 .fm-invite-card__actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
@@ -109,8 +109,8 @@
   border: 2px solid var(--ds-line-color);
   border-radius: var(--ds-radius, 0.5rem);
   font-size: 1.25rem;
-  font-family: monospace;
-  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  letter-spacing: 0;
   text-align: center;
   text-transform: uppercase;
   color: var(--majalis-ink);

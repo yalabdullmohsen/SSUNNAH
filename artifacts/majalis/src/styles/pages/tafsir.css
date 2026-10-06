@@ -6,7 +6,7 @@
   max-width: 860px;
   margin: 0 auto;
   padding: 1.5rem 1rem 4rem;
-  font-family: var(--font-app, var(--font-tafsir, "Amiri", "Noto Naskh Arabic", serif));
+  font-family: var(--font-text);
   line-height: 1.85;
 }
 
@@ -105,7 +105,7 @@ html[data-theme="dark"] .tf-stat span {
   color: var(--mj-brand-deep);
   line-height: 1.85;
   font-size: 1rem;
-  font-family: var(--font-app, var(--font-tafsir, "Amiri", "Noto Naskh Arabic", serif));
+  font-family: var(--font-text);
 }
 
 .tf-cta {
@@ -225,7 +225,7 @@ html[data-theme="dark"] .tf-stat span {
   color: var(--mj-brand-deep);
   line-height: 1.85;
   font-size: 1rem;
-  font-family: var(--font-app, var(--font-tafsir, "Amiri", "Noto Naskh Arabic", serif));
+  font-family: var(--font-text);
 }
 .tf-card__example {
   font-size: 0.85rem;
@@ -317,7 +317,7 @@ html[data-theme="dark"] .tf-stat span {
   color: var(--mj-brand-deep);
   line-height: 1.85;
   font-size: 1rem;
-  font-family: var(--font-app, var(--font-tafsir, "Amiri", "Noto Naskh Arabic", serif));
+  font-family: var(--font-text);
 }
 
 .tf-section-head {

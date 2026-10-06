@@ -125,7 +125,7 @@
   background: linear-gradient(135deg,var(--mj-brand-soft),var(--mj-brand-tint));
   border: 1px solid var(--mj-success-soft); border-radius: .6rem;
   padding: .55rem .8rem; margin-bottom: .5rem;
-  font-family: var(--font-body);
+  font-family: var(--font-text);
 }
 .sg-dhikr-box__label { font-size: .68rem; font-weight: 700; color: var(--majalis-emerald,var(--mj-brand-deep)); display: block; margin-bottom: .25rem; font-family: inherit; }
 .sg-dhikr-box__text  { font-size: var(--ds-text-base); color: var(--mj-brand-deep); line-height: 1.8; }
@@ -185,7 +185,7 @@
   border: 1px solid var(--mj-success-soft); border-inline-end: 3px solid var(--majalis-emerald,var(--mj-brand-deep));
   border-radius: .75rem; padding: .85rem 1rem;
 }
-.sg-ayah-card__text { font-family: var(--font-quran,'Scheherazade New',serif); font-size: 1.05rem; line-height: 2; color: var(--mj-brand-deep); margin: 0 0 .3rem; }
+.sg-ayah-card__text { font-family: var(--font-quran); font-size: 1.05rem; line-height: 2; color: var(--mj-brand-deep); margin: 0 0 .3rem; }
 .sg-ayah-card__ref  { font-size: .72rem; color: var(--majalis-emerald,var(--mj-brand-deep)); font-weight: 600; font-style: normal; display: block; margin-bottom: .25rem; }
 .sg-ayah-card__note { font-size: .78rem; color: var(--mj-ink-2); display: block; }
 

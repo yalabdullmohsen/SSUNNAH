@@ -197,7 +197,9 @@ export function generateDocsHtml(version = "v1") {
   <meta charset="UTF-8">
   <title>سُنّة API Docs v${version}</title>
   <style>
-    body { font-family: "IBM Plex Sans Arabic", "Noto Sans Arabic", sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; }
+    @font-face { font-family: "Sunnah UI"; font-weight: 400; font-display: swap; src: url("/fonts/sunnah/plex-sans-arabic-400-ar.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC; }
+    @font-face { font-family: "Sunnah UI"; font-weight: 600; font-display: swap; src: url("/fonts/sunnah/plex-sans-arabic-600-ar.woff2") format("woff2"); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC; }
+    body { font-family: "Sunnah UI", -apple-system, "SF Arabic", system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; }
     code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; }
     h1 { color: #1a472a; }
     .endpoint { margin: 0.5rem 0; }

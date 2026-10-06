@@ -188,14 +188,14 @@ export async function generateAyahImage(opts: ShareImageOptions): Promise<string
     const startY = H / 2 - 40;
     const fontSize = text.length > 120 ? 28 : text.length > 70 ? 34 : 40;
 
-    ctx.font = `${fontSize}px "Amiri Quran", "KFGQPC Uthmanic Script", "Scheherazade New", serif`;
+    ctx.font = `${fontSize}px "Sunnah Quran", "Sunnah Text", serif`;
     wrapText(ctx, text, W / 2, startY, maxWidth, lineHeight);
 
-    ctx.font = `bold 22px "IBM Plex Sans Arabic", "Noto Sans Arabic", sans-serif`;
+    ctx.font = `bold 22px "Sunnah UI", system-ui, sans-serif`;
     ctx.fillStyle = "#135034";
     ctx.fillText(`سورة ${surahName} ﴿${ayahNum}﴾`, W / 2, H - 80);
 
-    ctx.font = `14px "IBM Plex Sans Arabic", "Noto Sans Arabic", sans-serif`;
+    ctx.font = `14px "Sunnah UI", system-ui, sans-serif`;
     ctx.fillStyle = "#4a4a4a";
     ctx.fillText("سُنّة", W / 2, H - 45);
     ctx.restore();

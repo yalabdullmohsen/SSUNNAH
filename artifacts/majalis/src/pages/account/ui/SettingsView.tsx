@@ -420,8 +420,8 @@ export default function SettingsPage() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="uthmani">شهرزاد (Scheherazade)</SelectItem>
-                <SelectItem value="naskh">نسخ (Traditional Arabic)</SelectItem>
+                <SelectItem value="uthmani">قرآني (Amiri Quran)</SelectItem>
+                <SelectItem value="naskh">الواجهة (IBM Plex Sans Arabic)</SelectItem>
                 <SelectItem value="amiri">أميري (Amiri)</SelectItem>
               </SelectContent>
             </Select>

@@ -1,4 +1,4 @@
-/* ══ خط المنصة الموحَّد IBM Plex Sans Arabic — يُحمَّل عبر index.html، مع استثناء خطوط الرسم القرآني (2026-07-16) ══ */
+/* الخطوط: src/styles/font-system.css — Sunnah UI / Text / Quran (تُحقن inline في index.html) */
 
 /* خط المصحف (Amiri Quran) — fonts-quran.css يُحمَّل مع مسارات القرآن/المصحف فقط */
 
@@ -268,18 +268,6 @@ html.pts-immersive #root {
   --color-parchment:     var(--mj-bg, var(--msk-canvas, #FFFFFF));
   --color-line:          var(--mj-hairline, var(--msk-border, #E8E7E2));
 
-  /* ── الخطوط ── واجهة موحّدة --font-ui / --font-app (خط النظام العربي) ──
-     النسخ --font-reading (Amiri) للنص الشرعي فقط: آيات/أحاديث/أذكار + شعار «سُنّة».
-     المصحف (--font-quran) استثناء مستقل. */
-  /* aliases — المصدر @theme --font-ui في theme.css (لا تُعاد تعريف --font-ui هنا) */
-  --font-primary:  var(--font-app);
-  --font-body:     var(--font-app);
-  --font-display:  var(--font-app);
-  --font-reading:  "Amiri", "MajlisAmiriFallback", "Traditional Arabic", serif;
-  --font-quran:    "Amiri Quran", "Scheherazade New", "KFGQPC Hafs Uthmanic", serif;
-  --font-heritage: var(--font-app);
-  --font-tafsir:   var(--font-app);
-  --font-nav:      var(--font-app);
 
   /* ── ترتيب الطبقات — سلّم موحَّد يمنع تداخل البحث/الدرج/الهيدر ──
      القيم العددية أعلى من --z-* القديمة عمدًا لأن بعض الطبقات legacy
@@ -411,15 +399,6 @@ html {
   --v2-shadow-4:     0 24px 64px rgba(23,61,53,.10);
 }
 
-/* Alexandria هو الخط الموحَّد الوحيد لواجهة المنصة (2026-07-18) — كلا خياري
-   تفضيل القراءة السابقين (naskh/default) يُصيَّران لنفس الخط الأساسي كي لا
-   يبقى أي مسار يتجاوز الخط الموحَّد. الآلية (data-font) أُبقيت سليمة تقنيًا
-   لتفادي كسر مكوّن الإعدادات، لكنها لم تعد تُنتج فرقًا بصريًا. */
-
-html[data-font="default"],
-html[data-font="naskh"] {
-  --font-body: var(--font-primary);
-}
 
 :root {
   --mobile-header-h: clamp(4rem, 11vw, 4.5rem);
@@ -454,11 +433,11 @@ html[data-font="naskh"] {
   /* alias للتوافق مع كود قديم */
   --majalis-border: var(--majalis-line);
 
-  /* shadcn tokens (--background/--primary/--font-display/…) مصدرها theme.css فقط */
+  /* shadcn tokens (--background/--primary/…) مصدرها theme.css فقط */
 }
 
 body {
-  font-family: var(--font-body-ui, var(--font-ui, var(--font-app, var(--font-body))));
+  font-family: var(--font-ui);
   font-weight: var(--font-weight-regular, 400);
   font-synthesis: none;
   /* Canvas Authority — لا --msk-canvas/ivory التي تختلف عن critical */
@@ -488,7 +467,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-weight: 700;
   letter-spacing: 0;
   text-wrap: balance;
@@ -795,7 +774,7 @@ assistant */
   cursor: pointer;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  font-family: var(--v2-font-ui, var(--font-ui, "Amiri", serif));
+  font-family: var(--font-ui);
   font-size: 0.95rem;
   font-weight: 700;
   background: var(--mj-surface-2, var(--color-surface-muted, #f5f5f4));

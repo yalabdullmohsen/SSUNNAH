@@ -666,7 +666,7 @@ compact home ── */
 .site-footer-brand-name {
   display: block;
   color: var(--majalis-emerald-deep);
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 0.35rem;
@@ -1109,7 +1109,7 @@ html[data-theme="dark"] .navbar-v3 a.navbar-v3__tagline:focus-visible {
 }
 
 .site-brand-logotype__main {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--majalis-emerald-deep, var(--mj-brand-deep));
@@ -2140,7 +2140,7 @@ body.has-assistant-fab .app-main {
   padding: 0.6rem 1.35rem;
   border: none;
   border-radius: var(--ds-r-md);
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-weight: 700;
   font-size: 0.9rem;
   cursor: pointer;
@@ -2178,7 +2178,7 @@ body.has-assistant-fab .app-main {
   border-radius: var(--ds-r-sm);
   background: transparent;
   color: var(--majalis-ink);
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: 0.9rem;
   outline: none;
   direction: rtl;
@@ -2748,7 +2748,7 @@ body.has-assistant-fab .app-main {
 
 .quran-text,
 .ayah-text {
-  font-family: var(--font-quran, "Amiri Quran", serif);
+  font-family: var(--font-quran);
   font-size: clamp(1.1rem, 3.5vw, 1.4rem);
   line-height: 2.4;
   text-align: center;
@@ -2757,7 +2757,7 @@ body.has-assistant-fab .app-main {
 }
 
 .hadith-arabic-text {
-  font-family: var(--font-display, "Amiri", serif);
+  font-family: var(--font-text);
   font-size: clamp(1rem, 3vw, 1.2rem);
   line-height: 2.2;
   color: var(--majalis-emerald-deep, var(--mj-brand-deep));
@@ -2881,7 +2881,7 @@ body.has-assistant-fab .app-main {
 /* بطاقات الفوائد */
 
 .faidah-card__body {
-  font-family: var(--font-display, "Amiri", serif);
+  font-family: var(--font-text);
   font-size: clamp(0.9rem, 2.8vw, 1rem);
   line-height: 2;
 }
@@ -3146,10 +3146,9 @@ html[data-theme="dark"] .skeleton-base {
   background-size: 200% 100%;
 }
 
-/* ── خط واجهة التطبيق والقوائم (Cairo/Tajawal على قوائم المزيد والتنقّل) ──
-   يُطبَّق حصرًا على عناصر تنقّل/قوائم الواجهة (الهيدر، الشريط السفلي، القائمة
-   الجانبية، ورقة "المزيد")، لا على نصوص المحتوى (--font-body/--font-reading)
-   ولا على التفسير (--font-tafsir) ولا المصحف (--font-quran). */
+/* ── خط واجهة التطبيق والقوائم (--font-ui) ──
+   يُطبَّق على عناصر تنقّل/قوائم الواجهة (الهيدر، الشريط السفلي، القائمة
+   الجانبية، ورقة "المزيد")، لا على النصوص الشرعية (--font-text) ولا الآيات (--font-quran). */
 
 .navbar-v3,
 .bottom-nav,
@@ -3158,7 +3157,7 @@ html[data-theme="dark"] .skeleton-base {
 .side-nav-drawer--v2,
 .bottom-sheet,
 [class*="more-sheet"] {
-  font-family: var(--font-nav, var(--font-ui)) !important;
+  font-family: var(--font-ui) !important;
   line-height: 1.55;
 }
 

@@ -1,187 +1,139 @@
 #!/usr/bin/env node
 /**
- * verify-font-consistency.mjs
- *
- * الخط الموحَّد للواجهة هو --font-app (خط النظام العربي) والنص الشرعي --font-reading (Amiri). المصحف (--font-quran / QPC/QCF)
- * مستثنى. الرموز القديمة --font-display/--font-body/--font-sans aliases.
- *
- * Run: node scripts/verify-font-consistency.mjs
+ * بوابة نظام الخطوط (font-system.css) — تفشل عند أي انحراف عن التركيبة المعتمدة:
+ *   "Sunnah UI"    ← IBM Plex Sans Arabic (400/500/600/700)
+ *   "Sunnah Text"  ← Amiri (400/700)
+ *   "Sunnah Quran" ← Amiri Quran (400)
+ * القواعد:
+ *   1) تعريفات @font-face في src/styles/font-system.css فقط (+ صفحات HTML المستقلة خارج التطبيق).
+ *   2) ملفات woff2 + رخصة OFL لكل خط في public/fonts/sunnah/.
+ *   3) لا Google Fonts/CDN، ولا اسم خط قديم في أي مكان.
+ *   4) كل font-family في CSS يستهلك var(--font-ui|text|quran|mono) فقط (أو inherit)،
+ *      باستثناء خطوط جليفات المصحف (qpc-v2 / --mm-qpc-family / --nm-qpc-family / --qe-reader-font).
+ *   5) letter-spacing صفر للنص العربي (لا تباعد يكسر اتصال الحروف).
  */
-import { readFileSync } from "node:fs";
-import { globSync } from "node:fs";
-import { execSync } from "node:child_process";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const ROOT = new URL("..", import.meta.url).pathname;
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const fail = [];
+const rel = (p) => path.relative(ROOT, p);
 
-const themeCss = readFileSync(ROOT + "src/app/styles/theme.css", "utf8");
-/* 2026-10: الواجهة بخط النظام العربي (بلا تنزيل خط ويب)، والنسخ (Amiri) للنص الشرعي عبر --font-reading. */
-if (!/--font-app:\s*-apple-system,[^;]*system-ui/.test(themeCss)) {
-  console.error("✗ --font-app يجب أن يُعرَّف في @theme كخط النظام (-apple-system … system-ui)");
-  process.exit(1);
-}
-if (!/--font-reading:\s*"Amiri"/.test(readFileSync(ROOT + "src/index.css", "utf8"))) {
-  console.error("✗ --font-reading (النص الشرعي) يجب أن يبقى Amiri");
-  process.exit(1);
-}
-for (const alias of ["--font-display", "--font-body", "--font-sans", "--font-ui", "--mj-ui"]) {
-  const re = new RegExp(`${alias}:\\s*var\\(--font-app\\)`);
-  if (!re.test(themeCss)) {
-    console.error(`✗ ${alias} يجب أن يكون alias لـ --font-app`);
-    process.exit(1);
+function walk(dir, exts, out = []) {
+  for (const name of readdirSync(dir)) {
+    const p = path.join(dir, name);
+    const st = statSync(p);
+    if (st.isDirectory()) {
+      if (["node_modules", "dist", "__tests__", "qpc-v2"].includes(name)) continue;
+      walk(p, exts, out);
+    } else if (exts.some((e) => name.endsWith(e))) out.push(p);
   }
-}
-const indexHtml = readFileSync(ROOT + "index.html", "utf8");
-if (/fonts\.googleapis\.com|fonts\.gstatic\.com/.test(indexHtml)) {
-  console.error("✗ أزل Google Fonts من index.html — الخطوط محلية في /fonts/ui/");
-  process.exit(1);
-}
-if (!/\/fonts\/ui\/amiri-400-ar\.woff2/.test(indexHtml)) {
-  console.error("✗ index.html يجب أن يحمّل مسبقاً Amiri المحلي (النص الشرعي فوق الطيّة)");
-  process.exit(1);
-}
-const fontsUi = readFileSync(ROOT + "src/styles/fonts-ui.css", "utf8");
-/* Amiri: مصدر وحيد مضمّن في index.html (#mj-lcp-critical) — انظر STARTUP_SMOOTHNESS.md */
-const indexHtmlFonts = readFileSync(ROOT + "index.html", "utf8");
-if (!/font-family:"Amiri"/.test(indexHtmlFonts) || !/"Noto Naskh Arabic"/.test(fontsUi)) {
-  console.error("✗ fonts-ui.css يجب أن يعرّف Amiri و Noto Naskh محليًا");
-  process.exit(1);
+  return out;
 }
 
-// خطوط الاستثناء الوحيدة المسموح بها كقيمة أولى — الرسم القرآني العثماني
-// وما يتبعه مباشرة من نصوص تراثية (بالاسم الصريح المُدقَّق يدويًا، وليس أي
-// نص يستخدم الخط لأسباب زخرفية فقط — راجع تقرير 2026-07-13).
-const QURAN_EXCEPTION_FONTS = [
-  "amiri quran", "amiri", "scheherazade", "scheherazade new", "kfgqpc", "uthmanic", "hafs",
-  "kfgqpc hafs uthmanic",
-  "aref ruqaa", "noto naskh arabic",
-  "majlisfallback",
-  "majlisamirifallback", // metric-matched Amiri fallback في critical-first-paint.css (LCP shell)
-  // قياس عرض أسطر QCF V2 في measure-mushaf-line-deviation.mjs (خطوط p{n}.woff2)
-  "qpc",
+/* ── 1+2) font-system.css والملفات ── */
+const fontSystemPath = path.join(ROOT, "src/styles/font-system.css");
+const deferredPath = path.join(ROOT, "src/styles/font-faces-deferred.css");
+const fontSystem =
+  (existsSync(fontSystemPath) ? readFileSync(fontSystemPath, "utf8") : "") +
+  (existsSync(deferredPath) ? readFileSync(deferredPath, "utf8") : "");
+if (!fontSystem) fail.push("src/styles/font-system.css غير موجود");
+
+const REQUIRED_FACES = [
+  ["Sunnah UI", [400, 500, 600, 700], "plex-sans-arabic"],
+  ["Sunnah Text", [400, 700], "amiri"],
+  ["Sunnah Quran", [400], "amiri-quran"],
 ];
+for (const [family, weights, base] of REQUIRED_FACES) {
+  for (const w of weights) {
+    const ar = `${base}-${w}-ar.woff2`;
+    if (!existsSync(path.join(ROOT, "public/fonts/sunnah", ar))) fail.push(`ملف الخط مفقود: public/fonts/sunnah/${ar}`);
+    if (!fontSystem.includes(`/fonts/sunnah/${ar}`)) fail.push(`font-system.css لا يعرّف ${family} ${w} (${ar})`);
+  }
+  if (!new RegExp(`font-family:\\s*"${family}"`).test(fontSystem)) fail.push(`font-system.css بلا @font-face للعائلة "${family}"`);
+}
+if (/font-display:\s*(?!swap)\w+/.test(fontSystem)) fail.push("font-display يجب أن يكون swap في font-system.css");
+for (const f of ["OFL-IBM-Plex-Sans-Arabic.txt", "OFL-Amiri.txt", "OFL-Amiri-Quran.txt"]) {
+  if (!existsSync(path.join(ROOT, "public/fonts/sunnah", f))) fail.push(`رخصة OFL مفقودة: public/fonts/sunnah/${f}`);
+}
+for (const t of ["--font-ui", "--font-text", "--font-quran"]) {
+  if (!new RegExp(`${t}:\\s*"Sunnah`).test(fontSystem)) fail.push(`font-system.css يجب أن يعرّف ${t}`);
+}
+const faceCount = (fontSystem.match(/@font-face/g) || []).length;
+if (faceCount !== 13) fail.push(`عدد @font-face في font-system.css = ${faceCount} (المتوقع 13)`);
 
-const MONOSPACE_MARKERS = [
-  "monospace", "ui-monospace", "sf mono", "menlo", "consolas",
-  "courier", "courier new", "roboto mono", "source code pro",
+/* @font-face خارج font-system.css (التطبيق فقط؛ صفحات HTML المستقلة مستثناة) */
+for (const p of walk(path.join(ROOT, "src"), [".css", ".ts", ".tsx"])) {
+  if (p === fontSystemPath || p === deferredPath) continue;
+  if (/@font-face/.test(readFileSync(p, "utf8"))) fail.push(`@font-face خارج font-system.css: ${rel(p)}`);
+}
+
+/* ── 3) CDN وأسماء قديمة ── */
+const OLD = /Scheherazade|Noto Naskh|Noto Sans Arabic|Aref Ruqaa|Alexandria|Traditional Arabic|Tajawal|\bCairo\b|MajlisAmiriFallback|MajlisFallback|KFGQPC|Arabic Typesetting|--font-app\b|--font-reading\b|--font-body\b|--font-display\b|--mj-ui\b|--mj-face\b|--v2-font-|--sf-font-|fonts\/ui\/|fonts-ui/;
+const CDN = /fonts\.googleapis\.com|fonts\.gstatic\.com|use\.typekit|cdn\.jsdelivr\.net\/npm\/@fontsource/;
+const scanTargets = [
+  ...walk(path.join(ROOT, "src"), [".css", ".ts", ".tsx"]),
+  ...walk(path.join(ROOT, "public"), [".html", ".js", ".svg"]),
+  path.join(ROOT, "index.html"),
 ];
-
-// الشقُّ الأوَّلُ من البدلِ يلتقطُ `var(--x, <بديل>)` كاملةً حتى آخرِ قوسٍ في السطر،
-// لأنَّ المتغيّرَ لا يُحكَمُ عليه باسمِه بل ببديلِه المصرَّح (انظر unwrapVar)؛ والشقُّ
-// الثاني هو النمطُ الأصليُّ لسائرِ القيم بلا تغيير.
-const FONT_FAMILY_RE = /font-family\s*[:=]\s*(var\([^;\n]*\)|["'`]?[^;"'`\n)]+)/gi;
-
-function firstToken(value) {
-  return value
-    .split(",")[0]
-    .replace(/!important/i, "")
-    .trim()
-    .replace(/^["'`]|["'`]$/g, "")
-    .toLowerCase();
+for (const p of scanTargets) {
+  const text = readFileSync(p, "utf8");
+  if (CDN.test(text)) fail.push(`رابط CDN للخطوط في ${rel(p)}`);
+  const m = text.match(OLD);
+  if (m && !p.endsWith("verify-font-consistency.mjs")) fail.push(`اسم/متغيّر خط قديم "${m[0]}" في ${rel(p)}`);
 }
 
-/**
- * `var(--x, <بديل>)` ⇐ `<بديل>`؛ فالمتغيّرُ غيرُ المعروفِ لا يُحكَمُ عليه باسمِه،
- * بل بالبديلِ المصرَّحِ في الموضعِ نفسِه (وهو ما يُعرَض فعلًا إن لم يُضبَط المتغيّر).
- * ويعودُ `null` إن لم تكن القيمةُ `var()` أو لم يكن لها بديل.
- */
-function unwrapVar(value) {
-  const m = /^var\(\s*(--[\w-]+)\s*,([\s\S]+)\)\s*$/.exec(value.trim());
-  return m ? m[2].trim() : null;
-}
-
-const UI_FONT_MARKERS = [
-  "alexandria", "ibm plex sans arabic", "noto sans arabic", "tajawal",
-  "system-ui", "-apple-system", "sans-serif",
-];
-
-function isAllowed(rawValue) {
-  const value = rawValue.trim();
-  // بطاقات الحفظ (/memorize): متغيّرات --fc-* مستقلة (Amiri/Tajawal/Alexandria)
-  if (/^var\(\s*--fc-/i.test(value)) return true;
-  if (/^var\(\s*--mm-qpc-family\b/i.test(value)) return true; // خط صفحة QPC للمصحف الجديد
-  if (/^var\(\s*--nm-qpc-family\b/i.test(value)) return true; // خط صفحة QPC — NewMushafReader
-  if (/^var\(\s*--font-app\b/i.test(value)) return true;
-  if (/^var\(\s*--sf-font-(ui|display|scripture)\b/i.test(value)) return true; // أدوار Foundation (واجهة/نسخ شرعي)
-  if (/^var\(\s*--mj-(face|ui|num)\b/i.test(value)) return true;
-  if (/^var\(\s*--(mj-)?font-/i.test(value)) return true; // تُحلّ عبر :root إلى IBM Plex Sans Arabic (أو --font-quran المعتمد)
-  // Identity Reset PR-1: أدوار Display/UI على Amiri (aliases في visual-redesign-v2-tokens)
-  if (/^var\(\s*--v2-font-(display|ui|latin)\b/i.test(value)) return true;
-  const fallback = unwrapVar(value);
-  if (fallback) return isAllowed(fallback); // يُحكَمُ على البديلِ المصرَّحِ لا على اسمِ المتغيّر
-  const first = firstToken(value);
-  if (first === "inherit" || first === "") return true;
-  if (UI_FONT_MARKERS.includes(first)) return true;
-  if (MONOSPACE_MARKERS.includes(first)) return true;
-  if (QURAN_EXCEPTION_FONTS.includes(first)) return true;
-  if (first.startsWith("qpc")) return true;
-  return false;
-}
-
-// ملفات مستثناة كليًا من الفحص (سكربتات بناء/قياس توليدية — ليست سطح منتج)
-const FILE_EXCLUDES = [
-  "scripts/verify-font-consistency.mjs",
-  // قياس مقاييس MajlisAmiriFallback vs Amiri (Startup FOUC P2) — يستدعي FontFace محليًا فقط
-  "scripts/measure-ui-fallback-metrics.mjs",
-];
-
-function isTestPath(rel) {
-  return /(^|\/)__tests__\//.test(rel) || /\.test\.(ts|tsx|js|mjs)$/.test(rel);
-}
-
-
-function listFiles() {
-  const patterns = [
-    "src/**/*.css",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "lib/**/*.js",
-    "lib/**/*.mjs",
-    "scripts/**/*.mjs",
-  ];
-  const files = new Set();
-  for (const pattern of patterns) {
-    for (const f of globSync(pattern, { cwd: ROOT })) {
-      if (!FILE_EXCLUDES.includes(f) && !isTestPath(f)) files.add(f);
+/* ── 4) font-family في CSS ── */
+function declarations(text) {
+  const out = [];
+  const re = /(?<![-\w])font-family\s*:/gi;
+  let m;
+  while ((m = re.exec(text))) {
+    let i = m.index + m[0].length;
+    let depth = 0;
+    let quote = null;
+    let j = i;
+    for (; j < text.length; j++) {
+      const c = text[j];
+      if (quote) {
+        if (c === quote) quote = null;
+      } else if (c === '"' || c === "'") quote = c;
+      else if (c === "(") depth++;
+      else if (c === ")") depth--;
+      else if (depth <= 0 && (c === ";" || c === "}")) break;
     }
+    out.push(text.slice(i, j).trim().replace(/\s*!important\s*$/i, ""));
   }
-  return [...files].sort();
+  return out;
 }
-
-let violations = [];
-
-for (const relPath of listFiles()) {
-  const abs = ROOT + relPath;
-  let content;
-  try {
-    content = readFileSync(abs, "utf8");
-  } catch {
-    continue;
-  }
-  const lines = content.split("\n");
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    FONT_FAMILY_RE.lastIndex = 0;
-    let m;
-    while ((m = FONT_FAMILY_RE.exec(line))) {
-      const value = m[1];
-      if (!isAllowed(value)) {
-        violations.push({ file: relPath, line: i + 1, value: value.trim() });
-      }
-    }
+const ALLOWED = /^(inherit|initial|unset|revert|var\(--font-(ui|text|quran|mono)\))$/;
+const QPC = /qpc|--qe-reader-font/i;
+for (const p of walk(path.join(ROOT, "src"), [".css"])) {
+  if (p === fontSystemPath || p === deferredPath) continue;
+  const text = readFileSync(p, "utf8");
+  for (const v of declarations(text)) {
+    const one = v.replace(/\s+/g, " ");
+    if (ALLOWED.test(one) || QPC.test(one)) continue;
+    fail.push(`font-family غير مسموح في ${rel(p)}: ${one.slice(0, 80)}`);
   }
 }
 
-if (violations.length > 0) {
-  console.error("\x1b[31m✗ فحص اتساق الخط فشل — عُثر على خط خارج --font-app / استثناء المصحف:\x1b[0m\n");
-  for (const v of violations) {
-    console.error(`  ${v.file}:${v.line}  →  font-family: ${v.value}`);
+/* ── 5) letter-spacing ── */
+for (const p of walk(path.join(ROOT, "src"), [".css"])) {
+  if (rel(p).startsWith("src/features/mushaf")) continue; // هندسة QPC
+  const text = readFileSync(p, "utf8");
+  const re = /letter-spacing\s*:\s*([^;}]+)/gi;
+  let m;
+  while ((m = re.exec(text))) {
+    const v = m[1].trim().replace(/\s*!important$/i, "");
+    if (!/^(0|0px|0em|0rem|normal|inherit|initial|unset|var\([^)]*\))$/.test(v)) fail.push(`letter-spacing غير صفري في ${rel(p)}: ${v}`);
   }
-  console.error(
-    "\n\x1b[33mالخط الموحَّد للمنصة هو --font-app (Amiri). إن كان هذا استثناءً قرآنيًا/تراثيًا حقيقيًا،" +
-    " أضف اسم الخط إلى QURAN_EXCEPTION_FONTS في scripts/verify-font-consistency.mjs بعد تدقيق يدوي" +
-    " يؤكد أن العنصر يعرض نصًا قرآنيًا حرفيًا لا نصًا زخرفيًا مستعارًا.\x1b[0m\n"
-  );
+}
+
+if (fail.length) {
+  console.error("✗ فحص نظام الخطوط فشل:\n" + fail.slice(0, 60).map((f) => "  - " + f).join("\n"));
+  if (fail.length > 60) console.error(`  … و${fail.length - 60} أخرى`);
   process.exit(1);
-} else {
-  console.log(`\x1b[32m✓ فحص اتساق الخط: --font-app (خط النظام) + --font-reading (Amiri) بلا انحراف (${listFiles().length} ملف مفحوص)\x1b[0m`);
 }
+console.log("✓ فحص نظام الخطوط: Sunnah UI / Text / Quran — 13 وجهًا، بلا CDN ولا خط قديم ولا font-family خارج الرموز");

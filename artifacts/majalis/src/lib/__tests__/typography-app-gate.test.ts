@@ -6,6 +6,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { fontSystemCss } from "./font-system-test-helper";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
 
@@ -15,9 +16,10 @@ const mushaf = readFileSync(join(root, "features/mushaf-madinah/mushaf-madinah.c
 const theme = readFileSync(join(root, "app/styles/theme.css"), "utf8");
 
 assert.match(main, /typography-app\.css/);
-assert.match(typoApp, /--font-heading/);
-assert.match(typoApp, /--font-ui|--font-app/);
-assert.match(typoApp, /Amiri/);
+assert.match(typoApp, /--type-page-title/);
+assert.match(typoApp, /var\(--font-ui\)/);
+assert.match(typoApp, /var\(--font-text\)/);
+assert.match(typoApp, /var\(--font-quran\)/);
 assert.match(typoApp, /--type-card-title/);
 assert.match(typoApp, /line-clamp: 2/);
 assert.match(typoApp, /--text-on-dark-primary/);
@@ -25,9 +27,10 @@ assert.match(typoApp, /--fw-bold/);
 assert.doesNotMatch(typoApp, /Noto Naskh Arabic/);
 assert.doesNotMatch(typoApp, /--mm-qpc|qpc-v2/);
 
-assert.match(theme, /--font-app:\s*-apple-system,[^;]*system-ui/);
-assert.match(theme, /--font-ui:\s*var\(--font-app\)/);
-assert.match(theme, /--mj-face:\s*var\(--font-app\)/);
+assert.match(fontSystemCss(), /--font-ui:\s*"Sunnah UI",\s*-apple-system[^;]*system-ui/);
+assert.match(fontSystemCss(), /--font-text:\s*"Sunnah Text"/);
+assert.match(fontSystemCss(), /--font-quran:\s*"Sunnah Quran"/);
+assert.doesNotMatch(theme, /--font-app|--mj-face/);
 assert.match(mushaf, /--mm-qpc-size/);
 assert.match(mushaf, /qpc-v2-p1/);
 assert.doesNotMatch(mushaf, /--font-heading/);

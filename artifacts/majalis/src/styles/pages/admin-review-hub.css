@@ -21,7 +21,7 @@
   min-height: 100svh;
   background: var(--rh-bg);
   color: var(--rh-ink);
-  font-family: var(--font-primary, "Alexandria", "IBM Plex Sans Arabic", sans-serif);
+  font-family: var(--font-ui);
   direction: rtl;
 }
 
@@ -413,7 +413,7 @@
 .rh-flutter-card__quran p {
   margin: 0;
   text-align: center;
-  font-family: var(--font-quran, "Amiri Quran", "Scheherazade New", serif);
+  font-family: var(--font-quran);
   font-size: 1.15rem;
   font-weight: 700;
   line-height: 1.9;

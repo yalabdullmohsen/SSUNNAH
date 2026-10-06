@@ -99,7 +99,7 @@
 
 .qpv-card__quran {
   margin: 0;
-  font-family: var(--font-quran, var(--font-app));
+  font-family: var(--font-quran);
   font-size: clamp(1.15rem, 4.5vw, 1.45rem);
   line-height: 2.1;
   text-align: justify;

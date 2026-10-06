@@ -176,7 +176,7 @@
   display: grid;
   place-items: center;
   border-radius: var(--sf-radius-control);
-  font-family: var(--mj-face, "Alexandria", sans-serif);
+  font-family: var(--font-ui);
   font-size: 1.15rem;
   font-weight: 800;
   color: var(--qp-accent);
@@ -194,12 +194,12 @@
 
 .qp-person-card__name {
   margin: 0;
-  font-family: var(--mj-face, "Alexandria", sans-serif);
+  font-family: var(--font-ui);
   font-size: 1.12rem;
   font-weight: 800;
   line-height: 1.3;
   color: var(--qp-ink);
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .qp-person-card__badge {
@@ -295,7 +295,7 @@ html.dark .qp-person-card__cta {
 
 .qp-person-detail__h {
   margin: 0 0 0.55rem;
-  font-family: var(--mj-face, "Alexandria", sans-serif);
+  font-family: var(--font-ui);
   font-size: 1.05rem;
   font-weight: 800;
   line-height: 1.35;

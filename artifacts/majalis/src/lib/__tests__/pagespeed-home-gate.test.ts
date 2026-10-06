@@ -6,6 +6,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { renderedIndexHtml } from "./font-system-test-helper";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
@@ -74,10 +75,9 @@ assert.doesNotMatch(lazyFallback, /from ["']@\/components\/ui-common["']|from ["
 const spatial = read("src/lib/spatial-nav.ts");
 assert.doesNotMatch(spatial, /from ["']@\/lib\/nav-map["']|from ["']lucide-react["']/, "spatial-nav بلا nav-map/lucide");
 assert.match(html, /font-weight:\s*400/, "وزن 400 للنص العادي في الحرج");
-assert.match(html, /rel="preload"[^>]+amiri-700-ar/, "preload Amiri 700 يمنع قفزة الوزن");
-assert.match(main, /fonts-ui-bold\.css/, "Aref Ruqaa 700 مؤجّل زخرفيًا");
-assert.match(main, /setTimeout\(\(\)\s*=>\s*\{\s*void import\("\.\/styles\/fonts-ui-bold\.css"\)/, "fonts-ui-bold عبر setTimeout لا rIC");
-assert.match(html, /@font-face\{[^}]*amiri-700-ar/, "Amiri 700 في مسار الإقلاع (مضمّن — مصدر وحيد)");
-assert.doesNotMatch(read("src/styles/fonts-ui-bold.css"), /amiri-700/, "لا تأجيل Amiri 700");
+assert.match(html, /rel="preload"[^>]+plex-sans-arabic-600-ar/, "preload Sunnah UI 600 يمنع قفزة الوزن");
+assert.match(main, /font-faces-deferred\.css/, "الأوجه غير الحرجة مع الحزمة الرئيسية");
+assert.match(renderedIndexHtml(), /@font-face\{[^}]*plex-sans-arabic-600-ar/, "Sunnah UI 600 في مسار الإقلاع (مضمّن — مصدر وحيد)");
+assert.doesNotMatch(read("src/styles/font-faces-deferred.css"), /plex-sans-arabic-(400|600)-ar/, "الأوجه الحرجة ليست في الملف المؤجَّل");
 
 console.log("pagespeed-home-gate.test.ts: ok");

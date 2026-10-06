@@ -104,7 +104,7 @@ html.dark .mm-tafsir {
   border-radius: 0.7rem;
   border: 1px solid var(--tafsir-border);
   background: var(--tafsir-surface);
-  font-family: "Amiri Quran", "KFGQPC Hafs Uthmanic", serif;
+  font-family: var(--font-quran);
   font-size: var(--tafsir-ayah-size);
   line-height: 1.7;
   color: var(--tafsir-text-primary);
@@ -178,7 +178,7 @@ html.dark .mm-tafsir__status--err {
 }
 
 .mm-tafsir__body {
-  font-family: "IBM Plex Sans Arabic", "Noto Naskh Arabic", sans-serif;
+  font-family: var(--font-ui);
   font-size: var(--tafsir-body-size);
   line-height: var(--tafsir-body-line-height);
   color: var(--tafsir-text-primary);

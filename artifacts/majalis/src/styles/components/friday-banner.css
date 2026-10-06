@@ -55,10 +55,10 @@
   letter-spacing: normal;
   padding: 0.2rem 0.75rem;
   border-radius: var(--radius-card, 1.25rem);
-  font-family: var(--font-body, "IBM Plex Sans Arabic", sans-serif);
+  font-family: var(--font-ui);
 }
 .frb-ayah {
-  font-family: "Amiri Quran", "Amiri", "Scheherazade New", serif;
+  font-family: var(--font-quran);
   font-size: clamp(1.1rem, 4vw, 1.55rem);
   font-weight: 400;
   color: var(--mj-bg);
@@ -74,13 +74,13 @@
 }
 .frb-ref {
   display: block;
-  font-family: var(--font-body, "IBM Plex Sans Arabic", sans-serif);
+  font-family: var(--font-ui);
   font-size: 0.72rem;
   color: rgba(250,248,242,0.45);
   letter-spacing: normal;
 }
 .frb-hadith {
-  font-family: var(--font-body, "IBM Plex Sans Arabic", sans-serif);
+  font-family: var(--font-text);
   font-size: 0.82rem;
   color: rgba(250,248,242,0.6);
   margin: 0;

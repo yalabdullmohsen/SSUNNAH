@@ -11,7 +11,7 @@
   padding-block-end: calc(var(--bottom-nav-total, 5rem) + var(--mj-s4, 1rem));
   box-sizing: border-box;
   color: var(--mj-ink);
-  font-family: var(--mj-ui);
+  font-family: var(--font-ui);
 }
 
 .surah-index-hero {
@@ -22,7 +22,7 @@
 
 .surah-index-hero h1 {
   margin: 0 0 var(--mj-s2);
-  font-family: var(--mj-ui);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-h1);
   font-weight: 800;
   line-height: var(--mj-lh-title);
@@ -101,7 +101,7 @@
   border-radius: calc(var(--mj-r-md) - 2px);
   background: transparent;
   color: var(--mj-ink-2);
-  font-family: var(--mj-ui);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-small);
   font-weight: 700;
   white-space: nowrap;
@@ -152,7 +152,7 @@ html.dark .surah-index-sort .surah-index-chip.is-active {
   outline: none;
   background: transparent;
   color: var(--mj-ink);
-  font-family: var(--mj-ui);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-body);
   padding-block: 0.65rem;
   padding-inline: 2.5rem 0.9rem;
@@ -224,7 +224,7 @@ html.dark .surah-index-filters .surah-index-chip.is-active {
   border-radius: var(--mj-r-sm);
   background: var(--mj-surface);
   color: var(--mj-ink-2);
-  font-family: var(--mj-ui);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-tiny);
   font-weight: 700;
   cursor: pointer;
@@ -304,7 +304,7 @@ html.dark .surah-index-jump.is-active {
   border-radius: var(--mj-r-pill);
   background: var(--mj-brand-soft);
   color: var(--mj-brand-deep);
-  font-family: var(--mj-num);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-small);
   font-weight: 800;
   line-height: 1;
@@ -329,7 +329,7 @@ html.dark .surah-index-row__num {
   display: block;
   width: 100%;
   /* خط الواجهة بلا تشكيل عثماني معلّق */
-  font-family: var(--mj-ui, var(--font-body));
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-h2);
   font-weight: 700;
   line-height: var(--mj-lh-title);
@@ -343,7 +343,7 @@ html.dark .surah-index-row__num {
 .surah-index-row__meta {
   display: block;
   width: 100%;
-  font-family: var(--mj-ui);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-tiny);
   font-weight: 500;
   line-height: var(--mj-lh-small);

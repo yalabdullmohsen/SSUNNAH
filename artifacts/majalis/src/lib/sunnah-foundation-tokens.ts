@@ -34,9 +34,9 @@ export const SF_COLOR = {
 } as const;
 
 export const SF_FONT = {
-  display: "var(--sf-font-display)",
-  ui: "var(--sf-font-ui)",
-  ornament: "var(--sf-font-ornament)",
+  display: "var(--font-ui)",
+  ui: "var(--font-ui)",
+  text: "var(--font-text)",
 } as const;
 
 export const SF_TYPE = {

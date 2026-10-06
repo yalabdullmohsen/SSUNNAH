@@ -14,7 +14,7 @@ const buttonVariants = cva(
   [
     "relative inline-flex items-center justify-center gap-2 whitespace-nowrap",
     "rounded-[length:var(--sf-radius-control,var(--radius-button,12px))]",
-    "font-[family-name:var(--sf-font-ui,var(--mj-ui,inherit))]",
+    "font-ui",
     "text-[length:var(--sf-type-button,0.9375rem)] font-medium leading-none",
     "transition-colors",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--sf-color-quran-gold,var(--ring))_55%,transparent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--sf-surface-canvas,var(--background))]",

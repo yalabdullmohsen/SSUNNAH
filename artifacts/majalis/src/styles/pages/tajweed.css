@@ -127,7 +127,7 @@
 }
 
 .tj-examples__text {
-  font-family: "Amiri Quran", Amiri, serif;
+  font-family: var(--font-quran);
   font-size: 1.15rem;
 }
 

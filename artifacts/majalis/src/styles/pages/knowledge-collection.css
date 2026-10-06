@@ -45,13 +45,13 @@
   margin: 0 0 0.35rem;
   font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   color: var(--kc-olive);
 }
 
 .kc-hero__title {
   margin: 0;
-  font-family: "Amiri", "Traditional Arabic", serif;
+  font-family: var(--font-ui);
   font-size: clamp(1.55rem, 3.2vw, 2.05rem);
   font-weight: 700;
   line-height: 1.35;
@@ -225,7 +225,7 @@
 
 .kc-category-card__title {
   margin: 0;
-  font-family: "Amiri", "Traditional Arabic", serif;
+  font-family: var(--font-ui);
   font-size: 1.2rem;
   font-weight: 700;
   line-height: 1.4;
@@ -303,7 +303,7 @@
 
 .kc-reader__title {
   margin: 0 0 0.75rem;
-  font-family: "Amiri", "Traditional Arabic", serif;
+  font-family: var(--font-ui);
   font-size: clamp(1.45rem, 3vw, 1.9rem);
   font-weight: 700;
   line-height: 1.4;

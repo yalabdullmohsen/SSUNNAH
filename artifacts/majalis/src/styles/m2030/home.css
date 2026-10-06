@@ -374,7 +374,7 @@
 
 .m2030-band__title {
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-ui);
   font-size: 1.28rem;
   font-weight: 700;
   color: var(--text-title);
@@ -441,7 +441,7 @@
   margin: 0;
   font-size: 1.05rem;
   font-weight: 700;
-  font-family: var(--font-display);
+  font-family: var(--font-ui);
   color: #F7FAF8;
 }
 
@@ -544,7 +544,7 @@ html.dark .m2030-feature {
   margin: 0;
   font-size: 1rem;
   font-weight: 700;
-  font-family: var(--font-display);
+  font-family: var(--font-ui);
   color: #16241E;
   background-color: transparent;
   background-image: none;
