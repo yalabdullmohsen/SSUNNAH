@@ -1,2 +1,2 @@
-/** صفحة رقيقة — المنطق في ui/HomeView.tsx */
-export { default } from "@/pages/account/ui/HomeView";
+/** الرئيسية — مبنية بالكامل من نظام التصميم الموحّد (src/design-system). */
+export { default } from "@/design-system/screens/HomeScreen";
