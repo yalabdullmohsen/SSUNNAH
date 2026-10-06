@@ -25,7 +25,11 @@ assert.match(card, /آخر موضع توقفت عنده/);
 assert.match(card, /ابدأ القراءة من الفاتحة/);
 assert.match(card, /متابعة القراءة/);
 assert.match(card, /title="فتح المصحف"/);
-assert.match(card, /data-section-card="open-mushaf"/);
+/* لا data-section-card على الزر: هو خطّاف تنسيق بطاقات اللوبي فكان يرسم الزر كبطاقة */
+assert.match(card, /data-hub-action="open-mushaf"/);
+assert.doesNotMatch(card, /data-section-card=/);
+assert.match(card, /getReadingBookmark/, "متابعة واحدة: علامة القراءة داخل بطاقة المصحف");
+assert.doesNotMatch(hub, /LastReadingBookmarkCard/, "لا بطاقة متابعة مكرّرة في المركز");
 assert.match(card, /try \{/);
 assert.match(card, /catch/);
 

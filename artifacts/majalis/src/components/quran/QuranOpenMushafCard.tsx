@@ -12,6 +12,7 @@ import {
   loadReadingAyahKey,
 } from "@/lib/quran-api";
 import { normalizeAyahKey, normalizeSurahAyah } from "@/lib/ayah-ref-normalize";
+import { bookmarkHref, getReadingBookmark } from "@/lib/quran-my-bookmarks-ops";
 import { navigateTo } from "@/lib/navigation-intent";
 import { prefetchRoute } from "@/lib/prefetch-route";
 import { toArabicDigits } from "@/lib/utils";
@@ -39,8 +40,10 @@ export function resolveMushafResumeInfo(): MushafResumeInfo {
   };
 
   try {
-    const page = loadPagePosition();
-    const ayahKey = loadReadingAyahKey();
+    /* علامة القراءة الصريحة أولًا (كانت بطاقة «متابعة القراءة» مكرّرة تحت هذه البطاقة) */
+    const bm = getReadingBookmark();
+    const page = bm?.page ?? loadPagePosition();
+    const ayahKey = bm?.ayahKey ?? loadReadingAyahKey();
 
     if (page == null || page < 1) {
       return fallback;
@@ -59,9 +62,11 @@ export function resolveMushafResumeInfo(): MushafResumeInfo {
       ayahNum = n.ayah;
     }
 
-    const href = safeKey
-      ? `/mushaf/page/${page}?ayah=${encodeURIComponent(safeKey)}`
-      : `/mushaf/page/${page}`;
+    const href = bm
+      ? bookmarkHref(bm)
+      : safeKey
+        ? `/mushaf/page/${page}?ayah=${encodeURIComponent(safeKey)}`
+        : `/mushaf/page/${page}`;
 
     if (!hasMeaningfulResume) {
       return {
@@ -125,9 +130,12 @@ export function QuranOpenMushafCard() {
         <div className="quran-open-mushaf__text">
           <h2 className="quran-open-mushaf__title">فتح المصحف</h2>
           <p className="quran-open-mushaf__desc">{description}</p>
-          <p className="quran-open-mushaf__resume" data-has-resume={info.hasResume ? "1" : "0"}>
-            {info.resumeLine}
-          </p>
+          {/* بلا سطر بديل حين لا موضع محفوظ — الوصف يكفي */}
+          {info.hasResume ? (
+            <p className="quran-open-mushaf__resume" data-has-resume="1">
+              {info.resumeLine}
+            </p>
+          ) : null}
         </div>
       </div>
 
@@ -136,7 +144,7 @@ export function QuranOpenMushafCard() {
         variant="ghost"
         size="small"
         className="quran-open-mushaf__cta"
-        data-section-card="open-mushaf"
+        data-hub-action="open-mushaf"
         data-hero-action="1"
         title="فتح المصحف"
         aria-label={info.hasResume ? `متابعة القراءة — ${info.resumeLine}` : "فتح المصحف"}

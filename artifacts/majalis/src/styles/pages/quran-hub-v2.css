@@ -118,8 +118,9 @@ html[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .section-lobby__g
   gap: var(--v2-space-3, 0.75rem);
 }
 
-html[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card,
-html[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] [data-section-card] {
+/* .card وحدها: data-section-card يقع على رابط InteractiveCard المغلِّف (وعلى زر فتح المصحف)
+   فكان يرسم بطاقة حول البطاقة — حدود مزدوجة وزر بشكل بطاقة بيضاء ضخمة. */
+html[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
   background: var(--v2-color-ivory-surface, #fffcf8);
@@ -196,8 +197,6 @@ html.dark[data-v2-quran-hub="1"] .quran-open-mushaf__cta-label {
 
 html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card,
 html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card,
-html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] [data-section-card],
-html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] [data-section-card],
 html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .cs-card,
 html.dark[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .cs-card,
 html[data-theme="dark"][data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .ss-app-card,

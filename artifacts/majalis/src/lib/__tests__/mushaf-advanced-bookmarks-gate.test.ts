@@ -143,7 +143,12 @@ assert.match(analytics, /khatmaProgressPct/);
 assert.match(resumeCard, /data-testid="last-reading-bookmark-card"/);
 assert.match(resumeCard, /آخر موضع قراءة|متابعة القراءة/);
 assert.match(resumeCard, /متابعة/);
-assert.match(hub, /LastReadingBookmarkCard/);
+/* المركز: متابعة واحدة — بطاقة فتح المصحف تقرأ علامة القراءة (بلا بطاقة ثانية مكرّرة) */
+assert.match(hub, /QuranOpenMushafCard/);
+assert.match(
+  read("src/components/quran/QuranOpenMushafCard.tsx"),
+  /getReadingBookmark/,
+);
 assert.match(home, /LastReadingBookmarkCard/);
 assert.match(search, /searchMushafBookmarksForQuery/);
 assert.match(search, /import\(\s*["']@\/lib\/quran-my-bookmarks-ops["']\s*\)/);
