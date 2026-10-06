@@ -154,7 +154,7 @@
   overscroll-behavior: none;
   overflow-anchor: none;
   -webkit-tap-highlight-color: transparent;
-  font-family: "Amiri", "Traditional Arabic", serif;
+  font-family: var(--font-ui);
   touch-action: pan-y;
   contain: layout style;
   isolation: isolate;
@@ -453,7 +453,7 @@ html[data-theme="dark"] .nm-page__header-hizb,
   display: grid;
   grid-template-rows: repeat(15, minmax(0, 1fr));
   align-content: stretch;
-  font-family: var(--nm-qpc-family, var(--mm-qpc-family, serif));
+  font-family: var(--nm-qpc-family, var(--mm-qpc-family, var(--font-quran)));
   font-size: var(--mushaf-font-size, var(--nm-qpc-size, 24px));
   font-weight: var(--mushaf-font-weight, 400);
   line-height: var(--mushaf-line-height, var(--nm-line-height));
@@ -582,7 +582,7 @@ html[data-mushaf-appearance="night"] .nm-root,
   padding: 0 0.35rem;
   text-align: center;
   color: var(--mushaf-surah-frame-text);
-  font-family: "Amiri Quran", "Amiri", "Traditional Arabic", serif;
+  font-family: var(--font-quran);
   font-size: clamp(0.92rem, 3.15vw, 1.08rem);
   font-weight: 700;
   letter-spacing: 0.01em;
@@ -676,7 +676,7 @@ html[data-mushaf-appearance="night"] .nm-root,
 .nm-basmala {
   width: 100%;
   text-align: center;
-  font-family: "qpc-v2-p1", var(--nm-qpc-family), serif;
+  font-family: "qpc-v2-p1", var(--nm-qpc-family), var(--font-quran);
   font-size: var(--nm-qpc-size, 22px);
   line-height: var(--nm-line-height);
   color: color-mix(in srgb, var(--nm-ink) 94%, #3a2a14);
@@ -1821,7 +1821,7 @@ html[data-theme="dark"] .nm-exit-control {
   justify-self: center;
   min-height: var(--touch-comfortable, 48px);
   min-width: 3.5rem;
-  font-family: "Amiri", "Traditional Arabic", serif;
+  font-family: var(--font-ui);
   font-size: 1.28rem;
   font-weight: 700;
   letter-spacing: 0.04em;

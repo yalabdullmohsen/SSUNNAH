@@ -23,7 +23,7 @@ html[data-v2-app="1"] .lessons-filter-tab {
   min-width: 0 !important;
   padding: 0.3rem 0.7rem !important;
   border-radius: var(--v2-radius-md, 14px) !important;
-  font-family: var(--v2-font-ui) !important;
+  font-family: var(--font-ui) !important;
   font-size: var(--v2-type-supporting, 0.85rem) !important;
   font-weight: var(--v2-fw-medium, 500) !important;
   letter-spacing: 0 !important;
@@ -72,7 +72,7 @@ html[data-v2-app="1"] .mj-filter-bar input[role="combobox"] {
   border-radius: var(--v2-radius-md, 14px);
   border-color: var(--v2-hairline);
   background: var(--v2-surface-raised, var(--mj-surface));
-  font-family: var(--v2-font-ui);
+  font-family: var(--font-ui);
   font-size: var(--v2-type-body, 1rem);
   letter-spacing: 0;
   box-shadow: none;
@@ -100,7 +100,7 @@ html[data-v2-app="1"] .tabs-list [role="tab"] {
   min-height: var(--v2-row-min, 2.5rem);
   padding-inline: 0.85rem;
   border-radius: var(--v2-radius-md, 14px);
-  font-family: var(--v2-font-ui);
+  font-family: var(--font-ui);
   font-size: var(--v2-type-supporting, 0.85rem);
   font-weight: var(--v2-fw-medium, 500);
   letter-spacing: 0;
@@ -137,7 +137,7 @@ html[data-v2-app="1"] .hus-input {
   border-radius: var(--v2-radius-md, 14px);
   border-color: var(--v2-hairline);
   background: var(--v2-surface-raised, var(--mj-surface));
-  font-family: var(--v2-font-ui);
+  font-family: var(--font-ui);
   font-size: var(--v2-type-body, 1rem);
   letter-spacing: 0;
   box-shadow: none;
@@ -146,7 +146,7 @@ html[data-v2-app="1"] .hus-input {
 html[data-v2-app="1"] .login-form label,
 html[data-v2-app="1"] .auth-form label,
 html[data-v2-app="1"] form.ss-form label {
-  font-family: var(--v2-font-ui);
+  font-family: var(--font-ui);
   font-size: var(--v2-type-supporting, 0.9rem);
   font-weight: var(--v2-fw-medium, 500);
   letter-spacing: 0;
@@ -168,7 +168,7 @@ html[data-v2-app="1"] .auth-form button[type="submit"],
 html[data-v2-app="1"] form.ss-form button[type="submit"] {
   min-height: var(--v2-control-h, 2.75rem);
   border-radius: var(--v2-radius-md, 14px);
-  font-family: var(--v2-font-ui);
+  font-family: var(--font-ui);
   font-weight: var(--v2-fw-bold, 700);
   letter-spacing: 0;
   box-shadow: var(--v2-shadow-soft);

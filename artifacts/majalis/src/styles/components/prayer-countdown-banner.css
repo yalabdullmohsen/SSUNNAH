@@ -62,7 +62,7 @@
   padding: 0.7rem 0.75rem 0.7rem 0.85rem;
   border-radius: 1rem;
   color: var(--mj-white) !important;
-  font-family: var(--font-nav, "Cairo", "Tajawal", "Alexandria", sans-serif);
+  font-family: var(--font-ui);
   background: linear-gradient(120deg, var(--mj-brand) 0%, #147a5f 48%, #0b5c4a 100%);
   border: 1px solid color-mix(in srgb, var(--mj-white) 22%, transparent);
   box-shadow: 0 10px 28px rgba(11, 40, 32, 0.28);
@@ -117,7 +117,7 @@
   font-weight: 600;
   line-height: 1.35;
   color: var(--mj-white) !important;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
 }
 
 .pcb-card__timer {
@@ -125,7 +125,7 @@
   font-weight: 800;
   line-height: 1.2;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   color: #fefce8 !important;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
 }

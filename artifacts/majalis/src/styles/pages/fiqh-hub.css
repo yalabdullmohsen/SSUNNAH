@@ -47,7 +47,7 @@
   font-weight: 800;
   color: var(--text-on-dark-primary, var(--mj-white, var(--mj-white)));
   margin: 0 0 0.5rem;
-  font-family: var(--font-heading, var(--font-display, serif));
+  font-family: var(--font-ui);
   line-height: 1.35;
   letter-spacing: 0;
 }
@@ -737,7 +737,7 @@ ol.fiqh-lesson-list {
   margin: 0 0 0.25rem;
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   color: var(--section-accent, #8B7A3A);
 }
 .fiqh-usul-define__title {
@@ -1068,7 +1068,7 @@ html.dark .fiqh-lux-page.section-lobby {
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--fq-on-hero-muted);
-  font-family: var(--mj-num);
+  font-family: var(--font-ui);
 }
 
 .fiqh-lux-hero__dot {
@@ -1380,7 +1380,7 @@ html.dark .fiqh-lux-page .card::after {
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--fq-emerald-bright);
-  font-family: var(--mj-num);
+  font-family: var(--font-ui);
 }
 
 .fiqh-lux-chapter__go {

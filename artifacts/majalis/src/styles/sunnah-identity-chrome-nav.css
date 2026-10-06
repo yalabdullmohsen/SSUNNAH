@@ -24,7 +24,7 @@ html[data-v2-app="1"][data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab-icon {
 }
 
 html[data-v2-app="1"][data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab-label {
-  font-family: var(--v2-font-ui);
+  font-family: var(--font-ui);
   font-size: var(--v2-type-caption, 0.72rem);
   font-weight: var(--v2-fw-medium, 500);
   letter-spacing: 0;
@@ -66,7 +66,7 @@ html[data-v2-app="1"] .sidebar-header {
 }
 
 html[data-v2-app="1"] .sidebar-title {
-  font-family: var(--v2-font-ui);
+  font-family: var(--font-ui);
   font-size: var(--v2-type-section-title, 1rem);
   font-weight: var(--v2-fw-bold, 700);
   line-height: var(--v2-lh-title, 1.4);
@@ -93,7 +93,7 @@ html[data-v2-app="1"] .sidebar-section {
 
 html[data-v2-app="1"] .sidebar-section-title {
   padding: 0 0.5rem 0.4rem;
-  font-family: var(--v2-font-ui);
+  font-family: var(--font-ui);
   font-size: var(--v2-type-caption, 0.75rem);
   font-weight: var(--v2-fw-medium, 500);
   letter-spacing: 0;
@@ -119,7 +119,7 @@ html[data-v2-app="1"] .sidebar-item-icon {
 }
 
 html[data-v2-app="1"] .sidebar-item-title {
-  font-family: var(--v2-font-ui);
+  font-family: var(--font-ui);
   font-size: var(--v2-type-supporting, 0.9rem);
   font-weight: var(--v2-fw-bold, 700);
   line-height: var(--v2-lh-title, 1.4);
@@ -231,7 +231,7 @@ html[data-v2-nav="1"] .bottom-nav--v2 .bottom-nav__tab-label {
   font-size: 0.68rem;
   font-weight: 650;
   color: inherit;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
 }
 
 /* نمط تبويب نشط واحد في كل الشاشات والوضعين: كبسولة خضراء ناعمة + لون الهوية للأيقونة

@@ -33,7 +33,7 @@
   background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
   border-radius: .8rem; padding: 1rem 1.2rem; max-width: 520px; margin: 0 auto;
 }
-.mw-ayah__text { font-family: var(--font-quran,"Scheherazade New",serif); font-size: 1.1rem; line-height: 2; color: var(--mj-white, var(--mj-white)); margin: 0 0 .3rem; }
+.mw-ayah__text { font-family: var(--font-quran); font-size: 1.1rem; line-height: 2; color: var(--mj-white, var(--mj-white)); margin: 0 0 .3rem; }
 .mw-ayah__ref  { font-size: .72rem; opacity: .7; color: var(--mj-white, var(--mj-white)); font-style: normal; }
 
 /* tabs */
@@ -187,7 +187,7 @@
 .mw-masala-desc  { font-size: .82rem; color: var(--mj-ink-2); line-height: 1.6; margin: 0 0 .5rem; }
 .mw-masala-formula { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
 .mw-masala-formula__label { font-size: .72rem; font-weight: 700; color: var(--mj-ink-2); }
-.mw-masala-formula__code  { font-family: monospace; font-size: .8rem; color: var(--brand, var(--mj-brand)); background: var(--brand-soft, var(--mj-brand-soft)); padding: .2rem .5rem; border-radius: .35rem; }
+.mw-masala-formula__code  { font-family: var(--font-mono); font-size: .8rem; color: var(--brand, var(--mj-brand)); background: var(--brand-soft, var(--mj-brand-soft)); padding: .2rem .5rem; border-radius: .35rem; }
 
 .mw-hadith-box {
   background: linear-gradient(135deg,var(--brand-deep, var(--mj-brand-deep)),var(--brand, var(--mj-brand)));

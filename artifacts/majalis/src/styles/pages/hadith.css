@@ -716,7 +716,7 @@
 }
 
 .hadith-text {
-  font-family: var(--font-serif) !important;
+  font-family: var(--font-text) !important;
   color: var(--mj-ink) !important;
   font-size: clamp(1rem, 2.5vw, 1.125rem) !important;
   line-height: 2.0 !important;

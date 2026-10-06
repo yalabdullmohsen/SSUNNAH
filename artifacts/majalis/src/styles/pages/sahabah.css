@@ -27,7 +27,7 @@
   margin: 0 auto;
   border: 1px solid transparent;
 }
-.sb-ayah__text { font-family: var(--font-quran,"Scheherazade New",serif); font-size: 1.15rem; line-height: 2; margin: 0 0 .3rem; }
+.sb-ayah__text { font-family: var(--font-quran); font-size: 1.15rem; line-height: 2; margin: 0 0 .3rem; }
 .sb-ayah__ref  { font-size: .72rem; font-style: normal; }
 
 /* body */

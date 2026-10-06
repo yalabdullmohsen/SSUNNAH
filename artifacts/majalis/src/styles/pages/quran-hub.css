@@ -282,14 +282,14 @@ html.dark .quran-open-mushaf__icon {
   pointer-events: none;
 }
 .quran-hub-hero__ornament {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: 1.05rem;
   color: rgba(168,223,192,0.7);
   letter-spacing: normal;
   margin-bottom: 1rem;
 }
 .quran-hub-hero__title {
-  font-family: var(--mj-face);
+  font-family: var(--font-ui);
   font-size: var(--mj-fs-h1);
   font-weight: 700;
   color: var(--mj-ink);
@@ -487,7 +487,7 @@ html.dark .quran-open-mushaf__icon {
   margin-top: 3rem;
 }
 .quran-hub-closing__ayah {
-  font-family: "Amiri", "Scheherazade New", serif;
+  font-family: var(--font-ui);
   font-size: clamp(1.1rem, 3vw, 1.4rem);
   color: var(--mj-white, var(--mj-white));
   margin: 0 0 0.5rem;

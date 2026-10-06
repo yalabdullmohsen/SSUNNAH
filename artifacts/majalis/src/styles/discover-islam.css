@@ -298,8 +298,8 @@ html.dark .dii-journey-step {
   padding: .9rem !important;
   border-radius: var(--radius-card, 1.5rem);
 }
-.dii-evidence-item p { margin: .4rem 0 0; line-height: 1.9; font-family: var(--font-quran, inherit); }
-.dii-evidence-grading { font-size: .78rem !important; color: var(--color-text-muted) !important; font-family: var(--font-body) !important; }
+.dii-evidence-item p { margin: .4rem 0 0; line-height: 1.9; font-family: var(--font-text); }
+.dii-evidence-grading { font-size: .78rem !important; color: var(--color-text-muted) !important; font-family: var(--font-ui) !important; }
 
 .dii-glossary { margin: .5rem 0 0; display: flex; flex-direction: column; gap: .5rem; }
 .dii-glossary dt { font-weight: 700; color: var(--mj-brand-deep); }
@@ -315,7 +315,7 @@ html.dark .dii-journey-step {
 .dii-belief-list { margin: .5rem 0 0; padding-inline-start: 1.4rem; display: flex; flex-direction: column; gap: .5rem; line-height: 1.9; }
 
 .dii-shahada-ar {
-  font-family: var(--font-quran, "Amiri Quran", serif);
+  font-family: var(--font-text);
   font-size: var(--ds-text-2xl); text-align: center; line-height: 2;
   color: var(--mj-brand-deep);
   margin: .75rem 0 .25rem;
@@ -349,7 +349,7 @@ html.dark .dii-journey-step {
 .dii-contact-method-row input { flex: 1; min-width: 180px; }
 .dii-form-error { color: #B91C1C; font-size: .85rem; margin: 0; }
 .dii-tracking-code {
-  font-family: monospace; font-size: 1.3rem; letter-spacing: normal;
+  font-family: var(--font-mono); font-size: 1.3rem; letter-spacing: normal;
   text-align: center; padding: .6rem; border-radius: var(--radius-control, 12px);
   background: var(--mj-brand-soft);
   color: var(--mj-brand-deep);

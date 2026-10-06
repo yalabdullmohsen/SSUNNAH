@@ -271,7 +271,7 @@ html.dark .qe-abar {
 
 .qe-ayah-list--focus .qe-ayah__text {
   /* User-controlled mushaf type via --qe-mushaf-* / --qe-reader-font */
-  font-family: var(--qe-reader-font, "Amiri Quran", "Scheherazade New", "Amiri", serif);
+  font-family: var(--qe-reader-font, var(--font-quran));
   font-size: var(--qe-mushaf-fs, 24px);
   line-height: var(--qe-mushaf-lh, 44px);
   text-align: center;
@@ -333,7 +333,7 @@ body.qe-focus-mode {
   margin: 0;
   font-size: 1.35rem;
   color: var(--qe-emerald);
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
 }
 
 .qe-viewer__sub {
@@ -491,7 +491,7 @@ body.qe-focus-mode {
 
 .qe-ayah__tafsir-text {
   margin: 0;
-  font-family: "IBM Plex Sans Arabic", "Alexandria", system-ui, sans-serif;
+  font-family: var(--font-ui);
   font-size: 0.92rem;
   line-height: 1.85;
   color: color-mix(in srgb, var(--qe-reader-text, var(--qe-ink)) 92%, transparent);
@@ -515,7 +515,7 @@ body.qe-focus-mode {
 
 .qe-ayah__translation-text {
   margin: 0;
-  font-family: var(--font-body, "Alexandria", "IBM Plex Sans Arabic", system-ui, sans-serif);
+  font-family: var(--font-ui);
   font-size: 0.95rem;
   line-height: 1.65;
   color: color-mix(in srgb, var(--qe-reader-text, var(--qe-ink)) 88%, transparent);
@@ -614,7 +614,7 @@ body.qe-focus-mode {
 }
 
 .qe-ayah__text {
-  font-family: var(--qe-reader-font, "Amiri Quran", "Scheherazade New", serif);
+  font-family: var(--qe-reader-font, var(--font-quran));
   font-size: clamp(1.2rem, 3.8vw, 1.4rem);
   line-height: 2.05;
   -webkit-text-size-adjust: 100%;

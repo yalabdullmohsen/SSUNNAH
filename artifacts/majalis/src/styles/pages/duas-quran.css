@@ -20,7 +20,7 @@
   background: inherit; border: 1px solid inherit;
   border-radius: .8rem; padding: 1rem 1.2rem; max-width: 540px; margin: 0 auto;
 }
-.dq-hero-ayah__text { font-family: var(--font-quran,"Scheherazade New",serif); font-size: 1.1rem; line-height: 2.1; color: inherit; margin: 0 0 .3rem; }
+.dq-hero-ayah__text { font-family: var(--font-quran); font-size: 1.1rem; line-height: 2.1; color: inherit; margin: 0 0 .3rem; }
 .dq-hero-ayah__ref  { font-size: .72rem; opacity: .7; color: inherit; font-style: normal; }
 
 /* body */
@@ -75,7 +75,7 @@
 /* arabic */
 .dq-arabic-wrap { padding: .5rem 1rem .75rem; border-top: 1px solid var(--mj-surface-2); }
 .dq-arabic {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: 1.15rem; line-height: 2.1; color: var(--mj-brand-deep);
   text-align: end; margin: 0;
 }

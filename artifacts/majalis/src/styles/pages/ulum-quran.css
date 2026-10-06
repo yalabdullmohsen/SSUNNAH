@@ -220,7 +220,7 @@ html[data-theme="dark"] .uq-hero .uq-stat__label {
   background: linear-gradient(135deg, var(--mj-brand-deep), var(--majalis-emerald,var(--mj-brand)));
   border-radius: var(--radius-card, 1.5rem); padding: 1.1rem 1.3rem;
 }
-.uq-ijaz-ayah__text { font-family: var(--font-quran,"Scheherazade New",serif); font-size: 1.1rem; line-height: 2.1; color: var(--mj-white, var(--mj-white)); margin: 0 0 .4rem; font-style: normal; }
+.uq-ijaz-ayah__text { font-family: var(--font-quran); font-size: 1.1rem; line-height: 2.1; color: var(--mj-white, var(--mj-white)); margin: 0 0 .4rem; font-style: normal; }
 .uq-ijaz-ayah__ref  { font-size: .72rem; color: rgba(255,255,255,.75); font-style: normal; }
 
 /* محكم ومتشابه */
@@ -304,7 +304,7 @@ html[data-theme="dark"] .uq-hero .uq-stat__label {
   border-radius: 50%;
   font-size: 0.78rem;
   font-weight: 700;
-  font-family: var(--font-body, "IBM Plex Sans Arabic", sans-serif);
+  font-family: var(--font-ui);
 }
 .uq-qiraat-card__name {
   font-size: 0.92rem;

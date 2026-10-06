@@ -571,7 +571,7 @@ html[data-mushaf-appearance="night"] .mm-viewport .mm-page,
 
 .mm-viewport .mm-page-header {
   color: var(--mm-header);
-  font-family: "IBM Plex Sans Arabic", "Amiri Quran", serif;
+  font-family: var(--font-ui);
   font-size: clamp(0.78rem, 2.8vw, 0.95rem);
   font-weight: 700;
   letter-spacing: 0;
@@ -683,7 +683,7 @@ html[data-mushaf-appearance="night"] .mm-viewport .mm-page,
   color: var(--mm-ui-accent-deep, var(--mm-ui-accent));
   text-shadow: none;
   text-align: center;
-  font-family: var(--mm-qpc-family), "Amiri Quran", serif;
+  font-family: var(--mm-qpc-family), var(--font-quran);
   font-size: calc(var(--mm-qpc-size) * 0.85);
   font-weight: 400;
   line-height: 1.2;
@@ -731,7 +731,7 @@ html.dark .mm-surah-frame__name,
 
 .mm-basmala--qpc {
   /* محارف بسملة ١:١ من خط الصفحة ١ فقط — خط الصفحة الحالية يرسم نفس الـPUA كنص السطر الأول */
-  font-family: "qpc-v2-p1", "Amiri Quran", serif;
+  font-family: "qpc-v2-p1", var(--font-quran);
   unicode-bidi: bidi-override;
   direction: rtl;
   white-space: nowrap;
@@ -749,7 +749,7 @@ html.dark .mm-surah-frame__name,
   text-align: center;
   direction: rtl;
   unicode-bidi: bidi-override; /* ترتيب بصري = ترتيب كلمات QPC */
-  font-family: var(--mm-qpc-family), "Amiri Quran", serif;
+  font-family: var(--mm-qpc-family), var(--font-quran);
   font-size: var(--mm-qpc-size);
   line-height: var(--mushaf-line-height, var(--mm-line-height));
   color: var(--mm-qpc-ink, var(--mm-ink));
@@ -1052,7 +1052,7 @@ html.dark .ayah-active.mm-ayah-line__word:not([data-type="end"]),
   top: 50%;
   right: 8%;
   transform: translateY(-50%);
-  font-family: "IBM Plex Sans Arabic", "Amiri Quran", serif;
+  font-family: var(--font-ui);
   font-size: clamp(0.72rem, 2.4vw, 0.88rem);
   font-weight: 600;
   color: var(--mm-header);
@@ -1074,7 +1074,7 @@ html.dark .ayah-active.mm-ayah-line__word:not([data-type="end"]),
   display: inline-grid;
   place-items: center;
   color: #8a6a32;
-  font-family: "Amiri Quran", "IBM Plex Sans Arabic", serif;
+  font-family: var(--font-quran);
   font-size: 1.18rem;
   font-weight: 700;
   border: 1px solid color-mix(in srgb, var(--mm-gold-deep) 55%, transparent);
@@ -1163,7 +1163,7 @@ html.dark .mm-viewport .mm-page-footer__badge,
   border: 1px solid color-mix(in srgb, var(--mm-gold) 36%, transparent);
   background: color-mix(in srgb, var(--mm-paper) 96%, #fff);
   color: var(--mm-ink);
-  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-family: var(--font-ui);
   font-size: 0.78rem;
   font-weight: 600;
   box-shadow: 0 1px 6px color-mix(in srgb, #000 8%, transparent);
@@ -1216,7 +1216,7 @@ html.dark .mm-viewport .mm-page-footer__badge,
   border: 1px solid var(--mm-chrome-border);
   background: var(--mm-chrome);
   color: var(--mm-chrome-fg);
-  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-family: var(--font-ui);
   font-size: clamp(0.68rem, 2.65vw, 0.76rem);
   font-weight: 600;
   box-shadow: 0 3px 14px color-mix(in srgb, #5c4a28 10%, transparent);
@@ -1381,7 +1381,7 @@ html.dark .mm-viewport .mm-page-footer__badge,
   border: 1px solid #e3d9c6;
   background: #fdf9f3;
   color: #111111;
-  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-family: var(--font-ui);
   font-size: 0.75rem;
   box-shadow: 0 8px 28px color-mix(in srgb, #5c4a28 18%, transparent);
   transition: opacity 160ms ease, transform 160ms ease, bottom 180ms ease;
@@ -1885,7 +1885,7 @@ html.dark .mm-ayah-bar__dismiss {
   border-radius: 22px 22px 0 0;
   padding: 0.45rem 0.75rem calc(0.55rem + var(--inset-bottom, 0px));
   box-shadow: 0 -8px 28px color-mix(in srgb, #5c4a28 18%, transparent);
-  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-family: var(--font-ui);
   display: grid;
   grid-template-rows: auto auto auto minmax(0, 1fr);
   gap: 0.3rem;
@@ -2136,7 +2136,7 @@ html.dark .mm-audio-dock__status--err {
   grid-template-rows: auto auto auto minmax(0, 1fr);
   gap: 0.35rem;
   box-shadow: var(--quran-sheet-shadow);
-  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-family: var(--font-ui);
 }
 
 html[data-theme="dark"] .mm-reciter-sheet__panel,
@@ -2375,7 +2375,7 @@ html.dark .mm-reciter-sheet__search input {
 
 .mm-tafsir__ayah {
   margin: 0;
-  font-family: "Amiri Quran", serif;
+  font-family: var(--font-quran);
   font-size: 1.15rem;
   line-height: 1.85;
   color: var(--mm-ink);
@@ -2403,7 +2403,7 @@ html.dark .mm-tafsir__status--err {
 }
 
 .mm-tafsir__body {
-  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-family: var(--font-ui);
   font-size: 1rem;
   line-height: 1.85;
   color: var(--mm-ink);
@@ -2546,7 +2546,7 @@ html.dark .mm-tafsir__status:not(.mm-tafsir__status--err) {
   display: grid;
   place-items: center;
   color: var(--mm-header);
-  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-family: var(--font-ui);
   font-size: 0.95rem;
   background: color-mix(in srgb, var(--mm-paper) 88%, transparent);
 }
@@ -2565,7 +2565,7 @@ html.dark .mm-tafsir__status:not(.mm-tafsir__status--err) {
   gap: 0.55rem;
   pointer-events: auto;
   box-shadow: 0 12px 32px color-mix(in srgb, #000 20%, transparent);
-  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-family: var(--font-ui);
   color: var(--mm-ink);
 }
 
@@ -3197,7 +3197,7 @@ html.dark .mm-goto__actions button[data-primary="1"] {
 .ayah-action-sheet__ayah-preview {
   grid-row: 3;
   margin: 0;
-  font-family: var(--mm-qpc-family, "IBM Plex Sans Arabic", sans-serif);
+  font-family: var(--mm-qpc-family, var(--font-ui));
   font-size: 22px;
   line-height: 1.8;
   color: var(--mm-ink);
@@ -3300,7 +3300,7 @@ html.dark .mm-goto__actions button[data-primary="1"] {
   margin-top: calc(var(--inset-top, 0px) + 8.3vh);
   padding: 0.75rem 0.9rem 0.85rem;
   box-shadow: 0 8px 28px color-mix(in srgb, #000 14%, transparent);
-  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-family: var(--font-ui);
 }
 
 .mm-search-sheet__head {

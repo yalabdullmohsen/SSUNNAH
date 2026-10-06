@@ -115,7 +115,7 @@
   color: var(--majalis-ink);
   font-size: var(--ds-text-lg);
   line-height: 1.8;
-  font-family: var(--font-arabic, inherit);
+  font-family: var(--font-text);
   margin: 0;
 }
 

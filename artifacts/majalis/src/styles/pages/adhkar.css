@@ -55,7 +55,7 @@
 }
 
 .adhkar-focus-text {
-  font-family: var(--font-body);
+  font-family: var(--font-text);
   font-size: clamp(1.1rem, 3.6vw, 1.55rem);
   line-height: 1.85;
   color: var(--majalis-ink, var(--mj-ink));
@@ -269,7 +269,7 @@
   margin: 0 0 1rem;
 }
 .adhkar-sheet-text {
-  font-family: var(--font-body);
+  font-family: var(--font-text);
   font-size: 1.15rem;
   line-height: 2;
   color: var(--majalis-ink, var(--mj-ink));

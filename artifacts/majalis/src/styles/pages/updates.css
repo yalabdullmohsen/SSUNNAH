@@ -189,7 +189,7 @@
 .cvp-cert-row { display: flex; justify-content: space-between; align-items: center; gap: var(--ds-space-4); font-size: .88rem; }
 .cvp-cert-label { color: var(--majalis-ink-soft); min-width: 110px; }
 .cvp-cert-value { font-weight: 600; color: var(--majalis-ink); text-align: end; }
-.cvp-cert-code { font-family: monospace; letter-spacing: normal; background: var(--majalis-emerald-muted); padding: .15rem .5rem; border-radius: .3rem; }
+.cvp-cert-code { font-family: var(--font-mono); letter-spacing: normal; background: var(--majalis-emerald-muted); padding: .15rem .5rem; border-radius: .3rem; }
 
 .cvp-cert-note { font-size: .8rem; color: var(--majalis-ink-soft); margin: 0; }
 .cvp-result-msg { color: var(--mj-danger); font-size: .92rem; }

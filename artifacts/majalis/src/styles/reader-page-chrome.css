@@ -271,7 +271,7 @@
   font-size: 1.55rem;
   font-weight: 800;
   opacity: 1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   color: inherit;
 }
 
@@ -347,7 +347,7 @@ html[data-theme="dark"] .nm-page-arrow {
   font-size: 0.64rem;
   font-weight: 700;
   color: var(--nm-ink, #2a2118);
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   opacity: 1;
 }
 
@@ -495,7 +495,7 @@ html[data-theme="dark"] .nm-page-scrubber__of {
   font-size: 0.62rem;
   font-weight: 500;
   opacity: 0.58;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 
 .mm-tafsir__ayah {

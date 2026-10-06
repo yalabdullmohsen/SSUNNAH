@@ -46,8 +46,8 @@
 .aup-run-row        { font-size: var(--ds-text-xs); padding: 0.3rem 0.5rem; background: var(--majalis-parchment-deep); border-radius: var(--ds-radius-xs); display: flex; gap: var(--ds-space-3); flex-wrap: wrap; }
 .aup-run-name       { font-weight: 700; min-width: 80px; }
 .aup-cron-row       { font-size: var(--ds-text-xs); display: flex; justify-content: space-between; padding: 0.25rem 0; border-bottom: 1px solid var(--majalis-line); }
-.aup-cron-key       { font-family: monospace; }
-.aup-cron-val       { color: var(--majalis-ink-soft); font-family: monospace; }
+.aup-cron-key       { font-family: var(--font-mono); }
+.aup-cron-val       { color: var(--majalis-ink-soft); font-family: var(--font-mono); }
 .aup-sb                              { font-size: 0.7rem; padding: 0.1rem 0.35rem; border-radius: var(--ds-radius-xs); background: rgba(156,163,175,0.15); color: var(--majalis-ink-soft); font-weight: 600; }
 .aup-sb--available, .aup-sb--success { background: #065F4622; color: var(--mj-brand); }
 .aup-sb--slow, .aup-sb--running      { background: #226A5622; color: var(--mj-brand); }

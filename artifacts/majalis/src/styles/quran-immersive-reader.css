@@ -46,7 +46,7 @@
   margin: auto;
   max-width: 40rem;
   text-align: center;
-  font-family: var(--font-quran, "Amiri Quran", "Scheherazade New", "Amiri", serif);
+  font-family: var(--font-quran);
   font-size: var(--quran-immersive-fs, 28px);
   line-height: var(--quran-immersive-lh, 56px);
   color: inherit;
@@ -96,7 +96,7 @@
 
 .quran-verse-list__text {
   display: block;
-  font-family: var(--font-quran, "Amiri Quran", "Scheherazade New", "Amiri", serif);
+  font-family: var(--font-quran);
   font-size: var(--quran-verse-fs, 28px);
   line-height: var(--quran-verse-lh, 56px);
   color: inherit;
@@ -207,7 +207,7 @@ body.quran-immersive-sticky .scroll-to-top {
   text-align: justify;
   text-justify: inter-word;
   text-align-last: center;
-  font-family: var(--font-quran, "Amiri Quran", "Scheherazade New", "Amiri", serif);
+  font-family: var(--font-quran);
   line-height: var(--quran-immersive-lh, 2.4);
   word-break: keep-all !important;
   overflow-wrap: normal !important;
@@ -451,7 +451,7 @@ body.quran-immersive-sticky .scroll-to-top {
 
 .immersive-quran-app__verse-text {
   display: block;
-  font-family: var(--font-quran, "Amiri Quran", "Scheherazade New", "Amiri", serif);
+  font-family: var(--font-quran);
   font-size: var(--quran-app-fs, 28px);
   line-height: var(--quran-app-lh, 2.1);
   color: var(--quran-app-ink, rgba(0, 0, 0, 0.87));
@@ -522,7 +522,7 @@ body.quran-immersive-sticky .scroll-to-top {
 .immersive-verse-sheet__preview {
   flex: 1;
   margin: 0;
-  font-family: var(--font-quran, "Amiri Quran", "Scheherazade New", "Amiri", serif);
+  font-family: var(--font-quran);
   font-size: 1.05rem;
   line-height: 1.8;
   text-align: center;

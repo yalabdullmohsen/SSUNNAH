@@ -29,7 +29,7 @@
 .an-today__card::before { content: ""; position: absolute; inset-inline-end: -30px; top: -30px; width: 140px; height: 140px; border-radius: 50%; background: rgba(255,255,255,0.05); pointer-events: none; }
 .an-today__num { font-size: 0.7rem; font-weight: 600; letter-spacing: normal; color: rgba(255,255,255,0.6); display: block; margin-bottom: 0.5rem; }
 .an-today__title { font-size: 1.15rem; font-weight: 700; color: var(--mj-on-brand, var(--mj-white)); margin-bottom: 0.8rem; }
-.an-today__text { font-size: var(--ds-text-base); line-height: 1.85; color: rgba(255,255,255,0.92); font-family: var(--font-quran, serif); border: none; padding: 0; margin: 0 0 0.7rem; }
+.an-today__text { font-size: var(--ds-text-base); line-height: 1.85; color: rgba(255,255,255,0.92); font-family: var(--font-text); border: none; padding: 0; margin: 0 0 0.7rem; }
 .an-today__source { font-size: var(--ds-text-xs); color: rgba(255,255,255,0.55); margin-bottom: 0.8rem; }
 .an-today__expl { font-size: 0.85rem; line-height: 1.75; color: rgba(255,255,255,0.8); border-inline-start: 2px solid rgba(255,255,255,0.25); padding-inline-start: 0.8rem; margin-bottom: 1rem; }
 
@@ -71,7 +71,7 @@
 .an-card__num { font-size: 0.7rem; font-weight: 700; color: var(--mj-on-brand, var(--mj-white)); background: var(--majalis-emerald); border-radius: 50%; width: 1.6rem; height: 1.6rem; display: grid; place-items: center; flex-shrink: 0; }
 .an-card__title { font-size: 0.9rem; font-weight: 700; color: var(--mj-ink, var(--v2-color-ink)); flex: 1; }
 .an-card__today-badge { font-size: 0.65rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: var(--ds-radius-full); background: var(--majalis-emerald); color: var(--mj-on-brand, var(--mj-white)); flex-shrink: 0; }
-.an-card__text { font-size: 0.85rem; line-height: 1.8; color: var(--mj-ink-2); font-family: var(--font-quran, serif); border: none; padding: 0; margin: 0 0 0.6rem; }
+.an-card__text { font-size: 0.85rem; line-height: 1.8; color: var(--mj-ink-2); font-family: var(--font-text); border: none; padding: 0; margin: 0 0 0.6rem; }
 .an-card__expl { font-size: 0.8rem; line-height: 1.7; color: var(--mj-ink-2, var(--mj-muted)); border-inline-start: 2px solid color-mix(in srgb, var(--mj-brand) 22%, transparent); padding-inline-start: 0.7rem; margin-bottom: 0.6rem; }
 .an-card__benefit { display: flex; gap: var(--ds-space-2); font-size: 0.78rem; color: var(--mj-brand); background: var(--mj-brand-tint); border-radius: var(--radius-card, 22px); padding: 0.5rem 0.7rem; margin-bottom: 0.6rem; align-items: flex-start; }
 .an-card__benefit-label { font-weight: 700; flex-shrink: 0; color: var(--mj-brand); }
@@ -203,7 +203,7 @@
   -webkit-line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-family: var(--font-quran, var(--font-app, serif));
+  font-family: var(--font-text);
 }
 .an-row__chevron {
   flex-shrink: 0;
@@ -224,7 +224,7 @@
   font-size: 0.95rem;
   line-height: 1.8;
   color: var(--mj-ink, var(--v2-color-ink));
-  font-family: var(--font-quran, var(--font-app, serif));
+  font-family: var(--font-text);
 }
 .an-row__expl {
   margin: 0 0 0.5rem;

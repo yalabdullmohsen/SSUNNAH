@@ -15,7 +15,7 @@
     radial-gradient(120% 80% at 100% 0%, color-mix(in srgb, var(--av3-accent) 10%, transparent), transparent 55%),
     var(--av3-bg);
   color: var(--av3-ink);
-  font-family: var(--font-sans, "IBM Plex Sans Arabic", system-ui, sans-serif);
+  font-family: var(--font-ui);
 }
 
 html.dark .av3-root {
@@ -74,7 +74,7 @@ html.dark .av3-root {
 .av3-brand__mark {
   font-size: 1.35rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 .av3-brand__sub {
   color: var(--av3-muted);
@@ -570,7 +570,7 @@ html.dark .av3-root {
   display: block;
   margin-top: 0.35rem;
   font-size: 0.65rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--av3-muted);
 }
@@ -742,7 +742,7 @@ html.dark .av3-root {
   border-color: color-mix(in srgb, var(--av3-accent) 40%, transparent);
 }
 .av3-an-badge {
-  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.02em;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0;
   padding: 0.1rem 0.35rem; border-radius: 0.25rem;
   background: color-mix(in srgb, var(--av3-muted) 22%, transparent);
 }
@@ -767,7 +767,7 @@ html.dark .av3-root {
 .av3-an-metric--empty { opacity: 0.92; }
 .av3-an-nodata {
   margin: 0.35rem 0 0; font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 0.04em; color: var(--av3-muted);
+  letter-spacing: 0; color: var(--av3-muted);
 }
 .av3-an-nodata--banner {
   padding: 0.85rem 1rem; border: 1px dashed var(--av3-line); border-radius: 0.5rem;

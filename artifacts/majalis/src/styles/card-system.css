@@ -106,7 +106,7 @@
   font-weight: 750;
   line-height: 1.35;
   color: var(--cs-text-primary);
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .cs-card__desc,

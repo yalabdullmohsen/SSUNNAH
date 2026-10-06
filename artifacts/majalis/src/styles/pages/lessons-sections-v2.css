@@ -75,7 +75,7 @@ html[data-v2-lessons="1"] .lesson-unified-card__title {
   font-weight: 800;
   line-height: 1.35;
   color: var(--cs-text-primary, var(--sf-color-rich-ink)) !important;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 html[data-v2-lessons="1"] .lesson-unified-card__desc {

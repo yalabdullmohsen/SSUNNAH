@@ -45,7 +45,7 @@
   max-width: 580px;
   margin: 0 auto;
 }
-.tw-ayah__text { font-family: var(--font-quran,'Scheherazade New',serif); font-size: 1.1rem; line-height: 2.1; color: var(--mj-white, var(--mj-white)); margin: 0 0 .3rem; }
+.tw-ayah__text { font-family: var(--font-quran); font-size: 1.1rem; line-height: 2.1; color: var(--mj-white, var(--mj-white)); margin: 0 0 .3rem; }
 .tw-ayah__ref  { font-size: .72rem; opacity: .7; color: var(--mj-white, var(--mj-white)); font-style: normal; }
 
 
@@ -187,7 +187,7 @@
 .tw-dhikr-times { flex: 1; font-size: .75rem; color: var(--mj-ink-2); text-align: end; }
 .tw-dhikr-chevron { font-size: .8rem; color: var(--mj-muted); transition: transform .2s; margin-inline-end: auto; }
 .tw-dhikr-chevron--open { transform: rotate(180deg); }
-.tw-dhikr-arabic { font-family: var(--font-body); font-size: 1.05rem; line-height: 2; color: var(--mj-ink); padding: .5rem .9rem .7rem; margin: 0; border-top: 1px solid var(--mj-surface-2); }
+.tw-dhikr-arabic { font-family: var(--font-text); font-size: 1.05rem; line-height: 2; color: var(--mj-ink); padding: .5rem .9rem .7rem; margin: 0; border-top: 1px solid var(--mj-surface-2); }
 .tw-dhikr-body  { padding: .5rem .9rem .75rem; border-top: 1px solid var(--mj-surface-2); }
 .tw-dhikr-reward {
   display: flex; gap: .45rem; align-items: flex-start;

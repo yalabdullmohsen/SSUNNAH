@@ -232,7 +232,7 @@
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent);
   border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, transparent);
   color: var(--mss-on-hero-accent) !important;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   font-weight: 800;
 }
 

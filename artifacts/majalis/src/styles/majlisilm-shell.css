@@ -212,7 +212,7 @@
   border-radius: var(--radius-sm, 0.5rem);
   background: rgba(121, 85, 72, 0.08);
   text-align: center;
-  font-family: var(--font-quran, "Amiri Quran", "Scheherazade New", serif);
+  font-family: var(--font-quran);
   font-size: 1.15rem;
   line-height: 1.9;
 }
@@ -458,7 +458,7 @@
   border-radius: var(--radius-sm, 0.5rem);
   background: rgba(121, 85, 72, 0.08);
   text-align: center;
-  font-family: var(--font-quran, "Amiri Quran", "Scheherazade New", serif);
+  font-family: var(--font-quran);
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.8;

@@ -75,7 +75,7 @@ html.dark .hlive__eyebrow {
   border-radius: var(--radius-pill, 999rem);
   font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   color: var(--mj-white);
   background: #a33b30;
 }

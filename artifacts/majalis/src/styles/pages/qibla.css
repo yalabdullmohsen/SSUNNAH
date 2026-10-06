@@ -211,7 +211,7 @@
   font-weight: 800;
   line-height: 1;
   color: var(--mj-brand);
-  letter-spacing: 0.05em;
+  letter-spacing: 0;
 }
 
 .qibla-calib-title {

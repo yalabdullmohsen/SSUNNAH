@@ -350,7 +350,7 @@
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--majalis-brass, var(--mj-brand));
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 .qzg-play-modes {
   display: grid;

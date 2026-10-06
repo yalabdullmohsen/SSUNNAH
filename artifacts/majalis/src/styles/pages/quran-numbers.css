@@ -9,7 +9,7 @@
   font-weight: 800;
   line-height: 1.2;
   color: var(--mj-ink, var(--v2-color-ink));
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .quran-hub-page__title::after {

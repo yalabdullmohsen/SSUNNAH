@@ -173,7 +173,7 @@ html.pts-immersive .app-main {
 
 .ds-page-header h1,
 .page-header h1 {
-  font-family: var(--font-display);
+  font-family: var(--font-ui);
   color: var(--text-title);
   font-size: 1.35rem;
 }

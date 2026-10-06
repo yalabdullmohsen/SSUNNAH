@@ -133,7 +133,7 @@ header.navbar-v3,
 }
 
 .bottom-sheet__head {
-  font-family: var(--font-display);
+  font-family: var(--font-ui);
   color: var(--text-title) !important;
 }
 
