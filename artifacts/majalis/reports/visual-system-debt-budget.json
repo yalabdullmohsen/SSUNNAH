@@ -4,7 +4,7 @@
   "note": "Ceilings must not rise. Lower intentionally in later waves; never raise without documented exception.",
   "floors": {
     "officialButtonImportFiles": 356,
-    "sfTokenRefs": 1528,
+    "sfTokenRefs": 1526,
     "ssTokenRefs": 772
   },
   "ceilings": {
@@ -26,8 +26,8 @@
       "date": "2026-10-06",
       "key": "sfTokenRefs",
       "from": 1547,
-      "to": 1528,
-      "reason": "استبدال نظام الخطوط: إزالة --sf-font-display/--sf-font-ui/--sf-font-scripture/--sf-font-ornament (19 مرجعًا) لصالح --font-ui/--font-text/--font-quran — انخفاض مقصود موثّق في PR #2692"
+      "to": 1526,
+      "reason": "استبدال نظام الخطوط: إزالة --sf-font-display/--sf-font-ui/--sf-font-scripture/--sf-font-ornament (19 مرجعًا) لصالح --font-ui/--font-text/--font-quran — انخفاض مقصود موثّق في PR #2692 + مرجعان في اختبار بوابة حُذف تأكيدهما لأن --sf-font-ornament لم يعد موجودًا"
     }
   ]
 }
