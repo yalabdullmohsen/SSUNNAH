@@ -21,6 +21,7 @@
   --sn-text-secondary: #4b5a52;
   --sn-text-tertiary: #5f6d65;
   --sn-text-on-primary: #ffffff;
+  --sn-text-on-fill: var(--sn-text-on-primary);   /* نص فوق ملء --sn-primary (يختلف ليلًا: الملء فاتح) */
 
   --sn-separator: #e4e0d3;
   --sn-success: #1c7a4d;
@@ -50,6 +51,7 @@ html.dark {
   --sn-text-secondary: #bdb9aa;
   --sn-text-tertiary: #9a9688;
   --sn-text-on-primary: #f4f1e8;
+  --sn-text-on-fill: var(--sn-bg);
 
   --sn-separator: #33372e;
   --sn-success: #6fcf9f;
@@ -251,7 +253,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { display
 .sn-btn--m { min-height: var(--sn-touch); }
 .sn-btn--s { min-height: var(--sn-touch); padding-inline: var(--sn-s4); font-size: var(--sn-fs-subhead); }
 .sn-btn--block { display: flex; width: 100%; }
-.sn-btn--primary { background: var(--sn-primary); color: var(--sn-text-on-primary); box-shadow: var(--sn-e1); }
+.sn-btn--primary { background: var(--sn-primary); color: var(--sn-text-on-fill); box-shadow: var(--sn-e1); }
 .sn-btn--secondary { background: var(--sn-primary-soft); color: var(--sn-primary); }
 .sn-btn--tertiary { background: transparent; color: var(--sn-primary); }
 .sn-btn--destructive { background: var(--sn-danger); color: var(--sn-text-on-primary); }
@@ -408,7 +410,7 @@ html[dir="ltr"] .sn-switch[aria-checked="true"]::after { transform: translateX(v
   cursor: pointer;
 }
 .sn-chip::after { content: ""; position: absolute; inset-block: calc(var(--sn-s1) * -1); inset-inline: 0; }   /* لمس 48 */
-.sn-chip[aria-pressed="true"], .sn-chip--active { background: var(--sn-primary); color: var(--sn-text-on-primary); }
+.sn-chip[aria-pressed="true"], .sn-chip--active { background: var(--sn-primary); color: var(--sn-text-on-fill); }
 .sn-chip-scroller { display: flex; gap: var(--sn-s2); overflow-x: auto; padding-block: var(--sn-s2); padding-inline: var(--sn-page-x); margin-inline: calc(var(--sn-page-x) * -1); scrollbar-width: none; scroll-snap-type: x proximity; }
 .sn-chip-scroller::-webkit-scrollbar, .sn-hscroll::-webkit-scrollbar { display: none; }
 .sn-hscroll { display: flex; gap: var(--sn-s3); overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-inline: var(--sn-page-x); margin-inline: calc(var(--sn-page-x) * -1); padding-block: var(--sn-s2); -webkit-overflow-scrolling: touch; }
