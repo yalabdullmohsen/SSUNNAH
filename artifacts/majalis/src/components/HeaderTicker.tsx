@@ -5,6 +5,7 @@ import {
   useRef,
   useState,
   type CSSProperties,
+  type RefObject,
 } from "react";
 import { Link } from "wouter";
 import { BookOpen, Heart, Megaphone, Repeat2, ScrollText, Sparkles } from "lucide-react";
@@ -76,6 +77,28 @@ function useTransientPause() {
     [],
   );
   return { paused, handlers };
+}
+
+/** يوقف الحركة حين يكون الشريط خارج الشاشة أو التطبيق في الخلفية — لا تكلفة تركيب بلا مشاهد */
+function useOffstage(ref: RefObject<HTMLElement | null>): boolean {
+  const [hidden, setHidden] = useState(false);
+  const [offscreen, setOffscreen] = useState(false);
+  useEffect(() => {
+    const onVis = () => setHidden(document.visibilityState === "hidden");
+    onVis();
+    document.addEventListener("visibilitychange", onVis);
+    const el = ref.current;
+    let io: IntersectionObserver | null = null;
+    if (el && typeof IntersectionObserver !== "undefined") {
+      io = new IntersectionObserver(([e]) => setOffscreen(!e?.isIntersecting));
+      io.observe(el);
+    }
+    return () => {
+      document.removeEventListener("visibilitychange", onVis);
+      io?.disconnect();
+    };
+  }, [ref]);
+  return hidden || offscreen;
 }
 
 function waitUntilBootSettled(): Promise<void> {
@@ -185,6 +208,7 @@ export function HeaderTicker() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const segmentRef = useRef<HTMLDivElement>(null);
+  const offstage = useOffstage(viewportRef);
 
   useEffect(() => {
     let cancelled = false;
@@ -302,7 +326,7 @@ export function HeaderTicker() {
 
   return (
     <div
-      className={`header-ticker header-ticker--marquee${running ? " is-running" : ""}${paused ? " header-ticker--paused" : ""}`}
+      className={`header-ticker header-ticker--marquee${running ? " is-running" : ""}${paused || offstage ? " header-ticker--paused" : ""}`}
       aria-live="off"
       {...pauseHandlers}
     >

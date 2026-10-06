@@ -86,7 +86,7 @@ assert.doesNotMatch(app, /scheduleRemoveHomeLcpStaticShell/, "لا إزالة ص
 assert.match(critical, /\.hsh-steps\s*\{[\s\S]*min-height:\s*14rem/, "حجز CLS لشبكة hsh-steps المضغوطة");
 assert.match(html, /MajlisAmiriFallback[^}]*ascent-override/, "size-adjust/override للخط الاحتياطي (مضمّن — مصدر وحيد)");
 assert.match(homeCss, /contain:\s*layout style/, "حاوية placeholder بلا min-height مبالغ");
-assert.match(critical, /\.home-start-here--compact|\.home-start-here--slim|\.home-start-here[^{]*\{[^}]*min-height:\s*20rem/, "حجز ابدأ من هنا المضغوط");
+assert.match(critical, /\.home-start-here--compact|\.home-start-here--slim|\.home-start-here[^{]*\{[^}]*min-height:\s*12\.5rem/, "حجز ابدأ من هنا المضغوط = ارتفاع المحتوى الفعلي");
 assert.match(critical, /\.mj-home-primary-discovery-ph[\s\S]*min-height:\s*22rem/, "حجز الاكتشاف المضغوط");
 assert.doesNotMatch(homeCss, /\.mj-home-lcp-ph\s*\{[\s\S]*min-height:\s*88rem/, "لا min-height مبالغ فيه على الحاوية");
 assert.doesNotMatch(finalCss, /\.hsh-steps[^}]*content-visibility/, "ابدأ من هنا فوق الطية بلا content-visibility");

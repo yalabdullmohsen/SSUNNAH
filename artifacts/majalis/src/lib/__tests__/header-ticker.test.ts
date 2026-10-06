@@ -99,7 +99,10 @@ console.log("\n=== NavBar.tsx / App.tsx — نقطة دخول البحث موح�
   assert(flashSrc.includes('e.key === "Enter"'), "Enter يكشف البطاقة");
   assert(flashSrc.includes('e.key === "Escape"'), "Escape يخفي الإجابة");
 
-  const cssSrc = readFileSync(resolve(appRoot, "src/styles/final-release.css"), "utf-8");
+  /* بنية الماركي في header-ticker-polish.css (متزامن مع المكوّن)؛ هيكل الهيدر يبقى في final-release */
+  const cssSrc =
+    readFileSync(resolve(appRoot, "src/styles/final-release.css"), "utf-8") +
+    readFileSync(resolve(appRoot, "src/styles/components/header-ticker-polish.css"), "utf-8");
   assert(
     cssSrc.includes("flex-direction: column") && cssSrc.includes("header.navbar-v3"),
     "الهيدر عمودي على الجوال (يمنع تداخل صفوف البحث/التيكّر)",

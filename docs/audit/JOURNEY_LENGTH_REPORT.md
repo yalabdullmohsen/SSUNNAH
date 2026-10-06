@@ -1,8 +1,8 @@
 # JOURNEY_LENGTH_REPORT
 
-Generated: 2026-10-03T09:21:28.250Z
+Generated: 2026-10-06T03:24:02.945Z
 
-Bottom nav tabs: `/` · `/lessons` · `/quran-hub` · `/prayer-times` · `/sections` · `/mushaf`
+Bottom nav tabs: `/` · `/quran-hub` · `/lessons` · `/prayer-times` · `/sections`
 
 | Journey | Current clicks | Shortest valid | Recommendation |
 |---|---:|---:|---|
