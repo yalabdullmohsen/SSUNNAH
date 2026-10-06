@@ -9,8 +9,10 @@ let scheduled = false;
 function warmOptionalUiFonts(): void {
   try {
     if (typeof document === "undefined" || !document.fonts) return;
-    // أوزان Amiri الأساسية محمّلة عند الإقلاع؛ هنا Noto اختياري فقط إن طُلب لاحقًا
-    void document.fonts.load('400 16px "Noto Naskh Arabic"').catch(() => {});
+    // Sunnah UI 400/600 وSunnah Text 400 مُحمَّلة عند الإقلاع؛ هنا الأوزان المتبقية بهدوء
+    for (const face of ['500 16px "Sunnah UI"', '700 16px "Sunnah UI"', '700 16px "Sunnah Text"']) {
+      void document.fonts.load(face).catch(() => {});
+    }
   } catch {
     /* ignore */
   }

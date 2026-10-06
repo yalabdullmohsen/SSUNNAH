@@ -26,10 +26,11 @@ assert.match(mushaf, /font-variant-ligatures:\s*none/);
 assert.doesNotMatch(mushaf, /\.mm-ayah-line\s*\{[^}]*font-feature-settings:\s*"liga"/);
 
 const fontsQuran = read("styles/fonts-quran.css");
-assert.match(fontsQuran, /font-display:\s*block/);
-assert.match(fontsQuran, /format\("woff2"\)/);
+const deferredFaces = read("styles/font-faces-deferred.css");
+assert.match(deferredFaces, /font-display:\s*swap/);
+assert.match(deferredFaces, /format\("woff2"\)/);
 assert.match(fontsQuran, /font-feature-settings:\s*"liga" 1,\s*"calt" 1/);
-assert.match(fontsQuran, /AmiriQuran-Regular\.woff2/);
+assert.match(deferredFaces, /amiri-quran-400-ar\.woff2/);
 
 const typo = read("styles/typography-app.css");
 assert.match(typo, /font-feature-settings:\s*"liga" 1,\s*"calt" 1/);
@@ -50,7 +51,7 @@ assert.match(qpcHook, /FontFace/);
 assert.match(qpcHook, /display:\s*"block"/);
 assert.match(qpcHook, /getPowerSaverState/);
 
-assert.ok(existsSync(resolve(appRoot, "../public/fonts/amiri-quran/AmiriQuran-Regular.woff2")));
+assert.ok(existsSync(resolve(appRoot, "../public/fonts/sunnah/amiri-quran-400-ar.woff2")));
 assert.ok(existsSync(resolve(appRoot, "../public/fonts/qpc-v2")));
 
 assert.equal(clampQuranFontSize(100), QURAN_FONT_MAX_PX);

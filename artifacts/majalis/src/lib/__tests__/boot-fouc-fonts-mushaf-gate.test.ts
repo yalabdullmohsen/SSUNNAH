@@ -6,6 +6,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { fontSystemCss, renderedIndexHtml } from "./font-system-test-helper";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
@@ -42,12 +43,13 @@ const theme = read("src/lib/theme-preference.ts");
 // 2) خطوط محلية + preload
 {
   assert.doesNotMatch(html, /fonts\.googleapis\.com|fonts\.gstatic\.com/);
-  assert.match(html, /rel="preload"[^>]+\/fonts\/ui\/amiri-400-ar\.woff2/);
-  assert.match(html, /rel="preload"[^>]+\/fonts\/ui\/amiri-700-ar\.woff2/, "preload Amiri bold قبل React");
+  assert.match(html, /rel="preload"[^>]+\/fonts\/sunnah\/plex-sans-arabic-400-ar\.woff2/);
+  assert.match(html, /rel="preload"[^>]+\/fonts\/sunnah\/plex-sans-arabic-600-ar\.woff2/, "preload Sunnah UI 600 قبل React");
+  assert.match(html, /rel="preload"[^>]+\/fonts\/sunnah\/amiri-400-ar\.woff2/);
   assert.doesNotMatch(
     html,
-    /rel="preload"[^>]+noto-naskh-400/,
-    "لا preload لـ Noto عند الإقلاع — Amiri فقط",
+    /rel="preload"[^>]+(plex-sans-arabic-(500|700)|amiri-700|amiri-quran)/,
+    "preload للأوزان الأساسية فقط: UI 400/600 وText 400",
   );
   assert.match(html, /rel="preload"[^>]+as="font"/);
   assert.match(html, /app-booting/);
@@ -55,17 +57,17 @@ const theme = read("src/lib/theme-preference.ts");
   assert.match(html, /--ui-font-scale/);
   assert.match(html, /font-synthesis:\s*none/);
   assert.match(html, /-webkit-text-size-adjust:\s*100%/);
-  assert.match(fontsQuran, /font-display:\s*block/);
-  assert.doesNotMatch(fontsQuran, /font-display:\s*swap/);
-  const fontsUi = read("src/styles/fonts-ui.css");
-  /* Amiri مضمّن في index.html فقط (STARTUP_SMOOTHNESS) */
-  assert.match(html, /font-display:optional;src:url\("\/fonts\/ui\/amiri-400-ar/);
-  assert.match(html, /font-display:optional;src:url\("\/fonts\/ui\/amiri-700-ar/);
-  assert.match(fontsUi, /noto-naskh-400-ar[\s\S]*font-display:\s*optional/);
+  const rendered = renderedIndexHtml();
+  assert.match(fontSystemCss(), /font-display:\s*swap/);
+  assert.doesNotMatch(fontSystemCss(), /font-display:\s*(block|optional)/);
+  /* الأوجه الحرجة مضمّنة في index.html عبر font-system.css (STARTUP_SMOOTHNESS) */
+  assert.match(rendered, /font-display:swap;src:url\("\/fonts\/sunnah\/plex-sans-arabic-400-ar/);
+  assert.match(rendered, /font-display:swap;src:url\("\/fonts\/sunnah\/amiri-400-ar/);
+  assert.doesNotMatch(fontsQuran, /@font-face/);
   assert.match(boot, /BOOT_FONT_TIMEOUT_MS\s*=\s*280/);
   assert.match(boot, /document\.fonts\.load\(regular\)/);
   assert.match(boot, /document\.fonts\.load\(bold\)/);
-  assert.match(boot, /"Amiri"/);
+  assert.match(boot, /"Sunnah UI"/);
   assert.match(boot, /registerBootStorageGate|storageReady/);
   assert.match(main, /registerBootStorageGate/);
 }

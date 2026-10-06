@@ -1,6 +1,6 @@
 /**
- * Quran reader typeface cycle — web port of the RN sketch:
- * `FONT_OPTIONS = ['Amiri', 'Traditional Arabic', 'Scheherazade']` + `toggleFont`.
+ * Quran reader typeface cycle (`toggleFont`) — الخيارات الثلاثة تستعمل خطوط نظام الخطوط فقط:
+ *   uthmani → --font-quran (Amiri Quran) · amiri → --font-text (Amiri) · naskh → --font-ui (IBM Plex Sans Arabic)
  * Mapped onto existing `QuranFontId` so Settings stay in sync.
  */
 import type { QuranFontId } from "@/hooks/useQuranPreferences";
@@ -11,7 +11,7 @@ export type QuranFontOption = {
   label: string;
   /** Short Arabic label for chips */
   labelAr: string;
-  /** CSS font-family stack (loaded fonts + system fallbacks) */
+  /** CSS font-family value — متغيّر من font-system.css */
   stack: string;
 };
 
@@ -21,19 +21,19 @@ export const FONT_OPTIONS: readonly QuranFontOption[] = [
     id: "amiri",
     label: "Amiri",
     labelAr: "أميري",
-    stack: '"Amiri Quran", "Amiri", "Scheherazade New", serif',
+    stack: "var(--font-text)",
   },
   {
     id: "naskh",
-    label: "Traditional Arabic",
-    labelAr: "نسخ",
-    stack: '"Noto Naskh Arabic", "Traditional Arabic", "Arabic Typesetting", "Amiri", serif',
+    label: "IBM Plex Sans Arabic",
+    labelAr: "الواجهة",
+    stack: "var(--font-ui)",
   },
   {
     id: "uthmani",
-    label: "Scheherazade",
-    labelAr: "شهرزاد",
-    stack: '"Scheherazade New", "Scheherazade", "Amiri Quran", serif',
+    label: "Amiri Quran",
+    labelAr: "قرآني",
+    stack: "var(--font-quran)",
   },
 ] as const;
 

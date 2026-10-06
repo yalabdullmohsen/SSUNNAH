@@ -74,11 +74,16 @@
   overflow: hidden;
 }
 
-/* النص الشرعي (آية/حديث/ذكر) بالنسخ وبحجم مريح؛ الفائدة تبقى بخط الواجهة */
-.hds__card:not([data-kind="faida"]) .hds__text {
-  font-family: var(--sf-font-scripture);
+/* النص الشرعي (حديث/ذكر/فائدة) — Sunnah Text؛ الآية — Sunnah Quran (ارتفاع سطر يحمي التشكيل من القص) */
+.hds__text {
+  font-family: var(--font-text);
   font-size: 1.0625rem;
   line-height: 1.75;
+}
+
+.hds__card[data-kind="ayah"] .hds__text {
+  font-family: var(--font-quran);
+  line-height: 2;
 }
 
 /* المرجع تحت النص بلون ثانوي */

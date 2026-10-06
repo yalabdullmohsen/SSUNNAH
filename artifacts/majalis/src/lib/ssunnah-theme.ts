@@ -97,9 +97,9 @@ export const V2_TYPE = {
 } as const;
 
 export const V2_FONT = {
-  display: "var(--v2-font-display)",
-  ui: "var(--v2-font-ui)",
-  latin: "var(--v2-font-latin)",
+  display: "var(--font-ui)",
+  ui: "var(--font-ui)",
+  latin: "var(--font-ui)",
 } as const;
 
 export const V2_DENSITY = {

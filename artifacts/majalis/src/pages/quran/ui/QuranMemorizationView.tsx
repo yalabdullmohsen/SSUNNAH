@@ -187,7 +187,7 @@ function QuestionCard({
       {isAutoReveal && (
         <div className="qmem-result qmem-result--correct" style={{ marginTop: "0.75rem" }}>
           <p className="qmem-result__label">الآية الكاملة للمراجعة:</p>
-          <p className="qmem-result__full" style={{ fontFamily: "Amiri Quran, serif", fontSize: "var(--ss-type-body)" }}>
+          <p className="qmem-result__full" style={{ fontFamily: "var(--font-quran)", fontSize: "var(--ss-type-body)" }}>
             {question.fullAyah}
           </p>
         </div>

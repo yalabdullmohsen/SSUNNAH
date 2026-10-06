@@ -2,15 +2,15 @@ export type FontPreference = "default" | "naskh";
 
 export const FONT_STORAGE_KEY = "majalis-font-preference-v2";
 
-/* ملاحظة: الخط الموحَّد للمنصة هو --font-app (Amiri نسخي، مرجع صفحة التفسير).
+/* ملاحظة: خط الواجهة الموحَّد هو --font-ui (IBM Plex Sans Arabic)؛ الخياران لا يفرّقان بصريًا.
    الخياران محفوظان لتوافق الإعداد القديم ولا يفرّقان بصريًا. */
 export const FONT_OPTIONS: {
   id: FontPreference;
   label: string;
   description: string;
 }[] = [
-  { id: "naskh", label: "نسخ", description: "خط المنصة الموحَّد (افتراضي)" },
-  { id: "default", label: "نسخ", description: "خط المنصة الموحَّد" },
+  { id: "naskh", label: "نسخ", description: "خط الواجهة الموحَّد (افتراضي)" },
+  { id: "default", label: "نسخ", description: "خط الواجهة الموحَّد" },
 ];
 
 export function isFontPreference(value: string | null | undefined): value is FontPreference {

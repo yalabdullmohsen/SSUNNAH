@@ -100,7 +100,7 @@ function injectNoscript(html, route) {
     (meta && !meta.endsWith("…") && !meta.endsWith("...") ? meta : "");
   const noscript = [
     `<noscript>`,
-    `<div dir="rtl" lang="ar" style="font-family:'IBM Plex Sans Arabic','Noto Sans Arabic',sans-serif;max-width:900px;margin:0 auto;padding:1rem">`,
+    `<div dir="rtl" lang="ar" style="font-family:'Sunnah UI',-apple-system,system-ui,sans-serif;max-width:900px;margin:0 auto;padding:1rem">`,
     `<h1>${h1}</h1>`,
     visible ? `<p>${esc(visible)}</p>` : "",
     `<nav><a href="${siteUrl}/">الرئيسية</a> · <a href="${siteUrl}/search">البحث</a></nav>`,

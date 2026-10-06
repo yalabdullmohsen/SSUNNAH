@@ -11,7 +11,7 @@
  * Ayah numbers toggle (`showAyahNumbers` via useQuranPreferences) hides badges and
  * strips parenthetical markers via renderQuranText — same idea as the RN sketch.
  * After 30 minutes of reading, a gentle break reminder appears (RN Alert.alert port).
- * Typeface cycles Amiri → Traditional Arabic → Scheherazade via prefs.fontId.
+ * Typeface cycles Amiri → IBM Plex Sans Arabic → Amiri Quran via prefs.fontId.
  * Inline tafsir mode (`showTafsir` / `toggleTafsir`) fills session
  * `tafsirDatabase` (`surah:ayah` → text) via `@/lib/quran-tafsir-database`
  * and renders under each ayah — RN sketch with a separate data file.
@@ -231,7 +231,7 @@ export function QuranViewer({ initialSurah, className, onFocusModeChange }: Qura
     setPref("showAyahNumbers", !showAyahNumbers);
   }, [setPref, showAyahNumbers]);
 
-  /** RN toggleFont — cycle Amiri → Traditional Arabic → Scheherazade. */
+  /** RN toggleFont — cycle Amiri → IBM Plex Sans Arabic → Amiri Quran. */
   const toggleFont = useCallback(() => {
     setPref("fontId", nextQuranFontId(prefs.fontId));
   }, [prefs.fontId, setPref]);

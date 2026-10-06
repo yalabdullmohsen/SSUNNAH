@@ -8,6 +8,7 @@ import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { renderedIndexHtml } from "./font-system-test-helper";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const require = createRequire(import.meta.url);
@@ -16,8 +17,7 @@ const preview = getPreviewThresholds();
 
 const html = readFileSync(resolve(root, "index.html"), "utf8");
 const critical = readFileSync(resolve(root, "src/styles/critical-first-paint.css"), "utf8");
-const fontsUi = readFileSync(resolve(root, "src/styles/fonts-ui.css"), "utf8");
-const fontsBold = readFileSync(resolve(root, "src/styles/fonts-ui-bold.css"), "utf8");
+const fontsDeferred = readFileSync(resolve(root, "src/styles/font-faces-deferred.css"), "utf8");
 const lhciRc = require(resolve(root, "lighthouserc.cjs"));
 
 assert.doesNotMatch(html, /mj-home-lcp-static|mj-app-mount/, "لا صدفة نصّية/ mount منفصل");
@@ -71,11 +71,11 @@ assert.doesNotMatch(
   /min-height:\s*unset/,
   "لا min-height:unset في هيرو الرئيسية",
 );
-assert.doesNotMatch(fontsUi, /font-display:\s*swap/, "لا font-display:swap لخطوط الواجهة");
-assert.match(html, /font-display:optional;src:url\("\/fonts\/ui\/amiri-400-ar/, "Amiri 400 optional — لا يحجب LCP");
-assert.match(html, /font-display:optional;src:url\("\/fonts\/ui\/amiri-700-ar/, "Amiri 700 optional من الإقلاع — بلا قفزة وزن");
-assert.match(fontsBold, /Aref Ruqaa[\s\S]*font-display:\s*optional/, "Aref Ruqaa 700 optional مؤجّل زخرفيًا");
-assert.doesNotMatch(fontsBold, /amiri-700/, "Amiri 700 لم يعد مؤجّلًا في fonts-ui-bold");
+const renderedHtml = renderedIndexHtml();
+assert.match(renderedHtml, /font-display:swap;src:url\("\/fonts\/sunnah\/plex-sans-arabic-400-ar/, "Sunnah UI 400 مضمّن + preload — swap بلا حجب LCP");
+assert.match(renderedHtml, /font-display:swap;src:url\("\/fonts\/sunnah\/plex-sans-arabic-600-ar/, "Sunnah UI 600 مضمّن + preload — بلا قفزة وزن");
+assert.match(fontsDeferred, /plex-sans-arabic-700-ar/, "الوزن 700 مؤجَّل مع الحزمة الرئيسية");
+assert.doesNotMatch(fontsDeferred, /plex-sans-arabic-(400|600)-ar/, "الأوجه الحرجة ليست في الملف المؤجَّل");
 assert.equal(
   lhciRc.ci.assert.assertions["cumulative-layout-shift"][1].maxNumericValue,
   preview.cls,

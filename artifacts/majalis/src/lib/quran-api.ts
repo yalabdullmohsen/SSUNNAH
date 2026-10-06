@@ -482,7 +482,7 @@ export function getSurahMeta(number: number): StaticSurahMeta {
   };
 }
 
-// ─── Surah start pages — Mushaf al-Madinah KFGQPC, Hafs ʿan ʿĀṣim ─────────
+// ─── Surah start pages — Mushaf al-Madinah (King Fahd Complex), Hafs ʿan ʿĀṣim ─────────
 // Index 0 = Surah 1 (Al-Fatiha, page 1). 114 entries total.
 export const SURAH_START_PAGES: readonly number[] = [
     1,   2,  50,  77, 106, 128, 151, 177, 187, 208,

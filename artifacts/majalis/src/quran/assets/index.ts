@@ -1,6 +1,6 @@
 /**
  * RN `/assets` — fonts, images, audio URL helpers.
- * Web assets live in `public/` + CSS `@font-face`; ayah audio is CDN-backed.
+ * Web assets live in `public/` + src/styles/font-system.css; ayah audio is CDN-backed.
  */
 
 export {

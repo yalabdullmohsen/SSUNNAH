@@ -100,7 +100,7 @@ function NodeBox({ placed, onClick }: {
         x={NODE_W / 2} y={NODE_H / 2 - 6}
         textAnchor="middle" dominantBaseline="middle"
         fontSize={isAnc ? 10 : 13} fontWeight={700}
-        fontFamily="Amiri, Noto Naskh Arabic, serif"
+        style={{ fontFamily: "var(--font-ui)" }}
         fill={textClr}
       >
         {node.name}
@@ -109,7 +109,7 @@ function NodeBox({ placed, onClick }: {
         <text
           x={NODE_W / 2} y={NODE_H / 2 + 11}
           textAnchor="middle" dominantBaseline="middle"
-          fontSize={8.5} fontFamily="Amiri, Noto Naskh Arabic, serif"
+          fontSize={8.5} style={{ fontFamily: "var(--font-ui)" }}
           fill={isLast ? "rgba(255,255,255,0.8)" : "#5C5C56"}
         >
           {truncateAtWord(node.era, 20)}
@@ -119,7 +119,7 @@ function NodeBox({ placed, onClick }: {
         <text
           x={NODE_W / 2} y={NODE_H / 2 + 10}
           textAnchor="middle" fontSize={8}
-          fill="rgba(255,255,255,0.6)" fontFamily="Amiri, Noto Naskh Arabic, serif"
+          fill="rgba(255,255,255,0.6)" style={{ fontFamily: "var(--font-ui)" }}
         >
           ···
         </text>

@@ -104,7 +104,7 @@ export default function RevelationOrderPage() {
               <Link href={`/mushaf/${s.number}`} className="revord-card">
                 <span className="revord-card__order" aria-hidden="true">{s.revelationOrder}</span>
                 <span className="revord-card__body">
-                  <span className="revord-card__name" style={{ fontFamily: "var(--font-quran)" }}>{s.name}</span>
+                  <span className="revord-card__name">{s.name}</span>
                   <span className="revord-card__meta">
                     سورة رقم {s.number} في المصحف · {s.numberOfAyahs} آية
                     {s.revelationType && <> · {REVELATION_LABEL[s.revelationType]}</>}
