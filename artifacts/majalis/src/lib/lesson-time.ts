@@ -442,7 +442,7 @@ export function formatGregorianDate(date: Date): string {
 
 export function formatHijriDate(date: Date): string {
   try {
-    return new Intl.DateTimeFormat("ar-SA-u-ca-islamic", {
+    return new Intl.DateTimeFormat("ar-SA-u-ca-islamic-umalqura", {
       timeZone: KUWAIT_TZ,
       day:   "numeric",
       month: "long",

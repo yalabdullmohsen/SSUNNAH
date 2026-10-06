@@ -83,9 +83,9 @@ assert.equal(rows.gregorianToHijri.mismatches, 0, "gregorianToHijri must match I
 
 // سقوف تراجع للحسابات غير المطابقة (لا تُرفع؛ تهبط إلى 0 عند الترحيل لـ Intl).
 const CEILING: Record<string, number> = {
-  "daily-context.toHijri": 3931,
-  estimateHijriDate: 4018,
-  "lesson-time.formatHijriDate": 2155,
+  "daily-context.toHijri": 0,
+  estimateHijriDate: 0,
+  "lesson-time.formatHijriDate": 0,
 };
 for (const [name, max] of Object.entries(CEILING)) {
   assert.ok(rows[name].mismatches <= max, `${name}: ${rows[name].mismatches} > ceiling ${max}`);
