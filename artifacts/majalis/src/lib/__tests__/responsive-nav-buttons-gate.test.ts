@@ -12,7 +12,8 @@ const read = (p: string) => readFileSync(resolve(root, p), "utf8");
 const strip = (s: string) => s.replace(/\/\*[\s\S]*?\*\//g, "");
 
 const indexCss = strip(read("src/index.css"));
-const finalCss = strip(read("src/styles/final-release.css"));
+/* تسميات أزرار الهيدر في theme-aliases (متزامن) — final-release مؤجَّل على الرئيسية */
+const finalCss = strip(read("src/styles/final-release.css")) + strip(read("src/styles/theme-aliases.css"));
 const nav = read("src/components/NavBar.tsx");
 
 assert.match(nav, /navbar-mobile-login__label/, "تسمية دخول موجودة في NavBar");
