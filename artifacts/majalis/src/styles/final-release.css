@@ -436,24 +436,6 @@ html.dark .nav-soon-badge {
   max-width: 44px;
   padding: 0;
 }
-.navbar-v3 .navbar-mobile-login:has(.navbar-mobile-login__label) {
-  width: auto !important;
-  max-width: none !important;
-  min-width: 44px !important;
-  padding-inline: 0.55rem !important;
-  gap: 0.28rem !important;
-  overflow: visible !important;
-}
-.navbar-v3 .navbar-mobile-login__label {
-  display: inline !important;
-  font-size: clamp(0.68rem, 2.6vw, 0.78rem) !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
-  white-space: nowrap !important;
-  overflow: visible !important;
-  text-overflow: clip !important;
-  flex-shrink: 0 !important;
-}
 .navbar-menu-btn--drawer {
   background: var(--mj-surface-2, var(--color-surface-muted)) !important;
   color: var(--mj-ink, var(--color-text)) !important;
@@ -985,8 +967,6 @@ html.dark .top-section-bar {
     padding-inline: max(16px, var(--gutter-inline-start, 16px))
       max(16px, var(--gutter-inline-end, 16px));
   }
-  /* قائمة: أيقونة فقط على الجوال (aria-label كافٍ) · «دخول» يبقى ظاهرًا دائمًا */
-  .navbar-menu-btn__label { display: none; }
   .navbar-menu-btn {
     width: 44px;
     max-width: 44px;
