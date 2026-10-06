@@ -114,6 +114,7 @@
 }
 
 .ss-text--scripture {
+  font-family: var(--sf-font-scripture);
   font-size: var(--ss-type-scripture);
   font-weight: var(--ss-fw-medium);
   line-height: var(--ss-lh-scripture);

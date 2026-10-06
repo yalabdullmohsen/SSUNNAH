@@ -57,7 +57,8 @@ assert.match(lcp, /"MajlisAmiriFallback";font-weight:600 800;src:local\("Noto Na
 assert.match(lcp, /"MajlisFallback";src:local\("Geeza Pro Regular"\),local\("GeezaPro"\);size-adjust:/);
 assert.match(lcp, /"MajlisFallback";font-weight:600 800;src:local\("Geeza Pro Bold"\),local\("GeezaPro-Bold"\)/);
 assert.doesNotMatch(lcp, /src:local\("Geeza Pro"\)/, "اسم العائلة وحده لا يطابق local()");
-assert.match(lcp, /--font-app:"Amiri","MajlisAmiriFallback","MajlisFallback"/);
+/* الواجهة بخط النظام منذ أول رسم (لا تنزيل خط ويب للواجهة) — Amiri للنص الشرعي فقط */
+assert.match(lcp, /--font-app:-apple-system,BlinkMacSystemFont,"SF Arabic",system-ui/);
 
 // 3) الشريط السفلي: ارتفاع ثابت منذ أول رسم ولا padding مؤقت يغيّره
 const critical = read("src/styles/critical-first-paint.css");

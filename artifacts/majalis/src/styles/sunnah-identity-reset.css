@@ -19,13 +19,14 @@ html[data-v2-app="1"] main {
   text-align: start;
 }
 
-/* Display — شعار/عناوين مميزة/اقتباسات فقط */
+/* Display — شعار/اقتباسات شرعية فقط (نسخ) */
 html[data-v2-app="1"] .home-page-hero .page-hero-mj__title,
 html[data-v2-app="1"] [data-display-type="1"],
 html[data-v2-app="1"] .brand-wordmark,
 html[data-v2-app="1"] .quote-surface,
 html[data-v2-app="1"] .quote-surface__text {
-  font-family: var(--v2-font-display);
+  /* شعار «سُنّة» والاقتباسات الشرعية = نسخ؛ الواجهة بخط النظام */
+  font-family: var(--sf-font-scripture);
   font-weight: var(--v2-fw-bold);
   line-height: var(--v2-lh-display);
 }

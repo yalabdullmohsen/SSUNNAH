@@ -25,7 +25,7 @@ assert.deepEqual(SF_RADIUS_SCALE, { xs: 12, sm: 16, md: 20, lg: 24 });
 assert.match(css, /--sf-radius-xs:\s*12px/);
 assert.match(css, /--sf-radius-sm:\s*16px/);
 assert.match(css, /--sf-radius-md:\s*20px/);
-assert.match(css, /--sf-radius-lg:\s*24px/);
+assert.match(css, /--sf-radius-lg:\s*28px/); /* بارز = ٢٨ (سلم iOS 12/20/28) */
 assert.match(css, /--sf-radius-card:\s*var\(--sf-radius-md/);
 
 assert.match(soft, /--radius-card:\s*var\(--sf-radius-card/);

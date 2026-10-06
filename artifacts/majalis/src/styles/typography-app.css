@@ -1,6 +1,7 @@
 /**
  * طباعة واجهة التطبيق — خارج المصحف/QPC.
- * خط الواجهة الموحّد: Amiri عبر --font-ui (--font-app alias).
+ * خط الواجهة الموحّد: خط النظام العربي عبر --font-ui (--font-app alias).
+ * النسخ (Amiri) عبر --font-reading للنص الشرعي فقط (آيات/أحاديث/أذكار) وشعار «سُنّة».
  */
 
   :root {
@@ -54,6 +55,42 @@
 ) {
   font-family: var(--font-heading);
   font-weight: var(--fw-bold, 700);
+}
+
+/* النص الشرعي بالنسخ — قائمة صريحة؛ لا تُضف واجهة هنا. نص المصحف/QPC له خطوطه المستقلة. */
+:is(
+  [class*="ayah__text"],
+  [class*="hadith-box__text"],
+  [class*="dhikr-box__text"],
+  [class*="dua-box__text"],
+  [class*="__verse-text"],
+  .adhkar-focus-text,
+  .adhkar-sheet-text,
+  .dua-card__arabic,
+  .dua-detail__text:not(.dua-detail__text--trans),
+  .hadith-card__text,
+  .hadith-detail-matn,
+  .hadith-modal__text--matn,
+  .hdl-card__matn,
+  .twh-hadith-text,
+  .sg-hadith-item__text,
+  .sg-khushuu-hadith__text,
+  .tw-dhikr-arabic,
+  .jn-dua-text,
+  .hj-mashar-dua__text,
+  .sw-dua__text,
+  .qmem-ayah-text,
+  .quran-search-page__ayah-text,
+  .quran-verse-list__text,
+  .home-sacred-day__text--ayah,
+  .header-ticker__item:is([data-kind="ayah"], [data-kind="hadith"], [data-kind="dhikr"]) .header-ticker__text,
+  .sf-type-quran,
+  .sf-type-hadith,
+  [data-sf-type="quran"],
+  [data-sf-type="hadith"],
+  .home-page-hero .page-hero-mj__title
+) {
+  font-family: var(--sf-font-scripture);
 }
 
 /* قصّ الأسطر الطويلة في البطاقات */
