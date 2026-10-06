@@ -1,0 +1,170 @@
+/**
+ * نظام تصميم «سُنّة» — المصدر الوحيد للقيم البصرية (ألوان · طباعة · مسافات · زوايا · ظلال · حركة).
+ * لا تُكتب قيمة بصرية خارج هذا الملف في الشاشات/المكوّنات المبنية على src/design-system.
+ * الخطوط: font-system.css (--font-ui / --font-text / --font-quran).
+ * الهوية: أبيض/بيج مع الأخضر؛ الذهبي للتمييز الثانوي النادر فقط.
+ */
+
+/* ═══ الألوان — فاتح ═══ */
+:root {
+  --sn-bg: #f8f6f1;                 /* بيج فاتح جدًا */
+  --sn-surface: #ffffff;
+  --sn-surface-2: #f1eee6;
+  --sn-surface-elevated: #ffffff;
+
+  --sn-primary: #0f5c3f;            /* الأخضر */
+  --sn-primary-strong: #0a3f2c;     /* أخضر داكن للبطاقات البارزة */
+  --sn-primary-soft: #e3efe9;       /* خلفيات ناعمة */
+  --sn-accent: #a77f2e;             /* ذهبي — تمييز ثانوي نادر فقط */
+
+  --sn-text-primary: #15271f;
+  --sn-text-secondary: #4b5a52;
+  --sn-text-tertiary: #5f6d65;
+  --sn-text-on-primary: #ffffff;
+
+  --sn-separator: #e4e0d3;
+  --sn-success: #1c7a4d;
+  --sn-warning: #8f5f0a;
+  --sn-danger: #b0352b;
+
+  /* تراكبات */
+  --sn-scrim: rgba(12, 22, 17, 0.48);
+  --sn-focus: #0f5c3f;
+  --sn-on-primary-soft: rgba(255, 255, 255, 0.14);   /* عناصر زجاجية فوق بطاقة خضراء */
+}
+
+/* ═══ الألوان — داكن (مصمَّم لا مقلوب: خلفيات دافئة، أخضر أفتح للقراءة، بلا أبيض ساطع) ═══ */
+html[data-theme="dark"],
+html.dark {
+  --sn-bg: #141612;
+  --sn-surface: #1c1f19;
+  --sn-surface-2: #252922;
+  --sn-surface-elevated: #2a2e26;
+
+  --sn-primary: #66c29b;
+  --sn-primary-strong: #1c5c43;
+  --sn-primary-soft: #1f3a2e;
+  --sn-accent: #d3ae5d;
+
+  --sn-text-primary: #efece2;
+  --sn-text-secondary: #bdb9aa;
+  --sn-text-tertiary: #9a9688;
+  --sn-text-on-primary: #f4f1e8;
+
+  --sn-separator: #33372e;
+  --sn-success: #6fcf9f;
+  --sn-warning: #e0b25a;
+  --sn-danger: #ef8b80;
+
+  --sn-scrim: rgba(0, 0, 0, 0.6);
+  --sn-focus: #66c29b;
+  --sn-on-primary-soft: rgba(244, 241, 232, 0.12);
+}
+
+/* ═══ الطباعة — سلّم iOS (rem: يتكيّف مع تكبير النص عبر --ui-font-scale ومع Dynamic Type) ═══ */
+:root {
+  --sn-fs-large-title: 2.125rem;   /* 34 */
+  --sn-lh-large-title: 1.2;
+  --sn-fs-title1: 1.75rem;         /* 28 */
+  --sn-lh-title1: 1.25;
+  --sn-fs-title2: 1.375rem;        /* 22 */
+  --sn-lh-title2: 1.3;
+  --sn-fs-title3: 1.25rem;         /* 20 */
+  --sn-lh-title3: 1.35;
+  --sn-fs-headline: 1.0625rem;     /* 17 / 600 */
+  --sn-lh-headline: 1.4;
+  --sn-fs-body: 1.0625rem;         /* 17 */
+  --sn-lh-body: 1.55;
+  --sn-fs-callout: 1rem;           /* 16 */
+  --sn-lh-callout: 1.5;
+  --sn-fs-subhead: 0.9375rem;      /* 15 */
+  --sn-lh-subhead: 1.5;
+  --sn-fs-footnote: 0.8125rem;     /* 13 */
+  --sn-lh-footnote: 1.45;
+  --sn-fs-caption: 0.75rem;        /* 12 */
+  --sn-lh-caption: 1.4;
+
+  /* النص الشرعي */
+  --sn-fs-hadith: 1.25rem;         /* 20 */
+  --sn-lh-hadith: 1.9;
+  --sn-fs-hadith-featured: 1.5rem; /* 24 */
+  --sn-lh-hadith-featured: 1.8;
+  --sn-fs-ayah: 1.5rem;            /* 24 */
+  --sn-lh-ayah: 2;
+
+  --sn-fw-regular: 400;
+  --sn-fw-medium: 500;
+  --sn-fw-semibold: 600;
+  --sn-fw-bold: 700;
+}
+
+/* ═══ المسافات — شبكة 4 ═══ */
+:root {
+  --sn-s1: 4px;
+  --sn-s2: 8px;
+  --sn-s3: 12px;
+  --sn-s4: 16px;
+  --sn-s5: 20px;
+  --sn-s6: 24px;
+  --sn-s7: 32px;
+  --sn-s8: 40px;
+  --sn-page-x: 20px;               /* هامش الصفحة الموحّد */
+  --sn-touch: 44px;                /* أدنى هدف لمس */
+}
+
+/* ═══ الزوايا ═══ */
+:root {
+  --sn-r-sm: 10px;                 /* عناصر صغيرة */
+  --sn-r-md: 16px;                 /* حقول وأزرار */
+  --sn-r-lg: 22px;                 /* بطاقات */
+  --sn-r-xl: 28px;                 /* بطاقات بارزة */
+  --sn-r-pill: 999px;              /* أزرار حبّية ورقائق */
+}
+
+/* ═══ الارتفاعات (elevation) — ثلاثة مستويات ناعمة تحل محل الحدود الرمادية ═══ */
+:root {
+  --sn-e1: 0 1px 2px rgba(21, 39, 31, 0.06), 0 1px 1px rgba(21, 39, 31, 0.04);
+  --sn-e2: 0 4px 14px rgba(21, 39, 31, 0.08), 0 1px 3px rgba(21, 39, 31, 0.05);
+  --sn-e3: 0 14px 36px rgba(21, 39, 31, 0.16), 0 3px 8px rgba(21, 39, 31, 0.08);
+}
+html[data-theme="dark"],
+html.dark {
+  --sn-e1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  --sn-e2: 0 4px 14px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --sn-e3: 0 14px 36px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ═══ الأيقونات ═══ */
+:root {
+  --sn-icon-md: 20px;
+  --sn-icon-lg: 24px;
+  --sn-icon-stroke: 1.75;
+}
+
+/* ═══ أبعاد هيكلية وطبقات ═══ */
+:root {
+  --sn-hairline: 1px;
+  --sn-bar-h: 44px;                /* ارتفاع شريط التنقل (iOS) */
+  --sn-tabbar-h: 56px;             /* ارتفاع شريط التبويب بلا safe-area */
+  --sn-content-max: 640px;         /* عرض القراءة على الشاشات الكبيرة */
+  --sn-z-bar: 40;
+  --sn-z-sheet: 60;
+  --sn-z-toast: 80;
+}
+
+/* ═══ الحركة ═══ */
+:root {
+  --sn-dur-fast: 150ms;
+  --sn-dur-base: 250ms;
+  --sn-dur-slow: 350ms;
+  --sn-ease: cubic-bezier(0.32, 0.72, 0, 1);       /* منحنى iOS */
+  --sn-press-scale: 0.97;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --sn-dur-fast: 1ms;
+    --sn-dur-base: 1ms;
+    --sn-dur-slow: 1ms;
+    --sn-press-scale: 1;
+  }
+}
