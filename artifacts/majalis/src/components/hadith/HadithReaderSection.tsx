@@ -67,7 +67,7 @@ export function HadithInfoHero({ eyebrow, title, lead, className = "" }: HeroPro
   return (
     <header className={`hdl-info-hero ${className}`.trim()}>
       {eyebrow ? <p className="hdl-info-hero__eyebrow">{eyebrow}</p> : null}
-      <h1 className="hdl-info-hero__title">{title}</h1>
+      <h2 className="hdl-info-hero__title">{title}</h2>
       <p className="hdl-info-hero__lead">{lead}</p>
     </header>
   );

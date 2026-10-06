@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import {
   Bell, BellOff, BookHeart, BookMarked, BookOpen, BookOpenText, Bookmark, Calendar, CalendarPlus, Check,
-  ChevronLeft, CircleDot, CircleHelp, Clock, Compass, Download, Ellipsis, Fingerprint, Footprints,
+  ChevronLeft, ChevronRight, CircleDot, CircleHelp, Clock, Compass, Download, Ellipsis, Fingerprint, Footprints,
   GraduationCap, Hand, Headphones, Heart, House, Info, Landmark, Languages, Lightbulb, LogIn, MapPin,
   Moon, Palette, Play, RefreshCw, Scale, ScrollText, Search, Settings, Share2, Shield, ShieldCheck,
   Sparkles, Star, Sun, TriangleAlert, User, Users, WifiOff, X,
@@ -44,6 +44,7 @@ export const DS_ICONS = {
   play: Play,
   download: Download,
   chevron: ChevronLeft,
+  back: ChevronRight, /* رجوع في RTL: السهم نحو اليمين */
   close: X,
   check: Check,
   info: Info,
