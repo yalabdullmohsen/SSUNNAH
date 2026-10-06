@@ -25,9 +25,9 @@ assert.match(splashBoot, /mj-launch-splash/);
 
 /* مسار الخطأ الأصلي: نفس خلفية الدخولية + شعار — بلا شاشة رمادية ثانية */
 assert.match(native, /#F8F6F1|#F8F6F1/i, "startup-background-flash: native-load-error must use splash beige");
-assert.match(native, /رفيقك في العلم والعمل/, "native-load-error must reuse Sunnah tagline");
+/* التحميل = سطح LaunchScreen اللوني فقط — لا دخولية ثانية بعلامة/عبارة/تقدّم */
+assert.doesNotMatch(native, /رفيقك في العلم والعمل|class="(mark|tagline|progress|mushaf-skel)"/, "native-load-error: no second splash");
 assert.match(native, /data-startup-surface="sunnah"/);
-assert.match(native, /\.progress|class="progress"|mj-launch-splash__progress|\.pulse|class="pulse"/, "خط تقدّم خطي مثل الدخولية");
 assert.doesNotMatch(
   native,
   /background:\s*#f2f4f3/i,

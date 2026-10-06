@@ -113,7 +113,8 @@ const launchColorset = readFileSync(
   resolve(root, "ios/App/App/Assets.xcassets/LaunchBackground.colorset/Contents.json"),
   "utf8",
 );
-assert.match(launchColorset, /"luminosity"[\s\S]*"dark"/, "لون ليلي لـ LaunchBackground");
+/* LaunchScreen فاتح فقط = خلفية WKWebView (ios.backgroundColor) = الويب الافتراضي — الداكن كان يومض داكن→فاتح */
+assert.doesNotMatch(launchColorset, /"luminosity"/, "LaunchBackground بلا متغيّر ليلي");
 assert.match(launchColorset, /0\.973|0\.972/, "مكوّن أحمر ≈ #F8F6F1");
 
 const capTs = readFileSync(resolve(root, "capacitor.config.ts"), "utf8");

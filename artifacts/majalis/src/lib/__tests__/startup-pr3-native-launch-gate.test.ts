@@ -37,7 +37,8 @@ assert.ok(
   "LaunchBackground.colorset",
 );
 const colorset = readPkg("ios/App/App/Assets.xcassets/LaunchBackground.colorset/Contents.json");
-assert.match(colorset, /"value"\s*:\s*"dark"/);
+/* LaunchScreen فاتح فقط = خلفية WKWebView (ios.backgroundColor) = الويب الافتراضي — الداكن كان يومض داكن→فاتح */
+assert.doesNotMatch(colorset, /"value"\s*:\s*"dark"/);
 
 const cap = readPkg("capacitor.config.ts");
 assert.match(cap, /showSpinner:\s*false/);

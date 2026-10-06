@@ -12,7 +12,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Do not activate AVAudioSession at launch — plugins configure category on demand.
         _ = AppConfig.shared
         _ = NetworkService.shared
-        // امسح كاش الشبكة وعمال الخدمة فقط — لا localStorage/الكوكيز حتى تبقى شاشة البدء مرة واحدة.
+        purgeWebCachesOncePerAppBuild()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleMediaServicesReset),
+            name: AVAudioSession.mediaServicesWereResetNotification,
+            object: nil
+        )
+        return true
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    /// امسح كاش الشبكة وعمال الخدمة مرة واحدة لكل بناء تطبيق (لا localStorage/الكوكيز).
+    /// المسح عند كل إقلاع كان يجعل كل فتح تنزيلًا كاملًا للحزم ويسابق التحميل الأول؛
+    /// حداثة الموقع الحي مضمونة أصلًا بـ max-age=0 للمستند وأسماء أصول مُجزّأة.
+    private func purgeWebCachesOncePerAppBuild() {
+        let build = (Bundle.main.infoDictionary?["CFBundleVersion"] as? String) ?? ""
+        let key = "mj.webCachePurgedForBuild"
+        guard UserDefaults.standard.string(forKey: key) != build else { return }
+        UserDefaults.standard.set(build, forKey: key)
         var cacheTypes: Set<String> = [
             WKWebsiteDataTypeDiskCache,
             WKWebsiteDataTypeMemoryCache,
@@ -26,17 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ofTypes: cacheTypes,
             modifiedSince: Date.distantPast
         ) {}
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleMediaServicesReset),
-            name: AVAudioSession.mediaServicesWereResetNotification,
-            object: nil
-        )
-        return true
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 
     @objc private func handleMediaServicesReset(_ notification: Notification) {

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="light" />
     <meta name="theme-color" content="#F8F6F1" />
     <meta name="robots" content="noindex, nofollow" />
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
@@ -11,15 +11,8 @@
     <style>
       :root {
         --mj-splash-bg-light: #F8F6F1;
-        --mj-splash-bg-dark: #101614;
         --mj-splash-bg: var(--mj-splash-bg-light);
         --mj-splash-ink: #123f2e;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --mj-splash-bg: var(--mj-splash-bg-dark);
-          --mj-splash-ink: #a8d5c0;
-        }
       }
       html,
       body {
@@ -41,74 +34,6 @@
         max-width: 18rem;
         text-align: center;
       }
-      .mark {
-        padding: 0.4rem 0.9rem;
-        border-radius: 0.9rem;
-        border: 1px solid color-mix(in srgb, var(--mj-splash-ink) 22%, transparent);
-        background: color-mix(in srgb, var(--mj-splash-ink) 10%, transparent);
-      }
-      .brand {
-        margin: 0;
-        font-size: clamp(1.4rem, 5.5vw, 1.7rem);
-        font-weight: 700;
-        line-height: 1.2;
-        letter-spacing: 0.01em;
-        color: var(--mj-splash-ink);
-      }
-      .tagline {
-        margin: 0;
-        font-size: 0.92rem;
-        font-weight: 500;
-        line-height: 1.45;
-        color: color-mix(in srgb, var(--mj-splash-ink) 78%, transparent);
-        max-width: 16rem;
-      }
-      .progress {
-        width: 3.4rem;
-        height: 0.14rem;
-        border-radius: 999px;
-        background: color-mix(in srgb, var(--mj-splash-ink) 18%, transparent);
-        overflow: hidden;
-        margin-block-start: 0.2rem;
-      }
-      .progress-bar {
-        display: block;
-        height: 100%;
-        width: 0;
-        border-radius: inherit;
-        background: var(--mj-splash-ink);
-        animation: mj-splash-progress 0.7s ease-out forwards;
-      }
-      @keyframes mj-splash-progress {
-        to {
-          width: 100%;
-        }
-      }
-
-      .mushaf-skel {
-        width: min(100%, 17rem);
-        margin: 0.35rem 0 0.15rem;
-        padding: 0.7rem 0.75rem;
-        border-radius: 0.85rem;
-        background: #fbf4e8;
-        border: 1px solid color-mix(in srgb, var(--mj-splash-ink) 12%, transparent);
-        display: grid;
-        gap: 0.55rem;
-        box-sizing: border-box;
-      }
-      @media (prefers-color-scheme: dark) {
-        .mushaf-skel { background: #1a221c; }
-      }
-      .mushaf-skel__bar {
-        height: 0.42rem;
-        border-radius: 6px;
-        background: color-mix(in srgb, var(--mj-splash-ink) 14%, transparent);
-      }
-      .mushaf-skel__bar:nth-child(1) { width: 38%; margin-inline: auto; }
-      .mushaf-skel__bar:nth-child(3n) { width: 90%; }
-      .mushaf-skel__bar:nth-child(3n+1) { width: 100%; }
-      .mushaf-skel__bar:nth-child(3n+2) { width: 84%; }
-      .is-final .mushaf-skel { display: none; }
       .soft-status {
         margin: 0.2rem 0 0;
         font-size: 0.72rem;
@@ -169,18 +94,12 @@
         white-space: nowrap !important;
         border: 0 !important;
       }
-      .is-loading .mushaf-skel {
-        display: none !important;
-      }
 
       /* مسار الاستعادة الناعم: نفس سطح الدخولية — بلا شاشة رمادية ثانية */
       .is-loading .actions {
         display: none;
       }
       .is-loading .fail-title {
-        display: none;
-      }
-      .is-final .progress {
         display: none;
       }
       .is-final .soft-status {
@@ -201,32 +120,11 @@
       .is-loading .fail-msg {
         display: none;
       }
-      @media (prefers-reduced-motion: reduce) {
-        .progress-bar {
-          animation: none;
-          width: 100%;
-          opacity: 0.5;
-        }
-      }
     </style>
   </head>
   <body>
     <main id="root" class="is-loading" data-startup-surface="sunnah">
-      <div class="mark" aria-hidden="true">
-        <p class="brand">سُنّة</p>
-      </div>
-      <p class="tagline">رفيقك في العلم والعمل</p>
-      <div class="progress" aria-hidden="true"><span class="progress-bar"></span></div>
-      <div class="mushaf-skel" aria-hidden="true">
-        <div class="mushaf-skel__bar"></div>
-        <div class="mushaf-skel__bar"></div>
-        <div class="mushaf-skel__bar"></div>
-        <div class="mushaf-skel__bar"></div>
-        <div class="mushaf-skel__bar"></div>
-        <div class="mushaf-skel__bar"></div>
-        <div class="mushaf-skel__bar"></div>
-        <div class="mushaf-skel__bar"></div>
-      </div>
+      <!-- التحميل = سطح LaunchScreen اللوني فقط (لا دخولية ثانية)؛ الرسالة وإعادة المحاولة بعد الفشل النهائي فقط -->
       <p id="title" class="soft-status">جاري تجهيز الصفحة…</p>
       <p id="msg" class="fail-msg">نحمّل المحتوى. لا تغلق التطبيق.</p>
       <h1 id="fail-title" class="fail-title" hidden>تعذّر التحميل</h1>
@@ -281,11 +179,7 @@
             diag.textContent = "";
           }
           document.title = "سُنّة";
-          setThemeColor(
-            window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
-              ? "#101614"
-              : "#F8F6F1",
-          );
+          setThemeColor("#F8F6F1");
         }
 
         function paintFinal(code) {
