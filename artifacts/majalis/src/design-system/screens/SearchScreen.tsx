@@ -8,6 +8,7 @@ import { groupSearchResultsBySection } from "@/features/search/search-result-sec
 import { isBlockedSearchHref } from "@/components/search/SearchResultCards";
 import { addSearchHistory, clearSearchHistory, getSearchHistory } from "@/lib/search-history";
 import { useDebouncedValue } from "@/hooks/useDebouncedValue";
+import { S } from "@/design-system/strings";
 
 const SCOPE_ICON: Record<string, DsIconName> = {
   quran: "quran", tafsir: "tafsir", hadith: "hadith", fiqh: "fiqh", adhkar: "adhkar", lesson: "lessons",
@@ -53,19 +54,19 @@ export default function SearchScreen() {
   const groups = useMemo(() => groupSearchResultsBySection(results), [results]);
   return (
     <div className="sn-screen" data-testid="search-screen">
-      <NavigationBar title="البحث" subtitle="القرآن والحديث والدروس والأقسام" />
+      <NavigationBar title={S.search_01} subtitle={S.search_02} />
       <div className="sn-container sn-stack sn-stack--lg">
-        <SearchField large value={term} onChange={setTerm} label="بحث شامل" />
-        <div className="sn-chip-scroller" role="group" aria-label="نطاق البحث">
-          <Chip selected={scope === "all"} onClick={() => setScope("all")}>الكل</Chip>
+        <SearchField large value={term} onChange={setTerm} label={S.quranHub_03} />
+        <div className="sn-chip-scroller" role="group" aria-label={S.search_03}>
+          <Chip selected={scope === "all"} onClick={() => setScope("all")}>{S.lessons_12}</Chip>
           {SEARCH_SCOPE_DEFS.slice(0, 8).map((s) => (
             <Chip key={s.id} selected={scope === s.id} onClick={() => setScope(s.id)}>{s.title}</Chip>
           ))}
         </div>
 
         {state === "idle" && recent.length > 0 ? (
-          <section className="sn-stack" aria-label="عمليات بحث سابقة">
-            <SectionHeader title="عمليات سابقة" actionLabel="مسح" onAction={() => { clearSearchHistory(); setRecent([]); }} />
+          <section className="sn-stack" aria-label={S.search_04}>
+            <SectionHeader title={S.search_05} actionLabel={S.search_06} onAction={() => { clearSearchHistory(); setRecent([]); }} />
             <div className="sn-chip-scroller">
               {recent.map((r) => (<Chip key={r} onClick={() => setTerm(r)}>{r}</Chip>))}
             </div>
@@ -73,8 +74,8 @@ export default function SearchScreen() {
         ) : null}
 
         {state === "idle" ? (
-          <section className="sn-stack" aria-label="تصفّح الأقسام">
-            <SectionHeader title="تصفّح الأقسام" />
+          <section className="sn-stack" aria-label={S.search_07}>
+            <SectionHeader title={S.search_07} />
             <ListGroup>
               {SEARCH_SCOPE_DEFS.map((s) => (<ListRow key={s.id} icon={SCOPE_ICON[s.id] ?? "search"} title={s.title} description={s.desc} href={s.href} />))}
             </ListGroup>
@@ -82,9 +83,9 @@ export default function SearchScreen() {
         ) : null}
 
         {state === "loading" ? <><SkeletonCard /><SkeletonCard /></> : null}
-        {state === "error" ? <ErrorState title="تعذّر البحث" onRetry={() => setTerm((t) => t + " ")} /> : null}
+        {state === "error" ? <ErrorState title={S.search_08} onRetry={() => setTerm((t) => t + " ")} /> : null}
         {state === "ready" && results.length === 0 ? (
-          <EmptyState icon="search" title="لا نتائج مطابقة" description={suggestions.length ? `ربما تقصد: ${suggestions.slice(0, 3).join("، ")}` : "جرّب كلمات أخرى أو غيّر نطاق البحث."} />
+          <EmptyState icon="search" title={S.search_09} description={suggestions.length ? `ربما تقصد: ${suggestions.slice(0, 3).join(S.search_10)}` : S.search_11} />
         ) : null}
         {state === "ready" ? groups.map((g) => (
           <section key={g.id} className="sn-stack" aria-label={g.label}>

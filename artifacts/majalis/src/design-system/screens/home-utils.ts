@@ -1,10 +1,11 @@
 import { getHijriDateString } from "@/lib/hijri-utils";
 import { toArabicIndicDigits } from "@/lib/numerals";
+import { S } from "@/design-system/strings";
 
 /** تحية بحسب وقت الجهاز. */
 export function greetingFor(date = new Date()): string {
   const h = date.getHours();
-  return h >= 4 && h < 12 ? "صباح الخير" : "مساء الخير";
+  return h >= 4 && h < 12 ? S.homeutils_01 : S.homeutils_02;
 }
 
 /** «٢٣ ربيع الآخر ١٤٤٨ هـ · ٦ أكتوبر ٢٠٢٦ م» */

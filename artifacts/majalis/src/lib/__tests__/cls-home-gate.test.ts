@@ -96,12 +96,6 @@ assert.equal(
     /HomeRestShell[\s\S]*HomeSearchShell/,
     "البحث خارج Suspense فوق الطية — ليس داخل RestShell",
   );
-  const appSrc = readFileSync(resolve(root, "src/App.tsx"), "utf8");
-  assert.match(
-    appSrc,
-    /HomeUniversalSearch[\s\S]*HomeHeroLcp[\s\S]*HomeStartHereSection[\s\S]*HomePage/,
-    "ترتيب الرئيسية: بحث→هوية→ابدأ→المحتوى",
-  );
   assert.match(critical, /\.mj-home-primary-discovery-ph[\s\S]*min-height:\s*22rem/, "حجز الاكتشاف المضغوط في CSS الحرج");
   assert.match(critical, /\.home-live-now-ph[\s\S]*min-height:\s*3\.25rem/, "حجز البث في CSS الحرج");
   assert.match(

@@ -5,6 +5,7 @@ import { Badge, Card, IconButton } from "./primitives";
 import { Switch } from "./navigation";
 import { toArabicIndicDigits, toLatinDigits } from "@/lib/numerals";
 import { cn } from "@/lib/utils";
+import { S } from "@/design-system/strings";
 
 type ActionHandlers = { onSave?: () => void; onShare?: () => void; saved?: boolean };
 
@@ -12,8 +13,8 @@ function CardActions({ onSave, onShare, saved }: ActionHandlers) {
   if (!onSave && !onShare) return null;
   return (
     <span className="sn-card-actions">
-      {onSave ? <IconButton icon={saved ? "bookmarkFilled" : "bookmark"} label={saved ? "إزالة من المحفوظات" : "حفظ"} size={20} onClick={onSave} /> : null}
-      {onShare ? <IconButton icon="share" label="مشاركة" size={20} onClick={onShare} /> : null}
+      {onSave ? <IconButton icon={saved ? "bookmarkFilled" : "bookmark"} label={saved ? S.content_01 : S.content_02} size={20} onClick={onSave} /> : null}
+      {onShare ? <IconButton icon="share" label={S.content_03} size={20} onClick={onShare} /> : null}
     </span>
   );
 }
@@ -26,7 +27,7 @@ export function formatAyahRef(surah: string, ayah: number | string): string {
 /** بطاقة حديث — Sunnah Text 20/1.9 (أو 24 للمميّز) + مرجع بخط الواجهة. */
 export function HadithCard({ text, source, featured, ...actions }: { text: string; source?: string; featured?: boolean } & ActionHandlers) {
   return (
-    <Card variant={featured ? "featured" : "standard"} className="sn-hadith-card" aria-label="حديث">
+    <Card variant={featured ? "featured" : "standard"} className="sn-hadith-card" aria-label={S.content_04}>
       <p className={cn("sn-hadith-card__text", featured ? "sn-t-hadith-featured" : "sn-t-hadith")}>{text}</p>
       <div className="sn-card-ref">
         <span>{source}</span>
@@ -39,7 +40,7 @@ export function HadithCard({ text, source, featured, ...actions }: { text: strin
 /** بطاقة آية — Sunnah Quran 24/2.0 (ارتفاع السطر يحمي التشكيل) + مرجع «السورة: رقم». */
 export function AyahCard({ text, surah, ayah, ...actions }: { text: string; surah: string; ayah: number | string } & ActionHandlers) {
   return (
-    <Card variant="featured" className="sn-ayah-card" aria-label="آية">
+    <Card variant="featured" className="sn-ayah-card" aria-label={S.content_05}>
       <p className="sn-ayah-card__text sn-t-ayah" lang="ar">{text}</p>
       <div className="sn-card-ref">
         <span>{formatAyahRef(surah, ayah)}</span>
@@ -55,7 +56,7 @@ export type LessonCardData = {
   sheikh: string;
   when?: string;
   place?: string;
-  mode?: "حضوري" | "عن بُعد";
+  mode?: typeof S.content_06 | typeof S.content_07;
 };
 
 /** بطاقة درس موحّدة — تُستعمل في الرئيسية والدروس والبحث. */
@@ -70,7 +71,7 @@ export function LessonCard({ lesson, href, saved, onSave }: { lesson: LessonCard
         {lesson.when ? <span className="sn-meta-item"><Icon name="clock" size={20} />{lesson.when}</span> : null}
         {lesson.place ? <span className="sn-meta-item"><Icon name="location" size={20} />{lesson.place}</span> : null}
         {lesson.mode ? <Badge>{lesson.mode}</Badge> : null}
-        {onSave ? <IconButton icon={saved ? "bookmarkFilled" : "bookmark"} label={saved ? "إزالة الدرس من المحفوظات" : "حفظ الدرس"} size={20} onClick={onSave} /> : null}
+        {onSave ? <IconButton icon={saved ? "bookmarkFilled" : "bookmark"} label={saved ? S.content_08 : S.content_09} size={20} onClick={onSave} /> : null}
       </div>
     </article>
   );
@@ -80,7 +81,7 @@ export function LessonCard({ lesson, href, saved, onSave }: { lesson: LessonCard
 export function PrayerTimeRow({ name, time, next, alarm, onAlarmChange }: { name: string; time: string; next?: boolean; alarm?: boolean; onAlarmChange?: (v: boolean) => void }) {
   return (
     <div className="sn-prayer-row" data-next={next ? "true" : undefined}>
-      <span className="sn-prayer-row__name">{name}{next ? <> <Badge tone="success">القادمة</Badge></> : null}</span>
+      <span className="sn-prayer-row__name">{name}{next ? <> <Badge tone="success">{S.content_10}</Badge></> : null}</span>
       <time className="sn-prayer-row__time">{time}</time>
       {onAlarmChange ? <Switch checked={!!alarm} onChange={onAlarmChange} label={`تنبيه ${name}`} /> : null}
     </div>
@@ -92,7 +93,7 @@ function pad(n: number) {
 }
 
 function CountdownView({ h, m, s }: { h: number; m: number; s: number }) {
-  const parts: Array<[number, string]> = [[h, "ساعة"], [m, "دقيقة"], [s, "ثانية"]];
+  const parts: Array<[number, string]> = [[h, S.content_11], [m, S.content_12], [s, S.content_13]];
   return (
     <span className="sn-countdown" role="timer" aria-label={`متبقٍ ${h} ساعة و${m} دقيقة`}>
       {parts.map(([v, label], i) => (
@@ -133,7 +134,7 @@ export type QuickItem = { id: string; label: string; href: string; icon: DsIconN
 /** شبكة الوصول السريع 4×2. */
 export function QuickGrid({ items }: { items: readonly QuickItem[] }) {
   return (
-    <nav className="sn-quick-grid" aria-label="وصول سريع">
+    <nav className="sn-quick-grid" aria-label={S.content_14}>
       {items.map((it) => (
         <Link key={it.id} href={it.href} className="sn-quick-item sn-pressable">
           <span className="sn-quick-item__icon"><Icon name={it.icon} size={24} /></span>

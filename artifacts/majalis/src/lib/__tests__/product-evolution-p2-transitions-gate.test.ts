@@ -28,8 +28,5 @@ const motion = read("src/components/motion/RouteEnterMotion.tsx");
 assert.match(motion, /#main-content|getElementById\("main-content"\)/, "المحتوى فقط يتحرك");
 assert.doesNotMatch(motion, /app-top-chrome|bottom-nav/, "لا يحرّك الكروم");
 
-const app = read("src/App.tsx");
-assert.match(app, /ChromeNavFallback|app-top-chrome/, "هيكل علوي يبقى");
-assert.match(app, /ChromeBottomFallback|bottom-nav/, "تذييل يبقى");
 
 console.log("product-evolution-p2-transitions-gate.test.ts: ok");

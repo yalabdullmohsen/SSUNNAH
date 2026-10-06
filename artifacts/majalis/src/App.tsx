@@ -12,7 +12,6 @@ import { VisualViewportKeyboardBridge } from "@/hooks/useVisualViewportOffset";
 import { FloatingLayerSync } from "@/components/FloatingLayerSync";
 import { ensureChromeMeta } from "@/lib/ensure-chrome-meta";
 import { PageChromeSync } from "@/components/PageChromeSync";
-import { useAutoHideBottomNav } from "@/hooks/useAutoHideBottomNav";
 import { AppTabBar, AppTopBar } from "@/design-system/shell";
 import { ErrorBoundary, SectionErrorBoundary } from "@/components/ErrorBoundary";
 import "@/styles/components/chrome-boot-ph.css";
@@ -30,7 +29,7 @@ import {
   type ScrollSnapshot,
 } from "@/lib/scroll-document-top";
 import { recordNavigationVisit } from "@/lib/navigation-back";
-import { isAuthStandalonePath, isImmersiveChromePath, isPinnedChromePath, isPrayerTimesPath } from "@/lib/immersive-chrome";
+import { isAuthStandalonePath, isImmersiveChromePath, isPrayerTimesPath } from "@/lib/immersive-chrome";
 import { commitRouteSurface, ensurePrayerRouteShellCss } from "@/lib/route-surface";
 import { isHomeChromePath } from "@/lib/ticker-quiet-paths";
 import { isNative, isNativeApp } from "@/lib/capacitor-utils";
@@ -615,10 +614,6 @@ function AppShellInner() {
     });
   }, []);
 
-  const { isHidden: shouldHideChrome } = useAutoHideBottomNav({
-    forceShow: searchOpen || comingSoonOpen || hideSiteChrome || isPinnedChromePath(location),
-    routeKey: location,
-  });
 
   useEffect(() => {
     // viewport / color-scheme فقط — ألوان الشريط عبر PageChromeSync
@@ -1061,9 +1056,8 @@ function AppShellInner() {
   return (
     <PrayerCountdownScope deferMs={0}>
     <div
-      className={`app-shell${shouldHideChrome ? " app-chrome-hidden" : ""}${isNativeApp ? " app-shell--native" : ""}`}
+      className={`app-shell${isNativeApp ? " app-shell--native" : ""}`}
       style={{ "--app-dir": dir } as React.CSSProperties}
-      data-chrome-hidden={shouldHideChrome ? "true" : "false"}
       data-native-app={isNativeApp ? "true" : "false"}
     >
       <PageChromeSync />
@@ -1117,7 +1111,7 @@ function AppShellInner() {
           <PwaInstallBanner />
         </Suspense>
       )}
-      {!onAuthStandalone && !immersive && <AppTabBar hidden={shouldHideChrome && false} />}
+      {!onAuthStandalone && !immersive && <AppTabBar />}
       {!onAuthStandalone ? <DeferredQuranMiniPlayer /> : null}
       <FloatingLayerSync />
       <VisualViewportKeyboardBridge />

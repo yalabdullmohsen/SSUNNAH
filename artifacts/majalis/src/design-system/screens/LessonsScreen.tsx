@@ -4,8 +4,9 @@ import { getUnifiedActiveLessons } from "@/lib/lessons-service";
 import { fromKuwaitLesson, type UnifiedLesson } from "@/lib/unified-lesson-card";
 import { isLocalBookmarked, toggleLocalBookmark } from "@/lib/local-bookmarks";
 import { toArabicIndicDigits } from "@/lib/numerals";
+import { S } from "@/design-system/strings";
 
-const WEEK = ["السبت", "الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة"] as const;
+const WEEK = [S.lessons_01, S.lessons_02, S.lessons_03, S.lessons_04, S.lessons_05, S.lessons_06, S.lessons_07] as const;
 type Mode = "all" | "onsite" | "remote" | "saved";
 
 function weekDays(): Array<{ name: (typeof WEEK)[number]; date: number }> {
@@ -57,30 +58,30 @@ export default function LessonsScreen() {
   );
 
   const toData = (l: UnifiedLesson & { hasLiveStream?: boolean; streamUrl?: string }): LessonCardData => ({
-    id: l.id, title: l.title, sheikh: l.sheikhName, when: [l.day, l.time].filter(Boolean).join(" · "), place: l.mosque, mode: isRemote(l) ? "عن بُعد" : "حضوري",
+    id: l.id, title: l.title, sheikh: l.sheikhName, when: [l.day, l.time].filter(Boolean).join(" · "), place: l.mosque, mode: isRemote(l) ? S.content_07 : S.content_06,
   });
 
   return (
     <div className="sn-screen" data-testid="lessons-screen">
-      <NavigationBar title="الدروس" subtitle="دروس علمية موثّقة في الكويت" trailing={<IconLink icon="search" label="بحث" href="/search" />} />
+      <NavigationBar title={S.home_08} subtitle={S.lessons_08} trailing={<IconLink icon="search" label={S.navigation_03} href="/search" />} />
       <div className="sn-container sn-stack">
-        <div className="sn-chip-scroller" role="group" aria-label="أيام الأسبوع">
-          <Chip selected={day === ""} onClick={() => setDay("")}>كل الأيام</Chip>
+        <div className="sn-chip-scroller" role="group" aria-label={S.lessons_09}>
+          <Chip selected={day === ""} onClick={() => setDay("")}>{S.lessons_10}</Chip>
           {days.map((d) => (
             <Chip key={d.name} selected={day === d.name} onClick={() => setDay(day === d.name ? "" : d.name)}>
               {d.name} {toArabicIndicDigits(d.date)}
             </Chip>
           ))}
         </div>
-        <div className="sn-chip-scroller" role="group" aria-label="تصفية الدروس">
-          {([["all", "الكل"], ["onsite", "حضوري"], ["remote", "عن بُعد"], ["saved", "المحفوظ"]] as const).map(([v, label]) => (
+        <div className="sn-chip-scroller" role="group" aria-label={S.lessons_11}>
+          {([["all", S.lessons_12], ["onsite", S.content_06], ["remote", S.content_07], ["saved", S.lessons_13]] as const).map(([v, label]) => (
             <Chip key={v} selected={mode === v} onClick={() => setMode(v)}>{label}</Chip>
           ))}
         </div>
         {state === "loading" ? <><SkeletonCard /><SkeletonCard /><SkeletonCard /></> : null}
         {state === "error" ? <ErrorState onRetry={load} /> : null}
         {state === "ready" && list.length === 0 ? (
-          <EmptyState icon="lessons" title={mode === "saved" ? "لا دروس محفوظة" : "لا دروس مطابقة"} description={mode === "saved" ? "اضغط أيقونة الحفظ على أي درس ليظهر هنا." : "جرّب يومًا آخر أو أزل التصفية."} />
+          <EmptyState icon="lessons" title={mode === "saved" ? S.lessons_14 : S.lessons_15} description={mode === "saved" ? S.lessons_16 : S.lessons_17} />
         ) : null}
         {state === "ready" ? list.map((l) => (
           <LessonCard key={l.id} lesson={toData(l)} href={l.detailsHref || `/lessons/${l.id}`} saved={saved[l.id]}

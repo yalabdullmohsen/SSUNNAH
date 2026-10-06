@@ -65,16 +65,16 @@ for (const dir of SCAN_DIRS) {
 
 // redirects must not surface /more or /library as pages
 const vercel = readFileSync(join(root, "vercel.json"), "utf8");
-if (!/"source":\s*"\/more"[\s\S]{0,80}"destination":\s*"\/sections"/.test(vercel)) {
-  failures.push("vercel.json: /more يجب أن يحوّل إلى /sections");
+if (/"source":\s*"\/more"/.test(vercel)) {
+  failures.push("vercel.json: /more صفحة «المزيد» (تبويب) ولا يُحوَّل");
 }
 if (!/"source":\s*"\/library"[\s\S]{0,80}"destination":\s*"\/search"/.test(vercel)) {
   failures.push("vercel.json: /library يجب أن يحوّل إلى /search");
 }
 
 const app = readFileSync(join(root, "src/AppRoutes.tsx"), "utf8");
-if (!/path="\/more"[\s\S]{0,80}Redirect to="\/sections"/.test(app)) {
-  failures.push("AppRoutes: /more → /sections");
+if (!/path="\/more"[\s\S]{0,80}component=\{MorePage\}/.test(app)) {
+  failures.push("AppRoutes: /more يجب أن يعرض MorePage");
 }
 if (!/path="\/library"[\s\S]{0,80}Redirect to="\/search"/.test(app)) {
   failures.push("AppRoutes: /library → /search");

@@ -14,16 +14,17 @@ import { fromKuwaitLesson } from "@/lib/unified-lesson-card";
 import { toArabicIndicDigits } from "@/lib/numerals";
 import { dualDateLabel, greetingFor, pageFromMushafRoute } from "./home-utils";
 import { PrayerHero } from "./PrayerHero";
+import { S } from "@/design-system/strings";
 
 const QUICK: readonly QuickItem[] = [
-  { id: "mushaf", label: "المصحف", href: "/mushaf", icon: "quran" },
-  { id: "tafsir", label: "التفسير", href: "/tafsir", icon: "tafsir" },
-  { id: "adhkar", label: "الأذكار", href: "/adhkar", icon: "adhkar" },
-  { id: "tasbih", label: "التسبيح", href: "/tasbih", icon: "tasbih" },
-  { id: "qibla", label: "القبلة", href: "/qibla", icon: "qibla" },
-  { id: "arbaeen", label: "الأربعون", href: "/arbaeen-nawawi", icon: "hadith" },
-  { id: "hadith", label: "الحديث", href: "/hadith", icon: "hadith" },
-  { id: "lessons", label: "الدروس", href: "/lessons", icon: "lessons" },
+  { id: "mushaf", label: S.home_01, href: "/mushaf", icon: "quran" },
+  { id: "tafsir", label: S.home_02, href: "/tafsir", icon: "tafsir" },
+  { id: "adhkar", label: S.home_03, href: "/adhkar", icon: "adhkar" },
+  { id: "tasbih", label: S.home_04, href: "/tasbih", icon: "tasbih" },
+  { id: "qibla", label: S.home_05, href: "/qibla", icon: "qibla" },
+  { id: "arbaeen", label: S.home_06, href: "/arbaeen-nawawi", icon: "hadith" },
+  { id: "hadith", label: S.home_07, href: "/hadith", icon: "hadith" },
+  { id: "lessons", label: S.home_08, href: "/lessons", icon: "lessons" },
 ];
 
 const START_FLAG = "sn-home-start-dismissed-v1";
@@ -33,7 +34,7 @@ function ContinueCard() {
   const latest = useMemo(() => getLatestContinueReading(), []);
   const page = latest?.section === "mushaf" ? pageFromMushafRoute(latest.route) : null;
   return (
-    <Card variant="featured" aria-label="تابع">
+    <Card variant="featured" aria-label={S.home_09}>
       <div className="sn-stack">
         {latest ? (
           <Link href={latest.route} className="sn-continue-row sn-pressable">
@@ -48,16 +49,16 @@ function ContinueCard() {
           <Link href="/mushaf" className="sn-continue-row sn-pressable">
             <span className="sn-row-item__icon"><Icon name="quran" size={20} /></span>
             <span className="sn-row-item__body">
-              <span className="sn-row-item__title">ابدأ قراءة المصحف</span>
-              <span className="sn-row-item__desc">يُحفظ موضعك تلقائيًا</span>
+              <span className="sn-row-item__title">{S.home_10}</span>
+              <span className="sn-row-item__desc">{S.home_11}</span>
             </span>
             <Icon name="chevron" size={20} className="sn-row-item__chev" />
           </Link>
         )}
-        {page ? <ProgressBar value={(page / 604) * 100} label="تقدّم قراءة المصحف" /> : null}
+        {page ? <ProgressBar value={(page / 604) * 100} label={S.home_12} /> : null}
         <Link href="/my-learning" className="sn-continue-row sn-pressable">
           <span className="sn-row-item__icon"><Icon name="check" size={20} /></span>
-          <span className="sn-row-item__body"><span className="sn-row-item__title">الورد اليومي</span></span>
+          <span className="sn-row-item__body"><span className="sn-row-item__title">{S.home_13}</span></span>
           <Icon name="chevron" size={20} className="sn-row-item__chev" />
         </Link>
       </div>
@@ -71,7 +72,7 @@ function shareText(title: string, text: string, toast: (m: string, tone?: "defau
     void navigator.share({ title, text: body }).catch(() => undefined);
     return;
   }
-  void navigator.clipboard?.writeText(body).then(() => toast("تم النسخ"), () => toast("تعذّر النسخ", "danger"));
+  void navigator.clipboard?.writeText(body).then(() => toast(S.home_14), () => toast(S.home_15, "danger"));
 }
 
 function DailyContent() {
@@ -87,13 +88,13 @@ function DailyContent() {
   const save = useCallback((key: string, id: string, title: string, href: string) => {
     const on = toggleLocalBookmark({ contentType: key, contentId: id, title, href });
     setSaved((s) => ({ ...s, [key]: on }));
-    toast(on ? "تم الحفظ" : "أُزيل من المحفوظات");
+    toast(on ? S.home_16 : S.home_17);
   }, [toast]);
   const ayahRef = formatAyahRef(ayah.surah.replace(/^سورة\s+/, ""), ayah.ayahNumber);
   return (
-    <section className="sn-stack" aria-label="محتوى اليوم">
-      <SectionHeader title="محتوى اليوم" />
-      <Hscroll label="محتوى اليوم">
+    <section className="sn-stack" aria-label={S.home_18}>
+      <SectionHeader title={S.home_18} />
+      <Hscroll label={S.home_18}>
         <div className="sn-today-card" role="listitem">
           <AyahCard text={ayah.text} surah={ayah.surah.replace(/^سورة\s+/, "")} ayah={ayah.ayahNumber} saved={saved.ayah}
             onSave={() => save("ayah", ayah.id, ayahRef, "/mushaf")} onShare={() => shareText(ayahRef, ayah.text, toast)} />
@@ -103,12 +104,12 @@ function DailyContent() {
             onSave={() => save("hadith", hadith.id, hadith.source, "/hadith")} onShare={() => shareText(hadith.source, hadith.text, toast)} />
         </div>
         <div className="sn-today-card" role="listitem">
-          <HadithCard text={dhikr.text} source={dhikr.source || "ذكر اليوم"} saved={saved.dhikr}
-            onSave={() => save("dhikr", dhikr.id, dhikr.source || "ذكر", "/adhkar")} onShare={() => shareText("ذكر اليوم", dhikr.text, toast)} />
+          <HadithCard text={dhikr.text} source={dhikr.source || S.home_19} saved={saved.dhikr}
+            onSave={() => save("dhikr", dhikr.id, dhikr.source || S.home_20, "/adhkar")} onShare={() => shareText(S.home_19, dhikr.text, toast)} />
         </div>
         <div className="sn-today-card" role="listitem">
-          <HadithCard text={faida.text} source={faida.author_name || faida.category || "فائدة اليوم"} saved={saved.faida}
-            onSave={() => save("faida", faida.id, faida.category || "فائدة", "/fawaid")} onShare={() => shareText("فائدة اليوم", faida.text, toast)} />
+          <HadithCard text={faida.text} source={faida.author_name || faida.category || S.home_21} saved={saved.faida}
+            onSave={() => save("faida", faida.id, faida.category || S.home_22, "/fawaid")} onShare={() => shareText(S.home_21, faida.text, toast)} />
         </div>
       </Hscroll>
     </section>
@@ -130,13 +131,13 @@ function UpcomingLessons() {
   }, []);
   useEffect(load, [load]);
   return (
-    <section className="sn-stack" aria-label="الدروس القادمة">
-      <SectionHeader title="الدروس القادمة" actionLabel="عرض الكل" actionHref="/lessons" />
+    <section className="sn-stack" aria-label={S.home_23}>
+      <SectionHeader title={S.home_23} actionLabel={S.home_24} actionHref="/lessons" />
       {state === "loading" ? <SkeletonCard /> : null}
       {state === "error" ? <ErrorState onRetry={load} /> : null}
-      {state === "ready" && items.length === 0 ? <EmptyState icon="lessons" title="لا دروس قادمة الآن" description="تابع الدروس لاحقًا أو تصفّح الأرشيف." /> : null}
+      {state === "ready" && items.length === 0 ? <EmptyState icon="lessons" title={S.home_25} description={S.home_26} /> : null}
       {state === "ready" && items.length > 0 ? (
-        <Hscroll label="الدروس القادمة">
+        <Hscroll label={S.home_23}>
           {items.map((l) => (<div key={l.id} className="sn-lesson-slot" role="listitem"><LessonCard lesson={l} href={l.href} /></div>))}
         </Hscroll>
       ) : null}
@@ -149,14 +150,14 @@ function StartHere() {
   if (dismissed) return null;
   const dismiss = () => { try { localStorage.setItem(START_FLAG, "1"); } catch { /* ignore */ } setDismissed(true); };
   return (
-    <Card variant="featured" aria-label="ابدأ من هنا">
+    <Card variant="featured" aria-label={S.home_27}>
       <div className="sn-stack">
-        <p className="sn-t-footnote sn-t-secondary">للزائر الجديد</p>
-        <h2 className="sn-t-title2">ابدأ من هنا</h2>
-        <p className="sn-t-subhead sn-t-secondary">القرآن والأذكار والدروس الموثّقة في مكان واحد. ابدأ بالمصحف أو بدرس قريب منك.</p>
+        <p className="sn-t-footnote sn-t-secondary">{S.home_28}</p>
+        <h2 className="sn-t-title2">{S.home_27}</h2>
+        <p className="sn-t-subhead sn-t-secondary">{S.home_29}</p>
         <div className="sn-row">
-          <Button variant="primary" onClick={() => { dismiss(); window.location.assign("/mushaf"); }}>افتح المصحف</Button>
-          <Button variant="tertiary" onClick={dismiss}>إخفاء</Button>
+          <Button variant="primary" onClick={() => { dismiss(); window.location.assign("/mushaf"); }}>{S.home_30}</Button>
+          <Button variant="tertiary" onClick={dismiss}>{S.home_31}</Button>
         </div>
       </div>
     </Card>
@@ -171,15 +172,15 @@ export default function HomeScreen() {
         title={greetingFor()}
         subtitle={dualDateLabel()}
         trailing={<>
-          <IconLink icon="search" label="بحث" href="/search" />
-          <IconLink icon={isLoggedIn ? "user" : "login"} label={isLoggedIn ? "حسابي" : "تسجيل الدخول"} href={isLoggedIn ? "/profile" : "/login"} />
+          <IconLink icon="search" label={S.navigation_03} href="/search" />
+          <IconLink icon={isLoggedIn ? "user" : "login"} label={isLoggedIn ? S.home_32 : S.auth_18} href={isLoggedIn ? "/profile" : "/login"} />
         </>}
       />
       <div className="sn-container sn-stack sn-stack--lg">
         <PrayerHero />
         <ContinueCard />
-        <section className="sn-stack" aria-label="وصول سريع">
-          <SectionHeader title="وصول سريع" />
+        <section className="sn-stack" aria-label={S.content_14}>
+          <SectionHeader title={S.content_14} />
           <QuickGrid items={QUICK} />
         </section>
         <DailyContent />

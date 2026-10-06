@@ -1,27 +1,28 @@
 import type { TabItem } from "../navigation";
+import { S } from "@/design-system/strings";
 
 /**
  * التبويبات الخمسة — مصدر وحيد للشريط السفلي (iOS TabBar).
  * match: بادئات المسارات التي تُبرز التبويب؛ أي مسار غير مطابق يُنسب إلى «المزيد».
  */
 export const APP_TABS: readonly TabItem[] = [
-  { id: "home", label: "الرئيسية", href: "/", icon: "home", match: ["/"] },
+  { id: "home", label: S.tabs_01, href: "/", icon: "home", match: ["/"] },
   {
     id: "quran",
-    label: "القرآن",
+    label: S.quranHub_01,
     href: "/quran-hub",
     icon: "quran",
     match: ["/quran-hub", "/quran", "/mushaf", "/mushaf-v2-preview", "/tafsir", "/quran-engine", "/quran-index", "/quran-knowledge", "/quran-sciences", "/quran-studies", "/quran-stories", "/quran-memorization", "/quran-circles", "/ulum-quran", "/tajweed", "/mutashabihat"],
   },
-  { id: "lessons", label: "الدروس", href: "/lessons", icon: "lessons", match: ["/lessons", "/teachers", "/sheikhs", "/courses", "/calendar", "/kuwait-lessons", "/announcements", "/competitions"] },
+  { id: "lessons", label: S.home_08, href: "/lessons", icon: "lessons", match: ["/lessons", "/teachers", "/sheikhs", "/courses", "/calendar", "/kuwait-lessons", "/announcements", "/competitions"] },
   {
     id: "worship",
-    label: "العبادات",
+    label: S.worship_01,
     href: "/worship",
     icon: "prayer",
     match: ["/worship", "/prayer", "/prayer-times", "/prayer-countdown", "/prayer-ranks", "/salah-guide", "/adhkar", "/duas", "/duas-quran", "/qibla", "/tasbih", "/zakat", "/sawm", "/hajj", "/tahara", "/janaza", "/sujood-sahw", "/udhiya"],
   },
-  { id: "more", label: "المزيد", href: "/more", icon: "more", match: ["/more", "/sections", "/settings", "/profile", "/search", "/login", "/register"] },
+  { id: "more", label: S.more_07, href: "/more", icon: "more", match: ["/more", "/sections", "/settings", "/profile", "/search", "/login", "/register"] },
 ] as const;
 
 export type AppTabId = (typeof APP_TABS)[number]["id"];

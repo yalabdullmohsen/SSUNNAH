@@ -1,18 +1,18 @@
 {
   "schemaVersion": 2,
   "phase": "T-047",
-  "generatedAtUtc": "2026-10-03T09:21:57.904Z",
+  "generatedAtUtc": "2026-10-06T16:03:47.586Z",
   "allowlistPath": "docs/store-release/STORE_RELEASE_ALLOWLIST.json",
   "summary": {
-    "totalAssets": 131,
-    "releaseFlavorCount": 83,
+    "totalAssets": 124,
+    "releaseFlavorCount": 71,
     "releaseFlavorUnknownCount": 0,
     "treeUnknownCount": 20,
-    "strippedCount": 44,
+    "strippedCount": 49,
     "streamOnlyCount": 1,
     "ownerDecisionCount": 2,
     "cc0ApprovedCount": 5,
-    "oflApprovedCount": 12,
+    "oflApprovedCount": 0,
     "audioAllowlistLocked": true,
     "qpcClass": "OWNER_DECISION_REQUIRED",
     "RELEASE_BINARY_HAS_ZERO_UNKNOWN_ASSETS": true,
@@ -59,102 +59,6 @@
       "path": "ios/App/App/Sounds/adhan-short-field.caf",
       "domain": "adhan-ios",
       "class": "CC0_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:OFL.txt",
-      "path": "public/fonts/ui/OFL.txt",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:amiri-400-ar.woff2",
-      "path": "public/fonts/ui/amiri-400-ar.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:amiri-400-lat.woff2",
-      "path": "public/fonts/ui/amiri-400-lat.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:amiri-700-ar.woff2",
-      "path": "public/fonts/ui/amiri-700-ar.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:amiri-700-lat.woff2",
-      "path": "public/fonts/ui/amiri-700-lat.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:aref-ruqaa-400-ar.woff2",
-      "path": "public/fonts/ui/aref-ruqaa-400-ar.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:aref-ruqaa-700-ar.woff2",
-      "path": "public/fonts/ui/aref-ruqaa-700-ar.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:aref-ruqaa-700-lat.woff2",
-      "path": "public/fonts/ui/aref-ruqaa-700-lat.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:noto-naskh-400-ar.woff2",
-      "path": "public/fonts/ui/noto-naskh-400-ar.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:noto-naskh-400-lat.woff2",
-      "path": "public/fonts/ui/noto-naskh-400-lat.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:noto-naskh-700-ar.woff2",
-      "path": "public/fonts/ui/noto-naskh-700-ar.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:scheherazade-400-ar.woff2",
-      "path": "public/fonts/ui/scheherazade-400-ar.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
       "releaseAction": "KEEP_IN_RELEASE",
       "inReleaseFlavor": true
     },
@@ -990,6 +894,51 @@
       "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
     },
     {
+      "id": "ios-caf:tone-chime.caf",
+      "path": "ios/App/App/Sounds/tone-chime.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:tone-fajr.caf",
+      "path": "ios/App/App/Sounds/tone-fajr.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:tone-nada.caf",
+      "path": "ios/App/App/Sounds/tone-nada.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:tone-nasim.caf",
+      "path": "ios/App/App/Sounds/tone-nasim.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:tone-qatra.caf",
+      "path": "ios/App/App/Sounds/tone-qatra.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
       "id": "qpc-v2-fonts",
       "path": "public/fonts/qpc-v2/**",
       "domain": "fonts",
@@ -1773,6 +1722,51 @@
       "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
     },
     {
+      "id": "ios-caf:tone-chime.caf",
+      "path": "ios/App/App/Sounds/tone-chime.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:tone-fajr.caf",
+      "path": "ios/App/App/Sounds/tone-fajr.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:tone-nada.caf",
+      "path": "ios/App/App/Sounds/tone-nada.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:tone-nasim.caf",
+      "path": "ios/App/App/Sounds/tone-nasim.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
+      "id": "ios-caf:tone-qatra.caf",
+      "path": "ios/App/App/Sounds/tone-qatra.caf",
+      "domain": "adhan-ios",
+      "class": "STRIP_FROM_RELEASE",
+      "releaseAction": "STRIP_FROM_RELEASE",
+      "inReleaseFlavor": false,
+      "note": "Exclude from Store Archive Copy Bundle Resources / native strip"
+    },
+    {
       "id": "qpc-v2-fonts",
       "path": "public/fonts/qpc-v2/**",
       "domain": "fonts",
@@ -1795,102 +1789,6 @@
         "classInReleaseFlavor": "STRIP_FROM_RELEASE"
       },
       "licensedClaim": false
-    },
-    {
-      "id": "font-ui:OFL.txt",
-      "path": "public/fonts/ui/OFL.txt",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:amiri-400-ar.woff2",
-      "path": "public/fonts/ui/amiri-400-ar.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:amiri-400-lat.woff2",
-      "path": "public/fonts/ui/amiri-400-lat.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:amiri-700-ar.woff2",
-      "path": "public/fonts/ui/amiri-700-ar.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:amiri-700-lat.woff2",
-      "path": "public/fonts/ui/amiri-700-lat.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:aref-ruqaa-400-ar.woff2",
-      "path": "public/fonts/ui/aref-ruqaa-400-ar.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:aref-ruqaa-700-ar.woff2",
-      "path": "public/fonts/ui/aref-ruqaa-700-ar.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:aref-ruqaa-700-lat.woff2",
-      "path": "public/fonts/ui/aref-ruqaa-700-lat.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:noto-naskh-400-ar.woff2",
-      "path": "public/fonts/ui/noto-naskh-400-ar.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:noto-naskh-400-lat.woff2",
-      "path": "public/fonts/ui/noto-naskh-400-lat.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:noto-naskh-700-ar.woff2",
-      "path": "public/fonts/ui/noto-naskh-700-ar.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
-    },
-    {
-      "id": "font-ui:scheherazade-400-ar.woff2",
-      "path": "public/fonts/ui/scheherazade-400-ar.woff2",
-      "domain": "fonts",
-      "class": "OFL_APPROVED",
-      "releaseAction": "KEEP_IN_RELEASE",
-      "inReleaseFlavor": true
     },
     {
       "id": "img:public/brand/drawer-open-390x844-dark.png",

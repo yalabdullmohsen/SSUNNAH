@@ -1,7 +1,7 @@
 {
   "version": 1,
   "policy": "no-new-token-prefix",
-  "note": "PR F freeze \u2014 new --prefix-* not in this list fails design-authority-closure",
+  "note": "PR F freeze — new --prefix-* not in this list fails design-authority-closure",
   "prefixes": [
     "aai",
     "acc",
@@ -229,6 +229,7 @@
     "sk",
     "skh",
     "sm",
+    "sn",
     "soft",
     "sp",
     "space",

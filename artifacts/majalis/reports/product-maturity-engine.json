@@ -1,30 +1,30 @@
 {
-  "updatedAt": "2026-10-03T09:21:30.460Z",
+  "updatedAt": "2026-10-06T16:03:27.189Z",
   "PRODUCT_MATURITY_SCORECARD": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:30.460Z",
-    "overallScore": 76,
-    "overallLevel": "MATURE",
+    "updatedAt": "2026-10-06T16:03:27.189Z",
+    "overallScore": 69,
+    "overallLevel": "ADVANCED",
     "categories": [
       {
         "name": "Design",
-        "score": 82,
-        "level": "MATURE"
+        "score": 64,
+        "level": "ADVANCED"
       },
       {
         "name": "UX",
-        "score": 66,
+        "score": 67,
         "level": "ADVANCED"
       },
       {
         "name": "Performance",
-        "score": 72,
+        "score": 55,
         "note": "Proxy via CSS debt ceilings — DEVICE_REQUIRED for LHCI/startup",
         "level": "ADVANCED"
       },
       {
         "name": "Consistency",
-        "score": 64,
+        "score": 56,
         "level": "ADVANCED"
       },
       {
@@ -39,7 +39,7 @@
       },
       {
         "name": "Architecture",
-        "score": 83,
+        "score": 76,
         "level": "MATURE"
       }
     ],
@@ -52,7 +52,7 @@
   },
   "DESIGN_DRIFT_ATLAS": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:30.460Z",
+    "updatedAt": "2026-10-06T16:03:27.189Z",
     "DESIGN_DRIFT_ERADICATION": true,
     "undocumentedDriftPolicy": "No undocumented visual drift — every entry has authority + priority",
     "entryCount": 13,
@@ -66,24 +66,9 @@
           "components/GlobalSearchModal.tsx",
           "components/RelatedKnowledge.tsx"
         ],
-        "signal": "bypass=208 adoption=9%",
+        "signal": "bypass=202 adoption=9%",
         "rootCause": "Parallel implementations outside authority",
         "authority": "CARD_SURFACE_AUTHORITY · AppCard",
-        "migrationPriority": "P0",
-        "screenshot": "DEVICE_REQUIRED — capture on absorb PR"
-      },
-      {
-        "domain": "buttons",
-        "location": [
-          "components/AdminInlineEdit.tsx",
-          "components/QuranViewer.tsx",
-          "components/admin/SubmissionsReviewPanel.tsx",
-          "components/admin/review-hub/ContentModerationCard.tsx",
-          "components/admin/review-hub/LinearAudioReviewPlayer.tsx"
-        ],
-        "signal": "bypass=100 adoption=71%",
-        "rootCause": "Residual raw controls",
-        "authority": "INTERACTION_COMPONENT_AUTHORITY · Button",
         "migrationPriority": "P0",
         "screenshot": "DEVICE_REQUIRED — capture on absorb PR"
       },
@@ -96,7 +81,7 @@
           "admin-v3/domains/content/RemainingEntityCrudPage.tsx",
           "admin-v3/domains/taxonomy/TaxonomyPage.tsx"
         ],
-        "signal": "bypass=148 adoption=23%",
+        "signal": "bypass=147 adoption=23%",
         "rootCause": "Parallel implementations outside authority",
         "authority": "FORM_AUTHORITY_MAP · FormLabel/FieldError",
         "migrationPriority": "P0",
@@ -109,7 +94,7 @@
           "styles/quran.css",
           "styles/admin.css"
         ],
-        "signal": "hardcoded color ×6549",
+        "signal": "hardcoded color ×4859",
         "rootCause": "Literal CSS/TSX values not mapped through DESIGN_TOKENS_AUTHORITY",
         "authority": "COLOR_AUTHORITY_MAP / DESIGN_TOKENS_AUTHORITY color.*",
         "migrationPriority": "P0",
@@ -122,7 +107,7 @@
           "styles/quran.css",
           "styles/admin.css"
         ],
-        "signal": "hardcoded shadow ×966",
+        "signal": "hardcoded shadow ×962",
         "rootCause": "Literal CSS/TSX values not mapped through DESIGN_TOKENS_AUTHORITY",
         "authority": "CARD_SURFACE_AUTHORITY · AppCard",
         "migrationPriority": "P0",
@@ -137,7 +122,7 @@
           "components/ErrorBoundary.tsx",
           "components/GlobalSearchModal.tsx"
         ],
-        "signal": "bypass=74 adoption=10%",
+        "signal": "bypass=74 adoption=9%",
         "rootCause": "Parallel implementations outside authority",
         "authority": "LIST_AUTHORITY_MAP · NavigationList",
         "migrationPriority": "P1",
@@ -150,9 +135,9 @@
           "components/FiqhGuidePage.tsx",
           "components/GlobalSearchModal.tsx",
           "components/adhan/PrayerAudioPicker.tsx",
-          "components/admin/review-hub/ReviewFilterBar.tsx"
+          "components/admin/review-hub/ReviewHubWorkspace.tsx"
         ],
-        "signal": "bypass=71 adoption=4%",
+        "signal": "bypass=68 adoption=8%",
         "rootCause": "Parallel implementations outside authority",
         "authority": "TAB_AUTHORITY_MAP · ContentTabs",
         "migrationPriority": "P1",
@@ -165,7 +150,7 @@
           "styles/quran.css",
           "styles/pages/prophet-stories.css"
         ],
-        "signal": "hardcoded spacing ×177",
+        "signal": "hardcoded spacing ×180",
         "rootCause": "Literal CSS/TSX values not mapped through DESIGN_TOKENS_AUTHORITY",
         "authority": "SPACING_AUTHORITY_MAP / spacing.*",
         "migrationPriority": "P1",
@@ -178,23 +163,35 @@
           "styles/quran.css",
           "styles/admin.css"
         ],
-        "signal": "hardcoded radii ×140",
+        "signal": "hardcoded radii ×132",
         "rootCause": "Literal CSS/TSX values not mapped through DESIGN_TOKENS_AUTHORITY",
         "authority": "CARD_SURFACE_AUTHORITY · AppCard",
         "migrationPriority": "P1",
         "screenshot": "DEVICE_REQUIRED — before/after on high-traffic route"
       },
       {
+        "domain": "buttons",
+        "location": [
+          "design-system/navigation.tsx",
+          "features/mushaf-madinah/MushafControls.tsx"
+        ],
+        "signal": "bypass=2 adoption=99%",
+        "rootCause": "Residual raw controls",
+        "authority": "INTERACTION_COMPONENT_AUTHORITY · Button",
+        "migrationPriority": "P2",
+        "screenshot": "DEVICE_REQUIRED — capture on absorb PR"
+      },
+      {
         "domain": "tables",
         "location": [
           "components/prayer/PrayerAnnualTimetable.tsx",
-          "views/ProphetStoriesPage.tsx",
           "views/admin/FeatureStatusPage.tsx",
           "views/admin/KnowledgeReasoningSection.tsx",
-          "views/admin/LessonsSection.tsx"
+          "views/admin/LessonsSection.tsx",
+          "views/admin/LibrarySection.tsx"
         ],
-        "signal": "bypass=14 adoption=39%",
-        "rootCause": "Parallel implementations outside authority",
+        "signal": "bypass=13 adoption=43%",
+        "rootCause": "Residual raw controls",
         "authority": "TABLE_AUTHORITY_MAP · DataTable",
         "migrationPriority": "P2",
         "screenshot": "DEVICE_REQUIRED — capture on absorb PR"
@@ -215,7 +212,7 @@
         "location": [
           "components/NativeBackButtonListener.tsx"
         ],
-        "signal": "bypass=1 adoption=96%",
+        "signal": "bypass=1 adoption=97%",
         "rootCause": "Residual raw controls",
         "authority": "INTERACTION_COMPONENT_AUTHORITY · Button",
         "migrationPriority": "P2",
@@ -228,7 +225,7 @@
           "styles/quran.css",
           "features/mushaf-reader/mushaf-reader.css"
         ],
-        "signal": "hardcoded typography ×94",
+        "signal": "hardcoded typography ×98",
         "rootCause": "Literal CSS/TSX values not mapped through DESIGN_TOKENS_AUTHORITY",
         "authority": "TYPOGRAPHY_AUTHORITY_MAP / typography.*",
         "migrationPriority": "P2",
@@ -238,9 +235,9 @@
   },
   "MICRO_FRICTION_BACKLOG": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:30.460Z",
+    "updatedAt": "2026-10-06T16:03:27.189Z",
     "UX_MICRO_FRICTION_ELIMINATION": true,
-    "total": 4,
+    "total": 3,
     "items": [
       {
         "id": "journey:Home → Mushaf",
@@ -257,13 +254,6 @@
         "fix": "Promote search affordance on Home header (1 tap)"
       },
       {
-        "id": "home:continue-dupe",
-        "issue": "Two continue-learning surfaces (Learning + Widget)",
-        "impact": "high",
-        "cost": "low",
-        "fix": "Keep one primary HomeContinueLearning CTA"
-      },
-      {
         "id": "confirm:components/NativeBackButtonListener.tsx",
         "issue": "window.confirm — weak/blocking feedback",
         "impact": "high",
@@ -275,12 +265,12 @@
       "confirmCount": 1,
       "alertCount": 0,
       "hashNav": 0,
-      "duplicateContinue": 1
+      "duplicateContinue": 0
     }
   },
   "CONTENT_STYLE_SCAN": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:30.460Z",
+    "updatedAt": "2026-10-06T16:03:27.189Z",
     "canonicalModule": "artifacts/majalis/src/lib/ui-copy.ts",
     "uiCopyPresent": true,
     "conflictingTerminology": [
@@ -288,12 +278,12 @@
         "a": "حاول مرة أخرى",
         "b": "أعد المحاولة",
         "label": "retry wording",
-        "countA": 5,
-        "countB": 19,
+        "countA": 6,
+        "countB": 20,
         "samplesA": [
           "components/UpdateAvailableBanner.tsx",
           "components/fawaid/FaidaImageCardModal.tsx",
-          "views/SubmitContentPage.tsx"
+          "design-system/primitives.tsx"
         ],
         "samplesB": [
           "admin-v3/states.tsx",
@@ -306,7 +296,7 @@
         "b": "لا نتائج",
         "label": "empty search",
         "countA": 3,
-        "countB": 16,
+        "countB": 17,
         "samplesA": [
           "admin-v3/ui/primitives.tsx",
           "views/admin/IslamicStoriesSection.tsx",
@@ -322,12 +312,12 @@
         "a": "حفظ",
         "b": "احفظ",
         "label": "save verb form",
-        "countA": 133,
+        "countA": 140,
         "countB": 11,
         "samplesA": [
+          "AppRoutes.tsx",
           "admin-v3/domains/content/EntityCrudPage.tsx",
-          "admin-v3/domains/content/RemainingEntityCrudPage.tsx",
-          "admin-v3/domains/taxonomy/TaxonomyPage.tsx"
+          "admin-v3/domains/content/RemainingEntityCrudPage.tsx"
         ],
         "samplesB": [
           "components/ContentActions.tsx",
@@ -339,7 +329,7 @@
         "a": "إلغاء",
         "b": "ألغِ",
         "label": "cancel verb form",
-        "countA": 44,
+        "countA": 43,
         "countB": 2,
         "samplesA": [
           "App.tsx",
@@ -356,20 +346,20 @@
   },
   "ICON_SCAN": {
     "version": 1,
-    "updatedAt": "2026-10-03T09:21:30.460Z",
-    "lucideFiles": 252,
+    "updatedAt": "2026-10-06T16:03:27.189Z",
+    "lucideFiles": 246,
     "sizeHistogram": {
       "12": 46,
       "13": 157,
-      "14": 182,
-      "15": 76,
-      "16": 186,
+      "14": 181,
+      "15": 73,
+      "16": 183,
       "17": 11,
-      "18": 205,
+      "18": 196,
       "19": 1,
-      "20": 42,
+      "20": 62,
       "22": 49,
-      "24": 43,
+      "24": 45,
       "26": 5,
       "28": 20,
       "30": 1,
@@ -378,7 +368,7 @@
       "36": 17,
       "40": 17,
       "44": 1,
-      "48": 7
+      "48": 6
     },
     "preferredSizes": {
       "sm": 16,

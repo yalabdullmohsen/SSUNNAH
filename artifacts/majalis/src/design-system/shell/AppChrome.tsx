@@ -4,6 +4,7 @@ import { IconLink } from "../primitives";
 import { APP_TABS, activeTabId, screenOwnsNavBar } from "./tabs";
 import { getSectionByRoute } from "@/config/sections.registry";
 import { useAuth } from "@/components/AuthProvider";
+import { S } from "@/design-system/strings";
 
 /** الشريط السفلي الموحّد — 5 تبويبات. */
 export function AppTabBar({ hidden = false }: { hidden?: boolean }) {
@@ -22,8 +23,8 @@ export function AppTopBar() {
     <NavigationBar
       title={title}
       large={false}
-      leading={<IconLink icon={isLoggedIn ? "user" : "login"} label={isLoggedIn ? "حسابي" : "تسجيل الدخول"} href={isLoggedIn ? "/profile" : "/login"} />}
-      trailing={<IconLink icon="search" label="بحث" href="/search" />}
+      leading={<IconLink icon={isLoggedIn ? "user" : "login"} label={isLoggedIn ? S.home_32 : S.auth_18} href={isLoggedIn ? "/profile" : "/login"} />}
+      trailing={<IconLink icon="search" label={S.navigation_03} href="/search" />}
     />
   );
 }

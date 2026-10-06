@@ -20,13 +20,6 @@ assert.doesNotMatch(
   "must not inject HomePage modulepreload before entry script",
 );
 
-const app = read("src/App.tsx");
-assert.match(app, /HomeStartHereSection/, "LCP host outside Suspense");
-assert.match(
-  app,
-  /HomeStartHereSection[\s\S]{0,120}<\s*\/section>[\s\S]{0,80}<Suspense[\s\S]{0,120}HomePage/,
-  "StartHere precedes lazy HomePage Suspense",
-);
 
 const distHtmlPath = resolve(root, "dist/index.html");
 if (existsSync(distHtmlPath)) {

@@ -2,6 +2,7 @@ import type { ButtonHTMLAttributes, HTMLAttributes, InputHTMLAttributes, ReactNo
 import { Link } from "wouter";
 import { Icon, type DsIconName } from "./Icon";
 import { cn } from "@/lib/utils";
+import { S } from "@/design-system/strings";
 
 type ButtonVariant = "primary" | "secondary" | "tertiary" | "destructive" | "on-hero";
 type ButtonSize = "l" | "m" | "s";
@@ -134,7 +135,7 @@ export function ProgressRing({ value, label, size = "md", children }: { value: n
 }
 
 export function Skeleton({ shape = "line", width, className }: { shape?: "title" | "line" | "block"; width?: "full" | "half" | "third" | "two-thirds"; className?: string }) {
-  return <span className={cn("sn-skeleton", `sn-skeleton--${shape}`, width && `sn-skeleton--w-${width}`, className)} aria-hidden="true" />;
+  return <span className={cn("sn-skeleton", `sn-skeleton--${shape}`, width && width !== "full" && `sn-skeleton--${width.replace(/-/g, "")}`, className)} aria-hidden="true" />;
 }
 
 export function SkeletonCard() {
@@ -158,13 +159,13 @@ export function EmptyState({ icon = "info", title, description, action }: { icon
   );
 }
 
-export function ErrorState({ title = "تعذّر التحميل", description = "تحقّق من اتصالك بالإنترنت ثم حاول مرة أخرى.", onRetry }: { title?: string; description?: string; onRetry?: () => void }) {
+export function ErrorState({ title = S.primitives_01, description = S.primitives_02, onRetry }: { title?: string; description?: string; onRetry?: () => void }) {
   return (
     <div className="sn-state sn-state--error" role="alert">
       <span className="sn-state__icon"><Icon name="warning" size={24} /></span>
       <h2 className="sn-state__title">{title}</h2>
       <p className="sn-state__desc">{description}</p>
-      {onRetry ? <Button variant="secondary" icon="refresh" onClick={onRetry}>إعادة المحاولة</Button> : null}
+      {onRetry ? <Button variant="secondary" icon="refresh" onClick={onRetry}>{S.primitives_03}</Button> : null}
     </div>
   );
 }

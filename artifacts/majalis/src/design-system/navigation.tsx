@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link, useLocation } from "wouter";
 import { Icon, type DsIconName } from "./Icon";
 import { cn } from "@/lib/utils";
+import { S } from "@/design-system/strings";
 
 /** شريط التنقّل: عنوان كبير يصغر عند التمرير ويظهر عنوان مصغّر في الشريط. */
 export function NavigationBar({ title, subtitle, leading, trailing, large = true }: { title: string; subtitle?: string; leading?: ReactNode; trailing?: ReactNode; large?: boolean }) {
@@ -38,7 +39,7 @@ export function NavigationBar({ title, subtitle, leading, trailing, large = true
 export type TabItem = { id: string; label: string; href: string; icon: DsIconName; match: readonly string[] };
 
 /** شريط التبويب: 5 تبويبات؛ الضغط على النشط يعيد للأعلى. */
-export function TabBar({ tabs, activeId, label = "التنقّل الرئيسي" }: { tabs: readonly TabItem[]; activeId?: string; label?: string }) {
+export function TabBar({ tabs, activeId, label = S.navigation_01 }: { tabs: readonly TabItem[]; activeId?: string; label?: string }) {
   const [location, navigate] = useLocation();
   const isActive = (t: TabItem) =>
     activeId != null ? t.id === activeId : t.match.some((m) => (m === "/" ? location === "/" : location === m || location.startsWith(m + "/")));
@@ -137,7 +138,7 @@ type SearchFieldProps = {
   large?: boolean;
 };
 
-export function SearchField({ value, onChange, onSubmit, placeholder = "ابحث في القرآن والحديث والدروس والأقسام", label = "بحث", large }: SearchFieldProps) {
+export function SearchField({ value, onChange, onSubmit, placeholder = S.navigation_02, label = S.navigation_03, large }: SearchFieldProps) {
   return (
     <form
       role="search"
@@ -158,7 +159,7 @@ export function SearchField({ value, onChange, onSubmit, placeholder = "ابحث
         aria-label={label}
       />
       {value ? (
-        <button type="button" className="sn-icon-btn" aria-label="مسح البحث" onClick={() => onChange("")}>
+        <button type="button" className="sn-icon-btn" aria-label={S.navigation_04} onClick={() => onChange("")}>
           <Icon name="close" size={20} />
         </button>
       ) : null}

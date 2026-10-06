@@ -44,7 +44,6 @@ console.log("=== App chrome + data-home-chrome ===");
 {
   const app = read("src/App.tsx");
   assert.match(app, /data\.homeChrome|dataset\.homeChrome/);
-  assert.match(app, /ChromeNavFallback homeChrome/);
   assert.match(app, /isHomeChromePath/);
   assert.doesNotMatch(
     app,

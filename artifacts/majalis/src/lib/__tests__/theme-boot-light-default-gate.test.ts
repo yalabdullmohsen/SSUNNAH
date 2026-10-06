@@ -1,5 +1,5 @@
 /**
- * بوابة: ثيم الإقلاع = اختيار المستخدم، والافتراضي نهاري (لا prefers-color-scheme عند الغياب).
+ * بوابة: ثيم الإقلاع = اختيار المستخدم، والافتراضي «حسب النظام» (auto) عند الغياب؛ light يبقى نهاريًا دائمًا.
  * تشغيل: node --import tsx src/lib/__tests__/theme-boot-light-default-gate.test.ts
  */
 import assert from "node:assert/strict";
@@ -24,7 +24,7 @@ assert.doesNotMatch(html, /id="mj-version-boot"|boot-legacy-cache\.js/);
 assert.doesNotMatch(html, /majlisilm|Majlisilm|المجلس العلمي/);
 assert.match(html, /classList\.add\("light"/);
 assert.match(html, /classList\.remove\("dark"/);
-assert.match(html, /storedTheme === "auto"/);
+assert.match(html, /storedTheme === "auto" \|\| !storedTheme/);
 assert.match(html, /resolved = "light"/);
 assert.match(html, /app-booting/);
 assert.match(html, /majalis-user-settings-v1/);
@@ -34,7 +34,7 @@ assert.doesNotMatch(
   "لا theme-color يتبع الجهاز بمعزل عن اختيار المستخدم",
 );
 
-assert.match(theme, /return isThemePreference\(stored\) \? stored : "light"/);
+assert.match(theme, /return isThemePreference\(stored\) \? stored : "auto"/);
 assert.match(theme, /classList\.add\("light"/);
 
 assert.match(settings, /تحديث النسخة/);

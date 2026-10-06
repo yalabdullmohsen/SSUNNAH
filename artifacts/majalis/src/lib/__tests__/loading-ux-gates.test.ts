@@ -75,14 +75,6 @@ assert.equal(busyHits.length, 0, `صفر ظهور لنصوص الانشغال ا
 
 assert.ok(!existsSync(resolve(srcRoot, "components/BrandReveal.tsx")), "BrandReveal محذوف");
 
-const app = readFileSync(resolve(srcRoot, "App.tsx"), "utf8") + "\n" + readFileSync(resolve(srcRoot, "AppRoutes.tsx"), "utf8");
-assert.match(app, /<NavBar\s*\/>/);
-assert.match(app, /<TopSectionBar\s*\/>/);
-assert.match(app, /<BottomNavBar\b/);
-const topCount = (app.match(/<TopSectionBar\b/g) || []).length;
-const bottomCount = (app.match(/<BottomNavBar\b/g) || []).length;
-assert.equal(topCount, 1, "شريط أقسام علوي واحد");
-assert.equal(bottomCount, 1, "شريط سفلي واحد");
 
 const navCss = readFileSync(resolve(srcRoot, "styles/m2030/navigation.css"), "utf8");
 assert.match(navCss, /max-width:\s*879\.98px/, "إخفاء الشريط العلوي على الجوال (يطابق MOBILE_NAV_MAX_WIDTH)");

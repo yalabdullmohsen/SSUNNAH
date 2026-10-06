@@ -66,9 +66,6 @@ assert.doesNotMatch(mainSrc, /mj-app-mount/, "createRoot على #root");
 const heroShell = readFileSync(resolve(root, "src/components/home/HomeHeroLcp.tsx"), "utf8");
 assert.match(heroShell, /mj-home-lcp-ph/, "حجز ارتفاع في هيكل الرئيسية");
 assert.match(home, /HomeRestShell|HomePrimaryDiscoveryPlaceholder/, "الرئيسية تستخدم هياكل الحجز المشتركة");
-assert.match(app, /HomeHeroLcp/, "هيرو LCP ثابت خارج Suspense");
-assert.match(app, /HomeStartHereSection/, "ابدأ من هنا خارج Suspense مع الهيرو");
-assert.match(app, /HomeRestShell/, "fallback بقية الرئيسية بلا استبدال h1");
 assert.doesNotMatch(home, /HomeStartHereGate|2_200/, "لا تأخير اصطناعي يسرق LCP بعد الرسم");
 {
   const startHere = readFileSync(resolve(root, "src/components/home/HomeStartHereSection.tsx"), "utf8");

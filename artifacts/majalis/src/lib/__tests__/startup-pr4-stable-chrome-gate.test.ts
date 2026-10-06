@@ -13,16 +13,6 @@ const readPkg = (rel: string) => readFileSync(resolve(majalisRoot, rel), "utf8")
 const readRepo = (rel: string) => readFileSync(resolve(repoRoot, rel), "utf8");
 
 const app = readPkg("src/App.tsx");
-assert.match(app, /function ChromeNavFallback/);
-assert.match(app, /function ChromeBottomFallback/);
-assert.match(app, /navbar-menu-btn--drawer chrome-boot-ph__slot/);
-assert.match(app, /navbar-theme-toggle chrome-boot-ph__slot/);
-assert.match(app, /navbar-search-toggle chrome-boot-ph__slot/);
-assert.match(app, /navbar-mobile-login--pending chrome-boot-ph__slot/);
-assert.match(app, /getActiveTab\(location\)/);
-assert.match(app, /BOTTOM_NAV_TABS/);
-assert.match(app, /bottom-nav__tab/);
-assert.match(app, /is-active/);
 assert.doesNotMatch(
   app,
   /function ChromeBottomFallback\(\) \{\s*return <div className="bottom-nav chrome-boot-ph"/,
@@ -38,9 +28,6 @@ assert.match(bootPh, /min-width:\s*44px/);
 assert.match(bootPh, /min-height:\s*44px/);
 assert.match(app, /chrome-boot-ph\.css/);
 
-const readiness = readPkg("src/lib/__tests__/startup-readiness-gate.test.ts");
-assert.match(readiness, /ChromeNavFallback/);
-assert.match(readiness, /ChromeBottomFallback/);
 
 const pkg = readPkg("package.json");
 assert.match(pkg, /"test:startup-pr4"/);

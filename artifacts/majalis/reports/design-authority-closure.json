@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "sha": "ref: refs/heads/main",
+  "sha": "unknown",
   "coverage": {
-    "measuredAt": "2026-10-05T03:45:56.005Z",
+    "measuredAt": "2026-10-06T16:07:00.238Z",
     "cssFileCount": 353,
     "cssFilesCeiling": 353,
     "measuredCssFiles": 353,
     "regionsLabeled": true,
     "emptyRules": 0,
-    "keepSpecialEmptyRules": 11,
+    "keepSpecialEmptyRules": 10,
     "commentsOnlyFiles": 0,
     "circularImports": 0,
     "deadFilesPresent": [],
@@ -19,11 +19,11 @@
     "featureLocalRootGrowth": [],
     "unknownTokenFamilies": [],
     "bridgeCounts": {
-      "ds": 3356,
+      "ds": 3254,
       "elite": 1,
       "em": 20,
-      "msk": 549,
-      "majalis": 3262
+      "msk": 541,
+      "majalis": 3217
     },
     "deprecatedGrowth": [],
     "fmParentEmptyRule": false,

@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { IconButton } from "./primitives";
+import { S } from "@/design-system/strings";
 
 /** نافذة تُسحب من الأسفل: Esc/نقر الخلفية/سحب المقبض للإغلاق، وتُعاد البؤرة للعنصر السابق. */
 export function Sheet({ open, onClose, title, children }: { open: boolean; onClose: () => void; title: string; children: ReactNode }) {
@@ -56,7 +57,7 @@ export function Sheet({ open, onClose, title, children }: { open: boolean; onClo
         <div className="sn-sheet__grabber" />
         <div className="sn-sheet__header">
           <h2 className="sn-sheet__title">{title}</h2>
-          <IconButton icon="close" label="إغلاق" tone="tinted" size={20} onClick={requestClose} />
+          <IconButton icon="close" label={S.overlays_01} tone="tinted" size={20} onClick={requestClose} />
         </div>
         <div className="sn-sheet__body">{children}</div>
       </div>

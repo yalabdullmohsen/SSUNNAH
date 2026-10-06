@@ -4,6 +4,7 @@ import { Button, Card, ErrorState, EmptyState, IconButton, ListGroup, ListRow, N
 import { getUnifiedLessonById } from "@/lib/lessons-service";
 import type { KuwaitLessonRecord } from "@/lib/kuwait-lessons";
 import { isLocalBookmarked, toggleLocalBookmark } from "@/lib/local-bookmarks";
+import { S } from "@/design-system/strings";
 
 function icsFor(l: KuwaitLessonRecord): string {
   const start = new Date(l.nextOccurrenceMs && l.nextOccurrenceMs > 0 ? l.nextOccurrenceMs : Date.now());
@@ -43,36 +44,36 @@ export default function LessonDetailScreen() {
     a.download = `lesson-${lesson.id}.ics`;
     a.click();
     URL.revokeObjectURL(a.href);
-    toast("تم تجهيز ملف التقويم");
+    toast(S.lessonDetail_01);
   };
   const share = () => {
     if (!lesson) return;
     const text = `${lesson.title} — ${lesson.sheikhName} — ${lesson.day} ${lesson.time} — ${lesson.mosque}`;
     if (typeof navigator.share === "function") void navigator.share({ title: lesson.title, text, url: window.location.href }).catch(() => undefined);
-    else void navigator.clipboard?.writeText(`${text}\n${window.location.href}`).then(() => toast("تم النسخ"), () => toast("تعذّر النسخ", "danger"));
+    else void navigator.clipboard?.writeText(`${text}\n${window.location.href}`).then(() => toast(S.home_14), () => toast(S.home_15, "danger"));
   };
 
   return (
     <div className="sn-screen" data-testid="lesson-detail-screen">
       <NavigationBar
-        title={lesson?.title ?? "الدرس"}
-        leading={<IconButton icon="chevron" label="رجوع" onClick={() => (window.history.length > 1 ? window.history.back() : navigate("/lessons"))} className="sn-back" />}
-        trailing={lesson ? <IconButton icon={saved ? "bookmarkFilled" : "bookmark"} label={saved ? "إزالة من المحفوظات" : "حفظ الدرس"} onClick={() => setSaved(toggleLocalBookmark({ contentType: "lesson", contentId: lesson.id, title: lesson.title, href: `/lessons/${lesson.id}` }))} /> : null}
+        title={lesson?.title ?? S.lessonDetail_02}
+        leading={<IconButton icon="chevron" label={S.lessonDetail_03} onClick={() => (window.history.length > 1 ? window.history.back() : navigate("/lessons"))} className="sn-back" />}
+        trailing={lesson ? <IconButton icon={saved ? "bookmarkFilled" : "bookmark"} label={saved ? S.content_01 : S.content_09} onClick={() => setSaved(toggleLocalBookmark({ contentType: "lesson", contentId: lesson.id, title: lesson.title, href: `/lessons/${lesson.id}` }))} /> : null}
       />
       <div className="sn-container sn-stack sn-stack--lg">
         {state === "loading" ? <SkeletonCard /> : null}
         {state === "error" ? <ErrorState onRetry={load} /> : null}
-        {state === "missing" ? <EmptyState icon="lessons" title="الدرس غير موجود" description="ربما انتهى هذا الدرس أو أُزيل." action={<Button variant="secondary" onClick={() => navigate("/lessons")}>كل الدروس</Button>} /> : null}
+        {state === "missing" ? <EmptyState icon="lessons" title={S.lessonDetail_04} description={S.lessonDetail_05} action={<Button variant="secondary" onClick={() => navigate("/lessons")}>{S.lessonDetail_06}</Button>} /> : null}
         {state === "ready" && lesson ? (
           <>
             <ListGroup>
-              <ListRow icon="user" title={lesson.sheikhName} description="المحاضر" />
-              <ListRow icon="calendar" title={[lesson.day, lesson.time].filter(Boolean).join(" · ")} description={lesson.recurring ? "درس أسبوعي" : lesson.gregorianDate} />
+              <ListRow icon="user" title={lesson.sheikhName} description={S.lessonDetail_07} />
+              <ListRow icon="calendar" title={[lesson.day, lesson.time].filter(Boolean).join(" · ")} description={lesson.recurring ? S.lessonDetail_08 : lesson.gregorianDate} />
               <ListRow icon="location" title={lesson.mosque} description={[lesson.region, lesson.governorate].filter(Boolean).join(" · ")} href={lesson.mapsUrl || undefined} />
             </ListGroup>
             <div className="sn-row">
-              <Button variant="primary" icon="calendarAdd" onClick={addToCalendar}>إضافة للتقويم</Button>
-              <Button variant="secondary" icon="share" onClick={share}>مشاركة</Button>
+              <Button variant="primary" icon="calendarAdd" onClick={addToCalendar}>{S.lessonDetail_09}</Button>
+              <Button variant="secondary" icon="share" onClick={share}>{S.content_03}</Button>
             </div>
             {lesson.description || lesson.note ? (
               <Card><p className="sn-t-body">{lesson.description || lesson.note}</p></Card>

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-03",
+  "updatedAt": "2026-10-06",
   "phases": [
     "BP",
     "BQ",
@@ -11,7 +11,7 @@
   ],
   "ARABIC_SEARCH_NORMALIZATION_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03",
+    "updatedAt": "2026-10-06",
     "ARABIC_SEARCH_OPTIMIZATION": true,
     "authority": "src/shared/arabic-normalize.ts",
     "pairsTotal": 12,
@@ -30,7 +30,7 @@
   },
   "SEARCH_RELEVANCE_SCORECARD": {
     "version": 1,
-    "updatedAt": "2026-10-03",
+    "updatedAt": "2026-10-06",
     "SEARCH_RELEVANCE_ENGINE_AUDIT": true,
     "indexDocs": 4650,
     "casesTotal": 15,
@@ -301,7 +301,7 @@
   },
   "SEARCH_QUERY_HEATMAP": {
     "version": 1,
-    "updatedAt": "2026-10-03",
+    "updatedAt": "2026-10-06",
     "SEARCH_QUERY_PERFORMANCE": true,
     "liveLatency": "NOT_MEASURED — no wall-clock invent; use DEVICE_REQUIRED / CI probes",
     "index": {
@@ -314,41 +314,8 @@
       "schemaOk": true
     },
     "shards": {
-      "count": 30,
-      "largest": [
-        {
-          "shard": "qa",
-          "bytes": 1141628
-        },
-        {
-          "shard": "tafsir",
-          "bytes": 280339
-        },
-        {
-          "shard": "adhkar",
-          "bytes": 107737
-        },
-        {
-          "shard": "history",
-          "bytes": 106545
-        },
-        {
-          "shard": "lesson",
-          "bytes": 51521
-        },
-        {
-          "shard": "discover-islam",
-          "bytes": 50826
-        },
-        {
-          "shard": "person",
-          "bytes": 43839
-        },
-        {
-          "shard": "quran-people",
-          "bytes": 24807
-        }
-      ]
+      "count": 0,
+      "largest": []
     },
     "clientEngine": {
       "workerPresent": true,
@@ -357,9 +324,9 @@
       "synonymExpand": true
     },
     "sql": {
-      "sqlFiles": 415,
+      "sqlFiles": 419,
       "ginTrigramMentions": 85,
-      "ftsMentions": 125,
+      "ftsMentions": 140,
       "searchIndexSqlFiles": 2
     },
     "costProxies": [
@@ -375,15 +342,15 @@
       },
       {
         "id": "largest_shard_kib",
-        "costProxy": 1115,
-        "note": "qa"
+        "costProxy": 0,
+        "note": "n/a"
       }
     ],
     "target": "Sub-second common searches (DEVICE_REQUIRED for wall-clock)"
   },
   "SEARCH_COVERAGE_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03",
+    "updatedAt": "2026-10-06",
     "SEARCH_INDEX_COVERAGE": true,
     "docsTotal": 4650,
     "kindsPresent": 30,
@@ -527,13 +494,13 @@
     ],
     "orphanSample": [],
     "orphanCount": 0,
-    "shardsOnDisk": 30,
+    "shardsOnDisk": 0,
     "manifestPresent": true,
     "target": "Everything searchable is indexed"
   },
   "SEARCH_UX_IMPROVEMENT_PLAN": {
     "version": 1,
-    "updatedAt": "2026-10-03",
+    "updatedAt": "2026-10-06",
     "SEARCH_UX_OPTIMIZATION": true,
     "surfaces": [
       {
@@ -615,7 +582,7 @@
   },
   "ARABIC_SEARCH_INFRASTRUCTURE_REPORT": {
     "version": 1,
-    "updatedAt": "2026-10-03",
+    "updatedAt": "2026-10-06",
     "ARABIC_SEARCH_INFRASTRUCTURE_HARDENING": true,
     "liveDb": false,
     "latencyBenchmark": "NOT_CONNECTED — no before/after wall-clock without DATABASE_URL",
@@ -736,7 +703,7 @@
   },
   "SEARCH_HEALTH_SCORECARD": {
     "version": 1,
-    "updatedAt": "2026-10-03",
+    "updatedAt": "2026-10-06",
     "SEARCH_EXCELLENCE_CERTIFICATION": true,
     "overallScore": 87,
     "overallRating": "EXCELLENT",

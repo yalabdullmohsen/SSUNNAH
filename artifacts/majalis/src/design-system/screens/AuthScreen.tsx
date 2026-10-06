@@ -18,6 +18,7 @@ import { PasswordPolicyChecklist } from "@/components/auth/PasswordPolicyCheckli
 import { applyPageSeo } from "@/lib/seo";
 import { canSubmitForm } from "@/lib/form-rate-limit";
 import { sanitizeAuthNext } from "@/lib/auth-redirect";
+import { S } from "@/design-system/strings";
 import {
   PASSWORD_MIN_LENGTH,
   PASSWORD_MISMATCH_AR,
@@ -113,14 +114,14 @@ export default function AuthScreen() {
     applyPageSeo({
       path: isRegister ? "/register" : "/login",
       title: isRegister
-        ? "إنشاء حساب | سُنّة"
+        ? S.auth_01
         : tab === "forgot"
-          ? "استعادة كلمة المرور | سُنّة"
-          : "تسجيل الدخول | سُنّة",
+          ? S.auth_02
+          : S.auth_03,
       description: isRegister
-        ? "إنشاء حساب في سُنّة."
-        : "تسجيل الدخول إلى سُنّة.",
-      keywords: isRegister ? ["إنشاء حساب", "تسجيل", "سُنّة"] : ["تسجيل دخول", "سُنّة"],
+        ? S.auth_04
+        : S.auth_05,
+      keywords: isRegister ? [S.auth_06, S.auth_07, S.auth_08] : [S.auth_09, S.auth_08],
       robots: "noindex, follow",
     });
   }, [tab]);
@@ -159,8 +160,8 @@ export default function AuthScreen() {
   };
 
   const validateRegister = (): string | null => {
-    if (fullName.trim().length < 2) return "يرجى إدخال الاسم (حرفان على الأقل).";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) return "البريد غير صحيح";
+    if (fullName.trim().length < 2) return S.auth_10;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) return S.auth_11;
     const policyError = validatePassword(password);
     if (policyError) return policyError;
     if (password !== confirmPassword) return PASSWORD_MISMATCH_AR;
@@ -168,15 +169,15 @@ export default function AuthScreen() {
   };
 
   const validateLogin = (): string | null => {
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) return "البريد غير صحيح";
-    if (!password) return "أدخل كلمة المرور";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) return S.auth_11;
+    if (!password) return S.auth_12;
     return null;
   };
 
   const handleResendConfirmation = async () => {
     if (!pendingConfirmEmail) return;
     if (!canSubmitForm("auth-resend-confirm", 8000)) {
-      setResendNote("انتظر لحظات ثم أعد المحاولة.");
+      setResendNote(S.auth_13);
       return;
     }
     setResendLoading(true);
@@ -185,7 +186,7 @@ export default function AuthScreen() {
     try {
       const { error: resendError } = await resendSignupConfirmation(pendingConfirmEmail);
       if (resendError) throw resendError;
-      setResendNote("أُعيد إرسال رسالة التأكيد. راجع بريدك.");
+      setResendNote(S.auth_14);
     } catch (err) {
       setError(mapAuthError(err));
     } finally {
@@ -196,7 +197,7 @@ export default function AuthScreen() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!canSubmitForm("auth-account", 2500)) {
-      setError("انتظر لحظات ثم أعد المحاولة.");
+      setError(S.auth_13);
       return;
     }
     if (!authEnabled) {
@@ -212,7 +213,7 @@ export default function AuthScreen() {
     try {
       if (tab === "forgot") {
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
-          setError("البريد غير صحيح");
+          setError(S.auth_11);
           return;
         }
         const { error: resetError } = await resetPasswordForEmail(email.trim());
@@ -242,7 +243,7 @@ export default function AuthScreen() {
         }
 
         if (data?.session) {
-          setSuccess("تم إنشاء حسابك بنجاح.");
+          setSuccess(S.auth_15);
           navigate(nextPath || "/");
           return;
         }
@@ -295,9 +296,9 @@ export default function AuthScreen() {
     <div className="sn-screen sn-auth" data-testid="auth-screen">
       <div className="sn-container sn-stack sn-stack--lg sn-auth__body">
         <div className="sn-row sn-auth__top">
-          <IconButton icon="close" label="إغلاق" tone="tinted" onClick={() => (window.history.length > 1 ? window.history.back() : navigate("/"))} />
+          <IconButton icon="close" label={S.overlays_01} tone="tinted" onClick={() => (window.history.length > 1 ? window.history.back() : navigate("/"))} />
         </div>
-        <span className="sn-auth-mark" aria-hidden="true">سُنّة</span>
+        <span className="sn-auth-mark" aria-hidden="true">{S.auth_08}</span>
         <h1 className="sn-t-title1 sn-auth__title">{title}</h1>
         {children}
       </div>
@@ -305,20 +306,20 @@ export default function AuthScreen() {
   );
 
   if (authLoading || !authReady) {
-    return shell("سُنّة", <SkeletonCard />);
+    return shell(S.auth_08, <SkeletonCard />);
   }
 
-  const title = tab === "forgot" ? "استعادة كلمة المرور" : adminLogin ? "دخول المسؤول" : tab === "register" ? "إنشاء حساب" : "تسجيل الدخول";
+  const title = tab === "forgot" ? S.auth_16 : adminLogin ? S.auth_17 : tab === "register" ? S.auth_06 : S.auth_18;
 
   if (pendingConfirmEmail) {
     return shell(
-      "تم إنشاء الحساب",
+      S.auth_19,
       <div className="sn-stack" data-testid="signup-confirm-pending">
         {error ? <Notice tone="danger">{error}</Notice> : null}
-        <p className="sn-t-body">أرسلنا رسالة تأكيد إلى <strong dir="ltr">{pendingConfirmEmail}</strong>. افتح البريد، واضغط رابط التفعيل، ثم سجّل الدخول.</p>
+        <p className="sn-t-body">أرسلنا رسالة تأكيد إلى <strong dir="ltr">{pendingConfirmEmail}</strong>{S.auth_20}</p>
         {resendNote ? <Notice tone="success">{resendNote}</Notice> : null}
-        <Button variant="primary" size="l" block loading={resendLoading} onClick={() => void handleResendConfirmation()} data-testid="signup-resend-confirmation">إعادة إرسال بريد التفعيل</Button>
-        <Button variant="tertiary" block onClick={() => switchTab("login")}>الانتقال لتسجيل الدخول</Button>
+        <Button variant="primary" size="l" block loading={resendLoading} onClick={() => void handleResendConfirmation()} data-testid="signup-resend-confirmation">{S.auth_21}</Button>
+        <Button variant="tertiary" block onClick={() => switchTab("login")}>{S.auth_22}</Button>
       </div>,
     );
   }
@@ -327,39 +328,39 @@ export default function AuthScreen() {
     title,
     <div className="sn-stack">
       {!adminLogin && tab !== "forgot" ? (
-        <Segmented<"login" | "register"> label="وضع الحساب" value={tab === "register" ? "register" : "login"} onChange={(v) => switchTab(v)} options={[{ value: "login", label: "تسجيل الدخول" }, { value: "register", label: "إنشاء حساب" }]} />
+        <Segmented<"login" | "register"> label={S.auth_23} value={tab === "register" ? "register" : "login"} onChange={(v) => switchTab(v)} options={[{ value: "login", label: S.auth_18 }, { value: "register", label: S.auth_06 }]} />
       ) : null}
       {!authEnabled ? <Notice tone="danger">{mapAuthError(null)}</Notice> : null}
       {error ? <Notice tone="danger">{error}</Notice> : null}
       {denied ? <Notice>{ADMIN_ACCESS_DENIED_MESSAGE}</Notice> : null}
       {success ? <Notice tone="success">{success}</Notice> : null}
       {resetSent ? (
-        <Notice tone="success">إن وُجد حساب بهذا البريد فستصلك رسالة لإعادة تعيين كلمة المرور.</Notice>
+        <Notice tone="success">{S.auth_24}</Notice>
       ) : (
         <form onSubmit={handleSubmit} className="sn-stack" noValidate>
-          {tab === "register" ? <TextField id="auth-name" label="الاسم" type="text" autoComplete="name" placeholder="اسمك الكامل" value={fullName} onChange={(e) => setFullName(e.target.value)} required minLength={2} disabled={loading || !authEnabled} /> : null}
-          <TextField id="auth-email" label="البريد الإلكتروني" type="email" inputMode="email" autoComplete="email" placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required disabled={loading || !authEnabled} dir="ltr" />
+          {tab === "register" ? <TextField id="auth-name" label={S.auth_25} type="text" autoComplete="name" placeholder={S.auth_26} value={fullName} onChange={(e) => setFullName(e.target.value)} required minLength={2} disabled={loading || !authEnabled} /> : null}
+          <TextField id="auth-email" label={S.auth_27} type="email" inputMode="email" autoComplete="email" placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required disabled={loading || !authEnabled} dir="ltr" />
           {tab !== "forgot" ? (
             <div className="sn-stack">
-              <TextField id="auth-password" label="كلمة المرور" type="password" autoComplete={tab === "register" ? "new-password" : "current-password"} placeholder={tab === "register" ? PASSWORD_POLICY_HINT_AR : "••••••••"} value={password} onChange={(e) => setPassword(e.target.value)} required minLength={tab === "register" ? PASSWORD_MIN_LENGTH : undefined} disabled={loading || !authEnabled} dir="ltr" />
+              <TextField id="auth-password" label={S.auth_28} type="password" autoComplete={tab === "register" ? "new-password" : "current-password"} placeholder={tab === "register" ? PASSWORD_POLICY_HINT_AR : "••••••••"} value={password} onChange={(e) => setPassword(e.target.value)} required minLength={tab === "register" ? PASSWORD_MIN_LENGTH : undefined} disabled={loading || !authEnabled} dir="ltr" />
               {tab === "register" ? <PasswordPolicyChecklist password={password} /> : null}
             </div>
           ) : null}
-          {tab === "register" ? <TextField id="auth-confirm" label="تأكيد كلمة المرور" type="password" autoComplete="new-password" placeholder="أعد إدخال كلمة المرور" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required minLength={PASSWORD_MIN_LENGTH} disabled={loading || !authEnabled} dir="ltr" /> : null}
+          {tab === "register" ? <TextField id="auth-confirm" label={S.auth_29} type="password" autoComplete="new-password" placeholder={S.auth_30} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required minLength={PASSWORD_MIN_LENGTH} disabled={loading || !authEnabled} dir="ltr" /> : null}
           <Button type="submit" variant="primary" size="l" block loading={loading} disabled={loading || !authEnabled}>
-            {tab === "register" ? "إنشاء حساب" : tab === "forgot" ? "إرسال رابط الاستعادة" : "تسجيل الدخول"}
+            {tab === "register" ? S.auth_06 : tab === "forgot" ? S.auth_31 : S.auth_18}
           </Button>
         </form>
       )}
       {!adminLogin && tab !== "forgot" && authEnabled ? (
         <>
-          <div className="sn-divider">أو</div>
-          <Button variant="secondary" size="l" block icon="user" onClick={() => void handleApple()}>تسجيل الدخول بـ Apple</Button>
+          <div className="sn-divider">{S.auth_32}</div>
+          <Button variant="secondary" size="l" block icon="user" onClick={() => void handleApple()}>{S.auth_33}</Button>
         </>
       ) : null}
-      {!adminLogin && tab === "login" && authEnabled ? <Button variant="tertiary" block onClick={() => switchTab("forgot")}>نسيت كلمة المرور؟</Button> : null}
-      {tab === "forgot" ? <Button variant="tertiary" block onClick={() => switchTab("login")}>العودة لتسجيل الدخول</Button> : null}
-      <Button variant="tertiary" block onClick={() => navigate("/")}>{adminLogin ? "العودة للصفحة الرئيسية" : "المتابعة كزائر"}</Button>
+      {!adminLogin && tab === "login" && authEnabled ? <Button variant="tertiary" block onClick={() => switchTab("forgot")}>{S.auth_34}</Button> : null}
+      {tab === "forgot" ? <Button variant="tertiary" block onClick={() => switchTab("login")}>{S.auth_35}</Button> : null}
+      <Button variant="tertiary" block onClick={() => navigate("/")}>{adminLogin ? S.auth_36 : S.auth_37}</Button>
     </div>,
   );
 }

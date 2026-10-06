@@ -1,41 +1,46 @@
 {
   "version": 2,
-  "updatedAt": "2026-10-03T09:21:24.298Z",
-  "consistencyScore": 89,
-  "driftScore": 11,
-  "authorityAdoptionRatio": 43,
+  "updatedAt": "2026-10-06T16:06:59.051Z",
+  "consistencyScore": 90,
+  "driftScore": 10,
+  "authorityAdoptionRatio": 48,
   "topDivergenceSources": [
     {
       "family": "cards",
-      "bypassCount": 208,
+      "bypassCount": 202,
       "adoptionPercent": 9
     },
     {
       "family": "forms",
-      "bypassCount": 148,
+      "bypassCount": 147,
       "adoptionPercent": 23
-    },
-    {
-      "family": "buttons",
-      "bypassCount": 100,
-      "adoptionPercent": 71
     },
     {
       "family": "lists",
       "bypassCount": 74,
-      "adoptionPercent": 10
+      "adoptionPercent": 9
     },
     {
       "family": "tabs",
-      "bypassCount": 71,
-      "adoptionPercent": 4
+      "bypassCount": 68,
+      "adoptionPercent": 8
+    },
+    {
+      "family": "tables",
+      "bypassCount": 13,
+      "adoptionPercent": 43
     }
   ],
   "easiestWins": [
     {
       "family": "tables",
-      "reason": "امتصاص 14 ملفًا يتجاوز السلطة — عائد سريع على adoption",
-      "bypassCount": 14
+      "reason": "امتصاص 13 ملفًا يتجاوز السلطة — عائد سريع على adoption",
+      "bypassCount": 13
+    },
+    {
+      "family": "buttons",
+      "reason": "امتصاص 2 ملفًا يتجاوز السلطة — عائد سريع على adoption",
+      "bypassCount": 2
     },
     {
       "family": "navigation",
@@ -52,14 +57,14 @@
     "authorityMapsPresent": 100,
     "debtWithinCeilings": 100,
     "tokenFloors": 100,
-    "authorityAdoption": 43
+    "authorityAdoption": 48
   },
   "metrics": {
-    "hexInCss": 7022,
-    "boxShadowDecls": 986,
-    "borderRadiusPxDecls": 392,
-    "sfTokenRefs": 1128,
-    "AUTHORITY_ADOPTION_PERCENTAGE": 43
+    "hexInCss": 5212,
+    "boxShadowDecls": 1002,
+    "borderRadiusPxDecls": 349,
+    "sfTokenRefs": 1526,
+    "AUTHORITY_ADOPTION_PERCENTAGE": 48
   },
   "exits": [
     "COLOR_AUTHORITY_ONLY",
