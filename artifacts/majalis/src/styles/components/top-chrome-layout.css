@@ -154,7 +154,8 @@
   }
   .navbar-login {
     background: var(--majalis-emerald);
-    color: var(--majalis-parchment);
+    /* --majalis-parchment غير معرّف قبل الطبقات المؤجّلة ⇒ نص داكن على أخضر */
+    color: var(--on-dark-strong);
   }
   .navbar-register {
     background: transparent;
