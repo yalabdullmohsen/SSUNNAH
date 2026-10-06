@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "total": 487,
+  "total": 479,
   "generatedAt": "2026-07-30T04:47:35.396Z",
   "chunks": [
     {
@@ -10,27 +10,27 @@
     },
     {
       "file": "صحابة-001.json",
-      "count": 40,
+      "count": 38,
       "key": "صحابة"
     },
     {
       "file": "صحابة-002.json",
-      "count": 40,
+      "count": 34,
       "key": "صحابة"
     },
     {
       "file": "صحابة-003.json",
-      "count": 40,
+      "count": 35,
       "key": "صحابة"
     },
     {
       "file": "صحابة-004.json",
-      "count": 40,
+      "count": 39,
       "key": "صحابة"
     },
     {
       "file": "صحابة-005.json",
-      "count": 40,
+      "count": 39,
       "key": "صحابة"
     },
     {
@@ -70,7 +70,7 @@
     },
     {
       "file": "تابعون-013.json",
-      "count": 2,
+      "count": 4,
       "key": "تابعون"
     },
     {
@@ -80,7 +80,7 @@
     },
     {
       "file": "أنبياء-015.json",
-      "count": 4,
+      "count": 10,
       "key": "أنبياء"
     },
     {
@@ -105,7 +105,7 @@
     },
     {
       "file": "سيرة-020.json",
-      "count": 40,
+      "count": 39,
       "key": "سيرة"
     },
     {
@@ -118,5 +118,7 @@
       "count": 7,
       "key": "علماء"
     }
-  ]
+  ],
+  "countAlignedAt": "2026-10-06T00:00:00.000Z",
+  "countAlignNote": "Aligned chunk counts/total to actual array lengths (total was 487). No records altered."
 }

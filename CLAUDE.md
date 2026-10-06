@@ -28,6 +28,10 @@
    **نافذتا automation/content وautomation/tasks:** ادفعا عبر `scripts/commit-and-push-branch.sh` (يفتح PR Ready + auto-merge squash إلى `main` تلقائيًا). لا تُترَك المهام في طابور مراجعة؛ الدمج والنشر تلقائيان بعد نجاح Verify build.
 6. بعد اكتمال الدمج والنشر فقط: انتقل للمهمة التالية.
 
+## البيانات
+- أماكن البيانات ومصادرها وتراخيصها في `docs/DATA.md` (ملفات `artifacts/majalis/public/data/**` و`src/data/**` والبذور، وSupabase، والواجهات الخارجية)، والتعارضات لقرار المالك في `docs/DATA_CONFLICTS.md`.
+- التحديث: الحصاد المجدول `harvest-sources.yml` (PR بوسم safe:content) + النشر للموقع الحي + `/api/content-delta`؛ وكل تعديل بيانات يمر ببوابة `test:data-integrity` (مخطط `data/schemas/datasets.mjs`، ومعرّفات المستخدمين في `id-baseline.json` لا تُحذف دون تحويلة).
+
 ## صمامات الأمان وكفاءة الرصيد
 - **حد أقصى مهمتين ثقيلتين وPRين مفتوحين في نفس الوقت** (بناء/اختبارات كاملة/Playwright/وكلاء). أكثر من ذلك أوقف الجهاز سابقًا (load ~24) وعطّل نصف الوكلاء.
 - إذا اقترب انتهاء الوقت: أكمل المهمة الجارية فقط وارفعها، ولا تبدأ مهمة جديدة.
