@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "total": 8573,
+  "total": 8491,
   "generatedAt": "2026-07-30T04:47:35.374Z",
   "chunks": [
     {
@@ -260,102 +260,102 @@
     },
     {
       "file": "فقه_الطهارة-051.json",
-      "count": 5,
+      "count": 1,
       "key": "فقه_الطهارة"
     },
     {
       "file": "فقه_الصلاة-052.json",
-      "count": 10,
+      "count": 5,
       "key": "فقه_الصلاة"
     },
     {
       "file": "فقه_المعاملات-053.json",
-      "count": 5,
+      "count": 1,
       "key": "فقه_المعاملات"
     },
     {
       "file": "أصول_العقيدة-054.json",
-      "count": 5,
+      "count": 1,
       "key": "أصول_العقيدة"
     },
     {
       "file": "الإيمان_بالغيب-055.json",
-      "count": 5,
+      "count": 1,
       "key": "الإيمان_بالغيب"
     },
     {
       "file": "تدبر_القرآن-056.json",
-      "count": 5,
+      "count": 1,
       "key": "تدبر_القرآن"
     },
     {
       "file": "علوم_السنة-057.json",
-      "count": 5,
+      "count": 1,
       "key": "علوم_السنة"
     },
     {
       "file": "آداب_طالب_العلم-058.json",
-      "count": 5,
+      "count": 1,
       "key": "آداب_طالب_العلم"
     },
     {
       "file": "تزكية_القلب-059.json",
-      "count": 5,
+      "count": 1,
       "key": "تزكية_القلب"
     },
     {
       "file": "مكارم_الأخلاق-060.json",
-      "count": 5,
+      "count": 1,
       "key": "مكارم_الأخلاق"
     },
     {
       "file": "فقه_الزكاة-061.json",
-      "count": 10,
+      "count": 5,
       "key": "فقه_الزكاة"
     },
     {
       "file": "فقه_الصيام-062.json",
-      "count": 5,
+      "count": 1,
       "key": "فقه_الصيام"
     },
     {
       "file": "فقه_الأسرة-063.json",
-      "count": 5,
+      "count": 1,
       "key": "فقه_الأسرة"
     },
     {
       "file": "توحيد_العبادة-064.json",
-      "count": 5,
+      "count": 1,
       "key": "توحيد_العبادة"
     },
     {
       "file": "أسماء_الله_الحسنى-065.json",
-      "count": 5,
+      "count": 1,
       "key": "أسماء_الله_الحسنى"
     },
     {
       "file": "هدايات_السور-066.json",
-      "count": 5,
+      "count": 1,
       "key": "هدايات_السور"
     },
     {
       "file": "فقه_الحديث-067.json",
-      "count": 5,
+      "count": 1,
       "key": "فقه_الحديث"
     },
     {
       "file": "أدب_الخلاف-068.json",
-      "count": 5,
+      "count": 1,
       "key": "أدب_الخلاف"
     },
     {
       "file": "محاسبة_النفس-069.json",
-      "count": 5,
+      "count": 1,
       "key": "محاسبة_النفس"
     },
     {
       "file": "بر_الوالدين-070.json",
-      "count": 5,
+      "count": 1,
       "key": "بر_الوالدين"
     },
     {
@@ -563,5 +563,7 @@
       "file": "منقول_من_الأسئلة-edu.json",
       "count": 3545
     }
-  ]
+  ],
+  "countAlignedAt": "2026-10-06T00:00:00.000Z",
+  "countAlignNote": "Aligned chunk counts/total to actual array lengths (total was 8573). No records altered."
 }

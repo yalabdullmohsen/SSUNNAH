@@ -6,6 +6,8 @@ const EMOJI =
 /** تطبيع عربي للمقارنة والتصنيف */
 export function normalizeArabic(input) {
   return String(input ?? "")
+    .replace(/&(?:rlm|lrm|zwnj|zwj|nbsp);/gi, " ")
+    .replace(/[\u200B\u200C\u200E\u200F\u202A-\u202E\u2066-\u2069\uFEFF]/g, "")
     .replace(EMOJI, "")
     .replace(DIACRITICS, "")
     .replace(TATWEEL, "")
