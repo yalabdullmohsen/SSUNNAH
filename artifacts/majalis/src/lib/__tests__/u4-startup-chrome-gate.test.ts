@@ -62,6 +62,10 @@ assert.doesNotMatch(
   "U4 reserve stays in mj-lcp-critical only (CLS budget)",
 );
 
+/* المكتب: الرئيسية 880–1279 هيدر + صف تيكّر (121px)، ≥1280 التيكّر داخل الهيدر (65px كباقي الصفحات) */
+assert.match(html, /@media \(min-width:880px\)\{html\[data-sc=top\]\[data-home-chrome="1"\]\{--app-top-chrome-h:calc\(121px/);
+assert.match(html, /@media \(min-width:1280px\)\{html\[data-sc=top\]\[data-home-chrome="1"\]\{--app-top-chrome-h:calc\(65px/);
+
 console.log("=== U4 placeholders ===");
 assert.match(html, /id="mj-startup-header"/);
 assert.match(html, /id="mj-startup-hero-ph"/);
