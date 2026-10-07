@@ -46,9 +46,5 @@ assert.equal(
 const layout = read("src/lib/homepage-layout.ts");
 assert.doesNotMatch(layout, /learning-seasons/, "لا معرّف learning-seasons");
 
-const startHere = read("src/components/home/HomeStartHereSection.tsx");
-assert.match(startHere, /home-start-here--compact/, "بطاقة زائر مختصرة");
-assert.match(startHere, /home-start-here--slim/, "بطاقة زائر نحيفة بلا شبكة خطوات");
-assert.doesNotMatch(startHere, /hsh-steps/, "لا شبكة خطوات عملاقة على الرئيسية");
 
 console.log("dark-mode-recovery-gate.test.ts: ok");

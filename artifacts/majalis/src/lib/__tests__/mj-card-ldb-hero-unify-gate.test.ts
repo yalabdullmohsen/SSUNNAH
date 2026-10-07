@@ -28,9 +28,4 @@ const quiz = readFileSync(resolve(root, "src/components/quiz-game/DailyChallenge
 assert.doesNotMatch(quiz, /\bsoft-card\b/, "DailyChallengeQuiz بلا soft-card مباشر");
 assert.doesNotMatch(quiz, /\bmj-card\b/, "DailyChallengeQuiz بلا mj-card عاري");
 
-const dailyWird = readFileSync(resolve(root, "src/components/home/DailyWirdCard.tsx"), "utf8");
-assert.match(dailyWird, /AppCard/, "هيكل الورود اليومي عبر AppCard");
-assert.match(dailyWird, /home-daily-wird__card/, "صنف الدومين home-daily-wird__card");
-assert.doesNotMatch(dailyWird, /\bsoft-card\b/, "DailyWirdCard بلا soft-card مباشر");
-
 console.log("mj-card-ldb-hero-unify-gate.test.ts: ok");

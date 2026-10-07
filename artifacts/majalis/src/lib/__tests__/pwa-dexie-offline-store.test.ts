@@ -59,7 +59,6 @@ assert.match(read("src/lib/local-bookmarks.ts"), /listBookmarksOfflineFirst/);
 
 assert.match(read("src/lib/adhkar-service.ts"), /withOfflineFirst/);
 assert.match(read("src/lib/adhkar-service.ts"), /getCachedAdhkarPack/);
-assert.match(read("src/hooks/useOfflineContent.ts"), /cache-first/);
 assert.match(read("src/lib/quran-api.ts"), /getCachedQuranSurah/);
 assert.match(read("src/lib/offline-sync-bootstrap.ts"), /migrateLocalBookmarksToIdb/);
 

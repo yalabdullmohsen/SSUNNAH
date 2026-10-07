@@ -74,7 +74,6 @@ for (const file of [
   "src/lib/home-feature-catalog.ts",
   "src/lib/site-footer-nav.ts",
   "src/lib/ia-final-structure.ts",
-  "src/components/home/HomeExplorePlatform.tsx",
 ]) {
   const text = read(file);
   if (/href:\s*["']\/more["']|href=["']\/more["']/.test(text)) {

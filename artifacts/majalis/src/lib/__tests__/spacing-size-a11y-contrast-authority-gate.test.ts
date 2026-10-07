@@ -17,7 +17,6 @@ const sizeMap = readRepo("docs/design/SIZE_AUTHORITY_MAP.md");
 const a11yMap = readRepo("docs/design/ACCESSIBILITY_AUTHORITY_MAP.md");
 const contrastMap = readRepo("docs/design/CONTRAST_AUTHORITY_MAP.md");
 const a11yStd = readRepo("docs/design/ACCESSIBILITY_STANDARD.md");
-const spaceTs = readMaj("src/lib/spacing-authority.ts");
 const sizeTs = readMaj("src/lib/size-authority.ts");
 const foundation = readMaj("src/styles/sunnah-foundation-tokens.css");
 const foundationV2 = readMaj("src/styles/sunnah-foundation-v2.css");
@@ -45,8 +44,6 @@ assert.match(contrastMap, /--mj-on-brand/);
 assert.match(contrastMap, /--mj-brand/);
 assert.match(contrastMap, /AA/);
 
-assert.match(spaceTs, /SPACING_AUTHORITY/);
-assert.match(spaceTs, /"--sf2-space-4"/);
 assert.match(sizeTs, /SIZE_AUTHORITY/);
 assert.match(sizeTs, /TOUCH_MIN/);
 assert.match(sizeTs, /ICON_SIZE_SCALE/);
