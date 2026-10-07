@@ -95,10 +95,9 @@ console.log("\n=== صفحات التاريخ الإسلامي ===");
   assert(topic.includes("Redirect"), "صفحة الباب القديمة تحوّل إلى مسار الكتاب/المساند");
   assert(topic.includes("/fiqh/usul"), "أصول الفقه يحوّل إلى /fiqh/usul");
 
-  const home = readFileSync(resolve(srcRoot, "components/home/HomeStartHereSection.tsx"), "utf8");
   const homeData = readFileSync(resolve(srcRoot, "components/home/home-start-here-data.ts"), "utf8");
   assert(
-    home.includes("/adab-talab-ilm") || homeData.includes('href: "/adab-talab-ilm"'),
+    homeData.includes('href: "/adab-talab-ilm"'),
     "ابدأ من هنا → دليل طالب العلم",
   );
 
