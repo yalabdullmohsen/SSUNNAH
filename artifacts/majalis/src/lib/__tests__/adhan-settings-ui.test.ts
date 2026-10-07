@@ -92,7 +92,7 @@ assert.match(localNotif, /cancelAdhanIosSegmentChain/);
 assert.match(localNotif, /adhanSegment/);
 
 const adhanSched = readFileSync(resolve(appRoot, "src/lib/adhan-scheduler.ts"), "utf8");
-assert.match(adhanSched, /upcomingPrayerEpochs/);
+assert.match(adhanSched, /scheduleIosAdhanWindow/);
 assert.match(adhanSched, /cancelAdhanIosSegmentChain\(key\)/);
 assert.match(adhanSched, /visibilityState === "visible"/);
 assert.match(adhanSched, /cancelAdhanIosSegmentChain/);

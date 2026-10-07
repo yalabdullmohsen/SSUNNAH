@@ -1,4 +1,5 @@
 /**
+ * @deprecated نظام قديم — استعمل `@/design-system` (مكوّنات sn-). لا استيراد جديد (بوابة scripts/ui-ratchet.mjs).
  * نظام مكوّنات واجهة سُنّة — بطاقات وأزرار ونص دلالي.
  * SectionCard / LessonCard / FloatingBack موجودة مسبقًا وتُعاد تصديرها هنا.
  */

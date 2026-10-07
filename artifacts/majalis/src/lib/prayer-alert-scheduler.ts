@@ -19,6 +19,7 @@ import { loadPrayerAlertPrefs, LIVE_ACTIVITY_LINGER_MINUTES } from "./prayer-ale
 import {
   getEffectiveMuezzinId,
   getEffectivePlaybackMode,
+  isIqamahEnabledForPrayer,
   loadAdhanPrefs,
   PRAYER_KEYS,
   type PrayerKey,
@@ -48,6 +49,8 @@ import { publishPrayerSnapshotForWidgets } from "./plugins/sunnah-shared-prayer-
 import type { PrayerSoundProfile } from "./prayer-notification-sounds";
 import { PRAYER_ALERT_EVENT_NAME, type PrayerAlertEvent } from "./prayer-alert-events";
 import { isIOS, isNative } from "./capacitor-utils";
+import { planPrayerNativeWindow, type WindowSlotPlan } from "./prayer-native-budget";
+import { getMuezzin, hasFajrAdhan } from "./adhan-audio";
 
 export { PRAYER_ALERT_EVENT_NAME, type PrayerAlertEvent } from "./prayer-alert-events";
 
@@ -284,6 +287,50 @@ function resolveSlotAlertOpts(
   };
 }
 
+/** عدد التنبيهات الأصلية المفعّلة لصلاة (قبل/دخول/بعد/إقامة) — يطابق ما تجدوله schedulePrayerNativeNotifications. */
+export function countSlotNativeAlerts(
+  slotKey: string,
+  prefs: ReturnType<typeof loadPrayerAlertPrefs>,
+): number {
+  const o = resolveSlotAlertOpts(slotKey, prefs);
+  if (!o.prayerEnabled) return 0;
+  const pk = asPrayerKey(slotKey);
+  const iqamah = pk ? isIqamahEnabledForPrayer(loadAdhanPrefs(), pk) : false;
+  return [o.preAlertEnabled, o.enterAlertEnabled, o.postReminderEnabled, iqamah].filter(Boolean).length;
+}
+
+export type NativeWindowEntry = {
+  slot: PrayerSlot;
+  epoch: number;
+  dateISO: string;
+  plan: WindowSlotPlan;
+};
+
+/**
+ * خطة النافذة الموحّدة (حتى 7 أيام) — تستعملها جدولة التنبيهات ومقاطع أذان iOS معًا
+ * فتتفقان على الأيام المشمولة والميزانية (حصة الصلاة 40 من 64 دون المساس بحصة الأذكار).
+ */
+export async function planNativePrayerWindow(
+  slots: Array<{ slot: PrayerSlot; epoch: number; dateISO: string }>,
+  prefs: ReturnType<typeof loadPrayerAlertPrefs>,
+): Promise<NativeWindowEntry[]> {
+  const seg = isNative && isIOS ? await import("./adhan-ios-segments") : null;
+  const inputs = slots.map(({ slot }) => {
+    const o = resolveSlotAlertOpts(slot.key, prefs);
+    const pk = asPrayerKey(slot.key);
+    let iosFullAdhan = false;
+    let chainLength = 1;
+    if (seg && o.prayerEnabled && o.iosFullHandlesEnter && pk) {
+      const muezzin = getMuezzin(o.muezzinId);
+      iosFullAdhan = pk !== "fajr" || hasFajrAdhan(muezzin);
+      chainLength = seg.recordingSupportsIosChainedSegments(muezzin.id) ? seg.ADHAN_IOS_MAX_SEGMENTS : 1;
+    }
+    return { alertCount: countSlotNativeAlerts(slot.key, prefs), iosFullAdhan, chainLength };
+  });
+  const plans = planPrayerNativeWindow(inputs);
+  return slots.map((s, i) => ({ ...s, plan: plans[i] }));
+}
+
 async function rescheduleAllNativePrayers(
   slots: Array<{ slot: PrayerSlot; epoch: number; dateISO: string }>,
   prefs: ReturnType<typeof loadPrayerAlertPrefs>,
@@ -300,10 +347,14 @@ async function rescheduleAllNativePrayers(
 
   await purgePastPrayerNativeNotifications();
 
+  /** خطة موحّدة مع مقاطع أذان iOS: الأقرب أولًا ضمن حصة الصلاة (40 من 64). */
+  const windowPlan = await planNativePrayerWindow(slots, prefs);
+  const planned = windowPlan.filter((w) => w.plan.include);
+
   /** معرّفات مطلوبة لهذه النافذة — لا نمسح الكل أولًا */
   const keepIds = new Set<number>();
   const kinds: PrayerNotifIdKind[] = ["pre", "enter", "post", "iqamah"];
-  for (const { slot, dateISO } of slots) {
+  for (const { slot, dateISO } of planned) {
     const pk = slot.key.toLowerCase();
     for (const kind of kinds) {
       keepIds.add(hashPrayerNotificationId(pk, dateISO, kind));
@@ -314,7 +365,7 @@ async function rescheduleAllNativePrayers(
   const expected: Array<{ prayerKey: string; atMs: number; kind: string }> = [];
   let budget = MAX_NATIVE_PRAYER_NOTIFS;
 
-  for (const { slot, epoch, dateISO } of slots) {
+  for (const { slot, epoch, dateISO } of planned) {
     if (budget <= 0) break;
     const slotOpts = resolveSlotAlertOpts(slot.key, prefs);
     if (!slotOpts.prayerEnabled) continue;

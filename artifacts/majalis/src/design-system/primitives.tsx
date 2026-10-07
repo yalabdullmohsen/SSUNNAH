@@ -3,7 +3,9 @@ import { Link } from "wouter";
 import { Icon, type DsIconName } from "./Icon";
 import { cn } from "@/lib/utils";
 import { S } from "@/design-system/strings";
+import { hapticTap } from "@/lib/capacitor-utils";
 
+/** الأنواع الأربعة: primary · secondary · tertiary(نصي) · الأيقونة = IconButton. destructive/on-hero حالات خاصة. */
 type ButtonVariant = "primary" | "secondary" | "tertiary" | "destructive" | "on-hero";
 type ButtonSize = "l" | "m" | "s";
 
@@ -21,10 +23,10 @@ function btnClass({ variant = "primary", size = "m", block, loading, className }
   return cn("sn-btn sn-pressable", `sn-btn--${variant.replace("hero", "spot")}`, `sn-btn--${size}`, block && "sn-btn--block", loading && "sn-btn--loading", className);
 }
 
-/** زر — primary/secondary/tertiary/destructive بأحجام L/M/S (كلها ≥ 44 للمس). */
-export function Button({ variant, size, block, loading, icon, children, className, disabled, ...rest }: CommonButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
+/** زر — ارتفاع ثابت 48، نص بسطر واحد يُختصر بـ…، اهتزاز خفيف عند الضغط. */
+export function Button({ variant, size, block, loading, icon, children, className, disabled, onClick, ...rest }: CommonButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
-    <button type="button" {...rest} disabled={disabled || loading} aria-busy={loading || undefined} className={btnClass({ variant, size, block, loading, className, children })}>
+    <button type="button" {...rest} onClick={(e) => { void hapticTap("light"); onClick?.(e); }} disabled={disabled || loading} aria-busy={loading || undefined} className={btnClass({ variant, size, block, loading, className, children })}>
       {icon ? <Icon name={icon} size={20} /> : null}
       {children}
     </button>
