@@ -110,6 +110,8 @@ struct SharedPrayerSnapshot: Codable, Hashable {
     var currentPrayerNameAr: String? = nil
     var currentPrayerStartedAtEpochMs: Int64? = nil
     var nextTransitionAtEpochMs: Int64? = nil
+    /// نافذة «مضى على الأذان» بالدقائق (إقامة المستخدم أو 30) — من lib/prayer-phase.ts؛ nil = 30
+    var elapsedWindowMinutes: Int? = nil
     var calculationDate: String? = nil
     var calculationMethodIdentifier: String? = nil
     var permissionState: String? = nil
@@ -126,6 +128,24 @@ struct SharedPrayerSnapshot: Codable, Hashable {
 struct SharedPrayerDay: Codable, Hashable {
     var dayKey: String
     var timesEpochMs: [String: Int64]
+}
+
+/// مرحلة «مضى على الأذان» — تطابق lib/prayer-phase.ts حرفيًا:
+/// عند لحظة الأذان elapsed (٠)، وعند adhan + النافذة تنتهي (countdown للصلاة التالية).
+enum PrayerElapsedPhase {
+    static let defaultWindowMinutes = 30
+
+    static func windowMinutes(_ snapshot: SharedPrayerSnapshot?) -> Int {
+        if let m = snapshot?.elapsedWindowMinutes, m > 0 { return m }
+        return defaultWindowMinutes
+    }
+
+    /// `adhan` = أذان آخر صلاة دخل وقتها (≤ now). يرجع (البداية، النهاية) إن كنا داخل النافذة.
+    static func window(adhan: Date?, now: Date, windowMinutes: Int) -> (start: Date, end: Date)? {
+        guard let start = adhan, start <= now else { return nil }
+        let end = start.addingTimeInterval(TimeInterval(max(0, windowMinutes) * 60))
+        return now < end ? (start, end) : nil
+    }
 }
 
 /// Non-sensitive progress counters for future Widget/Watch surfaces.

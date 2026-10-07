@@ -10,19 +10,10 @@ import { fileURLToPath } from "node:url";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
-const scroll = read("src/components/ScrollToTop.tsx");
-const calm = read("src/styles/sections-calm-polish.css");
 const kxCss = read("src/styles/components/knowledge-summary-card.css");
 const sectsCss = read("src/styles/pages/islamic-sects.css");
 
-assert.match(scroll, /scrollY\s*>\s*280/);
-assert.match(scroll, /MutationObserver|aria-modal|data-radix-dialog/);
-assert.match(scroll, /stt-label/);
-assert.doesNotMatch(scroll, /stt-ring/);
-
-assert.match(calm, /\.scroll-to-top[\s\S]{0,400}?height:\s*40px/);
-assert.match(calm, /:has\(\[role="dialog"\]\[data-state="open"\]\)/);
-assert.match(calm, /bottom-nav-height/);
+/* زر «أعلى» أُلغي من الواجهة (#2693، قرار المالك) — لا فحص لتفاصيله؛ الرجوع يخدمه زر الرجوع الدائري. */
 
 assert.match(kxCss, /\.kx-detail-surface[\s\S]{0,500}?text-align:\s*start/);
 assert.match(kxCss, /\.kx-detail-surface[\s\S]{0,800}?bottom-nav-height/);

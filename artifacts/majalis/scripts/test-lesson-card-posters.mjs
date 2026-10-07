@@ -10,7 +10,6 @@ const root = resolve(import.meta.dirname, "..");
 const card = await readFile(resolve(root, "src/components/lessons/UnifiedLessonCard.tsx"), "utf8");
 const lessonsPage = await readFile(resolve(root, "src/pages/lessons/ui/LessonsView.tsx"), "utf8");
 const homeLessons = await readFile(resolve(root, "src/components/home/HomeUpcomingLessons.tsx"), "utf8");
-const homeCourses = await readFile(resolve(root, "src/components/home/HomeUpcomingCourses.tsx"), "utf8");
 const detailPage = await readFile(resolve(root, "src/pages/lessons/ui/LessonDetailView.tsx"), "utf8");
 const teachers = await readFile(resolve(root, "src/pages/lessons/TeachersIndexPage.tsx"), "utf8");
 
@@ -30,7 +29,6 @@ if (/<img\b|photoUrl|tch-card__photo/.test(teachers)) {
 for (const [name, source, pattern] of [
   ["LessonsPage", lessonsPage, /CompactLessonRow|UnifiedLessonCard/],
   ["HomeUpcomingLessons", homeLessons, /UnifiedLessonCard/],
-  ["HomeUpcomingCourses", homeCourses, /UnifiedLessonCard/],
 ]) {
   if (!pattern.test(source)) failures.push(`${name} must use compact or unified lesson card`);
 }

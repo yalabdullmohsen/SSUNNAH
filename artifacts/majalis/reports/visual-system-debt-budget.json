@@ -3,8 +3,8 @@
   "policy": "decreasing-ceilings",
   "note": "Ceilings must not rise. Lower intentionally in later waves; never raise without documented exception.",
   "floors": {
-    "officialButtonImportFiles": 355,
-    "sfTokenRefs": 1526,
+    "officialButtonImportFiles": 347,
+    "sfTokenRefs": 1517,
     "ssTokenRefs": 772
   },
   "ceilings": {

@@ -85,10 +85,12 @@ struct PrayerLiveActivityWidget: Widget {
                 .frame(maxWidth: 72)
                 .accessibilityLabel("العد التنازلي للصلاة القادمة")
         case .active:
-            Text(state.statusLabel)
-                .font(.headline)
+            // مضى على الأذان: عدّ تصاعدي من لحظة الأذان
+            Text(state.prayerTime, style: .timer)
+                .font(.headline.monospacedDigit())
                 .foregroundStyle(Brand.gold)
-                .accessibilityLabel(state.statusLabel)
+                .frame(maxWidth: 72)
+                .accessibilityLabel("مضى على أذان \(state.prayerName)")
         case .completed:
             if let end = state.nextPrayerTime, end > Date() {
                 Text(timerInterval: Date.now...end, countsDown: true)
@@ -118,10 +120,11 @@ struct PrayerLiveActivityWidget: Widget {
                 .frame(maxWidth: 44)
                 .accessibilityLabel("العد التنازلي")
         case .active:
-            Text("الآن")
-                .font(.caption2.bold())
+            Text(state.prayerTime, style: .timer)
+                .font(.caption2.monospacedDigit())
                 .foregroundStyle(Brand.gold)
-                .accessibilityLabel("حان الآن")
+                .frame(maxWidth: 44)
+                .accessibilityLabel("مضى على أذان \(state.prayerName)")
         case .completed:
             if let end = state.nextPrayerTime, end > Date() {
                 Text(timerInterval: Date.now...end, countsDown: true)
@@ -177,7 +180,7 @@ struct PrayerLiveActivityWidget: Widget {
         case .upcoming:
             return "أذان \(state.prayerName) — \(state.prayerTime.formatted(date: .omitted, time: .shortened))"
         case .active:
-            return "\(state.statusLabel) · صلاة \(state.prayerName)"
+            return "مضى على أذان \(state.prayerName)"
         case .completed:
             if let next = state.nextPrayerName {
                 return "اكتملت \(state.prayerName) · التالية \(next)"
@@ -191,7 +194,7 @@ struct PrayerLiveActivityWidget: Widget {
     private func expandedA11yTitle(state: PrayerActivityAttributes.ContentState) -> String {
         switch state.phase {
         case .upcoming: return "الصلاة القادمة \(state.prayerName)"
-        case .active: return "الصلاة الحالية \(state.prayerName)"
+        case .active: return "مضى على أذان \(state.prayerName)"
         case .completed: return "الصلاة التالية \(state.nextPrayerName ?? "")"
         case .appLaunch: return "افتح مواقيت الصلاة"
         }
@@ -260,7 +263,7 @@ private struct LockScreenPrayerView: View {
         case .upcoming:
             return "صلاة \(state.prayerName) القادمة"
         case .active:
-            return "صلاة \(state.prayerName) · \(state.statusLabel)"
+            return "مضى على أذان \(state.prayerName)"
         case .completed:
             if let next = state.nextPrayerName {
                 return "التالية: \(next)"
@@ -293,9 +296,11 @@ private struct LockScreenPrayerView: View {
                 .frame(minWidth: 64, alignment: .trailing)
                 .accessibilityLabel("العد التنازلي")
         case .active:
-            Text(state.statusLabel)
-                .font(.subheadline.bold())
+            Text(state.prayerTime, style: .timer)
+                .font(.title3.monospacedDigit().bold())
                 .foregroundStyle(Brand.gold)
+                .frame(minWidth: 64, alignment: .trailing)
+                .accessibilityLabel("مضى على أذان \(state.prayerName)")
         case .completed:
             if let end = state.nextPrayerTime, end > Date() {
                 Text(timerInterval: Date.now...end, countsDown: true)

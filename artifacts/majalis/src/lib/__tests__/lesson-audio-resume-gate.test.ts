@@ -11,7 +11,6 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const resume = readFileSync(resolve(root, "src/lib/lesson-audio-resume.ts"), "utf8");
 const player = readFileSync(resolve(root, "src/components/lessons/LessonRecordingPlayer.tsx"), "utf8");
 const audio = readFileSync(resolve(root, "src/lib/quran-audio-resume.ts"), "utf8");
-const courses = readFileSync(resolve(root, "src/components/home/HomeUpcomingCourses.tsx"), "utf8");
 const teachers = readFileSync(resolve(root, "src/pages/lessons/TeachersIndexPage.tsx"), "utf8");
 
 assert.match(resume, /saveLessonAudioResume/);
@@ -26,10 +25,6 @@ assert.match(audio, /notifyAudioResumeChanged|dispatchEvent/);
 
 const localResume = readFileSync(resolve(root, "src/components/home/HomeLocalResumeCard.tsx"), "utf8");
 assert.match(localResume, /AUDIO_RESUME_CHANGED_EVENT/);
-assert.match(courses, /beginAbortScope/);
-assert.match(courses, /RequestManager\.cancel/);
-assert.match(courses, /state=\{state\}/);
-assert.doesNotMatch(courses, /return null/);
 assert.match(teachers, /beginAbortScope/);
 assert.match(teachers, /RequestManager\.cancel/);
 

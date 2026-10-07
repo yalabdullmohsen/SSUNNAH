@@ -133,9 +133,13 @@ assert.match(kgPage, /\/prophets|\/fiqh|\/quran\/people/, "رسالة الفرا
   const prophetsTs = read("src/lib/prophets-data.ts");
   const bios = [...prophetsTs.matchAll(/briefBio:\s*\n\s*"([^"]+)"/g)].map((m) => m[1]);
   assert.equal(bios.length, 25, "٢٥ نبذة للأنبياء");
+  /*
+   * استثناء موثّق (DECISIONS.md، 2026-10-07): نبذ الأنبياء صحّحها المالك شرعيًا (PR #2703)،
+   * والطول ليس معيار جودة لنص شرعي مُراجَع — فلا حدّ أدنى للكلمات. يبقى شرط وجود نص حقيقي غير فارغ.
+   */
   assert.ok(
-    bios.every((b) => b.trim().split(/\s+/).filter(Boolean).length >= 40),
-    "كل briefBio ≥40 كلمة",
+    bios.every((b) => b.trim().split(/\s+/).filter(Boolean).length >= 8),
+    "كل briefBio نصّ حقيقي (لا فارغ ولا مُلصق عنوانًا)",
   );
   const prophetPage = read("src/views/ProphetStoriesPage.tsx");
   assert.match(prophetPage, /getKnowledgeItem/, "صفحة الأنبياء تحمّل مقال المعرفة");

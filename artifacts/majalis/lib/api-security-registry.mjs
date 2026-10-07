@@ -115,6 +115,7 @@ export const ROUTE_SECURITY_CLASS = Object.freeze({
   "/api/push/subscribe": "PUBLIC_WRITE",
   "/api/test-anthropic": "DISABLED_IN_PRODUCTION",
   "/api/transcribe": "PUBLIC_WRITE",
+  "/api/recitation-transcribe": "PUBLIC_WRITE",
   "/api/narration/tts": "PUBLIC_WRITE",
   "/api/submissions": "PUBLIC_WRITE",
   "/api/researches/submit": "PUBLIC_WRITE",

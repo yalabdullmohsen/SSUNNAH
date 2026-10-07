@@ -31,7 +31,12 @@ export function today(now: Date = new Date()): Date {
 function addDays(base: Date, days: number): string {
   const d = new Date(base);
   d.setDate(d.getDate() + days);
-  return d.toISOString().slice(0, 10);
+  // تاريخ تقويمي محلي: toISOString() كان يحوّل منتصف الليل المحلي إلى UTC فيسبق مستخدمي UTC+ (الكويت) بيوم
+  // فتصير مراجعة «غدًا» مستحقة اليوم. اليوم عند 3 فجرًا محليًا ≈ تبدّل يوم UTC في الكويت — وهو ما يعتمده الخادم.
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
 }
 
 export function schedule(card: CardState, rating: Rating, now: Date = new Date()): Scheduled {

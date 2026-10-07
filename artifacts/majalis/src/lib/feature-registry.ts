@@ -27,7 +27,9 @@ export const FEATURE_REGISTRY: FeatureEntry[] = [
   { id: "annual-courses",label:"الدورات العلمية",    path: "/annual-courses",group:"تعليم",         status: "disabled",     inSideNav: false, inBottomNav: false },
   { id: "library",      label: "المكتبة",            path: "/search",       group: "تعليم",         status: "disabled",       inSideNav: false,  inBottomNav: false },
   { id: "researches",   label: "الأبحاث والرسائل", path: "/academic-research", group: "تعليم",  status: "active",        inSideNav: true,   inBottomNav: false },
+  { id: "hifz-path",    label: "مسار الحفظ",       path: "/hifz-path",         group: "تعليم",  status: "active",       inSideNav: false,  inBottomNav: false },
   { id: "hifz-path",    label: "مسار الحفظ",       path: "/hifz-path",         group: "تعليم",  status: "coming-soon",  inSideNav: false,  inBottomNav: false },
+  { id: "recitation-test-ai", label: "اختبار التلاوة", path: "/quran/recitation-test-ai", group: "تعليم", status: "active", inSideNav: false, inBottomNav: false },
   { id: "fawaid",       label: "الفوائد",            path: "/fawaid",       group: "تعليم",         status: "active",       inSideNav: true,  inBottomNav: false },
   { id: "hadith-index", label: "الأحاديث النبوية",   path: "/hadith",       group: "حديث",          status: "active",       inSideNav: true,  inBottomNav: false },
   { id: "hadith-sahih", label: "الأحاديث الصحيحة",  path: "/hadith/sahih", group: "حديث",          status: "active",       inSideNav: false, inBottomNav: false },
@@ -65,7 +67,7 @@ export const FEATURE_REGISTRY: FeatureEntry[] = [
   { id: "search",       label: "البحث",             path: "/search",       group: "أدوات",         status: "active",       inSideNav: true,  inBottomNav: true  },
   { id: "progress-center", label: "مركز التقدّم",   path: "/progress",    group: "حساب",          status: "active",       inSideNav: false, inBottomNav: false },
   { id: "offline-center",  label: "مركز دون اتصال", path: "/offline",     group: "حساب",          status: "active",       inSideNav: false, inBottomNav: false },
-  { id: "assistant",    label: "المساعد الذكي",     path: "/assistant",    group: "أدوات",         status: "coming-soon",  inSideNav: false, inBottomNav: false },
+  { id: "assistant",    label: "المساعد الذكي",     path: "/assistant",    group: "أدوات",         status: "active",       inSideNav: false, inBottomNav: false },
   { id: "flashcards",   label: "بطاقات المراجعة",  path: "/flashcards",   group: "تعليم",         status: "active",       inSideNav: true,  inBottomNav: false },
   { id: "knowledge-graph",label:"خارطة المعرفة",   path: "/knowledge-graph",group:"أدوات",        status: "disabled",       inSideNav: false,  inBottomNav: false },
   /* عُطِّلت 2026-07-23: أُزيلت من كل نقاط الدخول (رئيسية/قوائم/خرائط ذهنية/

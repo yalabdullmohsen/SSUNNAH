@@ -203,10 +203,10 @@ struct NextPrayerCatalogView: View {
         if entry.needsAppOpenAction {
             SunnahWidgetEmptyState(message: PrayerWidgetCopy.noData)
         } else if family == .accessoryInline {
-            Text(entry.nextNameAr.map { "التالي \($0)" } ?? "الصلاة التالية")
+            Text(entry.nextLine("التالي") ?? "الصلاة التالية")
         } else if family == .accessoryCircular {
             VStack(spacing: 2) {
-                Text(entry.nextNameAr ?? "التالي")
+                Text(entry.nextDisplayName ?? "التالي")
                     .font(.caption2.bold())
                     .lineLimit(1)
                 PrayerCountdownText(entry: entry)
@@ -214,10 +214,10 @@ struct NextPrayerCatalogView: View {
             }
         } else if family == .systemLarge || family == .systemMedium {
             VStack(alignment: .leading, spacing: 8) {
-                Text("التالي")
+                Text(entry.nextCaption("التالي"))
                     .font(.caption.bold())
                     .foregroundStyle(SunnahWidgetTheme.secondaryText)
-                Text(entry.nextNameAr ?? "الصلاة التالية")
+                Text(entry.nextDisplayName ?? "الصلاة التالية")
                     .font(.title.bold())
                     .foregroundStyle(.white)
                     .lineLimit(1)
@@ -240,10 +240,10 @@ struct NextPrayerCatalogView: View {
             .padding(14)
         } else {
             VStack(alignment: .leading, spacing: 6) {
-                Text("التالي")
+                Text(entry.nextCaption("التالي"))
                     .font(.caption.bold())
                     .foregroundStyle(SunnahWidgetTheme.secondaryText)
-                Text(entry.nextNameAr ?? "الصلاة التالية")
+                Text(entry.nextDisplayName ?? "الصلاة التالية")
                     .font(.title3.bold())
                     .foregroundStyle(.white)
                     .lineLimit(1)
@@ -263,6 +263,7 @@ struct NextPrayerCatalogView: View {
     }
 
     private var nextA11y: String {
+        if let elapsed = entry.elapsedNameAr { return "مضى على أذان \(elapsed)" }
         let name = entry.nextNameAr ?? "غير محددة"
         return "الصلاة التالية \(name)"
     }
@@ -330,10 +331,10 @@ struct PreviousNextPrayerCatalogView: View {
                         }
                         Spacer()
                         VStack(alignment: .trailing, spacing: 2) {
-                            Text("التالية")
+                            Text(entry.nextCaption("التالية"))
                                 .font(.caption2)
                                 .foregroundStyle(SunnahWidgetTheme.tertiaryText)
-                            Text(entry.nextNameAr ?? "الصلاة التالية")
+                            Text(entry.nextDisplayName ?? "الصلاة التالية")
                                 .font(.headline)
                                 .foregroundStyle(.white)
                             if let d = entry.nextDate {
@@ -525,7 +526,7 @@ struct PrayerHijriCatalogView: View {
                             .lineLimit(2)
                             .minimumScaleFactor(0.8)
                     }
-                    Text(entry.nextNameAr ?? entry.currentNameAr ?? "الصلاة التالية")
+                    Text(entry.nextDisplayName ?? entry.currentNameAr ?? "الصلاة التالية")
                         .font(.title3.bold())
                         .foregroundStyle(.white)
                     if let d = entry.nextDate {

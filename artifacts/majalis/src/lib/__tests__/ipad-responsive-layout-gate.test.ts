@@ -66,6 +66,6 @@ const now = buildPrayerChipCopy({
   remainingSeconds: 0,
   sinceSeconds: 30,
 });
-assert.match(now.compactText, /حان/);
+assert.match(now.compactText, /مضى/);
 
 console.log("ipad-responsive-layout-gate.test.ts: ok");

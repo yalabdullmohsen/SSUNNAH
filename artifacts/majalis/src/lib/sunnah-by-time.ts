@@ -1,4 +1,5 @@
 import { computePrayerStatus, fetchPrayerTimes, type PrayerSlot } from "./prayer-times";
+import { getElapsedWindowMinutes } from "./prayer-elapsed-window";
 
 export type SunnahSuggestion = {
   label: string;
@@ -106,7 +107,7 @@ function periodFromLocalHour(hour: number): SunnahPeriod {
 export async function getCurrentSunnahPeriod(): Promise<SunnahPeriod & { source: "prayer" | "local" }> {
   try {
     const times = await fetchPrayerTimes();
-    const status = computePrayerStatus(times.prayers);
+    const status = computePrayerStatus(times.prayers, undefined, { elapsedWindowMinutes: getElapsedWindowMinutes() });
     return { ...periodFromPrayer(status.current), source: "prayer" };
   } catch {
     const hour = new Date().getHours();

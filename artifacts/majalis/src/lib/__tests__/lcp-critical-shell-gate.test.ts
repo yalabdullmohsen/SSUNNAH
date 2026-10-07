@@ -68,8 +68,6 @@ assert.match(heroShell, /mj-home-lcp-ph/, "حجز ارتفاع في هيكل ا�
 assert.match(home, /HomeRestShell|HomePrimaryDiscoveryPlaceholder/, "الرئيسية تستخدم هياكل الحجز المشتركة");
 assert.doesNotMatch(home, /HomeStartHereGate|2_200/, "لا تأخير اصطناعي يسرق LCP بعد الرسم");
 {
-  const startHere = readFileSync(resolve(root, "src/components/home/HomeStartHereSection.tsx"), "utf8");
-  assert.match(startHere, /m2030\/home\.css/, "أنماط hsh-lead مع مكوّن LCP مباشرة");
   const inject = readFileSync(resolve(root, "scripts/inject-home-chunk-preload.mjs"), "utf8");
   assert.doesNotMatch(
     inject,

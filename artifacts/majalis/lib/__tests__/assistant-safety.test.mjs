@@ -33,6 +33,8 @@ function assert(condition, label) {
 // ─── تجهيز: مفتاح نموذج وهمي + fetch مُراقَب ────────────────────────────────
 // وجود المفتاح يعني أن أي مسار لا يُوقف الطلب مبكرًا سيستدعي النموذج فعلًا.
 process.env.ANTHROPIC_API_KEY = "test-key-not-real";
+// الواجهة العامة للمساعد معطّلة افتراضيًا (isAssistantPublicApiEnabled)؛ هذا الاختبار يفحص مسار الأمان المفعّل.
+process.env.ASSISTANT_ENABLED = "1";
 
 let modelCalls = 0;
 const realFetch = globalThis.fetch;
@@ -116,27 +118,44 @@ for (const [label, query] of BLOCKED_QUERIES) {
 console.log("\n=== 2) بلا citations ⇒ ليس «مستندًا» + تنبيه إلزامي ===");
 
 {
-  // سؤال عام يمرّ إلى النموذج (fetch مُراقَب) — الجواب بلا مصادر.
+  // قرار المالك: لا توليد حرّ بلا استناد — السؤال العام لا يصل إلى النموذج افتراضيًا
+  // (الإجابة تأتي من RAG بمصادر أو من قاعدة المعرفة المراجَعة أو ردّ نقص المصادر).
   modelCalls = 0;
   const payload = await ask("ما فضل ذكر الله وما أنواعه؟");
 
-  assert(modelCalls === 1, "السؤال العام يصل إلى النموذج (المسار الطبيعي يعمل)");
+  assert(modelCalls === 0, "السؤال العام لا يُرسَل إلى النموذج الحرّ (استناد فقط)");
   assert(
-    Array.isArray(payload.citations) && payload.citations.length === 0,
-    "الجواب غير المسنَد بلا citations",
+    payload.grounded !== true || (Array.isArray(payload.citations) && payload.citations.length > 0),
+    "«مستند» لا يُوسَم إلا بمصادر فعلية",
   );
   assert(
-    payload.grounded === false,
-    "grounded=false حين لا مصادر",
-  );
-  assert(
-    payload.safety_classification !== "fiqh_answer",
-    "لا يُصنَّف «fiqh_answer» (وسم «مستندة» في الواجهة) بلا مصادر",
+    payload.safety_classification !== "fiqh_answer" || payload.grounded === true,
+    "لا يُصنَّف «fiqh_answer» بلا مصادر",
   );
   assert(
     typeof payload.disclaimer === "string" && payload.disclaimer.trim().length > 0,
-    "disclaimer غير فارغ حين citations.length === 0",
+    "disclaimer غير فارغ",
   );
+  // أي جواب من قاعدة المعرفة المحلية يحمل رابطًا داخليًا للمصادر
+  const kb = await ask("ما هي أركان الإيمان؟");
+  assert(modelCalls === 0, "قاعدة المعرفة المحلية بلا استدعاء نموذج");
+  assert(
+    Array.isArray(kb.citations) && kb.citations.length > 0 && String(kb.citations[0].href).startsWith("/search?q="),
+    "جواب قاعدة المعرفة برابط داخلي للمصادر",
+  );
+  assert(kb.grounded === false, "جواب القاعدة المحلية ليس «مستندًا» بالمعنى الصارم");
+}
+
+{
+  // المسار التجريبي المعطّل افتراضيًا: عند تفعيله صراحةً يبقى بلا citations ولا وسم «مستند».
+  process.env.ASSISTANT_ALLOW_UNGROUNDED_LLM = "1";
+  modelCalls = 0;
+  const payload = await ask("ما فضل ذكر الله وما أنواعه؟");
+  delete process.env.ASSISTANT_ALLOW_UNGROUNDED_LLM;
+  assert(modelCalls === 1, "المسار التجريبي المُفعَّل صراحةً يصل إلى النموذج");
+  assert(payload.grounded === false && payload.citations.length === 0, "التجريبي: بلا استناد ولا citations");
+  assert(payload.safety_classification !== "fiqh_answer", "التجريبي: ليس fiqh_answer");
+  assert(typeof payload.disclaimer === "string" && payload.disclaimer.trim().length > 0, "التجريبي: التنبيه إلزامي");
 }
 
 {

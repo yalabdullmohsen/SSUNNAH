@@ -68,6 +68,10 @@ struct PrayerWidgetEntry: TimelineEntry {
     let nextNameAr: String?
     let nextDate: Date?
     let nextHasStarted: Bool
+    /// «مضى على الأذان»: الصلاة التي دخل وقتها وحدود نافذتها (nil خارج النافذة)
+    let elapsedKey: PrayerSlotKey?
+    let elapsedStart: Date?
+    let elapsedEnd: Date?
     let locationLabel: String
     let lastUpdated: Date?
     let gregorianDateText: String
@@ -227,6 +231,15 @@ struct PrayerWidgetEntry: TimelineEntry {
             return false
         }()
 
+        let elapsedPhase = state == .validData
+            ? PrayerElapsedPhase.window(
+                adhan: current?.date,
+                now: date,
+                windowMinutes: PrayerElapsedPhase.windowMinutes(snapshot)
+            )
+            : nil
+        let elapsedKey: PrayerSlotKey? = elapsedPhase == nil ? nil : current?.key
+
         let lastUpdated: Date? = {
             guard let ms = snapshot?.updatedAtEpochMs, ms > 0 else { return nil }
             return Date(timeIntervalSince1970: TimeInterval(ms) / 1000)
@@ -271,6 +284,9 @@ struct PrayerWidgetEntry: TimelineEntry {
             nextNameAr: nextName,
             nextDate: nextDate,
             nextHasStarted: nextHasStarted,
+            elapsedKey: elapsedKey,
+            elapsedStart: elapsedPhase?.start,
+            elapsedEnd: elapsedPhase?.end,
             locationLabel: isPreview ? "معاينة" : (snapshot?.locationLabel ?? ""),
             lastUpdated: lastUpdated,
             gregorianDateText: gregorian,
@@ -312,6 +328,23 @@ struct PrayerWidgetEntry: TimelineEntry {
         slots.first(where: { $0.key == key })
     }
 
+    /// اسم الصلاة التي مضى على أذانها (nil خارج النافذة)
+    var elapsedNameAr: String? { elapsedKey?.nameAr }
+
+    /// يُستعمل بدل «التالي X» أثناء النافذة: «مضى على أذان X»
+    func nextLine(_ prefix: String) -> String? {
+        if let name = elapsedNameAr { return "مضى على أذان \(name)" }
+        return nextNameAr.map { "\(prefix) \($0)" }
+    }
+
+    /// عنوان صغير فوق اسم الصلاة: «مضى على أذان» أثناء النافذة وإلا الأصل («التالي»/«التالية»)
+    func nextCaption(_ fallback: String) -> String {
+        elapsedNameAr == nil ? fallback : "مضى على أذان"
+    }
+
+    /// اسم الصلاة المعروض: التي مضى على أذانها أثناء النافذة وإلا التالية
+    var nextDisplayName: String? { elapsedNameAr ?? nextNameAr }
+
     var currentStartDate: Date? {
         guard let key = currentKey else { return nil }
         return slot(for: key)?.date
@@ -336,6 +369,16 @@ enum PrayerWidgetTimelinePolicy {
         for ms in boundaries {
             let d = Date(timeIntervalSince1970: TimeInterval(ms) / 1000)
             if d > now, d.timeIntervalSince(now) <= horizon { dates.append(d) }
+        }
+        // نهاية نافذة «مضى على الأذان» لكل فرض (adhan + نافذة): لحظة العودة للعدّ التنازلي
+        var obligatoryTimes: [Int64] = (snapshot?.timesEpochMs ?? [:]).filter { $0.key != "sunrise" }.map { $0.value }
+        for day in snapshot?.upcomingDays ?? [] {
+            obligatoryTimes.append(contentsOf: day.timesEpochMs.filter { $0.key != "sunrise" }.map { $0.value })
+        }
+        let windowSec = TimeInterval(PrayerElapsedPhase.windowMinutes(snapshot) * 60)
+        for ms in obligatoryTimes {
+            let end = Date(timeIntervalSince1970: TimeInterval(ms) / 1000).addingTimeInterval(windowSec)
+            if end > now, end.timeIntervalSince(now) <= horizon { dates.append(end) }
         }
         var cal = Calendar(identifier: .gregorian)
         cal.timeZone = TimeZone(identifier: snapshot?.timeZoneIdentifier ?? "") ?? .current

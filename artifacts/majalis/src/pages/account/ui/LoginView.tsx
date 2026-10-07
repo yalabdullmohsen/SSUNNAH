@@ -1,3 +1,4 @@
+import { checkPasswordBreached, PASSWORD_BREACHED_AR } from "@/lib/password-breach-check";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useAuth } from "@/components/AuthProvider";
@@ -231,6 +232,11 @@ export default function LoginPage() {
           setError(validationError);
           return;
         }
+        const breach = await checkPasswordBreached(password);
+        if (breach.breached) {
+          setError(PASSWORD_BREACHED_AR);
+          return;
+        }
         const { data, error: signUpError } = await register(email.trim(), password, fullName.trim());
         if (signUpError) throw signUpError;
 
@@ -326,9 +332,9 @@ export default function LoginPage() {
           ) : null}
 
           <div className="signup-confirm" role="status">
-            <p className="signup-confirm__lead">✅ تم إنشاء الحساب</p>
+            <p className="signup-confirm__lead">تم إنشاء الحساب</p>
             <p className="signup-confirm__mail">
-              📩 تم إرسال رسالة تأكيد إلى{" "}
+              تم إرسال رسالة تأكيد إلى{" "}
               <strong dir="ltr">{pendingConfirmEmail}</strong>
             </p>
             <ol className="signup-confirm__steps">

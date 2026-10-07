@@ -74,7 +74,7 @@ async function scheduleNativeDailyReminder(requestPerm: boolean): Promise<Schedu
         },
         sound: DEFAULT_ALERT_SOUND,
         channelId: CHANNEL_QURAN,
-        interruptionLevel: "timeSensitive",
+        interruptionLevel: "active",
         extra: { url: QURAN_DAILY_REMINDER_URL, kind: "quran-daily" },
       },
     ],

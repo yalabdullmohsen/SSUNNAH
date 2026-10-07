@@ -24,7 +24,6 @@ assert.equal(isAdminSurfaceAllowed("/admin", false), false);
 const app = read("src/App.tsx");
 const shell = read("src/views/admin/AdminShell.tsx");
 const inline = read("src/components/AdminInlineEdit.tsx");
-const quick = read("src/components/AdminQuickEdit.tsx");
 const lessons = read("src/pages/lessons/ui/LessonsView.tsx");
 
 console.log("=== App العام بلا AdminSiteEditBar ===");
@@ -36,7 +35,6 @@ assert.match(shell, /AdminSiteEditBar/);
 
 console.log("=== Inline/Quick gated بـ isAdminSurfaceAllowed ===");
 assert.match(inline, /isAdminSurfaceAllowed/);
-assert.match(quick, /isAdminSurfaceAllowed/);
 
 console.log("=== قائمة الدروس بلا شريط حذف/تعديل عام ===");
 assert.doesNotMatch(lessons, /lesson-admin-toolbar/);

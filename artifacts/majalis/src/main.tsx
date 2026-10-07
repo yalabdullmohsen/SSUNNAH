@@ -19,6 +19,7 @@ import {
 } from "./lib/boot-sequence";
 /* beginBootstrapStage showFirstUsefulScreen isStartupSafeMode clearStartupFailures */
 import { hydrateNativeStorage } from "./lib/native-storage";
+import { installNativeApiBase } from "./lib/native-api-base";
 import { installInAppNavigationGuard } from "./lib/in-app-navigation";
 import { armNativeSplashController } from "./lib/splash-screen";
 import { awaitBootReadiness, registerBootStorageGate } from "./lib/boot-readiness";
@@ -258,6 +259,11 @@ if (isNative) {
   }
   void import("./styles/capacitor-native-ux.css");
   void import("./styles/ios-edge.css");
+}
+
+// الحزمة المحلية فقط (برنامج iOS الكامل): وجّه /api/* إلى الخادم قبل أي طلب. الشرط مكتوب هنا ليطويه Rollup على الويب.
+if (import.meta.env.VITE_TARGET === "native") {
+  installNativeApiBase();
 }
 
 const queryClient = createAppQueryClient();

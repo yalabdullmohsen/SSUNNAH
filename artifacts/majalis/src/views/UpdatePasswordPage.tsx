@@ -1,3 +1,4 @@
+import { checkPasswordBreached, PASSWORD_BREACHED_AR } from "@/lib/password-breach-check";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { supabase, updatePassword } from "@/lib/supabase";
@@ -58,6 +59,11 @@ export default function UpdatePasswordPage() {
     }
     setLoading(true);
     try {
+      const breach = await checkPasswordBreached(password);
+      if (breach.breached) {
+        setError(PASSWORD_BREACHED_AR);
+        return;
+      }
       const { error: updateError } = await updatePassword(password);
       if (updateError) throw updateError;
       setOk(true);

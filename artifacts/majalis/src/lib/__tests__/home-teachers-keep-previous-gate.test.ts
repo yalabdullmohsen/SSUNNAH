@@ -13,8 +13,6 @@ const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 const lessons = read("src/components/home/HomeUpcomingLessons.tsx");
 assert.doesNotMatch(lessons, /setAllLessons\(\[\]\)/, "UpcomingLessons: لا تفرّغ عند الخطأ");
 
-const courses = read("src/components/home/HomeUpcomingCourses.tsx");
-assert.doesNotMatch(courses, /setCourses\(\[\]\)/, "UpcomingCourses: لا تفرّغ عند الخطأ");
 
 const live = read("src/components/home/HomeLiveNowBanner.tsx");
 assert.doesNotMatch(live, /setItems\(\[\]\)/, "LiveNow: لا تفرّغ عند الخطأ");

@@ -85,7 +85,13 @@ ok(
 );
 ok(!existsSync(join(root, "android")), "Android product tree retired (no artifacts/majalis/android)");
 ok(!plist.includes("NSSpeechRecognitionUsageDescription"), "Info.plist has no speech recognition usage");
-ok(!plist.includes("NSMicrophoneUsageDescription"), "Info.plist has no microphone usage (AI recitation removed)");
+// نص إذن الميكروفون موحَّد حرفيًا (scripts/mic-usage-description.txt): وضع التسميع على الجهاز فقط، واختبار التلاوة يُرسل بعد الموافقة.
+// أي تغيير يلزم تعديل الملف الموحَّد معًا مع Info.plist وصفحة الخصوصية. التعرّف الصوتي الأصلي (Speech) يبقى محظورًا.
+{
+  const canonical = readFileSync(join(root, "scripts/mic-usage-description.txt"), "utf8").trim();
+  const m = plist.match(/<key>NSMicrophoneUsageDescription<\/key>\s*<string>([^<]*)<\/string>/);
+  ok(m !== null && m[1] === canonical, "Info.plist NSMicrophoneUsageDescription equals the unified text exactly");
+}
 ok(!pbx.includes("MajlisSpeechRecognitionPlugin.swift"), "pbxproj has no speech plugin");
 ok(!pbx.includes("RecitationAudioCapturePlugin.swift"), "pbxproj has no capture plugin");
 ok(!pbx.includes("MajlisSpeechRecognition"), "pbxproj has no MajlisSpeechRecognition symbol");
@@ -412,7 +418,7 @@ if (existsSync(networkServicePath)) {
     !/UserDefaults\.standard\.set\s*\(\s*data\s*,/.test(networkService),
     "NetworkService does not UserDefaults.set(data) for session blobs",
   );
-  const persistBlock = networkService.match(/private func persistSession[\s\S]*?\n    \}/);
+  const persistBlock = networkService.match(/private func persistSession[\s\S]*?\n {4}\}/);
   ok(Boolean(persistBlock), "persistSession function present");
   if (persistBlock) {
     ok(!persistBlock[0].includes("UserDefaults"), "persistSession does not touch UserDefaults");

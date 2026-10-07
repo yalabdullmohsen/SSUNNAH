@@ -35,5 +35,13 @@ assert.equal(ok2.interval, Math.round(3 * Math.min(2.8, 2.5 + 0.1)));
 
 assert.equal(base.getHours(), 0);
 assert.ok(ok0.dueOn.match(/^\d{4}-\d{2}-\d{2}$/));
+/* مراجعة «غدًا» = تاريخ اليوم المحلي + 1 بصرف النظر عن المنطقة الزمنية (لا انزلاق UTC) */
+{
+  const y = base.getFullYear();
+  const next = new Date(base);
+  next.setDate(next.getDate() + 1);
+  const local = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  assert.equal(ok0.dueOn, local(next), `الفاصل 1 يوم = ${local(next)} (سنة ${y})`);
+}
 
 console.log("srs.test.ts: ok");

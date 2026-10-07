@@ -35,9 +35,10 @@ assert.match(heroSrc, /arabicName/);
 assert.match(heroSrc, /pbuhText|صلوات الله وسلامه عليه/);
 assert.match(factsSrc, /ProphetTopicCard/);
 assert.match(factsSrc, /prophet-quick-facts/);
-assert.match(tabsSrc, /role="tablist"/);
-assert.match(tabsSrc, /aria-selected/);
-assert.match(tabsSrc, /prophet-story-tabs__marker/);
+/* التبويبات صارت فوق ContentTabs (سلطة TAB) — role="tablist" يأتي منها */
+assert.match(tabsSrc, /ContentTabs/);
+assert.match(read("src/components/design-system/TabSystem.tsx"), /role="tablist"/);
+assert.match(read("src/components/design-system/TabSystem.tsx"), /aria-selected/);
 
 assert.match(view, /label:\s*"القصة"/);
 assert.match(view, /label:\s*"نبذة"/);

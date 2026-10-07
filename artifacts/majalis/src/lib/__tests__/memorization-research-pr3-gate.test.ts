@@ -52,9 +52,12 @@ const {
 
 resetMemorizationResearchFlags();
 resetHifzProgressStoreForTests();
-assert.equal(MEMORIZATION_RESEARCH_FLAGS_DEFAULT.hifzPathPracticeEnabled, false);
-assert.equal(isHifzPathEnabled(), false);
-assert.equal(isHifzPathPracticeEnabled(), false);
+assert.equal(MEMORIZATION_RESEARCH_FLAGS_DEFAULT.hifzPathPracticeEnabled, true);
+assert.equal(isHifzPathEnabled(), true);
+assert.equal(isHifzPathPracticeEnabled(), true);
+setMemorizationResearchFlagsForTests({ hifzPathPracticeEnabled: false });
+assert.equal(isHifzPathPracticeEnabled(), false, "الإطفاء المحلي لتجربة الوحدة يعمل");
+resetMemorizationResearchFlags();
 
 setMemorizationResearchFlagsForTests({
   hifzPathEnabled: true,
@@ -110,7 +113,7 @@ assert.doesNotMatch(storeSrc, /ayahText|quranText|verseText/);
 
 resetMemorizationResearchFlags();
 resetHifzProgressStoreForTests();
-assert.equal(isHifzPathPracticeEnabled(), false);
+assert.equal(isHifzPathPracticeEnabled(), true, "تجربة الوحدة ON افتراضيًا بقرار المالك");
 
 const pkg = readPkg("package.json");
 assert.match(pkg, /"test:memorization-research-pr3"/);

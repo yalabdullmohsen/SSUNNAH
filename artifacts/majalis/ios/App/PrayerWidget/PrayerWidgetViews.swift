@@ -80,7 +80,14 @@ struct PrayerCountdownText: View {
     let entry: PrayerWidgetEntry
 
     var body: some View {
-        if entry.nextHasStarted {
+        if let start = entry.elapsedStart {
+            // «مضى على أذان X»: عدّ تصاعدي من لحظة الأذان (العنوان فوقه يذكر الصلاة)
+            if entry.allowsLiveCountdown {
+                Text(start, style: .timer)
+            } else {
+                Text(SunnahWidgetTimeFormatting.staticRemaining(from: start, to: entry.date))
+            }
+        } else if entry.nextHasStarted {
             Text("الآن")
         } else if let end = entry.nextDate, end > entry.date {
             if entry.allowsLiveCountdown {
@@ -122,7 +129,7 @@ struct SmallPrayerWidgetView: View {
                 }
                 .accessibilityLabel(Text(smallA11yLabel))
 
-                Text(entry.nextNameAr.map { "التالي: \($0)" } ?? nextFallback)
+                Text(entry.nextLine("التالي:") ?? nextFallback)
                     .font(.subheadline.bold())
                     .foregroundStyle(.white)
                     .lineLimit(1)
@@ -164,6 +171,9 @@ struct SmallPrayerWidgetView: View {
     }
 
     private var countdownA11y: String {
+        if let name = entry.elapsedNameAr, let start = entry.elapsedStart {
+            return "مضى \(SunnahWidgetTimeFormatting.staticRemaining(from: start, to: entry.date)) على أذان \(name)"
+        }
         if entry.nextHasStarted { return "حان وقت الصلاة" }
         if let end = entry.nextDate, end > entry.date {
             return "متبقي \(SunnahWidgetTimeFormatting.staticRemaining(from: entry.date, to: end)) للصلاة التالية"
@@ -190,7 +200,7 @@ struct MediumPrayerWidgetView: View {
                         Text(entry.currentNameAr.map { "الحالية: \($0)" } ?? "قبل الفجر")
                             .font(.caption.bold())
                             .foregroundStyle(.white.opacity(0.9))
-                        Text(entry.nextNameAr.map { "التالية: \($0)" } ?? "حدّث المواقيت")
+                        Text(entry.nextLine("التالية:") ?? "حدّث المواقيت")
                             .font(.headline.bold())
                             .foregroundStyle(.white)
                             .lineLimit(1)
@@ -253,7 +263,7 @@ struct LargePrayerWidgetView: View {
                 }
 
                 HStack {
-                    Text(entry.nextNameAr.map { "التالي: \($0)" } ?? "مواقيت الصلاة")
+                    Text(entry.nextLine("التالي:") ?? "مواقيت الصلاة")
                         .font(.title3.bold())
                         .foregroundStyle(.white)
                     Spacer()
@@ -319,6 +329,18 @@ struct CircularPrayerWidgetView: View {
                 if entry.needsAppOpenAction {
                     Text("سُنّة")
                         .font(.caption2.bold())
+                } else if let start = entry.elapsedStart {
+                    if entry.allowsLiveCountdown {
+                        Text(start, style: .timer)
+                            .font(.caption2.monospacedDigit())
+                            .minimumScaleFactor(0.5)
+                            .lineLimit(1)
+                    } else {
+                        Text(SunnahWidgetTimeFormatting.staticRemaining(from: start, to: entry.date))
+                            .font(.caption2.monospacedDigit())
+                            .minimumScaleFactor(0.5)
+                            .lineLimit(1)
+                    }
                 } else if entry.nextHasStarted {
                     Text("الآن")
                         .font(.caption2.bold())
@@ -350,6 +372,7 @@ struct CircularPrayerWidgetView: View {
         if entry.needsAppOpenAction {
             return "افتح تطبيق سُنّة لتهيئة مواقيت الصلاة"
         }
+        if let elapsed = entry.elapsedNameAr { return "مضى على أذان \(elapsed)" }
         let name = entry.nextNameAr ?? "الصلاة التالية"
         if entry.nextHasStarted { return "حان وقت \(name)" }
         return "العد التنازلي لصلاة \(name)"
@@ -373,7 +396,7 @@ struct RectangularPrayerWidgetView: View {
         } else {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(entry.nextNameAr ?? "الصلاة التالية")
+                    Text(entry.nextDisplayName ?? "الصلاة التالية")
                         .font(.headline)
                         .lineLimit(1)
                     if let end = entry.nextDate {
@@ -397,6 +420,7 @@ struct RectangularPrayerWidgetView: View {
     }
 
     private var rectA11y: String {
+        if let elapsed = entry.elapsedNameAr { return "مضى على أذان \(elapsed)" }
         let name = entry.nextNameAr ?? "الصلاة التالية"
         if let end = entry.nextDate {
             return "الصلاة التالية \(name) الساعة \(SunnahWidgetTimeFormatting.clock(end))"
