@@ -46,10 +46,10 @@ assert.match(
   "إخفاء زر أعلى عند Dialog مفتوح",
 );
 
-const backCss = read("src/styles/sunnah-identity-chrome-nav.css");
+const backCss = read("src/styles/final-release.css");
 assert.match(backCss, /\.app-back-btn--bar\.fixed-back-bar/, "شريط ثابت");
 /* الزر الدائري يرافق كل الأقسام: CSS يُستورد من المكوّن نفسه لا من صفحات المعرفة فقط */
-assert.match(read("src/components/FloatingBackButton.tsx"), /import "@\/styles\/sunnah-identity-chrome-nav\.css"/, "FAB يستورد CSS الخاص به");
+assert.match(read("src/main.tsx"), /import\("\.\/styles\/final-release\.css"\)/, "CSS الزر يُحمَّل في كل مسار عبر final-release");
 assert.doesNotMatch(read("src/styles/knowledge-experience.css"), /fixed-back-bar/, "لا تعريف FAB داخل knowledge-experience");
 assert.match(backCss, /position:\s*fixed/);
 assert.match(backCss, /right:\s*max\(0\.75rem/, "يمين الشاشة فعليًا");
