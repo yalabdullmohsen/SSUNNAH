@@ -63,11 +63,12 @@ const {
 } = await import("../memorization-path/index.ts");
 
 resetMemorizationResearchFlags();
-assert.equal(isHifzPathEnabled(), false);
-assert.equal(countPublishedHifzPaths(), 0);
+assert.equal(isHifzPathEnabled(), true);
+assert.equal(countPublishedHifzPaths(), 4);
 assert.equal(getHifzContinueTarget(), null);
 assert.equal(listHifzDueReviewsToday().length, 0);
-assert.equal(listPublishedHifzPathsByCategory("quran").length, 0);
+assert.equal(listPublishedHifzPathsByCategory("quran").length, 4);
+assert.equal(listPublishedHifzPathsByCategory("adhkar").length, 0, "الأذكار DRAFT حتى ترخيص المالك");
 assert.equal(hifzCategoryLabel("quran"), "القرآن الكريم");
 assert.equal(isHifzCategory("quran"), true);
 assert.equal(isHifzCategory("not-a-category"), false);
