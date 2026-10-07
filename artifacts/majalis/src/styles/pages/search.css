@@ -835,7 +835,6 @@ html.dark .srch-result-card__icon {
   min-height: 44px;
 }
 .srch-result-card__title {
-  line-height: 1.4;
   letter-spacing: 0;
 }
 .srch-result-card__snippet,
@@ -900,9 +899,7 @@ html.dark .srch-result-card__icon {
   align-items: center;
   min-height: 1.4rem;
   padding: 0.1rem 0.5rem;
-  border-radius: var(--radius-pill, 999rem);
   background: color-mix(in srgb, var(--mj-gold, #b8860b) 14%, transparent);
-  color: var(--mj-brand-deep);
   font-size: 0.72rem;
   font-weight: 800;
 }

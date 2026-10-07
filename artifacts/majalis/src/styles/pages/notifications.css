@@ -553,17 +553,11 @@ html.dark .notif-row__label {
 .notif-banner--err  { background: color-mix(in srgb, var(--mj-danger) 10%, white); color: var(--mj-danger-deep); border: 1px solid color-mix(in srgb, var(--mj-danger) 35%, white); }
 
 .notif-card {
-  padding: 1.1rem 1.25rem;
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.85rem;}
 .notif-card__title {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--majalis-ink-soft);
-  text-transform: uppercase;
-  letter-spacing: normal;
   margin: 0 0 0.25rem;
 }
 

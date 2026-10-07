@@ -11,12 +11,6 @@
   box-shadow: var(--sf-shadow-card, none);
 }
 
-.hub-card__icon {
-  width: var(--cs-icon-size, 1.65rem);
-  height: var(--cs-icon-size, 1.65rem);
-  border-radius: var(--sf-radius-xs, 12px);
-}
-
 .hub-card-grid {
   --hub-grid-gap: var(--sf-space-3, 0.75rem);
   display: grid;

@@ -1,10 +1,8 @@
 /* Highlighted Content Card — unified reading experience (Phase UX) */
 
 .highlighted-content-card {
-  padding: 1.15rem 1.2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
   border-radius: var(--ds-radius-xl);
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
@@ -34,16 +32,12 @@
 .highlighted-card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
   align-items: center;
 }
 
 .highlighted-card__repeat,
 .highlighted-card__grade {
-  font-size: 0.8125rem;
-  font-weight: 700;
   color: var(--majalis-emerald-deep);
-  padding: 0.15rem 0.5rem;
   border-radius: var(--ds-radius-full);
   background: color-mix(in srgb, var(--majalis-emerald) 12%, transparent);
 }
@@ -57,12 +51,9 @@
 .highlighted-card__body {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
 }
 
 .highlighted-card__highlight {
-  padding: 1rem 1.05rem;
-  border-radius: 0.85rem;
   background: color-mix(in srgb, var(--majalis-parchment) 88%, white);
   border: 1px solid color-mix(in srgb, var(--majalis-line) 85%, transparent);
 }
@@ -396,9 +387,6 @@ html[data-reading-mode="quiet"] .highlighted-card__highlight {
 }
 
 @media (max-width: 640px) {
-  .highlighted-content-card {
-    padding: var(--ds-space-4);
-  }
 
   .tasbeeh-counter__tap {
     min-height: 108px;

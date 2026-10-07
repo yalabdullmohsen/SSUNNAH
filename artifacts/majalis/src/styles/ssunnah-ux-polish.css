@@ -76,9 +76,7 @@ html.dark .ss-app-card--accent {
 
 .ss-feature-card__title {
   font-size: var(--font-lg, 1.125rem);
-  font-weight: 700;
   line-height: 1.35;
-  color: var(--mj-ink, var(--v2-color-ink));
 }
 
 .ss-feature-card__desc {
@@ -113,7 +111,6 @@ html.dark .ss-app-card--accent {
 .ss-content-card__excerpt {
   margin: 0.45rem 0 0;
   font-size: var(--font-sm, 0.875rem);
-  line-height: 1.65;
   color: var(--ss-muted-text, var(--mj-muted));
 }
 
@@ -464,7 +461,6 @@ html.dark .sidebar-item.active {
 }
 
 .topic-card {
-  border-radius: var(--radius-card, 1.5rem);
   border: 1px solid color-mix(in srgb, var(--ss-primary-green, var(--mj-brand)) 14%, var(--ss-border, var(--mj-hairline)));
   background: var(--ss-card-bg, var(--mj-surface));
   box-shadow: var(--ss-shadow-soft);
@@ -480,7 +476,6 @@ html.dark .sidebar-item.active {
 
 .topic-card__body {
   color: var(--ss-muted-text, var(--mj-muted));
-  line-height: 1.75;
 }
 
 /* ── ليلي: نصوص/أزرار شائعة ── */

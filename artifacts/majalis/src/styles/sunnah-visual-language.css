@@ -145,7 +145,6 @@ html[data-theme="dark"] {
   color: var(--svl-text-primary);
   border: 1px solid var(--svl-border-subtle);
   border-radius: var(--svl-radius-md);
-  border-inline-start-width: 1px;
   border-inline-start-color: var(--svl-border-subtle);
   box-shadow: var(--svl-shadow-card);
 }

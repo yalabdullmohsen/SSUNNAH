@@ -147,15 +147,6 @@ html.dark,
   background-color: var(--cs-surface-3) !important;
 }
 
-.hub-card__desc,
-.section-card__desc,
-.lesson-card__meta,
-.topic-card__meta,
-.lesson-unified-card__sheikh,
-.lesson-unified-card__desc {
-  color: var(--cs-text-secondary) !important;
-}
-
 /* قراءة طويلة تبقى فاتحة */
 .soft-card:not([data-scripture]):not(.mushaf-page):not(.ayah-card):not(.hub-card):not(.lesson-unified-card):not(.lpp-path-card):not(.topic-card):not(.section-entry-card),
 .soft-card--on-light:not([data-scripture]):not(.hub-card):not(.lesson-unified-card):not(.lpp-path-card):not(.topic-card):not(.section-entry-card),
@@ -246,14 +237,6 @@ html.dark,
   border-radius: var(--surface-feature-radius) !important;
   box-shadow: var(--surface-feature-shadow) !important;
   color: var(--surface-feature-ink) !important;
-}
-
-.hadith-hub-card .hub-card__title,
-.info-card__title,
-.ui-card__title,
-.mj-card__title {
-  color: var(--surface-feature-ink) !important;
-  font-weight: 800;
 }
 
 .info-card,

@@ -182,14 +182,6 @@
   justify-content: center;
 }
 
-html.dark .hub-card__icon,
-html[data-theme="dark"] .hub-card__icon,
-html.dark .sc2-icon,
-html[data-theme="dark"] .sc2-icon {
-  background: var(--cs-primary-soft) !important;
-  color: var(--cs-primary) !important;
-}
-
 /* ── Hero — زمرد داكن · نص عاجي · Accent ذهبي ── */
 .cs-hero,
 .page-hero-mj,
@@ -320,8 +312,6 @@ html[data-v2-app="1"] .topic-page__hero .topic-page__quote-ref {
 
 .card__label {
   font-size: var(--cs-title-size) !important;
-  font-weight: 700 !important;
-  color: var(--cs-text-primary) !important;
 }
 
 .card__label-row {
@@ -353,8 +343,6 @@ html[data-v2-app="1"] .topic-page__hero .topic-page__quote-ref {
 
 .card__subtitle {
   font-size: var(--cs-body-size) !important;
-  color: var(--cs-text-secondary) !important;
-  opacity: 1;
   min-height: 0 !important;
 }
 

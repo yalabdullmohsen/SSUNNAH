@@ -167,8 +167,6 @@ html.dark .isp-chip.is-active,
 
 /* بطاقة القصة — فاتحة ناعمة */
 .isp-card {
-  display: flex;
-  flex-direction: column;
   gap: 0.55rem;
   padding: 1.1rem 1.05rem;
   background: var(--ss-card-bg, var(--color-surface, var(--mj-surface)));

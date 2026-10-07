@@ -562,8 +562,6 @@ button.soft-pill:active,
 }
 
 .settings-account-card {
-  border: none !important;
-  box-shadow: var(--mur-shadow) !important;
   background: var(--mj-surface) !important;
 }
 

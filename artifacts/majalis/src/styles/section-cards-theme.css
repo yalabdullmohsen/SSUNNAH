@@ -508,7 +508,6 @@ html[data-theme="dark"] .notif-row__sub {
 .inst-card {
   background: var(--ss-card-bg) !important;
   border-color: color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, var(--color-border))) !important;
-  border-radius: var(--radius-card, 1.5rem) !important;
   box-shadow: var(--ss-shadow-soft, var(--shadow-soft, none)) !important;
   color: var(--color-text, var(--mj-ink)) !important;
 }
@@ -977,7 +976,6 @@ html[data-theme="dark"] .sect-card__link.hub-card {
   flex-direction: column;
   gap: 0.35rem;
   text-decoration: none;
-  color: inherit;
 }
 button.nb-azm-card {
   width: 100%;

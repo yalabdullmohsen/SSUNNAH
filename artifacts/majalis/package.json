@@ -851,6 +851,7 @@
     "test:mushaf-interaction-authority-wave1": "node --import tsx src/lib/__tests__/mushaf-interaction-authority-wave1-gate.test.ts",
     "test:token-bridge-t1": "node --import tsx src/lib/__tests__/token-bridge-t1-zero-consumer-gate.test.ts",
     "test:token-bridge-t2": "node --import tsx src/lib/__tests__/token-bridge-t2-majalis-zero-gate.test.ts",
+    "test:component-layer-consolidation": "node --import tsx src/lib/__tests__/component-layer-consolidation-gate.test.ts",
     "test:public-button-authority-wave2": "node --import tsx src/lib/__tests__/public-button-authority-wave2-gate.test.ts",
     "test:public-button-authority-wave3": "node --import tsx src/lib/__tests__/public-button-authority-wave3-gate.test.ts",
     "test:admin-interaction-authority-wave2": "node --import tsx src/lib/__tests__/admin-interaction-authority-wave2-gate.test.ts",

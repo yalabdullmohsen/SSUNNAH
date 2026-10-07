@@ -102,10 +102,6 @@ html.dark .lesson-unified-card__header {
   background: var(--surface-2, #222D29) !important;
   border-color: var(--border-subtle, var(--mj-chip-border)) !important;
 }
-html[data-theme="dark"] .lesson-unified-card__title,
-html.dark .lesson-unified-card__title {
-  color: var(--txt-primary, #ECF2EF) !important;
-}
 html[data-theme="dark"] .lesson-unified-card__btn--ghost,
 html[data-theme="dark"] .lesson-unified-card__btn:not(.lesson-unified-card__btn--primary),
 html.dark .lesson-unified-card__btn--ghost,
@@ -405,13 +401,6 @@ html[data-theme="dark"] .quran-hub-page,
 html.dark .quran-hub-page {
   background: var(--bg, #131A18) !important;
   color: var(--txt-primary, #ECF2EF) !important;
-}
-html[data-theme="dark"] .lesson-unified-card__meta,
-html[data-theme="dark"] .lesson-unified-card__desc,
-html.dark .lesson-unified-card__meta,
-html.dark .lesson-unified-card__desc {
-  color: var(--on-dark-secondary, var(--txt-secondary, #E2E8F0)) !important;
-  opacity: 1 !important;
 }
 
 /* نوافذ / حوارات عامة */

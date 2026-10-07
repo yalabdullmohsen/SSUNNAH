@@ -117,8 +117,6 @@
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  padding: 1rem 1.1rem;
-  min-height: 7.5rem;
   height: auto;
   border-radius: var(--radius-card, 1.5rem);
   border: 1.5px solid color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, rgba(0,0,0,0.07)));
@@ -216,16 +214,10 @@ html[data-v2-app="1"] .topic-page--tawhid .kx-library-card .kx-library-card__act
 }
 .twh-hub-card:hover .twh-hub-card__title { color: var(--twh-hub-clr, var(--mj-brand)); }
 .twh-hub-card__desc {
-  font-size: clamp(0.875rem, 3vw, 1rem);
   color: var(--color-text-muted, var(--mj-ink-2, #3a4a42));
-  line-height: 1.9;
   letter-spacing: 0;
   margin: 0;
-  overflow: hidden;
   overflow-wrap: anywhere;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
   line-clamp: 3;
 }
 .twh-hub-card__badge {
