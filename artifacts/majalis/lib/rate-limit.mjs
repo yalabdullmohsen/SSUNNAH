@@ -65,13 +65,20 @@ function isProductionEnv() {
   );
 }
 
-function getClientIp(req) {
-  return (
-    req.headers?.["x-forwarded-for"]?.toString().split(",")[0]?.trim() ||
-    req.socket?.remoteAddress ||
-    "unknown"
-  );
+/**
+ * IP العميل الموثوق: على Vercel تضبط المنصة x-vercel-forwarded-for / x-real-ip ولا يتحكم بهما العميل.
+ * أول قيمة في x-forwarded-for يمكن تزييفها، فلا تُستعمل في الإنتاج (احتياطي للتطوير المحلي فقط).
+ */
+export function getTrustedClientIp(req) {
+  const h = req.headers || {};
+  const first = (v) => String(v ?? "").split(",")[0].trim();
+  const platform = first(h["x-vercel-forwarded-for"]) || first(h["x-real-ip"]) || req.socket?.remoteAddress;
+  if (platform) return platform;
+  if (!isProductionEnv()) return first(h["x-forwarded-for"]) || "unknown";
+  return "unknown";
 }
+
+const getClientIp = getTrustedClientIp;
 
 function inMemoryCheck(key, windowMs, max) {
   const now = Date.now();

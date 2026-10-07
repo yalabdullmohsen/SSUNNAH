@@ -55,7 +55,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>يستخدم التطبيق موقعك لحساب اتجاه القبلة والمسافة إلى مكة المكرمة. لا يُخزَّن موقعك.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>يستخدم التطبيق الميكروفون فقط حين تضغط «ابدأ التسجيل» في اختبار التلاوة لتسمّع ما حفظتَه. لا يُخزَّن التسجيل بعد المعالجة.</string>
+	<string>يُستخدم الميكروفون لتسجيل تلاوتك، ويُرسَل التسجيل إلى خدمة خارجية لتحويل الصوت إلى نص (Groq) لتصحيح الحفظ، ولا يُحفظ بعد المعالجة.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>يستخدم التطبيق مستشعر الاتجاه لتوجيه بوصلة القبلة نحو الكعبة المشرفة.</string>
 	<key>NSSupportsLiveActivities</key>

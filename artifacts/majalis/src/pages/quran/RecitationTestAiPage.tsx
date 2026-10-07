@@ -18,13 +18,19 @@ import {
   type RecorderSession,
   type RecordingResult,
 } from "@/lib/recitation-test/recorder";
+import {
+  grantRecitationConsent,
+  hasRecitationConsent,
+  RECITATION_PROVIDER_NAME,
+  revokeRecitationConsent,
+} from "@/lib/recitation-test/consent";
 import { AsrError, checkAsrAvailability, transcribeRecitation, type AsrAvailability } from "@/lib/recitation-test/api";
 
 const PATH = "/quran/recitation-test-ai";
 /** حدّ مقطع الاختبار: يكفي ≤45 ثانية تلاوة. */
 const MAX_AYAHS = 10;
 
-type Phase = "idle" | "recording" | "processing" | "result" | "error";
+type Phase = "idle" | "consent" | "recording" | "processing" | "result" | "error";
 
 const STATUS_LABEL: Record<WordStatus, string> = {
   correct: "صحيحة",
@@ -124,6 +130,22 @@ export default function RecitationTestAiPage() {
     },
     [surah, from, to],
   );
+
+  /** الضغط على «ابدأ»: دون موافقة محفوظة تظهر شاشة الموافقة ولا يُطلب الميكروفون بعد. */
+  const requestStart = () => {
+    if (hasRecitationConsent()) void start();
+    else setPhase("consent");
+  };
+
+  const acceptConsent = () => {
+    grantRecitationConsent();
+    void start();
+  };
+
+  const declineConsent = () => {
+    setPhase("idle");
+    setMessage(null);
+  };
 
   const start = async () => {
     setMessage(null);
@@ -260,8 +282,8 @@ export default function RecitationTestAiPage() {
               variant="primary"
               block
               icon="tilawa"
-              onClick={() => void start()}
-              disabled={!supported || unavailable || phase === "processing"}
+              onClick={requestStart}
+              disabled={!supported || unavailable || phase === "processing" || phase === "consent"}
             >
               {phase === "result" || phase === "error" ? "تسجيل جديد" : "ابدأ التسجيل"}
             </Button>
@@ -273,6 +295,24 @@ export default function RecitationTestAiPage() {
           )}
         </div>
 
+        {phase === "consent" ? (
+          <Card variant="standard">
+            <div className="sn-stack" role="group" aria-label="موافقة إرسال التسجيل" data-testid="recitation-consent">
+              <strong>موافقتك على إرسال تسجيلك إلى خدمة خارجية</strong>
+              <p className="sn-t-secondary">
+                لتحليل تلاوتك يُرسَل <strong>تسجيلك الصوتي</strong> (حتى ٤٥ ثانية) عبر خادم سُنّة إلى خدمة تحويل الصوت إلى نص
+                من طرف ثالث: <strong>{RECITATION_PROVIDER_NAME}</strong> (خدمة ذكاء اصطناعي خارجية). يُرسَل الصوت وحده، ولا
+                نرسل اسمك ولا بياناتك الأخرى. لا يُخزَّن التسجيل بعد المعالجة ولا نحتفظ بالنص المفرَّغ. لن يبدأ التسجيل ولن يُرسَل
+                أي صوت قبل موافقتك، ويمكنك سحب الموافقة في أي وقت.
+              </p>
+              <div className="sn-row">
+                <Button variant="primary" block onClick={acceptConsent}>أوافق وأبدأ التسجيل</Button>
+                <Button variant="secondary" block onClick={declineConsent}>لا أوافق</Button>
+              </div>
+            </div>
+          </Card>
+        ) : null}
+
         <p role="status" aria-live="polite" className="sn-t-footnote">
           {phase === "recording" ? "جارٍ التسجيل… سمِّع المقطع ثم اضغط «إيقاف وتحليل»." : null}
           {phase === "processing" ? "جارٍ تحليل التلاوة…" : null}
@@ -283,9 +323,14 @@ export default function RecitationTestAiPage() {
         {phase === "result" && result ? <ResultView surah={surah} result={result} /> : null}
 
         <p className="sn-t-footnote sn-t-secondary">
-          الخصوصية: يُرسَل التسجيل مرة واحدة للتفريغ ولا يُخزَّن بعد المعالجة (لا على جهازك ولا على الخادم)، ولا نحتفظ بالنص
+          الخصوصية: يُرسَل التسجيل مرة واحدة إلى خدمة التفريغ الخارجية (Groq) بعد موافقتك ولا يُخزَّن بعد المعالجة (لا على جهازك ولا على الخادم)، ولا نحتفظ بالنص
           المفرَّغ.
         </p>
+        {hasRecitationConsent() && phase !== "recording" && phase !== "processing" ? (
+          <Button variant="secondary" onClick={() => { revokeRecitationConsent(); reset(); }}>
+            سحب موافقة إرسال التسجيل
+          </Button>
+        ) : null}
         <ListGroup>
           <Link href="/hifz-path" className="sn-row-item sn-pressable">
             <span className="sn-row-item__body"><span className="sn-row-item__title">مسار الحفظ</span></span>

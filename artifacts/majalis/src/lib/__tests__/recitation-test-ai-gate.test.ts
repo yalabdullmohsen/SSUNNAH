@@ -104,9 +104,9 @@ console.log("=== خدمة التفريغ: حدود وخصوصية ===");
     }
     return realFetch(url, init);
   }) as typeof fetch;
-  const { default: handler, MAX_AUDIO_BYTES, DAILY_LIMIT } = await import("../../../lib/api-handlers/recitation-transcribe.js");
+  const { default: handler, MAX_AUDIO_BYTES, DAILY_LIMIT, MAX_REQUEST_BYTES } = await import("../../../lib/api-handlers/recitation-transcribe.js");
 
-  const call = async (method: string, body?: Record<string, unknown>, ip = "198.51.100.20") => {
+  const call = async (method: string, body?: Record<string, unknown>, ip = "198.51.100.20", extraHeaders: Record<string, string> = {}) => {
     const cap: { status?: number; payload?: Record<string, unknown> } = {};
     const res = {
       statusCode: 200, headersSent: false, writableEnded: false,
@@ -115,32 +115,70 @@ console.log("=== خدمة التفريغ: حدود وخصوصية ===");
       json(p: Record<string, unknown>) { cap.payload = p; this.writableEnded = true; return this; },
       end(raw?: string) { this.writableEnded = true; if (raw && !cap.payload) { try { cap.payload = JSON.parse(raw); } catch { /* */ } } },
     };
-    await handler({ method, headers: { "x-forwarded-for": ip }, body: body ?? {} }, res);
+    await handler({ method, headers: { "x-forwarded-for": ip, ...extraHeaders }, body: body ?? {} }, res);
     return { status: cap.status ?? res.statusCode, ...(cap.payload ?? {}) } as Record<string, unknown> & { status: number };
   };
   const audio = Buffer.alloc(5000, 1).toString("base64");
 
   assert.equal((await call("GET")).configured, false);
-  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/webm" })).status, 503, "بلا مفتاح: غير مفعّلة بصدق");
+  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000, consent: true })).status, 503, "بلا مفتاح: غير مفعّلة بصدق");
   process.env.GROQ_API_KEY = "test-key";
   assert.equal((await call("GET")).configured, true);
-  assert.equal((await call("POST", {})).status, 400);
-  assert.equal((await call("POST", { audioBase64: audio, mimeType: "video/mp4" })).status, 415, "صيغ غير صوتية مرفوضة");
-  assert.equal((await call("POST", { audioBase64: Buffer.alloc(100).toString("base64"), mimeType: "audio/webm" })).status, 400, "قصير جدًا");
-  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 61_000 })).status, 400, "أطول من 60ث");
+  assert.equal((await call("POST", { consent: true })).status, 400);
+  assert.equal((await call("POST", { audioBase64: audio, mimeType: "video/mp4", durationMs: 8000, consent: true })).status, 415, "صيغ غير صوتية مرفوضة");
+  assert.equal((await call("POST", { audioBase64: Buffer.alloc(100).toString("base64"), mimeType: "audio/webm", durationMs: 8000, consent: true })).status, 400, "قصير جدًا");
+  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 51_000, consent: true })).status, 400, "أطول من 60ث");
   assert.equal(
-    (await call("POST", { audioBase64: Buffer.alloc(MAX_AUDIO_BYTES + 5000, 1).toString("base64"), mimeType: "audio/webm" })).status,
+    (await call("POST", { audioBase64: Buffer.alloc(MAX_AUDIO_BYTES + 5000, 1).toString("base64"), mimeType: "audio/webm", durationMs: 8000, consent: true })).status,
     413,
   );
-  const ok = await call("POST", { audioBase64: audio, mimeType: "audio/webm;codecs=opus", durationMs: 8000 });
+  const ok = await call("POST", { audioBase64: audio, mimeType: "audio/webm;codecs=opus", durationMs: 8000, consent: true });
   assert.equal(ok.status, 200);
   assert.equal(ok.transcript, "قل هو الله احد");
   assert.equal(calls.length, 1);
   assert.equal(calls[0]!.form?.get("model"), "whisper-large-v3");
   assert.equal(calls[0]!.form?.get("language"), "ar");
   assert.equal(calls[0]!.form?.has("prompt"), false, "لا نمرّر النص المتوقَّع للمزوّد فيُخفي الأخطاء");
-  for (let i = 0; i < DAILY_LIMIT; i++) await call("POST", { audioBase64: audio, mimeType: "audio/webm" }, "203.0.113.50");
-  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/webm" }, "203.0.113.50")).status, 429, "الحدّ اليومي");
+  for (let i = 0; i < DAILY_LIMIT; i++) await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000, consent: true }, "203.0.113.50");
+  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000, consent: true }, "203.0.113.50")).status, 429, "الحدّ اليومي");
+  // الموافقة: بلا consent لا يصل شيء للمزوّد
+  const before = calls.length;
+  const noConsent = await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000 });
+  assert.equal(noConsent.status, 403, "بلا موافقة: مرفوض");
+  assert.equal(noConsent.code, "consent_required");
+  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000, consent: "yes" })).status, 403, "الموافقة قيمة true حصرًا");
+  assert.equal(calls.length, before, "لا استدعاء للمزوّد دون موافقة");
+  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/webm", consent: true })).status, 400, "المدة إلزامية");
+  // رفض الحجم المُعلَن قبل قراءة الجسم (الحارس يرفض دون لمس الدفق)
+  {
+    const { readJsonBodyLimited } = await import("../../../lib/api-security-guard.mjs");
+    let touched = false;
+    const req = {
+      headers: { "content-length": String(MAX_REQUEST_BYTES + 1) },
+      on() {},
+      [Symbol.asyncIterator]() { touched = true; return { next: async () => ({ done: true, value: undefined }) }; },
+    };
+    const r = await readJsonBodyLimited(req, MAX_REQUEST_BYTES);
+    assert.equal(r.ok, false);
+    assert.equal(r.error, "payload_too_large");
+    assert.equal(touched, false, "لم يُقرأ الجسم");
+    assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000, consent: true }, "198.51.100.21", { "content-length": String(MAX_REQUEST_BYTES + 1) })).status, 413, "الحدّ في المعالج أيضًا");
+  }
+  // IP موثوق: تزييف x-forwarded-for لا يتجاوز الحدّ عند وجود ترويسة المنصة
+  {
+    const body = { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000, consent: true };
+    for (let i = 0; i < DAILY_LIMIT; i++) await call("POST", body, `spoof-${i}`, { "x-real-ip": "192.0.2.77" });
+    assert.equal((await call("POST", body, "spoof-new", { "x-real-ip": "192.0.2.77" })).status, 429, "تدوير x-forwarded-for لا يفتح حدًّا جديدًا");
+    assert.equal((await call("POST", body, "198.51.100.99", { "x-vercel-forwarded-for": "192.0.2.78" })).status, 200, "عميل آخر موثوق يمرّ");
+  }
+  // السقف اليومي الإجمالي يحمي الرصيد
+  {
+    process.env.RECITATION_GLOBAL_DAILY_LIMIT = "1";
+    const cap = await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000, consent: true }, "198.51.100.150");
+    assert.equal(cap.status, 503, "تجاوز السقف الإجمالي");
+    assert.equal(cap.code, "asr_capacity");
+    delete process.env.RECITATION_GLOBAL_DAILY_LIMIT;
+  }
   globalThis.fetch = realFetch;
 
   const src = read("lib/api-handlers/recitation-transcribe.js");
@@ -174,13 +212,20 @@ console.log("=== الواجهة والتوصيل والخصوصية ===");
   for (const word of ["ناقصة", "مبدّلة", "زائدة", "صحيحة"]) assert.match(page, new RegExp(word), `تسمية ${word}`);
   assert.match(page, /resolveCanonicalAyahHref/, "انتقال للآية في المصحف");
   assert.match(page, /NotAllowedError/, "معالجة رفض الميكروفون");
+  assert.match(page, /data-testid="recitation-consent"[\s\S]{0,600}Groq|RECITATION_PROVIDER_NAME/, "شاشة الموافقة تسمّي الخدمة الخارجية");
+  assert.match(page, /hasRecitationConsent\(\)\) void start\(\);\s*else setPhase\("consent"\)/, "لا بدء قبل الموافقة");
+  const apiSrc = read("src/lib/recitation-test/api.ts");
+  assert.match(apiSrc, /if \(!hasRecitationConsent\(\)\) throw new AsrError\([^)]*"consent"\)[\s\S]*await blobToBase64/, "العميل لا يرسل صوتًا دون موافقة");
 
   const plist = read("ios/App/App/Info.plist");
   assert.match(plist, /<key>NSMicrophoneUsageDescription<\/key>\s*<string>[^<]*الميكروفون[^<]*<\/string>/, "وصف عربي لإذن الميكروفون");
+  assert.match(plist, /<key>NSMicrophoneUsageDescription<\/key>\s*<string>[^<]*خدمة خارجية[^<]*Groq[^<]*<\/string>/, "وصف الإذن يفصح عن الإرسال إلى خدمة خارجية");
   assert.doesNotMatch(plist, /NSSpeechRecognitionUsageDescription/, "لا تعرّف صوتي أصلي");
 
   const privacy = read("src/views/PrivacyPage.tsx");
   assert.match(privacy, /لا يُخزَّن التسجيل بعد المعالجة/);
+  assert.match(privacy, /Groq/, "الخصوصية تسمّي Groq");
+  assert.match(privacy, /موافقتك الصريحة/, "الخصوصية تذكر الموافقة");
   assert.doesNotMatch(privacy, /Apple Speech/, "نص الخصوصية القديم أُزيل");
 }
 

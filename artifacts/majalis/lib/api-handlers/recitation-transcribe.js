@@ -8,17 +8,27 @@
  * لا نمرّر النص المتوقَّع للمزوّد (prompt) حتى لا يُحابي الحفظَ الخاطئ فيخفي الأخطاء.
  *
  * GET: فحص تهيئة رخيص بلا استدعاء خارجي (تعرضه الواجهة بصدق).
- * POST: { audioBase64, mimeType, durationMs? } → { ok, transcript }.
+ * POST: { audioBase64, mimeType, durationMs, consent: true } → { ok, transcript }.
+ * الموافقة: لا يُرسَل أي صوت إلى المزوّد دون consent === true (يرسلها العميل بعد شاشة الموافقة الصريحة).
+ * الحماية من استنزاف الرصيد: حدّ يومي لكل IP موثوق + سقف يومي إجمالي (RECITATION_GLOBAL_DAILY_LIMIT) في مخزن دائم (Upstash).
  */
 import { sendJson } from "../api/_http.mjs";
-import { checkRateLimit } from "../rate-limit.mjs";
+import { checkRateLimit, getTrustedClientIp } from "../rate-limit.mjs";
 
 const GROQ_TRANSCRIBE_URL = "https://api.groq.com/openai/v1/audio/transcriptions";
 const GROQ_MODEL = "whisper-large-v3";
 /** سقف المقطع بعد فك الترميز — 45 ثانية Opus/AAC ≈ 0.4MB، فهذا هامش أمان. */
 export const MAX_AUDIO_BYTES = 2 * 1024 * 1024;
-export const MAX_DURATION_MS = 60_000;
+export const MAX_DURATION_MS = 50_000;
 export const DAILY_LIMIT = 40;
+/** سقف جسم الطلب المُعلَن (base64 + غلاف JSON) — يوافق maxBodyBytes في api-dispatch. */
+export const MAX_REQUEST_BYTES = 3_000_000;
+export const DEFAULT_GLOBAL_DAILY_LIMIT = 1500;
+
+function globalDailyLimit() {
+  const n = Number(process.env.RECITATION_GLOBAL_DAILY_LIMIT);
+  return Number.isFinite(n) && n >= 0 ? Math.floor(n) : DEFAULT_GLOBAL_DAILY_LIMIT;
+}
 export const ALLOWED_MIME = new Set([
   "audio/webm",
   "audio/ogg",
@@ -33,14 +43,6 @@ export const ALLOWED_MIME = new Set([
 
 function apiKey() {
   return String(process.env.GROQ_API_KEY || "").trim();
-}
-
-function clientIp(req) {
-  return (
-    req.headers?.["x-forwarded-for"]?.toString().split(",")[0]?.trim() ||
-    req.socket?.remoteAddress ||
-    "unknown"
-  );
 }
 
 function baseMime(raw) {
@@ -76,7 +78,17 @@ export default async function handler(req, res) {
     return;
   }
 
+  const declared = Number(req.headers?.["content-length"]);
+  if (Number.isFinite(declared) && declared > MAX_REQUEST_BYTES) {
+    sendJson(res, 413, { ok: false, message: "التسجيل كبير جدًا." });
+    return;
+  }
+
   const body = req.body && typeof req.body === "object" ? req.body : {};
+  if (body.consent !== true) {
+    sendJson(res, 403, { ok: false, code: "consent_required", message: "يلزم موافقتك على إرسال التسجيل للتفريغ قبل التسجيل." });
+    return;
+  }
   if (typeof body.audioBase64 !== "string" || !body.audioBase64) {
     sendJson(res, 400, { ok: false, message: "لم يصل تسجيل صوتي." });
     return;
@@ -87,27 +99,43 @@ export default async function handler(req, res) {
     return;
   }
   const duration = Number(body.durationMs);
-  if (Number.isFinite(duration) && duration > MAX_DURATION_MS) {
-    sendJson(res, 400, { ok: false, message: "التسجيل أطول من الحد المسموح (60 ثانية)." });
+  if (!Number.isFinite(duration) || duration <= 0) {
+    sendJson(res, 400, { ok: false, message: "مدة التسجيل غير صالحة." });
     return;
   }
-  // حدّ الحجم قبل فك الترميز (base64 ≈ 4/3)
+  if (duration > MAX_DURATION_MS) {
+    sendJson(res, 400, { ok: false, message: "التسجيل أطول من الحد المسموح (50 ثانية)." });
+    return;
+  }
+  // حدّ الحجم قبل فك الترميز (base64 ≈ 4/3) — لا نفكّ شيئًا قبل اجتياز الحدود
   if (body.audioBase64.length > Math.ceil((MAX_AUDIO_BYTES * 4) / 3) + 8) {
     sendJson(res, 413, { ok: false, message: "التسجيل كبير جدًا." });
     return;
   }
-  const audio = Buffer.from(body.audioBase64, "base64");
-  if (audio.length < 800 || audio.length > MAX_AUDIO_BYTES) {
+  const approxBytes = Math.floor((body.audioBase64.length * 3) / 4);
+  if (approxBytes < 800) {
     sendJson(res, 400, { ok: false, message: "التسجيل قصير جدًا أو غير صالح." });
     return;
   }
 
-  const daily = await checkRateLimit(`recitation-daily:${clientIp(req)}`, {
+  const daily = await checkRateLimit(`recitation-daily:${getTrustedClientIp(req)}`, {
     windowMs: 24 * 60 * 60_000,
     max: DAILY_LIMIT,
   });
   if (!daily.allowed) {
     sendJson(res, 429, { ok: false, message: "بلغتَ الحدّ اليومي لاختبار التلاوة. عُد غدًا بإذن الله." });
+    return;
+  }
+  // سقف إجمالي للتطبيق كله يحمي رصيد المزوّد؛ المخزن الدائم يغلق عند تعطّله في الإنتاج
+  const global = await checkRateLimit("recitation-global-daily", { windowMs: 24 * 60 * 60_000, max: globalDailyLimit() });
+  if (!global.allowed) {
+    sendJson(res, 503, { ok: false, code: "asr_capacity", message: "الخدمة مشغولة الآن. حاول لاحقًا." });
+    return;
+  }
+
+  const audio = Buffer.from(body.audioBase64, "base64");
+  if (audio.length < 800 || audio.length > MAX_AUDIO_BYTES) {
+    sendJson(res, 400, { ok: false, message: "التسجيل قصير جدًا أو غير صالح." });
     return;
   }
 
