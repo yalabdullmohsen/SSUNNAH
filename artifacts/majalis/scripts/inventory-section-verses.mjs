@@ -366,7 +366,6 @@ function main() {
   const ayahRows = allQuoteRows.filter((r) => r.type === "ayah");
   const noQuoteRows = routesWithoutQuote();
   const scannedExtra = [
-    "src/components/home/HomeSacredOfDay.tsx",
     "src/views/ArkanIslamPage.tsx",
     "src/views/MiraclesPage.tsx",
     "src/pages/account/ui/FawaidView.tsx",

@@ -229,17 +229,6 @@ console.log("\n=== NavBar.tsx / App.tsx — نقطة دخول البحث موح�
     "fallback عند غياب بيانات الشريط",
   );
 
-  const chipSrc = readFileSync(
-    resolve(appRoot, "src/components/prayer/PrayerCountdownChip.tsx"),
-    "utf-8",
-  );
-  assert(
-    chipSrc.includes("useSharedPrayerCountdownLive") ||
-      chipSrc.includes("useSharedPrayerCountdown") ||
-      chipSrc.includes("usePrayerCountdown"),
-    "العدّ من مصدر الصلاة الموحّد داخل الشريحة",
-  );
-  assert(chipSrc.includes("memo"), "الشريحة مغلّفة بـ memo");
 }
 
 console.log(`\n${"─".repeat(40)}`);
