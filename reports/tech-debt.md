@@ -52,7 +52,7 @@
 | T1 | `app-web-boundary-gate` (window.location.assign في الرئيسية وPrayerHero) | ✅ أُغلق (PR #2696) | 1 |
 | T2 | `content-audit-b059-coverage-matrix-gate` (inventory ينقصه 15 قسمًا حيًا) | ✅ أُغلق (PR #2696) | 1 |
 | T3 | `content-depth-audit-gate`: نص «لا نتائج» انتقل إلى strings.ts | ✅ أُغلق (PR #2696) | 1 |
-| T4 | نبذ الأنبياء الـ25 أقل من 40 كلمة (`briefBio`) في `content-depth-audit-gate` | **مفتوح بقرار المالك**: صحّح المالك النبذ شرعيًا في PR #2703 (يونس، إسماعيل، ذو الكفل، نوح، اليسع، إلياس، إبراهيم، يحيى). **الإطالة تنتظر مراجعته**؛ لا تُكتب نبذة جديدة ولا يُطال الموجود قبلها | — |
+| T4 | نبذ الأنبياء الـ25 أقل من 40 كلمة (`briefBio`) في `content-depth-audit-gate` | ✅ أُغلق بقرار المالك (2026-10-07): تُقبل النبذ القصيرة باستثناء موثّق في الاختبار وDECISIONS.md (سببه: محتوى شرعي صحّحه المالك في #2703 والطول ليس معيارًا؛ حدّ أدنى 8 كلمات فقط للتحقق أنها نص حقيقي). لا نبذ جديدة ولا إطالة | — |
 | T5 | `card-contrast-aa-root-gate` و`ci-7500-hub-card-dark-contrast-gate` (رموز --cs-* قديمة) | ✅ أُغلق: حُدّثت التأكيدات لتطابق الرموز الحالية (--mj-white، --mss-on-hero، سطح hub-card من --surface) دون إضعافها | 2 |
 | T6 | `visual-debt-v1-gate` | ✅ أُغلق: حُذف `background-color !important` المكرر في lessons-sections-v2 (سقف 16)، و9999px→رمز pill في final-release، وتحديث --sf-radius-lg إلى 28px | 2 |
 | T7 | `scripts/test-no-homepage-leak.mjs` | ✅ أُغلق بحذف السكربت: يفحص صفحات prerender للكتب والعلماء وكلاهما محذوف من المنتج، وهو خارج CI | 2 |
