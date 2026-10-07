@@ -49,9 +49,11 @@ for (const row of ayahs) {
 }
 
 const quiz = ayahs.find((r) => r.route === "/quiz");
-assert.ok(quiz, "/quiz في الجرد");
-assert.equal(quiz.finalDecision, "REMOVE", "قرار المنتج: حذف آية تحدي الأسئلة");
-assert.equal(quiz.recommendedAction, "REMOVE");
+/* قرار المنتج: حذف آية تحدي الأسئلة — إما صفّ بقرار REMOVE أو غياب الصفّ بعد التنفيذ (لا آية في /quiz). */
+if (quiz) {
+  assert.equal(quiz.finalDecision, "REMOVE", "قرار المنتج: حذف آية تحدي الأسئلة");
+  assert.equal(quiz.recommendedAction, "REMOVE");
+}
 
 const review = readFileSync(reviewPath, "utf8");
 assert.match(review, /RELEASE_BLOCKER_CRITICAL/);

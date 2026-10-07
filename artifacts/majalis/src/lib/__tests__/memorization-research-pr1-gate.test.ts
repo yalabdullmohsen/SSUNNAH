@@ -26,14 +26,14 @@ assert.match(
 
 const routes = readPkg("src/app/router/routes.ts");
 assert.match(routes, /"\/hifz-path"/);
-assert.match(routes, /hifz-path\)\(\\\/\|\$\)/);
+assert.match(routes, /\|hifz-path[|)]/);
 
 const navVis = readPkg("src/lib/nav-visibility.ts");
 assert.match(navVis, /"\/hifz-path"/);
 
 const registry = readPkg("src/lib/feature-registry.ts");
 assert.match(registry, /id:\s*"hifz-path"/);
-assert.match(registry, /coming-soon/);
+assert.match(registry, /id:\s*"hifz-path"[^}]*status:\s*"active"/, "فُعّل بقرار المالك");
 
 const page = readPkg("src/pages/hifz-path/HifzPathPage.tsx");
 assert.match(page, /isHifzPathEnabled/);
@@ -50,11 +50,11 @@ const {
 } = await import("../memorization-path/index.ts");
 
 resetMemorizationResearchFlags();
-assert.equal(isHifzPathEnabled(), false);
-assert.equal(getHifzPathNavEntry(), null);
-setMemorizationResearchFlagsForTests({ hifzPathEnabled: true });
 assert.equal(isHifzPathEnabled(), true);
 assert.equal(getHifzPathNavEntry()?.href, "/hifz-path");
+setMemorizationResearchFlagsForTests({ hifzPathEnabled: false });
+assert.equal(isHifzPathEnabled(), false);
+assert.equal(getHifzPathNavEntry(), null);
 resetMemorizationResearchFlags();
 
 const orphan = readPkg("scripts/orphan-discovery-allowlist.json");

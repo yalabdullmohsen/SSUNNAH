@@ -1,6 +1,6 @@
 /**
- * أعلام مسار الحفظ + البحوث الشرعية — كلها OFF افتراضيًا.
- * لا تُفتح Routes للعامة قبل اكتمال الموجات والاختبارات.
+ * أعلام مسار الحفظ + البحوث الشرعية. مسار الحفظ وتجربة الوحدة ON بقرار المالك (2026-10-07)؛
+ * البحوث الشرعية OFF افتراضيًا. يمكن إطفاء أيٍّ منها بتجاوز محلي (persistMemorizationResearchFlagOverrides).
  */
 
 export type MemorizationResearchFeatureFlags = {
@@ -18,8 +18,10 @@ export type MemorizationResearchFeatureFlags = {
 
 export const MEMORIZATION_RESEARCH_FLAGS_DEFAULT: Readonly<MemorizationResearchFeatureFlags> =
   {
-    hifzPathEnabled: false,
-    hifzPathPracticeEnabled: false,
+    /* تفعيل المالك 2026-10-07 (البند 8 في OWNER_ACTIONS): مسار الحفظ وتجربة الوحدة للعامة.
+     * البحوث الشرعية تبقى OFF. */
+    hifzPathEnabled: true,
+    hifzPathPracticeEnabled: true,
     scholarlyResearchEnabled: false,
     scholarlyResearchSuggestEnabled: false,
     memorizationResearchAdminEnabled: false,

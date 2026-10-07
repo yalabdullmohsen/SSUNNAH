@@ -40,16 +40,15 @@ const app = read("App.tsx") + "\n" + read("AppRoutes.tsx");
 assert.match(app, /QuranMiniPlayerBar/);
 
 // ── Local resume on home ────────────────────────────────────────────────────
-assert.ok(existsSync(resolve(src, "components/home/HomeLocalResumeCard.tsx")));
-const home = read("pages/account/ui/HomeView.tsx") + read("pages/account/ui/HomeBelowFold.tsx");
-assert.match(home, /HomeLocalResumeCard/);
-assert.match(home, /متابعة القراءة والاستماع|متابعة/);
+/* الرئيسية الجديدة (design-system) تعرض «تابع» من continue-reading بدل بطاقة HomeLocalResumeCard القديمة */
+const home = read("design-system/screens/HomeScreen.tsx");
+assert.match(home, /getLatestContinueReading/);
+assert.match(home, /sn-continue-row/);
 
-const resume = read("components/home/HomeLocalResumeCard.tsx");
-assert.match(resume, /loadPagePosition/);
-assert.match(resume, /loadAudioResumeState/);
-assert.match(resume, /getContinueReadingEntries/);
-assert.match(resume, /adhkar:/);
+/* منطق الاستئناف في continue-reading نفسه (مصدر HomeScreen) لا في بطاقة قديمة */
+const continueLib = read("lib/continue-reading.ts");
+assert.match(continueLib, /getLatestContinueReading/);
+assert.match(continueLib, /getContinueReadingEntries/);
 
 // ── PWA / SWR ───────────────────────────────────────────────────────────────
 const sw = readFileSync(resolve(root, "public/sw.js"), "utf8");

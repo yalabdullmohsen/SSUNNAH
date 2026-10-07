@@ -64,10 +64,12 @@ for (const file of walk(SRC)) {
   const rel = path.relative(ROOT, file);
   const src = fs.readFileSync(file, "utf8");
   // أيقونات JSX/مكوّنات (ReactNode) وليست إيموجي نصي
-  if (/icon:\s*</.test(src) || /icon:\s*ReactNode/.test(src)) continue;
+  if (/icon\??:\s*</.test(src) || /icon\??:\s*ReactNode/.test(src)) continue;
   const lines = src.split(/\n/);
   lines.forEach((line, i) => {
     if (!RAW_ICON.test(line)) return;
+    // تمرير الأيقونة كخاصية (icon={x.icon}) لمكوّن يلفّها بـSectionIcon — ليس عرضًا خامًا
+    if (/\bicon=\{[a-zA-Z0-9_$.]+\.icon\}/.test(line)) return;
     if (ICON_COMP.test(line)) return;
     if (/icon\s*:\s*\{/.test(line)) return;
     violations.push(
