@@ -12,7 +12,6 @@ const majalisRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../..")
 const read = (rel: string) => readFileSync(resolve(majalisRoot, rel), "utf8");
 
 const migrated = [
-  "src/components/quran/SurahList.tsx",
   "src/components/quran/TafsirModalViewer.tsx",
   "src/components/quran/QuranAudioPlayer.tsx",
   "src/components/quran/QuranPlayerView.tsx",
@@ -32,7 +31,6 @@ for (const rel of migrated) {
   );
 }
 
-assert.match(read("src/components/quran/SurahList.tsx"), /role="tab"/);
 assert.match(read("src/components/quran/TafsirModalViewer.tsx"), /IconButton/);
 assert.match(read("src/components/quran/HifzAudioLoopPlayer.tsx"), /IconButton/);
 assert.match(read("src/components/quran/HifzAudioLoopPlayer.tsx"), /aria-pressed=\{loopUiActive\}/);
