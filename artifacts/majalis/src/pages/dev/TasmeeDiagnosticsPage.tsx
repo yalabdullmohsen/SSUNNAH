@@ -11,6 +11,7 @@ import {
   isTasmeeNativeAvailable,
   tasmeeNative,
 } from "@/lib/tasmee/engine-plugin";
+import { Button } from "@/components/ui/button";
 import { QuranSettingsRepository } from "@/lib/mushaf-v2/QuranSettingsRepository";
 import { TASMEE_SCOPE_NOTE } from "@/lib/tasmee/copy";
 import { TASMEE_STRICTNESS_DESCRIPTIONS, TASMEE_STRICTNESS_LABELS, TASMEE_STRICTNESS_LEVELS, isTasmeeStrictness, type TasmeeStrictness } from "@/lib/tasmee/levels";
@@ -148,10 +149,10 @@ export default function TasmeeDiagnosticsPage() {
         <input dir="ltr" value={manifestUrl} onChange={(e) => setManifestUrl(e.target.value)} placeholder="https://github.com/…/releases/download/<tag>/model-manifest-base.json" />
       </label>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        <button type="button" onClick={() => void download()} disabled={running}>تنزيل</button>
-        <button type="button" onClick={() => void tasmeeNative.cancelDownload()} disabled={running}>إلغاء التنزيل</button>
-        <button type="button" onClick={() => void load()} disabled={running}>تحميل</button>
-        <button type="button" onClick={() => void selfTest()} disabled={running}>اختبار القدرة</button>
+        <Button type="button" variant="outline" size="sm" onClick={() => void download()} disabled={running}>تنزيل</Button>
+        <Button type="button" variant="outline" size="sm" onClick={() => void tasmeeNative.cancelDownload()} disabled={running}>إلغاء التنزيل</Button>
+        <Button type="button" variant="outline" size="sm" onClick={() => void load()} disabled={running}>تحميل</Button>
+        <Button type="button" variant="outline" size="sm" onClick={() => void selfTest()} disabled={running}>اختبار القدرة</Button>
       </div>
       {progress ? (
         <progress value={progress.received} max={progress.total} aria-label="تقدّم التنزيل" style={{ width: "100%" }} />
@@ -178,8 +179,8 @@ export default function TasmeeDiagnosticsPage() {
         <label>كلمات prompt <input type="number" min={0} max={8} value={promptWords} onChange={(e) => setPromptWords(Number(e.target.value))} style={{ width: 48 }} /></label>
       </div>
       <div style={{ display: "flex", gap: 8 }}>
-        <button type="button" onClick={() => void start()} disabled={running}>ابدأ الجلسة</button>
-        <button type="button" onClick={() => void stop()} disabled={!running}>أنهِ الآن</button>
+        <Button type="button" variant="outline" size="sm" onClick={() => void start()} disabled={running}>ابدأ الجلسة</Button>
+        <Button type="button" variant="outline" size="sm" onClick={() => void stop()} disabled={!running}>أنهِ الآن</Button>
       </div>
       {running ? <p role="status">جارٍ التسجيل… كُشفت {revealed} كلمة</p> : null}
       {hintLog.length ? (
@@ -209,7 +210,7 @@ function ReportView({ report }: { report: TasmeeSessionReport }) {
       <div>البطارية: {batt}</div>
       <div>المدة {fmt(d.durationSec)}ث · {d.deviceModel} · iOS {d.osVersion}</div>
       <textarea readOnly dir="ltr" rows={8} value={json} style={{ width: "100%", fontFamily: "monospace", fontSize: 11 }} onFocus={(e) => e.currentTarget.select()} />
-      <button type="button" onClick={() => void navigator.clipboard?.writeText(json)}>نسخ JSON</button>
+      <Button type="button" variant="outline" size="sm" onClick={() => void navigator.clipboard?.writeText(json)}>نسخ JSON</Button>
     </section>
   );
 }
