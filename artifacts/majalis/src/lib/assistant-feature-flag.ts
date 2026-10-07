@@ -1,7 +1,7 @@
 /**
- * علم منتج للمساعد الذكي — افتراضيًا معطّل للعامة حتى اكتمال التوثيق.
- * تفعيل صريح: localStorage majalis-assistant-enabled=1 أو VITE_ASSISTANT_ENABLED=1
- * إيقاف قسري: majalis-assistant-disabled=1
+ * علم منتج للمساعد الذكي — مفعّل افتراضيًا بقرار المالك (2026-10-07) بعد استيفاء شروط الأمان:
+ * استناد RAG بمصادر وروابط داخلية، حجب الفتوى الشخصية، حدّ دقيقة/يوم على الخادم، ولا مفاتيح في العميل.
+ * إيقاف: localStorage majalis-assistant-disabled=1 أو VITE_ASSISTANT_ENABLED=0 (والخادم: ASSISTANT_DISABLED=1).
  */
 
 export function isAssistantFeatureEnabled(): boolean {
@@ -15,8 +15,9 @@ export function isAssistantFeatureEnabled(): boolean {
   }
   try {
     const env = import.meta.env as Record<string, string | undefined>;
-    return String(env.VITE_ASSISTANT_ENABLED ?? "") === "1";
+    const raw = String(env.VITE_ASSISTANT_ENABLED ?? "").trim().toLowerCase();
+    return !["0", "false", "no", "off"].includes(raw);
   } catch {
-    return false;
+    return true;
   }
 }
