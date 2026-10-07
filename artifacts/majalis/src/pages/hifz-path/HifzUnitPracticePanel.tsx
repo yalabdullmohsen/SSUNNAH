@@ -135,6 +135,18 @@ export function HifzUnitPracticePanel({
                 >
                   فتح في المصحف
                 </Link>
+                {unit.verifiedTextReference.kind === "quran" ? (
+                  <>
+                    {" · "}
+                    {/* أداة الحفظ الصوتية الموجودة (تكرار A-B وتظليل الآية) — لا نكرر وظيفتها هنا */}
+                    <Link
+                      href={`/quran/hifz-loop?surah=${unit.verifiedTextReference.surah}`}
+                      className="text-primary underline-offset-2 hover:underline"
+                    >
+                      حلقة الحفظ الصوتية
+                    </Link>
+                  </>
+                ) : null}
               </>
             ) : null}
           </StatusNotice>

@@ -5,6 +5,7 @@
 import { storageGetSync, storageSetSync } from "@/lib/native-storage";
 import { writeLocalJsonAtomic } from "@/lib/safe-json";
 import { addUtcDays, toUtcDayKey } from "@/lib/spaced-repetition";
+import { schedule as srsSchedule, type Rating as SrsRating } from "@/lib/srs";
 import {
   HIFZ_PROGRESS_STATES,
   type HifzProgressState,
@@ -28,6 +29,11 @@ export type HifzUnitProgressRecord = {
   selfReportedAt?: string;
   repetitionCount: number;
   reviewCycle: number;
+  /** حالة SM-2 (lib/srs.ts) — المصدر الوحيد لجدولة المراجعة بدل فترات ثابتة. */
+  srsInterval?: number;
+  srsEase?: number;
+  srsReps?: number;
+  srsLapses?: number;
   updatedAt: string;
 };
 
@@ -81,6 +87,10 @@ function normalizeRecord(
       typeof raw.selfReportedAt === "string" ? raw.selfReportedAt : undefined,
     repetitionCount: Math.max(0, Number(raw.repetitionCount) || 0),
     reviewCycle: Math.max(0, Number(raw.reviewCycle) || 0),
+    srsInterval: Number.isFinite(Number(raw.srsInterval)) ? Number(raw.srsInterval) : undefined,
+    srsEase: Number.isFinite(Number(raw.srsEase)) ? Number(raw.srsEase) : undefined,
+    srsReps: Number.isFinite(Number(raw.srsReps)) ? Number(raw.srsReps) : undefined,
+    srsLapses: Number.isFinite(Number(raw.srsLapses)) ? Number(raw.srsLapses) : undefined,
     updatedAt:
       typeof raw.updatedAt === "string"
         ? raw.updatedAt
@@ -117,7 +127,10 @@ function readStore(): HifzProgressStore {
   }
 }
 
-function persist(store: HifzProgressStore): void {
+/** حدث تغيّر التقدّم المحلي — يلتقطه المزامن السحابي (cloud-sync) عند وجود حساب. */
+export const HIFZ_PROGRESS_CHANGED_EVENT = "majalis:hifz-progress-changed";
+
+function persist(store: HifzProgressStore, opts?: { silent?: boolean }): void {
   store.updatedAt = new Date().toISOString();
   store.schemaVersion = HIFZ_PROGRESS_SCHEMA_VERSION;
   memStore = store;
@@ -127,6 +140,43 @@ function persist(store: HifzProgressStore): void {
   } catch {
     /* private mode */
   }
+  if (!opts?.silent && typeof window !== "undefined") {
+    try {
+      window.dispatchEvent(new Event(HIFZ_PROGRESS_CHANGED_EVENT));
+    } catch {
+      /* ignore */
+    }
+  }
+}
+
+/**
+ * دمج سجلات سحابية في المحلي: الأحدث (updatedAt) يفوز لكل وحدة، ولا حذف لما هو محلي فقط.
+ * يُرجع عدد الوحدات التي تغيّرت محليًا. صامت (بلا حدث) فلا تُدفع نفس البيانات راجعةً.
+ */
+export function mergeRemoteHifzRecords(
+  remote: readonly Partial<HifzUnitProgressRecord>[],
+): number {
+  const store = readStore();
+  let changed = 0;
+  for (const raw of remote) {
+    const rec = normalizeRecord(raw);
+    if (!rec) continue;
+    const idx = store.units.findIndex((u) => u.pathSlug === rec.pathSlug && u.unitId === rec.unitId);
+    if (idx < 0) {
+      store.units.push(rec);
+      changed += 1;
+    } else if (rec.updatedAt > store.units[idx]!.updatedAt) {
+      store.units[idx] = rec;
+      changed += 1;
+    }
+  }
+  if (changed > 0) persist(store, { silent: true });
+  return changed;
+}
+
+/** كل سجلات التقدّم للمزامنة. */
+export function exportHifzProgressForSync(): HifzUnitProgressRecord[] {
+  return readStore().units.map((u) => ({ ...u }));
 }
 
 export function resetHifzProgressStoreForTests(): void {
@@ -242,6 +292,29 @@ export function recordHifzRepetition(input: {
   });
 }
 
+/** جدولة المراجعة بـSM-2 (lib/srs.ts): «ok» بعد مراجعة ناجحة و«hard» عند الحاجة لتقوية. */
+function scheduleViaSrs(
+  existing: HifzUnitProgressRecord | null,
+  rating: SrsRating,
+): { nextReviewAt: string; srsInterval: number; srsEase: number; srsReps: number; srsLapses: number } {
+  const s = srsSchedule(
+    {
+      interval: existing?.srsInterval ?? 0,
+      ease: existing?.srsEase ?? 2.5,
+      reps: existing?.srsReps ?? 0,
+      lapses: existing?.srsLapses ?? 0,
+    },
+    rating,
+  );
+  return {
+    nextReviewAt: `${s.dueOn}T00:00:00.000Z`,
+    srsInterval: s.interval,
+    srsEase: s.ease,
+    srsReps: s.reps,
+    srsLapses: s.lapses,
+  };
+}
+
 function scheduleNextReview(
   reviewCycle: number,
   intervals: readonly number[] = HIFZ_DEFAULT_REVISION_INTERVALS,
@@ -266,11 +339,14 @@ export function markHifzUnitSelfReported(
   const existing = getUnitProgress(input.pathSlug, input.unitId);
   const cycle = existing?.reviewCycle ?? 0;
   const now = new Date().toISOString();
+  const plan = opts?.revisionIntervals
+    ? { nextReviewAt: scheduleNextReview(cycle, opts.revisionIntervals) }
+    : scheduleViaSrs(existing, "ok");
   return upsert(input, {
     state: "MEMORIZED_SELF_REPORTED",
     selfReportedAt: now,
     startedAt: existing?.startedAt ?? now,
-    nextReviewAt: scheduleNextReview(cycle, opts?.revisionIntervals),
+    ...plan,
     repetitionCount: existing?.repetitionCount ?? 0,
   });
 }
@@ -288,20 +364,26 @@ export function markHifzUnitReviewed(
   const existing = getUnitProgress(input.pathSlug, input.unitId);
   const now = new Date().toISOString();
   if (outcome === "needs_reinforcement") {
+    const plan = opts?.revisionIntervals
+      ? { nextReviewAt: scheduleNextReview(0, opts.revisionIntervals) }
+      : scheduleViaSrs(existing, "hard");
     return upsert(input, {
       state: "NEEDS_REINFORCEMENT",
       lastReviewedAt: now,
-      nextReviewAt: scheduleNextReview(0, opts?.revisionIntervals),
+      ...plan,
       reviewCycle: 0,
       startedAt: existing?.startedAt ?? now,
     });
   }
   const nextCycle = (existing?.reviewCycle ?? 0) + 1;
+  const plan = opts?.revisionIntervals
+    ? { nextReviewAt: scheduleNextReview(nextCycle, opts.revisionIntervals) }
+    : scheduleViaSrs(existing, "ok");
   return upsert(input, {
     state: "REVIEWED",
     lastReviewedAt: now,
     reviewCycle: nextCycle,
-    nextReviewAt: scheduleNextReview(nextCycle, opts?.revisionIntervals),
+    ...plan,
     startedAt: existing?.startedAt ?? now,
   });
 }

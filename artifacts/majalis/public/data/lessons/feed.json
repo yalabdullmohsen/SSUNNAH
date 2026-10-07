@@ -1,9 +1,36 @@
 {
   "version": 1,
-  "generated_at": "2026-10-06T20:42:33.015Z",
+  "generated_at": "2026-10-07T10:26:30.810Z",
   "items": [
     {
-      "id": "8b88cc50b796c09b56539ddc168d52a9c0b37eb0",
+      "id": "9c90ed913c92f9610c2863f96e06889b1db34760",
+      "type": "محاضرة",
+      "title_ar": "نبدأ معكم سلسلة",
+      "summary_ar": "نبدا معكم سلسله المحاضرات الفقهيه *احكام واداب قضاء الحاجه* مع الشيخ د محمد احمد النجدي حياكم اليوم بعد المغرب Photo by مسجد مبارك الصيفي ووالديه، رحمهم الله o…",
+      "sheikh": "د محمد أحمد النجدي",
+      "place": "مبارك الصيفي ووالديه",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": "بعد المغرب",
+      "register_url": null,
+      "schedule_kind": "upcoming",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "ig-masjid_mubark_alsaifi",
+          "name_ar": "مسجد مبارك الصيفي ووالديه",
+          "url": "https://instagram.com/masjid_mubark_alsaifi",
+          "post_url": "https://www.instagram.com/p/DeL6uEcg0-5/",
+          "platform": "instagram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-07T10:22:41.306Z",
+      "confidence": 0.95
+    },
+    {
+      "id": "c5a17e96e33a26367972215724a799abf7c87520",
       "type": "دورة",
       "title_ar": "ندعوكم الليلة لحضور الدورة العلمية شرح نزهة النظر لابن حجر للشيخ د راشد صليهم ا…",
       "summary_ar": "ندعوكم الليله لحضور الدوره العلميه: شرح نزهه النظر لابن حجر للشيخ د. راشد صليهم الهاجري ⏰ بعد صلاه المغرب (كل ثلاثاء) مسجد ابي واقد الليثي - القيروان https://m…",
@@ -26,11 +53,11 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-06T20:25:44.640Z",
+      "published_at": "2026-10-07T10:05:12.775Z",
       "confidence": 0.9
     },
     {
-      "id": "315e31fc9ce65f3202cf58d1549e27e82289e83f",
+      "id": "cd051d054aaf740f61631ffb0f5da46fb853ad07",
       "type": "دورة",
       "title_ar": "ندعوكم الليلة لحضور البرنامج التأصيلي العلمي بعد المغرب شرح دليل الطالب للشيخ ح…",
       "summary_ar": "ندعوكم الليله لحضور البرنامج التاصيلي العلمي: ⏰ بعد المغرب شرح دليل الطالب للشيخ حماد الظفيري ⏰ بعد العشاء شرح ثلاثه الاصول للشيخ يوسف مهراس مسجد عاصم الانصاري…",
@@ -53,11 +80,11 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-06T20:25:44.640Z",
+      "published_at": "2026-10-07T10:05:12.775Z",
       "confidence": 0.9
     },
     {
-      "id": "92b1d1b585173e87370d198a089cfc79b0fa7a1a",
+      "id": "7976728b103a4c17162245143f487b8251be662b",
       "type": "درس",
       "title_ar": "ندعوكم اليوم لحضور الدرس العلمي شرح كتاب عمدة الأحكام لفضيلة الشيخ د دهام الفضل…",
       "summary_ar": "ندعوكم اليوم لحضور الدرس العلمي: (شرح كتاب عمده الاحكام ) لفضيله الشيخ د. دهام الفضلي @DrEdham ⏰ بعد صلاه العصر (كل ثلاثاء) مسجد ابو طاهر السلفي - صباح الاحمد …",
@@ -80,11 +107,11 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-06T20:25:44.640Z",
+      "published_at": "2026-10-07T10:05:12.775Z",
       "confidence": 0.9
     },
     {
-      "id": "187a0c2fa627c41f2c8019018b6682ba1e4c0359",
+      "id": "b59c9d8825b1f5cb289e909a59ca3e82e2d6c10d",
       "type": "درس",
       "title_ar": "ندعوكم اليوم لحضور الدرس الأسبوعي شرح كتاب التوحيد للشيخ د منصور بن عبدالله الع…",
       "summary_ar": "ندعوكم اليوم لحضور الدرس الاسبوعي: شرح كتاب التوحيد للشيخ د. منصور بن عبدالله العازمي @mnsour4160 ⌚ كل ثلاثاء (بعد صلاه العصر) ديوان صالح الغيصم - جابر العلي h…",
@@ -107,11 +134,11 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-06T20:25:44.640Z",
+      "published_at": "2026-10-07T10:05:12.775Z",
       "confidence": 0.8
     },
     {
-      "id": "a23d131311abd33a3ed9e242c9c7f3a007c80ea6",
+      "id": "5a1d25257e44e93c8e19c7c0d9d59585edd5c368",
       "type": "درس",
       "title_ar": "👇 جدول دروس اليوم الثلاثاء 👇",
       "summary_ar": "جدول دروس اليوم الثلاثاء",
@@ -134,7 +161,7 @@
         }
       ],
       "image_url": null,
-      "published_at": "2026-10-06T20:25:44.640Z",
+      "published_at": "2026-10-07T10:05:12.775Z",
       "confidence": 0.65
     },
     {
@@ -379,6 +406,33 @@
       "image_url": null,
       "published_at": "2026-10-06T10:02:08.219Z",
       "confidence": 0.65
+    },
+    {
+      "id": "94ad4b216b43c6c9fe3fe09690090810a3c206cb",
+      "type": "تنبيه",
+      "title_ar": "مركز تنمية المجتمع سعد العبدالله",
+      "summary_ar": "مركز تنميه المجتمع سعد العبدالله Photo by سعد العبدالله اليوم 🇰🇼 on October 06, 2026. ekmek, turta ve yazı görseli olabilir.",
+      "sheikh": null,
+      "place": "تنمية المجتمع سعد العبدالله",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "upcoming",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "ig-saad.al.abdullah.city",
+          "name_ar": "مركز سعد العبدالله لتحفيظ القرآن",
+          "url": "https://instagram.com/saad.al.abdullah.city",
+          "post_url": "https://www.instagram.com/p/DeKaHygtq17/",
+          "platform": "instagram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-06T00:00:00.000Z",
+      "confidence": 0.75
     },
     {
       "id": "f9c16424711aeb5b7727412e73bcc2871309e449",
@@ -865,33 +919,6 @@
       "image_url": null,
       "published_at": "2026-10-02T19:54:31.096Z",
       "confidence": 0.95
-    },
-    {
-      "id": "a22176ebda2096b307a940ba04e27f735e898c86",
-      "type": "تنبيه",
-      "title_ar": "#جمعية_مدينة_سعد_العبدالله_التعاونية",
-      "summary_ar": "#جمعيه_مدينه_سعد_العبدالله_التعاونيه Photo by سعد العبدالله اليوم 🇰🇼 on October 02, 2026. May be an image of text.",
-      "sheikh": null,
-      "place": null,
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": null,
-      "schedule_kind": "upcoming",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "ig-saad.al.abdullah.city",
-          "name_ar": "مركز سعد العبدالله لتحفيظ القرآن",
-          "url": "https://instagram.com/saad.al.abdullah.city",
-          "post_url": "https://www.instagram.com/p/Dd_i4O8N1Ya/",
-          "platform": "instagram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-02T00:00:00.000Z",
-      "confidence": 0.65
     },
     {
       "id": "4a5a25cdbdc6d3ff276e91cb5c92f82b7de2ab88",

@@ -39,6 +39,7 @@
 - إقلاع: `artifacts/majalis/src/main.tsx`
 - صفحات مجال: `src/pages/{quran,worship,fiqh,hadith,lessons,library,account}/`
 - صفحات مسطّحة كثيرة: `src/views/*.tsx` (~211)
+- مسار الحفظ (`/hifz-path`): `src/pages/hifz-path/*` + `src/lib/memorization-path/*` (كتالوج مصحف منشور، تقدّم محلي + مزامنة حساب `cloud-sync`، مراجعة SM-2 عبر `lib/srs.ts`) — فُعّل بقرار المالك 2026-10-07، مدخله تبويب القرآن
 - مصحف: `src/pages/quran/ui/MushafPageView.tsx` + `src/components/quran/*` + `src/styles/quran.css` / `mushaf-v2.css`
 - تنقّل مكاني: `src/lib/spatial-nav.ts` + `src/components/motion/*` + `styles/components/native-feel.css`
 - سرد واعٍ (نطق فقط): `src/lib/ai-narration/*` + `src/lib/speech-read-aloud.ts` — واجهة منتج: قصص الأنبياء
