@@ -29,7 +29,6 @@ const pages: Array<[string, RegExp]> = [
   ["src/views/UniversitiesPage.tsx", /EMPTY\.search/],
   ["src/views/IslamicLandmarksPage.tsx", /EMPTY\.search/],
   ["src/views/OccasionsPage.tsx", /EMPTY\.data/],
-  ["src/views/QaPage.tsx", /EMPTY\.(search|data)/],
   ["src/views/IslamicStoriesPage.tsx", /EMPTY\.(data|search|generic)/],
 ];
 
