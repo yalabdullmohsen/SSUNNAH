@@ -290,8 +290,11 @@ console.log("=== الواجهة والتوصيل والخصوصية ===");
   assert.match(apiSrc, /if \(!hasRecitationConsent\(\)\) throw new AsrError\([^)]*"consent"\)[\s\S]*await blobToBase64/, "العميل لا يرسل صوتًا دون موافقة");
 
   const plist = read("ios/App/App/Info.plist");
-  assert.match(plist, /<key>NSMicrophoneUsageDescription<\/key>\s*<string>[^<]*الميكروفون[^<]*<\/string>/, "وصف عربي لإذن الميكروفون");
-  assert.match(plist, /<key>NSMicrophoneUsageDescription<\/key>\s*<string>[^<]*خدمة خارجية[^<]*Groq[^<]*<\/string>/, "وصف الإذن يفصح عن الإرسال إلى خدمة خارجية");
+  const micText = read("scripts/mic-usage-description.txt").trim();
+  const micMatch = plist.match(/<key>NSMicrophoneUsageDescription<\/key>\s*<string>([^<]*)<\/string>/);
+  assert.equal(micMatch?.[1], micText, "نص إذن الميكروفون = النص الموحَّد حرفيًا (يغطي التسميع على الجهاز واختبار التلاوة المُرسَل بعد الموافقة)");
+  assert.match(micText, /في وضع التسميع تُعالج التلاوة على جهازك فقط ولا تُرسل/);
+  assert.match(micText, /في اختبار التلاوة تُرسل إلى خدمة خارجية[^.]*بعد موافقتك/);
   assert.doesNotMatch(plist, /NSSpeechRecognitionUsageDescription/, "لا تعرّف صوتي أصلي");
 
   const privacy = read("src/views/PrivacyPage.tsx");

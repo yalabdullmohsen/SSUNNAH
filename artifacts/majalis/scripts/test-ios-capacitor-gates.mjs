@@ -85,12 +85,13 @@ ok(
 );
 ok(!existsSync(join(root, "android")), "Android product tree retired (no artifacts/majalis/android)");
 ok(!plist.includes("NSSpeechRecognitionUsageDescription"), "Info.plist has no speech recognition usage");
-// اختبار التلاوة عاد بقرار المالك (2026-10-07) بنسخة ويب (MediaRecorder + تفريغ خادمي) بلا إضافات أصلية:
-// إذن الميكروفون مطلوب بوصف عربي صريح لا يذكر التخزين الدائم، ويبقى إذن التعرّف الصوتي الأصلي محظورًا.
-ok(
-  /<key>NSMicrophoneUsageDescription<\/key>\s*<string>[^<]*الميكروفون[^<]*<\/string>/.test(plist),
-  "Info.plist has an Arabic microphone usage description (web recitation test)",
-);
+// نص إذن الميكروفون موحَّد حرفيًا (scripts/mic-usage-description.txt): وضع التسميع على الجهاز فقط، واختبار التلاوة يُرسل بعد الموافقة.
+// أي تغيير يلزم تعديل الملف الموحَّد معًا مع Info.plist وصفحة الخصوصية. التعرّف الصوتي الأصلي (Speech) يبقى محظورًا.
+{
+  const canonical = readFileSync(join(root, "scripts/mic-usage-description.txt"), "utf8").trim();
+  const m = plist.match(/<key>NSMicrophoneUsageDescription<\/key>\s*<string>([^<]*)<\/string>/);
+  ok(m !== null && m[1] === canonical, "Info.plist NSMicrophoneUsageDescription equals the unified text exactly");
+}
 ok(!pbx.includes("MajlisSpeechRecognitionPlugin.swift"), "pbxproj has no speech plugin");
 ok(!pbx.includes("RecitationAudioCapturePlugin.swift"), "pbxproj has no capture plugin");
 ok(!pbx.includes("MajlisSpeechRecognition"), "pbxproj has no MajlisSpeechRecognition symbol");
