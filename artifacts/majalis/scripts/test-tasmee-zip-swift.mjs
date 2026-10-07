@@ -10,8 +10,8 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-if (spawnSync("swiftc", ["--version"], { stdio: "ignore" }).status !== 0 || spawnSync("zip", ["-v"], { stdio: "ignore" }).status !== 0) {
-  console.log("test-tasmee-zip-swift: skipped (no swiftc/zip)");
+if (process.platform !== "darwin" || spawnSync("swiftc", ["--version"], { stdio: "ignore" }).status !== 0 || spawnSync("zip", ["-v"], { stdio: "ignore" }).status !== 0) {
+  console.log("test-tasmee-zip-swift: skipped (macOS مع swiftc/zip فقط)");
   process.exit(0);
 }
 const dir = mkdtempSync(join(tmpdir(), "tasmee-zip-"));
