@@ -97,6 +97,24 @@ html[data-v2-app="1"][data-v2-dashboard="1"] .hw3-meta .hw3-meta__ph {
   opacity: 0.72;
 }
 
+/* هدف لمس ≥ --touch-min دون تغيير التخطيط (ارتفاع البطل محجوز من أول إطار).
+   روابط الميتا تتوسع للأسفل فقط كي لا تتداخل مع الشريحة الرئيسية فوقها. */
+html[data-v2-app="1"][data-v2-dashboard="1"] :is(.hw3-chip--lead, .hw3-meta a) {
+  position: relative;
+  /* القصّ يبتلع مساحة اللمس؛ النص يُقصّ في __v نفسه */
+  overflow: visible;
+}
+html[data-v2-app="1"][data-v2-dashboard="1"] :is(.hw3-chip--lead, .hw3-meta a)::after {
+  content: "";
+  position: absolute;
+  inset-block: min(0px, calc((100% - var(--touch-min, 44px)) / 2));
+  inset-inline: 0;
+}
+html[data-v2-app="1"][data-v2-dashboard="1"] .hw3-meta a::after {
+  inset-block: -0.2rem min(0px, calc(100% - var(--touch-min, 44px) + 0.2rem));
+  inset-inline: min(0px, calc((100% - var(--touch-min, 44px)) / 2));
+}
+
 html[data-v2-app="1"][data-v2-dashboard="1"] .hw3-chip__v--ph {
   min-inline-size: 7rem;
 }

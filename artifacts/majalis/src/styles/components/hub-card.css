@@ -670,7 +670,7 @@ html.dark .sq-card {
 
 .navbar-v3__inner {
   overflow: visible !important;
-  min-height: 3.25rem;
+  min-height: 52px; /* px: حجز الإقلاع 65px ثابت؛ rem يكبر مع تكبير النص فيغطي المحتوى */
   align-items: center;
 }
 

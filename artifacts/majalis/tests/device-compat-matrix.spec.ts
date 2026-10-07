@@ -106,7 +106,7 @@ export type RouteReport = {
 
 /* eslint-disable */
 async function inspect(page: Page): Promise<Omit<RouteReport, "route" | "status">> {
-  return page.evaluate(() => {
+  return page.evaluate(async () => {
     const W = window.innerWidth;
     const H = window.innerHeight;
     const desc = (el: Element) => {
@@ -123,7 +123,9 @@ async function inspect(page: Page): Promise<Omit<RouteReport, "route" | "status"
     const clipped = (el: Element) => {
       for (let p = el.parentElement; p && p !== document.body; p = p.parentElement) {
         const ox = getComputedStyle(p).overflowX;
-        if (ox === "auto" || ox === "scroll" || ox === "hidden" || ox === "clip") return true;
+        if (ox === "auto" || ox === "scroll") return true;
+        // قصّ على مستوى التطبيق (عرض الشاشة كاملًا) لا يُعفي: المحتوى المقصوص عنده مفقود فعلًا
+        if ((ox === "hidden" || ox === "clip") && p.getBoundingClientRect().width < W - 1) return true;
       }
       return false;
     };
@@ -132,7 +134,8 @@ async function inspect(page: Page): Promise<Omit<RouteReport, "route" | "status"
     // 1) تمرير أفقي على مستوى الصفحة
     const sw = Math.max(document.documentElement.scrollWidth, document.body.scrollWidth);
     let hOverflow: any = null;
-    if (sw > W + 1) {
+    {
+      // يُفحص دائمًا: قصّ overflow-x على مستوى التطبيق يُخفي التمرير لكنه يقصّ المحتوى.
       const offenders: string[] = [];
       for (const root of [document.documentElement, document.body]) {
         const mw = parseFloat(getComputedStyle(root).minWidth);
@@ -140,7 +143,7 @@ async function inspect(page: Page): Promise<Omit<RouteReport, "route" | "status"
       }
       for (const el of all) {
         const r = el.getBoundingClientRect();
-        if ((r.right > W + 1 || r.left < -1) && r.width > 0 && !clipped(el)) {
+        if ((r.right > W + 1 || r.left < -1) && r.width > 0 && !el.closest("[aria-hidden=true]") && visible(el) && !clipped(el)) {
           const parent = el.parentElement;
           const pr = parent?.getBoundingClientRect();
           // نسجّل أول عنصر يتجاوز وأبوه لا يتجاوز (المصدر الجذري)
@@ -150,7 +153,7 @@ async function inspect(page: Page): Promise<Omit<RouteReport, "route" | "status"
         }
         if (offenders.length >= 6) break;
       }
-      hOverflow = { scrollWidth: sw, innerWidth: W, offenders };
+      if (sw > W + 1 || offenders.length) hOverflow = { scrollWidth: sw, innerWidth: W, offenders };
     }
 
     // 2) نص يتجاوز حاويته دون التفاف/اختصار
@@ -181,9 +184,19 @@ async function inspect(page: Page): Promise<Omit<RouteReport, "route" | "status"
       if (!visible(el) || clipped(el)) continue;
       const r = el.getBoundingClientRect();
       if (r.bottom < 0 || r.top > H) continue;
-      if (Math.round(r.width) < 44 || Math.round(r.height) < 44) {
+      // روابط مسار التنقل (breadcrumb) نصّية مضمّنة — مستثناة في WCAG 2.5.8
+      if (el.closest('nav[aria-label*="مسار"], nav[aria-label*="breadcrumb" i]')) continue;
+      // مساحة اللمس الموسّعة بعنصر زائف مطلق (::after/::before) لا تغيّر التخطيط
+      let hw = r.width, hh = r.height;
+      for (const pseudo of ["::after", "::before"]) {
+        const ps = getComputedStyle(el, pseudo);
+        if (ps.content === "none" || ps.position !== "absolute") continue;
+        hw = Math.max(hw, r.width - (parseFloat(ps.left) || 0) - (parseFloat(ps.right) || 0));
+        hh = Math.max(hh, r.height - (parseFloat(ps.top) || 0) - (parseFloat(ps.bottom) || 0));
+      }
+      if (Math.round(hw) < 44 || Math.round(hh) < 44) {
         // نطاق اللمس قد يتسع بـ ::before/padding للأب؛ نقيس الأب التفاعلي المباشر
-        smallTargets.push(`${desc(el)} ${Math.round(r.width)}x${Math.round(r.height)}`);
+        smallTargets.push(`${desc(el)} ${Math.round(hw)}x${Math.round(hh)}`);
       }
       if (smallTargets.length >= 8) break;
     }
@@ -218,7 +231,9 @@ async function inspect(page: Page): Promise<Omit<RouteReport, "route" | "status"
       // في نهاية التمرير: أعمق عنصر ورقي في المحتوى يجب أن ينتهي فوق الشريط السفلي
       const se = document.scrollingElement!;
       const prevY = se.scrollTop;
-      se.scrollTop = se.scrollHeight;
+      // content-visibility:auto يغيّر الارتفاعات بعد القفز؛ نكرر القفز حتى تستقر
+      const settle = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(r, 120))));
+      for (let i = 0; i < 3; i++) { se.scrollTop = se.scrollHeight; await settle(); }
       const nb = fixedBottom.getBoundingClientRect().top;
       const inFixed = (el: Element) => {
         for (let p: Element | null = el; p && p !== main; p = p.parentElement) {
@@ -227,19 +242,27 @@ async function inspect(page: Page): Promise<Omit<RouteReport, "route" | "status"
         }
         return false;
       };
+      /** الحد السفلي المرئي فعلًا (بعد قصّ الآباء ذوي overflow غير visible). */
+      const visBottom = (el: Element) => {
+        let b = el.getBoundingClientRect().bottom;
+        for (let p = el.parentElement; p && p !== main; p = p.parentElement) {
+          if (getComputedStyle(p).overflowY !== "visible") b = Math.min(b, p.getBoundingClientRect().bottom);
+        }
+        return b;
+      };
       let worst: Element | null = null;
       let worstB = 0;
       for (const el of Array.from(main.querySelectorAll("*"))) {
-        if (el.children.length || !visible(el) || inFixed(el)) continue;
-        const r = el.getBoundingClientRect();
-        if (r.bottom > worstB) { worstB = r.bottom; worst = el; }
+        if (el.children.length || el.getBoundingClientRect().bottom <= Math.max(worstB, nb + 1)) continue;
+        if (!visible(el) || inFixed(el)) continue;
+        const b = visBottom(el);
+        if (b > worstB) { worstB = b; worst = el; }
       }
       if (worst && worstB > nb + 1 && worstB <= H + 1) {
         chromeOverlap.push(`${desc(worst)} تحت الشريط السفلي (${Math.round(worstB)}>${Math.round(nb)})`);
       }
       se.scrollTop = prevY;
     }
-
 
     return { hOverflow, textOverflow, mediaOverflow, smallTargets, smallInputs, chromeOverlap };
   });
