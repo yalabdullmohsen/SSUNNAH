@@ -1,15 +1,15 @@
 {
-  "measuredAt": "2026-10-07T02:22:02.557Z",
+  "measuredAt": "2026-10-06T16:07:04.018Z",
   "scope": "artifacts/majalis/src",
-  "tsxFiles": 829,
+  "tsxFiles": 832,
   "rawButtonFiles": 3,
   "rawButtonElements": 18,
-  "officialButtonImportFiles": 354,
+  "officialButtonImportFiles": 356,
   "actionButtonConsumerFiles": 7,
-  "iconButtonConsumerFiles": 55,
+  "iconButtonConsumerFiles": 54,
   "divSpanOnClick": 38,
   "formButtonsMissingType": 0,
   "floatingControlFileMentions": 10,
-  "buttonRelatedImportantApprox": 1087,
+  "buttonRelatedImportantApprox": 1088,
   "buttonRelatedHexApprox": 892
 }
