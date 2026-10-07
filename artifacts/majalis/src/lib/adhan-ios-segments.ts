@@ -31,6 +31,8 @@ export type AdhanIosSegmentPlan = {
   body: string | null;
   prayerKey: string;
   segmentIndex: number;
+  /** اليوم المحلي (YYYY-MM-DD بمنطقة الصلاة) — يمنع تصادم يومين متقاربين عند منتصف UTC. */
+  dayKey?: string;
 };
 
 const CHAIN_STORE_KEY = "majalis-adhan-ios-chain-v2";
@@ -88,14 +90,17 @@ export function buildAdhanIosSegmentPlan(opts: {
   startAtMs: number;
   /** مدد المقاطع بالثواني (من الميتاداتا/التقطيع) */
   durationsSec: number[];
+  /** يومٌ محلي صريح ومعرّف أساس جاهز من مخطّط النافذة (يتفادى التصادم). */
+  dayKey?: string;
+  idBase?: number;
 }): AdhanIosSegmentPlan[] {
   const clipped = opts.durationsSec
     .slice(0, ADHAN_IOS_MAX_SEGMENTS)
     .map((d) => Math.min(ADHAN_IOS_SEGMENT_MAX_SEC, Math.max(1, d)));
   if (clipped.length === 0) return [];
 
-  const dayKey = new Date(opts.startAtMs).toISOString().slice(0, 10);
-  const base = chainIdBase(opts.prayerKey, dayKey);
+  const dayKey = opts.dayKey ?? new Date(opts.startAtMs).toISOString().slice(0, 10);
+  const base = opts.idBase ?? chainIdBase(opts.prayerKey, dayKey);
   const kind = opts.isFajr ? "fajr" : "general";
   const plan: AdhanIosSegmentPlan[] = [];
 
@@ -111,6 +116,7 @@ export function buildAdhanIosSegmentPlan(opts: {
         : `المقطع ${i + 1} من ${clipped.length}`,
       prayerKey: opts.prayerKey,
       segmentIndex: i,
+      dayKey,
     });
   }
   return plan;
@@ -193,7 +199,7 @@ export async function scheduleAdhanIosSegmentChain(
 ): Promise<{ ok: boolean; ids: number[] }> {
   if (!plan.length) return { ok: false, ids: [] };
   const prayerKey = plan[0].prayerKey;
-  const dayKey = new Date(plan[0].atMs).toISOString().slice(0, 10);
+  const dayKey = plan[0].dayKey ?? new Date(plan[0].atMs).toISOString().slice(0, 10);
   const map = readChainMap();
   const storeKey = chainStoreKey(prayerKey, dayKey);
   const prev = map[storeKey];
@@ -306,6 +312,9 @@ export async function scheduleIosFullAdhan(opts: {
   durationsSec?: number[];
   /** صيغة التسليم — full يفعّل السلسلة عند توفر المقاطع */
   deliveryMode?: "full" | "short" | "takbir" | "silent";
+  /** من مخطّط نافذة الأيام السبعة: اليوم المحلي ومعرّف أساس بلا تصادم. */
+  dayKey?: string;
+  idBase?: number;
 }): Promise<{ ok: boolean; ids: number[] }> {
   const mode = opts.deliveryMode ?? "full";
   if (mode === "silent") return { ok: false, ids: [] };
@@ -321,8 +330,8 @@ export async function scheduleIosFullAdhan(opts: {
       "./prayer-notification-sounds"
     );
     const isMakkahStyle = opts.recordingId === "makkah" || opts.recordingId === "makki" || opts.recordingId === "alharam";
-    const dayKey = new Date(opts.startAtMs).toISOString().slice(0, 10);
-    const id = chainIdBase(opts.prayerKey, dayKey);
+    const dayKey = opts.dayKey ?? new Date(opts.startAtMs).toISOString().slice(0, 10);
+    const id = opts.idBase ?? chainIdBase(opts.prayerKey, dayKey);
     const sound =
       opts.isFajr && isMakkahStyle ? "adhan-short-makkah-fajr.caf" : resolveAdhanStyleNotificationSound(opts.recordingId);
     const plan: AdhanIosSegmentPlan[] = [
@@ -334,6 +343,7 @@ export async function scheduleIosFullAdhan(opts: {
         body: "حيّ على الصلاة، افتح التطبيق لسماع الأذان الكامل",
         prayerKey: opts.prayerKey,
         segmentIndex: 0,
+        dayKey,
       },
     ];
     const result = await scheduleAdhanIosSegmentChain(plan);
@@ -347,7 +357,29 @@ export async function scheduleIosFullAdhan(opts: {
     isFajr: opts.isFajr,
     startAtMs: opts.startAtMs,
     durationsSec: opts.durationsSec ?? defaultAdhanSegmentDurations(),
+    dayKey: opts.dayKey,
+    idBase: opts.idBase,
   });
   const result = await scheduleAdhanIosSegmentChain(plan);
   return result;
+}
+
+/**
+ * يلغي أي إشعار معلّق من مقاطع الأذان (`extra.adhanSegment`) ليس ضمن `keepIds`.
+ * يحمي من تكرار الأذان إن ضاع سجل السلاسل (إعادة تشغيل التطبيق) أو تغيّرت المعرّفات بين الإصدارات.
+ */
+export async function cancelStaleAdhanSegments(keepIds: ReadonlySet<number>): Promise<number> {
+  if (!isAdhanIosSegmentsAvailable()) return 0;
+  try {
+    const { notifications } = await LocalNotifications.getPending();
+    const stale = notifications.filter((n) => {
+      const extra = (n as { extra?: { adhanSegment?: boolean } }).extra;
+      return extra?.adhanSegment === true && !keepIds.has(n.id);
+    });
+    if (!stale.length) return 0;
+    await LocalNotifications.cancel({ notifications: stale.map((n) => ({ id: n.id })) });
+    return stale.length;
+  } catch {
+    return 0;
+  }
 }
