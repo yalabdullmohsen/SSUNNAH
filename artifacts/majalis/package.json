@@ -257,7 +257,7 @@
     "test:topic-chunk-cache-suite": "node --import tsx src/lib/__tests__/topic-chunk-cache-suite.test.ts",
     "test:speech-scroll-sacred-sync-suite": "node --import tsx src/lib/__tests__/speech-scroll-sacred-sync-suite.test.ts && node --import tsx src/lib/__tests__/sovereign-core-gate.test.ts && node --import tsx src/lib/__tests__/sovereign-part-ii-gate.test.ts && node --import tsx src/lib/__tests__/sovereign-ultimate-gate.test.ts",
     "test:guardrails": "node lib/__tests__/islamic-answer-guardrails.test.mjs",
-    "test:search-normalize": "node lib/__tests__/search-normalize.test.mjs && node --import tsx src/shared/arabic-normalize-sql-parity.test.ts",
+    "test:search-normalize": "node lib/__tests__/search-normalize.test.mjs && node --import tsx src/shared/arabic-normalize-sql-parity.test.ts && node --import tsx src/lib/__tests__/quran-word-match.test.ts",
     "test:search-quality": "node ../../scripts/check-search-quality.js",
     "test:islamic-history-integrity": "node --import tsx src/lib/__tests__/islamic-history-integrity.test.ts",
     "test:inheritance-engine": "node --import tsx src/lib/inheritance/__tests__/engine.test.ts",
