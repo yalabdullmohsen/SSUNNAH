@@ -54,6 +54,7 @@ struct StandByPrayerCountdownView: View {
             PrayerCountdownText(entry: entry)
                 .font(.system(size: 44, weight: .bold, design: .rounded).monospacedDigit())
                 .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
                 .minimumScaleFactor(0.5)
             if let hijri = entry.hijriDateText {
                 Text(hijri)
@@ -75,6 +76,7 @@ struct StandByCurrentPrayerView: View {
             Text("الصلاة الحالية")
                 .font(.caption.bold())
                 .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
             Text(entry.currentNameAr ?? "قبل الفجر")
                 .font(.largeTitle.bold())
                 .foregroundStyle(.white)
@@ -85,6 +87,7 @@ struct StandByCurrentPrayerView: View {
                 PrayerElapsedText(entry: entry)
                     .font(.title2.monospacedDigit().bold())
                     .foregroundStyle(SunnahBrandColors.gold)
+                    .widgetAccentable()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
@@ -101,6 +104,7 @@ struct StandByDailyQuranView: View {
             Text("آية اليوم")
                 .font(.caption.bold())
                 .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
             Text(entry.quran?.ayahText ?? "افتح سُنّة لعرض الآية")
                 .font(.title3)
                 .foregroundStyle(.white)
@@ -109,6 +113,7 @@ struct StandByDailyQuranView: View {
                 Text("سورة \(quran.surahNameAr) · آية \(SunnahWidgetTimeFormatting.arabic(quran.ayahNumber))")
                     .font(.headline)
                     .foregroundStyle(SunnahBrandColors.gold)
+                    .widgetAccentable()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
@@ -125,6 +130,7 @@ struct StandByHijriDateView: View {
             Text(entry.calendar?.weekdayAr ?? "اليوم")
                 .font(.title3.bold())
                 .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
             Text(SunnahWidgetTimeFormatting.arabic(entry.calendar?.hijriDay ?? 1))
                 .font(.system(size: 56, weight: .bold))
                 .foregroundStyle(.white)
@@ -151,12 +157,14 @@ struct StandByTodayInSunnahView: View {
             Text("اليوم في سُنّة")
                 .font(.caption.bold())
                 .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
             Text(entry.prayer.nextDisplayName ?? entry.prayer.currentNameAr ?? "الصلاة")
                 .font(.largeTitle.bold())
                 .foregroundStyle(.white)
             PrayerCountdownText(entry: entry.prayer)
                 .font(.title.monospacedDigit().bold())
                 .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
             Text(entry.progress?.currentAdhkarTitleAr ?? entry.adhkar?.activeTitleAr ?? "أذكار الوقت")
                 .font(.title3)
                 .foregroundStyle(.white)

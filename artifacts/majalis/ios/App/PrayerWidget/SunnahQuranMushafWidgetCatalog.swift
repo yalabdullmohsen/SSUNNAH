@@ -139,6 +139,7 @@ struct QuranAyahView: View {
                 Text("سورة \(quran.surahNameAr) · آية \(SunnahWidgetTimeFormatting.arabic(quran.ayahNumber))")
                     .font(.caption.bold())
                     .foregroundStyle(SunnahBrandColors.gold)
+                    .widgetAccentable()
             }
             .padding(14)
         } else {
@@ -157,6 +158,7 @@ struct MushafContinueView: View {
                     Text("متابعة القراءة")
                         .font(.caption.bold())
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                     if let name = mushaf.lastSurahNameAr {
                         Text(name)
                             .font(.title3.bold())
@@ -193,6 +195,7 @@ struct MushafBookmarkView: View {
                     Text("إشارتك")
                         .font(.caption.bold())
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                     Text(mushaf.bookmarkSurahNameAr ?? "المصحف")
                         .font(.title3.bold())
                         .foregroundStyle(.white)
@@ -236,6 +239,7 @@ struct QuranDailyGoalView: View {
                         Text("هدف اليوم")
                             .font(.caption.bold())
                             .foregroundStyle(SunnahBrandColors.gold)
+                            .widgetAccentable()
                         Text("\(SunnahWidgetTimeFormatting.arabic(done)) من \(SunnahWidgetTimeFormatting.arabic(target))")
                             .font(.title2.bold())
                             .foregroundStyle(.white)
@@ -263,6 +267,7 @@ struct MushafProgressView: View {
                     Text("رحلة القراءة")
                         .font(.caption.bold())
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                     Text(mushaf.lastSurahNameAr ?? "المصحف")
                         .font(.title3.bold())
                         .foregroundStyle(.white)
@@ -273,6 +278,7 @@ struct MushafProgressView: View {
                         Text("أتممت \(SunnahWidgetTimeFormatting.arabic(percent))٪")
                             .font(.subheadline.bold())
                             .foregroundStyle(SunnahBrandColors.gold)
+                            .widgetAccentable()
                     }
                 }
                 .padding(12)
@@ -293,6 +299,7 @@ struct MushafQuickOpenView: View {
             Text("افتح المصحف")
                 .font(.caption.bold())
                 .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
             if let page = entry.mushaf?.lastPage {
                 Text("صفحة \(SunnahWidgetTimeFormatting.arabic(page))")
                     .font(.system(size: 36, weight: .bold))

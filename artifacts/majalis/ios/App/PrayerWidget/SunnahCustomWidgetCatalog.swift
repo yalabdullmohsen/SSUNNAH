@@ -66,6 +66,7 @@ struct CustomContentView: View {
                     Text(item.titleAr)
                         .font(.caption.bold())
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                     Text(item.text)
                         .font(compact ? .caption : .headline)
                         .foregroundStyle(.white)
