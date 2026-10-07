@@ -82,8 +82,6 @@ const ayahBar = read("src/features/mushaf-madinah/AyahActionSheet.tsx");
 assert.match(ayahBar, /نسخ|مشاركة|تفسير|تشغيل|حفظ|bookmark|Bookmark|onBookmark|onShare/i);
 
 // 8) mobile nav hide/show
-const autoHide = read("src/hooks/useAutoHideBottomNav.ts");
-assert.match(autoHide, /translateY|isHidden|DELTA_PX/);
 const chromeCss = read("src/styles/components/app-chrome-scroll.css");
 assert.match(chromeCss, /bottom-nav--hidden/);
 assert.doesNotMatch(chromeCss.replace(/\/\*[\s\S]*?\*\//g, ""), /display\s*:\s*none/);

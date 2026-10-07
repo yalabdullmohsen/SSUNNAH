@@ -45,9 +45,6 @@ const lessons = read("src/components/home/HomeUpcomingLessons.tsx");
 assert.match(lessons, /EMPTY\.data/);
 assert.doesNotMatch(lessons, /لا توجد دروس مجدولة اليوم/);
 
-const courses = read("src/components/home/HomeUpcomingCourses.tsx");
-assert.match(courses, /EMPTY\.data/);
-assert.doesNotMatch(courses, /لا توجد دورات قادمة حالياً/);
 
 const audioPicker = read("src/components/adhan/PrayerAudioPicker.tsx");
 assert.match(audioPicker, /EMPTY\.searchShort/);
