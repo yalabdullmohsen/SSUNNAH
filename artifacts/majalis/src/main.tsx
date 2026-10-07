@@ -416,6 +416,8 @@ async function mount() {
     markStartup("startup:session-ready");
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
+        /* غلاف الإقلاع الثابت (z=1) كان يبقى فوق الشاشة ويحجب أعلى المحتوى بعد رحيل الهيكل القديم */
+        document.getElementById("mj-startup-chrome")?.remove();
         window.dispatchEvent(new Event("mj:app-painted"));
         window.dispatchEvent(new Event("app:first-paint"));
         markStartup("startup:content-ready");

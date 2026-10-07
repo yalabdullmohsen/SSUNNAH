@@ -80,7 +80,7 @@ assert.match(tasbeeh, /إلغاء/, "زر إلغاء صريح");
 assert.match(tasbeeh, /aria-label="تصفير العداد"|تصفير/, "اسم وصول لزر التصفير");
 
 const tasbihView = read("src/pages/worship/ui/TasbihView.tsx");
-assert.match(tasbihView, /tasbeeh-stats-strip/, "ملخص إحصاء مضغوط");
+assert.match(tasbihView, /StatGrid/, "ملخص إحصاء مضغوط");
 assert.match(tasbihView, /alertdialog/, "حذف الورد يحتاج تأكيدًا داخل الصفحة");
 assert.doesNotMatch(tasbihView, /window\.confirm/, "لا window.confirm لحذف الورد");
 assert.doesNotMatch(tasbihView, /FloatingBackButton/, "لا زر رجوع عائم في التسبيح");
