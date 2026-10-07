@@ -115,7 +115,6 @@ function main() {
     "components/admin/review-hub/ReviewHubShell.tsx",
     "components/admin/review-hub/ReviewHubHeaderBar.tsx",
     "components/admin/review-hub/LinearAudioReviewPlayer.tsx",
-    "components/admin/review-hub/WaveformAudioPlayer.tsx",
     "lib/admin-review-hub/store.ts",
     "styles/pages/admin-review-hub.css",
   ]) {

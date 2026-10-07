@@ -16,7 +16,6 @@ const migrated = [
   `${dir}/RecitationReviewCard.tsx`,
   `${dir}/ReviewHubWorkspace.tsx`,
   `${dir}/ContentModerationCard.tsx`,
-  `${dir}/WaveformAudioPlayer.tsx`,
   `${dir}/LinearAudioReviewPlayer.tsx`,
   `${dir}/ReviewHubHeaderBar.tsx`,
   `${dir}/ReviewHubSidebar.tsx`,
@@ -45,7 +44,6 @@ assert.match(read(`${dir}/ReviewHubWorkspace.tsx`), /role="tab"/);
 for (const rel of [
   `${dir}/ReviewHubHeaderBar.tsx`,
   `${dir}/LinearAudioReviewPlayer.tsx`,
-  `${dir}/WaveformAudioPlayer.tsx`,
 ]) {
   const text = read(rel);
   // Opening tag spans until the standalone `>` line (handlers contain `=>`).
