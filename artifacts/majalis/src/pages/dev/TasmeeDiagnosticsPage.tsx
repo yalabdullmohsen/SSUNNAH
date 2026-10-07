@@ -12,6 +12,7 @@ import {
   tasmeeNative,
 } from "@/lib/tasmee/engine-plugin";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { QuranSettingsRepository } from "@/lib/mushaf-v2/QuranSettingsRepository";
 import { TASMEE_SCOPE_NOTE } from "@/lib/tasmee/copy";
 import { TASMEE_STRICTNESS_DESCRIPTIONS, TASMEE_STRICTNESS_LABELS, TASMEE_STRICTNESS_LEVELS, isTasmeeStrictness, type TasmeeStrictness } from "@/lib/tasmee/levels";
@@ -162,19 +163,22 @@ export default function TasmeeDiagnosticsPage() {
         <label>المدة (دقيقة) <input type="number" min={1} max={30} value={minutes} onChange={(e) => setMinutes(Number(e.target.value))} style={{ width: 56 }} /></label>
         <label>
           الصرامة{" "}
-          <select
+          <Select
             value={strictness}
-            onChange={(e) => {
-              if (!isTasmeeStrictness(e.target.value)) return;
-              QuranSettingsRepository.setTasmeeStrictness(e.target.value);
-              setStrictness(e.target.value);
+            onValueChange={(v) => {
+              if (!isTasmeeStrictness(v)) return;
+              QuranSettingsRepository.setTasmeeStrictness(v);
+              setStrictness(v);
             }}
             disabled={running}
           >
-            {TASMEE_STRICTNESS_LEVELS.map((l) => (
-              <option key={l} value={l}>{TASMEE_STRICTNESS_LABELS[l]}</option>
-            ))}
-          </select>
+            <SelectTrigger><SelectValue /></SelectTrigger>
+            <SelectContent>
+              {TASMEE_STRICTNESS_LEVELS.map((l) => (
+                <SelectItem key={l} value={l}>{TASMEE_STRICTNESS_LABELS[l]}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </label>
         <label>كلمات prompt <input type="number" min={0} max={8} value={promptWords} onChange={(e) => setPromptWords(Number(e.target.value))} style={{ width: 48 }} /></label>
       </div>
