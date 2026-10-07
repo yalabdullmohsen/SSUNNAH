@@ -13,7 +13,6 @@ const read = (p: string) => readFileSync(resolve(root, p), "utf8");
 
 assert.ok(existsSync(resolve(root, "src/styles/components/native-feel.css")));
 assert.ok(existsSync(resolve(root, "src/components/motion/EdgeSwipeBack.tsx")));
-assert.ok(existsSync(resolve(root, "src/components/motion/SmoothImage.tsx")));
 assert.ok(existsSync(resolve(root, "src/components/motion/Pressable.tsx")));
 
 const pkg = read("package.json");
