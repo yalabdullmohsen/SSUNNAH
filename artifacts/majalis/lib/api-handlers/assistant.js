@@ -1,4 +1,5 @@
 import { sendJson, endEmpty } from "../api/_http.mjs";
+import { checkRateLimit } from "../rate-limit.mjs";
 import {
   FOUNDER_SYSTEM_NOTE,
   resolveFounderQuestion,
@@ -965,14 +966,27 @@ function buildNoSourceAnswer() {
 
 // ─── معالج الطلب الرئيسي ──────────────────────────────────────────────────────
 
-/** يطابق علم الواجهة: معطّل للعامة حتى ASSISTANT_ENABLED=1 (أو VITE_ASSISTANT_ENABLED=1). */
+/**
+ * يطابق علم الواجهة. مفعّل افتراضيًا بقرار المالك (2026-10-07) بعد استيفاء الشروط:
+ * استناد RAG بمصادر وروابط داخلية، حجب الفتوى الشخصية، حدّ دقيقة + حدّ يومي، ولا مفاتيح في العميل.
+ * مفتاح الإيقاف الطارئ: ASSISTANT_DISABLED=1 أو ASSISTANT_ENABLED=0/false/no (أو VITE_ASSISTANT_ENABLED).
+ */
 function isAssistantPublicApiEnabled() {
-  const raw = String(
-    process.env.ASSISTANT_ENABLED || process.env.VITE_ASSISTANT_ENABLED || "",
-  )
-    .trim()
-    .toLowerCase();
-  return raw === "1" || raw === "true" || raw === "yes";
+  const flag = (v) => String(v ?? "").trim().toLowerCase();
+  if (["1", "true", "yes"].includes(flag(process.env.ASSISTANT_DISABLED))) return false;
+  const raw = flag(process.env.ASSISTANT_ENABLED || process.env.VITE_ASSISTANT_ENABLED);
+  return !["0", "false", "no", "off"].includes(raw);
+}
+
+/** حدّ يومي لكل عنوان (فوق حدّ الدقيقة في api-dispatch) — يمنع استنزاف الاستعلامات والإساءة. */
+const ASSISTANT_DAILY_LIMIT = 150;
+
+function assistantClientIp(req) {
+  return (
+    req.headers?.["x-forwarded-for"]?.toString().split(",")[0]?.trim() ||
+    req.socket?.remoteAddress ||
+    "unknown"
+  );
 }
 
 const ASSISTANT_PUBLICLY_DISABLED_REPLY =
@@ -1039,6 +1053,18 @@ async function handleAssistantRequest(req, res) {
   }
   if (userMessage.length > 2000) {
     sendJson(res, 400, { ok: false, message: "الرسالة طويلة جداً (الحد الأقصى 2000 حرف)." });
+    return;
+  }
+
+  const daily = await checkRateLimit(`assistant-daily:${assistantClientIp(req)}`, {
+    windowMs: 24 * 60 * 60_000,
+    max: ASSISTANT_DAILY_LIMIT,
+  });
+  if (!daily.allowed) {
+    sendJson(res, 429, {
+      ok: false,
+      message: "بلغتَ الحدّ اليومي لاستخدام المساعد. جرّب البحث الموثّق داخل سُنّة، أو عُد غدًا بإذن الله.",
+    });
     return;
   }
 
@@ -1134,9 +1160,10 @@ async function handleAssistantRequest(req, res) {
     }
   }
 
-  // 6. Anthropic — إجابة تعليمية عامة غير مسنَدة بمصادر محلية (بعد فشل الاستناد).
-  // لا تُوصف بأنها «مستندة» ولا تُصنَّف fiqh_answer، والتنبيه إلزامي.
-  if (hasAnthropicApiKey()) {
+  // 6. Anthropic — إجابة عامة غير مسنَدة. مُعطَّلة افتراضيًا: شرط المالك أن تُبنى الإجابات على RAG
+  // من محتوى التطبيق بمصادر وروابط داخلية فقط؛ لا توليد حرّ بلا استناد. تُفعَّل صراحةً بـ
+  // ASSISTANT_ALLOW_UNGROUNDED_LLM=1 (للتجارب فقط).
+  if (process.env.ASSISTANT_ALLOW_UNGROUNDED_LLM === "1" && hasAnthropicApiKey()) {
     const anthropicAnswer = await tryCallAnthropic(userMessage, conversationHistory);
     if (anthropicAnswer) {
       sendJson(res, 200, successPayload(anthropicAnswer, {
@@ -1156,7 +1183,14 @@ async function handleAssistantRequest(req, res) {
     sendJson(res, 200, successPayload(fallback, {
       safety_classification: "general_guidance",
       disclaimer: ISLAMIC_DISCLAIMER,
-      citations: [],
+      // رابط داخلي للمصدر: نتائج سُنّة الموثّقة لهذا السؤال (الجواب من قاعدة المعرفة المحلية المراجَعة).
+      citations: [
+        {
+          title: "اطّلع على المصادر الموثّقة لهذا السؤال في سُنّة",
+          href: `/search?q=${encodeURIComponent(userMessage.slice(0, 120))}`,
+          source_name: "قاعدة سُنّة المعرفية المراجَعة",
+        },
+      ],
       confidence: 0.4,
       grounded: false,
     }));

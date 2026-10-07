@@ -21,7 +21,8 @@ assert.equal(hrefHadith("bukhari:1"), "/hadith/bukhari:1");
 assert.equal(hrefHadith("n1"), "/hadith#n1");
 assert.equal(hrefHadith(null), "/hadith");
 
-assert.equal(isAssistantFeatureEnabled(), false);
+/* المساعد مفعّل افتراضيًا بقرار المالك (2026-10-07) — الإيقاف بعلم صريح فقط */
+assert.equal(isAssistantFeatureEnabled(), true);
 
 const personal = read("src/lib/quran-personal.ts");
 assert.match(personal, /enqueueSyncRecord/);
@@ -58,7 +59,7 @@ const app = read("src/App.tsx");
 assert.match(app, /assistant-feature-flag/);
 
 const registry = read("src/lib/feature-registry.ts");
-assert.match(registry, /id:\s*"assistant"[\s\S]*?status:\s*"coming-soon"/);
+assert.match(registry, /id:\s*"assistant"[\s\S]*?status:\s*"active"/);
 
 // ── إغلاقات P0 إضافية (تباين/محلّل/API/هوية/صلاة) ──
 const contrast = read("scripts/verify-color-contrast-gate.mjs");

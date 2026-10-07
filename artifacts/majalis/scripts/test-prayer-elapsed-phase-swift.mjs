@@ -10,6 +10,11 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+// ملفات Shared تستورد `os` (Apple فقط) فلا تُجمَّع على لينكس حتى لو وُجد swiftc (مشغّلات ubuntu تحمله) → macOS فقط.
+if (process.platform !== "darwin") {
+  console.log("test-prayer-elapsed-phase-swift: skipped (غير macOS)");
+  process.exit(0);
+}
 if (spawnSync("swiftc", ["--version"], { stdio: "ignore" }).status !== 0) {
   console.log("test-prayer-elapsed-phase-swift: skipped (no swiftc)");
   process.exit(0);

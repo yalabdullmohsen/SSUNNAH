@@ -56,8 +56,8 @@ export default function AssistantPage() {
             <p className="asp-hero__eyebrow">ذكاء اصطناعي · إرشاد علمي</p>
             <h1 className="assistant-title">المساعد العلمي</h1>
             <p className="assistant-intro">
-              اسأل في القرآن والسنة والفقه والعقيدة. نفضّل الإجابات المستندة إلى مصادر المنصة،
-              والفتوى الشخصية تُعرض على عالم مختص.
+              اسأل في القرآن والسنة والفقه والعقيدة. الإجابات مساعدة للتعلّم مبنية على مصادر المنصة
+              مع روابطها وليست فتوى؛ والمسائل الشخصية تُعرض على أهل العلم.
             </p>
           </div>
         </div>
@@ -92,7 +92,7 @@ export default function AssistantPage() {
 
       <footer className="asp-footer">
         <AlertTriangle size={13} className="inline ms-1" aria-hidden="true" />
-        الإجابات مولَّدة آليًا وتحتمل الخطأ، راجع أهل العلم في المسائل الشخصية الدقيقة.
+        الإجابات مساعدة للتعلّم وليست فتوى، وتحتمل الخطأ — راجع أهل العلم في المسائل الشخصية.
       </footer>
     </div>
     </DetailScreen>

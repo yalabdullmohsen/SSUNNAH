@@ -1,3 +1,4 @@
+/** @deprecated نظام قديم — استعمل `@/design-system` (مكوّنات sn-). لا استيراد جديد: بوابة scripts/ui-ratchet.mjs تفشل عند زيادة العدد. */
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { PageHero } from "./PageHero";

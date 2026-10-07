@@ -380,6 +380,8 @@ function PrayerAlertSchedulerBootstrap() {
         void ensureQuranDailyReminderScheduled();
       });
       resyncAdhkarReminders();
+      // مقاطع أذان iOS ونافذة 7 أيام: أعد الجدولة عند العودة للواجهة (يستمع لها AdhanSchedulerBootstrap).
+      window.dispatchEvent(new Event("majalis:boot-adhan-reschedule"));
     };
     const onVisible = () => {
       if (document.visibilityState === "visible") rescheduleOnForeground();
@@ -417,6 +419,8 @@ function PrayerAlertSchedulerBootstrap() {
           void mod.recheckPrayerAlertWindow(data, { force: true });
         });
         resyncAdhkarReminders();
+        // تغيّر اليوم أو المنطقة الزمنية: نافذة الأذان (7 أيام) تُعاد بمواقيت اليوم الجديد/المنطقة الجديدة.
+        window.dispatchEvent(new Event("majalis:boot-adhan-reschedule"));
       }
     };
     const clockId = window.setInterval(onClockTick, 60_000);
