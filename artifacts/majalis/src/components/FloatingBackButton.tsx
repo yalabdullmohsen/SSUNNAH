@@ -12,7 +12,7 @@ import {
   installFloatingLayerSync,
   shouldSuppressBackgroundFloating,
 } from "@/lib/floating-layer-manager";
-import { hasInPageBackChrome, isImmersiveChromePath } from "@/lib/immersive-chrome";
+import { isImmersiveChromePath } from "@/lib/immersive-chrome";
 import { normalizeNavPath } from "@/lib/navigation-back";
 import "@/styles/sunnah-identity-chrome-nav.css";
 
@@ -45,23 +45,14 @@ export function GlobalBackControlHost() {
   /** تبويب صلاة رئيسي — لا Floating Back (كان مصدر CLS ≈0.055 على الإنتاج) */
   const hideOnPrayer =
     path === "/prayer-times" || path.startsWith("/prayer-times/");
-  const hideOnAdhanSettings =
-    path === "/adhan-settings" || path.startsWith("/adhan-settings/");
-  /** صفحات قانونية بلا AppBack داخلي — إخفاء العائم صراحة (متوافق مع عقد AppBackButton) */
-  const hideOnLegalSupport = path === "/support" || path === "/contact";
-  /** Rule 6: prefer in-page AppBackButton — suppress unified floating host when page chrome owns back */
-  const hideOnInPageAppBack = hasInPageBackChrome(path);
-  const routeHide =
-    hideOnHome ||
-    hideOnMushaf ||
-    hideOnPrayer ||
-    hideOnAdhanSettings ||
-    hideOnLegalSupport ||
-    hideOnInPageAppBack;
+  /**
+   * قرار المالك (2026-10-07): الزر الدائري يرافق المستخدم في كل الأقسام ليسهل الرجوع —
+   * فلا يُخفى لوجود رجوع داخل الصفحة ولا في الإعدادات/الدعم؛ يُستثنى فقط: الرئيسية، المصحف الغامر،
+   * وتبويب الصلاة (CLS موثّق).
+   */
+  const routeHide = hideOnHome || hideOnMushaf || hideOnPrayer;
   const [modalHide, setModalHide] = useState(false);
-  /** Safety net: any mounted in-page AppBack (not the bar FAB) suppresses the host */
-  const [domInPageBack, setDomInPageBack] = useState(false);
-  const hideBack = routeHide || modalHide || domInPageBack;
+  const hideBack = routeHide || modalHide;
 
   useEffect(() => installFloatingLayerSync(), []);
 
@@ -69,18 +60,13 @@ export function GlobalBackControlHost() {
     if (routeHide) {
       document.documentElement.style.setProperty("--global-back-clearance", `0px`);
       document.documentElement.removeAttribute("data-global-back-visible");
-      setDomInPageBack(false);
       return;
     }
     let raf = 0;
     const sync = () => {
-      const inPage = Boolean(
-        document.querySelector('[data-app-back="1"]:not([data-fixed-back-bar="1"])'),
-      );
-      setDomInPageBack(inPage);
       const suppress = shouldSuppressBackgroundFloating();
       setModalHide(suppress);
-      if (suppress || inPage) {
+      if (suppress) {
         document.documentElement.removeAttribute("data-global-back-visible");
         document.documentElement.style.setProperty("--global-back-clearance", `0px`);
         return;
