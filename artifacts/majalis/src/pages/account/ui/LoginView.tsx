@@ -1,3 +1,4 @@
+import { checkPasswordBreached, PASSWORD_BREACHED_AR } from "@/lib/password-breach-check";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useAuth } from "@/components/AuthProvider";
@@ -229,6 +230,11 @@ export default function LoginPage() {
         const validationError = validateRegister();
         if (validationError) {
           setError(validationError);
+          return;
+        }
+        const breach = await checkPasswordBreached(password);
+        if (breach.breached) {
+          setError(PASSWORD_BREACHED_AR);
           return;
         }
         const { data, error: signUpError } = await register(email.trim(), password, fullName.trim());
