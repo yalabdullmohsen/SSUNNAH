@@ -237,7 +237,6 @@ export const SECTION_MERGE_REDIRECTS: ReadonlyArray<{ from: string; to: string; 
   { from: "/about-us", to: "/about", note: "من نحن → عن سُنّة" },
   { from: "/aqidah", to: "/tawhid", note: "عقيدة قديم → التوحيد/العقيدة" },
   { from: "/prayer", to: "/prayer-times", note: "صلاة مختصر → مواقيت الصلاة" },
-  { from: "/quran/recitation-test-ai", to: "/quran-hub", note: "تسميع الذكاء الاصطناعي (ملغى) → مركز القرآن" },
   { from: "/learn", to: "/lessons", note: "دروس التعلّم (ملغاة) → الدروس" },
 ];
 

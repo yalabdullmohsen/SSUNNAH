@@ -36,6 +36,7 @@ export default function QuranHubScreen() {
           <ListRow icon="tafsir" title={S.home_02} description={S.quranHub_08} href="/tafsir" />
           <ListRow icon="tilawa" title={S.quranHub_09} description={S.quranHub_10} href="/quran-hub/tilawa" />
           <ListRow icon="lightbulb" title={S.quranHub_11} description={S.quranHub_12} href="/quran-sciences" />
+          <ListRow icon="tilawa" title={S.quranHub_20} description={S.quranHub_21} href="/quran/recitation-test-ai" />
         </ListGroup>
         <Segmented<"surahs" | "juz"> label={S.quranHub_13} value={view} onChange={setView} options={[{ value: "surahs", label: S.quranHub_14 }, { value: "juz", label: S.quranHub_15 }]} />
         {view === "surahs" ? (

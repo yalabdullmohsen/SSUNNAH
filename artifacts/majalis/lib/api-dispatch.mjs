@@ -25,6 +25,12 @@ const assistantRateLimit = createRateLimiter({
   keyPrefix: "assistant",
 });
 
+const recitationTranscribeRateLimit = createRateLimiter({
+  windowMs: 60_000,
+  max: 6,
+  keyPrefix: "recitation-transcribe",
+});
+
 const transcribeRateLimit = createRateLimiter({
   windowMs: 60_000,
   max: 8,
@@ -266,6 +272,16 @@ export const API_ROUTES = [
   { prefix: "/api/push/subscribe", module: "./api-handlers/push-subscribe.js", allowGet: true, exact: true, rateLimit: pushSubscribeRateLimit },
   { prefix: "/api/test-anthropic", module: "./api-handlers/test-anthropic.js", allowGet: true },
   { prefix: "/api/transcribe", module: "./api-handlers/transcribe.js", rateLimit: transcribeRateLimit },
+  {
+    prefix: "/api/recitation-transcribe",
+    module: "./api-handlers/recitation-transcribe.js",
+    exact: true,
+    allowGet: true,
+    rateLimit: recitationTranscribeRateLimit,
+    // تسجيل صوتي قصير base64 (≤2MB خامًا ≈ 2.8MB مرمّزًا) + مهلة المزوّد
+    maxBodyBytes: 3_000_000,
+    timeoutMs: 28_000,
+  },
   {
     prefix: "/api/narration/tts",
     module: "./api-handlers/narration-tts.js",
