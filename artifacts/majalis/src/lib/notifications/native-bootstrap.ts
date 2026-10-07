@@ -78,6 +78,12 @@ export async function attachLocalNotificationListeners(): Promise<void> {
         onAdhanSegmentNotificationInteraction(event.notification?.extra),
       );
       recordNativeNotification(event.notification);
+      if (event.actionId === "stop-sound" || event.actionId === "snooze-5") {
+        void import("@/lib/adhan-notification-actions").then(({ handleAdhanAction }) =>
+          handleAdhanAction(event.actionId, event.notification ?? {}),
+        );
+        return;
+      }
       // زرّا «تم» و«بعد 15 دقيقة» لتذكير الأذكار لا يفتحان التطبيق على صفحة.
       if (event.actionId === "done" || event.actionId === "snooze") {
         void import("@/lib/adhkar-reminders").then(({ handleAdhkarAction }) =>
@@ -97,6 +103,9 @@ export async function attachLocalNotificationListeners(): Promise<void> {
         );
       }
     });
+    void import("@/lib/adhan-notification-actions").then(({ registerAdhanActionTypes }) =>
+      registerAdhanActionTypes(LocalNotifications).catch(() => {}),
+    );
     _listenersAttached = true;
     void import("@/lib/adhkar-reminders").then(({ registerAdhkarActionTypes }) =>
       registerAdhkarActionTypes(LocalNotifications),
