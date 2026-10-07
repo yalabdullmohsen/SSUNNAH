@@ -780,3 +780,5 @@ html:root body :is(
 .sn-picker__label { display: block; margin-block-end: var(--sn-s1); font: var(--sn-fw-bold) var(--sn-type-tag) / var(--sn-lh-caption) var(--font-ui); color: var(--sn-text-secondary); }
 
 .sn-stat, .sn-picker { box-shadow: var(--sn-e1); }
+/* لا زر رجوع عائم: يمنع احتياط 4.5rem في الصفحات القديمة */
+:root { --global-back-clearance: 0px; }

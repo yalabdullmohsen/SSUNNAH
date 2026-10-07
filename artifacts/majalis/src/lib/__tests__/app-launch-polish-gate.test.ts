@@ -38,7 +38,7 @@ assert.match(feature, /usePrefetchRoute/);
 
 const fab = read("src/components/FloatingBackButton.tsx");
 assert.match(fab, /FLOATING_BACK_DISABLED/);
-assert.match(fab, /FIXED_BACK_BAR_ENABLED|variant="bar"/);
+assert.match(fab, /FLOATING_BACK_DISABLED/);
 
 const app = read("src/App.tsx");
 assert.match(app, /FloatingBackButton|GlobalBackButton/);

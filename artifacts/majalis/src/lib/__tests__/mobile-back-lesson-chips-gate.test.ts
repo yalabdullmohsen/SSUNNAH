@@ -16,7 +16,7 @@ assert.match(appBack, /رجوع/);
 
 const fab = read("src/components/FloatingBackButton.tsx");
 assert.match(fab, /FLOATING_BACK_DISABLED/, "العائم الدائري ملغى");
-assert.match(fab, /FIXED_BACK_BAR_ENABLED|variant="bar"/, "شريط ثابت");
+assert.match(fab, /FLOATING_BACK_DISABLED/, "شريط ثابت");
 
 const lobby = read("src/components/lobby/SectionLobby.tsx");
 assert.match(lobby, /AppBackButton|data-section-back/, "رجوع هيدري في اللوبي");

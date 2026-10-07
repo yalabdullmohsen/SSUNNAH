@@ -56,10 +56,8 @@ export function AppBackButton({
   const lastBackAtRef = useRef(0);
   const BACK_LOCK_MS = 420;
 
-  /* المصحف: لا يظهر زر الرجوع العام أبدًا — حتى مع autoHideFloating=false */
-  if (variant === "floating" || variant === "bar") {
-    if (isImmersiveChromePath(location)) return null;
-  }
+  /* NavigationBar (AppTopBar) هو زر الرجوع الوحيد؛ هذا الزر يظهر فقط حيث لا شريط علوي: المصحف الغامر والمواقيت والدخول */
+  if (!(isImmersiveChromePath(location) || isPrayerTimesPath(location) || isAuthStandalonePath(location))) return null;
 
   if ((variant === "floating" || variant === "bar") && autoHideFloating) {
     const path = normalizeNavPath(location);

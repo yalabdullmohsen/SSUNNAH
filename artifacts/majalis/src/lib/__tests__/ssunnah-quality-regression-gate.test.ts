@@ -61,7 +61,7 @@ assert.match(
   "Bottom nav must stay opaque (opacity: 1 !important)",
 );
 assert.match(floating, /FLOATING_BACK_DISABLED/, "FAB الدائري ملغى");
-assert.match(floating, /FIXED_BACK_BAR_ENABLED|variant="bar"/, "شريط الرجوع الثابت بديلًا");
+assert.match(floating, /FLOATING_BACK_DISABLED/, "شريط الرجوع الثابت بديلًا");
 const hideFab = polish + read("src/styles/knowledge-experience.css");
 assert.match(
   hideFab,

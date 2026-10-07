@@ -1,3 +1,4 @@
+import { goBackOrFallback } from "@/lib/navigation-back";
 import { useCallback, useEffect, useState } from "react";
 import { useLocation, useRoute } from "wouter";
 import { Button, Card, ErrorState, EmptyState, IconButton, ListGroup, ListRow, NavigationBar, SkeletonCard, useToast } from "@/design-system";
@@ -57,7 +58,7 @@ export default function LessonDetailScreen() {
     <div className="sn-screen" data-testid="lesson-detail-screen">
       <NavigationBar
         title={lesson?.title ?? S.lessonDetail_02}
-        leading={<IconButton icon="chevron" label={S.lessonDetail_03} onClick={() => (window.history.length > 1 ? window.history.back() : navigate("/lessons"))} className="sn-back" />}
+        leading={<IconButton icon="chevron" label={S.lessonDetail_03} onClick={() => goBackOrFallback(window.location.pathname, "/lessons")} className="sn-back" />}
         trailing={lesson ? <IconButton icon={saved ? "bookmarkFilled" : "bookmark"} label={saved ? S.content_01 : S.content_09} onClick={() => setSaved(toggleLocalBookmark({ contentType: "lesson", contentId: lesson.id, title: lesson.title, href: `/lessons/${lesson.id}` }))} /> : null}
       />
       <div className="sn-container sn-stack sn-stack--lg">

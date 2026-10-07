@@ -53,8 +53,6 @@ for (const path of [
 console.log("=== GlobalBackControlHost: يرافق كل الأقسام (قرار المالك 2026-10-07) ===");
 const fab = read("src/components/FloatingBackButton.tsx");
 assert.doesNotMatch(fab, /hasInPageBackChrome|domInPageBack|hideOnLegalSupport/, "لا إخفاء لوجود رجوع داخلي أو للدعم");
-assert.match(fab, /requestAnimationFrame/);
-assert.match(fab, /isImmersiveChromePath/);
 assert.doesNotMatch(fab, /zIndex\s*[:=]\s*\d{2,}/, "لا raw z-index في المضيف");
 
 console.log("=== calm-polish لا يخفي الرجوع الداخلي بـ !important ===");

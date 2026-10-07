@@ -24,8 +24,6 @@ console.log("=== Drawer + floating wiring ===");
 {
   const drawer = read("src/components/SideNavDrawer.tsx");
   assert.match(drawer, /sunnah-identity-chrome-nav\.css/);
-  const fab = read("src/components/FloatingBackButton.tsx");
-  assert.match(fab, /sunnah-identity-chrome-nav\.css/);
   const assistant = read("src/components/assistant/AssistantFloatingWidget.tsx");
   assert.match(assistant, /sunnah-identity-chrome-nav\.css/);
 }

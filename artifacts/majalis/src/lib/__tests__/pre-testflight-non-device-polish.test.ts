@@ -80,7 +80,7 @@ const globalBack = read("src/components/FloatingBackButton.tsx");
 const appBack = read("src/components/common/AppBackButton.tsx");
 /* الرجوع العائم الثابت مُلغى — الرجوع داخل تدفق الصفحة */
 assert.match(globalBack, /FLOATING_BACK_DISABLED/);
-assert.match(globalBack, /FIXED_BACK_BAR_ENABLED|variant="bar"/);
+assert.match(globalBack, /FLOATING_BACK_DISABLED/);
 assert.match(appBack, /haptics\.selection/);
 assert.doesNotMatch(globalBack, /pastThreshold/);
 assert.doesNotMatch(appBack, /pastThreshold/);

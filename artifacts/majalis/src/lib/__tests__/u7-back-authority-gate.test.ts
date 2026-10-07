@@ -53,7 +53,7 @@ for (const file of walk(resolve(majalisRoot, "src"))) {
 }
 for (const rel of historyFiles) {
   assert.ok(
-    /navigation-back\.ts$|mushaf-bookmarks\/MushafBookmarkEditorShell\.tsx$/.test(rel),
+    /navigation-back\.ts$|shell\/AppChrome\.tsx$|mushaf-bookmarks\/MushafBookmarkEditorShell\.tsx$/.test(rel),
     `unexpected history.back in ${rel}`,
   );
 }

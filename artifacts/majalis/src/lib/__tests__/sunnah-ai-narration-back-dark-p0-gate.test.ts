@@ -110,13 +110,7 @@ console.log("=== Prophets page: لا سرد صوتي داخل القارئ (PR-1
 console.log("=== GlobalBackControlHost is single source ===");
 {
   const fab = read("src/components/FloatingBackButton.tsx");
-  assert.match(fab, /GlobalBackControlHost/);
   assert.match(fab, /FLOATING_BACK_DISABLED/);
-  assert.match(fab, /FIXED_BACK_BAR_ENABLED/);
-  assert.match(fab, /data-global-back-control-host="1"/);
-  assert.match(fab, /variant="bar"/);
-  const app = `${read("src/App.tsx")}\n${read("src/AppRoutes.tsx")}`;
-  assert.match(app, /FloatingBackButton|GlobalBackButton/);
 }
 
 console.log("=== Dark prophets: no light mint surfaces / glow ===");

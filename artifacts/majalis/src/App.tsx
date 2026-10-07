@@ -49,13 +49,6 @@ const SafeAreaDebugOverlay = lazyWithRetry(
   "SafeAreaDebugOverlay",
 );
 /** الكروم الجديد (TabBar بخمسة تبويبات + شريط علوي) من نظام التصميم — مدمج مباشرة بلا Suspense */
-const GlobalBackButton = lazyWithRetry(
-  () =>
-    import("@/components/FloatingBackButton").then((m) => ({
-      default: m.FloatingBackButton,
-    })),
-  "FloatingBackButton",
-);
 const ComingSoonDialog = lazyWithRetry(
   () => import("@/components/ComingSoonDialog").then((m) => ({ default: m.ComingSoonDialog })),
   "ComingSoonDialog",
@@ -1101,11 +1094,6 @@ function AppShellInner() {
       {!hideSiteChrome && !isNative && <DeferredSiteFooter />}
       {!hideSiteChrome && <DeferredAssistantWidget />}
       {/* أدوات المشرف تُحمَّل من AdminShell فقط — لا استيراد في الهيكل العام */}
-      {!onAuthStandalone && (
-        <Suspense fallback={null}>
-          <GlobalBackButton />
-        </Suspense>
-      )}
       {!hideSiteChrome && !isNative && PwaInstallBanner && (
         <Suspense fallback={null}>
           <PwaInstallBanner />

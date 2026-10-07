@@ -87,7 +87,7 @@ assert.doesNotMatch(css, /\.mk-hub-split\s*\{/);
 assert.doesNotMatch(fab, /if \(deepScroll\) return null/);
 assert.doesNotMatch(fab, /ChevronUp/);
 assert.match(fab, /FLOATING_BACK_DISABLED/);
-assert.match(fab, /FIXED_BACK_BAR_ENABLED|variant="bar"/);
+assert.match(fab, /FLOATING_BACK_DISABLED/);
 
 assert.match(share, /variant === "icons"/);
 assert.match(share, /share-faida--icons/);

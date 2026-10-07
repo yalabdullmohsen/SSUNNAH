@@ -55,8 +55,6 @@ assert.match(css, /kx-hero--hadith/);
 assert.match(index, /KnowledgeLayout/);
 
 assert.match(fab, /FLOATING_BACK_DISABLED/, "السهم العائم الدائري ملغى");
-assert.match(fab, /FIXED_BACK_BAR_ENABLED/, "شريط الرجوع الثابت مفعّل");
-assert.match(fab, /variant="bar"/, "الرجوع العام بشريط ثابت");
 
 assert.match(fiqh, /data-kx-kind/, "درس الفقه يميّز أنواع الأقسام");
 assert.match(fiqh, /AppBackButton/, "درس الفقه برجوع مضمّن");

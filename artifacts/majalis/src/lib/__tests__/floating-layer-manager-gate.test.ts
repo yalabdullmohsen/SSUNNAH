@@ -20,7 +20,6 @@ const repoRoot = resolve(root, "../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
 const scroll = read("src/components/ScrollToTop.tsx");
-const back = read("src/components/FloatingBackButton.tsx");
 const assistant = read("src/components/assistant/AssistantFloatingWidget.tsx");
 const sync = read("src/components/FloatingLayerSync.tsx");
 const app = read("src/App.tsx");
@@ -29,8 +28,6 @@ const bookmarkShell = read("src/features/mushaf-bookmarks/MushafBookmarkEditorSh
 const manager = read("src/lib/floating-layer-manager.ts");
 
 assert.match(scroll, /shouldSuppressBackgroundFloating|applyFloatingLayerCssVars/);
-assert.match(back, /getFloatingBottomOffset/);
-assert.match(back, /installFloatingLayerSync/);
 assert.match(assistant, /installFloatingLayerSync/);
 assert.match(assistant, /shouldSuppressBackgroundFloating/);
 assert.match(sync, /installFloatingLayerSync/);
