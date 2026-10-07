@@ -6,6 +6,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { TASMEE_SCOPE_NOTE } from "../tasmee/copy.ts";
 import { TASMEE_UNCLEAR_HINT, TasmeeSession } from "../tasmee/session.ts";
 import type { TasmeeAlignedWord, TasmeeEngineApi, TasmeePartialEvent, TasmeeSessionDiagnostics } from "../tasmee/types.ts";
 
@@ -98,5 +99,11 @@ assert.equal(report.words[2]!.id.split(":").length, 3, "معرّف page:line:pos
   assert.equal(r.latency, null);
   assert.deepEqual(f.calls, ["start", "stop"]);
 }
+
+// وصف النطاق: أخطاء الحفظ على مستوى الكلمة فقط، لا حركات ولا تجويد
+assert.match(TASMEE_SCOPE_NOTE, /أخطاء الحفظ على مستوى الكلمة/);
+assert.match(TASMEE_SCOPE_NOTE, /\(كلمة خاطئة أو ناقصة\)/);
+assert.doesNotMatch(TASMEE_SCOPE_NOTE, /آية أخرى|انتقال/, "كشف الانتقال غير مبني بعد: لا يُذكر في الوصف");
+assert.match(TASMEE_SCOPE_NOTE, /ولا يصحّح الحركات ولا أحكام التجويد/);
 
 console.log("tasmee-session.test.ts: ok");

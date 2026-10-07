@@ -11,6 +11,7 @@ import {
   isTasmeeNativeAvailable,
   tasmeeNative,
 } from "@/lib/tasmee/engine-plugin";
+import { TASMEE_SCOPE_NOTE } from "@/lib/tasmee/copy";
 import { TasmeeSession, type TasmeeSessionReport } from "@/lib/tasmee/session";
 import type { TasmeeRefWord } from "@/lib/tasmee/matcher";
 import type { TasmeeDeviceInfo } from "@/lib/tasmee/types";
@@ -133,6 +134,7 @@ export default function TasmeeDiagnosticsPage() {
     <div dir="rtl" style={{ padding: 16, display: "grid", gap: 12, maxWidth: 640, margin: "0 auto" }} data-testid="tasmee-diagnostics">
       <h1 style={{ fontSize: 20, margin: 0 }}>قياس التسميع (Debug/TestFlight)</h1>
       <p style={{ margin: 0, opacity: 0.8 }}>المعالجة على الجهاز بالكامل. لا يُرسَل صوت. الصوت في الذاكرة فقط أثناء الجلسة لمحاذاة الكلمات ثم يُفرَّغ.</p>
+      <p style={{ margin: 0 }}>{TASMEE_SCOPE_NOTE}</p>
       <section>
         <strong>الجهاز:</strong>{" "}
         {device ? `${device.model} · iOS ${device.osVersion} · ${device.physicalMemoryMB}MB · حرارة ${device.thermalState}${device.lowPowerMode ? " · توفير طاقة" : ""} · نموذج ${device.loaded ? "محمَّل" : "غير محمَّل"}` : "—"}

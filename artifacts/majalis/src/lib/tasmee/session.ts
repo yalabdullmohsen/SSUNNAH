@@ -8,8 +8,9 @@ import type { TasmeeAlignedWord, TasmeeEngineApi, TasmeePartialEvent, TasmeeSess
 /** عدد الكلمات القادمة التي تُمرَّر نصًّا إرشاديًّا (prompt) للنموذج. 0 = بلا prompt. */
 export const DEFAULT_PROMPT_WORDS = 5;
 
-/** رسالة التلميح الهادئ عند كلام بلا نص (لا يوقف التسميع). */
-export const TASMEE_UNCLEAR_HINT = "لم يتضح الصوت، قرّب الهاتف أو قلّل الضوضاء";
+import { TASMEE_UNCLEAR_HINT } from "./copy";
+
+export { TASMEE_UNCLEAR_HINT };
 
 export type TasmeeSessionOptions = {
   params?: Partial<TasmeeMatchParams>;
