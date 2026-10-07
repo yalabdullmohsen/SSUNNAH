@@ -44,8 +44,6 @@ function PrayerChipLive({ compact }: { compact: boolean }) {
     prayerName: cd.next.name,
     remainingSeconds: Math.max(0, Math.round(cd.remainingMs / 1000)),
     sinceSeconds: cd.sinceSeconds,
-    nextPrayerName: cd.graceNextSlot?.name ?? null,
-    nextRemainingSeconds: cd.graceNextSeconds,
   });
   const label = compact ? copy.compactText : copy.text;
   return (

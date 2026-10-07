@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,7 +10,8 @@ import {
 } from "@/lib/prayer-times";
 import { subscribeSecondTick } from "@/lib/second-tick";
 import { subscribePrayerDayRollover } from "@/lib/prayer-day-rollover";
-import { formatAdhanRemainingPhrase } from "@/lib/prayer-ticker-copy";
+import { formatAdhanRemainingPhrase, formatElapsedSincePhrase } from "@/lib/prayer-ticker-copy";
+import { getElapsedWindowMinutes, subscribeElapsedWindow } from "@/lib/prayer-elapsed-window";
 
 function kuwaitNowParts() {
   const parts = new Intl.DateTimeFormat("en-GB", {
@@ -41,8 +42,6 @@ function getRemainingForPrayer(prayerMinutes: number): string {
   return formatAdhanRemainingPhrase(getRemainingSecondsForPrayer(prayerMinutes));
 }
 
-const GRACE_MINUTES = 30;
-
 function getActualNextPrayer(obligatory: PrayerSlot[], currentKey: string | null): PrayerSlot | null {
   if (!currentKey) return null;
   const idx = obligatory.findIndex((p) => p.key === currentKey);
@@ -56,6 +55,7 @@ function useCompactPrayer() {
   const [countdown, setCountdown] = useState("");
   const [sinceSeconds, setSinceSeconds] = useState<number | null>(null);
   const [graceNextHms, setGraceNextHms] = useState<string | null>(null);
+  const [windowSeconds, setWindowSeconds] = useState(() => getElapsedWindowMinutes() * 60);
 
   useEffect(() => {
     fetchPrayerTimes().then(setData).catch(() => {});
@@ -67,10 +67,14 @@ function useCompactPrayer() {
     });
   }, []);
 
+  const windowRef = useRef(getElapsedWindowMinutes());
+  useEffect(() => subscribeElapsedWindow((m) => { windowRef.current = m; }), []);
+
   useEffect(() => {
     if (!data?.prayers?.length) return;
     return subscribeSecondTick(() => {
-      const cd = computePrayerCountdown(data.prayers);
+      const cd = computePrayerCountdown(data.prayers, undefined, { elapsedWindowMinutes: windowRef.current });
+      setWindowSeconds(cd.elapsedWindowSeconds);
       setNextKey(cd.next?.key ?? null);
       setCountdown(formatAdhanRemainingPhrase(Math.max(0, Math.round(cd.remainingMs / 1000))));
       setSinceSeconds(cd.sinceSeconds);
@@ -82,11 +86,11 @@ function useCompactPrayer() {
     });
   }, [data]);
 
-  return { data, nextKey, countdown, sinceSeconds, graceNextHms };
+  return { data, nextKey, countdown, sinceSeconds, graceNextHms, windowSeconds };
 }
 
 export function HomeCompactPrayer() {
-  const { data, nextKey, countdown, sinceSeconds, graceNextHms } = useCompactPrayer();
+  const { data, nextKey, countdown, sinceSeconds, graceNextHms, windowSeconds } = useCompactPrayer();
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
   const [selectedCountdown, setSelectedCountdown] = useState<string>("");
 
@@ -111,15 +115,14 @@ export function HomeCompactPrayer() {
     (p: PrayerSlot) => p.obligatory || p.key === "Sunrise"
   );
 
-  // الصلاة التي أذّنت للتو (خلال نافذة 30 دقيقة)
+  // الصلاة التي أذّنت للتو (خلال نافذة «مضى على الأذان»: إقامة المستخدم أو 30 دقيقة)
   const justRangPrayer = sinceSeconds != null ? obligatory.find((p) => p.key === nextKey) : null;
   // الصلاة التالية الفعلية (التي لم تأتِ بعد)
   const actualNextPrayer = sinceSeconds != null
     ? getActualNextPrayer(obligatory, nextKey)
     : obligatory.find((p) => p.key === nextKey);
   const selectedPrayer = selectedKey ? obligatory.find((p) => p.key === selectedKey) : null;
-  const sinceMinutes = sinceSeconds != null ? Math.floor(sinceSeconds / 60) : 0;
-  const graceProgress = sinceSeconds != null ? Math.min(100, (sinceSeconds / (GRACE_MINUTES * 60)) * 100) : 0;
+  const graceProgress = sinceSeconds != null ? Math.min(100, (sinceSeconds / Math.max(1, windowSeconds)) * 100) : 0;
 
   return (
     <div className="hcp-strip" dir="rtl" role="complementary" aria-label="مواقيت الصلاة">
@@ -140,8 +143,7 @@ export function HomeCompactPrayer() {
             <span className="hcp-strip__countdown hcp-strip__countdown--elapsed" aria-live="polite">
               <span className="hcp-since-pill">
                 <span className="hcp-since-pill__text">
-                  مضى على أذان {justRangPrayer.name}:{" "}
-                  <span dir="ltr">{sinceMinutes} دقيقة</span>
+                  مضى {formatElapsedSincePhrase(sinceSeconds)} على أذان {justRangPrayer.name}
                 </span>
                 <span
                   className="hcp-since-pill__bar"

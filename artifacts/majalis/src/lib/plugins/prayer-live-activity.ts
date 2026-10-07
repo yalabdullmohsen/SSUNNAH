@@ -99,7 +99,7 @@ export async function markPrayerLiveActivityEntered(): Promise<boolean> {
   return updatePrayerLiveActivity({
     phase: "active",
     hasStarted: true,
-    statusLabel: "حان الآن",
+    statusLabel: "مضى على الأذان",
   });
 }
 

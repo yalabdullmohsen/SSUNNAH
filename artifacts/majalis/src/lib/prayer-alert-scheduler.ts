@@ -16,6 +16,7 @@ import {
 } from "./prayer-times";
 import { getActivePrayerLocation } from "./prayer-location-prefs";
 import { loadPrayerAlertPrefs, LIVE_ACTIVITY_LINGER_MINUTES } from "./prayer-alert-preferences";
+import { getElapsedWindowMinutes } from "./prayer-elapsed-window";
 import {
   getEffectiveMuezzinId,
   getEffectivePlaybackMode,
@@ -221,7 +222,7 @@ async function fireLiveActivityStart(slot: PrayerSlot, prayerEpoch: number, loca
   if (started) _liveActivityActiveForKey = slot.key;
 }
 
-/** بعد نافذة active: completed (الصلاة التالية من الجدول) ثم إنهاء — بلا إعادة حساب مواقيت. */
+/** نافذة active = «مضى على الأذان» (إقامة المستخدم أو 30 دقيقة، نفس مصدر الويب والودجت)؛ بعدها completed (الصلاة التالية من الجدول) ثم إنهاء — بلا إعادة حساب مواقيت. */
 async function fireLiveActivityEnter(
   current: PrayerSlot,
   following: { slot: PrayerSlot; epoch: number } | null,
@@ -252,7 +253,7 @@ async function fireLiveActivityEnter(
         _liveActivityActiveForKey = null;
       }
     })();
-  }, LIVE_ACTIVITY_LINGER_MINUTES * 60_000);
+  }, getElapsedWindowMinutes() * 60_000);
   _liveActivityTimers.push(t);
 }
 

@@ -18,6 +18,7 @@ import {
 } from "./sunnah-shared-data";
 import { isIOS, isNative } from "../capacitor-utils";
 import { derivePrayerWindow } from "../widget-data/prayer-window";
+import { getElapsedWindowMinutes } from "../prayer-elapsed-window";
 
 const KEY_TO_ARABIC: Record<string, string> = {
   Fajr: "الفجر",
@@ -144,6 +145,7 @@ export function buildSharedPrayerSnapshotPayload(
     currentPrayerNameAr: window.currentPrayer?.nameAr,
     currentPrayerStartedAtEpochMs: window.currentPrayerStartedAt ?? undefined,
     nextTransitionAtEpochMs: window.nextTransitionAt ?? undefined,
+    elapsedWindowMinutes: getElapsedWindowMinutes(),
     calculationDate: todayISO,
     calculationMethodIdentifier: payload.method || undefined,
     permissionState: payload.city ? "configured" : "REQUIRES_CONFIGURATION",
