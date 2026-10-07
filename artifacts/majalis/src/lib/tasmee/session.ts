@@ -2,8 +2,9 @@
  * جلسة «تسميع»: تربط الإضافة الأصلية (نص جزئي) بالمطابِق (كشف الكلمات)، وتُرجع تقريرًا للقياس.
  * المطابقة هنا في JS؛ الإضافة تُرسل النص الجزئي فقط. كل شيء على الجهاز.
  */
+import { HallucinationGuard } from "./hallucination-guard";
 import { paramsForStrictness, type TasmeeStrictness } from "./levels";
-import { TasmeeMatcher, type TasmeeMatchParams, type TasmeeRefWord, type TasmeeWordEvent, type TasmeeWordState } from "./matcher";
+import { TasmeeMatcher, type TasmeeExtraEvent, type TasmeeMatchParams, type TasmeeRefWord, type TasmeeWordEvent, type TasmeeWordState } from "./matcher";
 import type { TasmeeAlignedWord, TasmeeEngineApi, TasmeePartialEvent, TasmeeSessionDiagnostics } from "./types";
 
 /**
@@ -50,6 +51,8 @@ export type TasmeeSessionReport = {
   partials: number;
   /** مرات ظهور التلميح في الجلسة (ms من بدء التسجيل على ساعة الجلسة لا تتوفر؛ انظر diagnostics.unclearHintsAtSec) */
   unclearHints: number;
+  /** كلمات زائدة نُبِّه عليها (مستوى «دقيق»؛ 0 في غيره) */
+  extras: number;
   diagnostics: TasmeeSessionDiagnostics;
 };
 
@@ -81,11 +84,14 @@ export class TasmeeSession {
   private readonly events: TasmeeWordEvent[] = [];
   private readonly listeners = new Set<(e: TasmeeWordEvent) => void>();
   private readonly hintListeners = new Set<(message: string) => void>();
+  private readonly extraListeners = new Set<(e: TasmeeExtraEvent) => void>();
+  private extrasCount = 0;
   private hints = 0;
   private unsubs: Array<() => void> = [];
   private partials = 0;
   private lastPrompt = "";
   private active = false;
+  private readonly guard = new HallucinationGuard();
 
   constructor(
     private readonly engine: TasmeeEngineApi,
@@ -98,6 +104,12 @@ export class TasmeeSession {
   onWord(cb: (e: TasmeeWordEvent) => void): () => void {
     this.listeners.add(cb);
     return () => this.listeners.delete(cb);
+  }
+
+  /** كلمة زائدة مثبَّتة (مستوى «دقيق» فقط). */
+  onExtra(cb: (e: TasmeeExtraEvent) => void): () => void {
+    this.extraListeners.add(cb);
+    return () => this.extraListeners.delete(cb);
   }
 
   /** تلميح هادئ («لم يتضح الصوت…») حين يُرصد كلام ولا يعود نص؛ التسميع يستمر. */
@@ -128,7 +140,13 @@ export class TasmeeSession {
   private handlePartial(p: TasmeePartialEvent): void {
     if (!this.active) return;
     this.partials += 1;
+    // نص مكرر حرفيًا أو أول نافذة بعد صمت لا يكشف شيئًا (انظر hallucination-guard)
+    if (this.guard.decide(p.text, p.finishedAtMs) !== "use") return;
     const evs = this.matcher.ingest(p.text, p.finishedAtMs);
+    for (const x of this.matcher.drainExtras()) {
+      this.extrasCount += 1;
+      this.extraListeners.forEach((l) => l(x));
+    }
     for (const e of evs) {
       this.events.push(e);
       this.listeners.forEach((l) => l(e));
@@ -191,6 +209,7 @@ export class TasmeeSession {
         : null,
       partials: this.partials,
       unclearHints: this.hints,
+      extras: this.extrasCount,
       diagnostics,
     };
   }

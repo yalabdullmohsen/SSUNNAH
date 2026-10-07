@@ -19,6 +19,15 @@ export type TasmeeWordEvent = {
   timeMs: number;
 };
 
+/** كلمة زائدة سُمعت بين كلمتين متتاليتين من النص (مستوى «دقيق» فقط، وبعد ثباتها في نتيجتين). */
+export type TasmeeExtraEvent = {
+  /** فهرس آخر كلمة مرجعية قبل الزيادة */
+  afterIndex: number;
+  /** الكلمة المسموعة (مطبَّعة) */
+  heard: string;
+  timeMs: number;
+};
+
 export type TasmeeMatchParams = {
   /** كم كلمة قادمة تُفحص (3–5) */
   lookahead: number;
@@ -32,6 +41,14 @@ export type TasmeeMatchParams = {
   thrMid: number;
   /** أدنى تشابه لاعتبار كلمة مسموعة «خطأ» لا «متجاوزة» */
   wrongSim: number;
+  /** كشف الكلمة الزائدة (مغلق افتراضيًا؛ يُفعَّل في مستوى «دقيق» فقط بعد ثبوت انعدام التنبيهات الخاطئة على التلاوات السليمة) */
+  detectExtra: boolean;
+  /** عدد النتائج المتتالية اللازمة لتثبيت كلمة زائدة قبل التنبيه */
+  extraStableHyps: number;
+  /** أقل طول (بعد التطبيع) لكلمة تُعدّ زائدة (الحشو القصير يُهمَل) */
+  extraMinLen: number;
+  /** كلمة مسموعة تسبق مباشرةً الكلمة الصحيحة وتشبهها بهذا القدر فأكثر تُعدّ محاولة قبل تصحيح ذاتي لا زيادة */
+  extraSelfCorrectSim: number;
 };
 
 export const DEFAULT_TASMEE_PARAMS: TasmeeMatchParams = {
@@ -41,6 +58,10 @@ export const DEFAULT_TASMEE_PARAMS: TasmeeMatchParams = {
   thrLong: 0.75,
   thrMid: 0.66,
   wrongSim: 0.4,
+  detectExtra: false,
+  extraStableHyps: 2,
+  extraMinLen: 3,
+  extraSelfCorrectSim: 0.3,
 };
 
 export class TasmeeMatcher {
@@ -50,6 +71,9 @@ export class TasmeeMatcher {
   private states: TasmeeWordState[];
   private nextIdx = 0;
   private stable = new Map<number, number>();
+  private extraSeen = new Map<string, number>();
+  private extraReported = new Set<string>();
+  private pendingExtras: TasmeeExtraEvent[] = [];
 
   constructor(ref: readonly TasmeeRefWord[], params: Partial<TasmeeMatchParams> = {}) {
     this.ref = ref;
@@ -79,6 +103,49 @@ export class TasmeeMatcher {
     this.states = this.ref.map(() => "pending");
     this.nextIdx = 0;
     this.stable.clear();
+    this.extraSeen.clear();
+    this.extraReported.clear();
+    this.pendingExtras = [];
+  }
+
+  /** الكلمات الزائدة المثبَّتة منذ آخر استدعاء (فارغة ما لم يُفعَّل detectExtra). */
+  drainExtras(): TasmeeExtraEvent[] {
+    const out = this.pendingExtras;
+    this.pendingExtras = [];
+    return out;
+  }
+
+  /**
+   * زيادة = كلمة مسموعة بين كلمتين مرجعيتين متتاليتين (محاذاتان متجاورتان) لا تشبه أي كلمة قريبة من النص:
+   * فتُستثنى إعادة كلمة/مقطع سبق (تردد) والتصحيح الذاتي (تشبه كلمة مجاورة) والحشو القصير. تُثبَّت بنتيجتين متتاليتين.
+   */
+  private detectExtras(toks: string[], matched: Array<{ tok: number; word: number }>, timeMs: number): void {
+    const seenNow = new Set<string>();
+    const matchedToks = new Set(matched.map((m) => m.tok));
+    for (let k = 0; k + 1 < matched.length; k++) {
+      const a = matched[k]!, b = matched[k + 1]!;
+      if (b.word !== a.word + 1 || b.tok - a.tok < 2) continue;
+      for (let ti = a.tok + 1; ti < b.tok; ti++) {
+        if (matchedToks.has(ti)) continue;
+        const tok = toks[ti]!;
+        if (tok.length < this.params.extraMinLen) continue;
+        const lo = Math.max(0, a.word - 10), hi = Math.min(this.ref.length, b.word + 10);
+        let similarToText = false;
+        for (let j = lo; j < hi && !similarToText; j++) similarToText = this.accepts(tok, j) || bestWordSimilarity(tok, this.forms[j]!) >= this.params.wrongSim + 0.2;
+        if (similarToText) continue;
+        // محاولة تصحيح ذاتي: الكلمة المسموعة تسبق الصحيحة مباشرةً وتشبهها (ولو قليلًا) → ليست زيادة
+        if (ti === b.tok - 1 && bestWordSimilarity(tok, this.forms[b.word]!) >= this.params.extraSelfCorrectSim) continue;
+        const key = `${a.word}|${tok}`;
+        seenNow.add(key);
+        const n = (this.extraSeen.get(key) ?? 0) + 1;
+        this.extraSeen.set(key, n);
+        if (n >= this.params.extraStableHyps && !this.extraReported.has(key)) {
+          this.extraReported.add(key);
+          this.pendingExtras.push({ afterIndex: a.word, heard: tok, timeMs });
+        }
+      }
+    }
+    for (const key of [...this.extraSeen.keys()]) if (!seenNow.has(key)) this.extraSeen.delete(key);
   }
 
   private accepts(token: string, idx: number): boolean {
@@ -144,6 +211,7 @@ export class TasmeeMatcher {
     if (!toks.length || this.nextIdx >= this.ref.length) return [];
 
     const matched = this.align(toks);
+    if (this.params.detectExtra) this.detectExtras(toks, matched, timeMs);
 
     const candidates = new Set(matched.map((m) => m.word).filter((w) => w >= this.nextIdx));
     for (const k of [...this.stable.keys()]) if (!candidates.has(k)) this.stable.set(k, 0);

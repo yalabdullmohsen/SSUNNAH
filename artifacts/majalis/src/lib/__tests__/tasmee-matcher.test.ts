@@ -175,4 +175,37 @@ console.log("=== مستويات الصرامة: متسامح · عادي · دق
   }
 }
 
+console.log("=== الكلمة الزائدة: «دقيق» فقط، بتثبيت نتيجتين، ولا تُحتسب الإعادة ولا الحشو ===");
+{
+  const inserted = [...spoken.slice(0, 3), "كثيرا", ...spoken.slice(3, 6)].join(" ");
+  const strict = new TasmeeMatcher(ref, paramsForStrictness("strict"));
+  strict.ingest(inserted, 100);
+  assert.deepEqual(strict.drainExtras(), [], "نتيجة واحدة لا تكفي للتثبيت");
+  strict.ingest(inserted + " " + spoken[6], 200);
+  const ex = strict.drainExtras();
+  assert.equal(ex.length, 1);
+  assert.equal(ex[0]!.afterIndex, 2);
+  assert.equal(ex[0]!.heard, "كثيرا");
+  strict.ingest(inserted + " " + spoken[6] + " " + spoken[7], 300);
+  assert.deepEqual(strict.drainExtras(), [], "تُبلَّغ مرة واحدة");
+  // المستويان الآخران لا يكشفان الزيادة
+  for (const lvl of ["lenient", "normal"] as const) {
+    const m = new TasmeeMatcher(ref, paramsForStrictness(lvl));
+    m.ingest(inserted, 100); m.ingest(inserted + " " + spoken[6], 200);
+    assert.deepEqual(m.drainExtras(), [], `${lvl}: بلا كشف زيادة`);
+  }
+  // إعادة كلمة مجاورة (تردد) وتصحيح ذاتي وحشو قصير ليست زيادة، حتى في «دقيق»
+  const cases: Record<string, string> = {
+    "إعادة كلمة": [...spoken.slice(0, 4), spoken[3]!, ...spoken.slice(4, 6)].join(" "),
+    "إعادة مقطع": [...spoken.slice(0, 4), ...spoken.slice(2, 4), ...spoken.slice(4, 6)].join(" "),
+    "تصحيح ذاتي": [...spoken.slice(0, 3), "الركب", spoken[3]!, ...spoken.slice(4, 6)].join(" "),
+    "حشو قصير": [...spoken.slice(0, 3), "يا", ...spoken.slice(3, 6)].join(" "),
+  };
+  for (const [name, text] of Object.entries(cases)) {
+    const m = new TasmeeMatcher(ref, paramsForStrictness("strict"));
+    m.ingest(text, 100); m.ingest(text + " " + spoken[6], 200);
+    assert.deepEqual(m.drainExtras().map((x) => x.heard), [], `${name}`);
+  }
+}
+
 console.log("tasmee-matcher.test.ts: ok");

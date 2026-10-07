@@ -24,8 +24,14 @@ export const TASMEE_STRICTNESS_LABELS: Record<TasmeeStrictness, string> = {
 export const TASMEE_STRICTNESS_DESCRIPTIONS: Record<TasmeeStrictness, string> = {
   lenient: "يتسامح مع اختلاف حرفين في الكلمة الطويلة (لضجيج التفريغ الصوتي)؛ لا يعدّ الخطأ إلا ما بَعُد كثيرًا عن الكلمة المطلوبة.",
   normal: "يقبل اختلاف حرف واحد في الكلمة الطويلة، ويعدّ الكلمة المبدّلة أو الناقصة خطأً.",
-  strict: "لا يقبل إلا ما طابق الكلمة تقريبًا تامًا؛ أي اختلاف في حرف من كلمة قصيرة أو متوسطة يُعدّ خطأً، وأي كلمة مبدّلة قريبة الشكل تُعدّ خطأً.",
+  strict: "لا يقبل إلا ما طابق الكلمة تقريبًا تامًا؛ أي اختلاف في حرف من كلمة قصيرة أو متوسطة يُعدّ خطأً، وأي كلمة مبدّلة قريبة الشكل تُعدّ خطأً، وينبّه على الكلمة الزائدة.",
 };
+
+/**
+ * كشف الكلمة الزائدة: مفتوح في مستوى «دقيق» فقط. شرط الفتح تحقق: صفر زيادة في التنبيهات الخاطئة على التلاوات السليمة
+ * (قياس base على 13 تلاوة/804 كلمة بمستوى دقيق: 0 كلمة زائدة خاطئة؛ ومحاكاة حقن كلمة زائدة في نصوص التفريغ: 85 من 101 كُشفت). إن ظهرت تنبيهات خاطئة تُغلق.
+ */
+export const TASMEE_EXTRA_DETECTION_ENABLED = true;
 
 export const TASMEE_LEVEL_PARAMS: Record<TasmeeStrictness, Pick<TasmeeMatchParams, "thrLong" | "thrMid" | "wrongSim">> = {
   lenient: { thrLong: 0.6, thrMid: 0.66, wrongSim: 0.3 },
@@ -38,5 +44,5 @@ export function isTasmeeStrictness(v: unknown): v is TasmeeStrictness {
 }
 
 export function paramsForStrictness(level: TasmeeStrictness): Partial<TasmeeMatchParams> {
-  return { ...TASMEE_LEVEL_PARAMS[level] };
+  return { ...TASMEE_LEVEL_PARAMS[level], detectExtra: level === "strict" && TASMEE_EXTRA_DETECTION_ENABLED };
 }
