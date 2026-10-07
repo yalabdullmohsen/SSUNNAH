@@ -14,6 +14,7 @@ import {
 } from "@/lib/floating-layer-manager";
 import { isImmersiveChromePath } from "@/lib/immersive-chrome";
 import { normalizeNavPath } from "@/lib/navigation-back";
+import { screenOwnsNavBar } from "@/design-system/shell/tabs";
 import "@/styles/sunnah-identity-chrome-nav.css";
 
 function syncBackLayoutVars(host: HTMLElement | null) {
@@ -40,7 +41,8 @@ export function GlobalBackControlHost() {
   const hostRef = useRef<HTMLDivElement>(null);
   const [location] = useLocation();
   const path = normalizeNavPath(location);
-  const hideOnHome = path === "/";
+  /** الشاشات الرئيسية للتبويبات (الرئيسية، القرآن، الدروس، العبادة، المزيد، الأقسام، البحث) */
+  const hideOnHome = path === "/" || screenOwnsNavBar(path);
   const hideOnMushaf = isImmersiveChromePath(path);
   /** تبويب صلاة رئيسي — لا Floating Back (كان مصدر CLS ≈0.055 على الإنتاج) */
   const hideOnPrayer =
@@ -103,6 +105,29 @@ export function GlobalBackControlHost() {
       mo.disconnect();
     };
   }, [routeHide]);
+
+  /* يختفي عند التمرير للأسفل ويظهر عند التمرير للأعلى */
+  useEffect(() => {
+    const root = document.documentElement;
+    root.removeAttribute("data-global-back-hidden");
+    if (routeHide) return;
+    const last = new WeakMap<EventTarget, number>();
+    const onScroll = (e: Event) => {
+      const el = e.target;
+      const top = el instanceof Element ? el.scrollTop : window.scrollY;
+      const prev = last.get(el ?? window) ?? top;
+      const delta = top - prev;
+      if (Math.abs(delta) < 8) return;
+      last.set(el ?? window, top);
+      if (delta > 0 && top > 80) root.setAttribute("data-global-back-hidden", "1");
+      else if (delta < 0 || top <= 80) root.removeAttribute("data-global-back-hidden");
+    };
+    window.addEventListener("scroll", onScroll, { passive: true, capture: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll, { capture: true });
+      root.removeAttribute("data-global-back-hidden");
+    };
+  }, [routeHide, path]);
 
   useEffect(() => {
     if (hideBack) {

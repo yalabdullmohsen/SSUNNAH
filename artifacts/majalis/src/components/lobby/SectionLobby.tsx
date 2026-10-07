@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { FeaturedSectionCard } from "@/components/sections/FeaturedSectionCard";
 import { SectionCard } from "@/components/sections/SectionCard";
 import { QuickActionsQuad } from "@/components/lobby/QuickActionsQuad";
-import { AppBackButton } from "@/components/common/AppBackButton";
 import type { LobbyChip, LobbyGroup, LobbyId, LobbyItem, LobbyPrimary, LobbyQuadItem } from "@/config/section-lobbies";
 import type { SectionDef } from "@/config/sections.registry";
 import { cn } from "@/lib/utils";
@@ -70,13 +69,6 @@ export function SectionLobby({
     >
       <div data-kx-layout="library" className="section-lobby__shot" data-lobby-shot="1">
         <header className="section-lobby__head section-lobby__head--bare">
-          <AppBackButton
-            variant="lobby"
-            fallbackHref="/"
-            className="section-lobby__back"
-            aria-label="رجوع"
-            data-section-back="1"
-          />
           <h1
             className={cn(
               "section-lobby__title",

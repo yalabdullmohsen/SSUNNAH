@@ -54,7 +54,7 @@ assert.doesNotMatch(read("src/styles/knowledge-experience.css"), /fixed-back-bar
 assert.match(backCss, /position:\s*fixed/);
 assert.match(backCss, /right:\s*max\(0\.75rem/, "يمين الشاشة فعليًا");
 assert.match(backCss, /border-radius:\s*var\(--radius-pill/, "دائري");
-assert.match(backCss, /width:\s*44px;[\s\S]{0,40}height:\s*44px/, "44×44 دائرة");
+assert.match(backCss, /width:\s*36px;[\s\S]{0,40}height:\s*36px/, "36×36 دائرة");
 assert.match(backCss, /right:\s*max\(0\.75rem,\s*var\(--inset-right/, "يمين فعليًا");
 assert.match(backCss, /bottom:\s*var\(\s*--global-back-bottom/, "أسفل فوق الشريط السفلي");
 assert.doesNotMatch(
@@ -97,12 +97,8 @@ assert.match(legacy, /FloatingBackButton/);
 const app = `${read("src/App.tsx")}\n${read("src/AppRoutes.tsx")}`;
 assert.match(app, /FloatingBackButton|GlobalBackButton/);
 
-const hero = read("src/components/topic/SectionHero.tsx");
-assert.match(hero, /AppBackButton|section-hero__back|goBackOrFallback/, "هيرو القسم يعرض رجوعًا هيدريًا");
-assert.match(hero, /showBack|withBack/);
-
-const lobby = read("src/components/lobby/SectionLobby.tsx");
-assert.match(lobby, /AppBackButton|data-section-back/, "اللوبي يعرض رجوعًا هيدريًا");
-assert.match(lobby, /data-section-back/);
+for (const f of ["src/components/topic/SectionHero.tsx", "src/components/lobby/SectionLobby.tsx"]) {
+  assert.doesNotMatch(read(f), /AppBackButton/, "لا رجوع داخل البطاقة: " + f);
+}
 
 console.log("floating-back-button.test.ts: ok (unified bottom back fab)");

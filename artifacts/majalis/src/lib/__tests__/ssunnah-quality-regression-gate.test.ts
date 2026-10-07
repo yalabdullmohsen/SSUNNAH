@@ -74,19 +74,10 @@ assert.match(floating, /FLOATING_BACK_DISABLED/, "FloatingBackButton: FAB disabl
 assert.match(floating, /FIXED_BACK_BAR_ENABLED/, "Fixed back bar enabled");
 assert.match(floating, /AppBackButton/, "FloatingBackButton still exports AppBackButton");
 assert.match(appBack, /onPointerDown/, "Back must fire on pointer down (instant)");
-assert.match(lobby, /AppBackButton|data-section-back/, "اللوبي يعرض رجوعًا هيدريًا");
-assert.match(
-  sectionHero,
-  /AppBackButton|section-hero__back|goBackOrFallback/,
-  "SectionHero renders header back (FAB disabled)",
-);
+assert.doesNotMatch(lobby, /AppBackButton/, "اللوبي بلا رجوع داخلي");
+assert.doesNotMatch(sectionHero, /AppBackButton/, "SectionHero بلا رجوع داخلي");
 assert.doesNotMatch(sectionHero, /variant=["']floating["']/, "SectionHero must not use floating variant");
-assert.match(
-  pageHero,
-  /AppBackButton|showBack|page-hero-mj__back/,
-  "PageHero renders integrated header back (no overlay FAB covering content)",
-);
-assert.match(pageHero, /showBack\s*=\s*true|showBack = true/, "showBack افتراضي للصفحات الداخلية");
+assert.doesNotMatch(pageHero, /AppBackButton|page-hero-mj__back/, "PageHero بلا رجوع داخلي");
 assert.doesNotMatch(pageHero, /variant=["']floating["']/, "PageHero must not use floating variant");
 
 /* ── 3) Filters / chips / centered last card ── */
