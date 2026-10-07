@@ -44,6 +44,29 @@
 
 ---
 
+## ١-ب) ملفات الأذان الصوتية غير الموثّقة — الإجراء المطلوب
+
+الملفات المولَّدة داخليًا (`prayer-alert` · `alarm-clear` · `soft-ring` · `short-ring` · `prayer_default/soft/quiet/clear`) موثّقة في `public/audio/notifications/README.md` وغير مشمولة. المقاطع المشتقة (`.caf`) تتبع إجراء مصدرها.
+
+| الملف | المصدر | الإجراء المطلوب |
+|---|---|---|
+| `public/sounds/adhan/makkah-general.m4a` | توريد داخلي بلا إثبات حقوق | طلب إذن |
+| `public/sounds/adhan/makkah-fajr.mp3` | توريد داخلي بلا إثبات حقوق | طلب إذن |
+| `public/sounds/adhan/egypt-general.m4a` | توريد داخلي بلا إثبات حقوق | طلب إذن |
+| `public/sounds/adhan/aqsa-general.mp3` | توريد داخلي بلا إثبات حقوق | طلب إذن |
+| `public/sounds/adhan/takbeerat-short.mp3` | توريد داخلي بلا إثبات حقوق | استبدال |
+| `ios/App/App/Sounds/adhan-short-makkah.caf` · `adhan-short-makkah-fajr.caf` · `prayer_makkah.caf` | مشتق من مقطعَي مكة | طلب إذن |
+| `ios/App/App/Sounds/adhan-seq-makkah-01…04.caf` | مشتق من مقاطع مكة | طلب إذن |
+| `ios/App/App/Sounds/adhan-short-egypt.caf` · `prayer_egypt.caf` | مشتق من `egypt-general` | طلب إذن |
+| `ios/App/App/Sounds/adhan-short-aqsa.caf` · `prayer_aqsa.caf` | مشتق من `aqsa-general` | طلب إذن |
+| `ios/App/App/Sounds/adhan-short-takbeerat.caf` · `prayer_takbeerat.caf` | مشتق من `takbeerat-short` | استبدال |
+
+> `field` / `field-full` (`adhan-field*.m4a` و`adhan-short-field*.caf`) **موثّقان** CC0-1.0 من Wikimedia (`docs/store-release/THIRD_PARTY_NOTICES.md` · `docs/mobile/ADHAN_AUDIO_AUDIT.md`) فلا إجراء مطلوب ولا حذف.
+>
+> المرشّح CC0 «Adhan in Istanbul» (`docs/audio-rights/evidence/cc0-adhan-istanbul-2026-10-01`) مرفوض جودةً؛ لا يصلح بديلًا.
+
+---
+
 ## ٢) مكتبات برمجية — سياسة CI
 
 **مسموح:** MIT, Apache-2.0, BSD-*, ISC, 0BSD, Unlicense, CC0, BlueOak, MPL-2.0, OFL-1.1, LGPL-* (ربط ديناميكي فقط), وأي ترخيص مزدوج يتضمن أحد التساهليات أعلاه.

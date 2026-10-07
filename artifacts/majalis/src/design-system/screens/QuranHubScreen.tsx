@@ -40,6 +40,7 @@ export default function QuranHubScreen() {
           {isHifzPathEnabled() ? (
             <ListRow icon="bookmark" title={S.quranHub_18} description={S.quranHub_19} href="/hifz-path" />
           ) : null}
+          <ListRow icon="tilawa" title={S.quranHub_20} description={S.quranHub_21} href="/quran/recitation-test-ai" />
         </ListGroup>
         <Segmented<"surahs" | "juz"> label={S.quranHub_13} value={view} onChange={setView} options={[{ value: "surahs", label: S.quranHub_14 }, { value: "juz", label: S.quranHub_15 }]} />
         {view === "surahs" ? (
