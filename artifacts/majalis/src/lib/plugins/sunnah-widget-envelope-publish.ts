@@ -5,13 +5,12 @@
 import { isIOS, isNative } from "@/lib/capacitor-utils";
 import {
   DAILY_FAIDA_POOL,
-  getDailyAyah,
   getDailyDhikr,
   getDailyFaida,
-  getDailyHadith,
   getDayIndex,
   pickDailyItem,
 } from "@/lib/daily-content";
+import { formatHadithAttribution, getWidgetDailyAyah, getWidgetDailyHadith } from "@/lib/widget-daily-pool";
 import { DAILY_TICKER_DHIKR } from "@/lib/daily-ticker-dhikr";
 import { resolveTimeOfDay } from "@/lib/daily-context";
 import { getTodayProgress } from "@/lib/daily-progress";
@@ -183,9 +182,9 @@ export function buildSunnahWidgetEnvelope(
   const ramadan = daysUntilRamadan(now, tz);
   const timeOfDay = resolveTimeOfDay(now.getHours() + now.getMinutes() / 60);
   const adhkarMap = WIDGET_ADHKAR_BY_TIME[timeOfDay] ?? WIDGET_ADHKAR_BY_TIME.duha;
-  const ayah = getDailyAyah(now);
+  const ayah = getWidgetDailyAyah(now);
   const dhikr = getDailyDhikr(now);
-  const hadith = getDailyHadith(now);
+  const hadith = getWidgetDailyHadith(now);
   const faidah = DAILY_FAIDA_POOL.length > 0 ? getDailyFaida(now) : null;
   const dua = safeDailyDua(now);
   const lastPage = loadLastPageSync();
@@ -447,7 +446,7 @@ export function buildSunnahWidgetEnvelope(
     contentSpotlightPayload: {
       schemaVersion: 1,
       hadithText: hadith.text,
-      hadithSource: hadith.source,
+      hadithSource: formatHadithAttribution(hadith),
       hadithPath: "/hadith",
       faidahText: faidah?.text || "افتح سُنّة لعرض الفائدة",
       faidahSource: faidah?.source || faidah?.author_name || null,
