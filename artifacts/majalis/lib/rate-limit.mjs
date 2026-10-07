@@ -80,20 +80,21 @@ export function getTrustedClientIp(req) {
 
 const getClientIp = getTrustedClientIp;
 
-function inMemoryCheck(key, windowMs, max) {
+function inMemoryCheck(key, windowMs, max, cost = 1) {
   const now = Date.now();
   const entry = buckets.get(key);
 
   if (!entry || now >= entry.resetAt) {
-    buckets.set(key, { count: 1, resetAt: now + windowMs });
-    return { allowed: true, remaining: max - 1, resetAt: now + windowMs };
+    if (cost > max) return { allowed: false, remaining: 0, resetAt: now + windowMs };
+    buckets.set(key, { count: cost, resetAt: now + windowMs });
+    return { allowed: true, remaining: max - cost, resetAt: now + windowMs };
   }
 
-  if (entry.count >= max) {
-    return { allowed: false, remaining: 0, resetAt: entry.resetAt };
+  if (entry.count + cost > max) {
+    return { allowed: false, remaining: Math.max(0, max - entry.count), resetAt: entry.resetAt };
   }
 
-  entry.count += 1;
+  entry.count += cost;
   return { allowed: true, remaining: max - entry.count, resetAt: entry.resetAt };
 }
 
@@ -119,7 +120,8 @@ function getUpstashRedis() {
   }
 }
 
-export async function checkRateLimit(key, { windowMs = 60_000, max = 20 } = {}) {
+/** cost: وحدات تُستهلك دفعة واحدة (مثل ثواني الصوت)؛ الافتراضي 1 لطلب واحد. */
+export async function checkRateLimit(key, { windowMs = 60_000, max = 20, cost = 1 } = {}) {
   const redis = getUpstashRedis();
   if (redis) {
     try {
@@ -128,7 +130,7 @@ export async function checkRateLimit(key, { windowMs = 60_000, max = 20 } = {}) 
         limiter: Ratelimit.slidingWindow(max, `${Math.ceil(windowMs / 1000)} s`),
         prefix: "majalis",
       });
-      const result = await limiter.limit(key);
+      const result = cost > 1 ? await limiter.limit(key, { rate: cost }) : await limiter.limit(key);
       return {
         allowed: result.success,
         remaining: result.remaining,
@@ -169,7 +171,7 @@ export async function checkRateLimit(key, { windowMs = 60_000, max = 20 } = {}) 
     };
   }
 
-  const mem = inMemoryCheck(key, windowMs, max);
+  const mem = inMemoryCheck(key, windowMs, max, cost);
   return { ...mem, backend: "memory" };
 }
 

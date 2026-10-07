@@ -7,6 +7,9 @@ import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { fmp4, oggOpus, wav, webm } from "./fixtures/audio-fixtures.ts";
+const { probeAudio } = await import("../../../lib/audio-duration.mjs");
+
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 const surahJson = (n: number) =>
@@ -118,37 +121,37 @@ console.log("=== خدمة التفريغ: حدود وخصوصية ===");
     await handler({ method, headers: { "x-forwarded-for": ip, ...extraHeaders }, body: body ?? {} }, res);
     return { status: cap.status ?? res.statusCode, ...(cap.payload ?? {}) } as Record<string, unknown> & { status: number };
   };
-  const audio = Buffer.alloc(5000, 1).toString("base64");
+  const audio = wav(8).toString("base64");
 
   assert.equal((await call("GET")).configured, false);
-  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000, consent: true })).status, 503, "بلا مفتاح: غير مفعّلة بصدق");
+  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/wav", durationMs: 8000, consent: true })).status, 503, "بلا مفتاح: غير مفعّلة بصدق");
   process.env.GROQ_API_KEY = "test-key";
   assert.equal((await call("GET")).configured, true);
   assert.equal((await call("POST", { consent: true })).status, 400);
   assert.equal((await call("POST", { audioBase64: audio, mimeType: "video/mp4", durationMs: 8000, consent: true })).status, 415, "صيغ غير صوتية مرفوضة");
-  assert.equal((await call("POST", { audioBase64: Buffer.alloc(100).toString("base64"), mimeType: "audio/webm", durationMs: 8000, consent: true })).status, 400, "قصير جدًا");
-  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 51_000, consent: true })).status, 400, "أطول من 60ث");
+  assert.equal((await call("POST", { audioBase64: Buffer.alloc(100).toString("base64"), mimeType: "audio/wav", durationMs: 8000, consent: true })).status, 400, "قصير جدًا");
+  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/wav", durationMs: 51_000, consent: true })).status, 400, "أطول من 60ث");
   assert.equal(
-    (await call("POST", { audioBase64: Buffer.alloc(MAX_AUDIO_BYTES + 5000, 1).toString("base64"), mimeType: "audio/webm", durationMs: 8000, consent: true })).status,
+    (await call("POST", { audioBase64: Buffer.alloc(MAX_AUDIO_BYTES + 5000, 1).toString("base64"), mimeType: "audio/wav", durationMs: 8000, consent: true })).status,
     413,
   );
-  const ok = await call("POST", { audioBase64: audio, mimeType: "audio/webm;codecs=opus", durationMs: 8000, consent: true });
+  const ok = await call("POST", { audioBase64: audio, mimeType: "audio/wav", durationMs: 8000, consent: true });
   assert.equal(ok.status, 200);
   assert.equal(ok.transcript, "قل هو الله احد");
   assert.equal(calls.length, 1);
   assert.equal(calls[0]!.form?.get("model"), "whisper-large-v3");
   assert.equal(calls[0]!.form?.get("language"), "ar");
   assert.equal(calls[0]!.form?.has("prompt"), false, "لا نمرّر النص المتوقَّع للمزوّد فيُخفي الأخطاء");
-  for (let i = 0; i < DAILY_LIMIT; i++) await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000, consent: true }, "203.0.113.50");
-  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000, consent: true }, "203.0.113.50")).status, 429, "الحدّ اليومي");
+  for (let i = 0; i < DAILY_LIMIT; i++) await call("POST", { audioBase64: audio, mimeType: "audio/wav", durationMs: 8000, consent: true }, "203.0.113.50");
+  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/wav", durationMs: 8000, consent: true }, "203.0.113.50")).status, 429, "الحدّ اليومي");
   // الموافقة: بلا consent لا يصل شيء للمزوّد
   const before = calls.length;
-  const noConsent = await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000 });
+  const noConsent = await call("POST", { audioBase64: audio, mimeType: "audio/wav", durationMs: 8000 });
   assert.equal(noConsent.status, 403, "بلا موافقة: مرفوض");
   assert.equal(noConsent.code, "consent_required");
-  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000, consent: "yes" })).status, 403, "الموافقة قيمة true حصرًا");
+  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/wav", durationMs: 8000, consent: "yes" })).status, 403, "الموافقة قيمة true حصرًا");
   assert.equal(calls.length, before, "لا استدعاء للمزوّد دون موافقة");
-  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/webm", consent: true })).status, 400, "المدة إلزامية");
+  assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/wav", consent: true })).status, 400, "المدة إلزامية");
   // رفض الحجم المُعلَن قبل قراءة الجسم (الحارس يرفض دون لمس الدفق)
   {
     const { readJsonBodyLimited } = await import("../../../lib/api-security-guard.mjs");
@@ -162,19 +165,60 @@ console.log("=== خدمة التفريغ: حدود وخصوصية ===");
     assert.equal(r.ok, false);
     assert.equal(r.error, "payload_too_large");
     assert.equal(touched, false, "لم يُقرأ الجسم");
-    assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000, consent: true }, "198.51.100.21", { "content-length": String(MAX_REQUEST_BYTES + 1) })).status, 413, "الحدّ في المعالج أيضًا");
+    assert.equal((await call("POST", { audioBase64: audio, mimeType: "audio/wav", durationMs: 8000, consent: true }, "198.51.100.21", { "content-length": String(MAX_REQUEST_BYTES + 1) })).status, 413, "الحدّ في المعالج أيضًا");
   }
   // IP موثوق: تزييف x-forwarded-for لا يتجاوز الحدّ عند وجود ترويسة المنصة
   {
-    const body = { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000, consent: true };
+    const body = { audioBase64: audio, mimeType: "audio/wav", durationMs: 8000, consent: true };
     for (let i = 0; i < DAILY_LIMIT; i++) await call("POST", body, `spoof-${i}`, { "x-real-ip": "192.0.2.77" });
     assert.equal((await call("POST", body, "spoof-new", { "x-real-ip": "192.0.2.77" })).status, 429, "تدوير x-forwarded-for لا يفتح حدًّا جديدًا");
     assert.equal((await call("POST", body, "198.51.100.99", { "x-vercel-forwarded-for": "192.0.2.78" })).status, 200, "عميل آخر موثوق يمرّ");
   }
+
+  // المدة الفعلية على الخادم: قارئ الترويسات لكل صيغة
+  {
+    const near = (a: number | undefined, b: number, tol = 60) => assert.ok(a !== undefined && Math.abs(a - b) <= tol, `${a} ≈ ${b}`);
+    near(probeAudio(wav(12))?.durationMs, 12_000);
+    near(probeAudio(oggOpus(9))?.durationMs, 9_000);
+    near(probeAudio(webm(23))?.durationMs, 23_000);
+    near(probeAudio(fmp4(14))?.durationMs, 14_000);
+    assert.equal(probeAudio(webm(23))?.format, "webm");
+    assert.equal(probeAudio(Buffer.alloc(5000, 1)), null, "ملف عشوائي لا صيغة له");
+  }
+  const goodBody = (mimeType: string, durationMs: number, buf: Buffer) => ({ audioBase64: buf.toString("base64"), mimeType, durationMs, consent: true });
+  // كل صيغة حقيقية متوقَّعة تمرّ بمدتها الفعلية
+  for (const [mimeType, buf] of [["audio/webm", webm(10)], ["audio/ogg", oggOpus(10)], ["audio/mp4", fmp4(10)], ["audio/wav", wav(10)]] as const) {
+    assert.equal((await call("POST", goodBody(mimeType, 10_000, buf), "198.51.100.30")).status, 200, `${mimeType} حقيقي يمرّ`);
+  }
+  // مدة فعلية أطول من المُعلَنة (بأكثر من 3ث) تُرفض
+  {
+    const lie = await call("POST", goodBody("audio/wav", 8_000, wav(20)), "198.51.100.31");
+    assert.equal(lie.status, 400, "فعلي 20ث ومُعلَن 8ث");
+    assert.equal((await call("POST", goodBody("audio/webm", 10_000, webm(30)), "198.51.100.31")).status, 400, "webm أطول من المُعلَن");
+    assert.equal((await call("POST", goodBody("audio/wav", 20_000, wav(11)), "198.51.100.31")).status, 400, "الفارق في الاتجاه الآخر أيضًا");
+    assert.equal((await call("POST", goodBody("audio/wav", 49_000, wav(55)), "198.51.100.31")).status, 400, "فعلي أكبر من 50ث");
+    assert.equal((await call("POST", goodBody("audio/wav", 10_000, wav(12)), "198.51.100.32")).status, 200, "فارق ≤ 3ث مقبول");
+  }
+  // صيغة مزيفة: امتداد/mime يخالف النوع الحقيقي، أو بايتات عشوائية
+  {
+    assert.equal((await call("POST", goodBody("audio/webm", 8_000, wav(8)), "198.51.100.33")).status, 415, "WAV معلَن webm");
+    assert.equal((await call("POST", goodBody("audio/mp4", 8_000, Buffer.alloc(5000, 1)), "198.51.100.33")).status, 415, "بايتات عشوائية");
+    assert.equal((await call("POST", goodBody("audio/ogg", 8_000, Buffer.concat([Buffer.from("MZ"), Buffer.alloc(5000, 1)])), "198.51.100.33")).status, 415, "تنفيذي متنكّر");
+    assert.equal((await call("POST", goodBody("audio/mpeg", 8_000, wav(8)), "198.51.100.33")).status, 415, "mp3/aac الخام غير متوقَّع");
+  }
+  // سقف الثواني الإجمالي: يُستهلك بالفعلي (≥10ث) وتجاوزه يعيد asr_capacity
+  {
+    process.env.RECITATION_GLOBAL_DAILY_SECONDS = "5";
+    const cap = await call("POST", goodBody("audio/wav", 8_000, wav(8)), "198.51.100.34");
+    assert.equal(cap.status, 503, "10ث مفوترة > سقف 5ث");
+    assert.equal(cap.code, "asr_capacity");
+    delete process.env.RECITATION_GLOBAL_DAILY_SECONDS;
+    assert.match(read("lib/api-handlers/recitation-transcribe.js"), /Math\.ceil\(probe\.durationMs \/ 1000\)[\s\S]{0,400}cost: seconds/, "الاستهلاك بالمدة الفعلية لا المُعلَنة");
+  }
   // السقف اليومي الإجمالي يحمي الرصيد
   {
     process.env.RECITATION_GLOBAL_DAILY_LIMIT = "1";
-    const cap = await call("POST", { audioBase64: audio, mimeType: "audio/webm", durationMs: 8000, consent: true }, "198.51.100.150");
+    const cap = await call("POST", { audioBase64: audio, mimeType: "audio/wav", durationMs: 8000, consent: true }, "198.51.100.150");
     assert.equal(cap.status, 503, "تجاوز السقف الإجمالي");
     assert.equal(cap.code, "asr_capacity");
     delete process.env.RECITATION_GLOBAL_DAILY_LIMIT;
@@ -191,7 +235,7 @@ console.log("=== الأمان والتوجيه ===");
 {
   assert.match(read("lib/api-security-registry.mjs"), /"\/api\/recitation-transcribe":\s*"PUBLIC_WRITE"/);
   const d = read("lib/api-dispatch.mjs");
-  assert.match(d, /prefix: "\/api\/recitation-transcribe"[\s\S]{0,260}maxBodyBytes: 3_000_000/);
+  assert.match(d, /prefix: "\/api\/recitation-transcribe"[\s\S]{0,260}maxBodyBytes: 1_500_000/);
   assert.match(d, /recitationTranscribeRateLimit = createRateLimiter\(\{[\s\S]{0,80}max: 6/, "حدّ الدقيقة");
 }
 

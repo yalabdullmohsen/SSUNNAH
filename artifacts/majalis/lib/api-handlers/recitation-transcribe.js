@@ -10,33 +10,44 @@
  * GET: فحص تهيئة رخيص بلا استدعاء خارجي (تعرضه الواجهة بصدق).
  * POST: { audioBase64, mimeType, durationMs, consent: true } → { ok, transcript }.
  * الموافقة: لا يُرسَل أي صوت إلى المزوّد دون consent === true (يرسلها العميل بعد شاشة الموافقة الصريحة).
- * الحماية من استنزاف الرصيد: حدّ يومي لكل IP موثوق + سقف يومي إجمالي (RECITATION_GLOBAL_DAILY_LIMIT) في مخزن دائم (Upstash).
+ * الحماية من استنزاف الرصيد: حدّ يومي لكل IP موثوق + سقف يومي إجمالي (RECITATION_GLOBAL_DAILY_LIMIT) + سقف ثوانٍ فعلية (RECITATION_GLOBAL_DAILY_SECONDS) في مخزن دائم (Upstash).
  */
 import { sendJson } from "../api/_http.mjs";
+import { familyOfMime, probeAudio } from "../audio-duration.mjs";
 import { checkRateLimit, getTrustedClientIp } from "../rate-limit.mjs";
 
 const GROQ_TRANSCRIBE_URL = "https://api.groq.com/openai/v1/audio/transcriptions";
 const GROQ_MODEL = "whisper-large-v3";
-/** سقف المقطع بعد فك الترميز — 45 ثانية Opus/AAC ≈ 0.4MB، فهذا هامش أمان. */
-export const MAX_AUDIO_BYTES = 2 * 1024 * 1024;
+/** سقف المقطع بعد فك الترميز — 45 ثانية Opus/AAC ≈ 0.2–0.4MB. */
+export const MAX_AUDIO_BYTES = 1024 * 1024;
 export const MAX_DURATION_MS = 50_000;
+/** أقصى فارق بين المدة الفعلية (من الملف) والمُعلَنة. */
+export const MAX_DURATION_DRIFT_MS = 3_000;
+/** Groq تفوتر 10 ثوانٍ كحدّ أدنى لكل طلب. */
+export const MIN_BILLED_SECONDS = 10;
 export const DAILY_LIMIT = 40;
 /** سقف جسم الطلب المُعلَن (base64 + غلاف JSON) — يوافق maxBodyBytes في api-dispatch. */
-export const MAX_REQUEST_BYTES = 3_000_000;
-export const DEFAULT_GLOBAL_DAILY_LIMIT = 1500;
+export const MAX_REQUEST_BYTES = 1_500_000;
+export const DEFAULT_GLOBAL_DAILY_LIMIT = 400;
+export const DEFAULT_GLOBAL_DAILY_SECONDS = 18_000;
 
 function globalDailyLimit() {
   const n = Number(process.env.RECITATION_GLOBAL_DAILY_LIMIT);
   return Number.isFinite(n) && n >= 0 ? Math.floor(n) : DEFAULT_GLOBAL_DAILY_LIMIT;
 }
+
+/** سقف الثواني الإجمالي اليومي — الحماية الحقيقية للتكلفة (5 ساعات افتراضيًا). */
+function globalDailySeconds() {
+  const n = Number(process.env.RECITATION_GLOBAL_DAILY_SECONDS);
+  return Number.isFinite(n) && n >= 0 ? Math.floor(n) : DEFAULT_GLOBAL_DAILY_SECONDS;
+}
+/** الصيغ التي يُنتجها العميل فقط (MediaRecorder: webm/ogg/mp4) + wav؛ لكلٍّ منها قارئ مدة فعلية. */
 export const ALLOWED_MIME = new Set([
   "audio/webm",
   "audio/ogg",
   "audio/mp4",
   "audio/x-m4a",
   "audio/m4a",
-  "audio/aac",
-  "audio/mpeg",
   "audio/wav",
   "audio/x-wav",
 ]);
@@ -136,6 +147,31 @@ export default async function handler(req, res) {
   const audio = Buffer.from(body.audioBase64, "base64");
   if (audio.length < 800 || audio.length > MAX_AUDIO_BYTES) {
     sendJson(res, 400, { ok: false, message: "التسجيل قصير جدًا أو غير صالح." });
+    return;
+  }
+  // النوع الحقيقي والمدة الفعلية من الملف نفسه (لا الامتداد ولا الإعلان)
+  const probe = probeAudio(audio);
+  if (!probe || probe.format !== familyOfMime(mime)) {
+    sendJson(res, 415, { ok: false, message: "صيغة الصوت غير مدعومة." });
+    return;
+  }
+  if (probe.durationMs > MAX_DURATION_MS) {
+    sendJson(res, 400, { ok: false, message: "التسجيل أطول من الحد المسموح (50 ثانية)." });
+    return;
+  }
+  if (Math.abs(probe.durationMs - duration) > MAX_DURATION_DRIFT_MS) {
+    sendJson(res, 400, { ok: false, message: "مدة التسجيل لا تطابق المُعلَن." });
+    return;
+  }
+  // الاستهلاك بالثواني الفعلية (مع حدّ المزوّد الأدنى 10ث) — سقف التكلفة الحقيقي
+  const seconds = Math.max(MIN_BILLED_SECONDS, Math.ceil(probe.durationMs / 1000));
+  const budget = await checkRateLimit("recitation-global-seconds", {
+    windowMs: 24 * 60 * 60_000,
+    max: globalDailySeconds(),
+    cost: seconds,
+  });
+  if (!budget.allowed) {
+    sendJson(res, 503, { ok: false, code: "asr_capacity", message: "الخدمة مشغولة الآن. حاول لاحقًا." });
     return;
   }
 

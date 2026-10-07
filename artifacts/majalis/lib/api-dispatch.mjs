@@ -278,8 +278,8 @@ export const API_ROUTES = [
     exact: true,
     allowGet: true,
     rateLimit: recitationTranscribeRateLimit,
-    // تسجيل صوتي قصير base64 (≤2MB خامًا ≈ 2.8MB مرمّزًا) + مهلة المزوّد
-    maxBodyBytes: 3_000_000,
+    // تسجيل صوتي قصير base64 (≤1MB خامًا ≈ 1.4MB مرمّزًا) + مهلة المزوّد
+    maxBodyBytes: 1_500_000,
     timeoutMs: 28_000,
   },
   {
