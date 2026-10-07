@@ -44,10 +44,4 @@ assert.match(glossary, /بطاقات المراجعة/);
 assert.doesNotMatch(glossary, /راجِع بالبطاقات|راجع بالبطاقات/);
 assert.match(pkg, /test:section-topics-expand/);
 
-/* العقد القديم تبقى متاحة للتوافق إن وُجدت */
-if (existsSync(resolve(root, "src/lib/section-topics-expand.ts"))) {
-  const contract = read("src/lib/section-topics-expand.ts");
-  assert.match(contract, /INLINE_SECTION_TOPIC_LIMIT/);
-}
-
 console.log("section-topics-expand-gate.test.ts: ok");

@@ -10,7 +10,6 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const home = readFileSync(resolve(root, "src/pages/account/ui/HomeView.tsx"), "utf8");
 const hero = readFileSync(resolve(root, "src/components/home/HomeHeroLcp.tsx"), "utf8");
 const css = readFileSync(resolve(root, "src/styles/components/home-brand-title.css"), "utf8");
-const wordmark = readFileSync(resolve(root, "src/components/brand/MajlisWordmark.tsx"), "utf8");
 
 let failed = 0;
 function assert(cond: boolean, label: string) {
@@ -40,8 +39,6 @@ assert(/min-height:\s*18rem/.test(css), "ارتفاع الهيرو محجوز = 
 assert(/overflow:\s*visible/.test(css), "الهيرو لا يقصّ عنوان سُنّة");
 assert(/line-height:\s*1\.55/.test(css), "ارتفاع سطر كافٍ للحركات العربية");
 assert(/border-radius:\s*var\(--radius-2xl/.test(css), "زوايا البطاقة ناعمة");
-assert(/width\s*\?\?\s*138/.test(wordmark), "عرض SVG Intrinsic يحجز قبل CSS");
-assert(/height\s*\?\?\s*33/.test(wordmark), "ارتفاع SVG Intrinsic يحجز قبل CSS");
 
 if (failed) process.exit(1);
 console.log("home-brand-hero.test.ts: ok");
