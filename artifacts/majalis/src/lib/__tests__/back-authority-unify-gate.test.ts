@@ -50,13 +50,10 @@ for (const path of [
   assert.equal(hasInPageBackChrome(path), false, path);
 }
 
-console.log("=== GlobalBackControlHost rule 6 + DOM safety net + legal hide ===");
+console.log("=== GlobalBackControlHost: يرافق كل الأقسام (قرار المالك 2026-10-07) ===");
 const fab = read("src/components/FloatingBackButton.tsx");
-assert.match(fab, /hasInPageBackChrome/);
-assert.match(fab, /data-app-back="1"\]:not\(\[data-fixed-back-bar="1"\]\)/);
-assert.match(fab, /domInPageBack|setDomInPageBack/);
+assert.doesNotMatch(fab, /hasInPageBackChrome|domInPageBack|hideOnLegalSupport/, "لا إخفاء لوجود رجوع داخلي أو للدعم");
 assert.match(fab, /requestAnimationFrame/);
-assert.match(fab, /hideOnLegalSupport|\/support.*\/contact/);
 assert.match(fab, /isImmersiveChromePath/);
 assert.doesNotMatch(fab, /zIndex\s*[:=]\s*\d{2,}/, "لا raw z-index في المضيف");
 

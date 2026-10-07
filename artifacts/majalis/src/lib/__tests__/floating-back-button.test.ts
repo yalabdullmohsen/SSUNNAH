@@ -21,9 +21,9 @@ assert.match(fab, /autoHideFloating=\{false\}/, "الشريط لا يُخفى ع
 assert.match(fab, /path === "\/"|hideOnHome/, "إخفاء على الرئيسية");
 assert.match(fab, /prayer-times|hideOnPrayer/, "إخفاء على الصلاة — منع CLS للمضيف");
 assert.match(fab, /isImmersiveChromePath|hideOnMushaf/, "إخفاء على المصحف");
-assert.match(fab, /adhan-settings|hideOnAdhanSettings/, "إخفاء على إعدادات الأذان — هيدر داخلي");
-assert.match(fab, /hasInPageBackChrome|hideOnInPageAppBack/, "إخفاء عند رجوع داخلي (rule 6)");
-assert.match(fab, /data-app-back="1"\]:not\(\[data-fixed-back-bar/, "شبكة أمان DOM ضد الازدواج");
+/* قرار المالك 2026-10-07: الزر الدائري يرافق كل الأقسام — لا إخفاء لوجود رجوع داخلي ولا في الإعدادات/الدعم */
+assert.doesNotMatch(fab, /hideOnInPageAppBack|hideOnAdhanSettings|hideOnLegalSupport|domInPageBack/, "لا إخفاء بسبب رجوع داخلي");
+assert.match(fab, /قرار المالك/, "القرار موثّق في المكوّن");
 assert.match(fab, /hideBack/, "إخفاء موحّد");
 assert.doesNotMatch(fab, /ChevronUp/);
 assert.match(fab, /data-visible="1"|data-global-back-visible/, "ظاهر أسفل يمين");
@@ -46,8 +46,15 @@ assert.match(
   "إخفاء زر أعلى عند Dialog مفتوح",
 );
 
-const backCss = read("src/styles/knowledge-experience.css");
+const backCss = read("src/styles/sunnah-identity-chrome-nav.css");
 assert.match(backCss, /\.app-back-btn--bar\.fixed-back-bar/, "شريط ثابت");
+/* الزر الدائري يرافق كل الأقسام: CSS يُستورد من المكوّن نفسه لا من صفحات المعرفة فقط */
+assert.match(read("src/components/FloatingBackButton.tsx"), /import "@\/styles\/sunnah-identity-chrome-nav\.css"/, "FAB يستورد CSS الخاص به");
+assert.doesNotMatch(read("src/styles/knowledge-experience.css"), /fixed-back-bar/, "لا تعريف FAB داخل knowledge-experience");
+assert.match(backCss, /position:\s*fixed/);
+assert.match(backCss, /right:\s*max\(0\.75rem/, "يمين الشاشة فعليًا");
+assert.match(backCss, /border-radius:\s*var\(--radius-pill/, "دائري");
+assert.match(backCss, /width:\s*44px;[\s\S]{0,40}height:\s*44px/, "44×44 دائرة");
 assert.match(backCss, /right:\s*max\(0\.75rem,\s*var\(--inset-right/, "يمين فعليًا");
 assert.match(backCss, /bottom:\s*var\(\s*--global-back-bottom/, "أسفل فوق الشريط السفلي");
 assert.doesNotMatch(
