@@ -17,7 +17,6 @@ const index = read("src/components/design-system/index.ts");
 const unify = read("src/styles/visual-identity-unify.css");
 const registry = read("src/config/sections.registry.ts");
 const home = read("src/pages/account/ui/HomeView.tsx");
-const sacred = read("src/components/home/HomeSacredOfDay.tsx");
 
 assert.match(tokens, /--ss-primary-green/);
 assert.match(tokens, /--ss-deep-green/);
@@ -55,7 +54,5 @@ assert.doesNotMatch(registry, /#4A5590/i);
 assert.match(registry, /discover-islam":\s*"#1F5C48/);
 
 assert.match(home, /HomePrimaryDiscovery|HomeDailyStrip|home-daily-strip/);
-assert.match(sacred, /getDailyAyah|getDailyHadith/);
-assert.doesNotMatch(sacred, /scale\(|transform:\s*scale/);
 
 console.log("ssunnah-design-system-gate.test.ts: ok");

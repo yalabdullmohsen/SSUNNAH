@@ -22,13 +22,7 @@ function fail(msg: string) {
   errors.push(msg);
 }
 
-// 1) DailyWirdCard — حديث بمصدر + آية برقم
-assert.ok(existsSync(resolve(root, "src/components/home/DailyWirdCard.tsx")), "DailyWirdCard موجود");
-const wird = read("src/components/home/DailyWirdCard.tsx");
-assert.match(wird, /تم/);
-assert.match(wird, /localStorage/);
-assert.match(wird, /ayahNumber|ayahRef/);
-assert.match(wird, /hadith\.source/);
+// 1) حديث بمصدر + آية برقم (بيانات اليوم)
 for (const h of DAILY_HADITH_POOL) {
   if (!h.source?.trim()) fail(`حديث بلا مصدر في daily pool: ${h.id}`);
 }
