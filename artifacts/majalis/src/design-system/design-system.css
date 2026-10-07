@@ -102,6 +102,16 @@ html.dark {
   --sn-fw-heavy: 800;
 }
 
+/* ═══ سلّم الأحجام الدلالي (6 مستويات فقط — لا حجم خارجه) ═══ */
+:root {
+  --sn-type-page-title: var(--sn-fs-title1);    /* 28 / 800 */
+  --sn-type-section-title: var(--sn-fs-title3); /* 20 / 700 */
+  --sn-type-card-title: var(--sn-fs-headline);  /* 17 / 700 */
+  --sn-type-body: var(--sn-fs-body);            /* 16 / 400 */
+  --sn-type-secondary: var(--sn-fs-subhead);    /* 14 / 400 */
+  --sn-type-tag: var(--sn-fs-caption);          /* 12 / 700 */
+}
+
 /* ═══ المسافات — شبكة 4 ═══ */
 :root {
   --sn-s1: 4px;
@@ -112,17 +122,22 @@ html.dark {
   --sn-s6: 24px;
   --sn-s7: 32px;
   --sn-s8: 40px;
-  --sn-page-x: 20px;               /* هامش الصفحة الموحّد */
+  --sn-page-x: 16px;               /* هامش الصفحة الموحّد */
   --sn-touch: 44px;                /* أدنى هدف لمس */
+  --sn-btn-h: 48px;                /* ارتفاع الزر الموحّد */
 }
 
 /* ═══ الزوايا ═══ */
 :root {
-  --sn-r-sm: 10px;                 /* عناصر صغيرة */
-  --sn-r-md: 16px;                 /* حقول وأزرار */
-  --sn-r-lg: 22px;                 /* بطاقات */
-  --sn-r-xl: 28px;                 /* بطاقات بارزة */
-  --sn-r-pill: 999px;              /* أزرار حبّية ورقائق */
+  --sn-r-sm: 12px;                 /* عناصر صغيرة وحقول وأزرار */
+  --sn-r-md: 12px;
+  --sn-r-lg: 16px;                 /* بطاقات */
+  --sn-r-xl: 20px;                 /* البطاقة الرئيسية (PageHero) */
+  --sn-r-pill: 999px;              /* أزرار دائرية وشرائح */
+}
+/* زوايا ناعمة متصلة (continuous corners) حيث يدعمها المتصفح */
+@supports (corner-shape: squircle) {
+  .sn-card, .sn-btn, .sn-chip, .sn-segmented, .sn-hero, .sn-stat, .sn-picker, .sn-row-item__icon { corner-shape: squircle; }
 }
 
 /* ═══ الارتفاعات (elevation) — ثلاثة مستويات ناعمة تحل محل الحدود الرمادية ═══ */
@@ -242,7 +257,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { display
   align-items: center;
   justify-content: center;
   gap: var(--sn-s2);
-  min-height: var(--sn-touch);
+  min-height: var(--sn-btn-h);
   padding-inline: var(--sn-s5);
   border: 0;
   border-radius: var(--sn-r-md);
@@ -250,10 +265,13 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { display
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.sn-btn--l { min-height: calc(var(--sn-s8) + var(--sn-s3)); padding-inline: var(--sn-s6); font-size: var(--sn-fs-headline); }
-.sn-btn--m { min-height: var(--sn-touch); }
-.sn-btn--s { min-height: var(--sn-touch); padding-inline: var(--sn-s4); font-size: var(--sn-fs-subhead); }
+.sn-btn--l { min-height: var(--sn-btn-h); padding-inline: var(--sn-s6); font-size: var(--sn-fs-headline); }
+.sn-btn--m { min-height: var(--sn-btn-h); }
+.sn-btn--s { min-height: var(--sn-btn-h); padding-inline: var(--sn-s4); font-size: var(--sn-fs-subhead); }
 .sn-btn--block { display: flex; width: 100%; }
 .sn-btn--primary { background: var(--sn-primary); color: var(--sn-text-on-fill); box-shadow: var(--sn-e1); }
 .sn-btn--secondary { background: var(--sn-primary-soft); color: var(--sn-primary); }
@@ -712,3 +730,51 @@ html:root body :is(
   font-size: var(--sn-fs-title1);
   line-height: var(--sn-lh-title1);
 }
+
+
+/* ═══ PageHero — بطاقة خضراء نحيفة ═══ */
+.sn-hero {
+  position: relative;
+  overflow: hidden;
+  padding: var(--sn-s4);
+  border-radius: var(--sn-r-xl);
+  background: var(--sn-primary-strong);
+  color: var(--sn-text-on-primary);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sn-s1);
+}
+.sn-hero__pattern {
+  position: absolute;
+  inset-block-start: calc(var(--sn-s6) * -1);
+  inset-inline-end: calc(var(--sn-s6) * -1);
+  width: calc(var(--sn-s8) * 3);
+  height: calc(var(--sn-s8) * 3);
+  opacity: 0.08;
+  pointer-events: none;
+  color: var(--sn-text-on-primary);
+}
+.sn-hero__tag { font: var(--sn-fw-bold) var(--sn-type-tag) / var(--sn-lh-caption) var(--font-ui); opacity: 0.85; white-space: nowrap; }
+.sn-hero__title { margin: 0; font: var(--sn-fw-heavy) var(--sn-type-page-title) / var(--sn-lh-title1) var(--font-ui); color: inherit; }
+.sn-hero__desc { margin: 0; font: var(--sn-fw-regular) var(--sn-type-secondary) / var(--sn-lh-subhead) var(--font-ui); color: inherit; opacity: 0.9; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ═══ StatTile — رقم كبير + تسمية ═══ */
+.sn-stat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sn-s3); }
+.sn-stat { display: flex; flex-direction: column; gap: var(--sn-s1); padding: var(--sn-s4); border-radius: var(--sn-r-lg); background: var(--sn-surface); box-shadow: var(--sn-e1); min-width: 0; }
+.sn-stat__value { font: var(--sn-fw-heavy) var(--sn-fs-title1) / var(--sn-lh-title1) var(--font-ui); color: var(--sn-primary); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sn-stat__label { font: var(--sn-fw-regular) var(--sn-type-secondary) / var(--sn-lh-subhead) var(--font-ui); color: var(--sn-text-secondary); }
+
+/* ═══ SegmentedTabs — تبويبات أفقية قابلة للتمرير ═══ */
+.sn-seg-tabs { display: flex; gap: var(--sn-s2); overflow-x: auto; padding-block: var(--sn-s1); scrollbar-width: none; scroll-snap-type: x proximity; }
+.sn-seg-tabs__item {
+  flex: none; scroll-snap-align: start; min-height: var(--sn-touch); padding-inline: var(--sn-s4);
+  border: 0; border-radius: var(--sn-r-pill); background: var(--sn-surface-2); color: var(--sn-text-secondary);
+  font: var(--sn-fw-semibold) var(--sn-type-secondary) / 1.25 var(--font-ui); white-space: nowrap; cursor: pointer;
+}
+.sn-seg-tabs__item[aria-selected="true"] { background: var(--sn-primary); color: var(--sn-text-on-fill); }
+
+/* ═══ Picker — قائمة اختيار بشكل Card ═══ */
+.sn-picker { position: relative; display: flex; align-items: center; min-height: var(--sn-btn-h); padding-inline: var(--sn-s4); border-radius: var(--sn-r-lg); background: var(--sn-surface); box-shadow: var(--sn-e1); color: var(--sn-text-primary); }
+.sn-picker__select { appearance: none; -webkit-appearance: none; width: 100%; min-height: var(--sn-btn-h); border: 0; background: transparent; color: inherit; font: var(--sn-fw-semibold) var(--sn-fs-callout) / 1.25 var(--font-ui); text-overflow: ellipsis; white-space: nowrap; cursor: pointer; padding-inline-end: var(--sn-s6); }
+.sn-picker__chev { position: absolute; inset-inline-end: var(--sn-s4); color: var(--sn-text-tertiary); pointer-events: none; }
+.sn-picker__label { display: block; margin-block-end: var(--sn-s1); font: var(--sn-fw-bold) var(--sn-type-tag) / var(--sn-lh-caption) var(--font-ui); color: var(--sn-text-secondary); }
