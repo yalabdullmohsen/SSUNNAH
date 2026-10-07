@@ -2,8 +2,18 @@ name: iOS TestFlight Deploy
 
 on:
   push:
+    branches:
+      - main
     tags:
       - "v*.*.*"
+    paths:
+      - "ios/**"
+      - "artifacts/**"
+      - "!artifacts/**/reports/**"
+      - "!artifacts/**/docs/**"
+      - "!artifacts/**/*.md"
+      - "fastlane/**"
+      - ".github/workflows/ios-testflight-deploy.yml"
   workflow_dispatch:
     inputs:
       changelog:
@@ -14,7 +24,7 @@ on:
 
 concurrency:
   group: ios-testflight-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -91,25 +101,27 @@ jobs:
       - name: Decode App Store Connect API key material
         env:
           APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
+          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
         run: |
           set -euo pipefail
-          if [ -z "${APP_STORE_CONNECT_API_KEY_KEY:-}" ]; then
-            echo "::error::Missing secret APP_STORE_CONNECT_API_KEY_KEY (Base64 .p8)"
-            exit 1
-          fi
-          echo "ASC API key material present (base64 length=${#APP_STORE_CONNECT_API_KEY_KEY})"
+          for s in APP_STORE_CONNECT_API_KEY_KEY APP_STORE_CONNECT_API_KEY_ID APP_STORE_CONNECT_ISSUER_ID; do
+            if [ -z "${!s:-}" ]; then echo "::error::Missing secret $s"; exit 1; fi
+          done
+          # مفتاح مؤقت خارج المستودع لمصادقة xcodebuild (التوقيع السحابي) وfastlane
+          KEY_PATH="$RUNNER_TEMP/AuthKey_${APP_STORE_CONNECT_API_KEY_ID}.p8"
+          (umask 077; echo "$APP_STORE_CONNECT_API_KEY_KEY" | base64 --decode > "$KEY_PATH")
+          echo "APP_STORE_CONNECT_API_KEY_PATH=$KEY_PATH" >> "$GITHUB_ENV"
 
       - name: Run Fastlane beta
         env:
           APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
           APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
           APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          ITC_TEAM_ID: ${{ secrets.ITC_TEAM_ID }}
           APPLE_TEAM_ID: ${{ env.APPLE_TEAM_ID }}
           APP_IDENTIFIER: ${{ env.APP_IDENTIFIER }}
           TESTFLIGHT_CHANGELOG: ${{ github.event.inputs.changelog || github.event.head_commit.message || github.ref_name }}
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          CI_BUILD_NUMBER: ${{ github.run_number }}
         run: bundle exec fastlane ios beta
 
       - name: Upload IPA artifact
@@ -121,3 +133,7 @@ jobs:
             artifacts/majalis/ios/build/*.ipa
             artifacts/majalis/ios/build/*.xcresult
           if-no-files-found: warn
+
+      - name: Remove temporary API key
+        if: always()
+        run: rm -f "$RUNNER_TEMP"/AuthKey_*.p8
