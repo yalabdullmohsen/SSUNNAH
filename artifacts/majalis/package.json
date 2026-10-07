@@ -859,6 +859,7 @@
     "test:widgets-integrity": "node --import tsx src/lib/__tests__/widgets-integrity-gate.test.ts",
     "test:admin-interaction-authority-wave3": "node --import tsx src/lib/__tests__/admin-interaction-authority-wave3-gate.test.ts",
     "test:admin-review-hub-button-authority": "node --import tsx src/lib/__tests__/admin-review-hub-button-authority-gate.test.ts",
+    "test:widget-daily-pool": "node --import tsx src/lib/__tests__/widget-daily-pool.test.ts",
     "test:app-web-boundary": "node --import tsx src/lib/__tests__/app-web-boundary-gate.test.ts",
     "capacitor:copy:after": "node scripts/native-prune-web-only.mjs",
     "build:native-variant": "VITE_TARGET=native vite build --config vite.config.ts",
