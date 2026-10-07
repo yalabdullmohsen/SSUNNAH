@@ -760,7 +760,7 @@ html:root body :is(
 
 /* ═══ StatTile — رقم كبير + تسمية ═══ */
 .sn-stat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sn-s3); }
-.sn-stat { display: flex; flex-direction: column; gap: var(--sn-s1); padding: var(--sn-s4); border-radius: var(--sn-r-lg); background: var(--sn-surface); box-shadow: var(--sn-e1); min-width: 0; }
+.sn-stat { display: flex; flex-direction: column; gap: var(--sn-s1); padding: var(--sn-s4); border-radius: var(--sn-r-lg); background: var(--sn-surface); min-width: 0; }
 .sn-stat__value { font: var(--sn-fw-heavy) var(--sn-fs-title1) / var(--sn-lh-title1) var(--font-ui); color: var(--sn-primary); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sn-stat__label { font: var(--sn-fw-regular) var(--sn-type-secondary) / var(--sn-lh-subhead) var(--font-ui); color: var(--sn-text-secondary); }
 
@@ -774,7 +774,9 @@ html:root body :is(
 .sn-seg-tabs__item[aria-selected="true"] { background: var(--sn-primary); color: var(--sn-text-on-fill); }
 
 /* ═══ Picker — قائمة اختيار بشكل Card ═══ */
-.sn-picker { position: relative; display: flex; align-items: center; min-height: var(--sn-btn-h); padding-inline: var(--sn-s4); border-radius: var(--sn-r-lg); background: var(--sn-surface); box-shadow: var(--sn-e1); color: var(--sn-text-primary); }
+.sn-picker { position: relative; display: flex; align-items: center; min-height: var(--sn-btn-h); padding-inline: var(--sn-s4); border-radius: var(--sn-r-lg); background: var(--sn-surface); color: var(--sn-text-primary); }
 .sn-picker__select { appearance: none; -webkit-appearance: none; width: 100%; min-height: var(--sn-btn-h); border: 0; background: transparent; color: inherit; font: var(--sn-fw-semibold) var(--sn-fs-callout) / 1.25 var(--font-ui); text-overflow: ellipsis; white-space: nowrap; cursor: pointer; padding-inline-end: var(--sn-s6); }
 .sn-picker__chev { position: absolute; inset-inline-end: var(--sn-s4); color: var(--sn-text-tertiary); pointer-events: none; }
 .sn-picker__label { display: block; margin-block-end: var(--sn-s1); font: var(--sn-fw-bold) var(--sn-type-tag) / var(--sn-lh-caption) var(--font-ui); color: var(--sn-text-secondary); }
+
+.sn-stat, .sn-picker { box-shadow: var(--sn-e1); }

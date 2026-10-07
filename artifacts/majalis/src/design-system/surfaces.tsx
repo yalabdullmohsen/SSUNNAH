@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Chip } from "./primitives";
 import { Icon } from "./Icon";
 import { cn } from "@/lib/utils";
 
@@ -50,9 +51,9 @@ export function SegmentedTabs<T extends string>({ value, onChange, options, labe
   return (
     <div className="sn-seg-tabs" role="tablist" aria-label={label}>
       {options.map((o) => (
-        <button key={o.value} type="button" role="tab" aria-selected={o.value === value} className="sn-seg-tabs__item sn-pressable" onClick={() => onChange(o.value)}>
+        <Chip key={o.value} role="tab" aria-selected={o.value === value} className="sn-seg-tabs__item" onClick={() => onChange(o.value)}>
           {o.label}
-        </button>
+        </Chip>
       ))}
     </div>
   );
