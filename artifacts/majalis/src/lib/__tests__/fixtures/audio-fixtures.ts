@@ -33,10 +33,14 @@ export function oggOpus(seconds: number): Buffer {
 const ebml = (idBytes: number[], payload: Buffer) => Buffer.concat([Buffer.from(idBytes), Buffer.from([0x80 | payload.length]), payload]);
 
 /** WebM بأسلوب MediaRecorder: Segment/Cluster بحجم مجهول، بلا Duration في Info. */
-export function webm(seconds: number): Buffer {
+export function webm(seconds: number, headerDurationMs?: number): Buffer {
   const parts: Buffer[] = [ebml([0x1a, 0x45, 0xdf, 0xa3], Buffer.alloc(8, 0))];
   parts.push(Buffer.from([0x18, 0x53, 0x80, 0x67, 0x01, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff]));
-  parts.push(ebml([0x15, 0x49, 0xa9, 0x66], ebml([0x2a, 0xd7, 0xb1], Buffer.from([0x0f, 0x42, 0x40]))));
+  const dur = Buffer.alloc(8); if (headerDurationMs !== undefined) dur.writeDoubleBE(headerDurationMs);
+  parts.push(ebml([0x15, 0x49, 0xa9, 0x66], Buffer.concat([
+    ebml([0x2a, 0xd7, 0xb1], Buffer.from([0x0f, 0x42, 0x40])),
+    ...(headerDurationMs !== undefined ? [ebml([0x44, 0x89], dur)] : []),
+  ])));
   const totalMs = Math.round(seconds * 1000);
   for (let start = 0; start < totalMs; start += 10_000) {
     parts.push(Buffer.from([0x1f, 0x43, 0xb6, 0x75, 0x01, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff]));
@@ -72,4 +76,14 @@ export function fmp4(seconds: number): Buffer {
   const trun = box("trun", u32(0), u32(Math.round(seconds)));
   const moof = box("moof", box("mfhd", Buffer.alloc(8)), box("traf", tfhd, trun));
   return Buffer.concat([box("ftyp", Buffer.from("isom"), u32(0), Buffer.from("isom")), moov, moof, box("mdat", Buffer.alloc(1000, 5))]);
+}
+
+/** WebM معروف النوع لكن بلا كتل قابلة للقراءة (تعذّر استخراج المدة) بحجم محدّد. */
+export function webmUnreadable(bytes: number): Buffer {
+  return Buffer.concat([
+    ebml([0x1a, 0x45, 0xdf, 0xa3], Buffer.alloc(8, 0)),
+    Buffer.from([0x18, 0x53, 0x80, 0x67, 0x01, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff]),
+    Buffer.from([0xec, 0x84]), Buffer.alloc(4, 0), // Void
+    Buffer.alloc(bytes, 0xff), // ليست عناصر EBML صالحة
+  ]);
 }

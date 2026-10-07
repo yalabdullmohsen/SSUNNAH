@@ -13,7 +13,7 @@
  * الحماية من استنزاف الرصيد: حدّ يومي لكل IP موثوق + سقف يومي إجمالي (RECITATION_GLOBAL_DAILY_LIMIT) + سقف ثوانٍ فعلية (RECITATION_GLOBAL_DAILY_SECONDS) في مخزن دائم (Upstash).
  */
 import { sendJson } from "../api/_http.mjs";
-import { familyOfMime, probeAudio } from "../audio-duration.mjs";
+import { estimateDurationMs, familyOfMime, probeAudio } from "../audio-duration.mjs";
 import { checkRateLimit, getTrustedClientIp } from "../rate-limit.mjs";
 
 const GROQ_TRANSCRIBE_URL = "https://api.groq.com/openai/v1/audio/transcriptions";
@@ -21,7 +21,7 @@ const GROQ_MODEL = "whisper-large-v3";
 /** سقف المقطع بعد فك الترميز — 45 ثانية Opus/AAC ≈ 0.2–0.4MB. */
 export const MAX_AUDIO_BYTES = 1024 * 1024;
 export const MAX_DURATION_MS = 50_000;
-/** أقصى فارق بين المدة الفعلية (من الملف) والمُعلَنة. */
+/** فارق بين المدة الفعلية والمُعلَنة يُسجَّل للمراقبة عند تجاوزه (لا يُرفض). */
 export const MAX_DURATION_DRIFT_MS = 3_000;
 /** Groq تفوتر 10 ثوانٍ كحدّ أدنى لكل طلب. */
 export const MIN_BILLED_SECONDS = 10;
@@ -155,16 +155,25 @@ export default async function handler(req, res) {
     sendJson(res, 415, { ok: false, message: "صيغة الصوت غير مدعومة." });
     return;
   }
-  if (probe.durationMs > MAX_DURATION_MS) {
+  // المدة المعتمدة هي الفعلية من الملف (لا المُعلَنة). إن تعذّر استخراجها فتقدير متحفظ من الحجم.
+  const measured = probe.durationMs !== null;
+  const actualMs = measured ? probe.durationMs : Math.max(estimateDurationMs(audio.length), duration);
+  if (actualMs > MAX_DURATION_MS && measured) {
     sendJson(res, 400, { ok: false, message: "التسجيل أطول من الحد المسموح (50 ثانية)." });
     return;
   }
-  if (Math.abs(probe.durationMs - duration) > MAX_DURATION_DRIFT_MS) {
-    sendJson(res, 400, { ok: false, message: "مدة التسجيل لا تطابق المُعلَن." });
-    return;
+  // عدم التطابق للمراقبة فقط (دون رفض): أرقام لا محتوى
+  if (!measured || Math.abs(actualMs - duration) > MAX_DURATION_DRIFT_MS) {
+    console.warn("recitation-transcribe: duration mismatch", {
+      format: probe.format,
+      declaredMs: Math.round(duration),
+      actualMs: Math.round(actualMs),
+      estimated: !measured,
+      bytes: audio.length,
+    });
   }
-  // الاستهلاك بالثواني الفعلية (مع حدّ المزوّد الأدنى 10ث) — سقف التكلفة الحقيقي
-  const seconds = Math.max(MIN_BILLED_SECONDS, Math.ceil(probe.durationMs / 1000));
+  // الاستهلاك بالثواني الفعلية/المقدَّرة (مع حدّ المزوّد الأدنى 10ث) — سقف التكلفة الحقيقي
+  const seconds = Math.max(MIN_BILLED_SECONDS, Math.ceil(actualMs / 1000));
   const budget = await checkRateLimit("recitation-global-seconds", {
     windowMs: 24 * 60 * 60_000,
     max: globalDailySeconds(),

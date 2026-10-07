@@ -1,7 +1,8 @@
 /**
  * فحص النوع الحقيقي للصوت ومدته من الترويسة/بنية الحاويات دون فك ترميز — بلا مكتبات.
  * الصيغ: WAV (PCM) · WebM/Opus (MediaRecorder في Chrome) · Ogg (Opus/Vorbis) · MP4/M4A (AAC، ومجزّأ fMP4 في Safari).
- * يُرجع { format, durationMs } أو null إن لم تُعرَف الصيغة/تعذّر حساب مدة موثوقة.
+ * يُرجع { format, durationMs } أو null إن لم تُعرَف الصيغة. durationMs = null إن تعذّر حساب مدة موثوقة (تُقدَّر حينها بـestimateDurationMs).
+ * WebM بلا عنصر Duration (Chrome) تُحسب مدته من آخر timestamp في الـclusters.
  * النوع يُحدَّد من البايتات السحرية لا من الامتداد ولا من mime المُعلَن.
  */
 
@@ -37,8 +38,15 @@ export function probeAudio(buf) {
   } catch {
     durationMs = null;
   }
-  if (!Number.isFinite(durationMs) || durationMs <= 0) return null;
+  if (!Number.isFinite(durationMs) || durationMs <= 0) durationMs = null;
   return { format, durationMs };
+}
+
+/** معدّل بتات متحفظ (منخفض) لتقدير حدّ أعلى للمدة من الحجم حين تتعذّر قراءتها: Opus/AAC الكلامي ≥ ~24kbps عادةً. */
+export const CONSERVATIVE_BITRATE_BPS = 24_000;
+
+export function estimateDurationMs(bytes) {
+  return (bytes * 8 * 1000) / CONSERVATIVE_BITRATE_BPS;
 }
 
 /* ───────── WAV ───────── */
@@ -142,6 +150,7 @@ function webmDuration(buf) {
   let maxEnd = 0;
   let lastBlockEnd = 0;
   let pendingBlockStart = null;
+  let sawBlock = false;
   while (off < buf.length && steps++ < MAX_STEPS) {
     const idr = readId(buf, off);
     if (!idr) return null;
@@ -167,6 +176,7 @@ function webmDuration(buf) {
         const rel = buf.readInt16BE(body + tn);
         const abs = clusterTc + rel;
         if (abs >= 0) {
+          sawBlock = true;
           if (abs > maxEnd) maxEnd = abs;
           pendingBlockStart = abs;
           lastBlockEnd = Math.max(lastBlockEnd, abs);
@@ -179,6 +189,7 @@ function webmDuration(buf) {
     off = end;
   }
   // المدة من الكتل الفعلية (الترويسة قابلة للتزوير): آخر كتلة + إطار Opus نموذجي 20ms إن غابت BlockDuration
+  if (!sawBlock && !(headerDuration > 0)) return null;
   const nsPerTick = scale;
   const fromBlocks = ((Math.max(lastBlockEnd, maxEnd) * nsPerTick) / 1e6) + (lastBlockEnd > maxEnd ? 0 : 20);
   const fromHeader = (headerDuration * nsPerTick) / 1e6;

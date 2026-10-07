@@ -7,7 +7,7 @@ import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { fmp4, oggOpus, wav, webm } from "./fixtures/audio-fixtures.ts";
+import { fmp4, oggOpus, wav, webm, webmUnreadable } from "./fixtures/audio-fixtures.ts";
 const { probeAudio } = await import("../../../lib/audio-duration.mjs");
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
@@ -190,14 +190,42 @@ console.log("=== خدمة التفريغ: حدود وخصوصية ===");
   for (const [mimeType, buf] of [["audio/webm", webm(10)], ["audio/ogg", oggOpus(10)], ["audio/mp4", fmp4(10)], ["audio/wav", wav(10)]] as const) {
     assert.equal((await call("POST", goodBody(mimeType, 10_000, buf), "198.51.100.30")).status, 200, `${mimeType} حقيقي يمرّ`);
   }
-  // مدة فعلية أطول من المُعلَنة (بأكثر من 3ث) تُرفض
+  // المدة الفعلية هي المعتمدة: عدم التطابق لا يُرفض بل يُسجَّل، والرفض فقط لما زاد عن 50ث فعليًا
   {
-    const lie = await call("POST", goodBody("audio/wav", 8_000, wav(20)), "198.51.100.31");
-    assert.equal(lie.status, 400, "فعلي 20ث ومُعلَن 8ث");
-    assert.equal((await call("POST", goodBody("audio/webm", 10_000, webm(30)), "198.51.100.31")).status, 400, "webm أطول من المُعلَن");
-    assert.equal((await call("POST", goodBody("audio/wav", 20_000, wav(11)), "198.51.100.31")).status, 400, "الفارق في الاتجاه الآخر أيضًا");
-    assert.equal((await call("POST", goodBody("audio/wav", 49_000, wav(55)), "198.51.100.31")).status, 400, "فعلي أكبر من 50ث");
-    assert.equal((await call("POST", goodBody("audio/wav", 10_000, wav(12)), "198.51.100.32")).status, 200, "فارق ≤ 3ث مقبول");
+    const warns: unknown[][] = [];
+    const realWarn = console.warn;
+    console.warn = (...a: unknown[]) => { warns.push(a); };
+    assert.equal((await call("POST", goodBody("audio/wav", 8_000, wav(20)), "198.51.100.31")).status, 200, "فعلي 20ث ومُعلَن 8ث: يمرّ");
+    assert.equal(warns.length, 1, "سُجّل عدم التطابق");
+    assert.match(JSON.stringify(warns[0]), /declaredMs":8000,"actualMs":20000/);
+    assert.equal((await call("POST", goodBody("audio/webm", 10_000, webm(30)), "198.51.100.31")).status, 200, "webm أطول من المُعلَن: يمرّ");
+    assert.equal((await call("POST", goodBody("audio/wav", 20_000, wav(11)), "198.51.100.31")).status, 200, "الفارق في الاتجاه الآخر: يمرّ");
+    assert.equal((await call("POST", goodBody("audio/wav", 10_000, wav(12)), "198.51.100.32")).status, 200);
+    assert.equal(warns.length, 3, "فارق ≤ 3ث لا يُسجَّل");
+    console.warn = realWarn;
+    const long = await call("POST", goodBody("audio/wav", 49_000, wav(55)), "198.51.100.31");
+    assert.equal(long.status, 400, "فعلي أكبر من 50ث يُرفض ولو أعلن 49ث");
+    assert.equal((await call("POST", goodBody("audio/wav", 10_000, wav(51)), "198.51.100.31")).status, 400, "الإعلان لا يُنقص المدة الفعلية");
+  }
+  // WebM بلا Duration (Chrome): تُحسب من آخر timestamp في الـclusters؛ والترويسة المزوَّرة لا تُنقص
+  {
+    assert.ok(Math.abs((probeAudio(webm(40))?.durationMs ?? 0) - 40_000) <= 60, "بلا Duration: من الكتل");
+    assert.ok(Math.abs((probeAudio(webm(40, 5_000))?.durationMs ?? 0) - 40_000) <= 60, "Duration مزوَّرة قصيرة: تُهمَل لصالح الكتل");
+    assert.equal((await call("POST", goodBody("audio/webm", 10_000, webm(60)), "198.51.100.35")).status, 400, "webm بلا Duration فعليًا 60ث يُرفض");
+    assert.equal((await call("POST", goodBody("audio/webm", 30_000, webm(30)), "198.51.100.35")).status, 200);
+  }
+  // تعذّر استخراج المدة: تقدير متحفظ من الحجم يُحتسب في سقف الثواني
+  {
+    const unreadable = webmUnreadable(300_000);
+    const p = probeAudio(unreadable);
+    assert.equal(p?.format, "webm");
+    assert.equal(p?.durationMs, null, "لا مدة قابلة للقراءة");
+    process.env.RECITATION_GLOBAL_DAILY_SECONDS = "50"; // 300KB ≈ 100ث مقدَّرة عند 24kbps > 50
+    const est = await call("POST", goodBody("audio/webm", 20_000, unreadable), "198.51.100.36");
+    assert.equal(est.status, 503, "التقدير من الحجم يُحتسب (لا 10ث الدنيا)");
+    assert.equal(est.code, "asr_capacity");
+    delete process.env.RECITATION_GLOBAL_DAILY_SECONDS;
+    assert.equal((await call("POST", goodBody("audio/webm", 20_000, unreadable), "198.51.100.36")).status, 200, "ضمن السقف الافتراضي يمرّ");
   }
   // صيغة مزيفة: امتداد/mime يخالف النوع الحقيقي، أو بايتات عشوائية
   {
@@ -213,7 +241,7 @@ console.log("=== خدمة التفريغ: حدود وخصوصية ===");
     assert.equal(cap.status, 503, "10ث مفوترة > سقف 5ث");
     assert.equal(cap.code, "asr_capacity");
     delete process.env.RECITATION_GLOBAL_DAILY_SECONDS;
-    assert.match(read("lib/api-handlers/recitation-transcribe.js"), /Math\.ceil\(probe\.durationMs \/ 1000\)[\s\S]{0,400}cost: seconds/, "الاستهلاك بالمدة الفعلية لا المُعلَنة");
+    assert.match(read("lib/api-handlers/recitation-transcribe.js"), /Math\.ceil\(actualMs \/ 1000\)[\s\S]{0,400}cost: seconds/, "الاستهلاك بالمدة الفعلية/المقدَّرة لا المُعلَنة");
   }
   // السقف اليومي الإجمالي يحمي الرصيد
   {
