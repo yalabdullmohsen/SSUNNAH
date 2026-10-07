@@ -1,0 +1,106 @@
+{
+ "modelId": "tasmee-whisper-base-ar-quran-coreml",
+ "format": "whisperkit-coreml",
+ "upstream": "tarteel-ai/whisper-base-ar-quran",
+ "license": "Apache-2.0",
+ "releaseTag": "whisper-quran-coreml-v1",
+ "totalBytes": 149420292,
+ "archive": {
+  "name": "sunnah-whisper-base-ar-quran-coreml.zip",
+  "size": 149424128,
+  "sha256": "d05689332f8327e5e03c73986af44a364ebddb237ce5cb6e2d3ebc82812e85ec",
+  "url": "https://github.com/yalabdullmohsen/SSUNNAH/releases/download/whisper-quran-coreml-v1/sunnah-whisper-base-ar-quran-coreml.zip"
+ },
+ "files": [
+  {
+   "path": "AudioEncoder.mlmodelc/analytics/coremldata.bin",
+   "size": 243,
+   "sha256": "0889bca11516aff4395a23be7a0b4d4dc815933cee9e66bebd833a1a0006ba3d"
+  },
+  {
+   "path": "AudioEncoder.mlmodelc/coremldata.bin",
+   "size": 408,
+   "sha256": "12704cf6b34cb2e8528ce86b49084551e65fb62beb0c0f1f0de763b98bc21080"
+  },
+  {
+   "path": "AudioEncoder.mlmodelc/metadata.json",
+   "size": 1911,
+   "sha256": "f7a4183cf7e8fa551037b5335eb59f28befa959d1825a0f8c57208151bb18785"
+  },
+  {
+   "path": "AudioEncoder.mlmodelc/model.mil",
+   "size": 774152,
+   "sha256": "1644f5a2e0955bc804125001bd020826f238ccc7e19f32927f3b8690a056ff49"
+  },
+  {
+   "path": "AudioEncoder.mlmodelc/weights/weight.bin",
+   "size": 41189632,
+   "sha256": "005d4197116e6479344fe363b50bea49b3a8ce656bb38d45fff505bdc0a448b6"
+  },
+  {
+   "path": "MelSpectrogram.mlmodelc/analytics/coremldata.bin",
+   "size": 243,
+   "sha256": "a02e552ecdbfa64198664c3ae546467a9f9d683f801f37e9589c9d388a47d804"
+  },
+  {
+   "path": "MelSpectrogram.mlmodelc/coremldata.bin",
+   "size": 389,
+   "sha256": "4ce837bf349322a5bf6d1c28013a759616148e31af2bc219bd19005fa6ce7877"
+  },
+  {
+   "path": "MelSpectrogram.mlmodelc/metadata.json",
+   "size": 1947,
+   "sha256": "35c2af3f80d529907d48f886c8ac3d20b096ea0ce557bd0e6f10b01679c30b1e"
+  },
+  {
+   "path": "MelSpectrogram.mlmodelc/model.mil",
+   "size": 10134,
+   "sha256": "71cdfe15deabeb5b030b5a5197cad12d40a21c954289b21cb8244646cfeec80b"
+  },
+  {
+   "path": "MelSpectrogram.mlmodelc/weights/weight.bin",
+   "size": 354080,
+   "sha256": "801024dbc7a89c677be1f8b285de3409e35f7d1786c9c8d9d0d6842ac57a1c83"
+  },
+  {
+   "path": "TextDecoder.mlmodelc/analytics/coremldata.bin",
+   "size": 243,
+   "sha256": "455c0315fe76db1eeae744832946a25ca2570682c104101764f87f7c8fc35dd4"
+  },
+  {
+   "path": "TextDecoder.mlmodelc/coremldata.bin",
+   "size": 694,
+   "sha256": "846c0c0c49bf95de401157a63069c421f94f66b0a30d96db84f913b8c9cdc046"
+  },
+  {
+   "path": "TextDecoder.mlmodelc/metadata.json",
+   "size": 4854,
+   "sha256": "2586b4d2c180fec04f10efef8f318fcb05fcee27c1bfedca29ff501931b3597b"
+  },
+  {
+   "path": "TextDecoder.mlmodelc/model.mil",
+   "size": 192244,
+   "sha256": "bc1af69c5d75a55b6af97956fb36bb5a0f3a33db658aa18af5426434d9686fa5"
+  },
+  {
+   "path": "TextDecoder.mlmodelc/weights/weight.bin",
+   "size": 104122162,
+   "sha256": "a84026dace4c29c5953acac186fbd32a8389e6ed52bcebd10cd600d8fdb89812"
+  },
+  {
+   "path": "generation_config.json",
+   "size": 3807,
+   "sha256": "444b3f636d2fff89dd9ecf549e2a085b61f7ff0fa0246d4628bac6a3b8cc9ba4"
+  },
+  {
+   "path": "tokenizer.json",
+   "size": 2480466,
+   "sha256": "27fc476bfe7f17299480be2273fc0608e4d5a99aba2ab5dec5374b4482d1a566"
+  },
+  {
+   "path": "tokenizer_config.json",
+   "size": 282683,
+   "sha256": "2a4c4281cf9f51ac6ccc406fdc711a087afe6530f671fa7b80953edc498275ce"
+  }
+ ]
+}

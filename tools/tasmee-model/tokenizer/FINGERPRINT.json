@@ -1,0 +1,20 @@
+{
+ "source": "openai/whisper-base@e37978b90ca9030d5170a5c07aadb050351a65bb (tokenizer.json مطابق بايتًا لـopenai/whisper-tiny)",
+ "license": "MIT",
+ "addedTokensCount": 1608,
+ "vocabSize": 50258,
+ "specialTokenIds": {
+  "<|endoftext|>": 50257,
+  "<|startoftranscript|>": 50258,
+  "<|ar|>": 50272,
+  "<|translate|>": 50358,
+  "<|transcribe|>": 50359,
+  "<|startofprev|>": 50361,
+  "<|nocaptions|>": 50362,
+  "<|notimestamps|>": 50363,
+  "<|0.00|>": 50364,
+  "<|30.00|>": 51864
+ },
+ "tokenizerJsonSha256": "27fc476bfe7f17299480be2273fc0608e4d5a99aba2ab5dec5374b4482d1a566",
+ "tokenizerConfigSha256": "2a4c4281cf9f51ac6ccc406fdc711a087afe6530f671fa7b80953edc498275ce"
+}

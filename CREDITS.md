@@ -27,6 +27,8 @@
 | AlQuran Cloud — ترجمات | ترجمات اختيارية في شيت الآية | شروط الخدمة — **جزئي** | https://alquran.cloud |
 | مجمع الملك فهد — التفسير الميسّر (عبر Quran.com) | طبعة تفسير | إسناد لجهة الإصدار — **يُؤكد الترخيص** | — |
 | تفسير صوتي (مصحف) | بث دروس تفسير مرتبطة بآية/مقطع | **معطّل عمدًا** — كتالوج فارغ | — |
+| Tarteel — `whisper-base-ar-quran` (على OpenAI Whisper) | التعرّف الصوتي على الجهاز في وضع «تسميع» (محوَّل CoreML، يُنزَّل عند الطلب) | Apache-2.0 (أصله MIT) — **جزئي**: بيانات التدريب غير موثّقة | https://huggingface.co/tarteel-ai/whisper-base-ar-quran |
+| WhisperKit (Argmax) | تشغيل النموذج على الجهاز | MIT | https://github.com/argmaxinc/argmax-oss-swift |
 | everyayah.com — بث آية بآية | صوت تلاوة حي (HTTP stream) | **جزئي** — لا ملفات في الحزمة | https://everyayah.com |
 | mp3quran.net — بث/تنزيل اختياري لسور كاملة | صوت سورة كاملة؛ تنزيل اختياري محلي بحدود حجم | **جزئي** | https://mp3quran.net |
 | حصن المسلم (أذكار مستندة) | أذكار/أدعية مع إسناد | حقوق الجمع — **مطلوب** | — |

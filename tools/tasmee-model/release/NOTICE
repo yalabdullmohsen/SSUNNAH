@@ -1,0 +1,45 @@
+sunnah-whisper-quran-coreml (GitHub Release assets of yalabdullmohsen/SSUNNAH)
+Copyright 2026 Sunnah (majlisilm.com)
+
+These release assets redistribute a Core ML conversion of the following works, under their original licenses.
+It is a DERIVATIVE WORK; the modifications are listed below.
+
+1. tarteel-ai/whisper-base-ar-quran  — Apache License 2.0
+   https://huggingface.co/tarteel-ai/whisper-base-ar-quran (commit 5c3c53fdf9272c4f6ee0bee09a1e5a4a615ee25c)
+2. OpenAI Whisper (the model above is a fine-tune of openai/whisper-base) — MIT License
+   https://github.com/openai/whisper
+
+MODIFICATIONS (no retraining, no fine-tuning, no change to the learned weights' values beyond numeric precision):
+  - PyTorch weights (pytorch_model.bin) were loaded with torch.load(weights_only=True) and re-saved as safetensors.
+  - generation_config.json was taken from openai/whisper-base (alignment heads); the models are fine-tuned from those checkpoints.
+  - The only modification is the conversion to Core ML and shipping the official tokenizer.json — no training or fine-tuning.
+  - The models were converted to Core ML (.mlmodelc, float16) with Argmax whisperkittools (MIT) — WhisperAudioEncoder,
+    WhisperTextDecoder and MelSpectrogram, in the layout expected by WhisperKit (argmaxinc/argmax-oss-swift, MIT).
+  - tokenizer.json / tokenizer_config.json are copied unchanged from openai/whisper-base (MIT); the models' vocab.json was verified to be a subset with identical ids.
+Conversion scripts: tools/tasmee-model in https://github.com/yalabdullmohsen/SSUNNAH
+
+Provenance caveat: the upstream model card does not document the training dataset. The Apache-2.0 license of the weights
+is as published by the upstream authors.
+
+----- OpenAI Whisper license (MIT) -----
+MIT License
+
+Copyright (c) 2022 OpenAI
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
