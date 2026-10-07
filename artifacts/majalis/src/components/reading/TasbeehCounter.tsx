@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTasbeehCounter } from "@/hooks/useTasbeehCounter";
 import { TASBEEH_PRESETS, type TasbeehWird } from "@/lib/tasbeeh-storage";
 import { Button } from "@/components/ui/button";
+import "@/styles/highlighted-content.css";
 
 /** أهداف لوحة المفاتيح التي تملك تفعيلها الأصلي — اختصارات العدّاد لا تعمل فوقها */
 const INTERACTIVE_TARGET =

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { Smartphone } from "lucide-react";
-import { PageHeader } from "@/components/ui-common";
+import { Button, Notice, PageHero, Picker, Sheet, StatGrid, StatTile } from "@/design-system";
+import { formatNumber } from "@/lib/format";
 import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
@@ -17,18 +17,8 @@ import {
   readSavedGeoLocation,
   writeSavedGeoLocation,
 } from "@/lib/qibla-location";
-import { toArabicDigits } from "@/lib/utils";
 import "@/styles/pages/qibla.css";
-import { DetailScreen } from "@/components/design-system/screens";
-import { FieldLabel } from "@/components/design-system/FormFields";
-import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
 function QiblaCompass({
   bearing,
   heading,
@@ -271,166 +261,75 @@ export default function QiblaPage() {
 
   const showCalib = needsCalibration && !calibDismissed;
 
-  return (
-    <DetailScreen compose="mark">
-    <div className="page-shell narrow qibla-page">
-      <PageHeader
-        eyebrow="الأدوات"
-        title="اتجاه القبلة"
-        subtitle="وجّه الجهاز حتى يشير السهم إلى الكعبة المشرفة."
-      />
+  const deg = (v: number, digits = 0) => `${formatNumber(v, { maximumFractionDigits: digits, minimumFractionDigits: digits })}°`;
 
-      <div className="qibla-wrap">
+  return (
+    <div className="sn-screen" data-testid="qibla-screen">
+      <div className="sn-container sn-container-below-bar sn-stack sn-stack--lg">
+        <PageHero tag="الأدوات" title="اتجاه القبلة" description="وجّه الجهاز حتى يشير السهم إلى الكعبة المشرفة." />
+
         {manualMode && (
-          <div className="qibla-manual" role="region" aria-label="اختيار المدينة يدوياً">
-            {error && <p className="qibla-error">{error}</p>}
-            <FieldLabel htmlFor="qibla-city-select" className="qibla-manual-label">
-              اختر مدينتك:
-            </FieldLabel>
-            <div className="qibla-manual-row">
-              <Select value={selectedCity} onValueChange={setSelectedCity}>
-                <SelectTrigger
-                  id="qibla-city-select"
-                  className="qibla-city-select min-h-11 text-base"
-                  aria-label="اختر مدينتك"
-                  dir="rtl"
-                >
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {QIBLA_CITIES.map((c) => (
-                    <SelectItem key={c.name} value={c.name}>
-                      {c.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <Button
-                type="button"
-                className="qibla-manual-btn"
-                onClick={() => applyManualCity(selectedCity)} variant="primary">
-                احسب القبلة
-              </Button>
-              {typeof navigator !== "undefined" && navigator.geolocation ? (
-                <Button
-                  type="button"
-                  className="qibla-manual-btn qibla-manual-btn--gps"
-                  onClick={() => requestDeviceLocation()} variant="secondary">
-                  استخدم موقعي
-                </Button>
-              ) : null}
-            </div>
-          </div>
+          <section className="sn-stack" aria-label="اختيار المدينة يدويًا">
+            {error ? <Notice tone="danger">{error}</Notice> : null}
+            <Picker
+              label="اختر مدينتك"
+              value={selectedCity}
+              onChange={setSelectedCity}
+              options={QIBLA_CITIES.map((c) => ({ value: c.name, label: c.name }))}
+            />
+            <Button variant="primary" block onClick={() => applyManualCity(selectedCity)}>احسب القبلة</Button>
+            {typeof navigator !== "undefined" && navigator.geolocation ? (
+              <Button variant="secondary" block icon="location" onClick={() => requestDeviceLocation()}>استخدم موقعي</Button>
+            ) : null}
+          </section>
         )}
 
         {!manualMode && bearing == null && (
-          <div className="qibla-loading-wrap">
-            <p className="qibla-loading">حدد موقعك لحساب اتجاه القبلة.</p>
-            <Button type="button" className="qibla-permit-btn" onClick={() => requestDeviceLocation()} variant="secondary">
-              استخدم موقعي
-            </Button>
-          </div>
+          <section className="sn-stack">
+            <Notice>حدد موقعك لحساب اتجاه القبلة.</Notice>
+            <Button variant="secondary" block onClick={() => requestDeviceLocation()}>استخدم موقعي</Button>
+          </section>
         )}
 
         {bearing != null && (
           <>
             <QiblaCompass bearing={bearing} heading={heading} aligned={aligned} />
 
-            {aligned && (
-              <div className="qibla-aligned-badge" role="status" aria-live="polite">
-                ✓ أنت متجه نحو القبلة
-              </div>
-            )}
+            {aligned && <Notice tone="success">✓ أنت متجه نحو القبلة</Notice>}
 
-            <div className="qibla-info-row">
-              <div className="qibla-info-card">
-                <span className="qibla-info-label">الاتجاه من الشمال</span>
-                <strong className="qibla-info-value">
-                  {toArabicDigits(String(Math.round(bearing)))}°
-                </strong>
-              </div>
-              {dist != null && (
-                <div className="qibla-info-card">
-                  <span className="qibla-info-label">المسافة إلى الكعبة</span>
-                  <strong className="qibla-info-value">
-                    {toArabicDigits(Math.round(dist).toLocaleString("en-US"))} كم
-                  </strong>
-                </div>
-              )}
-              {delta != null && (
-                <div className="qibla-info-card">
-                  <span className="qibla-info-label">الانحراف</span>
-                  <strong className={`qibla-info-value${aligned ? " qibla-aligned" : ""}`}>
-                    {toArabicDigits(delta.toFixed(1))}°
-                  </strong>
-                </div>
-              )}
-            </div>
+            <StatGrid>
+              <StatTile label="الاتجاه من الشمال" value={deg(Math.round(bearing))} />
+              {dist != null && <StatTile label="المسافة إلى الكعبة" value={`${formatNumber(Math.round(dist))}\u00A0كم`} />}
+              {delta != null && <StatTile label="الانحراف" value={deg(delta, 1)} />}
+            </StatGrid>
 
             {(placeLabel || coordsLabel) && (
-              <p className="qibla-geo-meta" dir="rtl">
-                {placeLabel && <span className="qibla-geo-place">{placeLabel}</span>}
-                {coordsLabel && <span className="qibla-geo-coords">{coordsLabel}</span>}
-                {accuracy != null && (
-                  <span className="qibla-geo-acc">
-                    دقة البوصلة ≈ {toArabicDigits(String(Math.round(accuracy)))}°
-                  </span>
-                )}
+              <p className="sn-t-secondary">
+                {[placeLabel, coordsLabel, accuracy != null ? `دقة البوصلة ≈ ${deg(Math.round(accuracy))}` : ""].filter(Boolean).join(" · ")}
               </p>
             )}
 
             {permission === "needed" && (
-              <Button type="button" className="qibla-permit-btn" onClick={() => void requestPermission()} variant="secondary">
-                تفعيل مستشعر الاتجاه
-              </Button>
+              <Button variant="secondary" block onClick={() => void requestPermission()}>تفعيل مستشعر الاتجاه</Button>
             )}
 
             {heading == null && permission !== "needed" && (
-              <p className="qibla-hint">
-                <Smartphone size={13} className="inline ms-1" />
-                على الجوال: وجّه الهاتف في الاتجاه الذي يشير فيه السهم.
-              </p>
+              <p className="sn-t-secondary">على الجوال: وجّه الهاتف في الاتجاه الذي يشير فيه السهم.</p>
             )}
           </>
         )}
-      </div>
 
-      {showCalib && (
-        <div
-          className="qibla-calib-backdrop"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="qibla-calib-title"
-        >
-          <div className="qibla-calib-modal">
-            <p className="qibla-calib-figure" aria-hidden="true">
-              ٨
-            </p>
-            <h2 id="qibla-calib-title" className="qibla-calib-title">
-              معايرة البوصلة
-            </h2>
-            <p className="qibla-calib-body">
-              دقة المستشعر منخفضة. حرّك الهاتف على شكل الرقم «٨» في الهواء عدة مرات بعيداً عن المعادن
-              والمغناطيس، ثم أعد المحاولة.
-            </p>
-            <Button
-              type="button"
-              className="qibla-permit-btn"
-              onClick={() => setCalibDismissed(true)} variant="secondary">
-              حسناً
-            </Button>
+        <Sheet open={showCalib} onClose={() => setCalibDismissed(true)} title="معايرة البوصلة">
+          <div className="sn-stack">
+            <p>دقة المستشعر منخفضة. حرّك الهاتف على شكل الرقم «٨» في الهواء عدة مرات بعيدًا عن المعادن والمغناطيس، ثم أعد المحاولة.</p>
+            <Button variant="secondary" block onClick={() => setCalibDismissed(true)}>حسنًا</Button>
           </div>
-        </div>
-      )}
+        </Sheet>
 
-      <RelatedKnowledge kind="fatwa" query="القبلة والصلاة" title="معرفة ذات صلة بالقبلة" limit={6} />
-      <div className="twh-share">
+        <RelatedKnowledge kind="fatwa" query="القبلة والصلاة" title="معرفة ذات صلة بالقبلة" limit={6} />
         <ShareButtons title="اتجاه القبلة — سُنّة" url="https://www.ssunnah.com/qibla" />
-      </div>
-      <div className="px-4 pb-6 mt-4">
         <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في أحكام القبلة والصلاة" count={4} />
       </div>
     </div>
-    </DetailScreen>
   );
 }

@@ -52,15 +52,12 @@ assert.match(dialogHook, /returnFocusRef/);
 assert.match(dialogHook, /active !== document\.body/, "المُشغِّل المُزال لا يُعاد إليه التركيز (body)");
 
 const tasbih = src("pages/worship/ui/TasbihView.tsx");
-assert.match(tasbih, /`tasbih-wird-pill\$\{item\.id === active\?\.id \? " is-active" : ""\}`/, "مسافة قبل is-active");
-assert.doesNotMatch(tasbih, /\? "is-active" : ""/);
-assert.match(tasbih, /role="tablist"[\s\S]{0,800}role="tab"[\s\S]{0,600}onKeyDown=\{onTablistKeyDown\}/);
-assert.match(tasbih, /tabIndex=\{item\.id === active\?\.id \? 0 : -1\}/);
+assert.match(tasbih, /<SegmentedTabs[\s\S]{0,300}onChange=/, "تبويبات الأوراد عبر SegmentedTabs (لوحة المفاتيح مدمجة)");
 assert.match(tasbih, /id="tasbih-wird-panel"\s+role="tabpanel"/);
 assert.match(tasbih, /useDialogKeyboard\(confirmDelete, confirmRef, closeConfirm/);
-assert.match(tasbih, /ref=\{confirmRef\} className="tasbih-confirm" role="alertdialog"/);
+assert.match(tasbih, /ref=\{confirmRef\}[^>]*role="alertdialog"/);
 assert.doesNotMatch(tasbih, /tasbih-sync-note/, "ملاحظة المزامنة لا تُدرج فوق المحتوى (CLS)");
-assert.match(tasbih, /className="tasbih-offline-note" role="status"[\s\S]{0,200}syncNote/);
+assert.match(tasbih, /role="status"[\s\S]{0,200}syncNote/);
 
 const counter = src("components/reading/TasbeehCounter.tsx");
 assert.match(counter, /const INTERACTIVE_TARGET =[\s\S]*button[\s\S]*a\[href\][\s\S]*\[role="tab"\]/);
