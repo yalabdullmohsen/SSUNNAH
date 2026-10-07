@@ -14,7 +14,7 @@ Wake Lock / StatusBar / Web Speech.
 | `EducationalProgressController` | `lib/educational-progress-controller.ts` |
 | `QuranRepository` + tafsir sample | `lib/quran-repository.ts`, `TafsirModalViewer` |
 | `SmartSearchEngine` | `lib/smart-search-engine.ts`, `SmartSearchPanel` |
-| `MajlisIlmApp` / `MainNavigationScreen` | `components/majlis/MainNavigationScreen.tsx`, `@/majlis` |
+| `MajlisIlmApp` / `MainNavigationScreen` | حُذف (الصدفة القديمة؛ انظر reports/tech-debt.md) |
 | `just_audio` AudioService | `lib/majlis-audio-service.ts` (`HTMLAudioElement` + everyayah) |
 | `shared_preferences` LocalStorageService | `lib/majlis-local-storage-service.ts` |
 | `speech_to_text` AIRecitationWidget | `components/majlis/AIRecitationWidget.tsx` + `useRecitationTest` |

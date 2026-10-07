@@ -59,7 +59,6 @@ function main() {
 
   const root = join(dirname(fileURLToPath(import.meta.url)), "..");
   for (const f of [
-    "components/majlis/MainNavigationScreen.tsx",
     "components/majlis/EducationalCoursesWidget.tsx",
     "components/majlis/SmartSearchPanel.tsx",
     "components/majlis/QuranReaderWidget.tsx",
