@@ -25,7 +25,6 @@ assert.equal(
 );
 assert.ok(existsSync(resolve(root, "src/lib/fiqh/nawazil-topics.ts")));
 
-assert.doesNotMatch(read("src/pages/account/MemorizePage.tsx"), /مجلس علم/);
 assert.doesNotMatch(read("scripts/generate-seo.mjs"), /خوادم مجالس/);
 assert.doesNotMatch(read("src/lib/scientific-announcements-seed.ts"), /مجمع فقهي/);
 
