@@ -21,6 +21,8 @@ export type SharedPrayerSnapshotPayload = {
   currentPrayerNameAr?: string;
   currentPrayerStartedAtEpochMs?: number;
   nextTransitionAtEpochMs?: number;
+  /** نافذة «مضى على الأذان» بالدقائق (إقامة المستخدم أو 30) — Swift `elapsedWindowMinutes`. */
+  elapsedWindowMinutes?: number;
   calculationDate?: string;
   calculationMethodIdentifier?: string;
   permissionState?: string;

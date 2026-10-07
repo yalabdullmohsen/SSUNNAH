@@ -48,7 +48,7 @@ struct StandByPrayerCountdownView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(entry.nextNameAr ?? "الصلاة التالية")
+            Text(entry.nextDisplayName ?? "الصلاة التالية")
                 .font(.title2.bold())
                 .foregroundStyle(.white)
             PrayerCountdownText(entry: entry)
@@ -63,7 +63,7 @@ struct StandByPrayerCountdownView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .padding(16)
-        .accessibilityLabel("العد التنازلي للصلاة التالية \(entry.nextNameAr ?? "")")
+        .accessibilityLabel(entry.elapsedNameAr.map { "مضى على أذان \($0)" } ?? "العد التنازلي للصلاة التالية \(entry.nextNameAr ?? "")")
     }
 }
 
@@ -151,7 +151,7 @@ struct StandByTodayInSunnahView: View {
             Text("اليوم في سُنّة")
                 .font(.caption.bold())
                 .foregroundStyle(SunnahBrandColors.gold)
-            Text(entry.prayer.nextNameAr ?? entry.prayer.currentNameAr ?? "الصلاة")
+            Text(entry.prayer.nextDisplayName ?? entry.prayer.currentNameAr ?? "الصلاة")
                 .font(.largeTitle.bold())
                 .foregroundStyle(.white)
             PrayerCountdownText(entry: entry.prayer)

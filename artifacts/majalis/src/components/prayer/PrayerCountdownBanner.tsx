@@ -13,7 +13,7 @@ import {
 import { useSharedPrayerCountdownLive } from "@/components/prayer/PrayerCountdownProvider";
 import { IconButton } from "@/components/design-system/Buttons";
 import { PRE_ALERT_MINUTES, isBannerDismissedFor, dismissBannerFor, loadPrayerAlertPrefs } from "@/lib/prayer-alert-preferences";
-import { formatAdhanRemainingPhrase } from "@/lib/prayer-ticker-copy";
+import { formatAdhanRemainingPhrase, formatElapsedSincePhrase } from "@/lib/prayer-ticker-copy";
 import "@/styles/components/prayer-countdown-banner.css";
 
 const PRAYER_ICONS: Record<string, LucideIcon> = {
@@ -24,12 +24,10 @@ const PRAYER_ICONS: Record<string, LucideIcon> = {
   "العشاء": Stars,
 };
 
-const POST_ADHAN_MAX_SEC = 35 * 60;
-
 /**
  * شريط صلاة موحّد:
  * - قبل الصلاة بـ15 دقيقة: عدّ تنازلي
- * - بعد الأذان حتى 35 دقيقة: «مضى على الأذان»
+ * - بعد الأذان حتى نهاية النافذة (إقامة المستخدم أو 30 دقيقة): «مضى على الأذان»
  * - بعد ذلك يختفي ويعود شريط الصلاة القادمة عبر مسارات أخرى
  */
 export function PrayerCountdownBanner() {
@@ -60,10 +58,10 @@ export function PrayerCountdownBanner() {
   let label = "";
   let timer = "";
 
-  if (inGrace && countdown.sinceSeconds != null && countdown.sinceSeconds <= POST_ADHAN_MAX_SEC) {
+  if (inGrace && countdown.sinceSeconds != null && countdown.sinceSeconds <= countdown.elapsedWindowSeconds) {
     mode = "elapsed";
     label = `مضى على أذان ${countdown.next.name}`;
-    timer = formatAdhanRemainingPhrase(countdown.sinceSeconds);
+    timer = formatElapsedSincePhrase(countdown.sinceSeconds);
   } else if (!inGrace) {
     const remainingSeconds = Math.round(countdown.remainingMs / 1000);
     const minutesRemaining = Math.ceil(remainingSeconds / 60);

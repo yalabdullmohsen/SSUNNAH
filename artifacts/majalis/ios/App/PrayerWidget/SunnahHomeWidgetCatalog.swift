@@ -80,7 +80,7 @@ struct TodayInSunnahView: View {
                         Text(entry.prayer.currentNameAr ?? "قبل الفجر")
                             .font(.headline)
                             .foregroundStyle(.white)
-                        Text(entry.prayer.nextNameAr.map { "التالي \($0)" } ?? "الصلاة التالية")
+                        Text(entry.prayer.nextLine("التالي") ?? "الصلاة التالية")
                             .font(.caption)
                             .foregroundStyle(SunnahWidgetTheme.secondaryText)
                     }

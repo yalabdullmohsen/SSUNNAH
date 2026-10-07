@@ -293,7 +293,7 @@
     "test:quiz-game-reducer": "node --import tsx src/components/quiz-game/__tests__/game-reducer.test.ts",
     "test:scholarly-content-guard": "node --import tsx src/lib/__tests__/scholarly-content-guard.test.ts && pnpm run test:public-weak-content",
     "test:daily-content-consolidation": "node --import tsx src/lib/__tests__/daily-content-consolidation.test.ts",
-    "test:header-ticker": "node --import tsx src/lib/__tests__/header-ticker.test.ts && node --import tsx src/lib/__tests__/prayer-countdown-chip-gate.test.ts",
+    "test:header-ticker": "node --import tsx src/lib/__tests__/header-ticker.test.ts && node --import tsx src/lib/__tests__/prayer-countdown-chip-gate.test.ts && node --import tsx src/lib/__tests__/prayer-phase.test.ts && node scripts/test-prayer-elapsed-phase-swift.mjs",
     "test:hadith-corpus-stats": "node --import tsx src/lib/__tests__/hadith-corpus-stats-gate.test.ts",
     "test:hadith-section-ui": "node --import tsx src/lib/__tests__/hadith-section-ui-gate.test.ts",
     "test:hadith-data-truth": "node --import tsx src/lib/__tests__/hadith-data-truth-gate.test.ts",

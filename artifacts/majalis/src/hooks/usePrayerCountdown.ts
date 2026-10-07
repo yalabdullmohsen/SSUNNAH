@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   computePrayerCountdown,
   fetchPrayerTimes,
@@ -12,6 +12,7 @@ import { setPrayerTimesCache } from "@/lib/lesson-time";
 import { subscribeSecondTick } from "@/lib/second-tick";
 import { subscribePrayerDayRollover } from "@/lib/prayer-day-rollover";
 import { markPrayer } from "@/lib/prayer-performance-marks";
+import { getElapsedWindowMinutes, subscribeElapsedWindow } from "@/lib/prayer-elapsed-window";
 
 const FETCH_TIMEOUT_MS = 4_000;
 
@@ -88,11 +89,14 @@ export function usePrayerCountdownState(
     const seed = initialPayload(governorateId);
     if (!seed?.prayers?.length) return null;
     markPrayer("prayer:calculation-ready");
-    return computePrayerCountdown(seed.prayers, activeTz(seed));
+    return computePrayerCountdown(seed.prayers, activeTz(seed), { elapsedWindowMinutes: getElapsedWindowMinutes() });
   });
   /** لا يمنع الرسم — يبقى للتوافق مع المستهلكين القدامى */
   const [loading, setLoading] = useState(() => (enabled ? !initialPayload(governorateId) : false));
   const [reloadToken, setReloadToken] = useState(0);
+  /** نافذة «مضى على الأذان» من إقامة المستخدم؛ تتحدّث فورًا عند تغيير الإعداد */
+  const windowRef = useRef(getElapsedWindowMinutes());
+  useEffect(() => subscribeElapsedWindow((m) => { windowRef.current = m; }), []);
 
   const reload = useCallback(() => {
     setReloadToken((n) => n + 1);
@@ -107,7 +111,9 @@ export function usePrayerCountdownState(
     const seed = initialPayload(governorateId);
     setData(seed);
     setCountdown(
-      seed?.prayers?.length ? computePrayerCountdown(seed.prayers, activeTz(seed)) : null,
+      seed?.prayers?.length
+        ? computePrayerCountdown(seed.prayers, activeTz(seed), { elapsedWindowMinutes: windowRef.current })
+        : null,
     );
     if (seed?.prayers?.length) syncLessonCache(seed);
     setLoading(!seed);
@@ -124,7 +130,9 @@ export function usePrayerCountdownState(
       markPrayer("prayer:timezone-ready");
       markPrayer("prayer:location-ready");
       markPrayer("prayer:calculation-ready");
-      setCountdown(computePrayerCountdown(payload.prayers, activeTz(payload)));
+      setCountdown(
+        computePrayerCountdown(payload.prayers, activeTz(payload), { elapsedWindowMinutes: windowRef.current }),
+      );
     });
 
     return () => {
@@ -143,7 +151,7 @@ export function usePrayerCountdownState(
     const tz = activeTz(data);
     /* كل نبضة: فرق الهدف عن Date.now عبر computePrayerCountdown — لا تراكم */
     return subscribeSecondTick(() => {
-      setCountdown(computePrayerCountdown(prayers, tz));
+      setCountdown(computePrayerCountdown(prayers, tz, { elapsedWindowMinutes: windowRef.current }));
     });
   }, [enabled, data]);
 
