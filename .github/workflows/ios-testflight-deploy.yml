@@ -11,6 +11,11 @@ on:
         required: false
         type: string
         default: ""
+      tasmee_diagnostics:
+        description: "بناء قياس التسميع الداخلي (شاشة مخفية؛ لا يُرسل لمراجعة App Store). افتراضيًا: لا"
+        required: false
+        type: boolean
+        default: false
 
 concurrency:
   group: ios-testflight-${{ github.ref }}
@@ -41,6 +46,10 @@ jobs:
           XCODE="$(ls -d /Applications/Xcode_*.app 2>/dev/null | grep -v -i beta | sort -V | tail -1)"
           sudo xcode-select -s "${XCODE:-/Applications/Xcode.app}/Contents/Developer"
           xcodebuild -version
+          # بناء TestFlight/App Store على Xcode مستقر فقط (لا beta/RC)
+          if xcodebuild -version | grep -qiE "beta|release candidate|\bRC\b"; then
+            echo "::error::Xcode التجريبي غير مسموح لبناء TestFlight"; exit 1
+          fi
 
       - name: Setup Node.js
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
@@ -56,6 +65,8 @@ jobs:
         env:
           PORT: "24216"
           BASE_PATH: "/"
+          # شاشة قياس التسميع تُجمَّع فقط عند الطلب الصريح في تشغيل يدوي (لا في وسوم v*)
+          VITE_TASMEE_DIAGNOSTICS: ${{ github.event.inputs.tasmee_diagnostics == 'true' && '1' || '' }}
         run: |
           set -euo pipefail
           pnpm install --frozen-lockfile
@@ -110,6 +121,7 @@ jobs:
           APP_IDENTIFIER: ${{ env.APP_IDENTIFIER }}
           TESTFLIGHT_CHANGELOG: ${{ github.event.inputs.changelog || github.event.head_commit.message || github.ref_name }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          TASMEE_DIAGNOSTICS: ${{ github.event.inputs.tasmee_diagnostics == 'true' && '1' || '' }}
         run: bundle exec fastlane ios beta
 
       - name: Upload IPA artifact
