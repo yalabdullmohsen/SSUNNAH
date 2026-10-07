@@ -40,7 +40,6 @@ html[data-v2-lessons="1"] .lesson-unified-card {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
   background: var(--cs-surface-3, var(--mj-white)) !important;
-  background-color: var(--cs-surface-3, var(--mj-white)) !important;
   background-image: none !important;
   box-shadow: var(--cs-shadow, var(--v2-shadow-soft));
   color: var(--cs-text-primary, var(--sf-color-rich-ink)) !important;
@@ -182,7 +181,6 @@ html[data-v2-sections="1"] .section-entry-card {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
   background: var(--cs-surface-3, var(--mj-white)) !important;
-  background-color: var(--cs-surface-3, var(--mj-white)) !important;
   background-image: none !important;
   box-shadow: var(--cs-shadow, var(--v2-shadow-soft));
   min-height: 6.5rem;

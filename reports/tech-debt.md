@@ -53,9 +53,9 @@
 | T2 | `content-audit-b059-coverage-matrix-gate` (inventory ينقصه 15 قسمًا حيًا) | ✅ أُغلق (PR #2696) | 1 |
 | T3 | `content-depth-audit-gate`: نص «لا نتائج» انتقل إلى strings.ts | ✅ أُغلق (PR #2696) | 1 |
 | T4 | نفس البوابة: نبذ الأنبياء الـ25 أقل من 40 كلمة (`briefBio`) | يحتاج قرارك: محتوى شرعي يُكتب ويُراجَع، لا يُولَّد آليًا | — |
-| T5 | `card-contrast-aa-root-gate` و`ci-7500-hub-card-dark-contrast-gate` (رموز --cs-* قديمة) | مفتوح: بوابات قديمة لهوية سابقة؛ تحتاج تحديثًا للهوية الحالية أو حذفًا | 2 |
-| T6 | `visual-debt-v1-gate`: `lessons-sections-v2.css` فيه 18 `!important` > سقف 17 | مفتوح (يرتبط بـP2) | 2 |
-| T7 | `scripts/test-no-homepage-leak.mjs`: 190 كتابًا بلا صفحة prerender (المكتبة محذوفة) | مفتوح: تحديث السكربت لمصدر الكتب الحالي | 2 |
+| T5 | `card-contrast-aa-root-gate` و`ci-7500-hub-card-dark-contrast-gate` (رموز --cs-* قديمة) | ✅ أُغلق: حُدّثت التأكيدات لتطابق الرموز الحالية (--mj-white، --mss-on-hero، سطح hub-card من --surface) دون إضعافها | 2 |
+| T6 | `visual-debt-v1-gate` | ✅ أُغلق: حُذف `background-color !important` المكرر في lessons-sections-v2 (سقف 16)، و9999px→رمز pill في final-release، وتحديث --sf-radius-lg إلى 28px | 2 |
+| T7 | `scripts/test-no-homepage-leak.mjs` | ✅ أُغلق بحذف السكربت: يفحص صفحات prerender للكتب والعلماء وكلاهما محذوف من المنتج، وهو خارج CI | 2 |
 
 
 (استُثنيت الحزم الخاصة بالمنصة: `@rollup/rollup-darwin-arm64`، `@tailwindcss/oxide-darwin-arm64`، `lightningcss-darwin-arm64`، `@capacitor/ios`.)

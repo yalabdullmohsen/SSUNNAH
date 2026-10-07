@@ -46,8 +46,8 @@ assert.match(shell, /luxury-night-ink|#edf5f0/);
 /* عناوين PageHero على سطح الحبر الداكن = on-ink لا rich-ink */
 assert.match(
   pageHero,
-  /color:\s*var\(--cs-on-ink-title,\s*#f7f1e4\)\s*!important/,
-  "عنوان الهيرو العام يستخدم --cs-on-ink-title",
+  /color:\s*var\(--(?:cs-on-ink-title,\s*#f7f1e4|mss-on-hero,\s*var\(--v2-color-ink\))\)\s*!important/,
+  "عنوان الهيرو العام يستخدم رمز on-ink/on-hero",
 );
 assert.ok(
   !/^\.page-hero-mj__title\s*\{[^}]*color:\s*var\(--svl-text-primary/m.test(pageHero),

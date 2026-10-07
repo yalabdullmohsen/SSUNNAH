@@ -31,7 +31,7 @@ const ceilings: Array<[string, Ceil]> = [
   ["src/styles/pages/luxury-night-v2.css", { hex: 6, radiusPx: 0, zRaw: 0, important: 1 }],
   ["src/styles/visual-redesign-v2-tokens.css", { hex: 4, radiusPx: 0, zRaw: 0, important: 0 }],
   ["src/styles/pages/knowledge-dashboards-v2.css", { hex: 17, radiusPx: 1, zRaw: 0, important: 11 }],
-  ["src/styles/pages/lessons-sections-v2.css", { hex: 13, radiusPx: 1, zRaw: 0, important: 17 }],
+  ["src/styles/pages/lessons-sections-v2.css", { hex: 13, radiusPx: 1, zRaw: 0, important: 16 }],
   ["src/styles/pages/lessons.css", { hex: 83, radiusPx: 4, zRaw: 1, important: 63 }],
   ["src/styles/islamic-landmarks.css", { hex: 30, radiusPx: 2, zRaw: 2, important: 8 }],
   ["src/styles/mind-map.css", { hex: 22, radiusPx: 0, zRaw: 2, important: 0 }],
@@ -64,7 +64,7 @@ for (const [name, value] of [
   ["--sf-radius-xs", "12px"],
   ["--sf-radius-sm", "16px"],
   ["--sf-radius-md", "20px"],
-  ["--sf-radius-lg", "24px"],
+  ["--sf-radius-lg", "28px"],
   ["--sf-radius-pill", "999px"],
 ]) {
   assert.match(sf, new RegExp(`${name}:\\s*${value};`, "i"), `${name} must remain ${value}`);

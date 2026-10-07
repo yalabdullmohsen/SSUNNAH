@@ -54,7 +54,7 @@ assert.match(sf, /--sf-hairline:\s*rgba\(\s*15,\s*92,\s*63,\s*0\.12\s*\)/i);
 assert.match(tokens, /--cs-text-primary:\s*var\(--sf-color-rich-ink/);
 assert.match(tokens, /--cs-text-secondary:\s*var\(--sf-color-rich-ink-soft/);
 assert.match(tokens, /--cs-text-muted:\s*var\(--sf-color-rich-ink-muted/);
-assert.match(tokens, /--cs-surface-3:\s*#ffffff/i);
+assert.match(tokens, /--cs-surface-3:\s*(#ffffff|var\(--mj-white\))/i);
 assert.match(tokens, /--cs-border:\s*var\(--sf-hairline/);
 
 console.log("=== نسب تباين AA ===");
@@ -90,17 +90,17 @@ assert.doesNotMatch(
   "وصف البطاقة بلا كريم on-ink",
 );
 
-assert.match(shell, /html\[data-v2-app="1"\] \.hub-card[\s\S]{0,500}?--cs-surface-3/);
-assert.doesNotMatch(
-  shell,
-  /html\[data-v2-app="1"\] \.hub-card[\s\S]{0,400}?--cs-ink-topic/,
-  "app-shell لا يفرض زمرد داكن على hub-card",
-);
-assert.match(sections, /html\[data-v2-sections="1"\] \.hub-card[\s\S]{0,400}?--cs-surface-3/);
-assert.doesNotMatch(
-  sections,
-  /html\[data-v2-sections="1"\] \.hub-card[\s\S]{0,300}?--cs-ink-topic/,
-);
+/* سطح hub-card الفاتح يأتي الآن من طبقة التباين الموحّدة (--surface) لا من app-shell/lessons-sections */
+const contrastFix = read("src/styles/visual-layer-contrast-fix.css");
+assert.match(contrastFix, /\.hub-card,[\s\S]{0,1200}?background:\s*var\(--surface\)\s*!important/);
+const identitySections = read("src/styles/sunnah-identity-sections.css");
+for (const [name, src] of [["app-shell-v2", shell], ["lessons-sections-v2", sections], ["identity-sections", identitySections]] as const) {
+  assert.doesNotMatch(
+    src,
+    /\.hub-card[^{]*\{[^}]*--cs-ink-topic/,
+    `${name}: لا زمرد داكن على hub-card`,
+  );
+}
 
 /* الهيرو يبقى زمرديًا داكنًا مع نص عاجي */
 assert.match(css, /\.cs-hero[\s\S]{0,400}?--cs-ink-hero/);
