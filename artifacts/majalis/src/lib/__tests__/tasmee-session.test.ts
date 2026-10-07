@@ -104,6 +104,8 @@ assert.equal(report.words[2]!.id.split(":").length, 3, "معرّف page:line:pos
 assert.match(TASMEE_SCOPE_NOTE, /أخطاء الحفظ على مستوى الكلمة/);
 assert.match(TASMEE_SCOPE_NOTE, /\(كلمة خاطئة أو ناقصة\)/);
 assert.doesNotMatch(TASMEE_SCOPE_NOTE, /آية أخرى|انتقال/, "كشف الانتقال غير مبني بعد: لا يُذكر في الوصف");
+assert.match(TASMEE_SCOPE_NOTE, /ولا يكشف الكلمات الزائدة/, "الكلمات الزائدة غير مكشوفة فعلًا (المطابِق يتجاهلها)");
+assert.match(TASMEE_SCOPE_NOTE, /ولا يعدّ إعادة المقطع أو تصحيح النفس خطأً/);
 assert.match(TASMEE_SCOPE_NOTE, /ولا يصحّح الحركات ولا أحكام التجويد/);
 
 console.log("tasmee-session.test.ts: ok");

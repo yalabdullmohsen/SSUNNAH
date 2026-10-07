@@ -2,17 +2,24 @@
  * جلسة «تسميع»: تربط الإضافة الأصلية (نص جزئي) بالمطابِق (كشف الكلمات)، وتُرجع تقريرًا للقياس.
  * المطابقة هنا في JS؛ الإضافة تُرسل النص الجزئي فقط. كل شيء على الجهاز.
  */
+import { paramsForStrictness, type TasmeeStrictness } from "./levels";
 import { TasmeeMatcher, type TasmeeMatchParams, type TasmeeRefWord, type TasmeeWordEvent, type TasmeeWordState } from "./matcher";
 import type { TasmeeAlignedWord, TasmeeEngineApi, TasmeePartialEvent, TasmeeSessionDiagnostics } from "./types";
 
-/** عدد الكلمات القادمة التي تُمرَّر نصًّا إرشاديًّا (prompt) للنموذج. 0 = بلا prompt. */
-export const DEFAULT_PROMPT_WORDS = 5;
+/**
+ * عدد الكلمات القادمة التي تُمرَّر نصًّا إرشاديًّا (prompt) للنموذج. الافتراضي 0 = بلا prompt.
+ * قياس base على 13 تلاوة: prompt رفع الكشف 97.6%→97.9% فقط، وكشف الأخطاء المزروعة 100% في الحالتين (104/104)،
+ * لكنه زاد التأخير (وسيط 0.21→0.33ث في جولة الأخطاء، وحصة ≤1ث 90%→83%) — فبلا prompt أسرع وأبسط. القدرة تبقى متاحة بخيار promptWords.
+ */
+export const DEFAULT_PROMPT_WORDS = 0;
 
 import { TASMEE_UNCLEAR_HINT } from "./copy";
 
 export { TASMEE_UNCLEAR_HINT };
 
 export type TasmeeSessionOptions = {
+  /** مستوى الصرامة المحفوظ في الإعدادات؛ تتغلّب عليه params الصريحة */
+  strictness?: TasmeeStrictness;
   params?: Partial<TasmeeMatchParams>;
   promptWords?: number;
   /** وضع القياس: يحتفظ الصوت في ذاكرة الإضافة لمحاذاة ما بعد الجلسة (لا يُكتب للقرص) */
@@ -24,6 +31,8 @@ export type TasmeeWordReport = {
   id: string;
   state: TasmeeWordState;
   revealedAtMs: number | null;
+  /** لحظة حسم الحالة (صحيحة/خطأ/متجاوزة) على ساعة الجلسة؛ تُستعمل لتأخير التنبيه بالخطأ */
+  decidedAtMs: number | null;
   alignedEndMs: number | null;
   /** وقت الكشف ناقصًا نهاية النطق المقدَّرة (سالب = كُشفت قبل انتهاء الكلمة) */
   latencyMs: number | null;
@@ -83,7 +92,7 @@ export class TasmeeSession {
     readonly ref: readonly TasmeeRefWord[],
     private readonly opts: TasmeeSessionOptions = {},
   ) {
-    this.matcher = new TasmeeMatcher(ref, opts.params);
+    this.matcher = new TasmeeMatcher(ref, { ...(opts.strictness ? paramsForStrictness(opts.strictness) : {}), ...opts.params });
   }
 
   onWord(cb: (e: TasmeeWordEvent) => void): () => void {
@@ -158,6 +167,7 @@ export class TasmeeSession {
         id: w.id,
         state: ev?.state ?? "pending",
         revealedAtMs: at,
+        decidedAtMs: ev?.timeMs ?? null,
         alignedEndMs: end,
         latencyMs: at !== null && end !== null ? at - end : null,
       };

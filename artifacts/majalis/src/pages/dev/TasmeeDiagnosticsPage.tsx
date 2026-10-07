@@ -11,7 +11,9 @@ import {
   isTasmeeNativeAvailable,
   tasmeeNative,
 } from "@/lib/tasmee/engine-plugin";
+import { QuranSettingsRepository } from "@/lib/mushaf-v2/QuranSettingsRepository";
 import { TASMEE_SCOPE_NOTE } from "@/lib/tasmee/copy";
+import { TASMEE_STRICTNESS_DESCRIPTIONS, TASMEE_STRICTNESS_LABELS, TASMEE_STRICTNESS_LEVELS, isTasmeeStrictness, type TasmeeStrictness } from "@/lib/tasmee/levels";
 import { TasmeeSession, type TasmeeSessionReport } from "@/lib/tasmee/session";
 import type { TasmeeRefWord } from "@/lib/tasmee/matcher";
 import type { TasmeeDeviceInfo } from "@/lib/tasmee/types";
@@ -37,8 +39,9 @@ export default function TasmeeDiagnosticsPage() {
   const [status, setStatus] = useState("");
   const [progress, setProgress] = useState<{ received: number; total: number } | null>(null);
   const [page, setPage] = useState(562);
-  const [promptWords, setPromptWords] = useState(5);
+  const [promptWords, setPromptWords] = useState(0);
   const [minutes, setMinutes] = useState(10);
+  const [strictness, setStrictness] = useState<TasmeeStrictness>(() => QuranSettingsRepository.getTasmeeStrictness());
   const [running, setRunning] = useState(false);
   const [revealed, setRevealed] = useState(0);
   const [hintLog, setHintLog] = useState<string[]>([]);
@@ -114,7 +117,7 @@ export default function TasmeeDiagnosticsPage() {
   const start = () =>
     run("بدء الجلسة", async () => {
       const ref = await loadPageWords(page);
-      const session = new TasmeeSession(createTasmeeEngine(), ref, { promptWords, measure: true });
+      const session = new TasmeeSession(createTasmeeEngine(), ref, { promptWords, strictness, measure: true });
       session.onWord((e) => e.state === "correct" && setRevealed((n) => n + 1));
       setHintLog([]);
       // التلميح الهادئ يُسجَّل هنا (لا يوقف الجلسة): كلام ≥ 4ث ولا نص
@@ -135,6 +138,7 @@ export default function TasmeeDiagnosticsPage() {
       <h1 style={{ fontSize: 20, margin: 0 }}>قياس التسميع (Debug/TestFlight)</h1>
       <p style={{ margin: 0, opacity: 0.8 }}>المعالجة على الجهاز بالكامل. لا يُرسَل صوت. الصوت في الذاكرة فقط أثناء الجلسة لمحاذاة الكلمات ثم يُفرَّغ.</p>
       <p style={{ margin: 0 }}>{TASMEE_SCOPE_NOTE}</p>
+      <p style={{ margin: 0, opacity: 0.8 }}>{TASMEE_STRICTNESS_DESCRIPTIONS[strictness]}</p>
       <section>
         <strong>الجهاز:</strong>{" "}
         {device ? `${device.model} · iOS ${device.osVersion} · ${device.physicalMemoryMB}MB · حرارة ${device.thermalState}${device.lowPowerMode ? " · توفير طاقة" : ""} · نموذج ${device.loaded ? "محمَّل" : "غير محمَّل"}` : "—"}
@@ -155,6 +159,22 @@ export default function TasmeeDiagnosticsPage() {
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
         <label>الصفحة <input type="number" min={1} max={604} value={page} onChange={(e) => setPage(Number(e.target.value))} style={{ width: 72 }} /></label>
         <label>المدة (دقيقة) <input type="number" min={1} max={30} value={minutes} onChange={(e) => setMinutes(Number(e.target.value))} style={{ width: 56 }} /></label>
+        <label>
+          الصرامة{" "}
+          <select
+            value={strictness}
+            onChange={(e) => {
+              if (!isTasmeeStrictness(e.target.value)) return;
+              QuranSettingsRepository.setTasmeeStrictness(e.target.value);
+              setStrictness(e.target.value);
+            }}
+            disabled={running}
+          >
+            {TASMEE_STRICTNESS_LEVELS.map((l) => (
+              <option key={l} value={l}>{TASMEE_STRICTNESS_LABELS[l]}</option>
+            ))}
+          </select>
+        </label>
         <label>كلمات prompt <input type="number" min={0} max={8} value={promptWords} onChange={(e) => setPromptWords(Number(e.target.value))} style={{ width: 48 }} /></label>
       </div>
       <div style={{ display: "flex", gap: 8 }}>
