@@ -2206,6 +2206,13 @@ button.app-back-btn--bar[data-fixed-back-bar="1"] {
 .app-back-btn--bar.fixed-back-bar > span {
   display: none !important;
 }
+/* منطقة لمس 44×44 على الأقل مع بقاء الشكل 36px */
+.app-back-btn--bar.fixed-back-bar::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+}
 .app-back-btn--bar.fixed-back-bar:hover {
   box-shadow: 0 3px 10px rgba(11, 32, 24, 0.12);
 }
