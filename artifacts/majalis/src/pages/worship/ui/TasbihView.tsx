@@ -142,7 +142,7 @@ export default function TasbihPage() {
 
   return (
     <div className="sn-screen" data-testid="tasbih-screen">
-      <div className="sn-container sn-container--below-bar sn-stack sn-stack--lg">
+      <div className="sn-container sn-container-below-bar sn-stack sn-stack--lg">
         <PageHero tag="الأذكار" title="عداد التسبيح" description="عدّ بلا حد أقصى، اختر هدفك، مع حفظ تلقائي." />
 
         {aggregateStats.total === 0 ? (

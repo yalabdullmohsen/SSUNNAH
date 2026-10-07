@@ -220,7 +220,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { display
   padding-inline: var(--sn-page-x);
 }
 /* شاشة بلا NavigationBar: مسافة بين الشريط العام وأول عنصر */
-.sn-container--below-bar { padding-block-start: var(--sn-s4); }
+.sn-container-below-bar { padding-block-start: var(--sn-s4); }
 .sn-stack { display: flex; flex-direction: column; gap: var(--sn-s4); }
 .sn-stack--lg { gap: var(--sn-s6); }
 .sn-row { display: flex; align-items: center; gap: var(--sn-s3); }

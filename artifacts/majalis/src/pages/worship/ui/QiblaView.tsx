@@ -265,7 +265,7 @@ export default function QiblaPage() {
 
   return (
     <div className="sn-screen" data-testid="qibla-screen">
-      <div className="sn-container sn-container--below-bar sn-stack sn-stack--lg">
+      <div className="sn-container sn-container-below-bar sn-stack sn-stack--lg">
         <PageHero tag="الأدوات" title="اتجاه القبلة" description="وجّه الجهاز حتى يشير السهم إلى الكعبة المشرفة." />
 
         {manualMode && (

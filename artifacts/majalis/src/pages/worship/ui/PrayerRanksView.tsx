@@ -243,7 +243,7 @@ export default function PrayerRanksPage() {
 
   return (
     <div className="sn-screen" data-testid="prayer-ranks-screen">
-      <div className="sn-container sn-container--below-bar sn-stack sn-stack--lg">
+      <div className="sn-container sn-container-below-bar sn-stack sn-stack--lg">
         <PageHero tag="الصلاة" title="مراتب الناس في الصلاة" description="المراتب الخمسة في حضور القلب وإقامة الصلاة، مع فضائلها من القرآن والسنة." />
         <PrayerRanksContent />
       </div>
