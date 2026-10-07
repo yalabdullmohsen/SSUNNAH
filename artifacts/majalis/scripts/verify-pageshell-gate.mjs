@@ -73,7 +73,6 @@ if (cssSrc) {
 const requiredLayouts = [
   "src/components/LegalPageLayout.tsx",
   "src/components/platform/ContentDetailLayout.tsx",
-  "src/components/layout/ContentHubLayout.tsx",
   "src/views/TarikhIslamiDetailPage.tsx",
   // الجولة الخامسة — محاور محتوى عالية الزيارة
   "src/pages/worship/ui/AdhkarView.tsx",
