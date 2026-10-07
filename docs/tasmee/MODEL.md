@@ -22,13 +22,19 @@ tools/tasmee-model/convert.sh base <workDir>     # أو tiny
 python3 tools/tasmee-model/make_manifest.py <folder> <modelId> <upstream@sha> Apache-2.0 docs/tasmee/model-manifest-base.json
 ```
 
-خطوات `prepare_hf_model.py` لازمة لسببين: المستودع يحوي `pytorch_model.bin` فقط (و`transformers` يرفض pickle مع `torch<2.6` الذي تثبّته whisperkittools)، فتُحمَّل الأوزان بـ`weights_only=True` وتُحفظ safetensors؛ ويفتقر لـ`generation_config.json` فيؤخذ من `openai/whisper-<size>`. كذلك يُولَّد `tokenizer.json` ويُشحن مع الحزمة كي لا يجلب WhisperKit الـtokenizer من الشبكة وقت التشغيل.
+خطوات `prepare_hf_model.py` لازمة لسببين: المستودع يحوي `pytorch_model.bin` فقط (و`transformers` يرفض pickle مع `torch<2.6` الذي تثبّته whisperkittools)، فتُحمَّل الأوزان بـ`weights_only=True` وتُحفظ safetensors؛ ويفتقر لـ`generation_config.json` فيؤخذ من `openai/whisper-<size>`. كذلك يُشحن `tokenizer.json` **الرسمي** من `openai/whisper-<size>` (MIT) مع الحزمة كي لا يجلب WhisperKit الـtokenizer من الشبكة وقت التشغيل. لا يُولَّد من ملفات Tarteel: الملف المولَّد ينقصه رموز الزمن (107 مقابل 1608 رمزًا مضافًا) فيُخرج WhisperKit نصًا فارغًا، وكان هذا سبب أعطال tiny وتلاوتَي الإجهاد في قياساتنا الأولى. نتحقق أن معرّفات `vocab.json` لـTarteel مطابقة للرسمي.
 
 ## الأحجام (CoreML fp16، مع tokenizer)
 
 | النموذج | الحجم | الملفات |
 |---|---|---|
-| base | 150.3 MB | `docs/tasmee/model-manifest-base.json` |
+| base | 150.3 MB (مفكوك) | `docs/tasmee/model-manifest-base.json` |
 | tiny | 80.2 MB | `docs/tasmee/model-manifest-tiny.json` |
 
-الـmanifest فيه حجم وSHA-256 لكل ملف (يعتمد عليه المنزِّل للاستكمال والتحقق). `baseUrl` فارغ إلى أن تُحدَّد الاستضافة.
+## الاستضافة: GitHub Releases (ثابتة)
+
+كل نسخة أرشيف **zip بلا ضغط** (`zip -0`) أصلٌ في إصدار GitHub بوسم ثابت (مثل `whisper-quran-coreml-v1`) على المستودع العام `yalabdullmohsen/SSUNNAH`، مع `README` و`LICENSE` (Apache-2.0) و`NOTICE` («مشتق ومحوَّل من tarteel-ai/whisper-base-ar-quran؛ التعديل الوحيد هو التحويل إلى CoreML وإرفاق tokenizer.json الرسمي، بلا تدريب»).
+- الـmanifest (`model-manifest-<variant>.json`): رابط الأرشيف `releases/download/<الوسم>/…` وحجمه وSHA-256، وحجم وSHA-256 لكل ملف داخله. المنزِّل (Swift) يستكمل بـRange ويتحقق من الأرشيف ثم من كل ملف بعد الفك.
+- **الإصدارات لا تُعدَّل بعد نشرها**: `publish_release.py` يرفض وسمًا موجودًا؛ أي تحديث إصدار جديد بوسم جديد (ويُحدَّث الـmanifest في التطبيق ليشير إليه).
+- التحقق: `python3 tools/tasmee-model/verify_release.py docs/tasmee/model-manifest-*.json` (يعيد تنزيل كل أرشيف، يطابق الحجم وSHA-256، يجرّب Range، ويفكّ ويطابق كل ملف).
+- النشر: `python3 tools/tasmee-model/publish_release.py yalabdullmohsen/SSUNNAH whisper-quran-coreml-v1 <workDir> --variant base=<folder> --variant tiny=<folder>` (يستعمل `gh`).

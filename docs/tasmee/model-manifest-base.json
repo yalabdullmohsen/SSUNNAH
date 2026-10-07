@@ -1,10 +1,16 @@
 {
  "modelId": "tasmee-whisper-base-ar-quran-coreml",
  "format": "whisperkit-coreml",
- "upstream": "tarteel-ai/whisper-base-ar-quran@5c3c53fdf9272c4f6ee0bee09a1e5a4a615ee25c",
+ "upstream": "tarteel-ai/whisper-base-ar-quran",
  "license": "Apache-2.0",
- "totalBytes": 150327095,
- "baseUrl": null,
+ "releaseTag": "whisper-quran-coreml-v1",
+ "totalBytes": 149420292,
+ "archive": {
+  "name": "sunnah-whisper-base-ar-quran-coreml.zip",
+  "size": 149424128,
+  "sha256": "d05689332f8327e5e03c73986af44a364ebddb237ce5cb6e2d3ebc82812e85ec",
+  "url": "https://github.com/yalabdullmohsen/SSUNNAH/releases/download/whisper-quran-coreml-v1/sunnah-whisper-base-ar-quran-coreml.zip"
+ },
  "files": [
   {
    "path": "AudioEncoder.mlmodelc/analytics/coremldata.bin",
@@ -82,14 +88,19 @@
    "sha256": "a84026dace4c29c5953acac186fbd32a8389e6ed52bcebd10cd600d8fdb89812"
   },
   {
+   "path": "generation_config.json",
+   "size": 3807,
+   "sha256": "444b3f636d2fff89dd9ecf549e2a085b61f7ff0fa0246d4628bac6a3b8cc9ba4"
+  },
+  {
    "path": "tokenizer.json",
-   "size": 3653235,
-   "sha256": "ff789e15fa4d77dc0664d18f28c4f7a1d65a56a7d31142ad48230279385c0112"
+   "size": 2480466,
+   "sha256": "27fc476bfe7f17299480be2273fc0608e4d5a99aba2ab5dec5374b4482d1a566"
   },
   {
    "path": "tokenizer_config.json",
-   "size": 20524,
-   "sha256": "6dc4f9c1a0cf8d3e841890b0c4635b2e3adfc07f48360c7c0041852fac9a8844"
+   "size": 282683,
+   "sha256": "2a4c4281cf9f51ac6ccc406fdc711a087afe6530f671fa7b80953edc498275ce"
   }
  ]
 }

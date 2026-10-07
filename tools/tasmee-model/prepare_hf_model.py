@@ -5,13 +5,14 @@
 2) يحمّل الأوزان بـtorch.load(weights_only=True) (مُفكّك pickle مقيَّد بالتنسورات — لا تنفيذ شيفرة)
    ويحفظها model.safetensors؛ لأن transformers يرفض pickle مع torch<2.6 وwhisperkittools يثبّت torch==2.5.0.
 3) يضيف generation_config.json من openai/whisper-<size> (يحوي alignment_heads المطلوبة للتحويل؛ النموذج مضبوط من الأصل نفسه).
-4) يولّد tokenizer.json (WhisperTokenizerFast) من vocab/merges الخاصة بالنموذج ليُشحن مع الحزمة فلا يحتاج WhisperKit شبكة وقت التشغيل.
+4) يجلب tokenizer.json وtokenizer_config.json من openai/whisper-<size> (MIT) ليُشحنا مع الحزمة فلا يحتاج WhisperKit شبكة وقت التشغيل.
+   لا يُولَّد tokenizer.json من vocab/merges المستودع: ملف WhisperTokenizerFast المولَّد ينقصه رموز الزمن (107 مقابل 1608 رمزًا مضافًا) فيُخرج WhisperKit نصًا
+   فارغًا. نتحقق أن كل رمز في vocab.json لـTarteel له المعرّف نفسه في tokenizer.json الرسمي (الفارق الوحيد <|endoftext|>).
 """
-import os, sys, urllib.request
+import json, os, sys, urllib.request
 import torch
 from huggingface_hub import snapshot_download
 from safetensors.torch import save_file
-from transformers import WhisperTokenizerFast
 
 size, root = sys.argv[1], sys.argv[2]
 name = f"whisper-{size}-ar-quran"
@@ -21,5 +22,12 @@ sd = {k: v.contiguous().clone() for k, v in sd.items()}
 save_file(sd, f"{d}/model.safetensors", metadata={"format": "pt"})
 os.remove(f"{d}/pytorch_model.bin")
 urllib.request.urlretrieve(f"https://huggingface.co/openai/whisper-{size}/resolve/main/generation_config.json", f"{d}/generation_config.json")
-WhisperTokenizerFast.from_pretrained(d).save_pretrained(f"{root}/tok-{size}")
-print(name, len(sd), "tensors", round(sum(v.numel() for v in sd.values()) / 1e6, 1), "M params")
+tok_dir = f"{root}/tok-{size}"
+os.makedirs(tok_dir, exist_ok=True)
+for f in ("tokenizer.json", "tokenizer_config.json"):
+    urllib.request.urlretrieve(f"https://huggingface.co/openai/whisper-{size}/resolve/main/{f}", f"{tok_dir}/{f}")
+official = json.load(open(f"{tok_dir}/tokenizer.json"))["model"]["vocab"]
+tarteel = json.load(open(f"{d}/vocab.json"))
+bad = [k for k, v in tarteel.items() if official.get(k) != v]
+assert not bad, f"vocab مختلف عن tokenizer الرسمي: {bad[:5]}"
+print(name, len(sd), "tensors", round(sum(v.numel() for v in sd.values()) / 1e6, 1), "M params; tokenizer: official, vocab verified")
