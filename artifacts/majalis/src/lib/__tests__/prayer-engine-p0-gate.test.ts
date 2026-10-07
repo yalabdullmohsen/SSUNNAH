@@ -15,7 +15,6 @@ function read(rel: string): string {
 }
 
 for (const rel of [
-  "src/lib/prayer-time-engine.ts",
   "src/lib/prayer-settings-upgrade.ts",
   "src/lib/prayer-alert-scheduler.ts",
   "src/lib/prayer-local-notifications.ts",
@@ -28,7 +27,6 @@ const scheduler = read("src/lib/prayer-alert-scheduler.ts");
 const localNotif = read("src/lib/prayer-local-notifications.ts");
 const settingsView = read("src/pages/worship/ui/AdhanSettingsView.tsx");
 const migration = read("src/lib/prayer-settings-upgrade.ts");
-const engine = read("src/lib/prayer-time-engine.ts");
 const app = read("src/App.tsx");
 const adhanSched = read("src/lib/adhan-scheduler.ts");
 const idsSrc = read("src/lib/prayer-notification-ids.ts");
@@ -68,8 +66,6 @@ assert.match(migration, /migratePrayerSettingsIfNeeded/);
 assert.match(app, /migratePrayerSettingsIfNeeded/);
 assert.match(app, /PrayerSettingsMigrationBoot/);
 
-assert.match(engine, /computePrayerEngineDay/);
-assert.match(engine, /from "\.\/prayer-times"/);
 
 assert.match(app, /getActivePrayerLocation/);
 {

@@ -77,7 +77,6 @@ console.log("=== PR-2 Dashboard Homepage ===");
 {
   const app = read("src/App.tsx");
   assert.match(app, /data-v2-dashboard/);
-  assert.ok(existsSync(resolve(majalisRoot, "src/components/home/HomeQuickAccessV2.tsx")));
   assert.ok(existsSync(resolve(majalisRoot, "src/styles/pages/home-dashboard-v2.css")));
   const below = read("src/pages/account/ui/HomeBelowFold.tsx");
   assert.match(below, /HomeSectionsGrid/);

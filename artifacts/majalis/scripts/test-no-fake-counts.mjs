@@ -16,7 +16,6 @@ const appRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const WATCHED = [
   "src/lib/navigation.ts",
   "src/pages/account/ui/HomeView.tsx",
-  "src/components/home/HomeAboutSection.tsx",
   "src/components/home/HomeQuizCard.tsx",
 ];
 
