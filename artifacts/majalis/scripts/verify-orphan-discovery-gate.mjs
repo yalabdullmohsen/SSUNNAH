@@ -34,6 +34,7 @@ const ENTRY_FILES = [
   "pages/account/ui/HomeView.tsx",
   "components/BottomNavBar.tsx",
   "design-system/shell/tabs.ts",
+  "design-system/screens/QuranHubScreen.tsx",
   "components/MoreBottomSheet.tsx",
   "components/NavBar.tsx",
   "components/SiteFooter.tsx",

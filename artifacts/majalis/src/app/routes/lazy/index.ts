@@ -29,7 +29,7 @@ export {
 } from "./lessons";
 
 export {
-  QuranEnginePage, QuranCirclesPage, SurahIndexPage, QuranSearchPage, RevelationOrderPage, MakkiMadaniPage, MushafReaderPage, MushafBookmarksPage, QuranHubPage, QuranNumbersPage, QuranPeoplePage, QuranPersonDetailPage, SurahStoriesPage, QuranTajweedPage, TajweedChapterPage, QuranQiraatPage, QuranSevenAhrufPage, QuranTilawaPage, QuranUlumTermsPage, SurahStoryDetailRoute, QuranMemorizationPage, QuranMemorizationPlansPage, QuranHifzLoopPage, QuranWorshipHubPage, QuranOfflinePlayerPage, UlumQuranPage, QuranKnowledgeHubPage, MemorizationHubPage, HifzPathPage, HifzPathMyPage, HifzPathCategoryPage, HifzPathDetailPage, HifzPathUnitPage, TafsirPage, DuasQuranPage
+  QuranEnginePage, QuranCirclesPage, SurahIndexPage, QuranSearchPage, RevelationOrderPage, MakkiMadaniPage, MushafReaderPage, MushafBookmarksPage, QuranHubPage, QuranNumbersPage, QuranPeoplePage, QuranPersonDetailPage, SurahStoriesPage, QuranTajweedPage, TajweedChapterPage, QuranQiraatPage, QuranSevenAhrufPage, QuranTilawaPage, QuranUlumTermsPage, SurahStoryDetailRoute, QuranMemorizationPage, QuranMemorizationPlansPage, QuranHifzLoopPage, RecitationTestAiPage, QuranWorshipHubPage, QuranOfflinePlayerPage, UlumQuranPage, QuranKnowledgeHubPage, MemorizationHubPage, HifzPathPage, HifzPathMyPage, HifzPathCategoryPage, HifzPathDetailPage, HifzPathUnitPage, TafsirPage, DuasQuranPage
 } from "./quran";
 
 export {
