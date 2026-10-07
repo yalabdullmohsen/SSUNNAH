@@ -37,7 +37,6 @@ export type ReminderCategory = {
   defaultTime?: string;
   repeat?: Repeat;
   sound: ReminderSound;
-  timeSensitive?: boolean;
 };
 
 export const REMINDER_CATEGORIES = data.categories as ReminderCategory[];
@@ -84,7 +83,6 @@ export type PlannedReminder = {
   body: string;
   url: string;
   sound: ReminderSound;
-  timeSensitive: boolean;
 };
 
 export type PlanInput = {
@@ -215,7 +213,6 @@ export function planAdhkarReminders(input: PlanInput): PlannedReminder[] {
           title: c.title,
           ...content(c, key, slot),
           sound: p.sound ?? c.sound,
-          timeSensitive: c.timeSensitive === true,
         });
       });
     }

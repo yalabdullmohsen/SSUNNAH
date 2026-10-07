@@ -75,6 +75,7 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
         snap.currentPrayerNameAr = call.getString("currentPrayerNameAr")
         snap.currentPrayerStartedAtEpochMs = optEpoch("currentPrayerStartedAtEpochMs")
         snap.nextTransitionAtEpochMs = optEpoch("nextTransitionAtEpochMs")
+        snap.elapsedWindowMinutes = call.getInt("elapsedWindowMinutes")
         snap.calculationDate = call.getString("calculationDate")
         snap.calculationMethodIdentifier = call.getString("calculationMethodIdentifier")
         snap.permissionState = call.getString("permissionState")

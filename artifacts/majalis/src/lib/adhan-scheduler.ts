@@ -12,8 +12,6 @@
 
 import { loadPrayerAlertPrefs } from "./prayer-alert-preferences";
 import {
-  calendarNoonInZone,
-  epochAtZoneMinutes,
   type PrayerSlot,
   type PrayerTimesPayload,
 } from "./prayer-times";
@@ -27,7 +25,7 @@ import {
   getEffectivePlaybackMode,
   isIqamahEnabledForPrayer,
 } from "./adhan-preferences";
-import { getMuezzin, hasFajrAdhan, playIqamah } from "./adhan-audio";
+import { getMuezzin, playIqamah } from "./adhan-audio";
 import { playPrayerAthanSync } from "./athan-playback-manager";
 import { hapticTap, isIOS, isNative } from "./capacitor-utils";
 import { ADHAN_EVENT_NAME, type AdhanEvent } from "./adhan-events";
@@ -40,17 +38,6 @@ import { resolveAdhanClip } from "./adhan-playback-modes";
 
 export type { AdhanEvent };
 export { ADHAN_EVENT_NAME };
-
-function upcomingPrayerEpochs(slot: PrayerSlot): number[] {
-  if (slot.minutes == null) return [];
-  const tz = getActivePrayerLocation().timeZone || "Asia/Kuwait";
-  const todayNoon = calendarNoonInZone(tz);
-  const tomorrowNoon = new Date(todayNoon.getTime() + 24 * 3600_000);
-  const now = Date.now();
-  return [todayNoon, tomorrowNoon]
-    .map((noon) => epochAtZoneMinutes(tz, slot.minutes!, noon))
-    .filter((epoch) => epoch > now);
-}
 
 function iosFullAdhanActive(): boolean {
   return isNative && isIOS;
@@ -188,25 +175,7 @@ function scheduleForPrayer(
     }
   }
 
-  if (iosFullAdhanActive() && effectiveDeliveryMode === "full") {
-    const muezzin = getMuezzin(getEffectiveMuezzinId(prefs, key));
-    const isFajr = key === "fajr";
-    if (!isFajr || hasFajrAdhan(muezzin)) {
-      const epochs = upcomingPrayerEpochs(slot);
-      void import("./adhan-ios-segments").then(({ scheduleIosFullAdhan }) => {
-        epochs.forEach((startAtMs, index) => {
-          void scheduleIosFullAdhan({
-            prayerKey: key,
-            prayerName: PRAYER_ARABIC[key] ?? slot.name,
-            recordingId: muezzin.id,
-            isFajr,
-            startAtMs,
-            deliveryMode: index === 0 ? deliveryMode : "short",
-          });
-        });
-      });
-    }
-  }
+  // مقاطع أذان iOS الكامل: نافذة 7 أيام بمواقيت كل يوم — تُجدول مرة واحدة في scheduleIosAdhanWindow.
 
   const t1 = setTimeout(() => {
     if (gen !== _scheduleGen) return;
@@ -378,6 +347,57 @@ function scheduleForPrayer(
 }
 
 /**
+ * مقاطع أذان iOS الكامل لنافذة تصل إلى 7 أيام، بمواقيت كل يوم من محرك الصلاة (لا بدقائق اليوم الأول).
+ * المخطِّط (planNativePrayerWindow) مشترك مع جدولة التنبيهات: الأقرب أولًا ضمن حصة الصلاة (40 من 64)
+ * فلا تجور المقاطع على حصة الأذكار؛ أقرب صلوات بأذان كامل متعدد المقاطع وما بعدها بمقطع قصير واحد.
+ */
+async function scheduleIosAdhanWindow(payload: PrayerTimesPayload, gen: number): Promise<void> {
+  if (!iosFullAdhanActive()) return;
+  const prefs = loadAdhanPrefs();
+  const keepIds = new Set<number>();
+  const alertsMod = await import("./prayer-alert-scheduler");
+  const segMod = await import("./adhan-ios-segments");
+  const budgetMod = await import("./prayer-native-budget");
+  if (gen !== _scheduleGen) return;
+
+  if (!prefs.globalEnabled) {
+    await segMod.cancelStaleAdhanSegments(keepIds);
+    return;
+  }
+
+  const tz = payload.timezone || getActivePrayerLocation().timeZone || "Asia/Kuwait";
+  const slots = await alertsMod.listNativePrayerScheduleSlotsAhead(payload.prayers, tz);
+  const window = await alertsMod.planNativePrayerWindow(slots, loadPrayerAlertPrefs());
+  if (gen !== _scheduleGen) return;
+
+  const targets = window.filter((w) => w.plan.include && w.plan.segmentMode !== "none");
+  const bases = budgetMod.assignAdhanChainIdBases(
+    targets.map((w) => `${w.slot.key.toLowerCase()}:${w.dateISO}`),
+  );
+
+  for (const w of targets) {
+    if (gen !== _scheduleGen) return;
+    const key = w.slot.key.toLowerCase() as PrayerKey;
+    const muezzin = getMuezzin(getEffectiveMuezzinId(prefs, key));
+    const mapKey = `${key}:${w.dateISO}`;
+    const idBase = bases.get(mapKey);
+    const result = await segMod.scheduleIosFullAdhan({
+      prayerKey: key,
+      prayerName: PRAYER_ARABIC[key] ?? w.slot.name,
+      recordingId: muezzin.id,
+      isFajr: key === "fajr",
+      startAtMs: w.epoch,
+      deliveryMode: w.plan.segmentMode === "full" ? "full" : "short",
+      dayKey: w.dateISO,
+      idBase,
+    });
+    for (const id of result.ids) keepIds.add(id);
+  }
+  // أي مقطع معلّق خارج الخطة الحالية (نافذة أقدم/معرّفات قديمة) يُلغى فلا يتكرر الأذان.
+  await segMod.cancelStaleAdhanSegments(keepIds);
+}
+
+/**
  * Start the scheduler for the current prayer data. Call once on app load.
  * لا يطلب إذن الإشعارات هنا أبداً.
  */
@@ -413,6 +433,8 @@ export async function startAdhanScheduler(payload: PrayerTimesPayload): Promise<
   }
 
   if (gen !== _scheduleGen) return;
+
+  void scheduleIosAdhanWindow(payload, gen).catch(() => {});
 
   const nowMs = kuwaitNowMs();
   const midnightDelay = 24 * 3600_000 - nowMs + 5_000;

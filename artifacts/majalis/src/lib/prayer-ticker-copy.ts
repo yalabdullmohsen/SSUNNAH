@@ -8,12 +8,8 @@ export type PrayerChipCopyInput = {
   prayerName: string;
   /** ثوانٍ متبقية للصلاة المعروضة (تنازلي) */
   remainingSeconds: number;
+  /** ثوانٍ مضت منذ أذان `prayerName` داخل نافذة «مضى على الأذان»؛ null خارجها */
   sinceSeconds: number | null;
-  /** اسم الصلاة التالية الفعلية أثناء/بعد نافذة «حان وقت» */
-  nextPrayerName?: string | null;
-  nextRemainingSeconds?: number | null;
-  /** ثوانٍ بعد الأذان تُعرض فيها «حان وقت …» */
-  nowWindowSec?: number;
 };
 
 export type PrayerChipCopy = {
@@ -82,47 +78,36 @@ function remainingCopy(prayerName: string, remainingSeconds: number): PrayerChip
   };
 }
 
+/** «مضى X على أذان …»: دقائق مكتملة (لا تقريب لأعلى)، وأقل من دقيقة تُكتب صراحة. */
+export function formatElapsedSincePhrase(totalSeconds: number): string {
+  const mins = Math.floor(Math.max(0, totalSeconds) / 60);
+  if (mins < 1) return "أقل من دقيقة";
+  if (mins < 60) return minutesPhrase(mins);
+  const hours = Math.floor(mins / 60);
+  const rem = mins % 60;
+  return rem === 0 ? hoursPhrase(hours) : `${hoursPhrase(hours)} و${minutesPhrase(rem)}`;
+}
+
+/**
+ * بعد دخول الوقت وحتى نهاية النافذة (إقامة المستخدم أو 30 دقيقة): «مضى X على أذان {الصلاة}»،
+ * وبعدها يعود «متبقي على {التالية}». حدود النافذة تقرّرها resolvePrayerPhase.
+ */
 export function buildPrayerChipCopy(input: PrayerChipCopyInput): PrayerChipCopy {
   const name = input.prayerName.trim() || "الصلاة";
 
-  /* بعد دخول الوقت: انتقل فورًا للصلاة التالية (توقيت الكويت من المصدر). */
   if (input.sinceSeconds != null && input.sinceSeconds >= 0) {
-    if (
-      input.nextPrayerName &&
-      input.nextRemainingSeconds != null &&
-      input.nextRemainingSeconds > 0
-    ) {
-      return remainingCopy(input.nextPrayerName, input.nextRemainingSeconds);
-    }
+    const phrase = formatElapsedSincePhrase(input.sinceSeconds);
     return {
-      text: `حان وقت ${name}`,
-      compactText: `حان · ${name}`,
+      text: `مضى ${phrase} على أذان ${name}`,
+      compactText: `${name} · مضى ${phrase}`,
       prayerName: name,
-      timeText: null,
+      timeText: phrase,
       isNow: true,
       urgent: false,
     };
   }
 
-  if (input.remainingSeconds <= 0) {
-    if (
-      input.nextPrayerName &&
-      input.nextRemainingSeconds != null &&
-      input.nextRemainingSeconds > 0
-    ) {
-      return remainingCopy(input.nextPrayerName, input.nextRemainingSeconds);
-    }
-    return {
-      text: `حان وقت ${name}`,
-      compactText: `حان · ${name}`,
-      prayerName: name,
-      timeText: null,
-      isNow: true,
-      urgent: false,
-    };
-  }
-
-  return remainingCopy(name, input.remainingSeconds);
+  return remainingCopy(name, Math.max(0, input.remainingSeconds));
 }
 
 /** توافق مع اختبارات/مستهلكين قدماء لـ buildPrayerTickerCopy */

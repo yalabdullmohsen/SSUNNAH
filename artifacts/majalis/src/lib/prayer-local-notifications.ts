@@ -6,6 +6,7 @@
  * فقط بعد أن يضغط المستخدم زر "تفعيل" في شارة الشرح (PermissionPrompt).
  */
 import { isNative } from "@/lib/capacitor-utils";
+import { ADHAN_ACTION_TYPE } from "@/lib/adhan-notification-actions";
 import {
   CHANNEL_PRAYER,
   DEFAULT_ALERT_SOUND,
@@ -95,7 +96,8 @@ type NativeNotif = {
   schedule: { at: Date; allowWhileIdle: boolean };
   sound: string;
   channelId: string;
-  interruptionLevel: "timeSensitive";
+  interruptionLevel: "timeSensitive" | "active";
+  actionTypeId?: string;
   extra: {
     url: string;
     kind: string;
@@ -346,7 +348,7 @@ export async function schedulePrayerNativeNotifications(opts: {
         schedule: { at: new Date(preAlertEpoch), allowWhileIdle: true },
         sound,
         channelId: CHANNEL_PRAYER,
-        interruptionLevel: "timeSensitive",
+        interruptionLevel: "active",
         extra: {
           url: "/prayer-times",
           kind: "prayer-pre",
@@ -377,6 +379,7 @@ export async function schedulePrayerNativeNotifications(opts: {
         sound,
         channelId: CHANNEL_PRAYER,
         interruptionLevel: "timeSensitive",
+        actionTypeId: ADHAN_ACTION_TYPE,
         extra: {
           url: "/prayer-times",
           kind: "prayer-enter",
@@ -406,7 +409,7 @@ export async function schedulePrayerNativeNotifications(opts: {
         schedule: { at: new Date(postEpoch), allowWhileIdle: true },
         sound,
         channelId: CHANNEL_PRAYER,
-        interruptionLevel: "timeSensitive",
+        interruptionLevel: "active",
         extra: {
           url: "/prayer-times",
           kind: "prayer-post",
@@ -445,7 +448,7 @@ export async function schedulePrayerNativeNotifications(opts: {
         schedule: { at: new Date(iqamahEpoch), allowWhileIdle: true },
         sound,
         channelId: CHANNEL_PRAYER,
-        interruptionLevel: "timeSensitive",
+        interruptionLevel: "active",
         extra: {
           url: "/prayer-times",
           kind: "prayer-iqamah",

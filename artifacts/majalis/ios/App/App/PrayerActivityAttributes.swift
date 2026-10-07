@@ -7,7 +7,7 @@ import ActivityKit
 enum PrayerLivePhase: String, Codable, Hashable {
     /// قبل الأذان — اسم الصلاة + العد التنازلي
     case upcoming
-    /// نافذة الصلاة الحالية — الحالة «حان الآن»
+    /// نافذة «مضى على الأذان» — من دخول الوقت حتى نهاية نافذة الإقامة/30 دقيقة (عدّ تصاعدي)
     case active
     /// بعد انتهاء النافذة — الصلاة التالية + عد تنازلي
     case completed
@@ -27,7 +27,7 @@ struct PrayerActivityAttributes: ActivityAttributes {
         /// توافق خلفي مع الإصدارات السابقة
         var hasStarted: Bool
         var phase: PrayerLivePhase
-        /// نص الحالة المعروض (مثل «قادمة» / «حان الآن» / «اكتملت»)
+        /// نص الحالة المعروض (مثل «قادمة» / «مضى على الأذان» / «اكتملت»)
         var statusLabel: String
         var nextPrayerName: String?
         var nextPrayerKey: String?
@@ -92,7 +92,7 @@ struct PrayerActivityAttributes: ActivityAttributes {
         static func defaultStatus(for phase: PrayerLivePhase) -> String {
             switch phase {
             case .upcoming: return "قادمة"
-            case .active: return "حان الآن"
+            case .active: return "مضى على الأذان"
             case .completed: return "اكتملت"
             case .appLaunch: return "افتح مواقيت الصلاة"
             }

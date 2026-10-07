@@ -15,5 +15,7 @@
 	<array>
 		<string>group.com.yousef.majlisilm</string>
 	</array>
+	<key>com.apple.developer.usernotifications.time-sensitive</key>
+	<true/>
 </dict>
 </plist>

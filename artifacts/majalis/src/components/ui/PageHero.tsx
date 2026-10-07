@@ -23,7 +23,7 @@ type PageHeroProps = {
   withPattern?: boolean;
   /** بطل بعرض الشاشة الكامل وخلفية هوية عميقة (افتراضي للصفحات الداخلية) */
   fullBleed?: boolean;
-  /** رجوع مدمج في الهيرو — يخفي FAB العام عبر data-section-back / .page-hero-mj__back */
+  /** مُهمَل: لا رجوع داخل الهيرو — الرجوع للزر العام العائم */
   showBack?: boolean;
   backFallbackHref?: string;
   /** زخرفة هندسية تحت العنوان (افتراضي: نعم؛ تُخفى في الرئيسية عبر CSS) */

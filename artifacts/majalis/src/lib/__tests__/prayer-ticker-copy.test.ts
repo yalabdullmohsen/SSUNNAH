@@ -60,17 +60,16 @@ import {
 }
 
 {
-  const after = buildPrayerChipCopy({
-    prayerName: "المغرب",
-    remainingSeconds: 0,
-    sinceSeconds: 130,
-    nextPrayerName: "العشاء",
-    nextRemainingSeconds: 72 * 60,
-  });
-  assert.equal(after.isNow, false);
-  assert.equal(after.text, "متبقي على العشاء: ساعة و١٢ دقيقة");
+  const atAdhan = buildPrayerChipCopy({ prayerName: "المغرب", remainingSeconds: 0, sinceSeconds: 0 });
+  assert.equal(atAdhan.text, "مضى أقل من دقيقة على أذان المغرب");
+  const after = buildPrayerChipCopy({ prayerName: "المغرب", remainingSeconds: 0, sinceSeconds: 12 * 60 + 40 });
+  assert.equal(after.text, "مضى ١٢ دقيقة على أذان المغرب", "دقائق مكتملة بلا تقريب لأعلى");
   assert.equal(/[0-9]/.test(after.text), false);
   assert.doesNotMatch(after.text, /\d{1,2}:\d{2}/);
+  assert.equal(
+    buildPrayerChipCopy({ prayerName: "العشاء", remainingSeconds: 0, sinceSeconds: 90 * 60 }).text,
+    "مضى ساعة و٣٠ دقيقة على أذان العشاء",
+  );
 }
 
 {
