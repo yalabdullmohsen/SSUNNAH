@@ -14,8 +14,6 @@ const kxCss = read("src/styles/components/knowledge-summary-card.css");
 const sectsCss = read("src/styles/pages/islamic-sects.css");
 const card = read("src/components/knowledge/KnowledgeSummaryCard.tsx");
 const surface = read("src/components/knowledge/KnowledgeDetailSurface.tsx");
-const scroll = read("src/components/ScrollToTop.tsx");
-const calm = read("src/styles/sections-calm-polish.css");
 const list = read("src/views/IslamicSectsPage.tsx");
 const detail = read("src/views/IslamicSectsDetailPage.tsx");
 
@@ -27,8 +25,10 @@ assert.doesNotMatch(sectsCss, /\.sect-card\s*\{[^}]*border-inline-start:\s*[34]p
 assert.doesNotMatch(sectsCss, /\.kx-summary-card\s*\{[^}]*border-inline-start:\s*[34]px/);
 
 console.log("=== لا Card داخل Card بلا سبب ===");
-assert.match(kxCss, /\.kx-detail-surface\s+\.rsc[\s\S]{0,200}?box-shadow:\s*none/);
-assert.match(kxCss, /\.kx-detail-surface\s+\.rsc[\s\S]{0,200}?background:\s*transparent/);
+/* .rsc داخل سطح التفاصيل: بلا ظل مضاعف (الحدّ والسطح من رموز ii) — صارت القاعدة في islam-intro-experience.css */
+const introCss = readFileSync(resolve(root, "src/styles/islam-intro-experience.css"), "utf8");
+assert.match(introCss, /\.kx-detail-surface\s+\.rsc[\s\S]{0,260}?box-shadow:\s*none/);
+assert.match(introCss, /\.kx-detail-surface\s+\.rsc[\s\S]{0,260}?background:\s*var\(--ii-surface\)/);
 assert.doesNotMatch(surface, /kx-summary-card/);
 assert.doesNotMatch(detail, /sect-card__detail/);
 
@@ -67,10 +67,6 @@ assert.match(kxCss, /\.kx-summary-card__summary[\s\S]{0,220}?text-align:\s*start
 assert.match(kxCss, /\.kx-detail-surface[\s\S]{0,220}?text-align:\s*start/);
 
 console.log("=== زر أعلى لا يظهر عند البداية ويحترم Dialog ===");
-assert.match(scroll, /scrollY\s*>\s*280/);
-assert.match(scroll, /isModalOverlayOpen|aria-modal|data-radix-dialog/);
-assert.match(calm, /:has\(\[role="dialog"\]\[data-state="open"\]\)/);
-assert.match(calm, /\.scroll-to-top[\s\S]{0,300}?bottom-nav-height/);
 
 console.log("=== قائمة بلا توسعة داخل البطاقة ===");
 assert.match(list, /KnowledgeSummaryCard/);

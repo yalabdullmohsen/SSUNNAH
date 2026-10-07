@@ -67,7 +67,7 @@ console.log("\n=== بنية المكوّنات ===");
   assert(hubCardTsx.includes("SectionEntryCard"), "SectionEntryCard مُعرَّف");
   assert(hubCardTsx.includes("hub-card__go"), "HubCard: سهم مدمج");
   assert(hubCardTsx.includes("hub-card__foot"), "تذييل مدمج في المكوّن");
-  assert(tawhidPage.includes("HubCard"), "TawhidPage يرحّل إلى HubCard");
+  assert(tawhidPage.includes("KnowledgeLibraryCard"), "TawhidPage على بطاقة المعرفة الموحّدة (حلّت محلّ HubCard)");
   assert(merged.includes("SectionEntryCard"), "MergedSectionHub يستخدم SectionEntryCard");
 
   assert(fiqhPage.includes("publishedBooks") && fiqhPage.includes("searchFiqhCatalog"), "FiqhPage يعرض كتب الفقه مع البحث");

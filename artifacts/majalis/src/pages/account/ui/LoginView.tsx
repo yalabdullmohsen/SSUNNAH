@@ -332,9 +332,9 @@ export default function LoginPage() {
           ) : null}
 
           <div className="signup-confirm" role="status">
-            <p className="signup-confirm__lead">✅ تم إنشاء الحساب</p>
+            <p className="signup-confirm__lead">تم إنشاء الحساب</p>
             <p className="signup-confirm__mail">
-              📩 تم إرسال رسالة تأكيد إلى{" "}
+              تم إرسال رسالة تأكيد إلى{" "}
               <strong dir="ltr">{pendingConfirmEmail}</strong>
             </p>
             <ol className="signup-confirm__steps">

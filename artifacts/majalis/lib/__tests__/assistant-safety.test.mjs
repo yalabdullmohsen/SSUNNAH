@@ -33,6 +33,8 @@ function assert(condition, label) {
 // ─── تجهيز: مفتاح نموذج وهمي + fetch مُراقَب ────────────────────────────────
 // وجود المفتاح يعني أن أي مسار لا يُوقف الطلب مبكرًا سيستدعي النموذج فعلًا.
 process.env.ANTHROPIC_API_KEY = "test-key-not-real";
+// الواجهة العامة للمساعد معطّلة افتراضيًا (isAssistantPublicApiEnabled)؛ هذا الاختبار يفحص مسار الأمان المفعّل.
+process.env.ASSISTANT_ENABLED = "1";
 
 let modelCalls = 0;
 const realFetch = globalThis.fetch;
