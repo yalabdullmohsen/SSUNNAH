@@ -16,9 +16,7 @@ const mutedDisabled = [
   "src/components/ui/select.tsx",
   "src/components/ui/toggle.tsx",
   "src/components/ui/command.tsx",
-  "src/components/ui/navigation-menu.tsx",
   "src/components/ui/sidebar.tsx",
-  "src/components/ui/menubar.tsx",
   "src/components/ui/field.tsx",
   "src/components/ui/input-group.tsx",
 ] as const;
