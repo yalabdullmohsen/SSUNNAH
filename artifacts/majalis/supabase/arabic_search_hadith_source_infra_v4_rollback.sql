@@ -103,3 +103,22 @@ DROP FUNCTION IF EXISTS public.source_search_docs_refresh();
 DROP FUNCTION IF EXISTS public.scholarly_source_search_docs_refresh();
 
 DROP FUNCTION IF EXISTS public.to_tsvector_simple(text);
+
+-- Restore the pre-v2 production normalize_ar (whitespace-only), then rebuild
+-- sharia_rulings vectors that were built with the newer normalization.
+CREATE OR REPLACE FUNCTION public.normalize_ar(input text)
+RETURNS text
+LANGUAGE sql
+IMMUTABLE
+PARALLEL UNSAFE
+SET search_path TO 'public'
+AS $function$
+  SELECT trim(regexp_replace(coalesce(input, ''), '\s+', ' ', 'g'));
+$function$;
+
+DO $$
+BEGIN
+  IF EXISTS (SELECT 1 FROM pg_trigger WHERE tgname = 'sharia_rulings_search_vector_trigger') THEN
+    UPDATE public.sharia_rulings SET title = title;
+  END IF;
+END $$;

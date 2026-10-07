@@ -77,4 +77,8 @@ BEGIN
   ) THEN
     UPDATE public.scholarly_sources SET name = name;
   END IF;
+  IF EXISTS (SELECT 1 FROM pg_trigger WHERE tgname = 'sharia_rulings_search_vector_trigger') THEN
+    -- normalize_ar delegates to ar_normalize: rebuild rulings vectors (R2 fix)
+    UPDATE public.sharia_rulings SET title = title;
+  END IF;
 END $$;

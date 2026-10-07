@@ -189,6 +189,13 @@ END $$;
 
 -- ─── 4. دوال البحث الهجينة (FTS + trigram) ─────────────────────────
 
+-- FIX (R2): created only when lessons.search_text/search_vector exist
+-- (production has neither; an unconditional CREATE fails with 42703).
+DO $wrap$
+BEGIN
+  IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='lessons' AND column_name='search_text')
+     AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='lessons' AND column_name='search_vector') THEN
+    EXECUTE $fn$
 CREATE OR REPLACE FUNCTION public.search_lessons(q text, lim int DEFAULT 20)
 RETURNS SETOF public.lessons
 LANGUAGE sql
@@ -212,7 +219,17 @@ AS $$
     l.updated_at DESC NULLS LAST
   LIMIT greatest(1, least(coalesce(lim, 20), 100));
 $$;
+    $fn$;
+    EXECUTE 'ALTER FUNCTION public.search_lessons(text, int) SET search_path = public';
+    EXECUTE 'GRANT EXECUTE ON FUNCTION public.search_lessons(text, int) TO anon, authenticated, service_role';
+  END IF;
+END $wrap$;
 
+DO $wrap$
+BEGIN
+  IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='sheikhs' AND column_name='search_text')
+     AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='sheikhs' AND column_name='search_vector') THEN
+    EXECUTE $fn$
 CREATE OR REPLACE FUNCTION public.search_sheikhs(q text, lim int DEFAULT 20)
 RETURNS SETOF public.sheikhs
 LANGUAGE sql
@@ -235,8 +252,8 @@ AS $$
     ) DESC
   LIMIT greatest(1, least(coalesce(lim, 20), 100));
 $$;
-
--- غلاف توافق باسم search_scholars
+    $fn$;
+    EXECUTE $fn$
 CREATE OR REPLACE FUNCTION public.search_scholars(q text, lim int DEFAULT 20)
 RETURNS SETOF public.sheikhs
 LANGUAGE sql
@@ -245,7 +262,19 @@ PARALLEL SAFE
 AS $$
   SELECT * FROM public.search_sheikhs(q, lim);
 $$;
+    $fn$;
+    EXECUTE 'ALTER FUNCTION public.search_sheikhs(text, int) SET search_path = public';
+    EXECUTE 'ALTER FUNCTION public.search_scholars(text, int) SET search_path = public';
+    EXECUTE 'GRANT EXECUTE ON FUNCTION public.search_sheikhs(text, int) TO anon, authenticated, service_role';
+    EXECUTE 'GRANT EXECUTE ON FUNCTION public.search_scholars(text, int) TO anon, authenticated, service_role';
+  END IF;
+END $wrap$;
 
+DO $wrap$
+BEGIN
+  IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='library_items' AND column_name='search_text')
+     AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='library_items' AND column_name='search_vector') THEN
+    EXECUTE $fn$
 CREATE OR REPLACE FUNCTION public.search_library_items(q text, lim int DEFAULT 20)
 RETURNS SETOF public.library_items
 LANGUAGE sql
@@ -268,10 +297,16 @@ AS $$
     ) DESC
   LIMIT greatest(1, least(coalesce(lim, 20), 100));
 $$;
+    $fn$;
+    EXECUTE 'ALTER FUNCTION public.search_library_items(text, int) SET search_path = public';
+    EXECUTE 'GRANT EXECUTE ON FUNCTION public.search_library_items(text, int) TO anon, authenticated, service_role';
+  END IF;
+END $wrap$;
 
 DO $$
 BEGIN
-  IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema='public' AND table_name='verified_hadith_items') THEN
+  IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='verified_hadith_items' AND column_name='search_text')
+     AND EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='verified_hadith_items' AND column_name='search_vector') THEN
     EXECUTE $fn$
       CREATE OR REPLACE FUNCTION public.search_hadith_items(q text, lim int DEFAULT 20)
       RETURNS SETOF public.verified_hadith_items
@@ -300,13 +335,13 @@ BEGIN
   END IF;
 END $$;
 
-ALTER FUNCTION public.search_lessons(text, int) SET search_path = public;
-ALTER FUNCTION public.search_sheikhs(text, int) SET search_path = public;
-ALTER FUNCTION public.search_scholars(text, int) SET search_path = public;
-ALTER FUNCTION public.search_library_items(text, int) SET search_path = public;
 
 -- ─── 5. ترقية search_content لاستخدام FTS+تشابه عند الإمكان ────────
 -- نحافظ على التوقيع؛ نستبدل فرع الدروس بمسار هجين ونُبقي البقية متوافقة.
+-- FIX (R2): only real production columns (no lessons/qa search_text/search_vector,
+-- no library_items.author_name), lessons.status is enum content_status
+-- ('published' is not a label), SECURITY INVOKER so RLS applies (the definer
+-- version exposed unapproved library items and draft Q&A).
 CREATE OR REPLACE FUNCTION public.search_content(
   p_query        text,
   p_types        text[]   DEFAULT ARRAY['lesson','library','hadith','fatwa','qa','fawaid','miracle','story','fiqh'],
@@ -323,7 +358,7 @@ RETURNS TABLE (
   score          numeric
 )
 LANGUAGE plpgsql
-SECURITY DEFINER
+SECURITY INVOKER
 STABLE
 SET search_path = public
 AS $$
@@ -331,7 +366,7 @@ DECLARE
   v_norm     text;
   v_pattern  text;
 BEGIN
-  v_norm    := public.ar_normalize(p_query);
+  v_norm    := coalesce(public.ar_normalize(p_query), '');
   IF v_norm = '' THEN RETURN; END IF;
   v_pattern := '%' || v_norm || '%';
 
@@ -344,16 +379,12 @@ BEGIN
       COALESCE(l.description, '')::text,
       COALESCE(l.speaker_name, l.category, '')::text,
       ('/lessons/' || l.id)::text,
-      greatest(
-        coalesce(similarity(coalesce(l.search_text, ''), v_norm), 0),
-        coalesce(similarity(public.ar_normalize(l.title), v_norm), 0)
-      )::numeric
+      coalesce(similarity(public.ar_normalize(l.title), v_norm), 0)::numeric
     FROM public.lessons l
-    WHERE coalesce(l.status, 'approved') IN ('approved', 'published')
+    WHERE l.status = 'approved'
       AND (
-        (l.search_vector IS NOT NULL AND l.search_vector @@ plainto_tsquery('simple', v_norm))
-        OR (l.search_text IS NOT NULL AND (l.search_text % v_norm OR l.search_text ILIKE v_pattern))
-        OR public.ar_normalize(l.title) % v_norm
+        public.ar_normalize(l.title) % v_norm
+        OR public.ar_normalize(concat_ws(' ', l.title, l.description, l.speaker_name, l.category)) ILIKE v_pattern
       )
     ORDER BY 7 DESC, l.updated_at DESC NULLS LAST
     LIMIT p_limit OFFSET p_offset;
@@ -366,23 +397,19 @@ BEGIN
       'library'::text,
       b.title,
       COALESCE(b.description, '')::text,
-      COALESCE(b.author_name, b.category, '')::text,
+      COALESCE(b.category, '')::text,
       ('/library/' || b.id)::text,
-      greatest(
-        coalesce(similarity(coalesce(b.search_text, ''), v_norm), 0),
-        coalesce(similarity(public.ar_normalize(b.title), v_norm), 0)
-      )::numeric
+      coalesce(similarity(public.ar_normalize(b.title), v_norm), 0)::numeric
     FROM public.library_items b
-    WHERE (
-        (b.search_vector IS NOT NULL AND b.search_vector @@ plainto_tsquery('simple', v_norm))
-        OR (b.search_text IS NOT NULL AND (b.search_text % v_norm OR b.search_text ILIKE v_pattern))
-        OR public.ar_normalize(b.title) % v_norm
+    WHERE b.status = 'approved'
+      AND (
+        public.ar_normalize(b.title) % v_norm
+        OR public.ar_normalize(concat_ws(' ', b.title, b.description, b.category)) ILIKE v_pattern
       )
     ORDER BY 7 DESC
     LIMIT p_limit OFFSET p_offset;
   END IF;
 
-  -- فروع أخرى: ILIKE على search_text (دين متبقٍ — يُهاجر تدريجياً)
   IF 'qa' = ANY(p_types) AND EXISTS (
     SELECT 1 FROM information_schema.tables WHERE table_schema='public' AND table_name='qa_questions'
   ) THEN
@@ -396,8 +423,11 @@ BEGIN
       ('/qa/' || q.id)::text,
       0.75::numeric
     FROM public.qa_questions q
-    WHERE q.search_text ILIKE v_pattern
-       OR public.ar_normalize(q.question) % v_norm
+    WHERE q.status = 'published'
+      AND (
+        public.ar_normalize(q.question) ILIKE v_pattern
+        OR public.ar_normalize(q.question) % v_norm
+      )
     LIMIT p_limit OFFSET p_offset;
   END IF;
 END;
@@ -405,8 +435,15 @@ $$;
 
 GRANT EXECUTE ON FUNCTION public.ar_normalize(text) TO anon, authenticated, service_role;
 GRANT EXECUTE ON FUNCTION public.normalize_ar(text) TO anon, authenticated, service_role;
-GRANT EXECUTE ON FUNCTION public.search_lessons(text, int) TO anon, authenticated, service_role;
-GRANT EXECUTE ON FUNCTION public.search_sheikhs(text, int) TO anon, authenticated, service_role;
-GRANT EXECUTE ON FUNCTION public.search_scholars(text, int) TO anon, authenticated, service_role;
-GRANT EXECUTE ON FUNCTION public.search_library_items(text, int) TO anon, authenticated, service_role;
 GRANT EXECUTE ON FUNCTION public.search_content(text, text[], integer, integer) TO anon, authenticated, service_role;
+
+-- FIX (R2): normalize_ar changed meaning (whitespace-only -> full Arabic
+-- normalization). sharia_rulings.search_vector is trigger-built with
+-- normalize_ar while search_sharia_rulings normalizes the query, so stored
+-- vectors must be rebuilt or the rulings search regresses.
+DO $$
+BEGIN
+  IF EXISTS (SELECT 1 FROM pg_trigger WHERE tgname = 'sharia_rulings_search_vector_trigger') THEN
+    UPDATE public.sharia_rulings SET title = title;
+  END IF;
+END $$;

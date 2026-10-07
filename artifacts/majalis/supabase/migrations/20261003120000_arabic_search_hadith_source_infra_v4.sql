@@ -387,7 +387,11 @@ BEGIN
 END $$;
 
 -- ─── 7. Compatibility views ──────────────────────────────────────────
-CREATE OR REPLACE VIEW public.hadiths AS
+-- security_invoker: RLS of the base table applies to the caller (R2 fix;
+-- without it anon could read unverified hadiths / inactive sources).
+CREATE OR REPLACE VIEW public.hadiths
+  WITH (security_invoker = true)
+  AS
   SELECT
     id, collection, hadith_number, title, text, narrator, scholar,
     source_name, source_url, grade, chapter, keywords, explanation,
@@ -399,7 +403,11 @@ CREATE OR REPLACE VIEW public.hadiths AS
 COMMENT ON VIEW public.hadiths IS
   'Spec alias: hadiths = verified_hadith_items (explicit columns, no SELECT *)';
 
-CREATE OR REPLACE VIEW public.sources AS
+-- security_invoker: RLS of the base table applies to the caller (R2 fix;
+-- without it anon could read unverified hadiths / inactive sources).
+CREATE OR REPLACE VIEW public.sources
+  WITH (security_invoker = true)
+  AS
   SELECT
     id, name, category, source_type, url, trust_level, is_active,
     last_synced_at, created_at, search_text, search_vector

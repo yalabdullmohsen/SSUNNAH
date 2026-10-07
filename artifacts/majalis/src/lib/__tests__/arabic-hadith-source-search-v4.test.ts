@@ -108,8 +108,8 @@ assert.doesNotMatch(sql, /RETURNS SETOF public\.verified_hadith_items/);
 assert.doesNotMatch(sql, /SELECT \* FROM public\.verified_hadith_items/);
 
 // Views without SELECT *
-assert.match(sql, /CREATE OR REPLACE VIEW public\.hadiths AS/);
-assert.match(sql, /CREATE OR REPLACE VIEW public\.sources AS/);
+assert.match(sql, /CREATE OR REPLACE VIEW public\.hadiths\s+WITH \(security_invoker = true\)\s+AS/);
+assert.match(sql, /CREATE OR REPLACE VIEW public\.sources\s+WITH \(security_invoker = true\)\s+AS/);
 assert.doesNotMatch(sql, /VIEW public\.hadiths AS\s+SELECT \*/i);
 
 // ── Rollback ──

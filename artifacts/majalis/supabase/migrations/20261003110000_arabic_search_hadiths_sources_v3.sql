@@ -8,6 +8,20 @@
 --  إن وُجدت جداول باسم hadiths/sources حرفياً تُغطّى أيضاً.
 -- ====================================================================
 
+-- ====================================================================
+-- SUPERSEDED (R2 fix, 2026-10-06) — this migration is intentionally a NO-OP.
+-- The original body added GENERATED ... STORED search_text columns built
+-- with concat_ws(), which PostgreSQL 17 rejects ("generation expression is
+-- not immutable", 42P17), and created SECURITY DEFINER compatibility views.
+-- Everything it intended is delivered by v4
+-- (20261003120000_arabic_search_hadith_source_infra_v4.sql) via
+-- BEFORE INSERT/UPDATE triggers and security_invoker views.
+-- The file is kept so migration versions/order stay stable; it was never
+-- applied to any environment. The original SQL is retained below as an
+-- inert string literal (never executed) for history.
+-- Rollback: supabase/arabic_search_hadiths_sources_v3_rollback.sql (no-op).
+-- ====================================================================
+SELECT 1 WHERE false AND $v3_original_superseded$
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
 -- ضمان وجود ar_normalize (idempotent)
@@ -400,3 +414,4 @@ GRANT SELECT ON public.sources TO anon, authenticated, service_role;
 GRANT EXECUTE ON FUNCTION public.search_hadiths(text, int) TO anon, authenticated, service_role;
 GRANT EXECUTE ON FUNCTION public.search_hadith_items(text, int) TO anon, authenticated, service_role;
 GRANT EXECUTE ON FUNCTION public.search_sources(text, int) TO anon, authenticated, service_role;
+$v3_original_superseded$ <> '';
