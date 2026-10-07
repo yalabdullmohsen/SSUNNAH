@@ -47,8 +47,8 @@ for (const t of ["--sn-bg", "--sn-surface", "--sn-primary", "--sn-text-primary",
 const scale: Record<string, string> = { "large-title": "2.125rem", title1: "1.75rem", title2: "1.375rem", title3: "1.25rem", headline: "1.0625rem", body: "1rem", callout: "1rem", subhead: "0.875rem", footnote: "0.8125rem", caption: "0.75rem", hadith: "1.1875rem", "hadith-featured": "1.5rem", ayah: "1.375rem" };
 for (const [k, v] of Object.entries(scale)) assert.match(tokens, new RegExp(`--sn-fs-${k}:\\s*${v.replace(".", "\\.")}`), `سلّم الطباعة ${k}=${v}`);
 for (const [k, v] of Object.entries({ s1: 4, s2: 8, s3: 12, s4: 16, s5: 20, s6: 24, s7: 32, s8: 40 })) assert.match(tokens, new RegExp(`--sn-${k}:\\s*${v}px`), `شبكة 4: ${k}`);
-assert.match(tokens, /--sn-page-x:\s*20px/, "هامش الصفحة 20");
-for (const [k, v] of Object.entries({ sm: 10, md: 16, lg: 22, xl: 28 })) assert.match(tokens, new RegExp(`--sn-r-${k}:\\s*${v}px`), `زاوية ${k}`);
+assert.match(tokens, /--sn-page-x:\s*16px/, "هامش الصفحة 16");
+for (const [k, v] of Object.entries({ sm: 12, md: 12, lg: 16, xl: 20 })) assert.match(tokens, new RegExp(`--sn-r-${k}:\\s*${v}px`), `زاوية ${k}`);
 for (const [k, v] of Object.entries({ fast: 150, base: 250, slow: 350 })) assert.match(tokens, new RegExp(`--sn-dur-${k}:\\s*${v}ms`), `مدة ${k}`);
 assert.match(tokens, /--sn-press-scale:\s*0\.97/, "ضغط 0.97");
 assert.match(tokens, /prefers-reduced-motion/, "تقليل الحركة");

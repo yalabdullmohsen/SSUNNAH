@@ -308,6 +308,12 @@ export async function readJsonBodyLimited(req, maxBytes) {
   }
   if (typeof req.on !== "function") return { ok: true, body: {} };
 
+  // ارفض قبل قراءة أي بايت إن أعلن العميل حجمًا يتجاوز الحد
+  const declared = Number(req.headers?.["content-length"]);
+  if (maxBytes > 0 && Number.isFinite(declared) && declared > maxBytes) {
+    return { ok: false, error: "payload_too_large" };
+  }
+
   const chunks = [];
   let size = 0;
   for await (const chunk of req) {

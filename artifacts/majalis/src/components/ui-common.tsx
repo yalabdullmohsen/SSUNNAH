@@ -1,3 +1,4 @@
+/** @deprecated نظام قديم — استعمل `@/design-system` (مكوّنات sn-). لا استيراد جديد: بوابة scripts/ui-ratchet.mjs تفشل عند زيادة العدد. */
 import { AlertTriangle, RefreshCw } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";

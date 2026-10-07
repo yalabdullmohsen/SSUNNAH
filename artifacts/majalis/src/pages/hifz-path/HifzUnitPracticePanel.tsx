@@ -145,6 +145,13 @@ export function HifzUnitPracticePanel({
                     >
                       حلقة الحفظ الصوتية
                     </Link>
+                    {" · "}
+                    <Link
+                      href="/quran/recitation-test-ai"
+                      className="text-primary underline-offset-2 hover:underline"
+                    >
+                      اختبر حفظك
+                    </Link>
                   </>
                 ) : null}
               </>
