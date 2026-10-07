@@ -11,8 +11,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
 const lobby = read("src/components/lobby/SectionLobby.tsx");
-assert.match(lobby, /AppBackButton|data-section-back/, "اللوبي يستخدم رجوعًا هيدريًا");
-assert.match(lobby, /data-section-back/);
+assert.doesNotMatch(lobby, /AppBackButton/, "لا رجوع داخل اللوبي");
 
 const appBack = read("src/components/common/AppBackButton.tsx");
 assert.match(appBack, /goBackOrFallback|goBackOrFallback/);
@@ -24,7 +23,7 @@ assert.match(fab, /FLOATING_BACK_DISABLED/, "العائم الدائري ملغ�
 assert.match(fab, /FIXED_BACK_BAR_ENABLED|variant="bar"/, "شريط ثابت بديلًا");
 
 const hero = read("src/components/topic/SectionHero.tsx");
-assert.match(hero, /AppBackButton|section-hero__back|goBackOrFallback/, "الهيرو يعرض رجوعًا");
+assert.doesNotMatch(hero, /AppBackButton/, "لا رجوع داخل الهيرو");
 
 const gate = read("scripts/section-back-button-gate.mjs");
 assert.match(gate, /\/fiqh/);

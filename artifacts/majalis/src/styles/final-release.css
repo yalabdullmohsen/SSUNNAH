@@ -2178,15 +2178,21 @@ html.chrome-immersive [data-global-back-control-host] {
 }
 .global-back-control-host .app-back-btn--bar.fixed-back-bar {
   z-index: var(--z-fab, 220);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+html[data-global-back-hidden="1"] .global-back-control-host .app-back-btn--bar.fixed-back-bar {
+  transform: translateY(calc(100% + 24px));
+  opacity: 0;
+  pointer-events: none;
 }
 /* —— Dark Mode Critical Fix: compact bottom-right FAB —— */
 /* أيقونة فقط؛ لا شريط عريض يغطي المحتوى */
 .app-back-btn--bar.fixed-back-bar,
 button.app-back-btn--bar[data-fixed-back-bar="1"] {
-  width: 44px;
-  height: 44px;
-  min-height: 44px;
-  min-width: 44px;
+  width: 36px;
+  height: 36px;
+  min-height: 36px;
+  min-width: 36px;
   padding: 0;
   gap: 0;
   font-size: 0;
@@ -2199,6 +2205,13 @@ button.app-back-btn--bar[data-fixed-back-bar="1"] {
 }
 .app-back-btn--bar.fixed-back-bar > span {
   display: none !important;
+}
+/* منطقة لمس 44×44 على الأقل مع بقاء الشكل 36px */
+.app-back-btn--bar.fixed-back-bar::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
 }
 .app-back-btn--bar.fixed-back-bar:hover {
   box-shadow: 0 3px 10px rgba(11, 32, 24, 0.12);

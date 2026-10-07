@@ -3,7 +3,7 @@
  * Run: pnpm --filter @workspace/majalis run test:back-authority-unify
  */
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { hasInPageBackChrome } from "../immersive-chrome";
@@ -81,15 +81,9 @@ assert.doesNotMatch(
 );
 assert.match(calm, /Back Authority P7/, "تعليق ملكية React موثّق");
 
-console.log("=== PageHeroIntegratedBack يلفّ AppBackButton فقط ===");
-const heroBack = read("src/components/ui/PageHeroIntegratedBack.tsx");
-assert.match(heroBack, /AppBackButton/);
-assert.doesNotMatch(heroBack, /history\.back\s*\(/);
-assert.doesNotMatch(heroBack, /navigate\s*\(\s*-1/);
-
-console.log("=== SectionLobby / SectionHero ما زالا AppBackButton ===");
-assert.match(read("src/components/lobby/SectionLobby.tsx"), /AppBackButton/);
-assert.match(read("src/components/topic/SectionHero.tsx"), /AppBackButton/);
+assert.ok(!existsSync(resolve(root, "src/components/ui/PageHeroIntegratedBack.tsx")), "لا رجوع داخل الهيرو");
+assert.doesNotMatch(read("src/components/lobby/SectionLobby.tsx"), /AppBackButton/);
+assert.doesNotMatch(read("src/components/topic/SectionHero.tsx"), /AppBackButton/);
 
 console.log("=== MushafBookmarkEditorShell KEEP history.back في الورقة ===");
 assert.match(

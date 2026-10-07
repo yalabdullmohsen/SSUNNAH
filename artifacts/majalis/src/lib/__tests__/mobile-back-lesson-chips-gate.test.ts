@@ -19,8 +19,7 @@ assert.match(fab, /FLOATING_BACK_DISABLED/, "العائم الدائري ملغ�
 assert.match(fab, /FIXED_BACK_BAR_ENABLED|variant="bar"/, "شريط ثابت");
 
 const lobby = read("src/components/lobby/SectionLobby.tsx");
-assert.match(lobby, /AppBackButton|data-section-back/, "رجوع هيدري في اللوبي");
-assert.match(lobby, /data-section-back/);
+assert.doesNotMatch(lobby, /AppBackButton/, "لا رجوع داخل اللوبي");
 
 const polish = read("src/styles/sections-calm-polish.css");
 assert.match(polish, /\.floating-back-btn[\s\S]*?display:\s*none/);

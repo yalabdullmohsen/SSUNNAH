@@ -14,7 +14,7 @@ export type BackTopInsets = {
   safeAreaTop: number;
 };
 
-export const BACK_CONTROL_SIZE_PX = 44;
+export const BACK_CONTROL_SIZE_PX = 36;
 export const BACK_CONTROL_GAP_PX = 12;
 /** كان عتبة ظهور بعد التمرير — أصبح 0 (ظاهر فورًا) مع الإبقاء على الاسم للتوافق */
 export const BACK_FAB_SCROLL_SHOW_PX = 0;

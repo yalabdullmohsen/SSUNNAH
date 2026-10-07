@@ -59,8 +59,8 @@ async function ensureBase() {
     console.error("FloatingBackButton must enable FIXED_BACK_BAR_ENABLED with variant=\"bar\"");
     process.exit(1);
   }
-  if (!/AppBackButton/.test(heroSrc) || !/AppBackButton/.test(lobbySrc)) {
-    console.error("SectionHero and SectionLobby must render AppBackButton");
+  if (/AppBackButton/.test(heroSrc) || /AppBackButton/.test(lobbySrc)) {
+    console.error("SectionHero and SectionLobby must NOT render AppBackButton (الرجوع للزر العام وحده)");
     process.exit(1);
   }
   // مصدر الحقيقة: الشريط الثابت + تعطيل FAB — نكتفي بفحص المصدر لتجنّب dist قديم
@@ -83,8 +83,8 @@ async function ensureBase() {
     }
     const hero = readFileSync(join(root, "src/components/topic/SectionHero.tsx"), "utf8");
     const lobby = readFileSync(join(root, "src/components/lobby/SectionLobby.tsx"), "utf8");
-    if (!/AppBackButton/.test(hero) || !/AppBackButton/.test(lobby)) {
-      console.error("SectionHero و SectionLobby يجب أن يعرضا AppBackButton");
+    if (/AppBackButton/.test(hero) || /AppBackButton/.test(lobby)) {
+      console.error("SectionHero و SectionLobby يجب ألا يعرضا AppBackButton (الرجوع للزر العام وحده)");
       process.exit(1);
     }
     console.log("section-back-button-gate: skip playwright (dist مفقود) — المصدر ثابت ✓");

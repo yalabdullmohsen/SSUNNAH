@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { lazy, Suspense, useId } from "react";
+import { useId } from "react";
 import { cn } from "@/lib/utils";
 import { PatternBackdrop } from "./PatternBackdrop";
 import {
@@ -12,7 +12,6 @@ import { HeaderOrnament } from "@/components/design-system/geometry/HeaderOrname
 import { GeometricMotif } from "@/components/design-system/geometry/GeometricMotif";
 import "@/styles/components/page-hero.css";
 
-const PageHeroIntegratedBack = lazy(() => import("./PageHeroIntegratedBack"));
 
 type PageHeroProps = {
   eyebrow?: string;
@@ -24,7 +23,7 @@ type PageHeroProps = {
   withPattern?: boolean;
   /** بطل بعرض الشاشة الكامل وخلفية هوية عميقة (افتراضي للصفحات الداخلية) */
   fullBleed?: boolean;
-  /** رجوع مدمج في الهيرو — يخفي FAB العام عبر data-section-back / .page-hero-mj__back */
+  /** مُهمَل: لا رجوع داخل الهيرو — الرجوع للزر العام العائم */
   showBack?: boolean;
   backFallbackHref?: string;
   /** زخرفة هندسية تحت العنوان (افتراضي: نعم؛ تُخفى في الرئيسية عبر CSS) */
@@ -38,7 +37,7 @@ type PageHeroProps = {
 /**
  * بطل صفحة موحّد: تباين مضمون (--mj-ink / --mj-ink-2 على --mj-bg)
  * مع زخرفة عبر PatternBackdrop فقط.
- * الرجوع مدمج (showBack) عبر chunk مؤجّل — لا ينتفخ entry عبر الرئيسية.
+ * لا رجوع داخل الهيرو — الرجوع للزر العام (showBack مُهمَل).
  */
 export function PageHero({
   eyebrow,
@@ -48,8 +47,6 @@ export function PageHero({
   actions,
   withPattern = true,
   fullBleed = true,
-  showBack = true,
-  backFallbackHref = "/",
   withOrnament = true,
   withCornerMotif = true,
   className,
@@ -75,20 +72,6 @@ export function PageHero({
       {withPattern ? <PatternBackdrop /> : null}
       {withCornerMotif ? <GeometricMotif placement="corner" /> : null}
       <div className="page-hero-mj__content">
-        {showBack ? (
-          <Suspense
-            fallback={
-              <span
-                className="page-hero-mj__back"
-                data-section-back="1"
-                aria-hidden="true"
-                hidden
-              />
-            }
-          >
-            <PageHeroIntegratedBack fallbackHref={backFallbackHref} />
-          </Suspense>
-        ) : null}
         {eyebrow ? (
           <Caption
             as="p"

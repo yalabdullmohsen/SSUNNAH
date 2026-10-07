@@ -4,7 +4,6 @@
  */
 import type { CSSProperties, ReactNode } from "react";
 import { Link } from "wouter";
-import { AppBackButton } from "@/components/common/AppBackButton";
 import {
   getTopicTheme,
   topicThemeCssVars,
@@ -59,8 +58,6 @@ export function SectionHero({
   icon,
   className,
   children,
-  showBack = true,
-  backFallbackHref,
 }: SectionHeroProps) {
   const theme = getTopicTheme(themeId);
   const sectionAccent = accent ?? theme.accent;
@@ -77,16 +74,6 @@ export function SectionHero({
       style={heroStyle}
       dir="rtl"
     >
-      {showBack ? (
-        <div className="section-hero__back-row">
-          <AppBackButton
-            variant="hero"
-            fallbackHref={backFallbackHref}
-            className="section-hero__back"
-            aria-label="رجوع"
-          />
-        </div>
-      ) : null}
       {breadcrumb && breadcrumb.length > 0 ? (
         <div className="section-hero__chrome">
           <nav className="topic-page__crumb" aria-label="مسار التنقل" data-section-crumb="1">
