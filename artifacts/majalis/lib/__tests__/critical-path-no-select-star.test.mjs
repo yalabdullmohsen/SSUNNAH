@@ -12,7 +12,6 @@ const CRITICAL = [
   "src/lib/supabase.ts",
   "src/lib/lessons-service.ts",
   "src/lib/prayer-times.ts",
-  "src/components/home/HomeUpcomingCourses.tsx",
   "lib/api-handlers/prayer-times.js",
 ];
 

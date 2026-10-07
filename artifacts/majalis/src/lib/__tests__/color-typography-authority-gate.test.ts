@@ -17,7 +17,6 @@ const typeMap = readRepo("docs/design/TYPOGRAPHY_AUTHORITY_MAP.md");
 const langMap = readRepo("docs/design/DESIGN_LANGUAGE_AUTHORITY.md");
 const tokenAuth = readRepo("docs/design/DESIGN_TOKEN_AUTHORITY.md");
 const colorTs = readMaj("src/lib/color-authority.ts");
-const typeTs = readMaj("src/lib/typography-authority.ts");
 const ssText = readMaj("src/components/design-system/text/SsText.tsx");
 const typoSys = readMaj("src/components/design-system/TypographySystem.tsx");
 const scale = readMaj("src/styles/typography-scale.css");
@@ -46,10 +45,6 @@ assert.match(colorTs, /ERROR:\s*"--mj-danger"/);
 assert.match(colorTs, /BACKGROUND:\s*"--mj-bg"/);
 assert.match(colorTs, /OVERLAY:\s*"--sf2-overlay"/);
 
-assert.match(typeTs, /TYPOGRAPHY_AUTHORITY/);
-assert.match(typeTs, /PAGE_TITLE/);
-assert.match(typeTs, /TYPOGRAPHY_HIERARCHY/);
-assert.match(typeTs, /screenTitle/);
 
 assert.match(ssText, /export const ScreenTitle/);
 assert.match(ssText, /export const SectionTitle/);

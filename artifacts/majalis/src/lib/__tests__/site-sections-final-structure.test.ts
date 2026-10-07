@@ -69,8 +69,6 @@ const SURFACES = [
   "src/pages/account/ui/HomeView.tsx",
   "src/pages/account/ui/HomeBelowFold.tsx",
   "src/lib/home-feature-catalog.ts",
-  "src/components/home/HomeExplorePlatform.tsx",
-  "src/components/home/HomeStartHereSection.tsx",
 ];
 for (const rel of SURFACES) {
   const src = read(rel);

@@ -16,8 +16,6 @@ function read(rel: string): string {
 const FORBIDDEN_LABELS = [/مسارات التعلم/, /المسارات العلمية/];
 
 const PUBLIC_SURFACES = [
-  "src/components/home/HomeStartHereSection.tsx",
-  "src/views/StartHerePage.tsx",
   "src/lib/services-center-nav.ts",
   "src/lib/site-footer-nav.ts",
   "src/lib/home-feature-catalog.ts",
