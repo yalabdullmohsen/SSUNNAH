@@ -20,6 +20,8 @@ export async function fetchRecentProgress(userId: string, limit = 6): Promise<Pr
     .from("user_progress")
     .select(USER_PROGRESS_COLS)
     .eq("user_id", userId)
+    // صفوف hifz_unit (مسار الحفظ) تُقرأ من مزامنتها الخاصة لا من «تابع» الرئيسية
+    .in("content_type", ["lesson", "course", "quran", "lesson_detail"])
     .order("updated_at", { ascending: false })
     .limit(limit);
   if (error) return [];

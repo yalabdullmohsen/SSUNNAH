@@ -47,7 +47,7 @@ export function HifzPathRow({ path, progressPercent, hasProgress }: Props) {
       description={[path.shortDescription, sourceHint, progressLabel]
         .filter(Boolean)
         .join(" — ")}
-      trailing={<span className="text-sm font-medium text-primary">{cta}</span>}
+      trailing={<span className="shrink-0 whitespace-nowrap text-sm font-medium text-primary">{cta}</span>}
     />
   );
 }

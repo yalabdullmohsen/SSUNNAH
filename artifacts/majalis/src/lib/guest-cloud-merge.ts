@@ -170,6 +170,15 @@ export async function mergeGuestStateToAccount(userId: string): Promise<GuestMer
     }
   }
 
+  // 6) تقدّم مسار الحفظ: الأحدث يفوز، ولا حذف — ويبدأ الدفع التلقائي لاحقًا للحساب
+  try {
+    const hifz = await import("@/lib/memorization-path/cloud-sync");
+    await hifz.syncHifzProgressNow(userId);
+    hifz.startHifzCloudSync();
+  } catch {
+    result.errors.push("hifz");
+  }
+
   markMerged(userId);
   try {
     const { flushOutbox } = await import("@/lib/sync-outbox");

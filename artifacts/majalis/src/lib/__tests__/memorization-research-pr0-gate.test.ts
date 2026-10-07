@@ -80,11 +80,12 @@ const {
 } = await import("../scholarly-research/index.ts");
 
 resetMemorizationResearchFlags();
-assert.equal(MEMORIZATION_RESEARCH_FLAGS_DEFAULT.hifzPathEnabled, false);
+/* تفعيل المالك 2026-10-07: مسار الحفظ ON؛ البحوث الشرعية تبقى OFF. */
+assert.equal(MEMORIZATION_RESEARCH_FLAGS_DEFAULT.hifzPathEnabled, true);
 assert.equal(MEMORIZATION_RESEARCH_FLAGS_DEFAULT.scholarlyResearchEnabled, false);
-assert.equal(isHifzPathEnabled(), false);
+assert.equal(isHifzPathEnabled(), true);
 assert.equal(isScholarlyResearchEnabled(), false);
-assert.equal(countPublishedHifzPaths(), 0);
+assert.equal(countPublishedHifzPaths(), 4, "4 مسارات مصحف فقط؛ بقية القوالب DRAFT");
 assert.equal(countPublishedScholarlyResearch(), 0);
 
 assert.equal(HIFZ_PATH_USER_TAGLINE, "مسارات مقترحة للحفظ بحسب المستوى والهدف");
@@ -117,10 +118,10 @@ assert.equal(roleCanPerformScholarlyReview("METHODOLOGY_REVIEWER", "methodology"
 assert.equal(isScholarlyResearchPubliclyVisible("SUBMITTED"), false);
 assert.equal(isScholarlyResearchPubliclyVisible("APPROVED_EXTERNAL_LINK"), true);
 
-setMemorizationResearchFlagsForTests({ hifzPathEnabled: true });
-assert.equal(isHifzPathEnabled(), true);
+setMemorizationResearchFlagsForTests({ hifzPathEnabled: false });
+assert.equal(isHifzPathEnabled(), false, "الإطفاء المحلي يعمل");
 resetMemorizationResearchFlags();
-assert.equal(isHifzPathEnabled(), false);
+assert.equal(isHifzPathEnabled(), true);
 
 /** PR-0 عقود؛ Routes أُضيفت في PR-1 خلف العلم — لا استيراد scholarly-research صفحة موازية */
 const appRoutes = readPkg("src/AppRoutes.tsx");

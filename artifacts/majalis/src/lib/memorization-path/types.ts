@@ -73,6 +73,8 @@ export type HifzPath = {
   edition?: string | null;
   licenseStatus: HifzLicenseStatus;
   reviewStatus: HifzReviewStatus;
+  /** من اعتمد ومتى — يُسجَّل صراحةً حين يكون الاعتماد بتوجيه المالك لا مراجعة فردية. */
+  reviewNote?: string;
   publicationStatus: HifzPublicationStatus;
   coverAsset?: string | null;
   prerequisites?: string[];
