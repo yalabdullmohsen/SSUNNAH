@@ -32,7 +32,6 @@ const targets = [
   "src/views/admin/UniversitiesAdminPage.tsx",
   "src/views/admin/SmartCmsSection.tsx",
   "src/views/admin/CategoriesSection.tsx",
-  "src/views/admin/learning-paths/LearningPathTreeEditor.tsx",
 ] as const;
 
 for (const rel of targets) {
