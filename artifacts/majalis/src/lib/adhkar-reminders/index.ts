@@ -139,7 +139,7 @@ function toNative(r: PlannedReminder, id: number) {
     // «صوت النظام» = default؛ النغمة غير الموجودة في الحزمة (قبل نسخة المتجر) يُسقطها iOS للصوت الافتراضي.
     ...(silent ? {} : { sound: r.sound === "system" ? "default" : `${r.sound}.caf` }),
     // Time Sensitive يتطلب صلاحية Apple؛ بدونها يعامله iOS كـ active تلقائيًا.
-    interruptionLevel: silent ? ("passive" as const) : r.timeSensitive ? ("timeSensitive" as const) : ("active" as const),
+    interruptionLevel: silent ? ("passive" as const) : ("active" as const),
     threadIdentifier: "adhkar",
     actionTypeId: ADHKAR_ACTION_TYPE,
     channelId: CHANNEL_GENERAL,
