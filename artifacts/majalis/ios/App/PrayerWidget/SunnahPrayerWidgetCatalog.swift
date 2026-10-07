@@ -168,10 +168,12 @@ struct CurrentPrayerCatalogView: View {
                     Text(SunnahWidgetTimeFormatting.clock(start))
                         .font(.headline.monospacedDigit())
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                 }
                 PrayerElapsedText(entry: entry)
                     .font(family == .systemMedium ? SunnahWidgetTheme.countdownFont : .caption.monospacedDigit().bold())
                     .foregroundStyle(SunnahBrandColors.gold)
+                    .widgetAccentable()
             }
             .padding(12)
         }
@@ -227,6 +229,7 @@ struct NextPrayerCatalogView: View {
                 PrayerCountdownText(entry: entry)
                     .font(.system(size: family == .systemLarge ? 42 : 32, weight: .bold, design: .rounded).monospacedDigit())
                     .foregroundStyle(SunnahBrandColors.gold)
+                    .widgetAccentable()
                     .minimumScaleFactor(0.5)
                 if let hijri = entry.hijriDateText {
                     Text(hijri)
@@ -248,10 +251,12 @@ struct NextPrayerCatalogView: View {
                     Text(SunnahWidgetTimeFormatting.clock(date))
                         .font(.headline.monospacedDigit())
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                 }
                 PrayerCountdownText(entry: entry)
                     .font(SunnahWidgetTheme.countdownFont)
                     .foregroundStyle(SunnahBrandColors.gold)
+                    .widgetAccentable()
             }
             .padding(12)
         }
@@ -285,6 +290,7 @@ struct PreviousPrayerCatalogView: View {
                         Text(SunnahWidgetTimeFormatting.clock(date))
                             .font(.headline.monospacedDigit())
                             .foregroundStyle(SunnahBrandColors.gold)
+                            .widgetAccentable()
                         Text("مضى \(SunnahWidgetTimeFormatting.staticRemaining(from: date, to: entry.date))")
                             .font(.caption)
                             .foregroundStyle(SunnahWidgetTheme.secondaryText)
@@ -319,6 +325,7 @@ struct PreviousNextPrayerCatalogView: View {
                                 Text(SunnahWidgetTimeFormatting.clock(d))
                                     .font(.caption.monospacedDigit())
                                     .foregroundStyle(SunnahBrandColors.gold)
+                                    .widgetAccentable()
                             }
                         }
                         Spacer()
@@ -333,12 +340,14 @@ struct PreviousNextPrayerCatalogView: View {
                                 Text(SunnahWidgetTimeFormatting.clock(d))
                                     .font(.caption.monospacedDigit())
                                     .foregroundStyle(SunnahBrandColors.gold)
+                                    .widgetAccentable()
                             }
                         }
                     }
                     PrayerCountdownText(entry: entry)
                         .font(SunnahWidgetTheme.countdownFont)
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                 }
                 .padding(14)
             }
@@ -363,6 +372,7 @@ struct GroupedPrayerCatalogView: View {
                     Text(title)
                         .font(.caption2.bold())
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                     ForEach(keys, id: \.self) { key in
                         groupedRow(key)
                     }
@@ -373,6 +383,7 @@ struct GroupedPrayerCatalogView: View {
                     Text(title)
                         .font(.caption.bold())
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                     HStack(spacing: 6) {
                         ForEach(keys, id: \.self) { key in
                             groupedCell(key)
@@ -448,6 +459,7 @@ struct AllPrayerCatalogView: View {
                     Text("مواقيت اليوم")
                         .font(.caption.bold())
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                     VStack(spacing: 8) {
                         HStack(spacing: 8) {
                             ForEach(Array(keys.prefix(3)), id: \.self) { key in
@@ -509,6 +521,7 @@ struct PrayerHijriCatalogView: View {
                         Text(hijri)
                             .font(.headline)
                             .foregroundStyle(SunnahBrandColors.gold)
+                            .widgetAccentable()
                             .lineLimit(2)
                             .minimumScaleFactor(0.8)
                     }
@@ -523,6 +536,7 @@ struct PrayerHijriCatalogView: View {
                     PrayerCountdownText(entry: entry)
                         .font(.caption.monospacedDigit().bold())
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                 }
                 .padding(12)
             }

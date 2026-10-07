@@ -75,6 +75,7 @@ struct TodayInSunnahView: View {
                 Text("اليوم في سُنّة")
                     .font(.caption.bold())
                     .foregroundStyle(SunnahBrandColors.gold)
+                    .widgetAccentable()
                 HStack {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(entry.prayer.currentNameAr ?? "قبل الفجر")
@@ -88,6 +89,7 @@ struct TodayInSunnahView: View {
                     PrayerCountdownText(entry: entry.prayer)
                         .font(.headline.monospacedDigit().bold())
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                 }
                 Text(entry.progress?.currentAdhkarTitleAr ?? entry.adhkar?.activeTitleAr ?? "أذكار الوقت")
                     .font(.subheadline.bold())
@@ -125,6 +127,7 @@ struct TodayActionsView: View {
             Text("اختصارات")
                 .font(.caption.bold())
                 .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 8) {
                 actionCell("صلاة", system: "moon.stars.fill", url: SunnahWidgetDeepLinkFactory.prayer())
                 actionCell("أذكار", system: "heart.fill", url: SunnahWidgetDeepLinkFactory.adhkar(collection: entry.adhkar?.activeCollection ?? "morning"))
@@ -144,6 +147,7 @@ struct TodayActionsView: View {
             Image(systemName: system)
                 .font(.headline)
                 .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
                 .accessibilityHidden(true)
             Text(title)
                 .font(.caption.bold())
@@ -173,6 +177,7 @@ struct SpiritualDayView: View {
                     Text("اليوم الروحي")
                         .font(.caption.bold())
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                     statusRow("الصلاة", done: entry.prayer.currentNameAr != nil)
                     statusRow("الأذكار", done: progress.morningAdhkarDone || progress.eveningAdhkarDone)
                     statusRow("القراءة", done: progress.quranDone || entry.mushaf?.hasProgress == true)

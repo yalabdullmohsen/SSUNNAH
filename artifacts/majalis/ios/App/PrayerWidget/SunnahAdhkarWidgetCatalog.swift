@@ -95,6 +95,7 @@ struct AdhkarCollectionView: View {
             Text(action)
                 .font(.subheadline)
                 .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
             Spacer(minLength: 0)
         }
         .padding(12)
@@ -115,6 +116,7 @@ struct TimeAwareAdhkarView: View {
             Text("أذكار الوقت")
                 .font(.caption.bold())
                 .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
             Text(title)
                 .font(.title3.bold())
                 .foregroundStyle(.white)
@@ -138,6 +140,7 @@ struct RotatingAdhkarView: View {
             Text(entry.adhkar?.rotatingCollection ?? "ذكر")
                 .font(.caption.bold())
                 .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
             Text(entry.adhkar?.rotatingText ?? "افتح سُنّة لعرض الذكر")
                 .font(.headline)
                 .foregroundStyle(.white)
@@ -182,12 +185,14 @@ struct AdhkarStreakView: View {
                         Text("أذكار اليوم")
                             .font(.caption.bold())
                             .foregroundStyle(SunnahBrandColors.gold)
+                            .widgetAccentable()
                         Text(todayLabel)
                             .font(.headline)
                             .foregroundStyle(.white)
                         Text("السلسلة \(SunnahWidgetTimeFormatting.arabic(progress.adhkarStreakDays ?? 0))")
                             .font(.title2.bold())
                             .foregroundStyle(SunnahBrandColors.gold)
+                            .widgetAccentable()
                     }
                     .padding(12)
                 }

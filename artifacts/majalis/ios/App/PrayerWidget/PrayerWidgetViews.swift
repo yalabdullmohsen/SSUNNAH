@@ -117,6 +117,7 @@ struct SmallPrayerWidgetView: View {
                 } icon: {
                     Image(systemName: entry.currentKey?.symbolName ?? "moon.stars.fill")
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                         .accessibilityHidden(true)
                 }
                 .accessibilityLabel(Text(smallA11yLabel))
@@ -130,6 +131,7 @@ struct SmallPrayerWidgetView: View {
                 PrayerCountdownText(entry: entry)
                     .font(.title3.monospacedDigit().bold())
                     .foregroundStyle(SunnahBrandColors.gold)
+                    .widgetAccentable()
                     .accessibilityLabel(Text(countdownA11y))
 
                 if entry.isSampleData {
@@ -197,6 +199,7 @@ struct MediumPrayerWidgetView: View {
                     PrayerCountdownText(entry: entry)
                         .font(.title2.monospacedDigit().bold())
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                         .accessibilityLabel("العد التنازلي للصلاة التالية")
                 }
 
@@ -257,6 +260,7 @@ struct LargePrayerWidgetView: View {
                     PrayerCountdownText(entry: entry)
                         .font(.title.monospacedDigit().bold())
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                         .accessibilityLabel("الوقت المتبقي للصلاة التالية")
                 }
 
@@ -267,6 +271,7 @@ struct LargePrayerWidgetView: View {
                     Text(PrayerWidgetCopy.stale)
                         .font(.caption2)
                         .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
                 } else if let updated = entry.lastUpdated {
                     Text("آخر تحديث: \(updated, style: .time)")
                         .font(.caption2)
