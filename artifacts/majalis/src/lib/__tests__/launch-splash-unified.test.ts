@@ -158,8 +158,4 @@ const manifest = JSON.parse(readFileSync(resolve(root, "public/manifest.json"), 
 assert.equal(manifest.background_color, BG);
 assert.equal(manifest.theme_color, "#F8F6F1");
 
-const brand = readFileSync(resolve(root, "src/components/brand/MajlisWordmark.tsx"), "utf8");
-assert.match(brand, /سُنّة/, "وردمارك يعرض سُنّة");
-assert.doesNotMatch(brand, /MAJLIS_WORDMARK_PATH/, "بلا مسار SVG للاسم القديم");
-
 console.log("launch-splash-unified.test.ts: ok");

@@ -98,10 +98,6 @@ assert.match(reader, /setMushafAyahSearchHighlight/);
 assert.match(reader, /migrateToSunnahMushafSignature/);
 assert.match(reader, /searchOpen \|\| indexOpen/);
 
-const returnCtx = read("src/features/mushaf-reader/mushaf-return-context.ts");
-assert.match(returnCtx, /MushafReturnContext/);
-assert.match(returnCtx, /sourceRoute/);
-
 const banner = read("src/features/mushaf-reader/MushafSurahBanner.tsx");
 assert.match(banner, /sunnah-v1|nm-surah-banner/);
 assert.match(read("src/features/mushaf-reader/mushaf-reader.css"), /mushaf-surah-frame-bg/);

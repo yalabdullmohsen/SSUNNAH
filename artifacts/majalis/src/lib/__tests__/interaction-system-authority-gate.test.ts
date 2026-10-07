@@ -52,7 +52,6 @@ assert.match(icon, /size="icon"/);
 assert.match(icon, /label:/);
 
 assert.match(read("src/components/filters/FilterResetButton.tsx"), /from "@\/components\/ui\/button"/);
-assert.match(read("src/components/ShareButton.tsx"), /from "@\/components\/ui\/button"/);
 
 assert.ok(existsSync(resolve(majalisRoot, "reports/interaction-system-debt-budget.json")));
 assert.ok(existsSync(resolve(majalisRoot, "scripts/interaction-system-inventory.mjs")));

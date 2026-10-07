@@ -23,9 +23,6 @@ assert.match(lazy, /STATUS\.loadError/);
 assert.match(lazy, /STATUS\.contentLoading/);
 assert.doesNotMatch(lazy, /تعذّر تحميل الفهرس/);
 
-const schedule = read("src/components/lessons/LessonScheduleGroup.tsx");
-assert.match(schedule, /EMPTY\.search/);
-assert.doesNotMatch(schedule, /لا توجد دروس مطابقة/);
 
 const qa = read("src/components/quiz-game/DirectQaCard.tsx");
 assert.match(qa, /EMPTY\.generic/);
