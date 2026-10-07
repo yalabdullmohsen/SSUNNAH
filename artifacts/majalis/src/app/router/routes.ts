@@ -153,6 +153,7 @@ const PATHS = [
   "/daily-wird",
   "/dalail-nubuwwah",
   "/dalail-nubuwwah/:categoryId",
+  "/debug/tasmee",
   "/dalail-nubuwwah/:categoryId/:topicId",
   "/delete-account",
   "/dev/design-system",
@@ -503,7 +504,7 @@ function inferSection(path: string): AppRouteSection {
 }
 
 const SITEMAP_EXCLUDED =
-  /^\/(admin|dashboard|login|register|api|search|settings|account|auth|internal|hifz-path|dev|more|worship)(\/|$)/;
+  /^\/(admin|dashboard|login|register|api|search|settings|account|auth|internal|hifz-path|dev|debug|more|worship)(\/|$)/;
 
 export const ROUTE_REGISTRY: readonly AppRoute[] = PATHS.map((path) => ({
   path,
