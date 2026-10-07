@@ -30,7 +30,6 @@ export const FlashCardsPage = lazy(() => import("@/pages/account/FlashCardsPage"
 
 export const NotificationSettingsPage = lazy(() => import("@/pages/account/NotificationSettingsPage"));
 
-export const NotificationsAndSoundPage = lazy(() => import("@/pages/account/NotificationsAndSoundPage"));
 
 export const ProgressCenterPage = lazy(() => import("@/pages/account/ProgressCenterPage"));
 

@@ -105,8 +105,8 @@ export function SunnahChannelsPanel({ onStopAll }: { onStopAll?: () => void }) {
 
       <Button
         type="button"
-        variant="ghost"
-        className="notif-stop-all"
+        variant="secondary"
+        className="page-action-btn page-action-btn--secondary notif-stop-all"
         onClick={() => {
           const current = loadNotifPrefs();
           saveNotifPrefs({

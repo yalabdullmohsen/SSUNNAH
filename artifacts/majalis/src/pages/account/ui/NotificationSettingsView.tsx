@@ -438,7 +438,7 @@ export default function NotificationSettingsPage() {
               {
                 id: "prayer",
                 title: "تنبيهات الصلاة والأذان",
-                description: "بمواقيت موقعك الحقيقية — الأذان والتنبيه قبله وبعده والإقامة",
+                description: "بمواقيت موقعك — تُضبط من إعدادات الأذان",
                 icon: <MoonStar size={18} strokeWidth={1.8} aria-hidden />,
                 value: (
                   <span className="nsp-row-status">
