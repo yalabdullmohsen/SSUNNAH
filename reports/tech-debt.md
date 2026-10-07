@@ -43,7 +43,7 @@
 | C2 | تحديثات patch لحزم Radix (10 حزم) | ✅ أُغلق (PR #2688) |
 | C3 | تحديثات patch: tailwind/tailwind-merge/adhan/dexie/compression/sharp/@types/leaflet | ✅ أُغلق (PR #2698، lockfile فقط). **بقيت** إضافات Capacitor الست: تمس حزمة iOS (بوابة TestFlight) — المرحلة 2 بقرارك |
 
-| C4 | الكود الميت | ✅ أُغلق جزئيًا (PR #2697): knip بلا إعداد أعطى 989 «غير مستخدم» أغلبها وهمي (api/، scripts، imports ديناميكية)؛ بعد تصفية src/*.ts(x) وفحص المراجع عبر المستودع حُذفت 5 ملفات فقط. **بقي**: إعداد knip برسم نقاط الدخول (api/*، scripts/*، vite، vercel) لحصر دقيق — المرحلة 2 |
+| C4 | الكود الميت | ✅ جزئيًا (PR #2697: 5 ملفات). **حُصر الباقي بدقة**: knip بإعداد نقاط الدخول (main.tsx، الاختبارات، scripts، api، lib) أعطى 204 غير مستخدم، منها **45 ملفًا لا يستوردها شيء إلا اختبارات/سكربتات تقرأ نصها** (أغلبها مكوّنات الواجهة القديمة بعد #2693: NavBar، SideNavDrawer، BottomNavBar، MoreBottomSheet، أقسام Home*…). حذفها يستلزم تنظيف ~40 بوابة اختبار وسكربتات بناء (`inject-home-chunk-preload`، `verify-orphan-discovery-gate`) فجُعل مرحلة 3 مستقلة. القائمة أدناه |
 
 ## ديون اختبارية مكتشفة (بوابات حمراء خارج CI)
 
@@ -74,3 +74,51 @@
 - حذف قسم العلماء: PR #2695 (مسارات /scholars تحوَّل إلى /sections؛ بيانات scholars-profiles باقية).
 - T1–T3: PR #2696 — مدموج. C4: PR #2697. C3: PR #2698 — مدموج.
 - الصفحات الداخلية (زر رجوع + عناوين 28px): PR #2700.
+
+## ملحق C4 — ملفات src ميتة (بلا مستورِد غير الاختبارات)
+
+- `src/components/AdminQuickEdit.tsx`
+- `src/components/IosAppCtaSlot.tsx`
+- `src/components/SearchSuggestions.tsx`
+- `src/components/ShareButton.tsx`
+- `src/components/admin/AdminDisplayText.tsx`
+- `src/components/admin/review-hub/WaveformAudioPlayer.tsx`
+- `src/components/brand/MajlisWordmark.tsx`
+- `src/components/home/DailyWirdCard.tsx`
+- `src/components/home/HomeAboutSection.tsx`
+- `src/components/home/HomeExplorePlatform.tsx`
+- `src/components/home/HomeLiveStatsStrip.tsx`
+- `src/components/home/HomeQuickAccessV2.tsx`
+- `src/components/home/HomeSacredOfDay.tsx`
+- `src/components/home/HomeStartHereSection.tsx`
+- `src/components/home/HomeUpcomingCourses.tsx`
+- `src/components/layout/ContentHubLayout.tsx`
+- `src/components/lessons/LessonScheduleGroup.tsx`
+- `src/components/majlis/MainNavigationScreen.tsx`
+- `src/components/motion/SmoothImage.tsx`
+- `src/components/prayer/PrayerCountdownChip.tsx`
+- `src/components/quran/SurahList.tsx`
+- `src/components/sections/SectionsGrids.tsx`
+- `src/components/ui/menubar.tsx`
+- `src/components/ui/navigation-menu.tsx`
+- `src/features/mushaf-reader/mushaf-internal-perf-contract.ts`
+- `src/features/mushaf-reader/mushaf-return-context.ts`
+- `src/hooks/useAutoHideBottomNav.ts`
+- `src/hooks/useOfflineContent.ts`
+- `src/lib/architecture-excellence/marks-contract.ts`
+- `src/lib/citation-schema.ts`
+- `src/lib/fiqh/fiqhSearch.ts`
+- `src/lib/lessons/lessonSearch.ts`
+- `src/lib/prayer-notifications/store-device-harness.ts`
+- `src/lib/prayer-time-engine.ts`
+- `src/lib/section-topics-expand.ts`
+- `src/lib/seo-app-jsonld.ts`
+- `src/lib/spacing-authority.ts`
+- `src/lib/tarikh-islami-data.ts`
+- `src/lib/typography-authority.ts`
+- `src/lib/whole-app-excellence/marks-contract.ts`
+- `src/lib/world-class-polish/marks-contract.ts`
+- `src/pages/account/MemorizePage.tsx`
+- `src/views/QaPage.tsx`
+- `src/views/StartHerePage.tsx`
+- `src/views/admin/learning-paths/LearningPathTreeEditor.tsx`
