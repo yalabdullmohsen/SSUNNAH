@@ -115,7 +115,8 @@ const REVIEWER_RE = /reviewed_by|reviewedAt|reviewed_at|verifiedBy|verified_by|a
 // (/scholars) لا تعرض شارة «معتمد» غير مشروطة، وقد جرى التحقق من ذلك يدويًا.
 const BADGE_FILES = [
   "src/components/ScholarlyTrustBadge.tsx",
-  "src/components/fiqh-council/FiqhVerifiedBadge.tsx",
+  // أُزيل "fiqh-council/FiqhVerifiedBadge.tsx": أسطح المجمع الفقهي حُذفت من المنتج (#2066)،
+  // فبقاء اسمه هنا كان يُفشل الفحص بـ«ملف مفقود» لا بخلل توثيق فعلي.
 ];
 
 function checkTrustBadges() {
