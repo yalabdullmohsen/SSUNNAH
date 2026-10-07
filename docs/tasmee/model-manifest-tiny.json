@@ -1,0 +1,95 @@
+{
+ "modelId": "tasmee-whisper-tiny-ar-quran-coreml",
+ "format": "whisperkit-coreml",
+ "upstream": "tarteel-ai/whisper-tiny-ar-quran@c3d7e624af5c81bef25a10a2af3a5a84cb4dd0f0",
+ "license": "Apache-2.0",
+ "totalBytes": 80223286,
+ "baseUrl": null,
+ "files": [
+  {
+   "path": "AudioEncoder.mlmodelc/analytics/coremldata.bin",
+   "size": 243,
+   "sha256": "0fdd23fbe9b1472bcc68617d462f42b7f3c5eec2db18de11e8345625b086ab08"
+  },
+  {
+   "path": "AudioEncoder.mlmodelc/coremldata.bin",
+   "size": 408,
+   "sha256": "74505b323c233e307547b9e44e30af84ec1fb3f0af345dfac4ded4dea6b3f958"
+  },
+  {
+   "path": "AudioEncoder.mlmodelc/metadata.json",
+   "size": 1908,
+   "sha256": "56431af3a1bcffc3e3b1f69e97e0ec62b7042da3144d19901809e84e4a79d2f4"
+  },
+  {
+   "path": "AudioEncoder.mlmodelc/model.mil",
+   "size": 403018,
+   "sha256": "793731c65766db30f6c71d7a492396c33086c4b9f2a20f1deed9a8881c9f2fab"
+  },
+  {
+   "path": "AudioEncoder.mlmodelc/weights/weight.bin",
+   "size": 16422784,
+   "sha256": "5b7d6180f842e404d8c378a3a975699c417605a966cccfcb2fb655d13cbe2a66"
+  },
+  {
+   "path": "MelSpectrogram.mlmodelc/analytics/coremldata.bin",
+   "size": 243,
+   "sha256": "55931596e831c13db86b08ce3d4ff66832701105c0b906b9231e652ca9cb3b11"
+  },
+  {
+   "path": "MelSpectrogram.mlmodelc/coremldata.bin",
+   "size": 389,
+   "sha256": "317afa778a6ede225880936867a037fc550f468ae9bceda25154dcfbeeaec525"
+  },
+  {
+   "path": "MelSpectrogram.mlmodelc/metadata.json",
+   "size": 1947,
+   "sha256": "35c2af3f80d529907d48f886c8ac3d20b096ea0ce557bd0e6f10b01679c30b1e"
+  },
+  {
+   "path": "MelSpectrogram.mlmodelc/model.mil",
+   "size": 10134,
+   "sha256": "71cdfe15deabeb5b030b5a5197cad12d40a21c954289b21cb8244646cfeec80b"
+  },
+  {
+   "path": "MelSpectrogram.mlmodelc/weights/weight.bin",
+   "size": 354080,
+   "sha256": "801024dbc7a89c677be1f8b285de3409e35f7d1786c9c8d9d0d6842ac57a1c83"
+  },
+  {
+   "path": "TextDecoder.mlmodelc/analytics/coremldata.bin",
+   "size": 243,
+   "sha256": "6ea9600694e07cd120d03c521dee07e63e26f1c21fdf3eb2e8908e53d4575486"
+  },
+  {
+   "path": "TextDecoder.mlmodelc/coremldata.bin",
+   "size": 694,
+   "sha256": "c29d0fba14bc5ccc241e08031a576145cff9d6873821df72b16e85976013c4de"
+  },
+  {
+   "path": "TextDecoder.mlmodelc/metadata.json",
+   "size": 4853,
+   "sha256": "d8df6e7e64800725b05eccdcd1c87664549eeeb4dc1bfb4da486d0b0e2b3ae74"
+  },
+  {
+   "path": "TextDecoder.mlmodelc/model.mil",
+   "size": 132148,
+   "sha256": "079a1bfcc4cc868e1db81f5d0e65e2ecc2bc8721066c96895627bab06ba38614"
+  },
+  {
+   "path": "TextDecoder.mlmodelc/weights/weight.bin",
+   "size": 59216434,
+   "sha256": "8d27ec72bdf66878c760f881f0c752558ad9a8dbfb3b973754a43840612d4a32"
+  },
+  {
+   "path": "tokenizer.json",
+   "size": 3653235,
+   "sha256": "ff789e15fa4d77dc0664d18f28c4f7a1d65a56a7d31142ad48230279385c0112"
+  },
+  {
+   "path": "tokenizer_config.json",
+   "size": 20525,
+   "sha256": "b9e3f179dd00ee6ecf4637474fad1a9467b09feebe24d96c7473fddea2f65df3"
+  }
+ ]
+}

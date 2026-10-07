@@ -94,6 +94,19 @@ const LIBRARY_SOURCES: SourceRow[] = [
   },
 ];
 
+const SPEECH_SOURCES: SourceRow[] = [
+  {
+    name: "Tarteel — whisper-base-ar-quran (Apache-2.0)",
+    desc: "نموذج تعرّف صوتي مضبوط على التلاوة، أصله OpenAI Whisper (MIT). يُحوَّل إلى CoreML ويعمل على جهازك لوضع «تسميع» (قيد الإعداد). بيانات تدريبه غير موثّقة في بطاقته.",
+    status: "جزئي",
+  },
+  {
+    name: "WhisperKit — Argmax (MIT)",
+    desc: "محرك تشغيل النموذج على الجهاز.",
+    status: "ممنوح",
+  },
+];
+
 const AUDIO_SOURCES: SourceRow[] = [
   {
     name: "everyayah.com",
@@ -193,6 +206,10 @@ export default function SourcesLicensesPage() {
           الكتب إما بطاقة مرجعية (عنوان/مؤلف) أو رابط خارجي للقراءة.
           لا نعرض كتابًا كاملًا دون حق عرض صريح. المسار العلني السابق للمكتبة محوَّل للبحث/الرئيسية.
         </p>
+      </LegalSection>
+
+      <LegalSection title="التعرّف الصوتي على الجهاز (وضع التسميع)">
+        <SourceList rows={SPEECH_SOURCES} />
       </LegalSection>
 
       <LegalSection title="أصوات الصلاة والتنبيهات">
