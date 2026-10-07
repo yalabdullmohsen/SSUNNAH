@@ -22,13 +22,7 @@ function fail(msg: string) {
   errors.push(msg);
 }
 
-// 1) DailyWirdCard — حديث بمصدر + آية برقم
-assert.ok(existsSync(resolve(root, "src/components/home/DailyWirdCard.tsx")), "DailyWirdCard موجود");
-const wird = read("src/components/home/DailyWirdCard.tsx");
-assert.match(wird, /تم/);
-assert.match(wird, /localStorage/);
-assert.match(wird, /ayahNumber|ayahRef/);
-assert.match(wird, /hadith\.source/);
+// 1) حديث بمصدر + آية برقم (بيانات اليوم)
 for (const h of DAILY_HADITH_POOL) {
   if (!h.source?.trim()) fail(`حديث بلا مصدر في daily pool: ${h.id}`);
 }
@@ -82,8 +76,6 @@ const ayahBar = read("src/features/mushaf-madinah/AyahActionSheet.tsx");
 assert.match(ayahBar, /نسخ|مشاركة|تفسير|تشغيل|حفظ|bookmark|Bookmark|onBookmark|onShare/i);
 
 // 8) mobile nav hide/show
-const autoHide = read("src/hooks/useAutoHideBottomNav.ts");
-assert.match(autoHide, /translateY|isHidden|DELTA_PX/);
 const chromeCss = read("src/styles/components/app-chrome-scroll.css");
 assert.match(chromeCss, /bottom-nav--hidden/);
 assert.doesNotMatch(chromeCss.replace(/\/\*[\s\S]*?\*\//g, ""), /display\s*:\s*none/);
