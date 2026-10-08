@@ -1,3 +1,4 @@
+import { NavigationBar } from "@/design-system";
 import { useEffect } from "react";
 import { Link } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
@@ -8,7 +9,6 @@ import { KnowledgeSummaryCard } from "@/components/knowledge/KnowledgeSummaryCar
 import { MADHAHIB } from "@/data/madhahib";
 import { saveKnowledgeListState } from "@/lib/knowledge-list-scroll";
 import "@/styles/pages/madhahib.css";
-import { DetailScreen } from "@/components/design-system/screens";
 
 const LIST_PATH = "/madhahib";
 
@@ -46,7 +46,8 @@ export default function MadhahibPage() {
   };
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="المذاهب الفقهية الأربعة" large={false} />
       <main className="mdb-page" dir="rtl">
         <section className="mdb-hero">
           <div className="mdb-hero__badge">الفقه الإسلامي</div>
@@ -110,6 +111,6 @@ export default function MadhahibPage() {
           <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في المذاهب الفقهية" count={4} />
         </div>
       </main>
-    </DetailScreen>
+    </div>
   );
 }

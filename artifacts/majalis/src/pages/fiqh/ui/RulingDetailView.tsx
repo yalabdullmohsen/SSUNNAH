@@ -1,3 +1,4 @@
+import { NavigationBar } from "@/design-system";
 import { useEffect, useState } from "react";
 import { SkeletonPage } from "@/components/ui-common";
 import { ErrorStateV2 } from "@/components/design-system";
@@ -16,7 +17,6 @@ import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { GraphRelatedRail } from "@/widgets/RelatedRail";
 import NotFound from "@/views/not-found";
 import type { RulingResolveStatus } from "@/lib/rulings-resolver";
-import { DetailScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
 import { truncateAtWord } from "@/lib/utils";
 
@@ -163,7 +163,8 @@ export default function RulingDetailPage({ params }: { params: { id: string } })
   };
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title={item.title} large={false} />
     <KnowledgeLayout kind="reader" data-kx="1">
     <ContentDetailLayout
       breadcrumbs={[
@@ -205,6 +206,6 @@ export default function RulingDetailPage({ params }: { params: { id: string } })
       />
     </ContentDetailLayout>
     </KnowledgeLayout>
-    </DetailScreen>
+    </div>
   );
 }

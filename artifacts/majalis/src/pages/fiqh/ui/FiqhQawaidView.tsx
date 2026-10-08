@@ -1,3 +1,4 @@
+import { NavigationBar } from "@/design-system";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import { useEffect, useMemo, useState } from "react";
 import { BookOpen, ChevronDown, ChevronUp, Layers, Scale, Search, Sparkles } from "lucide-react";
@@ -8,7 +9,6 @@ import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import "@/styles/pages/fiqh-qawaid.css";
-import { ListScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
 import { Button } from "@/components/ui/button";
 
@@ -426,7 +426,8 @@ export default function FiqhQawaidPage() {
   );
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="القواعد الفقهية الكبرى" large={false} />
     <KnowledgeLayout kind="knowledge" className="fq-page" data-kx="1">
       {/* ══ Hero ══ */}
       <section className="fq-hero">
@@ -696,6 +697,6 @@ export default function FiqhQawaidPage() {
         <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في الفقه والقواعد" count={4} />
       </div>
     </KnowledgeLayout>
-    </ListScreen>
+    </div>
   );
 }
