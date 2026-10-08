@@ -14,7 +14,7 @@ import {
   registrationStatusLabel,
 } from "@/lib/competitions";
 import "./competitions.css";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 
 export default function CompetitionDetailView({ params }: { params: { id: string } }) {
   const item = useMemo(() => getCompetitionById(params.id), [params.id]);
@@ -58,7 +58,8 @@ export default function CompetitionDetailView({ params }: { params: { id: string
       : `https://www.ssunnah.com/competitions/${item.id}`;
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+<NavigationBar title={item.title} large={false} />
     <div className="cmp-detail" dir="rtl" data-competition-detail="1">
       <AppBackButton
         variant="inline"
@@ -172,6 +173,6 @@ export default function CompetitionDetailView({ params }: { params: { id: string
         <ShareButtons title={shareText} url={pageUrl} />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

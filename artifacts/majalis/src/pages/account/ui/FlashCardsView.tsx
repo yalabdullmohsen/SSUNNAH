@@ -24,7 +24,7 @@ import {
 } from "@/lib/spaced-repetition";
 import { recordUserActivity } from "@/lib/user-streak";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { ListScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { SectionErrorBoundary } from "@/components/ErrorBoundary";
 import { Button } from "@/components/ui/button";
 import "@/styles/pages/flashcards.css";
@@ -438,10 +438,11 @@ function FlashCardsPageInner() {
 
 export default function FlashCardsPage() {
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+<NavigationBar title="بطاقات المراجعة" large={false} />
       <SectionErrorBoundary name="FlashCardsEngine">
         <FlashCardsPageInner />
       </SectionErrorBoundary>
-    </ListScreen>
+    </div>
   );
 }
