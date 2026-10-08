@@ -35,3 +35,17 @@ final class WidgetCopyTests: XCTestCase {
         XCTAssertTrue(s.contains("func sunnahDynamicTypeCap"))
     }
 }
+
+final class WidgetSmartStackTests: XCTestCase {
+    private func widgetSource(_ name: String) throws -> String {
+        let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
+            .deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("PrayerWidget")
+        return try String(contentsOf: root.appendingPathComponent(name), encoding: .utf8)
+    }
+
+    func testRelevanceAndControlsWired() throws {
+        XCTAssertTrue(try widgetSource("SunnahWidgetPlatform.swift").contains("TimelineEntryRelevance"))
+        XCTAssertTrue(try widgetSource("SunnahWidgetIntents.swift").contains("ControlWidgetButton"))
+        XCTAssertTrue(try widgetSource("PrayerWidgetBundle.swift").contains("SunnahPrayerControl()"))
+    }
+}
