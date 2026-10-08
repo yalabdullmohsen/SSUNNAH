@@ -8,7 +8,6 @@ import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/fadail-aamal.css";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 
 interface Fadila {
   id: string;
@@ -1162,7 +1161,6 @@ export default function FadailAamalPage() {
           </div>
         </nav>
       </div>
-      <RelatedKnowledge kind="hadith" query="فضائل الأعمال" title="أحاديث في فضائل الأعمال" limit={6} />
       <div className="px-4 pb-6 mt-4">
         <SectionQuiz sectionId="hadith" title="اختبر معلوماتك في فضائل الأعمال" count={4} />
       </div>

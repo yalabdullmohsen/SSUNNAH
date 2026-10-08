@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
+import { NavigationBar, EmptyState } from "@/design-system";
 import { Link } from "wouter";
-import { PageHeader, Empty } from "@/components/ui-common";
+import { PageHeader } from "@/components/ui-common";
 import { applyPageSeo } from "@/lib/seo";
 import { STATUS } from "@/lib/ui-copy";
 import { useAuth } from "@/components/AuthProvider";
 import { getNewMuslimPath, getNewMuslimProgress, type NewMuslimDay } from "@/lib/dawah-service";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
-import { DetailScreen } from "@/components/design-system/screens";
 
 export default function NewMuslimPathPage() {
   const { user } = useAuth();
@@ -27,7 +27,8 @@ export default function NewMuslimPathPage() {
   }, [user?.id]);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="مسار الثلاثين يومًا" large={false} />
     <DiscoverIslamShell>
       <PageHeader eyebrow="التعريف بالإسلام" title="مسار الثلاثين يومًا" subtitle="لا سباق ولا حساب للتأخر — أكمل بالسرعة التي تناسبك، وارجع إلى أي يوم متى شئت." />
 
@@ -38,7 +39,7 @@ export default function NewMuslimPathPage() {
           ))}
         </div>
       ) : days.length === 0 ? (
-        <Empty text={STATUS.loadError} />
+        <EmptyState title={STATUS.loadError} />
       ) : (
         <ol className="dii-path-list">
           {days.map((d) => {
@@ -57,6 +58,6 @@ export default function NewMuslimPathPage() {
       )}
     </DiscoverIslamShell>
   
-    </DetailScreen>
+    </div>
   );
 }

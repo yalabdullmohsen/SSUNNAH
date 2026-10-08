@@ -4,7 +4,6 @@ import { formatNumber } from "@/lib/format";
 import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { useQiblaCompass } from "@/hooks/useQiblaCompass";
 import {
   angularDistance,
@@ -326,7 +325,6 @@ export default function QiblaPage() {
           </div>
         </Sheet>
 
-        <RelatedKnowledge kind="fatwa" query="القبلة والصلاة" title="معرفة ذات صلة بالقبلة" limit={6} />
         <ShareButtons title="اتجاه القبلة — سُنّة" url="https://www.ssunnah.com/qibla" />
         <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في أحكام القبلة والصلاة" count={4} />
       </div>

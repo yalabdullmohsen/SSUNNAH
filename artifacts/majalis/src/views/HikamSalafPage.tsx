@@ -7,7 +7,6 @@ import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/hikam-salaf.css";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { NavigationBar } from "@/design-system";
 import { truncateAtWord } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -1722,7 +1721,6 @@ export default function HikamSalafPage() {
           ))}
         </div>
       </section>
-      <RelatedKnowledge kind="fawaid" query="حكم السلف" title="حكم وفوائد ذات صلة" limit={6} />
       <div className="px-4 pb-6 mt-4">
         <SectionQuiz route="/hikam-salaf" title="اختبر معلوماتك في الحكم والتاريخ" count={4} />
       </div>

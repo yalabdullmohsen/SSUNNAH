@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import { NavigationBar } from "@/design-system";
 import { Link } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
 import { PROPHETS_LINEAGE, type LineageNode } from "@/lib/prophets-lineage";
 import { ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
 import { truncateAtWord } from "@/lib/utils";
-import { DetailScreen } from "@/components/design-system/screens";
 import { IconButton } from "@/components/design-system/Buttons";
 import "@/styles/pages/prophet-stories.css";
 
@@ -222,7 +222,8 @@ export default function ProphetsFamilyTreePage() {
   const selectedNode = placed.find(p => p.node.id === selected)?.node;
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="شجرة أنساب الأنبياء" large={false} />
     <div dir="rtl" className="pft-page">
       {/* Header */}
       <header className="pft-header">
@@ -393,6 +394,6 @@ export default function ProphetsFamilyTreePage() {
         </div>
       )}
     </div>
-    </DetailScreen>
+    </div>
   );
 }

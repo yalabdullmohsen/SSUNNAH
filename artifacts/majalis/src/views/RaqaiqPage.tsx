@@ -5,7 +5,6 @@ import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/raqaiq.css";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
@@ -594,7 +593,6 @@ export default function RaqaiqPage() {
       <div className="twh-share">
         <ShareButtons title="الرقائق والزهد — سُنّة" url="https://www.ssunnah.com/raqaiq" />
       </div>
-      <RelatedKnowledge kind="fawaid" query="الرقائق والزهد" title="فوائد ورقائق ذات صلة" limit={6} />
       <div className="px-4 pb-6 mt-4">
         <SectionQuiz sectionId="akhlaq" title="اختبر معلوماتك في الأخلاق والزهد" count={4} />
       </div>

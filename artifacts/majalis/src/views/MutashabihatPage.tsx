@@ -1,4 +1,5 @@
 import { SectionIcon } from "@/components/ui/SectionIcon";
+import { NavigationBar, SearchField } from "@/design-system";
 import { useEffect, useState, useMemo } from "react";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
@@ -9,8 +10,6 @@ import {
   type MutashabihatPair,
 } from "@/lib/mutashabihat-data";
 import { ChevronDown, Eye, EyeOff, BookOpen } from "lucide-react";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 import "@/styles/quran.css";
 
@@ -167,7 +166,8 @@ export default function MutashabihatPage() {
   }, [activeCategory, search]);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الآيات المتشابهات في القرآن الكريم" large={false} />
     <div className="mutash-page">
       <div className="mutash-hero">
         <span className="mutash-hero__icon"><SectionIcon name="📜" size={28} /></span>
@@ -202,8 +202,7 @@ export default function MutashabihatPage() {
           ))}
         </div>
 
-        <SearchInput className="mutash-search" placeholder="ابحث بالعنوان أو اسم السورة..." value={search} onChange={(e) => setSearch(e.target.value)}
-          aria-label="البحث في الآيات المتشابهات" onClear={() => setSearch("")} />
+        <SearchField value={search} onChange={setSearch} placeholder="ابحث بالعنوان أو اسم السورة..." label="البحث في الآيات المتشابهات" />
 
         <p className="mutash-meta">
           {filtered.length} {filtered.length === 1 ? "مجموعة" : "مجموعات"} متشابهة
@@ -218,6 +217,6 @@ export default function MutashabihatPage() {
         )}
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

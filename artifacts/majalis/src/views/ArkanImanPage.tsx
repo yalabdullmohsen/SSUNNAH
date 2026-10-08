@@ -6,7 +6,6 @@ import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/arkan-iman.css";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 
@@ -334,7 +333,6 @@ export default function ArkanImanPage() {
       <div className="zk-share">
         <ShareButtons title="أركان الإيمان الستة — سُنّة" url="https://www.ssunnah.com/arkan-iman" />
       </div>
-      <RelatedKnowledge kind="lesson" query="أركان الإيمان" title="دروس ومواد ذات صلة" limit={6} />
       <div className="px-4 pb-6 mt-4">
         <SectionQuiz sectionId="aqidah" title="اختبر معلوماتك في العقيدة" count={4} />
       </div>

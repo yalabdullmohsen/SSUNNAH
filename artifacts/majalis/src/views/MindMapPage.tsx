@@ -1,4 +1,5 @@
 import "@/styles/mind-map.css";
+import { NavigationBar, SearchField } from "@/design-system";
 import { useEffect, useState, useCallback, useMemo } from "react";
 import { Link } from "wouter";
 import { ChevronDown, ChevronLeft, ExternalLink, Layers, List, Map, Sparkles, Waypoints, X } from "lucide-react";
@@ -9,8 +10,6 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { MIND_MAPS, MIND_MAP_CATEGORIES, type MindMap, type MindMapNode } from "@/lib/mind-maps-data";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { MindMapCanvas } from "@/components/mind-map/MindMapCanvas";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 type ViewMode = "canvas" | "list";
@@ -182,7 +181,8 @@ export default function MindMapPage() {
   }, [activeCategory, search]);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الخرائط الذهنية" large={false} />
     <div className="mm-page">
       {/* رأس */}
       <header className="sh-hero">
@@ -242,8 +242,7 @@ export default function MindMapPage() {
 
       {/* بحث */}
       <div className="mm-search-wrap">
-        <SearchInput className="ds-input mm-search-input" placeholder="ابحث في الخرائط الذهنية..." value={search} onChange={(e) => setSearch(e.target.value)}
-          aria-label="بحث في الخرائط الذهنية" onClear={() => setSearch("")} />
+        <SearchField value={search} onChange={setSearch} placeholder="ابحث في الخرائط الذهنية..." label="بحث في الخرائط الذهنية" />
       </div>
 
       {/* أزرار التوسيع والطيّ */}
@@ -299,6 +298,6 @@ export default function MindMapPage() {
         <SectionQuiz route="/mind-map" title="اختبر معلوماتك في العلوم الشرعية" count={4} />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

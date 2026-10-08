@@ -35,7 +35,6 @@ import {
   safeOriginalSourceHref,
 } from "@/lib/scholarly-research";
 import "@/styles/pages/researches.css";
-import { DetailScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
 
 export default function ResearchDetailPage() {
@@ -99,7 +98,7 @@ export default function ResearchDetailPage() {
 
   if (!research) {
     return (
-      <DetailScreen compose="mark">
+      <div className="sn-screen">
         <div className="sr-page">
           <div className="sr-empty">
             <p>
@@ -111,13 +110,13 @@ export default function ResearchDetailPage() {
             </Link>
           </div>
         </div>
-      </DetailScreen>
+      </div>
     );
   }
 
   if (research.isPersonal && research.reviewStatus !== "published") {
     return (
-      <DetailScreen compose="mark">
+      <div className="sn-screen">
         <div className="sr-page">
           <div className="sr-empty">
             <p>
@@ -129,7 +128,7 @@ export default function ResearchDetailPage() {
             </Link>
           </div>
         </div>
-      </DetailScreen>
+      </div>
     );
   }
 
@@ -154,7 +153,7 @@ export default function ResearchDetailPage() {
   };
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
       <div className="sr-page">
         <p style={{ marginBottom: "0.75rem" }}>
           <Link href="/academic-research" className="sr-section__link">
@@ -512,6 +511,6 @@ export default function ResearchDetailPage() {
           url={`https://www.ssunnah.com/academic-research/${research.slug}`}
         />
       </div>
-    </DetailScreen>
+    </div>
   );
 }

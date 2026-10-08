@@ -123,29 +123,47 @@ async function measureView(page, viewLabel, clickTab) {
   };
 }
 
+// تواريخ ثابتة تمثّل: يومًا عاديًا، نافذة بعد المغرب بتوقيت الكويت (ظهر فيها درس الخميس وكشفت فيضًا حقيقيًا)،
+// وشهر 4 أسابيع (فبراير) و5 أسابيع (نوفمبر) و6 أسابيع (أغسطس)، ونهاية شهر هجري تقريبًا.
+const CLOCKS = [
+  "2026-10-08T12:00:00Z",
+  "2026-10-08T17:00:00Z",
+  "2026-10-08T20:30:00Z",
+  "2026-02-10T10:00:00Z",
+  "2026-08-15T10:00:00Z",
+  "2026-11-01T10:00:00Z",
+  "2026-10-10T17:30:00Z",
+];
+
 async function main() {
   const { base, stop } = await ensureBase();
   const browser = await chromium.launch({ headless: true });
-  const context = await browser.newContext({ viewport: { width: vw, height: vh }, locale: "ar-KW" });
-  await context.addInitScript(() => {
-    try {
-      localStorage.setItem("majalis.onboarding.onboarding_seen", "1");
-      localStorage.setItem("majalis.onboarding.onboarding_major_version", "1");
-    } catch { /* ignore */ }
-  });
-  const page = await context.newPage();
-
-  await page.goto(`${base}/calendar`, { waitUntil: "networkidle", timeout: 60_000 });
-  await page.waitForSelector(".cal-grid, .cal-grid--skeleton", { timeout: 20_000 });
-  await page.waitForFunction(
-    () => document.querySelector(".cal-grid:not(.cal-grid--skeleton)"),
-    { timeout: 30_000 },
-  );
-
   const rows = [];
-  rows.push(await measureView(page, "month", null));
-  rows.push(await measureView(page, "week", "أسبوعي"));
-  rows.push(await measureView(page, "day", "يومي"));
+  for (const [ci, clock] of CLOCKS.entries()) {
+    const context = await browser.newContext({ viewport: { width: vw, height: vh }, locale: "ar-KW" });
+    await context.addInitScript(() => {
+      try {
+        localStorage.setItem("majalis.onboarding.onboarding_seen", "1");
+        localStorage.setItem("majalis.onboarding.onboarding_major_version", "1");
+      } catch { /* ignore */ }
+    });
+    const page = await context.newPage();
+    await page.clock.install({ time: new Date(clock) });
+
+    await page.goto(`${base}/calendar`, { waitUntil: "networkidle", timeout: 60_000 });
+    await page.waitForSelector(".cal-grid, .cal-grid--skeleton", { timeout: 20_000 });
+    await page.waitForFunction(
+      () => document.querySelector(".cal-grid:not(.cal-grid--skeleton)"),
+      { timeout: 30_000 },
+    );
+
+    for (const [label, tab] of [["month", null], ["week", "أسبوعي"], ["day", "يومي"]]) {
+      const row = await measureView(page, ci === 0 ? label : `${label}-${ci}`, tab);
+      row.view = `${label}@${clock}`;
+      rows.push(row);
+    }
+    await context.close();
+  }
 
   await browser.close();
   await stop();
