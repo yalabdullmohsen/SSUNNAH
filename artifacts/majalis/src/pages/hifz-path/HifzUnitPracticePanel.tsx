@@ -144,7 +144,7 @@ export function HifzUnitPracticePanel({
                     </Link>
                     {" · "}
                     <Link
-                      href="/quran/recitation-test-ai"
+                      href="/mushaf?tasmee=1"
                       className="text-primary underline-offset-2 hover:underline"
                     >
                       اختبر حفظك

@@ -6,8 +6,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/arkan-iman.css";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 
 /* ─── بيانات أركان الإيمان ─── */
@@ -204,7 +203,8 @@ export default function ArkanImanPage() {
   }
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="أركان الإيمان الستة" large={false} />
     <main className="ai-page" dir="rtl">
       {/* هيرو */}
       <section className="ai-hero">
@@ -333,11 +333,10 @@ export default function ArkanImanPage() {
       <div className="zk-share">
         <ShareButtons title="أركان الإيمان الستة — سُنّة" url="https://www.ssunnah.com/arkan-iman" />
       </div>
-      <RelatedKnowledge kind="lesson" query="أركان الإيمان" title="دروس ومواد ذات صلة" limit={6} />
       <div className="px-4 pb-6 mt-4">
         <SectionQuiz sectionId="aqidah" title="اختبر معلوماتك في العقيدة" count={4} />
       </div>
     </main>
-    </DetailScreen>
+    </div>
   );
 }

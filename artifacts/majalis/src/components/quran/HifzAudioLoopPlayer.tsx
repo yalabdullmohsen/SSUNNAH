@@ -19,7 +19,7 @@ import { toArabicDigits } from "@/lib/utils";
 import { STATUS } from "@/lib/ui-copy";
 import { useMediaSession } from "@/hooks/useMediaSession";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 import "@/styles/components/hifz-audio-loop-player.css";
 
 const SILENCE_MS = [0, 1000, 2000, 3000, 5000] as const;

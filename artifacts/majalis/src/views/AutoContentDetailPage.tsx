@@ -9,7 +9,7 @@ import { EMPTY } from "@/lib/ui-copy";
 import { breadcrumbJsonLd } from "@/lib/seo-structured-data";
 import { usePageView } from "@/hooks/usePageView";
 import type { AutoImportedContent } from "@/lib/auto-content/auto-content-utils";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { truncateAtWord } from "@/lib/utils";
 
 export default function AutoContentDetailPage({ params }: { params: { slug: string } }) {
@@ -73,7 +73,8 @@ export default function AutoContentDetailPage({ params }: { params: { slug: stri
   const updateType = mapContentTypeToUpdateType(item.content_type);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title={item.title} large={false} />
     <ContentDetailLayout
       breadcrumbs={[
         { label: "الرئيسية", href: "/" },
@@ -93,6 +94,6 @@ export default function AutoContentDetailPage({ params }: { params: { slug: stri
         </p>
       }
     />
-    </DetailScreen>
+    </div>
   );
 }

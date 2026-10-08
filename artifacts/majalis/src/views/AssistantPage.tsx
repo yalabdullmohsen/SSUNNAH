@@ -9,7 +9,7 @@ import "@/styles/pages/assistant.css";
 import "@/styles/pages/assistant-shell.css";
 
 import { SITE_URL } from "@/lib/site-config";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 export { ASSISTANT_FAILURE_MESSAGE as FAILURE_MESSAGE } from "@/hooks/useAssistantChat";
 
 const RESEARCHER_LINKS = [
@@ -44,7 +44,8 @@ export default function AssistantPage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="المساعد العلمي" large={false} />
     <div className="assistant-page assistant-page--modern">
       <header className="assistant-header assistant-header--modern">
         <div className="asp-hero">
@@ -95,6 +96,6 @@ export default function AssistantPage() {
         الإجابات مساعدة للتعلّم وليست فتوى، وتحتمل الخطأ — راجع أهل العلم في المسائل الشخصية.
       </footer>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

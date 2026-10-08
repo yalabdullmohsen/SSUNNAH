@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A1D0A01C0DE0000000000A3 /* SunnahWidgetKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5A1D0A01C0DE0000000000A2 /* SunnahWidgetKit */; };
 		E870FAF588E866FFCF557E17 /* SunnahNative in Frameworks */ = {isa = PBXBuildFile; productRef = 3965A57FBC4A55FD1221521E /* SunnahNative */; };
 		458433715EA7B0A057A3A784 /* SunnahDataKit in Frameworks */ = {isa = PBXBuildFile; productRef = E0FEE46D9EEEECF07032F877 /* SunnahDataKit */; };
 		A6459A1BA8454A284A12F011 /* SunnahWeb in Frameworks */ = {isa = PBXBuildFile; productRef = CAAC6EEA427B510E86F235E2 /* SunnahWeb */; };
@@ -249,6 +250,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A1D0A01C0DE0000000000A3 /* SunnahWidgetKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +475,9 @@
 			dependencies = (
 			);
 			name = PrayerWidgetExtension;
+			packageProductDependencies = (
+				5A1D0A01C0DE0000000000A2 /* SunnahWidgetKit */,
+			);
 			productName = PrayerWidgetExtension;
 			productReference = A029FR07WIDGETAPPEX /* PrayerWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -525,6 +530,7 @@
 				9D5DA8062057C8BDA9869B0D /* XCLocalSwiftPackageReference "SunnahDataKit" */,
 				7ED6801FCA3880B731CFBF5B /* XCLocalSwiftPackageReference "SunnahWeb" */,
 				3FA1A09255D0E12BEA1B40DB /* XCLocalSwiftPackageReference "SunnahPrayer" */,
+				5A1D0A01C0DE0000000000A1 /* XCLocalSwiftPackageReference "SunnahWidgetKit" */,
 			);
 			productRefGroup = 504EC3051FED79650016851F /* Products */;
 			projectDirPath = "";
@@ -1034,6 +1040,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = SunnahPrayer;
 		};
+		5A1D0A01C0DE0000000000A1 /* XCLocalSwiftPackageReference "SunnahWidgetKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = SunnahWidgetKit;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -1077,6 +1087,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3FA1A09255D0E12BEA1B40DB /* XCLocalSwiftPackageReference "SunnahPrayer" */;
 			productName = SunnahPrayer;
+		};
+		5A1D0A01C0DE0000000000A2 /* SunnahWidgetKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A1D0A01C0DE0000000000A1 /* XCLocalSwiftPackageReference "SunnahWidgetKit" */;
+			productName = SunnahWidgetKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

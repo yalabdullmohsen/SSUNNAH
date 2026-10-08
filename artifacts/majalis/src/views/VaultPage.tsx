@@ -41,7 +41,6 @@ import {
   type TextHighlight,
 } from "@/lib/text-highlights";
 import "@/styles/pages/vault.css";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { ACTION, EMPTY } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
 import {
@@ -792,7 +791,6 @@ export default function VaultPage() {
       <div className="twh-share">
         <ShareButtons title="مخزن المعرفة — سُنّة" url="https://www.ssunnah.com/vault" />
       </div>
-      <RelatedKnowledge kind="fawaid" query="محفظة المحفوظات" title="مواد ذات صلة" limit={6} />
       <div className="px-4 pb-6 mt-4">
         <SectionQuiz route="/vault" title="اختبر معلوماتك أثناء مراجعة مخزنك" count={4} />
       </div>

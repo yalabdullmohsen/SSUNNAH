@@ -7,8 +7,7 @@ import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/hikam-salaf.css";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { truncateAtWord } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/design-system/Buttons";
@@ -1570,7 +1569,8 @@ export default function HikamSalafPage() {
   }, [query, category, showFavsOnly, favorites]);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="حِكَم السلف الصالح" large={false} />
     <main className="hk-page" dir="rtl">
       {/* هيرو */}
       <section className="hk-hero">
@@ -1721,11 +1721,10 @@ export default function HikamSalafPage() {
           ))}
         </div>
       </section>
-      <RelatedKnowledge kind="fawaid" query="حكم السلف" title="حكم وفوائد ذات صلة" limit={6} />
       <div className="px-4 pb-6 mt-4">
         <SectionQuiz route="/hikam-salaf" title="اختبر معلوماتك في الحكم والتاريخ" count={4} />
       </div>
     </main>
-    </DetailScreen>
+    </div>
   );
 }

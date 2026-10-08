@@ -1,4 +1,5 @@
 import { SectionIcon } from "@/components/ui/SectionIcon";
+import { NavigationBar } from "@/design-system";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
@@ -13,7 +14,6 @@ import {
 import type { RightsCategory } from "@/lib/sins-rights-types";
 import { breadcrumbJsonLd } from "@/lib/seo-structured-data";
 import "@/styles/sins-rights.css";
-import { DetailScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
 
 type Tab = "overview" | "allah" | "ibad" | "shared" | "guide" | "what-if" | "muhasaba" | "mindmap";
@@ -449,7 +449,8 @@ export default function SinsAndRightsPage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الذنوب والحقوق" large={false} />
     <div className="snr-page">
       {/* Hero */}
       <div className="snr-hero">
@@ -561,6 +562,6 @@ export default function SinsAndRightsPage() {
       {activeTab === "muhasaba" && <MuhasabaSection />}
       {activeTab === "mindmap" && <MindMap />}
     </div>
-    </DetailScreen>
+    </div>
   );
 }

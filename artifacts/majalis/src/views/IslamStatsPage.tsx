@@ -17,8 +17,7 @@ import {
 } from "@/lib/quran-stats/types";
 import { formatArabicNumber } from "@/lib/numerals";
 import "@/styles/pages/islam-stats.css";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
+import { NavigationBar, SearchField } from "@/design-system";
 
 const QURAN_STATS_CATALOG = buildQuranStatsCatalog();
 const QURAN_STAT_GROUPS: QuranStatGroup[] = ["bunya", "alfaz", "mawdoo", "suwar", "ajaib"];
@@ -366,7 +365,8 @@ export default function IslamStatsPage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الإسلام في أرقام" large={false} />
     <div className="is-page" dir="rtl">
       {/* ══ Hero ══ */}
       <section className="is-hero">
@@ -449,8 +449,7 @@ export default function IslamStatsPage() {
               </p>
             </div>
             <div className="is-search-wrap">
-              <SearchInput className="ds-input is-search-input" placeholder="ابحث في إحصاءات القرآن والكلمات والألفاظ…" value={search} onChange={(e) => setSearch(e.target.value)}
-                aria-label="بحث في إحصاءات القرآن" onClear={() => setSearch("")} />
+              <SearchField value={search} onChange={setSearch} placeholder="ابحث في إحصاءات القرآن والكلمات والألفاظ…" label="بحث في إحصاءات القرآن" />
             </div>
             {QURAN_STAT_GROUPS.map((group) => {
               const items = quranStatsByGroup.get(group) ?? [];
@@ -495,8 +494,7 @@ export default function IslamStatsPage() {
         {activeTab === "history" && (
           <div className="is-section" role="tabpanel" id="is-panel-history" aria-labelledby="is-tab-history">
             <div className="is-search-wrap">
-              <SearchInput className="ds-input is-search-input" placeholder="ابحث في الحضارة الإسلامية..." value={search} onChange={(e) => setSearch(e.target.value)}
-                aria-label="بحث في الحضارة الإسلامية" onClear={() => setSearch("")} />
+              <SearchField value={search} onChange={setSearch} placeholder="ابحث في الحضارة الإسلامية..." label="بحث في الحضارة الإسلامية" />
             </div>
             <div className="is-stats-grid">
               {filteredAchievements.map((s, i) => (
@@ -537,8 +535,7 @@ export default function IslamStatsPage() {
               </p>
             </div>
             <div className="is-search-wrap">
-              <SearchInput className="ds-input is-search-input" placeholder="ابحث في الدلالات الكونية..." value={search} onChange={(e) => setSearch(e.target.value)}
-                aria-label="بحث في الدلالات الكونية" onClear={() => setSearch("")} />
+              <SearchField value={search} onChange={setSearch} placeholder="ابحث في الدلالات الكونية..." label="بحث في الدلالات الكونية" />
             </div>
             <div className="is-science-grid">
               {filteredScience.map((card, i) => (
@@ -570,6 +567,6 @@ export default function IslamStatsPage() {
         <SectionQuiz sectionId="islamic-history" title="اختبر معلوماتك في الإسلام والتاريخ" count={4} />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

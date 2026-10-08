@@ -18,7 +18,7 @@ import {
   type ResearchSubmissionInput,
 } from "@/lib/researches";
 import "@/styles/pages/researches.css";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { FieldLabel } from "@/components/design-system/FormFields";
 import { Button } from "@/components/ui/button";
 import {
@@ -79,7 +79,8 @@ export default function ResearchSubmitPage() {
   };
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+      <NavigationBar title="أضف بحثًا" large={false} />
     <div className="sr-page">
       <p><Link href="/academic-research" className="sr-section__link">← الأبحاث الشرعية</Link></p>
       <h1 className="sr-detail__h1">أضف بحثًا</h1>
@@ -302,6 +303,6 @@ export default function ResearchSubmitPage() {
         </section>
       )}
     </div>
-    </DetailScreen>
+    </div>
   );
 }

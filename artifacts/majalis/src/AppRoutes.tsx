@@ -227,7 +227,6 @@ import {
   QuranMemorizationPage,
   QuranMemorizationPlansPage,
   QuranHifzLoopPage,
-  RecitationTestAiPage,
   QuranWorshipHubPage,
   QuranOfflinePlayerPage,
   UlumQuranPage,
@@ -610,7 +609,7 @@ export default function AppRoutes() {
       <Route path="/masajid"><Redirect to="/islamic-directory" /></Route>
       <Route path="/quran-sciences"><Redirect to="/quran-knowledge" /></Route>
 
-      <Route path="/quran/recitation-test-ai"><SafeLazyRoute component={RecitationTestAiPage} /></Route>
+      <Route path="/quran/recitation-test-ai"><Redirect to="/mushaf?tasmee=1" /></Route>
       <Route path="/quran/surahs"><SafeLazyRoute component={SurahIndexPage} /></Route>
       <Route path="/quran/search"><SafeLazyRoute component={QuranSearchPage} /></Route>
       <Route path="/quran/people/:slug"><SafeLazyRoute component={QuranPersonDetailPage} /></Route>

@@ -1,4 +1,5 @@
 import SwiftUI
+import SunnahWidgetKit
 import WidgetKit
 
 struct HijriDateWidget: Widget {
@@ -66,7 +67,7 @@ struct IslamicEventWidget: Widget {
                 .widgetURL(SunnahWidgetDeepLinkFactory.occasions())
         }
         .configurationDisplayName("المناسبة القادمة")
-        .description("أقرب مناسبة إسلامية معتمدة وعدد الأيام المتبقية.")
+        .description("أقرب مناسبة إسلامية وعدد الأيام المتبقية.")
         .supportedFamilies(SunnahWidgetFamilySupport.calendarEvent)
     }
 }
@@ -241,7 +242,7 @@ struct RamadanCountdownView: View {
         guard let cal = entry.calendar else { return "عداد رمضان غير متاح" }
         if cal.inRamadan { return "نحن في شهر رمضان" }
         if let days = cal.daysUntilRamadan {
-            return "باقي \(SunnahWidgetTimeFormatting.arabic(days)) يوماً على رمضان"
+            return "باقي \(WidgetFormat.days(days)) على رمضان"
         }
         return cal.ramadanLabelAr
     }
@@ -260,7 +261,7 @@ struct IslamicEventView: View {
                             .lineLimit(1)
                         Spacer()
                         if let days = cal.upcomingEventDays {
-                            Text(days == 0 ? "اليوم" : SunnahWidgetTimeFormatting.arabic(days))
+                            Text(WidgetFormat.daysUntil(days))
                         }
                     }
                 } else {
@@ -280,7 +281,7 @@ struct IslamicEventView: View {
                                     .foregroundStyle(SunnahBrandColors.gold)
                                     .widgetAccentable()
                             } else {
-                                Text("بعد \(SunnahWidgetTimeFormatting.arabic(days)) يوماً")
+                                Text(WidgetFormat.daysUntil(days))
                                     .font(.headline)
                                     .foregroundStyle(SunnahBrandColors.gold)
                                     .widgetAccentable()

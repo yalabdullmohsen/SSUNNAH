@@ -5,7 +5,6 @@ import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/sitemap.css";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { filterNavItems, isComingSoonPath } from "@/lib/nav-visibility";
 const SECTIONS = [
   {
@@ -222,7 +221,6 @@ export default function SiteMapPage() {
       <div className="twh-share">
         <ShareButtons title="دليل أقسام سُنّة" url="https://www.ssunnah.com/sitemap" />
       </div>
-      <RelatedKnowledge kind="book" query="أقسام سُنّة" title="مواد للبدء" limit={6} />
       <div className="px-4 pb-6 mt-4">
         <SectionQuiz route="/site-map" title="اختبر معلوماتك في العلوم الإسلامية" count={4} />
       </div>

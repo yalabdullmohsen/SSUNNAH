@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
+import { NavigationBar } from "@/design-system";
+import { EmptyStateV2 } from "@/components/design-system";
 import { Link, useLocation } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
@@ -25,9 +27,7 @@ import {
 } from "@/data/islamic-history";
 import "@/styles/pages/tarikh-islami.css";
 import "@/styles/pages/worship-history-v2.css";
-import { DashboardScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
-import { EmptyStateV2 } from "@/components/design-system";
 
 import { Button } from "@/components/ui/button";
 type FilterId = HistoryCategory | "all";
@@ -270,7 +270,8 @@ export default function TarikhIslamiPage() {
   };
 
   return (
-    <DashboardScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="التاريخ الإسلامي" large={false} />
     <SectionTemplatePage
       route="/tarikh-islami"
       title="التاريخ الإسلامي"
@@ -451,6 +452,6 @@ export default function TarikhIslamiPage() {
         <SectionQuiz sectionId="islamic-history" />
       </KnowledgeLayout>
     </SectionTemplatePage>
-    </DashboardScreen>
+    </div>
   );
 }

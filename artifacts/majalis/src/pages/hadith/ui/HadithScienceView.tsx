@@ -9,7 +9,6 @@ import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/hadith-mustalah.css";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { NavigationBar, SearchField } from "@/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 import { UnifiedPrimaryFilters } from "@/components/filters/UnifiedPrimaryFilters";
@@ -1169,7 +1168,6 @@ export default function HadithSciencePage() {
           { href: "/islamic-glossary", title: "المصطلحات الشرعية" },
         ]}
       />
-      <RelatedKnowledge kind="hadith" query="مصطلح الحديث" title="مواد في علوم الحديث" limit={6} />
       <div className="px-4 pb-6 mt-4">
         <SectionQuiz sectionId="hadith" title="اختبر معلوماتك في علوم الحديث" count={4} />
       </div>

@@ -1,4 +1,5 @@
 import SwiftUI
+import SunnahWidgetKit
 import WidgetKit
 
 struct CurrentPrayerWidget: Widget {
@@ -123,6 +124,71 @@ private struct CatalogSurface: ViewModifier {
     }
 }
 
+/// جسم بطاقة صلاة موحّد (حالية/تالية/سابقة): اسم + وقت فقط، بلا عدّاد.
+private struct PrayerCardBody: View {
+    @Environment(\.widgetFamily) private var family
+    let entry: PrayerWidgetEntry
+    let key: PrayerSlotKey?
+    let date: Date?
+    var filled = false
+
+    var body: some View {
+        if let key {
+            let tz = entry.displayTimeZone
+            switch family {
+            case .accessoryInline:
+                Text("\(key.nameAr) \(date.map { WidgetFormat.time($0, timeZone: tz) } ?? "")")
+            case .accessoryRectangular:
+                SunnahTwoZone {
+                    if let date {
+                        PrayerTimeText(date: date, timeZone: tz, size: 24)
+                    }
+                } secondary: {
+                    VStack(spacing: 2) {
+                        Image(systemName: key.symbol(filled: filled))
+                            .font(WidgetType.icon(16))
+                            .widgetAccentable()
+                            .accessibilityHidden(true)
+                        Text(key.nameAr)
+                            .font(WidgetType.secondary(13))
+                            .lineLimit(1)
+                            .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                    }
+                }
+            default:
+                PrayerNameTime(key: key, date: date, timeZone: tz,
+                               nameSize: family == .systemSmall ? 20 : 24,
+                               timeSize: family == .systemSmall ? 22 : 28, filled: filled)
+                    .foregroundStyle(SunnahWidgetTheme.primaryText)
+                    .sunnahCardLayout(14)
+            }
+        } else {
+            SunnahCalmCard(compact: family == .accessoryRectangular)
+        }
+    }
+}
+
+private struct PrayerCardShell<Content: View>: View {
+    @Environment(\.widgetFamily) private var family
+    let entry: PrayerWidgetEntry
+    let label: String
+    @ViewBuilder let content: Content
+
+    var body: some View {
+        Group {
+            if entry.needsAppOpenAction {
+                SunnahCalmCard(compact: family == .accessoryRectangular)
+                    .foregroundStyle(SunnahWidgetTheme.primaryText)
+            } else {
+                content
+            }
+        }
+        .modifier(CatalogSurface())
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(label)
+    }
+}
+
 struct CurrentPrayerCatalogView: View {
     @Environment(\.widgetFamily) private var family
     let entry: PrayerWidgetEntry
@@ -130,57 +196,16 @@ struct CurrentPrayerCatalogView: View {
     var body: some View {
         SunnahStandBySwitch(
             family: family,
-            home: homeBody,
+            home: PrayerCardShell(entry: entry, label: label) {
+                PrayerCardBody(entry: entry, key: entry.currentKey, date: entry.currentStartDate, filled: true)
+            },
             standBy: StandByCurrentPrayerView(entry: entry)
         )
-        .modifier(CatalogSurface())
-        .accessibilityLabel(currentA11y)
     }
 
-    @ViewBuilder
-    private var homeBody: some View {
-        if entry.needsAppOpenAction {
-            SunnahWidgetEmptyState(message: PrayerWidgetCopy.noData)
-        } else if family == .accessoryRectangular {
-            HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(entry.currentNameAr ?? "قبل الفجر")
-                        .font(.headline)
-                    if let start = entry.currentStartDate {
-                        Text(SunnahWidgetTimeFormatting.clock(start))
-                            .font(.caption.monospacedDigit())
-                    }
-                }
-                Spacer()
-                PrayerElapsedText(entry: entry)
-                    .font(.caption.monospacedDigit().bold())
-            }
-        } else {
-            VStack(alignment: .leading, spacing: 6) {
-                Text("الحالية")
-                    .font(.caption.bold())
-                    .foregroundStyle(SunnahWidgetTheme.secondaryText)
-                Text(entry.currentNameAr ?? "قبل الفجر")
-                    .font(.title2.bold())
-                    .foregroundStyle(.white)
-                    .lineLimit(1)
-                if let start = entry.currentStartDate {
-                    Text(SunnahWidgetTimeFormatting.clock(start))
-                        .font(.headline.monospacedDigit())
-                        .foregroundStyle(SunnahBrandColors.gold)
-                        .widgetAccentable()
-                }
-                PrayerElapsedText(entry: entry)
-                    .font(family == .systemMedium ? SunnahWidgetTheme.countdownFont : .caption.monospacedDigit().bold())
-                    .foregroundStyle(SunnahBrandColors.gold)
-                    .widgetAccentable()
-            }
-            .padding(12)
-        }
-    }
-
-    private var currentA11y: String {
-        "الصلاة الحالية \(entry.currentNameAr ?? "قبل الفجر")"
+    private var label: String {
+        guard let key = entry.currentKey else { return "افتح سُنّة" }
+        return "الصلاة الحالية \(key.nameAr)"
     }
 }
 
@@ -191,358 +216,117 @@ struct NextPrayerCatalogView: View {
     var body: some View {
         SunnahStandBySwitch(
             family: family,
-            home: homeBody,
+            home: PrayerCardShell(entry: entry, label: PrayerCounterA11y.label(entry)) {
+                PrayerCardBody(entry: entry, key: entry.nextKey, date: entry.nextDate)
+            },
             standBy: StandByPrayerCountdownView(entry: entry)
         )
-        .modifier(CatalogSurface())
-        .accessibilityLabel(nextA11y)
-    }
-
-    @ViewBuilder
-    private var homeBody: some View {
-        if entry.needsAppOpenAction {
-            SunnahWidgetEmptyState(message: PrayerWidgetCopy.noData)
-        } else if family == .accessoryInline {
-            Text(entry.nextLine("التالي") ?? "الصلاة التالية")
-        } else if family == .accessoryCircular {
-            VStack(spacing: 2) {
-                Text(entry.nextDisplayName ?? "التالي")
-                    .font(.caption2.bold())
-                    .lineLimit(1)
-                PrayerCountdownText(entry: entry)
-                    .font(.caption2.monospacedDigit())
-            }
-        } else if family == .systemLarge || family == .systemMedium {
-            VStack(alignment: .leading, spacing: 8) {
-                Text(entry.nextCaption("التالي"))
-                    .font(.caption.bold())
-                    .foregroundStyle(SunnahWidgetTheme.secondaryText)
-                Text(entry.nextDisplayName ?? "الصلاة التالية")
-                    .font(.title.bold())
-                    .foregroundStyle(.white)
-                    .lineLimit(1)
-                if let date = entry.nextDate {
-                    Text(SunnahWidgetTimeFormatting.clock(date))
-                        .font(.headline.monospacedDigit())
-                        .foregroundStyle(.white)
-                }
-                PrayerCountdownText(entry: entry)
-                    .font(.system(size: family == .systemLarge ? 42 : 32, weight: .bold, design: .rounded).monospacedDigit())
-                    .foregroundStyle(SunnahBrandColors.gold)
-                    .widgetAccentable()
-                    .minimumScaleFactor(0.5)
-                if let hijri = entry.hijriDateText {
-                    Text(hijri)
-                        .font(.subheadline)
-                        .foregroundStyle(SunnahWidgetTheme.tertiaryText)
-                }
-            }
-            .padding(14)
-        } else {
-            VStack(alignment: .leading, spacing: 6) {
-                Text(entry.nextCaption("التالي"))
-                    .font(.caption.bold())
-                    .foregroundStyle(SunnahWidgetTheme.secondaryText)
-                Text(entry.nextDisplayName ?? "الصلاة التالية")
-                    .font(.title3.bold())
-                    .foregroundStyle(.white)
-                    .lineLimit(1)
-                if let date = entry.nextDate {
-                    Text(SunnahWidgetTimeFormatting.clock(date))
-                        .font(.headline.monospacedDigit())
-                        .foregroundStyle(SunnahBrandColors.gold)
-                        .widgetAccentable()
-                }
-                PrayerCountdownText(entry: entry)
-                    .font(SunnahWidgetTheme.countdownFont)
-                    .foregroundStyle(SunnahBrandColors.gold)
-                    .widgetAccentable()
-            }
-            .padding(12)
-        }
-    }
-
-    private var nextA11y: String {
-        if let elapsed = entry.elapsedNameAr { return "مضى على أذان \(elapsed)" }
-        let name = entry.nextNameAr ?? "غير محددة"
-        return "الصلاة التالية \(name)"
     }
 }
 
 struct PreviousPrayerCatalogView: View {
-    @Environment(\.widgetFamily) private var family
     let entry: PrayerWidgetEntry
 
     var body: some View {
-        Group {
-            if entry.needsAppOpenAction {
-                SunnahWidgetEmptyState(message: PrayerWidgetCopy.noData)
-            } else if family == .accessoryInline {
-                Text(entry.previousNameAr.map { "السابقة \($0)" } ?? "الصلاة السابقة")
-            } else {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("السابقة")
-                        .font(.caption.bold())
-                        .foregroundStyle(SunnahWidgetTheme.secondaryText)
-                    Text(entry.previousNameAr ?? entry.currentNameAr ?? "لا صلاة سابقة")
-                        .font(.title3.bold())
-                        .foregroundStyle(.white)
-                    if let date = entry.previousDate ?? entry.slot(for: entry.currentKey ?? .fajr)?.date {
-                        Text(SunnahWidgetTimeFormatting.clock(date))
-                            .font(.headline.monospacedDigit())
-                            .foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
-                        Text("مضى \(SunnahWidgetTimeFormatting.staticRemaining(from: date, to: entry.date))")
-                            .font(.caption)
-                            .foregroundStyle(SunnahWidgetTheme.secondaryText)
-                    }
-                }
-                .padding(12)
-            }
+        PrayerCardShell(entry: entry, label: "الصلاة السابقة \(entry.previousNameAr ?? "")") {
+            PrayerCardBody(entry: entry, key: entry.previousKey ?? entry.currentKey,
+                           date: entry.previousDate ?? entry.currentStartDate)
         }
-        .modifier(CatalogSurface())
-        .accessibilityLabel("الصلاة السابقة \(entry.previousNameAr ?? entry.currentNameAr ?? "")")
     }
 }
 
+/// تقدّم اليوم: مقياس نظيف بين الصلاة السابقة والتالية وتحته وقتاهما.
 struct PreviousNextPrayerCatalogView: View {
+    @Environment(\.widgetFamily) private var family
     let entry: PrayerWidgetEntry
 
     var body: some View {
-        Group {
-            if entry.needsAppOpenAction {
-                SunnahWidgetEmptyState(message: PrayerWidgetCopy.noData)
-            } else {
-                VStack(alignment: .leading, spacing: 8) {
+        PrayerCardShell(entry: entry, label: "بين \(entry.previousNameAr ?? "") و\(entry.nextNameAr ?? "")") {
+            if let prev = entry.previousDate, let next = entry.nextDate, next > prev,
+               let pk = entry.previousKey, let nk = entry.nextKey {
+                let tz = entry.displayTimeZone
+                VStack(alignment: .leading, spacing: 10) {
                     HStack {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("السابقة")
-                                .font(.caption2)
-                                .foregroundStyle(SunnahWidgetTheme.tertiaryText)
-                            Text(entry.previousNameAr ?? "غير متاحة")
-                                .font(.headline)
-                                .foregroundStyle(.white)
-                            if let d = entry.previousDate {
-                                Text(SunnahWidgetTimeFormatting.clock(d))
-                                    .font(.caption.monospacedDigit())
-                                    .foregroundStyle(SunnahBrandColors.gold)
-                                    .widgetAccentable()
-                            }
-                        }
-                        Spacer()
-                        VStack(alignment: .trailing, spacing: 2) {
-                            Text(entry.nextCaption("التالية"))
-                                .font(.caption2)
-                                .foregroundStyle(SunnahWidgetTheme.tertiaryText)
-                            Text(entry.nextDisplayName ?? "الصلاة التالية")
-                                .font(.headline)
-                                .foregroundStyle(.white)
-                            if let d = entry.nextDate {
-                                Text(SunnahWidgetTimeFormatting.clock(d))
-                                    .font(.caption.monospacedDigit())
-                                    .foregroundStyle(SunnahBrandColors.gold)
-                                    .widgetAccentable()
-                            }
-                        }
+                        endpoint(pk, prev, tz)
+                        Spacer(minLength: 8)
+                        endpoint(nk, next, tz)
                     }
-                    PrayerCountdownText(entry: entry)
-                        .font(SunnahWidgetTheme.countdownFont)
-                        .foregroundStyle(SunnahBrandColors.gold)
-                        .widgetAccentable()
+                    PrayerDayProgressBar(entry: entry, from: prev, to: next)
                 }
-                .padding(14)
+                .foregroundStyle(family == .accessoryRectangular ? Color.primary : SunnahWidgetTheme.primaryText)
+                .sunnahCardLayout(family == .accessoryRectangular ? 0 : 14)
+            } else {
+                SunnahCalmCard(compact: family == .accessoryRectangular)
             }
         }
-        .modifier(CatalogSurface())
-        .accessibilityLabel("السابقة \(entry.previousNameAr ?? "") والتالية \(entry.nextNameAr ?? "")")
+    }
+
+    private func endpoint(_ key: PrayerSlotKey, _ date: Date, _ tz: TimeZone) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            HStack(spacing: 4) {
+                Image(systemName: key.symbol(filled: false))
+                    .font(WidgetType.icon(13))
+                    .widgetAccentable()
+                    .accessibilityHidden(true)
+                Text(key.nameAr)
+                    .font(WidgetType.secondary(13))
+                    .lineLimit(1)
+                    .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+            }
+            PrayerTimeText(date: date, timeZone: tz, size: 17)
+        }
     }
 }
 
+/// مجموعة صلوات (3 خلايا) بنفس مكوّن الشبكة.
 struct GroupedPrayerCatalogView: View {
-    @Environment(\.widgetFamily) private var family
     let entry: PrayerWidgetEntry
     let keys: [PrayerSlotKey]
     let title: String
 
     var body: some View {
-        Group {
-            if entry.needsAppOpenAction {
-                SunnahWidgetEmptyState(message: PrayerWidgetCopy.noData)
-            } else if family == .systemSmall {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text(title)
-                        .font(.caption2.bold())
-                        .foregroundStyle(SunnahBrandColors.gold)
-                        .widgetAccentable()
-                    ForEach(keys, id: \.self) { key in
-                        groupedRow(key)
-                    }
-                }
-                .padding(10)
-            } else {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(title)
-                        .font(.caption.bold())
-                        .foregroundStyle(SunnahBrandColors.gold)
-                        .widgetAccentable()
-                    HStack(spacing: 6) {
-                        ForEach(keys, id: \.self) { key in
-                            groupedCell(key)
-                        }
-                    }
-                }
-                .padding(14)
-            }
+        PrayerCardShell(entry: entry, label: title) {
+            PrayerSixGrid(entry: entry, keys: keys)
+                .foregroundStyle(SunnahWidgetTheme.primaryText)
+                .sunnahCardLayout(12)
         }
-        .modifier(CatalogSurface())
-    }
-
-    @ViewBuilder
-    private func groupedRow(_ key: PrayerSlotKey) -> some View {
-        let slot = entry.slot(for: key)
-        let isMark = entry.nextKey == key || entry.currentKey == key
-        HStack {
-            Text(key.nameAr)
-                .font(.caption.bold())
-                .foregroundStyle(.white)
-            Spacer()
-            if let slot {
-                Text(SunnahWidgetTimeFormatting.clock(slot.date))
-                    .font(.caption.monospacedDigit().bold())
-                    .foregroundStyle(isMark ? SunnahBrandColors.gold : .white)
-            } else {
-                Text("غير متاح")
-                    .font(.caption2)
-                    .foregroundStyle(SunnahWidgetTheme.tertiaryText)
-            }
-        }
-        .accessibilityLabel("\(key.nameAr) \(slot.map { SunnahWidgetTimeFormatting.clock($0.date) } ?? "غير متاح")")
-    }
-
-    @ViewBuilder
-    private func groupedCell(_ key: PrayerSlotKey) -> some View {
-        let slot = entry.slot(for: key)
-        let isMark = entry.nextKey == key || entry.currentKey == key
-        VStack(spacing: 4) {
-            Text(key.nameAr)
-                .font(.caption.bold())
-                .foregroundStyle(.white)
-            if let slot {
-                Text(SunnahWidgetTimeFormatting.clock(slot.date))
-                    .font(.subheadline.monospacedDigit().bold())
-                    .foregroundStyle(isMark ? SunnahBrandColors.gold : .white)
-            } else {
-                Text("غير متاح")
-                    .font(.caption2)
-                    .foregroundStyle(SunnahWidgetTheme.tertiaryText)
-            }
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 6)
-        .background(
-            RoundedRectangle(cornerRadius: 8)
-                .fill(isMark ? SunnahWidgetTheme.selectedFill : SunnahWidgetTheme.raisedSurface)
-        )
-        .accessibilityLabel("\(key.nameAr) \(slot.map { SunnahWidgetTimeFormatting.clock($0.date) } ?? "غير متاح")")
     }
 }
 
 struct AllPrayerCatalogView: View {
     let entry: PrayerWidgetEntry
-    private let keys: [PrayerSlotKey] = [.fajr, .sunrise, .dhuhr, .asr, .maghrib, .isha]
 
     var body: some View {
-        Group {
-            if entry.needsAppOpenAction {
-                SunnahWidgetEmptyState(message: PrayerWidgetCopy.noData)
-            } else {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("مواقيت اليوم")
-                        .font(.caption.bold())
-                        .foregroundStyle(SunnahBrandColors.gold)
-                        .widgetAccentable()
-                    VStack(spacing: 8) {
-                        HStack(spacing: 8) {
-                            ForEach(Array(keys.prefix(3)), id: \.self) { key in
-                                allPrayerCell(key)
-                            }
-                        }
-                        HStack(spacing: 8) {
-                            ForEach(Array(keys.suffix(3)), id: \.self) { key in
-                                allPrayerCell(key)
-                            }
-                        }
-                    }
-                }
-                .padding(14)
-            }
+        PrayerCardShell(entry: entry, label: "مواقيت اليوم") {
+            PrayerSixGrid(entry: entry)
+                .foregroundStyle(SunnahWidgetTheme.primaryText)
+                .sunnahCardLayout(16)
         }
-        .modifier(CatalogSurface())
-        .environment(\.layoutDirection, .rightToLeft)
-    }
-
-    @ViewBuilder
-    private func allPrayerCell(_ key: PrayerSlotKey) -> some View {
-        let slot = entry.slot(for: key)
-        let isMark = entry.nextKey == key || entry.currentKey == key
-        VStack(spacing: 2) {
-            Text(key.nameAr)
-                .font(.caption2.bold())
-                .foregroundStyle(.white)
-            if let slot {
-                Text(SunnahWidgetTimeFormatting.clock(slot.date))
-                    .font(.caption.monospacedDigit().bold())
-                    .foregroundStyle(isMark ? SunnahBrandColors.gold : .white)
-            } else {
-                Text("غير متاح")
-                    .font(.caption2)
-                    .foregroundStyle(SunnahWidgetTheme.tertiaryText)
-            }
-        }
-        .frame(maxWidth: .infinity)
-        .padding(6)
-        .background(
-            RoundedRectangle(cornerRadius: 8)
-                .fill(isMark ? SunnahWidgetTheme.selectedFill : SunnahWidgetTheme.raisedSurface)
-        )
-        .accessibilityLabel("\(key.nameAr) \(slot.map { SunnahWidgetTimeFormatting.clock($0.date) } ?? "غير متاح")")
     }
 }
 
 struct PrayerHijriCatalogView: View {
+    @Environment(\.widgetFamily) private var family
     let entry: PrayerWidgetEntry
 
     var body: some View {
-        Group {
-            if entry.needsAppOpenAction {
-                SunnahWidgetEmptyState(message: PrayerWidgetCopy.noData)
-            } else {
-                VStack(alignment: .leading, spacing: 6) {
-                    if let hijri = entry.hijriDateText {
-                        Text(hijri)
-                            .font(.headline)
-                            .foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
-                            .lineLimit(2)
-                            .minimumScaleFactor(0.8)
-                    }
-                    Text(entry.nextDisplayName ?? entry.currentNameAr ?? "الصلاة التالية")
-                        .font(.title3.bold())
-                        .foregroundStyle(.white)
-                    if let d = entry.nextDate {
-                        Text(SunnahWidgetTimeFormatting.clock(d))
-                            .font(.headline.monospacedDigit())
-                            .foregroundStyle(.white)
-                    }
-                    PrayerCountdownText(entry: entry)
-                        .font(.caption.monospacedDigit().bold())
-                        .foregroundStyle(SunnahBrandColors.gold)
-                        .widgetAccentable()
+        PrayerCardShell(entry: entry, label: "\(entry.hijriDateText ?? "") \(entry.focus.key?.nameAr ?? "")") {
+            let tz = entry.displayTimeZone
+            if let key = entry.focus.key {
+                SunnahTwoZone {
+                    PrayerNameTime(key: key, date: entry.focus.date, timeZone: tz,
+                                   nameSize: 17, timeSize: 20, filled: entry.focus.isCurrent)
+                } secondary: {
+                    Text(HijriCalendar.short(HijriCalendar.date(entry.date, timeZone: tz)))
+                        .font(WidgetType.secondary(13))
+                        .lineLimit(1)
+                        .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
                 }
-                .padding(12)
+                .foregroundStyle(family == .accessoryRectangular ? Color.primary : SunnahWidgetTheme.primaryText)
+                .sunnahCardLayout(family == .accessoryRectangular ? 0 : 14)
+            } else {
+                SunnahCalmCard(compact: family == .accessoryRectangular)
             }
         }
-        .modifier(CatalogSurface())
-        .accessibilityLabel("\(entry.hijriDateText ?? "") الصلاة \(entry.nextNameAr ?? "")")
     }
 }

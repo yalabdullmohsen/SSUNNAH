@@ -40,7 +40,10 @@ assert.match(settings, /alertdialog/, "حوار تأكيد");
 assert.match(clearLocal, /clearUserLocalDataAndMedia/, "مسّاح محلي");
 assert.match(dispatch, /accountDeleteRateLimit|account-delete/, "rate limit على الحذف");
 
-assert.match(privacy, /التسجيلات الصوتية: لا تُخزَّن على خوادمنا مطلقًا/);
+assert.match(privacy, /لا نخزّن التسجيل ولا النص المفرَّغ على خوادمنا/);
+assert.match(privacy, /تصل إلى ٣٠ يومًا ما لم يُفعَّل خيار عدم الاحتفاظ/);
+assert.match(privacy, /عنوان الاتصال \(IP\): نحتفظ به لمدة ٢٤ ساعة/);
+assert.match(privacy, /ولا يحذف ما أُرسل قبله/);
 assert.match(privacy, /الموقع الجغرافي/);
 assert.match(privacy, /سجل الاستخدام المرتبط بالحساب: يُحذف مع حذف الحساب/);
 

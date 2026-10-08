@@ -6,7 +6,6 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import { getArticleBySlug, getArticleTranslations, type DawahArticle, type DawahTranslation } from "@/lib/dawah-service";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
-import { DetailScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
 import "@/styles/sunnah-identity-detail-reading.css";
 
@@ -63,7 +62,7 @@ export default function DiscoverIslamArticleDetailPage() {
   const isRtlLang = viewLang === "ar" || viewLang === "ur";
 
   return (
-    <DetailScreen compose="mark">
+    <>
     <DiscoverIslamShell detail>
       <div dir={isRtlLang ? "rtl" : "ltr"}>
         <PageHeader eyebrow="التعريف بالإسلام" title={displayTitle} />
@@ -99,6 +98,6 @@ export default function DiscoverIslamArticleDetailPage() {
       </div>
     </DiscoverIslamShell>
   
-    </DetailScreen>
+    </>
   );
 }

@@ -1,4 +1,5 @@
 import Foundation
+import SunnahWidgetKit
 import WidgetKit
 import os
 
@@ -86,44 +87,24 @@ struct PrayerWidgetEntry: TimelineEntry {
     /// Representative gallery/preview content — not live device data. Never written to App Group.
     static func galleryPreview(presentation: SunnahWidgetPresentation = .galleryPreview) -> PrayerWidgetEntry {
         let now = Date()
-        let tz = TimeZone(identifier: "Asia/Riyadh") ?? .current
-        var cal = Calendar(identifier: .gregorian)
-        cal.timeZone = tz
-        let dayStart = cal.startOfDay(for: now)
-        func at(_ hour: Int, _ minute: Int) -> Int64 {
-            let d = cal.date(byAdding: DateComponents(hour: hour, minute: minute), to: dayStart) ?? dayStart
-            return Int64(d.timeIntervalSince1970 * 1000)
-        }
-        // Always-future next (~25m) so static gallery never collapses timerInterval / nextDate.
-        let next = now.addingTimeInterval(25 * 60)
-        let prev = now.addingTimeInterval(-40 * 60)
-        func ms(_ date: Date) -> Int64 { Int64(date.timeIntervalSince1970 * 1000) }
-        let times: [String: Int64] = [
-            "fajr": at(5, 5),
-            "sunrise": at(6, 20),
-            "dhuhr": ms(next),
-            "asr": at(15, 30),
-            "maghrib": at(18, 5),
-            "isha": at(19, 30),
-        ]
+        guard let day = GalleryPrayer.day(now: now) else { return noDataEntry(date: now) }
         return make(
             date: now,
             snapshot: SharedPrayerSnapshot(
                 schemaVersion: SharedPrayerSnapshot.currentSchema,
-                locationLabel: "معاينة",
-                timeZoneIdentifier: tz.identifier,
-                dayKey: SunnahSharedStore.dayKey(for: now, timeZone: tz),
-                timesEpochMs: times,
-                nextPrayerKey: "dhuhr",
-                nextPrayerNameAr: "الظهر",
-                nextPrayerEpochMs: ms(next),
+                locationLabel: day.label,
+                timeZoneIdentifier: day.timeZoneIdentifier,
+                dayKey: day.dayKey,
+                timesEpochMs: day.timesEpochMs,
+                nextPrayerKey: day.nextKey,
+                nextPrayerNameAr: day.nextNameAr,
+                nextPrayerEpochMs: day.nextEpochMs,
                 nextHasStarted: false,
-                updatedAtEpochMs: ms(now)
+                updatedAtEpochMs: Int64(now.timeIntervalSince1970 * 1000)
             ),
             isPreview: true,
             presentation: presentation,
-            allowsLiveCountdown: false,
-            previousOverride: (key: .fajr, date: prev)
+            allowsLiveCountdown: false
         )
     }
 
@@ -248,7 +229,7 @@ struct PrayerWidgetEntry: TimelineEntry {
         let gregorian: String = {
             let f = DateFormatter()
             f.calendar = cal
-            f.locale = Locale(identifier: "ar")
+            f.locale = WidgetFormat.locale
             f.timeZone = tz
             f.dateStyle = .medium
             f.timeStyle = .none
@@ -257,11 +238,11 @@ struct PrayerWidgetEntry: TimelineEntry {
 
         let hijri: String? = {
             var islamic = Calendar(identifier: .islamicUmmAlQura)
-            islamic.locale = Locale(identifier: "ar")
+            islamic.locale = WidgetFormat.locale
             islamic.timeZone = tz
             let f = DateFormatter()
             f.calendar = islamic
-            f.locale = Locale(identifier: "ar")
+            f.locale = WidgetFormat.locale
             f.timeZone = tz
             f.dateStyle = .medium
             f.timeStyle = .none
@@ -344,6 +325,11 @@ struct PrayerWidgetEntry: TimelineEntry {
 
     /// اسم الصلاة المعروض: التي مضى على أذانها أثناء النافذة وإلا التالية
     var nextDisplayName: String? { elapsedNameAr ?? nextNameAr }
+
+    /// وضع العدّ الحي الموحّد: تصاعدي في نافذة الأذان وإلا تنازلي حتى التالية.
+    var clockMode: LiveClock.Mode {
+        LiveClock.resolve(now: date, elapsedStart: elapsedStart, nextDate: nextDate, nextHasStarted: nextHasStarted)
+    }
 
     var currentStartDate: Date? {
         guard let key = currentKey else { return nil }
@@ -434,35 +420,11 @@ struct PrayerWidgetProvider: TimelineProvider {
 }
 
 enum SunnahWidgetTimeFormatting {
-    static func staticRemaining(from: Date, to: Date) -> String {
-        let sec = max(0, Int(to.timeIntervalSince(from)))
-        let minutes = sec / 60
-        let hours = minutes / 60
-        let rem = minutes % 60
-        if hours > 0 {
-            return "\(arabic(hours)) س \(arabic(rem)) د"
-        }
-        return "\(arabic(minutes)) د"
-    }
-
-    static func staticElapsed(from: Date, to: Date) -> String {
-        "مضى \(staticRemaining(from: from, to: to))"
-    }
-
     static func clock(_ date: Date, timeZone: TimeZone = .current) -> String {
-        let f = DateFormatter()
-        f.locale = Locale(identifier: "ar")
-        f.timeZone = timeZone
-        f.timeStyle = .short
-        f.dateStyle = .none
-        return f.string(from: date)
+        WidgetFormat.time(date, timeZone: timeZone)
     }
 
     static func arabic(_ value: Int) -> String {
-        let map: [Character] = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"]
-        return String(String(value).map { ch -> Character in
-            guard let d = ch.wholeNumberValue, d >= 0, d <= 9 else { return ch }
-            return map[d]
-        })
+        WidgetFormat.digits(value)
     }
 }

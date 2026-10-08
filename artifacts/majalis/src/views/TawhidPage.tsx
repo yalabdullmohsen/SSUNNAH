@@ -5,7 +5,6 @@ import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { KnowledgeLibraryCard, KnowledgeLayout } from "@/components/knowledge";
 import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { SEARCH_INPUT_ATTRS, handleSearchEnterKey } from "@/lib/search-input";
@@ -594,7 +593,6 @@ export default function TawhidPage() {
         </div>
       </section>
 
-      <RelatedKnowledge kind="lesson" query="عقيدة توحيد" title="دروس ومواد ذات صلة بالتوحيد" limit={6} />
 
       <nav className="twh-related" aria-label="صفحات ذات صلة" style={{ marginTop: "1.5rem" }}>
         <h2 className="twh-section-title" style={{ fontSize: "var(--ss-type-section-title)" }}>استكشف أيضاً</h2>

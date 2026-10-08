@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
 import { ShareButtons } from "@/components/ContentActions";
 import { applyPageSeo } from "@/lib/seo";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import "@/styles/pages/learn-legal-v2.css";
 
 export default function PrivacyPage() {
@@ -18,7 +18,8 @@ export default function PrivacyPage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+      <NavigationBar title="سياسة الخصوصية" large={false} />
     <LegalPageLayout eyebrow="الخصوصية" title="سياسة الخصوصية" updatedAt="2026-08-07">
       <LegalSection title="البيانات التي نجمعها">
         <p>
@@ -85,7 +86,8 @@ export default function PrivacyPage() {
             بياناتك الأخرى، ولا يُرسَل أي صوت قبل موافقتك. <strong>لا يُخزَّن التسجيل بعد المعالجة</strong> — لا على جهازك
             ولا على خوادمنا — ولا نحتفظ بالنص المفرَّغ. أما لدى Groq فالأصل ألّا تحتفظ بمدخلات الطلبات، وقد تحتفظ بنسخة
             مؤقتة لأغراض استكشاف الأعطال أو التحقيق في الإساءة لمدة تصل إلى ٣٠ يومًا ما لم يُفعَّل خيار عدم الاحتفاظ
-            (Zero Data Retention). يمكنك سحب الموافقة في أي وقت من صفحة «اختبار التلاوة».
+            (Zero Data Retention). يمكنك سحب الموافقة في أي وقت من صفحة «اختبار التلاوة»؛ ويوقف السحب أي إرسال لاحق
+            ولا يحذف ما أُرسل قبله.
           </li>
           <li>
             مقارنة النص المفرَّغ بنص المصحف تجري على جهازك في الوضعين، وتكشف أخطاء الحفظ (الكلمات) فقط ولا تقيّم أحكام
@@ -194,7 +196,13 @@ export default function PrivacyPage() {
             إضافي لسجلات غير نشطة يُعلَن عنه هنا عند تفعيله تشغيليًا — ولا يُحذف
             حسابك تلقائيًا دون مسار واضح وإشعار.
           </li>
-          <li>التسجيلات الصوتية: لا تُخزَّن على خوادمنا مطلقًا.</li>
+          <li>
+            التسجيلات الصوتية (اختبار التلاوة): لا نخزّن التسجيل ولا النص المفرَّغ على خوادمنا. وقد تحتفظ خدمة Groq بنسخة
+            مؤقتة لأغراض الأمان وكشف الإساءة وسجلات الأعطال لمدة تصل إلى ٣٠ يومًا ما لم يُفعَّل خيار عدم الاحتفاظ.
+          </li>
+          <li>
+            عنوان الاتصال (IP): نحتفظ به لمدة ٢٤ ساعة فقط كعدّاد للحد اليومي لاستخدام اختبار التلاوة، دون ربطه بالتسجيل.
+          </li>
           <li>تقارير الجلسات: تُحذف مع حذف الحساب.</li>
         </ul>
       </LegalSection>
@@ -240,6 +248,6 @@ export default function PrivacyPage() {
         <ShareButtons title="سياسة الخصوصية — سُنّة" url="https://www.ssunnah.com/privacy" />
       </div>
 </LegalPageLayout>
-    </DetailScreen>
+    </div>
   );
 }

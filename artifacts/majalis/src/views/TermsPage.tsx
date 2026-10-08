@@ -4,7 +4,7 @@ import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
 import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { CONTACT_EMAIL } from "@/lib/site-config";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import "@/styles/pages/learn-legal-v2.css";
 
 export default function TermsPage() {
@@ -19,7 +19,8 @@ export default function TermsPage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+      <NavigationBar title="شروط الاستخدام" large={false} />
     <LegalPageLayout eyebrow="الاستخدام" title="شروط الاستخدام" updatedAt="2026-08-05">
       <LegalSection title="قبول الشروط">
         <p>
@@ -120,6 +121,6 @@ export default function TermsPage() {
         <ShareButtons title="شروط الاستخدام — سُنّة" url="https://www.ssunnah.com/terms" />
       </div>
 </LegalPageLayout>
-    </DetailScreen>
+    </div>
   );
 }

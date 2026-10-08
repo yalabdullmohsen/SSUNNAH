@@ -23,7 +23,7 @@ struct TodayActionsWidget: Widget {
                 .environment(\.layoutDirection, .rightToLeft)
         }
         .configurationDisplayName("اختصارات اليوم")
-        .description("صلاة، أذكار، مصحف، قرآن — بلا فتح قائمة.")
+        .description("اختصارات سريعة إلى الصلاة والأذكار والمصحف والقرآن.")
         .supportedFamilies(SunnahWidgetFamilySupport.homeActions)
     }
 }
@@ -37,7 +37,7 @@ struct SpiritualDayWidget: Widget {
                 .widgetURL(SunnahWidgetDeepLinkFactory.home())
         }
         .configurationDisplayName("اليوم الروحي")
-        .description("إتمام الصلاة والأذكار والقراءة إن وُجد تتبع معتمد.")
+        .description("أذكارك وقراءتك اليوم، والصلاة التالية.")
         .supportedFamilies(SunnahWidgetFamilySupport.homeSpiritual)
     }
 }
@@ -45,9 +45,9 @@ struct SpiritualDayWidget: Widget {
 private struct HomeSurface: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOSApplicationExtension 17.0, *) {
-            content.containerBackground(for: .widget) { SunnahWidgetTheme.homeGradient }
+            content.containerBackground(for: .widget) { SunnahWidgetTheme.homeGradient }.sunnahDynamicTypeCap()
         } else {
-            content.background(SunnahWidgetTheme.homeGradient)
+            content.background(SunnahWidgetTheme.homeGradient).sunnahDynamicTypeCap()
         }
     }
 }
@@ -69,7 +69,7 @@ struct TodayInSunnahView: View {
     @ViewBuilder
     private var homeBody: some View {
         if entry.prayer.needsAppOpenAction && entry.adhkar == nil {
-            SunnahWidgetEmptyState(message: "افتح سُنّة لتهيئة اليوم")
+            SunnahWidgetEmptyState(message: "افتح سُنّة لتظهر صلاة اليوم وأذكاره")
         } else {
             VStack(alignment: .leading, spacing: 10) {
                 Text("اليوم في سُنّة")
@@ -81,11 +81,13 @@ struct TodayInSunnahView: View {
                         Text(entry.prayer.currentNameAr ?? "قبل الفجر")
                             .font(.headline)
                             .foregroundStyle(.white)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.8)
                         Text(entry.prayer.nextLine("التالي") ?? "الصلاة التالية")
                             .font(.caption)
                             .foregroundStyle(SunnahWidgetTheme.secondaryText)
                     }
-                    Spacer()
+                    Spacer(minLength: 8)
                     PrayerCountdownText(entry: entry.prayer)
                         .font(.headline.monospacedDigit().bold())
                         .foregroundStyle(SunnahBrandColors.gold)
@@ -94,6 +96,8 @@ struct TodayInSunnahView: View {
                 Text(entry.progress?.currentAdhkarTitleAr ?? entry.adhkar?.activeTitleAr ?? "أذكار الوقت")
                     .font(.subheadline.bold())
                     .foregroundStyle(.white)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.8)
                 if let mushaf = entry.mushaf, let page = mushaf.lastPage {
                     Text("القراءة · صفحة \(SunnahWidgetTimeFormatting.arabic(page))")
                         .font(.caption)
@@ -105,12 +109,12 @@ struct TodayInSunnahView: View {
                         .font(.caption)
                         .foregroundStyle(SunnahWidgetTheme.secondaryText)
                 } else {
-                    Text("هدف القراءة من سُنّة")
+                    Text("حدّد هدف القراءة في سُنّة")
                         .font(.caption)
                         .foregroundStyle(SunnahWidgetTheme.secondaryText)
                 }
             }
-            .padding(14)
+            .sunnahCardLayout()
         }
     }
 
@@ -135,7 +139,7 @@ struct TodayActionsView: View {
                 actionCell("قرآن", system: "text.book.closed.fill", url: SunnahWidgetDeepLinkFactory.quranHub())
             }
         }
-        .padding(14)
+        .sunnahCardLayout()
         .modifier(HomeSurface())
         .widgetURL(SunnahWidgetDeepLinkFactory.home())
         .accessibilityLabel("اختصارات الصلاة والأذكار والمصحف والقرآن")
@@ -152,6 +156,8 @@ struct TodayActionsView: View {
             Text(title)
                 .font(.caption.bold())
                 .foregroundStyle(.white)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
         }
         .frame(maxWidth: .infinity, minHeight: 44)
         .padding(.vertical, 8)
@@ -178,17 +184,33 @@ struct SpiritualDayView: View {
                         .font(.caption.bold())
                         .foregroundStyle(SunnahBrandColors.gold)
                         .widgetAccentable()
-                    statusRow("الصلاة", done: entry.prayer.currentNameAr != nil)
+                    infoRow("الصلاة التالية", value: entry.prayer.nextNameAr ?? "—")
                     statusRow("الأذكار", done: progress.morningAdhkarDone || progress.eveningAdhkarDone)
                     statusRow("القراءة", done: progress.quranDone || entry.mushaf?.hasProgress == true)
                 }
-                .padding(14)
+                .sunnahCardLayout()
             } else {
-                SunnahWidgetEmptyState(message: "افتح سُنّة لتفعيل متابعة اليوم")
+                SunnahWidgetEmptyState(message: "افتح سُنّة ليظهر تقدّمك اليوم هنا")
             }
         }
         .modifier(HomeSurface())
         .accessibilityLabel("متابعة اليوم الروحي")
+    }
+
+    @ViewBuilder
+    private func infoRow(_ title: String, value: String) -> some View {
+        HStack {
+            Text(title)
+                .font(.headline)
+                .foregroundStyle(.white)
+            Spacer(minLength: 8)
+            Text(value)
+                .font(.caption.bold())
+                .foregroundStyle(SunnahWidgetTheme.secondaryText)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+        }
+        .accessibilityElement(children: .combine)
     }
 
     @ViewBuilder
@@ -197,7 +219,7 @@ struct SpiritualDayView: View {
             Text(title)
                 .font(.headline)
                 .foregroundStyle(.white)
-            Spacer()
+            Spacer(minLength: 8)
             Text(done ? "مكتمل" : "بانتظارك")
                 .font(.caption.bold())
                 .foregroundStyle(done ? SunnahBrandColors.gold : SunnahWidgetTheme.secondaryText)

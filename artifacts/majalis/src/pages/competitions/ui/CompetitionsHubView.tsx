@@ -5,7 +5,7 @@ import { ExternalLink, MapPin, Trophy } from "lucide-react";
 import { SectionLobby } from "@/components/lobby/SectionLobby";
 import { usePageView } from "@/hooks/usePageView";
 import { applyPageSeo } from "@/lib/seo";
-import { DashboardScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import {
   COMPETITION_FILTERS,
   COMPETITION_TYPE_LABELS,
@@ -96,7 +96,8 @@ export default function CompetitionsHubView() {
   }, []);
 
   return (
-    <DashboardScreen compose="mark">
+    <div className="sn-screen">
+<NavigationBar title="المسابقات" large={false} />
     <SectionLobby lobbyId="hub" title="المسابقات" groups={[]}>
       <div className="cmp-hub" data-competitions-hub="1">
         <p className="cmp-hub__lead">
@@ -138,6 +139,6 @@ export default function CompetitionsHubView() {
 
       </div>
     </SectionLobby>
-    </DashboardScreen>
+    </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { NavigationBar } from "@/design-system";
 import { BookMarked, BookOpen, Leaf, Moon, Scale, ScrollText, Shapes } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Link } from "wouter";
@@ -12,7 +13,6 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SEARCH_INPUT_ATTRS, handleSearchEnterKey } from "@/lib/search-input";
 import "@/styles/pages/topics-index.css";
-import { DetailScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
 
 // ── Static fallback topics per category ──────────────────────────────────────
@@ -137,7 +137,8 @@ export default function TopicsIndexPage() {
   }, [topics, activeCategory, search]);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الموضوعات العلمية" large={false} />
     <PageShell variant="narrow" className="tip-page">
       <PageHeader
         eyebrow="المحتوى الشرعي الموضوعاتي"
@@ -228,6 +229,6 @@ export default function TopicsIndexPage() {
       </div>
     </PageShell>
   
-    </DetailScreen>
+    </div>
   );
 }

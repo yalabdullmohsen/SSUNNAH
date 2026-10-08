@@ -7,10 +7,9 @@ import {
   type CardExportPreset,
 } from "@/lib/card-image-export";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/cards.css";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 
 type SizeKey = "square" | "story" | "wide";
@@ -151,7 +150,8 @@ export default function CardsPage() {
   };
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+<NavigationBar title="البطاقات الدعوية" large={false} />
     <div dir="rtl" className="cards-page">
       <div className="cards-page-inner">
         <Link href="/" className="cards-back-link">
@@ -267,7 +267,6 @@ export default function CardsPage() {
           </div>
         </div>
       </div>
-      <RelatedKnowledge kind="fawaid" query="فوائد دعوية" title="فوائد ومواد ذات صلة" limit={6} />
       <div className="twh-share">
         <ShareButtons title="البطاقات الدعوية — سُنّة" url="https://www.ssunnah.com/cards" />
       </div>
@@ -275,6 +274,6 @@ export default function CardsPage() {
         <SectionQuiz sectionId="akhlaq" title="اختبر معلوماتك في الأخلاق والعقيدة" count={4} />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

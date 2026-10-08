@@ -31,7 +31,7 @@ import { afterNextPaint, yieldToMain } from "@/lib/yield-to-main";
 import { TEXT_API_ORIGINS, useResourcePrewarm } from "@/lib/resource-prewarm";
 import { ACTION, EMPTY, STATUS } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 import "@/styles/components/global-search-modal.css";
 
 // ── ثوابت ───────────────────────────────────────────────────────────────────
@@ -358,13 +358,12 @@ export function GlobalSearchModal({ onClose }: Props) {
         {/* ── شريط البحث ─────────────────────────────────────────────── */}
         <div className={`gsm-topbar${isMobile ? " gsm-topbar--mobile" : ""}`}>
           <IconButton
-            type="button"
+            icon={isMobile ? "back" : "close"}
             onClick={onClose}
             label="إغلاق البحث"
             className="gsm-close-btn"
-          >
-            {isMobile ? "→" : "✕"}
-          </IconButton>
+            size={20}
+          />
 
           <input
             ref={inputRef}
@@ -394,13 +393,12 @@ export function GlobalSearchModal({ onClose }: Props) {
 
           {query && (
             <IconButton
-              type="button"
+              icon="close"
               onClick={() => setQuery("")}
               label="مسح النص"
               className="gsm-clear-btn"
-            >
-              ✕
-            </IconButton>
+              size={20}
+            />
           )}
 
           {loading && <span className="gsm-loading-dot">○</span>}

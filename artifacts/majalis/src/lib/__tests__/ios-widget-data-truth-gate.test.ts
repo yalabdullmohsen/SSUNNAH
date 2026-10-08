@@ -63,7 +63,7 @@ assert.match(entry, /case \.permissionRequired: return \.permissionRequired/);
 assert.match(entry, /allowsLiveCountdown && !isPreview && state == \.validData/);
 
 const views = readIos("PrayerWidget/PrayerWidgetViews.swift");
-assert.match(views, /فعّل إذن الموقع/);
+assert.match(views, /فعّل الموقع/);
 
 const adapters = readIos("PrayerWidget/SunnahWidgetAdapters.swift");
 assert.match(adapters, /configurationRequired/);

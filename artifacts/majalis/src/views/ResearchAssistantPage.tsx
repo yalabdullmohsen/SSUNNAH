@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { NavigationBar } from "@/design-system";
 import { Link } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
 import {
@@ -13,7 +14,6 @@ import {
   draftProposalOutline,
 } from "@/lib/researches";
 import "@/styles/pages/researches.css";
-import { DetailScreen } from "@/components/design-system/screens";
 import { FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
@@ -48,7 +48,8 @@ export default function ResearchAssistantPage() {
   );
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="مساعدة الباحث" large={false} />
     <div className="sr-page">
       <p><Link href="/academic-research" className="sr-section__link">← الأبحاث الشرعية</Link></p>
       <h1 className="sr-detail__h1">مساعدة الباحث</h1>
@@ -146,6 +147,6 @@ export default function ResearchAssistantPage() {
         <p className="sr-notice">{ANTI_CHEATING_NOTICE}</p>
       </section>
     </div>
-    </DetailScreen>
+    </div>
   );
 }
