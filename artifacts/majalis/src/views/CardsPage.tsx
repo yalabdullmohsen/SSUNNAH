@@ -7,7 +7,6 @@ import {
   type CardExportPreset,
 } from "@/lib/card-image-export";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/cards.css";
 import { NavigationBar } from "@/design-system";
@@ -268,7 +267,6 @@ export default function CardsPage() {
           </div>
         </div>
       </div>
-      <RelatedKnowledge kind="fawaid" query="فوائد دعوية" title="فوائد ومواد ذات صلة" limit={6} />
       <div className="twh-share">
         <ShareButtons title="البطاقات الدعوية — سُنّة" url="https://www.ssunnah.com/cards" />
       </div>

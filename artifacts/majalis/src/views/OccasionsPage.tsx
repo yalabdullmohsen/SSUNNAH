@@ -16,7 +16,6 @@ import { getHijriMonthName, isSacredMonth } from "@/lib/hijri-utils";
 import { contentKindLabel } from "@/lib/religious-content";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import "@/styles/pages/occasions.css";
 import "@/styles/components/home/home-learning-seasons.css";
 
@@ -194,7 +193,6 @@ export default function OccasionsPage() {
         </div>
       )}
 
-      <RelatedKnowledge kind="lesson" query="المناسبات الإسلامية" title="دروس ومواد في المناسبات" limit={6} />
       <div className="twh-share">
         <ShareButtons title="المناسبات الإسلامية — سُنّة" url="https://www.ssunnah.com/occasions" />
       </div>
