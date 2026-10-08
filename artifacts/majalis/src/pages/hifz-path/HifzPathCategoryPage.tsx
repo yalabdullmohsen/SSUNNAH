@@ -4,8 +4,7 @@
 import { useEffect, useMemo } from "react";
 import { Link, Redirect, useParams } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
-import { DetailScreen } from "@/components/design-system/screens";
-import { EmptyStateV2, PageHeaderV2 } from "@/components/design-system";
+import { ButtonLink, EmptyState, ListGroup, NavigationBar } from "@/design-system";
 import {
   HIFZ_PATH_USER_TAGLINE,
   hifzCategoryLabel,
@@ -47,41 +46,27 @@ function HifzPathCategoryShell() {
 
   if (!valid) {
     return (
-      <DetailScreen compose="mark">
-        <main className="mx-auto w-full max-w-3xl px-4 py-4" dir="rtl">
-          <EmptyStateV2
-            title="تصنيف غير معروف"
-            description="هذا التصنيف ليس ضمن مسارات الحفظ المعتمدة."
-            ctaLabel="العودة لمسار الحفظ"
-            href={PATH}
-          />
+      <div className="sn-screen">
+<NavigationBar title="مسار الحفظ" />
+<main className="sn-container" dir="rtl">
+          <EmptyState title="تصنيف غير معروف" description="هذا التصنيف ليس ضمن مسارات الحفظ المعتمدة." action={<ButtonLink href={PATH} variant="secondary">العودة لمسار الحفظ</ButtonLink>} />
         </main>
-      </DetailScreen>
+      </div>
     );
   }
 
   return (
-    <DetailScreen compose="mark">
-      <main className="mx-auto w-full max-w-3xl px-4 py-4" dir="rtl">
-        <PageHeaderV2
-          className="mb-4"
-          eyebrow="مسار الحفظ"
-          title={title}
-          description={HIFZ_PATH_USER_TAGLINE}
-        />
+    <div className="sn-screen">
+<NavigationBar title={title} subtitle={`${"مسار الحفظ"} · ${HIFZ_PATH_USER_TAGLINE}`} />
+<main className="sn-container sn-stack sn-stack--lg" dir="rtl">
         {paths.length === 0 ? (
-          <EmptyStateV2
-            title="لا مسارات منشورة في هذا التصنيف"
-            description="يُعرض المنشور فقط بعد اعتماد المصدر والترخيص والمراجعة."
-            ctaLabel="العودة لمسار الحفظ"
-            href={PATH}
-          />
+          <EmptyState title="لا مسارات منشورة في هذا التصنيف" description="يُعرض المنشور فقط بعد اعتماد المصدر والترخيص والمراجعة." action={<ButtonLink href={PATH} variant="secondary">العودة لمسار الحفظ</ButtonLink>} />
         ) : (
-          <div className="flex flex-col gap-1">
+          <ListGroup>
             {paths.map((path) => (
               <HifzPathRow key={path.id} path={path} />
             ))}
-          </div>
+          </ListGroup>
         )}
         <p className="mt-4 text-center text-sm">
           <Link href={PATH} className="text-primary underline-offset-2 hover:underline">
@@ -89,6 +74,6 @@ function HifzPathCategoryShell() {
           </Link>
         </p>
       </main>
-    </DetailScreen>
+    </div>
   );
 }
