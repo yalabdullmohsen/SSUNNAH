@@ -110,7 +110,8 @@ jobs:
           done
           # مفتاح مؤقت خارج المستودع لمصادقة xcodebuild (التوقيع السحابي) وfastlane
           KEY_PATH="$RUNNER_TEMP/AuthKey_${APP_STORE_CONNECT_API_KEY_ID}.p8"
-          (umask 077; echo "$APP_STORE_CONNECT_API_KEY_KEY" | base64 --decode > "$KEY_PATH")
+          # يقبل PEM خامًا أو Base64 ويتحقق بـopenssl قبل fastlane (سبب «invalid curve name»)
+          bash scripts/ci/write-asc-api-key.sh "$KEY_PATH"
           echo "APP_STORE_CONNECT_API_KEY_PATH=$KEY_PATH" >> "$GITHUB_ENV"
 
       - name: Run Fastlane beta
