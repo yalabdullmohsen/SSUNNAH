@@ -130,8 +130,14 @@ ok(
   "PrivacyInfo does not invent unused Required Reason APIs",
 );
 ok(
-  !privacy.includes("NSPrivacyCollectedDataTypeAudioData"),
-  "PrivacyInfo must not declare AudioData after mic/speech removal",
+  /NSPrivacyCollectedDataTypeAudioData<\/string>\s*<key>NSPrivacyCollectedDataTypeLinked<\/key>\s*<false\/>\s*<key>NSPrivacyCollectedDataTypeTracking<\/key>\s*<false\/>/s.test(privacy),
+  "PrivacyInfo declares AudioData (recitation test → Groq): not linked, no tracking",
+);
+ok(
+  !privacy.includes("NSPrivacyCollectedDataTypeCoarseLocation") &&
+    /NSPrivacyCollectedDataTypeName<\/string>\s*<key>NSPrivacyCollectedDataTypeLinked<\/key>\s*<true\/>/s.test(privacy) &&
+    /NSPrivacyCollectedDataTypeDeviceID<\/string>\s*<key>NSPrivacyCollectedDataTypeLinked<\/key>\s*<true\/>/s.test(privacy),
+  "PrivacyInfo: Name + DeviceID declared (linked), no CoarseLocation (location stays on device)",
 );
 
 const live = readFileSync(

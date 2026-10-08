@@ -70,8 +70,19 @@ assert.ok(existsSync(resolve(majalisRoot, "ios/App/App/PrivacyInfo.xcprivacy")))
 const privacy = readMaj("ios/App/App/PrivacyInfo.xcprivacy");
 assert.match(privacy, /NSPrivacyTracking/);
 assert.match(privacy, /NSPrivacyCollectedDataTypeEmailAddress/);
-assert.match(privacy, /NSPrivacyCollectedDataTypeCoarseLocation/);
-assert.doesNotMatch(privacy, /NSPrivacyCollectedDataTypeAudioData/);
+// الموقع يُحسب على الجهاز ولا يُرسل → غير مجموع؛ الاسم ورمز الإشعارات مجموعان ومرتبطان
+assert.doesNotMatch(privacy, /NSPrivacyCollectedDataTypeCoarseLocation/);
+for (const t of ["Name", "DeviceID"]) {
+  assert.match(
+    privacy,
+    new RegExp(`NSPrivacyCollectedDataType${t}</string>\\s*<key>NSPrivacyCollectedDataTypeLinked</key>\\s*<true/>\\s*<key>NSPrivacyCollectedDataTypeTracking</key>\\s*<false/>`),
+  );
+}
+// اختبار التلاوة يرسل الصوت إلى Groq بعد موافقة: AudioData مجموع، غير مرتبط، بلا تتبع، وظيفة التطبيق
+assert.match(
+  privacy,
+  /NSPrivacyCollectedDataTypeAudioData<\/string>\s*<key>NSPrivacyCollectedDataTypeLinked<\/key>\s*<false\/>\s*<key>NSPrivacyCollectedDataTypeTracking<\/key>\s*<false\/>\s*<key>NSPrivacyCollectedDataTypePurposes<\/key>\s*<array>\s*<string>NSPrivacyCollectedDataTypePurposeAppFunctionality<\/string>/,
+);
 
 const info = readMaj("ios/App/App/Info.plist");
 assert.match(info, /CFBundleDisplayName/);
