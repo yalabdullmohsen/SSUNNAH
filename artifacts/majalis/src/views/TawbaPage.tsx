@@ -1,13 +1,12 @@
 import "@/styles/pages/tawba.css";
+import { NavigationBar, SearchField } from "@/design-system";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import { useEffect, useState, useMemo } from "react";
 import { applyPageSeo } from "../lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { DetailScreen } from "@/components/design-system/screens";
 import { ContentTabs } from "@/components/design-system/TabSystem";
-import { SearchInput } from "@/components/design-system/FormFields";
 import { Button } from "@/components/ui/button";
 
 
@@ -257,7 +256,8 @@ export default function TawbaPage() {
   [search]);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+<NavigationBar title="التوبة والاستغفار" large={false} />
     <main className="tw-page" dir="rtl">
       {/* hero */}
       <section className="tw-hero">
@@ -296,14 +296,7 @@ export default function TawbaPage() {
               اتفق العلماء على أن للتوبة شروطاً لا تصح إلا بها، وتزداد شرطاً إذا تعلّقت بحق آدمي
             </p>
             <div className="tw-search-wrap">
-              <SearchInput
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                onClear={() => setSearch("")}
-                placeholder="ابحث في شروط التوبة."
-                className="page-search-input tw-search-input"
-                aria-label="بحث في شروط التوبة"
-              />
+              <SearchField value={search} onChange={setSearch} placeholder="ابحث في شروط التوبة." label="بحث في شروط التوبة" />
             </div>
             <div className="tw-shurut-list">
               {filteredShurut.map((s) => (
@@ -423,14 +416,7 @@ export default function TawbaPage() {
           <div role="tabpanel" id="twb-panel-mawani" aria-labelledby="twb-tab-mawani" className="tw-section">
             <p className="tw-section-lead">أمور تحول دون قبول التوبة أو صحتها، يجب الحذر منها</p>
             <div className="tw-search-wrap">
-              <SearchInput
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                onClear={() => setSearch("")}
-                placeholder="ابحث في الموانع."
-                className="page-search-input tw-search-input"
-                aria-label="بحث في موانع التوبة"
-              />
+              <SearchField value={search} onChange={setSearch} placeholder="ابحث في الموانع." label="بحث في موانع التوبة" />
             </div>
             <div className="tw-mawani-list">
               {filteredMawani.map((m, i) => (
@@ -505,6 +491,6 @@ export default function TawbaPage() {
         <SectionQuiz sectionId="akhlaq" title="اختبر معلوماتك في التوبة والتزكية" count={4} />
       </div>
     </main>
-    </DetailScreen>
+    </div>
   );
 }

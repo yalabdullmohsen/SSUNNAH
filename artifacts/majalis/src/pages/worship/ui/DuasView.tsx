@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { NavigationBar } from "@/design-system";
 import { Link } from "wouter";
 import { Search, BookOpen, Star } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
@@ -8,7 +9,6 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { PageShell } from "@/components/layout/PageShell";
 import "@/styles/pages/duas.css";
-import { DetailScreen } from "@/components/design-system/screens";
 
 import { Button } from "@/components/ui/button";
 /* ─── بيانات الأدعية ─── */
@@ -1040,7 +1040,8 @@ export default function DuasPage() {
   }, [category, search]);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+<NavigationBar title="الأدعية الشرعية" large={false} />
     <PageShell className="duas-page">
       {/* ═══ Hero ═══ */}
       <div className="duas-hero">
@@ -1160,6 +1161,6 @@ export default function DuasPage() {
         <ShareButtons title="الأدعية الشرعية — سُنّة" url="https://www.ssunnah.com/duas" />
       </div>
     </PageShell>
-    </DetailScreen>
+    </div>
   );
 }
