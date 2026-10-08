@@ -87,10 +87,8 @@ for (const row of batch1) {
   const comp = expectImport[row.pattern];
   // صفحة مهاجَرة إلى نظام sn-: غلاف sn-screen + NavigationBar بدل شاشة النمط القديمة.
   const migrated = /className="sn-screen"/.test(src) && /NavigationBar/.test(src);
-  if (!migrated) {
-    assert.match(src, new RegExp(comp), `${row.id} يستورد ${comp}`);
-    assert.match(src, /compose=["']mark["']|compose=["']layout["']/, `${row.id} يحدّد compose`);
-  }
+  assert.ok(new RegExp(comp).test(src) || migrated, `${row.id} يستورد ${comp} أو sn-screen + NavigationBar`);
+  assert.ok(/compose=["']mark["']|compose=["']layout["']/.test(src) || migrated, `${row.id} يحدّد compose أو sn-screen`);
   assert.doesNotMatch(src, /fontSize:\s*["'][0-9]+px/, `${row.id}: بلا fontSize px جديد`);
 }
 
