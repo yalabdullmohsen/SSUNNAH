@@ -15,12 +15,15 @@ public struct WebLinkPolicy: Sendable {
     public let baseURL: URL
     public let hosts: Set<String>
 
-    public init(baseURL: URL = WebLinkPolicy.defaultBase, hosts: Set<String> = ["majlisilm.com", "www.majlisilm.com"]) {
+    public init(baseURL: URL = WebLinkPolicy.defaultBase, hosts: Set<String> = WebLinkPolicy.defaultHosts) {
         self.baseURL = baseURL
         self.hosts = hosts
     }
 
-    public static let defaultBase = URL(string: "https://majlisilm.com")!
+    /// الـcanonical الحي مباشرةً (كـserver.url في capacitor.config.ts): majlisilm.com وapex يعيدان التوجيه إليه بـ308،
+    /// فيجب أن تبقى نطاقات الوجهة ضمن hosts وإلا عُدّ التحميل الأول خارجيًا وفُتح في Safari.
+    public static let defaultBase = URL(string: "https://www.ssunnah.com")!
+    public static let defaultHosts: Set<String> = ["www.ssunnah.com", "ssunnah.com", "majlisilm.com", "www.majlisilm.com"]
 
     /// رابط الصفحة لمسار تطبيق (`/lessons/12?x=1`).
     public func url(for path: String) -> URL {
