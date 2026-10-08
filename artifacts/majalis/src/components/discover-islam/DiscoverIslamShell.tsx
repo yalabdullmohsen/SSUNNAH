@@ -2,7 +2,7 @@
  * غلاف موحّد لقسم التعريف بالإسلام — hub والقوائم والتفاصيل.
  */
 import type { ReactNode } from "react";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import "@/styles/discover-islam.css";
 
 type Props = {
@@ -25,8 +25,9 @@ export function DiscoverIslamShell({ children, detail = false, className }: Prop
     .join(" ");
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="التعريف بالإسلام" large={false} />
       <div className={classes}>{children}</div>
-    </DetailScreen>
+    </div>
   );
 }

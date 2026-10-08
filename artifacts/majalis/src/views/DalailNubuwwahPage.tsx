@@ -1,11 +1,12 @@
 import { SectionAccordionLayout } from "@/components/SectionAccordionLayout";
 import { DALAIL_NUBUWWAH } from "@/lib/dalail-nubuwwah-data";
 import { accordionExploreLinks } from "@/lib/explore-links";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 
 export default function DalailNubuwwahPage() {
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="دلائل النبوة" large={false} />
     <SectionAccordionLayout
       eyebrow="السيرة والتاريخ"
       title="دلائل النبوة"
@@ -13,6 +14,6 @@ export default function DalailNubuwwahPage() {
       sections={DALAIL_NUBUWWAH}
       relatedLinks={accordionExploreLinks("dalail")}
     />
-    </DetailScreen>
+    </div>
   );
 }

@@ -7,7 +7,6 @@ import { EMPTY } from "@/lib/ui-copy";
 import { getShubhaBySlug, type DawahShubha } from "@/lib/dawah-service";
 import { shubuhatCompletenessTier } from "@/lib/shubuhat-contract";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
-import { DetailScreen } from "@/components/design-system/screens";
 import { safeHttpHref } from "@/lib/sanitize";
 import { AR_UI_LOCALE } from "@/lib/numerals";
 
@@ -56,7 +55,7 @@ export default function DiscoverIslamDoubtDetailPage() {
   }
 
   return (
-    <DetailScreen compose="mark">
+    <>
     <DiscoverIslamShell detail>
       <PageHeader eyebrow="تفنيد الشبهات" title={item.title} />
 
@@ -171,6 +170,6 @@ export default function DiscoverIslamDoubtDetailPage() {
       </div>
     </DiscoverIslamShell>
   
-    </DetailScreen>
+    </>
   );
 }

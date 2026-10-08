@@ -19,7 +19,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { truncateAtWord } from "@/lib/utils";
 import "@/styles/pages/citation-public.css";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import { safeHttpHref } from "@/lib/sanitize";
 
@@ -127,7 +127,8 @@ export default function CitationPublicPage() {
     (src?.reference_id ? `/${src.content_type.replace("_", "-")}/${src.reference_id}` : "/");
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="اقتباس" large={false} />
     <div className="cpp-root">
       {/* شريط التنقل */}
       <nav aria-label="تنقل الصفحة" className="cpp-nav">
@@ -239,6 +240,6 @@ export default function CitationPublicPage() {
         </div>
       </main>
     </div>
-    </DetailScreen>
+    </div>
   );
 }
