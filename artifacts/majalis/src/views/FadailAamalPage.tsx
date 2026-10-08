@@ -1,4 +1,5 @@
 import { SectionIcon } from "@/components/ui/SectionIcon";
+import { NavigationBar, SearchField } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { applyPageSeo } from "../lib/seo";
@@ -8,8 +9,6 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/fadail-aamal.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
-import { ListScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 
 interface Fadila {
   id: string;
@@ -1061,7 +1060,8 @@ export default function FadailAamalPage() {
   });
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+<NavigationBar title="فضائل الأعمال" large={false} />
     <main className="fa-page" dir="rtl">
       {/* hero */}
       <section className="fa-hero">
@@ -1092,7 +1092,7 @@ export default function FadailAamalPage() {
       <div className="fa-body">
         {/* search */}
         <div className="fa-search-row">
-          <SearchInput className="fa-search" placeholder="ابحث في الأحاديث..." aria-label="بحث في أحاديث فضائل الأعمال" value={search} onChange={(e) => setSearch(e.target.value)} onClear={() => setSearch("")} />
+          <SearchField value={search} onChange={setSearch} placeholder="ابحث في الأحاديث..." label="بحث في أحاديث فضائل الأعمال" />
         </div>
 
         {/* categories */}
@@ -1167,6 +1167,6 @@ export default function FadailAamalPage() {
         <SectionQuiz sectionId="hadith" title="اختبر معلوماتك في فضائل الأعمال" count={4} />
       </div>
     </main>
-    </ListScreen>
+    </div>
   );
 }
