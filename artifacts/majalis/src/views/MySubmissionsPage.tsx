@@ -9,7 +9,7 @@ import { ShareButtons } from "@/components/ContentActions";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import "@/styles/pages/my-submissions.css";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 
 const STATUS_META: Record<SubmissionStatus, { Icon: LucideIcon; label: string; mod: string }> = {
@@ -162,7 +162,8 @@ export default function MySubmissionsPage() {
     : null;
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+      <NavigationBar title="مساهماتي" large={false} />
     <div className="msp-page">
       {/* Header */}
       <div className="msp-header">
@@ -251,6 +252,6 @@ export default function MySubmissionsPage() {
         <ShareButtons title="مساهماتي — سُنّة" url="https://www.ssunnah.com/my-submissions" />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

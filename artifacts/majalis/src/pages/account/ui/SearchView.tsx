@@ -45,7 +45,7 @@ import { SEARCH_SCOPE_ICONS } from "@/features/search/search-scope-icons";
 import "@/styles/pages/search.css";
 import "@/styles/pages/library-search-v2.css";
 import { ACTION, EMPTY, SEARCH, STATUS } from "@/lib/ui-copy";
-import { ListScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { ErrorStateV2, NoResultsState, OfflineStateV2 } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/design-system/Buttons";
@@ -306,7 +306,8 @@ export default function SearchPage() {
   );
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+      <NavigationBar title="البحث" large={false} />
     <div className="page-shell narrow search-page search-home srch-page--v2 srch-page--identity ds-page" dir="rtl">
       <AppBackButton
         variant="inline"
@@ -573,6 +574,6 @@ export default function SearchPage() {
         </div>
       ) : null}
     </div>
-    </ListScreen>
+    </div>
   );
 }

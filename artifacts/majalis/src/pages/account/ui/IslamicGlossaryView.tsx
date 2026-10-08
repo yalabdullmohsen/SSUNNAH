@@ -12,7 +12,7 @@ import { formatArabicNumber } from "@/lib/numerals";
 import "@/styles/pages/glossary.css";
 import "@/styles/islam-intro-experience.css";
 import "@/styles/pages/worship-history-v2.css";
-import { ListScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
@@ -1843,7 +1843,8 @@ export default function IslamicGlossaryPage({ lockedCategory }: IslamicGlossaryP
   const heroEyebrow = lockedCategory === "quran" ? "مركز القرآن الكريم" : "المعجم والمصطلحات";
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+      <NavigationBar title="المعجم الشرعي" large={false} />
     <SectionTemplatePage
       route="/islamic-glossary"
       eyebrow={heroEyebrow}
@@ -2011,6 +2012,6 @@ export default function IslamicGlossaryPage({ lockedCategory }: IslamicGlossaryP
       </div>
     </div>
     </SectionTemplatePage>
-    </ListScreen>
+    </div>
   );
 }
