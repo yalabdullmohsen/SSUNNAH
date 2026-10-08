@@ -1,15 +1,21 @@
-name: iOS SunnahNative tests
+name: iOS native packages tests
 
-# اختبارات حزمة الهيكل الأصلي (docs/program/PLAN.md) — تعمل فقط عند تغيّرها.
+# اختبارات الحزم الأصلية (docs/program/PLAN.md) — تعمل فقط عند تغيّر إحداها.
 on:
   pull_request:
     paths:
       - "artifacts/majalis/ios/App/SunnahNative/**"
+      - "artifacts/majalis/ios/App/SunnahDataKit/**"
+      - "artifacts/majalis/ios/App/SunnahWeb/**"
+      - "artifacts/majalis/ios/App/SunnahPrayer/**"
       - ".github/workflows/ios-sunnah-native.yml"
   push:
     branches: [main]
     paths:
       - "artifacts/majalis/ios/App/SunnahNative/**"
+      - "artifacts/majalis/ios/App/SunnahDataKit/**"
+      - "artifacts/majalis/ios/App/SunnahWeb/**"
+      - "artifacts/majalis/ios/App/SunnahPrayer/**"
 
 permissions:
   contents: read
@@ -21,13 +27,17 @@ concurrency:
 jobs:
   test:
     runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package: [SunnahNative, SunnahDataKit, SunnahWeb, SunnahPrayer]
     timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - name: Test on iOS Simulator
-        working-directory: artifacts/majalis/ios/App/SunnahNative
+      - name: Test ${{ matrix.package }} on iOS Simulator
+        working-directory: artifacts/majalis/ios/App/${{ matrix.package }}
         run: |
           set -euo pipefail
           SIM=$(xcrun simctl list devices available -j | python3 -c 'import json,sys;d=json.load(sys.stdin)["devices"];print(next(x["udid"] for k,v in d.items() if "iOS" in k for x in v if x["name"].startswith("iPhone")))')
-          xcodebuild -scheme SunnahNative -destination "id=$SIM" test -quiet
+          xcodebuild -scheme "${{ matrix.package }}" -destination "id=$SIM" test -quiet
