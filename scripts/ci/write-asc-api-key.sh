@@ -32,4 +32,18 @@ if ! openssl pkey -in "$out" -noout 2>/dev/null; then
   echo "::error::مفتاح ASC بصيغة PEM لكنه غير صالح (تالف أو مقطوع) — أعد حفظ السر من ملف .p8"
   exit 1
 fi
+
+# مفتاح ASC دائمًا EC (P-256)؛ fastlane يقرؤه بـOpenSSL::PKey::EC فيرفض غيره بـ«invalid curve name».
+# نتحقق بالطريقة نفسها ونذكر النوع المكتشف (بلا أي محتوى سري).
+if command -v ruby >/dev/null 2>&1; then
+  if ! kind=$(ruby -ropenssl -e '
+    k = OpenSSL::PKey.read(File.read(ARGV[0]))
+    abort("type=#{k.class.name.split("::").last}") unless k.is_a?(OpenSSL::PKey::EC)
+    OpenSSL::PKey::EC.new(File.read(ARGV[0]))
+  ' "$out" 2>&1); then
+    rm -f "$out"
+    echo "::error::السر APP_STORE_CONNECT_API_KEY_KEY ليس مفتاح App Store Connect (المطلوب EC، المكتشف: ${kind##*: }) — احفظ فيه محتوى AuthKey_<KEY_ID>.p8 من App Store Connect › Users and Access › Integrations"
+    exit 1
+  fi
+fi
 echo "ASC key OK"
