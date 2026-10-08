@@ -14,6 +14,9 @@ public struct GalleryPrayerDay: Equatable, Sendable {
 }
 
 public enum GalleryPrayer {
+    /// موقع عيّنة المعرض. لقطة App Group (`SharedPrayerSnapshot`) لا تخزّن إحداثيات
+    /// (تسمية ومنطقة زمنية فقط)، فلا يمكن اشتقاق موقع المستخدم منها؛ لذا الكويت ثابتة.
+    /// إن أُضيفت إحداثيات مخزَّنة لاحقًا فلتُستعمل هنا وتبقى الكويت احتياطًا.
     public static let defaultLocation = PrayerLocation(
         label: "مدينة الكويت", latitude: 29.3759, longitude: 47.9774, timeZoneIdentifier: "Asia/Kuwait"
     )
