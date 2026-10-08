@@ -1,6 +1,6 @@
+import { NavigationBar } from "@/design-system";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import { PageHeader } from "@/components/ui-common";
-import { DetailScreen } from "@/components/design-system/screens";
 
 type Ruling = {
   id: string;
@@ -102,7 +102,8 @@ const TIMING_COLORS: Record<Ruling["timing"], string> = {
 
 export default function SujoodSahwPage() {
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="سجود السهو" large={false} />
     <div className="page-shell" dir="rtl">
       <PageHeader
         eyebrow="الفقه العملي"
@@ -191,6 +192,6 @@ export default function SujoodSahwPage() {
         </div>
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

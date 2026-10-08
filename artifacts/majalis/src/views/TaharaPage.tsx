@@ -1,3 +1,4 @@
+import { NavigationBar, SearchField } from "@/design-system";
 import { useEffect, useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { applyPageSeo } from "../lib/seo";
@@ -7,8 +8,6 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { Droplets } from "lucide-react";
 import { SectionIcon } from "@/components/ui/SectionIcon";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 
 
 type TaharaTab = "wudu" | "ghusl" | "tayammum" | "najasat";
@@ -187,7 +186,8 @@ export default function TaharaPage() {
   }, [search]);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الطهارة وأحكامها" large={false} />
     <main className="th-page" dir="rtl">
       {/* hero */}
       <section className="th-hero">
@@ -227,10 +227,7 @@ export default function TaharaPage() {
 
       <div className="th-body">
         <div className="th-search-wrap">
-          <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
-            placeholder="ابحث في أحكام الطهارة."
-            className="page-search-input th-search-input"
-            aria-label="بحث في أحكام الطهارة" onClear={() => setSearch("")} />
+          <SearchField value={search} onChange={setSearch} placeholder="ابحث في أحكام الطهارة." label="بحث في أحكام الطهارة" />
         </div>
 
         {/* ── الوضوء ── */}
@@ -460,6 +457,6 @@ export default function TaharaPage() {
         <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في الفقه" count={4} />
       </div>
     </main>
-    </DetailScreen>
+    </div>
   );
 }
