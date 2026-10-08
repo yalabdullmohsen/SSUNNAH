@@ -6,7 +6,7 @@ import {
   isFridayBannerDismissed,
   dismissFridayBanner,
 } from "@/lib/friday-prayer";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 import "@/styles/components/friday-banner.css";
 
 export function FridayBanner() {
@@ -53,14 +53,12 @@ export function FridayBanner() {
       </div>
 
       <IconButton
-        type="button"
+        icon="close"
         className="frb-dismiss"
         onClick={handleDismiss}
         label="إغلاق"
-        tone="muted"
-      >
-        ✕
-      </IconButton>
+        size={20}
+      />
 
       <div className="frb-inner">
         {/* علامة الجمعة */}

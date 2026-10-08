@@ -3,7 +3,7 @@
  */
 import { useEffect, useId, useMemo, useRef, useState, useTransition } from "react";
 import { useLocation } from "wouter";
-import { Search, X } from "lucide-react";
+import { Search } from "lucide-react";
 import { toArabicDigits } from "@/lib/utils";
 import { highlightOriginalParts } from "@/features/search/tolerant-match";
 import {
@@ -22,7 +22,7 @@ import {
 } from "@/features/search/universal-home-search";
 import { EMPTY } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 import "@/styles/components/home-universal-search.css";
 
 const FOCUS_SUGGESTIONS = [
@@ -159,16 +159,15 @@ export function HomeUniversalSearch() {
         />
         {raw ? (
           <IconButton
-            type="button"
+            icon="close"
+            size={20}
             className="hus-clear"
             label="مسح"
             onClick={() => {
               setRaw("");
               setPayload(null);
             }}
-          >
-            <X size={16} />
-          </IconButton>
+          />
         ) : null}
       </div>
 
