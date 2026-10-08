@@ -1,3 +1,4 @@
+import { EmptyState } from "@/design-system";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import { useEffect } from "react";
 import { Link } from "wouter";
@@ -12,10 +13,8 @@ import {
 } from "@/lib/sins-rights-data";
 import type { SinType } from "@/lib/sins-rights-types";
 import { breadcrumbJsonLd } from "@/lib/seo-structured-data";
-import { Empty } from "@/components/ui-common";
 import { ContentDetailLayout, RelatedLinks } from "@/components/platform/ContentDetailLayout";
 import "@/styles/sins-rights.css";
-import { DetailScreen } from "@/components/design-system/screens";
 
 export default function SinsAndRightsDetailPage({ params }: { params: { slug: string } }) {
   const topic = getTopicBySlug(params.slug);
@@ -61,7 +60,7 @@ export default function SinsAndRightsDetailPage({ params }: { params: { slug: st
   if (!topic) {
     return (
       <div className="snr-detail-page">
-        <Empty text={EMPTY.data} />
+        <EmptyState title={EMPTY.data} />
         <div className="snr-detail-back">
           <Link href="/sins-and-rights" className="snr-detail-back__link">
             ← العودة إلى الذنوب والحقوق
@@ -75,7 +74,7 @@ export default function SinsAndRightsDetailPage({ params }: { params: { slug: st
   const copyText = [topic.title, topic.shortDescription, topic.explanation].filter(Boolean).join("\n\n");
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
     <ContentDetailLayout
       breadcrumbs={[
         { label: "الرئيسية", href: "/" },
@@ -269,6 +268,6 @@ export default function SinsAndRightsDetailPage({ params }: { params: { slug: st
  يعرضها عبر RelatedLinks/PlatformContentCard، نفس مكوّن صفحات الأحكام
  والمجلس الفقهي، بدل تصميم مخصَّص لهذه الصفحة وحدها. */}
     </ContentDetailLayout>
-    </DetailScreen>
+    </div>
   );
 }

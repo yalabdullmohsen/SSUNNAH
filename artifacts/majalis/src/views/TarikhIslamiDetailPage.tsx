@@ -22,7 +22,6 @@ import {
   type VerificationLevel,
 } from "@/data/islamic-history";
 import "@/styles/pages/tarikh-islami.css";
-import { DetailScreen } from "@/components/design-system/screens";
 
 const VERIFICATION_LABEL: Record<VerificationLevel, string> = {
   confirmed: "مؤكد",
@@ -92,7 +91,7 @@ export default function TarikhIslamiDetailPage() {
 
   if (!item) {
     return (
-      <DetailScreen compose="mark">
+      <div className="sn-screen">
         <div className="page-shell narrow tarikh-unavailable" dir="rtl">
           <p className="tarikh-unavailable__eyebrow">التاريخ الإسلامي</p>
           <h1 className="tarikh-unavailable__title">موضوع غير متاح</h1>
@@ -108,7 +107,7 @@ export default function TarikhIslamiDetailPage() {
             </Link>
           </div>
         </div>
-      </DetailScreen>
+      </div>
     );
   }
 
@@ -129,7 +128,7 @@ export default function TarikhIslamiDetailPage() {
   ].filter(Boolean) as string[];
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
     <TopicPage
       themeId="history"
       sectionRoute="/tarikh-islami"
@@ -287,6 +286,6 @@ export default function TarikhIslamiDetailPage() {
         </div>
       </KnowledgeLayout>
     </TopicPage>
-    </DetailScreen>
+    </div>
   );
 }

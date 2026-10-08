@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { NavigationBar } from "@/design-system";
 import { Link, useParams } from "wouter";
 import {
   getKnowledgeItem,
@@ -16,7 +17,6 @@ import { EMPTY, SEARCH } from "@/lib/ui-copy";
 import { truncateAtWord } from "@/lib/utils";
 import "@/styles/pages/knowledge.css";
 import "@/styles/islam-intro-experience.css";
-import { DetailScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
 
 const SECTION_TITLE: Record<string, string> = {
@@ -185,7 +185,8 @@ export default function KnowledgeSectionPage() {
   }
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="معرفة" large={false} />
     <div className="page-shell narrow" dir="rtl">
       <PageHeader eyebrow="معرفة" title={SECTION_TITLE[section] || "معرفة"} />
       <label className="knowledge-filter">
@@ -210,6 +211,6 @@ export default function KnowledgeSectionPage() {
       )}
       {visible.length > 200 && <p className="page-meta">يُعرض أول 200 نتيجة — ضيّق التصفية.</p>}
     </div>
-    </DetailScreen>
+    </div>
   );
 }

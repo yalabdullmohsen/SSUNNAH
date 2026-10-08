@@ -18,7 +18,6 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import "@/styles/pages/university-detail.css";
 import "@/styles/pages/learning-path-dashboard.css";
-import { DetailScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
 import { safeHttpHref } from "@/lib/sanitize";
 
@@ -351,10 +350,10 @@ export default function UniversityDetailPage() {
   }
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
     <CompareProvider>
       <DetailContent university={university} />
     </CompareProvider>
-    </DetailScreen>
+    </div>
   );
 }

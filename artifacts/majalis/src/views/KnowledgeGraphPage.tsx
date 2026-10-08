@@ -3,6 +3,7 @@
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { NavigationBar, Chip } from "@/design-system";
 import { Link } from "wouter";
 import { GitBranch, Map as MapIcon, Network, Waypoints } from "lucide-react";
 import {
@@ -28,11 +29,9 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { absoluteUrl } from "@/lib/site-config";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { Chip } from "@/components/ui-common";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { useAuth } from "@/components/AuthProvider";
 import "@/styles/pages/knowledge-graph.css";
-import { DetailScreen } from "@/components/design-system/screens";
 import {
   Select,
   SelectContent,
@@ -334,7 +333,8 @@ export default function KnowledgeGraphPage() {
   }
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الرسم البياني المعرفي الإسلامي" large={false} />
     <div dir="rtl" className="kng-page">
 
       {/* Header */}
@@ -393,7 +393,7 @@ export default function KnowledgeGraphPage() {
             {(["all", ...allTypes]).map((t) => (
               <Chip
                 key={t}
-                active={filterType === t}
+                selected={filterType === t}
                 onClick={() => setFilterType(t)}
                 className={`kng-filter-chip${t !== "all" ? " kng-filter-chip--typed" : ""}${filterType === t ? " is-active" : ""} kng-nt--${t}`}
               >
@@ -681,6 +681,6 @@ export default function KnowledgeGraphPage() {
         <SectionQuiz route="/knowledge-graph" title="اختبر معلوماتك في المعرفة الإسلامية" count={4} />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

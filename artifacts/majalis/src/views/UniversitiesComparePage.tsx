@@ -9,7 +9,6 @@ import { ACCREDITATION_LABELS, ACCREDITATION_COLOR } from "@/lib/universities-se
 import type { University, UniversityProgram } from "@/lib/universities-service";
 import "@/styles/pages/universities-compare.css";
 import "@/styles/pages/learning-path-dashboard.css";
-import { DetailScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -198,10 +197,10 @@ export default function UniversitiesComparePage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
     <CompareProvider>
       <CompareContent />
     </CompareProvider>
-    </DetailScreen>
+    </div>
   );
 }

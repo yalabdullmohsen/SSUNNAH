@@ -1,4 +1,5 @@
 import { Link, useLocation, useRoute } from "wouter";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -59,7 +60,6 @@ import {
   type MiracleTopicFilter,
 } from "@/lib/miracles-ui";
 import "@/styles/pages/miracles.css";
-import { ListScreen } from "@/components/design-system/screens";
 import "@/styles/knowledge-experience.css";
 
 
@@ -540,7 +540,8 @@ function MiracleDetailPage({ slug }: { slug: string }) {
   const badge = miracleMethodBadge(item);
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الإعجاز العلمي" large={false} />
     <TopicPage
       className="topic-page--miracles"
       themeId="quran"
@@ -638,6 +639,6 @@ function MiracleDetailPage({ slug }: { slug: string }) {
         />
       </KnowledgeLayout>
     </TopicPage>
-    </ListScreen>
+    </div>
   );
 }

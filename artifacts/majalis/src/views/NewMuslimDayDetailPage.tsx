@@ -1,12 +1,12 @@
+import { EmptyState } from "@/design-system";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "wouter";
-import { PageHeader, Empty } from "@/components/ui-common";
+import { PageHeader } from "@/components/ui-common";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { useAuth } from "@/components/AuthProvider";
 import { getNewMuslimPath, getNewMuslimProgress, markNewMuslimDayComplete, type NewMuslimDay } from "@/lib/dawah-service";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
-import { DetailScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
 
 export default function NewMuslimDayDetailPage() {
@@ -54,7 +54,7 @@ export default function NewMuslimDayDetailPage() {
   if (!item) {
     return (
       <DiscoverIslamShell detail>
-        <Empty text={EMPTY.data} />
+        <EmptyState title={EMPTY.data} />
       </DiscoverIslamShell>
     );
   }
@@ -64,7 +64,7 @@ export default function NewMuslimDayDetailPage() {
   const prev = days.find((d) => d.day_number === dayNum - 1);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
     <DiscoverIslamShell detail>
       <PageHeader eyebrow={`التعريف بالإسلام · اليوم ${dayNum} من ${days.length}`} title={item.title} />
       <div className="dii-block dii-block--muted">
@@ -86,6 +86,6 @@ export default function NewMuslimDayDetailPage() {
       </div>
     </DiscoverIslamShell>
   
-    </DetailScreen>
+    </div>
   );
 }
