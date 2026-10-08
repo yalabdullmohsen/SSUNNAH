@@ -1,4 +1,5 @@
 import SwiftUI
+import SunnahWidgetKit
 import WidgetKit
 
 /// Dedicated StandBy layouts. Do not stretch Home Screen cards.
@@ -188,16 +189,11 @@ struct PrayerElapsedText: View {
     let entry: PrayerWidgetEntry
 
     var body: some View {
-        if let start = entry.currentStartDate, start <= entry.date {
-            if entry.allowsLiveCountdown {
-                Text(timerInterval: start...start.addingTimeInterval(36 * 3600), countsDown: false)
-            } else {
-                Text(SunnahWidgetTimeFormatting.staticElapsed(from: start, to: entry.date))
-            }
-        } else if entry.isSampleData {
-            Text("مضى ٤٠ د")
-        } else {
+        let mode = LiveClock.current(now: entry.date, start: entry.currentStartDate)
+        if mode == .none {
             Text("قبل الفجر")
+        } else {
+            PrayerLiveClock(mode: mode, now: entry.date, live: entry.allowsLiveCountdown)
         }
     }
 }

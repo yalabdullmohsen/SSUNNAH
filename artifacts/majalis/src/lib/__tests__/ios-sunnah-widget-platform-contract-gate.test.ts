@@ -154,7 +154,7 @@ assert.doesNotMatch(views, /Text\("—"\)/);
 assert.doesNotMatch(views, /\?\? "—"/);
 assert.match(views, /افتح سُنّة لإكمال إعداد مواقيت الصلاة/);
 assert.match(views, /PrayerCountdownText/);
-assert.match(views, /staticRemaining/);
+assert.match(views, /PrayerLiveClock/); // مكوّن العدّ الموحّد (حلّ محل staticRemaining)
 assert.match(views, /rightToLeft/);
 assert.match(views, /accessibilityLabel/);
 

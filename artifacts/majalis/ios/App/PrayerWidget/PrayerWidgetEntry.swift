@@ -326,6 +326,11 @@ struct PrayerWidgetEntry: TimelineEntry {
     /// اسم الصلاة المعروض: التي مضى على أذانها أثناء النافذة وإلا التالية
     var nextDisplayName: String? { elapsedNameAr ?? nextNameAr }
 
+    /// وضع العدّ الحي الموحّد: تصاعدي في نافذة الأذان وإلا تنازلي حتى التالية.
+    var clockMode: LiveClock.Mode {
+        LiveClock.resolve(now: date, elapsedStart: elapsedStart, nextDate: nextDate, nextHasStarted: nextHasStarted)
+    }
+
     var currentStartDate: Date? {
         guard let key = currentKey else { return nil }
         return slot(for: key)?.date
@@ -415,14 +420,6 @@ struct PrayerWidgetProvider: TimelineProvider {
 }
 
 enum SunnahWidgetTimeFormatting {
-    static func staticRemaining(from: Date, to: Date) -> String {
-        WidgetFormat.duration(seconds: Int(to.timeIntervalSince(from)))
-    }
-
-    static func staticElapsed(from: Date, to: Date) -> String {
-        "مضى \(staticRemaining(from: from, to: to))"
-    }
-
     static func clock(_ date: Date, timeZone: TimeZone = .current) -> String {
         let f = DateFormatter()
         f.locale = Locale(identifier: "ar")
