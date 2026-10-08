@@ -5,7 +5,7 @@ import { listProductionApprovedAudio } from "@/lib/prayer-audio-rights-registry"
 import { EMPTY } from "@/lib/ui-copy";
 
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 type Props = {
   open: boolean;
   options: SettingsSoundOption[];

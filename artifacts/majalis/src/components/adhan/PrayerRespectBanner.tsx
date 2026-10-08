@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { VolumeX, X } from "lucide-react";
 import { useSharedPrayerCountdown } from "@/components/prayer/PrayerCountdownProvider";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 import { ADHAN_EVENT_NAME, type AdhanEvent } from "@/lib/adhan-events";
 import { PRAYER_ALERT_EVENT_NAME, type PrayerAlertEvent } from "@/lib/prayer-alert-events";
 import {

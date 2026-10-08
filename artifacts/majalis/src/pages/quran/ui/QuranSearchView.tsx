@@ -23,8 +23,7 @@ import { resolveCanonicalAyahHref } from "@/lib/quran-navigation";
 import { PageHeader } from "@/components/ui-common";
 import { VirtualList } from "@/components/VirtualList";
 import "@/styles/pages/quran-search.css";
-import { NavigationBar } from "@/design-system";
-import { IconButton } from "@/components/design-system/Buttons";
+import { NavigationBar, IconButton } from "@/design-system";
 
 const DEBOUNCE_MS = 200;
 

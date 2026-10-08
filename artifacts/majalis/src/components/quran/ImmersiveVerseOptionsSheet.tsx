@@ -6,7 +6,7 @@ import { BookOpen, Bookmark, BookmarkCheck, Copy, Pause, Play, X } from "lucide-
 import { createPortal } from "react-dom";
 import { IMMERSIVE_PAPER_BG } from "@/lib/quran-immersive";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 
 export type ImmersiveVerseOptionsSheetProps = {
   verseText: string;

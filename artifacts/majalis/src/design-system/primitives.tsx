@@ -44,7 +44,9 @@ export function ButtonLink({ href, variant, size, block, icon, children, classNa
 }
 
 type IconButtonProps = {
-  icon: DsIconName;
+  /** اسم أيقونة النظام؛ يُهمَل إن مُرّر children (رمز مخصص أثناء الهجرة) */
+  icon?: DsIconName;
+  children?: ReactNode;
   /** إلزامي — تسمية VoiceOver */
   label: string;
   tone?: "plain" | "filled" | "tinted" | "on-hero";
@@ -52,10 +54,10 @@ type IconButtonProps = {
   className?: string;
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "aria-label">;
 
-export function IconButton({ icon, label, tone = "plain", size = 24, className, ...rest }: IconButtonProps) {
+export function IconButton({ icon, children, label, tone = "plain", size = 24, className, ...rest }: IconButtonProps) {
   return (
     <button type="button" aria-label={label} {...rest} className={cn("sn-icon-btn sn-pressable", tone !== "plain" && `sn-icon-btn--${tone.replace("hero", "spot")}`, className)}>
-      <Icon name={icon} size={size} />
+      {children ?? (icon ? <Icon name={icon} size={size} /> : null)}
     </button>
   );
 }
