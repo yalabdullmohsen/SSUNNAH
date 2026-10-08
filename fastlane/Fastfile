@@ -70,6 +70,11 @@ platform :ios do
 
       FileUtils.mkdir_p(OUTPUT_DIR)
 
+      # شاشة قياس «تسميع» المخفية: TASMEE_DIAGNOSTICS=1 يجمّع شيفرة القياس في Swift (شرط بناء) ولا يُفعَّل لبناء App Store.
+      # الجزء JS يحتاج VITE_TASMEE_DIAGNOSTICS=1 عند بناء الويب قبل cap sync (انظر docs/tasmee/TESTFLIGHT.md).
+      diagnostics = ENV["TASMEE_DIAGNOSTICS"].to_s == "1"
+      UI.important("بناء قياس التسميع (TASMEE_DIAGNOSTICS) — للـTestFlight الداخلي فقط، لا يُرسَل لمراجعة App Store") if diagnostics
+      swift_flags = diagnostics ? " SWIFT_ACTIVE_COMPILATION_CONDITIONS=TASMEE_DIAGNOSTICS" : ""
       # التوقيع السحابي على مشغّل نظيف يحتاج مصادقة xcodebuild بمفتاح ASC نفسه
       signing_xcargs = "-allowProvisioningUpdates"
       unless key_path.empty?
@@ -87,7 +92,7 @@ platform :ios do
         output_name: "MajlisIlm",
         export_method: "app-store",
         export_xcargs: signing_xcargs,
-        xcargs: signing_xcargs,
+        xcargs: "#{signing_xcargs}#{swift_flags}",
         buildlog_path: File.join(OUTPUT_DIR, "logs"),
         result_bundle: true,
         result_bundle_path: File.join(OUTPUT_DIR, "MajlisIlm.xcresult"),
