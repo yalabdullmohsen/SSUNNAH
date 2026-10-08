@@ -32,12 +32,25 @@
         <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
       </array>
     </dict>
-    <!-- الموقع الجغرافي التقريبي — غير مرتبط بالهوية — يُستخدم آنياً لاتجاه القبلة فقط -->
+    <!-- الاسم — مرتبط بالهوية — يُدخله المستخدم عند التسجيل ويُحفظ في profiles.full_name -->
     <dict>
       <key>NSPrivacyCollectedDataType</key>
-      <string>NSPrivacyCollectedDataTypeCoarseLocation</string>
+      <string>NSPrivacyCollectedDataTypeName</string>
       <key>NSPrivacyCollectedDataTypeLinked</key>
+      <true/>
+      <key>NSPrivacyCollectedDataTypeTracking</key>
       <false/>
+      <key>NSPrivacyCollectedDataTypePurposes</key>
+      <array>
+        <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+      </array>
+    </dict>
+    <!-- معرّف الجهاز (رمز الإشعارات) — مرتبط بالحساب عند تسجيل الدخول — إرسال الإشعارات فقط -->
+    <dict>
+      <key>NSPrivacyCollectedDataType</key>
+      <string>NSPrivacyCollectedDataTypeDeviceID</string>
+      <key>NSPrivacyCollectedDataTypeLinked</key>
+      <true/>
       <key>NSPrivacyCollectedDataTypeTracking</key>
       <false/>
       <key>NSPrivacyCollectedDataTypePurposes</key>
