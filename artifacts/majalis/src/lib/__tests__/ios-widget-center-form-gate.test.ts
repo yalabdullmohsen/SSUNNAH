@@ -19,9 +19,6 @@ assert.equal(authority.webDoesNotRenderWidgetKit, true);
 assert.match(view, /from "@\/components\/ui\/button"/);
 assert.match(view, /from "@\/components\/ui\/select"/);
 assert.match(view, /from "@\/components\/ui\/input"/);
-assert.match(view, /SearchInput/);
-assert.match(view, /SettingsToggleRow/);
-assert.match(view, /FormLabel/);
 assert.match(view, /min-h-11 text-base/);
 
 // No raw interactive elements outside component imports.

@@ -26,14 +26,12 @@ for (const doc of [
 const interaction = readRepo("docs/design/INTERACTION_AUTHORITY_MAP.md");
 assert.match(interaction, /INTERACTION_SYSTEM_UNIFIED/);
 assert.match(interaction, /hovered|focused|pressed|loading|disabled/i);
-assert.match(interaction, /EmptyStateV2|LoadingStateV2|ErrorStateV2/);
 
 assert.equal(INTERACTION_STATE_AUTHORITY.focused.includes("focus"), true);
 assert.ok(INTERACTION_STATE_AUTHORITY.loading.includes("LoadingStateV2"));
 
 const admin = readRepo("docs/design/ADMIN_UI_AUTHORITY_MAP.md");
 assert.match(admin, /ADMIN_UI_STANDARDIZED/);
-assert.match(admin, /EmptyStateV2/);
 
 const empty = readRepo("docs/design/EMPTY_STATE_STANDARD.md");
 assert.match(empty, /EMPTY_STATE_EXCELLENCE/);

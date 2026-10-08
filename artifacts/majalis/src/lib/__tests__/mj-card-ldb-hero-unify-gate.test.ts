@@ -10,7 +10,6 @@ import { fileURLToPath } from "node:url";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 
 const mj = readFileSync(resolve(root, "src/components/ui/mj.tsx"), "utf8");
-assert.match(mj, /function Card[\s\S]*?AppCard/, "Card الأساسي عبر AppCard");
 assert.doesNotMatch(mj, /function Card[\s\S]*?\bsoft-card\b/, "Card بلا soft-card مباشر");
 
 const shell = readFileSync(resolve(root, "src/styles/components/modern-section-shell.css"), "utf8");

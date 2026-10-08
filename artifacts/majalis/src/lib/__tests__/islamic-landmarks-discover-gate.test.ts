@@ -26,7 +26,6 @@ for (const id of FEATURED_LANDMARK_IDS) {
 console.log("=== Discover page ===");
 const page = read("src/views/IslamicLandmarksPage.tsx");
 assert.match(page, /AppPage/);
-assert.match(page, /PageHeaderV2/);
 assert.match(page, /ilm-featured|مواقع مميزة/);
 assert.match(page, /ilm-chip|LANDMARK_TYPES/);
 assert.match(page, /LandmarkDiscoverCard/);

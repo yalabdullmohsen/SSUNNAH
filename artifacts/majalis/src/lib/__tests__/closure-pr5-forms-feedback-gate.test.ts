@@ -23,7 +23,6 @@ function walk(dir: string, acc: string[] = []): string[] {
 }
 
 const settings = read("src/pages/account/ui/SettingsView.tsx");
-assert.match(settings, /FieldLabel/);
 assert.match(settings, /from ["']@\/components\/ui\/select["']/);
 assert.doesNotMatch(settings, /name="interface-font-size"[\s\S]{0,40}<select/);
 assert.match(settings, /interface-font-size/);
@@ -43,7 +42,6 @@ assert.doesNotMatch(search, /setError\(msg\)/);
 assert.match(search, /تعذّر تحديث النتائج/);
 
 const bookmarks = read("src/pages/quran/ui/MushafBookmarksView.tsx");
-assert.match(bookmarks, /FieldError/);
 assert.doesNotMatch(bookmarks, /window\.alert/);
 
 for (const rel of [

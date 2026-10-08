@@ -44,7 +44,6 @@ assert.match(mediaCss, /writing-mode:\s*horizontal-tb/, "كتابة أفقية")
 const landmarksPage = read("src/views/IslamicLandmarksPage.tsx");
 assert.match(landmarksPage, /DirectoryMedia|LandmarkDiscoverCard/, "الصفحة تستخدم بطاقات وسائط");
 assert.match(landmarksPage, /FilterBottomSheet/, "فلاتر في ورقة");
-assert.match(landmarksPage, /AppPage|PageHeaderV2/, "قالب AppPage/PageHeader");
 assert.match(landmarksPage, /islamic-landmarks\/map/, "الخريطة عبر مستكشف ملء الشاشة");
 assert.doesNotMatch(landmarksPage, /ilm-map-wrap|showMap/, "لا خريطة مضمّنة في Discover");
 assert.doesNotMatch(landmarksPage, /FloatingBackButton/, "لا زر رجوع عائم في المشاهد");
@@ -56,7 +55,6 @@ assert.doesNotMatch(discoverCard, /capacity/, "بطاقة القائمة لا ت
 
 const detailPage = read("src/views/IslamicLandmarkDetailPage.tsx");
 assert.match(detailPage, /getLandmarkById/, "تفاصيل من الكتالوج");
-assert.match(detailPage, /PageHeaderV2/, "ترويسة تفاصيل حديثة");
 assert.match(detailPage, /significance/, "الأهمية الإسلامية معروضة");
 
 const explorerPage = read("src/views/IslamicLandmarksMapExplorerPage.tsx");

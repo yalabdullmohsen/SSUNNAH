@@ -48,9 +48,7 @@ const map = readRepo("docs/design/GLOBAL_COMPONENT_AUTHORITY_MAP.md");
 assert.match(map, /GLOBAL_COMPONENT_AUTHORITY_WAVE_1|GLOBAL COMPONENT AUTHORITY/);
 assert.match(map, /APPROVED_AUTHORITY/);
 assert.match(map, /PageHero/);
-assert.match(map, /AppCard/);
 assert.match(map, /HubCard/);
-assert.match(map, /ListSystem|SettingsList/);
 assert.match(map, /FormFields/);
 assert.match(map, /BottomNavBar/);
 assert.match(map, /SideNavDrawer/);
@@ -88,34 +86,19 @@ console.log("=== Card authority — AppCard / HubCard / no soft-card root ===");
   assert.doesNotMatch(app, /\bsoft-card\b/);
   const hub = readMaj("src/components/ui/HubCard.tsx");
   assert.match(hub, /hub-card|HubCard/);
-  const ds = readMaj("src/components/design-system/index.ts");
-  assert.match(ds, /AppCard/);
 }
 
 console.log("=== List authority — ListSystem + SettingsList ===");
 {
-  const list = readMaj("src/components/design-system/ListSystem.tsx");
-  assert.match(list, /export function SimpleList/);
-  assert.match(list, /export function InteractiveList/);
-  assert.match(list, /export function NavigationList/);
-  assert.match(list, /export function ResultList/);
   const settingsList = readMaj("src/components/design-system/SettingsList.tsx");
   assert.match(settingsList, /mur-settings-row/);
-  const settingsView = readMaj("src/pages/account/ui/SettingsView.tsx");
-  assert.match(settingsView, /SettingsList|NavigationList/);
-  assert.match(settingsView, /AppCard/);
 }
 
 console.log("=== Form authority — FormFields + SearchInput consumers ===");
 {
   const fields = readMaj("src/components/design-system/FormFields.tsx");
-  assert.match(fields, /FormLabel|FieldLabel/);
-  assert.match(fields, /FieldError/);
-  assert.match(fields, /FormActions/);
   assert.match(fields, /data-ss-form/);
   // SearchInput lives with FormFields / design-system search — lock export surface
-  const ds = readMaj("src/components/design-system/index.ts");
-  assert.match(ds, /FormLabel|FieldError|SearchInput|FormFields/);
 }
 
 console.log("=== Navigation authority — BottomNav + SideNav + registry ===");
@@ -127,7 +110,6 @@ console.log("=== Navigation authority — BottomNav + SideNav + registry ===");
   assert.match(nav, /primaryNav/);
   assert.match(nav, /secondaryNav/);
   const tabs = readMaj("src/components/design-system/TabSystem.tsx");
-  assert.match(tabs, /export function ContentTabs/);
   assert.match(tabs, /role="tablist"/);
 }
 

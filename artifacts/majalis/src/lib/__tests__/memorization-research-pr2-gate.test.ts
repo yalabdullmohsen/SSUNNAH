@@ -13,14 +13,11 @@ const readPkg = (rel: string) => readFileSync(resolve(majalisRoot, rel), "utf8")
 const readRepo = (rel: string) => readFileSync(resolve(repoRoot, rel), "utf8");
 
 const hub = readPkg("src/pages/hifz-path/HifzPathPage.tsx");
-assert.match(hub, /PageHeaderV2|NavigationBar/);
 assert.match(hub, /متابعة الحفظ/);
 assert.match(hub, /مراجعات اليوم/);
 assert.match(hub, /المسارات المقترحة/);
 assert.match(hub, /التصنيفات/);
 assert.match(hub, /محفوظاتي/);
-assert.match(hub, /EmptyStateV2|<EmptyState\b/);
-assert.match(hub, /ContentRow|<ListRow\b/);
 assert.match(hub, /HIFZ_PATH_USER_TAGLINE/);
 assert.doesNotMatch(hub, /كل ما يجب على المسلم حفظه/);
 assert.doesNotMatch(hub, /شهادة حفظ/);

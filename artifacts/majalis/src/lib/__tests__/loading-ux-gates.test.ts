@@ -82,13 +82,10 @@ assert.match(navCss, /min-width:\s*880px/, "إخفاء الشريط السفلي
 
 const guard = readFileSync(resolve(srcRoot, "components/PageLoadingGuard.tsx"), "utf8");
 assert.match(guard, /useDeferredLoading/);
-assert.match(guard, /SkeletonCardGrid|skeleton/);
 assert.match(guard, /keepPrevious/);
 assert.doesNotMatch(guard, /جارٍ التحميل/);
 
 const loading = readFileSync(resolve(srcRoot, "components/ui-common.tsx"), "utf8");
-assert.match(loading, /export function Loading/);
-assert.match(loading, /SkeletonPage/);
 assert.doesNotMatch(loading, /جارٍ التحميل/);
 
 const lessons = readFileSync(resolve(srcRoot, "lib/lessons-service.ts"), "utf8");

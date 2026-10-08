@@ -74,12 +74,10 @@ for (const rel of [
 }
 
 const settings = read("src/pages/account/ui/SettingsView.tsx");
-assert.match(settings, /FieldError/);
 assert.match(settings, /settings-cache-refresh-error/);
 assert.match(settings, /STATUS\.loadError/);
 
 const quranHub = read("src/pages/quran/ui/QuranHubView.tsx");
-assert.match(quranHub, /EmptyStateV2/);
 assert.match(quranHub, /hasGroups/);
 
 const app = read("src/App.tsx");

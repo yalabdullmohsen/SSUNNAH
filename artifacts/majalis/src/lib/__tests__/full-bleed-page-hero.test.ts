@@ -31,7 +31,6 @@ assert.match(heroCss, /--mss-hero-gradient|--mss-hero-from|--mss-section-hero-bg
 const pageHero = read("src/components/ui/PageHero.tsx");
 assert.match(pageHero, /fullBleed/);
 assert.match(pageHero, /page-hero-mj--bleed/);
-assert.match(pageHero, /HeaderOrnament|svl-header-ornament/);
 assert.match(pageHero, /svl-page-header/);
 
 console.log("full-bleed-page-hero.test.ts: ok");

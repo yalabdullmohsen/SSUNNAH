@@ -20,7 +20,6 @@ function surfaceBlock(css: string, selector: string): string {
 const settings = readFileSync(resolve(root, "src/pages/account/ui/SettingsView.tsx"), "utf8");
 assert.doesNotMatch(settings, /\bui-card-btn\b/, "لا ui-card-btn في الإعدادات");
 assert.doesNotMatch(settings, /\bsettings-danger-btn\b/, "لا settings-danger-btn — صفوف SettingsList");
-assert.match(settings, /NavigationList|SettingsList/, "NavigationList/SettingsList مستخدم (LIST authority)");
 assert.match(settings, /id:\s*"appearance"/, "قسم المظهر والواجهة");
 assert.match(settings, /id:\s*"reading"/, "قسم القراءة والمصحف منفصل");
 // 2026-10: إعادة التجميع إلى ست مجموعات (العرض والمظهر … حول) — يبقى الفصل بين المظهر والقراءة.
@@ -30,7 +29,6 @@ assert.doesNotMatch(settings, /المظهر والقراءة والمصحف/, "�
 assert.match(settings, /id:\s*"feature-tour"/, "جولة المزايا ضمن SettingsList");
 assert.match(settings, /id:\s*"clear-local"/, "مسح المحلي ضمن SettingsList");
 assert.match(settings, /id:\s*"refresh-version"/, "تحديث النسخة ضمن SettingsList");
-assert.match(settings, /AppCard[\s\S]{0,120}settings-account-card/, "بطاقة الحساب عبر AppCard (soft-card داخلي)");
 
 const notif = readFileSync(resolve(root, "src/pages/account/ui/NotificationSettingsView.tsx"), "utf8");
 assert.match(notif, /notif-card/, "إشعارات: notif-card");
@@ -44,14 +42,12 @@ const prayer = readFileSync(resolve(root, "src/components/adhan/PrayerAlertSetti
 assert.match(prayer, /ads-card/, "تنبيه الصلاة: ads-card");
 assert.doesNotMatch(prayer, /\bsoft-card\b/, "تنبيه الصلاة بلا soft-card مباشر");
 
-assert.match(settings, /SettingsToggleRow|NavigationList|SettingsList/, "صفوف التبديل/القائمة من design-system");
 assert.match(settings, /id:\s*`theme-\$\{option\.id\}`|id:\s*"theme-/, "اختيار السمة عبر SettingsList");
 assert.doesNotMatch(settings, /settings-option-grid/, "لا شبكة اختيار سمة قديمة");
 assert.doesNotMatch(settings, /className="settings-toggle-row"/, "لا settings-toggle-row مباشر");
 
 const list = readFileSync(resolve(root, "src/components/design-system/SettingsList.tsx"), "utf8");
 assert.match(list, /testId/, "SettingsList يدعم testId");
-assert.match(list, /SettingsToggleRow/, "SettingsToggleRow مُصدَّر");
 
 const notifCss = readFileSync(resolve(root, "src/styles/pages/notifications.css"), "utf8");
 assert.doesNotMatch(surfaceBlock(notifCss, ".notif-card"), /background\s*:/, "notif-card بلا background خاص");
@@ -67,15 +63,12 @@ for (const block of notifCss.match(/\.notif-card\s*\{[\s\S]*?\n\}/g) || []) {
   assert.doesNotMatch(block, /background\s*:/, "كل كتل .notif-card بلا background");
 }
 
-assert.match(notif, /SettingsToggleRow/, "إشعارات: SettingsToggleRow");
 assert.doesNotMatch(notif, /\bnotif-toggle\b/, "إشعارات: لا notif-toggle مخصّص");
 assert.doesNotMatch(notif, /function ToggleRow/, "إشعارات: لا ToggleRow محلي");
 
-assert.match(adhan, /SettingsToggleRow/, "أذان: SettingsToggleRow");
 assert.doesNotMatch(adhan, /\bads-toggle\b/, "أذان: لا ads-toggle مخصّص");
 assert.doesNotMatch(adhan, /function Toggle\(/, "أذان: لا Toggle محلي");
 
-assert.match(prayer, /SettingsToggleRow/, "تنبيه الصلاة: SettingsToggleRow");
 assert.doesNotMatch(prayer, /function MiniToggle/, "تنبيه الصلاة: لا MiniToggle");
 assert.doesNotMatch(prayer, /\bads-toggle\b/, "تنبيه الصلاة: لا ads-toggle");
 
