@@ -8,8 +8,11 @@ let package = Package(
     products: [
         .library(name: "SunnahWidgetKit", targets: ["SunnahWidgetKit"])
     ],
+    dependencies: [
+        .package(path: "../SunnahPrayer")
+    ],
     targets: [
-        .target(name: "SunnahWidgetKit"),
+        .target(name: "SunnahWidgetKit", dependencies: [.product(name: "SunnahPrayer", package: "SunnahPrayer")]),
         .testTarget(name: "SunnahWidgetKitTests", dependencies: ["SunnahWidgetKit"])
     ]
 )

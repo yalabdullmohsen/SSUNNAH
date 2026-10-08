@@ -87,44 +87,24 @@ struct PrayerWidgetEntry: TimelineEntry {
     /// Representative gallery/preview content — not live device data. Never written to App Group.
     static func galleryPreview(presentation: SunnahWidgetPresentation = .galleryPreview) -> PrayerWidgetEntry {
         let now = Date()
-        let tz = TimeZone(identifier: "Asia/Riyadh") ?? .current
-        var cal = Calendar(identifier: .gregorian)
-        cal.timeZone = tz
-        let dayStart = cal.startOfDay(for: now)
-        func at(_ hour: Int, _ minute: Int) -> Int64 {
-            let d = cal.date(byAdding: DateComponents(hour: hour, minute: minute), to: dayStart) ?? dayStart
-            return Int64(d.timeIntervalSince1970 * 1000)
-        }
-        // Always-future next (~25m) so static gallery never collapses timerInterval / nextDate.
-        let next = now.addingTimeInterval(25 * 60)
-        let prev = now.addingTimeInterval(-40 * 60)
-        func ms(_ date: Date) -> Int64 { Int64(date.timeIntervalSince1970 * 1000) }
-        let times: [String: Int64] = [
-            "fajr": at(5, 5),
-            "sunrise": at(6, 20),
-            "dhuhr": ms(next),
-            "asr": at(15, 30),
-            "maghrib": at(18, 5),
-            "isha": at(19, 30),
-        ]
+        guard let day = GalleryPrayer.day(now: now) else { return noDataEntry(date: now) }
         return make(
             date: now,
             snapshot: SharedPrayerSnapshot(
                 schemaVersion: SharedPrayerSnapshot.currentSchema,
-                locationLabel: "معاينة",
-                timeZoneIdentifier: tz.identifier,
-                dayKey: SunnahSharedStore.dayKey(for: now, timeZone: tz),
-                timesEpochMs: times,
-                nextPrayerKey: "dhuhr",
-                nextPrayerNameAr: "الظهر",
-                nextPrayerEpochMs: ms(next),
+                locationLabel: day.label,
+                timeZoneIdentifier: day.timeZoneIdentifier,
+                dayKey: day.dayKey,
+                timesEpochMs: day.timesEpochMs,
+                nextPrayerKey: day.nextKey,
+                nextPrayerNameAr: day.nextNameAr,
+                nextPrayerEpochMs: day.nextEpochMs,
                 nextHasStarted: false,
-                updatedAtEpochMs: ms(now)
+                updatedAtEpochMs: Int64(now.timeIntervalSince1970 * 1000)
             ),
             isPreview: true,
             presentation: presentation,
-            allowsLiveCountdown: false,
-            previousOverride: (key: .fajr, date: prev)
+            allowsLiveCountdown: false
         )
     }
 
