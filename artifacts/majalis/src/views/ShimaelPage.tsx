@@ -1,13 +1,12 @@
 import { SectionIcon } from "@/components/ui/SectionIcon";
+import { NavigationBar, SearchField } from "@/design-system";
 import { useEffect, useMemo, useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SegmentedFilter } from "@/components/filters/SegmentedFilter";
-import { SearchField } from "@/components/ui/mj";
 import { HadithCard } from "@/components/hadith/HadithCard";
 import {
   ReadingProse,
@@ -17,7 +16,6 @@ import { SourceBox } from "@/components/content/ContentReading";
 import type { HadithRecord } from "@/lib/hadith/hadithNormalize";
 import "@/styles/pages/shimael.css";
 import "@/styles/pages/prophet-stories.css";
-import { ListScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
 
 type TabId = "khalq" | "khuluq" | "sira" | "mahabbah";
@@ -549,7 +547,8 @@ export default function ShimaelPage() {
   );
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الشمائل المحمدية" large={false} />
       <div className="sh-page sh-page--ds" dir="rtl">
         <header className="sh-hero sh-hero--compact">
           <h1 className="sh-hero__title">
@@ -590,13 +589,7 @@ export default function ShimaelPage() {
           />
 
           <div className="sh-search-wrap">
-            <SearchField
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="ابحث في الشمائل…"
-              aria-label="بحث في الشمائل المحمدية"
-              className="sh-search"
-            />
+            <SearchField value={search} onChange={setSearch} placeholder="ابحث في الشمائل…" label="بحث في الشمائل المحمدية" />
           </div>
 
           {activeTab === "khalq" && (
@@ -683,12 +676,11 @@ export default function ShimaelPage() {
           )}
 
           <ShareButtons title="الشمائل المحمدية، سُنّة" url="https://www.ssunnah.com/shimail" />
-          <RelatedKnowledge kind="hadith" query="الشمائل المحمدية" title="أحاديث ومعارف ذات صلة" limit={6} />
           <div className="sh-quiz-wrap">
             <SectionQuiz sectionId="seerah" title="اختبر معلوماتك في الشمائل" count={4} />
           </div>
         </div>
       </div>
-    </ListScreen>
+    </div>
   );
 }

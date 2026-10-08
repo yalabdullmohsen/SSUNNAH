@@ -1,11 +1,12 @@
 import { SectionAccordionLayout } from "@/components/SectionAccordionLayout";
+import { NavigationBar } from "@/design-system";
 import { USRA_MUJTAMA } from "@/lib/usra-mujtama-data";
 import { accordionExploreLinks } from "@/lib/explore-links";
-import { DetailScreen } from "@/components/design-system/screens";
 
 export default function UsraMujtamaPage() {
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="العلاقات والأسرة والمسؤولية" large={false} />
     <SectionAccordionLayout
       eyebrow="الأسرة والمجتمع"
       title="العلاقات والأسرة والمسؤولية"
@@ -13,6 +14,6 @@ export default function UsraMujtamaPage() {
       sections={USRA_MUJTAMA}
       relatedLinks={accordionExploreLinks("usra")}
     />
-    </DetailScreen>
+    </div>
   );
 }

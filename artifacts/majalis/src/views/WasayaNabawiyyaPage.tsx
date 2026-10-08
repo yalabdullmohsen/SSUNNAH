@@ -1,12 +1,10 @@
 import { useEffect, useState, useMemo } from "react";
+import { NavigationBar, SearchField } from "@/design-system";
 import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/wasaya.css";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
@@ -615,7 +613,8 @@ export default function WasayaNabawiyyaPage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الوصايا النبوية" large={false} />
     <div className="wn-page" dir="rtl">
       {/* Hero */}
       <section className="wn-hero">
@@ -650,10 +649,7 @@ export default function WasayaNabawiyyaPage() {
 
       {(activeTab === "kabira" || activeTab === "lil-umma") && (
         <div className="wn-search-wrap">
-          <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
-            placeholder="ابحث في الوصايا."
-            className="page-search-input wn-search-input"
-            aria-label="بحث في الوصايا النبوية" onClear={() => setSearch("")} />
+          <SearchField value={search} onChange={setSearch} placeholder="ابحث في الوصايا." label="بحث في الوصايا النبوية" />
         </div>
       )}
 
@@ -793,11 +789,10 @@ export default function WasayaNabawiyyaPage() {
       <div className="twh-share">
         <ShareButtons title="الوصايا النبوية — سُنّة" url="https://www.ssunnah.com/wasaya-nabawiyya" />
       </div>
-      <RelatedKnowledge kind="hadith" query="الوصايا النبوية" title="أحاديث ووصايا ذات صلة" limit={6} />
       <div className="px-4 pb-6 mt-4">
         <SectionQuiz sectionId="hadith" title="اختبر معلوماتك في الحديث النبوي" count={4} />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

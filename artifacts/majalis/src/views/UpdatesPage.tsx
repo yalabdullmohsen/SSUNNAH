@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { NavigationBar, SearchField } from "@/design-system";
 import { Link } from "wouter";
 import { PageHeader, SkeletonCardGrid } from "@/components/ui-common";
 import { getMergedPlatformUpdates } from "@/lib/auto-content-service";
@@ -11,8 +12,7 @@ import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/updates.css";
-import { ListScreen } from "@/components/design-system/screens";
-import { EmptyStateV2, ErrorStateV2, SearchInput } from "@/components/design-system";
+import { EmptyStateV2, ErrorStateV2 } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 import { safeHttpHref } from "@/lib/sanitize";
 import { AR_UI_LOCALE } from "@/lib/numerals";
@@ -99,7 +99,8 @@ export default function UpdatesPage() {
   }, [items, filter, search]);
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="آخر المستجدات" large={false} />
     <div className="page-shell narrow content-hub-page">
       <PageHeader
         eyebrow="النشاط العلمي"
@@ -126,14 +127,7 @@ export default function UpdatesPage() {
 
       {(!loading || items.length > 0) && (
         <div className="upd-search-wrap">
-          <SearchInput
-            className="ds-input upd-search-input"
-            placeholder="ابحث في المستجدات..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            onClear={() => setSearch("")}
-            aria-label="بحث في المستجدات"
-          />
+          <SearchField value={search} onChange={setSearch} placeholder="ابحث في المستجدات..." label="بحث في المستجدات" />
         </div>
       )}
 
@@ -185,6 +179,6 @@ export default function UpdatesPage() {
         <SectionQuiz sectionId="islamic-history" title="اختبر معلوماتك في التاريخ الإسلامي والفقه" count={4} />
       </div>
     </div>
-    </ListScreen>
+    </div>
   );
 }

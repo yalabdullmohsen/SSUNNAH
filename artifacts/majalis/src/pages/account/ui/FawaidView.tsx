@@ -18,7 +18,6 @@ import { FilterBottomSheet, FilterToggle } from "@/components/layout/FilterBotto
 import { useAuth } from "@/components/AuthProvider";
 import { FaidahCard } from "@/components/fawaid/FaidahCard";
 import { ShareButtons } from "@/components/ContentActions";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { TopicPage } from "@/components/topic/TopicPage";
 import { useReadingScrollMemory } from "@/hooks/useReadingScrollMemory";
 import { hasPublicSource } from "@/lib/content-provenance";
@@ -347,7 +346,6 @@ export default function FawaidPage({
         <p className="fawaid-cards-link" style={{ marginBlock: "1rem" }}>
           <Link href="/flashcards">بطاقات المراجعة ←</Link>
         </p>
-        <RelatedKnowledge kind="fawaid" title="فوائد ذات صلة" />
 
         {!authLoading && isLoggedIn && (
           <div className="content-submit-panel">

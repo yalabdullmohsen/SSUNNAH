@@ -1,11 +1,12 @@
 import { SectionAccordionLayout } from "@/components/SectionAccordionLayout";
+import { NavigationBar } from "@/design-system";
 import { MAQASID_SHARIA } from "@/lib/maqasid-sharia-data";
 import { accordionExploreLinks } from "@/lib/explore-links";
-import { DetailScreen } from "@/components/design-system/screens";
 
 export default function MaqasidShariaPage() {
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="مقاصد الشريعة الإسلامية" large={false} />
     <SectionAccordionLayout
       eyebrow="أصول الفقه"
       title="مقاصد الشريعة الإسلامية"
@@ -13,6 +14,6 @@ export default function MaqasidShariaPage() {
       sections={MAQASID_SHARIA}
       relatedLinks={accordionExploreLinks("maqasid")}
     />
-    </DetailScreen>
+    </div>
   );
 }

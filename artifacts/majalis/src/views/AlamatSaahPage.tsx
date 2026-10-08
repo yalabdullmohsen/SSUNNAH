@@ -4,7 +4,6 @@ import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/alamat-saah.css";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { NavigationBar, SearchField } from "@/design-system";
 import { Button } from "@/components/ui/button";
 
@@ -532,7 +531,6 @@ export default function AlamatSaahPage() {
       <div className="twh-share">
         <ShareButtons title="علامات الساعة، سُنّة" url="https://www.ssunnah.com/alamat-saah" />
       </div>
-      <RelatedKnowledge kind="lesson" query="علامات الساعة" title="دروس ومواد ذات صلة" limit={6} />
       <div className="px-4 pb-6 mt-6">
         <SectionQuiz sectionId="aqidah" title="اختبر معلوماتك في العقيدة والتاريخ" count={4} />
       </div>

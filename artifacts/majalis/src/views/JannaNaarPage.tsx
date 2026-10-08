@@ -1,5 +1,5 @@
+import { SearchField } from "@/design-system";
 import { useEffect, useState, useMemo } from "react";
-import { SearchInput } from "@/components/design-system";
 import { useSearch } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/janna-naar.css";
@@ -286,9 +286,7 @@ export default function JannaNaarPage() {
               <p>جمع العلماء أسباب دخول الجنة من الكتاب والسنة وهي كثيرة، وأبرزها على الإطلاق التوحيد والإيمان.</p>
             </div>
             <div className="jn-search-wrap">
-              <SearchInput value={searchQ} onChange={(e) => setSearch(e.target.value)}
-                placeholder="ابحث في الأسباب..." className="page-search-input jn-search-input"
-                aria-label="بحث في أسباب دخول الجنة" onClear={() => setSearch("")} />
+              <SearchField value={searchQ} onChange={setSearch} placeholder="ابحث في الأسباب..." label="بحث في أسباب دخول الجنة" />
             </div>
             <div className="jn-asbab-grid">
               {filteredAsbabJanna.map((item, i) => (
@@ -310,9 +308,7 @@ export default function JannaNaarPage() {
               <p>﴿وَاتَّقُوا النَّارَ الَّتِي أُعِدَّتْ لِلْكَافِرِينَ﴾، ذكر العلماء من الكتاب والسنة أسباباً كثيرة تُوقع في النار، هي في الحقيقة أعمال ومخالفات حذَّرنا منها الوحي.</p>
             </div>
             <div className="jn-search-wrap">
-              <SearchInput value={searchQ} onChange={(e) => setSearch(e.target.value)}
-                placeholder="ابحث في الأسباب..." className="page-search-input jn-search-input"
-                aria-label="بحث في أسباب دخول النار" onClear={() => setSearch("")} />
+              <SearchField value={searchQ} onChange={setSearch} placeholder="ابحث في الأسباب..." label="بحث في أسباب دخول النار" />
             </div>
             <div className="jn-asbab-grid">
               {filteredAsbabNaar.map((item, i) => (

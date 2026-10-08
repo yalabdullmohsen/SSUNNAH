@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavigationBar } from "@/design-system";
 import { Bird, BookOpen, Gem, Heart, Landmark, MapPin, Megaphone, Moon, ScrollText, Sparkles, Sprout, Swords } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
@@ -10,7 +11,6 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import "@/styles/pages/seerah.css";
 import "@/styles/pages/stories-seerah-v2.css";
-import { DashboardScreen } from "@/components/design-system/screens";
 import {
   KnowledgeLayout,
   WarningNoticeBlock,
@@ -312,7 +312,8 @@ export default function SeerahPage() {
   };
 
   return (
-    <DashboardScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="السيرة النبوية الشريفة" large={false} />
     <SectionTemplatePage
       route="/seerah"
       eyebrow="سيرة النبي ﷺ"
@@ -460,6 +461,6 @@ export default function SeerahPage() {
         <SectionQuiz sectionId="seerah" title="اختبر معلوماتك في السيرة النبوية" count={4} />
       </div>
     </SectionTemplatePage>
-    </DashboardScreen>
+    </div>
   );
 }

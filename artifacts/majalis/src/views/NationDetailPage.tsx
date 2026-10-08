@@ -14,7 +14,6 @@ import {
 } from "@/lib/nations-seed";
 import { PunishmentIcon } from "@/components/nations/PunishmentIcon";
 import "@/styles/nations.css";
-import { DetailScreen } from "@/components/design-system/screens";
 import { EMPTY } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
 
@@ -382,7 +381,7 @@ function Fact({ label, value, icon }: { label: string; value: string; icon?: Rea
 
 function EvidenceBlock({ evidence }: { evidence: Evidence }) {
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
     <blockquote className={`nation-evidence nation-evidence--${evidence.kind}`}>
       <span className="nation-evidence__kind">{EVIDENCE_LABEL[evidence.kind]}</span>
       <p className="nation-evidence__text">{evidence.text}</p>
@@ -391,6 +390,6 @@ function EvidenceBlock({ evidence }: { evidence: Evidence }) {
         {evidence.grade ? ` — ${evidence.grade}` : ""}
       </cite>
     </blockquote>
-    </DetailScreen>
+    </div>
   );
 }

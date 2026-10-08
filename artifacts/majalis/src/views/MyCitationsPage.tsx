@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavigationBar, SearchField } from "@/design-system";
 import { ClipboardList, Download, FileText, Flame, FolderOpen, Link2, Pencil, Printer, Star } from "lucide-react";
 import { Link } from "wouter";
 import { arabicMatchAny } from "@/lib/arabic-search";
@@ -17,8 +18,6 @@ import { useAuth } from "@/components/AuthProvider";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import "@/styles/pages/my-citations.css";
-import { ListScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 const TABS = ["الكل", "المجلدات", "المفضلة", "الأكثر استخداماً"] as const;
@@ -182,7 +181,8 @@ export default function MyCitationsPage() {
   }
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="مكتبة الاقتباسات" large={false} />
     <div dir="rtl" className="mcp-root print:bg-[var(--mj-surface)]">
       {/* الرأس */}
       <div className="mcp-header print:hidden">
@@ -211,11 +211,7 @@ export default function MyCitationsPage() {
           </div>
 
           <div className="mt-4">
-            <SearchInput value={searchQuery} onChange={(e) => handleSearch(e.target.value)}
-              aria-label="ابحث في اقتباساتك وملاحظاتك" placeholder="ابحث في اقتباساتك وملاحظاتك..."
-              className="mcp-search-input"
-              dir="rtl"
-            />
+            <SearchField value={searchQuery} onChange={handleSearch} placeholder="ابحث في اقتباساتك وملاحظاتك..." label="ابحث في اقتباساتك وملاحظاتك" />
           </div>
         </div>
       </div>
@@ -410,6 +406,6 @@ export default function MyCitationsPage() {
         <ShareButtons title="اقتباساتي — سُنّة" url="https://www.ssunnah.com/my-citations" />
       </div>
     </div>
-    </ListScreen>
+    </div>
   );
 }

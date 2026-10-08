@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { NavigationBar, SearchField } from "@/design-system";
 import { CalendarDays, Star } from "lucide-react";
 import { SkeletonCardGrid } from "@/components/ui-common";
 import { CompactSectionHeader } from "@/components/ui/CompactSectionHeader";
@@ -15,11 +16,8 @@ import { getHijriMonthName, isSacredMonth } from "@/lib/hijri-utils";
 import { contentKindLabel } from "@/lib/religious-content";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import "@/styles/pages/occasions.css";
 import "@/styles/components/home/home-learning-seasons.css";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 
 function CountdownBadge({ days }: { days: number | null | undefined }) {
   if (days == null) return <span className="occasion-detail__countdown">موسمية</span>;
@@ -96,7 +94,8 @@ export default function OccasionsPage() {
   }, [occasions, monthFilter, search]);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="المناسبات الإسلامية" large={false} />
     <div className="page-shell occasions-page">
       <CompactSectionHeader
         eyebrow="المناسبات والدروس"
@@ -130,8 +129,7 @@ export default function OccasionsPage() {
       )}
       {!loading && (
         <div className="ocp-search-wrap">
-          <SearchInput className="ds-input ocp-search-input" placeholder="ابحث في المناسبات والأعمال..." value={search} onChange={(e) => setSearch(e.target.value)}
-            aria-label="بحث في المناسبات الإسلامية" onClear={() => setSearch("")} />
+          <SearchField value={search} onChange={setSearch} placeholder="ابحث في المناسبات والأعمال..." label="بحث في المناسبات الإسلامية" />
         </div>
       )}
 
@@ -195,7 +193,6 @@ export default function OccasionsPage() {
         </div>
       )}
 
-      <RelatedKnowledge kind="lesson" query="المناسبات الإسلامية" title="دروس ومواد في المناسبات" limit={6} />
       <div className="twh-share">
         <ShareButtons title="المناسبات الإسلامية — سُنّة" url="https://www.ssunnah.com/occasions" />
       </div>
@@ -203,6 +200,6 @@ export default function OccasionsPage() {
         <SectionQuiz sectionId="islamic-history" title="اختبر معلوماتك في المناسبات الإسلامية" count={4} />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

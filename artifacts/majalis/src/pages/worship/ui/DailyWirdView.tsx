@@ -15,7 +15,6 @@ import { applyPageSeo } from "@/lib/seo";
 import { STATUS } from "@/lib/ui-copy";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import "@/styles/pages/daily-wird.css";
 import { FieldLabel } from "@/components/design-system/FormFields";
 import { Button } from "@/components/ui/button";
@@ -398,7 +397,6 @@ export default function DailyWirdPage() {
         ) : null}
       </div>
 
-      <RelatedKnowledge kind="lesson" query="الورد اليومي القرآن" title="دروس ومواد في الورد القرآني" limit={6} />
       <div className="twh-share">
         <ShareButtons title="الورد اليومي — سُنّة" url="https://www.ssunnah.com/daily-wird" />
       </div>
