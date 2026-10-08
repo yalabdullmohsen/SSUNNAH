@@ -133,12 +133,19 @@ ok(
   /NSPrivacyCollectedDataTypeAudioData<\/string>\s*<key>NSPrivacyCollectedDataTypeLinked<\/key>\s*<false\/>\s*<key>NSPrivacyCollectedDataTypeTracking<\/key>\s*<false\/>/s.test(privacy),
   "PrivacyInfo declares AudioData (recitation test → Groq): not linked, no tracking",
 );
-ok(
-  !privacy.includes("NSPrivacyCollectedDataTypeCoarseLocation") &&
-    /NSPrivacyCollectedDataTypeName<\/string>\s*<key>NSPrivacyCollectedDataTypeLinked<\/key>\s*<true\/>/s.test(privacy) &&
-    /NSPrivacyCollectedDataTypeDeviceID<\/string>\s*<key>NSPrivacyCollectedDataTypeLinked<\/key>\s*<true\/>/s.test(privacy),
-  "PrivacyInfo: Name + DeviceID declared (linked), no CoarseLocation (location stays on device)",
-);
+for (const t of ["EmailAddress", "Name", "PhoneNumber", "UserID", "DeviceID", "OtherUserContent", "ProductInteraction", "SearchHistory"]) {
+  ok(
+    new RegExp(`NSPrivacyCollectedDataType${t}</string>\\s*<key>NSPrivacyCollectedDataTypeLinked</key>\\s*<true/>`, "s").test(privacy),
+    `PrivacyInfo declares ${t} (linked)`,
+  );
+}
+for (const t of ["CrashData", "PerformanceData"]) {
+  ok(
+    new RegExp(`NSPrivacyCollectedDataType${t}</string>\\s*<key>NSPrivacyCollectedDataTypeLinked</key>\\s*<false/>`, "s").test(privacy),
+    `PrivacyInfo declares ${t} (not linked)`,
+  );
+}
+ok(!privacy.includes("NSPrivacyCollectedDataTypeCoarseLocation"), "PrivacyInfo: no Location (stays on device)");
 
 const live = readFileSync(
   join(iosApp, "PrayerLiveActivity", "PrayerLiveActivityLiveActivity.swift"),

@@ -19,7 +19,7 @@
   <!-- NSPrivacyCollectedDataTypes: البيانات التي يجمعها التطبيق -->
   <key>NSPrivacyCollectedDataTypes</key>
   <array>
-    <!-- البريد الإلكتروني — مرتبط بالهوية — تسجيل الحساب -->
+    <!-- البريد الإلكتروني — التسجيل (Supabase Auth) والمراسلات -->
     <dict>
       <key>NSPrivacyCollectedDataType</key>
       <string>NSPrivacyCollectedDataTypeEmailAddress</string>
@@ -32,7 +32,7 @@
         <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
       </array>
     </dict>
-    <!-- الاسم — مرتبط بالهوية — يُدخله المستخدم عند التسجيل ويُحفظ في profiles.full_name -->
+    <!-- الاسم — profiles.full_name وشهادات المسارات -->
     <dict>
       <key>NSPrivacyCollectedDataType</key>
       <string>NSPrivacyCollectedDataTypeName</string>
@@ -45,7 +45,33 @@
         <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
       </array>
     </dict>
-    <!-- معرّف الجهاز (رمز الإشعارات) — مرتبط بالحساب عند تسجيل الدخول — إرسال الإشعارات فقط -->
+    <!-- رقم الهاتف — قد يدخله المستخدم كوسيلة تواصل في طلب الدعوة (dawah_contact_requests.contact_value) -->
+    <dict>
+      <key>NSPrivacyCollectedDataType</key>
+      <string>NSPrivacyCollectedDataTypePhoneNumber</string>
+      <key>NSPrivacyCollectedDataTypeLinked</key>
+      <true/>
+      <key>NSPrivacyCollectedDataTypeTracking</key>
+      <false/>
+      <key>NSPrivacyCollectedDataTypePurposes</key>
+      <array>
+        <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+      </array>
+    </dict>
+    <!-- معرّف مستخدم Supabase — يربط كل جداول الحساب -->
+    <dict>
+      <key>NSPrivacyCollectedDataType</key>
+      <string>NSPrivacyCollectedDataTypeUserID</string>
+      <key>NSPrivacyCollectedDataTypeLinked</key>
+      <true/>
+      <key>NSPrivacyCollectedDataTypeTracking</key>
+      <false/>
+      <key>NSPrivacyCollectedDataTypePurposes</key>
+      <array>
+        <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+      </array>
+    </dict>
+    <!-- رمز الإشعارات (APNs) — push_subscriptions، مرتبط عند تسجيل الدخول -->
     <dict>
       <key>NSPrivacyCollectedDataType</key>
       <string>NSPrivacyCollectedDataTypeDeviceID</string>
@@ -58,7 +84,48 @@
         <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
       </array>
     </dict>
-    <!-- بيانات الصوت — غير مرتبطة بالهوية — اختبار التلاوة فقط بعد موافقة صريحة (يُرسل عبر خادمنا إلى Groq؛ وضع التسميع على الجهاز لا يُرسل شيئًا) -->
+    <!-- محتوى المستخدم — ملاحظات، مفضلة، تقييمات، بلاغات، مسودات، نصوص مفرَّغة، خطط قراءة -->
+    <dict>
+      <key>NSPrivacyCollectedDataType</key>
+      <string>NSPrivacyCollectedDataTypeOtherUserContent</string>
+      <key>NSPrivacyCollectedDataTypeLinked</key>
+      <true/>
+      <key>NSPrivacyCollectedDataTypeTracking</key>
+      <false/>
+      <key>NSPrivacyCollectedDataTypePurposes</key>
+      <array>
+        <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+      </array>
+    </dict>
+    <!-- التفاعل — تقدّم الحفظ والمراجعة والإنجازات وجلسات الدراسة وcontent_views -->
+    <dict>
+      <key>NSPrivacyCollectedDataType</key>
+      <string>NSPrivacyCollectedDataTypeProductInteraction</string>
+      <key>NSPrivacyCollectedDataTypeLinked</key>
+      <true/>
+      <key>NSPrivacyCollectedDataTypeTracking</key>
+      <false/>
+      <key>NSPrivacyCollectedDataTypePurposes</key>
+      <array>
+        <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+        <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
+      </array>
+    </dict>
+    <!-- عمليات البحث — search_analytics_events (مع user_id وsession_id عند توفرها)، تُحسب مرتبطة احترازيًا -->
+    <dict>
+      <key>NSPrivacyCollectedDataType</key>
+      <string>NSPrivacyCollectedDataTypeSearchHistory</string>
+      <key>NSPrivacyCollectedDataTypeLinked</key>
+      <true/>
+      <key>NSPrivacyCollectedDataTypeTracking</key>
+      <false/>
+      <key>NSPrivacyCollectedDataTypePurposes</key>
+      <array>
+        <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+        <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
+      </array>
+    </dict>
+    <!-- الصوت — اختبار التلاوة فقط بعد موافقة صريحة (يُرسل عبر خادمنا إلى Groq بلا تخزين ولا معرّف؛ وضع التسميع على الجهاز لا يُرسل شيئًا) -->
     <dict>
       <key>NSPrivacyCollectedDataType</key>
       <string>NSPrivacyCollectedDataTypeAudioData</string>
@@ -69,6 +136,32 @@
       <key>NSPrivacyCollectedDataTypePurposes</key>
       <array>
         <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+      </array>
+    </dict>
+    <!-- الأعطال — client_error_logs (رسالة وstack ومسار ونسخة)، بلا معرّف مستخدم -->
+    <dict>
+      <key>NSPrivacyCollectedDataType</key>
+      <string>NSPrivacyCollectedDataTypeCrashData</string>
+      <key>NSPrivacyCollectedDataTypeLinked</key>
+      <false/>
+      <key>NSPrivacyCollectedDataTypeTracking</key>
+      <false/>
+      <key>NSPrivacyCollectedDataTypePurposes</key>
+      <array>
+        <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
+      </array>
+    </dict>
+    <!-- الأداء — Web Vitals عبر /api/web-vitals بعد موافقة المستخدم فقط، بلا معرّف -->
+    <dict>
+      <key>NSPrivacyCollectedDataType</key>
+      <string>NSPrivacyCollectedDataTypePerformanceData</string>
+      <key>NSPrivacyCollectedDataTypeLinked</key>
+      <false/>
+      <key>NSPrivacyCollectedDataTypeTracking</key>
+      <false/>
+      <key>NSPrivacyCollectedDataTypePurposes</key>
+      <array>
+        <string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
       </array>
     </dict>
   </array>
