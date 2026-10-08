@@ -261,7 +261,7 @@ struct IslamicEventView: View {
                             .lineLimit(1)
                         Spacer()
                         if let days = cal.upcomingEventDays {
-                            Text(days == 0 ? "اليوم" : WidgetFormat.days(days))
+                            Text(WidgetFormat.daysUntil(days))
                         }
                     }
                 } else {
@@ -281,7 +281,7 @@ struct IslamicEventView: View {
                                     .foregroundStyle(SunnahBrandColors.gold)
                                     .widgetAccentable()
                             } else {
-                                Text("بعد \(WidgetFormat.days(days))")
+                                Text(WidgetFormat.daysUntil(days))
                                     .font(.headline)
                                     .foregroundStyle(SunnahBrandColors.gold)
                                     .widgetAccentable()

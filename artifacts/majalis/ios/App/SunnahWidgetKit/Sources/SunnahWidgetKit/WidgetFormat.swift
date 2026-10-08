@@ -22,6 +22,31 @@ public enum WidgetFormat {
         }
     }
 
+    /// عدّاد مناسبة قادمة: ٠ «اليوم»، ١ «غدًا»، ٢ «بعد يومين»، ٣… «بعد ٣ أيام».
+    public static func daysUntil(_ count: Int) -> String {
+        switch max(0, count) {
+        case 0: return "اليوم"
+        case 1: return "غدًا"
+        case 2: return "بعد يومين"
+        default: return "بعد \(days(count))"
+        }
+    }
+
+    /// أيام السلسلة (streak): ١ «يوم واحد»، وغيره كالمعتاد.
+    public static func streak(_ count: Int) -> String {
+        count == 1 ? "يوم واحد" : days(count)
+    }
+
+    /// وحدة الأيام وحدها (للعرض بجانب رقم مستقل).
+    public static func dayUnit(_ count: Int) -> String {
+        switch max(0, count) {
+        case 2: return "يومان"
+        case 3...10: return "أيام"
+        case 11...: return "يومًا"
+        default: return "يوم"
+        }
+    }
+
     /// مدة ثابتة للعرض: «٣ س ١٢ د» أو «٤٥ د».
     public static func duration(seconds: Int) -> String {
         let minutes = max(0, seconds) / 60

@@ -167,7 +167,7 @@ struct AdhkarStreakView: View {
 
     /// الوحدة وحدها (بلا الرقم) تحت العدد الكبير: يوم / يومان / أيام / يومًا.
     private func streakUnit(_ n: Int) -> String {
-        WidgetFormat.days(n).split(separator: " ", maxSplits: 1).last.map(String.init) ?? "يوم"
+        WidgetFormat.dayUnit(n)
     }
 
     var body: some View {
@@ -184,7 +184,7 @@ struct AdhkarStreakView: View {
                     HStack {
                         Text(todayLabel)
                         Spacer()
-                        Text("سلسلة \(WidgetFormat.days(progress.adhkarStreakDays ?? 0))")
+                        Text("سلسلة \(WidgetFormat.streak(progress.adhkarStreakDays ?? 0))")
                     }
                 } else {
                     VStack(alignment: .leading, spacing: 8) {
@@ -195,7 +195,7 @@ struct AdhkarStreakView: View {
                         Text(todayLabel)
                             .font(.headline)
                             .foregroundStyle(.white)
-                        Text("السلسلة \(WidgetFormat.days(progress.adhkarStreakDays ?? 0))")
+                        Text("السلسلة \(WidgetFormat.streak(progress.adhkarStreakDays ?? 0))")
                             .font(.title2.bold())
                             .foregroundStyle(SunnahBrandColors.gold)
                             .widgetAccentable()
