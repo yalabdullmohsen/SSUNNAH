@@ -4,7 +4,7 @@ import { Link } from "wouter";
 import { supabase } from "@/lib/supabase";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/car-mode.css";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/design-system/Buttons";
 
@@ -164,7 +164,8 @@ export default function CarModePage() {
   }
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="وضع السيارة" large={false} />
     <div className="car-mode" dir="rtl">
       {/* Hidden audio element. لا يوجد <track> لأن هذا تشغيل صوت للدروس بلا نص
           مرافق متزامن متاح حاليًا؛ البديل الصحيح لمحتوى صوتي فقط هو نص بديل
@@ -249,6 +250,6 @@ export default function CarModePage() {
         ))}
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

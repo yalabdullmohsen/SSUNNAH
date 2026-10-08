@@ -10,7 +10,7 @@ import { KnowledgeDetailSurface } from "@/components/knowledge/KnowledgeDetailSu
 import type { KnowledgeDetailSurfaceSection } from "@/components/knowledge/KnowledgeDetailSurface";
 import { getPublishedIslamicSectById } from "@/lib/islamic-sects";
 import { getIslamicSectById } from "@/data/islamic-sects";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import "@/styles/pages/islamic-sects.css";
 import "@/styles/islam-intro-experience.css";
@@ -183,7 +183,8 @@ export default function IslamicSectsDetailPage() {
 
   if (!sect) {
     return (
-      <DetailScreen compose="mark">
+      <div className="sn-screen">
+      <NavigationBar title={existsUnpublished ? "سجل غير متاح" : "سجل غير موجود"} large={false} />
         <TopicPage
           themeId="aqeedah"
           sectionRoute={LIST_PATH}
@@ -201,12 +202,13 @@ export default function IslamicSectsDetailPage() {
             العودة إلى القائمة
           </Link>
         </TopicPage>
-      </DetailScreen>
+      </div>
     );
   }
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title={sect.name} large={false} />
       <TopicPage
         themeId="aqeedah"
         sectionRoute={LIST_PATH}
@@ -245,6 +247,6 @@ export default function IslamicSectsDetailPage() {
           </div>
         </KnowledgeLayout>
       </TopicPage>
-    </DetailScreen>
+    </div>
   );
 }

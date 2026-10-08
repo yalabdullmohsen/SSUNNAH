@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Check, Copy, Mail, MessageSquare, AlertTriangle, Lightbulb, Clock } from "lucide-react";
 import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { applyPageSeo } from "@/lib/seo";
 import { CONTACT_EMAIL, mailtoWithSubject, absoluteUrl } from "@/lib/site-config";
 import { Button } from "@/components/ui/button";
@@ -92,7 +92,8 @@ export default function SupportPage() {
   };
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+      <NavigationBar title="الدعم الفني" large={false} />
       <LegalPageLayout
         eyebrow="سُنّة"
         title="الدعم الفني"
@@ -191,6 +192,6 @@ export default function SupportPage() {
           </Accordion>
         </LegalSection>
       </LegalPageLayout>
-    </DetailScreen>
+    </div>
   );
 }

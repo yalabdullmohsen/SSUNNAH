@@ -4,7 +4,7 @@ import { ArrowRight, Bot, CheckCircle2, Shield, Users, BookOpen, AlertTriangle, 
 import { applyPageSeo } from "@/lib/seo";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/methodology.css";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 
 const SOURCES = [
   { name: "dorar.net", desc: "موسوعة الدرر السنية للأحاديث والآثار والتخريج." },
@@ -132,7 +132,8 @@ export default function MethodologyPage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+      <NavigationBar title="منهجيتنا في التوثيق" large={false} />
     <div className="mtd-page ds-section" dir="rtl">
       <header className="mtd-head">
         <div className="mtd-head__icon" aria-hidden="true">
@@ -333,6 +334,6 @@ export default function MethodologyPage() {
         </Link>
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

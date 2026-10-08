@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Award, Bookmark, BookMarked, BookOpen, BookOpenCheck, Flame, Gem, GraduationCap, Landmark, Leaf, Library, Medal, Mic, Mic2, Moon, Repeat2, Scale, Sparkles, Star } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 import "@/styles/components/achievement-toast.css";
 
 const BADGE_ICON_MAP: Record<string, LucideIcon> = {
@@ -56,14 +56,12 @@ export function AchievementToast({ badges, onDismiss }: Props) {
         )}
       </div>
       <IconButton
-        type="button"
+        icon="close"
         onClick={() => { setVisible(false); setTimeout(onDismiss, 350); }}
         label="إغلاق"
         className="at-close"
-        tone="muted"
-      >
-        ×
-      </IconButton>
+        size={20}
+      />
     </div>
   );
 }

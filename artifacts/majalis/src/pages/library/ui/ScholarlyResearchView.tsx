@@ -21,7 +21,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/scholarly-research.css";
-import { ListScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 
 type View = "search" | "library";
@@ -229,7 +229,8 @@ export default function ScholarlyResearchPage() {
   const nearLimit = query.length > MAX_CHAR * 0.85;
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+<NavigationBar title="الباحث الشرعي" large={false} />
     <div dir="rtl" className="srp-root">
 
       {/* ── Hero ── */}
@@ -503,6 +504,6 @@ export default function ScholarlyResearchPage() {
         <SectionQuiz route="/research" title="اختبر معلوماتك في العلوم الشرعية" count={4} />
       </div>
     </div>
-    </ListScreen>
+    </div>
   );
 }

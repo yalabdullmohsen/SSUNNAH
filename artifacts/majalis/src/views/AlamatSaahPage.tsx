@@ -5,8 +5,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/alamat-saah.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
+import { NavigationBar, SearchField } from "@/design-system";
 import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
@@ -363,7 +362,8 @@ export default function AlamatSaahPage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="علامات الساعة" large={false} />
     <div className="as-page" dir="rtl">
       {/* Hero */}
       <section className="as-hero">
@@ -411,10 +411,7 @@ export default function AlamatSaahPage() {
               <p>العلامات الصغرى هي المقدِّمات البعيدة للساعة، وقد وقع كثيرها وبعضها لا يزال جارياً. والصغرى لا تعني صغر خطورتها بل قِدَمها في الظهور قبل الكبرى.</p>
             </div>
             <div className="as-search-wrap">
-              <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
-                placeholder="ابحث في علامات الساعة."
-                className="page-search-input as-search-input"
-                aria-label="بحث في علامات الساعة الصغرى" onClear={() => setSearch("")} />
+              <SearchField value={search} onChange={setSearch} placeholder="ابحث في علامات الساعة." label="بحث في علامات الساعة الصغرى" />
             </div>
             <div className="as-status-legend">
               {["وقعت","جارية","لم تقع"].map(s => (
@@ -540,6 +537,6 @@ export default function AlamatSaahPage() {
         <SectionQuiz sectionId="aqidah" title="اختبر معلوماتك في العقيدة والتاريخ" count={4} />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

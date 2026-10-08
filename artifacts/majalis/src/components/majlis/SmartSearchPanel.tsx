@@ -2,7 +2,7 @@
  * Flutter `SmartSearchEngine` UI — category chips + filtered results.
  */
 import { useMemo, useState } from "react";
-import { ArrowRight, Bookmark, BookOpen, Gavel, History, Search, X } from "lucide-react";
+import { Bookmark, BookOpen, Gavel, History, Search } from "lucide-react";
 import {
   filterSmartSearch,
   SEARCH_CATEGORY_LABELS,
@@ -11,7 +11,7 @@ import {
 } from "@/lib/smart-search-engine";
 import { EMPTY } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 import "@/styles/majlisilm-shell.css";
 
 export type SmartSearchPanelProps = {
@@ -47,9 +47,7 @@ export function SmartSearchPanel({ open, onClose, onSelect }: SmartSearchPanelPr
   return (
     <div className="smart-search" role="dialog" aria-modal="true" aria-label="بحث ذكي" dir="rtl">
       <div className="smart-search__bar">
-        <IconButton label="رجوع" className="smart-search__back" onClick={onClose}>
-          <ArrowRight size={20} aria-hidden="true" />
-        </IconButton>
+        <IconButton icon="back" label="رجوع" className="smart-search__back" onClick={onClose} />
         <div className="smart-search__input-wrap">
           <Search size={16} aria-hidden="true" />
           <input
@@ -60,9 +58,7 @@ export function SmartSearchPanel({ open, onClose, onSelect }: SmartSearchPanelPr
             aria-label="نص البحث"
           />
           {query ? (
-            <IconButton label="مسح" onClick={() => setQuery("")}>
-              <X size={16} aria-hidden="true" />
-            </IconButton>
+            <IconButton icon="close" size={20} label="مسح" onClick={() => setQuery("")} />
           ) : null}
         </div>
       </div>
