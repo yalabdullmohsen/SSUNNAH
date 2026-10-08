@@ -64,6 +64,8 @@ async function scan(route, theme) {
     locale: "ar-KW",
     timezoneId: "Asia/Kuwait",
     serviceWorkers: "block",
+    // حتمية: بلا حركة → لا يقرأ axe ألوانًا وسيطة أثناء انتقال الثيم
+    reducedMotion: "reduce",
   });
   // لا اتصال بخلفية Supabase أثناء الفحص — الصفحات تعرض حالة الزائر (حتمية)
   await ctx.route(/supabase\.co/, (r) => r.abort());
@@ -78,6 +80,28 @@ async function scan(route, theme) {
   try {
     await page.goto(BASE + route, { waitUntil: "load", timeout: 60_000 });
     await page.waitForTimeout(3500);
+    // انتظار فعلي: الثيم المطلوب مُطبَّق على الجذر، ثم تعطيل الانتقالات وانتهاء الرسوم المحدودة
+    await page.waitForFunction(
+      (t) => document.documentElement.dataset.theme === t,
+      theme,
+      { timeout: 15_000 },
+    );
+    await page.addStyleTag({
+      content:
+        "*,*::before,*::after{transition:none!important;animation-duration:0s!important;animation-delay:0s!important}",
+    });
+    await page.waitForFunction(
+      () =>
+        document
+          .getAnimations()
+          .every(
+            (a) =>
+              a.playState === "finished" ||
+              a.effect?.getComputedTiming().iterations === Infinity,
+          ),
+      undefined,
+      { timeout: 15_000 },
+    );
     await page.addScriptTag({ content: axeSrc });
     const violations = await page.evaluate(async (tags) => {
       const r = await window.axe.run(document, {
