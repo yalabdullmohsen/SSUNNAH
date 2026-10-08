@@ -29,6 +29,12 @@ public enum HijriCalendar {
         return "\(WidgetFormat.digits(h.day)) \(name) \(WidgetFormat.digits(h.year))"
     }
 
+    /// «27 ربيع الآخر» بلا سنة، لمساحات ضيقة.
+    public static func short(_ h: HijriDate) -> String {
+        let name = monthNamesAr.indices.contains(h.month) ? monthNamesAr[h.month] : ""
+        return "\(WidgetFormat.digits(h.day)) \(name)"
+    }
+
     /// عدد الأيام حتى أقرب (شهر، يوم) هجري قادم؛ ٠ إن كان اليوم نفسه. nil إن لم يوجد خلال ٤٠٠ يوم.
     public static func daysUntil(month: Int, day: Int, from now: Date, timeZone: TimeZone) -> Int? {
         let cal = islamic(timeZone)
