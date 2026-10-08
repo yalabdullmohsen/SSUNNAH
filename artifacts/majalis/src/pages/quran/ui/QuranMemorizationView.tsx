@@ -19,7 +19,7 @@ import {
   type AyahCard,
 } from "@/lib/quran-memorization";
 import { BookOpen, ChevronLeft, RotateCcw } from "lucide-react";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 
 const ALL_TEST_TYPES: TestType[] = [
@@ -332,7 +332,8 @@ export default function QuranMemorizationPage() {
   const currentQ = questions[currentIdx];
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="حفظ القرآن" large={false} />
     <div className="qmem-page">
       {/* Hero */}
       <div className="qmem-hero">
@@ -508,6 +509,6 @@ export default function QuranMemorizationPage() {
         )}
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

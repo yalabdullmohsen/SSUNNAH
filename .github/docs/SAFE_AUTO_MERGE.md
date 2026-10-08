@@ -12,7 +12,7 @@ PR **Ready** (غير Draft) إلى `main` عندما:
 4. لا تعارض / ليس `BEHIND`
 5. لا `CHANGES_REQUESTED`
 6. ≤ **40** ملفًا، بلا حذف كبير
-7. لا يلمس مسارات خطرة (SQL / iOS / CI / Auth / …)
+7. لا يلمس مسارات خطرة (SQL / CI / Auth / capacitor.config / أسرار iOS / …)؛ تطبيق iOS يُدمج تلقائيًا بشرط نجاح `xcodebuild-simulator`
 8. **Labels اختيارية** للتصنيف والوضوح — غيابها لا يمنع الدمج للتغييرات منخفضة المخاطر (يظهر تحذيرًا فقط)
 9. إذا كان الوسم `content-safe` / `safe:content`: الملفات ضمن مسارات تدقيق المحتوى فقط:
    - `artifacts/majalis/public/data/quiz/**`
@@ -21,7 +21,7 @@ PR **Ready** (غير Draft) إلى `main` عندما:
    - `CONTINUATION_PLAN.md`
 10. **Vercel Preview ignored/skipped** لا يمنع تدقيق المحتوى الآمن
 11. إذا كانت الفحوصات **pending**: النظام ينتظر (لا يُعطّل Auto-merge نهائيًا)
-12. **Fast Lane:** توثيق/سياسة فقط → بدون build/مصحف/postgres؛ المصحف يبقى بكامل بواباته عند لمس ملفات المصحف/القرآن؛ SQL/iOS/workflows تبقى مراجعة يدوية
+12. **Fast Lane:** توثيق/سياسة فقط → بدون build/مصحف/postgres؛ المصحف يبقى بكامل بواباته عند لمس ملفات المصحف/القرآن؛ SQL/workflows تبقى مراجعة يدوية، وiOS بشرط `xcodebuild-simulator`
 
 بعد الدمج (squash): **Vercel ينشر Production من `main` تلقائيًا** عبر مشروع **`majalis-majalis`** (المشروع القديم `majalis` إن وُجد يُعامل كـ legacy).
 
@@ -47,7 +47,7 @@ Aliases قديمة ما زالت مقبولة للتصنيف: `content-safe`, `u
 
 - `.github/workflows/**`
 - `supabase/**` و `artifacts/majalis/supabase/**`
-- `artifacts/majalis/ios/**` و `capacitor.config.ts`
+- `capacitor.config.ts` (أما `artifacts/majalis/ios/**` فيُدمج تلقائيًا بعد نجاح `xcodebuild-simulator`)
 - `artifacts/majalis/api/**`
 - `artifacts/majalis/lib/api-handlers/**`
 - `artifacts/majalis/lib/security/**`
@@ -74,6 +74,7 @@ Aliases قديمة ما زالت مقبولة للتصنيف: `content-safe`, `u
 | `postgres-integration` | CI job |
 | Color contrast | عند وجود الـjob — يجب أن ينجح |
 | iOS static gates | عند تغيّر ملفات iOS/Capacitor |
+| xcodebuild-simulator | إلزامي لملفات `ios/` — غيابه انتظار وفشله منع |
 
 `/api/readyz` بـ **503** على Preview → فشل smoke → لا auto-merge.
 

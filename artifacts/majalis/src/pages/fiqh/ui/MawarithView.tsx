@@ -1,3 +1,4 @@
+import { NavigationBar, SearchField } from "@/design-system";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import { useEffect, useState, useMemo } from "react";
 import { Link } from "wouter";
@@ -8,8 +9,6 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import "@/styles/pages/mawarith.css";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 
@@ -281,7 +280,8 @@ export default function MawarithPage() {
   [search]);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="علم المواريث والفرائض" large={false} />
     <KnowledgeLayout kind="fiqh" className="mw-page" data-kx="1">
       {/* hero */}
       <section className="mw-hero">
@@ -506,10 +506,7 @@ export default function MawarithPage() {
           <div role="tabpanel" id="mwr-panel-masail" aria-labelledby="mwr-tab-masail" className="mw-section">
             <p className="mw-lead">مسائل فقهية مشهورة في علم الفرائض، تُبيّن دقة المنهج وعمق الفقه الإسلامي</p>
             <div className="mw-search-wrap">
-              <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
-                placeholder="ابحث في مسائل الفرائض..."
-                className="page-search-input mw-search-input"
-                aria-label="بحث في مسائل المواريث" onClear={() => setSearch("")} />
+              <SearchField value={search} onChange={setSearch} placeholder="ابحث في مسائل الفرائض..." label="بحث في مسائل المواريث" />
             </div>
             <div className="mw-masail-list">
               {filteredMasail.map((m, i) => (
@@ -562,6 +559,6 @@ export default function MawarithPage() {
         <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في المواريث" count={4} />
       </div>
     </KnowledgeLayout>
-    </DetailScreen>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
 import { STATUS } from "@/lib/ui-copy";
 import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
@@ -112,6 +112,19 @@ export default function SettingsPage() {
   const [tafsirId, setTafsirIdState] = useState(readStoredTafsirEdition);
   const [playbackRate, setPlaybackRateState] = useState(loadPlaybackRate);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [, navigate] = useLocation();
+  const versionTaps = useRef({ n: 0, t: 0 });
+  /** 7 نقرات متتالية على رقم النسخة تفتح شاشة قياس التسميع المخفية (Debug/TestFlight فقط؛ تتجاهلها بناءات App Store). */
+  const onVersionTap = useCallback(() => {
+    // بناء App Store: الثابت يُطوى عند التجميع فلا تبقى البوابة ولا الاستيراد الديناميكي
+    if (!(import.meta.env.DEV || import.meta.env.VITE_TASMEE_DIAGNOSTICS === "1")) return;
+    const now = Date.now();
+    versionTaps.current = { n: now - versionTaps.current.t < 1500 ? versionTaps.current.n + 1 : 1, t: now };
+    if (versionTaps.current.n >= 7) {
+      versionTaps.current = { n: 0, t: 0 };
+      void import("@/lib/tasmee/engine-plugin").then((m) => m.isTasmeeDiagnosticsAllowed()).then((ok) => ok && navigate("/debug/tasmee"));
+    }
+  }, [navigate]);
   const deleteDialogRef = useRef<HTMLDivElement>(null);
   const deleteCancelRef = useRef<HTMLButtonElement>(null);
   const closeDeleteDialog = useCallback(() => setDeleteDialogOpen(false), []);
@@ -747,7 +760,9 @@ export default function SettingsPage() {
             ]}
           />
           {displayedAppVersion ? (
-            <p className="settings-note" dir="ltr" data-testid="app-version-commit">
+            // بوابة شاشة القياس المخفية: لا دور وصولي مقصود (Debug/TestFlight فقط)
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+            <p className="settings-note" dir="ltr" data-testid="app-version-commit" onClick={onVersionTap}>
               النسخة الحالية: {displayedAppVersion}
             </p>
           ) : null}

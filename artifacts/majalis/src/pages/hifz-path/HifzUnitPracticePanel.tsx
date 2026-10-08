@@ -6,10 +6,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import {
-  DetailSection,
-  StatusNotice,
-} from "@/components/design-system";
+import { Card, SectionHeader } from "@/design-system";
 import { resolveCanonicalAyahHref } from "@/lib/quran-navigation/href";
 import {
   HIFZ_COMPLETION_CTA,
@@ -102,10 +99,10 @@ export function HifzUnitPracticePanel({
 
   if (!practiceOn) {
     return (
-      <StatusNotice tone="info" title="تجربة الوحدة غير مفعّلة بعد">
+      <Card><strong>تجربة الوحدة غير مفعّلة بعد</strong> 
         التكرار والاختبار الذاتي وتسجيل التقدم خلف علم منفصل. القسم مغلق للعامة
         حتى اكتمال المراجعات.
-      </StatusNotice>
+      </Card>
     );
   }
 
@@ -115,7 +112,7 @@ export function HifzUnitPracticePanel({
 
   return (
     <div className="flex flex-col gap-4">
-      <DetailSection title="النص والمصدر">
+      <section className="sn-stack"><SectionHeader title="النص والمصدر" />
         <p className="text-sm text-muted-foreground">
           {describeReference(unit.verifiedTextReference)}
         </p>
@@ -123,7 +120,7 @@ export function HifzUnitPracticePanel({
           <p className="mt-1 text-sm">المصدر: {unit.sourceReference}</p>
         ) : null}
         {isQuran ? (
-          <StatusNotice tone="neutral" title="تدريب خارج قارئ المصحف">
+          <Card><strong>تدريب خارج قارئ المصحف</strong> 
             لا نكرر نص القرآن هنا ولا نخفي أجزاءً بطريقة توهم صفحة المصحف. افتح
             المرجع في المصحف المعتمد ثم عُد لتسجيل التكرار.
             {mushafHref ? (
@@ -156,7 +153,7 @@ export function HifzUnitPracticePanel({
                 ) : null}
               </>
             ) : null}
-          </StatusNotice>
+          </Card>
         ) : null}
         {!isQuran && unit.verifiedTextReference.kind === "app_route" ? (
           <p className="mt-2 text-sm">
@@ -196,9 +193,9 @@ export function HifzUnitPracticePanel({
             لا مصدر صوتي معتمد لهذه الوحدة حاليًا — لا تولّد تلاوة.
           </p>
         )}
-      </DetailSection>
+      </section>
 
-      <DetailSection title="التقدم">
+      <section className="sn-stack"><SectionHeader title="التقدم" />
         <p className="text-sm">
           الحالة: <strong>{label}</strong>
           {progress
@@ -233,12 +230,12 @@ export function HifzUnitPracticePanel({
             سجّل تكرارًا
           </Button>
         </div>
-      </DetailSection>
+      </section>
 
-      <DetailSection title="اختبار ذاتي">
-        <StatusNotice tone="neutral">
+      <section className="sn-stack"><SectionHeader title="اختبار ذاتي" />
+        <Card>
           اختيارك هنا ذاتي — لا يُثبت صحة الحفظ آليًا.
-        </StatusNotice>
+        </Card>
         <ul className="mt-2 space-y-2 text-sm">
           {(
             [
@@ -261,9 +258,9 @@ export function HifzUnitPracticePanel({
             </li>
           ))}
         </ul>
-      </DetailSection>
+      </section>
 
-      <DetailSection title="تسجيل في محفوظاتي">
+      <section className="sn-stack"><SectionHeader title="تسجيل في محفوظاتي" />
         <div className="flex flex-wrap gap-2">
           <Button variant="secondary" size="small"
             type="button"
@@ -295,13 +292,13 @@ export function HifzUnitPracticePanel({
         <p className="mt-2 text-xs text-muted-foreground">
           هذا تسجيل ذاتي ضمن محفوظاتك — ليس شهادة حفظ.
         </p>
-      </DetailSection>
+      </section>
 
       {(progress?.state === "DUE_FOR_REVIEW" ||
         progress?.state === "MEMORIZED_SELF_REPORTED" ||
         progress?.state === "NEEDS_REINFORCEMENT" ||
         progress?.state === "REVIEWED") && (
-        <DetailSection title="المراجعة">
+        <section className="sn-stack"><SectionHeader title="المراجعة" />
           <div className="flex flex-wrap gap-2">
             <Button variant="secondary" size="small"
               type="button"
@@ -330,7 +327,7 @@ export function HifzUnitPracticePanel({
               تحتاج تثبيتًا
             </Button>
           </div>
-        </DetailSection>
+        </section>
       )}
     </div>
   );

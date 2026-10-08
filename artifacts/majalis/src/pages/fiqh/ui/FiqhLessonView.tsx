@@ -1,3 +1,4 @@
+import { NavigationBar } from "@/design-system";
 import { Link, useParams } from "wouter";
 import { useEffect, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -25,7 +26,6 @@ import { isSeverelyIncompleteLesson } from "@/lib/fiqh/fiqhNormalize";
 import { relatedFiqhIssues, fiqhDoorBackHref } from "@/lib/fiqh/fiqhRelated";
 import { Button } from "@/components/ui/button";
 import "@/styles/pages/fiqh-hub.css";
-import { DetailScreen } from "@/components/design-system/screens";
 import { AppBackButton } from "@/components/common/AppBackButton";
 import { KnowledgeLayout } from "@/components/knowledge";
 import "@/styles/knowledge-experience.css";
@@ -200,7 +200,8 @@ export default function FiqhLessonPage() {
   };
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title={lesson.title} large={false} />
     <KnowledgeLayout
       kind="fiqh"
       className="fiqh-lux-shell fiqh-lux-lesson page-shell fiqh-lesson-page"
@@ -393,6 +394,6 @@ export default function FiqhLessonPage() {
       </p>
       <div className="fiqh-fab-clearance" />
     </KnowledgeLayout>
-    </DetailScreen>
+    </div>
   );
 }

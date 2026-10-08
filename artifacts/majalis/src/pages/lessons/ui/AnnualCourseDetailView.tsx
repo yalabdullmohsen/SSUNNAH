@@ -8,7 +8,7 @@ import { EMPTY } from "@/lib/ui-copy";
 import { breadcrumbJsonLd } from "@/lib/seo-structured-data";
 import { usePageView } from "@/hooks/usePageView";
 import "@/styles/pages/annual-course-detail.css";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { SimpleList } from "@/components/design-system/ListSystem";
 import {
   Table,
@@ -101,7 +101,8 @@ export default function AnnualCourseDetailPage({ params }: { params: { id: strin
   const copyText = [item.title, summary || item.summary, item.body].filter(Boolean).join("\n\n");
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الدورة العلمية" large={false} />
     <ContentDetailLayout
       breadcrumbs={[
         { label: "الرئيسية", href: "/" },
@@ -202,6 +203,6 @@ export default function AnnualCourseDetailPage({ params }: { params: { id: strin
         </section>
       )}
     </ContentDetailLayout>
-    </DetailScreen>
+    </div>
   );
 }

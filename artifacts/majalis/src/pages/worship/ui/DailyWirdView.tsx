@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { NavigationBar } from "@/design-system";
 import { Award, BookOpen, Flame, Leaf, TrendingUp } from "lucide-react";
 import { Link } from "wouter";
 import { PageHeader } from "@/components/ui-common";
@@ -16,7 +17,6 @@ import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import "@/styles/pages/daily-wird.css";
-import { DetailScreen } from "@/components/design-system/screens";
 import { FieldLabel } from "@/components/design-system/FormFields";
 import { Button } from "@/components/ui/button";
 import {
@@ -216,7 +216,8 @@ export default function DailyWirdPage() {
   const khatmDays = state.pagesPerDay > 0 ? Math.ceil(remainingInKhatma / state.pagesPerDay) : null;
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+<NavigationBar title="الورد اليومي" large={false} />
     <div className="page-shell narrow wird-page">
       <PageHeader
         eyebrow="القرآن"
@@ -405,6 +406,6 @@ export default function DailyWirdPage() {
         <SectionQuiz route="/daily-wird" title="اختبر معلوماتك في الورد القرآني" count={4} />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

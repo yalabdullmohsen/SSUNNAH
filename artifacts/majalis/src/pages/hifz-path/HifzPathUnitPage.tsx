@@ -5,8 +5,7 @@
 import { useEffect, useMemo } from "react";
 import { Link, Redirect, useParams } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
-import { DetailScreen } from "@/components/design-system/screens";
-import { EmptyStateV2, PageHeaderV2 } from "@/components/design-system";
+import { ButtonLink, EmptyState, NavigationBar } from "@/design-system";
 import {
   getPublishedHifzPathBySlug,
   isHifzPathEnabled,
@@ -52,28 +51,19 @@ function HifzPathUnitShell() {
 
   if (!path || !unit) {
     return (
-      <DetailScreen compose="mark">
-        <main className="mx-auto w-full max-w-3xl px-4 py-4" dir="rtl">
-          <EmptyStateV2
-            title="الوحدة غير متاحة"
-            description="تُعرض الوحدات المنشورة فقط."
-            ctaLabel="العودة للمسار"
-            href={slug ? `${PATH}/p/${slug}` : PATH}
-          />
+      <div className="sn-screen">
+<NavigationBar title="مسار الحفظ" />
+<main className="sn-container" dir="rtl">
+          <EmptyState title="الوحدة غير متاحة" description="تُعرض الوحدات المنشورة فقط." action={<ButtonLink href={slug ? `${PATH}/p/${slug}` : PATH} variant="secondary">العودة للمسار</ButtonLink>} />
         </main>
-      </DetailScreen>
+      </div>
     );
   }
 
   return (
-    <DetailScreen compose="mark">
-      <main className="mx-auto w-full max-w-3xl px-4 py-4" dir="rtl">
-        <PageHeaderV2
-          className="mb-4"
-          eyebrow={path.title}
-          title={unit.title}
-          description={`الوحدة ${unit.sequence}`}
-        />
+    <div className="sn-screen">
+<NavigationBar title={unit.title} subtitle={`${path.title} · ${`الوحدة ${unit.sequence}`}`} />
+<main className="sn-container sn-stack sn-stack--lg" dir="rtl">
         <HifzUnitPracticePanel path={path} unit={unit} />
         <p className="mt-4 text-center text-sm">
           <Link
@@ -84,6 +74,6 @@ function HifzPathUnitShell() {
           </Link>
         </p>
       </main>
-    </DetailScreen>
+    </div>
   );
 }

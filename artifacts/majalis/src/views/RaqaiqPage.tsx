@@ -1,12 +1,11 @@
 import { useEffect, useState, useMemo } from "react";
+import { NavigationBar, SearchField } from "@/design-system";
 import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/raqaiq.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
-import { ListScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
@@ -442,7 +441,8 @@ export default function RaqaiqPage() {
   }, []);
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+<NavigationBar title="الرقائق والزهد" large={false} />
     <div className="rq-page" dir="rtl">
       {/* Hero */}
       <section className="rq-hero">
@@ -485,10 +485,7 @@ export default function RaqaiqPage() {
               <p>الرقائق ما رقَّ من الكلام وأثَّر في القلب. هذه المواعظ من أصح ما نُقِل وأبلغه في تليين القلوب القاسية.</p>
             </div>
             <div className="rq-search-wrap">
-              <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
-                placeholder="ابحث في الرقائق.."
-                className="page-search-input rq-search-input"
-                aria-label="بحث في مواعظ الرقائق" onClear={() => setSearch("")} />
+              <SearchField value={search} onChange={setSearch} placeholder="ابحث في الرقائق.." label="بحث في مواعظ الرقائق" />
             </div>
             <div className="rq-list">
               {filteredRaqaiq.map((r, i) => (
@@ -602,6 +599,6 @@ export default function RaqaiqPage() {
         <SectionQuiz sectionId="akhlaq" title="اختبر معلوماتك في الأخلاق والزهد" count={4} />
       </div>
     </div>
-    </ListScreen>
+    </div>
   );
 }

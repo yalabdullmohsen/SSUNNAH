@@ -7,7 +7,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { fetchSurahList, getSurahMeta, type SurahSummary } from "@/lib/quran-api";
 import { navigateTo } from "@/lib/navigation-intent";
 import { toArabicDigits } from "@/lib/utils";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 
 function parseSurahParam(raw: string): number {
   const n = Number.parseInt(raw, 10);
@@ -70,7 +70,8 @@ export default function QuranHifzLoopView() {
   };
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="تكرار الحفظ" large={false} />
     <div className="page-shell qhl-page">
       <header className="qhl-hero surface-brand">
         <Repeat size={32} className="qhl-hero__icon" aria-hidden="true" />
@@ -88,6 +89,6 @@ export default function QuranHifzLoopView() {
         <HifzAudioLoopPlayer key={surah} surah={surah} />
       </section>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

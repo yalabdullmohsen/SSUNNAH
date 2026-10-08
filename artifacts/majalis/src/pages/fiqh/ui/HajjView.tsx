@@ -1,3 +1,4 @@
+import { NavigationBar, SearchField } from "@/design-system";
 import "@/styles/pages/hajj.css";
 import { useEffect, useState, useMemo } from "react";
 import { applyPageSeo } from "@/lib/seo";
@@ -5,8 +6,6 @@ import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SectionIcon } from "@/components/ui/SectionIcon";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 
@@ -372,7 +371,8 @@ export default function HajjPage() {
   [search]);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الحج والعمرة" large={false} />
     <KnowledgeLayout kind="fiqh" className="hj-page" data-kx="1">
       {/* hero */}
       <section className="hj-hero">
@@ -411,9 +411,7 @@ export default function HajjPage() {
 
       {tab !== "overview" && (
         <div className="hj-search-wrap">
-          <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
-            placeholder="ابحث في مناسك الحج..." className="page-search-input hj-search-input"
-            aria-label="بحث في أحكام الحج" onClear={() => setSearch("")} />
+          <SearchField value={search} onChange={setSearch} placeholder="ابحث في مناسك الحج..." label="بحث في أحكام الحج" />
         </div>
       )}
 
@@ -646,6 +644,6 @@ export default function HajjPage() {
         <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في الفقه" count={4} />
       </div>
     </KnowledgeLayout>
-    </DetailScreen>
+    </div>
   );
 }

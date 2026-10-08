@@ -100,8 +100,8 @@ export const DANGER_PATH_PATTERNS = Object.freeze([
   /^\.github\/workflows\//i,
   /^supabase\//i,
   /^artifacts\/majalis\/supabase\//i,
-  /^ios\//i,
-  /^artifacts\/majalis\/ios\//i,
+  // ios/ ليس هنا: يُدمج تلقائيًا بشرط نجاح xcodebuild-simulator (eligibility.mjs).
+  // ملفات iOS الحساسة (Config.xcconfig / .p8 / AuthKey_) ووركفلو ios-* تبقى خطرًا أدناه.
   /(^|\/)capacitor\.config\./i,
   /^api\//i,
   /^artifacts\/majalis\/api\//i,

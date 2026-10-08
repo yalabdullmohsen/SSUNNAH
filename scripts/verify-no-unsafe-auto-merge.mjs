@@ -119,7 +119,7 @@ if (existsSync(autoPath)) {
 const safeMergeDir = join(root, ".github", "scripts", "safe-auto-merge");
 if (existsSync(safeMergeDir)) {
   ok("safe-auto-merge scripts present");
-  const { SAFE_LABELS, MAX_FILES_FOR_AUTO_MERGE, DANGER_PATH_PATTERNS } = await import(
+  const { SAFE_LABELS, MAX_FILES_FOR_AUTO_MERGE, DANGER_PATH_PATTERNS, REQUIRED_CHECK_NAMES } = await import(
     pathToFileURL(join(safeMergeDir, "constants.mjs")).href
   );
   const eligibility = readFileSync(join(safeMergeDir, "eligibility.mjs"), "utf8");
@@ -146,8 +146,9 @@ if (existsSync(safeMergeDir)) {
     "supabase",
     "workflows",
     "fastlane",
-    "ios",
     "capacitor",
+    "xcconfig",
+    "p8",
     "package",
     "pnpm-lock",
     "vercel",
@@ -167,7 +168,9 @@ if (existsSync(safeMergeDir)) {
     "artifacts/majalis/supabase/migrations/x.sql",
     ".github/workflows/ci.yml",
     "fastlane/Fastfile",
-    "artifacts/majalis/ios/App/App/AppDelegate.swift",
+    ".github/workflows/ios-testflight.yml",
+    "artifacts/majalis/ios/App/App/Config.xcconfig",
+    "artifacts/majalis/ios/AuthKey_ABC.p8",
     "artifacts/majalis/capacitor.config.ts",
     "artifacts/majalis/api/index.js",
     "artifacts/majalis/lib/api-handlers/cron/job-worker.js",
@@ -182,6 +185,13 @@ if (existsSync(safeMergeDir)) {
     if (!DANGER_PATH_PATTERNS.some((re) => re.test(p))) {
       bad(`safe-auto-merge: pattern failed to match ${p}`);
     }
+  }
+  // ios/ يُدمج تلقائيًا فقط بشرط xcodebuild-simulator — يجب أن تبقى البوابة موجودة.
+  if (!/REQUIRED_CHECK_NAMES\.xcodebuild/.test(eligibility) || !/xcodebuild-simulator required for iOS changes/.test(eligibility)) {
+    bad("safe-auto-merge: iOS paths must require xcodebuild-simulator before auto-merge");
+  }
+  if (!/^\/\^xcodebuild-simulator\$\/i$/.test(String(REQUIRED_CHECK_NAMES.xcodebuild))) {
+    bad("safe-auto-merge: REQUIRED_CHECK_NAMES.xcodebuild must match the xcodebuild-simulator job exactly");
   }
   if (!/release-train-ready/.test(eligibility) && !/RELEASE_TRAIN_LABEL/.test(eligibility)) {
     bad("safe-auto-merge: must skip release-train-ready");
