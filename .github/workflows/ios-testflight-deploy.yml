@@ -1,19 +1,11 @@
 name: iOS TestFlight Deploy
 
 on:
-  push:
-    branches:
-      - main
-    tags:
-      - "v*.*.*"
-    paths:
-      - "ios/**"
-      - "artifacts/**"
-      - "!artifacts/**/reports/**"
-      - "!artifacts/**/docs/**"
-      - "!artifacts/**/*.md"
-      - "fastlane/**"
-      - ".github/workflows/ios-testflight-deploy.yml"
+  # لا بناء عند push (بقرار المالك 2026-10-09): البناء يدوي أو مجدول يومي فقط.
+  # المجدول 00:00 UTC (03:00 الكويت) يُبنى فقط إن تغيّر ios/ أو fastlane/ منذ آخر بناء ناجح،
+  # وبحدّ بناء واحد يوميًا؛ التشغيل اليدوي يتجاوز الحدّ.
+  schedule:
+    - cron: "0 0 * * *"
   workflow_dispatch:
     inputs:
       changelog:
@@ -27,9 +19,10 @@ on:
         type: boolean
         default: false
 
+# مجموعة واحدة لكل المستودع: لا بناءان متوازيان، والتشغيل الجديد ينتظر ولا يلغي الجاري
 concurrency:
-  group: ios-testflight-${{ github.ref }}
-  cancel-in-progress: true
+  group: ios-testflight
+  cancel-in-progress: false
 
 permissions:
   contents: read
@@ -39,8 +32,53 @@ env:
   APPLE_TEAM_ID: 5D8TX37HTS
 
 jobs:
+  gate:
+    name: schedule-gate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      build: ${{ steps.decide.outputs.build }}
+    steps:
+      - name: Checkout
+        if: github.event_name == 'schedule'
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Decide
+        id: decide
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT" != "schedule" ]; then
+            echo "تشغيل يدوي — يتجاوز الحدّ اليومي"; echo "build=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          LAST="$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/ios-testflight-deploy.yml/runs?status=success&per_page=20" \
+            --jq '[.workflow_runs[] | select(.id != '"$GITHUB_RUN_ID"')] | first // empty | "\(.head_sha) \(.created_at)"')"
+          if [ -z "$LAST" ]; then
+            echo "لا بناء ناجح سابق — يُبنى"; echo "build=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          read -r SHA AT <<<"$LAST"
+          if [ $(( $(date -u +%s) - $(date -u -d "$AT" +%s) )) -lt 72000 ]; then
+            echo "بناء ناجح قبل أقل من 20 ساعة ($AT) — حدّ بناء واحد يوميًا"; echo "build=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if ! git cat-file -e "$SHA^{commit}" 2>/dev/null; then
+            echo "آخر SHA ناجح ($SHA) غير موجود في التاريخ — يُبنى"; echo "build=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if git diff --quiet "$SHA" HEAD -- artifacts/majalis/ios fastlane; then
+            echo "لا تغيير في ios/ أو fastlane/ منذ $SHA — لا بناء"; echo "build=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "تغيّر ios/ منذ $SHA — يُبنى"; echo "build=true" >> "$GITHUB_OUTPUT"
+          fi
+
   testflight:
     name: fastlane-beta
+    needs: gate
+    if: needs.gate.outputs.build == 'true'
     runs-on: macos-latest
     timeout-minutes: 90
     steps:
@@ -125,6 +163,30 @@ jobs:
           bash scripts/ci/write-asc-api-key.sh "$KEY_PATH"
           echo "APP_STORE_CONNECT_API_KEY_PATH=$KEY_PATH" >> "$GITHUB_ENV"
 
+      - name: Import fixed signing certificate
+        env:
+          IOS_SIGNING_P12_BASE64: ${{ secrets.IOS_SIGNING_P12_BASE64 }}
+          IOS_SIGNING_P12_PASSWORD: ${{ secrets.IOS_SIGNING_P12_PASSWORD }}
+        run: |
+          set -euo pipefail
+          # شهادة ثابتة (Apple Distribution + Apple Development) من الأسرار: التوقيع التلقائي يعيد استخدامها
+          # بدل إنشاء شهادة جديدة على كل مشغّل نظيف (سبب بلوغ حدّ الشهادات).
+          if [ -z "${IOS_SIGNING_P12_BASE64:-}" ]; then
+            echo "::warning::IOS_SIGNING_P12_BASE64 غير مضبوط — سيُنشئ التوقيع التلقائي شهادة جديدة لهذا التشغيل"; exit 0
+          fi
+          KC="$RUNNER_TEMP/signing.keychain-db"
+          KC_PASS="$(openssl rand -hex 16)"
+          P12="$RUNNER_TEMP/signing.p12"
+          printf '%s' "$IOS_SIGNING_P12_BASE64" | base64 --decode > "$P12"
+          security create-keychain -p "$KC_PASS" "$KC"
+          security set-keychain-settings -lut 21600 "$KC"
+          security unlock-keychain -p "$KC_PASS" "$KC"
+          security import "$P12" -k "$KC" -P "${IOS_SIGNING_P12_PASSWORD:-}" -A -t cert -f pkcs12
+          security set-key-partition-list -S apple-tool:,apple: -k "$KC_PASS" "$KC" >/dev/null
+          security list-keychains -d user -s "$KC" $(security list-keychains -d user | tr -d '"')
+          rm -f "$P12"
+          security find-identity -v -p codesigning "$KC"
+
       - name: Run Fastlane beta
         env:
           APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
@@ -147,6 +209,8 @@ jobs:
             artifacts/majalis/ios/build/*.xcresult
           if-no-files-found: warn
 
-      - name: Remove temporary API key
+      - name: Remove temporary API key and keychain
         if: always()
-        run: rm -f "$RUNNER_TEMP"/AuthKey_*.p8
+        run: |
+          rm -f "$RUNNER_TEMP"/AuthKey_*.p8
+          security delete-keychain "$RUNNER_TEMP/signing.keychain-db" 2>/dev/null || true
