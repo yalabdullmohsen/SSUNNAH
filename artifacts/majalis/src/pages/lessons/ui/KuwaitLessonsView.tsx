@@ -4,7 +4,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/kuwait-lessons.css";
-import { ListScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 
 declare global {
   interface Window { twttr?: { widgets?: { load: (el?: HTMLElement) => void } } }
@@ -110,7 +110,8 @@ export default function KuwaitLessonsPage() {
   }, []);
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="دروس الكويت" large={false} />
     <div className="page-shell narrow" dir="rtl">
       {/* Header */}
       <div className="kuwait-lessons-header">
@@ -182,6 +183,6 @@ export default function KuwaitLessonsPage() {
         <SectionQuiz route="/lessons" title="اختبر معلوماتك في العلم الشرعي" count={4} />
       </div>
     </div>
-    </ListScreen>
+    </div>
   );
 }

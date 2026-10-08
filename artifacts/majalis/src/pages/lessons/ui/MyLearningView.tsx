@@ -20,7 +20,7 @@ import {
   type UserCertificateSummary,
   type RealUserLearningStats,
 } from "@/lib/learning-paths-service";
-import { DashboardScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { ErrorStateV2 } from "@/components/design-system";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 
@@ -127,7 +127,8 @@ export default function MyLearningPage() {
 
 
   return (
-    <DashboardScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="تعلّمي" large={false} />
     <div className="myl2-page" dir="rtl" aria-busy={loading || resumeLoading}>
 
       {/* ══════════ Hero ══════════ */}
@@ -376,6 +377,6 @@ export default function MyLearningPage() {
 
       </div>
     </div>
-    </DashboardScreen>
+    </div>
   );
 }
