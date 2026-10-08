@@ -1,12 +1,11 @@
 import { useEffect, useState, useMemo } from "react";
-import { PageHeader } from "@/components/ui-common";
 import { ShareButtons } from "@/components/ContentActions";
 import { applyPageSeo } from "@/lib/seo";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { RANKS } from "@/lib/prayer-ranks-data";
 import "@/styles/pages/prayer-ranks.css";
-import { DetailScreen } from "@/components/design-system/screens";
-import { ActionButton, SearchInput } from "@/components/design-system";
+import { Button, Card, PageHero, SearchField } from "@/design-system";
+import { formatNumber } from "@/lib/format";
 
 export { RANKS } from "@/lib/prayer-ranks-data";
 
@@ -141,9 +140,9 @@ export function PrayerRanksContent() {
   return (
     <div className="prayer-ranks-page">
       <div className="prayer-ranks-actions">
-        <ActionButton type="button" variant="secondary" onClick={() => window.print()}>
+        <Button variant="secondary" block onClick={() => window.print()}>
           طباعة / PDF
-        </ActionButton>
+        </Button>
       </div>
 
       <section className="prayer-ranks-source">
@@ -155,20 +154,18 @@ export function PrayerRanksContent() {
       </section>
 
       <div className="prv-search-wrap">
-        <SearchInput
-          className="ds-input prv-search-input"
-          placeholder="ابحث في المراتب والفضائل والوصايا."
+        <SearchField
+          placeholder="ابحث في المراتب والفضائل والوصايا"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          onClear={() => setSearch("")}
-          aria-label="بحث في فضائل الصلاة"
+          onChange={setSearch}
+          label="بحث في فضائل الصلاة"
         />
       </div>
 
       <div className="prayer-ranks-timeline">
         {filteredRanks.map((rank, index) => (
-          <article key={rank.title} className="prayer-rank-card">
-            <span className="prayer-rank-card__num">{index + 1}</span>
+          <Card key={rank.title} className="prayer-rank-card">
+            <span className="prayer-rank-card__num">{formatNumber(index + 1)}</span>
             <div>
               <p className="prayer-rank-card__eyebrow">{rank.title}</p>
               <h2>{rank.label}</h2>
@@ -178,7 +175,7 @@ export function PrayerRanksContent() {
                 <span>فائدة: {rank.benefit}</span>
               </div>
             </div>
-          </article>
+          </Card>
         ))}
       </div>
 
@@ -245,15 +242,11 @@ export default function PrayerRanksPage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
-    <div className="page-shell prayer-ranks-page">
-      <PageHeader
-        eyebrow="الصلاة"
-        title="مراتب الناس في الصلاة"
-        subtitle="عرض تربوي منسق للمراتب الخمسة في حضور القلب وإقامة الصلاة، مع فضائل الصلاة من القرآن والسنة."
-      />
-      <PrayerRanksContent />
+    <div className="sn-screen" data-testid="prayer-ranks-screen">
+      <div className="sn-container sn-container-below-bar sn-stack sn-stack--lg">
+        <PageHero tag="الصلاة" title="مراتب الناس في الصلاة" description="المراتب الخمسة في حضور القلب وإقامة الصلاة، مع فضائلها من القرآن والسنة." />
+        <PrayerRanksContent />
+      </div>
     </div>
-    </DetailScreen>
   );
 }

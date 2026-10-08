@@ -1,0 +1,33 @@
+name: iOS SunnahNative tests
+
+# اختبارات حزمة الهيكل الأصلي (docs/program/PLAN.md) — تعمل فقط عند تغيّرها.
+on:
+  pull_request:
+    paths:
+      - "artifacts/majalis/ios/App/SunnahNative/**"
+      - ".github/workflows/ios-sunnah-native.yml"
+  push:
+    branches: [main]
+    paths:
+      - "artifacts/majalis/ios/App/SunnahNative/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-sunnah-native-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: macos-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Test on iOS Simulator
+        working-directory: artifacts/majalis/ios/App/SunnahNative
+        run: |
+          set -euo pipefail
+          SIM=$(xcrun simctl list devices available -j | python3 -c 'import json,sys;d=json.load(sys.stdin)["devices"];print(next(x["udid"] for k,v in d.items() if "iOS" in k for x in v if x["name"].startswith("iPhone")))')
+          xcodebuild -scheme SunnahNative -destination "id=$SIM" test -quiet

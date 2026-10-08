@@ -115,10 +115,15 @@ export function GlobalBackControlHost() {
     const onScroll = (e: Event) => {
       const el = e.target;
       const top = el instanceof Element ? el.scrollTop : window.scrollY;
-      const prev = last.get(el ?? window) ?? top;
+      const key = el ?? window;
+      const prev = last.get(key);
+      if (prev === undefined) {
+        last.set(key, top);
+        return;
+      }
       const delta = top - prev;
       if (Math.abs(delta) < 8) return;
-      last.set(el ?? window, top);
+      last.set(key, top);
       if (delta > 0 && top > 80) root.setAttribute("data-global-back-hidden", "1");
       else if (delta < 0 || top <= 80) root.removeAttribute("data-global-back-hidden");
     };

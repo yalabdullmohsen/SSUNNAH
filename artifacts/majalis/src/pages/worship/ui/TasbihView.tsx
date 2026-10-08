@@ -1,17 +1,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Flame } from "lucide-react";
-import { PageHeader } from "@/components/ui-common";
-import { PageShell } from "@/components/layout/PageShell";
-import { DetailScreen } from "@/components/design-system/screens";
-import { ActionButton } from "@/components/design-system";
-import { Button } from "@/components/ui/button";
+import { Button, Card, Notice, PageHero, SegmentedTabs, StatGrid, StatTile, TextField } from "@/design-system";
+import { formatNumber } from "@/lib/format";
 import { useAuth } from "@/components/AuthProvider";
 import { TasbeehCounter } from "@/components/reading/TasbeehCounter";
 import { setTaskProgress } from "@/lib/daily-progress";
 import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { onTablistKeyDown } from "@/lib/tablist-keyboard";
 import { useDialogKeyboard } from "@/hooks/useDialogKeyboard";
 import "@/styles/pages/tasbih.css";
 import {
@@ -146,152 +141,95 @@ export default function TasbihPage() {
   const activeStats = active ? computeTasbeehStats(active) : null;
 
   return (
-    <DetailScreen compose="mark">
-    <PageShell variant="narrow" className="tasbih-pro-page tasbih-pro-page--v2">
-      <PageHeader
-        eyebrow="الأذكار"
-        title="عداد التسبيح"
-        subtitle="عدّ بدون حد أقصى، اختر هدفك، واستمر حتى بعد تجاوزه، مع حفظ تلقائي."
-      />
+    <div className="sn-screen" data-testid="tasbih-screen">
+      <div className="sn-container sn-container-below-bar sn-stack sn-stack--lg">
+        <PageHero tag="الأذكار" title="عداد التسبيح" description="عدّ بلا حد أقصى، اختر هدفك، مع حفظ تلقائي." />
 
-      {/* Stats grid */}
-      <div className="tasbeeh-stats-strip" aria-label="ملخص التسبيح">
         {aggregateStats.total === 0 ? (
-          <p className="tasbeeh-stats-strip__empty">ابدأ وردك الأول — لم يُسجَّل تسبيح بعد.</p>
+          <Notice>ابدأ وردك الأول — لم يُسجَّل تسبيح بعد.</Notice>
         ) : (
-          <>
-        <div className="tasbeeh-stats-strip__item"><span>اليوم</span><strong>{aggregateStats.today}</strong></div>
-        <div className="tasbeeh-stats-strip__item"><span>الأسبوع</span><strong>{aggregateStats.week}</strong></div>
-        <div className="tasbeeh-stats-strip__item"><span>الشهر</span><strong>{aggregateStats.month}</strong></div>
-        <div className="tasbeeh-stats-strip__item"><span>الإجمالي</span><strong>{aggregateStats.total}</strong></div>
-          </>
+          <StatGrid>
+            <StatTile label="اليوم" value={formatNumber(aggregateStats.today)} />
+            <StatTile label="الأسبوع" value={formatNumber(aggregateStats.week)} />
+            <StatTile label="الشهر" value={formatNumber(aggregateStats.month)} />
+            <StatTile label="الإجمالي" value={formatNumber(aggregateStats.total)} />
+          </StatGrid>
         )}
-        {aggregateStats.streak > 0 && (
-          <div className="tasbih-stat tasbih-stat--streak">
-            <span>التتابع</span>
-            <strong>{aggregateStats.streak} <Flame size={14} strokeWidth={2} aria-hidden="true" /></strong>
-          </div>
-        )}
-      </div>
+        {aggregateStats.streak > 0 ? <Notice tone="success">{`التتابع: ${formatNumber(aggregateStats.streak)}\u00A0يومًا`}</Notice> : null}
 
-      {/* Horizontal pill selector */}
-      <div className="tasbih-wird-pills" role="tablist" aria-label="اختر الورد">
-        {items.map((item) => {
-          const s = computeTasbeehStats(item);
-          return (
-            <Button
-              key={item.id}
-              id={`tasbih-tab-${item.id}`}
-              type="button"
-              role="tab"
-              variant="ghost"
-              aria-selected={item.id === active?.id}
-              aria-controls={item.id === active?.id ? "tasbih-wird-panel" : undefined}
-              tabIndex={item.id === active?.id ? 0 : -1}
-              className={`tasbih-wird-pill${item.id === active?.id ? " is-active" : ""}`}
-              onClick={() => setActiveId(item.id)}
-              onKeyDown={onTablistKeyDown}
-            >
-              <span className="tasbih-pill-phrase">{item.phrase}</span>
-              {s.today > 0 && (
-                <span className="tasbih-pill-badge">{s.today}</span>
-              )}
-            </Button>
-          );
-        })}
-      </div>
+        <SegmentedTabs
+          label="اختر الورد"
+          value={active?.id ?? ""}
+          onChange={setActiveId}
+          options={items.map((item) => ({ value: item.id, label: item.phrase }))}
+        />
 
-      {/* Active wird counter */}
-      {active && (
-        <section
-          className="tasbih-page-card tasbih-pro-card tasbih-pro-card--v2"
-          id="tasbih-wird-panel"
-          role="tabpanel"
-          aria-labelledby={`tasbih-tab-${active.id}`}
-        >
-          <p className="tasbih-phrase">{active.phrase}</p>
-          <TasbeehCounter
-            storageId={`wird-${active.id}`}
-            target={active.target}
-            label={active.phrase}
-            wird={active}
-            onWirdChange={onWirdChange}
-          />
-          {activeStats && (
-            <p className="tasbih-progress-label">
-              هذا الورد، اليوم: {activeStats.today} · الأسبوع: {activeStats.week} · الشهر: {activeStats.month}
-            </p>
-          )}
-          <div ref={actionsRef} className="tasbih-actions-grid">
-            {confirmDelete ? (
-              <div ref={confirmRef} className="tasbih-confirm" role="alertdialog" aria-labelledby="tasbih-delete-title" aria-describedby="tasbih-delete-desc">
-                <p id="tasbih-delete-title" className="tasbih-confirm__title">تأكيد الحذف</p>
-                <p id="tasbih-delete-desc" className="tasbih-confirm__desc">هل تريد حذف هذا الورد نهائيًا؟</p>
-                <div className="tasbih-confirm__actions">
-                  <Button type="button" variant="destructive" onClick={deleteActive}>
-                    تأكيد الحذف
-                  </Button>
-                  <Button ref={confirmCancelRef} type="button" variant="secondary" onClick={closeConfirm}>
-                    إلغاء
-                  </Button>
-                </div>
-              </div>
-            ) : (
-              <ActionButton
-                type="button"
-                variant="destructive"
-                onClick={() => setConfirmDelete(true)}
-                disabled={items.length <= 1}
-              >
-                حذف الورد
-              </ActionButton>
+        {active && (
+          <Card id="tasbih-wird-panel" role="tabpanel" className="sn-stack">
+            <TasbeehCounter
+              storageId={`wird-${active.id}`}
+              target={active.target}
+              label={active.phrase}
+              wird={active}
+              onWirdChange={onWirdChange}
+            />
+            {activeStats && (
+              <p className="sn-t-secondary">
+                {`هذا الورد — اليوم: ${formatNumber(activeStats.today)}\u00A0·\u00A0الأسبوع: ${formatNumber(activeStats.week)}\u00A0·\u00A0الشهر: ${formatNumber(activeStats.month)}`}
+              </p>
             )}
-          </div>
-        </section>
-      )}
+            <div ref={actionsRef}>
+              {confirmDelete ? (
+                <div ref={confirmRef} className="sn-stack" role="alertdialog" aria-labelledby="tasbih-delete-title" aria-describedby="tasbih-delete-desc">
+                  <p id="tasbih-delete-title"><strong>تأكيد الحذف</strong></p>
+                  <p id="tasbih-delete-desc" className="sn-t-secondary">هل تريد حذف هذا الورد نهائيًا؟</p>
+                  <Button variant="destructive" block onClick={deleteActive}>تأكيد الحذف</Button>
+                  <Button ref={confirmCancelRef} variant="secondary" block onClick={closeConfirm}>إلغاء</Button>
+                </div>
+              ) : (
+                <Button variant="destructive" block onClick={() => setConfirmDelete(true)} disabled={items.length <= 1}>
+                  حذف الورد
+                </Button>
+              )}
+            </div>
+          </Card>
+        )}
 
-      {/* Add wird form */}
-      <section className="tasbih-add-card">
-        <h2>إضافة ورد جديد</h2>
-        <div className="tasbih-add-row">
-          <input
+        <Card className="sn-stack">
+          <h2 className="sn-t-title3">إضافة ورد جديد</h2>
+          <TextField
+            id="tasbih-new-phrase"
+            label="نص الورد"
             value={newPhrase}
             onChange={(e) => setNewPhrase(e.target.value)}
             placeholder="مثال: لا حول ولا قوة إلا بالله"
-            aria-label="نص الورد"
             onKeyDown={(e) => e.key === "Enter" && addWird()}
           />
-          <input
+          <TextField
+            id="tasbih-new-target"
+            label="الهدف اليومي"
             type="number"
+            inputMode="numeric"
             min={1}
             max={MAX_CUSTOM_TARGET}
             value={newTarget}
             onChange={(e) => setNewTarget(Number(e.target.value))}
-            aria-label="الهدف اليومي"
           />
-          <ActionButton type="button" variant="primary" onClick={addWird}>
-            إضافة
-          </ActionButton>
-        </div>
-      </section>
+          <Button variant="primary" block onClick={addWird}>إضافة</Button>
+        </Card>
 
-      {/* ملاحظة المزامنة في سطر الحالة الأخير (لا تُدرَج فوق المحتوى → بلا إزاحة تخطيط) */}
-      <div className="tasbih-offline-note" role="status" aria-live="polite">
-        {syncNote ? `${syncNote} · ` : null}
-        {authLoading
-          ? "…"
-          : isLoggedIn
-            ? "يُحفظ محلياً ويُزامَن مع حسابك عند التحديث."
-            : "يُحفظ في هذا الجهاز. سجّل الدخول للمزامنة مع حسابك."}
-      </div>
+        <p className="sn-t-secondary" role="status" aria-live="polite">
+          {syncNote ? `${syncNote} · ` : null}
+          {authLoading
+            ? "…"
+            : isLoggedIn
+              ? "يُحفظ محليًا ويُزامَن مع حسابك عند التحديث."
+              : "يُحفظ في هذا الجهاز. سجّل الدخول للمزامنة مع حسابك."}
+        </p>
 
-      <div className="twh-share">
         <ShareButtons title="التسبيح الرقمي — سُنّة" url={`${SITE_URL}/tasbih`} />
-      </div>
-      <div className="px-4 pb-6 mt-4">
         <SectionQuiz sectionId="akhlaq" title="اختبر معلوماتك في الأذكار والأخلاق" count={4} />
       </div>
-    </PageShell>
-    </DetailScreen>
+    </div>
   );
 }

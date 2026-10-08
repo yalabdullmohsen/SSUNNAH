@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, HTMLAttributes, Ref, InputHTMLAttributes, ReactNode } from "react";
 import { Link } from "wouter";
 import { Icon, type DsIconName } from "./Icon";
 import { cn } from "@/lib/utils";
@@ -24,7 +24,7 @@ function btnClass({ variant = "primary", size = "m", block, loading, className }
 }
 
 /** زر — ارتفاع ثابت 48، نص بسطر واحد يُختصر بـ…، اهتزاز خفيف عند الضغط. */
-export function Button({ variant, size, block, loading, icon, children, className, disabled, onClick, ...rest }: CommonButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
+export function Button({ variant, size, block, loading, icon, children, className, disabled, onClick, ...rest }: CommonButtonProps & ButtonHTMLAttributes<HTMLButtonElement> & { ref?: Ref<HTMLButtonElement> }) {
   return (
     <button type="button" {...rest} onClick={(e) => { void hapticTap("light"); onClick?.(e); }} disabled={disabled || loading} aria-busy={loading || undefined} className={btnClass({ variant, size, block, loading, className, children })}>
       {icon ? <Icon name={icon} size={20} /> : null}

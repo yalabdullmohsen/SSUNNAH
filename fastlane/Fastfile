@@ -45,7 +45,8 @@ platform :ios do
         UI.important("Could not read TestFlight build number (#{e.message}); starting from 0")
         0
       end
-      next_build = latest.to_i + 1
+      # الحد الأدنى من رقم تشغيل CI يضمن الزيادة حتى لو تعذّرت قراءة آخر بناء من Apple
+      next_build = [latest.to_i + 1, ENV["CI_BUILD_NUMBER"].to_i].max
       UI.success("Next build number: #{next_build}")
 
       increment_build_number(
@@ -70,6 +71,13 @@ platform :ios do
       diagnostics = ENV["TASMEE_DIAGNOSTICS"].to_s == "1"
       UI.important("بناء قياس التسميع (TASMEE_DIAGNOSTICS) — للـTestFlight الداخلي فقط، لا يُرسَل لمراجعة App Store") if diagnostics
       swift_flags = diagnostics ? " SWIFT_ACTIVE_COMPILATION_CONDITIONS=TASMEE_DIAGNOSTICS" : ""
+      # التوقيع السحابي على مشغّل نظيف يحتاج مصادقة xcodebuild بمفتاح ASC نفسه
+      signing_xcargs = "-allowProvisioningUpdates"
+      unless key_path.empty?
+        signing_xcargs += " -authenticationKeyPath #{File.expand_path(key_path)}" \
+                          " -authenticationKeyID #{ENV.fetch('APP_STORE_CONNECT_API_KEY_ID')}" \
+                          " -authenticationKeyIssuerID #{ENV.fetch('APP_STORE_CONNECT_ISSUER_ID')}"
+      end
 
       build_app(
         project: IOS_PROJECT,
@@ -79,8 +87,8 @@ platform :ios do
         output_directory: OUTPUT_DIR,
         output_name: "MajlisIlm",
         export_method: "app-store",
-        export_xcargs: "-allowProvisioningUpdates",
-        xcargs: "-allowProvisioningUpdates#{swift_flags}",
+        export_xcargs: signing_xcargs,
+        xcargs: "#{signing_xcargs}#{swift_flags}",
         buildlog_path: File.join(OUTPUT_DIR, "logs"),
         result_bundle: true,
         result_bundle_path: File.join(OUTPUT_DIR, "MajlisIlm.xcresult"),
