@@ -34,7 +34,7 @@ import {
 import { toArabicDigits } from "@/lib/utils";
 import { TextHighlightCapture } from "@/components/reading/TextHighlightCapture";
 import "@/styles/pages/tafsir.css";
-import { DashboardScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 
 type CardItem = {
   id: string;
@@ -157,7 +157,8 @@ export default function TafsirPage() {
   }, []);
 
   return (
-    <DashboardScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="علم التفسير" large={false} />
     <SectionTemplatePage
       route="/tafsir"
       eyebrow="القرآن الكريم · أشرف العلوم موضوعًا"
@@ -465,6 +466,6 @@ export default function TafsirPage() {
       </div>
     </main>
     </SectionTemplatePage>
-    </DashboardScreen>
+    </div>
   );
 }

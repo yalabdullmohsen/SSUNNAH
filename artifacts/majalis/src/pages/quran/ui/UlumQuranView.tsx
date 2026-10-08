@@ -6,7 +6,7 @@ import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { InternalLinkCard } from "@/components/ui/InternalCards";
 import { Button } from "@/components/ui/button";
 import "@/styles/pages/ulum-quran.css";
-import { DashboardScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { ContentTabs } from "@/components/design-system/TabSystem";
 import { KnowledgeLayout, DefinitionBlock } from "@/components/knowledge";
 import "@/styles/knowledge-experience.css";
@@ -241,7 +241,8 @@ export default function UlumQuranPage() {
   const filteredIjaz = IJAZ_TYPES;
 
   return (
-    <DashboardScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="علوم القرآن" large={false} />
     <SectionTemplatePage
       route="/ulum-quran"
       eyebrow="علوم القرآن"
@@ -528,6 +529,6 @@ export default function UlumQuranPage() {
       </div>
     </KnowledgeLayout>
     </SectionTemplatePage>
-    </DashboardScreen>
+    </div>
   );
 }
