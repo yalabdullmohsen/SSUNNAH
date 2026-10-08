@@ -37,7 +37,7 @@ struct SpiritualDayWidget: Widget {
                 .widgetURL(SunnahWidgetDeepLinkFactory.home())
         }
         .configurationDisplayName("اليوم الروحي")
-        .description("إتمام الصلاة والأذكار والقراءة إن وُجد تتبع معتمد.")
+        .description("إتمام الصلاة والأذكار والقراءة اليوم.")
         .supportedFamilies(SunnahWidgetFamilySupport.homeSpiritual)
     }
 }

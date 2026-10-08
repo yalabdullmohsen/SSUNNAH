@@ -1,4 +1,5 @@
 import SwiftUI
+import SunnahWidgetKit
 import WidgetKit
 
 enum SunnahWidgetFamilySupport {
@@ -135,7 +136,7 @@ struct CatalogWidgetEntry: TimelineEntry {
             date: Date(),
             presentation: .galleryPreview,
             prayer: prayer,
-            calendar: SunnahWidgetPreviewFixtures.calendar,
+            calendar: SunnahWidgetPreviewFixtures.calendar(),
             adhkar: SunnahWidgetPreviewFixtures.adhkar,
             quran: SunnahWidgetPreviewFixtures.quran,
             mushaf: SunnahWidgetPreviewFixtures.mushaf,
@@ -238,10 +239,7 @@ struct CatalogWidgetProvider: TimelineProvider {
 /// never touches prayer calculation. Without it, Calendar/Adhkar/Progress widgets
 /// would keep yesterday's values until the app is reopened.
 enum SunnahWidgetDayRollover {
-    static let hijriMonthsAr = [
-        "", "محرم", "صفر", "ربيع الأول", "ربيع الآخر", "جمادى الأولى", "جمادى الآخرة",
-        "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة",
-    ]
+    static let hijriMonthsAr = HijriCalendar.monthNamesAr
 
     static func timeZone(envelope: SunnahWidgetEnvelope?, prayer: SharedPrayerSnapshot?) -> TimeZone {
         let id = envelope?.calendarPayload?.timezoneIdentifier ?? prayer?.timeZoneIdentifier ?? envelope?.timezoneIdentifier
