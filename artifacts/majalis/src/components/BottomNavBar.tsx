@@ -5,6 +5,7 @@
  */
 import { useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
+import { hasSunnahNativeMarker } from "@/lib/native-platform";
 import { isAuthStandalonePath, isImmersiveChromePath } from "@/lib/immersive-chrome";
 import { isComingSoonPath } from "@/lib/nav-visibility";
 import { BOTTOM_NAV_TABS } from "@/lib/nav-map";
@@ -77,7 +78,7 @@ export function BottomNavBar({ isHidden = false }: { isHidden?: boolean } = {}) 
     };
   }, []);
 
-  if (isImmersiveChromePath(location) || isAuthStandalonePath(location)) return null;
+  if (hasSunnahNativeMarker() || isImmersiveChromePath(location) || isAuthStandalonePath(location)) return null;
 
   const visibilityClass = isHidden ? "bottom-nav--hidden" : "bottom-nav--visible";
 

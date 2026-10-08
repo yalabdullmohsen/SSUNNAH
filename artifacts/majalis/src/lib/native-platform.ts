@@ -72,3 +72,16 @@ export function isAppHost(hostname: string): boolean {
   const h = hostname.toLowerCase().replace(/\.$/, "");
   return APP_HOSTS.has(h) || h.endsWith(".ssunnah.com") || h.endsWith(".majlisilm.com");
 }
+
+/** علامة user-agent التي يحقنها غلاف iOS الأصلي (SunnahNative/1) — التبويبات الأصلية تحلّ محل شريط الموقع. */
+export const SUNNAH_NATIVE_UA_MARKER = /SunnahNative\/1\b/;
+
+/** هل يحمل المتصفح علامة SunnahNative/1؟ (يقبل ua صريحًا للاختبار). */
+export function hasSunnahNativeMarker(ua?: string): boolean {
+  try {
+    const value = ua ?? (typeof navigator === "undefined" ? "" : navigator.userAgent);
+    return SUNNAH_NATIVE_UA_MARKER.test(value || "");
+  } catch {
+    return false;
+  }
+}
