@@ -417,3 +417,27 @@ enum SunnahWidgetDayRollover {
         return out
     }
 }
+
+/// Smart Stack relevance: higher as the next prayer approaches or while its «مضى على الأذان» window is open.
+/// Pure function of entry dates, so it is testable and never touches prayer calculation.
+enum SunnahWidgetRelevance {
+    static func score(now: Date, nextDate: Date?, elapsedStart: Date?, elapsedEnd: Date?) -> Float {
+        if let s = elapsedStart, let e = elapsedEnd, now >= s, now < e { return 80 }
+        guard let next = nextDate, next > now else { return 10 }
+        let remaining = next.timeIntervalSince(now)
+        if remaining <= 15 * 60 { return 100 }
+        if remaining <= 60 * 60 { return 60 }
+        return 20
+    }
+}
+
+extension PrayerWidgetEntry {
+    var relevance: TimelineEntryRelevance? {
+        TimelineEntryRelevance(score: SunnahWidgetRelevance.score(
+            now: date, nextDate: nextDate, elapsedStart: elapsedStart, elapsedEnd: elapsedEnd))
+    }
+}
+
+extension CatalogWidgetEntry {
+    var relevance: TimelineEntryRelevance? { prayer.relevance }
+}

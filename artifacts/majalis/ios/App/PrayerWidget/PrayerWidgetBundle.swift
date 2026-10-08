@@ -36,5 +36,10 @@ struct PrayerWidgetBundle: WidgetBundle {
         TodayInSunnahWidget()
         TodayActionsWidget()
         SpiritualDayWidget()
+        if #available(iOS 18.0, *) {
+            SunnahPrayerControl()
+            SunnahAdhkarControl()
+            SunnahMushafControl()
+        }
     }
 }

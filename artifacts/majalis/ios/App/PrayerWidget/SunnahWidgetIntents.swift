@@ -1,5 +1,7 @@
 import AppIntents
 import Foundation
+import SwiftUI
+import WidgetKit
 
 @available(iOS 17.0, *)
 struct SunnahCustomContentEntity: AppEntity, Identifiable, Hashable {
@@ -184,4 +186,44 @@ enum WidgetAppearanceAppEnum: String, AppEnum {
         .light: "فاتح",
         .dark: "داكن",
     ]
+}
+
+/// Control Center / Lock Screen controls (iOS 18+): each opens the canonical web destination in the app.
+@available(iOS 18.0, *)
+struct SunnahPrayerControl: ControlWidget {
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: "com.sunnah.control.prayer") {
+            ControlWidgetButton(action: OpenURLIntent(SunnahWidgetDeepLinkFactory.prayer())) {
+                Label("مواقيت الصلاة", systemImage: "moon.stars.fill")
+            }
+        }
+        .displayName("مواقيت الصلاة")
+        .description("افتح مواقيت الصلاة في سُنّة.")
+    }
+}
+
+@available(iOS 18.0, *)
+struct SunnahAdhkarControl: ControlWidget {
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: "com.sunnah.control.adhkar") {
+            ControlWidgetButton(action: OpenURLIntent(SunnahWidgetDeepLinkFactory.adhkar(collection: "morning"))) {
+                Label("الأذكار", systemImage: "heart.fill")
+            }
+        }
+        .displayName("الأذكار")
+        .description("افتح الأذكار في سُنّة.")
+    }
+}
+
+@available(iOS 18.0, *)
+struct SunnahMushafControl: ControlWidget {
+    var body: some ControlWidgetConfiguration {
+        StaticControlConfiguration(kind: "com.sunnah.control.mushaf") {
+            ControlWidgetButton(action: OpenURLIntent(SunnahPrayerDeepLink.mushaf)) {
+                Label("المصحف", systemImage: "book.fill")
+            }
+        }
+        .displayName("المصحف")
+        .description("افتح المصحف في سُنّة.")
+    }
 }
