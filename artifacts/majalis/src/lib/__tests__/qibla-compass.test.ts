@@ -83,7 +83,7 @@ describe("prayer-calc-prefs", () => {
   });
 
   it("builds stable cache ids", () => {
-    assert.equal(prayerCalcMethodCacheId("Kuwait"), "adhan-Kuwait-v1");
-    assert.equal(prayerCalcMethodCacheId("UmmAlQura"), "adhan-UmmAlQura-v1");
+    assert.equal(prayerCalcMethodCacheId("Kuwait"), "adhan-Kuwait-Shafi-auto-0,0,0,0,0,0-v2");
+    assert.equal(prayerCalcMethodCacheId("UmmAlQura"), "adhan-UmmAlQura-Shafi-auto-0,0,0,0,0,0-v2");
   });
 });
