@@ -70,14 +70,25 @@ assert.ok(existsSync(resolve(majalisRoot, "ios/App/App/PrivacyInfo.xcprivacy")))
 const privacy = readMaj("ios/App/App/PrivacyInfo.xcprivacy");
 assert.match(privacy, /NSPrivacyTracking/);
 assert.match(privacy, /NSPrivacyCollectedDataTypeEmailAddress/);
-// الموقع يُحسب على الجهاز ولا يُرسل → غير مجموع؛ الاسم ورمز الإشعارات مجموعان ومرتبطان
-assert.doesNotMatch(privacy, /NSPrivacyCollectedDataTypeCoarseLocation/);
-for (const t of ["Name", "DeviceID"]) {
+// الجرد الكامل: النوع → [مرتبط بالهوية؟]. الموقع يُحسب على الجهاز ولا يُرسل → غير مجموع.
+assert.doesNotMatch(privacy, /NSPrivacyCollectedDataTypeCoarseLocation|NSPrivacyCollectedDataTypePreciseLocation/);
+const declared: Record<string, boolean> = {
+  EmailAddress: true, Name: true, PhoneNumber: true, UserID: true, DeviceID: true,
+  OtherUserContent: true, ProductInteraction: true, SearchHistory: true,
+  CrashData: false, PerformanceData: false,
+};
+for (const [t, linked] of Object.entries(declared)) {
   assert.match(
     privacy,
-    new RegExp(`NSPrivacyCollectedDataType${t}</string>\\s*<key>NSPrivacyCollectedDataTypeLinked</key>\\s*<true/>\\s*<key>NSPrivacyCollectedDataTypeTracking</key>\\s*<false/>`),
+    new RegExp(`NSPrivacyCollectedDataType${t}</string>\\s*<key>NSPrivacyCollectedDataTypeLinked</key>\\s*<${linked}/>\\s*<key>NSPrivacyCollectedDataTypeTracking</key>\\s*<false/>`),
+    `PrivacyInfo: ${t} linked=${linked}, tracking=false`,
   );
 }
+assert.equal(
+  (privacy.match(/<string>NSPrivacyCollectedDataType[A-Za-z]+<\/string>/g) ?? []).filter((x) => !/Purpose/.test(x)).length,
+  Object.keys(declared).length + 1,
+  "عدد الأنواع المعلنة = الجرد + AudioData",
+);
 // اختبار التلاوة يرسل الصوت إلى Groq بعد موافقة: AudioData مجموع، غير مرتبط، بلا تتبع، وظيفة التطبيق
 assert.match(
   privacy,
