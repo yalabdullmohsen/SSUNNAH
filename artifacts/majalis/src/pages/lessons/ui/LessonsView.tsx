@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/select";
 import { HarvestFeedPanel } from "@/components/lessons/HarvestFeedPanel";
 import { SectionLobby } from "@/components/lobby/SectionLobby";
-import { ListScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import {
   ActiveFilters,
   FilterSheet,
@@ -579,7 +579,8 @@ export default function LessonsPage({
   );
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الدروس" large={false} />
     <SectionLobby
       lobbyId="lessons"
       title={pageTitle}
@@ -782,6 +783,6 @@ export default function LessonsPage({
         <SectionQuiz route="/lessons" aria-label="اختبر معلوماتك في الدروس الشرعية" count={4} />
       </div>
     </SectionLobby>
-    </ListScreen>
+    </div>
   );
 }

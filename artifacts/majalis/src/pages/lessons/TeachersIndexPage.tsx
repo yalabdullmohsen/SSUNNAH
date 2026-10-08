@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { PageHeader, SkeletonCardGrid } from "@/components/ui-common";
 import { PageShell } from "@/components/layout/PageShell";
-import { NoResultsState, SearchInput } from "@/components/design-system";
+import { NoResultsState } from "@/components/design-system";
+import { SearchField } from "@/design-system";
 import { applyPageSeo } from "@/lib/seo";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { getUnifiedLessonsSplit } from "@/lib/lessons-service";
@@ -75,13 +76,11 @@ export default function TeachersIndexPage() {
       </p>
 
       <div className="tch-search-wrap">
-        <SearchInput
-          className="tch-search-input sch-search-input"
-          aria-label="ابحث في المشايخ"
+        <SearchField
+          label="ابحث في المشايخ"
           placeholder="ابحث باسم الشيخ..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          onClear={() => setSearch("")}
+          onChange={setSearch}
         />
       </div>
 
