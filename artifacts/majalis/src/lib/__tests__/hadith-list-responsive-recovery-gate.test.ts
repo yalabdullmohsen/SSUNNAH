@@ -61,9 +61,9 @@ assert.match(floating, /FLOATING_BACK_DISABLED/);
 
 console.log("=== بحث واحد داخل الصفحة + ملخص مضغوط ===");
 assert.match(view, /ابحث في أحاديث الأربعين النووية/);
-// Search authority: canonical SearchInput (type=search lives inside FormFields)
-assert.match(view, /<SearchInput\b/);
-assert.equal((view.match(/<SearchInput\b/g) ?? []).length, 1);
+// Search authority: design-system SearchField (type=search lives inside it)
+assert.match(view, /<SearchField\b/);
+assert.equal((view.match(/<SearchField\b/g) ?? []).length, 1);
 assert.equal((view.match(/<input\b[^>]*type=["']search["']/g) ?? []).length, 0);
 assert.match(view, /an-summary/);
 assert.doesNotMatch(view, /className="[^"]*an-hero/);

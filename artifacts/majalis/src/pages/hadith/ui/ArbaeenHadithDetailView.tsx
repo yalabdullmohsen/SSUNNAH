@@ -13,7 +13,7 @@ import {
 import { QUALITY_OPTIONS, type ReviewQuality } from "@/lib/spaced-repetition";
 import { useAuth } from "@/components/AuthProvider";
 import "@/styles/pages/arbaeen-detail.css";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 import { Button } from "@/components/ui/button";
@@ -113,7 +113,8 @@ export default function ArbaeenHadithDetailPage() {
   const nextId = hadith.id < 42 ? hadith.id + 1 : null;
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title={hadith.title} large={false} />
     <KnowledgeLayout kind="hadith" className="ahd-page" data-kx="1">
       <AppBackButton
         variant="inline"
@@ -207,6 +208,6 @@ export default function ArbaeenHadithDetailPage() {
         {nextId && <Link href={`/arbaeen-nawawi/${nextId}`} className="ahd-nav__link">الحديث التالي <ChevronLeft size={14} aria-hidden="true" /></Link>}
       </nav>
     </KnowledgeLayout>
-    </DetailScreen>
+    </div>
   );
 }

@@ -2,7 +2,7 @@ import "@/styles/pages/hadith-design-language.css";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { FAQBox, RelatedLinksBox, SourceBox } from "@/components/content/ContentReading";
-import { BookOpen, Search, X } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import { ShareButtons } from "@/components/ContentActions";
@@ -10,15 +10,13 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/hadith-mustalah.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
+import { NavigationBar, SearchField } from "@/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 import { UnifiedPrimaryFilters } from "@/components/filters/UnifiedPrimaryFilters";
 import "@/styles/knowledge-experience.css";
 import { truncateAtWord } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
 /* ─── أنواع البيانات ─── */
 type HadithTerm = {
   id: string;
@@ -1032,7 +1030,8 @@ export default function HadithSciencePage() {
   }
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="علم مصطلح الحديث" large={false} />
     <KnowledgeLayout kind="hadith" className="hs-page" data-kx="1">
       {/* هيرو */}
       <section className="hs-hero hdl-info-hero">
@@ -1054,14 +1053,7 @@ export default function HadithSciencePage() {
       {/* شريط التحكم */}
       <div className="hs-controls">
         <div className="hs-search-wrap">
-          <Search size={16} className="hs-search-icon" aria-hidden="true" />
-          <SearchInput className="hs-search" placeholder="ابحث في المصطلحات." value={query} onChange={(e) => setQuery(e.target.value)}
-            aria-label="بحث في مصطلح الحديث" onClear={() => setQuery("")} />
-          {query && (
-            <IconButton type="button" className="hs-search-clear" onClick={() => setQuery("")} label="مسح البحث">
-              <X size={14} />
-            </IconButton>
-          )}
+          <SearchField value={query} onChange={setQuery} placeholder="ابحث في المصطلحات." label="بحث في مصطلح الحديث" />
         </div>
         <UnifiedPrimaryFilters
           className="hs-cats"
@@ -1182,6 +1174,6 @@ export default function HadithSciencePage() {
         <SectionQuiz sectionId="hadith" title="اختبر معلوماتك في علوم الحديث" count={4} />
       </div>
     </KnowledgeLayout>
-    </DetailScreen>
+    </div>
   );
 }

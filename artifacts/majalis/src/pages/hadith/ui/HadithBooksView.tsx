@@ -2,7 +2,7 @@ import "@/styles/pages/hadith-design-language.css";
 import "@/styles/components/topic-page.css";
 import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import { Link } from "wouter";
-import { ArrowRight, BookOpen, ChevronRight, Search, X, AlertTriangle } from "lucide-react";
+import { ArrowRight, BookOpen, ChevronRight, AlertTriangle } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
 import {
   HADITH_COLLECTIONS,
@@ -18,8 +18,7 @@ import { extractDisplayMatn, splitHadithNarration } from "@/lib/hadith-access";
 import { VirtualList } from "@/components/VirtualList";
 import "@/styles/pages/hadith-books.css";
 import "@/styles/pages/hadith.css";
-import { ListScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
+import { NavigationBar, SearchField } from "@/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 import { HadithEmptyState } from "@/components/hadith/HadithEmptyState";
 import { numberingConflictNoteAr } from "@/lib/hadith/hadith-collection-availability";
@@ -347,18 +346,7 @@ function CollectionBrowser({ meta }: { meta: CdnCollectionMeta }) {
 
       {/* البحث */}
       <div className="hb-search-wrap">
-        <Search size={14} className="hb-search__icon" aria-hidden="true" />
-        <SearchInput className="hb-search-input" placeholder={`ابحث في ${meta.name}…`} value={search} onChange={(e) => setSearch(e.target.value)}
-          aria-label={`بحث في ${meta.name}`} onClear={() => setSearch("")} />
-        {search && (
-          <Button
-            type="button"
-            className="hb-search__clear"
-            onClick={() => setSearch("")}
-            aria-label="مسح البحث" variant="ghost">
-            <X size={13} />
-          </Button>
-        )}
+        <SearchField value={search} onChange={setSearch} placeholder={`ابحث في ${meta.name}…`} label={`بحث في ${meta.name}`} />
       </div>
 
       <div className="hb-layout">
@@ -433,7 +421,8 @@ export default function HadithBooksPage() {
   }, []);
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="كتب الحديث" large={false} />
     <KnowledgeLayout kind="library" className="page-shell hb-page" data-kx="1">
       {/* التنقل */}
       <nav className="hb-breadcrumb" aria-label="مسار التنقل">
@@ -514,6 +503,6 @@ export default function HadithBooksPage() {
         <SectionQuiz sectionId="hadith" title="اختبر معلوماتك في الحديث" count={4} />
       </div>
     </KnowledgeLayout>
-    </ListScreen>
+    </div>
   );
 }

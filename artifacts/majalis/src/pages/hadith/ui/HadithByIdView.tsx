@@ -12,7 +12,7 @@ import { HadithGradeBadge } from "@/components/hadith/HadithGradeBadge";
 import { HadithSourceBlock } from "@/components/hadith/HadithSourceBlock";
 import "@/styles/pages/hadith-design-language.css";
 import { ExploreAlsoNav } from "@/components/ExploreAlsoNav";
-import { ReaderScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 import "@/styles/pages/hadith.css";
 import "@/styles/sunnah-identity-detail-reading.css";
@@ -108,7 +108,8 @@ export default function HadithByIdView() {
   }
 
   return (
-    <ReaderScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الحديث" large={false} />
     <KnowledgeLayout kind="hadith" className={`page-shell hadith-by-id${hadith.isMawdu ? " hadith-by-id--mawdu" : ""}`} data-kx="1">
     <article dir="rtl">
       {hadith.isMawdu ? (
@@ -184,6 +185,6 @@ export default function HadithByIdView() {
       />
     </article>
     </KnowledgeLayout>
-    </ReaderScreen>
+    </div>
   );
 }

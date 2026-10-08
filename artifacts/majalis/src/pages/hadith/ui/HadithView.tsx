@@ -30,7 +30,7 @@ import { PageHeader, SkeletonCardGrid } from "@/components/ui-common";
 import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { SectionEntryCard } from "@/components/ui/HubCard";
 import { HadithEntryCard } from "@/components/hadith/HadithEntryCard";
-import { GridScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { ExclusiveChoiceGroup } from "@/components/ui/ExclusiveChoiceGroup";
 import { ExploreAlsoNav } from "@/components/ExploreAlsoNav";
 import { ShareButtons } from "@/components/ContentActions";
@@ -1109,7 +1109,8 @@ export default function HadithPage() {
   ];
 
   return (
-    <GridScreen compose="mark" columns={2}>
+    <div className="sn-screen">
+    <NavigationBar title="الحديث الشريف" large={false} />
       <SectionTemplatePage
         route="/hadith"
         eyebrow="علوم الحديث النبوي"
@@ -1166,6 +1167,6 @@ export default function HadithPage() {
           <SectionQuiz sectionId="hadith" aria-label="اختبر معلوماتك في علوم الحديث" count={4} />
         </div>
       </SectionTemplatePage>
-    </GridScreen>
+    </div>
   );
 }
