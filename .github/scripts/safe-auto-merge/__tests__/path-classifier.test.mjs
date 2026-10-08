@@ -116,6 +116,16 @@ describe("path-classifier", () => {
     assert.equal(classifyOnePath("supabase/schema.sql"), "risky");
   });
 
+  it("ios app paths are native lane without manual review (gated by xcodebuild-simulator)", () => {
+    const r = classifyChangedPaths([
+      "artifacts/majalis/ios/App/App/Info.plist",
+      "artifacts/majalis/ios/App/SunnahPrayer/Sources/SunnahPrayer/X.swift",
+    ]);
+    assert.equal(r.lane, "native");
+    assert.equal(r.manualReview, false);
+    assert.equal(r.needNative, true);
+  });
+
   it("ios/capacitor is native lane (manual review, no postgres by default)", () => {
     const r = classifyChangedPaths([
       "artifacts/majalis/ios/App/App/Info.plist",
