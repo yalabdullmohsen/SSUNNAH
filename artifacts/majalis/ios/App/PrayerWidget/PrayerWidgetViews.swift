@@ -54,7 +54,7 @@ struct PrayerWidgetRootView: View {
             }
         }
         .environment(\.layoutDirection, .rightToLeft)
-        .environment(\.locale, Locale(identifier: "ar"))
+        .environment(\.locale, WidgetFormat.locale)
         .widgetURL(prayerURL)
         .redacted(reason: entry.presentation == .placeholder ? .placeholder : [])
     }
@@ -105,7 +105,7 @@ struct PrayerLiveClock: View {
         // Text(timerInterval:) يتمدد لكامل العرض افتراضيًا؛ نثبّته على عرض محتواه.
         .fixedSize(horizontal: true, vertical: false)
         // أرقام هندية موحّدة في النص الحي أيضًا.
-        .environment(\.locale, Locale(identifier: "ar@numbers=arab"))
+        .environment(\.locale, WidgetFormat.locale)
     }
 
     @ViewBuilder private var staticText: some View {
