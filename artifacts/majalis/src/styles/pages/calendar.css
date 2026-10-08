@@ -116,7 +116,13 @@
   margin-bottom: 0.35rem;
 }
 
-.cal-grid,
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.35rem;
+  overflow: hidden;
+}
+
 .cal-week {
   overflow: hidden;
 }
