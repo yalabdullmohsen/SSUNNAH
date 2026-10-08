@@ -35,9 +35,9 @@
   min-width: 4.75rem;
   padding: 0.7rem 1rem;
   border-radius: var(--radius-card, 1.5rem);
-  background: var(--surface-card, var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white)))));
-  border: 1px solid color-mix(in srgb, var(--mj-brand-deep, #123F32) 14%, var(--majalis-line, var(--mj-hairline)));
-  box-shadow: 0 1px 2px color-mix(in srgb, var(--mj-brand-deep, #123F32) 6%, transparent);
+  background: var(--surface-card, var(--mj-surface, var(--mj-white)));
+  border: 1px solid color-mix(in srgb, var(--mj-brand-deep) 14%, var(--majalis-line, var(--mj-hairline)));
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--mj-brand-deep) 6%, transparent);
   text-align: center;
 }
 .uq-stat__num {
@@ -45,7 +45,7 @@
   font-size: 1.55rem;
   font-weight: 900;
   line-height: 1.15;
-  color: var(--mj-brand-deep, var(--mj-brand-deep, #123F32));
+  color: var(--mj-brand-deep);
 }
 .uq-stat__label {
   display: block;
@@ -53,7 +53,7 @@
   font-size: 0.78rem;
   font-weight: 600;
   line-height: 1.35;
-  color: var(--mj-ink-2, #4B625A);
+  color: var(--mj-ink-2);
   opacity: 1;
 }
 
@@ -66,8 +66,8 @@
 
 html.dark .uq-stat,
 html[data-theme="dark"] .uq-stat {
-  background: color-mix(in srgb, var(--surface-brand-wash, #16261F) 90%, var(--mj-ink));
-  border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand, #5a9e88)) 26%, var(--mj-hairline));
+  background: color-mix(in srgb, var(--surface-brand-wash) 90%, var(--mj-ink));
+  border-color: color-mix(in srgb, var(--mj-brand) 26%, var(--mj-hairline));
 }
 html.dark .uq-stat__num,
 html[data-theme="dark"] .uq-stat__num {
@@ -158,7 +158,7 @@ html[data-theme="dark"] .uq-hero .uq-stat__label {
   background: transparent; border: none; cursor: pointer; font-family: inherit; text-align: end;
 }
 .uq-jam-num {
-  background: var(--majalis-emerald,var(--mj-brand)); color: var(--mj-white, var(--mj-white));
+  background: var(--majalis-emerald,var(--mj-brand)); color: var(--mj-white);
   width: 1.7rem; height: 1.7rem; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-size: .8rem; font-weight: 800; flex-shrink: 0;
@@ -173,8 +173,8 @@ html[data-theme="dark"] .uq-hero .uq-stat__label {
 /* info box */
 .uq-info-box {
   display: flex; gap: .65rem; align-items: flex-start;
-  background: color-mix(in srgb, var(--mj-accent, #b08a3e) 12%, var(--ss-card-bg, var(--mj-surface)));
-  border: 1px solid color-mix(in srgb, var(--mj-accent, #b08a3e) 35%, var(--ss-border, var(--mj-hairline)));
+  background: color-mix(in srgb, var(--mj-accent) 12%, var(--ss-card-bg, var(--mj-surface)));
+  border: 1px solid color-mix(in srgb, var(--mj-accent) 35%, var(--ss-border, var(--mj-hairline)));
   border-radius: var(--radius-card, 1.5rem);
   padding: .85rem 1rem; font-size: .83rem;
   color: var(--color-text, var(--mj-ink));
@@ -220,7 +220,7 @@ html[data-theme="dark"] .uq-hero .uq-stat__label {
   background: linear-gradient(135deg, var(--mj-brand-deep), var(--majalis-emerald,var(--mj-brand)));
   border-radius: var(--radius-card, 1.5rem); padding: 1.1rem 1.3rem;
 }
-.uq-ijaz-ayah__text { font-family: var(--font-quran); font-size: 1.1rem; line-height: 2.1; color: var(--mj-white, var(--mj-white)); margin: 0 0 .4rem; font-style: normal; }
+.uq-ijaz-ayah__text { font-family: var(--font-quran); font-size: 1.1rem; line-height: 2.1; color: var(--mj-white); margin: 0 0 .4rem; font-style: normal; }
 .uq-ijaz-ayah__ref  { font-size: .72rem; color: rgba(255,255,255,.75); font-style: normal; }
 
 /* محكم ومتشابه */
@@ -242,7 +242,7 @@ html[data-theme="dark"] .uq-hero .uq-stat__label {
   background: var(--mj-surface); border: 1.5px solid var(--mj-hairline); border-radius: var(--radius-card, 1.5rem); padding: .9rem 1rem;
 }
 .uq-naskh-num {
-  background: var(--mj-brand-deep, var(--mj-brand-deep)); color: var(--mj-white, var(--mj-white));
+  background: var(--mj-brand-deep); color: var(--mj-white);
   width: 1.7rem; height: 1.7rem; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-size: .8rem; font-weight: 800; flex-shrink: 0;

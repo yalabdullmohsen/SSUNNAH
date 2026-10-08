@@ -34,33 +34,9 @@
   display: flex; flex-direction: column; align-items: center; gap: .1rem;
   background: var(--sg-chip-color, var(--mj-brand-deep));
 }
-.sg-salah-chip__name  { font-size: .75rem; font-weight: 700; color: var(--mj-white, var(--mj-white)); }
+.sg-salah-chip__name  { font-size: .75rem; font-weight: 700; color: var(--mj-white); }
 .sg-salah-chip__rakat { font-size: .62rem; color: rgba(255,255,255,.8); }
 
-
-/* tabs */
-.sg-tabs-bar {
-  display: flex; overflow-x: auto; gap: 0; background: var(--mj-bg);
-  border-bottom: 2px solid var(--mj-hairline); padding: 0 .5rem; scrollbar-width: none;
-}
-.sg-tabs-bar::-webkit-scrollbar { display: none; }
-.sg-tab {
-  display: flex; flex-direction: column; align-items: center; gap: .2rem;
-  padding: .65rem .5rem; border: none; background: transparent;
-  cursor: pointer; font-family: inherit;
-  border-bottom: 2px solid transparent; margin-bottom: -2px;
-  transition: all .15s; color: var(--mj-ink-2); font-size: .78rem;
-  /* عرض ثابت (لا min-width فقط) ليمنع النص الحرفي (نمط تسمية سطرين تحت
-     الأيقونة) من التمدد بعرض المحتوى؛ white-space الافتراضي (normal) على
-     تسمية النص يسمح لها بالالتفاف على سطرين بدل الفيض أفقيًا فوق التبويبات
-     المجاورة (تشابك نصوص حقيقي كان يظهر مع تسميات طويلة كـ"المبطلات
-     والمكروهات"، شُخِّص 2026-07-19 عبر Playwright حي). */
-  width: 4.6rem; flex-shrink: 0;
-}
-.sg-tab > span:last-child {
-  white-space: normal; line-height: 1.15; text-align: center;
-}
-.sg-tab--active { border-bottom-color: var(--majalis-emerald,var(--mj-brand-deep)); color: var(--majalis-emerald,var(--mj-brand-deep)); font-weight: 700; }
 
 /* body */
 .sg-body    { padding: 1.25rem 1rem; }
@@ -77,7 +53,7 @@
   background: var(--mj-brand-soft); border: 1px solid var(--mj-success-soft); border-radius: .65rem; padding: .65rem .8rem;
 }
 .sg-shart-num {
-  background: var(--majalis-emerald,var(--mj-brand-deep)); color: var(--mj-white, var(--mj-white));
+  background: var(--majalis-emerald,var(--mj-brand-deep)); color: var(--mj-white);
   width: 1.4rem; height: 1.4rem; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-size: .68rem; font-weight: 800; flex-shrink: 0;
@@ -92,7 +68,7 @@
   background: var(--mj-surface); border: 1px solid var(--mj-hairline); border-radius: .65rem; padding: .6rem .85rem;
 }
 .sg-rukn-num {
-  background: var(--mj-brand-deep); color: var(--mj-white, var(--mj-white));
+  background: var(--mj-brand-deep); color: var(--mj-white);
   width: 1.5rem; height: 1.5rem; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-size: .7rem; font-weight: 800; flex-shrink: 0;
@@ -112,7 +88,7 @@
   background: transparent; border: none; cursor: pointer; font-family: inherit; text-align: end;
 }
 .sg-step-num {
-  background: var(--majalis-emerald,var(--mj-brand-deep)); color: var(--mj-white, var(--mj-white));
+  background: var(--majalis-emerald,var(--mj-brand-deep)); color: var(--mj-white);
   width: 1.6rem; height: 1.6rem; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-size: .7rem; font-weight: 800; flex-shrink: 0;
@@ -138,7 +114,7 @@
 .sg-mubtilatat-list { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.3rem; }
 .sg-mubtil-card {
   display: flex; gap: .7rem; align-items: flex-start;
-  background: color-mix(in srgb, var(--mj-danger) 8%, white); border: 1px solid var(--mj-danger-soft, #fecdd3); border-radius: .75rem; padding: .75rem .9rem;
+  background: color-mix(in srgb, var(--mj-danger) 8%, white); border: 1px solid var(--mj-danger-soft); border-radius: .75rem; padding: .75rem .9rem;
 }
 .sg-mubtil-icon  { font-size: var(--ds-text-base); color: var(--mj-danger); font-weight: 800; flex-shrink: 0; margin-top: .1rem; }
 .sg-mubtil-title { display: block; font-weight: 700; font-size: .85rem; color: var(--mj-danger-deep); margin-bottom: .2rem; }
@@ -157,7 +133,7 @@
 
 .sg-info-box {
   display: flex; gap: .65rem; align-items: flex-start;
-  background: var(--mj-info-soft); border: 1px solid #C7D2FE; border-radius: .7rem;
+  background: var(--mj-info-soft); border: 1px solid var(--mj-info); border-radius: .7rem;
   padding: .85rem 1rem; font-size: .83rem; color: var(--brand-deep, var(--mj-brand-deep)); line-height: 1.6;
 }
 .sg-info-box p { margin: 0; }
@@ -175,7 +151,7 @@
   background: linear-gradient(135deg, var(--majalis-emerald-deep,var(--mj-brand-deep)), var(--majalis-emerald,var(--mj-brand-deep)));
   border-radius: .8rem; padding: 1.1rem 1.3rem;
 }
-.sg-khushuu-hadith__text { font-size: .95rem; font-weight: 700; color: var(--mj-white, var(--mj-white)); line-height: 1.8; margin: 0 0 .4rem; font-style: normal; }
+.sg-khushuu-hadith__text { font-size: .95rem; font-weight: 700; color: var(--mj-white); line-height: 1.8; margin: 0 0 .4rem; font-style: normal; }
 .sg-khushuu-hadith__ref  { font-size: .72rem; color: rgba(255,255,255,.75); font-style: normal; }
 
 /* فضائل */
@@ -198,7 +174,7 @@
   background: linear-gradient(135deg,var(--mj-brand-deep),var(--majalis-emerald,var(--mj-brand-deep)));
   border-radius: .8rem; padding: 1.1rem 1.2rem;
 }
-.sg-reminder-box__title { font-size: .9rem; font-weight: 800; color: var(--mj-white, var(--mj-white)); margin: 0 0 .4rem; }
+.sg-reminder-box__title { font-size: .9rem; font-weight: 800; color: var(--mj-white); margin: 0 0 .4rem; }
 .sg-reminder-box__text  { font-size: .83rem; color: rgba(255,255,255,.9); line-height: 1.7; margin: 0; }
 
 /* intro note */
@@ -213,7 +189,7 @@
 .sg-rank-card { background: var(--mj-surface); border: 1px solid var(--mj-hairline); border-radius: .75rem; padding: var(--ds-space-4); }
 .sg-rank-card__header { display: flex; align-items: flex-start; gap: .75rem; margin-bottom: .6rem; }
 .sg-rank-card__num {
-  width: 28px; height: 28px; background: var(--clr-primary,var(--mj-brand)); color: var(--mj-white, var(--mj-white));
+  width: 28px; height: 28px; background: var(--clr-primary,var(--mj-brand)); color: var(--mj-white);
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
   font-size: .8rem; font-weight: 800; flex-shrink: 0;
 }
