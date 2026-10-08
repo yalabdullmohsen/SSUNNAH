@@ -1,9 +1,9 @@
 import { createPortal } from "react-dom";
 import { memo, useCallback, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
-import { LogIn, LogOut, Settings, UserPlus, X } from "lucide-react";
+import { LogIn, LogOut, Settings, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 import { useAuth } from "./AuthProvider";
 import { usePageSwipe } from "@/hooks/usePageSwipe";
 import { isNavHrefActive } from "@/lib/nav-active";
@@ -130,9 +130,7 @@ export const SideNavDrawer = memo(function SideNavDrawer({
           <div className="sidebar-brand">
             <p className="sidebar-title">القائمة</p>
           </div>
-          <IconButton type="button" onClick={onClose} label="إغلاق القائمة" className="sidebar-close">
-            <X size={20} strokeWidth={2} aria-hidden="true" />
-          </IconButton>
+          <IconButton icon="close" onClick={onClose} label="إغلاق القائمة" className="sidebar-close" />
         </header>
 
         <div className="sidebar-body">
