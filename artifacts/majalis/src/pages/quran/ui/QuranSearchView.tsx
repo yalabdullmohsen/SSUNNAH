@@ -23,7 +23,7 @@ import { resolveCanonicalAyahHref } from "@/lib/quran-navigation";
 import { PageHeader } from "@/components/ui-common";
 import { VirtualList } from "@/components/VirtualList";
 import "@/styles/pages/quran-search.css";
-import { ListScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { IconButton } from "@/components/design-system/Buttons";
 
 const DEBOUNCE_MS = 200;
@@ -127,7 +127,8 @@ export default function QuranSearchPage() {
   }
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="البحث في القرآن" large={false} />
     <div className="ds-page quran-search-page" dir="rtl">
       <PageHeader
         eyebrow="القرآن الكريم"
@@ -281,6 +282,6 @@ export default function QuranSearchPage() {
         <Link href="/quran/surahs">فهرس السور</Link>
       </p>
     </div>
-    </ListScreen>
+    </div>
   );
 }

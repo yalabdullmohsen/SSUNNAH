@@ -1,3 +1,4 @@
+import { NavigationBar } from "@/design-system";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { PageHeader } from "@/components/ui-common";
@@ -19,7 +20,6 @@ import {
   type ShareBasis,
 } from "@/lib/inheritance/types";
 import "@/styles/pages/mawarith.css";
-import { DetailScreen } from "@/components/design-system/screens";
 import { ActionButton } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 
@@ -194,7 +194,8 @@ export default function MawarithCalculatorPage() {
   const currentStepNum = STEP_NUMBERS[step];
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="حاسبة المواريث الإسلامية" large={false} />
     <KnowledgeLayout kind="fiqh" className="page-shell narrow mwc-page" data-kx="1">
       <PageHeader
         eyebrow="الفقه والأحكام"
@@ -502,6 +503,6 @@ export default function MawarithCalculatorPage() {
         </div>
       </nav>
     </KnowledgeLayout>
-    </DetailScreen>
+    </div>
   );
 }

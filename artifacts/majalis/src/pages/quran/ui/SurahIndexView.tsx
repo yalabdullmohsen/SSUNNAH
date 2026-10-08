@@ -15,7 +15,7 @@ import { displaySurahName } from "@/lib/quran-display";
 import { getSurahList, getSurahMeta } from "@/lib/quran-api";
 import { useNumerals } from "@/hooks/useNumerals";
 import { VirtualList, type VirtualListHandle } from "@/components/VirtualList";
-import { ListScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import "@/styles/pages/surah-index.css";
 
@@ -144,7 +144,8 @@ export default function SurahIndexPage() {
   }
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="فهرس السور" large={false} />
     <div className="surah-index-page" dir="rtl" data-testid="surah-index-page">
       <header className="surah-index-hero">
         <h1>فهرس السور</h1>
@@ -297,6 +298,6 @@ export default function SurahIndexPage() {
         </div>
       )}
     </div>
-    </ListScreen>
+    </div>
   );
 }

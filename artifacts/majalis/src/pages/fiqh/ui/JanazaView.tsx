@@ -1,3 +1,4 @@
+import { NavigationBar, SearchField } from "@/design-system";
 import { useEffect, useState, useMemo } from "react";
 import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
@@ -5,8 +6,6 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import "@/styles/pages/janaza.css";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 import { Button } from "@/components/ui/button";
 
@@ -196,7 +195,8 @@ export default function JanazaPage() {
   [search]);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="أحكام الجنائز" large={false} />
     <KnowledgeLayout kind="fiqh" className="jnz-page" data-kx="1">
       {/* hero */}
       <section className="jnz-hero">
@@ -237,10 +237,7 @@ export default function JanazaPage() {
       <div className="jnz-body">
 
         <div className="jnz-search-wrap">
-          <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
-            placeholder="ابحث في أحكام الجنائز..."
-            className="page-search-input jnz-search-input"
-            aria-label="بحث في أحكام الجنائز" onClear={() => setSearch("")} />
+          <SearchField value={search} onChange={setSearch} placeholder="ابحث في أحكام الجنائز..." label="بحث في أحكام الجنائز" />
         </div>
 
         {/* ── الغسل ── */}
@@ -420,6 +417,6 @@ export default function JanazaPage() {
         <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في الفقه" count={4} />
       </div>
     </KnowledgeLayout>
-    </DetailScreen>
+    </div>
   );
 }

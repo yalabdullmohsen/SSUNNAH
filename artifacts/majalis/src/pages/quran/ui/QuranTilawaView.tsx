@@ -7,7 +7,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { useVerifiedReciters } from "@/hooks/useVerifiedReciters";
 import { formatArabicNumber } from "@/lib/numerals";
 import "@/styles/pages/tilawa.css";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 
 export default function QuranTilawaView() {
   const reciters = useVerifiedReciters();
@@ -22,7 +22,8 @@ export default function QuranTilawaView() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="التلاوة" large={false} />
     <div className="tl-page" dir="rtl" data-quran-tilawa="1">
       <nav className="tl-crumb" aria-label="مسار">
         <Link href="/quran-hub">مركز القرآن الكريم</Link>
@@ -47,6 +48,6 @@ export default function QuranTilawaView() {
         ))}
       </ul>
     </div>
-    </DetailScreen>
+    </div>
   );
 }
