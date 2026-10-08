@@ -1,5 +1,5 @@
 /**
- * يمنع رجوع Version/Build عن 1.0.1 / 55 ويوحّد App + Widget + Live Activity.
+ * يمنع رجوع Version/Build عن 1.1.0 / 55 ويوحّد App + Widget + Live Activity.
  * Run: node --import tsx src/lib/__tests__/ios-build-version-traceability-gate.test.ts
  */
 import assert from "node:assert/strict";
@@ -10,7 +10,7 @@ import { fileURLToPath } from "node:url";
 const majalisRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const pbx = readFileSync(resolve(majalisRoot, "ios/App/App.xcodeproj/project.pbxproj"), "utf8");
 
-const MARKETING_MIN = "1.0.1";
+const MARKETING_MIN = "1.1.0";
 const BUILD_MIN = 55;
 
 const marketing = [...pbx.matchAll(/MARKETING_VERSION = ([^;]+);/g)].map((m) => m[1].trim());
@@ -29,6 +29,7 @@ for (const b of builds) {
 }
 
 assert.doesNotMatch(pbx, /MARKETING_VERSION = 1\.0;/);
+assert.doesNotMatch(pbx, /MARKETING_VERSION = 1\.0\.1;/); // قناة 1.0.1 أغلقتها Apple (90186)
 assert.doesNotMatch(pbx, /CURRENT_PROJECT_VERSION = 54;/);
 
 const tracePath = resolve(majalisRoot, "../../docs/store-release/BUILD_55_TRACEABILITY.md");
