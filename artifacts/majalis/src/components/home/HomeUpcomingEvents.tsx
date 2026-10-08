@@ -3,7 +3,7 @@ import { CalendarDays, Megaphone } from "lucide-react";
 import { getUpcomingEvents, getAnnouncements } from "@/lib/unified-content-service";
 import type { AutoImportedContent } from "@/lib/auto-content/auto-content-utils";
 import { Widget } from "@/components/widgets/Widget";
-import { AppCard } from "@/components/design-system/AppCard";
+import { Card } from "@/design-system";
 import { AR_UI_LOCALE } from "@/lib/numerals";
 
 /** فعاليات ولقاءات + إعلانات علمية مهمة معتمَدة من المصادر الرسمية —
@@ -63,7 +63,7 @@ function EventRow({ item }: { item: AutoImportedContent }) {
     ? new Intl.DateTimeFormat(AR_UI_LOCALE, { dateStyle: "medium", timeStyle: "short" }).format(new Date(item.event_start_at))
     : "الموعد غير محدد";
   return (
-    <AppCard padding="none" className="hue__row">
+    <Card flush className="hue__row">
       <span className="hue__row-badge hue__row-badge--event">فعالية</span>
       <div className="hue__row-body">
         <p className="hue__row-title">{item.title}</p>
@@ -81,13 +81,13 @@ function EventRow({ item }: { item: AutoImportedContent }) {
           )}
         </div>
       </div>
-    </AppCard>
+    </Card>
   );
 }
 
 function AnnouncementRow({ item }: { item: AutoImportedContent }) {
   return (
-    <AppCard padding="none" className="hue__row">
+    <Card flush className="hue__row">
       <span className="hue__row-badge hue__row-badge--announcement">
         <Megaphone size={12} strokeWidth={2} aria-hidden="true" /> إعلان
       </span>
@@ -100,7 +100,7 @@ function AnnouncementRow({ item }: { item: AutoImportedContent }) {
           </a>
         )}
       </div>
-    </AppCard>
+    </Card>
   );
 }
 

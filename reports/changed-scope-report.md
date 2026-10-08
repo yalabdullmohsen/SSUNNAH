@@ -1,8 +1,8 @@
 # تقرير نطاق التغييرات
 
-**التاريخ:** 2026-10-06T15:46:38.316Z
-**عدد الملفات:** 220
-**النطاقات:** other، ui/layout، content/data، quran/mushaf
+**التاريخ:** 2026-10-08T19:53:14.788Z
+**عدد الملفات:** 13
+**النطاقات:** other، ui/layout، quran/mushaf، content/data
 **docs-only:** لا
 
 ## البوابات المقترحة
@@ -12,7 +12,7 @@
 | ui | ✓ |
 | api | — |
 | seo | ✓ |
-| pwa | ✓ |
+| pwa | — |
 | content | ✓ |
 | ios | — |
 | full | ✓ |
@@ -25,48 +25,20 @@
 
 ## الملفات المتغيرة (أول 40)
 
-- `artifacts/majalis/index.html` → other
-- `artifacts/majalis/lib/not-found-html.mjs` → other
-- `artifacts/majalis/lib/open-platform/docs.mjs` → other
-- `artifacts/majalis/public/fonts/sunnah/OFL-Amiri-Quran.txt` → other
-- `artifacts/majalis/public/fonts/sunnah/OFL-Amiri.txt` → other
-- `artifacts/majalis/public/fonts/sunnah/OFL-IBM-Plex-Sans-Arabic.txt` → other
-- `artifacts/majalis/public/fonts/sunnah/amiri-400-ar.woff2` → other
-- `artifacts/majalis/public/fonts/sunnah/amiri-400-lat.woff2` → other
-- `artifacts/majalis/public/fonts/sunnah/amiri-700-ar.woff2` → other
-- `artifacts/majalis/public/fonts/sunnah/amiri-700-lat.woff2` → other
-- `artifacts/majalis/public/fonts/sunnah/amiri-quran-400-ar.woff2` → other
-- `artifacts/majalis/public/fonts/sunnah/plex-sans-arabic-400-ar.woff2` → other
-- `artifacts/majalis/public/fonts/sunnah/plex-sans-arabic-400-lat.woff2` → other
-- `artifacts/majalis/public/fonts/sunnah/plex-sans-arabic-500-ar.woff2` → other
-- `artifacts/majalis/public/fonts/sunnah/plex-sans-arabic-500-lat.woff2` → other
-- `artifacts/majalis/public/fonts/sunnah/plex-sans-arabic-600-ar.woff2` → other
-- `artifacts/majalis/public/fonts/sunnah/plex-sans-arabic-600-lat.woff2` → other
-- `artifacts/majalis/public/fonts/sunnah/plex-sans-arabic-700-ar.woff2` → other
-- `artifacts/majalis/public/fonts/sunnah/plex-sans-arabic-700-lat.woff2` → other
-- `artifacts/majalis/public/fonts/ui/aref-ruqaa-400-ar.woff2` → other
-- `artifacts/majalis/public/fonts/ui/aref-ruqaa-700-ar.woff2` → other
-- `artifacts/majalis/public/fonts/ui/aref-ruqaa-700-lat.woff2` → other
-- `artifacts/majalis/public/fonts/ui/noto-naskh-400-ar.woff2` → other
-- `artifacts/majalis/public/fonts/ui/noto-naskh-400-lat.woff2` → other
-- `artifacts/majalis/public/fonts/ui/noto-naskh-700-ar.woff2` → other
-- `artifacts/majalis/public/fonts/ui/scheherazade-400-ar.woff2` → other
-- `artifacts/majalis/public/images/live/ithraa.svg` → other
-- `artifacts/majalis/public/images/posters/fadat-dawwi-al-usaimi.svg` → other
-- `artifacts/majalis/public/mj-launch-splash-boot.js` → other
-- `artifacts/majalis/public/native-load-error.html` → other
-- `artifacts/majalis/public/offline.html` → other
-- `artifacts/majalis/public/sheikhs/bandar-almaimouni.svg` → other
-- `artifacts/majalis/public/sheikhs/daham-abukhashba.svg` → other
-- `artifacts/majalis/public/sheikhs/faisal-zowaid.svg` → other
-- `artifacts/majalis/public/sheikhs/hamed-almesaad.svg` → other
-- `artifacts/majalis/public/sheikhs/hussein-muwaiziri.svg` → other
-- `artifacts/majalis/public/sheikhs/mutlaq-aljasser.svg` → other
-- `artifacts/majalis/public/sheikhs/nasar-alajmi.svg` → other
-- `artifacts/majalis/public/sheikhs/saad-otaibi.svg` → other
-- `artifacts/majalis/public/sheikhs/salem-altaweel.svg` → other
+- `artifacts/majalis/scripts/ui-ratchet-baseline.json` → other
+- `artifacts/majalis/src/components/adhan/AdhanNotificationBar.tsx` → ui_layout
+- `artifacts/majalis/src/components/adhan/PrayerAudioPicker.tsx` → ui_layout
+- `artifacts/majalis/src/components/adhan/PrayerRespectBanner.tsx` → ui_layout
+- `artifacts/majalis/src/components/home/HomeCustomizeSheet.tsx` → ui_layout
+- `artifacts/majalis/src/components/quran/HifzAudioLoopPlayer.tsx` → quran_mushaf
+- `artifacts/majalis/src/components/quran/ImmersivePrefsDrawer.tsx` → quran_mushaf
+- `artifacts/majalis/src/components/quran/ImmersiveVerseOptionsSheet.tsx` → quran_mushaf
+- `artifacts/majalis/src/components/quran/QuranSurahJumpSearch.tsx` → quran_mushaf
+- `artifacts/majalis/src/components/quran/TafsirModalViewer.tsx` → quran_mushaf
+- `artifacts/majalis/src/design-system/primitives.tsx` → ui_layout
+- `artifacts/majalis/src/pages/quran/ui/QuranSearchView.tsx` → quran_mushaf
+- `artifacts/majalis/src/pages/worship/ui/AdhkarDhikrSheet.tsx` → content_data
 
-… +180 ملفًا
 
 ## سياسات
 

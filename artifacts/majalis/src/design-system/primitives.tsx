@@ -80,9 +80,9 @@ export function Card({ variant = "standard", flush, className, children, ...rest
   );
 }
 
-export function LinkCard({ href, variant = "standard", className, children }: { href: string; variant?: CardProps["variant"]; className?: string; children: ReactNode }) {
+export function LinkCard({ href, variant = "standard", className, title, children }: { href: string; variant?: CardProps["variant"]; className?: string; title?: string; children: ReactNode }) {
   return (
-    <Link href={href} className={cn("sn-card sn-pressable", variant !== "standard" && `sn-card--${variant.replace("hero", "spot")}`, className)}>
+    <Link href={href} title={title} className={cn("sn-card sn-pressable", variant !== "standard" && `sn-card--${variant.replace("hero", "spot")}`, className)}>
       {children}
     </Link>
   );
