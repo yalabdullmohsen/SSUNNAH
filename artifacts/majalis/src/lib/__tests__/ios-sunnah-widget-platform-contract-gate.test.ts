@@ -144,8 +144,9 @@ assert.match(deep, /hadith/);
 assert.match(entry, /galleryPreview/);
 assert.match(entry, /context\.isPreview/);
 assert.match(entry, /allowsLiveCountdown/);
-assert.match(entry, /"fajr":\s*at\(/);
-assert.match(entry, /locationLabel:\s*"معاينة"/);
+assert.match(entry, /GalleryPrayer\.day\(now:/); // مواقيت المعاينة محسوبة بالحاسب الموحّد لا أرقامًا ثابتة
+assert.doesNotMatch(entry, /"fajr":\s*at\(/);
+assert.match(entry, /locationLabel:\s*(isPreview \?\s*)?"معاينة"/);
 assert.match(entry, /SunnahSharedStore\.loadPrayer/);
 assert.doesNotMatch(entry + views + widget, /AdhanCalculation|CalculationMethod|URLSession|URLRequest/);
 assert.doesNotMatch(entry + views + widget, /Quran|QPC|Hisn|Fatwa|recitation|wird/i);

@@ -25,7 +25,7 @@ import {
   CALENDAR_WEEKDAY_LABELS,
   hijriMonthYearLabel,
 } from "@/lib/calendar-dates";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { ActionButton } from "@/components/design-system";
 import {
   eventsForDate,
@@ -205,7 +205,8 @@ export default function CalendarPage() {
   }
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="تقويم الدروس" large={false} />
     <div className="page-shell calendar-page">
       <PageHeader
         eyebrow="المناسبات والدروس"
@@ -341,6 +342,6 @@ export default function CalendarPage() {
         <SectionQuiz sectionId="islamic-history" aria-label="اختبر معلوماتك في التاريخ الإسلامي" count={4} />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
 import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { SettingsToggleRow } from "@/components/design-system/SettingsList";
 import { EmptyStateV2, ErrorStateV2, LoadingStateV2, OfflineStateV2 } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
@@ -232,7 +232,8 @@ export default function WidgetCenterView() {
   }
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+      <NavigationBar title="مركز الويدجت" large={false} />
       <LegalPageLayout eyebrow="الأدوات" title="مركز الويدجت" density="medium" className="settings-page">
         <AppBackButton variant="inline" fallbackHref="/settings" label="رجوع" />
         <p className="settings-note">
@@ -588,6 +589,6 @@ export default function WidgetCenterView() {
           </LegalSection>
         )}
       </LegalPageLayout>
-    </DetailScreen>
+    </div>
   );
 }

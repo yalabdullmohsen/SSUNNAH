@@ -5,7 +5,7 @@ import { STATUS } from "@/lib/ui-copy";
 import { useLanguage } from "@/components/LanguageProvider";
 import { submitDawahContactRequest, CONTACT_RELIGIONS, type ReligionCode } from "@/lib/dawah-service";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -79,7 +79,8 @@ export default function DiscoverIslamContactPage() {
   }
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+      <NavigationBar title="تواصل سرّي مع داعية" large={false} />
     <DiscoverIslamShell detail>
       <PageHeader eyebrow="التعريف بالإسلام" title="تواصل سرّي مع داعية" subtitle="بياناتك تُستخدَم فقط للتواصل معك، ولا تُعرض لأي طرف آخر أبدًا." />
 
@@ -182,6 +183,6 @@ export default function DiscoverIslamContactPage() {
       </form>
     </DiscoverIslamShell>
   
-    </DetailScreen>
+    </div>
   );
 }

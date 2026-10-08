@@ -141,8 +141,9 @@ assert.match(views, /افتح سُنّة|افتح تطبيق سُنّة/);
 assert.match(views, /needsAppOpenAction/);
 
 // Placeholder must include representative times (not empty map implying live dash)
-assert.match(entry, /"fajr":\s*at\(/);
-assert.match(entry, /locationLabel:\s*"معاينة"/);
+assert.match(entry, /GalleryPrayer\.day\(now:/); // مواقيت المعاينة محسوبة بالحاسب الموحّد لا أرقامًا ثابتة
+assert.doesNotMatch(entry, /"fajr":\s*at\(/);
+assert.match(entry, /locationLabel:\s*(isPreview \?\s*)?"معاينة"/);
 
 // ── Pure payload builder: valid / transitions / no dash model ───
 function fixturePayload(overrides?: Partial<PrayerTimesPayload>): PrayerTimesPayload {

@@ -3,7 +3,6 @@ import { Link } from "wouter";
 import { PageHeader } from "@/components/ui-common";
 import { applyPageSeo } from "@/lib/seo";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
-import { DetailScreen } from "@/components/design-system/screens";
 
 export default function HowToBecomeMuslimPage() {
   useEffect(() => {
@@ -15,7 +14,7 @@ export default function HowToBecomeMuslimPage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <>
     <DiscoverIslamShell detail>
       <PageHeader eyebrow="التعريف بالإسلام" title="كيف أصبح مسلمًا؟" subtitle="لا حاجة لموعد أو مناسبة أو وسيط — القرار قرارك وحدك، ومتى ما استقر قلبك عليه فالطريق بسيط وواضح." />
 
@@ -78,6 +77,6 @@ export default function HowToBecomeMuslimPage() {
         </div>
       </div>
     </DiscoverIslamShell>
-    </DetailScreen>
+    </>
   );
 }

@@ -7,7 +7,7 @@ import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/arkan-islam.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 
 /* ─── بيانات أركان الإسلام ─── */
@@ -176,7 +176,8 @@ export default function ArkanIslamPage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="أركان الإسلام الخمسة" large={false} />
     <div className="page-shell arkan-page">
       {/* ═══ Hero ═══ */}
       <div className="arkan-hero">
@@ -311,6 +312,6 @@ export default function ArkanIslamPage() {
         <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في أركان الإسلام" count={4} />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }
