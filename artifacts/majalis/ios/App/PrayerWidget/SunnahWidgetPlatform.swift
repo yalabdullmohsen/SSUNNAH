@@ -441,3 +441,231 @@ extension PrayerWidgetEntry {
 extension CatalogWidgetEntry {
     var relevance: TimelineEntryRelevance? { prayer.relevance }
 }
+
+// MARK: - Unified widget type & shared prayer components (v5)
+
+/// خط واحد للواجهة (خط النظام العربي SF Arabic؛ IBM Plex Sans Arabic غير مضمَّن في امتداد الودجة)،
+/// وزنان فقط: Semibold للعنصر الرئيسي وRegular للثانوي، بأرقام جدولية، وحدّ أدنى 11pt.
+enum WidgetType {
+    static let minSize = CGFloat(WidgetTextBudget.minFontSize)
+
+    static func primary(_ size: CGFloat) -> Font {
+        .system(size: max(size, minSize), weight: .semibold).monospacedDigit()
+    }
+
+    static func secondary(_ size: CGFloat) -> Font {
+        .system(size: max(size, minSize), weight: .regular).monospacedDigit()
+    }
+
+    /// أيقونة SF Symbols بنمط موحّد.
+    static func icon(_ size: CGFloat) -> Font {
+        .system(size: max(size, minSize), weight: .semibold)
+    }
+}
+
+extension PrayerSlotKey {
+    /// مملوءة للصلاة الحالية، ومحيطية للقادمة.
+    func symbol(filled: Bool) -> String {
+        filled ? symbolName : symbolName.replacingOccurrences(of: ".fill", with: "")
+    }
+}
+
+/// بؤرة الودجة: الصلاة الجارية داخل نافذة الـ30 دقيقة، وإلا الصلاة القادمة.
+struct PrayerFocus: Equatable {
+    let key: PrayerSlotKey?
+    let date: Date?
+    let isCurrent: Bool
+}
+
+extension PrayerWidgetEntry {
+    var focus: PrayerFocus {
+        if let key = elapsedKey, let start = elapsedStart {
+            return PrayerFocus(key: key, date: start, isCurrent: true)
+        }
+        return PrayerFocus(key: nextKey, date: nextDate, isCurrent: false)
+    }
+
+    var displayTimeZone: TimeZone {
+        TimeZone(identifier: snapshot?.timeZoneIdentifier ?? "") ?? .current
+    }
+
+    func timeText(_ date: Date) -> String {
+        WidgetFormat.time(date, timeZone: displayTimeZone)
+    }
+}
+
+/// العدّاد الموحّد: أيقونة الصلاة + ساعة حيّة لاتينية فقط (بلا اسم ولا نص آخر).
+struct SunnahCounterFace: View {
+    let entry: PrayerWidgetEntry
+    var size: CGFloat = 24
+    var showsIcon = true
+
+    var body: some View {
+        let focus = entry.focus
+        ViewThatFits(in: .horizontal) {
+            row(size: size, focus: focus)
+            row(size: size * 0.85, focus: focus)
+            row(size: size * 0.72, focus: focus)
+        }
+    }
+
+    private func row(size: CGFloat, focus: PrayerFocus) -> some View {
+        HStack(spacing: 6) {
+            if showsIcon, let key = focus.key {
+                Image(systemName: key.symbol(filled: focus.isCurrent))
+                    .font(WidgetType.icon(size * 0.7))
+                    .widgetAccentable()
+                    .accessibilityHidden(true)
+            }
+            PrayerLiveClock(mode: entry.clockMode, now: entry.date, live: entry.allowsLiveCountdown)
+                .font(WidgetType.primary(size))
+        }
+    }
+}
+
+/// وقت الصلاة بأرقام لاتينية؛ لاحقة ص/م أصغر وبصيغة واحدة في كل مكان.
+struct PrayerTimeText: View {
+    let date: Date
+    let timeZone: TimeZone
+    var size: CGFloat = 17
+
+    var body: some View {
+        let parts = WidgetFormat.timeParts(date, timeZone: timeZone)
+        HStack(alignment: .firstTextBaseline, spacing: 2) {
+            Text(parts.clock)
+                .font(WidgetType.primary(size))
+                .lineLimit(1)
+                .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+            Text(parts.suffix)
+                .font(WidgetType.secondary(size * 0.6))
+                .lineLimit(1)
+        }
+        .fixedSize(horizontal: true, vertical: false)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(WidgetFormat.time(date, timeZone: timeZone))
+    }
+}
+
+/// اسم + وقت صلاة (بطاقة): الاسم Semibold، الوقت تحته.
+struct PrayerNameTime: View {
+    let key: PrayerSlotKey
+    let date: Date?
+    let timeZone: TimeZone
+    var nameSize: CGFloat = 17
+    var timeSize: CGFloat = 17
+    var filled = false
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            HStack(spacing: 4) {
+                Image(systemName: key.symbol(filled: filled))
+                    .font(WidgetType.icon(nameSize * 0.8))
+                    .widgetAccentable()
+                    .accessibilityHidden(true)
+                Text(key.nameAr)
+                    .font(WidgetType.primary(nameSize))
+                    .lineLimit(1)
+                    .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+            }
+            if let date {
+                PrayerTimeText(date: date, timeZone: timeZone, size: timeSize)
+            }
+        }
+    }
+}
+
+/// تخطيط المستطيل (~160×72): منطقتان RTL، اليمنى رئيسية كبيرة واليسرى ثانوية أصغر، بينهما فاصل رفيع.
+struct SunnahTwoZone<Primary: View, Secondary: View>: View {
+    @ViewBuilder let primary: Primary
+    @ViewBuilder let secondary: Secondary
+
+    var body: some View {
+        HStack(spacing: 8) {
+            primary.frame(maxWidth: .infinity, alignment: .leading)
+            Rectangle()
+                .fill(.primary.opacity(0.3))
+                .frame(width: 1)
+                .padding(.vertical, 4)
+                .accessibilityHidden(true)
+            secondary
+        }
+    }
+}
+
+/// حالة فارغة مصمَّمة: أيقونة + عبارة واحدة قصيرة، بلا شرح.
+struct SunnahCalmCard: View {
+    var symbol = "moon.stars"
+    var phrase = "افتح سُنّة"
+    var compact = false
+
+    var body: some View {
+        VStack(spacing: 6) {
+            Image(systemName: symbol)
+                .font(WidgetType.icon(compact ? 18 : 26))
+                .widgetAccentable()
+                .accessibilityHidden(true)
+            Text(phrase)
+                .font(WidgetType.primary(compact ? 13 : 15))
+                .lineLimit(1)
+                .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(phrase)
+    }
+}
+
+/// خلية وقت في الشبكة: الاسم فوق الوقت؛ القادمة بكبسولة مملوءة، والمنتهية بشفافية أقل.
+struct PrayerGridCell: View {
+    let key: PrayerSlotKey
+    let date: Date?
+    let timeZone: TimeZone
+    let isUpcoming: Bool
+    let isPast: Bool
+
+    var body: some View {
+        VStack(spacing: 2) {
+            Text(key.nameAr)
+                .font(WidgetType.secondary(13))
+                .lineLimit(1)
+                .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+            if let date {
+                PrayerTimeText(date: date, timeZone: timeZone, size: 15)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 6)
+        .background(Capsule().fill(isUpcoming ? SunnahWidgetTheme.selectedFill : Color.clear))
+        .opacity(isPast ? 0.55 : 1)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(key.nameAr) \(date.map { WidgetFormat.time($0, timeZone: timeZone) } ?? "")\(isUpcoming ? "، التالية" : "")")
+    }
+}
+
+/// شبكة 3×2: الفجر، الشروق، الظهر | العصر، المغرب، العشاء.
+struct PrayerSixGrid: View {
+    let entry: PrayerWidgetEntry
+    var keys: [PrayerSlotKey] = [.fajr, .sunrise, .dhuhr, .asr, .maghrib, .isha]
+
+    var body: some View {
+        let tz = entry.displayTimeZone
+        let upcoming = entry.focus.isCurrent ? entry.currentKey : entry.nextKey
+        let rows = stride(from: 0, to: keys.count, by: 3).map { Array(keys[$0..<min($0 + 3, keys.count)]) }
+        VStack(spacing: 6) {
+            ForEach(rows.indices, id: \.self) { r in
+                HStack(spacing: 6) {
+                    ForEach(rows[r], id: \.self) { key in
+                        let date = entry.slot(for: key)?.date
+                        PrayerGridCell(
+                            key: key,
+                            date: date,
+                            timeZone: tz,
+                            isUpcoming: key == upcoming,
+                            isPast: (date.map { $0 <= entry.date } ?? false) && key != upcoming
+                        )
+                    }
+                }
+            }
+        }
+    }
+}

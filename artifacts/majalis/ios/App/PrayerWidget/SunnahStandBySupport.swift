@@ -49,51 +49,30 @@ struct StandByPrayerCountdownView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(entry.nextDisplayName ?? "الصلاة التالية")
-                .font(.title2.bold())
-                .foregroundStyle(.white)
-            PrayerCountdownText(entry: entry)
-                .font(.system(size: 44, weight: .bold, design: .rounded).monospacedDigit())
-                .foregroundStyle(SunnahBrandColors.gold)
-                .widgetAccentable()
-                .minimumScaleFactor(0.5)
-            if let hijri = entry.hijriDateText {
-                Text(hijri)
-                    .font(.headline)
-                    .foregroundStyle(SunnahWidgetTheme.secondaryText)
+            if let key = entry.focus.key {
+                PrayerNameTime(key: key, date: entry.focus.date, timeZone: entry.displayTimeZone,
+                               nameSize: 24, timeSize: 20, filled: entry.focus.isCurrent)
+                    .foregroundStyle(SunnahWidgetTheme.primaryText)
+                SunnahCounterFace(entry: entry, size: 44)
+                    .foregroundStyle(SunnahBrandColors.gold)
+                    .widgetAccentable()
+            } else {
+                SunnahCalmCard()
+                    .foregroundStyle(SunnahWidgetTheme.primaryText)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .padding(16)
-        .accessibilityLabel(entry.elapsedNameAr.map { "مضى على أذان \($0)" } ?? "العد التنازلي للصلاة التالية \(entry.nextNameAr ?? "")")
+        .accessibilityLabel(PrayerCounterA11y.label(entry))
     }
 }
 
+/// StandBy للصلاة الحالية: نفس الوجه الموحّد؛ العدّ التصاعدي يأتي من المحرك لنافذة الـ30 دقيقة فقط.
 struct StandByCurrentPrayerView: View {
     let entry: PrayerWidgetEntry
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("الصلاة الحالية")
-                .font(.caption.bold())
-                .foregroundStyle(SunnahBrandColors.gold)
-                .widgetAccentable()
-            Text(entry.currentNameAr ?? "قبل الفجر")
-                .font(.largeTitle.bold())
-                .foregroundStyle(.white)
-            if let start = entry.currentStartDate {
-                Text(SunnahWidgetTimeFormatting.clock(start))
-                    .font(.title3.monospacedDigit().bold())
-                    .foregroundStyle(.white)
-                PrayerElapsedText(entry: entry)
-                    .font(.title2.monospacedDigit().bold())
-                    .foregroundStyle(SunnahBrandColors.gold)
-                    .widgetAccentable()
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-        .padding(16)
-        .accessibilityLabel("الصلاة الحالية \(entry.currentNameAr ?? "قبل الفجر")")
+        StandByPrayerCountdownView(entry: entry)
     }
 }
 
@@ -182,18 +161,5 @@ struct StandByTodayInSunnahView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .padding(16)
         .accessibilityLabel("اليوم في سُنّة")
-    }
-}
-
-struct PrayerElapsedText: View {
-    let entry: PrayerWidgetEntry
-
-    var body: some View {
-        let mode = LiveClock.current(now: entry.date, start: entry.currentStartDate)
-        if mode == .none {
-            Text("قبل الفجر")
-        } else {
-            PrayerLiveClock(mode: mode, now: entry.date, live: entry.allowsLiveCountdown)
-        }
     }
 }
