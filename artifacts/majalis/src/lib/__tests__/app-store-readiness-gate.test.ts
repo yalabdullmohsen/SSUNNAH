@@ -71,7 +71,11 @@ const privacy = readMaj("ios/App/App/PrivacyInfo.xcprivacy");
 assert.match(privacy, /NSPrivacyTracking/);
 assert.match(privacy, /NSPrivacyCollectedDataTypeEmailAddress/);
 assert.match(privacy, /NSPrivacyCollectedDataTypeCoarseLocation/);
-assert.doesNotMatch(privacy, /NSPrivacyCollectedDataTypeAudioData/);
+// اختبار التلاوة يرسل الصوت إلى Groq بعد موافقة: AudioData مجموع، غير مرتبط، بلا تتبع، وظيفة التطبيق
+assert.match(
+  privacy,
+  /NSPrivacyCollectedDataTypeAudioData<\/string>\s*<key>NSPrivacyCollectedDataTypeLinked<\/key>\s*<false\/>\s*<key>NSPrivacyCollectedDataTypeTracking<\/key>\s*<false\/>\s*<key>NSPrivacyCollectedDataTypePurposes<\/key>\s*<array>\s*<string>NSPrivacyCollectedDataTypePurposeAppFunctionality<\/string>/,
+);
 
 const info = readMaj("ios/App/App/Info.plist");
 assert.match(info, /CFBundleDisplayName/);

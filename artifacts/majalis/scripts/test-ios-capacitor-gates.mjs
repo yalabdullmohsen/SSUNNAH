@@ -130,8 +130,8 @@ ok(
   "PrivacyInfo does not invent unused Required Reason APIs",
 );
 ok(
-  !privacy.includes("NSPrivacyCollectedDataTypeAudioData"),
-  "PrivacyInfo must not declare AudioData after mic/speech removal",
+  /NSPrivacyCollectedDataTypeAudioData<\/string>\s*<key>NSPrivacyCollectedDataTypeLinked<\/key>\s*<false\/>\s*<key>NSPrivacyCollectedDataTypeTracking<\/key>\s*<false\/>/s.test(privacy),
+  "PrivacyInfo declares AudioData (recitation test → Groq): not linked, no tracking",
 );
 
 const live = readFileSync(
