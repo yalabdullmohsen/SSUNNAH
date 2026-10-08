@@ -3,7 +3,7 @@
  * node --import tsx src/lib/__tests__/recitation-test-ai-gate.test.ts
  */
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -270,22 +270,12 @@ console.log("=== الأمان والتوجيه ===");
 console.log("=== الواجهة والتوصيل والخصوصية ===");
 {
   const routes = read("src/AppRoutes.tsx");
-  assert.match(routes, /path="\/quran\/recitation-test-ai"><SafeLazyRoute component=\{RecitationTestAiPage\}/);
-  assert.doesNotMatch(routes, /recitation-test-ai"><Redirect/, "حُذف التحويل");
+  assert.match(routes, /path="\/quran\/recitation-test-ai"><Redirect to="\/mushaf\?tasmee=1"/, "المسار القديم يحوّل إلى المصحف بوضع التسميع");
+  assert.equal(existsSync(resolve(root, "src/pages/quran/RecitationTestAiPage.tsx")), false, "صفحة التسميع القديمة محذوفة");
   assert.doesNotMatch(read("src/config/sections.registry.ts"), /from: "\/quran\/recitation-test-ai"/, "لا تحويل قديم في السجل");
   assert.match(read("src/lib/feature-registry.ts"), /id:\s*"recitation-test-ai"[^}]*status:\s*"active"/, "مسجّلة في feature-registry");
-  assert.match(read("src/design-system/screens/QuranHubScreen.tsx"), /href="\/quran\/recitation-test-ai"/, "مدخل في تبويب القرآن");
+  assert.match(read("src/design-system/screens/QuranHubScreen.tsx"), /href="\/mushaf\?tasmee=1"/, "مدخل في تبويب القرآن");
 
-  const page = read("src/pages/quran/RecitationTestAiPage.tsx");
-  assert.match(page, /لا يقيّم أحكام التجويد/, "إعلان صريح: لا تجويد");
-  assert.match(page, /لا يُخزَّن/, "إعلان الخصوصية في الواجهة");
-  assert.match(page, /أخطاء <strong>الحفظ<\/strong> فقط/);
-  assert.doesNotMatch(page, /localStorage|sessionStorage|indexedDB|createObjectURL|FileReader|saveAs/, "لا يحتفظ بالتسجيل");
-  for (const word of ["ناقصة", "مبدّلة", "زائدة", "صحيحة"]) assert.match(page, new RegExp(word), `تسمية ${word}`);
-  assert.match(page, /resolveCanonicalAyahHref/, "انتقال للآية في المصحف");
-  assert.match(page, /NotAllowedError/, "معالجة رفض الميكروفون");
-  assert.match(page, /data-testid="recitation-consent"[\s\S]{0,600}Groq|RECITATION_PROVIDER_NAME/, "شاشة الموافقة تسمّي الخدمة الخارجية");
-  assert.match(page, /hasRecitationConsent\(\)\) void start\(\);\s*else setPhase\("consent"\)/, "لا بدء قبل الموافقة");
   const apiSrc = read("src/lib/recitation-test/api.ts");
   assert.match(apiSrc, /if \(!hasRecitationConsent\(\)\) throw new AsrError\([^)]*"consent"\)[\s\S]*await blobToBase64/, "العميل لا يرسل صوتًا دون موافقة");
 

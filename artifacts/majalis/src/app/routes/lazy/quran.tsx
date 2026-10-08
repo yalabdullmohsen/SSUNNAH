@@ -58,7 +58,6 @@ export const QuranMemorizationPage = lazy(() => import("@/pages/quran/QuranMemor
 export const QuranMemorizationPlansPage = lazy(() => import("@/pages/quran/QuranMemorizationPlansPage"));
 
 export const QuranHifzLoopPage = lazy(() => import("@/pages/quran/QuranHifzLoopPage"));
-export const RecitationTestAiPage = lazy(() => import("@/pages/quran/RecitationTestAiPage"));
 
 export const QuranWorshipHubPage = lazy(() => import("@/pages/quran/QuranWorshipHubPage"));
 
