@@ -1,3 +1,4 @@
+import { NavigationBar, SearchField } from "@/design-system";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
@@ -6,8 +7,6 @@ import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import type { FiqhGuideSection } from "@/lib/fiqh-guides/types";
 import "@/styles/pages/fiqh-guide.css";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 import { EMPTY } from "@/lib/ui-copy";
 
@@ -41,7 +40,8 @@ export function FiqhGuidePage({ section }: Props) {
   }, [activeTab, search]);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title={section.title} large={false} />
     <div className="fg-page" dir="rtl">
       <header className="fg-hero">
         <span className="fg-hero__badge">{section.badge}</span>
@@ -53,8 +53,7 @@ export function FiqhGuidePage({ section }: Props) {
       {section.methodology && <p className="fg-method">{section.methodology}</p>}
 
       <div className="fg-search">
-        <SearchInput className="fg-search__input" placeholder="ابحث في هذا القسم..." value={search} onChange={(e) => setSearch(e.target.value)}
-          aria-label={`بحث في ${section.title}`} onClear={() => setSearch("")} />
+        <SearchField value={search} onChange={setSearch} placeholder="ابحث في هذا القسم..." label={`بحث في ${section.title}`} />
       </div>
 
       <div className="fg-tabs" role="tablist" aria-label={`أبواب ${section.title}`}>
@@ -123,6 +122,6 @@ export function FiqhGuidePage({ section }: Props) {
         />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

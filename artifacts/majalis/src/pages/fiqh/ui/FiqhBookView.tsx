@@ -1,3 +1,4 @@
+import { NavigationBar } from "@/design-system";
 import { Link, useParams } from "wouter";
 import { useEffect, useState } from "react";
 import { InternalLinkCard } from "@/components/ui/InternalCards";
@@ -19,7 +20,6 @@ import {
 import { chapterPreviewText, fiqhBookEditorial } from "@/lib/fiqh-editorial";
 import { formatAbwabCount, formatMasailCount } from "@/lib/arabic-count";
 import "@/styles/pages/fiqh-hub.css";
-import { DetailScreen } from "@/components/design-system/screens";
 import { KnowledgeLayout } from "@/components/knowledge";
 import { truncateAtWord } from "@/lib/utils";
 
@@ -86,7 +86,8 @@ export default function FiqhBookPage() {
   const level = fiqhBookApproxLevel(book);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title={editorial.title} large={false} />
     <KnowledgeLayout kind="library" className="fiqh-lux-shell fiqh-lux-book page-shell ve-page" data-kx="1">
       <nav className="fiqh-lux-crumb" aria-label="مسار التنقل">
         <Link href="/fiqh">الفقه</Link>
@@ -161,6 +162,6 @@ export default function FiqhBookPage() {
       </ol>
       <div className="fiqh-fab-clearance ve-bottom-clearance" />
     </KnowledgeLayout>
-    </DetailScreen>
+    </div>
   );
 }
