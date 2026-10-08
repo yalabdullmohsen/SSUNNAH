@@ -85,6 +85,7 @@ import { MUSHAF_CHROME_HIDE_MS } from "@/features/mushaf-shared/layout-bands";
 import { MushafPage } from "./MushafPage";
 import { MushafControlsLayer, MushafVerseMenu } from "./MushafControlsLayer";
 import { MushafReadingCoach } from "./MushafReadingCoach";
+import { isTasmeeV2Enabled } from "@/lib/tasmee-v2/flags";
 import { MushafPageArrows } from "./MushafPageArrows";
 import { Button } from "@/components/ui/button";
 import { mushafButtonClass } from "./mushaf-button-parity";
@@ -139,6 +140,9 @@ import "@/features/mushaf-madinah/mushaf-madinah.css";
 /* صقل Chrome الخروج/الأسهم — بعد mushaf-reader حتى يفوز بدون لمس Geometry */
 import "@/styles/reader-page-chrome.css";
 
+const TasmeeV2Layer = lazy(() =>
+  import("@/features/tasmee-v2/TasmeeV2Layer").then((m) => ({ default: m.TasmeeV2Layer })),
+);
 const MushafBookmarkComposer = lazy(() =>
   import("@/features/mushaf-bookmarks").then((m) => ({
     default: m.MushafBookmarkComposer,
@@ -178,13 +182,21 @@ type Props = {
   onPageChange: (page: number) => void;
   onExit: () => void;
   onIndex: () => void;
+  /** `?tasmee=1` — يفتح وضع التسميع (تحت العلم tasmee_v2) */
+  tasmeeRequested?: boolean;
 };
 
 /**
  * NewMushafReader — واجهة مصحف جديدة من الصفر.
  * البيانات/التلاوة/التفسير من المصادر المعتمدة؛ العرض بصري جديد بالكامل.
  */
-export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _onIndex }: Props) {
+export function NewMushafReader({
+  pageNumber,
+  onPageChange,
+  onExit,
+  onIndex: _onIndex,
+  tasmeeRequested = false,
+}: Props) {
   const page = clampMushafPage(pageNumber);
   useEffect(() => {
     enableMushafTurnTelemetry(true);
@@ -1852,6 +1864,23 @@ export function NewMushafReader({ pageNumber, onPageChange, onExit, onIndex: _on
           !pagerSettled
         }
       />
+      {isTasmeeV2Enabled() ? (
+        <Suspense fallback={null}>
+          <TasmeeV2Layer
+            pageNumber={page}
+            startInTasmee={tasmeeRequested}
+            blocked={
+              actionsOpen ||
+              gotoOpen ||
+              tafsirOpen ||
+              searchOpen ||
+              indexOpen ||
+              bookmarkComposerOpen ||
+              pageBookmarkSheetOpen
+            }
+          />
+        </Suspense>
+      ) : null}
     </MushafPager>
   );
 }

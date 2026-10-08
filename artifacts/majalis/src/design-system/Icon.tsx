@@ -5,6 +5,7 @@ import {
   GraduationCap, Hand, Headphones, Heart, House, Info, Landmark, Languages, Lightbulb, LogIn, MapPin,
   Moon, Palette, Play, RefreshCw, Scale, ScrollText, Search, Settings, Share2, Shield, ShieldCheck,
   Sparkles, Star, Sun, TriangleAlert, User, Users, WifiOff, X,
+  Eye, EyeOff, Layers, Mic, RotateCcw, Square, Undo2,
 } from "lucide-react";
 
 /**
@@ -62,6 +63,13 @@ export const DS_ICONS = {
   sun: Sun,
   shield: Shield,
   beads: CircleDot,
+  mic: Mic,
+  stop: Square,
+  eye: Eye,
+  eyeOff: EyeOff,
+  undo: Undo2,
+  restart: RotateCcw,
+  focus: Layers,
 } as const satisfies Record<string, LucideIcon>;
 
 export type DsIconName = keyof typeof DS_ICONS;
