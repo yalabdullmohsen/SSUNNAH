@@ -11,8 +11,7 @@ import { AppBackButton } from "@/components/common/AppBackButton";
 import { HadithListCard } from "@/components/hadith/HadithListCard";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { ExploreAlsoNav } from "@/components/ExploreAlsoNav";
-import { ListScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
+import { NavigationBar, SearchField } from "@/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 import "@/styles/pages/arbaeen-nawawi.css";
 import "@/styles/pages/hadith-design-language.css";
@@ -156,7 +155,8 @@ export default function ArbaeenNawawiPage() {
   };
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الأربعون النووية" large={false} />
       <KnowledgeLayout
         kind="hadith"
         className="page-shell an-page an-page--safe"
@@ -216,14 +216,11 @@ export default function ArbaeenNawawiPage() {
 
           <div className="an-filters">
             <div className="an-search-wrap">
-              <SearchInput
-                className="an-search"
+              <SearchField
                 placeholder="ابحث في أحاديث الأربعين النووية"
                 value={query}
-                onChange={(e) => onQueryChange(e.target.value)}
-                aria-label="ابحث في أحاديث الأربعين النووية"
-                enterKeyHint="search"
-                autoComplete="off"
+                onChange={onQueryChange}
+                label="ابحث في أحاديث الأربعين النووية"
               />
             </div>
             {query.trim() ? (
@@ -338,6 +335,6 @@ export default function ArbaeenNawawiPage() {
           </div>
         </div>
       </KnowledgeLayout>
-    </ListScreen>
+    </div>
   );
 }
