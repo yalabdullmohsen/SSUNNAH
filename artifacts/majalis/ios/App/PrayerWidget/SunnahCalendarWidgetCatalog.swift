@@ -67,7 +67,7 @@ struct IslamicEventWidget: Widget {
                 .widgetURL(SunnahWidgetDeepLinkFactory.occasions())
         }
         .configurationDisplayName("المناسبة القادمة")
-        .description("أقرب مناسبة إسلامية معتمدة وعدد الأيام المتبقية.")
+        .description("أقرب مناسبة إسلامية وعدد الأيام المتبقية.")
         .supportedFamilies(SunnahWidgetFamilySupport.calendarEvent)
     }
 }

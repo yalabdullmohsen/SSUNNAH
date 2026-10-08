@@ -74,15 +74,37 @@ private struct SunnahWidgetSurface: ViewModifier {
     }
 }
 
+extension View {
+    /// تخطيط البطاقة الموحّد: يملأ الودجة ويُرسي المحتوى عند بداية السطر (يمين في RTL) فلا يتوسّط ولا يُقصّ.
+    func sunnahCardLayout(_ padding: CGFloat = 14) -> some View {
+        self
+            .padding(padding)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+    }
+
+    /// سقف لحجم الخط الديناميكي داخل الودجات حتى لا يُقصّ النص عند أحجام الإتاحة الكبيرة.
+    func sunnahDynamicTypeCap() -> some View {
+        dynamicTypeSize(...DynamicTypeSize.accessibility1)
+    }
+}
+
 struct SunnahWidgetEmptyState: View {
     let message: String
     var body: some View {
-        Text(message)
-            .font(SunnahWidgetTheme.bodyFont)
-            .foregroundStyle(SunnahWidgetTheme.primaryText)
-            .multilineTextAlignment(.trailing)
-            .minimumScaleFactor(0.8)
-            .padding(SunnahWidgetTheme.spacingMD)
+        VStack(alignment: .leading, spacing: SunnahWidgetTheme.spacingSM) {
+            Image(systemName: "arrow.up.forward.app")
+                .font(.title3)
+                .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
+                .accessibilityHidden(true)
+            Text(message)
+                .font(SunnahWidgetTheme.bodyFont)
+                .foregroundStyle(SunnahWidgetTheme.primaryText)
+                .multilineTextAlignment(.leading)
+                .lineLimit(4)
+                .minimumScaleFactor(0.8)
+        }
+        .sunnahCardLayout(SunnahWidgetTheme.spacingMD)
     }
 }
 
