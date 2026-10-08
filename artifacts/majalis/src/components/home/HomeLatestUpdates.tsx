@@ -4,7 +4,7 @@ import type { MergedUpdateItem } from "@/lib/auto-content/auto-content-utils";
 import { displayText } from "@/lib/display-text";
 import { truncateAtWord } from "@/lib/utils";
 import { Widget } from "@/components/widgets/Widget";
-import { InteractiveCard } from "@/components/design-system/SurfacePrimitives";
+import { LinkCard } from "@/design-system";
 
 const UpdatesIcon = () => (
   <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16">
@@ -72,7 +72,7 @@ export function HomeLatestUpdates() {
     >
       <div className="home-more-grid" aria-busy={loading}>
         {items.map((item) => (
-          <InteractiveCard
+          <LinkCard
             key={item.id}
             href={item.source_url || `/updates/auto/${item.slug}`}
             title={displayText(item.title)}
@@ -85,7 +85,7 @@ export function HomeLatestUpdates() {
               {item.source_name && <span>{item.source_name}</span>}
               {item.published_at && <span>{formatDate(item.published_at)}</span>}
             </span>
-          </InteractiveCard>
+          </LinkCard>
         ))}
       </div>
     </Widget>

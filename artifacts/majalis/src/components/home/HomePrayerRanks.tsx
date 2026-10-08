@@ -1,6 +1,6 @@
 import { RANKS } from "@/pages/worship/PrayerRanksPage";
 import { Widget } from "@/components/widgets/Widget";
-import { InsetSurface } from "@/components/design-system/SurfacePrimitives";
+import { Card } from "@/design-system";
 
 const RankIcon = () => (
   <svg aria-hidden="true" width="17" height="17" viewBox="0 0 17 17" style={{ marginTop: "0.1rem", flexShrink: 0 }}>
@@ -22,13 +22,13 @@ export function HomePrayerRanks() {
     >
       <div className="home-prayer-ranks-list">
         {RANKS.map((rank, index) => (
-          <InsetSurface key={rank.title} className="home-prayer-rank-row" padding="sm">
+          <Card key={rank.title} className="home-prayer-rank-row">
             <span className="home-prayer-rank-num">{index + 1}</span>
             <div className="home-prayer-rank-body">
               <p className="home-prayer-rank-label">{rank.label}</p>
               <p className="home-prayer-rank-ruling">{rank.ruling}</p>
             </div>
-          </InsetSurface>
+          </Card>
         ))}
       </div>
     </Widget>

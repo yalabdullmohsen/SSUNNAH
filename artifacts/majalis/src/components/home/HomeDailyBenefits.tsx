@@ -3,7 +3,7 @@ import { BookMarked, PlayCircle, Layers } from "lucide-react";
 import { getBenefitCards } from "@/lib/unified-content-service";
 import type { AutoImportedContent } from "@/lib/auto-content/auto-content-utils";
 import { Widget } from "@/components/widgets/Widget";
-import { AppCard } from "@/components/design-system/AppCard";
+import { Card } from "@/design-system";
 import { AR_UI_LOCALE } from "@/lib/numerals";
 
 const BADGE_LABELS: Record<string, string> = {
@@ -68,7 +68,7 @@ export function HomeDailyBenefits() {
 function BenefitCard({ item }: { item: AutoImportedContent }) {
   const speaker = item.attribution_name || item.organization_name || "المصدر: الحساب الرسمي";
   return (
-    <AppCard padding="none" className="dmb__card">
+    <Card flush className="dmb__card">
       {item.image_url && (
         <div className="dmb__card-media">
           <img
@@ -106,7 +106,7 @@ function BenefitCard({ item }: { item: AutoImportedContent }) {
           قراءة المصدر ←
         </a>
       )}
-    </AppCard>
+    </Card>
   );
 }
 

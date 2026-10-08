@@ -38,9 +38,9 @@ assert.match(idx, /InsetSurface/);
 assert.match(idx, /ElevatedSurface/);
 
 assert.match(read("src/pages/account/ui/SettingsView.tsx"), /AppCard/);
-assert.match(read("src/components/home/HomeDailyProgress.tsx"), /InteractiveCard/);
-assert.match(read("src/components/home/HomeLatestUpdates.tsx"), /InteractiveCard/);
-assert.match(read("src/components/home/HomePrayerRanks.tsx"), /InsetSurface/);
+assert.match(read("src/components/home/HomeDailyProgress.tsx"), /LinkCard[\s\S]*@\/design-system/);
+assert.match(read("src/components/home/HomeLatestUpdates.tsx"), /LinkCard[\s\S]*@\/design-system/);
+assert.match(read("src/components/home/HomePrayerRanks.tsx"), /Card[\s\S]*@\/design-system/);
 assert.match(
   read("src/pages/account/ui/SearchView.tsx"),
   /NoResultsState|StatusCard/,
