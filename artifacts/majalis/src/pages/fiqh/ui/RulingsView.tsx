@@ -1,3 +1,4 @@
+import { NavigationBar } from "@/design-system";
 import "@/styles/rulings-encyclopedia.css";
 import "@/styles/pages/fiqh-hub.css";
 import "@/styles/sunnah-identity-sections.css";
@@ -65,7 +66,6 @@ import { usePageView } from "@/hooks/usePageView";
 import { usePersistedState } from "@/hooks/usePersistedState";
 import { RequestManager } from "@/lib/request-manager";
 import { RULINGS_CATEGORY_TREE } from "@/lib/rulings-categories";
-import { ListScreen } from "@/components/design-system/screens";
 
 
 const PAGE_SIZE = 24;
@@ -238,7 +238,8 @@ export default function RulingsPage() {
   );
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الأحكام الشرعية" large={false} />
     <KnowledgeLayout kind="fiqh" className="content-hub-page rulings-encyclopedia-page" data-kx="1">
       <PageHeader
         eyebrow="موسوعة الفقه"
@@ -356,6 +357,6 @@ export default function RulingsPage() {
         {filtersPanel}
       </FilterBottomSheet>
     </KnowledgeLayout>
-    </ListScreen>
+    </div>
   );
 }

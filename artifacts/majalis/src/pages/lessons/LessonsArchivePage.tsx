@@ -5,7 +5,8 @@ import { PageLoadingGuard } from "@/components/PageLoadingGuard";
 import { PageShell } from "@/components/layout/PageShell";
 import { UnifiedLessonCard } from "@/components/lessons/UnifiedLessonCard";
 import { ExploreAlsoNav } from "@/components/ExploreAlsoNav";
-import { EmptyStateV2, NoResultsState, SearchInput } from "@/components/design-system";
+import { EmptyStateV2, NoResultsState } from "@/components/design-system";
+import { SearchField } from "@/design-system";
 import { applyPageSeo } from "@/lib/seo";
 import { getUnifiedLessonsSplit } from "@/lib/lessons-service";
 import { RequestManager } from "@/lib/request-manager";
@@ -110,15 +111,11 @@ export default function LessonsArchivePage() {
       </p>
 
       <div className="lessons-archive-search">
-        <SearchInput
-          className="adm-input"
+        <SearchField
           placeholder="بحث في العنوان أو الشيخ أو المسجد…"
           value={filters.search}
-          onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
-          onClear={() => setFilters((prev) => ({ ...prev, search: "" }))}
-          aria-label="بحث في الأرشيف"
-          enterKeyHint="search"
-          autoComplete="off"
+          onChange={(v) => setFilters((prev) => ({ ...prev, search: v }))}
+          label="بحث في الأرشيف"
         />
       </div>
 

@@ -89,6 +89,11 @@
 		A04BBF01STANDBYWGT000000 /* SunnahStandBySupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04BFR01STANDBYFILE00000 /* SunnahStandBySupport.swift */; };
 		A04CBF01HOMECATWGT000000 /* SunnahHomeWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CFR01HOMECATFILE00000 /* SunnahHomeWidgetCatalog.swift */; };
 		A04DBF01CONTCATWGT000000 /* SunnahContentExperienceCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04DFR01CONTCATFILE00000 /* SunnahContentExperienceCatalog.swift */; };
+		E8FAF235C7ADB6B58001180E /* TasmeeModelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C9A6F770F228A9A592AA6B /* TasmeeModelStore.swift */; };
+		16A433A5683F0C8686196108 /* TasmeeDiagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02A2FF5AD56F0E252795DB1 /* TasmeeDiagnostics.swift */; };
+		27F5261352468F0F22075CE6 /* TasmeeEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1498D6BAF817373759263191 /* TasmeeEngine.swift */; };
+		C111C7843A144ABE6B44D250 /* TasmeeEnginePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50BA5F9A3D58146CF540B9D /* TasmeeEnginePlugin.swift */; };
+		14C68FE1795B6FEAF8C8CCD4 /* WhisperKit in Frameworks */ = {isa = PBXBuildFile; productRef = AFF96E47BCAF431E88434BA9 /* WhisperKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +211,10 @@
 		A04BFR01STANDBYFILE00000 /* SunnahStandBySupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahStandBySupport.swift; sourceTree = "<group>"; };
 		A04CFR01HOMECATFILE00000 /* SunnahHomeWidgetCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahHomeWidgetCatalog.swift; sourceTree = "<group>"; };
 		A04DFR01CONTCATFILE00000 /* SunnahContentExperienceCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahContentExperienceCatalog.swift; sourceTree = "<group>"; };
+		85C9A6F770F228A9A592AA6B /* TasmeeModelStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasmeeModelStore.swift; sourceTree = "<group>"; };
+		D02A2FF5AD56F0E252795DB1 /* TasmeeDiagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasmeeDiagnostics.swift; sourceTree = "<group>"; };
+		1498D6BAF817373759263191 /* TasmeeEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasmeeEngine.swift; sourceTree = "<group>"; };
+		D50BA5F9A3D58146CF540B9D /* TasmeeEnginePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasmeeEnginePlugin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D22ABE92AF431CB00220026 /* CapApp-SPM in Frameworks */,
+				14C68FE1795B6FEAF8C8CCD4 /* WhisperKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +281,7 @@
 				A055FR01AUTHKEYCHAIN /* SunnahAuthKeychainPlugin.swift */,
 				B2C3D4E5F6071890AB12CD02 /* MajlisPlaybackAudioPlugin.swift */,
 				C1D2E3F4A5B6071890AB12CD02 /* MajlisOfflineAudioPlugin.swift */,
+				09A6B05A810FEA747FB265C7 /* Tasmee */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
 				AD10FR01A1B2C3D4E5F6071890 /* prayer_quiet.caf */,
 				AD10FR02A1B2C3D4E5F6071890 /* prayer_clear.caf */,
@@ -377,6 +388,17 @@
 			path = PrayerWidget;
 			sourceTree = "<group>";
 		};
+		09A6B05A810FEA747FB265C7 /* Tasmee */ = {
+			isa = PBXGroup;
+			children = (
+				85C9A6F770F228A9A592AA6B /* TasmeeModelStore.swift */,
+				D02A2FF5AD56F0E252795DB1 /* TasmeeDiagnostics.swift */,
+				1498D6BAF817373759263191 /* TasmeeEngine.swift */,
+				D50BA5F9A3D58146CF540B9D /* TasmeeEnginePlugin.swift */,
+			);
+			path = Tasmee;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 
@@ -399,6 +421,7 @@
 			name = App;
 			packageProductDependencies = (
 				4D22ABE82AF431CB00220026 /* CapApp-SPM */,
+				AFF96E47BCAF431E88434BA9 /* WhisperKit */,
 			);
 			productName = App;
 			productReference = 504EC3041FED79650016851F /* App.app */;
@@ -482,6 +505,7 @@
 			mainGroup = 504EC2FB1FED79650016851F;
 			packageReferences = (
 				D4C12C0A2AAA248700AAC8A2 /* XCLocalSwiftPackageReference "CapApp-SPM" */,
+				3B6ACED0962ABEA203B7F207 /* XCRemoteSwiftPackageReference "argmax-oss-swift" */,
 			);
 			productRefGroup = 504EC3051FED79650016851F /* Products */;
 			projectDirPath = "";
@@ -573,6 +597,10 @@
 				A055BF01AUTHKEYCHAIN /* SunnahAuthKeychainPlugin.swift in Sources */,
 				B2C3D4E5F6071890AB12CD01 /* MajlisPlaybackAudioPlugin.swift in Sources */,
 				C1D2E3F4A5B6071890AB12CD01 /* MajlisOfflineAudioPlugin.swift in Sources */,
+				E8FAF235C7ADB6B58001180E /* TasmeeModelStore.swift in Sources */,
+				16A433A5683F0C8686196108 /* TasmeeDiagnostics.swift in Sources */,
+				27F5261352468F0F22075CE6 /* TasmeeEngine.swift in Sources */,
+				C111C7843A144ABE6B44D250 /* TasmeeEnginePlugin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,7 +703,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yousef.majlisilm.PrayerLiveActivity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG TASMEE_DIAGNOSTICS";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -763,7 +791,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG TASMEE_DIAGNOSTICS";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -838,7 +866,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yousef.majlisilm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG TASMEE_DIAGNOSTICS";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -888,7 +916,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yousef.majlisilm.PrayerWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG TASMEE_DIAGNOSTICS";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -972,7 +1000,23 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		3B6ACED0962ABEA203B7F207 /* XCRemoteSwiftPackageReference "argmax-oss-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/argmaxinc/argmax-oss-swift.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.18.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		AFF96E47BCAF431E88434BA9 /* WhisperKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B6ACED0962ABEA203B7F207 /* XCRemoteSwiftPackageReference "argmax-oss-swift" */;
+			productName = WhisperKit;
+		};
 		4D22ABE82AF431CB00220026 /* CapApp-SPM */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D4C12C0A2AAA248700AAC8A2 /* XCLocalSwiftPackageReference "CapApp-SPM" */;

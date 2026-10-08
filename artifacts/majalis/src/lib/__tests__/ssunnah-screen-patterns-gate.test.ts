@@ -85,8 +85,10 @@ for (const row of batch1) {
   assert.ok(existsSync(resolve(root, row.source)), `مصدر مفقود: ${row.source}`);
   const src = read(row.source);
   const comp = expectImport[row.pattern];
-  assert.match(src, new RegExp(comp), `${row.id} يستورد ${comp}`);
-  assert.match(src, /compose=["']mark["']|compose=["']layout["']/, `${row.id} يحدّد compose`);
+  // صفحة مهاجَرة إلى نظام sn-: غلاف sn-screen + NavigationBar بدل شاشة النمط القديمة.
+  const migrated = /className="sn-screen"/.test(src) && /NavigationBar/.test(src);
+  assert.ok(new RegExp(comp).test(src) || migrated, `${row.id} يستورد ${comp} أو sn-screen + NavigationBar`);
+  assert.ok(/compose=["']mark["']|compose=["']layout["']/.test(src) || migrated, `${row.id} يحدّد compose أو sn-screen`);
   assert.doesNotMatch(src, /fontSize:\s*["'][0-9]+px/, `${row.id}: بلا fontSize px جديد`);
 }
 

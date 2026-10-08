@@ -6,6 +6,10 @@ interface ImportMetaEnv {
   readonly VITE_SUPABASE_ANON_KEY?: string;
   readonly VITE_VAPID_PUBLIC_KEY?: string;
   readonly VITE_COMMIT_HASH?: string;
+  /** رابط manifest نموذج التسميع لشاشة القياس (Debug/TestFlight) */
+  readonly VITE_TASMEE_MANIFEST_URL?: string;
+  /** "1" في بناء TestFlight فقط: يفعّل شاشة قياس التسميع المخفية */
+  readonly VITE_TASMEE_DIAGNOSTICS?: string;
   readonly VITE_BUILD_ID?: string;
   /** "native" في متغيّر البناء الأصلي فقط — انظر src/lib/native-platform.ts */
   readonly VITE_TARGET?: string;

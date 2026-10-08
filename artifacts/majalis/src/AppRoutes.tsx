@@ -280,6 +280,9 @@ function LegacyLearnIdRedirect({ id }: { id: string }) {
   return <Redirect to={href} />;
 }
 
+/** شاشة قياس التسميع المخفية: بناء Debug أو TestFlight فقط (VITE_TASMEE_DIAGNOSTICS=1)؛ تُستبعد كليًا من بناء App Store. */
+const TASMEE_DIAGNOSTICS_BUILD = import.meta.env.DEV || import.meta.env.VITE_TASMEE_DIAGNOSTICS === "1";
+
 export default function AppRoutes() {
   return (
     <Switch>
@@ -308,6 +311,13 @@ export default function AppRoutes() {
       <Route path="/support"><SafeLazyRoute component={ContactPage} /></Route>
       <Route path="/settings"><SafeLazyRoute component={SettingsPage} /></Route>
       <Route path="/widget-center"><SafeLazyRoute component={WidgetCenterPage} /></Route>
+      {TASMEE_DIAGNOSTICS_BUILD ? (
+        <Route path="/debug/tasmee">
+          <SafeLazyRoute
+            component={lazyWithRetry(() => import("@/pages/dev/TasmeeDiagnosticsPage"), "TasmeeDiagnosticsPage")}
+          />
+        </Route>
+      ) : null}
       {import.meta.env.DEV ? (
         <Route path="/dev/design-system">
           <SafeLazyRoute

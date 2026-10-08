@@ -18,7 +18,7 @@ import {
 } from "@/lib/unified-lesson-card";
 import { ShareButtons } from "@/components/ContentActions";
 import { LessonRecordingPlayer } from "@/components/lessons/LessonRecordingPlayer";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { AppBackButton } from "@/components/common/AppBackButton";
 import { cleanDisplayText } from "@/lib/display-text";
 import { cleanLessonPublicText } from "@/lib/content-display-polish";
@@ -357,7 +357,8 @@ export default function LessonDetailPage({
   const placeLabel = [unified.mosque, unified.region].filter(Boolean).join(" — ");
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="تفاصيل الدرس" large={false} />
     <div className="page-shell narrow lesson-detail-page lesson-detail-page--redesign mj-page" aria-busy={loading}>
       <AppBackButton
         variant="inline"
@@ -646,6 +647,6 @@ export default function LessonDetailPage({
         </div>
       )}
     </div>
-    </DetailScreen>
+    </div>
   );
 }

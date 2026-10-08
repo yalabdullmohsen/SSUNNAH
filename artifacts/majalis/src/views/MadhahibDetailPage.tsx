@@ -1,3 +1,4 @@
+import { NavigationBar } from "@/design-system";
 import { useEffect, useMemo } from "react";
 import { Link, useRoute } from "wouter";
 import { TopicPage } from "@/components/topic/TopicPage";
@@ -8,7 +9,6 @@ import { KnowledgeLayout } from "@/components/knowledge";
 import { KnowledgeDetailSurface } from "@/components/knowledge/KnowledgeDetailSurface";
 import type { KnowledgeDetailSurfaceSection } from "@/components/knowledge/KnowledgeDetailSurface";
 import { getMadhhabById } from "@/data/madhahib";
-import { DetailScreen } from "@/components/design-system/screens";
 import "@/styles/pages/madhahib.css";
 
 const LIST_PATH = "/madhahib";
@@ -94,7 +94,8 @@ export default function MadhahibDetailPage() {
 
   if (!madhhab) {
     return (
-      <DetailScreen compose="mark">
+      <div className="sn-screen">
+      <NavigationBar title="مذهب غير موجود" large={false} />
         <TopicPage
           themeId="fiqh"
           sectionRoute={LIST_PATH}
@@ -109,12 +110,13 @@ export default function MadhahibDetailPage() {
         >
           <Link href={LIST_PATH}>العودة إلى المذاهب</Link>
         </TopicPage>
-      </DetailScreen>
+      </div>
     );
   }
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title={madhhab.fullName} large={false} />
       <TopicPage
         themeId="fiqh"
         sectionRoute={LIST_PATH}
@@ -136,6 +138,6 @@ export default function MadhahibDetailPage() {
           />
         </KnowledgeLayout>
       </TopicPage>
-    </DetailScreen>
+    </div>
   );
 }

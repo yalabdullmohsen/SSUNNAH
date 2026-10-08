@@ -1,3 +1,4 @@
+import { NavigationBar, SearchField } from "@/design-system";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import { useEffect, useState, useMemo } from "react";
 import { Link } from "wouter";
@@ -8,8 +9,6 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { toWesternDigits } from "@/shared/arabic-normalize";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/zakat.css";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 import { Button } from "@/components/ui/button";
@@ -318,7 +317,8 @@ export default function ZakatPage() {
   }
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الزكاة وأحكامها" large={false} />
     <KnowledgeLayout kind="fiqh" className="zk-page" data-kx="1">
       {/* هيرو */}
       <section className="zk-hero">
@@ -387,9 +387,7 @@ export default function ZakatPage() {
       <section className="zk-kinds">
         <h2 className="zk-kinds__title">أنواع الزكاة وأحكامها</h2>
         <div className="zk-search-wrap">
-          <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
-            placeholder="ابحث في أنواع الزكاة." className="page-search-input zk-search-input"
-            aria-label="بحث في أنواع الزكاة" onClear={() => setSearch("")} />
+          <SearchField value={search} onChange={setSearch} placeholder="ابحث في أنواع الزكاة." label="بحث في أنواع الزكاة" />
         </div>
         <div className="zk-list">
           {filteredKinds.map((k) => {
@@ -454,6 +452,6 @@ export default function ZakatPage() {
         <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في الفقه" count={4} />
       </div>
     </KnowledgeLayout>
-    </DetailScreen>
+    </div>
   );
 }

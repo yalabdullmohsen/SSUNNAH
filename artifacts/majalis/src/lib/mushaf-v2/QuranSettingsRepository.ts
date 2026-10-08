@@ -16,6 +16,7 @@ import { QURAN_EXPERIENCE_NEXT } from "./flags";
 import type { MushafAppearanceTheme } from "./mushaf-appearance-theme";
 import { MUSHAF_ACCENT_DEFAULT } from "./mushaf-appearance-theme";
 import { MushafPersistenceRepository } from "@/lib/mushaf-persistence";
+import { DEFAULT_TASMEE_STRICTNESS, isTasmeeStrictness, type TasmeeStrictness } from "@/lib/tasmee/levels";
 
 const KEYS = {
   restoreLastPage: "ssunnah-mushaf-restore-last-page-v1",
@@ -23,6 +24,7 @@ const KEYS = {
   textReadingMode: "ssunnah-mushaf-text-reading-mode-v1",
   showPageMeta: "ssunnah-mushaf-show-page-meta-v1",
   ayahMarks: "ssunnah-mushaf-ayah-marks-v1",
+  tasmeeStrictness: "ssunnah-tasmee-strictness-v1",
 } as const;
 
 export type QuranReadingPrefs = {
@@ -67,6 +69,25 @@ function systemPrefersReducedMotion(): boolean {
 }
 
 export const QuranSettingsRepository = {
+  /** مستوى صرامة التسميع (متسامح/عادي/دقيق) — الافتراضي «عادي». */
+  getTasmeeStrictness(): TasmeeStrictness {
+    try {
+      const raw = localStorage.getItem(KEYS.tasmeeStrictness);
+      if (isTasmeeStrictness(raw)) return raw;
+    } catch {
+      /* ignore */
+    }
+    return DEFAULT_TASMEE_STRICTNESS;
+  },
+
+  setTasmeeStrictness(level: TasmeeStrictness): void {
+    try {
+      localStorage.setItem(KEYS.tasmeeStrictness, level);
+    } catch {
+      /* ignore */
+    }
+  },
+
   getAppearanceMode(): MushafAppearanceMode {
     return loadMushafAppearanceMode();
   },

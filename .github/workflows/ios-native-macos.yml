@@ -57,6 +57,9 @@ jobs:
         working-directory: artifacts/majalis/ios/App
         run: |
           xcodebuild -version
+          if xcodebuild -version | grep -qiE "beta|release candidate|\bRC\b"; then
+            echo "::error::Xcode التجريبي غير مسموح في CI"; exit 1
+          fi
           xcodebuild -list -project App.xcodeproj
           xcrun simctl list devices available
 
