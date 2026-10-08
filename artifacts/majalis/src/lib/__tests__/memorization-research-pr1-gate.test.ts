@@ -38,7 +38,7 @@ assert.match(registry, /id:\s*"hifz-path"[^}]*status:\s*"active"/, "فُعّل �
 const page = readPkg("src/pages/hifz-path/HifzPathPage.tsx");
 assert.match(page, /isHifzPathEnabled/);
 assert.match(page, /Redirect to="\/memorization"/);
-assert.match(page, /PageHeaderV2|SectionTemplatePage/);
+assert.match(page, /PageHeaderV2|NavigationBar|SectionTemplatePage/);
 assert.match(page, /HIFZ_PATH_USER_TAGLINE/);
 assert.doesNotMatch(page, /كل ما يجب على المسلم حفظه/);
 

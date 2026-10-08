@@ -5,14 +5,7 @@
 import { useEffect, useMemo } from "react";
 import { Link, Redirect, useParams } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
-import { DetailScreen } from "@/components/design-system/screens";
-import {
-  ContentRow,
-  DetailSection,
-  EmptyStateV2,
-  PageHeaderV2,
-  StatusNotice,
-} from "@/components/design-system";
+import { ButtonLink, Card, EmptyState, ListGroup, ListRow, NavigationBar, SectionHeader } from "@/design-system";
 import {
   HIFZ_PATH_USER_TAGLINE,
   HIFZ_PROGRESS_USER_LABELS,
@@ -82,30 +75,21 @@ function HifzPathDetailShell() {
 
   if (!path) {
     return (
-      <DetailScreen compose="mark">
-        <main className="mx-auto w-full max-w-3xl px-4 py-4" dir="rtl">
-          <EmptyStateV2
-            title="المسار غير متاح"
-            description="لا يُعرض للعامة إلا المسارات المنشورة بعد اعتماد المصدر والترخيص."
-            ctaLabel="العودة لمسار الحفظ"
-            href={PATH}
-          />
+      <div className="sn-screen">
+<NavigationBar title="مسار الحفظ" />
+<main className="sn-container" dir="rtl">
+          <EmptyState title="المسار غير متاح" description="لا يُعرض للعامة إلا المسارات المنشورة بعد اعتماد المصدر والترخيص." action={<ButtonLink href={PATH} variant="secondary">العودة لمسار الحفظ</ButtonLink>} />
         </main>
-      </DetailScreen>
+      </div>
     );
   }
 
   return (
-    <DetailScreen compose="mark">
-      <main className="mx-auto w-full max-w-3xl px-4 py-4" dir="rtl">
-        <PageHeaderV2
-          className="mb-4"
-          eyebrow={hifzCategoryLabel(path.category)}
-          title={path.title}
-          description={path.shortDescription ?? HIFZ_PATH_USER_TAGLINE}
-        />
+    <div className="sn-screen">
+<NavigationBar title={path.title} subtitle={`${hifzCategoryLabel(path.category)} · ${path.shortDescription ?? HIFZ_PATH_USER_TAGLINE}`} />
+<main className="sn-container sn-stack sn-stack--lg" dir="rtl">
 
-        <DetailSection title="ملخص">
+        <section className="sn-stack"><SectionHeader title="ملخص" />
           <p className="text-sm text-muted-foreground">
             المستوى: {hifzLevelLabel(path.level)}
             {path.estimatedUnits > 0
@@ -119,50 +103,41 @@ function HifzPathDetailShell() {
               ))}
             </ul>
           ) : null}
-        </DetailSection>
+        </section>
 
-        <DetailSection title="التقدم والمراجعة">
+        <section className="sn-stack"><SectionHeader title="التقدم والمراجعة" />
           {progressPct == null ? (
-            <StatusNotice tone="neutral">
+            <Card>
               لا تقدّم مسجّل بعد. عند توفر تجربة الوحدة يمكنك استخدام «أتممت هذه
               الوحدة» أو «سجلتها ضمن محفوظاتي» — بلا شهادة حفظ.
-            </StatusNotice>
+            </Card>
           ) : (
-            <StatusNotice tone="neutral" title={`التقدم ${progressPct}%`}>
+            <Card><strong>{`التقدم ${progressPct}%`}</strong> 
               نسبة حقيقية من الوحدات التي سجّلتها ذاتيًا — ليست شهادة حفظ.
-            </StatusNotice>
+            </Card>
           )}
-        </DetailSection>
+        </section>
 
-        <DetailSection title="خطة الوحدات">
+        <section className="sn-stack"><SectionHeader title="خطة الوحدات" />
           {units.length === 0 ? (
-            <EmptyStateV2
-              title="لا وحدات منشورة بعد"
-              description="الوحدات تُنشر بعد مطابقة النص بالمصدر المعتمد."
-            />
+            <EmptyState title="لا وحدات منشورة بعد" description="الوحدات تُنشر بعد مطابقة النص بالمصدر المعتمد." />
           ) : (
-            <div className="flex flex-col gap-1">
+            <ListGroup>
               {units.map((unit) => {
                 const prog = getUnitProgress(path.slug, unit.unitId);
                 return (
-                  <ContentRow
-                    key={unit.unitId}
-                    href={`${PATH}/p/${path.slug}/u/${unit.unitId}`}
-                    title={unit.title}
-                    meta={`الوحدة ${unit.sequence}${
+                  <ListRow href={`${PATH}/p/${path.slug}/u/${unit.unitId}`} key={unit.unitId} title={unit.title} description={[`الوحدة ${unit.sequence}${
                       prog
                         ? ` · ${HIFZ_PROGRESS_USER_LABELS[prog.state]}`
                         : ""
-                    }`}
-                    description={prog ? "تابع" : "ابدأ الحفظ"}
-                  />
+                    }`, prog ? "تابع" : "ابدأ الحفظ"].filter(Boolean).join(" — ")} />
                 );
               })}
-            </div>
+            </ListGroup>
           )}
-        </DetailSection>
+        </section>
 
-        <DetailSection title="المصدر والنسخة">
+        <section className="sn-stack"><SectionHeader title="المصدر والنسخة" />
           <dl className="grid gap-1 text-sm">
             <div>
               <dt className="inline font-medium">المرجع: </dt>
@@ -183,7 +158,7 @@ function HifzPathDetailShell() {
               </div>
             ) : null}
           </dl>
-        </DetailSection>
+        </section>
 
         <nav
           className="mt-6 flex items-center justify-between gap-3 text-sm"
@@ -217,6 +192,6 @@ function HifzPathDetailShell() {
           )}
         </nav>
       </main>
-    </DetailScreen>
+    </div>
   );
 }

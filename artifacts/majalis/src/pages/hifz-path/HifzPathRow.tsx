@@ -1,7 +1,7 @@
 /**
  * بطاقة/صف مسار حفظ — ContentRow للقوائم؛ زر واحد واضح.
  */
-import { ContentRow } from "@/components/design-system";
+import { ListRow } from "@/design-system";
 import {
   hifzCategoryLabel,
   hifzLevelLabel,
@@ -40,14 +40,8 @@ export function HifzPathRow({ path, progressPercent, hasProgress }: Props) {
       : undefined;
 
   return (
-    <ContentRow
-      href={`/hifz-path/p/${path.slug}`}
-      title={path.title}
-      meta={meta}
-      description={[path.shortDescription, sourceHint, progressLabel]
+    <ListRow href={`/hifz-path/p/${path.slug}`} title={path.title} description={[meta, [path.shortDescription, sourceHint, progressLabel]
         .filter(Boolean)
-        .join(" — ")}
-      trailing={<span className="shrink-0 whitespace-nowrap text-sm font-medium text-primary">{cta}</span>}
-    />
+        .join(" — ")].filter(Boolean).join(" — ")} trailing={<span className="shrink-0 whitespace-nowrap text-sm font-medium text-primary">{cta}</span>} />
   );
 }

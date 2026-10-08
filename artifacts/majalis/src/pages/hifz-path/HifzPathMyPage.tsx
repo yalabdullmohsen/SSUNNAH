@@ -4,12 +4,7 @@
 import { useEffect, useState } from "react";
 import { Link, Redirect } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
-import { DetailScreen } from "@/components/design-system/screens";
-import {
-  ContentRow,
-  EmptyStateV2,
-  PageHeaderV2,
-} from "@/components/design-system";
+import { ButtonLink, EmptyState, ListGroup, ListRow, NavigationBar } from "@/design-system";
 import {
   HIFZ_PATH_USER_TAGLINE,
   HIFZ_PROGRESS_USER_LABELS,
@@ -46,36 +41,21 @@ function HifzPathMyShell() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
-      <main className="mx-auto w-full max-w-3xl px-4 py-4" dir="rtl">
-        <PageHeaderV2
-          className="mb-4"
-          title="محفوظاتي"
-          description="الوحدات التي سجّلتها ضمن محفوظاتك — بلا شهادة حفظ وبلا ادعاء تحقق آلي."
-        />
+    <div className="sn-screen">
+<NavigationBar title="محفوظاتي" subtitle="الوحدات التي سجّلتها ضمن محفوظاتك — بلا شهادة حفظ وبلا ادعاء تحقق آلي." />
+<main className="sn-container sn-stack sn-stack--lg" dir="rtl">
         {units.length === 0 ? (
-          <EmptyStateV2
-            title="لا وحدات في محفوظاتك بعد"
-            description={`${HIFZ_PATH_USER_TAGLINE}. سجّل وحدة بعد بدء مسار منشور.`}
-            ctaLabel="العودة لمسار الحفظ"
-            href={PATH}
-          />
+          <EmptyState title="لا وحدات في محفوظاتك بعد" description={`${HIFZ_PATH_USER_TAGLINE}. سجّل وحدة بعد بدء مسار منشور.`} action={<ButtonLink href={PATH} variant="secondary">العودة لمسار الحفظ</ButtonLink>} />
         ) : (
-          <div className="flex flex-col gap-1">
+          <ListGroup>
             {units.map((u) => (
-              <ContentRow
-                key={`${u.pathSlug}-${u.unitId}`}
-                href={`${PATH}/p/${u.pathSlug}/u/${u.unitId}`}
-                title={u.unitTitle}
-                meta={`${u.pathTitle} · ${HIFZ_PROGRESS_USER_LABELS[u.state]}`}
-                description={
+              <ListRow href={`${PATH}/p/${u.pathSlug}/u/${u.unitId}`} key={`${u.pathSlug}-${u.unitId}`} title={u.unitTitle} description={[`${u.pathTitle} · ${HIFZ_PROGRESS_USER_LABELS[u.state]}`, 
                   u.nextReviewAt
                     ? `المراجعة القادمة: ${new Date(u.nextReviewAt).toLocaleDateString(AR_UI_LOCALE)}`
                     : undefined
-                }
-              />
+                ].filter(Boolean).join(" — ")} />
             ))}
-          </div>
+          </ListGroup>
         )}
         <p className="mt-4 text-center text-sm">
           <Link href={PATH} className="text-primary underline-offset-2 hover:underline">
@@ -83,6 +63,6 @@ function HifzPathMyShell() {
           </Link>
         </p>
       </main>
-    </DetailScreen>
+    </div>
   );
 }
