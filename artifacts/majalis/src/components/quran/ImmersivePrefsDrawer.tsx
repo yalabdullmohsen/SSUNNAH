@@ -11,7 +11,7 @@ import {
 } from "@/lib/quran-font-size";
 import { IMMERSIVE_PAPER_BG } from "@/lib/quran-immersive";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 
 export type ImmersivePrefsDrawerProps = {
   open: boolean;

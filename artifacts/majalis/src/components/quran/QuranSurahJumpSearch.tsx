@@ -18,7 +18,7 @@ import { toWesternDigits } from "@/shared/arabic-normalize";
 import { toArabicDigits } from "@/lib/utils";
 import { VirtualList, type VirtualListHandle } from "@/components/VirtualList";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 import { ACTION, EMPTY } from "@/lib/ui-copy";
 import { resolveCanonicalAyahHref } from "@/lib/quran-navigation";
 import "@/styles/components/quran-surah-jump-search.css";

@@ -8,7 +8,7 @@ import {
 } from "@/lib/prayer-notification-copy";
 import "@/styles/components/adhan-notification.css";
 
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 type ActiveEvent = AdhanEvent & { id: number };
 
 export function AdhanNotificationBar() {
