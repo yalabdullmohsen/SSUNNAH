@@ -91,7 +91,8 @@ platform :ios do
         output_directory: OUTPUT_DIR,
         output_name: "MajlisIlm",
         export_method: "app-store",
-        export_xcargs: signing_xcargs,
+        # gym يمرّر xcargs إلى -exportArchive أيضًا؛ تكرارها في export_xcargs يُفشل التصدير
+        # («-authenticationKeyPath may only be provided once»).
         xcargs: "#{signing_xcargs}#{swift_flags}",
         buildlog_path: File.join(OUTPUT_DIR, "logs"),
         result_bundle: true,
