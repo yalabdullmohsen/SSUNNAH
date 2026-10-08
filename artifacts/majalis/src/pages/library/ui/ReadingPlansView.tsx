@@ -1,4 +1,4 @@
-import { ListScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { useEffect, useMemo, useState } from "react";
 import { BookOpen, Pause, Play, Plus, X } from "lucide-react";
 import { PageHeader, Loading, Empty, Card } from "@/components/ui-common";
@@ -278,7 +278,8 @@ export default function ReadingPlansPage() {
   useEffect(reload, [user?.id]);
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+<NavigationBar title="خطط القراءة" large={false} />
     <div className="page-shell narrow">
       <PageHeader
         eyebrow="تعلّم منظَّم"
@@ -319,6 +320,6 @@ export default function ReadingPlansPage() {
         </>
       )}
     </div>
-    </ListScreen>
+    </div>
   );
 }

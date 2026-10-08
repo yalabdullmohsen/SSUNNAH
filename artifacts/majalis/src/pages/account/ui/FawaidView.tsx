@@ -22,8 +22,8 @@ import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { TopicPage } from "@/components/topic/TopicPage";
 import { useReadingScrollMemory } from "@/hooks/useReadingScrollMemory";
 import { hasPublicSource } from "@/lib/content-provenance";
-import { ListScreen } from "@/components/design-system/screens";
-import { EmptyStateV2, NoResultsState, SearchInput } from "@/components/design-system";
+import { NavigationBar, SearchField } from "@/design-system";
+import { EmptyStateV2, NoResultsState } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 /** دفعات واجهة — تفادي رسم مئات البطاقات دفعة واحدة في DOM. */
@@ -264,13 +264,11 @@ export default function FawaidPage({
 
   const filtersPanel = (
     <>
-      <SearchInput
+      <SearchField
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        onClear={() => setSearch("")}
+        onChange={setSearch}
         placeholder="ابحث في الفوائد..."
-        className="page-search-input full content-hub-search"
-        aria-label="بحث في الفوائد"
+        label="بحث في الفوائد"
       />
       <div className="content-hub-chips" role="tablist" aria-label="تصفية الفوائد">
         {DISPLAY_CATEGORIES.map((cat) => (
@@ -291,7 +289,8 @@ export default function FawaidPage({
   );
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+<NavigationBar title="الفوائد" large={false} />
     <TopicPage
       themeId="hadith"
       sectionRoute="/fawaid"
@@ -398,6 +397,6 @@ export default function FawaidPage({
         </div>
       </div>
     </TopicPage>
-    </ListScreen>
+    </div>
   );
 }
