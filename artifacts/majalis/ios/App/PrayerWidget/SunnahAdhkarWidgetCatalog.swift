@@ -55,7 +55,7 @@ struct RotatingAdhkarWidget: Widget {
             RotatingAdhkarView(entry: entry)
         }
         .configurationDisplayName("ذكر اليوم")
-        .description("ذكر معتمد قصير يتجدد مع اليوم لا مع كل دقيقة.")
+        .description("ذكر قصير يتجدد مع اليوم لا مع كل دقيقة.")
         .supportedFamilies(SunnahWidgetFamilySupport.adhkar)
     }
 }
