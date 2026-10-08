@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { NavigationBar } from "@/design-system";
 import { Link } from "wouter";
 import { Link2, Lock } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
@@ -14,7 +15,6 @@ import {
 } from "@/lib/researcher-profile-service";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/researcher-profile.css";
-import { DetailScreen } from "@/components/design-system/screens";
 import { FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
@@ -208,7 +208,8 @@ export default function ResearcherProfilePage() {
   }
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="ملف الباحث" large={false} />
     <div className="page-shell narrow rp-page" dir="rtl">
       <PageHeader
         eyebrow="البحث العلمي"
@@ -356,6 +357,6 @@ export default function ResearcherProfilePage() {
         <SectionQuiz route="/research" title="اختبر معلوماتك في العلوم الشرعية" count={4} />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

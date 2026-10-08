@@ -1,9 +1,9 @@
 import { useEffect, useState, useMemo } from "react";
-import { AlertTriangle, Apple, BedDouble, Beef, BookOpen, CalendarDays, Droplets, FlaskConical, Grape, Leaf, Moon, PersonStanding, Salad, ScrollText, Search, ShowerHead, Sprout, Stethoscope, Sunrise, TreePalm, Utensils, Waves, Wheat } from "lucide-react";
+import { NavigationBar, SearchField, Chip } from "@/design-system";
+import { AlertTriangle, Apple, BedDouble, Beef, BookOpen, CalendarDays, Droplets, FlaskConical, Grape, Leaf, Moon, PersonStanding, Salad, ScrollText, ShowerHead, Sprout, Stethoscope, Sunrise, TreePalm, Utensils, Waves, Wheat } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
-import { Chip } from "@/components/ui-common";
 import { FilterBottomSheet, FilterToggle } from "@/components/layout/FilterBottomSheet";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
@@ -13,8 +13,6 @@ import type {
 } from "@/lib/prophetic-medicine-seed";
 import "@/styles/pages/prophetic-medicine.css";
 import { RelatedKnowledge } from "@/components/RelatedKnowledge";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 const PM_ICON_MAP: Record<string, LucideIcon> = {
@@ -103,7 +101,7 @@ export default function PropheticMedicinePage() {
   const filterPanel = (
     <div className="pmp-filter-chips">
       {categories.map((c) => (
-        <Chip key={c} active={category === c} onClick={() => setCategory(c)}>
+        <Chip key={c} selected={category === c} onClick={() => setCategory(c)}>
           {c}
         </Chip>
       ))}
@@ -111,7 +109,8 @@ export default function PropheticMedicinePage() {
   );
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الطب النبوي" large={false} />
     <div className="page-shell ds-page">
       {/* رأس الصفحة */}
       <div className="majalis-star-hero pmp-hero">
@@ -128,11 +127,7 @@ export default function PropheticMedicinePage() {
 
       {/* بحث */}
       <div className="pmp-search-wrap">
-        <Search size={16} className="pmp-search-icon" aria-hidden="true" />
-        <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
-          placeholder="ابحث في الطب النبوي..."
-          className="page-search-input pmp-search-input"
-          aria-label="بحث في موسوعة الطب النبوي" onClear={() => setSearch("")} />
+        <SearchField value={search} onChange={setSearch} placeholder="ابحث في الطب النبوي..." label="بحث في موسوعة الطب النبوي" />
       </div>
 
       {/* شريط الفلتر */}
@@ -215,6 +210,6 @@ export default function PropheticMedicinePage() {
         <SectionQuiz sectionId="hadith" title="اختبر معلوماتك في الطب النبوي" count={4} />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }
