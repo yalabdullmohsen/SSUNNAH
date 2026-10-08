@@ -15,7 +15,7 @@ import {
 import { formatArabicNumber } from "@/lib/numerals";
 import { resolveCanonicalAyahHref } from "@/lib/quran-navigation";
 import "@/styles/pages/qiraat.css";
-import { DashboardScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 
 function mushafHref(surah: number, ayah: number): string {
   return resolveCanonicalAyahHref(surah, ayah, "other");
@@ -38,7 +38,8 @@ export default function QuranQiraatView() {
   }, []);
 
   return (
-    <DashboardScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="القراءات" large={false} />
     <SectionTemplatePage
       route="/quran-hub/qiraat"
       title="القراءات العشر"
@@ -120,6 +121,6 @@ export default function QuranQiraatView() {
       </section>
     </div>
     </SectionTemplatePage>
-    </DashboardScreen>
+    </div>
   );
 }

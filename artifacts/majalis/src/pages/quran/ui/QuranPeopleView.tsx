@@ -15,7 +15,7 @@ import {
 } from "@/features/quran-people";
 import "@/styles/pages/quran-hub.css";
 import "@/styles/pages/quran-people.css";
-import { DashboardScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
@@ -71,7 +71,8 @@ export default function QuranPeopleView() {
   }, [people, category, mention, sort]);
 
   return (
-    <DashboardScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="أعلام القرآن" large={false} />
     <SectionTemplatePage
       route="/quran/people"
       title={QURAN_PEOPLE_PAGE_TITLE}
@@ -185,6 +186,6 @@ export default function QuranPeopleView() {
       </div>
     </div>
     </SectionTemplatePage>
-    </DashboardScreen>
+    </div>
   );
 }

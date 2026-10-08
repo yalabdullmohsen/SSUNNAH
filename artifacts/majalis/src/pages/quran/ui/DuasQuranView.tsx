@@ -6,8 +6,7 @@ import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { Button } from "@/components/ui/button";
 import "@/styles/pages/duas-quran.css";
-import { ListScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
+import { NavigationBar, SearchField } from "@/design-system";
 
 
 type DuaCategory = "الكل" | "الأنبياء" | "الرزق والهداية" | "المغفرة" | "الأسرة" | "الدنيا والآخرة" | "الصبر والنصر";
@@ -357,7 +356,8 @@ export default function DuasQuranPage() {
   });
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="أدعية القرآن" large={false} />
     <main className="dq-page" dir="rtl">
       {/* hero */}
       <section className="dq-hero">
@@ -377,7 +377,7 @@ export default function DuasQuranPage() {
 
       <div className="dq-body">
         {/* search */}
-        <SearchInput className="dq-search" aria-label="ابحث بالاسم أو الآية" placeholder="ابحث بالاسم أو الآية..." value={search} onChange={(e) => setSearch(e.target.value)} onClear={() => setSearch("")} />
+        <SearchField label="ابحث بالاسم أو الآية" placeholder="ابحث بالاسم أو الآية..." value={search} onChange={setSearch} />
 
         {/* categories */}
         <div className="dq-cats" role="tablist" aria-label="تصفية أدعية القرآن">
@@ -498,6 +498,6 @@ export default function DuasQuranPage() {
       <div className="px-4 pb-6 mt-4">
       </div>
     </main>
-    </ListScreen>
+    </div>
   );
 }
