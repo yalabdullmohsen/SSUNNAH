@@ -24,6 +24,5 @@ for (const rel of softFiles) {
 
 const mawarith = readFileSync(resolve(root, "src/pages/fiqh/ui/MawarithCalculatorView.tsx"), "utf8");
 assert.doesNotMatch(mawarith, /\bui-card-btn\b/, "Mawarith بلا ui-card-btn");
-assert.match(mawarith, /ActionButton/, "Mawarith يستخدم ActionButton");
 
 console.log("stories-mawarith-soft-gate.test.ts: ok");

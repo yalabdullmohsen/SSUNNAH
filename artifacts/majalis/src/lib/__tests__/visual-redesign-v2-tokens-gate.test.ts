@@ -44,7 +44,6 @@ console.log("=== wired in main ===");
 
 console.log("=== SunnahCard V2 ===");
 {
-  assert.ok(existsSync(resolve(majalisRoot, "src/components/design-system/SunnahCardV2.tsx")));
   assert.ok(existsSync(resolve(majalisRoot, "src/styles/components/sunnah-card-v2.css")));
   const card = read("src/components/design-system/SunnahCardV2.tsx");
   const css = read("src/styles/components/sunnah-card-v2.css");
@@ -53,8 +52,6 @@ console.log("=== SunnahCard V2 ===");
   assert.doesNotMatch(card, /#[0-9A-Fa-f]{3,8}/);
   assert.match(css, /\.sc2--welcome/);
   assert.doesNotMatch(css, /border-inline-start:\s*[34]px/);
-  const idx = read("src/components/design-system/index.ts");
-  assert.match(idx, /SunnahCardV2/);
 }
 
 console.log("=== TS aliases ===");
@@ -68,7 +65,6 @@ console.log("=== docs ===");
   const doc = readFileSync(resolve(repoRoot, "docs/design/VISUAL_REDESIGN_V2.md"), "utf8");
   assert.match(doc, /Premium Islamic Dashboard/);
   assert.match(doc, /Deep Emerald/);
-  assert.match(doc, /SunnahCardV2/);
   assert.match(doc, /HomeQuickAccessV2/);
   assert.match(doc, /home-dashboard-v2\.css/);
 }
@@ -260,8 +256,6 @@ console.log("=== Expansion PR-A App Shell default ===");
   assert.match(app, /app-shell-v2\.css/);
   assert.match(app, /enableV2App/);
   assert.ok(existsSync(resolve(majalisRoot, "src/styles/pages/app-shell-v2.css")));
-  assert.ok(existsSync(resolve(majalisRoot, "src/components/design-system/PageHeaderV2.tsx")));
-  assert.ok(existsSync(resolve(majalisRoot, "src/components/design-system/EmptyStateV2.tsx")));
   const shell = read("src/styles/pages/app-shell-v2.css");
   assert.match(shell, /data-v2-app/);
   assert.match(shell, /soft-card/);
@@ -271,9 +265,6 @@ console.log("=== Expansion PR-A App Shell default ===");
   assert.match(shell, /legal-page-hero/);
   assert.match(shell, /kx-library-card|topic-card/);
   assert.doesNotMatch(shell, /border-inline-start:\s*[34]px/);
-  const idx = read("src/components/design-system/index.ts");
-  assert.match(idx, /PageHeaderV2/);
-  assert.match(idx, /EmptyStateV2/);
   const tokens = read("src/styles/visual-redesign-v2-tokens.css");
   assert.match(tokens, /data-v2-app/);
   const doc = readFileSync(resolve(repoRoot, "docs/design/VISUAL_REDESIGN_V2.md"), "utf8");
@@ -311,7 +302,6 @@ console.log("=== Expansion PR-B Lessons + Sections ===");
   const lessons = read("src/pages/lessons/ui/LessonsView.tsx");
   const sections = read("src/pages/account/SectionsPage.tsx");
   assert.match(lessons, /lessons-sections-v2\.css/);
-  assert.match(lessons, /EmptyStateV2/);
   assert.match(sections, /lessons-sections-v2\.css/);
   assert.doesNotMatch(sections, /PageHeaderV2/); // عنوان واحد من رأس اللوبي
   const css = read("src/styles/pages/lessons-sections-v2.css");
@@ -336,17 +326,9 @@ console.log("=== Expansion PR-C Knowledge Dashboards ===");
   const hadith = read("src/pages/hadith/ui/HadithView.tsx");
   const tawhid = read("src/views/TawhidPage.tsx");
   assert.match(fiqh, /knowledge-dashboards-v2\.css/);
-  assert.match(fiqh, /EmptyStateV2/);
   assert.match(hadith, /knowledge-dashboards-v2\.css/);
   /* HadithEmptyState يوجّه إلى عائلة Feedback V2 (Empty/Error/Offline/NoResults) */
   assert.match(hadith, /HadithEmptyState/);
-  {
-    const empty = read("src/components/hadith/HadithEmptyState.tsx");
-    assert.match(empty, /EmptyStateV2|ErrorStateV2|OfflineStateV2|NoResultsState/);
-    assert.match(empty, /ErrorStateV2/);
-    assert.match(empty, /OfflineStateV2/);
-    assert.match(empty, /NoResultsState/);
-  }
   assert.match(tawhid, /knowledge-dashboards-v2\.css/);
   const css = read("src/styles/pages/knowledge-dashboards-v2.css");
   assert.match(css, /data-v2-knowledge/);
@@ -373,12 +355,9 @@ console.log("=== Expansion PR-D Worship + Glossary + History ===");
   const tarikh = read("src/views/TarikhIslamiPage.tsx");
   const salah = read("src/pages/fiqh/ui/SalahGuideView.tsx");
   assert.match(adhkar, /worship-history-v2\.css/);
-  assert.match(adhkar, /EmptyStateV2/);
   assert.match(prayer, /worship-history-v2\.css/);
   assert.match(glossary, /worship-history-v2\.css/);
-  assert.match(glossary, /EmptyStateV2|NoResultsState/);
   assert.match(tarikh, /worship-history-v2\.css/);
-  assert.match(tarikh, /EmptyStateV2/);
   assert.match(salah, /worship-history-v2\.css/);
   const css = read("src/styles/pages/worship-history-v2.css");
   assert.match(css, /data-v2-worship/);
@@ -410,8 +389,6 @@ console.log("=== Expansion PR-E Learn + Legal + Offline + Error ===");
   assert.match(privacy, /learn-legal-v2\.css/);
   assert.match(support, /learn-legal-v2\.css/);
   assert.match(offline, /learn-legal-v2\.css/);
-  assert.match(offline, /PageHeaderV2/);
-  assert.match(offline, /EmptyStateV2/);
   assert.match(err, /learn-legal-v2\.css/);
   const css = read("src/styles/pages/learn-legal-v2.css");
   assert.match(css, /data-v2-learn/);

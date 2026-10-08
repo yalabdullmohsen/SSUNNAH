@@ -9,6 +9,7 @@
 import { readdirSync, readFileSync, statSync, writeFileSync, existsSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { OLD_IMPORT } from "./ui-legacy-list.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const src = join(root, "src");
@@ -39,7 +40,6 @@ const stripComments = (t) => t.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\
 const count = (re, t) => (t.match(re) || []).length;
 
 const SCALE = new Set([0, 1, 2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 9999]);
-const OLD_IMPORT = /(?:from|import)\s*\(?\s*["']@\/components\/(?:design-system|ui-common|ui\/mj)(?:\/[^"']*)?["']/g;
 const BACK_BTN = /(?:aria-label|title)=["']رجوع["']|>\s*رجوع\s*<|FloatingBackButton|GlobalBackButton|AppBackButton/g;
 
 const m = {

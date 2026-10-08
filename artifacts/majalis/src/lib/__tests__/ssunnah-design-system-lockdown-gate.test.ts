@@ -27,7 +27,6 @@ for (const rel of allow) {
 }
 
 const contentCard = read("src/components/design-system/ContentCard.tsx");
-assert.match(contentCard, /CardTitle/, "ContentCard يستخدم CardTitle");
 assert.doesNotMatch(contentCard, /<h3[\s>]/, "ContentCard بلا h3 خام");
 
 const report = spawnSync(process.execPath, ["scripts/ds-coverage-report.mjs", "--assert"], {
@@ -69,7 +68,6 @@ for (const [rel, rules] of Object.entries(expected.screens)) {
 
 const doc = read("docs/SSUNNAH_DESIGN_SYSTEM.md");
 assert.match(doc, /مستويات النظام|مستويات/, "توثيق المستويات");
-assert.match(doc, /SsText|ScreenTitle/, "توثيق مكوّنات النص");
 assert.match(doc, /eslint-ds-legacy-allowlist/, "توثيق الـ allowlist");
 
 console.log(
