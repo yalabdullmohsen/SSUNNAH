@@ -1,4 +1,5 @@
 import SwiftUI
+import SunnahWidgetKit
 import WidgetKit
 
 struct CurrentPrayerWidget: Widget {
@@ -292,9 +293,12 @@ struct PreviousPrayerCatalogView: View {
                             .font(.headline.monospacedDigit())
                             .foregroundStyle(SunnahBrandColors.gold)
                             .widgetAccentable()
-                        Text("مضى \(SunnahWidgetTimeFormatting.staticRemaining(from: date, to: entry.date))")
-                            .font(.caption)
-                            .foregroundStyle(SunnahWidgetTheme.secondaryText)
+                        HStack(spacing: 4) {
+                            Text("مضى")
+                            PrayerLiveClock(mode: .countUp(since: date), now: entry.date, live: entry.allowsLiveCountdown)
+                        }
+                        .font(.caption)
+                        .foregroundStyle(SunnahWidgetTheme.secondaryText)
                     }
                 }
                 .padding(12)
