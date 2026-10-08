@@ -8,7 +8,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { CONTACT_EMAIL, mailtoWithSubject } from "@/lib/site-config";
 import "@/styles/pages/contact.css";
 import "@/styles/pages/learn-legal-v2.css";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import SupportPage from "@/views/SupportPage";
 
@@ -97,7 +97,8 @@ function ContactPageBody() {
   };
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+      <NavigationBar title="تواصل معنا" large={false} />
     <LegalPageLayout eyebrow="الدعم" title="تواصل معنا" density="medium" className="contact-page">
       <LegalSection title="قنوات التواصل">
         <div className="contact-channels">
@@ -211,6 +212,6 @@ function ContactPageBody() {
         </Accordion>
       </LegalSection>
     </LegalPageLayout>
-    </DetailScreen>
+    </div>
   );
 }

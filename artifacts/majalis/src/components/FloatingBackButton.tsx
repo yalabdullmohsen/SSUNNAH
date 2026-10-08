@@ -4,6 +4,7 @@
  */
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
+import { hasSunnahNativeMarker } from "@/lib/native-platform";
 import { AppBackButton } from "@/components/common/AppBackButton";
 import { BACK_CONTROL_SIZE_PX, BACK_CONTROL_GAP_PX } from "@/lib/global-back-layout";
 import {
@@ -54,7 +55,7 @@ export function GlobalBackControlHost() {
    */
   const routeHide = hideOnHome || hideOnMushaf || hideOnPrayer;
   const [modalHide, setModalHide] = useState(false);
-  const hideBack = routeHide || modalHide;
+  const hideBack = routeHide || modalHide || hasSunnahNativeMarker();
 
   useEffect(() => installFloatingLayerSync(), []);
 

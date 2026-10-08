@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
 import { ShareButtons } from "@/components/ContentActions";
 import { applyPageSeo } from "@/lib/seo";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import "@/styles/pages/learn-legal-v2.css";
 
 export default function PrivacyPage() {
@@ -18,7 +18,8 @@ export default function PrivacyPage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+      <NavigationBar title="سياسة الخصوصية" large={false} />
     <LegalPageLayout eyebrow="الخصوصية" title="سياسة الخصوصية" updatedAt="2026-08-07">
       <LegalSection title="البيانات التي نجمعها">
         <p>
@@ -240,6 +241,6 @@ export default function PrivacyPage() {
         <ShareButtons title="سياسة الخصوصية — سُنّة" url="https://www.ssunnah.com/privacy" />
       </div>
 </LegalPageLayout>
-    </DetailScreen>
+    </div>
   );
 }

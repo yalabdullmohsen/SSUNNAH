@@ -5,7 +5,7 @@
 import { useEffect } from "react";
 import { applyPageSeo } from "@/lib/seo";
 import { MoreHubFromRegistry } from "@/features/more/MoreHubFromRegistry";
-import { GridScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import "@/components/sections/section-cards.css";
 import "@/styles/pages/lessons-sections-v2.css";
 import "@/styles/sunnah-identity-sections.css";
@@ -21,8 +21,9 @@ export default function SectionsPage() {
   }, []);
 
   return (
-    <GridScreen compose="mark" columns={2}>
+    <div className="sn-screen">
+      <NavigationBar title="الأقسام" large={false} />
       <MoreHubFromRegistry />
-    </GridScreen>
+    </div>
   );
 }

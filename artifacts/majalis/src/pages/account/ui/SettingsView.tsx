@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
 import { STATUS } from "@/lib/ui-copy";
 import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
-import { UtilityScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { SettingsToggleRow } from "@/components/design-system/SettingsList";
 import { NavigationList } from "@/components/design-system/ListSystem";
 import { AppCard } from "@/components/design-system/AppCard";
@@ -275,7 +275,8 @@ export default function SettingsPage() {
   };
 
   return (
-    <UtilityScreen compose="mark">
+    <div className="sn-screen">
+      <NavigationBar title="الإعدادات" large={false} />
     <LegalPageLayout
       eyebrow={t("settings_eyebrow")}
       title={t("settings_title")}
@@ -778,6 +779,6 @@ export default function SettingsPage() {
         </LegalSection>
       )}
 </LegalPageLayout>
-    </UtilityScreen>
+    </div>
   );
 }

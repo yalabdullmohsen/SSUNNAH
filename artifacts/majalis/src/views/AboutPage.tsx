@@ -5,7 +5,7 @@ import { ShareButtons } from "@/components/ContentActions";
 import { applyPageSeo } from "@/lib/seo";
 import { isWeb } from "@/lib/native-platform";
 import { SITE_DESCRIPTION, SITE_TAGLINE, SITE_URL } from "@/lib/site-config";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import "@/styles/pages/learn-legal-v2.css";
 import { AR_UI_LOCALE } from "@/lib/numerals";
 
@@ -60,7 +60,8 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+      <NavigationBar title="حول التطبيق" large={false} />
     <LegalPageLayout eyebrow="التطبيق" title="حول التطبيق">
       <LegalSection title="ماذا يقدّم التطبيق">
         <p>{SITE_DESCRIPTION}</p>
@@ -127,6 +128,6 @@ export default function AboutPage() {
       </LegalSection>
 <ShareButtons title="حول التطبيق — سُنّة" url="https://www.ssunnah.com/about" />
     </LegalPageLayout>
-    </DetailScreen>
+    </div>
   );
 }

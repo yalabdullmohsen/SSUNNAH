@@ -11,7 +11,7 @@ import { getSiteSettings, isMaintenanceMode } from "@/lib/site-settings";
 import "@/styles/components/home-brand-title.css";
 import { lazyWithRetry } from "@/lib/lazy-with-retry";
 import { shouldShowFirstVisitIntro } from "@/lib/first-visit-intro-state";
-import { DashboardScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import "@/styles/m2030/home.css";
 import "@/styles/pages/home-dashboard-v2.css";
 import "@/styles/components/first-visit-intro.css";
@@ -216,7 +216,8 @@ export default function HomePage() {
   }, []);
 
   return (
-    <DashboardScreen compose="mark" density="compact">
+    <div className="sn-screen">
+      <NavigationBar title="سُنّة" large={false} />
       {isMaintenanceMode() && (
         <div role="status" className="home-maintenance-banner">
           {getSiteSettings().maintenanceMessage}
@@ -232,6 +233,6 @@ export default function HomePage() {
           <FirstVisitIntro onContinue={() => setShowIntro(false)} />
         </Suspense>
       ) : null}
-    </DashboardScreen>
+    </div>
   );
 }

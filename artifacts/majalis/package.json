@@ -70,6 +70,7 @@
     "content-ops:test": "node --test scripts/content-ops/test-content-ops-p0.mjs",
     "content-ops:p0-gate": "node scripts/content-ops/run-p0-gate.mjs",
     "verify:content-ops-p0": "node scripts/content-ops/run-p0-gate.mjs",
+    "test:native-ua-chrome": "node --import tsx src/lib/__tests__/native-ua-hides-web-chrome.test.ts",
     "audio-reader:p0-gate": "node --import tsx src/lib/__tests__/audio-reader-p0-gate.test.ts",
     "verify:audio-reader-p0": "node --import tsx src/lib/__tests__/audio-reader-p0-gate.test.ts",
     "verify:reading-ux": "node scripts/verify-reading-ux.mjs",

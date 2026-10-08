@@ -39,7 +39,7 @@ for (const rel of migrated) {
   }
   assert.match(
     text,
-    /from ["']@\/components\/ui\/button["']|from ["']@\/components\/design-system\/Buttons["']/,
+    /from ["']@\/components\/ui\/button["']|from ["']@\/components\/design-system\/Buttons["']|from ["']@\/design-system["']/,
     `${rel}: Button أو IconButton`,
   );
 }
