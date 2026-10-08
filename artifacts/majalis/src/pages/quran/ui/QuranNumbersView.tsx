@@ -31,8 +31,7 @@ import { normalizeArabic } from "@/shared/arabic-normalize";
 import { scoreTolerantMatch } from "@/features/search/tolerant-match";
 import "@/components/sections/section-cards.css";
 import "@/styles/pages/quran-numbers.css";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system/FormFields";
+import { NavigationBar, SearchField } from "@/design-system";
 import { NoResultsState } from "@/components/design-system";
 import { SegmentedFilter } from "@/components/filters/SegmentedFilter";
 import { Button } from "@/components/ui/button";
@@ -116,7 +115,8 @@ export default function QuranNumbersPage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="أرقام القرآن" large={false} />
     <div className="quran-numbers-page sections-hub" dir="rtl" data-quran-numbers="1">
       <header className="quran-hub-page__head quran-hub-page__head--title-only">
         <h1 className="quran-hub-page__title">القرآن في أرقام</h1>
@@ -149,12 +149,11 @@ export default function QuranNumbersPage() {
 
       <div className="quran-numbers-toolbar">
         <div className="quran-numbers-search">
-          <SearchInput
+          <SearchField
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onClear={() => setQuery("")}
+            onChange={setQuery}
             placeholder="ابحث في الأرقام والألفاظ…"
-            aria-label="بحث في القرآن في أرقام"
+            label="بحث في القرآن في أرقام"
           />
         </div>
         <SegmentedFilter
@@ -302,6 +301,6 @@ export default function QuranNumbersPage() {
         ) : null}
       </AppBottomSheet>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

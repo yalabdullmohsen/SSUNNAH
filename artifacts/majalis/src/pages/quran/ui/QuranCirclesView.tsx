@@ -21,7 +21,7 @@ import {
 import { Button } from "@/components/ui/button";
 import "@/styles/components/filters.css";
 import "@/styles/pages/quran-circles.css";
-import { ListScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
@@ -291,7 +291,8 @@ export default function QuranCirclesPage() {
   }, [visible]);
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="حلقات القرآن" large={false} />
     <div className="qc-page" dir="rtl">
       <header className="qc-hero">
         <p className="qc-hero__eyebrow">دليل التحفيظ</p>
@@ -472,6 +473,6 @@ export default function QuranCirclesPage() {
         . أي تعارض مع الموقع الرسمي يُقدَّم فيه قول الأوقاف.
       </footer>
     </div>
-    </ListScreen>
+    </div>
   );
 }

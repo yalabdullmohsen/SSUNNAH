@@ -15,7 +15,7 @@ import {
 } from "@/features/quran-people";
 import "@/styles/pages/quran-hub.css";
 import "@/styles/pages/quran-people.css";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import { truncateAtWord } from "@/lib/content-display-polish";
 import { EMPTY } from "@/lib/ui-copy";
 
@@ -119,7 +119,8 @@ export default function QuranPersonDetailView() {
   const whyParas = splitReadableParagraphs(person.whyMentioned);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="أعلام القرآن" large={false} />
     <SectionTemplatePage
       route="/quran/people"
       title={person.nameAr}
@@ -214,6 +215,6 @@ export default function QuranPersonDetailView() {
         </section>
       </div>
     </SectionTemplatePage>
-    </DetailScreen>
+    </div>
   );
 }

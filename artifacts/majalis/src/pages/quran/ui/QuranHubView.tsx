@@ -4,7 +4,7 @@ import { SectionLobby } from "@/components/lobby/SectionLobby";
 import { QuranOpenMushafCard } from "@/components/quran/QuranOpenMushafCard";
 import { getLobby } from "@/config/section-lobbies";
 import { EmptyStateV2 } from "@/components/design-system";
-import { DashboardScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import "@/components/sections/section-cards.css";
 import "@/styles/pages/quran-hub-v2.css";
 import "@/styles/sunnah-identity-home-hub.css";
@@ -26,7 +26,8 @@ export default function QuranHubPage() {
   }, []);
 
   return (
-    <DashboardScreen compose="mark" className="quran-hub-v2">
+    <div className="sn-screen quran-hub-v2">
+    <NavigationBar title="القرآن الكريم" large={false} />
       {hasGroups ? (
         <SectionLobby
           lobbyId="quran"
@@ -47,6 +48,6 @@ export default function QuranHubPage() {
           ctaLabel="الرئيسية"
         />
       )}
-    </DashboardScreen>
+    </div>
   );
 }
