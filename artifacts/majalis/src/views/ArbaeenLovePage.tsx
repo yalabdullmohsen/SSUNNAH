@@ -6,7 +6,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { ShareButtons } from "@/components/ContentActions";
 import { fetchPublishedArbaeenLove, type ArbaeenHadith } from "@/lib/arbaeen-love-service";
-import { DetailScreen } from "@/components/design-system/screens";
+import { NavigationBar } from "@/design-system";
 import "@/styles/components/topic-page.css";
 
 export default function ArbaeenLovePage() {
@@ -43,7 +43,8 @@ export default function ArbaeenLovePage() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="الأربعون في محبة رب العالمين" large={false} />
     <div className="page-shell" dir="rtl">
       <nav className="hb-breadcrumb" aria-label="مسار التنقل">
         <Link href="/hadith" className="hb-breadcrumb__link">الأحاديث النبوية</Link>
@@ -92,6 +93,6 @@ export default function ArbaeenLovePage() {
         <ShareButtons title="الأربعون في محبة رب العالمين — سُنّة" url="https://www.ssunnah.com/hadith/arbaeen-love-of-allah" />
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }
