@@ -10,7 +10,7 @@ struct QuranAyahWidget: Widget {
                 .widgetURL(quranURL(entry))
         }
         .configurationDisplayName("آية")
-        .description("نص آية معتمد كما هو، مع اسم السورة ورقم الآية.")
+        .description("آية من القرآن الكريم مع اسم السورة ورقم الآية.")
         .supportedFamilies(SunnahWidgetFamilySupport.quran)
     }
 }
@@ -24,7 +24,7 @@ struct MushafContinueWidget: Widget {
                 .widgetURL(mushafContinueURL(entry))
         }
         .configurationDisplayName("متابعة المصحف")
-        .description("آخر موضع قراءة محفوظ، بلا اختراع صفحة.")
+        .description("آخر موضع قراءة وصلتَ إليه في المصحف.")
         .supportedFamilies(SunnahWidgetFamilySupport.mushaf)
     }
 }
@@ -52,7 +52,7 @@ struct QuranDailyGoalWidget: Widget {
                 .widgetURL(SunnahWidgetDeepLinkFactory.quranHub())
         }
         .configurationDisplayName("هدف القرآن")
-        .description("صفحات اليوم والهدف إن وُجد تتبع معتمد.")
+        .description("عدد الصفحات التي قرأتها اليوم من هدفك.")
         .supportedFamilies(SunnahWidgetFamilySupport.quranGoal)
     }
 }
@@ -107,9 +107,9 @@ private func mushafBookmarkURL(_ entry: CatalogWidgetEntry) -> URL {
 private struct QuranSurface: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOSApplicationExtension 17.0, *) {
-            content.containerBackground(for: .widget) { SunnahWidgetTheme.homeGradientDeep }
+            content.containerBackground(for: .widget) { SunnahWidgetTheme.homeGradientDeep }.sunnahDynamicTypeCap()
         } else {
-            content.background(SunnahWidgetTheme.homeGradientDeep)
+            content.background(SunnahWidgetTheme.homeGradientDeep).sunnahDynamicTypeCap()
         }
     }
 }
@@ -135,15 +135,19 @@ struct QuranAyahView: View {
                 Text(quran.ayahText)
                     .font(.headline)
                     .foregroundStyle(.white)
-                    .minimumScaleFactor(0.7)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(family == .systemLarge ? 14 : 6)
+                    .minimumScaleFactor(0.6)
                 Text("سورة \(quran.surahNameAr) · آية \(SunnahWidgetTimeFormatting.arabic(quran.ayahNumber))")
                     .font(.caption.bold())
                     .foregroundStyle(SunnahBrandColors.gold)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
                     .widgetAccentable()
             }
-            .padding(14)
+            .sunnahCardLayout()
         } else {
-            SunnahWidgetEmptyState(message: "افتح سُنّة لعرض الآية المعتمدة")
+            SunnahWidgetEmptyState(message: "افتح سُنّة لعرض الآية")
         }
     }
 }
@@ -163,12 +167,14 @@ struct MushafContinueView: View {
                         Text(name)
                             .font(.title3.bold())
                             .foregroundStyle(.white)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.7)
                     }
                     Text("صفحة \(SunnahWidgetTimeFormatting.arabic(page))")
                         .font(.headline)
                         .foregroundStyle(.white)
                 }
-                .padding(12)
+                .sunnahCardLayout(12)
             } else {
                 SunnahWidgetEmptyState(message: "ابدأ القراءة")
             }
@@ -199,6 +205,8 @@ struct MushafBookmarkView: View {
                     Text(mushaf.bookmarkSurahNameAr ?? "المصحف")
                         .font(.title3.bold())
                         .foregroundStyle(.white)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
                     Text("صفحة \(SunnahWidgetTimeFormatting.arabic(page))")
                         .font(.headline)
                         .foregroundStyle(.white)
@@ -208,7 +216,7 @@ struct MushafBookmarkView: View {
                             .foregroundStyle(SunnahWidgetTheme.secondaryText)
                     }
                 }
-                .padding(12)
+                .sunnahCardLayout(12)
             } else {
                 SunnahWidgetEmptyState(message: "اختر إشارة من المصحف")
             }
@@ -238,18 +246,22 @@ struct QuranDailyGoalView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("هدف اليوم")
                             .font(.caption.bold())
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.8)
                             .foregroundStyle(SunnahBrandColors.gold)
                             .widgetAccentable()
                         Text("\(SunnahWidgetTimeFormatting.arabic(done)) من \(SunnahWidgetTimeFormatting.arabic(target))")
                             .font(.title2.bold())
                             .foregroundStyle(.white)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.7)
                         ProgressView(value: Double(min(done, target)), total: Double(target))
                             .tint(SunnahBrandColors.gold)
                     }
-                    .padding(12)
+                    .sunnahCardLayout(12)
                 }
             } else {
-                SunnahWidgetEmptyState(message: "افتح سُنّة لتفعيل هدف القراءة")
+                SunnahWidgetEmptyState(message: "حدّد هدف القراءة في سُنّة ليظهر هنا")
             }
         }
         .modifier(QuranSurface())
@@ -271,6 +283,8 @@ struct MushafProgressView: View {
                     Text(mushaf.lastSurahNameAr ?? "المصحف")
                         .font(.title3.bold())
                         .foregroundStyle(.white)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
                     Text("صفحة \(SunnahWidgetTimeFormatting.arabic(page))")
                         .font(.headline)
                         .foregroundStyle(.white)
@@ -281,9 +295,9 @@ struct MushafProgressView: View {
                             .widgetAccentable()
                     }
                 }
-                .padding(12)
+                .sunnahCardLayout(12)
             } else {
-                SunnahWidgetEmptyState(message: "ابدأ القراءة لحفظ الرحلة")
+                SunnahWidgetEmptyState(message: "ابدأ القراءة ليظهر تقدّمك هنا")
             }
         }
         .modifier(QuranSurface())

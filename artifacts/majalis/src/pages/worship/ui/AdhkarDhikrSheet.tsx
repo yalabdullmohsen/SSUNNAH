@@ -4,7 +4,7 @@ import type { AdhkarItem } from "@/lib/adhkar-seed";
 import { formatPublicGrade, normalizePublicSource } from "@/lib/content-display-zones";
 import { IsnadAttributionBar } from "@/components/IsnadAttributionBar";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 function toAr(n: number): string {
   return n.toLocaleString("ar-EG", { useGrouping: false });
 }

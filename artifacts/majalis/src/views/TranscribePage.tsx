@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { NavigationBar } from "@/design-system";
 import { applyPageSeo } from "@/lib/seo";
 import { validateMediaUpload, safeUploadFileName, MAX_MEDIA_BYTES } from "@/lib/file-validation";
 import { sanitizeText } from "@/lib/sanitize";
@@ -7,7 +8,6 @@ import { useDropzone, type FileRejection } from "react-dropzone";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/components/AuthProvider";
 import "@/styles/pages/transcribe.css";
-import { DetailScreen } from "@/components/design-system/screens";
 import { Button } from "@/components/ui/button";
 
 type TabId = "upload" | "youtube" | "text";
@@ -231,7 +231,8 @@ export default function TranscribePage() {
   };
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="تفريغ الدروس" large={false} />
     <div className="trp-root">
       <div className="mx-auto max-w-4xl px-4">
         <Link href="/" className="trp-back-link">← سُنّة</Link>
@@ -411,6 +412,6 @@ export default function TranscribePage() {
         )}
       </div>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

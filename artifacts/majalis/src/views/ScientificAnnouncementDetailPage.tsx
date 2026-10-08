@@ -1,5 +1,5 @@
+import { EmptyState } from "@/design-system";
 import { Link } from "wouter";
-import { Empty } from "@/components/ui-common";
 import { EMPTY } from "@/lib/ui-copy";
 import {
   buildShareText,
@@ -11,7 +11,6 @@ import { MetaHead } from "@/components/seo/MetaHead";
 import { OptimizedImage } from "@/components/media/OptimizedImage";
 import { ContentDetailLayout } from "@/components/platform/ContentDetailLayout";
 import "@/styles/pages/scientific-announcements.css";
-import { DetailScreen } from "@/components/design-system/screens";
 
 import { safeHttpHref } from "@/lib/sanitize";
 
@@ -60,7 +59,7 @@ export default function ScientificAnnouncementDetailPage({
           robots="noindex, follow"
           jsonLd={[]}
         />
-        <Empty text={EMPTY.data} />
+        <EmptyState title={EMPTY.data} />
         <Link href="/lessons" className="sci-ann-detail__back">
           العودة إلى الدروس
         </Link>
@@ -84,7 +83,7 @@ export default function ScientificAnnouncementDetailPage({
     : undefined;
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
     <>
     <MetaHead
       path={`/scientific-announcements/${params.id}`}
@@ -233,6 +232,6 @@ export default function ScientificAnnouncementDetailPage({
       </article>
     </ContentDetailLayout>
     </>
-    </DetailScreen>
+    </div>
   );
 }

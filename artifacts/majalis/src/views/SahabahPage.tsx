@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavigationBar, SearchField } from "@/design-system";
 import { applyPageSeo } from "../lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
 import { ShareButtons } from "@/components/ContentActions";
@@ -6,8 +7,6 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import "@/styles/pages/sahabah.css";
-import { ListScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 
 
@@ -1243,7 +1242,8 @@ export default function SahabahPage() {
   });
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="أعلام الصحابة الكرام" large={false} />
     <main className="sb-page" dir="rtl">
       {/* hero */}
       <section className="sb-hero">
@@ -1265,7 +1265,7 @@ export default function SahabahPage() {
 
       <div className="sb-body">
         {/* search */}
-        <SearchInput className="sb-search" aria-label="ابحث بالاسم" placeholder="ابحث بالاسم..." value={search} onChange={(e) => setSearch(e.target.value)} onClear={() => setSearch("")} />
+        <SearchField value={search} onChange={setSearch} placeholder="ابحث بالاسم..." label="ابحث بالاسم" />
 
         {/* categories */}
         <div className="sb-cats" role="tablist" aria-label="تصفية الصحابة">
@@ -1385,6 +1385,6 @@ export default function SahabahPage() {
         </nav>
       </div>
     </main>
-    </ListScreen>
+    </div>
   );
 }

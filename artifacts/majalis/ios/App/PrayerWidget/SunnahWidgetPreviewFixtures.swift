@@ -7,7 +7,7 @@ enum SunnahWidgetPreviewFixtures {
     static func calendar(now: Date = Date(), timeZone: TimeZone = .current) -> SharedCalendarPayload {
         let h = HijriCalendar.date(now, timeZone: timeZone)
         let f = DateFormatter()
-        f.locale = Locale(identifier: "ar")
+        f.locale = WidgetFormat.locale
         f.timeZone = timeZone
         f.setLocalizedDateFormatFromTemplate("EEEE")
         let weekday = f.string(from: now)

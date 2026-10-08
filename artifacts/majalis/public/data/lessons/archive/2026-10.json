@@ -2,6 +2,222 @@
   "month": "2026-10",
   "items": [
     {
+      "id": "cb11c45d0bb402f024fdeaa2622e5a97f6701d18",
+      "type": "تسجيل",
+      "title_ar": "⁨\t⁨\t⁨\t⁨\t⁨\t⁨\t⁨\t⁨\tحياكم الله مع غيث القلب🤍",
+      "summary_ar": "حياكم الله مع غيث القلب صحبه خير ! نلقاكم الاثنين بعد صلاه العشاء مباشره مسجد عيسي العثمان ، في منطقه الخالديه للحضور يلزم التسجيل عبر الرابط في البايو Photo b…",
+      "sheikh": null,
+      "place": "عيسى العثمان",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": null,
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "ig-ghaith.kw",
+          "name_ar": "فريق غيث",
+          "url": "https://instagram.com/ghaith.kw",
+          "post_url": "https://www.instagram.com/p/DePZZqGOgkV/",
+          "platform": "instagram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-08T20:54:06.385Z",
+      "confidence": 0.75
+    },
+    {
+      "id": "a2236baf0ea62dc9a0b41888b6b892478e052578",
+      "type": "تسجيل",
+      "title_ar": "بشــرى لأهالي الدوحة بدأ التسجيل في حلقات حفظ القرآن للكبار كل اثنين وأربعاء بع…",
+      "summary_ar": "بشري لاهالي الدوحه بدا التسجيل في حلقات حفظ القران (للكبار) كل اثنين واربعاء بعد صلاه العشاء العمر من ١٢ وصاعد التسجيل مجانا رابط التسجيل https://ebnbazz.com/r…",
+      "sheikh": null,
+      "place": "حلقات حفظ القرآن (للكبار) 👈 كل اثنين وأربعاء 👈 بعد صلاة العشاء 👈 العمر من ١٢",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28196",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-08T20:49:16.353Z",
+      "confidence": 0.8
+    },
+    {
+      "id": "ec0beca4b82de47f248550e50564ce3654476a04",
+      "type": "تسجيل",
+      "title_ar": "بشرى لأهالي العاشرة تم افتتاح مركز الإمام حافظ الحكمي لتعليم الناشئة الدورة كل …",
+      "summary_ar": "بشري لاهالي العاشره تم افتتاح مركز الامام حافظ الحكمي لتعليم الناشئه الدوره كل يوم سبت بعد صلاه العصر العمر من 8 سنوات الي الجامعه التسجيل مجانا ابتداء من السب…",
+      "sheikh": null,
+      "place": "الإمام حافظ الحكمي لتعليم الناشئة 👈 الدورة كل يوم سبت 👈 بعد صلاة العصر 👈 العم",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "upcoming",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28198",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-08T20:49:16.353Z",
+      "confidence": 0.8
+    },
+    {
+      "id": "23ebc30d5ac5dc80d0170665d23be5fecbea8263",
+      "type": "درس",
+      "title_ar": "ندعوكم لحضور الدرس الأسبوعي شرح فضائل القرآن للشيخ د محمد عبدالله العتيبي الساع…",
+      "summary_ar": "ندعوكم لحضور الدرس الاسبوعي: شرح فضائل القران للشيخ د. محمد عبدالله العتيبي ⏰ الساعه: 8:00م ديوان راشد المري - الاحمدي https://goo.gl/maps/QimqQ7yak7HnTRWc6 ال…",
+      "sheikh": "محمد عبدالله العتيبي ⏰ الساعة: 8:00م 📍 ديوان راشد المري - ا",
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": "8:00م",
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28194",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-08T20:49:16.353Z",
+      "confidence": 0.9
+    },
+    {
+      "id": "21d3e799f7817790f16f99d6eb41cc034f16df03",
+      "type": "درس",
+      "title_ar": "ندعوكم لحضور الدرس العلمي شرح كتاب التوحيد لفضيلة الشيخ د دغش العجمي بعد صلاة ا…",
+      "summary_ar": "ندعوكم لحضور الدرس العلمي: شرح كتاب التوحيد لفضيله الشيخ د. دغش العجمي @DrDaghashAlajmi ⏰ بعد صلاه المغرب (كل خميس) مسجد هله الحربي-الظهر https://maps.app.goo.…",
+      "sheikh": "دغش العجمي @DrDaghashAlajmi ⏰ بعد صلاة المغرب (كل خميس) 🕌 م",
+      "place": "هلة الحربي-الظهر https://maps",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28206",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-08T20:49:16.353Z",
+      "confidence": 0.9
+    },
+    {
+      "id": "484709f97ea11d8b3eec4a1ff4067e2743911cab",
+      "type": "درس",
+      "title_ar": "👇 جدول دروس اليوم الخميس 👇",
+      "summary_ar": "جدول دروس اليوم الخميس",
+      "sheikh": null,
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28203",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-08T20:49:16.353Z",
+      "confidence": 0.65
+    },
+    {
+      "id": "789c20ac950f7999665a9ea87f3eedc60fe0748b",
+      "type": "محاضرة",
+      "title_ar": "♦️غداً الجمعة بعد المغرب بإذن الله",
+      "summary_ar": "غدا الجمعه بعد المغرب باذن الله تفسير سوره الاسراء (ايه 23) المجلس 4 مسجد موضي –الصديق لتفاصيل المحاضرات وللبث المباشر في الموقع الالكتروني للشيخ عثمان الخميس …",
+      "sheikh": null,
+      "place": "موضي –الصديق",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": "بعد المغرب",
+      "register_url": null,
+      "schedule_kind": "upcoming",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "ig-othmanalkamees",
+          "name_ar": "د. عثمان الخميس",
+          "url": "https://instagram.com/othmanalkamees",
+          "post_url": "https://www.instagram.com/p/DePVmawG6iM/",
+          "platform": "instagram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-08T20:47:32.838Z",
+      "confidence": 0.85
+    },
+    {
+      "id": "2c9372df3e429cb7f78aad2007b350d8f583b750",
+      "type": "درس",
+      "title_ar": "تلخيص مختصر المقنع",
+      "summary_ar": "تلخيص مختصر المقنع درس اسبوعي — يوم الاربعاء رقم المجلس: 137 وصلنا الي: تبعيض الطلاق - صفحه 345 الوقت: بعد المغرب المكان: مسجد الياقوت - منطقه الصديق الموعد ال…",
+      "sheikh": "عثمان الخميس",
+      "place": "الياقوت - منطقة الصديق",
+      "audience": "عام",
+      "starts_at": "2026-10-14T00:00:00.000Z",
+      "time_text": "بعد المغرب",
+      "register_url": null,
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "web-othmanalkhamees_schedule",
+          "name_ar": "جدول دروس الشيخ عثمان الخميس",
+          "url": "https://www.othmanalkhamees.com/schedule",
+          "post_url": "https://www.othmanalkhamees.com/schedule",
+          "platform": "web"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-08T20:41:34.584Z",
+      "confidence": 0.95
+    },
+    {
       "id": "9c90ed913c92f9610c2863f96e06889b1db34760",
       "type": "محاضرة",
       "title_ar": "نبدأ معكم سلسلة",
@@ -48,33 +264,6 @@
           "name_ar": "دروس الكويت",
           "url": "https://t.me/DrosQ8",
           "post_url": "https://t.me/DrosQ8/28182",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-07T10:05:12.775Z",
-      "confidence": 0.9
-    },
-    {
-      "id": "cd051d054aaf740f61631ffb0f5da46fb853ad07",
-      "type": "دورة",
-      "title_ar": "ندعوكم الليلة لحضور البرنامج التأصيلي العلمي بعد المغرب شرح دليل الطالب للشيخ ح…",
-      "summary_ar": "ندعوكم الليله لحضور البرنامج التاصيلي العلمي: ⏰ بعد المغرب شرح دليل الطالب للشيخ حماد الظفيري ⏰ بعد العشاء شرح ثلاثه الاصول للشيخ يوسف مهراس مسجد عاصم الانصاري…",
-      "sheikh": null,
-      "place": "ري ⏰ بعد العشاء 📖 شرح ثلاثة الأصول 🎙️ للشيخ يوسف مهراس 🕌 مسجد عاصم الأنصاري -",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": "بعد المغرب",
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "upcoming",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28183",
           "platform": "telegram"
         }
       ],
@@ -162,33 +351,6 @@
       "image_url": null,
       "published_at": "2026-10-07T10:05:12.775Z",
       "confidence": 0.65
-    },
-    {
-      "id": "fdf1abf95b060363d7e41c2cb4b85c518a8d3634",
-      "type": "محاضرة",
-      "title_ar": "♦️ غداً الأربعاء بعد صلاة المغرب بإذن الله",
-      "summary_ar": "غدا الاربعاء بعد صلاه المغرب باذن الله مسجد الياقوت درس تلخيص مختصر المقنع المجلس (137) – تبعيض الطلاق للشيخ عثمان الخميس لتفاصيل المحاضرات وللبث المباشر في ال…",
-      "sheikh": null,
-      "place": "الياقوت",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": null,
-      "schedule_kind": "upcoming",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "ig-othmanalkamees",
-          "name_ar": "د. عثمان الخميس",
-          "url": "https://instagram.com/othmanalkamees",
-          "post_url": "https://www.instagram.com/p/DeKZ7gOiWN2/",
-          "platform": "instagram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-06T20:24:29.268Z",
-      "confidence": 0.75
     },
     {
       "id": "64cac92508d972195b7ffc4d0474c1290f441987",
@@ -920,33 +1082,6 @@
       "confidence": 0.95
     },
     {
-      "id": "4a5a25cdbdc6d3ff276e91cb5c92f82b7de2ab88",
-      "type": "تسجيل",
-      "title_ar": "حياكم الله مع غيث القلب🤍",
-      "summary_ar": "       حياكم الله مع غيث القلب صحبه خير ! نلقاكم الاثنين بعد صلاه العشاء مباشره مسجد عيسي العثمان ، في منطقه الخالديه للحضور يلزم التسجيل عبر الرابط في …",
-      "sheikh": null,
-      "place": "عيسى العثمان",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": null,
-      "schedule_kind": null,
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "ig-ghaith.kw",
-          "name_ar": "فريق غيث",
-          "url": "https://instagram.com/ghaith.kw",
-          "post_url": "https://www.instagram.com/p/Dd9RddROrvm/",
-          "platform": "instagram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-01T00:00:00.000Z",
-      "confidence": 0.75
-    },
-    {
       "id": "959d48e0ec02f87886cc84d089a6ee6f61c3c5fb",
       "type": "محاضرة",
       "title_ar": "جعلنا وإياكم من الفائزين برضوانه 🤲🏻🤍",
@@ -1134,60 +1269,6 @@
       "image_url": null,
       "published_at": "2026-09-25T13:16:38.149Z",
       "confidence": 0.65
-    },
-    {
-      "id": "b3de7ec023dd0d0731f516ac4b4254587973657f",
-      "type": "درس",
-      "title_ar": "جمهورنا الكريم في مسجد السداح، يعود لكم درسنا حضوري ، للتنبيه الدرس اصبح يوم ال…",
-      "summary_ar": "جمهورنا الكريم في مسجد السداح، يعود لكم درسنا حضوري ، للتنبيه : الدرس اصبح يوم الاثنين من تاريخ ٢٨-٩ -٢٠٢٦ الي ٢٣-١١-٢٠٢٦ حيث راح نختم معاكم الكتاب باذن الله، …",
-      "sheikh": null,
-      "place": "مسجد السداح",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": null,
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "ig-fajeralkous",
-          "name_ar": "فجر عبدالرحمن الكوس",
-          "url": "https://instagram.com/fajeralkous",
-          "post_url": "https://www.instagram.com/p/Ddq3kf4DeMi/",
-          "platform": "instagram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-09-24T00:00:00.000Z",
-      "confidence": 0.75
-    },
-    {
-      "id": "6577c3e3096fc83039c79960b21745c1bcfc18a6",
-      "type": "محاضرة",
-      "title_ar": "الوصف",
-      "summary_ar": "الوصف قال تعالي: ﴿لن تنالوا البر حتي تنفقوا مما تحبون﴾ [ال عمران: ٩٢] موعدنا غدا بعد صلاه الجمعه، مع انطلاق حمله \"٩ ب٩٩\" لكفاله ٩٩ حافظ من ذوي الاحتياجات الخاص…",
-      "sheikh": null,
-      "place": "_التميز #٩_لـ٩٩ #الزكاة #الكويت",
-      "audience": "نساء",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": null,
-      "schedule_kind": "upcoming",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "ig-al_mabarrah",
-          "name_ar": "مبرة المتميزين — الحلقات النسائية",
-          "url": "https://aayatkw.com",
-          "post_url": "https://www.instagram.com/p/DdrdqXVsoWf/",
-          "platform": "instagram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-09-24T00:00:00.000Z",
-      "confidence": 0.75
     },
     {
       "id": "92817884645b3c0b08509fe5f534f0d573c4acc0",

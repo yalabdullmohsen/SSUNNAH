@@ -28,7 +28,6 @@ import {
 } from "@/lib/universities-service";
 import "@/styles/pages/universities.css";
 import "@/styles/pages/learning-path-dashboard.css";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { Button } from "@/components/ui/button";
 const COUNTRIES = [
   "المملكة العربية السعودية",
@@ -294,7 +293,6 @@ function UniversitiesContent() {
       <div className="twh-share">
         <ShareButtons title="الجامعات الإسلامية — سُنّة" url="https://www.ssunnah.com/universities" />
       </div>
-      <RelatedKnowledge kind="book" query="جامعات إسلامية" title="مواد ذات صلة" limit={6} />
       <div className="px-4 pb-6 mt-4">
         <SectionQuiz sectionId="islamic-history" title="اختبر معلوماتك في الجامعات الشرعية" count={4} />
       </div>

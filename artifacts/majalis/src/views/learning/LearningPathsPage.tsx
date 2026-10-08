@@ -12,7 +12,6 @@ import { supabase } from "@/lib/supabase";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import "@/styles/pages/learning-paths.css";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { Button } from "@/components/ui/button";
 const CATEGORY_META: Record<string, { label: string; Icon: LucideIcon }> = {
   aqeedah:  { label: "العقيدة",  Icon: Moon       },
@@ -259,7 +258,6 @@ export default function LearningPathsPage() {
       <div className="twh-share">
         <ShareButtons title="المسارات التعليمية الشرعية — سُنّة" url="https://www.ssunnah.com/learning/paths" />
       </div>
-      <RelatedKnowledge kind="lesson" query="مسارات التعلم" title="دروس ومسارات ذات صلة" limit={6} />
       <div className="px-4 pb-6 mt-4">
         <SectionQuiz route="/learning-paths" title="اختبر معلوماتك في العلوم الإسلامية" count={4} />
       </div>

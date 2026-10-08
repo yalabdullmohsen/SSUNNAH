@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { SearchInput } from "@/components/design-system";
+import { SearchField } from "@/design-system";
 import { useSearch } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/malaika.css";
@@ -372,9 +372,7 @@ export default function MalaikaPage() {
 
       {activeTab !== "aqida" && (
         <div className="mk-search-wrap">
-          <SearchInput value={searchQ} onChange={(e) => setSearch(e.target.value)}
-            placeholder="ابحث في الملائكة." className="page-search-input mk-search-input"
-            aria-label="بحث في الملائكة" onClear={() => setSearch("")} />
+          <SearchField value={searchQ} onChange={setSearch} placeholder="ابحث في الملائكة." label="بحث في الملائكة" />
         </div>
       )}
 

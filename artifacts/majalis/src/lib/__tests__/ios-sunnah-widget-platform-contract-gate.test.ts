@@ -144,8 +144,9 @@ assert.match(deep, /hadith/);
 assert.match(entry, /galleryPreview/);
 assert.match(entry, /context\.isPreview/);
 assert.match(entry, /allowsLiveCountdown/);
-assert.match(entry, /"fajr":\s*at\(/);
-assert.match(entry, /locationLabel:\s*"معاينة"/);
+assert.match(entry, /GalleryPrayer\.day\(now:/); // مواقيت المعاينة محسوبة بالحاسب الموحّد لا أرقامًا ثابتة
+assert.doesNotMatch(entry, /"fajr":\s*at\(/);
+assert.match(entry, /locationLabel:\s*(isPreview \?\s*)?"معاينة"/);
 assert.match(entry, /SunnahSharedStore\.loadPrayer/);
 assert.doesNotMatch(entry + views + widget, /AdhanCalculation|CalculationMethod|URLSession|URLRequest/);
 assert.doesNotMatch(entry + views + widget, /Quran|QPC|Hisn|Fatwa|recitation|wird/i);
@@ -153,7 +154,7 @@ assert.doesNotMatch(views, /Text\("—"\)/);
 assert.doesNotMatch(views, /\?\? "—"/);
 assert.match(views, /افتح سُنّة لإكمال إعداد مواقيت الصلاة/);
 assert.match(views, /PrayerCountdownText/);
-assert.match(views, /staticRemaining/);
+assert.match(views, /PrayerLiveClock/); // مكوّن العدّ الموحّد (حلّ محل staticRemaining)
 assert.match(views, /rightToLeft/);
 assert.match(views, /accessibilityLabel/);
 

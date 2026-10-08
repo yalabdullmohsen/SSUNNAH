@@ -15,7 +15,7 @@ struct DailyHadithWidget: Widget {
             .widgetURL(SunnahWidgetDeepLinkFactory.hadith())
         }
         .configurationDisplayName("حديث اليوم")
-        .description("حديث قصير معتمد مع ذكر المصدر.")
+        .description("حديث قصير مع ذكر المصدر.")
         .supportedFamilies(SunnahWidgetFamilySupport.custom)
     }
 }
@@ -34,7 +34,7 @@ struct DailyFaidahWidget: Widget {
             .widgetURL(SunnahWidgetDeepLinkFactory.fawaid())
         }
         .configurationDisplayName("فائدة اليوم")
-        .description("فائدة إسلامية موجزة من محتوى سُنّة المعتمد.")
+        .description("فائدة إسلامية موجزة من محتوى سُنّة.")
         .supportedFamilies(SunnahWidgetFamilySupport.custom)
     }
 }
@@ -53,7 +53,7 @@ struct DailyDuaWidget: Widget {
             .widgetURL(SunnahWidgetDeepLinkFactory.dua())
         }
         .configurationDisplayName("دعاء اليوم")
-        .description("دعاء معتمد لليوم مع المصدر إن وُجد.")
+        .description("دعاء لليوم مع المصدر إن وُجد.")
         .supportedFamilies(SunnahWidgetFamilySupport.custom)
     }
 }

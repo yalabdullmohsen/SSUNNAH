@@ -34,7 +34,7 @@ struct CustomContentStaticWidget: Widget {
                 .widgetURL(SunnahWidgetDeepLinkFactory.url(path: entry.custom?.items.first?.deepLinkPath ?? "/prayer-times"))
         }
         .configurationDisplayName("محتوى اختياري")
-        .description("اختر المحتوى من إعدادات الويدجت بعد التحديث.")
+        .description("اضغط مطوّلًا على الودجة ثم «تعديل» لاختيار المحتوى.")
         .supportedFamilies(SunnahWidgetFamilySupport.custom)
     }
 }

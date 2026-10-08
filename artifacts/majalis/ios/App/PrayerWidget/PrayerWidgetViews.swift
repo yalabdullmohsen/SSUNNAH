@@ -1,4 +1,5 @@
 import SwiftUI
+import SunnahWidgetKit
 import WidgetKit
 
 private let prayerURL = PrayerWidgetDeepLink.prayerTimes
@@ -53,7 +54,7 @@ struct PrayerWidgetRootView: View {
             }
         }
         .environment(\.layoutDirection, .rightToLeft)
-        .environment(\.locale, Locale(identifier: "ar"))
+        .environment(\.locale, WidgetFormat.locale)
         .widgetURL(prayerURL)
         .redacted(reason: entry.presentation == .placeholder ? .placeholder : [])
     }
@@ -76,31 +77,50 @@ enum PrayerWidgetCopy {
     }
 }
 
+/// مكوّن العدّ الحي الوحيد لكل ودجات الصلاة: تصاعدي منذ دخول الوقت، وتنازلي حتى التالية.
+/// الحي بالثواني عبر النظام (بلا إعادة بناء Timeline كل ثانية)؛ وعند تعطيله يُعرض نص ثابت بالصيغة نفسها.
+struct PrayerLiveClock: View {
+    let mode: LiveClock.Mode
+    let now: Date
+    let live: Bool
+
+    var body: some View {
+        Group {
+            switch mode {
+            case .countUp(let since):
+                if live { Text(since, style: .timer) } else { staticText }
+            case .countDown(let until):
+                if live {
+                    Text(timerInterval: now...until, countsDown: true,
+                         showsHours: LiveClock.showsHours(seconds: until.timeIntervalSince(now)))
+                } else { staticText }
+            case .started:
+                Text("الآن")
+            case .none:
+                EmptyView()
+            }
+        }
+        .monospacedDigit()
+        .lineLimit(1)
+        // Text(timerInterval:) يتمدد لكامل العرض افتراضيًا؛ نثبّته على عرض محتواه.
+        .fixedSize(horizontal: true, vertical: false)
+        // أرقام هندية موحّدة في النص الحي أيضًا.
+        .environment(\.locale, WidgetFormat.locale)
+    }
+
+    @ViewBuilder private var staticText: some View {
+        if let t = LiveClock.staticText(mode, now: now) { Text(t) }
+    }
+}
+
 struct PrayerCountdownText: View {
     let entry: PrayerWidgetEntry
 
     var body: some View {
-        if let start = entry.elapsedStart {
-            // «مضى على أذان X»: عدّ تصاعدي من لحظة الأذان (العنوان فوقه يذكر الصلاة)
-            if entry.allowsLiveCountdown {
-                Text(start, style: .timer)
-            } else {
-                Text(SunnahWidgetTimeFormatting.staticRemaining(from: start, to: entry.date))
-            }
-        } else if entry.nextHasStarted {
-            Text("الآن")
-        } else if let end = entry.nextDate, end > entry.date {
-            if entry.allowsLiveCountdown {
-                Text(timerInterval: entry.date...end, countsDown: true)
-            } else {
-                Text(SunnahWidgetTimeFormatting.staticRemaining(from: entry.date, to: end))
-            }
-        } else if entry.isSampleData {
-            Text("٢٥ د")
-        } else if entry.dataState == .staleData {
-            Text(PrayerWidgetCopy.stale)
+        if entry.clockMode == .none {
+            Text(entry.dataState == .staleData ? PrayerWidgetCopy.stale : "حدّث المواقيت")
         } else {
-            Text("حدّث المواقيت")
+            PrayerLiveClock(mode: entry.clockMode, now: entry.date, live: entry.allowsLiveCountdown)
         }
     }
 }
@@ -172,11 +192,11 @@ struct SmallPrayerWidgetView: View {
 
     private var countdownA11y: String {
         if let name = entry.elapsedNameAr, let start = entry.elapsedStart {
-            return "مضى \(SunnahWidgetTimeFormatting.staticRemaining(from: start, to: entry.date)) على أذان \(name)"
+            return "مضى \(LiveClock.format(seconds: entry.date.timeIntervalSince(start))) على أذان \(name)"
         }
         if entry.nextHasStarted { return "حان وقت الصلاة" }
         if let end = entry.nextDate, end > entry.date {
-            return "متبقي \(SunnahWidgetTimeFormatting.staticRemaining(from: entry.date, to: end)) للصلاة التالية"
+            return "متبقي \(LiveClock.format(seconds: end.timeIntervalSince(entry.date))) للصلاة التالية"
         }
         return "العد التنازلي للصلاة التالية"
     }
@@ -329,35 +349,8 @@ struct CircularPrayerWidgetView: View {
                 if entry.needsAppOpenAction {
                     Text("سُنّة")
                         .font(.caption2.bold())
-                } else if let start = entry.elapsedStart {
-                    if entry.allowsLiveCountdown {
-                        Text(start, style: .timer)
-                            .font(.caption2.monospacedDigit())
-                            .minimumScaleFactor(0.5)
-                            .lineLimit(1)
-                    } else {
-                        Text(SunnahWidgetTimeFormatting.staticRemaining(from: start, to: entry.date))
-                            .font(.caption2.monospacedDigit())
-                            .minimumScaleFactor(0.5)
-                            .lineLimit(1)
-                    }
-                } else if entry.nextHasStarted {
-                    Text("الآن")
-                        .font(.caption2.bold())
-                } else if let end = entry.nextDate, end > entry.date {
-                    if entry.allowsLiveCountdown {
-                        Text(timerInterval: entry.date...end, countsDown: true)
-                            .font(.caption2.monospacedDigit())
-                            .minimumScaleFactor(0.5)
-                            .lineLimit(1)
-                    } else {
-                        Text(SunnahWidgetTimeFormatting.staticRemaining(from: entry.date, to: end))
-                            .font(.caption2.monospacedDigit())
-                            .minimumScaleFactor(0.5)
-                            .lineLimit(1)
-                    }
-                } else if entry.isSampleData {
-                    Text("٢٥ د")
+                } else if entry.clockMode != .none {
+                    PrayerLiveClock(mode: entry.clockMode, now: entry.date, live: entry.allowsLiveCountdown)
                         .font(.caption2.bold())
                 } else {
                     Text("حدّث")
@@ -401,10 +394,6 @@ struct RectangularPrayerWidgetView: View {
                         .lineLimit(1)
                     if let end = entry.nextDate {
                         Text(SunnahWidgetTimeFormatting.clock(end))
-                            .font(.caption.monospacedDigit())
-                            .foregroundStyle(.secondary)
-                    } else if entry.isSampleData {
-                        Text("١٢:١٠")
                             .font(.caption.monospacedDigit())
                             .foregroundStyle(.secondary)
                     }

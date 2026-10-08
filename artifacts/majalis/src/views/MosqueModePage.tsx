@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import { BookMarked, Building2, Compass, Lightbulb, RotateCw, ScrollText, VolumeX } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -6,7 +7,6 @@ import { Link } from "wouter";
 import { usePrayerCountdown } from "@/components/prayer/PrayerCountdownProvider";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/mosque-mode.css";
-import { DetailScreen } from "@/components/design-system/screens";
 
 function pad(n: number) {
   return String(n).padStart(2, "0");
@@ -67,7 +67,8 @@ export default function MosqueModePage() {
   const graceNextHms = countdown?.graceNextHms ?? null;
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+    <NavigationBar title="وضع المسجد" large={false} />
     <div className="mosque-mode" dir="rtl">
       {/* Silence alert */}
       {silenceAlerted && (
@@ -134,6 +135,6 @@ export default function MosqueModePage() {
         <Lightbulb size={14} strokeWidth={1.8} aria-hidden="true" /> أضف المنصة لشاشتك الرئيسية لوصول أسرع
       </p>
     </div>
-    </DetailScreen>
+    </div>
   );
 }

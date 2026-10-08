@@ -59,7 +59,7 @@ struct SunnahWidgetChrome: ViewModifier {
     func body(content: Content) -> some View {
         content
             .environment(\.layoutDirection, .rightToLeft)
-            .environment(\.locale, Locale(identifier: "ar"))
+            .environment(\.locale, WidgetFormat.locale)
             .modifier(SunnahWidgetSurface())
     }
 }
@@ -74,15 +74,37 @@ private struct SunnahWidgetSurface: ViewModifier {
     }
 }
 
+extension View {
+    /// تخطيط البطاقة الموحّد: يملأ الودجة ويُرسي المحتوى عند بداية السطر (يمين في RTL) فلا يتوسّط ولا يُقصّ.
+    func sunnahCardLayout(_ padding: CGFloat = 14) -> some View {
+        self
+            .padding(padding)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+    }
+
+    /// سقف لحجم الخط الديناميكي داخل الودجات حتى لا يُقصّ النص عند أحجام الإتاحة الكبيرة.
+    func sunnahDynamicTypeCap() -> some View {
+        dynamicTypeSize(...DynamicTypeSize.accessibility1)
+    }
+}
+
 struct SunnahWidgetEmptyState: View {
     let message: String
     var body: some View {
-        Text(message)
-            .font(SunnahWidgetTheme.bodyFont)
-            .foregroundStyle(SunnahWidgetTheme.primaryText)
-            .multilineTextAlignment(.trailing)
-            .minimumScaleFactor(0.8)
-            .padding(SunnahWidgetTheme.spacingMD)
+        VStack(alignment: .leading, spacing: SunnahWidgetTheme.spacingSM) {
+            Image(systemName: "arrow.up.forward.app")
+                .font(.title3)
+                .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
+                .accessibilityHidden(true)
+            Text(message)
+                .font(SunnahWidgetTheme.bodyFont)
+                .foregroundStyle(SunnahWidgetTheme.primaryText)
+                .multilineTextAlignment(.leading)
+                .lineLimit(4)
+                .minimumScaleFactor(0.8)
+        }
+        .sunnahCardLayout(SunnahWidgetTheme.spacingMD)
     }
 }
 
@@ -276,7 +298,7 @@ enum SunnahWidgetDayRollover {
         cal.timeZone = tz
         let f = DateFormatter()
         f.calendar = cal
-        f.locale = Locale(identifier: "ar")
+        f.locale = WidgetFormat.locale
         f.timeZone = tz
         f.setLocalizedDateFormatFromTemplate(template)
         return f.string(from: date)
@@ -394,4 +416,28 @@ enum SunnahWidgetDayRollover {
         out.currentAdhkarTitleAr = adhkarWindow(at: date, timeZone: timeZone).title
         return out
     }
+}
+
+/// Smart Stack relevance: higher as the next prayer approaches or while its «مضى على الأذان» window is open.
+/// Pure function of entry dates, so it is testable and never touches prayer calculation.
+enum SunnahWidgetRelevance {
+    static func score(now: Date, nextDate: Date?, elapsedStart: Date?, elapsedEnd: Date?) -> Float {
+        if let s = elapsedStart, let e = elapsedEnd, now >= s, now < e { return 80 }
+        guard let next = nextDate, next > now else { return 10 }
+        let remaining = next.timeIntervalSince(now)
+        if remaining <= 15 * 60 { return 100 }
+        if remaining <= 60 * 60 { return 60 }
+        return 20
+    }
+}
+
+extension PrayerWidgetEntry {
+    var relevance: TimelineEntryRelevance? {
+        TimelineEntryRelevance(score: SunnahWidgetRelevance.score(
+            now: date, nextDate: nextDate, elapsedStart: elapsedStart, elapsedEnd: elapsedEnd))
+    }
+}
+
+extension CatalogWidgetEntry {
+    var relevance: TimelineEntryRelevance? { prayer.relevance }
 }
