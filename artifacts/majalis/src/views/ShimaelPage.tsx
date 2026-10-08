@@ -5,7 +5,6 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SegmentedFilter } from "@/components/filters/SegmentedFilter";
 import { HadithCard } from "@/components/hadith/HadithCard";
@@ -677,7 +676,6 @@ export default function ShimaelPage() {
           )}
 
           <ShareButtons title="الشمائل المحمدية، سُنّة" url="https://www.ssunnah.com/shimail" />
-          <RelatedKnowledge kind="hadith" query="الشمائل المحمدية" title="أحاديث ومعارف ذات صلة" limit={6} />
           <div className="sh-quiz-wrap">
             <SectionQuiz sectionId="seerah" title="اختبر معلوماتك في الشمائل" count={4} />
           </div>

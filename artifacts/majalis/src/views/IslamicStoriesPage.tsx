@@ -13,7 +13,6 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { truncateAtWord } from "@/lib/utils";
 import { useReadingScrollMemory } from "@/hooks/useReadingScrollMemory";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { ExploreAlsoNav } from "@/components/ExploreAlsoNav";
 import {
   ReadingBulletList,
@@ -399,7 +398,6 @@ export default function IslamicStoriesPage() {
 
       {stories.length > 0 && (
         <>
-          <RelatedKnowledge kind="story" title="قصص ومعارف ذات صلة" limit={6} />
           <ExploreAlsoNav
             title="استكشف أيضًا"
             links={[

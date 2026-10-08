@@ -29,7 +29,6 @@ import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { absoluteUrl } from "@/lib/site-config";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { useAuth } from "@/components/AuthProvider";
 import "@/styles/pages/knowledge-graph.css";
 import {
@@ -676,7 +675,6 @@ export default function KnowledgeGraphPage() {
       <div className="twh-share">
         <ShareButtons title="الرسم البياني المعرفي الإسلامي — سُنّة" url={absoluteUrl("/knowledge-graph")} />
       </div>
-      <RelatedKnowledge kind="book" query="معرفة إسلامية" title="مواد ذات صلة بالرسم المعرفي" limit={6} />
       <div className="px-4 pb-6 mt-4">
         <SectionQuiz route="/knowledge-graph" title="اختبر معلوماتك في المعرفة الإسلامية" count={4} />
       </div>

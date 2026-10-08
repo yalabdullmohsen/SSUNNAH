@@ -9,7 +9,6 @@ import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { truncateAtWord } from "@/lib/utils";
 import { AppBackButton } from "@/components/common/AppBackButton";
 import { HadithListCard } from "@/components/hadith/HadithListCard";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { ExploreAlsoNav } from "@/components/ExploreAlsoNav";
 import { NavigationBar, SearchField } from "@/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
@@ -311,12 +310,6 @@ export default function ArbaeenNawawiPage() {
           )}
 
           <ContentReportLink context="الأربعون النووية — سُنّة" />
-          <RelatedKnowledge
-            kind="hadith"
-            query="الأربعون النووية"
-            title="أحاديث ذات صلة"
-            limit={6}
-          />
           <ExploreAlsoNav
             title="استكشف أيضًا"
             links={[

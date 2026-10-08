@@ -5,7 +5,6 @@ import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/wasaya.css";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { Button } from "@/components/ui/button";
 
 /* ══════════════════════════════════════════════════════════════════
@@ -790,7 +789,6 @@ export default function WasayaNabawiyyaPage() {
       <div className="twh-share">
         <ShareButtons title="الوصايا النبوية — سُنّة" url="https://www.ssunnah.com/wasaya-nabawiyya" />
       </div>
-      <RelatedKnowledge kind="hadith" query="الوصايا النبوية" title="أحاديث ووصايا ذات صلة" limit={6} />
       <div className="px-4 pb-6 mt-4">
         <SectionQuiz sectionId="hadith" title="اختبر معلوماتك في الحديث النبوي" count={4} />
       </div>

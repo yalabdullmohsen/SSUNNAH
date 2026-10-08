@@ -4,7 +4,6 @@ import { Link } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import { KnowledgeSummaryCard } from "@/components/knowledge/KnowledgeSummaryCard";
 import { MADHAHIB } from "@/data/madhahib";
 import { saveKnowledgeListState } from "@/lib/knowledge-list-scroll";
@@ -106,7 +105,6 @@ export default function MadhahibPage() {
             ))}
           </div>
         </section>
-        <RelatedKnowledge kind="fatwa" query="المذاهب الفقهية" title="معرفة ذات صلة بالمذاهب" limit={6} />
         <div className="px-4 pb-6 mt-4">
           <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في المذاهب الفقهية" count={4} />
         </div>

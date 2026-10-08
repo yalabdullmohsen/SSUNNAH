@@ -7,7 +7,6 @@ import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { RelatedKnowledge } from "@/components/RelatedKnowledge";
 import "@/styles/pages/mawarith.css";
 import { KnowledgeLayout } from "@/components/knowledge";
 
@@ -554,7 +553,6 @@ export default function MawarithPage() {
           </div>
         </nav>
       </div>
-      <RelatedKnowledge kind="fatwa" query="المواريث والفرائض" title="معرفة ذات صلة بالمواريث" limit={6} />
       <div className="px-4 pb-6 mt-4">
         <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في المواريث" count={4} />
       </div>
