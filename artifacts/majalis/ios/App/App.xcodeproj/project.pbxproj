@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E870FAF588E866FFCF557E17 /* SunnahNative in Frameworks */ = {isa = PBXBuildFile; productRef = 3965A57FBC4A55FD1221521E /* SunnahNative */; };
+		458433715EA7B0A057A3A784 /* SunnahDataKit in Frameworks */ = {isa = PBXBuildFile; productRef = E0FEE46D9EEEECF07032F877 /* SunnahDataKit */; };
+		A6459A1BA8454A284A12F011 /* SunnahWeb in Frameworks */ = {isa = PBXBuildFile; productRef = CAAC6EEA427B510E86F235E2 /* SunnahWeb */; };
+		01AE073F1E8CDE42161CBE7B /* SunnahPrayer in Frameworks */ = {isa = PBXBuildFile; productRef = 80BCC2B92580E899E80B9DFA /* SunnahPrayer */; };
+		C9225C43F06EC1C5172AFD0A /* NativeShellGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F378976C2BF2DF0DEA224D /* NativeShellGate.swift */; };
 		A0280002SHAREDDATAAPP01 /* SunnahSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */; };
 		A0280003SHAREDDATALA01 /* SunnahSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */; };
 		A0280005SHAREDPLUGINAPP /* SunnahSharedDataPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0280004SHAREDPLUGINFILE /* SunnahSharedDataPlugin.swift */; };
@@ -130,6 +135,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		17F378976C2BF2DF0DEA224D /* NativeShellGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeShellGate.swift; sourceTree = "<group>"; };
 		A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahSharedData.swift; sourceTree = "<group>"; };
 		A0280004SHAREDPLUGINFILE /* SunnahSharedDataPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahSharedDataPlugin.swift; sourceTree = "<group>"; };
 		A055FR01AUTHKEYCHAIN /* SunnahAuthKeychainPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahAuthKeychainPlugin.swift; sourceTree = "<group>"; };
@@ -231,6 +237,10 @@
 			files = (
 				4D22ABE92AF431CB00220026 /* CapApp-SPM in Frameworks */,
 				14C68FE1795B6FEAF8C8CCD4 /* WhisperKit in Frameworks */,
+				E870FAF588E866FFCF557E17 /* SunnahNative in Frameworks */,
+				458433715EA7B0A057A3A784 /* SunnahDataKit in Frameworks */,
+				A6459A1BA8454A284A12F011 /* SunnahWeb in Frameworks */,
+				01AE073F1E8CDE42161CBE7B /* SunnahPrayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +285,7 @@
 				F4D5E6F708192A3B4C5D6E7F /* Services */,
 				50379B222058CBB4000EE86E /* capacitor.config.json */,
 				504EC3071FED79650016851F /* AppDelegate.swift */,
+				17F378976C2BF2DF0DEA224D /* NativeShellGate.swift */,
 				20C1C0E442F343FCA02B3616 /* PrayerActivityAttributes.swift */,
 				F4816472931E4AB1A0DE1F42 /* PrayerLiveActivityPlugin.swift */,
 				A0280004SHAREDPLUGINFILE /* SunnahSharedDataPlugin.swift */,
@@ -422,6 +433,10 @@
 			packageProductDependencies = (
 				4D22ABE82AF431CB00220026 /* CapApp-SPM */,
 				AFF96E47BCAF431E88434BA9 /* WhisperKit */,
+				3965A57FBC4A55FD1221521E /* SunnahNative */,
+				E0FEE46D9EEEECF07032F877 /* SunnahDataKit */,
+				CAAC6EEA427B510E86F235E2 /* SunnahWeb */,
+				80BCC2B92580E899E80B9DFA /* SunnahPrayer */,
 			);
 			productName = App;
 			productReference = 504EC3041FED79650016851F /* App.app */;
@@ -506,6 +521,10 @@
 			packageReferences = (
 				D4C12C0A2AAA248700AAC8A2 /* XCLocalSwiftPackageReference "CapApp-SPM" */,
 				3B6ACED0962ABEA203B7F207 /* XCRemoteSwiftPackageReference "argmax-oss-swift" */,
+				584FC4BE9341652EF3465507 /* XCLocalSwiftPackageReference "SunnahNative" */,
+				9D5DA8062057C8BDA9869B0D /* XCLocalSwiftPackageReference "SunnahDataKit" */,
+				7ED6801FCA3880B731CFBF5B /* XCLocalSwiftPackageReference "SunnahWeb" */,
+				3FA1A09255D0E12BEA1B40DB /* XCLocalSwiftPackageReference "SunnahPrayer" */,
 			);
 			productRefGroup = 504EC3051FED79650016851F /* Products */;
 			projectDirPath = "";
@@ -584,6 +603,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				504EC3081FED79650016851F /* AppDelegate.swift in Sources */,
+				C9225C43F06EC1C5172AFD0A /* NativeShellGate.swift in Sources */,
 				C1A2B3C4D5E6F708192A3B4D /* AppConfig.swift in Sources */,
 				E5F6071890AB12CD01A2B3C4 /* KeychainStore.swift in Sources */,
 				D2B3C4D5E6F708192A3B4C5E /* NetworkService.swift in Sources */,
@@ -998,6 +1018,22 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "CapApp-SPM";
 		};
+		584FC4BE9341652EF3465507 /* XCLocalSwiftPackageReference "SunnahNative" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = SunnahNative;
+		};
+		9D5DA8062057C8BDA9869B0D /* XCLocalSwiftPackageReference "SunnahDataKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = SunnahDataKit;
+		};
+		7ED6801FCA3880B731CFBF5B /* XCLocalSwiftPackageReference "SunnahWeb" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = SunnahWeb;
+		};
+		3FA1A09255D0E12BEA1B40DB /* XCLocalSwiftPackageReference "SunnahPrayer" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = SunnahPrayer;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -1021,6 +1057,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D4C12C0A2AAA248700AAC8A2 /* XCLocalSwiftPackageReference "CapApp-SPM" */;
 			productName = "CapApp-SPM";
+		};
+		3965A57FBC4A55FD1221521E /* SunnahNative */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 584FC4BE9341652EF3465507 /* XCLocalSwiftPackageReference "SunnahNative" */;
+			productName = SunnahNative;
+		};
+		E0FEE46D9EEEECF07032F877 /* SunnahDataKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9D5DA8062057C8BDA9869B0D /* XCLocalSwiftPackageReference "SunnahDataKit" */;
+			productName = SunnahDataKit;
+		};
+		CAAC6EEA427B510E86F235E2 /* SunnahWeb */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7ED6801FCA3880B731CFBF5B /* XCLocalSwiftPackageReference "SunnahWeb" */;
+			productName = SunnahWeb;
+		};
+		80BCC2B92580E899E80B9DFA /* SunnahPrayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3FA1A09255D0E12BEA1B40DB /* XCLocalSwiftPackageReference "SunnahPrayer" */;
+			productName = SunnahPrayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

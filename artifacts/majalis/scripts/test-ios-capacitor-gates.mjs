@@ -607,6 +607,22 @@ try {
   ok(false, `git ls-files public mirror check: ${err instanceof Error ? err.message : err}`);
 }
 
+// الصدفة الأصلية: الحزم الأربع مربوطة بهدف App، والمفتاح مطفأ افتراضيًا
+for (const pkg of ["SunnahNative", "SunnahDataKit", "SunnahWeb", "SunnahPrayer"]) {
+  ok(
+    new RegExp(`XCLocalSwiftPackageReference;\\s*relativePath = ${pkg};`).test(pbx) &&
+      pbx.includes(`/* ${pkg} in Frameworks */ = {isa = PBXBuildFile; productRef`),
+    `${pkg} مربوطة بالتطبيق في project.pbxproj`,
+  );
+  ok(existsSync(join(iosApp, pkg, "Package.swift")), `${pkg}/Package.swift موجود`);
+}
+const nativeGate = readFileSync(join(iosApp, "App", "NativeShellGate.swift"), "utf8");
+ok(
+  /UserDefaults\.standard\.bool\(forKey: defaultsKey\)/.test(nativeGate) && nativeGate.includes('"native_shell_enabled"'),
+  "native_shell_enabled يُقرأ من UserDefaults.bool (القيمة الافتراضية false)",
+);
+ok(!/register\(defaults/.test(nativeGate) && !/native_shell_enabled[^\n]*true/.test(nativeGate), "لا تفعيل افتراضي لـnative_shell_enabled");
+
 if (failed) {
   console.error(`\n${failed} gate(s) failed`);
   process.exit(1);
