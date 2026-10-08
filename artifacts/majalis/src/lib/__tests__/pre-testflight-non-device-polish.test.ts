@@ -70,7 +70,7 @@ assert.match(mushafSrc, /applyPageSeo/);
 assert.equal(isImmersiveChromePath("/mushaf"), true);
 
 /* اختبار التلاوة عاد بقرار المالك (2026-10-07): المسار صفحة حقيقية لا تحويلًا إلى مركز القرآن */
-assert.match(read("src/AppRoutes.tsx"), /path="\/quran\/recitation-test-ai"><SafeLazyRoute component=\{RecitationTestAiPage\}/);
+assert.match(read("src/AppRoutes.tsx"), /path="\/quran\/recitation-test-ai"><Redirect to="\/mushaf\?tasmee=1"/);
 
 const prayerSrc = read("src/pages/worship/ui/PrayerTimesView.tsx");
 assert.match(prayerSrc, /reload/);
