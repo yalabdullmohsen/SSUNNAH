@@ -1,4 +1,5 @@
 import Foundation
+import SunnahWidgetKit
 import WidgetKit
 import os
 
@@ -435,14 +436,7 @@ struct PrayerWidgetProvider: TimelineProvider {
 
 enum SunnahWidgetTimeFormatting {
     static func staticRemaining(from: Date, to: Date) -> String {
-        let sec = max(0, Int(to.timeIntervalSince(from)))
-        let minutes = sec / 60
-        let hours = minutes / 60
-        let rem = minutes % 60
-        if hours > 0 {
-            return "\(arabic(hours)) س \(arabic(rem)) د"
-        }
-        return "\(arabic(minutes)) د"
+        WidgetFormat.duration(seconds: Int(to.timeIntervalSince(from)))
     }
 
     static func staticElapsed(from: Date, to: Date) -> String {
@@ -459,10 +453,6 @@ enum SunnahWidgetTimeFormatting {
     }
 
     static func arabic(_ value: Int) -> String {
-        let map: [Character] = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"]
-        return String(String(value).map { ch -> Character in
-            guard let d = ch.wholeNumberValue, d >= 0, d <= 9 else { return ch }
-            return map[d]
-        })
+        WidgetFormat.digits(value)
     }
 }

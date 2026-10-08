@@ -1,4 +1,5 @@
 import SwiftUI
+import SunnahWidgetKit
 import WidgetKit
 
 struct MorningAdhkarWidget: Widget {
@@ -42,7 +43,7 @@ struct TimeAwareAdhkarWidget: Widget {
             TimeAwareAdhkarView(entry: entry)
         }
         .configurationDisplayName("أذكار الوقت")
-        .description("المجموعة المعتمدة حسب نافذة التطبيق: صباح أو مساء أو نوم أو بعد الصلاة.")
+        .description("يعرض الذكر المناسب للوقت: صباح أو مساء أو نوم أو بعد الصلاة.")
         .supportedFamilies(SunnahWidgetFamilySupport.adhkar)
     }
 }
@@ -66,7 +67,7 @@ struct AdhkarStreakWidget: Widget {
             AdhkarStreakView(entry: entry)
         }
         .configurationDisplayName("سلسلة الأذكار")
-        .description("إنجاز اليوم وعدد أيام السلسلة إن وُجد تتبع معتمد.")
+        .description("إنجاز اليوم وعدد أيام السلسلة المتتالية.")
         .supportedFamilies(SunnahWidgetFamilySupport.adhkarStreak)
     }
 }
@@ -120,7 +121,7 @@ struct TimeAwareAdhkarView: View {
             Text(title)
                 .font(.title3.bold())
                 .foregroundStyle(.white)
-            Text("من التصنيف المعتمد في سُنّة")
+            Text("من أذكار سُنّة")
                 .font(.caption)
                 .foregroundStyle(SunnahWidgetTheme.secondaryText)
         }
@@ -164,6 +165,11 @@ struct AdhkarStreakView: View {
     @Environment(\.widgetFamily) private var family
     let entry: CatalogWidgetEntry
 
+    /// الوحدة وحدها (بلا الرقم) تحت العدد الكبير: يوم / يومان / أيام / يومًا.
+    private func streakUnit(_ n: Int) -> String {
+        WidgetFormat.days(n).split(separator: " ", maxSplits: 1).last.map(String.init) ?? "يوم"
+    }
+
     var body: some View {
         Group {
             if let progress = entry.progress, progress.hasCanonicalTracking {
@@ -171,14 +177,14 @@ struct AdhkarStreakView: View {
                     VStack(spacing: 2) {
                         Text(SunnahWidgetTimeFormatting.arabic(progress.adhkarStreakDays ?? 0))
                             .font(.headline.bold())
-                        Text("يوم")
+                        Text(streakUnit(progress.adhkarStreakDays ?? 0))
                             .font(.caption2)
                     }
                 } else if family == .accessoryRectangular {
                     HStack {
                         Text(todayLabel)
                         Spacer()
-                        Text("سلسلة \(SunnahWidgetTimeFormatting.arabic(progress.adhkarStreakDays ?? 0))")
+                        Text("سلسلة \(WidgetFormat.days(progress.adhkarStreakDays ?? 0))")
                     }
                 } else {
                     VStack(alignment: .leading, spacing: 8) {
@@ -189,7 +195,7 @@ struct AdhkarStreakView: View {
                         Text(todayLabel)
                             .font(.headline)
                             .foregroundStyle(.white)
-                        Text("السلسلة \(SunnahWidgetTimeFormatting.arabic(progress.adhkarStreakDays ?? 0))")
+                        Text("السلسلة \(WidgetFormat.days(progress.adhkarStreakDays ?? 0))")
                             .font(.title2.bold())
                             .foregroundStyle(SunnahBrandColors.gold)
                             .widgetAccentable()

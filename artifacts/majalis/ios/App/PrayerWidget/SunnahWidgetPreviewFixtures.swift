@@ -1,25 +1,38 @@
 import Foundation
+import SunnahWidgetKit
 
 /// Sample-only fixtures. Never written to App Group live storage.
 enum SunnahWidgetPreviewFixtures {
-    static let calendar = SharedCalendarPayload(
-        schemaVersion: SharedCalendarPayload.currentSchema,
-        timezoneIdentifier: "Asia/Riyadh",
-        weekdayAr: "الأحد",
-        hijriDay: 12,
-        hijriMonth: 3,
-        hijriMonthAr: "ربيع الأول",
-        hijriYear: 1447,
-        hijriDisplay: "١٢ ربيع الأول ١٤٤٧",
-        gregorianDisplay: "٤ أكتوبر ٢٠٢٦",
-        inRamadan: false,
-        daysUntilRamadan: 54,
-        ramadanLabelAr: "باقي على رمضان",
-        upcomingEventNameAr: "يوم عاشوراء",
-        upcomingEventDays: 18,
-        upcomingEventPath: "/occasions",
-        updatedAtEpochMs: 0
-    )
+    /// يُحسب من تاريخ اليوم الفعلي (أم القرى) لا من قيم ثابتة، فلا يظهر في المعرض تاريخ قديم.
+    static func calendar(now: Date = Date(), timeZone: TimeZone = .current) -> SharedCalendarPayload {
+        let h = HijriCalendar.date(now, timeZone: timeZone)
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "ar")
+        f.timeZone = timeZone
+        f.setLocalizedDateFormatFromTemplate("EEEE")
+        let weekday = f.string(from: now)
+        f.setLocalizedDateFormatFromTemplate("d MMMM y")
+        let gregorian = f.string(from: now)
+        let inRamadan = h.month == 9
+        return SharedCalendarPayload(
+            schemaVersion: SharedCalendarPayload.currentSchema,
+            timezoneIdentifier: timeZone.identifier,
+            weekdayAr: weekday,
+            hijriDay: h.day,
+            hijriMonth: h.month,
+            hijriMonthAr: HijriCalendar.monthNamesAr[h.month],
+            hijriYear: h.year,
+            hijriDisplay: HijriCalendar.display(h),
+            gregorianDisplay: gregorian,
+            inRamadan: inRamadan,
+            daysUntilRamadan: inRamadan ? nil : HijriCalendar.daysUntil(month: 9, day: 1, from: now, timeZone: timeZone),
+            ramadanLabelAr: "باقي على رمضان",
+            upcomingEventNameAr: "يوم عاشوراء",
+            upcomingEventDays: HijriCalendar.daysUntil(month: 1, day: 10, from: now, timeZone: timeZone),
+            upcomingEventPath: "/occasions",
+            updatedAtEpochMs: 0
+        )
+    }
 
     static let adhkar = SharedAdhkarPayload(
         schemaVersion: SharedAdhkarPayload.currentSchema,
