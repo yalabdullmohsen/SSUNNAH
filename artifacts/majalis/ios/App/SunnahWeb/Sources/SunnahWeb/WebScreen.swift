@@ -1,7 +1,7 @@
 import SwiftUI
 import WebKit
 
-/// شاشة ويب لمسار من majlisilm.com داخل الهيكل الأصلي.
+/// شاشة ويب لمسار من www.ssunnah.com داخل الهيكل الأصلي.
 /// تشارك الكوكيز مع بقية التطبيق عبر `WKWebsiteDataStore.default()` فتبقى الجلسة واحدة.
 public struct WebScreen: View {
     private let path: String
