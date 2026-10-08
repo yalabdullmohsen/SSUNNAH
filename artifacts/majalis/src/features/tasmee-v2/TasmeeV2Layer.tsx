@@ -83,7 +83,7 @@ type Props = {
 const MODE_ICON: Record<Exclude<TasmeeMode, "off">, DsIconName> = {
   listen: "tilawa",
   tasmee: "mic",
-  test: "check",
+  test: "star",
 };
 
 export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = false }: Props) {

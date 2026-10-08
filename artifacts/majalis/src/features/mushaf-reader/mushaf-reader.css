@@ -2216,7 +2216,7 @@ html[data-theme="dark"] .nm-page-arrow {
   inset-inline: max(0.75rem, var(--inset-inline-start, 0px))
     max(0.75rem, var(--inset-inline-end, 0px));
   bottom: max(4.5rem, calc(var(--inset-bottom, 0px) + 3.75rem));
-  z-index: var(--z-overlay, 40);
+  z-index: calc(var(--z-overlay, 40) + 1);
   max-width: 22rem;
   margin-inline: auto;
   padding: 0.85rem 1rem 0.75rem;
