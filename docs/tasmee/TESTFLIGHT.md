@@ -17,3 +17,11 @@
 ## فتح الشاشة على الجهاز
 الإعدادات ← آخر الصفحة «النسخة الحالية» ← انقر 7 مرات متتابعة ← تُفتح «قياس التسميع». أدخل رابط manifest النموذج (من إصدار GitHub) ثم: تنزيل ← تحميل ← اختبار القدرة ← ابدأ الجلسة (١٠ دقائق افتراضيًا).
 يُسجَّل لكل جلسة: التأخير (نهاية الكلمة ← الكشف)، نسبة الكشف، المعالج، thermalState، البطارية بداية/نهاية، أزمنة الفك. «نسخ JSON» لمشاركتها.
+
+## رابط النموذج (بلا مصادقة)
+`https://github.com/yalabdullmohsen/SSUNNAH/releases/download/whisper-quran-coreml-v1/model-manifest-base.json` (الأرشيف نحو 149MB، تحقّق sha256 داخل التطبيق).
+
+## قبل تشغيل Workflow
+- `gh run list --workflow "iOS TestFlight Deploy"` ولا تشغيل جارٍ، وإلا فلا `workflow_dispatch` (concurrency يلغي الجاري عند أي تشغيل جديد على نفس الـref).
+- لا دمج في `ios/` أثناء التشغيل. لا رفع لـMARKETING_VERSION؛ CI يزيد رقم البناء.
+- القناة تُكتشف بـ`sandboxReceipt`؛ خارج TestFlight/Debug تُغلق الشاشة (`isTasmeeDiagnosticsAllowed`).
