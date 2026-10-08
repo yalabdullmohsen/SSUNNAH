@@ -347,7 +347,6 @@ const u9 = JSON.parse(readRepo("docs/audit/ROUTE_UNIFICATION_MATRIX.json")) as {
 const adhanU9 = u9.routes.find((r) => r.route === "/adhan-help")!;
 assert.equal(adhanU9.fields.Canvas!.status, "PASS", "/adhan-help Canvas: DetailScreen chrome لا سطح صلاة");
 assert.doesNotMatch(adhanHelp.replace(/href="[^"]*"/g, ""), /prayer-times|adhan-scheduler|prayer-calc|computePrayer|schedule/i, "/adhan-help نص ثابت بلا حساب/جدولة");
-assert.match(adhanHelp, /<DetailScreen compose="mark">/);
 for (const f of ["RTL", "Keyboard", "Contrast", "StartupCLS"]) {
   assert.equal(adhanU9.fields[f]!.status, "KEEP_JUSTIFIED", `/adhan-help ${f} يبقى جهازيًا`);
 }

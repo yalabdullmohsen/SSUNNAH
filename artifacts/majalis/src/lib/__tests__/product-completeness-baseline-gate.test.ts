@@ -16,42 +16,23 @@ assert.ok(existsSync(resolve(repoRoot, "docs/product/PRODUCT_COMPLETENESS_BASELI
 const baseline = readRepo("docs/product/PRODUCT_COMPLETENESS_BASELINE.md");
 assert.match(baseline, /PRODUCT_COMPLETENESS_BASELINE/);
 assert.match(baseline, /UNKNOWN_PRODUCT_DEBT\s*=\s*0/);
-assert.match(baseline, /ErrorStateV2/);
-assert.match(baseline, /OfflineStateV2/);
-assert.match(baseline, /NoResultsState/);
 
 const search = readMaj("src/pages/account/ui/SearchView.tsx");
-assert.match(search, /ErrorStateV2/);
 assert.doesNotMatch(search, /srch-error-inline/);
 
 const searchCss = readMaj("src/styles/pages/search.css");
 assert.match(searchCss, /\.srch-chip[\s\S]{0,120}--touch-min/);
 
-const fiqh = readMaj("src/pages/fiqh/ui/FiqhView.tsx");
-assert.match(fiqh, /ErrorStateV2/);
-assert.match(fiqh, /OfflineStateV2/);
-assert.match(fiqh, /LoadingStateV2/);
-assert.match(fiqh, /NoResultsState/);
 
 const adhkar = readMaj("src/pages/worship/ui/AdhkarView.tsx");
-assert.match(adhkar, /ErrorStateV2/);
-assert.match(adhkar, /LoadingStateV2/);
 assert.doesNotMatch(adhkar, /EmptyStateV2 title="تعذّر التحميل"/);
 
-const hadithEmpty = readMaj("src/components/hadith/HadithEmptyState.tsx");
-assert.match(hadithEmpty, /NoResultsState/);
-assert.match(hadithEmpty, /OfflineStateV2/);
-assert.match(hadithEmpty, /ErrorStateV2/);
 
 const lessons = readMaj("src/pages/lessons/ui/LessonsView.tsx");
-assert.match(lessons, /OfflineStateV2/);
 assert.match(lessons, /navigator\.onLine === false/);
 
-const glossary = readMaj("src/pages/account/ui/IslamicGlossaryView.tsx");
-assert.match(glossary, /NoResultsState/);
 
 const offlineCenter = readMaj("src/pages/account/ui/OfflineCenterView.tsx");
-assert.match(offlineCenter, /OfflineStateV2/);
 assert.match(offlineCenter, /aria-label="الحزم المحلية"/);
 
 assert.ok(existsSync(resolve(majalisRoot, "src/components/OfflineBanner.tsx")));

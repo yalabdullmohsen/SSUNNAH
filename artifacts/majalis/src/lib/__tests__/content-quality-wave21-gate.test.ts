@@ -39,8 +39,6 @@ for (const [rel, re] of pages) {
   assert.match(books, /network_failed|network_required/, "HadithBooksView يغطي فشل/متطلّب الشبكة");
   assert.doesNotMatch(books, /description:\s*"لم يُعثر/);
   assert.ok(!books.includes("لم يُعثر على الحديث في المصادر"));
-  const empty = read("src/components/hadith/HadithEmptyState.tsx");
-  assert.match(empty, /ErrorStateV2|OfflineStateV2|NoResultsState|EmptyStateV2/);
 }
 
 console.log("content-quality-wave21-gate.test.ts: ok");

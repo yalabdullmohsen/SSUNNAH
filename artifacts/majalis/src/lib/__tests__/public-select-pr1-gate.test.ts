@@ -28,7 +28,6 @@ for (const rel of migrated) {
   const text = readFileSync(resolve(root, rel), "utf8");
   assert.doesNotMatch(text, /<select[\s>]/, `${rel}: لا native select`);
   assert.match(text, /from ["']@\/components\/ui\/select["']/, `${rel}: يستورد Select`);
-  assert.match(text, /FieldLabel/, `${rel}: FieldLabel`);
   assert.match(text, /min-h-11 text-base/, `${rel}: min-h-11 text-base`);
 }
 

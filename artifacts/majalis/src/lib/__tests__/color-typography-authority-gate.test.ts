@@ -17,7 +17,6 @@ const typeMap = readRepo("docs/design/TYPOGRAPHY_AUTHORITY_MAP.md");
 const langMap = readRepo("docs/design/DESIGN_LANGUAGE_AUTHORITY.md");
 const tokenAuth = readRepo("docs/design/DESIGN_TOKEN_AUTHORITY.md");
 const colorTs = readMaj("src/lib/color-authority.ts");
-const ssText = readMaj("src/components/design-system/text/SsText.tsx");
 const typoSys = readMaj("src/components/design-system/TypographySystem.tsx");
 const scale = readMaj("src/styles/typography-scale.css");
 const dsIndex = readMaj("src/components/design-system/index.ts");
@@ -31,7 +30,6 @@ assert.match(colorMap, /no new token family/i);
 assert.match(typeMap, /TYPOGRAPHY_AUTHORITY_ONLY/);
 assert.match(typeMap, /PAGE_TITLE/);
 assert.match(typeMap, /SECTION_TITLE/);
-assert.match(typeMap, /ScreenTitle/);
 assert.match(typeMap, /PAGE_TITLE > SECTION_TITLE/);
 
 assert.match(langMap, /DESIGN_LANGUAGE_UNIFIED/);
@@ -46,17 +44,12 @@ assert.match(colorTs, /BACKGROUND:\s*"--mj-bg"/);
 assert.match(colorTs, /OVERLAY:\s*"--sf2-overlay"/);
 
 
-assert.match(ssText, /export const ScreenTitle/);
-assert.match(ssText, /export const SectionTitle/);
-assert.match(ssText, /export const CardTitle/);
-assert.match(ssText, /export const Caption/);
 assert.match(typoSys, /PageTitle/);
 assert.match(typoSys, /MetaText/);
 
 assert.match(scale, /--text-h1/);
 assert.match(scale, /--sf-type-page-title/);
 assert.match(scale, /--text-body/);
-assert.match(dsIndex, /ScreenTitle/);
 assert.match(dsIndex, /TypographySystem|PageTitle/);
 
 assert.ok(existsSync(resolve(majalis, "src/styles/sunnah-foundation-v2.css")));

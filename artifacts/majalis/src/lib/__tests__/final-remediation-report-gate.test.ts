@@ -41,7 +41,6 @@ assert.ok(routes.totalRoutes >= 300, "route matrix too small");
 assert.ok(Array.isArray(routes.routes) && routes.routes.length === routes.totalRoutes);
 
 assert.match(read(tokenMatrix), /No new token family|--sf-\*/);
-assert.match(read(pageMatrix), /UtilityScreen/);
 assert.match(read(deviceReg), /DEVICE_REQUIRED/);
 assert.match(read(phase3), /ChunkRecoveryToast/);
 

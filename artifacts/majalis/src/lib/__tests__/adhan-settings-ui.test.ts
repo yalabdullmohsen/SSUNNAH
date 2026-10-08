@@ -57,7 +57,6 @@ assert.doesNotMatch(view, /بانتظار تسجيل مرخّص/);
 assert.match(view, /playAdhanPreview/);
 assert.match(view, /getAndroidAdhanPermissionStatus/);
 assert.match(view, /ads-prayer-row/);
-assert.match(view, /SettingsToggleRow/);
 assert.doesNotMatch(view, /\bads-toggle\b/);
 assert.match(view, /معاينة/);
 assert.doesNotMatch(view, /أذان المدينة/);

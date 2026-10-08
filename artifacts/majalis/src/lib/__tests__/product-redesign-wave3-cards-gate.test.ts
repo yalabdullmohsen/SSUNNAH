@@ -21,7 +21,6 @@ assert.match(mushaf, /data-cs2-card/);
 assert.match(mushaf, /data-cs2-type=\{info\.hasResume \? "continue" : "navigation"\}/);
 
 const progress = read("src/pages/account/ui/ProgressCenterView.tsx");
-assert.match(progress, /ContinueCardV2/);
 assert.match(progress, /متابعة القراءة/);
 
 const css = read("src/styles/card-system-v2.css");

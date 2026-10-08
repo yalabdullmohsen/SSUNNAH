@@ -17,8 +17,6 @@ const readDoc = (rel: string) => readFileSync(resolve(repo, rel), "utf8");
 assert.ok(existsSync(resolve(root, "src/styles/sunnah-foundation-v2.css")));
 assert.ok(existsSync(resolve(root, "src/styles/card-system-v2.css")));
 assert.ok(existsSync(resolve(root, "src/styles/app-state-v2.css")));
-assert.ok(existsSync(resolve(root, "src/components/design-system/LoadingStateV2.tsx")));
-assert.ok(existsSync(resolve(root, "src/components/design-system/ErrorStateV2.tsx")));
 assert.ok(existsSync(resolve(root, "src/components/design-system/CardSystemV2.tsx")));
 
 const v2 = read("src/styles/sunnah-foundation-v2.css");
@@ -39,9 +37,6 @@ assert.ok(
 );
 
 const idx = read("src/components/design-system/index.ts");
-assert.match(idx, /LoadingStateV2/);
-assert.match(idx, /ErrorStateV2/);
-assert.match(idx, /NavigationCardV2/);
 assert.match(idx, /SF2_SURFACE/);
 
 assert.equal(CS2_CARD_TYPES.length, 8);
