@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = AppConfig.shared
         _ = NetworkService.shared
         purgeWebCachesOncePerAppBuild()
+        NativeShellGate.installIfEnabled(in: window)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(handleMediaServicesReset),

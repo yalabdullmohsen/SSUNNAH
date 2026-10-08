@@ -5,8 +5,10 @@ final class WebLinkPolicyTests: XCTestCase {
     private let policy = WebLinkPolicy()
 
     func testURLForPath() {
-        XCTAssertEqual(policy.url(for: "/lessons/12?x=1").absoluteString, "https://majlisilm.com/lessons/12?x=1")
-        XCTAssertEqual(policy.url(for: "quran-hub").absoluteString, "https://majlisilm.com/quran-hub")
+        XCTAssertEqual(policy.url(for: "/lessons/12?x=1").absoluteString, "https://www.ssunnah.com/lessons/12?x=1")
+        XCTAssertEqual(policy.url(for: "quran-hub").absoluteString, "https://www.ssunnah.com/quran-hub")
+        XCTAssertEqual(policy.appPath(of: URL(string: "https://www.ssunnah.com/a")!), "/a")
+        XCTAssertEqual(policy.appPath(of: URL(string: "https://ssunnah.com/a")!), "/a")
     }
 
     func testAppPathOnlyForOwnHosts() {
