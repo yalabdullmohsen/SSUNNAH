@@ -237,6 +237,7 @@ export function evaluateEligibility(input = {}) {
   const postgres = findCheck(REQUIRED_CHECK_NAMES.postgres);
   const colorContrast = findCheck(REQUIRED_CHECK_NAMES.colorContrast);
   const iosStatic = findCheck(REQUIRED_CHECK_NAMES.iosStatic);
+  const xcodebuild = findCheck(REQUIRED_CHECK_NAMES.xcodebuild);
 
   // --- hard structural gates ---
   if (input.state && String(input.state).toUpperCase() !== "OPEN") {
@@ -359,19 +360,25 @@ export function evaluateEligibility(input = {}) {
       /\.swift$/i.test(p) ||
       /capacitor\.config\./i.test(p),
   );
+  // capacitor.config يغيّر جسر التطبيق الأصلي كله — يبقى يدويًا (وهو في DANGER_PATH_PATTERNS أيضًا).
+  const hasCapacitorConfig = fileSummary.paths.some((p) => /capacitor\.config\./i.test(p));
   const hasCicd = fileSummary.paths.some(
     (p) =>
       !isAutoMergeAllowlistedPath(p) &&
       (/^\.github\/workflows\//i.test(p) || /^fastlane\//i.test(p)),
   );
   if (hasMigration) hardBlockers.push("migration / SQL change → manual review");
-  if (hasIos) hardBlockers.push("iOS / Capacitor native change → manual review");
+  // ios/ يُدمج تلقائيًا فقط بعد نجاح xcodebuild-simulator (انظر بوابة xcodebuild أدناه).
+  if (hasCapacitorConfig) hardBlockers.push("Capacitor config change → manual review");
+  if (hasIos && input.requireChecks === false) {
+    waitBlockers.push("iOS change cannot auto-merge without checks (xcodebuild-simulator)");
+  }
   if (hasCicd) hardBlockers.push("CI/CD / Fastlane change → manual review");
 
   const suggestedAddLabels = [];
   const suggestedRemoveLabels = [];
-  if (dangerousFiles.length || hasMigration || hasIos || hasCicd || authHits.length || nonContentFiles.length) {
-    if (dangerousFiles.length || hasMigration || hasIos || hasCicd || authHits.length) {
+  if (dangerousFiles.length || hasMigration || hasCapacitorConfig || hasCicd || authHits.length || nonContentFiles.length) {
+    if (dangerousFiles.length || hasMigration || hasCapacitorConfig || hasCicd || authHits.length) {
       suggestedAddLabels.push(BLOCKED_DANGER_PATH_LABEL, RISKY_MANUAL_REVIEW_LABEL);
     }
   } else if (!labels.includes(RISKY_MANUAL_REVIEW_LABEL)) {
@@ -550,11 +557,17 @@ export function evaluateEligibility(input = {}) {
       }
     }
 
-    if (hasIos && (iosStatic.state === "fail" || iosStatic.state === "pending" || iosStatic.state === "missing")) {
+    if (hasIos) {
       if (iosStatic.state === "pending" || iosStatic.state === "missing") {
         waitBlockers.push(`iOS static gates required for native changes (${iosStatic.state})`);
-      } else {
+      } else if (iosStatic.state === "fail") {
         hardBlockers.push(`iOS static gates required for native changes (${iosStatic.state})`);
+      }
+      // شرط الدمج التلقائي لـios/: بناء المحاكي الفعلي أخضر؛ غيابه أو انتظاره يُبقي الـPR منتظرًا لا مدموجًا.
+      if (xcodebuild.state === "fail") {
+        hardBlockers.push(`xcodebuild-simulator required for iOS changes (${xcodebuild.state})`);
+      } else if (xcodebuild.state !== "pass") {
+        waitBlockers.push(`xcodebuild-simulator required for iOS changes (${xcodebuild.state})`);
       }
     } else if (iosStatic.state === "fail") {
       hardBlockers.push(`iOS static gates not green (${iosStatic.state})`);

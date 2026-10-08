@@ -177,11 +177,34 @@ describe("safe-auto-merge eligibility", () => {
     assert.ok(r.blockers.some((b) => /large deletions/i.test(b)));
   });
 
-  it("blocks danger paths (workflows, ios, supabase, api, lockfile, capacitor)", () => {
+  it("ios app paths wait for xcodebuild-simulator, block on its failure, merge when green", () => {
+    const iosFile = { path: "artifacts/majalis/ios/App/App/AppDelegate.swift", additions: 1, deletions: 0 };
+    const iosStatic = { name: "iOS static gates", state: "pass" };
+    const run = (extra) =>
+      evaluateEligibility(
+        base({
+          labels: ["safe:auto-merge", "code-safe"],
+          files: [iosFile],
+          checks: [...greenChecks, iosStatic, ...extra],
+        }),
+      );
+    const missing = run([]);
+    assert.equal(missing.eligible, false);
+    assert.ok(missing.blockers.some((b) => /xcodebuild-simulator required/.test(b)));
+    const failed = run([{ name: "xcodebuild-simulator", state: "fail" }]);
+    assert.equal(failed.eligible, false);
+    assert.equal(failed.waiting, false);
+    assert.ok(failed.blockers.some((b) => /xcodebuild-simulator required/.test(b)));
+    const green = run([{ name: "xcodebuild-simulator", state: "pass" }]);
+    assert.ok(!green.blockers.some((b) => /xcodebuild|danger|manual review/i.test(b)), green.blockers.join("; "));
+    assert.equal(green.eligible, true, green.blockers.join("; "));
+  });
+
+  it("blocks danger paths (workflows, ios workflows, ios secrets, supabase, api, lockfile, capacitor)", () => {
     for (const path of [
       ".github/workflows/release-majlisilm.yml",
-      "artifacts/majalis/ios/App/App/AppDelegate.swift",
-      "ios/App/AppDelegate.swift",
+      ".github/workflows/ios-testflight.yml",
+      "artifacts/majalis/ios/App/App/Config.xcconfig",
       "artifacts/majalis/capacitor.config.ts",
       "artifacts/majalis/ios/App/App/capacitor.config.json",
       "artifacts/majalis/supabase/migrations/001.sql",

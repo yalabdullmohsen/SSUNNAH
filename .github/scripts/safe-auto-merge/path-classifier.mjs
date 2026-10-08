@@ -83,6 +83,19 @@ export function isNativePath(p) {
 }
 
 /**
+ * مسارات تطبيق iOS (ليست capacitor.config ولا وركفلو): تُدمج تلقائيًا بشرط xcodebuild-simulator.
+ * @param {string} p
+ * @returns {boolean}
+ */
+export function isIosAppPath(p) {
+  const s = String(p || "");
+  return (
+    (/^ios\//i.test(s) || /^artifacts\/majalis\/ios\//i.test(s)) &&
+    !/capacitor\.config\./i.test(s)
+  );
+}
+
+/**
  * @param {string} p
  * @returns {boolean}
  */
@@ -407,7 +420,9 @@ function finalizeClassification(input) {
   // توافق خلفي: policy-only اسم مستعار لـ ci-config في المخرجات النصية القديمة
   const laneCompat = lane === "ci-config" ? "ci-config" : lane;
 
-  const manualReview = Boolean(kinds.risky || kinds.native || kinds.workflow);
+  // تطبيق iOS نفسه لا يحتاج مراجعة يدوية (بوابته xcodebuild-simulator)؛ capacitor ووركفلو ios-* تبقى يدوية.
+  const nativeManual = paths.some((p) => isNativePath(p) && !isIosAppPath(p));
+  const manualReview = Boolean(kinds.risky || nativeManual || kinds.workflow);
 
   const requiredChecks = {
     verifyBuild: true,

@@ -1,12 +1,11 @@
 import { useEffect, useState, useMemo } from "react";
+import { NavigationBar, SearchField } from "@/design-system";
 import { applyPageSeo } from "../lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import "@/styles/pages/sawm.css";
-import { DetailScreen } from "@/components/design-system/screens";
-import { SearchInput } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
 type SawmTab = "types" | "conditions" | "muftirat" | "exemptions" | "virtues";
 
@@ -599,7 +598,8 @@ export default function SawmPage() {
   [search]);
 
   return (
-    <DetailScreen compose="mark">
+    <div className="sn-screen">
+<NavigationBar title="الصيام وأحكامه" large={false} />
     <main className="sw-page" dir="rtl">
       {/* hero */}
       <section className="sw-hero">
@@ -641,9 +641,7 @@ export default function SawmPage() {
 
       {tab !== "conditions" && (
         <div className="sw-search-wrap">
-          <SearchInput value={search} onChange={(e) => setSearch(e.target.value)}
-            placeholder="ابحث في أحكام الصيام..." className="page-search-input sw-search-input"
-            aria-label="بحث في أحكام الصيام" onClear={() => setSearch("")} />
+          <SearchField value={search} onChange={setSearch} placeholder="ابحث في أحكام الصيام..." label="بحث في أحكام الصيام" />
         </div>
       )}
 
@@ -830,6 +828,6 @@ export default function SawmPage() {
         <SectionQuiz sectionId="fiqh" title="اختبر معلوماتك في الفقه" count={4} />
       </div>
     </main>
-    </DetailScreen>
+    </div>
   );
 }

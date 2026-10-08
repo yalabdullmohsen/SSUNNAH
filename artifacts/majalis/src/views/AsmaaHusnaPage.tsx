@@ -1,4 +1,5 @@
 import "@/styles/pages/asmaa-husna.css";
+import { NavigationBar } from "@/design-system";
 import { useEffect, useMemo, useState } from "react";
 import { Search, Star, BookOpen, Heart } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
@@ -12,7 +13,6 @@ import { UnsourcedBadge } from "@/components/UnsourcedBadge";
 import { ExploreAlsoNav } from "@/components/ExploreAlsoNav";
 import { PageShell } from "@/components/layout/PageShell";
 import { PAGE_EXPLORE_LINKS } from "@/lib/explore-links";
-import { ListScreen } from "@/components/design-system/screens";
 import { truncateAtWord } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/design-system/Buttons";
@@ -81,7 +81,8 @@ export default function AsmaaHusnaPage() {
   }), []);
 
   return (
-    <ListScreen compose="mark">
+    <div className="sn-screen">
+<NavigationBar title="الأسماء الحسنى" large={false} />
     <PageShell className="ah-page">
       {/* ═══ Hero ═══ */}
       <div className="ah-hero">
@@ -261,6 +262,6 @@ export default function AsmaaHusnaPage() {
         links={[...PAGE_EXPLORE_LINKS.asmaHusna]}
       />
     </PageShell>
-    </ListScreen>
+    </div>
   );
 }

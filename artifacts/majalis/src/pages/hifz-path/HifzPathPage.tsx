@@ -4,16 +4,8 @@
  */
 import { useEffect, useMemo } from "react";
 import { Link, Redirect } from "wouter";
-import { BookMarked, Library } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
-import { DetailScreen } from "@/components/design-system/screens";
-import {
-  CompactNavigationCard,
-  ContentRow,
-  EmptyStateV2,
-  PageHeaderV2,
-  StatusNotice,
-} from "@/components/design-system";
+import { EmptyState, ListGroup, ListRow, NavigationBar, Card } from "@/design-system";
 import {
   HIFZ_CATEGORIES,
   HIFZ_PATH_USER_TAGLINE,
@@ -53,37 +45,28 @@ function HifzPathHub() {
   }, []);
 
   return (
-    <DetailScreen compose="mark">
-      <main className="mx-auto w-full max-w-3xl px-4 py-4" dir="rtl">
-        <PageHeaderV2
-          className="mb-4"
-          title="مسار الحفظ"
-          description={HIFZ_PATH_USER_TAGLINE}
-        />
+    <div className="sn-screen">
+<NavigationBar title="مسار الحفظ" subtitle={HIFZ_PATH_USER_TAGLINE} />
+<main className="sn-container sn-stack sn-stack--lg" dir="rtl">
 
         <section className="mb-5" aria-labelledby="hifz-continue">
           <h2 id="hifz-continue" className="mb-2 text-base font-semibold">
             متابعة الحفظ
           </h2>
           {continueTarget ? (
-            <CompactNavigationCard
-              href={
+            <ListGroup><ListRow href={
                 continueTarget.unitId
                   ? `${PATH}/p/${continueTarget.pathSlug}/u/${continueTarget.unitId}`
                   : `${PATH}/p/${continueTarget.pathSlug}`
-              }
-              title={continueTarget.pathTitle}
-              description={
+              } title={continueTarget.pathTitle} description={
                 continueTarget.unitTitle
                   ? `تابع: ${continueTarget.unitTitle}`
                   : "تابع من حيث توقفت"
-              }
-              icon={<Library size={20} strokeWidth={1.8} aria-hidden />}
-            />
+              } /></ListGroup>
           ) : (
-            <StatusNotice tone="neutral" title="لا متابعة جارية">
+            <Card><strong>لا متابعة جارية</strong> 
               ابدأ مسارًا منشورًا أو سجّل وحدة ضمن محفوظاتك عند توفرها.
-            </StatusNotice>
+            </Card>
           )}
         </section>
 
@@ -92,22 +75,13 @@ function HifzPathHub() {
             مراجعات اليوم
           </h2>
           {dueToday.length === 0 ? (
-            <EmptyStateV2
-              title="لا مراجعات مستحقة اليوم"
-              description="تظهر هنا الوحدات المستحقة للمراجعة بعد تسجيل التقدم."
-            />
+            <EmptyState title="لا مراجعات مستحقة اليوم" description="تظهر هنا الوحدات المستحقة للمراجعة بعد تسجيل التقدم." />
           ) : (
-            <div className="flex flex-col gap-1">
+            <ListGroup>
               {dueToday.map((item) => (
-                <ContentRow
-                  key={`${item.pathSlug}-${item.unitId}`}
-                  href={`${PATH}/p/${item.pathSlug}/u/${item.unitId}`}
-                  title={item.unitTitle}
-                  meta={item.pathTitle}
-                  description="مستحقة للمراجعة"
-                />
+                <ListRow href={`${PATH}/p/${item.pathSlug}/u/${item.unitId}`} key={`${item.pathSlug}-${item.unitId}`} title={item.unitTitle} description={[item.pathTitle, "مستحقة للمراجعة"].filter(Boolean).join(" — ")} />
               ))}
-            </div>
+            </ListGroup>
           )}
         </section>
 
@@ -124,16 +98,13 @@ function HifzPathHub() {
             </Link>
           </div>
           {published.length === 0 ? (
-            <EmptyStateV2
-              title="لا مسارات منشورة بعد"
-              description="مسارات الحفظ تُفتح للعامة بعد اعتماد المصدر والترخيص والمراجعة."
-            />
+            <EmptyState title="لا مسارات منشورة بعد" description="مسارات الحفظ تُفتح للعامة بعد اعتماد المصدر والترخيص والمراجعة." />
           ) : (
-            <div className="flex flex-col gap-1">
+            <ListGroup>
               {published.map((path) => (
                 <HifzPathRow key={path.id} path={path} />
               ))}
-            </div>
+            </ListGroup>
           )}
         </section>
 
@@ -141,35 +112,25 @@ function HifzPathHub() {
           <h2 id="hifz-categories" className="mb-2 text-base font-semibold">
             التصنيفات
           </h2>
-          <div className="flex flex-col gap-1">
+          <ListGroup>
             {HIFZ_CATEGORIES.map((category) => {
               const count = listPublishedHifzPathsByCategory(category).length;
               return (
-                <ContentRow
-                  key={category}
-                  href={`${PATH}/c/${category}`}
-                  title={hifzCategoryLabel(category)}
-                  meta={
+                <ListRow href={`${PATH}/c/${category}`} key={category} title={hifzCategoryLabel(category)} description={
                     count > 0
                       ? `${count} مسار منشور`
                       : "لا مسارات منشورة بعد"
-                  }
-                />
+                  } />
               );
             })}
-          </div>
+          </ListGroup>
         </section>
 
         <section className="mb-2" aria-labelledby="hifz-mine-entry">
           <h2 id="hifz-mine-entry" className="sr-only">
             محفوظاتي
           </h2>
-          <CompactNavigationCard
-            href={`${PATH}/my`}
-            title="محفوظاتي"
-            description="متابعة الوحدات التي سجّلتها للمراجعة"
-            icon={<BookMarked size={20} strokeWidth={1.8} aria-hidden />}
-          />
+          <ListGroup><ListRow href={`${PATH}/my`} title="محفوظاتي" description="متابعة الوحدات التي سجّلتها للمراجعة" /></ListGroup>
         </section>
 
         <p className="mt-4 text-center text-xs text-muted-foreground">
@@ -178,6 +139,6 @@ function HifzPathHub() {
             : `${publishedCount} مسار منشور.`}
         </p>
       </main>
-    </DetailScreen>
+    </div>
   );
 }

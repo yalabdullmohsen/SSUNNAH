@@ -1,0 +1,402 @@
+[
+ {
+  "name": "Kuwait",
+  "lat": 29.3759,
+  "lon": 47.9774,
+  "tz": "Asia/Kuwait",
+  "method": "Kuwait",
+  "day": "2026-01-15",
+  "times": {
+   "fajr": 1768443600,
+   "sunrise": 1768448580,
+   "dhuhr": 1768467420,
+   "asr": 1768477920,
+   "maghrib": 1768486320,
+   "isha": 1768491180
+  }
+ },
+ {
+  "name": "Kuwait",
+  "lat": 29.3759,
+  "lon": 47.9774,
+  "tz": "Asia/Kuwait",
+  "method": "Kuwait",
+  "day": "2026-03-20",
+  "times": {
+   "fajr": 1773970380,
+   "sunrise": 1773975120,
+   "dhuhr": 1773996960,
+   "asr": 1774009380,
+   "maghrib": 1774018740,
+   "isha": 1774023360
+  }
+ },
+ {
+  "name": "Kuwait",
+  "lat": 29.3759,
+  "lon": 47.9774,
+  "tz": "Asia/Kuwait",
+  "method": "Kuwait",
+  "day": "2026-06-21",
+  "times": {
+   "fajr": 1782000780,
+   "sunrise": 1782006540,
+   "dhuhr": 1782031800,
+   "asr": 1782044640,
+   "maghrib": 1782057060,
+   "isha": 1782062580
+  }
+ },
+ {
+  "name": "Kuwait",
+  "lat": 29.3759,
+  "lon": 47.9774,
+  "tz": "Asia/Kuwait",
+  "method": "Kuwait",
+  "day": "2026-10-08",
+  "times": {
+   "fajr": 1791422760,
+   "sunrise": 1791427500,
+   "dhuhr": 1791448560,
+   "asr": 1791460500,
+   "maghrib": 1791469560,
+   "isha": 1791474120
+  }
+ },
+ {
+  "name": "Kuwait",
+  "lat": 29.3759,
+  "lon": 47.9774,
+  "tz": "Asia/Kuwait",
+  "method": "Kuwait",
+  "day": "2026-12-21",
+  "times": {
+   "fajr": 1797819180,
+   "sunrise": 1797824280,
+   "dhuhr": 1797842760,
+   "asr": 1797852900,
+   "maghrib": 1797861240,
+   "isha": 1797866220
+  }
+ },
+ {
+  "name": "Riyadh",
+  "lat": 24.7136,
+  "lon": 46.6753,
+  "tz": "Asia/Riyadh",
+  "method": "UmmAlQura",
+  "day": "2026-01-15",
+  "times": {
+   "fajr": 1768443420,
+   "sunrise": 1768448400,
+   "dhuhr": 1768467780,
+   "asr": 1768478760,
+   "maghrib": 1768487160,
+   "isha": 1768492560
+  }
+ },
+ {
+  "name": "Riyadh",
+  "lat": 24.7136,
+  "lon": 46.6753,
+  "tz": "Asia/Riyadh",
+  "method": "UmmAlQura",
+  "day": "2026-03-20",
+  "times": {
+   "fajr": 1773970800,
+   "sunrise": 1773975480,
+   "dhuhr": 1773997260,
+   "asr": 1774009620,
+   "maghrib": 1774019040,
+   "isha": 1774024440
+  }
+ },
+ {
+  "name": "Riyadh",
+  "lat": 24.7136,
+  "lon": 46.6753,
+  "tz": "Asia/Riyadh",
+  "method": "UmmAlQura",
+  "day": "2026-06-21",
+  "times": {
+   "fajr": 1782001980,
+   "sunrise": 1782007500,
+   "dhuhr": 1782032100,
+   "asr": 1782044160,
+   "maghrib": 1782056700,
+   "isha": 1782062100
+  }
+ },
+ {
+  "name": "Riyadh",
+  "lat": 24.7136,
+  "lon": 46.6753,
+  "tz": "Asia/Riyadh",
+  "method": "UmmAlQura",
+  "day": "2026-10-08",
+  "times": {
+   "fajr": 1791423000,
+   "sunrise": 1791427680,
+   "dhuhr": 1791448860,
+   "asr": 1791460920,
+   "maghrib": 1791469980,
+   "isha": 1791475380
+  }
+ },
+ {
+  "name": "Riyadh",
+  "lat": 24.7136,
+  "lon": 46.6753,
+  "tz": "Asia/Riyadh",
+  "method": "UmmAlQura",
+  "day": "2026-12-21",
+  "times": {
+   "fajr": 1797818940,
+   "sunrise": 1797823980,
+   "dhuhr": 1797843060,
+   "asr": 1797853800,
+   "maghrib": 1797862140,
+   "isha": 1797867540
+  }
+ },
+ {
+  "name": "Cairo",
+  "lat": 30.0444,
+  "lon": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "Egyptian",
+  "day": "2026-01-15",
+  "times": {
+   "fajr": 1768447260,
+   "sunrise": 1768452720,
+   "dhuhr": 1768471500,
+   "asr": 1768481880,
+   "maghrib": 1768490220,
+   "isha": 1768495140
+  }
+ },
+ {
+  "name": "Cairo",
+  "lat": 30.0444,
+  "lon": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "Egyptian",
+  "day": "2026-03-20",
+  "times": {
+   "fajr": 1773973920,
+   "sunrise": 1773979140,
+   "dhuhr": 1774001040,
+   "asr": 1774013400,
+   "maghrib": 1774022760,
+   "isha": 1774027440
+  }
+ },
+ {
+  "name": "Cairo",
+  "lat": 30.0444,
+  "lon": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "Egyptian",
+  "day": "2026-06-21",
+  "times": {
+   "fajr": 1782004080,
+   "sunrise": 1782010440,
+   "dhuhr": 1782035880,
+   "asr": 1782048720,
+   "maghrib": 1782061140,
+   "isha": 1782066780
+  }
+ },
+ {
+  "name": "Cairo",
+  "lat": 30.0444,
+  "lon": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "Egyptian",
+  "day": "2026-10-08",
+  "times": {
+   "fajr": 1791426360,
+   "sunrise": 1791431520,
+   "dhuhr": 1791452640,
+   "asr": 1791464520,
+   "maghrib": 1791473520,
+   "isha": 1791478140
+  }
+ },
+ {
+  "name": "Cairo",
+  "lat": 30.0444,
+  "lon": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "Egyptian",
+  "day": "2026-12-21",
+  "times": {
+   "fajr": 1797822840,
+   "sunrise": 1797828420,
+   "dhuhr": 1797846840,
+   "asr": 1797856860,
+   "maghrib": 1797865140,
+   "isha": 1797870180
+  }
+ },
+ {
+  "name": "Istanbul",
+  "lat": 41.0082,
+  "lon": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "Turkey",
+  "day": "2026-01-15",
+  "times": {
+   "fajr": 1768449000,
+   "sunrise": 1768454400,
+   "dhuhr": 1768472280,
+   "asr": 1768481160,
+   "maghrib": 1768489620,
+   "isha": 1768494720
+  }
+ },
+ {
+  "name": "Istanbul",
+  "lat": 41.0082,
+  "lon": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "Turkey",
+  "day": "2026-03-20",
+  "times": {
+   "fajr": 1773974160,
+   "sunrise": 1773979260,
+   "dhuhr": 1774001820,
+   "asr": 1774014060,
+   "maghrib": 1774023780,
+   "isha": 1774028580
+  }
+ },
+ {
+  "name": "Istanbul",
+  "lat": 41.0082,
+  "lon": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "Turkey",
+  "day": "2026-06-21",
+  "times": {
+   "fajr": 1782001440,
+   "sunrise": 1782008700,
+   "dhuhr": 1782036660,
+   "asr": 1782051060,
+   "maghrib": 1782064020,
+   "isha": 1782070680
+  }
+ },
+ {
+  "name": "Istanbul",
+  "lat": 41.0082,
+  "lon": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "Turkey",
+  "day": "2026-10-08",
+  "times": {
+   "fajr": 1791426960,
+   "sunrise": 1791432060,
+   "dhuhr": 1791453420,
+   "asr": 1791464820,
+   "maghrib": 1791474120,
+   "isha": 1791478860
+  }
+ },
+ {
+  "name": "Istanbul",
+  "lat": 41.0082,
+  "lon": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "Turkey",
+  "day": "2026-12-21",
+  "times": {
+   "fajr": 1797824760,
+   "sunrise": 1797830280,
+   "dhuhr": 1797847620,
+   "asr": 1797855900,
+   "maghrib": 1797864360,
+   "isha": 1797869580
+  }
+ },
+ {
+  "name": "London",
+  "lat": 51.5074,
+  "lon": -0.1278,
+  "tz": "Europe/London",
+  "method": "MuslimWorldLeague",
+  "day": "2026-01-15",
+  "times": {
+   "fajr": 1768456740,
+   "sunrise": 1768463940,
+   "dhuhr": 1768479060,
+   "asr": 1768485720,
+   "maghrib": 1768494060,
+   "isha": 1768500900
+  }
+ },
+ {
+  "name": "London",
+  "lat": 51.5074,
+  "lon": -0.1278,
+  "tz": "Europe/London",
+  "method": "MuslimWorldLeague",
+  "day": "2026-03-20",
+  "times": {
+   "fajr": 1773980520.142,
+   "sunrise": 1773986580,
+   "dhuhr": 1774008540,
+   "asr": 1774020420,
+   "maghrib": 1774030440,
+   "isha": 1774036500.857
+  }
+ },
+ {
+  "name": "London",
+  "lat": 51.5074,
+  "lon": -0.1278,
+  "tz": "Europe/London",
+  "method": "MuslimWorldLeague",
+  "day": "2026-06-21",
+  "times": {
+   "fajr": 1782009600.714,
+   "sunrise": 1782013380,
+   "dhuhr": 1782043380,
+   "asr": 1782059100,
+   "maghrib": 1782073320,
+   "isha": 1782077100.285
+  }
+ },
+ {
+  "name": "London",
+  "lat": 51.5074,
+  "lon": -0.1278,
+  "tz": "Europe/London",
+  "method": "MuslimWorldLeague",
+  "day": "2026-10-08",
+  "times": {
+   "fajr": 1791433320.857,
+   "sunrise": 1791439980,
+   "dhuhr": 1791460140,
+   "asr": 1791470580,
+   "maghrib": 1791480180,
+   "isha": 1791486420
+  }
+ },
+ {
+  "name": "London",
+  "lat": 51.5074,
+  "lon": -0.1278,
+  "tz": "Europe/London",
+  "method": "MuslimWorldLeague",
+  "day": "2026-12-21",
+  "times": {
+   "fajr": 1797832740,
+   "sunrise": 1797840240,
+   "dhuhr": 1797854400,
+   "asr": 1797860280,
+   "maghrib": 1797868380,
+   "isha": 1797875460
+  }
+ }
+]

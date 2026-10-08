@@ -59,7 +59,7 @@ assert.match(stateSys, /OfflineStateV2/);
 assert.match(formFields, /export function SearchInput/);
 assert.match(mj, /SearchInput/);
 assert.match(mj, /export function SearchField/);
-assert.match(tawba, /SearchInput/);
+assert.match(tawba, /SearchField/);
 assert.match(unify, /\.ss-search-input/);
 assert.match(dsIndex, /SearchSystem|SearchResultCard/);
 assert.match(dsIndex, /FilterSystem|SegmentedFilter/);
