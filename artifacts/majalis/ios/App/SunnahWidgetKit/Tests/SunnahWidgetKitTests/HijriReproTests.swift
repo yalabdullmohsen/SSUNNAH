@@ -1,7 +1,7 @@
 import XCTest
 @testable import SunnahWidgetKit
 
-/// إعادة إنتاج أخطاء المعرض: الخميس ٨ أكتوبر ٢٠٢٦ بتوقيت الكويت.
+/// إعادة إنتاج أخطاء المعرض: الخميس 8 أكتوبر 2026 بتوقيت الكويت.
 final class HijriReproTests: XCTestCase {
     private let kuwait = TimeZone(identifier: "Asia/Kuwait")!
 
@@ -14,7 +14,7 @@ final class HijriReproTests: XCTestCase {
     func testHijriDateOnReferenceDay() {
         let h = HijriCalendar.date(kuwaitDate(2026, 10, 8), timeZone: kuwait)
         XCTAssertEqual(h, HijriDate(year: 1448, month: 4, day: 27))
-        XCTAssertEqual(HijriCalendar.display(h), "٢٧ ربيع الآخر ١٤٤٨")
+        XCTAssertEqual(HijriCalendar.display(h), "27 ربيع الآخر 1448")
     }
 
     func testAshuraIsAboutEightMonthsAwayNotEighteenDays() {

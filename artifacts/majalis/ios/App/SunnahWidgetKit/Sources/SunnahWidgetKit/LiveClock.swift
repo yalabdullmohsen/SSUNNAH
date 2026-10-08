@@ -1,7 +1,7 @@
 import Foundation
 
 /// منطق العدّ الحي لودجات الصلاة (نقي، قابل للاختبار): يحدّد اتجاه العدّ ولحظاته،
-/// ويصيغ النص الثابت بنفس صيغة النص الحي (mm:ss أقل من ساعة، h:mm:ss من ساعة، أرقام هندية).
+/// ويصيغ النص الثابت بنفس صيغة النص الحي (mm:ss أقل من ساعة، h:mm:ss من ساعة، أرقام لاتينية).
 public enum LiveClock {
     public enum Mode: Equatable {
         /// الصلاة الحالية: عدّ تصاعدي منذ دخول الوقت.
@@ -30,7 +30,7 @@ public enum LiveClock {
     /// الساعات تظهر فقط حين يبلغ الزمن ساعة فأكثر.
     public static func showsHours(seconds: TimeInterval) -> Bool { seconds >= 3600 }
 
-    /// mm:ss بدقيقتين وثانيتين (٠٦:٣٠) أقل من ساعة، وh:mm:ss (١:٠٦:٣٠) من ساعة فأكثر.
+    /// mm:ss بدقيقتين وثانيتين (06:30) أقل من ساعة، وh:mm:ss (1:06:30) من ساعة فأكثر.
     public static func format(seconds: TimeInterval) -> String {
         let total = max(0, Int(seconds.rounded(.down)))
         let h = total / 3600, m = (total % 3600) / 60, s = total % 60

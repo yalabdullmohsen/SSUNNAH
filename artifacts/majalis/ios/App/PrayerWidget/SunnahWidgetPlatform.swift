@@ -59,7 +59,7 @@ struct SunnahWidgetChrome: ViewModifier {
     func body(content: Content) -> some View {
         content
             .environment(\.layoutDirection, .rightToLeft)
-            .environment(\.locale, Locale(identifier: "ar"))
+            .environment(\.locale, WidgetFormat.locale)
             .modifier(SunnahWidgetSurface())
     }
 }
@@ -298,7 +298,7 @@ enum SunnahWidgetDayRollover {
         cal.timeZone = tz
         let f = DateFormatter()
         f.calendar = cal
-        f.locale = Locale(identifier: "ar")
+        f.locale = WidgetFormat.locale
         f.timeZone = tz
         f.setLocalizedDateFormatFromTemplate(template)
         return f.string(from: date)

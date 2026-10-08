@@ -229,7 +229,7 @@ struct PrayerWidgetEntry: TimelineEntry {
         let gregorian: String = {
             let f = DateFormatter()
             f.calendar = cal
-            f.locale = Locale(identifier: "ar")
+            f.locale = WidgetFormat.locale
             f.timeZone = tz
             f.dateStyle = .medium
             f.timeStyle = .none
@@ -238,11 +238,11 @@ struct PrayerWidgetEntry: TimelineEntry {
 
         let hijri: String? = {
             var islamic = Calendar(identifier: .islamicUmmAlQura)
-            islamic.locale = Locale(identifier: "ar")
+            islamic.locale = WidgetFormat.locale
             islamic.timeZone = tz
             let f = DateFormatter()
             f.calendar = islamic
-            f.locale = Locale(identifier: "ar")
+            f.locale = WidgetFormat.locale
             f.timeZone = tz
             f.dateStyle = .medium
             f.timeStyle = .none
@@ -422,7 +422,7 @@ struct PrayerWidgetProvider: TimelineProvider {
 enum SunnahWidgetTimeFormatting {
     static func clock(_ date: Date, timeZone: TimeZone = .current) -> String {
         let f = DateFormatter()
-        f.locale = Locale(identifier: "ar")
+        f.locale = WidgetFormat.locale
         f.timeZone = timeZone
         f.timeStyle = .short
         f.dateStyle = .none
