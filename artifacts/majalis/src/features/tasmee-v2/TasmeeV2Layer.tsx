@@ -14,6 +14,8 @@ import {
 } from "@/lib/tasmee-v2/session-state";
 import { stepsBackToAyahStart } from "@/lib/tasmee-v2/word-model";
 import { T } from "./strings";
+import { TasmeeModelSheet } from "./TasmeeModelSheet";
+import { useTasmeeModel } from "./useTasmeeModel";
 
 const ALERTS_KEY = "ssunnah-tasmee-v2-alerts";
 const LONG_PRESS_MS = 500;
@@ -94,6 +96,10 @@ export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = fal
   const [alertsOpen, setAlertsOpen] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const [toast, setToast] = useState<string | null>(null);
+  const [modelOpen, setModelOpen] = useState(false);
+  const model = useTasmeeModel();
+  /* على iOS: لا تسميع قبل تنزيل النموذج بموافقة (الويب بلا محرك أصلي فلا حاجة له) */
+  const needsModel = model.state.phase !== "ready" && model.state.phase !== "unsupported";
   const keysRef = useRef<string[]>([]);
   const totalRef = useRef(0);
   const longFiredRef = useRef(false);
@@ -113,6 +119,18 @@ export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = fal
     const id = window.setTimeout(() => setToast(null), 2200);
     return () => window.clearTimeout(id);
   }, [toast]);
+
+  /* فتح التسميع من رابط (?tasmee=1) بلا نموذج: تُعرض شاشة النموذج بدل وضع لا يعمل */
+  const modelPromptedRef = useRef(false);
+  useEffect(() => {
+    if (!active || modelPromptedRef.current) return;
+    const p = model.state.phase;
+    if (p === "missing" || p === "paused" || p === "error") {
+      modelPromptedRef.current = true;
+      dispatch({ type: "setMode", mode: "off" });
+      setModelOpen(true);
+    }
+  }, [active, model.state.phase]);
 
   /* المؤقّت */
   useEffect(() => {
@@ -256,6 +274,10 @@ export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = fal
   };
   const onFabClick = () => {
     if (longFiredRef.current) return;
+    if (needsModel) {
+      setModelOpen(true);
+      return;
+    }
     if (!active) {
       dispatch({ type: "setMode", mode: "tasmee" });
       return;
@@ -266,6 +288,10 @@ export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = fal
   const pickMode = (mode: TasmeeMode) => {
     setModesOpen(false);
     if (mode === "listen" || mode === "test") return;
+    if (mode === "tasmee" && needsModel) {
+      setModelOpen(true);
+      return;
+    }
     dispatch({ type: "setMode", mode });
   };
 
@@ -381,6 +407,18 @@ export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = fal
           </Button>
         ) : null}
       </Sheet>
+
+      <TasmeeModelSheet
+        open={modelOpen}
+        state={model.state}
+        onClose={() => setModelOpen(false)}
+        onDownload={() => void model.download()}
+        onCancel={model.cancel}
+        onStart={() => {
+          setModelOpen(false);
+          dispatch({ type: "setMode", mode: "tasmee" });
+        }}
+      />
 
       <Sheet open={alertsOpen} onClose={() => setAlertsOpen(false)} title={T.alertsTitle}>
         <div className="tv2-settings">

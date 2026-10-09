@@ -2347,6 +2347,16 @@ html[data-theme="dark"] .nm-page-arrow {
 .tv2-setting { display: flex; align-items: center; justify-content: space-between; min-height: 44px; font-family: var(--font-ui); color: var(--sn-text-primary); }
 .tv2-timing { display: flex; flex-wrap: wrap; gap: var(--sn-s2); padding-block-start: var(--sn-s2); }
 
+/* نموذج التسميع: موافقة وتنزيل */
+.tv2-model { display: grid; gap: var(--sn-s3); font-family: var(--font-ui); color: var(--sn-text-primary); }
+.tv2-model-text { margin: 0; font-size: var(--sn-fs-subhead); color: var(--sn-text-secondary); line-height: 1.6; }
+.tv2-model-facts { margin: 0; }
+.tv2-model-facts > div { display: flex; align-items: center; justify-content: space-between; min-height: 44px; }
+.tv2-model-facts dt { font-size: var(--sn-fs-body); }
+.tv2-model-facts dd { margin: 0; font-size: var(--sn-fs-body); font-weight: 600; }
+.tv2-model-progress { display: grid; gap: var(--sn-s2); }
+.tv2-model-meta { margin: 0; font-size: var(--sn-fs-footnote); color: var(--sn-text-secondary); }
+
 /* ───── طبقة العرض على صفحة المصحف: شفافية/لون فقط، التخطيط ثابت ───── */
 .nm-page[data-tasmee-hide="1"] .nm-line {
   background-image: linear-gradient(to top, var(--sn-separator) var(--sn-hairline, 1px), transparent var(--sn-hairline, 1px));

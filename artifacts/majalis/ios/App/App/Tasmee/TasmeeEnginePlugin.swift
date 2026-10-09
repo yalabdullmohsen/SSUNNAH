@@ -114,6 +114,8 @@ public class TasmeeEnginePlugin: CAPPlugin, CAPBridgedPlugin {
                 call.resolve(["installed": true])
             } catch TasmeeModelError.cancelled {
                 call.reject("cancelled", "cancelled")
+            } catch TasmeeModelError.wifiRequired {
+                call.reject(TasmeeModelError.wifiRequired.localizedDescription, "wifi_required")
             } catch {
                 call.reject(error.localizedDescription)
             }
