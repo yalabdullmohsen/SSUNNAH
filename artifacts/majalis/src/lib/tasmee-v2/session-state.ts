@@ -68,6 +68,12 @@ export type TasmeeAction =
 const countErrors = (marks: Record<number, WordMark>) =>
   Object.values(marks).filter((m) => m === "wrong").length;
 
+/** متى يُطلق التنبيه (اهتزاز/نغمة): فوري عند زيادة الأخطاء، أو عند نهاية المقطع إن كان مؤجَّلًا. */
+export function alertToFire(prevErrors: number, s: TasmeeState): "instant" | "after-segment" | null {
+  if (s.alerts.timing === "instant") return s.errors > prevErrors ? "instant" : null;
+  return !s.recording && s.pendingAlerts > 0 ? "after-segment" : null;
+}
+
 export function tasmeeReducer(s: TasmeeState, a: TasmeeAction): TasmeeState {
   switch (a.type) {
     case "setMode":

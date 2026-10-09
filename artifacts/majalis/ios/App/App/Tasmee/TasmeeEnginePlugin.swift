@@ -27,6 +27,8 @@ public class TasmeeEnginePlugin: CAPPlugin, CAPBridgedPlugin {
         m += [
             CAPPluginMethod(name: "alignSession", returnType: CAPPluginReturnPromise),
             CAPPluginMethod(name: "releaseSessionAudio", returnType: CAPPluginReturnPromise),
+            CAPPluginMethod(name: "getFeedConfig", returnType: CAPPluginReturnPromise),
+            CAPPluginMethod(name: "writeFeedResult", returnType: CAPPluginReturnPromise),
         ]
         #endif
         return m
@@ -148,7 +150,12 @@ public class TasmeeEnginePlugin: CAPPlugin, CAPBridgedPlugin {
 
     @objc func start(_ call: CAPPluginCall) {
         do {
-            try engine.start(prompt: call.getString("prompt"), keepSessionAudio: call.getBool("keepSessionAudio") ?? false) // يُتجاهَل خارج TASMEE_DIAGNOSTICS
+            #if TASMEE_DIAGNOSTICS
+            let feed = call.getString("feedFile").map { Self.documents.appendingPathComponent(($0 as NSString).lastPathComponent) }
+            #else
+            let feed: URL? = nil
+            #endif
+            try engine.start(prompt: call.getString("prompt"), keepSessionAudio: call.getBool("keepSessionAudio") ?? false, feedFile: feed) // يُتجاهَلان خارج TASMEE_DIAGNOSTICS
             call.resolve()
         } catch { call.reject(error.localizedDescription) }
     }
@@ -178,5 +185,21 @@ public class TasmeeEnginePlugin: CAPPlugin, CAPBridgedPlugin {
     }
 
     @objc func releaseSessionAudio(_ call: CAPPluginCall) { engine.releaseSessionAudio(); call.resolve() }
+
+    private static var documents: URL { FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] }
+
+    /// اختبار التكامل على المحاكي: وسائط الإطلاق `-TasmeeFeedFile <اسم في Documents> -TasmeeFeedPage N -TasmeeFeedSec S`.
+    @objc func getFeedConfig(_ call: CAPPluginCall) {
+        let d = UserDefaults.standard
+        guard let file = d.string(forKey: "TasmeeFeedFile") else { call.resolve(["enabled": false]); return }
+        call.resolve(["enabled": true, "file": file, "page": d.integer(forKey: "TasmeeFeedPage"), "seconds": d.double(forKey: "TasmeeFeedSec")])
+    }
+
+    /// يكتب نتيجة الاختبار (علامات الكلمات فقط، لا صوت) إلى Documents/tasmee-feed-result.json ليقرأها السكربت.
+    @objc func writeFeedResult(_ call: CAPPluginCall) {
+        guard let json = call.getString("json") else { call.reject("json required"); return }
+        do { try json.write(to: Self.documents.appendingPathComponent("tasmee-feed-result.json"), atomically: true, encoding: .utf8); call.resolve() }
+        catch { call.reject(error.localizedDescription) }
+    }
 #endif
 }

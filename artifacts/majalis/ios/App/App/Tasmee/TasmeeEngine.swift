@@ -104,7 +104,8 @@ final class TasmeeEngine {
 
     func setPrompt(_ text: String?) { lock.lock(); promptText = text; lock.unlock() }
 
-    func start(prompt: String?, keepSessionAudio: Bool) throws {
+    /// `feedFile` (Debug/TestFlight فقط): ملف صوتي يُغذّى بإيقاع الزمن الحقيقي بدل الميكروفون لاختبار التكامل على المحاكي.
+    func start(prompt: String?, keepSessionAudio: Bool, feedFile: URL? = nil) throws {
         guard pipe != nil else { throw NSError(domain: "Tasmee", code: 1, userInfo: [NSLocalizedDescriptionKey: "النموذج غير محمَّل"]) }
         guard !running else { return }
         self.keepSessionAudio = keepSessionAudio
@@ -117,9 +118,21 @@ final class TasmeeEngine {
         lock.unlock()
 
         sessionStart = Date()   // قبل بدء الالتقاط: ساعة الجلسة وساعة العيّنات متطابقتان (فارق < ٥٠ms)
+#if TASMEE_DIAGNOSTICS
+        if let feedFile {
+            let pcm = try Self.readMono16k(feedFile, sampleRate: sampleRate)
+            running = true
+            startFeed(pcm)
+        } else {
+            try configureSession()
+            try startCapture()
+            running = true
+        }
+#else
         try configureSession()
         try startCapture()
         running = true
+#endif
         diagnostics.begin()
         observeSystem()
         loopTask = Task.detached { [weak self] in await self?.decodeLoop() }
@@ -128,6 +141,9 @@ final class TasmeeEngine {
     func stop() -> TasmeeDiagnostics.Snapshot {
         running = false
         loopTask?.cancel(); loopTask = nil
+#if TASMEE_DIAGNOSTICS
+        feedTask?.cancel(); feedTask = nil
+#endif
         audioEngine.inputNode.removeTap(onBus: 0)
         audioEngine.stop()
         for o in observers { NotificationCenter.default.removeObserver(o) }
@@ -205,6 +221,49 @@ final class TasmeeEngine {
     }
 
     private var totalFrames = 0
+
+#if TASMEE_DIAGNOSTICS
+    // MARK: تغذية من ملف (اختبار التكامل فقط)
+
+    private var feedTask: Task<Void, Never>?
+
+    /// يقرأ الملف ويحوّله مرة واحدة إلى 16k أحادي — في الذاكرة فقط، لا كتابة على القرص.
+    private static func readMono16k(_ url: URL, sampleRate: Double) throws -> [Float] {
+        let file = try AVAudioFile(forReading: url)
+        guard let inBuf = AVAudioPCMBuffer(pcmFormat: file.processingFormat, frameCapacity: AVAudioFrameCount(file.length)),
+              let outFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: sampleRate, channels: 1, interleaved: false),
+              let conv = AVAudioConverter(from: file.processingFormat, to: outFormat) else {
+            throw NSError(domain: "Tasmee", code: 3, userInfo: [NSLocalizedDescriptionKey: "تعذّر قراءة ملف التغذية"])
+        }
+        try file.read(into: inBuf)
+        let cap = AVAudioFrameCount(Double(inBuf.frameLength) * sampleRate / file.processingFormat.sampleRate) + 1024
+        guard let out = AVAudioPCMBuffer(pcmFormat: outFormat, frameCapacity: cap) else { return [] }
+        var supplied = false
+        var err: NSError?
+        conv.convert(to: out, error: &err) { _, status in
+            if supplied { status.pointee = .endOfStream; return nil }
+            supplied = true; status.pointee = .haveData; return inBuf
+        }
+        if let err { throw err }
+        guard let ch = out.floatChannelData?[0] else { return [] }
+        return Array(UnsafeBufferPointer(start: ch, count: Int(out.frameLength)))
+    }
+
+    /// يدفع العيّنات بقطع 2048 بإيقاع الزمن الحقيقي إلى `append` — نفس مدخل نقرة الميكروفون، وما بعده (الحلقة والأحداث) حقيقي بلا تغيير.
+    private func startFeed(_ pcm: [Float]) {
+        let chunk = 2048
+        let chunkNs = UInt64(Double(chunk) / sampleRate * 1_000_000_000)
+        feedTask = Task.detached { [weak self] in
+            var i = 0
+            while i < pcm.count, !Task.isCancelled {
+                guard let self, self.running else { return }
+                self.append(Array(pcm[i..<min(i + chunk, pcm.count)]))
+                i += chunk
+                try? await Task.sleep(nanoseconds: chunkNs)
+            }
+        }
+    }
+#endif
 
     private func speechPresent(_ tail: ArraySlice<Float>) -> Bool {
         guard !tail.isEmpty else { return false }

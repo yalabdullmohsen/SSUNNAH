@@ -3,7 +3,7 @@
  * node --import tsx src/lib/__tests__/tasmee-v2-session-state.test.ts
  */
 import assert from "node:assert/strict";
-import { initialTasmeeState, tasmeeReducer, type TasmeeState } from "../tasmee-v2/session-state";
+import { alertToFire, initialTasmeeState, tasmeeReducer, type TasmeeState } from "../tasmee-v2/session-state";
 import { wantsTasmeeFromSearch } from "../tasmee-v2/flags";
 import {
   ayahEndOf,
@@ -83,3 +83,15 @@ assert.equal(wantsTasmeeFromSearch("page=3&tasmee=1"), true);
 assert.equal(wantsTasmeeFromSearch("?page=3"), false);
 
 console.log("tasmee-v2-session-state ✅");
+
+// إطلاق التنبيه: فوري عند كل خطأ جديد فقط، والمؤجَّل عند نهاية المقطع فقط
+{
+  const rec = run(initialTasmeeState(), { type: "setMode", mode: "tasmee" }, { type: "toggleRecording" });
+  const w1 = run(rec, { type: "mark", index: 0, mark: "wrong" });
+  assert.equal(alertToFire(0, w1), "instant", "خطأ جديد يُطلق فورًا");
+  assert.equal(alertToFire(1, run(w1, { type: "mark", index: 0, mark: "wrong" })), null, "إعادة الوسم لا تُطلق ثانية");
+  assert.equal(alertToFire(0, run(rec, { type: "mark", index: 0, mark: "skipped" })), null, "التجاوز لا يُنبِّه");
+  const late = run(rec, { type: "alerts", patch: { timing: "after-segment" } }, { type: "mark", index: 0, mark: "wrong" });
+  assert.equal(alertToFire(0, late), null, "المؤجَّل لا يُطلق أثناء التسجيل");
+  assert.equal(alertToFire(0, run(late, { type: "stopRecording" })), "after-segment", "ويُطلق عند نهاية المقطع");
+}

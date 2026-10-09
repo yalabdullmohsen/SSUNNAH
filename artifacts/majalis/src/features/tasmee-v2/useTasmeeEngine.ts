@@ -62,9 +62,11 @@ type Options = {
   onMark: (index: number, mark: WordMark) => void;
   /** فشل/انقطاع: يوقف التسجيل في الطبقة */
   onStop: (reason: "failure" | "interruption") => void;
+  /** اختبار التكامل على المحاكي: ملف في Documents بدل الميكروفون (Debug/TestFlight فقط) */
+  feedFile?: string;
 };
 
-export function useTasmeeEngine({ pageNumber, recording, ready, cursor, onMark, onStop }: Options) {
+export function useTasmeeEngine({ pageNumber, recording, ready, cursor, onMark, onStop, feedFile }: Options) {
   const [stats, setStats] = useState<TasmeeLiveStats>(emptyLiveStats);
   const cursorRef = useRef(cursor);
   cursorRef.current = cursor;
@@ -101,7 +103,7 @@ export function useTasmeeEngine({ pageNumber, recording, ready, cursor, onMark, 
         await modelLoaded;
         if (!alive) return;
         tracker = new RecitationTracker(ref.slice(offset));
-        await engine.start({});
+        await engine.start(feedFile ? { feedFile } : {});
       } catch {
         modelLoaded = null;
         if (alive) cbRef.current.onStop("failure");
@@ -115,7 +117,7 @@ export function useTasmeeEngine({ pageNumber, recording, ready, cursor, onMark, 
       /* نهاية المقطع: يُحسم كل مشتبه، ولا يُعدّ ما لم يُتلَ بعد متجاوزًا */
       if (tracker) apply(tracker.finish(Date.now()), null);
     };
-  }, [recording, ready, pageNumber]);
+  }, [recording, ready, pageNumber, feedFile]);
 
   return { stats, resetStats: () => setStats(emptyLiveStats()) };
 }
