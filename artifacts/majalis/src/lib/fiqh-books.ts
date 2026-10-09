@@ -6,6 +6,7 @@
  */
 import { normalizeArabic } from "@/shared/arabic-normalize";
 import { pooledFetch } from "@/lib/fetch-pool";
+import { isHeld } from "@/lib/content-hold";
 /* Vite يستبدل .node بـ browser-stub؛ Node/tsx يقرأ الملف الحقيقي */
 import { readFiqhJsonSync } from "./fiqh-catalog-disk.node";
 
@@ -283,6 +284,7 @@ export function isPublishedLesson(lesson: FiqhLesson): boolean {
   return (
     lesson.status === "published" &&
     lesson.needsReview !== true &&
+    !isHeld(lesson.id) &&
     Boolean(lesson.bookId) &&
     Boolean(lesson.chapterId) &&
     Boolean(lesson.summary?.trim()) &&
