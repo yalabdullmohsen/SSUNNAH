@@ -106,26 +106,28 @@ struct StandByHijriDateView: View {
     let entry: CatalogWidgetEntry
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text(entry.calendar?.weekdayAr ?? "اليوم")
-                .font(.title3.bold())
-                .foregroundStyle(SunnahBrandColors.gold)
-                .widgetAccentable()
-            Text(SunnahWidgetTimeFormatting.arabic(entry.calendar?.hijriDay ?? 1))
-                .font(.system(size: 56, weight: .bold))
-                .foregroundStyle(.white)
-            Text(entry.calendar?.hijriMonthAr ?? "التقويم الهجري")
-                .font(.title2.bold())
-                .foregroundStyle(.white)
-            if let year = entry.calendar?.hijriYear {
-                Text(SunnahWidgetTimeFormatting.arabic(year))
-                    .font(.headline)
-                    .foregroundStyle(SunnahWidgetTheme.secondaryText)
+        if let cal = entry.calendar {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(cal.weekdayAr)
+                    .font(WidgetType.secondary(20))
+                    .lineLimit(1)
+                    .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                Text(WidgetFormat.digits(cal.hijriDay))
+                    .font(WidgetType.primary(64))
+                    .foregroundStyle(SunnahBrandColors.gold)
+                    .widgetAccentable()
+                Text("\(cal.hijriMonthAr) \(WidgetFormat.digits(cal.hijriYear))")
+                    .font(WidgetType.primary(24))
+                    .lineLimit(1)
+                    .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
             }
+            .foregroundStyle(SunnahWidgetTheme.primaryText)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+            .padding(16)
+            .accessibilityLabel("\(cal.weekdayAr) \(WidgetFormat.digits(cal.hijriDay)) \(cal.hijriMonthAr) \(WidgetFormat.digits(cal.hijriYear))")
+        } else {
+            SunnahCalmCard(symbol: "calendar").foregroundStyle(SunnahWidgetTheme.primaryText)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-        .padding(16)
-        .accessibilityLabel(entry.calendar?.hijriDisplay ?? "التاريخ الهجري")
     }
 }
 
