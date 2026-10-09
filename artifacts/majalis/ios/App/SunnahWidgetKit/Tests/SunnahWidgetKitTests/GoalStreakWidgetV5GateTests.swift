@@ -44,4 +44,19 @@ final class GoalStreakWidgetV5GateTests: XCTestCase {
             XCTAssertEqual(WidgetFormat.digits(n), String(n))
         }
     }
+
+    func testAyahCardNeverTruncatesAndHasCalmEmptyState() throws {
+        let base = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
+            .deletingLastPathComponent().deletingLastPathComponent()
+        let full = try String(contentsOf: base.appendingPathComponent("PrayerWidget/SunnahQuranMushafWidgetCatalog.swift"), encoding: .utf8)
+        let start = try XCTUnwrap(full.range(of: "struct SunnahAyahCard"))
+        let end = try XCTUnwrap(full.range(of: "struct MushafContinueView"))
+        let src = String(full[start.lowerBound..<end.lowerBound])
+        XCTAssertTrue(src.contains("ViewThatFits"))
+        XCTAssertFalse(src.contains(".lineLimit(") && src.contains("ayahText)\n            .font"), "نص الآية بلا lineLimit")
+        XCTAssertFalse(src.contains(".white"))
+        XCTAssertTrue(src.contains("WidgetFormat.digits"))
+        XCTAssertTrue(src.contains("SunnahCalmCard"))
+        XCTAssertGreaterThanOrEqual(src.components(separatedBy: ".widgetAccentable(").count - 1, src.components(separatedBy: "SunnahBrandColors.gold").count - 1)
+    }
 }

@@ -131,25 +131,45 @@ struct QuranAyahView: View {
 
     @ViewBuilder
     private var homeBody: some View {
-        if let quran = entry.quran, !quran.ayahText.isEmpty {
+        SunnahAyahCard(quran: entry.quran, large: family == .systemLarge)
+    }
+}
+
+/// بطاقة الآية: نص حرفي كامل بلا اقتطاع؛ تتدرّج الخطوط حتى يتسع النص كله، وآخر مستوى بلا lineLimit.
+struct SunnahAyahCard: View {
+    let quran: SharedQuranPayload?
+    var large = false
+
+    private var sizes: [CGFloat] { large ? [26, 23, 20, 17, 15, 13] : [20, 18, 16, 14, 13] }
+
+    var body: some View {
+        if let quran, !quran.ayahText.isEmpty {
             VStack(alignment: .leading, spacing: 8) {
-                Text(quran.ayahText)
-                    .font(.headline)
-                    .foregroundStyle(.white)
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(family == .systemLarge ? 14 : 6)
-                    .minimumScaleFactor(0.6)
-                Text("سورة \(quran.surahNameAr) · آية \(SunnahWidgetTimeFormatting.arabic(quran.ayahNumber))")
-                    .font(.caption.bold())
+                ViewThatFits(in: .vertical) {
+                    ForEach(sizes, id: \.self) { size in
+                        ayah(quran.ayahText, size: size)
+                    }
+                }
+                Text("\(quran.surahNameAr) · \(WidgetFormat.digits(quran.ayahNumber))")
+                    .font(WidgetType.secondary(12))
                     .foregroundStyle(SunnahBrandColors.gold)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.8)
+                    .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
                     .widgetAccentable()
             }
             .sunnahCardLayout()
         } else {
-            SunnahWidgetEmptyState(message: "افتح سُنّة لعرض الآية")
+            SunnahCalmCard(symbol: "book", phrase: "افتح سُنّة")
         }
+    }
+
+    private func ayah(_ text: String, size: CGFloat) -> some View {
+        Text(text)
+            .font(.system(size: size, weight: .semibold, design: .serif))
+            .foregroundStyle(.primary)
+            .multilineTextAlignment(.leading)
+            .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
