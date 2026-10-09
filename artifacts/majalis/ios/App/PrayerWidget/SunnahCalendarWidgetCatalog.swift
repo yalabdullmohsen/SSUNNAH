@@ -245,12 +245,7 @@ struct RamadanCountdownView: View {
             }
         case .systemMedium:
             SunnahTwoZone {
-                VStack(alignment: .leading, spacing: 4) {
-                    nameText(p.name, 22)
-                    if !p.inRamadan {
-                        calLine(WidgetFormat.daysUntil(p.days), WidgetType.secondary(13))
-                    }
-                }
+                nameText(p.name, 22)
             } secondary: {
                 CalBigDays(days: p.days, size: 44, inRamadan: p.inRamadan)
                     .foregroundStyle(SunnahBrandColors.gold)

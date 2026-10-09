@@ -20,20 +20,16 @@ const report = readFileSync(
 );
 
 const strategy = assertCustomWidgetStrategy();
-assert.equal(strategy.option, "C");
+assert.equal(strategy.option, "REMOVED");
 assert.equal(CUSTOM_WIDGET_KIND, "sunnah.widget.custom");
-assert.equal(CUSTOM_WIDGET_STRATEGY.canonicalOwner, "CustomContentStaticWidget");
+assert.equal(CUSTOM_WIDGET_STRATEGY.canonicalOwner, null);
 
-assert.match(bundle, /CustomContentStaticWidget\(\)/);
-assert.doesNotMatch(bundle, /CustomContentWidget\(\)/);
-assert.match(custom, /OPTION C/);
-assert.match(custom, /struct CustomContentWidget/);
-assert.match(custom, /struct CustomContentStaticWidget/);
-assert.equal((custom.match(/let kind = SunnahWidgetKind\.custom/g) || []).length, 2);
+assert.doesNotMatch(bundle, /CustomContent/);
+assert.doesNotMatch(custom, /struct CustomContent/);
 
 assert.match(report, /CUSTOM_WIDGET_CONFIGURATION_CANONICAL/);
 assert.match(report, /DUPLICATE_CUSTOM_KIND_ZERO/);
-assert.match(report, /OPTION C/);
+
 
 console.log("ios-widget-custom-strategy-gate.test.ts: ok");
 console.log("CUSTOM_WIDGET_CONFIGURATION_CANONICAL");

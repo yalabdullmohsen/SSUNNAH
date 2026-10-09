@@ -47,8 +47,7 @@ const pbx = readIos("App.xcodeproj/project.pbxproj");
 
 assert.match(bundle, /@main/);
 assert.match(bundle, /PrayerTimesWidget\(\)/);
-assert.match(bundle, /CustomContentStaticWidget\(\)/);
-assert.doesNotMatch(bundle, /CustomContentWidget\(\)/);
+assert.doesNotMatch(bundle, /CustomContent/);
 
 assert.match(previews, /Never written to App Group/);
 assert.match(entry, /galleryPreview/);

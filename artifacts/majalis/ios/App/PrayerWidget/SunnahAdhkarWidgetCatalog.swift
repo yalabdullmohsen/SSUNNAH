@@ -2,38 +2,14 @@ import SwiftUI
 import SunnahWidgetKit
 import WidgetKit
 
-struct MorningAdhkarWidget: Widget {
-    let kind = SunnahWidgetKind.adhkarMorning
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
-            AdhkarCollectionView(entry: entry, fixedCollection: "morning")
-        }
-        .configurationDisplayName("أذكار الصباح")
-        .description("مدخل سريع لورد أذكار الصباح.")
-        .supportedFamilies(SunnahWidgetFamilySupport.adhkar)
-    }
-}
-
-struct EveningAdhkarWidget: Widget {
-    let kind = SunnahWidgetKind.adhkarEvening
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
-            AdhkarCollectionView(entry: entry, fixedCollection: "evening")
-        }
-        .configurationDisplayName("أذكار المساء")
-        .description("مدخل سريع لورد أذكار المساء.")
-        .supportedFamilies(SunnahWidgetFamilySupport.adhkar)
-    }
-}
-
 struct TimeAwareAdhkarWidget: Widget {
     let kind = SunnahWidgetKind.adhkarTimeAware
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
             TimeAwareAdhkarView(entry: entry)
         }
-        .configurationDisplayName("أذكار الوقت")
-        .description("يعرض الذكر المناسب للوقت: صباح أو مساء أو نوم أو بعد الصلاة.")
+        .configurationDisplayName("أذكار الصباح والمساء")
+        .description("أذكار الصباح أو المساء حسب وقتك.")
         .supportedFamilies(SunnahWidgetFamilySupport.adhkar)
     }
 }
@@ -44,7 +20,7 @@ struct RotatingAdhkarWidget: Widget {
         StaticConfiguration(kind: kind, provider: HourlyAdhkarProvider()) { entry in
             RotatingAdhkarView(entry: entry)
         }
-        .configurationDisplayName("ذكر اليوم")
+        .configurationDisplayName("ذكر الساعة")
         .description("ذكر قصير يتجدد كل ساعة.")
         .supportedFamilies(SunnahWidgetFamilySupport.adhkar)
     }
@@ -56,8 +32,8 @@ struct AdhkarStreakWidget: Widget {
         StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
             AdhkarStreakView(entry: entry)
         }
-        .configurationDisplayName("سلسلة الأذكار")
-        .description("إنجاز اليوم وعدد أيام السلسلة المتتالية.")
+        .configurationDisplayName("إنجاز اليوم")
+        .description("سلسلة أذكارك وهدف قرآن اليوم.")
         .supportedFamilies(SunnahWidgetFamilySupport.adhkarStreak)
     }
 }
@@ -215,13 +191,10 @@ struct RotatingAdhkarView: View {
     @Environment(\.widgetFamily) private var family
     let entry: CatalogWidgetEntry
 
+    /// من بيانات التطبيق إن وُجدت، وإلا من مخزون الأذكار المحلي المضمَّن (لا «افتح سُنّة»).
     private var dhikr: String? {
-        guard let a = entry.adhkar else { return nil }
-        return AdhkarRotation.pick(
-            from: a.rotatingPool ?? [a.rotatingText],
-            at: entry.date,
-            timeZone: HourlyAdhkarProvider.timeZone(for: entry)
-        )
+        let pool = entry.adhkar.map { $0.rotatingPool ?? [$0.rotatingText] } ?? WidgetLocalContent.duas.map(\.text)
+        return AdhkarRotation.pick(from: pool, at: entry.date, timeZone: HourlyAdhkarProvider.timeZone(for: entry))
     }
 
     var body: some View {
@@ -279,10 +252,31 @@ struct AdhkarStreakView: View {
     @Environment(\.widgetFamily) private var family
     let entry: CatalogWidgetEntry
 
+    private struct Ring {
+        let value: String
+        let fraction: Double
+        let label: String
+    }
+
+    private var streak: Ring? {
+        guard let p = entry.progress, p.hasCanonicalTracking else { return nil }
+        let days = max(0, p.adhkarStreakDays ?? 0)
+        let done = (p.morningAdhkarDone ? 1 : 0) + (p.eveningAdhkarDone ? 1 : 0)
+        return Ring(value: WidgetFormat.digits(days), fraction: Double(done) / 2, label: WidgetFormat.dayUnit(days))
+    }
+
+    private var goal: Ring? {
+        guard let q = entry.quran, q.hasCanonicalGoal == true else { return nil }
+        let done = max(0, q.pagesCompletedToday ?? 0)
+        let target = max(1, q.dailyTarget ?? 1)
+        return Ring(value: WidgetFormat.digits(done), fraction: Double(min(done, target)) / Double(target),
+                    label: "قرآن من \(WidgetFormat.digits(target))")
+    }
+
     var body: some View {
         Group {
-            if let progress = entry.progress, progress.hasCanonicalTracking {
-                content(progress)
+            if streak != nil || goal != nil {
+                content(streak, goal)
             } else {
                 SunnahCalmCard(symbol: "sparkles", phrase: "افتح سُنّة", compact: family == .accessoryCircular)
             }
@@ -293,47 +287,52 @@ struct AdhkarStreakView: View {
         .accessibilityLabel(todayLabel)
     }
 
+    private func ring(_ r: Ring, lockScreen: Bool = false) -> some View {
+        SunnahRingStat(value: r.value, fraction: r.fraction, caption: r.label, lockScreen: lockScreen)
+    }
+
     @ViewBuilder
-    private func content(_ progress: SharedHomeProgressPayload) -> some View {
-        let days = max(0, progress.adhkarStreakDays ?? 0)
-        let done = (progress.morningAdhkarDone ? 1 : 0) + (progress.eveningAdhkarDone ? 1 : 0)
-        let fraction = Double(done) / 2
-        let value = WidgetFormat.digits(days)
-        let unit = WidgetFormat.dayUnit(days)
+    private func content(_ streak: Ring?, _ goal: Ring?) -> some View {
+        let main = streak ?? goal!
         switch family {
         case .accessoryCircular:
-            SunnahRingStat(value: value, fraction: fraction, caption: unit, lockScreen: true)
+            ring(main, lockScreen: true)
         case .accessoryRectangular:
             HStack(spacing: 8) {
-                SunnahRingStat(value: value, fraction: fraction, caption: unit, lockScreen: true)
+                ring(main, lockScreen: true)
                     .frame(width: 44)
-                Text("سلسلة \(WidgetFormat.streak(days))")
-                    .font(WidgetType.primary(13))
-                    .lineLimit(1)
-                    .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                VStack(alignment: .leading, spacing: 0) {
+                    if let streak {
+                        Text("سلسلة \(streak.value) \(streak.label)")
+                    }
+                    if let goal {
+                        Text("\(goal.label.replacingOccurrences(of: "قرآن من", with: "قرآن")) · \(goal.value)")
+                    }
+                }
+                .font(WidgetType.primary(13))
+                .lineLimit(1)
+                .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
         case .systemMedium:
             SunnahTwoZone {
-                SunnahRingStat(value: value, fraction: fraction, caption: unit)
+                ring(streak ?? main)
             } secondary: {
-                VStack(spacing: 6) {
-                    Image(systemName: "flame.fill")
-                        .font(WidgetType.icon(22))
-                        .foregroundStyle(SunnahBrandColors.gold)
-                        .widgetAccentable()
-                        .accessibilityHidden(true)
-                    Text("السلسلة")
-                        .font(WidgetType.secondary(13))
-                        .lineLimit(1)
-                        .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
-                }
-                .frame(width: 84)
+                if let goal { ring(goal).frame(width: 104) }
             }
             .sunnahCardLayout(12)
         default:
-            SunnahRingStat(value: value, fraction: fraction, caption: unit)
-                .sunnahCardLayout(12)
+            VStack(spacing: 6) {
+                ring(streak ?? main)
+                if let streak, let goal {
+                    Text("\(goal.label) · \(goal.value)".replacingOccurrences(of: "قرآن من", with: "قرآن"))
+                        .font(WidgetType.secondary(13))
+                        .lineLimit(1)
+                        .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                        .accessibilityLabel(streak.label)
+                }
+            }
+            .sunnahCardLayout(12)
         }
     }
 

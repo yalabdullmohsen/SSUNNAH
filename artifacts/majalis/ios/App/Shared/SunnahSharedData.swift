@@ -17,44 +17,20 @@ enum SunnahWidgetKind {
     static let prayerTimes = "PrayerTimesWidget"
     static let prayerAll = "sunnah.widget.prayer.all"
     static let calendarHijri = "sunnah.widget.calendar.hijri"
-    static let calendarDual = "sunnah.widget.calendar.dual"
-    static let calendarToday = "sunnah.widget.calendar.today"
     static let calendarRamadan = "sunnah.widget.calendar.ramadan"
-    static let calendarEvent = "sunnah.widget.calendar.event"
-    static let adhkarMorning = "sunnah.widget.adhkar.morning"
-    static let adhkarEvening = "sunnah.widget.adhkar.evening"
     static let adhkarTimeAware = "sunnah.widget.adhkar.time-aware"
     static let adhkarRotating = "sunnah.widget.adhkar.rotating"
     static let adhkarStreak = "sunnah.widget.adhkar.streak"
-    static let custom = "sunnah.widget.custom"
     static let quranAyah = "sunnah.widget.quran.ayah"
-    static let quranGoal = "sunnah.widget.quran.goal"
     static let mushafContinue = "sunnah.widget.mushaf.continue"
-    static let mushafBookmark = "sunnah.widget.mushaf.bookmark"
-    static let mushafProgress = "sunnah.widget.mushaf.progress"
-    static let mushafQuickOpen = "sunnah.widget.mushaf.quick-open"
-    static let contentHadith = "sunnah.widget.content.hadith"
-    static let contentFaidah = "sunnah.widget.content.faidah"
-    static let contentDua = "sunnah.widget.content.dua"
-    static let homeToday = "sunnah.widget.home.today"
-    static let homeActions = "sunnah.widget.home.actions"
-    static let homeSpiritual = "sunnah.widget.home.spiritual"
 
-    static let prayerFamily: [String] = [
-        prayerTimes, prayerAll,
-    ]
-    static let calendarFamily: [String] = [
-        calendarHijri, calendarDual, calendarToday, calendarRamadan, calendarEvent,
-    ]
-    static let adhkarFamily: [String] = [
-        adhkarMorning, adhkarEvening, adhkarTimeAware, adhkarRotating, adhkarStreak,
-    ]
-    static let quranFamily: [String] = [quranAyah, quranGoal]
-    static let mushafFamily: [String] = [mushafContinue, mushafBookmark, mushafProgress, mushafQuickOpen]
-    static let customFamily: [String] = [custom, contentHadith, contentFaidah, contentDua]
-    static let homeFamily: [String] = [homeToday, homeActions, homeSpiritual]
+    static let prayerFamily: [String] = [prayerTimes, prayerAll]
+    static let calendarFamily: [String] = [calendarHijri, calendarRamadan]
+    static let adhkarFamily: [String] = [adhkarTimeAware, adhkarRotating, adhkarStreak]
+    static let quranFamily: [String] = [quranAyah]
+    static let mushafFamily: [String] = [mushafContinue]
 
-    static let allUnique: [String] = prayerFamily + calendarFamily + adhkarFamily + customFamily + quranFamily + mushafFamily + homeFamily
+    static let allUnique: [String] = prayerFamily + calendarFamily + adhkarFamily + quranFamily + mushafFamily
 }
 
 /// Keys allowed in the App Group suite. Anything else is rejected.

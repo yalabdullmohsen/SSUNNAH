@@ -83,8 +83,8 @@ export function assertWidgetGovernanceCompleteness(): {
   if (unique.size !== kinds.length) {
     throw new Error("duplicate widget kinds in catalog");
   }
-  if (kinds.length < 26) {
-    throw new Error("catalog under-populated");
+  if (kinds.length !== 9) {
+    throw new Error("catalog must hold exactly the 9 final widgets");
   }
 
   const justified = new Set(WIDGET_CATALOG_PRODUCT_JUSTIFICATION.map((j) => j.kind));
@@ -116,7 +116,7 @@ export function assertWidgetGovernanceCompleteness(): {
   if (!WIDGET_CENTER_FORM_AUTHORITY.webDoesNotRenderWidgetKit) {
     throw new Error("platform honesty missing");
   }
-  if (CUSTOM_WIDGET_STRATEGY.option !== "C") {
+  if (CUSTOM_WIDGET_STRATEGY.option !== "REMOVED") {
     throw new Error("custom strategy drift");
   }
   if (!WIDGET_FUTURE_BINARY_REQUIRED) {

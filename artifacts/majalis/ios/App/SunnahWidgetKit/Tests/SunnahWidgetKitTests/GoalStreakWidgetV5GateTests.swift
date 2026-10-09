@@ -26,27 +26,19 @@ final class GoalStreakWidgetV5GateTests: XCTestCase {
         XCTAssertGreaterThanOrEqual(accentable, gold, "\(name): كل ذهبي يحمل widgetAccentable")
     }
 
-    func testQuranGoalView() throws {
-        let src = try source("SunnahQuranMushafWidgetCatalog.swift", from: "struct QuranDailyGoalView", to: "struct MushafProgressView")
-        assertClean(src, "هدف القرآن")
-    }
-
     func testStreakView() throws {
         let src = try source("SunnahAdhkarWidgetCatalog.swift", from: "struct AdhkarStreakView")
         assertClean(src, "سلسلة الأذكار")
         XCTAssertTrue(src.contains("WidgetFormat.dayUnit"))
     }
 
-    func testMushafViewsUseUnifiedCardAndCalmEmptyState() throws {
-        let src = try source("SunnahQuranMushafWidgetCatalog.swift", from: "struct MushafContinueView", to: "struct QuranDailyGoalView")
-        let prog = try source("SunnahQuranMushafWidgetCatalog.swift", from: "struct MushafProgressView", to: "struct MushafQuickOpenView")
-        for (name, text) in [("تابع المصحف/الإشارة", src), ("رحلة المصحف", prog)] {
-            for banned in ["SunnahWidgetEmptyState", "SunnahWidgetTimeFormatting.arabic", ".white", ".title3", "٪"] {
-                XCTAssertFalse(text.contains(banned), "\(name): محظور \(banned)")
-            }
-            XCTAssertTrue(text.contains("SunnahMushafPositionCard"))
-            XCTAssertTrue(text.contains("SunnahCalmCard"))
+    func testMushafViewUsesUnifiedCardAndCalmEmptyState() throws {
+        let src = try source("SunnahQuranMushafWidgetCatalog.swift", from: "struct MushafContinueView")
+        for banned in ["SunnahWidgetEmptyState", "SunnahWidgetTimeFormatting.arabic", ".white", ".title3", "٪"] {
+            XCTAssertFalse(src.contains(banned), "المصحف: محظور \(banned)")
         }
+        XCTAssertTrue(src.contains("SunnahMushafPositionCard"))
+        XCTAssertTrue(src.contains("SunnahCalmCard"))
         XCTAssertTrue(src.contains("cue: \"تابع\""))
     }
 
@@ -58,17 +50,16 @@ final class GoalStreakWidgetV5GateTests: XCTestCase {
         }
     }
 
-    func testAyahCardNeverTruncatesAndHasCalmEmptyState() throws {
+    func testAyahOrDuaViewNeverTruncatesAndNeverAsksToOpenApp() throws {
         let base = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
             .deletingLastPathComponent().deletingLastPathComponent()
-        let full = try String(contentsOf: base.appendingPathComponent("PrayerWidget/SunnahQuranMushafWidgetCatalog.swift"), encoding: .utf8)
-        let start = try XCTUnwrap(full.range(of: "struct SunnahAyahCard"))
-        let end = try XCTUnwrap(full.range(of: "struct MushafContinueView"))
-        let src = String(full[start.lowerBound..<end.lowerBound])
+        let full = try String(contentsOf: base.appendingPathComponent("PrayerWidget/SunnahContentExperienceCatalog.swift"), encoding: .utf8)
+        let start = try XCTUnwrap(full.range(of: "struct AyahOrDuaView"))
+        let src = String(full[start.lowerBound...])
         XCTAssertTrue(src.contains("ViewThatFits"))
-        XCTAssertFalse(src.contains(".lineLimit(") && src.contains("ayahText)\n            .font"), "نص الآية بلا lineLimit")
+        XCTAssertFalse(src.contains("item.text)\n                        .font(.system(size: size, weight: .semibold, design: .serif))\n                        .foregroundStyle(.primary)\n                        .lineLimit"), "نص الآية/الدعاء بلا lineLimit")
         XCTAssertFalse(src.contains(".white"))
-        XCTAssertTrue(src.contains("WidgetFormat.digits"))
+        XCTAssertFalse(src.contains("افتح سُنّة"), "يعمل بلا التطبيق")
         XCTAssertTrue(src.contains("SunnahCalmCard"))
         XCTAssertGreaterThanOrEqual(src.components(separatedBy: ".widgetAccentable(").count - 1, src.components(separatedBy: "SunnahBrandColors.gold").count - 1)
     }

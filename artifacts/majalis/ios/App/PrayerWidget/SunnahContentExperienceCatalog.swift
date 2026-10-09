@@ -1,133 +1,274 @@
 import SwiftUI
+import SunnahWidgetKit
 import WidgetKit
 
-struct DailyHadithWidget: Widget {
-    let kind = SunnahWidgetKind.contentHadith
+// BEGIN GENERATED: widget-local-content
+enum WidgetLocalContent {
+    struct Item: Hashable {
+        let text: String
+        let source: String
+    }
+
+    static let ayahs: [Item] = [
+        .init(text: "إِنَّ ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّـٰلِحَـٰتِ أُو۟لَـٰٓئِكَ هُمْ خَيْرُ ٱلْبَرِيَّةِ", source: "البينة · 7"),
+        .init(text: "كُلُّ نَفْسٍۢ ذَآئِقَةُ ٱلْمَوْتِ ۖ ثُمَّ إِلَيْنَا تُرْجَعُونَ", source: "العنكبوت · 57"),
+        .init(text: "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَٱسْتَغْفِرْهُ ۚ إِنَّهُۥ كَانَ تَوَّابًۢا", source: "النصر · 3"),
+        .init(text: "وَأَمَّا بِنِعْمَةِ رَبِّكَ فَحَدِّثْ", source: "الضحى · 11"),
+        .init(text: "وَأَمَّا ٱلسَّآئِلَ فَلَا تَنْهَرْ", source: "الضحى · 10"),
+        .init(text: "إِلَّا ٱبْتِغَآءَ وَجْهِ رَبِّهِ ٱلْأَعْلَىٰ", source: "الليل · 20"),
+        .init(text: "۞ نَبِّئْ عِبَادِىٓ أَنِّىٓ أَنَا ٱلْغَفُورُ ٱلرَّحِيمُ", source: "الحجر · 49"),
+        .init(text: "وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰٓ", source: "الضحى · 5"),
+        .init(text: "أَيَحْسَبُ ٱلْإِنسَـٰنُ أَن يُتْرَكَ سُدًى", source: "القيامة · 36"),
+        .init(text: "قُلْ إِنَّ صَلَاتِى وَنُسُكِى وَمَحْيَاىَ وَمَمَاتِى لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ", source: "الأنعام · 162"),
+        .init(text: "وَمَآ أَصَـٰبَكُم مِّن مُّصِيبَةٍۢ فَبِمَا كَسَبَتْ أَيْدِيكُمْ وَيَعْفُوا۟ عَن كَثِيرٍۢ", source: "الشورى · 30"),
+        .init(text: "ٱلَّذِينَ هُمْ فِى صَلَاتِهِمْ خَـٰشِعُونَ", source: "المؤمنون · 2"),
+        .init(text: "وَقُل رَّبِّ ٱغْفِرْ وَٱرْحَمْ وَأَنتَ خَيْرُ ٱلرَّٰحِمِينَ", source: "المؤمنون · 118"),
+        .init(text: "وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ", source: "الإخلاص · 4"),
+        .init(text: "خُذِ ٱلْعَفْوَ وَأْمُرْ بِٱلْعُرْفِ وَأَعْرِضْ عَنِ ٱلْجَـٰهِلِينَ", source: "الأعراف · 199"),
+        .init(text: "لَيْلَةُ ٱلْقَدْرِ خَيْرٌۭ مِّنْ أَلْفِ شَهْرٍۢ", source: "القدر · 3"),
+        .init(text: "أَلَمْ يَجِدْكَ يَتِيمًۭا فَـَٔاوَىٰ", source: "الضحى · 6"),
+        .init(text: "أَفَلَا يَنظُرُونَ إِلَى ٱلْإِبِلِ كَيْفَ خُلِقَتْ", source: "الغاشية · 17"),
+        .init(text: "ٱرْجِعِىٓ إِلَىٰ رَبِّكِ رَاضِيَةًۭ مَّرْضِيَّةًۭ", source: "الفجر · 28"),
+        .init(text: "هَلْ جَزَآءُ ٱلْإِحْسَـٰنِ إِلَّا ٱلْإِحْسَـٰنُ", source: "الرحمن · 60"),
+        .init(text: "ٱقْرَأْ بِٱسْمِ رَبِّكَ ٱلَّذِى خَلَقَ", source: "العلق · 1"),
+        .init(text: "رَّبُّ ٱلْمَشْرِقِ وَٱلْمَغْرِبِ لَآ إِلَـٰهَ إِلَّا هُوَ فَٱتَّخِذْهُ وَكِيلًۭا", source: "المزمل · 9"),
+        .init(text: "وَٱذْكُرِ ٱسْمَ رَبِّكَ وَتَبَتَّلْ إِلَيْهِ تَبْتِيلًۭا", source: "المزمل · 8"),
+        .init(text: "يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱتَّقُوا۟ ٱللَّهَ وَقُولُوا۟ قَوْلًۭا سَدِيدًۭا", source: "الأحزاب · 70"),
+        .init(text: "وَمَا خَلَقْتُ ٱلْجِنَّ وَٱلْإِنسَ إِلَّا لِيَعْبُدُونِ", source: "الذاريات · 56"),
+        .init(text: "وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍۢ", source: "القلم · 4"),
+        .init(text: "وَلَا تَهِنُوا۟ وَلَا تَحْزَنُوا۟ وَأَنتُمُ ٱلْأَعْلَوْنَ إِن كُنتُم مُّؤْمِنِينَ", source: "آل عمران · 139"),
+        .init(text: "فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا", source: "الشرح · 5"),
+        .init(text: "تَبَـٰرَكَ ٱلَّذِى بِيَدِهِ ٱلْمُلْكُ وَهُوَ عَلَىٰ كُلِّ شَىْءٍۢ قَدِيرٌ", source: "الملك · 1"),
+        .init(text: "وَٱصْبِرْ فَإِنَّ ٱللَّهَ لَا يُضِيعُ أَجْرَ ٱلْمُحْسِنِينَ", source: "هود · 115"),
+        .init(text: "وَأَمَّا مَنْ خَافَ مَقَامَ رَبِّهِۦ وَنَهَى ٱلنَّفْسَ عَنِ ٱلْهَوَىٰ", source: "النازعات · 40"),
+        .init(text: "يُرِيدُ ٱللَّهُ أَن يُخَفِّفَ عَنكُمْ ۚ وَخُلِقَ ٱلْإِنسَـٰنُ ضَعِيفًۭا", source: "النساء · 28"),
+        .init(text: "رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ", source: "ابراهيم · 40"),
+        .init(text: "يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِن تَنصُرُوا۟ ٱللَّهَ يَنصُرْكُمْ وَيُثَبِّتْ أَقْدَامَكُمْ", source: "محمد · 7"),
+        .init(text: "إِلَّا ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّـٰلِحَـٰتِ فَلَهُمْ أَجْرٌ غَيْرُ مَمْنُونٍۢ", source: "التين · 6"),
+        .init(text: "إِنَّمَآ أَمْرُهُۥٓ إِذَآ أَرَادَ شَيْـًٔا أَن يَقُولَ لَهُۥ كُن فَيَكُونُ", source: "يس · 82"),
+        .init(text: "وَإِنِّى لَغَفَّارٌۭ لِّمَن تَابَ وَءَامَنَ وَعَمِلَ صَـٰلِحًۭا ثُمَّ ٱهْتَدَىٰ", source: "طه · 82"),
+        .init(text: "وَقُلْ جَآءَ ٱلْحَقُّ وَزَهَقَ ٱلْبَـٰطِلُ ۚ إِنَّ ٱلْبَـٰطِلَ كَانَ زَهُوقًۭا", source: "الإسراء · 81"),
+        .init(text: "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَكُن مِّنَ ٱلسَّـٰجِدِينَ", source: "الحجر · 98"),
+        .init(text: "أَلَآ إِنَّ أَوْلِيَآءَ ٱللَّهِ لَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ", source: "يونس · 62"),
+        .init(text: "إِنَّ ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّـٰلِحَـٰتِ سَيَجْعَلُ لَهُمُ ٱلرَّحْمَـٰنُ وُدًّۭا", source: "مريم · 96"),
+        .init(text: "وَذَكِّرْ فَإِنَّ ٱلذِّكْرَىٰ تَنفَعُ ٱلْمُؤْمِنِينَ", source: "الذاريات · 55"),
+        .init(text: "وَلَمَن صَبَرَ وَغَفَرَ إِنَّ ذَٰلِكَ لَمِنْ عَزْمِ ٱلْأُمُورِ", source: "الشورى · 43"),
+        .init(text: "وَٱلَّذِينَ جَـٰهَدُوا۟ فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا ۚ وَإِنَّ ٱللَّهَ لَمَعَ ٱلْمُحْسِنِينَ", source: "العنكبوت · 69"),
+        .init(text: "وَقُل رَّبِّ أَعُوذُ بِكَ مِنْ هَمَزَٰتِ ٱلشَّيَـٰطِينِ", source: "المؤمنون · 97"),
+        .init(text: "وَيَبْقَىٰ وَجْهُ رَبِّكَ ذُو ٱلْجَلَـٰلِ وَٱلْإِكْرَامِ", source: "الرحمن · 27"),
+        .init(text: "وَإِذَا مَرِضْتُ فَهُوَ يَشْفِينِ", source: "الشعراء · 80"),
+        .init(text: "إِلَّا ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّـٰلِحَـٰتِ وَتَوَاصَوْا۟ بِٱلْحَقِّ وَتَوَاصَوْا۟ بِٱلصَّبْرِ", source: "العصر · 3"),
+        .init(text: "وَلَنَبْلُوَنَّكُمْ حَتَّىٰ نَعْلَمَ ٱلْمُجَـٰهِدِينَ مِنكُمْ وَٱلصَّـٰبِرِينَ وَنَبْلُوَا۟ أَخْبَارَكُمْ", source: "محمد · 31"),
+        .init(text: "إِنَّ مَعَ ٱلْعُسْرِ يُسْرًۭا", source: "الشرح · 6"),
+        .init(text: "وَأَن لَّيْسَ لِلْإِنسَـٰنِ إِلَّا مَا سَعَىٰ", source: "النجم · 39"),
+        .init(text: "لَقَدْ خَلَقْنَا ٱلْإِنسَـٰنَ فِىٓ أَحْسَنِ تَقْوِيمٍۢ", source: "التين · 4"),
+        .init(text: "وَلَلْـَٔاخِرَةُ خَيْرٌۭ لَّكَ مِنَ ٱلْأُولَىٰ", source: "الضحى · 4"),
+        .init(text: "قُلْ بِفَضْلِ ٱللَّهِ وَبِرَحْمَتِهِۦ فَبِذَٰلِكَ فَلْيَفْرَحُوا۟ هُوَ خَيْرٌۭ مِّمَّا يَجْمَعُونَ", source: "يونس · 58"),
+        .init(text: "إِنَّ ٱلْإِنسَـٰنَ لَفِى خُسْرٍ", source: "العصر · 2"),
+        .init(text: "وَٱسْتَعِينُوا۟ بِٱلصَّبْرِ وَٱلصَّلَوٰةِ ۚ وَإِنَّهَا لَكَبِيرَةٌ إِلَّا عَلَى ٱلْخَـٰشِعِينَ", source: "البقرة · 45"),
+        .init(text: "إِلَّا مَنْ أَتَى ٱللَّهَ بِقَلْبٍۢ سَلِيمٍۢ", source: "الشعراء · 89"),
+        .init(text: "إِنَّمَآ أَمْوَٰلُكُمْ وَأَوْلَـٰدُكُمْ فِتْنَةٌۭ ۚ وَٱللَّهُ عِندَهُۥٓ أَجْرٌ عَظِيمٌۭ", source: "التغابن · 15"),
+        .init(text: "يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱصْبِرُوا۟ وَصَابِرُوا۟ وَرَابِطُوا۟ وَٱتَّقُوا۟ ٱللَّهَ لَعَلَّكُمْ تُفْلِحُونَ", source: "آل عمران · 200"),
+        .init(text: "قُلْ أَرَءَيْتُمْ إِنْ أَصْبَحَ مَآؤُكُمْ غَوْرًۭا فَمَن يَأْتِيكُم بِمَآءٍۢ مَّعِينٍۭ", source: "الملك · 30"),
+        .init(text: "إِنَّ ٱللَّهَ مَعَ ٱلَّذِينَ ٱتَّقَوا۟ وَّٱلَّذِينَ هُم مُّحْسِنُونَ", source: "النحل · 128"),
+        .init(text: "وَذَكَرَ ٱسْمَ رَبِّهِۦ فَصَلَّىٰ", source: "الأعلى · 15"),
+        .init(text: "فَأَمَّا ٱلْيَتِيمَ فَلَا تَقْهَرْ", source: "الضحى · 9"),
+        .init(text: "وَمَن يُطِعِ ٱللَّهَ وَرَسُولَهُۥ وَيَخْشَ ٱللَّهَ وَيَتَّقْهِ فَأُو۟لَـٰٓئِكَ هُمُ ٱلْفَآئِزُونَ", source: "النور · 52"),
+        .init(text: "قَدْ أَفْلَحَ مَن زَكَّىٰهَا", source: "الشمس · 9"),
+        .init(text: "فَٱذْكُرُونِىٓ أَذْكُرْكُمْ وَٱشْكُرُوا۟ لِى وَلَا تَكْفُرُونِ", source: "البقرة · 152"),
+        .init(text: "عَلَّمَ ٱلْإِنسَـٰنَ مَا لَمْ يَعْلَمْ", source: "العلق · 5"),
+        .init(text: "وَأَنَّ إِلَىٰ رَبِّكَ ٱلْمُنتَهَىٰ", source: "النجم · 42"),
+        .init(text: "رَبِّ هَبْ لِى حُكْمًۭا وَأَلْحِقْنِى بِٱلصَّـٰلِحِينَ", source: "الشعراء · 83"),
+        .init(text: "يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱذْكُرُوا۟ ٱللَّهَ ذِكْرًۭا كَثِيرًۭا", source: "الأحزاب · 41"),
+        .init(text: "وَمَآ أَرْسَلْنَـٰكَ إِلَّا رَحْمَةًۭ لِّلْعَـٰلَمِينَ", source: "الأنبياء · 107"),
+        .init(text: "مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ", source: "الضحى · 3"),
+        .init(text: "فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًۭا يَرَهُۥ", source: "الزلزلة · 7"),
+        .init(text: "يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱتَّقُوا۟ ٱللَّهَ وَكُونُوا۟ مَعَ ٱلصَّـٰدِقِينَ", source: "التوبة · 119"),
+        .init(text: "ٱللَّهُ لَطِيفٌۢ بِعِبَادِهِۦ يَرْزُقُ مَن يَشَآءُ ۖ وَهُوَ ٱلْقَوِىُّ ٱلْعَزِيزُ", source: "الشورى · 19"),
+        .init(text: "وَلَقَدْ نَعْلَمُ أَنَّكَ يَضِيقُ صَدْرُكَ بِمَا يَقُولُونَ", source: "الحجر · 97"),
+    ]
+
+    static let duas: [Item] = [
+        .init(text: "اللَّهُمَّ بَاعِدْ بَيْنِي وَبَيْنَ خَطَايَايَ كَمَا بَاعَدْتَ بَيْنَ الْمَشْرِقِ وَالْمَغْرِبِ", source: "متفق عليه"),
+        .init(text: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ", source: "رواه البخاري"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ، وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ، وَأَسْأَلُكَ مِنْ فَضْلِكَ الْعَظِيمِ", source: "رواه البخاري"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا طَيِّبًا، وَعَمَلًا مُتَقَبَّلًا", source: "رواه ابن ماجه"),
+        .init(text: "اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَجْمَعُ، أَوْ تَبْعَثُ، عِبَادَكَ", source: "رواه أبو داود"),
+        .init(text: "اللَّهُمَّ أَنْتَ السَّلَامُ، وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ", source: "رواه أبو داود والنسائي"),
+        .init(text: "اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي", source: "رواه الترمذي وابن ماجه، وصححه الألباني"),
+        .init(text: "اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا، وَاطْوِ عَنَّا بُعْدَهُ", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ بَارِكْ لَنَا فِيمَا رَزَقْتَنَا، وَقِنَا عَذَابَ النَّارِ", source: "رواه ابن السني (459) — ضعّفه النووي في الأذكار وجمهور المحدّثين"),
+        .init(text: "اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ، وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ", source: "رواه الترمذي"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ", source: "رواه أبو داود وابن ماجه، وصححه الألباني"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْجَنَّةَ وَأَعُوذُ بِكَ مِنَ النَّارِ", source: "رواه أبو داود"),
+        .init(text: "اللَّهُمَّ مُصَرِّفَ الْقُلُوبِ صَرِّفْ قُلُوبَنَا عَلَى طَاعَتِكَ", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ أَلِّفْ بَيْنَ قُلُوبِنَا، وَأَصْلِحْ ذَاتَ بَيْنِنَا، وَاهْدِنَا سُبُلَ السَّلَامِ", source: "رواه أبو داود"),
+        .init(text: "اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ، وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ", source: "رواه الترمذي"),
+        .init(text: "رَبِّ اغْفِرْ لِي وَارْحَمْنِي وَاجْبُرْنِي وَارْفَعْنِي وَارْزُقْنِي وَاهْدِنِي", source: "رواه أبو داود"),
+        .init(text: "اللَّهُمَّ اغْفِرْ لِي ذُنُوبِي، وَافْتَحْ لِي أَبْوَابَ رَحْمَتِكَ", source: "رواه ابن ماجه"),
+        .init(text: "اللَّهُمَّ بَارِكْ لَنَا فِيهِ وَأَطْعِمْنَا خَيْرًا مِنْهُ", source: "رواه الترمذي"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ خَيْرِ مَا أَرْسَلْتَهَا بِهِ", source: "رواه أبو داود"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الثَّبَاتَ فِي الْأَمْرِ، وَأَسْأَلُكَ عَزِيمَةَ الرُّشْدِ", source: "رواه النسائي"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الشِّقَاقِ وَالنِّفَاقِ وَسُوءِ الْأَخْلَاقِ", source: "رواه أبو داود والنسائي"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْفِرْدَوْسَ الْأَعْلَى مِنَ الْجَنَّةِ", source: "رواه البخاري"),
+        .init(text: "اللَّهُمَّ اغْفِرْ لِي وَارْحَمْنِي وَاهْدِنِي وَعَافِنِي وَارْزُقْنِي", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْمَأْثَمِ وَالْمَغْرَمِ", source: "متفق عليه"),
+        .init(text: "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ", source: "رواه الترمذي"),
+        .init(text: "اللَّهُمَّ اغْفِرْ لِي وَارْحَمْنِي وَتُبْ عَلَيَّ", source: "رواه الترمذي"),
+        .init(text: "رَبِّ اغْفِرْ لِي", source: "رواه أبو داود والترمذي وابن ماجه، وصححه الألباني"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ", source: "رواه أبو داود والترمذي، وصححه الألباني"),
+        .init(text: "اللَّهُمَّ إِنَّكَ عَفُوٌّ كَرِيمٌ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي", source: "رواه الترمذي وابن ماجه، وصححه الألباني"),
+        .init(text: "اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبِيِّنَا مُحَمَّدٍ", source: "رواه الترمذي"),
+        .init(text: "اللَّهُمَّ اجْعَلْنِي أُقِيمُ الصَّلَاةَ، وَاجْعَلْنِي ذَاكِرًا لَكَ كَثِيرًا", source: "رواه الترمذي"),
+        .init(text: "اللَّهُمَّ إِنِّي أَعُوذُ بِرِضَاكَ مِنْ سَخَطِكَ، وَبِمُعَافَاتِكَ مِنْ عُقُوبَتِكَ", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي، وَعَلِّمْنِي مَا يَنْفَعُنِي، وَزِدْنِي عِلْمًا", source: "رواه الترمذي وابن ماجه، وصححه الألباني"),
+        .init(text: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكَسَلِ وَالْهَرَمِ وَالْمَأْثَمِ وَالْمَغْرَمِ", source: "رواه البخاري"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الرِّضَا بَعْدَ الْقَضَاءِ، وَبَرْدَ الْعَيْشِ بَعْدَ الْمَوْتِ", source: "رواه النسائي"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ فِعْلَ الْخَيْرَاتِ وَتَرْكَ الْمُنْكَرَاتِ وَحُبَّ الْمَسَاكِينِ", source: "رواه الترمذي"),
+        .init(text: "اللَّهُمَّ اجْعَلْ أَوَّلَ هَذَا الْأَمْرِ صَلَاحًا وَأَوْسَطَهُ فَلَاحًا وَآخِرَهُ نَجَاحًا", source: "رواه ابن السني والطبراني — ضعيف الإسناد عند أهل الحديث؛ معناه مشروع لكن اللفظ غير ثابت"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ الْمَوْلَجِ وَخَيْرَ الْمَخْرَجِ", source: "رواه أبو داود"),
+        .init(text: "اللَّهُمَّ بَارِكْ لَنَا فِي مَسْكَنِنَا", source: "رواه الطبراني"),
+        .init(text: "اللَّهُمَّ فَرِّجْ هَمِّي وَاكْشِفْ غَمِّي وَأَجِبْ دَعْوَتِي", source: "رواه ابن ماجه"),
+        .init(text: "اللَّهُمَّ بَارِكْ لَنَا فِيمَا رَزَقْتَنَا وَقِنَا عَذَابَ النَّارِ", source: "رواه ابن السني (459) — ضعّفه النووي في الأذكار وجمهور المحدّثين"),
+        .init(text: "اللَّهُمَّ أَطْعِمْ مَنْ أَطْعَمَنِي وَاسْقِ مَنْ سَقَانِي", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ إِنَّا نَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ وَكَآبَةِ الْمُنْقَلَبِ", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ اطْوِ لَنَا الْأَرْضَ وَهَوِّنْ عَلَيْنَا السَّفَرَ", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ فِي مَسِيرِي هَذَا الْبِرَّ وَالتَّقْوَى", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَثْرَةِ السَّفَرِ وَالْحَوَادِثِ", source: "رواه الطبراني"),
+        .init(text: "اللَّهُمَّ اجْعَلْنِي مِنَ الَّذِينَ يَتُوبُونَ كَثِيرًا وَمِنَ الَّذِينَ يَتَطَهَّرُونَ", source: "زيادة على حديث الوضوء عند الترمذي، حسّنها ابن باز — أحمد شاكر أشار لاضطراب في إسنادها"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الصِّحَّةَ وَالْعِفَّةَ وَالْأَمَانَةَ وَحُسْنَ الْخُلُقِ وَالرِّضَا بِالْقَدَرِ", source: "رواه الطبراني"),
+        .init(text: "اللَّهُمَّ مَتِّعْنِي بِسَمْعِي وَبَصَرِي وَاجْعَلْهُمَا الْوَارِثَ مِنِّي", source: "رواه الترمذي"),
+        .init(text: "اللَّهُمَّ صَيِّبًا نَافِعًا", source: "رواه البخاري"),
+        .init(text: "رَبِّ اغْفِرْ لِي وَتُبْ عَلَيَّ إِنَّكَ أَنْتَ التَّوَّابُ الرَّحِيمُ", source: "رواه أبو داود والترمذي، وصححه الألباني"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِينِي وَدُنْيَايَ وَأَهْلِي وَمَالِي", source: "رواه أبو داود وابن ماجه وأحمد، وصححه الألباني"),
+        .init(text: "اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ اغْفِرْ لِي، وَارْحَمْنِي، وَاهْدِنِي، وَعَافِنِي، وَارْزُقْنِي", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ اجْعَلْهَا رِيَاحًا وَلَا تَجْعَلْهَا رِيحًا", source: "رواه الطبراني في المعجم الكبير وأبو يعلى في مسنده"),
+        .init(text: "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ النَّبِيِّ الْأُمِّيِّ", source: "رواه أبو داود — صحيح"),
+        .init(text: "اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ", source: "رواه أبو داود"),
+        .init(text: "اللَّهُمَّ بَارِكْ لَهُمْ فِيمَا رَزَقْتَهُمْ، وَاغْفِرْ لَهُمْ، وَارْحَمْهُمْ", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ", source: "رواه مسلم"),
+        .init(text: "اللَّهُمَّ أَطْعِمْ مَنْ أَطْعَمَنِي، وَاسْقِ مَنْ سَقَانِي", source: "رواه مسلم"),
+    ]
+}
+// END GENERATED: widget-local-content
+
+/// «آية أو دعاء»: آية قصيرة كاملة أو دعاء قصير كامل من محتوى التطبيق حرفيًا، تتناوبان كل ساعة بترتيب ثابت.
+struct QuranAyahWidget: Widget {
+    let kind = SunnahWidgetKind.quranAyah
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
-            SpotlightContentView(
-                title: "حديث اليوم",
-                text: entry.content?.hadithText,
-                source: entry.content?.hadithSource,
-                empty: "افتح سُنّة لعرض الحديث المعتمد"
-            )
-            .environment(\.layoutDirection, .rightToLeft)
-            .widgetURL(SunnahWidgetDeepLinkFactory.hadith())
+        StaticConfiguration(kind: kind, provider: HourlyAdhkarProvider()) { entry in
+            AyahOrDuaView(entry: entry)
+                .environment(\.layoutDirection, .rightToLeft)
+                .widgetURL(SunnahWidgetDeepLinkFactory.dua())
         }
-        .configurationDisplayName("حديث اليوم")
-        .description("حديث قصير مع ذكر المصدر.")
-        .supportedFamilies(SunnahWidgetFamilySupport.custom)
+        .configurationDisplayName("آية أو دعاء")
+        .description("آية أو دعاء قصير يتجدد كل ساعة.")
+        .supportedFamilies(SunnahWidgetFamilySupport.quran)
     }
 }
 
-struct DailyFaidahWidget: Widget {
-    let kind = SunnahWidgetKind.contentFaidah
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
-            SpotlightContentView(
-                title: "فائدة اليوم",
-                text: entry.content?.faidahText,
-                source: entry.content?.faidahSource,
-                empty: "افتح سُنّة لعرض الفائدة"
-            )
-            .environment(\.layoutDirection, .rightToLeft)
-            .widgetURL(SunnahWidgetDeepLinkFactory.fawaid())
+/// اختيار ثابت لا عشوائي: الساعات الزوجية آية، الفردية دعاء، والفهرس يتقدّم كل ساعتين.
+enum AyahOrDuaPick {
+    enum Kind { case ayah, dua }
+
+    static let smallMaxWords = 7
+
+    static func pick(at date: Date, timeZone: TimeZone, maxWords: Int?) -> (kind: Kind, item: WidgetLocalContent.Item)? {
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = timeZone
+        let hours = Int(floor(date.timeIntervalSince1970 / 3600)) + (timeZone.secondsFromGMT(for: date) / 3600)
+        let isAyah = hours % 2 == 0
+        func usable(_ items: [WidgetLocalContent.Item]) -> [WidgetLocalContent.Item] {
+            guard let maxWords else { return items }
+            return items.filter { WidgetTextBudget.wordCount($0.text) <= maxWords }
         }
-        .configurationDisplayName("فائدة اليوم")
-        .description("فائدة إسلامية موجزة من محتوى سُنّة.")
-        .supportedFamilies(SunnahWidgetFamilySupport.custom)
+        let pool = usable(isAyah ? WidgetLocalContent.ayahs : WidgetLocalContent.duas)
+        guard !pool.isEmpty else { return nil }
+        let index = ((hours / 2) % pool.count + pool.count) % pool.count
+        return (isAyah ? .ayah : .dua, pool[index])
     }
 }
 
-struct DailyDuaWidget: Widget {
-    let kind = SunnahWidgetKind.contentDua
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
-            SpotlightContentView(
-                title: "دعاء اليوم",
-                text: entry.content?.duaText,
-                source: entry.content?.duaSource,
-                empty: "افتح سُنّة لعرض الدعاء"
-            )
-            .environment(\.layoutDirection, .rightToLeft)
-            .widgetURL(SunnahWidgetDeepLinkFactory.dua())
-        }
-        .configurationDisplayName("دعاء اليوم")
-        .description("دعاء لليوم مع المصدر إن وُجد.")
-        .supportedFamilies(SunnahWidgetFamilySupport.custom)
-    }
-}
-
-struct SpotlightContentView: View {
+struct AyahOrDuaView: View {
     @Environment(\.widgetFamily) private var family
-    let title: String
-    let text: String?
-    let source: String?
-    let empty: String
+    let entry: CatalogWidgetEntry
 
-    /// حجم الخط وعدد الأسطر حسب مساحة الويدجت — حتى لا يُقطع النص الشرعي وسطه بلا تنبيه.
-    private var bodyFont: Font {
+    private var isSmall: Bool {
         switch family {
-        case .systemSmall: return .caption
-        case .systemLarge: return .title3
-        default: return .subheadline
+        case .systemSmall, .accessoryRectangular, .accessoryCircular, .accessoryInline: return true
+        default: return false
         }
     }
-    private var bodyLineLimit: Int {
-        switch family {
-        case .systemSmall: return 9
-        case .systemLarge: return 14
-        default: return 6
-        }
+
+    private var chosen: (kind: AyahOrDuaPick.Kind, item: WidgetLocalContent.Item)? {
+        AyahOrDuaPick.pick(
+            at: entry.date,
+            timeZone: HourlyAdhkarProvider.timeZone(for: entry),
+            maxWords: isSmall ? AyahOrDuaPick.smallMaxWords : nil
+        )
     }
-    /// عدد الأحرف التقريبي الذي يتسع كاملًا؛ ما فوقه يُعلَّم بأن التتمة في التطبيق.
-    private var fitsCharacters: Int {
+
+    private var sizes: [CGFloat] {
         switch family {
-        case .systemSmall: return 110
-        case .systemLarge: return 420
-        default: return 230
+        case .systemLarge, .systemExtraLarge: return [28, 25, 22, 19, 17, 15, 13]
+        case .systemMedium: return [24, 21, 19, 17, 15, 13]
+        case .accessoryRectangular: return [15, 14, 13, 12, 11]
+        default: return [20, 18, 16, 14, 13]
         }
     }
 
     var body: some View {
         Group {
-            if let text, !text.isEmpty, text != empty {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text(title)
-                        .font(.caption.bold())
-                        .foregroundStyle(SunnahBrandColors.gold)
-                        .widgetAccentable()
-                    Text(text)
-                        .font(bodyFont)
-                        .foregroundStyle(.white)
-                        .minimumScaleFactor(0.75)
-                        .lineLimit(bodyLineLimit)
-                    if text.count > fitsCharacters {
-                        Text("تتمة النص في التطبيق")
-                            .font(.caption2.bold())
-                            .foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
-                    }
-                    Spacer(minLength: 0)
-                    if let source, !source.isEmpty {
-                        Text(source)
-                            .font(.caption2)
-                            .foregroundStyle(SunnahWidgetTheme.secondaryText)
-                            .lineLimit(family == .systemSmall ? 2 : 3)
-                            .minimumScaleFactor(0.8)
-                    }
-                }
-                .padding(12)
+            if let c = chosen {
+                card(c.kind, c.item)
             } else {
-                SunnahWidgetEmptyState(message: empty)
+                SunnahCalmCard(symbol: "book", phrase: "آية أو دعاء")
             }
         }
-        .modifier(SpotlightSurface())
-        .accessibilityLabel("\(title). \(text ?? empty). \(source ?? "")")
+        .modifier(AyahOrDuaSurface())
+        .accessibilityLabel(chosen.map { "\($0.kind == .ayah ? "آية" : "دعاء"). \($0.item.text)" } ?? "آية أو دعاء")
+    }
+
+    @ViewBuilder
+    private func card(_ kind: AyahOrDuaPick.Kind, _ item: WidgetLocalContent.Item) -> some View {
+        let showSource = family == .systemMedium || family == .systemLarge || family == .systemExtraLarge
+        VStack(spacing: 6) {
+            Text(kind == .ayah ? "آية" : "دعاء")
+                .font(WidgetType.secondary(12))
+                .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
+            Spacer(minLength: 0)
+            ViewThatFits(in: .vertical) {
+                ForEach(sizes, id: \.self) { size in
+                    Text(item.text)
+                        .font(.system(size: size, weight: .semibold, design: .serif))
+                        .foregroundStyle(.primary)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity)
+                }
+            }
+            Spacer(minLength: 0)
+            if showSource, !item.source.isEmpty {
+                Text(item.source)
+                    .font(WidgetType.secondary(12))
+                    .foregroundStyle(SunnahWidgetTheme.secondaryText)
+                    .lineLimit(1)
+                    .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .sunnahCardLayout(family == .accessoryRectangular ? 0 : 12)
     }
 }
 
-private struct SpotlightSurface: ViewModifier {
+private struct AyahOrDuaSurface: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOSApplicationExtension 17.0, *) {
             content.containerBackground(for: .widget) { SunnahWidgetTheme.homeGradientDeep }

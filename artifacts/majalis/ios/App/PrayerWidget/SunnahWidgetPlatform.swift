@@ -7,30 +7,15 @@ enum SunnahWidgetFamilySupport {
     static let calendarHijri: [WidgetFamily] = [
         .systemSmall, .systemMedium, .accessoryInline, .accessoryRectangular, .accessoryCircular,
     ]
-    static let calendarDual: [WidgetFamily] = [
-        .systemSmall, .systemMedium, .accessoryInline, .accessoryRectangular,
-    ]
-    static let calendarToday: [WidgetFamily] = [.systemSmall, .systemMedium]
-    static let calendarRamadan: [WidgetFamily] = [.systemSmall, .systemMedium]
-    static let calendarEvent: [WidgetFamily] = [
-        .systemSmall, .systemMedium, .accessoryRectangular,
-    ]
+    static let calendarRamadan: [WidgetFamily] = [.systemSmall, .systemMedium, .accessoryRectangular]
     static let adhkar: [WidgetFamily] = [
         .systemSmall, .systemMedium, .accessoryInline, .accessoryRectangular,
     ]
     static let adhkarStreak: [WidgetFamily] = [
         .systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular,
     ]
-    static let custom: [WidgetFamily] = [.systemSmall, .systemMedium, .systemLarge]
-    static let quran: [WidgetFamily] = [.systemMedium, .systemLarge]
-    static let quranGoal: [WidgetFamily] = [
-        .systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular,
-    ]
+    static let quran: [WidgetFamily] = [.systemSmall, .systemMedium, .systemLarge, .accessoryRectangular]
     static let mushaf: [WidgetFamily] = [.systemSmall, .systemMedium]
-    static let mushafQuickOpen: [WidgetFamily] = [.systemSmall, .systemMedium, .systemLarge]
-    static let homeToday: [WidgetFamily] = [.systemMedium, .systemLarge]
-    static let homeActions: [WidgetFamily] = [.systemMedium, .systemLarge]
-    static let homeSpiritual: [WidgetFamily] = [.systemMedium, .systemLarge]
 }
 
 enum SunnahWidgetRegistry {
