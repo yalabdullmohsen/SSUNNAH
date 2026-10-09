@@ -71,4 +71,29 @@ final class GeneralNotificationPlannerTests: XCTestCase {
         XCTAssertNil(NotificationSoundPack.approvedName("adhan-short-makkah.caf"))
         XCTAssertNil(NotificationSoundPack.approvedName("prayer-alert.caf"))
     }
+
+    /// العنوان = الذكر، النص = «قال ﷺ: …» ≤160 (دون التشكيل)، بلا مصدر ولا راوٍ، ويشمل الصباح والمساء والدوري.
+    func testAdhkarNotificationsAreDhikrTitleAndFadlBody() {
+        var o = GeneralNotificationOptions(); o.periodicEnabled = true; o.periodicIntervalMinutes = 60; o.dailyCap = 50
+        let out = plan(o, capacity: 60).filter { $0.group == .adhkar || $0.group == .periodic }
+        XCTAssertFalse(out.isEmpty)
+        for n in out {
+            XCTAssertNotEqual(n.title, n.body)
+            XCTAssertTrue(n.body.hasPrefix("قال ﷺ: "), n.body)
+            XCTAssertTrue(AdhkarFadl.pairs.contains { $0.dhikr == n.title && $0.body == n.body }, n.id)
+        }
+        XCTAssertEqual(Set(out.filter { $0.id.hasSuffix(".morning") }.map(\.body)).count > 1, true)
+    }
+
+    func testAdhkarFadlPairsShape() {
+        XCTAssertGreaterThanOrEqual(AdhkarFadl.pairs.count, 12)
+        let marks = CharacterSet(charactersIn: "\u{064B}\u{064C}\u{064D}\u{064E}\u{064F}\u{0650}\u{0651}\u{0652}\u{0670}")
+        for p in AdhkarFadl.pairs {
+            XCTAssertNotEqual(p.dhikr, p.body)
+            XCTAssertTrue(p.body.hasPrefix("قال ﷺ: "))
+            let stripped = p.body.unicodeScalars.filter { !marks.contains($0) }.count
+            XCTAssertLessThanOrEqual(stripped, 160, p.id)
+            for w in ["رواه", "أخرجه", "البخاري", "مسلم", "حدثنا", "صحيح", "عن أبي"] { XCTAssertFalse(p.body.contains(w), "\(p.id) \(w)") }
+        }
+    }
 }

@@ -132,13 +132,16 @@ public enum GeneralNotificationPlanner {
         for day in days {
             let start = calendar.startOfDay(for: day.time(.fajr))
             var candidates: [PlannedGeneralNotification] = []
+            let dayIndex = Int(((start.timeIntervalSince1970 + Double(location.timeZone.secondsFromGMT(for: start))) / 86400).rounded(.down))
             if options.adhkarEnabled {
+                let morning = AdhkarFadl.pair(dayIndex: dayIndex, slot: 0)
+                let evening = AdhkarFadl.pair(dayIndex: dayIndex, slot: 1)
                 candidates.append(.init(id: "\(idPrefix)adhkar.\(day.dayKey).morning", group: .adhkar,
                                         fireDate: day.time(.fajr).addingTimeInterval(Double(options.morningAfterFajrMinutes) * 60),
-                                        title: "أذكار الصباح", body: "حصّن يومك بأذكار الصباح"))
+                                        title: morning.dhikr, body: morning.body))
                 candidates.append(.init(id: "\(idPrefix)adhkar.\(day.dayKey).evening", group: .adhkar,
                                         fireDate: day.time(.asr).addingTimeInterval(Double(options.eveningAfterAsrMinutes) * 60),
-                                        title: "أذكار المساء", body: "حصّن مساءك بأذكار المساء"))
+                                        title: evening.dhikr, body: evening.body))
             }
             if options.wirdEnabled {
                 candidates.append(.init(id: "\(idPrefix)wird.\(day.dayKey)", group: .wird,
@@ -149,9 +152,10 @@ public enum GeneralNotificationPlanner {
                 var m = options.quietEndMinute
                 var n = 0
                 while m < 24 * 60 {
+                    let pair = AdhkarFadl.pair(dayIndex: dayIndex, slot: 2 + n)
                     candidates.append(.init(id: "\(idPrefix)periodic.\(day.dayKey).\(n)", group: .periodic,
                                             fireDate: start.addingTimeInterval(Double(m) * 60),
-                                            title: "ذكر", body: "سبحان الله وبحمده، سبحان الله العظيم"))
+                                            title: pair.dhikr, body: pair.body))
                     m += options.periodicIntervalMinutes
                     n += 1
                 }
