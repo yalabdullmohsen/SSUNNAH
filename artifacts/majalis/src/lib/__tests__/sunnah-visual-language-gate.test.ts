@@ -28,7 +28,6 @@ for (const [key, rel] of Object.entries(files)) {
 const doc = read(files.doc);
 const css = read(files.css);
 const main = read(files.main);
-const ds = read(files.dsIndex);
 const motif = read(files.motif);
 const divider = read(files.divider);
 
@@ -83,9 +82,6 @@ assert.match(css, /border-inline-start-width:\s*1px\s*!important/);
 assert.doesNotMatch(css, /border-inline-start:\s*[34]px/);
 
 assert.match(main, /sunnah-visual-language\.css/);
-assert.match(ds, /GeometricMotif/);
-assert.match(ds, /GeometricDivider/);
-assert.match(ds, /IconMedallion/);
 
 assert.match(motif, /aria-hidden/);
 assert.match(divider, /aria-hidden/);

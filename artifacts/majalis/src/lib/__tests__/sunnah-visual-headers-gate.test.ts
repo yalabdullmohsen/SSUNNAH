@@ -31,7 +31,6 @@ const heroCss = read(files.heroCss);
 const pageHero = read(files.pageHero);
 const compact = read(files.compact);
 const ornament = read(files.ornament);
-const section = read(files.section);
 const ds = read(files.ds);
 const doc = read(files.doc);
 const cleanup = read(files.cleanup);
@@ -60,17 +59,10 @@ assert.match(css, /--svl-header-ornament-bg/);
 assert.doesNotMatch(heroCss, /border-inline-start:\s*[34]px\s+solid/);
 assert.match(heroCss, /border-inline-start-width:\s*1px/);
 
-assert.match(pageHero, /HeaderOrnament/);
-assert.match(pageHero, /GeometricMotif/);
 assert.match(pageHero, /svl-page-header/);
-assert.match(compact, /HeaderOrnament/);
 assert.match(compact, /SectionHeader/);
 assert.match(ornament, /aria-hidden/);
 assert.match(ornament, /svl-header-ornament/);
-assert.match(section, /SvlSectionHeader/);
-assert.match(section, /HeaderOrnament/);
-assert.match(ds, /HeaderOrnament/);
-assert.match(ds, /SvlSectionHeader/);
 assert.match(ds, /SectionHeader/);
 
 assert.match(cleanup, /\.page-hero-mj--bleed:not\(\.home-page-hero\)/);
@@ -84,7 +76,6 @@ assert.doesNotMatch(
 assert.match(shell, /--svl-space-m/, "هيرو الأقسام يستخدم مقياس المسافات");
 
 assert.match(doc, /PR-3/);
-assert.match(doc, /HeaderOrnament|رؤوس|طباعة/);
 assert.match(doc, /مقياس المسافات \(PR-4\)|--svl-space-xs/);
 assert.match(doc, /لا إعلان|SUNNAH_VISUAL_EXCELLENCE_COMPLETE/);
 

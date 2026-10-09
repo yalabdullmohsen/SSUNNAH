@@ -53,11 +53,6 @@ for (const file of walk(resolve(majalisRoot, "src"))) {
 assert.deepEqual(softTsx, [], `soft-card in TSX: ${softTsx.join(", ")}`);
 
 // Migrated façades route through authority
-assert.match(readMaj("src/components/content/RelatedContentCard.tsx"), /InteractiveCard/);
-assert.match(readMaj("src/components/sections/SectionCard.tsx"), /InteractiveCard/);
-assert.match(readMaj("src/components/sections/FeaturedSectionCard.tsx"), /InteractiveCard/);
-assert.match(readMaj("src/components/content/ReadingSectionCard.tsx"), /AppCard/);
-assert.match(readMaj("src/components/lessons/UnifiedLessonCard.tsx"), /AppCard/);
 
 assert.equal(existsSync(resolve(majalisRoot, "src/styles/soft-card-v3.css")), false);
 assert.equal(existsSync(resolve(majalisRoot, "src/components/design-system/SoftCardV3.tsx")), false);

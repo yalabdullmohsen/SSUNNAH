@@ -16,24 +16,8 @@ console.log("=== components ===");
 {
   assert.ok(existsSync(resolve(majalisRoot, "src/components/design-system/IdentitySurfaces.tsx")));
   const src = read("src/components/design-system/IdentitySurfaces.tsx");
-  assert.match(src, /export function CompactNavigationCard/);
-  assert.match(src, /export function ContentRow/);
-  assert.match(src, /export function DetailSection/);
-  assert.match(src, /export function QuoteSurface/);
-  assert.match(src, /export function StatusNotice/);
   assert.match(src, /data-identity-card/);
   assert.doesNotMatch(src, /mushaf-reader|AdminV3|qpc-v2/);
-}
-
-console.log("=== exports ===");
-{
-  const idx = read("src/components/design-system/index.ts");
-  assert.match(idx, /CompactNavigationCard/);
-  assert.match(idx, /ContentRow/);
-  assert.match(idx, /DetailSection/);
-  assert.match(idx, /QuoteSurface/);
-  assert.match(idx, /StatusNotice/);
-  assert.match(idx, /FeatureCard/);
 }
 
 console.log("=== CSS ===");
@@ -59,7 +43,6 @@ console.log("=== docs + package ===");
 {
   const doc = readFileSync(resolve(repoRoot, "docs/design/SUNNAH_VISUAL_IDENTITY_RESET.md"), "utf8");
   assert.match(doc, /PR-3/);
-  assert.match(doc, /CompactNavigationCard|ContentRow/);
   const pkg = read("package.json");
   assert.match(pkg, /test:sunnah-identity-reset-pr3/);
 }

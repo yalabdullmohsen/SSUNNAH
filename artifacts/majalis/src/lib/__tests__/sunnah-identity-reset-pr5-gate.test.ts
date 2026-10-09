@@ -18,7 +18,6 @@ console.log("=== sections page ===");
   assert.match(page, /MoreHubFromRegistry|SectionsHubFromRegistry/);
   /* عنوان واحد: رأس اللوبي (Large Title) — PageHeaderV2 كان يكرّره */
   assert.doesNotMatch(page, /PageHeaderV2/);
-  assert.match(page, /GridScreen|className="sn-screen"/);
   assert.match(page, /sunnah-identity-sections\.css/);
   assert.doesNotMatch(page, /MushafReader|VerifiedMushaf|qpc-v2|AdminV3/);
 }

@@ -43,3 +43,6 @@ Do **not** introduce new color / type / spacing / shadow / border **systems** wi
 
 Fails on: empty selectors · comments-only CSS · circular imports · dead-file return · micro-sheet explosion · new feature-local `:root` · new token family · defeated selector return · cssFiles ceiling raise above 353.
 
+
+## قاعدة الاختبارات المصدرية
+ممنوع اختبار مصدري يثبّت اسم مكوّن؛ تحقق من السلوك أو من العقد المشترك `no-source-pinned-component-names` (القائمة الوحيدة في `artifacts/majalis/scripts/ui-legacy-list.mjs`، تقرؤها ui-ratchet أيضًا).

@@ -14,7 +14,6 @@ const read = (p: string) => readFileSync(resolve(root, p), "utf8");
 const main = read("src/main.tsx");
 const canonical = read("src/styles/ssunnah-ds-canonical.css");
 const mur = read("src/styles/modern-ui-refresh.css");
-const index = read("src/components/design-system/index.ts");
 const pkg = read("package.json");
 const docs = read("docs/SSUNNAH_DS_ADOPTION.md");
 const lockdownDoc = read("docs/SSUNNAH_DESIGN_SYSTEM.md");
@@ -31,12 +30,9 @@ assert.ok(
   /Design System Adoption/.test(mur) || /Design System Adoption/.test(canonical),
   "طبقة التبني العالمي",
 );
-assert.match(index, /SettingsList/, "SettingsList مُصدَّر");
-assert.match(index, /ActionButton/, "ActionButton مُصدَّر");
 assert.match(pkg, /ssunnah-ds-governance-gate/, "البوابة مربوطة في package.json");
 assert.match(docs, /Canonical tokens|ssunnah-ds-canonical/, "توثيق الترحيل موجود");
 assert.match(lockdownDoc, /مستويات النظام|مستويات/, "توثيق المستويات المقفول موجود");
-assert.match(lockdownDoc, /SsText|ScreenTitle/, "توثيق مكوّنات النص");
 assert.match(lockdownDoc, /eslint-ds-legacy-allowlist/, "توثيق الـ allowlist");
 
 /** منع FloatingBackButton جديد في صفحات أساسية (الاستخدام الحالي عبر CSS مُخفَّف) */
