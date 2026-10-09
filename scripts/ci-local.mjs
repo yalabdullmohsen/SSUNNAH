@@ -43,7 +43,7 @@ const walk = (dir, re, out = []) => {
   }
   return out;
 };
-const needles = appFiles.filter((f) => /\.(tsx?|css|mjs|json)$/.test(f)).flatMap((f) => [f, basename(f).replace(/\.[^.]+$/, "")]).filter((n) => n.length >= 6);
+const needles = appFiles.filter((f) => f !== "package.json" && /\.(tsx?|css|mjs|json)$/.test(f)).flatMap((f) => [f, basename(f).replace(/\.[^.]+$/, "")]).filter((n) => n.length >= 6);
 const selected = new Set(["src/lib/__tests__/no-source-pinned-component-names.test.ts"]);
 for (const [dir, re] of testDirs) {
   for (const t of walk(dir, re)) {
