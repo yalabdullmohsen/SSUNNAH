@@ -6,12 +6,7 @@ struct MorningAdhkarWidget: Widget {
     let kind = SunnahWidgetKind.adhkarMorning
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
-            AdhkarCollectionView(
-                entry: entry,
-                title: entry.adhkar?.morningTitleAr ?? "أذكار الصباح",
-                action: entry.adhkar?.morningActionAr ?? "ابدأ ورد الصباح",
-                url: SunnahWidgetDeepLinkFactory.adhkar(collection: "morning")
-            )
+            AdhkarCollectionView(entry: entry, fixedCollection: "morning")
         }
         .configurationDisplayName("أذكار الصباح")
         .description("مدخل سريع لورد أذكار الصباح.")
@@ -23,12 +18,7 @@ struct EveningAdhkarWidget: Widget {
     let kind = SunnahWidgetKind.adhkarEvening
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
-            AdhkarCollectionView(
-                entry: entry,
-                title: entry.adhkar?.eveningTitleAr ?? "أذكار المساء",
-                action: entry.adhkar?.eveningActionAr ?? "ابدأ ورد المساء",
-                url: SunnahWidgetDeepLinkFactory.adhkar(collection: "evening")
-            )
+            AdhkarCollectionView(entry: entry, fixedCollection: "evening")
         }
         .configurationDisplayName("أذكار المساء")
         .description("مدخل سريع لورد أذكار المساء.")
@@ -51,11 +41,11 @@ struct TimeAwareAdhkarWidget: Widget {
 struct RotatingAdhkarWidget: Widget {
     let kind = SunnahWidgetKind.adhkarRotating
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
+        StaticConfiguration(kind: kind, provider: HourlyAdhkarProvider()) { entry in
             RotatingAdhkarView(entry: entry)
         }
         .configurationDisplayName("ذكر اليوم")
-        .description("ذكر قصير يتجدد مع اليوم لا مع كل دقيقة.")
+        .description("ذكر قصير يتجدد كل ساعة.")
         .supportedFamilies(SunnahWidgetFamilySupport.adhkar)
     }
 }
@@ -72,92 +62,216 @@ struct AdhkarStreakWidget: Widget {
     }
 }
 
+
+/// جدول ساعي: مدخل لكل بداية ساعة ⇒ يتغيّر الذكر في رأس الساعة دون فتح التطبيق.
+struct HourlyAdhkarProvider: TimelineProvider {
+    private let base = CatalogWidgetProvider()
+    static let horizonHours = 6
+
+    static func timeZone(for entry: CatalogWidgetEntry) -> TimeZone {
+        let id = entry.calendar?.timezoneIdentifier ?? entry.prayer.snapshot?.timeZoneIdentifier
+        return id.flatMap { TimeZone(identifier: $0) } ?? .current
+    }
+
+    func placeholder(in context: Context) -> CatalogWidgetEntry { base.placeholder(in: context) }
+
+    func getSnapshot(in context: Context, completion: @escaping (CatalogWidgetEntry) -> Void) {
+        base.getSnapshot(in: context, completion: completion)
+    }
+
+    func getTimeline(in context: Context, completion: @escaping (Timeline<CatalogWidgetEntry>) -> Void) {
+        let now = Date()
+        let first = CatalogWidgetEntry.live(now: now)
+        let tz = Self.timeZone(for: first)
+        let hours = AdhkarRotation.hourStarts(after: now, timeZone: tz, count: Self.horizonHours)
+        let entries = [first] + hours.map { CatalogWidgetEntry.live(now: $0) }
+        completion(Timeline(entries: entries, policy: .atEnd))
+    }
+}
+
 private struct AdhkarSurface: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOSApplicationExtension 17.0, *) {
-            content.containerBackground(for: .widget) { SunnahWidgetTheme.homeGradient }
+            content.containerBackground(for: .widget) { SunnahWidgetTheme.homeGradientDeep }
         } else {
-            content.background(SunnahWidgetTheme.homeGradient)
+            content.background(SunnahWidgetTheme.homeGradientDeep)
         }
     }
 }
 
+/// مدخل سريع لورد الوقت: أيقونة + عنوان قصير + حالة (✓ أو «ابدأ»)، يفتح الورد مباشرة بلا إعداد.
 struct AdhkarCollectionView: View {
+    @Environment(\.widgetFamily) private var family
     let entry: CatalogWidgetEntry
-    let title: String
-    let action: String
-    let url: URL
+    /// يُحدَّد تلقائيًا بالوقت عند nil (صباح/مساء/نوم/بعد الصلاة).
+    var fixedCollection: String?
+
+    private var collection: String { fixedCollection ?? entry.adhkar?.activeCollection ?? "morning" }
+
+    private var title: String {
+        let a = entry.adhkar
+        switch collection {
+        case "morning": return a?.morningTitleAr ?? "أذكار الصباح"
+        case "evening": return a?.eveningTitleAr ?? "أذكار المساء"
+        case "sleep": return "أذكار النوم"
+        case "after-salah": return "أذكار بعد الصلاة"
+        default: return a?.activeTitleAr ?? "الأذكار"
+        }
+    }
+
+    private var symbol: String {
+        switch collection {
+        case "morning": return "sun.max.fill"
+        case "evening": return "sunset.fill"
+        case "sleep": return "moon.zzz.fill"
+        default: return "hands.sparkles.fill"
+        }
+    }
+
+    /// الإكمال معلوم للصباح والمساء فقط (من التقدّم المعتمد)؛ غيرهما «ابدأ».
+    private var isDone: Bool {
+        guard let p = entry.progress, p.hasCanonicalTracking else { return false }
+        switch collection {
+        case "morning": return p.morningAdhkarDone
+        case "evening": return p.eveningAdhkarDone
+        default: return false
+        }
+    }
+
+    private var status: String { isDone ? "تم" : "ابدأ" }
+    private var statusSymbol: String { isDone ? "checkmark.circle.fill" : "arrow.left.circle" }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(title)
-                .font(.headline.bold())
-                .foregroundStyle(.white)
-            Text(action)
-                .font(.subheadline)
-                .foregroundStyle(SunnahBrandColors.gold)
-                .widgetAccentable()
-            Spacer(minLength: 0)
+        content
+            .modifier(AdhkarSurface())
+            .widgetURL(SunnahWidgetDeepLinkFactory.adhkar(collection: collection))
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("\(title). \(status)")
+            .environment(\.layoutDirection, .rightToLeft)
+    }
+
+    @ViewBuilder
+    private var content: some View {
+        switch family {
+        case .accessoryInline:
+            Text("\(title) · \(status)")
+                .lineLimit(1)
+                .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+        case .accessoryRectangular:
+            HStack(spacing: 8) {
+                Image(systemName: symbol)
+                    .font(WidgetType.icon(20))
+                    .widgetAccentable()
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(title)
+                        .font(WidgetType.primary(14))
+                        .lineLimit(1)
+                        .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                    Text(status)
+                        .font(WidgetType.secondary(12))
+                        .lineLimit(1)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        default:
+            SunnahTwoZone {
+                VStack(alignment: .leading, spacing: 6) {
+                    Image(systemName: symbol)
+                        .font(WidgetType.icon(family == .systemSmall ? 28 : 32))
+                        .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
+                    Text(title)
+                        .font(WidgetType.primary(family == .systemSmall ? 17 : 20))
+                        .foregroundStyle(.white)
+                        .lineLimit(1)
+                        .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                }
+            } secondary: {
+                VStack(spacing: 4) {
+                    Image(systemName: statusSymbol)
+                        .font(WidgetType.icon(22))
+                        .foregroundStyle(isDone ? SunnahBrandColors.gold : Color.white.opacity(0.8))
+                        .widgetAccentable(isDone)
+                    Text(status)
+                        .font(WidgetType.secondary(13))
+                        .foregroundStyle(.white)
+                        .lineLimit(1)
+                        .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                }
+            }
+            .sunnahCardLayout(14)
         }
-        .padding(12)
-        .modifier(AdhkarSurface())
-        .environment(\.layoutDirection, .rightToLeft)
-        .widgetURL(url)
-        .accessibilityLabel("\(title). \(action)")
     }
 }
 
+/// الأذكار المعروضة تلقائيًا بالوقت: نفس المدخل السريع بلا اختيار يدوي.
 struct TimeAwareAdhkarView: View {
     let entry: CatalogWidgetEntry
-
-    var body: some View {
-        let collection = entry.adhkar?.activeCollection ?? "morning"
-        let title = entry.adhkar?.activeTitleAr ?? "أذكار الصباح"
-        VStack(alignment: .leading, spacing: 8) {
-            Text("أذكار الوقت")
-                .font(.caption.bold())
-                .foregroundStyle(SunnahBrandColors.gold)
-                .widgetAccentable()
-            Text(title)
-                .font(.title3.bold())
-                .foregroundStyle(.white)
-            Text("من أذكار سُنّة")
-                .font(.caption)
-                .foregroundStyle(SunnahWidgetTheme.secondaryText)
-        }
-        .padding(12)
-        .modifier(AdhkarSurface())
-        .environment(\.layoutDirection, .rightToLeft)
-        .widgetURL(SunnahWidgetDeepLinkFactory.adhkar(collection: collection))
-        .accessibilityLabel(title)
-    }
+    var body: some View { AdhkarCollectionView(entry: entry) }
 }
 
+/// ذكر الساعة: ≤6 كلمات من أذكار معتمدة حرفيًا، وعنوان صغير فقط.
 struct RotatingAdhkarView: View {
+    @Environment(\.widgetFamily) private var family
     let entry: CatalogWidgetEntry
 
+    private var dhikr: String? {
+        guard let a = entry.adhkar else { return nil }
+        return AdhkarRotation.pick(
+            from: a.rotatingPool ?? [a.rotatingText],
+            at: entry.date,
+            timeZone: HourlyAdhkarProvider.timeZone(for: entry)
+        )
+    }
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(entry.adhkar?.rotatingCollection ?? "ذكر")
-                .font(.caption.bold())
-                .foregroundStyle(SunnahBrandColors.gold)
-                .widgetAccentable()
-            Text(entry.adhkar?.rotatingText ?? "افتح سُنّة لعرض الذكر")
-                .font(.headline)
-                .foregroundStyle(.white)
-                .minimumScaleFactor(0.7)
-                .lineLimit(4)
-            if let source = entry.adhkar?.rotatingSource {
-                Text(source)
-                    .font(.caption2)
-                    .foregroundStyle(SunnahWidgetTheme.tertiaryText)
+        Group {
+            if let dhikr {
+                filled(dhikr)
+            } else {
+                SunnahCalmCard(symbol: "sparkles", phrase: "افتح سُنّة", compact: family == .accessoryRectangular)
             }
         }
-        .padding(12)
         .modifier(AdhkarSurface())
-        .environment(\.layoutDirection, .rightToLeft)
         .widgetURL(SunnahWidgetDeepLinkFactory.adhkar(collection: entry.adhkar?.activeCollection ?? "morning"))
-        .accessibilityLabel(entry.adhkar?.rotatingText ?? "ذكر")
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(dhikr.map { "ذكر. \($0)" } ?? "افتح سُنّة")
+        .environment(\.layoutDirection, .rightToLeft)
+    }
+
+    @ViewBuilder
+    private func filled(_ dhikr: String) -> some View {
+        switch family {
+        case .accessoryInline:
+            Text(dhikr)
+                .lineLimit(1)
+                .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+        case .accessoryRectangular:
+            VStack(alignment: .leading, spacing: 2) {
+                Text("ذكر")
+                    .font(WidgetType.secondary(11))
+                    .widgetAccentable()
+                Text(dhikr)
+                    .font(WidgetType.primary(15))
+                    .lineLimit(2)
+                    .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        default:
+            VStack(alignment: .leading, spacing: 8) {
+                Text("ذكر")
+                    .font(WidgetType.secondary(12))
+                    .foregroundStyle(SunnahBrandColors.gold)
+                    .widgetAccentable()
+                Text(dhikr)
+                    .font(WidgetType.primary(family == .systemSmall ? 18 : 24))
+                    .foregroundStyle(.white)
+                    .lineLimit(3)
+                    .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+            }
+            .sunnahCardLayout(14)
+        }
     }
 }
 

@@ -44,6 +44,7 @@ enum SunnahWidgetPreviewFixtures {
         eveningActionAr: "ابدأ ورد المساء",
         rotatingText: "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
         rotatingSource: "رواه مسلم",
+        rotatingPool: ["سُبْحَانَ اللَّهِ وَبِحَمْدِهِ", "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ", "حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ", "أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ"],
         rotatingCollection: "أذكار الصباح",
         rotationDayKey: "preview",
         todayCompleted: true,

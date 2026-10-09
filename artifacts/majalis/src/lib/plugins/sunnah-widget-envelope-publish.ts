@@ -12,6 +12,7 @@ import {
 } from "@/lib/daily-content";
 import { formatHadithAttribution, getWidgetDailyAyah, getWidgetDailyHadith } from "@/lib/widget-daily-pool";
 import { DAILY_TICKER_DHIKR } from "@/lib/daily-ticker-dhikr";
+import { ADHKAR_ITEMS } from "@/lib/adhkar-seed";
 import { resolveTimeOfDay } from "@/lib/daily-context";
 import { getTodayProgress } from "@/lib/daily-progress";
 import { loadLastPageSync, TOTAL_QURAN_PAGES } from "@/lib/quran-last-page";
@@ -171,6 +172,26 @@ function safeStreakDays(): number | null {
   }
 }
 
+/** أصناف تصلح لأي ساعة (لا طعام/نوم/سفر/وضوء/مطر/دخول بيت/كرب). */
+const HOURLY_DHIKR_CATEGORIES = new Set(["adh-morning", "adh-after-salah", "adh-istighfar", "adh-misc"]);
+/** عناصر ليست ذكرًا قائمًا بذاته (إحالة لآية، دعاء زيارة المريض، ذكر الركوع/السجود). */
+const HOURLY_DHIKR_EXCLUDED_IDS = new Set(["adh-68", "adh-105", "adh-184"]);
+
+/** أذكار قصيرة (≤6 كلمات) من المجموعة المعتمدة حرفيًا، بلا آيات (للآية ودجت مستقل). */
+export function buildHourlyDhikrPool(): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const item of ADHKAR_ITEMS) {
+    const text = item.text.trim();
+    if (!HOURLY_DHIKR_CATEGORIES.has(item.categoryId) || HOURLY_DHIKR_EXCLUDED_IDS.has(item.id)) continue;
+    if (/^سورة/.test(item.source ?? "")) continue;
+    if (text.split(/\s+/).length > 6 || seen.has(text)) continue;
+    seen.add(text);
+    out.push(text);
+  }
+  return out;
+}
+
 export function buildSunnahWidgetEnvelope(
   now: Date = new Date(),
   prayerPayload?: ReturnType<typeof buildSharedPrayerSnapshotPayload> | null,
@@ -296,6 +317,7 @@ export function buildSunnahWidgetEnvelope(
       eveningActionAr: "ابدأ ورد المساء",
       rotatingText: dhikr.text,
       rotatingSource: dhikr.source,
+      rotatingPool: buildHourlyDhikrPool(),
       rotatingCollection: dhikr.category,
       rotationDayKey: dateISOInZone(tz, now),
       timeWindows: ["morning", "evening", "sleep", "after-salah"],
