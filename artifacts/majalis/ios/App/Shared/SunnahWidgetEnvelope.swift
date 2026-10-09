@@ -75,6 +75,8 @@ struct SharedAdhkarPayload: Codable, Hashable {
     var eveningActionAr: String
     var rotatingText: String
     var rotatingSource: String?
+    /// أذكار قصيرة معتمدة (≤6 كلمات) يختار الودجت منها ذكر الساعة؛ اختياري للتوافق مع الإصدارات السابقة.
+    var rotatingPool: [String]?
     var rotatingCollection: String?
     var rotationDayKey: String
     var todayCompleted: Bool?
