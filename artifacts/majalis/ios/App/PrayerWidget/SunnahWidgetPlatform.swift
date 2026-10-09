@@ -3,24 +3,7 @@ import SunnahWidgetKit
 import WidgetKit
 
 enum SunnahWidgetFamilySupport {
-    static let prayerCurrent: [WidgetFamily] = [
-        .systemSmall, .systemMedium, .accessoryRectangular,
-    ]
-    static let prayerNext: [WidgetFamily] = [
-        .systemSmall, .systemMedium, .systemLarge, .accessoryInline, .accessoryCircular, .accessoryRectangular,
-    ]
-    static let prayerPrevious: [WidgetFamily] = [
-        .systemSmall, .systemMedium, .accessoryInline, .accessoryRectangular,
-    ]
-    static let prayerPreviousNext: [WidgetFamily] = [
-        .systemMedium, .systemLarge, .accessoryRectangular,
-    ]
-    static let prayerMorning: [WidgetFamily] = [.systemSmall, .systemMedium]
-    static let prayerEvening: [WidgetFamily] = [.systemSmall, .systemMedium]
     static let prayerAll: [WidgetFamily] = [.systemLarge]
-    static let prayerHijri: [WidgetFamily] = [
-        .systemSmall, .systemMedium, .accessoryRectangular,
-    ]
     static let calendarHijri: [WidgetFamily] = [
         .systemSmall, .systemMedium, .accessoryInline, .accessoryRectangular, .accessoryCircular,
     ]

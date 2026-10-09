@@ -5,14 +5,7 @@ import SwiftUI
 struct PrayerWidgetBundle: WidgetBundle {
     var body: some Widget {
         PrayerTimesWidget()
-        CurrentPrayerWidget()
-        NextPrayerWidget()
-        PreviousPrayerWidget()
-        PreviousNextPrayerWidget()
-        MorningPrayerWidget()
-        EveningPrayerWidget()
         AllPrayerTimesWidget()
-        PrayerHijriWidget()
         HijriDateWidget()
         DualDateWidget()
         TodayDateWidget()

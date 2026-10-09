@@ -15,14 +15,7 @@ enum SunnahAppGroup {
 /// WidgetKit kind strings — must match JS `SUNNAH_PRAYER_WIDGET_KIND` and catalog kinds.
 enum SunnahWidgetKind {
     static let prayerTimes = "PrayerTimesWidget"
-    static let prayerCurrent = "sunnah.widget.prayer.current"
-    static let prayerNext = "sunnah.widget.prayer.next"
-    static let prayerPrevious = "sunnah.widget.prayer.previous"
-    static let prayerPreviousNext = "sunnah.widget.prayer.previous-next"
-    static let prayerMorning = "sunnah.widget.prayer.morning"
-    static let prayerEvening = "sunnah.widget.prayer.evening"
     static let prayerAll = "sunnah.widget.prayer.all"
-    static let prayerHijri = "sunnah.widget.prayer.hijri"
     static let calendarHijri = "sunnah.widget.calendar.hijri"
     static let calendarDual = "sunnah.widget.calendar.dual"
     static let calendarToday = "sunnah.widget.calendar.today"
@@ -48,8 +41,7 @@ enum SunnahWidgetKind {
     static let homeSpiritual = "sunnah.widget.home.spiritual"
 
     static let prayerFamily: [String] = [
-        prayerTimes, prayerCurrent, prayerNext, prayerPrevious, prayerPreviousNext,
-        prayerMorning, prayerEvening, prayerAll, prayerHijri,
+        prayerTimes, prayerAll,
     ]
     static let calendarFamily: [String] = [
         calendarHijri, calendarDual, calendarToday, calendarRamadan, calendarEvent,

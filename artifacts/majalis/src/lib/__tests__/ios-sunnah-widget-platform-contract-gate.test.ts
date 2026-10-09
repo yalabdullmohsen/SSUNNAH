@@ -63,20 +63,13 @@ assert.ok(!existsSync(resolve(iosApp, "SunnahWatch")));
 assert.match(pbx, /PRODUCT_BUNDLE_IDENTIFIER = com\.yousef\.majlisilm\.PrayerWidget/);
 assert.match(bundle, /@main/);
 assert.match(bundle, /PrayerTimesWidget\(\)/);
-assert.match(bundle, /CurrentPrayerWidget\(\)/);
+assert.match(bundle, /AllPrayerTimesWidget\(\)/);
 assert.match(bundle, /TodayInSunnahWidget\(\)/);
 assert.match(bundle, /DailyHadithWidget\(\)/);
 
 const kinds = [
   "PrayerTimesWidget",
-  "sunnah.widget.prayer.current",
-  "sunnah.widget.prayer.next",
-  "sunnah.widget.prayer.previous",
-  "sunnah.widget.prayer.previous-next",
-  "sunnah.widget.prayer.morning",
-  "sunnah.widget.prayer.evening",
   "sunnah.widget.prayer.all",
-  "sunnah.widget.prayer.hijri",
   "sunnah.widget.calendar.hijri",
   "sunnah.widget.calendar.dual",
   "sunnah.widget.calendar.today",
@@ -164,8 +157,7 @@ assert.match(platform, /SunnahWidgetFamilySupport/);
 assert.match(platform, /SunnahWidgetEmptyState/);
 assert.match(platform, /SunnahWidgetErrorState/);
 
-assert.match(prayerCat, /CurrentPrayerWidget|prayerCurrent/);
-assert.match(prayerCat, /StandByCurrentPrayerView|StandByPrayerCountdownView/);
+assert.match(prayerCat, /AllPrayerTimesWidget|prayerAll/);
 assert.match(calCat, /IslamicEventWidget|calendarEvent/);
 assert.match(adhCat, /AdhkarStreakWidget/);
 assert.match(quranCat, /QuranDailyGoalWidget|MushafQuickOpenWidget/);
