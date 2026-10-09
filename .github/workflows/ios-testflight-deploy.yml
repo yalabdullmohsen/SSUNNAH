@@ -87,6 +87,21 @@ jobs:
         with:
           fetch-depth: 0
 
+      # يفشل فورًا قبل أي إعداد إن غابت شهادة التوقيع الثابتة: لا رجوع للتوقيع
+      # التلقائي الذي يُنشئ شهادة جديدة على كل مشغّل نظيف.
+      - name: Require fixed signing certificate secrets
+        env:
+          IOS_SIGNING_P12_BASE64: ${{ secrets.IOS_SIGNING_P12_BASE64 }}
+          IOS_SIGNING_P12_PASSWORD: ${{ secrets.IOS_SIGNING_P12_PASSWORD }}
+        run: |
+          missing=""
+          [ -n "${IOS_SIGNING_P12_BASE64:-}" ] || missing="$missing IOS_SIGNING_P12_BASE64"
+          [ -n "${IOS_SIGNING_P12_PASSWORD:-}" ] || missing="$missing IOS_SIGNING_P12_PASSWORD"
+          if [ -n "$missing" ]; then
+            echo "::error::أسرار شهادة التوقيع الثابتة ناقصة:$missing — أضفها في GitHub Secrets. لن يُنشأ أي شهادة جديدة ولن يُستخدم المسار القديم."
+            exit 1
+          fi
+
       - name: Select Xcode
         run: |
           set -euo pipefail
@@ -171,9 +186,6 @@ jobs:
           set -euo pipefail
           # شهادة ثابتة (Apple Distribution + Apple Development) من الأسرار: التوقيع التلقائي يعيد استخدامها
           # بدل إنشاء شهادة جديدة على كل مشغّل نظيف (سبب بلوغ حدّ الشهادات).
-          if [ -z "${IOS_SIGNING_P12_BASE64:-}" ]; then
-            echo "::warning::IOS_SIGNING_P12_BASE64 غير مضبوط — سيُنشئ التوقيع التلقائي شهادة جديدة لهذا التشغيل"; exit 0
-          fi
           KC="$RUNNER_TEMP/signing.keychain-db"
           KC_PASS="$(openssl rand -hex 16)"
           P12="$RUNNER_TEMP/signing.p12"
@@ -185,7 +197,15 @@ jobs:
           security set-key-partition-list -S apple-tool:,apple: -k "$KC_PASS" "$KC" >/dev/null
           security list-keychains -d user -s "$KC" $(security list-keychains -d user | tr -d '"')
           rm -f "$P12"
-          security find-identity -v -p codesigning "$KC"
+          ids="$(security find-identity -v -p codesigning "$KC")"
+          echo "$ids"
+          # التوقيع التلقائي يؤرشف بهوية Development ويصدّر بـDistribution؛ غياب أيّهما يجعله يُنشئ شهادة جديدة.
+          for kind in "Apple Distribution" "Apple Development"; do
+            if ! grep -q "$kind" <<<"$ids"; then
+              echo "::error::ملف .p12 في IOS_SIGNING_P12_BASE64 لا يحوي هوية «$kind» — صدّر الشهادتين معًا. لن يُنشأ أي شهادة جديدة."
+              exit 1
+            fi
+          done
 
       - name: Run Fastlane beta
         env:
