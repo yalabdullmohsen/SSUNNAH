@@ -3,8 +3,7 @@ import { applyPageSeo } from "@/lib/seo";
 import { SectionLobby } from "@/components/lobby/SectionLobby";
 import { QuranOpenMushafCard } from "@/components/quran/QuranOpenMushafCard";
 import { getLobby } from "@/config/section-lobbies";
-import { EmptyStateV2 } from "@/components/design-system";
-import { NavigationBar } from "@/design-system";
+import { ButtonLink, EmptyState, NavigationBar } from "@/design-system";
 import "@/components/sections/section-cards.css";
 import "@/styles/pages/quran-hub-v2.css";
 import "@/styles/sunnah-identity-home-hub.css";
@@ -41,11 +40,10 @@ export default function QuranHubPage() {
           groups={lobby.groups}
         />
       ) : (
-        <EmptyStateV2
+        <EmptyState
           title="مركز القرآن غير متاح مؤقتًا"
           description="تعذّر تجهيز أقسام المركز من السجل المحلي."
-          href="/"
-          ctaLabel="الرئيسية"
+          action={<ButtonLink href="/" variant="secondary">الرئيسية</ButtonLink>}
         />
       )}
     </div>

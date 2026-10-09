@@ -31,8 +31,7 @@ import { normalizeArabic } from "@/shared/arabic-normalize";
 import { scoreTolerantMatch } from "@/features/search/tolerant-match";
 import "@/components/sections/section-cards.css";
 import "@/styles/pages/quran-numbers.css";
-import { NavigationBar, SearchField } from "@/design-system";
-import { NoResultsState } from "@/components/design-system";
+import { Button as SnButton, EmptyState, NavigationBar, SearchField } from "@/design-system";
 import { SegmentedFilter } from "@/components/filters/SegmentedFilter";
 import { Button } from "@/components/ui/button";
 
@@ -210,15 +209,22 @@ export default function QuranNumbersPage() {
       </div>
 
       {filtered.length === 0 ? (
-        <NoResultsState
-          className="sections-hub__empty"
+        <EmptyState
+          icon="search"
           title={EMPTY.search}
           description="جرّب كلمات أخرى أو امسح محور الإحصاءات والتصنيف."
-          onClear={() => {
-            setQuery("");
-            setTheme("all");
-            setGroup("all");
-          }}
+          action={
+            <SnButton
+              variant="secondary"
+              onClick={() => {
+                setQuery("");
+                setTheme("all");
+                setGroup("all");
+              }}
+            >
+              مسح التصفية
+            </SnButton>
+          }
         />
       ) : null}
 

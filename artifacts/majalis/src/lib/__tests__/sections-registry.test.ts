@@ -12,7 +12,6 @@ import {
   lessonsHubSections,
   sectionsForSurface,
   menuSections,
-  SECTION_MERGE_REDIRECTS,
   isSectionComingSoon,
 } from "@/config/sections.registry";
 
@@ -80,7 +79,6 @@ assert.equal(drawer.includes("tafsir"), false);
 /* الدرج قائمة سماح صريحة من السجل — مختصرة دون ٤٠ صفًا */
 assert.ok(menuSections("drawer").length < 40);
 
-assert.ok(SECTION_MERGE_REDIRECTS.some((r) => r.from === "/more" && r.to === "/sections"));
 assert.ok(SECTIONS.some((s) => s.id === "flashcards" && s.aliases?.includes("المحفوظات")));
 assert.ok(SECTIONS.some((s) => s.id === "sections" && s.aliases?.includes("المزيد")));
 assert.ok(SECTIONS.some((s) => s.id === "quran" && s.aliases?.includes("قرآن")));

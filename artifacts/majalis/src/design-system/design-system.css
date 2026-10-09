@@ -771,7 +771,7 @@ html:root body :is(
 /* ═══ SegmentedTabs — تبويبات أفقية قابلة للتمرير ═══ */
 .sn-seg-tabs { display: flex; gap: var(--sn-s2); overflow-x: auto; padding-block: var(--sn-s1); scrollbar-width: none; scroll-snap-type: x proximity; }
 .sn-seg-tabs__item {
-  flex: none; scroll-snap-align: start; min-height: var(--sn-touch); padding-inline: var(--sn-s4);
+  display: inline-flex; align-items: center; gap: var(--sn-s2); flex: none; scroll-snap-align: start; min-height: var(--sn-touch); padding-inline: var(--sn-s4);
   border: 0; border-radius: var(--sn-r-pill); background: var(--sn-surface-2); color: var(--sn-text-secondary);
   font: var(--sn-fw-semibold) var(--sn-type-secondary) / 1.25 var(--font-ui); white-space: nowrap; cursor: pointer;
 }
