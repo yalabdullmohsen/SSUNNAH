@@ -1,0 +1,209 @@
+{
+ "_doc": "سجل البوابات المستقلة في scripts/ — fast تعمل في كل PR عبر test:registered-gates؛ heavy ليلية/عند الطلب؛ knownBroken سقف لا يزيد؛ excluded تحتاج بيئة/إنتاج. أي سكربت test|verify|check جديد يجب تسجيله هنا أو ربطه في package.json (يفرضه scripts/test-gates-all-registered.mjs).",
+ "fast": [
+  "check-editorial-safety.js",
+  "check-performance-budget.mjs",
+  "check-swift-tokens.mjs",
+  "test-adhan-ios-bundle-sounds.mjs",
+  "test-assistant-suggested.mjs",
+  "test-auto-content-dry-run.mjs",
+  "test-brand-identity-gate.mjs",
+  "test-bundle-budget.mjs",
+  "test-consecutive-deploys.mjs",
+  "test-content-audit-round2-guard.mjs",
+  "test-content-counts.mjs",
+  "test-content-governance.mjs",
+  "test-content-import-e2e.mjs",
+  "test-content-import-engine.mjs",
+  "test-critical-css-budget.mjs",
+  "test-cron-auth.mjs",
+  "test-gates-all-registered.mjs",
+  "test-hadith-takhrij-guard.mjs",
+  "test-identity.mjs",
+  "test-kuwait-instagram-sources.mjs",
+  "test-lesson-card-posters.mjs",
+  "test-lesson-url-import.mjs",
+  "test-library-integrity.mjs",
+  "test-majlisilm-audit.mjs",
+  "test-no-fake-counts.mjs",
+  "test-no-legacy-flash.mjs",
+  "test-no-regressions.mjs",
+  "test-no-ui-emoji-guard.mjs",
+  "test-quran-integrity-guard.mjs",
+  "test-quran-quotes-guard.mjs",
+  "test-router-same-origin.mjs",
+  "test-safe-reload.mjs",
+  "test-sheikhs-dedup.mjs",
+  "test-sins-rights-filler-guard.mjs",
+  "test-sm2.mjs",
+  "test-ui-view-filler-guard.mjs",
+  "verify-adhan-caf-durations.mjs",
+  "verify-brand-green-hex.mjs",
+  "verify-content-import-vercel.mjs",
+  "verify-deploy-cache-versioning.mjs",
+  "verify-deploy-output.mjs",
+  "verify-fiqh-content.mjs",
+  "verify-hadith-grades-gate.mjs",
+  "verify-hadith-integrity-gate.mjs",
+  "verify-hadith-sahihayn.mjs",
+  "verify-import-jobs-integrity.mjs",
+  "verify-instagram-phase7.mjs",
+  "verify-ios-edge-gate.mjs",
+  "verify-lesson-automation.mjs",
+  "verify-lesson-image-import.mjs",
+  "verify-lesson-intelligence.mjs",
+  "verify-lesson-url-import.mjs",
+  "verify-majlis-knowledge-engine.mjs",
+  "verify-meta-consistency-gate.mjs",
+  "verify-no-infinite-loading.mjs",
+  "verify-no-legacy-brand-html.mjs",
+  "verify-no-secret-leak.mjs",
+  "verify-owner-env.mjs",
+  "verify-phase5-automation.mjs",
+  "verify-protected-quran-byte-lock.mjs",
+  "verify-quran-pages-manifest.mjs",
+  "verify-quran.mjs",
+  "verify-reading-ux.mjs",
+  "verify-rulings-encyclopedia.mjs",
+  "verify-seo-prerender-coverage.mjs",
+  "verify-spacing-gate.mjs",
+  "verify-visual-reading-quality.mjs"
+ ],
+ "heavy": [
+  "test-content-import-async.mjs",
+  "verify-autonomous-platform.mjs",
+  "verify-features.mjs"
+ ],
+ "knownBroken": [
+  {
+   "script": "check-copy-quality.js",
+   "reason": "فشل على main:    src/views/CardsPage.tsx:224 — زر طويل (86 حرف): «ss-action-btn ss-action-btn-"
+  },
+  {
+   "script": "check-pwa.js",
+   "reason": "فشل على main: ❌ check-pwa فشل:      dist/sw-version.js مفقود — شغّل build"
+  },
+  {
+   "script": "check-seo-quality.js",
+   "reason": "فشل على main:    /tawhid: prerender مفقود (/Users/alabdullmohsen/wt-widget-pra/artifacts/majal"
+  },
+  {
+   "script": "check-sources-and-licenses.js",
+   "reason": "فشل على main: }   Node.js v24.18.0"
+  },
+  {
+   "script": "test-dynamic-404-safety.mjs",
+   "reason": "فشل على main: }   Node.js v24.18.0"
+  },
+  {
+   "script": "test-fiqh-issue-filler-guard.mjs",
+   "reason": "فشل على main: }   Node.js v24.18.0"
+  },
+  {
+   "script": "test-fiqh-timeline-provenance-guard.mjs",
+   "reason": "فشل على main: }   Node.js v24.18.0"
+  },
+  {
+   "script": "test-more-hub-contrast-gate.mjs",
+   "reason": "فشل على main:   name: 'TimeoutError'   }"
+  },
+  {
+   "script": "test-nations-integrity.mjs",
+   "reason": "فشل على main: }   Node.js v24.18.0"
+  },
+  {
+   "script": "test-prerender-output.mjs",
+   "reason": "فشل على main: }   Node.js v24.18.0"
+  },
+  {
+   "script": "test-quiz-quran-citations-guard.mjs",
+   "reason": "فشل على main: ✗ seed-qa-627: لا يقع شيءٌ من اقتباسات الصفِّ في مرجعِه «سورة الطلاق: 6»   \u001b[31m"
+  },
+  {
+   "script": "test-seo-html.mjs",
+   "reason": "فشل على main: ────────────────────────────────────────   النتائج: 12 نجح، 3 فشل"
+  },
+  {
+   "script": "test-stability-3x.mjs",
+   "reason": "فشل على main: }   ⚠️ Stability test completed with warnings"
+  },
+  {
+   "script": "test-sw-cache-version.mjs",
+   "reason": "فشل على main:   diff: 'simple'   }"
+  },
+  {
+   "script": "verify-citations.mjs",
+   "reason": "فشل على main: }   Node.js v24.18.0"
+  },
+  {
+   "script": "verify-color-contrast-gate.mjs",
+   "reason": "timeout"
+  },
+  {
+   "script": "verify-feature-health.mjs",
+   "reason": "فشل على main: ✗ error log roundtrip — lookup failed   Summary: 1 failed"
+  },
+  {
+   "script": "verify-fsd-layers.mjs",
+   "reason": "فشل على main:  - entities/book/api.ts: entities must not import features (\"@/features/search/t"
+  },
+  {
+   "script": "verify-json-schemas.mjs",
+   "reason": "فشل على main:   url: 'file:///Users/alabdullmohsen/wt-widget-pra/artifacts/majalis/src/shared/"
+  },
+  {
+   "script": "verify-knowledge-graph.mjs",
+   "reason": "فشل على main:  - stage1 coverage missing section node for route=\"/privacy-center\"    - stage1 "
+  },
+  {
+   "script": "verify-quran-integrity.mjs",
+   "reason": "فشل على main: }   Node.js v24.18.0"
+  },
+  {
+   "script": "verify-seo.mjs",
+   "reason": "فشل على main: ⚠ تحذيرات: 0   ✗ 14 صفحة تحتاج مراجعة"
+  }
+ ],
+ "excluded": [
+  {
+   "script": "test-auto-content-sync.mjs",
+   "reason": "إنتاج/بيئة"
+  },
+  {
+   "script": "verify-content-production.mjs",
+   "reason": "إنتاج/بيئة"
+  },
+  {
+   "script": "verify-instagram-production.mjs",
+   "reason": "إنتاج/بيئة"
+  },
+  {
+   "script": "verify-owner-bootstrap.mjs",
+   "reason": "إنتاج/بيئة"
+  },
+  {
+   "script": "verify-phase2-import.mjs",
+   "reason": "إنتاج/بيئة"
+  },
+  {
+   "script": "verify-production-adhkar-import.mjs",
+   "reason": "إنتاج/بيئة"
+  },
+  {
+   "script": "verify-production-complete.mjs",
+   "reason": "إنتاج/بيئة"
+  },
+  {
+   "script": "verify-production-fawaid-import.mjs",
+   "reason": "إنتاج/بيئة"
+  },
+  {
+   "script": "verify-production-urls.mjs",
+   "reason": "إنتاج/بيئة"
+  },
+  {
+   "script": "verify-psi-production-gate.mjs",
+   "reason": "إنتاج/بيئة"
+  }
+ ]
+}
