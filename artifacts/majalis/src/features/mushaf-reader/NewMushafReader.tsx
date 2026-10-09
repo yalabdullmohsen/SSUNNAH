@@ -85,7 +85,7 @@ import { MUSHAF_CHROME_HIDE_MS } from "@/features/mushaf-shared/layout-bands";
 import { MushafPage } from "./MushafPage";
 import { MushafControlsLayer, MushafVerseMenu } from "./MushafControlsLayer";
 import { MushafReadingCoach } from "./MushafReadingCoach";
-import { isTasmeeV2Enabled } from "@/lib/tasmee-v2/flags";
+import { useTasmeeV2Enabled } from "@/features/tasmee-v2/useTasmeeV2Enabled";
 import { MushafPageArrows } from "./MushafPageArrows";
 import { Button } from "@/components/ui/button";
 import { mushafButtonClass } from "./mushaf-button-parity";
@@ -198,6 +198,7 @@ export function NewMushafReader({
   tasmeeRequested = false,
 }: Props) {
   const page = clampMushafPage(pageNumber);
+  const tasmeeV2Enabled = useTasmeeV2Enabled();
   useEffect(() => {
     enableMushafTurnTelemetry(true);
   }, []);
@@ -1864,7 +1865,7 @@ export function NewMushafReader({
           !pagerSettled
         }
       />
-      {isTasmeeV2Enabled() ? (
+      {tasmeeV2Enabled ? (
         <Suspense fallback={null}>
           <TasmeeV2Layer
             pageNumber={page}

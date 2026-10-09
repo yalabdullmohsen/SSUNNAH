@@ -4,6 +4,7 @@ import { Icon, type DsIconName } from "@/design-system/Icon";
 import { ListRow, Switch } from "@/design-system/navigation";
 import { Sheet } from "@/design-system/overlays";
 import { hapticTap } from "@/lib/capacitor-utils";
+import { isTasmeeDiagnosticsAllowed } from "@/lib/tasmee/engine-plugin";
 import {
   DEFAULT_ALERTS,
   initialTasmeeState,
@@ -14,7 +15,9 @@ import {
 } from "@/lib/tasmee-v2/session-state";
 import { stepsBackToAyahStart } from "@/lib/tasmee-v2/word-model";
 import { T } from "./strings";
+import { TasmeeDiagSheet } from "./TasmeeDiagSheet";
 import { TasmeeModelSheet } from "./TasmeeModelSheet";
+import { useTasmeeEngine } from "./useTasmeeEngine";
 import { useTasmeeModel } from "./useTasmeeModel";
 
 const ALERTS_KEY = "ssunnah-tasmee-v2-alerts";
@@ -105,6 +108,27 @@ export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = fal
   const longFiredRef = useRef(false);
   const fabTimerRef = useRef<number | null>(null);
   const active = isActiveMode(state.mode);
+  const engine = useTasmeeEngine({
+    pageNumber,
+    recording: state.recording,
+    ready: model.state.phase === "ready",
+    cursor: state.cursor,
+    onMark: (index, mark) => dispatch({ type: "mark", index, mark }),
+    onStop: () => {
+      dispatch({ type: "stopRecording" });
+      setToast(T.engineStopped);
+    },
+  });
+  /* لوحة القياس: Debug/TestFlight فقط وقت التشغيل (مخفية في App Store) */
+  const [diagAllowed, setDiagAllowed] = useState(false);
+  const [diagOpen, setDiagOpen] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    void isTasmeeDiagnosticsAllowed().then((v) => alive && setDiagAllowed(v));
+    return () => {
+      alive = false;
+    };
+  }, []);
 
   useEffect(() => {
     try {
@@ -352,6 +376,9 @@ export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = fal
               onClick={() => dispatch({ type: "revealNext", total: totalRef.current })}
             />
             <IconButton icon="settings" label={T.alertSettings} tone="tinted" size={20} onClick={() => setAlertsOpen(true)} />
+            {diagAllowed ? (
+              <IconButton icon="info" label={T.diag.open} tone="tinted" size={20} onClick={() => setDiagOpen(true)} />
+            ) : null}
           </div>
         ) : null}
 
@@ -419,6 +446,16 @@ export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = fal
           dispatch({ type: "setMode", mode: "tasmee" });
         }}
       />
+
+      {diagAllowed ? (
+        <TasmeeDiagSheet
+          open={diagOpen}
+          onClose={() => setDiagOpen(false)}
+          onReset={engine.resetStats}
+          stats={engine.stats}
+          pageNumber={pageNumber}
+        />
+      ) : null}
 
       <Sheet open={alertsOpen} onClose={() => setAlertsOpen(false)} title={T.alertsTitle}>
         <div className="tv2-settings">

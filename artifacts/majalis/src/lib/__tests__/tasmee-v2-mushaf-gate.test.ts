@@ -11,7 +11,8 @@ const root = join(import.meta.dirname, "..", "..");
 const read = (p: string) => readFileSync(join(root, p), "utf8");
 
 const reader = read("features/mushaf-reader/NewMushafReader.tsx");
-assert.match(reader, /isTasmeeV2Enabled\(\)\s*\?/, "الطبقة تحت علم tasmee_v2");
+assert.match(reader, /tasmeeV2Enabled = useTasmeeV2Enabled\(\)[\s\S]*\{tasmeeV2Enabled \?/, "الطبقة تحت علم tasmee_v2");
+assert.match(read("features/tasmee-v2/useTasmeeV2Enabled.ts"), /resolveTasmeeV2Enabled\(\)/, "العلم الفعّال: مفاتيح الإيقاف + القناة + الملف الحي");
 assert.match(reader, /<TasmeeV2Layer[\s\S]*startInTasmee=\{tasmeeRequested\}/);
 
 const page = read("pages/quran/MushafReaderPage.tsx");

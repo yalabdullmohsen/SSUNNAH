@@ -81,13 +81,24 @@ export function createTasmeeEngine(): TasmeeEngineApi {
   };
 }
 
+export type TasmeeBuildChannel = "web" | "debug" | "testflight" | "appstore";
+
+let channelPromise: Promise<TasmeeBuildChannel> | null = null;
+
+/** قناة البناء وقت التشغيل. أي تعذّر على الجهاز (بناء قديم بلا الدالة) = appstore: الأشد تقييدًا. */
+export function getTasmeeBuildChannel(): Promise<TasmeeBuildChannel> {
+  if (!isNative) return Promise.resolve("web");
+  if (!isTasmeeNativeAvailable()) return Promise.resolve("appstore");
+  channelPromise ??= tasmeeNative.getBuildChannel().then(
+    ({ channel }) => channel,
+    () => "appstore" as const,
+  );
+  return channelPromise;
+}
+
 /** شاشة القياس المخفية: iOS في بناء Debug أو TestFlight فقط (لا App Store). */
 export async function isTasmeeDiagnosticsAllowed(): Promise<boolean> {
   if (!isTasmeeNativeAvailable()) return false;
-  try {
-    const { channel } = await tasmeeNative.getBuildChannel();
-    return channel === "debug" || channel === "testflight";
-  } catch {
-    return false;
-  }
+  const channel = await getTasmeeBuildChannel();
+  return channel === "debug" || channel === "testflight";
 }
