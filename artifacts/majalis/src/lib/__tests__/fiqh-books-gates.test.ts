@@ -3,6 +3,7 @@
  * التشغيل: pnpm exec tsx src/lib/__tests__/fiqh-books-gates.test.ts
  */
 import { existsSync, readFileSync } from "node:fs";
+import { isHeld } from "../content-hold";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -107,6 +108,7 @@ console.log("\n=== ٢) أبواب ومسائل منشورة موثَّقة ===")
 {
   let chapters = 0;
   let lessons = 0;
+  let held = 0;
   const chapterKeys = new Set<string>();
   const lessonIds = new Set<string>();
   for (const b of getAllFiqhBooks()) {
@@ -124,6 +126,11 @@ console.log("\n=== ٢) أبواب ومسائل منشورة موثَّقة ===")
         assert(!lessonIds.has(l.id), `مسألة فريدة: ${l.id}`);
         lessonIds.add(l.id);
         assert(l.bookId === b.id && l.chapterId === c.id, `ربط المسألة ${l.id}`);
+        if (isHeld(l.id)) {
+          held++;
+          assert(!isPublishedLesson(l), `مسألة موقوفة لا تُنشر: ${l.id}`);
+          continue;
+        }
         assert(isPublishedLesson(l), `مسألة منشورة: ${l.id}`);
       }
       assert(publishedChapters(b).some((x) => x.id === c.id), `الباب ظاهر في ${b.id}`);
@@ -132,7 +139,7 @@ console.log("\n=== ٢) أبواب ومسائل منشورة موثَّقة ===")
   assert(chapters >= 200, `أبواب كافية (الفعلي ${chapters})`);
   assert(lessons >= 400, `مسائل كافية (الفعلي ${lessons})`);
   assert(listPublishedChapters().length === chapters, "listPublishedChapters يغطي الكل");
-  assert(listPublishedLessons().length === lessons, "listPublishedLessons يغطي الكل");
+  assert(listPublishedLessons().length === lessons - held, "listPublishedLessons يغطي الكل");
 }
 
 console.log("\n=== ٣) aliases للكتب المدمجة ===");
