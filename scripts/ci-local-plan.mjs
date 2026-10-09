@@ -2,6 +2,7 @@
  * مصدر واحد لخطة ci:local: تُشتق من وظيفة repo-gates في .github/workflows/ci.yml
  * وتُفكَّك سلاسل package.json إلى أوامر ورقية. لا قائمة يدوية تنحرف عن CI.
  */
+import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { basename, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -84,4 +85,15 @@ export function selectionNeedles(appFiles, pkgDiff = "") {
     }
   }
   return [...new Set(needles)].filter((n) => n.length >= 3);
+}
+
+/**
+ * يعيد توليد seo-prerender ثم `git diff --exit-code` عليه، كما تفعل وظيفة build في CI بعد البناء.
+ * يلتقط تعديل generate-seo.mjs دون إيداع الصفحات المولَّدة (سبب فشل build المتكرر). المخرجات المعاد توليدها تبقى للإيداع.
+ */
+export function seoPrerenderDrift(appDir, generator = ["--import", "tsx", "scripts/generate-seo.mjs"]) {
+  const gen = spawnSync("node", generator, { cwd: appDir, encoding: "utf8" });
+  if (gen.status !== 0) return { ok: false, files: [], error: `${gen.stdout}${gen.stderr}`.split("\n").slice(-8).join("\n") };
+  const d = spawnSync("git", ["diff", "--exit-code", "--name-only", "--", "seo-prerender"], { cwd: appDir, encoding: "utf8" });
+  return { ok: d.status === 0, files: d.stdout.split("\n").filter(Boolean) };
 }
