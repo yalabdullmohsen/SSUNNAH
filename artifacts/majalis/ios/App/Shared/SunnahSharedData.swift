@@ -15,54 +15,22 @@ enum SunnahAppGroup {
 /// WidgetKit kind strings — must match JS `SUNNAH_PRAYER_WIDGET_KIND` and catalog kinds.
 enum SunnahWidgetKind {
     static let prayerTimes = "PrayerTimesWidget"
-    static let prayerCurrent = "sunnah.widget.prayer.current"
-    static let prayerNext = "sunnah.widget.prayer.next"
-    static let prayerPrevious = "sunnah.widget.prayer.previous"
-    static let prayerPreviousNext = "sunnah.widget.prayer.previous-next"
-    static let prayerMorning = "sunnah.widget.prayer.morning"
-    static let prayerEvening = "sunnah.widget.prayer.evening"
     static let prayerAll = "sunnah.widget.prayer.all"
-    static let prayerHijri = "sunnah.widget.prayer.hijri"
     static let calendarHijri = "sunnah.widget.calendar.hijri"
-    static let calendarDual = "sunnah.widget.calendar.dual"
-    static let calendarToday = "sunnah.widget.calendar.today"
     static let calendarRamadan = "sunnah.widget.calendar.ramadan"
-    static let calendarEvent = "sunnah.widget.calendar.event"
-    static let adhkarMorning = "sunnah.widget.adhkar.morning"
-    static let adhkarEvening = "sunnah.widget.adhkar.evening"
     static let adhkarTimeAware = "sunnah.widget.adhkar.time-aware"
     static let adhkarRotating = "sunnah.widget.adhkar.rotating"
     static let adhkarStreak = "sunnah.widget.adhkar.streak"
-    static let custom = "sunnah.widget.custom"
     static let quranAyah = "sunnah.widget.quran.ayah"
-    static let quranGoal = "sunnah.widget.quran.goal"
     static let mushafContinue = "sunnah.widget.mushaf.continue"
-    static let mushafBookmark = "sunnah.widget.mushaf.bookmark"
-    static let mushafProgress = "sunnah.widget.mushaf.progress"
-    static let mushafQuickOpen = "sunnah.widget.mushaf.quick-open"
-    static let contentHadith = "sunnah.widget.content.hadith"
-    static let contentFaidah = "sunnah.widget.content.faidah"
-    static let contentDua = "sunnah.widget.content.dua"
-    static let homeToday = "sunnah.widget.home.today"
-    static let homeActions = "sunnah.widget.home.actions"
-    static let homeSpiritual = "sunnah.widget.home.spiritual"
 
-    static let prayerFamily: [String] = [
-        prayerTimes, prayerCurrent, prayerNext, prayerPrevious, prayerPreviousNext,
-        prayerMorning, prayerEvening, prayerAll, prayerHijri,
-    ]
-    static let calendarFamily: [String] = [
-        calendarHijri, calendarDual, calendarToday, calendarRamadan, calendarEvent,
-    ]
-    static let adhkarFamily: [String] = [
-        adhkarMorning, adhkarEvening, adhkarTimeAware, adhkarRotating, adhkarStreak,
-    ]
-    static let quranFamily: [String] = [quranAyah, quranGoal]
-    static let mushafFamily: [String] = [mushafContinue, mushafBookmark, mushafProgress, mushafQuickOpen]
-    static let customFamily: [String] = [custom, contentHadith, contentFaidah, contentDua]
-    static let homeFamily: [String] = [homeToday, homeActions, homeSpiritual]
+    static let prayerFamily: [String] = [prayerTimes, prayerAll]
+    static let calendarFamily: [String] = [calendarHijri, calendarRamadan]
+    static let adhkarFamily: [String] = [adhkarTimeAware, adhkarRotating, adhkarStreak]
+    static let quranFamily: [String] = [quranAyah]
+    static let mushafFamily: [String] = [mushafContinue]
 
-    static let allUnique: [String] = prayerFamily + calendarFamily + adhkarFamily + customFamily + quranFamily + mushafFamily + homeFamily
+    static let allUnique: [String] = prayerFamily + calendarFamily + adhkarFamily + quranFamily + mushafFamily
 }
 
 /// Keys allowed in the App Group suite. Anything else is rejected.
@@ -181,6 +149,8 @@ enum SunnahSharedStore {
         #if DEBUG
         log.debug("write attempted schema=\(snapshot.schemaVersion) day=\(snapshot.dayKey, privacy: .public)")
         #endif
+        // لا تُستبدل لقطة صالحة بأخرى فارغة (آخر بيانات صالحة تبقى معروضة).
+        if !isUsablePrayer(snapshot), isUsablePrayer(loadPrayer()) { return false }
         let ok = writeCodable(snapshot, key: SunnahSharedKeys.prayerSnapshot)
         #if DEBUG
         if ok {
@@ -239,19 +209,20 @@ enum SunnahSharedStore {
         return SunnahWidgetEnvelopeCodec.decodeIsolated(from: data)
     }
 
-    /// Prayer payload: the freshest of envelope isolation and legacy prayer.v1
-    /// (a later envelope publish without prayer must never resurrect an older snapshot).
+    /// لقطة تصلح للعرض: فيها مواقيت أو صلاة قادمة (لا فارغة ولا من مخطط مستقبلي).
+    static func isUsablePrayer(_ snapshot: SharedPrayerSnapshot?) -> Bool {
+        guard let s = snapshot, s.schemaVersion >= 1, s.schemaVersion <= SharedPrayerSnapshot.currentSchema else { return false }
+        return !s.timesEpochMs.isEmpty || s.nextPrayerEpochMs != nil
+    }
+
+    /// Prayer payload: الأحدث بين الظرف وprayer.v1 **من الصالحتين فقط**؛
+    /// لقطة أحدث لكن فارغة (نشر ظرف بلا مواقيت) لا تطغى على لقطة صالحة أقدم، فلا «افتح سُنّة» مع تطبيق مفتوح.
     static func loadCanonicalPrayer() -> SharedPrayerSnapshot? {
         let envelopePrayer = loadEnvelope()?.prayerPayload
         let legacy = loadPrayer()
-        switch (envelopePrayer, legacy) {
-        case let (env?, leg?):
-            return leg.updatedAtEpochMs > env.updatedAtEpochMs ? leg : env
-        case let (env?, nil):
-            return env
-        default:
-            return legacy
-        }
+        let usable = [envelopePrayer, legacy].compactMap { $0 }.filter { isUsablePrayer($0) }
+        if let best = usable.max(by: { $0.updatedAtEpochMs < $1.updatedAtEpochMs }) { return best }
+        return envelopePrayer ?? legacy
     }
 
     static func classifyPrayerData(_ snapshot: SharedPrayerSnapshot?, now: Date = Date()) -> PrayerWidgetDataState {

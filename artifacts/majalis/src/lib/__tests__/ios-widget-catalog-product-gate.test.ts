@@ -24,21 +24,19 @@ const customCat = readFileSync(
   "utf8",
 );
 
-assert.equal(WIDGET_CENTER_CATALOG.length, 32);
-assert.equal(WIDGET_CATALOG_PRODUCT_JUSTIFICATION.length, 32);
+assert.equal(WIDGET_CENTER_CATALOG.length, 9);
+assert.equal(WIDGET_CATALOG_PRODUCT_JUSTIFICATION.length, 9);
 
 const counts = assertWidgetCatalogProductJustified();
 assert.equal(counts.build55, 1);
-assert.equal(counts.keptSeparate, 31);
+assert.equal(counts.keptSeparate, 8);
 assert.equal(counts.mergeConfig, 0);
 assert.equal(counts.removed, 0);
-assert.equal(counts.deferred, 1);
+assert.equal(counts.deferred, 0);
 
-assert.match(bundle, /CustomContentStaticWidget\(\)/);
-assert.doesNotMatch(bundle, /CustomContentWidget\(\)/);
-assert.match(customCat, /struct CustomContentWidget/);
-assert.match(customCat, /struct CustomContentStaticWidget/);
-assert.equal(WIDGET_DEFERRED_UNREGISTERED[0]?.struct, "CustomContentWidget");
+assert.doesNotMatch(bundle, /CustomContent/);
+assert.doesNotMatch(customCat, /struct CustomContent/);
+assert.equal(WIDGET_DEFERRED_UNREGISTERED.length, 0);
 
 const report = resolve(repo, "docs/audit/WIDGET_CATALOG_PRODUCT_JUSTIFICATION.md");
 assert.ok(existsSync(report));

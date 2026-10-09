@@ -3,56 +3,32 @@ import SunnahWidgetKit
 import WidgetKit
 
 enum SunnahWidgetFamilySupport {
-    static let prayerCurrent: [WidgetFamily] = [
-        .systemSmall, .systemMedium, .accessoryRectangular,
-    ]
-    static let prayerNext: [WidgetFamily] = [
-        .systemSmall, .systemMedium, .systemLarge, .accessoryInline, .accessoryCircular, .accessoryRectangular,
-    ]
-    static let prayerPrevious: [WidgetFamily] = [
-        .systemSmall, .systemMedium, .accessoryInline, .accessoryRectangular,
-    ]
-    static let prayerPreviousNext: [WidgetFamily] = [
-        .systemMedium, .systemLarge, .accessoryRectangular,
-    ]
-    static let prayerMorning: [WidgetFamily] = [.systemSmall, .systemMedium]
-    static let prayerEvening: [WidgetFamily] = [.systemSmall, .systemMedium]
     static let prayerAll: [WidgetFamily] = [.systemLarge]
-    static let prayerHijri: [WidgetFamily] = [
-        .systemSmall, .systemMedium, .accessoryRectangular,
-    ]
     static let calendarHijri: [WidgetFamily] = [
         .systemSmall, .systemMedium, .accessoryInline, .accessoryRectangular, .accessoryCircular,
     ]
-    static let calendarDual: [WidgetFamily] = [
-        .systemSmall, .systemMedium, .accessoryInline, .accessoryRectangular,
-    ]
-    static let calendarToday: [WidgetFamily] = [.systemSmall, .systemMedium]
-    static let calendarRamadan: [WidgetFamily] = [.systemSmall, .systemMedium]
-    static let calendarEvent: [WidgetFamily] = [
-        .systemSmall, .systemMedium, .accessoryRectangular,
-    ]
+    static let calendarRamadan: [WidgetFamily] = [.systemSmall, .systemMedium, .accessoryRectangular]
     static let adhkar: [WidgetFamily] = [
         .systemSmall, .systemMedium, .accessoryInline, .accessoryRectangular,
     ]
     static let adhkarStreak: [WidgetFamily] = [
         .systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular,
     ]
-    static let custom: [WidgetFamily] = [.systemSmall, .systemMedium, .systemLarge]
-    static let quran: [WidgetFamily] = [.systemMedium, .systemLarge]
-    static let quranGoal: [WidgetFamily] = [
-        .systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular,
-    ]
+    static let quran: [WidgetFamily] = [.systemSmall, .systemMedium, .systemLarge, .accessoryRectangular]
     static let mushaf: [WidgetFamily] = [.systemSmall, .systemMedium]
-    static let mushafQuickOpen: [WidgetFamily] = [.systemSmall, .systemMedium, .systemLarge]
-    static let homeToday: [WidgetFamily] = [.systemMedium, .systemLarge]
-    static let homeActions: [WidgetFamily] = [.systemMedium, .systemLarge]
-    static let homeSpiritual: [WidgetFamily] = [.systemMedium, .systemLarge]
 }
 
 enum SunnahWidgetRegistry {
     static let platformName = "SunnahWidgetPlatform"
     static var kindCount: Int { Set(SunnahWidgetKind.allUnique).count }
+}
+
+/// هامش أفقي صغير لبطاقات شاشة القفل المستطيلة: بدونه يلامس النص حافة الإطار (تكشفه بوابة ios-widget-snapshot).
+struct SunnahAccessoryInset: ViewModifier {
+    @Environment(\.widgetFamily) private var family
+    func body(content: Content) -> some View {
+        content.padding(.horizontal, family == .accessoryRectangular ? 4 : 0)
+    }
 }
 
 struct SunnahWidgetChrome: ViewModifier {
@@ -208,7 +184,7 @@ struct CatalogWidgetEntry: TimelineEntry {
             date: now,
             presentation: presentation,
             prayer: prayer,
-            calendar: envelope?.calendarPayload.map { SunnahWidgetDayRollover.calendar($0, at: now) },
+            calendar: SunnahWidgetDayRollover.calendar(envelope?.calendarPayload ?? SunnahWidgetDayRollover.seedCalendar(at: now, timeZone: tz), at: now),
             adhkar: envelope?.adhkarPayload.map { SunnahWidgetDayRollover.adhkar($0, at: now, timeZone: tz) },
             quran: envelope?.quranPayload.map { SunnahWidgetDayRollover.quran($0, at: now, timeZone: tz) },
             mushaf: envelope?.mushafPayload,
@@ -302,6 +278,22 @@ enum SunnahWidgetDayRollover {
         f.timeZone = tz
         f.setLocalizedDateFormatFromTemplate(template)
         return f.string(from: date)
+    }
+
+    /// تاريخ هجري/ميلادي من ساعة الجهاز فقط (أم القرى) حين لا ظرف بعد: الودجت يعمل قبل أول فتح.
+    /// تاريخ النشر يُجعل أمس فيُعاد حسابه كاملًا بمسار `calendar(_:at:)` نفسه.
+    static func seedCalendar(at date: Date, timeZone tz: TimeZone) -> SharedCalendarPayload {
+        var gregorian = Calendar(identifier: .gregorian)
+        gregorian.timeZone = tz
+        let yesterday = gregorian.date(byAdding: .day, value: -1, to: date) ?? date
+        return SharedCalendarPayload(
+            schemaVersion: SharedCalendarPayload.currentSchema,
+            timezoneIdentifier: tz.identifier,
+            weekdayAr: "", hijriDay: 1, hijriMonth: 1, hijriMonthAr: "", hijriYear: 1400,
+            hijriDisplay: "", gregorianDisplay: "", inRamadan: false, daysUntilRamadan: nil,
+            ramadanLabelAr: "", gregorianDate: dayKey(yesterday, tz), calendarMode: "hijri",
+            updatedAtEpochMs: 0
+        )
     }
 
     static func calendar(_ payload: SharedCalendarPayload, at date: Date) -> SharedCalendarPayload {
@@ -623,15 +615,17 @@ struct SunnahRingStat: View {
     var lockScreen = false
 
     private var clamped: Double { min(1, max(0, fraction)) }
+    /// الرئيسية: خلفية داكنة ثابتة في الفاتح والداكن فلا يصحّ .primary (أسود في الفاتح). القفل: دلالي للنظام.
+    private var ink: Color { lockScreen ? .primary : SunnahWidgetTheme.primaryText }
 
     var body: some View {
         VStack(spacing: lockScreen ? 0 : 6) {
             ZStack {
                 Circle()
-                    .stroke(.primary.opacity(0.25), lineWidth: lockScreen ? 3 : 8)
+                    .stroke(ink.opacity(0.25), lineWidth: lockScreen ? 3 : 8)
                 Circle()
                     .trim(from: 0, to: clamped)
-                    .stroke(.primary, style: StrokeStyle(lineWidth: lockScreen ? 3 : 8, lineCap: .round))
+                    .stroke(ink, style: StrokeStyle(lineWidth: lockScreen ? 3 : 8, lineCap: .round))
                     .rotationEffect(.degrees(-90))
                     .widgetAccentable()
                 Text(value)
@@ -639,11 +633,13 @@ struct SunnahRingStat: View {
                     .lineLimit(1)
                     .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
                     .padding(lockScreen ? 4 : 12)
+                    .foregroundStyle(ink)
             }
             .aspectRatio(1, contentMode: .fit)
             if !lockScreen {
                 Text(caption)
                     .font(WidgetType.secondary(13))
+                    .foregroundStyle(SunnahWidgetTheme.secondaryText)
                     .lineLimit(1)
                     .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
             }

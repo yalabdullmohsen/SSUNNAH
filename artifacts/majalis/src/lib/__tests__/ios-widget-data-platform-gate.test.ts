@@ -85,7 +85,7 @@ assert.match(read("src/lib/plugins/sunnah-shared-data.ts"), /readWidgetDiagnosti
 
 const kinds = new Set(WIDGET_CENTER_CATALOG.map((item) => item.kind));
 assert.equal(kinds.size, WIDGET_CENTER_CATALOG.length);
-assert.ok(WIDGET_CENTER_CATALOG.length >= 26);
+assert.ok(WIDGET_CENTER_CATALOG.length === 9);
 
 function fixturePayload(): PrayerTimesPayload {
   return {

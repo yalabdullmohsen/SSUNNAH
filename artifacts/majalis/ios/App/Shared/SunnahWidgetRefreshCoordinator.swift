@@ -56,8 +56,8 @@ enum SunnahWidgetRefreshCoordinator {
         if domains.contains(.adhkar) { out.append(contentsOf: SunnahWidgetKind.adhkarFamily) }
         if domains.contains(.quran) { out.append(contentsOf: SunnahWidgetKind.quranFamily) }
         if domains.contains(.mushaf) { out.append(contentsOf: SunnahWidgetKind.mushafFamily) }
-        if domains.contains(.custom) { out.append(contentsOf: SunnahWidgetKind.customFamily) }
-        if domains.contains(.home) { out.append(contentsOf: SunnahWidgetKind.homeFamily) }
+        // «إنجاز اليوم» يقرأ التقدّم من نطاق home ⇒ يُعاد تحميل عائلة الأذكار.
+        if domains.contains(.home) { out.append(SunnahWidgetKind.adhkarStreak) }
         if domains.contains(.preferences) {
             out.append(contentsOf: SunnahWidgetKind.allUnique)
         }

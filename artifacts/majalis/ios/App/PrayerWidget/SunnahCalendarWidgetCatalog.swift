@@ -10,37 +10,9 @@ struct HijriDateWidget: Widget {
                 .environment(\.layoutDirection, .rightToLeft)
                 .widgetURL(SunnahWidgetDeepLinkFactory.occasions())
         }
-        .configurationDisplayName("التاريخ الهجري")
-        .description("اليوم والشهر والسنة الهجرية.")
+        .configurationDisplayName("التاريخ")
+        .description("التاريخ الهجري والميلادي واسم اليوم.")
         .supportedFamilies(SunnahWidgetFamilySupport.calendarHijri)
-    }
-}
-
-struct DualDateWidget: Widget {
-    let kind = SunnahWidgetKind.calendarDual
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
-            DualDateView(entry: entry)
-                .environment(\.layoutDirection, .rightToLeft)
-                .widgetURL(SunnahWidgetDeepLinkFactory.occasions())
-        }
-        .configurationDisplayName("هجري وميلادي")
-        .description("التاريخ الهجري والميلادي مع اسم اليوم.")
-        .supportedFamilies(SunnahWidgetFamilySupport.calendarDual)
-    }
-}
-
-struct TodayDateWidget: Widget {
-    let kind = SunnahWidgetKind.calendarToday
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
-            TodayDateView(entry: entry)
-                .environment(\.layoutDirection, .rightToLeft)
-                .widgetURL(SunnahWidgetDeepLinkFactory.occasions())
-        }
-        .configurationDisplayName("اليوم والتاريخ")
-        .description("اسم اليوم مع التاريخ الهجري.")
-        .supportedFamilies(SunnahWidgetFamilySupport.calendarToday)
     }
 }
 
@@ -52,32 +24,18 @@ struct RamadanCountdownWidget: Widget {
                 .environment(\.layoutDirection, .rightToLeft)
                 .widgetURL(SunnahWidgetDeepLinkFactory.occasions())
         }
-        .configurationDisplayName("عداد رمضان")
-        .description("الأيام المتبقية لرمضان أو حالة الشهر.")
+        .configurationDisplayName("رمضان والمناسبات")
+        .description("الأيام المتبقية لرمضان وأقرب مناسبة.")
         .supportedFamilies(SunnahWidgetFamilySupport.calendarRamadan)
-    }
-}
-
-struct IslamicEventWidget: Widget {
-    let kind = SunnahWidgetKind.calendarEvent
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: CatalogWidgetProvider()) { entry in
-            IslamicEventView(entry: entry)
-                .environment(\.layoutDirection, .rightToLeft)
-                .widgetURL(SunnahWidgetDeepLinkFactory.occasions())
-        }
-        .configurationDisplayName("المناسبة القادمة")
-        .description("أقرب مناسبة إسلامية وعدد الأيام المتبقية.")
-        .supportedFamilies(SunnahWidgetFamilySupport.calendarEvent)
     }
 }
 
 private struct CalSurface: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOSApplicationExtension 17.0, *) {
-            content.containerBackground(for: .widget) { SunnahWidgetTheme.homeGradient }
+            content.modifier(SunnahAccessoryInset()).containerBackground(for: .widget) { SunnahWidgetTheme.homeGradient }
         } else {
-            content.background(SunnahWidgetTheme.homeGradient)
+            content.modifier(SunnahAccessoryInset()).background(SunnahWidgetTheme.homeGradient)
         }
     }
 }
@@ -117,8 +75,21 @@ private struct CalEmpty: View {
 private struct CalBigDays: View {
     let days: Int
     let size: CGFloat
+    var inRamadan = false
 
     var body: some View {
+        if inRamadan {
+            VStack(alignment: .leading, spacing: 0) {
+                calLine(WidgetFormat.digits(days), WidgetType.primary(size))
+                calLine("من رمضان", WidgetType.secondary(15))
+            }
+        } else {
+            plain
+        }
+    }
+
+    @ViewBuilder
+    private var plain: some View {
         switch days {
         case ...0: calLine("اليوم", WidgetType.primary(size * 0.7))
         case 1: calLine("غدًا", WidgetType.primary(size * 0.7))
@@ -197,10 +168,12 @@ struct HijriCalendarView: View {
                     calLine(cal.weekdayAr, WidgetType.secondary(13))
                     calLine(WidgetFormat.digits(cal.hijriDay), WidgetType.primary(48))
                         .foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
+                        .widgetAccentable()
                     calLine(cal.monthYear, WidgetType.primary(16))
-                    Spacer(minLength: 0)
+                    Spacer(minLength: 4)
+                    Divider().opacity(0.35)
                     calLine(cal.gregorianShort(fallback: entry.date), WidgetType.secondary(13))
+                        .padding(.top, 2)
                 }
                 .foregroundStyle(calInk)
                 .sunnahCardLayout(14)
@@ -211,190 +184,34 @@ struct HijriCalendarView: View {
     }
 }
 
-// MARK: - هجري وميلادي
+// MARK: - رمضان والمناسبات
 
-struct DualDateView: View {
-    @Environment(\.widgetFamily) private var family
-    let entry: CatalogWidgetEntry
-
-    var body: some View {
-        Group {
-            if let cal = entry.calendar {
-                switch family {
-                case .accessoryInline:
-                    Text("\(cal.dayMonth)")
-                case .accessoryRectangular:
-                    SunnahTwoZone {
-                        VStack(alignment: .leading, spacing: 0) {
-                            calLine(cal.dayMonth, WidgetType.primary(15))
-                            calLine(WidgetFormat.digits(cal.hijriYear), WidgetType.secondary(13))
-                        }
-                    } secondary: {
-                        calLine(cal.gregorianShort(fallback: entry.date), WidgetType.secondary(13))
-                            .frame(width: 84, alignment: .leading)
-                    }
-                case .systemMedium:
-                    SunnahTwoZone {
-                        VStack(alignment: .leading, spacing: 2) {
-                            calLine(cal.weekdayAr, WidgetType.secondary(13))
-                            calLine(cal.dayMonth, WidgetType.primary(24))
-                            calLine(WidgetFormat.digits(cal.hijriYear), WidgetType.secondary(15))
-                        }
-                    } secondary: {
-                        calLine(cal.gregorianShort(fallback: entry.date), WidgetType.secondary(15))
-                            .frame(width: 110, alignment: .leading)
-                    }
-                    .foregroundStyle(calInk)
-                    .sunnahCardLayout(14)
-                default:
-                    VStack(alignment: .leading, spacing: 2) {
-                        calLine(cal.weekdayAr, WidgetType.secondary(13))
-                        calLine(cal.dayMonth, WidgetType.primary(22))
-                            .foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
-                        calLine(WidgetFormat.digits(cal.hijriYear), WidgetType.secondary(13))
-                        Spacer(minLength: 0)
-                        calLine(cal.gregorianShort(fallback: entry.date), WidgetType.primary(15))
-                    }
-                    .foregroundStyle(calInk)
-                    .sunnahCardLayout(14)
-                }
-            } else {
-                CalEmpty(compact: family == .accessoryRectangular)
-            }
-        }
-        .modifier(CalSurface())
-        .accessibilityLabel(entry.calendar.map { "\($0.weekdayAr) \($0.dayMonth) \(WidgetFormat.digits($0.hijriYear)) الموافق \($0.gregorianShort(fallback: entry.date))" } ?? "افتح سُنّة")
-    }
-}
-
-// MARK: - اليوم
-
-struct TodayDateView: View {
-    @Environment(\.widgetFamily) private var family
-    let entry: CatalogWidgetEntry
-
-    var body: some View {
-        Group {
-            if let cal = entry.calendar {
-                if family == .systemMedium {
-                    SunnahTwoZone {
-                        VStack(alignment: .leading, spacing: 0) {
-                            calLine(cal.weekdayAr, WidgetType.primary(22))
-                            calLine(cal.gregorianShort(fallback: entry.date), WidgetType.secondary(15))
-                        }
-                    } secondary: {
-                        VStack(alignment: .leading, spacing: 0) {
-                            calLine(WidgetFormat.digits(cal.hijriDay), WidgetType.primary(40))
-                                .foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
-                            calLine(cal.monthYear, WidgetType.secondary(13))
-                        }
-                        .frame(width: 120, alignment: .leading)
-                    }
-                    .foregroundStyle(calInk)
-                    .sunnahCardLayout(14)
-                } else {
-                    VStack(alignment: .leading, spacing: 2) {
-                        calLine(cal.weekdayAr, WidgetType.primary(20))
-                        calLine(WidgetFormat.digits(cal.hijriDay), WidgetType.primary(40))
-                            .foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
-                        calLine(cal.monthYear, WidgetType.secondary(13))
-                        Spacer(minLength: 0)
-                        calLine(cal.gregorianShort(fallback: entry.date), WidgetType.secondary(13))
-                    }
-                    .foregroundStyle(calInk)
-                    .sunnahCardLayout(14)
-                }
-            } else {
-                CalEmpty()
-            }
-        }
-        .modifier(CalSurface())
-        .accessibilityLabel(entry.calendar.map { "\($0.weekdayAr) \($0.dayMonth) \(WidgetFormat.digits($0.hijriYear))" } ?? "افتح سُنّة")
-    }
-}
-
-// MARK: - رمضان
-
+/// الأقرب زمنيًا: رمضان أو أقرب مناسبة. داخل رمضان يُعرض يوم الشهر.
 struct RamadanCountdownView: View {
     @Environment(\.widgetFamily) private var family
     let entry: CatalogWidgetEntry
 
-    var body: some View {
-        Group {
-            if let cal = entry.calendar {
-                if cal.inRamadan {
-                    inRamadan(cal)
-                } else if let days = cal.daysUntilRamadan {
-                    untilRamadan(days)
-                } else {
-                    CalEmpty()
-                }
-            } else {
-                CalEmpty()
-            }
+    private struct Pick {
+        let name: String
+        let days: Int
+        let inRamadan: Bool
+    }
+
+    private var pick: Pick? {
+        guard let cal = entry.calendar else { return nil }
+        if cal.inRamadan { return Pick(name: "رمضان", days: cal.hijriDay, inRamadan: true) }
+        let ramadan = cal.daysUntilRamadan
+        if let name = cal.upcomingEventNameAr, !name.isEmpty, let d = cal.upcomingEventDays,
+           ramadan.map({ d < $0 }) ?? true {
+            return Pick(name: name, days: d, inRamadan: false)
         }
-        .modifier(CalSurface())
-        .accessibilityLabel(ramadanA11y)
+        return ramadan.map { Pick(name: "رمضان", days: $0, inRamadan: false) }
     }
-
-    @ViewBuilder
-    private func untilRamadan(_ days: Int) -> some View {
-        if family == .systemMedium {
-            SunnahTwoZone {
-                CalBigDays(days: days, size: 48).foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
-            } secondary: {
-                calLine("حتى رمضان", WidgetType.primary(17))
-                    .frame(width: 104, alignment: .leading)
-            }
-            .foregroundStyle(calInk)
-            .sunnahCardLayout(14)
-        } else {
-            VStack(alignment: .leading, spacing: 4) {
-                CalBigDays(days: days, size: 44).foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
-                Spacer(minLength: 0)
-                calLine("حتى رمضان", WidgetType.primary(15))
-            }
-            .foregroundStyle(calInk)
-            .sunnahCardLayout(14)
-        }
-    }
-
-    private func inRamadan(_ cal: SharedCalendarPayload) -> some View {
-        VStack(alignment: .leading, spacing: 4) {
-            calLine(WidgetFormat.digits(cal.hijriDay), WidgetType.primary(44))
-                .foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
-            Spacer(minLength: 0)
-            calLine("رمضان", WidgetType.primary(17))
-        }
-        .foregroundStyle(calInk)
-        .sunnahCardLayout(14)
-    }
-
-    private var ramadanA11y: String {
-        guard let cal = entry.calendar else { return "افتح سُنّة" }
-        if cal.inRamadan { return "اليوم \(WidgetFormat.digits(cal.hijriDay)) من رمضان" }
-        if let days = cal.daysUntilRamadan { return "باقي \(WidgetFormat.days(days)) على رمضان" }
-        return "افتح سُنّة"
-    }
-}
-
-// MARK: - المناسبة القادمة
-
-struct IslamicEventView: View {
-    @Environment(\.widgetFamily) private var family
-    let entry: CatalogWidgetEntry
 
     var body: some View {
         Group {
-            if let cal = entry.calendar, let name = cal.upcomingEventNameAr, !name.isEmpty,
-               let days = cal.upcomingEventDays {
-                content(name: name, days: days, cal: cal)
+            if let p = pick {
+                content(p)
             } else {
                 CalEmpty(compact: family == .accessoryRectangular)
             }
@@ -403,47 +220,47 @@ struct IslamicEventView: View {
         .accessibilityLabel(a11y)
     }
 
-    /// تاريخ المناسبة الهجري = اليوم + عدد الأيام المتبقية (يُحسب لا يُنقل نصًّا).
-    private func target(_ cal: SharedCalendarPayload, days: Int) -> String {
-        let tz = TimeZone(identifier: cal.timezoneIdentifier) ?? .current
-        var gregorian = Calendar(identifier: .gregorian)
-        gregorian.timeZone = tz
-        let date = gregorian.date(byAdding: .day, value: max(0, days), to: entry.date) ?? entry.date
-        return HijriCalendar.short(HijriCalendar.date(date, timeZone: tz))
+    private func nameText(_ name: String, _ size: CGFloat) -> some View {
+        Text(name)
+            .font(WidgetType.primary(size))
+            .lineLimit(2)
+            .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+            .fixedSize(horizontal: false, vertical: true)
+    }
+
+    private func countLine(_ p: Pick) -> String {
+        p.inRamadan ? "اليوم \(WidgetFormat.digits(p.days))" : WidgetFormat.days(p.days)
     }
 
     @ViewBuilder
-    private func content(name: String, days: Int, cal: SharedCalendarPayload) -> some View {
+    private func content(_ p: Pick) -> some View {
         switch family {
         case .accessoryRectangular:
             SunnahTwoZone {
-                calLine(name, WidgetType.primary(15))
+                calLine(p.name, WidgetType.primary(15))
             } secondary: {
-                calLine(WidgetFormat.daysUntil(days), WidgetType.primary(15))
+                calLine(countLine(p), WidgetType.primary(15))
                     .widgetAccentable()
-                    .frame(width: 72, alignment: .leading)
+                    .frame(width: 84, alignment: .leading)
             }
         case .systemMedium:
             SunnahTwoZone {
-                VStack(alignment: .leading, spacing: 4) {
-                    calLine(name, WidgetType.primary(22))
-                    calLine(target(cal, days: days), WidgetType.secondary(13))
-                }
+                nameText(p.name, 22)
             } secondary: {
-                CalBigDays(days: days, size: 40)
+                CalBigDays(days: p.days, size: 44, inRamadan: p.inRamadan)
                     .foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
-                    .frame(width: 96, alignment: .leading)
+                    .widgetAccentable()
+                    .frame(width: 104, alignment: .leading)
             }
             .foregroundStyle(calInk)
             .sunnahCardLayout(14)
         default:
             VStack(alignment: .leading, spacing: 4) {
-                calLine(name, WidgetType.primary(18))
-                CalBigDays(days: days, size: 40).foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
+                nameText(p.name, 18)
                 Spacer(minLength: 0)
-                calLine(target(cal, days: days), WidgetType.secondary(13))
+                CalBigDays(days: p.days, size: 44, inRamadan: p.inRamadan)
+                    .foregroundStyle(SunnahBrandColors.gold)
+                    .widgetAccentable()
             }
             .foregroundStyle(calInk)
             .sunnahCardLayout(14)
@@ -451,7 +268,7 @@ struct IslamicEventView: View {
     }
 
     private var a11y: String {
-        guard let cal = entry.calendar, let name = cal.upcomingEventNameAr, let days = cal.upcomingEventDays else { return "افتح سُنّة" }
-        return "\(name) \(WidgetFormat.daysUntil(days))"
+        guard let p = pick else { return "افتح سُنّة" }
+        return p.inRamadan ? "اليوم \(WidgetFormat.digits(p.days)) من رمضان" : "\(p.name) \(WidgetFormat.daysUntil(p.days))"
     }
 }

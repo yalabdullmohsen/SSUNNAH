@@ -218,7 +218,7 @@ assert.match(entrySwift, /\.islamicUmmAlQura/, "Hijri text re-derived per entry 
 const platformSwift = read("PrayerWidget/SunnahWidgetPlatform.swift");
 assert.match(platformSwift, /enum SunnahWidgetDayRollover/);
 assert.match(platformSwift, /Calendar\(identifier: \.islamicUmmAlQura\)/, "Hijri rollover uses Umm al-Qura like JS");
-assert.match(platformSwift, /SunnahWidgetDayRollover\.calendar\(\$0, at: now\)/);
+assert.match(platformSwift, /SunnahWidgetDayRollover\.calendar\(\s*envelope\?\.calendarPayload \?\? SunnahWidgetDayRollover\.seedCalendar\(at: now, timeZone: tz\), at: now\)/);
 assert.match(platformSwift, /SunnahWidgetDayRollover\.progress\(/);
 assert.match(platformSwift, /nextMidnight\(after: now/);
 assert.match(platformSwift, /adhkarWindowBoundaries\(after: now/);

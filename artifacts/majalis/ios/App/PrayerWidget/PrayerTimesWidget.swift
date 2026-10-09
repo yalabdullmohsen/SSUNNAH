@@ -9,8 +9,8 @@ struct PrayerTimesWidget: Widget {
         StaticConfiguration(kind: kind, provider: PrayerWidgetProvider()) { entry in
             PrayerWidgetRootView(entry: entry)
         }
-        .configurationDisplayName("مواقيت الصلاة")
-        .description("الصلاة الحالية والتالية والعد التنازلي — من بيانات سُنّة المحلية.")
+        .configurationDisplayName("الصلاة القادمة")
+        .description("عدّ حيّ إلى الصلاة القادمة، ومنذ الأذان بعد دخول الوقت.")
         .supportedFamilies([
             .systemSmall,
             .systemMedium,

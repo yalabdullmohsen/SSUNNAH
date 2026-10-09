@@ -76,15 +76,6 @@ struct StandByCurrentPrayerView: View {
     }
 }
 
-struct StandByDailyQuranView: View {
-    let entry: CatalogWidgetEntry
-
-    var body: some View {
-        SunnahAyahCard(quran: entry.quran, large: true)
-            .accessibilityLabel(entry.quran.map { "آية \(WidgetFormat.digits($0.ayahNumber)) من سورة \($0.surahNameAr)" } ?? "آية اليوم")
-    }
-}
-
 struct StandByHijriDateView: View {
     let entry: CatalogWidgetEntry
 
@@ -111,40 +102,5 @@ struct StandByHijriDateView: View {
         } else {
             SunnahCalmCard(symbol: "calendar").foregroundStyle(SunnahWidgetTheme.primaryText)
         }
-    }
-}
-
-struct StandByTodayInSunnahView: View {
-    let entry: CatalogWidgetEntry
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("اليوم في سُنّة")
-                .font(.caption.bold())
-                .foregroundStyle(SunnahBrandColors.gold)
-                .widgetAccentable()
-            Text(entry.prayer.nextDisplayName ?? entry.prayer.currentNameAr ?? "الصلاة")
-                .font(.largeTitle.bold())
-                .foregroundStyle(.white)
-            PrayerCountdownText(entry: entry.prayer)
-                .font(.title.monospacedDigit().bold())
-                .foregroundStyle(SunnahBrandColors.gold)
-                .widgetAccentable()
-            Text(entry.progress?.currentAdhkarTitleAr ?? entry.adhkar?.activeTitleAr ?? "أذكار الوقت")
-                .font(.title3)
-                .foregroundStyle(.white)
-            if let mushaf = entry.mushaf, let page = mushaf.lastPage {
-                Text("المصحف · صفحة \(SunnahWidgetTimeFormatting.arabic(page))")
-                    .font(.headline)
-                    .foregroundStyle(SunnahWidgetTheme.secondaryText)
-            } else {
-                Text("هدف القراءة جاهز في سُنّة")
-                    .font(.headline)
-                    .foregroundStyle(SunnahWidgetTheme.secondaryText)
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-        .padding(16)
-        .accessibilityLabel("اليوم في سُنّة")
     }
 }
