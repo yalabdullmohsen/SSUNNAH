@@ -25,6 +25,7 @@
   "test-no-fake-counts.mjs",
   "test-no-legacy-flash.mjs",
   "test-no-ui-emoji-guard.mjs",
+  "test-quiz-quran-citations-guard.mjs",
   "test-quran-integrity-guard.mjs",
   "test-quran-quotes-guard.mjs",
   "test-router-same-origin.mjs",
@@ -114,10 +115,6 @@
   {
    "script": "test-prerender-output.mjs",
    "reason": "فشل على main: }   Node.js v24.18.0"
-  },
-  {
-   "script": "test-quiz-quran-citations-guard.mjs",
-   "reason": "فشل على main: ✗ seed-qa-627: لا يقع شيءٌ من اقتباسات الصفِّ في مرجعِه «سورة الطلاق: 6»   \u001b[31m"
   },
   {
    "script": "test-seo-html.mjs",

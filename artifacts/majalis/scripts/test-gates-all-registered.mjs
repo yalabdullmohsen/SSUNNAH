@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, "..");
-const KNOWN_BROKEN_MAX = 22;
+const KNOWN_BROKEN_MAX = 21;
 
 const reg = JSON.parse(readFileSync(join(here, "gate-registry.json"), "utf8"));
 const registered = new Set([
