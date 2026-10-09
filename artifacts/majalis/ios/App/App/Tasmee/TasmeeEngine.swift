@@ -28,7 +28,7 @@ enum TasmeeEngineEvent {
 final class TasmeeEngine {
     struct Config {
         var hopSec = 0.5
-        /// 6 ث: قياس اصطناعي (base، العتبات المعتمدة) p95 1.18 ث بدل 1.37 عند 10 ث، إنذار 1.38% وكشف 100%
+        /// 6 ث: قياس اصطناعي (base، العتبات المعتمدة) p95 1.18 ث بدل 1.37 عند 10 ث، إنذار 1.38% وكشف 100%؛ q6: p95 1.18، إنذار 1.03% وكشف 99%
         var windowSec = 6.0
         var vadRms: Float = 0.006
         var maxSessionAudioSec = 15 * 60.0
