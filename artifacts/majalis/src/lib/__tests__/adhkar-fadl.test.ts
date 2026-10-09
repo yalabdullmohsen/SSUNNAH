@@ -1,3 +1,5 @@
+// حدّ الـ160 يُقاس على النص بلا تشكيل (قرار ن3/المالك 2026-10-09): التشكيل لا يزيد عرض النص على شاشة القفل.
+// النصوص الأطول بالتشكيل (fadl-02/11/12) يتحقق يوسف على الجهاز من عدم اقتطاعها.
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
