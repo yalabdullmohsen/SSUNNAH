@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { applyPageSeo } from "@/lib/seo";
 import { Link } from "wouter";
-import { PageHeader } from "@/components/ui-common";
 import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
@@ -117,10 +116,8 @@ export function SurahStoryDetailPage({ surahNumber }: { surahNumber: number }) {
 
   return (
     <div className="sn-screen">
-    <NavigationBar title="قصص السور" large={false} />
+    <NavigationBar title={story.name} subtitle={story.revelationPlace} />
     <div className="page-shell surah-story-detail">
-      <PageHeader eyebrow={`سورة ${story.number}`} title={story.name} subtitle={story.revelationPlace} />
-
       <nav className="quran-subnav" aria-label="تنقّل أسباب النزول">
         <Link href="/quran/surah-stories" className="quran-subnav__link">← كل السور</Link>
         {prev && (

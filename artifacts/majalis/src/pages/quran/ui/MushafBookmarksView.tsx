@@ -30,7 +30,7 @@ import { getSurahMeta } from "@/lib/quran-api";
 import { toArabicIndicDigits as toArabicDigits } from "@/lib/numerals";
 import { navigateTo } from "@/lib/navigation-intent";
 import { LastReadingBookmarkCard } from "@/components/quran/LastReadingBookmarkCard";
-import { FieldError, FieldLabel } from "@/components/design-system/FormFields";
+import { FieldError, FieldLabel } from "@/design-system";
 import {
   Select,
   SelectContent,

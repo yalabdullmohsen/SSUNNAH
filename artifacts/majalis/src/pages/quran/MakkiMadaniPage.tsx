@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "wouter";
-import { PageHeader } from "@/components/ui-common";
+import { NavigationBar } from "@/design-system";
 import { EMPTY } from "@/lib/ui-copy";
 import { SurahInfoCard } from "@/components/quran/SurahInfoCard";
 import { getSurahList } from "@/lib/quran-api";
@@ -23,8 +23,9 @@ export default function MakkiMadaniPage() {
   }, [filter, query]);
 
   return (
+    <div className="sn-screen">
+    <NavigationBar title="السور المكية والمدنية" subtitle="مدخل لفهم زمن النزول وسياق الخطاب وتدرّج التشريع، مع مراعاة مواضع الخلاف بين أهل العلم." />
     <div className="ds-page makki-madani-page" dir="rtl">
-      <PageHeader eyebrow="علوم القرآن" title="السور المكية والمدنية" subtitle="مدخل لفهم زمن النزول وسياق الخطاب وتدرّج التشريع، مع مراعاة مواضع الخلاف بين أهل العلم." />
 
       <section className="ds-card revelation-rule" aria-labelledby="revelation-rule-title">
         <h2 id="revelation-rule-title">الضابط العلمي</h2>
@@ -62,6 +63,7 @@ export default function MakkiMadaniPage() {
       {surahs.length ? <div className="surah-info-grid">{surahs.map((surah) => <SurahInfoCard key={surah.number} surah={surah} />)}</div> : <div className="ds-empty"><h2>{EMPTY.searchShort}</h2><p>{EMPTY.search}</p></div>}
 
       <section className="ds-card revelation-sources"><h2>مراجع المنهج</h2><ul><li>البرهان في علوم القرآن — بدر الدين الزركشي.</li><li>الإتقان في علوم القرآن — جلال الدين السيوطي.</li><li>مناهل العرفان في علوم القرآن — محمد عبد العظيم الزرقاني.</li></ul><p>تحتاج البيانات التفصيلية لكل سورة إلى اعتماد لجنة المراجعة العلمية قبل إضافتها للعامة.</p><Link href="/mushaf">العودة إلى المصحف</Link> · <Link href="/ulum-quran">علوم القرآن</Link> · <Link href="/quran-hub">مركز القرآن الكريم</Link></section>
+    </div>
     </div>
   );
 }

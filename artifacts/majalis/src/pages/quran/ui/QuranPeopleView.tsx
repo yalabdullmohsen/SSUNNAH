@@ -15,8 +15,7 @@ import {
 } from "@/features/quran-people";
 import "@/styles/pages/quran-hub.css";
 import "@/styles/pages/quran-people.css";
-import { NavigationBar } from "@/design-system";
-import { FieldLabel } from "@/components/design-system/FormFields";
+import { NavigationBar, FieldLabel } from "@/design-system";
 import {
   Select,
   SelectContent,

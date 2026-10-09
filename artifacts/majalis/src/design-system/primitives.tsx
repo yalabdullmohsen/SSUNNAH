@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, Ref, InputHTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, HTMLAttributes, LabelHTMLAttributes, Ref, InputHTMLAttributes, ReactNode } from "react";
 import { Link } from "wouter";
 import { Icon, type DsIconName } from "./Icon";
 import { cn } from "@/lib/utils";
@@ -183,6 +183,19 @@ export function TextField({ label, id, error, className, ...input }: { label: st
       {error ? <p id={`${id}-error`} className="sn-field__error" role="alert">{error}</p> : null}
     </div>
   );
+}
+
+/** تسمية حقل مستقلة (للعناصر التي لا يغلّفها TextField: Select وغيره). */
+export function FieldLabel({ className, ...rest }: LabelHTMLAttributes<HTMLLabelElement>) {
+  // الربط بالحقل (htmlFor أو التغليف) مسؤولية المُستدعي — غلاف عام
+  // eslint-disable-next-line jsx-a11y/label-has-associated-control
+  return <label className={cn("sn-field__label", className)} {...rest} />;
+}
+
+/** رسالة خطأ حقل — role=alert؛ تُخفى إن لم يكن هناك محتوى. */
+export function FieldError({ className, children, ...rest }: HTMLAttributes<HTMLParagraphElement>) {
+  if (children == null || children === false || children === "") return null;
+  return <p role="alert" className={cn("sn-field__error", className)} {...rest}>{children}</p>;
 }
 
 export function Notice({ tone = "info", children }: { tone?: "info" | "success" | "danger"; children: ReactNode }) {
