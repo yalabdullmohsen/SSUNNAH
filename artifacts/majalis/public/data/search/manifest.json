@@ -1,12 +1,12 @@
 {
   "version": 3,
   "contentType": "search.unified",
-  "checksum": "sha256:27ddc87a93dc8d7e64e8f4feb666b21a32852956477fd997ab3132c1a73af6de",
+  "checksum": "sha256:b26771b43b2834df74189aced94473c3f80d32f5f84b8ad0730a3c6c74e665ab",
   "count": 4640,
   "files": [
     {
       "file": "index.json",
-      "bytes": 1851518,
+      "bytes": 1851510,
       "itemCount": 4640
     },
     {
@@ -138,9 +138,9 @@
     {
       "file": "shards/qa.json",
       "kind": "qa",
-      "bytes": 1141628,
+      "bytes": 1141620,
       "itemCount": 2295,
-      "checksum": "sha256:02edc128937cb0f64f5c8c57e367e3606a8bf53c14f17d497c5fdef8f87ce891"
+      "checksum": "sha256:8281ed2527897defce4ba93b9b83d531480bdf1e387df7a873ad3c6e1622915a"
     },
     {
       "file": "shards/quran.json",
