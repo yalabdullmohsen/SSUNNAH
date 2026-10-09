@@ -1,3 +1,4 @@
+import { RIGHTS_SENTENCE } from "@/data/content-sources";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { SectionLobby } from "@/components/lobby/SectionLobby";
@@ -62,6 +63,9 @@ export default function SourcesDirectoryPage() {
         {" "}عبر واجهتها البرمجية. والنص القرآني المستخدم في البحث والمطابقة من{" "}
         <a href="https://tanzil.net" target="_blank" rel="noopener noreferrer">Tanzil.net</a>
         {" "}(CC BY 3.0).
+      </p>
+      <p className="sources-policy-note" data-testid="rights-sentence">
+        {RIGHTS_SENTENCE}. <Link href="/data-licenses">المصادر والتراخيص الكاملة لكل محتوى التطبيق</Link>
       </p>
       <div className="sources-policy-note" data-testid="adhkar-fadl-attribution">
         <p>

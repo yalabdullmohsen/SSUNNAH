@@ -96,7 +96,9 @@ const sourcesPage = join(appRoot, "src/views/SourcesLicensesPage.tsx");
 if (!existsSync(sourcesPage)) {
   issues.push("SourcesLicensesPage.tsx مفقود");
 } else {
-  const sp = readFileSync(sourcesPage, "utf8");
+  // الجرد انتقل إلى بيانات الصفحة (content-sources.ts) والصفحة تعرضها؛ نفحص الاثنين معًا.
+  const dataFile = join(appRoot, "src/data/content-sources.ts");
+  const sp = readFileSync(sourcesPage, "utf8") + (existsSync(dataFile) ? readFileSync(dataFile, "utf8") : "");
   for (const needle of ["QPC", "Tanzil", "everyayah", "حصن المسلم", "LICENSES"]) {
     if (!sp.includes(needle)) issues.push(`SourcesLicensesPage ينقصه: ${needle}`);
   }
