@@ -10,7 +10,7 @@ import {
   getDayIndex,
   pickDailyItem,
 } from "@/lib/daily-content";
-import { formatHadithAttribution, getWidgetDailyAyah, getWidgetDailyHadith } from "@/lib/widget-daily-pool";
+import { formatHadithAttribution, getWidgetDailyAyah, getWidgetDailyHadith, getWidgetShortAyah } from "@/lib/widget-daily-pool";
 import { DAILY_TICKER_DHIKR } from "@/lib/daily-ticker-dhikr";
 import { ADHKAR_ITEMS } from "@/lib/adhkar-seed";
 import { resolveTimeOfDay } from "@/lib/daily-context";
@@ -203,7 +203,7 @@ export function buildSunnahWidgetEnvelope(
   const ramadan = daysUntilRamadan(now, tz);
   const timeOfDay = resolveTimeOfDay(now.getHours() + now.getMinutes() / 60);
   const adhkarMap = WIDGET_ADHKAR_BY_TIME[timeOfDay] ?? WIDGET_ADHKAR_BY_TIME.duha;
-  const ayah = getWidgetDailyAyah(now);
+  const ayah = getWidgetShortAyah(now) ?? getWidgetDailyAyah(now);
   const dhikr = getDailyDhikr(now);
   const hadith = getWidgetDailyHadith(now);
   const faidah = DAILY_FAIDA_POOL.length > 0 ? getDailyFaida(now) : null;

@@ -80,25 +80,8 @@ struct StandByDailyQuranView: View {
     let entry: CatalogWidgetEntry
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("آية اليوم")
-                .font(.caption.bold())
-                .foregroundStyle(SunnahBrandColors.gold)
-                .widgetAccentable()
-            Text(entry.quran?.ayahText ?? "افتح سُنّة لعرض الآية")
-                .font(.title3)
-                .foregroundStyle(.white)
-                .minimumScaleFactor(0.6)
-            if let quran = entry.quran {
-                Text("سورة \(quran.surahNameAr) · آية \(SunnahWidgetTimeFormatting.arabic(quran.ayahNumber))")
-                    .font(.headline)
-                    .foregroundStyle(SunnahBrandColors.gold)
-                    .widgetAccentable()
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-        .padding(16)
-        .accessibilityLabel(entry.quran.map { "آية \($0.ayahNumber) من سورة \($0.surahNameAr)" } ?? "آية اليوم")
+        SunnahAyahCard(quran: entry.quran, large: true)
+            .accessibilityLabel(entry.quran.map { "آية \(WidgetFormat.digits($0.ayahNumber)) من سورة \($0.surahNameAr)" } ?? "آية اليوم")
     }
 }
 
