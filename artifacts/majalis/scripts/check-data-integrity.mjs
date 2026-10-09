@@ -79,6 +79,11 @@ ADHKAR_ITEMS.forEach((d) => checkSchema(Dhikr, d, `adhkar ${d.id}`));
 for (const [id] of dupes(ADHKAR_ITEMS.map((d) => d.id))) errors.push(`adhkar: معرّف مكرر ${id}`);
 ids.adhkar = ADHKAR_ITEMS.map((d) => d.id);
 stats.adhkar = ADHKAR_ITEMS.length;
+const { buildNativeAdhkarBundle, NATIVE_ADHKAR_BUNDLE_PATH } = await import("../src/lib/native-adhkar-bundle.ts");
+const nativeAdhkar = path.join(ROOT, NATIVE_ADHKAR_BUNDLE_PATH);
+if (!fs.existsSync(nativeAdhkar) || fs.readFileSync(nativeAdhkar, "utf8") !== buildNativeAdhkarBundle()) {
+  errors.push(`adhkar: ${NATIVE_ADHKAR_BUNDLE_PATH} لا يطابق المصدر — شغّل node --import tsx scripts/export-native-adhkar.mjs`);
+}
 
 /* ── سجل الصوت ──────────────────────────────────────────────────── */
 const reg = readJson(path.join(DATA, "audio/audio-registry.json"));

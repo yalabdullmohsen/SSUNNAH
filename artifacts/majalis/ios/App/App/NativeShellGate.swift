@@ -76,7 +76,7 @@ enum NativeShellGate {
     }
 }
 
-/// الجذر الأصلي: المواقيت والقبلة أصليتان، وكل مسار لم يُحوَّل يُعرض في WebScreen بالمسار نفسه.
+/// الجذر الأصلي: المواقيت والقبلة والأذكار أصلية، وكل مسار لم يُحوَّل يُعرض في WebScreen بالمسار نفسه.
 struct NativeShellRoot: View {
     @StateObject private var router = AppRouter()
 
@@ -85,11 +85,16 @@ struct NativeShellRoot: View {
     }
 
     private func screen(_ route: Route) -> AnyView {
+        if let slug = AdhkarRoute.slug(from: route.path), let category = AdhkarBundle.shared.category(slug: slug) {
+            return AnyView(AdhkarListScreen(category: category))
+        }
         switch Route.normalize(route.path) {
         case AppTab.prayer.rootPath:
             return AnyView(PrayerTimesScreen())
         case "/qibla":
             return AnyView(QiblaScreen())
+        case AdhkarRoute.root:
+            return AnyView(AdhkarCategoriesScreen(onOpen: { router.open(path: $0) }))
         default:
             return AnyView(
                 WebScreen(

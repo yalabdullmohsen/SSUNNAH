@@ -11,7 +11,7 @@ let package = Package(
         .library(name: "SunnahNative", targets: ["SunnahNative"])
     ],
     targets: [
-        .target(name: "SunnahNative"),
+        .target(name: "SunnahNative", resources: [.copy("Resources/adhkar.json")]),
         .testTarget(name: "SunnahNativeTests", dependencies: ["SunnahNative"])
     ]
 )
