@@ -5,12 +5,16 @@
  *  - اختبارات الوحدة/البوابات (src/lib/__tests__ و scripts/test-*.mjs) التي تقرأ ملفًا متغيّرًا.
  *  - إن تغيّر src/design-system/** أو ui-ratchet: كل اختبار يذكر design-system.
  * الفشل يوقف الدفع. لا يعطّل أي بوابة؛ التغطية الكاملة تبقى في verify:ci وCI.
- * الاستعمال: pnpm run ci:local [-- --base origin/main] [-- --all]
+ *  - دائمًا أيضًا: كل بوابات السقوف/العدّادات (--check، budget، ratchet) المأخوذة حرفيًا من repo-gates في ci.yml،
+ *    فلا يفشل فحص سقف في CI دون أن يُرى محليًا (مثل visual-system-debt-budget).
+ *  - --full: كل الأوامر الورقية في repo-gates (مطابق لـ CI، بطيء). --plan: يطبع الخطة JSON بلا تشغيل.
+ * الاستعمال: pnpm run ci:local [-- --base origin/main] [-- --all] [-- --full] [-- --plan]
  */
 import { execFileSync, spawnSync } from "node:child_process";
 import { readdirSync, readFileSync } from "node:fs";
 import { basename, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { repoGatesLeaves, isBudgetGate } from "./ci-local-plan.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const APP = resolve(ROOT, "artifacts/majalis");
@@ -58,14 +62,22 @@ const run = (label, cmd, args, cwd = APP) => {
   return true;
 };
 
+const leaves = [...new Map(repoGatesLeaves().filter((l) => !l.optional).map((l) => [`${l.cwd}::${l.cmd}`, l])).values()];
+const budget = leaves.filter(isBudgetGate);
+if (argv.includes("--plan")) {
+  console.log(JSON.stringify({ full: leaves.map((l) => `${l.cwd}::${l.cmd}`), always: budget.map((l) => `${l.cwd}::${l.cmd}`), selected: [...selected] }, null, 1));
+  process.exit(0);
+}
+const runShell = (l) => run(l.cmd, "bash", ["-c", l.cmd], resolve(ROOT, l.cwd));
+
 const dirtyBefore = new Set(gitRaw("status", "--porcelain").split("\n"));
 let ok = true;
-ok = run("ui-ratchet", "node", ["scripts/ui-ratchet.mjs"]) && ok;
+for (const l of argv.includes("--full") ? leaves : budget) ok = runShell(l) && ok;
 for (const t of [...selected].sort()) {
   ok = run(t, "node", t.endsWith(".mjs") ? [t] : ["--import", "tsx", t]) && ok;
 }
 // الاختبارات تعيد كتابة تقارير مولَّدة؛ أعدها لحالتها قبل التشغيل
 const stray = gitRaw("status", "--porcelain").split("\n").filter((l) => l && !dirtyBefore.has(l) && /^ M .*(reports\/|docs\/)/.test(l)).map((l) => l.slice(3));
 if (stray.length) execFileSync("git", ["checkout", "--", ...stray], { cwd: ROOT });
-console.log(ok ? `ci:local OK (${selected.size} اختبارًا + ratchet)` : "ci:local FAILED — لا تدفع");
+console.log(ok ? `ci:local OK (${selected.size} اختبارًا + ${argv.includes("--full") ? leaves.length : budget.length} بوابة سقوف)` : "ci:local FAILED — لا تدفع");
 process.exit(ok ? 0 : 1);
