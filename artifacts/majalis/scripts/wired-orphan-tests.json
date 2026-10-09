@@ -2,6 +2,7 @@
   "adhan-early-stop-rca-gate.test.ts",
   "adhan-real-sounds-gate.test.ts",
   "adhan-upload-removed.test.ts",
+  "adhkar-db-verified-only-gate.test.ts",
   "adhkar-routes.test.ts",
   "audio-library-engine.test.ts",
   "ayah-ref-normalize-gate.test.ts",
