@@ -173,6 +173,7 @@ for (const unitFile of [
   "src/lib/__tests__/dhikr-phrase-reminders.test.ts",
   "src/lib/__tests__/prayer-notification-copy-sounds.test.ts",
   "src/lib/__tests__/prayer-notif-timing.test.ts",
+  "src/lib/__tests__/native-legacy-web-ids.test.ts",
 ]) {
   const unit = spawnSync(
     process.execPath,
