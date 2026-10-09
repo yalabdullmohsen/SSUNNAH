@@ -23,6 +23,14 @@ enum SunnahWidgetRegistry {
     static var kindCount: Int { Set(SunnahWidgetKind.allUnique).count }
 }
 
+/// هامش أفقي صغير لبطاقات شاشة القفل المستطيلة: بدونه يلامس النص حافة الإطار (تكشفه بوابة ios-widget-snapshot).
+struct SunnahAccessoryInset: ViewModifier {
+    @Environment(\.widgetFamily) private var family
+    func body(content: Content) -> some View {
+        content.padding(.horizontal, family == .accessoryRectangular ? 4 : 0)
+    }
+}
+
 struct SunnahWidgetChrome: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -607,15 +615,17 @@ struct SunnahRingStat: View {
     var lockScreen = false
 
     private var clamped: Double { min(1, max(0, fraction)) }
+    /// الرئيسية: خلفية داكنة ثابتة في الفاتح والداكن فلا يصحّ .primary (أسود في الفاتح). القفل: دلالي للنظام.
+    private var ink: Color { lockScreen ? .primary : SunnahWidgetTheme.primaryText }
 
     var body: some View {
         VStack(spacing: lockScreen ? 0 : 6) {
             ZStack {
                 Circle()
-                    .stroke(.primary.opacity(0.25), lineWidth: lockScreen ? 3 : 8)
+                    .stroke(ink.opacity(0.25), lineWidth: lockScreen ? 3 : 8)
                 Circle()
                     .trim(from: 0, to: clamped)
-                    .stroke(.primary, style: StrokeStyle(lineWidth: lockScreen ? 3 : 8, lineCap: .round))
+                    .stroke(ink, style: StrokeStyle(lineWidth: lockScreen ? 3 : 8, lineCap: .round))
                     .rotationEffect(.degrees(-90))
                     .widgetAccentable()
                 Text(value)
@@ -623,11 +633,13 @@ struct SunnahRingStat: View {
                     .lineLimit(1)
                     .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
                     .padding(lockScreen ? 4 : 12)
+                    .foregroundStyle(ink)
             }
             .aspectRatio(1, contentMode: .fit)
             if !lockScreen {
                 Text(caption)
                     .font(WidgetType.secondary(13))
+                    .foregroundStyle(SunnahWidgetTheme.secondaryText)
                     .lineLimit(1)
                     .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
             }

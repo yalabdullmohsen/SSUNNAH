@@ -68,9 +68,9 @@ struct HourlyAdhkarProvider: TimelineProvider {
 private struct AdhkarSurface: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOSApplicationExtension 17.0, *) {
-            content.containerBackground(for: .widget) { SunnahWidgetTheme.homeGradientDeep }
+            content.modifier(SunnahAccessoryInset()).containerBackground(for: .widget) { SunnahWidgetTheme.homeGradientDeep }
         } else {
-            content.background(SunnahWidgetTheme.homeGradientDeep)
+            content.modifier(SunnahAccessoryInset()).background(SunnahWidgetTheme.homeGradientDeep)
         }
     }
 }
@@ -270,7 +270,7 @@ struct AdhkarStreakView: View {
         let done = max(0, q.pagesCompletedToday ?? 0)
         let target = max(1, q.dailyTarget ?? 1)
         return Ring(value: WidgetFormat.digits(done), fraction: Double(min(done, target)) / Double(target),
-                    label: "قرآن من \(WidgetFormat.digits(target))")
+                    label: "القرآن: \(WidgetFormat.digits(done)) من \(WidgetFormat.digits(target))")
     }
 
     var body: some View {
@@ -306,7 +306,7 @@ struct AdhkarStreakView: View {
                         Text("سلسلة \(streak.value) \(streak.label)")
                     }
                     if let goal {
-                        Text("\(goal.label.replacingOccurrences(of: "قرآن من", with: "قرآن")) · \(goal.value)")
+                        Text(goal.label)
                     }
                 }
                 .font(WidgetType.primary(13))
@@ -315,18 +315,23 @@ struct AdhkarStreakView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
         case .systemMedium:
-            SunnahTwoZone {
-                ring(streak ?? main)
-            } secondary: {
-                if let goal { ring(goal).frame(width: 104) }
+            if let streak, let goal {
+                SunnahTwoZone {
+                    ring(streak)
+                } secondary: {
+                    ring(goal).frame(width: 104)
+                }
+                .sunnahCardLayout(12)
+            } else {
+                ring(main).sunnahCardLayout(12)
             }
-            .sunnahCardLayout(12)
         default:
             VStack(spacing: 6) {
                 ring(streak ?? main)
                 if let streak, let goal {
-                    Text("\(goal.label) · \(goal.value)".replacingOccurrences(of: "قرآن من", with: "قرآن"))
+                    Text(goal.label)
                         .font(WidgetType.secondary(13))
+                        .foregroundStyle(SunnahWidgetTheme.secondaryText)
                         .lineLimit(1)
                         .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
                         .accessibilityLabel(streak.label)

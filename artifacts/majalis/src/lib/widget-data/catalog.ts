@@ -22,3 +22,16 @@ export const WIDGET_CENTER_CATALOG: WidgetCenterCatalogItem[] = [
   { kind: "sunnah.widget.quran.ayah", nameAr: "آية أو دعاء", descriptionAr: "آية أو دعاء قصير يتجدد كل ساعة.", families: ["صغير","متوسط","كبير","قفل"], dataRequirementsAr: "مصدر القرآن المحمي + الأذكار", configurationAr: "لا", privacyClass: "public-safe", requiresAppOpen: false, deepLink: "/adhkar", section: "quran" },
   { kind: "sunnah.widget.mushaf.continue", nameAr: "المصحف", descriptionAr: "تابع القراءة من آخر موضع وصلتَ إليه.", families: ["صغير","متوسط"], dataRequirementsAr: "آخر صفحة محفوظة", configurationAr: "لا اختراع لصفحة ١", privacyClass: "local-progress", requiresAppOpen: true, deepLink: "/mushaf", section: "quran" },
 ];
+
+/** نص الحالة حين يكون نوع الودجة محذوفًا أو مجهولًا (ودجات الإصدارات السابقة). */
+export const WIDGET_CHOOSE_PLACEHOLDER_AR = "اختر ودجة";
+
+export function resolveWidgetCatalogItem(kind: unknown): WidgetCenterCatalogItem | null {
+  if (typeof kind !== "string") return null;
+  return WIDGET_CENTER_CATALOG.find((item) => item.kind === kind) ?? null;
+}
+
+/** اسم الودجة، أو «اختر ودجة» لأي نوع غير معروف — لا يرمي أبدًا. */
+export function widgetKindLabelAr(kind: unknown): string {
+  return resolveWidgetCatalogItem(kind)?.nameAr ?? WIDGET_CHOOSE_PLACEHOLDER_AR;
+}

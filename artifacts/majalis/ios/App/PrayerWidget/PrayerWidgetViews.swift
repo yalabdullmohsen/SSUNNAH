@@ -279,7 +279,7 @@ struct RectangularPrayerWidgetView: View {
 
     var body: some View {
         if entry.needsAppOpenAction {
-            SunnahCalmCard(compact: true)
+            SunnahCalmCard(compact: true).modifier(SunnahAccessoryInset())
         } else {
             SunnahTwoZone {
                 SunnahCounterFace(entry: entry, size: 24, showsIcon: false)
@@ -290,6 +290,7 @@ struct RectangularPrayerWidgetView: View {
                     .widgetAccentable()
                     .accessibilityHidden(true)
             }
+            .modifier(SunnahAccessoryInset())
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(Text(PrayerCounterA11y.label(entry)))
         }

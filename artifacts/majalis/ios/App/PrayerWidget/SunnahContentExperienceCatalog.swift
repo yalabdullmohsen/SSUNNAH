@@ -271,9 +271,9 @@ struct AyahOrDuaView: View {
 private struct AyahOrDuaSurface: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOSApplicationExtension 17.0, *) {
-            content.containerBackground(for: .widget) { SunnahWidgetTheme.homeGradientDeep }
+            content.modifier(SunnahAccessoryInset()).containerBackground(for: .widget) { SunnahWidgetTheme.homeGradientDeep }
         } else {
-            content.background(SunnahWidgetTheme.homeGradientDeep)
+            content.modifier(SunnahAccessoryInset()).background(SunnahWidgetTheme.homeGradientDeep)
         }
     }
 }

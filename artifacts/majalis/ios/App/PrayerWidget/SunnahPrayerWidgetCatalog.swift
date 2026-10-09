@@ -19,9 +19,9 @@ struct AllPrayerTimesWidget: Widget {
 private struct CatalogSurface: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOSApplicationExtension 17.0, *) {
-            content.containerBackground(for: .widget) { SunnahWidgetTheme.homeGradient }
+            content.modifier(SunnahAccessoryInset()).containerBackground(for: .widget) { SunnahWidgetTheme.homeGradient }
         } else {
-            content.background(SunnahWidgetTheme.homeGradient)
+            content.modifier(SunnahAccessoryInset()).background(SunnahWidgetTheme.homeGradient)
         }
     }
 }

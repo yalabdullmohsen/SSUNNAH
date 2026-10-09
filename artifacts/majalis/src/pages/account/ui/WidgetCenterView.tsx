@@ -24,7 +24,7 @@ import { loadLastPageSync } from "@/lib/quran-last-page";
 import { getMyBookmarks } from "@/lib/quran-my-bookmarks";
 import { buildSunnahWidgetEnvelope, publishSunnahWidgetEnvelope } from "@/lib/plugins/sunnah-widget-envelope-publish";
 import { getAppGroupAvailability, lastWidgetPublicationEpochMs } from "@/lib/widget-data/repository";
-import { WIDGET_CENTER_CATALOG } from "@/lib/widget-data/catalog";
+import { WIDGET_CENTER_CATALOG, WIDGET_CHOOSE_PLACEHOLDER_AR } from "@/lib/widget-data/catalog";
 import { WIDGET_CENTER_STATE_COPY, type WidgetCenterUxState } from "@/lib/widget-data/center-state";
 import { loadWidgetPreferences, saveWidgetPreferences } from "@/lib/widget-data/preferences";
 import {
@@ -502,7 +502,7 @@ export default function WidgetCenterView() {
               <ul className="kp-list">
                 {selections.map((row) => (
                   <li key={row.id}>
-                    <strong>{row.widgetInstanceId}</strong> · {row.contentType} · {row.contentId}
+                    <strong>{row.widgetInstanceId}</strong> · {(WIDGET_CUSTOM_CONTENT_TYPES as readonly string[]).includes(row.contentType) ? `${row.contentType} · ${row.contentId}` : WIDGET_CHOOSE_PLACEHOLDER_AR}
                     <Button
                       type="button"
                       variant="ghost"
