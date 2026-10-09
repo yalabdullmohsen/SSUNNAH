@@ -3701,9 +3701,9 @@ export const ADHKAR_ITEMS: AdhkarItem[] = [
   },
 ];
 
-function isWeakAdhkarGrade(grade?: string): boolean {
+export function isWeakAdhkarGrade(grade?: string): boolean {
   const g = (grade || "").trim();
-  return !!g && /ضعيف|موضوع|منكر|واه/.test(g);
+  return !!g && /ضعيف|موضوع|منكر|واه|غير\s*مسند/.test(g);
 }
 
 /** للعامة: يستبعد الأذكار المصرَّح بضعفها. */
