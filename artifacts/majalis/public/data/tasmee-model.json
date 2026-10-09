@@ -1,0 +1,5 @@
+{
+  "modelId": "tasmee-whisper-base-ar-quran-coreml",
+  "archiveUrl": "https://github.com/yalabdullmohsen/SSUNNAH/releases/download/whisper-quran-coreml-v1/sunnah-whisper-base-ar-quran-coreml.zip",
+  "notes": "رابط أرشيف نموذج التسميع — يُبدَّل بلا إصدار تطبيق. يُطبَّق على modelId المطابق فقط، وSHA-256 والحجم مثبَّتان في التطبيق فيُرفض أي أرشيف مختلف."
+}
