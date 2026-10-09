@@ -92,8 +92,10 @@ export function selectionNeedles(appFiles, pkgDiff = "") {
  * يلتقط تعديل generate-seo.mjs دون إيداع الصفحات المولَّدة (سبب فشل build المتكرر). المخرجات المعاد توليدها تبقى للإيداع.
  */
 export function seoPrerenderDrift(appDir, generator = ["--import", "tsx", "scripts/generate-seo.mjs"]) {
-  const gen = spawnSync("node", generator, { cwd: appDir, encoding: "utf8" });
+  // خطاف pre-push يصدّر GIT_DIR/GIT_INDEX_FILE؛ نحذفها ليُكتشف المستودع من appDir نفسه
+  const env = Object.fromEntries(Object.entries(process.env).filter(([k]) => !k.startsWith("GIT_")));
+  const gen = spawnSync("node", generator, { cwd: appDir, encoding: "utf8", env });
   if (gen.status !== 0) return { ok: false, files: [], error: `${gen.stdout}${gen.stderr}`.split("\n").slice(-8).join("\n") };
-  const d = spawnSync("git", ["diff", "--exit-code", "--name-only", "--", "seo-prerender"], { cwd: appDir, encoding: "utf8" });
+  const d = spawnSync("git", ["diff", "--exit-code", "--name-only", "--", "seo-prerender"], { cwd: appDir, encoding: "utf8", env });
   return { ok: d.status === 0, files: d.stdout.split("\n").filter(Boolean) };
 }

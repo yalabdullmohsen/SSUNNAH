@@ -13,6 +13,8 @@ import { seoPrerenderDrift } from "../../../../../scripts/ci-local-plan.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../../../..");
 const dir = mkdtempSync(join(tmpdir(), "ci-local-seo-"));
+// داخل خطاف git تُورَّث GIT_DIR/GIT_INDEX_FILE فتصيب المستودع الحقيقي؛ عزل تام للمستودع المؤقت
+for (const k of Object.keys(process.env)) if (k.startsWith("GIT_")) delete process.env[k];
 try {
   const git = (...a: string[]) => execFileSync("git", ["-c", "user.name=t", "-c", "user.email=t@t", ...a], { cwd: dir });
   git("init", "-q");
