@@ -8,6 +8,7 @@ import { loadNotifPrefs, type NotifPrefs } from "@/lib/local-notifications";
 import { loadSunnahNotificationPrefs } from "@/lib/sunnah-notifications/preferences";
 import { getActivePrayerLocation } from "@/lib/prayer-location-prefs";
 import { getPrayerTimes } from "@/lib/prayer-times";
+import { publishNativeNotificationOptIn } from "@/lib/plugins/sunnah-shared-data";
 import { CHANNEL_GENERAL } from "@/lib/notifications/channels";
 import {
   REMINDER_CATEGORIES,
@@ -176,6 +177,11 @@ async function syncOnce(): Promise<number> {
   const pending = (await LocalNotifications.getPending()).notifications ?? [];
   const ours = pending.filter((n) => n.id >= ADHKAR_ID_BASE && n.id <= ADHKAR_ID_MAX);
   if (ours.length) await LocalNotifications.cancel({ notifications: ours.map((n) => ({ id: n.id })) });
+  // opt-in للأصلي: الأذكار فقط (الصلاة تبقى على جدولة الويب من المحرك). إن كان الأصلي فعّالًا يملك الأذكار
+  // ويتنحّى الويب عن جدولتها لئلا يصل إشعاران لنفس الذكر؛ وإن أُطفئ العلم عن بُعد يعود الويب كما كان.
+  const adhkarOn = reminderGroups().adhkar && perm.display === "granted";
+  const native = await publishNativeNotificationOptIn({ prayer: false, adhkar: adhkarOn });
+  if (native?.nativeEnabled) return 0;
   if (perm.display !== "granted") return 0;
   const plan = await planForDevice({ budget: computeAdhkarBudget(pending) });
   if (!plan.length) return 0;

@@ -45,6 +45,7 @@
   "content-audit-b077-durus-mutanawwia-bodies-gate.test.ts",
   "content-excellence-fawaid-gate.test.ts",
   "content-excellence-wave12-gate.test.ts",
+  "content-hold-gate.test.ts",
   "content-quality-r7-gate.test.ts",
   "copy-quality-gate.test.ts",
   "daily-context.test.ts",

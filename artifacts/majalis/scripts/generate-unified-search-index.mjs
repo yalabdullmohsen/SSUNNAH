@@ -16,6 +16,8 @@ const { LIBRARY_CATALOG } = await import("../src/lib/library-catalog.ts");
 const { getSurahList } = await import("../src/lib/quran-api.ts");
 const { normalizeArabic } = await import("../src/shared/arabic-normalize.ts");
 const { ADHKAR_CATEGORIES, getAllAdhkarItems } = await import("../src/lib/adhkar-seed.ts");
+const { isHeld } = await import("../src/lib/content-hold.ts");
+const { isBlockedFromPublic } = await import("../src/lib/content-display-zones.ts");
 const { NATIONS } = await import("../src/lib/nations-seed.ts");
 const { PROPHETS } = await import("../src/lib/prophets-data.ts");
 const { MUSHAF_TAFSIR_EDITIONS } = await import("../src/lib/quran-data/tafsir-editions.ts");
@@ -57,6 +59,8 @@ function push(d) {
 }
 
 function pushDoc(id, kind, titleAr, href, parts = [], meta) {
+  // إيقاف العرض: المعرّف بعد البادئة (kind:id) أو المعرّف كله
+  if (isHeld(id) || isHeld(String(id).split(":").slice(1).join(":"))) return;
   const clean = String(href || "").split("?")[0].split("#")[0];
   if (REDIRECT_HREFS.has(clean) || clean === "/qa" || clean.startsWith("/qa/")) return;
   if (BLOCKED_SEARCH_HREFS.has(clean)) return;
@@ -137,6 +141,8 @@ for (const c of ADHKAR_CATEGORIES) {
 for (const a of getAllAdhkarItems()) {
   const title = (a.text || "").slice(0, 72);
   if (!title) continue;
+  // ضعيف/غير مسند/بلا مصدر لا يدخل فهرس البحث العام
+  if (isBlockedFromPublic(a)) continue;
   pushDoc(
     `adhkar:${a.id}`,
     "adhkar",

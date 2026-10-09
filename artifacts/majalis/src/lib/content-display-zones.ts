@@ -1,6 +1,7 @@
 /**
  * مناطق عرض المحتوى الشرعي — يمنع الضعيف/غير الثابت من الواجهة العامة.
  */
+import { isHeld } from "./content-hold";
 
 export type DisplayZone =
   | "home"
@@ -52,7 +53,7 @@ export const PUBLIC_WEAK_PHRASES = [
 export function isWeakGrade(grade?: string): boolean {
   const g = (grade || "").trim();
   if (!g) return false;
-  return WEAK_GRADE.test(g) || /ضعيف|موضوع|منكر|واه|لا\s*يصح/.test(g);
+  return WEAK_GRADE.test(g) || /ضعيف|موضوع|منكر|واه|لا\s*يصح|غير\s*مسند/.test(g);
 }
 
 export function hasWeakSourceMarker(source?: string): boolean {
@@ -61,7 +62,8 @@ export function hasWeakSourceMarker(source?: string): boolean {
 }
 
 /** هل يُمنع هذا المحتوى من مناطق العرض العامة؟ */
-export function isBlockedFromPublic(record: Pick<ScholarlyContentRecord, "text" | "source" | "grade">): boolean {
+export function isBlockedFromPublic(record: Pick<ScholarlyContentRecord, "text" | "source" | "grade"> & { id?: string }): boolean {
+  if (isHeld(record.id)) return true;
   if (isWeakGrade(record.grade)) return true;
   if (hasWeakSourceMarker(record.source)) return true;
   const zones = record as ScholarlyContentRecord;

@@ -3,8 +3,10 @@
  * التشغيل: pnpm exec tsx src/lib/__tests__/fiqh-books-gates.test.ts
  */
 import { existsSync, readFileSync } from "node:fs";
+import { isHeld } from "../content-hold";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { stripFiqhTemplate } from "../fiqh-books";
 import {
   FIQH_CATEGORY_ORDER,
   FIQH_SUPPORTING_TOPICS,
@@ -107,6 +109,7 @@ console.log("\n=== ٢) أبواب ومسائل منشورة موثَّقة ===")
 {
   let chapters = 0;
   let lessons = 0;
+  let held = 0;
   const chapterKeys = new Set<string>();
   const lessonIds = new Set<string>();
   for (const b of getAllFiqhBooks()) {
@@ -124,6 +127,11 @@ console.log("\n=== ٢) أبواب ومسائل منشورة موثَّقة ===")
         assert(!lessonIds.has(l.id), `مسألة فريدة: ${l.id}`);
         lessonIds.add(l.id);
         assert(l.bookId === b.id && l.chapterId === c.id, `ربط المسألة ${l.id}`);
+        if (isHeld(l.id)) {
+          held++;
+          assert(!isPublishedLesson(l), `مسألة موقوفة لا تُنشر: ${l.id}`);
+          continue;
+        }
         assert(isPublishedLesson(l), `مسألة منشورة: ${l.id}`);
       }
       assert(publishedChapters(b).some((x) => x.id === c.id), `الباب ظاهر في ${b.id}`);
@@ -132,7 +140,7 @@ console.log("\n=== ٢) أبواب ومسائل منشورة موثَّقة ===")
   assert(chapters >= 200, `أبواب كافية (الفعلي ${chapters})`);
   assert(lessons >= 400, `مسائل كافية (الفعلي ${lessons})`);
   assert(listPublishedChapters().length === chapters, "listPublishedChapters يغطي الكل");
-  assert(listPublishedLessons().length === lessons, "listPublishedLessons يغطي الكل");
+  assert(listPublishedLessons().length === lessons - held, "listPublishedLessons يغطي الكل");
 }
 
 console.log("\n=== ٣) aliases للكتب المدمجة ===");
@@ -186,6 +194,15 @@ console.log("\n=== ٧) المساندة لا تُخلط بشبكة الكتب ==
   const supportTitles = FIQH_SUPPORTING_TOPICS.map((t) => t.title);
   assert(new Set(supportTitles).size === supportTitles.length, "عناوين المساندة فريدة");
   assert(!supportTitles.includes("المكتبة العلمية"), "لا بطاقة المكتبة العلمية");
+}
+
+{
+  const raw = "قال ﷺ: «إنما الأعمال بالنيات» متفق عليه. وعمل أهل العلم في المذهب الحنبلي جارٍ على الجمع بين النص وفقه الإمام أحمد رحمه الله.";
+  const out = stripFiqhTemplate(raw);
+  assert(out.includes("متفق عليه") && !out.includes("جارٍ على الجمع"), "جملة القالب تُخفى والدليل يبقى");
+  assert(stripFiqhTemplate("يُعرض الأدب هنا على طريقة فقهاء الحنابلة مع الاستناد إلى النصوص، دون اختراع أحكام.") === "", "ملاحظة المذهب القالبية تُخفى");
+  const all = listPublishedLessons().filter((h) => /وعمل أهل العلم في المذهب الحنبلي جارٍ/.test(stripFiqhTemplate(h.lesson.evidence)));
+  assert(all.length === 0, "لا درس منشور يعرض جملة القالب بعد التنقية");
 }
 
 console.log(`\nالنتيجة: ${passed} نجاح / ${failed} فشل`);

@@ -1,6 +1,7 @@
 import Foundation
 import Capacitor
 import WidgetKit
+import SunnahPrayer
 
 /// Capacitor bridge — publish non-secret prayer/progress snapshots into App Group
 /// for future Widget / Watch / Live Activity readers.
@@ -15,7 +16,31 @@ public class SunnahSharedDataPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "publishWidgetEnvelope", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "readPrayerSnapshot", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "readWidgetDiagnostics", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "publishNotificationOptIn", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "getNativeNotificationsState", returnType: CAPPluginReturnPromise),
     ]
+
+    /// الويب يكتب موافقة المستخدم (تفعيل/إيقاف تذكير الصلاة أو الأذكار من الإعدادات) ثم يطبّقها الأصلي فورًا.
+    /// بلا هذا الاستدعاء لا يجدول الأصلي شيئًا (opt-in)، والعلم المستقل off يعيد الجدولة كلها إلى الويب.
+    @objc func publishNotificationOptIn(_ call: CAPPluginCall) {
+        guard let defaults = SunnahAppGroup.defaults else {
+            call.resolve(["ok": false, "nativeEnabled": NativeNotificationsGate.isEnabled])
+            return
+        }
+        let optIn = NativeNotificationsOptIn(
+            prayer: call.getBool("prayer") ?? false,
+            adhkar: call.getBool("adhkar") ?? false
+        )
+        optIn.write(to: defaults)
+        let enabled = NativeNotificationsGate.isEnabled
+        NativeNotificationsLifecycle.didBecomeActive(notificationsEnabled: enabled, optIn: optIn)
+        call.resolve(["ok": true, "nativeEnabled": enabled])
+    }
+
+    /// حالة العلم المستقل (لا علاقة له بعلم الصدفة) — الويب يقرّر منها هل يتنحّى عن جدولة المجموعات الأصلية.
+    @objc func getNativeNotificationsState(_ call: CAPPluginCall) {
+        call.resolve(["nativeEnabled": NativeNotificationsGate.isEnabled])
+    }
 
     @objc func getAppGroupId(_ call: CAPPluginCall) {
         call.resolve([

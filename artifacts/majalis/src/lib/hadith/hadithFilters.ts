@@ -69,6 +69,7 @@ export function isHadithPromotable(item: HadithRecord): boolean {
   if (!item.grade?.trim()) return false;
   if (classifyHadithGrade(item.grade) === "unknown") return false;
   return !isBlockedFromPublic({
+    id: item.id,
     text: item.text,
     source: item.source_name ?? undefined,
     grade: item.grade ?? undefined,
