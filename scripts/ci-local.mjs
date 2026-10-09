@@ -7,6 +7,7 @@
  * الفشل يوقف الدفع. لا يعطّل أي بوابة؛ التغطية الكاملة تبقى في verify:ci وCI.
  *  - دائمًا أيضًا: كل بوابات السقوف/العدّادات (--check، budget، ratchet) المأخوذة حرفيًا من repo-gates في ci.yml،
  *    فلا يفشل فحص سقف في CI دون أن يُرى محليًا (مثل visual-system-debt-budget).
+ *  - دائمًا: generate-seo.mjs ثم git diff --exit-code على seo-prerender (كما في build).
  *  - --full: كل الأوامر الورقية في repo-gates (مطابق لـ CI، بطيء). --plan: يطبع الخطة JSON بلا تشغيل.
  * الاستعمال: pnpm run ci:local [-- --base origin/main] [-- --all] [-- --full] [-- --plan]
  */
@@ -14,7 +15,7 @@ import { execFileSync, spawnSync } from "node:child_process";
 import { readdirSync, readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { repoGatesLeaves, isBudgetGate, selectionNeedles } from "./ci-local-plan.mjs";
+import { repoGatesLeaves, isBudgetGate, selectionNeedles, seoPrerenderDrift } from "./ci-local-plan.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const APP = resolve(ROOT, "artifacts/majalis");
@@ -78,6 +79,12 @@ const runShell = (l) => run(l.cmd, "bash", ["-c", l.cmd], resolve(ROOT, l.cwd));
 const dirtyBefore = new Set(gitRaw("status", "--porcelain").split("\n"));
 let ok = true;
 for (const l of argv.includes("--full") ? leaves : budget) ok = runShell(l) && ok;
+const seo = seoPrerenderDrift(APP);
+if (seo.ok) console.log("✓ seo-prerender مطابق لـ generate-seo.mjs (git diff --exit-code)");
+else {
+  ok = false;
+  console.error(`✗ seo-prerender لا يطابق generate-seo.mjs — أودِع الصفحات المعاد توليدها:\n${seo.error ?? seo.files.join("\n")}`);
+}
 for (const t of [...selected].sort()) {
   ok = run(t, "node", t.endsWith(".mjs") ? [t] : ["--import", "tsx", t]) && ok;
 }
