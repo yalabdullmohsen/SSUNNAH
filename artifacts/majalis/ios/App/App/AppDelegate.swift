@@ -47,11 +47,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 16.4, *) {
             cacheTypes.insert(WKWebsiteDataTypeServiceWorkerRegistrations)
         }
+        // يُنتظر اكتمال المسح قبل أن يبدأ تحميل الويب (وإلا مُسح الـCSS/الـJS أثناء التحميل الأول
+        // فظهرت الصفحة خامة). المهلة قصوى حتى لا يتعلّق الإقلاع؛ تُدار الحلقة الرئيسة
+        // لأن مُعالِج الاكتمال يُستدعى على الخيط الرئيسي (semaphore كان سيُجمّده).
+        var done = false
         WKWebsiteDataStore.default().removeData(
             ofTypes: cacheTypes,
             modifiedSince: Date.distantPast
-        ) {}
+        ) { done = true }
+        let deadline = Date().addingTimeInterval(Self.purgeTimeout)
+        while !done && Date() < deadline {
+            RunLoop.current.run(mode: .default, before: Date().addingTimeInterval(0.01))
+        }
+        if !done { NSLog("[AppDelegate] web cache purge exceeded %.1fs — continuing launch", Self.purgeTimeout) }
     }
+
+    /// المهلة القصوى لانتظار مسح كاش الويب عند أول تشغيل لبناء جديد.
+    static let purgeTimeout: TimeInterval = 2.0
 
     @objc private func handleMediaServicesReset(_ notification: Notification) {
         NSLog("[AppDelegate] AVAudioSession media services were reset — WebView plugins must reconfigure")

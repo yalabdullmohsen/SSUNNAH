@@ -633,6 +633,12 @@ ok(
 );
 ok(!/register\(defaults/.test(nativeGate) && !/native_shell_enabled[^\n]*true/.test(nativeGate), "لا تفعيل افتراضي لـnative_shell_enabled");
 
+const appDelegate = readFileSync(join(iosApp, "App", "AppDelegate.swift"), "utf8");
+ok(
+  /removeData\([\s\S]*?\)\s*\{\s*done = true\s*\}/.test(appDelegate) && /purgeTimeout/.test(appDelegate) && /RunLoop\.current\.run/.test(appDelegate),
+  "مسح كاش الويب ينتظر اكتماله بمهلة قصوى قبل تحميل الويب (لا completion فارغ)",
+);
+
 if (failed) {
   console.error(`\n${failed} gate(s) failed`);
   process.exit(1);
