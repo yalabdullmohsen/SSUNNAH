@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = NetworkService.shared
         purgeWebCachesOncePerAppBuild()
         NativeShellGate.installIfEnabled(in: window)
+        NativeShellGate.refreshRemoteSwitch()
         NativeNotificationsLifecycle.didFinishLaunching(nativeShellEnabled: NativeShellGate.isEnabled)
         NotificationCenter.default.addObserver(
             self,

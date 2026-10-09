@@ -11,8 +11,32 @@ import SunnahWeb
 enum NativeShellGate {
     static let defaultsKey = "native_shell_enabled"
 
+    /// القيمة الافتراضية المجمَّعة في البناء. تبقى false حتى قرار الشحن (12 أكتوبر)؛ يقلبها PR الـRC وحده.
+    static let compiledDefault = false
+
+    /// مفتاح الإيقاف عن بُعد: `{"enabled": false}` في native-shell.json يعطّل الصدفة والإشعارات الأصلية
+    /// في الجلسة التالية حتى لو فُعِّلت صراحةً. غياب الملف أو فشل الشبكة لا يغيّر شيئًا (آخر قيمة مخزّنة).
+    static let remoteKey = "native_shell_remote_enabled"
+    static let remoteURL = URL(string: "https://www.ssunnah.com/native-shell.json")!
+
+    /// أولوية: الإيقاف عن بُعد ← اختيار الجهاز الصريح (اختبار) ← القيمة المجمَّعة.
     static var isEnabled: Bool {
-        UserDefaults.standard.bool(forKey: defaultsKey)
+        let d = UserDefaults.standard
+        if let remote = d.object(forKey: remoteKey) as? Bool, !remote { return false }
+        if let explicit = d.object(forKey: defaultsKey) as? Bool { return explicit }
+        return compiledDefault
+    }
+
+    /// يجلب مفتاح الإيقاف ويخزّنه؛ يُستدعى عند الإطلاق والتفعيل.
+    static func refreshRemoteSwitch() {
+        var request = URLRequest(url: remoteURL, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 8)
+        request.httpMethod = "GET"
+        URLSession.shared.dataTask(with: request) { data, response, _ in
+            guard let data, (response as? HTTPURLResponse)?.statusCode == 200,
+                  let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                  let enabled = json["enabled"] as? Bool else { return }
+            UserDefaults.standard.set(enabled, forKey: remoteKey)
+        }.resume()
     }
 
     /// يستبدل جذر النافذة بالصدفة الأصلية عند تفعيل المفتاح؛ وإلا لا يمس شيئًا.
