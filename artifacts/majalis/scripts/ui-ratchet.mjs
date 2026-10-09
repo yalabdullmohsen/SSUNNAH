@@ -10,6 +10,7 @@ import { readdirSync, readFileSync, statSync, writeFileSync, existsSync } from "
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { OLD_IMPORT } from "./ui-legacy-list.mjs";
+import { TOKEN_DEFINITION_FILES } from "./ui-token-definition-files.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const src = join(root, "src");
@@ -30,6 +31,8 @@ const rel = (f) => relative(root, f).split("\\").join("/");
 /* ملفات تعريف الرموز مستثناة من عدّ الألوان/القيم */
 const TOKEN_FILES = /(^|\/)(design-system\/design-system\.css|styles\/(brand-v4|design-tokens|card-system-tokens|breakpoints|font-system|font-faces-deferred|fonts-quran)\.css|lib\/theme\.ts)$/;
 const NEW_SYSTEM = /^src\/design-system\//;
+/* ملفات تعريف رموز صِرفة (حارسها اختبار يمنع أي لون خام خارج تصريح متغيّر) */
+const DEFINITION_ONLY = new Set(TOKEN_DEFINITION_FILES);
 const NAV_BAR = /^src\/design-system\/(navigation\.tsx|shell\/)/;
 
 const files = walk(src).map((f) => ({ rel: rel(f), text: readFileSync(f, "utf8") }));
@@ -52,6 +55,7 @@ const m = {
 
 for (const f of [...code, ...css]) {
   if (TOKEN_FILES.test(f.rel) || NEW_SYSTEM.test(f.rel)) continue;
+  if (DEFINITION_ONLY.has(f.rel)) continue;
   const t = stripComments(f.text);
   m.hexOutsideTokens += count(/#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b(?![\w-])/g, t);
   for (const d of t.matchAll(/(?:padding|margin|gap|border-radius)[\w-]*\s*:\s*([^;}"'`]+)/g)) {
