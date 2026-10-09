@@ -14,8 +14,11 @@ public enum NativeNotifications {
         now: Date = Date()
     ) async -> (prayer: Int, general: Int) {
         let isGeneral: (String) -> Bool = { $0.hasPrefix(GeneralNotificationPlanner.idPrefix) }
+        let options = GeneralNotificationOptions.read(from: defaults)
+        let legacy = LegacyWebNotifications.identifiers(replacedBy: options)
         let before = await center.pendingNotificationRequests()
-        center.removePendingNotificationRequests(withIdentifiers: before.map(\.identifier).filter(isGeneral))
+        center.removePendingNotificationRequests(
+            withIdentifiers: before.map(\.identifier).filter { isGeneral($0) || legacy.contains($0) })
 
         let prayer = await PrayerNotificationScheduler.reschedule(center: center, defaults: defaults, now: now)
         let settings = await center.notificationSettings()
@@ -25,7 +28,7 @@ public enum NativeNotifications {
         let prefs = PrayerPreferencesStore.read(from: defaults) ?? PrayerPreferences()
         let planned = GeneralNotificationPlanner.plan(
             location: prefs.location, settings: prefs.settings,
-            options: GeneralNotificationOptions.read(from: defaults),
+            options: options,
             events: NotificationEvent.read(from: defaults), now: now,
             capacity: max(0, PrayerNotificationBudget.iosPendingLimit - used))
 
