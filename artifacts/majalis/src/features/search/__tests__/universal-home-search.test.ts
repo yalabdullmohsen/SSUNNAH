@@ -67,7 +67,7 @@ await runUniversalSearch("الصلاة");
 
 {
   const home = read("pages/account/ui/HomeView.tsx");
-  assert.match(home, /HomeUniversalSearch/);
+  // الرئيسية لم تعد تركّب HomeUniversalSearch مباشرة (استُبدلت بـHomeHeroLcp)؛ يبقى فحص سلوك المكوّن نفسه أدناه
   const comp = read("components/home/HomeUniversalSearch.tsx");
   assert.match(comp, /UNIVERSAL_DEBOUNCE_MS/);
   assert.match(comp, /آخر عمليات البحث/);
