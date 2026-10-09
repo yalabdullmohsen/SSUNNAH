@@ -1,3 +1,4 @@
+import SunnahWidgetKit
 import SwiftUI
 import WidgetKit
 
@@ -233,39 +234,56 @@ struct QuranDailyGoalView: View {
     var body: some View {
         Group {
             if let quran = entry.quran, quran.hasCanonicalGoal == true {
-                let done = quran.pagesCompletedToday ?? 0
+                let done = max(0, quran.pagesCompletedToday ?? 0)
                 let target = max(1, quran.dailyTarget ?? 1)
-                if family == .accessoryCircular {
-                    VStack(spacing: 2) {
-                        Text("\(SunnahWidgetTimeFormatting.arabic(done))/\(SunnahWidgetTimeFormatting.arabic(target))")
-                            .font(.caption.bold())
-                        Text("ورد")
-                            .font(.caption2)
-                    }
-                } else {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("هدف اليوم")
-                            .font(.caption.bold())
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.8)
-                            .foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
-                        Text("\(SunnahWidgetTimeFormatting.arabic(done)) من \(SunnahWidgetTimeFormatting.arabic(target))")
-                            .font(.title2.bold())
-                            .foregroundStyle(.white)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.7)
-                        ProgressView(value: Double(min(done, target)), total: Double(target))
-                            .tint(SunnahBrandColors.gold)
-                    }
-                    .sunnahCardLayout(12)
-                }
+                content(done: done, target: target)
             } else {
-                SunnahWidgetEmptyState(message: "حدّد هدف القراءة في سُنّة ليظهر هنا")
+                SunnahCalmCard(symbol: "book.closed", phrase: "افتح سُنّة", compact: family == .accessoryCircular)
             }
         }
         .modifier(QuranSurface())
         .accessibilityLabel("هدف القرآن اليوم")
+    }
+
+    @ViewBuilder
+    private func content(done: Int, target: Int) -> some View {
+        let fraction = Double(min(done, target)) / Double(target)
+        let caption = "من \(WidgetFormat.digits(target))"
+        switch family {
+        case .accessoryCircular:
+            SunnahRingStat(value: WidgetFormat.digits(done), fraction: fraction, caption: caption, lockScreen: true)
+        case .accessoryRectangular:
+            HStack(spacing: 8) {
+                SunnahRingStat(value: WidgetFormat.digits(done), fraction: fraction, caption: caption, lockScreen: true)
+                    .frame(width: 44)
+                Text("هدف القرآن \(caption)")
+                    .font(WidgetType.primary(13))
+                    .lineLimit(1)
+                    .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        case .systemMedium:
+            SunnahTwoZone {
+                SunnahRingStat(value: WidgetFormat.digits(done), fraction: fraction, caption: caption)
+            } secondary: {
+                VStack(spacing: 6) {
+                    Image(systemName: "book.fill")
+                        .font(WidgetType.icon(22))
+                        .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
+                        .accessibilityHidden(true)
+                    Text("هدف القرآن")
+                        .font(WidgetType.secondary(13))
+                        .lineLimit(1)
+                        .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                }
+                .frame(width: 84)
+            }
+            .sunnahCardLayout(12)
+        default:
+            SunnahRingStat(value: WidgetFormat.digits(done), fraction: fraction, caption: caption)
+                .sunnahCardLayout(12)
+        }
     }
 }
 

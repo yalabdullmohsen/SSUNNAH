@@ -615,6 +615,45 @@ struct SunnahCalmCard: View {
     }
 }
 
+/// رقم كبير واحد داخل حلقة نظيفة + تسمية ≤ كلمتين (هدف القرآن، سلسلة الأذكار).
+struct SunnahRingStat: View {
+    let value: String
+    let fraction: Double
+    let caption: String
+    var lockScreen = false
+
+    private var clamped: Double { min(1, max(0, fraction)) }
+
+    var body: some View {
+        VStack(spacing: lockScreen ? 0 : 6) {
+            ZStack {
+                Circle()
+                    .stroke(.primary.opacity(0.25), lineWidth: lockScreen ? 3 : 8)
+                Circle()
+                    .trim(from: 0, to: clamped)
+                    .stroke(.primary, style: StrokeStyle(lineWidth: lockScreen ? 3 : 8, lineCap: .round))
+                    .rotationEffect(.degrees(-90))
+                    .widgetAccentable()
+                Text(value)
+                    .font(WidgetType.primary(lockScreen ? 16 : 30))
+                    .lineLimit(1)
+                    .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                    .padding(lockScreen ? 4 : 12)
+            }
+            .aspectRatio(1, contentMode: .fit)
+            if !lockScreen {
+                Text(caption)
+                    .font(WidgetType.secondary(13))
+                    .lineLimit(1)
+                    .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(value) \(caption)")
+    }
+}
+
 /// خلية وقت في الشبكة: الاسم فوق الوقت؛ القادمة بكبسولة مملوءة، والمنتهية بشفافية أقل.
 struct PrayerGridCell: View {
     let key: PrayerSlotKey
