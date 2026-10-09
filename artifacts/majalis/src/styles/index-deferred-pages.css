@@ -3515,3 +3515,13 @@ html.dark .sq-header :where(*) {
   border-radius: var(--radius-card) !important;
 }
 
+.cs-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--sn-s3); }
+.cs-item { background: var(--sn-surface-2); border-radius: var(--sn-r-md); padding: var(--sn-s4); color: var(--sn-text-primary); overflow-wrap: anywhere; }
+.cs-item__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sn-s2); margin-block-end: var(--sn-s2); }
+.cs-item__row { margin: 0 0 var(--sn-s1); line-height: var(--sn-lh-body, 1.7); color: var(--sn-text-secondary); }
+.cs-item__key { color: var(--sn-text-primary); font-weight: var(--sn-fw-semibold, 600); }
+.cs-item__link { display: inline-block; color: var(--sn-primary); overflow-wrap: anywhere; }
+.cs-badge { border-radius: var(--sn-r-pill); padding: var(--sn-s1) var(--sn-s3); background: var(--sn-surface); color: var(--sn-text-primary); border: 1px solid var(--sn-separator); }
+.cs-badge[data-status="unknown"] { border-color: var(--sn-warning); }
+.cs-rights { margin: 0; padding: var(--sn-s4); border-radius: var(--sn-r-md); background: var(--sn-surface-2); color: var(--sn-text-primary); font-weight: var(--sn-fw-semibold, 600); line-height: var(--sn-lh-body, 1.8); }
+.cs-unknown { margin: 0; padding-inline-start: var(--sn-s5, 20px); display: flex; flex-direction: column; gap: var(--sn-s2); color: var(--sn-text-primary); }
