@@ -20,7 +20,7 @@ const sectionsPage = read("src/pages/account/SectionsPage.tsx");
 test("AppBottomSheet يحفظ onClose في ref ولا يعيد تشغيل الأثر بسببه", () => {
   assert.match(sheet, /onCloseRef/, "onClose في ref");
   assert.match(sheet, /useCallback\(\(\)\s*=>\s*\{[\s\S]*?onCloseRef\.current/, "requestClose مستقر");
-  assert.match(sheet, /\}, \[open, requestClose\]\)/, "تبعيات الأثر: open + requestClose فقط");
+  assert.match(sheet, /\}, \[open, requestClose, dismissible\]\)/, "تبعيات الأثر: open + requestClose + dismissible (بوليانية ثابتة) فقط");
   assert.doesNotMatch(
     sheet,
     /\}, \[open, onClose/,

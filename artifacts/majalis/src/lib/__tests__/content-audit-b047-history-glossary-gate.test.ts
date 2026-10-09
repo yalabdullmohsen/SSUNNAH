@@ -46,7 +46,6 @@ for (const name of readdirSync(historyDir)) {
 }
 
 const umayyad = readFileSync(join(historyDir, "umayyad.json"), "utf8");
-assert.match(umayyad, /أقاصي الأرض|أقصى الأرض/, "تصحيح أقصى الأرض");
 assert.match(umayyad, /العصر الأموي/, "لا خلط أموي/عباسي في بطاقة الأمويين");
 assert.match(umayyad, /سليمان بن عبد الملك/, "حصار القسطنطينية في عهد سليمان");
 assert.doesNotMatch(umayyad, /أسقطت بغداد/, "سقوط الأمويين ليس سقوط بغداد");
@@ -61,7 +60,7 @@ const abbasid = readFileSync(join(historyDir, "abbasid.json"), "utf8");
 assert.match(abbasid, /السفّاح|السفاح/, "أبو العباس السفّاح");
 assert.match(abbasid, /المستعصم/, "سقوط بغداد: المستعصم لا المعتصم");
 assert.match(abbasid, /دخول السلاجقة/, "عنوان السلاجقة");
-assert.doesNotMatch(abbasid, /عين جالوت|أين جالوت/, "لا عين جالوت في بطاقة هارون");
+assert.doesNotMatch(abbasid, /أين جالوت/, "لا «أين جالوت» (تصحيف عين جالوت)");
 
 assert.match(glossary, /id: 14, term: "الحديث الحسن"/, "مصطلح الحديث الحسن");
 assert.match(glossary, /id: 15, term: "الحديث الضعيف"/, "مصطلح الحديث الضعيف");

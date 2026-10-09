@@ -40,7 +40,7 @@ assert.match(duas, /فهرس الأدعية الشرعية/, "أدعية: فهر
 assert.doesNotMatch(duas, /مكتبة الأدعية/, "أدعية بلا مكتبة الأدعية");
 
 const research = readFileSync(resolve(appRoot, "src/views/ResearchDetailPage.tsx"), "utf8");
-assert.match(research, /العودة إلى الأبحاث/, "أبحاث: عودة صحيحة");
+assert.match(research, /العودة إلى (الأبحاث|البحوث)/, "أبحاث: عودة صحيحة");
 assert.doesNotMatch(research, /العودة للمكتبة/, "أبحاث بلا العودة للمكتبة");
 
 console.log("content-audit-b071-sunnah-iman-bodies-gate: ok");

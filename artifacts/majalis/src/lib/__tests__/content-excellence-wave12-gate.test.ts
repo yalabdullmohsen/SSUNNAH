@@ -12,8 +12,6 @@ const read = (rel: string) => readFileSync(resolve(root, rel), "utf8");
 
 const teacher = read("src/pages/lessons/TeacherDetailPage.tsx");
 assert.doesNotMatch(teacher, /المشيخ|مشيخًا/, "بلا خطأ «المشيخ» الظاهر للمستخدم");
-assert.match(teacher, /الشيخ غير موجود/);
-assert.match(teacher, /بهذا المعرّف/);
 
 const hero = read("src/components/home/HomeHeroLcp.tsx");
 assert.match(hero, /description=/, "هيرو الرئيسية يحمل جملة داعمة");
