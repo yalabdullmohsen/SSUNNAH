@@ -13,6 +13,7 @@ export const TOKEN_DEFINITION_FILES = [
   "src/styles/ssunnah-semantic-tokens.css",
   "src/styles/visual-redesign-v2-tokens.css",
   "src/styles/ssunnah-ds-canonical.css",
+  "src/styles/components/sidebar-redesign-tokens.css",
 ];
 
 /** يعيد عدد الألوان الخام خارج تصريحات المتغيّرات في نص CSS (بعد حذف التعليقات). */
