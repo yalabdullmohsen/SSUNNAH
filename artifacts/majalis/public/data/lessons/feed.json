@@ -1,7 +1,61 @@
 {
   "version": 1,
-  "generated_at": "2026-10-09T10:41:51.458Z",
+  "generated_at": "2026-10-09T20:33:48.314Z",
   "items": [
+    {
+      "id": "3a25341ccaf4cb3c26b57f56fc2666b255b98ff7",
+      "type": "محاضرة",
+      "title_ar": "بانتظاركن اليوم في لقاء مقتضيات الإيمان 🍃",
+      "summary_ar": "بانتظاركن اليوم في لقاء مقتضيات الايمان مع الدكتوره الفاضله مريم مندكار حفظها الله تم تقديم موعد المحاضره لتقدم وقت الاذان مرحبا بالجميع Photo by مسجد راشد الخ…",
+      "sheikh": "ة الفاضلة مريم مندكار حفظها الله 🍃",
+      "place": "لقاء مقتضيات الإيمان 🍃",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "upcoming",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "ig-m_alkhayatq8",
+          "name_ar": "مسجد راشد الخياط",
+          "url": "https://instagram.com/m_alkhayatq8",
+          "post_url": "https://www.instagram.com/p/DeRfdYWogmj/",
+          "platform": "instagram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-09T20:30:04.279Z",
+      "confidence": 0.85
+    },
+    {
+      "id": "8ba5e910583e4b1b4fc1acc099e051a18814ce70",
+      "type": "درس",
+      "title_ar": "تذكير بموعد الدرس غدا بإذن الله تعالى بعد صلاة الفجر مباشرة",
+      "summary_ar": "تذكير بموعد الدرس غدا باذن الله تعالي بعد صلاه الفجر مباشره مسجد بتله الخرينج بالعارضيه قطعه 11 Photo by مسجد بتله الخرينج on October 09, 2026. May be an image…",
+      "sheikh": null,
+      "place": "بتلة الخرينج بالعارضية قطعة 11",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "upcoming",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "ig-mpe.kh11",
+          "name_ar": "مسجد بتلة الخرينج",
+          "url": "https://instagram.com/mpe.kh11",
+          "post_url": "https://www.instagram.com/p/DeRihUlNcpo/",
+          "platform": "instagram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-09T20:27:32.782Z",
+      "confidence": 0.75
+    },
     {
       "id": "92a4710a1124a733f9a915be18361f89cacc04fd",
       "type": "درس",
@@ -1135,168 +1189,6 @@
       "image_url": null,
       "published_at": "2026-10-01T00:00:00.000Z",
       "confidence": 0.85
-    },
-    {
-      "id": "c23ead920c1cbeebcc5c13180272ecfa75eca123",
-      "type": "درس",
-      "title_ar": "صحيح مسلم",
-      "summary_ar": "صحيح مسلم درس اسبوعي — يوم السبت رقم المجلس: 35 وصلنا الي: صفحه 688 - باب حل اجره الحجامه - الحديث رقم 1577 الوقت: 10:00 صباحا المكان: مسجد الياقوت - منطقه الص…",
-      "sheikh": "عثمان الخميس",
-      "place": "الياقوت - منطقة الصديق",
-      "audience": "عام",
-      "starts_at": "2026-09-26T00:00:00.000Z",
-      "time_text": "10:00 ص",
-      "register_url": null,
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "web-othmanalkhamees_schedule",
-          "name_ar": "جدول دروس الشيخ عثمان الخميس",
-          "url": "https://www.othmanalkhamees.com/schedule",
-          "post_url": "https://www.othmanalkhamees.com/schedule",
-          "platform": "web"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-09-25T13:17:26.078Z",
-      "confidence": 0.95
-    },
-    {
-      "id": "613d2a63bfb70956d17b4519fa32b4656126fe78",
-      "type": "درس",
-      "title_ar": "تلخيص مختصر المقنع",
-      "summary_ar": "تلخيص مختصر المقنع درس اسبوعي — يوم الاربعاء رقم المجلس: 136 وصلنا الي: باب صريح الطلاق وكنايته - صفحه 343 الوقت: بعد المغرب المكان: مسجد الياقوت - منطقه الصدي…",
-      "sheikh": "عثمان الخميس",
-      "place": "الياقوت - منطقة الصديق",
-      "audience": "عام",
-      "starts_at": "2026-09-30T00:00:00.000Z",
-      "time_text": "بعد المغرب",
-      "register_url": null,
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "web-othmanalkhamees_schedule",
-          "name_ar": "جدول دروس الشيخ عثمان الخميس",
-          "url": "https://www.othmanalkhamees.com/schedule",
-          "post_url": "https://www.othmanalkhamees.com/schedule",
-          "platform": "web"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-09-25T13:17:26.078Z",
-      "confidence": 0.95
-    },
-    {
-      "id": "2608338d436b287d8743a65f9754bdeefc5cc8d8",
-      "type": "محاضرة",
-      "title_ar": "تفسير سورة الإسراء",
-      "summary_ar": "تفسير سوره الاسراء درس اسبوعي — يوم الجمعه رقم المجلس: 3 وصلنا الي: هذه الاسبوع نبدا من الايه : 12 الوقت: بعد المغرب المكان: مسجد موضي - منطقه الصديق الموعد ال…",
-      "sheikh": "عثمان الخميس",
-      "place": "موضي - منطقة الصديق",
-      "audience": "عام",
-      "starts_at": "2026-09-25T00:00:00.000Z",
-      "time_text": "بعد المغرب",
-      "register_url": null,
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "web-othmanalkhamees_schedule",
-          "name_ar": "جدول دروس الشيخ عثمان الخميس",
-          "url": "https://www.othmanalkhamees.com/schedule",
-          "post_url": "https://www.othmanalkhamees.com/schedule",
-          "platform": "web"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-09-25T13:17:26.078Z",
-      "confidence": 0.95
-    },
-    {
-      "id": "9579ea91f6e24db111ceb07f40dd5ea209957f4d",
-      "type": "درس",
-      "title_ar": "ندعوكم الليلة لحضور الدرس الشهري شرح فضائل القرآن للشيخ د محمد هشام طاهري بعد ص…",
-      "summary_ar": "ندعوكم الليله لحضور الدرس الشهري: شرح فضائل القران للشيخ د. محمد هشام طاهري @dr_abusalah ⏰ بعد صلاه المغرب مسجد عبداللطيف المانع - ج عبدالله مبارك https://maps…",
-      "sheikh": "محمد هشام طاهري @dr_abusalah ⏰ بعد صلاة المغرب 🕌 مسجد عبدال",
-      "place": "عبداللطيف المانع - ج عبدالله مبارك https://maps",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "monthly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/27997",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-09-25T13:16:38.149Z",
-      "confidence": 0.9
-    },
-    {
-      "id": "6960dbfb7e6483c5817e3a865ac1cb34979cac31",
-      "type": "درس",
-      "title_ar": "جدول دروس اليوم الخميس جدول دروس اليوم الخميس",
-      "summary_ar": "جدول دروس اليوم الخميس",
-      "sheikh": null,
-      "place": null,
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": null,
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/27994",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-09-25T13:16:38.149Z",
-      "confidence": 0.65
-    },
-    {
-      "id": "2406bdc6aee7011e4de78210ca9c650331817611",
-      "type": "محاضرة",
-      "title_ar": "جدول دروس اليوم الجمعة جدول دروس اليوم الجمعه",
-      "summary_ar": "جدول دروس اليوم الجمعه",
-      "sheikh": null,
-      "place": null,
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": null,
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28007",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-09-25T13:16:38.149Z",
-      "confidence": 0.65
     },
     {
       "id": "92817884645b3c0b08509fe5f534f0d573c4acc0",
