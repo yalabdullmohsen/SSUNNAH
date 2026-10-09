@@ -159,25 +159,10 @@ struct MushafContinueView: View {
     var body: some View {
         Group {
             if let mushaf = entry.mushaf, mushaf.hasProgress, let page = mushaf.lastPage {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("متابعة القراءة")
-                        .font(.caption.bold())
-                        .foregroundStyle(SunnahBrandColors.gold)
-                        .widgetAccentable()
-                    if let name = mushaf.lastSurahNameAr {
-                        Text(name)
-                            .font(.title3.bold())
-                            .foregroundStyle(.white)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.7)
-                    }
-                    Text("صفحة \(SunnahWidgetTimeFormatting.arabic(page))")
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                }
-                .sunnahCardLayout(12)
+                SunnahMushafPositionCard(surah: mushaf.lastSurahNameAr, page: page, cue: "تابع")
+                    .sunnahCardLayout(14)
             } else {
-                SunnahWidgetEmptyState(message: "ابدأ القراءة")
+                SunnahCalmCard(symbol: "book.closed", phrase: "افتح سُنّة")
             }
         }
         .modifier(QuranSurface())
@@ -186,9 +171,9 @@ struct MushafContinueView: View {
 
     private var continueA11y: String {
         guard let mushaf = entry.mushaf, mushaf.hasProgress, let page = mushaf.lastPage else {
-            return "ابدأ القراءة"
+            return "افتح سُنّة"
         }
-        return "متابعة المصحف صفحة \(SunnahWidgetTimeFormatting.arabic(page))"
+        return "تابع المصحف صفحة \(WidgetFormat.digits(page))"
     }
 }
 
@@ -198,32 +183,14 @@ struct MushafBookmarkView: View {
     var body: some View {
         Group {
             if let mushaf = entry.mushaf, mushaf.hasBookmark, let page = mushaf.bookmarkPage {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("إشارتك")
-                        .font(.caption.bold())
-                        .foregroundStyle(SunnahBrandColors.gold)
-                        .widgetAccentable()
-                    Text(mushaf.bookmarkSurahNameAr ?? "المصحف")
-                        .font(.title3.bold())
-                        .foregroundStyle(.white)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.7)
-                    Text("صفحة \(SunnahWidgetTimeFormatting.arabic(page))")
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                    if let ayah = mushaf.bookmarkAyahNumber {
-                        Text("آية \(SunnahWidgetTimeFormatting.arabic(ayah))")
-                            .font(.caption)
-                            .foregroundStyle(SunnahWidgetTheme.secondaryText)
-                    }
-                }
-                .sunnahCardLayout(12)
+                SunnahMushafPositionCard(surah: mushaf.bookmarkSurahNameAr, page: page, cue: "إشارتك", symbol: "bookmark.fill")
+                    .sunnahCardLayout(14)
             } else {
-                SunnahWidgetEmptyState(message: "اختر إشارة من المصحف")
+                SunnahCalmCard(symbol: "bookmark", phrase: "افتح سُنّة")
             }
         }
         .modifier(QuranSurface())
-        .accessibilityLabel(entry.mushaf?.bookmarkSurahNameAr.map { "إشارة \($0)" } ?? "لا إشارة مختارة")
+        .accessibilityLabel(entry.mushaf?.bookmarkSurahNameAr.map { "إشارة \($0)" } ?? "افتح سُنّة")
     }
 }
 
@@ -293,29 +260,14 @@ struct MushafProgressView: View {
     var body: some View {
         Group {
             if let mushaf = entry.mushaf, mushaf.hasProgress, let page = mushaf.lastPage {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("رحلة القراءة")
-                        .font(.caption.bold())
-                        .foregroundStyle(SunnahBrandColors.gold)
-                        .widgetAccentable()
-                    Text(mushaf.lastSurahNameAr ?? "المصحف")
-                        .font(.title3.bold())
-                        .foregroundStyle(.white)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.7)
-                    Text("صفحة \(SunnahWidgetTimeFormatting.arabic(page))")
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                    if let percent = mushaf.journeyPercent {
-                        Text("أتممت \(SunnahWidgetTimeFormatting.arabic(percent))٪")
-                            .font(.subheadline.bold())
-                            .foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
-                    }
-                }
-                .sunnahCardLayout(12)
+                SunnahMushafPositionCard(
+                    surah: mushaf.lastSurahNameAr,
+                    page: page,
+                    cue: mushaf.journeyPercent.map { "أتممت \(WidgetFormat.digits($0))%" } ?? "تابع"
+                )
+                .sunnahCardLayout(14)
             } else {
-                SunnahWidgetEmptyState(message: "ابدأ القراءة ليظهر تقدّمك هنا")
+                SunnahCalmCard(symbol: "book.closed", phrase: "افتح سُنّة")
             }
         }
         .modifier(QuranSurface())
