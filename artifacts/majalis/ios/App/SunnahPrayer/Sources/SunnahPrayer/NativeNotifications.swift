@@ -14,13 +14,21 @@ public enum NativeNotifications {
         now: Date = Date()
     ) async -> (prayer: Int, general: Int) {
         let isGeneral: (String) -> Bool = { $0.hasPrefix(GeneralNotificationPlanner.idPrefix) }
-        let options = GeneralNotificationOptions.read(from: defaults)
+        let optIn = NativeNotificationsOptIn.read(from: defaults)
+        let options = optIn.limiting(GeneralNotificationOptions.read(from: defaults))
         let legacy = LegacyWebNotifications.identifiers(replacedBy: options)
         let before = await center.pendingNotificationRequests()
         center.removePendingNotificationRequests(
             withIdentifiers: before.map(\.identifier).filter { isGeneral($0) || legacy.contains($0) })
 
-        let prayer = await PrayerNotificationScheduler.reschedule(center: center, defaults: defaults, now: now)
+        var prayer = 0
+        if optIn.prayer {
+            prayer = await PrayerNotificationScheduler.reschedule(center: center, defaults: defaults, now: now)
+        } else {
+            let ours = before.map(\.identifier).filter { $0.hasPrefix(PrayerNotificationPlanner.idPrefix) }
+            center.removePendingNotificationRequests(withIdentifiers: ours)
+        }
+        guard options.adhkarEnabled else { return (prayer, 0) }
         let settings = await center.notificationSettings()
         guard settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional else { return (prayer, 0) }
 
@@ -62,23 +70,25 @@ public enum NativeNotifications {
 }
 
 #if os(iOS)
-/// ربط دورة حياة التطبيق: يُستدعى من AppDelegate بحالة native_shell_enabled.
+/// ربط دورة حياة التطبيق: يُستدعى من AppDelegate بحالة native_notifications_enabled (علم مستقل عن الصدفة).
 public enum NativeNotificationsLifecycle {
     static var backgroundRegistered = false
 
-    /// قبل انتهاء الإطلاق: تسجيل BGTask فقط إن كانت الصدفة مفعّلة والمعرّف مسجلًا في Info.plist.
-    public static func didFinishLaunching(nativeShellEnabled: Bool) {
-        guard nativeShellEnabled, PrayerBackgroundRefresh.isPermitted, !backgroundRegistered else { return }
+    /// قبل انتهاء الإطلاق: تسجيل BGTask فقط إن كانت الإشعارات الأصلية مفعّلة ووافق المستخدم والمعرّف مسجلًا في Info.plist.
+    public static func didFinishLaunching(notificationsEnabled: Bool, optIn: NativeNotificationsOptIn = .read()) {
+        guard notificationsEnabled, optIn.isAnyEnabled, PrayerBackgroundRefresh.isPermitted, !backgroundRegistered else { return }
         PrayerBackgroundRefresh.register()
         backgroundRegistered = true
     }
 
-    public static func didBecomeActive(nativeShellEnabled: Bool) {
-        guard nativeShellEnabled else {
+    /// العلم مطفأ أو لا موافقة ⇒ إزالة ما جدولناه فقط؛ وإلا إعادة الجدولة.
+    public static func didBecomeActive(notificationsEnabled: Bool, optIn: NativeNotificationsOptIn = .read()) {
+        guard notificationsEnabled, optIn.isAnyEnabled else {
             Task { await NativeNotifications.removeAll() }
             return
         }
         Task { await NativeNotifications.rescheduleAll() }
+        if !backgroundRegistered { didFinishLaunching(notificationsEnabled: notificationsEnabled, optIn: optIn) }
         if backgroundRegistered { PrayerBackgroundRefresh.schedule() }
     }
 }

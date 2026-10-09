@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         purgeWebCachesOncePerAppBuild()
         NativeShellGate.installIfEnabled(in: window)
         NativeShellGate.refreshRemoteSwitch()
-        NativeNotificationsLifecycle.didFinishLaunching(nativeShellEnabled: NativeShellGate.isEnabled)
+        NativeNotificationsGate.refreshRemoteSwitch()
+        NativeNotificationsLifecycle.didFinishLaunching(notificationsEnabled: NativeNotificationsGate.isEnabled)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(handleMediaServicesReset),
@@ -84,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         NotificationCenter.default.post(name: Notification.Name("MajlisAppDidBecomeActive"), object: nil)
-        NativeNotificationsLifecycle.didBecomeActive(nativeShellEnabled: NativeShellGate.isEnabled)
+        NativeNotificationsLifecycle.didBecomeActive(notificationsEnabled: NativeNotificationsGate.isEnabled)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

@@ -653,6 +653,28 @@ ok(
   ok(/customClass="MainBridgeViewController" customModule="App"/.test(storyboard), "Main.storyboard يستعمل MainBridgeViewController");
 }
 
+// ── الإشعارات الأصلية: علم مستقل عن الصدفة، opt-in، إيقاف عن بُعد فقط ──
+{
+  const appDir = join(iosApp, "App");
+  const pkg = join(iosApp, "SunnahPrayer", "Sources", "SunnahPrayer");
+  const gateSrc = readFileSync(join(appDir, "NativeNotificationsGate.swift"), "utf8");
+  const lifecycle = readFileSync(join(pkg, "NativeNotifications.swift"), "utf8");
+  const optIn = readFileSync(join(pkg, "NativeNotificationsOptIn.swift"), "utf8");
+  const delegate = readFileSync(join(appDir, "AppDelegate.swift"), "utf8");
+  const plugin = readFileSync(join(appDir, "SunnahSharedDataPlugin.swift"), "utf8");
+  ok(/defaultsKey\s*=\s*"native_notifications_enabled"/.test(gateSrc), "NativeNotificationsGate: مفتاح native_notifications_enabled");
+  ok(!/native_shell|NativeShellGate/.test(gateSrc.replace(/\/\/.*$/gm, "")), "NativeNotificationsGate لا يرتبط بعلم الصدفة");
+  ok(/!remote\s*\{\s*return false/.test(gateSrc), "NativeNotificationsGate: الإيقاف عن بُعد يغلب");
+  const calls = delegate.match(/NativeNotificationsLifecycle\.\w+\([^\n]*\)/g) ?? [];
+  ok(calls.length >= 2, `AppDelegate يستدعي NativeNotificationsLifecycle (${calls.length})`);
+  ok(calls.every((c) => /NativeNotificationsGate\.isEnabled/.test(c) && !/NativeShellGate|nativeShell/i.test(c)), "استدعاءات الإشعارات الأصلية مرتبطة بعلمها المستقل لا بالصدفة");
+  ok(!/NativeShellGate|nativeShellEnabled/.test(lifecycle), "NativeNotifications.swift لا يقرأ علم الصدفة");
+  ok(/prayer:\s*Bool\s*=\s*false/.test(optIn) && /adhkar:\s*Bool\s*=\s*false/.test(optIn), "opt-in افتراضيه مطفأ (لا جدولة بلا تفعيل)");
+  ok(/publishNotificationOptIn/.test(plugin) && /getNativeNotificationsState/.test(plugin), "الجسر ينشر opt-in ويعرض حالة العلم");
+  const publicFlag = JSON.parse(readFileSync(join(root, "public", "native-notifications.json"), "utf8"));
+  ok(typeof publicFlag.enabled === "boolean", "native-notifications.json صالح");
+}
+
 if (failed) {
   console.error(`\n${failed} gate(s) failed`);
   process.exit(1);

@@ -12,6 +12,7 @@
 		458433715EA7B0A057A3A784 /* SunnahDataKit in Frameworks */ = {isa = PBXBuildFile; productRef = E0FEE46D9EEEECF07032F877 /* SunnahDataKit */; };
 		A6459A1BA8454A284A12F011 /* SunnahWeb in Frameworks */ = {isa = PBXBuildFile; productRef = CAAC6EEA427B510E86F235E2 /* SunnahWeb */; };
 		01AE073F1E8CDE42161CBE7B /* SunnahPrayer in Frameworks */ = {isa = PBXBuildFile; productRef = 80BCC2B92580E899E80B9DFA /* SunnahPrayer */; };
+		A0290001NATIVENOTIFGATEBF /* NativeNotificationsGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0290002NATIVENOTIFGATEFR /* NativeNotificationsGate.swift */; };
 		C9225C43F06EC1C5172AFD0A /* NativeShellGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F378976C2BF2DF0DEA224D /* NativeShellGate.swift */; };
 		A0280002SHAREDDATAAPP01 /* SunnahSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */; };
 		A0280003SHAREDDATALA01 /* SunnahSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */; };
@@ -136,6 +137,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A0290002NATIVENOTIFGATEFR /* NativeNotificationsGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeNotificationsGate.swift; sourceTree = "<group>"; };
 		17F378976C2BF2DF0DEA224D /* NativeShellGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeShellGate.swift; sourceTree = "<group>"; };
 		A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahSharedData.swift; sourceTree = "<group>"; };
 		A0280004SHAREDPLUGINFILE /* SunnahSharedDataPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahSharedDataPlugin.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				F4D5E6F708192A3B4C5D6E7F /* Services */,
 				50379B222058CBB4000EE86E /* capacitor.config.json */,
 				504EC3071FED79650016851F /* AppDelegate.swift */,
+				A0290002NATIVENOTIFGATEFR /* NativeNotificationsGate.swift */,
 				17F378976C2BF2DF0DEA224D /* NativeShellGate.swift */,
 				20C1C0E442F343FCA02B3616 /* PrayerActivityAttributes.swift */,
 				F4816472931E4AB1A0DE1F42 /* PrayerLiveActivityPlugin.swift */,
@@ -609,6 +612,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				504EC3081FED79650016851F /* AppDelegate.swift in Sources */,
+				A0290001NATIVENOTIFGATEBF /* NativeNotificationsGate.swift in Sources */,
 				C9225C43F06EC1C5172AFD0A /* NativeShellGate.swift in Sources */,
 				C1A2B3C4D5E6F708192A3B4D /* AppConfig.swift in Sources */,
 				E5F6071890AB12CD01A2B3C4 /* KeychainStore.swift in Sources */,
