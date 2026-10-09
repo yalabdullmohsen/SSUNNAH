@@ -31,6 +31,7 @@ import {
   domainMeta,
   rememberWidgetPublication,
 } from "@/lib/widget-data/repository";
+import { filterForPublicZone, isAllowedInZone } from "@/lib/content-display-zones";
 import { pickUpcomingWidgetEvent } from "@/lib/widget-data/islamic-events";
 import { assertPublicSafeWidgetJson } from "@/lib/widget-data/privacy";
 import { loadWidgetPreferences } from "@/lib/widget-data/preferences";
@@ -132,11 +133,11 @@ function surahNumberFromReference(reference: string, fallback = 1): number {
   return Number(m[1]) || fallback;
 }
 
-function safeDailyDua(now: Date) {
-  const duas = DAILY_TICKER_DHIKR.filter(
-    (item) => item.text.includes("اللَّهُمَّ") || item.text.includes("أَعُوذُ"),
-  );
-  return pickDailyItem(duas.length > 0 ? duas : DAILY_TICKER_DHIKR, now);
+export function safeDailyDua(now: Date) {
+  // نفس فلتر daily-content.ts: لا ضعيف/لم يثبت/بلا مصدر في بطاقة «دعاء» العامة
+  const safe = filterForPublicZone(DAILY_TICKER_DHIKR, "dailyReminder");
+  const duas = safe.filter((item) => item.text.includes("اللَّهُمَّ") || item.text.includes("أَعُوذُ"));
+  return pickDailyItem(duas.length > 0 ? duas : safe, now);
 }
 
 function latestBookmark() {
@@ -185,6 +186,7 @@ export function buildHourlyDhikrPool(): string[] {
     const text = item.text.trim();
     if (!HOURLY_DHIKR_CATEGORIES.has(item.categoryId) || HOURLY_DHIKR_EXCLUDED_IDS.has(item.id)) continue;
     if (/^سورة/.test(item.source ?? "")) continue;
+    if (!isAllowedInZone(item, "dailyReminder")) continue;
     if (text.split(/\s+/).length > 6 || seen.has(text)) continue;
     seen.add(text);
     out.push(text);
