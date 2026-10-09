@@ -8,7 +8,6 @@ import { useAuth } from "./AuthProvider";
 import { usePageSwipe } from "@/hooks/usePageSwipe";
 import { isNavHrefActive } from "@/lib/nav-active";
 import { DrawerFromRegistry } from "@/components/layout/DrawerFromRegistry";
-import "@/styles/components/sidebar-redesign-tokens.css";
 import "@/styles/components/sidebar-redesign.css";
 import "@/styles/sunnah-identity-chrome-nav.css";
 
