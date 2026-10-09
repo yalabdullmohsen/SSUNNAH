@@ -79,7 +79,7 @@ export default function FiqhChapterPage() {
     if (!editorial) return [] as TocItem[];
     const items: TocItem[] = [{ id: "fiqh-ch-def", label: "التعريف" }];
     if (editorial.learnings.length > 0) items.push({ id: "fiqh-ch-learn", label: "ماذا تتعلم؟" });
-    if (editorial.topics.length > 0) items.push({ id: "fiqh-ch-topics", label: "أبرز الموضوعات" });
+    if (editorial.topics.length > 0) items.push({ id: "fiqh-ch-topics", label: "موضوعات الباب" });
     if (editorial.summary) items.push({ id: "fiqh-ch-sum", label: "الخلاصة" });
     if (editorial.notes) items.push({ id: "fiqh-ch-notes", label: "التنبيهات" });
     if (editorial.evidence) items.push({ id: "fiqh-ch-ev", label: "الأدلة" });
@@ -179,7 +179,7 @@ export default function FiqhChapterPage() {
 
         {editorial.topics.length > 0 ? (
           <details open id="fiqh-ch-topics" className="ve-section">
-            <summary>أبرز الموضوعات</summary>
+            <summary>موضوعات الباب</summary>
             <div className="ve-accordion__body ve-body">
               <ul>
                 {editorial.topics.map((topic) => (

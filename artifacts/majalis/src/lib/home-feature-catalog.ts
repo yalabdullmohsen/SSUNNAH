@@ -48,7 +48,7 @@ export const FEATURED: { href: string; Icon: LucideIcon; title: string; desc: st
   { href: "/lessons", Icon: GraduationCap, title: seoNavLabel("/lessons", "الدروس والدورات"), desc: "دروس علمية مرتّبة للحضور أو المتابعة لاحقًا", cta: "افتح" },
   { href: "/prayer-times", Icon: Clock, title: seoNavLabel("/prayer-times", "مواقيت الصلاة"), desc: "أوقات الصلاة والقبلة وتنبيه الأذان لموقعك", cta: "افتح" },
   { href: "/fiqh", Icon: Scale, title: seoNavLabel("/fiqh", "الفقه والأحكام"), desc: "مسائل وكتب فقهية موثّقة في موضع واحد", cta: "افتح" },
-  { href: "/adhkar", Icon: RotateCw, title: seoNavLabel("/adhkar", "الأذكار اليومية"), desc: "أذكار الصباح والمساء وما بينهما", cta: "افتح" },
+  { href: "/adhkar", Icon: RotateCw, title: seoNavLabel("/adhkar", "الأذكار اليومية"), desc: "أذكار الصباح والمساء والنوم وما بينهما", cta: "افتح" },
   { href: "/sections", Icon: Layers, title: seoNavLabel("/sections", "جميع الأقسام"), desc: "عقيدة وحديث وسيرة ومكتبة وأدوات طالب العلم", cta: "افتح" },
 ];
 
@@ -78,7 +78,7 @@ const FEATURE_CATS_RAW: FeatureCat[] = [
     Icon: Scale,
     label: "الفقه والأحكام",
     items: [
-      { href: "/fiqh",               Icon: Scale,        title: seoNavLabel("/fiqh", "الفقه الإسلامي"),  desc: "مدخل للأحكام والأسئلة الشرعية" },
+      { href: "/fiqh",               Icon: Scale,        title: seoNavLabel("/fiqh", "الفقه الإسلامي"),  desc: "مدخل منظَّم للأحكام الفقهية والأسئلة الشرعية" },
       { href: "/tazkiya",             Icon: Heart,        title: seoNavLabel("/tazkiya", "التزكية والتوبة"), desc: "الذنوب والحقوق، والتوبة والاستغفار في باب واحد" },
       { href: "/tawhid",             Icon: BookMarked,   title: seoNavLabel("/tawhid", "التوحيد"),            desc: "مسائل أنواع التوحيد الثلاثة بأدلتها على منهج أهل السنة" },
       { href: "/arkan",              Icon: Landmark,     title: seoNavLabel("/arkan", "أركان الإسلام الخمسة"),     desc: "الشهادة والصلاة والزكاة والصيام والحج بالأدلة" },
