@@ -391,7 +391,10 @@ async function mount() {
   await Promise.race([
     Promise.all([applyDeferredEntryCss(), import("./design-system/design-system.css")]),
     new Promise<void>((resolve) => window.setTimeout(resolve, 2_500)),
-  ]).catch((err) => console.error("[boot] entry css failed — mounting anyway", err));
+  ]).catch((err) => {
+    console.error("[boot] entry css failed — mounting anyway", err);
+    void import("./lib/chunk-recovery").then((m) => m.tryRecoverFromStaleChunk("entry-css", err)).catch(() => {});
+  });
   document
     .querySelectorAll<HTMLLinkElement>("link[data-mj-css-defer]")
     .forEach((l) => {
@@ -488,6 +491,13 @@ async function mount() {
 }
 
 installMountWatchdog();
+/* ملف chunk/CSS لم يعد موجودًا بعد نشر جديد (HTML قديم في WebView): إعادة تحميل واحدة بلا حلقة (حارس chunk-recovery). */
+window.addEventListener("vite:preloadError", (event) => {
+  event.preventDefault();
+  void import("./lib/chunk-recovery")
+    .then((m) => m.tryRecoverFromStaleChunk("preload-error", (event as Event & { payload?: unknown }).payload))
+    .catch(() => {});
+});
 void mount().catch((err) => {
   console.error("[boot] mount failed", err);
 });

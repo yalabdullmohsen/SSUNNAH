@@ -58,7 +58,7 @@ export function showMountWatchdogOverlay(doc: Document, onRetry: () => void): vo
   wrap.style.cssText =
     "position:fixed;inset:0;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:1.5rem;text-align:center;background:Canvas;color:CanvasText;font:600 1.125rem/1.8 system-ui,sans-serif";
   const msg = doc.createElement("p");
-  msg.textContent = "جارٍ تحميل التطبيق… إن طال الانتظار اضغط «إعادة المحاولة».";
+  msg.textContent = "يستغرق فتح التطبيق وقتًا أطول من المعتاد. اضغط «إعادة المحاولة».";
   msg.style.margin = "0";
   const btn = doc.createElement("button");
   btn.type = "button";

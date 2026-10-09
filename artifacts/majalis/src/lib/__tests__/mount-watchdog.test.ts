@@ -94,6 +94,8 @@ const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
   const main = readFileSync(resolve(root, "main.tsx"), "utf8");
   assert.match(main, /installMountWatchdog\(\)/);
   assert.match(main, /<MountBeacon \/>/);
+  assert.match(main, /addEventListener\("vite:preloadError"[\s\S]{0,200}preventDefault\(\)[\s\S]{0,200}tryRecoverFromStaleChunk\("preload-error"/);
+  assert.match(main, /tryRecoverFromStaleChunk\("entry-css"/);
   const raceIdx = main.indexOf("Promise.race([");
   assert.ok(raceIdx > 0 && raceIdx < main.indexOf("createRoot(rootEl)"), "مهلة على استيراد CSS قبل createRoot");
 }
