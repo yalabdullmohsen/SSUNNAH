@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { SectionLobby } from "@/components/lobby/SectionLobby";
 import { feedForAccount, loadHarvestAccounts, loadHarvestFeed } from "@/lib/harvest-feed";
+import { ADHKAR_FADL } from "@/lib/adhkar-fadl";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/sources-directory.css";
 
@@ -62,6 +63,20 @@ export default function SourcesDirectoryPage() {
         <a href="https://tanzil.net" target="_blank" rel="noopener noreferrer">Tanzil.net</a>
         {" "}(CC BY 3.0).
       </p>
+      <div className="sources-policy-note" data-testid="adhkar-fadl-attribution">
+        <p>
+          نصوص أحاديث فضل الأذكار في الإشعارات منقولة حرفيًا من صحيحَي البخاري ومسلم عبر مستودع{" "}
+          <a href="https://github.com/fawazahmed0/hadith-api" target="_blank" rel="noopener noreferrer">fawazahmed0/hadith-api</a>
+          {" "}(إصدارا ara-bukhari وara-muslim، ترخيص Unlicense). الكتاب والرقم والدرجة لكل ذكر:
+        </p>
+        <ul>
+          {ADHKAR_FADL.map((it) => (
+            <li key={it.id}>
+              {it.dhikr} — {it.source} — {it.grade}
+            </li>
+          ))}
+        </ul>
+      </div>
       <div className="sources-directory-grid" aria-busy={loading}>
         {enabled.map((acc) => {
           const count = feedForAccount(feed, acc.id).length;
