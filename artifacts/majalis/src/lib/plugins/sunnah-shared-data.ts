@@ -48,6 +48,8 @@ interface SunnahSharedDataPlugin {
   publishPrayerSnapshot(options: SharedPrayerSnapshotPayload): Promise<{ ok: boolean }>;
   publishProgressSnapshot(options: SharedProgressSnapshotPayload): Promise<{ ok: boolean }>;
   publishWidgetEnvelope(options: { envelopeJson: string; domains: string[] }): Promise<{ ok: boolean }>;
+  publishNotificationOptIn(options: { prayer: boolean; adhkar: boolean }): Promise<{ ok: boolean; nativeEnabled: boolean }>;
+  getNativeNotificationsState(): Promise<{ nativeEnabled: boolean }>;
   readPrayerSnapshot(): Promise<Record<string, unknown> & { found: boolean }>;
   readWidgetDiagnostics(): Promise<{
     appGroupAvailable: boolean;
@@ -127,6 +129,25 @@ export async function readNativeWidgetDiagnostics(): Promise<{
   if (!plugin) return null;
   try {
     return await plugin.readWidgetDiagnostics();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * موافقة المستخدم على الإشعارات الأصلية (opt-in). تُنشر عند التفعيل/الإيقاف من الإعدادات وعند الإقلاع.
+ * يرجع `nativeEnabled` = حالة علم native_notifications_enabled المستقل (لا علاقة له بعلم الصدفة).
+ * `null` خارج iOS الأصلي أو عند الفشل: يبقى الويب مسؤولًا عن الجدولة كاملةً.
+ */
+export async function publishNativeNotificationOptIn(optIn: {
+  prayer: boolean;
+  adhkar: boolean;
+}): Promise<{ nativeEnabled: boolean } | null> {
+  const plugin = getPlugin();
+  if (!plugin) return null;
+  try {
+    const res = await plugin.publishNotificationOptIn(optIn);
+    return res.ok ? { nativeEnabled: Boolean(res.nativeEnabled) } : null;
   } catch {
     return null;
   }
