@@ -50,12 +50,16 @@ assert.match(player, /onStop=\{onStop\}/);
   const playerIdx = reader.indexOf("<QuranAudioPlayer");
   assert.ok(playerIdx >= 0, "QuranAudioPlayer usage");
   const playerBlock = reader.slice(playerIdx, playerIdx + 2200);
-  assert.match(playerBlock, /onClose=\{\(\) => \{/);
-  assert.match(playerBlock, /setAudioDockOpen\(false\)/);
-  assert.match(playerBlock, /recitation\.stop\(\)/);
-  assert.doesNotMatch(playerBlock, /recitation\.pause\(\)/, "close must not merely pause");
-  assert.match(playerBlock, /onStop=\{\(\) => \{[\s\S]*?recitation\.stop\(\)/);
+  assert.match(playerBlock, /onClose=\{onAudioDockClose\}/);
+  assert.match(playerBlock, /onStop=\{onAudioDockStop\}/);
   assert.match(playerBlock, /onMiniChange=\{setAudioDockMini\}/);
+  // المعالجان المسمّيان: الإغلاق يُخفي ويوقف (لا إيقاف مؤقت)، والإيقاف يوقف
+  const closeFn = reader.match(/const onAudioDockClose = useCallback\(\(\) => \{([\s\S]*?)\}, \[/)?.[1] ?? "";
+  assert.match(closeFn, /setAudioDockOpen\(false\)/);
+  assert.match(closeFn, /recitation\.stop\(\)/);
+  assert.doesNotMatch(closeFn, /recitation\.pause\(\)/, "close must not merely pause");
+  const stopFn = reader.match(/const onAudioDockStop = useCallback\(\(\) => \{([\s\S]*?)\}, \[/)?.[1] ?? "";
+  assert.match(stopFn, /recitation\.stop\(\)/);
 }
 assert.doesNotMatch(
   reader,
