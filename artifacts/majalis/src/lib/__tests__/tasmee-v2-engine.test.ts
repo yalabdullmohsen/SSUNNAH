@@ -9,7 +9,8 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { formatTable, runBenchCase, summarize, TARGETS, type BenchCase } from "../tasmee-v2/engine/tracker-bench.ts";
 import { RecitationTracker } from "../tasmee-v2/engine/recitation-tracker.ts";
-import { AppleSpeechProvider, encodeWav, FallbackChain, GroqWindowProvider, OnDeviceProvider } from "../tasmee-v2/engine/asr-providers.ts";
+import { AppleSpeechProvider, encodeWav, FallbackChain, OnDeviceProvider } from "../tasmee-v2/engine/asr-providers.ts";
+import { GroqWindowProvider } from "../tasmee-v2/engine/asr-provider-groq.ts";
 import type { SpokenWord } from "../tasmee-v2/engine/asr-simulate.ts";
 import { SpeechWindower } from "../tasmee-v2/engine/vad.ts";
 
@@ -55,11 +56,11 @@ console.log("=== المزوّدون: موافقة، احتياط، Apple غير 
     calls++;
     return new Response(JSON.stringify({ ok: true, configured: true, transcript: "تبارك" }));
   }) as typeof fetch;
-  const noConsent = new GroqWindowProvider({ hasConsent: () => false, fetchImpl });
+  const noConsent = new GroqWindowProvider({ hasConsent: () => false, cloudEnabled: () => true, fetchImpl });
   assert.equal(await noConsent.isAvailable(), false);
   await assert.rejects(noConsent.transcribe({ pcm: new Float32Array(16_000), sampleRate: 16_000, startMs: 0, endMs: 1000, final: true }));
   assert.equal(calls, 0, "لا يغادر صوت دون موافقة");
-  const groq = new GroqWindowProvider({ hasConsent: () => true, fetchImpl });
+  const groq = new GroqWindowProvider({ hasConsent: () => true, cloudEnabled: () => true, fetchImpl });
   const apple = new AppleSpeechProvider();
   assert.equal(await apple.isAvailable(), false);
   const device = new OnDeviceProvider(() => false, async () => "");

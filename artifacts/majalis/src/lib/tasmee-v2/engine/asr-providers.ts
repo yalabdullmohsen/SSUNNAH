@@ -3,8 +3,8 @@
  *
  * - «on-device»: Whisper المضبوط للقرآن (tarteel-ai/whisper-base-ar-quran، Apache-2.0) محوّلًا إلى CoreML
  *   عبر الإضافة الأصلية TasmeeEngine — تيار نتائج جزئية بلا شبكة. iOS الأصلي فقط.
- * - «groq»: whisper-large-v3 عبر الوسيط عديم الحالة /api/recitation-transcribe — نافذة كاملة لكل طلب،
- *   بموافقة صريحة فقط. Groq تفوتر 10ث كحد أدنى لكل طلب، فلا يُستعمل للعرض الحي بل لتأكيد خطأ مشتبه.
+ * - «groq»: في `asr-provider-groq.ts` منفصلًا وخاملًا خلف `tasmee_cloud_asr` المغلق (1.1.0 على الجهاز فقط)؛
+ *   لا يستورده أي كود في الواجهة.
  * - «apple-speech»: SFSpeechRecognizer ar-SA — غير مُضمَّن بعد (يحتاج Swift ونسخة متجر بإذن المالك).
  *
  * لا مزوّد هنا يحفظ صوتًا: النافذة تُرمَّز في الذاكرة وتُرسل ثم تُترك للمجمِّع.
@@ -51,61 +51,6 @@ export function encodeWav(pcm: Float32Array, sampleRate: number): Uint8Array {
     v.setInt16(44 + i * 2, s < 0 ? s * 0x8000 : s * 0x7fff, true);
   }
   return out;
-}
-
-function toBase64(bytes: Uint8Array): string {
-  let bin = "";
-  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
-  return btoa(bin);
-}
-
-export type GroqProviderDeps = {
-  hasConsent: () => boolean;
-  fetchImpl?: typeof fetch;
-  endpoint?: string;
-  now?: () => number;
-};
-
-/** Groq عبر الوسيط القائم — لا مفتاح على العميل، ولا يُرسل شيء دون موافقة. */
-export class GroqWindowProvider implements AsrProvider {
-  readonly id = "groq" as const;
-  readonly requiresNetwork = true;
-  readonly leavesDevice = true;
-  constructor(private readonly deps: GroqProviderDeps) {}
-
-  private get fetch(): typeof fetch {
-    return this.deps.fetchImpl ?? fetch;
-  }
-
-  async isAvailable(): Promise<boolean> {
-    if (!this.deps.hasConsent()) return false;
-    try {
-      const res = await this.fetch(this.deps.endpoint ?? "/api/recitation-transcribe", { method: "GET" });
-      const data = (await res.json().catch(() => ({}))) as { configured?: boolean };
-      return res.ok && data.configured === true;
-    } catch {
-      return false;
-    }
-  }
-
-  async transcribe(w: AudioWindow): Promise<WindowTranscript> {
-    if (!this.deps.hasConsent()) throw new Error("consent_required");
-    const now = this.deps.now ?? (() => Date.now());
-    const t0 = now();
-    const res = await this.fetch(this.deps.endpoint ?? "/api/recitation-transcribe", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        audioBase64: toBase64(encodeWav(w.pcm, w.sampleRate)),
-        mimeType: "audio/wav",
-        durationMs: Math.round((w.pcm.length * 1000) / w.sampleRate),
-        consent: true,
-      }),
-    });
-    const data = (await res.json().catch(() => ({}))) as { ok?: boolean; transcript?: string; code?: string };
-    if (!res.ok || !data.ok) throw new Error(data.code || `asr_${res.status}`);
-    return { text: data.transcript ?? "", providerId: this.id, decodeMs: now() - t0 };
-  }
 }
 
 /** Apple Speech ar-SA — محوّل حاضر للواجهة، غير متاح حتى تُضاف إضافة Swift بنسخة متجر. */
