@@ -181,6 +181,8 @@ enum SunnahSharedStore {
         #if DEBUG
         log.debug("write attempted schema=\(snapshot.schemaVersion) day=\(snapshot.dayKey, privacy: .public)")
         #endif
+        // لا تُستبدل لقطة صالحة بأخرى فارغة (آخر بيانات صالحة تبقى معروضة).
+        if !isUsablePrayer(snapshot), isUsablePrayer(loadPrayer()) { return false }
         let ok = writeCodable(snapshot, key: SunnahSharedKeys.prayerSnapshot)
         #if DEBUG
         if ok {
@@ -239,19 +241,20 @@ enum SunnahSharedStore {
         return SunnahWidgetEnvelopeCodec.decodeIsolated(from: data)
     }
 
-    /// Prayer payload: the freshest of envelope isolation and legacy prayer.v1
-    /// (a later envelope publish without prayer must never resurrect an older snapshot).
+    /// لقطة تصلح للعرض: فيها مواقيت أو صلاة قادمة (لا فارغة ولا من مخطط مستقبلي).
+    static func isUsablePrayer(_ snapshot: SharedPrayerSnapshot?) -> Bool {
+        guard let s = snapshot, s.schemaVersion >= 1, s.schemaVersion <= SharedPrayerSnapshot.currentSchema else { return false }
+        return !s.timesEpochMs.isEmpty || s.nextPrayerEpochMs != nil
+    }
+
+    /// Prayer payload: الأحدث بين الظرف وprayer.v1 **من الصالحتين فقط**؛
+    /// لقطة أحدث لكن فارغة (نشر ظرف بلا مواقيت) لا تطغى على لقطة صالحة أقدم، فلا «افتح سُنّة» مع تطبيق مفتوح.
     static func loadCanonicalPrayer() -> SharedPrayerSnapshot? {
         let envelopePrayer = loadEnvelope()?.prayerPayload
         let legacy = loadPrayer()
-        switch (envelopePrayer, legacy) {
-        case let (env?, leg?):
-            return leg.updatedAtEpochMs > env.updatedAtEpochMs ? leg : env
-        case let (env?, nil):
-            return env
-        default:
-            return legacy
-        }
+        let usable = [envelopePrayer, legacy].compactMap { $0 }.filter { isUsablePrayer($0) }
+        if let best = usable.max(by: { $0.updatedAtEpochMs < $1.updatedAtEpochMs }) { return best }
+        return envelopePrayer ?? legacy
     }
 
     static func classifyPrayerData(_ snapshot: SharedPrayerSnapshot?, now: Date = Date()) -> PrayerWidgetDataState {

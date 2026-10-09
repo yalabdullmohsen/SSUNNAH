@@ -208,7 +208,7 @@ struct CatalogWidgetEntry: TimelineEntry {
             date: now,
             presentation: presentation,
             prayer: prayer,
-            calendar: envelope?.calendarPayload.map { SunnahWidgetDayRollover.calendar($0, at: now) },
+            calendar: SunnahWidgetDayRollover.calendar(envelope?.calendarPayload ?? SunnahWidgetDayRollover.seedCalendar(at: now, timeZone: tz), at: now),
             adhkar: envelope?.adhkarPayload.map { SunnahWidgetDayRollover.adhkar($0, at: now, timeZone: tz) },
             quran: envelope?.quranPayload.map { SunnahWidgetDayRollover.quran($0, at: now, timeZone: tz) },
             mushaf: envelope?.mushafPayload,
@@ -302,6 +302,22 @@ enum SunnahWidgetDayRollover {
         f.timeZone = tz
         f.setLocalizedDateFormatFromTemplate(template)
         return f.string(from: date)
+    }
+
+    /// تاريخ هجري/ميلادي من ساعة الجهاز فقط (أم القرى) حين لا ظرف بعد: الودجت يعمل قبل أول فتح.
+    /// تاريخ النشر يُجعل أمس فيُعاد حسابه كاملًا بمسار `calendar(_:at:)` نفسه.
+    static func seedCalendar(at date: Date, timeZone tz: TimeZone) -> SharedCalendarPayload {
+        var gregorian = Calendar(identifier: .gregorian)
+        gregorian.timeZone = tz
+        let yesterday = gregorian.date(byAdding: .day, value: -1, to: date) ?? date
+        return SharedCalendarPayload(
+            schemaVersion: SharedCalendarPayload.currentSchema,
+            timezoneIdentifier: tz.identifier,
+            weekdayAr: "", hijriDay: 1, hijriMonth: 1, hijriMonthAr: "", hijriYear: 1400,
+            hijriDisplay: "", gregorianDisplay: "", inRamadan: false, daysUntilRamadan: nil,
+            ramadanLabelAr: "", gregorianDate: dayKey(yesterday, tz), calendarMode: "hijri",
+            updatedAtEpochMs: 0
+        )
     }
 
     static func calendar(_ payload: SharedCalendarPayload, at date: Date) -> SharedCalendarPayload {
