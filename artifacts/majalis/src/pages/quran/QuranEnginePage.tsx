@@ -8,7 +8,7 @@ import { QuranEngineProvider } from "@/core/quran/QuranEngineContext";
 import { QuranProvider } from "@/context/QuranContext";
 import { HomeDashboard } from "@/components/HomeDashboard";
 import { QuranViewer } from "@/components/QuranViewer";
-import { ContentTabs } from "@/components/design-system/TabSystem";
+import { SegmentedTabs } from "@/design-system";
 import "@/styles/quran-engine-ui.css";
 
 export default function QuranEnginePage() {
@@ -26,11 +26,10 @@ export default function QuranEnginePage() {
           data-focus={focusMode ? "1" : "0"}
         >
           {!focusMode ? (
-            <ContentTabs
-              className="qe-page__nav"
-              ariaLabel="محرك القرآن"
+            <SegmentedTabs
+              label="محرك القرآن"
               idPrefix="qe"
-              variant="pill"
+              className="qe-page__nav"
               value={mode}
               onChange={(id) => {
                 if (id === "dash") {
@@ -40,9 +39,9 @@ export default function QuranEnginePage() {
                 }
                 setMode("viewer");
               }}
-              items={[
-                { id: "dash", label: "اللوحة" },
-                { id: "viewer", label: "المصحف" },
+              options={[
+                { value: "dash", label: "اللوحة" },
+                { value: "viewer", label: "المصحف" },
               ]}
             />
           ) : null}

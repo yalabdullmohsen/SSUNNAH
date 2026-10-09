@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Chip } from "./primitives";
 import { Icon } from "./Icon";
 import { cn } from "@/lib/utils";
+import { onTablistKeyDown } from "@/lib/tablist-keyboard";
 
 /** نقش هندسي خفيف في زاوية واحدة — زخرفة فقط، لا يأخذ مساحة. */
 function HeroPattern() {
@@ -47,14 +48,29 @@ export function StatGrid({ children, className }: { children: ReactNode; classNa
 }
 
 /** تبويبات أفقية قابلة للتمرير، نص كل تبويب في سطر واحد. */
-export function SegmentedTabs<T extends string>({ value, onChange, options, label }: { value: T; onChange: (v: T) => void; options: ReadonlyArray<{ value: T; label: string }>; label: string }) {
+export function SegmentedTabs<T extends string>({ value, onChange, options, label, idPrefix, className }: { value: T; onChange: (v: T) => void; options: ReadonlyArray<{ value: T; label: ReactNode; icon?: ReactNode; disabled?: boolean }>; label: string; idPrefix?: string; className?: string }) {
   return (
-    <div className="sn-seg-tabs" role="tablist" aria-label={label}>
-      {options.map((o) => (
-        <Chip key={o.value} role="tab" aria-selected={o.value === value} className="sn-seg-tabs__item" onClick={() => onChange(o.value)}>
-          {o.label}
-        </Chip>
-      ))}
+    <div className={cn("sn-seg-tabs", className)} role="tablist" aria-label={label}>
+      {options.map((o) => {
+        const active = o.value === value;
+        return (
+          <Chip
+            key={o.value}
+            role="tab"
+            id={idPrefix ? `${idPrefix}-tab-${o.value}` : undefined}
+            aria-controls={idPrefix ? `${idPrefix}-panel-${o.value}` : undefined}
+            aria-selected={active}
+            tabIndex={idPrefix ? (active ? 0 : -1) : undefined}
+            disabled={o.disabled}
+            className="sn-seg-tabs__item"
+            onClick={() => onChange(o.value)}
+            onKeyDown={idPrefix ? onTablistKeyDown : undefined}
+          >
+            {o.icon}
+            {o.label}
+          </Chip>
+        );
+      })}
     </div>
   );
 }

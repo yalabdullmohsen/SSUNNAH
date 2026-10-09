@@ -6,8 +6,7 @@ import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { InternalLinkCard } from "@/components/ui/InternalCards";
 import { Button } from "@/components/ui/button";
 import "@/styles/pages/ulum-quran.css";
-import { NavigationBar } from "@/design-system";
-import { ContentTabs } from "@/components/design-system/TabSystem";
+import { NavigationBar, SegmentedTabs } from "@/design-system";
 import { KnowledgeLayout, DefinitionBlock } from "@/components/knowledge";
 import "@/styles/knowledge-experience.css";
 
@@ -251,14 +250,14 @@ export default function UlumQuranPage() {
       groupTitle="أبواب علوم القرآن"
     >
     <KnowledgeLayout kind="knowledge" className="uq-page" data-kx="1" role="main">
-      <ContentTabs
-        className="uq-tabs-bar"
-        ariaLabel="أقسام علوم القرآن"
+      <SegmentedTabs
+        label="أقسام علوم القرآن"
         idPrefix="ulq"
+        className="uq-tabs-bar"
         value={tab}
         onChange={(id) => setTab(id as UQTab)}
-        items={TABS.map((t) => ({
-          id: t.id,
+        options={TABS.map((t) => ({
+          value: t.id as UQTab,
           label: t.label,
           icon: <SectionIcon name={t.icon} size={22} />,
         }))}
