@@ -102,6 +102,8 @@ function lessonDescription(row) {
   return clamp(parts.join(" — ") || `درس شرعي على منصة ${SITE_NAME}`, 300);
 }
 
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 async function findLesson(idParam) {
   const canonical = canonicalizeLessonPublicId(idParam);
   const lookupIds = [...new Set([idParam, canonical].filter(Boolean))];
@@ -109,14 +111,17 @@ async function findLesson(idParam) {
   const admin = getSupabaseAdmin();
   if (admin) {
     for (const lookId of lookupIds) {
-      const byId = await admin
-        .from("lessons")
-        .select(`*, ${SHEIKH_EMBED}`)
-        .eq("id", lookId)
-        .eq("status", "approved")
-        .maybeSingle();
-      if (byId.error) throw byId.error;
-      if (byId.data) return byId.data;
+      // عمود id من نوع UUID: معرّف غير UUID يرمي 22P02 فيتحوّل خطأً إلى 503.
+      if (UUID_RE.test(lookId)) {
+        const byId = await admin
+          .from("lessons")
+          .select(`*, ${SHEIKH_EMBED}`)
+          .eq("id", lookId)
+          .eq("status", "approved")
+          .maybeSingle();
+        if (byId.error) throw byId.error;
+        if (byId.data) return byId.data;
+      }
 
       const keys = lessonExternalKeyCandidates(lookId);
       const orFilter = keys.map((k) => `external_key.eq.${k}`).join(",");
