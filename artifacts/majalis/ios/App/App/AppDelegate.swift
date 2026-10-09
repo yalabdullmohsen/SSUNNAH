@@ -121,3 +121,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+/// جسر Capacitor 8 يسجّل تلقائيًا ما في `packageClassList` (إضافات npm) فقط؛ الإضافات المحلية في هدف App
+/// لا تُكتشف، فتُسجَّل هنا صراحةً. Main.storyboard يشير إلى هذا الصنف. أي إضافة محلية جديدة تُضاف إلى القائمة
+/// (يفرضه test-ios-capacitor-gates).
+class MainBridgeViewController: CAPBridgeViewController {
+    override open func capacitorDidLoad() {
+        super.capacitorDidLoad()
+        let local: [CAPPlugin] = [
+            TasmeeEnginePlugin(),
+            SunnahSharedDataPlugin(),
+            PrayerLiveActivityPlugin(),
+            SunnahAuthKeychainPlugin(),
+            MajlisPlaybackAudioPlugin(),
+            MajlisOfflineAudioPlugin(),
+        ]
+        local.forEach { bridge?.registerPluginInstance($0) }
+    }
+}
