@@ -393,7 +393,7 @@ async function mount() {
     new Promise<void>((resolve) => window.setTimeout(resolve, 2_500)),
   ]).catch((err) => {
     console.error("[boot] entry css failed — mounting anyway", err);
-    void import("./lib/chunk-recovery").then((m) => m.tryRecoverFromStaleChunk("entry-css", err)).catch(() => {});
+    void import("./lib/chunk-recovery").then((m) => m.reloadOnceForStaleChunk("entry-css", err)).catch(() => {});
   });
   document
     .querySelectorAll<HTMLLinkElement>("link[data-mj-css-defer]")
@@ -495,7 +495,7 @@ installMountWatchdog();
 window.addEventListener("vite:preloadError", (event) => {
   event.preventDefault();
   void import("./lib/chunk-recovery")
-    .then((m) => m.tryRecoverFromStaleChunk("preload-error", (event as Event & { payload?: unknown }).payload))
+    .then((m) => m.reloadOnceForStaleChunk("preload-error", (event as Event & { payload?: unknown }).payload))
     .catch(() => {});
 });
 void mount().catch((err) => {

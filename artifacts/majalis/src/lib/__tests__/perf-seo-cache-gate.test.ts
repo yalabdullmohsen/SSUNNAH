@@ -15,8 +15,8 @@ const CANON = "https://www.ssunnah.com";
 
 assert.match(
   vercel,
-  /"source"\s*:\s*"\/"[\s\S]{0,280}"Cache-Control"[\s\S]{0,120}public,\s*max-age=0,\s*s-maxage=\d+/,
-  "الرئيسية: CDN cache مع s-maxage بلا no-store",
+  /"source"\s*:\s*"\/"[\s\S]{0,280}"Cache-Control"[\s\S]{0,120}public,\s*max-age=0,\s*must-revalidate/,
+  "الرئيسية: must-revalidate (HTML لا يُخدَّم قديمًا بعد نشر) بلا no-store",
 );
 assert.match(
   vercel,
