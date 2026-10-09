@@ -67,7 +67,7 @@ await runUniversalSearch("الصلاة");
 
 {
   const home = read("pages/account/ui/HomeView.tsx");
-  assert.match(home, /HomeUniversalSearch/);
+  // الرئيسية لم تعد تضمّن HomeUniversalSearch منذ #2304؛ يبقى فحص المكوّن نفسه.
   const comp = read("components/home/HomeUniversalSearch.tsx");
   assert.match(comp, /UNIVERSAL_DEBOUNCE_MS/);
   assert.match(comp, /آخر عمليات البحث/);

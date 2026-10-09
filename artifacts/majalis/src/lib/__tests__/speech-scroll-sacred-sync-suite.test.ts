@@ -1,14 +1,8 @@
 /**
- * اختبارات — تحقق صوتي، تمرير تلقائي، أوقات شرعية، مزامنة تبويب، موفر طاقة
+ * اختبارات — تمرير تلقائي، أوقات شرعية، مزامنة تبويب، موفر طاقة
  * تشغيل: npx tsx src/lib/__tests__/speech-scroll-sacred-sync-suite.test.ts
  */
 
-import {
-  emptyHintState,
-  isVoiceVerificationAvailable,
-  matchRecitationTranscript,
-  recordVoiceVerifySession,
-} from "../voice-recitation-verify";
 import {
   computeReadingVelocityProfile,
   planAutoScroll,
@@ -91,21 +85,7 @@ const prayers: PrayerSlot[] = [
   { key: "Isha", name: "العشاء", obligatory: true, time24: "20:00", time: "8:00 م", minutes: 20 * 60 },
 ];
 
-console.log("\n=== 1. Voice recitation verify ===");
-{
-  assert(typeof isVoiceVerificationAvailable() === "boolean", "availability check");
-  assert(emptyHintState().kind === "none", "empty hint");
-  const target = "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ";
-  const good = matchRecitationTranscript(target, "بسم الله الرحمن الرحيم");
-  assert(good.matchPercent >= 50, "normalized match scores");
-  const hes = matchRecitationTranscript(target, "بسم", { hesitationDetected: true });
-  assert(hes.kind === "hesitation" || hes.kind === "missing_word" || hes.kind === "behind", "hesitation/missing hint");
-  const wrong = matchRecitationTranscript(target, "الحمد لله رب العالمين");
-  assert(wrong.kind === "mispronunciation" || wrong.matchPercent < 80, "mismatch detected");
-  const stats = recordVoiceVerifySession(90, 1);
-  assert(stats.sessions >= 1, "stats recorded");
-}
-
+// التحقق الصوتي من التلاوة حُذف كليًا في #1683.
 console.log("\n=== 2. Adaptive auto-scroll ===");
 {
   saveAutoScrollPrefs({ enabled: true, followAudio: true, overrideMsPerAyah: null });

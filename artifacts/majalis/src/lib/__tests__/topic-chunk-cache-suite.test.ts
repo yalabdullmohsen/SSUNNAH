@@ -128,8 +128,9 @@ console.log("\n=== 3. Devotional balance ===");
 
 console.log("\n=== 4. Smart deep links ===");
 {
-  assert(buildAyahDeepLink(2, 255) === "/mushaf/2?ayah=255", "ayah query link");
-  assert(buildAyahDeepLink(18, 1, { useHash: true }) === "/mushaf/18#ayah-1", "ayah hash link");
+  // الرابط القانوني للآية منذ #2146: /mushaf?page=…&surah=…&ayah=…
+  assert(buildAyahDeepLink(2, 255).startsWith("/mushaf?page=42&surah=2&ayah=255"), "ayah query link");
+  assert(/^\/mushaf\?page=293&surah=18&ayah=1&.*#ayah-1$/.test(buildAyahDeepLink(18, 1, { useHash: true })), "ayah hash link");
   assert(buildMatnDeepLink("/fiqh/tahara", 3).includes("line=3"), "matn line query");
   assert(buildMatnDeepLink("/fiqh/tahara", 3).includes("#matn-line-3"), "matn line hash");
   assert(buildAdhkarDeepLink("morning", "x1").includes("cat=morning"), "adhkar cat");
@@ -140,7 +141,7 @@ console.log("\n=== 4. Smart deep links ===");
   assert(hashed?.kind === "ayah" && hashed.anchor === 9, "parse ayah hash");
   const matn = parseDeepLink("/articles/foo?line=4#matn-line-4");
   assert(matn?.kind === "matn" && matn.anchor === 4, "parse matn");
-  assert(encodeDeepLink({ kind: "ayah", resourceId: "1", anchor: 1 }) === "/mushaf/1?ayah=1", "encode");
+  assert(encodeDeepLink({ kind: "ayah", resourceId: "1", anchor: 1 }).startsWith("/mushaf?page=1&surah=1&ayah=1"), "encode");
 
   // apply without DOM should fail gracefully
   const applied = applyDeepLinkTarget({

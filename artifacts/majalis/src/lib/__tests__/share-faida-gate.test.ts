@@ -52,8 +52,7 @@ assert.doesNotMatch(lessonCard, /نسخ الرابط/);
 assert.doesNotMatch(lessonCard, /نسخ البيانات/);
 
 const hadithCard = read("src/components/hadith/HadithCard.tsx");
-assert.doesNotMatch(hadithCard, /Share2/);
-assert.doesNotMatch(hadithCard, /handleShare/);
+// بطاقة الحديث تعيد زر مشاركة مدمجًا منذ #1944 (Hadith Experience Redesign).
 assert.doesNotMatch(hadithCard, /نسخ المتن/);
 
 console.log("share-faida-gate.test.ts: ok");
