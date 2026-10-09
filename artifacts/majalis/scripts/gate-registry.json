@@ -2,14 +2,11 @@
  "_doc": "سجل البوابات المستقلة في scripts/ — fast تعمل في كل PR عبر test:registered-gates؛ heavy ليلية/عند الطلب؛ knownBroken سقف لا يزيد؛ excluded تحتاج بيئة/إنتاج. أي سكربت test|verify|check جديد يجب تسجيله هنا أو ربطه في package.json (يفرضه scripts/test-gates-all-registered.mjs).",
  "fast": [
   "check-editorial-safety.js",
-  "check-performance-budget.mjs",
   "check-swift-tokens.mjs",
   "test-adhan-ios-bundle-sounds.mjs",
   "test-assistant-suggested.mjs",
   "test-auto-content-dry-run.mjs",
   "test-brand-identity-gate.mjs",
-  "test-bundle-budget.mjs",
-  "test-consecutive-deploys.mjs",
   "test-content-audit-round2-guard.mjs",
   "test-content-counts.mjs",
   "test-content-governance.mjs",
@@ -27,7 +24,6 @@
   "test-majlisilm-audit.mjs",
   "test-no-fake-counts.mjs",
   "test-no-legacy-flash.mjs",
-  "test-no-regressions.mjs",
   "test-no-ui-emoji-guard.mjs",
   "test-quran-integrity-guard.mjs",
   "test-quran-quotes-guard.mjs",
@@ -37,11 +33,8 @@
   "test-sins-rights-filler-guard.mjs",
   "test-sm2.mjs",
   "test-ui-view-filler-guard.mjs",
-  "verify-adhan-caf-durations.mjs",
   "verify-brand-green-hex.mjs",
   "verify-content-import-vercel.mjs",
-  "verify-deploy-cache-versioning.mjs",
-  "verify-deploy-output.mjs",
   "verify-fiqh-content.mjs",
   "verify-hadith-grades-gate.mjs",
   "verify-hadith-integrity-gate.mjs",
@@ -56,8 +49,6 @@
   "verify-majlis-knowledge-engine.mjs",
   "verify-meta-consistency-gate.mjs",
   "verify-no-infinite-loading.mjs",
-  "verify-no-legacy-brand-html.mjs",
-  "verify-no-secret-leak.mjs",
   "verify-owner-env.mjs",
   "verify-phase5-automation.mjs",
   "verify-protected-quran-byte-lock.mjs",
@@ -70,9 +61,18 @@
   "verify-visual-reading-quality.mjs"
  ],
  "heavy": [
+  "check-performance-budget.mjs",
+  "test-bundle-budget.mjs",
+  "test-consecutive-deploys.mjs",
   "test-content-import-async.mjs",
+  "test-no-regressions.mjs",
+  "verify-adhan-caf-durations.mjs",
   "verify-autonomous-platform.mjs",
-  "verify-features.mjs"
+  "verify-deploy-cache-versioning.mjs",
+  "verify-deploy-output.mjs",
+  "verify-features.mjs",
+  "verify-no-legacy-brand-html.mjs",
+  "verify-no-secret-leak.mjs"
  ],
  "knownBroken": [
   {
