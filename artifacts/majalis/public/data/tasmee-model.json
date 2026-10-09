@@ -1,5 +1,5 @@
 {
-  "modelId": "tasmee-whisper-base-ar-quran-coreml",
-  "archiveUrl": "https://github.com/yalabdullmohsen/SSUNNAH/releases/download/whisper-quran-coreml-v1/sunnah-whisper-base-ar-quran-coreml.zip",
-  "notes": "رابط أرشيف نموذج التسميع — يُبدَّل بلا إصدار تطبيق. يُطبَّق على modelId المطابق فقط، وSHA-256 والحجم مثبَّتان في التطبيق فيُرفض أي أرشيف مختلف."
+  "modelId": "tasmee-whisper-base-q6-ar-quran-coreml",
+  "archiveUrl": "https://github.com/yalabdullmohsen/SSUNNAH/releases/download/whisper-quran-coreml-v2-q6/sunnah-whisper-base-q6-ar-quran-coreml.zip",
+  "notes": "رابط أرشيف نموذج التسميع — يُبدَّل بلا إصدار تطبيق. يُطبَّق على modelId المطابق فقط، وSHA-256 والحجم مثبَّتان في التطبيق فيُرفض أي أرشيف مختلف. الافتراضي base-q6؛ لتحويل الجميع إلى fp16 الاحتياطي ضع modelId=tasmee-whisper-base-ar-quran-coreml ورابطه."
 }

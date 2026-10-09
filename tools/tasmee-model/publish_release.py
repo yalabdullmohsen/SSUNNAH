@@ -56,6 +56,8 @@ open(notes, "w", encoding="utf-8").write(
     "نسخ CoreML لنموذج Tarteel (تلاوة القرآن) لوضع «تسميع» على الجهاز.\n\n"
     "**مشتق ومحوَّل من `tarteel-ai/whisper-base-ar-quran` (Apache-2.0). التعديل الوحيد هو التحويل إلى CoreML وإرفاق `tokenizer.json` الرسمي من OpenAI Whisper كما هو، بلا تدريب.**\n\n"
     "الترخيص: Apache-2.0 (LICENSE) + NOTICE. بيانات تدريب النموذج الأصلي غير موثّقة في بطاقته.\n\n"
+    + ("**النسخ ذات اللاحقة `-q6`: أوزان مكمَّمة بتلوين مختلط (mixed-bit palettization ≈6 بت) عبر whisperkittools، بلا إعادة تدريب.**\n\n"
+       if any("-q" in n for n in variants) else "") +
     "هذا الإصدار ثابت: لا يُعدَّل بعد نشره؛ التحديث إصدار جديد بوسم جديد. التطبيق يتحقق من SHA-256 في model-manifest-*.json.\n")
 print("assets:", *[os.path.basename(a) for a in assets], sep="\n  ")
 if dry:
