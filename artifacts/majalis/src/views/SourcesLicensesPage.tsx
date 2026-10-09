@@ -64,6 +64,7 @@ export default function SourcesLicensesPage() {
           <p>
             لا نعيد استضافة الدروس والمنشورات الخارجية؛ تُعرض كمعلومة وجدول ورابط للمصدر.{" "}
             <Link href="/methodology">منهجية التوثيق</Link> · <Link href="/sources">دليل الجهات</Link>
+            {" "}· الجرد الكامل للمكتبات والأصول في docs/LICENSES.md
           </p>
         </LegalSection>
 
