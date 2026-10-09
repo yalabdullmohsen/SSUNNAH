@@ -5,7 +5,8 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { decideTasmeeV2 } from "../tasmee-v2/flags";
+import { decideTasmeeV2, TASMEE_FLAGS_REMOTE_PATH } from "../tasmee-v2/flags";
+import { fetchLiveJson } from "../live-config/fetch-live-json";
 import { RecitationTracker } from "../tasmee-v2/engine/recitation-tracker";
 import { applyTrackerEvents, emptyLiveStats } from "../../features/tasmee-v2/useTasmeeEngine";
 import { summarizeLiveStats } from "../../features/tasmee-v2/TasmeeDiagSheet";
@@ -56,5 +57,27 @@ const sum = summarizeLiveStats({ windows: 4, correct: 99, alerts: 1, latenciesMs
 assert.equal(sum.medianMs, 300);
 assert.equal(sum.p95Ms, 1600);
 assert.equal(sum.alertRate, 1);
+
+/* خصوصية: جلب tasmee-flags.json طلب GET لملف إعداد فقط — لا جسم ولا ترويسات ولا معرّفات مستخدم في الرابط */
+{
+  const calls: [string, RequestInit | undefined][] = [];
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = (async (url: string, init?: RequestInit) => {
+    calls.push([String(url), init]);
+    return new Response(JSON.stringify({ tasmee_v2: { testflight: true } }), { status: 200 });
+  }) as typeof fetch;
+  try {
+    await fetchLiveJson(TASMEE_FLAGS_REMOTE_PATH, true, 1000);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+  assert.equal(calls.length, 1);
+  const [url, init] = calls[0]!;
+  assert.match(url, /^https:\/\/[^/?#]+\/data\/tasmee-flags\.json\?t=\d+$/, url);
+  assert.ok(!init?.method || init.method === "GET");
+  assert.equal(init?.body, undefined);
+  assert.equal(init?.headers, undefined);
+  assert.equal(init?.credentials, undefined);
+}
 
 console.log("tasmee-v2-flag-and-wiring: ok");

@@ -529,6 +529,8 @@ if (isNative) {
  * تُصيَّر المسار بشكل صحيح خارج تحميل index.html الأول.
  */
 if (isNative) {
+  // اختبار التكامل على المحاكي (Debug/TestFlight فقط): يفتح صفحة التغذية؛ بلا وسائط إطلاق لا شيء
+  void import("@/features/tasmee-v2/feed-harness").then((m) => m.openFeedPageIfConfigured()).catch(() => {});
   import("@capacitor/app").then(({ App: CapApp }) => {
     CapApp.addListener("appUrlOpen", ({ url }) => {
       void Promise.all([

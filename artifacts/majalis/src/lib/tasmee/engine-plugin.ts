@@ -14,6 +14,9 @@ import type {
 
 type ModelCall = { manifestJson: string };
 
+/** اختبار التكامل على المحاكي (Debug/TestFlight فقط) */
+export type TasmeeFeedConfig = { enabled: boolean; file?: string; page: number; seconds: number };
+
 interface TasmeeEnginePlugin {
   getDeviceInfo(): Promise<TasmeeDeviceInfo>;
   getBuildChannel(): Promise<{ channel: "debug" | "testflight" | "appstore" }>;
@@ -23,11 +26,13 @@ interface TasmeeEnginePlugin {
   deleteModel(o: { modelId: string }): Promise<void>;
   loadModel(o: ModelCall): Promise<{ loaded: boolean }>;
   selfTest(): Promise<{ decodeMs: number }>;
-  start(o: { prompt?: string; keepSessionAudio?: boolean }): Promise<void>;
+  start(o: { prompt?: string; keepSessionAudio?: boolean; feedFile?: string }): Promise<void>;
   setPrompt(o: { text?: string }): Promise<void>;
   stop(): Promise<TasmeeSessionDiagnostics>;
   alignSession(): Promise<{ words: TasmeeAlignedWord[] }>;
   releaseSessionAudio(): Promise<void>;
+  getFeedConfig(): Promise<TasmeeFeedConfig>;
+  writeFeedResult(o: { json: string }): Promise<void>;
   addListener(event: string, cb: (data: never) => void): Promise<PluginListenerHandle>;
 }
 
@@ -63,6 +68,8 @@ export const tasmeeNative = {
   deleteModel: (modelId: string) => native().deleteModel({ modelId }),
   loadModel: (manifestJson: string) => native().loadModel({ manifestJson }),
   selfTest: () => native().selfTest(),
+  getFeedConfig: () => native().getFeedConfig(),
+  writeFeedResult: (json: string) => native().writeFeedResult({ json }),
   onDownloadProgress: (cb: (p: { received: number; total: number }) => void) => listen("tasmeeDownloadProgress", cb),
 };
 

@@ -51,7 +51,7 @@ export type TasmeeAlignedWord = { word: string; startMs: number; endMs: number }
 
 /** الواجهة التي تستهلكها TasmeeSession — يمكن استبدالها بمحاكٍ في الاختبارات. */
 export interface TasmeeEngineApi {
-  start(opts: { prompt?: string; keepSessionAudio?: boolean }): Promise<void>;
+  start(opts: { prompt?: string; keepSessionAudio?: boolean; feedFile?: string }): Promise<void>;
   setPrompt(text: string | null): Promise<void>;
   stop(): Promise<TasmeeSessionDiagnostics>;
   alignSession(): Promise<{ words: TasmeeAlignedWord[] }>;

@@ -21,7 +21,7 @@ assert.match(app, /FeatureTourPage/);
 assert.equal(existsSync(join(root, "components/onboarding/AppFeatureTourGate.tsx")), false);
 
 assert.match(settings, /جولة المزايا/);
-assert.match(settings, /href="\/feature-tour"/);
+assert.match(settings, /href:\s*"\/feature-tour"/);
 
 assert.match(tour, /FEATURE_TOUR_SLIDES/);
 assert.doesNotMatch(tour, /فعّل التنبيهات/);

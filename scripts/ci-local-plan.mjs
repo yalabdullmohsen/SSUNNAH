@@ -10,6 +10,26 @@ import { fileURLToPath } from "node:url";
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const readJson = (p) => JSON.parse(readFileSync(resolve(ROOT, p), "utf8"));
 
+/**
+ * يجمع أسطر كتلة run: المتعددة في أوامر كاملة: سطر مستمر بـ`\\` أو بنية if/for/while/case حتى fi/done/esac
+ * تُعاد أمرًا واحدًا (يُنفَّذ بـbash -c كما هو) بدل أن يُفصَل كل سطر على حدة.
+ */
+export function groupShellBlocks(lines) {
+  const out = [];
+  let acc = [];
+  let depth = 0;
+  for (const line of lines) {
+    acc.push(line);
+    if (line.endsWith("\\")) continue;
+    const code = line.replace(/#.*$/, "");
+    if (/^(if|for|while|until|case)\b/.test(code)) depth++;
+    if (/^(fi|done|esac)\b/.test(code)) depth--;
+    if (depth <= 0) { out.push(acc.join("\n")); acc = []; depth = 0; }
+  }
+  if (acc.length) out.push(acc.join("\n"));
+  return out;
+}
+
 /** خطوات repo-gates: [{ name, cmds[], optional }] */
 export function repoGatesSteps(yml = readFileSync(resolve(ROOT, ".github/workflows/ci.yml"), "utf8")) {
   const lines = yml.split("\n");
@@ -29,7 +49,9 @@ export function repoGatesSteps(yml = readFileSync(resolve(ROOT, ".github/workflo
     if (!m) continue;
     if (/^[|>]-?$/.test(m[1])) {
       const indent = (body[i + 1].match(/^\s*/) ?? [""])[0].length;
-      for (let j = i + 1; j < body.length && (body[j].trim() === "" || body[j].match(/^\s*/)[0].length >= indent); j++) if (body[j].trim()) cur.cmds.push(body[j].trim());
+      const block = [];
+      for (let j = i + 1; j < body.length && (body[j].trim() === "" || body[j].match(/^\s*/)[0].length >= indent); j++) if (body[j].trim()) block.push(body[j].trim());
+      cur.cmds.push(...groupShellBlocks(block));
     } else cur.cmds.push(m[1].trim());
   }
   return steps.filter((s) => s.cmds.length);
@@ -40,7 +62,7 @@ export function expandCommand(raw, seen = new Set()) {
   const scriptsOf = { root: readJson("package.json").scripts ?? {}, app: readJson("artifacts/majalis/package.json").scripts ?? {} };
   const out = [];
   const visit = (cmd, scope) => {
-    for (const part of cmd.split(/\s*&&\s*/)) {
+    for (const part of cmd.includes("\n") ? [cmd] : cmd.split(/\s*&&\s*/)) {
       const app = part.match(/^pnpm --filter @workspace\/majalis run ([\w:.-]+)$/);
       const run = part.match(/^pnpm (?:run )?([\w:.-]+)$/);
       const target = app ? ["app", app[1]] : run ? [scope, run[1]] : null;

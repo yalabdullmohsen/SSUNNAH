@@ -276,9 +276,9 @@ ok(
   "DEVELOPMENT_TEAM unchanged",
 );
 
-// Capacitor auto-discovers CAPBridgedPlugin — AppDelegate must not manually register a conflicting name
+// Capacitor 8 لا يكتشف الإضافات المحلية تلقائيًا (packageClassList فقط) — تُسجَّل مرة واحدة في MainBridgeViewController
 const appDelegate = readFileSync(join(iosApp, "App", "AppDelegate.swift"), "utf8");
-ok(!appDelegate.includes("MajlisPlaybackAudio"), "AppDelegate does not manually register playback plugin (CAPBridgedPlugin auto-discovery)");
+ok((appDelegate.match(/MajlisPlaybackAudioPlugin\(\)/g) || []).length === 1, "MajlisPlaybackAudioPlugin مسجّلة مرة واحدة فقط (لا تسجيل متعارض)");
 ok(!appDelegate.includes("MajlisSpeechRecognition"), "AppDelegate has no speech recognition plugin");
 ok(!appDelegate.includes("RecitationAudioCapture"), "AppDelegate has no recitation capture plugin");
 ok(appDelegate.includes("import WebKit"), "AppDelegate imports WebKit for cache purge");
@@ -637,6 +637,21 @@ ok(
   /removeData\([\s\S]*?\)\s*\{\s*done = true\s*\}/.test(appDelegate) && /purgeTimeout/.test(appDelegate) && /RunLoop\.current\.run/.test(appDelegate),
   "مسح كاش الويب ينتظر اكتماله بمهلة قصوى قبل تحميل الويب (لا completion فارغ)",
 );
+
+// Capacitor 8 يسجّل ما في packageClassList فقط؛ كل إضافة محلية (CAPBridgedPlugin في هدف App) يجب أن تُسجَّل
+// في MainBridgeViewController، وأن يكون Main.storyboard مشيرًا إليه — وإلا تُرفض نداءاتها من JS بصمت.
+{
+  const appDir = join(iosApp, "App");
+  const swiftFiles = execSync(`find "${appDir}" -name "*.swift"`, { encoding: "utf8" }).trim().split("\n");
+  const localPlugins = swiftFiles.flatMap((f) =>
+    [...readFileSync(f, "utf8").matchAll(/class (\w+)\s*:\s*CAPPlugin,\s*CAPBridgedPlugin/g)].map((m) => m[1]),
+  );
+  const bridgeVc = appDelegate.match(/class MainBridgeViewController: CAPBridgeViewController \{[\s\S]*?\n\}/)?.[0] ?? "";
+  ok(localPlugins.length >= 6, `إضافات محلية مكتشفة (${localPlugins.length})`);
+  for (const p of localPlugins) ok(bridgeVc.includes(`${p}()`) && /registerPluginInstance/.test(bridgeVc), `${p} مسجّلة في MainBridgeViewController`);
+  const storyboard = readFileSync(join(appDir, "Base.lproj", "Main.storyboard"), "utf8");
+  ok(/customClass="MainBridgeViewController" customModule="App"/.test(storyboard), "Main.storyboard يستعمل MainBridgeViewController");
+}
 
 if (failed) {
   console.error(`\n${failed} gate(s) failed`);

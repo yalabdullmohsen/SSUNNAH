@@ -111,7 +111,8 @@ try {
       if (!deviceTranscripts[clip.code]) continue;
       windows = deviceTranscripts[clip.code]!;
     } else {
-      const src = files.find((f) => f.replace(/\.[^.]+$/, "").trim().toUpperCase() === clip.code);
+      /* «C1.m4a» أو «C1-p562.m4a» أو «C1_…» أو «C1 …» (تسمية مقاطع يوسف) */
+      const src = files.find((f) => f.replace(/\.[^.]+$/, "").trim().toUpperCase().split(/[-_\s]/)[0] === clip.code);
       if (!src) {
         console.log(`${clip.code}: لا تسجيل — تخطٍّ`);
         continue;

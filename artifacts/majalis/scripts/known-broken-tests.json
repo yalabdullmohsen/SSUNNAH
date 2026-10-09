@@ -1,0 +1,51 @@
+[
+  {
+    "file": "content-audit-b069-full-fiqh-fihris-gate.test.ts",
+    "reason": "درس salah-shurut-salah-mithal-tatbiqi: حقل preferred أقصر من 20 حرفًا (بيانات فقه)",
+    "action": "أصلحه (محتوى)",
+    "owner": "ن6 (فقه)",
+    "expires": "2026-10-11"
+  },
+  {
+    "file": "fiqh-taxonomy-integrity.test.ts",
+    "reason": "معرّف باب مكرر عبر الكتب (salam) — يُغلقه #2842 إن اندمج",
+    "action": "أصلحه (#2842)",
+    "owner": "ن6 (فقه)",
+    "expires": "2026-10-11"
+  },
+  {
+    "file": "kuwait-lessons-archive-zombies.test.ts",
+    "reason": "صف البذرة kw-ajraa-murtaqa-course-3-1 غير موجود في ملف البذور",
+    "action": "أصلحه أو يُحذف: يحتاج تحقيقًا في مصدر البذور",
+    "owner": "ن1",
+    "expires": "2026-10-11"
+  },
+  {
+    "file": "header-ad-gate.test.ts",
+    "reason": "مقارنات نصية بمصدر App.tsx/NavBar تغيّر موضعها (app-top-chrome صار في index.css)؛ الميزة قائمة",
+    "action": "يُعاد كتابته (سلوك لا نص مصدر)",
+    "owner": "ن1",
+    "expires": "2026-10-11"
+  },
+  {
+    "file": "share-faida-gate.test.ts",
+    "reason": "يفرض غياب Share2 وقد أُضيفت الأيقونة عمدًا في ShareFaida.tsx",
+    "action": "يُعاد كتابته",
+    "owner": "ن1",
+    "expires": "2026-10-11"
+  },
+  {
+    "file": "more-sheet-nav-lifecycle.test.ts",
+    "reason": "تأكيد نصي على شعار الهيدر «سُنّة» بعد إعادة الهوية (بعد إصلاح تبعيات الأثر)",
+    "action": "يُعاد كتابته",
+    "owner": "ن1",
+    "expires": "2026-10-11"
+  },
+  {
+    "file": "recitation-player.test.ts",
+    "reason": "audioInterruption انتقل من AudioEngine.ts إلى audio-engine-native-bridge.ts (إعادة هيكلة لا تراجع)",
+    "action": "يُعاد كتابته",
+    "owner": "ن5 (تسميع/صوت)",
+    "expires": "2026-10-11"
+  }
+]
