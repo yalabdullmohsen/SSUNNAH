@@ -2267,7 +2267,7 @@ html[data-theme="dark"] .nm-page-arrow {
 /* ───── التسميع v2 داخل المصحف — توكنات النظام الموحّد فقط (--sn-*) ───── */
 
 .tv2 {
-  --tv2-toolbar-h: 56px;
+  --nm-tasmee-bar-h: 56px;
   position: fixed;
   inset-inline: 0;
   inset-block-end: 0;
@@ -2284,7 +2284,7 @@ html[data-theme="dark"] .nm-page-arrow {
   gap: var(--sn-s2);
   margin-inline: var(--sn-page-x, 16px);
   margin-block-end: var(--sn-s3);
-  min-height: var(--tv2-toolbar-h);
+  min-height: var(--nm-tasmee-bar-h);
   padding: var(--sn-s2) var(--sn-s3);
   overflow-x: auto;
 }
@@ -2301,7 +2301,7 @@ html[data-theme="dark"] .nm-page-arrow {
   gap: var(--sn-s3);
 }
 .tv2[data-active="1"] .tv2-fabwrap {
-  inset-block-end: calc(var(--inset-bottom, 0px) + var(--tv2-toolbar-h) + var(--sn-s3) * 2 + var(--sn-s4));
+  inset-block-end: calc(var(--inset-bottom, 0px) + var(--nm-tasmee-bar-h) + var(--sn-s3) * 2 + var(--sn-s4));
 }
 .tv2 .tv2-fab {
   width: 56px;
@@ -2332,7 +2332,7 @@ html[data-theme="dark"] .nm-page-arrow {
 .tv2 .tv2-toast {
   position: absolute;
   inset-inline: var(--sn-page-x, 16px);
-  inset-block-end: calc(var(--inset-bottom, 0px) + var(--tv2-toolbar-h) + var(--sn-s8) + var(--sn-s8) + var(--sn-s6));
+  inset-block-end: calc(var(--inset-bottom, 0px) + var(--nm-tasmee-bar-h) + var(--sn-s8) + var(--sn-s8) + var(--sn-s6));
   margin-inline: auto;
   width: fit-content;
   max-width: 100%;
