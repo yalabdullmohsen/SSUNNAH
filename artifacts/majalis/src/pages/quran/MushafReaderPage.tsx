@@ -4,6 +4,7 @@ import { navigateTo } from "@/lib/navigation-intent";
 import { NewMushafReader as MushafViewport } from "@/features/mushaf-reader";
 import { MushafAppearanceProvider } from "@/lib/mushaf-v2";
 import { applyPageSeo } from "@/lib/seo";
+import { wantsTasmeeFromSearch } from "@/lib/tasmee-v2/flags";
 import {
   clampMushafPage,
   loadLastPageSync,
@@ -190,6 +191,7 @@ export default function MushafReaderPage() {
           onPageChange={onPageChange}
           onExit={() => QuranNavigationService.exitToReturnContext("/quran-hub")}
           onIndex={() => navigateTo("/quran-hub", { mode: "screen" })}
+          tasmeeRequested={wantsTasmeeFromSearch(search)}
         />
       </MushafAppearanceProvider>
     </ScriptureScreen>
