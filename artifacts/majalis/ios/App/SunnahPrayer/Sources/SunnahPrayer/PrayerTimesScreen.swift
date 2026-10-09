@@ -2,8 +2,10 @@ import SwiftUI
 
 /// تنسيق الوقت بمنطقة الموقع لا بمنطقة الجهاز.
 public enum PrayerTimeFormat {
-    /// أرقام عربية صراحةً؛ لا تتبع افتراض «ar» المتغيّر بين إصدارات النظام.
-    static let locale = Locale(identifier: "ar@numbers=arab")
+    /// أرقام لاتينية صراحةً (قاعدة المشروع)؛ لا تتبع افتراض «ar» المتغيّر بين إصدارات النظام.
+    static let locale = Locale(identifier: "ar@numbers=latn")
+    /// العدّاد س:د:ث: أرقام لاتينية ثابتة مستقلة عن لغة الجهاز.
+    static let countdownLocale = Locale(identifier: "en_US_POSIX")
 
     public static func clock(_ date: Date, in timeZone: TimeZone) -> String {
         let f = DateFormatter()
@@ -17,7 +19,7 @@ public enum PrayerTimeFormat {
     public static func countdown(_ interval: TimeInterval) -> String {
         let total = max(0, Int(interval.rounded(.down)))
         let f = NumberFormatter()
-        f.locale = locale
+        f.locale = countdownLocale
         f.minimumIntegerDigits = 2
         let parts = [total / 3600, total % 3600 / 60, total % 60].map { f.string(from: NSNumber(value: $0)) ?? "\($0)" }
         return parts.joined(separator: ":")

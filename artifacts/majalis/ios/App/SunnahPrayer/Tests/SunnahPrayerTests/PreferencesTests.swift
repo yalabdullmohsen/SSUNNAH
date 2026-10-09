@@ -48,11 +48,11 @@ final class PreferencesTests: XCTestCase {
         let kuwait = PrayerTimeFormat.clock(instant, in: TimeZone(identifier: "Asia/Kuwait")!)
         let london = PrayerTimeFormat.clock(instant, in: TimeZone(identifier: "Europe/London")!)
         XCTAssertNotEqual(kuwait, london)
-        XCTAssertTrue(kuwait.contains("١٢:٠٥"), kuwait)
+        XCTAssertTrue(kuwait.contains("12:05"), kuwait)
     }
 
     func testCountdownFormat() {
-        XCTAssertEqual(PrayerTimeFormat.countdown(3_725), "٠١:٠٢:٠٥")
-        XCTAssertEqual(PrayerTimeFormat.countdown(-5), "٠٠:٠٠:٠٠")
+        XCTAssertEqual(PrayerTimeFormat.countdown(3_725), "01:02:05")
+        XCTAssertEqual(PrayerTimeFormat.countdown(-5), "00:00:00")
     }
 }
