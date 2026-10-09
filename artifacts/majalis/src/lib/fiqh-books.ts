@@ -280,6 +280,19 @@ function sourcesComplete(sources: FiqhSource[] | undefined): boolean {
   );
 }
 
+/** جُمل قالبية منسوخة لا تحمل معلومة؛ تُخفى عند العرض دون المساس بالمحتوى المخزَّن. */
+const FIQH_TEMPLATE_SENTENCES: RegExp[] = [
+  /وعمل أهل العلم في المذهب الحنبلي جارٍ على الجمع بين النص وفقه الإمام أحمد رحمه الله\.?/g,
+  /مع مراعاة قواعد المذهب الحنبلي في الجمع بين النص والفقه\.?/g,
+  /يُعرض الأدب هنا على طريقة فقهاء الحنابلة مع الاستناد إلى النصوص(?:،? دون اختراع أحكام)?\.?/g,
+];
+
+export function stripFiqhTemplate(text: string | undefined | null): string {
+  let out = text ?? "";
+  for (const re of FIQH_TEMPLATE_SENTENCES) out = out.replace(re, "");
+  return out.replace(/[ \t]{2,}/g, " ").trim();
+}
+
 export function isPublishedLesson(lesson: FiqhLesson): boolean {
   return (
     lesson.status === "published" &&
