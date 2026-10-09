@@ -12,7 +12,7 @@
  * الاستعمال: pnpm run ci:local [-- --base origin/main] [-- --all] [-- --full] [-- --plan]
  */
 import { execFileSync, spawnSync } from "node:child_process";
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { repoGatesLeaves, isBudgetGate, selectionNeedles, seoPrerenderDrift } from "./ci-local-plan.mjs";
@@ -59,7 +59,7 @@ for (const [dir, re] of testDirs) {
 }
 
 const run = (label, cmd, args, cwd = APP) => {
-  const r = spawnSync(cmd, args, { cwd, encoding: "utf8", env: process.env });
+  const r = spawnSync(cmd, args, { cwd, encoding: "utf8", env: process.env, maxBuffer: 256 * 1024 * 1024 });
   if (r.status !== 0) {
     console.error(`✗ ${label}\n${(r.stdout + r.stderr).split("\n").slice(-14).join("\n")}`);
     return false;
@@ -85,7 +85,14 @@ else {
   ok = false;
   console.error(`✗ seo-prerender لا يطابق generate-seo.mjs — أودِع الصفحات المعاد توليدها:\n${seo.error ?? seo.files.join("\n")}`);
 }
+// معلنة في known-broken-tests.json (بوابة مراقبة الانتهاء في lib-tests-all-wired) — تفشل على main نفسه
+const today = new Date().toISOString().slice(0, 10);
+const knownBroken = new Set(JSON.parse(readFileSync(resolve(APP, "scripts/known-broken-tests.json"), "utf8")).filter((e) => e.expires >= today).map((e) => e.file));
+// تحتاج مخرجات vite build (لا يعمل على ماك)؛ تبقى إلزامية في CI
+const needsDist = new Set(["scripts/test-bundle-budget.mjs"]);
 for (const t of [...selected].sort()) {
+  if (knownBroken.has(t.split("/").pop())) { console.log(`↷ ${t} (معلن في known-broken-tests.json)`); continue; }
+  if (needsDist.has(t) && !existsSync(resolve(APP, "dist/assets"))) { console.log(`↷ ${t} (يحتاج dist — يعمل في CI)`); continue; }
   ok = run(t, "node", t.endsWith(".mjs") ? [t] : ["--import", "tsx", t]) && ok;
 }
 // الاختبارات تعيد كتابة تقارير مولَّدة؛ أعدها لحالتها قبل التشغيل

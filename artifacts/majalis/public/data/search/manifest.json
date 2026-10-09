@@ -1,20 +1,20 @@
 {
   "version": 3,
   "contentType": "search.unified",
-  "checksum": "sha256:b26771b43b2834df74189aced94473c3f80d32f5f84b8ad0730a3c6c74e665ab",
-  "count": 4640,
+  "checksum": "sha256:a5e988238f54c497e8d844b872694e061b0be5483d64b77c63b53a41e12708c5",
+  "count": 4639,
   "files": [
     {
       "file": "index.json",
-      "bytes": 1851510,
-      "itemCount": 4640
+      "bytes": 1850726,
+      "itemCount": 4639
     },
     {
       "file": "shards/adhkar.json",
       "kind": "adhkar",
-      "bytes": 107737,
-      "itemCount": 303,
-      "checksum": "sha256:2c8f7e99341b5b213e36f4c6086d761189fd11b82ef447692fc72b97ef58eefe"
+      "bytes": 106953,
+      "itemCount": 302,
+      "checksum": "sha256:3d81fb1a4e62e1ee91e30788bb5f3d0400fd1f7b198367722edaca2a32ea815b"
     },
     {
       "file": "shards/akhlaq.json",
