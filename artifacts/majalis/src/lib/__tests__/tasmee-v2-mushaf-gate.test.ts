@@ -17,7 +17,11 @@ assert.match(reader, /<TasmeeV2Layer[\s\S]*startInTasmee=\{tasmeeRequested\}/);
 const page = read("pages/quran/MushafReaderPage.tsx");
 assert.match(page, /tasmeeRequested=\{wantsTasmeeFromSearch\(search\)\}/, "?tasmee=1 يصل إلى القارئ");
 
-const css = read("features/tasmee-v2/tasmee-v2.css");
+// قسم التسميع داخل ملف أنماط المصحف (من علامته إلى النهاية)
+const readerCss = read("features/mushaf-reader/mushaf-reader.css");
+const marker = readerCss.indexOf("التسميع v2 داخل المصحف");
+assert.ok(marker > 0, "قسم التسميع v2 موجود في mushaf-reader.css");
+const css = readerCss.slice(marker);
 // لا hex ولا rgb خام: توكنات --sn-* فقط
 assert.doesNotMatch(css, /#[0-9a-fA-F]{3,8}\b/, "لا hex خارج tokens.css");
 assert.doesNotMatch(css, /\brgba?\(/, "لا rgb خام");
@@ -27,8 +31,8 @@ assert.ok(hideRules.length >= 5, "قواعد طبقة العرض موجودة");
 for (const rule of hideRules) {
   assert.doesNotMatch(rule, /\b(display|height|width|margin|padding|border(?!-radius)|position)\s*:/, `يغيّر التخطيط: ${rule}`);
 }
-// أسطر مسطّرة بـ box-shadow لا border (لا تغيّر ارتفاع السطر)
-assert.match(css, /data-tasmee-hide="1"\] \.nm-line \{\s*box-shadow: inset 0 -1px 0 var\(--sn-separator\)/);
+// أسطر مسطّرة بخلفية متدرّجة لا border (لا تغيّر ارتفاع السطر)
+assert.match(css, /data-tasmee-hide="1"\] \.nm-line \{\s*background-image: linear-gradient\(to top, var\(--sn-separator\)/);
 // الحالات الأربع
 for (const st of ["hidden", "ok", "wrong", "skipped"]) assert.match(css, new RegExp(`data-tasmee="${st}"`));
 // النظرة الخاطفة

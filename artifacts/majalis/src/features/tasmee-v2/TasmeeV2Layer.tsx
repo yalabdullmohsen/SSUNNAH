@@ -14,7 +14,6 @@ import {
 } from "@/lib/tasmee-v2/session-state";
 import { stepsBackToAyahStart } from "@/lib/tasmee-v2/word-model";
 import { T } from "./strings";
-import "./tasmee-v2.css";
 
 const ALERTS_KEY = "ssunnah-tasmee-v2-alerts";
 const LONG_PRESS_MS = 500;
@@ -283,7 +282,7 @@ export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = fal
     <>
       <div className="tv2" data-active={active ? "1" : "0"} dir="rtl">
         {active ? (
-          <div className="tv2-toolbar" role="toolbar" aria-label={T.toolbar}>
+          <div className="sn-card--featured tv2-toolbar" role="toolbar" aria-label={T.toolbar}>
             <Chip className="tv2-errors" aria-label={`${T.errors}: ${state.errors}`}>
               <span>{T.errors}</span>
               <bdi className="tv2-num">{state.errors}</bdi>
@@ -332,13 +331,14 @@ export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = fal
 
         <div className="tv2-fabwrap">
           {state.recording ? (
-            <span className="tv2-timer" role="timer" aria-label={T.timer}>
+            <span className="sn-chip tv2-timer" role="timer" aria-label={T.timer}>
               <span className="tv2-dot" aria-hidden="true" />
               <bdi className="tv2-num">{formatElapsed(elapsed)}</bdi>
             </span>
           ) : null}
           <IconButton
             label={fabLabel}
+            tone="filled"
             className="tv2-fab"
             data-recording={state.recording ? "1" : "0"}
             aria-pressed={state.recording}
@@ -353,7 +353,7 @@ export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = fal
           </IconButton>
         </div>
         {toast ? (
-          <div className="tv2-toast" role="status" aria-live="polite">
+          <div className="sn-toast tv2-toast" role="status" aria-live="polite">
             {toast}
           </div>
         ) : null}
