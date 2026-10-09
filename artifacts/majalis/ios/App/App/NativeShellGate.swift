@@ -76,7 +76,7 @@ enum NativeShellGate {
     }
 }
 
-/// الجذر الأصلي: المواقيت أصلية، وكل مسار لم يُحوَّل يُعرض في WebScreen بالمسار نفسه.
+/// الجذر الأصلي: المواقيت والقبلة أصليتان، وكل مسار لم يُحوَّل يُعرض في WebScreen بالمسار نفسه.
 struct NativeShellRoot: View {
     @StateObject private var router = AppRouter()
 
@@ -88,6 +88,8 @@ struct NativeShellRoot: View {
         switch Route.normalize(route.path) {
         case AppTab.prayer.rootPath:
             return AnyView(PrayerTimesScreen())
+        case "/qibla":
+            return AnyView(QiblaScreen())
         default:
             return AnyView(
                 WebScreen(
