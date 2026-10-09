@@ -86,14 +86,11 @@ for (const [t, linked] of Object.entries(declared)) {
 }
 assert.equal(
   (privacy.match(/<string>NSPrivacyCollectedDataType[A-Za-z]+<\/string>/g) ?? []).filter((x) => !/Purpose/.test(x)).length,
-  Object.keys(declared).length + 1,
-  "عدد الأنواع المعلنة = الجرد + AudioData",
+  Object.keys(declared).length,
+  "عدد الأنواع المعلنة = الجرد",
 );
-// اختبار التلاوة يرسل الصوت إلى Groq بعد موافقة: AudioData مجموع، غير مرتبط، بلا تتبع، وظيفة التطبيق
-assert.match(
-  privacy,
-  /NSPrivacyCollectedDataTypeAudioData<\/string>\s*<key>NSPrivacyCollectedDataTypeLinked<\/key>\s*<false\/>\s*<key>NSPrivacyCollectedDataTypeTracking<\/key>\s*<false\/>\s*<key>NSPrivacyCollectedDataTypePurposes<\/key>\s*<array>\s*<string>NSPrivacyCollectedDataTypePurposeAppFunctionality<\/string>/,
-);
+// التسميع على الجهاز فقط ولا مسار يرسل صوتًا: لا AudioData
+assert.doesNotMatch(privacy, /NSPrivacyCollectedDataTypeAudioData/);
 
 const info = readMaj("ios/App/App/Info.plist");
 assert.match(info, /CFBundleDisplayName/);

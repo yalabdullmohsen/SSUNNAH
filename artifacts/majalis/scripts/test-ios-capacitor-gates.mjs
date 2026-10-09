@@ -85,7 +85,7 @@ ok(
 );
 ok(!existsSync(join(root, "android")), "Android product tree retired (no artifacts/majalis/android)");
 ok(!plist.includes("NSSpeechRecognitionUsageDescription"), "Info.plist has no speech recognition usage");
-// نص إذن الميكروفون موحَّد حرفيًا (scripts/mic-usage-description.txt): وضع التسميع على الجهاز فقط، واختبار التلاوة يُرسل بعد الموافقة.
+// نص إذن الميكروفون موحَّد حرفيًا (scripts/mic-usage-description.txt): وضع التسميع على الجهاز فقط، لا يُرسل ولا يُحفظ.
 // أي تغيير يلزم تعديل الملف الموحَّد معًا مع Info.plist وصفحة الخصوصية. التعرّف الصوتي الأصلي (Speech) يبقى محظورًا.
 {
   const canonical = readFileSync(join(root, "scripts/mic-usage-description.txt"), "utf8").trim();
@@ -129,10 +129,7 @@ ok(
     !privacy.includes("NSPrivacyAccessedAPICategorySystemBootTime"),
   "PrivacyInfo does not invent unused Required Reason APIs",
 );
-ok(
-  /NSPrivacyCollectedDataTypeAudioData<\/string>\s*<key>NSPrivacyCollectedDataTypeLinked<\/key>\s*<false\/>\s*<key>NSPrivacyCollectedDataTypeTracking<\/key>\s*<false\/>/s.test(privacy),
-  "PrivacyInfo declares AudioData (recitation test → Groq): not linked, no tracking",
-);
+ok(!privacy.includes("NSPrivacyCollectedDataTypeAudioData"), "PrivacyInfo: no AudioData (tasmee is on-device only)");
 for (const t of ["EmailAddress", "Name", "PhoneNumber", "UserID", "DeviceID", "OtherUserContent", "ProductInteraction", "SearchHistory"]) {
   ok(
     new RegExp(`NSPrivacyCollectedDataType${t}</string>\\s*<key>NSPrivacyCollectedDataTypeLinked</key>\\s*<true/>`, "s").test(privacy),

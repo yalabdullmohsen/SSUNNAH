@@ -15,14 +15,25 @@ This draft maps **manifest → proposed ASC answers**. It does **not** assume Ap
 | Used for tracking? | **No** | `NSPrivacyTracking = false` |
 | Tracking domains | none | — |
 
-## Data collected
+## Data collected — جاهز للنسخ إلى App Store Connect (مطابق لـPrivacyInfo، 2026-10-09)
 
-| Data type | Linked to user? | Used for tracking? | Purposes | Evidence |
-|-----------|-----------------|--------------------|----------|----------|
-| Email Address | Yes | No | App Functionality | PrivacyInfo · auth/signup |
-| Coarse Location | No | No | App Functionality | PrivacyInfo · Qibla when-in-use |
-| Audio Data | No (غير مرتبط بالهوية؛ انظر الأدلة) | No | App Functionality | اختبار التلاوة فقط · «Audio Data — الأدلة» أدناه |
-| Payment / Financial | No | — | — | Product claim: no ads/payments in listing |
+App Privacy → «Do you or your third-party partners collect data from this app?» = **Yes**. Tracking = **No** لكل الأنواع.
+
+| الفئة في ASC | النوع في ASC | Linked to the user | Used for tracking | Purposes | المصدر في الكود |
+|---|---|---|---|---|---|
+| Contact Info | Email Address | Yes | No | App Functionality | Supabase Auth والمراسلات |
+| Contact Info | Name | Yes | No | App Functionality | `profiles.full_name` والشهادات |
+| Contact Info | Phone Number | Yes | No | App Functionality | `dawah_contact_requests.contact_value` (اختياري) |
+| Identifiers | User ID | Yes | No | App Functionality | معرّف Supabase |
+| Identifiers | Device ID | Yes | No | App Functionality | رمز APNs في `push_subscriptions` |
+| User Content | Other User Content | Yes | No | App Functionality | ملاحظات، مفضلة، تقييمات، بلاغات، خطط |
+| Usage Data | Product Interaction | Yes | No | App Functionality, Analytics | التقدّم و`content_views` |
+| Search History | Search History | Yes | No | App Functionality, Analytics | `search_analytics_events` |
+| Diagnostics | Crash Data | No | No | App Functionality | `client_error_logs` بلا معرّف |
+| Diagnostics | Performance Data | No | No | Analytics | Web Vitals بعد الموافقة، بلا معرّف |
+| User Content | Audio Data | **Not collected** | — | — | التسميع على الجهاز فقط؛ انظر أدناه |
+
+غير مجموع: الموقع (القبلة والمواقيت تُحسب على الجهاز)، والمالية، والصحة، وجهات الاتصال، والصور، والمعرّف الإعلاني.
 
 ## Required Reason APIs
 
@@ -36,29 +47,14 @@ This draft maps **manifest → proposed ASC answers**. It does **not** assume Ap
 2. If analytics/RUM ever ships with PII → update PrivacyInfo **and** ASC in the same change.  
 3. Confirm no ATT / IDFA usage remains absent.
 
-## Audio Data — الأدلة (اطُّلع 2026-10-08)
+## Audio Data — غير مجموع (2026-10-09)
 
-**الجواب المقترح:** Audio Data = **Collected**، الغرض App Functionality، **غير مرتبط بالهوية**، **لا تتبع**. الميزة: «اختبار التلاوة» فقط؛ وضع التسميع على الجهاز لا يرسل شيئًا.
+- وضع التسميع داخل المصحف يعالج الصوت بنموذج على الجهاز؛ لا يُرسل صوت ولا نص مفرَّغ، ولا يُحفظ التسجيل بعد الجلسة.
+- صفحة «اختبار التلاوة» (المسار إلى Groq) حُذفت في #2799 وصار مسارها تحويلًا إلى `/mushaf?tasmee=1`. `src/lib/recitation-test/api.ts` لا يستورده أي كود في الواجهة.
+- نص إذن الميكروفون (`scripts/mic-usage-description.txt` = `Info.plist`): «يُستخدم الميكروفون لتسجيل تلاوتك في وضع التسميع داخل المصحف. تُعالج التلاوة على جهازك فقط ولا تُرسل ولا تُحفظ.»
+- البوابات: `app-store-readiness-gate` و`test-ios-capacitor-gates` و`recitation-test-ai-gate` تمنع `AudioData` وأي «خدمة خارجية» في نص الإذن.
 
-| السؤال | الجواب | الدليل في الكود |
-|---|---|---|
-| مسار البيانات | الهاتف ← `POST /api/recitation-transcribe` (Vercel) ← `api.groq.com` (whisper-large-v3) | `src/lib/recitation-test/api.ts`, `lib/api-handlers/recitation-transcribe.js` |
-| ماذا يُرسل | صوت ≤45ث + mimeType + المدة + `consent:true` فقط. لا ترويسة Authorization ولا معرّف مستخدم ولا حساب. لا نص متوقَّع للمزوّد | `api.ts` (headers: Content-Type فقط)؛ ترويسة `Bearer` في المعالج هي مفتاح الخادم لا المستخدم |
-| حفظ الخادم للصوت/النص/السجلات | لا حفظ: يُعالج في الذاكرة، لا ملفات ولا صفوف DB. السجلات: رمز حالة وأرقام المدة/الحجم فقط، لا محتوى | رأس `recitation-transcribe.js` + `console.warn/error` فيه |
-| ما يُحفظ عن الطلب | مفتاح تحديد المعدل `recitation-daily:<IP>` في Upstash، نافذة منزلقة 24 ساعة (عدّاد لا صوت) | `rate-limit.mjs` · `checkRateLimit` + `getTrustedClientIp` |
-| ربط الصوت بشخص | لا: لا يُقرن الصوت بحساب ولا IP؛ IP عدّاد فقط ولا يُمرَّر إلى Groq (Groq يرى عنوان خادم Vercel) | المعالج لا يمرّر أي ترويسة عميل إلى Groq |
-| الموافقة قبل الإرسال | شاشة صريحة، ولا يُطلب الميكروفون قبلها؛ الخادم يرفض بـ403 دون `consent===true` | `RecitationTestAiPage.tsx` (مجموعة `recitation-consent`)، `api.ts` (`hasRecitationConsent`)، المعالج (`consent_required`) |
-| نص الموافقة (حرفي) | «لتحليل تلاوتك يُرسَل تسجيلك الصوتي (حتى ٤٥ ثانية) عبر خادم سُنّة إلى خدمة تحويل الصوت إلى نص من طرف ثالث: Groq (خدمة ذكاء اصطناعي خارجية). يُرسَل الصوت وحده، ولا نرسل اسمك ولا بياناتك الأخرى. لا يُخزَّن التسجيل لدينا بعد المعالجة ولا نحتفظ بالنص المفرَّغ، وقد تحتفظ Groq بنسخة مؤقتة لأغراض الأمان وكشف الإساءة (حتى ٣٠ يومًا). لن يبدأ التسجيل ولن يُرسَل أي صوت قبل موافقتك، ويمكنك سحب الموافقة في أي وقت.» | `RecitationTestAiPage.tsx` ~300–307 |
-| السحب والحذف | زر «سحب موافقة إرسال التسجيل» يمسح العلامة المحلية ويوقف أي إرسال لاحق. **لا آلية لحذف ما أُرسل سابقًا**: لا يوجد عندنا ما يُحذف، وما قد يبقى لدى Groq ≤30 يومًا خارج تحكّمنا | `consent.ts` (`revokeRecitationConsent`) |
-
-### استثناءات يجب إدراجها عند الإفصاح
-1. عنوان IP يُحفظ ≤24 ساعة في Upstash كمفتاح عدّاد (غير مقرون بالصوت). إن عُدّ IP معرّفًا فهو Identifiers لا Audio Data؛ القرار للمالك في ASC.
-2. لدى Groq احتمال احتفاظ مؤقت ≤30 يومًا للأمان/الإساءة ما لم يُفعَّل ZDR.
-
-### مصدر شروط Groq
-https://console.groq.com/docs/your-data (اطُّلع 2026-10-08؛ الصفحة بلا تاريخ تحديث). اقتباس: «By default, Groq does not retain customer data for inference requests.» والاستثناء: سجلات مؤقتة للأعطال/الإساءة «up to 30 days, unless legally required to retain longer». ZDR: يفعّله المدير من Data Controls في GroqCloud.
-
-### معلّقات
-- **OWNER_ACTION:** تفعيل Zero Data Retention على حساب Groq (Data Controls). قبل ذلك لا يُكتب «لا يحتفظ مزوّدنا بالصوت» في أي نص مراجعة.
-- **فجوة PrivacyInfo.xcprivacy:** لا يعلن `NSPrivacyCollectedDataTypeAudioData` رغم الإرسال أعلاه. إضافته تعديل في `ios/` (يطلق TestFlight تلقائيًا) فلم يُلمس هنا؛ يُجدول مع بناء قادم بقرار المالك.
-- مزامنة إجابات ASC: OWNER_ACTION.
+### شرط أي إرسال سحابي لاحق (مزوّد Groq في محرك التسميع v2)
+1. **OWNER_ACTION:** تفعيل Zero Data Retention في Groq (Data Controls). قاعدة المالك: ZDR فقط. المصدر: https://console.groq.com/docs/your-data.
+2. في التغيير نفسه: إعادة `AudioData` (غير مرتبط، بلا تتبع، App Functionality) إلى PrivacyInfo، وتحديث نص الإذن وصفحة الخصوصية وجدول ASC، وشاشة موافقة صريحة قبل أول إرسال.
+3. هذا يتطلب نسخة متجر جديدة.

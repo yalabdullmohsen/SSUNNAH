@@ -282,15 +282,15 @@ console.log("=== الواجهة والتوصيل والخصوصية ===");
   const plist = read("ios/App/App/Info.plist");
   const micText = read("scripts/mic-usage-description.txt").trim();
   const micMatch = plist.match(/<key>NSMicrophoneUsageDescription<\/key>\s*<string>([^<]*)<\/string>/);
-  assert.equal(micMatch?.[1], micText, "نص إذن الميكروفون = النص الموحَّد حرفيًا (يغطي التسميع على الجهاز واختبار التلاوة المُرسَل بعد الموافقة)");
-  assert.match(micText, /في وضع التسميع تُعالج التلاوة على جهازك فقط ولا تُرسل/);
-  assert.match(micText, /في اختبار التلاوة تُرسل إلى خدمة خارجية[^.]*بعد موافقتك/);
+  assert.equal(micMatch?.[1], micText, "نص إذن الميكروفون = النص الموحَّد حرفيًا (التسميع على الجهاز فقط)");
+  assert.match(micText, /تُعالج التلاوة على جهازك فقط ولا تُرسل/);
+  assert.doesNotMatch(micText, /خدمة خارجية/, "لا مسار إرسال في النسخة الحالية");
   assert.doesNotMatch(plist, /NSSpeechRecognitionUsageDescription/, "لا تعرّف صوتي أصلي");
 
   const privacy = read("src/views/PrivacyPage.tsx");
-  assert.match(privacy, /لا يُخزَّن التسجيل بعد المعالجة/);
-  assert.match(privacy, /Groq/, "الخصوصية تسمّي Groq");
-  assert.match(privacy, /موافقتك الصريحة/, "الخصوصية تذكر الموافقة");
+  assert.match(privacy, /على جهازك فقط/);
+  assert.match(privacy, /لا يُرسَل أي صوت/);
+  assert.match(privacy, /موافقتك الصريحة/, "أي إرسال مستقبلي مشروط بالموافقة");
   assert.doesNotMatch(privacy, /Apple Speech/, "نص الخصوصية القديم أُزيل");
 }
 
