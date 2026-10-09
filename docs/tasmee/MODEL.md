@@ -24,12 +24,15 @@ python3 tools/tasmee-model/make_manifest.py <folder> <modelId> <upstream@sha> Ap
 
 خطوات `prepare_hf_model.py` لازمة لسببين: المستودع يحوي `pytorch_model.bin` فقط (و`transformers` يرفض pickle مع `torch<2.6` الذي تثبّته whisperkittools)، فتُحمَّل الأوزان بـ`weights_only=True` وتُحفظ safetensors؛ ويفتقر لـ`generation_config.json` فيؤخذ من `openai/whisper-<size>`. كذلك يُشحن `tokenizer.json` **الرسمي** من `openai/whisper-<size>` (MIT) مع الحزمة كي لا يجلب WhisperKit الـtokenizer من الشبكة وقت التشغيل. لا يُولَّد من ملفات Tarteel: الملف المولَّد ينقصه رموز الزمن (107 مقابل 1608 رمزًا مضافًا) فيُخرج WhisperKit نصًا فارغًا، وكان هذا سبب أعطال tiny وتلاوتَي الإجهاد في قياساتنا الأولى. نتحقق أن معرّفات `vocab.json` لـTarteel مطابقة للرسمي.
 
-## الأحجام (CoreML fp16، مع tokenizer)
+## الأحجام (CoreML، مع tokenizer)
 
 | النموذج | الحجم | الملفات |
 |---|---|---|
-| base | 150.3 MB (مفكوك) | `docs/tasmee/model-manifest-base.json` |
+| **base-q6 (الافتراضي)** | 58.8 MB (أرشيف، تكميم palettization مختلط ≈6 بت) — وسم `whisper-quran-coreml-v2-q6` | `docs/tasmee/model-manifest-base-q6.json` |
+| base fp16 (احتياطي غير افتراضي؛ يُختار عن بُعد بالـmodelId فقط) | 150.3 MB (مفكوك) | `docs/tasmee/model-manifest-base.json` |
 | tiny | 80.2 MB | `docs/tasmee/model-manifest-tiny.json` |
+
+اختيار q6 (قياس اصطناعي على M1 بالعتبات المعتمدة): إنذار كاذب 1.38% وكشف 98.1% وp95 1.32 ث، مقابل fp16 ‏1.26%/97.1%/1.37 ث؛ q4 مستبعد (إنذار 23.4%). لا اجتياز قبل مقاطع حقيقية وجهاز حقيقي.
 
 ## الاستضافة: GitHub Releases (ثابتة)
 

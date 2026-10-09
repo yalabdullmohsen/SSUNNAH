@@ -3,8 +3,12 @@
  *
  * التبديل يمرّ عبر `/data/tasmee-model.json` المنشور مع الموقع (بلا إصدار تطبيق): يغيّر `archive.url` فقط
  * وللـmodelId نفسه فقط، فالسلامة تبقى مربوطة بـSHA-256 المثبَّت هنا ويرفض المنزِّل (Swift) أي أرشيف مختلف.
+ *
+ * الافتراضي base-q6 (56MB). fp16 احتياطي مثبَّت غير افتراضي: لا يُختار إلا إن سمّاه الإعداد البعيد بـmodelId،
+ * ولا يُنزَّل إلا بموافقة المستخدم كأي نموذج.
  */
-import bundled from "../../../../../docs/tasmee/model-manifest-base.json";
+import bundled from "../../../../../docs/tasmee/model-manifest-base-q6.json";
+import fallback from "../../../../../docs/tasmee/model-manifest-base.json";
 import { NATIVE_API_ORIGIN } from "@/lib/native-api-base";
 
 export type TasmeeManifest = typeof bundled;
@@ -43,7 +47,9 @@ export async function resolveTasmeeManifest(native: boolean, timeoutMs = 4000): 
   try {
     const res = await fetch(remoteModelConfigUrl(native), { cache: "no-store", signal: ctrl.signal });
     if (!res.ok) return bundled;
-    cached = applyRemoteModelConfig(bundled, await res.json());
+    const remote: unknown = await res.json();
+    const pick = (remote as TasmeeModelRemoteConfig | null)?.modelId === fallback.modelId ? fallback : bundled;
+    cached = applyRemoteModelConfig(pick, remote);
     return cached;
   } catch {
     return bundled;
@@ -53,6 +59,9 @@ export async function resolveTasmeeManifest(native: boolean, timeoutMs = 4000): 
 }
 
 export const bundledTasmeeManifest: TasmeeManifest = bundled;
+
+/** fp16 الاحتياطي: غير افتراضي، يُختار عن بُعد بالـmodelId فقط. */
+export const fallbackTasmeeManifest: TasmeeManifest = fallback;
 
 /** حجم التنزيل بالميغابايت (أرشيف) للعرض في شاشة الموافقة. */
 export function downloadSizeMB(m: TasmeeManifest): number {

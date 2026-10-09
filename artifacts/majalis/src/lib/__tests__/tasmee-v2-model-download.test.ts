@@ -23,6 +23,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const {
   applyRemoteModelConfig,
   bundledTasmeeManifest: base,
+  fallbackTasmeeManifest: fp16,
   remoteModelConfigUrl,
   resolveTasmeeManifest,
   __resetTasmeeManifestCache,
@@ -62,6 +63,13 @@ const published = JSON.parse(readFileSync(resolve(root, "public/data/tasmee-mode
 assert.equal(applyRemoteModelConfig(base, published).archive.url, base.archive.url);
 assert.equal(published.modelId, base.modelId);
 
+/* الافتراضي q6 (أصغر من 60MB)، وfp16 احتياطي مختلف الهوية لا يُختار إلا بالـmodelId */
+assert.equal(base.modelId, "tasmee-whisper-base-q6-ar-quran-coreml");
+assert.ok(base.archive.size < 60_000_000, "أرشيف q6 أصغر من 60MB");
+assert.notEqual(fp16.modelId, base.modelId);
+assert.notEqual(fp16.archive.sha256, base.archive.sha256);
+for (const m of [base, fp16]) assert.match(m.archive.url, new RegExp(`/releases/download/${m.releaseTag}/`));
+
 /* فشل الشبكة → المثبَّت */
 const realFetch = globalThis.fetch;
 globalThis.fetch = (async () => {
@@ -73,6 +81,10 @@ globalThis.fetch = (async () =>
   new Response(JSON.stringify({ modelId: base.modelId, archiveUrl: alt }))) as typeof fetch;
 __resetTasmeeManifestCache();
 assert.equal((await resolveTasmeeManifest(true)).archive.url, alt);
+globalThis.fetch = (async () => new Response(JSON.stringify({ modelId: fp16.modelId }))) as typeof fetch;
+__resetTasmeeManifestCache();
+const picked = await resolveTasmeeManifest(true);
+assert.deepEqual([picked.modelId, picked.archive.sha256], [fp16.modelId, fp16.archive.sha256], "fp16 بالـmodelId فقط");
 globalThis.fetch = realFetch;
 
 /* 2) حالة التنزيل والاستئناف */
@@ -82,12 +94,14 @@ assert.equal(s.phase, "checking");
 assert.equal(s.total, total, "الحجم معروف قبل أي فحص");
 assert.equal(initialModelState(false).phase, "unsupported");
 assert.equal(modelReducer(s, { type: "status", installed: false, bytesOnDisk: 0, total, downloading: false }).phase, "missing");
-s = modelReducer(s, { type: "status", installed: false, bytesOnDisk: 40_000_000, total, downloading: false });
+const part = Math.floor(total * 0.25);
+const half = Math.floor(total / 2);
+s = modelReducer(s, { type: "status", installed: false, bytesOnDisk: part, total, downloading: false });
 assert.equal(s.phase, "paused", "جزء منزَّل → استئناف");
 s = modelReducer(s, { type: "start" });
-s = modelReducer(s, { type: "progress", received: 75_000_000, total });
-assert.equal(modelPercent(s), Math.floor((75_000_000 / total) * 100));
-assert.equal(modelReducer(s, { type: "progress", received: 10, total }).received, 75_000_000, "التقدّم لا يتراجع");
+s = modelReducer(s, { type: "progress", received: half, total });
+assert.equal(modelPercent(s), Math.floor((half / total) * 100));
+assert.equal(modelReducer(s, { type: "progress", received: 10, total }).received, half, "التقدّم لا يتراجع");
 assert.equal(modelReducer(s, { type: "failed", code: "cancelled" }).phase, "paused");
 const wifi = modelReducer(s, { type: "failed", code: "wifi_required" });
 assert.deepEqual([wifi.phase, wifi.error], ["error", "wifi"]);
@@ -105,9 +119,9 @@ assert.match(missing, /dir="rtl"/);
 for (const t of [T.model.missing, T.model.wifi, T.model.privacy, T.model.consent, T.model.later, T.model.size]) assert.ok(missing.includes(t), t);
 assert.ok(missing.includes(`>${mb}</bdi>`), "الحجم بالميغابايت ظاهر");
 assert.doesNotMatch(missing, /role="progressbar"/, "لا تقدّم قبل الموافقة");
-const paused = render({ phase: "paused", received: 40_000_000, total, error: null });
+const paused = render({ phase: "paused", received: part, total, error: null });
 assert.ok(paused.includes(T.model.resume) && paused.includes(T.model.pausedHint));
-const busy = render({ phase: "downloading", received: 75_000_000, total, error: null });
+const busy = render({ phase: "downloading", received: half, total, error: null });
 assert.match(busy, /role="progressbar"[^>]*aria-valuenow="50"/);
 assert.ok(busy.includes(T.model.cancel) && !busy.includes(T.model.consent));
 assert.ok(render({ phase: "error", received: 0, total, error: "wifi" }).includes(T.model.wifiRequired));
