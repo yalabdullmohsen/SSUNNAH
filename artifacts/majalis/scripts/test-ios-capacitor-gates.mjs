@@ -631,8 +631,8 @@ for (const pkg of ["SunnahNative", "SunnahDataKit", "SunnahWeb", "SunnahPrayer"]
 }
 const nativeGate = readFileSync(join(iosApp, "App", "NativeShellGate.swift"), "utf8");
 ok(
-  /UserDefaults\.standard\.bool\(forKey: defaultsKey\)/.test(nativeGate) && nativeGate.includes('"native_shell_enabled"'),
-  "native_shell_enabled يُقرأ من UserDefaults.bool (القيمة الافتراضية false)",
+  /object\(forKey: defaultsKey\) as\? Bool/.test(nativeGate) && nativeGate.includes('"native_shell_enabled"') && /static let compiledDefault = false/.test(nativeGate),
+  "native_shell_enabled يُقرأ من UserDefaults (القيمة المجمّعة الافتراضية false) مع مفتاح إيقاف عن بُعد",
 );
 ok(!/register\(defaults/.test(nativeGate) && !/native_shell_enabled[^\n]*true/.test(nativeGate), "لا تفعيل افتراضي لـnative_shell_enabled");
 
