@@ -12,6 +12,9 @@ on:
       - "artifacts/majalis/src/lib/prayer-ticker.ts"
       - "artifacts/majalis/src/lib/__tests__/ios-stability-audit.test.ts"
       - "artifacts/majalis/scripts/test-ios-capacitor-gates.mjs"
+      - "artifacts/majalis/scripts/check-sound-pack.mjs"
+      - "artifacts/majalis/docs/audio-rights/**"
+      - "artifacts/majalis/public/**"
       - "artifacts/majalis/src/main.tsx"
       - ".github/workflows/ios-capacitor-gates.yml"
   push:

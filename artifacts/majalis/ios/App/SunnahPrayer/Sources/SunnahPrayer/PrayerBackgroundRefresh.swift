@@ -9,7 +9,13 @@ public enum PrayerBackgroundRefresh {
     /// يكفي يوميًا مرة؛ النافذة 7 أيام فالتأخير لا يُفقد إشعارًا.
     static let interval: TimeInterval = 12 * 3600
 
+    /// التسجيل بلا المعرّف في Info.plist يُسقط التطبيق، فلا نسجّل إلا إن وُجد.
+    public static var isPermitted: Bool {
+        (Bundle.main.object(forInfoDictionaryKey: "BGTaskSchedulerPermittedIdentifiers") as? [String])?.contains(taskIdentifier) == true
+    }
+
     public static func register() {
+        guard isPermitted else { return }
         BGTaskScheduler.shared.register(forTaskWithIdentifier: taskIdentifier, using: nil) { task in
             guard let task = task as? BGAppRefreshTask else { return }
             handle(task)
@@ -25,7 +31,7 @@ public enum PrayerBackgroundRefresh {
     static func handle(_ task: BGAppRefreshTask) {
         schedule()
         let work = Task {
-            await PrayerNotificationScheduler.reschedule()
+            await NativeNotifications.rescheduleAll()
             task.setTaskCompleted(success: !Task.isCancelled)
         }
         task.expirationHandler = { work.cancel() }

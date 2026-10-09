@@ -35,7 +35,7 @@ public enum PrayerNotificationScheduler {
             let content = UNMutableNotificationContent()
             content.title = item.title
             content.body = item.body
-            content.sound = UNNotificationSound(named: UNNotificationSoundName(item.sound))
+            content.sound = NotificationSoundPack.sound(named: item.sound)
             content.threadIdentifier = "prayer"
             content.interruptionLevel = .timeSensitive
             let parts = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: item.fireDate)

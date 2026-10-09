@@ -2,6 +2,7 @@ import UIKit
 import Capacitor
 import AVFoundation
 import WebKit
+import SunnahPrayer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = NetworkService.shared
         purgeWebCachesOncePerAppBuild()
         NativeShellGate.installIfEnabled(in: window)
+        NativeNotificationsLifecycle.didFinishLaunching(nativeShellEnabled: NativeShellGate.isEnabled)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(handleMediaServicesReset),
@@ -69,6 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         NotificationCenter.default.post(name: Notification.Name("MajlisAppDidBecomeActive"), object: nil)
+        NativeNotificationsLifecycle.didBecomeActive(nativeShellEnabled: NativeShellGate.isEnabled)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
