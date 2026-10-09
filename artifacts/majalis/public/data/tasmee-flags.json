@@ -1,0 +1,5 @@
+{
+  "testflight": true,
+  "appStore": false,
+  "notes": "علم tasmee_v2 الحي — يُقرأ عند كل تشغيل بلا بناء جديد. testflight=false يغلقه في TestFlight (لا يفتح شيئًا). appStore=true وحده يفتحه في App Store، ولا يُضبط true قبل اجتياز معايير الجهاز الحقيقي: إنذار كاذب ≤2%، كشف ≥95%، زمن وسيط ≤1 ث وp95 ≤1.5 ث. أي تعذّر في الجلب = مغلق في App Store."
+}

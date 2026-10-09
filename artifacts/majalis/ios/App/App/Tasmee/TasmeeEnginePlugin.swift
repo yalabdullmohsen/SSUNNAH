@@ -19,11 +19,12 @@ public class TasmeeEnginePlugin: CAPPlugin, CAPBridgedPlugin {
             CAPPluginMethod(name: "start", returnType: CAPPluginReturnPromise),
             CAPPluginMethod(name: "setPrompt", returnType: CAPPluginReturnPromise),
             CAPPluginMethod(name: "stop", returnType: CAPPluginReturnPromise),
+            // في كل البناءات: علم tasmee_v2 ولوحة قياس TestFlight تُقرَّران وقت التشغيل لا وقت البناء
+            CAPPluginMethod(name: "getBuildChannel", returnType: CAPPluginReturnPromise),
         ]
         #if TASMEE_DIAGNOSTICS
         // أدوات القياس: تُجمَّع في Debug/TestFlight فقط (TASMEE_DIAGNOSTICS) ولا وجود لها في بناء App Store
         m += [
-            CAPPluginMethod(name: "getBuildChannel", returnType: CAPPluginReturnPromise),
             CAPPluginMethod(name: "alignSession", returnType: CAPPluginReturnPromise),
             CAPPluginMethod(name: "releaseSessionAudio", returnType: CAPPluginReturnPromise),
         ]
@@ -61,7 +62,6 @@ public class TasmeeEnginePlugin: CAPPlugin, CAPBridgedPlugin {
         return try? JSONDecoder().decode(TasmeeManifest.self, from: data)
     }
 
-#if TASMEE_DIAGNOSTICS
     /// قناة البناء: debug | testflight | appstore — شاشة القياس المخفية تعمل في الأولين فقط.
     @objc func getBuildChannel(_ call: CAPPluginCall) {
         #if DEBUG
@@ -71,7 +71,6 @@ public class TasmeeEnginePlugin: CAPPlugin, CAPBridgedPlugin {
         call.resolve(["channel": isTestFlight ? "testflight" : "appstore"])
         #endif
     }
-#endif
 
     @objc func getDeviceInfo(_ call: CAPPluginCall) {
         call.resolve([

@@ -1,7 +1,11 @@
 /**
- * علم `tasmee_v2` — التسميع داخل المصحف. مفعّل افتراضيًا، وله مفتاح إيقاف طارئ محلي
- * (`localStorage["ssunnah-tasmee-v2"] = "0"`) أو عبر متغير البناء VITE_TASMEE_V2=0.
+ * علم `tasmee_v2` — التسميع داخل المصحف. له مفتاح إيقاف طارئ محلي
+ * (`localStorage["ssunnah-tasmee-v2"] = "0"`) أو عبر متغير البناء VITE_TASMEE_V2=0،
+ * وفوقهما سياسة القناة والملف الحي `/data/tasmee-flags.json` (انظر decideTasmeeV2).
  */
+import { fetchLiveJson } from "@/lib/live-config/fetch-live-json";
+import { getTasmeeBuildChannel, type TasmeeBuildChannel } from "@/lib/tasmee/engine-plugin";
+
 export const TASMEE_V2_FLAG_KEY = "ssunnah-tasmee-v2";
 
 export function isTasmeeV2Enabled(): boolean {
@@ -18,6 +22,35 @@ export function isTasmeeV2Enabled(): boolean {
     /* التخزين غير متاح */
   }
   return true;
+}
+
+export const TASMEE_FLAGS_REMOTE_PATH = "/data/tasmee-flags.json";
+
+/**
+ * سياسة الإطلاق: Debug/TestFlight مفعّل افتراضيًا والملف الحي يغلقه فقط (`testflight: false`)؛
+ * App Store مغلق افتراضيًا ولا يُفتح إلا بـ`appStore: true` صريح، فأي تعذّر في الجلب يُبقيه مغلقًا.
+ */
+export function decideTasmeeV2(channel: TasmeeBuildChannel, remote: unknown): boolean {
+  const r = remote && typeof remote === "object" ? (remote as { testflight?: unknown; appStore?: unknown }) : {};
+  if (channel === "appstore") return r.appStore === true;
+  if (channel === "web") return true;
+  return r.testflight !== false;
+}
+
+let resolved: Promise<boolean> | null = null;
+
+/** القيمة الفعّالة مرة لكل تشغيل: مفاتيح الإيقاف المحلية أولًا، ثم القناة والملف الحي. */
+export function resolveTasmeeV2Enabled(timeoutMs = 4000): Promise<boolean> {
+  if (!isTasmeeV2Enabled()) return Promise.resolve(false);
+  resolved ??= getTasmeeBuildChannel().then(async (channel) =>
+    channel === "web" ? true : decideTasmeeV2(channel, await fetchLiveJson(TASMEE_FLAGS_REMOTE_PATH, true, timeoutMs)),
+  );
+  return resolved;
+}
+
+/** للاختبارات فقط. */
+export function __resetTasmeeV2Flag(): void {
+  resolved = null;
 }
 
 /** هل يطلب الرابط وضع التسميع؟ (`?tasmee=1`) */
