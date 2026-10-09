@@ -82,8 +82,10 @@ for (const row of batch1) {
   const comp = expectImport[row.pattern];
   // صفحة مهاجَرة إلى نظام sn-: غلاف sn-screen + NavigationBar بدل شاشة النمط القديمة.
   const migrated = /className="sn-screen"/.test(src) && /NavigationBar/.test(src);
-  assert.ok(new RegExp(comp).test(src) || migrated, `${row.id} يستورد ${comp} أو sn-screen + NavigationBar`);
-  assert.ok(/compose=["']mark["']|compose=["']layout["']/.test(src) || migrated, `${row.id} يحدّد compose أو sn-screen`);
+  // المصحف: إطار mushaf-frame بصفر تغيير بصري (لا sn-screen: يضيف خلفية/ارتفاعًا) ولا يُمسّ نص القرآن.
+  const scriptureFrame = row.pattern === "scripture" && /className="mushaf-frame"/.test(src);
+  assert.ok(new RegExp(comp).test(src) || migrated || scriptureFrame, `${row.id} يستورد ${comp} أو sn-screen + NavigationBar`);
+  assert.ok(/compose=["']mark["']|compose=["']layout["']/.test(src) || migrated || scriptureFrame, `${row.id} يحدّد compose أو sn-screen`);
   assert.doesNotMatch(src, /fontSize:\s*["'][0-9]+px/, `${row.id}: بلا fontSize px جديد`);
 }
 

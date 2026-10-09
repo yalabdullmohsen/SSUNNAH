@@ -15,7 +15,7 @@ struct TasmeeManifest: Codable {
 }
 
 enum TasmeeModelError: LocalizedError {
-    case badURL, badStatus(Int), checksum(String), cancelled, unzip(String), io(String)
+    case badURL, badStatus(Int), checksum(String), cancelled, unzip(String), io(String), wifiRequired
     var errorDescription: String? {
         switch self {
         case .badURL: return "عنوان تنزيل النموذج غير صالح."
@@ -24,6 +24,7 @@ enum TasmeeModelError: LocalizedError {
         case .cancelled: return "أُلغي التنزيل."
         case .unzip(let m): return "تعذّر فك أرشيف النموذج: \(m)"
         case .io(let m): return m
+        case .wifiRequired: return "تنزيل نموذج التسميع يتطلب اتصال Wi-Fi. اتصل بشبكة Wi-Fi ثم أعد المحاولة."
         }
     }
 }
@@ -157,6 +158,8 @@ final class TasmeeModelStore {
                 break
             } catch TasmeeModelError.cancelled {
                 throw TasmeeModelError.cancelled
+            } catch TasmeeModelError.wifiRequired {
+                throw TasmeeModelError.wifiRequired   // لا إعادة على البيانات الخلوية؛ الجزء المنزَّل يُستأنف لاحقًا
             } catch TasmeeModelError.checksum(let n) {
                 try? fm.removeItem(at: part)       // أرشيف تالف: يُعاد من الصفر مرة واحدة
                 attempt += 1
@@ -201,6 +204,16 @@ final class TasmeeModelStore {
         return hasher.finalize().map { String(format: "%02x", $0) }.joined()
     }
 
+    /// جلسة Wi-Fi فقط: لا خلوي ولا نقطة اتصال شخصية (expensive) ولا وضع البيانات المنخفضة (constrained).
+    private static let wifiOnlySession: URLSession = {
+        let c = URLSessionConfiguration.default
+        c.allowsCellularAccess = false
+        c.allowsExpensiveNetworkAccess = false
+        c.allowsConstrainedNetworkAccess = false
+        c.waitsForConnectivity = false
+        return URLSession(configuration: c)
+    }()
+
     private func fetch(_ url: URL, to part: URL, expected a: TasmeeManifest.Archive, onBytes: @escaping (Int64) -> Void) async throws {
         let fm = FileManager.default
         var offset = (try? fm.attributesOfItem(atPath: part.path)[.size] as? Int64) ?? nil ?? 0
@@ -209,7 +222,12 @@ final class TasmeeModelStore {
             var req = URLRequest(url: url)
             req.timeoutInterval = 30
             if offset > 0 { req.setValue("bytes=\(offset)-", forHTTPHeaderField: "Range") }
-            let (bytes, resp) = try await URLSession.shared.bytes(for: req)
+            let bytes: URLSession.AsyncBytes, resp: URLResponse
+            do {
+                (bytes, resp) = try await Self.wifiOnlySession.bytes(for: req)
+            } catch let e as URLError where e.networkUnavailableReason != nil {
+                throw TasmeeModelError.wifiRequired
+            }
             guard let http = resp as? HTTPURLResponse else { throw TasmeeModelError.badStatus(0) }
             if http.statusCode == 200 && offset > 0 { try? fm.removeItem(at: part); offset = 0 }   // الخادم تجاهل Range
             else if http.statusCode != 200 && http.statusCode != 206 { throw TasmeeModelError.badStatus(http.statusCode) }
