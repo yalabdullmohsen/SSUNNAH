@@ -1,3 +1,4 @@
+import { COPYRIGHT_NOTICE } from "@/data/content-sources";
 import { useEffect, useId, useState } from "react";
 import { Link } from "wouter";
 import { ChevronDown } from "lucide-react";
@@ -76,7 +77,6 @@ function FooterGroupBlock({
 }
 
 export function SiteFooter() {
-  const year = new Date().getFullYear();
   const labelId = useId();
   const [isMobile, setIsMobile] = useState(false);
   const [openId, setOpenId] = useState<string | null>(SITE_FOOTER_GROUPS[0]?.id ?? null);
@@ -118,7 +118,7 @@ export function SiteFooter() {
 
         <div className="site-footer-bottom">
           <p className="site-footer-copy">
-            © {year} سُنّة — {SITE_FOOTER_TAGLINE}
+            {COPYRIGHT_NOTICE} — سُنّة — {SITE_FOOTER_TAGLINE}
           </p>
           <p className="site-footer-email">
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>

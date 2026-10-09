@@ -4,140 +4,36 @@ import { LegalPageLayout, LegalSection } from "@/components/LegalPageLayout";
 import { ShareButtons } from "@/components/ContentActions";
 import { applyPageSeo } from "@/lib/seo";
 import { NavigationBar } from "@/design-system";
+import {
+  CONTENT_TYPES,
+  RIGHTS_SENTENCE,
+  STATUS_LABEL,
+  unknownLicenseEntries,
+  type SourceEntry,
+} from "@/data/content-sources";
 
-type SourceRow = {
-  name: string;
-  desc: string;
-  status: "ممنوح" | "جزئي" | "مطلوب" | "غير محسوم" | "معطّل";
-};
-
-const QURAN_SOURCES: SourceRow[] = [
-  {
-    name: "خطوط QPC V2 (مجمع الملك فهد / QUL)",
-    desc: "عرض المصحف صفحةً بصفحة. الاستخدام في تطبيق متجر يحتاج تأكيد توزيع — موثّق في docs/LICENSES.md.",
-    status: "مطلوب",
-  },
-  {
-    name: "Tanzil / AlQuran Cloud — نص عثماني",
-    desc: "نص حفص وبيانات السور. إعادة التوزيع الكامل قد تتطلب موافقة Tanzil.",
-    status: "جزئي",
-  },
-  {
-    name: "Quran.com / QUL — تخطيط الصفحات",
-    desc: "بيانات تخطيط QPC V2 عبر واجهات qurancdn. لا صور مصحف المدينة في الحزمة.",
-    status: "مطلوب",
-  },
-  {
-    name: "Almarai (OFL)",
-    desc: "خط التطبيق الوحيد (الواجهة والنصوص الشرعية والآيات خارج مجسمات QPC) — مستضاف محليًا بلا Google Fonts.",
-    status: "ممنوح",
-  },
-];
-
-const HADITH_SOURCES: SourceRow[] = [
-  {
-    name: "fawazahmed0/hadith-api (صحيح البخاري ومسلم)",
-    desc: "نصوص عربية مع رقم الحديث والكتاب. الصحة منسوبة للمجموعة لا لكل سند على حدة.",
-    status: "جزئي",
-  },
-  {
-    name: "sunnah.com / dorar.net",
-    desc: "مراجع تخريج وروابط خارجية للكتب الستة وغيرها.",
-    status: "جزئي",
-  },
-];
-
-const ADHKAR_SOURCES: SourceRow[] = [
-  {
-    name: "حصن المسلم — إشارات أذكار",
-    desc: "نصوص الأذكار مع العزو (المصدر/المرجع). حقوق الجمع والترتيب للمؤلف/الناشر.",
-    status: "مطلوب",
-  },
-  {
-    name: "الأحاديث في الأذكار",
-    desc: "كل ذكر مرتبط بحديث يُعرض مع كتابه ورقمه والحكم عند الحاجة — لا «السنة النبوية» كمصدر وحيد.",
-    status: "جزئي",
-  },
-];
-
-const LESSON_SOURCES: SourceRow[] = [
-  {
-    name: "حسابات إنستغرام/تليجرام/مواقع خارجية",
-    desc: "الدروس المستوردة: عنوان، شيخ، وقت، مكان، ورابط المنشور الأصلي فقط — لا نص طويل ولا صور كاملة.",
-    status: "جزئي",
-  },
-  {
-    name: "دليل الجهات (/sources)",
-    desc: "فهرسة الحسابات مع روابط مباشرة. المحتوى مملوك لأصحابه؛ سُنّة وسيط روابط.",
-    status: "ممنوح",
-  },
-];
-
-const TAFSIR_SOURCES: SourceRow[] = [
-  {
-    name: "Quran.com API — تفاسير",
-    desc: "الميسّر وغيره عبر جلب حي مع إسناد؛ لا حزمة تفاسير كاملة دون إذن.",
-    status: "جزئي",
-  },
-];
-
-const LIBRARY_SOURCES: SourceRow[] = [
-  {
-    name: "فهرس مصادر المنصة (~١٧٣ كتابًا)",
-    desc: "بطاقات مرجعية (عنوان/مؤلف/وصف) أو رابط خارجي للمصدر — لا نص كامل مستضاف إلا بترخيص صريح.",
-    status: "غير محسوم",
-  },
-  {
-    name: "shamela.ws · sunnah.com · dar-alifta",
-    desc: "روابط قراءة خارجية عند توفرها؛ يُوضّح أنها روابط للمصدر.",
-    status: "جزئي",
-  },
-];
-
-const SPEECH_SOURCES: SourceRow[] = [
-  {
-    name: "Tarteel — whisper-base-ar-quran (Apache-2.0)",
-    desc: "نموذج تعرّف صوتي مضبوط على التلاوة، أصله OpenAI Whisper (MIT). يُحوَّل إلى CoreML ويعمل على جهازك لوضع «تسميع» (قيد الإعداد). بيانات تدريبه غير موثّقة في بطاقته.",
-    status: "جزئي",
-  },
-  {
-    name: "WhisperKit — Argmax (MIT)",
-    desc: "محرك تشغيل النموذج على الجهاز.",
-    status: "ممنوح",
-  },
-];
-
-const AUDIO_SOURCES: SourceRow[] = [
-  {
-    name: "everyayah.com",
-    desc: "بث تلاوات آية بآية (روابط خارجية؛ لا تُضمَّن ملفات صوت في الحزمة).",
-    status: "جزئي",
-  },
-  {
-    name: "mp3quran.net",
-    desc: "بث سور كاملة وتنزيل اختياري محلي بحدود حجم واضحة.",
-    status: "جزئي",
-  },
-];
-
-function StatusBadge({ status }: { status: SourceRow["status"] }) {
+function SourceList({ entries }: { entries: SourceEntry[] }) {
   return (
-    <span className="legal-license-status" data-status={status}>
-      {status}
-    </span>
-  );
-}
-
-function SourceList({ rows }: { rows: SourceRow[] }) {
-  return (
-    <ul className="legal-license-list">
-      {rows.map((s) => (
-        <li key={s.name}>
-          <div className="legal-license-list__head">
-            <strong dir="auto">{s.name}</strong>
-            <StatusBadge status={s.status} />
+    <ul className="cs-list">
+      {entries.map((e) => (
+        <li key={e.name} className="cs-item" data-status={e.status}>
+          <div className="cs-item__head">
+            <strong dir="auto">{e.name}</strong>
+            <span className="cs-badge" data-status={e.status}>
+              {STATUS_LABEL[e.status]}
+            </span>
           </div>
-          <span>{s.desc}</span>
+          <p className="cs-item__row">
+            <span className="cs-item__key">ما أخذناه:</span> {e.took}
+          </p>
+          <p className="cs-item__row">
+            <span className="cs-item__key">الترخيص:</span> {e.license}
+          </p>
+          {e.url ? (
+            <a className="cs-item__link" href={e.url} target="_blank" rel="noopener noreferrer" dir="ltr">
+              {e.url}
+            </a>
+          ) : null}
         </li>
       ))}
     </ul>
@@ -150,124 +46,56 @@ export default function SourcesLicensesPage() {
       path: "/data-licenses",
       title: "المصادر والتراخيص | سُنّة",
       description:
-        "مصادر القرآن والحديث والأذكار والدروس وفهرس المراجع في سُنّة — روابط وتراخيص دون وعود عامة.",
-      keywords: ["مصادر", "تراخيص", "QPC", "سُنّة", "حقوق"],
+        "مصادر كل ما في سُنّة: القرآن والتفسير والتلاوات والأحاديث والأذكار والمواقيت والدروس والخطوط والمكتبات ونموذج التسميع، مع ترخيص كل مصدر.",
+      keywords: ["مصادر", "تراخيص", "سُنّة", "حقوق"],
     });
   }, []);
+
+  const unknown = unknownLicenseEntries();
 
   return (
     <div className="sn-screen">
       <NavigationBar title="المصادر والتراخيص" large={false} />
-    <LegalPageLayout eyebrow="الشفافية" title="المصادر والتراخيص" updatedAt="2026-09-01">
-      <LegalSection title="الغرض">
-        <p>
-          ملخص علني لمصادر البيانات وحالة الإذن. التفاصيل في{" "}
-          <code dir="ltr">docs/LICENSES.md</code> و{" "}
-          <Link href="/methodology">منهجية التوثيق</Link>.
-          {" "}
-          <Link href="/sources">دليل الجهات</Link> للحسابات الخارجية.
-        </p>
-        <p>
-          <strong>لا إعادة استضافة:</strong> الدروس والمنشورات الخارجية تُعرض كمعلومة وجدول
-          ورابط مصدر — لا نص طويل ولا صور كاملة من إنستغرام/تليجرام.
-        </p>
-      </LegalSection>
+      <LegalPageLayout eyebrow="الشفافية" title="المصادر والتراخيص" updatedAt="2026-10-09">
+        <LegalSection title="الحقوق">
+          <p className="cs-rights" data-testid="rights-sentence">
+            {RIGHTS_SENTENCE}
+          </p>
+          <p>
+            لا نعيد استضافة الدروس والمنشورات الخارجية؛ تُعرض كمعلومة وجدول ورابط للمصدر.{" "}
+            <Link href="/methodology">منهجية التوثيق</Link> · <Link href="/sources">دليل الجهات</Link>
+          </p>
+        </LegalSection>
 
-      <LegalSection title="القرآن والمصحف">
-        <SourceList rows={QURAN_SOURCES} />
-      </LegalSection>
+        {CONTENT_TYPES.map((t) => (
+          <LegalSection key={t.id} title={t.label}>
+            <div data-content-type={t.id}>
+              <SourceList entries={t.entries} />
+            </div>
+          </LegalSection>
+        ))}
 
-      <LegalSection title="الأحاديث">
-        <SourceList rows={HADITH_SOURCES} />
-        <p>
-          كل حديث يُعرض مع كتابه ورقمه ومصدره. الصحيحان: الصحة منسوبة لعضوية الكتاب.
-          صفحات الضعيف/الموضوع للتنبيه التعليمي فقط.
-        </p>
-      </LegalSection>
+        <LegalSection title="مصادر لم يُحسم ترخيصها">
+          <p>
+            لا ندّعي لها ترخيصًا مفتوحًا. تُراجَع مع المالك قبل أي اعتماد، وما لم يثبت إذنه
+            يبقى معروضًا بالإسناد فقط أو يُسحب.
+          </p>
+          <ul className="cs-unknown" data-testid="unknown-license-list">
+            {unknown.map((e) => (
+              <li key={`${e.typeId}-${e.name}`}>
+                <strong dir="auto">{e.name}</strong> <span className="cs-item__key">({e.typeLabel})</span>
+              </li>
+            ))}
+          </ul>
+        </LegalSection>
 
-      <LegalSection title="الأذكار">
-        <SourceList rows={ADHKAR_SOURCES} />
-      </LegalSection>
-
-      <LegalSection title="التفاسير">
-        <SourceList rows={TAFSIR_SOURCES} />
-      </LegalSection>
-
-      <LegalSection title="الدروس والحلقات">
-        <SourceList rows={LESSON_SOURCES} />
-        <p>
-          روابط الدروس تحيل للمصدر الأصلي. لا نعيد نشر المنشور كاملًا.
-          راجع <Link href="/sources">دليل الجهات</Link>.
-        </p>
-      </LegalSection>
-
-      <LegalSection title="فهرس المصادر المرجعية">
-        <SourceList rows={LIBRARY_SOURCES} />
-        <p>
-          الكتب إما بطاقة مرجعية (عنوان/مؤلف) أو رابط خارجي للقراءة.
-          لا نعرض كتابًا كاملًا دون حق عرض صريح. المسار العلني السابق للمكتبة محوَّل للبحث/الرئيسية.
-        </p>
-      </LegalSection>
-
-      <LegalSection title="التعرّف الصوتي على الجهاز (وضع التسميع)">
-        <SourceList rows={SPEECH_SOURCES} />
-      </LegalSection>
-
-      <LegalSection title="أصوات الصلاة والتنبيهات">
-        <p>
-          أصوات الإشعار القصيرة داخل حزمة سُنّة موثّقة داخليًا. التسجيلات الخارجية لا تُعرض في الإنتاج
-          إلا بعد التحقق الفردي من صفحة الأصل والترخيص والجودة. السجل التشغيلي:
-          {" "}
-          <code dir="ltr">docs/audio-rights/approved-sources-registry.json</code>.
-        </p>
-        <SourceList
-          rows={[
-            {
-              name: "تنبيهات سُنّة القصيرة (الحزمة)",
-              desc: "نغمات إشعار قصيرة داخل التطبيق — بلا نسبة لمؤذن مشهور.",
-              status: "ممنوح",
-            },
-            {
-              name: "Wikimedia Commons · Adhan.ogg / Beautiful_adhan.ogg",
-              desc: "CC0 مع دليل صفحة محفوظ — قيد فحص الجودة؛ غير معتمد للإشعار بعد.",
-              status: "جزئي",
-            },
-            {
-              name: "Signature Sounds · Call to Prayer (CC0 pack)",
-              desc: "صفحة الحزمة موثّقة؛ الاستيراد الفردي للملفات لم يُعتمد للإنتاج بعد.",
-              status: "جزئي",
-            },
-          ]}
-        />
-        <p>
-          مسار الإسناد داخل الإعدادات: حول سُنّة ← المصادر والتراخيص. لا تُعاد نسبة تسجيل لمؤذن
-          أو مسجد مشهور دون إثبات حقوق صريح.
-        </p>
-      </LegalSection>
-
-      <LegalSection title="التلاوة والأذان">
-        <SourceList rows={AUDIO_SOURCES} />
-        <p>لا تُعاد استضافة الملفات على خوادمنا — بث حي من المصدر.</p>
-      </LegalSection>
-
-      <LegalSection title="البرمجيات مفتوحة المصدر">
-        <p>
-          واجهة المنصة (React, Vite, Capacitor…) وفق تراخيص تساهلية.
-          بوابة CI <code dir="ltr">test:licenses</code> ترفض GPL/AGPL/SSPL صِرف.
-        </p>
-      </LegalSection>
-
-      <LegalSection title="الإبلاغ">
-        <p>
-          بلاغات الحقوق أو خطأ في النسبة عبر{" "}
-          <Link href="/contact">تواصل معنا</Link> — أولوية قصوى.
-        </p>
-      </LegalSection>
-<ShareButtons
-        title="المصادر والتراخيص — سُنّة"
-        url="https://www.ssunnah.com/data-licenses"
-      />
-    </LegalPageLayout>
+        <LegalSection title="الإبلاغ">
+          <p>
+            بلاغات الحقوق أو خطأ في النسبة عبر <Link href="/contact">تواصل معنا</Link> — أولوية قصوى.
+          </p>
+        </LegalSection>
+        <ShareButtons title="المصادر والتراخيص — سُنّة" url="https://www.ssunnah.com/data-licenses" />
+      </LegalPageLayout>
     </div>
   );
 }
