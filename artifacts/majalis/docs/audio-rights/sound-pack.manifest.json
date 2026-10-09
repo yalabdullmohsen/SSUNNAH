@@ -1,0 +1,328 @@
+{
+  "note": "كل ملف صوتي متتبَّع يجب أن يُدرج هنا. approved يتطلب مصدرًا معتمدًا في approved-sources-registry.json؛ quarantined لا يُستعمل في إشعارات iOS الأصلية (تُستبدل بصوت النظام).",
+  "entries": [
+    {
+      "path": "docs/audio-rights/evidence/originals/Adhan.ogg",
+      "status": "approved",
+      "sourceId": "wikimedia-adhan-ogg"
+    },
+    {
+      "path": "docs/audio-rights/evidence/originals/Beautiful_adhan.ogg",
+      "status": "approved",
+      "sourceId": "wikimedia-beautiful-adhan"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-01.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-02.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-03.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-seq-makkah-04.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-short-aqsa.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-short-egypt.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-short-field-full.caf",
+      "status": "approved",
+      "sourceId": "wikimedia-beautiful-adhan"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-short-field.caf",
+      "status": "approved",
+      "sourceId": "wikimedia-adhan-ogg"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-short-makkah-fajr.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-short-makkah.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/adhan-short-takbeerat.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/alarm-clear.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer-alert.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_aqsa.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_clear.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_default.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_egypt.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_makkah.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_quiet.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_soft.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/prayer_takbeerat.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/short-ring.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/soft-ring.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/tone-chime.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/tone-fajr.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/tone-nada.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/tone-nasim.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/Sounds/tone-qatra.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/adhan-seq-makkah-01.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/adhan-seq-makkah-02.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/adhan-seq-makkah-03.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/adhan-seq-makkah-04.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/adhan-short-aqsa.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/adhan-short-egypt.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/adhan-short-field-full.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/adhan-short-field.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/adhan-short-makkah-fajr.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/adhan-short-makkah.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/adhan-short-takbeerat.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/alarm-clear.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/prayer-alert.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/prayer_aqsa.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/prayer_clear.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/prayer_default.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/prayer_egypt.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/prayer_makkah.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/prayer_quiet.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/prayer_soft.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/prayer_takbeerat.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/short-ring.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "ios/App/App/soft-ring.caf",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/adhan/adhan-aqsa-full.mp3",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/adhan/adhan-egypt-full.m4a",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/adhan/adhan-field-full.m4a",
+      "status": "approved",
+      "sourceId": "wikimedia-beautiful-adhan"
+    },
+    {
+      "path": "public/audio/adhan/adhan-field-short.m4a",
+      "status": "approved",
+      "sourceId": "wikimedia-adhan-ogg"
+    },
+    {
+      "path": "public/audio/adhan/adhan-field.m4a",
+      "status": "approved",
+      "sourceId": "wikimedia-adhan-ogg"
+    },
+    {
+      "path": "public/audio/adhan/adhan-gulf-short.mp3",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/adhan/adhan-haram-full.m4a",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/adhan/adhan-makkah-fajr.mp3",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/adhan/adhan-makkah-full.m4a",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/adhan/adhan-makkah.mp3",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/adhan/adhan-soft-alert.m4a",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/adhan/adhan-takbeerat-short.mp3",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/notifications/alarm-clear.mp3",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/notifications/prayer-alert.mp3",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/notifications/short-ring.mp3",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/notifications/soft-ring.mp3",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/reminder-tones/tone-chime.m4a",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/reminder-tones/tone-fajr.m4a",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/reminder-tones/tone-nada.m4a",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/reminder-tones/tone-nasim.m4a",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/audio/reminder-tones/tone-qatra.m4a",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/sounds/adhan/aqsa-general.mp3",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/sounds/adhan/egypt-general.m4a",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/sounds/adhan/makkah-fajr.mp3",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/sounds/adhan/makkah-general.m4a",
+      "status": "quarantined"
+    },
+    {
+      "path": "public/sounds/adhan/takbeerat-short.mp3",
+      "status": "quarantined"
+    }
+  ]
+}

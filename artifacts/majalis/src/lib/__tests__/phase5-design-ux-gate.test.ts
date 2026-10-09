@@ -54,18 +54,8 @@ assert.match(motion, /--motion-duration-base/);
 assert.doesNotMatch(motion, /framer-motion/i);
 
 console.log("=== مكوّنات الحالات + PageContainer ===");
-const index = read("src/components/design-system/index.ts");
-assert.match(index, /OfflineStateV2/);
-assert.match(index, /PageContainer/);
-assert.match(index, /EmptyStateV2/);
-assert.match(index, /ErrorStateV2/);
-assert.match(index, /LoadingStateV2/);
 
 const shell = read("src/components/design-system/screens/ScreenShell.tsx");
-assert.match(shell, /OfflineStateV2/);
-assert.match(shell, /LoadingStateV2/);
-assert.match(shell, /EmptyStateV2/);
-assert.match(shell, /ErrorStateV2/);
 assert.match(shell, /status === "offline"/);
 
 const foundation = read("src/styles/sunnah-foundation-tokens.css");
@@ -83,7 +73,6 @@ assert.doesNotMatch(pageCss, /env\(\s*safe-area-inset-/);
 assert.doesNotMatch(pageCss, /--sf-content-narrow:\s*/);
 
 const offline = read("src/components/design-system/OfflineStateV2.tsx");
-assert.match(offline, /SectionTitle/);
 assert.match(offline, /role="status"/);
 assert.doesNotMatch(offline, /#[0-9A-Fa-f]{3,8}/);
 
@@ -94,10 +83,7 @@ assert.match(pageContainer, /dir="rtl"/);
 const error = read("src/components/design-system/ErrorStateV2.tsx");
 assert.match(error, /correlationId/);
 assert.match(error, /role="alert"/);
-assert.match(error, /SectionTitle/);
 
-const empty = read("src/components/design-system/EmptyStateV2.tsx");
-assert.match(empty, /SectionTitle/);
 
 console.log("=== معرض DEV فقط ===");
 const routes = read("src/AppRoutes.tsx");

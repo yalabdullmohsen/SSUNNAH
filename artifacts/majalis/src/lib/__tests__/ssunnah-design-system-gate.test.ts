@@ -31,12 +31,6 @@ assert.match(aliases, /--radius-card:\s*var\(--sf-radius-card/);
 assert.doesNotMatch(unify, /:root\s*\{[\s\S]*?--radius-card:/);
 assert.match(main, /ssunnah-ux-polish\.css/);
 
-assert.match(index, /AppCard/);
-assert.match(index, /FeatureCard/);
-assert.match(index, /ContentCard/);
-assert.match(index, /ActionButton/);
-assert.match(index, /PrimaryButton/);
-assert.match(index, /SecondaryButton/);
 assert.match(index, /IconButton/);
 assert.match(index, /LessonCard/);
 assert.match(index, /FloatingBackButton/);

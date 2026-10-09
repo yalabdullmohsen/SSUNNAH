@@ -21,11 +21,6 @@ for (const rel of [
 }
 
 const patterns = read("src/components/design-system/screens/patterns.tsx");
-assert.match(patterns, /export function DetailScreen/);
-assert.match(patterns, /export function ListScreen/);
-assert.match(patterns, /export function UtilityScreen/);
-assert.match(patterns, /<ScreenShell pattern="detail"/);
-assert.match(patterns, /<ScreenShell pattern="list"/);
 assert.match(patterns, /compose === "mark"/);
 
 const topic = read("src/components/topic/TopicPage.tsx");
@@ -66,8 +61,5 @@ assert.match(report, /## Page authority contract/);
 assert.match(report, /\*\*REMOVED\*\* \(PR6\)/);
 assert.match(report, /cssFiles/);
 
-const matrix = readRepo("docs/design/PAGE_CONTRACT_MATRIX.md");
-assert.match(matrix, /Official ScreenShell adapters/);
-assert.match(matrix, /UtilityScreen.*\*\*3\*\*/);
 
 console.log("closure-pr6-page-legacy-gate.test.ts: ok");

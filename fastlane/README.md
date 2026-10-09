@@ -46,6 +46,11 @@ bundle exec fastlane ios build_only   # أرشفة بلا توقيع ولا رف
 bundle exec fastlane ios beta         # توقيع + رفع TestFlight (داخلي فقط)
 ```
 
-في CI يُرفع عبر workflow ‏`iOS TestFlight Deploy` (يدويًا أو بوسم `v*.*.*`) من أسرار GitHub أعلاه. `.gitignore` يمنع `*.p8` و`*.p12` و`*.cer` و`*.mobileprovision` و`fastlane/.env*`.
+في CI يُرفع عبر workflow ‏`iOS TestFlight Deploy` من أسرار GitHub أعلاه — **لا بناء عند push أو وسم**:
+- **يدويًا:** `gh workflow run "iOS TestFlight Deploy" --ref main` (اختياريًا `-f tasmee_diagnostics=true` و`-f changelog="..."`). اليدوي يتجاوز الحدّ اليومي.
+- **مجدول:** يوميًا 00:00 UTC (03:00 الكويت)، ويُبنى فقط إن تغيّر `artifacts/majalis/ios/` أو `fastlane/` منذ آخر بناء ناجح ولم يُبنَ بناء ناجح خلال 20 ساعة. لا تشغيلان متوازيان (concurrency واحد، بلا إلغاء).
+- **شهادة ثابتة:** السرّان `IOS_SIGNING_P12_BASE64` (p12 بصيغة Base64 يحوي Apple Distribution وApple Development) و`IOS_SIGNING_P12_PASSWORD` يُستوردان في keychain مؤقت فيعيد التوقيع التلقائي استخدامهما بدل إنشاء شهادة جديدة كل تشغيل. غياب أيّ سرّ أو أيّ هوية من الاثنتين يُفشل البناء فورًا برسالة تسمّي الناقص، بلا إنشاء شهادة ولا رجوع للمسار القديم.
+
+`.gitignore` يمنع `*.p8` و`*.p12` و`*.cer` و`*.mobileprovision` و`fastlane/.env*`.
 
 لا تضع ملفات `.p8` أو keystore داخل المستودع. استخدم GitHub Actions secrets أو Keychain محلي.

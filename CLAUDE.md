@@ -9,6 +9,8 @@
 - أعد استخدام المكونات الموجودة؛ لا مكتبات جديدة بلا مبرر قوي.
 - اجمع تغييرات الواجهة المتقاربة في PR واحد بدل PRs صغيرة كثيرة، فكل PR يعني دورة CI كاملة.
 - شغّل gates الواجهة (axe، visual-snapshot، layout) محليًا قبل الدفع، حتى لا يفشل الـPR على CI ويعاد.
+- `pnpm run ci:local` يشغّل ui-ratchet والاختبارات المتأثرة بملفاتك (كلها إن تغيّر `src/design-system`) ويوقف الدفع عند الفشل؛ فعّله مرة بـ`bash scripts/install-ci-local-hook.sh`.
+- ممنوع اختبار مصدري يثبّت اسم مكوّن (`assert.match(src, /AppCard/)`)؛ تحقق من السلوك (render/ARIA/RTL/تباين) أو من العقد المشترك `no-source-pinned-component-names` (القائمة من `scripts/ui-legacy-list.mjs`).
 
 ## بوابة الإغلاق (بعد كل مهمة)
 1. اختبارات موجهة + build بلا أخطاء، وتحقق عملي (RTL والجوال).

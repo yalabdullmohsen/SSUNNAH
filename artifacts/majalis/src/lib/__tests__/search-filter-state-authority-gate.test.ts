@@ -19,8 +19,6 @@ const respMap = readRepo("docs/design/RESPONSIVE_AUTHORITY_MAP.md");
 const statusMap = readRepo("docs/design/STATUS_AUTHORITY_MAP.md");
 const searchSys = readMaj("src/components/design-system/SearchSystem.tsx");
 const filterSys = readMaj("src/components/design-system/FilterSystem.tsx");
-const stateSys = readMaj("src/components/design-system/StateSystem.tsx");
-const formFields = readMaj("src/components/design-system/FormFields.tsx");
 const mj = readMaj("src/components/ui/mj.tsx");
 const tawba = readMaj("src/views/TawbaPage.tsx");
 const unify = readMaj("src/styles/ssunnah-card-unify.css");
@@ -28,7 +26,6 @@ const breakpoints = readMaj("src/styles/breakpoints.css");
 const dsIndex = readMaj("src/components/design-system/index.ts");
 
 assert.match(searchMap, /SEARCH_AUTHORITY_ONLY/);
-assert.match(searchMap, /SearchInput/);
 assert.match(searchMap, /SearchResultCard/);
 assert.match(searchMap, /GlobalSearchModal/);
 
@@ -38,9 +35,6 @@ assert.match(filterMap, /ActiveFilters/);
 assert.match(filterMap, /FilterSheet/);
 
 assert.match(stateMap, /STATE_AUTHORITY_ONLY/);
-assert.match(stateMap, /EmptyStateV2/);
-assert.match(stateMap, /NoResultsState/);
-assert.match(stateMap, /LoadingStateV2/);
 assert.match(statusMap, /STATUS_AUTHORITY_ONLY/);
 
 assert.match(respMap, /RESPONSIVE_SYSTEM_UNIFIED/);
@@ -48,16 +42,10 @@ assert.match(respMap, /breakpoints\.css/);
 assert.match(breakpoints, /--bp-tablet/);
 assert.match(breakpoints, /--touch-min/);
 
-assert.match(searchSys, /SearchInput/);
 assert.match(searchSys, /SearchResultCard/);
 assert.match(filterSys, /SegmentedFilter/);
 assert.match(filterSys, /ActiveFilters/);
-assert.match(stateSys, /EmptyStateV2/);
-assert.match(stateSys, /ErrorStateV2/);
-assert.match(stateSys, /OfflineStateV2/);
 
-assert.match(formFields, /export function SearchInput/);
-assert.match(mj, /SearchInput/);
 assert.match(mj, /export function SearchField/);
 assert.match(tawba, /SearchField/);
 assert.match(unify, /\.ss-search-input/);

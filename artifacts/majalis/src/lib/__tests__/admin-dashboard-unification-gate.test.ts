@@ -27,7 +27,6 @@ for (const name of [
   assert.match(layout, new RegExp(`export function ${name}\\b`), `AdminLayout يصدّر ${name}`);
 }
 assert.match(layout, /from "@\/admin-v3\/states"/, "الحالات من admin-v3/states لا نسخة جديدة");
-assert.match(layout, /ContentTabs/, "التبويبات فوق ContentTabs");
 assert.match(layout, /ArrowLeft[\s\S]*ArrowRight[\s\S]*Home[\s\S]*End/, "أسهم لوحة المفاتيح للتبويبات");
 assert.match(layout, /direction === "rtl"/, "الأسهم واعية لاتجاه RTL");
 

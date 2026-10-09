@@ -38,7 +38,6 @@ assert.match(registry, /id:\s*"hifz-path"[^}]*status:\s*"active"/, "فُعّل �
 const page = readPkg("src/pages/hifz-path/HifzPathPage.tsx");
 assert.match(page, /isHifzPathEnabled/);
 assert.match(page, /Redirect to="\/memorization"/);
-assert.match(page, /PageHeaderV2|NavigationBar|SectionTemplatePage/);
 assert.match(page, /HIFZ_PATH_USER_TAGLINE/);
 assert.doesNotMatch(page, /كل ما يجب على المسلم حفظه/);
 
@@ -56,10 +55,6 @@ setMemorizationResearchFlagsForTests({ hifzPathEnabled: false });
 assert.equal(isHifzPathEnabled(), false);
 assert.equal(getHifzPathNavEntry(), null);
 resetMemorizationResearchFlags();
-
-const orphan = readPkg("scripts/orphan-discovery-allowlist.json");
-assert.match(orphan, /"\/hifz-path"/);
-assert.match(orphan, /"\/hifz-path\/my"/);
 
 const pkg = readPkg("package.json");
 assert.match(pkg, /"test:memorization-research-pr1"/);

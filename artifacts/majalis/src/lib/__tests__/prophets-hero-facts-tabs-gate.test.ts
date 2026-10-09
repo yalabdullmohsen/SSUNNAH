@@ -21,7 +21,6 @@ const view = read("src/views/ProphetStoriesPage.tsx");
 const css = read("src/styles/pages/prophet-stories.css");
 const heroSrc = read(hero);
 const factsSrc = read(facts);
-const tabsSrc = read(tabs);
 
 assert.match(view, /ProphetIdentityHero/);
 assert.match(view, /ProphetQuickFacts/);
@@ -36,7 +35,6 @@ assert.match(heroSrc, /pbuhText|صلوات الله وسلامه عليه/);
 assert.match(factsSrc, /ProphetTopicCard/);
 assert.match(factsSrc, /prophet-quick-facts/);
 /* التبويبات صارت فوق ContentTabs (سلطة TAB) — role="tablist" يأتي منها */
-assert.match(tabsSrc, /ContentTabs/);
 assert.match(read("src/components/design-system/TabSystem.tsx"), /role="tablist"/);
 assert.match(read("src/components/design-system/TabSystem.tsx"), /aria-selected/);
 

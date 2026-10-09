@@ -63,8 +63,6 @@ for (const name of required) {
   assert.match(cardSystem, /CS_CARD_TYPES/, "قائمة الأنواع الرسمية");
 }
 assert.match(dsIndex, /from "\.\/CardSystem"/, "تصدير من design-system");
-assert.match(dsIndex, /HeroCard/);
-assert.match(dsIndex, /ActionCard/);
 assert.match(appCard, /data-cs-card/, "AppCard موسوم بنظام البطاقات");
 assert.match(appCard, /\bcs-card\b/);
 

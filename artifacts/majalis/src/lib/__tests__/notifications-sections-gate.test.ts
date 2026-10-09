@@ -40,7 +40,6 @@ assert.ok(b.title && b.body);
 assert.ok(previewSectionMessage("adhkar").title.includes("أذكار"));
 
 const view = read("src/pages/account/ui/NotificationSettingsView.tsx");
-assert.match(view, /SettingsList/);
 assert.match(view, /NOTIF_SECTIONS/);
 assert.match(view, /title="الإشعارات"|title:\s*"الإشعارات"/);
 assert.doesNotMatch(view, /الإشعارات الإسلامية/);

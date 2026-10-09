@@ -421,12 +421,7 @@ struct PrayerWidgetProvider: TimelineProvider {
 
 enum SunnahWidgetTimeFormatting {
     static func clock(_ date: Date, timeZone: TimeZone = .current) -> String {
-        let f = DateFormatter()
-        f.locale = WidgetFormat.locale
-        f.timeZone = timeZone
-        f.timeStyle = .short
-        f.dateStyle = .none
-        return f.string(from: date)
+        WidgetFormat.time(date, timeZone: timeZone)
     }
 
     static func arabic(_ value: Int) -> String {

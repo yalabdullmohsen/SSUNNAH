@@ -2,6 +2,7 @@ import UIKit
 import Capacitor
 import AVFoundation
 import WebKit
+import SunnahPrayer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = AppConfig.shared
         _ = NetworkService.shared
         purgeWebCachesOncePerAppBuild()
+        NativeShellGate.installIfEnabled(in: window)
+        NativeNotificationsLifecycle.didFinishLaunching(nativeShellEnabled: NativeShellGate.isEnabled)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(handleMediaServicesReset),
@@ -68,6 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         NotificationCenter.default.post(name: Notification.Name("MajlisAppDidBecomeActive"), object: nil)
+        NativeNotificationsLifecycle.didBecomeActive(nativeShellEnabled: NativeShellGate.isEnabled)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -77,6 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         // Called when the app was launched with a url. Feel free to add additional processing here,
         // but if you want the App API to support tracking app url opens, make sure to keep this call
+        if NativeShellGate.handle(url, in: window) { return true }
         return ApplicationDelegateProxy.shared.application(app, open: url, options: options)
     }
 

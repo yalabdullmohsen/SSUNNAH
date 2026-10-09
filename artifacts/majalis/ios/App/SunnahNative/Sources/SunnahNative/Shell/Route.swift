@@ -42,5 +42,6 @@ public enum Route: Hashable {
 
 public enum AppHosts {
     public static let scheme = "majlisilm"
-    public static let web: Set<String> = ["majlisilm.com", "www.majlisilm.com"]
+    /// النطاق الحي www.ssunnah.com (majlisilm.com وapex يعيدان التوجيه إليه بـ308) — مطابق لـallowNavigation في capacitor.config.ts.
+    public static let web: Set<String> = ["www.ssunnah.com", "ssunnah.com", "majlisilm.com", "www.majlisilm.com"]
 }

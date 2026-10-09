@@ -5,7 +5,7 @@ import {
   PROGRESS_TASKS,
 } from "@/lib/daily-progress";
 import { Widget } from "@/components/widgets/Widget";
-import { InteractiveCard } from "@/components/design-system/SurfacePrimitives";
+import { LinkCard } from "@/design-system";
 import { toArabicDigits } from "@/lib/utils";
 
 const ProgressIcon = () => (
@@ -33,7 +33,7 @@ export function HomeDailyProgress({ compact = false }: { compact?: boolean } = {
 
   if (compact) {
     return (
-      <InteractiveCard
+      <LinkCard
         href="/daily-wird"
         title={`تقدمك اليومي ${toArabicDigits(overall)}٪`}
         className="home-progress-compact"
@@ -48,7 +48,7 @@ export function HomeDailyProgress({ compact = false }: { compact?: boolean } = {
         <p className="home-progress-compact__meta">
           {toArabicDigits(doneCount)} من {toArabicDigits(total)} مهام مكتملة · اضغط للورد
         </p>
-      </InteractiveCard>
+      </LinkCard>
     );
   }
 
@@ -67,7 +67,7 @@ export function HomeDailyProgress({ compact = false }: { compact?: boolean } = {
         {PROGRESS_TASKS.map((task) => {
           const stats = getTaskStats(task, progress);
           return (
-            <InteractiveCard key={task.id} href={task.href} title={task.label} className="home-progress-card">
+            <LinkCard key={task.id} href={task.href} title={task.label} className="home-progress-card">
               <div className="home-progress-card__head">
                 <strong>{task.label}</strong>
                 <span>{stats.percent}%</span>
@@ -79,7 +79,7 @@ export function HomeDailyProgress({ compact = false }: { compact?: boolean } = {
                 {stats.done} من {stats.target}
                 {stats.remaining > 0 ? ` · متبقٍ ${stats.remaining}` : " · مكتمل"}
               </p>
-            </InteractiveCard>
+            </LinkCard>
           );
         })}
       </div>

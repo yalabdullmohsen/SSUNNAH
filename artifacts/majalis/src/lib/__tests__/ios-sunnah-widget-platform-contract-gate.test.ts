@@ -152,7 +152,7 @@ assert.doesNotMatch(entry + views + widget, /AdhanCalculation|CalculationMethod|
 assert.doesNotMatch(entry + views + widget, /Quran|QPC|Hisn|Fatwa|recitation|wird/i);
 assert.doesNotMatch(views, /Text\("—"\)/);
 assert.doesNotMatch(views, /\?\? "—"/);
-assert.match(views, /افتح سُنّة لإكمال إعداد مواقيت الصلاة/);
+assert.match(views, /static let noData = "افتح سُنّة"/);
 assert.match(views, /PrayerCountdownText/);
 assert.match(views, /PrayerLiveClock/); // مكوّن العدّ الموحّد (حلّ محل staticRemaining)
 assert.match(views, /rightToLeft/);

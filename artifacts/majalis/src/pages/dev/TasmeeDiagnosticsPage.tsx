@@ -12,6 +12,7 @@ import {
   tasmeeNative,
 } from "@/lib/tasmee/engine-plugin";
 import { Button } from "@/components/ui/button";
+import { NativeShellToggle } from "@/pages/dev/NativeShellToggle";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { QuranSettingsRepository } from "@/lib/mushaf-v2/QuranSettingsRepository";
 import { TASMEE_SCOPE_NOTE } from "@/lib/tasmee/copy";
@@ -141,6 +142,7 @@ export default function TasmeeDiagnosticsPage() {
       <p style={{ margin: 0, opacity: 0.8 }}>المعالجة على الجهاز بالكامل. لا يُرسَل صوت. الصوت في الذاكرة فقط أثناء الجلسة لمحاذاة الكلمات ثم يُفرَّغ.</p>
       <p style={{ margin: 0 }}>{TASMEE_SCOPE_NOTE}</p>
       <p style={{ margin: 0, opacity: 0.8 }}>{TASMEE_STRICTNESS_DESCRIPTIONS[strictness]}</p>
+      <NativeShellToggle />
       <section>
         <strong>الجهاز:</strong>{" "}
         {device ? `${device.model} · iOS ${device.osVersion} · ${device.physicalMemoryMB}MB · حرارة ${device.thermalState}${device.lowPowerMode ? " · توفير طاقة" : ""} · نموذج ${device.loaded ? "محمَّل" : "غير محمَّل"}` : "—"}

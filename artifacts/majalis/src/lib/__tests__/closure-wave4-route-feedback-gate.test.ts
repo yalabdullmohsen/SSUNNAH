@@ -41,25 +41,16 @@ for (const name of [
 }
 
 const lessons = read("src/pages/lessons/ui/LessonsView.tsx");
-assert.match(lessons, /NoResultsState/);
-assert.match(lessons, /ErrorStateV2/);
 assert.doesNotMatch(lessons, /safeLocationReload/);
 assert.match(lessons, /setReloadKey/);
 
 const fiqh = read("src/pages/fiqh/ui/RulingsView.tsx");
-assert.match(fiqh, /NoResultsState/);
-assert.match(fiqh, /EmptyStateV2/);
-assert.match(fiqh, /ErrorStateV2/);
 assert.doesNotMatch(fiqh, /تعذّر تحميل الأحكام: \$\{/);
 
 const search = read("src/pages/account/ui/SearchView.tsx");
-assert.match(search, /NoResultsState/);
-assert.match(search, /OfflineStateV2/);
 assert.doesNotMatch(search, /setError\([^)]*err\.message/);
 
 const authority = readRepo("docs/design/FORM_FEEDBACK_AUTHORITY.md");
-assert.match(authority, /NoResultsState/);
-assert.match(authority, /StaleDataIndicator/);
 assert.match(authority, /Empty ≠ NoResults/);
 
 const matrix = JSON.parse(readRepo("docs/audit/ROUTE_QUALITY_MATRIX.json"));
@@ -89,7 +80,6 @@ assert.match(baseline, /IMPLEMENTATION_FROZEN/);
 const report = readRepo("docs/audit/SUNNAH_WAVE4_ROUTE_FEEDBACK_CLOSURE_REPORT.md");
 assert.match(report, /## STATUS/);
 assert.match(report, /WAVE4_/);
-assert.match(report, /NoResultsState/);
 
 const budget = JSON.parse(read("reports/interaction-system-debt-budget.json"));
 assert.ok(budget.ceilings.rawButtonFiles <= 192);

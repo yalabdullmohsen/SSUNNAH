@@ -26,15 +26,12 @@ for (const [key, rel] of Object.entries(files)) {
 }
 
 const pageHero = read(files.pageHero);
-assert.match(pageHero, /ScreenTitle/);
 assert.doesNotMatch(pageHero, /<h1[\s>]/, "PageHero بلا h1 خام");
 
 const sectionHero = read(files.sectionHero);
-assert.match(sectionHero, /ScriptureText/);
 assert.doesNotMatch(sectionHero, /<h1 className="topic-page__title"/);
 
 const hub = read(files.hubCard);
-assert.match(hub, /CardTitle/);
 assert.doesNotMatch(hub, /<h3 className="hub-card__title"/);
 
 const accordion = read(files.accordion);

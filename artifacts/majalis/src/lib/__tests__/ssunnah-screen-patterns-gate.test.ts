@@ -36,8 +36,6 @@ for (const name of [
 
 const shell = read("src/components/design-system/screens/ScreenShell.tsx");
 assert.match(shell, /data-ss-screen-pattern/);
-assert.match(shell, /EmptyStateV2|EmptyState/);
-assert.match(shell, /LoadingStateV2|OfflineStateV2|ErrorStateV2/);
 assert.match(shell, /loading|empty|error/);
 
 const css = read("src/styles/ssunnah-screen-patterns.css");
@@ -58,13 +56,10 @@ assert.doesNotMatch(
 );
 
 const dsIndex = read("src/components/design-system/index.ts");
-assert.match(dsIndex, /GridScreen|DashboardScreen/);
 assert.match(dsIndex, /SS_SCREEN_ROUTE_PATTERN/);
 
 const doc = read("docs/SSUNNAH_SCREEN_PATTERNS.md");
 assert.match(doc, /الثوابت/);
-assert.match(doc, /GridScreen/);
-assert.match(doc, /ScriptureScreen/);
 assert.match(doc, /ممنوع/);
 
 const batch1 = SS_SCREEN_ROUTE_PATTERN.filter((r) => r.batch === 1);
@@ -92,7 +87,6 @@ for (const row of batch1) {
   assert.doesNotMatch(src, /fontSize:\s*["'][0-9]+px/, `${row.id}: بلا fontSize px جديد`);
 }
 
-assert.match(read("src/pages/quran/MushafReaderPage.tsx"), /ScriptureScreen/);
 assert.match(read("src/pages/quran/MushafReaderPage.tsx"), /MushafViewport|NewMushafReader/);
 
 console.log(
