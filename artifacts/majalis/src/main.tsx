@@ -1,4 +1,6 @@
 import { createRoot } from "react-dom/client";
+import { useEffect } from "react";
+import { installMountWatchdog, markAppMounted } from "./lib/mount-watchdog";
 import { QueryClientProvider } from "@tanstack/react-query";
 import App from "./App";
 import { AppProviders } from "./app/providers/AppProviders";
@@ -355,6 +357,12 @@ function applyDeferredEntryCss(timeoutMs = 3_000): Promise<void> {
   ).then(() => undefined);
 }
 
+/** يُعلِم الحارس بأن React رسم فعلًا (بعد أول commit). */
+function MountBeacon() {
+  useEffect(() => markAppMounted(), []);
+  return null;
+}
+
 async function mount() {
   const started = performance.now();
   markStartup("startup:js-start");
@@ -379,12 +387,26 @@ async function mount() {
   /* CSS الحزمة المؤجَّل (media=print حتى DOMContentLoaded+2rAF) يُطبَّق قبل أول commit لـ React:
      على CPU بطيء كان React يرسم الرئيسية بلا تخطيطها ثم تقفز (CLS ≈0.17–0.20 في LHCI). */
   /* نظام التصميم (رموز + مكوّنات + هيكل) يُحمَّل قبل أول commit — يُحصى ضمن الحزمة لا ضمن الـ14 المتزامنة */
-  await Promise.all([applyDeferredEntryCss(), import("./design-system/design-system.css")]);
+  /* لا يجوز أن يمنع تعليق/فشل استيراد CSS (chunk قديم بعد نشر، شبكة) تركيب React: مهلة + catch ثم نكمل. */
+  await Promise.race([
+    Promise.all([applyDeferredEntryCss(), import("./design-system/design-system.css")]),
+    new Promise<void>((resolve) => window.setTimeout(resolve, 2_500)),
+  ]).catch((err) => {
+    console.error("[boot] entry css failed — mounting anyway", err);
+    void import("./lib/chunk-recovery").then((m) => m.tryRecoverFromStaleChunk("entry-css", err)).catch(() => {});
+  });
+  document
+    .querySelectorAll<HTMLLinkElement>("link[data-mj-css-defer]")
+    .forEach((l) => {
+      l.media = "all";
+      l.removeAttribute("data-mj-css-defer");
+    });
 
   try {
     createRoot(rootEl).render(
       <>
         <ChunkRecoveryToast />
+        <MountBeacon />
         <ErrorBoundary>
           <QueryClientProvider client={queryClient}>
             <AppProviders>
@@ -468,6 +490,14 @@ async function mount() {
   }, 8000);
 }
 
+installMountWatchdog();
+/* ملف chunk/CSS لم يعد موجودًا بعد نشر جديد (HTML قديم في WebView): إعادة تحميل واحدة بلا حلقة (حارس chunk-recovery). */
+window.addEventListener("vite:preloadError", (event) => {
+  event.preventDefault();
+  void import("./lib/chunk-recovery")
+    .then((m) => m.tryRecoverFromStaleChunk("preload-error", (event as Event & { payload?: unknown }).payload))
+    .catch(() => {});
+});
 void mount().catch((err) => {
   console.error("[boot] mount failed", err);
 });
