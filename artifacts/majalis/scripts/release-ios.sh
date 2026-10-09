@@ -7,8 +7,7 @@
 #   ALLOW_IOS_NON_MAIN_BUILD=1 pnpm run release:ios   # عند التجربة من فرع غير main
 #
 # الرفع الفعلي إلى TestFlight يتم عبر workflow:
-#   gh workflow run ios-testflight-deploy.yml
-# أو وسم: git tag v1.0.N && git push origin v1.0.N
+#   gh workflow run ios-testflight-deploy.yml   (أو المجدول اليومي؛ الوسوم لم تعد تشغّله)
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 REPO_ROOT="$(cd "$ROOT/../.." && pwd)"
@@ -62,4 +61,3 @@ echo ""
 echo "✓ جاهز للرفع. الخطوة التالية (لا تُنفَّذ تلقائيًا هنا لتجنب نشر غير مقصود):"
 echo "  cd $REPO_ROOT && gh workflow run ios-testflight-deploy.yml"
 echo "  أو: افتح Xcode → Product → Archive"
-echo "  أو: git tag vX.Y.Z && git push origin vX.Y.Z"
