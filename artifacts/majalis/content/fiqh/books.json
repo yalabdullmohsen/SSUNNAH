@@ -21403,6 +21403,7 @@
             {
               "id": "hajj-arkan-arafa",
               "title": "الوقوف بعرفة ركن",
+              "needsReview": true,
               "bookId": "hajj",
               "chapterId": "arkan-hajj",
               "level": "مبتدئ",

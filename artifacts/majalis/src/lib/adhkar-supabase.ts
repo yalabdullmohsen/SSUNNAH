@@ -43,7 +43,7 @@ export async function fetchVerifiedAdhkarItems(): Promise<AdhkarItem[]> {
         "id, category_id, text, repeat_count, narrator, source_name, grade, reference, keywords, verification_status",
       )
       .is("deleted_at", null)
-      .neq("verification_status", "rejected")
+      .eq("verification_status", "verified")
       .order("updated_at", { ascending: false });
 
     if (error) {
