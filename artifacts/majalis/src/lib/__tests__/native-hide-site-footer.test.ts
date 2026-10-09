@@ -17,9 +17,9 @@ const servicesSrc = readFileSync(resolve(appRoot, "src/lib/services-center-nav.t
 const nativeCss = readFileSync(resolve(appRoot, "src/styles/capacitor-native-ux.css"), "utf8");
 
 assert.ok(appSrc.includes('from "@/lib/capacitor-utils"'), "يستورد isNative من capacitor-utils");
-assert.ok(appSrc.includes("{!hideSiteChrome && !isNative && <SiteFooter />}"), "التذييل مخفي على الأصلي");
+assert.ok(appSrc.includes("{!hideSiteChrome && !isNative && <DeferredSiteFooter />}"), "التذييل مخفي على الأصلي");
 assert.match(nativeCss, /html\.capacitor-native \.site-footer/);
-assert.match(settingsSrc, /عن التطبيق/);
+assert.match(settingsSrc, /حول التطبيق/);
 assert.match(settingsSrc, /href="\/privacy"|to="\/privacy"|\/privacy/);
 assert.match(settingsSrc, /\/terms/);
 assert.match(settingsSrc, /\/support/);
