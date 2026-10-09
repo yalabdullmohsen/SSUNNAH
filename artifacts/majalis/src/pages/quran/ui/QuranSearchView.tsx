@@ -20,7 +20,6 @@ import { highlightOriginalParts, scoreTolerantMatch } from "@/features/search/to
 import { getSurahMeta, SURAH_START_PAGES } from "@/lib/quran-api";
 import { mushafPageHref } from "@/lib/quran-surah-list";
 import { resolveCanonicalAyahHref } from "@/lib/quran-navigation";
-import { PageHeader } from "@/components/ui-common";
 import { VirtualList } from "@/components/VirtualList";
 import "@/styles/pages/quran-search.css";
 import { NavigationBar, IconButton } from "@/design-system";
@@ -127,14 +126,8 @@ export default function QuranSearchPage() {
 
   return (
     <div className="sn-screen">
-    <NavigationBar title="البحث في القرآن" large={false} />
+    <NavigationBar title="بحث في الآيات" subtitle="شاشة بحث منفصلة عن المصحف — اكتب كلمة أو جملة من نص الآية. لانتقال السور استخدم مركز القرآن الكريم." />
     <div className="ds-page quran-search-page" dir="rtl">
-      <PageHeader
-        eyebrow="القرآن الكريم"
-        title="بحث في الآيات"
-        subtitle="شاشة بحث منفصلة عن المصحف — اكتب كلمة أو جملة من نص الآية. لانتقال السور استخدم مركز القرآن الكريم."
-      />
-
       <form
         className="quran-search-page__form"
         role="search"

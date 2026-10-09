@@ -2,7 +2,7 @@ import "@/styles/quran-memorization-plans.css";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { BookOpen, CalendarDays, Check, RotateCcw } from "lucide-react";
-import { PageHeader } from "@/components/ui-common";
+import { NavigationBar } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import { applyPageSeo } from "@/lib/seo";
 
@@ -59,8 +59,9 @@ export default function QuranMemorizationPlansPage() {
   const finished = saved.completed >= plan.sessions;
 
   return (
+    <div className="sn-screen">
+    <NavigationBar title="خطط الحفظ والمراجعة" subtitle="اختر وتيرة واقعية، وغيّرها متى احتجت. التقدم يُحفظ على جهازك دون اشتراط حساب." />
     <div className="ds-page qmp-page" dir="rtl">
-      <PageHeader eyebrow="الحفظ والمراجعة" title="خطط الحفظ والمراجعة" subtitle="اختر وتيرة واقعية، وغيّرها متى احتجت. التقدم يُحفظ على جهازك دون اشتراط حساب." />
       <section className="qmp-principles" aria-label="منهج الخطة">
         <span><Check size={16} aria-hidden="true" /> مصحف المدينة المعتمد</span>
         <span><RotateCcw size={16} aria-hidden="true" /> مراجعة قريبة وبعيدة</span>
@@ -115,6 +116,7 @@ export default function QuranMemorizationPlansPage() {
         </div>
       </section>
       <section className="ds-card qmp-guidance"><h2>نظام أسبوعي مقترح</h2><ol><li>حفظ المقدار الجديد مع التكرار والاستماع لقارئ متقن.</li><li>مراجعة مقدار اليوم السابق قبل بدء الجديد.</li><li>مراجعة تراكمية في نهاية الأسبوع واختبار مواضع التردد.</li><li>اترك يومًا مرنًا للتعويض أو الراحة، ثم أكمل دون إعادة الخطة من الصفر.</li></ol><p>هذه أداة تنظيمية وليست بديلًا عن المعلّم المتقن، ولا تقيس جودة الحفظ وحدها.</p></section>
+    </div>
     </div>
   );
 }

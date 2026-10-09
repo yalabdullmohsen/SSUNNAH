@@ -21,8 +21,7 @@ import {
 import { Button } from "@/components/ui/button";
 import "@/styles/components/filters.css";
 import "@/styles/pages/quran-circles.css";
-import { NavigationBar } from "@/design-system";
-import { FieldLabel } from "@/components/design-system/FormFields";
+import { NavigationBar, FieldLabel } from "@/design-system";
 import {
   Select,
   SelectContent,
