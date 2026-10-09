@@ -17,8 +17,10 @@ const wfDir = readdirSync(resolve(root, "../../.github/workflows")).filter((f) =
 /* مصادر الاستدعاء: package.json (الجذر والتطبيق) + scripts/ + سير عمل CI */
 const pkg = [read("package.json"), read("../../package.json"), ...scriptsDir.map((f) => read(`../../scripts/${f}`)), ...wfDir.map((f) => read(`../../.github/workflows/${f}`))].join("\n");
 const wired: string[] = JSON.parse(readFileSync(resolve(root, "scripts/wired-orphan-tests.json"), "utf8"));
-const broken: string[] = JSON.parse(readFileSync(resolve(root, "scripts/known-broken-tests.json"), "utf8"));
-const MAX_BROKEN = 12;
+type BrokenEntry = { file: string; reason: string; action: string; owner: string; expires: string };
+const brokenEntries: BrokenEntry[] = JSON.parse(readFileSync(resolve(root, "scripts/known-broken-tests.json"), "utf8"));
+const broken = brokenEntries.map((e) => e.file);
+const MAX_BROKEN = 7;
 
 const files = readdirSync(resolve(root, "src/lib/__tests__")).filter((f) => f.endsWith(".test.ts"));
 const missing = files.filter((f) => !pkg.includes(f) && !wired.includes(f) && !broken.includes(f));
@@ -26,5 +28,13 @@ assert.deepEqual(missing, [], `اختبارات غير مربوطة بأي سك�
 
 for (const f of [...wired, ...broken]) assert.ok(files.includes(f), `مسجّل لكنه غير موجود: ${f}`);
 for (const f of wired) assert.ok(!broken.includes(f), `${f} في القائمتين`);
+const today = new Date().toISOString().slice(0, 10);
+for (const e of brokenEntries) {
+  assert.ok(e.reason?.trim().length >= 15, `${e.file}: سبب العطب مطلوب (≥15 حرفًا)`);
+  assert.ok(e.owner?.trim() && e.action?.trim(), `${e.file}: المالك والإجراء مطلوبان`);
+  assert.match(e.expires ?? "", /^\d{4}-\d{2}-\d{2}$/, `${e.file}: تاريخ انتهاء YYYY-MM-DD مطلوب`);
+  assert.ok(e.expires >= today, `${e.file}: انتهى أجله ${e.expires} — أصلحه أو احذفه`);
+}
+assert.equal(new Set(broken).size, broken.length, "تكرار في قائمة المعطوب");
 assert.ok(broken.length <= MAX_BROKEN, `قائمة المعطوب كبرت (${broken.length} > ${MAX_BROKEN}) — لا تُرفَع`);
 console.log(`lib-tests-all-wired: ok (${files.length} ملفًا، ${wired.length} مُربوطة بالمشغّل، ${broken.length} معطوبة معروفة)`);

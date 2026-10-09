@@ -12,12 +12,14 @@ import {
   tasmeeReducer,
   type AlertPrefs,
   type TasmeeMode,
+  alertToFire,
 } from "@/lib/tasmee-v2/session-state";
 import { stepsBackToAyahStart } from "@/lib/tasmee-v2/word-model";
 import { T } from "./strings";
 import { TasmeeDiagSheet } from "./TasmeeDiagSheet";
 import { TasmeeModelSheet } from "./TasmeeModelSheet";
-import { useTasmeeEngine } from "./useTasmeeEngine";
+import { emptyLiveStats, useTasmeeEngine } from "./useTasmeeEngine";
+import { useTasmeeFeedHarness, type FeedProbe } from "./feed-harness";
 import { useTasmeeModel } from "./useTasmeeModel";
 
 const ALERTS_KEY = "ssunnah-tasmee-v2-alerts";
@@ -108,7 +110,21 @@ export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = fal
   const longFiredRef = useRef(false);
   const fabTimerRef = useRef<number | null>(null);
   const active = isActiveMode(state.mode);
+  /* عدّادات يقرؤها اختبار التكامل على المحاكي (إحصاءات المحرك + التنبيهات المُطلقة) */
+  const probeRef = useRef<FeedProbe>({ stats: emptyLiveStats(), alertsFired: 0 });
+  const feedFile = useTasmeeFeedHarness({
+    pageNumber,
+    probeRef,
+    modelPhase: model.state.phase,
+    download: () => void model.download(),
+    begin: () => {
+      dispatch({ type: "setMode", mode: "tasmee" });
+      dispatch({ type: "toggleRecording" });
+    },
+    end: () => dispatch({ type: "stopRecording" }),
+  });
   const engine = useTasmeeEngine({
+    feedFile,
     pageNumber,
     recording: state.recording,
     ready: model.state.phase === "ready",
@@ -119,6 +135,7 @@ export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = fal
       setToast(T.engineStopped);
     },
   });
+  probeRef.current.stats = engine.stats;
   /* لوحة القياس: Debug/TestFlight فقط وقت التشغيل (مخفية في App Store) */
   const [diagAllowed, setDiagAllowed] = useState(false);
   const [diagOpen, setDiagOpen] = useState(false);
@@ -225,6 +242,7 @@ export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = fal
   /* تنبيهات الخطأ: فوري أو بعد نهاية المقطع */
   const fireAlerts = useCallback(
     (a: AlertPrefs) => {
+      probeRef.current.alertsFired += 1;
       if (a.haptic) void hapticTap("light");
       if (a.tone) playTone();
     },
@@ -232,12 +250,12 @@ export function TasmeeV2Layer({ pageNumber, startInTasmee = false, blocked = fal
   );
   const lastErrorsRef = useRef(0);
   useEffect(() => {
-    if (state.errors > lastErrorsRef.current && state.alerts.timing === "instant") fireAlerts(state.alerts);
+    if (alertToFire(lastErrorsRef.current, state) === "instant") fireAlerts(state.alerts);
     lastErrorsRef.current = state.errors;
   }, [state.errors, state.alerts, fireAlerts]);
   useEffect(() => {
     if (!state.recording && state.pendingAlerts > 0) {
-      if (state.alerts.timing === "after-segment") fireAlerts(state.alerts);
+      if (alertToFire(lastErrorsRef.current, state) === "after-segment") fireAlerts(state.alerts);
       dispatch({ type: "flushAlerts" });
     }
   }, [state.recording, state.pendingAlerts, state.alerts, fireAlerts]);

@@ -92,7 +92,7 @@ const adabBook = {
   sources: [SRC_ADAB, SRC_RIYADH, SRC_ZAD],
   chapters: [
     chapter(
-      "salam",
+      "adab-salam",
       "باب آداب السلام والتحية",
       1,
       "السلام تحية الإسلام وسنة مؤكدة عند اللقاء والمفارقة.",
@@ -101,7 +101,7 @@ const adabBook = {
       [
         lesson({
           id: "adab-salam-ifsha",
-          chapterId: "salam",
+          chapterId: "adab-salam",
           title: "إفشاء السلام",
           definition: "نشر تحية الإسلام بين المسلمين عند اللقاء.",
           summary:
@@ -125,7 +125,7 @@ const adabBook = {
         }),
         lesson({
           id: "adab-salam-radd",
-          chapterId: "salam",
+          chapterId: "adab-salam",
           title: "رد السلام",
           definition: "إجابة تحية المسلم بمثلها أو بأحسن منها.",
           summary:
@@ -142,7 +142,7 @@ const adabBook = {
         }),
         lesson({
           id: "adab-salam-istiqbal",
-          chapterId: "salam",
+          chapterId: "adab-salam",
           title: "السلام عند دخول البيت والمجلس",
           definition: "تقديم السلام عند دخول المنزل أو المجلس حتى لو كان فارغًا.",
           summary:
@@ -159,7 +159,7 @@ const adabBook = {
         }),
         lesson({
           id: "adab-salam-rukban",
-          chapterId: "salam",
+          chapterId: "adab-salam",
           title: "من يبدأ بالسلام",
           definition: "أدب ترتيب ابتداء السلام بين الصغير والكبير والماشي والراكب.",
           summary:

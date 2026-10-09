@@ -63768,7 +63768,7 @@
       ],
       "chapters": [
         {
-          "id": "salam",
+          "id": "adab-salam",
           "title": "باب آداب السلام والتحية",
           "order": 1,
           "status": "published",
@@ -63799,7 +63799,7 @@
               "id": "adab-salam-ifsha",
               "title": "إفشاء السلام",
               "bookId": "adab",
-              "chapterId": "salam",
+              "chapterId": "adab-salam",
               "level": "مبتدئ",
               "madhhabNotes": "يُعرض الأدب هنا على طريقة فقهاء الحنابلة مع الاستناد إلى النصوص، دون اختراع أحكام.",
               "sources": [
@@ -63850,7 +63850,7 @@
               "id": "adab-salam-radd",
               "title": "رد السلام",
               "bookId": "adab",
-              "chapterId": "salam",
+              "chapterId": "adab-salam",
               "level": "مبتدئ",
               "madhhabNotes": "يُعرض الأدب هنا على طريقة فقهاء الحنابلة مع الاستناد إلى النصوص، دون اختراع أحكام.",
               "sources": [
@@ -63900,7 +63900,7 @@
               "id": "adab-salam-istiqbal",
               "title": "السلام عند دخول البيت والمجلس",
               "bookId": "adab",
-              "chapterId": "salam",
+              "chapterId": "adab-salam",
               "level": "مبتدئ",
               "madhhabNotes": "يُعرض الأدب هنا على طريقة فقهاء الحنابلة مع الاستناد إلى النصوص، دون اختراع أحكام.",
               "sources": [
@@ -63946,7 +63946,7 @@
               "id": "adab-salam-rukban",
               "title": "من يبدأ بالسلام",
               "bookId": "adab",
-              "chapterId": "salam",
+              "chapterId": "adab-salam",
               "level": "مبتدئ",
               "madhhabNotes": "يُعرض الأدب هنا على طريقة فقهاء الحنابلة مع الاستناد إلى النصوص، دون اختراع أحكام.",
               "sources": [
