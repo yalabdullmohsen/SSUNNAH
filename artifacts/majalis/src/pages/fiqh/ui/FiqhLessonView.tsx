@@ -12,6 +12,7 @@ import {
   getFiqhLesson,
   getFiqhLessonAny,
   isFiqhCatalogReady,
+  stripFiqhTemplate,
 } from "@/lib/fiqh-books";
 import { ShareButtons } from "@/components/ContentActions";
 import { cn, truncateAtWord } from "@/lib/utils";
@@ -167,13 +168,14 @@ export default function FiqhLessonPage() {
   const { intro, rest } = firstSentence(lesson.summary);
   const detail =
     rest ||
-    [lesson.madhhabNotes, lesson.scholarlyNotes].filter(Boolean).join("\n\n") ||
+    [stripFiqhTemplate(lesson.madhhabNotes), lesson.scholarlyNotes].filter(Boolean).join("\n\n") ||
     "";
   const definition = lesson.definition?.trim() || "";
   const ruling = lesson.ruling?.trim() || lesson.preferred?.trim() || "";
   const notes = lesson.notes?.trim() || "";
   const practical = lesson.practicalSummary?.trim() || "";
-  const scholarly = (lesson.scholarlyNotes || lesson.madhhabNotes || "").trim();
+  const scholarly = (lesson.scholarlyNotes || stripFiqhTemplate(lesson.madhhabNotes)).trim();
+  const evidence = stripFiqhTemplate(lesson.evidence);
   const mistakes = (lesson.commonMistakes ?? []).map((x) => x.trim()).filter(Boolean);
   const examples = (lesson.examples ?? []).map((x) => x.trim()).filter(Boolean);
   const reviewQs = (lesson.reviewQuestions ?? []).map((x) => x.trim()).filter(Boolean);
@@ -183,7 +185,7 @@ export default function FiqhLessonPage() {
     { id: "definition", label: "التعريف", show: Boolean(definition) },
     { id: "ruling", label: "الحكم", show: Boolean(ruling) },
     { id: "detail", label: "التفصيل", show: Boolean(detail) },
-    { id: "evidence", label: "الأدلة", show: Boolean(lesson.evidence?.trim()) },
+    { id: "evidence", label: "الأدلة", show: Boolean(evidence) },
     { id: "scholarly", label: "أقوال أهل العلم", show: Boolean(scholarly) },
     { id: "practical", label: "الخلاصة", show: Boolean(practical) },
     { id: "notes", label: "تنبيهات", show: Boolean(notes) },
@@ -300,10 +302,10 @@ export default function FiqhLessonPage() {
             ))}
           </section>
         ) : null}
-        {lesson.evidence?.trim() ? (
+        {evidence ? (
           <section id="fiqh-sec-evidence" className="fiqh-lux-section" data-kx-kind="evidence">
             <h2>الأدلة</h2>
-            <p>{lesson.evidence}</p>
+            <p>{evidence}</p>
           </section>
         ) : null}
         {scholarly ? (
