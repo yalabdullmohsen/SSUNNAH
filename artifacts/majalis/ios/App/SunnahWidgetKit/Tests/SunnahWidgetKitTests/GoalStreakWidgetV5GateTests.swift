@@ -37,11 +37,39 @@ final class GoalStreakWidgetV5GateTests: XCTestCase {
         XCTAssertTrue(src.contains("WidgetFormat.dayUnit"))
     }
 
+    func testMushafViewsUseUnifiedCardAndCalmEmptyState() throws {
+        let src = try source("SunnahQuranMushafWidgetCatalog.swift", from: "struct MushafContinueView", to: "struct QuranDailyGoalView")
+        let prog = try source("SunnahQuranMushafWidgetCatalog.swift", from: "struct MushafProgressView", to: "struct MushafQuickOpenView")
+        for (name, text) in [("تابع المصحف/الإشارة", src), ("رحلة المصحف", prog)] {
+            for banned in ["SunnahWidgetEmptyState", "SunnahWidgetTimeFormatting.arabic", ".white", ".title3", "٪"] {
+                XCTAssertFalse(text.contains(banned), "\(name): محظور \(banned)")
+            }
+            XCTAssertTrue(text.contains("SunnahMushafPositionCard"))
+            XCTAssertTrue(text.contains("SunnahCalmCard"))
+        }
+        XCTAssertTrue(src.contains("cue: \"تابع\""))
+    }
+
     func testStreakUnitsAreShortAndLatin() {
         for n in [0, 1, 2, 3, 10, 11, 365] {
             let unit = WidgetFormat.dayUnit(n)
             XCTAssertLessThanOrEqual(WidgetTextBudget.wordCount(unit), 2)
             XCTAssertEqual(WidgetFormat.digits(n), String(n))
         }
+    }
+
+    func testAyahCardNeverTruncatesAndHasCalmEmptyState() throws {
+        let base = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
+            .deletingLastPathComponent().deletingLastPathComponent()
+        let full = try String(contentsOf: base.appendingPathComponent("PrayerWidget/SunnahQuranMushafWidgetCatalog.swift"), encoding: .utf8)
+        let start = try XCTUnwrap(full.range(of: "struct SunnahAyahCard"))
+        let end = try XCTUnwrap(full.range(of: "struct MushafContinueView"))
+        let src = String(full[start.lowerBound..<end.lowerBound])
+        XCTAssertTrue(src.contains("ViewThatFits"))
+        XCTAssertFalse(src.contains(".lineLimit(") && src.contains("ayahText)\n            .font"), "نص الآية بلا lineLimit")
+        XCTAssertFalse(src.contains(".white"))
+        XCTAssertTrue(src.contains("WidgetFormat.digits"))
+        XCTAssertTrue(src.contains("SunnahCalmCard"))
+        XCTAssertGreaterThanOrEqual(src.components(separatedBy: ".widgetAccentable(").count - 1, src.components(separatedBy: "SunnahBrandColors.gold").count - 1)
     }
 }

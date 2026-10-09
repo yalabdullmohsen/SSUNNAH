@@ -13,7 +13,6 @@ import {
 import { loadReadingAyahKey, SURAH_START_PAGES } from "@/lib/quran-api";
 import { ayahKeyToPage } from "@/lib/quran-ayah-page";
 import { useNavigationPaintGate } from "@/hooks/useNavigationPaintGate";
-import { ScriptureScreen } from "@/components/design-system/screens";
 import { migrateMushafUserData, isMushafReaderV2Enabled } from "@/lib/mushaf-v2";
 import {
   QuranNavigationService,
@@ -184,7 +183,7 @@ export default function MushafReaderPage() {
   }
 
   return (
-    <ScriptureScreen compose="mark">
+    <div className="mushaf-frame" data-ss-scripture-surface="1">
       <MushafAppearanceProvider>
         <MushafViewport
           pageNumber={pageNumber}
@@ -194,7 +193,7 @@ export default function MushafReaderPage() {
           tasmeeRequested={wantsTasmeeFromSearch(search)}
         />
       </MushafAppearanceProvider>
-    </ScriptureScreen>
+    </div>
   );
 }
 

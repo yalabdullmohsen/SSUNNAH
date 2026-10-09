@@ -2373,3 +2373,9 @@ html[data-theme="dark"] .nm-page-arrow {
 @media (prefers-reduced-motion: reduce) {
   .nm-page[data-tasmee-hide="1"] .nm-word { transition: none; }
 }
+
+/* إطار صفحة المصحف — يطابق ما كان يعطيه .ss-screen بالضبط (بلا تغيير بصري). */
+.mushaf-frame {
+  width: 100%;
+  min-width: 0;
+}

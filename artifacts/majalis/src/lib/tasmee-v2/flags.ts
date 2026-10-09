@@ -25,3 +25,13 @@ export function wantsTasmeeFromSearch(search: string): boolean {
   const qs = new URLSearchParams(search.startsWith("?") ? search.slice(1) : search);
   return qs.get("tasmee") === "1";
 }
+
+/**
+ * علم `tasmee_cloud_asr` — إرسال نوافذ صوت إلى مزوّد سحابي. **مغلق** في 1.1.0 (التسميع على الجهاز فقط)،
+ * ولا مفتاح تشغيل له خارج الكود: فتحه تغيير كود مع ZDR وتصريح AudioData ونسخة متجر.
+ */
+export const TASMEE_CLOUD_ASR_ENABLED = false as const;
+
+export function isTasmeeCloudAsrEnabled(): boolean {
+  return TASMEE_CLOUD_ASR_ENABLED;
+}

@@ -654,6 +654,55 @@ struct SunnahRingStat: View {
     }
 }
 
+/// موضع المصحف: أيقونة + «السورة · الصفحة» (سطر واحد، وإن ضاق فسطران بلا اقتطاع) + تلميح قصير.
+struct SunnahMushafPositionCard: View {
+    let surah: String?
+    let page: Int
+    let cue: String
+    var symbol = "book.fill"
+
+    private var numberText: String { WidgetFormat.digits(page) }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Image(systemName: symbol)
+                .font(WidgetType.icon(22))
+                .foregroundStyle(SunnahBrandColors.gold)
+                .widgetAccentable()
+                .accessibilityHidden(true)
+            Spacer(minLength: 0)
+            ViewThatFits(in: .horizontal) {
+                Text(oneLine)
+                    .font(WidgetType.primary(22))
+                    .lineLimit(1)
+                    .fixedSize(horizontal: true, vertical: false)
+                VStack(alignment: .leading, spacing: 2) {
+                    if let surah {
+                        Text(surah)
+                            .font(WidgetType.primary(20))
+                            .lineLimit(2)
+                            .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                    }
+                    Text(numberText)
+                        .font(WidgetType.primary(20))
+                }
+            }
+            Text(cue)
+                .font(WidgetType.secondary(13))
+                .lineLimit(1)
+                .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(surah ?? "المصحف") \(numberText) \(cue)")
+    }
+
+    private var oneLine: String {
+        if let surah { return "\(surah) · \(numberText)" }
+        return numberText
+    }
+}
+
 /// خلية وقت في الشبكة: الاسم فوق الوقت؛ القادمة بكبسولة مملوءة، والمنتهية بشفافية أقل.
 struct PrayerGridCell: View {
     let key: PrayerSlotKey
