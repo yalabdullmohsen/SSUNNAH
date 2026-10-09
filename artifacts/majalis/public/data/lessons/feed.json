@@ -1,7 +1,115 @@
 {
   "version": 1,
-  "generated_at": "2026-10-08T21:07:37.225Z",
+  "generated_at": "2026-10-09T10:41:51.458Z",
   "items": [
+    {
+      "id": "92a4710a1124a733f9a915be18361f89cacc04fd",
+      "type": "درس",
+      "title_ar": "ندعوكم لحضور الدرس العلمي شرح كتاب التوحيد لفضيلة الشيخ د دغش العجمي بعد صلاة ا…",
+      "summary_ar": "ندعوكم لحضور الدرس العلمي: شرح كتاب التوحيد لفضيله الشيخ د. دغش العجمي @DrDaghashAlajmi ⏰ بعد صلاه المغرب (كل خميس) مسجد هله الحربي-الظهر https://maps.app.goo.…",
+      "sheikh": "دغش العجمي @DrDaghashAlajmi ⏰ بعد صلاة المغرب (كل خميس) 🕌 م",
+      "place": "هلة الحربي-الظهر https://maps",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28206",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-09T10:21:16.782Z",
+      "confidence": 0.9
+    },
+    {
+      "id": "398a375497dfefe116cd846441c67bfe14ee1e67",
+      "type": "محاضرة",
+      "title_ar": "ندعوكم الليلة لحضور محاضرة بعنوان تأملات في سورة الكهف للشيخ عبدالرحمن بن محمد …",
+      "summary_ar": "ندعوكم الليله لحضور محاضره بعنوان: تاملات في سوره الكهف للشيخ عبدالرحمن بن محمد جامع ⏰ بعد صلاه المغرب (كل جمعه) مسجد مالك بن دينار - خيطان https://maps.app.go…",
+      "sheikh": null,
+      "place": "سورة الكهف 🎙️ للشيخ عبدالرحمن بن محمد جامع ⏰ بعد صلاة المغرب (كل جمعة) 🕌 مسجد",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28220",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-09T10:21:16.782Z",
+      "confidence": 0.8
+    },
+    {
+      "id": "c9b757511c7e9654771845cdf57794a88cb683c0",
+      "type": "محاضرة",
+      "title_ar": "👇 جدول دروس اليوم الجمعة 👇",
+      "summary_ar": "جدول دروس اليوم الجمعه",
+      "sheikh": null,
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28218",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-09T10:21:16.782Z",
+      "confidence": 0.65
+    },
+    {
+      "id": "098ae21b61803f901ac7f6c72704f4b2c7c7d155",
+      "type": "درس",
+      "title_ar": "👇 جدول دروس اليوم الخميس 👇",
+      "summary_ar": "جدول دروس اليوم الخميس",
+      "sheikh": null,
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28203",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-09T10:21:16.781Z",
+      "confidence": 0.65
+    },
     {
       "id": "cb11c45d0bb402f024fdeaa2622e5a97f6701d18",
       "type": "تسجيل",
@@ -111,60 +219,6 @@
       "confidence": 0.9
     },
     {
-      "id": "21d3e799f7817790f16f99d6eb41cc034f16df03",
-      "type": "درس",
-      "title_ar": "ندعوكم لحضور الدرس العلمي شرح كتاب التوحيد لفضيلة الشيخ د دغش العجمي بعد صلاة ا…",
-      "summary_ar": "ندعوكم لحضور الدرس العلمي: شرح كتاب التوحيد لفضيله الشيخ د. دغش العجمي @DrDaghashAlajmi ⏰ بعد صلاه المغرب (كل خميس) مسجد هله الحربي-الظهر https://maps.app.goo.…",
-      "sheikh": "دغش العجمي @DrDaghashAlajmi ⏰ بعد صلاة المغرب (كل خميس) 🕌 م",
-      "place": "هلة الحربي-الظهر https://maps",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28206",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-08T20:49:16.353Z",
-      "confidence": 0.9
-    },
-    {
-      "id": "484709f97ea11d8b3eec4a1ff4067e2743911cab",
-      "type": "درس",
-      "title_ar": "👇 جدول دروس اليوم الخميس 👇",
-      "summary_ar": "جدول دروس اليوم الخميس",
-      "sheikh": null,
-      "place": null,
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": null,
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28203",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-08T20:49:16.353Z",
-      "confidence": 0.65
-    },
-    {
       "id": "789c20ac950f7999665a9ea87f3eedc60fe0748b",
       "type": "محاضرة",
       "title_ar": "♦️غداً الجمعة بعد المغرب بإذن الله",
@@ -217,6 +271,33 @@
       "image_url": null,
       "published_at": "2026-10-08T20:41:34.584Z",
       "confidence": 0.95
+    },
+    {
+      "id": "c1b05f8d6a4c95c34b99fc1ad143a3c74c831f08",
+      "type": "محاضرة",
+      "title_ar": "قَالَ رسول الله مَنْ اغْتَسَلَ يَوْمَ الْجُمُعَةِ وَغَسَّلَ وَبَكَّرَ وَابْتَكَ…",
+      "summary_ar": "قال رسول اللهﷺ: من اغتسل يوم الجمعه وغسل وبكر وابتكر ودنا واستمع وانصت كان له بكل خطوه يخطوها اجر سنه صيامها وقيامها ) وصححه الشيخ الالباني رحمه الله في صحيح ا…",
+      "sheikh": "الألباني رحمه الله في صحيح الترمذي",
+      "place": "صحيح الترمذي",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "ig-almanabr",
+          "name_ar": "جمعية المنابر القرآنية",
+          "url": "https://almanabr.org",
+          "post_url": "https://www.instagram.com/p/DeQ2OVkCj2Q/",
+          "platform": "instagram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-08T00:00:00.000Z",
+      "confidence": 0.85
     },
     {
       "id": "9c90ed913c92f9610c2863f96e06889b1db34760",
@@ -892,60 +973,6 @@
       "image_url": null,
       "published_at": "2026-10-04T00:00:00.000Z",
       "confidence": 0.85
-    },
-    {
-      "id": "db442257635d9d189e529ff2c376c4cdb1579bef",
-      "type": "محاضرة",
-      "title_ar": "ندعوكم الليلة لحضور محاضرة بعنوان تأملات في سورة يوسف للشيخ عبدالرحمن بن محمد ج…",
-      "summary_ar": "ندعوكم الليله لحضور محاضره بعنوان: تاملات في سوره يوسف للشيخ عبدالرحمن بن محمد جامع ⏰ بعد صلاه المغرب (كل جمعه) مسجد فاطمه العوضي - خيطان https://maps.app.goo.…",
-      "sheikh": null,
-      "place": "سورة يوسف 🎙️ للشيخ عبدالرحمن بن محمد جامع ⏰ بعد صلاة المغرب (كل جمعة) 🕌 مسجد ف",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28111",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-03T09:10:33.486Z",
-      "confidence": 0.8
-    },
-    {
-      "id": "0795b2ec59be252de094b95d3f4e7bd66f4ce59f",
-      "type": "محاضرة",
-      "title_ar": "👇 جدول دروس اليوم الجمعة 👇",
-      "summary_ar": "جدول دروس اليوم الجمعه",
-      "sheikh": null,
-      "place": null,
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": null,
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28109",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-03T09:10:33.486Z",
-      "confidence": 0.65
     },
     {
       "id": "14a6c485cd25f74469f2030f031ebf335060730c",
