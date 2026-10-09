@@ -12,9 +12,9 @@
  */
 import { execFileSync, spawnSync } from "node:child_process";
 import { readdirSync, readFileSync } from "node:fs";
-import { basename, resolve, dirname } from "node:path";
+import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { repoGatesLeaves, isBudgetGate } from "./ci-local-plan.mjs";
+import { repoGatesLeaves, isBudgetGate, selectionNeedles } from "./ci-local-plan.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const APP = resolve(ROOT, "artifacts/majalis");
@@ -43,7 +43,12 @@ const walk = (dir, re, out = []) => {
   }
   return out;
 };
-const needles = appFiles.filter((f) => /\.(tsx?|css|mjs|json)$/.test(f)).flatMap((f) => [f, basename(f).replace(/\.[^.]+$/, "")]).filter((n) => n.length >= 6);
+let pkgDiff = "";
+if (appFiles.includes("package.json")) {
+  const p = "artifacts/majalis/package.json";
+  pkgDiff = gitRaw("diff", "-U0", git("merge-base", base, "HEAD"), "HEAD", "--", p) + gitRaw("diff", "-U0", "HEAD", "--", p);
+}
+const needles = selectionNeedles(appFiles, pkgDiff);
 const selected = new Set(["src/lib/__tests__/no-source-pinned-component-names.test.ts"]);
 for (const [dir, re] of testDirs) {
   for (const t of walk(dir, re)) {

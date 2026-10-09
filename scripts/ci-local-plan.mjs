@@ -3,7 +3,7 @@
  * وتُفكَّك سلاسل package.json إلى أوامر ورقية. لا قائمة يدوية تنحرف عن CI.
  */
 import { readFileSync } from "node:fs";
-import { resolve, dirname } from "node:path";
+import { basename, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -61,3 +61,27 @@ export function repoGatesLeaves() {
 
 /** بوابات رخيصة عامة (سقوف/عدّادات) تعمل دائمًا محليًا لأنها لا تتبع نطاق الملفات المتغيّرة. */
 export const isBudgetGate = (leaf) => /--check\b|budget|ratchet|inventory/.test(leaf.cmd);
+
+/**
+ * إبر انتقاء الاختبارات من الملفات المتغيّرة (مسارات نسبةً إلى artifacts/majalis).
+ * package.json يقرؤه أكثر من مئة اختبار، فاسمه إبرة عامة تختار كل ما يذكره. بدلها تُشتق إبره من أسطره
+ * المتغيّرة فقط (`pkgDiff`): المفاتيح (أسماء السكربتات والاعتماديات) والمسارات داخل القيم — فيُختار كل اختبار
+ * يذكر ما تغيّر فعلًا، ولا تتغيّر إبر أي ملف آخر.
+ */
+export function selectionNeedles(appFiles, pkgDiff = "") {
+  const needles = appFiles
+    .filter((f) => f !== "package.json" && /\.(tsx?|css|mjs|json)$/.test(f))
+    .flatMap((f) => [f, basename(f).replace(/\.[^.]+$/, "")])
+    .filter((n) => n.length >= 6);
+  if (appFiles.includes("package.json")) {
+    for (const line of pkgDiff.split("\n")) {
+      if (!/^[+-](?![+-]{2})/.test(line)) continue;
+      const key = line.match(/^[+-]\s*"([^"]+)"\s*:/)?.[1];
+      if (key && key.length >= 3) needles.push(key);
+      for (const tok of line.slice(1).split(/[\s"&|;,()]+/)) {
+        if (/[\w-]+\/[\w./-]+\.\w+$/.test(tok)) needles.push(tok, basename(tok).replace(/\.[^.]+$/, ""));
+      }
+    }
+  }
+  return [...new Set(needles)].filter((n) => n.length >= 3);
+}
