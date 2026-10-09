@@ -77,7 +77,7 @@ export default function FiqhChapterPage() {
 
   const tocItems = useMemo(() => {
     if (!editorial) return [] as TocItem[];
-    const items: TocItem[] = [{ id: "fiqh-ch-def", label: "التعريف" }];
+    const items: TocItem[] = [{ id: "fiqh-ch-def", label: "تعريف الباب" }];
     if (editorial.learnings.length > 0) items.push({ id: "fiqh-ch-learn", label: "ماذا تتعلم؟" });
     if (editorial.topics.length > 0) items.push({ id: "fiqh-ch-topics", label: "موضوعات الباب" });
     if (editorial.summary) items.push({ id: "fiqh-ch-sum", label: "الخلاصة" });
@@ -158,7 +158,7 @@ export default function FiqhChapterPage() {
 
       <div className="ve-accordion">
         <details open id="fiqh-ch-def" className="ve-section">
-          <summary>التعريف</summary>
+          <summary>تعريف الباب</summary>
           <div className="ve-accordion__body ve-body">
             <p>{editorial.definition}</p>
           </div>
