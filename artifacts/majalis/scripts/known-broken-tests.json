@@ -1,0 +1,14 @@
+[
+ "content-audit-b047-history-glossary-gate.test.ts",
+ "content-audit-b069-full-fiqh-fihris-gate.test.ts",
+ "content-audit-b071-sunnah-iman-bodies-gate.test.ts",
+ "content-excellence-wave12-gate.test.ts",
+ "feature-tour-gate.test.ts",
+ "fiqh-taxonomy-integrity.test.ts",
+ "header-ad-gate.test.ts",
+ "kuwait-lessons-archive-zombies.test.ts",
+ "more-sheet-nav-lifecycle.test.ts",
+ "native-hide-site-footer.test.ts",
+ "recitation-player.test.ts",
+ "share-faida-gate.test.ts"
+]

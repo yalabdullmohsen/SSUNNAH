@@ -37,7 +37,7 @@ const learning = SIDEBAR_NAV_GROUPS.find((g) => g.id === "learning");
 assert.equal(learning!.title, "الدروس والعلماء");
 assert.deepEqual(
   learning!.items.map((i) => i.label),
-  ["الدروس", "العلماء", "المحفوظات", "التقدم"],
+  ["الدروس", "المحفوظات", "التقدم"],
 );
 assert.equal(
   learning!.items.find((i) => i.href === "/lessons")?.description,
