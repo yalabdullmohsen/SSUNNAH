@@ -279,51 +279,62 @@ struct AdhkarStreakView: View {
     @Environment(\.widgetFamily) private var family
     let entry: CatalogWidgetEntry
 
-    /// الوحدة وحدها (بلا الرقم) تحت العدد الكبير: يوم / يومان / أيام / يومًا.
-    private func streakUnit(_ n: Int) -> String {
-        WidgetFormat.dayUnit(n)
-    }
-
     var body: some View {
         Group {
             if let progress = entry.progress, progress.hasCanonicalTracking {
-                if family == .accessoryCircular {
-                    VStack(spacing: 2) {
-                        Text(SunnahWidgetTimeFormatting.arabic(progress.adhkarStreakDays ?? 0))
-                            .font(.headline.bold())
-                        Text(streakUnit(progress.adhkarStreakDays ?? 0))
-                            .font(.caption2)
-                    }
-                } else if family == .accessoryRectangular {
-                    HStack {
-                        Text(todayLabel)
-                        Spacer()
-                        Text("سلسلة \(WidgetFormat.streak(progress.adhkarStreakDays ?? 0))")
-                    }
-                } else {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("أذكار اليوم")
-                            .font(.caption.bold())
-                            .foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
-                        Text(todayLabel)
-                            .font(.headline)
-                            .foregroundStyle(.white)
-                        Text("السلسلة \(WidgetFormat.streak(progress.adhkarStreakDays ?? 0))")
-                            .font(.title2.bold())
-                            .foregroundStyle(SunnahBrandColors.gold)
-                            .widgetAccentable()
-                    }
-                    .padding(12)
-                }
+                content(progress)
             } else {
-                SunnahWidgetEmptyState(message: "افتح سُنّة لتسجيل ورد الأذكار")
+                SunnahCalmCard(symbol: "sparkles", phrase: "افتح سُنّة", compact: family == .accessoryCircular)
             }
         }
         .modifier(AdhkarSurface())
         .environment(\.layoutDirection, .rightToLeft)
         .widgetURL(SunnahWidgetDeepLinkFactory.adhkar(collection: entry.adhkar?.activeCollection ?? "morning"))
         .accessibilityLabel(todayLabel)
+    }
+
+    @ViewBuilder
+    private func content(_ progress: SharedHomeProgressPayload) -> some View {
+        let days = max(0, progress.adhkarStreakDays ?? 0)
+        let done = (progress.morningAdhkarDone ? 1 : 0) + (progress.eveningAdhkarDone ? 1 : 0)
+        let fraction = Double(done) / 2
+        let value = WidgetFormat.digits(days)
+        let unit = WidgetFormat.dayUnit(days)
+        switch family {
+        case .accessoryCircular:
+            SunnahRingStat(value: value, fraction: fraction, caption: unit, lockScreen: true)
+        case .accessoryRectangular:
+            HStack(spacing: 8) {
+                SunnahRingStat(value: value, fraction: fraction, caption: unit, lockScreen: true)
+                    .frame(width: 44)
+                Text("سلسلة \(WidgetFormat.streak(days))")
+                    .font(WidgetType.primary(13))
+                    .lineLimit(1)
+                    .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        case .systemMedium:
+            SunnahTwoZone {
+                SunnahRingStat(value: value, fraction: fraction, caption: unit)
+            } secondary: {
+                VStack(spacing: 6) {
+                    Image(systemName: "flame.fill")
+                        .font(WidgetType.icon(22))
+                        .foregroundStyle(SunnahBrandColors.gold)
+                        .widgetAccentable()
+                        .accessibilityHidden(true)
+                    Text("السلسلة")
+                        .font(WidgetType.secondary(13))
+                        .lineLimit(1)
+                        .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                }
+                .frame(width: 84)
+            }
+            .sunnahCardLayout(12)
+        default:
+            SunnahRingStat(value: value, fraction: fraction, caption: unit)
+                .sunnahCardLayout(12)
+        }
     }
 
     private var todayLabel: String {
