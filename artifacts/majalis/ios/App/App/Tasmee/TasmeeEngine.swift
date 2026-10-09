@@ -28,12 +28,13 @@ enum TasmeeEngineEvent {
 final class TasmeeEngine {
     struct Config {
         var hopSec = 0.5
-        var windowSec = 10.0
+        /// 6 ث: قياس اصطناعي (base، العتبات المعتمدة) p95 1.18 ث بدل 1.37 عند 10 ث، إنذار 1.38% وكشف 100%
+        var windowSec = 6.0
         var vadRms: Float = 0.006
         var maxSessionAudioSec = 15 * 60.0
         /// تحت الضغط الحراري: تقليل التكرار ونافذة الفك
         var degradedHopSec = 1.0
-        var degradedWindowSec = 8.0
+        var degradedWindowSec = 6.0
     }
 
     private let sampleRate = 16000.0
