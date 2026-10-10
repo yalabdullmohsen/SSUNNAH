@@ -20,6 +20,7 @@
   "test-identity.mjs",
   "test-kuwait-instagram-sources.mjs",
   "test-lesson-card-posters.mjs",
+  "test-quran-quotes-tanzil.mjs",
   "test-lesson-url-import.mjs",
   "test-library-integrity.mjs",
   "test-majlisilm-audit.mjs",
