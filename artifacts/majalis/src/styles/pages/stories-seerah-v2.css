@@ -45,7 +45,7 @@ html[data-v2-stories="1"] .prophets-lux-hero__note {
 html[data-v2-stories="1"] .prophets-lux-search {
   border-radius: var(--v2-radius-lg, 22px);
   border-color: var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-soft);
   min-height: 48px;
 }
@@ -60,7 +60,7 @@ html[data-v2-stories="1"] .prophets-lux-tab--active {
 html[data-v2-stories="1"] .prophet-lux-card {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-card);
   overflow: hidden;
 }
@@ -81,7 +81,7 @@ html[data-v2-stories="1"] .prophet-lux-card__bio {
 
 html[data-v2-stories="1"] .prophet-lux-card__chip {
   border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
-  background: var(--v2-color-emerald-soft, #e2efe8);
+  background: var(--v2-color-emerald-soft, var(--sn-primary-soft));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   border: none;
 }
@@ -129,7 +129,7 @@ html[data-v2-stories="1"] .seerah-timeline__line {
 html[data-v2-stories="1"] .seerah-timeline__item {
   border-radius: var(--v2-radius-lg, 22px);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-soft);
   padding: var(--v2-space-3, 0.75rem) var(--v2-space-4, 1rem);
   min-height: 3.25rem;
@@ -149,7 +149,7 @@ html[data-v2-stories="1"] .seerah-timeline__item--active .seerah-timeline__year 
 
 html[data-v2-stories="1"] .seerah-timeline__dot {
   border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
-  background: var(--v2-color-emerald-soft, #e2efe8);
+  background: var(--v2-color-emerald-soft, var(--sn-primary-soft));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   font-weight: 800;
 }
@@ -162,7 +162,7 @@ html[data-v2-stories="1"] .seerah-timeline__item--active .seerah-timeline__dot {
 html[data-v2-stories="1"] .seerah-panel {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-card);
   padding: var(--v2-space-5, 1.25rem);
 }
@@ -179,7 +179,7 @@ html[data-v2-stories="1"] .seerah-panel__desc {
 
 html[data-v2-stories="1"] .seerah-panel__topic {
   border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
-  background: var(--v2-color-emerald-soft, #e2efe8);
+  background: var(--v2-color-emerald-soft, var(--sn-primary-soft));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   border: none;
 }
@@ -198,7 +198,7 @@ html[data-v2-stories="1"] .seerah-panel__event-dot {
 html[data-v2-stories="1"] .seerah-prophets-banner {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-soft);
 }
 

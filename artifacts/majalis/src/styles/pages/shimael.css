@@ -198,7 +198,7 @@
 .sh-page--ds .sh-hero__stat strong {
   font-size: 1.15rem;
   font-weight: 900;
-  color: var(--mj-brand-deep, #123f2e);
+  color: var(--mj-brand-deep, var(--sn-primary-strong));
 }
 .sh-container { max-width: 860px; margin: 0 auto; padding: 0.75rem 1rem 4rem; }
 .sh-facts { margin: 0 0 1rem; }
@@ -219,7 +219,7 @@
 .sh-search-wrap { margin: 0 0 1rem; }
 .sh-section { display: grid; gap: 0.65rem; }
 .sh-bab {
-  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, var(--mj-line, #d9d2c6));
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, var(--mj-line, var(--sn-separator)));
   border-radius: var(--sf-radius-control);
   background: var(--mj-surface, var(--mj-white));
   overflow: hidden;
@@ -238,7 +238,7 @@
   text-align: start;
 }
 .sh-bab__title { flex: 1; font-weight: 750; font-size: 0.92rem; }
-.sh-bab__count { font-size: 0.75rem; color: var(--mj-ink-2, #3d4f47); }
+.sh-bab__count { font-size: 0.75rem; color: var(--mj-ink-2, var(--sn-text-secondary)); }
 .sh-bab__body--reader {
   display: grid;
   gap: 0.65rem;
@@ -248,10 +248,10 @@
 .sh-hadith-ref {
   margin: 0;
   font-size: 0.78rem;
-  color: var(--mj-ink-2, #3d4f47);
+  color: var(--mj-ink-2, var(--sn-text-secondary));
 }
 .sh-mahabbah {
-  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, var(--mj-line, #d9d2c6));
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, var(--mj-line, var(--sn-separator)));
   border-radius: var(--sf-radius-control);
   background: var(--mj-surface, var(--mj-white));
   overflow: hidden;
@@ -274,5 +274,5 @@
 :is(html[data-theme="dark"], html.dark) .sh-hero--compact,
 :is(html[data-theme="dark"], html.dark) .sh-hero {
   background: var(--surface-hero, #1a2822) !important;
-  color: var(--surface-hero-ink, #f4fbf7) !important;
+  color: var(--surface-hero-ink, var(--sn-text-on-primary)) !important;
 }

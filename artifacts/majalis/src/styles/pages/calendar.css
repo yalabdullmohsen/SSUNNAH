@@ -63,7 +63,7 @@
   padding: 0.35rem 0.65rem;
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--majalis-emerald-deep, var(--mj-brand-deep, #064e3b));
+  color: var(--majalis-emerald-deep, var(--mj-brand-deep, var(--sn-primary-strong)));
 }
 
 .cal-view-tabs {
@@ -78,9 +78,9 @@
 }
 
 .cal-view-tab.is-active {
-  background: var(--majalis-emerald-deep, var(--mj-brand-deep, #064e3b));
+  background: var(--majalis-emerald-deep, var(--mj-brand-deep, var(--sn-primary-strong)));
   color: var(--majalis-parchment, var(--mj-white, var(--mj-white)));
-  border-color: var(--majalis-emerald-deep, var(--mj-brand-deep, #064e3b));
+  border-color: var(--majalis-emerald-deep, var(--mj-brand-deep, var(--sn-primary-strong)));
 }
 
 .cal-ics-btn {
@@ -90,7 +90,7 @@
   padding: 0.4rem 0.75rem;
   font-size: 0.82rem;
   font-weight: 700;
-  color: var(--majalis-emerald-deep, var(--mj-brand-deep, #064e3b));
+  color: var(--majalis-emerald-deep, var(--mj-brand-deep, var(--sn-primary-strong)));
 }
 
 .cal-month,
@@ -169,7 +169,7 @@
 
 .cal-cell.is-selected {
   border-color: var(--majalis-emerald, var(--mj-brand, #059669));
-  background: var(--majalis-sage, #ecfdf5);
+  background: var(--majalis-sage, var(--sn-primary-soft));
 }
 
 .cal-cell.is-today {
@@ -219,7 +219,7 @@
   height: 1.1rem;
   padding: 0 0.25rem;
   border-radius: var(--radius-pill, 999rem);
-  background: var(--majalis-emerald-deep, var(--mj-brand-deep, #064e3b));
+  background: var(--majalis-emerald-deep, var(--mj-brand-deep, var(--sn-primary-strong)));
   color: var(--mj-white, var(--mj-white));
   font-size: 0.62rem;
   font-weight: 800;
@@ -261,7 +261,7 @@
 .cal-cell-more {
   font-size: 0.62rem;
   font-weight: 700;
-  color: var(--majalis-emerald-deep, var(--mj-brand-deep, #064e3b));
+  color: var(--majalis-emerald-deep, var(--mj-brand-deep, var(--sn-primary-strong)));
   padding-inline: 0.15rem;
 }
 
@@ -269,7 +269,7 @@
 .cal-week-head {
   width: 100%;
   border: 1px solid var(--mj-hairline, var(--msk-border));
-  background: var(--majalis-parchment-deep, #f5f5f0);
+  background: var(--majalis-parchment-deep, var(--sn-bg));
   border-radius: var(--ds-radius, 8px);
   padding: 0.25rem 0.1rem;
   font-weight: 700;
@@ -284,9 +284,9 @@
 }
 
 .cal-week-head.is-selected {
-  background: var(--majalis-emerald-deep, var(--mj-brand-deep, #064e3b));
+  background: var(--majalis-emerald-deep, var(--mj-brand-deep, var(--sn-primary-strong)));
   color: var(--majalis-parchment, var(--mj-white, var(--mj-white)));
-  border-color: var(--majalis-emerald-deep, var(--mj-brand-deep, #064e3b));
+  border-color: var(--majalis-emerald-deep, var(--mj-brand-deep, var(--sn-primary-strong)));
 }
 
 .cal-week-head.is-today {
@@ -453,11 +453,11 @@ html[data-theme="dark"] .cal-cell,
 html[data-theme="dark"] .cal-event-chip,
 html[data-theme="dark"] .cal-day-item {
   background: var(--mj-surface, #1a2420);
-  color: var(--mj-ink, #f5f5f0);
+  color: var(--mj-ink, var(--sn-text-on-primary));
   border-color: var(--border-subtle, #35443f);
 }
 
 html[data-theme="dark"] .cal-cell-event {
   background: color-mix(in srgb, var(--majalis-emerald, #059669) 22%, transparent);
-  color: var(--mj-ink, #f5f5f0);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }

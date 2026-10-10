@@ -4,7 +4,7 @@
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  background: #f9f7f1;
+  background: var(--sn-bg);
   direction: rtl;
 }
 .mosque-mode__silence-alert {

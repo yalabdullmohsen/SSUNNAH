@@ -11,7 +11,7 @@
 .rp-plan-card { padding: 1rem 1.1rem; }
 .rp-plan-card__head { display: flex; justify-content: space-between; align-items: center; gap: .5rem; margin-bottom: .6rem; }
 .rp-plan-card__title { font-size: var(--ds-text-base); font-weight: 700; margin: 0; }
-.rp-badge { font-size: .72rem; font-weight: 700; padding: .2rem .6rem; border-radius: var(--sf-radius-pill); white-space: nowrap; background: var(--bg-hover, #f0f0f0); color: var(--text-muted, var(--mj-muted)); }
+.rp-badge { font-size: .72rem; font-weight: 700; padding: .2rem .6rem; border-radius: var(--sf-radius-pill); white-space: nowrap; background: var(--bg-hover, var(--sn-bg)); color: var(--text-muted, var(--mj-muted)); }
 .rp-badge--ahead { background: rgba(23,61,53,.12); color: var(--mj-brand); }
 .rp-badge--behind { background: rgba(190,60,40,.12); color: var(--mj-danger); }
 .rp-badge--done { background: rgba(23,61,53,.18); color: var(--mj-brand); }
@@ -39,7 +39,7 @@
 .rp-text-input { padding: .55rem .7rem; border: 1px solid var(--border, var(--mj-hairline)); border-radius: .5rem; font-size: 1rem; font-weight: 400; }
 .rp-suggestions { position: absolute; top: 100%; inset-inline: 0; z-index: 5; background: var(--bg-card, var(--mj-white, var(--mj-white, var(--mj-white)))); border: 1px solid var(--border, var(--mj-hairline)); border-radius: .5rem; box-shadow: 0 4px 14px rgba(0,0,0,.1); list-style: none; margin: .25rem 0 0; padding: .25rem; max-height: 220px; overflow-y: auto; }
 .rp-suggestions li button { width: 100%; text-align: end; background: none; border: none; padding: .5rem .6rem; font-size: .85rem; font-weight: 400; cursor: pointer; border-radius: .4rem; }
-.rp-suggestions li button:hover { background: var(--bg-hover, #f3f0eb); }
+.rp-suggestions li button:hover { background: var(--bg-hover, var(--sn-bg)); }
 .rp-suggestions li button span { color: var(--text-muted, var(--mj-muted)); font-size: .78rem; }
 .rp-days-grid { display: flex; flex-wrap: wrap; gap: .4rem; }
 .rp-day-chip { padding: .4rem .8rem; border-radius: var(--sf-radius-pill); border: 1px solid var(--border, var(--mj-hairline)); background: none; font-size: .82rem; font-weight: 500; cursor: pointer; }

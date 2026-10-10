@@ -9,7 +9,7 @@
 .tl-crumb {
   font-size: 13px;
   margin-bottom: 12px;
-  color: var(--mj-muted, #5d726a);
+  color: var(--mj-muted, var(--sn-text-tertiary));
 }
 
 .tl-crumb a,
@@ -63,5 +63,5 @@
 
 .tl-card__meta {
   font-size: 12px;
-  color: var(--mj-muted, #5d726a);
+  color: var(--mj-muted, var(--sn-text-tertiary));
 }

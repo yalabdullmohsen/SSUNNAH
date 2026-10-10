@@ -53,9 +53,9 @@
   min-height: 40px;
   padding: 0.35rem 0.85rem;
   border-radius: var(--radius-pill, 999rem);
-  border: 1px solid var(--majalis-line, #e8e4dc);
-  background: var(--majalis-parchment, #f7f5f0);
-  color: var(--mj-brand-deep, #0f3d30);
+  border: 1px solid var(--majalis-line, var(--sn-separator));
+  background: var(--majalis-parchment, var(--sn-bg));
+  color: var(--mj-brand-deep, var(--sn-primary-strong));
   font-size: 0.82rem;
   font-weight: 700;
   text-decoration: none;
@@ -63,8 +63,8 @@
 }
 
 .qc-hub-nav__chip.is-active {
-  background: var(--mj-brand-deep, #135034);
-  border-color: var(--mj-brand-deep, #0e3d27);
+  background: var(--mj-brand-deep, var(--sn-primary));
+  border-color: var(--mj-brand-deep, var(--sn-primary-strong));
   color: var(--mj-white, var(--mj-white));
 }
 
@@ -79,7 +79,7 @@
   z-index: 60;
   margin-bottom: 1rem;
   padding: 0.65rem 0.75rem;
-  border: 1px solid var(--majalis-line, #e8e4dc);
+  border: 1px solid var(--majalis-line, var(--sn-separator));
   border-radius: var(--sf-radius-xs);
   background: color-mix(in srgb, var(--majalis-parchment, var(--mj-surface)) 94%, var(--mj-white, var(--mj-white, var(--mj-white))));
   backdrop-filter: blur(8px);
@@ -108,7 +108,7 @@
   margin: 0.35rem 0 0;
   font-size: 0.82rem;
   font-weight: 700;
-  color: var(--mj-brand-deep, #135034);
+  color: var(--mj-brand-deep, var(--sn-primary));
 }
 
 .qc-sheet-check {
@@ -152,7 +152,7 @@
 }
 
 .qc-card {
-  border: 1px solid var(--majalis-line, #e8e4dc);
+  border: 1px solid var(--majalis-line, var(--sn-separator));
   border-radius: var(--sf-radius-xs);
   padding: 0.85rem 0.95rem 0.95rem;
   background: var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))));
@@ -185,7 +185,7 @@
 
 .qc-card__badge--open {
   background: rgba(26, 110, 70, 0.12) !important;
-  color: #145c3a !important;
+  color: var(--sn-primary) !important;
 }
 
 .qc-card__facts {
@@ -273,13 +273,13 @@
 }
 
 .qc-card__btn--primary {
-  background: var(--mj-brand-deep, #0f3d30);
+  background: var(--mj-brand-deep, var(--sn-primary-strong));
   color: var(--mj-white, var(--mj-white));
 }
 
 .qc-card__btn--ghost {
   background: transparent;
-  border-color: var(--majalis-line, #e8e4dc);
+  border-color: var(--majalis-line, var(--sn-separator));
   color: var(--mj-brand-deep);
 }
 
@@ -293,7 +293,7 @@
 .qc-footnote {
   margin-top: 2rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--majalis-line, #e8e4dc);
+  border-top: 1px solid var(--majalis-line, var(--sn-separator));
   font-size: 0.82rem;
   line-height: 1.6;
   color: var(--mj-muted);
@@ -305,7 +305,7 @@
 
 html[data-theme="dark"] .qc-page,
 html.dark .qc-page {
-  color: var(--mj-ink, #f2f7f4);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }
 
 html[data-theme="dark"] .qc-toolbar,
@@ -323,8 +323,8 @@ html.dark .qc-hub-nav__chip {
 
 html[data-theme="dark"] .qc-hub-nav__chip.is-active,
 html.dark .qc-hub-nav__chip.is-active {
-  background: #135034;
-  border-color: #0e3d27;
+  background: var(--sn-primary);
+  border-color: var(--sn-primary-strong);
   color: var(--mj-white, var(--mj-white));
 }
 
@@ -336,10 +336,10 @@ html.dark .qc-card {
 
 html[data-theme="dark"] .qc-card__desc,
 html.dark .qc-card__desc {
-  color: color-mix(in srgb, var(--mj-ink, #f2f7f4) 82%, transparent);
+  color: color-mix(in srgb, var(--mj-ink, var(--sn-text-on-primary)) 82%, transparent);
 }
 
 html[data-theme="dark"] .qc-card__facts li,
 html.dark .qc-card__facts li {
-  color: color-mix(in srgb, var(--mj-ink, #f2f7f4) 75%, transparent);
+  color: color-mix(in srgb, var(--mj-ink, var(--sn-text-on-primary)) 75%, transparent);
 }

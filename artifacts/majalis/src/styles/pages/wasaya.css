@@ -129,7 +129,7 @@
 .wn-hadith--sm { font-size: .9rem; margin: .4rem 0 .5rem; }
 .wn-source { font-size: .8rem; color: var(--mj-accent); font-weight: 600; margin: 0 0 .6rem; }
 .wn-benefit {
-  background: var(--mj-accent-soft, #fef9ec); border: 1px solid var(--mj-accent-soft, #e8d676); border-radius: .5rem;
+  background: var(--mj-accent-soft, var(--sn-surface-2)); border: 1px solid var(--mj-accent-soft, #e8d676); border-radius: .5rem;
   padding: .65rem .9rem; font-size: .87rem; line-height: 1.65; color: var(--mj-warning);
 }
 .wn-benefit__label { font-weight: 700; margin-inline-start: .4rem; }
@@ -182,7 +182,7 @@
 }
 .wn-amal-text { font-size: .93rem; line-height: 1.7; color: var(--clr-text-1); margin: 0; }
 .wn-amal-cta {
-  background: var(--mj-accent-soft, #fef9ec); border: 1px solid var(--mj-accent-soft, #e8d676); border-radius: .75rem;
+  background: var(--mj-accent-soft, var(--sn-surface-2)); border: 1px solid var(--mj-accent-soft, #e8d676); border-radius: .75rem;
   padding: 1.25rem 1.5rem; text-align: center;
 }
 .wn-amal-cta__icon { font-size: var(--ds-text-2xl); margin-bottom: .5rem; }

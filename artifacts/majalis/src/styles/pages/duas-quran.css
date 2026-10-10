@@ -98,7 +98,7 @@
 
 /* آداب الدعاء */
 .dq-adab-box {
-  background: linear-gradient(135deg,#F8FAFF,var(--mj-brand-soft));
+  background: linear-gradient(135deg,var(--sn-surface),var(--mj-brand-soft));
   border: 1px solid var(--mj-brand-soft); border-radius: .9rem; padding: 1.1rem 1.2rem; margin-top: 2rem;
 }
 .dq-adab-box__title { font-size: var(--ds-text-base); font-weight: 700; color: var(--mj-ink); margin: 0 0 .75rem; }

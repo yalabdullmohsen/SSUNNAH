@@ -176,7 +176,7 @@
   margin: 0;
   font-size: 0.72rem;
   font-weight: 750;
-  color: var(--mj-muted, #5a7268);
+  color: var(--mj-muted, var(--sn-text-tertiary));
 }
 
 .mdb-meta__row dd {
@@ -327,13 +327,13 @@ html.dark .mdb-card__name,
 [data-theme="dark"] .mdb-card__name,
 html.dark .mdb-card__founder,
 [data-theme="dark"] .mdb-card__founder {
-  color: var(--mj-ink, #eef4f0);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }
 html.dark .mdb-block__title,
 [data-theme="dark"] .mdb-block__title,
 html.dark .mdb-related__title,
 [data-theme="dark"] .mdb-related__title {
-  color: color-mix(in srgb, var(--mj-brand, #5fbf98) 70%, #eef4f0);
+  color: color-mix(in srgb, var(--mj-brand, #5fbf98) 70%, var(--sn-text-on-primary));
   border-block-end-color: color-mix(in srgb, var(--mj-brand) 28%, transparent);
 }
 html.dark .mdb-meta,
@@ -357,7 +357,7 @@ html.dark .mdb-book__title,
 [data-theme="dark"] .mdb-book__title,
 html.dark .mdb-meta__row dd,
 [data-theme="dark"] .mdb-meta__row dd {
-  color: var(--mj-ink, #eef4f0);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }
 html.dark .mdb-meta__row dt,
 [data-theme="dark"] .mdb-meta__row dt,
@@ -368,7 +368,7 @@ html.dark .mdb-book__author,
 html.dark .mdb-related__link,
 [data-theme="dark"] .mdb-related__link {
   background: color-mix(in srgb, var(--mj-surface) 88%, var(--mj-brand) 8%);
-  color: var(--mj-ink, #eef4f0);
+  color: var(--mj-ink, var(--sn-text-on-primary));
   border-color: color-mix(in srgb, var(--mj-brand) 32%, transparent);
 }
 html.dark .mdb-notice,
@@ -378,7 +378,7 @@ html.dark .mdb-notice,
 }
 html.dark .mdb-notice p,
 [data-theme="dark"] .mdb-notice p {
-  color: var(--mj-ink, #eef4f0);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }
 
 .mdb-card--open {

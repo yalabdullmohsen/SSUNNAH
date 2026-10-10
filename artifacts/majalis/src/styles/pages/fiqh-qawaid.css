@@ -100,7 +100,7 @@
 .fq-examples { display: flex; flex-direction: column; gap: .5rem; }
 .fq-example {
   display: flex; align-items: flex-start; gap: .6rem;
-  background: #F8FFF8; border: 1px solid var(--mj-brand-soft); border-radius: .6rem;
+  background: var(--sn-primary-soft); border: 1px solid var(--mj-brand-soft); border-radius: .6rem;
   padding: .65rem .8rem; font-size: .85rem;
 }
 .fq-example__sit { flex: 1; color: var(--mj-ink-2); line-height: 1.5; }

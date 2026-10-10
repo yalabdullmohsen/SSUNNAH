@@ -41,7 +41,7 @@
    نص فاتح هنا = تباين ~1.2:1. يبقى الحبر الغامق في الوضعين. */
 html[data-theme="dark"] .notif-row__label,
 html.dark .notif-row__label {
-  color: var(--mj-ink, #f3f7f5) !important;
+  color: var(--mj-ink, var(--sn-text-on-primary)) !important;
 }
 
 /* التبديل */
@@ -262,7 +262,7 @@ html.dark .notif-row__label {
   transition: background 0.13s, color 0.13s !important;
 }
 .nh-action:hover { background: rgba(24,54,42,0.08) !important; color: var(--mj-brand-deep) !important; }
-.nh-action--del:hover { background: rgba(192,57,43,0.08) !important; color: var(--mj-danger, #C0392B) !important; border-color: rgba(192,57,43,0.2) !important; }
+.nh-action--del:hover { background: rgba(192,57,43,0.08) !important; color: var(--mj-danger, var(--sn-danger)) !important; border-color: rgba(192,57,43,0.2) !important; }
 
 .nh-empty {
   color: var(--mj-muted, #4A5568) !important;

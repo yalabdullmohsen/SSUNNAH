@@ -80,7 +80,7 @@
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--mj-brand-deep, #12362c);
-  background: var(--mj-brand-soft, #e8f5f0);
+  background: var(--mj-brand-soft, var(--sn-primary-soft));
   border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, transparent);
   border-radius: var(--radius-pill, 999rem);
   padding: 0.15rem 0.55rem;
@@ -97,7 +97,7 @@
   font-weight: 600;
   color: var(--text-secondary, var(--mj-ink-2, var(--mj-ink-2)));
   white-space: nowrap;
-  background: var(--color-surface-muted, #f2f4f3);
+  background: var(--color-surface-muted, var(--sn-bg));
   border-radius: var(--radius-pill, 999rem);
   padding: 0.28rem 0.7rem;
   flex-shrink: 0;
@@ -116,7 +116,7 @@
 
 .occasion-detail__summary {
   font-size: var(--type-card-body, 0.9375rem);
-  color: var(--text-primary, var(--mj-ink, #12201a));
+  color: var(--text-primary, var(--mj-ink, var(--sn-text-primary)));
   line-height: var(--lh-type-prose, 1.75);
   margin: 0;
 }
@@ -149,7 +149,7 @@
 
 .occasion-detail ul li {
   font-size: 0.9rem;
-  color: var(--text-primary, var(--mj-ink, #12201a));
+  color: var(--text-primary, var(--mj-ink, var(--sn-text-primary)));
   line-height: var(--lh-type-prose, 1.75);
 }
 
@@ -167,7 +167,7 @@ html[data-theme="dark"] .occasion-detail__summary,
 html.dark .occasion-detail__summary,
 html[data-theme="dark"] .occasion-detail ul li,
 html.dark .occasion-detail ul li {
-  color: var(--text-primary, #ecf2ef);
+  color: var(--text-primary, var(--sn-text-on-primary));
 }
 
 html[data-theme="dark"] .occasion-detail__date,

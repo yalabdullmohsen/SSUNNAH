@@ -59,7 +59,7 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.38rem 0.85rem;
-  background: var(--mj-brand-soft, #F4F4F1);
+  background: var(--mj-brand-soft, var(--sn-bg));
   border: 1px solid var(--mj-hairline);
   border-radius: var(--ds-radius-full);
   font-size: 0.8rem;
@@ -157,7 +157,7 @@
   background: transparent;
   border: 1px solid rgba(192,57,43,0.3);
   border-radius: var(--ds-radius-full);
-  color: var(--mj-danger, #C0392B);
+  color: var(--mj-danger, var(--sn-danger));
   font-size: var(--ds-text-xs);
   font-weight: 600;
   font-family: inherit;
@@ -223,7 +223,7 @@ a.search-suggestion-chip {
 }
 
 .search-suggestion-chip.is-active {
-  background: var(--mj-brand-deep, var(--majalis-emerald, #0f5c4c));
+  background: var(--mj-brand-deep, var(--majalis-emerald, var(--sn-primary)));
   color: var(--mj-white, var(--mj-white));
   border-color: transparent;
 }
@@ -333,7 +333,7 @@ a.search-suggestion-chip {
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--mj-ink-2);
-  background: var(--mj-brand-soft, #F4F4F1);
+  background: var(--mj-brand-soft, var(--sn-bg));
   border-radius: var(--ds-radius-full);
   padding: 0.1rem 0.5rem;
 }
@@ -437,7 +437,7 @@ a.search-suggestion-chip {
 .search-kind-badge--qa          { background: color-mix(in srgb, var(--mj-ink, var(--v2-color-ink)) 6%, var(--mj-surface, var(--mj-white, var(--mj-white)))); color: var(--mj-brand-deep); border-color: color-mix(in srgb, var(--mj-ink) 14%, transparent); }
 .search-kind-badge--fawaid      { background: color-mix(in srgb, var(--mj-brand) 10%, var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))))); color: var(--mj-brand); border-color: color-mix(in srgb, var(--mj-brand) 20%, transparent); }
 .search-kind-badge--adhkar      { background: var(--mj-brand-soft); color: var(--mj-brand); border-color: color-mix(in srgb, var(--mj-brand) 20%, transparent); }
-.search-kind-badge--library     { background: var(--badge-accent-bg, #fff8eb); color: var(--badge-accent-fg, #7a5a1e); border-color: color-mix(in srgb, var(--badge-accent-fg, #7a5a1e) 28%, transparent); }
+.search-kind-badge--library     { background: var(--badge-accent-bg, var(--sn-surface-2)); color: var(--badge-accent-fg, #7a5a1e); border-color: color-mix(in srgb, var(--badge-accent-fg, #7a5a1e) 28%, transparent); }
 .search-kind-badge--hadith      { background: color-mix(in srgb, var(--mj-danger, var(--mj-danger)) 10%, var(--mj-surface, var(--mj-white, var(--mj-white, var(--mj-white))))); color: var(--mj-danger, #BE123C); border-color: color-mix(in srgb, var(--mj-danger) 22%, transparent); }
 .search-kind-badge--quran       { background: var(--mj-brand-soft); color: var(--mj-brand); border-color: color-mix(in srgb, var(--mj-brand) 20%, transparent); }
 .search-kind-badge--story,
@@ -488,7 +488,7 @@ a.search-suggestion-chip {
   border-radius: 0.3rem;
   transition: color 0.15s;
 }
-.srch-history-clear:hover { color: var(--mj-danger, #C0392B); }
+.srch-history-clear:hover { color: var(--mj-danger, var(--sn-danger)); }
 .srch-history-chips {
   display: flex;
   flex-wrap: wrap;
@@ -622,7 +622,7 @@ html[data-theme="dark"] .srch-quick-card:hover {
 .srch-result-section__count {
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--mj-muted, #5a6b63);
+  color: var(--mj-muted, var(--sn-text-tertiary));
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, transparent);
   border-radius: var(--radius-pill, 999rem);
   padding: 0.1rem 0.45rem;
@@ -887,7 +887,7 @@ html.dark .srch-result-card__icon {
 .srch-result-card__chevron {
   flex-shrink: 0;
   align-self: center;
-  color: var(--mj-muted, #5a6b63);
+  color: var(--mj-muted, var(--sn-text-tertiary));
 }
 .srch-result-card__top {
   display: flex;
@@ -939,7 +939,7 @@ html.dark .srch-result-card__icon {
 
 html[data-theme="dark"] .search-home > .compact-section-header .compact-section-header__title,
 html.dark .search-home > .compact-section-header .compact-section-header__title {
-  color: var(--text-primary, #ecf2ef);
+  color: var(--text-primary, var(--sn-text-on-primary));
 }
 html[data-theme="dark"] .search-home > .compact-section-header .compact-section-header__desc,
 html.dark .search-home > .compact-section-header .compact-section-header__desc,
@@ -956,7 +956,7 @@ html.dark .srch-home-field,
 html[data-theme="dark"] .srch-scope-card,
 html.dark .srch-scope-card {
   background: color-mix(in srgb, var(--color-surface) 92%, var(--mj-brand-deep));
-  color: var(--text-primary, #ecf2ef);
+  color: var(--text-primary, var(--sn-text-on-primary));
   border-color: color-mix(in srgb, var(--mj-brand) 28%, var(--mj-ink-2));
   box-shadow: 0 1px 2px color-mix(in srgb, var(--mj-ink) 25%, transparent);
 }
@@ -978,11 +978,11 @@ html[data-theme="dark"] .srch-result-card__title,
 html.dark .srch-result-card__title,
 html[data-theme="dark"] .srch-scope-card__text strong,
 html.dark .srch-scope-card__text strong {
-  color: var(--text-primary, #ecf2ef);
+  color: var(--text-primary, var(--sn-text-on-primary));
 }
 html[data-theme="dark"] .search-no-results__msg,
 html.dark .search-no-results__msg {
-  color: var(--text-primary, #ecf2ef);
+  color: var(--text-primary, var(--sn-text-on-primary));
 }
 html[data-theme="dark"] .search-no-results__hint,
 html.dark .search-no-results__hint {
@@ -1117,9 +1117,9 @@ html.dark .search-no-results__hint {
   align-items: flex-start;
   margin: 0.35rem 0 0.55rem;
   padding: 0.65rem 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--mj-danger, #b42318) 28%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-danger, var(--sn-danger)) 28%, transparent);
   border-radius: 0.65rem;
-  background: color-mix(in srgb, var(--mj-danger, #b42318) 6%, transparent);
+  background: color-mix(in srgb, var(--mj-danger, var(--sn-danger)) 6%, transparent);
   color: var(--text-primary, var(--mj-ink));
 }
 .srch-error-inline__title {
@@ -1186,7 +1186,7 @@ html[data-theme="dark"] .srch-chip,
 html.dark .srch-chip {
   background: color-mix(in srgb, var(--color-surface) 92%, var(--mj-brand-deep));
   border-color: color-mix(in srgb, var(--mj-brand) 22%, transparent);
-  color: var(--text-primary, #ecf2ef);
+  color: var(--text-primary, var(--sn-text-on-primary));
 }
 html[data-theme="dark"] .srch-result-card__reason,
 html.dark .srch-result-card__reason,

@@ -25,7 +25,7 @@
 
 .inst-discover .inst-card__link--web {
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, var(--mj-white));
-  color: var(--mj-brand-deep, #0d4a38);
+  color: var(--mj-brand-deep, var(--sn-primary-strong));
 }
 
 .inst-discover .inst-card__link--map {
@@ -35,7 +35,7 @@
 
 .inst-disclaimer {
   font-size: 0.78rem;
-  color: var(--color-text-muted, var(--mj-ink-2, #4f5f58));
+  color: var(--color-text-muted, var(--mj-ink-2, var(--sn-text-secondary)));
   margin: 0.5rem 0 0;
   text-align: center;
 }
@@ -51,7 +51,7 @@ html.dark .inst-card,
 html[data-theme="dark"] .inst-card {
   background: var(--mj-surface, #1b2421);
   border-color: color-mix(in srgb, var(--mj-brand, #5fbf98) 28%, #2a3832);
-  color: var(--mj-ink, #f3f7f5);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }
 
 html.dark .inst-discover .inst-card__link--web,

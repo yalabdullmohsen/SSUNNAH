@@ -101,5 +101,5 @@ html.dark .support-page__card {
 
 html[data-theme="dark"] .support-page__faq .contact-faq__a,
 html.dark .support-page__faq .contact-faq__a {
-  color: color-mix(in srgb, var(--mj-ink, #f2f6f4) 72%, #9aada4);
+  color: color-mix(in srgb, var(--mj-ink, var(--sn-text-on-primary)) 72%, #9aada4);
 }

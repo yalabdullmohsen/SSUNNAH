@@ -2,7 +2,7 @@
    230 · TaharaPage · /tahara
    ══════════════════════════════════════════════════════════ */
 
-.th-page { min-height: 100svh; background: var(--mj-bg, #F9FAFB); padding-bottom: 4rem; }
+.th-page { min-height: 100svh; background: var(--mj-bg, var(--sn-surface)); padding-bottom: 4rem; }
 
 .th-hero {
   /* soft-card عبر modern-section-shell */
@@ -34,7 +34,7 @@
 .th-ayah--body .th-ayah__text { color: var(--color-brand-deep, var(--mj-brand-deep)); }
 .th-ayah--body .th-ayah__ref { color: var(--color-brand, var(--mj-brand)); }
 .th-ayah__text { font-size: 1.05rem; font-weight: 600; line-height: 2; /* soft ink */ margin: 0 0 .35rem; }
-.th-ayah__ref { font-size: .72rem; color: var(--mss-on-hero-muted, #3d4f47); font-style: normal; display: block; }
+.th-ayah__ref { font-size: .72rem; color: var(--mss-on-hero-muted, var(--sn-text-secondary)); font-style: normal; display: block; }
 
 .th-tabs {
   display: flex;
@@ -334,8 +334,8 @@ html.dark .th-page {
 }
 html[data-theme="dark"] .th-tab.th-tab--active[role="tab"][aria-selected="true"],
 html.dark .th-tab.th-tab--active[role="tab"][aria-selected="true"] {
-  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, #fffef9);
-  color: #123f2e;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 10%, var(--sn-bg));
+  color: var(--sn-primary-strong);
 }
 html[data-theme="dark"] .th-tab,
 html.dark .th-tab {

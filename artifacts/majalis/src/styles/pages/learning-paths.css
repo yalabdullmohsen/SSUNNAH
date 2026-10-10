@@ -79,7 +79,7 @@
 .lpp-cat-count {
   font-size: .78rem;
   color: var(--majalis-ink-soft);
-  background: var(--majalis-bg-subtle, #f9fafb);
+  background: var(--majalis-bg-subtle, var(--sn-surface));
   padding: .15rem .55rem;
   border-radius: var(--ds-radius-full);
 }

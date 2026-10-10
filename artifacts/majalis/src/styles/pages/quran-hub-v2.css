@@ -115,7 +115,7 @@ html[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .section-lobby__g
 html[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-card);
   min-height: 5.25rem;
   padding: var(--v2-space-4, 1rem);
@@ -125,7 +125,7 @@ html[data-v2-quran-hub="1"] .section-lobby[data-quran-hub="1"] .card__icon {
   width: var(--v2-icon-tile, 2.75rem);
   height: var(--v2-icon-tile, 2.75rem);
   border-radius: var(--v2-radius-icon, 16px);
-  background: var(--v2-color-emerald-soft, #e2efe8);
+  background: var(--v2-color-emerald-soft, var(--sn-primary-soft));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
 

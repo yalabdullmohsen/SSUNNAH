@@ -14,9 +14,9 @@
   font-size: calc(1rem * var(--knowledge-font-scale, 1));
   padding: 1rem 1.1rem;
   border-radius: var(--svl-radius-md, var(--radius-card, 1.5rem));
-  color: var(--svl-text-primary, var(--mj-ink, #12201a));
-  background: var(--svl-surface-primary, var(--mj-surface, #fffcf6));
-  border: 1px solid var(--svl-border-subtle, var(--mj-hairline, #d9d3c8));
+  color: var(--svl-text-primary, var(--mj-ink, var(--sn-text-primary)));
+  background: var(--svl-surface-primary, var(--mj-surface, var(--sn-bg)));
+  border: 1px solid var(--svl-border-subtle, var(--mj-hairline, var(--sn-separator)));
   box-shadow: var(--svl-shadow-card, none);
 }
 
@@ -32,7 +32,7 @@
 
 .knowledge-article h2,
 .knowledge-article h3 {
-  color: var(--svl-text-primary, var(--mj-ink, #12201a));
+  color: var(--svl-text-primary, var(--mj-ink, var(--sn-text-primary)));
   margin-top: 1rem;
 }
 
@@ -60,9 +60,9 @@
   padding: 0.75rem 1rem;
   border-radius: var(--svl-radius-sm, var(--radius-card, 1rem));
   text-decoration: none;
-  color: var(--svl-text-primary, var(--mj-ink, #12201a));
-  background: var(--svl-surface-primary, var(--mj-surface, #fffcf6));
-  border: 1px solid var(--svl-border-subtle, var(--mj-hairline, #d9d3c8));
+  color: var(--svl-text-primary, var(--mj-ink, var(--sn-text-primary)));
+  background: var(--svl-surface-primary, var(--mj-surface, var(--sn-bg)));
+  border: 1px solid var(--svl-border-subtle, var(--mj-hairline, var(--sn-separator)));
 }
 
 .knowledge-badge {

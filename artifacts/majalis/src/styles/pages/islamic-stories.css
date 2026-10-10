@@ -2,7 +2,7 @@
 
 .isp-page,
 .topic-page--islamic-stories .topic-page__body {
-  background: var(--color-bg, var(--surface-app, var(--mj-bg, #f7f3eb)));
+  background: var(--color-bg, var(--surface-app, var(--mj-bg, var(--sn-surface-2))));
 }
 
 .isp-page {
@@ -126,7 +126,7 @@
 html.dark .isp-chip.is-active,
 [data-theme="dark"] .isp-chip.is-active {
   background: var(--mj-brand, #5fbf98);
-  color: var(--mj-on-brand, #06231a);
+  color: var(--mj-on-brand, var(--sn-text-primary));
   border-color: var(--mj-brand, #5fbf98);
 }
 
@@ -343,7 +343,7 @@ html.dark .isp-chip.is-active,
 }
 
 .isp-detail__back:hover {
-  background: var(--mj-brand-soft, #F4F4F1);
+  background: var(--mj-brand-soft, var(--sn-bg));
   border-color: var(--mj-brand-deep);
   color: var(--mj-brand-deep);
 }
@@ -392,7 +392,7 @@ html.dark .isp-chip.is-active,
 
 .isp-detail__section--lessons  { background: rgba(21,128,61,0.05); border-color: rgba(21,128,61,0.15); }
 .isp-detail__section--figures  { background: color-mix(in srgb, var(--mj-brand) 6%, var(--ss-card-bg)); border-color: color-mix(in srgb, var(--mj-brand) 18%, transparent); }
-.isp-detail__section--sources  { background: #f0faf5; border-color: rgba(31,77,58,0.18); }
+.isp-detail__section--sources  { background: var(--sn-primary-soft); border-color: rgba(31,77,58,0.18); }
 
 .isp-detail__section-title {
   font-size: 0.9rem !important;

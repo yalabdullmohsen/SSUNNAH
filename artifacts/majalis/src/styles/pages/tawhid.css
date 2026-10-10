@@ -1,6 +1,6 @@
 /* العقيدة والتوحيد — داخل SectionTemplatePage (بلا هيرو محلي مكرر) */
 .topic-page--tawhid .topic-page__body {
-  background: var(--color-bg, var(--surface-app, var(--mj-bg, #f7f3eb)));
+  background: var(--color-bg, var(--surface-app, var(--mj-bg, var(--sn-surface-2))));
 }
 
 .tawhid-hub {
@@ -74,7 +74,7 @@
 }
 .twh-hub-hero__sub {
   font-size: clamp(0.875rem, 3vw, 1rem);
-  color: var(--topic-on-hero-muted, var(--on-dark-secondary, #E8EEEC));
+  color: var(--topic-on-hero-muted, var(--on-dark-secondary, var(--sn-text-on-primary)));
   margin: 0 0 1rem;
   line-height: 1.9;
   letter-spacing: 0;
@@ -139,8 +139,8 @@ html[data-v2-app="1"] .topic-page--tawhid .hub-card.soft-card--on-light,
 html[data-v2-app="1"] .topic-page--tawhid .hub-card,
 html[data-v2-app="1"] .topic-page--tawhid .twh-hub-card,
 html[data-v2-app="1"] .topic-page--tawhid .tawheed-type-card {
-  background: var(--ss-card-bg, var(--mj-surface, #fffcf8)) !important;
-  background-color: var(--ss-card-bg, var(--mj-surface, #fffcf8)) !important;
+  background: var(--ss-card-bg, var(--mj-surface, var(--sn-bg))) !important;
+  background-color: var(--ss-card-bg, var(--mj-surface, var(--sn-bg))) !important;
   background-image: none !important;
   color: var(--color-text, var(--mj-ink, var(--v2-color-ink))) !important;
   border-color: color-mix(in srgb, var(--mj-brand) 18%, var(--ss-border, var(--mj-hairline))) !important;
@@ -175,7 +175,7 @@ html[data-v2-app="1"][data-theme="dark"] .topic-page--tawhid .tawheed-type-card_
 }
 html[data-v2-app="1"] .topic-page--tawhid .hub-card .hub-card__go,
 html[data-v2-app="1"] .topic-page--tawhid .kx-library-card .kx-library-card__action {
-  background: var(--mj-brand-soft, #e2efe8) !important;
+  background: var(--mj-brand-soft, var(--sn-primary-soft)) !important;
   color: var(--mj-brand-deep, var(--mj-brand-deep)) !important;
   border-radius: var(--radius-pill, 999rem) !important;
   opacity: 1 !important;
@@ -526,7 +526,7 @@ html[data-theme="dark"] .twh-book-level--mid { color: var(--mj-brand, #7ed4b5) !
   border-color: var(--border-elevated, #3a4a44);
 }
 :is(html[data-theme="dark"], html.dark) .twh-hub-card__title {
-  color: var(--text-primary, #f4f7f5);
+  color: var(--text-primary, var(--sn-text-on-primary));
 }
 :is(html[data-theme="dark"], html.dark) .twh-hub-card__desc {
   color: var(--text-secondary, #d5ded9);

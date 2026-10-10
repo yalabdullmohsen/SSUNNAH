@@ -135,7 +135,7 @@
 
 /* ── Progress bar ─────────────────────────────────────────────────────── */
 .myl2-bar {
-  height: 5px; background: var(--mj-hairline, var(--mj-hairline, #e5ede9));
+  height: 5px; background: var(--mj-hairline, var(--mj-hairline, var(--sn-primary-soft)));
   border-radius: var(--ds-radius-full); overflow: hidden;
   margin: 0.28rem 0;
 }
@@ -157,7 +157,7 @@
   text-decoration: none;
   transition: background .14s;
 }
-.myl2-resume-item:hover { background: var(--mj-brand-soft, var(--mj-brand-soft, #eef7f2)); }
+.myl2-resume-item:hover { background: var(--mj-brand-soft, var(--mj-brand-soft, var(--sn-primary-soft))); }
 
 .myl2-resume-item__icon {
   width: 36px; height: 36px;
@@ -186,8 +186,8 @@
 }
 
 .myl2-stat-card {
-  background: linear-gradient(135deg,#f0f8f4,var(--mj-brand-soft));
-  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, var(--mj-hairline, #d9d3c8));
+  background: linear-gradient(135deg,var(--sn-primary-soft),var(--mj-brand-soft));
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, var(--mj-hairline, var(--sn-separator)));
   border-radius: var(--ds-radius-lg);
   padding: 0.8rem 0.55rem;
   display: flex; flex-direction: column; align-items: center;
@@ -230,7 +230,7 @@
 .myl2-cert-item {
   display: flex; align-items: center; gap: 0.8rem;
   padding: var(--ds-space-3);
-  background: linear-gradient(135deg,#fefaf0,var(--mj-warning-soft, #fef3c7));
+  background: linear-gradient(135deg,var(--sn-bg),var(--mj-warning-soft, #fef3c7));
   border: 1px solid var(--mj-accent-soft);
   border-radius: var(--ds-radius-lg);
 }
@@ -253,8 +253,8 @@
 .myl2-ach-badge {
   display: inline-flex; align-items: center; gap: 0.3rem;
   padding: 0.32rem 0.75rem;
-  background: linear-gradient(135deg,#edf6f1,var(--mj-brand-soft));
-  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 28%, var(--mj-hairline, #d9d3c8));
+  background: linear-gradient(135deg,var(--sn-primary-soft),var(--mj-brand-soft));
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 28%, var(--mj-hairline, var(--sn-separator)));
   border-radius: var(--ds-radius-full);
   font-size: 0.76rem; font-weight: 700; color: var(--mj-brand-deep);
 }
@@ -302,10 +302,10 @@
   font-size: 0.8rem; font-weight: 700;
   text-decoration: none;
   background: var(--mj-brand-soft); color: var(--mj-brand-deep);
-  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, var(--mj-hairline, #d9d3c8));
+  border: 1px solid color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 22%, var(--mj-hairline, var(--sn-separator)));
   transition: background .14s;
 }
-.myl2-btn:hover { background: var(--mj-brand-soft, var(--mj-brand-soft, #e3efe8)); }
+.myl2-btn:hover { background: var(--mj-brand-soft, var(--mj-brand-soft, var(--sn-primary-soft))); }
 
 .myl2-btn--primary {
   background: var(--mj-brand); color: var(--mj-bg); border-color: var(--mj-brand);
@@ -333,7 +333,7 @@
 .myl2-skel {
   flex: 1; height: 68px;
   border-radius: var(--ds-radius-lg);
-  background: linear-gradient(90deg,var(--mj-surface-2, #e8ede9) 25%,var(--mj-brand-soft, #f2f7f3) 50%,var(--mj-surface-2, #e8ede9) 75%);
+  background: linear-gradient(90deg,var(--mj-surface-2, var(--sn-primary-soft)) 25%,var(--mj-brand-soft, var(--sn-bg)) 50%,var(--mj-surface-2, #e8ede9) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.4s infinite;
 }

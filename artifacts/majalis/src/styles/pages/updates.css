@@ -50,7 +50,7 @@
 }
 .tip-section-icon { font-size: 1.3rem; }
 .tip-section-title { font-size: 1.1rem; font-weight: 700; margin: 0; flex: 1; }
-.tip-section-count { font-size: .78rem; color: var(--majalis-ink-soft); background: var(--majalis-bg-subtle, #f9fafb); padding: .2rem .6rem; border-radius: var(--ds-radius-full); }
+.tip-section-count { font-size: .78rem; color: var(--majalis-ink-soft); background: var(--majalis-bg-subtle, var(--sn-surface)); padding: .2rem .6rem; border-radius: var(--ds-radius-full); }
 
 .tip-grid {
   display: grid;

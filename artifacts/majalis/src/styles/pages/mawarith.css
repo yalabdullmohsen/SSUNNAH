@@ -524,7 +524,7 @@
   background: rgba(192,57,43,0.08);
   border: 1px solid rgba(192,57,43,0.25);
   border-radius: var(--ds-radius, 0.5rem);
-  color: #A9302A;
+  color: var(--sn-danger);
   font-size: 0.85rem;
   margin-top: 0.75rem;
 }

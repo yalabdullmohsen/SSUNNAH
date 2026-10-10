@@ -97,7 +97,7 @@
   font-size: 0.78rem;
   font-weight: 600;
   line-height: 1.4;
-  color: var(--text-secondary, var(--mj-ink-2, #3d4f47));
+  color: var(--text-secondary, var(--mj-ink-2, var(--sn-text-secondary)));
   background: transparent;
   border: none;
   white-space: normal;
@@ -325,7 +325,7 @@ html.dark .quran-open-mushaf__icon {
 }
 .quran-hub-stat__lbl {
   font-size: 0.78rem;
-  color: var(--on-dark-secondary, #E8EEEC);
+  color: var(--on-dark-secondary, var(--sn-text-on-primary));
   opacity: 1;
   font-weight: 500;
 }

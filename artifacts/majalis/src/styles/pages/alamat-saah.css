@@ -146,7 +146,7 @@
 
 /* Note box */
 .as-note {
-  background: var(--mj-accent-soft, #fef9ec); border: 1px solid var(--mj-accent-soft, #e8d676); border-radius: .6rem;
+  background: var(--mj-accent-soft, var(--sn-surface-2)); border: 1px solid var(--mj-accent-soft, #e8d676); border-radius: .6rem;
   padding: .9rem 1.1rem; font-size: .88rem; line-height: 1.7; color: var(--mj-accent);
 }
 .as-note strong { color: var(--mj-warning); }

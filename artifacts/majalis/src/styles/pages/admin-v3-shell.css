@@ -332,7 +332,7 @@ html.dark .av3-root {
 }
 .av3-state--error {
   border-style: solid;
-  border-color: color-mix(in srgb, #b42318 35%, var(--av3-line));
+  border-color: color-mix(in srgb, var(--sn-danger) 35%, var(--av3-line));
 }
 
 .av3-bottom {
@@ -597,7 +597,7 @@ html.dark .av3-root {
   font: inherit;
 }
 .av3-field { display: flex; flex-direction: column; gap: 0.25rem; flex: 1 1 10rem; }
-.av3-field__error { color: #b42318; font-size: 0.85rem; margin: 0; }
+.av3-field__error { color: var(--sn-danger); font-size: 0.85rem; margin: 0; }
 .av3-table-wrap {
   overflow-x: auto;
   border: 1px solid var(--av3-line);
@@ -621,15 +621,15 @@ html.dark .av3-root {
   font-size: 0.75rem;
   background: color-mix(in srgb, var(--av3-muted) 16%, transparent);
 }
-.av3-status--ok { background: color-mix(in srgb, #1f6b4a 18%, transparent); color: #145338; }
+.av3-status--ok { background: color-mix(in srgb, #1f6b4a 18%, transparent); color: var(--sn-primary); }
 .av3-status--warn { background: color-mix(in srgb, #b54708 16%, transparent); color: #8a3b06; }
-.av3-status--danger { background: color-mix(in srgb, #b42318 16%, transparent); color: #8a1c14; }
+.av3-status--danger { background: color-mix(in srgb, var(--sn-danger) 16%, transparent); color: #8a1c14; }
 .av3-btn--danger {
   background: transparent;
-  border: 1px solid color-mix(in srgb, #b42318 55%, transparent);
-  color: #b42318;
+  border: 1px solid color-mix(in srgb, var(--sn-danger) 55%, transparent);
+  color: var(--sn-danger);
 }
-.av3-btn--danger:hover { background: color-mix(in srgb, #b42318 10%, transparent); }
+.av3-btn--danger:hover { background: color-mix(in srgb, var(--sn-danger) 10%, transparent); }
 .av3-row-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .av3-form__actions,
 .av3-dialog__actions {

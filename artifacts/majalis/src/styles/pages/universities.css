@@ -1,7 +1,7 @@
 /* ══════════════════════════════════════════════
    UP. UniversitiesPage
    ══════════════════════════════════════════════ */
-.up-root { min-height: 100svh; background: var(--mj-bg, var(--majalis-parchment, #f7f3ea)); padding-bottom: calc(var(--bottom-nav-height, 64px) + var(--inset-bottom) + 1.5rem); direction: rtl; }
+.up-root { min-height: 100svh; background: var(--mj-bg, var(--majalis-parchment, var(--sn-surface-2))); padding-bottom: calc(var(--bottom-nav-height, 64px) + var(--inset-bottom) + 1.5rem); direction: rtl; }
 .up-alert {
   background: var(--majalis-emerald-muted, rgba(31,77,58,.1));
   border: 1px solid var(--majalis-emerald);
@@ -14,21 +14,21 @@
 .up-country-chips { flex: 1; min-width: 0; overflow-x: auto; flex-wrap: nowrap; padding-bottom: .2rem; }
 .up-sheet-filters { display: flex; flex-direction: column; gap: .9rem; padding: 0.25rem 0 1rem; }
 
-.up-filter-label { font-size: .75rem; font-weight: 500; color: var(--color-text-muted, var(--majalis-ink-soft, #4f5f58)); }
+.up-filter-label { font-size: .75rem; font-weight: 500; color: var(--color-text-muted, var(--majalis-ink-soft, var(--sn-text-secondary))); }
 .up-filter-select {
   padding: .5rem .75rem; font-size: .875rem;
   border-radius: .75rem; border: 1px solid var(--majalis-line);
-  background: var(--mj-bg, var(--majalis-parchment, #f7f3ea)); color: var(--color-text, var(--majalis-ink, var(--mj-ink)));
+  background: var(--mj-bg, var(--majalis-parchment, var(--sn-surface-2))); color: var(--color-text, var(--majalis-ink, var(--mj-ink)));
   outline: none; width: 100%;
 }
 .up-filter-select:focus { box-shadow: 0 0 0 2px var(--majalis-emerald); }
-.up-filter-opt-label { font-size: .875rem; color: var(--color-text-muted, var(--majalis-ink-soft, #4f5f58)); }
-.up-count-text { font-size: .875rem; color: var(--color-text-muted, var(--majalis-ink-soft, #4f5f58)); }
+.up-filter-opt-label { font-size: .875rem; color: var(--color-text-muted, var(--majalis-ink-soft, var(--sn-text-secondary))); }
+.up-count-text { font-size: .875rem; color: var(--color-text-muted, var(--majalis-ink-soft, var(--sn-text-secondary))); }
 .up-clear-btn { font-size: .875rem; color: var(--majalis-emerald); background: none; border: none; cursor: pointer; }
 .up-clear-btn:hover { text-decoration: underline; }
-.up-empty-state { text-align: center; padding: 2.5rem 0; color: var(--color-text-muted, var(--majalis-ink-soft, #4f5f58)); opacity: .6; }
+.up-empty-state { text-align: center; padding: 2.5rem 0; color: var(--color-text-muted, var(--majalis-ink-soft, var(--sn-text-secondary))); opacity: .6; }
 .up-empty-state--py12 { padding-top: 3rem; padding-bottom: 3rem; }
-.up-code { background: var(--majalis-parchment-deep, var(--mj-bg, #f0ece4)); padding: .125rem .25rem; border-radius: .25rem; }
+.up-code { background: var(--majalis-parchment-deep, var(--mj-bg, var(--sn-surface-2))); padding: .125rem .25rem; border-radius: .25rem; }
 .up-skeleton {
   background: var(--ss-card-bg, var(--majalis-panel, var(--mj-surface)));
   border-radius: var(--ds-radius-xl);
@@ -43,7 +43,7 @@
 html.dark .up-root,
 html[data-theme="dark"] .up-root {
   background: var(--mj-bg, #121816);
-  color: var(--mj-ink, #f3f7f5);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }
 html.dark .up-skeleton,
 html[data-theme="dark"] .up-skeleton {
@@ -60,5 +60,5 @@ html[data-theme="dark"] .up-skeleton {
   margin: 0.5rem 0 0;
   font-size: 0.85rem;
   line-height: 1.6;
-  color: var(--mj-ink-2, #4f5f58);
+  color: var(--mj-ink-2, var(--sn-text-secondary));
 }

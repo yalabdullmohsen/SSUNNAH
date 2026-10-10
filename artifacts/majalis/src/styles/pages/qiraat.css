@@ -9,7 +9,7 @@
 .qr-crumb {
   font-size: 13px;
   margin-bottom: 12px;
-  color: var(--mj-muted, #5d726a);
+  color: var(--mj-muted, var(--sn-text-tertiary));
 }
 
 .qr-crumb a {
@@ -51,7 +51,7 @@
 
 .qr-source {
   font-size: 13px;
-  color: var(--mj-muted, #5d726a);
+  color: var(--mj-muted, var(--sn-text-tertiary));
 }
 
 .qr-qari-grid {
@@ -81,7 +81,7 @@
 .qr-qari-card__nisba,
 .qr-qari-card__meta {
   font-size: 13px;
-  color: var(--mj-muted, #5d726a);
+  color: var(--mj-muted, var(--sn-text-tertiary));
   margin: 0 0 6px;
 }
 

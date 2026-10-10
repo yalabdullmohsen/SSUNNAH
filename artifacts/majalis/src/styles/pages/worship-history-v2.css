@@ -23,7 +23,7 @@ html[data-v2-worship="1"] .topic-page__hero.safe-hero {
   margin: 0.35rem auto 0.75rem;
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background-color: var(--v2-color-ivory-surface, #fffcf8);
+  background-color: var(--v2-color-ivory-surface, var(--sn-bg));
   background-image: none;
   color: var(--v2-color-ink, var(--v2-color-ink));
   box-shadow: var(--v2-shadow-soft);
@@ -36,12 +36,12 @@ html[data-v2-worship="1"] .topic-page__hero .topic-page__eyebrow {
 }
 
 html[data-v2-worship="1"] .topic-page__hero .topic-page__sub {
-  color: var(--v2-color-ink-muted, #5e6e67);
+  color: var(--v2-color-ink-muted, var(--sn-text-tertiary));
 }
 
 html[data-v2-worship="1"] .topic-page__eyebrow,
 html[data-v2-worship="1"] .safe-hero__badge {
-  background: var(--v2-color-emerald-soft, #e2efe8);
+  background: var(--v2-color-emerald-soft, var(--sn-primary-soft));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   border-radius: var(--v2-radius-pill, 999px);
 }
@@ -70,7 +70,7 @@ html[data-v2-worship="1"] .salah-card,
 html[data-v2-worship="1"] .soft-card {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-soft);
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
@@ -88,7 +88,7 @@ html[data-v2-worship="1"] .adhkar-focus-btn,
 html[data-v2-worship="1"] .prayer-quick-action {
   border-radius: var(--v2-radius-pill, 999px);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-emerald-soft, #e2efe8);
+  background: var(--v2-color-emerald-soft, var(--sn-primary-soft));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   font-weight: 700;
   min-height: 44px;
@@ -111,7 +111,7 @@ html[data-v2-worship="1"] .adhkar-tapper {
 html[data-v2-worship="1"] .adhkar-category-desc,
 html[data-v2-worship="1"] .adhkar-focus-counter,
 html[data-v2-worship="1"] .adhkar-tapper__hint {
-  color: var(--v2-color-ink-muted, #5e6e67);
+  color: var(--v2-color-ink-muted, var(--sn-text-tertiary));
 }
 
 html[data-v2-worship="1"] .adhkar-ring-fill {
@@ -131,7 +131,7 @@ html[data-v2-glossary="1"] .topic-page__hero.on-dark {
   margin: 0.35rem auto 0.75rem;
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background-color: var(--v2-color-ivory-surface, #fffcf8);
+  background-color: var(--v2-color-ivory-surface, var(--sn-bg));
   background-image: none;
   color: var(--v2-color-ink, var(--v2-color-ink));
   box-shadow: var(--v2-shadow-soft);
@@ -143,7 +143,7 @@ html[data-v2-glossary="1"] .topic-page__hero .topic-page__title {
 }
 
 html[data-v2-glossary="1"] .topic-page__hero .topic-page__sub {
-  color: var(--v2-color-ink-muted, #5e6e67);
+  color: var(--v2-color-ink-muted, var(--sn-text-tertiary));
 }
 
 html[data-v2-glossary="1"] .gl-term,
@@ -151,14 +151,14 @@ html[data-v2-glossary="1"] .gl-term.mj-card,
 html[data-v2-glossary="1"] .gl-term.soft-card {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-soft);
 }
 
 html[data-v2-glossary="1"] .gl-cat {
   border-radius: var(--v2-radius-pill, 999px);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   min-height: 44px;
 }
@@ -178,7 +178,7 @@ html[data-v2-glossary="1"] .gl-hero__btn {
 }
 
 html[data-v2-glossary="1"] .gl-hero__btn--ghost {
-  background: var(--v2-color-emerald-soft, #e2efe8);
+  background: var(--v2-color-emerald-soft, var(--sn-primary-soft));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   border: 1px solid var(--v2-hairline);
 }
@@ -191,7 +191,7 @@ html[data-v2-glossary="1"] .gl-term__arabic {
 html[data-v2-glossary="1"] .gl-term__def-preview,
 html[data-v2-glossary="1"] .gl-empty,
 html[data-v2-glossary="1"] .gl-results-count {
-  color: var(--v2-color-ink-muted, #5e6e67);
+  color: var(--v2-color-ink-muted, var(--sn-text-tertiary));
 }
 
 /* ═══════════════ History Timeline ═══════════════ */
@@ -207,7 +207,7 @@ html[data-v2-history="1"] .topic-page__hero.on-dark {
   margin: 0.35rem auto 0.75rem;
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background-color: var(--v2-color-ivory-surface, #fffcf8);
+  background-color: var(--v2-color-ivory-surface, var(--sn-bg));
   background-image: none;
   color: var(--v2-color-ink, var(--v2-color-ink));
   box-shadow: var(--v2-shadow-soft);
@@ -219,7 +219,7 @@ html[data-v2-history="1"] .topic-page__hero .topic-page__title {
 }
 
 html[data-v2-history="1"] .topic-page__hero .topic-page__sub {
-  color: var(--v2-color-ink-muted, #5e6e67);
+  color: var(--v2-color-ink-muted, var(--sn-text-tertiary));
 }
 
 html[data-v2-history="1"] .tarikh-card,
@@ -227,7 +227,7 @@ html[data-v2-history="1"] .tarikh-era,
 html[data-v2-history="1"] .soft-card {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-soft);
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
@@ -242,7 +242,7 @@ html[data-v2-history="1"] .soft-card::before {
 html[data-v2-history="1"] .tarikh-rail__chip {
   border-radius: var(--v2-radius-pill, 999px);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
 
@@ -257,7 +257,7 @@ html[data-v2-history="1"] .tarikh-card__n {
   width: var(--v2-icon-tile, 2.75rem);
   height: var(--v2-icon-tile, 2.75rem);
   border-radius: var(--v2-radius-icon, 16px);
-  background: var(--v2-color-emerald-soft, #e2efe8);
+  background: var(--v2-color-emerald-soft, var(--sn-primary-soft));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   display: inline-flex;
   align-items: center;
@@ -284,7 +284,7 @@ html[data-v2-history="1"] .tarikh-era__title {
 html[data-v2-history="1"] .tarikh-card__summary,
 html[data-v2-history="1"] .tarikh-era__blurb,
 html[data-v2-history="1"] .tarikh-card__meta {
-  color: var(--v2-color-ink-muted, #5e6e67);
+  color: var(--v2-color-ink-muted, var(--sn-text-tertiary));
 }
 
 /* ═══════════════ Dark / Luxury Night ═══════════════ */

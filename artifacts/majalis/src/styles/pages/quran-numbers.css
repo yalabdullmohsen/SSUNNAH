@@ -44,7 +44,7 @@
 .quran-numbers-page__method-link {
   margin: 0 16px 16px;
   font-size: 13px;
-  color: var(--mj-muted, #5d726a);
+  color: var(--mj-muted, var(--sn-text-tertiary));
 }
 
 .quran-numbers-toolbar {
@@ -84,7 +84,7 @@
   margin: 0;
   font-size: 13px;
   line-height: 1.55;
-  color: var(--mj-muted, #5d726a);
+  color: var(--mj-muted, var(--sn-text-tertiary));
 }
 
 .quran-numbers-tabs button,
@@ -168,7 +168,7 @@ button.quran-stat-card,
 .quran-stat-card__note {
   font-size: 12px;
   line-height: 1.4;
-  color: var(--mj-muted, #5d726a);
+  color: var(--mj-muted, var(--sn-text-tertiary));
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -179,7 +179,7 @@ button.quran-stat-card,
   margin-block-start: auto;
   font-size: 11px;
   line-height: 1.35;
-  color: var(--mj-muted, #5d726a);
+  color: var(--mj-muted, var(--sn-text-tertiary));
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -223,7 +223,7 @@ button.quran-stat-card,
 
 .quran-stat-sheet__src {
   font-size: 12px;
-  color: var(--mj-muted, #5d726a);
+  color: var(--mj-muted, var(--sn-text-tertiary));
 }
 
 .quran-stat-sheet__actions {

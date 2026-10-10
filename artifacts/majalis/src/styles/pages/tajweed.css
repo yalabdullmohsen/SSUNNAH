@@ -11,7 +11,7 @@
 .tj-crumb {
   font-size: 13px;
   margin-bottom: 12px;
-  color: var(--mj-muted, #5d726a);
+  color: var(--mj-muted, var(--sn-text-tertiary));
 }
 
 .tj-crumb a {
@@ -46,7 +46,7 @@
 
 .tj-source {
   font-size: 13px;
-  color: var(--mj-muted, #5d726a);
+  color: var(--mj-muted, var(--sn-text-tertiary));
   margin-top: 12px;
 }
 
@@ -99,7 +99,7 @@
 
 .tj-chapter-card__body span {
   font-size: 13px;
-  color: var(--mj-muted, #5d726a);
+  color: var(--mj-muted, var(--sn-text-tertiary));
   line-height: 1.45;
 }
 
@@ -133,7 +133,7 @@
 
 .tj-examples__note {
   font-size: 13px;
-  color: var(--mj-muted, #5d726a);
+  color: var(--mj-muted, var(--sn-text-tertiary));
 }
 
 .tj-examples a,

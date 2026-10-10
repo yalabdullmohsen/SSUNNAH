@@ -21,7 +21,7 @@
   border-bottom: 1px solid transparent;
   transition: background 0.15s;
 }
-.ps-card.approved .ps-card-head { background: var(--mj-success-soft, #f0fdf4); }
+.ps-card.approved .ps-card-head { background: var(--mj-success-soft, var(--sn-primary-soft)); }
 .ps-card.editing .ps-card-head { background: var(--mj-info-soft); cursor: default; }
 .ps-card-head:hover { background: var(--mj-surface-2); }
 .ps-card.approved .ps-card-head:hover { background: var(--mj-success-soft); }

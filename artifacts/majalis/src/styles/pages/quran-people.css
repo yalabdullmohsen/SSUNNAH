@@ -299,7 +299,7 @@ html.dark .qp-person-card__cta {
   font-size: 1.05rem;
   font-weight: 800;
   line-height: 1.35;
-  color: var(--qp-brand-deep, #12362a);
+  color: var(--qp-brand-deep, var(--sn-primary-strong));
 }
 
 .qp-person-detail__prose {
@@ -341,7 +341,7 @@ html.dark .qp-person-card__cta {
 }
 
 .qp-person-detail__links a {
-  color: var(--qp-brand-deep, #12362a);
+  color: var(--qp-brand-deep, var(--sn-primary-strong));
   font-weight: 600;
   text-decoration: none;
   border-bottom: 1px solid color-mix(in srgb, var(--qp-brand) 30%, transparent);

@@ -28,14 +28,14 @@ html[data-v2-profile="1"] .kp-page__lead,
 html[data-v2-profile="1"] .kp-empty,
 html[data-v2-profile="1"] .kp-note,
 html[data-v2-profile="1"] .kp-meta {
-  color: var(--v2-color-ink-muted, #5e6e67);
+  color: var(--v2-color-ink-muted, var(--sn-text-tertiary));
 }
 
 /* بطاقة الحساب — عاجية فاخرة */
 html[data-v2-profile="1"] .settings-account-card {
   border-radius: var(--v2-radius-card, 1.5rem) !important;
   border: 1px solid var(--v2-hairline) !important;
-  background: var(--v2-color-ivory-surface, #fffcf8) !important;
+  background: var(--v2-color-ivory-surface, var(--sn-bg)) !important;
   box-shadow: var(--v2-shadow-soft) !important;
   padding: var(--v2-space-5, 1.25rem) !important;
   gap: var(--v2-space-4, 1rem) !important;
@@ -60,7 +60,7 @@ html[data-v2-profile="1"] .settings-search-field,
 html[data-v2-profile="1"] .settings-search-field input {
   border-radius: var(--v2-radius-lg, 22px);
   border-color: var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   color: var(--v2-color-ink);
   min-height: 48px;
 }
@@ -75,7 +75,7 @@ html[data-v2-profile="1"] .settings-field,
 html[data-v2-profile="1"] .settings-toggle-row {
   border-radius: var(--v2-radius-md, 18px);
   border-color: var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
 }
 
 html[data-v2-profile="1"] .settings-list__row {
@@ -92,7 +92,7 @@ html[data-v2-profile="1"] .settings-list__icon {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: var(--v2-radius-icon, 16px);
-  background: var(--v2-color-emerald-soft, #e2efe8);
+  background: var(--v2-color-emerald-soft, var(--sn-primary-soft));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
 
@@ -100,7 +100,7 @@ html[data-v2-profile="1"] .page-action-btn--secondary,
 html[data-v2-profile="1"] .ds-btn--ghost {
   border-radius: var(--v2-radius-pill, 999px);
   border-color: var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
 
@@ -117,7 +117,7 @@ html[data-v2-profile="1"] .kp-section {
 html[data-v2-profile="1"] .kp-continue {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-soft);
   padding: var(--v2-space-5, 1.25rem);
 }
@@ -148,7 +148,7 @@ html[data-v2-profile="1"] .kp-link {
 
 html[data-v2-profile="1"] .kp-list li {
   border-radius: var(--v2-radius-md, 18px);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   border: 1px solid var(--v2-hairline);
   padding: var(--v2-space-3, 0.75rem) var(--v2-space-4, 1rem);
 }

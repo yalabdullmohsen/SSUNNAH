@@ -27,7 +27,7 @@
 }
 .pmp-hero__subtitle {
   font-size: 0.95rem;
-  color: #E8EEEC;
+  color: var(--sn-text-on-primary);
   max-width: 520px;
   margin: 0 auto;
   line-height: 1.7;
@@ -64,7 +64,7 @@
   background: color-mix(in srgb, var(--pm-accent, #D6D5CE) 13%, transparent);
   color: var(--pm-accent, #D6D5CE);
   font-weight: 600;
-  border: 1px solid color-mix(in srgb, var(--pm-accent, #D6D5CE) 27%, transparent);
+  border: 1px solid color-mix(in srgb, var(--pm-accent, var(--sn-separator)) 27%, transparent);
 }
 
 /* ─ Card body ─ */

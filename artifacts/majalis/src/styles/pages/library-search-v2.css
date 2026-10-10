@@ -25,7 +25,7 @@ html[data-v2-search="1"] .srch-home-field,
 html[data-v2-search="1"] .srch-home-field input {
   border-radius: var(--v2-radius-lg, 22px);
   border-color: var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-soft);
   min-height: 52px;
   color: var(--v2-color-ink);
@@ -60,7 +60,7 @@ html[data-v2-search="1"] .srch-scope-card,
 html[data-v2-search="1"] [data-search-scope] {
   border-radius: var(--v2-radius-md, 18px);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-soft);
   min-height: 4.5rem;
   padding: var(--v2-space-3, 0.75rem);
@@ -79,7 +79,7 @@ html[data-v2-search="1"] .srch-result-card,
 html[data-v2-search="1"] [data-search-result="1"] {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-card);
   padding: var(--v2-space-4, 1rem) var(--v2-space-5, 1.25rem);
   margin-block: var(--v2-space-3, 0.75rem);
@@ -107,7 +107,7 @@ html[data-v2-search="1"] .srch-hl {
 html[data-v2-search="1"] .srch-home-idle,
 html[data-v2-search="1"] .srch-idle {
   border-radius: var(--v2-radius-card, 1.5rem);
-  background: var(--v2-color-ivory-muted, #efe8dc);
+  background: var(--v2-color-ivory-muted, var(--sn-surface-2));
   border: 1px solid var(--v2-hairline);
   padding: var(--v2-space-6, 1.5rem);
 }
@@ -115,7 +115,7 @@ html[data-v2-search="1"] .srch-idle {
 html[data-v2-search="1"] .srch-page-back {
   border-radius: var(--v2-radius-pill, 999px);
   border-color: var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
 

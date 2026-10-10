@@ -9,7 +9,7 @@
 }
 
 .topic-page--miracles .topic-page__body {
-  background: var(--color-bg, var(--surface-app, var(--mj-bg, #f7f3eb)));
+  background: var(--color-bg, var(--surface-app, var(--mj-bg, var(--sn-surface-2))));
 }
 
 .mk-page {
@@ -102,13 +102,13 @@
   font-size: 0.88rem;
   line-height: 1.6;
   -webkit-line-clamp: 3;
-  color: var(--mk-muted, var(--mj-ink-2, #3d4f47));
+  color: var(--mk-muted, var(--mj-ink-2, var(--sn-text-secondary)));
 }
 .mk-lane-card .hub-card__meta,
 .mk-lane-card__meta {
   font-size: 0.8rem;
   font-weight: 650;
-  color: var(--mk-green-deep, var(--mj-brand-deep, #123f2e));
+  color: var(--mk-green-deep, var(--mj-brand-deep, var(--sn-primary-strong)));
 }
 .mk-lane-card .hub-card__icon {
   width: 2.4rem;
@@ -486,18 +486,18 @@ html.dark .mk-page,
 html.dark .mk-lane-card__cta,
 [data-theme="dark"] .mk-lane-card__cta {
   background: var(--mj-brand, #5fbf98);
-  color: var(--mj-on-brand, #06231a);
+  color: var(--mj-on-brand, var(--sn-text-primary));
 }
 
 html.dark .mk-lane-card--sunnah .mk-lane-card__cta,
 [data-theme="dark"] .mk-lane-card--sunnah .mk-lane-card__cta {
   background: var(--mj-accent, #d9b871);
-  color: var(--mj-on-brand, #06231a);
+  color: var(--mj-on-brand, var(--sn-text-primary));
 }
 
 html.dark .mk-card__title,
 [data-theme="dark"] .mk-card__title {
-  color: var(--mk-ink, #eef4f0);
+  color: var(--mk-ink, var(--sn-text-on-primary));
 }
 
 html.dark .mk-pill--topic,

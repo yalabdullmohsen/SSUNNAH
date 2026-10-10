@@ -44,7 +44,7 @@
   border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 28%, transparent) !important;
 }
 .ai-hero__nav-btn--active {
-  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 16%, #fffef9) !important;
+  background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 16%, var(--sn-bg)) !important;
   border-color: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 35%, transparent) !important;
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 18%, transparent);
 }

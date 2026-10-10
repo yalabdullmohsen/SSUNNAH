@@ -19,7 +19,7 @@
   align-items: center;
   gap: var(--ds-space-3);
   padding: 0.875rem 1rem;
-  background: linear-gradient(135deg, #f0f7f3, #fefdf5);
+  background: linear-gradient(135deg, var(--sn-primary-soft), var(--sn-bg));
   border: 1.5px solid rgba(31,77,58,0.3);
   border-radius: 0.625rem;
   margin-bottom: 1.5rem;

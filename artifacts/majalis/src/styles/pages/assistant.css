@@ -25,7 +25,7 @@
   padding: 1.05rem 1.15rem;
   border-radius: var(--mss-radius-hero, 1.35rem);
   border: 1px solid color-mix(in srgb, var(--mj-brand) 22%, transparent);
-  background-color: var(--mss-hero-from, #0f4a3a);
+  background-color: var(--mss-hero-from, var(--sn-primary-strong));
   background-image: var(--mss-hero-gradient);
   color: var(--mss-on-hero, #faf5ea);
   box-shadow: var(--mss-shadow-hero, 0 16px 40px rgba(15, 74, 58, 0.22));
@@ -111,7 +111,7 @@
   background: color-mix(in srgb, var(--mj-brand) 8%, var(--mj-white, var(--mj-white, var(--mj-white))));
   border: 1px solid color-mix(in srgb, var(--mj-brand) 22%, transparent);
   font-size: 0.78rem;
-  color: var(--ds-emerald-deep, #064e3b);
+  color: var(--ds-emerald-deep, var(--sn-primary-strong));
   font-weight: 700;
   text-decoration: none;
   transition: background 0.15s, transform 0.12s;
@@ -127,7 +127,7 @@
   margin-top: 0;
   border: 1px solid color-mix(in srgb, var(--mj-hairline, var(--msk-border)) 90%, transparent);
   border-radius: 1.25rem;
-  background: color-mix(in srgb, var(--mj-white, var(--mj-white, var(--mj-white))) 92%, var(--majalis-parchment, #faf7f2));
+  background: color-mix(in srgb, var(--mj-white, var(--mj-white, var(--mj-white))) 92%, var(--majalis-parchment, var(--sn-bg)));
   box-shadow: 0 18px 48px rgba(36, 31, 24, 0.08);
   overflow: hidden;
   min-height: min(70vh, 42rem);
@@ -227,7 +227,7 @@ html[data-theme="dark"] .assistant-gate .assistant-title,
 html[data-theme="dark"] .assistant-gate__title,
 html[data-theme="dark"] .assistant-gate .assistant-intro,
 html[data-theme="dark"] .assistant-gate__lede {
-  color: var(--mj-ink, #f3f7f5);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }
 .assistant-gate__actions {
   display: flex;
@@ -241,8 +241,8 @@ html[data-theme="dark"] .assistant-gate__lede {
   min-height: 44px;
   padding: 0.55rem 1.1rem;
   border-radius: var(--radius-pill, 999rem);
-  border: 1px solid var(--mj-hairline, #d9d3c8);
-  background: var(--mj-surface, #fffcf7);
+  border: 1px solid var(--mj-hairline, var(--sn-separator));
+  background: var(--mj-surface, var(--sn-bg));
   color: var(--mj-ink, var(--v2-color-ink));
   font-weight: 700;
   text-decoration: none;
@@ -250,7 +250,7 @@ html[data-theme="dark"] .assistant-gate__lede {
 .assistant-gate__cta--primary {
   background: var(--mj-brand-deep, var(--mj-brand-deep));
   border-color: var(--mj-brand-deep, var(--mj-brand-deep));
-  color: #f7fbf9;
+  color: var(--sn-text-on-primary);
 }
 .assistant-gate__examples h2 {
   margin: 0 0 0.5rem;
@@ -267,8 +267,8 @@ html[data-theme="dark"] .assistant-gate__lede {
   display: block;
   padding: 0.7rem 0.9rem;
   border-radius: var(--sf-radius-control);
-  background: var(--surface-content, #fffcf7);
-  border: 1px solid var(--surface-content-border, #e5e1d8);
+  background: var(--surface-content, var(--sn-bg));
+  border: 1px solid var(--surface-content-border, var(--sn-separator));
   color: var(--brand-on-light, var(--mj-brand-deep));
   text-decoration: none;
   font-weight: 600;
@@ -276,6 +276,6 @@ html[data-theme="dark"] .assistant-gate__lede {
 .assistant-gate__note {
   margin: 0;
   font-size: 0.85rem;
-  color: var(--mj-ink-2, #4f5f58);
+  color: var(--mj-ink-2, var(--sn-text-secondary));
   line-height: 1.65;
 }

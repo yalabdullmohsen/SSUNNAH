@@ -12,7 +12,7 @@
 .mtd-head__sub { font-size: 0.95rem; color: var(--majalis-muted, var(--mj-brand)); max-width: 560px; margin: 0 auto; line-height: 1.7; }
 .mtd-section { margin-bottom: 2rem; }
 .mtd-section--highlight {
-  background: var(--majalis-panel, #f5f9f6);
+  background: var(--majalis-panel, var(--sn-bg));
   border: 1px solid var(--majalis-line, #d4e6de);
   border-radius: var(--ds-radius-lg); padding: var(--ds-space-5);
 }

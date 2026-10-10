@@ -74,7 +74,7 @@
   border: none;
   cursor: pointer;
 }
-.trp-tab:hover { background: var(--majalis-parchment-deep, #f0e8d6); }
+.trp-tab:hover { background: var(--majalis-parchment-deep, var(--sn-surface-2)); }
 .trp-tab--active { background: var(--majalis-emerald); color: var(--mj-white, var(--mj-white)); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
 .trp-form-box {
   border-radius: var(--ds-radius-xl);

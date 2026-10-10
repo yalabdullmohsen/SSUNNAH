@@ -1,7 +1,7 @@
 /* الفرق الإسلامية — قالب حديث (عقيدة/تفسير) بلا هيرو أخضر حاد */
 
 .topic-page--sects .topic-page__body {
-  background: var(--color-bg, var(--surface-app, var(--mj-bg, #f7f3eb)));
+  background: var(--color-bg, var(--surface-app, var(--mj-bg, var(--sn-surface-2))));
   max-width: min(40rem, 100%);
   width: 100%;
   box-sizing: border-box;
@@ -108,7 +108,7 @@ html.dark .sect-hub__chip.is-active,
 [data-theme="dark"] .sect-hub__chip.is-active {
   background: var(--mj-brand, #5fbf98);
   border-color: var(--mj-brand, #5fbf98);
-  color: var(--mj-on-brand, #06231a);
+  color: var(--mj-on-brand, var(--sn-text-primary));
 }
 
 .sect-hub__results {
@@ -507,7 +507,7 @@ html.dark .sect-hub__chip.is-active,
   padding: 1rem 1.05rem;
   border-radius: var(--radius-card, 1.5rem);
   border: 1px solid color-mix(in srgb, var(--mj-brand) 16%, var(--ss-border, var(--mj-hairline)));
-  background: color-mix(in srgb, var(--mj-bg, #f7f3eb) 70%, var(--ss-card-bg, var(--mj-surface)));
+  background: color-mix(in srgb, var(--mj-bg, var(--sn-surface-2)) 70%, var(--ss-card-bg, var(--mj-surface)));
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -529,7 +529,7 @@ html.dark .sect-card,
 
 html.dark .sect-card__title,
 [data-theme="dark"] .sect-card__title {
-  color: var(--mj-ink, #eef4f0);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }
 
 html.dark .sect-hub__chip,
@@ -561,33 +561,33 @@ html.dark .sect-block__prose,
 [data-theme="dark"] .sect-block__prose,
 html.dark .sect-list li,
 [data-theme="dark"] .sect-list li {
-  color: var(--mj-ink, #eef4f0);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }
 
 html.dark .sect-quote,
 [data-theme="dark"] .sect-quote {
   background: color-mix(in srgb, var(--mj-surface) 82%, var(--mj-brand) 10%);
   border-color: color-mix(in srgb, var(--mj-brand) 28%, transparent);
-  color: var(--mj-ink, #eef4f0);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }
 
 html.dark .sect-block__title,
 [data-theme="dark"] .sect-block__title {
-  color: color-mix(in srgb, var(--mj-brand, #5fbf98) 70%, #eef4f0);
+  color: color-mix(in srgb, var(--mj-brand, #5fbf98) 70%, var(--sn-text-on-primary));
   border-block-end-color: color-mix(in srgb, var(--mj-brand) 28%, transparent);
 }
 
 html.dark .sect-related__link,
 [data-theme="dark"] .sect-related__link {
   background: color-mix(in srgb, var(--mj-brand, #5fbf98) 22%, #15201c) !important;
-  color: var(--mj-ink, #eef4f0) !important;
+  color: var(--mj-ink, var(--sn-text-on-primary)) !important;
 }
 
 html.dark .sect-related__link--ghost,
 [data-theme="dark"] .sect-related__link--ghost {
   background: transparent !important;
   border-color: color-mix(in srgb, var(--mj-brand) 40%, transparent) !important;
-  color: var(--mj-ink, #eef4f0) !important;
+  color: var(--mj-ink, var(--sn-text-on-primary)) !important;
 }
 
 .sect-card__toggle {
@@ -624,13 +624,13 @@ html.dark .sect-related__link--ghost,
 html.dark .sect-card__pill,
 [data-theme="dark"] .sect-card__pill {
   background: color-mix(in srgb, var(--mj-brand) 22%, transparent);
-  color: var(--mj-ink, #eef4f0);
+  color: var(--mj-ink, var(--sn-text-on-primary));
   border-color: color-mix(in srgb, var(--mj-brand) 35%, transparent);
 }
 
 html.dark .sect-card__cta,
 [data-theme="dark"] .sect-card__cta {
-  color: var(--mj-ink, #eef4f0);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }
 
 .sect-hub__empty {
@@ -652,14 +652,14 @@ html.dark .sect-hub__note,
 [data-theme="dark"] .sect-hub__note {
   background: color-mix(in srgb, var(--mj-accent, #c4a35a) 14%, #15201c);
   border-color: color-mix(in srgb, var(--mj-accent, #c4a35a) 40%, var(--mj-hairline));
-  color: var(--mj-ink, #eef4f0);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }
 
 html.dark .sect-hub__search,
 [data-theme="dark"] .sect-hub__search {
   background: var(--ss-card-bg, #15201c);
   border-color: color-mix(in srgb, var(--mj-brand) 28%, var(--mj-hairline));
-  color: var(--mj-ink, #eef4f0);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }
 
 html.dark .sect-hub__results,

@@ -62,7 +62,7 @@
   padding: 0 14px;
   border-radius: var(--radius-pill, 999rem);
   background: var(--ss-card-bg, var(--mj-surface, var(--mj-white, var(--mj-white))));
-  color: var(--mss-on-hero-accent, #0B3D2E);
+  color: var(--mss-on-hero-accent, var(--sn-primary-strong));
   font-weight: 700;
   text-decoration: none;
   font-size: 14px;
@@ -123,7 +123,7 @@
 
 /* Meta */
 .gl-results-meta { margin-bottom: .75rem; }
-.gl-results-count { color: var(--color-text-muted, var(--mj-ink-2, #4f5f58)); font-size: .8rem; font-weight: 600; }
+.gl-results-count { color: var(--color-text-muted, var(--mj-ink-2, var(--sn-text-secondary))); font-size: .8rem; font-weight: 600; }
 .gl-empty { text-align: center; color: var(--color-text-muted, var(--mj-ink-2)); font-size: .9rem; padding: 2rem 0; }
 
 /* Term list */
