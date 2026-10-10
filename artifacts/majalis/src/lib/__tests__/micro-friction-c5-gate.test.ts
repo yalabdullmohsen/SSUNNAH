@@ -18,9 +18,8 @@ assert.equal(
   "HomeContinueWidget removed",
 );
 
-const app = read("src/App.tsx");
-assert.match(app, /HomeUniversalSearch/, "search affordance on home shell");
-assert.match(app, /HomeHeroLcp/, "hero LCP with mushaf deep links");
+assert.match(read("src/components/NavBar.tsx"), /openSearch/, "search affordance in header (home search moved to NavBar in #2693)");
+assert.match(read("src/pages/account/ui/HomeView.tsx"), /HomeHeroLcp/, "hero LCP with mushaf deep links");
 
 const hero = read("src/components/home/HomeHeroLcp.tsx");
 assert.match(hero, /href=\{`\/mushaf/, "mushaf deep link in hero");
@@ -29,7 +28,7 @@ assert.match(hero, /href="\/mushaf"/, "mushaf fallback link");
 const continueLearning = read("src/components/home/HomeContinueLearning.tsx");
 assert.match(continueLearning, /data-testid="home-continue-learning"/);
 
-const backlog = readRepo("docs/audit/MICRO_FRICTION_BACKLOG.md");
+const backlog = readRepo("docs/audit/MICRO_FRICTION_CLOSURE.md");
 assert.match(backlog, /MICRO_FRICTION_ZERO_OR_JUSTIFIED = true/);
 assert.match(backlog, /KEEP_JUSTIFIED_WITH_EVIDENCE/);
 
