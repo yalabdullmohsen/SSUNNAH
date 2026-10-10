@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { AppCard } from "@/components/design-system/AppCard";
+import { Card } from "@/design-system";
 import { v3Get } from "../../data/admin-v3-api";
 import {
   AdminLoadGate,
@@ -154,13 +154,13 @@ function AutomationOverviewPanel() {
 
       <div className="av3-tool-grid">
         {natives.map((n) => (
-          <AppCard key={n.href} className="av3-tool-card av3-tool-card--native" data-ss-surface="admin-tool">
+          <Card key={n.href} className="av3-tool-card av3-tool-card--native" data-ss-surface="admin-tool">
             <h3 className="av3-tool-card__title">{n.title}</h3>
             <p className="av3-tool-card__desc">{n.desc}</p>
             <Button asChild variant="primary">
               <Link href={n.href}>فتح</Link>
             </Button>
-          </AppCard>
+          </Card>
         ))}
       </div>
 
@@ -171,13 +171,13 @@ function AutomationOverviewPanel() {
         <p className="av3-muted">وجود رابط Legacy لا يُعد ترحيلًا كاملًا.</p>
         <div className="av3-tool-grid">
           {legacyOps.map((t) => (
-            <AppCard key={t.href} className="av3-tool-card" data-ss-surface="admin-tool">
+            <Card key={t.href} className="av3-tool-card" data-ss-surface="admin-tool">
               <h3 className="av3-tool-card__title">{t.title}</h3>
               <p className="av3-tool-card__desc">{t.note}</p>
               <Button asChild variant="secondary">
                 <Link href={t.href}>فتح (Legacy)</Link>
               </Button>
-            </AppCard>
+            </Card>
           ))}
         </div>
       </section>
@@ -352,7 +352,7 @@ function AutomationIntegrationsPanel() {
         </dl>
       </AdminLoadGate>
       <div className="av3-tool-grid">
-        <AppCard className="av3-tool-card" data-ss-surface="admin-tool">
+        <Card className="av3-tool-card" data-ss-surface="admin-tool">
           <h3 className="av3-tool-card__title">Telegram</h3>
           <p className="av3-tool-card__desc">تشغيل webhook/بث/مراجعة</p>
           <Button asChild variant="secondary">
@@ -360,8 +360,8 @@ function AutomationIntegrationsPanel() {
               فتح Legacy <AdminLegacyChip />
             </Link>
           </Button>
-        </AppCard>
-        <AppCard className="av3-tool-card" data-ss-surface="admin-tool">
+        </Card>
+        <Card className="av3-tool-card" data-ss-surface="admin-tool">
           <h3 className="av3-tool-card__title">إنستغرام</h3>
           <p className="av3-tool-card__desc">Graph / مساعدة يدوية</p>
           <Button asChild variant="secondary">
@@ -369,7 +369,7 @@ function AutomationIntegrationsPanel() {
               فتح Legacy <AdminLegacyChip />
             </Link>
           </Button>
-        </AppCard>
+        </Card>
       </div>
     </div>
   );
