@@ -29,6 +29,10 @@ assert.equal(mapJsonStrings(raw, stripRlm), '{\n  "a": "نص \\"x\\"",\n  "b": 1
 const RLM_CLEAN = ["public/data/knowledge/quiz/batch-003.json"];
 for (const f of RLM_CLEAN) assert.ok(!fs.readFileSync(f, "utf8").includes("\u200f"), `${f}: U+200F`);
 
+/* batch-004 \u0645\u0642\u0633\u0648\u0645 \u0639\u0644\u0649 PR\u064a\u0646 (\u062d\u062f 400 \u0633\u0637\u0631 \u0645\u062d\u0630\u0648\u0641): \u0627\u0644\u0623\u0633\u0637\u0631 1\u20136605 \u0646\u0638\u064a\u0641\u0629 */
+const b004 = fs.readFileSync("public/data/knowledge/quiz/batch-004.json", "utf8").split("\n").slice(0, 6605).join("\n");
+assert.ok(!b004.includes("\u200f"), "batch-004 (1\u20136605): U+200F");
+
 /* الأرقام الهندية → لاتينية خارج ﴿…﴾ فقط؛ نص الآية لا يُمسّ */
 const digits: Array<[string, string]> = [
   ["النساء: ٥٩", "النساء: 59"],
