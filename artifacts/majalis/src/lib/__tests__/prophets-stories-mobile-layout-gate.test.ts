@@ -11,14 +11,13 @@ import { isCompactHeaderPath, isPinnedChromePath } from "../immersive-chrome";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const css = readFileSync(resolve(root, "src/styles/pages/prophet-stories.css"), "utf8");
 const view = readFileSync(resolve(root, "src/views/ProphetStoriesPage.tsx"), "utf8");
-const app = readFileSync(resolve(root, "src/App.tsx"), "utf8");
 const header = readFileSync(resolve(root, "src/components/prophets/ProphetStoryReaderHeader.tsx"), "utf8");
 const stb = readFileSync(resolve(root, "src/styles/components/scholarly-trust.css"), "utf8");
 
 assert.equal(isCompactHeaderPath("/prophets"), true);
 assert.equal(isPinnedChromePath("/prophets"), true);
 assert.equal(isPinnedChromePath("/prophets/nuh"), false);
-assert.match(app, /isPinnedChromePath\(location\)/);
+assert.match(readFileSync(resolve(root, "src/lib/immersive-chrome.ts"), "utf8"), /isPinnedChromePath\(p\)/);
 
 assert.match(css, /inset-inline-start:\s*1\.15rem/);
 assert.doesNotMatch(css, /\.prophet-timeline__line\s*\{[^}]*left:\s*50%/s);

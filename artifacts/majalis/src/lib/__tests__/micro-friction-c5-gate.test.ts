@@ -18,9 +18,8 @@ assert.equal(
   "HomeContinueWidget removed",
 );
 
-const app = read("src/App.tsx");
-assert.match(app, /HomeUniversalSearch/, "search affordance on home shell");
-assert.match(app, /HomeHeroLcp/, "hero LCP with mushaf deep links");
+assert.match(read("src/components/NavBar.tsx"), /openSearch/, "search affordance in header (home search moved to NavBar in #2693)");
+assert.match(read("src/pages/account/ui/HomeView.tsx"), /HomeHeroLcp/, "hero LCP with mushaf deep links");
 
 const hero = read("src/components/home/HomeHeroLcp.tsx");
 assert.match(hero, /href=\{`\/mushaf/, "mushaf deep link in hero");
