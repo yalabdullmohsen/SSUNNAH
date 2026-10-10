@@ -51,7 +51,6 @@ for (const cls of [
   "dii-hub-card",
   "dii-list-card",
   "dii-block",
-  "hs-card",
   "hb-hadith-row",
   "quran-hub-card",
   "twh-hub-card",

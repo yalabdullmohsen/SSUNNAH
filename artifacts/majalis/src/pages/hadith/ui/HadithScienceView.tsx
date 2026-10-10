@@ -1076,7 +1076,7 @@ export default function HadithSciencePage() {
           {filtered.map((t) => {
             const isOpen = openId === t.id;
             return (
-              <article key={t.id} className={`hs-card hdl-entry-card${gradeClass(t.grade)}${isOpen ? " hs-card--open" : ""}`}>
+              <article key={t.id} className={`hs-card${gradeClass(t.grade)}${isOpen ? " hs-card--open" : ""}`}>
                 <Button
                   type="button"
                   className="hs-card__header"

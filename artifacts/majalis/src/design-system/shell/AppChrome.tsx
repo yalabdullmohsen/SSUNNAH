@@ -5,12 +5,11 @@ import { APP_TABS, activeTabId, screenOwnsNavBar } from "./tabs";
 import { getSectionByRoute } from "@/config/sections.registry";
 import { useAuth } from "@/components/AuthProvider";
 import { S } from "@/design-system/strings";
-import { navigateTo } from "@/lib/navigation-intent";
+import { goBackOrFallback } from "@/lib/navigation-back";
 
 /** رجوع إلى الشاشة السابقة؛ وإن فُتحت الصفحة مباشرة (بلا سجل) فإلى «الأقسام». */
 function goBack() {
-  if (typeof window !== "undefined" && window.history.length > 1) window.history.back();
-  else navigateTo("/sections");
+  goBackOrFallback(typeof window !== "undefined" ? window.location.pathname : "/", "/sections");
 }
 
 /** الشريط السفلي الموحّد — 5 تبويبات. */

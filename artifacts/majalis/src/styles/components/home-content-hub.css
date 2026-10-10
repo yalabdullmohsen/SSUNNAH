@@ -19,7 +19,7 @@
   margin: 0.2rem 0 0;
   font-size: 0.82rem;
   line-height: 1.5;
-  color: var(--mj-ink-2, #4a5a53);
+  color: var(--mj-ink-2, var(--sn-text-secondary));
 }
 
 .home-content-hub__grid {
@@ -67,7 +67,7 @@
   height: 2.35rem;
   border-radius: var(--sf-radius-xs);
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, transparent);
-  color: var(--mj-brand-deep, #12362a);
+  color: var(--mj-brand-deep, var(--sn-primary-strong));
 }
 
 .home-content-hub__copy {
@@ -88,7 +88,7 @@
 .home-content-hub__desc {
   font-size: 0.78rem;
   line-height: 1.45;
-  color: var(--mj-ink-2, #4a5a53);
+  color: var(--mj-ink-2, var(--sn-text-secondary));
 }
 
 html[data-theme="dark"] .home-content-hub__card {

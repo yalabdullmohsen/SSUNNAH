@@ -5,6 +5,9 @@
 #   CI_LOCAL_LOCK_WAIT   أقصى انتظار بالثواني (1500 = 25 دقيقة)، ثم يفشل بلا تشغيل
 #   CI_LOCAL_LOCK_STALE  قفل أقدم من هذا (2400 = 40 دقيقة) يُعدّ معلّقًا ويُكسر
 #   CI_LOCAL_LOCK_POLL   فترة الفحص بالثواني (10)
+#   CI_LOCAL_MIN_FREE_MB حارس الذاكرة: ينتظر حتى تتوفر هذه الذاكرة (1200 ميجا) قبل التشغيل
+#   CI_LOCAL_MEM_WAIT    أقصى انتظار للذاكرة بالثواني (600 = 10 دقائق)، ثم يُشغَّل مع تحذير
+#   CI_LOCAL_MEM_GUARD=0 يعطّل الحارس
 set -uo pipefail
 LOCK="${CI_LOCAL_LOCK_DIR:-$HOME/.majalis-tools/ci-lock}"
 WAIT="${CI_LOCAL_LOCK_WAIT:-1500}"
@@ -36,4 +39,22 @@ done
 trap 'rm -rf "$LOCK"' EXIT
 trap 'exit 130' INT TERM
 echo "pid=$$ cwd=$PWD" > "$LOCK/owner"
+
+# حارس الذاكرة (macOS): المتاح = free + speculative + inactive (قابلة للاسترجاع فورًا)
+avail_mb() {
+  command -v vm_stat >/dev/null 2>&1 || { echo 999999; return; }
+  vm_stat | awk '/page size of/{ps=$8} /Pages free/{f=$3} /Pages speculative/{s=$3} /Pages inactive/{i=$3} END{printf "%d", (f+s+i)*ps/1048576}'
+}
+if [[ "${CI_LOCAL_MEM_GUARD:-1}" != 0 ]]; then
+  MIN_MB="${CI_LOCAL_MIN_FREE_MB:-1200}"
+  mdeadline=$(( $(date +%s) + ${CI_LOCAL_MEM_WAIT:-600} ))
+  while (( $(avail_mb) < MIN_MB )); do
+    if (( $(date +%s) >= mdeadline )); then
+      echo "ci-local-lock: تحذير — الذاكرة المتاحة $(avail_mb)MB < ${MIN_MB}MB بعد انتظار ${CI_LOCAL_MEM_WAIT:-600}ث؛ يُشغَّل على أي حال" >&2
+      break
+    fi
+    echo "ci-local-lock: ذاكرة متاحة $(avail_mb)MB < ${MIN_MB}MB — انتظار…" >&2
+    touch "$LOCK"; sleep "$POLL"
+  done
+fi
 "$@"

@@ -5,6 +5,7 @@ import { getUnifiedLessonById } from "@/lib/lessons-service";
 import type { KuwaitLessonRecord } from "@/lib/kuwait-lessons";
 import { isLocalBookmarked, toggleLocalBookmark } from "@/lib/local-bookmarks";
 import { S } from "@/design-system/strings";
+import { goBackOrFallback } from "@/lib/navigation-back";
 
 function icsFor(l: KuwaitLessonRecord): string {
   const start = new Date(l.nextOccurrenceMs && l.nextOccurrenceMs > 0 ? l.nextOccurrenceMs : Date.now());
@@ -16,7 +17,7 @@ function icsFor(l: KuwaitLessonRecord): string {
 /** تفاصيل الدرس: عنوان كبير · الشيخ · الموعد · المكان (خرائط) · إضافة للتقويم · مشاركة. */
 export default function LessonDetailScreen() {
   const [, params] = useRoute("/lessons/:id");
-  const [, navigate] = useLocation();
+  const [location, navigate] = useLocation();
   const toast = useToast();
   const id = params?.id ?? "";
   const [state, setState] = useState<"loading" | "error" | "missing" | "ready">("loading");
@@ -57,7 +58,7 @@ export default function LessonDetailScreen() {
     <div className="sn-screen" data-testid="lesson-detail-screen">
       <NavigationBar
         title={lesson?.title ?? S.lessonDetail_02}
-        leading={<IconButton icon="chevron" label={S.lessonDetail_03} onClick={() => (window.history.length > 1 ? window.history.back() : navigate("/lessons"))} className="sn-back" />}
+        leading={<IconButton icon="chevron" label={S.lessonDetail_03} onClick={() => goBackOrFallback(location, "/lessons")} className="sn-back" />}
         trailing={lesson ? <IconButton icon={saved ? "bookmarkFilled" : "bookmark"} label={saved ? S.content_01 : S.content_09} onClick={() => setSaved(toggleLocalBookmark({ contentType: "lesson", contentId: lesson.id, title: lesson.title, href: `/lessons/${lesson.id}` }))} /> : null}
       />
       <div className="sn-container sn-stack sn-stack--lg">
