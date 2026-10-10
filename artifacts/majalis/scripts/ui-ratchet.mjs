@@ -43,7 +43,10 @@ const stripComments = (t) => t.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\
 const count = (re, t) => (t.match(re) || []).length;
 
 const SCALE = new Set([0, 1, 2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 9999]);
-const BACK_BTN = /(?:aria-label|title)=["']رجوع["']|>\s*رجوع\s*<|FloatingBackButton|GlobalBackButton|AppBackButton/g;
+/* تطبيقات رجوع محلية فقط: نص «رجوع» حرفي داخل زر، أو history.back()/go(-1) يدويًا.
+   استخدام المكوّن الموحَّد (AppBackButton/FloatingBackButton) هو الحلّ لا الدين، فلا يُعدّ. */
+const BACK_BTN = />\s*(?:←\s*)?رجوع\s*<|history\.back\(\)|history\.go\(\s*-1\s*\)/g;
+const BACK_AUTHORITY = /^src\/(components\/common\/AppBackButton|components\/FloatingBackButton|lib\/navigation-back|lib\/immersive-chrome)\.tsx?$/;
 
 const m = {
   hexOutsideTokens: 0,
@@ -70,7 +73,7 @@ for (const f of code) {
   const t = stripComments(f.text);
   m.localButtonsAndCards += count(/<button\b/g, t);
   m.oldSystemImports += count(OLD_IMPORT, t);
-  if (!NAV_BAR.test(f.rel)) m.backButtonsOutsideNavBar += count(BACK_BTN, t);
+  if (!NAV_BAR.test(f.rel) && !BACK_AUTHORITY.test(f.rel)) m.backButtonsOutsideNavBar += count(BACK_BTN, t);
 }
 for (const f of css) {
   if (TOKEN_FILES.test(f.rel) || NEW_SYSTEM.test(f.rel)) continue;
