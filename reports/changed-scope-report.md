@@ -1,8 +1,8 @@
 # تقرير نطاق التغييرات
 
-**التاريخ:** 2026-10-10T01:46:58.220Z
-**عدد الملفات:** 3
-**النطاقات:** ci/config، other
+**التاريخ:** 2026-10-10T01:55:09.749Z
+**عدد الملفات:** 5
+**النطاقات:** ci/config، docs، other
 **docs-only:** لا
 
 ## البوابات المقترحة
@@ -26,6 +26,8 @@
 ## الملفات المتغيرة (أول 40)
 
 - `package.json` → ci_config
+- `reports/changed-scope-report.md` → docs
+- `reports/changed-scope-verify.json` → other
 - `scripts/__tests__/ci-local-lock.test.mjs` → other
 - `scripts/ci-local-lock.sh` → other
 

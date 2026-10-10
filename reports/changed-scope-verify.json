@@ -1,16 +1,20 @@
 {
-  "generatedAt": "2026-10-10T01:46:58.214Z",
+  "generatedAt": "2026-10-10T01:55:09.742Z",
   "paths": [
     "package.json",
+    "reports/changed-scope-report.md",
+    "reports/changed-scope-verify.json",
     "scripts/__tests__/ci-local-lock.test.mjs",
     "scripts/ci-local-lock.sh"
   ],
   "scopes": [
     "ci/config",
+    "docs",
     "other"
   ],
   "scopeIds": [
     "ci_config",
+    "docs",
     "other"
   ],
   "checks": {
@@ -29,7 +33,7 @@
     "data_audit": false
   },
   "outputs": {
-    "scopes": "ci/config,other",
+    "scopes": "ci/config,docs,other",
     "scope_need_build": "true",
     "scope_need_mushaf": "false",
     "scope_need_color_contrast": "false",
