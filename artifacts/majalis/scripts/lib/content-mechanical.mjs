@@ -38,3 +38,18 @@ export function latinDigits(s) {
 
 /** الهيكل: كل الأرقام لاتينية + مقاطع ﴿…﴾ حرفيًا كما هي. */
 export const DIGITS_SKELETON = (s) => `${toLatin(s)}\u0000${s.split(QURAN_SPAN).filter((_, i) => i % 2).join("\u0000")}`;
+
+/** معرّف داخلي في عنوان سؤال الحديث يُستبدل بمرجعه: «حديث sahih-b3-12: نص» → «حديث (البخاري 12): نص». */
+const TITLE_ID = /^حديث [a-z][a-z0-9]*(?:-[a-z0-9]+)+:(?: (?=\S)|$)/;
+
+/** مرجع مختصر من sources[0].book: «صحيح البخاري (6) وصحيح مسلم (7)؛ …» → «البخاري 6 ومسلم 7». */
+export function hadithTitleRef(book) {
+  return String(book).split(/؛| —| وقال/)[0].replace(/(صحيح|سنن) /g, "").replace(/\((\d+)\)/g, "$1").trim();
+}
+
+export function titleIdToRef(s, ref) {
+  return s.replace(TITLE_ID, (m) => `حديث (${ref})${m.endsWith(" ") ? ": " : ""}`);
+}
+
+/** الهيكل: ما بعد البادئة «حديث[ المعرّف|(المرجع)][:][ ]» حرفيًا. */
+export const TITLE_ID_SKELETON = (s) => s.replace(/^حديث(?: [a-z][a-z0-9-]*| \([^)]*\))?(?:: ?)?/, "حديث");
