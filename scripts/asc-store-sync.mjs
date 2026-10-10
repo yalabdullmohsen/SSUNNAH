@@ -3,7 +3,8 @@
 // الاستعمال: node scripts/asc-store-sync.mjs <status|sync> [--apply]
 // المتغيرات: APP_STORE_CONNECT_API_KEY_ID / _ISSUER_ID / _KEY (محتوى .p8) ، اختياري ASC_REVIEW_DEMO_PASSWORD
 import { createSign } from "node:crypto";
-import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { readFileSync, readdirSync, existsSync } from "node:fs";
 
 const BUNDLE_ID = "com.yousef.majlisilm";
 const cmd = process.argv[2] ?? "status";
@@ -31,10 +32,40 @@ async function api(method, path, body) {
   if (!res.ok) throw new Error(`${method} ${path} → ${res.status} ${JSON.stringify(json.errors?.map((e) => e.detail) ?? json).slice(0, 400)}`);
   return json;
 }
+// مجلد store/screenshots/<dir> → نوع العرض في ASC
+const SHOT_SETS = { "iphone-6.9": "APP_IPHONE_67", "ipad-13": "APP_IPAD_PRO_3GEN_129" };
+async function syncScreenshots(locId) {
+  for (const [dir, displayType] of Object.entries(SHOT_SETS)) {
+    const base = `store/screenshots/${dir}`;
+    if (!existsSync(base)) continue;
+    const files = readdirSync(base).filter((f) => f.endsWith(".png")).sort();
+    if (!files.length) continue;
+    let sets = (await api("GET", `/v1/appStoreVersionLocalizations/${locId}/appScreenshotSets`)).data;
+    let set = sets.find((x) => x.attributes.screenshotDisplayType === displayType);
+    const have = set ? (await api("GET", `/v1/appScreenshotSets/${set.id}/appScreenshots`)).data : [];
+    if (have.length === files.length && files.every((f, i) => have[i].attributes.fileName === f)) { log(`  = ${dir}: مطابق (${files.length})`); continue; }
+    await write(`لقطات ${dir} ← ${displayType} (${files.length})`, "NOOP");
+    if (!apply) continue;
+    if (!set) set = (await api("POST", "/v1/appScreenshotSets", { data: { type: "appScreenshotSets", attributes: { screenshotDisplayType: displayType }, relationships: { appStoreVersionLocalization: { data: { type: "appStoreVersionLocalizations", id: locId } } } } })).data;
+    for (const h of have) await api("DELETE", `/v1/appScreenshots/${h.id}`);
+    for (const f of files) {
+      const buf = readFileSync(`${base}/${f}`);
+      const r = (await api("POST", "/v1/appScreenshots", { data: { type: "appScreenshots", attributes: { fileName: f, fileSize: buf.length }, relationships: { appScreenshotSet: { data: { type: "appScreenshotSets", id: set.id } } } } })).data;
+      for (const op of r.attributes.uploadOperations) {
+        const headers = Object.fromEntries(op.requestHeaders.map((h) => [h.name, h.value]));
+        const res = await fetch(op.url, { method: op.method, headers, body: buf.subarray(op.offset, op.offset + op.length) });
+        if (!res.ok) throw new Error(`رفع ${f} فشل ${res.status}`);
+      }
+      await api("PATCH", `/v1/appScreenshots/${r.id}`, { data: { type: "appScreenshots", id: r.id, attributes: { uploaded: true, sourceFileChecksum: createHash("md5").update(buf).digest("hex") } } });
+      log(`  ✓ رُفعت ${dir}/${f}`);
+    }
+  }
+}
 const log = (s) => console.log(s);
 const changes = [];
 async function write(label, method, path, body) {
   changes.push(label);
+  if (method === "NOOP") return;
   if (!apply) return log(`  [dry-run] ${label}`);
   await api(method, path, body);
   log(`  ✓ ${label}`);
@@ -68,6 +99,9 @@ if (ver) {
   const attrs = meta.versionLocalization;
   if (loc) await write("تحديث وصف/كلمات/ما الجديد", "PATCH", `/v1/appStoreVersionLocalizations/${loc.id}`, { data: { type: "appStoreVersionLocalizations", id: loc.id, attributes: attrs } });
   else await write("إنشاء توطين الإصدار", "POST", "/v1/appStoreVersionLocalizations", { data: { type: "appStoreVersionLocalizations", attributes: { locale: meta.locale, ...attrs }, relationships: { appStoreVersion: { data: { type: "appStoreVersions", id: ver.id } } } } });
+
+  if (loc) await syncScreenshots(loc.id);
+  else log("  ⚠️ اللقطات تُرفع في التشغيل التالي بعد إنشاء التوطين");
 
   // ملاحظات المراجعة (لا تسجيل دخول مطلوبًا، بلا أسرار)
   const rd = meta.reviewDetail;
