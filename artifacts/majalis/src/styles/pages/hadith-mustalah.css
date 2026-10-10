@@ -98,13 +98,27 @@
 /* شبكة المصطلحات */
 .hs-grid { display: flex; flex-direction: column; gap: 0.6rem; }
 
-/* بطاقة */
+/* بطاقة — المصدر الوحيد لـ.hs-card (أُزيلت نسخها من ملفات CSS الأخرى) */
 .hs-card {
-  background: var(--color-surface, var(--mj-white));
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding: 0;
+  background: var(--ss-card-bg, var(--color-surface, var(--mj-white)));
   border: 1.5px solid var(--mj-brand-soft);
   border-radius: var(--radius-card, 1.5rem);
+  box-shadow: var(--ss-shadow-soft, 0 6px 18px -12px rgba(15, 40, 30, 0.14));
+  color: var(--color-text, var(--mj-ink));
   overflow: hidden;
+  min-height: 0;
   transition: border-color 0.15s, box-shadow 0.15s;
+}
+html.dark .hs-card,
+html[data-theme="dark"] .hs-card {
+  background: var(--mj-surface);
+  color: var(--mj-ink);
+  box-shadow: 0 6px 18px -12px rgba(0, 0, 0, 0.45);
 }
 .hs-card--open { border-color: var(--mj-brand); box-shadow: 0 3px 14px color-mix(in srgb, var(--mj-brand) 10%, transparent); }
 .hs-card--accepted { border-inline-end: 3px solid var(--mj-brand); }
