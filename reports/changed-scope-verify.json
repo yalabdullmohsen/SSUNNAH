@@ -1,25 +1,21 @@
 {
-  "generatedAt": "2026-10-10T10:26:46.422Z",
+  "generatedAt": "2026-10-10T01:55:09.742Z",
   "paths": [
-    ".github/workflows/asc-store-sync.yml",
-    "artifacts/majalis/node_modules",
-    "docs/handover/n3.md",
-    "docs/program/DEVICE_TEST_CHECKLIST_1.1.0.md",
-    "node_modules",
+    "package.json",
     "reports/changed-scope-report.md",
     "reports/changed-scope-verify.json",
-    "scripts/asc-store-sync.mjs",
-    "store/asc/metadata-1.1.0.json"
+    "scripts/__tests__/ci-local-lock.test.mjs",
+    "scripts/ci-local-lock.sh"
   ],
   "scopes": [
     "ci/config",
-    "other",
-    "docs"
+    "docs",
+    "other"
   ],
   "scopeIds": [
     "ci_config",
-    "other",
-    "docs"
+    "docs",
+    "other"
   ],
   "checks": {
     "ui": false,
@@ -37,7 +33,7 @@
     "data_audit": false
   },
   "outputs": {
-    "scopes": "ci/config,other,docs",
+    "scopes": "ci/config,docs,other",
     "scope_need_build": "true",
     "scope_need_mushaf": "false",
     "scope_need_color_contrast": "false",

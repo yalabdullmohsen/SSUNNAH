@@ -1,8 +1,8 @@
 # تقرير نطاق التغييرات
 
-**التاريخ:** 2026-10-10T10:26:46.423Z
-**عدد الملفات:** 9
-**النطاقات:** ci/config، other، docs
+**التاريخ:** 2026-10-10T01:55:09.749Z
+**عدد الملفات:** 5
+**النطاقات:** ci/config، docs، other
 **docs-only:** لا
 
 ## البوابات المقترحة
@@ -25,15 +25,11 @@
 
 ## الملفات المتغيرة (أول 40)
 
-- `.github/workflows/asc-store-sync.yml` → ci_config
-- `artifacts/majalis/node_modules` → other
-- `docs/handover/n3.md` → docs
-- `docs/program/DEVICE_TEST_CHECKLIST_1.1.0.md` → docs
-- `node_modules` → other
+- `package.json` → ci_config
 - `reports/changed-scope-report.md` → docs
 - `reports/changed-scope-verify.json` → other
-- `scripts/asc-store-sync.mjs` → other
-- `store/asc/metadata-1.1.0.json` → other
+- `scripts/__tests__/ci-local-lock.test.mjs` → other
+- `scripts/ci-local-lock.sh` → other
 
 
 ## سياسات
