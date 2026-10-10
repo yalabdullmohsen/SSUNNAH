@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import {
   fetchRecentErrorLogs, groupErrorsByRoute,
   type ClientErrorLogRow,

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { adminGetAllFawaid, moderateFawaid, adminDeleteFawaid, adminUpsertFawaid } from "@/lib/supabase";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { AdminModal, Field } from "./AdminModal";
 import { BulkImport } from "./BulkImport";
 import { useAdminConfirm, useAdminAlert } from "@/components/admin/AdminConfirmDialog";

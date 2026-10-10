@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { adminGetMiracles, adminUpsertMiracle, adminDeleteMiracle } from "@/lib/supabase";
 import { sanitizeText } from "@/lib/sanitize";
 import { Button } from "@/components/ui/button";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { AdminModal, Field } from "./AdminModal";
 import { BulkImport } from "./BulkImport";
 import { arabicMatchAny } from "@/lib/arabic-search";

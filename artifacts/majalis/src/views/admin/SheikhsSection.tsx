@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { adminGetSheikhs, adminUpsertSheikh, adminDeleteSheikh, uploadSheikhImage, deleteSheikhImage } from "@/lib/supabase";
 import { GOVERNORATES } from "@/lib/theme";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { AdminModal, Field, FieldRow } from "./AdminModal";
 import { BulkImport } from "./BulkImport";
 import { SheikhAvatar } from "@/components/lessons/SheikhAvatar";

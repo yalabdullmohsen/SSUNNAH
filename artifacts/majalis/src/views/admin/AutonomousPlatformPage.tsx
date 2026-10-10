@@ -1,7 +1,7 @@
 import { SectionIcon } from "@/components/ui/SectionIcon";
 import { Button } from "@/components/ui/button";
 import { useCallback, useEffect, useState } from "react";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { AdminShell, useAdminShell } from "@/views/admin/AdminShell";
 import "@/styles/pages/autonomous-platform.css";
 

@@ -3,7 +3,7 @@ import { adminGetAllAnnualCourses, adminUpsertAnnualCourse, adminDeleteAnnualCou
 import { ANNUAL_COURSES_SEED } from "@/lib/annual-courses-seed";
 import { COURSE_TYPES } from "@/lib/platform-types";
 import { Button } from "@/components/ui/button";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { AdminModal, Field } from "./AdminModal";
 import { useAdminShell } from "./AdminShell";
 import { useAdminConfirm } from "@/components/admin/AdminConfirmDialog";

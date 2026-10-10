@@ -13,7 +13,7 @@ import {
 } from "@/lib/supabase";
 import { useAdminConfirm, useAdminAlert } from "@/components/admin/AdminConfirmDialog";
 import { sanitizeText } from "@/lib/sanitize";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { AdminModal, Field, FieldRow } from "./AdminModal";
 import { useAdminShell } from "./AdminShell";
 
