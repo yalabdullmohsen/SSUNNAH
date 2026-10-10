@@ -22,7 +22,14 @@ const FORBIDDEN_PREFIXES = [
 ];
 
 /** مهارات مشروع مختارة يدويًا تُشارَك عبر المستودع (ليست حزم ECC مولَّدة). */
-const ALLOWED_PREFIXES = [".claude/skills/graphify/", ".claude/skills/sharia-content/"];
+const ALLOWED_PREFIXES = [
+  ".claude/skills/graphify/",
+  ".claude/skills/sharia-content/",
+  ".claude/skills/ios-native-swiftui/",
+  ".claude/skills/ios-widgets/",
+  ".claude/skills/tasmee-in-mushaf/",
+  ".claude/skills/release-1-1-0/",
+];
 
 function trackedFiles() {
   const out = execFileSync("git", ["ls-files", "-z", "--", ".claude", ".agents", ".codex"], {
