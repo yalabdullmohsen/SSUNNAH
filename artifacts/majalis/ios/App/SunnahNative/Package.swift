@@ -1,17 +1,19 @@
 // swift-tools-version: 5.9
 import PackageDescription
 
-// الهيكل الأصلي لسُنّة (SwiftUI). يُبنى ويُختبر مستقلًا عن هدف التطبيق،
-// ويُربط به خلف المفتاح native_shell_enabled (docs/program/PLAN.md).
+// الهيكل الأصلي لسُنّة (SwiftUI). يُبنى ويُختبر مستقلًا عن هدف التطبيق (ios-native/SunnahApp).
 let package = Package(
     name: "SunnahNative",
     defaultLocalization: "ar",
-    platforms: [.iOS(.v16)],
+    platforms: [.iOS(.v16), .macOS(.v13)],
     products: [
         .library(name: "SunnahNative", targets: ["SunnahNative"])
     ],
+    dependencies: [
+        .package(path: "../SunnahDataKit")
+    ],
     targets: [
-        .target(name: "SunnahNative"),
+        .target(name: "SunnahNative", dependencies: ["SunnahDataKit"]),
         .testTarget(name: "SunnahNativeTests", dependencies: ["SunnahNative"])
     ]
 )

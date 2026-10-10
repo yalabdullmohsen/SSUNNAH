@@ -3,10 +3,13 @@ import Foundation
 /// وجهة داخل NavigationStack. كل شاشة لم تُحوَّل أصليًا تبقى `.web`.
 public enum Route: Hashable {
     case web(path: String)
+    /// شاشة أصلية مسجّلة في `TemplateRegistry`.
+    case native(id: String)
 
     public var path: String {
         switch self {
         case .web(let path): return path
+        case .native(let id): return "/native/" + id
         }
     }
 
