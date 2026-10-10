@@ -59,7 +59,7 @@
   padding: 0.65rem 1rem;
   border-radius: var(--ds-radius-lg, 0.75rem);
   background: var(--mj-brand, var(--msk-gold));
-  color: var(--mj-white, #fff);
+  color: var(--mj-white, var(--sn-text-on-primary));
   font-size: 0.85rem;
   font-weight: 600;
   box-shadow: 0 6px 20px color-mix(in srgb, var(--mj-brand, var(--msk-gold)) 28%, transparent);
@@ -264,7 +264,7 @@ html[data-theme="dark"] .ads-diagnostics-toggle {
 .ads-chip.is-active {
   border-color: var(--mj-brand, var(--msk-gold));
   background: var(--mj-brand, var(--msk-gold));
-  color: var(--mj-white, #fff);
+  color: var(--mj-white, var(--sn-text-on-primary));
 }
 @media (prefers-reduced-motion: reduce) {
   .ads-chip { transition: none; }
@@ -367,7 +367,7 @@ html[data-theme="dark"] .ads-diagnostics-toggle {
   width: 27px;
   height: 27px;
   border-radius: 50%;
-  background: var(--mj-white, var(--mj-white, #fff));
+  background: var(--mj-white, var(--mj-white, var(--sn-surface)));
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
   transition: inset-inline-start 0.2s ease;
   pointer-events: none;
@@ -418,7 +418,7 @@ html[data-theme="dark"] .ads-diagnostics-toggle {
   min-height: 44px;
   border-radius: 0.5rem;
   border: 1px solid color-mix(in srgb, var(--clr-border, var(--mj-hairline)) 80%, transparent);
-  background: var(--clr-surface, var(--mj-white, var(--mj-white, #fff)));
+  background: var(--clr-surface, var(--mj-white, var(--mj-white, var(--sn-surface))));
   color: inherit;
   max-width: 9rem;
 }
@@ -603,7 +603,7 @@ html[data-theme="dark"] .ads-diagnostics-toggle {
   font-weight: 700;
 }
 .ads-diag-status[data-state="ready"] { color: var(--mj-brand, var(--msk-gold)); }
-.ads-diag-status[data-state="loading"] { color: var(--msk-text-muted, #5a6b63); }
+.ads-diag-status[data-state="loading"] { color: var(--msk-text-muted, var(--sn-text-tertiary)); }
 .ads-diag-status[data-state="playing"] { color: var(--mj-brand, var(--msk-gold)); }
 .ads-diag-status[data-state="failed"] { color: var(--mj-warning, #9a3412); }
 .ads-diag-mono {
@@ -701,7 +701,7 @@ html[data-theme="dark"] .ads-page--v3 {
 }
 .ads-sound-summary__text span {
   font-size: 0.78rem;
-  color: var(--msk-text-muted, #5a6b63);
+  color: var(--msk-text-muted, var(--sn-text-tertiary));
 }
 .ads-sound-summary__actions {
   display: flex;
@@ -730,7 +730,7 @@ html[data-theme="dark"] .ads-page--v3 {
 .ads-prayer-row__summary {
   margin-inline-start: auto;
   font-size: 0.75rem;
-  color: var(--msk-text-muted, #5a6b63);
+  color: var(--msk-text-muted, var(--sn-text-tertiary));
 }
 .ads-prayer-row__body {
   padding: 0 0.15rem 0.75rem;
@@ -866,7 +866,7 @@ html[data-theme="dark"] .ads-page--v3 {
 }
 .prayer-audio-picker__meta {
   font-size: 0.75rem;
-  color: var(--msk-text-muted, #5a6b63);
+  color: var(--msk-text-muted, var(--sn-text-tertiary));
 }
 .prayer-audio-picker__preview {
   width: 2.5rem;
@@ -890,7 +890,7 @@ html[data-theme="dark"] .ads-page--v3 {
 .prayer-audio-picker__empty,
 .prayer-audio-picker__note {
   font-size: 0.8rem;
-  color: var(--msk-text-muted, #5a6b63);
+  color: var(--msk-text-muted, var(--sn-text-tertiary));
 }
 .prayer-audio-picker__note {
   margin-top: 0.85rem;

@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { NativeShellToggle } from "@/pages/dev/NativeShellToggle";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { QuranSettingsRepository } from "@/lib/mushaf-v2/QuranSettingsRepository";
+import { readLoadFailLog } from "@/lib/load-fail-log";
 import { TASMEE_SCOPE_NOTE } from "@/lib/tasmee/copy";
 import { TASMEE_STRICTNESS_DESCRIPTIONS, TASMEE_STRICTNESS_LABELS, TASMEE_STRICTNESS_LEVELS, isTasmeeStrictness, type TasmeeStrictness } from "@/lib/tasmee/levels";
 import { TasmeeSession, type TasmeeSessionReport } from "@/lib/tasmee/session";
@@ -143,6 +144,10 @@ export default function TasmeeDiagnosticsPage() {
       <p style={{ margin: 0 }}>{TASMEE_SCOPE_NOTE}</p>
       <p style={{ margin: 0, opacity: 0.8 }}>{TASMEE_STRICTNESS_DESCRIPTIONS[strictness]}</p>
       <NativeShellToggle />
+      <section data-testid="load-fail-log">
+        <strong>أسباب فشل التحميل الأخيرة:</strong>{" "}
+        {readLoadFailLog().map((e) => `${e.code} @ ${new Date(e.at).toLocaleTimeString("en-GB")}`).join(" · ") || "لا شيء"}
+      </section>
       <section>
         <strong>الجهاز:</strong>{" "}
         {device ? `${device.model} · iOS ${device.osVersion} · ${device.physicalMemoryMB}MB · حرارة ${device.thermalState}${device.lowPowerMode ? " · توفير طاقة" : ""} · نموذج ${device.loaded ? "محمَّل" : "غير محمَّل"}` : "—"}

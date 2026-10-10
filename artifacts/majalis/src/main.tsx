@@ -1,4 +1,5 @@
 import { createRoot } from "react-dom/client";
+import { captureLoadFailFromUrl } from "./lib/load-fail-log";
 import { useEffect } from "react";
 import { installMountWatchdog, markAppMounted } from "./lib/mount-watchdog";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -402,6 +403,7 @@ async function mount() {
       l.removeAttribute("data-mj-css-defer");
     });
 
+  captureLoadFailFromUrl();
   try {
     createRoot(rootEl).render(
       <>
