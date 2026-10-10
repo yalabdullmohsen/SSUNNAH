@@ -40,6 +40,7 @@ function serve(dir) {
 async function shoot(browser, base, path, mode) {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: mode, reducedMotion: "reduce", locale: "ar" });
   await ctx.addInitScript((m) => { try { localStorage.setItem("theme", m); localStorage.setItem("mj-theme", m); } catch {} }, mode);
+  await ctx.clock.setFixedTime(new Date("2026-10-10T09:00:00Z")); // يثبّت الوقت: عدّادات الصلاة تغيّر البكسلات بين التشغيلين
   await ctx.route(/^(?!http:\/\/127\.0\.0\.1).*/, (r) => r.abort()); // لا شبكة خارجية → حتمية
   const page = await ctx.newPage();
   await page.goto(base + path, { waitUntil: "load" }).catch(() => {});
