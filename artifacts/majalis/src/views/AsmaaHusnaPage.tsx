@@ -1,5 +1,5 @@
 import "@/styles/pages/asmaa-husna.css";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, IconButton } from "@/design-system";
 import { useEffect, useMemo, useState } from "react";
 import { Search, Star, BookOpen, Heart } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
@@ -15,7 +15,6 @@ import { PageShell } from "@/components/layout/PageShell";
 import { PAGE_EXPLORE_LINKS } from "@/lib/explore-links";
 import { truncateAtWord } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
 import { AppBottomSheet } from "@/components/ui/AppBottomSheet";
 
 const CATEGORIES = [...ASMA_CATEGORIES];

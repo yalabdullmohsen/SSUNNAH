@@ -19,7 +19,7 @@ import { presentHadithAuthenticity } from "@/lib/hadith/hadith-authenticity-labe
 import { collectionFilterLabel } from "@/lib/hadith/hadith-collection-availability";
 
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 import { AppCard } from "@/components/design-system/AppCard";
 const COLLECTION_LABELS: Record<string, string> = {
   mutafaq: "متفق عليه",

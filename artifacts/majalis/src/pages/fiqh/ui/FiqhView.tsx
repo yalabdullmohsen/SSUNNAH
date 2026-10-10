@@ -43,7 +43,7 @@ import "@/styles/components/hub-card.css";
 import "@/styles/pages/knowledge-dashboards-v2.css";
 import "@/styles/sunnah-identity-sections.css";
 
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 function FiqhHubSearch({
   query,
   onQueryChange,

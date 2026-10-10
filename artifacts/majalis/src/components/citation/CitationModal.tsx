@@ -18,7 +18,7 @@ import {
 } from "@/lib/citation-service";
 import "@/styles/components/citation-modal.css";
 import { FieldLabel } from "@/components/design-system/FormFields";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import {
   Select,
