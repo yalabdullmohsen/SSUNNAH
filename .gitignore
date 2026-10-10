@@ -75,6 +75,10 @@ artifacts/majalis/public/data/search/shards/
 .claude/skills/*
 !.claude/skills/graphify/
 !.claude/skills/sharia-content/
+!.claude/skills/ios-native-swiftui/
+!.claude/skills/ios-widgets/
+!.claude/skills/tasmee-in-mushaf/
+!.claude/skills/release-1-1-0/
 .claude/homunculus/
 .agents/skills/
 .codex/
