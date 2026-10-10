@@ -8,7 +8,7 @@ import {
   type PositionedNode,
 } from "@/lib/mind-map-layout";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 
 const MIN_SCALE = 0.35;
 const MAX_SCALE = 2.2;

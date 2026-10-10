@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, IconButton } from "@/design-system";
 import { Link } from "wouter";
 import { Check, CheckCircle2, Search, Sparkles, X } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
@@ -9,7 +9,6 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/sunan-yawmiyya.css";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
 
 /* ─── أنواع البيانات ─── */
 type Sunnah = {

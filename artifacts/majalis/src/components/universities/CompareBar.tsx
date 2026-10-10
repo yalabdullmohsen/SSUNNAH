@@ -2,7 +2,7 @@ import "@/styles/components/university-card.css";
 import { Link } from "wouter";
 import { useCompare } from "./CompareContext";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 
 export function CompareBar() {
   const { compareList, removeFromCompare, clearCompare } = useCompare();

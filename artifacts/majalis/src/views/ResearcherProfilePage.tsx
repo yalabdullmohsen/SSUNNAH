@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { NavigationBar, PageHeader } from "@/design-system";
+import { NavigationBar, PageHeader, IconButton } from "@/design-system";
 import { Link } from "wouter";
 import { Link2, Lock } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
@@ -24,7 +24,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
 
 const SPEC_NONE = "__none__";
 

@@ -45,10 +45,9 @@ import { SEARCH_SCOPE_ICONS } from "@/features/search/search-scope-icons";
 import "@/styles/pages/search.css";
 import "@/styles/pages/library-search-v2.css";
 import { ACTION, EMPTY, SEARCH, STATUS } from "@/lib/ui-copy";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, IconButton } from "@/design-system";
 import { ErrorStateV2, NoResultsState, OfflineStateV2 } from "@/components/design-system";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
 
 const PAGE_SIZE = 40;
 const POPULAR_FALLBACK = ["التوحيد", "صحيح البخاري", "السيرة", "الوضوء", "الفاتحة", "الأذكار"];

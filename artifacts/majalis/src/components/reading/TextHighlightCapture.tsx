@@ -11,7 +11,7 @@ import {
 } from "@/lib/text-highlights";
 import { truncateAtWord } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 import "@/styles/components/text-highlight-capture.css";
 
 type Props = {

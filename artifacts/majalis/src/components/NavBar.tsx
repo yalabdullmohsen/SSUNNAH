@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState, lazy, Suspense } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, Moon, Search, Sun, User, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 import { useAuth } from "./AuthProvider";
 import { useLanguage } from "./LanguageProvider";
 import { useThemePreference } from "./ThemePreferenceProvider";
