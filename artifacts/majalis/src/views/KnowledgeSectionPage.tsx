@@ -157,7 +157,7 @@ export default function KnowledgeSectionPage() {
                 {item.evidences.map((e, i) => (
                   <li key={i}>
                     <strong>{e.type}</strong> [{e.ref}] {e.type === "ayah" ? `﴿${e.text}﴾` : e.text}
-                    {e.grade ? ` — ${e.grade}${e.graded_by ? ` (${e.graded_by})` : ""}` : ""}
+                    {e.grade ? ` — ${e.grade} (${e.graded_by || "لم يُوثَّق المحكِّم"})` : ""}
                   </li>
                 ))}
               </ul>
