@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, startTransition } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { AppCard } from "@/components/design-system/AppCard";
+import { Card } from "@/design-system";
 import { FormLabel, SearchInput } from "@/components/design-system/FormFields";
 import { StatusCard } from "@/components/design-system/SurfacePrimitives";
 import { emitAdminV3AuditEvent, listAdminV3AuditEvents } from "../audit-events";
@@ -24,7 +24,7 @@ function ToolCard({
   onOpen: (tool: AdminV3ToolItem) => void;
 }) {
   return (
-    <AppCard className="av3-tool-card" data-ss-surface="admin-tool">
+    <Card className="av3-tool-card" data-ss-surface="admin-tool">
       <h3 className="av3-tool-card__title">{tool.title}</h3>
       <p className="av3-tool-card__desc">{tool.description}</p>
       <div className="av3-tool-card__tags">
@@ -39,7 +39,7 @@ function ToolCard({
           فتح
         </Link>
       </Button>
-    </AppCard>
+    </Card>
   );
 }
 
