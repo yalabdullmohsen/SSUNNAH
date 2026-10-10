@@ -1,11 +1,10 @@
 {
-  "generatedAt": "2026-10-10T01:55:09.742Z",
+  "generatedAt": "2026-10-10T09:58:26.434Z",
   "paths": [
-    "package.json",
-    "reports/changed-scope-report.md",
-    "reports/changed-scope-verify.json",
-    "scripts/__tests__/ci-local-lock.test.mjs",
-    "scripts/ci-local-lock.sh"
+    ".github/workflows/asc-store-sync.yml",
+    "docs/handover/n3.md",
+    "scripts/asc-store-sync.mjs",
+    "store/asc/metadata-1.1.0.json"
   ],
   "scopes": [
     "ci/config",

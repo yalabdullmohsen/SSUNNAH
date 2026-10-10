@@ -1,7 +1,7 @@
 # تقرير نطاق التغييرات
 
-**التاريخ:** 2026-10-10T01:55:09.749Z
-**عدد الملفات:** 5
+**التاريخ:** 2026-10-10T09:58:26.435Z
+**عدد الملفات:** 4
 **النطاقات:** ci/config، docs، other
 **docs-only:** لا
 
@@ -25,11 +25,10 @@
 
 ## الملفات المتغيرة (أول 40)
 
-- `package.json` → ci_config
-- `reports/changed-scope-report.md` → docs
-- `reports/changed-scope-verify.json` → other
-- `scripts/__tests__/ci-local-lock.test.mjs` → other
-- `scripts/ci-local-lock.sh` → other
+- `.github/workflows/asc-store-sync.yml` → ci_config
+- `docs/handover/n3.md` → docs
+- `scripts/asc-store-sync.mjs` → other
+- `store/asc/metadata-1.1.0.json` → other
 
 
 ## سياسات
