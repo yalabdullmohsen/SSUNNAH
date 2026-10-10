@@ -1,4 +1,4 @@
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader, SkeletonCardGrid } from "@/design-system";
 import "@/styles/rulings-encyclopedia.css";
 import "@/styles/pages/fiqh-hub.css";
 import "@/styles/sunnah-identity-sections.css";
@@ -10,7 +10,6 @@ import type { LucideIcon } from "lucide-react";
 import { Link, useSearch } from "wouter";
 import { ShareButtons } from "@/components/ContentActions";
 import { useAuth } from "@/components/AuthProvider";
-import { PageHeader, SkeletonCardGrid } from "@/components/ui-common";
 import { EmptyStateV2, ErrorStateV2, NoResultsState } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 import { applyPageSeo } from "@/lib/seo";

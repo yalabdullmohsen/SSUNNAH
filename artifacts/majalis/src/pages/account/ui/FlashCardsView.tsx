@@ -6,7 +6,7 @@ import {
 import { Link } from "wouter";
 import { useAuth } from "@/components/AuthProvider";
 import { ShareButtons } from "@/components/ContentActions";
-import { PageHeader, PageStatusShell } from "@/components/ui-common";
+import { PageStatusShell } from "@/components/ui-common";
 import { applyPageSeo } from "@/lib/seo";
 import {
   getDueFlashCards,
@@ -24,7 +24,7 @@ import {
 } from "@/lib/spaced-repetition";
 import { recordUserActivity } from "@/lib/user-streak";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader } from "@/design-system";
 import { SectionErrorBoundary } from "@/components/ErrorBoundary";
 import { Button } from "@/components/ui/button";
 import "@/styles/pages/flashcards.css";

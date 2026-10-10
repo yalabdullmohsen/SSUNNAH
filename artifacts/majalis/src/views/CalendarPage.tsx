@@ -14,7 +14,7 @@ import {
 } from "date-fns";
 import { arSA } from "date-fns/locale";
 import { getUnifiedActiveLessons } from "@/lib/lessons-service";
-import { PageHeader, ErrorState } from "@/components/ui-common";
+import { ErrorState } from "@/components/ui-common";
 import { applyPageSeo } from "@/lib/seo";
 import { STATUS } from "@/lib/ui-copy";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
@@ -25,7 +25,7 @@ import {
   CALENDAR_WEEKDAY_LABELS,
   hijriMonthYearLabel,
 } from "@/lib/calendar-dates";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader } from "@/design-system";
 import { ActionButton } from "@/components/design-system";
 import {
   eventsForDate,

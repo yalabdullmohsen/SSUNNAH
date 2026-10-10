@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader, SkeletonCardGrid } from "@/design-system";
 import { BookMarked, BookOpen, Leaf, Moon, Scale, ScrollText, Shapes } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Link } from "wouter";
-import { PageHeader, SkeletonCardGrid } from "@/components/ui-common";
 import { PageShell } from "@/components/layout/PageShell";
 import { fetchAllTopics } from "@/lib/scholarly-intelligence-service";
 import { applyPageSeo } from "@/lib/seo";

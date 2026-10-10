@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { PageHeader, SkeletonCardGrid, Empty } from "@/components/ui-common";
+import { Empty } from "@/components/ui-common";
+import { PageHeader, SkeletonCardGrid } from "@/design-system";
 import { HubCard } from "@/components/ui/HubCard";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
 import { applyPageSeo } from "@/lib/seo";

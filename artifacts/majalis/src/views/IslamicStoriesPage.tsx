@@ -3,7 +3,8 @@ import { AlertTriangle, Bird, BookOpen, Castle, Compass, Flower2, Gem, Landmark,
 import type { LucideIcon } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { isSupabaseConfigured } from "@/lib/supabase-config";
-import { SkeletonCardGrid, Empty } from "@/components/ui-common";
+import { Empty } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { getIslamicStoriesCached, loadIslamicStoriesSeed } from "@/lib/islamic-stories-seed";
 import { applyPageSeo } from "@/lib/seo";

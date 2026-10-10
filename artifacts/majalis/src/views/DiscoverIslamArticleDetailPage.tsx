@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "wouter";
-import { PageHeader, Empty } from "@/components/ui-common";
+import { Empty } from "@/components/ui-common";
+import { PageHeader } from "@/design-system";
 import { ShareButtons } from "@/components/ContentActions";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";

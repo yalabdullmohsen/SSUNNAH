@@ -1,6 +1,5 @@
 import { SectionIcon } from "@/components/ui/SectionIcon";
-import { PageHeader } from "@/components/ui-common";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader } from "@/design-system";
 
 type Disease = {
   id: string;

@@ -1,7 +1,6 @@
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader } from "@/design-system";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
-import { PageHeader } from "@/components/ui-common";
 import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { calculateInheritance } from "@/lib/inheritance/engine";

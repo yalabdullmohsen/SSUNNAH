@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Heart } from "lucide-react";
-import { PageHeader, SkeletonCardGrid, Empty } from "@/components/ui-common";
+import { Empty } from "@/components/ui-common";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { ShareButtons } from "@/components/ContentActions";
 import { fetchPublishedArbaeenLove, type ArbaeenHadith } from "@/lib/arbaeen-love-service";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader, SkeletonCardGrid } from "@/design-system";
 import "@/styles/components/topic-page.css";
 
 export default function ArbaeenLovePage() {

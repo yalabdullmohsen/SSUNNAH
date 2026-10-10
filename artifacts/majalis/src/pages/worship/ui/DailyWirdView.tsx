@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader } from "@/design-system";
 import { Award, BookOpen, Flame, Leaf, TrendingUp } from "lucide-react";
 import { Link } from "wouter";
-import { PageHeader } from "@/components/ui-common";
 import {
   getDailyWirdState,
   getSurahList,

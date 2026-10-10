@@ -4,7 +4,7 @@ import type { LucideIcon } from "lucide-react";
 import { Link } from "wouter";
 import { useAuth } from "@/components/AuthProvider";
 import { ShareButtons } from "@/components/ContentActions";
-import { PageHeader } from "@/components/ui-common";
+import { PageHeader } from "@/design-system";
 import {
   getUserProfileStats,
   checkAndAwardBadges,
