@@ -21,7 +21,7 @@ const GRADERS =
 
 export function contradicts(h) {
   const g = (h.grade || "").trim();
-  if (h.authenticity_class === "sahih") return /ضعيف|موضوع|منكر|واه/.test(g);
+  if (h.authenticity_class === "sahih") return /(^|[\s—،(])(ضعيف|موضوع|منكر|واه)/.test(g);
   return /^(صحيح|حسن)/.test(g);
 }
 export function hasNamedGrader(h) {
