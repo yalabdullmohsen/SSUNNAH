@@ -15,6 +15,7 @@
   "test-critical-css-budget.mjs",
   "test-cron-auth.mjs",
   "test-gates-all-registered.mjs",
+  "test-hadith-collection-source-guard.mjs",
   "test-hadith-takhrij-guard.mjs",
   "test-identity.mjs",
   "test-kuwait-instagram-sources.mjs",
