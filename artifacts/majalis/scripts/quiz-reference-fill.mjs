@@ -46,22 +46,34 @@ function refFor(q) {
   }
   return [...refs].join("؛ ") || null;
 }
+/* تصنيف حتمي بحسب القسم: لا يغيّر الحياة ولا يدّعي توثيقًا (غير المطابَق نصيًا يبقى بلا مرجع) */
+const CLASS_BY_SECTION = [
+  [/تجويد/, "tajweed"],
+  [/قرآن/, "quran"],
+  [/^الحديث|الطب النبوي/, "hadith"],
+  [/فقه|عقيدة|طهارة|صلاة|زكاة|صيام|^الحج|حج والعمرة|فرائض|أسماء|أذكار/, "fiqh_aqeedah"],
+  [/تاريخ|سيرة|أنبياء|صحابة|فتوحات|علماء|صالحون/, "history"],
+];
+const classOf = (sec) => CLASS_BY_SECTION.find(([re]) => re.test(sec))?.[1] ?? "other";
 let total = 0, filled = 0, files = 0;
 const dir = `${root}/quiz`;
 for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".json") && x !== "manifest.json")) {
   const raw = fs.readFileSync(`${dir}/${f}`, "utf8");
   const arr = JSON.parse(raw);
   const ind = JSON.stringify(arr) === raw.trim() ? 0 : JSON.stringify(arr, null, 2) === raw.trim() ? 2 : -1;
-  let ch = 0;
+  let ch = 0, cl = 0;
   for (const q of arr) {
     if (q.reference) continue;
     total++;
+    if (!q.source_class) { q.source_class = classOf(String(q.section)); cl++; }
     const r = refFor(q);
     /* المرجع يُحيي السؤال (content-audit-wave3-gate): لا يُحيى بلا شرح */
     if (r && (/^demo[-_]/i.test(String(q.id)) || String(q.explanation || "").trim())) { q.reference = r; q.documentation_status = "sourced"; ch++; }
   }
   filled += ch;
-  if (ch) {
+  /* ملف edu منسَّق على أسطر: تصنيفه يتجاوز حد 400 سطر محذوف فيُؤجَّل لـPR مستقل */
+  if (ind === 2 && !ch) continue;
+  if (ch || cl) {
     files++;
     if (ind < 0) { console.error("تنسيق الملف غير مضغوط، تخطّي:", f); continue; }
     if (write) fs.writeFileSync(`${dir}/${f}`, JSON.stringify(arr, null, ind) + (raw.endsWith("\n") ? "\n" : ""));
