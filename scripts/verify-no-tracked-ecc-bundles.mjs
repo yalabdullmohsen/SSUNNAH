@@ -25,6 +25,13 @@ const FORBIDDEN_PREFIXES = [
 const ALLOWED_PREFIXES = [
   ".claude/skills/graphify/",
   ".claude/skills/sharia-content/",
+  ".claude/skills/post-merge-verify/",
+  ".claude/skills/pre-merge-self-review/",
+  ".claude/skills/rtl-visual-verification/",
+  ".claude/skills/session-cost-tuning/",
+  ".claude/skills/session-handoff/",
+  ".claude/skills/surgical-changes/",
+  ".claude/skills/systematic-debugging/",
   ".claude/skills/app-store-readiness/",
   ".claude/skills/arabic-search/",
   ".claude/skills/aso-growth/",
