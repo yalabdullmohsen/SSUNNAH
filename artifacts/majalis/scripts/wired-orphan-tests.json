@@ -4,6 +4,7 @@
   "adhan-upload-removed.test.ts",
   "adhkar-db-verified-only-gate.test.ts",
   "adhkar-routes.test.ts",
+  "adhkar-unsnad-grade-filter.test.ts",
   "audio-library-engine.test.ts",
   "ayah-ref-normalize-gate.test.ts",
   "boot-sequence-gate.test.ts",
