@@ -20,7 +20,7 @@ const reportFile = reportIdx > 0 ? argv[reportIdx + 1] : null;
 const skipIdx = argv.indexOf("--skip");
 const skip = new Set(skipIdx > 0 ? argv[skipIdx + 1].split(",") : []);
 const argPaths = argv.slice(1).filter((a, i, arr) => !a.startsWith("--") && arr[i - 1] !== "--report" && arr[i - 1] !== "--skip");
-/** سقف ΔE76 المعتمد للتحويل التلقائي (قرار المالك 2026-10-10: ≤5؛ ≤2.3 غير مرئي، 2.3–5 يُسرد في PR). */
+/** سقف CIEDE2000 المعتمد للتحويل التلقائي (قرار المالك 2026-10-10: ≤5؛ ≤2.3 غير مرئي، 2.3–5 يُسرد في PR). */
 export const MAX_DELTA_E = 5;
 /** حدّ فرق اللقطة المسموح (نسبة بكسلات مختلفة) — تفرضه debt-codemod-verify.mjs. */
 export const MAX_SCREENSHOT_DIFF = 0.002;
@@ -84,7 +84,7 @@ function allowed(prop) {
 }
 const byHexExact = (hex) => byHex.get(hex);
 
-// ΔE76 في فضاء Lab — للتقرير فقط (لا تحويل تلقائي إلا بمطابقة حرفية)
+// CIEDE2000 في فضاء Lab — للتقرير فقط (لا تحويل تلقائي إلا بمطابقة حرفية)
 const lab = (h) => {
   const c = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) / 255).map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
   const [x, y, z] = [
@@ -94,6 +94,30 @@ const lab = (h) => {
   ].map((v) => (v > 0.008856 ? Math.cbrt(v) : 7.787 * v + 16 / 116));
   return [116 * y - 16, 500 * (x - y), 200 * (y - z)];
 };
+// CIEDE2000 (Sharma 2005)
+const de2000 = ([L1, a1, b1], [L2, a2, b2]) => {
+  const rad = (d) => (d * Math.PI) / 180, deg = (r) => (r * 180) / Math.PI;
+  const C1 = Math.hypot(a1, b1), C2 = Math.hypot(a2, b2), Cm = (C1 + C2) / 2;
+  const G = 0.5 * (1 - Math.sqrt(Cm ** 7 / (Cm ** 7 + 25 ** 7)));
+  const ap1 = (1 + G) * a1, ap2 = (1 + G) * a2;
+  const Cp1 = Math.hypot(ap1, b1), Cp2 = Math.hypot(ap2, b2);
+  const hp = (b, a) => (b === 0 && a === 0 ? 0 : (deg(Math.atan2(b, a)) + 360) % 360);
+  const hp1 = hp(b1, ap1), hp2 = hp(b2, ap2);
+  const dL = L2 - L1, dC = Cp2 - Cp1;
+  let dh = 0;
+  if (Cp1 * Cp2 !== 0) { dh = hp2 - hp1; if (dh > 180) dh -= 360; else if (dh < -180) dh += 360; }
+  const dH = 2 * Math.sqrt(Cp1 * Cp2) * Math.sin(rad(dh / 2));
+  const Lm = (L1 + L2) / 2, Cpm = (Cp1 + Cp2) / 2;
+  let hm = hp1 + hp2;
+  if (Cp1 * Cp2 !== 0) hm = Math.abs(hp1 - hp2) <= 180 ? hm / 2 : hp1 + hp2 < 360 ? (hm + 360) / 2 : (hm - 360) / 2;
+  const T = 1 - 0.17 * Math.cos(rad(hm - 30)) + 0.24 * Math.cos(rad(2 * hm)) + 0.32 * Math.cos(rad(3 * hm + 6)) - 0.2 * Math.cos(rad(4 * hm - 63));
+  const dTh = 30 * Math.exp(-(((hm - 275) / 25) ** 2));
+  const Rc = 2 * Math.sqrt(Cpm ** 7 / (Cpm ** 7 + 25 ** 7));
+  const Sl = 1 + (0.015 * (Lm - 50) ** 2) / Math.sqrt(20 + (Lm - 50) ** 2);
+  const Sc = 1 + 0.045 * Cpm, Sh = 1 + 0.015 * Cpm * T;
+  const Rt = -Math.sin(rad(2 * dTh)) * Rc;
+  return Math.sqrt((dL / Sl) ** 2 + (dC / Sc) ** 2 + (dH / Sh) ** 2 + Rt * (dC / Sc) * (dH / Sh));
+};
 const tokenLab = [...byHex].map(([h, names]) => ({ h, names, lab: lab(h) }));
 const nearest = (h, ok) => {
   const l = lab(h);
@@ -101,7 +125,7 @@ const nearest = (h, ok) => {
   for (const t of tokenLab) {
     const names = ok ? t.names.filter(ok) : t.names;
     if (!names.length) continue;
-    const d = Math.hypot(l[0] - t.lab[0], l[1] - t.lab[1], l[2] - t.lab[2]);
+    const d = de2000(l, t.lab);
     if (d < best.d) best = { d, names };
   }
   return best;
@@ -165,9 +189,16 @@ const after = stats.hexBefore - stats.auto;
 const top = (m, n = 12) => [...m].sort((a, b) => b[1] - a[1]).slice(0, n).map(([k, v]) => `  ${v}\t${k}`).join("\n");
 console.log(`debt-codemod ${mode} — ${stats.files} ملفًا، ${changedFiles} قابلًا للتعديل`);
 console.log(`hex قبل: ${stats.hexBefore} | بعد: ${after} | يتحول تلقائيًا: ${stats.auto} | مبهم: ${stats.ambiguous} | بلا رمز مطابق: ${stats.noToken}`);
-console.log(`أقرب رمز (ΔE76) للمتبقي بلا مطابقة حرفية: ${JSON.stringify(deltaBuckets)} — تقرير فقط`);
+console.log(`أقرب رمز (CIEDE2000) للمتبقي بلا مطابقة حرفية: ${JSON.stringify(deltaBuckets)} — تقرير فقط`);
 console.log("أكثر التحويلات:\n" + top(mapped));
 console.log("أكثر المتبقي (يدوي/بلا رمز):\n" + top(residue));
+// سقف الدين المعلوم (ΔE>5 + مبهم): لا يزيد أبدًا — يُخفَّض يدويًا في debt-baseline.json
+if (mode === "--check") {
+  const ceiling = JSON.parse(readFileSync(new URL("./debt-baseline.json", import.meta.url), "utf8")).criticalPathResidualHex;
+  const residual = stats.noToken + stats.ambiguous;
+  if (residual > ceiling) { console.error(`✗ دين hex المتبقي ${residual} > السقف ${ceiling} (docs/design/DEBT_BASELINE.md)`); process.exit(1); }
+  console.log(`✓ دين hex المتبقي ${residual} ≤ السقف ${ceiling}`);
+}
 if (mode === "--check" && stats.auto > 0) {
   console.error(`✗ ${stats.auto} لونًا خامًا قابلًا للتحويل الحرفي — شغّل --apply`);
   process.exit(1);

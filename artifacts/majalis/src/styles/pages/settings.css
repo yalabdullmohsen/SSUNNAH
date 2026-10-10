@@ -63,7 +63,7 @@
   background: transparent !important;
   border: 1.5px solid rgba(192,57,43,0.3) !important;
   border-radius: var(--sf-radius-control, 12px) !important;
-  color: var(--mj-danger, #c0392b) !important;
+  color: var(--mj-danger, var(--sn-danger)) !important;
   font-size: 0.825rem !important;
   font-weight: 600 !important;
   font-family: inherit !important;
@@ -112,7 +112,7 @@
 
 .settings-legal-link--danger {
   border-color: rgba(192,57,43,0.25) !important;
-  color: var(--mj-danger, #c0392b) !important;
+  color: var(--mj-danger, var(--sn-danger)) !important;
 }
 
 .settings-legal-link--danger:hover {
@@ -120,8 +120,8 @@
 }
 
 .page-action-btn--danger {
-  background: color-mix(in srgb, var(--mj-danger, #c0392b) 12%, transparent) !important;
-  color: var(--mj-danger, #9b2c1f) !important;
+  background: color-mix(in srgb, var(--mj-danger, var(--sn-danger)) 12%, transparent) !important;
+  color: var(--mj-danger, var(--sn-danger)) !important;
   border: 1.5px solid rgba(192, 57, 43, 0.35) !important;
 }
 
@@ -154,7 +154,7 @@
   margin: 0 0 0.65rem;
   font-size: 1.1rem;
   font-weight: 700;
-  color: #9b2c1f;
+  color: var(--sn-danger);
 }
 
 .settings-delete-dialog__panel p {

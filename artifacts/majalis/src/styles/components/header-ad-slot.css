@@ -63,8 +63,8 @@
   line-height: 1;
   letter-spacing: 0;
   white-space: nowrap;
-  color: #0f2f28;
-  background: linear-gradient(135deg, #ebe4d4 0%, #d4b76a 100%);
+  color: var(--sn-text-primary);
+  background: linear-gradient(135deg, var(--sn-surface-2) 0%, #d4b76a 100%);
   border: 1px solid color-mix(in srgb, var(--mj-white) 35%, #d4b76a);
 }
 
@@ -125,8 +125,8 @@ html.theme-dark .header-ad-slot__subtitle {
 
 html[data-theme="dark"] .header-ad-slot__badge,
 html.theme-dark .header-ad-slot__badge {
-  color: #0f2f28;
-  background: linear-gradient(135deg, #ebe4d4 0%, #d4b76a 100%);
+  color: var(--sn-text-primary);
+  background: linear-gradient(135deg, var(--sn-surface-2) 0%, #d4b76a 100%);
 }
 
 @media (max-width: 379px) {

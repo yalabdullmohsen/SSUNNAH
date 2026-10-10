@@ -858,7 +858,7 @@ html.dark .lesson-detail-info-grid dd,
   margin: 0;
   font-size: 0.86rem;
   font-weight: 650;
-  color: color-mix(in srgb, var(--lesson-green-deep) 82%, #3d4f47);
+  color: color-mix(in srgb, var(--lesson-green-deep) 82%, var(--sn-text-secondary));
   overflow-wrap: anywhere;
 }
 
@@ -1521,7 +1521,7 @@ html.dark .lesson-filters__icon-btn,
 html[data-theme="dark"] .lesson-filters__search-field input,
 html.dark .lesson-filters__search-field input {
   background: var(--color-surface);
-  color: var(--text-primary, #ecf2ef);
+  color: var(--text-primary, var(--sn-text-on-primary));
   border-color: color-mix(in srgb, var(--mj-brand) 32%, var(--mj-ink-2));
 }
 

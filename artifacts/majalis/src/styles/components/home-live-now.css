@@ -10,10 +10,10 @@
   gap: 0.75rem;
   padding: 0.75rem 0.95rem;
   border-radius: var(--radius-card, 1.25rem);
-  border: 1px solid color-mix(in srgb, var(--mj-brand-deep, #1a4d3e) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mj-brand-deep, var(--sn-primary-strong)) 18%, transparent);
   background: linear-gradient(
     135deg,
-    color-mix(in srgb, var(--mj-brand-deep, #1a4d3e) 8%, var(--color-surface, var(--mj-white))) 0%,
+    color-mix(in srgb, var(--mj-brand-deep, var(--sn-primary-strong)) 8%, var(--color-surface, var(--mj-white))) 0%,
     var(--color-surface, var(--mj-white)) 100%
   );
   box-shadow: 0 2px 10px color-mix(in srgb, var(--mj-brand-deep, #1a4d3e) 6%, transparent);
@@ -24,11 +24,11 @@ html.dark .hlive__inner {
   border-color: color-mix(in srgb, var(--mj-white) 10%, transparent);
   background: linear-gradient(
     135deg,
-    color-mix(in srgb, var(--mj-brand-deep, #1a4d3e) 22%, var(--mj-surface, #1b2421)) 0%,
+    color-mix(in srgb, var(--mj-brand-deep, var(--sn-primary-strong)) 22%, var(--mj-surface, #1b2421)) 0%,
     var(--mj-surface, #1b2421) 100%
   );
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.22);
-  color: var(--mj-ink, #ecf2ef);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }
 
 .hlive__pulse {
@@ -38,8 +38,8 @@ html.dark .hlive__inner {
   width: 2.35rem;
   height: 2.35rem;
   border-radius: var(--radius-pill, 999rem);
-  color: var(--mj-brand-deep, #1a4d3e);
-  background: color-mix(in srgb, var(--mj-brand-deep, #1a4d3e) 12%, transparent);
+  color: var(--mj-brand-deep, var(--sn-primary-strong));
+  background: color-mix(in srgb, var(--mj-brand-deep, var(--sn-primary-strong)) 12%, transparent);
 }
 
 html[data-theme="dark"] .hlive__pulse,
@@ -64,7 +64,7 @@ html.dark .hlive__pulse {
 
 html[data-theme="dark"] .hlive__eyebrow,
 html.dark .hlive__eyebrow {
-  color: color-mix(in srgb, var(--mj-ink, #ecf2ef) 68%, transparent);
+  color: color-mix(in srgb, var(--mj-ink, var(--sn-text-on-primary)) 68%, transparent);
 }
 
 .hlive__badge {
@@ -77,7 +77,7 @@ html.dark .hlive__eyebrow {
   font-weight: 700;
   letter-spacing: 0;
   color: var(--mj-white);
-  background: #a33b30;
+  background: var(--sn-danger);
 }
 
 .hlive__dot {
@@ -100,7 +100,7 @@ html.dark .hlive__eyebrow {
 
 html[data-theme="dark"] .hlive__title,
 html.dark .hlive__title {
-  color: var(--mj-ink, #ecf2ef);
+  color: var(--mj-ink, var(--sn-text-on-primary));
 }
 
 .hlive__meta,
@@ -117,7 +117,7 @@ html[data-theme="dark"] .hlive__meta,
 html[data-theme="dark"] .hlive__more,
 html.dark .hlive__meta,
 html.dark .hlive__more {
-  color: color-mix(in srgb, var(--mj-ink, #ecf2ef) 68%, transparent);
+  color: color-mix(in srgb, var(--mj-ink, var(--sn-text-on-primary)) 68%, transparent);
 }
 
 .hlive__cta {
@@ -126,7 +126,7 @@ html.dark .hlive__more {
   min-height: 42px;
   border-radius: var(--radius-pill, 999rem) !important;
   padding-inline: 1rem;
-  background: var(--mj-brand-deep, #1a4d3e) !important;
+  background: var(--mj-brand-deep, var(--sn-primary-strong)) !important;
   color: var(--sn-text-on-primary) !important;
   border: none !important;
   box-shadow: none !important;

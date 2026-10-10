@@ -192,7 +192,7 @@ html.dark .header-ticker {
   padding: 0.14rem 0.5rem;
   border-radius: 999px;
   background: var(--color-primary-soft, var(--sn-primary-soft));
-  color: var(--color-primary, #12362a);
+  color: var(--color-primary, var(--sn-primary-strong));
   font-size: 0.72rem;
   font-weight: 800;
   line-height: 1.2;

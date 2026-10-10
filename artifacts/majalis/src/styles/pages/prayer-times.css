@@ -433,7 +433,7 @@ html.pts-immersive .scroll-to-top {
   overflow: hidden;
   border-radius: var(--pts-radius, var(--radius-card, 1.25rem));
   border: 1px solid var(--pts-card-border);
-  background-color: #18483A;
+  background-color: var(--sn-primary-strong);
   background-image: linear-gradient(165deg, rgba(36, 98, 80, 0.55) 0%, rgba(14, 48, 40, 0.42) 100%);
   color: var(--pts-white);
   box-shadow: 0 10px 24px -16px rgba(0, 0, 0, 0.35);

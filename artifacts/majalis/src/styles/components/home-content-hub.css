@@ -67,7 +67,7 @@
   height: 2.35rem;
   border-radius: var(--sf-radius-xs);
   background: color-mix(in srgb, var(--mj-brand, var(--mj-brand)) 14%, transparent);
-  color: var(--mj-brand-deep, #12362a);
+  color: var(--mj-brand-deep, var(--sn-primary-strong));
 }
 
 .home-content-hub__copy {
