@@ -12,7 +12,7 @@ import {
 import { adminApproveAutoContent, adminRejectAutoContent } from "@/lib/auto-content-service";
 import { adminListUnifiedContent, adminSetPinned, adminDeleteUnifiedContent } from "@/lib/unified-content-service";
 import type { AutoImportedContent } from "@/lib/auto-content/auto-content-utils";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { AdminShell, useAdminShell } from "@/views/admin/AdminShell";
 
 const CONTENT_TYPE_LABEL: Record<string, string> = {

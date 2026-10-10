@@ -7,7 +7,7 @@ import {
   refreshInstagramTokenInfo,
   type InstagramIntegrationStatus,
 } from "@/lib/instagram-integration-api";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { AdminShell } from "@/views/admin/AdminShell";
 
 function StatusBadge({ ok, label }: { ok: boolean; label: string }) {

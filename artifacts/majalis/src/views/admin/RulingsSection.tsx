@@ -6,7 +6,7 @@ import { getAllRulingsForAdmin } from "@/lib/rulings-service";
 import { RULINGS_CATEGORY_TREE, flattenCategories } from "@/lib/rulings-categories";
 import { importRulingsFromText, RULINGS_CSV_TEMPLATE } from "@/lib/rulings-import";
 import { validateRuling, findSimilarRulings } from "@/lib/rulings-validator";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { adminListLoad } from "@/lib/admin-list-load";
 import { StatusBadge } from "./AdminUI";
 import { AdminModal, Field } from "./AdminModal";

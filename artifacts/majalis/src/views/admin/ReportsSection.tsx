@@ -4,7 +4,7 @@ import { adminGetDashboardStats, adminGetStats } from "@/lib/supabase";
 import { ADHKAR_ITEMS } from "@/lib/adhkar-seed";
 import { getPublishedAdhkarItems } from "@/lib/adhkar-admin";
 import { Button } from "@/components/ui/button";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { useAdminShell } from "./AdminShell";
 import { AdminSectionToolbar } from "./AdminSectionToolbar";
 

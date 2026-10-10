@@ -4,6 +4,7 @@ import { Icon, type DsIconName } from "./Icon";
 import { cn } from "@/lib/utils";
 import { S } from "@/design-system/strings";
 import { hapticTap } from "@/lib/capacitor-utils";
+import { STATUS } from "@/lib/ui-copy";
 
 /** الأنواع الأربعة: primary · secondary · tertiary(نصي) · الأيقونة = IconButton. destructive/on-hero حالات خاصة. */
 type ButtonVariant = "primary" | "secondary" | "tertiary" | "destructive" | "on-hero";
@@ -148,6 +149,14 @@ export function SkeletonCard() {
       <Skeleton shape="title" width="third" />
       <Skeleton />
       <Skeleton width="two-thirds" />
+    </div>
+  );
+}
+
+export function SkeletonCardGrid({ count = 6 }: { count?: number }) {
+  return (
+    <div className="sn-stack" role="status" aria-busy="true" aria-live="polite" aria-label={STATUS.contentLoading}>
+      {Array.from({ length: count }).map((_, i) => <SkeletonCard key={i} />)}
     </div>
   );
 }

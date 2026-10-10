@@ -15,7 +15,7 @@ import { adminGetDashboardStats, adminResolveReport } from "@/lib/supabase";
 import { getCmsDashboardStats } from "@/lib/cms/supabase-cms";
 import { getTopSearchQueries } from "@/lib/search-history";
 import { isSupabaseConfigured } from "@/lib/supabase-config";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { useAuth } from "@/components/AuthProvider";
 import { Button } from "@/components/ui/button";
 import { useAdminShell, type AdminSection } from "./AdminShell";
