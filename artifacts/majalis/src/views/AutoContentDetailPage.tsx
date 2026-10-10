@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { Empty } from "@/components/ui-common";
 import { ContentDetailLayout } from "@/components/platform/ContentDetailLayout";
 import { fetchLiveAutoContentBySlug, getPublishedAutoContentBySlug } from "@/lib/auto-content-service";
 import { mapContentTypeToUpdateType } from "@/lib/auto-content/auto-content-utils";
@@ -9,7 +8,7 @@ import { EMPTY } from "@/lib/ui-copy";
 import { breadcrumbJsonLd } from "@/lib/seo-structured-data";
 import { usePageView } from "@/hooks/usePageView";
 import type { AutoImportedContent } from "@/lib/auto-content/auto-content-utils";
-import { NavigationBar, SkeletonCardGrid } from "@/design-system";
+import { EmptyState, NavigationBar, SkeletonCardGrid } from "@/design-system";
 import { truncateAtWord } from "@/lib/utils";
 
 export default function AutoContentDetailPage({ params }: { params: { slug: string } }) {
@@ -68,7 +67,7 @@ export default function AutoContentDetailPage({ params }: { params: { slug: stri
   }, [item, loading, params.slug]);
 
   if (loading && !item) return <SkeletonCardGrid />;
-  if (!item) return <Empty text={EMPTY.data} />;
+  if (!item) return <EmptyState title={EMPTY.data} />;
 
   const updateType = mapContentTypeToUpdateType(item.content_type);
 
