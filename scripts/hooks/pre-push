@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+# مجالس — Pre-Push (خفيف افتراضيًا). المصدر المُدار: scripts/hooks/pre-push ← يُثبَّت بـ scripts/install-pre-push-hook.sh
+# افتراضيًا: CSS integrity + eslint على الملفات المتغيّرة + ci:local (بوابات سريعة + اختبارات ذات صلة) + preflight.
+# بلا vite build ولا tsc كامل ولا playwright. الفحص الكامل: CI_LOCAL_FULL=1 git push
+# الفحوص المطلوبة على GitHub لا تتغيّر.
+set -euo pipefail
+ROOT="$(git rev-parse --show-toplevel)"
+APP_DIR="$ROOT/artifacts/majalis"
+PNPM_BIN="${PNPM_BIN:-$(command -v pnpm || true)}"
+[[ -z "$PNPM_BIN" && -x "$HOME/.local/bin/pnpm" ]] && PNPM_BIN="$HOME/.local/bin/pnpm"
+[[ -z "$PNPM_BIN" ]] && { echo "pnpm غير موجود في PATH" >&2; exit 1; }
+export NODE_OPTIONS="${NODE_OPTIONS:---max-old-space-size=1536}"
+
+RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; NC='\033[0m'
+fail() { echo -e "${RED}✗ Pre-Push: $1${NC}"; exit 1; }
+pass() { echo -e "${GREEN}✓ $1${NC}"; }
+echo -e "${YELLOW}══ مجالس Pre-Push ($([[ "${CI_LOCAL_FULL:-}" == 1 ]] && echo كامل || echo خفيف)) ══${NC}"
+cd "$ROOT"
+
+echo "⏳ فحص CSS integrity…"
+(
+  cd "$APP_DIR"
+  python3 - <<'PYEOF'
+import re, sys, glob
+errors = []
+for fpath in glob.glob('src/**/*.css', recursive=True) + ['src/index.css']:
+    try:
+        for i, line in enumerate(open(fpath).readlines(), 1):
+            if 'url(' in line and 'data:image/svg' in line:
+                m = re.search(r"url\(([\"'])", line)
+                if m:
+                    close_q = "'" if m.group(1) == '"' else '"'
+                    end = line.rstrip()
+                    if f"{close_q})" in end or f"{close_q} )" in end:
+                        errors.append(f'{fpath}:{i} — اقتباسات متعارضة في data-URI')
+    except Exception:
+        pass
+if errors:
+    print('\n'.join(errors)); sys.exit(1)
+print('CSS integrity OK')
+PYEOF
+) || fail "CSS integrity"
+pass "CSS integrity"
+
+# eslint على الملفات المتغيّرة فقط (مقارنةً بـ origin/main)
+BASE="$(git merge-base origin/main HEAD 2>/dev/null || true)"
+if [[ -n "$BASE" ]]; then
+  ESLINT_FILES=()
+  while IFS= read -r f; do
+    [[ -z "$f" ]] && continue
+    case "$f" in
+      artifacts/majalis/src/*.generated.ts|artifacts/majalis/lib/*.generated.ts) ;;
+      artifacts/majalis/src/*.ts|artifacts/majalis/src/*.tsx|artifacts/majalis/lib/*.ts|artifacts/majalis/lib/*.js)
+        [[ -f "$f" ]] && ESLINT_FILES+=("${f#artifacts/majalis/}") ;;
+    esac
+  done < <(git diff --name-only "$BASE" HEAD)
+  if [[ ${#ESLINT_FILES[@]} -gt 0 ]]; then
+    echo "⏳ ESLint (${#ESLINT_FILES[@]} ملف متغيّر)…"
+    (cd "$APP_DIR" && bash "$ROOT/scripts/ci-local-lock.sh" "$PNPM_BIN" exec eslint "${ESLINT_FILES[@]}" --max-warnings=0 --no-warn-ignored) || fail "ESLint"
+    pass "ESLint"
+  fi
+fi
+
+echo "⏳ ci:local…"
+"$PNPM_BIN" run ci:local || fail "ci:local"
+pass "ci:local"
+
+echo "⏳ verify:preflight…"
+node scripts/verify-preflight.mjs || fail "verify:preflight"
+pass "verify:preflight"
+
+if [[ "${CI_LOCAL_FULL:-}" != 1 ]]; then
+  echo -e "${GREEN}══ Pre-Push OK (خفيف) — CI_LOCAL_FULL=1 للـtypecheck+build ══${NC}"
+  exit 0
+fi
+
+if node scripts/verify-fingerprint.mjs check verify-ci >/dev/null 2>&1; then
+  echo -e "${GREEN}✓ verify:ci fingerprint HIT — تخطّي typecheck/build${NC}"; exit 0
+fi
+echo "⏳ TypeScript typecheck…"
+(cd "$APP_DIR" && bash "$ROOT/scripts/ci-local-lock.sh" "$PNPM_BIN" run typecheck) || fail "TypeScript"
+pass "TypeScript"
+(cd "$APP_DIR" && node scripts/verify-font-consistency.mjs) || fail "اتساق الخط"
+pass "اتساق الخط"
+echo "⏳ Vite build…"
+(cd "$APP_DIR" && bash "$ROOT/scripts/ci-local-lock.sh" npx vite build --config vite.config.ts --logLevel=warn) || fail "Vite Build"
+pass "Vite Build"
+node scripts/verify-fingerprint.mjs write build >/dev/null || true
+echo -e "${GREEN}══ Pre-Push OK (كامل) ══${NC}"
