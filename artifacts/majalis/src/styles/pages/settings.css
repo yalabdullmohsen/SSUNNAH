@@ -330,7 +330,7 @@
   font-style: normal !important;
   font-size: 0.78rem !important;
   font-weight: 400 !important;
-  color: var(--mj-muted, #5a6b60) !important;
+  color: var(--mj-muted, var(--sn-text-tertiary)) !important;
   line-height: 1.45 !important;
 }
 

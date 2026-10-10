@@ -30,7 +30,7 @@
   padding: 0.25rem 0.55rem;
   border-radius: 999px;
   text-decoration: none;
-  color: #f3faf6;
+  color: var(--sn-text-on-primary);
   background: #0f2f28;
   background-image: none;
   border: 1px solid color-mix(in srgb, #d4b76a 28%, #0f2f28);
@@ -115,7 +115,7 @@ html.theme-dark .header-ad-slot__banner {
 
 html[data-theme="dark"] .header-ad-slot__title,
 html.theme-dark .header-ad-slot__title {
-  color: #f5faf7;
+  color: var(--sn-text-on-primary);
 }
 
 html[data-theme="dark"] .header-ad-slot__subtitle,

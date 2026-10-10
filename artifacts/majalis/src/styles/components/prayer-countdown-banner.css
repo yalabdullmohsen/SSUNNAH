@@ -76,7 +76,7 @@
 }
 
 .pcb-card--elapsed {
-  background: linear-gradient(120deg, #14532d 0%, var(--mj-brand) 50%, #0f3d2e 100%);
+  background: linear-gradient(120deg, #14532d 0%, var(--mj-brand) 50%, var(--sn-primary-strong) 100%);
 }
 
 .pcb-card__link {

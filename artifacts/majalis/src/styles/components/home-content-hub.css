@@ -19,7 +19,7 @@
   margin: 0.2rem 0 0;
   font-size: 0.82rem;
   line-height: 1.5;
-  color: var(--mj-ink-2, #4a5a53);
+  color: var(--mj-ink-2, var(--sn-text-secondary));
 }
 
 .home-content-hub__grid {
@@ -88,7 +88,7 @@
 .home-content-hub__desc {
   font-size: 0.78rem;
   line-height: 1.45;
-  color: var(--mj-ink-2, #4a5a53);
+  color: var(--mj-ink-2, var(--sn-text-secondary));
 }
 
 html[data-theme="dark"] .home-content-hub__card {

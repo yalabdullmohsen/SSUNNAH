@@ -184,14 +184,14 @@ html.dark .header-ticker {
   background: color-mix(in srgb, var(--mj-brand) 18%, #0f2f28) !important;
   border-color: rgba(227, 203, 140, 0.28);
   box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.45);
-  color: #fafaf8;
+  color: var(--sn-text-on-primary);
 }
 .header-ticker__label {
   display: inline-flex;
   align-items: center;
   padding: 0.14rem 0.5rem;
   border-radius: 999px;
-  background: var(--color-primary-soft, #e8f0ec);
+  background: var(--color-primary-soft, var(--sn-primary-soft));
   color: var(--color-primary, #12362a);
   font-size: 0.72rem;
   font-weight: 800;
@@ -217,12 +217,12 @@ html.dark .header-ticker__label {
   color: var(--mj-ink, var(--color-text, var(--v2-color-ink)));
 }
 html.dark .header-ticker__text {
-  color: #fafaf8;
+  color: var(--sn-text-on-primary);
 }
 .header-ticker__source {
   opacity: 1;
   font-weight: 600;
-  color: var(--mj-brand-deep, #123f2e);
+  color: var(--mj-brand-deep, var(--sn-primary-strong));
 }
 html.dark .header-ticker__source {
   color: #e3cb8c;

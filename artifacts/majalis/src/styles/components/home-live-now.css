@@ -59,7 +59,7 @@ html.dark .hlive__pulse {
   gap: 0.5rem;
   margin: 0 0 0.2rem;
   font-size: 0.78rem;
-  color: var(--color-text-muted, #5c6b66);
+  color: var(--color-text-muted, var(--sn-text-tertiary));
 }
 
 html[data-theme="dark"] .hlive__eyebrow,
@@ -107,7 +107,7 @@ html.dark .hlive__title {
 .hlive__more {
   margin: 0.15rem 0 0;
   font-size: 0.76rem;
-  color: var(--color-text-muted, #5c6b66);
+  color: var(--color-text-muted, var(--sn-text-tertiary));
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -127,7 +127,7 @@ html.dark .hlive__more {
   border-radius: var(--radius-pill, 999rem) !important;
   padding-inline: 1rem;
   background: var(--mj-brand-deep, #1a4d3e) !important;
-  color: #fafaf8 !important;
+  color: var(--sn-text-on-primary) !important;
   border: none !important;
   box-shadow: none !important;
   transition: filter 0.15s ease;
