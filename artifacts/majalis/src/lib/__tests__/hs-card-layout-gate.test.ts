@@ -1,37 +1,34 @@
-import { describe, expect, it } from "vitest";
+/**
+ * بوابة: تنسيق .hs-card (بطاقة مصطلح الحديث) في ملف واحد، والبطاقة لا تحمل hdl-entry-card
+ * (grid auto 1fr auto) الذي كان يضيّق فقرات التعريف/التنبيه/المثال.
+ * تشغيل: node --import tsx src/lib/__tests__/hs-card-layout-gate.test.ts
+ */
+import assert from "node:assert/strict";
 import { readdirSync, readFileSync, statSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = resolve(__dirname, "../../..");
+const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const styles = join(root, "src/styles");
-
-function cssFiles(dir: string): string[] {
-  return readdirSync(dir).flatMap((n) => {
+const cssFiles = (dir: string): string[] =>
+  readdirSync(dir).flatMap((n) => {
     const p = join(dir, n);
     return statSync(p).isDirectory() ? cssFiles(p) : p.endsWith(".css") ? [p] : [];
   });
-}
 
-/** تنسيق .hs-card (بطاقة مصطلح الحديث) في ملف واحد، ولا تحمل البطاقة صنف hdl-entry-card (grid auto 1fr auto) فتضيّق الفقرات. */
-describe("hs-card layout gate", () => {
-  it("المصدر الوحيد لـ.hs-card هو pages/hadith-mustalah.css", () => {
-    const offenders = cssFiles(styles)
-      .filter((f) => !f.endsWith("pages/hadith-mustalah.css"))
-      .filter((f) => /(^|[\s,}])(?:html[^{,]*\s)?(?:\.hs-page\s)?\.hs-card\s*[,{]/m.test(readFileSync(f, "utf8")))
-      .map((f) => f.replace(styles, ""));
-    expect(offenders).toEqual([]);
-  });
+const offenders = cssFiles(styles)
+  .filter((f) => !f.endsWith("pages/hadith-mustalah.css"))
+  .filter((f) => /(^|[\s,}])(?:html[^{,]*\s)?(?:\.hs-page\s)?\.hs-card\s*[,{]/m.test(readFileSync(f, "utf8")))
+  .map((f) => f.replace(styles, ""));
+assert.deepEqual(offenders, [], `.hs-card مُنسَّق خارج hadith-mustalah.css: ${offenders.join(", ")}`);
 
-  it("البطاقة بعرض كامل وبلا margin تلقائي يقلّصها", () => {
-    const css = readFileSync(join(styles, "pages/hadith-mustalah.css"), "utf8");
-    const block = css.match(/\n\.hs-card \{([^}]*)\}/)?.[1] ?? "";
-    expect(block).toMatch(/width:\s*100%/);
-    expect(block).toMatch(/margin-inline:\s*0/);
-    expect(block).toMatch(/display:\s*block/);
-  });
+const css = readFileSync(join(styles, "pages/hadith-mustalah.css"), "utf8");
+const block = css.match(/\n\.hs-card \{([^}]*)\}/)?.[1] ?? "";
+assert.match(block, /width:\s*100%/, "البطاقة بعرض كامل");
+assert.match(block, /margin-inline:\s*0/, "بلا margin تلقائي (article{margin-inline:auto})");
+assert.match(block, /display:\s*block/, "البطاقة block لا grid");
 
-  it("وسم البطاقة لا يحمل hdl-entry-card", () => {
-    const tsx = readFileSync(join(root, "src/pages/hadith/ui/HadithScienceView.tsx"), "utf8");
-    expect(tsx).not.toMatch(/hs-card[^`"]*hdl-entry-card/);
-  });
-});
+const tsx = readFileSync(join(root, "src/pages/hadith/ui/HadithScienceView.tsx"), "utf8");
+assert.doesNotMatch(tsx, /hs-card[^`"]*hdl-entry-card/, "وسم البطاقة لا يحمل hdl-entry-card");
+
+console.log("hs-card-layout-gate.test.ts: ok");
