@@ -24,3 +24,17 @@ export function mapJsonStrings(raw, fn) {
 
 /** الهيكل بعد إسقاط ما يحق للتحويل لمسه: يجب أن يتطابق قبل وبعد. */
 export const RLM_SKELETON = (s) => s.replace(/[\s‏]/g, "");
+
+/** الأرقام الهندية (٠-٩ و۰-۹) → لاتينية، خارج ﴿…﴾ فقط (نص الآيات لا يُمسّ؛ ﴿ بلا إغلاق تحمي ما بعدها). */
+const QURAN_SPAN = /(﴿[^﴾]*(?:﴾|$))/;
+const toLatin = (s) => s.replace(/[٠-٩]/g, (c) => c.charCodeAt(0) - 0x660).replace(/[۰-۹]/g, (c) => c.charCodeAt(0) - 0x6f0);
+
+export function latinDigits(s) {
+  return s
+    .split(QURAN_SPAN)
+    .map((part, i) => (i % 2 ? part : toLatin(part)))
+    .join("");
+}
+
+/** الهيكل: كل الأرقام لاتينية + مقاطع ﴿…﴾ حرفيًا كما هي. */
+export const DIGITS_SKELETON = (s) => `${toLatin(s)}\u0000${s.split(QURAN_SPAN).filter((_, i) => i % 2).join("\u0000")}`;
