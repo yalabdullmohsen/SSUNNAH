@@ -152,6 +152,7 @@
         var homeBtn = document.getElementById("home");
         var online = typeof navigator !== "undefined" ? navigator.onLine !== false : true;
         var navigating = false;
+        var lastCode = "";
         // إن وصلنا من إعادة محاولة سابقة لصفحة الخطأ — امسخ المسار فورًا لمنع الحلقة
         try {
           if (/[?&]src=native-load-error(?:&|$)/.test(location.search || "")) {
@@ -185,6 +186,7 @@
         }
 
         function paintFinal(code) {
+          lastCode = code || "";
           root.className = "is-final";
           title.hidden = true;
           if (failTitle) failTitle.hidden = false;
@@ -261,7 +263,7 @@
           var target = resolveTarget(!!forceHome);
           var sep = target.indexOf("?") >= 0 ? "&" : "?";
           try {
-            location.replace(target + sep + "_r=" + Date.now() + "&src=native-load-error");
+            location.replace(target + sep + "_r=" + Date.now() + "&src=native-load-error" + (lastCode ? "&nlf=" + encodeURIComponent(lastCode + "." + Date.now()) : ""));
           } catch (e2) {
             location.href = target;
           }

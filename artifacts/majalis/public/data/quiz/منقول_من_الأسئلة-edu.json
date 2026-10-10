@@ -1,5 +1,6 @@
 [
   {
+    "source_class": "history",
     "id": "seed-qa-1",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -12,6 +13,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-2",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -24,6 +26,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-3",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -36,6 +39,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-4",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -48,6 +52,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-5",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -60,6 +65,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-6",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -72,6 +78,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-7",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -84,6 +91,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-196",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -96,6 +104,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-197",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -108,6 +117,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-198",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -120,6 +130,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-199",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -132,6 +143,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-200",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -144,6 +156,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-201",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -156,6 +169,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-202",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -168,6 +182,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-203",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -180,6 +195,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-204",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -192,6 +208,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-205",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -330,6 +347,7 @@
     "explanation": "ثابت بن قيس — من كبار الصحابة والخطباء، كان خطيب الأنصار ونقيبهم. شهد بيعة العقبة وغزوة الخندق. قال النبي ﷺ: «ثابت بن قيس بن شماس خطيب الأنصار ونقيبهم». وكان من أهل الشجاعة والبلاغة. استُشهد في معركة اليمامة مع الصحابة ضد مسيلمة الكذاب رضي الله عنه."
   },
   {
+    "source_class": "history",
     "id": "seed-qa-630",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -342,6 +360,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-631",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -354,6 +373,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-632",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -366,6 +386,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-633",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -378,6 +399,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-634",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -390,6 +412,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-635",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -402,6 +425,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-636",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -414,6 +438,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-670",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -426,6 +451,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-671",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -438,6 +464,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-672",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -450,6 +477,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-673",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -462,6 +490,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-674",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -474,6 +503,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-675",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -486,6 +516,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-676",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -498,6 +529,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-710",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -510,6 +542,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-711",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -522,6 +555,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-712",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -534,6 +568,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-713",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -546,6 +581,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-714",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -558,6 +594,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-715",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -570,6 +607,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-716",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -582,6 +620,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-750",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -594,6 +633,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-751",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -606,6 +646,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-752",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -618,6 +659,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-753",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -630,6 +672,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-754",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -642,6 +685,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-755",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -654,6 +698,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-756",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -666,6 +711,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-790",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -678,6 +724,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-791",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -690,6 +737,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-792",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -702,6 +750,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-793",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -714,6 +763,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-794",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -726,6 +776,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-795",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -738,6 +789,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-796",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -750,6 +802,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-830",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -762,6 +815,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-831",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -774,6 +828,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-832",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -786,6 +841,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-833",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -798,6 +854,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-834",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -810,6 +867,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-835",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -822,6 +880,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-836",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -834,6 +893,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-870",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -846,6 +906,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-871",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -858,6 +919,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-872",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -870,6 +932,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-873",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -882,6 +945,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-874",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -894,6 +958,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-875",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -906,6 +971,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-876",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -918,6 +984,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-910",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -930,6 +997,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-911",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -942,6 +1010,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-912",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -954,6 +1023,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-913",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -966,6 +1036,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-914",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -978,6 +1049,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-915",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -990,6 +1062,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-916",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1002,6 +1075,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-950",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1014,6 +1088,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-951",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1026,6 +1101,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-952",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1038,6 +1114,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-953",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1050,6 +1127,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-954",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1062,6 +1140,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-955",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1074,6 +1153,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-956",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1086,6 +1166,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-990",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1098,6 +1179,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-991",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1110,6 +1192,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-992",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1122,6 +1205,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-993",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1134,6 +1218,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-994",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1146,6 +1231,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-995",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1158,6 +1244,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-996",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1170,6 +1257,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1030",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1182,6 +1270,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1031",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1194,6 +1283,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1032",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1206,6 +1296,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1033",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1218,6 +1309,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1034",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1230,6 +1322,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1035",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1242,6 +1335,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1036",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1254,6 +1348,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1070",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1266,6 +1361,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1071",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1278,6 +1374,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1072",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1290,6 +1387,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1073",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1302,6 +1400,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1074",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1314,6 +1413,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1075",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1326,6 +1426,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1076",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1338,6 +1439,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1110",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1350,6 +1452,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1111",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1362,6 +1465,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1112",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1374,6 +1478,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1113",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1386,6 +1491,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1114",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1398,6 +1504,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1115",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1410,6 +1517,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1116",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1422,6 +1530,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1150",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1434,6 +1543,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1151",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1446,6 +1556,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1152",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1458,6 +1569,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1153",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1470,6 +1582,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1154",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1482,6 +1595,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1155",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1494,6 +1608,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1156",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1506,6 +1621,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1190",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1518,6 +1634,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1191",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1530,6 +1647,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1192",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1542,6 +1660,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1193",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1554,6 +1673,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1194",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1566,6 +1686,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1195",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1578,6 +1699,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1196",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1590,6 +1712,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1230",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1602,6 +1725,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1231",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1614,6 +1738,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1232",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1626,6 +1751,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1233",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1638,6 +1764,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1234",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1650,6 +1777,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1235",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1662,6 +1790,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1236",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1674,6 +1803,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1270",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1686,6 +1816,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1271",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1698,6 +1829,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1272",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1710,6 +1842,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1273",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1722,6 +1855,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1274",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1734,6 +1868,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1275",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1746,6 +1881,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1276",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1758,6 +1894,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1310",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1770,6 +1907,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1311",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1782,6 +1920,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1312",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1794,6 +1933,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1313",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1806,6 +1946,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1314",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1818,6 +1959,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1315",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1830,6 +1972,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1316",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1842,6 +1985,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1350",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1854,6 +1998,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1351",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1866,6 +2011,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1352",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1878,6 +2024,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1353",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1890,6 +2037,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1354",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1902,6 +2050,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1355",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1914,6 +2063,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1356",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1926,6 +2076,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1390",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1938,6 +2089,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1391",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1950,6 +2102,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1392",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1962,6 +2115,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1393",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1974,6 +2128,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1394",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1986,6 +2141,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1395",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -1998,6 +2154,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1396",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2010,6 +2167,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1430",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2022,6 +2180,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1431",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2034,6 +2193,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1432",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2046,6 +2206,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1433",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2058,6 +2219,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1434",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2070,6 +2232,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1435",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2082,6 +2245,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1436",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2094,6 +2258,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1470",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2106,6 +2271,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1471",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2118,6 +2284,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1472",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2130,6 +2297,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1473",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2142,6 +2310,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1474",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2154,6 +2323,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1475",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2166,6 +2336,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1476",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2178,6 +2349,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1510",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2190,6 +2362,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1511",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2202,6 +2375,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1512",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2214,6 +2388,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1513",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2226,6 +2401,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1514",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2238,6 +2414,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1515",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2250,6 +2427,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1516",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2262,6 +2440,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1550",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2274,6 +2453,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1551",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2286,6 +2466,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1552",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2298,6 +2479,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1553",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2310,6 +2492,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1554",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2322,6 +2505,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1555",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2334,6 +2518,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1556",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2346,6 +2531,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1590",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2358,6 +2544,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1591",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2370,6 +2557,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1592",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2382,6 +2570,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1593",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2394,6 +2583,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1594",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2406,6 +2596,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1595",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2418,6 +2609,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1596",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2430,6 +2622,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1630",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2442,6 +2635,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1631",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2454,6 +2648,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1632",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2466,6 +2661,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1633",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2478,6 +2674,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1634",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2490,6 +2687,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1635",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2502,6 +2700,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1636",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2514,6 +2713,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1670",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2526,6 +2726,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1671",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2538,6 +2739,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1672",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2550,6 +2752,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1673",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2562,6 +2765,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1674",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2574,6 +2778,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1675",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2586,6 +2791,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1676",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2598,6 +2804,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1710",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2610,6 +2817,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1711",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2622,6 +2830,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1712",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2634,6 +2843,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1713",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2646,6 +2856,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1714",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2658,6 +2869,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1715",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2670,6 +2882,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1716",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2682,6 +2895,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1750",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2694,6 +2908,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1751",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2706,6 +2921,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1752",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2718,6 +2934,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1753",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2730,6 +2947,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1754",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2742,6 +2960,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1755",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2754,6 +2973,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1756",
     "section": "الصحابة",
     "category": "الصحابة",
@@ -2766,6 +2986,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-8",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2778,6 +2999,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-9",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2790,6 +3012,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-10",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2802,6 +3025,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-11",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2814,6 +3038,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-12",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2826,6 +3051,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-13",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2838,6 +3064,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-170",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2850,6 +3077,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-171",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2862,6 +3090,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-172",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2874,6 +3103,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-173",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2886,6 +3116,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-174",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2898,6 +3129,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-175",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2910,6 +3142,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-176",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2922,6 +3155,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-177",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2934,6 +3168,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-178",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2960,6 +3195,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-180",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2972,6 +3208,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-181",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2984,6 +3221,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-182",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -2996,6 +3234,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-183",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3008,6 +3247,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-184",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3020,6 +3260,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-185",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3242,6 +3483,7 @@
     "explanation": "الإيمان بالقدر: أن الله علم كل شيء وكتبه وشاءه وخلقه؛ خيره وشره من عند الله. ولا يُنسب الشر إلى الله إلا بمعنى الخلق والتقدير، والعبد مسؤول عن اختياره. قال ﷺ: «آمنوا بالقدر خيره وشره». رواه مسلم (93). وهذا من أركان الإيمان الستة."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-637",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3254,6 +3496,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-638",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3266,6 +3509,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-639",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3278,6 +3522,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-640",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3290,6 +3535,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-641",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3302,6 +3548,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-642",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3314,6 +3561,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-677",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3326,6 +3574,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-678",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3338,6 +3587,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-679",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3350,6 +3600,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-680",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3362,6 +3613,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-681",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3374,6 +3626,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-682",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3386,6 +3639,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-717",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3398,6 +3652,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-718",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3410,6 +3665,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-719",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3422,6 +3678,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-720",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3434,6 +3691,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-721",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3446,6 +3704,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-722",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3458,6 +3717,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-757",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3470,6 +3730,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-758",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3482,6 +3743,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-759",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3494,6 +3756,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-760",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3506,6 +3769,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-761",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3518,6 +3782,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-762",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3530,6 +3795,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-797",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3542,6 +3808,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-798",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3554,6 +3821,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-799",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3566,6 +3834,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-800",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3578,6 +3847,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-801",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3590,6 +3860,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-802",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3602,6 +3873,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-837",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3614,6 +3886,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-838",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3626,6 +3899,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-839",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3638,6 +3912,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-840",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3650,6 +3925,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-841",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3662,6 +3938,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-842",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3674,6 +3951,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-877",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3686,6 +3964,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-878",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3698,6 +3977,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-879",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3710,6 +3990,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-880",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3722,6 +4003,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-881",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3734,6 +4016,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-882",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3746,6 +4029,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-917",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3758,6 +4042,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-918",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3770,6 +4055,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-919",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3782,6 +4068,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-920",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3794,6 +4081,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-921",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3806,6 +4094,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-922",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3818,6 +4107,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-957",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3830,6 +4120,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-958",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3842,6 +4133,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-959",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3854,6 +4146,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-960",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3866,6 +4159,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-961",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3878,6 +4172,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-962",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3890,6 +4185,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-997",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3902,6 +4198,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-998",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3914,6 +4211,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-999",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3926,6 +4224,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1000",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3938,6 +4237,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1001",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3950,6 +4250,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1002",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3962,6 +4263,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1037",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3974,6 +4276,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1038",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3986,6 +4289,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1039",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -3998,6 +4302,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1040",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4010,6 +4315,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1041",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4022,6 +4328,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1042",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4034,6 +4341,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1077",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4046,6 +4354,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1078",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4058,6 +4367,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1079",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4070,6 +4380,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1080",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4082,6 +4393,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1081",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4094,6 +4406,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1082",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4106,6 +4419,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1117",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4118,6 +4432,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1118",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4130,6 +4445,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1119",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4142,6 +4458,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1120",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4154,6 +4471,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1121",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4166,6 +4484,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1122",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4178,6 +4497,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1157",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4190,6 +4510,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1158",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4202,6 +4523,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1159",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4214,6 +4536,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1160",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4226,6 +4549,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1161",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4238,6 +4562,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1162",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4250,6 +4575,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1197",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4262,6 +4588,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1198",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4274,6 +4601,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1199",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4286,6 +4614,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1200",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4298,6 +4627,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1201",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4310,6 +4640,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1202",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4322,6 +4653,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1237",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4334,6 +4666,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1238",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4346,6 +4679,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1239",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4358,6 +4692,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1240",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4370,6 +4705,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1241",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4382,6 +4718,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1242",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4394,6 +4731,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1277",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4406,6 +4744,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1278",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4418,6 +4757,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1279",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4430,6 +4770,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1280",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4442,6 +4783,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1281",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4454,6 +4796,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1282",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4466,6 +4809,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1317",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4478,6 +4822,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1318",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4490,6 +4835,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1319",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4502,6 +4848,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1320",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4514,6 +4861,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1321",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4526,6 +4874,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1322",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4538,6 +4887,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1357",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4550,6 +4900,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1358",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4562,6 +4913,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1359",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4574,6 +4926,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1360",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4586,6 +4939,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1361",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4598,6 +4952,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1362",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4610,6 +4965,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1397",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4622,6 +4978,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1398",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4634,6 +4991,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1399",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4646,6 +5004,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1400",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4658,6 +5017,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1401",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4670,6 +5030,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1402",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4682,6 +5043,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1437",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4694,6 +5056,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1438",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4706,6 +5069,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1439",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4718,6 +5082,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1440",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4730,6 +5095,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1441",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4742,6 +5108,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1442",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4754,6 +5121,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1477",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4766,6 +5134,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1478",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4778,6 +5147,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1479",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4790,6 +5160,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1480",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4802,6 +5173,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1481",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4814,6 +5186,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1482",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4826,6 +5199,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1517",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4838,6 +5212,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1518",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4850,6 +5225,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1519",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4862,6 +5238,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1520",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4874,6 +5251,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1521",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4886,6 +5264,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1522",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4898,6 +5277,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1557",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4910,6 +5290,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1558",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4922,6 +5303,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1559",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4934,6 +5316,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1560",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4946,6 +5329,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1561",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4958,6 +5342,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1562",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4970,6 +5355,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1597",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4982,6 +5368,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1598",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -4994,6 +5381,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1599",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5006,6 +5394,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1600",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5018,6 +5407,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1601",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5030,6 +5420,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1602",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5042,6 +5433,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1637",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5054,6 +5446,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1638",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5066,6 +5459,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1639",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5078,6 +5472,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1640",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5090,6 +5485,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1641",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5102,6 +5498,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1642",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5114,6 +5511,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1677",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5126,6 +5524,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1678",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5138,6 +5537,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1679",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5150,6 +5550,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1680",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5162,6 +5563,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1681",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5174,6 +5576,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1682",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5186,6 +5589,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1717",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5198,6 +5602,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1718",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5210,6 +5615,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1719",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5222,6 +5628,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1720",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5234,6 +5641,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1721",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5246,6 +5654,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1722",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5258,6 +5667,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1757",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5270,6 +5680,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1758",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5282,6 +5693,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1759",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5294,6 +5706,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1760",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5306,6 +5719,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1761",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -5318,6 +5732,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1762",
     "section": "العقيدة",
     "category": "العقيدة",
@@ -7472,6 +7887,7 @@
     "explanation": "بأن يجعل عمله على أن ربط مسائل الربا والنكاح والجمعة والرقية بما صحّ من السيرة والسنّة بلا قصّة تغني عن الدليل. فيسأل عن المصدر قبل الجزم، ويفرّق بين الثابت والمشهور، ويحوّل الفائدة إلى التزامٍ بالحلال واجتنابٍ للحرام ورقيةٍ مشروعة لا إلى سردٍ يقطع بما اختلفت فيه الطرق. وهذا تأصيل مختصر للمذاكرة لا يغني عن سؤال الراسخين."
   },
   {
+    "source_class": "history",
     "id": "seed-qa-14",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7484,6 +7900,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-15",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7496,6 +7913,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-16",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7508,6 +7926,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-17",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7520,6 +7939,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-18",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7532,6 +7952,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-19",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7544,6 +7965,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-20",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7556,6 +7978,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-21",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7568,6 +7991,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-22",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7580,6 +8004,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-23",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7592,6 +8017,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-186",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7604,6 +8030,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-187",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7616,6 +8043,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-188",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7628,6 +8056,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-189",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7640,6 +8069,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-190",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7652,6 +8082,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-191",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7664,6 +8095,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-192",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7676,6 +8108,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-193",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7688,6 +8121,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-194",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7700,6 +8134,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-195",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7880,6 +8315,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-643",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7892,6 +8328,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-644",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7904,6 +8341,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-645",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7916,6 +8354,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-646",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7928,6 +8367,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-647",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7940,6 +8380,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-648",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7952,6 +8393,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-649",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7964,6 +8406,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-650",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7976,6 +8419,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-651",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -7988,6 +8432,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-652",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8000,6 +8445,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-683",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8012,6 +8458,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-684",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8024,6 +8471,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-685",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8036,6 +8484,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-686",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8048,6 +8497,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-687",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8060,6 +8510,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-688",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8072,6 +8523,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-689",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8084,6 +8536,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-690",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8096,6 +8549,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-691",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8108,6 +8562,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-692",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8120,6 +8575,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-723",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8132,6 +8588,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-724",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8144,6 +8601,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-725",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8156,6 +8614,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-726",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8168,6 +8627,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-727",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8180,6 +8640,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-728",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8192,6 +8653,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-729",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8204,6 +8666,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-730",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8216,6 +8679,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-731",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8228,6 +8692,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-732",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8240,6 +8705,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-763",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8252,6 +8718,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-764",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8264,6 +8731,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-765",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8276,6 +8744,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-766",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8288,6 +8757,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-767",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8300,6 +8770,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-768",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8312,6 +8783,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-769",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8324,6 +8796,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-770",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8336,6 +8809,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-771",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8348,6 +8822,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-772",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8360,6 +8835,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-803",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8372,6 +8848,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-804",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8384,6 +8861,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-805",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8396,6 +8874,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-806",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8408,6 +8887,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-807",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8420,6 +8900,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-808",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8432,6 +8913,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-809",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8444,6 +8926,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-810",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8456,6 +8939,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-811",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8468,6 +8952,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-812",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8480,6 +8965,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-843",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8492,6 +8978,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-844",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8504,6 +8991,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-845",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8516,6 +9004,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-846",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8528,6 +9017,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-847",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8540,6 +9030,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-848",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8552,6 +9043,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-849",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8564,6 +9056,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-850",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8576,6 +9069,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-851",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8588,6 +9082,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-852",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8600,6 +9095,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-883",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8612,6 +9108,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-884",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8624,6 +9121,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-885",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8636,6 +9134,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-886",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8648,6 +9147,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-887",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8660,6 +9160,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-888",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8672,6 +9173,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-889",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8684,6 +9186,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-890",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8696,6 +9199,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-891",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8708,6 +9212,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-892",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8720,6 +9225,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-923",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8732,6 +9238,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-924",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8744,6 +9251,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-925",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8756,6 +9264,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-926",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8768,6 +9277,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-927",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8780,6 +9290,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-928",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8792,6 +9303,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-929",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8804,6 +9316,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-930",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8816,6 +9329,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-931",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8828,6 +9342,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-932",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8840,6 +9355,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-963",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8852,6 +9368,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-964",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8864,6 +9381,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-965",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8876,6 +9394,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-966",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8888,6 +9407,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-967",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8900,6 +9420,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-968",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8912,6 +9433,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-969",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8924,6 +9446,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-970",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8936,6 +9459,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-971",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8948,6 +9472,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-972",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8960,6 +9485,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1003",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8972,6 +9498,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1004",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8984,6 +9511,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1005",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -8996,6 +9524,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1006",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9008,6 +9537,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1007",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9020,6 +9550,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1008",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9032,6 +9563,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1009",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9044,6 +9576,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1010",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9056,6 +9589,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1011",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9068,6 +9602,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1012",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9080,6 +9615,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1043",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9092,6 +9628,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1044",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9104,6 +9641,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1045",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9116,6 +9654,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1046",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9128,6 +9667,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1047",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9140,6 +9680,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1048",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9152,6 +9693,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1049",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9164,6 +9706,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1050",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9176,6 +9719,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1051",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9188,6 +9732,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1052",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9200,6 +9745,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1083",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9212,6 +9758,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1084",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9224,6 +9771,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1085",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9236,6 +9784,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1086",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9248,6 +9797,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1087",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9260,6 +9810,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1088",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9272,6 +9823,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1089",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9284,6 +9836,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1090",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9296,6 +9849,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1091",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9308,6 +9862,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1092",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9320,6 +9875,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1123",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9332,6 +9888,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1124",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9344,6 +9901,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1125",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9356,6 +9914,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1126",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9368,6 +9927,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1127",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9380,6 +9940,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1128",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9392,6 +9953,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1129",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9404,6 +9966,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1130",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9416,6 +9979,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1131",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9428,6 +9992,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1132",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9440,6 +10005,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1163",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9452,6 +10018,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1164",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9464,6 +10031,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1165",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9476,6 +10044,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1166",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9488,6 +10057,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1167",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9500,6 +10070,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1168",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9512,6 +10083,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1169",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9524,6 +10096,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1170",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9536,6 +10109,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1171",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9548,6 +10122,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1172",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9560,6 +10135,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1203",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9572,6 +10148,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1204",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9584,6 +10161,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1205",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9596,6 +10174,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1206",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9608,6 +10187,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1207",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9620,6 +10200,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1208",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9632,6 +10213,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1209",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9644,6 +10226,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1210",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9656,6 +10239,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1211",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9668,6 +10252,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1212",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9680,6 +10265,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1243",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9692,6 +10278,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1244",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9704,6 +10291,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1245",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9716,6 +10304,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1246",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9728,6 +10317,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1247",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9740,6 +10330,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1248",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9752,6 +10343,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1249",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9764,6 +10356,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1250",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9776,6 +10369,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1251",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9788,6 +10382,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1252",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9800,6 +10395,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1283",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9812,6 +10408,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1284",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9824,6 +10421,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1285",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9836,6 +10434,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1286",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9848,6 +10447,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1287",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9860,6 +10460,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1288",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9872,6 +10473,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1289",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9884,6 +10486,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1290",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9896,6 +10499,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1291",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9908,6 +10512,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1292",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9920,6 +10525,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1323",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9932,6 +10538,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1324",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9944,6 +10551,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1325",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9956,6 +10564,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1326",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9968,6 +10577,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1327",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9980,6 +10590,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1328",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -9992,6 +10603,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1329",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10004,6 +10616,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1330",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10016,6 +10629,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1331",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10028,6 +10642,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1332",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10040,6 +10655,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1363",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10052,6 +10668,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1364",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10064,6 +10681,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1365",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10076,6 +10694,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1366",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10088,6 +10707,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1367",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10100,6 +10720,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1368",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10112,6 +10733,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1369",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10124,6 +10746,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1370",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10136,6 +10759,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1371",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10148,6 +10772,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1372",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10160,6 +10785,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1403",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10172,6 +10798,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1404",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10184,6 +10811,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1405",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10196,6 +10824,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1406",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10208,6 +10837,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1407",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10220,6 +10850,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1408",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10232,6 +10863,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1409",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10244,6 +10876,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1410",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10256,6 +10889,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1411",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10268,6 +10902,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1412",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10280,6 +10915,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1443",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10292,6 +10928,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1444",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10304,6 +10941,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1445",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10316,6 +10954,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1446",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10328,6 +10967,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1447",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10340,6 +10980,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1448",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10352,6 +10993,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1449",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10364,6 +11006,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1450",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10376,6 +11019,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1451",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10388,6 +11032,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1452",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10400,6 +11045,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1483",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10412,6 +11058,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1484",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10424,6 +11071,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1485",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10436,6 +11084,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1486",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10448,6 +11097,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1487",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10460,6 +11110,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1488",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10472,6 +11123,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1489",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10484,6 +11136,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1490",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10496,6 +11149,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1491",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10508,6 +11162,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1492",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10520,6 +11175,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1523",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10532,6 +11188,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1524",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10544,6 +11201,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1525",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10556,6 +11214,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1526",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10568,6 +11227,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1527",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10580,6 +11240,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1528",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10592,6 +11253,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1529",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10604,6 +11266,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1530",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10616,6 +11279,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1531",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10628,6 +11292,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1532",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10640,6 +11305,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1563",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10652,6 +11318,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1564",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10664,6 +11331,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1565",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10676,6 +11344,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1566",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10688,6 +11357,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1567",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10700,6 +11370,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1568",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10712,6 +11383,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1569",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10724,6 +11396,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1570",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10736,6 +11409,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1571",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10748,6 +11422,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1572",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10760,6 +11435,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1603",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10772,6 +11448,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1604",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10784,6 +11461,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1605",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10796,6 +11474,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1606",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10808,6 +11487,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1607",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10820,6 +11500,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1608",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10832,6 +11513,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1609",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10844,6 +11526,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1610",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10856,6 +11539,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1611",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10868,6 +11552,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1612",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10880,6 +11565,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1643",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10892,6 +11578,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1644",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10904,6 +11591,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1645",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10916,6 +11604,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1646",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10928,6 +11617,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1647",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10940,6 +11630,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1648",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10952,6 +11643,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1649",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10964,6 +11656,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1650",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10976,6 +11669,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1651",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -10988,6 +11682,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1652",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11000,6 +11695,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1683",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11012,6 +11708,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1684",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11024,6 +11721,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1685",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11036,6 +11734,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1686",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11048,6 +11747,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1687",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11060,6 +11760,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1688",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11072,6 +11773,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1689",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11084,6 +11786,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1690",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11096,6 +11799,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1691",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11108,6 +11812,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1692",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11120,6 +11825,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1723",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11132,6 +11838,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1724",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11144,6 +11851,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1725",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11156,6 +11864,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1726",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11168,6 +11877,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1727",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11180,6 +11890,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1728",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11192,6 +11903,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1729",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11204,6 +11916,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1730",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11216,6 +11929,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1731",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11228,6 +11942,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1732",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11240,6 +11955,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1763",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11252,6 +11968,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1764",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11264,6 +11981,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1765",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11276,6 +11994,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1766",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11288,6 +12007,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1767",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11300,6 +12020,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1768",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11312,6 +12033,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1769",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11324,6 +12046,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1770",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11336,6 +12059,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1771",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11348,6 +12072,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "history",
     "id": "seed-qa-1772",
     "section": "الأنبياء",
     "category": "الأنبياء",
@@ -11360,6 +12085,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-40",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -11372,6 +12098,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-41",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -11454,6 +12181,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-206",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -11466,6 +12194,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-207",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -11478,6 +12207,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-208",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -11490,6 +12220,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-209",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -11502,6 +12233,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-210",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -11906,6 +12638,7 @@
     "explanation": "الغسل من الجنابة واجب — {وَإِن كُنتُمْ جُنُبًا فَاطَّهَّرُوا} — المائدة: 6. وهو فرض قبل الصلاة."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-653",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -11918,6 +12651,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-654",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12000,6 +12734,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-693",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12012,6 +12747,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-694",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12094,6 +12830,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-733",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12106,6 +12843,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-734",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12188,6 +12926,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-773",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12200,6 +12939,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-774",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12282,6 +13022,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-813",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12294,6 +13035,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-814",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12376,6 +13118,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-853",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12388,6 +13131,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-854",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12470,6 +13214,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-893",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12482,6 +13227,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-894",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12564,6 +13310,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-933",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12576,6 +13323,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-934",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12658,6 +13406,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-973",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12670,6 +13419,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-974",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12752,6 +13502,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1013",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12764,6 +13515,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1014",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12846,6 +13598,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1053",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12858,6 +13611,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1054",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12940,6 +13694,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1093",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -12952,6 +13707,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1094",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13034,6 +13790,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1133",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13046,6 +13803,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1134",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13128,6 +13886,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1173",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13140,6 +13899,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1174",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13222,6 +13982,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1213",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13234,6 +13995,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1214",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13316,6 +14078,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1253",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13328,6 +14091,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1254",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13410,6 +14174,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1293",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13422,6 +14187,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1294",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13504,6 +14270,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1333",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13516,6 +14283,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1334",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13598,6 +14366,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1373",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13610,6 +14379,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1374",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13692,6 +14462,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1413",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13704,6 +14475,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1414",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13786,6 +14558,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1453",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13798,6 +14571,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1454",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13880,6 +14654,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1493",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13892,6 +14667,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1494",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13974,6 +14750,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1533",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -13986,6 +14763,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1534",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -14068,6 +14846,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1573",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -14080,6 +14859,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1574",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -14162,6 +14942,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1613",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -14174,6 +14955,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1614",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -14256,6 +15038,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1653",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -14268,6 +15051,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1654",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -14350,6 +15134,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1693",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -14362,6 +15147,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1694",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -14444,6 +15230,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1733",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -14456,6 +15243,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1734",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -14538,6 +15326,7 @@
     "explanation": "يبني على اليقين؛ وهذا من أحكام الطهارة الشرعية المعروفة عند أهل العلم في كتب الفقه."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1773",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -14550,6 +15339,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1774",
     "section": "الطهارة",
     "category": "الطهارة",
@@ -14688,6 +15478,7 @@
     "explanation": "تطبيقه أن يبدأ المسلم بتصحيح القصد، ثم يعمل بأن بيان الحق بوضوح ورحمة، ومراعاة حال المتعلم، وترك التشهير مع عدم السكوت عن الخطأ المؤثر. ويوازن بين امتثال النص وحفظ الحقوق والرفق بالخلق، فلا يجعل المعرفة شعارا بلا أثر، ولا ينزل الحكم على الأعيان بلا تحقق وسؤال للراسخين."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-53",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -14700,6 +15491,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-54",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -14712,6 +15504,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-55",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -14724,6 +15517,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-211",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -14736,6 +15530,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-212",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -14748,6 +15543,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-213",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -14760,6 +15556,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-214",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -14772,6 +15569,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-215",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -14784,6 +15582,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-216",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -14796,6 +15595,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-217",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -14808,6 +15608,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-218",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -14820,6 +15621,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-219",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -14832,6 +15634,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-220",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -15852,6 +16655,7 @@
     "explanation": "قراءة الفاتحة ركن في كل ركعة عند جمهور العلماء — «لا صلاة لمن لم يقرأ بفاتحة الكتاب». رواه البخاري (756) ومسلم (394)."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-660",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -15864,6 +16668,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-661",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -15876,6 +16681,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-662",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -15888,6 +16694,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-700",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -15900,6 +16707,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-701",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -15912,6 +16720,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-702",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -15924,6 +16733,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-740",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -15936,6 +16746,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-741",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -15948,6 +16759,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-742",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -15960,6 +16772,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-780",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -15972,6 +16785,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-781",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -15984,6 +16798,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-782",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -15996,6 +16811,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-820",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16008,6 +16824,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-821",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16020,6 +16837,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-822",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16032,6 +16850,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-860",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16044,6 +16863,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-861",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16056,6 +16876,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-862",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16068,6 +16889,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-900",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16080,6 +16902,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-901",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16092,6 +16915,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-902",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16104,6 +16928,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-940",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16116,6 +16941,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-941",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16128,6 +16954,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-942",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16140,6 +16967,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-980",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16152,6 +16980,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-981",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16164,6 +16993,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-982",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16176,6 +17006,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1020",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16188,6 +17019,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1021",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16200,6 +17032,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1022",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16212,6 +17045,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1060",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16224,6 +17058,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1061",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16236,6 +17071,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1062",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16248,6 +17084,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1100",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16260,6 +17097,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1101",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16272,6 +17110,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1102",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16284,6 +17123,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1140",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16296,6 +17136,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1141",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16308,6 +17149,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1142",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16320,6 +17162,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1180",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16332,6 +17175,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1181",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16344,6 +17188,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1182",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16356,6 +17201,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1220",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16368,6 +17214,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1221",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16380,6 +17227,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1222",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16392,6 +17240,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1260",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16404,6 +17253,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1261",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16416,6 +17266,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1262",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16428,6 +17279,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1300",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16440,6 +17292,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1301",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16452,6 +17305,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1302",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16464,6 +17318,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1340",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16476,6 +17331,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1341",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16488,6 +17344,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1342",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16500,6 +17357,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1380",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16512,6 +17370,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1381",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16524,6 +17383,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1382",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16536,6 +17396,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1420",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16548,6 +17409,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1421",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16560,6 +17422,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1422",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16572,6 +17435,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1460",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16584,6 +17448,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1461",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16596,6 +17461,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1462",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16608,6 +17474,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1500",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16620,6 +17487,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1501",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16632,6 +17500,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1502",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16644,6 +17513,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1540",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16656,6 +17526,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1541",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16668,6 +17539,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1542",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16680,6 +17552,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1580",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16692,6 +17565,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1581",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16704,6 +17578,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1582",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16716,6 +17591,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1620",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16728,6 +17604,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1621",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16740,6 +17617,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1622",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16752,6 +17630,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1660",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16764,6 +17643,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1661",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16776,6 +17656,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1662",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16788,6 +17669,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1700",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16800,6 +17682,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1701",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16812,6 +17695,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1702",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16824,6 +17708,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1740",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16836,6 +17721,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1741",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16848,6 +17734,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1742",
     "section": "الصلاة",
     "category": "الصلاة",
@@ -16916,6 +17803,7 @@
     "explanation": "تطبيقه أن يبدأ المسلم بتصحيح القصد، ثم يعمل بأن بيان الحق بوضوح ورحمة، ومراعاة حال المتعلم، وترك التشهير مع عدم السكوت عن الخطأ المؤثر. ويوازن بين امتثال النص وحفظ الحقوق والرفق بالخلق، فلا يجعل المعرفة شعارا بلا أثر، ولا ينزل الحكم على الأعيان بلا تحقق وسؤال للراسخين."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-66",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -16928,6 +17816,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-229",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -16940,6 +17829,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-230",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -16952,6 +17842,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-231",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -16964,6 +17855,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-236",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -16976,6 +17868,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-238",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17324,6 +18217,7 @@
     "explanation": "إخراج الزكاة واجب — {خُذْ مِنْ أَمْوَالِهِمْ صَدَقَةً} — التوبة: 103. وتُخرج للمصارف الثمانية."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-663",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17336,6 +18230,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-703",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17348,6 +18243,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-743",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17360,6 +18256,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-783",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17372,6 +18269,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-823",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17384,6 +18282,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-863",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17396,6 +18295,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-903",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17408,6 +18308,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-943",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17420,6 +18321,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-983",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17432,6 +18334,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1023",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17444,6 +18347,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1063",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17456,6 +18360,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1103",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17468,6 +18373,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1143",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17480,6 +18386,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1183",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17492,6 +18399,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1223",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17504,6 +18412,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1263",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17516,6 +18425,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1303",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17528,6 +18438,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1343",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17540,6 +18451,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1383",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17552,6 +18464,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1423",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17564,6 +18477,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1463",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17576,6 +18490,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1503",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17588,6 +18503,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1543",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17600,6 +18516,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1583",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17612,6 +18529,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1623",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17624,6 +18542,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1663",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17636,6 +18555,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1703",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17648,6 +18568,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1743",
     "section": "الزكاة",
     "category": "الزكاة",
@@ -17716,6 +18637,7 @@
     "explanation": "تطبيقه أن يبدأ المسلم بتصحيح القصد، ثم يعمل بأن طلب العلم بأدب ووضوح، وسؤال أهل الذكر عند الاشتباه، وترك السؤال الذي يطلب الجدل لا العمل. ويوازن بين امتثال النص وحفظ الحقوق والرفق بالخلق، فلا يجعل المعرفة شعارا بلا أثر، ولا ينزل الحكم على الأعيان بلا تحقق وسؤال للراسخين."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-79",
     "section": "الصيام",
     "category": "الصيام",
@@ -17742,6 +18664,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-221",
     "section": "الصيام",
     "category": "الصيام",
@@ -17754,6 +18677,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-222",
     "section": "الصيام",
     "category": "الصيام",
@@ -17766,6 +18690,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-223",
     "section": "الصيام",
     "category": "الصيام",
@@ -17778,6 +18703,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-224",
     "section": "الصيام",
     "category": "الصيام",
@@ -17804,6 +18730,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-226",
     "section": "الصيام",
     "category": "الصيام",
@@ -17816,6 +18743,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-227",
     "section": "الصيام",
     "category": "الصيام",
@@ -17828,6 +18756,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-228",
     "section": "الصيام",
     "category": "الصيام",
@@ -18302,6 +19231,7 @@
     "explanation": "صيام يوم عرفة لغير الحاج مستحب — «صيام يوم عرفة أحتسب على الله أن يكفر السنة التي قبله والتي بعده». رواه مسلم (1162)."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-664",
     "section": "الصيام",
     "category": "الصيام",
@@ -18328,6 +19258,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-704",
     "section": "الصيام",
     "category": "الصيام",
@@ -18354,6 +19285,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-744",
     "section": "الصيام",
     "category": "الصيام",
@@ -18380,6 +19312,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-784",
     "section": "الصيام",
     "category": "الصيام",
@@ -18406,6 +19339,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-824",
     "section": "الصيام",
     "category": "الصيام",
@@ -18432,6 +19366,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-864",
     "section": "الصيام",
     "category": "الصيام",
@@ -18458,6 +19393,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-904",
     "section": "الصيام",
     "category": "الصيام",
@@ -18484,6 +19420,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-944",
     "section": "الصيام",
     "category": "الصيام",
@@ -18510,6 +19447,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-984",
     "section": "الصيام",
     "category": "الصيام",
@@ -18536,6 +19474,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1024",
     "section": "الصيام",
     "category": "الصيام",
@@ -18562,6 +19501,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1064",
     "section": "الصيام",
     "category": "الصيام",
@@ -18588,6 +19528,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1104",
     "section": "الصيام",
     "category": "الصيام",
@@ -18614,6 +19555,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1144",
     "section": "الصيام",
     "category": "الصيام",
@@ -18640,6 +19582,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1184",
     "section": "الصيام",
     "category": "الصيام",
@@ -18666,6 +19609,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1224",
     "section": "الصيام",
     "category": "الصيام",
@@ -18692,6 +19636,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1264",
     "section": "الصيام",
     "category": "الصيام",
@@ -18718,6 +19663,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1304",
     "section": "الصيام",
     "category": "الصيام",
@@ -18744,6 +19690,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1344",
     "section": "الصيام",
     "category": "الصيام",
@@ -18770,6 +19717,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1384",
     "section": "الصيام",
     "category": "الصيام",
@@ -18796,6 +19744,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1424",
     "section": "الصيام",
     "category": "الصيام",
@@ -18822,6 +19771,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1464",
     "section": "الصيام",
     "category": "الصيام",
@@ -18848,6 +19798,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1504",
     "section": "الصيام",
     "category": "الصيام",
@@ -18874,6 +19825,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1544",
     "section": "الصيام",
     "category": "الصيام",
@@ -18900,6 +19852,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1584",
     "section": "الصيام",
     "category": "الصيام",
@@ -18926,6 +19879,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1624",
     "section": "الصيام",
     "category": "الصيام",
@@ -18952,6 +19906,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1664",
     "section": "الصيام",
     "category": "الصيام",
@@ -18978,6 +19933,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1704",
     "section": "الصيام",
     "category": "الصيام",
@@ -19004,6 +19960,7 @@
     "explanation": "السحور، وهو سنة مؤكدة لقوله ﷺ: (تسحّروا فإن في السحور بركة) — متفق عليه؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1744",
     "section": "الصيام",
     "category": "الصيام",
@@ -19100,6 +20057,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-93",
     "section": "الحج",
     "category": "الحج",
@@ -19112,6 +20070,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-232",
     "section": "الحج",
     "category": "الحج",
@@ -19124,6 +20083,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-233",
     "section": "الحج",
     "category": "الحج",
@@ -19136,6 +20096,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-234",
     "section": "الحج",
     "category": "الحج",
@@ -19162,6 +20123,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-237",
     "section": "الحج",
     "category": "الحج",
@@ -19174,6 +20136,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-239",
     "section": "الحج",
     "category": "الحج",
@@ -19186,6 +20149,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-240",
     "section": "الحج",
     "category": "الحج",
@@ -19506,6 +20470,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-667",
     "section": "الحج",
     "category": "الحج",
@@ -19532,6 +20497,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-707",
     "section": "الحج",
     "category": "الحج",
@@ -19558,6 +20524,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-747",
     "section": "الحج",
     "category": "الحج",
@@ -19584,6 +20551,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-787",
     "section": "الحج",
     "category": "الحج",
@@ -19610,6 +20578,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-827",
     "section": "الحج",
     "category": "الحج",
@@ -19636,6 +20605,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-867",
     "section": "الحج",
     "category": "الحج",
@@ -19662,6 +20632,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-907",
     "section": "الحج",
     "category": "الحج",
@@ -19688,6 +20659,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-947",
     "section": "الحج",
     "category": "الحج",
@@ -19714,6 +20686,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-987",
     "section": "الحج",
     "category": "الحج",
@@ -19740,6 +20713,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1027",
     "section": "الحج",
     "category": "الحج",
@@ -19766,6 +20740,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1067",
     "section": "الحج",
     "category": "الحج",
@@ -19792,6 +20767,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1107",
     "section": "الحج",
     "category": "الحج",
@@ -19818,6 +20794,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1147",
     "section": "الحج",
     "category": "الحج",
@@ -19844,6 +20821,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1187",
     "section": "الحج",
     "category": "الحج",
@@ -19870,6 +20848,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1227",
     "section": "الحج",
     "category": "الحج",
@@ -19896,6 +20875,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1267",
     "section": "الحج",
     "category": "الحج",
@@ -19922,6 +20902,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1307",
     "section": "الحج",
     "category": "الحج",
@@ -19948,6 +20929,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1347",
     "section": "الحج",
     "category": "الحج",
@@ -19974,6 +20956,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1387",
     "section": "الحج",
     "category": "الحج",
@@ -20000,6 +20983,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1427",
     "section": "الحج",
     "category": "الحج",
@@ -20026,6 +21010,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1467",
     "section": "الحج",
     "category": "الحج",
@@ -20052,6 +21037,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1507",
     "section": "الحج",
     "category": "الحج",
@@ -20078,6 +21064,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1547",
     "section": "الحج",
     "category": "الحج",
@@ -20104,6 +21091,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1587",
     "section": "الحج",
     "category": "الحج",
@@ -20130,6 +21118,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1627",
     "section": "الحج",
     "category": "الحج",
@@ -20156,6 +21145,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1667",
     "section": "الحج",
     "category": "الحج",
@@ -20182,6 +21172,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1707",
     "section": "الحج",
     "category": "الحج",
@@ -20208,6 +21199,7 @@
     "explanation": "الوقوف بعرفة، لقوله ﷺ: (الحج عرفة) — وهو ركن لا يصح الحج بدونه؛ وهذا من أحكام الحج ومناسكه المعروفة عند أهل العلم في كتب المناسك."
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-1747",
     "section": "الحج",
     "category": "الحج",
@@ -28270,6 +29262,7 @@
     "explanation": "يطبّقه بأن يجعل أصل الدرس أن فهم دار الأرقم على أنها معلم تعليمٍ وتربيةٍ مبكرة في مكة، مع ترك المبالغات في تعيين كل مجلسٍ وكل حاضرٍ بلا سندٍ محرَّر. فيسأل عن المصدر قبل النقل، ويعرض الألفاظ والأعداد على أهل التثبت والتمحيص، ولا يحوّل المختلف فيه إلى يقينٍ تعليمي. المقصود تربية القلب على السيرة المحرَّرة لا ملء المجلس بما يضعف عند التحقيق."
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-131",
     "section": "الحديث",
     "category": "الحديث",
@@ -28282,6 +29275,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-132",
     "section": "الحديث",
     "category": "الحديث",
@@ -28294,6 +29288,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-133",
     "section": "الحديث",
     "category": "الحديث",
@@ -28306,6 +29301,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-134",
     "section": "الحديث",
     "category": "الحديث",
@@ -28318,6 +29314,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-135",
     "section": "الحديث",
     "category": "الحديث",
@@ -28330,6 +29327,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-136",
     "section": "الحديث",
     "category": "الحديث",
@@ -28342,6 +29340,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-137",
     "section": "الحديث",
     "category": "الحديث",
@@ -28354,6 +29353,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-138",
     "section": "الحديث",
     "category": "الحديث",
@@ -28366,6 +29366,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-247",
     "section": "الحديث",
     "category": "الحديث",
@@ -28378,6 +29379,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-248",
     "section": "الحديث",
     "category": "الحديث",
@@ -28390,6 +29392,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-249",
     "section": "الحديث",
     "category": "الحديث",
@@ -28402,6 +29405,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-250",
     "section": "الحديث",
     "category": "الحديث",
@@ -28414,6 +29418,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-251",
     "section": "الحديث",
     "category": "الحديث",
@@ -28426,6 +29431,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-252",
     "section": "الحديث",
     "category": "الحديث",
@@ -28438,6 +29444,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-253",
     "section": "الحديث",
     "category": "الحديث",
@@ -28450,6 +29457,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "hadith",
     "id": "seed-qa-254",
     "section": "الحديث",
     "category": "الحديث",
@@ -32858,6 +33866,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-256",
     "section": "الأذكار",
     "category": "الأذكار",
@@ -32870,6 +33879,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-257",
     "section": "الأذكار",
     "category": "الأذكار",
@@ -32882,6 +33892,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-258",
     "section": "الأذكار",
     "category": "الأذكار",
@@ -32894,6 +33905,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-259",
     "section": "الأذكار",
     "category": "الأذكار",
@@ -32906,6 +33918,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-260",
     "section": "الأذكار",
     "category": "الأذكار",
@@ -32918,6 +33931,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-266",
     "section": "الأذكار",
     "category": "الأذكار",
@@ -32930,6 +33944,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-267",
     "section": "الأذكار",
     "category": "الأذكار",
@@ -32942,6 +33957,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-268",
     "section": "الأذكار",
     "category": "الأذكار",
@@ -32954,6 +33970,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-269",
     "section": "الأذكار",
     "category": "الأذكار",
@@ -32966,6 +33983,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "fiqh_aqeedah",
     "id": "seed-qa-270",
     "section": "الأذكار",
     "category": "الأذكار",
@@ -33202,6 +34220,7 @@
     "explanation": "التسبيح بعد الصلاة سنة؛ قال ﷺ: «من سبح الله في دبر كل صلاة ثلاثاً وثلاثين... غُفرت خطاياه». رواه مسلم (597). ويُقال: سبحان الله 33، والحمد لله 33، والله أكبر 34. ويُستحب إتمام المئة بـ«لا إله إلا الله وحده لا شريك له...»."
   },
   {
+    "source_class": "quran",
     "id": "seed-qa-241",
     "section": "القرآن",
     "category": "القرآن",
@@ -33214,6 +34233,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "quran",
     "id": "seed-qa-242",
     "section": "القرآن",
     "category": "القرآن",
@@ -33226,6 +34246,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "quran",
     "id": "seed-qa-243",
     "section": "القرآن",
     "category": "القرآن",
@@ -33238,6 +34259,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "quran",
     "id": "seed-qa-244",
     "section": "القرآن",
     "category": "القرآن",
@@ -33250,6 +34272,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "quran",
     "id": "seed-qa-245",
     "section": "القرآن",
     "category": "القرآن",
@@ -33262,6 +34285,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "quran",
     "id": "seed-qa-246",
     "section": "القرآن",
     "category": "القرآن",
@@ -33274,6 +34298,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "quran",
     "id": "seed-qa-255",
     "section": "القرآن",
     "category": "القرآن",
@@ -35624,6 +36649,7 @@
     "explanation": "تطبيقه أن يبدأ المسلم بتصحيح القصد، ثم يعمل بأن طلب العلم بأدب ووضوح، وسؤال أهل الذكر عند الاشتباه، وترك السؤال الذي يطلب الجدل لا العمل. ويوازن بين امتثال النص وحفظ الحقوق والرفق بالخلق، فلا يجعل المعرفة شعارا بلا أثر، ولا ينزل الحكم على الأعيان بلا تحقق وسؤال للراسخين."
   },
   {
+    "source_class": "other",
     "id": "seed-qa-261",
     "section": "الآداب",
     "category": "الآداب",
@@ -35636,6 +36662,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "other",
     "id": "seed-qa-264",
     "section": "الآداب",
     "category": "الآداب",
@@ -35648,6 +36675,7 @@
     "source": "migrated-from-qa"
   },
   {
+    "source_class": "other",
     "id": "seed-qa-265",
     "section": "الآداب",
     "category": "الآداب",
