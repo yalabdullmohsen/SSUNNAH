@@ -52,7 +52,7 @@ for (const dir of ["public/data/qa", "public/data/quiz", "public/data/knowledge/
   }
 }
 
-const TITLE_ID_CLEAN = ["public/data/knowledge/quiz/batch-003.json"];
+const TITLE_ID_CLEAN = ["public/data/knowledge/quiz/batch-003.json", "public/data/knowledge/quiz/batch-004.json"];
 
 /* المعرّف الداخلي في عنوان سؤال الحديث يُستبدل بمرجع المصدر وحده؛ ما بعده حرفيًا */
 const refs: Array<[string, string]> = [
